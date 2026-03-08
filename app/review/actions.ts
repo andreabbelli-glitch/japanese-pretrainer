@@ -1,11 +1,22 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { getItemById, getItems } from "@/src/domain/content";
+import { getItemById, getLanguageItemById } from "@/src/domain/content";
+import {
+  buildBridgeQueue,
+  buildMissingOnlyQueue,
+  buildSessionQueue,
+  filterGoalScopedEntries,
+  getDueQueueEntries,
+  getMasteryMap,
+  getNewQueueEntries,
+  getReviewSettings,
+  isKnownForGoal,
+  resolveReviewFilters,
+  toSnapshot,
+} from "@/src/domain/review";
 import { applyRating } from "@/src/domain/review/transitions";
-import { buildSessionQueue } from "@/src/domain/review/queue";
-import { getDueQueueEntries, getNewQueueEntries, getReviewSettings, toSnapshot } from "@/src/domain/review/queries";
-import type { ReviewRating } from "@/src/domain/review/types";
+import type { ReviewMode, ReviewQueueFilters, ReviewRating } from "@/src/domain/review/types";
 import {
   createReviewSession,
   getAuthenticatedUserId,
@@ -18,6 +29,7 @@ import {
 import { createClient } from "@/src/lib/supabase/server";
 
 const RATINGS: ReviewRating[] = ["Again", "Hard", "Good", "Easy"];
+const MODES: ReviewMode[] = ["global", "goal", "missing-only", "bridge"];
 
 function normalizeRating(value: FormDataEntryValue | null): ReviewRating {
   if (typeof value !== "string" || !RATINGS.includes(value as ReviewRating)) {
@@ -27,35 +39,109 @@ function normalizeRating(value: FormDataEntryValue | null): ReviewRating {
   return value as ReviewRating;
 }
 
-export async function startReviewSession() {
+function normalizeMode(value: FormDataEntryValue | null): ReviewMode {
+  if (typeof value !== "string" || !MODES.includes(value as ReviewMode)) {
+    return "global";
+  }
+
+  return value as ReviewMode;
+}
+
+async function buildQueuePlan(supabase: unknown, userId: string, filters: ReviewQueueFilters) {
+  const settings = await getReviewSettings(supabase, userId);
+  const dueEntries = await getDueQueueEntries(supabase, userId, Math.max(settings.dailyReviewGoal * 3, 20));
+  const newEntries = await getNewQueueEntries(supabase, userId, Math.max(settings.dailyNewLimit * 3, 20));
+
+  if (filters.mode === "global") {
+    return {
+      plan: buildSessionQueue({
+        dueItems: dueEntries,
+        newItems: newEntries,
+        dailyReviewGoal: settings.dailyReviewGoal,
+        dailyNewLimit: settings.dailyNewLimit,
+      }),
+      settings,
+      goalId: null as string | null,
+    };
+  }
+
+  const resolved = await resolveReviewFilters(supabase, userId, filters);
+  if (!resolved.goal || !resolved.target) {
+    return {
+      plan: buildSessionQueue({
+        dueItems: [],
+        newItems: [],
+        dailyReviewGoal: settings.dailyReviewGoal,
+        dailyNewLimit: settings.dailyNewLimit,
+      }),
+      settings,
+      goalId: null as string | null,
+    };
+  }
+
+  const scopedItemIds = new Set(resolved.scopedItemIds);
+  const goalDue = filterGoalScopedEntries(dueEntries, scopedItemIds);
+  const goalNewBase = filterGoalScopedEntries(newEntries, scopedItemIds);
+
+  const masteryByItemId = await getMasteryMap(supabase, userId, resolved.scopedItemIds);
+  const goalNew = goalNewBase.filter((entry) => !isKnownForGoal(masteryByItemId.get(entry.itemId) ?? 0));
+
+  const plan =
+    filters.mode === "missing-only"
+      ? buildMissingOnlyQueue({
+          target: resolved.target,
+          masteryByItemId,
+          dueItems: goalDue,
+          candidateNewItems: goalNew,
+          dailyReviewGoal: settings.dailyReviewGoal,
+          dailyNewLimit: settings.dailyNewLimit,
+        })
+      : filters.mode === "bridge"
+        ? buildBridgeQueue({
+            target: resolved.target,
+            masteryByItemId,
+            dueItems: goalDue,
+            dailyReviewGoal: settings.dailyReviewGoal,
+          })
+        : buildSessionQueue({
+            dueItems: goalDue,
+            newItems: goalNew,
+            dailyReviewGoal: settings.dailyReviewGoal,
+            dailyNewLimit: settings.dailyNewLimit,
+          });
+
+  return { plan, settings, goalId: resolved.goal.id };
+}
+
+export async function startReviewSession(formData: FormData) {
   const supabase = await createClient();
   const userId = await getAuthenticatedUserId(supabase);
 
-  const settings = await getReviewSettings(supabase, userId);
-  const dueEntries = await getDueQueueEntries(supabase, userId, Math.max(settings.dailyReviewGoal, 1));
-  const newEntries = await getNewQueueEntries(supabase, userId, Math.max(settings.dailyNewLimit, 1));
+  const mode = normalizeMode(formData.get("mode"));
+  const goalIdRaw = formData.get("goalId");
+  const filters: ReviewQueueFilters = {
+    mode,
+    goalId: typeof goalIdRaw === "string" && goalIdRaw.length > 0 ? goalIdRaw : undefined,
+  };
 
-  const queuePlan = buildSessionQueue({
-    dueItems: dueEntries,
-    newItems: newEntries,
-    dailyReviewGoal: settings.dailyReviewGoal,
-    dailyNewLimit: settings.dailyNewLimit,
-  });
+  const { plan, goalId } = await buildQueuePlan(supabase, userId, filters);
 
-  if (queuePlan.totalPlanned === 0) {
-    redirect("/review?empty=1");
+  if (plan.totalPlanned === 0) {
+    const suffix = goalId ? `&goalId=${goalId}` : "";
+    redirect(`/review?empty=1&mode=${mode}${suffix}`);
   }
 
   const session = await createReviewSession(supabase, {
     user_id: userId,
     status: "active",
-    item_count: queuePlan.totalPlanned,
+    item_count: plan.totalPlanned,
     reviewed_count: 0,
     content_version: "v1",
   });
 
-  const queue = [...queuePlan.due, ...queuePlan.newItems].map((entry) => entry.itemId);
-  redirect(`/review/session?sessionId=${session.id}&queue=${queue.join(",")}&index=0`);
+  const queue = [...plan.due, ...plan.newItems].map((entry) => entry.itemId);
+  const goalQuery = goalId ? `&goalId=${goalId}` : "";
+  redirect(`/review/session?sessionId=${session.id}&queue=${queue.join(",")}&index=0&mode=${mode}${goalQuery}`);
 }
 
 export async function submitReviewGrade(formData: FormData) {
@@ -68,12 +154,15 @@ export async function submitReviewGrade(formData: FormData) {
   const index = Number(formData.get("index") ?? 0);
   const responseMs = Number(formData.get("responseMs") ?? 0);
   const rating = normalizeRating(formData.get("rating"));
+  const mode = normalizeMode(formData.get("mode"));
+  const goalIdRaw = formData.get("goalId");
+  const goalId = typeof goalIdRaw === "string" && goalIdRaw.length > 0 ? goalIdRaw : null;
 
   if (!sessionId || !itemId || !queueRaw) {
     throw new Error("Dati sessione mancanti.");
   }
 
-  const item = getItemById(itemId);
+  const item = getItemById(itemId) ?? getLanguageItemById(itemId);
   if (!item) {
     throw new Error("Item review non trovato nel content graph.");
   }
@@ -147,10 +236,12 @@ export async function submitReviewGrade(formData: FormData) {
 
   if (nextIndex >= queue.length) {
     await finishReviewSessionWithSummary(sessionId, userId);
-    redirect(`/review/session?sessionId=${sessionId}&done=1`);
+    const goalQuery = goalId ? `&goalId=${goalId}` : "";
+    redirect(`/review/session?sessionId=${sessionId}&done=1&mode=${mode}${goalQuery}`);
   }
 
-  redirect(`/review/session?sessionId=${sessionId}&queue=${queue.join(",")}&index=${nextIndex}`);
+  const goalQuery = goalId ? `&goalId=${goalId}` : "";
+  redirect(`/review/session?sessionId=${sessionId}&queue=${queue.join(",")}&index=${nextIndex}&mode=${mode}${goalQuery}`);
 }
 
 async function finishReviewSessionWithSummary(sessionId: string, userId: string) {
@@ -177,6 +268,10 @@ async function finishReviewSessionWithSummary(sessionId: string, userId: string)
 
 export async function finishReviewSession(formData: FormData) {
   const sessionId = String(formData.get("sessionId") ?? "");
+  const mode = normalizeMode(formData.get("mode"));
+  const goalIdRaw = formData.get("goalId");
+  const goalId = typeof goalIdRaw === "string" && goalIdRaw.length > 0 ? goalIdRaw : null;
+
   if (!sessionId) {
     redirect("/review");
   }
@@ -184,7 +279,8 @@ export async function finishReviewSession(formData: FormData) {
   const supabase = await createClient();
   const userId = await getAuthenticatedUserId(supabase);
   await finishReviewSessionWithSummary(sessionId, userId);
-  redirect(`/review/session?sessionId=${sessionId}&done=1`);
+  const goalQuery = goalId ? `&goalId=${goalId}` : "";
+  redirect(`/review/session?sessionId=${sessionId}&done=1&mode=${mode}${goalQuery}`);
 }
 
 export async function seedItemForReview(formData: FormData) {
@@ -192,7 +288,7 @@ export async function seedItemForReview(formData: FormData) {
   const userId = await getAuthenticatedUserId(supabase);
   const itemId = String(formData.get("itemId") ?? "");
 
-  const item = getItems().find((candidate) => candidate.id === itemId);
+  const item = getItemById(itemId) ?? getLanguageItemById(itemId);
   if (!item) {
     throw new Error("Item non trovato.");
   }

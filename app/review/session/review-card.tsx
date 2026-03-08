@@ -1,16 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { ReviewRating, ReviewTemplate } from "@/src/domain/review";
-import type { StudyItem } from "@/src/domain/content/types";
 import { submitReviewGrade } from "@/app/review/actions";
-
-const RATING_HELP: Record<ReviewRating, string> = {
-  Again: "Non lo ricordavo",
-  Hard: "Ricordato con fatica",
-  Good: "Ricordato bene",
-  Easy: "Molto facile",
-};
+import type { ReviewRating } from "@/src/domain/review/types";
 
 const SHORTCUT_KEY: Record<string, ReviewRating> = {
   "1": "Again",
@@ -19,18 +11,27 @@ const SHORTCUT_KEY: Record<string, ReviewRating> = {
   "4": "Easy",
 };
 
+const RATING_HELP: Record<ReviewRating, string> = {
+  Again: "Non ricordato / troppo difficile",
+  Hard: "Ricordato con fatica",
+  Good: "Ricordato correttamente",
+  Easy: "Molto facile",
+};
+
 export function ReviewCard({
   session,
   item,
   queue,
   index,
-  template,
+  mode,
+  goalId,
 }: {
   session: { id: string };
-  item: StudyItem;
+  item: { id: string; term: string; reading: string; meaning: string; exampleText: string; template: { promptLabel: string; answerLabel: string } };
   queue: string[];
   index: number;
-  template: ReviewTemplate;
+  mode: string;
+  goalId: string | null;
 }) {
   const [revealed, setRevealed] = useState(false);
   const [startedAt] = useState(() => Date.now());
@@ -56,7 +57,7 @@ export function ReviewCard({
   return (
     <section className="space-y-4 rounded-lg border border-slate-200 bg-white p-5">
       <div className="rounded-md bg-slate-50 p-4">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{template.promptLabel}</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{item.template.promptLabel}</p>
         <p className="mt-2 text-2xl font-semibold text-slate-900">{item.term}</p>
       </div>
 
@@ -70,7 +71,7 @@ export function ReviewCard({
         </button>
       ) : (
         <div className="space-y-3 rounded-md border border-emerald-200 bg-emerald-50 p-4 text-sm">
-          <p className="font-semibold text-slate-900">{template.answerLabel}</p>
+          <p className="font-semibold text-slate-900">{item.template.answerLabel}</p>
           <p>
             <span className="font-semibold">Lettura:</span> {item.reading}
           </p>
@@ -90,6 +91,8 @@ export function ReviewCard({
                 <input type="hidden" name="index" value={index} />
                 <input type="hidden" name="rating" value={rating} />
                 <input type="hidden" name="responseMs" value={Date.now() - startedAt} />
+                <input type="hidden" name="mode" value={mode} />
+                {goalId ? <input type="hidden" name="goalId" value={goalId} /> : null}
                 <button
                   ref={(el) => {
                     submitRefs.current[rating] = el;
