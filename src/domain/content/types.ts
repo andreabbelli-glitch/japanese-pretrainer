@@ -1,3 +1,102 @@
+export type LanguageItemKind =
+  | 'kanji'
+  | 'vocab'
+  | 'verb'
+  | 'adjective'
+  | 'pattern'
+  | 'keyword'
+  | 'counter'
+  | 'phrase'
+  | 'function-word';
+
+export type ItemPriority = 'core' | 'important' | 'nice';
+
+export type LanguageItem = {
+  id: string;
+  legacyId?: string;
+  kind: LanguageItemKind;
+  surface: string;
+  reading: string;
+  meaning_it: string;
+  explanation_eli5: string;
+  scope: 'general' | 'tcg' | 'game-specific';
+  priority: ItemPriority;
+  senses: string[];
+  relatedItemIds: string[];
+  prerequisiteItemIds: string[];
+  exampleIds: string[];
+  sourceRefs: Array<{ kind: string; value: string }>;
+};
+
+export type Example = {
+  id: string;
+  legacyId?: string;
+  jp: string;
+  reading: string;
+  translation_it: string;
+  breakdown: string[];
+  itemIds: string[];
+  sourceUnitId: string;
+  gameId: string;
+  productId: string;
+  lessonIds: string[];
+};
+
+export type Lesson = {
+  id: string;
+  layer: 'core' | 'game' | 'product';
+  slug: string;
+  title: string;
+  summary: string;
+  itemIds: string[];
+  unitIds: string[];
+  gameId?: string;
+  productId?: string;
+  body: string;
+  filePath: string;
+};
+
+export type Game = {
+  id: string;
+  slug: string;
+  name: string;
+  language: 'ja';
+  description_it: string;
+  status: 'active' | 'draft' | 'archived';
+};
+
+export type Product = {
+  id: string;
+  gameId: string;
+  slug: string;
+  name: string;
+  productType: string;
+  summary_it: string;
+  unitIds: string[];
+  lessonIds: string[];
+};
+
+export type SourceUnit = {
+  id: string;
+  legacyId?: string;
+  gameId: string;
+  productId: string;
+  unitType: 'card';
+  slug: string;
+  name: string;
+  nameReading: string;
+  jpText: string;
+  reading?: string;
+  paraphrase_it: string;
+  requiredItemIds: string[];
+  keyItemIds: string[];
+  keyPatternIds: string[];
+  recommendedLessonIds: string[];
+  priorityWeight: number;
+  sourceUrl: string;
+};
+
+// Transitional compatibility types (UI/review still expects Study* names)
 export type StudyItemType = 'kanji' | 'vocab' | 'keyword' | 'pattern';
 
 export type StudyItem = {
@@ -14,7 +113,7 @@ export type StudyItem = {
   relatedExampleIds: string[];
   relatedCardIds: string[];
   lessonIds: string[];
-  priority: 'core' | 'important' | 'nice';
+  priority: ItemPriority;
 };
 
 export type StudyCard = {
@@ -53,7 +152,9 @@ export type StudyDeck = {
   notes: string;
 };
 
-export type LessonDocument = {
+export type LessonDocument = StudyLesson;
+
+export type StudyLesson = {
   id: string;
   slug: string;
   title: string;
@@ -65,9 +166,15 @@ export type LessonDocument = {
 };
 
 export type ContentGraph = {
+  languageItems: LanguageItem[];
+  examplesCanonical: Example[];
+  lessonsCanonical: Lesson[];
+  games: Game[];
+  products: Product[];
+  units: SourceUnit[];
   items: StudyItem[];
   cards: StudyCard[];
   examples: StudyExample[];
   decks: StudyDeck[];
-  lessons: LessonDocument[];
+  lessons: StudyLesson[];
 };

@@ -1,0 +1,10 @@
+{
+  "game": {
+    "id": "game.duel-masters",
+    "slug": "duel-masters",
+    "name": "Duel Masters",
+    "language": "ja",
+    "description_it": "Contesto TCG per studiare giapponese reale delle carte.",
+    "status": "active"
+  }
+}

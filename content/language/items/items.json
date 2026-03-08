@@ -1,0 +1,5029 @@
+{
+  "items": [
+    {
+      "id": "jp.k.001",
+      "legacyId": "K-001",
+      "kind": "kanji",
+      "surface": "自",
+      "reading": "じ",
+      "meaning_it": "sé; usato in 自分",
+      "explanation_eli5": "自分の墓地",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "sé; usato in 自分"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0001"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-001"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K01"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.002",
+      "legacyId": "K-002",
+      "kind": "kanji",
+      "surface": "分",
+      "reading": "ぶん",
+      "meaning_it": "parte/dividere; qui soprattutto in 自分",
+      "explanation_eli5": "自分の山札",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "parte/dividere; qui soprattutto in 自分"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0002"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-002"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K02"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.003",
+      "legacyId": "K-003",
+      "kind": "kanji",
+      "surface": "相",
+      "reading": "あい",
+      "meaning_it": "reciproco/controparte; in 相手 = avversario",
+      "explanation_eli5": "相手のクリーチャー",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "reciproco/controparte; in 相手 = avversario"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0003"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-003"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K03"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.004",
+      "legacyId": "K-004",
+      "kind": "kanji",
+      "surface": "手",
+      "reading": "て",
+      "meaning_it": "mano; in 手札 o 相手",
+      "explanation_eli5": "手札に加える",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "mano; in 手札 o 相手"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0001"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-004"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K04"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.005",
+      "legacyId": "K-005",
+      "kind": "kanji",
+      "surface": "山",
+      "reading": "やま",
+      "meaning_it": "montagna; in 山札 = mazzo",
+      "explanation_eli5": "山札の上から",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "montagna; in 山札 = mazzo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0004"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-005"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K05"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.006",
+      "legacyId": "K-006",
+      "kind": "kanji",
+      "surface": "札",
+      "reading": "ふだ",
+      "meaning_it": "tessera/carta; in 山札, 手札",
+      "explanation_eli5": "手札を１枚捨て",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "tessera/carta; in 山札, 手札"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0002"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-006"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K06"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-013"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.007",
+      "legacyId": "K-007",
+      "kind": "kanji",
+      "surface": "墓",
+      "reading": "ぼ",
+      "meaning_it": "tomba; in 墓地 = cimitero",
+      "explanation_eli5": "墓地に置く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "tomba; in 墓地 = cimitero"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0005"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-007"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K07"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.008",
+      "legacyId": "K-008",
+      "kind": "kanji",
+      "surface": "地",
+      "reading": "ち",
+      "meaning_it": "terra/luogo; qui in 墓地",
+      "explanation_eli5": "墓地から出す",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "terra/luogo; qui in 墓地"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0006"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-008"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K08"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23rp4-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.009",
+      "legacyId": "K-009",
+      "kind": "kanji",
+      "surface": "出",
+      "reading": "で",
+      "meaning_it": "uscire/entrare in campo",
+      "explanation_eli5": "このクリーチャーが出た時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "uscire/entrare in campo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0007"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-009"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K09"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-016"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.010",
+      "legacyId": "K-010",
+      "kind": "kanji",
+      "surface": "置",
+      "reading": "お",
+      "meaning_it": "mettere, collocare",
+      "explanation_eli5": "山札の下に置く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "mettere, collocare"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0008"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-010"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K10"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.011",
+      "legacyId": "K-011",
+      "kind": "kanji",
+      "surface": "枚",
+      "reading": "まい",
+      "meaning_it": "contatore per carte/fogli",
+      "explanation_eli5": "カードを４枚",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "contatore per carte/fogli"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0009"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-011"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K11"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.012",
+      "legacyId": "K-012",
+      "kind": "kanji",
+      "surface": "体",
+      "reading": "たい",
+      "meaning_it": "contatore per creature/corpi",
+      "explanation_eli5": "クリーチャーを１体選ぶ",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "contatore per creature/corpi"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0010"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-012"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K12"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.013",
+      "legacyId": "K-013",
+      "kind": "kanji",
+      "surface": "選",
+      "reading": "えら",
+      "meaning_it": "scegliere",
+      "explanation_eli5": "１枚選んでもよい",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "scegliere"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0011"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-013"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K13"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.014",
+      "legacyId": "K-014",
+      "kind": "kanji",
+      "surface": "見",
+      "reading": "み",
+      "meaning_it": "vedere",
+      "explanation_eli5": "相手の手札を見て",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "vedere"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0012"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-014"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K14"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.015",
+      "legacyId": "K-015",
+      "kind": "kanji",
+      "surface": "加",
+      "reading": "くわ",
+      "meaning_it": "aggiungere",
+      "explanation_eli5": "手札に加える",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "aggiungere"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0003"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-015"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K15"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.016",
+      "legacyId": "K-016",
+      "kind": "kanji",
+      "surface": "戻",
+      "reading": "もど",
+      "meaning_it": "ritornare / riportare",
+      "explanation_eli5": "手札に戻す",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "ritornare / riportare"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0004"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-016"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K16"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmrp19-094"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.017",
+      "legacyId": "K-017",
+      "kind": "kanji",
+      "surface": "捨",
+      "reading": "す",
+      "meaning_it": "scartare / gettare via",
+      "explanation_eli5": "１枚捨てる",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "scartare / gettare via"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0005"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-017"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K17"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-013"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.018",
+      "legacyId": "K-018",
+      "kind": "kanji",
+      "surface": "引",
+      "reading": "ひ",
+      "meaning_it": "tirare/pescare",
+      "explanation_eli5": "カードを１枚引く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "tirare/pescare"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0006"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-018"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K18"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-014"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.019",
+      "legacyId": "K-019",
+      "kind": "kanji",
+      "surface": "破",
+      "reading": "は",
+      "meaning_it": "rompere/distruggere",
+      "explanation_eli5": "破壊する",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "rompere/distruggere"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0013"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-019"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K19"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-047"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.020",
+      "legacyId": "K-020",
+      "kind": "kanji",
+      "surface": "壊",
+      "reading": "かい",
+      "meaning_it": "distruzione/rottura",
+      "explanation_eli5": "１体、破壊する",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "distruzione/rottura"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0014"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-020"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K20"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22sd1-004"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.021",
+      "legacyId": "K-021",
+      "kind": "kanji",
+      "surface": "攻",
+      "reading": "こう",
+      "meaning_it": "attacco",
+      "explanation_eli5": "攻撃する時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "attacco"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0015"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-021"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K21"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.022",
+      "legacyId": "K-022",
+      "kind": "kanji",
+      "surface": "撃",
+      "reading": "げき",
+      "meaning_it": "colpire; in 攻撃",
+      "explanation_eli5": "このクリーチャーの攻撃中",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "colpire; in 攻撃"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0007"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-022"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K22"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.023",
+      "legacyId": "K-023",
+      "kind": "kanji",
+      "surface": "進",
+      "reading": "しん",
+      "meaning_it": "avanzare/evolvere",
+      "explanation_eli5": "進化クリーチャー",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "avanzare/evolvere"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0008"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-023"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K23"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.024",
+      "legacyId": "K-024",
+      "kind": "kanji",
+      "surface": "化",
+      "reading": "か",
+      "meaning_it": "trasformazione",
+      "explanation_eli5": "タマシードから進化していれば",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "trasformazione"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0009"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-024"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K24"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-012"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.025",
+      "legacyId": "K-025",
+      "kind": "kanji",
+      "surface": "離",
+      "reading": "はな",
+      "meaning_it": "allontanarsi / lasciare",
+      "explanation_eli5": "このクリーチャーが離れる時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "allontanarsi / lasciare"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0016"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-025"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K25"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.026",
+      "legacyId": "K-026",
+      "kind": "kanji",
+      "surface": "召",
+      "reading": "しょう",
+      "meaning_it": "chiamare; in 召喚",
+      "explanation_eli5": "すぐ召喚してもよい",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "chiamare; in 召喚"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0017"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-026"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K26"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.027",
+      "legacyId": "K-027",
+      "kind": "kanji",
+      "surface": "喚",
+      "reading": "かん",
+      "meaning_it": "invocare; in 召喚",
+      "explanation_eli5": "召喚以外の方法",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "invocare; in 召喚"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0018"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-027"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K27"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-047"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.028",
+      "legacyId": "K-028",
+      "kind": "kanji",
+      "surface": "支",
+      "reading": "し",
+      "meaning_it": "pagare/sostenere; in 支払う",
+      "explanation_eli5": "コストを支払わずに",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "pagare/sostenere; in 支払う"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0010"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-028"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K28"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.029",
+      "legacyId": "K-029",
+      "kind": "kanji",
+      "surface": "払",
+      "reading": "はら",
+      "meaning_it": "pagare",
+      "explanation_eli5": "コストを支払わずに",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "pagare"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0011"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-029"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K29"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.030",
+      "legacyId": "K-030",
+      "kind": "kanji",
+      "surface": "上",
+      "reading": "うえ",
+      "meaning_it": "sopra / superiore",
+      "explanation_eli5": "山札の上から",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "sopra / superiore"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0019"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-030"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K30"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22sd1-010"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.031",
+      "legacyId": "K-031",
+      "kind": "kanji",
+      "surface": "下",
+      "reading": "した",
+      "meaning_it": "sotto / inferiore",
+      "explanation_eli5": "山札の下に置く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "sotto / inferiore"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0012"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-031"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K31"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmex17-013"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.032",
+      "legacyId": "K-032",
+      "kind": "kanji",
+      "surface": "以",
+      "reading": "い",
+      "meaning_it": "a partire da / eccetto; entra in 以下, 以上, 以外",
+      "explanation_eli5": "召喚以外の方法",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "a partire da / eccetto; entra in 以下, 以上, 以外"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0020"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-032"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K32"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-016"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.033",
+      "legacyId": "K-033",
+      "kind": "kanji",
+      "surface": "外",
+      "reading": "がい",
+      "meaning_it": "fuori/esterno; in 以外",
+      "explanation_eli5": "進化ではないクリーチャー",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "fuori/esterno; in 以外"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0021"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-033"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K33"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.034",
+      "legacyId": "K-034",
+      "kind": "kanji",
+      "surface": "合",
+      "reading": "ごう",
+      "meaning_it": "mettere insieme; in 合計",
+      "explanation_eli5": "合計４つ以上",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "mettere insieme; in 合計"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0022"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-034"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K34"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.035",
+      "legacyId": "K-035",
+      "kind": "kanji",
+      "surface": "計",
+      "reading": "けい",
+      "meaning_it": "conteggio; in 合計",
+      "explanation_eli5": "合計３つ以上",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "conteggio; in 合計"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0023"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-035"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K35"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.036",
+      "legacyId": "K-036",
+      "kind": "kanji",
+      "surface": "時",
+      "reading": "とき",
+      "meaning_it": "quando",
+      "explanation_eli5": "このタマシードが出た時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "quando"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0024"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-036"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K36"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.037",
+      "legacyId": "K-037",
+      "kind": "kanji",
+      "surface": "後",
+      "reading": "ご",
+      "meaning_it": "dopo",
+      "explanation_eli5": "その後",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "dopo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0025"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-037"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K37"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.038",
+      "legacyId": "K-038",
+      "kind": "kanji",
+      "surface": "終",
+      "reading": "お",
+      "meaning_it": "fine",
+      "explanation_eli5": "ターンの終わりに",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "fine"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0026"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-038"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K38"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.039",
+      "legacyId": "K-039",
+      "kind": "kanji",
+      "surface": "残",
+      "reading": "のこ",
+      "meaning_it": "resto/rimanenza",
+      "explanation_eli5": "残りを好きな順序で",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "resto/rimanenza"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0013"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-039"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K39"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.040",
+      "legacyId": "K-040",
+      "kind": "kanji",
+      "surface": "扱",
+      "reading": "あつか",
+      "meaning_it": "trattare/considerare",
+      "explanation_eli5": "クリーチャーとして扱わない",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "trattare/considerare"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0027"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-040"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K40"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.041",
+      "legacyId": "K-041",
+      "kind": "kanji",
+      "surface": "重",
+      "reading": "かさ",
+      "meaning_it": "sovrapporre",
+      "explanation_eli5": "その上に重ねてもよい",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "sovrapporre"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0014"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-041"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K41"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.042",
+      "legacyId": "K-042",
+      "kind": "kanji",
+      "surface": "表",
+      "reading": "おもて",
+      "meaning_it": "fronte/verso visibile",
+      "explanation_eli5": "表向きにする",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "fronte/verso visibile"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0015"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-042"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K42"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.043",
+      "legacyId": "K-043",
+      "kind": "kanji",
+      "surface": "向",
+      "reading": "む",
+      "meaning_it": "direzione; in 表向き",
+      "explanation_eli5": "表向きにする",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "direzione; in 表向き"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0016"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-043"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K43"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.044",
+      "legacyId": "K-044",
+      "kind": "kanji",
+      "surface": "持",
+      "reading": "も",
+      "meaning_it": "avere/possedere",
+      "explanation_eli5": "コストを持つ",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "avere/possedere"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0028"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-044"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K44"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.045",
+      "legacyId": "K-045",
+      "kind": "kanji",
+      "surface": "小",
+      "reading": "ちい",
+      "meaning_it": "piccolo",
+      "explanation_eli5": "コストが小さい",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "piccolo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0029"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-045"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K45"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22sd1-004"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.046",
+      "legacyId": "K-046",
+      "kind": "kanji",
+      "surface": "大",
+      "reading": "おお",
+      "meaning_it": "grande",
+      "explanation_eli5": "一番パワーが大きい",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "grande"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0017"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-046"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K46"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr17-l02"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.047",
+      "legacyId": "K-047",
+      "kind": "kanji",
+      "surface": "火",
+      "reading": "ひ",
+      "meaning_it": "fuoco; civiltà fuoco",
+      "explanation_eli5": "火のクリーチャー",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "fuoco; civiltà fuoco"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0018"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-047"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K47"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.048",
+      "legacyId": "K-048",
+      "kind": "kanji",
+      "surface": "闇",
+      "reading": "やみ",
+      "meaning_it": "oscurità; civiltà tenebre",
+      "explanation_eli5": "闇のクリーチャー",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "oscurità; civiltà tenebre"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0030"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-048"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K48"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.049",
+      "legacyId": "K-049",
+      "kind": "kanji",
+      "surface": "次",
+      "reading": "つぎ",
+      "meaning_it": "successivo",
+      "explanation_eli5": "次の能力",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "successivo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0031"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-049"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K49"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.050",
+      "legacyId": "K-050",
+      "kind": "kanji",
+      "surface": "始",
+      "reading": "はじ",
+      "meaning_it": "iniziare",
+      "explanation_eli5": "すぐに始める",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "iniziare"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0032"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-050"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K50"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.051",
+      "legacyId": "K-051",
+      "kind": "kanji",
+      "surface": "与",
+      "reading": "あた",
+      "meaning_it": "dare/attribuire",
+      "explanation_eli5": "「S・トリガー」を与える",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "dare/attribuire"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0033"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-051"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K51"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.052",
+      "legacyId": "K-052",
+      "kind": "kanji",
+      "surface": "行",
+      "reading": "おこな",
+      "meaning_it": "fare/eseguire",
+      "explanation_eli5": "２回行う",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "fare/eseguire"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0034"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-052"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K52"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.053",
+      "legacyId": "K-053",
+      "kind": "kanji",
+      "surface": "好",
+      "reading": "す",
+      "meaning_it": "piacere; in 好き = a piacere",
+      "explanation_eli5": "好きな順序で",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "piacere; in 好き = a piacere"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0019"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-053"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K53"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.054",
+      "legacyId": "K-054",
+      "kind": "kanji",
+      "surface": "順",
+      "reading": "じゅん",
+      "meaning_it": "ordine",
+      "explanation_eli5": "好きな順で",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "ordine"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0020"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-054"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K54"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.055",
+      "legacyId": "K-055",
+      "kind": "kanji",
+      "surface": "負",
+      "reading": "ま",
+      "meaning_it": "perdere",
+      "explanation_eli5": "ゲームに負けず",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "perdere"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0021"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-055"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K55"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmbd03-007"
+        }
+      ]
+    },
+    {
+      "id": "jp.k.056",
+      "legacyId": "K-056",
+      "kind": "kanji",
+      "surface": "勝",
+      "reading": "か",
+      "meaning_it": "vincere",
+      "explanation_eli5": "ゲームに勝てない",
+      "scope": "general",
+      "priority": "important",
+      "senses": [
+        "vincere"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0022"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "K-056"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "K56"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmbd03-007"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.001",
+      "legacyId": "V-001",
+      "kind": "vocab",
+      "surface": "自分",
+      "reading": "じぶん",
+      "meaning_it": "pronome",
+      "explanation_eli5": "自分の墓地から出す",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "pronome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0035"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-001"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V01"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23rp4-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.002",
+      "legacyId": "V-002",
+      "kind": "vocab",
+      "surface": "相手",
+      "reading": "あいて",
+      "meaning_it": "nome",
+      "explanation_eli5": "相手のクリーチャーを１体選ぶ",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0036",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0087",
+        "ex.dm.sd2.0065",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-002"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V02"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.003",
+      "legacyId": "V-003",
+      "kind": "vocab",
+      "surface": "山札",
+      "reading": "やまふだ",
+      "meaning_it": "nome",
+      "explanation_eli5": "自分の山札の上から４枚を見る",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0089",
+        "ex.dm.sd1.0090",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0093",
+        "ex.dm.sd2.0023",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0072",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-003"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V03"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd20-016"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.004",
+      "legacyId": "V-004",
+      "kind": "vocab",
+      "surface": "手札",
+      "reading": "てふだ",
+      "meaning_it": "nome",
+      "explanation_eli5": "手札に加える",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0090",
+        "ex.dm.sd1.0093",
+        "ex.dm.sd2.0024",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0071",
+        "ex.dm.sd2.0072",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-004"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V04"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.005",
+      "legacyId": "V-005",
+      "kind": "vocab",
+      "surface": "墓地",
+      "reading": "ぼち",
+      "meaning_it": "nome",
+      "explanation_eli5": "自分の墓地から出す",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0037",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd1.0093",
+        "ex.dm.sd1.0094",
+        "ex.dm.sd2.0066"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-005"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V05"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.006",
+      "legacyId": "V-006",
+      "kind": "vocab",
+      "surface": "持ち主",
+      "reading": "もちぬし",
+      "meaning_it": "nome",
+      "explanation_eli5": "持ち主の墓地に置く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0025",
+        "ex.dm.sd2.0066"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-006"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V06"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmex17-013"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.007",
+      "legacyId": "V-007",
+      "kind": "vocab",
+      "surface": "枚数",
+      "reading": "まいすう",
+      "meaning_it": "nome",
+      "explanation_eli5": "カードの枚数以下のコスト",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0038",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0092"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-007"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V07"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.008",
+      "legacyId": "V-008",
+      "kind": "vocab",
+      "surface": "合計",
+      "reading": "ごうけい",
+      "meaning_it": "nome",
+      "explanation_eli5": "合計４つ以上",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0039",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0091"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-008"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V08"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.009",
+      "legacyId": "V-009",
+      "kind": "vocab",
+      "surface": "以上",
+      "reading": "いじょう",
+      "meaning_it": "nome/avv.",
+      "explanation_eli5": "合計３つ以上あれば",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome/avv."
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0040",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0091"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-009"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V09"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.010",
+      "legacyId": "V-010",
+      "kind": "vocab",
+      "surface": "以下",
+      "reading": "いか",
+      "meaning_it": "nome/avv.",
+      "explanation_eli5": "コスト５以下のクリーチャー",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome/avv."
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0041",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-010"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V10"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23rp4-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.011",
+      "legacyId": "V-011",
+      "kind": "vocab",
+      "surface": "以外",
+      "reading": "いがい",
+      "meaning_it": "nome/avv.",
+      "explanation_eli5": "召喚以外の方法",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome/avv."
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0042"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-011"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V11"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-047"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.012",
+      "legacyId": "V-012",
+      "kind": "vocab",
+      "surface": "一番上",
+      "reading": "いちばんうえ",
+      "meaning_it": "espressione",
+      "explanation_eli5": "一番上のカードを破壊する",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "espressione"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0026",
+        "ex.dm.sd2.0064"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-012"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V12"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.013",
+      "legacyId": "V-013",
+      "kind": "vocab",
+      "surface": "一番下",
+      "reading": "いちばんした",
+      "meaning_it": "espressione",
+      "explanation_eli5": "山札の一番下に戻す",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "espressione"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0027",
+        "ex.dm.sd2.0069"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-013"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V13"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.014",
+      "legacyId": "V-014",
+      "kind": "vocab",
+      "surface": "残り",
+      "reading": "のこり",
+      "meaning_it": "nome",
+      "explanation_eli5": "残りを好きな順序で",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0028",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-014"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V14"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.015",
+      "legacyId": "V-015",
+      "kind": "vocab",
+      "surface": "好きな順 / 順序",
+      "reading": "すきなじゅん / じゅんじょ",
+      "meaning_it": "espressione",
+      "explanation_eli5": "好きな順で自分の山札の一番下に戻す",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "espressione"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0029",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-015"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V15"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.016",
+      "legacyId": "V-016",
+      "kind": "vocab",
+      "surface": "コスト",
+      "reading": "こすと",
+      "meaning_it": "nome",
+      "explanation_eli5": "コスト４以下のアビス",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0043",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd2.0066"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-016"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V16"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.017",
+      "legacyId": "V-017",
+      "kind": "vocab",
+      "surface": "パワー",
+      "reading": "ぱわー",
+      "meaning_it": "nome",
+      "explanation_eli5": "パワーを－4000する",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "nome"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0044",
+        "ex.dm.sd1.0087",
+        "ex.dm.sd2.0065",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-017"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V17"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.018",
+      "legacyId": "V-018",
+      "kind": "vocab",
+      "surface": "出る / 出た時",
+      "reading": "でる / でたとき",
+      "meaning_it": "verbo/pattern",
+      "explanation_eli5": "このクリーチャーが出た時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo/pattern"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0045",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0087",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0089",
+        "ex.dm.sd1.0090",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd1.0093",
+        "ex.dm.sd2.0065",
+        "ex.dm.sd2.0071"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-018"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V18"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-016"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.019",
+      "legacyId": "V-019",
+      "kind": "vocab",
+      "surface": "出す",
+      "reading": "だす",
+      "meaning_it": "verbo",
+      "explanation_eli5": "自分の墓地から出す",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0046",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0094"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-019"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V19"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.020",
+      "legacyId": "V-020",
+      "kind": "vocab",
+      "surface": "置く",
+      "reading": "おく",
+      "meaning_it": "verbo",
+      "explanation_eli5": "山札の下に置く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0047",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0072"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-020"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V20"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.021",
+      "legacyId": "V-021",
+      "kind": "vocab",
+      "surface": "選ぶ",
+      "reading": "えらぶ",
+      "meaning_it": "verbo",
+      "explanation_eli5": "クリーチャーを１体選ぶ",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0048",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0087",
+        "ex.dm.sd2.0066",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0070",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-021"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V21"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.022",
+      "legacyId": "V-022",
+      "kind": "vocab",
+      "surface": "見る",
+      "reading": "みる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "自分の山札の上から４枚を見る",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0085",
+        "ex.dm.sd2.0030",
+        "ex.dm.sd2.0067"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-022"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V22"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd20-016"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.023",
+      "legacyId": "V-023",
+      "kind": "vocab",
+      "surface": "見せる",
+      "reading": "みせる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "相手に見せてから",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0031",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-023"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V23"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.024",
+      "legacyId": "V-024",
+      "kind": "vocab",
+      "surface": "加える",
+      "reading": "くわえる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "手札に加える",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0090",
+        "ex.dm.sd1.0093",
+        "ex.dm.sd2.0032",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-024"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V24"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.025",
+      "legacyId": "V-025",
+      "kind": "vocab",
+      "surface": "戻す",
+      "reading": "もどす",
+      "meaning_it": "verbo",
+      "explanation_eli5": "このクリーチャーを手札に戻す",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0093",
+        "ex.dm.sd2.0033",
+        "ex.dm.sd2.0073"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-025"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V25"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmrp19-094"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.026",
+      "legacyId": "V-026",
+      "kind": "vocab",
+      "surface": "捨てる",
+      "reading": "すてる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "自分の手札を１枚捨て",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd2.0034",
+        "ex.dm.sd2.0071"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-026"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V26"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-013"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.027",
+      "legacyId": "V-027",
+      "kind": "vocab",
+      "surface": "引く",
+      "reading": "ひく",
+      "meaning_it": "verbo",
+      "explanation_eli5": "カードを１枚引く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0035",
+        "ex.dm.sd2.0071",
+        "ex.dm.sd2.0072"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-027"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V27"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-014"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.028",
+      "legacyId": "V-028",
+      "kind": "vocab",
+      "surface": "破壊する",
+      "reading": "はかいする",
+      "meaning_it": "verbo",
+      "explanation_eli5": "そのクリーチャーを破壊する",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0049",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0087",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0089",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0065",
+        "ex.dm.sd2.0066",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-028"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V28"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-016"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.029",
+      "legacyId": "V-029",
+      "kind": "vocab",
+      "surface": "攻撃する",
+      "reading": "こうげきする",
+      "meaning_it": "verbo",
+      "explanation_eli5": "自分のアビスが攻撃する時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0050",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd2.0064"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-029"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V29"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.030",
+      "legacyId": "V-030",
+      "kind": "vocab",
+      "surface": "召喚する",
+      "reading": "しょうかんする",
+      "meaning_it": "verbo",
+      "explanation_eli5": "すぐ召喚してもよい",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0051",
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0086",
+        "ex.dm.sd1.0089",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd1.0094"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-030"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V30"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.031",
+      "legacyId": "V-031",
+      "kind": "vocab",
+      "surface": "唱える",
+      "reading": "となえる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "すぐ唱えてもよい",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0036"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-031"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V31"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.032",
+      "legacyId": "V-032",
+      "kind": "vocab",
+      "surface": "支払う",
+      "reading": "しはらう",
+      "meaning_it": "verbo",
+      "explanation_eli5": "コストを支払わずに",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd2.0037"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-032"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V32"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.033",
+      "legacyId": "V-033",
+      "kind": "vocab",
+      "surface": "離れる",
+      "reading": "はなれる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "このクリーチャーが離れる時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0052",
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0094"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-033"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V33"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.034",
+      "legacyId": "V-034",
+      "kind": "vocab",
+      "surface": "与える",
+      "reading": "あたえる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "「S・トリガー」を与える",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0053",
+        "ex.dm.sd1.0091"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-034"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V34"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.035",
+      "legacyId": "V-035",
+      "kind": "vocab",
+      "surface": "扱う",
+      "reading": "あつかう",
+      "meaning_it": "verbo",
+      "explanation_eli5": "クリーチャーとして扱わない",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0054",
+        "ex.dm.sd1.0082"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-035"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V35"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.036",
+      "legacyId": "V-036",
+      "kind": "vocab",
+      "surface": "重ねる",
+      "reading": "かさねる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "その上に重ねてもよい",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0038",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0066"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-036"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V36"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.037",
+      "legacyId": "V-037",
+      "kind": "vocab",
+      "surface": "ブレイクする",
+      "reading": "ぶれいくする",
+      "meaning_it": "verbo",
+      "explanation_eli5": "シールドをすべてブレイクする",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0039",
+        "ex.dm.sd2.0066",
+        "ex.dm.sd2.0073"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-037"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V37"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmex17-013"
+        }
+      ]
+    },
+    {
+      "id": "jp.v.038",
+      "legacyId": "V-038",
+      "kind": "vocab",
+      "surface": "バトルさせる",
+      "reading": "ばとるさせる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "このクリーチャーをバトルさせる",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0040",
+        "ex.dm.sd2.0070"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-038"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V38"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-012"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.001",
+      "legacyId": "V-039",
+      "kind": "keyword",
+      "surface": "とばす",
+      "reading": "とばす",
+      "meaning_it": "verbo",
+      "explanation_eli5": "ターンの残りをとばす",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0055",
+        "ex.dm.sd1.0086"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-039"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V39"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.002",
+      "legacyId": "V-040",
+      "kind": "keyword",
+      "surface": "始める",
+      "reading": "はじめる",
+      "meaning_it": "verbo",
+      "explanation_eli5": "次のプレイヤーのターンをすぐに始める",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0056",
+        "ex.dm.sd1.0086"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-040"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V40"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.003",
+      "legacyId": "V-041",
+      "kind": "keyword",
+      "surface": "タマシード",
+      "reading": "たましーど",
+      "meaning_it": "keyword",
+      "explanation_eli5": "このタマシードが出た時",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0057",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd2.0070",
+        "ex.dm.sd2.0071",
+        "ex.dm.sd2.0072"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-041"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V41"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.004",
+      "legacyId": "V-042",
+      "kind": "keyword",
+      "surface": "アビス",
+      "reading": "あびす",
+      "meaning_it": "keyword",
+      "explanation_eli5": "コスト４以下のアビス",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0058",
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0093"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-042"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V42"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.005",
+      "legacyId": "V-043",
+      "kind": "keyword",
+      "surface": "進化",
+      "reading": "しんか",
+      "meaning_it": "keyword",
+      "explanation_eli5": "進化：火のクリーチャー１体の上に置く",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0082",
+        "ex.dm.sd2.0041",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0065",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0070",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-043"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V43"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.006",
+      "legacyId": "V-044",
+      "kind": "keyword",
+      "surface": "侵略",
+      "reading": "しんりゃく",
+      "meaning_it": "keyword",
+      "explanation_eli5": "侵略：火のコマンド",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0042",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0065",
+        "ex.dm.sd2.0066"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-044"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V44"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr17-l02"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.007",
+      "legacyId": "V-045",
+      "kind": "keyword",
+      "surface": "究極進化",
+      "reading": "きゅうきょくしんか",
+      "meaning_it": "keyword",
+      "explanation_eli5": "究極進化：進化クリーチャー１体の上に置く",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0092",
+        "ex.dm.sd2.0043",
+        "ex.dm.sd2.0066"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-045"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V45"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmex17-013"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.008",
+      "legacyId": "V-046",
+      "kind": "keyword",
+      "surface": "スター進化",
+      "reading": "すたーしんか",
+      "meaning_it": "keyword",
+      "explanation_eli5": "スター進化：レクスターズまたは火のクリーチャー１体の上に置く",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0044",
+        "ex.dm.sd2.0070",
+        "ex.dm.sd2.0071"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-046"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V46"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-013"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.009",
+      "legacyId": "V-047",
+      "kind": "keyword",
+      "surface": "シンカライズ",
+      "reading": "しんからいず",
+      "meaning_it": "keyword",
+      "explanation_eli5": "シンカライズ：このタマシードがクリーチャーであるかのように",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0045",
+        "ex.dm.sd2.0072",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-047"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V47"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd20-016"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.010",
+      "legacyId": "V-048",
+      "kind": "keyword",
+      "surface": "S・トリガー",
+      "reading": "えす・とりがー",
+      "meaning_it": "keyword",
+      "explanation_eli5": "S・トリガー",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0059",
+        "ex.dm.sd1.0086",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0090",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0069"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-048"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V48"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.011",
+      "legacyId": "V-049",
+      "kind": "keyword",
+      "surface": "スーパー・S・トリガー",
+      "reading": "すーぱー・えす・とりがー",
+      "meaning_it": "keyword",
+      "explanation_eli5": "スーパー・S・トリガー",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0046",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-049"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V49"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmbd03-007"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.012",
+      "legacyId": "V-050",
+      "kind": "keyword",
+      "surface": "W・ブレイカー",
+      "reading": "だぶる・ぶれいかー",
+      "meaning_it": "keyword",
+      "explanation_eli5": "W・ブレイカー",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0060",
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0070"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-050"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V50"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.013",
+      "legacyId": "V-051",
+      "kind": "keyword",
+      "surface": "T・ブレイカー",
+      "reading": "とりぷる・ぶれいかー",
+      "meaning_it": "keyword",
+      "explanation_eli5": "T・ブレイカー",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0085",
+        "ex.dm.sd2.0047",
+        "ex.dm.sd2.0065",
+        "ex.dm.sd2.0066"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-051"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V51"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmex17-013"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.014",
+      "legacyId": "V-052",
+      "kind": "keyword",
+      "surface": "ブロッカー",
+      "reading": "ぶろっかー",
+      "meaning_it": "keyword",
+      "explanation_eli5": "ブロッカー",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0061",
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0088"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-052"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V52"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.015",
+      "legacyId": "V-053",
+      "kind": "keyword",
+      "surface": "スレイヤー",
+      "reading": "すれいやー",
+      "meaning_it": "keyword",
+      "explanation_eli5": "スレイヤー",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0062",
+        "ex.dm.sd1.0085"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-053"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V53"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.016",
+      "legacyId": "V-054",
+      "kind": "keyword",
+      "surface": "アビスラッシュ",
+      "reading": "あびすらっしゅ",
+      "meaning_it": "keyword",
+      "explanation_eli5": "アビスラッシュ",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0063"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-054"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V54"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.017",
+      "legacyId": "V-055",
+      "kind": "keyword",
+      "surface": "シビルカウント",
+      "reading": "しびるかうんと",
+      "meaning_it": "keyword",
+      "explanation_eli5": "シビルカウント３",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0064",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-055"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V55"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.018",
+      "legacyId": "V-056",
+      "kind": "keyword",
+      "surface": "G・ストライク",
+      "reading": "じー・すとらいく",
+      "meaning_it": "keyword",
+      "explanation_eli5": "G・ストライク",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0048",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-056"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V56"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.019",
+      "legacyId": "V-057",
+      "kind": "keyword",
+      "surface": "メテオバーン",
+      "reading": "めておばーん",
+      "meaning_it": "keyword",
+      "explanation_eli5": "メテオバーン",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "keyword"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0049",
+        "ex.dm.sd2.0066"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-057"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V57"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmex17-013"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.020",
+      "legacyId": "V-058",
+      "kind": "keyword",
+      "surface": "実行(プレイ)する",
+      "reading": "じっこう（ぷれい）する",
+      "meaning_it": "verbo/wording",
+      "explanation_eli5": "カードを実行(プレイ)する",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "verbo/wording"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0050"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-058"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V58"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/rule/rulechange/316670/"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.021",
+      "legacyId": "V-059",
+      "kind": "keyword",
+      "surface": "使う",
+      "reading": "つかう",
+      "meaning_it": "verbo/old wording",
+      "explanation_eli5": "カードを使う",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "verbo/old wording"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0051"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-059"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V59"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/rule/rulechange/316670/"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.022",
+      "legacyId": "V-060",
+      "kind": "keyword",
+      "surface": "表向き",
+      "reading": "おもてむき",
+      "meaning_it": "espressione",
+      "explanation_eli5": "表向きにする",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "espressione"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0052",
+        "ex.dm.sd2.0067"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-060"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V60"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.023",
+      "legacyId": "V-061",
+      "kind": "keyword",
+      "surface": "できない",
+      "reading": "できない",
+      "meaning_it": "forma verbale",
+      "explanation_eli5": "使えない / 実行できない",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "forma verbale"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0090",
+        "ex.dm.sd2.0053",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-061"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V61"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "dm.kw.024",
+      "legacyId": "V-062",
+      "kind": "keyword",
+      "surface": "タップする / アンタップする",
+      "reading": "たっぷする / あんたっぷする",
+      "meaning_it": "verbo",
+      "explanation_eli5": "このクリーチャーをアンタップし",
+      "scope": "game-specific",
+      "priority": "important",
+      "senses": [
+        "verbo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0054",
+        "ex.dm.sd2.0064"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "V-062"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "V62"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.001",
+      "legacyId": "P-001",
+      "kind": "pattern",
+      "surface": "Xが出た時",
+      "reading": "えっくす が でた とき",
+      "meaning_it": "trigger base: quando quella carta entra in campo",
+      "explanation_eli5": "このクリーチャーが出た時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "trigger base: quando quella carta entra in campo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0065",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0087",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0089",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd1.0093",
+        "ex.dm.sd2.0070",
+        "ex.dm.sd2.0071",
+        "ex.dm.sd2.0072",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-001"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P01"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-016"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.002",
+      "legacyId": "P-002",
+      "kind": "pattern",
+      "surface": "Xがバトルゾーンに出た時",
+      "reading": "えっくす が ばとるぞーん に でた とき",
+      "meaning_it": "variante più esplicita dello stesso trigger",
+      "explanation_eli5": "このクリーチャーがバトルゾーンに出た時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "variante più esplicita dello stesso trigger"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0066",
+        "ex.dm.sd1.0086",
+        "ex.dm.sd2.0065",
+        "ex.dm.sd2.0066",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-002"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P02"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.003",
+      "legacyId": "P-003",
+      "kind": "pattern",
+      "surface": "Xが攻撃する時",
+      "reading": "えっくす が こうげきする とき",
+      "meaning_it": "trigger sull’attacco",
+      "explanation_eli5": "自分のアビスが攻撃する時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "trigger sull’attacco"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0067",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd2.0064"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-003"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P03"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.004",
+      "legacyId": "P-004",
+      "kind": "pattern",
+      "surface": "Xが離れる時",
+      "reading": "えっくす が はなれる とき",
+      "meaning_it": "trigger o sostituzione quando la carta sta per lasciare il battle zone",
+      "explanation_eli5": "このクリーチャーが離れる時",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "trigger o sostituzione quando la carta sta per lasciare il battle zone"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0068",
+        "ex.dm.sd1.0083"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-004"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P04"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.005",
+      "legacyId": "P-005",
+      "kind": "pattern",
+      "surface": "自分のターンのはじめに",
+      "reading": "じぶん の たーん の はじめ に",
+      "meaning_it": "effetto all’inizio del tuo turno",
+      "explanation_eli5": "自分のターンのはじめに",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "effetto all’inizio del tuo turno"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0069",
+        "ex.dm.sd1.0090"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-005"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P05"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23ex1-037"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.006",
+      "legacyId": "P-006",
+      "kind": "pattern",
+      "surface": "自分のターンの終わりに",
+      "reading": "じぶん の たーん の おわり に",
+      "meaning_it": "effetto a fine turno",
+      "explanation_eli5": "自分のターンの終わりに",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "effetto a fine turno"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0055",
+        "ex.dm.sd2.0073"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-006"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P06"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmrp19-094"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.007",
+      "legacyId": "P-007",
+      "kind": "pattern",
+      "surface": "相手のターン中に",
+      "reading": "あいて の たーんちゅう に",
+      "meaning_it": "condizione: solo durante il turno avversario",
+      "explanation_eli5": "相手のターン中に",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "condizione: solo durante il turno avversario"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0070",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0089"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-007"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P07"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23rp4-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.008",
+      "legacyId": "P-008",
+      "kind": "pattern",
+      "surface": "その後",
+      "reading": "そのご",
+      "meaning_it": "sequenza: prima fai A, poi fai B",
+      "explanation_eli5": "その後、自分の墓地から出す",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "sequenza: prima fai A, poi fai B"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0071",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0090",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd2.0072"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-008"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P08"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.009",
+      "legacyId": "P-009",
+      "kind": "pattern",
+      "surface": "そうしたら",
+      "reading": "そうしたら",
+      "meaning_it": "sequenza condizionale: se hai fatto A, allora fai B",
+      "explanation_eli5": "そうしたら、アビスを１枚",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "sequenza condizionale: se hai fatto A, allora fai B"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0072",
+        "ex.dm.sd1.0093",
+        "ex.dm.sd2.0066",
+        "ex.dm.sd2.0071"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-009"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P09"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22sd1-010"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.010",
+      "legacyId": "P-010",
+      "kind": "pattern",
+      "surface": "ただし〜",
+      "reading": "ただし",
+      "meaning_it": "limitazione/eccezione",
+      "explanation_eli5": "ただし、コストは０以下にはならない",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "limitazione/eccezione"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0073",
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0090",
+        "ex.dm.sd2.0067"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-010"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P10"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.011",
+      "legacyId": "P-011",
+      "kind": "pattern",
+      "surface": "〜してもよい",
+      "reading": "〜してもよい",
+      "meaning_it": "puoi scegliere di farlo, non è obbligatorio",
+      "explanation_eli5": "墓地に置いてもよい",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "puoi scegliere di farlo, non è obbligatorio"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0074",
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd1.0093",
+        "ex.dm.sd2.0066",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-011"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P11"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.012",
+      "legacyId": "P-012",
+      "kind": "pattern",
+      "surface": "〜なければ",
+      "reading": "〜なければ",
+      "meaning_it": "se non...",
+      "explanation_eli5": "合計４つ以上なければ",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "se non..."
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0075",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0088"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-012"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P12"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.013",
+      "legacyId": "P-013",
+      "kind": "pattern",
+      "surface": "〜していれば",
+      "reading": "〜していれば",
+      "meaning_it": "se / qualora sia già vero",
+      "explanation_eli5": "タマシードから進化していれば",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "se / qualora sia già vero"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0056",
+        "ex.dm.sd2.0070",
+        "ex.dm.sd2.0071",
+        "ex.dm.sd2.0073"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-013"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P13"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-012"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.014",
+      "legacyId": "P-014",
+      "kind": "pattern",
+      "surface": "〜以上 / 〜以下",
+      "reading": "〜いじょう / 〜いか",
+      "meaning_it": "soglia numerica minima o massima",
+      "explanation_eli5": "コスト５以下のクリーチャー",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "soglia numerica minima o massima"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0076",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-014"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P14"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23rp4-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.015",
+      "legacyId": "P-015",
+      "kind": "pattern",
+      "surface": "〜以外の",
+      "reading": "〜いがい の",
+      "meaning_it": "esclude una categoria",
+      "explanation_eli5": "召喚以外の方法",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "esclude una categoria"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0077",
+        "ex.dm.sd1.0089",
+        "ex.dm.sd1.0094"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-015"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P15"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-016"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.016",
+      "legacyId": "P-016",
+      "kind": "pattern",
+      "surface": "〜を１体選ぶ / 〜を１枚選ぶ",
+      "reading": "〜を いったい えらぶ / 〜を いちまい えらぶ",
+      "meaning_it": "targeting singolo",
+      "explanation_eli5": "相手のクリーチャーを１体選ぶ",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "targeting singolo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0078",
+        "ex.dm.sd1.0085",
+        "ex.dm.sd1.0087",
+        "ex.dm.sd2.0066",
+        "ex.dm.sd2.0070"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-016"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P16"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.017",
+      "legacyId": "P-017",
+      "kind": "pattern",
+      "surface": "自分の山札の上からN枚を墓地に置く",
+      "reading": "じぶん の やまふだ の うえから えぬまい を ぼち に おく",
+      "meaning_it": "milling: mandi carte dal top del mazzo al cimitero",
+      "explanation_eli5": "自分の山札の上から４枚を墓地に置く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "milling: mandi carte dal top del mazzo al cimitero"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0079",
+        "ex.dm.sd1.0088",
+        "ex.dm.sd1.0089",
+        "ex.dm.sd1.0091",
+        "ex.dm.sd1.0092",
+        "ex.dm.sd1.0093"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-017"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P17"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.018",
+      "legacyId": "P-018",
+      "kind": "pattern",
+      "surface": "自分の山札の上からN枚を見る",
+      "reading": "じぶん の やまふだ の うえから えぬまい を みる",
+      "meaning_it": "guardi le prime N carte",
+      "explanation_eli5": "自分の山札の上から４枚を見る",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "guardi le prime N carte"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0057",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-018"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P18"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd20-016"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.019",
+      "legacyId": "P-019",
+      "kind": "pattern",
+      "surface": "その上に重ねてもよい",
+      "reading": "その うえ に かさねても よい",
+      "meaning_it": "formula tipica di 侵略 / evoluzioni",
+      "explanation_eli5": "その上に重ねてもよい",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "formula tipica di 侵略 / evoluzioni"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0058",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0065",
+        "ex.dm.sd2.0066"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-019"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P19"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.020",
+      "legacyId": "P-020",
+      "kind": "pattern",
+      "surface": "一番上のカード / 一番下に置く",
+      "reading": "いちばんうえ の かーど / いちばんした に おく",
+      "meaning_it": "legge la carta in cima o rimette in fondo",
+      "explanation_eli5": "一番上のカードを破壊する",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "legge la carta in cima o rimette in fondo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0059",
+        "ex.dm.sd2.0064"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-020"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P20"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.021",
+      "legacyId": "P-021",
+      "kind": "pattern",
+      "surface": "残りを好きな順(序)で〜",
+      "reading": "のこり を すきな じゅんじょ で",
+      "meaning_it": "rimetti il resto nell’ordine che scegli",
+      "explanation_eli5": "残りを好きな順序で山札の一番下に置く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "rimetti il resto nell’ordine che scegli"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0060",
+        "ex.dm.sd2.0067",
+        "ex.dm.sd2.0069",
+        "ex.dm.sd2.0074"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-021"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P21"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.022",
+      "legacyId": "P-022",
+      "kind": "pattern",
+      "surface": "かわりに〜",
+      "reading": "かわりに",
+      "meaning_it": "effetto di sostituzione: invece di A fai B",
+      "explanation_eli5": "かわりに自分の手札を２枚捨ててもよい",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "effetto di sostituzione: invece di A fai B"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0080",
+        "ex.dm.sd1.0083",
+        "ex.dm.sd1.0084",
+        "ex.dm.sd1.0094"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-022"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P22"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.023",
+      "legacyId": "P-023",
+      "kind": "pattern",
+      "surface": "〜として扱わない",
+      "reading": "〜として あつかわない",
+      "meaning_it": "la carta non viene considerata come quel tipo",
+      "explanation_eli5": "クリーチャーとして扱わない",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "la carta non viene considerata come quel tipo"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0081",
+        "ex.dm.sd1.0082",
+        "ex.dm.sd1.0084"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-023"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P23"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.024",
+      "legacyId": "P-024",
+      "kind": "pattern",
+      "surface": "〜できない",
+      "reading": "〜できない",
+      "meaning_it": "divieto / impossibilità",
+      "explanation_eli5": "相手は『G・ストライク』を使えない",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "divieto / impossibilità"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd1.0090",
+        "ex.dm.sd2.0061",
+        "ex.dm.sd2.0064",
+        "ex.dm.sd2.0068"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-024"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P24"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.025",
+      "legacyId": "P-025",
+      "kind": "pattern",
+      "surface": "旧『使う』→ 新『実行(プレイ)する』",
+      "reading": "きゅう『つかう』→ しん『じっこう（ぷれい）する』",
+      "meaning_it": "mappa di wording storico/moderno",
+      "explanation_eli5": "カードを使う → カードを実行(プレイ)する",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "mappa di wording storico/moderno"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0062"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-025"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P25"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/rule/rulechange/316670/"
+        }
+      ]
+    },
+    {
+      "id": "jp.pat.026",
+      "legacyId": "P-026",
+      "kind": "pattern",
+      "surface": "『進化- / 侵略-』と『進化： / 侵略：』",
+      "reading": "『しんか』/『しんりゃく』",
+      "meaning_it": "variante tipografica: il significato resta lo stesso",
+      "explanation_eli5": "進化-自分の火のクリーチャー１体の上に置く",
+      "scope": "general",
+      "priority": "core",
+      "senses": [
+        "variante tipografica: il significato resta lo stesso"
+      ],
+      "relatedItemIds": [],
+      "prerequisiteItemIds": [],
+      "exampleIds": [
+        "ex.dm.sd2.0063"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "legacy_item_id",
+          "value": "P-026"
+        },
+        {
+          "kind": "legacy_item_short",
+          "value": "P26"
+        },
+        {
+          "kind": "source_url",
+          "value": "https://dm.takaratomy.co.jp/card/detail/?id=dmr17-l02"
+        }
+      ]
+    }
+  ]
+}
