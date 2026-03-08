@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import {
   parseContentGraph,
@@ -52,6 +52,7 @@ const parseFrontmatter = (source: string) => {
 
 const loadLessonFolder = (relativeDir: string): Lesson[] => {
   const dir = join(CONTENT_ROOT, relativeDir);
+  if (!existsSync(dir)) return [];
   const files = readdirSync(dir).filter((file) => file.endsWith('.mdx')).sort();
 
   return files.map((file) => {
@@ -73,36 +74,54 @@ const toStudyType = (kind: LanguageItem['kind']) => {
   return 'vocab';
 };
 
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
+const listDirectories = (path: string) =>
+  readdirSync(path).filter((entry) => statSync(join(path, entry)).isDirectory());
+
 export const loadContentGraph = (): ContentGraph => {
   const languageItems = readJson<{ items: LanguageItem[] }>(join(CONTENT_ROOT, 'language', 'items', 'items.json')).items.map(parseLanguageItem);
   const examplesCanonical = readJson<{ examples: Example[] }>(join(CONTENT_ROOT, 'language', 'examples', 'examples.json')).examples.map(parseExample);
-  const games = [readJson<{ game: unknown }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'meta', 'game.json')).game].map(parseGame);
 
-  const products = [
-    readJson<{ product: Product }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd1', 'meta', 'product.json')).product,
-    readJson<{ product: Product }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd2', 'meta', 'product.json')).product,
-  ].map(parseProduct);
+  const gamesRoot = join(CONTENT_ROOT, 'games');
+  const gameDirs = listDirectories(gamesRoot);
 
-  const units = [
-    ...readJson<{ units: SourceUnit[] }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd1', 'units', 'units.json')).units,
-    ...readJson<{ units: SourceUnit[] }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd2', 'units', 'units.json')).units,
-  ].map(parseSourceUnit);
+  const games = gameDirs
+    .map((gameDir) => readJson<{ game: unknown }>(join(gamesRoot, gameDir, 'meta', 'game.json')).game)
+    .map(parseGame);
 
-  const lessonsCanonical = [
-    ...loadLessonFolder('language/lessons/core'),
-    ...loadLessonFolder('games/duel-masters/lessons'),
-    ...loadLessonFolder('games/duel-masters/products/dm25-sd1/lessons'),
-    ...loadLessonFolder('games/duel-masters/products/dm25-sd2/lessons'),
-  ].sort((a, b) => a.id.localeCompare(b.id));
+  const products: Product[] = [];
+  const units: SourceUnit[] = [];
+  const lessonsCanonical: Lesson[] = [...loadLessonFolder('language/lessons/core')];
 
-  const deckByProduct: Record<string, StudyDeck['id']> = {
-    'product.dm25-sd1': 'DECK-SD1',
-    'product.dm25-sd2': 'DECK-SD2',
-  };
+  for (const gameDir of gameDirs) {
+    const gameProductsRoot = join(gamesRoot, gameDir, 'products');
+    const productDirs = existsSync(gameProductsRoot) && statSync(gameProductsRoot).isDirectory() ? listDirectories(gameProductsRoot) : [];
+
+    lessonsCanonical.push(...loadLessonFolder(`games/${gameDir}/lessons`));
+
+    for (const productDir of productDirs) {
+      const product = readJson<{ product: Product }>(join(gameProductsRoot, productDir, 'meta', 'product.json')).product;
+      products.push(parseProduct(product));
+
+      const unitsInProduct = readJson<{ units: SourceUnit[] }>(join(gameProductsRoot, productDir, 'units', 'units.json')).units;
+      units.push(...unitsInProduct.map(parseSourceUnit));
+
+      lessonsCanonical.push(...loadLessonFolder(`games/${gameDir}/products/${productDir}/lessons`));
+    }
+  }
+
+  lessonsCanonical.sort((a, b) => a.id.localeCompare(b.id));
+
+  const deckByProductId = new Map(products.map((product) => [product.id, `DECK-${slugify(product.slug || product.id).toUpperCase()}`]));
 
   const cards = units.map((unit) => ({
     id: unit.id,
-    deckId: deckByProduct[unit.productId],
+    deckId: (deckByProductId.get(unit.productId) ?? `DECK-${slugify(unit.productId).toUpperCase()}`) as StudyDeck['id'],
     slug: unit.slug,
     nameJa: unit.name,
     nameReading: unit.nameReading,
@@ -162,12 +181,13 @@ export const loadContentGraph = (): ContentGraph => {
   }));
 
   const decks: StudyDeck[] = products.map((product) => {
-    const cardsInDeck = cards.filter((card) => card.deckId === (product.id === 'product.dm25-sd1' ? 'DECK-SD1' : 'DECK-SD2'));
+    const deckId = (deckByProductId.get(product.id) ?? `DECK-${slugify(product.slug || product.id).toUpperCase()}`) as StudyDeck['id'];
+    const cardsInDeck = cards.filter((card) => card.deckId === deckId);
     return {
-      id: product.id === 'product.dm25-sd1' ? 'DECK-SD1' : 'DECK-SD2',
+      id: deckId,
       slug: product.slug,
       name: product.name,
-      totalCards: 40,
+      totalCards: cardsInDeck.length,
       uniqueCards: cardsInDeck.map((card) => card.id),
       cardCopies: cardsInDeck.map((card) => ({ cardId: card.id, quantity: null })),
       notes: product.summary_it,

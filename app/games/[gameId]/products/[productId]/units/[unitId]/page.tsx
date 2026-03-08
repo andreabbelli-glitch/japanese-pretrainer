@@ -42,7 +42,6 @@ export default async function UnitPage({ params }: { params: Promise<{ gameId: s
       meaning: item.meaning_it,
     }));
 
-
   return (
     <PageShell title={data.unit.name} description={data.unit.paraphrase_it}>
       <FuriganaToggle japanese={data.unit.jpText} reading={data.unit.reading || data.unit.nameReading} className="rounded-lg border border-slate-200 bg-white p-4" />
@@ -58,6 +57,13 @@ export default async function UnitPage({ params }: { params: Promise<{ gameId: s
 
       <RevealTranslation label="parafrasi italiana" translation={data.unit.paraphrase_it} />
       <GoalGapSummary gap={gap} />
+
+      <section className="rounded-lg border border-slate-200 bg-white p-4 text-sm">
+        <h3 className="font-semibold text-slate-900">Copertura unità</h3>
+        <p className="mt-1 text-slate-700">
+          Coverage {gap.coverageScore}% · missing {gap.missingItems.length} · weak but known {gap.weakItems.length}. Prossima azione: studia prima i missing.
+        </p>
+      </section>
 
       <section className="rounded-lg border border-slate-200 bg-white p-4 text-sm">
         <h3 className="font-semibold text-slate-900">ID canonici richiesti</h3>

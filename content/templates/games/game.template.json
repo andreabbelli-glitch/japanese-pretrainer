@@ -1,0 +1,9 @@
+{
+  "game": {
+    "id": "game.example",
+    "slug": "example-game",
+    "name": "Example Game",
+    "description_it": "Contesto di apprendimento per il gioco example.",
+    "sourceUrl": "https://example.com"
+  }
+}

@@ -320,6 +320,61 @@ export async function listActiveUserGoals(supabase: DbClient, userId: string): P
   return data;
 }
 
+export async function listUserGoals(supabase: DbClient, userId: string): Promise<UserGoalRow[]> {
+  const { data, error } = await supabase
+    .from("user_goals")
+    .select("*")
+    .eq("user_id", userId)
+    .order("priority", { ascending: false })
+    .order("created_at", { ascending: false });
+
+  if (error) throw error;
+  return data;
+}
+
+export async function setActiveUserGoal(
+  supabase: DbClient,
+  userId: string,
+  goalId: string,
+): Promise<UserGoalRow> {
+  const now = new Date().toISOString();
+
+  const { error: pauseError } = await supabase
+    .from("user_goals")
+    .update({ status: "paused" })
+    .eq("user_id", userId)
+    .eq("status", "active")
+    .neq("id", goalId);
+
+  if (pauseError) throw pauseError;
+
+  return updateUserGoal(supabase, userId, goalId, {
+    status: "active",
+    started_at: now,
+    archived_at: null,
+    archive_reason: null,
+  });
+}
+
+export async function pauseUserGoal(
+  supabase: DbClient,
+  userId: string,
+  goalId: string,
+): Promise<UserGoalRow> {
+  return updateUserGoal(supabase, userId, goalId, { status: "paused" });
+}
+
+export async function completeUserGoal(
+  supabase: DbClient,
+  userId: string,
+  goalId: string,
+): Promise<UserGoalRow> {
+  return updateUserGoal(supabase, userId, goalId, {
+    status: "completed",
+    completed_at: new Date().toISOString(),
+  });
+}
+
 export async function getGoalLinkedProgressView(
   supabase: DbClient,
   userId: string,

@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-03-08T09:35:40.111Z",
+  "generatedAt": "2026-03-08T11:13:47.123Z",
   "totals": {
     "languageItems": 144,
     "examples": 168,
     "units": 24,
-    "lessons": 8,
+    "lessons": 10,
     "products": 2
   },
   "byLayer": {
-    "core": 3,
-    "game": 1,
+    "core": 4,
+    "game": 2,
     "product": 4
   },
   "products": [

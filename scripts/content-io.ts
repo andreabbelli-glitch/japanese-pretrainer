@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 const CONTENT_ROOT = join(process.cwd(), 'content');
@@ -41,28 +41,37 @@ const parseFrontmatter = (source: string) => {
 
 const loadLessons = (relativeDir: string) => {
   const dir = join(CONTENT_ROOT, relativeDir);
+  if (!existsSync(dir)) return [];
   const files = readdirSync(dir).filter((file) => file.endsWith('.mdx')).sort();
   return files.map((file) => ({ ...parseFrontmatter(readFileSync(join(dir, file), 'utf8')), filePath: `content/${relativeDir}/${file}` }));
 };
 
+const listDirectories = (path: string) => readdirSync(path).filter((entry) => statSync(join(path, entry)).isDirectory());
+
 export const loadContent = () => {
   const languageItems = readJson<{ items: unknown[] }>(join(CONTENT_ROOT, 'language', 'items', 'items.json')).items;
   const examples = readJson<{ examples: unknown[] }>(join(CONTENT_ROOT, 'language', 'examples', 'examples.json')).examples;
-  const game = readJson<{ game: unknown }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'meta', 'game.json')).game;
-  const products = [
-    readJson<{ product: unknown }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd1', 'meta', 'product.json')).product,
-    readJson<{ product: unknown }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd2', 'meta', 'product.json')).product,
-  ];
-  const units = [
-    ...readJson<{ units: unknown[] }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd1', 'units', 'units.json')).units,
-    ...readJson<{ units: unknown[] }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd2', 'units', 'units.json')).units,
-  ];
-  const lessons = [
-    ...loadLessons('language/lessons/core'),
-    ...loadLessons('games/duel-masters/lessons'),
-    ...loadLessons('games/duel-masters/products/dm25-sd1/lessons'),
-    ...loadLessons('games/duel-masters/products/dm25-sd2/lessons'),
-  ];
 
-  return { languageItems, examples, game, products, units, lessons };
+  const gamesRoot = join(CONTENT_ROOT, 'games');
+  const gameDirs = listDirectories(gamesRoot);
+
+  const games = gameDirs.map((gameDir) => readJson<{ game: unknown }>(join(gamesRoot, gameDir, 'meta', 'game.json')).game);
+  const products: unknown[] = [];
+  const units: unknown[] = [];
+  const lessons = [...loadLessons('language/lessons/core')];
+
+  for (const gameDir of gameDirs) {
+    const gameProductsRoot = join(gamesRoot, gameDir, 'products');
+    const productDirs = existsSync(gameProductsRoot) && statSync(gameProductsRoot).isDirectory() ? listDirectories(gameProductsRoot) : [];
+
+    lessons.push(...loadLessons(`games/${gameDir}/lessons`));
+
+    for (const productDir of productDirs) {
+      products.push(readJson<{ product: unknown }>(join(gameProductsRoot, productDir, 'meta', 'product.json')).product);
+      units.push(...readJson<{ units: unknown[] }>(join(gameProductsRoot, productDir, 'units', 'units.json')).units);
+      lessons.push(...loadLessons(`games/${gameDir}/products/${productDir}/lessons`));
+    }
+  }
+
+  return { languageItems, examples, game: games[0], games, products, units, lessons };
 };

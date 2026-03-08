@@ -1,0 +1,29 @@
+{
+  "product": {
+    "id": "product.example-01",
+    "gameId": "game.example",
+    "slug": "example-product-01",
+    "name": "Example Product 01",
+    "summary_it": "Prodotto di esempio per onboarding multi-game.",
+    "sourceUrl": "https://example.com/product"
+  },
+  "units": [
+    {
+      "id": "UNIT-EX-001",
+      "gameId": "game.example",
+      "productId": "product.example-01",
+      "slug": "unit-ex-001",
+      "name": "Unità esempio",
+      "nameReading": "ゆにっと",
+      "jpText": "日本語テキスト",
+      "reading": "にほんご てきすと",
+      "paraphrase_it": "Parafrasi didattica italiana.",
+      "requiredItemIds": ["V-001"],
+      "keyItemIds": ["V-001"],
+      "keyPatternIds": [],
+      "recommendedLessonIds": ["lesson.core.01"],
+      "priorityWeight": 3,
+      "sourceUrl": "https://example.com/unit"
+    }
+  ]
+}

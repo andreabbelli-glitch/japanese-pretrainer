@@ -25,17 +25,27 @@ export default async function ProductPage({ params }: { params: Promise<{ gameId
     masteryMap,
   );
 
-  const missingPreview = gap.missingItems.slice(0, 8).map((item) => ({
+  const missingPreview = gap.missingItems.slice(0, 10).map((item) => ({
     id: item.id,
     term: item.surface,
     meaning: item.meaning_it,
   }));
 
-  const weakPreview = gap.weakItems.slice(0, 6).map((item) => getLanguageItemById(item.id)).filter((item): item is NonNullable<typeof item> => Boolean(item));
+  const weakButKnown = gap.weakItems
+    .slice(0, 6)
+    .map((item) => getLanguageItemById(item.id))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
   return (
     <PageShell title={data.product.name} description={data.product.summary_it}>
       <GoalGapSummary gap={gap} />
+
+      <section className="rounded-lg border border-slate-200 bg-white p-4 text-sm">
+        <h2 className="text-base font-semibold text-slate-900">Coverage e azione successiva</h2>
+        <p className="mt-1 text-slate-700">
+          Coverage {gap.coverageScore}%. Per aumentarla, parti dagli item mancanti (mastery &lt; 50), poi rinforza i weak (50–79).
+        </p>
+      </section>
 
       <section className="rounded-lg border border-slate-200 bg-white p-4 text-sm">
         <h2 className="text-base font-semibold text-slate-900">Lezioni di questo prodotto</h2>
@@ -52,9 +62,9 @@ export default async function ProductPage({ params }: { params: Promise<{ gameId
       </section>
 
       <section className="space-y-2 rounded-lg border border-slate-200 bg-white p-4 text-sm">
-        <h2 className="text-base font-semibold text-slate-900">Cosa ti manca / cosa è debole</h2>
-        <p className="text-slate-700">Item mancanti principali: {gap.missingItems.slice(0, 5).map((item) => item.surface).join(', ') || 'nessuno'}.</p>
-        <p className="text-slate-700">Item deboli principali: {weakPreview.slice(0, 5).map((item) => item.surface).join(', ') || 'nessuno'}.</p>
+        <h2 className="text-base font-semibold text-slate-900">Missing items e weak-but-known</h2>
+        <p className="text-slate-700">Item mancanti: {gap.missingItems.slice(0, 6).map((item) => item.surface).join(', ') || 'nessuno'}.</p>
+        <p className="text-slate-700">Weak but known: {weakButKnown.slice(0, 6).map((item) => item.surface).join(', ') || 'nessuno'}.</p>
       </section>
 
       <UnlockNextList recommendations={gap.unlockNextRecommendations.slice(0, 5)} gameId={data.game.id} productId={data.product.id} />
