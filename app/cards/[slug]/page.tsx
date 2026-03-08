@@ -113,6 +113,18 @@ export default async function CardDetailPage({ params }: { params: Promise<{ slu
           ))}
           {coverage.missingItems.length === 0 ? <Link href="/review" className="rounded-md border border-slate-300 px-3 py-2 text-sm">Consolida in review</Link> : null}
         </div>
+        {deckCoverage?.unlockSuggestions.length ? (
+          <ul className="space-y-2 text-sm text-slate-700">
+            {deckCoverage.unlockSuggestions
+              .filter((suggestion) => coverage.missingItems.some((missing) => missing.item.id === suggestion.item.id))
+              .slice(0, 2)
+              .map((suggestion) => (
+                <li key={suggestion.item.id} className="rounded-md bg-slate-50 p-3">
+                  Se migliori <span className="font-semibold text-slate-900">{suggestion.item.id}</span>, sblocchi più velocemente anche: {suggestion.unlocks.slice(0, 2).map((card) => card.nameJa).join(" · ")}
+                </li>
+              ))}
+          </ul>
+        ) : null}
       </section>
 
       <section className="space-y-2 rounded-lg border border-slate-200 bg-white p-4">

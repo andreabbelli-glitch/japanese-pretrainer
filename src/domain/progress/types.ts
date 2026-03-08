@@ -38,4 +38,5 @@ export type DashboardMetrics = {
   sd2Coverage: number;
   suggestedLessons: Array<{ lessonId: string; slug: string; title: string; reason: string }>;
   recentlyUnlockedCards: Array<{ card: StudyCard; coverage: number; status: "readable" | "almost" }>;
+  studyNext: Array<{ item: StudyItem; unlocks: StudyCard[]; impact: number }>;
 };

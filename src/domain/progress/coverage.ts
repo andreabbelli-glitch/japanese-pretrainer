@@ -2,7 +2,6 @@ import {
   getCardById,
   getCards,
   getDeckBySlug,
-  getDecks,
   getItemById,
   getLessons,
   getItems,
@@ -189,7 +188,6 @@ export function computeDashboardMetrics(input: {
   const now = new Date();
   const today = now.toISOString().slice(0, 10);
   const lessons = getLessons();
-  const decks = getDecks();
 
   const masteryByItemId = new Map<string, number>();
   for (const row of input.progressRows) {
@@ -211,8 +209,10 @@ export function computeDashboardMetrics(input: {
   const dueToday = input.progressRows.filter((row) => row.due_at && row.due_at.slice(0, 10) <= today).length;
   const newToday = getItems().length - input.progressRows.length;
 
-  const sd1Coverage = computeDeckCoverage("dm25-sd1", masteryByItemId)?.coverage ?? 0;
-  const sd2Coverage = computeDeckCoverage("dm25-sd2", masteryByItemId)?.coverage ?? 0;
+  const sd1DeckCoverage = computeDeckCoverage("dm25-sd1", masteryByItemId);
+  const sd2DeckCoverage = computeDeckCoverage("dm25-sd2", masteryByItemId);
+  const sd1Coverage = sd1DeckCoverage?.coverage ?? 0;
+  const sd2Coverage = sd2DeckCoverage?.coverage ?? 0;
 
   const allCards = getCards();
   const cardCoverages = allCards.map((card) => computeCardCoverage(card, masteryByItemId));
@@ -242,7 +242,12 @@ export function computeDashboardMetrics(input: {
       reason: `Mastery media item ${Math.round(entry.avg)}%.`,
     }));
 
-  void decks;
+  const primarySuggestions = sd1Coverage >= sd2Coverage ? (sd2DeckCoverage?.unlockSuggestions ?? []) : (sd1DeckCoverage?.unlockSuggestions ?? []);
+  const secondarySuggestions = sd1Coverage >= sd2Coverage ? (sd1DeckCoverage?.unlockSuggestions ?? []) : (sd2DeckCoverage?.unlockSuggestions ?? []);
+
+  const studyNext = [...primarySuggestions, ...secondarySuggestions]
+    .sort((a, b) => b.impact - a.impact)
+    .slice(0, 4);
 
   return {
     dueToday,
@@ -254,6 +259,7 @@ export function computeDashboardMetrics(input: {
     sd2Coverage,
     suggestedLessons: weakLessons,
     recentlyUnlockedCards,
+    studyNext,
   };
 }
 
