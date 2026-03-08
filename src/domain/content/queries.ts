@@ -8,6 +8,10 @@ export function getLanguageItems(): LanguageItem[] {
   return getContentGraph().languageItems;
 }
 
+export function getLanguageItemById(id: string): LanguageItem | undefined {
+  return getLanguageItems().find((item) => item.id === id);
+}
+
 export function getCanonicalExamples(): Example[] {
   return getContentGraph().examplesCanonical;
 }
@@ -16,16 +20,56 @@ export function getCanonicalLessons(): Lesson[] {
   return getContentGraph().lessonsCanonical;
 }
 
+export function getCoreLessons(): Lesson[] {
+  return getCanonicalLessons().filter((lesson) => lesson.layer === 'core');
+}
+
+export function getGameLessons(gameId: string): Lesson[] {
+  return getCanonicalLessons().filter((lesson) => lesson.layer === 'game' && lesson.gameId === gameId);
+}
+
+export function getProductLessons(gameId: string, productId: string): Lesson[] {
+  return getCanonicalLessons().filter(
+    (lesson) => lesson.layer === 'product' && lesson.gameId === gameId && lesson.productId === productId,
+  );
+}
+
+export function getCanonicalLessonBySlug(layer: 'core' | 'game' | 'product', slug: string, gameId?: string, productId?: string): Lesson | undefined {
+  return getCanonicalLessons().find(
+    (lesson) => lesson.layer === layer && lesson.slug === slug && (!gameId || lesson.gameId === gameId) && (!productId || lesson.productId === productId),
+  );
+}
+
 export function getGames(): Game[] {
   return getContentGraph().games;
+}
+
+export function getGameById(gameId: string): Game | undefined {
+  return getGames().find((game) => game.id === gameId || game.slug === gameId);
 }
 
 export function getProducts(): Product[] {
   return getContentGraph().products;
 }
 
+export function getProductsByGame(gameId: string): Product[] {
+  return getProducts().filter((product) => product.gameId === gameId);
+}
+
+export function getProductById(gameId: string, productId: string): Product | undefined {
+  return getProductsByGame(gameId).find((product) => product.id === productId || product.slug === productId);
+}
+
 export function getSourceUnits(): SourceUnit[] {
   return getContentGraph().units;
+}
+
+export function getUnitsByProduct(gameId: string, productId: string): SourceUnit[] {
+  return getSourceUnits().filter((unit) => unit.gameId === gameId && unit.productId === productId);
+}
+
+export function getUnitById(gameId: string, productId: string, unitId: string): SourceUnit | undefined {
+  return getUnitsByProduct(gameId, productId).find((unit) => unit.id === unitId || unit.slug === unitId);
 }
 
 // Transitional compatibility selectors used by existing UI/routes

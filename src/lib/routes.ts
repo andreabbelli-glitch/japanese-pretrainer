@@ -1,4 +1,4 @@
-export const protectedRoutePrefixes = ["/dashboard", "/review", "/settings"] as const;
+export const protectedRoutePrefixes = ['/dashboard', '/goals', '/review', '/settings'] as const;
 
 export const protectedRouteMatchers = protectedRoutePrefixes.map((route) => `${route}/:path*`);
 
