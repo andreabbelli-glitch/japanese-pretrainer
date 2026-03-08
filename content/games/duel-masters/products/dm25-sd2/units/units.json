@@ -1,0 +1,517 @@
+{
+  "units": [
+    {
+      "id": "unit.dm.sd2.001",
+      "legacyId": "CARD-SD2-001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-001-f",
+      "name": "覇帝なき侵略 レッドゾーンF",
+      "nameReading": "はてい なき しんりゃく れっどぞーん えふ",
+      "jpText": "このクリーチャーの攻撃中 / 最初の攻撃の終わりに / アンタップし",
+      "reading": "",
+      "paraphrase_it": "È un evoluto con 侵略. Durante il suo attacco l’avversario non può usare G・Strike; dopo il primo attacco di ogni turno si stappa e distrugge la carta in cima.",
+      "requiredItemIds": [
+        "jp.v.012",
+        "jp.v.020",
+        "jp.v.028",
+        "jp.v.029",
+        "jp.v.036",
+        "dm.kw.005",
+        "dm.kw.006",
+        "dm.kw.012",
+        "dm.kw.017",
+        "dm.kw.018",
+        "dm.kw.024",
+        "jp.pat.003",
+        "jp.pat.019",
+        "jp.pat.020",
+        "jp.pat.024"
+      ],
+      "keyItemIds": [
+        "jp.v.012",
+        "jp.v.020",
+        "jp.v.028",
+        "jp.v.029",
+        "jp.v.036",
+        "dm.kw.005",
+        "dm.kw.006",
+        "dm.kw.012",
+        "dm.kw.017",
+        "dm.kw.018",
+        "dm.kw.024"
+      ],
+      "keyPatternIds": [
+        "jp.pat.003",
+        "jp.pat.019",
+        "jp.pat.020",
+        "jp.pat.024"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011"
+    },
+    {
+      "id": "unit.dm.sd2.002",
+      "legacyId": "CARD-SD2-002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-002",
+      "name": "轟く侵略 レッドゾーン",
+      "nameReading": "とどろく しんりゃく れっどぞーん",
+      "jpText": "一番パワーが大きい相手のクリーチャーをすべて破壊する",
+      "reading": "",
+      "paraphrase_it": "È un altro evoluto con 侵略. Quando entra distrugge tutte le creature avversarie con il power più alto.",
+      "requiredItemIds": [
+        "jp.v.002",
+        "jp.v.017",
+        "jp.v.018",
+        "jp.v.028",
+        "dm.kw.005",
+        "dm.kw.006",
+        "dm.kw.013",
+        "jp.pat.002",
+        "jp.pat.019"
+      ],
+      "keyItemIds": [
+        "jp.v.002",
+        "jp.v.017",
+        "jp.v.018",
+        "jp.v.028",
+        "dm.kw.005",
+        "dm.kw.006",
+        "dm.kw.013"
+      ],
+      "keyPatternIds": [
+        "jp.pat.002",
+        "jp.pat.019"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmr17-l02"
+    },
+    {
+      "id": "unit.dm.sd2.003",
+      "legacyId": "CARD-SD2-003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-003",
+      "name": "超神羅星アポロヌス・ドラゲリオン",
+      "nameReading": "ちょうしんらせい あぽろぬす どらげりおん",
+      "jpText": "このクリーチャーの下にあるカードを３枚墓地に置いてもよい",
+      "reading": "",
+      "paraphrase_it": "Si mette sopra un evoluto e può anche entrare con 侵略 da un fire evolution dragon. Se entra e brucia 3 carte sotto di sé, rompe tutti gli scudi avversari.",
+      "requiredItemIds": [
+        "jp.v.005",
+        "jp.v.006",
+        "jp.v.016",
+        "jp.v.021",
+        "jp.v.028",
+        "jp.v.036",
+        "jp.v.037",
+        "dm.kw.006",
+        "dm.kw.007",
+        "dm.kw.013",
+        "dm.kw.019",
+        "jp.pat.002",
+        "jp.pat.009",
+        "jp.pat.011",
+        "jp.pat.016",
+        "jp.pat.019"
+      ],
+      "keyItemIds": [
+        "jp.v.005",
+        "jp.v.006",
+        "jp.v.016",
+        "jp.v.021",
+        "jp.v.028",
+        "jp.v.036",
+        "jp.v.037",
+        "dm.kw.006",
+        "dm.kw.007",
+        "dm.kw.013",
+        "dm.kw.019"
+      ],
+      "keyPatternIds": [
+        "jp.pat.002",
+        "jp.pat.009",
+        "jp.pat.011",
+        "jp.pat.016",
+        "jp.pat.019"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmex17-013"
+    },
+    {
+      "id": "unit.dm.sd2.004",
+      "legacyId": "CARD-SD2-004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-004",
+      "name": "進化設計図",
+      "nameReading": "しんか せっけいず",
+      "jpText": "表向きにする / それ以外のカードを好きな順で",
+      "reading": "",
+      "paraphrase_it": "spell di ricerca: rivela 6 carte dal top, prende tutte le evolution creatures e rimette il resto in fondo nell’ordine scelto.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.010",
+        "jp.v.014",
+        "jp.v.015",
+        "jp.v.022",
+        "jp.v.024",
+        "dm.kw.005",
+        "dm.kw.010",
+        "dm.kw.022",
+        "jp.pat.010",
+        "jp.pat.018",
+        "jp.pat.021"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.010",
+        "jp.v.014",
+        "jp.v.015",
+        "jp.v.022",
+        "jp.v.024",
+        "dm.kw.005",
+        "dm.kw.010",
+        "dm.kw.022"
+      ],
+      "keyPatternIds": [
+        "jp.pat.010",
+        "jp.pat.018",
+        "jp.pat.021"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040"
+    },
+    {
+      "id": "unit.dm.sd2.005",
+      "legacyId": "CARD-SD2-005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-005-smapon",
+      "name": "SMAPON",
+      "nameReading": "すまぽん",
+      "jpText": "ゲームに負けず、相手はゲームに勝てない",
+      "reading": "",
+      "paraphrase_it": "Super S・Trigger: se entra, distrugge tutte le creature avversarie con power 2000 o meno. Nel bonus xB, per quel turno tu non perdi e l’avversario non vince.",
+      "requiredItemIds": [
+        "jp.v.002",
+        "jp.v.017",
+        "jp.v.028",
+        "dm.kw.011",
+        "dm.kw.017",
+        "dm.kw.018",
+        "dm.kw.023",
+        "jp.pat.002",
+        "jp.pat.014",
+        "jp.pat.024"
+      ],
+      "keyItemIds": [
+        "jp.v.002",
+        "jp.v.017",
+        "jp.v.028",
+        "dm.kw.011",
+        "dm.kw.017",
+        "dm.kw.018",
+        "dm.kw.023"
+      ],
+      "keyPatternIds": [
+        "jp.pat.002",
+        "jp.pat.014",
+        "jp.pat.024"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmbd03-007"
+    },
+    {
+      "id": "unit.dm.sd2.006",
+      "legacyId": "CARD-SD2-006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-006",
+      "name": "未来設計図",
+      "nameReading": "みらい せっけいず",
+      "jpText": "相手に見せてから / 残りを好きな順序で",
+      "reading": "",
+      "paraphrase_it": "spell di ricerca: guarda 6 carte dal top, sceglie una creatura, la mostra e la mette in mano; il resto va in fondo nell’ordine scelto.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.013",
+        "jp.v.014",
+        "jp.v.015",
+        "jp.v.021",
+        "jp.v.023",
+        "jp.v.024",
+        "dm.kw.010",
+        "jp.pat.011",
+        "jp.pat.018",
+        "jp.pat.021"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.013",
+        "jp.v.014",
+        "jp.v.015",
+        "jp.v.021",
+        "jp.v.023",
+        "jp.v.024",
+        "dm.kw.010"
+      ],
+      "keyPatternIds": [
+        "jp.pat.011",
+        "jp.pat.018",
+        "jp.pat.021"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070"
+    },
+    {
+      "id": "unit.dm.sd2.007",
+      "legacyId": "CARD-SD2-007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-007",
+      "name": "カチコミ入道 <バトライ.鬼>",
+      "nameReading": "かちこみ にゅうどう ばとらい おに",
+      "jpText": "タマシードから進化していれば",
+      "reading": "",
+      "paraphrase_it": "Star evolution aggressiva: se proviene da tama seed, quando entra può far combattere una creatura avversaria con se stessa.",
+      "requiredItemIds": [
+        "jp.v.021",
+        "jp.v.038",
+        "dm.kw.003",
+        "dm.kw.005",
+        "dm.kw.008",
+        "dm.kw.012",
+        "jp.pat.001",
+        "jp.pat.013",
+        "jp.pat.016"
+      ],
+      "keyItemIds": [
+        "jp.v.021",
+        "jp.v.038",
+        "dm.kw.003",
+        "dm.kw.005",
+        "dm.kw.008",
+        "dm.kw.012"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.013",
+        "jp.pat.016"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-012"
+    },
+    {
+      "id": "unit.dm.sd2.008",
+      "legacyId": "CARD-SD2-008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-008",
+      "name": "オンソク童子 <ターボ.鬼>",
+      "nameReading": "おんそく どうじ たーぼ おに",
+      "jpText": "このクリーチャーがタマシードから進化していれば、カードをもう１枚引く",
+      "reading": "",
+      "paraphrase_it": "Star evolution che filtra la mano: scarta 1, pesca 1; se proviene da tama seed peschi un’altra carta.",
+      "requiredItemIds": [
+        "jp.v.004",
+        "jp.v.018",
+        "jp.v.026",
+        "jp.v.027",
+        "dm.kw.003",
+        "dm.kw.008",
+        "jp.pat.001",
+        "jp.pat.009",
+        "jp.pat.013"
+      ],
+      "keyItemIds": [
+        "jp.v.004",
+        "jp.v.018",
+        "jp.v.026",
+        "jp.v.027",
+        "dm.kw.003",
+        "dm.kw.008"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.009",
+        "jp.pat.013"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-013"
+    },
+    {
+      "id": "unit.dm.sd2.009",
+      "legacyId": "CARD-SD2-009",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-009",
+      "name": "ストリエ雷鬼の巻",
+      "nameReading": "すとりえ らいき の まき",
+      "jpText": "このタマシードが出た時 / 山札の下に置き、その後、カードを１枚引く",
+      "reading": "",
+      "paraphrase_it": "Tama seed con シンカライズ. Quando entra rimetti 1 carta dalla mano sotto il mazzo e poi ne peschi 1.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.020",
+        "jp.v.027",
+        "dm.kw.003",
+        "dm.kw.009",
+        "jp.pat.001",
+        "jp.pat.008"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.020",
+        "jp.v.027",
+        "dm.kw.003",
+        "dm.kw.009"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.008"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-014"
+    },
+    {
+      "id": "unit.dm.sd2.010",
+      "legacyId": "CARD-SD2-010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-010",
+      "name": "冒険妖精ポレコ",
+      "nameReading": "ぼうけんようせい ぽれこ",
+      "jpText": "このターン、このクリーチャーがシールドをブレイクしていたら",
+      "reading": "",
+      "paraphrase_it": "Se in quel turno questa creatura ha rotto uno shield, a fine del tuo turno torna in mano. Utile per riattaccare o proteggere risorse.",
+      "requiredItemIds": [
+        "jp.v.025",
+        "jp.v.037",
+        "jp.pat.006",
+        "jp.pat.013"
+      ],
+      "keyItemIds": [
+        "jp.v.025",
+        "jp.v.037"
+      ],
+      "keyPatternIds": [
+        "jp.pat.006",
+        "jp.pat.013"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmrp19-094"
+    },
+    {
+      "id": "unit.dm.sd2.011",
+      "legacyId": "CARD-SD2-011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "unitType": "card",
+      "slug": "card-sd2-011",
+      "name": "ヘルコプ太の心絵",
+      "nameReading": "へるこぷた の こころえ",
+      "jpText": "その中から進化クリーチャーを１体相手に見せ、手札に加えてもよい",
+      "reading": "",
+      "paraphrase_it": "Tama seed con シンカライズ. Quando entra guarda 4 carte dal top, può mostrarti e aggiungere alla mano una evolution creature, poi il resto va in fondo nel tuo ordine.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.010",
+        "jp.v.014",
+        "jp.v.015",
+        "jp.v.021",
+        "jp.v.023",
+        "jp.v.024",
+        "dm.kw.005",
+        "dm.kw.009",
+        "jp.pat.001",
+        "jp.pat.011",
+        "jp.pat.018",
+        "jp.pat.021"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.010",
+        "jp.v.014",
+        "jp.v.015",
+        "jp.v.021",
+        "jp.v.023",
+        "jp.v.024",
+        "dm.kw.005",
+        "dm.kw.009"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.011",
+        "jp.pat.018",
+        "jp.pat.021"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd20-016"
+    }
+  ]
+}

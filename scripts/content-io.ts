@@ -1,8 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const ROOT = process.cwd();
-const CONTENT_ROOT = join(ROOT, 'content');
+const CONTENT_ROOT = join(process.cwd(), 'content');
 
 const readJson = <T>(path: string): T => JSON.parse(readFileSync(path, 'utf8')) as T;
 
@@ -11,11 +10,13 @@ const parseFrontmatter = (source: string) => {
   if (!match) throw new Error('Frontmatter non trovato');
   const [, fm, body] = match;
   const map = new Map<string, string>();
+
   for (const line of fm.split('\n')) {
     const [key, ...rest] = line.split(':');
     if (!key || rest.length === 0) continue;
     map.set(key.trim(), rest.join(':').trim());
   }
+
   const parseArray = (raw: string | undefined) =>
     (raw ?? '')
       .replace(/^\[/, '')
@@ -25,34 +26,43 @@ const parseFrontmatter = (source: string) => {
       .filter(Boolean);
 
   return {
-    id: map.get('id') ?? '',
-    slug: map.get('slug') ?? '',
+    id: (map.get('id') ?? '').replace(/^"|"$/g, ''),
+    layer: (map.get('layer') ?? '').replace(/^"|"$/g, ''),
+    slug: (map.get('slug') ?? '').replace(/^"|"$/g, ''),
     title: (map.get('title') ?? '').replace(/^"|"$/g, ''),
     summary: (map.get('summary') ?? '').replace(/^"|"$/g, ''),
     itemIds: parseArray(map.get('itemIds')),
-    cardIds: parseArray(map.get('cardIds')),
+    unitIds: parseArray(map.get('unitIds')),
+    gameId: (map.get('gameId') ?? '').replace(/^"|"$/g, ''),
+    productId: (map.get('productId') ?? '').replace(/^"|"$/g, ''),
     body: body.trim(),
   };
 };
 
-export const loadContent = (): any => {
-  const items = [
-    ...readJson<{ items: unknown[] }>(join(CONTENT_ROOT, 'items', 'kanji.json')).items,
-    ...readJson<{ items: unknown[] }>(join(CONTENT_ROOT, 'items', 'vocab.json')).items,
-    ...readJson<{ items: unknown[] }>(join(CONTENT_ROOT, 'items', 'keyword.json')).items,
-    ...readJson<{ items: unknown[] }>(join(CONTENT_ROOT, 'items', 'pattern.json')).items,
+const loadLessons = (relativeDir: string) => {
+  const dir = join(CONTENT_ROOT, relativeDir);
+  const files = readdirSync(dir).filter((file) => file.endsWith('.mdx')).sort();
+  return files.map((file) => ({ ...parseFrontmatter(readFileSync(join(dir, file), 'utf8')), filePath: `content/${relativeDir}/${file}` }));
+};
+
+export const loadContent = () => {
+  const languageItems = readJson<{ items: unknown[] }>(join(CONTENT_ROOT, 'language', 'items', 'items.json')).items;
+  const examples = readJson<{ examples: unknown[] }>(join(CONTENT_ROOT, 'language', 'examples', 'examples.json')).examples;
+  const game = readJson<{ game: unknown }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'meta', 'game.json')).game;
+  const products = [
+    readJson<{ product: unknown }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd1', 'meta', 'product.json')).product,
+    readJson<{ product: unknown }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd2', 'meta', 'product.json')).product,
   ];
-  const cards = readJson<{ cards: unknown[] }>(join(CONTENT_ROOT, 'cards', 'cards.json')).cards;
-  const examples = readJson<{ examples: unknown[] }>(join(CONTENT_ROOT, 'examples', 'examples.json')).examples;
-  const decks = readJson<{ decks: unknown[] }>(join(CONTENT_ROOT, 'meta', 'decks.json')).decks;
+  const units = [
+    ...readJson<{ units: unknown[] }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd1', 'units', 'units.json')).units,
+    ...readJson<{ units: unknown[] }>(join(CONTENT_ROOT, 'games', 'duel-masters', 'products', 'dm25-sd2', 'units', 'units.json')).units,
+  ];
+  const lessons = [
+    ...loadLessons('language/lessons/core'),
+    ...loadLessons('games/duel-masters/lessons'),
+    ...loadLessons('games/duel-masters/products/dm25-sd1/lessons'),
+    ...loadLessons('games/duel-masters/products/dm25-sd2/lessons'),
+  ];
 
-  const lessons = readdirSync(join(CONTENT_ROOT, 'lessons'))
-    .filter((file) => file.endsWith('.mdx'))
-    .sort()
-    .map((file) => {
-      const parsed = parseFrontmatter(readFileSync(join(CONTENT_ROOT, 'lessons', file), 'utf8'));
-      return { ...parsed, filePath: `content/lessons/${file}` };
-    });
-
-  return { items, cards, examples, decks, lessons };
+  return { languageItems, examples, game, products, units, lessons };
 };

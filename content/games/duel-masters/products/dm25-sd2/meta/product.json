@@ -1,0 +1,27 @@
+{
+  "product": {
+    "id": "product.dm25-sd2",
+    "gameId": "game.duel-masters",
+    "slug": "dm25-sd2",
+    "name": "DM25-SD2 いきなりつよいデッキ 力の王道",
+    "productType": "starter-deck",
+    "summary_it": "Quantità per singola carta non presenti nel file sorgente; mappatura completa per carte uniche supportate nel corpus.",
+    "unitIds": [
+      "unit.dm.sd2.001",
+      "unit.dm.sd2.002",
+      "unit.dm.sd2.003",
+      "unit.dm.sd2.004",
+      "unit.dm.sd2.005",
+      "unit.dm.sd2.006",
+      "unit.dm.sd2.007",
+      "unit.dm.sd2.008",
+      "unit.dm.sd2.009",
+      "unit.dm.sd2.010",
+      "unit.dm.sd2.011"
+    ],
+    "lessonIds": [
+      "lesson.dm.sd2.01",
+      "lesson.dm.sd2.02"
+    ]
+  }
+}

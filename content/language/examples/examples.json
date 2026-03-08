@@ -1,0 +1,3160 @@
+{
+  "examples": [
+    {
+      "id": "ex.dm.sd1.0001",
+      "legacyId": "EX-0001",
+      "jp": "自分の墓地",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-001",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.001"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0002",
+      "legacyId": "EX-0002",
+      "jp": "自分の山札",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-002",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.002"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0003",
+      "legacyId": "EX-0003",
+      "jp": "相手のクリーチャー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-003",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.003"
+      ],
+      "sourceUnitId": "unit.dm.sd1.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0001",
+      "legacyId": "EX-0004",
+      "jp": "手札に加える",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-004",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.004"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0004",
+      "legacyId": "EX-0005",
+      "jp": "山札の上から",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-005",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.005"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0002",
+      "legacyId": "EX-0006",
+      "jp": "手札を１枚捨て",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-006",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.006"
+      ],
+      "sourceUnitId": "unit.dm.sd2.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0005",
+      "legacyId": "EX-0007",
+      "jp": "墓地に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-007",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.007"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0006",
+      "legacyId": "EX-0008",
+      "jp": "墓地から出す",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-008",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.008"
+      ],
+      "sourceUnitId": "unit.dm.sd1.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0007",
+      "legacyId": "EX-0009",
+      "jp": "このクリーチャーが出た時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-009",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.009"
+      ],
+      "sourceUnitId": "unit.dm.sd1.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0008",
+      "legacyId": "EX-0010",
+      "jp": "山札の下に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-010",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.010"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0009",
+      "legacyId": "EX-0011",
+      "jp": "カードを４枚",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-011",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.011"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0010",
+      "legacyId": "EX-0012",
+      "jp": "クリーチャーを１体選ぶ",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-012",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.012"
+      ],
+      "sourceUnitId": "unit.dm.sd1.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0011",
+      "legacyId": "EX-0013",
+      "jp": "１枚選んでもよい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-013",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.013"
+      ],
+      "sourceUnitId": "unit.dm.sd1.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0012",
+      "legacyId": "EX-0014",
+      "jp": "相手の手札を見て",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-014",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.014"
+      ],
+      "sourceUnitId": "unit.dm.sd1.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0003",
+      "legacyId": "EX-0015",
+      "jp": "手札に加える",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-015",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.015"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0004",
+      "legacyId": "EX-0016",
+      "jp": "手札に戻す",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-016",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.016"
+      ],
+      "sourceUnitId": "unit.dm.sd2.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0005",
+      "legacyId": "EX-0017",
+      "jp": "１枚捨てる",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-017",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.017"
+      ],
+      "sourceUnitId": "unit.dm.sd2.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0006",
+      "legacyId": "EX-0018",
+      "jp": "カードを１枚引く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-018",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.018"
+      ],
+      "sourceUnitId": "unit.dm.sd2.009",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0013",
+      "legacyId": "EX-0019",
+      "jp": "破壊する",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-019",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.019"
+      ],
+      "sourceUnitId": "unit.dm.sd1.013",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0014",
+      "legacyId": "EX-0020",
+      "jp": "１体、破壊する",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-020",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.020"
+      ],
+      "sourceUnitId": "unit.dm.sd1.011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0015",
+      "legacyId": "EX-0021",
+      "jp": "攻撃する時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-021",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.021"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0007",
+      "legacyId": "EX-0022",
+      "jp": "このクリーチャーの攻撃中",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-022",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.022"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0008",
+      "legacyId": "EX-0023",
+      "jp": "進化クリーチャー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-023",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.023"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0009",
+      "legacyId": "EX-0024",
+      "jp": "タマシードから進化していれば",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-024",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.024"
+      ],
+      "sourceUnitId": "unit.dm.sd2.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0016",
+      "legacyId": "EX-0025",
+      "jp": "このクリーチャーが離れる時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-025",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.025"
+      ],
+      "sourceUnitId": "unit.dm.sd1.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0017",
+      "legacyId": "EX-0026",
+      "jp": "すぐ召喚してもよい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-026",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.026"
+      ],
+      "sourceUnitId": "unit.dm.sd1.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0018",
+      "legacyId": "EX-0027",
+      "jp": "召喚以外の方法",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-027",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.027"
+      ],
+      "sourceUnitId": "unit.dm.sd1.013",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0010",
+      "legacyId": "EX-0028",
+      "jp": "コストを支払わずに",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-028",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.028"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0011",
+      "legacyId": "EX-0029",
+      "jp": "コストを支払わずに",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-029",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.029"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0019",
+      "legacyId": "EX-0030",
+      "jp": "山札の上から",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-030",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.030"
+      ],
+      "sourceUnitId": "unit.dm.sd1.012",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0012",
+      "legacyId": "EX-0031",
+      "jp": "山札の下に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-031",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.031"
+      ],
+      "sourceUnitId": "unit.dm.sd2.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0020",
+      "legacyId": "EX-0032",
+      "jp": "召喚以外の方法",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-032",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.032"
+      ],
+      "sourceUnitId": "unit.dm.sd1.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0021",
+      "legacyId": "EX-0033",
+      "jp": "進化ではないクリーチャー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-033",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.033"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0022",
+      "legacyId": "EX-0034",
+      "jp": "合計４つ以上",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-034",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.034"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0023",
+      "legacyId": "EX-0035",
+      "jp": "合計３つ以上",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-035",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.035"
+      ],
+      "sourceUnitId": "unit.dm.sd1.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0024",
+      "legacyId": "EX-0036",
+      "jp": "このタマシードが出た時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-036",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.036"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0025",
+      "legacyId": "EX-0037",
+      "jp": "その後",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-037",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.037"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0026",
+      "legacyId": "EX-0038",
+      "jp": "ターンの終わりに",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-038",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.038"
+      ],
+      "sourceUnitId": "unit.dm.sd1.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0013",
+      "legacyId": "EX-0039",
+      "jp": "残りを好きな順序で",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-039",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.039"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0027",
+      "legacyId": "EX-0040",
+      "jp": "クリーチャーとして扱わない",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-040",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.040"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0014",
+      "legacyId": "EX-0041",
+      "jp": "その上に重ねてもよい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-041",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.041"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0015",
+      "legacyId": "EX-0042",
+      "jp": "表向きにする",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-042",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.042"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0016",
+      "legacyId": "EX-0043",
+      "jp": "表向きにする",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-043",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.043"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0028",
+      "legacyId": "EX-0044",
+      "jp": "コストを持つ",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-044",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.044"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0029",
+      "legacyId": "EX-0045",
+      "jp": "コストが小さい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-045",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.045"
+      ],
+      "sourceUnitId": "unit.dm.sd1.011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0017",
+      "legacyId": "EX-0046",
+      "jp": "一番パワーが大きい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-046",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.046"
+      ],
+      "sourceUnitId": "unit.dm.sd2.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0018",
+      "legacyId": "EX-0047",
+      "jp": "火のクリーチャー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-047",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.047"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0030",
+      "legacyId": "EX-0048",
+      "jp": "闇のクリーチャー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-048",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.048"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0031",
+      "legacyId": "EX-0049",
+      "jp": "次の能力",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-049",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.049"
+      ],
+      "sourceUnitId": "unit.dm.sd1.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0032",
+      "legacyId": "EX-0050",
+      "jp": "すぐに始める",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-050",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.050"
+      ],
+      "sourceUnitId": "unit.dm.sd1.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0033",
+      "legacyId": "EX-0051",
+      "jp": "「S・トリガー」を与える",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-051",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.051"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0034",
+      "legacyId": "EX-0052",
+      "jp": "２回行う",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-052",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.052"
+      ],
+      "sourceUnitId": "unit.dm.sd1.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0019",
+      "legacyId": "EX-0053",
+      "jp": "好きな順序で",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-053",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.053"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0020",
+      "legacyId": "EX-0054",
+      "jp": "好きな順で",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-054",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.054"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0021",
+      "legacyId": "EX-0055",
+      "jp": "ゲームに負けず",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-055",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.055"
+      ],
+      "sourceUnitId": "unit.dm.sd2.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0022",
+      "legacyId": "EX-0056",
+      "jp": "ゲームに勝てない",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per K-056",
+      "breakdown": [],
+      "itemIds": [
+        "jp.k.056"
+      ],
+      "sourceUnitId": "unit.dm.sd2.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0035",
+      "legacyId": "EX-0057",
+      "jp": "自分の墓地から出す",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-001",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.001"
+      ],
+      "sourceUnitId": "unit.dm.sd1.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0036",
+      "legacyId": "EX-0058",
+      "jp": "相手のクリーチャーを１体選ぶ",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-002",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.002"
+      ],
+      "sourceUnitId": "unit.dm.sd1.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0023",
+      "legacyId": "EX-0059",
+      "jp": "自分の山札の上から４枚を見る",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-003",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003"
+      ],
+      "sourceUnitId": "unit.dm.sd2.011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0024",
+      "legacyId": "EX-0060",
+      "jp": "手札に加える",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-004",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.004"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0037",
+      "legacyId": "EX-0061",
+      "jp": "自分の墓地から出す",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-005",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.005"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0025",
+      "legacyId": "EX-0062",
+      "jp": "持ち主の墓地に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-006",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.006"
+      ],
+      "sourceUnitId": "unit.dm.sd2.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0038",
+      "legacyId": "EX-0063",
+      "jp": "カードの枚数以下のコスト",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-007",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.007"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0039",
+      "legacyId": "EX-0064",
+      "jp": "合計４つ以上",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-008",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.008"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0040",
+      "legacyId": "EX-0065",
+      "jp": "合計３つ以上あれば",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-009",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.009"
+      ],
+      "sourceUnitId": "unit.dm.sd1.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0041",
+      "legacyId": "EX-0066",
+      "jp": "コスト５以下のクリーチャー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-010",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.010"
+      ],
+      "sourceUnitId": "unit.dm.sd1.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0042",
+      "legacyId": "EX-0067",
+      "jp": "召喚以外の方法",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-011",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.011"
+      ],
+      "sourceUnitId": "unit.dm.sd1.013",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0026",
+      "legacyId": "EX-0068",
+      "jp": "一番上のカードを破壊する",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-012",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.012"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0027",
+      "legacyId": "EX-0069",
+      "jp": "山札の一番下に戻す",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-013",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.013"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0028",
+      "legacyId": "EX-0070",
+      "jp": "残りを好きな順序で",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-014",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.014"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0029",
+      "legacyId": "EX-0071",
+      "jp": "好きな順で自分の山札の一番下に戻す",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-015",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.015"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0043",
+      "legacyId": "EX-0072",
+      "jp": "コスト４以下のアビス",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-016",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.016"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0044",
+      "legacyId": "EX-0073",
+      "jp": "パワーを－4000する",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-017",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.017"
+      ],
+      "sourceUnitId": "unit.dm.sd1.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0045",
+      "legacyId": "EX-0074",
+      "jp": "このクリーチャーが出た時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-018",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.018"
+      ],
+      "sourceUnitId": "unit.dm.sd1.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0046",
+      "legacyId": "EX-0075",
+      "jp": "自分の墓地から出す",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-019",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.019"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0047",
+      "legacyId": "EX-0076",
+      "jp": "山札の下に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-020",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.020"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0048",
+      "legacyId": "EX-0077",
+      "jp": "クリーチャーを１体選ぶ",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-021",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.021"
+      ],
+      "sourceUnitId": "unit.dm.sd1.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0030",
+      "legacyId": "EX-0078",
+      "jp": "自分の山札の上から４枚を見る",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-022",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.022"
+      ],
+      "sourceUnitId": "unit.dm.sd2.011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0031",
+      "legacyId": "EX-0079",
+      "jp": "相手に見せてから",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-023",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.023"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0032",
+      "legacyId": "EX-0080",
+      "jp": "手札に加える",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-024",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.024"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0033",
+      "legacyId": "EX-0081",
+      "jp": "このクリーチャーを手札に戻す",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-025",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.025"
+      ],
+      "sourceUnitId": "unit.dm.sd2.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0034",
+      "legacyId": "EX-0082",
+      "jp": "自分の手札を１枚捨て",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-026",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.026"
+      ],
+      "sourceUnitId": "unit.dm.sd2.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0035",
+      "legacyId": "EX-0083",
+      "jp": "カードを１枚引く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-027",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.027"
+      ],
+      "sourceUnitId": "unit.dm.sd2.009",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0049",
+      "legacyId": "EX-0084",
+      "jp": "そのクリーチャーを破壊する",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-028",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.028"
+      ],
+      "sourceUnitId": "unit.dm.sd1.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0050",
+      "legacyId": "EX-0085",
+      "jp": "自分のアビスが攻撃する時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-029",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.029"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0051",
+      "legacyId": "EX-0086",
+      "jp": "すぐ召喚してもよい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-030",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.030"
+      ],
+      "sourceUnitId": "unit.dm.sd1.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0036",
+      "legacyId": "EX-0087",
+      "jp": "すぐ唱えてもよい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-031",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.031"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0037",
+      "legacyId": "EX-0088",
+      "jp": "コストを支払わずに",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-032",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.032"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0052",
+      "legacyId": "EX-0089",
+      "jp": "このクリーチャーが離れる時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-033",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.033"
+      ],
+      "sourceUnitId": "unit.dm.sd1.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0053",
+      "legacyId": "EX-0090",
+      "jp": "「S・トリガー」を与える",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-034",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.034"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0054",
+      "legacyId": "EX-0091",
+      "jp": "クリーチャーとして扱わない",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-035",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.035"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0038",
+      "legacyId": "EX-0092",
+      "jp": "その上に重ねてもよい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-036",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.036"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0039",
+      "legacyId": "EX-0093",
+      "jp": "シールドをすべてブレイクする",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-037",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.037"
+      ],
+      "sourceUnitId": "unit.dm.sd2.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0040",
+      "legacyId": "EX-0094",
+      "jp": "このクリーチャーをバトルさせる",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-038",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.038"
+      ],
+      "sourceUnitId": "unit.dm.sd2.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0055",
+      "legacyId": "EX-0095",
+      "jp": "ターンの残りをとばす",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-039",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.001"
+      ],
+      "sourceUnitId": "unit.dm.sd1.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0056",
+      "legacyId": "EX-0096",
+      "jp": "次のプレイヤーのターンをすぐに始める",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-040",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.002"
+      ],
+      "sourceUnitId": "unit.dm.sd1.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0057",
+      "legacyId": "EX-0097",
+      "jp": "このタマシードが出た時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-041",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.003"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0058",
+      "legacyId": "EX-0098",
+      "jp": "コスト４以下のアビス",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-042",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.004"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0041",
+      "legacyId": "EX-0099",
+      "jp": "進化：火のクリーチャー１体の上に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-043",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.005"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0042",
+      "legacyId": "EX-0100",
+      "jp": "侵略：火のコマンド",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-044",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.006"
+      ],
+      "sourceUnitId": "unit.dm.sd2.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0043",
+      "legacyId": "EX-0101",
+      "jp": "究極進化：進化クリーチャー１体の上に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-045",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.007"
+      ],
+      "sourceUnitId": "unit.dm.sd2.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0044",
+      "legacyId": "EX-0102",
+      "jp": "スター進化：レクスターズまたは火のクリーチャー１体の上に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-046",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.008"
+      ],
+      "sourceUnitId": "unit.dm.sd2.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0045",
+      "legacyId": "EX-0103",
+      "jp": "シンカライズ：このタマシードがクリーチャーであるかのように",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-047",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.009"
+      ],
+      "sourceUnitId": "unit.dm.sd2.011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0059",
+      "legacyId": "EX-0104",
+      "jp": "S・トリガー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-048",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.010"
+      ],
+      "sourceUnitId": "unit.dm.sd1.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0046",
+      "legacyId": "EX-0105",
+      "jp": "スーパー・S・トリガー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-049",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.011"
+      ],
+      "sourceUnitId": "unit.dm.sd2.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0060",
+      "legacyId": "EX-0106",
+      "jp": "W・ブレイカー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-050",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.012"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0047",
+      "legacyId": "EX-0107",
+      "jp": "T・ブレイカー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-051",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.013"
+      ],
+      "sourceUnitId": "unit.dm.sd2.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0061",
+      "legacyId": "EX-0108",
+      "jp": "ブロッカー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-052",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.014"
+      ],
+      "sourceUnitId": "unit.dm.sd1.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0062",
+      "legacyId": "EX-0109",
+      "jp": "スレイヤー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-053",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.015"
+      ],
+      "sourceUnitId": "unit.dm.sd1.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0063",
+      "legacyId": "EX-0110",
+      "jp": "アビスラッシュ",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-054",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.016"
+      ],
+      "sourceUnitId": "unit.dm.sd1.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0064",
+      "legacyId": "EX-0111",
+      "jp": "シビルカウント３",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-055",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.017"
+      ],
+      "sourceUnitId": "unit.dm.sd1.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0048",
+      "legacyId": "EX-0112",
+      "jp": "G・ストライク",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-056",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.018"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0049",
+      "legacyId": "EX-0113",
+      "jp": "メテオバーン",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-057",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.019"
+      ],
+      "sourceUnitId": "unit.dm.sd2.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd2.01"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0050",
+      "legacyId": "EX-0114",
+      "jp": "カードを実行(プレイ)する",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-058",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.020"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0051",
+      "legacyId": "EX-0115",
+      "jp": "カードを使う",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-059",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.021"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0052",
+      "legacyId": "EX-0116",
+      "jp": "表向きにする",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-060",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.022"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0053",
+      "legacyId": "EX-0117",
+      "jp": "使えない / 実行できない",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-061",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.023"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0054",
+      "legacyId": "EX-0118",
+      "jp": "このクリーチャーをアンタップし",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per V-062",
+      "breakdown": [],
+      "itemIds": [
+        "dm.kw.024"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0065",
+      "legacyId": "EX-0119",
+      "jp": "このクリーチャーが出た時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-001",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.001"
+      ],
+      "sourceUnitId": "unit.dm.sd1.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0066",
+      "legacyId": "EX-0120",
+      "jp": "このクリーチャーがバトルゾーンに出た時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-002",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.002"
+      ],
+      "sourceUnitId": "unit.dm.sd1.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0067",
+      "legacyId": "EX-0121",
+      "jp": "自分のアビスが攻撃する時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-003",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.003"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0068",
+      "legacyId": "EX-0122",
+      "jp": "このクリーチャーが離れる時",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-004",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.004"
+      ],
+      "sourceUnitId": "unit.dm.sd1.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0069",
+      "legacyId": "EX-0123",
+      "jp": "自分のターンのはじめに",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-005",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.005"
+      ],
+      "sourceUnitId": "unit.dm.sd1.009",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0055",
+      "legacyId": "EX-0124",
+      "jp": "自分のターンの終わりに",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-006",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.006"
+      ],
+      "sourceUnitId": "unit.dm.sd2.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0070",
+      "legacyId": "EX-0125",
+      "jp": "相手のターン中に",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-007",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.007"
+      ],
+      "sourceUnitId": "unit.dm.sd1.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0071",
+      "legacyId": "EX-0126",
+      "jp": "その後、自分の墓地から出す",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-008",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.008"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0072",
+      "legacyId": "EX-0127",
+      "jp": "そうしたら、アビスを１枚",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-009",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.009"
+      ],
+      "sourceUnitId": "unit.dm.sd1.012",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0073",
+      "legacyId": "EX-0128",
+      "jp": "ただし、コストは０以下にはならない",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-010",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.010"
+      ],
+      "sourceUnitId": "unit.dm.sd1.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0074",
+      "legacyId": "EX-0129",
+      "jp": "墓地に置いてもよい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-011",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.011"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.03"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0075",
+      "legacyId": "EX-0130",
+      "jp": "合計４つ以上なければ",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-012",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.012"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.03"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0056",
+      "legacyId": "EX-0131",
+      "jp": "タマシードから進化していれば",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-013",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.013"
+      ],
+      "sourceUnitId": "unit.dm.sd2.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.03"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0076",
+      "legacyId": "EX-0132",
+      "jp": "コスト５以下のクリーチャー",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-014",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.014"
+      ],
+      "sourceUnitId": "unit.dm.sd1.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.03"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0077",
+      "legacyId": "EX-0133",
+      "jp": "召喚以外の方法",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-015",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.015"
+      ],
+      "sourceUnitId": "unit.dm.sd1.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.03"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0078",
+      "legacyId": "EX-0134",
+      "jp": "相手のクリーチャーを１体選ぶ",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-016",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.016"
+      ],
+      "sourceUnitId": "unit.dm.sd1.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.03"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0079",
+      "legacyId": "EX-0135",
+      "jp": "自分の山札の上から４枚を墓地に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-017",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.017"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.core.03"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0057",
+      "legacyId": "EX-0136",
+      "jp": "自分の山札の上から４枚を見る",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-018",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.018"
+      ],
+      "sourceUnitId": "unit.dm.sd2.011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.core.03"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0058",
+      "legacyId": "EX-0137",
+      "jp": "その上に重ねてもよい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-019",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.019"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.02",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0059",
+      "legacyId": "EX-0138",
+      "jp": "一番上のカードを破壊する",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-020",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.020"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.02",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0060",
+      "legacyId": "EX-0139",
+      "jp": "残りを好きな順序で山札の一番下に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-021",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.021"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.02",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0080",
+      "legacyId": "EX-0140",
+      "jp": "かわりに自分の手札を２枚捨ててもよい",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-022",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.022"
+      ],
+      "sourceUnitId": "unit.dm.sd1.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.02",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0081",
+      "legacyId": "EX-0141",
+      "jp": "クリーチャーとして扱わない",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-023",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.023"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.02",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0061",
+      "legacyId": "EX-0142",
+      "jp": "相手は『G・ストライク』を使えない",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-024",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.024"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.02",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0062",
+      "legacyId": "EX-0143",
+      "jp": "カードを使う → カードを実行(プレイ)する",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-025",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.025"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.02",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0063",
+      "legacyId": "EX-0144",
+      "jp": "進化-自分の火のクリーチャー１体の上に置く",
+      "reading": "",
+      "translation_it": "Esempio nel corpus per P-026",
+      "breakdown": [],
+      "itemIds": [
+        "jp.pat.026"
+      ],
+      "sourceUnitId": "unit.dm.sd2.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd1.02",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0082",
+      "legacyId": "EX-0145",
+      "jp": "このタマシードが出た時 / 枚数以下 / クリーチャーとして扱わない",
+      "reading": "",
+      "translation_it": "Frase guida carta 漆黒の深淵 ジャシン帝",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.005",
+        "jp.v.007",
+        "jp.v.009",
+        "jp.v.010",
+        "jp.v.018",
+        "jp.v.019",
+        "jp.v.028",
+        "jp.v.035",
+        "dm.kw.003",
+        "dm.kw.005",
+        "jp.pat.001",
+        "jp.pat.003",
+        "jp.pat.008",
+        "jp.pat.012",
+        "jp.pat.014",
+        "jp.pat.023"
+      ],
+      "sourceUnitId": "unit.dm.sd1.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0083",
+      "legacyId": "EX-0146",
+      "jp": "アビスラッシュ / かわりに / 召喚コストを２少なくする",
+      "reading": "",
+      "translation_it": "Frase guida carta アビスベル=ジャシン帝",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.004",
+        "jp.v.005",
+        "jp.v.026",
+        "jp.v.030",
+        "jp.v.032",
+        "jp.v.033",
+        "dm.kw.004",
+        "dm.kw.012",
+        "dm.kw.014",
+        "jp.pat.004",
+        "jp.pat.010",
+        "jp.pat.011",
+        "jp.pat.022"
+      ],
+      "sourceUnitId": "unit.dm.sd1.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0084",
+      "legacyId": "EX-0147",
+      "jp": "または自分のアビスが攻撃する時 / かわりに / 山札の下に置く",
+      "reading": "",
+      "translation_it": "Frase guida carta 邪龍 ジャブラッド",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.005",
+        "jp.v.008",
+        "jp.v.018",
+        "jp.v.020",
+        "jp.v.029",
+        "jp.v.033",
+        "dm.kw.004",
+        "dm.kw.012",
+        "jp.pat.001",
+        "jp.pat.003",
+        "jp.pat.011",
+        "jp.pat.012",
+        "jp.pat.022",
+        "jp.pat.023"
+      ],
+      "sourceUnitId": "unit.dm.sd1.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0085",
+      "legacyId": "EX-0148",
+      "jp": "相手の手札を見て / 捨てさせる / 出た時にトリガーする能力",
+      "reading": "",
+      "translation_it": "Frase guida carta 深淵の壊炉 マーダン=ロウ",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.002",
+        "jp.v.004",
+        "jp.v.005",
+        "jp.v.008",
+        "jp.v.021",
+        "jp.v.022",
+        "jp.v.026",
+        "jp.v.029",
+        "dm.kw.012",
+        "dm.kw.013",
+        "dm.kw.015",
+        "dm.kw.017",
+        "jp.pat.001",
+        "jp.pat.003",
+        "jp.pat.008",
+        "jp.pat.011",
+        "jp.pat.014",
+        "jp.pat.016"
+      ],
+      "sourceUnitId": "unit.dm.sd1.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0086",
+      "legacyId": "EX-0149",
+      "jp": "ターンの残りをとばす",
+      "reading": "",
+      "translation_it": "Frase guida carta 終末の時計 ザ・クロック",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.030",
+        "dm.kw.001",
+        "dm.kw.002",
+        "dm.kw.010",
+        "jp.pat.002"
+      ],
+      "sourceUnitId": "unit.dm.sd1.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0087",
+      "legacyId": "EX-0150",
+      "jp": "次の能力を２回行う / パワーを－4000する",
+      "reading": "",
+      "translation_it": "Frase guida carta ドアノッカ＝ノアドッカ / 「…開けるか？」",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.002",
+        "jp.v.017",
+        "jp.v.018",
+        "jp.v.021",
+        "jp.v.028",
+        "jp.pat.001",
+        "jp.pat.016"
+      ],
+      "sourceUnitId": "unit.dm.sd1.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0088",
+      "legacyId": "EX-0151",
+      "jp": "相手のターン中に / ２つ以上…ブレイクされていなければ",
+      "reading": "",
+      "translation_it": "Frase guida carta 忍蛇の聖沌 c0br4",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.005",
+        "jp.v.009",
+        "jp.v.010",
+        "jp.v.018",
+        "jp.v.019",
+        "jp.v.028",
+        "dm.kw.003",
+        "dm.kw.010",
+        "dm.kw.014",
+        "jp.pat.001",
+        "jp.pat.007",
+        "jp.pat.008",
+        "jp.pat.012",
+        "jp.pat.014",
+        "jp.pat.017"
+      ],
+      "sourceUnitId": "unit.dm.sd1.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0089",
+      "legacyId": "EX-0152",
+      "jp": "召喚以外の方法でクリーチャーを出した時",
+      "reading": "",
+      "translation_it": "Frase guida carta ブルーム＝プルーフ",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.018",
+        "jp.v.028",
+        "jp.v.030",
+        "jp.pat.001",
+        "jp.pat.007",
+        "jp.pat.015",
+        "jp.pat.017"
+      ],
+      "sourceUnitId": "unit.dm.sd1.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0090",
+      "legacyId": "EX-0153",
+      "jp": "自分のターンのはじめに / ただし、その『S・トリガー』は使えない",
+      "reading": "",
+      "translation_it": "Frase guida carta サーイ=サイクル",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.018",
+        "jp.v.024",
+        "dm.kw.010",
+        "dm.kw.023",
+        "jp.pat.005",
+        "jp.pat.008",
+        "jp.pat.010",
+        "jp.pat.024"
+      ],
+      "sourceUnitId": "unit.dm.sd1.009",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0091",
+      "legacyId": "EX-0154",
+      "jp": "シビルカウント２ / 『S・トリガー』を与える",
+      "reading": "",
+      "translation_it": "Frase guida carta 邪侵入",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.005",
+        "jp.v.008",
+        "jp.v.009",
+        "jp.v.010",
+        "jp.v.016",
+        "jp.v.019",
+        "jp.v.032",
+        "jp.v.034",
+        "dm.kw.004",
+        "dm.kw.010",
+        "dm.kw.017",
+        "jp.pat.008",
+        "jp.pat.011",
+        "jp.pat.014",
+        "jp.pat.017"
+      ],
+      "sourceUnitId": "unit.dm.sd1.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0092",
+      "legacyId": "EX-0155",
+      "jp": "枚数よりコストが小さい",
+      "reading": "",
+      "translation_it": "Frase guida carta ハンマ＝ダンマ",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.005",
+        "jp.v.007",
+        "jp.v.016",
+        "jp.v.018",
+        "jp.v.028",
+        "jp.v.030",
+        "dm.kw.007",
+        "dm.kw.010",
+        "jp.pat.001",
+        "jp.pat.008",
+        "jp.pat.011",
+        "jp.pat.014",
+        "jp.pat.017"
+      ],
+      "sourceUnitId": "unit.dm.sd1.011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0093",
+      "legacyId": "EX-0156",
+      "jp": "そうしたら、アビスを１枚…手札に戻してもよい",
+      "reading": "",
+      "translation_it": "Frase guida carta フォーク＝フォック",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.005",
+        "jp.v.018",
+        "jp.v.024",
+        "jp.v.025",
+        "dm.kw.004",
+        "jp.pat.001",
+        "jp.pat.009",
+        "jp.pat.011",
+        "jp.pat.017"
+      ],
+      "sourceUnitId": "unit.dm.sd1.012",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd1.0094",
+      "legacyId": "EX-0157",
+      "jp": "召喚以外の方法で / かわりにそのクリーチャーを墓地に置く",
+      "reading": "",
+      "translation_it": "Frase guida carta ルピア炎鬼",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.005",
+        "jp.v.019",
+        "jp.v.030",
+        "jp.v.033",
+        "jp.pat.015",
+        "jp.pat.022"
+      ],
+      "sourceUnitId": "unit.dm.sd1.013",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "lessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0064",
+      "legacyId": "EX-0158",
+      "jp": "このクリーチャーの攻撃中 / 最初の攻撃の終わりに / アンタップし",
+      "reading": "",
+      "translation_it": "Frase guida carta 覇帝なき侵略 レッドゾーンF",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.012",
+        "jp.v.020",
+        "jp.v.028",
+        "jp.v.029",
+        "jp.v.036",
+        "dm.kw.005",
+        "dm.kw.006",
+        "dm.kw.012",
+        "dm.kw.017",
+        "dm.kw.018",
+        "dm.kw.024",
+        "jp.pat.003",
+        "jp.pat.019",
+        "jp.pat.020",
+        "jp.pat.024"
+      ],
+      "sourceUnitId": "unit.dm.sd2.001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0065",
+      "legacyId": "EX-0159",
+      "jp": "一番パワーが大きい相手のクリーチャーをすべて破壊する",
+      "reading": "",
+      "translation_it": "Frase guida carta 轟く侵略 レッドゾーン",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.002",
+        "jp.v.017",
+        "jp.v.018",
+        "jp.v.028",
+        "dm.kw.005",
+        "dm.kw.006",
+        "dm.kw.013",
+        "jp.pat.002",
+        "jp.pat.019"
+      ],
+      "sourceUnitId": "unit.dm.sd2.002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0066",
+      "legacyId": "EX-0160",
+      "jp": "このクリーチャーの下にあるカードを３枚墓地に置いてもよい",
+      "reading": "",
+      "translation_it": "Frase guida carta 超神羅星アポロヌス・ドラゲリオン",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.005",
+        "jp.v.006",
+        "jp.v.016",
+        "jp.v.021",
+        "jp.v.028",
+        "jp.v.036",
+        "jp.v.037",
+        "dm.kw.006",
+        "dm.kw.007",
+        "dm.kw.013",
+        "dm.kw.019",
+        "jp.pat.002",
+        "jp.pat.009",
+        "jp.pat.011",
+        "jp.pat.016",
+        "jp.pat.019"
+      ],
+      "sourceUnitId": "unit.dm.sd2.003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0067",
+      "legacyId": "EX-0161",
+      "jp": "表向きにする / それ以外のカードを好きな順で",
+      "reading": "",
+      "translation_it": "Frase guida carta 進化設計図",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.010",
+        "jp.v.014",
+        "jp.v.015",
+        "jp.v.022",
+        "jp.v.024",
+        "dm.kw.005",
+        "dm.kw.010",
+        "dm.kw.022",
+        "jp.pat.010",
+        "jp.pat.018",
+        "jp.pat.021"
+      ],
+      "sourceUnitId": "unit.dm.sd2.004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0068",
+      "legacyId": "EX-0162",
+      "jp": "ゲームに負けず、相手はゲームに勝てない",
+      "reading": "",
+      "translation_it": "Frase guida carta SMAPON",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.002",
+        "jp.v.017",
+        "jp.v.028",
+        "dm.kw.011",
+        "dm.kw.017",
+        "dm.kw.018",
+        "dm.kw.023",
+        "jp.pat.002",
+        "jp.pat.014",
+        "jp.pat.024"
+      ],
+      "sourceUnitId": "unit.dm.sd2.005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0069",
+      "legacyId": "EX-0163",
+      "jp": "相手に見せてから / 残りを好きな順序で",
+      "reading": "",
+      "translation_it": "Frase guida carta 未来設計図",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.013",
+        "jp.v.014",
+        "jp.v.015",
+        "jp.v.021",
+        "jp.v.023",
+        "jp.v.024",
+        "dm.kw.010",
+        "jp.pat.011",
+        "jp.pat.018",
+        "jp.pat.021"
+      ],
+      "sourceUnitId": "unit.dm.sd2.006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0070",
+      "legacyId": "EX-0164",
+      "jp": "タマシードから進化していれば",
+      "reading": "",
+      "translation_it": "Frase guida carta カチコミ入道 <バトライ.鬼>",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.021",
+        "jp.v.038",
+        "dm.kw.003",
+        "dm.kw.005",
+        "dm.kw.008",
+        "dm.kw.012",
+        "jp.pat.001",
+        "jp.pat.013",
+        "jp.pat.016"
+      ],
+      "sourceUnitId": "unit.dm.sd2.007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0071",
+      "legacyId": "EX-0165",
+      "jp": "このクリーチャーがタマシードから進化していれば、カードをもう１枚引く",
+      "reading": "",
+      "translation_it": "Frase guida carta オンソク童子 <ターボ.鬼>",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.004",
+        "jp.v.018",
+        "jp.v.026",
+        "jp.v.027",
+        "dm.kw.003",
+        "dm.kw.008",
+        "jp.pat.001",
+        "jp.pat.009",
+        "jp.pat.013"
+      ],
+      "sourceUnitId": "unit.dm.sd2.008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0072",
+      "legacyId": "EX-0166",
+      "jp": "このタマシードが出た時 / 山札の下に置き、その後、カードを１枚引く",
+      "reading": "",
+      "translation_it": "Frase guida carta ストリエ雷鬼の巻",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.020",
+        "jp.v.027",
+        "dm.kw.003",
+        "dm.kw.009",
+        "jp.pat.001",
+        "jp.pat.008"
+      ],
+      "sourceUnitId": "unit.dm.sd2.009",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0073",
+      "legacyId": "EX-0167",
+      "jp": "このターン、このクリーチャーがシールドをブレイクしていたら",
+      "reading": "",
+      "translation_it": "Frase guida carta 冒険妖精ポレコ",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.025",
+        "jp.v.037",
+        "jp.pat.006",
+        "jp.pat.013"
+      ],
+      "sourceUnitId": "unit.dm.sd2.010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    },
+    {
+      "id": "ex.dm.sd2.0074",
+      "legacyId": "EX-0168",
+      "jp": "その中から進化クリーチャーを１体相手に見せ、手札に加えてもよい",
+      "reading": "",
+      "translation_it": "Frase guida carta ヘルコプ太の心絵",
+      "breakdown": [],
+      "itemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.010",
+        "jp.v.014",
+        "jp.v.015",
+        "jp.v.021",
+        "jp.v.023",
+        "jp.v.024",
+        "dm.kw.005",
+        "dm.kw.009",
+        "jp.pat.001",
+        "jp.pat.011",
+        "jp.pat.018",
+        "jp.pat.021"
+      ],
+      "sourceUnitId": "unit.dm.sd2.011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd2",
+      "lessonIds": [
+        "lesson.dm.sd2.01",
+        "lesson.dm.sd2.02"
+      ]
+    }
+  ]
+}

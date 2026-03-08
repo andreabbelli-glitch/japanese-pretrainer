@@ -1,3 +1,5 @@
+import { readdirSync, statSync } from 'node:fs';
+import { join } from 'node:path';
 import { loadContent } from './content-io.ts';
 
 const duplicateIds = (ids: string[]) => {
@@ -10,6 +12,16 @@ const duplicateIds = (ids: string[]) => {
   return [...dupes];
 };
 
+const walk = (dir: string): string[] => {
+  const out: string[] = [];
+  for (const entry of readdirSync(dir)) {
+    const abs = join(dir, entry);
+    if (statSync(abs).isDirectory()) out.push(...walk(abs));
+    else out.push(abs);
+  }
+  return out;
+};
+
 const fail = (errors: string[]) => {
   if (errors.length === 0) return;
   console.error('Validazione content fallita:');
@@ -20,74 +32,71 @@ const fail = (errors: string[]) => {
 const graph = loadContent();
 const errors: string[] = [];
 
-const itemIds = graph.items.map((i) => i.id);
-const cardIds = graph.cards.map((c) => c.id);
-const lessonIds = graph.lessons.map((l) => l.id);
-const exampleIds = graph.examples.map((e) => e.id);
+const itemIds = graph.languageItems.map((i: any) => i.id);
+const exampleIds = graph.examples.map((e: any) => e.id);
+const lessonIds = graph.lessons.map((l: any) => l.id);
+const productIds = graph.products.map((p: any) => p.id);
+const unitIds = graph.units.map((u: any) => u.id);
+const gameId = (graph.game as any).id;
 
-for (const id of duplicateIds([...itemIds, ...cardIds, ...lessonIds, ...exampleIds])) {
+for (const id of duplicateIds([...itemIds, ...exampleIds, ...lessonIds, ...productIds, ...unitIds, gameId])) {
   errors.push(`ID duplicato: ${id}`);
 }
 
 const itemSet = new Set(itemIds);
-const cardSet = new Set(cardIds);
+const unitSet = new Set(unitIds);
 const lessonSet = new Set(lessonIds);
-const exampleSet = new Set(exampleIds);
+const productSet = new Set(productIds);
 
-for (const item of graph.items) {
-  for (const id of item.relatedCardIds) {
-    if (!cardSet.has(id)) errors.push(`${item.id}: relatedCardId rotto (${id})`);
+for (const item of graph.languageItems as any[]) {
+  for (const id of [...item.relatedItemIds, ...item.prerequisiteItemIds]) {
+    if (!itemSet.has(id)) errors.push(`${item.id}: reference item rotto (${id})`);
   }
-  for (const id of item.relatedExampleIds) {
-    if (!exampleSet.has(id)) errors.push(`${item.id}: relatedExampleId rotto (${id})`);
-  }
-  for (const id of item.lessonIds) {
-    if (!lessonSet.has(id)) errors.push(`${item.id}: lessonId rotto (${id})`);
-  }
-  if (item.relatedCardIds.length + item.relatedExampleIds.length + item.lessonIds.length === 0) {
-    errors.push(`${item.id}: item senza collegamenti utili`);
+  for (const exId of item.exampleIds) {
+    if (!exampleIds.includes(exId)) errors.push(`${item.id}: exampleId rotto (${exId})`);
   }
 }
 
-for (const card of graph.cards) {
-  if (card.itemIds.length === 0) {
-    errors.push(`${card.id}: card senza itemIds`);
+for (const unit of graph.units as any[]) {
+  if (!Array.isArray(unit.requiredItemIds) || unit.requiredItemIds.length === 0) {
+    errors.push(`${unit.id}: unit senza requiredItemIds`);
   }
-  for (const id of card.itemIds) {
-    if (!itemSet.has(id)) errors.push(`${card.id}: itemId rotto (${id})`);
+  for (const id of [...unit.requiredItemIds, ...unit.keyItemIds, ...unit.keyPatternIds]) {
+    if (!itemSet.has(id)) errors.push(`${unit.id}: itemId rotto (${id})`);
   }
-  for (const id of card.lessonIds) {
-    if (!lessonSet.has(id)) errors.push(`${card.id}: lessonId rotto (${id})`);
+  for (const lessonId of unit.recommendedLessonIds) {
+    if (!lessonSet.has(lessonId)) errors.push(`${unit.id}: recommendedLessonId rotto (${lessonId})`);
   }
+  if (!productSet.has(unit.productId)) errors.push(`${unit.id}: productId rotto (${unit.productId})`);
 }
 
-for (const lesson of graph.lessons) {
-  if (!lesson.id || !lesson.slug || !lesson.summary || lesson.itemIds.length === 0 || lesson.cardIds.length === 0) {
+for (const lesson of graph.lessons as any[]) {
+  if (!lesson.id || !lesson.slug || !lesson.title || !lesson.summary || !lesson.layer || lesson.itemIds.length === 0 || lesson.unitIds.length === 0) {
     errors.push(`${lesson.filePath}: lesson senza metadati minimi`);
   }
   for (const id of lesson.itemIds) {
     if (!itemSet.has(id)) errors.push(`${lesson.id}: itemId rotto (${id})`);
   }
-  for (const id of lesson.cardIds) {
-    if (!cardSet.has(id)) errors.push(`${lesson.id}: cardId rotto (${id})`);
+  for (const id of lesson.unitIds) {
+    if (!unitSet.has(id)) errors.push(`${lesson.id}: unitId rotto (${id})`);
   }
 }
 
-for (const example of graph.examples) {
-  if (example.cardId && !cardSet.has(example.cardId)) errors.push(`${example.id}: cardId rotto (${example.cardId})`);
+for (const example of graph.examples as any[]) {
   for (const id of example.itemIds) {
     if (!itemSet.has(id)) errors.push(`${example.id}: itemId rotto (${id})`);
   }
-  for (const id of example.lessonIds) {
-    if (!lessonSet.has(id)) errors.push(`${example.id}: lessonId rotto (${id})`);
+  if (!unitSet.has(example.sourceUnitId)) errors.push(`${example.id}: sourceUnitId rotto (${example.sourceUnitId})`);
+  if (!productSet.has(example.productId)) errors.push(`${example.id}: productId rotto (${example.productId})`);
+  for (const lessonId of example.lessonIds) {
+    if (!lessonSet.has(lessonId)) errors.push(`${example.id}: lessonId rotto (${lessonId})`);
   }
 }
 
-for (const deck of graph.decks) {
-  for (const cardId of deck.uniqueCards) {
-    if (!cardSet.has(cardId)) errors.push(`${deck.id}: uniqueCards rotto (${cardId})`);
-  }
+const duplicatedLanguageItemsOutsideCanonical = walk(join(process.cwd(), 'content', 'games')).filter((path) => /\/items\//.test(path) || /items\.json$/.test(path));
+if (duplicatedLanguageItemsOutsideCanonical.length > 0) {
+  errors.push(`Language item duplicati in folders game-specific: ${duplicatedLanguageItemsOutsideCanonical.join(', ')}`);
 }
 
 fail(errors);
-console.log(`Validazione OK: ${graph.items.length} item, ${graph.examples.length} esempi, ${graph.cards.length} carte, ${graph.lessons.length} lezioni.`);
+console.log(`Validazione OK: ${itemIds.length} language item, ${graph.examples.length} esempi, ${graph.units.length} unità, ${graph.lessons.length} lezioni.`);

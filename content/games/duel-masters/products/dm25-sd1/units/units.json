@@ -1,0 +1,637 @@
+{
+  "units": [
+    {
+      "id": "unit.dm.sd1.001",
+      "legacyId": "CARD-SD1-001",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-001",
+      "name": "漆黒の深淵 ジャシン帝",
+      "nameReading": "しっこく の しんえん じゃしんてい",
+      "jpText": "このタマシードが出た時 / 枚数以下 / クリーチャーとして扱わない",
+      "reading": "",
+      "paraphrase_it": "Milla 1 carta, poi distrugge una creatura o un tama seed avversario con costo entro il numero di carte nel tuo cimitero. Se non hai abbastanza permanenti 闇, non conta come creatura. Quando attacca può rianimare un non-evolution costo 6 o meno.",
+      "requiredItemIds": [
+        "jp.v.005",
+        "jp.v.007",
+        "jp.v.009",
+        "jp.v.010",
+        "jp.v.018",
+        "jp.v.019",
+        "jp.v.028",
+        "jp.v.035",
+        "dm.kw.003",
+        "dm.kw.005",
+        "jp.pat.001",
+        "jp.pat.003",
+        "jp.pat.008",
+        "jp.pat.012",
+        "jp.pat.014",
+        "jp.pat.023"
+      ],
+      "keyItemIds": [
+        "jp.v.005",
+        "jp.v.007",
+        "jp.v.009",
+        "jp.v.010",
+        "jp.v.018",
+        "jp.v.019",
+        "jp.v.028",
+        "jp.v.035",
+        "dm.kw.003",
+        "dm.kw.005"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.003",
+        "jp.pat.008",
+        "jp.pat.012",
+        "jp.pat.014",
+        "jp.pat.023"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04"
+    },
+    {
+      "id": "unit.dm.sd1.002",
+      "legacyId": "CARD-SD1-002",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-002",
+      "name": "アビスベル=ジャシン帝",
+      "nameReading": "あびすべる じゃしんてい",
+      "jpText": "アビスラッシュ / かわりに / 召喚コストを２少なくする",
+      "reading": "",
+      "paraphrase_it": "Dà アビスラッシュ ai tuoi Abyss nel cimitero, riduce il costo di evocazione dal cimitero e può sostituire la propria uscita dal campo con 2 scarti.",
+      "requiredItemIds": [
+        "jp.v.004",
+        "jp.v.005",
+        "jp.v.026",
+        "jp.v.030",
+        "jp.v.032",
+        "jp.v.033",
+        "dm.kw.004",
+        "dm.kw.012",
+        "dm.kw.014",
+        "jp.pat.004",
+        "jp.pat.010",
+        "jp.pat.011",
+        "jp.pat.022"
+      ],
+      "keyItemIds": [
+        "jp.v.004",
+        "jp.v.005",
+        "jp.v.026",
+        "jp.v.030",
+        "jp.v.032",
+        "jp.v.033",
+        "dm.kw.004",
+        "dm.kw.012",
+        "dm.kw.014"
+      ],
+      "keyPatternIds": [
+        "jp.pat.004",
+        "jp.pat.010",
+        "jp.pat.011",
+        "jp.pat.022"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B"
+    },
+    {
+      "id": "unit.dm.sd1.003",
+      "legacyId": "CARD-SD1-003",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-003",
+      "name": "邪龍 ジャブラッド",
+      "nameReading": "じゃりゅう じゃぶらっど",
+      "jpText": "または自分のアビスが攻撃する時 / かわりに / 山札の下に置く",
+      "reading": "",
+      "paraphrase_it": "Quando entra, o quando un tuo Abyss attacca, puoi millare 2. Se un tuo Abyss dovrebbe lasciare il campo, puoi invece rimettere 4 carte dal cimitero sotto il mazzo.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.005",
+        "jp.v.008",
+        "jp.v.018",
+        "jp.v.020",
+        "jp.v.029",
+        "jp.v.033",
+        "dm.kw.004",
+        "dm.kw.012",
+        "jp.pat.001",
+        "jp.pat.003",
+        "jp.pat.011",
+        "jp.pat.012",
+        "jp.pat.022",
+        "jp.pat.023"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.005",
+        "jp.v.008",
+        "jp.v.018",
+        "jp.v.020",
+        "jp.v.029",
+        "jp.v.033",
+        "dm.kw.004",
+        "dm.kw.012"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.003",
+        "jp.pat.011",
+        "jp.pat.012",
+        "jp.pat.022",
+        "jp.pat.023"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2"
+    },
+    {
+      "id": "unit.dm.sd1.004",
+      "legacyId": "CARD-SD1-004",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-004",
+      "name": "深淵の壊炉 マーダン=ロウ",
+      "nameReading": "しんえん の かいろ まだん ろう",
+      "jpText": "相手の手札を見て / 捨てさせる / 出た時にトリガーする能力",
+      "reading": "",
+      "paraphrase_it": "Fa scartare una creatura dalla mano avversaria quando entra. Se hai almeno 3 oggetti 闇, quando attacca puoi copiare un'abilità “when enters” da una carta nel cimitero avversario e poi quella carta va sotto il loro mazzo.",
+      "requiredItemIds": [
+        "jp.v.002",
+        "jp.v.004",
+        "jp.v.005",
+        "jp.v.008",
+        "jp.v.021",
+        "jp.v.022",
+        "jp.v.026",
+        "jp.v.029",
+        "dm.kw.012",
+        "dm.kw.013",
+        "dm.kw.015",
+        "dm.kw.017",
+        "jp.pat.001",
+        "jp.pat.003",
+        "jp.pat.008",
+        "jp.pat.011",
+        "jp.pat.014",
+        "jp.pat.016"
+      ],
+      "keyItemIds": [
+        "jp.v.002",
+        "jp.v.004",
+        "jp.v.005",
+        "jp.v.008",
+        "jp.v.021",
+        "jp.v.022",
+        "jp.v.026",
+        "jp.v.029",
+        "dm.kw.012",
+        "dm.kw.013",
+        "dm.kw.015",
+        "dm.kw.017"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.003",
+        "jp.pat.008",
+        "jp.pat.011",
+        "jp.pat.014",
+        "jp.pat.016"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5"
+    },
+    {
+      "id": "unit.dm.sd1.005",
+      "legacyId": "CARD-SD1-005",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-005",
+      "name": "終末の時計 ザ・クロック",
+      "nameReading": "しゅうまつ の とけい ざ くろっく",
+      "jpText": "ターンの残りをとばす",
+      "reading": "",
+      "paraphrase_it": "È una difesa da shield: se entra dal trigger, salta il resto del turno corrente e si passa subito al turno successivo.",
+      "requiredItemIds": [
+        "jp.v.030",
+        "dm.kw.001",
+        "dm.kw.002",
+        "dm.kw.010",
+        "jp.pat.002"
+      ],
+      "keyItemIds": [
+        "jp.v.030",
+        "dm.kw.001",
+        "dm.kw.002",
+        "dm.kw.010"
+      ],
+      "keyPatternIds": [
+        "jp.pat.002"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021"
+    },
+    {
+      "id": "unit.dm.sd1.006",
+      "legacyId": "CARD-SD1-006",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-006",
+      "name": "ドアノッカ＝ノアドッカ / 「…開けるか？」",
+      "nameReading": "どあのっか のあどっか / あけるか",
+      "jpText": "次の能力を２回行う / パワーを－4000する",
+      "reading": "",
+      "paraphrase_it": "Lato creatura: quando entra, fai due volte un -4000 a una creatura avversaria per il turno. Lato spell: fai una volta la stessa cosa.",
+      "requiredItemIds": [
+        "jp.v.002",
+        "jp.v.017",
+        "jp.v.018",
+        "jp.v.021",
+        "jp.v.028",
+        "jp.pat.001",
+        "jp.pat.016"
+      ],
+      "keyItemIds": [
+        "jp.v.002",
+        "jp.v.017",
+        "jp.v.018",
+        "jp.v.021",
+        "jp.v.028"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.016"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008"
+    },
+    {
+      "id": "unit.dm.sd1.007",
+      "legacyId": "CARD-SD1-007",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-007-c0br4",
+      "name": "忍蛇の聖沌 c0br4",
+      "nameReading": "にんじゃ の せいとん こぶら",
+      "jpText": "相手のターン中に / ２つ以上…ブレイクされていなければ",
+      "reading": "",
+      "paraphrase_it": "Da shield può entrare, millare 2 e rianimare una creatura costo 5 o meno. Però, se è il turno avversario e in quel turno non ti hanno rotto almeno 2 scudi, si autodistrugge.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.005",
+        "jp.v.009",
+        "jp.v.010",
+        "jp.v.018",
+        "jp.v.019",
+        "jp.v.028",
+        "dm.kw.003",
+        "dm.kw.010",
+        "dm.kw.014",
+        "jp.pat.001",
+        "jp.pat.007",
+        "jp.pat.008",
+        "jp.pat.012",
+        "jp.pat.014",
+        "jp.pat.017"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.005",
+        "jp.v.009",
+        "jp.v.010",
+        "jp.v.018",
+        "jp.v.019",
+        "jp.v.028",
+        "dm.kw.003",
+        "dm.kw.010",
+        "dm.kw.014"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.007",
+        "jp.pat.008",
+        "jp.pat.012",
+        "jp.pat.014",
+        "jp.pat.017"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm23rp4-017"
+    },
+    {
+      "id": "unit.dm.sd1.008",
+      "legacyId": "CARD-SD1-008",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-008",
+      "name": "ブルーム＝プルーフ",
+      "nameReading": "ぶるーむ ぷるーふ",
+      "jpText": "召喚以外の方法でクリーチャーを出した時",
+      "reading": "",
+      "paraphrase_it": "Quando entra milla 1. Nel turno avversario punisce le creature messe in campo senza evocazione, distruggendole.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.018",
+        "jp.v.028",
+        "jp.v.030",
+        "jp.pat.001",
+        "jp.pat.007",
+        "jp.pat.015",
+        "jp.pat.017"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.018",
+        "jp.v.028",
+        "jp.v.030"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.007",
+        "jp.pat.015",
+        "jp.pat.017"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-016"
+    },
+    {
+      "id": "unit.dm.sd1.009",
+      "legacyId": "CARD-SD1-009",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-009",
+      "name": "サーイ=サイクル",
+      "nameReading": "さーい さいくる",
+      "jpText": "自分のターンのはじめに / ただし、その『S・トリガー』は使えない",
+      "reading": "",
+      "paraphrase_it": "All’inizio del tuo turno milla 1, poi aggiungi 1 tuo scudo alla mano; quello shield però non può essere usato come trigger.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.018",
+        "jp.v.024",
+        "dm.kw.010",
+        "dm.kw.023",
+        "jp.pat.005",
+        "jp.pat.008",
+        "jp.pat.010",
+        "jp.pat.024"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.018",
+        "jp.v.024",
+        "dm.kw.010",
+        "dm.kw.023"
+      ],
+      "keyPatternIds": [
+        "jp.pat.005",
+        "jp.pat.008",
+        "jp.pat.010",
+        "jp.pat.024"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm23ex1-037"
+    },
+    {
+      "id": "unit.dm.sd1.010",
+      "legacyId": "CARD-SD1-010",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-010",
+      "name": "邪侵入",
+      "nameReading": "じゃしんにゅう",
+      "jpText": "シビルカウント２ / 『S・トリガー』を与える",
+      "reading": "",
+      "paraphrase_it": "Se hai almeno 2 oggetti 闇 nello shield zone, guadagna S・Trigger. Poi milla 4 e rimette in campo un Abyss costo 4 o meno dal cimitero.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.005",
+        "jp.v.008",
+        "jp.v.009",
+        "jp.v.010",
+        "jp.v.016",
+        "jp.v.019",
+        "jp.v.032",
+        "jp.v.034",
+        "dm.kw.004",
+        "dm.kw.010",
+        "dm.kw.017",
+        "jp.pat.008",
+        "jp.pat.011",
+        "jp.pat.014",
+        "jp.pat.017"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.005",
+        "jp.v.008",
+        "jp.v.009",
+        "jp.v.010",
+        "jp.v.016",
+        "jp.v.019",
+        "jp.v.032",
+        "jp.v.034",
+        "dm.kw.004",
+        "dm.kw.010",
+        "dm.kw.017"
+      ],
+      "keyPatternIds": [
+        "jp.pat.008",
+        "jp.pat.011",
+        "jp.pat.014",
+        "jp.pat.017"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017"
+    },
+    {
+      "id": "unit.dm.sd1.011",
+      "legacyId": "CARD-SD1-011",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-011",
+      "name": "ハンマ＝ダンマ",
+      "nameReading": "はんま だんま",
+      "jpText": "枚数よりコストが小さい",
+      "reading": "",
+      "paraphrase_it": "Da shield può entrare gratis. Quando entra puoi millare 3; poi distruggi una creatura avversaria con costo strettamente minore del numero di carte nel tuo cimitero.",
+      "requiredItemIds": [
+        "jp.v.005",
+        "jp.v.007",
+        "jp.v.016",
+        "jp.v.018",
+        "jp.v.028",
+        "jp.v.030",
+        "dm.kw.007",
+        "dm.kw.010",
+        "jp.pat.001",
+        "jp.pat.008",
+        "jp.pat.011",
+        "jp.pat.014",
+        "jp.pat.017"
+      ],
+      "keyItemIds": [
+        "jp.v.005",
+        "jp.v.007",
+        "jp.v.016",
+        "jp.v.018",
+        "jp.v.028",
+        "jp.v.030",
+        "dm.kw.007",
+        "dm.kw.010"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.008",
+        "jp.pat.011",
+        "jp.pat.014",
+        "jp.pat.017"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22sd1-004"
+    },
+    {
+      "id": "unit.dm.sd1.012",
+      "legacyId": "CARD-SD1-012",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-012",
+      "name": "フォーク＝フォック",
+      "nameReading": "ふぉーく ふぉっく",
+      "jpText": "そうしたら、アビスを１枚…手札に戻してもよい",
+      "reading": "",
+      "paraphrase_it": "Quando entra puoi millare 3; se lo fai, puoi riprendere 1 Abyss dal cimitero alla mano.",
+      "requiredItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.005",
+        "jp.v.018",
+        "jp.v.024",
+        "jp.v.025",
+        "dm.kw.004",
+        "jp.pat.001",
+        "jp.pat.009",
+        "jp.pat.011",
+        "jp.pat.017"
+      ],
+      "keyItemIds": [
+        "jp.v.003",
+        "jp.v.004",
+        "jp.v.005",
+        "jp.v.018",
+        "jp.v.024",
+        "jp.v.025",
+        "dm.kw.004"
+      ],
+      "keyPatternIds": [
+        "jp.pat.001",
+        "jp.pat.009",
+        "jp.pat.011",
+        "jp.pat.017"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22sd1-010"
+    },
+    {
+      "id": "unit.dm.sd1.013",
+      "legacyId": "CARD-SD1-013",
+      "gameId": "game.duel-masters",
+      "productId": "product.dm25-sd1",
+      "unitType": "card",
+      "slug": "card-sd1-013",
+      "name": "ルピア炎鬼",
+      "nameReading": "るぴあ えんき",
+      "jpText": "召喚以外の方法で / かわりにそのクリーチャーを墓地に置く",
+      "reading": "",
+      "paraphrase_it": "Blocca le entrate speciali: se un giocatore mette in campo una creatura senza evocarla, quella va invece nel cimitero.",
+      "requiredItemIds": [
+        "jp.v.005",
+        "jp.v.019",
+        "jp.v.030",
+        "jp.v.033",
+        "jp.pat.015",
+        "jp.pat.022"
+      ],
+      "keyItemIds": [
+        "jp.v.005",
+        "jp.v.019",
+        "jp.v.030",
+        "jp.v.033"
+      ],
+      "keyPatternIds": [
+        "jp.pat.015",
+        "jp.pat.022"
+      ],
+      "recommendedLessonIds": [
+        "lesson.dm.sd1.01",
+        "lesson.dm.sd1.02"
+      ],
+      "priorityWeight": 2,
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-047"
+    }
+  ]
+}
