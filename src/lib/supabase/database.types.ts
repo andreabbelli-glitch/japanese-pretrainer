@@ -328,6 +328,107 @@ export type Database = {
           updated_at?: string;
         };
       };
+
+      user_goals: {
+        Row: {
+          id: string;
+          user_id: string;
+          title: string;
+          description: string | null;
+          target_type: "game" | "product" | "unit" | "custom";
+          target_id: string | null;
+          linked_item_ids: string[];
+          status: "active" | "paused" | "completed" | "archived";
+          priority: number;
+          due_at: string | null;
+          started_at: string | null;
+          completed_at: string | null;
+          archived_at: string | null;
+          archive_reason: string | null;
+          metadata: Json;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          title: string;
+          description?: string | null;
+          target_type: "game" | "product" | "unit" | "custom";
+          target_id?: string | null;
+          linked_item_ids?: string[];
+          status?: "active" | "paused" | "completed" | "archived";
+          priority?: number;
+          due_at?: string | null;
+          started_at?: string | null;
+          completed_at?: string | null;
+          archived_at?: string | null;
+          archive_reason?: string | null;
+          metadata?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          title?: string;
+          description?: string | null;
+          target_type?: "game" | "product" | "unit" | "custom";
+          target_id?: string | null;
+          linked_item_ids?: string[];
+          status?: "active" | "paused" | "completed" | "archived";
+          priority?: number;
+          due_at?: string | null;
+          started_at?: string | null;
+          completed_at?: string | null;
+          archived_at?: string | null;
+          archive_reason?: string | null;
+          metadata?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      user_item_context_exposure: {
+        Row: {
+          id: string;
+          user_id: string;
+          item_id: string;
+          context_type: "game" | "product" | "unit" | "lesson" | "review" | "goal" | "other";
+          context_id: string;
+          source: string;
+          exposure_count: number;
+          first_exposed_at: string;
+          last_exposed_at: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          item_id: string;
+          context_type: "game" | "product" | "unit" | "lesson" | "review" | "goal" | "other";
+          context_id: string;
+          source?: string;
+          exposure_count?: number;
+          first_exposed_at?: string;
+          last_exposed_at?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          item_id?: string;
+          context_type?: "game" | "product" | "unit" | "lesson" | "review" | "goal" | "other";
+          context_id?: string;
+          source?: string;
+          exposure_count?: number;
+          first_exposed_at?: string;
+          last_exposed_at?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;

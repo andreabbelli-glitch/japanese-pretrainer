@@ -10,6 +10,10 @@ export type UserItemProgressRow = Tables["user_item_progress"]["Row"];
 export type ReviewSessionRow = Tables["review_sessions"]["Row"];
 export type ReviewEventRow = Tables["review_events"]["Row"];
 export type BookmarkRow = Tables["bookmarks"]["Row"];
+export type UserGoalRow = Tables["user_goals"]["Row"];
+export type UserItemContextExposureRow = Tables["user_item_context_exposure"]["Row"];
+
+export type GoalStatus = UserGoalRow["status"];
 
 export async function getAuthenticatedUserId(supabase: DbClient): Promise<string> {
   const {
@@ -25,11 +29,7 @@ export async function getAuthenticatedUserId(supabase: DbClient): Promise<string
 }
 
 export async function getUserSettings(supabase: DbClient, userId: string): Promise<UserSettingsRow | null> {
-  const { data, error } = await supabase
-    .from("user_settings")
-    .select("*")
-    .eq("user_id", userId)
-    .maybeSingle();
+  const { data, error } = await supabase.from("user_settings").select("*").eq("user_id", userId).maybeSingle();
 
   if (error) throw error;
   return data;
@@ -41,11 +41,7 @@ export async function upsertUserSettings(
   settings: Partial<Omit<Tables["user_settings"]["Insert"], "user_id">>,
 ): Promise<UserSettingsRow> {
   const payload: Tables["user_settings"]["Insert"] = { user_id: userId, ...settings };
-  const { data, error } = await supabase
-    .from("user_settings")
-    .upsert(payload, { onConflict: "user_id" })
-    .select("*")
-    .single();
+  const { data, error } = await supabase.from("user_settings").upsert(payload, { onConflict: "user_id" }).select("*").single();
 
   if (error) throw error;
   return data;
@@ -104,11 +100,7 @@ export async function getUserItemProgressByItemIds(
 ): Promise<UserItemProgressRow[]> {
   if (itemIds.length === 0) return [];
 
-  const { data, error } = await supabase
-    .from("user_item_progress")
-    .select("*")
-    .eq("user_id", userId)
-    .in("item_id", itemIds);
+  const { data, error } = await supabase.from("user_item_progress").select("*").eq("user_id", userId).in("item_id", itemIds);
 
   if (error) throw error;
   return data;
@@ -207,7 +199,11 @@ export async function listReviewEventsBySession(
   return data;
 }
 
-export async function listRecentReviewEvents(supabase: DbClient, userId: string, limit = 100): Promise<ReviewEventRow[]> {
+export async function listRecentReviewEvents(
+  supabase: DbClient,
+  userId: string,
+  limit = 100,
+): Promise<ReviewEventRow[]> {
   const { data, error } = await supabase
     .from("review_events")
     .select("*")
@@ -251,20 +247,13 @@ export async function findBookmarkByCardId(supabase: DbClient, userId: string, c
 }
 
 export async function listBookmarks(supabase: DbClient, userId: string): Promise<BookmarkRow[]> {
-  const { data, error } = await supabase
-    .from("bookmarks")
-    .select("*")
-    .eq("user_id", userId)
-    .order("created_at", { ascending: false });
+  const { data, error } = await supabase.from("bookmarks").select("*").eq("user_id", userId).order("created_at", { ascending: false });
 
   if (error) throw error;
   return data;
 }
 
-export async function addBookmark(
-  supabase: DbClient,
-  payload: Tables["bookmarks"]["Insert"],
-): Promise<BookmarkRow> {
+export async function addBookmark(supabase: DbClient, payload: Tables["bookmarks"]["Insert"]): Promise<BookmarkRow> {
   const { data, error } = await supabase.from("bookmarks").insert(payload).select("*").single();
 
   if (error) throw error;
@@ -275,4 +264,132 @@ export async function removeBookmarkById(supabase: DbClient, userId: string, boo
   const { error } = await supabase.from("bookmarks").delete().eq("user_id", userId).eq("id", bookmarkId);
 
   if (error) throw error;
+}
+
+export async function createUserGoal(
+  supabase: DbClient,
+  payload: Tables["user_goals"]["Insert"],
+): Promise<UserGoalRow> {
+  const { data, error } = await supabase.from("user_goals").insert(payload).select("*").single();
+  if (error) throw error;
+  return data;
+}
+
+export async function updateUserGoal(
+  supabase: DbClient,
+  userId: string,
+  goalId: string,
+  patch: Tables["user_goals"]["Update"],
+): Promise<UserGoalRow> {
+  const { data, error } = await supabase
+    .from("user_goals")
+    .update(patch)
+    .eq("user_id", userId)
+    .eq("id", goalId)
+    .select("*")
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function archiveUserGoal(
+  supabase: DbClient,
+  userId: string,
+  goalId: string,
+  archiveReason?: string,
+): Promise<UserGoalRow> {
+  return updateUserGoal(supabase, userId, goalId, {
+    status: "archived",
+    archived_at: new Date().toISOString(),
+    archive_reason: archiveReason ?? null,
+  });
+}
+
+export async function listActiveUserGoals(supabase: DbClient, userId: string): Promise<UserGoalRow[]> {
+  const { data, error } = await supabase
+    .from("user_goals")
+    .select("*")
+    .eq("user_id", userId)
+    .in("status", ["active", "paused"])
+    .is("archived_at", null)
+    .order("priority", { ascending: false })
+    .order("created_at", { ascending: false });
+
+  if (error) throw error;
+  return data;
+}
+
+export async function getGoalLinkedProgressView(
+  supabase: DbClient,
+  userId: string,
+  goalId: string,
+): Promise<{ goal: UserGoalRow; progress: UserItemProgressRow[] }> {
+  const { data: goal, error: goalError } = await supabase
+    .from("user_goals")
+    .select("*")
+    .eq("user_id", userId)
+    .eq("id", goalId)
+    .maybeSingle();
+
+  if (goalError) throw goalError;
+  if (!goal) {
+    throw new Error("Obiettivo non trovato.");
+  }
+
+  const itemIds = goal.linked_item_ids ?? [];
+  const progress = itemIds.length === 0 ? [] : await getUserItemProgressByItemIds(supabase, userId, itemIds);
+
+  return { goal, progress };
+}
+
+export async function recordItemContextExposure(
+  supabase: DbClient,
+  payload: Tables["user_item_context_exposure"]["Insert"],
+): Promise<UserItemContextExposureRow> {
+  const now = new Date().toISOString();
+
+  const { data, error } = await supabase
+    .from("user_item_context_exposure")
+    .upsert(
+      {
+        ...payload,
+        first_exposed_at: payload.first_exposed_at ?? now,
+        last_exposed_at: now,
+        exposure_count: 1,
+      },
+      { onConflict: "user_id,item_id,context_type,context_id", ignoreDuplicates: true },
+    )
+    .select("*")
+    .single();
+
+  if (!error && data) {
+    return data;
+  }
+
+  const { data: existing, error: selectError } = await supabase
+    .from("user_item_context_exposure")
+    .select("*")
+    .eq("user_id", payload.user_id)
+    .eq("item_id", payload.item_id)
+    .eq("context_type", payload.context_type)
+    .eq("context_id", payload.context_id)
+    .single();
+
+  if (selectError) throw selectError;
+
+  const { data: updated, error: updateError } = await supabase
+    .from("user_item_context_exposure")
+    .update({
+      exposure_count: existing.exposure_count + 1,
+      last_exposed_at: now,
+      source: payload.source ?? existing.source,
+    })
+    .eq("id", existing.id)
+    .eq("user_id", payload.user_id)
+    .select("*")
+    .single();
+
+  if (updateError) throw updateError;
+  return updated;
 }
