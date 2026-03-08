@@ -6,7 +6,10 @@ export default function CoreLearnPage() {
   const lessons = loadCoreLessonsIndex();
 
   return (
-    <PageShell title="Core Learning" description="Lezioni core cross-game del layer linguistico canonico.">
+    <PageShell
+      title="Core Japanese Layer"
+      description="Base linguistica canonica: impari una volta e riusi su giochi/prodotti diversi."
+    >
       <ul className="space-y-2">
         {lessons.map((lesson) => (
           <li key={lesson.id} className="rounded-lg border border-slate-200 bg-white p-3">
