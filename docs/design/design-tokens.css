@@ -1,0 +1,202 @@
+:root {
+  /* Font families */
+  --font-family-display: "Newsreader", "Iowan Old Style", "Palatino Linotype",
+    serif;
+  --font-family-ui: "Instrument Sans", "Avenir Next", "Segoe UI", sans-serif;
+  --font-family-jp: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-family-mono: "SFMono-Regular", "SF Mono", "Cascadia Code",
+    "Roboto Mono", monospace;
+
+  /* Warm neutral palette */
+  --color-canvas: #f2ece1;
+  --color-page: #f7f2e8;
+  --color-panel: #fffaf2;
+  --color-panel-muted: #efe5d5;
+  --color-panel-quiet: #e8dece;
+  --color-panel-inverse: #2e2823;
+
+  --color-ink-strong: #1f1b18;
+  --color-ink: #312a25;
+  --color-ink-muted: #6a6158;
+  --color-ink-soft: #8b8176;
+  --color-ink-inverse: #f7f2e8;
+
+  --color-border-subtle: #e1d6c5;
+  --color-border: #d2c5b1;
+  --color-border-strong: #c0af96;
+
+  /* Accent palette */
+  --color-accent: #62724d;
+  --color-accent-strong: #4f603b;
+  --color-accent-soft: #dde5d1;
+  --color-accent-ink: #233018;
+
+  --color-vermillion: #b65c44;
+  --color-vermillion-strong: #9b4631;
+  --color-vermillion-soft: #f1ddd6;
+
+  --color-amber: #a9803a;
+  --color-amber-strong: #8c682b;
+  --color-amber-soft: #efe3cb;
+
+  /* State colors */
+  --color-success: var(--color-accent);
+  --color-success-soft: var(--color-accent-soft);
+  --color-warning: var(--color-amber);
+  --color-warning-soft: var(--color-amber-soft);
+  --color-danger: var(--color-vermillion);
+  --color-danger-soft: var(--color-vermillion-soft);
+
+  /* Review grading */
+  --color-review-again: #b65c44;
+  --color-review-again-soft: #f1ddd6;
+  --color-review-hard: #a9803a;
+  --color-review-hard-soft: #efe3cb;
+  --color-review-good: #62724d;
+  --color-review-good-soft: #dde5d1;
+  --color-review-easy: #456041;
+  --color-review-easy-soft: #d5e0cf;
+
+  /* Inline study annotations */
+  --color-term-underline: rgba(98, 114, 77, 0.42);
+  --color-term-active-bg: rgba(98, 114, 77, 0.12);
+  --color-grammar-underline: rgba(169, 128, 58, 0.5);
+  --color-grammar-active-bg: rgba(169, 128, 58, 0.14);
+  --color-highlight-search: rgba(182, 92, 68, 0.18);
+
+  /* Backdrop and focus */
+  --color-backdrop: rgba(31, 27, 24, 0.28);
+  --color-focus-ring: rgba(98, 114, 77, 0.28);
+  --color-selection: rgba(182, 92, 68, 0.2);
+
+  /* Surface aliases */
+  --surface-app: var(--color-canvas);
+  --surface-page: var(--color-page);
+  --surface-card: var(--color-panel);
+  --surface-card-muted: var(--color-panel-muted);
+  --surface-card-quiet: var(--color-panel-quiet);
+  --surface-tooltip: #fff8ef;
+  --surface-sheet: #fff8ef;
+  --surface-review: #fff7ec;
+  --surface-nav: rgba(247, 242, 232, 0.9);
+
+  /* Typography scale */
+  --text-hero: clamp(1.875rem, 1.5rem + 1vw, 2.75rem);
+  --text-display: clamp(1.5rem, 1.25rem + 0.8vw, 2.125rem);
+  --text-title: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem);
+  --text-subtitle: 1.125rem;
+  --text-body: 1rem;
+  --text-body-jp: 1.0625rem;
+  --text-small: 0.9375rem;
+  --text-label: 0.8125rem;
+  --text-ruby: 0.58em;
+  --text-micro: 0.75rem;
+
+  --line-height-tight: 1.2;
+  --line-height-copy: 1.62;
+  --line-height-jp: 1.9;
+  --line-height-ui: 1.4;
+
+  --tracking-display: -0.02em;
+  --tracking-title: -0.012em;
+  --tracking-ui: 0;
+  --tracking-label: 0.02em;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Spacing scale */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 2.5rem;
+  --space-9: 3rem;
+  --space-10: 3.5rem;
+  --space-11: 4rem;
+  --space-12: 5rem;
+
+  /* Radius */
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.125rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 999px;
+
+  /* Borders and shadows */
+  --border-thin: 1px;
+  --border-strong: 1.5px;
+
+  --shadow-card: 0 12px 24px rgba(74, 57, 38, 0.08);
+  --shadow-float: 0 18px 36px rgba(74, 57, 38, 0.11);
+  --shadow-sheet: 0 -12px 30px rgba(49, 42, 37, 0.16);
+  --shadow-focus: 0 0 0 3px var(--color-focus-ring);
+
+  /* Motion */
+  --motion-fast: 140ms;
+  --motion-base: 180ms;
+  --motion-slow: 240ms;
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.18, 0.88, 0.32, 1);
+
+  /* Layering */
+  --z-base: 1;
+  --z-sticky: 20;
+  --z-popover: 40;
+  --z-sheet: 50;
+  --z-toast: 60;
+  --z-modal: 70;
+
+  /* Layout widths */
+  --page-max-width: 73.75rem;
+  --glossary-max-width: 80rem;
+  --reader-max-width: 85rem;
+  --review-max-width: 61.25rem;
+  --reader-column-max: 46rem;
+  --lesson-rail-width: 17.5rem;
+  --glossary-list-width: 26rem;
+  --tooltip-max-width: 22rem;
+  --sheet-max-height: 80vh;
+
+  /* App chrome */
+  --app-header-height-mobile: 3.5rem;
+  --app-header-height-desktop: 4.5rem;
+  --study-strip-height-mobile: 3.25rem;
+  --bottom-nav-height: 4.5rem;
+  --action-dock-height: 5.25rem;
+  --touch-target-min: 44px;
+
+  /* Component tokens */
+  --card-padding: var(--space-6);
+  --card-gap: var(--space-4);
+  --section-gap: var(--space-8);
+  --chip-height: 2rem;
+  --segmented-height: 2.5rem;
+  --button-height: 2.875rem;
+  --button-height-lg: 3.25rem;
+  --study-header-blur: 14px;
+  --reader-block-gap: var(--space-7);
+  --reader-inline-padding: var(--space-4);
+  --review-card-min-height: 19rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --text-body-jp: 1.125rem;
+    --card-padding: var(--space-7);
+    --reader-inline-padding: var(--space-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-base: 0ms;
+    --motion-slow: 0ms;
+  }
+}
