@@ -132,6 +132,13 @@ export async function getDueReviewItems(
   return data;
 }
 
+export async function listUserItemProgress(supabase: DbClient, userId: string): Promise<UserItemProgressRow[]> {
+  const { data, error } = await supabase.from("user_item_progress").select("*").eq("user_id", userId);
+
+  if (error) throw error;
+  return data;
+}
+
 export async function upsertUserItemProgress(
   supabase: DbClient,
   payload: Tables["user_item_progress"]["Insert"],
@@ -195,6 +202,49 @@ export async function listReviewEventsBySession(
     .eq("user_id", userId)
     .eq("session_id", sessionId)
     .order("created_at", { ascending: true });
+
+  if (error) throw error;
+  return data;
+}
+
+export async function listRecentReviewEvents(supabase: DbClient, userId: string, limit = 100): Promise<ReviewEventRow[]> {
+  const { data, error } = await supabase
+    .from("review_events")
+    .select("*")
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error) throw error;
+  return data;
+}
+
+export async function listLessonProgressByUser(supabase: DbClient, userId: string): Promise<LessonProgressRow[]> {
+  const { data, error } = await supabase.from("lesson_progress").select("*").eq("user_id", userId);
+
+  if (error) throw error;
+  return data;
+}
+
+export async function listRecentReviewSessions(supabase: DbClient, userId: string, limit = 30): Promise<ReviewSessionRow[]> {
+  const { data, error } = await supabase
+    .from("review_sessions")
+    .select("*")
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error) throw error;
+  return data;
+}
+
+export async function findBookmarkByCardId(supabase: DbClient, userId: string, cardId: string): Promise<BookmarkRow | null> {
+  const { data, error } = await supabase
+    .from("bookmarks")
+    .select("*")
+    .eq("user_id", userId)
+    .eq("card_id", cardId)
+    .maybeSingle();
 
   if (error) throw error;
   return data;
