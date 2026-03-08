@@ -1,15 +1,15 @@
-import type { Route } from "next";
-import Link from "next/link";
+import type { Route } from 'next';
+import Link from 'next/link';
 
 const links: { href: Route; label: string }[] = [
-  { href: "/", label: "Home" },
-  { href: "/lessons", label: "Lezioni" },
-  { href: "/items", label: "Item" },
-  { href: "/cards", label: "Carte" },
-  { href: "/decks", label: "Mazzi" },
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/review", label: "Review" },
-  { href: "/settings", label: "Impostazioni" },
+  { href: '/', label: 'Home' },
+  { href: '/dashboard', label: 'Dashboard' },
+  { href: '/goals', label: 'Obiettivi' },
+  { href: '/learn/core', label: 'Core' },
+  { href: '/items', label: 'Item' },
+  { href: '/games', label: 'Giochi' },
+  { href: '/review', label: 'Review' },
+  { href: '/settings', label: 'Impostazioni' },
 ];
 
 export function MainNav() {

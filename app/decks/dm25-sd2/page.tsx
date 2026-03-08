@@ -1,5 +1,5 @@
-import DeckDetailPage from "@/app/decks/[slug]/page";
+import { redirect } from 'next/navigation';
 
-export default function DeckSD2Page() {
-  return <DeckDetailPage params={Promise.resolve({ slug: "dm25-sd2" })} />;
+export default function LegacyDeckSd2Redirect() {
+  redirect('/games/game.duel-masters/products/product.dm25-sd2');
 }
