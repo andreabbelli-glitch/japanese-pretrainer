@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FuriganaToggle, RelatedCardsList, RelatedItemsList } from "@/src/components/learning";
+import { AddToReviewForm, FuriganaToggle, RelatedCardsList, RelatedItemsList } from "@/src/components/learning";
 import { PageShell } from "@/src/components/page-shell";
 import { getCardById, getExamplesForItem, getItemById, getItems } from "@/src/domain/content";
 
@@ -14,7 +14,9 @@ export default async function ItemDetailPage({ params }: { params: Promise<{ id:
 
   const examples = getExamplesForItem(item.id);
   const cards = item.relatedCardIds.map((cardId) => getCardById(cardId)).filter((card) => card !== undefined);
-  const relatedPatterns = getItems().filter((candidate) => candidate.type === "pattern" && candidate.relatedCardIds.some((cardId) => item.relatedCardIds.includes(cardId)));
+  const relatedPatterns = getItems().filter(
+    (candidate) => candidate.type === "pattern" && candidate.relatedCardIds.some((cardId) => item.relatedCardIds.includes(cardId)),
+  );
 
   return (
     <PageShell title={`${item.id} — ${item.term}`} description="Scheda item completa per studio + collegamenti diretti a carte e review.">
@@ -53,9 +55,12 @@ export default async function ItemDetailPage({ params }: { params: Promise<{ id:
       <div className="rounded-lg border border-slate-200 bg-slate-900 p-4 text-sm text-white">
         <p className="font-semibold">Pronto per ripasso?</p>
         <p className="mt-1">Aggiungi questo item alla routine review per consolidare memoria e lettura reale.</p>
-        <Link href="/review" className="mt-3 inline-block rounded-md bg-white px-3 py-2 font-medium text-slate-900">
-          Vai alla review
-        </Link>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <AddToReviewForm itemId={item.id} />
+          <Link href="/review" className="inline-block rounded-md bg-white px-3 py-2 font-medium text-slate-900">
+            Vai alla review
+          </Link>
+        </div>
       </div>
     </PageShell>
   );
