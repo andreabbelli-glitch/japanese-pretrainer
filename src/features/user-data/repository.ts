@@ -81,6 +81,39 @@ export async function upsertLessonProgress(
   return data;
 }
 
+export async function getUserItemProgress(
+  supabase: DbClient,
+  userId: string,
+  itemId: string,
+): Promise<UserItemProgressRow | null> {
+  const { data, error } = await supabase
+    .from("user_item_progress")
+    .select("*")
+    .eq("user_id", userId)
+    .eq("item_id", itemId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function getUserItemProgressByItemIds(
+  supabase: DbClient,
+  userId: string,
+  itemIds: string[],
+): Promise<UserItemProgressRow[]> {
+  if (itemIds.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from("user_item_progress")
+    .select("*")
+    .eq("user_id", userId)
+    .in("item_id", itemIds);
+
+  if (error) throw error;
+  return data;
+}
+
 export async function getDueReviewItems(
   supabase: DbClient,
   userId: string,
@@ -123,11 +156,45 @@ export async function createReviewSession(
   return data;
 }
 
+export async function updateReviewSession(
+  supabase: DbClient,
+  sessionId: string,
+  userId: string,
+  patch: Tables["review_sessions"]["Update"],
+): Promise<ReviewSessionRow> {
+  const { data, error } = await supabase
+    .from("review_sessions")
+    .update(patch)
+    .eq("id", sessionId)
+    .eq("user_id", userId)
+    .select("*")
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
 export async function insertReviewEvent(
   supabase: DbClient,
   payload: Tables["review_events"]["Insert"],
 ): Promise<ReviewEventRow> {
   const { data, error } = await supabase.from("review_events").insert(payload).select("*").single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function listReviewEventsBySession(
+  supabase: DbClient,
+  userId: string,
+  sessionId: string,
+): Promise<ReviewEventRow[]> {
+  const { data, error } = await supabase
+    .from("review_events")
+    .select("*")
+    .eq("user_id", userId)
+    .eq("session_id", sessionId)
+    .order("created_at", { ascending: true });
 
   if (error) throw error;
   return data;

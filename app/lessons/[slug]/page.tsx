@@ -2,6 +2,7 @@ import type { Route } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  AddToReviewForm,
   AttentionCallout,
   QuickRecognitionBox,
   RelatedCardsList,
@@ -127,6 +128,17 @@ export default async function LessonDetailPage({ params }: { params: Promise<{ s
           </ul>
         </section>
       ) : null}
+
+
+      <section className="space-y-2 rounded-lg border border-slate-200 bg-white p-4">
+        <h2 className="text-base font-semibold text-slate-900">CTA review rapida</h2>
+        <p className="text-sm text-slate-700">Aggiungi 3 item chiave della lezione alla review di oggi.</p>
+        <div className="flex flex-wrap gap-2">
+          {items.slice(0, 3).map((item) => (
+            <AddToReviewForm key={item.id} itemId={item.id} compact />
+          ))}
+        </div>
+      </section>
 
       <RelatedItemsList items={items.slice(0, 10)} />
       <RelatedCardsList cards={cards} />
