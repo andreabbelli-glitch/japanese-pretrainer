@@ -67,7 +67,30 @@ pnpm format:check
 pnpm typecheck
 pnpm test
 pnpm check
+pnpm db:generate
+pnpm db:migrate
+pnpm db:seed
+pnpm db:setup
+pnpm db:studio
 ```
+
+## Database locale
+
+Il layer persistence iniziale usa `Drizzle ORM` su `SQLite` locale-first.
+
+Comandi principali:
+
+```sh
+./scripts/with-node.sh pnpm db:generate
+./scripts/with-node.sh pnpm db:migrate
+./scripts/with-node.sh pnpm db:seed
+./scripts/with-node.sh pnpm db:setup
+```
+
+Di default il DB viene creato in `./data/japanese-custom-study.db`, ma puoi
+sovrascrivere il path con `DATABASE_URL`.
+
+Dettagli operativi e schema: [Persistence layer](./docs/database.md)
 
 ## Variabili ambiente
 
@@ -94,6 +117,7 @@ docs/
 ## Documenti
 
 - [Blueprint operativo](./docs/blueprint-operativo.md)
+- [Persistence layer](./docs/database.md)
 - [Schema dati iniziale](./docs/schema-dati-iniziale.md)
 - [Specifica contenuti Markdown](./docs/content-format.md)
 - [Handoff per LLM esterno](./docs/llm-content-handoff.md)

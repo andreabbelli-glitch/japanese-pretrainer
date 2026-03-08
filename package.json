@@ -12,12 +12,20 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
+    "db:migrate": "node --experimental-strip-types --experimental-default-type=module ./scripts/db-migrate.ts",
+    "db:seed": "node --experimental-strip-types --experimental-default-type=module ./scripts/db-seed.ts",
+    "db:setup": "pnpm db:migrate && pnpm db:seed",
+    "db:studio": "drizzle-kit studio --config=drizzle.config.ts",
     "check": "pnpm lint && pnpm typecheck && pnpm test"
   },
   "dependencies": {
     "@fontsource-variable/instrument-sans": "^5.2.8",
     "@fontsource/biz-udpgothic": "^5.2.9",
     "@fontsource/newsreader": "^5.2.10",
+    "@libsql/client": "^0.17.0",
+    "dotenv": "^17.3.1",
+    "drizzle-orm": "^0.45.1",
     "next": "^16.1.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
@@ -26,10 +34,16 @@
     "@types/node": "^25.3.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "drizzle-kit": "^0.31.9",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.1.6",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
