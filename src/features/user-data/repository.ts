@@ -1,0 +1,161 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/src/lib/supabase/database.types";
+
+type DbClient = SupabaseClient<Database>;
+type Tables = Database["public"]["Tables"];
+
+export type UserSettingsRow = Tables["user_settings"]["Row"];
+export type LessonProgressRow = Tables["lesson_progress"]["Row"];
+export type UserItemProgressRow = Tables["user_item_progress"]["Row"];
+export type ReviewSessionRow = Tables["review_sessions"]["Row"];
+export type ReviewEventRow = Tables["review_events"]["Row"];
+export type BookmarkRow = Tables["bookmarks"]["Row"];
+
+export async function getAuthenticatedUserId(supabase: DbClient): Promise<string> {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (error || !user) {
+    throw new Error("Utente non autenticato.");
+  }
+
+  return user.id;
+}
+
+export async function getUserSettings(supabase: DbClient, userId: string): Promise<UserSettingsRow | null> {
+  const { data, error } = await supabase
+    .from("user_settings")
+    .select("*")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function upsertUserSettings(
+  supabase: DbClient,
+  userId: string,
+  settings: Partial<Omit<Tables["user_settings"]["Insert"], "user_id">>,
+): Promise<UserSettingsRow> {
+  const payload: Tables["user_settings"]["Insert"] = { user_id: userId, ...settings };
+  const { data, error } = await supabase
+    .from("user_settings")
+    .upsert(payload, { onConflict: "user_id" })
+    .select("*")
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function getLessonProgress(
+  supabase: DbClient,
+  userId: string,
+  lessonId: string,
+): Promise<LessonProgressRow | null> {
+  const { data, error } = await supabase
+    .from("lesson_progress")
+    .select("*")
+    .eq("user_id", userId)
+    .eq("lesson_id", lessonId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function upsertLessonProgress(
+  supabase: DbClient,
+  payload: Tables["lesson_progress"]["Insert"],
+): Promise<LessonProgressRow> {
+  const { data, error } = await supabase
+    .from("lesson_progress")
+    .upsert(payload, { onConflict: "user_id,lesson_id" })
+    .select("*")
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function getDueReviewItems(
+  supabase: DbClient,
+  userId: string,
+  limit = 20,
+): Promise<UserItemProgressRow[]> {
+  const now = new Date().toISOString();
+  const { data, error } = await supabase
+    .from("user_item_progress")
+    .select("*")
+    .eq("user_id", userId)
+    .lte("due_at", now)
+    .order("due_at", { ascending: true })
+    .limit(limit);
+
+  if (error) throw error;
+  return data;
+}
+
+export async function upsertUserItemProgress(
+  supabase: DbClient,
+  payload: Tables["user_item_progress"]["Insert"],
+): Promise<UserItemProgressRow> {
+  const { data, error } = await supabase
+    .from("user_item_progress")
+    .upsert(payload, { onConflict: "user_id,item_id" })
+    .select("*")
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function createReviewSession(
+  supabase: DbClient,
+  payload: Tables["review_sessions"]["Insert"],
+): Promise<ReviewSessionRow> {
+  const { data, error } = await supabase.from("review_sessions").insert(payload).select("*").single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function insertReviewEvent(
+  supabase: DbClient,
+  payload: Tables["review_events"]["Insert"],
+): Promise<ReviewEventRow> {
+  const { data, error } = await supabase.from("review_events").insert(payload).select("*").single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function listBookmarks(supabase: DbClient, userId: string): Promise<BookmarkRow[]> {
+  const { data, error } = await supabase
+    .from("bookmarks")
+    .select("*")
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false });
+
+  if (error) throw error;
+  return data;
+}
+
+export async function addBookmark(
+  supabase: DbClient,
+  payload: Tables["bookmarks"]["Insert"],
+): Promise<BookmarkRow> {
+  const { data, error } = await supabase.from("bookmarks").insert(payload).select("*").single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function removeBookmarkById(supabase: DbClient, userId: string, bookmarkId: string): Promise<void> {
+  const { error } = await supabase.from("bookmarks").delete().eq("user_id", userId).eq("id", bookmarkId);
+
+  if (error) throw error;
+}
