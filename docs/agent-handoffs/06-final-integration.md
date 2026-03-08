@@ -1,57 +1,49 @@
 # 06 — Final Integration / Dashboard / Mastery / Coverage / QA
 
 ## Cosa è stato implementato
-- Modulo dominio `src/domain/progress/` introdotto per calcolo mastery/coverage/insight, separato dalla UI.
-- Dashboard reale (`/dashboard`) ora mostra:
-  - due today
-  - new today
+- Integrazione finale V1 tra contenuto canonico, review engine e obiettivo deck coverage.
+- Dashboard reale (`/dashboard`) con metriche da dati utente effettivi:
+  - in scadenza oggi
+  - nuovi oggi
   - streak
   - retention estimate
-  - conteggi item per stato
-  - SD1 coverage / SD2 coverage
+  - conteggio item per stato
+  - coverage SD1 / SD2
   - lezioni suggerite
-  - carte leggibili/quasi leggibili
+  - carte leggibili / quasi leggibili
   - top gap linguistici SD1/SD2
-- Card page (`/cards/[slug]`) arricchita con:
-  - barra coverage carta
-  - spiegazione gap reali (item mancanti + peso)
-  - next best study actions
-  - contesto coverage del deck
-  - bookmark/favorites (aggiungi/rimuovi)
-- Deck page (`/decks/[slug]`) arricchita con:
+  - pannello “study next” con impatto su carte reali
+- Card page (`/cards/[slug]`) estesa con:
+  - coverage bar e spiegazione soglia
+  - gap collegati con mastery e peso
+  - next best actions
+  - suggerimenti di sblocco cross-carta dal deck
+- Deck page (`/decks/[slug]`) estesa con:
   - coverage complessiva
-  - carte più vicine a sblocco
-  - colli di bottiglia linguistici
-  - suggerimenti “study next” con carte impattate
-- Migliorie UX finali:
-  - loading + error states su dashboard/card/deck
-  - shortcut review 1/2/3/4 funzionanti in review session
-- QA/Test/CI:
-  - Vitest config dedicata (`vitest.config.ts`)
-  - test unit nuovi per dominio progress/mastery/coverage
-  - Playwright smoke setup (`playwright.config.ts`, `tests/e2e/smoke.spec.ts`)
-  - GitHub Actions CI (`.github/workflows/ci.yml`) con lint/typecheck/test/build/e2e
+  - carte più vicine allo sblocco
+  - bottleneck linguistici con impatto
+  - suggerimenti “study next” concreti
+- Bookmark/favorites confermato operativo su card page.
+- QA/CI consolidati:
+  - Vitest unit test per review/progress/routes
+  - Playwright smoke test multi-flow
+  - workflow CI con lint/typecheck/test/build/e2e
 
 ## Formula mastery (V1)
-Implementata in `computeMasteryFromProgress`.
+Implementata in `src/domain/progress/coverage.ts` (`computeMasteryFromProgress`).
 
-### Output
-- range clampato `0–100`
-
-### Componenti formula
-- Base per stato:
+### Componenti
+- `base` per stato review:
   - `new = 0`
   - `learning = 28`
   - `review = 58`
   - `relearning = 32`
   - `mature = 86`
-- Bonus:
-  - `intervalBonus = min(interval_days * 1.4, 14)`
-  - `streakBonus = min(streak * 1.8, 10)`
-- Penalità:
-  - `lapsePenalty = min(lapses * 4, 20)`
-  - `recencyPenalty = min(daysSinceLastReview * 1.2, 15)`
-  - `duePenalty = min(daysOverdue * 6, 20)` (solo se overdue)
+- `intervalBonus = min(interval_days * 1.4, 14)`
+- `streakBonus = min(streak * 1.8, 10)`
+- `lapsePenalty = min(lapses * 4, 20)`
+- `recencyPenalty = min(daysSinceLastReview * 1.2, 15)`
+- `duePenalty = min(daysOverdue * 6, 20)` se overdue
 
 ### Formula finale
 `mastery = clamp(base + intervalBonus + streakBonus - lapsePenalty - recencyPenalty - duePenalty, 0, 100)`
@@ -64,38 +56,30 @@ Implementata in `computeMasteryFromProgress`.
 - `nice = 1`
 
 ### Coverage carta
-Per una carta:
-- requisiti = `itemIds + keyItemIds + keyPatternIds` (deduplicati)
-- formula:
-
 `coverage(card) = sum(weight(item) * mastery(item)) / sum(weight(item) * 100) * 100`
 
-### Coverage deck
-- media delle coverage delle carte uniche del deck:
+Requisiti usati: `itemIds + keyItemIds + keyPatternIds` (deduplicati).
 
-`coverage(deck) = avg(coverage(card_i))`
+### Coverage deck
+Media delle coverage delle carte uniche del deck.
 
 ## Test implementati
-- Unit tests Vitest:
-  - `tests/review-domain.test.ts` (già presente)
-  - `tests/routes.test.ts` (già presente)
-  - `tests/progress-domain.test.ts` (nuovo)
-- Smoke/E2E Playwright:
-  - auth gate (redirect login)
-  - apertura lezione + item page
-  - card/deck coverage UI
+- Unit test:
+  - `tests/review-domain.test.ts`
+  - `tests/progress-domain.test.ts`
+  - `tests/routes.test.ts`
+- Smoke/E2E:
+  - `tests/e2e/smoke.spec.ts` copre auth gate, apertura lezione, item page, review/session gate, card page, deck page, dashboard gate.
 - CI:
-  - lint, typecheck, test, build, install browser, e2e
+  - `.github/workflows/ci.yml` con `npm ci`, lint, typecheck, unit test, build, install browser, e2e.
 
 ## Stato finale V1
-- Review engine + content graph + deck goal ora collegati con metriche reali di mastery/coverage.
-- Dashboard non è più cosmetica: mostra KPI derivati da dati user-state reali.
-- Card/deck pages spiegano esplicitamente i gap e propongono studio concreto per sbloccare carte.
-- Bookmark/favorites su card page completato.
+- V1 ora ha ciclo completo: contenuto -> studio -> review -> mastery -> coverage -> insight pratici.
+- Dashboard e pagine card/deck mostrano metriche non decorative, con motivazioni esplicite sui gap.
+- Architettura resta coerente con principio content-first e separazione content repo / user state DB.
 
-## Backlog V1.5 (breve e realistico)
-1. Stabilizzare e2e in ambienti con mirror browser Playwright (attuale limite: download Chromium 403 in questo environment).
-2. Persistenza “unlock timeline” per mostrare davvero “ultime carte diventate leggibili” come evento storico.
-3. Migliorare suggerimenti lesson con lesson_progress reale (not_started/in_progress/completed + mastery).
-4. Esporre spiegazioni coverage anche in `/cards` e `/decks` list pages (preview-level).
-5. Aggiungere retry intraseduta opzionale per item `Again` immediati.
+## Backlog V1.5 (breve, realistico)
+1. E2E autenticati con utente seedato e scenario review completo end-to-end (oltre ai gate smoke).
+2. Timeline storica “carte appena sbloccate” basata su eventi persistiti, non solo snapshot corrente.
+3. Insight lezione più precisi combinando `lesson_progress` + mastery medio + impatto coverage deck.
+4. Migliorare explainability in list pages (`/cards`, `/decks`) con preview dei gap principali.

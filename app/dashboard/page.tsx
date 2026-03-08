@@ -35,15 +35,15 @@ export default async function DashboardPage() {
   return (
     <section className="space-y-4 rounded-lg border border-slate-200 bg-white p-5">
       <header className="space-y-1">
-        <h1 className="text-2xl font-semibold text-slate-900">Dashboard</h1>
+        <h1 className="text-2xl font-semibold text-slate-900">Dashboard studio</h1>
         <p className="text-sm text-slate-700">Progresso reale: review, mastery e copertura deck SD1/SD2.</p>
       </header>
 
       <section className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-        <Metric label="Due today" value={String(metrics.dueToday)} />
-        <Metric label="New today" value={String(metrics.newToday)} />
-        <Metric label="Streak" value={`${metrics.streakDays} giorni`} />
-        <Metric label="Retention estimate" value={`${metrics.retentionEstimate}%`} />
+        <Metric label="In scadenza oggi" value={String(metrics.dueToday)} />
+        <Metric label="Nuovi oggi" value={String(metrics.newToday)} />
+        <Metric label="Serie" value={`${metrics.streakDays} giorni`} />
+        <Metric label="Ritenzione stimata" value={`${metrics.retentionEstimate}%`} />
       </section>
 
       <section className="rounded-md border border-slate-200 bg-slate-50 p-4 text-sm">
@@ -58,8 +58,8 @@ export default async function DashboardPage() {
       </section>
 
       <section className="grid gap-3 md:grid-cols-2">
-        <CoverageTile title="SD1 coverage" value={metrics.sd1Coverage} href={"/decks/dm25-sd1" as Route} />
-        <CoverageTile title="SD2 coverage" value={metrics.sd2Coverage} href={"/decks/dm25-sd2" as Route} />
+        <CoverageTile title="Copertura SD1" value={metrics.sd1Coverage} href={"/decks/dm25-sd1" as Route} />
+        <CoverageTile title="Copertura SD2" value={metrics.sd2Coverage} href={"/decks/dm25-sd2" as Route} />
       </section>
 
       <section className="grid gap-3 md:grid-cols-2">
@@ -103,8 +103,29 @@ export default async function DashboardPage() {
       </section>
 
       <section className="grid gap-3 md:grid-cols-2">
-        <DeckInsight title="Top gap SD1" gaps={sd1?.topBottlenecks.map((gap) => `${gap.item.id} (${gap.cardCount} carte)`) ?? []} />
-        <DeckInsight title="Top gap SD2" gaps={sd2?.topBottlenecks.map((gap) => `${gap.item.id} (${gap.cardCount} carte)`) ?? []} />
+        <DeckInsight title="Top gap SD1" gaps={sd1?.topBottlenecks.map((gap) => `${gap.item.id} ${gap.item.term} · ${gap.cardCount} carte`) ?? []} />
+        <DeckInsight title="Top gap SD2" gaps={sd2?.topBottlenecks.map((gap) => `${gap.item.id} ${gap.item.term} · ${gap.cardCount} carte`) ?? []} />
+      </section>
+
+
+      <section className="rounded-md border border-slate-200 bg-slate-50 p-4 text-sm">
+        <p className="font-semibold text-slate-900">Study next (impatto reale)</p>
+        {metrics.studyNext.length > 0 ? (
+          <ul className="mt-2 space-y-2">
+            {metrics.studyNext.map((entry) => (
+              <li key={entry.item.id} className="rounded bg-white p-3">
+                <p className="font-medium text-slate-900">
+                  {entry.item.id} — {entry.item.term}
+                </p>
+                <p className="text-slate-700">
+                  Se lo consolidi, aiuti: {entry.unlocks.slice(0, 3).map((card) => card.nameJa).join(" · ")}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-2 text-slate-700">Nessuna priorità netta: continua con review giornaliera.</p>
+        )}
       </section>
 
       <div className="flex flex-wrap gap-2">

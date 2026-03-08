@@ -53,7 +53,7 @@ export default async function DeckDetailPage({ params }: { params: Promise<{ slu
                 <Link href={`/cards/${entry.card.slug}` as Route} className="font-semibold text-slate-900 hover:underline">
                   {entry.card.nameJa}
                 </Link>
-                <p>Coverage: {entry.coverage}% · Gap critici: {entry.missingItems.slice(0, 2).map((gap) => gap.item.id).join(", ") || "nessuno"}</p>
+                <p>Coverage: {entry.coverage}% · Gap critici: {entry.missingItems.slice(0, 2).map((gap) => `${gap.item.id} (${gap.mastery}%)`).join(", ") || "nessuno"}</p>
               </li>
             ))}
           </ul>
