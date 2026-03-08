@@ -1,7 +1,12 @@
-import Link from "next/link";
-import type { StudyItem } from "@/src/domain/content";
+import Link from 'next/link';
 
-export function RelatedItemsList({ items }: { items: StudyItem[] }) {
+type RelatedItemPreview = {
+  id: string;
+  term: string;
+  meaning: string;
+};
+
+export function RelatedItemsList({ items }: { items: RelatedItemPreview[] }) {
   return (
     <section className="space-y-3 rounded-lg border border-slate-200 bg-white p-4">
       <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-700">Item collegati</h3>
