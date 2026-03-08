@@ -1,17 +1,49 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
-NVM_SH="/opt/homebrew/opt/nvm/nvm.sh"
-NODE_VERSION="$(cat "$(dirname "$0")/../.nvmrc")"
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+ORIGINAL_NVM_DIR="${NVM_DIR:-}"
+DEFAULT_NVM_DIR="$HOME/.nvm"
+export NVM_DIR="${ORIGINAL_NVM_DIR:-$DEFAULT_NVM_DIR}"
+NODE_VERSION="$(cat "$ROOT_DIR/.nvmrc")"
+CURRENT_NODE_VERSION="$(node --version 2>/dev/null || true)"
 
-if [[ ! -s "$NVM_SH" ]]; then
-  echo "nvm init script not found at $NVM_SH" >&2
-  exit 1
+if [[ "$CURRENT_NODE_VERSION" == "v$NODE_VERSION" ]]; then
+  exec "$@"
 fi
 
-# shellcheck source=/dev/null
-. "$NVM_SH"
-nvm use --silent "$NODE_VERSION" >/dev/null
+NVM_SCRIPT_CANDIDATES=(
+  "$NVM_DIR/nvm.sh"
+  "$DEFAULT_NVM_DIR/nvm.sh"
+  "/opt/homebrew/opt/nvm/nvm.sh"
+  "/usr/local/opt/nvm/nvm.sh"
+)
 
-exec "$@"
+NVM_DATA_CANDIDATES=(
+  "$NVM_DIR"
+  "$DEFAULT_NVM_DIR"
+)
+
+for NVM_SH in "${NVM_SCRIPT_CANDIDATES[@]}"; do
+  if [[ ! -s "$NVM_SH" ]]; then
+    continue
+  fi
+
+  for NVM_DATA_DIR in "${NVM_DATA_CANDIDATES[@]}"; do
+    if [[ -z "$NVM_DATA_DIR" ]]; then
+      continue
+    fi
+
+    export NVM_DIR="$NVM_DATA_DIR"
+    # shellcheck source=/dev/null
+    . "$NVM_SH" --no-use
+
+    if nvm use --silent "$NODE_VERSION" >/dev/null 2>&1; then
+      exec "$@"
+    fi
+  done
+done
+
+echo "Unable to activate Node $NODE_VERSION." >&2
+echo "Set NVM_DIR correctly, install nvm, or run the command with Node $NODE_VERSION already active." >&2
+exit 1

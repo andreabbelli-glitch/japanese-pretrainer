@@ -1,0 +1,7 @@
+.next
+coverage
+docs
+content/media
+node_modules
+dist
+pnpm-lock.yaml

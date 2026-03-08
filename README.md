@@ -15,8 +15,81 @@ Per ogni media, l'app deve offrire:
 
 ## Stato
 
-Il repository contiene per ora il blueprint operativo e la specifica iniziale
-del formato contenuti.
+Il repository include ora la foundation applicativa:
+
+- app `Next.js` con App Router e TypeScript;
+- shell iniziale desktop/mobile coerente con la direzione UX/UI;
+- font self-hosted, cosi `build` non dipende da fetch esterni;
+- tooling base per lint, format, typecheck e test unitari;
+- struttura cartelle pronta per persistence, importer e UI task successivi.
+
+## Bootstrap locale
+
+Runtime previsto:
+
+- Node `22.22.1`
+- pnpm `10.30.3`
+
+Verifica rapida toolchain:
+
+```sh
+./scripts/tooling-doctor.sh
+```
+
+Installazione dipendenze:
+
+```sh
+./scripts/with-node.sh pnpm install
+```
+
+Avvio sviluppo:
+
+```sh
+./scripts/with-node.sh pnpm dev
+```
+
+Se preferisci usare `pnpm` direttamente, prima carica la versione Node del
+repository con `nvm use`.
+
+Lo script `./scripts/with-node.sh` prova a usare `nvm` da `$NVM_DIR`,
+`/opt/homebrew/opt/nvm/nvm.sh` o `/usr/local/opt/nvm/nvm.sh`. Se la versione
+corretta di Node e gia attiva, esegue direttamente il comando senza dipendere
+da `nvm`.
+
+## Script disponibili
+
+```sh
+pnpm dev
+pnpm build
+pnpm lint
+pnpm format
+pnpm format:check
+pnpm typecheck
+pnpm test
+pnpm check
+```
+
+## Variabili ambiente
+
+La foundation non richiede ancora variabili obbligatorie a runtime, ma
+[.env.example](./.env.example) documenta i path locali previsti per i task
+successivi.
+
+## Struttura iniziale
+
+```text
+src/
+  app/
+  components/
+  db/
+  lib/
+  styles/
+content/
+  media/
+tests/
+scripts/
+docs/
+```
 
 ## Documenti
 
@@ -25,4 +98,7 @@ del formato contenuti.
 - [Specifica contenuti Markdown](./docs/content-format.md)
 - [Handoff per LLM esterno](./docs/llm-content-handoff.md)
 - [Tooling locale](./docs/dev-tooling.md)
+- [Direzione UX/UI](./docs/design/ux-ui-direction.md)
+- [Design tokens](./docs/design/design-tokens.css)
+- [Wireframes](./docs/design/wireframes.md)
 - [Task index per agenti implementatori](./docs/tasks/README.md)
