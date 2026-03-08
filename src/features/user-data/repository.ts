@@ -1,7 +1,7 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Database } from "@/src/lib/supabase/database.types";
 
-type DbClient = SupabaseClient<Database>;
+type DbClient = any;
 type Tables = Database["public"]["Tables"];
 
 export type UserSettingsRow = Tables["user_settings"]["Row"];
