@@ -1,6 +1,7 @@
 import { createServerClient, type SetAllCookies } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { isProtectedPath } from "@/src/lib/routes";
+import type { Database } from "@/src/lib/supabase/database.types";
 
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
@@ -10,7 +11,7 @@ export async function updateSession(request: NextRequest) {
     cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
   };
 
-  const supabase = createServerClient(
+  const supabase = createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {

@@ -43,3 +43,11 @@ Base foundation per una webapp **content-first** per studiare il giapponese dell
 - Nessun ORM introdotto.
 - Nessun CMS introdotto.
 - Contenuto didattico runtime non ancora implementato (solo struttura cartelle `/content`).
+
+
+## Database (Supabase)
+- Migrazioni SQL in `supabase/migrations/`.
+- Per rigenerare i tipi TypeScript dal DB linked:
+  ```bash
+  npm run db:types
+  ```
