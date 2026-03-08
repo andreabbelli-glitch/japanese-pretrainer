@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-03-08T01:31:16.768Z",
+  "totals": {
+    "items": 144,
+    "kanji": 56,
+    "vocab": 38,
+    "keyword": 24,
+    "pattern": 26,
+    "examples": 168,
+    "cards": 24,
+    "lessons": 8,
+    "decks": 2
+  },
+  "deckCoverageMap": [
+    {
+      "deckId": "DECK-SD1",
+      "uniqueCardCount": 13,
+      "totalCards": 40,
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ]
+    },
+    {
+      "deckId": "DECK-SD2",
+      "uniqueCardCount": 11,
+      "totalCards": 40,
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ]
+    }
+  ],
+  "lessonMap": [
+    {
+      "lessonId": "L-01",
+      "slug": "fondamenta-del-testo-carta",
+      "itemCount": 40,
+      "cardCount": 4
+    },
+    {
+      "lessonId": "L-02",
+      "slug": "zone-e-movimento",
+      "itemCount": 54,
+      "cardCount": 4
+    },
+    {
+      "lessonId": "L-03",
+      "slug": "timing-e-trigger",
+      "itemCount": 15,
+      "cardCount": 2
+    },
+    {
+      "lessonId": "L-04",
+      "slug": "numeri-e-limiti",
+      "itemCount": 8,
+      "cardCount": 3
+    },
+    {
+      "lessonId": "L-05",
+      "slug": "vocabolario-sd1",
+      "itemCount": 19,
+      "cardCount": 13
+    },
+    {
+      "lessonId": "L-06",
+      "slug": "vocabolario-sd2",
+      "itemCount": 19,
+      "cardCount": 11
+    },
+    {
+      "lessonId": "L-07",
+      "slug": "lettura-completa-sd1",
+      "itemCount": 8,
+      "cardCount": 13
+    },
+    {
+      "lessonId": "L-08",
+      "slug": "lettura-completa-sd2",
+      "itemCount": 8,
+      "cardCount": 11
+    }
+  ]
+}

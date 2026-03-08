@@ -1,0 +1,1351 @@
+{
+  "items": [
+    {
+      "id": "K-001",
+      "legacyId": "K01",
+      "type": "kanji",
+      "term": "自",
+      "reading": "じ",
+      "meaning": "sé; usato in 自分",
+      "corpusCompounds": [
+        "自分（じぶん）"
+      ],
+      "exampleText": "自分の墓地",
+      "sourceCardName": "漆黒の深淵 ジャシン帝",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04",
+      "relatedExampleIds": [
+        "EX-0001"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-001"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-002",
+      "legacyId": "K02",
+      "type": "kanji",
+      "term": "分",
+      "reading": "ぶん",
+      "meaning": "parte/dividere; qui soprattutto in 自分",
+      "corpusCompounds": [
+        "自分（じぶん）"
+      ],
+      "exampleText": "自分の山札",
+      "sourceCardName": "邪龍 ジャブラッド",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2",
+      "relatedExampleIds": [
+        "EX-0002"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-003"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-003",
+      "legacyId": "K03",
+      "type": "kanji",
+      "term": "相",
+      "reading": "あい",
+      "meaning": "reciproco/controparte; in 相手 = avversario",
+      "corpusCompounds": [
+        "相手（あいて）"
+      ],
+      "exampleText": "相手のクリーチャー",
+      "sourceCardName": "深淵の壊炉 マーダン=ロウ",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5",
+      "relatedExampleIds": [
+        "EX-0003"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-004"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-004",
+      "legacyId": "K04",
+      "type": "kanji",
+      "term": "手",
+      "reading": "て",
+      "meaning": "mano; in 手札 o 相手",
+      "corpusCompounds": [
+        "手札（てふだ）"
+      ],
+      "exampleText": "手札に加える",
+      "sourceCardName": "未来設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070",
+      "relatedExampleIds": [
+        "EX-0004"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-006"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-005",
+      "legacyId": "K05",
+      "type": "kanji",
+      "term": "山",
+      "reading": "やま",
+      "meaning": "montagna; in 山札 = mazzo",
+      "corpusCompounds": [
+        "山札（やまふだ）"
+      ],
+      "exampleText": "山札の上から",
+      "sourceCardName": "邪侵入",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017",
+      "relatedExampleIds": [
+        "EX-0005"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-010"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-006",
+      "legacyId": "K06",
+      "type": "kanji",
+      "term": "札",
+      "reading": "ふだ",
+      "meaning": "tessera/carta; in 山札, 手札",
+      "corpusCompounds": [
+        "山札（やまふだ）",
+        "手札（てふだ）"
+      ],
+      "exampleText": "手札を１枚捨て",
+      "sourceCardName": "オンソク童子 <ターボ.鬼>",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-013",
+      "relatedExampleIds": [
+        "EX-0006"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-008"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-007",
+      "legacyId": "K07",
+      "type": "kanji",
+      "term": "墓",
+      "reading": "ぼ",
+      "meaning": "tomba; in 墓地 = cimitero",
+      "corpusCompounds": [
+        "墓地（ぼち）"
+      ],
+      "exampleText": "墓地に置く",
+      "sourceCardName": "漆黒の深淵 ジャシン帝",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04",
+      "relatedExampleIds": [
+        "EX-0007"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-001"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-008",
+      "legacyId": "K08",
+      "type": "kanji",
+      "term": "地",
+      "reading": "ち",
+      "meaning": "terra/luogo; qui in 墓地",
+      "corpusCompounds": [
+        "墓地（ぼち）"
+      ],
+      "exampleText": "墓地から出す",
+      "sourceCardName": "忍蛇の聖沌 c0br4",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm23rp4-017",
+      "relatedExampleIds": [
+        "EX-0008"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-007"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-009",
+      "legacyId": "K09",
+      "type": "kanji",
+      "term": "出",
+      "reading": "で",
+      "meaning": "uscire/entrare in campo",
+      "corpusCompounds": [
+        "出る（でる）",
+        "出す（だす）"
+      ],
+      "exampleText": "このクリーチャーが出た時",
+      "sourceCardName": "ブルーム＝プルーフ",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-016",
+      "relatedExampleIds": [
+        "EX-0009"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-008"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-010",
+      "legacyId": "K10",
+      "type": "kanji",
+      "term": "置",
+      "reading": "お",
+      "meaning": "mettere, collocare",
+      "corpusCompounds": [
+        "置く（おく）"
+      ],
+      "exampleText": "山札の下に置く",
+      "sourceCardName": "邪龍 ジャブラッド",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2",
+      "relatedExampleIds": [
+        "EX-0010"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-003"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-011",
+      "legacyId": "K11",
+      "type": "kanji",
+      "term": "枚",
+      "reading": "まい",
+      "meaning": "contatore per carte/fogli",
+      "corpusCompounds": [
+        "１枚（いちまい）"
+      ],
+      "exampleText": "カードを４枚",
+      "sourceCardName": "邪龍 ジャブラッド",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2",
+      "relatedExampleIds": [
+        "EX-0011"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-003"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-012",
+      "legacyId": "K12",
+      "type": "kanji",
+      "term": "体",
+      "reading": "たい",
+      "meaning": "contatore per creature/corpi",
+      "corpusCompounds": [
+        "１体（いったい）"
+      ],
+      "exampleText": "クリーチャーを１体選ぶ",
+      "sourceCardName": "ドアノッカ＝ノアドッカ / 「…開けるか？」",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008",
+      "relatedExampleIds": [
+        "EX-0012"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-006"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-013",
+      "legacyId": "K13",
+      "type": "kanji",
+      "term": "選",
+      "reading": "えら",
+      "meaning": "scegliere",
+      "corpusCompounds": [
+        "選ぶ（えらぶ）"
+      ],
+      "exampleText": "１枚選んでもよい",
+      "sourceCardName": "深淵の壊炉 マーダン=ロウ",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5",
+      "relatedExampleIds": [
+        "EX-0013"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-004"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-014",
+      "legacyId": "K14",
+      "type": "kanji",
+      "term": "見",
+      "reading": "み",
+      "meaning": "vedere",
+      "corpusCompounds": [
+        "見る（みる）"
+      ],
+      "exampleText": "相手の手札を見て",
+      "sourceCardName": "深淵の壊炉 マーダン=ロウ",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5",
+      "relatedExampleIds": [
+        "EX-0014"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-004"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-015",
+      "legacyId": "K15",
+      "type": "kanji",
+      "term": "加",
+      "reading": "くわ",
+      "meaning": "aggiungere",
+      "corpusCompounds": [
+        "加える（くわえる）"
+      ],
+      "exampleText": "手札に加える",
+      "sourceCardName": "進化設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040",
+      "relatedExampleIds": [
+        "EX-0015"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-004"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-016",
+      "legacyId": "K16",
+      "type": "kanji",
+      "term": "戻",
+      "reading": "もど",
+      "meaning": "ritornare / riportare",
+      "corpusCompounds": [
+        "戻す（もどす）"
+      ],
+      "exampleText": "手札に戻す",
+      "sourceCardName": "冒険妖精ポレコ",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmrp19-094",
+      "relatedExampleIds": [
+        "EX-0016"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-010"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-017",
+      "legacyId": "K17",
+      "type": "kanji",
+      "term": "捨",
+      "reading": "す",
+      "meaning": "scartare / gettare via",
+      "corpusCompounds": [
+        "捨てる（すてる）"
+      ],
+      "exampleText": "１枚捨てる",
+      "sourceCardName": "オンソク童子 <ターボ.鬼>",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-013",
+      "relatedExampleIds": [
+        "EX-0017"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-008"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-018",
+      "legacyId": "K18",
+      "type": "kanji",
+      "term": "引",
+      "reading": "ひ",
+      "meaning": "tirare/pescare",
+      "corpusCompounds": [
+        "引く（ひく）"
+      ],
+      "exampleText": "カードを１枚引く",
+      "sourceCardName": "ストリエ雷鬼の巻",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-014",
+      "relatedExampleIds": [
+        "EX-0018"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-009"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-019",
+      "legacyId": "K19",
+      "type": "kanji",
+      "term": "破",
+      "reading": "は",
+      "meaning": "rompere/distruggere",
+      "corpusCompounds": [
+        "破壊（はかい）"
+      ],
+      "exampleText": "破壊する",
+      "sourceCardName": "ルピア炎鬼",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-047",
+      "relatedExampleIds": [
+        "EX-0019"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-013"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-020",
+      "legacyId": "K20",
+      "type": "kanji",
+      "term": "壊",
+      "reading": "かい",
+      "meaning": "distruzione/rottura",
+      "corpusCompounds": [
+        "破壊（はかい）"
+      ],
+      "exampleText": "１体、破壊する",
+      "sourceCardName": "ハンマ＝ダンマ",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22sd1-004",
+      "relatedExampleIds": [
+        "EX-0020"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-011"
+      ],
+      "lessonIds": [
+        "L-01"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-021",
+      "legacyId": "K21",
+      "type": "kanji",
+      "term": "攻",
+      "reading": "こう",
+      "meaning": "attacco",
+      "corpusCompounds": [
+        "攻撃（こうげき）"
+      ],
+      "exampleText": "攻撃する時",
+      "sourceCardName": "邪龍 ジャブラッド",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2",
+      "relatedExampleIds": [
+        "EX-0021"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-003"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-022",
+      "legacyId": "K22",
+      "type": "kanji",
+      "term": "撃",
+      "reading": "げき",
+      "meaning": "colpire; in 攻撃",
+      "corpusCompounds": [
+        "攻撃（こうげき）"
+      ],
+      "exampleText": "このクリーチャーの攻撃中",
+      "sourceCardName": "覇帝なき侵略 レッドゾーンF",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011",
+      "relatedExampleIds": [
+        "EX-0022"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-001"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-023",
+      "legacyId": "K23",
+      "type": "kanji",
+      "term": "進",
+      "reading": "しん",
+      "meaning": "avanzare/evolvere",
+      "corpusCompounds": [
+        "進化（しんか）"
+      ],
+      "exampleText": "進化クリーチャー",
+      "sourceCardName": "進化設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040",
+      "relatedExampleIds": [
+        "EX-0023"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-004"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-024",
+      "legacyId": "K24",
+      "type": "kanji",
+      "term": "化",
+      "reading": "か",
+      "meaning": "trasformazione",
+      "corpusCompounds": [
+        "進化（しんか）"
+      ],
+      "exampleText": "タマシードから進化していれば",
+      "sourceCardName": "カチコミ入道 <バトライ.鬼>",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmsd21-012",
+      "relatedExampleIds": [
+        "EX-0024"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-007"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-025",
+      "legacyId": "K25",
+      "type": "kanji",
+      "term": "離",
+      "reading": "はな",
+      "meaning": "allontanarsi / lasciare",
+      "corpusCompounds": [
+        "離れる（はなれる）"
+      ],
+      "exampleText": "このクリーチャーが離れる時",
+      "sourceCardName": "アビスベル=ジャシン帝",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B",
+      "relatedExampleIds": [
+        "EX-0025"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-002"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-026",
+      "legacyId": "K26",
+      "type": "kanji",
+      "term": "召",
+      "reading": "しょう",
+      "meaning": "chiamare; in 召喚",
+      "corpusCompounds": [
+        "召喚（しょうかん）"
+      ],
+      "exampleText": "すぐ召喚してもよい",
+      "sourceCardName": "終末の時計 ザ・クロック",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021",
+      "relatedExampleIds": [
+        "EX-0026"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-005"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-027",
+      "legacyId": "K27",
+      "type": "kanji",
+      "term": "喚",
+      "reading": "かん",
+      "meaning": "invocare; in 召喚",
+      "corpusCompounds": [
+        "召喚（しょうかん）"
+      ],
+      "exampleText": "召喚以外の方法",
+      "sourceCardName": "ルピア炎鬼",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-047",
+      "relatedExampleIds": [
+        "EX-0027"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-013"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-028",
+      "legacyId": "K28",
+      "type": "kanji",
+      "term": "支",
+      "reading": "し",
+      "meaning": "pagare/sostenere; in 支払う",
+      "corpusCompounds": [
+        "支払う（しはらう）"
+      ],
+      "exampleText": "コストを支払わずに",
+      "sourceCardName": "未来設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070",
+      "relatedExampleIds": [
+        "EX-0028"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-006"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-029",
+      "legacyId": "K29",
+      "type": "kanji",
+      "term": "払",
+      "reading": "はら",
+      "meaning": "pagare",
+      "corpusCompounds": [
+        "支払う（しはらう）"
+      ],
+      "exampleText": "コストを支払わずに",
+      "sourceCardName": "進化設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040",
+      "relatedExampleIds": [
+        "EX-0029"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-004"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-030",
+      "legacyId": "K30",
+      "type": "kanji",
+      "term": "上",
+      "reading": "うえ",
+      "meaning": "sopra / superiore",
+      "corpusCompounds": [
+        "上（うえ）"
+      ],
+      "exampleText": "山札の上から",
+      "sourceCardName": "フォーク＝フォック",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22sd1-010",
+      "relatedExampleIds": [
+        "EX-0030"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-012"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-031",
+      "legacyId": "K31",
+      "type": "kanji",
+      "term": "下",
+      "reading": "した",
+      "meaning": "sotto / inferiore",
+      "corpusCompounds": [
+        "下（した）"
+      ],
+      "exampleText": "山札の下に置く",
+      "sourceCardName": "超神羅星アポロヌス・ドラゲリオン",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmex17-013",
+      "relatedExampleIds": [
+        "EX-0031"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-003"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-032",
+      "legacyId": "K32",
+      "type": "kanji",
+      "term": "以",
+      "reading": "い",
+      "meaning": "a partire da / eccetto; entra in 以下, 以上, 以外",
+      "corpusCompounds": [
+        "以下（いか）",
+        "以外（いがい）"
+      ],
+      "exampleText": "召喚以外の方法",
+      "sourceCardName": "ブルーム＝プルーフ",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-016",
+      "relatedExampleIds": [
+        "EX-0032"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-008"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-033",
+      "legacyId": "K33",
+      "type": "kanji",
+      "term": "外",
+      "reading": "がい",
+      "meaning": "fuori/esterno; in 以外",
+      "corpusCompounds": [
+        "以外（いがい）"
+      ],
+      "exampleText": "進化ではないクリーチャー",
+      "sourceCardName": "漆黒の深淵 ジャシン帝",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04",
+      "relatedExampleIds": [
+        "EX-0033"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-001"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-034",
+      "legacyId": "K34",
+      "type": "kanji",
+      "term": "合",
+      "reading": "ごう",
+      "meaning": "mettere insieme; in 合計",
+      "corpusCompounds": [
+        "合計（ごうけい）"
+      ],
+      "exampleText": "合計４つ以上",
+      "sourceCardName": "邪龍 ジャブラッド",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-OR2",
+      "relatedExampleIds": [
+        "EX-0034"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-003"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-035",
+      "legacyId": "K35",
+      "type": "kanji",
+      "term": "計",
+      "reading": "けい",
+      "meaning": "conteggio; in 合計",
+      "corpusCompounds": [
+        "合計（ごうけい）"
+      ],
+      "exampleText": "合計３つ以上",
+      "sourceCardName": "深淵の壊炉 マーダン=ロウ",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp2-S5",
+      "relatedExampleIds": [
+        "EX-0035"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-004"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-036",
+      "legacyId": "K36",
+      "type": "kanji",
+      "term": "時",
+      "reading": "とき",
+      "meaning": "quando",
+      "corpusCompounds": [
+        "時（とき）"
+      ],
+      "exampleText": "このタマシードが出た時",
+      "sourceCardName": "漆黒の深淵 ジャシン帝",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04",
+      "relatedExampleIds": [
+        "EX-0036"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-001"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "core"
+    },
+    {
+      "id": "K-037",
+      "legacyId": "K37",
+      "type": "kanji",
+      "term": "後",
+      "reading": "ご",
+      "meaning": "dopo",
+      "corpusCompounds": [
+        "後（ご）"
+      ],
+      "exampleText": "その後",
+      "sourceCardName": "邪侵入",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017",
+      "relatedExampleIds": [
+        "EX-0037"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-010"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-038",
+      "legacyId": "K38",
+      "type": "kanji",
+      "term": "終",
+      "reading": "お",
+      "meaning": "fine",
+      "corpusCompounds": [
+        "終わり（おわり）"
+      ],
+      "exampleText": "ターンの終わりに",
+      "sourceCardName": "アビスベル=ジャシン帝",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-1B",
+      "relatedExampleIds": [
+        "EX-0038"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-002"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-039",
+      "legacyId": "K39",
+      "type": "kanji",
+      "term": "残",
+      "reading": "のこ",
+      "meaning": "resto/rimanenza",
+      "corpusCompounds": [
+        "残り（のこり）"
+      ],
+      "exampleText": "残りを好きな順序で",
+      "sourceCardName": "未来設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070",
+      "relatedExampleIds": [
+        "EX-0039"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-006"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-040",
+      "legacyId": "K40",
+      "type": "kanji",
+      "term": "扱",
+      "reading": "あつか",
+      "meaning": "trattare/considerare",
+      "corpusCompounds": [
+        "扱う（あつかう）"
+      ],
+      "exampleText": "クリーチャーとして扱わない",
+      "sourceCardName": "漆黒の深淵 ジャシン帝",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04",
+      "relatedExampleIds": [
+        "EX-0040"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-001"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-041",
+      "legacyId": "K41",
+      "type": "kanji",
+      "term": "重",
+      "reading": "かさ",
+      "meaning": "sovrapporre",
+      "corpusCompounds": [
+        "重ねる（かさねる）"
+      ],
+      "exampleText": "その上に重ねてもよい",
+      "sourceCardName": "覇帝なき侵略 レッドゾーンF",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011",
+      "relatedExampleIds": [
+        "EX-0041"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-001"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-042",
+      "legacyId": "K42",
+      "type": "kanji",
+      "term": "表",
+      "reading": "おもて",
+      "meaning": "fronte/verso visibile",
+      "corpusCompounds": [
+        "表向き（おもてむき）"
+      ],
+      "exampleText": "表向きにする",
+      "sourceCardName": "進化設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040",
+      "relatedExampleIds": [
+        "EX-0042"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-004"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-043",
+      "legacyId": "K43",
+      "type": "kanji",
+      "term": "向",
+      "reading": "む",
+      "meaning": "direzione; in 表向き",
+      "corpusCompounds": [
+        "表向き（おもてむき）"
+      ],
+      "exampleText": "表向きにする",
+      "sourceCardName": "進化設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040",
+      "relatedExampleIds": [
+        "EX-0043"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-004"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-044",
+      "legacyId": "K44",
+      "type": "kanji",
+      "term": "持",
+      "reading": "も",
+      "meaning": "avere/possedere",
+      "corpusCompounds": [
+        "持つ（もつ）"
+      ],
+      "exampleText": "コストを持つ",
+      "sourceCardName": "漆黒の深淵 ジャシン帝",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex2-S04",
+      "relatedExampleIds": [
+        "EX-0044"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-001"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-045",
+      "legacyId": "K45",
+      "type": "kanji",
+      "term": "小",
+      "reading": "ちい",
+      "meaning": "piccolo",
+      "corpusCompounds": [
+        "小さい（ちいさい）"
+      ],
+      "exampleText": "コストが小さい",
+      "sourceCardName": "ハンマ＝ダンマ",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22sd1-004",
+      "relatedExampleIds": [
+        "EX-0045"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-011"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-046",
+      "legacyId": "K46",
+      "type": "kanji",
+      "term": "大",
+      "reading": "おお",
+      "meaning": "grande",
+      "corpusCompounds": [
+        "大きい（おおきい）"
+      ],
+      "exampleText": "一番パワーが大きい",
+      "sourceCardName": "轟く侵略 レッドゾーン",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmr17-l02",
+      "relatedExampleIds": [
+        "EX-0046"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-002"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-047",
+      "legacyId": "K47",
+      "type": "kanji",
+      "term": "火",
+      "reading": "ひ",
+      "meaning": "fuoco; civiltà fuoco",
+      "corpusCompounds": [
+        "火（ひ）"
+      ],
+      "exampleText": "火のクリーチャー",
+      "sourceCardName": "覇帝なき侵略 レッドゾーンF",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22ex1-011",
+      "relatedExampleIds": [
+        "EX-0047"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-001"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-048",
+      "legacyId": "K48",
+      "type": "kanji",
+      "term": "闇",
+      "reading": "やみ",
+      "meaning": "oscurità; civiltà tenebre",
+      "corpusCompounds": [
+        "闇（やみ）"
+      ],
+      "exampleText": "闇のクリーチャー",
+      "sourceCardName": "邪侵入",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017",
+      "relatedExampleIds": [
+        "EX-0048"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-010"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-049",
+      "legacyId": "K49",
+      "type": "kanji",
+      "term": "次",
+      "reading": "つぎ",
+      "meaning": "successivo",
+      "corpusCompounds": [
+        "次（つぎ）"
+      ],
+      "exampleText": "次の能力",
+      "sourceCardName": "ドアノッカ＝ノアドッカ / 「…開けるか？」",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008",
+      "relatedExampleIds": [
+        "EX-0049"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-006"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-050",
+      "legacyId": "K50",
+      "type": "kanji",
+      "term": "始",
+      "reading": "はじ",
+      "meaning": "iniziare",
+      "corpusCompounds": [
+        "始める（はじめる）"
+      ],
+      "exampleText": "すぐに始める",
+      "sourceCardName": "終末の時計 ザ・クロック",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmr09-021",
+      "relatedExampleIds": [
+        "EX-0050"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-005"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-051",
+      "legacyId": "K51",
+      "type": "kanji",
+      "term": "与",
+      "reading": "あた",
+      "meaning": "dare/attribuire",
+      "corpusCompounds": [
+        "与える（あたえる）"
+      ],
+      "exampleText": "「S・トリガー」を与える",
+      "sourceCardName": "邪侵入",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm22rp1-017",
+      "relatedExampleIds": [
+        "EX-0051"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-010"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-052",
+      "legacyId": "K52",
+      "type": "kanji",
+      "term": "行",
+      "reading": "おこな",
+      "meaning": "fare/eseguire",
+      "corpusCompounds": [
+        "行う（おこなう）"
+      ],
+      "exampleText": "２回行う",
+      "sourceCardName": "ドアノッカ＝ノアドッカ / 「…開けるか？」",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm23sp1-008",
+      "relatedExampleIds": [
+        "EX-0052"
+      ],
+      "relatedCardIds": [
+        "CARD-SD1-006"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-053",
+      "legacyId": "K53",
+      "type": "kanji",
+      "term": "好",
+      "reading": "す",
+      "meaning": "piacere; in 好き = a piacere",
+      "corpusCompounds": [
+        "好き（すき）"
+      ],
+      "exampleText": "好きな順序で",
+      "sourceCardName": "未来設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm36-070",
+      "relatedExampleIds": [
+        "EX-0053"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-006"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-054",
+      "legacyId": "K54",
+      "type": "kanji",
+      "term": "順",
+      "reading": "じゅん",
+      "meaning": "ordine",
+      "corpusCompounds": [
+        "順序（じゅんじょ）"
+      ],
+      "exampleText": "好きな順で",
+      "sourceCardName": "進化設計図",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dm14-040",
+      "relatedExampleIds": [
+        "EX-0054"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-004"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-055",
+      "legacyId": "K55",
+      "type": "kanji",
+      "term": "負",
+      "reading": "ま",
+      "meaning": "perdere",
+      "corpusCompounds": [
+        "負ける（まける）"
+      ],
+      "exampleText": "ゲームに負けず",
+      "sourceCardName": "SMAPON",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmbd03-007",
+      "relatedExampleIds": [
+        "EX-0055"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-005"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    },
+    {
+      "id": "K-056",
+      "legacyId": "K56",
+      "type": "kanji",
+      "term": "勝",
+      "reading": "か",
+      "meaning": "vincere",
+      "corpusCompounds": [
+        "勝つ（かつ）"
+      ],
+      "exampleText": "ゲームに勝てない",
+      "sourceCardName": "SMAPON",
+      "sourceUrl": "https://dm.takaratomy.co.jp/card/detail/?id=dmbd03-007",
+      "relatedExampleIds": [
+        "EX-0056"
+      ],
+      "relatedCardIds": [
+        "CARD-SD2-005"
+      ],
+      "lessonIds": [
+        "L-02"
+      ],
+      "priority": "important"
+    }
+  ]
+}

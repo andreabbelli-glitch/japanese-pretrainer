@@ -11,7 +11,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "db:types": "supabase gen types typescript --linked --schema public > src/lib/supabase/database.types.ts"
+    "db:types": "supabase gen types typescript --linked --schema public > src/lib/supabase/database.types.ts",
+    "content:migrate": "node --experimental-strip-types scripts/migrate-study-guide.ts",
+    "content:validate": "node --experimental-strip-types scripts/validate-content.ts",
+    "content:build-index": "node --experimental-strip-types scripts/build-content-index.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
