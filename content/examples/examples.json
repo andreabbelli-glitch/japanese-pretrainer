@@ -1,0 +1,2656 @@
+{
+  "examples": [
+    {
+      "id": "EX-0001",
+      "textJa": "自分の墓地",
+      "glossIt": "Esempio nel corpus per K-001",
+      "sourceType": "item",
+      "sourceRefId": "K-001",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-001"
+      ]
+    },
+    {
+      "id": "EX-0002",
+      "textJa": "自分の山札",
+      "glossIt": "Esempio nel corpus per K-002",
+      "sourceType": "item",
+      "sourceRefId": "K-002",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-002"
+      ]
+    },
+    {
+      "id": "EX-0003",
+      "textJa": "相手のクリーチャー",
+      "glossIt": "Esempio nel corpus per K-003",
+      "sourceType": "item",
+      "sourceRefId": "K-003",
+      "cardId": "CARD-SD1-004",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-003"
+      ]
+    },
+    {
+      "id": "EX-0004",
+      "textJa": "手札に加える",
+      "glossIt": "Esempio nel corpus per K-004",
+      "sourceType": "item",
+      "sourceRefId": "K-004",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-004"
+      ]
+    },
+    {
+      "id": "EX-0005",
+      "textJa": "山札の上から",
+      "glossIt": "Esempio nel corpus per K-005",
+      "sourceType": "item",
+      "sourceRefId": "K-005",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-005"
+      ]
+    },
+    {
+      "id": "EX-0006",
+      "textJa": "手札を１枚捨て",
+      "glossIt": "Esempio nel corpus per K-006",
+      "sourceType": "item",
+      "sourceRefId": "K-006",
+      "cardId": "CARD-SD2-008",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-006"
+      ]
+    },
+    {
+      "id": "EX-0007",
+      "textJa": "墓地に置く",
+      "glossIt": "Esempio nel corpus per K-007",
+      "sourceType": "item",
+      "sourceRefId": "K-007",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-007"
+      ]
+    },
+    {
+      "id": "EX-0008",
+      "textJa": "墓地から出す",
+      "glossIt": "Esempio nel corpus per K-008",
+      "sourceType": "item",
+      "sourceRefId": "K-008",
+      "cardId": "CARD-SD1-007",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-008"
+      ]
+    },
+    {
+      "id": "EX-0009",
+      "textJa": "このクリーチャーが出た時",
+      "glossIt": "Esempio nel corpus per K-009",
+      "sourceType": "item",
+      "sourceRefId": "K-009",
+      "cardId": "CARD-SD1-008",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-009"
+      ]
+    },
+    {
+      "id": "EX-0010",
+      "textJa": "山札の下に置く",
+      "glossIt": "Esempio nel corpus per K-010",
+      "sourceType": "item",
+      "sourceRefId": "K-010",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-010"
+      ]
+    },
+    {
+      "id": "EX-0011",
+      "textJa": "カードを４枚",
+      "glossIt": "Esempio nel corpus per K-011",
+      "sourceType": "item",
+      "sourceRefId": "K-011",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-011"
+      ]
+    },
+    {
+      "id": "EX-0012",
+      "textJa": "クリーチャーを１体選ぶ",
+      "glossIt": "Esempio nel corpus per K-012",
+      "sourceType": "item",
+      "sourceRefId": "K-012",
+      "cardId": "CARD-SD1-006",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-012"
+      ]
+    },
+    {
+      "id": "EX-0013",
+      "textJa": "１枚選んでもよい",
+      "glossIt": "Esempio nel corpus per K-013",
+      "sourceType": "item",
+      "sourceRefId": "K-013",
+      "cardId": "CARD-SD1-004",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-013"
+      ]
+    },
+    {
+      "id": "EX-0014",
+      "textJa": "相手の手札を見て",
+      "glossIt": "Esempio nel corpus per K-014",
+      "sourceType": "item",
+      "sourceRefId": "K-014",
+      "cardId": "CARD-SD1-004",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-014"
+      ]
+    },
+    {
+      "id": "EX-0015",
+      "textJa": "手札に加える",
+      "glossIt": "Esempio nel corpus per K-015",
+      "sourceType": "item",
+      "sourceRefId": "K-015",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-015"
+      ]
+    },
+    {
+      "id": "EX-0016",
+      "textJa": "手札に戻す",
+      "glossIt": "Esempio nel corpus per K-016",
+      "sourceType": "item",
+      "sourceRefId": "K-016",
+      "cardId": "CARD-SD2-010",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-016"
+      ]
+    },
+    {
+      "id": "EX-0017",
+      "textJa": "１枚捨てる",
+      "glossIt": "Esempio nel corpus per K-017",
+      "sourceType": "item",
+      "sourceRefId": "K-017",
+      "cardId": "CARD-SD2-008",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-017"
+      ]
+    },
+    {
+      "id": "EX-0018",
+      "textJa": "カードを１枚引く",
+      "glossIt": "Esempio nel corpus per K-018",
+      "sourceType": "item",
+      "sourceRefId": "K-018",
+      "cardId": "CARD-SD2-009",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-018"
+      ]
+    },
+    {
+      "id": "EX-0019",
+      "textJa": "破壊する",
+      "glossIt": "Esempio nel corpus per K-019",
+      "sourceType": "item",
+      "sourceRefId": "K-019",
+      "cardId": "CARD-SD1-013",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-019"
+      ]
+    },
+    {
+      "id": "EX-0020",
+      "textJa": "１体、破壊する",
+      "glossIt": "Esempio nel corpus per K-020",
+      "sourceType": "item",
+      "sourceRefId": "K-020",
+      "cardId": "CARD-SD1-011",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "K-020"
+      ]
+    },
+    {
+      "id": "EX-0021",
+      "textJa": "攻撃する時",
+      "glossIt": "Esempio nel corpus per K-021",
+      "sourceType": "item",
+      "sourceRefId": "K-021",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-021"
+      ]
+    },
+    {
+      "id": "EX-0022",
+      "textJa": "このクリーチャーの攻撃中",
+      "glossIt": "Esempio nel corpus per K-022",
+      "sourceType": "item",
+      "sourceRefId": "K-022",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-022"
+      ]
+    },
+    {
+      "id": "EX-0023",
+      "textJa": "進化クリーチャー",
+      "glossIt": "Esempio nel corpus per K-023",
+      "sourceType": "item",
+      "sourceRefId": "K-023",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-023"
+      ]
+    },
+    {
+      "id": "EX-0024",
+      "textJa": "タマシードから進化していれば",
+      "glossIt": "Esempio nel corpus per K-024",
+      "sourceType": "item",
+      "sourceRefId": "K-024",
+      "cardId": "CARD-SD2-007",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-024"
+      ]
+    },
+    {
+      "id": "EX-0025",
+      "textJa": "このクリーチャーが離れる時",
+      "glossIt": "Esempio nel corpus per K-025",
+      "sourceType": "item",
+      "sourceRefId": "K-025",
+      "cardId": "CARD-SD1-002",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-025"
+      ]
+    },
+    {
+      "id": "EX-0026",
+      "textJa": "すぐ召喚してもよい",
+      "glossIt": "Esempio nel corpus per K-026",
+      "sourceType": "item",
+      "sourceRefId": "K-026",
+      "cardId": "CARD-SD1-005",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-026"
+      ]
+    },
+    {
+      "id": "EX-0027",
+      "textJa": "召喚以外の方法",
+      "glossIt": "Esempio nel corpus per K-027",
+      "sourceType": "item",
+      "sourceRefId": "K-027",
+      "cardId": "CARD-SD1-013",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-027"
+      ]
+    },
+    {
+      "id": "EX-0028",
+      "textJa": "コストを支払わずに",
+      "glossIt": "Esempio nel corpus per K-028",
+      "sourceType": "item",
+      "sourceRefId": "K-028",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-028"
+      ]
+    },
+    {
+      "id": "EX-0029",
+      "textJa": "コストを支払わずに",
+      "glossIt": "Esempio nel corpus per K-029",
+      "sourceType": "item",
+      "sourceRefId": "K-029",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-029"
+      ]
+    },
+    {
+      "id": "EX-0030",
+      "textJa": "山札の上から",
+      "glossIt": "Esempio nel corpus per K-030",
+      "sourceType": "item",
+      "sourceRefId": "K-030",
+      "cardId": "CARD-SD1-012",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-030"
+      ]
+    },
+    {
+      "id": "EX-0031",
+      "textJa": "山札の下に置く",
+      "glossIt": "Esempio nel corpus per K-031",
+      "sourceType": "item",
+      "sourceRefId": "K-031",
+      "cardId": "CARD-SD2-003",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-031"
+      ]
+    },
+    {
+      "id": "EX-0032",
+      "textJa": "召喚以外の方法",
+      "glossIt": "Esempio nel corpus per K-032",
+      "sourceType": "item",
+      "sourceRefId": "K-032",
+      "cardId": "CARD-SD1-008",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-032"
+      ]
+    },
+    {
+      "id": "EX-0033",
+      "textJa": "進化ではないクリーチャー",
+      "glossIt": "Esempio nel corpus per K-033",
+      "sourceType": "item",
+      "sourceRefId": "K-033",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-033"
+      ]
+    },
+    {
+      "id": "EX-0034",
+      "textJa": "合計４つ以上",
+      "glossIt": "Esempio nel corpus per K-034",
+      "sourceType": "item",
+      "sourceRefId": "K-034",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-034"
+      ]
+    },
+    {
+      "id": "EX-0035",
+      "textJa": "合計３つ以上",
+      "glossIt": "Esempio nel corpus per K-035",
+      "sourceType": "item",
+      "sourceRefId": "K-035",
+      "cardId": "CARD-SD1-004",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-035"
+      ]
+    },
+    {
+      "id": "EX-0036",
+      "textJa": "このタマシードが出た時",
+      "glossIt": "Esempio nel corpus per K-036",
+      "sourceType": "item",
+      "sourceRefId": "K-036",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-036"
+      ]
+    },
+    {
+      "id": "EX-0037",
+      "textJa": "その後",
+      "glossIt": "Esempio nel corpus per K-037",
+      "sourceType": "item",
+      "sourceRefId": "K-037",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-037"
+      ]
+    },
+    {
+      "id": "EX-0038",
+      "textJa": "ターンの終わりに",
+      "glossIt": "Esempio nel corpus per K-038",
+      "sourceType": "item",
+      "sourceRefId": "K-038",
+      "cardId": "CARD-SD1-002",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-038"
+      ]
+    },
+    {
+      "id": "EX-0039",
+      "textJa": "残りを好きな順序で",
+      "glossIt": "Esempio nel corpus per K-039",
+      "sourceType": "item",
+      "sourceRefId": "K-039",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-039"
+      ]
+    },
+    {
+      "id": "EX-0040",
+      "textJa": "クリーチャーとして扱わない",
+      "glossIt": "Esempio nel corpus per K-040",
+      "sourceType": "item",
+      "sourceRefId": "K-040",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-040"
+      ]
+    },
+    {
+      "id": "EX-0041",
+      "textJa": "その上に重ねてもよい",
+      "glossIt": "Esempio nel corpus per K-041",
+      "sourceType": "item",
+      "sourceRefId": "K-041",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-041"
+      ]
+    },
+    {
+      "id": "EX-0042",
+      "textJa": "表向きにする",
+      "glossIt": "Esempio nel corpus per K-042",
+      "sourceType": "item",
+      "sourceRefId": "K-042",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-042"
+      ]
+    },
+    {
+      "id": "EX-0043",
+      "textJa": "表向きにする",
+      "glossIt": "Esempio nel corpus per K-043",
+      "sourceType": "item",
+      "sourceRefId": "K-043",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-043"
+      ]
+    },
+    {
+      "id": "EX-0044",
+      "textJa": "コストを持つ",
+      "glossIt": "Esempio nel corpus per K-044",
+      "sourceType": "item",
+      "sourceRefId": "K-044",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-044"
+      ]
+    },
+    {
+      "id": "EX-0045",
+      "textJa": "コストが小さい",
+      "glossIt": "Esempio nel corpus per K-045",
+      "sourceType": "item",
+      "sourceRefId": "K-045",
+      "cardId": "CARD-SD1-011",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-045"
+      ]
+    },
+    {
+      "id": "EX-0046",
+      "textJa": "一番パワーが大きい",
+      "glossIt": "Esempio nel corpus per K-046",
+      "sourceType": "item",
+      "sourceRefId": "K-046",
+      "cardId": "CARD-SD2-002",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-046"
+      ]
+    },
+    {
+      "id": "EX-0047",
+      "textJa": "火のクリーチャー",
+      "glossIt": "Esempio nel corpus per K-047",
+      "sourceType": "item",
+      "sourceRefId": "K-047",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-047"
+      ]
+    },
+    {
+      "id": "EX-0048",
+      "textJa": "闇のクリーチャー",
+      "glossIt": "Esempio nel corpus per K-048",
+      "sourceType": "item",
+      "sourceRefId": "K-048",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-048"
+      ]
+    },
+    {
+      "id": "EX-0049",
+      "textJa": "次の能力",
+      "glossIt": "Esempio nel corpus per K-049",
+      "sourceType": "item",
+      "sourceRefId": "K-049",
+      "cardId": "CARD-SD1-006",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-049"
+      ]
+    },
+    {
+      "id": "EX-0050",
+      "textJa": "すぐに始める",
+      "glossIt": "Esempio nel corpus per K-050",
+      "sourceType": "item",
+      "sourceRefId": "K-050",
+      "cardId": "CARD-SD1-005",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-050"
+      ]
+    },
+    {
+      "id": "EX-0051",
+      "textJa": "「S・トリガー」を与える",
+      "glossIt": "Esempio nel corpus per K-051",
+      "sourceType": "item",
+      "sourceRefId": "K-051",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-051"
+      ]
+    },
+    {
+      "id": "EX-0052",
+      "textJa": "２回行う",
+      "glossIt": "Esempio nel corpus per K-052",
+      "sourceType": "item",
+      "sourceRefId": "K-052",
+      "cardId": "CARD-SD1-006",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-052"
+      ]
+    },
+    {
+      "id": "EX-0053",
+      "textJa": "好きな順序で",
+      "glossIt": "Esempio nel corpus per K-053",
+      "sourceType": "item",
+      "sourceRefId": "K-053",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-053"
+      ]
+    },
+    {
+      "id": "EX-0054",
+      "textJa": "好きな順で",
+      "glossIt": "Esempio nel corpus per K-054",
+      "sourceType": "item",
+      "sourceRefId": "K-054",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-054"
+      ]
+    },
+    {
+      "id": "EX-0055",
+      "textJa": "ゲームに負けず",
+      "glossIt": "Esempio nel corpus per K-055",
+      "sourceType": "item",
+      "sourceRefId": "K-055",
+      "cardId": "CARD-SD2-005",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-055"
+      ]
+    },
+    {
+      "id": "EX-0056",
+      "textJa": "ゲームに勝てない",
+      "glossIt": "Esempio nel corpus per K-056",
+      "sourceType": "item",
+      "sourceRefId": "K-056",
+      "cardId": "CARD-SD2-005",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "K-056"
+      ]
+    },
+    {
+      "id": "EX-0057",
+      "textJa": "自分の墓地から出す",
+      "glossIt": "Esempio nel corpus per V-001",
+      "sourceType": "item",
+      "sourceRefId": "V-001",
+      "cardId": "CARD-SD1-007",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-001"
+      ]
+    },
+    {
+      "id": "EX-0058",
+      "textJa": "相手のクリーチャーを１体選ぶ",
+      "glossIt": "Esempio nel corpus per V-002",
+      "sourceType": "item",
+      "sourceRefId": "V-002",
+      "cardId": "CARD-SD1-006",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-002"
+      ]
+    },
+    {
+      "id": "EX-0059",
+      "textJa": "自分の山札の上から４枚を見る",
+      "glossIt": "Esempio nel corpus per V-003",
+      "sourceType": "item",
+      "sourceRefId": "V-003",
+      "cardId": "CARD-SD2-011",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-003"
+      ]
+    },
+    {
+      "id": "EX-0060",
+      "textJa": "手札に加える",
+      "glossIt": "Esempio nel corpus per V-004",
+      "sourceType": "item",
+      "sourceRefId": "V-004",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-004"
+      ]
+    },
+    {
+      "id": "EX-0061",
+      "textJa": "自分の墓地から出す",
+      "glossIt": "Esempio nel corpus per V-005",
+      "sourceType": "item",
+      "sourceRefId": "V-005",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-005"
+      ]
+    },
+    {
+      "id": "EX-0062",
+      "textJa": "持ち主の墓地に置く",
+      "glossIt": "Esempio nel corpus per V-006",
+      "sourceType": "item",
+      "sourceRefId": "V-006",
+      "cardId": "CARD-SD2-003",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-006"
+      ]
+    },
+    {
+      "id": "EX-0063",
+      "textJa": "カードの枚数以下のコスト",
+      "glossIt": "Esempio nel corpus per V-007",
+      "sourceType": "item",
+      "sourceRefId": "V-007",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-007"
+      ]
+    },
+    {
+      "id": "EX-0064",
+      "textJa": "合計４つ以上",
+      "glossIt": "Esempio nel corpus per V-008",
+      "sourceType": "item",
+      "sourceRefId": "V-008",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-008"
+      ]
+    },
+    {
+      "id": "EX-0065",
+      "textJa": "合計３つ以上あれば",
+      "glossIt": "Esempio nel corpus per V-009",
+      "sourceType": "item",
+      "sourceRefId": "V-009",
+      "cardId": "CARD-SD1-004",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-009"
+      ]
+    },
+    {
+      "id": "EX-0066",
+      "textJa": "コスト５以下のクリーチャー",
+      "glossIt": "Esempio nel corpus per V-010",
+      "sourceType": "item",
+      "sourceRefId": "V-010",
+      "cardId": "CARD-SD1-007",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-010"
+      ]
+    },
+    {
+      "id": "EX-0067",
+      "textJa": "召喚以外の方法",
+      "glossIt": "Esempio nel corpus per V-011",
+      "sourceType": "item",
+      "sourceRefId": "V-011",
+      "cardId": "CARD-SD1-013",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-011"
+      ]
+    },
+    {
+      "id": "EX-0068",
+      "textJa": "一番上のカードを破壊する",
+      "glossIt": "Esempio nel corpus per V-012",
+      "sourceType": "item",
+      "sourceRefId": "V-012",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-012"
+      ]
+    },
+    {
+      "id": "EX-0069",
+      "textJa": "山札の一番下に戻す",
+      "glossIt": "Esempio nel corpus per V-013",
+      "sourceType": "item",
+      "sourceRefId": "V-013",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-013"
+      ]
+    },
+    {
+      "id": "EX-0070",
+      "textJa": "残りを好きな順序で",
+      "glossIt": "Esempio nel corpus per V-014",
+      "sourceType": "item",
+      "sourceRefId": "V-014",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-014"
+      ]
+    },
+    {
+      "id": "EX-0071",
+      "textJa": "好きな順で自分の山札の一番下に戻す",
+      "glossIt": "Esempio nel corpus per V-015",
+      "sourceType": "item",
+      "sourceRefId": "V-015",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-015"
+      ]
+    },
+    {
+      "id": "EX-0072",
+      "textJa": "コスト４以下のアビス",
+      "glossIt": "Esempio nel corpus per V-016",
+      "sourceType": "item",
+      "sourceRefId": "V-016",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-016"
+      ]
+    },
+    {
+      "id": "EX-0073",
+      "textJa": "パワーを－4000する",
+      "glossIt": "Esempio nel corpus per V-017",
+      "sourceType": "item",
+      "sourceRefId": "V-017",
+      "cardId": "CARD-SD1-006",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-017"
+      ]
+    },
+    {
+      "id": "EX-0074",
+      "textJa": "このクリーチャーが出た時",
+      "glossIt": "Esempio nel corpus per V-018",
+      "sourceType": "item",
+      "sourceRefId": "V-018",
+      "cardId": "CARD-SD1-008",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-018"
+      ]
+    },
+    {
+      "id": "EX-0075",
+      "textJa": "自分の墓地から出す",
+      "glossIt": "Esempio nel corpus per V-019",
+      "sourceType": "item",
+      "sourceRefId": "V-019",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-019"
+      ]
+    },
+    {
+      "id": "EX-0076",
+      "textJa": "山札の下に置く",
+      "glossIt": "Esempio nel corpus per V-020",
+      "sourceType": "item",
+      "sourceRefId": "V-020",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-01"
+      ],
+      "itemIds": [
+        "V-020"
+      ]
+    },
+    {
+      "id": "EX-0077",
+      "textJa": "クリーチャーを１体選ぶ",
+      "glossIt": "Esempio nel corpus per V-021",
+      "sourceType": "item",
+      "sourceRefId": "V-021",
+      "cardId": "CARD-SD1-004",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-021"
+      ]
+    },
+    {
+      "id": "EX-0078",
+      "textJa": "自分の山札の上から４枚を見る",
+      "glossIt": "Esempio nel corpus per V-022",
+      "sourceType": "item",
+      "sourceRefId": "V-022",
+      "cardId": "CARD-SD2-011",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-022"
+      ]
+    },
+    {
+      "id": "EX-0079",
+      "textJa": "相手に見せてから",
+      "glossIt": "Esempio nel corpus per V-023",
+      "sourceType": "item",
+      "sourceRefId": "V-023",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-023"
+      ]
+    },
+    {
+      "id": "EX-0080",
+      "textJa": "手札に加える",
+      "glossIt": "Esempio nel corpus per V-024",
+      "sourceType": "item",
+      "sourceRefId": "V-024",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-024"
+      ]
+    },
+    {
+      "id": "EX-0081",
+      "textJa": "このクリーチャーを手札に戻す",
+      "glossIt": "Esempio nel corpus per V-025",
+      "sourceType": "item",
+      "sourceRefId": "V-025",
+      "cardId": "CARD-SD2-010",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-025"
+      ]
+    },
+    {
+      "id": "EX-0082",
+      "textJa": "自分の手札を１枚捨て",
+      "glossIt": "Esempio nel corpus per V-026",
+      "sourceType": "item",
+      "sourceRefId": "V-026",
+      "cardId": "CARD-SD2-008",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-026"
+      ]
+    },
+    {
+      "id": "EX-0083",
+      "textJa": "カードを１枚引く",
+      "glossIt": "Esempio nel corpus per V-027",
+      "sourceType": "item",
+      "sourceRefId": "V-027",
+      "cardId": "CARD-SD2-009",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-027"
+      ]
+    },
+    {
+      "id": "EX-0084",
+      "textJa": "そのクリーチャーを破壊する",
+      "glossIt": "Esempio nel corpus per V-028",
+      "sourceType": "item",
+      "sourceRefId": "V-028",
+      "cardId": "CARD-SD1-008",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-028"
+      ]
+    },
+    {
+      "id": "EX-0085",
+      "textJa": "自分のアビスが攻撃する時",
+      "glossIt": "Esempio nel corpus per V-029",
+      "sourceType": "item",
+      "sourceRefId": "V-029",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-029"
+      ]
+    },
+    {
+      "id": "EX-0086",
+      "textJa": "すぐ召喚してもよい",
+      "glossIt": "Esempio nel corpus per V-030",
+      "sourceType": "item",
+      "sourceRefId": "V-030",
+      "cardId": "CARD-SD1-005",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-030"
+      ]
+    },
+    {
+      "id": "EX-0087",
+      "textJa": "すぐ唱えてもよい",
+      "glossIt": "Esempio nel corpus per V-031",
+      "sourceType": "item",
+      "sourceRefId": "V-031",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-031"
+      ]
+    },
+    {
+      "id": "EX-0088",
+      "textJa": "コストを支払わずに",
+      "glossIt": "Esempio nel corpus per V-032",
+      "sourceType": "item",
+      "sourceRefId": "V-032",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-032"
+      ]
+    },
+    {
+      "id": "EX-0089",
+      "textJa": "このクリーチャーが離れる時",
+      "glossIt": "Esempio nel corpus per V-033",
+      "sourceType": "item",
+      "sourceRefId": "V-033",
+      "cardId": "CARD-SD1-002",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-033"
+      ]
+    },
+    {
+      "id": "EX-0090",
+      "textJa": "「S・トリガー」を与える",
+      "glossIt": "Esempio nel corpus per V-034",
+      "sourceType": "item",
+      "sourceRefId": "V-034",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-034"
+      ]
+    },
+    {
+      "id": "EX-0091",
+      "textJa": "クリーチャーとして扱わない",
+      "glossIt": "Esempio nel corpus per V-035",
+      "sourceType": "item",
+      "sourceRefId": "V-035",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-035"
+      ]
+    },
+    {
+      "id": "EX-0092",
+      "textJa": "その上に重ねてもよい",
+      "glossIt": "Esempio nel corpus per V-036",
+      "sourceType": "item",
+      "sourceRefId": "V-036",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-036"
+      ]
+    },
+    {
+      "id": "EX-0093",
+      "textJa": "シールドをすべてブレイクする",
+      "glossIt": "Esempio nel corpus per V-037",
+      "sourceType": "item",
+      "sourceRefId": "V-037",
+      "cardId": "CARD-SD2-003",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-037"
+      ]
+    },
+    {
+      "id": "EX-0094",
+      "textJa": "このクリーチャーをバトルさせる",
+      "glossIt": "Esempio nel corpus per V-038",
+      "sourceType": "item",
+      "sourceRefId": "V-038",
+      "cardId": "CARD-SD2-007",
+      "lessonIds": [
+        "L-02"
+      ],
+      "itemIds": [
+        "V-038"
+      ]
+    },
+    {
+      "id": "EX-0095",
+      "textJa": "ターンの残りをとばす",
+      "glossIt": "Esempio nel corpus per V-039",
+      "sourceType": "item",
+      "sourceRefId": "V-039",
+      "cardId": "CARD-SD1-005",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-039"
+      ]
+    },
+    {
+      "id": "EX-0096",
+      "textJa": "次のプレイヤーのターンをすぐに始める",
+      "glossIt": "Esempio nel corpus per V-040",
+      "sourceType": "item",
+      "sourceRefId": "V-040",
+      "cardId": "CARD-SD1-005",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-040"
+      ]
+    },
+    {
+      "id": "EX-0097",
+      "textJa": "このタマシードが出た時",
+      "glossIt": "Esempio nel corpus per V-041",
+      "sourceType": "item",
+      "sourceRefId": "V-041",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-041"
+      ]
+    },
+    {
+      "id": "EX-0098",
+      "textJa": "コスト４以下のアビス",
+      "glossIt": "Esempio nel corpus per V-042",
+      "sourceType": "item",
+      "sourceRefId": "V-042",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-042"
+      ]
+    },
+    {
+      "id": "EX-0099",
+      "textJa": "進化：火のクリーチャー１体の上に置く",
+      "glossIt": "Esempio nel corpus per V-043",
+      "sourceType": "item",
+      "sourceRefId": "V-043",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-043"
+      ]
+    },
+    {
+      "id": "EX-0100",
+      "textJa": "侵略：火のコマンド",
+      "glossIt": "Esempio nel corpus per V-044",
+      "sourceType": "item",
+      "sourceRefId": "V-044",
+      "cardId": "CARD-SD2-002",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-044"
+      ]
+    },
+    {
+      "id": "EX-0101",
+      "textJa": "究極進化：進化クリーチャー１体の上に置く",
+      "glossIt": "Esempio nel corpus per V-045",
+      "sourceType": "item",
+      "sourceRefId": "V-045",
+      "cardId": "CARD-SD2-003",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-045"
+      ]
+    },
+    {
+      "id": "EX-0102",
+      "textJa": "スター進化：レクスターズまたは火のクリーチャー１体の上に置く",
+      "glossIt": "Esempio nel corpus per V-046",
+      "sourceType": "item",
+      "sourceRefId": "V-046",
+      "cardId": "CARD-SD2-008",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-046"
+      ]
+    },
+    {
+      "id": "EX-0103",
+      "textJa": "シンカライズ：このタマシードがクリーチャーであるかのように",
+      "glossIt": "Esempio nel corpus per V-047",
+      "sourceType": "item",
+      "sourceRefId": "V-047",
+      "cardId": "CARD-SD2-011",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-047"
+      ]
+    },
+    {
+      "id": "EX-0104",
+      "textJa": "S・トリガー",
+      "glossIt": "Esempio nel corpus per V-048",
+      "sourceType": "item",
+      "sourceRefId": "V-048",
+      "cardId": "CARD-SD1-005",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-048"
+      ]
+    },
+    {
+      "id": "EX-0105",
+      "textJa": "スーパー・S・トリガー",
+      "glossIt": "Esempio nel corpus per V-049",
+      "sourceType": "item",
+      "sourceRefId": "V-049",
+      "cardId": "CARD-SD2-005",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-049"
+      ]
+    },
+    {
+      "id": "EX-0106",
+      "textJa": "W・ブレイカー",
+      "glossIt": "Esempio nel corpus per V-050",
+      "sourceType": "item",
+      "sourceRefId": "V-050",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-050"
+      ]
+    },
+    {
+      "id": "EX-0107",
+      "textJa": "T・ブレイカー",
+      "glossIt": "Esempio nel corpus per V-051",
+      "sourceType": "item",
+      "sourceRefId": "V-051",
+      "cardId": "CARD-SD2-003",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-051"
+      ]
+    },
+    {
+      "id": "EX-0108",
+      "textJa": "ブロッカー",
+      "glossIt": "Esempio nel corpus per V-052",
+      "sourceType": "item",
+      "sourceRefId": "V-052",
+      "cardId": "CARD-SD1-002",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-052"
+      ]
+    },
+    {
+      "id": "EX-0109",
+      "textJa": "スレイヤー",
+      "glossIt": "Esempio nel corpus per V-053",
+      "sourceType": "item",
+      "sourceRefId": "V-053",
+      "cardId": "CARD-SD1-004",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-053"
+      ]
+    },
+    {
+      "id": "EX-0110",
+      "textJa": "アビスラッシュ",
+      "glossIt": "Esempio nel corpus per V-054",
+      "sourceType": "item",
+      "sourceRefId": "V-054",
+      "cardId": "CARD-SD1-002",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-054"
+      ]
+    },
+    {
+      "id": "EX-0111",
+      "textJa": "シビルカウント３",
+      "glossIt": "Esempio nel corpus per V-055",
+      "sourceType": "item",
+      "sourceRefId": "V-055",
+      "cardId": "CARD-SD1-004",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-055"
+      ]
+    },
+    {
+      "id": "EX-0112",
+      "textJa": "G・ストライク",
+      "glossIt": "Esempio nel corpus per V-056",
+      "sourceType": "item",
+      "sourceRefId": "V-056",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-056"
+      ]
+    },
+    {
+      "id": "EX-0113",
+      "textJa": "メテオバーン",
+      "glossIt": "Esempio nel corpus per V-057",
+      "sourceType": "item",
+      "sourceRefId": "V-057",
+      "cardId": "CARD-SD2-003",
+      "lessonIds": [
+        "L-05",
+        "L-06"
+      ],
+      "itemIds": [
+        "V-057"
+      ]
+    },
+    {
+      "id": "EX-0114",
+      "textJa": "カードを実行(プレイ)する",
+      "glossIt": "Esempio nel corpus per V-058",
+      "sourceType": "item",
+      "sourceRefId": "V-058",
+      "cardId": "",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "V-058"
+      ]
+    },
+    {
+      "id": "EX-0115",
+      "textJa": "カードを使う",
+      "glossIt": "Esempio nel corpus per V-059",
+      "sourceType": "item",
+      "sourceRefId": "V-059",
+      "cardId": "",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "V-059"
+      ]
+    },
+    {
+      "id": "EX-0116",
+      "textJa": "表向きにする",
+      "glossIt": "Esempio nel corpus per V-060",
+      "sourceType": "item",
+      "sourceRefId": "V-060",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "V-060"
+      ]
+    },
+    {
+      "id": "EX-0117",
+      "textJa": "使えない / 実行できない",
+      "glossIt": "Esempio nel corpus per V-061",
+      "sourceType": "item",
+      "sourceRefId": "V-061",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "V-061"
+      ]
+    },
+    {
+      "id": "EX-0118",
+      "textJa": "このクリーチャーをアンタップし",
+      "glossIt": "Esempio nel corpus per V-062",
+      "sourceType": "item",
+      "sourceRefId": "V-062",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "V-062"
+      ]
+    },
+    {
+      "id": "EX-0119",
+      "textJa": "このクリーチャーが出た時",
+      "glossIt": "Esempio nel corpus per P-001",
+      "sourceType": "item",
+      "sourceRefId": "P-001",
+      "cardId": "CARD-SD1-008",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-001"
+      ]
+    },
+    {
+      "id": "EX-0120",
+      "textJa": "このクリーチャーがバトルゾーンに出た時",
+      "glossIt": "Esempio nel corpus per P-002",
+      "sourceType": "item",
+      "sourceRefId": "P-002",
+      "cardId": "CARD-SD1-005",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-002"
+      ]
+    },
+    {
+      "id": "EX-0121",
+      "textJa": "自分のアビスが攻撃する時",
+      "glossIt": "Esempio nel corpus per P-003",
+      "sourceType": "item",
+      "sourceRefId": "P-003",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-003"
+      ]
+    },
+    {
+      "id": "EX-0122",
+      "textJa": "このクリーチャーが離れる時",
+      "glossIt": "Esempio nel corpus per P-004",
+      "sourceType": "item",
+      "sourceRefId": "P-004",
+      "cardId": "CARD-SD1-002",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-004"
+      ]
+    },
+    {
+      "id": "EX-0123",
+      "textJa": "自分のターンのはじめに",
+      "glossIt": "Esempio nel corpus per P-005",
+      "sourceType": "item",
+      "sourceRefId": "P-005",
+      "cardId": "CARD-SD1-009",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-005"
+      ]
+    },
+    {
+      "id": "EX-0124",
+      "textJa": "自分のターンの終わりに",
+      "glossIt": "Esempio nel corpus per P-006",
+      "sourceType": "item",
+      "sourceRefId": "P-006",
+      "cardId": "CARD-SD2-010",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-006"
+      ]
+    },
+    {
+      "id": "EX-0125",
+      "textJa": "相手のターン中に",
+      "glossIt": "Esempio nel corpus per P-007",
+      "sourceType": "item",
+      "sourceRefId": "P-007",
+      "cardId": "CARD-SD1-007",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-007"
+      ]
+    },
+    {
+      "id": "EX-0126",
+      "textJa": "その後、自分の墓地から出す",
+      "glossIt": "Esempio nel corpus per P-008",
+      "sourceType": "item",
+      "sourceRefId": "P-008",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-008"
+      ]
+    },
+    {
+      "id": "EX-0127",
+      "textJa": "そうしたら、アビスを１枚",
+      "glossIt": "Esempio nel corpus per P-009",
+      "sourceType": "item",
+      "sourceRefId": "P-009",
+      "cardId": "CARD-SD1-012",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-009"
+      ]
+    },
+    {
+      "id": "EX-0128",
+      "textJa": "ただし、コストは０以下にはならない",
+      "glossIt": "Esempio nel corpus per P-010",
+      "sourceType": "item",
+      "sourceRefId": "P-010",
+      "cardId": "CARD-SD1-002",
+      "lessonIds": [
+        "L-03"
+      ],
+      "itemIds": [
+        "P-010"
+      ]
+    },
+    {
+      "id": "EX-0129",
+      "textJa": "墓地に置いてもよい",
+      "glossIt": "Esempio nel corpus per P-011",
+      "sourceType": "item",
+      "sourceRefId": "P-011",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-04"
+      ],
+      "itemIds": [
+        "P-011"
+      ]
+    },
+    {
+      "id": "EX-0130",
+      "textJa": "合計４つ以上なければ",
+      "glossIt": "Esempio nel corpus per P-012",
+      "sourceType": "item",
+      "sourceRefId": "P-012",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-04"
+      ],
+      "itemIds": [
+        "P-012"
+      ]
+    },
+    {
+      "id": "EX-0131",
+      "textJa": "タマシードから進化していれば",
+      "glossIt": "Esempio nel corpus per P-013",
+      "sourceType": "item",
+      "sourceRefId": "P-013",
+      "cardId": "CARD-SD2-007",
+      "lessonIds": [
+        "L-04"
+      ],
+      "itemIds": [
+        "P-013"
+      ]
+    },
+    {
+      "id": "EX-0132",
+      "textJa": "コスト５以下のクリーチャー",
+      "glossIt": "Esempio nel corpus per P-014",
+      "sourceType": "item",
+      "sourceRefId": "P-014",
+      "cardId": "CARD-SD1-007",
+      "lessonIds": [
+        "L-04"
+      ],
+      "itemIds": [
+        "P-014"
+      ]
+    },
+    {
+      "id": "EX-0133",
+      "textJa": "召喚以外の方法",
+      "glossIt": "Esempio nel corpus per P-015",
+      "sourceType": "item",
+      "sourceRefId": "P-015",
+      "cardId": "CARD-SD1-008",
+      "lessonIds": [
+        "L-04"
+      ],
+      "itemIds": [
+        "P-015"
+      ]
+    },
+    {
+      "id": "EX-0134",
+      "textJa": "相手のクリーチャーを１体選ぶ",
+      "glossIt": "Esempio nel corpus per P-016",
+      "sourceType": "item",
+      "sourceRefId": "P-016",
+      "cardId": "CARD-SD1-006",
+      "lessonIds": [
+        "L-04"
+      ],
+      "itemIds": [
+        "P-016"
+      ]
+    },
+    {
+      "id": "EX-0135",
+      "textJa": "自分の山札の上から４枚を墓地に置く",
+      "glossIt": "Esempio nel corpus per P-017",
+      "sourceType": "item",
+      "sourceRefId": "P-017",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-04"
+      ],
+      "itemIds": [
+        "P-017"
+      ]
+    },
+    {
+      "id": "EX-0136",
+      "textJa": "自分の山札の上から４枚を見る",
+      "glossIt": "Esempio nel corpus per P-018",
+      "sourceType": "item",
+      "sourceRefId": "P-018",
+      "cardId": "CARD-SD2-011",
+      "lessonIds": [
+        "L-04"
+      ],
+      "itemIds": [
+        "P-018"
+      ]
+    },
+    {
+      "id": "EX-0137",
+      "textJa": "その上に重ねてもよい",
+      "glossIt": "Esempio nel corpus per P-019",
+      "sourceType": "item",
+      "sourceRefId": "P-019",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-07",
+        "L-08"
+      ],
+      "itemIds": [
+        "P-019"
+      ]
+    },
+    {
+      "id": "EX-0138",
+      "textJa": "一番上のカードを破壊する",
+      "glossIt": "Esempio nel corpus per P-020",
+      "sourceType": "item",
+      "sourceRefId": "P-020",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-07",
+        "L-08"
+      ],
+      "itemIds": [
+        "P-020"
+      ]
+    },
+    {
+      "id": "EX-0139",
+      "textJa": "残りを好きな順序で山札の一番下に置く",
+      "glossIt": "Esempio nel corpus per P-021",
+      "sourceType": "item",
+      "sourceRefId": "P-021",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-07",
+        "L-08"
+      ],
+      "itemIds": [
+        "P-021"
+      ]
+    },
+    {
+      "id": "EX-0140",
+      "textJa": "かわりに自分の手札を２枚捨ててもよい",
+      "glossIt": "Esempio nel corpus per P-022",
+      "sourceType": "item",
+      "sourceRefId": "P-022",
+      "cardId": "CARD-SD1-002",
+      "lessonIds": [
+        "L-07",
+        "L-08"
+      ],
+      "itemIds": [
+        "P-022"
+      ]
+    },
+    {
+      "id": "EX-0141",
+      "textJa": "クリーチャーとして扱わない",
+      "glossIt": "Esempio nel corpus per P-023",
+      "sourceType": "item",
+      "sourceRefId": "P-023",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-07",
+        "L-08"
+      ],
+      "itemIds": [
+        "P-023"
+      ]
+    },
+    {
+      "id": "EX-0142",
+      "textJa": "相手は『G・ストライク』を使えない",
+      "glossIt": "Esempio nel corpus per P-024",
+      "sourceType": "item",
+      "sourceRefId": "P-024",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-07",
+        "L-08"
+      ],
+      "itemIds": [
+        "P-024"
+      ]
+    },
+    {
+      "id": "EX-0143",
+      "textJa": "カードを使う → カードを実行(プレイ)する",
+      "glossIt": "Esempio nel corpus per P-025",
+      "sourceType": "item",
+      "sourceRefId": "P-025",
+      "cardId": "",
+      "lessonIds": [
+        "L-07",
+        "L-08"
+      ],
+      "itemIds": [
+        "P-025"
+      ]
+    },
+    {
+      "id": "EX-0144",
+      "textJa": "進化-自分の火のクリーチャー１体の上に置く",
+      "glossIt": "Esempio nel corpus per P-026",
+      "sourceType": "item",
+      "sourceRefId": "P-026",
+      "cardId": "CARD-SD2-002",
+      "lessonIds": [
+        "L-07",
+        "L-08"
+      ],
+      "itemIds": [
+        "P-026"
+      ]
+    },
+    {
+      "id": "EX-0145",
+      "textJa": "このタマシードが出た時 / 枚数以下 / クリーチャーとして扱わない",
+      "glossIt": "Frase guida carta 漆黒の深淵 ジャシン帝",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-001",
+      "cardId": "CARD-SD1-001",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-005",
+        "V-007",
+        "V-009",
+        "V-010",
+        "V-018",
+        "V-019",
+        "V-028",
+        "V-035",
+        "V-041",
+        "V-043",
+        "P-001",
+        "P-003",
+        "P-008",
+        "P-012",
+        "P-014",
+        "P-023"
+      ]
+    },
+    {
+      "id": "EX-0146",
+      "textJa": "アビスラッシュ / かわりに / 召喚コストを２少なくする",
+      "glossIt": "Frase guida carta アビスベル=ジャシン帝",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-002",
+      "cardId": "CARD-SD1-002",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-004",
+        "V-005",
+        "V-026",
+        "V-030",
+        "V-032",
+        "V-033",
+        "V-042",
+        "V-050",
+        "V-052",
+        "P-004",
+        "P-010",
+        "P-011",
+        "P-022"
+      ]
+    },
+    {
+      "id": "EX-0147",
+      "textJa": "または自分のアビスが攻撃する時 / かわりに / 山札の下に置く",
+      "glossIt": "Frase guida carta 邪龍 ジャブラッド",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-003",
+      "cardId": "CARD-SD1-003",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-005",
+        "V-008",
+        "V-018",
+        "V-020",
+        "V-029",
+        "V-033",
+        "V-042",
+        "V-050",
+        "P-001",
+        "P-003",
+        "P-011",
+        "P-012",
+        "P-022",
+        "P-023"
+      ]
+    },
+    {
+      "id": "EX-0148",
+      "textJa": "相手の手札を見て / 捨てさせる / 出た時にトリガーする能力",
+      "glossIt": "Frase guida carta 深淵の壊炉 マーダン=ロウ",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-004",
+      "cardId": "CARD-SD1-004",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-002",
+        "V-004",
+        "V-005",
+        "V-008",
+        "V-021",
+        "V-022",
+        "V-026",
+        "V-029",
+        "V-050",
+        "V-051",
+        "V-053",
+        "V-055",
+        "P-001",
+        "P-003",
+        "P-008",
+        "P-011",
+        "P-014",
+        "P-016"
+      ]
+    },
+    {
+      "id": "EX-0149",
+      "textJa": "ターンの残りをとばす",
+      "glossIt": "Frase guida carta 終末の時計 ザ・クロック",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-005",
+      "cardId": "CARD-SD1-005",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-030",
+        "V-039",
+        "V-040",
+        "V-048",
+        "P-002"
+      ]
+    },
+    {
+      "id": "EX-0150",
+      "textJa": "次の能力を２回行う / パワーを－4000する",
+      "glossIt": "Frase guida carta ドアノッカ＝ノアドッカ / 「…開けるか？」",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-006",
+      "cardId": "CARD-SD1-006",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-002",
+        "V-017",
+        "V-018",
+        "V-021",
+        "V-028",
+        "P-001",
+        "P-016"
+      ]
+    },
+    {
+      "id": "EX-0151",
+      "textJa": "相手のターン中に / ２つ以上…ブレイクされていなければ",
+      "glossIt": "Frase guida carta 忍蛇の聖沌 c0br4",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-007",
+      "cardId": "CARD-SD1-007",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-005",
+        "V-009",
+        "V-010",
+        "V-018",
+        "V-019",
+        "V-028",
+        "V-041",
+        "V-048",
+        "V-052",
+        "P-001",
+        "P-007",
+        "P-008",
+        "P-012",
+        "P-014",
+        "P-017"
+      ]
+    },
+    {
+      "id": "EX-0152",
+      "textJa": "召喚以外の方法でクリーチャーを出した時",
+      "glossIt": "Frase guida carta ブルーム＝プルーフ",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-008",
+      "cardId": "CARD-SD1-008",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-018",
+        "V-028",
+        "V-030",
+        "P-001",
+        "P-007",
+        "P-015",
+        "P-017"
+      ]
+    },
+    {
+      "id": "EX-0153",
+      "textJa": "自分のターンのはじめに / ただし、その『S・トリガー』は使えない",
+      "glossIt": "Frase guida carta サーイ=サイクル",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-009",
+      "cardId": "CARD-SD1-009",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-004",
+        "V-018",
+        "V-024",
+        "V-048",
+        "V-061",
+        "P-005",
+        "P-008",
+        "P-010",
+        "P-024"
+      ]
+    },
+    {
+      "id": "EX-0154",
+      "textJa": "シビルカウント２ / 『S・トリガー』を与える",
+      "glossIt": "Frase guida carta 邪侵入",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-010",
+      "cardId": "CARD-SD1-010",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-005",
+        "V-008",
+        "V-009",
+        "V-010",
+        "V-016",
+        "V-019",
+        "V-032",
+        "V-034",
+        "V-042",
+        "V-048",
+        "V-055",
+        "P-008",
+        "P-011",
+        "P-014",
+        "P-017"
+      ]
+    },
+    {
+      "id": "EX-0155",
+      "textJa": "枚数よりコストが小さい",
+      "glossIt": "Frase guida carta ハンマ＝ダンマ",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-011",
+      "cardId": "CARD-SD1-011",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-005",
+        "V-007",
+        "V-016",
+        "V-018",
+        "V-028",
+        "V-030",
+        "V-045",
+        "V-048",
+        "P-001",
+        "P-008",
+        "P-011",
+        "P-014",
+        "P-017"
+      ]
+    },
+    {
+      "id": "EX-0156",
+      "textJa": "そうしたら、アビスを１枚…手札に戻してもよい",
+      "glossIt": "Frase guida carta フォーク＝フォック",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-012",
+      "cardId": "CARD-SD1-012",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-004",
+        "V-005",
+        "V-018",
+        "V-024",
+        "V-025",
+        "V-042",
+        "P-001",
+        "P-009",
+        "P-011",
+        "P-017"
+      ]
+    },
+    {
+      "id": "EX-0157",
+      "textJa": "召喚以外の方法で / かわりにそのクリーチャーを墓地に置く",
+      "glossIt": "Frase guida carta ルピア炎鬼",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD1-013",
+      "cardId": "CARD-SD1-013",
+      "lessonIds": [
+        "L-05",
+        "L-07"
+      ],
+      "itemIds": [
+        "V-005",
+        "V-019",
+        "V-030",
+        "V-033",
+        "P-015",
+        "P-022"
+      ]
+    },
+    {
+      "id": "EX-0158",
+      "textJa": "このクリーチャーの攻撃中 / 最初の攻撃の終わりに / アンタップし",
+      "glossIt": "Frase guida carta 覇帝なき侵略 レッドゾーンF",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-001",
+      "cardId": "CARD-SD2-001",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-012",
+        "V-020",
+        "V-028",
+        "V-029",
+        "V-036",
+        "V-043",
+        "V-044",
+        "V-050",
+        "V-055",
+        "V-056",
+        "V-062",
+        "P-003",
+        "P-019",
+        "P-020",
+        "P-024"
+      ]
+    },
+    {
+      "id": "EX-0159",
+      "textJa": "一番パワーが大きい相手のクリーチャーをすべて破壊する",
+      "glossIt": "Frase guida carta 轟く侵略 レッドゾーン",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-002",
+      "cardId": "CARD-SD2-002",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-002",
+        "V-017",
+        "V-018",
+        "V-028",
+        "V-043",
+        "V-044",
+        "V-051",
+        "P-002",
+        "P-019"
+      ]
+    },
+    {
+      "id": "EX-0160",
+      "textJa": "このクリーチャーの下にあるカードを３枚墓地に置いてもよい",
+      "glossIt": "Frase guida carta 超神羅星アポロヌス・ドラゲリオン",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-003",
+      "cardId": "CARD-SD2-003",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-005",
+        "V-006",
+        "V-016",
+        "V-021",
+        "V-028",
+        "V-036",
+        "V-037",
+        "V-044",
+        "V-045",
+        "V-051",
+        "V-057",
+        "P-002",
+        "P-009",
+        "P-011",
+        "P-016",
+        "P-019"
+      ]
+    },
+    {
+      "id": "EX-0161",
+      "textJa": "表向きにする / それ以外のカードを好きな順で",
+      "glossIt": "Frase guida carta 進化設計図",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-004",
+      "cardId": "CARD-SD2-004",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-004",
+        "V-010",
+        "V-014",
+        "V-015",
+        "V-022",
+        "V-024",
+        "V-043",
+        "V-048",
+        "V-060",
+        "P-010",
+        "P-018",
+        "P-021"
+      ]
+    },
+    {
+      "id": "EX-0162",
+      "textJa": "ゲームに負けず、相手はゲームに勝てない",
+      "glossIt": "Frase guida carta SMAPON",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-005",
+      "cardId": "CARD-SD2-005",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-002",
+        "V-017",
+        "V-028",
+        "V-049",
+        "V-055",
+        "V-056",
+        "V-061",
+        "P-002",
+        "P-014",
+        "P-024"
+      ]
+    },
+    {
+      "id": "EX-0163",
+      "textJa": "相手に見せてから / 残りを好きな順序で",
+      "glossIt": "Frase guida carta 未来設計図",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-006",
+      "cardId": "CARD-SD2-006",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-004",
+        "V-013",
+        "V-014",
+        "V-015",
+        "V-021",
+        "V-023",
+        "V-024",
+        "V-048",
+        "P-011",
+        "P-018",
+        "P-021"
+      ]
+    },
+    {
+      "id": "EX-0164",
+      "textJa": "タマシードから進化していれば",
+      "glossIt": "Frase guida carta カチコミ入道 <バトライ.鬼>",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-007",
+      "cardId": "CARD-SD2-007",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-021",
+        "V-038",
+        "V-041",
+        "V-043",
+        "V-046",
+        "V-050",
+        "P-001",
+        "P-013",
+        "P-016"
+      ]
+    },
+    {
+      "id": "EX-0165",
+      "textJa": "このクリーチャーがタマシードから進化していれば、カードをもう１枚引く",
+      "glossIt": "Frase guida carta オンソク童子 <ターボ.鬼>",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-008",
+      "cardId": "CARD-SD2-008",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-004",
+        "V-018",
+        "V-026",
+        "V-027",
+        "V-041",
+        "V-046",
+        "P-001",
+        "P-009",
+        "P-013"
+      ]
+    },
+    {
+      "id": "EX-0166",
+      "textJa": "このタマシードが出た時 / 山札の下に置き、その後、カードを１枚引く",
+      "glossIt": "Frase guida carta ストリエ雷鬼の巻",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-009",
+      "cardId": "CARD-SD2-009",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-004",
+        "V-020",
+        "V-027",
+        "V-041",
+        "V-047",
+        "P-001",
+        "P-008"
+      ]
+    },
+    {
+      "id": "EX-0167",
+      "textJa": "このターン、このクリーチャーがシールドをブレイクしていたら",
+      "glossIt": "Frase guida carta 冒険妖精ポレコ",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-010",
+      "cardId": "CARD-SD2-010",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-025",
+        "V-037",
+        "P-006",
+        "P-013"
+      ]
+    },
+    {
+      "id": "EX-0168",
+      "textJa": "その中から進化クリーチャーを１体相手に見せ、手札に加えてもよい",
+      "glossIt": "Frase guida carta ヘルコプ太の心絵",
+      "sourceType": "card-guide",
+      "sourceRefId": "CARD-SD2-011",
+      "cardId": "CARD-SD2-011",
+      "lessonIds": [
+        "L-06",
+        "L-08"
+      ],
+      "itemIds": [
+        "V-003",
+        "V-004",
+        "V-010",
+        "V-014",
+        "V-015",
+        "V-021",
+        "V-023",
+        "V-024",
+        "V-043",
+        "V-047",
+        "P-001",
+        "P-011",
+        "P-018",
+        "P-021"
+      ]
+    }
+  ]
+}
