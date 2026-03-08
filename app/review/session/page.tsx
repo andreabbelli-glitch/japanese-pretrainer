@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getItemById } from "@/src/domain/content";
+import { getItemById, getLanguageItemById } from "@/src/domain/content";
 import { getReviewTemplate } from "@/src/domain/review";
 import { createClient } from "@/src/lib/supabase/server";
 import { getAuthenticatedUserId, listReviewEventsBySession } from "@/src/features/user-data/repository";
@@ -11,7 +11,35 @@ type SearchParams = {
   queue?: string;
   index?: string;
   done?: string;
+  mode?: string;
+  goalId?: string;
 };
+
+function toReviewCardItem(itemId: string) {
+  const legacy = getItemById(itemId);
+  if (legacy) {
+    return {
+      id: legacy.id,
+      term: legacy.term,
+      reading: legacy.reading,
+      meaning: legacy.meaning,
+      exampleText: legacy.exampleText,
+      template: getReviewTemplate(legacy),
+    };
+  }
+
+  const canonical = getLanguageItemById(itemId);
+  if (!canonical) return null;
+
+  return {
+    id: canonical.id,
+    term: canonical.surface,
+    reading: canonical.reading,
+    meaning: canonical.meaning_it,
+    exampleText: canonical.explanation_eli5,
+    template: getReviewTemplate(canonical),
+  };
+}
 
 export default async function ReviewSessionPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   const params = await searchParams;
@@ -72,14 +100,9 @@ export default async function ReviewSessionPage({ searchParams }: { searchParams
           <li className="rounded-md bg-slate-50 p-3">Good: {byRating.Good}</li>
           <li className="rounded-md bg-slate-50 p-3">Easy: {byRating.Easy}</li>
         </ul>
-        <div className="flex gap-2">
-          <Link href="/review" className="rounded-md border border-slate-300 px-3 py-2 text-sm hover:bg-slate-100">
-            Torna a review
-          </Link>
-          <Link href="/dashboard" className="rounded-md border border-slate-300 px-3 py-2 text-sm hover:bg-slate-100">
-            Vai alla dashboard
-          </Link>
-        </div>
+        <Link href="/review" className="inline-block rounded-md border border-slate-300 px-3 py-2 text-sm hover:bg-slate-100">
+          Nuova sessione
+        </Link>
       </section>
     );
   }
@@ -87,38 +110,41 @@ export default async function ReviewSessionPage({ searchParams }: { searchParams
   const queue = (params.queue ?? "").split(",").filter(Boolean);
   const index = Number(params.index ?? 0);
 
-  if (queue.length === 0 || Number.isNaN(index) || index < 0 || index >= queue.length) {
+  if (!queue.length || Number.isNaN(index) || index < 0 || index >= queue.length) {
     return (
-      <section className="space-y-4 rounded-lg border border-amber-200 bg-amber-50 p-5">
-        <h1 className="text-xl font-semibold text-slate-900">Sessione incompleta</h1>
-        <p className="text-sm text-slate-700">La coda non è valida. Torna alla pagina review e riavvia la sessione.</p>
-        <Link href="/review" className="inline-block rounded-md border border-slate-300 bg-white px-3 py-2 text-sm hover:bg-slate-100">
-          Riavvia review
+      <section className="space-y-4 rounded-lg border border-slate-200 bg-white p-5">
+        <h1 className="text-2xl font-semibold text-slate-900">Sessione review</h1>
+        <p className="text-sm text-slate-700">Queue non valida o completata.</p>
+        <Link href="/review" className="inline-block rounded-md border border-slate-300 px-3 py-2 text-sm hover:bg-slate-100">
+          Torna a Review
         </Link>
       </section>
     );
   }
 
-  const currentItem = getItemById(queue[index]);
+  const currentItem = toReviewCardItem(queue[index]);
+
   if (!currentItem) {
     notFound();
   }
-
-  const template = getReviewTemplate(currentItem);
 
   return (
     <section className="space-y-4">
       <header className="rounded-lg border border-slate-200 bg-white p-5">
         <h1 className="text-2xl font-semibold text-slate-900">Sessione review</h1>
         <p className="text-sm text-slate-700">
-          Carta {index + 1} di {queue.length}. Progress sessione: {events.length}/{session.item_count} valutate.
+          Item {index + 1} / {queue.length}
         </p>
-        <div className="mt-3 h-2 w-full rounded-full bg-slate-200">
-          <div className="h-2 rounded-full bg-slate-900" style={{ width: `${Math.round(((index + 1) / queue.length) * 100)}%` }} />
-        </div>
       </header>
 
-      <ReviewCard session={session} item={currentItem} queue={queue} index={index} template={template} />
+      <ReviewCard
+        session={session}
+        item={currentItem}
+        queue={queue}
+        index={index}
+        mode={params.mode ?? "global"}
+        goalId={params.goalId ?? null}
+      />
     </section>
   );
 }

@@ -43,12 +43,21 @@ export type SessionQueueEntry = {
   isDue: boolean;
   isNew: boolean;
   dueAt: string | null;
+  masteryScore?: number;
 };
 
 export type SessionQueuePlan = {
   due: SessionQueueEntry[];
   newItems: SessionQueueEntry[];
   totalPlanned: number;
+};
+
+export const REVIEW_MODES = ["global", "goal", "missing-only", "bridge"] as const;
+export type ReviewMode = (typeof REVIEW_MODES)[number];
+
+export type ReviewQueueFilters = {
+  mode: ReviewMode;
+  goalId?: string;
 };
 
 export type ReviewTemplate = {
