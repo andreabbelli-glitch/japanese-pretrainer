@@ -3,7 +3,15 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/src/lib/supabase/server";
 
-export async function loginWithMagicLink(formData: FormData) {
+export type LoginActionState = {
+  error?: string;
+  success?: string;
+};
+
+export async function loginWithMagicLink(
+  _previousState: LoginActionState,
+  formData: FormData,
+): Promise<LoginActionState> {
   const email = String(formData.get("email") ?? "").trim();
   if (!email) return { error: "Inserisci una email valida." };
 
