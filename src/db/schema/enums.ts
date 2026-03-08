@@ -1,7 +1,15 @@
-export const mediaStatusValues = ["active", "archived"] as const;
-export const lessonStatusValues = ["active", "archived"] as const;
+export {
+  entryTypeValues,
+  lessonStatusValues,
+  mediaStatusValues
+} from "@/domain/content.ts";
+export type {
+  EntryType,
+  LessonStatus,
+  MediaStatus
+} from "@/domain/content.ts";
+
 export const cardStatusValues = ["active", "suspended", "archived"] as const;
-export const entryTypeValues = ["term", "grammar"] as const;
 export const sourceTypeValues = ["lesson", "card"] as const;
 export const entryLinkRoleValues = [
   "introduced",
@@ -44,5 +52,3 @@ export const userSettingKeys = [
   "review_daily_limit",
   "glossary_default_sort"
 ] as const;
-
-export type EntryType = (typeof entryTypeValues)[number];

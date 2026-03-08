@@ -120,6 +120,7 @@ docs/
 - [Persistence layer](./docs/database.md)
 - [Schema dati iniziale](./docs/schema-dati-iniziale.md)
 - [Specifica contenuti Markdown](./docs/content-format.md)
+- [Content parser e validator](./docs/content-parser.md)
 - [Handoff per LLM esterno](./docs/llm-content-handoff.md)
 - [Tooling locale](./docs/dev-tooling.md)
 - [Direzione UX/UI](./docs/design/ux-ui-direction.md)
