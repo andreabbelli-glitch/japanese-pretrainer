@@ -210,22 +210,24 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
           {media.previewEntries.length > 0 ? (
             <div className="entry-preview-list">
               {media.previewEntries.map((entry) => (
-                <SurfaceCard key={entry.id} className="entry-preview-card" variant="quiet">
-                  <div className="entry-preview-card__top">
-                    <span className="chip">
-                      {entry.kind === "term" ? "Termine" : "Grammatica"}
-                    </span>
-                    <span className="meta-pill">{entry.statusLabel}</span>
-                  </div>
-                  <h3 className="entry-preview-card__title jp-inline">{entry.label}</h3>
-                  {entry.reading ? (
-                    <p className="entry-preview-card__reading jp-inline">{entry.reading}</p>
-                  ) : null}
-                  <p className="entry-preview-card__meaning">{entry.meaning}</p>
-                  {entry.segmentTitle ? (
-                    <p className="entry-preview-card__segment">{entry.segmentTitle}</p>
-                  ) : null}
-                </SurfaceCard>
+                <Link key={entry.id} className="entry-point-link" href={entry.href}>
+                  <SurfaceCard className="entry-preview-card" variant="quiet">
+                    <div className="entry-preview-card__top">
+                      <span className="chip">
+                        {entry.kind === "term" ? "Termine" : "Grammatica"}
+                      </span>
+                      <span className="meta-pill">{entry.statusLabel}</span>
+                    </div>
+                    <h3 className="entry-preview-card__title jp-inline">{entry.label}</h3>
+                    {entry.reading ? (
+                      <p className="entry-preview-card__reading jp-inline">{entry.reading}</p>
+                    ) : null}
+                    <p className="entry-preview-card__meaning">{entry.meaning}</p>
+                    {entry.segmentTitle ? (
+                      <p className="entry-preview-card__segment">{entry.segmentTitle}</p>
+                    ) : null}
+                  </SurfaceCard>
+                </Link>
               ))}
             </div>
           ) : (

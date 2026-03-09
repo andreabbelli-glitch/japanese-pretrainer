@@ -11,6 +11,9 @@ import type {
   RichTextFragment,
   TermDefinitionBlock
 } from "../types.ts";
+import { normalizeSearchText } from "../../study-search.ts";
+
+export { normalizeGrammarSearchText, normalizeSearchText } from "../../study-search.ts";
 
 export function buildDeterministicId(
   namespace: string,
@@ -35,14 +38,6 @@ export function normalizeSourceFile(
   }
 
   return sourceFile.split(path.sep).join("/");
-}
-
-export function normalizeSearchText(value: string): string {
-  return value.normalize("NFKC").trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-export function normalizeGrammarSearchText(value: string): string {
-  return normalizeSearchText(value).replace(/[~〜～]/g, "");
 }
 
 export function inferTermAliasType(

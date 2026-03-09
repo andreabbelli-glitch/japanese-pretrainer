@@ -1528,6 +1528,257 @@ rt {
   line-height: 1.05;
 }
 
+.glossary-page {
+  display: grid;
+  gap: var(--section-gap);
+}
+
+.glossary-hero,
+.glossary-entry-hero,
+.glossary-side {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.glossary-hero__title,
+.glossary-entry-hero__title,
+.glossary-detail-card__title {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-display);
+}
+
+.glossary-hero__title {
+  font-size: var(--text-display);
+  line-height: 1.02;
+}
+
+.glossary-entry-hero__title {
+  font-size: clamp(2rem, 1.6rem + 1.2vw, 2.9rem);
+  line-height: 1;
+}
+
+.glossary-hero__summary,
+.glossary-entry-hero__subtitle,
+.glossary-entry-hero__meaning,
+.glossary-entry-hero__detail,
+.glossary-entry-hero__notes,
+.glossary-result-card__subtitle,
+.glossary-result-card__meaning,
+.glossary-result-card__lesson,
+.glossary-detail-card__body,
+.glossary-detail-card__note,
+.glossary-result-card__match-preview {
+  margin: 0;
+  color: var(--color-ink-muted);
+}
+
+.glossary-entry-hero__meaning {
+  color: var(--color-ink-strong);
+  font-size: var(--text-subtitle);
+  font-weight: var(--font-weight-medium);
+}
+
+.glossary-entry-hero__reading,
+.glossary-result-card__reading,
+.glossary-result-card__meta,
+.glossary-detail-card__meta {
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: var(--text-small);
+}
+
+.glossary-search-form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.glossary-search-form__filters {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.glossary-search-form__field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.glossary-search-form__label,
+.glossary-entry-hero__alias-label {
+  color: var(--color-ink-soft);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.glossary-search-form__input,
+.glossary-search-form__select {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(192, 175, 150, 0.86);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 242, 0.86);
+  color: var(--color-ink-strong);
+}
+
+.glossary-search-form__input::placeholder {
+  color: var(--color-ink-soft);
+}
+
+.glossary-search-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.glossary-results,
+.glossary-detail-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.glossary-detail-link {
+  display: block;
+}
+
+.glossary-result-card,
+.glossary-detail-card {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.glossary-result-card--active {
+  border-color: rgba(98, 114, 77, 0.72);
+  box-shadow:
+    var(--shadow-card),
+    0 0 0 1px rgba(98, 114, 77, 0.22);
+}
+
+.glossary-result-card__top,
+.glossary-detail-card__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.glossary-result-card__chips,
+.glossary-entry-hero__alias-values,
+.glossary-detail-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.glossary-result-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.glossary-result-card__desktop-action,
+.glossary-result-card__mobile-action,
+.glossary-result-card__detail-link {
+  color: var(--color-accent-strong);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.glossary-result-card__desktop-action {
+  display: none;
+}
+
+.glossary-result-card__arrow {
+  color: var(--color-accent-strong);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.glossary-result-card__title {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-display);
+  font-size: clamp(1.45rem, 1.2rem + 0.7vw, 1.8rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.04;
+}
+
+.glossary-result-card__match,
+.glossary-entry-hero__aliases {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.glossary-entry-hero__alias-group {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.glossary-result-card__footer {
+  display: grid;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(210, 197, 177, 0.56);
+}
+
+.glossary-result-card__meta,
+.glossary-detail-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.glossary-detail-card__body {
+  color: var(--color-ink-strong);
+}
+
+.glossary-workspace {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.glossary-workspace__preview {
+  display: none;
+}
+
+.glossary-preview-panel {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.glossary-detail-sections {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.glossary-preview-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.glossary-preview-panel__title {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-display);
+  font-size: var(--text-title);
+  font-weight: var(--font-weight-semibold);
+}
+
+.glossary-page mark {
+  padding: 0 0.12em;
+  border-radius: 0.2em;
+  background: var(--color-highlight-search);
+  color: inherit;
+}
+
 @keyframes shimmer {
   0% {
     background-position: 200% 0;
@@ -1555,8 +1806,37 @@ rt {
     grid-template-columns: minmax(0, 1.65fr) minmax(18rem, 0.95fr);
   }
 
+  .hero-grid--stacked,
+  .glossary-detail-sections {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .textbook-hero-grid {
     grid-template-columns: minmax(0, 1.55fr) minmax(17rem, 0.9fr);
+  }
+
+  .glossary-result-card__desktop-action {
+    display: inline-flex;
+  }
+
+  .glossary-result-card__mobile-action {
+    display: none;
+  }
+
+  .glossary-workspace {
+    grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .glossary-workspace__results {
+    min-width: 0;
+  }
+
+  .glossary-workspace__preview {
+    display: block;
+    position: sticky;
+    top: calc(var(--app-header-height-desktop) + var(--space-6));
+    min-width: 0;
   }
 
   .reader-layout {
@@ -1585,6 +1865,16 @@ rt {
 
   .placeholder-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .glossary-search-form__filters,
+  .glossary-results,
+  .glossary-detail-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .glossary-workspace__results .glossary-results {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1694,5 +1984,10 @@ rt {
 
   .entry-point-grid {
     grid-template-columns: 1fr;
+  }
+
+  .glossary-search-form__actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 }

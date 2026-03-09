@@ -1,0 +1,6 @@
+Total messages: 4 (Errors: 0, Warnings: 0)
+
+[LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/a5dda_next_dist_fd2d7206._.js:2297
+[LOG] [Fast Refresh] done in 334ms @ http://localhost:3000/_next/static/chunks/a5dda_next_dist_fd2d7206._.js:2297
+[INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/a5dda_next_dist_fd2d7206._.js:2297
+[LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/a5dda_next_dist_fd2d7206._.js:2297

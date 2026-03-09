@@ -1,0 +1,462 @@
+import type { Route } from "next";
+import Link from "next/link";
+
+import type { GlossaryMatchMode, GlossaryPageData } from "@/lib/glossary";
+import { mediaHref } from "@/lib/site";
+import {
+  compactLatinSearchText,
+  foldJapaneseKana,
+  normalizeGrammarSearchText,
+  normalizeSearchText
+} from "@/lib/study-search";
+
+import { GlossaryDetailPanels } from "./glossary-detail-page";
+import { StickyPageHeader } from "../layout/sticky-page-header";
+import { EmptyState } from "../ui/empty-state";
+import { Section } from "../ui/section";
+import { StatBlock } from "../ui/stat-block";
+import { SurfaceCard } from "../ui/surface-card";
+
+type GlossaryPageProps = {
+  data: GlossaryPageData;
+};
+
+export function GlossaryPage({ data }: GlossaryPageProps) {
+  const hasEntries = data.resultSummary.total > 0;
+
+  return (
+    <div className="glossary-page">
+      <StickyPageHeader
+        backHref={mediaHref(data.media.slug)}
+        backLabel={`Torna a ${data.media.title}`}
+        eyebrow="Glossary"
+        title={data.media.title}
+        summary="Ricerca rapida per kanji, kana, romaji e significato, con segnali di studio e collegamenti al percorso."
+        meta={
+          <>
+            <span>{data.media.mediaTypeLabel}</span>
+            <span>{data.media.segmentKindLabel}</span>
+            <span>{data.resultSummary.total} entry</span>
+          </>
+        }
+        actions={
+          <Link className="button button--ghost" href={data.media.textbookHref}>
+            Apri textbook
+          </Link>
+        }
+      />
+
+      <section className="hero-grid hero-grid--detail">
+        <SurfaceCard className="glossary-hero" variant="hero">
+          <p className="eyebrow">Lookup</p>
+          <h2 className="glossary-hero__title">
+            Cerca una forma e ricostruisci subito il contesto di studio.
+          </h2>
+          <p className="glossary-hero__summary">
+            Exact, prefix e matching normalizzato restano prioritari: prima la forma
+            giusta, poi alias e significato.
+          </p>
+
+          <form className="glossary-search-form" method="get">
+            <label className="glossary-search-form__field">
+              <span className="glossary-search-form__label">Cerca</span>
+              <input
+                className="glossary-search-form__input"
+                defaultValue={data.filters.query}
+                name="q"
+                placeholder="食べる, たべる, taberu, mangiare"
+                type="search"
+              />
+            </label>
+
+            <div className="glossary-search-form__filters">
+              <label className="glossary-search-form__field">
+                <span className="glossary-search-form__label">Tipo</span>
+                <select
+                  className="glossary-search-form__select"
+                  defaultValue={data.filters.entryType}
+                  name="type"
+                >
+                  <option value="all">Tutto</option>
+                  <option value="term">Term</option>
+                  <option value="grammar">Grammar</option>
+                </select>
+              </label>
+
+              <label className="glossary-search-form__field">
+                <span className="glossary-search-form__label">Segmento</span>
+                <select
+                  className="glossary-search-form__select"
+                  defaultValue={data.filters.segmentId}
+                  name="segment"
+                >
+                  {data.segments.map((segment) => (
+                    <option key={segment.id} value={segment.id}>
+                      {segment.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="glossary-search-form__field">
+                <span className="glossary-search-form__label">Stato</span>
+                <select
+                  className="glossary-search-form__select"
+                  defaultValue={data.filters.study}
+                  name="study"
+                >
+                  <option value="all">Tutti</option>
+                  <option value="known">Gia note</option>
+                  <option value="review">In review</option>
+                  <option value="learning">In studio</option>
+                  <option value="new">Nuove</option>
+                  <option value="available">Disponibili</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="glossary-search-form__actions">
+              <button className="button button--primary" type="submit">
+                Cerca
+              </button>
+              {data.hasActiveFilters ? (
+                <Link className="button button--ghost" href={data.media.glossaryHref}>
+                  Azzera filtri
+                </Link>
+              ) : null}
+            </div>
+          </form>
+        </SurfaceCard>
+
+        <SurfaceCard className="glossary-side">
+          <p className="eyebrow">Snapshot</p>
+          <div className="stats-grid stats-grid--stacked">
+            <StatBlock
+              detail={`${data.stats.termCount} term nel media`}
+              label="Term"
+              value={String(data.stats.termCount)}
+            />
+            <StatBlock
+              detail={`${data.stats.grammarCount} pattern grammaticali`}
+              label="Grammar"
+              value={String(data.stats.grammarCount)}
+            />
+            <StatBlock
+              detail="Override manuali o card gia stabili"
+              label="Gia note"
+              value={String(data.stats.knownCount)}
+            />
+            <StatBlock
+              detail="Entry gia entrate nel loop review"
+              label="In review"
+              value={String(data.stats.reviewCount)}
+            />
+          </div>
+        </SurfaceCard>
+      </section>
+
+      <Section
+        eyebrow="Risultati"
+        title={
+          data.resultSummary.queryLabel
+            ? `"${data.resultSummary.queryLabel}"`
+            : "Indice consultabile"
+        }
+        description={
+          data.resultSummary.queryLabel
+            ? `${data.resultSummary.filtered} risultati su ${data.resultSummary.total} entry.`
+            : "Il glossary resta leggibile anche senza query: puoi sfogliare per segmento, tipo e stato."
+        }
+      >
+        {!hasEntries ? (
+          <EmptyState
+            title="Questo media non ha ancora entry nel glossary."
+            description="Importa o sincronizza termini e pattern, poi torna qui per usare ricerca, dettaglio e collegamenti di studio."
+            action={
+              <Link className="button button--ghost" href={data.media.textbookHref}>
+                Apri textbook
+              </Link>
+            }
+          />
+        ) : data.results.length === 0 ? (
+          <EmptyState
+            title="Nessun risultato con questi filtri."
+            description="Prova una forma piu breve, passa da romaji a kana oppure rimuovi segmento e stato per allargare il match."
+            action={
+              <Link className="button button--ghost" href={data.media.glossaryHref}>
+                Riparti dall&apos;indice
+              </Link>
+            }
+          />
+        ) : (
+          <div className="glossary-workspace">
+            <div className="glossary-workspace__results">
+              <div className="glossary-results">
+                {data.results.map((entry) => {
+                  const previewHref = buildPreviewHref({
+                    entryId: entry.id,
+                    entryKind: entry.kind,
+                    filters: data.filters
+                  });
+                  const isPreviewActive =
+                    data.preview?.entry.id === entry.id &&
+                    data.preview.entry.kind === entry.kind;
+                  const visibleAliasMatches = entry.matchedFields.aliases.filter(
+                    (alias) =>
+                      ![
+                        entry.label,
+                        entry.title,
+                        entry.reading,
+                        entry.romaji
+                      ]
+                        .filter(Boolean)
+                        .includes(alias.text)
+                  );
+
+                  return (
+                    <SurfaceCard
+                      key={`${entry.kind}:${entry.id}`}
+                      className={`glossary-result-card${isPreviewActive ? " glossary-result-card--active" : ""}`}
+                    >
+                      <div className="glossary-result-card__top">
+                        <div className="glossary-result-card__chips">
+                          <span className="chip">
+                            {entry.kind === "term" ? "Term" : "Grammar"}
+                          </span>
+                          <span className="meta-pill">{entry.studyState.label}</span>
+                          {entry.segmentTitle ? (
+                            <span className="meta-pill">{entry.segmentTitle}</span>
+                          ) : null}
+                        </div>
+                        <div className="glossary-result-card__actions">
+                          <Link
+                            className="glossary-result-card__desktop-action"
+                            href={previewHref}
+                          >
+                            Anteprima
+                          </Link>
+                          <Link className="glossary-result-card__mobile-action" href={entry.href}>
+                            Apri
+                          </Link>
+                        </div>
+                      </div>
+
+                      <h3 className="glossary-result-card__title jp-inline">
+                        <HighlightText
+                          mode={entry.matchedFields.label}
+                          query={data.filters.query}
+                          text={entry.label}
+                        />
+                      </h3>
+                      {entry.title && entry.title !== entry.label ? (
+                        <p className="glossary-result-card__subtitle">
+                          <HighlightText
+                            mode={entry.matchedFields.title}
+                            query={data.filters.query}
+                            text={entry.title}
+                          />
+                        </p>
+                      ) : null}
+                      {entry.reading || entry.romaji ? (
+                        <p className="glossary-result-card__reading jp-inline">
+                          {entry.reading ? (
+                            <HighlightText
+                              mode={entry.matchedFields.reading}
+                              query={data.filters.query}
+                              text={entry.reading}
+                            />
+                          ) : null}
+                          {entry.reading && entry.romaji ? " / " : null}
+                          {entry.romaji ? (
+                            <HighlightText
+                              mode={entry.matchedFields.romaji}
+                              query={data.filters.query}
+                              text={entry.romaji}
+                            />
+                          ) : null}
+                        </p>
+                      ) : null}
+                      <p className="glossary-result-card__meaning">
+                        <HighlightText
+                          mode={entry.matchedFields.meaning}
+                          query={data.filters.query}
+                          text={entry.meaning}
+                        />
+                      </p>
+
+                      {entry.matchBadges.length > 0 || visibleAliasMatches.length > 0 ? (
+                        <div className="glossary-result-card__match">
+                          {entry.matchBadges.map((badge) => (
+                            <span key={badge} className="chip">
+                              Match: {badge}
+                            </span>
+                          ))}
+                          {visibleAliasMatches.length > 0 ? (
+                            <p className="glossary-result-card__match-preview">
+                              Alias:{" "}
+                              {visibleAliasMatches.map((alias, index) => (
+                                <span key={`${alias.text}-${alias.mode}`}>
+                                  {index > 0 ? ", " : null}
+                                  <HighlightText
+                                    mode={alias.mode}
+                                    query={data.filters.query}
+                                    text={alias.text}
+                                  />
+                                </span>
+                              ))}
+                            </p>
+                          ) : null}
+                        </div>
+                      ) : null}
+
+                      <div className="glossary-result-card__footer">
+                        <div className="glossary-result-card__meta">
+                          <span>
+                            {entry.lessonCount === 1
+                              ? "1 lesson collegata"
+                              : `${entry.lessonCount} lesson collegate`}
+                          </span>
+                          <span>
+                            {entry.cardCount === 1
+                              ? "1 card collegata"
+                              : `${entry.cardCount} card collegate`}
+                          </span>
+                        </div>
+                        {entry.primaryLesson ? (
+                          <p className="glossary-result-card__lesson">
+                            {entry.primaryLesson.roleLabel}: {entry.primaryLesson.title}
+                          </p>
+                        ) : null}
+                        <Link className="text-link glossary-result-card__detail-link" href={entry.href}>
+                          Apri detail page
+                        </Link>
+                      </div>
+                    </SurfaceCard>
+                  );
+                })}
+              </div>
+            </div>
+
+            {data.preview ? (
+              <aside className="glossary-workspace__preview">
+                <div className="glossary-preview-panel">
+                  <div className="glossary-preview-panel__header">
+                    <div>
+                      <p className="eyebrow">Preview detail</p>
+                      <h3 className="glossary-preview-panel__title">
+                        {data.preview.entry.label}
+                      </h3>
+                    </div>
+                    <Link className="button button--ghost" href={data.preview.entry.href}>
+                      Apri pagina
+                    </Link>
+                  </div>
+                  <GlossaryDetailPanels compact data={data.preview} />
+                </div>
+              </aside>
+            ) : null}
+          </div>
+        )}
+      </Section>
+    </div>
+  );
+}
+
+function buildPreviewHref({
+  entryId,
+  entryKind,
+  filters
+}: {
+  entryId: string;
+  entryKind: "term" | "grammar";
+  filters: GlossaryPageData["filters"];
+}) {
+  const params = new URLSearchParams();
+
+  if (filters.query) {
+    params.set("q", filters.query);
+  }
+
+  if (filters.entryType !== "all") {
+    params.set("type", filters.entryType);
+  }
+
+  if (filters.segmentId !== "all") {
+    params.set("segment", filters.segmentId);
+  }
+
+  if (filters.study !== "all") {
+    params.set("study", filters.study);
+  }
+
+  params.set("preview", entryId);
+  params.set("previewKind", entryKind);
+
+  return `?${params.toString()}` as Route;
+}
+
+function HighlightText({
+  mode,
+  query,
+  text
+}: {
+  mode?: GlossaryMatchMode;
+  query: string;
+  text: string;
+}) {
+  if (!mode || !query) {
+    return text;
+  }
+
+  const trimmedQuery = query.trim();
+
+  if (!trimmedQuery) {
+    return text;
+  }
+
+  const parts = splitLiteralMatch(text, trimmedQuery);
+
+  if (parts) {
+    return parts;
+  }
+
+  const normalizedText = normalizeForMatchMode(text, mode);
+  const normalizedQuery = normalizeForMatchMode(trimmedQuery, mode);
+
+  if (!normalizedText || !normalizedQuery || !normalizedText.includes(normalizedQuery)) {
+    return text;
+  }
+
+  return <mark>{text}</mark>;
+}
+
+function splitLiteralMatch(text: string, query: string) {
+  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const matcher = new RegExp(`(${escapedQuery})`, "gi");
+  const parts = text.split(matcher);
+
+  if (parts.length === 1) {
+    return null;
+  }
+
+  return parts.map((part, index) =>
+    part.toLowerCase() === query.toLowerCase() ? (
+      <mark key={`${part}-${index}`}>{part}</mark>
+    ) : (
+      <span key={`${part}-${index}`}>{part}</span>
+    )
+  );
+}
+
+function normalizeForMatchMode(value: string, mode: GlossaryMatchMode) {
+  switch (mode) {
+    case "kana":
+      return foldJapaneseKana(normalizeSearchText(value));
+    case "grammarKana":
+      return foldJapaneseKana(normalizeGrammarSearchText(value));
+    case "romajiCompact":
+      return compactLatinSearchText(value);
+    case "normalized":
+      return normalizeSearchText(value);
+  }
+}

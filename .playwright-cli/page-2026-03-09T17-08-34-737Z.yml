@@ -1,0 +1,39 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Japanese Custom Study
+          - generic [ref=e7]: Scrivania editoriale
+        - navigation "Navigazione primaria" [ref=e8]:
+          - link "Home Ripresa studio" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e10]: Home
+            - generic [ref=e11]: Ripresa studio
+          - link "Media Libreria attiva" [ref=e12] [cursor=pointer]:
+            - /url: /media
+            - generic [ref=e13]: Media
+            - generic [ref=e14]: Libreria attiva
+          - link "Review Sessioni quotidiane" [ref=e15] [cursor=pointer]:
+            - /url: /review
+            - generic [ref=e16]: Review
+            - generic [ref=e17]: Sessioni quotidiane
+          - link "Settings Preferenze locali" [ref=e18] [cursor=pointer]:
+            - /url: /settings
+            - generic [ref=e19]: Settings
+            - generic [ref=e20]: Preferenze locali
+        - generic [ref=e21]:
+          - generic [ref=e22]: Locale-first
+          - generic [ref=e23]: ·
+          - generic [ref=e24]: single-user
+    - main [ref=e25]:
+      - article [ref=e27]:
+        - paragraph [ref=e28]: Percorso non trovato
+        - heading "Questa pagina non è disponibile nel workspace attuale." [level=2] [ref=e29]
+        - paragraph [ref=e30]: Controlla lo slug del media o torna alla libreria per riprendere da un pacchetto esistente.
+        - link "Torna ai media" [ref=e32] [cursor=pointer]:
+          - /url: /media
+  - button "Open Next.js Dev Tools" [ref=e38] [cursor=pointer]:
+    - img [ref=e39]
+  - alert [ref=e42]

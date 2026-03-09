@@ -1,0 +1,206 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Japanese Custom Study
+          - generic [ref=e7]: Scrivania editoriale
+        - navigation "Navigazione primaria" [ref=e8]:
+          - link "Home Ripresa studio" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e10]: Home
+            - generic [ref=e11]: Ripresa studio
+          - link "Media Libreria attiva" [ref=e12] [cursor=pointer]:
+            - /url: /media
+            - generic [ref=e13]: Media
+            - generic [ref=e14]: Libreria attiva
+          - link "Review Sessioni quotidiane" [ref=e15] [cursor=pointer]:
+            - /url: /review
+            - generic [ref=e16]: Review
+            - generic [ref=e17]: Sessioni quotidiane
+          - link "Settings Preferenze locali" [ref=e18] [cursor=pointer]:
+            - /url: /settings
+            - generic [ref=e19]: Settings
+            - generic [ref=e20]: Preferenze locali
+        - generic [ref=e21]:
+          - generic [ref=e22]: Locale-first
+          - generic [ref=e23]: ·
+          - generic [ref=e24]: single-user
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - link "Torna a Frieren" [ref=e30] [cursor=pointer]:
+              - /url: /media/frieren
+            - paragraph [ref=e31]: Glossary
+            - heading "Frieren" [level=1] [ref=e32]
+            - paragraph [ref=e33]: Ricerca rapida per kanji, kana, romaji e significato, con segnali di studio e collegamenti al percorso.
+            - generic [ref=e34]:
+              - generic [ref=e35]: Anime
+              - generic [ref=e36]: episodi
+              - generic [ref=e37]: 2 entry
+          - link "Apri textbook" [ref=e39] [cursor=pointer]:
+            - /url: /media/frieren/textbook
+        - generic [ref=e40]:
+          - article [ref=e41]:
+            - paragraph [ref=e42]: Lookup
+            - heading "Cerca una forma e ricostruisci subito il contesto di studio." [level=2] [ref=e43]
+            - paragraph [ref=e44]: "Exact, prefix e matching normalizzato restano prioritari: prima la forma giusta, poi alias e significato."
+            - generic [ref=e45]:
+              - generic [ref=e46]:
+                - generic [ref=e47]: Cerca
+                - searchbox "Cerca" [ref=e48]
+              - generic [ref=e49]:
+                - generic [ref=e50]:
+                  - generic [ref=e51]: Tipo
+                  - combobox "Tipo" [ref=e52]:
+                    - option "Tutto" [selected]
+                    - option "Term"
+                    - option "Grammar"
+                - generic [ref=e53]:
+                  - generic [ref=e54]: Segmento
+                  - combobox "Segmento" [ref=e55]:
+                    - option "Tutti i segmenti" [selected]
+                    - option "Episode 01"
+                - generic [ref=e56]:
+                  - generic [ref=e57]: Stato
+                  - combobox "Stato" [ref=e58]:
+                    - option "Tutti" [selected]
+                    - option "Gia note"
+                    - option "In review"
+                    - option "In studio"
+                    - option "Nuove"
+                    - option "Disponibili"
+              - button "Cerca" [ref=e60]
+          - article [ref=e61]:
+            - paragraph [ref=e62]: Snapshot
+            - generic [ref=e63]:
+              - article [ref=e64]:
+                - generic [ref=e66]: Term
+                - strong [ref=e67]: "1"
+                - paragraph [ref=e68]: 1 term nel media
+              - article [ref=e69]:
+                - generic [ref=e71]: Grammar
+                - strong [ref=e72]: "1"
+                - paragraph [ref=e73]: 1 pattern grammaticali
+              - article [ref=e74]:
+                - generic [ref=e76]: Gia note
+                - strong [ref=e77]: "0"
+                - paragraph [ref=e78]: Override manuali o card gia stabili
+              - article [ref=e79]:
+                - generic [ref=e81]: In review
+                - strong [ref=e82]: "0"
+                - paragraph [ref=e83]: Entry gia entrate nel loop review
+        - generic [ref=e84]:
+          - generic [ref=e86]:
+            - paragraph [ref=e87]: Risultati
+            - heading "Indice consultabile" [level=2] [ref=e88]
+            - paragraph [ref=e89]: "Il glossary resta leggibile anche senza query: puoi sfogliare per segmento, tipo e stato."
+          - generic [ref=e90]:
+            - generic [ref=e92]:
+              - article [ref=e93]:
+                - generic [ref=e94]:
+                  - generic [ref=e95]:
+                    - generic [ref=e96]: Grammar
+                    - generic [ref=e97]: Disponibile
+                    - generic [ref=e98]: Episode 01
+                  - link "Anteprima" [ref=e100] [cursor=pointer]:
+                    - /url: "?preview=grammar-teiru&previewKind=grammar"
+                - heading "～ている" [level=3] [ref=e101]
+                - paragraph [ref=e102]: Forma in -te iru
+                - paragraph [ref=e103]: azione in corso o stato risultante
+                - generic [ref=e104]:
+                  - generic [ref=e105]:
+                    - generic [ref=e106]: 1 lesson collegata
+                    - generic [ref=e107]: 1 card collegata
+                  - paragraph [ref=e108]: "Spiegata: Episodio 1 - Introduzione"
+                  - link "Apri detail page" [ref=e109] [cursor=pointer]:
+                    - /url: /media/frieren/glossary/grammar/grammar-teiru
+              - article [ref=e110]:
+                - generic [ref=e111]:
+                  - generic [ref=e112]:
+                    - generic [ref=e113]: Term
+                    - generic [ref=e114]: Disponibile
+                    - generic [ref=e115]: Episode 01
+                  - link "Anteprima" [ref=e117] [cursor=pointer]:
+                    - /url: "?preview=term-taberu&previewKind=term"
+                - heading "食べる" [level=3] [ref=e118]
+                - paragraph [ref=e119]: たべる / taberu
+                - paragraph [ref=e120]: mangiare
+                - generic [ref=e121]:
+                  - generic [ref=e122]:
+                    - generic [ref=e123]: 1 lesson collegata
+                    - generic [ref=e124]: 1 card collegata
+                  - paragraph [ref=e125]: "Citata: Episodio 1 - Introduzione"
+                  - link "Apri detail page" [ref=e126] [cursor=pointer]:
+                    - /url: /media/frieren/glossary/term/term-taberu
+            - complementary [ref=e127]:
+              - generic [ref=e128]:
+                - generic [ref=e129]:
+                  - generic [ref=e130]:
+                    - paragraph [ref=e131]: Preview detail
+                    - heading "～ている" [level=3] [ref=e132]
+                  - link "Apri pagina" [ref=e133] [cursor=pointer]:
+                    - /url: /media/frieren/glossary/grammar/grammar-teiru
+                - generic [ref=e134]:
+                  - article [ref=e135]:
+                    - paragraph [ref=e136]: Forma
+                    - heading "～ている" [level=2] [ref=e137]
+                    - paragraph [ref=e138]: Forma in -te iru
+                    - paragraph [ref=e139]: azione in corso o stato risultante
+                    - generic [ref=e141]:
+                      - generic [ref=e142]: Alias
+                      - generic [ref=e144]: てる
+                  - article [ref=e145]:
+                    - paragraph [ref=e146]: Studio
+                    - generic [ref=e147]:
+                      - generic [ref=e148]:
+                        - generic [ref=e149]: Stato
+                        - strong [ref=e150]: Disponibile
+                      - generic [ref=e151]:
+                        - generic [ref=e152]: Lesson
+                        - strong [ref=e153]: Spiegata in Episodio 1 - Introduzione
+                      - generic [ref=e154]:
+                        - generic [ref=e155]: Card
+                        - strong [ref=e156]: 1 card collegata
+                      - generic [ref=e157]:
+                        - generic [ref=e158]: Media
+                        - strong [ref=e159]: Frieren
+                - generic [ref=e160]:
+                  - generic [ref=e161]:
+                    - generic [ref=e163]:
+                      - paragraph [ref=e164]: Percorso
+                      - heading "Lesson dove incontrarla" [level=2] [ref=e165]
+                      - paragraph [ref=e166]: "Il dettaglio non si ferma alla scheda: ti riporta al punto del percorso dove la voce entra davvero in gioco."
+                    - link [ref=e168] [cursor=pointer]:
+                      - /url: /media/frieren/textbook/ep01-intro
+                      - article [ref=e169]:
+                        - generic [ref=e171]:
+                          - generic [ref=e172]: Spiegata
+                          - generic [ref=e173]: Citata
+                          - generic [ref=e174]: Episode 01
+                        - heading "Episodio 1 - Introduzione" [level=3] [ref=e175]
+                        - paragraph [ref=e176]: Obiettivo In questa lezione vediamo 食べる e la forma ～ている. La parola 日本語 にほんご compare spesso nelle spiegazioni. Forma in -te iru ～ている azione in corso o stato risultante てる
+                  - generic [ref=e177]:
+                    - generic [ref=e179]:
+                      - paragraph [ref=e180]: Review
+                      - heading "Card collegate" [level=2] [ref=e181]
+                      - paragraph [ref=e182]: Qui trovi le card che rappresentano o richiamano questa entry, con stato review e ruolo.
+                    - link [ref=e184] [cursor=pointer]:
+                      - /url: /media/frieren/review
+                      - article [ref=e185]:
+                        - generic [ref=e186]:
+                          - generic [ref=e187]:
+                            - generic [ref=e188]: Card principale
+                            - generic [ref=e189]: Non schedulata
+                          - generic [ref=e190]: Apri review
+                        - heading "～ている" [level=3] [ref=e191]
+                        - paragraph [ref=e192]: azione in corso / stato risultante
+                        - generic [ref=e193]:
+                          - generic [ref=e194]: Concept
+                          - generic [ref=e195]: Episode 01
+                        - paragraph [ref=e196]: Si collega a [～ている](grammar:grammar-teiru).
+  - button "Open Next.js Dev Tools" [ref=e202] [cursor=pointer]:
+    - img [ref=e203]
+  - alert [ref=e206]

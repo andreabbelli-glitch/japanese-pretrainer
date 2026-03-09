@@ -97,6 +97,39 @@ export function formatEntryStatusLabel(value: string | null) {
   return labels[value] ?? capitalizeToken(value);
 }
 
+export function formatReviewStateLabel(
+  value: string | null,
+  manualOverride = false
+) {
+  if (manualOverride || value === "known_manual") {
+    return "Gia nota";
+  }
+
+  if (!value) {
+    return "Non schedulata";
+  }
+
+  const labels: Record<string, string> = {
+    new: "Nuova",
+    learning: "In apprendimento",
+    review: "In review",
+    relearning: "Da riprendere",
+    suspended: "Sospesa"
+  };
+
+  return labels[value] ?? capitalizeToken(value);
+}
+
+export function formatCardRelationshipLabel(value: string) {
+  const labels: Record<string, string> = {
+    primary: "Card principale",
+    secondary: "Card secondaria",
+    context: "Card di contesto"
+  };
+
+  return labels[value] ?? capitalizeToken(value);
+}
+
 export function capitalizeToken(value: string) {
   return value
     .split(/[_-\s]+/)

@@ -18,12 +18,12 @@ import {
   type TermGlossaryEntry,
   userSetting
 } from "@/db";
+import { mediaGlossaryEntryHref, mediaStudyHref } from "@/lib/site";
 import type { MarkdownDocument } from "@/lib/content/types";
-import { mediaStudyHref } from "@/lib/site";
+import { deriveEntryStudyState } from "@/lib/study-entry";
 import {
   calculatePercent,
   compareIsoDates,
-  formatEntryStatusLabel,
   formatLessonProgressStatusLabel,
   formatMediaTypeLabel,
   formatSegmentKindLabel
@@ -518,7 +518,7 @@ function mapTermTooltipEntry(
     levelHint: entry.levelHint ?? undefined,
     statusLabel: resolveEntryStudyStateLabel(entry.status?.status ?? null, studySignals),
     segmentTitle: entry.segment?.title ?? undefined,
-    glossaryHref: mediaStudyHref(mediaSlug, "glossary")
+    glossaryHref: mediaGlossaryEntryHref(mediaSlug, "term", entry.id)
   };
 }
 
@@ -537,7 +537,7 @@ function mapGrammarTooltipEntry(
     levelHint: entry.levelHint ?? undefined,
     statusLabel: resolveEntryStudyStateLabel(entry.status?.status ?? null, studySignals),
     segmentTitle: entry.segment?.title ?? undefined,
-    glossaryHref: mediaStudyHref(mediaSlug, "glossary")
+    glossaryHref: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.id)
   };
 }
 
@@ -545,32 +545,7 @@ function resolveEntryStudyStateLabel(
   entryStatus: string | null,
   studySignals: StudySignalRow[]
 ) {
-  if (
-    entryStatus === "known_manual" ||
-    studySignals.some(
-      (signal) => signal.reviewState === "known_manual" || signal.manualOverride
-    )
-  ) {
-    return "Gia nota";
-  }
-
-  if (
-    studySignals.some((signal) =>
-      ["learning", "review", "relearning"].includes(signal.reviewState ?? "")
-    )
-  ) {
-    return "In review";
-  }
-
-  if (entryStatus === "learning") {
-    return "In studio";
-  }
-
-  if (studySignals.some((signal) => signal.reviewState === "new")) {
-    return "Nuova";
-  }
-
-  return formatEntryStatusLabel(entryStatus);
+  return deriveEntryStudyState(entryStatus, studySignals).label;
 }
 
 function normalizeLessonStatus(

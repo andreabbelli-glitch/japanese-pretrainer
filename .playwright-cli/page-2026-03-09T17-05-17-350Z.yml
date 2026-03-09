@@ -1,0 +1,82 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Japanese Custom Study
+          - generic [ref=e7]: Scrivania editoriale
+        - navigation "Navigazione primaria" [ref=e8]:
+          - link "Home Ripresa studio" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e10]: Home
+            - generic [ref=e11]: Ripresa studio
+          - link "Media Libreria attiva" [ref=e12] [cursor=pointer]:
+            - /url: /media
+            - generic [ref=e13]: Media
+            - generic [ref=e14]: Libreria attiva
+          - link "Review Sessioni quotidiane" [ref=e15] [cursor=pointer]:
+            - /url: /review
+            - generic [ref=e16]: Review
+            - generic [ref=e17]: Sessioni quotidiane
+          - link "Settings Preferenze locali" [ref=e18] [cursor=pointer]:
+            - /url: /settings
+            - generic [ref=e19]: Settings
+            - generic [ref=e20]: Preferenze locali
+        - generic [ref=e21]:
+          - generic [ref=e22]: Locale-first
+          - generic [ref=e23]: ·
+          - generic [ref=e24]: single-user
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - link "Torna alla review" [ref=e30] [cursor=pointer]:
+              - /url: /media/frieren/review
+            - paragraph [ref=e31]: Review card
+            - heading "～ている" [level=1] [ref=e32]
+            - paragraph [ref=e33]: azione in corso / stato risultante
+            - generic [ref=e34]:
+              - generic [ref=e35]: Non schedulata
+              - generic [ref=e36]: Concept
+              - generic [ref=e37]: Episode 01
+          - link "Apri glossary" [ref=e39] [cursor=pointer]:
+            - /url: /media/frieren/glossary
+        - generic [ref=e40]:
+          - article [ref=e41]:
+            - paragraph [ref=e42]: Carta
+            - heading "～ている" [level=2] [ref=e43]
+            - paragraph [ref=e44]: azione in corso / stato risultante
+            - paragraph [ref=e45]: "Tipo: Concept"
+            - paragraph [ref=e46]: "Stato review: Non schedulata"
+          - article [ref=e47]:
+            - paragraph [ref=e48]: Contesto
+            - generic [ref=e49]:
+              - generic [ref=e50]:
+                - generic [ref=e51]: Media
+                - strong [ref=e52]: Frieren
+              - generic [ref=e53]:
+                - generic [ref=e54]: Card ID
+                - strong [ref=e55]: card-teiru-concept
+              - generic [ref=e56]:
+                - generic [ref=e57]: Entry collegate
+                - strong [ref=e58]: "1"
+        - generic [ref=e59]:
+          - generic [ref=e61]:
+            - paragraph [ref=e62]: Collegamenti
+            - heading "Entry collegate" [level=2] [ref=e63]
+            - paragraph [ref=e64]: La card resta ancorata alle entry canoniche del glossary, cosi puoi passare dal ripasso al contesto senza perdere il punto.
+          - link [ref=e66] [cursor=pointer]:
+            - /url: /media/frieren/glossary/grammar/grammar-teiru
+            - article [ref=e67]:
+              - generic [ref=e68]:
+                - generic [ref=e69]:
+                  - generic [ref=e70]: Card principale
+                  - generic [ref=e71]: Grammar
+                - generic [ref=e72]: Apri entry
+              - heading "～ている" [level=3] [ref=e73]
+              - paragraph [ref=e74]: Forma in -te iru
+              - paragraph [ref=e75]: azione in corso o stato risultante
+  - button "Open Next.js Dev Tools" [ref=e81] [cursor=pointer]:
+    - img [ref=e82]
+  - alert [ref=e85]

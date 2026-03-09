@@ -1,0 +1,400 @@
+import { mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { renderToStaticMarkup } from "react-dom/server";
+
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+
+import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
+import { GlossaryPage } from "@/components/glossary/glossary-page";
+import { ReviewCardDetailPage } from "@/components/review/review-card-detail-page";
+import {
+  closeDatabaseClient,
+  createDatabaseClient,
+  developmentFixture,
+  runMigrations,
+  seedDevelopmentDatabase,
+  type DatabaseClient
+} from "@/db";
+import { importContentWorkspace } from "@/lib/content/importer";
+import {
+  getGlossaryPageData,
+  getGrammarGlossaryDetailData,
+  getTermGlossaryDetailData
+} from "@/lib/glossary";
+import { getReviewCardDetailData } from "@/lib/review";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const validContentRoot = path.join(
+  __dirname,
+  "fixtures",
+  "content",
+  "valid",
+  "content"
+);
+
+describe("glossary data", () => {
+  let tempDir = "";
+  let database: DatabaseClient;
+
+  beforeEach(async () => {
+    tempDir = await mkdtemp(path.join(tmpdir(), "jcs-glossary-"));
+    database = createDatabaseClient({
+      databaseUrl: path.join(tempDir, "test.sqlite")
+    });
+
+    await runMigrations(database);
+  });
+
+  afterEach(async () => {
+    closeDatabaseClient(database);
+    await rm(tempDir, { recursive: true, force: true });
+  });
+
+  it("ranks romaji queries and carries lesson/card metadata into results", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const data = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        q: "iku"
+      },
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(data?.results).toHaveLength(1);
+    expect(data?.results[0]?.id).toBe(developmentFixture.termId);
+    expect(data?.results[0]?.href).toBe(
+      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}`
+    );
+    expect(data?.results[0]?.primaryLesson?.roleLabel).toBe("Introdotta");
+    expect(data?.results[0]?.cardCount).toBe(1);
+    expect(data?.results[0]?.matchBadges).toContain("romaji");
+  });
+
+  it("finds grammar entries from compact romaji queries", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlossaryPageData(
+      "frieren",
+      {
+        q: "teiru"
+      },
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(data?.results[0]?.id).toBe("grammar-teiru");
+    expect(data?.results[0]?.kind).toBe("grammar");
+    expect(data?.results[0]?.matchBadges).toContain("romaji");
+  });
+
+  it("maps the learning filter to entries with learning review cards", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const learningData = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        study: "learning"
+      },
+      database
+    );
+    const reviewData = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        study: "review"
+      },
+      database
+    );
+
+    expect(learningData).not.toBeNull();
+    expect(learningData?.results.map((entry) => entry.id)).toEqual([
+      developmentFixture.termId
+    ]);
+    expect(learningData?.results[0]?.studyState.key).toBe("learning");
+    expect(reviewData).not.toBeNull();
+    expect(reviewData?.results).toHaveLength(0);
+  });
+
+  it("matches hiragana and katakana input against readings through kana folding", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const hiraganaData = await getGlossaryPageData(
+      "frieren",
+      {
+        q: "たべる"
+      },
+      database
+    );
+    const katakanaData = await getGlossaryPageData(
+      "frieren",
+      {
+        q: "タベル"
+      },
+      database
+    );
+
+    expect(hiraganaData).not.toBeNull();
+    expect(hiraganaData?.results[0]?.id).toBe("term-taberu");
+    expect(hiraganaData?.results[0]?.matchBadges).toContain("lettura");
+    expect(katakanaData).not.toBeNull();
+    expect(katakanaData?.results[0]?.id).toBe("term-taberu");
+    expect(katakanaData?.results[0]?.matchBadges).toContain("lettura");
+  });
+
+  it("matches Italian meaning queries without regressing term search", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlossaryPageData(
+      "frieren",
+      {
+        q: "mangiare"
+      },
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(data?.results[0]?.id).toBe("term-taberu");
+    expect(data?.results[0]?.matchBadges).toContain("significato");
+  });
+
+  it("builds grammar detail pages with linked lessons and cards", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const detail = await getGrammarGlossaryDetailData(
+      "frieren",
+      "grammar-teiru",
+      database
+    );
+
+    expect(detail).not.toBeNull();
+    expect(detail?.entry.label).toBe("～ている");
+    expect(detail?.lessons[0]?.href).toBe("/media/frieren/textbook/ep01-intro");
+    expect(detail?.lessons).toHaveLength(1);
+    expect(detail?.lessons[0]?.roleLabels).toEqual(["Spiegata", "Citata"]);
+    expect(detail?.cards[0]?.front).toBe("～ている");
+    expect(detail?.cards[0]?.relationshipLabel).toBe("Card principale");
+    expect(detail?.cards[0]?.href).toBe("/media/frieren/review/card/card-teiru-concept");
+  });
+
+  it("builds term detail pages with card links that target the specific card", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const detail = await getTermGlossaryDetailData("frieren", "term-taberu", database);
+
+    expect(detail).not.toBeNull();
+    expect(detail?.entry.label).toBe("食べる");
+    expect(detail?.cards).toHaveLength(1);
+    expect(detail?.cards[0]?.id).toBe("card-taberu-recognition");
+    expect(detail?.cards[0]?.href).toBe(
+      "/media/frieren/review/card/card-taberu-recognition"
+    );
+  });
+
+  it("loads a real review card detail page target from DB data", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const detail = await getReviewCardDetailData(
+      "frieren",
+      "card-teiru-concept",
+      database
+    );
+
+    expect(detail).not.toBeNull();
+    expect(detail?.card.front).toBe("～ている");
+    expect(detail?.card.back).toContain("azione in corso");
+    expect(detail?.entries).toHaveLength(1);
+    expect(detail?.entries[0]?.href).toBe(
+      "/media/frieren/glossary/grammar/grammar-teiru"
+    );
+  });
+
+  it("hides raw markdown notes in glossary and review detail data", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const glossaryDetail = await getGrammarGlossaryDetailData(
+      "frieren",
+      "grammar-teiru",
+      database
+    );
+    const reviewDetail = await getReviewCardDetailData(
+      "frieren",
+      "card-teiru-concept",
+      database
+    );
+
+    expect(glossaryDetail).not.toBeNull();
+    expect(reviewDetail).not.toBeNull();
+    expect(glossaryDetail?.cards[0]?.notes).toBeUndefined();
+    expect(reviewDetail?.card.notes).toBeUndefined();
+
+    const glossaryMarkup = renderToStaticMarkup(
+      GlossaryDetailPage({ data: glossaryDetail! })
+    );
+    const reviewMarkup = renderToStaticMarkup(
+      ReviewCardDetailPage({ data: reviewDetail! })
+    );
+
+    expect(glossaryMarkup).not.toContain("[～ている](grammar:grammar-teiru)");
+    expect(reviewMarkup).not.toContain("[～ている](grammar:grammar-teiru)");
+  });
+
+  it("highlights the field that actually matched for kanji, kana, romaji, italian and alias queries", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const cases = [
+      {
+        query: "食べる",
+        expectedId: "term-taberu",
+        expectedHighlight: "<mark>食べる</mark>",
+        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+          expect(data.results[0]?.matchedFields.label).toBe("normalized");
+        }
+      },
+      {
+        query: "たべる",
+        expectedId: "term-taberu",
+        expectedHighlight: "<mark>たべる</mark>",
+        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+          expect(data.results[0]?.matchedFields.reading).toBe("kana");
+        }
+      },
+      {
+        query: "タベル",
+        expectedId: "term-taberu",
+        expectedHighlight: "<mark>たべる</mark>",
+        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+          expect(data.results[0]?.matchedFields.reading).toBe("kana");
+        }
+      },
+      {
+        query: "taberu",
+        expectedId: "term-taberu",
+        expectedHighlight: "<mark>taberu</mark>",
+        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+          expect(data.results[0]?.matchedFields.romaji).toBe("romajiCompact");
+        }
+      },
+      {
+        query: "mangiare",
+        expectedId: "term-taberu",
+        expectedHighlight: "<mark>mangiare</mark>",
+        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+          expect(data.results[0]?.matchedFields.meaning).toBe("normalized");
+        }
+      },
+      {
+        query: "てる",
+        expectedId: "grammar-teiru",
+        expectedHighlight: "<mark>てる</mark>",
+        expectedSnippet: "Alias:",
+        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+          expect(data.results[0]?.matchedFields.aliases).toContainEqual({
+            mode: "grammarKana",
+            text: "てる"
+          });
+        }
+      }
+    ];
+
+    for (const testCase of cases) {
+      const data = await getGlossaryPageData(
+        "frieren",
+        {
+          q: testCase.query
+        },
+        database
+      );
+
+      expect(data).not.toBeNull();
+      expect(data?.results[0]?.id).toBe(testCase.expectedId);
+      testCase.assertMatch(data!);
+
+      const markup = renderToStaticMarkup(GlossaryPage({ data: data! }));
+
+      expect(markup).toContain(testCase.expectedHighlight);
+
+      if ("expectedSnippet" in testCase) {
+        expect(markup).toContain(testCase.expectedSnippet);
+      }
+    }
+  });
+
+  it("keeps desktop preview aligned to the selected result without duplicating lesson counts", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlossaryPageData(
+      "frieren",
+      {
+        preview: "grammar-teiru",
+        previewKind: "grammar"
+      },
+      database
+    );
+
+    const selectedResult = data?.results.find((entry) => entry.id === "grammar-teiru");
+
+    expect(data).not.toBeNull();
+    expect(selectedResult?.lessonCount).toBe(1);
+    expect(data?.preview?.entry.id).toBe("grammar-teiru");
+    expect(data?.preview?.lessons).toHaveLength(1);
+    expect(data?.preview?.lessons[0]?.roleLabels).toEqual(["Spiegata", "Citata"]);
+  });
+});

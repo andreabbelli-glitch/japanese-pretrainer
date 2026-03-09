@@ -1166,7 +1166,7 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
       ) : null}
       {entry.notes ? <p className="entry-tooltip-card__notes">{entry.notes}</p> : null}
       <Link className="text-link" href={entry.glossaryHref}>
-        Apri glossary
+        Apri entry
       </Link>
     </div>
   );

@@ -1,12 +1,23 @@
-import { and, asc, eq, inArray } from "drizzle-orm";
+import { and, asc, eq, inArray, or } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import {
+  card,
+  cardEntryLink,
+  entryLink,
   entryStatus,
-  type EntryType,
   grammarPattern,
+  lesson,
+  reviewState,
+  segment,
+  type EntryType,
   term
 } from "../schema/index.ts";
+
+export type GlossaryEntryRef = {
+  entryId: string;
+  entryType: EntryType;
+};
 
 async function getEntryStatusMap(
   database: DatabaseClient,
@@ -25,6 +36,16 @@ async function getEntryStatusMap(
   });
 
   return new Map(rows.map((row) => [row.entryId, row]));
+}
+
+export async function listGlossarySegmentsByMediaId(
+  database: DatabaseClient,
+  mediaId: string
+) {
+  return database.query.segment.findMany({
+    where: eq(segment.mediaId, mediaId),
+    orderBy: [asc(segment.orderIndex), asc(segment.title)]
+  });
 }
 
 export async function listTermEntriesByMediaId(
@@ -135,9 +156,130 @@ export async function getGrammarEntriesByIds(
   }));
 }
 
+export async function getTermEntryById(
+  database: DatabaseClient,
+  entryId: string
+) {
+  const [entry] = await getTermEntriesByIds(database, [entryId]);
+
+  return entry ?? null;
+}
+
+export async function getGrammarEntryById(
+  database: DatabaseClient,
+  entryId: string
+) {
+  const [entry] = await getGrammarEntriesByIds(database, [entryId]);
+
+  return entry ?? null;
+}
+
+export async function listEntryLessonConnections(
+  database: DatabaseClient,
+  entries: GlossaryEntryRef[]
+) {
+  if (entries.length === 0) {
+    return [];
+  }
+
+  return database
+    .select({
+      entryType: entryLink.entryType,
+      entryId: entryLink.entryId,
+      linkRole: entryLink.linkRole,
+      sortOrder: entryLink.sortOrder,
+      lessonId: lesson.id,
+      lessonSlug: lesson.slug,
+      lessonTitle: lesson.title,
+      lessonSummary: lesson.summary,
+      lessonOrderIndex: lesson.orderIndex,
+      segmentId: segment.id,
+      segmentTitle: segment.title
+    })
+    .from(entryLink)
+    .innerJoin(
+      lesson,
+      and(eq(entryLink.sourceType, "lesson"), eq(entryLink.sourceId, lesson.id))
+    )
+    .leftJoin(segment, eq(segment.id, lesson.segmentId))
+    .where(
+      and(
+        eq(lesson.status, "active"),
+        or(
+          ...entries.map((entry) =>
+            and(
+              eq(entryLink.entryType, entry.entryType),
+              eq(entryLink.entryId, entry.entryId)
+            )
+          )
+        )
+      )
+    )
+    .orderBy(
+      asc(lesson.orderIndex),
+      asc(entryLink.sortOrder),
+      asc(entryLink.linkRole),
+      asc(lesson.slug)
+    );
+}
+
+export async function listEntryCardConnections(
+  database: DatabaseClient,
+  entries: GlossaryEntryRef[]
+) {
+  if (entries.length === 0) {
+    return [];
+  }
+
+  return database
+    .select({
+      entryType: cardEntryLink.entryType,
+      entryId: cardEntryLink.entryId,
+      relationshipType: cardEntryLink.relationshipType,
+      cardId: card.id,
+      cardType: card.cardType,
+      cardFront: card.front,
+      cardBack: card.back,
+      cardNotesIt: card.notesIt,
+      cardOrderIndex: card.orderIndex,
+      segmentId: segment.id,
+      segmentTitle: segment.title,
+      reviewState: reviewState.state,
+      dueAt: reviewState.dueAt,
+      manualOverride: reviewState.manualOverride
+    })
+    .from(cardEntryLink)
+    .innerJoin(card, eq(card.id, cardEntryLink.cardId))
+    .leftJoin(segment, eq(segment.id, card.segmentId))
+    .leftJoin(reviewState, eq(reviewState.cardId, card.id))
+    .where(
+      and(
+        eq(card.status, "active"),
+        or(
+          ...entries.map((entry) =>
+            and(
+              eq(cardEntryLink.entryType, entry.entryType),
+              eq(cardEntryLink.entryId, entry.entryId)
+            )
+          )
+        )
+      )
+    )
+    .orderBy(asc(card.orderIndex), asc(card.createdAt), asc(card.id));
+}
+
+export type GlossarySegment = Awaited<
+  ReturnType<typeof listGlossarySegmentsByMediaId>
+>[number];
 export type TermGlossaryEntry = Awaited<
   ReturnType<typeof listTermEntriesByMediaId>
 >[number];
 export type GrammarGlossaryEntry = Awaited<
   ReturnType<typeof listGrammarEntriesByMediaId>
+>[number];
+export type EntryLessonConnection = Awaited<
+  ReturnType<typeof listEntryLessonConnections>
+>[number];
+export type EntryCardConnection = Awaited<
+  ReturnType<typeof listEntryCardConnections>
 >[number];

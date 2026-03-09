@@ -1,15 +1,25 @@
-import { StudyAreaPlaceholderPage } from "@/components/media/study-area-placeholder-page";
+import { notFound } from "next/navigation";
 
-type StudyAreaRouteProps = {
+import { GlossaryPage } from "@/components/glossary/glossary-page";
+import { getGlossaryPageData } from "@/lib/glossary";
+
+type GlossaryRouteProps = {
   params: Promise<{
     mediaSlug: string;
   }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export default async function MediaGlossaryRoute({
-  params
-}: StudyAreaRouteProps) {
+  params,
+  searchParams
+}: GlossaryRouteProps) {
   const { mediaSlug } = await params;
+  const glossaryData = await getGlossaryPageData(mediaSlug, await searchParams);
 
-  return <StudyAreaPlaceholderPage area="glossary" mediaSlug={mediaSlug} />;
+  if (!glossaryData) {
+    notFound();
+  }
+
+  return <GlossaryPage data={glossaryData} />;
 }

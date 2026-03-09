@@ -1,0 +1,114 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Japanese Custom Study
+        - generic [ref=e7]: Scrivania editoriale
+    - main [ref=e8]:
+      - generic [ref=e45]:
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - link "Torna a Demo Anime" [ref=e49] [cursor=pointer]:
+              - /url: /media/demo-anime
+            - paragraph [ref=e50]: Glossary
+            - heading "Demo Anime" [level=1] [ref=e51]
+            - paragraph [ref=e52]: Ricerca rapida per kanji, kana, romaji e significato, con segnali di studio e collegamenti al percorso.
+            - generic [ref=e53]:
+              - generic [ref=e54]: Anime
+              - generic [ref=e55]: episodi
+              - generic [ref=e56]: 2 entry
+          - link "Apri textbook" [ref=e58] [cursor=pointer]:
+            - /url: /media/demo-anime/textbook
+        - generic [ref=e59]:
+          - article [ref=e60]:
+            - paragraph [ref=e61]: Lookup
+            - heading "Cerca una forma e ricostruisci subito il contesto di studio." [level=2] [ref=e62]
+            - paragraph [ref=e63]: "Exact, prefix e matching normalizzato restano prioritari: prima la forma giusta, poi alias e significato."
+            - generic [ref=e64]:
+              - generic [ref=e65]:
+                - generic [ref=e66]: Cerca
+                - searchbox "Cerca" [ref=e67]
+              - generic [ref=e68]:
+                - generic [ref=e69]:
+                  - generic [ref=e70]: Tipo
+                  - combobox "Tipo" [ref=e71]:
+                    - option "Tutto" [selected]
+                    - option "Term"
+                    - option "Grammar"
+                - generic [ref=e72]:
+                  - generic [ref=e73]: Segmento
+                  - combobox "Segmento" [ref=e74]:
+                    - option "Tutti i segmenti" [selected]
+                    - option "Episode 1"
+                - generic [ref=e75]:
+                  - generic [ref=e76]: Stato
+                  - combobox "Stato" [ref=e77]:
+                    - option "Tutti"
+                    - option "Gia note"
+                    - option "In review" [selected]
+                    - option "In studio"
+                    - option "Nuove"
+                    - option "Disponibili"
+              - generic [ref=e78]:
+                - button "Cerca" [ref=e79]
+                - link "Azzera filtri" [ref=e80] [cursor=pointer]:
+                  - /url: /media/demo-anime/glossary
+          - article [ref=e81]:
+            - paragraph [ref=e82]: Snapshot
+            - generic [ref=e83]:
+              - article [ref=e84]:
+                - generic [ref=e86]: Term
+                - strong [ref=e87]: "1"
+                - paragraph [ref=e88]: 1 term nel media
+              - article [ref=e89]:
+                - generic [ref=e91]: Grammar
+                - strong [ref=e92]: "1"
+                - paragraph [ref=e93]: 1 pattern grammaticali
+              - article [ref=e94]:
+                - generic [ref=e96]: Gia note
+                - strong [ref=e97]: "1"
+                - paragraph [ref=e98]: Override manuali o card gia stabili
+              - article [ref=e99]:
+                - generic [ref=e101]: In review
+                - strong [ref=e102]: "1"
+                - paragraph [ref=e103]: Entry gia entrate nel loop review
+        - generic [ref=e104]:
+          - generic [ref=e106]:
+            - paragraph [ref=e107]: Risultati
+            - heading "Indice consultabile" [level=2] [ref=e108]
+            - paragraph [ref=e109]: "Il glossary resta leggibile anche senza query: puoi sfogliare per segmento, tipo e stato."
+          - article [ref=e113]:
+            - generic [ref=e114]:
+              - generic [ref=e115]:
+                - generic [ref=e116]: Term
+                - generic [ref=e117]: In review
+                - generic [ref=e118]: Episode 1
+              - link "Apri" [ref=e120] [cursor=pointer]:
+                - /url: /media/demo-anime/glossary/term/term_demo_iku
+            - heading "行く" [level=3] [ref=e121]
+            - paragraph [ref=e122]: いく / iku
+            - paragraph [ref=e123]: andare
+            - generic [ref=e124]:
+              - generic [ref=e125]:
+                - generic [ref=e126]: 1 lesson collegata
+                - generic [ref=e127]: 1 card collegata
+              - paragraph [ref=e128]: "Introdotta: Intro Vocab"
+              - link "Apri detail page" [ref=e129] [cursor=pointer]:
+                - /url: /media/demo-anime/glossary/term/term_demo_iku
+    - navigation "Navigazione mobile" [ref=e26]:
+      - link "Home" [ref=e27] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e28]: Home
+      - link "Media" [ref=e29] [cursor=pointer]:
+        - /url: /media
+        - generic [ref=e30]: Media
+      - link "Review" [ref=e31] [cursor=pointer]:
+        - /url: /review
+        - generic [ref=e32]: Review
+      - link "Settings" [ref=e33] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e34]: Settings
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]
+  - alert [ref=e44]

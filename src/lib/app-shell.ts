@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import { unstable_noStore as noStore } from "next/cache";
 
 import {
@@ -25,6 +26,7 @@ import {
   formatSegmentKindLabel,
   formatStatusLabel
 } from "@/lib/study-format";
+import { mediaGlossaryEntryHref } from "@/lib/site";
 
 export type StudyEntryPreview = {
   id: string;
@@ -34,6 +36,7 @@ export type StudyEntryPreview = {
   meaning: string;
   statusLabel: string;
   segmentTitle?: string;
+  href: Route;
 };
 
 export type SegmentStudyPreview = {
@@ -197,7 +200,7 @@ async function buildMediaShellSnapshot(
     currentLesson,
     nextLesson,
     segments: buildSegments(lessons),
-    previewEntries: buildPreviewEntries(terms, grammar)
+    previewEntries: buildPreviewEntries(terms, grammar, media.slug)
   };
 }
 
@@ -276,7 +279,8 @@ function buildSegments(lessons: LessonListItem[]): SegmentStudyPreview[] {
 
 function buildPreviewEntries(
   terms: TermGlossaryEntry[],
-  grammar: GrammarGlossaryEntry[]
+  grammar: GrammarGlossaryEntry[],
+  mediaSlug: string
 ): StudyEntryPreview[] {
   return [
     ...terms.map((entry) => ({
@@ -286,7 +290,8 @@ function buildPreviewEntries(
       reading: entry.reading,
       meaning: entry.meaningIt,
       statusLabel: formatEntryStatusLabel(entry.status?.status ?? null),
-      segmentTitle: entry.segment?.title
+      segmentTitle: entry.segment?.title,
+      href: mediaGlossaryEntryHref(mediaSlug, "term", entry.id)
     })),
     ...grammar.map((entry) => ({
       id: entry.id,
@@ -295,7 +300,8 @@ function buildPreviewEntries(
       reading: undefined,
       meaning: entry.meaningIt,
       statusLabel: formatEntryStatusLabel(entry.status?.status ?? null),
-      segmentTitle: entry.segment?.title
+      segmentTitle: entry.segment?.title,
+      href: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.id)
     }))
   ].slice(0, 6);
 }

@@ -1,0 +1,116 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Japanese Custom Study
+        - generic [ref=e7]: Scrivania editoriale
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - link "Torna a Frieren" [ref=e30] [cursor=pointer]:
+              - /url: /media/frieren
+            - paragraph [ref=e31]: Glossary
+            - heading "Frieren" [level=1] [ref=e32]
+            - paragraph [ref=e33]: Ricerca rapida per kanji, kana, romaji e significato, con segnali di studio e collegamenti al percorso.
+            - generic [ref=e34]:
+              - generic [ref=e35]: Anime
+              - generic [ref=e36]: episodi
+              - generic [ref=e37]: 2 entry
+          - link "Apri textbook" [ref=e39] [cursor=pointer]:
+            - /url: /media/frieren/textbook
+        - generic [ref=e40]:
+          - article [ref=e41]:
+            - paragraph [ref=e42]: Lookup
+            - heading "Cerca una forma e ricostruisci subito il contesto di studio." [level=2] [ref=e43]
+            - paragraph [ref=e44]: "Exact, prefix e matching normalizzato restano prioritari: prima la forma giusta, poi alias e significato."
+            - generic [ref=e45]:
+              - generic [ref=e46]:
+                - generic [ref=e47]: Cerca
+                - searchbox "Cerca" [ref=e48]: mangiare
+              - generic [ref=e49]:
+                - generic [ref=e50]:
+                  - generic [ref=e51]: Tipo
+                  - combobox "Tipo" [ref=e52]:
+                    - option "Tutto" [selected]
+                    - option "Term"
+                    - option "Grammar"
+                - generic [ref=e53]:
+                  - generic [ref=e54]: Segmento
+                  - combobox "Segmento" [ref=e55]:
+                    - option "Tutti i segmenti" [selected]
+                    - option "Episode 01"
+                - generic [ref=e56]:
+                  - generic [ref=e57]: Stato
+                  - combobox "Stato" [ref=e58]:
+                    - option "Tutti" [selected]
+                    - option "Gia note"
+                    - option "In review"
+                    - option "In studio"
+                    - option "Nuove"
+                    - option "Disponibili"
+              - generic [ref=e59]:
+                - button "Cerca" [ref=e60]
+                - link "Azzera filtri" [ref=e61] [cursor=pointer]:
+                  - /url: /media/frieren/glossary
+          - article [ref=e62]:
+            - paragraph [ref=e63]: Snapshot
+            - generic [ref=e64]:
+              - article [ref=e65]:
+                - generic [ref=e67]: Term
+                - strong [ref=e68]: "1"
+                - paragraph [ref=e69]: 1 term nel media
+              - article [ref=e70]:
+                - generic [ref=e72]: Grammar
+                - strong [ref=e73]: "1"
+                - paragraph [ref=e74]: 1 pattern grammaticali
+              - article [ref=e75]:
+                - generic [ref=e77]: Gia note
+                - strong [ref=e78]: "0"
+                - paragraph [ref=e79]: Override manuali o card gia stabili
+              - article [ref=e80]:
+                - generic [ref=e82]: In review
+                - strong [ref=e83]: "0"
+                - paragraph [ref=e84]: Entry gia entrate nel loop review
+        - generic [ref=e85]:
+          - generic [ref=e87]:
+            - paragraph [ref=e88]: Risultati
+            - heading "\"mangiare\"" [level=2] [ref=e89]
+            - paragraph [ref=e90]: 1 risultati su 2 entry.
+          - article [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]:
+                - generic [ref=e97]: Term
+                - generic [ref=e98]: Disponibile
+                - generic [ref=e99]: Episode 01
+              - link "Apri" [ref=e196] [cursor=pointer]:
+                - /url: /media/frieren/glossary/term/term-taberu
+            - heading "食べる" [level=3] [ref=e102]
+            - paragraph [ref=e103]: たべる / taberu
+            - paragraph [ref=e104]:
+              - mark [ref=e105]: mangiare
+            - generic [ref=e107]: "Match: significato"
+            - generic [ref=e108]:
+              - generic [ref=e109]:
+                - generic [ref=e110]: 1 lesson collegata
+                - generic [ref=e111]: 1 card collegata
+              - paragraph [ref=e112]: "Citata: Episodio 1 - Introduzione"
+              - link "Apri detail page" [ref=e113] [cursor=pointer]:
+                - /url: /media/frieren/glossary/term/term-taberu
+    - navigation "Navigazione mobile" [ref=e197]:
+      - link "Home" [ref=e198] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e199]: Home
+      - link "Media" [ref=e200] [cursor=pointer]:
+        - /url: /media
+        - generic [ref=e201]: Media
+      - link "Review" [ref=e202] [cursor=pointer]:
+        - /url: /review
+        - generic [ref=e203]: Review
+      - link "Settings" [ref=e204] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e205]: Settings
+  - button "Open Next.js Dev Tools" [ref=e191] [cursor=pointer]:
+    - img [ref=e192]
+  - alert [ref=e195]
