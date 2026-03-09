@@ -1,4 +1,4 @@
-import type { EntryType } from "@/domain/content.ts";
+import type { EntryType } from "../../domain/content.ts";
 
 export const issueCategoryValues = [
   "syntax",

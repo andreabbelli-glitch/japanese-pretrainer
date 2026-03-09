@@ -70,6 +70,7 @@ pnpm check
 pnpm db:generate
 pnpm db:migrate
 pnpm db:seed
+pnpm content:import
 pnpm db:setup
 pnpm db:studio
 ```
@@ -84,11 +85,16 @@ Comandi principali:
 ./scripts/with-node.sh pnpm db:generate
 ./scripts/with-node.sh pnpm db:migrate
 ./scripts/with-node.sh pnpm db:seed
+./scripts/with-node.sh pnpm content:import
 ./scripts/with-node.sh pnpm db:setup
 ```
 
 Di default il DB viene creato in `./data/japanese-custom-study.db`, ma puoi
 sovrascrivere il path con `DATABASE_URL`.
+
+L'importer esegue parser + validazione prima di sincronizzare il DB. Di default
+legge `./content`; puoi passare una content root diversa con
+`-- --content-root /percorso/content`.
 
 Dettagli operativi e schema: [Persistence layer](./docs/database.md)
 
@@ -121,6 +127,7 @@ docs/
 - [Schema dati iniziale](./docs/schema-dati-iniziale.md)
 - [Specifica contenuti Markdown](./docs/content-format.md)
 - [Content parser e validator](./docs/content-parser.md)
+- [Importer sync strategy](./docs/importer-sync-strategy.md)
 - [Handoff per LLM esterno](./docs/llm-content-handoff.md)
 - [Tooling locale](./docs/dev-tooling.md)
 - [Direzione UX/UI](./docs/design/ux-ui-direction.md)

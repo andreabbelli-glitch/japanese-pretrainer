@@ -24,9 +24,12 @@ const invalidMediaDirectory = path.join(
 );
 
 describe("content parser and validator", () => {
-  it("keeps src/lib/content independent from src/db enums and types", async () => {
+  it("keeps the parser core under src/lib/content independent from src/db", async () => {
     const contentSourceFiles = (await listFilesRecursively(contentLibraryRoot)).filter(
-      (filePath) => filePath.endsWith(".ts")
+      (filePath) =>
+        filePath.endsWith(".ts") &&
+        !filePath.includes(`${path.sep}importer${path.sep}`) &&
+        path.basename(filePath) !== "importer.ts"
     );
     const filesImportingDb = await Promise.all(
       contentSourceFiles.map(async (filePath) => {

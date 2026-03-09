@@ -25,9 +25,9 @@ import type {
   SourcePoint,
   SourceRange,
   ValidationIssue
-} from "../types";
-import type { DraftMarkdownDocument, RawStructuredBlockNode } from "./internal";
-import { createIssue, shiftRange } from "./utils";
+} from "../types.ts";
+import type { DraftMarkdownDocument, RawStructuredBlockNode } from "./internal.ts";
+import { createIssue, shiftRange } from "./utils.ts";
 
 interface MarkdownParseOptions {
   source: string;

@@ -8,7 +8,7 @@ export async function listCardsByMediaId(
   mediaId: string
 ) {
   return database.query.card.findMany({
-    where: eq(card.mediaId, mediaId),
+    where: and(eq(card.mediaId, mediaId), eq(card.status, "active")),
     with: {
       segment: true,
       reviewState: true,
@@ -48,6 +48,7 @@ export async function listDueCardsByMediaId(
       .where(
         and(
           eq(card.mediaId, mediaId),
+          eq(card.status, "active"),
           isNotNull(reviewState.dueAt),
           lte(reviewState.dueAt, asOf),
           ne(reviewState.state, "suspended"),

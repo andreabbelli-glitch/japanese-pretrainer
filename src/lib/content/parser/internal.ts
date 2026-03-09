@@ -1,4 +1,4 @@
-import type { ContentBlock, SourceRange, ValidationIssue } from "../types";
+import type { ContentBlock, SourceRange, ValidationIssue } from "../types.ts";
 
 export interface ParsedYamlBlock {
   data: Record<string, unknown> | null;

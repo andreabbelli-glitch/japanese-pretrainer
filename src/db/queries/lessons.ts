@@ -8,7 +8,7 @@ export async function listLessonsByMediaId(
   mediaId: string
 ) {
   return database.query.lesson.findMany({
-    where: eq(lesson.mediaId, mediaId),
+    where: and(eq(lesson.mediaId, mediaId), eq(lesson.status, "active")),
     with: {
       segment: true,
       progress: true,
@@ -29,7 +29,11 @@ export async function getLessonBySlug(
   slug: string
 ) {
   return database.query.lesson.findFirst({
-    where: and(eq(lesson.mediaId, mediaId), eq(lesson.slug, slug)),
+    where: and(
+      eq(lesson.mediaId, mediaId),
+      eq(lesson.slug, slug),
+      eq(lesson.status, "active")
+    ),
     with: {
       segment: true,
       progress: true,

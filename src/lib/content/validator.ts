@@ -5,13 +5,13 @@ import {
   entryTypeValues,
   lessonStatusValues,
   mediaStatusValues
-} from "@/domain/content.ts";
+} from "../../domain/content.ts";
 
-import { parseFrontmatter } from "./parser/frontmatter";
-import type { ParsedDocumentDraft, RawStructuredBlock } from "./parser/internal";
-import { parseInlineFragment, parseMarkdownDocument } from "./parser/markdown";
-import { extractStructuredBlocks } from "./parser/structured-blocks";
-import { createIssue, isStringArray, isUrlSafeSlug } from "./parser/utils";
+import { parseFrontmatter } from "./parser/frontmatter.ts";
+import type { ParsedDocumentDraft, RawStructuredBlock } from "./parser/internal.ts";
+import { parseInlineFragment, parseMarkdownDocument } from "./parser/markdown.ts";
+import { extractStructuredBlocks } from "./parser/structured-blocks.ts";
+import { createIssue, isStringArray, isUrlSafeSlug } from "./parser/utils.ts";
 import type {
   CardDefinitionBlock,
   CardsFrontmatter,
@@ -33,7 +33,7 @@ import type {
   SourceRange,
   TermDefinitionBlock,
   ValidationIssue
-} from "./types";
+} from "./types.ts";
 
 interface ParsedDocumentState {
   draft: ParsedDocumentDraft;

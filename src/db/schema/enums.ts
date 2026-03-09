@@ -2,12 +2,12 @@ export {
   entryTypeValues,
   lessonStatusValues,
   mediaStatusValues
-} from "@/domain/content.ts";
+} from "../../domain/content.ts";
 export type {
   EntryType,
   LessonStatus,
   MediaStatus
-} from "@/domain/content.ts";
+} from "../../domain/content.ts";
 
 export const cardStatusValues = ["active", "suspended", "archived"] as const;
 export const sourceTypeValues = ["lesson", "card"] as const;

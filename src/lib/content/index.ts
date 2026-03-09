@@ -1,4 +1,4 @@
-export { parseContentRoot, parseMediaDirectory } from "./validator";
+export { parseContentRoot, parseMediaDirectory } from "./validator.ts";
 export type {
   CardsFrontmatter,
   CollectedReference,
@@ -27,4 +27,4 @@ export type {
   SourceRange,
   TermDefinitionBlock,
   ValidationIssue
-} from "./types";
+} from "./types.ts";

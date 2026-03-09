@@ -1,8 +1,8 @@
 import { parseDocument } from "yaml";
 
-import type { SourcePoint, SourceRange, ValidationIssue } from "../types";
-import type { RawStructuredBlock } from "./internal";
-import { createIssue, isRecord } from "./utils";
+import type { SourcePoint, SourceRange, ValidationIssue } from "../types.ts";
+import type { RawStructuredBlock } from "./internal.ts";
+import { createIssue, isRecord } from "./utils.ts";
 
 export interface StructuredBlockExtraction {
   transformedSource: string;

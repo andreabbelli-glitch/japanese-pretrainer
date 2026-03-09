@@ -4,7 +4,7 @@ import type {
   SourcePoint,
   SourceRange,
   ValidationIssue
-} from "../types";
+} from "../types.ts";
 
 export function createIssue(input: {
   code: string;

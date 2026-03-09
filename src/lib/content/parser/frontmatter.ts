@@ -1,7 +1,7 @@
 import { parseDocument } from "yaml";
 
-import type { ValidationIssue } from "../types";
-import { createIssue, isRecord } from "./utils";
+import type { ValidationIssue } from "../types.ts";
+import { createIssue, isRecord } from "./utils.ts";
 
 export interface ParsedFrontmatterResult {
   data: Record<string, unknown> | null;

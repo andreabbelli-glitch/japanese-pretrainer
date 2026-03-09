@@ -1,10 +1,11 @@
-import { asc, eq } from "drizzle-orm";
+import { and, asc, eq } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import { media } from "../schema/index.ts";
 
 export async function listMedia(database: DatabaseClient) {
   return database.query.media.findMany({
+    where: eq(media.status, "active"),
     with: {
       progress: true
     },
@@ -14,7 +15,7 @@ export async function listMedia(database: DatabaseClient) {
 
 export async function getMediaBySlug(database: DatabaseClient, slug: string) {
   return database.query.media.findFirst({
-    where: eq(media.slug, slug),
+    where: and(eq(media.slug, slug), eq(media.status, "active")),
     with: {
       progress: true
     }
