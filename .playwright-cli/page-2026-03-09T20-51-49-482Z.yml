@@ -1,0 +1,200 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Japanese Custom Study
+        - generic [ref=e7]: Scrivania editoriale
+    - main [ref=e8]:
+      - generic [ref=e45]:
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - link "Torna a Demo Anime" [ref=e49] [cursor=pointer]:
+              - /url: /media/demo-anime
+            - paragraph [ref=e50]: Progress
+            - heading "Demo Anime" [level=1] [ref=e51]
+            - paragraph [ref=e52]: Una vista calma per capire quanto hai letto, quante entry hai già toccato e cosa conviene riprendere adesso.
+            - generic [ref=e53]:
+              - generic [ref=e54]: Anime
+              - generic [ref=e55]: episodi
+              - generic [ref=e56]: 1 lesson
+          - link "Apri settings" [ref=e58] [cursor=pointer]:
+            - /url: /settings
+        - generic [ref=e59]:
+          - article [ref=e60]:
+            - paragraph [ref=e61]: Ripresa naturale
+            - heading "1 card richiede attenzione" [level=2] [ref=e62]
+            - paragraph [ref=e63]: La prossima card pronta è 行く.
+            - generic [ref=e64]:
+              - link "Avvia review" [ref=e65] [cursor=pointer]:
+                - /url: /media/demo-anime/review
+              - link "Apri lesson corrente" [ref=e66] [cursor=pointer]:
+                - /url: /media/demo-anime/textbook/intro-vocab
+            - generic [ref=e67]:
+              - article [ref=e68]:
+                - generic [ref=e70]: Textbook
+                - strong [ref=e71]: 0%
+                - paragraph [ref=e72]: 0 di 1 lesson
+              - article [ref=e73]:
+                - generic [ref=e75]: Coverage
+                - strong [ref=e76]: 2/2
+                - paragraph [ref=e77]: 2 entry nel media
+              - article [ref=e78]:
+                - generic [ref=e80]: Review
+                - strong [ref=e81]: 1 dovute
+                - paragraph [ref=e82]: 1 card dovuta adesso. 1 card resta coperta da manual mastery.
+          - article [ref=e83]:
+            - paragraph [ref=e84]: Controlli attivi
+            - generic [ref=e85]:
+              - generic [ref=e86]:
+                - generic [ref=e87]: Furigana
+                - strong [ref=e88]: "off"
+              - generic [ref=e89]:
+                - generic [ref=e90]: Nuove review
+                - strong [ref=e91]: 10/giorno
+              - generic [ref=e92]:
+                - generic [ref=e93]: Ordine glossary
+                - strong [ref=e94]: alfabetico
+            - paragraph [ref=e95]: I setting vengono letti dal DB e influenzano già reader, glossary e review.
+        - generic [ref=e96]:
+          - generic [ref=e97]:
+            - generic [ref=e99]:
+              - paragraph [ref=e100]: Textbook
+              - heading "Avanzamento di lettura" [level=2] [ref=e101]
+              - paragraph [ref=e102]: "Il reader resta il filo principale: qui vedi dove eri arrivato e quante lesson restano."
+            - generic [ref=e103]:
+              - article [ref=e104]:
+                - generic [ref=e105]:
+                  - generic [ref=e106]: Ultima lesson aperta
+                  - strong [ref=e107]: Intro Vocab
+                - generic [ref=e108]:
+                  - generic [ref=e109]: Lesson in corso
+                  - strong [ref=e110]: "1"
+                - generic [ref=e111]:
+                  - generic [ref=e112]: Prossima lesson utile
+                  - strong [ref=e113]: Intro Vocab
+              - article [ref=e115]:
+                - generic [ref=e116]:
+                  - heading "Episode 1" [level=3] [ref=e117]
+                  - generic [ref=e118]: 0/1
+                - paragraph [ref=e119]: Introduzione al media demo.
+                - paragraph [ref=e120]: "In corso: Intro Vocab"
+          - generic [ref=e121]:
+            - generic [ref=e123]:
+              - paragraph [ref=e124]: Glossary
+              - heading "Coverage delle entry" [level=2] [ref=e125]
+              - paragraph [ref=e126]: "Conta le entry già toccate davvero: override manuali, review attive e stati di studio."
+            - generic [ref=e127]:
+              - article [ref=e128]:
+                - generic [ref=e130]: Coperte
+                - strong [ref=e131]: 2/2
+                - paragraph [ref=e132]: Entry già toccate in modo reale.
+              - article [ref=e133]:
+                - generic [ref=e135]: Gia note
+                - strong [ref=e136]: "1"
+                - paragraph [ref=e137]: Override manuali o segnali equivalenti.
+              - article [ref=e138]:
+                - generic [ref=e140]: In review
+                - strong [ref=e141]: "0"
+                - paragraph [ref=e142]: Entry già entrate nella rotazione review.
+              - article [ref=e143]:
+                - generic [ref=e145]: In studio
+                - strong [ref=e146]: "1"
+                - paragraph [ref=e147]: Entry in studio ma non ancora stabili.
+            - generic [ref=e148]:
+              - link [ref=e149] [cursor=pointer]:
+                - /url: /media/demo-anime/glossary/term/term_demo_iku
+                - article [ref=e150]:
+                  - generic [ref=e151]:
+                    - generic [ref=e152]: Term
+                    - generic [ref=e153]: In studio
+                  - heading "行く" [level=3] [ref=e154]
+                  - paragraph [ref=e155]: いく
+                  - paragraph [ref=e156]: andare
+              - link [ref=e157] [cursor=pointer]:
+                - /url: /media/demo-anime/glossary/grammar/grammar_demo_teiru
+                - article [ref=e158]:
+                  - generic [ref=e159]:
+                    - generic [ref=e160]: Grammar
+                    - generic [ref=e161]: Gia nota
+                  - heading "〜ている" [level=3] [ref=e162]
+                  - paragraph [ref=e163]: azione in corso o stato risultante
+        - generic [ref=e164]:
+          - generic [ref=e165]:
+            - generic [ref=e167]:
+              - paragraph [ref=e168]: Review
+              - heading "Coda e carico quotidiano" [level=2] [ref=e169]
+              - paragraph [ref=e170]: "Pochi segnali utili: cosa è dovuto ora, quante nuove entrano oggi e quanto rimane in rotazione."
+            - generic [ref=e171]:
+              - article [ref=e172]:
+                - generic [ref=e174]: In coda
+                - strong [ref=e175]: "1"
+                - paragraph [ref=e176]: Card che puoi lavorare subito.
+              - article [ref=e177]:
+                - generic [ref=e179]: Dovute
+                - strong [ref=e180]: "1"
+                - paragraph [ref=e181]: Richiedono attenzione oggi.
+              - article [ref=e182]:
+                - generic [ref=e184]: Nuove oggi
+                - strong [ref=e185]: "0"
+                - paragraph [ref=e186]: 0 nuove disponibili nel media
+              - article [ref=e187]:
+                - generic [ref=e189]: Attive
+                - strong [ref=e190]: "2"
+                - paragraph [ref=e191]: Card già in rotazione attiva.
+            - article [ref=e192]:
+              - generic [ref=e193]:
+                - generic [ref=e194]: Limite nuove
+                - strong [ref=e195]: 10/giorno
+              - generic [ref=e196]:
+                - generic [ref=e197]: Sospese
+                - strong [ref=e198]: "0"
+              - generic [ref=e199]:
+                - generic [ref=e200]: In arrivo
+                - strong [ref=e201]: "0"
+          - generic [ref=e202]:
+            - generic [ref=e204]:
+              - paragraph [ref=e205]: Continua
+              - heading "Ingressi rapidi" [level=2] [ref=e206]
+              - paragraph [ref=e207]: "Le CTA restano poche: una per leggere, una per consultare, una per ripassare."
+            - generic [ref=e208]:
+              - link [ref=e209] [cursor=pointer]:
+                - /url: /media/demo-anime/textbook/intro-vocab
+                - article [ref=e210]:
+                  - generic [ref=e211]:
+                    - heading "Textbook" [level=3] [ref=e212]
+                    - generic [ref=e213]: Apri
+                  - paragraph [ref=e214]: Intro Vocab
+                  - paragraph [ref=e215]: In corso
+              - link [ref=e216] [cursor=pointer]:
+                - /url: /media/demo-anime/glossary
+                - article [ref=e217]:
+                  - generic [ref=e218]:
+                    - heading "Glossary" [level=3] [ref=e219]
+                    - generic [ref=e220]: Apri
+                  - paragraph [ref=e221]: Consulta le entry già presenti nel media.
+                  - paragraph [ref=e222]: 2/2 già toccate
+              - link [ref=e223] [cursor=pointer]:
+                - /url: /media/demo-anime/review
+                - article [ref=e224]:
+                  - generic [ref=e225]:
+                    - heading "Review" [level=3] [ref=e226]
+                    - generic [ref=e227]: Apri
+                  - paragraph [ref=e228]: 1 card dovuta adesso. 1 card resta coperta da manual mastery.
+                  - paragraph [ref=e229]: 1 dovute
+    - navigation "Navigazione mobile" [ref=e26]:
+      - link "Home" [ref=e27] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e28]: Home
+      - link "Media" [ref=e29] [cursor=pointer]:
+        - /url: /media
+        - generic [ref=e30]: Media
+      - link "Review" [ref=e31] [cursor=pointer]:
+        - /url: /review
+        - generic [ref=e32]: Review
+      - link "Settings" [ref=e33] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e34]: Settings
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]
+  - alert [ref=e44]

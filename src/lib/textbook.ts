@@ -15,11 +15,15 @@ import {
   type DatabaseClient,
   type GrammarGlossaryEntry,
   type LessonListItem,
-  type TermGlossaryEntry,
-  userSetting
+  type TermGlossaryEntry
 } from "@/db";
 import { mediaGlossaryEntryHref, mediaStudyHref } from "@/lib/site";
 import type { MarkdownDocument } from "@/lib/content/types";
+import {
+  getFuriganaModeSetting,
+  updateStudySettings,
+  type FuriganaMode
+} from "@/lib/settings";
 import { deriveEntryStudyState } from "@/lib/study-entry";
 import {
   calculatePercent,
@@ -30,7 +34,7 @@ import {
 } from "@/lib/study-format";
 import { parseTextbookDocument } from "@/lib/textbook-document";
 
-export type FuriganaMode = "on" | "off" | "hover";
+export type { FuriganaMode } from "@/lib/settings";
 
 export type TextbookLessonNavItem = {
   id: string;
@@ -117,25 +121,7 @@ type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
 export async function getFuriganaMode(
   database: DatabaseClient = db
 ): Promise<FuriganaMode> {
-  const row = await database.query.userSetting.findFirst({
-    where: eq(userSetting.key, "furigana_mode")
-  });
-
-  if (!row) {
-    return "hover";
-  }
-
-  try {
-    const value = JSON.parse(row.valueJson);
-
-    if (value === "on" || value === "off" || value === "hover") {
-      return value;
-    }
-  } catch {
-    return "hover";
-  }
-
-  return "hover";
+  return getFuriganaModeSetting(database);
 }
 
 export async function getTextbookIndexData(
@@ -296,22 +282,12 @@ export async function setFuriganaMode(
   mode: FuriganaMode,
   database: DatabaseClient = db
 ) {
-  const nowIso = new Date().toISOString();
-
-  await database
-    .insert(userSetting)
-    .values({
-      key: "furigana_mode",
-      valueJson: JSON.stringify(mode),
-      updatedAt: nowIso
-    })
-    .onConflictDoUpdate({
-      target: userSetting.key,
-      set: {
-        valueJson: JSON.stringify(mode),
-        updatedAt: nowIso
-      }
-    });
+  await updateStudySettings(
+    {
+      furiganaMode: mode
+    },
+    database
+  );
 }
 
 function buildTextbookIndexModel(input: {

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getMediaDetailData } from "@/lib/app-shell";
-import { mediaHref, mediaStudyHref } from "@/lib/site";
+import { mediaHref, mediaStudyHref, mediaTextbookLessonHref } from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
@@ -44,6 +44,10 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
     notFound();
   }
 
+  const resumeHref = media.currentLesson
+    ? mediaTextbookLessonHref(media.slug, media.currentLesson.slug)
+    : mediaStudyHref(media.slug, "textbook");
+
   return (
     <div className="media-detail-page">
       <StickyPageHeader
@@ -60,9 +64,14 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
           </>
         }
         actions={
-          <Link className="button button--ghost" href={mediaStudyHref(media.slug, "textbook")}>
-            Vai al textbook
-          </Link>
+          <>
+            <Link className="button button--primary" href={resumeHref}>
+              Riprendi studio
+            </Link>
+            <Link className="button button--ghost" href={mediaStudyHref(media.slug, "progress")}>
+              Apri progress
+            </Link>
+          </>
         }
       />
 
@@ -79,6 +88,14 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
               media.currentLesson?.excerpt ??
               "Questa pagina diventa la base operativa del media: ingresso, contesto e collegamenti alle aree di studio."}
           </p>
+          <div className="hero-actions">
+            <Link className="button button--primary" href={resumeHref}>
+              {media.currentLesson ? "Riprendi lesson" : "Apri textbook"}
+            </Link>
+            <Link className="button button--ghost" href={mediaStudyHref(media.slug, "review")}>
+              {media.cardsDue > 0 ? "Avvia review" : "Controlla review"}
+            </Link>
+          </div>
           <div className="stats-grid stats-grid--compact">
             <StatBlock
               detail={`${media.lessonsCompleted} di ${media.lessonsTotal} lezioni`}
@@ -90,7 +107,7 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
               }
             />
             <StatBlock
-              detail={`${media.entriesTotal} entry canoniche`}
+              detail={`${media.entriesTotal} entry nel media`}
               label="Glossary"
               value={
                 media.entriesTotal > 0
@@ -151,7 +168,7 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
                     ? `Ora: ${media.currentLesson.title}`
                     : null}
                   {area.key === "glossary"
-                    ? `${media.entriesTotal} entry già disponibili`
+                    ? `${media.entriesKnown}/${media.entriesTotal} già toccate`
                     : null}
                   {area.key === "review" ? media.reviewQueueLabel : null}
                   {area.key === "progress"

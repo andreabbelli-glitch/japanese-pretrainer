@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { getDashboardData } from "@/lib/app-shell";
-import { mediaHref, mediaStudyHref } from "@/lib/site";
+import { mediaHref, mediaStudyHref, mediaTextbookLessonHref } from "@/lib/site";
 
 import { EmptyState } from "../ui/empty-state";
 import { Section } from "../ui/section";
@@ -28,6 +28,10 @@ export async function DashboardHome() {
     );
   }
 
+  const focusResumeHref = focusMedia.currentLesson
+    ? mediaTextbookLessonHref(focusMedia.slug, focusMedia.currentLesson.slug)
+    : mediaStudyHref(focusMedia.slug, "textbook");
+
   return (
     <div className="dashboard-page">
       <section className="hero-grid">
@@ -45,7 +49,7 @@ export async function DashboardHome() {
           <div className="hero-actions">
             <Link
               className="button button--primary"
-              href={mediaStudyHref(focusMedia.slug, "textbook")}
+              href={focusResumeHref}
             >
               Riprendi studio
             </Link>

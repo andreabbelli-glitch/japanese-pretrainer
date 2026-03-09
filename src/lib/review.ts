@@ -3,7 +3,6 @@ import { unstable_noStore as noStore } from "next/cache";
 import {
   db,
   getMediaBySlug,
-  getUserSettingValue,
   listGrammarEntriesByMediaId,
   listReviewCardsByMediaId,
   listTermEntriesByMediaId,
@@ -13,6 +12,7 @@ import {
   type TermGlossaryEntry
 } from "@/db";
 import { getRenderSafeText } from "@/lib/render-safe-text";
+import { getReviewDailyLimit } from "@/lib/settings";
 import {
   mediaGlossaryEntryHref,
   mediaHref,
@@ -34,10 +34,7 @@ import {
   type EffectiveReviewState,
   type ReviewEntryStatusValue
 } from "./review-model";
-import {
-  reviewSchedulerConfig,
-  type ReviewState
-} from "./review-scheduler";
+import { type ReviewState } from "./review-scheduler";
 
 type ReviewCardEntryKind = "term" | "grammar";
 
@@ -630,26 +627,6 @@ function compareEntryLinks(
   }
 
   return left.entryId.localeCompare(right.entryId);
-}
-
-async function getReviewDailyLimit(database: DatabaseClient) {
-  const row = await getUserSettingValue(database, "review_daily_limit");
-
-  if (!row) {
-    return reviewSchedulerConfig.defaultDailyLimit;
-  }
-
-  try {
-    const value = JSON.parse(row.valueJson);
-
-    if (typeof value === "number" && Number.isFinite(value) && value > 0) {
-      return Math.max(1, Math.round(value));
-    }
-  } catch {
-    return reviewSchedulerConfig.defaultDailyLimit;
-  }
-
-  return reviewSchedulerConfig.defaultDailyLimit;
 }
 
 function normalizeReviewSearchState(

@@ -25,6 +25,10 @@ import {
   mediaStudyHref,
   mediaTextbookLessonHref
 } from "@/lib/site";
+import {
+  getGlossaryDefaultSort,
+  type GlossaryDefaultSort
+} from "@/lib/settings";
 import { deriveEntryStudyState } from "@/lib/study-entry";
 import {
   capitalizeToken,
@@ -130,6 +134,7 @@ export type GlossaryQueryState = {
   entryType: "all" | GlossaryKind;
   query: string;
   segmentId: string;
+  sort: GlossaryDefaultSort;
   study: "all" | "known" | "review" | "learning" | "new" | "available";
 };
 
@@ -249,7 +254,8 @@ export async function getGlossaryPageData(
     return null;
   }
 
-  const filters = normalizeGlossaryQuery(searchParams);
+  const defaultSort = await getGlossaryDefaultSort(database);
+  const filters = normalizeGlossaryQuery(searchParams, defaultSort);
   const [segments, entries] = await Promise.all([
     listGlossarySegmentsByMediaId(database, media.id),
     loadGlossaryBaseEntries(database, media.id)
@@ -267,7 +273,13 @@ export async function getGlossaryPageData(
       rankGlossaryEntry(entry, filters, studySignalsByEntry, media.slug)
     )
     .filter((entry): entry is RankedGlossaryEntry => entry !== null)
-    .sort((left, right) => compareRankedEntries(left, right, segments));
+    .sort((left, right) =>
+      compareRankedEntries(left, right, {
+        hasQuery: filters.query.length > 0,
+        segments,
+        sort: filters.sort
+      })
+    );
 
   const resultRefs = rankedEntries.map((entry) => ({
     entryId: entry.id,
@@ -320,7 +332,8 @@ export async function getGlossaryPageData(
       filters.query.length > 0 ||
       filters.entryType !== "all" ||
       filters.segmentId !== "all" ||
-      filters.study !== "all",
+      filters.study !== "all" ||
+      filters.sort !== defaultSort,
     media: mediaSummary,
     resultSummary: {
       filtered: rankedEntries.length,
@@ -593,11 +606,13 @@ function mapEntryToBaseModel(
 }
 
 function normalizeGlossaryQuery(
-  searchParams: Record<string, string | string[] | undefined>
+  searchParams: Record<string, string | string[] | undefined>,
+  defaultSort: GlossaryDefaultSort
 ): GlossaryQueryState {
   const rawQuery = readSearchParam(searchParams, "q");
   const rawType = readSearchParam(searchParams, "type");
   const rawSegment = readSearchParam(searchParams, "segment");
+  const rawSort = readSearchParam(searchParams, "sort");
   const rawStudy = readSearchParam(searchParams, "study");
 
   return {
@@ -605,6 +620,7 @@ function normalizeGlossaryQuery(
       rawType === "term" || rawType === "grammar" ? rawType : "all",
     query: rawQuery,
     segmentId: rawSegment || "all",
+    sort: rawSort === "alphabetical" || rawSort === "lesson_order" ? rawSort : defaultSort,
     study: studyFilterOptions.includes(rawStudy as GlossaryQueryState["study"])
       ? (rawStudy as GlossaryQueryState["study"])
       : "all"
@@ -934,14 +950,30 @@ function buildFilteredQuery(rawQuery: string): FilteredQuery | null {
 function compareRankedEntries(
   left: RankedGlossaryEntry,
   right: RankedGlossaryEntry,
-  segments: Awaited<ReturnType<typeof listGlossarySegmentsByMediaId>>
+  input: {
+    hasQuery: boolean;
+    segments: Awaited<ReturnType<typeof listGlossarySegmentsByMediaId>>;
+    sort: GlossaryDefaultSort;
+  }
 ) {
-  if (left.score !== right.score) {
+  if (input.hasQuery && left.score !== right.score) {
     return right.score - left.score;
   }
 
+  if (input.sort === "alphabetical") {
+    if (left.label !== right.label) {
+      return left.label.localeCompare(right.label, "ja");
+    }
+
+    if (left.kind !== right.kind) {
+      return left.kind.localeCompare(right.kind);
+    }
+
+    return (left.reading ?? "").localeCompare(right.reading ?? "", "ja");
+  }
+
   const segmentIndex = new Map(
-    segments.map((segment, index) => [segment.id, index] as const)
+    input.segments.map((segment, index) => [segment.id, index] as const)
   );
   const leftSegment = left.segmentId ? (segmentIndex.get(left.segmentId) ?? 999) : 999;
   const rightSegment = right.segmentId ? (segmentIndex.get(right.segmentId) ?? 999) : 999;

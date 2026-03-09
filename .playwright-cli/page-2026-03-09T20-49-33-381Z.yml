@@ -1,0 +1,118 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Japanese Custom Study
+          - generic [ref=e7]: Scrivania editoriale
+        - navigation "Navigazione primaria" [ref=e8]:
+          - link "Home Ripresa studio" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e10]: Home
+            - generic [ref=e11]: Ripresa studio
+          - link "Media Libreria attiva" [ref=e12] [cursor=pointer]:
+            - /url: /media
+            - generic [ref=e13]: Media
+            - generic [ref=e14]: Libreria attiva
+          - link "Review Sessioni quotidiane" [ref=e15] [cursor=pointer]:
+            - /url: /review
+            - generic [ref=e16]: Review
+            - generic [ref=e17]: Sessioni quotidiane
+          - link "Settings Preferenze locali" [ref=e18] [cursor=pointer]:
+            - /url: /settings
+            - generic [ref=e19]: Settings
+            - generic [ref=e20]: Preferenze locali
+        - generic [ref=e21]:
+          - generic [ref=e22]: Locale-first
+          - generic [ref=e23]: ·
+          - generic [ref=e24]: single-user
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e29]:
+          - paragraph [ref=e30]: Settings
+          - heading "Preferenze di studio" [level=1] [ref=e31]
+          - paragraph [ref=e32]: Poche decisioni persistenti, con effetti reali su reader, glossary e review.
+          - generic [ref=e33]:
+            - generic [ref=e34]: Locale-first
+            - generic [ref=e35]: Single-user
+            - generic [ref=e36]: Persistenza su DB
+        - generic [ref=e37]:
+          - article [ref=e38]:
+            - paragraph [ref=e39]: Esperienza quotidiana
+            - heading "Mantieni lo studio leggibile, coerente e facile da riprendere." [level=2] [ref=e40]
+            - paragraph [ref=e41]: "Le preferenze qui sotto non restano nel client: aggiornano `user_setting` e si riflettono davvero sulle schermate di studio già presenti."
+            - generic [ref=e42]:
+              - generic [ref=e43]: "Furigana: hover"
+              - generic [ref=e44]: "Review nuove: 20"
+              - generic [ref=e45]: "Glossary: ordine percorso"
+          - article [ref=e46]:
+            - paragraph [ref=e47]: Impatto reale
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - generic [ref=e50]: Reader
+                - strong [ref=e51]: Furigana persistenti
+              - generic [ref=e52]:
+                - generic [ref=e53]: Glossary
+                - strong [ref=e54]: Ordine predefinito
+              - generic [ref=e55]:
+                - generic [ref=e56]: Review
+                - strong [ref=e57]: Limite nuove giornaliere
+        - generic [ref=e58]:
+          - generic [ref=e60]:
+            - paragraph [ref=e61]: Preferenze
+            - heading "Controlli sobri, ma operativi" [level=2] [ref=e62]
+            - paragraph [ref=e63]: Ogni gruppo modifica una parte già esistente dell’app, senza introdurre pannelli tecnici o stati finti.
+          - generic [ref=e64]:
+            - article [ref=e65]:
+              - generic [ref=e66]:
+                - generic [ref=e67]:
+                  - paragraph [ref=e68]: Reader
+                  - heading "Furigana" [level=3] [ref=e69]
+                - paragraph [ref=e70]: Vale per il textbook index e per il reader lesson.
+              - generic [ref=e71]:
+                - generic [ref=e72] [cursor=pointer]:
+                  - radio "Sempre visibili Mostra sempre la lettura nel reader." [ref=e73]
+                  - generic [ref=e74]: Sempre visibili
+                  - generic [ref=e75]: Mostra sempre la lettura nel reader.
+                - generic [ref=e76] [cursor=pointer]:
+                  - radio "Nascoste Nasconde del tutto il ruby per leggere più pulito." [checked] [ref=e77]
+                  - generic [ref=e78]: Nascoste
+                  - generic [ref=e79]: Nasconde del tutto il ruby per leggere più pulito.
+                - generic [ref=e80] [cursor=pointer]:
+                  - radio "Su richiesta Le mostra al bisogno nel reader e resta la modalità più sobria." [ref=e81]
+                  - generic [ref=e82]: Su richiesta
+                  - generic [ref=e83]: Le mostra al bisogno nel reader e resta la modalità più sobria.
+            - article [ref=e84]:
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - paragraph [ref=e87]: Review
+                  - heading "Nuove card al giorno" [level=3] [ref=e88]
+                - paragraph [ref=e89]: La review usa questo valore per decidere quante nuove card entrano nella coda quotidiana dopo le dovute.
+              - generic [ref=e90]:
+                - generic [ref=e91]: Limite giornaliero
+                - combobox "Limite giornaliero" [ref=e92]:
+                  - option "10 nuove" [selected]
+                  - option "20 nuove"
+                  - option "30 nuove"
+                  - option "40 nuove"
+                  - option "60 nuove"
+            - article [ref=e93]:
+              - generic [ref=e94]:
+                - generic [ref=e95]:
+                  - paragraph [ref=e96]: Glossary
+                  - heading "Ordine predefinito" [level=3] [ref=e97]
+                - paragraph [ref=e98]: "Resta un’impostazione essenziale: cambia l’ordine iniziale del glossary, ma lascia invariata la qualità del ranking quando stai cercando qualcosa."
+              - generic [ref=e99]:
+                - generic [ref=e100] [cursor=pointer]:
+                  - radio "Ordine percorso Segue il percorso del media e resta vicina all’ordine di studio." [ref=e101]
+                  - generic [ref=e102]: Ordine percorso
+                  - generic [ref=e103]: Segue il percorso del media e resta vicina all’ordine di studio.
+                - generic [ref=e104] [cursor=pointer]:
+                  - radio "Alfabetico Ordina il glossary per forma giapponese in modo più consultivo." [checked] [active] [ref=e105]
+                  - generic [ref=e106]: Alfabetico
+                  - generic [ref=e107]: Ordina il glossary per forma giapponese in modo più consultivo.
+            - button "Salva preferenze" [ref=e109]
+  - button "Open Next.js Dev Tools" [ref=e115] [cursor=pointer]:
+    - img [ref=e116]
+  - alert [ref=e119]

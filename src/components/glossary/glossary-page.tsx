@@ -113,6 +113,18 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
                   <option value="available">Disponibili</option>
                 </select>
               </label>
+
+              <label className="glossary-search-form__field">
+                <span className="glossary-search-form__label">Ordine</span>
+                <select
+                  className="glossary-search-form__select"
+                  defaultValue={data.filters.sort}
+                  name="sort"
+                >
+                  <option value="lesson_order">Percorso</option>
+                  <option value="alphabetical">Alfabetico</option>
+                </select>
+              </label>
             </div>
 
             <div className="glossary-search-form__actions">
@@ -383,6 +395,10 @@ function buildPreviewHref({
 
   if (filters.segmentId !== "all") {
     params.set("segment", filters.segmentId);
+  }
+
+  if (filters.sort !== "lesson_order") {
+    params.set("sort", filters.sort);
   }
 
   if (filters.study !== "all") {

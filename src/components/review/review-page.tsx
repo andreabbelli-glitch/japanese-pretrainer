@@ -71,9 +71,14 @@ export function ReviewPage({ data }: ReviewPageProps) {
           </>
         }
         actions={
-          <Link className="button button--ghost" href={data.media.glossaryHref}>
-            Apri glossary
-          </Link>
+          <>
+            <Link className="button button--ghost" href={data.media.glossaryHref}>
+              Apri glossary
+            </Link>
+            <Link className="button button--ghost" href="/settings">
+              Settings
+            </Link>
+          </>
         }
       />
 

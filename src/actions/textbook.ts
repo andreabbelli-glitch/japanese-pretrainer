@@ -4,9 +4,9 @@ import { revalidatePath } from "next/cache";
 
 import {
   setFuriganaMode,
-  setLessonCompletionState,
-  type FuriganaMode
+  setLessonCompletionState
 } from "@/lib/textbook";
+import type { FuriganaMode } from "@/lib/settings";
 import { mediaHref, mediaStudyHref } from "@/lib/site";
 
 export async function setFuriganaModeAction(input: {
@@ -16,6 +16,9 @@ export async function setFuriganaModeAction(input: {
 }) {
   await setFuriganaMode(input.mode);
 
+  revalidatePath("/");
+  revalidatePath("/settings");
+  revalidatePath(mediaHref(input.mediaSlug));
   revalidatePath(mediaStudyHref(input.mediaSlug, "textbook"));
 
   if (input.lessonSlug) {
@@ -36,7 +39,9 @@ export async function setLessonCompletionAction(input: {
 }) {
   await setLessonCompletionState(input.lessonId, input.completed);
 
+  revalidatePath("/");
   revalidatePath(mediaHref(input.mediaSlug));
+  revalidatePath(mediaStudyHref(input.mediaSlug, "progress"));
   revalidatePath(mediaStudyHref(input.mediaSlug, "textbook"));
   revalidatePath(`${mediaStudyHref(input.mediaSlug, "textbook")}/${input.lessonSlug}`);
 

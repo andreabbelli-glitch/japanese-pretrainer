@@ -63,6 +63,9 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
             <Link className="button button--ghost" href={data.glossaryHref}>
               Apri glossary
             </Link>
+            <Link className="button button--ghost" href="/settings">
+              Settings
+            </Link>
           </div>
         </SurfaceCard>
 

@@ -1,0 +1,79 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Japanese Custom Study
+          - generic [ref=e7]: Scrivania editoriale
+        - navigation "Navigazione primaria" [ref=e8]:
+          - link "Home Ripresa studio" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e10]: Home
+            - generic [ref=e11]: Ripresa studio
+          - link "Media Libreria attiva" [ref=e12] [cursor=pointer]:
+            - /url: /media
+            - generic [ref=e13]: Media
+            - generic [ref=e14]: Libreria attiva
+          - link "Review Sessioni quotidiane" [ref=e15] [cursor=pointer]:
+            - /url: /review
+            - generic [ref=e16]: Review
+            - generic [ref=e17]: Sessioni quotidiane
+          - link "Settings Preferenze locali" [ref=e18] [cursor=pointer]:
+            - /url: /settings
+            - generic [ref=e19]: Settings
+            - generic [ref=e20]: Preferenze locali
+        - generic [ref=e21]:
+          - generic [ref=e22]: Locale-first
+          - generic [ref=e23]: ·
+          - generic [ref=e24]: single-user
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - link "Demo Anime / Textbook" [ref=e29] [cursor=pointer]:
+              - /url: /media/demo-anime/textbook
+            - generic [ref=e30]:
+              - paragraph [ref=e31]: Episode 1
+              - heading "Intro Vocab" [level=1] [ref=e32]
+              - generic [ref=e33]:
+                - generic [ref=e34]: 0/1 lette
+                - generic [ref=e35]: In corso
+                - generic [ref=e36]: beginner
+          - generic [ref=e37]:
+            - group "Controllo furigana" [ref=e38]:
+              - button "Off" [pressed] [ref=e39]
+              - button "Hover" [ref=e40]
+              - button "On" [ref=e41]
+            - button "Segna completata" [ref=e42]
+        - generic [ref=e43]:
+          - complementary [ref=e44]:
+            - generic [ref=e46]:
+              - generic [ref=e47]:
+                - paragraph [ref=e48]: Episode 1
+                - generic [ref=e49]: 0/1
+              - link "Intro Vocab In corso Prima lezione importata nel DB locale." [ref=e51] [cursor=pointer]:
+                - /url: /media/demo-anime/textbook/intro-vocab
+                - generic [ref=e52]:
+                  - strong [ref=e53]: Intro Vocab
+                  - generic [ref=e54]: In corso
+                - paragraph [ref=e55]: Prima lezione importata nel DB locale.
+          - main [ref=e56]:
+            - generic [ref=e57]:
+              - paragraph [ref=e59]: Prima lezione importata nel DB locale.
+              - article [ref=e60]:
+                - heading "Intro Vocab" [level=2] [ref=e61]
+                - paragraph [ref=e62]:
+                  - text: In questa lesson incontriamo
+                  - button "行く" [ref=e63]
+                  - text: e
+                  - button "〜ている" [ref=e64]
+                  - text: .
+                - paragraph [ref=e65]:
+                  - text: La forma
+                  - generic [ref=e66]: 日本語
+                  - text: resta visibile quando serve.
+            - button "Chiudi lesson" [ref=e68]
+  - button "Open Next.js Dev Tools" [ref=e74] [cursor=pointer]:
+    - img [ref=e75]
+  - alert [ref=e78]

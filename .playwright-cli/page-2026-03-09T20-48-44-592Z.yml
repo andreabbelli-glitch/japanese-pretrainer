@@ -1,0 +1,142 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Japanese Custom Study
+          - generic [ref=e7]: Scrivania editoriale
+        - navigation "Navigazione primaria" [ref=e8]:
+          - link "Home Ripresa studio" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e10]: Home
+            - generic [ref=e11]: Ripresa studio
+          - link "Media Libreria attiva" [ref=e12] [cursor=pointer]:
+            - /url: /media
+            - generic [ref=e13]: Media
+            - generic [ref=e14]: Libreria attiva
+          - link "Review Sessioni quotidiane" [ref=e15] [cursor=pointer]:
+            - /url: /review
+            - generic [ref=e16]: Review
+            - generic [ref=e17]: Sessioni quotidiane
+          - link "Settings Preferenze locali" [ref=e18] [cursor=pointer]:
+            - /url: /settings
+            - generic [ref=e19]: Settings
+            - generic [ref=e20]: Preferenze locali
+        - generic [ref=e21]:
+          - generic [ref=e22]: Locale-first
+          - generic [ref=e23]: ·
+          - generic [ref=e24]: single-user
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - article [ref=e28]:
+            - paragraph [ref=e29]: Oggi sul tavolo
+            - paragraph [ref=e30]: 読む・拾う・定着させる
+            - heading "Demo Anime" [level=1] [ref=e31]
+            - paragraph [ref=e32]: Fixture locale per validare il layer database.
+            - paragraph [ref=e33]: Riprendi da Intro Vocab
+            - generic [ref=e34]:
+              - link "Riprendi studio" [ref=e35] [cursor=pointer]:
+                - /url: /media/demo-anime/textbook/intro-vocab
+              - link "Apri media" [ref=e36] [cursor=pointer]:
+                - /url: /media/demo-anime
+            - generic [ref=e37]:
+              - article [ref=e38]:
+                - generic [ref=e40]: Textbook
+                - strong [ref=e41]: 0%
+                - paragraph [ref=e42]: In corso
+              - article [ref=e43]:
+                - generic [ref=e45]: Glossary
+                - strong [ref=e46]: 2/2
+                - paragraph [ref=e47]: 2 entry disponibili
+              - article [ref=e48]:
+                - generic [ref=e50]: Review
+                - strong [ref=e51]: 1 in coda
+                - paragraph [ref=e52]: "Prossima carta: 行く"
+          - article [ref=e53]:
+            - paragraph [ref=e54]: Review di oggi
+            - heading "Una decisione chiara sopra la piega" [level=2] [ref=e55]
+            - generic [ref=e56]:
+              - article [ref=e57]:
+                - generic [ref=e59]: Card dovute
+                - strong [ref=e60]: "1"
+                - paragraph [ref=e61]: 1 card richiede attenzione adesso
+              - article [ref=e62]:
+                - generic [ref=e64]: Coda attiva
+                - strong [ref=e65]: "2"
+                - paragraph [ref=e66]: 2 card sono gia nella rotazione
+            - paragraph [ref=e67]: 1 card richiedono attenzione adesso; 2 sono gia nella rotazione.
+            - link "Apri review" [ref=e68] [cursor=pointer]:
+              - /url: /review
+        - generic [ref=e69]:
+          - generic [ref=e71]:
+            - paragraph [ref=e72]: Media attivi
+            - heading "Da dove puoi ripartire" [level=2] [ref=e73]
+            - paragraph [ref=e74]: Card ampie, pochi segnali utili e gerarchia forte invece di un catalogo da backoffice.
+          - generic [ref=e75]:
+            - link [ref=e76] [cursor=pointer]:
+              - /url: /media/demo-anime
+              - article [ref=e77]:
+                - generic [ref=e78]:
+                  - generic [ref=e79]: Anime
+                  - generic [ref=e80]: Attivo
+                - heading "Demo Anime" [level=3] [ref=e81]
+                - paragraph [ref=e82]: Fixture locale per validare il layer database.
+                - generic [ref=e83]:
+                  - generic [ref=e84]: "Ora: Intro Vocab"
+                  - generic [ref=e85]: 1 dovute
+                  - generic [ref=e86]: 2 entry
+            - link [ref=e87] [cursor=pointer]:
+              - /url: /media/frieren
+              - article [ref=e88]:
+                - generic [ref=e89]:
+                  - generic [ref=e90]: Anime
+                  - generic [ref=e91]: Attivo
+                - heading "Frieren" [level=3] [ref=e92]
+                - paragraph [ref=e93]: Frieren Pacchetto di studio dedicato alla serie.
+                - generic [ref=e94]:
+                  - generic [ref=e95]: "Ora: Episodio 1 - Introduzione"
+                  - generic [ref=e96]: 0 dovute
+                  - generic [ref=e97]: 2 entry
+        - generic [ref=e98]:
+          - generic [ref=e99]:
+            - generic [ref=e101]:
+              - paragraph [ref=e102]: Progressi calmi
+              - heading "Tre segnali, non un cruscotto" [level=2] [ref=e103]
+              - paragraph [ref=e104]: "Il progresso orienta e rassicura: niente streak, niente muri di KPI."
+            - generic [ref=e105]:
+              - article [ref=e106]:
+                - generic [ref=e108]: Textbook
+                - strong [ref=e109]: 0%
+                - paragraph [ref=e110]: 0 di 2 lezioni
+              - article [ref=e111]:
+                - generic [ref=e113]: Glossary
+                - strong [ref=e114]: 2/4
+                - paragraph [ref=e115]: 4 entry canoniche
+              - article [ref=e116]:
+                - generic [ref=e118]: Review
+                - strong [ref=e119]: 1 oggi
+                - paragraph [ref=e120]: Da distribuire con calma durante la settimana
+          - generic [ref=e121]:
+            - generic [ref=e123]:
+              - paragraph [ref=e124]: Continua da qui
+              - heading "Prossimi passi morbidi" [level=2] [ref=e125]
+              - paragraph [ref=e126]: La homepage deve rispondere a “e adesso?” prima che a “quanto ho fatto?”.
+            - generic [ref=e127]:
+              - article [ref=e128]:
+                - heading "Textbook" [level=3] [ref=e129]
+                - paragraph [ref=e130]: Intro Vocab · In corso
+                - link "Vai al percorso textbook" [ref=e131] [cursor=pointer]:
+                  - /url: /media/demo-anime/textbook
+              - article [ref=e132]:
+                - heading "Glossary" [level=3] [ref=e133]
+                - paragraph [ref=e134]: 行く e altre 1 entry già nel DB.
+                - link "Apri glossary" [ref=e135] [cursor=pointer]:
+                  - /url: /media/demo-anime/glossary
+              - article [ref=e136]:
+                - heading "Review" [level=3] [ref=e137]
+                - paragraph [ref=e138]: 1 card dovuta adesso. 1 card resta coperta da manual mastery.
+                - link "Apri review" [ref=e139] [cursor=pointer]:
+                  - /url: /media/demo-anime/review
+  - alert [ref=e140]

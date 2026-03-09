@@ -1,0 +1,165 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Japanese Custom Study
+          - generic [ref=e7]: Scrivania editoriale
+        - navigation "Navigazione primaria" [ref=e8]:
+          - link "Home Ripresa studio" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e10]: Home
+            - generic [ref=e11]: Ripresa studio
+          - link "Media Libreria attiva" [ref=e12] [cursor=pointer]:
+            - /url: /media
+            - generic [ref=e13]: Media
+            - generic [ref=e14]: Libreria attiva
+          - link "Review Sessioni quotidiane" [ref=e15] [cursor=pointer]:
+            - /url: /review
+            - generic [ref=e16]: Review
+            - generic [ref=e17]: Sessioni quotidiane
+          - link "Settings Preferenze locali" [ref=e18] [cursor=pointer]:
+            - /url: /settings
+            - generic [ref=e19]: Settings
+            - generic [ref=e20]: Preferenze locali
+        - generic [ref=e21]:
+          - generic [ref=e22]: Locale-first
+          - generic [ref=e23]: ·
+          - generic [ref=e24]: single-user
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - link "Torna alla libreria" [ref=e30] [cursor=pointer]:
+              - /url: /media
+            - paragraph [ref=e31]: Anime
+            - heading "Demo Anime" [level=1] [ref=e32]
+            - paragraph [ref=e33]: Fixture locale per validare il layer database.
+            - generic [ref=e34]:
+              - generic [ref=e35]: episodi
+              - generic [ref=e36]: 1 lesson
+              - generic [ref=e37]: Attivo
+          - generic [ref=e38]:
+            - link "Riprendi studio" [ref=e39] [cursor=pointer]:
+              - /url: /media/demo-anime/textbook/intro-vocab
+            - link "Apri progress" [ref=e40] [cursor=pointer]:
+              - /url: /media/demo-anime/progress
+        - generic [ref=e41]:
+          - article [ref=e42]:
+            - paragraph [ref=e43]: Continua da qui
+            - heading "Intro Vocab" [level=2] [ref=e44]
+            - paragraph [ref=e45]: Prima lezione importata nel DB locale.
+            - generic [ref=e46]:
+              - link "Riprendi lesson" [ref=e47] [cursor=pointer]:
+                - /url: /media/demo-anime/textbook/intro-vocab
+              - link "Avvia review" [ref=e48] [cursor=pointer]:
+                - /url: /media/demo-anime/review
+            - generic [ref=e49]:
+              - article [ref=e50]:
+                - generic [ref=e52]: Textbook
+                - strong [ref=e53]: 0%
+                - paragraph [ref=e54]: 0 di 1 lezioni
+              - article [ref=e55]:
+                - generic [ref=e57]: Glossary
+                - strong [ref=e58]: 2/2
+                - paragraph [ref=e59]: 2 entry nel media
+              - article [ref=e60]:
+                - generic [ref=e62]: Review
+                - strong [ref=e63]: 1 in coda
+                - paragraph [ref=e64]: "Prossima carta: 行く"
+          - article [ref=e65]:
+            - paragraph [ref=e66]: Snapshot
+            - generic [ref=e67]:
+              - generic [ref=e68]:
+                - generic [ref=e69]: Media
+                - strong [ref=e70]: Anime
+              - generic [ref=e71]:
+                - generic [ref=e72]: Segmenti
+                - strong [ref=e73]: "1"
+              - generic [ref=e74]:
+                - generic [ref=e75]: Card review
+                - strong [ref=e76]: "2"
+              - generic [ref=e77]:
+                - generic [ref=e78]: Prossimo passo
+                - strong [ref=e79]: Intro Vocab
+        - generic [ref=e80]:
+          - generic [ref=e82]:
+            - paragraph [ref=e83]: Aree di studio
+            - heading "Scegli il punto di ingresso" [level=2] [ref=e84]
+            - paragraph [ref=e85]: Le aree principali restano grandi, immediate e coerenti con il percorso di studio.
+          - generic [ref=e86]:
+            - link [ref=e87] [cursor=pointer]:
+              - /url: /media/demo-anime/textbook
+              - article [ref=e88]:
+                - generic [ref=e89]:
+                  - heading "Textbook" [level=3] [ref=e90]
+                  - generic [ref=e91]: Apri
+                - paragraph [ref=e92]: Riprendi le lesson e mantieni il filo del percorso senza perdere il contesto del media.
+                - paragraph [ref=e93]: "Ora: Intro Vocab"
+            - link [ref=e94] [cursor=pointer]:
+              - /url: /media/demo-anime/glossary
+              - article [ref=e95]:
+                - generic [ref=e96]:
+                  - heading "Glossary" [level=3] [ref=e97]
+                  - generic [ref=e98]: Apri
+                - paragraph [ref=e99]: Consulta le entry canoniche gia nel DB con un ingresso sobrio e leggibile.
+                - paragraph [ref=e100]: 2/2 già toccate
+            - link [ref=e101] [cursor=pointer]:
+              - /url: /media/demo-anime/review
+              - article [ref=e102]:
+                - generic [ref=e103]:
+                  - heading "Review" [level=3] [ref=e104]
+                  - generic [ref=e105]: Apri
+                - paragraph [ref=e106]: Apri la coda collegata alle card importate e capisci subito cosa richiede attenzione.
+                - paragraph [ref=e107]: 1 card dovuta adesso. 1 card resta coperta da manual mastery.
+            - link [ref=e108] [cursor=pointer]:
+              - /url: /media/demo-anime/progress
+              - article [ref=e109]:
+                - generic [ref=e110]:
+                  - heading "Progress" [level=3] [ref=e111]
+                  - generic [ref=e112]: Apri
+                - paragraph [ref=e113]: Tieni insieme textbook, coverage e review con un riepilogo calmo e leggibile.
+                - paragraph [ref=e114]: 0% textbook
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - generic [ref=e118]:
+              - paragraph [ref=e119]: Percorso
+              - heading "Segmenti e lesson" [level=2] [ref=e120]
+              - paragraph [ref=e121]: Una struttura sobria che prepara bene l’arrivo del reader e della rail lesson.
+            - article [ref=e123]:
+              - generic [ref=e124]:
+                - heading "Episode 1" [level=3] [ref=e125]
+                - generic [ref=e126]: 0/1
+              - paragraph [ref=e127]: Introduzione al media demo.
+              - paragraph [ref=e128]: "In corso: Intro Vocab"
+          - generic [ref=e129]:
+            - generic [ref=e131]:
+              - paragraph [ref=e132]: Prime entry
+              - heading "Lessico e pattern già emersi" [level=2] [ref=e133]
+              - paragraph [ref=e134]: Il giapponese resta in primo piano, con stato e significato subito leggibili.
+            - generic [ref=e135]:
+              - link [ref=e136] [cursor=pointer]:
+                - /url: /media/demo-anime/glossary/term/term_demo_iku
+                - article [ref=e137]:
+                  - generic [ref=e138]:
+                    - generic [ref=e139]: Termine
+                    - generic [ref=e140]: In studio
+                  - heading "行く" [level=3] [ref=e141]
+                  - paragraph [ref=e142]: いく
+                  - paragraph [ref=e143]: andare
+                  - paragraph [ref=e144]: Episode 1
+              - link [ref=e145] [cursor=pointer]:
+                - /url: /media/demo-anime/glossary/grammar/grammar_demo_teiru
+                - article [ref=e146]:
+                  - generic [ref=e147]:
+                    - generic [ref=e148]: Grammatica
+                    - generic [ref=e149]: Gia nota
+                  - heading "〜ている" [level=3] [ref=e150]
+                  - paragraph [ref=e151]: azione in corso o stato risultante
+                  - paragraph [ref=e152]: Episode 1
+        - link "Resta sul media" [ref=e154] [cursor=pointer]:
+          - /url: /media/demo-anime
+  - button "Open Next.js Dev Tools" [ref=e160] [cursor=pointer]:
+    - img [ref=e161]
+  - alert [ref=e164]

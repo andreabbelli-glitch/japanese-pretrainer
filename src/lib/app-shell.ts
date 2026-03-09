@@ -1,4 +1,3 @@
-import type { Route } from "next";
 import { unstable_noStore as noStore } from "next/cache";
 
 import {
@@ -6,57 +5,28 @@ import {
   getMediaBySlug,
   listCardsByMediaId,
   listDueCardsByMediaId,
-  listGrammarEntriesByMediaId,
   listLessonsByMediaId,
   listMedia,
-  listTermEntriesByMediaId,
   type DatabaseClient,
   type DueCardItem,
-  type GrammarGlossaryEntry,
-  type LessonListItem,
-  type MediaListItem,
-  type TermGlossaryEntry
+  type MediaListItem
 } from "@/db";
 import {
   calculatePercent,
-  compareIsoDates,
-  formatEntryStatusLabel,
-  formatLessonProgressStatusLabel,
   formatMediaTypeLabel,
   formatSegmentKindLabel,
   formatStatusLabel
 } from "@/lib/study-format";
-import { mediaGlossaryEntryHref } from "@/lib/site";
 import { getReviewQueueSnapshotForMedia } from "@/lib/review";
-
-export type StudyEntryPreview = {
-  id: string;
-  kind: "term" | "grammar";
-  label: string;
-  reading?: string;
-  meaning: string;
-  statusLabel: string;
-  segmentTitle?: string;
-  href: Route;
-};
-
-export type SegmentStudyPreview = {
-  id: string;
-  title: string;
-  note?: string | null;
-  lessonCount: number;
-  completedLessons: number;
-  currentLessonTitle?: string;
-};
-
-export type LessonResumeTarget = {
-  slug: string;
-  title: string;
-  summary?: string | null;
-  excerpt?: string | null;
-  statusLabel: string;
-  segmentTitle?: string;
-};
+import {
+  buildSegments,
+  loadGlossaryProgressSnapshot,
+  selectCurrentLesson,
+  selectNextLesson,
+  type LessonResumeTarget,
+  type SegmentStudyPreview,
+  type StudyEntryPreview
+} from "@/lib/study-metrics";
 
 export type MediaShellSnapshot = {
   id: string;
@@ -148,10 +118,9 @@ async function buildMediaShellSnapshot(
   database: DatabaseClient,
   media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
 ): Promise<MediaShellSnapshot> {
-  const [lessons, terms, grammar, cards, dueCards, reviewQueue] = await Promise.all([
+  const [lessons, glossary, cards, dueCards, reviewQueue] = await Promise.all([
     listLessonsByMediaId(database, media.id),
-    listTermEntriesByMediaId(database, media.id),
-    listGrammarEntriesByMediaId(database, media.id),
+    loadGlossaryProgressSnapshot(database, media.id, media.slug),
     listCardsByMediaId(database, media.id),
     listDueCardsByMediaId(database, media.id),
     getReviewQueueSnapshotForMedia(media.slug, database)
@@ -161,8 +130,6 @@ async function buildMediaShellSnapshot(
     (lesson) => lesson.progress?.status === "completed"
   ).length;
   const lessonsTotal = lessons.length;
-  const entriesTotal = terms.length + grammar.length;
-  const entriesKnown = countTrackedEntries([...terms, ...grammar]);
   const activeReviewCards = cards.filter((card) =>
     isReviewCardActive(card.reviewState?.state ?? null)
   ).length;
@@ -191,9 +158,9 @@ async function buildMediaShellSnapshot(
     lessonsCompleted,
     lessonsTotal,
     textbookProgressPercent: calculatePercent(lessonsCompleted, lessonsTotal),
-    entriesKnown,
-    entriesTotal,
-    glossaryProgressPercent: calculatePercent(entriesKnown, entriesTotal),
+    entriesKnown: glossary.entriesCovered,
+    entriesTotal: glossary.entriesTotal,
+    glossaryProgressPercent: glossary.progressPercent,
     cardsDue,
     cardsTotal: cards.length,
     activeReviewCards,
@@ -203,110 +170,8 @@ async function buildMediaShellSnapshot(
     currentLesson,
     nextLesson,
     segments: buildSegments(lessons),
-    previewEntries: buildPreviewEntries(terms, grammar, media.slug)
+    previewEntries: glossary.previewEntries
   };
-}
-
-function selectCurrentLesson(lessons: LessonListItem[]): LessonResumeTarget | null {
-  const inProgress = [...lessons]
-    .filter((lesson) => lesson.progress?.status === "in_progress")
-    .sort((left, right) =>
-      compareIsoDates(
-        right.progress?.lastOpenedAt ?? null,
-        left.progress?.lastOpenedAt ?? null
-      )
-    );
-
-  if (inProgress[0]) {
-    return mapLessonTarget(inProgress[0]);
-  }
-
-  return selectNextLesson(lessons);
-}
-
-function selectNextLesson(lessons: LessonListItem[]): LessonResumeTarget | null {
-  const notCompleted = lessons.find(
-    (lesson) => lesson.progress?.status !== "completed"
-  );
-
-  return mapLessonTarget(notCompleted ?? lessons.at(0) ?? null);
-}
-
-function mapLessonTarget(lesson: LessonListItem | null): LessonResumeTarget | null {
-  if (!lesson) {
-    return null;
-  }
-
-  return {
-    slug: lesson.slug,
-    title: lesson.title,
-    summary: lesson.summary,
-    excerpt: lesson.content?.excerpt,
-    statusLabel: formatLessonProgressStatusLabel(lesson.progress?.status ?? null),
-    segmentTitle: lesson.segment?.title
-  };
-}
-
-function buildSegments(lessons: LessonListItem[]): SegmentStudyPreview[] {
-  const groups = new Map<string, SegmentStudyPreview>();
-
-  for (const lesson of lessons) {
-    const key = lesson.segment?.id ?? "__ungrouped__";
-    const currentLessonTitle =
-      lesson.progress?.status === "in_progress" ? lesson.title : undefined;
-    const existing = groups.get(key);
-
-    if (existing) {
-      existing.lessonCount += 1;
-      existing.completedLessons += lesson.progress?.status === "completed" ? 1 : 0;
-
-      if (!existing.currentLessonTitle && currentLessonTitle) {
-        existing.currentLessonTitle = currentLessonTitle;
-      }
-
-      continue;
-    }
-
-    groups.set(key, {
-      id: key,
-      title: lesson.segment?.title ?? "Percorso principale",
-      note: lesson.segment?.notes ?? null,
-      lessonCount: 1,
-      completedLessons: lesson.progress?.status === "completed" ? 1 : 0,
-      currentLessonTitle
-    });
-  }
-
-  return [...groups.values()];
-}
-
-function buildPreviewEntries(
-  terms: TermGlossaryEntry[],
-  grammar: GrammarGlossaryEntry[],
-  mediaSlug: string
-): StudyEntryPreview[] {
-  return [
-    ...terms.map((entry) => ({
-      id: entry.id,
-      kind: "term" as const,
-      label: entry.lemma,
-      reading: entry.reading,
-      meaning: entry.meaningIt,
-      statusLabel: formatEntryStatusLabel(entry.status?.status ?? null),
-      segmentTitle: entry.segment?.title,
-      href: mediaGlossaryEntryHref(mediaSlug, "term", entry.id)
-    })),
-    ...grammar.map((entry) => ({
-      id: entry.id,
-      kind: "grammar" as const,
-      label: entry.pattern,
-      reading: undefined,
-      meaning: entry.meaningIt,
-      statusLabel: formatEntryStatusLabel(entry.status?.status ?? null),
-      segmentTitle: entry.segment?.title,
-      href: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.id)
-    }))
-  ].slice(0, 6);
 }
 
 function pickFocusMedia(media: MediaShellSnapshot[]) {
@@ -405,16 +270,6 @@ function buildReviewSignals({
     detail: "Nessuna card review disponibile",
     queueLabel: "La coda review si popolerà quando importerai le prime card."
   };
-}
-
-function countTrackedEntries(
-  entries: Array<{ status: { status: string } | null }>
-) {
-  return entries.filter((entry) => {
-    const status = entry.status?.status;
-
-    return status !== null && status !== undefined && status !== "unknown" && status !== "ignored";
-  }).length;
 }
 
 function isReviewCardActive(state: string | null) {
