@@ -27,6 +27,7 @@ import {
   formatStatusLabel
 } from "@/lib/study-format";
 import { mediaGlossaryEntryHref } from "@/lib/site";
+import { getReviewQueueSnapshotForMedia } from "@/lib/review";
 
 export type StudyEntryPreview = {
   id: string;
@@ -147,12 +148,13 @@ async function buildMediaShellSnapshot(
   database: DatabaseClient,
   media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
 ): Promise<MediaShellSnapshot> {
-  const [lessons, terms, grammar, cards, dueCards] = await Promise.all([
+  const [lessons, terms, grammar, cards, dueCards, reviewQueue] = await Promise.all([
     listLessonsByMediaId(database, media.id),
     listTermEntriesByMediaId(database, media.id),
     listGrammarEntriesByMediaId(database, media.id),
     listCardsByMediaId(database, media.id),
-    listDueCardsByMediaId(database, media.id)
+    listDueCardsByMediaId(database, media.id),
+    getReviewQueueSnapshotForMedia(media.slug, database)
   ]);
 
   const lessonsCompleted = lessons.filter(
@@ -169,7 +171,8 @@ async function buildMediaShellSnapshot(
     activeReviewCards,
     cardsDue,
     cardsTotal: cards.length,
-    dueCards
+    dueCards,
+    reviewQueue
   });
   const currentLesson = selectCurrentLesson(lessons);
   const nextLesson = selectNextLesson(lessons);
@@ -340,14 +343,29 @@ function buildReviewSignals({
   cardsDue,
   activeReviewCards,
   cardsTotal,
-  dueCards
+  dueCards,
+  reviewQueue
 }: {
   cardsDue: number;
   activeReviewCards: number;
   cardsTotal: number;
   dueCards: DueCardItem[];
+  reviewQueue: Awaited<ReturnType<typeof getReviewQueueSnapshotForMedia>>;
 }) {
-  const nextCard = dueCards[0];
+  const nextCard = reviewQueue?.cards[0] ?? dueCards[0];
+
+  if (reviewQueue && reviewQueue.queueCount > 0) {
+    return {
+      value:
+        reviewQueue.dueCount > 0
+          ? `${reviewQueue.queueCount} in coda`
+          : reviewQueue.newQueuedCount > 0
+            ? "Nuove pronte"
+            : `${reviewQueue.queueCount} in coda`,
+      detail: nextCard ? `Prossima carta: ${nextCard.front}` : "Sessione pronta",
+      queueLabel: reviewQueue.queueLabel
+    };
+  }
 
   if (cardsDue > 0) {
     return {

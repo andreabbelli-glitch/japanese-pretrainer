@@ -231,6 +231,7 @@ rt {
 .dashboard-page,
 .media-library-page,
 .media-detail-page,
+.review-page,
 .study-area-page,
 .placeholder-page,
 .not-found-page,
@@ -1533,6 +1534,171 @@ rt {
   gap: var(--section-gap);
 }
 
+.review-stage,
+.review-sidebar,
+.review-support-card,
+.review-entry-card,
+.review-queue-card {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.review-stage__top,
+.review-support-card__top,
+.review-queue-card__top,
+.review-entry-card__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.review-stage__chips,
+.review-entry-card__chips,
+.review-queue-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.review-stage__position,
+.review-stage__meta,
+.review-stage__hint,
+.review-queue-card__meta,
+.review-entry-card__subtitle {
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: var(--text-small);
+}
+
+.review-stage__card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  min-height: var(--review-card-min-height);
+  padding: var(--space-5);
+  border: 1px solid rgba(210, 197, 177, 0.72);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 250, 242, 0.76);
+}
+
+.review-stage__front,
+.review-entry-card__title,
+.review-queue-card__title,
+.review-support-card__title {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-display);
+}
+
+.review-stage__front {
+  font-size: clamp(2rem, 1.7rem + 1vw, 2.8rem);
+  line-height: 1;
+}
+
+.review-stage__veil,
+.review-stage__answer,
+.review-sidebar__notice {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid rgba(192, 175, 150, 0.72);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 248, 239, 0.78);
+}
+
+.review-stage__back,
+.review-entry-card__body,
+.review-queue-card__body {
+  margin: 0;
+  color: var(--color-ink-strong);
+}
+
+.review-stage__back {
+  font-size: var(--text-subtitle);
+  font-weight: var(--font-weight-medium);
+}
+
+.review-stage__notes,
+.review-sidebar__notice p {
+  margin: 0;
+  color: var(--color-ink-muted);
+}
+
+.review-stage__actions,
+.review-grade-grid {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.review-grade-button {
+  display: grid;
+  gap: var(--space-1);
+  width: 100%;
+  min-height: 5.75rem;
+  padding: var(--space-4);
+  border: 1px solid rgba(192, 175, 150, 0.82);
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+
+.review-grade-button span {
+  color: var(--color-ink-strong);
+  font-size: var(--text-title);
+  font-weight: var(--font-weight-semibold);
+}
+
+.review-grade-button small {
+  color: var(--color-ink-muted);
+  font-size: var(--text-small);
+}
+
+.review-grade-button--again {
+  background: var(--color-review-again-soft);
+}
+
+.review-grade-button--hard {
+  background: var(--color-review-hard-soft);
+}
+
+.review-grade-button--good {
+  background: var(--color-review-good-soft);
+}
+
+.review-grade-button--easy {
+  background: var(--color-review-easy-soft);
+}
+
+.review-entry-list,
+.review-card-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.review-card-list--compact {
+  gap: var(--space-3);
+}
+
+.review-entry-link,
+.review-card-link {
+  display: block;
+}
+
+.review-support-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.review-queue-card--active {
+  border-color: rgba(98, 114, 77, 0.72);
+  box-shadow:
+    var(--shadow-card),
+    0 0 0 1px rgba(98, 114, 77, 0.22);
+}
+
 .glossary-hero,
 .glossary-entry-hero,
 .glossary-side {
@@ -1823,6 +1989,18 @@ rt {
     display: none;
   }
 
+  .review-entry-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .review-grade-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .review-support-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .glossary-workspace {
     grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
     align-items: start;
@@ -1989,5 +2167,9 @@ rt {
   .glossary-search-form__actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .review-grade-grid {
+    grid-template-columns: 1fr;
   }
 }

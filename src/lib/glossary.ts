@@ -478,6 +478,7 @@ function buildGlossaryDetailData(input: {
 }): GlossaryDetailData {
   const lessons = aggregateLessonConnections(input.lessonConnections);
   const primaryLesson = pickPrimaryLesson(lessons, input.media.slug);
+  const forceKnownReviewLabel = input.entry.studyState.hasKnownSignal;
 
   return {
     entry: {
@@ -499,7 +500,9 @@ function buildGlossaryDetailData(input: {
       href: mediaReviewCardHref(input.media.slug, row.cardId),
       id: row.cardId,
       relationshipLabel: formatCardRelationshipLabel(row.relationshipType),
-      reviewLabel: formatReviewStateLabel(row.reviewState, row.manualOverride ?? false),
+      reviewLabel: forceKnownReviewLabel
+        ? "Gia nota"
+        : formatReviewStateLabel(row.reviewState, row.manualOverride ?? false),
       segmentTitle: row.segmentTitle ?? undefined,
       typeLabel: capitalizeToken(row.cardType),
       notes: getRenderSafeText(row.cardNotesIt)

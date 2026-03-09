@@ -1,0 +1,163 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Japanese Custom Study
+          - generic [ref=e7]: Scrivania editoriale
+        - navigation "Navigazione primaria" [ref=e8]:
+          - link "Home Ripresa studio" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e10]: Home
+            - generic [ref=e11]: Ripresa studio
+          - link "Media Libreria attiva" [ref=e12] [cursor=pointer]:
+            - /url: /media
+            - generic [ref=e13]: Media
+            - generic [ref=e14]: Libreria attiva
+          - link "Review Sessioni quotidiane" [ref=e15] [cursor=pointer]:
+            - /url: /review
+            - generic [ref=e16]: Review
+            - generic [ref=e17]: Sessioni quotidiane
+          - link "Settings Preferenze locali" [ref=e18] [cursor=pointer]:
+            - /url: /settings
+            - generic [ref=e19]: Settings
+            - generic [ref=e20]: Preferenze locali
+        - generic [ref=e21]:
+          - generic [ref=e22]: Locale-first
+          - generic [ref=e23]: ·
+          - generic [ref=e24]: single-user
+    - main [ref=e25]:
+      - generic [ref=e234]:
+        - generic [ref=e236]:
+          - generic [ref=e237]:
+            - link "Torna a Demo Anime" [ref=e238] [cursor=pointer]:
+              - /url: /media/demo-anime
+            - paragraph [ref=e239]: Review
+            - heading "Demo Anime" [level=1] [ref=e240]
+            - paragraph [ref=e241]: Oggi la coda è in pari. Rimangono 2 card già in rotazione.
+            - generic [ref=e242]:
+              - generic [ref=e243]: 0 in coda
+              - generic [ref=e244]: 0 dovute
+              - generic [ref=e245]: Limite nuove 20
+          - link "Apri glossary" [ref=e247] [cursor=pointer]:
+            - /url: /media/demo-anime/glossary
+        - generic [ref=e248]:
+          - article [ref=e249]:
+            - generic [ref=e251]:
+              - generic [ref=e252]: In rotazione
+              - generic [ref=e253]: Grammar
+              - generic [ref=e254]: In review
+              - generic [ref=e255]: Episode 1
+            - generic [ref=e256]:
+              - paragraph [ref=e257]: Fronte
+              - heading "〜ている" [level=2] [ref=e258]
+              - generic [ref=e259]:
+                - paragraph [ref=e260]: Retro
+                - paragraph [ref=e261]: azione in corso / stato risultante
+                - paragraph [ref=e262]: Card grammaticale di supporto.
+                - paragraph [ref=e263]: Scadenza 2026-03-12
+            - link [ref=e265] [cursor=pointer]:
+              - /url: /media/demo-anime/glossary/grammar/grammar_demo_teiru
+              - article [ref=e266]:
+                - generic [ref=e267]:
+                  - generic [ref=e268]:
+                    - generic [ref=e269]: Card principale
+                    - generic [ref=e270]: In studio
+                  - generic [ref=e271]: Apri entry
+                - heading "〜ている" [level=3] [ref=e272]
+                - paragraph [ref=e273]: Progressive / resultant state
+                - paragraph [ref=e274]: azione in corso o stato risultante
+            - generic [ref=e275]:
+              - button "Segna già nota" [ref=e277]
+              - button "Reset card" [ref=e279]
+              - button "Sospendi" [ref=e281]
+            - paragraph [ref=e282]: "Il grading aggiorna `review_state` e aggiunge sempre un nuovo evento in `review_log`."
+          - article [ref=e283]:
+            - paragraph [ref=e284]: Sessione
+            - generic [ref=e285]:
+              - article [ref=e286]:
+                - generic [ref=e288]: In coda
+                - strong [ref=e289]: "0"
+                - paragraph [ref=e290]: Card che puoi lavorare adesso.
+              - article [ref=e291]:
+                - generic [ref=e293]: Dovute
+                - strong [ref=e294]: "0"
+                - paragraph [ref=e295]: Già entrate nel loop quotidiano.
+              - article [ref=e296]:
+                - generic [ref=e298]: Nuove
+                - strong [ref=e299]: "0"
+                - paragraph [ref=e300]: 0 nuove disponibili nel media
+              - article [ref=e301]:
+                - generic [ref=e303]: Risposte
+                - strong [ref=e304]: "1"
+                - paragraph [ref=e305]: Aggiornato solo in questa sessione aperta.
+            - generic [ref=e306]:
+              - generic [ref=e307]:
+                - generic [ref=e308]: Manual mastery
+                - strong [ref=e309]: "0"
+              - generic [ref=e310]:
+                - generic [ref=e311]: Sospese
+                - strong [ref=e312]: "0"
+              - generic [ref=e313]:
+                - generic [ref=e314]: In rotazione
+                - strong [ref=e315]: "2"
+              - generic [ref=e316]:
+                - generic [ref=e317]: Restanti ora
+                - strong [ref=e318]: "0"
+            - paragraph [ref=e320]: Le entry principali della card sono tornate in studio.
+        - generic [ref=e321]:
+          - generic [ref=e322]:
+            - generic [ref=e324]:
+              - paragraph [ref=e325]: Coda
+              - heading "Oggi sei in pari" [level=2] [ref=e326]
+              - paragraph [ref=e327]: Non ci sono carte da lavorare adesso. Se vuoi, puoi comunque controllare quelle già in rotazione o rimettere in studio una voce nota manualmente.
+            - article [ref=e328]:
+              - heading "La coda di oggi è vuota." [level=2] [ref=e329]
+              - paragraph [ref=e330]: Il media non ha card dovute o nuove entro il limite giornaliero. Puoi restare in pari oppure gestire manualmente le card qui sotto.
+          - generic [ref=e331]:
+            - generic [ref=e333]:
+              - paragraph [ref=e334]: Fuori coda
+              - heading "Contesto utile" [level=2] [ref=e335]
+              - paragraph [ref=e336]: Le card qui sotto non entrano nella sessione di oggi, ma restano esplicitamente gestibili senza falsare il loro storico.
+            - generic [ref=e337]:
+              - article [ref=e338]:
+                - generic [ref=e339]:
+                  - heading "Gia note" [level=3] [ref=e340]
+                  - generic [ref=e341]: "0"
+                - paragraph [ref=e342]: Nessuna card coperta da manual mastery.
+              - article [ref=e343]:
+                - generic [ref=e344]:
+                  - heading "Sospese" [level=3] [ref=e345]
+                  - generic [ref=e346]: "0"
+                - paragraph [ref=e347]: Nessuna card sospesa.
+              - article [ref=e348]:
+                - generic [ref=e349]:
+                  - heading "In rotazione" [level=3] [ref=e350]
+                  - generic [ref=e351]: "2"
+                - generic [ref=e352]:
+                  - link [ref=e353] [cursor=pointer]:
+                    - /url: /media/demo-anime/review?card=card_demo_iku&answered=1
+                    - article [ref=e354]:
+                      - generic [ref=e355]:
+                        - generic [ref=e356]:
+                          - generic [ref=e357]: In rotazione
+                          - generic [ref=e358]: In review
+                        - generic [ref=e359]: Apri
+                      - heading "行く" [level=3] [ref=e360]
+                      - paragraph [ref=e361]: andare
+                      - paragraph [ref=e362]: Episode 1 · Scadenza 2026-03-10
+                  - link [ref=e363] [cursor=pointer]:
+                    - /url: /media/demo-anime/review?card=card_demo_teiru&answered=1
+                    - article [ref=e364]:
+                      - generic [ref=e365]:
+                        - generic [ref=e366]:
+                          - generic [ref=e367]: In rotazione
+                          - generic [ref=e368]: In review
+                        - generic [ref=e369]: Apri
+                      - heading "〜ている" [level=3] [ref=e370]
+                      - paragraph [ref=e371]: azione in corso / stato risultante
+                      - paragraph [ref=e372]: Episode 1 · Scadenza 2026-03-12
+  - button "Open Next.js Dev Tools" [ref=e48] [cursor=pointer]:
+    - img [ref=e49]
+  - alert [ref=e52]

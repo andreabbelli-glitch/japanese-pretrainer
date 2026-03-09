@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+import {
+  markLinkedEntryKnownAction,
+  resetReviewCardAction,
+  setLinkedEntryLearningAction,
+  setReviewCardSuspendedAction
+} from "@/actions/review";
 import type { ReviewCardDetailData } from "@/lib/review";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
@@ -64,9 +70,58 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
               <span>Entry collegate</span>
               <strong>{data.entries.length}</strong>
             </div>
+            {data.card.bucketLabel ? (
+              <div className="summary-row">
+                <span>Bucket</span>
+                <strong>{data.card.bucketLabel}</strong>
+              </div>
+            ) : null}
           </div>
         </SurfaceCard>
       </section>
+
+      <Section
+        eyebrow="Azioni"
+        title="Gestisci la card"
+        description="Le azioni restano locali e non cancellano mai lo storico review già presente nel DB."
+      >
+        <div className="hero-actions">
+          {data.card.reviewLabel === "Gia nota" ? (
+            <form action={setLinkedEntryLearningAction}>
+              <ReviewDetailActionFields cardId={data.card.id} mediaSlug={data.media.slug} />
+              <button className="button button--primary" type="submit">
+                Rimetti in studio
+              </button>
+            </form>
+          ) : (
+            <form action={markLinkedEntryKnownAction}>
+              <ReviewDetailActionFields cardId={data.card.id} mediaSlug={data.media.slug} />
+              <button className="button button--ghost" type="submit">
+                Segna già nota
+              </button>
+            </form>
+          )}
+
+          <form action={resetReviewCardAction}>
+            <ReviewDetailActionFields cardId={data.card.id} mediaSlug={data.media.slug} />
+            <button className="button button--ghost" type="submit">
+              Reset card
+            </button>
+          </form>
+
+          <form action={setReviewCardSuspendedAction}>
+            <ReviewDetailActionFields cardId={data.card.id} mediaSlug={data.media.slug} />
+            <input
+              name="suspended"
+              type="hidden"
+              value={data.card.bucketLabel === "Sospesa" ? "false" : "true"}
+            />
+            <button className="button button--ghost" type="submit">
+              {data.card.bucketLabel === "Sospesa" ? "Riprendi" : "Sospendi"}
+            </button>
+          </form>
+        </div>
+      </Section>
 
       <Section
         eyebrow="Collegamenti"
@@ -102,5 +157,21 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
         )}
       </Section>
     </div>
+  );
+}
+
+function ReviewDetailActionFields({
+  cardId,
+  mediaSlug
+}: {
+  cardId: string;
+  mediaSlug: string;
+}) {
+  return (
+    <>
+      <input name="mediaSlug" type="hidden" value={mediaSlug} />
+      <input name="cardId" type="hidden" value={cardId} />
+      <input name="answered" type="hidden" value="0" />
+    </>
   );
 }

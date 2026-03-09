@@ -29,6 +29,21 @@ export async function getCardById(database: DatabaseClient, cardId: string) {
   });
 }
 
+export async function listReviewCardsByMediaId(
+  database: DatabaseClient,
+  mediaId: string
+) {
+  return database.query.card.findMany({
+    where: and(eq(card.mediaId, mediaId), ne(card.status, "archived")),
+    with: {
+      segment: true,
+      reviewState: true,
+      entryLinks: true
+    },
+    orderBy: [asc(card.orderIndex), asc(card.createdAt)]
+  });
+}
+
 export type DueCardItem = typeof card.$inferSelect & {
   reviewState: typeof reviewState.$inferSelect;
 };
@@ -65,4 +80,7 @@ export async function listDueCardsByMediaId(
 
 export type CardListItem = Awaited<
   ReturnType<typeof listCardsByMediaId>
+>[number];
+export type ReviewCardListItem = Awaited<
+  ReturnType<typeof listReviewCardsByMediaId>
 >[number];
