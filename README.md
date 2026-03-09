@@ -15,10 +15,13 @@ Per ogni media, l'app deve offrire:
 
 ## Stato
 
-Il repository include ora la foundation applicativa:
+Il repository include ora la foundation applicativa e una prima shell reale:
 
 - app `Next.js` con App Router e TypeScript;
-- shell iniziale desktop/mobile coerente con la direzione UX/UI;
+- shell desktop/mobile coerente con la direzione UX/UI approvata;
+- dashboard `/`, media library `/media` e media detail `/media/[mediaSlug]`;
+- entry point dedicati per `/textbook`, `/glossary`, `/review` e `/progress`
+  sotto ogni media, senza anticipare i task completi successivi;
 - font self-hosted, cosi `build` non dipende da fetch esterni;
 - tooling base per lint, format, typecheck e test unitari;
 - struttura cartelle pronta per persistence, importer e UI task successivi.
@@ -110,6 +113,10 @@ successivi.
 src/
   app/
   components/
+    dashboard/
+    layout/
+    media/
+    ui/
   db/
   lib/
   styles/
@@ -134,3 +141,11 @@ docs/
 - [Design tokens](./docs/design/design-tokens.css)
 - [Wireframes](./docs/design/wireframes.md)
 - [Task index per agenti implementatori](./docs/tasks/README.md)
+
+## Convenzioni UI introdotte
+
+- Lo shell usa top bar editoriale su desktop e bottom navigation su mobile.
+- I pattern base riusabili vivono in `src/components/ui` e `src/components/layout`.
+- Dashboard, library e media detail leggono il DB tramite helper server-side in
+  `src/lib/app-shell.ts`, evitando dati fake quando i record reali sono gia
+  disponibili.

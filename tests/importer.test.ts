@@ -396,6 +396,9 @@ tags: [grammar, core]
     });
 
     expect(result.status).toBe("completed");
+    if (result.status !== "completed") {
+      throw new Error("expected a completed import result");
+    }
     expect(result.filesChanged).toBe(1);
     expect(result.summary.archivedMediaIds).toEqual([]);
     expect(result.summary.archivedLessonIds).toEqual([]);

@@ -1,4 +1,6 @@
-import { DashboardHome } from "@/components/dashboard-home";
+import { DashboardHome } from "@/components/dashboard/dashboard-home";
+
+export const dynamic = "force-dynamic";
 
 export default function HomePage() {
   return <DashboardHome />;

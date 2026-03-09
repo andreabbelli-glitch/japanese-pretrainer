@@ -1,0 +1,71 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Japanese Custom Study
+          - generic [ref=e7]: Scrivania editoriale
+        - navigation "Navigazione primaria" [ref=e8]:
+          - link "Home Ripresa studio" [ref=e9] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e10]: Home
+            - generic [ref=e11]: Ripresa studio
+          - link "Media Libreria attiva" [ref=e12] [cursor=pointer]:
+            - /url: /media
+            - generic [ref=e13]: Media
+            - generic [ref=e14]: Libreria attiva
+          - link "Review Sessioni quotidiane" [ref=e15] [cursor=pointer]:
+            - /url: /review
+            - generic [ref=e16]: Review
+            - generic [ref=e17]: Sessioni quotidiane
+          - link "Settings Preferenze locali" [ref=e18] [cursor=pointer]:
+            - /url: /settings
+            - generic [ref=e19]: Settings
+            - generic [ref=e20]: Preferenze locali
+        - generic [ref=e21]:
+          - generic [ref=e22]: Locale-first
+          - generic [ref=e23]: ·
+          - generic [ref=e24]: single-user
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e29]:
+          - paragraph [ref=e30]: Libreria
+          - heading "Media" [level=1] [ref=e31]
+          - paragraph [ref=e32]: Una panoramica sobria dei media attivi, con metriche sintetiche e un entry point chiaro per ciascun percorso di studio.
+          - generic [ref=e34]: 1 pacchetti attivi
+        - generic [ref=e35]:
+          - generic [ref=e37]:
+            - paragraph [ref=e38]: Pacchetti di studio
+            - heading "Libreria attiva" [level=2] [ref=e39]
+            - paragraph [ref=e40]: Ogni card privilegia titolo, stato e prossimo passo. Le metriche restano piccole e secondarie.
+          - link [ref=e42] [cursor=pointer]:
+            - /url: /media/demo-anime
+            - article [ref=e43]:
+              - generic [ref=e44]:
+                - generic [ref=e45]:
+                  - generic [ref=e46]: Anime
+                  - generic [ref=e47]: episodi
+                - generic [ref=e48]: Attivo
+              - generic [ref=e49]:
+                - heading "Demo Anime" [level=2] [ref=e50]
+                - paragraph [ref=e51]: Fixture locale per validare il layer database.
+              - generic [ref=e52]:
+                - article [ref=e53]:
+                  - generic [ref=e55]: Textbook
+                  - strong [ref=e56]: 0%
+                  - paragraph [ref=e57]: "Ora: Intro Vocab"
+                - article [ref=e58]:
+                  - generic [ref=e60]: Glossary
+                  - strong [ref=e61]: 2/2
+                  - paragraph [ref=e62]: 2 entry canoniche
+                - article [ref=e63]:
+                  - generic [ref=e65]: Review
+                  - strong [ref=e66]: In pari
+                  - paragraph [ref=e67]: 1 card è già nella rotazione
+              - generic [ref=e68]:
+                - paragraph [ref=e69]: In corso · Intro Vocab
+                - generic [ref=e70]: Apri media
+  - button "Open Next.js Dev Tools" [ref=e76] [cursor=pointer]:
+    - img [ref=e77]
+  - alert [ref=e80]

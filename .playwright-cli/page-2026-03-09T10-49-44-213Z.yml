@@ -1,0 +1,144 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Japanese Custom Study
+        - generic [ref=e7]: Scrivania editoriale
+    - main [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - link "Torna alla libreria" [ref=e13] [cursor=pointer]:
+              - /url: /media
+            - paragraph [ref=e14]: Anime
+            - heading "Demo Anime" [level=1] [ref=e15]
+            - paragraph [ref=e16]: Fixture locale per validare il layer database.
+            - generic [ref=e17]:
+              - generic [ref=e18]: episodi
+              - generic [ref=e19]: 1 lesson
+              - generic [ref=e20]: Attivo
+          - link "Vai al textbook" [ref=e22] [cursor=pointer]:
+            - /url: /media/demo-anime/textbook
+        - generic [ref=e23]:
+          - article [ref=e24]:
+            - paragraph [ref=e25]: Continua da qui
+            - heading "Intro Vocab" [level=2] [ref=e26]
+            - paragraph [ref=e27]: Prima lezione importata nel DB locale.
+            - generic [ref=e28]:
+              - article [ref=e29]:
+                - generic [ref=e31]: Textbook
+                - strong [ref=e32]: 0%
+                - paragraph [ref=e33]: 0 di 1 lezioni
+              - article [ref=e34]:
+                - generic [ref=e36]: Glossary
+                - strong [ref=e37]: 2/2
+                - paragraph [ref=e38]: 2 entry canoniche
+              - article [ref=e39]:
+                - generic [ref=e41]: Review
+                - strong [ref=e42]: In pari
+                - paragraph [ref=e43]: 1 card è già nella rotazione
+          - article [ref=e44]:
+            - paragraph [ref=e45]: Snapshot
+            - generic [ref=e46]:
+              - generic [ref=e47]:
+                - generic [ref=e48]: Media
+                - strong [ref=e49]: Anime
+              - generic [ref=e50]:
+                - generic [ref=e51]: Segmenti
+                - strong [ref=e52]: "1"
+              - generic [ref=e53]:
+                - generic [ref=e54]: Card review
+                - strong [ref=e55]: "1"
+              - generic [ref=e56]:
+                - generic [ref=e57]: Prossimo passo
+                - strong [ref=e58]: Intro Vocab
+        - generic [ref=e59]:
+          - generic [ref=e61]:
+            - paragraph [ref=e62]: Aree di studio
+            - heading "Scegli il punto di ingresso" [level=2] [ref=e63]
+            - paragraph [ref=e64]: Le aree principali restano grandi, immediate e coerenti con il percorso di studio.
+          - generic [ref=e65]:
+            - link [ref=e66] [cursor=pointer]:
+              - /url: /media/demo-anime/textbook
+              - article [ref=e67]:
+                - generic [ref=e68]:
+                  - heading "Textbook" [level=3] [ref=e69]
+                  - generic [ref=e70]: Apri
+                - paragraph [ref=e71]: Riprendi le lesson e mantieni il filo del percorso senza perdere il contesto del media.
+                - paragraph [ref=e72]: "Ora: Intro Vocab"
+            - link [ref=e73] [cursor=pointer]:
+              - /url: /media/demo-anime/glossary
+              - article [ref=e74]:
+                - generic [ref=e75]:
+                  - heading "Glossary" [level=3] [ref=e76]
+                  - generic [ref=e77]: Apri
+                - paragraph [ref=e78]: Consulta le entry canoniche gia nel DB con un ingresso sobrio e leggibile.
+                - paragraph [ref=e79]: 2 entry già disponibili
+            - link [ref=e80] [cursor=pointer]:
+              - /url: /media/demo-anime/review
+              - article [ref=e81]:
+                - generic [ref=e82]:
+                  - heading "Review" [level=3] [ref=e83]
+                  - generic [ref=e84]: Apri
+                - paragraph [ref=e85]: Apri la coda collegata alle card importate e capisci subito cosa richiede attenzione.
+                - paragraph [ref=e86]: 1 card è già nella rotazione e oggi la coda è in pari.
+            - link [ref=e87] [cursor=pointer]:
+              - /url: /media/demo-anime/progress
+              - article [ref=e88]:
+                - generic [ref=e89]:
+                  - heading "Progress" [level=3] [ref=e90]
+                  - generic [ref=e91]: Apri
+                - paragraph [ref=e92]: Tieni insieme textbook, coverage e review con un riepilogo calmo e leggibile.
+                - paragraph [ref=e93]: 0% textbook
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e97]:
+              - paragraph [ref=e98]: Percorso
+              - heading "Segmenti e lesson" [level=2] [ref=e99]
+              - paragraph [ref=e100]: Una struttura sobria che prepara bene l’arrivo del reader e della rail lesson.
+            - article [ref=e102]:
+              - generic [ref=e103]:
+                - heading "Episode 1" [level=3] [ref=e104]
+                - generic [ref=e105]: 0/1
+              - paragraph [ref=e106]: Introduzione al media demo.
+              - paragraph [ref=e107]: "In corso: Intro Vocab"
+          - generic [ref=e108]:
+            - generic [ref=e110]:
+              - paragraph [ref=e111]: Prime entry
+              - heading "Lessico e pattern già emersi" [level=2] [ref=e112]
+              - paragraph [ref=e113]: Il giapponese resta in primo piano, con stato e significato subito leggibili.
+            - generic [ref=e114]:
+              - article [ref=e115]:
+                - generic [ref=e116]:
+                  - generic [ref=e117]: Termine
+                  - generic [ref=e118]: In studio
+                - heading "行く" [level=3] [ref=e119]
+                - paragraph [ref=e120]: いく
+                - paragraph [ref=e121]: andare
+                - paragraph [ref=e122]: Episode 1
+              - article [ref=e123]:
+                - generic [ref=e124]:
+                  - generic [ref=e125]: Grammatica
+                  - generic [ref=e126]: Gia nota
+                - heading "〜ている" [level=3] [ref=e127]
+                - paragraph [ref=e128]: azione in corso o stato risultante
+                - paragraph [ref=e129]: Episode 1
+        - link "Resta sul media" [ref=e131] [cursor=pointer]:
+          - /url: /media/demo-anime
+    - navigation "Navigazione mobile" [ref=e132]:
+      - link "Home" [ref=e133] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e134]: Home
+      - link "Media" [ref=e135] [cursor=pointer]:
+        - /url: /media
+        - generic [ref=e136]: Media
+      - link "Review" [ref=e137] [cursor=pointer]:
+        - /url: /review
+        - generic [ref=e138]: Review
+      - link "Settings" [ref=e139] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e140]: Settings
+  - button "Open Next.js Dev Tools" [ref=e146] [cursor=pointer]:
+    - img [ref=e147]
+  - alert [ref=e150]

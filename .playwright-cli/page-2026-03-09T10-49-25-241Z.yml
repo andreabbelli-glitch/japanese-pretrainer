@@ -1,0 +1,62 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Japanese Custom Study
+        - generic [ref=e7]: Scrivania editoriale
+    - main [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e12]:
+          - paragraph [ref=e13]: Libreria
+          - heading "Media" [level=1] [ref=e14]
+          - paragraph [ref=e15]: Una panoramica sobria dei media attivi, con metriche sintetiche e un entry point chiaro per ciascun percorso di studio.
+          - generic [ref=e17]: 1 pacchetti attivi
+        - generic [ref=e18]:
+          - generic [ref=e20]:
+            - paragraph [ref=e21]: Pacchetti di studio
+            - heading "Libreria attiva" [level=2] [ref=e22]
+            - paragraph [ref=e23]: Ogni card privilegia titolo, stato e prossimo passo. Le metriche restano piccole e secondarie.
+          - link [ref=e25] [cursor=pointer]:
+            - /url: /media/demo-anime
+            - article [ref=e26]:
+              - generic [ref=e27]:
+                - generic [ref=e28]:
+                  - generic [ref=e29]: Anime
+                  - generic [ref=e30]: episodi
+                - generic [ref=e31]: Attivo
+              - generic [ref=e32]:
+                - heading "Demo Anime" [level=2] [ref=e33]
+                - paragraph [ref=e34]: Fixture locale per validare il layer database.
+              - generic [ref=e35]:
+                - article [ref=e36]:
+                  - generic [ref=e38]: Textbook
+                  - strong [ref=e39]: 0%
+                  - paragraph [ref=e40]: "Ora: Intro Vocab"
+                - article [ref=e41]:
+                  - generic [ref=e43]: Glossary
+                  - strong [ref=e44]: 2/2
+                  - paragraph [ref=e45]: 2 entry canoniche
+                - article [ref=e46]:
+                  - generic [ref=e48]: Review
+                  - strong [ref=e49]: In pari
+                  - paragraph [ref=e50]: 1 card è già nella rotazione
+              - generic [ref=e51]:
+                - paragraph [ref=e52]: In corso · Intro Vocab
+                - generic [ref=e53]: Apri media
+    - navigation "Navigazione mobile" [ref=e54]:
+      - link "Home" [ref=e55] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e56]: Home
+      - link "Media" [ref=e57] [cursor=pointer]:
+        - /url: /media
+        - generic [ref=e58]: Media
+      - link "Review" [ref=e59] [cursor=pointer]:
+        - /url: /review
+        - generic [ref=e60]: Review
+      - link "Settings" [ref=e61] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e62]: Settings
+  - button "Open Next.js Dev Tools" [ref=e68] [cursor=pointer]:
+    - img [ref=e69]
+  - alert [ref=e72]

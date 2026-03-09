@@ -1,6 +1,7 @@
-import { PlaceholderPage } from "@/components/placeholder-page";
-import { routePlaceholders } from "@/lib/site";
+import { MediaLibraryPage } from "@/components/media/media-library-page";
+
+export const dynamic = "force-dynamic";
 
 export default function MediaPage() {
-  return <PlaceholderPage {...routePlaceholders.media} />;
+  return <MediaLibraryPage />;
 }

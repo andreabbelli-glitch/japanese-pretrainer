@@ -1,8 +1,13 @@
 import { describe, expect, it } from "vitest";
 
-import { primaryNav, progressTracks, routePlaceholders } from "@/lib/site";
+import {
+  mediaHref,
+  mediaStudyHref,
+  primaryNav,
+  type StudyAreaKey
+} from "@/lib/site";
 
-describe("foundation site data", () => {
+describe("site helpers", () => {
   it("keeps primary navigation labels unique and routable", () => {
     const labels = primaryNav.map((item) => item.label);
     const hrefs = primaryNav.map((item) => item.href);
@@ -11,10 +16,20 @@ describe("foundation site data", () => {
     expect(hrefs.every((href) => href.startsWith("/"))).toBe(true);
   });
 
-  it("exposes calm progress tracks and placeholder routes", () => {
-    expect(progressTracks).toHaveLength(3);
-    expect(routePlaceholders.media.sections.length).toBeGreaterThan(0);
-    expect(routePlaceholders.review.sections.length).toBeGreaterThan(0);
-    expect(routePlaceholders.settings.sections.length).toBeGreaterThan(0);
+  it("builds stable routes for media detail and study areas", () => {
+    const areas: StudyAreaKey[] = [
+      "textbook",
+      "glossary",
+      "review",
+      "progress"
+    ];
+
+    expect(mediaHref("demo-anime")).toBe("/media/demo-anime");
+    expect(areas.map((area) => mediaStudyHref("demo-anime", area))).toEqual([
+      "/media/demo-anime/textbook",
+      "/media/demo-anime/glossary",
+      "/media/demo-anime/review",
+      "/media/demo-anime/progress"
+    ]);
   });
 });
