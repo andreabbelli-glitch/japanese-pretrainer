@@ -1,4 +1,7 @@
-import { StudyAreaPlaceholderPage } from "@/components/media/study-area-placeholder-page";
+import { notFound } from "next/navigation";
+
+import { TextbookIndexPage } from "@/components/textbook/textbook-index-page";
+import { getTextbookIndexData } from "@/lib/textbook";
 
 type StudyAreaRouteProps = {
   params: Promise<{
@@ -10,6 +13,11 @@ export default async function MediaTextbookRoute({
   params
 }: StudyAreaRouteProps) {
   const { mediaSlug } = await params;
+  const data = await getTextbookIndexData(mediaSlug);
 
-  return <StudyAreaPlaceholderPage area="textbook" mediaSlug={mediaSlug} />;
+  if (!data) {
+    notFound();
+  }
+
+  return <TextbookIndexPage data={data} />;
 }

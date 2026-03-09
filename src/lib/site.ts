@@ -46,3 +46,10 @@ export function mediaStudyHref(
 ): Route {
   return `/media/${mediaSlug}/${area}` as Route;
 }
+
+export function mediaTextbookLessonHref(
+  mediaSlug: string,
+  lessonSlug: string
+): Route {
+  return `/media/${mediaSlug}/textbook/${lessonSlug}` as Route;
+}

@@ -1,0 +1,81 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Japanese Custom Study
+        - generic [ref=e7]: Scrivania editoriale
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - link "Frieren / Textbook" [ref=e29] [cursor=pointer]:
+              - /url: /media/frieren/textbook
+            - generic [ref=e30]:
+              - paragraph [ref=e31]: Episode 01
+              - heading "Episodio 1 - Introduzione" [level=1] [ref=e32]
+              - generic [ref=e33]:
+                - generic [ref=e34]: 0/1 lette
+                - generic [ref=e35]: In corso
+                - generic [ref=e36]: n5
+          - generic [ref=e37]:
+            - group "Controllo furigana" [ref=e38]:
+              - button "Off" [ref=e39]
+              - button "Hover" [pressed] [ref=e40]
+              - button "On" [ref=e41]
+            - button "Segna completata" [ref=e42]
+        - generic [ref=e85]:
+          - button "Lezioni" [ref=e86]
+          - generic [ref=e87]:
+            - generic [ref=e88]: 0/1 lette
+            - generic [ref=e89]: "Furigana: hover"
+        - main [ref=e56]:
+          - generic [ref=e57]:
+            - paragraph [ref=e59]: Obiettivo In questa lezione vediamo 食べる e la forma ～ている. La parola 日本語 にほんご compare spesso nelle spiegazioni. Forma in -te iru ～ている azione in corso o stato risultante てる
+            - article [ref=e60]:
+              - heading "Obiettivo" [level=2] [ref=e61]
+              - paragraph [ref=e62]:
+                - text: In questa lezione vediamo
+                - button "食べる" [active] [ref=e63]
+                - text: e la forma
+                - button "～ている" [ref=e64]
+                - text: .
+              - paragraph [ref=e65]:
+                - text: La parola
+                - generic [ref=e66]: 日本語
+                - text: compare spesso nelle spiegazioni.
+              - generic [ref=e68]:
+                - generic [ref=e70]: Grammar
+                - heading "～ている" [level=3] [ref=e71]
+                - paragraph [ref=e72]: azione in corso o stato risultante
+          - button "Chiudi lesson" [ref=e74]
+        - dialog [ref=e119]:
+          - button "Chiudi pannello" [ref=e120]
+          - generic [ref=e121]:
+            - button "Chiudi" [ref=e123]
+            - generic [ref=e124]:
+              - generic [ref=e125]:
+                - generic [ref=e126]: Term
+                - generic [ref=e127]: Disponibile
+              - heading "食べる" [level=2] [ref=e128]
+              - paragraph [ref=e129]: たべる · taberu
+              - paragraph [ref=e130]: mangiare
+              - paragraph [ref=e131]: "Segmento: Episode 01"
+              - link "Apri glossary" [ref=e132] [cursor=pointer]:
+                - /url: /media/frieren/glossary
+    - navigation "Navigazione mobile" [ref=e90]:
+      - link "Home" [ref=e91] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e92]: Home
+      - link "Media" [ref=e93] [cursor=pointer]:
+        - /url: /media
+        - generic [ref=e94]: Media
+      - link "Review" [ref=e95] [cursor=pointer]:
+        - /url: /review
+        - generic [ref=e96]: Review
+      - link "Settings" [ref=e97] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e98]: Settings
+  - button "Open Next.js Dev Tools" [ref=e80] [cursor=pointer]:
+    - img [ref=e81]
+  - alert [ref=e84]

@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   mediaHref,
   mediaStudyHref,
+  mediaTextbookLessonHref,
   primaryNav,
   type StudyAreaKey
 } from "@/lib/site";
@@ -25,6 +26,9 @@ describe("site helpers", () => {
     ];
 
     expect(mediaHref("demo-anime")).toBe("/media/demo-anime");
+    expect(mediaTextbookLessonHref("demo-anime", "intro-vocab")).toBe(
+      "/media/demo-anime/textbook/intro-vocab"
+    );
     expect(areas.map((area) => mediaStudyHref("demo-anime", area))).toEqual([
       "/media/demo-anime/textbook",
       "/media/demo-anime/glossary",

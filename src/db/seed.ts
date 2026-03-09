@@ -157,35 +157,117 @@ export async function seedDevelopmentDatabase(
       .insert(lessonContent)
       .values({
         lessonId: developmentFixture.lessonId,
-        markdownRaw: "# Intro Vocab\n\n- 行く\n- 〜ている\n",
+        markdownRaw:
+          "# Intro Vocab\n\nIn questa lesson incontriamo [行く](term:term_demo_iku) e [〜ている](grammar:grammar_demo_teiru).\n\nLa forma {{日本語|にほんご}} resta visibile quando serve.\n",
         htmlRendered:
-          "<h1>Intro Vocab</h1><ul><li>行く</li><li>〜ている</li></ul>",
+          '<h1>Intro Vocab</h1><p>In questa lesson incontriamo <span class="content-entry-ref" data-entry-type="term" data-entry-id="term_demo_iku">行く</span> e <span class="content-entry-ref" data-entry-type="grammar" data-entry-id="grammar_demo_teiru">〜ている</span>.</p><p>La forma <ruby><rb>日本語</rb><rt>にほんご</rt></ruby> resta visibile quando serve.</p>',
         astJson: JSON.stringify({
-          type: "root",
-          children: [
-            { type: "heading", depth: 1, value: "Intro Vocab" },
-            { type: "list", items: ["行く", "〜ている"] }
+          raw: "# Intro Vocab\n\nIn questa lesson incontriamo 行く e 〜ている.\n",
+          blocks: [
+            {
+              type: "heading",
+              depth: 1,
+              children: [{ type: "text", value: "Intro Vocab" }]
+            },
+            {
+              type: "paragraph",
+              children: [
+                { type: "text", value: "In questa lesson incontriamo " },
+                {
+                  type: "reference",
+                  raw: "[行く](term:term_demo_iku)",
+                  display: "行く",
+                  targetType: "term",
+                  targetId: developmentFixture.termId,
+                  children: [{ type: "text", value: "行く" }]
+                },
+                { type: "text", value: " e " },
+                {
+                  type: "reference",
+                  raw: "[〜ている](grammar:grammar_demo_teiru)",
+                  display: "〜ている",
+                  targetType: "grammar",
+                  targetId: developmentFixture.grammarId,
+                  children: [{ type: "text", value: "〜ている" }]
+                },
+                { type: "text", value: "." }
+              ]
+            },
+            {
+              type: "paragraph",
+              children: [
+                { type: "text", value: "La forma " },
+                {
+                  type: "furigana",
+                  raw: "{{日本語|にほんご}}",
+                  base: "日本語",
+                  reading: "にほんご"
+                },
+                { type: "text", value: " resta visibile quando serve." }
+              ]
+            }
           ]
         }),
         excerpt:
-          "Lezione demo con una voce lessicale e un pattern grammaticale.",
+          "Lezione demo con una voce lessicale, un pattern grammaticale e furigana reali.",
         lastImportId: developmentFixture.importId
       })
       .onConflictDoUpdate({
         target: lessonContent.lessonId,
         set: {
-          markdownRaw: "# Intro Vocab\n\n- 行く\n- 〜ている\n",
+          markdownRaw:
+            "# Intro Vocab\n\nIn questa lesson incontriamo [行く](term:term_demo_iku) e [〜ている](grammar:grammar_demo_teiru).\n\nLa forma {{日本語|にほんご}} resta visibile quando serve.\n",
           htmlRendered:
-            "<h1>Intro Vocab</h1><ul><li>行く</li><li>〜ている</li></ul>",
+            '<h1>Intro Vocab</h1><p>In questa lesson incontriamo <span class="content-entry-ref" data-entry-type="term" data-entry-id="term_demo_iku">行く</span> e <span class="content-entry-ref" data-entry-type="grammar" data-entry-id="grammar_demo_teiru">〜ている</span>.</p><p>La forma <ruby><rb>日本語</rb><rt>にほんご</rt></ruby> resta visibile quando serve.</p>',
           astJson: JSON.stringify({
-            type: "root",
-            children: [
-              { type: "heading", depth: 1, value: "Intro Vocab" },
-              { type: "list", items: ["行く", "〜ている"] }
+            raw: "# Intro Vocab\n\nIn questa lesson incontriamo 行く e 〜ている.\n",
+            blocks: [
+              {
+                type: "heading",
+                depth: 1,
+                children: [{ type: "text", value: "Intro Vocab" }]
+              },
+              {
+                type: "paragraph",
+                children: [
+                  { type: "text", value: "In questa lesson incontriamo " },
+                  {
+                    type: "reference",
+                    raw: "[行く](term:term_demo_iku)",
+                    display: "行く",
+                    targetType: "term",
+                    targetId: developmentFixture.termId,
+                    children: [{ type: "text", value: "行く" }]
+                  },
+                  { type: "text", value: " e " },
+                  {
+                    type: "reference",
+                    raw: "[〜ている](grammar:grammar_demo_teiru)",
+                    display: "〜ている",
+                    targetType: "grammar",
+                    targetId: developmentFixture.grammarId,
+                    children: [{ type: "text", value: "〜ている" }]
+                  },
+                  { type: "text", value: "." }
+                ]
+              },
+              {
+                type: "paragraph",
+                children: [
+                  { type: "text", value: "La forma " },
+                  {
+                    type: "furigana",
+                    raw: "{{日本語|にほんご}}",
+                    base: "日本語",
+                    reading: "にほんご"
+                  },
+                  { type: "text", value: " resta visibile quando serve." }
+                ]
+              }
             ]
           }),
           excerpt:
-            "Lezione demo con una voce lessicale e un pattern grammaticale.",
+            "Lezione demo con una voce lessicale, un pattern grammaticale e furigana reali.",
           lastImportId: developmentFixture.importId
         }
       });

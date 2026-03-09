@@ -1,0 +1,81 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Japanese Custom Study Scrivania editoriale" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Japanese Custom Study
+        - generic [ref=e7]: Scrivania editoriale
+    - main [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e12]:
+          - link "Frieren" [ref=e13] [cursor=pointer]:
+            - /url: /media/frieren
+          - paragraph [ref=e14]: Textbook
+          - heading "Percorso lesson" [level=1] [ref=e15]
+          - paragraph [ref=e16]: Frieren Pacchetto di studio dedicato alla serie.
+          - generic [ref=e17]:
+            - generic [ref=e18]: Anime
+            - generic [ref=e19]: 1 lesson
+            - generic [ref=e20]: 0% letto
+        - generic [ref=e21]:
+          - article [ref=e22]:
+            - paragraph [ref=e23]: Da dove riprendere
+            - heading "Episodio 1 - Introduzione" [level=2] [ref=e24]
+            - paragraph [ref=e25]: Obiettivo In questa lezione vediamo 食べる e la forma ～ている. La parola 日本語 にほんご compare spesso nelle spiegazioni. Forma in -te iru ～ている azione in corso o stato risultante てる
+            - generic [ref=e26]:
+              - generic [ref=e27]: 0 completate
+              - generic [ref=e28]: 1 da leggere
+              - generic [ref=e29]: "Furigana: hover"
+            - generic [ref=e30]:
+              - link "Apri lesson" [ref=e31] [cursor=pointer]:
+                - /url: /media/frieren/textbook/ep01-intro
+              - link "Apri glossary" [ref=e32] [cursor=pointer]:
+                - /url: /media/frieren/glossary
+          - article [ref=e33]:
+            - paragraph [ref=e34]: Segnali utili
+            - generic [ref=e35]:
+              - generic [ref=e36]:
+                - generic [ref=e37]: Segmentazione
+                - strong [ref=e38]: episodi
+              - generic [ref=e39]:
+                - generic [ref=e40]: Lesson in corso
+                - strong [ref=e41]: "1"
+              - generic [ref=e42]:
+                - generic [ref=e43]: Completamento
+                - strong [ref=e44]: 0%
+        - generic [ref=e45]:
+          - generic [ref=e47]:
+            - paragraph [ref=e48]: Lesson
+            - heading "Scegli il punto di ingresso" [level=2] [ref=e49]
+            - paragraph [ref=e50]: La landing del textbook aiuta a capire dove iniziare, cosa è in corso e quale blocco del media stai attraversando.
+          - generic [ref=e52]:
+            - generic [ref=e54]:
+              - paragraph [ref=e55]: Episode 01
+              - heading "0/1 lette" [level=3] [ref=e56]
+            - link [ref=e58] [cursor=pointer]:
+              - /url: /media/frieren/textbook/ep01-intro
+              - article [ref=e59]:
+                - generic [ref=e60]:
+                  - generic [ref=e61]: In corso
+                  - generic [ref=e62]: n5
+                - heading "Episodio 1 - Introduzione" [level=4] [ref=e63]
+                - paragraph [ref=e64]: Obiettivo In questa lezione vediamo 食べる e la forma ～ている. La parola 日本語 にほんご compare spesso nelle spiegazioni. Forma in -te iru ～ている azione in corso o stato risultante てる
+                - generic [ref=e65]:
+                  - generic [ref=e66]: Episode 01
+                  - generic [ref=e67]: Apri
+    - navigation "Navigazione mobile" [ref=e68]:
+      - link "Home" [ref=e69] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e70]: Home
+      - link "Media" [ref=e71] [cursor=pointer]:
+        - /url: /media
+        - generic [ref=e72]: Media
+      - link "Review" [ref=e73] [cursor=pointer]:
+        - /url: /review
+        - generic [ref=e74]: Review
+      - link "Settings" [ref=e75] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e76]: Settings
+  - button "Open Next.js Dev Tools" [ref=e82] [cursor=pointer]:
+    - img [ref=e83]
+  - alert [ref=e86]
