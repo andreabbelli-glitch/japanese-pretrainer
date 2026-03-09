@@ -109,6 +109,7 @@ export function extractStructuredBlocks(
       yamlSource,
       lineOffset + startIndex + 2
     );
+    const fieldStyles = collectFieldStyles(document);
 
     for (const error of document.errors) {
       const linePos = "linePos" in error ? error.linePos : undefined;
@@ -175,6 +176,7 @@ export function extractStructuredBlocks(
       placeholder,
       data,
       fieldRanges,
+      fieldStyles,
       position: {
         start: {
           line: lineOffset + startIndex + 1,
@@ -232,6 +234,29 @@ function collectFieldRanges(
   }
 
   return fieldRanges;
+}
+
+function collectFieldStyles(document: ReturnType<typeof parseDocument>) {
+  const fieldStyles: Record<string, string> = {};
+  const contents = document.contents;
+
+  if (!isYamlMap(contents)) {
+    return fieldStyles;
+  }
+
+  for (const item of contents.items) {
+    const key = asTopLevelKey(item);
+    const value = item?.value;
+    const valueNode = asYamlValueNode(value);
+
+    if (!key || !valueNode || typeof valueNode.type !== "string" || valueNode.type.length === 0) {
+      continue;
+    }
+
+    fieldStyles[key] = valueNode.type;
+  }
+
+  return fieldStyles;
 }
 
 function isYamlMap(
@@ -308,6 +333,7 @@ function asYamlValueNode(value: unknown) {
 
   return value as {
     range?: number[];
+    type?: string;
     srcToken?: {
       type?: string;
       offset?: number;

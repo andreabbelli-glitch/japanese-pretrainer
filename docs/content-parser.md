@@ -61,6 +61,23 @@ if (!result.ok) {
 console.log(result.data.terms);
 ```
 
+## CLI di validazione
+
+Validazione dell'intero content root:
+
+```sh
+./scripts/with-node.sh pnpm content:validate -- --content-root ./content
+```
+
+Validazione di un singolo media bundle:
+
+```sh
+./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25
+```
+
+Questo comando riusa lo stesso parser/validator del runtime e fallisce con exit
+code `1` se trova issue di tipo `syntax`, `schema`, `reference` o `integrity`.
+
 ## Note
 
 - Il parser non importa nulla nel database.

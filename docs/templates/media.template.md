@@ -14,3 +14,8 @@ tags: [<tag-1>, <tag-2>]
 
 <Descrizione breve del pacchetto di studio. Deve spiegare cosa copre questo
 media package e con quale taglio didattico.>
+
+<!--
+Se in futuro aggiungi campi descrittivi YAML come `description` o `notes` nel
+frontmatter, serializzali in `>-` invece che come plain scalar.
+-->

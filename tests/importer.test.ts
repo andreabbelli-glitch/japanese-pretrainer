@@ -26,6 +26,7 @@ import {
 } from "@/db";
 import {
   card,
+  cardEntryLink,
   contentImport,
   grammarPattern,
   lesson,
@@ -37,6 +38,7 @@ import { importContentWorkspace } from "@/lib/content/importer.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const repositoryRoot = path.resolve(__dirname, "..");
 const fixturesRoot = path.resolve(
   __dirname,
   "fixtures",
@@ -44,6 +46,7 @@ const fixturesRoot = path.resolve(
 );
 const validContentRoot = path.join(fixturesRoot, "valid", "content");
 const invalidContentRoot = path.join(fixturesRoot, "invalid", "content");
+const demoMediaFixtureRoot = path.join(repositoryRoot, "content", "media", "duel-masters-dm25");
 const mediaId = "media-frieren";
 const lessonId = "lesson-frieren-ep01-intro";
 const termId = "term-taberu";
@@ -118,6 +121,65 @@ describe("content importer", () => {
     expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
     expect(importedLesson?.content?.htmlRendered).toContain("grammar-definition");
     expect(importRow?.status).toBe("completed");
+  });
+
+  it("imports the real Duel Masters demo bundle", async () => {
+    await copySingleMediaBundleFixture(demoMediaFixtureRoot, contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-10T09:00:00.000Z")
+    });
+
+    expect(result.status).toBe("completed");
+    expect(result.filesScanned).toBe(4);
+    expect(result.filesChanged).toBe(4);
+
+    expect(await countRows(database.query.media.findMany())).toBe(1);
+    expect(await countRows(database.query.segment.findMany())).toBe(1);
+    expect(await countRows(database.query.lesson.findMany())).toBe(2);
+    expect(await countRows(database.query.lessonContent.findMany())).toBe(2);
+    expect(await countRows(database.query.term.findMany())).toBe(40);
+    expect(await countRows(database.query.termAlias.findMany())).toBe(107);
+    expect(await countRows(database.query.grammarPattern.findMany())).toBe(11);
+    expect(await countRows(database.query.grammarAlias.findMany())).toBe(15);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(146);
+    expect(await countRows(database.query.card.findMany())).toBe(51);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(69);
+    expect(await countRows(database.query.contentImport.findMany())).toBe(1);
+
+    const importedMedia = await database.query.media.findFirst({
+      where: eq(media.id, "media-duel-masters-dm25")
+    });
+    const importedLesson = await database.query.lesson.findFirst({
+      where: eq(lesson.id, "lesson-duel-masters-dm25-tcg-core-overview"),
+      with: {
+        content: true
+      }
+    });
+    const importedTerm = await database.query.term.findFirst({
+      where: eq(term.id, "term-invasion")
+    });
+    const importedGrammar = await database.query.grammarPattern.findFirst({
+      where: eq(grammarPattern.id, "grammar-kawarini")
+    });
+    const importedCard = await database.query.card.findFirst({
+      where: eq(card.id, "card-invasion-recognition")
+    });
+    const importedCardLink = await database.query.cardEntryLink.findFirst({
+      where: eq(cardEntryLink.cardId, "card-invasion-recognition")
+    });
+
+    expect(importedMedia?.slug).toBe("duel-masters-dm25");
+    expect(importedLesson?.sourceFile).toBe(
+      "media/duel-masters-dm25/textbook/001-tcg-core-overview.md"
+    );
+    expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
+    expect(importedTerm?.lemma).toBe("侵略");
+    expect(importedGrammar?.pattern).toBe("かわりに");
+    expect(importedCard?.front).toBe("侵略");
+    expect(importedCardLink?.entryId).toBe("term-invasion");
   });
 
   it("reimports the same content idempotently without duplicating rows or wiping user state", async () => {
@@ -458,6 +520,20 @@ tags: [grammar, core]
 
 async function copyContentFixture(sourceRoot: string, destinationRoot: string) {
   await cp(sourceRoot, destinationRoot, { recursive: true });
+}
+
+async function copySingleMediaBundleFixture(
+  sourceMediaDirectory: string,
+  destinationContentRoot: string
+) {
+  const destinationMediaRoot = path.join(destinationContentRoot, "media");
+
+  await mkdir(destinationMediaRoot, { recursive: true });
+  await cp(
+    sourceMediaDirectory,
+    path.join(destinationMediaRoot, path.basename(sourceMediaDirectory)),
+    { recursive: true }
+  );
 }
 
 async function writeScopedMediaFixture(destinationRoot: string) {

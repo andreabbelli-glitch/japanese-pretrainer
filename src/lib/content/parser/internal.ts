@@ -13,6 +13,7 @@ export interface RawStructuredBlock {
   data: Record<string, unknown> | null;
   position?: SourceRange;
   fieldRanges?: Record<string, SourceRange>;
+  fieldStyles?: Record<string, string>;
 }
 
 export interface RawStructuredBlockNode {

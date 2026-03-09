@@ -44,6 +44,40 @@ content/
 - I riferimenti devono puntare a ID esistenti oppure l'import deve fallire.
 - Il contenuto testuale libero e permesso solo nelle zone previste.
 
+### 4.1 Regole di scrittura YAML sicura
+
+Per evitare errori di import, i campi testuali descrittivi dentro frontmatter o
+blocchi strutturati devono essere serializzati in modo conservativo.
+
+Regole:
+
+- i campi descrittivi come `notes_it`, `summary`, `description` e `notes`
+  dovrebbero usare di default un block scalar `>-`, anche se stanno su una sola
+  riga;
+- i plain scalar vanno riservati a valori brevi e atomici come `title`,
+  `slug`, `lemma`, `reading`, `romaji`, `meaning_it`;
+- se un valore contiene uno qualsiasi di questi elementi, non deve essere
+  lasciato come plain scalar:
+  - `:` o `：`
+  - furigana `{{base|reading}}`
+  - link semantici `[...](term:...)` o `[...](grammar:...)`
+  - backtick inline
+  - frasi complete di testo carta / rules text
+- quando c'e dubbio, usare `>-`.
+
+Esempio corretto:
+
+```md
+notes_it: >-
+  Lettura da fissare: {{山札|やまふだ}}.
+```
+
+Esempio da evitare:
+
+```md
+notes_it: Lettura da fissare: {{山札|やまふだ}}.
+```
+
 ## 5. `media.md`
 
 Definisce il contenitore del media.
@@ -210,6 +244,8 @@ reading: たべる
 romaji: taberu
 pos: ichidan-verb
 meaning_it: mangiare
+notes_it: >-
+  Verbo di base molto frequente.
 level_hint: n5
 aliases: [たべる, taberu]
 :::
@@ -240,6 +276,8 @@ id: grammar-teiru
 pattern: ～ている
 title: Forma in -te iru
 meaning_it: azione in corso o stato risultante
+notes_it: >-
+  Compare molto spesso nel parlato e nei testi descrittivi.
 level_hint: n4
 :::
 ```

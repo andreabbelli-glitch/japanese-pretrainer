@@ -24,6 +24,7 @@ Da passare sempre:
 - `general/03-template-media.md`
 - `general/04-template-textbook-lesson.md`
 - `general/05-template-cards-file.md`
+- `general/06-content-workflow-playbook.md`
 
 ## Kit media-specifico attuale
 
@@ -50,10 +51,12 @@ Passa almeno:
 - `general/03-template-media.md`
 - `general/04-template-textbook-lesson.md`
 - `general/05-template-cards-file.md`
+- `general/06-content-workflow-playbook.md`
 - `media/duel-masters-dm25/01-brief.md`
 - `media/duel-masters-dm25/02-batch-1-prompt.md`
 
 ## Nota
 
 Questa cartella e un kit operativo. I documenti originali nel resto di `docs/`
-restano la sorgente di riferimento del progetto.
+restano la sorgente di riferimento del progetto. Il bundle reale valido da usare
+come base operativa e `content/media/duel-masters-dm25`.

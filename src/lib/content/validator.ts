@@ -38,6 +38,8 @@ import type {
 interface ParsedDocumentState {
   draft: ParsedDocumentDraft;
   rawId?: string;
+  frontmatterFieldRanges: Record<string, SourceRange>;
+  frontmatterFieldStyles: Record<string, string>;
   structuredBlocks: RawStructuredBlock[];
   references: CollectedReference[];
   issues: ValidationIssue[];
@@ -334,8 +336,10 @@ async function parseDocumentFile(
           sourceFile: filePath,
           frontmatter: frontmatter.data,
           body: markdown.document
-        },
+    },
     rawId,
+    frontmatterFieldRanges: frontmatter.fieldRanges,
+    frontmatterFieldStyles: frontmatter.fieldStyles,
     structuredBlocks: extraction.blocks,
     references: markdown.references,
     issues: [
@@ -354,6 +358,8 @@ function normalizeMediaDocument(
   const frontmatter = normalizeMediaFrontmatter(
     state.draft.frontmatter,
     state.draft.sourceFile,
+    state.frontmatterFieldRanges,
+    state.frontmatterFieldStyles,
     issues
   );
   const body = resolveMediaBody(state, issues);
@@ -397,6 +403,8 @@ function normalizeLessonDocument(
   const frontmatter = normalizeLessonFrontmatter(
     state.draft.frontmatter,
     state.draft.sourceFile,
+    state.frontmatterFieldRanges,
+    state.frontmatterFieldStyles,
     issues
   );
 
@@ -469,6 +477,8 @@ function normalizeCardsDocument(
   const frontmatter = normalizeCardsFrontmatter(
     state.draft.frontmatter,
     state.draft.sourceFile,
+    state.frontmatterFieldRanges,
+    state.frontmatterFieldStyles,
     issues
   );
 
@@ -734,6 +744,8 @@ function resolveStructuredBody(
 function normalizeMediaFrontmatter(
   raw: Record<string, unknown> | null,
   filePath: string,
+  fieldRanges: Record<string, SourceRange>,
+  fieldStyles: Record<string, string>,
   issues: ValidationIssue[]
 ): MediaFrontmatter | null {
   const scope = "frontmatter";
@@ -761,6 +773,15 @@ function normalizeMediaFrontmatter(
     ],
     filePath,
     scope,
+    issues
+  );
+  reportUnsafeYamlPlainScalars(
+    raw,
+    ["description", "notes"],
+    filePath,
+    scope,
+    fieldRanges,
+    fieldStyles,
     issues
   );
 
@@ -866,6 +887,8 @@ function normalizeMediaFrontmatter(
 function normalizeLessonFrontmatter(
   raw: Record<string, unknown> | null,
   filePath: string,
+  fieldRanges: Record<string, SourceRange>,
+  fieldStyles: Record<string, string>,
   issues: ValidationIssue[]
 ): LessonFrontmatter | null {
   const scope = "frontmatter";
@@ -891,6 +914,15 @@ function normalizeLessonFrontmatter(
     ],
     filePath,
     scope,
+    issues
+  );
+  reportUnsafeYamlPlainScalars(
+    raw,
+    ["summary"],
+    filePath,
+    scope,
+    fieldRanges,
+    fieldStyles,
     issues
   );
 
@@ -966,6 +998,8 @@ function normalizeLessonFrontmatter(
 function normalizeCardsFrontmatter(
   raw: Record<string, unknown> | null,
   filePath: string,
+  fieldRanges: Record<string, SourceRange>,
+  fieldStyles: Record<string, string>,
   issues: ValidationIssue[]
 ): CardsFrontmatter | null {
   const scope = "frontmatter";
@@ -1050,6 +1084,15 @@ function normalizeTermBlock(
     sourcePath,
     issues,
     rawBlock.position
+  );
+  reportUnsafeYamlPlainScalars(
+    rawBlock.data,
+    ["notes_it"],
+    sourceContext.filePath,
+    sourcePath,
+    rawBlock.fieldRanges ?? {},
+    rawBlock.fieldStyles ?? {},
+    issues
   );
 
   const id = readRequiredString(
@@ -1201,6 +1244,15 @@ function normalizeGrammarBlock(
     issues,
     rawBlock.position
   );
+  reportUnsafeYamlPlainScalars(
+    rawBlock.data,
+    ["notes_it"],
+    sourceContext.filePath,
+    sourcePath,
+    rawBlock.fieldRanges ?? {},
+    rawBlock.fieldStyles ?? {},
+    issues
+  );
 
   const id = readRequiredString(
     rawBlock.data,
@@ -1314,6 +1366,15 @@ function normalizeCardBlock(
     sourcePath,
     issues,
     rawBlock.position
+  );
+  reportUnsafeYamlPlainScalars(
+    rawBlock.data,
+    ["front", "back", "notes_it"],
+    sourceContext.filePath,
+    sourcePath,
+    rawBlock.fieldRanges ?? {},
+    rawBlock.fieldStyles ?? {},
+    issues
   );
 
   const id = readRequiredString(
@@ -1799,6 +1860,123 @@ function validateReferences(
       );
     }
   }
+}
+
+function reportUnsafeYamlPlainScalars(
+  raw: Record<string, unknown>,
+  keys: string[],
+  filePath: string,
+  pathPrefix: string,
+  fieldRanges: Record<string, SourceRange>,
+  fieldStyles: Record<string, string>,
+  issues: ValidationIssue[]
+) {
+  for (const key of keys) {
+    const value = raw[key];
+    const reason =
+      typeof value === "string" ? getUnsafeYamlPlainScalarReason(key, value) : null;
+
+    if (
+      typeof value !== "string" ||
+      fieldStyles[key] !== "PLAIN" ||
+      reason === null
+    ) {
+      continue;
+    }
+
+    issues.push(
+      createIssue({
+        code: "yaml.unsafe-plain-scalar",
+        category: "syntax",
+        message: formatUnsafeYamlPlainScalarMessage(key, reason.kind),
+        filePath,
+        path: `${pathPrefix}.${key}`,
+        range: fieldRanges[key],
+        hint: formatUnsafeYamlPlainScalarHint(key, reason.kind),
+        details: {
+          field: key,
+          scalarStyle: "plain",
+          reason: reason.kind
+        }
+      })
+    );
+  }
+}
+
+function getUnsafeYamlPlainScalarReason(key: string, value: string) {
+  if (usesDescriptivePlainScalar(key, value)) {
+    return {
+      kind: "descriptive-prose" as const
+    };
+  }
+
+  if (containsUnsafeInlineYamlContent(value)) {
+    return {
+      kind: "markdown-rich" as const
+    };
+  }
+
+  if (isCardTextExamplePlainScalar(key, value)) {
+    return {
+      kind: "card-text-example" as const
+    };
+  }
+
+  return null;
+}
+
+function usesDescriptivePlainScalar(key: string, value: string) {
+  return (
+    ["notes_it", "summary", "description", "notes"].includes(key) &&
+    value.trim().length > 0
+  );
+}
+
+function containsUnsafeInlineYamlContent(value: string) {
+  return (
+    value.includes(":") ||
+    value.includes("：") ||
+    /\{\{[^|}]+\|[^}]+\}\}/.test(value) ||
+    /\[[^\]]+\]\((?:term|grammar):[^)]+\)/.test(value) ||
+    /`[^`]+`/.test(value)
+  );
+}
+
+function isCardTextExamplePlainScalar(key: string, value: string) {
+  if (key !== "front" && key !== "back") {
+    return false;
+  }
+
+  return (
+    /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(value) &&
+    (/[。！？]/u.test(value) || (value.includes("、") && value.length >= 12))
+  );
+}
+
+function formatUnsafeYamlPlainScalarMessage(
+  key: string,
+  reason: "descriptive-prose" | "markdown-rich" | "card-text-example"
+) {
+  if (reason === "descriptive-prose") {
+    return `Field '${key}' uses a plain YAML scalar for descriptive prose.`;
+  }
+
+  if (reason === "card-text-example") {
+    return `Field '${key}' uses a plain YAML scalar for a full card-text example.`;
+  }
+
+  return `Field '${key}' uses a plain YAML scalar that is fragile for markdown-rich content.`;
+}
+
+function formatUnsafeYamlPlainScalarHint(
+  key: string,
+  reason: "descriptive-prose" | "markdown-rich" | "card-text-example"
+) {
+  if (reason === "card-text-example") {
+    return `Rewrite '${key}' as a block scalar with >- when embedding full rules-text examples.`;
+  }
+
+  return `Rewrite '${key}' as a block scalar with >- to keep the value stable.`;
 }
 
 function reportUnknownKeys(

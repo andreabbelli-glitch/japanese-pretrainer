@@ -126,6 +126,12 @@ Policy esplicita:
 
 ## Comando CLI
 
+Prima dell'import conviene validare il bundle o il content root:
+
+```sh
+./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25
+```
+
 Import completo dalla content root di default:
 
 ```sh

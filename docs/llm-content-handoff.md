@@ -58,6 +58,7 @@ Per questo motivo la specifica da sola non basta. Servono:
 
 - esempi validi;
 - regole di naming;
+- regole di serializzazione YAML sicura;
 - checklist di output;
 - validazione automatica.
 
@@ -116,7 +117,26 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 - quali segmenti esistono gia;
 - quali entry devono essere riusate;
 - che deve restituire solo Markdown conforme;
+- che i campi descrittivi in YAML devono usare una serializzazione sicura;
 - che non deve aggiungere spiegazioni fuori dai file.
+
+### 7.1 Regola operativa fondamentale
+
+Per ridurre i fallimenti di import:
+
+- l'LLM esterno deve trattare `notes_it` come campo da serializzare sempre con
+  `>-`;
+- per estensione, anche `summary`, `description` e `notes` vanno preferiti in
+  `>-` quando compaiono in YAML;
+- non deve usare plain scalar per testo che contiene `:` o `：`, furigana,
+  link semantici, backtick o una frase completa di rules text.
+
+Esempio corretto:
+
+```md
+notes_it: >-
+  Lettura da fissare: {{山札|やまふだ}}.
+```
 
 ## 8. Prompt template consigliato
 
@@ -128,6 +148,8 @@ Vincoli obbligatori:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
 - Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati.
+- Per i campi descrittivi in YAML usa `>-` invece di plain scalar quando c'e
+  testo libero, markdown inline o una frase completa di rules text.
 - Mantieni stabili gli ID esistenti.
 - Se riusi una entry esistente, referenzia il suo ID invece di ridefinirla.
 - Se una entry nuova e importante per glossary/review, dichiarala esplicitamente
@@ -168,6 +190,8 @@ Prima di accettare l'output, bisogna verificare:
 - romaji coerenti;
 - reading presenti dove obbligatori;
 - niente termini importanti lasciati solo nel testo libero;
+- nessun campo YAML fragile, come `notes_it` o una frase completa in
+  `front/back`, scritto come plain scalar ambiguo;
 - niente testo fuori formato.
 
 ## 10. Suggerimento pratico importante
@@ -231,3 +255,17 @@ La collaborazione migliore e:
 - validator locale;
 - correzione iterativa sugli errori;
 - import solo dopo validazione.
+
+## 13. Playbook operativo
+
+Per la procedura concreta del repository usare:
+
+- `docs/content-workflow-playbook.md`
+
+Il playbook fissa il ciclo reale da seguire:
+
+1. richiesta batch piccola;
+2. output LLM esterno;
+3. validazione locale con `content:validate`;
+4. correzione iterativa sui file che falliscono;
+5. import con `content:import`.

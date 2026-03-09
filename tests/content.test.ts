@@ -12,6 +12,12 @@ const __dirname = path.dirname(__filename);
 
 const repositoryRoot = path.join(__dirname, "..");
 const contentLibraryRoot = path.join(repositoryRoot, "src", "lib", "content");
+const demoMediaDirectory = path.join(
+  repositoryRoot,
+  "content",
+  "media",
+  "duel-masters-dm25"
+);
 const fixturesRoot = path.join(__dirname, "fixtures", "content");
 const validContentRoot = path.join(fixturesRoot, "valid", "content");
 const validMediaDirectory = path.join(validContentRoot, "media", "frieren");
@@ -21,6 +27,41 @@ const invalidMediaDirectory = path.join(
   "content",
   "media",
   "bad-media"
+);
+const unsafeYamlMediaDirectory = path.join(
+  fixturesRoot,
+  "invalid",
+  "content",
+  "media",
+  "llm-unsafe-yaml"
+);
+const duplicateIdsMediaDirectory = path.join(
+  fixturesRoot,
+  "invalid",
+  "content",
+  "media",
+  "duplicate-ids"
+);
+const missingReferencesMediaDirectory = path.join(
+  fixturesRoot,
+  "invalid",
+  "content",
+  "media",
+  "missing-references"
+);
+const incompleteBundleMediaDirectory = path.join(
+  fixturesRoot,
+  "invalid",
+  "content",
+  "media",
+  "incomplete-bundle"
+);
+const cardTextPlainScalarMediaDirectory = path.join(
+  fixturesRoot,
+  "invalid",
+  "content",
+  "media",
+  "card-text-plain-scalar"
 );
 
 describe("content parser and validator", () => {
@@ -99,6 +140,34 @@ describe("content parser and validator", () => {
         targetType: "grammar",
         targetId: "grammar-teiru"
       })
+    );
+  });
+
+  it("parses the real Duel Masters demo bundle", async () => {
+    const result = await parseMediaDirectory(demoMediaDirectory);
+
+    expect(result.ok).toBe(true);
+    expect(result.issues).toEqual([]);
+    expect(result.data.media?.frontmatter.id).toBe("media-duel-masters-dm25");
+    expect(result.data.lessons).toHaveLength(2);
+    expect(result.data.cardFiles).toHaveLength(1);
+    expect(result.data.terms).toHaveLength(40);
+    expect(result.data.grammarPatterns).toHaveLength(11);
+    expect(result.data.cards).toHaveLength(51);
+    expect(result.data.references).toHaveLength(215);
+    expect(result.data.lessons.map((lesson) => lesson.frontmatter.slug)).toEqual([
+      "tcg-core-overview",
+      "tcg-core-patterns"
+    ]);
+    expect(result.data.cardFiles[0]?.frontmatter.id).toBe(
+      "cards-duel-masters-dm25-tcg-core-basics"
+    );
+    expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(true);
+    expect(
+      result.data.grammarPatterns.some((grammar) => grammar.id === "grammar-kawarini")
+    ).toBe(true);
+    expect(result.data.cards.some((card) => card.id === "card-invasion-recognition")).toBe(
+      true
     );
   });
 
@@ -192,6 +261,87 @@ describe("content parser and validator", () => {
     expect(result.data.media?.frontmatter.id).toBe("media-bad");
     expect(result.data.lessons).toHaveLength(1);
     expect(result.data.cardFiles).toHaveLength(1);
+  });
+
+  it("flags fragile plain YAML scalars that an LLM can emit inside structured blocks", async () => {
+    const result = await parseMediaDirectory(unsafeYamlMediaDirectory);
+    const unsafeScalarIssues = result.issues.filter(
+      (issue) => issue.code === "yaml.unsafe-plain-scalar"
+    );
+
+    expect(result.ok).toBe(false);
+    expect(unsafeScalarIssues).toHaveLength(2);
+    expect(unsafeScalarIssues).toContainEqual(
+      expect.objectContaining({
+        category: "syntax",
+        path: "body.blocks[0].notes_it"
+      })
+    );
+    expect(unsafeScalarIssues).toContainEqual(
+      expect.objectContaining({
+        category: "syntax",
+        path: "body.blocks[1].notes_it"
+      })
+    );
+  });
+
+  it("flags full card-text examples left as plain YAML scalars", async () => {
+    const result = await parseMediaDirectory(cardTextPlainScalarMediaDirectory);
+    const unsafeScalarIssues = result.issues.filter(
+      (issue) => issue.code === "yaml.unsafe-plain-scalar"
+    );
+
+    expect(result.ok).toBe(false);
+    expect(unsafeScalarIssues).toContainEqual(
+      expect.objectContaining({
+        category: "syntax",
+        path: "body.blocks[1].front",
+        details: expect.objectContaining({
+          field: "front",
+          reason: "card-text-example"
+        })
+      })
+    );
+  });
+
+  it("fails on duplicate IDs in a small targeted fixture", async () => {
+    const result = await parseMediaDirectory(duplicateIdsMediaDirectory);
+
+    expect(result.ok).toBe(false);
+    expect(result.issues).toContainEqual(
+      expect.objectContaining({
+        code: "id.duplicate",
+        category: "integrity",
+        details: expect.objectContaining({
+          namespace: "term",
+          id: "term-duel-masters-duplicate-invasion"
+        })
+      })
+    );
+  });
+
+  it("fails on missing references in a small targeted fixture", async () => {
+    const result = await parseMediaDirectory(missingReferencesMediaDirectory);
+    const issueCodes = result.issues.map((issue) => issue.code);
+
+    expect(result.ok).toBe(false);
+    expect(issueCodes).toContain("reference.missing-target");
+    expect(issueCodes).toContain("card.missing-entry");
+  });
+
+  it("fails on an incomplete bundle fixture without cards/", async () => {
+    const result = await parseMediaDirectory(incompleteBundleMediaDirectory);
+
+    expect(result.ok).toBe(false);
+    expect(result.issues).toContainEqual(
+      expect.objectContaining({
+        code: "media.missing-directory",
+        category: "integrity",
+        location: expect.objectContaining({
+          filePath: path.join(incompleteBundleMediaDirectory, "cards")
+        })
+      })
+    );
   });
 
   it("maps card field issues and references back to the source file", async () => {

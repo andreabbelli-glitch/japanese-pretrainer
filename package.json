@@ -15,6 +15,7 @@
     "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
     "db:migrate": "node --experimental-strip-types --experimental-default-type=module ./scripts/db-migrate.ts",
     "db:seed": "node --experimental-strip-types --experimental-default-type=module ./scripts/db-seed.ts",
+    "content:validate": "node --experimental-strip-types --experimental-default-type=module ./scripts/validate-content.ts",
     "content:import": "node --experimental-strip-types --experimental-default-type=module ./scripts/import-content.ts",
     "db:setup": "pnpm db:migrate && pnpm db:seed",
     "db:studio": "drizzle-kit studio --config=drizzle.config.ts",

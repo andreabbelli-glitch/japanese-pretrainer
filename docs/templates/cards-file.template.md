@@ -15,7 +15,8 @@ romaji: <romaji>
 meaning_it: <significato-principale-in-italiano>
 pos: <part-of-speech-opzionale>
 aliases: [<alias-1>, <alias-2>]
-notes_it: <nota-opzionale>
+notes_it: >-
+  <nota-opzionale>
 level_hint: <n5|n4|n3|custom>
 :::
 
@@ -25,7 +26,8 @@ pattern: <pattern>
 title: <titolo-breve>
 meaning_it: <significato-in-italiano>
 aliases: [<alias-1>, <alias-2>]
-notes_it: <nota-opzionale>
+notes_it: >-
+  <nota-opzionale>
 level_hint: <n5|n4|n3|custom>
 :::
 
@@ -36,7 +38,8 @@ entry_id: term-<entry-slug>
 card_type: recognition
 front: <testo-front>
 back: <testo-back>
-notes_it: <nota-opzionale-con-inline-markdown-o-riferimenti>
+notes_it: >-
+  <nota-opzionale-con-inline-markdown-o-riferimenti>
 tags: [<tag-1>, <tag-2>]
 :::
 
@@ -47,7 +50,8 @@ entry_id: grammar-<grammar-slug>
 card_type: concept
 front: <testo-front>
 back: <testo-back>
-notes_it: <nota-opzionale-con-inline-markdown-o-riferimenti>
+notes_it: >-
+  <nota-opzionale-con-inline-markdown-o-riferimenti>
 tags: [<tag-1>, <tag-2>]
 :::
 
@@ -55,5 +59,8 @@ tags: [<tag-1>, <tag-2>]
 Regole pratiche:
 - definisci qui le entry canoniche preferite per glossary/review;
 - se una entry esiste gia, non ridefinirla: crea solo la :::card che la usa;
+- i campi `notes_it` vanno trattati come prose YAML e scritti in `>-`;
+- evita plain scalar per testo con `:`/`：`, furigana, link semantici, backtick
+  o frasi complete di rules text;
 - non aggiungere testo libero fuori dai blocchi strutturati.
 -->

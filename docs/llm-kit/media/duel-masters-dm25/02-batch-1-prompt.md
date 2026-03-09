@@ -29,6 +29,9 @@ Vincoli obbligatori:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
 - Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati.
+- Per i campi descrittivi YAML come `notes_it`, usa `>-` invece di plain scalar.
+- Se un valore contiene `:`/`：`, furigana, link semantici, backtick o una
+  frase completa di rules text, non lasciarlo come plain scalar.
 - Mantieni stabili gli ID.
 - Se una entry nuova e importante per glossary/review, dichiarala esplicitamente
   con un blocco `:::term` o `:::grammar`.
@@ -87,7 +90,7 @@ Documenti da seguire:
 - 03-template-media.md
 - 04-template-textbook-lesson.md
 - 05-template-cards-file.md
-- 06-duel-masters-dm25-brief.md
+- 01-brief.md
 
 Checklist finale da emettere dopo i file, separata dai file stessi:
 CHECKLIST:
@@ -96,4 +99,5 @@ CHECKLIST:
 - new_grammar: <numero>
 - reused_terms: <numero>
 - unresolved_references: <numero>
+- unsafe_yaml_fields: <numero>
 ```

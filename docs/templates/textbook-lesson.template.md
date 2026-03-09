@@ -49,4 +49,5 @@ Puoi usare furigana inline con la sintassi `{{base|reading}}`, per esempio
 <!--
 Usa blocchi :::term o :::grammar solo se devi introdurre una entry nuova non
 ancora dichiarata altrove. Se una entry esiste gia, referenzia il suo ID.
+Se aggiungi campi descrittivi YAML nel frontmatter, come `summary`, usa `>-`.
 -->

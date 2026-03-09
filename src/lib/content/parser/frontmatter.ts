@@ -1,5 +1,6 @@
 import { parseDocument } from "yaml";
 
+import type { SourceRange } from "../types.ts";
 import type { ValidationIssue } from "../types.ts";
 import { createIssue, isRecord } from "./utils.ts";
 
@@ -7,6 +8,8 @@ export interface ParsedFrontmatterResult {
   data: Record<string, unknown> | null;
   body: string;
   bodyLineOffset: number;
+  fieldRanges: Record<string, SourceRange>;
+  fieldStyles: Record<string, string>;
   issues: ValidationIssue[];
 }
 
@@ -21,6 +24,8 @@ export function parseFrontmatter(
       data: null,
       body: source,
       bodyLineOffset: 0,
+      fieldRanges: {},
+      fieldStyles: {},
       issues: [
         createIssue({
           code: "frontmatter.missing",
@@ -42,6 +47,8 @@ export function parseFrontmatter(
       data: null,
       body: "",
       bodyLineOffset: 0,
+      fieldRanges: {},
+      fieldStyles: {},
       issues: [
         createIssue({
           code: "frontmatter.unclosed",
@@ -58,8 +65,10 @@ export function parseFrontmatter(
   const body = lines.slice(closingIndex + 1).join("\n");
   const issues: ValidationIssue[] = [];
   const document = parseDocument(yamlSource, {
-    prettyErrors: false
+    prettyErrors: false,
+    keepSourceTokens: true
   });
+  const { fieldRanges, fieldStyles } = collectFieldMetadata(document, yamlSource, 2);
 
   for (const error of document.errors) {
     const linePos = "linePos" in error ? error.linePos : undefined;
@@ -121,6 +130,135 @@ export function parseFrontmatter(
     data,
     body,
     bodyLineOffset: closingIndex + 1,
+    fieldRanges,
+    fieldStyles,
     issues
+  };
+}
+
+function collectFieldMetadata(
+  document: ReturnType<typeof parseDocument>,
+  source: string,
+  startLine: number
+) {
+  const fieldRanges: Record<string, SourceRange> = {};
+  const fieldStyles: Record<string, string> = {};
+  const contents = document.contents;
+
+  if (!isYamlMap(contents)) {
+    return {
+      fieldRanges,
+      fieldStyles
+    };
+  }
+
+  for (const item of contents.items) {
+    const key = asTopLevelKey(item);
+    const value = item?.value;
+    const valueNode = asYamlValueNode(value);
+
+    if (!key || !value) {
+      continue;
+    }
+
+    if (typeof valueNode?.type === "string" && valueNode.type.length > 0) {
+      fieldStyles[key] = valueNode.type;
+    }
+
+    const startOffset = getValueStartOffset(valueNode);
+
+    if (startOffset === undefined) {
+      continue;
+    }
+
+    const endOffset = getValueEndOffset(valueNode, startOffset);
+
+    fieldRanges[key] = {
+      start: offsetToPoint(source, startOffset, startLine),
+      end: offsetToPoint(source, endOffset, startLine)
+    };
+  }
+
+  return {
+    fieldRanges,
+    fieldStyles
+  };
+}
+
+function isYamlMap(
+  value: unknown
+): value is {
+  items: Array<{ key?: { value?: unknown }; value?: unknown }>;
+} {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "items" in value &&
+    Array.isArray(value.items)
+  );
+}
+
+function asTopLevelKey(item: unknown) {
+  const keyValue =
+    typeof item === "object" && item !== null && "key" in item
+      ? (item.key as { value?: unknown } | undefined)?.value
+      : undefined;
+
+  return typeof keyValue === "string" && keyValue.length > 0 ? keyValue : null;
+}
+
+function getValueStartOffset(
+  valueNode: ReturnType<typeof asYamlValueNode>
+) {
+  if (!valueNode || !Array.isArray(valueNode.range) || valueNode.range.length < 2) {
+    return undefined;
+  }
+
+  return valueNode.range[0];
+}
+
+function getValueEndOffset(
+  valueNode: ReturnType<typeof asYamlValueNode>,
+  fallbackOffset: number
+) {
+  if (!valueNode || !Array.isArray(valueNode.range) || valueNode.range.length < 2) {
+    return fallbackOffset;
+  }
+
+  return valueNode.range[1];
+}
+
+function asYamlValueNode(value: unknown): {
+  range?: [number, number, number?];
+  type?: string;
+} | null {
+  if (typeof value !== "object" || value === null) {
+    return null;
+  }
+
+  return value as {
+    range?: [number, number, number?];
+    type?: string;
+  };
+}
+
+function offsetToPoint(source: string, offset: number, startLine: number) {
+  const boundedOffset = Math.max(0, Math.min(offset, source.length));
+  let line = startLine;
+  let column = 1;
+
+  for (let index = 0; index < boundedOffset; index += 1) {
+    if (source[index] === "\n") {
+      line += 1;
+      column = 1;
+    } else {
+      column += 1;
+    }
+  }
+
+  return {
+    line,
+    column,
+    offset: boundedOffset
   };
 }
