@@ -162,7 +162,7 @@ describe("content importer", () => {
       where: eq(term.id, "term-invasion")
     });
     const importedGrammar = await database.query.grammarPattern.findFirst({
-      where: eq(grammarPattern.id, "grammar-kawarini")
+      where: eq(grammarPattern.id, "grammar-toki")
     });
     const importedCard = await database.query.card.findFirst({
       where: eq(card.id, "card-invasion-recognition")
@@ -177,7 +177,8 @@ describe("content importer", () => {
     );
     expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
     expect(importedTerm?.lemma).toBe("侵略");
-    expect(importedGrammar?.pattern).toBe("かわりに");
+    expect(importedGrammar?.pattern).toBe("～時 / ～た時");
+    expect(importedGrammar?.reading).toBe("とき / たとき");
     expect(importedCard?.front).toBe("侵略");
     expect(importedCardLink?.entryId).toBe("term-invasion");
   });

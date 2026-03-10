@@ -1,0 +1,1 @@
+ALTER TABLE `grammar_pattern` ADD `reading` text;

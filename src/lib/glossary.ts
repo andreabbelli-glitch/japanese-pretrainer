@@ -44,6 +44,7 @@ import {
   normalizeSearchText,
   romanizeKanaForSearch
 } from "@/lib/study-search";
+import { stripInlineMarkdown } from "@/lib/render-furigana";
 import { getRenderSafeText } from "@/lib/render-safe-text";
 
 type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
@@ -313,17 +314,17 @@ export async function getGlossaryPageData(
   const selectedPreviewEntry = resolvePreviewEntry(searchParams, results);
   const preview = selectedPreviewEntry
     ? buildGlossaryDetailData({
-        cardConnections:
-          cardsByEntry.get(
-            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
-          ) ?? [],
-        entry: selectedPreviewEntry,
-        lessonConnections:
-          lessonsByEntry.get(
-            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
-          ) ?? [],
-        media: mediaSummary
-      })
+      cardConnections:
+        cardsByEntry.get(
+          `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
+        ) ?? [],
+      entry: selectedPreviewEntry,
+      lessonConnections:
+        lessonsByEntry.get(
+          `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
+        ) ?? [],
+      media: mediaSummary
+    })
     : undefined;
 
   return {
@@ -518,7 +519,7 @@ function buildGlossaryDetailData(input: {
         : formatReviewStateLabel(row.reviewState, row.manualOverride ?? false),
       segmentTitle: row.segmentTitle ?? undefined,
       typeLabel: capitalizeToken(row.cardType),
-      notes: getRenderSafeText(row.cardNotesIt)
+      notes: row.cardNotesIt ?? undefined
     })),
     media: input.media,
     related: {
@@ -553,7 +554,7 @@ function mapEntryToBaseModel(
       romaji: termEntry.romaji,
       meaning: termEntry.meaningIt,
       literalMeaning: termEntry.meaningLiteralIt ?? undefined,
-      notes: getRenderSafeText(termEntry.notesIt),
+      notes: termEntry.notesIt ?? undefined,
       pos: termEntry.pos ?? undefined,
       levelHint: termEntry.levelHint ?? undefined,
       segmentId: termEntry.segmentId,
@@ -571,8 +572,8 @@ function mapEntryToBaseModel(
       literalMeaningNorm: termEntry.meaningLiteralIt
         ? normalizeSearchText(termEntry.meaningLiteralIt)
         : undefined,
-      notesNorm: getRenderSafeText(termEntry.notesIt)
-        ? normalizeSearchText(getRenderSafeText(termEntry.notesIt) ?? "")
+      notesNorm: termEntry.notesIt
+        ? normalizeSearchText(stripInlineMarkdown(termEntry.notesIt))
         : undefined
     };
   }
@@ -584,8 +585,9 @@ function mapEntryToBaseModel(
     kind,
     label: grammarEntry.pattern,
     title: grammarEntry.title,
+    reading: grammarEntry.reading ?? undefined,
     meaning: grammarEntry.meaningIt,
-    notes: getRenderSafeText(grammarEntry.notesIt),
+    notes: grammarEntry.notesIt ?? undefined,
     levelHint: grammarEntry.levelHint ?? undefined,
     segmentId: grammarEntry.segmentId,
     segmentTitle: grammarEntry.segment?.title ?? undefined,
@@ -599,8 +601,8 @@ function mapEntryToBaseModel(
     patternNorm: grammarEntry.searchPatternNorm,
     meaningNorm: normalizeSearchText(grammarEntry.meaningIt),
     titleNorm: normalizeSearchText(grammarEntry.title),
-    notesNorm: getRenderSafeText(grammarEntry.notesIt)
-      ? normalizeSearchText(getRenderSafeText(grammarEntry.notesIt) ?? "")
+    notesNorm: grammarEntry.notesIt
+      ? normalizeSearchText(stripInlineMarkdown(grammarEntry.notesIt))
       : undefined
   };
 }

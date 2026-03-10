@@ -8,6 +8,7 @@ import {
   setLinkedEntryLearningAction,
   setReviewCardSuspendedAction
 } from "@/actions/review";
+import { renderFurigana } from "@/lib/render-furigana";
 import type { ReviewPageData, ReviewQueueCard } from "@/lib/review";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
@@ -123,7 +124,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
                     <p className="eyebrow">Retro</p>
                     <p className="review-stage__back">{selectedCard.back}</p>
                     {selectedCard.notes ? (
-                      <p className="review-stage__notes">{selectedCard.notes}</p>
+                      <p className="review-stage__notes">{renderFurigana(selectedCard.notes)}</p>
                     ) : null}
                     {selectedCard.dueLabel ? (
                       <p className="review-stage__meta">{selectedCard.dueLabel}</p>

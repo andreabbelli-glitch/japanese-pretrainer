@@ -248,16 +248,16 @@ function normalizeInlineNode(value: unknown): InlineNode[] {
     case "furigana":
       return typeof value.base === "string" && typeof value.reading === "string"
         ? [
-            {
-              type: "furigana",
-              raw:
-                typeof value.raw === "string"
-                  ? value.raw
-                  : `{{${value.base}|${value.reading}}}`,
-              base: value.base,
-              reading: value.reading
-            }
-          ]
+          {
+            type: "furigana",
+            raw:
+              typeof value.raw === "string"
+                ? value.raw
+                : `{{${value.base}|${value.reading}}}`,
+            base: value.base,
+            reading: value.reading
+          }
+        ]
         : [];
     case "reference": {
       const targetType =
@@ -320,22 +320,30 @@ function normalizeInlineNode(value: unknown): InlineNode[] {
         }
       ];
     case "inlineCode":
+      if (Array.isArray(value.children)) {
+        const children = normalizeInlineNodes(value.children);
+
+        return children.length > 0
+          ? [{ type: "inlineCode", children }]
+          : [];
+      }
+
       return typeof value.value === "string"
-        ? [{ type: "inlineCode", value: value.value }]
+        ? [{ type: "inlineCode", children: [{ type: "text", value: value.value }] }]
         : [];
     case "link":
       return typeof value.url === "string"
         ? [
-            {
-              type: "link",
-              url: value.url,
-              title:
-                typeof value.title === "string" || value.title === null
-                  ? value.title
-                  : undefined,
-              children: normalizeInlineNodes(value.children)
-            }
-          ]
+          {
+            type: "link",
+            url: value.url,
+            title:
+              typeof value.title === "string" || value.title === null
+                ? value.title
+                : undefined,
+            children: normalizeInlineNodes(value.children)
+          }
+        ]
         : normalizeInlineChildren(value);
     case "break":
       return [{ type: "break" }];
@@ -565,7 +573,7 @@ function extractInlineText(node: InlineNode): string {
     case "link":
       return node.children.map((child) => extractInlineText(child)).join("");
     case "inlineCode":
-      return node.value;
+      return node.children.map((child) => extractInlineText(child)).join("");
     case "break":
       return " ";
   }

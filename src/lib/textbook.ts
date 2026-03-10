@@ -508,6 +508,7 @@ function mapGrammarTooltipEntry(
     kind: "grammar",
     label: entry.pattern,
     title: entry.title,
+    reading: entry.reading ?? undefined,
     meaning: entry.meaningIt,
     notes: entry.notesIt ?? undefined,
     levelHint: entry.levelHint ?? undefined,

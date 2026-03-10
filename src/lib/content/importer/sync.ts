@@ -130,8 +130,8 @@ async function loadExistingMediaState(
   const entryLinksRows =
     sourceIds.length > 0
       ? await transaction.query.entryLink.findMany({
-          where: inArray(entryLink.sourceId, sourceIds)
-        })
+        where: inArray(entryLink.sourceId, sourceIds)
+      })
       : [];
 
   return {
@@ -252,8 +252,8 @@ async function syncMediaPlan(
       .map((row) => row.id);
 
     if (currentLessonEntryLinkIds.length > 0) {
-    await transaction
-      .delete(entryLink)
+      await transaction
+        .delete(entryLink)
         .where(inArray(entryLink.id, currentLessonEntryLinkIds));
     }
   }
@@ -264,8 +264,8 @@ async function syncMediaPlan(
       .map((row) => row.id);
 
     if (currentCardEntryLinkIds.length > 0) {
-    await transaction
-      .delete(entryLink)
+      await transaction
+        .delete(entryLink)
         .where(inArray(entryLink.id, currentCardEntryLinkIds));
     }
   }
@@ -306,7 +306,7 @@ async function syncMediaPlan(
     const grammarRows = input.plan.grammarPatterns.map((plan) =>
       prepareTimestampedRow(
         input.existingState.grammarPatterns.find((row) => row.id === plan.row.id) ??
-          null,
+        null,
         plan.row,
         grammarComparisonKeys
       )
@@ -916,6 +916,7 @@ const grammarUpsertSet = {
   segmentId: excluded("segment_id"),
   pattern: excluded("pattern"),
   title: excluded("title"),
+  reading: excluded("reading"),
   meaningIt: excluded("meaning_it"),
   notesIt: excluded("notes_it"),
   levelHint: excluded("level_hint"),
@@ -1004,6 +1005,7 @@ const grammarComparisonKeys = [
   "segmentId",
   "pattern",
   "title",
+  "reading",
   "meaningIt",
   "notesIt",
   "levelHint",

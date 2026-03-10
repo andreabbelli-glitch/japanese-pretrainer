@@ -272,12 +272,13 @@ Campi opzionali:
 
 ```md
 :::grammar
-id: grammar-teiru
-pattern: ～ている
-title: Forma in -te iru
-meaning_it: azione in corso o stato risultante
+id: grammar-ikan-mo-i-ka
+pattern: ～以下 / ～以上
+title: Limiti numerici
+reading: いか / いじょう
+meaning_it: al massimo / almeno
 notes_it: >-
-  Compare molto spesso nel parlato e nei testi descrittivi.
+  Serve per definire confini.
 level_hint: n4
 :::
 ```
@@ -291,6 +292,7 @@ Campi obbligatori:
 
 Campi opzionali:
 
+- `reading` (OBBLIGATORIO in hiragana se `pattern` contiene kanji)
 - `notes_it`
 - `level_hint`
 - `aliases`

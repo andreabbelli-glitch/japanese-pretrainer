@@ -473,7 +473,7 @@ function mapQueueCard(
     front: card.front,
     href: mediaReviewCardHref(mediaSlug, card.id),
     id: card.id,
-    notes: getRenderSafeText(card.notesIt),
+    notes: card.notesIt ?? undefined,
     orderIndex: card.orderIndex,
     rawReviewLabel,
     segmentTitle: card.segment?.title ?? undefined,

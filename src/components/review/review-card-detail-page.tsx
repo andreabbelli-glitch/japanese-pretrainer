@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { renderFurigana } from "@/lib/render-furigana";
 import {
   markLinkedEntryKnownAction,
   resetReviewCardAction,
@@ -51,7 +52,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
             <p className="glossary-entry-hero__detail">{data.card.dueLabel}</p>
           ) : null}
           {data.card.notes ? (
-            <p className="glossary-entry-hero__notes">{data.card.notes}</p>
+            <p className="glossary-entry-hero__notes">{renderFurigana(data.card.notes)}</p>
           ) : null}
         </SurfaceCard>
 

@@ -144,6 +144,55 @@ describe("textbook data", () => {
     ]);
   });
 
+  it("preserves inline code nodes when lesson AST is reloaded from JSON", async () => {
+    await database
+      .update(lessonContent)
+      .set({
+        astJson: JSON.stringify({
+          raw: "stub",
+          blocks: [
+            {
+              type: "paragraph",
+              children: [
+                {
+                  type: "inlineCode",
+                  children: [{ type: "text", value: "AのB" }]
+                },
+                {
+                  type: "text",
+                  value: ' = "B di A".'
+                }
+              ]
+            }
+          ]
+        }),
+        htmlRendered: "<p><code>AのB</code> = &quot;B di A&quot;.</p>"
+      })
+      .where(eq(lessonContent.lessonId, developmentFixture.lessonId));
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "intro-vocab",
+      database
+    );
+
+    expect(lessonData?.lesson.ast?.blocks).toEqual([
+      {
+        type: "paragraph",
+        children: [
+          {
+            type: "inlineCode",
+            children: [{ type: "text", value: "AのB" }]
+          },
+          {
+            type: "text",
+            value: ' = "B di A".'
+          }
+        ]
+      }
+    ]);
+  });
+
   it("persists furigana preference and lesson progress changes", async () => {
     await setFuriganaMode("on", database);
     await database

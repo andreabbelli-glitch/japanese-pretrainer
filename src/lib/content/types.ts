@@ -42,44 +42,44 @@ export interface RichTextFragment {
 
 export type InlineNode =
   | {
-      type: "text";
-      value: string;
-    }
+    type: "text";
+    value: string;
+  }
   | {
-      type: "furigana";
-      raw: string;
-      base: string;
-      reading: string;
-    }
+    type: "furigana";
+    raw: string;
+    base: string;
+    reading: string;
+  }
   | {
-      type: "reference";
-      raw: string;
-      display: string;
-      targetType: EntryType;
-      targetId: string;
-      children: InlineNode[];
-    }
+    type: "reference";
+    raw: string;
+    display: string;
+    targetType: EntryType;
+    targetId: string;
+    children: InlineNode[];
+  }
   | {
-      type: "emphasis";
-      children: InlineNode[];
-    }
+    type: "emphasis";
+    children: InlineNode[];
+  }
   | {
-      type: "strong";
-      children: InlineNode[];
-    }
+    type: "strong";
+    children: InlineNode[];
+  }
   | {
-      type: "inlineCode";
-      value: string;
-    }
+    type: "inlineCode";
+    children: InlineNode[];
+  }
   | {
-      type: "link";
-      url: string;
-      title?: string | null;
-      children: InlineNode[];
-    }
+    type: "link";
+    url: string;
+    title?: string | null;
+    children: InlineNode[];
+  }
   | {
-      type: "break";
-    };
+    type: "break";
+  };
 
 export interface MarkdownDocument {
   raw: string;
@@ -212,6 +212,7 @@ export interface NormalizedGrammarPattern {
   id: string;
   pattern: string;
   title: string;
+  reading?: string;
   meaningIt: string;
   notesIt?: string;
   levelHint?: string;

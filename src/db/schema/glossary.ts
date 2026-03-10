@@ -80,6 +80,7 @@ export const grammarPattern = sqliteTable(
     }),
     pattern: text("pattern").notNull(),
     title: text("title").notNull(),
+    reading: text("reading"),
     meaningIt: text("meaning_it").notNull(),
     notesIt: text("notes_it"),
     levelHint: text("level_hint"),

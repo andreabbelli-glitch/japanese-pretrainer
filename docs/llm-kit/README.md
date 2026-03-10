@@ -55,8 +55,14 @@ Passa almeno:
 - `media/duel-masters-dm25/01-brief.md`
 - `media/duel-masters-dm25/02-batch-1-prompt.md`
 
-## Nota
+## Nota su Allineamento Template
 
-Questa cartella e un kit operativo. I documenti originali nel resto di `docs/`
-restano la sorgente di riferimento del progetto. Il bundle reale valido da usare
-come base operativa e `content/media/duel-masters-dm25`.
+> [!IMPORTANT]
+> **Sincronizzazione Strutturale**
+> Questo kit operativo è la "fonte di verità" per l'LLM quando deve produrre contenuti.
+> **Ogni volta che si modifica la struttura dei dati dell'app** (es. aggiungendo nuovi campi opzionali a `:::card`, `:::term` o `:::grammar`, o cambiando la struttura di `media.md`), **quelle modifiche devono essere immediatamente replicate nei template di questa cartella** (in `general/01-content-format.md`, `02-llm-content-handoff.md` e nei file di `general/`). 
+> Se l'LLM kit non viene tenuto allineato al codice e ai parser dell'applicazione, il modello di AI genererà contenuti obsoleti o non compatibili che falliranno l'import.
+
+## Nota Storica sulle Fixtures
+
+Questa cartella è un kit operativo. I documenti originali nel resto di `docs/` restano la sorgente di riferimento del progetto. Il bundle reale valido da usare come base operativa è `content/media/duel-masters-dm25`.

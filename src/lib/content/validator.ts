@@ -325,18 +325,18 @@ async function parseDocumentFile(
   return {
     draft: kind === "media"
       ? {
-          kind,
-          sourceFile: filePath,
-          folderSlug: path.basename(path.dirname(filePath)),
-          frontmatter: frontmatter.data,
-          body: markdown.document
-        }
+        kind,
+        sourceFile: filePath,
+        folderSlug: path.basename(path.dirname(filePath)),
+        frontmatter: frontmatter.data,
+        body: markdown.document
+      }
       : {
-          kind,
-          sourceFile: filePath,
-          frontmatter: frontmatter.data,
-          body: markdown.document
-    },
+        kind,
+        sourceFile: filePath,
+        frontmatter: frontmatter.data,
+        body: markdown.document
+      },
     rawId,
     frontmatterFieldRanges: frontmatter.fieldRanges,
     frontmatterFieldStyles: frontmatter.fieldStyles,
@@ -442,20 +442,20 @@ function normalizeLessonDocument(
   return {
     document: frontmatter
       ? {
-          kind: "lesson",
-          sourceFile: state.draft.sourceFile,
-          frontmatter,
-          body: resolved.body,
-          declaredTermIds: resolved.terms.map((record) => record.value.id),
-          declaredGrammarIds: resolved.grammarPatterns.map(
-            (record) => record.value.id
-          ),
-          referenceIds: dedupeStrings(
-            resolved.references.map(
-              (reference) => `${reference.referenceType}:${reference.targetId}`
-            )
+        kind: "lesson",
+        sourceFile: state.draft.sourceFile,
+        frontmatter,
+        body: resolved.body,
+        declaredTermIds: resolved.terms.map((record) => record.value.id),
+        declaredGrammarIds: resolved.grammarPatterns.map(
+          (record) => record.value.id
+        ),
+        referenceIds: dedupeStrings(
+          resolved.references.map(
+            (reference) => `${reference.referenceType}:${reference.targetId}`
           )
-        }
+        )
+      }
       : null,
     terms: resolved.terms,
     grammarPatterns: resolved.grammarPatterns,
@@ -548,21 +548,21 @@ function normalizeCardsDocument(
   return {
     document: frontmatter
       ? {
-          kind: "cards",
-          sourceFile: state.draft.sourceFile,
-          frontmatter,
-          body: resolved.body,
-          declaredTermIds: resolved.terms.map((record) => record.value.id),
-          declaredGrammarIds: resolved.grammarPatterns.map(
-            (record) => record.value.id
-          ),
-          declaredCardIds: resolved.cards.map((record) => record.value.id),
-          referenceIds: dedupeStrings(
-            resolved.references.map(
-              (reference) => `${reference.referenceType}:${reference.targetId}`
-            )
+        kind: "cards",
+        sourceFile: state.draft.sourceFile,
+        frontmatter,
+        body: resolved.body,
+        declaredTermIds: resolved.terms.map((record) => record.value.id),
+        declaredGrammarIds: resolved.grammarPatterns.map(
+          (record) => record.value.id
+        ),
+        declaredCardIds: resolved.cards.map((record) => record.value.id),
+        referenceIds: dedupeStrings(
+          resolved.references.map(
+            (reference) => `${reference.referenceType}:${reference.targetId}`
           )
-        }
+        )
+      }
       : null,
     terms: resolved.terms,
     grammarPatterns: resolved.grammarPatterns,
@@ -1233,6 +1233,7 @@ function normalizeGrammarBlock(
       "id",
       "pattern",
       "title",
+      "reading",
       "meaning_it",
       "notes_it",
       "level_hint",
@@ -1286,6 +1287,14 @@ function normalizeGrammarBlock(
     issues,
     rawBlock.position
   );
+  const reading = readOptionalString(
+    rawBlock.data,
+    "reading",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
   const notesIt = readOptionalString(
     rawBlock.data,
     "notes_it",
@@ -1330,6 +1339,7 @@ function normalizeGrammarBlock(
       id,
       pattern,
       title,
+      reading: reading ?? undefined,
       meaningIt,
       notesIt: notesIt ?? undefined,
       levelHint: levelHint ?? undefined,
@@ -1484,14 +1494,14 @@ function normalizeCardBlock(
   });
   const notesFragment = notesIt
     ? parseInlineFragment({
-        source: notesIt,
-        filePath: sourceContext.filePath,
-        documentKind: sourceContext.documentKind,
-        documentId: sourceContext.documentId,
-        sourcePath: `${sourcePath}.notes_it`,
-        fragmentOrigin: notesRange?.start,
-        fallbackRange: notesRange
-      })
+      source: notesIt,
+      filePath: sourceContext.filePath,
+      documentKind: sourceContext.documentKind,
+      documentId: sourceContext.documentId,
+      sourcePath: `${sourcePath}.notes_it`,
+      fragmentOrigin: notesRange?.start,
+      fallbackRange: notesRange
+    })
     : null;
 
   issues.push(...frontFragment.issues, ...backFragment.issues, ...(notesFragment?.issues ?? []));

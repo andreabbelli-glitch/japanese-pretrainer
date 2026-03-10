@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import type { GlossaryDetailData } from "@/lib/glossary";
 
+import { renderFurigana } from "@/lib/render-furigana";
+
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
 import { Section } from "../ui/section";
@@ -71,7 +73,7 @@ export function GlossaryDetailPanels({
             <p className="glossary-entry-hero__detail">Categoria: {data.entry.pos}</p>
           ) : null}
           {data.entry.notes ? (
-            <p className="glossary-entry-hero__notes">{data.entry.notes}</p>
+            <p className="glossary-entry-hero__notes">{renderFurigana(data.entry.notes)}</p>
           ) : null}
 
           {data.entry.aliasGroups.length > 0 ? (
@@ -181,7 +183,7 @@ export function GlossaryDetailPanels({
                       {card.dueLabel ? <span>{card.dueLabel}</span> : null}
                     </div>
                     {card.notes ? (
-                      <p className="glossary-detail-card__note">{card.notes}</p>
+                      <p className="glossary-detail-card__note">{renderFurigana(card.notes)}</p>
                     ) : null}
                   </SurfaceCard>
                 </Link>

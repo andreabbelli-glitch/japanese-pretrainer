@@ -28,7 +28,7 @@ e kanji utili in contesto TCG.
 Vincoli obbligatori:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
-- Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati.
+- Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati. **MAPPA I KANJI CON FURIGANA ANCHE E SOPRATTUTTO DENTRO LE CITAZIONI IN CODICE (`` `{{kanji|kana}}` ``)**.
 - Per i campi descrittivi YAML come `notes_it`, usa `>-` invece di plain scalar.
 - Se un valore contiene `:`/`：`, furigana, link semantici, backtick o una
   frase completa di rules text, non lasciarlo come plain scalar.

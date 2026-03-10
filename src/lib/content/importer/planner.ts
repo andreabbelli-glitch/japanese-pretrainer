@@ -382,6 +382,7 @@ function buildGrammarPlan(input: {
       segmentId: segmentRef ? input.segmentIdByRef.get(segmentRef) ?? null : null,
       pattern: input.grammarPattern.pattern,
       title: input.grammarPattern.title,
+      reading: input.grammarPattern.reading ?? null,
       meaningIt: input.grammarPattern.meaningIt,
       notesIt: input.grammarPattern.notesIt ?? null,
       levelHint: input.grammarPattern.levelHint ?? null,

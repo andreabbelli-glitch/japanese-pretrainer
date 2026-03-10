@@ -18,6 +18,7 @@ import {
   setLessonCompletionAction
 } from "@/actions/textbook";
 import { cx } from "@/lib/classnames";
+import { renderFurigana } from "@/lib/render-furigana";
 import type {
   ContentBlock,
   InlineNode,
@@ -45,12 +46,12 @@ type TooltipState = {
 
 type MobileSheetState =
   | {
-      type: "lessons";
-    }
+    type: "lessons";
+  }
   | {
-      type: "entry";
-      entry: TextbookEntryTooltip;
-    };
+    type: "entry";
+    entry: TextbookEntryTooltip;
+  };
 
 export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const router = useRouter();
@@ -114,11 +115,11 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     setTooltip((current) =>
       current
         ? {
-            ...current,
-            left,
-            top,
-            placement: preferTop ? "top" : "bottom"
-          }
+          ...current,
+          left,
+          top,
+          placement: preferTop ? "top" : "bottom"
+        }
         : current
     );
   };
@@ -645,7 +646,7 @@ function LessonArticle({
         case "strong":
           return <strong key={index}>{renderInlineNodes(node.children)}</strong>;
         case "inlineCode":
-          return <code key={index}>{node.value}</code>;
+          return <code key={index}>{renderInlineNodes(node.children)}</code>;
         case "link":
           return (
             <a href={node.url} key={index} title={node.title ?? undefined}>
@@ -725,7 +726,7 @@ function LessonArticle({
             </p>
             <p className="reader-definition-card__meaning">{block.entry.meaningIt}</p>
             {block.entry.notesIt ? (
-              <p className="reader-definition-card__notes">{block.entry.notesIt}</p>
+              <p className="reader-definition-card__notes">{renderFurigana(block.entry.notesIt)}</p>
             ) : null}
           </section>
         );
@@ -741,7 +742,7 @@ function LessonArticle({
             <h3 className="reader-definition-card__jp jp-inline">{block.entry.pattern}</h3>
             <p className="reader-definition-card__meaning">{block.entry.meaningIt}</p>
             {block.entry.notesIt ? (
-              <p className="reader-definition-card__notes">{block.entry.notesIt}</p>
+              <p className="reader-definition-card__notes">{renderFurigana(block.entry.notesIt)}</p>
             ) : null}
           </section>
         );
@@ -1164,7 +1165,7 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
       {entry.segmentTitle ? (
         <p className="entry-tooltip-card__detail">Segmento: {entry.segmentTitle}</p>
       ) : null}
-      {entry.notes ? <p className="entry-tooltip-card__notes">{entry.notes}</p> : null}
+      {entry.notes ? <p className="entry-tooltip-card__notes">{renderFurigana(entry.notes)}</p> : null}
       <Link className="text-link" href={entry.glossaryHref}>
         Apri entry
       </Link>

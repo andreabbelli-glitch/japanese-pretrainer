@@ -149,9 +149,11 @@ Dopo l'import verifica almeno:
 - `media.missing-directory` o `media.empty-directory`
   Caso tipico: bundle incompleto o batch salvato solo a meta.
 
-## Regola finale
+## Regola finale sul Codice e i Template
 
-L'LLM esterno produce draft.
+L'LLM esterno produce draft che dipendono dalle istruzioni fornite. 
+**Regola d'oro: Se modifichi il codice parser, il database o la struttura prevista per i markdown, devi obbligatoriamente aggiornare la documentazione e i template in `docs/llm-kit/general/`.** Non dare per scontato che l'LLM "capisca" i cambiamenti del codice se non sono documentati in questi file markdown.
+
 Il repository accetta solo output che passa:
 
 1. `content:validate`

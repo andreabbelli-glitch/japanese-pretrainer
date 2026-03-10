@@ -446,7 +446,12 @@ function convertInlineNode(
       return [
         {
           type: "inlineCode",
-          value: node.value
+          children: tokenizeTextNode(
+            { type: "text", value: node.value } as Text,
+            context,
+            `${sourcePath}.children`,
+            resolvedRange
+          )
         }
       ];
     case "break":
@@ -673,7 +678,7 @@ function flattenInlineNodes(nodes: InlineNode[]): string {
         case "link":
           return flattenInlineNodes(node.children);
         case "inlineCode":
-          return node.value;
+          return flattenInlineNodes(node.children);
         case "break":
           return "\n";
       }

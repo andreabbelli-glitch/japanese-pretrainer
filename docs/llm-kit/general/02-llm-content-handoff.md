@@ -130,6 +130,7 @@ Per ridurre i fallimenti di import:
   `>-` quando compaiono in YAML;
 - non deve usare plain scalar per testo che contiene `:` o `：`, furigana,
   link semantici, backtick o una frase completa di rules text.
+- **i furigana `{{kanji|kana}}` e i term link funzionano anche dentro i blocchi di codice inline (i backtick ` `), usali e mappali sempre**: es. `` `{{相手|あいて}}のクリーチャー` `` anziché `` `相手のクリーチャー` ``.
 
 Esempio corretto:
 
@@ -147,7 +148,7 @@ Devi restituire SOLO file Markdown conformi alla specifica fornita.
 Vincoli obbligatori:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
-- Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati.
+- Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati. **MAPPA I KANJI CON FURIGANA ANCHE E SOPRATTUTTO DENTRO LE CITAZIONI IN CODICE (`` `{{kanji|kana}}` ``)**.
 - Per i campi descrittivi in YAML usa `>-` invece di plain scalar quando c'e
   testo libero, markdown inline o una frase completa di rules text.
 - Mantieni stabili gli ID esistenti.
@@ -158,6 +159,9 @@ Vincoli obbligatori:
 - Restituisci solo il contenuto dei file richiesti, senza commenti extra.
 
 Campi descrittivi da compilare sempre:
+- Per i grammar pattern: se il `pattern` contiene kanji (es. `～時`), compila
+  sempre il campo `reading` con la lettura completa in hiragana (es. `とき`).
+  Se invece e tutto in kana (es. `かわりに`), ometti il campo.
 - Per media.md: compila il campo `description` nel frontmatter (>-) con 1-2
   frasi che descrivono il pacchetto di studio, il taglio didattico e il target.
   Questo testo viene mostrato direttamente nell'UI; se assente, viene usato un

@@ -154,7 +154,7 @@ describe("content parser and validator", () => {
     expect(result.data.terms).toHaveLength(40);
     expect(result.data.grammarPatterns).toHaveLength(11);
     expect(result.data.cards).toHaveLength(51);
-    expect(result.data.references).toHaveLength(215);
+    expect(result.data.references).toHaveLength(274);
     expect(result.data.lessons.map((lesson) => lesson.frontmatter.slug)).toEqual([
       "tcg-core-overview",
       "tcg-core-patterns"

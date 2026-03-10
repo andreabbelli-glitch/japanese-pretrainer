@@ -16,8 +16,10 @@ meaning_it: creatura
 pos: noun
 aliases: [クリーチャー, kuriichaa]
 notes_it: >-
-  Tipo di carta centrale in Duel Masters. Nel testo ricorrono anche composti
-  come `進化クリーチャー`.
+  È il tipo di carta più importante di Duel Masters. Le creature entrano nel
+  バトルゾーン, possono attaccare, possono essere distrutte e spesso portano
+  keyword o effetti continui. In questo media la vedrai sia da sola sia dentro
+  composti come `{{進化|しんか}}クリーチャー`.
 level_hint: custom
 :::
 
@@ -30,8 +32,9 @@ meaning_it: magia / spell
 pos: noun
 aliases: [呪文, じゅもん, jumon]
 notes_it: >-
-  Tipo di carta che si gioca per il suo effetto e poi normalmente va in
-  {{墓地|ぼち}}.
+  Indica una magia. Di solito la giochi, risolvi l'effetto e poi la carta va in
+  {{墓地|ぼち}}. Quando leggi {{呪文|じゅもん}}, aspettati un effetto immediato
+  più che una presenza stabile sul campo.
 level_hint: n4
 :::
 
@@ -44,9 +47,10 @@ meaning_it: tipo di carta Tamaseed
 pos: noun
 aliases: [タマシード, tamashiido]
 notes_it: >-
-  Tipo di carta importante anche nei deck di questo media. Resta nel
-  [バトルゾーン](term:term-battle-zone) e puo essere usato per
-  [進化](term:term-evolution) o [シンカライズ](term:term-shinkarize).
+  È un tipo di carta che resta nel バトルゾーン ma non si legge come una normale
+  creatura. In questo media conta soprattutto perché può diventare base per
+  {{進化|しんか}} o per シンカライズ. Quando compare, chiediti subito se la carta
+  viene trattata come supporto o come parte di una sovrapposizione.
 level_hint: custom
 :::
 
@@ -59,7 +63,9 @@ meaning_it: bloccante
 pos: keyword
 aliases: [ブロッカー, burokkaa]
 notes_it: >-
-  Keyword difensiva: questa creatura puo bloccare un attacco.
+  È una keyword difensiva. Ti dice che quella creatura può fermare un attacco
+  avversario. Quando la vedi, pensa subito a una funzione di protezione del
+  campo o degli scudi.
 level_hint: custom
 :::
 
@@ -72,8 +78,10 @@ meaning_it: evoluzione
 pos: verbal-noun
 aliases: [進化, しんか, shinka]
 notes_it: >-
-  Keyword base per mettere una creatura sopra un'altra. In DM25-SD2 compaiono
-  anche `進化クリーチャー` e condizioni legate all'evoluzione.
+  È la keyword dell'evoluzione. In pratica ti dice che una carta va messa sopra
+  un'altra carta che fa da base. In questo media è importante perché compare
+  spesso in SD2 e cambia il modo in cui leggi verbi come {{重|かさ}}ねる e
+  condizioni sul tipo di carta.
 level_hint: custom
 :::
 
@@ -86,9 +94,10 @@ meaning_it: invasione
 pos: verbal-noun
 aliases: [侵略, しんりゃく, shinryaku]
 notes_it: >-
-  Keyword molto frequente nel lessico di DM25-SD2. Permette di
-  [重ねる](term:term-kasaneru) la carta dalla [手札](term:term-hand) durante
-  l'[攻撃](term:term-attack).
+  È una keyword offensiva tipica dell'area SD2. Di solito permette di mettere
+  una creatura dalla {{手札|てふだ}} sopra un attaccante durante l'attacco, se la
+  condizione è giusta. Quando la vedi, cerca subito chi sta attaccando e quale
+  tipo di carta è richiesto.
 level_hint: custom
 :::
 
@@ -101,8 +110,10 @@ meaning_it: effetto che permette di evolvere sopra un Tamaseed
 pos: keyword
 aliases: [シンカライズ, shinkaraizu]
 notes_it: >-
-  Keyword dei [タマシード](term:term-tamaseed): permette di considerarli come
-  base di [進化](term:term-evolution).
+  È la keyword che collega i タマシード alle carte di evoluzione. Il punto
+  pratico è semplice: ti fa leggere un Tamaseed come base utile per mettere
+  sopra un'altra carta. Se trovi シンカライズ, pensa subito a una meccanica di
+  sovrapposizione.
 level_hint: custom
 :::
 
@@ -115,8 +126,10 @@ meaning_it: Abyss / gruppo di carte Abyss
 pos: noun
 aliases: [アビス, abisu]
 notes_it: >-
-  Etichetta molto frequente nel lessico di DM25-SD1. Compare in filtri come
-  `コスト4以下のアビス` e in nomi o specie collegate.
+  È un'etichetta di gruppo molto importante in SD1. Compare spesso in filtri
+  come `コスト4{{以下|いか}}のアビス` e serve a capire quali carte possono essere
+  cercate, recuperate o messe in campo. Quando la vedi, leggila come nome di una
+  famiglia di carte con sinergie comuni.
 level_hint: custom
 :::
 
@@ -129,8 +142,10 @@ meaning_it: Command / famiglia di creature
 pos: noun
 aliases: [コマンド, komando]
 notes_it: >-
-  Frequentissimo in SD2 dentro condizioni di [侵略](term:term-invasion), per
-  esempio `火のコマンド`.
+  È una famiglia di creature molto rilevante in SD2. Di solito compare dentro
+  condizioni come `{{火|ひ}}のコマンド` e ti dice quale attaccante o quale base è
+  valida per attivare un effetto. Quando la incontri, trattala come un filtro di
+  appartenenza.
 level_hint: custom
 :::
 
@@ -139,11 +154,14 @@ id: term-civilization
 lemma: 文明
 reading: ぶんめい
 romaji: bunmei
-meaning_it: civilta / civilization
+meaning_it: civiltà / civilization
 pos: noun
 aliases: [文明, ぶんめい, bunmei]
 notes_it: >-
-  Etichetta-colore della carta, come 火・水・自然・光・闇.
+  Indica il colore della carta, per esempio
+  {{火|ひ}}・{{水|みず}}・{{自然|しぜん}}・{{光|ひかり}}・{{闇|やみ}}. La
+  civiltà conta sia nell'anatomia della carta sia in molte condizioni del testo
+  effetto. Se leggi `{{火|ひ}}のコマンド`, la prima parte è proprio la civiltà.
 level_hint: n4
 :::
 
@@ -156,8 +174,10 @@ meaning_it: costo
 pos: noun
 aliases: [コスト, kosuto]
 notes_it: >-
-  Numero fondamentale sia nell'anatomia sia nei filtri del testo, come
-  `コスト4以下`.
+  È il numero che ti dice quanta mana serve per giocare la carta. Nel testo
+  effetto compare continuamente anche come filtro, per esempio
+  `コスト4{{以下|いか}}`. Quando lo vedi, chiediti se sta parlando del costo da
+  pagare o del limite di una carta bersaglio.
 level_hint: custom
 :::
 
@@ -170,8 +190,9 @@ meaning_it: potere / power
 pos: noun
 aliases: [パワー, pawaa]
 notes_it: >-
-  Numero di forza del [クリーチャー](term:term-creature). Ricorre anche in
-  filtri come `パワー2000以下`.
+  È il valore di forza di una creatura. Serve sia a descrivere la carta sia a
+  filtrare bersagli, per esempio in frasi come `パワー2000{{以下|いか}}`. Se appare
+  nel testo, quasi sempre decide cosa può essere colpito o sopravvivere.
 level_hint: custom
 :::
 
@@ -180,12 +201,13 @@ id: term-race
 lemma: 種族
 reading: しゅぞく
 romaji: shuzoku
-meaning_it: tribu / race
+meaning_it: tribù / race
 pos: noun
 aliases: [種族, しゅぞく, shuzoku]
 notes_it: >-
-  Linea di appartenenza della carta, per esempio `アビスロイヤル` o
-  `ソニック・コマンド`.
+  Indica la linea di appartenenza della carta, per esempio `アビスロイヤル` o
+  `ソニック・コマンド`. Non è un dettaglio decorativo: molte carte controllano
+  proprio la {{種族|しゅぞく}} per decidere se un effetto si applica.
 level_hint: n4
 :::
 
@@ -198,8 +220,9 @@ meaning_it: battle zone / campo
 pos: noun
 aliases: [バトルゾーン, batoruzoon]
 notes_it: >-
-  La zona di gioco principale: qui [出る](term:term-deru) creature e molti
-  [タマシード](term:term-tamaseed).
+  È il campo principale del gioco. Qui entrano creature e molti Tamaseed, qui
+  avvengono attacchi, distruzioni e sovrapposizioni. Se una carta `{{出|で}}る`,
+  di solito sta entrando proprio nel バトルゾーン.
 level_hint: custom
 :::
 
@@ -212,7 +235,9 @@ meaning_it: mana zone
 pos: noun
 aliases: [マナゾーン, manazoon]
 notes_it: >-
-  Zona delle risorse da cui paghi il [コスト](term:term-cost).
+  È la zona delle risorse con cui paghi il costo delle carte. Quando una carta
+  parla di コスト, questa è la zona che devi tenere a mente. Nel testo effetto
+  può comparire anche come luogo da cui spostare o controllare carte.
 level_hint: custom
 :::
 
@@ -225,8 +250,9 @@ meaning_it: shield zone
 pos: noun
 aliases: [シールドゾーン, shiirudozoon]
 notes_it: >-
-  Zona degli scudi. Da qui si attivano spesso carte con
-  [S・トリガー](term:term-s-trigger).
+  È la zona dei 5 scudi iniziali. Conta perché gli scudi sono il bersaglio
+  principale degli attacchi e perché da qui si attivano spesso carte con
+  S・トリガー. Se leggi シールド, pensa subito a difesa e rottura degli scudi.
 level_hint: custom
 :::
 
@@ -239,8 +265,11 @@ meaning_it: mazzo / deck
 pos: noun
 aliases: [山札, やまふだ, yamafuda]
 notes_it: >-
-  Lettura da fissare bene: {{山札|やまふだ}}. Le carte spesso dicono
-  `山札の上からX枚`.
+  È il mazzo di gioco. In Duel Masters compare molto spesso in frasi come
+  `{{山札|やまふだ}}の{{上|うえ}}からX{{枚|まい}}` perché molte carte fanno
+  pescare, mandano carte al cimitero o controllano la cima del mazzo. La lettura
+  da fissare bene è
+  {{山札|やまふだ}}.
 level_hint: n4
 :::
 
@@ -253,8 +282,9 @@ meaning_it: mano / hand
 pos: noun
 aliases: [手札, てふだ, tefuda]
 notes_it: >-
-  Lettura da fissare bene: {{手札|てふだ}}. Molti effetti fanno
-  [捨てる](term:term-suteru) o [戻す](term:term-modosu) carte in questa zona.
+  È la mano del giocatore. Nel testo delle carte compare spesso quando devi
+  scartare, mostrare, scegliere o far entrare una carta in gioco. La lettura da
+  memorizzare è {{手札|てふだ}}.
 level_hint: n4
 :::
 
@@ -267,7 +297,11 @@ meaning_it: cimitero / graveyard
 pos: noun
 aliases: [墓地, ぼち, bochi]
 notes_it: >-
-  Zona chiave di DM25-SD1. Lettura da memorizzare: {{墓地|ぼち}}.
+  È il cimitero del gioco. Qui finiscono spesso carte usate, distrutte o
+  scartate, ma da qui molte carte possono anche essere recuperate o rimesse in
+  campo. In questo media è una zona centrale soprattutto in SD1, quindi quando
+  leggi {{墓地|ぼち}} chiediti subito se l'effetto manda carte lì oppure le prende
+  da lì.
 level_hint: n4
 :::
 
@@ -280,7 +314,9 @@ meaning_it: se stessi / tu
 pos: noun
 aliases: [自分, じぶん, jibun]
 notes_it: >-
-  Nel testo carta indica il controllore dell'effetto: in pratica `tu`.
+  Nel testo delle carte significa quasi sempre "tu" o "il giocatore che
+  controlla questo effetto". Quando lo vedi, capisci subito da quale lato del
+  tavolo devi leggere l'azione.
 level_hint: n5
 :::
 
@@ -293,7 +329,9 @@ meaning_it: avversario / opponent
 pos: noun
 aliases: [相手, あいて, aite]
 notes_it: >-
-  L'altra parte del tavolo. Nei testi effetto e il bersaglio piu comune.
+  Significa "avversario". Ti dice che l'effetto riguarda l'altro giocatore o le
+  sue carte. È una delle parole più importanti da riconoscere subito, perché
+  cambia immediatamente il bersaglio dell'azione.
 level_hint: n5
 :::
 
@@ -306,8 +344,10 @@ meaning_it: evocazione / summon
 pos: verbal-noun
 aliases: [召喚, しょうかん, shoukan]
 notes_it: >-
-  Verbo-nome molto frequente. Compare in formule come
-  `コストを支払わずにすぐ召喚してもよい`.
+  Indica il normale atto di giocare una creatura pagando il suo costo. È utile
+  perché molte carte distinguono tra "entrare in gioco" in generale e "essere
+  evocata" in modo regolare. Se leggi `{{召喚|しょうかん}}{{以外|いがい}}`, sai già
+  che si parla di un ingresso speciale.
 level_hint: custom
 :::
 
@@ -320,8 +360,10 @@ meaning_it: attacco / attack
 pos: verbal-noun
 aliases: [攻撃, こうげき, kougeki]
 notes_it: >-
-  Fondamentale in trigger come `攻撃する時` e in frasi su chi puo attaccare il
-  giocatore.
+  Indica l'attacco. Compare spesso in trigger come
+  `{{攻撃|こうげき}}する{{時|とき}}` e in condizioni che si attivano proprio mentre
+  una creatura sta attaccando. Se vedi {{攻撃|こうげき}}, pensa subito a timing di
+  combattimento.
 level_hint: n4
 :::
 
@@ -334,8 +376,9 @@ meaning_it: distruzione / destroy
 pos: verbal-noun
 aliases: [破壊, はかい, hakai]
 notes_it: >-
-  Distruggere una carta in gioco. Non coincide sempre con
-  [離れる](term:term-hanareru), che e piu ampio.
+  Vuol dire "distruggere". Nel gioco indica un modo preciso in cui una carta
+  lascia il campo, ma non coincide con tutti i casi di uscita. È quindi utile
+  distinguerlo da {{離|はな}}れる, che è più ampio.
 level_hint: custom
 :::
 
@@ -348,7 +391,9 @@ meaning_it: rompere gli scudi / break
 pos: verbal-noun
 aliases: [ブレイク, ぶれいく, bureiku]
 notes_it: >-
-  In Duel Masters si usa soprattutto per gli scudi: `シールドを2つブレイクする`.
+  In Duel Masters si usa soprattutto per gli scudi. Se una carta "breaka", sta
+  rompendo gli scudi dell'avversario, non le sue creature. È quindi un verbo da
+  collegare subito alla condizione di vittoria.
 level_hint: custom
 :::
 
@@ -361,7 +406,9 @@ meaning_it: tappare / mettere tapped
 pos: verbal-noun
 aliases: [タップ, tappu]
 notes_it: >-
-  Stato molto frequente per attaccare, bloccare o usare effetti.
+  Significa mettere una carta in stato tappato. Nel linguaggio delle carte è
+  una delle azioni più frequenti, perché riguarda attacco, blocco e molti
+  effetti di controllo del campo.
 level_hint: custom
 :::
 
@@ -374,8 +421,8 @@ meaning_it: stappare / untap
 pos: verbal-noun
 aliases: [アンタップ, antappu]
 notes_it: >-
-  Azione inversa di [タップ](term:term-tap). Compare spesso a fine attacco o
-  all'inizio del turno.
+  È l'azione opposta di タップ. Quando compare, di solito ti sta dicendo che una
+  carta torna disponibile per attaccare, bloccare o restare attiva sul campo.
 level_hint: custom
 :::
 
@@ -388,8 +435,10 @@ meaning_it: sovrapporre / mettere sopra
 pos: ichidan-verb
 aliases: [重ねる, かさねる, kasaneru]
 notes_it: >-
-  Verbo chiave di [侵略](term:term-invasion) e in generale delle meccaniche di
-  [進化](term:term-evolution).
+  Vuol dire mettere una carta sopra un'altra. È un verbo chiave per leggere
+  bene {{進化|しんか}}, {{侵略|しんりゃく}} e in generale tutte le meccaniche di
+  sovrapposizione. Quando lo incontri, immagina proprio una carta che si appoggia
+  sopra una base.
 level_hint: custom
 :::
 
@@ -402,8 +451,10 @@ meaning_it: uscire / entrare in gioco
 pos: ichidan-verb
 aliases: [出る, でる, deru]
 notes_it: >-
-  Verbo intransitivo. Frequentissimo in `このクリーチャーが出た時`. Confronta
-  [出す](term:term-dasu).
+  È il verbo intransitivo di ingresso. La carta "entra" o "appare" nel campo.
+  Nelle carte compare spesso in trigger come
+  `このクリーチャーが{{出|で}}た{{時|とき}}`. Quando lo vedi, pensa al fatto che la
+  carta entra da sola nella frase, senza indicare chi la mette.
 level_hint: n5
 :::
 
@@ -416,9 +467,10 @@ meaning_it: far uscire / mettere in gioco
 pos: godan-verb
 aliases: [出す, だす, dasu]
 notes_it: >-
-  Verbo transitivo. Un effetto fa [出す](term:term-dasu) qualcosa da
-  [墓地](term:term-graveyard), [手札](term:term-hand) o altra zona. Confronta
-  [出る](term:term-deru).
+  È il verbo transitivo di ingresso. Qualcuno fa entrare qualcosa in gioco.
+  Compare spesso in frasi come `{{墓地|ぼち}}から{{出|だ}}す` o
+  `{{手札|てふだ}}から{{出|だ}}す`. La differenza rispetto a {{出|で}}る è proprio
+  questa: qui l'effetto muove attivamente una carta.
 level_hint: n5
 :::
 
@@ -431,8 +483,9 @@ meaning_it: mettere / porre
 pos: godan-verb
 aliases: [置く, おく, oku]
 notes_it: >-
-  Verbo molto neutro e frequentissimo: `墓地に置く`, `山札の下に置く`,
-  `上に置く`.
+  È un verbo molto neutro ma molto frequente. Può voler dire mettere una carta
+  nel cimitero, in fondo al mazzo, sopra un'altra carta o in un'altra zona. Se
+  trovi {{置|お}}く, guarda sempre bene qual è la destinazione.
 level_hint: n5
 :::
 
@@ -445,7 +498,8 @@ meaning_it: scegliere
 pos: godan-verb
 aliases: [選ぶ, えらぶ, erabu]
 notes_it: >-
-  Verbo centrale per bersagli e selezioni.
+  Vuol dire scegliere un bersaglio o una carta. È il verbo che ti fa capire che
+  l'effetto non è casuale ma richiede una selezione precisa.
 level_hint: n5
 :::
 
@@ -458,8 +512,9 @@ meaning_it: pescare / tirare
 pos: godan-verb
 aliases: [引く, ひく, hiku]
 notes_it: >-
-  Nel contesto carte significa soprattutto pescare una carta dalla
-  [山札](term:term-deck).
+  Nel contesto delle carte significa soprattutto pescare dal mazzo. È uno dei
+  verbi più semplici da riconoscere: se compare {{引|ひ}}く, stai quasi sempre
+  aggiungendo carte alla mano.
 level_hint: n5
 :::
 
@@ -472,7 +527,9 @@ meaning_it: scartare / buttare via
 pos: ichidan-verb
 aliases: [捨てる, すてる, suteru]
 notes_it: >-
-  Spesso significa scartare dalla [手札](term:term-hand).
+  Significa scartare, di solito dalla mano. Quando lo vedi, pensa subito a una
+  perdita di risorse in mano o a un costo da pagare per ottenere un altro
+  effetto.
 level_hint: n5
 :::
 
@@ -485,7 +542,9 @@ meaning_it: rimandare / restituire
 pos: godan-verb
 aliases: [戻す, もどす, modosu]
 notes_it: >-
-  Verbo di ritorno verso una zona, per esempio la [手札](term:term-hand).
+  Vuol dire riportare una carta in una certa zona, molto spesso la mano. Quando
+  trovi {{戻|もど}}す, cerca subito il punto di partenza e quello di arrivo:
+  l'effetto parla quasi sempre di un ritorno.
 level_hint: n4
 :::
 
@@ -498,8 +557,9 @@ meaning_it: lasciare / allontanarsi
 pos: ichidan-verb
 aliases: [離れる, はなれる, hanareru]
 notes_it: >-
-  Verbo tecnico molto importante. Significa lasciare la zona attuale; e piu
-  ampio di [破壊](term:term-destroy).
+  È un verbo tecnico molto importante. Significa lasciare una zona, soprattutto
+  il campo. Non vuol dire per forza "essere distrutto": comprende anche altri
+  modi di uscire. Per questo è più ampio di {{破壊|はかい}}.
 level_hint: custom
 :::
 
@@ -512,7 +572,10 @@ meaning_it: trattare come / considerare
 pos: godan-verb
 aliases: [扱う, あつかう, atsukau]
 notes_it: >-
-  Chiave per frasi come `クリーチャーとして扱わない` = non conta come creatura.
+  Serve a dire come il gioco considera una carta. In frasi come
+  `クリーチャーとして{{扱|あつか}}わない`, il punto non è che la carta cambia
+  testo: il punto è che il gioco smette di contarla come creatura in quel
+  contesto.
 level_hint: custom
 :::
 
@@ -525,8 +588,9 @@ meaning_it: attivazione da scudo
 pos: keyword
 aliases: [S・トリガー, Sトリガー, esutorigaa]
 notes_it: >-
-  Keyword reattiva dalla [シールドゾーン](term:term-shield-zone). Di solito e
-  seguita da una spiegazione in parentesi.
+  È la keyword che ti dice che la carta può attivarsi dagli scudi quando viene
+  rivelata nel momento giusto. In pratica è una forma di risposta difensiva.
+  Se la vedi, collega subito la carta alla シールドゾーン.
 level_hint: custom
 :::
 
@@ -539,7 +603,9 @@ meaning_it: rompe 2 scudi
 pos: keyword
 aliases: [W・ブレイカー, Wブレイカー, daburubureikaa]
 notes_it: >-
-  Keyword che fa rompere 2 scudi.
+  È una keyword offensiva: quella creatura rompe 2 scudi invece di 1 quando
+  attacca il giocatore. Va letta come aumento immediato della pressione
+  offensiva.
 level_hint: custom
 :::
 
@@ -552,7 +618,9 @@ meaning_it: rompe 3 scudi
 pos: keyword
 aliases: [T・ブレイカー, Tブレイカー, toripurubureikaa]
 notes_it: >-
-  Keyword che fa rompere 3 scudi.
+  Funziona come W・ブレイカー, ma ancora più forte: quella creatura rompe 3
+  scudi in un attacco. Se compare, è un segnale chiaro di forte pressione
+  offensiva.
 level_hint: custom
 :::
 
@@ -560,10 +628,14 @@ level_hint: custom
 id: grammar-toki
 pattern: ～時 / ～た時
 title: Trigger con 時
+reading: とき / たとき
 meaning_it: quando / nel momento in cui
 aliases: [～する時, ～た時]
 notes_it: >-
-  E il pattern-base dei trigger: `出た時`, `攻撃する時`, `離れる時`.
+  È il pattern base dei trigger. Non ti dice ancora che cosa fa l'effetto: ti
+  dice quando si attiva. In carte come `{{出|で}}た{{時|とき}}` o
+  `{{攻撃|こうげき}}する{{時|とき}}`, la parte con {{時|とき}} va letta prima di
+  tutto come indicazione di timing.
 level_hint: n4
 :::
 
@@ -574,8 +646,9 @@ title: Sequenza successiva
 meaning_it: dopo quello / poi
 aliases: [そのあと]
 notes_it: >-
-  Introduce il passo successivo della risoluzione. In carta segnala ordine, non
-  semplice stile.
+  Introduce il blocco successivo della risoluzione. Se leggi
+  {{その後|そのあと}}, la frase non è finita: dopo il primo passo c'è un'altra
+  azione da leggere in ordine.
 level_hint: n4
 :::
 
@@ -586,7 +659,8 @@ title: Conseguenza se lo fai
 meaning_it: se lo fai, allora / in quel caso
 aliases: [そうしたなら]
 notes_it: >-
-  La seconda parte dipende davvero dall'azione precedente.
+  Introduce una conseguenza che dipende davvero dal passo precedente. In
+  pratica: se il primo pezzo si realizza, allora si apre il secondo.
 level_hint: n4
 :::
 
@@ -594,11 +668,11 @@ level_hint: n4
 id: grammar-temoyoi
 pattern: ～てもよい
 title: Azione opzionale
-meaning_it: puoi fare / e consentito fare
+meaning_it: puoi fare / è consentito fare
 aliases: [～してもよい]
 notes_it: >-
-  Segnala scelta del giocatore. Se non scegli di farlo, la frase va comunque
-  letta con attenzione fino in fondo.
+  Segnala che il giocatore può scegliere. Quando lo vedi, sai subito che quella
+  parte dell'effetto non è obbligatoria.
 level_hint: n4
 :::
 
@@ -609,7 +683,8 @@ title: Sostituzione
 meaning_it: invece di / al posto di
 aliases: [代わりに]
 notes_it: >-
-  Sostituisce un evento o un risultato, spesso insieme a `離れる時`.
+  Indica una sostituzione. Non aggiunge semplicemente un'azione: ti dice che un
+  evento prende il posto di un altro.
 level_hint: n4
 :::
 
@@ -620,19 +695,20 @@ title: Condizione negativa
 meaning_it: se non / a meno che non
 aliases: [～なければ]
 notes_it: >-
-  Molto comune in formule tecniche come
-  `なければ、クリーチャーとして扱わない`.
+  È un pattern di condizione negativa. Ti dice che, se un requisito non è
+  soddisfatto, l'effetto o lo stato finale non si applicano.
 level_hint: n4
 :::
 
 :::grammar
 id: grammar-teireba
 pattern: ～ていれば
-title: Condizione di stato gia presente
-meaning_it: se / quando e gia in quello stato
+title: Condizione di stato già presente
+meaning_it: se / quando è già in quello stato
 aliases: [～でいれば, ～していれば]
 notes_it: >-
-  Controlla uno stato gia realizzato, per esempio `タマシードから進化していれば`.
+  Controlla uno stato già realizzato. In pratica la carta guarda se una certa
+  condizione è già vera e, solo in quel caso, concede il resto dell'effetto.
 level_hint: n4
 :::
 
@@ -640,10 +716,13 @@ level_hint: n4
 id: grammar-igai-no-houhou-de
 pattern: ～以外の方法で
 title: Mezzo escluso
+reading: いがいのほうほうで
 meaning_it: con un metodo diverso da
 aliases: [以外の方法で]
 notes_it: >-
-  Frequente in formule come `召喚以外の方法で出す`.
+  Serve a escludere un metodo preciso. Se leggi
+  `{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}で`, la carta sta dicendo
+  che conta tutto tranne la normale evocazione.
 level_hint: custom
 :::
 
@@ -651,11 +730,12 @@ level_hint: custom
 id: grammar-ika-ijou
 pattern: ～以下 / ～以上
 title: Limiti numerici
+reading: いか / いじょう
 meaning_it: al massimo / almeno
 aliases: [以下, 以上]
 notes_it: >-
-  Serve per leggere filtri come `コスト4以下`, `パワー2000以下`,
-  `合計4つ以上`.
+  È il pattern dei filtri numerici. In frasi come `コスト4{{以下|いか}}` o
+  `パワー2000{{以下|いか}}`, decide quali carte rientrano davvero nell'effetto.
 level_hint: n4
 :::
 
@@ -663,11 +743,12 @@ level_hint: n4
 id: grammar-turn-timing
 pattern: ～のはじめに / ～の終わりに
 title: Timing di inizio o fine turno
+reading: のはじめに / のおわりに
 meaning_it: all'inizio di / alla fine di
 aliases: [ターンのはじめに, ターンの終わりに]
 notes_it: >-
-  Fondamentale per effetti ricorrenti e per leggere bene il momento esatto della
-  risoluzione.
+  Serve a fissare un punto preciso del turno. Prima di leggere il resto,
+  chiediti sempre: l'effetto scatta all'inizio o alla fine di qualcosa?
 level_hint: n4
 :::
 
@@ -675,10 +756,11 @@ level_hint: n4
 id: grammar-tadashi
 pattern: ただし
 title: Restrizione o eccezione
-meaning_it: pero / salvo che / con la seguente limitazione
+meaning_it: però / salvo che / con la seguente limitazione
 aliases: [但し]
 notes_it: >-
-  Arriva spesso dopo l'effetto principale e ne restringe la portata.
+  Introduce una limitazione finale. In pratica ti dice che l'effetto vale, ma
+  con un confine preciso che non puoi superare.
 level_hint: n4
 :::
 
@@ -689,6 +771,10 @@ entry_id: term-creature
 card_type: recognition
 front: クリーチャー
 back: creatura
+notes_it: >-
+  È il tipo di carta base del gioco. Se la vedi, pensa a una carta che entra nel
+  campo, attacca, blocca o subisce effetti. Nel testo può comparire anche come
+  bersaglio o come requisito.
 tags: [core, type]
 :::
 
@@ -699,6 +785,9 @@ entry_id: term-spell
 card_type: recognition
 front: 呪文
 back: magia / spell
+notes_it: >-
+  Indica una magia. In genere la giochi per il suo effetto e poi non resta sul
+  campo. Quando leggi {{呪文|じゅもん}}, aspettati un effetto immediato.
 tags: [core, type]
 :::
 
@@ -710,8 +799,9 @@ card_type: recognition
 front: タマシード
 back: tipo di carta Tamaseed
 notes_it: >-
-  Carta persistente nel [バトルゾーン](term:term-battle-zone). Molto rilevante
-  per [進化](term:term-evolution) e [シンカライズ](term:term-shinkarize).
+  È un tipo di carta che resta nel campo e che, in questo media, conta
+  soprattutto come base per {{進化|しんか}} o シンカライズ. Non leggerla come una
+  creatura normale.
 tags: [core, type, keyword]
 :::
 
@@ -723,8 +813,8 @@ card_type: recognition
 front: ブロッカー
 back: bloccante
 notes_it: >-
-  Keyword difensiva molto comune, anche se non spiega da sola tutto il timing
-  del blocco.
+  Keyword difensiva. Se la creatura ha ブロッカー, può fermare un attacco
+  avversario. È un segnale chiaro di difesa.
 tags: [core, keyword]
 :::
 
@@ -736,8 +826,8 @@ card_type: recognition
 front: 進化
 back: evoluzione
 notes_it: >-
-  In DM25-SD2 devi riconoscerlo subito anche dentro composti come
-  `進化クリーチャー`.
+  Ti dice che la carta va messa sopra una base valida. Se compare, controlla
+  sempre quale carta deve stare sotto e quali condizioni servono.
 tags: [core, keyword]
 :::
 
@@ -749,8 +839,9 @@ card_type: recognition
 front: 侵略
 back: invasione
 notes_it: >-
-  Keyword da leggere come ingresso aggressivo dalla [手札](term:term-hand)
-  durante l'[攻撃](term:term-attack).
+  Keyword offensiva tipica di SD2. Di solito permette di mettere una creatura
+  dalla mano sopra un attaccante durante l'attacco. Cerca sempre l'attaccante
+  richiesto.
 tags: [core, keyword, dm25-sd2]
 :::
 
@@ -762,8 +853,8 @@ card_type: recognition
 front: シンカライズ
 back: effetto che permette di evolvere sopra un Tamaseed
 notes_it: >-
-  Legalo mentalmente ai [タマシード](term:term-tamaseed), non alle creature
-  normali.
+  Serve a collegare i Tamaseed alle carte di evoluzione. Quando lo vedi, pensa
+  subito a una meccanica di sovrapposizione con un Tamaseed come base.
 tags: [core, keyword, dm25-sd2]
 :::
 
@@ -775,7 +866,8 @@ card_type: recognition
 front: アビス
 back: Abyss / gruppo di carte Abyss
 notes_it: >-
-  Fondamentale per leggere SD1 e filtri come `コスト4以下のアビス`.
+  È un'etichetta di gruppo fondamentale in SD1. Se appare, controlla se la
+  frase sta filtrando quali carte puoi scegliere, recuperare o mettere in campo.
 tags: [core, group, dm25-sd1]
 :::
 
@@ -787,7 +879,8 @@ card_type: recognition
 front: コマンド
 back: Command / famiglia di creature
 notes_it: >-
-  In SD2 ricorre spesso dentro le condizioni di [侵略](term:term-invasion).
+  È una famiglia di creature molto importante in SD2. Di solito compare come
+  condizione: non basta attaccare, deve attaccare proprio il tipo giusto.
 tags: [core, group, dm25-sd2]
 :::
 
@@ -797,7 +890,11 @@ entry_type: term
 entry_id: term-civilization
 card_type: recognition
 front: 文明
-back: civilta / civilization
+back: civiltà / civilization
+notes_it: >-
+  È il colore della carta. Serve sia a leggere l'anatomia della carta sia a
+  capire filtri come `{{火|ひ}}のコマンド` o effetti che richiedono una civiltà
+  precisa.
 tags: [core, anatomy]
 :::
 
@@ -808,6 +905,9 @@ entry_id: term-cost
 card_type: recognition
 front: コスト
 back: costo
+notes_it: >-
+  È il numero di mana richiesto per giocare la carta. Nel testo effetto può
+  anche diventare un filtro, per esempio in `コスト4{{以下|いか}}`.
 tags: [core, anatomy, filter]
 :::
 
@@ -818,6 +918,9 @@ entry_id: term-power
 card_type: recognition
 front: パワー
 back: potere / power
+notes_it: >-
+  È la forza della creatura. Se compare nel testo, di solito serve a limitare i
+  bersagli o a definire quali creature vengono colpite.
 tags: [core, anatomy, filter]
 :::
 
@@ -827,7 +930,10 @@ entry_type: term
 entry_id: term-race
 card_type: recognition
 front: 種族
-back: tribu / race
+back: tribù / race
+notes_it: >-
+  È la linea di appartenenza della carta. In molte frasi non è decorativa:
+  decide se una carta rientra davvero nel filtro dell'effetto.
 tags: [core, anatomy]
 :::
 
@@ -838,6 +944,9 @@ entry_id: term-battle-zone
 card_type: recognition
 front: バトルゾーン
 back: battle zone / campo
+notes_it: >-
+  È il campo principale del gioco. Qui entrano le creature, qui si attacca, qui
+  molte carte vengono distrutte o sovrapposte.
 tags: [core, zone]
 :::
 
@@ -848,6 +957,9 @@ entry_id: term-mana-zone
 card_type: recognition
 front: マナゾーン
 back: mana zone
+notes_it: >-
+  È la zona delle risorse. Se una carta parla di pagare il costo o di spostare
+  carte nella mana, devi pensare a questa zona.
 tags: [core, zone]
 :::
 
@@ -858,6 +970,9 @@ entry_id: term-shield-zone
 card_type: recognition
 front: シールドゾーン
 back: shield zone
+notes_it: >-
+  È la zona dei 5 scudi. Conta sia perché gli attacchi colpiscono gli scudi sia
+  perché qui si attivano spesso carte con S・トリガー.
 tags: [core, zone]
 :::
 
@@ -869,7 +984,9 @@ card_type: recognition
 front: 山札
 back: mazzo / deck
 notes_it: >-
-  Lettura da fissare: {{山札|やまふだ}}.
+  Significa "mazzo". Compare spesso in frasi come
+  `{{山札|やまふだ}}の{{上|うえ}}からX{{枚|まい}}`. La lettura da fissare bene è
+  {{山札|やまふだ}}.
 tags: [core, zone, kanji]
 :::
 
@@ -881,7 +998,8 @@ card_type: recognition
 front: 手札
 back: mano / hand
 notes_it: >-
-  Lettura da fissare: {{手札|てふだ}}.
+  Significa "mano". Se compare, controlla se la carta viene scartata, mostrata
+  o fatta entrare in gioco dalla mano. La lettura è {{手札|てふだ}}.
 tags: [core, zone, kanji]
 :::
 
@@ -893,7 +1011,9 @@ card_type: recognition
 front: 墓地
 back: cimitero / graveyard
 notes_it: >-
-  Lettura da fissare: {{墓地|ぼち}}.
+  Significa "cimitero". In questo media è una zona centrale soprattutto in SD1.
+  Se compare, chiediti subito se l'effetto manda carte nel cimitero, le riprende
+  da lì o le mette di nuovo in campo. La lettura è {{墓地|ぼち}}.
 tags: [core, zone, kanji, dm25-sd1]
 :::
 
@@ -904,6 +1024,9 @@ entry_id: term-self
 card_type: recognition
 front: 自分
 back: se stessi / tu
+notes_it: >-
+  Significa "tu" nel contesto della carta. Ti dice che l'effetto riguarda il
+  giocatore che controlla la carta o l'effetto stesso.
 tags: [core, actor]
 :::
 
@@ -914,6 +1037,9 @@ entry_id: term-opponent
 card_type: recognition
 front: 相手
 back: avversario / opponent
+notes_it: >-
+  Significa "avversario". È una parola chiave da riconoscere subito, perché ti
+  dice che il bersaglio o la zona coinvolta sono dall'altro lato del tavolo.
 tags: [core, actor]
 :::
 
@@ -925,7 +1051,9 @@ card_type: recognition
 front: 召喚
 back: evocazione / summon
 notes_it: >-
-  Spesso appare nella spiegazione di [S・トリガー](term:term-s-trigger).
+  Indica la normale evocazione di una creatura pagando il costo. Se una carta
+  distingue `{{召喚|しょうかん}}` da altri modi di entrare in gioco, sta facendo un
+  contrasto regolisticamente importante.
 tags: [core, action, kanji]
 :::
 
@@ -936,6 +1064,9 @@ entry_id: term-attack
 card_type: recognition
 front: 攻撃
 back: attacco / attack
+notes_it: >-
+  Significa "attacco". Compare spesso in trigger e condizioni: se lo vedi,
+  aspettati un effetto che si attiva durante il combattimento.
 tags: [core, action, kanji]
 :::
 
@@ -947,7 +1078,8 @@ card_type: recognition
 front: 破壊
 back: distruzione / destroy
 notes_it: >-
-  Non coincide sempre con [離れる](term:term-hanareru).
+  Significa "distruggere". Non va confuso con ogni possibile uscita dal campo:
+  è un caso specifico, più stretto di {{離|はな}}れる.
 tags: [core, action, kanji]
 :::
 
@@ -959,7 +1091,8 @@ card_type: recognition
 front: ブレイク
 back: rompere gli scudi / break
 notes_it: >-
-  Riguarda soprattutto gli scudi, non le creature.
+  Vuol dire rompere gli scudi dell'avversario. È un verbo da collegare subito
+  alla pressione offensiva e alla vittoria.
 tags: [core, action]
 :::
 
@@ -971,7 +1104,8 @@ card_type: recognition
 front: タップ
 back: tappare / mettere tapped
 notes_it: >-
-  Stato molto ricorrente nel linguaggio carta.
+  Significa mettere una carta in stato tappato. Compare spesso in attacco, nel
+  blocco e negli effetti che controllano il ritmo del campo.
 tags: [core, action]
 :::
 
@@ -983,7 +1117,7 @@ card_type: recognition
 front: アンタップ
 back: stappare / untap
 notes_it: >-
-  Azione opposta a [タップ](term:term-tap).
+  È l'opposto di タップ. Quando lo vedi, una carta torna disponibile sul campo.
 tags: [core, action]
 :::
 
@@ -995,8 +1129,8 @@ card_type: recognition
 front: 重ねる
 back: sovrapporre / mettere sopra
 notes_it: >-
-  Verbo centrale per leggere bene [侵略](term:term-invasion) e molte
-  [進化](term:term-evolution).
+  Significa mettere una carta sopra un'altra. È uno dei verbi chiave per capire
+  {{進化|しんか}}, {{侵略|しんりゃく}} e tutte le meccaniche di sovrapposizione.
 tags: [core, action, kanji]
 :::
 
@@ -1008,7 +1142,8 @@ card_type: recognition
 front: 出る
 back: uscire / entrare in gioco
 notes_it: >-
-  Verbo intransitivo. Confronta [出す](term:term-dasu).
+  È il verbo intransitivo di ingresso. Se una carta `{{出|で}}た{{時|とき}}`, il
+  trigger parte nel momento in cui entra in gioco.
 tags: [core, action, kanji]
 :::
 
@@ -1020,7 +1155,8 @@ card_type: recognition
 front: 出す
 back: far uscire / mettere in gioco
 notes_it: >-
-  Verbo transitivo. Confronta [出る](term:term-deru).
+  È il verbo transitivo di ingresso. Qui c'è sempre un effetto che fa entrare
+  una carta in gioco da una certa zona.
 tags: [core, action, kanji]
 :::
 
@@ -1031,6 +1167,9 @@ entry_id: term-oku
 card_type: recognition
 front: 置く
 back: mettere / porre
+notes_it: >-
+  È un verbo molto comune e molto neutro. Per capirlo davvero devi guardare la
+  destinazione: nel cimitero, nel mazzo, sopra una carta o altrove.
 tags: [core, action, kanji]
 :::
 
@@ -1041,6 +1180,9 @@ entry_id: term-erabu
 card_type: recognition
 front: 選ぶ
 back: scegliere
+notes_it: >-
+  Indica una scelta. Se compare, l'effetto non è casuale: qualcuno deve
+  selezionare un bersaglio o una carta precisa.
 tags: [core, action, kanji]
 :::
 
@@ -1051,6 +1193,9 @@ entry_id: term-hiku
 card_type: recognition
 front: 引く
 back: pescare / tirare
+notes_it: >-
+  Nel linguaggio delle carte significa quasi sempre pescare. È uno dei verbi più
+  diretti da riconoscere.
 tags: [core, action, kanji]
 :::
 
@@ -1061,6 +1206,9 @@ entry_id: term-suteru
 card_type: recognition
 front: 捨てる
 back: scartare / buttare via
+notes_it: >-
+  Significa scartare, di solito dalla mano. Spesso è un costo o una perdita che
+  serve ad attivare un effetto migliore.
 tags: [core, action, kanji]
 :::
 
@@ -1071,6 +1219,9 @@ entry_id: term-modosu
 card_type: recognition
 front: 戻す
 back: rimandare / restituire
+notes_it: >-
+  Significa riportare una carta in una zona, molto spesso la mano. Leggilo come
+  verbo di ritorno.
 tags: [core, action, kanji]
 :::
 
@@ -1082,7 +1233,8 @@ card_type: recognition
 front: 離れる
 back: lasciare / allontanarsi
 notes_it: >-
-  Piu ampio di [破壊](term:term-destroy).
+  Significa lasciare una zona, soprattutto il campo. È più ampio di
+  {{破壊|はかい}}, quindi non va letto come semplice distruzione.
 tags: [core, action, kanji]
 :::
 
@@ -1094,7 +1246,9 @@ card_type: recognition
 front: 扱う
 back: trattare come / considerare
 notes_it: >-
-  Chiave per leggere `クリーチャーとして扱わない`.
+  Ti dice come il gioco considera una carta. In frasi negative, come
+  `クリーチャーとして{{扱|あつか}}わない`, cambia il modo in cui quella carta
+  viene contata.
 tags: [core, action, kanji]
 :::
 
@@ -1106,7 +1260,8 @@ card_type: recognition
 front: S・トリガー
 back: attivazione da scudo
 notes_it: >-
-  Di solito accompagnato da una parentesi esplicativa.
+  Keyword difensiva legata agli scudi. Se appare, la carta può attivarsi da uno
+  scudo nel momento giusto invece di restare solo una carta difensiva passiva.
 tags: [core, keyword]
 :::
 
@@ -1118,7 +1273,8 @@ card_type: recognition
 front: W・ブレイカー
 back: rompe 2 scudi
 notes_it: >-
-  Rompe 2 scudi.
+  Keyword offensiva che fa rompere 2 scudi in un attacco. È un segnale chiaro
+  di pressione sul giocatore avversario.
 tags: [core, keyword]
 :::
 
@@ -1130,7 +1286,8 @@ card_type: recognition
 front: T・ブレイカー
 back: rompe 3 scudi
 notes_it: >-
-  Rompe 3 scudi.
+  Versione ancora più forte di W・ブレイカー: la creatura rompe 3 scudi con un
+  solo attacco.
 tags: [core, keyword]
 :::
 
@@ -1142,7 +1299,8 @@ card_type: concept
 front: ～時 / ～た時
 back: quando / nel momento in cui
 notes_it: >-
-  Di solito introduce il trigger prima dell'effetto vero e proprio.
+  È il pattern base dei trigger. Prima ti dice quando succede qualcosa, poi ti
+  lascia leggere l'effetto vero e proprio.
 tags: [core, grammar, timing]
 :::
 
@@ -1154,7 +1312,8 @@ card_type: concept
 front: その後
 back: dopo quello / poi
 notes_it: >-
-  Continua la sequenza della frase.
+  Ti avvisa che c'è un secondo blocco nella stessa risoluzione. La frase non si
+  ferma al primo effetto.
 tags: [core, grammar, sequence]
 :::
 
@@ -1166,7 +1325,8 @@ card_type: concept
 front: そうしたら
 back: se lo fai, allora / in quel caso
 notes_it: >-
-  La seconda parte dipende dal fatto che tu abbia eseguito la prima.
+  Indica che il secondo pezzo dipende dal fatto che il primo si sia davvero
+  realizzato.
 tags: [core, grammar, sequence]
 :::
 
@@ -1176,9 +1336,10 @@ entry_type: grammar
 entry_id: grammar-temoyoi
 card_type: concept
 front: ～てもよい
-back: puoi fare / e consentito fare
+back: puoi fare / è consentito fare
 notes_it: >-
-  Segna scelta opzionale del giocatore.
+  Segnala una scelta opzionale. Quando lo vedi, sai che il giocatore può
+  decidere se compiere quell'azione o no.
 tags: [core, grammar, option]
 :::
 
@@ -1190,7 +1351,8 @@ card_type: concept
 front: かわりに
 back: invece di / al posto di
 notes_it: >-
-  Pensa a una sostituzione, non a un'aggiunta.
+  Va letto come sostituzione, non come aggiunta. Un evento prende il posto di un
+  altro.
 tags: [core, grammar, replacement]
 :::
 
@@ -1202,7 +1364,8 @@ card_type: concept
 front: ～なければ ... ない
 back: se non / a meno che non
 notes_it: >-
-  Spesso compare in formule regolistice molto compatte.
+  Indica una condizione negativa. Se il requisito non è soddisfatto, l'effetto
+  o lo stato descritto non valgono.
 tags: [core, grammar, condition]
 :::
 
@@ -1212,9 +1375,10 @@ entry_type: grammar
 entry_id: grammar-teireba
 card_type: concept
 front: ～ていれば
-back: se / quando e gia in quello stato
+back: se / quando è già in quello stato
 notes_it: >-
-  Controlla uno stato gia soddisfatto.
+  Controlla uno stato già soddisfatto. La carta verifica una situazione già
+  vera prima di concedere il resto dell'effetto.
 tags: [core, grammar, condition]
 :::
 
@@ -1226,7 +1390,8 @@ card_type: concept
 front: ～以外の方法で
 back: con un metodo diverso da
 notes_it: >-
-  Esclude un mezzo preciso, spesso la [召喚](term:term-summon).
+  Esclude un mezzo preciso. Se compare, chiediti subito quale metodo viene
+  escluso dal testo.
 tags: [core, grammar, restriction]
 :::
 
@@ -1238,8 +1403,8 @@ card_type: concept
 front: ～以下 / ～以上
 back: al massimo / almeno
 notes_it: >-
-  Allenati a leggerlo insieme a [コスト](term:term-cost) e
-  [パワー](term:term-power).
+  È il pattern dei limiti numerici. Serve a capire quali carte rientrano nel
+  filtro dell'effetto e quali no.
 tags: [core, grammar, filter]
 :::
 
@@ -1251,7 +1416,8 @@ card_type: concept
 front: ～のはじめに / ～の終わりに
 back: all'inizio di / alla fine di
 notes_it: >-
-  Fissa prima il momento del turno, poi l'effetto.
+  Fissa il momento preciso del turno in cui un effetto si attiva. Va letto
+  prima del resto della frase.
 tags: [core, grammar, timing]
 :::
 
@@ -1261,8 +1427,9 @@ entry_type: grammar
 entry_id: grammar-tadashi
 card_type: concept
 front: ただし
-back: pero / salvo che / con la seguente limitazione
+back: però / salvo che / con la seguente limitazione
 notes_it: >-
-  Leggilo come restrizione finale dell'effetto.
+  Introduce la limitazione finale dell'effetto. Dopo ただし devi cercare il
+  confine che restringe quello che hai appena letto.
 tags: [core, grammar, restriction]
 :::

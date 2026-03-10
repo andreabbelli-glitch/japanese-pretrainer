@@ -229,7 +229,7 @@ function renderInlineNode(node: InlineNode): string {
     case "strong":
       return `<strong>${renderInlineNodes(node.children)}</strong>`;
     case "inlineCode":
-      return `<code>${escapeHtml(node.value)}</code>`;
+      return `<code>${renderInlineNodes(node.children)}</code>`;
     case "link": {
       const titleAttribute = node.title
         ? ` title="${escapeAttribute(node.title)}"`
@@ -312,7 +312,7 @@ function extractInlineNodesText(nodes: InlineNode[]): string {
         case "link":
           return extractInlineNodesText(node.children);
         case "inlineCode":
-          return node.value;
+          return extractInlineNodesText(node.children);
         case "break":
           return " ";
       }
