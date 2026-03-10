@@ -461,9 +461,6 @@ rt {
 }
 
 .sticky-page-header {
-  position: sticky;
-  top: calc(var(--app-header-height-mobile) + var(--space-2));
-  z-index: calc(var(--z-sticky) - 1);
 }
 
 .sticky-page-header__inner {
