@@ -8,14 +8,14 @@ language: ja
 base_explanation_language: it
 status: active
 tags: [<tag-1>, <tag-2>]
+description: >-
+  <Una o due frasi che descrivono il pacchetto di studio: cosa copre, con quale
+  taglio didattico e a chi si rivolge. Questo testo viene mostrato nell'UI
+  al posto di un excerpt automatico del corpo del file.>
 ---
 
 # <titolo-media>
 
-<Descrizione breve del pacchetto di studio. Deve spiegare cosa copre questo
-media package e con quale taglio didattico.>
-
-<!--
-Se in futuro aggiungi campi descrittivi YAML come `description` o `notes` nel
-frontmatter, serializzali in `>-` invece che come plain scalar.
--->
+<Corpo del documento: descrizione estesa facoltativa, note operative, contesto
+del media. Questo testo NON viene usato come description nell'UI se il frontmatter
+ha già il campo description compilato.>

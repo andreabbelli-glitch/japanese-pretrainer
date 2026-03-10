@@ -9,6 +9,9 @@ difficulty: n4
 status: active
 tags: [core, anatomy, vocabulary, tcg-language]
 prerequisites: []
+summary: >-
+  Prima scansione di una carta Duel Masters: riconosci tipo, zone, attori,
+  verbi base e keyword ricorrenti negli effetti di DM25-SD1 e DM25-SD2.
 ---
 
 # Obiettivo

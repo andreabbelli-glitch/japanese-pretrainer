@@ -85,7 +85,7 @@ export function renderLessonHtml(document: MarkdownDocument): string {
 
 export function buildLessonExcerpt(
   document: MarkdownDocument,
-  maxLength = 220
+  maxLength = 400
 ): string | null {
   const plainText = document.blocks
     .map((block) => extractBlockText(block))

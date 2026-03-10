@@ -9,6 +9,9 @@ difficulty: n4
 status: active
 tags: [core, grammar, rules-text, effects]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-overview]
+summary: >-
+  Dalla singola parola alla logica della frase: trigger, sequenza, opzionalità,
+  sostituzione, condizione e restrizione nei pattern del testo effetto Duel Masters.
 ---
 
 # Obiettivo

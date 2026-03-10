@@ -1622,9 +1622,14 @@ rt {
   color: var(--color-ink-muted);
 }
 
-.review-stage__actions,
 .review-grade-grid {
   display: grid;
+  gap: var(--space-3);
+}
+
+.review-stage__actions {
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-3);
 }
 

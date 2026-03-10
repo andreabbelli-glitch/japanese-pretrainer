@@ -157,6 +157,16 @@ Vincoli obbligatori:
 - Tutte le spiegazioni devono essere in italiano.
 - Restituisci solo il contenuto dei file richiesti, senza commenti extra.
 
+Campi descrittivi da compilare sempre:
+- Per media.md: compila il campo `description` nel frontmatter (>-) con 1-2
+  frasi che descrivono il pacchetto di studio, il taglio didattico e il target.
+  Questo testo viene mostrato direttamente nell'UI; se assente, viene usato un
+  excerpt automatico troncato del corpo del documento.
+- Per ogni file textbook: compila il campo `summary` nel frontmatter (>-) con
+  una frase breve (max 160 caratteri) che descrive l'obiettivo della lesson.
+  Viene mostrata nella card del textbook e nell'header della pagina; se assente,
+  il sistema usa un excerpt automatico troncato.
+
 Obiettivo del task:
 <descrizione del media / segmento / lesson>
 

@@ -8,6 +8,12 @@ language: ja
 base_explanation_language: it
 status: active
 tags: [duel-masters, tcg, dm25, cards, deck-language]
+description: >-
+  Pacchetto di studio dedicato al linguaggio delle carte di Duel Masters. Copre
+  anatomia della carta, verbi, keyword e kanji ricorrenti del testo effetto
+  tramite un asse tcg-core, con due deep dive successivi sui deck DM25-SD1 e
+  DM25-SD2. Il focus è imparare a leggere davvero le carte: zone, condizioni,
+  sequenze di effetto e vocabolario ad alta frequenza per i deck アビス e 侵略.
 ---
 
 # Duel Masters DM25

@@ -9,6 +9,11 @@ difficulty: <n5|n4|n3|custom>
 status: active
 tags: [<tag-1>, <tag-2>]
 prerequisites: []
+summary: >-
+  <Una frase (max 160 caratteri) che descrive l'obiettivo della lesson.
+  Viene mostrata nella card del textbook e nell'header della pagina.
+  Se assente, il sistema genera automaticamente un excerpt dal corpo
+  del documento (tagliato a 400 caratteri): meglio scriverla a mano.>
 ---
 
 # Obiettivo
