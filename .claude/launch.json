@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "Next.js dev",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["dev"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["/Users/abelli/Library/CloudStorage/OneDrive-Microsoft/Documents/Japanese Custom Study/node_modules/next/dist/bin/next", "dev"],
       "port": 3000,
       "autoPort": true
     },
