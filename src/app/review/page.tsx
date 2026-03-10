@@ -1,21 +1,32 @@
-import { PlaceholderPage } from "@/components/placeholder-page";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
-export default function ReviewPage() {
+import { getDashboardData } from "@/lib/app-shell";
+import { mediaStudyHref } from "@/lib/site";
+
+import { EmptyState } from "@/components/ui/empty-state";
+
+export const dynamic = "force-dynamic";
+
+export default async function ReviewPage() {
+  const { focusMedia } = await getDashboardData();
+
+  if (focusMedia) {
+    redirect(mediaStudyHref(focusMedia.slug, "review"));
+  }
+
   return (
-    <PlaceholderPage
-      kicker="Sessioni quotidiane"
-      sections={[
-        {
-          title: "Quadro della coda",
-          body: "Questa pagina raccoglie il peso attuale della review e mantiene l'ingresso vicino al resto dello studio."
-        },
-        {
-          title: "Dati reali",
-          body: "Le card e gli stati review arrivano gia dal DB operativo, senza numeri inventati o coda simulata."
+    <div className="dashboard-page">
+      <EmptyState
+        eyebrow="Review"
+        title="Non ci sono ancora media pronti per la review."
+        description="Importa almeno un bundle con card reali, poi questo ingresso ti porterà direttamente alla sessione del media più naturale da riprendere."
+        action={
+          <Link className="button button--primary" href="/media">
+            Apri libreria
+          </Link>
         }
-      ]}
-      summary="Questa area resta intenzionalmente leggera: mostra la review come parte del percorso, con un tono calmo e leggibile."
-      title="Review"
-    />
+      />
+    </div>
   );
 }

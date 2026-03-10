@@ -1,0 +1,16 @@
+desktop-home.png
+desktop-media.png
+desktop-media-detail.png
+desktop-textbook-index.png
+desktop-reader.png
+desktop-reader-tooltip.png
+desktop-glossary.png
+desktop-glossary-search.png
+desktop-review.png
+desktop-progress.png
+desktop-settings.png
+mobile-reader.png
+mobile-reader-sheet.png
+mobile-reader-lessons.png
+mobile-glossary.png
+mobile-settings.png

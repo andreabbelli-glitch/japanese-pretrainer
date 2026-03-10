@@ -74,6 +74,9 @@ try {
       );
     }
   }
+} catch (error) {
+  console.error(formatUnexpectedError(error));
+  process.exitCode = 1;
 } finally {
   closeDatabaseClient(db);
 }
@@ -146,4 +149,25 @@ function formatIssue(issue: {
     `${issue.location.filePath}${position}`,
     issue.message
   ].join(" - ");
+}
+
+function formatUnexpectedError(error: unknown) {
+  const errorMessage = error instanceof Error ? error.message : "";
+
+  if (
+    errorMessage.includes("no such table:") ||
+    errorMessage.includes("SQLITE_ERROR") ||
+    errorMessage.includes("content_import")
+  ) {
+    return [
+      "Import failed: the database schema is not initialized.",
+      "Run `./scripts/with-node.sh pnpm db:migrate` for the target DATABASE_URL, then retry the import."
+    ].join(" ");
+  }
+
+  if (errorMessage.length > 0) {
+    return `Import failed: ${errorMessage}`;
+  }
+
+  return "Import failed with an unknown error.";
 }
