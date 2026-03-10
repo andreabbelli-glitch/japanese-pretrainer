@@ -2,17 +2,20 @@
 
 ## Scopo
 
-Questo playbook rende operativo il workflow contenuti per il primo bundle reale
-del progetto:
+Questo playbook rende operativo il workflow contenuti per il bundle reale del
+progetto:
 
 - `content/media/duel-masters-dm25`
+
+Il media visibile e `Duel Masters`, mentre `duel-masters-dm25` resta lo slug
+tecnico del bundle.
 
 L'obiettivo non e generare tutto in una volta, ma lavorare per batch piccoli,
 validare localmente e importare solo quando il bundle passa i controlli.
 
 ## Input minimo da passare all'LLM esterno
 
-Per Duel Masters DM25 passa sempre:
+Per Duel Masters passa sempre:
 
 - `docs/llm-kit/general/01-content-format.md`
 - `docs/llm-kit/general/02-llm-content-handoff.md`
@@ -21,18 +24,54 @@ Per Duel Masters DM25 passa sempre:
 - `docs/llm-kit/general/05-template-cards-file.md`
 - `docs/llm-kit/general/06-content-workflow-playbook.md`
 - `docs/llm-kit/media/duel-masters-dm25/01-brief.md`
+
+Se stai ricreando il seed core iniziale, passa anche:
+
 - `docs/llm-kit/media/duel-masters-dm25/02-batch-1-prompt.md`
+
+## Regola chiave di contesto
+
+Se l'LLM deve estendere contenuto gia esistente, non basta passargli brief,
+template e prompt storico.
+
+Passa sempre anche i file reali dell'area che stai toccando:
+
+- Core: `media.md`, `textbook/001-tcg-core-overview.md`,
+  `textbook/002-tcg-core-patterns.md`, `cards/001-tcg-core.md`
+- Mazzo Abyss: `textbook/010-dm25-sd1-overview.md`,
+  `cards/010-dm25-sd1-core.md`
+- Mazzo Apollo / Red Zone: `textbook/020-dm25-sd2-overview.md`,
+  `cards/020-dm25-sd2-core.md`
+
+Senza questi file, il rischio principale e che l'LLM reintroduca sovrapposizioni
+tra lesson o usi segmenti/terminologia ormai superati.
 
 ## Workflow operativo
 
 ### 1. Scegli un batch piccolo
 
-Per `duel-masters-dm25` il batch iniziale canonico e:
+Seed batch storico:
 
 - `content/media/duel-masters-dm25/media.md`
 - `content/media/duel-masters-dm25/textbook/001-tcg-core-overview.md`
 - `content/media/duel-masters-dm25/textbook/002-tcg-core-patterns.md`
 - `content/media/duel-masters-dm25/cards/001-tcg-core.md`
+
+Stato reale del bundle oggi:
+
+- `content/media/duel-masters-dm25/media.md`
+- `content/media/duel-masters-dm25/textbook/001-tcg-core-overview.md`
+- `content/media/duel-masters-dm25/textbook/002-tcg-core-patterns.md`
+- `content/media/duel-masters-dm25/textbook/010-dm25-sd1-overview.md`
+- `content/media/duel-masters-dm25/textbook/020-dm25-sd2-overview.md`
+- `content/media/duel-masters-dm25/cards/001-tcg-core.md`
+- `content/media/duel-masters-dm25/cards/010-dm25-sd1-core.md`
+- `content/media/duel-masters-dm25/cards/020-dm25-sd2-core.md`
+
+Batch futuri sensati:
+
+- `content/media/duel-masters-dm25/textbook/011-dm25-sd1-key-cards.md`
+- `content/media/duel-masters-dm25/textbook/021-dm25-sd2-key-cards.md`
 
 Regole pratiche:
 
@@ -43,14 +82,15 @@ Regole pratiche:
 
 ### 2. Richiedi l'output all'LLM esterno
 
-Usa il prompt batch gia presente nel kit media-specifico. La richiesta deve
-esplicitare:
+La richiesta deve esplicitare:
 
-- file da produrre;
+- file da produrre o correggere;
 - ID da preservare;
-- segmenti disponibili;
+- segmento reale da continuare;
 - obbligo di restituire solo Markdown;
-- obbligo di usare YAML sicuro per `notes_it`, `summary`, `description`, `notes`.
+- obbligo di usare YAML sicuro per `notes_it`, `summary`, `description`, `notes`;
+- differenza tra media visibile (`Duel Masters`) e slug tecnico
+  (`duel-masters-dm25`), quando rilevante.
 
 Nota pratica:
 

@@ -1,5 +1,13 @@
 import path from "node:path";
-import { cp, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import {
+  cp,
+  mkdir,
+  mkdtemp,
+  readFile,
+  readdir,
+  rm,
+  writeFile
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 
@@ -167,6 +175,86 @@ describe("content parser and validator", () => {
     }
   });
 
+  it("parses compound furigana for numeric counters and numeric qualifiers", () => {
+    const result = parseInlineFragment({
+      source: "`{{1枚|いちまい}}` e `{{2000以下|にせんいか}}`",
+      filePath: "inline.md",
+      documentKind: "lesson",
+      sourcePath: "notesIt"
+    });
+
+    expect(result.issues).toEqual([]);
+    expect(result.fragment.nodes).toEqual([
+      {
+        type: "inlineCode",
+        children: [
+          {
+            type: "furigana",
+            raw: "{{1枚|いちまい}}",
+            base: "1枚",
+            reading: "いちまい"
+          }
+        ]
+      },
+      { type: "text", value: " e " },
+      {
+        type: "inlineCode",
+        children: [
+          {
+            type: "furigana",
+            raw: "{{2000以下|にせんいか}}",
+            base: "2000以下",
+            reading: "にせんいか"
+          }
+        ]
+      }
+    ]);
+  });
+
+  it("flags furigana split between a number and its counter", () => {
+    const result = parseInlineFragment({
+      source: "`1{{枚|まい}}`",
+      filePath: "inline.md",
+      documentKind: "lesson",
+      sourcePath: "notesIt"
+    });
+
+    expect(result.issues).toContainEqual(
+      expect.objectContaining({
+        code: "furigana.numeric-compound-split",
+        category: "syntax",
+        details: expect.objectContaining({
+          numeric: "1",
+          counter: "枚"
+        })
+      })
+    );
+  });
+
+  it("flags furigana split between a numeric compound and its qualifier", () => {
+    const cases = [
+      "`4{{以下|いか}}`",
+      "`{{2000|にせん}}{{以下|いか}}`",
+      "`{{4つ|よっつ}}{{以上|いじょう}}`"
+    ];
+
+    for (const source of cases) {
+      const result = parseInlineFragment({
+        source,
+        filePath: "inline.md",
+        documentKind: "lesson",
+        sourcePath: "notesIt"
+      });
+
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "furigana.numeric-compound-split",
+          category: "syntax"
+        })
+      );
+    }
+  });
+
   it("tracks semantic references declared inside grammar notes", async () => {
     const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-notes-"));
     const contentRoot = path.join(tempRoot, "content");
@@ -200,22 +288,24 @@ describe("content parser and validator", () => {
         "meaning_it: spesso",
         ":::",
         "",
-      ":::grammar",
-      "id: grammar-teiru",
-      "pattern: ～ている",
-      "title: Forma in -te iru",
-      "meaning_it: azione in corso o stato risultante",
-      'notes_it: "Nota con `- [よく](term:term-yoku)`"',
-      "aliases: [てる]",
-      ":::"
-    ].join("\n");
+        ":::grammar",
+        "id: grammar-teiru",
+        "pattern: ～ている",
+        "title: Forma in -te iru",
+        "meaning_it: azione in corso o stato risultante",
+        'notes_it: "Nota con `- [よく](term:term-yoku)`"',
+        "aliases: [てる]",
+        ":::"
+      ].join("\n");
 
       await writeFile(
         lessonPath,
         lessonSource.replace(targetBlock, replacementBlock)
       );
 
-      const result = await parseMediaDirectory(path.join(contentRoot, "media", "frieren"));
+      const result = await parseMediaDirectory(
+        path.join(contentRoot, "media", "frieren")
+      );
 
       expect(result.ok).toBe(true);
       expect(result.data.references).toContainEqual(
@@ -260,7 +350,9 @@ describe("content parser and validator", () => {
   });
 
   it("keeps the parser core under src/lib/content independent from src/db", async () => {
-    const contentSourceFiles = (await listFilesRecursively(contentLibraryRoot)).filter(
+    const contentSourceFiles = (
+      await listFilesRecursively(contentLibraryRoot)
+    ).filter(
       (filePath) =>
         filePath.endsWith(".ts") &&
         !filePath.includes(`${path.sep}importer${path.sep}`) &&
@@ -313,9 +405,9 @@ describe("content parser and validator", () => {
           )
       )
     ).toBe(true);
-    expect(lesson?.body.blocks.some((block) => block.type === "grammarDefinition")).toBe(
-      true
-    );
+    expect(
+      lesson?.body.blocks.some((block) => block.type === "grammarDefinition")
+    ).toBe(true);
 
     expect(cardsFile?.declaredTermIds).toEqual(["term-taberu"]);
     expect(cardsFile?.declaredCardIds).toEqual([
@@ -343,26 +435,45 @@ describe("content parser and validator", () => {
     expect(result.ok).toBe(true);
     expect(result.issues).toEqual([]);
     expect(result.data.media?.frontmatter.id).toBe("media-duel-masters-dm25");
-    expect(result.data.lessons).toHaveLength(2);
-    expect(result.data.cardFiles).toHaveLength(1);
-    expect(result.data.terms).toHaveLength(40);
+    expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
+    expect(result.data.lessons).toHaveLength(4);
+    expect(result.data.cardFiles).toHaveLength(3);
+    expect(result.data.terms).toHaveLength(48);
     expect(result.data.grammarPatterns).toHaveLength(11);
-    expect(result.data.cards).toHaveLength(51);
-    expect(result.data.references).toHaveLength(237);
-    expect(result.data.lessons.map((lesson) => lesson.frontmatter.slug)).toEqual([
-      "tcg-core-overview",
-      "tcg-core-patterns"
-    ]);
-    expect(result.data.cardFiles[0]?.frontmatter.id).toBe(
-      "cards-duel-masters-dm25-tcg-core-basics"
-    );
-    expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(true);
+    expect(result.data.cards).toHaveLength(59);
+    expect(result.data.references).toHaveLength(280);
     expect(
-      result.data.grammarPatterns.some((grammar) => grammar.id === "grammar-kawarini")
-    ).toBe(true);
-    expect(result.data.cards.some((card) => card.id === "card-invasion-recognition")).toBe(
+      result.data.lessons.map((lesson) => lesson.frontmatter.slug)
+    ).toEqual([
+      "tcg-core-overview",
+      "tcg-core-patterns",
+      "dm25-sd1-overview",
+      "dm25-sd2-overview"
+    ]);
+    expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
+      "cards-duel-masters-dm25-tcg-core-basics",
+      "cards-duel-masters-dm25-dm25-sd1-core",
+      "cards-duel-masters-dm25-dm25-sd2-core"
+    ]);
+    expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
       true
     );
+    expect(
+      result.data.terms.some((term) => term.id === "term-abyss-royal")
+    ).toBe(true);
+    expect(
+      result.data.grammarPatterns.some(
+        (grammar) => grammar.id === "grammar-kawarini"
+      )
+    ).toBe(true);
+    expect(
+      result.data.cards.some((card) => card.id === "card-invasion-recognition")
+    ).toBe(true);
+    expect(
+      result.data.cards.some(
+        (card) => card.id === "card-apollonus-dragelion-recognition"
+      )
+    ).toBe(true);
   });
 
   it("aggregates media bundles from the content root", async () => {
@@ -619,7 +730,9 @@ base_explanation_language: it
   });
 
   it("returns a structured issue when media.md is missing", async () => {
-    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-missing-media-"));
+    const mediaRoot = await mkdtemp(
+      path.join(tmpdir(), "jcs-content-missing-media-")
+    );
     const mediaDirectory = path.join(mediaRoot, "demo");
     const textbookDirectory = path.join(mediaDirectory, "textbook");
     const cardsDirectory = path.join(mediaDirectory, "cards");
@@ -653,7 +766,9 @@ base_explanation_language: it
   });
 
   it("returns a structured issue when textbook/ is missing", async () => {
-    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-missing-textbook-"));
+    const mediaRoot = await mkdtemp(
+      path.join(tmpdir(), "jcs-content-missing-textbook-")
+    );
     const mediaDirectory = path.join(mediaRoot, "demo");
     const cardsDirectory = path.join(mediaDirectory, "cards");
 
@@ -686,7 +801,9 @@ base_explanation_language: it
   });
 
   it("returns a structured issue when cards/ is missing", async () => {
-    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-missing-cards-"));
+    const mediaRoot = await mkdtemp(
+      path.join(tmpdir(), "jcs-content-missing-cards-")
+    );
     const mediaDirectory = path.join(mediaRoot, "demo");
     const textbookDirectory = path.join(mediaDirectory, "textbook");
 
@@ -719,7 +836,9 @@ base_explanation_language: it
   });
 
   it("returns structured issues when textbook/ and cards/ are present but empty", async () => {
-    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-empty-directories-"));
+    const mediaRoot = await mkdtemp(
+      path.join(tmpdir(), "jcs-content-empty-directories-")
+    );
     const mediaDirectory = path.join(mediaRoot, "demo");
     const textbookDirectory = path.join(mediaDirectory, "textbook");
     const cardsDirectory = path.join(mediaDirectory, "cards");

@@ -36,7 +36,11 @@ pattern.>
 grammar gia dichiarati.>
 
 Puoi usare furigana inline con la sintassi `{{base|reading}}`, per esempio
-`{{<kanji>|<reading>}}`.
+`{{<kanji>|<reading>}}`. Se c'e un composto numerico con contatore o
+qualificatore, annota tutto il blocco: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
+`{{4つ以上|よっついじょう}}`; non scrivere `1{{枚|まい}}`,
+`4{{以下|いか}}` o `{{4つ|よっつ}}{{以上|いじょう}}`. Se il numero e
+complesso, annota il composto intero: `{{2000以下|にせんいか}}`.
 
 ## Esempi guidati
 

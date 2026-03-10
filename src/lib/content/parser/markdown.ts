@@ -26,7 +26,10 @@ import type {
   SourceRange,
   ValidationIssue
 } from "../types.ts";
-import type { DraftMarkdownDocument, RawStructuredBlockNode } from "./internal.ts";
+import type {
+  DraftMarkdownDocument,
+  RawStructuredBlockNode
+} from "./internal.ts";
 import { createIssue, shiftRange } from "./utils.ts";
 
 interface MarkdownParseOptions {
@@ -57,6 +60,14 @@ interface ParseContext {
   structuredBlockLookup: Map<string, number>;
 }
 
+const trailingNumericExpressionPattern =
+  /(?:[0-9０-９]+|[〇零一二三四五六七八九十百千万億兆]+)$/u;
+const numericOrCounterFragmentPattern =
+  /(?:[0-9０-９]+|[〇零一二三四五六七八九十百千万億兆]+)(?:つ|人|名|枚|枚目|体|体目|本|本目|冊|冊目|匹|匹目|頭|羽|杯|個|回|回目|階|階目|歳|才|台|分|時|秒|日|日目|月|年|週間|週|時間|か月|ヶ月|ヵ月|カ月)?$/u;
+const counterLikeBasePattern =
+  /^(?:つ|人|名|枚|枚目|体|体目|本|本目|冊|冊目|匹|匹目|頭|羽|杯|個|回|回目|階|階目|歳|才|台|分|時|秒|日|日目|月|年|週間|週|時間|か月|ヶ月|ヵ月|カ月)$/u;
+const numericQualifierBasePattern = /^(?:以下|以上|未満|超|以内|以降|以前)$/u;
+
 export function parseMarkdownDocument(
   options: MarkdownParseOptions
 ): MarkdownParseResult {
@@ -78,7 +89,9 @@ export function parseMarkdownDocument(
     .map((node, index) =>
       convertRootNode(node, context, `body.blocks[${index}]`)
     )
-    .filter((block): block is ContentBlock | RawStructuredBlockNode => block !== null);
+    .filter(
+      (block): block is ContentBlock | RawStructuredBlockNode => block !== null
+    );
 
   return {
     document: {
@@ -148,11 +161,7 @@ function convertRootNode(
         position: resolveRange(toRange(node.position), context),
         children: node.children
           .map((child, index) =>
-            convertBlockNode(
-              child,
-              context,
-              `${sourcePath}.children[${index}]`
-            )
+            convertBlockNode(child, context, `${sourcePath}.children[${index}]`)
           )
           .filter((block): block is ContentBlock => block !== null)
       };
@@ -190,7 +199,8 @@ function convertBlockNode(
       createIssue({
         code: "markdown.invalid-structured-block-placement",
         category: "schema",
-        message: "Structured blocks must appear at the top document flow level.",
+        message:
+          "Structured blocks must appear at the top document flow level.",
         filePath: context.filePath,
         path: sourcePath,
         range: converted.position,
@@ -303,7 +313,9 @@ function convertHtmlNode(
   context: ParseContext,
   sourcePath: string
 ): RawStructuredBlockNode | null {
-  const placeholderMatch = node.value.match(/^<!--content-structured-block:(\d+)-->$/);
+  const placeholderMatch = node.value.match(
+    /^<!--content-structured-block:(\d+)-->$/
+  );
 
   if (placeholderMatch) {
     const placeholder = placeholderMatch[0];
@@ -353,12 +365,7 @@ function convertInlineNodes(
   fallbackRange?: SourceRange
 ): InlineNode[] {
   return nodes.flatMap((node, index) =>
-    convertInlineNode(
-      node,
-      context,
-      `${sourcePath}[${index}]`,
-      fallbackRange
-    )
+    convertInlineNode(node, context, `${sourcePath}[${index}]`, fallbackRange)
   );
 }
 
@@ -368,7 +375,11 @@ function convertInlineNode(
   sourcePath: string,
   fallbackRange?: SourceRange
 ): InlineNode[] {
-  const resolvedRange = resolveRange(toRange(node.position), context, fallbackRange);
+  const resolvedRange = resolveRange(
+    toRange(node.position),
+    context,
+    fallbackRange
+  );
 
   switch (node.type) {
     case "text":
@@ -455,7 +466,12 @@ function parseInlineSource(
 
   if (tree.children.some((child) => child.type !== "paragraph")) {
     if (mode === "fragment") {
-      reportUnsupportedFragmentBlocks(tree.children, context, sourcePath, fallbackRange);
+      reportUnsupportedFragmentBlocks(
+        tree.children,
+        context,
+        sourcePath,
+        fallbackRange
+      );
     }
 
     return createLiteralInlineNodes(
@@ -537,8 +553,8 @@ function createLiteralInlineNodes(
   const semanticLinks =
     tree && context && sourcePath
       ? collectSemanticLinks(tree).sort(
-        (left, right) => left.startOffset - right.startOffset
-      )
+          (left, right) => left.startOffset - right.startOffset
+        )
       : [];
   let cursor = 0;
 
@@ -788,6 +804,17 @@ function tokenizeTextNode(
     const base = inner.slice(0, separatorIndex);
     const reading = inner.slice(separatorIndex + 1);
 
+    maybeReportSplitNumericFurigana({
+      value,
+      base,
+      nodes,
+      markerStart,
+      markerEnd,
+      context,
+      sourcePath,
+      range
+    });
+
     nodes.push({
       type: "furigana",
       raw,
@@ -798,6 +825,102 @@ function tokenizeTextNode(
   }
 
   return nodes;
+}
+
+function maybeReportSplitNumericFurigana(input: {
+  value: string;
+  base: string;
+  nodes: InlineNode[];
+  markerStart: number;
+  markerEnd: number;
+  context: ParseContext;
+  sourcePath: string;
+  range?: SourceRange;
+}) {
+  const previousFragment = resolvePreviousNumericFragment(
+    input.nodes,
+    input.base
+  );
+
+  if (!previousFragment) {
+    return;
+  }
+
+  const isCounterSplit = counterLikeBasePattern.test(input.base);
+  const compoundExample = `${previousFragment.value}${input.base}`;
+  const details: Record<string, string> = isCounterSplit
+    ? {
+        numeric: previousFragment.value,
+        counter: input.base,
+        compound: compoundExample
+      }
+    : {
+        prefix: previousFragment.value,
+        qualifier: input.base,
+        compound: compoundExample
+      };
+
+  input.context.issues.push(
+    createIssue({
+      code: "furigana.numeric-compound-split",
+      category: "syntax",
+      message:
+        "Numeric compounds with counters or qualifiers must carry furigana as one unit.",
+      filePath: input.context.filePath,
+      path: input.sourcePath,
+      range: sliceRange(
+        input.range,
+        input.value,
+        input.markerStart - previousFragment.sourceLength,
+        input.markerEnd + 2
+      ),
+      hint: "Prefer {{1枚|いちまい}}, {{4以下|よんいか}}, or {{4つ以上|よっついじょう}} over split furigana. For larger numerals, annotate the full compound too, e.g. {{2000以下|にせんいか}} or {{3000円|さんぜんえん}}.",
+      details
+    })
+  );
+}
+
+function resolvePreviousNumericFragment(
+  nodes: InlineNode[],
+  base: string
+): { value: string; sourceLength: number } | null {
+  const pattern = counterLikeBasePattern.test(base)
+    ? trailingNumericExpressionPattern
+    : numericQualifierBasePattern.test(base)
+      ? numericOrCounterFragmentPattern
+      : null;
+
+  if (!pattern) {
+    return null;
+  }
+
+  const previousNode = nodes[nodes.length - 1];
+
+  if (!previousNode) {
+    return null;
+  }
+
+  if (previousNode.type === "furigana" && pattern.test(previousNode.base)) {
+    return {
+      value: previousNode.base,
+      sourceLength: previousNode.raw.length
+    };
+  }
+
+  if (previousNode.type !== "text") {
+    return null;
+  }
+
+  const match = previousNode.value.match(pattern)?.[0];
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    value: match,
+    sourceLength: match.length
+  };
 }
 
 function pushTextNode(nodes: InlineNode[], value: string) {
@@ -916,7 +1039,9 @@ function resolveRange(
   context: ParseContext,
   fallbackRange?: SourceRange
 ) {
-  const shiftedRange = range ? shiftRange(range, context.lineOffset) : undefined;
+  const shiftedRange = range
+    ? shiftRange(range, context.lineOffset)
+    : undefined;
 
   if (shiftedRange && context.fragmentOrigin) {
     return translateRange(shiftedRange, context.fragmentOrigin);

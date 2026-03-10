@@ -78,6 +78,16 @@ Esempio da evitare:
 notes_it: Lettura da fissare: {{山札|やまふだ}}.
 ```
 
+### 4.2 Regole per furigana su composti numerici
+
+- quando un numero e seguito da un contatore o da un qualificatore numerico
+  (`以下`, `以上`, `未満`, ecc.), il furigana va messo sull'espressione completa;
+- usare quindi `{{1枚|いちまい}}`, `{{3本|さんぼん}}`, `{{4以下|よんいか}}`,
+  `{{4つ以上|よっついじょう}}`, non `1{{枚|まい}}`, `4{{以下|いか}}` o
+  `{{4つ|よっつ}}{{以上|いじょう}}`;
+- se il numero e poco trasparente o "grande", annotare il composto intero:
+  `{{2000以下|にせんいか}}`, `{{3000円|さんぜんえん}}`.
+
 ## 5. `media.md`
 
 Definisce il contenitore del media.

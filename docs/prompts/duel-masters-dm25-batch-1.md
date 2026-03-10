@@ -1,4 +1,4 @@
-# Prompt - Duel Masters DM25 Batch 1
+# Prompt - Duel Masters Batch 1 (Seed)
 
 Usa questo prompt con l'LLM esterno specializzato.
 
@@ -7,9 +7,10 @@ Stai producendo contenuti per una webapp privata di studio del giapponese.
 Devi restituire SOLO file Markdown conformi alla specifica fornita.
 
 Contesto del progetto:
-- Il media e Duel Masters.
-- Questo primo contenuto reale e focalizzato sul linguaggio delle carte e sui
-  deck DM25-SD1 e DM25-SD2.
+- Il media visibile e Duel Masters.
+- Lo slug tecnico resta `duel-masters-dm25`.
+- I due starter deck `DM25-SD1` e `DM25-SD2` sono il corpus iniziale, non il
+  nome del media.
 - Il livello attuale dell'utente e circa N5/N4.
 - Le spiegazioni devono essere in italiano.
 
@@ -21,14 +22,27 @@ Regola didattica importante:
 - Privilegia cio che e frequente, strutturale e davvero utile per capire Duel Masters.
 
 Obiettivo di questo batch:
-Creare il primo nucleo di contenuti per insegnare il linguaggio base delle carte
-di Duel Masters, con focus su termini ricorrenti, pattern grammaticali frequenti
-e kanji utili in contesto TCG.
+Creare solo il seed core del media. In questo batch non devi produrre lesson
+verticali sui deck: devi costruire una base forte e non ridondante.
 
-Vincoli obbligatori:
+Vincoli didattici obbligatori:
+- `001-tcg-core-overview` deve essere una lesson di onboarding soft:
+  obiettivo del gioco, anatomia della carta, zone, attori, verbi base,
+  ordine pratico di lettura.
+- `002-tcg-core-patterns` deve essere una lesson tecnica di parsing del
+  rules text: trigger, sequenza, opzionalita, sostituzione, restrizioni,
+  filtri numerici.
+- Le due lesson non devono sovrapporsi o ripetersi.
+
+Vincoli di formato obbligatori:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
 - Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati.
+- MAPPA I KANJI CON FURIGANA ANCHE DENTRO LE CITAZIONI IN CODICE
+  (esempio: `` `{{墓地|ぼち}}から{{出|だ}}す` ``).
+- Per composti numerici con contatori o qualificatori usa un solo furigana sul
+  blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
+  `{{4つ以上|よっついじょう}}`.
 - Per i campi descrittivi YAML come `notes_it`, usa `>-` invece di plain scalar.
 - Se un valore contiene `:`/`：`, furigana, link semantici, backtick o una
   frase completa di rules text, non lasciarlo come plain scalar.
@@ -42,14 +56,14 @@ Vincoli obbligatori:
 Media:
 - id: media-duel-masters-dm25
 - slug: duel-masters-dm25
-- title: Duel Masters DM25
+- title: Duel Masters
 - media_type: tcg
 - segment_kind: deck
 
 Segmenti disponibili:
 - tcg-core
-- dm25-sd1
-- dm25-sd2
+- mazzo-abyss
+- mazzo-apollo-red-zone
 
 Livello target:
 - baseline di comprensione: N5/N4

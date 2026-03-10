@@ -42,7 +42,7 @@ Passa:
 - tutti i file di `general/`
 - i file della cartella `media/<media-slug>/` su cui stai lavorando
 
-### Se vuoi fare il primo batch Duel Masters
+### Se vuoi fare il seed batch Duel Masters
 
 Passa almeno:
 
@@ -55,14 +55,33 @@ Passa almeno:
 - `media/duel-masters-dm25/01-brief.md`
 - `media/duel-masters-dm25/02-batch-1-prompt.md`
 
+### Se vuoi estendere il bundle gia esistente
+
+Oltre al kit, passa sempre anche i file reali del bundle coinvolti nella
+modifica. Per esempio:
+
+- Core: `content/media/duel-masters-dm25/media.md`,
+  `textbook/001-tcg-core-overview.md`,
+  `textbook/002-tcg-core-patterns.md`, `cards/001-tcg-core.md`
+- Mazzo Abyss: `textbook/010-dm25-sd1-overview.md`,
+  `cards/010-dm25-sd1-core.md`
+- Mazzo Apollo / Red Zone: `textbook/020-dm25-sd2-overview.md`,
+  `cards/020-dm25-sd2-core.md`
+
 ## Nota su Allineamento Template
 
 > [!IMPORTANT]
 > **Sincronizzazione Strutturale**
-> Questo kit operativo è la "fonte di verità" per l'LLM quando deve produrre contenuti.
-> **Ogni volta che si modifica la struttura dei dati dell'app** (es. aggiungendo nuovi campi opzionali a `:::card`, `:::term` o `:::grammar`, o cambiando la struttura di `media.md`), **quelle modifiche devono essere immediatamente replicate nei template di questa cartella** (in `general/01-content-format.md`, `02-llm-content-handoff.md` e nei file di `general/`). 
-> Se l'LLM kit non viene tenuto allineato al codice e ai parser dell'applicazione, il modello di AI genererà contenuti obsoleti o non compatibili che falliranno l'import.
+> Questo kit operativo e la fonte di verita per l'LLM quando deve produrre
+> contenuti. Ogni volta che si modifica la struttura dei dati dell'app
+> (es. nuovi campi opzionali a `:::card`, `:::term` o `:::grammar`, o
+> cambiamenti in `media.md`), quelle modifiche devono essere replicate nei
+> template di questa cartella. Se il kit non viene tenuto allineato al codice e
+> ai parser dell'applicazione, l'LLM produrra contenuti obsoleti o non
+> compatibili.
 
 ## Nota Storica sulle Fixtures
 
-Questa cartella è un kit operativo. I documenti originali nel resto di `docs/` restano la sorgente di riferimento del progetto. Il bundle reale valido da usare come base operativa è `content/media/duel-masters-dm25`.
+Questa cartella e un kit operativo. I documenti originali nel resto di `docs/`
+restano la sorgente di riferimento del progetto. Il bundle reale valido da
+usare come base operativa e `content/media/duel-masters-dm25`.

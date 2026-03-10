@@ -9,11 +9,11 @@
 
 ## Flussi principali
 
-- Dashboard: compare `Duel Masters DM25`, con CTA per riprendere studio e review.
-- Libreria media: il media DM25 è visibile con metriche sintetiche coerenti.
+- Dashboard: compare `Duel Masters`, con CTA per riprendere studio e review.
+- Libreria media: il media Duel Masters e visibile con metriche sintetiche coerenti.
 - Media detail: le entry point `Textbook`, `Glossary`, `Review`, `Progress` sono tutte operative.
 - Root review `/review`: reindirizza direttamente alla review del media di focus, senza placeholder.
-- Textbook index: mostra le 2 lesson con stato coerente.
+- Textbook index: mostra le 4 lesson con stato coerente.
 - Reader lesson: il toggle furigana aggiorna davvero il rendering.
 - Reader lesson desktop: clic su un termine apre tooltip con `Apri entry`.
 - Reader lesson mobile: tap su un termine apre sheet; `Lezioni` apre la rail mobile.

@@ -127,7 +127,7 @@ pos: noun
 aliases: [アビス, abisu]
 notes_it: >-
   È un'etichetta di gruppo molto importante in SD1. Compare spesso in filtri
-  come `コスト4{{以下|いか}}のアビス` e serve a capire quali carte possono essere
+  come `コスト{{4以下|よんいか}}のアビス` e serve a capire quali carte possono essere
   cercate, recuperate o messe in campo. Quando la vedi, leggila come nome di una
   famiglia di carte con sinergie comuni.
 level_hint: custom
@@ -176,7 +176,7 @@ aliases: [コスト, kosuto]
 notes_it: >-
   È il numero che ti dice quanta mana serve per giocare la carta. Nel testo
   effetto compare continuamente anche come filtro, per esempio
-  `コスト4{{以下|いか}}`. Quando lo vedi, chiediti se sta parlando del costo da
+  `コスト{{4以下|よんいか}}`. Quando lo vedi, chiediti se sta parlando del costo da
   pagare o del limite di una carta bersaglio.
 level_hint: custom
 :::
@@ -191,7 +191,7 @@ pos: noun
 aliases: [パワー, pawaa]
 notes_it: >-
   È il valore di forza di una creatura. Serve sia a descrivere la carta sia a
-  filtrare bersagli, per esempio in frasi come `パワー2000{{以下|いか}}`. Se appare
+  filtrare bersagli, per esempio in frasi come `パワー{{2000以下|にせんいか}}`. Se appare
   nel testo, quasi sempre decide cosa può essere colpito o sopravvivere.
 level_hint: custom
 :::
@@ -734,8 +734,8 @@ reading: いか / いじょう
 meaning_it: al massimo / almeno
 aliases: [以下, 以上]
 notes_it: >-
-  È il pattern dei filtri numerici. In frasi come `コスト4{{以下|いか}}` o
-  `パワー2000{{以下|いか}}`, decide quali carte rientrano davvero nell'effetto.
+  È il pattern dei filtri numerici. In frasi come `コスト{{4以下|よんいか}}` o
+  `パワー{{2000以下|にせんいか}}`, decide quali carte rientrano davvero nell'effetto.
 level_hint: n4
 :::
 
@@ -907,7 +907,7 @@ front: コスト
 back: costo
 notes_it: >-
   È il numero di mana richiesto per giocare la carta. Nel testo effetto può
-  anche diventare un filtro, per esempio in `コスト4{{以下|いか}}`.
+  anche diventare un filtro, per esempio in `コスト{{4以下|よんいか}}`.
 tags: [core, anatomy, filter]
 :::
 

@@ -1,57 +1,73 @@
-# Brief Contenuti - Duel Masters DM25
+# Brief Contenuti - Duel Masters
 
 ## Scopo
 
-Primo contenuto reale della webapp.
+Media generale di studio su Duel Masters.
 
-Il focus non e "tutto Duel Masters", ma un pacchetto didattico mirato che
-insegni:
+Il corpus iniziale usa i due starter deck `DM25-SD1 技の王道` e
+`DM25-SD2 力の王道`, ma i deck sono casi di studio, non l'identita del media.
+
+Il bundle deve insegnare:
 
 - il linguaggio base delle carte di Duel Masters;
 - i termini piu ricorrenti;
-- i pattern grammaticali piu comuni nel testo regolistico;
-- i kanji piu utili in contesto;
-- un deep dive mirato sui deck `DM25-SD1` e `DM25-SD2`.
+- i pattern grammaticali piu comuni del rules text;
+- i kanji davvero utili in contesto carta;
+- due lesson core nettamente distinte;
+- due deep dive verticali sui due mazzi di partenza.
 
 ## Perche questo contenuto e adatto come primo media
 
 - linguaggio ricorrente e template-driven;
-- perimetro chiaro e finito;
+- perimetro chiaro ma non troppo stretto;
 - termini e pattern riutilizzabili su molte carte;
-- deck reali come caso d'uso concreto;
-- molto adatto a glossary, textbook e review.
+- due deck reali che spingono il linguaggio in direzioni diverse;
+- ottimo materiale per glossary, textbook e review.
 
 ## Struttura didattica consigliata
 
-### Asse 1 - TCG Core Language
+### Asse 1 - Core Orientation
 
-Serve a capire come si legge una carta Duel Masters in generale.
+Serve a entrare nel gioco e a capire come si legge una carta prima ancora del
+rules text tecnico.
 
 Argomenti:
 
+- obiettivo della partita;
 - anatomia della carta;
-- costi, tipi, potere, zone, timing;
-- verbi e comandi ricorrenti;
-- pattern grammaticali del rules text;
-- kanji ad alta frequenza in contesto carta;
-- differenza tra keyword, testo effetto e condizioni.
+- costi, tipi, potere, civilta, razze;
+- zone principali;
+- attori della frase;
+- verbi di base ad altissima frequenza;
+- ordine pratico di lettura.
 
-### Asse 2 - Deck Deep Dive
+### Asse 2 - Rules Text Parsing
 
-Serve a leggere davvero le carte dei due starter deck.
+Serve a leggere il testo effetto in modo tecnico, senza sovrapporlo alla lesson
+precedente.
 
-Deep dive richiesti:
+Argomenti:
 
-- `DM25-SD1`
-- `DM25-SD2`
+- trigger;
+- sequenza;
+- opzionalita;
+- sostituzione;
+- controllo di stato;
+- restrizioni;
+- filtri numerici;
+- keyword con parentesi esplicative.
+
+### Asse 3 - Deck Deep Dives
+
+Serve a leggere davvero i due mazzi iniziali come corpus reale.
 
 Per ogni deck:
 
 - overview del piano di gioco;
-- termini specifici del deck;
-- pattern grammaticali ricorrenti;
-- carte chiave spiegate;
-- aiuto pratico alla lettura del testo carta.
+- impronta lessicale del mazzo;
+- 3-5 nomi o termini da fissare;
+- frasi modello molto vicine al testo carta;
+- spiegazione a meta tra gioco e giapponese, con priorita al giapponese.
 
 ## Livello target
 
@@ -59,53 +75,62 @@ Per ogni deck:
 - spiegazioni principalmente in italiano;
 - priorita a comprensione funzionale del testo carta, non a teoria astratta.
 
-## Regola didattica importante
+## Regole didattiche importanti
 
-`N5/N4` descrive il livello attuale di partenza dell'utente, non il limite
-massimo del contenuto.
+`N5/N4` descrive il livello di partenza dell'utente, non il limite massimo dei
+contenuti.
 
 Quindi:
 
-- se un termine, kanji o pattern e piu avanzato ma compare spesso o e essenziale
-  per leggere bene le carte, va incluso e spiegato;
-- se un elemento e piu avanzato ma strutturalmente importante nel linguaggio
+- se un termine, kanji o pattern e piu avanzato ma compare spesso o e
+  essenziale, va incluso e spiegato;
+- se un elemento e piu avanzato ma strutturalmente importante nel linguaggio di
   Duel Masters, va spiegato in modo accessibile;
-- non serve andare in dettagli rari, iper specialistici o poco riutilizzabili;
-- meglio insegnare bene un pattern un po' sopra il livello attuale ma molto
-  utile, piuttosto che restare artificialmente entro N5/N4.
+- non serve andare in dettagli rari o poco riutilizzabili.
+
+Regole specifiche di struttura:
+
+- `001-tcg-core-overview` deve essere un onboarding soft, non una lesson
+  tecnica sul parsing;
+- `002-tcg-core-patterns` deve essere una lesson tecnica sul rules text, non un
+  secondo overview generale;
+- le lesson deck devono essere verticali, non semplici recap del core;
+- le lesson deck devono restare a meta tra spiegare il gioco e spiegare il
+  giapponese, con focus principale sul giapponese.
 
 ## Segmentazione consigliata
 
 Per questo media usare `segment_kind: deck`.
 
-Segmenti iniziali:
+Segmenti attuali:
 
 - `tcg-core`
-- `dm25-sd1`
-- `dm25-sd2`
+- `mazzo-abyss`
+- `mazzo-apollo-red-zone`
 
-## Primo batch consigliato
+## Stato reale del bundle
 
-Per partire, non chiedere tutto in una volta.
-
-Batch 1 consigliato:
+Il bundle reale attuale contiene:
 
 - `media.md`
 - `textbook/001-tcg-core-overview.md`
 - `textbook/002-tcg-core-patterns.md`
-- `cards/001-tcg-core.md`
-
-Batch 2 consigliato:
-
 - `textbook/010-dm25-sd1-overview.md`
-- `textbook/011-dm25-sd1-key-cards.md`
-- `cards/010-dm25-sd1-core.md`
-
-Batch 3 consigliato:
-
 - `textbook/020-dm25-sd2-overview.md`
-- `textbook/021-dm25-sd2-key-cards.md`
+- `cards/001-tcg-core.md`
+- `cards/010-dm25-sd1-core.md`
 - `cards/020-dm25-sd2-core.md`
+
+## Batch futuri consigliati
+
+Se vuoi estendere il bundle senza riscrivere quello che esiste gia, i batch
+successivi sensati sono:
+
+- `textbook/011-dm25-sd1-key-cards.md`
+- `textbook/021-dm25-sd2-key-cards.md`
+
+Eventuali nuovi file `cards/` vanno creati solo se emergono davvero nuove entry
+canoniche utili a glossary/review.
 
 ## Tipi di contenuto da privilegiare
 
@@ -118,16 +143,17 @@ Batch 3 consigliato:
 
 ## Tipi di contenuto da evitare
 
-- grammatica scolastica non collegata alle carte;
+- grammatica scolastica scollegata dalle carte;
 - kanji generici scollegati dal corpus Duel Masters;
 - spiegazioni troppo lunghe;
 - troppe carte in un solo batch;
-- dettagli di meta game non necessari alla lettura del testo;
-- finezze rare o marginali che difficilmente l'utente rivedra.
+- dettagli di meta game non necessari alla lettura;
+- duplicazione tra lesson core e lesson deck.
 
 ## Convenzione ID consigliata
 
-- media: `media-duel-masters-dm25`
+- titolo visibile media: `Duel Masters`
+- media tecnico: `media-duel-masters-dm25` / `duel-masters-dm25`
 - lesson core: `lesson-duel-masters-dm25-tcg-core-...`
 - lesson deck 1: `lesson-duel-masters-dm25-dm25-sd1-...`
 - lesson deck 2: `lesson-duel-masters-dm25-dm25-sd2-...`
@@ -138,11 +164,15 @@ Batch 3 consigliato:
 ## Nota importante per l'LLM esterno
 
 Il textbook deve spiegare e referenziare.
-Le entry canoniche per glossary/review dovrebbero vivere preferibilmente nei file
-`cards/`.
+Le entry canoniche per glossary/review dovrebbero vivere preferibilmente nei
+file `cards/`.
 
 Quindi:
 
 - se un termine o pattern e importante, dichiaralo esplicitamente in `cards/`;
 - nel textbook, referenzialo via `[label](term:...)` o `[label](grammar:...)`;
 - dichiara nel textbook solo le entry davvero nuove quando necessario.
+
+Quando estendi contenuto gia esistente, passa sempre anche i file reali del
+bundle relativi all'area che stai toccando. Non chiedere all'LLM di lavorare
+solo sul brief se deve continuare lesson o segmenti che esistono gia.

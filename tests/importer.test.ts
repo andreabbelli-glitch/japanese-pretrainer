@@ -1,12 +1,5 @@
 import path from "node:path";
-import {
-  cp,
-  mkdir,
-  mkdtemp,
-  readFile,
-  rm,
-  writeFile
-} from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 
@@ -39,14 +32,15 @@ import { importContentWorkspace } from "@/lib/content/importer.ts";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repositoryRoot = path.resolve(__dirname, "..");
-const fixturesRoot = path.resolve(
-  __dirname,
-  "fixtures",
-  "content"
-);
+const fixturesRoot = path.resolve(__dirname, "fixtures", "content");
 const validContentRoot = path.join(fixturesRoot, "valid", "content");
 const invalidContentRoot = path.join(fixturesRoot, "invalid", "content");
-const demoMediaFixtureRoot = path.join(repositoryRoot, "content", "media", "duel-masters-dm25");
+const demoMediaFixtureRoot = path.join(
+  repositoryRoot,
+  "content",
+  "media",
+  "duel-masters-dm25"
+);
 const mediaId = "media-frieren";
 const lessonId = "lesson-frieren-ep01-intro";
 const termId = "term-taberu";
@@ -117,9 +111,13 @@ describe("content importer", () => {
     });
 
     expect(importedSegment?.slug).toBe("episode-01");
-    expect(importedLesson?.sourceFile).toBe("media/frieren/textbook/001-intro.md");
+    expect(importedLesson?.sourceFile).toBe(
+      "media/frieren/textbook/001-intro.md"
+    );
     expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
-    expect(importedLesson?.content?.htmlRendered).toContain("grammar-definition");
+    expect(importedLesson?.content?.htmlRendered).toContain(
+      "grammar-definition"
+    );
     expect(importRow?.status).toBe("completed");
   });
 
@@ -133,20 +131,20 @@ describe("content importer", () => {
     });
 
     expect(result.status).toBe("completed");
-    expect(result.filesScanned).toBe(4);
-    expect(result.filesChanged).toBe(4);
+    expect(result.filesScanned).toBe(8);
+    expect(result.filesChanged).toBe(8);
 
     expect(await countRows(database.query.media.findMany())).toBe(1);
-    expect(await countRows(database.query.segment.findMany())).toBe(1);
-    expect(await countRows(database.query.lesson.findMany())).toBe(2);
-    expect(await countRows(database.query.lessonContent.findMany())).toBe(2);
-    expect(await countRows(database.query.term.findMany())).toBe(40);
-    expect(await countRows(database.query.termAlias.findMany())).toBe(107);
+    expect(await countRows(database.query.segment.findMany())).toBe(3);
+    expect(await countRows(database.query.lesson.findMany())).toBe(4);
+    expect(await countRows(database.query.lessonContent.findMany())).toBe(4);
+    expect(await countRows(database.query.term.findMany())).toBe(48);
+    expect(await countRows(database.query.termAlias.findMany())).toBe(128);
     expect(await countRows(database.query.grammarPattern.findMany())).toBe(11);
     expect(await countRows(database.query.grammarAlias.findMany())).toBe(15);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(128);
-    expect(await countRows(database.query.card.findMany())).toBe(51);
-    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(51);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(155);
+    expect(await countRows(database.query.card.findMany())).toBe(59);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(64);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({
@@ -172,6 +170,7 @@ describe("content importer", () => {
     });
 
     expect(importedMedia?.slug).toBe("duel-masters-dm25");
+    expect(importedMedia?.title).toBe("Duel Masters");
     expect(importedLesson?.sourceFile).toBe(
       "media/duel-masters-dm25/textbook/001-tcg-core-overview.md"
     );
@@ -220,9 +219,10 @@ describe("content importer", () => {
     const persistedEntryStatus = await database.query.entryStatus.findFirst({
       where: eq(entryStatus.entryId, termId)
     });
-    const persistedLessonProgress = await database.query.lessonProgress.findFirst({
-      where: eq(lessonProgress.lessonId, lessonId)
-    });
+    const persistedLessonProgress =
+      await database.query.lessonProgress.findFirst({
+        where: eq(lessonProgress.lessonId, lessonId)
+      });
 
     expect(persistedReviewState?.state).toBe("learning");
     expect(persistedReviewLog).toHaveLength(1);
@@ -233,7 +233,13 @@ describe("content importer", () => {
   it("imports semantic references nested inside inline code into card entry links", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
 
-    const cardsPath = path.join(contentRoot, "media", "frieren", "cards", "001-core.md");
+    const cardsPath = path.join(
+      contentRoot,
+      "media",
+      "frieren",
+      "cards",
+      "001-core.md"
+    );
     const cardsSource = await readFile(cardsPath, "utf8");
 
     await writeFile(
@@ -342,7 +348,13 @@ describe("content importer", () => {
     });
     await seedUserState(database);
 
-    const cardsPath = path.join(contentRoot, "media", "frieren", "cards", "001-core.md");
+    const cardsPath = path.join(
+      contentRoot,
+      "media",
+      "frieren",
+      "cards",
+      "001-core.md"
+    );
     const cardsSource = await readFile(cardsPath, "utf8");
 
     await writeFile(
@@ -394,7 +406,13 @@ describe("content importer", () => {
       "001-intro.md"
     );
     const lessonSource = await readFile(lessonPath, "utf8");
-    const cardsPath = path.join(contentRoot, "media", "frieren", "cards", "001-core.md");
+    const cardsPath = path.join(
+      contentRoot,
+      "media",
+      "frieren",
+      "cards",
+      "001-core.md"
+    );
 
     await writeFile(
       lessonPath,
@@ -481,15 +499,27 @@ tags: [grammar, core]
       "textbook",
       "001-intro.md"
     );
-    const cardsPath = path.join(contentRoot, "media", "frieren", "cards", "001-core.md");
+    const cardsPath = path.join(
+      contentRoot,
+      "media",
+      "frieren",
+      "cards",
+      "001-core.md"
+    );
 
     await writeFile(
       lessonPath,
-      (await readFile(lessonPath, "utf8")).replace("segment_ref: episode-01\n", "")
+      (await readFile(lessonPath, "utf8")).replace(
+        "segment_ref: episode-01\n",
+        ""
+      )
     );
     await writeFile(
       cardsPath,
-      (await readFile(cardsPath, "utf8")).replace("segment_ref: episode-01\n", "")
+      (await readFile(cardsPath, "utf8")).replace(
+        "segment_ref: episode-01\n",
+        ""
+      )
     );
 
     const result = await importContentWorkspace({

@@ -62,5 +62,8 @@ Regole pratiche:
 - i campi `notes_it` vanno trattati come prose YAML e scritti in `>-`;
 - evita plain scalar per testo con `:`/`：`, furigana, link semantici, backtick
   o frasi complete di rules text;
+- per composti numerici con contatori o qualificatori usa un solo furigana sul
+  blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
+  `{{4つ以上|よっついじょう}}`;
 - non aggiungere testo libero fuori dai blocchi strutturati.
 -->
