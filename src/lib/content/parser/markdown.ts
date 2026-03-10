@@ -103,8 +103,6 @@ export function parseInlineFragment(input: {
   references: CollectedReference[];
   issues: ValidationIssue[];
 } {
-  const parser = unified().use(remarkParse);
-  const tree = parser.parse(input.source) as Root;
   const context: ParseContext = {
     filePath: input.filePath,
     documentKind: input.documentKind,
@@ -117,58 +115,15 @@ export function parseInlineFragment(input: {
     structuredBlockLookup: new Map()
   };
 
-  const nodes: InlineNode[] = [];
-
-  for (const [index, child] of tree.children.entries()) {
-    if (child.type === "paragraph") {
-      nodes.push(
-        ...convertInlineNodes(
-          child.children,
-          context,
-          `${input.sourcePath}.nodes`,
-          resolveRange(toRange(child.position), context, input.fallbackRange)
-        )
-      );
-
-      if (index < tree.children.length - 1) {
-        nodes.push({ type: "break" });
-      }
-
-      continue;
-    }
-
-    if (child.type === "thematicBreak") {
-      context.issues.push(
-        createIssue({
-          code: "markdown.unsupported-fragment-block",
-          category: "schema",
-          message: "Inline fragments cannot contain thematic breaks.",
-          filePath: input.filePath,
-          path: input.sourcePath,
-          range: input.fallbackRange,
-          hint: "Use plain text or inline markdown inside this field."
-        })
-      );
-      continue;
-    }
-
-    context.issues.push(
-      createIssue({
-        code: "markdown.unsupported-fragment-block",
-        category: "schema",
-        message: `Inline fragments cannot contain '${child.type}' blocks.`,
-        filePath: input.filePath,
-        path: input.sourcePath,
-        range: input.fallbackRange,
-        hint: "Keep card text fields to inline markdown only."
-      })
-    );
-  }
-
   return {
     fragment: {
       raw: input.source,
-      nodes
+      nodes: parseInlineSource(
+        input.source,
+        context,
+        input.sourcePath,
+        input.fallbackRange
+      )
     },
     references: context.references,
     issues: context.issues
@@ -446,11 +401,12 @@ function convertInlineNode(
       return [
         {
           type: "inlineCode",
-          children: tokenizeTextNode(
-            { type: "text", value: node.value } as Text,
+          children: parseInlineSource(
+            node.value,
             context,
             `${sourcePath}.children`,
-            resolvedRange
+            resolvedRange,
+            "inlineCode"
           )
         }
       ];
@@ -485,6 +441,205 @@ function convertInlineNode(
       );
       return [];
   }
+}
+
+function parseInlineSource(
+  source: string,
+  context: ParseContext,
+  sourcePath: string,
+  fallbackRange?: SourceRange,
+  mode: "fragment" | "inlineCode" = "fragment"
+): InlineNode[] {
+  const parser = unified().use(remarkParse);
+  const tree = parser.parse(source) as Root;
+
+  if (tree.children.some((child) => child.type !== "paragraph")) {
+    if (mode === "fragment") {
+      reportUnsupportedFragmentBlocks(tree.children, context, sourcePath, fallbackRange);
+    }
+
+    return createLiteralInlineNodes(
+      source,
+      tree,
+      context,
+      sourcePath,
+      fallbackRange
+    );
+  }
+
+  const nodes: InlineNode[] = [];
+
+  for (const [index, child] of tree.children.entries()) {
+    if (child.type !== "paragraph") {
+      continue;
+    }
+
+    nodes.push(
+      ...convertInlineNodes(
+        child.children,
+        context,
+        `${sourcePath}.nodes`,
+        resolveRange(toRange(child.position), context, fallbackRange)
+      )
+    );
+
+    if (index < tree.children.length - 1) {
+      nodes.push({ type: "break" });
+    }
+  }
+
+  return nodes;
+}
+
+function reportUnsupportedFragmentBlocks(
+  children: Root["children"],
+  context: ParseContext,
+  sourcePath: string,
+  fallbackRange?: SourceRange
+) {
+  for (const child of children) {
+    if (child.type === "paragraph") {
+      continue;
+    }
+
+    context.issues.push(
+      createIssue({
+        code: "markdown.unsupported-fragment-block",
+        category: "schema",
+        message:
+          child.type === "thematicBreak"
+            ? "Inline fragments cannot contain thematic breaks."
+            : `Inline fragments cannot contain '${child.type}' blocks.`,
+        filePath: context.filePath,
+        path: sourcePath,
+        range: resolveRange(toRange(child.position), context, fallbackRange),
+        hint:
+          child.type === "thematicBreak"
+            ? "Use plain text or inline markdown inside this field."
+            : "Keep card text fields to inline markdown only."
+      })
+    );
+  }
+}
+
+function createLiteralInlineNodes(
+  source: string,
+  tree?: Root,
+  context?: ParseContext,
+  sourcePath?: string,
+  fallbackRange?: SourceRange
+): InlineNode[] {
+  if (source.length === 0) {
+    return [];
+  }
+
+  const nodes: InlineNode[] = [];
+  const semanticLinks =
+    tree && context && sourcePath
+      ? collectSemanticLinks(tree).sort(
+        (left, right) => left.startOffset - right.startOffset
+      )
+      : [];
+  let cursor = 0;
+
+  if (context && sourcePath) {
+    for (const link of semanticLinks) {
+      appendLiteralText(nodes, source.slice(cursor, link.startOffset));
+      nodes.push(
+        convertLink(
+          link.node,
+          context,
+          sourcePath,
+          sliceRange(fallbackRange, source, link.startOffset, link.endOffset)
+        )
+      );
+      cursor = link.endOffset;
+    }
+  }
+
+  appendLiteralText(nodes, source.slice(cursor));
+
+  return nodes;
+}
+
+function appendLiteralText(nodes: InlineNode[], value: string) {
+  if (value.length === 0) {
+    return;
+  }
+
+  const lines = value.split("\n");
+
+  lines.forEach((line, index) => {
+    pushTextNode(nodes, line);
+
+    if (index < lines.length - 1) {
+      nodes.push({ type: "break" });
+    }
+  });
+}
+
+function collectSemanticLinks(root: Root): Array<{
+  node: Link;
+  startOffset: number;
+  endOffset: number;
+}> {
+  const links: Array<{
+    node: Link;
+    startOffset: number;
+    endOffset: number;
+  }> = [];
+
+  const visit = (node: {
+    type: string;
+    url?: string;
+    position?: Root["position"];
+    children?: unknown[];
+  }) => {
+    if (
+      node.type === "link" &&
+      typeof node.url === "string" &&
+      /^(term|grammar):.+$/.test(node.url)
+    ) {
+      const startOffset = node.position?.start.offset;
+      const endOffset = node.position?.end.offset;
+
+      if (typeof startOffset === "number" && typeof endOffset === "number") {
+        links.push({
+          node: node as Link,
+          startOffset,
+          endOffset
+        });
+      }
+    }
+
+    if (!Array.isArray(node.children)) {
+      return;
+    }
+
+    for (const child of node.children) {
+      visit(
+        child as {
+          type: string;
+          url?: string;
+          position?: Root["position"];
+          children?: unknown[];
+        }
+      );
+    }
+  };
+
+  for (const child of root.children) {
+    visit(
+      child as {
+        type: string;
+        url?: string;
+        position?: Root["position"];
+        children?: unknown[];
+      }
+    );
+  }
+
+  return links;
 }
 
 function convertLink(

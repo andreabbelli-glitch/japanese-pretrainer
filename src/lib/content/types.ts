@@ -200,7 +200,7 @@ export interface NormalizedTerm {
   meaningIt: string;
   pos?: string;
   meaningLiteralIt?: string;
-  notesIt?: string;
+  notesIt?: RichTextFragment;
   levelHint?: string;
   aliases: string[];
   segmentRef?: string;
@@ -214,7 +214,7 @@ export interface NormalizedGrammarPattern {
   title: string;
   reading?: string;
   meaningIt: string;
-  notesIt?: string;
+  notesIt?: RichTextFragment;
   levelHint?: string;
   aliases: string[];
   segmentRef?: string;

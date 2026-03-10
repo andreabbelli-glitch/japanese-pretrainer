@@ -5,7 +5,13 @@ const eslintConfig = [
   ...nextCoreWebVitals,
   ...nextTypescript,
   {
-    ignores: ["coverage/**", "dist/**", "pnpm-lock.yaml"]
+    ignores: [
+      ".claude/worktrees/**",
+      ".next/**",
+      "coverage/**",
+      "dist/**",
+      "pnpm-lock.yaml"
+    ]
   }
 ];
 

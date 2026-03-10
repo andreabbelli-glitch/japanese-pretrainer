@@ -144,9 +144,9 @@ describe("content importer", () => {
     expect(await countRows(database.query.termAlias.findMany())).toBe(107);
     expect(await countRows(database.query.grammarPattern.findMany())).toBe(11);
     expect(await countRows(database.query.grammarAlias.findMany())).toBe(15);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(146);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(128);
     expect(await countRows(database.query.card.findMany())).toBe(51);
-    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(69);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(51);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({
@@ -228,6 +228,108 @@ describe("content importer", () => {
     expect(persistedReviewLog).toHaveLength(1);
     expect(persistedEntryStatus?.status).toBe("known_manual");
     expect(persistedLessonProgress?.status).toBe("in_progress");
+  });
+
+  it("imports semantic references nested inside inline code into card entry links", async () => {
+    await copyContentFixture(validContentRoot, contentRoot);
+
+    const cardsPath = path.join(contentRoot, "media", "frieren", "cards", "001-core.md");
+    const cardsSource = await readFile(cardsPath, "utf8");
+
+    await writeFile(
+      cardsPath,
+      cardsSource.replace(
+        'notes_it: "Si collega a [～ている](grammar:grammar-teiru)."',
+        'notes_it: "Si collega a `[食べる](term:term-taberu)` e a [～ている](grammar:grammar-teiru)."'
+      )
+    );
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-09T10:00:00.000Z")
+    });
+
+    expect(result.status).toBe("completed");
+
+    const entryLinks = await database.query.entryLink.findMany();
+    const mentionedTermLink = entryLinks.find(
+      (row) =>
+        row.sourceType === "card" &&
+        row.sourceId === grammarCardId &&
+        row.linkRole === "mentioned" &&
+        row.entryType === "term" &&
+        row.entryId === termId
+    );
+
+    expect(mentionedTermLink).toBeDefined();
+  });
+
+  it("imports lesson entry links referenced from grammar notes", async () => {
+    const noteReferencedTermId = "term-yoku";
+
+    await copyContentFixture(validContentRoot, contentRoot);
+
+    const lessonPath = path.join(
+      contentRoot,
+      "media",
+      "frieren",
+      "textbook",
+      "001-intro.md"
+    );
+    const lessonSource = await readFile(lessonPath, "utf8");
+    const targetBlock = [
+      ":::grammar",
+      "id: grammar-teiru",
+      "pattern: ～ている",
+      "title: Forma in -te iru",
+      "meaning_it: azione in corso o stato risultante",
+      "aliases: [てる]",
+      ":::"
+    ].join("\n");
+    const replacementBlock = [
+      ":::term",
+      `id: ${noteReferencedTermId}`,
+      "lemma: よく",
+      "reading: よく",
+      "romaji: yoku",
+      "meaning_it: spesso",
+      ":::",
+      "",
+      ":::grammar",
+      "id: grammar-teiru",
+      "pattern: ～ている",
+      "title: Forma in -te iru",
+      "meaning_it: azione in corso o stato risultante",
+      `notes_it: \"Nota con \`- [よく](term:${noteReferencedTermId})\`\"`,
+      "aliases: [てる]",
+      ":::"
+    ].join("\n");
+
+    await writeFile(
+      lessonPath,
+      lessonSource.replace(targetBlock, replacementBlock)
+    );
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-09T10:00:00.000Z")
+    });
+
+    expect(result.status).toBe("completed");
+
+    const entryLinks = await database.query.entryLink.findMany();
+    const mentionedTermLink = entryLinks.find(
+      (row) =>
+        row.sourceType === "lesson" &&
+        row.sourceId === lessonId &&
+        row.linkRole === "mentioned" &&
+        row.entryType === "term" &&
+        row.entryId === noteReferencedTermId
+    );
+
+    expect(mentionedTermLink).toBeDefined();
   });
 
   it("updates imported content on reimport while preserving existing user state", async () => {

@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { renderToStaticMarkup } from "react-dom/server";
 
+import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
@@ -17,6 +18,7 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { card, grammarPattern } from "@/db/schema/index.ts";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
   getGlossaryPageData,
@@ -248,7 +250,7 @@ describe("glossary data", () => {
     );
   });
 
-  it("hides raw markdown notes in glossary and review detail data", async () => {
+  it("renders glossary and review notes through the shared inline AST renderer", async () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
@@ -256,6 +258,19 @@ describe("glossary data", () => {
     });
 
     expect(result.status).toBe("completed");
+
+    await database
+      .update(grammarPattern)
+      .set({
+        notesIt: "Nota con **enfasi**, {{日本語|にほんご}} e `[食べる](term:term-taberu)`."
+      })
+      .where(eq(grammarPattern.id, "grammar-teiru"));
+    await database
+      .update(card)
+      .set({
+        notesIt: "Card con **enfasi**, {{語彙|ごい}} e `[～ている](grammar:grammar-teiru)`."
+      })
+      .where(eq(card.id, "card-teiru-concept"));
 
     const glossaryDetail = await getGrammarGlossaryDetailData(
       "frieren",
@@ -270,8 +285,9 @@ describe("glossary data", () => {
 
     expect(glossaryDetail).not.toBeNull();
     expect(reviewDetail).not.toBeNull();
-    expect(glossaryDetail?.cards[0]?.notes).toBeUndefined();
-    expect(reviewDetail?.card.notes).toBeUndefined();
+    expect(glossaryDetail?.entry.notes).toContain("**enfasi**");
+    expect(glossaryDetail?.cards[0]?.notes).toContain("{{語彙|ごい}}");
+    expect(reviewDetail?.card.notes).toContain("[～ている](grammar:grammar-teiru)");
 
     const glossaryMarkup = renderToStaticMarkup(
       GlossaryDetailPage({ data: glossaryDetail! })
@@ -280,7 +296,19 @@ describe("glossary data", () => {
       ReviewCardDetailPage({ data: reviewDetail! })
     );
 
-    expect(glossaryMarkup).not.toContain("[～ている](grammar:grammar-teiru)");
+    expect(glossaryMarkup).toContain("<strong>enfasi</strong>");
+    expect(glossaryMarkup).toContain("<ruby>");
+    expect(glossaryMarkup).toContain("<code");
+    expect(glossaryMarkup).toContain("inline-ref");
+    expect(glossaryMarkup).not.toContain("**enfasi**");
+    expect(glossaryMarkup).not.toContain("{{日本語|にほんご}}");
+    expect(glossaryMarkup).not.toContain("[食べる](term:term-taberu)");
+    expect(reviewMarkup).toContain("<strong>enfasi</strong>");
+    expect(reviewMarkup).toContain("<ruby>");
+    expect(reviewMarkup).toContain("<code");
+    expect(reviewMarkup).toContain("inline-ref");
+    expect(reviewMarkup).not.toContain("**enfasi**");
+    expect(reviewMarkup).not.toContain("{{語彙|ごい}}");
     expect(reviewMarkup).not.toContain("[～ている](grammar:grammar-teiru)");
   });
 

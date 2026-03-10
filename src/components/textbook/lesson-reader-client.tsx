@@ -726,7 +726,9 @@ function LessonArticle({
             </p>
             <p className="reader-definition-card__meaning">{block.entry.meaningIt}</p>
             {block.entry.notesIt ? (
-              <p className="reader-definition-card__notes">{renderFurigana(block.entry.notesIt)}</p>
+              <p className="reader-definition-card__notes">
+                {renderInlineNodes(block.entry.notesIt.nodes)}
+              </p>
             ) : null}
           </section>
         );
@@ -742,7 +744,9 @@ function LessonArticle({
             <h3 className="reader-definition-card__jp jp-inline">{block.entry.pattern}</h3>
             <p className="reader-definition-card__meaning">{block.entry.meaningIt}</p>
             {block.entry.notesIt ? (
-              <p className="reader-definition-card__notes">{renderFurigana(block.entry.notesIt)}</p>
+              <p className="reader-definition-card__notes">
+                {renderInlineNodes(block.entry.notesIt.nodes)}
+              </p>
             ) : null}
           </section>
         );

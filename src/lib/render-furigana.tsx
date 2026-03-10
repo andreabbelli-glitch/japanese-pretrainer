@@ -1,52 +1,84 @@
-// Combined regex: {{base|reading}}, `code`, [label](term:id) / [label](grammar:id)
-const INLINE_PATTERN =
-  /\{\{([^|]+)\|([^}]+)\}\}|`([^`]+)`|\[([^\]]+)\]\((?:term|grammar):[^\)]+\)/gu;
+import { Fragment, type ReactNode } from "react";
+
+import { parseInlineFragment } from "@/lib/content/parser/markdown";
+import type { InlineNode } from "@/lib/content/types";
 
 export function renderFurigana(text: string) {
-  const result = [];
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-  // Reset lastIndex before exec loop (regex is reused across calls)
-  INLINE_PATTERN.lastIndex = 0;
-  while ((match = INLINE_PATTERN.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      result.push(text.slice(lastIndex, match.index));
-    }
-    if (match[1] !== undefined) {
-      // {{base|reading}} → <ruby>
-      result.push(
-        <ruby key={match.index}>
-          {match[1]}
-          <rt>{match[2]}</rt>
-        </ruby>
-      );
-    } else if (match[3] !== undefined) {
-      // `code` → <code>
-      result.push(
-        <code key={match.index} className="jp-inline">
-          {match[3]}
-        </code>
-      );
-    } else if (match[4] !== undefined) {
-      // [label](term:id) or [label](grammar:id) → styled label
-      result.push(
-        <strong key={match.index} className="inline-ref">
-          {match[4]}
-        </strong>
-      );
-    }
-    lastIndex = INLINE_PATTERN.lastIndex;
-  }
-  if (lastIndex < text.length) {
-    result.push(text.slice(lastIndex));
-  }
-  return result;
+  return renderInlineNodes(parseInlineText(text));
 }
 
-/** Strips inline markdown syntax, returning plain text suitable for search normalization. */
 export function stripInlineMarkdown(text: string): string {
-  return text
-    .replace(/\{\{([^|]+)\|[^}]+\}\}/gu, "$1") // {{base|reading}} → base
-    .replace(/`([^`]+)`/gu, "$1") // `text` → text
-    .replace(/\[([^\]]+)\]\([^)]+\)/gu, "$1"); // [label](ref) → label
+  return flattenInlineNodes(parseInlineText(text));
+}
+
+function parseInlineText(text: string): InlineNode[] {
+  return parseInlineFragment({
+    source: text,
+    filePath: "inline-render",
+    documentKind: "lesson",
+    sourcePath: "inline"
+  }).fragment.nodes;
+}
+
+function renderInlineNodes(nodes: InlineNode[]): ReactNode[] {
+  return nodes.map((node, index) => renderInlineNode(node, `inline-${index}`));
+}
+
+function renderInlineNode(node: InlineNode, key: string): ReactNode {
+  switch (node.type) {
+    case "text":
+      return <Fragment key={key}>{node.value}</Fragment>;
+    case "furigana":
+      return (
+        <ruby key={key}>
+          {node.base}
+          <rt>{node.reading}</rt>
+        </ruby>
+      );
+    case "reference":
+      return (
+        <strong key={key} className="inline-ref">
+          {renderInlineNodes(node.children)}
+        </strong>
+      );
+    case "emphasis":
+      return <em key={key}>{renderInlineNodes(node.children)}</em>;
+    case "strong":
+      return <strong key={key}>{renderInlineNodes(node.children)}</strong>;
+    case "inlineCode":
+      return (
+        <code key={key} className="jp-inline">
+          {renderInlineNodes(node.children)}
+        </code>
+      );
+    case "link":
+      return (
+        <a href={node.url} key={key} title={node.title ?? undefined}>
+          {renderInlineNodes(node.children)}
+        </a>
+      );
+    case "break":
+      return <br key={key} />;
+  }
+}
+
+function flattenInlineNodes(nodes: InlineNode[]): string {
+  return nodes
+    .map((node) => {
+      switch (node.type) {
+        case "text":
+          return node.value;
+        case "furigana":
+          return node.base;
+        case "reference":
+        case "emphasis":
+        case "strong":
+        case "inlineCode":
+        case "link":
+          return flattenInlineNodes(node.children);
+        case "break":
+          return " ";
+      }
+    })
+    .join("");
 }

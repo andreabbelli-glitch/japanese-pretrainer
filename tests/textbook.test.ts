@@ -4,6 +4,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { eq } from "drizzle-orm";
+import { Fragment, createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
@@ -25,6 +27,8 @@ import {
   setFuriganaMode,
   setLessonCompletionState
 } from "@/lib/textbook";
+import { parseTextbookDocument } from "@/lib/textbook-document";
+import { renderFurigana } from "@/lib/render-furigana";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -191,6 +195,139 @@ describe("textbook data", () => {
         ]
       }
     ]);
+  });
+
+  it("preserves grammar reading when lesson AST JSON is reloaded", () => {
+    const document = parseTextbookDocument(
+      JSON.stringify({
+        raw: "stub",
+        blocks: [
+          {
+            type: "grammarDefinition",
+            entry: {
+              id: "grammar-toki",
+              kind: "grammar",
+              pattern: "～時",
+              title: "〜とき",
+              reading: "とき / たとき",
+              meaningIt: "quando",
+              aliases: [],
+              source: {
+                filePath: "content/media/demo/textbook/001.md",
+                documentKind: "lesson",
+                documentId: "lesson-demo",
+                sequence: 0
+              }
+            }
+          }
+        ]
+      })
+    );
+
+    expect(document?.blocks).toEqual([
+      {
+        type: "grammarDefinition",
+        entry: expect.objectContaining({
+          id: "grammar-toki",
+          reading: "とき / たとき"
+        })
+      }
+    ]);
+  });
+
+  it("preserves structured definition notes when lesson AST JSON is reloaded", () => {
+    const document = parseTextbookDocument(
+      JSON.stringify({
+        raw: "stub",
+        blocks: [
+          {
+            type: "grammarDefinition",
+            entry: {
+              id: "grammar-teiru",
+              kind: "grammar",
+              pattern: "～ている",
+              title: "Forma in -te iru",
+              reading: "ている",
+              meaningIt: "azione in corso",
+              notesIt: {
+                raw: "Nota con `[食べる](term:term-taberu)`.",
+                nodes: [
+                  { type: "text", value: "Nota con " },
+                  {
+                    type: "inlineCode",
+                    children: [
+                      {
+                        type: "reference",
+                        raw: "[食べる](term:term-taberu)",
+                        display: "食べる",
+                        targetType: "term",
+                        targetId: "term-taberu",
+                        children: [{ type: "text", value: "食べる" }]
+                      }
+                    ]
+                  },
+                  { type: "text", value: "." }
+                ]
+              },
+              aliases: [],
+              source: {
+                filePath: "content/media/demo/textbook/001.md",
+                documentKind: "lesson",
+                documentId: "lesson-demo",
+                sequence: 0
+              }
+            }
+          }
+        ]
+      })
+    );
+
+    expect(document?.blocks).toEqual([
+      {
+        type: "grammarDefinition",
+        entry: expect.objectContaining({
+          id: "grammar-teiru",
+          notesIt: {
+            raw: "Nota con `[食べる](term:term-taberu)`.",
+            nodes: [
+              { type: "text", value: "Nota con " },
+              {
+                type: "inlineCode",
+                children: [
+                  expect.objectContaining({
+                    type: "reference",
+                    targetType: "term",
+                    targetId: "term-taberu",
+                    display: "食べる"
+                  })
+                ]
+              },
+              { type: "text", value: "." }
+            ]
+          }
+        })
+      }
+    ]);
+  });
+
+  it("renders note markdown through the inline AST renderer used by the textbook UI", () => {
+    const markup = renderToStaticMarkup(
+      createElement(
+        Fragment,
+        null,
+        ...renderFurigana(
+          "Nota con **enfasi**, {{日本語|にほんご}} e `[食べる](term:term-taberu)`."
+        )
+      )
+    );
+
+    expect(markup).toContain("<strong>enfasi</strong>");
+    expect(markup).toContain("<ruby>");
+    expect(markup).toContain("<code");
+    expect(markup).toContain("inline-ref");
+    expect(markup).not.toContain("**enfasi**");
+    expect(markup).not.toContain("{{日本語|にほんご}}");
+    expect(markup).not.toContain("[食べる](term:term-taberu)");
   });
 
   it("persists furigana preference and lesson progress changes", async () => {

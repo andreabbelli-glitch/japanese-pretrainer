@@ -45,7 +45,6 @@ import {
   romanizeKanaForSearch
 } from "@/lib/study-search";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
-import { getRenderSafeText } from "@/lib/render-safe-text";
 
 type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
 

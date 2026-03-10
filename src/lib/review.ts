@@ -11,7 +11,6 @@ import {
   type ReviewCardListItem,
   type TermGlossaryEntry
 } from "@/db";
-import { getRenderSafeText } from "@/lib/render-safe-text";
 import { getReviewDailyLimit } from "@/lib/settings";
 import {
   mediaGlossaryEntryHref,

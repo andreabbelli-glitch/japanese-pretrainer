@@ -173,7 +173,7 @@ function renderTermDefinition(block: TermDefinitionBlock) {
       ? `<p class="entry-aliases">${escapeHtml(entry.aliases.join(", "))}</p>`
       : "";
   const notes = entry.notesIt
-    ? `<p class="entry-notes">${escapeHtml(entry.notesIt)}</p>`
+    ? `<p class="entry-notes">${renderInlineNodes(entry.notesIt.nodes)}</p>`
     : "";
 
   return [
@@ -194,7 +194,7 @@ function renderGrammarDefinition(block: GrammarDefinitionBlock) {
       ? `<p class="entry-aliases">${escapeHtml(entry.aliases.join(", "))}</p>`
       : "";
   const notes = entry.notesIt
-    ? `<p class="entry-notes">${escapeHtml(entry.notesIt)}</p>`
+    ? `<p class="entry-notes">${renderInlineNodes(entry.notesIt.nodes)}</p>`
     : "";
 
   return [
@@ -279,7 +279,7 @@ function extractTermText(entry: NormalizedTerm) {
     entry.romaji,
     entry.meaningIt,
     entry.meaningLiteralIt ?? "",
-    entry.notesIt ?? "",
+    entry.notesIt ? extractInlineNodesText(entry.notesIt.nodes) : "",
     entry.aliases.join(" ")
   ]
     .filter((value) => value.length > 0)
@@ -291,7 +291,7 @@ function extractGrammarText(entry: NormalizedGrammarPattern) {
     entry.title,
     entry.pattern,
     entry.meaningIt,
-    entry.notesIt ?? "",
+    entry.notesIt ? extractInlineNodesText(entry.notesIt.nodes) : "",
     entry.aliases.join(" ")
   ]
     .filter((value) => value.length > 0)
@@ -337,8 +337,9 @@ function collectReferenceKeysFromBlock(
     case "thematicBreak":
       return [];
     case "termDefinition":
+      return collectReferenceKeysFromRichText(block.entry.notesIt);
     case "grammarDefinition":
-      return [];
+      return collectReferenceKeysFromRichText(block.entry.notesIt);
     case "cardDefinition":
       return dedupeReferenceKeys([
         ...collectReferenceKeysFromInlineNodes(block.card.front.nodes),
@@ -364,10 +365,10 @@ function collectReferenceKeysFromInlineNodes(
       case "emphasis":
       case "strong":
       case "link":
+      case "inlineCode":
         return collectReferenceKeysFromInlineNodes(node.children);
       case "text":
       case "furigana":
-      case "inlineCode":
       case "break":
         return [];
     }

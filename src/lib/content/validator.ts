@@ -49,12 +49,14 @@ interface TermRecord {
   value: NormalizedTerm;
   sourcePath: string;
   position?: SourceRange;
+  references: CollectedReference[];
 }
 
 interface GrammarRecord {
   value: NormalizedGrammarPattern;
   sourcePath: string;
   position?: SourceRange;
+  references: CollectedReference[];
 }
 
 interface CardRecord {
@@ -671,6 +673,7 @@ function resolveStructuredBody(
 
         blocks.push(node);
         terms.push(term);
+        references.push(...term.references);
       }
 
       continue;
@@ -693,6 +696,7 @@ function resolveStructuredBody(
 
         blocks.push(node);
         grammarPatterns.push(grammar);
+        references.push(...grammar.references);
       }
 
       continue;
@@ -1189,6 +1193,21 @@ function normalizeTermBlock(
     return null;
   }
 
+  const notesRange = rawBlock.fieldRanges?.notes_it ?? rawBlock.position;
+  const notesFragment = notesIt
+    ? parseInlineFragment({
+      source: notesIt,
+      filePath: sourceContext.filePath,
+      documentKind: sourceContext.documentKind,
+      documentId: sourceContext.documentId,
+      sourcePath: `${sourcePath}.notes_it`,
+      fragmentOrigin: notesRange?.start,
+      fallbackRange: notesRange
+    })
+    : null;
+
+  issues.push(...(notesFragment?.issues ?? []));
+
   return {
     value: {
       kind: "term",
@@ -1199,7 +1218,7 @@ function normalizeTermBlock(
       meaningIt,
       pos: pos ?? undefined,
       meaningLiteralIt: meaningLiteralIt ?? undefined,
-      notesIt: notesIt ?? undefined,
+      notesIt: notesFragment?.fragment,
       levelHint: levelHint ?? undefined,
       aliases,
       segmentRef: segmentRef ?? undefined,
@@ -1213,7 +1232,8 @@ function normalizeTermBlock(
       }
     },
     sourcePath,
-    position: rawBlock.position
+    position: rawBlock.position,
+    references: notesFragment?.references ?? []
   };
 }
 
@@ -1333,6 +1353,21 @@ function normalizeGrammarBlock(
     return null;
   }
 
+  const notesRange = rawBlock.fieldRanges?.notes_it ?? rawBlock.position;
+  const notesFragment = notesIt
+    ? parseInlineFragment({
+      source: notesIt,
+      filePath: sourceContext.filePath,
+      documentKind: sourceContext.documentKind,
+      documentId: sourceContext.documentId,
+      sourcePath: `${sourcePath}.notes_it`,
+      fragmentOrigin: notesRange?.start,
+      fallbackRange: notesRange
+    })
+    : null;
+
+  issues.push(...(notesFragment?.issues ?? []));
+
   return {
     value: {
       kind: "grammar",
@@ -1341,7 +1376,7 @@ function normalizeGrammarBlock(
       title,
       reading: reading ?? undefined,
       meaningIt,
-      notesIt: notesIt ?? undefined,
+      notesIt: notesFragment?.fragment,
       levelHint: levelHint ?? undefined,
       aliases,
       segmentRef: segmentRef ?? undefined,
@@ -1355,7 +1390,8 @@ function normalizeGrammarBlock(
       }
     },
     sourcePath,
-    position: rawBlock.position
+    position: rawBlock.position,
+    references: notesFragment?.references ?? []
   };
 }
 

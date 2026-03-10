@@ -1,11 +1,12 @@
 import path from "node:path";
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 
 import { describe, expect, it } from "vitest";
 
 import { parseContentRoot, parseMediaDirectory } from "@/lib/content";
+import { parseInlineFragment } from "@/lib/content/parser/markdown";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -65,6 +66,199 @@ const cardTextPlainScalarMediaDirectory = path.join(
 );
 
 describe("content parser and validator", () => {
+  it("tracks semantic references nested inside inline code fragments", () => {
+    const result = parseInlineFragment({
+      source: "`[食べる](term:term-taberu)`",
+      filePath: "inline.md",
+      documentKind: "lesson",
+      sourcePath: "notesIt"
+    });
+
+    expect(result.references).toContainEqual(
+      expect.objectContaining({
+        referenceType: "term",
+        targetId: "term-taberu",
+        display: "食べる"
+      })
+    );
+    expect(result.fragment.nodes).toEqual([
+      {
+        type: "inlineCode",
+        children: [
+          {
+            type: "reference",
+            raw: "[食べる](term:term-taberu)",
+            display: "食べる",
+            targetType: "term",
+            targetId: "term-taberu",
+            children: [{ type: "text", value: "食べる" }]
+          }
+        ]
+      }
+    ]);
+  });
+
+  it("tracks semantic references inside block-looking inline code fragments", () => {
+    const cases = [
+      {
+        source: "`- [食べる](term:term-taberu)`",
+        prefix: "- "
+      },
+      {
+        source: "`> [食べる](term:term-taberu)`",
+        prefix: "> "
+      }
+    ];
+
+    for (const testCase of cases) {
+      const result = parseInlineFragment({
+        source: testCase.source,
+        filePath: "inline.md",
+        documentKind: "lesson",
+        sourcePath: "notesIt"
+      });
+
+      expect(result.references).toContainEqual(
+        expect.objectContaining({
+          referenceType: "term",
+          targetId: "term-taberu",
+          display: "食べる"
+        })
+      );
+      expect(result.fragment.nodes).toEqual([
+        {
+          type: "inlineCode",
+          children: [
+            { type: "text", value: testCase.prefix },
+            {
+              type: "reference",
+              raw: "[食べる](term:term-taberu)",
+              display: "食べる",
+              targetType: "term",
+              targetId: "term-taberu",
+              children: [{ type: "text", value: "食べる" }]
+            }
+          ]
+        }
+      ]);
+    }
+  });
+
+  it("preserves literal block-looking markdown inside inline code fragments", () => {
+    const cases = [
+      { source: "`- foo`", expected: "- foo" },
+      { source: "`1. foo`", expected: "1. foo" }
+    ];
+
+    for (const testCase of cases) {
+      const result = parseInlineFragment({
+        source: testCase.source,
+        filePath: "inline.md",
+        documentKind: "lesson",
+        sourcePath: "notesIt"
+      });
+
+      expect(result.fragment.nodes).toEqual([
+        {
+          type: "inlineCode",
+          children: [{ type: "text", value: testCase.expected }]
+        }
+      ]);
+    }
+  });
+
+  it("tracks semantic references declared inside grammar notes", async () => {
+    const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-notes-"));
+    const contentRoot = path.join(tempRoot, "content");
+    const lessonPath = path.join(
+      contentRoot,
+      "media",
+      "frieren",
+      "textbook",
+      "001-intro.md"
+    );
+
+    try {
+      await cp(validContentRoot, contentRoot, { recursive: true });
+
+      const lessonSource = await readFile(lessonPath, "utf8");
+      const targetBlock = [
+        ":::grammar",
+        "id: grammar-teiru",
+        "pattern: ～ている",
+        "title: Forma in -te iru",
+        "meaning_it: azione in corso o stato risultante",
+        "aliases: [てる]",
+        ":::"
+      ].join("\n");
+      const replacementBlock = [
+        ":::term",
+        "id: term-yoku",
+        "lemma: よく",
+        "reading: よく",
+        "romaji: yoku",
+        "meaning_it: spesso",
+        ":::",
+        "",
+      ":::grammar",
+      "id: grammar-teiru",
+      "pattern: ～ている",
+      "title: Forma in -te iru",
+      "meaning_it: azione in corso o stato risultante",
+      'notes_it: "Nota con `- [よく](term:term-yoku)`"',
+      "aliases: [てる]",
+      ":::"
+    ].join("\n");
+
+      await writeFile(
+        lessonPath,
+        lessonSource.replace(targetBlock, replacementBlock)
+      );
+
+      const result = await parseMediaDirectory(path.join(contentRoot, "media", "frieren"));
+
+      expect(result.ok).toBe(true);
+      expect(result.data.references).toContainEqual(
+        expect.objectContaining({
+          referenceType: "term",
+          targetId: "term-yoku",
+          display: "よく"
+        })
+      );
+      expect(result.data.lessons[0]?.referenceIds).toContain("term:term-yoku");
+
+      const grammarBlock = result.data.lessons[0]?.body.blocks.find(
+        (block) => block.type === "grammarDefinition"
+      );
+
+      expect(grammarBlock).toMatchObject({
+        type: "grammarDefinition",
+        entry: {
+          notesIt: {
+            raw: "Nota con `- [よく](term:term-yoku)`",
+            nodes: [
+              { type: "text", value: "Nota con " },
+              {
+                type: "inlineCode",
+                children: [
+                  { type: "text", value: "- " },
+                  {
+                    type: "reference",
+                    targetType: "term",
+                    targetId: "term-yoku",
+                    display: "よく"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      });
+    } finally {
+      await rm(tempRoot, { recursive: true, force: true });
+    }
+  });
+
   it("keeps the parser core under src/lib/content independent from src/db", async () => {
     const contentSourceFiles = (await listFilesRecursively(contentLibraryRoot)).filter(
       (filePath) =>
@@ -154,7 +348,7 @@ describe("content parser and validator", () => {
     expect(result.data.terms).toHaveLength(40);
     expect(result.data.grammarPatterns).toHaveLength(11);
     expect(result.data.cards).toHaveLength(51);
-    expect(result.data.references).toHaveLength(274);
+    expect(result.data.references).toHaveLength(237);
     expect(result.data.lessons.map((lesson) => lesson.frontmatter.slug)).toEqual([
       "tcg-core-overview",
       "tcg-core-patterns"

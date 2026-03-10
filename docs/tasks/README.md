@@ -34,6 +34,7 @@ aggiuntivo e con criteri di accettazione chiari.
 - [10 - Progress, Settings And Study Controls](./10-progress-settings-and-study-controls.md)
 - [11 - Demo Content, Fixtures And LLM Workflow](./11-demo-content-fixtures-and-llm-workflow.md)
 - [12 - QA, E2E And Launch Polish](./12-qa-e2e-and-launch-polish.md)
+- [13 - Regression Fixes From Audit](./13-regression-fixes-from-audit.md)
 
 ## Dipendenze ad alto livello
 
