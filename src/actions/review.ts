@@ -12,6 +12,8 @@ import {
 } from "@/lib/review-service";
 import { mediaHref, mediaReviewCardHref, mediaStudyHref } from "@/lib/site";
 
+type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
+
 export async function gradeReviewCardAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
   const cardId = readRequiredString(formData, "cardId");
@@ -21,7 +23,10 @@ export async function gradeReviewCardAction(formData: FormData) {
   await applyReviewGrade({
     cardId,
     rating:
-      rating === "again" || rating === "hard" || rating === "good" || rating === "easy"
+      rating === "again" ||
+      rating === "hard" ||
+      rating === "good" ||
+      rating === "easy"
         ? rating
         : "good"
   });
@@ -39,6 +44,7 @@ export async function markLinkedEntryKnownAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
   const cardId = readRequiredString(formData, "cardId");
   const answeredCount = readCount(formData, "answered");
+  const redirectMode = readRedirectMode(formData);
 
   await setLinkedEntryStatusByCard({
     cardId,
@@ -51,6 +57,7 @@ export async function markLinkedEntryKnownAction(formData: FormData) {
       answeredCount,
       cardId,
       mediaSlug,
+      redirectMode,
       notice: "known"
     })
   );
@@ -60,6 +67,7 @@ export async function setLinkedEntryLearningAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
   const cardId = readRequiredString(formData, "cardId");
   const answeredCount = readCount(formData, "answered");
+  const redirectMode = readRedirectMode(formData);
 
   await setLinkedEntryStatusByCard({
     cardId,
@@ -72,6 +80,7 @@ export async function setLinkedEntryLearningAction(formData: FormData) {
       answeredCount,
       cardId,
       mediaSlug,
+      redirectMode,
       notice: "learning"
     })
   );
@@ -81,6 +90,7 @@ export async function resetReviewCardAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
   const cardId = readRequiredString(formData, "cardId");
   const answeredCount = readCount(formData, "answered");
+  const redirectMode = readRedirectMode(formData);
 
   await resetReviewCardProgress({
     cardId
@@ -92,6 +102,7 @@ export async function resetReviewCardAction(formData: FormData) {
       answeredCount,
       cardId,
       mediaSlug,
+      redirectMode,
       notice: "reset"
     })
   );
@@ -101,6 +112,7 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
   const cardId = readRequiredString(formData, "cardId");
   const answeredCount = readCount(formData, "answered");
+  const redirectMode = readRedirectMode(formData);
   const suspended = formData.get("suspended") === "true";
 
   await setReviewCardSuspended({
@@ -114,6 +126,7 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
       answeredCount,
       cardId,
       mediaSlug,
+      redirectMode,
       notice: suspended ? "suspended" : "resumed"
     })
   );
@@ -123,15 +136,20 @@ function buildReviewRedirectUrl(input: {
   answeredCount: number;
   cardId?: string;
   mediaSlug: string;
+  redirectMode?: ReviewRedirectMode;
   notice?: string;
 }): Route {
+  if (input.redirectMode === "stay_detail" && input.cardId) {
+    return mediaReviewCardHref(input.mediaSlug, input.cardId);
+  }
+
   const params = new URLSearchParams();
 
   if (input.answeredCount > 0) {
     params.set("answered", String(input.answeredCount));
   }
 
-  if (input.cardId) {
+  if (input.cardId && input.redirectMode === "preserve_card") {
     params.set("card", input.cardId);
   }
 
@@ -141,7 +159,9 @@ function buildReviewRedirectUrl(input: {
 
   const baseHref = mediaStudyHref(input.mediaSlug, "review");
 
-  return (params.size > 0 ? `${baseHref}?${params.toString()}` : baseHref) as Route;
+  return (
+    params.size > 0 ? `${baseHref}?${params.toString()}` : baseHref
+  ) as Route;
 }
 
 function revalidateReviewPaths(mediaSlug: string, cardId: string) {
@@ -169,4 +189,12 @@ function readCount(formData: FormData, key: string) {
     typeof raw === "string" ? Number.parseInt(raw, 10) : Number.NaN;
 
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+}
+
+function readRedirectMode(formData: FormData): ReviewRedirectMode {
+  const value = formData.get("redirectMode");
+
+  return value === "preserve_card" || value === "stay_detail"
+    ? value
+    : "advance_queue";
 }

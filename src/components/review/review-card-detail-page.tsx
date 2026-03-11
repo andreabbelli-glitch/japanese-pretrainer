@@ -111,7 +111,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
         description="Le azioni restano locali e non cancellano mai lo storico review già presente nel DB."
       >
         <div className="hero-actions">
-          {data.card.reviewLabel === "Gia nota" ? (
+          {data.card.reviewLabel === "Già nota" ? (
             <form action={setLinkedEntryLearningAction}>
               <ReviewDetailActionFields
                 cardId={data.card.id}
@@ -221,6 +221,7 @@ function ReviewDetailActionFields({
       <input name="mediaSlug" type="hidden" value={mediaSlug} />
       <input name="cardId" type="hidden" value={cardId} />
       <input name="answered" type="hidden" value="0" />
+      <input name="redirectMode" type="hidden" value="stay_detail" />
     </>
   );
 }

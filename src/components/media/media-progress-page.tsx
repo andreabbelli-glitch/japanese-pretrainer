@@ -74,7 +74,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
               tone={data.review.dueCount > 0 ? "warning" : "default"}
               value={
                 data.review.dueCount > 0
-                  ? `${data.review.dueCount} dovute`
+                  ? `${data.review.dueCount} da ripassare`
                   : data.review.queueCount > 0
                     ? `${data.review.queueCount} in coda`
                     : "In pari"
@@ -167,7 +167,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
             />
             <StatBlock
               detail="Override manuali o segnali equivalenti."
-              label="Gia note"
+              label="Già note"
               value={String(data.glossary.breakdown.known)}
             />
             <StatBlock
@@ -224,7 +224,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
               value={String(data.review.dueCount)}
             />
             <StatBlock
-              detail={`${data.review.newAvailableCount} nuove disponibili nel media`}
+              detail={`${data.review.newAvailableCount} nuove disponibili in totale per questo media.`}
               label="Nuove oggi"
               value={String(data.review.newQueuedCount)}
             />
@@ -295,7 +295,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
                 <p className="entry-point-card__body">{data.review.queueLabel}</p>
                 <p className="entry-point-card__detail">
                   {data.review.dueCount > 0
-                    ? `${data.review.dueCount} dovute`
+                    ? `${data.review.dueCount} da ripassare`
                     : "Nessuna urgenza adesso"}
                 </p>
               </SurfaceCard>

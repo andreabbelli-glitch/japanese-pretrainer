@@ -387,6 +387,12 @@ rt {
   font-weight: var(--font-weight-semibold);
 }
 
+.button--small {
+  min-height: auto;
+  padding: 0.45rem 0.8rem;
+  font-size: var(--text-micro);
+}
+
 .button:hover,
 .button:focus-visible,
 .text-link:hover,
@@ -1754,6 +1760,7 @@ rt {
   background: var(--color-review-easy-soft);
 }
 
+.review-entry-actions,
 .review-entry-list,
 .review-card-list {
   display: grid;

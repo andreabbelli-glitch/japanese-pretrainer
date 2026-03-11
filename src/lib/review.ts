@@ -532,24 +532,24 @@ function buildQueueIntroLabel(input: {
     if (input.dueCount > 0) {
       segments.push(
         input.dueCount === 1
-          ? "1 card dovuta adesso"
-          : `${input.dueCount} card dovute adesso`
+          ? "1 card da ripassare adesso"
+          : `${input.dueCount} card da ripassare adesso`
       );
     }
 
     if (input.newQueuedCount > 0) {
       segments.push(
         input.newQueuedCount === 1
-          ? `1 nuova introdotta entro il limite giornaliero di ${input.dailyLimit}`
-          : `${input.newQueuedCount} nuove introdotte entro il limite giornaliero di ${input.dailyLimit}`
+          ? `1 nuova prevista entro il limite giornaliero di ${input.dailyLimit}`
+          : `${input.newQueuedCount} nuove previste entro il limite giornaliero di ${input.dailyLimit}`
       );
     }
 
     if (input.manualCount > 0) {
       segments.push(
         input.manualCount === 1
-          ? "1 card resta coperta da manual mastery"
-          : `${input.manualCount} card restano coperte da manual mastery`
+          ? "1 card è esclusa manualmente"
+          : `${input.manualCount} card sono escluse manualmente`
       );
     }
 
@@ -564,8 +564,8 @@ function buildQueueIntroLabel(input: {
 
   if (input.manualCount > 0) {
     return input.manualCount === 1
-      ? "La review di oggi è vuota, ma 1 card resta coperta da manual mastery."
-      : `La review di oggi è vuota, ma ${input.manualCount} card restano coperte da manual mastery.`;
+      ? "La review di oggi è vuota, ma 1 card è esclusa manualmente."
+      : `La review di oggi è vuota, ma ${input.manualCount} card sono escluse manualmente.`;
   }
 
   return "La review di oggi è vuota: il media non ha ancora card attive da mettere in coda.";
@@ -586,7 +586,7 @@ function buildBucketDetail(
   }
 
   if (bucket === "manual") {
-    return "Una entry collegata è stata marcata manualmente come nota o ignorata.";
+    return "Una voce collegata è stata impostata manualmente come già nota o ignorata.";
   }
 
   if (bucket === "suspended") {
@@ -615,10 +615,10 @@ function formatBucketLabel(
   }
 
   if (bucket === "upcoming") {
-    return "In rotazione";
+    return "Da ripassare nei prossimi giorni";
   }
 
-  return effectiveState === "ignored" ? "Ignorata" : "Gia nota";
+  return effectiveState === "ignored" ? "Ignorata" : "Già nota";
 }
 
 function compareEntryLinks(

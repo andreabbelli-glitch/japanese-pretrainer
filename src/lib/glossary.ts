@@ -522,7 +522,7 @@ function buildGlossaryDetailData(input: {
         row.cardStatus === "suspended"
           ? "Sospesa"
           : forceKnownReviewLabel
-            ? "Gia nota"
+            ? "Già nota"
             : formatReviewStateLabel(
                 row.reviewState,
                 row.manualOverride ?? false

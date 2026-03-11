@@ -73,6 +73,9 @@ export function ReviewPage({ data }: ReviewPageProps) {
   );
   const contextualSettingsHref = appendReturnToParam("/settings", sessionHref);
   const showCompletionState = !hasQueue && selectedCard === null;
+  const actionRedirectMode = data.selectedCardContext.isQueueCard
+    ? "advance_queue"
+    : "preserve_card";
 
   return (
     <div className="review-page">
@@ -85,7 +88,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
         meta={
           <>
             <span>{data.queue.queueCount} in coda</span>
-            <span>{data.queue.dueCount} dovute</span>
+            <span>{data.queue.dueCount} da ripassare</span>
             <span>Limite nuove {data.queue.dailyLimit}</span>
           </>
         }
@@ -168,48 +171,6 @@ export function ReviewPage({ data }: ReviewPageProps) {
                 )}
               </div>
 
-              {selectedCard.entries.length > 0 ? (
-                <div className="review-entry-list">
-                  {selectedCard.entries.map((entry) => (
-                    <Link
-                      key={entry.id}
-                      className="review-entry-link"
-                      href={appendReturnToParam(entry.href, sessionHref)}
-                    >
-                      <SurfaceCard
-                        className="review-entry-card"
-                        variant="quiet"
-                      >
-                        <div className="review-entry-card__top">
-                          <div className="review-entry-card__chips">
-                            <span className="chip">
-                              {entry.relationshipLabel}
-                            </span>
-                            <span className="meta-pill">
-                              {entry.statusLabel}
-                            </span>
-                          </div>
-                          <span className="glossary-result-card__arrow">
-                            Apri entry
-                          </span>
-                        </div>
-                        <h3 className="review-entry-card__title jp-inline">
-                          {entry.label}
-                        </h3>
-                        {entry.subtitle ? (
-                          <p className="review-entry-card__subtitle jp-inline">
-                            {entry.subtitle}
-                          </p>
-                        ) : null}
-                        <p className="review-entry-card__body">
-                          {entry.meaning}
-                        </p>
-                      </SurfaceCard>
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-
               {data.selectedCardContext.isQueueCard &&
               data.selectedCardContext.showAnswer ? (
                 <div className="review-grade-grid">
@@ -240,6 +201,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
                       answeredCount={data.session.answeredCount}
                       cardId={selectedCard.id}
                       mediaSlug={data.media.slug}
+                      redirectMode={actionRedirectMode}
                     />
                     <button className="button button--primary" type="submit">
                       Rimetti in studio
@@ -251,6 +213,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
                       answeredCount={data.session.answeredCount}
                       cardId={selectedCard.id}
                       mediaSlug={data.media.slug}
+                      redirectMode={actionRedirectMode}
                     />
                     <button className="button button--ghost" type="submit">
                       Segna già nota
@@ -263,6 +226,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
                     answeredCount={data.session.answeredCount}
                     cardId={selectedCard.id}
                     mediaSlug={data.media.slug}
+                    redirectMode={actionRedirectMode}
                   />
                   <button className="button button--ghost" type="submit">
                     Reset card
@@ -274,6 +238,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
                     answeredCount={data.session.answeredCount}
                     cardId={selectedCard.id}
                     mediaSlug={data.media.slug}
+                    redirectMode={actionRedirectMode}
                   />
                   <input
                     name="suspended"
@@ -288,15 +253,30 @@ export function ReviewPage({ data }: ReviewPageProps) {
                       : "Sospendi"}
                   </button>
                 </form>
+
+                {selectedCard.entries.map((entry) => (
+                  <Link
+                    key={entry.id}
+                    className="button button--ghost button--small"
+                    href={appendReturnToParam(entry.href, sessionHref)}
+                  >
+                    Controlla nel glossario
+                  </Link>
+                ))}
               </div>
 
-              <p className="review-stage__hint">
-                {selectedCard.bucket === "manual"
-                  ? "Lo stato manuale vive sulle entry canoniche: la card resta intatta e riacquista il suo scheduling appena la rimetti in studio."
-                  : selectedCard.bucket === "suspended"
-                    ? "La sospensione usa lo stato della card, non cancella intervalli o log già presenti."
-                    : "Il grading aggiorna `review_state` e aggiunge sempre un nuovo evento in `review_log`."}
-              </p>
+              {selectedCard.bucket === "manual" ? (
+                <p className="review-stage__hint">
+                  Lo stato manuale vive sulle entry canoniche: la card resta
+                  intatta e riacquista il suo scheduling appena la rimetti in
+                  studio.
+                </p>
+              ) : selectedCard.bucket === "suspended" ? (
+                <p className="review-stage__hint">
+                  La sospensione usa lo stato della card, non cancella
+                  intervalli o log già presenti.
+                </p>
+              ) : null}
             </>
           ) : showCompletionState ? (
             <EmptyState
@@ -339,31 +319,31 @@ export function ReviewPage({ data }: ReviewPageProps) {
           <p className="eyebrow">Sessione</p>
           <div className="stats-grid stats-grid--stacked">
             <StatBlock
-              detail="Card che puoi lavorare adesso."
+              detail="Card pronte nella sessione di adesso."
               label="In coda"
               value={String(data.queue.queueCount)}
             />
             <StatBlock
-              detail="Già entrate nel loop quotidiano."
-              label="Dovute"
+              detail="Card già in review previste per oggi."
+              label="Da ripassare"
               tone={data.queue.dueCount > 0 ? "warning" : "default"}
               value={String(data.queue.dueCount)}
             />
             <StatBlock
-              detail={`${data.queue.newAvailableCount} nuove disponibili nel media`}
+              detail={`${data.queue.newAvailableCount} nuove disponibili in totale per questo media.`}
               label="Nuove"
               value={String(data.queue.newQueuedCount)}
             />
             <StatBlock
-              detail="Aggiornato solo in questa sessione aperta."
-              label="Risposte"
+              detail="Conta solo le risposte date in questa sessione."
+              label="Risposte date"
               value={String(data.session.answeredCount)}
             />
           </div>
 
           <div className="stack-list stack-list--tight">
             <div className="summary-row">
-              <span>Manual mastery</span>
+              <span>Escluse manualmente</span>
               <strong>{data.queue.manualCount}</strong>
             </div>
             <div className="summary-row">
@@ -371,12 +351,8 @@ export function ReviewPage({ data }: ReviewPageProps) {
               <strong>{data.queue.suspendedCount}</strong>
             </div>
             <div className="summary-row">
-              <span>In rotazione</span>
+              <span>Da ripassare nei prossimi giorni</span>
               <strong>{data.queue.upcomingCount}</strong>
-            </div>
-            <div className="summary-row">
-              <span>Restanti ora</span>
-              <strong>{data.selectedCardContext.remainingCount}</strong>
             </div>
           </div>
 
@@ -413,7 +389,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
           ) : (
             <EmptyState
               title="La coda di oggi è vuota."
-              description="Il media non ha card dovute o nuove entro il limite giornaliero. Puoi restare in pari oppure gestire manualmente le card qui sotto."
+              description="Per oggi non ci sono card da ripassare o nuove entro il limite giornaliero. Puoi restare in pari oppure gestire manualmente le card qui sotto."
             />
           )}
         </Section>
@@ -426,8 +402,8 @@ export function ReviewPage({ data }: ReviewPageProps) {
           <div className="review-support-grid">
             <ReviewSupportPanel
               cards={data.queue.manualCards}
-              emptyLabel="Nessuna card coperta da manual mastery."
-              title="Gia note"
+              emptyLabel="Nessuna card esclusa manualmente."
+              title="Escluse manualmente"
               answeredCount={data.session.answeredCount}
               activeCardId={selectedCard?.id ?? null}
               reviewHref={data.media.reviewHref}
@@ -442,8 +418,8 @@ export function ReviewPage({ data }: ReviewPageProps) {
             />
             <ReviewSupportPanel
               cards={data.queue.upcomingCards.slice(0, 6)}
-              emptyLabel="Nessuna card già in rotazione."
-              title="In rotazione"
+              emptyLabel="Nessuna card da ripassare nei prossimi giorni."
+              title="Da ripassare nei prossimi giorni"
               answeredCount={data.session.answeredCount}
               activeCardId={selectedCard?.id ?? null}
               reviewHref={data.media.reviewHref}
@@ -535,17 +511,22 @@ function ReviewQueueLinkCard({
 function ReviewActionFields({
   answeredCount,
   cardId,
-  mediaSlug
+  mediaSlug,
+  redirectMode
 }: {
   answeredCount: number;
   cardId: string;
   mediaSlug: string;
+  redirectMode?: "advance_queue" | "preserve_card";
 }) {
   return (
     <>
       <input name="mediaSlug" type="hidden" value={mediaSlug} />
       <input name="cardId" type="hidden" value={cardId} />
       <input name="answered" type="hidden" value={String(answeredCount)} />
+      {redirectMode ? (
+        <input name="redirectMode" type="hidden" value={redirectMode} />
+      ) : null}
     </>
   );
 }

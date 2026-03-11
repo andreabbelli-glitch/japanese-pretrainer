@@ -86,7 +86,7 @@ export function formatEntryStatusLabel(value: string | null) {
     reviewing: "In review",
     review: "In review",
     relearning: "In review",
-    known_manual: "Gia nota",
+    known_manual: "Già nota",
     ignored: "Ignorata"
   };
 
@@ -102,7 +102,7 @@ export function formatReviewStateLabel(
   manualOverride = false
 ) {
   if (manualOverride || value === "known_manual") {
-    return "Gia nota";
+    return "Già nota";
   }
 
   if (!value) {

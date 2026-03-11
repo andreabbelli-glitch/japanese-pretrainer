@@ -33,7 +33,7 @@ export function deriveEntryStudyState(
   if (hasKnownSignal) {
     return {
       key: "known",
-      label: "Gia nota",
+      label: "Già nota",
       hasCardsInReview: false,
       hasKnownSignal: true
     };
