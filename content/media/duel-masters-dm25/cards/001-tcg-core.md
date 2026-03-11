@@ -78,10 +78,11 @@ meaning_it: evoluzione
 pos: verbal-noun
 aliases: [進化, しんか, shinka]
 notes_it: >-
-  È la keyword dell'evoluzione. In pratica ti dice che una carta va messa sopra
-  un'altra carta che fa da base. In questo media è importante perché compare
-  spesso in SD2 e cambia il modo in cui leggi verbi come {{重|かさ}}ねる e
-  condizioni sul tipo di carta.
+  È la keyword dell'evoluzione: la carta non entra da sola nel campo, ma si
+  mette sopra una base già presente. Questo cambia sia il significato pratico
+  della giocata sia la lettura del testo, perché verbi come {{重|かさ}}ねる e i
+  filtri sul tipo di carta smettono di essere dettagli lessicali e diventano la
+  condizione reale dell'azione.
 level_hint: custom
 :::
 
@@ -110,10 +111,10 @@ meaning_it: effetto che permette di evolvere sopra un Tamaseed
 pos: keyword
 aliases: [シンカライズ, shinkaraizu]
 notes_it: >-
-  È la keyword che collega i タマシード alle carte di evoluzione. Il punto
-  pratico è semplice: ti fa leggere un Tamaseed come base utile per mettere
-  sopra un'altra carta. Se trovi シンカライズ, pensa subito a una meccanica di
-  sovrapposizione.
+  È la keyword che collega i タマシード alle carte di evoluzione. In pratica ti
+  sta dicendo che il Tamaseed non va letto come pezzo isolato: può funzionare
+  da base su cui sovrapporre un'altra carta. Se trovi シンカライズ, pensa subito
+  a una meccanica di evoluzione appoggiata su un supporto già in campo.
 level_hint: custom
 :::
 
@@ -126,10 +127,11 @@ meaning_it: Abyss / gruppo di carte Abyss
 pos: noun
 aliases: [アビス, abisu]
 notes_it: >-
-  È un'etichetta di gruppo molto importante in SD1. Compare spesso in filtri
-  come `コスト{{4以下|よんいか}}のアビス` e serve a capire quali carte possono essere
-  cercate, recuperate o messe in campo. Quando la vedi, leggila come nome di una
-  famiglia di carte con sinergie comuni.
+  È un'etichetta di gruppo che in SD1 funziona come filtro operativo. In frasi
+  come `コスト{{4以下|よんいか}}のアビス` non sta aggiungendo colore narrativo: sta
+  limitando quali carte possono essere cercate, recuperate o messe in campo.
+  Quando la vedi, leggila come nome di una famiglia con requisiti e sinergie
+  condivisi.
 level_hint: custom
 :::
 
@@ -360,10 +362,11 @@ meaning_it: evocazione / summon
 pos: verbal-noun
 aliases: [召喚, しょうかん, shoukan]
 notes_it: >-
-  Indica il normale atto di giocare una creatura pagando il suo costo. È utile
-  perché molte carte distinguono tra "entrare in gioco" in generale e "essere
-  evocata" in modo regolare. Se leggi `{{召喚|しょうかん}}{{以外|いがい}}`, sai già
-  che si parla di un ingresso speciale.
+  Indica il normale atto di giocare una creatura pagando il suo costo. La
+  distinzione conta perché molte carte separano l'ingresso regolare
+  dall'ingresso speciale. Se leggi `{{召喚|しょうかん}}{{以外|いがい}}`, sai già che
+  il testo non parla di una giocata standard ma di un modo alternativo di far
+  entrare la carta.
 level_hint: custom
 :::
 
@@ -393,8 +396,10 @@ pos: verbal-noun
 aliases: [破壊, はかい, hakai]
 notes_it: >-
   Vuol dire "distruggere". Nel gioco indica un modo preciso in cui una carta
-  lascia il campo, ma non coincide con tutti i casi di uscita. È quindi utile
-  distinguerlo da {{離|はな}}れる, che è più ampio.
+  lascia il campo, ma non coincide con tutti i casi di uscita. La distinzione
+  da {{離|はな}}れる conta proprio qui: {{破壊|はかい}} parla di distruzione,
+  {{離|はな}}れる parla di qualunque abbandono della zona, anche senza
+  distruzione.
 level_hint: custom
 :::
 
@@ -573,9 +578,10 @@ meaning_it: lasciare / allontanarsi
 pos: ichidan-verb
 aliases: [離れる, はなれる, hanareru]
 notes_it: >-
-  È un verbo tecnico molto importante. Significa lasciare una zona, soprattutto
-  il campo. Non vuol dire per forza "essere distrutto": comprende anche altri
-  modi di uscire. Per questo è più ampio di {{破壊|はかい}}.
+  È il verbo tecnico per "lasciare una zona", soprattutto il campo. Non vuol
+  dire per forza "essere distrutto": comprende anche rimbalzi in mano, spostamenti
+  in altre zone o uscite sostitutive. Per questo è più ampio di
+  {{破壊|はかい}} e cambia la lettura di molti trigger difensivi.
 level_hint: custom
 :::
 
@@ -909,8 +915,9 @@ card_type: recognition
 front: コマンド
 back: Command / famiglia di creature
 notes_it: >-
-  È una famiglia di creature molto importante in SD2. Di solito compare come
-  condizione: non basta attaccare, deve attaccare proprio il tipo giusto.
+  In SD2 questa famiglia compare soprattutto come condizione di validità
+  dell'effetto. Non basta che una creatura attacchi: deve attaccare proprio un
+  コマンド, o una carta che conti come tale, perché il testo si applichi.
 tags: [core, group, dm25-sd2]
 :::
 

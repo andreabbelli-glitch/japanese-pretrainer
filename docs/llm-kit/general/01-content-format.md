@@ -44,6 +44,20 @@ content/
 - I riferimenti devono puntare a ID esistenti oppure l'import deve fallire.
 - Il contenuto testuale libero e permesso solo nelle zone previste.
 
+### 4.0 Regola furigana per testo visibile
+
+Se una stringa giapponese con kanji o composti poco trasparenti e visibile nel
+reader, deve portare il furigana anche quando appare:
+
+- come testo normale;
+- come label di un link semantico `[...](term:...)` o `[...](grammar:...)`;
+- dentro inline code / backtick;
+- dentro note, esempi, checklist o spiegazioni.
+
+Quindi non basta che esista una `reading` nella entry glossary: se il testo
+mostrato al lettore contiene kanji, la forma visibile deve essere annotata con
+`{{base|reading}}` quando la lettura non e banale.
+
 ### 4.1 Regole di scrittura YAML sicura
 
 Per evitare errori di import, i campi testuali descrittivi dentro frontmatter o
@@ -87,6 +101,30 @@ notes_it: Lettura da fissare: {{山札|やまふだ}}.
   `{{4つ|よっつ}}{{以上|いじょう}}`;
 - se il numero e poco trasparente o "grande", annotare il composto intero:
   `{{2000以下|にせんいか}}`, `{{3000円|さんぜんえん}}`.
+
+### 4.3 Regola di qualita esplicativa
+
+Ogni spiegazione libera in `textbook/` o in `notes_it` deve fare piu che dire
+che un termine o un pattern e "utile", "importante" o "da fissare".
+
+Minimo richiesto:
+
+- chiarire che cosa vuol dire davvero l'elemento giapponese nel corpus;
+- chiarire che cosa ti fa capire, distinguere o fare quando compare nel media;
+- se l'elemento e un nome proprio opaco, spiegare almeno quale ruolo ricorrente
+  segnala o quali componenti del nome conviene riconoscere.
+
+Esempi da evitare:
+
+- `{{編成|へんせい}}` e un kanji utile da fissare.
+- `または` e importante nel rules text.
+
+Esempi accettabili:
+
+- `{{編成|へんせい}}` vuol dire "organizzazione / composizione"; in
+  `デッキ{{編成|へんせい}}` segnala la schermata in cui sistemi la lista del mazzo.
+- `または` vuol dire "oppure", ma nelle carte collega due categorie che valgono
+  entrambe per lo stesso filtro.
 
 ## 5. `media.md`
 

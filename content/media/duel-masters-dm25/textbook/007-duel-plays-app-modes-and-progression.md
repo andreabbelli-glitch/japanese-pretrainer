@@ -90,9 +90,9 @@ Nelle UI di gioco le parole di stato contano tantissimo:
 - [～{{済|ず}}み](grammar:grammar-zumi) ti dice che una parte è già stata completata o
   riscossa.
 
-Questo è giapponese molto utile perché non resta teorico nemmeno un secondo:
-capisci la forma e, nello stesso momento, sai se conviene entrare, aspettare o
-riscuotere.
+Qui il valore didattico non è astratto: questi pattern comprimono in pochissimi
+caratteri lo stato reale della schermata. Se li capisci, non stai solo
+"leggendo giapponese": stai decidendo se entrare, aspettare o riscuotere.
 
 ### 3. `{{達成|たっせい}}` e `{{報酬|ほうしゅう}}` vanno lette insieme
 
@@ -109,8 +109,9 @@ Dentro l'app è una coppia molto pratica:
 ### 4. `{{解放|かいほう}}` non è solo un verbo: è una soglia
 
 [{{解放|かいほう}}](term:term-unlock) ti dice che esiste un contenuto che può
-diventare accessibile. Questo è importante perché nelle app giapponesi una
-parte del messaggio resta spesso implicita.
+diventare accessibile. Nelle app giapponesi questo conta perché una parte del
+messaggio resta spesso implicita: il label non ti ripete tutta la frase, ma ti
+fa capire che la funzione esiste gia e che manca ancora una soglia da superare.
 
 Se leggi `{{未解放|みかいほう}}`, il senso pratico è già completo:
 

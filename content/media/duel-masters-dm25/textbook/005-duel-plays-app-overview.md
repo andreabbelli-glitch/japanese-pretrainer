@@ -182,7 +182,8 @@ translation_it: >-
 
 - [{{報酬|ほうしゅう}}](term:term-reward) = ciò che ottieni.
 - [{{受け取る|うけとる}}](term:term-receive) = azione concreta di claim.
-- Questa è la coppia più utile da riconoscere per non lasciare premi in giro.
+- Letti insieme ti dicono sia *che cosa* stai incassando sia *se* c'è ancora
+  un'azione da fare. È questo che ti evita di lasciare premi non riscossi.
 
 **Esempio 4**
 

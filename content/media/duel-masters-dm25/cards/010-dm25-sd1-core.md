@@ -16,9 +16,10 @@ meaning_it: tribu Abyss Royal
 pos: noun
 aliases: [アビスロイヤル, abyss royal]
 notes_it: >-
-  È una linea di [種族](term:term-race) molto importante per leggere bene
-  `DM25-SD1`. Quando compare, non è lore decorativa: è un filtro concreto che
-  decide quali carte il mazzo può recuperare, mettere in campo o premiare.
+  È una linea di [種族](term:term-race) decisiva per leggere bene `DM25-SD1`.
+  Quando compare, non aggiunge solo "lore" al nome della carta: restringe in
+  modo concreto quali carte il mazzo può recuperare, mettere in campo o
+  premiare.
 level_hint: custom
 :::
 
@@ -31,9 +32,10 @@ meaning_it: Abyssbell Jashin Emperor / carta-ancora del deck
 pos: proper-noun
 aliases: [アビスベル=ジャシン帝, ジャシン帝, abisuberu jashintei]
 notes_it: >-
-  È uno dei nomi che vale la pena fissare subito nel deck Abyss. Anche se non
-  memorizzi subito tutto il testo, riconoscere `ジャシン帝` ti aiuta a orientarti
-  tra payoff e carte simbolo dell'asse SD1.
+  È uno dei nomi che conviene riconoscere subito nel deck Abyss perché
+  `ジャシン` ricorre come ancora lessicale del pacchetto e `帝` segnala una figura
+  dominante o "boss". Anche se non ricordi ancora tutto il testo, riconoscerlo
+  ti orienta tra payoff e carte simbolo dell'asse SD1.
 level_hint: custom
 :::
 
@@ -46,9 +48,10 @@ meaning_it: Jashinnyuu / magia chiave dell'asse Abyss
 pos: proper-noun
 aliases: [邪侵入, じゃしんにゅう, jashinnyuu]
 notes_it: >-
-  Nome molto utile da fissare perché condensa bene il tono del deck: asse
-  oscuro, ingresso aggressivo e forte identità Abyss. È una delle ancore
-  lessicali più facili da riconoscere nella lista carte di `DM25-SD1`.
+  Il nome mette insieme `邪`, che richiama l'asse oscuro del mazzo, e
+  `侵入`, cioè "irruzione / ingresso forzato". Per questo non è un nome da
+  memorizzare a caso: riassume bene l'idea di pressione improvvisa tipica di
+  `DM25-SD1` ed è un'ancora lessicale facile da riconoscere nella lista carte.
 level_hint: custom
 :::
 
@@ -61,9 +64,10 @@ meaning_it: Jablood / creatura simbolo del deck
 pos: proper-noun
 aliases: [ジャブラッド, jaburaddo]
 notes_it: >-
-  In `DM25-SD1` è uno dei nomi che conviene riconoscere subito a vista. Serve
-  come ancora pratica mentre studi le carte chiave del mazzo e ti abitua ai
-  nomi ibridi tra kanji e katakana tipici di Duel Masters.
+  In `DM25-SD1` è uno dei nomi che conviene riconoscere subito a vista perché
+  torna tra le carte che tengono insieme il piano del mazzo. Ti abitua anche ai
+  nomi ibridi, spesso opachi a livello semantico, che in Duel Masters vanno
+  letti soprattutto come indicatori di ruolo e ricorrenza.
 level_hint: custom
 :::
 

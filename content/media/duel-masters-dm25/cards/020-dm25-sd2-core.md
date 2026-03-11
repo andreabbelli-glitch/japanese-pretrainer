@@ -46,9 +46,10 @@ meaning_it: schema di evoluzione / carta di setup
 pos: proper-noun
 aliases: [進化設計図, しんかせっけいず, shinka sekkeizu]
 notes_it: >-
-  Nome utile da fissare perché collega il lessico di [進化](term:term-evolution)
-  a un'idea di preparazione del piano di gioco. In `DM25-SD2` ti aiuta a
-  distinguere setup e payoff.
+  Il nome è trasparente se lo leggi a pezzi: [進化](term:term-evolution) +
+  `設計図` = "blueprint / schema di preparazione" dell'evoluzione. In `DM25-SD2`
+  ti segnala quindi una carta di setup, non ancora il payoff finale, e ti aiuta
+  a distinguere preparazione e chiusura.
 level_hint: custom
 :::
 
@@ -89,8 +90,10 @@ front: アポロヌス・ドラゲリオン
 back: Apollonus Dragelion
 notes_it: >-
   Se riconosci subito questo nome, riconosci subito il payoff più esplosivo del
-  mazzo. È utile come ancora mentale mentre studi i testi di
-  [進化](term:term-evolution) e [侵略](term:term-invasion).
+  mazzo. Questo conta perché i testi di
+  [進化](term:term-evolution) e [侵略](term:term-invasion) smettono di essere
+  meccaniche astratte e diventano il percorso che porta proprio a questo
+  finisher.
 tags: [dm25-sd2, finisher, proper-name]
 :::
 
@@ -116,8 +119,9 @@ card_type: recognition
 front: 未来設計図
 back: schema del futuro
 notes_it: >-
-  Utile da memorizzare insieme a [進化設計図](term:term-shinka-sekkeizu), perché
-  entrambe le carte ti allenano a riconoscere il lessico della preparazione nel
-  deck Apollo / Red Zone.
+  Va memorizzata insieme a [進化設計図](term:term-shinka-sekkeizu) perché
+  condividono `設計図`, cioè l'idea di "schema / preparazione". Letto cosi, il
+  nome ti dice che il deck sta ancora costruendo la traiettoria del turno prima
+  dell'attacco finale.
 tags: [dm25-sd2, setup, proper-name]
 :::

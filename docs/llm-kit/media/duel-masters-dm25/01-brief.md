@@ -122,6 +122,15 @@ Regole specifiche di struttura:
 - le lesson deck devono restare a meta tra spiegare il gioco e spiegare il
   giapponese, con focus principale sul giapponese.
 
+Regola di spiegazione obbligatoria:
+
+- non basta dire che un termine, un kanji o un pattern e utile/importante;
+- ogni spiegazione deve dire che cosa vuol dire davvero l'elemento giapponese;
+- ogni spiegazione deve dire che cosa ti fa capire o fare nel contesto Duel
+  Masters;
+- se il nome carta e opaco, spiega almeno quale ruolo ricorrente segnala nel
+  deck o quali componenti del nome conviene riconoscere.
+
 ## Segmentazione consigliata
 
 Per questo media usare `segment_kind: deck`.
@@ -176,6 +185,8 @@ canoniche utili a glossary/review.
 - grammatica scolastica scollegata dalle carte;
 - kanji generici scollegati dal corpus Duel Masters;
 - spiegazioni troppo lunghe;
+- spiegazioni tautologiche del tipo "X e utile/importante" senza spiegazione del
+  significato e dell'effetto pratico;
 - troppe carte in un solo batch;
 - dettagli di meta game non necessari alla lettura;
 - duplicazione tra lesson core e lesson deck.

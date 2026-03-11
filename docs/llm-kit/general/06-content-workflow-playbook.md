@@ -89,6 +89,8 @@ La richiesta deve esplicitare:
 - segmento reale da continuare;
 - obbligo di restituire solo Markdown;
 - obbligo di usare YAML sicuro per `notes_it`, `summary`, `description`, `notes`;
+- obbligo che ogni spiegazione chiarisca significato reale + effetto concreto
+  nel media, non solo che l'elemento e "utile" o "importante";
 - differenza tra media visibile (`Duel Masters`) e slug tecnico
   (`duel-masters-dm25`), quando rilevante.
 
@@ -133,6 +135,20 @@ Il check fallisce se trova:
 - bundle incompleti;
 - altri errori parser/schema/reference/integrity.
 
+### 4.1 QA didattica minima
+
+Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
+
+- se una frase dice che un termine o un pattern e "utile", "importante" o "da
+  fissare", verifica che spieghi subito che cosa significa davvero;
+- verifica che la stessa spiegazione dica anche che cosa ti fa capire o fare nel
+  media;
+- se la spiegazione riguarda un nome proprio opaco, verifica che chiarisca
+  almeno quale ruolo ricorrente segnala nel deck o nell'app.
+
+Se questo check fallisce, il batch va corretto anche se `content:validate` e
+verde.
+
 ### 5. Correggi in modo iterativo
 
 Se la validazione fallisce:
@@ -148,7 +164,9 @@ Formato minimo del correction batch:
 - file da correggere;
 - issue list con `code`, file e riga;
 - istruzione a non toccare file gia validi;
-- istruzione a usare `>-` per i campi YAML descrittivi fragili.
+- istruzione a usare `>-` per i campi YAML descrittivi fragili;
+- istruzione a sostituire spiegazioni tautologiche con spiegazioni semantiche +
+  contestuali.
 
 ### 6. Importa solo dopo validazione verde
 

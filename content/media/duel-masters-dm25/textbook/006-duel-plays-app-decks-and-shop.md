@@ -92,9 +92,12 @@ Dal lato pratico:
 
 Dal lato linguistico:
 
-- `{{編成|へんせい}}` è un kanji utile da fissare;
-- `レンタル` ti allena a riconoscere un loanword molto trasparente, ma legato a
-  una funzione reale.
+- `{{編成|へんせい}}` non vuol dire genericamente "deck": vuol dire
+  "organizzazione / composizione". In `デッキ{{編成|へんせい}}` il focus è che stai
+  entrando nella schermata dove sistemi i pezzi del mazzo, non nella partita.
+- `レンタル` non è un dettaglio lessicale neutro: segnala che quel mazzo ti viene
+  prestato. Se lo leggi bene, capisci subito che puoi usare una lista pronta
+  anche senza possedere ancora tutte le carte.
 
 ### 3. Acquistare, scambiare, creare, smontare: quattro verbi, quattro flussi
 
@@ -160,9 +163,10 @@ translation_it: >-
   Mazzo noleggiato / rental deck.
 :::
 
-- È un label breve ma molto utile.
-- Se lo riconosci, puoi giocare anche senza avere ancora costruito un deck
-  completo.
+- Qui il punto non è la brevità del label, ma la funzione: `レンタル` ti dice che
+  il mazzo è preso in prestito, non assemblato da te.
+- Se lo riconosci, capisci subito che quella schermata serve a entrare in
+  partita con una lista pronta, anche senza una collezione completa.
 
 **Esempio 3**
 

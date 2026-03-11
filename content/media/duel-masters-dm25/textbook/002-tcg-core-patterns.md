@@ -162,7 +162,7 @@ Se leggi `かわりに` come semplice "poi", sbagli la logica dell'effetto.
 
 ### 5. Condizione negativa e controllo di stato
 
-Un pattern molto utile è [～なければ ... ない](grammar:grammar-nakereba). Nelle
+Un pattern centrale è [～なければ ... ない](grammar:grammar-nakereba). Nelle
 carte compare spesso in formule tecniche come:
 
 :::example_sentence
@@ -176,8 +176,9 @@ Se non riconosci [扱う](term:term-atsukau), la frase può sembrare oscura. Se 
 leggi a blocchi, invece, il senso è semplice: se la condizione non è soddisfatta,
 la carta non conta come creatura.
 
-Un altro pattern utile è [～ていれば](grammar:grammar-teireba). Serve a controllare
-uno stato già presente.
+Un altro pattern centrale è [～ていれば](grammar:grammar-teireba). Non introduce
+un'azione nuova: controlla uno stato già presente e decide se l'effetto può
+proseguire.
 
 Esempio:
 
@@ -200,8 +201,8 @@ comune. In frasi come
 `{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}でクリーチャーを{{出|だ}}した{{時|とき}}`, il punto non è il lessico difficile,
 ma la struttura: "con un metodo diverso dalla [召喚](term:term-summon)".
 
-[または](grammar:grammar-matawa) è il connettore di alternativa più utile da
-fissare nel rules text. In pratica vuol dire "oppure / o", ma nelle carte
+[または](grammar:grammar-matawa) è il connettore di alternativa che conviene
+fissare prima nel rules text. In pratica vuol dire "oppure / o", ma nelle carte
 conviene leggerlo in modo più tecnico: collega due categorie o due bersagli che
 valgono entrambi per lo stesso filtro.
 

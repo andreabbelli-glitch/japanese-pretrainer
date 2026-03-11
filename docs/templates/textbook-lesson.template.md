@@ -33,7 +33,9 @@ pattern.>
 ## Spiegazione
 
 <Testo libero in italiano. Usa riferimenti semantici quando richiami termini o
-grammar gia dichiarati.>
+grammar gia dichiarati. Ogni blocco deve chiarire che cosa significa davvero
+l'elemento giapponese e che cosa ti fa capire o fare nel media. Non basta
+scrivere che e "utile" o "importante".>
 
 Puoi usare furigana inline con la sintassi `{{base|reading}}`, per esempio
 `{{<kanji>|<reading>}}`. Se c'e un composto numerico con contatore o
@@ -41,6 +43,10 @@ qualificatore, annota tutto il blocco: `{{1枚|いちまい}}`, `{{4以下|よ�
 `{{4つ以上|よっついじょう}}`; non scrivere `1{{枚|まい}}`,
 `4{{以下|いか}}` o `{{4つ|よっつ}}{{以上|いじょう}}`. Se il numero e
 complesso, annota il composto intero: `{{2000以下|にせんいか}}`.
+
+Se un riferimento semantico ha un label con kanji, annota anche il label:
+`[{{報酬|ほうしゅう}}](term:term-reward)`, non `[報酬](term:term-reward)`.
+Vale anche per inline code: `` `{{未解放|みかいほう}}` `` e non `` `未解放` ``.
 
 ## Esempi guidati
 
@@ -67,4 +73,6 @@ ancora dichiarata altrove. Se una entry esiste gia, referenzia il suo ID.
 Usa :::example_sentence quando vuoi una frase con traduzione italiana
 collassabile nel reader.
 Se aggiungi campi descrittivi YAML nel frontmatter, come `summary`, usa `>-`.
+Una spiegazione debole del tipo "X e utile da fissare" non basta: scrivi
+"X vuol dire Y; qui ti segnala Z".
 -->

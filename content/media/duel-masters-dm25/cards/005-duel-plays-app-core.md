@@ -187,8 +187,10 @@ pos: screen-label
 aliases: [デッキ編成, dekki hensei]
 notes_it: >-
   È la schermata in cui costruisci, modifichi e controlli il tuo mazzo. Per il
-  tuo giapponese è una parola utile perché unisce un loanword facile
-  (`{{デッキ|でっき}}`) a un kanji molto produttivo come `{{編成|へんせい}}`.
+  tuo giapponese conta perché `{{編成|へんせい}}` non vuol dire genericamente
+  "deck", ma "organizzazione / composizione". Quindi `デッキ{{編成|へんせい}}`
+  va letto come area in cui sistemi la lista, non come oggetto di gioco dentro
+  la partita.
 level_hint: custom
 :::
 
@@ -202,8 +204,9 @@ pos: screen-label
 aliases: [レンタルデッキ, rental deck]
 notes_it: >-
   Indica un mazzo preimpostato che puoi usare senza averlo costruito interamente
-  da solo. È un termine utile perché ti permette di giocare anche quando la tua
-  collezione o il tuo lessico non sono ancora completi.
+  da solo. `レンタル` qui significa davvero "preso in prestito": se lo leggi,
+  capisci che il gioco ti sta offrendo accesso immediato alla partita anche se
+  la tua collezione o il tuo lessico non sono ancora completi.
 level_hint: custom
 :::
 
@@ -336,8 +339,9 @@ meaning_it: match in stanza / room match
 pos: mode-name
 aliases: [ルームマッチ, room match]
 notes_it: >-
-  Indica la modalità privata o organizzata in stanza. È utile perché ti insegna
-  a distinguere subito i menu competitivi da quelli più liberi o sociali.
+  Indica la modalità privata o organizzata in stanza. Letta bene, ti dice che
+  non sei in ladder o matchmaking aperto, ma in un contesto più libero o
+  sociale con invito o accesso mirato.
 level_hint: custom
 :::
 
@@ -395,9 +399,10 @@ meaning_it: torre delle prove / Tower of Trials
 pos: mode-name
 aliases: [試練の塔, shiren no tou]
 notes_it: >-
-  Nome utile per due motivi: ti orienta in una modalità specifica e ti fa
-  fissare un composto kanji frequente come `{{試練|しれん}}`. È il tipo di parola
-  che vale la pena imparare perché torna sia come contenuto sia come giapponese.
+  Il nome ti orienta in una modalità specifica e, in più, ti fa leggere
+  `{{試練|しれん}}` come "prova / trial", non come kanji isolato. Così impari
+  insieme il contenuto della modalità e un composto che torna spesso in contesti
+  di sfida o progressione.
 level_hint: custom
 :::
 
@@ -499,7 +504,9 @@ aliases: [済み]
 notes_it: >-
   Ti segnala che un'azione è già stata completata, per esempio in label come
   `{{受取済み|うけとりずみ}}` o `{{達成済み|たっせいずみ}}`. È una
-  scorciatoia visiva molto utile nelle schermate di premio e missione.
+  scorciatoia visiva che condensa in un colpo solo il risultato operativo: quella
+  ricompensa o quell'obiettivo sono già stati gestiti e non richiedono un nuovo
+  claim immediato.
 level_hint: n4
 :::
 
@@ -711,8 +718,10 @@ card_type: recognition
 front: 生成
 back: creare / craftare
 notes_it: >-
-  Azione molto importante per la collezione. Se la riconosci, sai subito che
-  puoi convertire risorse in una carta specifica.
+  Qui `{{生成|せいせい}}` non vuol dire "generare" in astratto: vuol dire creare
+  direttamente una carta usando una risorsa. Se la riconosci, sai subito che
+  quella schermata ti permette di convertire stock o punti in una carta
+  specifica della collezione.
 tags: [duel-plays, app, collection, kanji]
 :::
 
@@ -867,8 +876,9 @@ card_type: concept
 front: ～中
 back: in corso / attualmente attivo
 notes_it: >-
-  Pattern di stato molto frequente nelle UI. Da fissare bene perché compatta in
-  due caratteri un'informazione operativa importante.
+  Pattern di stato molto frequente nelle UI. Il punto non è solo memorizzarlo,
+  ma capire che `中` comprime l'idea di "in corso proprio adesso": in due
+  caratteri la schermata ti comunica lo stato attivo del contenuto.
 tags: [duel-plays, app, grammar]
 :::
 
@@ -893,8 +903,10 @@ card_type: concept
 front: 未～
 back: non ancora / ancora non disponibile
 notes_it: >-
-  Prefisso molto utile per non sbagliare il verso del messaggio. Se compare,
-  l'app ti sta dicendo che manca ancora qualcosa.
+  Questo prefisso orienta subito il verso del messaggio: non stai guardando una
+  funzione assente, ma una funzione esistente che non ha ancora raggiunto la
+  condizione richiesta. Se compare, l'app ti sta dicendo che manca ancora
+  qualcosa prima dell'accesso o del completamento.
 tags: [duel-plays, app, grammar]
 :::
 

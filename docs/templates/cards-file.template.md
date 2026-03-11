@@ -16,7 +16,8 @@ meaning_it: <significato-principale-in-italiano>
 pos: <part-of-speech-opzionale>
 aliases: [<alias-1>, <alias-2>]
 notes_it: >-
-  <nota-opzionale>
+  <nota-opzionale: spiega che cosa significa davvero la entry e che cosa ti fa
+  capire o fare nel media>
 level_hint: <n5|n4|n3|custom>
 :::
 
@@ -27,7 +28,8 @@ title: <titolo-breve>
 meaning_it: <significato-in-italiano>
 aliases: [<alias-1>, <alias-2>]
 notes_it: >-
-  <nota-opzionale>
+  <nota-opzionale: spiega che cosa significa davvero il pattern e quale effetto
+  ha sulla lettura o sull'azione nel media>
 level_hint: <n5|n4|n3|custom>
 :::
 
@@ -39,7 +41,8 @@ card_type: recognition
 front: <testo-front>
 back: <testo-back>
 notes_it: >-
-  <nota-opzionale-con-inline-markdown-o-riferimenti>
+  <nota-opzionale-con-inline-markdown-o-riferimenti: chiarisci il significato
+  reale e l'uso concreto della entry nel media>
 tags: [<tag-1>, <tag-2>]
 :::
 
@@ -51,7 +54,8 @@ card_type: concept
 front: <testo-front>
 back: <testo-back>
 notes_it: >-
-  <nota-opzionale-con-inline-markdown-o-riferimenti>
+  <nota-opzionale-con-inline-markdown-o-riferimenti: chiarisci il significato
+  reale e l'uso concreto del pattern nel media>
 tags: [<tag-1>, <tag-2>]
 :::
 
@@ -62,8 +66,18 @@ Regole pratiche:
 - i campi `notes_it` vanno trattati come prose YAML e scritti in `>-`;
 - evita plain scalar per testo con `:`/`：`, furigana, link semantici, backtick
   o frasi complete di rules text;
+- se un termine o pattern compare nel testo visibile di `notes_it` con kanji,
+  annotalo con furigana anche se esiste gia una `reading` nell'entry;
+- se usi un link semantico con label in kanji, annota il label:
+  `[{{報酬|ほうしゅう}}](term:term-reward)`;
+- se usi inline code con giapponese non trasparente, annota anche li:
+  `` `{{達成済み|たっせいずみ}}` ``;
 - per composti numerici con contatori o qualificatori usa un solo furigana sul
   blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
   `{{4つ以上|よっついじょう}}`;
+- non fermarti a formule come "X e utile/importante": `notes_it` deve dire che
+  cosa significa davvero X e che cosa ti fa capire o fare nel media;
+- se la entry e un nome proprio poco trasparente, spiega almeno quale ruolo
+  ricorrente segnala o quale parte del nome conviene riconoscere;
 - non aggiungere testo libero fuori dai blocchi strutturati.
 -->

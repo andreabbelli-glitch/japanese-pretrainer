@@ -31,8 +31,9 @@ Alla fine dovresti riconoscere:
 
 ## Contesto
 
-`DM25-SD1 技の王道` è il deck d'ingresso dell'asse Abyss. Come corpus didattico è
-molto utile perché concentra in un solo mazzo tre famiglie di linguaggio:
+`DM25-SD1 技の王道` è il deck d'ingresso dell'asse Abyss. Come corpus didattico
+funziona bene perché concentra in un solo mazzo tre famiglie di linguaggio che
+poi tornano insieme nelle carte reali:
 
 - movimento verso e dal [墓地](term:term-graveyard);
 - filtri su [コスト](term:term-cost) e appartenenza di tribù;
@@ -116,8 +117,9 @@ di pressione.
 [アビス](term:term-abyss) da solo indica la famiglia ampia. Quando invece trovi
 [アビスロイヤル](term:term-abyss-royal), il testo sta diventando più selettivo.
 
-Questo è un punto didattico importante: in Duel Masters il lessico di
-[種族](term:term-race) non è lore. È filtro operativo.
+Qui c'è il punto didattico decisivo: in Duel Masters il lessico di
+[種族](term:term-race) non descrive solo il "mondo" della carta. Determina in
+modo operativo quali bersagli sono validi e quali no.
 
 Se una frase dice in pratica "scegli un Abyss Royal", il lavoro di lettura è:
 

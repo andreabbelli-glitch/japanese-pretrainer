@@ -118,6 +118,8 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 - quali entry devono essere riusate;
 - che deve restituire solo Markdown conforme;
 - che i campi descrittivi in YAML devono usare una serializzazione sicura;
+- che le spiegazioni devono esplicitare significato reale + conseguenza concreta
+  nel media;
 - che non deve aggiungere spiegazioni fuori dai file.
 
 ### 7.1 Regola operativa fondamentale
@@ -131,6 +133,12 @@ Per ridurre i fallimenti di import:
 - non deve usare plain scalar per testo che contiene `:` o `：`, furigana,
   link semantici, backtick o una frase completa di rules text.
 - **i furigana `{{kanji|kana}}` e i term link funzionano anche dentro i blocchi di codice inline (i backtick ` `), usali e mappali sempre**: es. `` `{{相手|あいて}}のクリーチャー` `` anziché `` `相手のクリーチャー` ``.
+- **se il testo visibile di un term link o grammar link contiene kanji, annota
+  anche il label del link**: scrivi
+  `[{{報酬|ほうしゅう}}](term:term-reward)` e non `[報酬](term:term-reward)`.
+- **non assumere che la `reading` della entry basti nel reader**: il furigana va
+  messo anche nelle spiegazioni, nelle note e in ogni altra stringa giapponese
+  mostrata all'utente quando la lettura non e trasparente.
 
 Esempio corretto:
 
@@ -138,6 +146,30 @@ Esempio corretto:
 notes_it: >-
   Lettura da fissare: {{山札|やまふだ}}.
 ```
+
+### 7.2 Regola operativa sulla qualita esplicativa
+
+Una spiegazione non e accettabile se si limita a dire che un termine o un
+pattern e "utile", "importante", "frequente" o "da fissare".
+
+Ogni `notes_it` o paragrafo textbook deve chiarire almeno:
+
+- che cosa vuol dire davvero l'elemento giapponese;
+- che cosa cambia nella lettura o nell'azione quando compare nel media;
+- per nomi propri opachi, quale ruolo ricorrente o quale parte del nome conviene
+  riconoscere.
+
+Anti-esempi:
+
+- `{{編成|へんせい}}` e un kanji utile da fissare.
+- `または` e importante nel rules text.
+
+Forme consigliate:
+
+- `{{編成|へんせい}}` vuol dire "organizzazione / composizione"; in
+  `デッキ{{編成|へんせい}}` segnala la schermata in cui costruisci la lista.
+- `または` vuol dire "oppure", ma nelle carte collega due categorie che valgono
+  entrambe per lo stesso filtro.
 
 ## 8. Prompt template consigliato
 
@@ -149,6 +181,8 @@ Vincoli obbligatori:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
 - Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati. **MAPPA I KANJI CON FURIGANA ANCHE E SOPRATTUTTO DENTRO LE CITAZIONI IN CODICE (`` `{{kanji|kana}}` ``)**.
+- Se il label visibile di un link semantico contiene kanji, metti il furigana
+  direttamente nel label: `[{{単語|たんご}}](term:term-id)`.
 - Quando c'e un composto numerico con contatore o qualificatore (`以下`,
   `以上`, `未満`, ecc.), annota il blocco completo: `{{1枚|いちまい}}`,
   `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`. Non scrivere
@@ -157,6 +191,11 @@ Vincoli obbligatori:
   intero: `{{2000以下|にせんいか}}`, `{{3000円|さんぜんえん}}`.
 - Per i campi descrittivi in YAML usa `>-` invece di plain scalar quando c'e
   testo libero, markdown inline o una frase completa di rules text.
+- Non scrivere spiegazioni tautologiche del tipo "X e utile/importante":
+  ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa
+  capire o fare nel media.
+- Per nomi propri poco trasparenti, spiega almeno quale ruolo ricorrente
+  segnalano o quali componenti del nome vale la pena riconoscere.
 - Mantieni stabili gli ID esistenti.
 - Se riusi una entry esistente, referenzia il suo ID invece di ridefinirla.
 - Se una entry nuova e importante per glossary/review, dichiarala esplicitamente
@@ -210,6 +249,8 @@ Prima di accettare l'output, bisogna verificare:
 - romaji coerenti;
 - reading presenti dove obbligatori;
 - niente termini importanti lasciati solo nel testo libero;
+- niente spiegazioni tautologiche o solo valutative ("utile", "importante",
+  "da fissare") senza contenuto semantico e operativo;
 - nessun campo YAML fragile, come `notes_it` o una frase completa in
   `front/back`, scritto come plain scalar ambiguo;
 - niente testo fuori formato.

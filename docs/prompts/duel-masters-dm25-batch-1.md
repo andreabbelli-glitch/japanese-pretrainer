@@ -20,6 +20,11 @@ Regola didattica importante:
   leggere bene le carte, includilo e spiegalo.
 - Evita invece dettagli troppo rari, marginali o poco riutilizzabili.
 - Privilegia cio che e frequente, strutturale e davvero utile per capire Duel Masters.
+- Non scrivere spiegazioni valutative vuote del tipo "X e utile/importante":
+  ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa
+  capire o fare in Duel Masters.
+- Se un nome carta e poco trasparente, spiega almeno quale ruolo ricorrente
+  segnala nel mazzo o quali componenti del nome conviene riconoscere.
 
 Obiettivo di questo batch:
 Creare solo il seed core del media. In questo batch non devi produrre lesson
@@ -46,6 +51,9 @@ Vincoli di formato obbligatori:
 - Per i campi descrittivi YAML come `notes_it`, usa `>-` invece di plain scalar.
 - Se un valore contiene `:`/`：`, furigana, link semantici, backtick o una
   frase completa di rules text, non lasciarlo come plain scalar.
+- Non scrivere `notes_it` o paragrafi textbook che si fermano a "X e utile da
+  fissare": devi sempre esplicitare significato reale + effetto pratico nel
+  media.
 - Mantieni stabili gli ID.
 - Se una entry nuova e importante per glossary/review, dichiarala esplicitamente
   con un blocco `:::term` o `:::grammar`.
@@ -114,4 +122,5 @@ CHECKLIST:
 - reused_terms: <numero>
 - unresolved_references: <numero>
 - unsafe_yaml_fields: <numero>
+- explanation_tautologies: <numero>
 ```
