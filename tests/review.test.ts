@@ -17,7 +17,10 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
-import { getReviewQueueSnapshotForMedia } from "@/lib/review";
+import {
+  getReviewPageData,
+  getReviewQueueSnapshotForMedia
+} from "@/lib/review";
 import {
   applyReviewGrade,
   resetReviewCardProgress,
@@ -201,6 +204,48 @@ describe("review system", () => {
     expect(logs.at(-1)?.rating).toBe("good");
   });
 
+  it("keeps the main stage in a completion state when the queue is empty unless a card is explicitly selected", async () => {
+    await database
+      .update(reviewState)
+      .set({
+        dueAt: "2000-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+
+    await applyReviewGrade({
+      cardId: developmentFixture.primaryCardId,
+      database,
+      now: new Date("2026-03-11T12:00:00.000Z"),
+      rating: "good"
+    });
+
+    const completionPage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {
+        answered: "1"
+      },
+      database
+    );
+    const explicitSelectionPage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {
+        answered: "1",
+        card: developmentFixture.secondaryCardId
+      },
+      database
+    );
+
+    expect(completionPage).not.toBeNull();
+    expect(completionPage?.queue.queueCount).toBe(0);
+    expect(completionPage?.selectedCard).toBeNull();
+    expect(completionPage?.queue.manualCount).toBe(1);
+    expect(completionPage?.queue.upcomingCount).toBe(1);
+
+    expect(explicitSelectionPage?.selectedCard?.id).toBe(
+      developmentFixture.secondaryCardId
+    );
+  });
+
   it("uses entry_status for manual mastery and restores the queue when reopened", async () => {
     await database
       .update(reviewState)
@@ -227,9 +272,11 @@ describe("review system", () => {
       where: eq(reviewLog.cardId, developmentFixture.primaryCardId)
     });
 
-    expect(manualQueue?.cards.some((card) => card.id === developmentFixture.primaryCardId)).toBe(
-      false
-    );
+    expect(
+      manualQueue?.cards.some(
+        (card) => card.id === developmentFixture.primaryCardId
+      )
+    ).toBe(false);
     expect(manualQueue?.manualCount).toBe(2);
     expect(persistedState?.state).toBe("learning");
     expect(logs).toHaveLength(1);
@@ -246,9 +293,11 @@ describe("review system", () => {
       database
     );
 
-    expect(reopenedQueue?.cards.some((card) => card.id === developmentFixture.primaryCardId)).toBe(
-      true
-    );
+    expect(
+      reopenedQueue?.cards.some(
+        (card) => card.id === developmentFixture.primaryCardId
+      )
+    ).toBe(true);
     expect(reopenedQueue?.manualCount).toBe(1);
   });
 

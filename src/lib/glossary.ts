@@ -313,17 +313,17 @@ export async function getGlossaryPageData(
   const selectedPreviewEntry = resolvePreviewEntry(searchParams, results);
   const preview = selectedPreviewEntry
     ? buildGlossaryDetailData({
-      cardConnections:
-        cardsByEntry.get(
-          `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
-        ) ?? [],
-      entry: selectedPreviewEntry,
-      lessonConnections:
-        lessonsByEntry.get(
-          `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
-        ) ?? [],
-      media: mediaSummary
-    })
+        cardConnections:
+          cardsByEntry.get(
+            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
+          ) ?? [],
+        entry: selectedPreviewEntry,
+        lessonConnections:
+          lessonsByEntry.get(
+            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
+          ) ?? [],
+        media: mediaSummary
+      })
     : undefined;
 
   return {
@@ -431,7 +431,10 @@ async function getGlossaryDetailData(
       aliases: []
     },
     score: 0,
-    studyState: deriveEntryStudyState(entry.status?.status ?? null, entryStudySignals)
+    studyState: deriveEntryStudyState(
+      entry.status?.status ?? null,
+      entryStudySignals
+    )
   };
 
   return buildGlossaryDetailData({
@@ -508,14 +511,22 @@ function buildGlossaryDetailData(input: {
     })),
     cards: input.cardConnections.map((row) => ({
       back: row.cardBack,
-      dueLabel: row.dueAt ? `Scadenza ${formatShortIsoDate(row.dueAt)}` : undefined,
+      dueLabel: row.dueAt
+        ? `Scadenza ${formatShortIsoDate(row.dueAt)}`
+        : undefined,
       front: row.cardFront,
       href: mediaReviewCardHref(input.media.slug, row.cardId),
       id: row.cardId,
       relationshipLabel: formatCardRelationshipLabel(row.relationshipType),
-      reviewLabel: forceKnownReviewLabel
-        ? "Gia nota"
-        : formatReviewStateLabel(row.reviewState, row.manualOverride ?? false),
+      reviewLabel:
+        row.cardStatus === "suspended"
+          ? "Sospesa"
+          : forceKnownReviewLabel
+            ? "Gia nota"
+            : formatReviewStateLabel(
+                row.reviewState,
+                row.manualOverride ?? false
+              ),
       segmentTitle: row.segmentTitle ?? undefined,
       typeLabel: capitalizeToken(row.cardType),
       notes: row.cardNotesIt ?? undefined
@@ -533,7 +544,10 @@ function buildGlossaryDetailData(input: {
   };
 }
 
-function mapEntryToBaseModel(entry: TermGlossaryEntry, kind: "term"): GlossaryBaseEntry;
+function mapEntryToBaseModel(
+  entry: TermGlossaryEntry,
+  kind: "term"
+): GlossaryBaseEntry;
 function mapEntryToBaseModel(
   entry: GrammarGlossaryEntry,
   kind: "grammar"
@@ -617,11 +631,13 @@ function normalizeGlossaryQuery(
   const rawStudy = readSearchParam(searchParams, "study");
 
   return {
-    entryType:
-      rawType === "term" || rawType === "grammar" ? rawType : "all",
+    entryType: rawType === "term" || rawType === "grammar" ? rawType : "all",
     query: rawQuery,
     segmentId: rawSegment || "all",
-    sort: rawSort === "alphabetical" || rawSort === "lesson_order" ? rawSort : defaultSort,
+    sort:
+      rawSort === "alphabetical" || rawSort === "lesson_order"
+        ? rawSort
+        : defaultSort,
     study: studyFilterOptions.includes(rawStudy as GlossaryQueryState["study"])
       ? (rawStudy as GlossaryQueryState["study"])
       : "all"
@@ -634,12 +650,12 @@ function rankGlossaryEntry(
   studySignalsByEntry: Map<string, StudySignalRow[]>,
   mediaSlug: string
 ): RankedGlossaryEntry | null {
-  const studySignals = (studySignalsByEntry.get(`${entry.kind}:${entry.id}`) ?? []).map(
-    (signal) => ({
-      manualOverride: signal.manualOverride,
-      reviewState: signal.reviewState
-    })
-  );
+  const studySignals = (
+    studySignalsByEntry.get(`${entry.kind}:${entry.id}`) ?? []
+  ).map((signal) => ({
+    manualOverride: signal.manualOverride,
+    reviewState: signal.reviewState
+  }));
   const studyState = deriveEntryStudyState(entry.entryStatus, studySignals);
 
   if (filters.entryType !== "all" && entry.kind !== filters.entryType) {
@@ -661,14 +677,20 @@ function rankGlossaryEntry(
     return null;
   }
 
-  const sortedMatches = [...matches].sort((left, right) => right.score - left.score);
+  const sortedMatches = [...matches].sort(
+    (left, right) => right.score - left.score
+  );
   const score =
-    (sortedMatches[0]?.score ?? 0) + Math.max(Math.min(sortedMatches.length - 1, 4), 0) * 8;
+    (sortedMatches[0]?.score ?? 0) +
+    Math.max(Math.min(sortedMatches.length - 1, 4), 0) * 8;
 
   return {
     ...entry,
     href: mediaGlossaryEntryHref(mediaSlug, entry.kind, entry.id),
-    matchBadges: [...new Set(sortedMatches.map((match) => match.badge))].slice(0, 3),
+    matchBadges: [...new Set(sortedMatches.map((match) => match.badge))].slice(
+      0,
+      3
+    ),
     matchPreview: sortedMatches[0]?.preview,
     matchedFields: buildMatchedFields(sortedMatches),
     score,
@@ -796,7 +818,8 @@ function collectMatches(entry: GlossaryBaseEntry, query: FilteredQuery) {
         ? normalizeGrammarSearchText(alias.text)
         : alias.normalized
     );
-    const aliasQuery = entry.kind === "grammar" ? query.grammarKana : query.kana;
+    const aliasQuery =
+      entry.kind === "grammar" ? query.grammarKana : query.kana;
     const label = alias.type === "romaji" ? "alias romaji" : "alias";
 
     pushMatch(
@@ -976,8 +999,12 @@ function compareRankedEntries(
   const segmentIndex = new Map(
     input.segments.map((segment, index) => [segment.id, index] as const)
   );
-  const leftSegment = left.segmentId ? (segmentIndex.get(left.segmentId) ?? 999) : 999;
-  const rightSegment = right.segmentId ? (segmentIndex.get(right.segmentId) ?? 999) : 999;
+  const leftSegment = left.segmentId
+    ? (segmentIndex.get(left.segmentId) ?? 999)
+    : 999;
+  const rightSegment = right.segmentId
+    ? (segmentIndex.get(right.segmentId) ?? 999)
+    : 999;
 
   if (leftSegment !== rightSegment) {
     return leftSegment - rightSegment;
@@ -1058,7 +1085,8 @@ function aggregateLessonConnections(rows: EntryLessonConnection[]) {
       if (!existing.linkRoles.includes(row.linkRole)) {
         existing.linkRoles.push(row.linkRole);
         existing.linkRoles.sort(
-          (left, right) => getEntryLinkRoleRank(left) - getEntryLinkRoleRank(right)
+          (left, right) =>
+            getEntryLinkRoleRank(left) - getEntryLinkRoleRank(right)
         );
       }
 
@@ -1093,8 +1121,14 @@ function aggregateLessonConnections(rows: EntryLessonConnection[]) {
       return leftRank - rightRank;
     }
 
-    if ((left.sortOrder ?? Number.MAX_SAFE_INTEGER) !== (right.sortOrder ?? Number.MAX_SAFE_INTEGER)) {
-      return (left.sortOrder ?? Number.MAX_SAFE_INTEGER) - (right.sortOrder ?? Number.MAX_SAFE_INTEGER);
+    if (
+      (left.sortOrder ?? Number.MAX_SAFE_INTEGER) !==
+      (right.sortOrder ?? Number.MAX_SAFE_INTEGER)
+    ) {
+      return (
+        (left.sortOrder ?? Number.MAX_SAFE_INTEGER) -
+        (right.sortOrder ?? Number.MAX_SAFE_INTEGER)
+      );
     }
 
     return left.lessonTitle.localeCompare(right.lessonTitle);
@@ -1165,12 +1199,12 @@ function buildGlossaryStats(
   let reviewCount = 0;
 
   for (const entry of entries) {
-    const studySignals = (studySignalsByEntry.get(`${entry.kind}:${entry.id}`) ?? []).map(
-      (signal) => ({
-        manualOverride: signal.manualOverride,
-        reviewState: signal.reviewState
-      })
-    );
+    const studySignals = (
+      studySignalsByEntry.get(`${entry.kind}:${entry.id}`) ?? []
+    ).map((signal) => ({
+      manualOverride: signal.manualOverride,
+      reviewState: signal.reviewState
+    }));
     const studyState = deriveEntryStudyState(entry.entryStatus, studySignals);
 
     if (studyState.key === "known") {

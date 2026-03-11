@@ -1,4 +1,6 @@
 import { saveStudySettingsAction } from "@/actions/settings";
+import type { Route } from "next";
+import Link from "next/link";
 import type { StudySettings } from "@/lib/settings";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
@@ -6,6 +8,7 @@ import { Section } from "../ui/section";
 import { SurfaceCard } from "../ui/surface-card";
 
 type SettingsPageProps = {
+  returnTo?: Route | null;
   saved: boolean;
   settings: StudySettings;
 };
@@ -22,7 +25,8 @@ const furiganaOptions = [
     value: "off"
   },
   {
-    description: "Le mostra al bisogno nel reader e resta la modalità più sobria.",
+    description:
+      "Le mostra al bisogno nel reader e resta la modalità più sobria.",
     label: "Su richiesta",
     value: "hover"
   }
@@ -30,12 +34,14 @@ const furiganaOptions = [
 
 const glossarySortOptions = [
   {
-    description: "Segue il percorso del media e resta vicina all’ordine di studio.",
+    description:
+      "Segue il percorso del media e resta vicina all’ordine di studio.",
     label: "Ordine percorso",
     value: "lesson_order"
   },
   {
-    description: "Ordina il glossary per forma giapponese in modo più consultivo.",
+    description:
+      "Ordina il glossary per forma giapponese in modo più consultivo.",
     label: "Alfabetico",
     value: "alphabetical"
   }
@@ -43,10 +49,12 @@ const glossarySortOptions = [
 
 const reviewLimitOptions = [10, 20, 30, 40, 60] as const;
 
-export function SettingsPage({ saved, settings }: SettingsPageProps) {
+export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
   return (
     <div className="settings-page">
       <StickyPageHeader
+        backHref={returnTo ?? undefined}
+        backLabel={returnTo ? "Torna alla review" : undefined}
         eyebrow="Settings"
         title="Preferenze di studio"
         summary="Poche decisioni persistenti, con effetti reali su reader, glossary e review."
@@ -57,6 +65,13 @@ export function SettingsPage({ saved, settings }: SettingsPageProps) {
             <span>Persistenza su DB</span>
           </>
         }
+        actions={
+          returnTo ? (
+            <Link className="button button--ghost" href={returnTo}>
+              Torna alla review
+            </Link>
+          ) : null
+        }
       />
 
       <section className="hero-grid hero-grid--detail">
@@ -66,12 +81,15 @@ export function SettingsPage({ saved, settings }: SettingsPageProps) {
             Mantieni lo studio leggibile, coerente e facile da riprendere.
           </h2>
           <p className="settings-hero__summary">
-            Le preferenze qui sotto non restano nel client: aggiornano `user_setting`
-            e si riflettono davvero sulle schermate di studio già presenti.
+            Le preferenze qui sotto non restano nel client: aggiornano
+            `user_setting` e si riflettono davvero sulle schermate di studio già
+            presenti.
           </p>
           <div className="settings-hero__chips">
             <span className="chip">Furigana: {settings.furiganaMode}</span>
-            <span className="chip">Review nuove: {settings.reviewDailyLimit}</span>
+            <span className="chip">
+              Review nuove: {settings.reviewDailyLimit}
+            </span>
             <span className="chip">
               Glossary:{" "}
               {settings.glossaryDefaultSort === "lesson_order"
@@ -81,7 +99,8 @@ export function SettingsPage({ saved, settings }: SettingsPageProps) {
           </div>
           {saved ? (
             <p className="settings-notice" role="status">
-              Preferenze salvate. Le viste di studio useranno subito i nuovi valori.
+              Preferenze salvate. Le viste di studio useranno subito i nuovi
+              valori.
             </p>
           ) : null}
         </SurfaceCard>
@@ -111,6 +130,9 @@ export function SettingsPage({ saved, settings }: SettingsPageProps) {
         description="Ogni gruppo modifica una parte già esistente dell’app, senza introdurre pannelli tecnici o stati finti."
       >
         <form action={saveStudySettingsAction} className="settings-form">
+          {returnTo ? (
+            <input name="returnTo" type="hidden" value={returnTo} />
+          ) : null}
           <SurfaceCard className="settings-panel">
             <div className="settings-panel__header">
               <div>
@@ -130,8 +152,12 @@ export function SettingsPage({ saved, settings }: SettingsPageProps) {
                     type="radio"
                     value={option.value}
                   />
-                  <span className="settings-choice-card__title">{option.label}</span>
-                  <span className="settings-choice-card__body">{option.description}</span>
+                  <span className="settings-choice-card__title">
+                    {option.label}
+                  </span>
+                  <span className="settings-choice-card__body">
+                    {option.description}
+                  </span>
                 </label>
               ))}
             </div>
@@ -144,8 +170,8 @@ export function SettingsPage({ saved, settings }: SettingsPageProps) {
                 <h3 className="settings-panel__title">Nuove card al giorno</h3>
               </div>
               <p className="settings-panel__body">
-                La review usa questo valore per decidere quante nuove card entrano
-                nella coda quotidiana dopo le dovute.
+                La review usa questo valore per decidere quante nuove card
+                entrano nella coda quotidiana dopo le dovute.
               </p>
             </div>
             <label className="settings-field">
@@ -171,21 +197,28 @@ export function SettingsPage({ saved, settings }: SettingsPageProps) {
                 <h3 className="settings-panel__title">Ordine predefinito</h3>
               </div>
               <p className="settings-panel__body">
-                Resta un’impostazione essenziale: cambia l’ordine iniziale del glossary,
-                ma lascia invariata la qualità del ranking quando stai cercando qualcosa.
+                Resta un’impostazione essenziale: cambia l’ordine iniziale del
+                glossary, ma lascia invariata la qualità del ranking quando stai
+                cercando qualcosa.
               </p>
             </div>
             <div className="settings-choice-grid settings-choice-grid--compact">
               {glossarySortOptions.map((option) => (
                 <label key={option.value} className="settings-choice-card">
                   <input
-                    defaultChecked={settings.glossaryDefaultSort === option.value}
+                    defaultChecked={
+                      settings.glossaryDefaultSort === option.value
+                    }
                     name="glossaryDefaultSort"
                     type="radio"
                     value={option.value}
                   />
-                  <span className="settings-choice-card__title">{option.label}</span>
-                  <span className="settings-choice-card__body">{option.description}</span>
+                  <span className="settings-choice-card__title">
+                    {option.label}
+                  </span>
+                  <span className="settings-choice-card__body">
+                    {option.description}
+                  </span>
                 </label>
               ))}
             </div>

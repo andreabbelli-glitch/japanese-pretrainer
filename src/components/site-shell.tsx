@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { primaryNav } from "@/lib/site";
+import { primaryNav, readInternalHref } from "@/lib/site";
 
 type SiteShellProps = {
   children: ReactNode;
@@ -20,6 +20,10 @@ const isCurrentRoute = (pathname: string, href: string) => {
 
 export function SiteShell({ children }: SiteShellProps) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const contextualReviewHref = readInternalHref(
+    searchParams.get("returnTo") ?? undefined
+  );
 
   return (
     <div className="app-shell">
@@ -33,13 +37,17 @@ export function SiteShell({ children }: SiteShellProps) {
           <nav aria-label="Navigazione primaria" className="site-nav">
             {primaryNav.map((item) => {
               const active = isCurrentRoute(pathname, item.href);
+              const href =
+                item.href === "/review" && contextualReviewHref
+                  ? contextualReviewHref
+                  : item.href;
 
               return (
                 <Link
                   key={item.href}
                   aria-current={active ? "page" : undefined}
                   className={`site-nav__link${active ? " site-nav__link--active" : ""}`}
-                  href={item.href}
+                  href={href}
                 >
                   <span>{item.label}</span>
                   <small>{item.description}</small>
@@ -63,13 +71,17 @@ export function SiteShell({ children }: SiteShellProps) {
       <nav aria-label="Navigazione mobile" className="mobile-nav">
         {primaryNav.map((item) => {
           const active = isCurrentRoute(pathname, item.href);
+          const href =
+            item.href === "/review" && contextualReviewHref
+              ? contextualReviewHref
+              : item.href;
 
           return (
             <Link
               key={item.href}
               aria-current={active ? "page" : undefined}
               className={`mobile-nav__link${active ? " mobile-nav__link--active" : ""}`}
-              href={item.href}
+              href={href}
             >
               <span>{item.label}</span>
             </Link>

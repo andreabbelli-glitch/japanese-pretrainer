@@ -1,4 +1,4 @@
-import { and, asc, eq, inArray, or } from "drizzle-orm";
+import { and, asc, eq, inArray, ne, or } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import {
@@ -237,6 +237,7 @@ export async function listEntryCardConnections(
       entryId: cardEntryLink.entryId,
       relationshipType: cardEntryLink.relationshipType,
       cardId: card.id,
+      cardStatus: card.status,
       cardType: card.cardType,
       cardFront: card.front,
       cardBack: card.back,
@@ -254,7 +255,7 @@ export async function listEntryCardConnections(
     .leftJoin(reviewState, eq(reviewState.cardId, card.id))
     .where(
       and(
-        eq(card.status, "active"),
+        ne(card.status, "archived"),
         or(
           ...entries.map((entry) =>
             and(

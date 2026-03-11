@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { renderFurigana } from "@/lib/render-furigana";
+import { buildReviewSessionHref } from "@/lib/site";
 import {
   markLinkedEntryKnownAction,
   resetReviewCardAction,
@@ -19,6 +20,11 @@ type ReviewCardDetailPageProps = {
 };
 
 export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
+  const sessionHref = buildReviewSessionHref({
+    cardId: data.card.id,
+    mediaSlug: data.media.slug
+  });
+
   return (
     <div className="glossary-page">
       <StickyPageHeader
@@ -31,28 +37,46 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
           <>
             <span>{data.card.reviewLabel}</span>
             <span>{data.card.typeLabel}</span>
-            {data.card.segmentTitle ? <span>{data.card.segmentTitle}</span> : null}
+            {data.card.segmentTitle ? (
+              <span>{data.card.segmentTitle}</span>
+            ) : null}
           </>
         }
         actions={
-          <Link className="button button--ghost" href={data.media.glossaryHref}>
-            Apri glossary
-          </Link>
+          <>
+            <Link className="button button--primary" href={sessionHref}>
+              Apri nella sessione
+            </Link>
+            <Link
+              className="button button--ghost"
+              href={data.media.glossaryHref}
+            >
+              Apri glossary
+            </Link>
+          </>
         }
       />
 
       <section className="hero-grid hero-grid--detail">
         <SurfaceCard className="glossary-entry-hero" variant="hero">
           <p className="eyebrow">Carta</p>
-          <h2 className="glossary-entry-hero__title jp-inline">{data.card.front}</h2>
+          <h2 className="glossary-entry-hero__title jp-inline">
+            {data.card.front}
+          </h2>
           <p className="glossary-entry-hero__meaning">{data.card.back}</p>
-          <p className="glossary-entry-hero__detail">Tipo: {data.card.typeLabel}</p>
-          <p className="glossary-entry-hero__detail">Stato review: {data.card.reviewLabel}</p>
+          <p className="glossary-entry-hero__detail">
+            Tipo: {data.card.typeLabel}
+          </p>
+          <p className="glossary-entry-hero__detail">
+            Stato review: {data.card.reviewLabel}
+          </p>
           {data.card.dueLabel ? (
             <p className="glossary-entry-hero__detail">{data.card.dueLabel}</p>
           ) : null}
           {data.card.notes ? (
-            <p className="glossary-entry-hero__notes">{renderFurigana(data.card.notes)}</p>
+            <p className="glossary-entry-hero__notes">
+              {renderFurigana(data.card.notes)}
+            </p>
           ) : null}
         </SurfaceCard>
 
@@ -89,14 +113,20 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
         <div className="hero-actions">
           {data.card.reviewLabel === "Gia nota" ? (
             <form action={setLinkedEntryLearningAction}>
-              <ReviewDetailActionFields cardId={data.card.id} mediaSlug={data.media.slug} />
+              <ReviewDetailActionFields
+                cardId={data.card.id}
+                mediaSlug={data.media.slug}
+              />
               <button className="button button--primary" type="submit">
                 Rimetti in studio
               </button>
             </form>
           ) : (
             <form action={markLinkedEntryKnownAction}>
-              <ReviewDetailActionFields cardId={data.card.id} mediaSlug={data.media.slug} />
+              <ReviewDetailActionFields
+                cardId={data.card.id}
+                mediaSlug={data.media.slug}
+              />
               <button className="button button--ghost" type="submit">
                 Segna già nota
               </button>
@@ -104,14 +134,20 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
           )}
 
           <form action={resetReviewCardAction}>
-            <ReviewDetailActionFields cardId={data.card.id} mediaSlug={data.media.slug} />
+            <ReviewDetailActionFields
+              cardId={data.card.id}
+              mediaSlug={data.media.slug}
+            />
             <button className="button button--ghost" type="submit">
               Reset card
             </button>
           </form>
 
           <form action={setReviewCardSuspendedAction}>
-            <ReviewDetailActionFields cardId={data.card.id} mediaSlug={data.media.slug} />
+            <ReviewDetailActionFields
+              cardId={data.card.id}
+              mediaSlug={data.media.slug}
+            />
             <input
               name="suspended"
               type="hidden"
@@ -132,18 +168,30 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
         {data.entries.length > 0 ? (
           <div className="glossary-detail-list">
             {data.entries.map((entry) => (
-              <Link key={entry.id} className="glossary-detail-link" href={entry.href}>
+              <Link
+                key={entry.id}
+                className="glossary-detail-link"
+                href={entry.href}
+              >
                 <SurfaceCard className="glossary-detail-card" variant="quiet">
                   <div className="glossary-detail-card__top">
                     <div className="glossary-detail-card__chips">
                       <span className="chip">{entry.relationshipLabel}</span>
-                      <span className="meta-pill">{entry.kind === "term" ? "Term" : "Grammar"}</span>
+                      <span className="meta-pill">
+                        {entry.kind === "term" ? "Term" : "Grammar"}
+                      </span>
                     </div>
-                    <span className="glossary-result-card__arrow">Apri entry</span>
+                    <span className="glossary-result-card__arrow">
+                      Apri entry
+                    </span>
                   </div>
-                  <h3 className="glossary-detail-card__title jp-inline">{entry.label}</h3>
+                  <h3 className="glossary-detail-card__title jp-inline">
+                    {entry.label}
+                  </h3>
                   {entry.subtitle ? (
-                    <p className="glossary-entry-hero__subtitle jp-inline">{entry.subtitle}</p>
+                    <p className="glossary-entry-hero__subtitle jp-inline">
+                      {entry.subtitle}
+                    </p>
                   ) : null}
                   <p className="glossary-detail-card__body">{entry.meaning}</p>
                 </SurfaceCard>

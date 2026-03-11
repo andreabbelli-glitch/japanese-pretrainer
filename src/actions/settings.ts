@@ -1,9 +1,11 @@
 "use server";
 
+import type { Route } from "next";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { db, listMedia } from "@/db";
+import { buildHrefWithSearch } from "@/lib/site";
 import { mediaHref, mediaStudyHref } from "@/lib/site";
 import {
   normalizeFuriganaMode,
@@ -13,8 +15,12 @@ import {
 } from "@/lib/settings";
 
 export async function saveStudySettingsAction(formData: FormData) {
+  const returnTo = readOptionalInternalHref(formData, "returnTo");
+
   await updateStudySettings({
-    furiganaMode: normalizeFuriganaMode(readRequiredString(formData, "furiganaMode")),
+    furiganaMode: normalizeFuriganaMode(
+      readRequiredString(formData, "furiganaMode")
+    ),
     glossaryDefaultSort: normalizeGlossaryDefaultSort(
       readRequiredString(formData, "glossaryDefaultSort")
     ),
@@ -25,7 +31,15 @@ export async function saveStudySettingsAction(formData: FormData) {
 
   await revalidateSettingsConsumers();
 
-  redirect("/settings?saved=1");
+  redirect(
+    buildHrefWithSearch("/settings", (params) => {
+      params.set("saved", "1");
+
+      if (returnTo) {
+        params.set("returnTo", returnTo);
+      }
+    })
+  );
 }
 
 async function revalidateSettingsConsumers() {
@@ -52,4 +66,23 @@ function readRequiredString(formData: FormData, key: string) {
   }
 
   return value.trim();
+}
+
+function readOptionalInternalHref(
+  formData: FormData,
+  key: string
+): Route | null {
+  const value = formData.get(key);
+
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  const trimmed = value.trim();
+
+  if (!trimmed.startsWith("/") || trimmed.startsWith("//")) {
+    return null;
+  }
+
+  return trimmed as Route;
 }

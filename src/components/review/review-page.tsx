@@ -10,6 +10,7 @@ import {
 } from "@/actions/review";
 import { renderFurigana } from "@/lib/render-furigana";
 import type { ReviewPageData, ReviewQueueCard } from "@/lib/review";
+import { appendReturnToParam, buildReviewSessionHref } from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
@@ -55,6 +56,23 @@ const ratingCopy = [
 export function ReviewPage({ data }: ReviewPageProps) {
   const selectedCard = data.selectedCard;
   const hasQueue = data.queue.cards.length > 0;
+  const hasSupportCards =
+    data.queue.manualCount +
+      data.queue.suspendedCount +
+      data.queue.upcomingCount >
+    0;
+  const sessionHref = buildReviewSessionHref({
+    answeredCount: data.session.answeredCount,
+    cardId: selectedCard?.id ?? null,
+    mediaSlug: data.media.slug,
+    showAnswer: data.selectedCardContext.showAnswer
+  });
+  const contextualGlossaryHref = appendReturnToParam(
+    data.media.glossaryHref,
+    sessionHref
+  );
+  const contextualSettingsHref = appendReturnToParam("/settings", sessionHref);
+  const showCompletionState = !hasQueue && selectedCard === null;
 
   return (
     <div className="review-page">
@@ -73,10 +91,16 @@ export function ReviewPage({ data }: ReviewPageProps) {
         }
         actions={
           <>
-            <Link className="button button--ghost" href={data.media.glossaryHref}>
+            <Link
+              className="button button--ghost"
+              href={contextualGlossaryHref}
+            >
               Apri glossary
             </Link>
-            <Link className="button button--ghost" href="/settings">
+            <Link
+              className="button button--ghost"
+              href={contextualSettingsHref}
+            >
               Settings
             </Link>
           </>
@@ -91,26 +115,33 @@ export function ReviewPage({ data }: ReviewPageProps) {
                 <div className="review-stage__chips">
                   <span className="chip">{selectedCard.bucketLabel}</span>
                   <span className="meta-pill">{selectedCard.typeLabel}</span>
-                  <span className="meta-pill">{selectedCard.effectiveStateLabel}</span>
+                  <span className="meta-pill">
+                    {selectedCard.effectiveStateLabel}
+                  </span>
                   {selectedCard.segmentTitle ? (
-                    <span className="meta-pill">{selectedCard.segmentTitle}</span>
+                    <span className="meta-pill">
+                      {selectedCard.segmentTitle}
+                    </span>
                   ) : null}
                 </div>
                 {data.selectedCardContext.position ? (
                   <p className="review-stage__position">
-                    {data.selectedCardContext.position} / {data.queue.queueCount}
+                    {data.selectedCardContext.position} /{" "}
+                    {data.queue.queueCount}
                   </p>
                 ) : null}
               </div>
 
               <div className="review-stage__card">
                 <p className="eyebrow">Fronte</p>
-                <h2 className="review-stage__front jp-inline">{selectedCard.front}</h2>
+                <h2 className="review-stage__front jp-inline">
+                  {selectedCard.front}
+                </h2>
                 {!data.selectedCardContext.showAnswer ? (
                   <div className="review-stage__veil">
                     <p className="panel-note">
-                      Mantieni il ritmo: guarda il fronte, poi apri la risposta solo quando
-                      sei pronto a dare un voto.
+                      Mantieni il ritmo: guarda il fronte, poi apri la risposta
+                      solo quando sei pronto a dare un voto.
                     </p>
                     <Link
                       className="button button--primary review-stage__reveal"
@@ -124,10 +155,14 @@ export function ReviewPage({ data }: ReviewPageProps) {
                     <p className="eyebrow">Retro</p>
                     <p className="review-stage__back">{selectedCard.back}</p>
                     {selectedCard.notes ? (
-                      <p className="review-stage__notes">{renderFurigana(selectedCard.notes)}</p>
+                      <p className="review-stage__notes">
+                        {renderFurigana(selectedCard.notes)}
+                      </p>
                     ) : null}
                     {selectedCard.dueLabel ? (
-                      <p className="review-stage__meta">{selectedCard.dueLabel}</p>
+                      <p className="review-stage__meta">
+                        {selectedCard.dueLabel}
+                      </p>
                     ) : null}
                   </div>
                 )}
@@ -136,29 +171,47 @@ export function ReviewPage({ data }: ReviewPageProps) {
               {selectedCard.entries.length > 0 ? (
                 <div className="review-entry-list">
                   {selectedCard.entries.map((entry) => (
-                    <Link key={entry.id} className="review-entry-link" href={entry.href}>
-                      <SurfaceCard className="review-entry-card" variant="quiet">
+                    <Link
+                      key={entry.id}
+                      className="review-entry-link"
+                      href={appendReturnToParam(entry.href, sessionHref)}
+                    >
+                      <SurfaceCard
+                        className="review-entry-card"
+                        variant="quiet"
+                      >
                         <div className="review-entry-card__top">
                           <div className="review-entry-card__chips">
-                            <span className="chip">{entry.relationshipLabel}</span>
-                            <span className="meta-pill">{entry.statusLabel}</span>
+                            <span className="chip">
+                              {entry.relationshipLabel}
+                            </span>
+                            <span className="meta-pill">
+                              {entry.statusLabel}
+                            </span>
                           </div>
-                          <span className="glossary-result-card__arrow">Apri entry</span>
+                          <span className="glossary-result-card__arrow">
+                            Apri entry
+                          </span>
                         </div>
-                        <h3 className="review-entry-card__title jp-inline">{entry.label}</h3>
+                        <h3 className="review-entry-card__title jp-inline">
+                          {entry.label}
+                        </h3>
                         {entry.subtitle ? (
                           <p className="review-entry-card__subtitle jp-inline">
                             {entry.subtitle}
                           </p>
                         ) : null}
-                        <p className="review-entry-card__body">{entry.meaning}</p>
+                        <p className="review-entry-card__body">
+                          {entry.meaning}
+                        </p>
                       </SurfaceCard>
                     </Link>
                   ))}
                 </div>
               ) : null}
 
-              {data.selectedCardContext.isQueueCard && data.selectedCardContext.showAnswer ? (
+              {data.selectedCardContext.isQueueCard &&
+              data.selectedCardContext.showAnswer ? (
                 <div className="review-grade-grid">
                   {ratingCopy.map((rating) => (
                     <form key={rating.value} action={rating.action}>
@@ -225,10 +278,14 @@ export function ReviewPage({ data }: ReviewPageProps) {
                   <input
                     name="suspended"
                     type="hidden"
-                    value={selectedCard.bucket === "suspended" ? "false" : "true"}
+                    value={
+                      selectedCard.bucket === "suspended" ? "false" : "true"
+                    }
                   />
                   <button className="button button--ghost" type="submit">
-                    {selectedCard.bucket === "suspended" ? "Riprendi" : "Sospendi"}
+                    {selectedCard.bucket === "suspended"
+                      ? "Riprendi"
+                      : "Sospendi"}
                   </button>
                 </form>
               </div>
@@ -241,12 +298,36 @@ export function ReviewPage({ data }: ReviewPageProps) {
                     : "Il grading aggiorna `review_state` e aggiunge sempre un nuovo evento in `review_log`."}
               </p>
             </>
+          ) : showCompletionState ? (
+            <EmptyState
+              title={
+                data.session.answeredCount > 0
+                  ? "Sessione chiusa, ora sei in pari."
+                  : "Oggi sei in pari."
+              }
+              description={
+                hasSupportCards
+                  ? "La coda di oggi non richiede altre risposte. Se vuoi, qui sotto puoi consultare carte già in rotazione, sospese o già note senza rientrare nella sessione."
+                  : "Per questo media non ci sono altre card da lavorare o mantenere adesso."
+              }
+              action={
+                <Link
+                  className="button button--ghost"
+                  href={contextualGlossaryHref}
+                >
+                  Apri glossary
+                </Link>
+              }
+            />
           ) : (
             <EmptyState
               title="Nessuna card da gestire."
               description="Quando importerai le prime card o riattiverai una voce dal glossary, qui apparirà il flusso review del media."
               action={
-                <Link className="button button--ghost" href={data.media.glossaryHref}>
+                <Link
+                  className="button button--ghost"
+                  href={contextualGlossaryHref}
+                >
                   Apri glossary
                 </Link>
               }
@@ -431,7 +512,9 @@ function ReviewQueueLinkCard({
       href={buildSelectionHref(reviewHref, card.id, answeredCount)}
       className="review-card-link"
     >
-      <SurfaceCard className={`review-queue-card${active ? " review-queue-card--active" : ""}`}>
+      <SurfaceCard
+        className={`review-queue-card${active ? " review-queue-card--active" : ""}`}
+      >
         <div className="review-queue-card__top">
           <div className="review-queue-card__chips">
             <span className="chip">{card.bucketLabel}</span>

@@ -187,9 +187,6 @@ export async function getReviewPageData(
       ? cardGroups.find((card) => card.id === searchState.selectedCardId)
       : null) ??
     queue.cards[0] ??
-    queue.manualCards[0] ??
-    queue.suspendedCards[0] ??
-    queue.upcomingCards[0] ??
     null;
   const queueIndex = selectedCard
     ? queue.cards.findIndex((card) => card.id === selectedCard.id)
@@ -290,7 +287,9 @@ export async function getReviewCardDetailData(
     card: {
       back: selectedCard.back,
       bucketLabel:
-        selectedCard.bucket === "upcoming" ? undefined : selectedCard.bucketLabel,
+        selectedCard.bucket === "upcoming"
+          ? undefined
+          : selectedCard.bucketLabel,
       dueLabel: selectedCard.dueLabel,
       front: selectedCard.front,
       id: selectedCard.id,
@@ -317,8 +316,14 @@ function buildReviewQueueSnapshot(input: {
   mediaSlug: string;
   terms: TermGlossaryEntry[];
 }) {
-  const entryLookup = buildEntryLookup(input.terms, input.grammar, input.mediaSlug);
-  const allCards = input.cards.map((card) => mapQueueCard(card, entryLookup, input.mediaSlug));
+  const entryLookup = buildEntryLookup(
+    input.terms,
+    input.grammar,
+    input.mediaSlug
+  );
+  const allCards = input.cards.map((card) =>
+    mapQueueCard(card, entryLookup, input.mediaSlug)
+  );
   const dueCards = allCards
     .filter((card) => card.bucket === "due")
     .sort(compareReviewCardsByDue);
@@ -378,7 +383,8 @@ function buildEntryLookup(
       label: entry.lemma,
       meaning: entry.meaningIt,
       status: entry.status?.status ?? null,
-      subtitle: [entry.reading, entry.romaji].filter(Boolean).join(" / ") || undefined
+      subtitle:
+        [entry.reading, entry.romaji].filter(Boolean).join(" / ") || undefined
     });
   }
 
@@ -425,12 +431,11 @@ function mapQueueCard(
         } satisfies ReviewCardEntrySummary
       ];
     });
-  const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks)
-    .map(
-      (entryLink) =>
-        (entryLookup.get(`${entryLink.entryType}:${entryLink.entryId}`)?.status ??
-          null) as ReviewEntryStatusValue
-    );
+  const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks).map(
+    (entryLink) =>
+      (entryLookup.get(`${entryLink.entryType}:${entryLink.entryId}`)?.status ??
+        null) as ReviewEntryStatusValue
+  );
   const effectiveState = resolveEffectiveReviewState({
     cardStatus: card.status,
     drivingEntryStatuses,
@@ -489,7 +494,10 @@ function resolveCardBucket(input: {
     return "suspended";
   }
 
-  if (input.effectiveState === "known_manual" || input.effectiveState === "ignored") {
+  if (
+    input.effectiveState === "known_manual" ||
+    input.effectiveState === "ignored"
+  ) {
     return "manual";
   }
 
@@ -563,7 +571,10 @@ function buildQueueIntroLabel(input: {
   return "La review di oggi è vuota: il media non ha ancora card attive da mettere in coda.";
 }
 
-function buildBucketDetail(bucket: ReviewQueueCard["bucket"], dueAt: string | null) {
+function buildBucketDetail(
+  bucket: ReviewQueueCard["bucket"],
+  dueAt: string | null
+) {
   if (bucket === "due") {
     return dueAt
       ? `Richiede attenzione oggi. Scadenza ${formatShortIsoDate(dueAt)}.`
@@ -631,7 +642,10 @@ function compareEntryLinks(
 function normalizeReviewSearchState(
   searchParams: Record<string, string | string[] | undefined>
 ): ReviewSearchState {
-  const answeredCount = Number.parseInt(readSearchParam(searchParams, "answered"), 10);
+  const answeredCount = Number.parseInt(
+    readSearchParam(searchParams, "answered"),
+    10
+  );
 
   return {
     answeredCount:
@@ -646,7 +660,8 @@ function resolveReviewNotice(value: string | null) {
   const notices: Record<string, string> = {
     known: "Le entry principali della card sono state segnate come gia note.",
     learning: "Le entry principali della card sono tornate in studio.",
-    reset: "La card è stata riportata allo stato iniziale senza perdere lo storico.",
+    reset:
+      "La card è stata riportata allo stato iniziale senza perdere lo storico.",
     resumed: "La card è tornata attiva nella review.",
     suspended: "La card è stata messa in pausa e rimossa dalla coda di oggi."
   };
@@ -672,7 +687,10 @@ function formatShortIsoDate(value: string) {
   return value.slice(0, 10);
 }
 
-function compareReviewCardsByDue(left: ReviewQueueCard, right: ReviewQueueCard) {
+function compareReviewCardsByDue(
+  left: ReviewQueueCard,
+  right: ReviewQueueCard
+) {
   if ((left.dueAt ?? "") !== (right.dueAt ?? "")) {
     return (left.dueAt ?? "9999").localeCompare(right.dueAt ?? "9999");
   }
@@ -680,9 +698,18 @@ function compareReviewCardsByDue(left: ReviewQueueCard, right: ReviewQueueCard) 
   return compareReviewCardsByOrder(left, right);
 }
 
-function compareReviewCardsByOrder(left: ReviewQueueCard, right: ReviewQueueCard) {
-  if ((left.orderIndex ?? Number.MAX_SAFE_INTEGER) !== (right.orderIndex ?? Number.MAX_SAFE_INTEGER)) {
-    return (left.orderIndex ?? Number.MAX_SAFE_INTEGER) - (right.orderIndex ?? Number.MAX_SAFE_INTEGER);
+function compareReviewCardsByOrder(
+  left: ReviewQueueCard,
+  right: ReviewQueueCard
+) {
+  if (
+    (left.orderIndex ?? Number.MAX_SAFE_INTEGER) !==
+    (right.orderIndex ?? Number.MAX_SAFE_INTEGER)
+  ) {
+    return (
+      (left.orderIndex ?? Number.MAX_SAFE_INTEGER) -
+      (right.orderIndex ?? Number.MAX_SAFE_INTEGER)
+    );
   }
 
   return left.createdAt.localeCompare(right.createdAt);

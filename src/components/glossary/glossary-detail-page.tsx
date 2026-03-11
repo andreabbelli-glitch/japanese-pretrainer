@@ -1,7 +1,8 @@
 import Link from "next/link";
+import type { Route } from "next";
 
 import type { GlossaryDetailData } from "@/lib/glossary";
-
+import { replaceReviewCardInHref } from "@/lib/site";
 import { renderFurigana } from "@/lib/render-furigana";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
@@ -11,21 +12,27 @@ import { SurfaceCard } from "../ui/surface-card";
 
 type GlossaryDetailPageProps = {
   data: GlossaryDetailData;
+  returnTo?: Route | null;
 };
 
-export function GlossaryDetailPage({ data }: GlossaryDetailPageProps) {
+export function GlossaryDetailPage({
+  data,
+  returnTo
+}: GlossaryDetailPageProps) {
   return (
     <div className="glossary-page">
       <StickyPageHeader
-        backHref={data.media.glossaryHref}
-        backLabel="Torna al glossary"
+        backHref={returnTo ?? data.media.glossaryHref}
+        backLabel={returnTo ? "Torna alla review" : "Torna al glossary"}
         eyebrow={data.entry.kind === "term" ? "Term" : "Grammar"}
         title={data.entry.label}
         summary={data.entry.meaning}
         meta={
           <>
             <span>{data.entry.studyState.label}</span>
-            {data.entry.segmentTitle ? <span>{data.entry.segmentTitle}</span> : null}
+            {data.entry.segmentTitle ? (
+              <span>{data.entry.segmentTitle}</span>
+            ) : null}
             {data.entry.levelHint ? <span>{data.entry.levelHint}</span> : null}
           </>
         }
@@ -36,14 +43,15 @@ export function GlossaryDetailPage({ data }: GlossaryDetailPageProps) {
         }
       />
 
-      <GlossaryDetailPanels data={data} />
+      <GlossaryDetailPanels data={data} returnTo={returnTo} />
     </div>
   );
 }
 
 export function GlossaryDetailPanels({
   compact = false,
-  data
+  data,
+  returnTo
 }: GlossaryDetailPageProps & {
   compact?: boolean;
 }) {
@@ -54,13 +62,17 @@ export function GlossaryDetailPanels({
       >
         <SurfaceCard className="glossary-entry-hero" variant="hero">
           <p className="eyebrow">Forma</p>
-          <h2 className="glossary-entry-hero__title jp-inline">{data.entry.label}</h2>
+          <h2 className="glossary-entry-hero__title jp-inline">
+            {data.entry.label}
+          </h2>
           {data.entry.title && data.entry.title !== data.entry.label ? (
             <p className="glossary-entry-hero__subtitle">{data.entry.title}</p>
           ) : null}
           {data.entry.reading || data.entry.romaji ? (
             <p className="glossary-entry-hero__reading jp-inline">
-              {[data.entry.reading, data.entry.romaji].filter(Boolean).join(" / ")}
+              {[data.entry.reading, data.entry.romaji]
+                .filter(Boolean)
+                .join(" / ")}
             </p>
           ) : null}
           <p className="glossary-entry-hero__meaning">{data.entry.meaning}</p>
@@ -70,17 +82,26 @@ export function GlossaryDetailPanels({
             </p>
           ) : null}
           {data.entry.pos ? (
-            <p className="glossary-entry-hero__detail">Categoria: {data.entry.pos}</p>
+            <p className="glossary-entry-hero__detail">
+              Categoria: {data.entry.pos}
+            </p>
           ) : null}
           {data.entry.notes ? (
-            <p className="glossary-entry-hero__notes">{renderFurigana(data.entry.notes)}</p>
+            <p className="glossary-entry-hero__notes">
+              {renderFurigana(data.entry.notes)}
+            </p>
           ) : null}
 
           {data.entry.aliasGroups.length > 0 ? (
             <div className="glossary-entry-hero__aliases">
               {data.entry.aliasGroups.map((group) => (
-                <div key={group.label} className="glossary-entry-hero__alias-group">
-                  <span className="glossary-entry-hero__alias-label">{group.label}</span>
+                <div
+                  key={group.label}
+                  className="glossary-entry-hero__alias-group"
+                >
+                  <span className="glossary-entry-hero__alias-label">
+                    {group.label}
+                  </span>
                   <div className="glossary-entry-hero__alias-values">
                     {group.values.map((value) => (
                       <span key={value} className="chip">
@@ -128,23 +149,36 @@ export function GlossaryDetailPanels({
           {data.lessons.length > 0 ? (
             <div className="glossary-detail-list">
               {data.lessons.map((lesson) => (
-                <Link key={lesson.id} className="glossary-detail-link" href={lesson.href}>
+                <Link
+                  key={lesson.id}
+                  className="glossary-detail-link"
+                  href={lesson.href}
+                >
                   <SurfaceCard className="glossary-detail-card" variant="quiet">
                     <div className="glossary-detail-card__top">
                       <div className="glossary-detail-card__chips">
                         {lesson.roleLabels.map((roleLabel) => (
-                          <span key={`${lesson.id}-${roleLabel}`} className="chip">
+                          <span
+                            key={`${lesson.id}-${roleLabel}`}
+                            className="chip"
+                          >
                             {roleLabel}
                           </span>
                         ))}
                         {lesson.segmentTitle ? (
-                          <span className="meta-pill">{lesson.segmentTitle}</span>
+                          <span className="meta-pill">
+                            {lesson.segmentTitle}
+                          </span>
                         ) : null}
                       </div>
                     </div>
-                    <h3 className="glossary-detail-card__title">{lesson.title}</h3>
+                    <h3 className="glossary-detail-card__title">
+                      {lesson.title}
+                    </h3>
                     {lesson.summary ? (
-                      <p className="glossary-detail-card__body">{lesson.summary}</p>
+                      <p className="glossary-detail-card__body">
+                        {lesson.summary}
+                      </p>
                     ) : null}
                   </SurfaceCard>
                 </Link>
@@ -166,24 +200,40 @@ export function GlossaryDetailPanels({
           {data.cards.length > 0 ? (
             <div className="glossary-detail-list">
               {data.cards.map((card) => (
-                <Link key={card.id} className="glossary-detail-link" href={card.href}>
+                <Link
+                  key={card.id}
+                  className="glossary-detail-link"
+                  href={
+                    returnTo
+                      ? replaceReviewCardInHref(returnTo, card.id)
+                      : card.href
+                  }
+                >
                   <SurfaceCard className="glossary-detail-card" variant="quiet">
                     <div className="glossary-detail-card__top">
                       <div className="glossary-detail-card__chips">
                         <span className="chip">{card.relationshipLabel}</span>
                         <span className="meta-pill">{card.reviewLabel}</span>
                       </div>
-                      <span className="glossary-result-card__arrow">Apri card</span>
+                      <span className="glossary-result-card__arrow">
+                        {returnTo ? "Apri nella review" : "Apri card"}
+                      </span>
                     </div>
-                    <h3 className="glossary-detail-card__title jp-inline">{card.front}</h3>
+                    <h3 className="glossary-detail-card__title jp-inline">
+                      {card.front}
+                    </h3>
                     <p className="glossary-detail-card__body">{card.back}</p>
                     <div className="glossary-detail-card__meta">
                       <span>{card.typeLabel}</span>
-                      {card.segmentTitle ? <span>{card.segmentTitle}</span> : null}
+                      {card.segmentTitle ? (
+                        <span>{card.segmentTitle}</span>
+                      ) : null}
                       {card.dueLabel ? <span>{card.dueLabel}</span> : null}
                     </div>
                     {card.notes ? (
-                      <p className="glossary-detail-card__note">{renderFurigana(card.notes)}</p>
+                      <p className="glossary-detail-card__note">
+                        {renderFurigana(card.notes)}
+                      </p>
                     ) : null}
                   </SurfaceCard>
                 </Link>
@@ -192,7 +242,7 @@ export function GlossaryDetailPanels({
           ) : (
             <EmptyState
               title="Ancora nessuna card collegata."
-              description="La voce è consultabile nel glossary, ma non ha ancora card review attive associate."
+              description="La voce è consultabile nel glossary, ma non ha ancora card review associate."
             />
           )}
         </Section>

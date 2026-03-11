@@ -26,6 +26,7 @@ import {
   getTermGlossaryDetailData
 } from "@/lib/glossary";
 import { getReviewCardDetailData } from "@/lib/review";
+import { setReviewCardSuspended } from "@/lib/review-service";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -203,7 +204,9 @@ describe("glossary data", () => {
     expect(detail?.lessons[0]?.roleLabels).toEqual(["Spiegata", "Citata"]);
     expect(detail?.cards[0]?.front).toBe("～ている");
     expect(detail?.cards[0]?.relationshipLabel).toBe("Card principale");
-    expect(detail?.cards[0]?.href).toBe("/media/frieren/review/card/card-teiru-concept");
+    expect(detail?.cards[0]?.href).toBe(
+      "/media/frieren/review/card/card-teiru-concept"
+    );
   });
 
   it("builds term detail pages with card links that target the specific card", async () => {
@@ -215,7 +218,11 @@ describe("glossary data", () => {
 
     expect(result.status).toBe("completed");
 
-    const detail = await getTermGlossaryDetailData("frieren", "term-taberu", database);
+    const detail = await getTermGlossaryDetailData(
+      "frieren",
+      "term-taberu",
+      database
+    );
 
     expect(detail).not.toBeNull();
     expect(detail?.entry.label).toBe("食べる");
@@ -224,6 +231,27 @@ describe("glossary data", () => {
     expect(detail?.cards[0]?.href).toBe(
       "/media/frieren/review/card/card-taberu-recognition"
     );
+  });
+
+  it("keeps suspended cards visible in glossary detail so review context does not disappear", async () => {
+    await seedDevelopmentDatabase(database);
+
+    await setReviewCardSuspended({
+      cardId: developmentFixture.secondaryCardId,
+      database,
+      now: new Date("2026-03-09T14:00:00.000Z"),
+      suspended: true
+    });
+
+    const detail = await getGrammarGlossaryDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.grammarId,
+      database
+    );
+
+    expect(detail).not.toBeNull();
+    expect(detail?.cards).toHaveLength(1);
+    expect(detail?.cards[0]?.reviewLabel).toBe("Sospesa");
   });
 
   it("loads a real review card detail page target from DB data", async () => {
@@ -262,13 +290,15 @@ describe("glossary data", () => {
     await database
       .update(grammarPattern)
       .set({
-        notesIt: "Nota con **enfasi**, {{日本語|にほんご}} e `[食べる](term:term-taberu)`."
+        notesIt:
+          "Nota con **enfasi**, {{日本語|にほんご}} e `[食べる](term:term-taberu)`."
       })
       .where(eq(grammarPattern.id, "grammar-teiru"));
     await database
       .update(card)
       .set({
-        notesIt: "Card con **enfasi**, {{語彙|ごい}} e `[～ている](grammar:grammar-teiru)`."
+        notesIt:
+          "Card con **enfasi**, {{語彙|ごい}} e `[～ている](grammar:grammar-teiru)`."
       })
       .where(eq(card.id, "card-teiru-concept"));
 
@@ -287,7 +317,9 @@ describe("glossary data", () => {
     expect(reviewDetail).not.toBeNull();
     expect(glossaryDetail?.entry.notes).toContain("**enfasi**");
     expect(glossaryDetail?.cards[0]?.notes).toContain("{{語彙|ごい}}");
-    expect(reviewDetail?.card.notes).toContain("[～ている](grammar:grammar-teiru)");
+    expect(reviewDetail?.card.notes).toContain(
+      "[～ている](grammar:grammar-teiru)"
+    );
 
     const glossaryMarkup = renderToStaticMarkup(
       GlossaryDetailPage({ data: glossaryDetail! })
@@ -326,7 +358,9 @@ describe("glossary data", () => {
         query: "食べる",
         expectedId: "term-taberu",
         expectedHighlight: "<mark>食べる</mark>",
-        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+        assertMatch(
+          data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>
+        ) {
           expect(data.results[0]?.matchedFields.label).toBe("normalized");
         }
       },
@@ -334,7 +368,9 @@ describe("glossary data", () => {
         query: "たべる",
         expectedId: "term-taberu",
         expectedHighlight: "<mark>たべる</mark>",
-        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+        assertMatch(
+          data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>
+        ) {
           expect(data.results[0]?.matchedFields.reading).toBe("kana");
         }
       },
@@ -342,7 +378,9 @@ describe("glossary data", () => {
         query: "タベル",
         expectedId: "term-taberu",
         expectedHighlight: "<mark>たべる</mark>",
-        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+        assertMatch(
+          data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>
+        ) {
           expect(data.results[0]?.matchedFields.reading).toBe("kana");
         }
       },
@@ -350,7 +388,9 @@ describe("glossary data", () => {
         query: "taberu",
         expectedId: "term-taberu",
         expectedHighlight: "<mark>taberu</mark>",
-        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+        assertMatch(
+          data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>
+        ) {
           expect(data.results[0]?.matchedFields.romaji).toBe("romajiCompact");
         }
       },
@@ -358,7 +398,9 @@ describe("glossary data", () => {
         query: "mangiare",
         expectedId: "term-taberu",
         expectedHighlight: "<mark>mangiare</mark>",
-        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+        assertMatch(
+          data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>
+        ) {
           expect(data.results[0]?.matchedFields.meaning).toBe("normalized");
         }
       },
@@ -367,7 +409,9 @@ describe("glossary data", () => {
         expectedId: "grammar-teiru",
         expectedHighlight: "<mark>てる</mark>",
         expectedSnippet: "Alias:",
-        assertMatch(data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>) {
+        assertMatch(
+          data: NonNullable<Awaited<ReturnType<typeof getGlossaryPageData>>>
+        ) {
           expect(data.results[0]?.matchedFields.aliases).toContainEqual({
             mode: "grammarKana",
             text: "てる"
@@ -417,12 +461,17 @@ describe("glossary data", () => {
       database
     );
 
-    const selectedResult = data?.results.find((entry) => entry.id === "grammar-teiru");
+    const selectedResult = data?.results.find(
+      (entry) => entry.id === "grammar-teiru"
+    );
 
     expect(data).not.toBeNull();
     expect(selectedResult?.lessonCount).toBe(1);
     expect(data?.preview?.entry.id).toBe("grammar-teiru");
     expect(data?.preview?.lessons).toHaveLength(1);
-    expect(data?.preview?.lessons[0]?.roleLabels).toEqual(["Spiegata", "Citata"]);
+    expect(data?.preview?.lessons[0]?.roleLabels).toEqual([
+      "Spiegata",
+      "Citata"
+    ]);
   });
 });

@@ -2,7 +2,7 @@ import type { Route } from "next";
 import Link from "next/link";
 
 import type { GlossaryMatchMode, GlossaryPageData } from "@/lib/glossary";
-import { mediaHref } from "@/lib/site";
+import { appendReturnToParam, mediaHref } from "@/lib/site";
 import {
   compactLatinSearchText,
   foldJapaneseKana,
@@ -19,16 +19,22 @@ import { SurfaceCard } from "../ui/surface-card";
 
 type GlossaryPageProps = {
   data: GlossaryPageData;
+  returnTo?: Route | null;
 };
 
-export function GlossaryPage({ data }: GlossaryPageProps) {
+export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
   const hasEntries = data.resultSummary.total > 0;
+  const backHref = returnTo ?? mediaHref(data.media.slug);
+  const backLabel = returnTo
+    ? "Torna alla review"
+    : `Torna a ${data.media.title}`;
+  const glossaryHref = appendReturnToParam(data.media.glossaryHref, returnTo);
 
   return (
     <div className="glossary-page">
       <StickyPageHeader
-        backHref={mediaHref(data.media.slug)}
-        backLabel={`Torna a ${data.media.title}`}
+        backHref={backHref}
+        backLabel={backLabel}
         eyebrow="Glossary"
         title={data.media.title}
         summary="Ricerca rapida per kanji, kana, romaji e significato, con segnali di studio e collegamenti al percorso."
@@ -53,11 +59,14 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
             Cerca una forma e ricostruisci subito il contesto di studio.
           </h2>
           <p className="glossary-hero__summary">
-            Exact, prefix e matching normalizzato restano prioritari: prima la forma
-            giusta, poi alias e significato.
+            Exact, prefix e matching normalizzato restano prioritari: prima la
+            forma giusta, poi alias e significato.
           </p>
 
           <form className="glossary-search-form" method="get">
+            {returnTo ? (
+              <input name="returnTo" type="hidden" value={returnTo} />
+            ) : null}
             <label className="glossary-search-form__field">
               <span className="glossary-search-form__label">Cerca</span>
               <input
@@ -132,7 +141,7 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
                 Cerca
               </button>
               {data.hasActiveFilters ? (
-                <Link className="button button--ghost" href={data.media.glossaryHref}>
+                <Link className="button button--ghost" href={glossaryHref}>
                   Azzera filtri
                 </Link>
               ) : null}
@@ -185,7 +194,10 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
             title="Questo media non ha ancora entry nel glossary."
             description="Importa o sincronizza termini e pattern, poi torna qui per usare ricerca, dettaglio e collegamenti di studio."
             action={
-              <Link className="button button--ghost" href={data.media.textbookHref}>
+              <Link
+                className="button button--ghost"
+                href={data.media.textbookHref}
+              >
                 Apri textbook
               </Link>
             }
@@ -195,7 +207,7 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
             title="Nessun risultato con questi filtri."
             description="Prova una forma piu breve, passa da romaji a kana oppure rimuovi segmento e stato per allargare il match."
             action={
-              <Link className="button button--ghost" href={data.media.glossaryHref}>
+              <Link className="button button--ghost" href={glossaryHref}>
                 Riparti dall&apos;indice
               </Link>
             }
@@ -208,22 +220,20 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
                   const previewHref = buildPreviewHref({
                     entryId: entry.id,
                     entryKind: entry.kind,
-                    filters: data.filters
+                    filters: data.filters,
+                    returnTo
                   });
+                  const detailHref = appendReturnToParam(entry.href, returnTo);
                   const isPreviewActive =
                     data.preview?.entry.id === entry.id &&
                     data.preview.entry.kind === entry.kind;
-                  const visibleAliasMatches = entry.matchedFields.aliases.filter(
-                    (alias) =>
-                      ![
-                        entry.label,
-                        entry.title,
-                        entry.reading,
-                        entry.romaji
-                      ]
-                        .filter(Boolean)
-                        .includes(alias.text)
-                  );
+                  const visibleAliasMatches =
+                    entry.matchedFields.aliases.filter(
+                      (alias) =>
+                        ![entry.label, entry.title, entry.reading, entry.romaji]
+                          .filter(Boolean)
+                          .includes(alias.text)
+                    );
 
                   return (
                     <SurfaceCard
@@ -235,9 +245,13 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
                           <span className="chip">
                             {entry.kind === "term" ? "Term" : "Grammar"}
                           </span>
-                          <span className="meta-pill">{entry.studyState.label}</span>
+                          <span className="meta-pill">
+                            {entry.studyState.label}
+                          </span>
                           {entry.segmentTitle ? (
-                            <span className="meta-pill">{entry.segmentTitle}</span>
+                            <span className="meta-pill">
+                              {entry.segmentTitle}
+                            </span>
                           ) : null}
                         </div>
                         <div className="glossary-result-card__actions">
@@ -247,7 +261,10 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
                           >
                             Anteprima
                           </Link>
-                          <Link className="glossary-result-card__mobile-action" href={entry.href}>
+                          <Link
+                            className="glossary-result-card__mobile-action"
+                            href={detailHref}
+                          >
                             Apri
                           </Link>
                         </div>
@@ -296,7 +313,8 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
                         />
                       </p>
 
-                      {entry.matchBadges.length > 0 || visibleAliasMatches.length > 0 ? (
+                      {entry.matchBadges.length > 0 ||
+                      visibleAliasMatches.length > 0 ? (
                         <div className="glossary-result-card__match">
                           {entry.matchBadges.map((badge) => (
                             <span key={badge} className="chip">
@@ -336,10 +354,14 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
                         </div>
                         {entry.primaryLesson ? (
                           <p className="glossary-result-card__lesson">
-                            {entry.primaryLesson.roleLabel}: {entry.primaryLesson.title}
+                            {entry.primaryLesson.roleLabel}:{" "}
+                            {entry.primaryLesson.title}
                           </p>
                         ) : null}
-                        <Link className="text-link glossary-result-card__detail-link" href={entry.href}>
+                        <Link
+                          className="text-link glossary-result-card__detail-link"
+                          href={detailHref}
+                        >
                           Apri detail page
                         </Link>
                       </div>
@@ -359,11 +381,21 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
                         {data.preview.entry.label}
                       </h3>
                     </div>
-                    <Link className="button button--ghost" href={data.preview.entry.href}>
+                    <Link
+                      className="button button--ghost"
+                      href={appendReturnToParam(
+                        data.preview.entry.href,
+                        returnTo
+                      )}
+                    >
                       Apri pagina
                     </Link>
                   </div>
-                  <GlossaryDetailPanels compact data={data.preview} />
+                  <GlossaryDetailPanels
+                    compact
+                    data={data.preview}
+                    returnTo={returnTo}
+                  />
                 </div>
               </aside>
             ) : null}
@@ -377,11 +409,13 @@ export function GlossaryPage({ data }: GlossaryPageProps) {
 function buildPreviewHref({
   entryId,
   entryKind,
-  filters
+  filters,
+  returnTo
 }: {
   entryId: string;
   entryKind: "term" | "grammar";
   filters: GlossaryPageData["filters"];
+  returnTo?: Route | null;
 }) {
   const params = new URLSearchParams();
 
@@ -407,6 +441,10 @@ function buildPreviewHref({
 
   params.set("preview", entryId);
   params.set("previewKind", entryKind);
+
+  if (returnTo) {
+    params.set("returnTo", returnTo);
+  }
 
   return `?${params.toString()}` as Route;
 }
@@ -439,7 +477,11 @@ function HighlightText({
   const normalizedText = normalizeForMatchMode(text, mode);
   const normalizedQuery = normalizeForMatchMode(trimmedQuery, mode);
 
-  if (!normalizedText || !normalizedQuery || !normalizedText.includes(normalizedQuery)) {
+  if (
+    !normalizedText ||
+    !normalizedQuery ||
+    !normalizedText.includes(normalizedQuery)
+  ) {
     return text;
   }
 
