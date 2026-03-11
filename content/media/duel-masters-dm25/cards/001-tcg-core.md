@@ -169,6 +169,7 @@ level_hint: n4
 
 :::term
 id: term-cost
+cross_media_group: term-shared-cost-resource
 lemma: コスト
 reading: こすと
 romaji: kosuto

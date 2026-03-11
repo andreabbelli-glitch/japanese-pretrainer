@@ -65,6 +65,13 @@ parole, ma tantissima informazione pratica.
 
 ### 1. I nomi modalità sono mappe, non lessico decorativo
 
+:::image
+src: assets/ui/battle-screen-modes.png
+alt: "Schermata Battle di デュエプレ con pannelli visibili per ランクマッチ, カジュアルマッチ e ルームマッチ, oltre alla navigazione inferiore."
+caption: >-
+  Screenshot della schermata `Battle` di `デュエプレ`, utile per fissare come le modalita principali compaiono davvero nell'interfaccia reale: grandi pannelli per [ランクマッチ](term:term-ranked-match), `カジュアルマッチ` e [ルームマッチ](term:term-room-match).
+:::
+
 Quando scorri una schermata modalità, il tuo primo compito è classificare il
 contesto:
 
@@ -79,6 +86,12 @@ contesto:
 
 Imparare questi label non significa solo "sapere come si chiamano". Significa
 entrare nel posto giusto senza perdere tempo.
+
+Nell'interfaccia reale questa scelta non appare come una lista neutra: entra
+nel tab `Battle` e ti trovi davanti pannelli grandi con modalita precise, come
+`ランクマッチ`, `カジュアルマッチ` e `ルームマッチ`. Quindi la lettura utile non
+e solo lessicale: e anche spaziale, perche il layout ti dice subito quale
+famiglia di partita stai per aprire.
 
 ### 2. `{{開催中|かいさいちゅう}}`, `{{未|み}}〜`, `〜{{済|ず}}み`: tre stati che cambiano la tua decisione
 
@@ -189,3 +202,4 @@ translation_it: >-
 Lo scopo di questa lesson è semplice: farti leggere le modalità di `デュエプレ`
 come segnali chiari, non come etichette vaghe. Quando succede, il giapponese ti
 aiuta direttamente a scegliere dove giocare e quando farlo.
+

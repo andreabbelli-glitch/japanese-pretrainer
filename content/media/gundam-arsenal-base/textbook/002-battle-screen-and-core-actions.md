@@ -57,16 +57,14 @@ campo e a collegare un label a una decisione.
 
 ## Spiegazione
 
-La schermata sembra piena di informazioni, ma all'inizio non devi leggerle tutte
-insieme. L'ordine piu utile e questo: prima guarda dove sono
-[{{殲滅|せんめつ}}](term:term-role-shoumetsu),
-[{{制圧|せいあつ}}](term:term-role-seiatsu) e
-[{{防衛|ぼうえい}}](term:term-role-bouei); poi individua quale
-[{{拠点|きょてん}}](term:term-base) o
-[{{戦艦|せんかん}}](term:term-warship) sta per subire pressione; solo dopo
-controlla i dettagli delle singole carte. Le guide fan per principianti
-insistono molto su questo punto: se provi a capire tutto nello stesso istante,
-reagisci tardi.
+La schermata sembra piena di informazioni, ma all'inizio non devi leggerle tutte insieme. L'ordine piu utile e questo: prima guarda dove sono [{{殲滅|せんめつ}}](term:term-role-shoumetsu), [{{制圧|せいあつ}}](term:term-role-seiatsu) e [{{防衛|ぼうえい}}](term:term-role-bouei); poi individua quale [{{拠点|きょてん}}](term:term-base) o [{{戦艦|せんかん}}](term:term-warship) sta per subire pressione; solo dopo controlla i dettagli delle singole carte. Le guide fan per principianti insistono molto su questo punto: se provi a capire tutto nello stesso istante, reagisci tardi.
+
+:::image
+src: assets/ui/battle-screen-reference.webp
+alt: "Schermata ufficiale di battaglia con gauge dei due lati, pannelli unita, costo, SP gauge e minimappa visibili nello stesso frame."
+caption: >-
+  Schermata ufficiale di battaglia: in alto leggi [{{自軍|じぐん}}{{戦力|せんりょく}}ゲージ](term:term-friendly-strength-gauge) e [{{敵軍|てきぐん}}{{戦力|せんりょく}}ゲージ](term:term-enemy-strength-gauge); in basso compaiono [コスト](term:term-cost), [SPゲージ](term:term-sp-gauge) e i pannelli [ユニット](term:term-unit); al centro resta la [ミニマップ](term:term-minimap).
+:::
 
 Le barre in alto non sono semplici indicatori generici di HP. La
 [{{自軍|じぐん}}{{戦力|せんりょく}}ゲージ](term:term-friendly-strength-gauge)
@@ -109,7 +107,7 @@ I tre ruoli base vanno letti come funzioni del campo, non come etichette
 astratte.
 
 - [{{殲滅|せんめつ}}](term:term-role-shoumetsu) vuol dire che l'unita punta prima
-  ai nemici. In pratica e il ruolo che libera la strada rimuovendo unità
+  ai nemici. In pratica e il ruolo che libera la strada rimuovendo unita
   avversarie, soprattutto quando una difesa ti sta bloccando.
 - [{{制圧|せいあつ}}](term:term-role-seiatsu) vuol dire che l'unita cerca
   [{{拠点|きょてん}}](term:term-base) e
@@ -174,3 +172,4 @@ Se ti perdi, non chiederti per prima cosa quale carta e forte. Chiediti dove
 sono [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
 [{{制圧|せいあつ}}](term:term-role-seiatsu) e
 [{{防衛|ぼうえい}}](term:term-role-bouei), e quale obiettivo sta per cedere.
+

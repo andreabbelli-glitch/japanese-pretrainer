@@ -1,4 +1,5 @@
 import type { EntryType } from "../../../domain/content.ts";
+import { buildScopedEntryId } from "../../entry-id.ts";
 
 import type { NormalizedMediaBundle } from "../types.ts";
 import {
@@ -39,8 +40,10 @@ export function buildMediaImportPlan(input: {
   }
 
   const segmentRows = buildSegmentRows(input.bundle);
-  const segmentIdByRef = new Map(
-    segmentRows.map((row) => [row.slug, row.id])
+  const segmentIdByRef = new Map(segmentRows.map((row) => [row.slug, row.id]));
+  const glossaryEntryIdResolver = resolveBundleEntryId(
+    input.bundle,
+    mediaDocument.frontmatter.id
   );
   const mediaRow = buildMediaRow({
     bundle: input.bundle,
@@ -51,6 +54,7 @@ export function buildMediaImportPlan(input: {
     buildLessonPlan({
       contentRoot: input.contentRoot,
       lesson,
+      glossaryEntryIdResolver,
       mediaId: mediaDocument.frontmatter.id,
       mediaSlug: input.bundle.mediaSlug,
       nowIso: input.nowIso,
@@ -80,6 +84,7 @@ export function buildMediaImportPlan(input: {
   const cardPlans = buildCardPlans({
     cards: input.bundle.cards,
     contentRoot: input.contentRoot,
+    glossaryEntryIdResolver,
     mediaId: mediaDocument.frontmatter.id,
     nowIso: input.nowIso,
     segmentIdByRef
@@ -88,6 +93,7 @@ export function buildMediaImportPlan(input: {
     ...lessonPlans.flatMap((plan) => plan.entryLinks),
     ...cardPlans.flatMap((plan) => plan.entryLinks)
   ];
+  const crossMediaGroups = buildCrossMediaGroupRows(input.bundle, input.nowIso);
   const sourceDocuments = buildSourceDocumentList({
     cards: cardPlans,
     grammarPatterns: grammarPlans,
@@ -98,6 +104,7 @@ export function buildMediaImportPlan(input: {
 
   return {
     cards: cardPlans,
+    crossMediaGroups,
     entryLinks,
     grammarPatterns: grammarPlans,
     lessonContents: lessonContentPlans,
@@ -107,6 +114,46 @@ export function buildMediaImportPlan(input: {
     sourceDocuments,
     terms: termPlans
   };
+}
+
+function buildCrossMediaGroupRows(
+  bundle: NormalizedMediaBundle,
+  nowIso: string
+) {
+  const registry = new Map<
+    string,
+    { entryType: EntryType; groupKey: string }
+  >();
+
+  for (const entry of bundle.terms) {
+    if (!entry.crossMediaGroup) {
+      continue;
+    }
+
+    registry.set(`term:${entry.crossMediaGroup}`, {
+      entryType: "term",
+      groupKey: entry.crossMediaGroup
+    });
+  }
+
+  for (const entry of bundle.grammarPatterns) {
+    if (!entry.crossMediaGroup) {
+      continue;
+    }
+
+    registry.set(`grammar:${entry.crossMediaGroup}`, {
+      entryType: "grammar",
+      groupKey: entry.crossMediaGroup
+    });
+  }
+
+  return [...registry.values()].map((group) => ({
+    id: buildCrossMediaGroupId(group.entryType, group.groupKey),
+    entryType: group.entryType,
+    groupKey: group.groupKey,
+    createdAt: nowIso,
+    updatedAt: nowIso
+  }));
 }
 
 function buildMediaRow(input: {
@@ -133,7 +180,8 @@ function buildMediaRow(input: {
       mediaType: mediaDocument.frontmatter.mediaType,
       segmentKind: mediaDocument.frontmatter.segmentKind,
       language: mediaDocument.frontmatter.language,
-      baseExplanationLanguage: mediaDocument.frontmatter.baseExplanationLanguage,
+      baseExplanationLanguage:
+        mediaDocument.frontmatter.baseExplanationLanguage,
       description,
       status: (mediaDocument.frontmatter.status ?? "active") as
         | "active"
@@ -205,7 +253,10 @@ function buildSegmentRows(bundle: NormalizedMediaBundle) {
   }
 
   for (const card of bundle.cards) {
-    register(card.source.segmentRef, card.source.documentOrder ?? Number.MAX_SAFE_INTEGER);
+    register(
+      card.source.segmentRef,
+      card.source.documentOrder ?? Number.MAX_SAFE_INTEGER
+    );
   }
 
   return [...registry.values()]
@@ -233,18 +284,26 @@ function buildSegmentRows(bundle: NormalizedMediaBundle) {
 
 function buildLessonPlan(input: {
   contentRoot: string;
+  glossaryEntryIdResolver: (entryType: EntryType, sourceId: string) => string;
   lesson: NormalizedMediaBundle["lessons"][number];
   mediaId: string;
   mediaSlug: string;
   nowIso: string;
   segmentIdByRef: Map<string, string>;
 }) {
-  const sourceFile = normalizeSourceFile(input.contentRoot, input.lesson.sourceFile);
+  const sourceFile = normalizeSourceFile(
+    input.contentRoot,
+    input.lesson.sourceFile
+  );
   const segmentId =
     (input.lesson.frontmatter.segmentRef
       ? input.segmentIdByRef.get(input.lesson.frontmatter.segmentRef)
       : undefined) ?? null;
-  const entryLinks = buildLessonEntryLinks(input.lesson.frontmatter.id, input.lesson.body);
+  const entryLinks = buildLessonEntryLinks(
+    input.lesson.frontmatter.id,
+    input.lesson.body,
+    input.glossaryEntryIdResolver
+  );
   const htmlRendered = renderLessonHtml(input.lesson.body, input.mediaSlug);
   const astJson = JSON.stringify(input.lesson.body);
   const excerpt = buildLessonExcerpt(input.lesson.body);
@@ -293,9 +352,13 @@ function buildTermPlan(input: {
   segmentIdByRef: Map<string, string>;
   term: NormalizedMediaBundle["terms"][number];
 }): TermImportPlan {
-  const sourceFile = normalizeSourceFile(input.contentRoot, input.term.source.filePath);
+  const sourceFile = normalizeSourceFile(
+    input.contentRoot,
+    input.term.source.filePath
+  );
   const searchReadingNorm = normalizeSearchText(input.term.reading);
   const searchRomajiNorm = normalizeSearchText(input.term.romaji);
+  const termId = buildScopedEntryId("term", input.mediaId, input.term.id);
   const aliases = dedupeStrings(input.term.aliases).map((aliasText) => {
     const aliasNorm = normalizeSearchText(aliasText);
     const aliasType = inferTermAliasType(
@@ -305,13 +368,8 @@ function buildTermPlan(input: {
     );
 
     return {
-      id: buildDeterministicId(
-        "term_alias",
-        input.term.id,
-        aliasType,
-        aliasNorm
-      ),
-      termId: input.term.id,
+      id: buildDeterministicId("term_alias", termId, aliasType, aliasNorm),
+      termId,
       aliasText,
       aliasNorm,
       aliasType
@@ -321,13 +379,20 @@ function buildTermPlan(input: {
     segmentRef: input.term.segmentRef,
     sourceSegmentRef: input.term.source.segmentRef
   });
+  const crossMediaGroupId = input.term.crossMediaGroup
+    ? buildCrossMediaGroupId("term", input.term.crossMediaGroup)
+    : null;
 
   return {
     aliases,
     row: {
-      id: input.term.id,
+      id: termId,
+      sourceId: input.term.id,
+      crossMediaGroupId,
       mediaId: input.mediaId,
-      segmentId: segmentRef ? input.segmentIdByRef.get(segmentRef) ?? null : null,
+      segmentId: segmentRef
+        ? (input.segmentIdByRef.get(segmentRef) ?? null)
+        : null,
       lemma: input.term.lemma,
       reading: input.term.reading,
       romaji: input.term.romaji,
@@ -357,38 +422,50 @@ function buildGrammarPlan(input: {
     input.contentRoot,
     input.grammarPattern.source.filePath
   );
-  const aliases = dedupeStrings(input.grammarPattern.aliases).map((aliasText) => {
-    const aliasNorm = normalizeGrammarSearchText(aliasText);
+  const grammarId = buildScopedEntryId(
+    "grammar",
+    input.mediaId,
+    input.grammarPattern.id
+  );
+  const aliases = dedupeStrings(input.grammarPattern.aliases).map(
+    (aliasText) => {
+      const aliasNorm = normalizeGrammarSearchText(aliasText);
 
-    return {
-      id: buildDeterministicId(
-        "grammar_alias",
-        input.grammarPattern.id,
+      return {
+        id: buildDeterministicId("grammar_alias", grammarId, aliasNorm),
+        grammarId,
+        aliasText,
         aliasNorm
-      ),
-      grammarId: input.grammarPattern.id,
-      aliasText,
-      aliasNorm
-    };
-  });
+      };
+    }
+  );
   const segmentRef = resolveEntrySegmentRef({
     segmentRef: input.grammarPattern.segmentRef,
     sourceSegmentRef: input.grammarPattern.source.segmentRef
   });
+  const crossMediaGroupId = input.grammarPattern.crossMediaGroup
+    ? buildCrossMediaGroupId("grammar", input.grammarPattern.crossMediaGroup)
+    : null;
 
   return {
     aliases,
     row: {
-      id: input.grammarPattern.id,
+      id: grammarId,
+      sourceId: input.grammarPattern.id,
+      crossMediaGroupId,
       mediaId: input.mediaId,
-      segmentId: segmentRef ? input.segmentIdByRef.get(segmentRef) ?? null : null,
+      segmentId: segmentRef
+        ? (input.segmentIdByRef.get(segmentRef) ?? null)
+        : null,
       pattern: input.grammarPattern.pattern,
       title: input.grammarPattern.title,
       reading: input.grammarPattern.reading ?? null,
       meaningIt: input.grammarPattern.meaningIt,
       notesIt: input.grammarPattern.notesIt?.raw ?? null,
       levelHint: input.grammarPattern.levelHint ?? null,
-      searchPatternNorm: normalizeGrammarSearchText(input.grammarPattern.pattern),
+      searchPatternNorm: normalizeGrammarSearchText(
+        input.grammarPattern.pattern
+      ),
       createdAt: input.nowIso,
       updatedAt: input.nowIso
     },
@@ -399,6 +476,7 @@ function buildGrammarPlan(input: {
 function buildCardPlans(input: {
   cards: NormalizedMediaBundle["cards"];
   contentRoot: string;
+  glossaryEntryIdResolver: (entryType: EntryType, sourceId: string) => string;
   mediaId: string;
   nowIso: string;
   segmentIdByRef: Map<string, string>;
@@ -419,12 +497,19 @@ function buildCardPlans(input: {
       return left.source.sequence - right.source.sequence;
     })
     .map((card, index) => {
-      const sourceFile = normalizeSourceFile(input.contentRoot, card.source.filePath);
+      const sourceFile = normalizeSourceFile(
+        input.contentRoot,
+        card.source.filePath
+      );
       const segmentId = card.source.segmentRef
-        ? input.segmentIdByRef.get(card.source.segmentRef) ?? null
+        ? (input.segmentIdByRef.get(card.source.segmentRef) ?? null)
         : null;
+      const primaryEntryId = input.glossaryEntryIdResolver(
+        card.entryType,
+        card.entryId
+      );
       const primaryEntryLink = buildEntryLinkRow({
-        entryId: card.entryId,
+        entryId: primaryEntryId,
         entryType: card.entryType,
         linkRole: "reviewed",
         sortOrder: 1,
@@ -432,20 +517,24 @@ function buildCardPlans(input: {
         sourceType: "card"
       });
       const contextualReferences = collectReferenceKeysFromCard(card);
-      const contextualEntryLinks = contextualReferences.map((reference, referenceIndex) =>
-        buildEntryLinkRow({
-          entryId: reference.entryId,
-          entryType: reference.entryType,
-          linkRole: "mentioned",
-          sortOrder: referenceIndex + 2,
-          sourceId: card.id,
-          sourceType: "card"
-        })
+      const contextualEntryLinks = contextualReferences.map(
+        (reference, referenceIndex) =>
+          buildEntryLinkRow({
+            entryId: input.glossaryEntryIdResolver(
+              reference.entryType,
+              reference.entryId
+            ),
+            entryType: reference.entryType,
+            linkRole: "mentioned",
+            sortOrder: referenceIndex + 2,
+            sourceId: card.id,
+            sourceType: "card"
+          })
       );
       const cardEntryLinks = [
         buildCardEntryLinkRow({
           cardId: card.id,
-          entryId: card.entryId,
+          entryId: primaryEntryId,
           entryType: card.entryType,
           relationshipType: "primary"
         }),
@@ -460,7 +549,10 @@ function buildCardPlans(input: {
           .map((reference) =>
             buildCardEntryLinkRow({
               cardId: card.id,
-              entryId: reference.entryId,
+              entryId: input.glossaryEntryIdResolver(
+                reference.entryType,
+                reference.entryId
+              ),
               entryType: reference.entryType,
               relationshipType: "context"
             })
@@ -492,12 +584,16 @@ function buildCardPlans(input: {
     });
 }
 
-function buildLessonEntryLinks(lessonId: string, body: NormalizedMediaBundle["lessons"][number]["body"]) {
+function buildLessonEntryLinks(
+  lessonId: string,
+  body: NormalizedMediaBundle["lessons"][number]["body"],
+  glossaryEntryIdResolver: (entryType: EntryType, sourceId: string) => string
+) {
   const definitionLinks = body.blocks.flatMap((block, index) => {
     if (block.type === "termDefinition") {
       return [
         buildEntryLinkRow({
-          entryId: block.entry.id,
+          entryId: glossaryEntryIdResolver("term", block.entry.id),
           entryType: "term",
           linkRole: "introduced",
           sortOrder: index + 1,
@@ -510,7 +606,7 @@ function buildLessonEntryLinks(lessonId: string, body: NormalizedMediaBundle["le
     if (block.type === "grammarDefinition") {
       return [
         buildEntryLinkRow({
-          entryId: block.entry.id,
+          entryId: glossaryEntryIdResolver("grammar", block.entry.id),
           entryType: "grammar",
           linkRole: "explained",
           sortOrder: index + 1,
@@ -525,7 +621,10 @@ function buildLessonEntryLinks(lessonId: string, body: NormalizedMediaBundle["le
   const referenceLinks = collectReferenceKeysFromBlocks(body.blocks).map(
     (reference, referenceIndex) =>
       buildEntryLinkRow({
-        entryId: reference.entryId,
+        entryId: glossaryEntryIdResolver(
+          reference.entryType,
+          reference.entryId
+        ),
         entryType: reference.entryType,
         linkRole: "mentioned",
         sortOrder: definitionLinks.length + referenceIndex + 1,
@@ -537,7 +636,38 @@ function buildLessonEntryLinks(lessonId: string, body: NormalizedMediaBundle["le
   return dedupeById([...definitionLinks, ...referenceLinks]);
 }
 
-function collectReferenceKeysFromCard(card: NormalizedMediaBundle["cards"][number]) {
+function resolveBundleEntryId(bundle: NormalizedMediaBundle, mediaId: string) {
+  const idsByType = {
+    grammar: new Map(
+      bundle.grammarPatterns.map((entry) => [
+        entry.id,
+        buildScopedEntryId("grammar", mediaId, entry.id)
+      ])
+    ),
+    term: new Map(
+      bundle.terms.map((entry) => [
+        entry.id,
+        buildScopedEntryId("term", mediaId, entry.id)
+      ])
+    )
+  } satisfies Record<EntryType, Map<string, string>>;
+
+  return (entryType: EntryType, sourceId: string) => {
+    const scopedId = idsByType[entryType].get(sourceId);
+
+    if (!scopedId) {
+      throw new Error(
+        `Unknown ${entryType} source id '${sourceId}' while building import plan for media '${mediaId}'.`
+      );
+    }
+
+    return scopedId;
+  };
+}
+
+function collectReferenceKeysFromCard(
+  card: NormalizedMediaBundle["cards"][number]
+) {
   return dedupeReferenceEntries([
     ...collectReferenceKeysFromRichText(card.front),
     ...collectReferenceKeysFromRichText(card.back),
@@ -631,7 +761,9 @@ function buildSourceDocumentList(input: {
   ensureDocument(input.media.sourceFile, "media");
 
   for (const lesson of input.lessons) {
-    ensureDocument(lesson.sourceFile, "lesson").entityIds.lessons.push(lesson.row.id);
+    ensureDocument(lesson.sourceFile, "lesson").entityIds.lessons.push(
+      lesson.row.id
+    );
   }
 
   for (const term of input.terms) {
@@ -640,10 +772,13 @@ function buildSourceDocumentList(input: {
   }
 
   for (const grammarPattern of input.grammarPatterns) {
-    const kind = grammarPattern.sourceFile.includes("/cards/") ? "cards" : "lesson";
-    ensureDocument(grammarPattern.sourceFile, kind).entityIds.grammarPatterns.push(
-      grammarPattern.row.id
-    );
+    const kind = grammarPattern.sourceFile.includes("/cards/")
+      ? "cards"
+      : "lesson";
+    ensureDocument(
+      grammarPattern.sourceFile,
+      kind
+    ).entityIds.grammarPatterns.push(grammarPattern.row.id);
   }
 
   for (const card of input.cards) {
@@ -700,4 +835,8 @@ function dedupeById<T extends { id: string }>(values: T[]) {
     seen.add(value.id);
     return true;
   });
+}
+
+function buildCrossMediaGroupId(entryType: EntryType, groupKey: string) {
+  return buildDeterministicId("cross_media_group", entryType, groupKey);
 }

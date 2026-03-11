@@ -1,4 +1,38 @@
 assets:
+  - id: duel-plays-home-screen
+    src: assets/ui/home-screen.png
+    source_type: screenshot
+    width: 2556
+    height: 1179
+    lesson_slug: duel-plays-app-overview
+    anchor: "### 1. La home non è contenuto: è una mappa"
+    alt_it: >-
+      Schermata home di デュエプレ con navigazione inferiore Home, Solo play,
+      Battle, Extra, Card, Shop ed Etc., piu icone superiori per avvisi,
+      premi e altre scorciatoie.
+    caption_it: >-
+      Screenshot della home di `デュエプレ`, utile per leggere la barra di
+      navigazione bassa e riconoscere che molte azioni rapide nella barra alta
+      sono presentate come icone.
+    notes: >-
+      Screenshot fornito dall'utente.
+  - id: duel-plays-modes-screen
+    src: assets/ui/battle-screen-modes.png
+    source_type: screenshot
+    width: 2556
+    height: 1179
+    lesson_slug: duel-plays-app-modes-and-progression
+    anchor: "### 1. I nomi modalità sono mappe, non lessico decorativo"
+    alt_it: >-
+      Schermata Battle di デュエプレ con pannelli visibili per ランクマッチ,
+      カジュアルマッチ e ルームマッチ, oltre alla navigazione inferiore.
+    caption_it: >-
+      Screenshot della schermata `Battle` di `デュエプレ`, utile per fissare
+      come le modalita principali compaiono davvero nell'interfaccia reale:
+      grandi pannelli per [ランクマッチ](term:term-ranked-match),
+      `カジュアルマッチ` e [ルームマッチ](term:term-room-match).
+    notes: >-
+      Screenshot fornito dall'utente.
   - id: tcg-core-card-anatomy-reference
     src: assets/cards/abyssbell-jashintei.webp
     source_type: card-art

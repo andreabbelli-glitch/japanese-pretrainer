@@ -1,0 +1,78 @@
+assets:
+  - id: arcade-cabinet-overview
+    src: assets/ui/arcade-cabinet-overview.webp
+    source_type: photo
+    width: 1040
+    height: 1110
+    lesson_slug: arcade-onboarding
+    anchor: "I componenti del cabinato hanno funzioni molto precise."
+    alt_it: >-
+      Cabinato ufficiale di Gundam Arsenal Base visto frontalmente, con schermo,
+      fila di card slot, pulsante destro e uscita carte inferiore ben visibili.
+    caption_it: >-
+      Vista ufficiale del cabinato: ti aiuta a separare subito schermo,
+      [カードスロット](term:term-card-slot), [ボタン](term:term-button) e
+      [{{カード取り出し口|かーどとりだしぐち}}](term:term-card-outlet) prima ancora
+      di iniziare la partita.
+    notes: >-
+      Fonte ufficiale https://www.gundam-ab.com/guide/how_to_play.php,
+      sezione `筐体操作方法`.
+  - id: battle-screen-reference
+    src: assets/ui/battle-screen-reference.webp
+    source_type: screenshot
+    width: 1040
+    height: 585
+    lesson_slug: battle-screen-and-core-actions
+    anchor: "La schermata sembra piena di informazioni, ma all'inizio non devi leggerle tutte insieme. L'ordine piu utile e questo: prima guarda dove sono [{{殲滅|せんめつ}}](term:term-role-shoumetsu), [{{制圧|せいあつ}}](term:term-role-seiatsu) e [{{防衛|ぼうえい}}](term:term-role-bouei); poi individua quale [{{拠点|きょてん}}](term:term-base) o [{{戦艦|せんかん}}](term:term-warship) sta per subire pressione; solo dopo controlla i dettagli delle singole carte. Le guide fan per principianti insistono molto su questo punto: se provi a capire tutto nello stesso istante, reagisci tardi."
+    alt_it: >-
+      Schermata ufficiale di battaglia con gauge dei due lati, pannelli unita,
+      costo, SP gauge e minimappa visibili nello stesso frame.
+    caption_it: >-
+      Schermata ufficiale di battaglia: in alto leggi
+      [{{自軍|じぐん}}{{戦力|せんりょく}}ゲージ](term:term-friendly-strength-gauge)
+      e
+      [{{敵軍|てきぐん}}{{戦力|せんりょく}}ゲージ](term:term-enemy-strength-gauge);
+      in basso compaiono [コスト](term:term-cost), [SPゲージ](term:term-sp-gauge)
+      e i pannelli [ユニット](term:term-unit); al centro resta la
+      [ミニマップ](term:term-minimap).
+    notes: >-
+      Fonte ufficiale https://www.gundam-ab.com/guide/how_to_play.php,
+      sezione `プレイ画面`.
+  - id: mode-select-screen
+    src: assets/ui/mode-select-screen.webp
+    source_type: screenshot
+    width: 1040
+    height: 288
+    lesson_slug: modes-and-progression
+    anchor: "Le quattro modalita principali ufficiali da riconoscere sono [ランクマッチ](term:term-rank-match), [VEレイドバトル](term:term-ve-raid-battle), [チャレンジモード](term:term-challenge-mode) e [カジュアルマッチ](term:term-casual-match). Capire queste etichette ti evita di usare ogni sessione per lo scopo sbagliato."
+    alt_it: >-
+      Schermata ufficiale di selezione modalita con riquadri per Rank Match,
+      Challenge Mode e Casual Match, piu il pannello 対戦モード選択.
+    caption_it: >-
+      Schermata ufficiale di selezione modalita: riconosci
+      [ランクマッチ](term:term-rank-match),
+      [チャレンジモード](term:term-challenge-mode) e
+      [カジュアルマッチ](term:term-casual-match), piu il pannello
+      `{{対戦|たいせん}}モード{{選択|せんたく}}` che decide come cercare
+      l'avversario.
+    notes: >-
+      Fonte ufficiale https://www.gundam-ab.com/guide/game_mode.php,
+      sezione `カジュアルマッチ`.
+  - id: missions-progress-screen
+    src: assets/ui/missions-progress-screen.webp
+    source_type: screenshot
+    width: 1040
+    height: 625
+    lesson_slug: modes-and-progression
+    anchor: "[MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di controllare il progresso delle [ミッション](term:term-mission), i livelli di MS e PL, gli ultimi risultati di battaglia e alcuni dati cumulativi. Per lo studio della lingua questo e utile, perche ti fa rivedere con calma le categorie che in sala giochi scorrono troppo in fretta."
+    alt_it: >-
+      Schermata ufficiale delle missioni in MY PAGE con tab di categoria,
+      stato CLEAR e riquadri ricompensa visibili.
+    caption_it: >-
+      Schermata missioni di [MY PAGE](term:term-mypage): categorie, stato
+      `CLEAR!!` e riquadri premio ti fanno rileggere con calma
+      [ミッション](term:term-mission) e avanzamento del profilo fuori dalla sala
+      giochi.
+    notes: >-
+      Fonte ufficiale https://www.gundam-ab.com/guide/mypage.php,
+      sezione `ミッション`.

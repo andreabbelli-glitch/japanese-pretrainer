@@ -4,6 +4,7 @@ import type { DatabaseClient } from "../../../db/client.ts";
 import {
   card,
   cardEntryLink,
+  crossMediaGroup,
   entryLink,
   grammarAlias,
   grammarPattern,
@@ -55,7 +56,10 @@ export async function syncContentWorkspace(
   let filesChanged = 0;
 
   for (const plan of plans) {
-    const existingState = await loadExistingMediaState(transaction, plan.media.row.id);
+    const existingState = await loadExistingMediaState(
+      transaction,
+      plan.media.row.id
+    );
 
     filesChanged += countChangedSourceDocuments(plan, existingState);
 
@@ -79,12 +83,22 @@ export async function syncContentWorkspace(
     });
 
     filesChanged += removedMediaSummary.filesChanged;
-    summary.archivedCardIds.push(...removedMediaSummary.summary.archivedCardIds);
-    summary.archivedLessonIds.push(...removedMediaSummary.summary.archivedLessonIds);
-    summary.archivedMediaIds.push(...removedMediaSummary.summary.archivedMediaIds);
-    summary.prunedGrammarIds.push(...removedMediaSummary.summary.prunedGrammarIds);
+    summary.archivedCardIds.push(
+      ...removedMediaSummary.summary.archivedCardIds
+    );
+    summary.archivedLessonIds.push(
+      ...removedMediaSummary.summary.archivedLessonIds
+    );
+    summary.archivedMediaIds.push(
+      ...removedMediaSummary.summary.archivedMediaIds
+    );
+    summary.prunedGrammarIds.push(
+      ...removedMediaSummary.summary.prunedGrammarIds
+    );
     summary.prunedTermIds.push(...removedMediaSummary.summary.prunedTermIds);
   }
+
+  await pruneOrphanedCrossMediaGroups(transaction);
 
   return {
     filesChanged,
@@ -126,12 +140,15 @@ async function loadExistingMediaState(
       entryLinks: true
     }
   });
-  const sourceIds = [...lessonRows.map((row) => row.id), ...cardRows.map((row) => row.id)];
+  const sourceIds = [
+    ...lessonRows.map((row) => row.id),
+    ...cardRows.map((row) => row.id)
+  ];
   const entryLinksRows =
     sourceIds.length > 0
       ? await transaction.query.entryLink.findMany({
-        where: inArray(entryLink.sourceId, sourceIds)
-      })
+          where: inArray(entryLink.sourceId, sourceIds)
+        })
       : [];
 
   return {
@@ -141,7 +158,8 @@ async function loadExistingMediaState(
     lessonContents: lessonRows
       .map((row) => row.content)
       .filter(
-        (row): row is NonNullable<(typeof lessonRows)[number]["content"]> => row !== null
+        (row): row is NonNullable<(typeof lessonRows)[number]["content"]> =>
+          row !== null
       ),
     lessons: lessonRows.map((row) => {
       const { content, ...lessonRow } = row;
@@ -166,7 +184,9 @@ async function syncMediaPlan(
   const currentLessonIds = input.plan.lessons.map((plan) => plan.row.id);
   const currentCardIds = input.plan.cards.map((plan) => plan.row.id);
   const currentTermIds = input.plan.terms.map((plan) => plan.row.id);
-  const currentGrammarIds = input.plan.grammarPatterns.map((plan) => plan.row.id);
+  const currentGrammarIds = input.plan.grammarPatterns.map(
+    (plan) => plan.row.id
+  );
   const currentSegmentIds = input.plan.segments.map((row) => row.id);
 
   const preparedMediaRow = prepareTimestampedRow(
@@ -175,13 +195,24 @@ async function syncMediaPlan(
     mediaComparisonKeys
   );
 
-  await transaction
-    .insert(media)
-    .values(preparedMediaRow)
-    .onConflictDoUpdate({
-      target: media.id,
-      set: mediaUpsertSet
-    });
+  await transaction.insert(media).values(preparedMediaRow).onConflictDoUpdate({
+    target: media.id,
+    set: mediaUpsertSet
+  });
+
+  if (input.plan.crossMediaGroups.length > 0) {
+    await transaction
+      .insert(crossMediaGroup)
+      .values(
+        input.plan.crossMediaGroups.map((row) =>
+          prepareTimestampedRow(null, row, crossMediaGroupComparisonKeys)
+        )
+      )
+      .onConflictDoUpdate({
+        target: crossMediaGroup.id,
+        set: crossMediaGroupUpsertSet
+      });
+  }
 
   if (input.plan.segments.length > 0) {
     await transaction
@@ -207,19 +238,17 @@ async function syncMediaPlan(
   if (input.plan.lessons.length > 0) {
     const lessonRows = input.plan.lessons.map((plan) =>
       prepareTimestampedRow(
-        input.existingState.lessons.find((row) => row.id === plan.row.id) ?? null,
+        input.existingState.lessons.find((row) => row.id === plan.row.id) ??
+          null,
         plan.row,
         lessonComparisonKeys
       )
     );
 
-    await transaction
-      .insert(lesson)
-      .values(lessonRows)
-      .onConflictDoUpdate({
-        target: lesson.id,
-        set: lessonUpsertSet
-      });
+    await transaction.insert(lesson).values(lessonRows).onConflictDoUpdate({
+      target: lesson.id,
+      set: lessonUpsertSet
+    });
   }
 
   if (input.plan.lessonContents.length > 0) {
@@ -247,7 +276,8 @@ async function syncMediaPlan(
   if (currentLessonIds.length > 0) {
     const currentLessonEntryLinkIds = input.existingState.entryLinks
       .filter(
-        (row) => row.sourceType === "lesson" && currentLessonIds.includes(row.sourceId)
+        (row) =>
+          row.sourceType === "lesson" && currentLessonIds.includes(row.sourceId)
       )
       .map((row) => row.id);
 
@@ -260,7 +290,10 @@ async function syncMediaPlan(
 
   if (currentCardIds.length > 0) {
     const currentCardEntryLinkIds = input.existingState.entryLinks
-      .filter((row) => row.sourceType === "card" && currentCardIds.includes(row.sourceId))
+      .filter(
+        (row) =>
+          row.sourceType === "card" && currentCardIds.includes(row.sourceId)
+      )
       .map((row) => row.id);
 
     if (currentCardEntryLinkIds.length > 0) {
@@ -283,17 +316,16 @@ async function syncMediaPlan(
       )
     );
 
-    await transaction
-      .insert(term)
-      .values(termRows)
-      .onConflictDoUpdate({
-        target: term.id,
-        set: termUpsertSet
-      });
+    await transaction.insert(term).values(termRows).onConflictDoUpdate({
+      target: term.id,
+      set: termUpsertSet
+    });
   }
 
   if (currentTermIds.length > 0) {
-    await transaction.delete(termAlias).where(inArray(termAlias.termId, currentTermIds));
+    await transaction
+      .delete(termAlias)
+      .where(inArray(termAlias.termId, currentTermIds));
   }
 
   const termAliases = input.plan.terms.flatMap((plan) => plan.aliases);
@@ -305,8 +337,9 @@ async function syncMediaPlan(
   if (input.plan.grammarPatterns.length > 0) {
     const grammarRows = input.plan.grammarPatterns.map((plan) =>
       prepareTimestampedRow(
-        input.existingState.grammarPatterns.find((row) => row.id === plan.row.id) ??
-        null,
+        input.existingState.grammarPatterns.find(
+          (row) => row.id === plan.row.id
+        ) ?? null,
         plan.row,
         grammarComparisonKeys
       )
@@ -327,7 +360,9 @@ async function syncMediaPlan(
       .where(inArray(grammarAlias.grammarId, currentGrammarIds));
   }
 
-  const grammarAliases = input.plan.grammarPatterns.flatMap((plan) => plan.aliases);
+  const grammarAliases = input.plan.grammarPatterns.flatMap(
+    (plan) => plan.aliases
+  );
 
   if (grammarAliases.length > 0) {
     await transaction.insert(grammarAlias).values(grammarAliases);
@@ -342,13 +377,10 @@ async function syncMediaPlan(
       )
     );
 
-    await transaction
-      .insert(card)
-      .values(cardRows)
-      .onConflictDoUpdate({
-        target: card.id,
-        set: cardUpsertSet
-      });
+    await transaction.insert(card).values(cardRows).onConflictDoUpdate({
+      target: card.id,
+      set: cardUpsertSet
+    });
   }
 
   if (currentCardIds.length > 0) {
@@ -398,7 +430,8 @@ async function archiveRemovedLessons(
     })
   )
     .filter(
-      (row) => row.status !== "archived" && !input.currentLessonIds.includes(row.id)
+      (row) =>
+        row.status !== "archived" && !input.currentLessonIds.includes(row.id)
     )
     .map((row) => row.id);
 
@@ -431,7 +464,8 @@ async function archiveRemovedCards(
     })
   )
     .filter(
-      (row) => row.status !== "archived" && !input.currentCardIds.includes(row.id)
+      (row) =>
+        row.status !== "archived" && !input.currentCardIds.includes(row.id)
     )
     .map((row) => row.id);
 
@@ -516,7 +550,8 @@ async function archiveRemovedMedia(
   }
 ) {
   const removedMedia = (await transaction.query.media.findMany()).filter(
-    (row) => row.status !== "archived" && !input.currentMediaIds.includes(row.id)
+    (row) =>
+      row.status !== "archived" && !input.currentMediaIds.includes(row.id)
   );
 
   if (removedMedia.length === 0) {
@@ -542,9 +577,10 @@ async function archiveRemovedMedia(
   const removedTerms = await transaction.query.term.findMany({
     where: inArray(term.mediaId, removedMediaIds)
   });
-  const removedGrammarPatterns = await transaction.query.grammarPattern.findMany({
-    where: inArray(grammarPattern.mediaId, removedMediaIds)
-  });
+  const removedGrammarPatterns =
+    await transaction.query.grammarPattern.findMany({
+      where: inArray(grammarPattern.mediaId, removedMediaIds)
+    });
   const archivedLessonIds = removedLessons
     .filter((row) => row.status !== "archived")
     .map((row) => row.id);
@@ -580,18 +616,26 @@ async function archiveRemovedMedia(
       .where(inArray(card.id, archivedCardIds));
   }
 
-  await transaction.delete(segment).where(inArray(segment.mediaId, removedMediaIds));
+  await transaction
+    .delete(segment)
+    .where(inArray(segment.mediaId, removedMediaIds));
 
   if (removedTerms.length > 0) {
-    await transaction
-      .delete(term)
-      .where(inArray(term.id, removedTerms.map((row) => row.id)));
+    await transaction.delete(term).where(
+      inArray(
+        term.id,
+        removedTerms.map((row) => row.id)
+      )
+    );
   }
 
   if (removedGrammarPatterns.length > 0) {
-    await transaction
-      .delete(grammarPattern)
-      .where(inArray(grammarPattern.id, removedGrammarPatterns.map((row) => row.id)));
+    await transaction.delete(grammarPattern).where(
+      inArray(
+        grammarPattern.id,
+        removedGrammarPatterns.map((row) => row.id)
+      )
+    );
   }
 
   return {
@@ -617,71 +661,120 @@ async function archiveRemovedMedia(
   };
 }
 
+async function pruneOrphanedCrossMediaGroups(transaction: DatabaseTransaction) {
+  const termGroupRows = await transaction
+    .select({ id: term.crossMediaGroupId })
+    .from(term)
+    .where(sql`${term.crossMediaGroupId} is not null`);
+  const grammarGroupRows = await transaction
+    .select({ id: grammarPattern.crossMediaGroupId })
+    .from(grammarPattern)
+    .where(sql`${grammarPattern.crossMediaGroupId} is not null`);
+  const referencedIds = new Set(
+    [...termGroupRows, ...grammarGroupRows]
+      .map((row) => row.id)
+      .filter((value): value is string => typeof value === "string")
+  );
+  const existingRows = await transaction.query.crossMediaGroup.findMany();
+  const orphanIds = existingRows
+    .map((row) => row.id)
+    .filter((id) => !referencedIds.has(id));
+
+  if (orphanIds.length === 0) {
+    return;
+  }
+
+  await transaction
+    .delete(crossMediaGroup)
+    .where(inArray(crossMediaGroup.id, orphanIds));
+}
+
 function countChangedSourceDocuments(
   plan: MediaImportPlan,
   existingState: ExistingMediaState
 ) {
-  const existingLessonsById = new Map(existingState.lessons.map((row) => [row.id, row]));
+  const existingLessonsById = new Map(
+    existingState.lessons.map((row) => [row.id, row])
+  );
   const existingLessonContentById = new Map(
     existingState.lessonContents.map((row) => [row.lessonId, row])
   );
-  const existingTermsById = new Map(existingState.terms.map((row) => [row.id, row]));
+  const existingTermsById = new Map(
+    existingState.terms.map((row) => [row.id, row])
+  );
   const existingGrammarById = new Map(
     existingState.grammarPatterns.map((row) => [row.id, row])
   );
-  const existingCardsById = new Map(existingState.cards.map((row) => [row.id, row]));
-  const existingSegmentsById = new Map(existingState.segments.map((row) => [row.id, row]));
-  const currentSourceFiles = new Set(plan.sourceDocuments.map((document) => document.sourceFile));
+  const existingCardsById = new Map(
+    existingState.cards.map((row) => [row.id, row])
+  );
+  const existingSegmentsById = new Map(
+    existingState.segments.map((row) => [row.id, row])
+  );
+  const currentSourceFiles = new Set(
+    plan.sourceDocuments.map((document) => document.sourceFile)
+  );
   const changedDocuments = plan.sourceDocuments.filter((document) => {
     if (document.kind === "media") {
       return (
         !rowsMatch(existingState.media, plan.media.row, mediaComparisonKeys) ||
         plan.segments.some(
           (row) =>
-            !rowsMatch(existingSegmentsById.get(row.id) ?? null, row, segmentComparisonKeys)
+            !rowsMatch(
+              existingSegmentsById.get(row.id) ?? null,
+              row,
+              segmentComparisonKeys
+            )
         )
       );
     }
 
     if (document.kind === "lesson") {
       return (
-        document.entityIds.lessons.some((lessonId) =>
-          !rowsMatch(
-            existingLessonsById.get(lessonId) ?? null,
-            plan.lessons.find((row) => row.row.id === lessonId)?.row ?? null,
-            lessonComparisonKeys
-          )
+        document.entityIds.lessons.some(
+          (lessonId) =>
+            !rowsMatch(
+              existingLessonsById.get(lessonId) ?? null,
+              plan.lessons.find((row) => row.row.id === lessonId)?.row ?? null,
+              lessonComparisonKeys
+            )
         ) ||
-        document.entityIds.lessons.some((lessonId) =>
-          !rowsMatch(
-            existingLessonContentById.get(lessonId) ?? null,
-            plan.lessonContents.find((row) => row.row.lessonId === lessonId)?.row ?? null,
-            lessonContentComparisonKeys
-          )
+        document.entityIds.lessons.some(
+          (lessonId) =>
+            !rowsMatch(
+              existingLessonContentById.get(lessonId) ?? null,
+              plan.lessonContents.find((row) => row.row.lessonId === lessonId)
+                ?.row ?? null,
+              lessonContentComparisonKeys
+            )
         ) ||
-        document.entityIds.terms.some((termId) =>
-          !rowsMatch(
-            existingTermsById.get(termId) ?? null,
-            plan.terms.find((row) => row.row.id === termId)?.row ?? null,
-            termComparisonKeys
-          ) ||
-          !aliasSetsMatch(
-            existingTermsById.get(termId)?.aliases ?? [],
-            plan.terms.find((row) => row.row.id === termId)?.aliases ?? [],
-            termAliasComparisonKeys
-          )
+        document.entityIds.terms.some(
+          (termId) =>
+            !rowsMatch(
+              existingTermsById.get(termId) ?? null,
+              plan.terms.find((row) => row.row.id === termId)?.row ?? null,
+              termComparisonKeys
+            ) ||
+            !aliasSetsMatch(
+              existingTermsById.get(termId)?.aliases ?? [],
+              plan.terms.find((row) => row.row.id === termId)?.aliases ?? [],
+              termAliasComparisonKeys
+            )
         ) ||
-        document.entityIds.grammarPatterns.some((grammarId) =>
-          !rowsMatch(
-            existingGrammarById.get(grammarId) ?? null,
-            plan.grammarPatterns.find((row) => row.row.id === grammarId)?.row ?? null,
-            grammarComparisonKeys
-          ) ||
-          !aliasSetsMatch(
-            existingGrammarById.get(grammarId)?.aliases ?? [],
-            plan.grammarPatterns.find((row) => row.row.id === grammarId)?.aliases ?? [],
-            grammarAliasComparisonKeys
-          )
+        document.entityIds.grammarPatterns.some(
+          (grammarId) =>
+            !rowsMatch(
+              existingGrammarById.get(grammarId) ?? null,
+              plan.grammarPatterns.find((row) => row.row.id === grammarId)
+                ?.row ?? null,
+              grammarComparisonKeys
+            ) ||
+            !aliasSetsMatch(
+              existingGrammarById.get(grammarId)?.aliases ?? [],
+              plan.grammarPatterns.find((row) => row.row.id === grammarId)
+                ?.aliases ?? [],
+              grammarAliasComparisonKeys
+            )
         ) ||
         existingState.lessons.some(
           (row) =>
@@ -693,36 +786,41 @@ function countChangedSourceDocuments(
     }
 
     return (
-      document.entityIds.cards.some((cardId) =>
-        !rowsMatch(
-          existingCardsById.get(cardId) ?? null,
-          plan.cards.find((row) => row.row.id === cardId)?.row ?? null,
-          cardComparisonKeys
-        )
+      document.entityIds.cards.some(
+        (cardId) =>
+          !rowsMatch(
+            existingCardsById.get(cardId) ?? null,
+            plan.cards.find((row) => row.row.id === cardId)?.row ?? null,
+            cardComparisonKeys
+          )
       ) ||
-      document.entityIds.terms.some((termId) =>
-        !rowsMatch(
-          existingTermsById.get(termId) ?? null,
-          plan.terms.find((row) => row.row.id === termId)?.row ?? null,
-          termComparisonKeys
-        ) ||
-        !aliasSetsMatch(
-          existingTermsById.get(termId)?.aliases ?? [],
-          plan.terms.find((row) => row.row.id === termId)?.aliases ?? [],
-          termAliasComparisonKeys
-        )
+      document.entityIds.terms.some(
+        (termId) =>
+          !rowsMatch(
+            existingTermsById.get(termId) ?? null,
+            plan.terms.find((row) => row.row.id === termId)?.row ?? null,
+            termComparisonKeys
+          ) ||
+          !aliasSetsMatch(
+            existingTermsById.get(termId)?.aliases ?? [],
+            plan.terms.find((row) => row.row.id === termId)?.aliases ?? [],
+            termAliasComparisonKeys
+          )
       ) ||
-      document.entityIds.grammarPatterns.some((grammarId) =>
-        !rowsMatch(
-          existingGrammarById.get(grammarId) ?? null,
-          plan.grammarPatterns.find((row) => row.row.id === grammarId)?.row ?? null,
-          grammarComparisonKeys
-        ) ||
-        !aliasSetsMatch(
-          existingGrammarById.get(grammarId)?.aliases ?? [],
-          plan.grammarPatterns.find((row) => row.row.id === grammarId)?.aliases ?? [],
-          grammarAliasComparisonKeys
-        )
+      document.entityIds.grammarPatterns.some(
+        (grammarId) =>
+          !rowsMatch(
+            existingGrammarById.get(grammarId) ?? null,
+            plan.grammarPatterns.find((row) => row.row.id === grammarId)?.row ??
+              null,
+            grammarComparisonKeys
+          ) ||
+          !aliasSetsMatch(
+            existingGrammarById.get(grammarId)?.aliases ?? [],
+            plan.grammarPatterns.find((row) => row.row.id === grammarId)
+              ?.aliases ?? [],
+            grammarAliasComparisonKeys
+          )
       ) ||
       existingState.cards.some(
         (row) =>
@@ -734,23 +832,29 @@ function countChangedSourceDocuments(
   });
   const removedLessonFiles = new Set(
     existingState.lessons
-      .filter((row) => row.status !== "archived" && !currentSourceFiles.has(row.sourceFile))
+      .filter(
+        (row) =>
+          row.status !== "archived" && !currentSourceFiles.has(row.sourceFile)
+      )
       .map((row) => row.sourceFile)
   );
   const removedCardFiles = new Set(
     existingState.cards
-      .filter((row) => row.status !== "archived" && !currentSourceFiles.has(row.sourceFile))
+      .filter(
+        (row) =>
+          row.status !== "archived" && !currentSourceFiles.has(row.sourceFile)
+      )
       .map((row) => row.sourceFile)
   );
 
-  return changedDocuments.length + removedLessonFiles.size + removedCardFiles.size;
+  return (
+    changedDocuments.length + removedLessonFiles.size + removedCardFiles.size
+  );
 }
 
-function prepareTimestampedRow<T extends { createdAt: string; updatedAt: string }>(
-  existingRow: T | null,
-  nextRow: T,
-  comparisonKeys: string[]
-) {
+function prepareTimestampedRow<
+  T extends { createdAt: string; updatedAt: string }
+>(existingRow: T | null, nextRow: T, comparisonKeys: string[]) {
   if (!existingRow) {
     return nextRow;
   }
@@ -779,7 +883,10 @@ function prepareLessonContentRow<
     lastImportId: string;
   }
 >(existingRow: T | null, nextRow: T) {
-  if (!existingRow || !rowsMatch(existingRow, nextRow, lessonContentComparisonKeys)) {
+  if (
+    !existingRow ||
+    !rowsMatch(existingRow, nextRow, lessonContentComparisonKeys)
+  ) {
     return nextRow;
   }
 
@@ -802,7 +909,10 @@ function rowsMatch(
   }
 
   return comparisonKeys.every((key) => {
-    return serializeComparableValue(existingRow[key]) === serializeComparableValue(nextRow[key]);
+    return (
+      serializeComparableValue(existingRow[key]) ===
+      serializeComparableValue(nextRow[key])
+    );
   });
 }
 
@@ -895,6 +1005,7 @@ const lessonContentUpsertSet = {
 };
 
 const termUpsertSet = {
+  crossMediaGroupId: excluded("cross_media_group_id"),
   mediaId: excluded("media_id"),
   segmentId: excluded("segment_id"),
   lemma: excluded("lemma"),
@@ -912,6 +1023,7 @@ const termUpsertSet = {
 };
 
 const grammarUpsertSet = {
+  crossMediaGroupId: excluded("cross_media_group_id"),
   mediaId: excluded("media_id"),
   segmentId: excluded("segment_id"),
   pattern: excluded("pattern"),
@@ -936,6 +1048,12 @@ const cardUpsertSet = {
   notesIt: excluded("notes_it"),
   status: excluded("status"),
   orderIndex: excluded("order_index"),
+  updatedAt: excluded("updated_at")
+};
+
+const crossMediaGroupUpsertSet = {
+  entryType: excluded("entry_type"),
+  groupKey: excluded("group_key"),
   updatedAt: excluded("updated_at")
 };
 
@@ -984,6 +1102,8 @@ const lessonContentComparisonKeys = [
 
 const termComparisonKeys = [
   "id",
+  "sourceId",
+  "crossMediaGroupId",
   "mediaId",
   "segmentId",
   "lemma",
@@ -999,10 +1119,17 @@ const termComparisonKeys = [
   "searchRomajiNorm"
 ];
 
-const termAliasComparisonKeys = ["termId", "aliasText", "aliasNorm", "aliasType"];
+const termAliasComparisonKeys = [
+  "termId",
+  "aliasText",
+  "aliasNorm",
+  "aliasType"
+];
 
 const grammarComparisonKeys = [
   "id",
+  "sourceId",
+  "crossMediaGroupId",
   "mediaId",
   "segmentId",
   "pattern",
@@ -1030,3 +1157,5 @@ const cardComparisonKeys = [
   "status",
   "orderIndex"
 ];
+
+const crossMediaGroupComparisonKeys = ["id", "entryType", "groupKey"];

@@ -5,9 +5,11 @@ import { eq } from "drizzle-orm";
 import {
   db,
   getCardsByIds,
+  getGrammarCrossMediaSiblingCounts,
   getGrammarEntriesByIds,
   getLessonBySlug,
   getMediaBySlug,
+  getTermCrossMediaSiblingCounts,
   getTermEntriesByIds,
   lessonProgress,
   listEntryStudySignals,
@@ -69,6 +71,9 @@ export type TextbookLessonGroup = {
 
 export type TextbookEntryTooltip = {
   id: string;
+  crossMediaHint?: {
+    otherMediaCount: number;
+  };
   kind: "term" | "grammar";
   label: string;
   title?: string;
@@ -219,13 +224,16 @@ export async function getTextbookLessonData(
       summary: lesson.summary,
       excerpt: lesson.content?.excerpt ?? null,
       status: normalizeLessonStatus(lesson.progress?.status ?? null),
-      statusLabel: formatLessonProgressStatusLabel(lesson.progress?.status ?? null),
+      statusLabel: formatLessonProgressStatusLabel(
+        lesson.progress?.status ?? null
+      ),
       segmentTitle: lesson.segment?.title ?? "Percorso principale",
       ast: lessonAst,
       htmlRendered: lesson.content?.htmlRendered ?? ""
     },
     entries,
-    previousLesson: currentIndex > 0 ? indexModel.lessons[currentIndex - 1] : null,
+    previousLesson:
+      currentIndex > 0 ? indexModel.lessons[currentIndex - 1] : null,
     nextLesson:
       currentIndex >= 0 && currentIndex < indexModel.lessons.length - 1
         ? indexModel.lessons[currentIndex + 1]
@@ -262,7 +270,8 @@ export async function recordLessonOpened(
         existing.status === "not_started" || existing.startedAt === null
           ? nowIso
           : existing.startedAt,
-      completedAt: existing.status === "completed" ? existing.completedAt : null,
+      completedAt:
+        existing.status === "completed" ? existing.completedAt : null,
       lastOpenedAt: nowIso
     })
     .where(eq(lessonProgress.lessonId, lessonId));
@@ -370,6 +379,16 @@ async function loadLessonTooltipEntries(input: {
     ),
     getCardsByIds(input.database, input.imageCardIds)
   ]);
+  const [termCrossMediaCounts, grammarCrossMediaCounts] = await Promise.all([
+    getTermCrossMediaSiblingCounts(
+      input.database,
+      terms.map((entry) => entry.id)
+    ),
+    getGrammarCrossMediaSiblingCounts(
+      input.database,
+      grammar.map((entry) => entry.id)
+    )
+  ]);
   const termMap = new Map(terms.map((entry) => [entry.id, entry]));
   const grammarMap = new Map(grammar.map((entry) => [entry.id, entry]));
   const studySignalsByEntry = buildStudySignalMap(studySignals);
@@ -383,7 +402,12 @@ async function loadLessonTooltipEntries(input: {
       }
 
       return [
-        mapTermTooltipEntry(entry, studySignalsByEntry.get(`term:${entry.id}`) ?? [], input.mediaSlug)
+        mapTermTooltipEntry(
+          entry,
+          termCrossMediaCounts.get(entry.id) ?? 0,
+          studySignalsByEntry.get(`term:${entry.id}`) ?? [],
+          input.mediaSlug
+        )
       ];
     }
 
@@ -396,6 +420,7 @@ async function loadLessonTooltipEntries(input: {
     return [
       mapGrammarTooltipEntry(
         entry,
+        grammarCrossMediaCounts.get(entry.id) ?? 0,
         studySignalsByEntry.get(`grammar:${entry.id}`) ?? [],
         input.mediaSlug
       )
@@ -498,22 +523,35 @@ function groupLessons(
 function selectResumeLesson(lessons: TextbookLessonNavItem[]) {
   const inProgress = [...lessons]
     .filter((lesson) => lesson.status === "in_progress")
-    .sort((left, right) => compareIsoDates(right.lastOpenedAt, left.lastOpenedAt));
+    .sort((left, right) =>
+      compareIsoDates(right.lastOpenedAt, left.lastOpenedAt)
+    );
 
   if (inProgress[0]) {
     return inProgress[0];
   }
 
-  return lessons.find((lesson) => lesson.status !== "completed") ?? lessons[0] ?? null;
+  return (
+    lessons.find((lesson) => lesson.status !== "completed") ??
+    lessons[0] ??
+    null
+  );
 }
 
 function mapTermTooltipEntry(
   entry: TermGlossaryEntry,
+  crossMediaSiblingCount: number,
   studySignals: StudySignalRow[],
   mediaSlug: string
 ): TextbookEntryTooltip {
   return {
-    id: entry.id,
+    id: entry.sourceId,
+    crossMediaHint:
+      crossMediaSiblingCount > 0
+        ? {
+            otherMediaCount: crossMediaSiblingCount
+          }
+        : undefined,
     kind: "term",
     label: entry.lemma,
     reading: entry.reading,
@@ -523,19 +561,29 @@ function mapTermTooltipEntry(
     notes: entry.notesIt ?? undefined,
     pos: entry.pos ?? undefined,
     levelHint: entry.levelHint ?? undefined,
-    statusLabel: resolveEntryStudyStateLabel(entry.status?.status ?? null, studySignals),
+    statusLabel: resolveEntryStudyStateLabel(
+      entry.status?.status ?? null,
+      studySignals
+    ),
     segmentTitle: entry.segment?.title ?? undefined,
-    glossaryHref: mediaGlossaryEntryHref(mediaSlug, "term", entry.id)
+    glossaryHref: mediaGlossaryEntryHref(mediaSlug, "term", entry.sourceId)
   };
 }
 
 function mapGrammarTooltipEntry(
   entry: GrammarGlossaryEntry,
+  crossMediaSiblingCount: number,
   studySignals: StudySignalRow[],
   mediaSlug: string
 ): TextbookEntryTooltip {
   return {
-    id: entry.id,
+    id: entry.sourceId,
+    crossMediaHint:
+      crossMediaSiblingCount > 0
+        ? {
+            otherMediaCount: crossMediaSiblingCount
+          }
+        : undefined,
     kind: "grammar",
     label: entry.pattern,
     title: entry.title,
@@ -543,9 +591,12 @@ function mapGrammarTooltipEntry(
     meaning: entry.meaningIt,
     notes: entry.notesIt ?? undefined,
     levelHint: entry.levelHint ?? undefined,
-    statusLabel: resolveEntryStudyStateLabel(entry.status?.status ?? null, studySignals),
+    statusLabel: resolveEntryStudyStateLabel(
+      entry.status?.status ?? null,
+      studySignals
+    ),
     segmentTitle: entry.segment?.title ?? undefined,
-    glossaryHref: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.id)
+    glossaryHref: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.sourceId)
   };
 }
 

@@ -14,8 +14,14 @@ import {
   isWithinMediaAssetRoot,
   resolveMediaAssetAbsolutePath
 } from "../media-assets.ts";
-import type { ParsedDocumentDraft, RawStructuredBlock } from "./parser/internal.ts";
-import { parseInlineFragment, parseMarkdownDocument } from "./parser/markdown.ts";
+import type {
+  ParsedDocumentDraft,
+  RawStructuredBlock
+} from "./parser/internal.ts";
+import {
+  parseInlineFragment,
+  parseMarkdownDocument
+} from "./parser/markdown.ts";
 import { extractStructuredBlocks } from "./parser/structured-blocks.ts";
 import { createIssue, isStringArray, isUrlSafeSlug } from "./parser/utils.ts";
 import type {
@@ -96,11 +102,12 @@ export async function parseMediaDirectory(
   const textbookDirectory = path.join(mediaDirectory, "textbook");
   const cardsDirectory = path.join(mediaDirectory, "cards");
 
-  const [mediaFileExists, textbookInspection, cardsInspection] = await Promise.all([
-    fileExists(mediaFilePath),
-    inspectRequiredMarkdownDirectory(textbookDirectory, "textbook"),
-    inspectRequiredMarkdownDirectory(cardsDirectory, "cards")
-  ]);
+  const [mediaFileExists, textbookInspection, cardsInspection] =
+    await Promise.all([
+      fileExists(mediaFilePath),
+      inspectRequiredMarkdownDirectory(textbookDirectory, "textbook"),
+      inspectRequiredMarkdownDirectory(cardsDirectory, "cards")
+    ]);
 
   issues.push(...textbookInspection.issues, ...cardsInspection.issues);
 
@@ -131,16 +138,25 @@ export async function parseMediaDirectory(
   }
 
   const mediaState = parsedStates.find(
-    (state): state is ParsedDocumentState & { draft: ParsedDocumentDraft & { kind: "media" } } =>
-      state.draft.kind === "media"
+    (
+      state
+    ): state is ParsedDocumentState & {
+      draft: ParsedDocumentDraft & { kind: "media" };
+    } => state.draft.kind === "media"
   );
   const lessonStates = parsedStates.filter(
-    (state): state is ParsedDocumentState & { draft: ParsedDocumentDraft & { kind: "lesson" } } =>
-      state.draft.kind === "lesson"
+    (
+      state
+    ): state is ParsedDocumentState & {
+      draft: ParsedDocumentDraft & { kind: "lesson" };
+    } => state.draft.kind === "lesson"
   );
   const cardsStates = parsedStates.filter(
-    (state): state is ParsedDocumentState & { draft: ParsedDocumentDraft & { kind: "cards" } } =>
-      state.draft.kind === "cards"
+    (
+      state
+    ): state is ParsedDocumentState & {
+      draft: ParsedDocumentDraft & { kind: "cards" };
+    } => state.draft.kind === "cards"
   );
 
   const normalizedMedia = mediaState
@@ -165,7 +181,7 @@ export async function parseMediaDirectory(
     {
       media: mediaState ? [mediaState] : [],
       lessons: lessonStates,
-      cardFiles: cardsStates,
+      cardFiles: cardsStates
     },
     issues
   );
@@ -191,10 +207,14 @@ export async function parseMediaDirectory(
     media: normalizedMedia,
     lessons: lessonResults
       .map((result) => result.document)
-      .filter((document): document is NormalizedLessonDocument => document !== null),
+      .filter(
+        (document): document is NormalizedLessonDocument => document !== null
+      ),
     cardFiles: cardsResults
       .map((result) => result.document)
-      .filter((document): document is NormalizedCardsDocument => document !== null),
+      .filter(
+        (document): document is NormalizedCardsDocument => document !== null
+      ),
     terms: terms.map((record) => record.value),
     grammarPatterns: grammarPatterns.map((record) => record.value),
     cards: cards.map((record) => record.value),
@@ -338,35 +358,34 @@ async function parseDocumentFile(
   });
 
   return {
-    draft: kind === "media"
-      ? {
-        kind,
-        sourceFile: filePath,
-        folderSlug: path.basename(path.dirname(filePath)),
-        frontmatter: frontmatter.data,
-        body: markdown.document
-      }
-      : {
-        kind,
-        sourceFile: filePath,
-        frontmatter: frontmatter.data,
-        body: markdown.document
-      },
+    draft:
+      kind === "media"
+        ? {
+            kind,
+            sourceFile: filePath,
+            folderSlug: path.basename(path.dirname(filePath)),
+            frontmatter: frontmatter.data,
+            body: markdown.document
+          }
+        : {
+            kind,
+            sourceFile: filePath,
+            frontmatter: frontmatter.data,
+            body: markdown.document
+          },
     rawId,
     frontmatterFieldRanges: frontmatter.fieldRanges,
     frontmatterFieldStyles: frontmatter.fieldStyles,
     structuredBlocks: extraction.blocks,
     references: markdown.references,
-    issues: [
-      ...frontmatter.issues,
-      ...extraction.issues,
-      ...markdown.issues
-    ]
+    issues: [...frontmatter.issues, ...extraction.issues, ...markdown.issues]
   };
 }
 
 function normalizeMediaDocument(
-  state: ParsedDocumentState & { draft: ParsedDocumentDraft & { kind: "media" } },
+  state: ParsedDocumentState & {
+    draft: ParsedDocumentDraft & { kind: "media" };
+  },
   mediaSlug: string,
   issues: ValidationIssue[]
 ): NormalizedMediaDocument | null {
@@ -406,7 +425,9 @@ function normalizeMediaDocument(
 }
 
 async function normalizeLessonDocument(
-  state: ParsedDocumentState & { draft: ParsedDocumentDraft & { kind: "lesson" } },
+  state: ParsedDocumentState & {
+    draft: ParsedDocumentDraft & { kind: "lesson" };
+  },
   mediaDirectory: string,
   issues: ValidationIssue[],
   expectedMediaId?: string
@@ -424,7 +445,11 @@ async function normalizeLessonDocument(
     issues
   );
 
-  if (frontmatter && expectedMediaId && frontmatter.mediaId !== expectedMediaId) {
+  if (
+    frontmatter &&
+    expectedMediaId &&
+    frontmatter.mediaId !== expectedMediaId
+  ) {
     issues.push(
       createIssue({
         code: "frontmatter.media-id-mismatch",
@@ -459,20 +484,20 @@ async function normalizeLessonDocument(
   return {
     document: frontmatter
       ? {
-        kind: "lesson",
-        sourceFile: state.draft.sourceFile,
-        frontmatter,
-        body: resolved.body,
-        declaredTermIds: resolved.terms.map((record) => record.value.id),
-        declaredGrammarIds: resolved.grammarPatterns.map(
-          (record) => record.value.id
-        ),
-        referenceIds: dedupeStrings(
-          resolved.references.map(
-            (reference) => `${reference.referenceType}:${reference.targetId}`
+          kind: "lesson",
+          sourceFile: state.draft.sourceFile,
+          frontmatter,
+          body: resolved.body,
+          declaredTermIds: resolved.terms.map((record) => record.value.id),
+          declaredGrammarIds: resolved.grammarPatterns.map(
+            (record) => record.value.id
+          ),
+          referenceIds: dedupeStrings(
+            resolved.references.map(
+              (reference) => `${reference.referenceType}:${reference.targetId}`
+            )
           )
-        )
-      }
+        }
       : null,
     terms: resolved.terms,
     grammarPatterns: resolved.grammarPatterns,
@@ -481,7 +506,9 @@ async function normalizeLessonDocument(
 }
 
 async function normalizeCardsDocument(
-  state: ParsedDocumentState & { draft: ParsedDocumentDraft & { kind: "cards" } },
+  state: ParsedDocumentState & {
+    draft: ParsedDocumentDraft & { kind: "cards" };
+  },
   mediaDirectory: string,
   issues: ValidationIssue[],
   expectedMediaId?: string
@@ -500,7 +527,11 @@ async function normalizeCardsDocument(
     issues
   );
 
-  if (frontmatter && expectedMediaId && frontmatter.mediaId !== expectedMediaId) {
+  if (
+    frontmatter &&
+    expectedMediaId &&
+    frontmatter.mediaId !== expectedMediaId
+  ) {
     issues.push(
       createIssue({
         code: "frontmatter.media-id-mismatch",
@@ -542,7 +573,8 @@ async function normalizeCardsDocument(
         createIssue({
           code: "cards.free-text-not-allowed",
           category: "schema",
-          message: "Cards files may only contain structured term, grammar, or card blocks.",
+          message:
+            "Cards files may only contain structured term, grammar, or card blocks.",
           filePath: state.draft.sourceFile,
           path: `body.blocks[${index}]`,
           range: block.position,
@@ -567,21 +599,21 @@ async function normalizeCardsDocument(
   return {
     document: frontmatter
       ? {
-        kind: "cards",
-        sourceFile: state.draft.sourceFile,
-        frontmatter,
-        body: resolved.body,
-        declaredTermIds: resolved.terms.map((record) => record.value.id),
-        declaredGrammarIds: resolved.grammarPatterns.map(
-          (record) => record.value.id
-        ),
-        declaredCardIds: resolved.cards.map((record) => record.value.id),
-        referenceIds: dedupeStrings(
-          resolved.references.map(
-            (reference) => `${reference.referenceType}:${reference.targetId}`
+          kind: "cards",
+          sourceFile: state.draft.sourceFile,
+          frontmatter,
+          body: resolved.body,
+          declaredTermIds: resolved.terms.map((record) => record.value.id),
+          declaredGrammarIds: resolved.grammarPatterns.map(
+            (record) => record.value.id
+          ),
+          declaredCardIds: resolved.cards.map((record) => record.value.id),
+          referenceIds: dedupeStrings(
+            resolved.references.map(
+              (reference) => `${reference.referenceType}:${reference.targetId}`
+            )
           )
-        )
-      }
+        }
       : null,
     terms: resolved.terms,
     grammarPatterns: resolved.grammarPatterns,
@@ -591,7 +623,9 @@ async function normalizeCardsDocument(
 }
 
 function resolveMediaBody(
-  state: ParsedDocumentState & { draft: ParsedDocumentDraft & { kind: "media" } },
+  state: ParsedDocumentState & {
+    draft: ParsedDocumentDraft & { kind: "media" };
+  },
   issues: ValidationIssue[]
 ): MarkdownDocument {
   const blocks: ContentBlock[] = [];
@@ -656,7 +690,8 @@ async function resolveStructuredBody(
         createIssue({
           code: "structured-block.missing",
           category: "integrity",
-          message: "Structured block could not be resolved from the markdown body.",
+          message:
+            "Structured block could not be resolved from the markdown body.",
           filePath: state.draft.sourceFile,
           path: sourcePath
         })
@@ -679,7 +714,12 @@ async function resolveStructuredBody(
     }
 
     if (rawBlock.blockType === "term") {
-      const term = normalizeTermBlock(rawBlock, sourceContext, sourcePath, issues);
+      const term = normalizeTermBlock(
+        rawBlock,
+        sourceContext,
+        sourcePath,
+        issues
+      );
 
       if (term) {
         const node: TermDefinitionBlock = {
@@ -720,7 +760,12 @@ async function resolveStructuredBody(
     }
 
     if (rawBlock.blockType === "card") {
-      const card = normalizeCardBlock(rawBlock, sourceContext, sourcePath, issues);
+      const card = normalizeCardBlock(
+        rawBlock,
+        sourceContext,
+        sourcePath,
+        issues
+      );
 
       if (card) {
         const node: CardDefinitionBlock = {
@@ -871,7 +916,8 @@ function normalizeMediaFrontmatter(
     scope,
     issues
   );
-  const tags = readOptionalStringArray(raw, "tags", filePath, scope, issues) ?? [];
+  const tags =
+    readOptionalStringArray(raw, "tags", filePath, scope, issues) ?? [];
   const coverImage = readOptionalString(
     raw,
     "cover_image",
@@ -998,11 +1044,13 @@ function normalizeLessonFrontmatter(
     scope,
     issues
   );
-  const tags = readOptionalStringArray(raw, "tags", filePath, scope, issues) ?? [];
+  const tags =
+    readOptionalStringArray(raw, "tags", filePath, scope, issues) ?? [];
   const status = readOptionalString(raw, "status", filePath, scope, issues);
   const summary = readOptionalString(raw, "summary", filePath, scope, issues);
   const prerequisites =
-    readOptionalStringArray(raw, "prerequisites", filePath, scope, issues) ?? [];
+    readOptionalStringArray(raw, "prerequisites", filePath, scope, issues) ??
+    [];
 
   if (slug && !isUrlSafeSlug(slug)) {
     issues.push(
@@ -1122,6 +1170,7 @@ function normalizeTermBlock(
     rawBlock.data,
     [
       "id",
+      "cross_media_group",
       "lemma",
       "reading",
       "romaji",
@@ -1151,6 +1200,14 @@ function normalizeTermBlock(
   const id = readRequiredString(
     rawBlock.data,
     "id",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  const crossMediaGroup = readOptionalString(
+    rawBlock.data,
+    "cross_media_group",
     sourceContext.filePath,
     sourcePath,
     issues,
@@ -1238,6 +1295,21 @@ function normalizeTermBlock(
     rawBlock.position
   );
 
+  if (crossMediaGroup && !isUrlSafeSlug(crossMediaGroup)) {
+    issues.push(
+      createIssue({
+        code: "structured-block.invalid-cross-media-group",
+        category: "schema",
+        message:
+          "Field 'cross_media_group' must use a URL-safe slug-like identifier.",
+        filePath: sourceContext.filePath,
+        path: `${sourcePath}.cross_media_group`,
+        range: rawBlock.fieldRanges?.cross_media_group ?? rawBlock.position,
+        hint: "Use lowercase ASCII with numbers and hyphens, for example 'shared-cost-ui'."
+      })
+    );
+  }
+
   if (!id || !lemma || !reading || !romaji || !meaningIt) {
     return null;
   }
@@ -1245,14 +1317,14 @@ function normalizeTermBlock(
   const notesRange = rawBlock.fieldRanges?.notes_it ?? rawBlock.position;
   const notesFragment = notesIt
     ? parseInlineFragment({
-      source: notesIt,
-      filePath: sourceContext.filePath,
-      documentKind: sourceContext.documentKind,
-      documentId: sourceContext.documentId,
-      sourcePath: `${sourcePath}.notes_it`,
-      fragmentOrigin: notesRange?.start,
-      fallbackRange: notesRange
-    })
+        source: notesIt,
+        filePath: sourceContext.filePath,
+        documentKind: sourceContext.documentKind,
+        documentId: sourceContext.documentId,
+        sourcePath: `${sourcePath}.notes_it`,
+        fragmentOrigin: notesRange?.start,
+        fallbackRange: notesRange
+      })
     : null;
 
   issues.push(...(notesFragment?.issues ?? []));
@@ -1261,6 +1333,7 @@ function normalizeTermBlock(
     value: {
       kind: "term",
       id,
+      crossMediaGroup: crossMediaGroup ?? undefined,
       lemma,
       reading,
       romaji,
@@ -1300,6 +1373,7 @@ function normalizeGrammarBlock(
     rawBlock.data,
     [
       "id",
+      "cross_media_group",
       "pattern",
       "title",
       "reading",
@@ -1327,6 +1401,14 @@ function normalizeGrammarBlock(
   const id = readRequiredString(
     rawBlock.data,
     "id",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  const crossMediaGroup = readOptionalString(
+    rawBlock.data,
+    "cross_media_group",
     sourceContext.filePath,
     sourcePath,
     issues,
@@ -1398,6 +1480,21 @@ function normalizeGrammarBlock(
     rawBlock.position
   );
 
+  if (crossMediaGroup && !isUrlSafeSlug(crossMediaGroup)) {
+    issues.push(
+      createIssue({
+        code: "structured-block.invalid-cross-media-group",
+        category: "schema",
+        message:
+          "Field 'cross_media_group' must use a URL-safe slug-like identifier.",
+        filePath: sourceContext.filePath,
+        path: `${sourcePath}.cross_media_group`,
+        range: rawBlock.fieldRanges?.cross_media_group ?? rawBlock.position,
+        hint: "Use lowercase ASCII with numbers and hyphens, for example 'shared-cost-ui'."
+      })
+    );
+  }
+
   if (!id || !pattern || !title || !meaningIt) {
     return null;
   }
@@ -1405,14 +1502,14 @@ function normalizeGrammarBlock(
   const notesRange = rawBlock.fieldRanges?.notes_it ?? rawBlock.position;
   const notesFragment = notesIt
     ? parseInlineFragment({
-      source: notesIt,
-      filePath: sourceContext.filePath,
-      documentKind: sourceContext.documentKind,
-      documentId: sourceContext.documentId,
-      sourcePath: `${sourcePath}.notes_it`,
-      fragmentOrigin: notesRange?.start,
-      fallbackRange: notesRange
-    })
+        source: notesIt,
+        filePath: sourceContext.filePath,
+        documentKind: sourceContext.documentKind,
+        documentId: sourceContext.documentId,
+        sourcePath: `${sourcePath}.notes_it`,
+        fragmentOrigin: notesRange?.start,
+        fallbackRange: notesRange
+      })
     : null;
 
   issues.push(...(notesFragment?.issues ?? []));
@@ -1421,6 +1518,7 @@ function normalizeGrammarBlock(
     value: {
       kind: "grammar",
       id,
+      crossMediaGroup: crossMediaGroup ?? undefined,
       pattern,
       title,
       reading: reading ?? undefined,
@@ -1575,13 +1673,15 @@ function normalizeCardBlock(
         filePath: sourceContext.filePath,
         path: sourcePath,
         range: rawBlock.position,
-        hint:
-          "Either omit the example entirely or provide both the Japanese sentence and the Italian translation."
+        hint: "Either omit the example entirely or provide both the Japanese sentence and the Italian translation."
       })
     );
   }
 
-  if (entryType && !entryTypeValues.includes(entryType as (typeof entryTypeValues)[number])) {
+  if (
+    entryType &&
+    !entryTypeValues.includes(entryType as (typeof entryTypeValues)[number])
+  ) {
     issues.push(
       createIssue({
         code: "structured-block.invalid-entry-type",
@@ -1624,14 +1724,14 @@ function normalizeCardBlock(
   });
   const notesFragment = notesIt
     ? parseInlineFragment({
-      source: notesIt,
-      filePath: sourceContext.filePath,
-      documentKind: sourceContext.documentKind,
-      documentId: sourceContext.documentId,
-      sourcePath: `${sourcePath}.notes_it`,
-      fragmentOrigin: notesRange?.start,
-      fallbackRange: notesRange
-    })
+        source: notesIt,
+        filePath: sourceContext.filePath,
+        documentKind: sourceContext.documentKind,
+        documentId: sourceContext.documentId,
+        sourcePath: `${sourcePath}.notes_it`,
+        fragmentOrigin: notesRange?.start,
+        fallbackRange: notesRange
+      })
     : null;
   const exampleJpFragment =
     exampleJp && exampleIt
@@ -1750,7 +1850,8 @@ function normalizeExampleSentenceBlock(
   }
 
   const sentenceRange = rawBlock.fieldRanges?.jp ?? rawBlock.position;
-  const translationRange = rawBlock.fieldRanges?.translation_it ?? rawBlock.position;
+  const translationRange =
+    rawBlock.fieldRanges?.translation_it ?? rawBlock.position;
   const sentenceFragment = parseInlineFragment({
     source: sentence,
     filePath: sourceContext.filePath,
@@ -1918,8 +2019,7 @@ async function normalizeImageBlock(
         filePath: sourceContext.filePath,
         path: `${sourcePath}.src`,
         range: rawBlock.fieldRanges?.src ?? rawBlock.position,
-        hint:
-          "Add the file under content/media/<slug>/assets/ or fix the src path."
+        hint: "Add the file under content/media/<slug>/assets/ or fix the src path."
       })
     );
     return null;
@@ -1962,7 +2062,10 @@ function validateDuplicateIds(
   },
   issues: ValidationIssue[]
 ) {
-  const registry = new Map<string, Array<{ filePath: string; path: string; range?: SourceRange }>>();
+  const registry = new Map<
+    string,
+    Array<{ filePath: string; path: string; range?: SourceRange }>
+  >();
 
   const register = (
     namespace: string,
@@ -2012,7 +2115,12 @@ function validateDuplicateIds(
   }
 
   for (const state of input.cardFiles) {
-    register("cards-file", state.rawId, state.draft.sourceFile, "frontmatter.id");
+    register(
+      "cards-file",
+      state.rawId,
+      state.draft.sourceFile,
+      "frontmatter.id"
+    );
 
     for (const block of state.structuredBlocks) {
       if (block.blockType === "term") {
@@ -2130,7 +2238,12 @@ function validateWorkspaceDuplicateIds(
         lesson.sourceFile,
         "frontmatter.id"
       );
-      registerDefinitionIds(bundle.mediaDirectory, lesson.sourceFile, lesson.body.blocks, registry);
+      registerDefinitionIds(
+        bundle.mediaDirectory,
+        lesson.sourceFile,
+        lesson.body.blocks,
+        registry
+      );
     }
 
     for (const cardsFile of bundle.cardFiles) {
@@ -2166,6 +2279,11 @@ function validateWorkspaceDuplicateIds(
     const separatorIndex = key.indexOf(":");
     const namespace = key.slice(0, separatorIndex);
     const id = key.slice(separatorIndex + 1);
+
+    if (namespace === "term" || namespace === "grammar") {
+      continue;
+    }
+
     const first = occurrences[0];
 
     issues.push(
@@ -2185,6 +2303,181 @@ function validateWorkspaceDuplicateIds(
         }
       })
     );
+  }
+
+  validateCrossMediaGroupUsage(bundles, issues);
+}
+
+function validateCrossMediaGroupUsage(
+  bundles: NormalizedMediaBundle[],
+  issues: ValidationIssue[]
+) {
+  const registry = new Map<
+    string,
+    Array<{
+      entryId: string;
+      filePath: string;
+      mediaId: string | undefined;
+      mediaSlug: string;
+      path: string;
+      range?: SourceRange;
+    }>
+  >();
+
+  const register = (input: {
+    entryId: string;
+    entryType: "term" | "grammar";
+    filePath: string;
+    groupKey?: string;
+    mediaId: string | undefined;
+    mediaSlug: string;
+    path: string;
+    range?: SourceRange;
+  }) => {
+    if (!input.groupKey) {
+      return;
+    }
+
+    const key = `${input.entryType}:${input.groupKey}`;
+    const occurrences = registry.get(key) ?? [];
+    occurrences.push({
+      entryId: input.entryId,
+      filePath: input.filePath,
+      mediaId: input.mediaId,
+      mediaSlug: input.mediaSlug,
+      path: input.path,
+      range: input.range
+    });
+    registry.set(key, occurrences);
+  };
+
+  for (const bundle of bundles) {
+    const mediaId = bundle.media?.frontmatter.id;
+
+    for (const lesson of bundle.lessons) {
+      for (const [index, block] of lesson.body.blocks.entries()) {
+        if (block.type === "termDefinition") {
+          register({
+            entryId: block.entry.id,
+            entryType: "term",
+            filePath: lesson.sourceFile,
+            groupKey: block.entry.crossMediaGroup,
+            mediaId,
+            mediaSlug: bundle.mediaSlug,
+            path: `body.blocks[${index}].entry.cross_media_group`,
+            range: block.position
+          });
+        }
+
+        if (block.type === "grammarDefinition") {
+          register({
+            entryId: block.entry.id,
+            entryType: "grammar",
+            filePath: lesson.sourceFile,
+            groupKey: block.entry.crossMediaGroup,
+            mediaId,
+            mediaSlug: bundle.mediaSlug,
+            path: `body.blocks[${index}].entry.cross_media_group`,
+            range: block.position
+          });
+        }
+      }
+    }
+
+    for (const cardsFile of bundle.cardFiles) {
+      for (const [index, block] of cardsFile.body.blocks.entries()) {
+        if (block.type === "termDefinition") {
+          register({
+            entryId: block.entry.id,
+            entryType: "term",
+            filePath: cardsFile.sourceFile,
+            groupKey: block.entry.crossMediaGroup,
+            mediaId,
+            mediaSlug: bundle.mediaSlug,
+            path: `body.blocks[${index}].entry.cross_media_group`,
+            range: block.position
+          });
+        }
+
+        if (block.type === "grammarDefinition") {
+          register({
+            entryId: block.entry.id,
+            entryType: "grammar",
+            filePath: cardsFile.sourceFile,
+            groupKey: block.entry.crossMediaGroup,
+            mediaId,
+            mediaSlug: bundle.mediaSlug,
+            path: `body.blocks[${index}].entry.cross_media_group`,
+            range: block.position
+          });
+        }
+      }
+    }
+  }
+
+  const groupKeyTypes = new Map<string, Set<"term" | "grammar">>();
+
+  for (const key of registry.keys()) {
+    const separatorIndex = key.indexOf(":");
+    const entryType = key.slice(0, separatorIndex) as "term" | "grammar";
+    const groupKey = key.slice(separatorIndex + 1);
+    const types = groupKeyTypes.get(groupKey) ?? new Set<"term" | "grammar">();
+
+    types.add(entryType);
+    groupKeyTypes.set(groupKey, types);
+  }
+
+  for (const [groupKey, entryTypes] of groupKeyTypes.entries()) {
+    if (entryTypes.size < 2) {
+      continue;
+    }
+
+    const firstType = [...entryTypes][0];
+    const firstOccurrence = registry.get(`${firstType}:${groupKey}`)?.[0];
+
+    issues.push(
+      createIssue({
+        code: "cross-media-group.entry-type-mismatch",
+        category: "integrity",
+        message: `Cross-media group '${groupKey}' cannot mix term and grammar entries.`,
+        filePath: firstOccurrence?.filePath ?? "",
+        path: firstOccurrence?.path,
+        range: firstOccurrence?.range,
+        hint: "Reuse the same cross_media_group only for the same entry kind across different media."
+      })
+    );
+  }
+
+  for (const [key, occurrences] of registry.entries()) {
+    const [entryType, groupKey] = key.split(":");
+    const mediaKeys = new Map<string, (typeof occurrences)[number][]>();
+
+    for (const occurrence of occurrences) {
+      const mediaKey = occurrence.mediaId ?? occurrence.mediaSlug;
+      const rows = mediaKeys.get(mediaKey) ?? [];
+      rows.push(occurrence);
+      mediaKeys.set(mediaKey, rows);
+    }
+
+    for (const mediaOccurrences of mediaKeys.values()) {
+      if (mediaOccurrences.length < 2) {
+        continue;
+      }
+
+      const first = mediaOccurrences[0];
+
+      issues.push(
+        createIssue({
+          code: "cross-media-group.duplicate-media-entry",
+          category: "integrity",
+          message: `Cross-media group '${groupKey}' has multiple ${entryType} entries in the same media.`,
+          filePath: first?.filePath ?? "",
+          path: first?.path,
+          range: first?.range,
+          hint: "Keep at most one local entry per media inside the same cross-media group."
+        })
+      );
+    }
   }
 }
 
@@ -2302,7 +2595,9 @@ function reportUnsafeYamlPlainScalars(
   for (const key of keys) {
     const value = raw[key];
     const reason =
-      typeof value === "string" ? getUnsafeYamlPlainScalarReason(key, value) : null;
+      typeof value === "string"
+        ? getUnsafeYamlPlainScalarReason(key, value)
+        : null;
 
     if (
       typeof value !== "string" ||
@@ -2675,7 +2970,9 @@ async function fileExists(targetPath: string) {
 }
 
 function asString(value: unknown) {
-  return typeof value === "string" && value.trim().length > 0 ? value : undefined;
+  return typeof value === "string" && value.trim().length > 0
+    ? value
+    : undefined;
 }
 
 function dedupeStrings(values: string[]) {
@@ -2689,7 +2986,8 @@ function sortIssues(issues: ValidationIssue[]) {
     }
 
     const leftLine = left.location.range?.start.line ?? Number.MAX_SAFE_INTEGER;
-    const rightLine = right.location.range?.start.line ?? Number.MAX_SAFE_INTEGER;
+    const rightLine =
+      right.location.range?.start.line ?? Number.MAX_SAFE_INTEGER;
 
     if (leftLine !== rightLine) {
       return leftLine - rightLine;

@@ -119,6 +119,7 @@ level_hint: custom
 
 :::term
 id: term-deck
+cross_media_group: term-shared-deck-loadout
 lemma: デッキ
 reading: でっき
 romaji: dekki
@@ -276,12 +277,15 @@ level_hint: custom
 
 :::term
 id: term-cost
+cross_media_group: term-shared-cost-resource
 lemma: コスト
 reading: こすと
 romaji: kosuto
 meaning_it: risorsa da spendere per le azioni
 notes_it: >-
-  Cresce nel tempo e viene consumata da uscite, abilita e alcuni cambi tattici. Capire il costo ti fa capire non solo cosa puoi fare, ma quando puoi farlo.
+  Qui non e il costo stampato di una carta: cresce nel tempo e viene consumato
+  da uscite, abilita e alcuni cambi tattici. Capire il costo ti fa capire non
+  solo cosa puoi fare, ma quando puoi farlo.
 level_hint: custom
 :::
 
@@ -367,6 +371,7 @@ level_hint: custom
 
 :::term
 id: term-rank-match
+cross_media_group: term-shared-ranked-match
 lemma: ランクマッチ
 reading: らんくまっち
 romaji: ranku macchi
@@ -423,12 +428,15 @@ level_hint: custom
 
 :::term
 id: term-mission
+cross_media_group: term-shared-mission-progression
 lemma: ミッション
 reading: みっしょん
 romaji: misshon
 meaning_it: obiettivo di avanzamento
 notes_it: >-
-  Le missioni ti dicono quali azioni o risultati stanno facendo progredire il profilo o l'evento. My Page ti permette di controllarne l'avanzamento.
+  Qui non indica una missione narrativa: sono obiettivi che fanno progredire il
+  profilo o l'evento. My Page ti permette di controllarne l'avanzamento con
+  calma fuori dalla partita.
 level_hint: custom
 :::
 
@@ -504,6 +512,11 @@ front: >-
   アミューズメントICカード
 back: >-
   tessera IC usata per salvare i dati
+example_jp: >-
+  プレイ{{前|まえ}}にアミューズメントICカードをカードリーダーへタッチすると、{{前回|ぜんかい}}のデータを{{呼|よ}}び{{出|だ}}せます。
+example_it: >-
+  Se tocchi la carta IC sul lettore prima di giocare, puoi richiamare i dati
+  della sessione precedente.
 notes_it: >-
   Nel flusso arcade non e una carta del deck: e la tessera che identifica il profilo al cabinato e permette di caricare o salvare i dati di gioco.
 tags: [term, onboarding]
@@ -518,6 +531,11 @@ front: >-
   カードスロット
 back: >-
   alloggiamento delle carte da gioco
+example_jp: >-
+  {{上段|じょうだん}}のカードスロットにMSカード、{{下段|げだん}}にPLカードを{{差|さ}}し{{込|こ}}みます。
+example_it: >-
+  Inserisci le carte MS nello slot superiore e le carte PL in quello
+  inferiore.
 notes_it: >-
   Qui inserisci le carte del deck. La configurazione base usa 5 MS in alto e 5 PL in basso; ogni coppia verticale diventa una unita. Ufficialmente il gioco puo partire anche senza carte.
 tags: [term, onboarding]
@@ -532,6 +550,11 @@ front: >-
   MSカード
 back: >-
   carta Mobile Suit
+example_jp: >-
+  このMSカードは{{近距離|きんきょり}}{{戦闘|せんとう}}が{{強|つよ}}いので、{{前線|ぜんせん}}に{{出|だ}}す{{役|やく}}に{{向|む}}いています。
+example_it: >-
+  Questa MS card e forte nel combattimento a distanza ravvicinata, quindi si
+  presta a essere mandata in prima linea.
 notes_it: >-
   Determina le prestazioni dell'unita e contiene l'abilita del MS e la sua tecnica speciale. Da sola, pero, non decide il comportamento tattico del pezzo.
 tags: [term, onboarding]
@@ -546,6 +569,10 @@ front: >-
   PLカード
 back: >-
   carta pilota
+example_jp: >-
+  PLカードを{{変|か}}えるだけで、{{同|おな}}じMSでも{{役割|やくわり}}が{{大|おお}}きく{{変|か}}わります。
+example_it: >-
+  Basta cambiare la PL card per modificare molto il ruolo della stessa MS.
 notes_it: >-
   Determina il comportamento dell'unita e il suo ruolo base. In Arsenal Base il pilota non e un accessorio: definisce come quella unita si comporta sul campo.
 tags: [term, onboarding]
@@ -560,6 +587,11 @@ front: >-
   ユニット
 back: >-
   unita composta da MS e PL
+example_jp: >-
+  MSとPLを{{縦|たて}}に{{組|く}}み{{合|あ}}わせたユニットごとに、{{出撃|しゅつげき}}{{先|さき}}を{{考|かんが}}えます。
+example_it: >-
+  Decidi dove mandare ogni unita considerando ogni coppia verticale formata da
+  MS e PL.
 notes_it: >-
   Nel lessico del gioco una unita nasce dalla coppia MS + PL. Quando leggi un pannello unita, stai leggendo il risultato della combinazione delle due carte.
 tags: [term, onboarding]
@@ -574,6 +606,11 @@ front: >-
   MY PAGE
 back: >-
   servizio web dei dati giocatore
+example_jp: >-
+  {{帰宅後|きたくご}}にMY PAGEを{{開|ひら}}くと、{{今日|きょう}}のミッション{{進行|しんこう}}と{{戦績|せんせき}}をまとめて{{確認|かくにん}}できます。
+example_it: >-
+  Se apri MY PAGE una volta tornato a casa, puoi controllare insieme i
+  progressi missione e i risultati di oggi.
 notes_it: >-
   Dopo aver collegato la tessera salvata e il Bandai Namco ID, qui controlli profilo, missioni, livelli, ultimi risultati e ranking. Non sostituisce la tessera fisica.
 tags: [term, onboarding]
@@ -588,6 +625,11 @@ front: >-
   {{指揮官|しきかん}}レベル
 back: >-
   livello del profilo comandante
+example_jp: >-
+  {{指揮官|しきかん}}レベルが5に{{上|あ}}がると、{{作戦|さくせん}}カードの{{装備|そうび}}が{{解放|かいほう}}されます。
+example_it: >-
+  Quando il livello comandante arriva a 5, si sblocca l'equipaggiamento delle
+  carte tattiche.
 notes_it: >-
   Misura l'avanzamento generale del profilo e sblocca funzioni nuove. La soglia da ricordare subito e il livello 5 per le carte tattiche.
 tags: [term, onboarding]
@@ -602,6 +644,11 @@ front: >-
   {{作戦|さくせん}}カード
 back: >-
   carta digitale di effetto tattico
+example_jp: >-
+  {{開幕|かいまく}}で{{守|まも}}りを{{固|かた}}めたいので、{{メイン枠|めいんわく}}には{{防御|ぼうぎょ}}よりの{{作戦|さくせん}}カードを{{入|い}}れました。
+example_it: >-
+  Siccome voglio rinforzare la difesa all'inizio, ho messo nello slot principale
+  una carta tattica orientata alla protezione.
 notes_it: >-
   Non occupa gli slot MS o PL: e una carta digitale da usare una volta per battaglia per alterare il flusso dello scontro.
 tags: [term, onboarding]
@@ -616,6 +663,11 @@ front: >-
   {{自軍|じぐん}}{{戦力|せんりょく}}ゲージ
 back: >-
   barra della resistenza complessiva alleata
+example_jp: >-
+  {{自軍|じぐん}}{{戦力|せんりょく}}ゲージが{{残|のこ}}り{{少|すく}}ないなら、{{無理|むり}}に{{攻|せ}}めず{{戦艦|せんかん}}の{{防衛|ぼうえい}}を{{優先|ゆうせん}}します。
+example_it: >-
+  Se la gauge alleata e quasi finita, conviene dare priorita alla difesa della
+  nave invece di forzare l'attacco.
 notes_it: >-
   Riassume la resistenza residua di basi e nave alleate. Non e un semplice HP personale di un'unita: ti dice quanto sei vicino alla sconfitta.
 tags: [term, battle]
@@ -630,6 +682,11 @@ front: >-
   {{敵軍|てきぐん}}{{戦力|せんりょく}}ゲージ
 back: >-
   barra della resistenza complessiva nemica
+example_jp: >-
+  {{敵軍|てきぐん}}{{戦力|せんりょく}}ゲージがわずかなら、{{制圧|せいあつ}}を{{通|とお}}して{{戦艦|せんかん}}を{{狙|ねら}}う{{判断|はんだん}}になります。
+example_it: >-
+  Se la gauge nemica e quasi finita, la decisione giusta e far passare una
+  unita di pressione e puntare alla nave.
 notes_it: >-
   Ti dice quanto danno complessivo manca per chiudere la partita. Se la nave nemica cade, la battaglia finisce subito a tuo favore.
 tags: [term, battle]
@@ -644,6 +701,11 @@ front: >-
   {{出撃|しゅつげき}}
 back: >-
   far entrare una unita in campo
+example_jp: >-
+  コストが{{足|た}}りたら、{{右|みぎ}}レーンへ{{制圧|せいあつ}}ユニットを{{出撃|しゅつげき}}させます。
+example_it: >-
+  Quando hai costo sufficiente, fai uscire una unita di pressione nella corsia
+  di destra.
 notes_it: >-
   In pratica significa scegliere quando e dove far comparire un'unita sulla mappa pagando costo. E l'azione che trasforma una carta preparata in presenza reale sul campo.
 tags: [term, battle]
@@ -658,6 +720,10 @@ front: >-
   アビリティ
 back: >-
   abilita speciale del MS
+example_jp: >-
+  {{敵|てき}}{{防衛|ぼうえい}}を{{崩|くず}}したいので、このMSのアビリティを{{先|さき}}に{{使|つか}}います。
+example_it: >-
+  Siccome voglio rompere la difesa nemica, uso prima l'ability di questa MS.
 notes_it: >-
   Consuma costo e applica un effetto del Mobile Suit. Alcune abilita richiedono anche un bersaglio o una coordinata, quindi collegano testo e posizione sulla mappa.
 tags: [term, battle]
@@ -672,6 +738,11 @@ front: >-
   {{戦術技|せんじゅつぎ}}
 back: >-
   tecnica speciale dell'unita
+example_jp: >-
+  SPゲージが{{満タン|まんたん}}でも、{{守|まも}}られた{{拠点|きょてん}}には{{戦術技|せんじゅつぎ}}を{{撃|う}}たないほうがいいです。
+example_it: >-
+  Anche con la barra SP piena, e meglio non usare la tecnica speciale su una
+  base che e ancora protetta.
 notes_it: >-
   E la mossa ad alto impatto attivata con la barra SP. Non e solo spettacolo: il suo valore dipende dal momento in cui la usi e dall'obiettivo che colpisci.
 tags: [term, battle]
@@ -686,6 +757,11 @@ front: >-
   {{殲滅|せんめつ}}
 back: >-
   ruolo che punta prima alle unita nemiche
+example_jp: >-
+  {{殲滅|せんめつ}}の{{仕事|しごと}}は、{{制圧|せいあつ}}の{{前|まえ}}に{{敵|てき}}ユニットを{{片|かた}}づけることです。
+example_it: >-
+  Il compito dell'annientamento e eliminare le unita nemiche prima che entri la
+  pressione.
 notes_it: >-
   Va letto come ruolo anti-unita. Se un avversario ti sta bloccando la corsia con presenza sul campo, questo e il ruolo che di solito apre la strada.
 tags: [term, battle]
@@ -700,6 +776,11 @@ front: >-
   {{制圧|せいあつ}}
 back: >-
   ruolo che colpisce basi e nave nemica
+example_jp: >-
+  {{制圧|せいあつ}}を{{左|ひだり}}から{{通|とお}}せば、{{拠点|きょてん}}と{{戦艦|せんかん}}のゲージをまとめて{{削|けず}}れます。
+example_it: >-
+  Se riesci a far passare la pressione da sinistra, puoi consumare sia la gauge
+  della base sia quella della nave.
 notes_it: >-
   Va letto come pressione sugli obiettivi. E il ruolo che converte una corsia aperta in danno reale alla gauge avversaria.
 tags: [term, battle]
@@ -714,6 +795,11 @@ front: >-
   {{防衛|ぼうえい}}
 back: >-
   ruolo che difende base o nave
+example_jp: >-
+  {{防衛|ぼうえい}}を{{自軍|じぐん}}{{拠点|きょてん}}に{{置|お}}くと、{{相手|あいて}}の{{制圧|せいあつ}}が{{通|とお}}りにくくなります。
+example_it: >-
+  Se metti una unita di difesa sulla tua base, la pressione avversaria passa con
+  molta piu difficolta.
 notes_it: >-
   Resta vicino all'obiettivo e ne aumenta la difesa. Leggerlo bene ti fa capire perche un tuo attacco agli obiettivi improvvisamente fa pochissimo danno.
 tags: [term, battle]
@@ -728,6 +814,11 @@ front: >-
   チャレンジモード
 back: >-
   modalita CPU con missioni
+example_jp: >-
+  {{新|あたら}}しいデッキを{{試|ため}}す{{日|ひ}}は、まずチャレンジモードで{{操作|そうさ}}と{{役割|やくわり}}を{{確認|かくにん}}します。
+example_it: >-
+  Nei giorni in cui provi un deck nuovo, controlli prima input e ruoli in
+  Challenge Mode.
 notes_it: >-
   E la modalita ideale per rendere stabili input, ruoli e lettura della schermata prima di pensare ai risultati in classifica.
 tags: [term, progression]
@@ -742,6 +833,11 @@ front: >-
   ランクマッチ
 back: >-
   modalita classificata online
+example_jp: >-
+  ランクマッチでは{{勝敗|しょうはい}}だけでなく、{{次|つぎ}}のランクポイントまで{{意識|いしき}}して{{潜|もぐ}}ります。
+example_it: >-
+  In Rank Match entri pensando non solo al risultato, ma anche ai prossimi rank
+  point in palio.
 notes_it: >-
   Qui le vittorie e le sconfitte cambiano il rank e i punti stagione. E la ladder principale del gioco.
 tags: [term, progression]
@@ -756,6 +852,11 @@ front: >-
   EXバトル
 back: >-
   evento EX citato in guide vecchie
+example_jp: >-
+  {{昔|むかし}}の{{記事|きじ}}にEXバトルと{{書|か}}いてあっても、{{今|いま}}の{{導線|どうせん}}とは{{分|わ}}けて{{読|よ}}むべきです。
+example_it: >-
+  Anche se un articolo vecchio parla di EX Battle, va letto separandolo dal
+  percorso di gioco attuale.
 notes_it: >-
   Serve soprattutto a leggere materiale storico. Nella versione ufficiale attuale il sistema non si attiva piu dalle stagioni UNITRIBE SEASON:01 in poi.
 tags: [term, progression]
@@ -770,6 +871,11 @@ front: >-
   ～をセットする
 back: >-
   mettere l'oggetto richiesto nello slot o nella schermata prevista
+example_jp: >-
+  {{下段|げだん}}にPLカードをセットすると、{{対応|たいおう}}するMSとすぐ{{組|く}}めます。
+example_it: >-
+  Se metti la PL card nella fila inferiore, la puoi subito abbinare alla MS
+  corrispondente.
 notes_it: >-
   Nel lessico del cabinato segnala un'azione concreta di inserimento o preparazione visibile. Se lo vedi, la macchina non ti sta chiedendo di pensare al deck: ti sta chiedendo di mettere davvero tessera o carte.
 tags: [grammar, ui]
@@ -784,6 +890,11 @@ front: >-
   ～をタッチする
 back: >-
   toccare l'elemento indicato con un input breve
+example_jp: >-
+  {{画面|がめん}}の{{出撃|しゅつげき}}ボタンをタッチすると、ユニットの{{配置|はいち}}{{先|さき}}を{{選|えら}}べます。
+example_it: >-
+  Se tocchi il pulsante di sortita sullo schermo, puoi scegliere dove piazzare
+  l'unita.
 notes_it: >-
   Distingue il tap da azioni come drag o slide. Nelle guide di Arsenal Base serve per menu, conferme e lettura della tessera IC.
 tags: [grammar, ui]
@@ -798,6 +909,11 @@ front: >-
   ～することで
 back: >-
   compiendo X, succede Y
+example_jp: >-
+  {{作戦|さくせん}}カードを{{装備|そうび}}することで、{{終盤|しゅうばん}}の{{押|お}}し{{込|こ}}みがかなり{{楽|らく}}になります。
+example_it: >-
+  Equipaggiando una carta tattica, la spinta finale diventa molto piu facile da
+  gestire.
 notes_it: >-
   Collega una causa pratica a un risultato di gioco. Quando compare, la frase ti sta spiegando quale effetto ottieni da un'azione o da una condizione.
 tags: [grammar, ui]
@@ -812,6 +928,11 @@ front: >-
   ～が{{表示|ひょうじ}}される
 back: >-
   X viene mostrato
+example_jp: >-
+  {{条件|じょうけん}}を{{満|み}}たすと、{{画面|がめん}}{{右側|みぎがわ}}に{{戦術技|せんじゅつぎ}}の{{案内|あんない}}が{{表示|ひょうじ}}されます。
+example_it: >-
+  Quando soddisfi la condizione, sul lato destro dello schermo compare
+  l'indicazione della tecnica speciale.
 notes_it: >-
   Formula tipica delle guide UI. Ti dice quale informazione apparira in una schermata o dopo una certa condizione.
 tags: [grammar, ui]
@@ -826,6 +947,11 @@ front: >-
   ～が{{解放|かいほう}}される
 back: >-
   X diventa utilizzabile
+example_jp: >-
+  {{指揮官|しきかん}}レベルを{{上|あ}}げると、{{新|あたら}}しいミッションや{{作戦|さくせん}}カード{{枠|わく}}が{{解放|かいほう}}されます。
+example_it: >-
+  Alzando il livello comandante si sbloccano nuove missioni e nuovi slot per le
+  carte tattiche.
 notes_it: >-
   Compare quando un sistema non e ancora disponibile all'inizio ma si apre dopo una soglia di avanzamento.
 tags: [grammar, ui]

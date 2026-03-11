@@ -1,6 +1,7 @@
 import { sql } from "drizzle-orm";
 
 import { db, type DatabaseClient } from "./client.ts";
+import { buildScopedEntryId } from "../lib/entry-id.ts";
 import {
   card,
   cardEntryLink,
@@ -30,6 +31,12 @@ export const developmentFixture = {
   importId: "import_fixture_initial",
   termId: "term_fixture_iku",
   grammarId: "grammar_fixture_teiru",
+  termDbId: buildScopedEntryId("term", "media_fixture_tcg", "term_fixture_iku"),
+  grammarDbId: buildScopedEntryId(
+    "grammar",
+    "media_fixture_tcg",
+    "grammar_fixture_teiru"
+  ),
   primaryCardId: "card_fixture_iku",
   secondaryCardId: "card_fixture_teiru"
 } as const;
@@ -275,7 +282,8 @@ export async function seedDevelopmentDatabase(
     await tx
       .insert(term)
       .values({
-        id: developmentFixture.termId,
+        id: developmentFixture.termDbId,
+        sourceId: developmentFixture.termId,
         mediaId: developmentFixture.mediaId,
         segmentId: developmentFixture.segmentId,
         lemma: "行く",
@@ -295,6 +303,7 @@ export async function seedDevelopmentDatabase(
       .onConflictDoUpdate({
         target: term.id,
         set: {
+          sourceId: developmentFixture.termId,
           mediaId: developmentFixture.mediaId,
           segmentId: developmentFixture.segmentId,
           lemma: "行く",
@@ -318,14 +327,14 @@ export async function seedDevelopmentDatabase(
       .values([
         {
           id: "term_alias_fixture_iku_polite",
-          termId: developmentFixture.termId,
+          termId: developmentFixture.termDbId,
           aliasText: "いきます",
           aliasNorm: "いきます",
           aliasType: "inflected"
         },
         {
           id: "term_alias_fixture_iku_romaji",
-          termId: developmentFixture.termId,
+          termId: developmentFixture.termDbId,
           aliasText: "iku",
           aliasNorm: "iku",
           aliasType: "romaji"
@@ -344,7 +353,8 @@ export async function seedDevelopmentDatabase(
     await tx
       .insert(grammarPattern)
       .values({
-        id: developmentFixture.grammarId,
+        id: developmentFixture.grammarDbId,
+        sourceId: developmentFixture.grammarId,
         mediaId: developmentFixture.mediaId,
         segmentId: developmentFixture.segmentId,
         pattern: "〜ている",
@@ -359,6 +369,7 @@ export async function seedDevelopmentDatabase(
       .onConflictDoUpdate({
         target: grammarPattern.id,
         set: {
+          sourceId: developmentFixture.grammarId,
           mediaId: developmentFixture.mediaId,
           segmentId: developmentFixture.segmentId,
           pattern: "〜ている",
@@ -377,7 +388,7 @@ export async function seedDevelopmentDatabase(
       .values([
         {
           id: "grammar_alias_fixture_teiru_short",
-          grammarId: developmentFixture.grammarId,
+          grammarId: developmentFixture.grammarDbId,
           aliasText: "〜てる",
           aliasNorm: "てる"
         }
@@ -397,7 +408,7 @@ export async function seedDevelopmentDatabase(
         {
           id: "entry_link_fixture_term_intro",
           entryType: "term",
-          entryId: developmentFixture.termId,
+          entryId: developmentFixture.termDbId,
           sourceType: "lesson",
           sourceId: developmentFixture.lessonId,
           linkRole: "introduced",
@@ -406,7 +417,7 @@ export async function seedDevelopmentDatabase(
         {
           id: "entry_link_fixture_grammar_explained",
           entryType: "grammar",
-          entryId: developmentFixture.grammarId,
+          entryId: developmentFixture.grammarDbId,
           sourceType: "lesson",
           sourceId: developmentFixture.lessonId,
           linkRole: "explained",
@@ -415,7 +426,7 @@ export async function seedDevelopmentDatabase(
         {
           id: "entry_link_fixture_term_card",
           entryType: "term",
-          entryId: developmentFixture.termId,
+          entryId: developmentFixture.termDbId,
           sourceType: "card",
           sourceId: developmentFixture.primaryCardId,
           linkRole: "reviewed",
@@ -424,7 +435,7 @@ export async function seedDevelopmentDatabase(
         {
           id: "entry_link_fixture_grammar_card",
           entryType: "grammar",
-          entryId: developmentFixture.grammarId,
+          entryId: developmentFixture.grammarDbId,
           sourceType: "card",
           sourceId: developmentFixture.secondaryCardId,
           linkRole: "reviewed",
@@ -505,14 +516,14 @@ export async function seedDevelopmentDatabase(
           id: "card_entry_link_fixture_iku_primary",
           cardId: developmentFixture.primaryCardId,
           entryType: "term",
-          entryId: developmentFixture.termId,
+          entryId: developmentFixture.termDbId,
           relationshipType: "primary"
         },
         {
           id: "card_entry_link_fixture_teiru_primary",
           cardId: developmentFixture.secondaryCardId,
           entryType: "grammar",
-          entryId: developmentFixture.grammarId,
+          entryId: developmentFixture.grammarDbId,
           relationshipType: "primary"
         }
       ])
@@ -532,7 +543,7 @@ export async function seedDevelopmentDatabase(
         {
           id: "entry_status_fixture_iku",
           entryType: "term",
-          entryId: developmentFixture.termId,
+          entryId: developmentFixture.termDbId,
           status: "learning",
           reason: "Seed fixture manual status.",
           setAt: updatedAt
@@ -540,7 +551,7 @@ export async function seedDevelopmentDatabase(
         {
           id: "entry_status_fixture_teiru",
           entryType: "grammar",
-          entryId: developmentFixture.grammarId,
+          entryId: developmentFixture.grammarDbId,
           status: "known_manual",
           reason: "Simulazione override manuale.",
           setAt: updatedAt

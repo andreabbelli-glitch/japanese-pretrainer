@@ -70,6 +70,13 @@ La regola di fondo è semplice:
 
 ### 1. La home non è contenuto: è una mappa
 
+:::image
+src: assets/ui/home-screen.png
+alt: "Schermata home di デュエプレ con navigazione inferiore Home, Solo play, Battle, Extra, Card, Shop ed Etc., piu icone superiori per avvisi, premi e altre scorciatoie."
+caption: >-
+  Screenshot della home di `デュエプレ`, utile per leggere la barra di navigazione bassa e riconoscere che molte azioni rapide nella barra alta sono presentate come icone.
+:::
+
 [ホーム](term:term-home) va letta come "punto di orientamento", non come parola
 isolata. Quando arrivi lì, il tuo compito non è tradurre tutto: è trovare le
 porte giuste.
@@ -84,6 +91,11 @@ Le più utili da fissare presto sono:
 - [{{設定|せってい}}](term:term-settings)
 
 Se impari queste sei etichette, l'app smette già di sembrare opaca.
+
+Nella UI reale, però, non tutto compare come testo grande al centro della
+schermata: una parte dei punti d'accesso sta nella barra alta sotto forma di
+icone. Questo vuol dire che devi imparare a leggere insieme posizione, icona e
+sezione di destinazione, non solo il label isolato.
 
 ### 2. Missioni, bonus e premi: tre cose vicine, ma non identiche
 
@@ -205,3 +217,4 @@ L'obiettivo di questa lesson non è farti "capire qualche parola". È farti
 aprire `デュエプレ` e sapere dove guardare prima di tutto il resto. Se questo ti
 viene naturale, l'app diventa molto più giocabile e il giapponese molto meno
 frammentato.
+

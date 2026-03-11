@@ -88,6 +88,13 @@ Regole pratiche:
 - preferisci una lesson o un file cards alla volta;
 - evita richieste che riscrivono interi bundle gia stabili;
 - se stai correggendo, limita il batch ai file davvero falliti;
+- per `term` e `grammar`, considera valida l'unicita nel media corrente, non
+  nel workspace intero;
+- usa `cross_media_group` solo quando il legame cross-media e intenzionale e
+  certo; non come deduzione automatica;
+- nei rollout reali collega solo voci con lo stesso nucleo didattico utile da
+  confrontare; per esempio `mission`, `deck` o `ranked match`, ma non modalita
+  vagamente simili, nomi propri o entry di tipo diverso;
 - preferisci nuove entry canoniche in `cards/`, non in `textbook/`, salvo
   necessita reale.
 
@@ -187,7 +194,10 @@ Valida tutto il content root:
 Il check puo fallire per:
 
 - YAML invalido o scalar plain fragili in campi come `notes_it`;
-- ID duplicati;
+- ID duplicati nello stesso media;
+- riuso cross-media degli stessi `term.id` / `grammar.id` e ammesso se ogni
+  bundle locale resta coerente;
+- `cross_media_group` malformati o incoerenti;
 - riferimenti mancanti;
 - bundle incompleti;
 - errori parser/schema/reference/integrity.
@@ -212,6 +222,16 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
 Se questo check fallisce, il batch va corretto anche se `content:validate` e
 verde.
 
+Nota di fase 2:
+
+- textbook popup e tooltip restano locali al media corrente;
+- i link semantici `term:...` e `grammar:...` vengono risolti nel media del
+  bundle importato;
+- il confronto cross-media compare solo per entry con `cross_media_group`
+  esplicito.
+- per nominare i gruppi usa uno slug stabile e leggibile, preferibilmente con
+  prefisso del tipo: `term-shared-...` oppure `grammar-shared-...`.
+
 ### 5. Correggi in modo iterativo
 
 Se la validazione fallisce:
@@ -220,6 +240,8 @@ Se la validazione fallisce:
 2. raccogli solo i file coinvolti e gli errori rilevanti;
 3. rimanda all'LLM esterno un correction batch mirato;
 4. ribadisci che gli ID stabili non vanno rinominati;
+   Per `term` e `grammar`, non chiedere rinomina solo per evitare collisioni
+   con altri media.
 5. richiedi output sostitutivo solo per i file che hanno fallito.
 
 Formato minimo del correction batch:

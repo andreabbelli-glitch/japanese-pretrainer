@@ -192,6 +192,66 @@ export function GlossaryDetailPanels({
           )}
         </Section>
 
+        {data.crossMedia ? (
+          <Section
+            eyebrow="Cross-media"
+            title="Compare anche in altri media"
+            description="La voce locale resta primaria. Qui vedi solo le altre versioni editoriali collegate, con le loro sfumature locali."
+          >
+            <div className="glossary-detail-list">
+              {data.crossMedia.siblings.map((sibling) => (
+                <Link
+                  key={`${sibling.mediaSlug}:${sibling.href}`}
+                  className="glossary-detail-link"
+                  href={sibling.href}
+                >
+                  <SurfaceCard className="glossary-detail-card" variant="quiet">
+                    <div className="glossary-detail-card__top">
+                      <div className="glossary-detail-card__chips">
+                        <span className="chip">{sibling.mediaTitle}</span>
+                        <span className="meta-pill">
+                          {sibling.kind === "term" ? "Term" : "Grammar"}
+                        </span>
+                        {sibling.segmentTitle ? (
+                          <span className="meta-pill">
+                            {sibling.segmentTitle}
+                          </span>
+                        ) : null}
+                      </div>
+                      <span className="glossary-result-card__arrow">
+                        Apri detail
+                      </span>
+                    </div>
+                    <h3 className="glossary-detail-card__title jp-inline">
+                      {sibling.label}
+                    </h3>
+                    {sibling.title ? (
+                      <p className="glossary-entry-hero__subtitle">
+                        {sibling.title}
+                      </p>
+                    ) : null}
+                    {sibling.reading || sibling.romaji ? (
+                      <p className="glossary-entry-hero__subtitle jp-inline">
+                        {[sibling.reading, sibling.romaji]
+                          .filter(Boolean)
+                          .join(" / ")}
+                      </p>
+                    ) : null}
+                    <p className="glossary-detail-card__body">
+                      {sibling.meaning}
+                    </p>
+                    {sibling.notes ? (
+                      <p className="glossary-detail-card__note">
+                        {renderFurigana(sibling.notes)}
+                      </p>
+                    ) : null}
+                  </SurfaceCard>
+                </Link>
+              ))}
+            </div>
+          </Section>
+        ) : null}
+
         <Section
           eyebrow="Review"
           title="Card collegate"

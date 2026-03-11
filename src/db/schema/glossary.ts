@@ -14,10 +14,34 @@ import {
   sourceTypeValues
 } from "./enums.ts";
 
+export const crossMediaGroup = sqliteTable(
+  "cross_media_group",
+  {
+    id: text("id").primaryKey(),
+    entryType: text("entry_type", { enum: entryTypeValues }).notNull(),
+    groupKey: text("group_key").notNull(),
+    createdAt: text("created_at").notNull(),
+    updatedAt: text("updated_at").notNull()
+  },
+  (table) => [
+    uniqueIndex("cross_media_group_type_key_unique").on(
+      table.entryType,
+      table.groupKey
+    )
+  ]
+);
+
 export const term = sqliteTable(
   "term",
   {
     id: text("id").primaryKey(),
+    sourceId: text("source_id").notNull(),
+    crossMediaGroupId: text("cross_media_group_id").references(
+      () => crossMediaGroup.id,
+      {
+        onDelete: "set null"
+      }
+    ),
     mediaId: text("media_id")
       .notNull()
       .references(() => media.id, { onDelete: "cascade" }),
@@ -40,10 +64,13 @@ export const term = sqliteTable(
   },
   (table) => [
     index("term_media_idx").on(table.mediaId),
+    index("term_media_source_idx").on(table.mediaId, table.sourceId),
+    index("term_cross_media_group_idx").on(table.crossMediaGroupId),
     index("term_segment_idx").on(table.segmentId),
     index("term_search_lemma_idx").on(table.searchLemmaNorm),
     index("term_search_reading_idx").on(table.searchReadingNorm),
-    index("term_search_romaji_idx").on(table.searchRomajiNorm)
+    index("term_search_romaji_idx").on(table.searchRomajiNorm),
+    uniqueIndex("term_media_source_unique").on(table.mediaId, table.sourceId)
   ]
 );
 
@@ -72,6 +99,13 @@ export const grammarPattern = sqliteTable(
   "grammar_pattern",
   {
     id: text("id").primaryKey(),
+    sourceId: text("source_id").notNull(),
+    crossMediaGroupId: text("cross_media_group_id").references(
+      () => crossMediaGroup.id,
+      {
+        onDelete: "set null"
+      }
+    ),
     mediaId: text("media_id")
       .notNull()
       .references(() => media.id, { onDelete: "cascade" }),
@@ -90,8 +124,11 @@ export const grammarPattern = sqliteTable(
   },
   (table) => [
     index("grammar_media_idx").on(table.mediaId),
+    index("grammar_media_source_idx").on(table.mediaId, table.sourceId),
+    index("grammar_cross_media_group_idx").on(table.crossMediaGroupId),
     index("grammar_segment_idx").on(table.segmentId),
-    index("grammar_search_pattern_idx").on(table.searchPatternNorm)
+    index("grammar_search_pattern_idx").on(table.searchPatternNorm),
+    uniqueIndex("grammar_media_source_unique").on(table.mediaId, table.sourceId)
   ]
 );
 

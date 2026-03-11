@@ -51,7 +51,65 @@ content/
 - Gli asset immagine di un media vanno salvati sotto `assets/` nello stesso
   bundle.
 
-### 4.0 Regola furigana per testo visibile
+### 4.0 Regola di scope per gli ID editoriali
+
+Per `term` e `grammar`, l'ID scritto nel Markdown e un **ID editoriale locale
+al media**.
+
+Regole:
+
+- un `term.id` deve essere unico dentro lo stesso media;
+- un `grammar.id` deve essere unico dentro lo stesso media;
+- lo stesso `term.id` o `grammar.id` puo comparire anche in altri media del
+  workspace, se ogni bundle resta coerente localmente;
+- `media`, `lesson`, `cards-file` e `card` restano invece identificati con ID
+  stabili del loro namespace.
+
+Implementazione rilevante:
+
+- il Markdown continua a usare l'ID editoriale locale, per esempio
+  `term-cost` o `grammar-teiru`;
+- il database importa anche una chiave tecnica persistente interna distinta
+  dall'ID editoriale;
+- la UI continua a trattare il media corrente come verita primaria.
+
+### 4.0.1 Layer cross-media esplicito
+
+In fase 2 esiste un terzo livello distinto dall'ID tecnico e dall'ID
+editoriale locale:
+
+- `cross_media_group`
+
+Serve solo per collegare entry locali appartenenti a media diversi quando il
+collegamento e intenzionale e dichiarato.
+
+Regole:
+
+- `cross_media_group` e opzionale;
+- non sostituisce `term.id` o `grammar.id`;
+- non cambia il routing pubblico, che resta `mediaSlug + source_id locale`;
+- `meaning_it`, `notes_it`, lesson e card restano sempre locali al media;
+- non va usato per unire automaticamente omografi, falsi amici o label UI
+  simili ma editorialmente diverse;
+- lo stesso `cross_media_group` puo essere riusato solo dallo stesso tipo di
+  entry: o tutti `term`, o tutti `grammar`;
+- dentro uno stesso media, uno stesso `cross_media_group` deve puntare a una
+  sola entry locale per tipo.
+
+Quando usarlo:
+
+- lo stesso termine o pattern ricorre davvero in media diversi;
+- vuoi mostrare "compare anche in altri media" nel detail e nella review;
+- le sfumature locali restano diverse ma il collegamento editoriale e certo.
+- il confronto aggiunge valore didattico reale, non solo somiglianza formale.
+
+Quando non usarlo:
+
+- due entry condividono solo lemma, kanji o reading;
+- c'e il dubbio che si tratti di omografia o uso troppo diverso;
+- stai cercando un fallback fuzzy per evitare di curare il contenuto.
+
+### 4.1 Regola furigana per testo visibile
 
 Se una stringa giapponese con kanji o composti poco trasparenti e visibile nel
 reader, deve portare il furigana anche quando appare:
@@ -65,7 +123,7 @@ Quindi non basta che esista una `reading` nella entry glossary: se il testo
 mostrato al lettore contiene kanji, la forma visibile deve essere annotata con
 `{{base|reading}}` quando la lettura non e banale.
 
-### 4.1 Regole di scrittura YAML sicura
+### 4.2 Regole di scrittura YAML sicura
 
 Per evitare errori di import, i campi testuali descrittivi dentro frontmatter o
 blocchi strutturati devono essere serializzati in modo conservativo.
@@ -99,7 +157,7 @@ Esempio da evitare:
 notes_it: Lettura da fissare: {{山札|やまふだ}}.
 ```
 
-### 4.2 Regole per furigana su composti numerici
+### 4.3 Regole per furigana su composti numerici
 
 - quando un numero e seguito da un contatore o da un qualificatore numerico
   (`以下`, `以上`, `未満`, ecc.), il furigana va messo sull'espressione completa;
@@ -109,7 +167,7 @@ notes_it: Lettura da fissare: {{山札|やまふだ}}.
 - se il numero e poco trasparente o "grande", annotare il composto intero:
   `{{2000以下|にせんいか}}`, `{{3000円|さんぜんえん}}`.
 
-### 4.3 Regola di qualita esplicativa
+### 4.4 Regola di qualita esplicativa
 
 Ogni spiegazione libera in `textbook/` o in `notes_it` deve fare piu che dire
 che un termine o un pattern e "utile", "importante" o "da fissare".
@@ -322,6 +380,7 @@ strutturati.
 ```md
 :::term
 id: term-taberu
+cross_media_group: shared-taberu-core
 lemma: 食べる
 reading: たべる
 romaji: taberu
@@ -345,6 +404,7 @@ Campi obbligatori:
 Campi opzionali:
 
 - `pos`
+- `cross_media_group`
 - `meaning_literal_it`
 - `notes_it`
 - `level_hint`
@@ -356,6 +416,7 @@ Campi opzionali:
 ```md
 :::grammar
 id: grammar-teiru
+cross_media_group: shared-progressive-state
 pattern: ～ている
 title: Forma in -te iru
 meaning_it: azione in corso o stato risultante
@@ -374,6 +435,7 @@ Campi obbligatori:
 
 Campi opzionali:
 
+- `cross_media_group`
 - `notes_it`
 - `level_hint`
 - `aliases`
@@ -485,10 +547,13 @@ Per ogni entry del glossary il sistema deve poter risalire a:
 ## 12. Regole di import
 
 - Import fallisce se manca un campo obbligatorio.
-- Import fallisce se ci sono ID duplicati.
+- Import fallisce se ci sono ID duplicati nello stesso namespace locale.
 - Import fallisce se un riferimento inline punta a un ID inesistente.
-- Import fallisce se due entita con lo stesso ID hanno campi incompatibili.
+- Import fallisce se due entita con lo stesso ID editoriale nello stesso media
+  hanno campi incompatibili.
 - Import aggiorna il contenuto senza azzerare gli stati review esistenti.
+- I link semantici `term:...` e `grammar:...` vengono risolti nel contesto del
+  media corrente.
 
 ## 13. Regole di naming
 
@@ -497,6 +562,11 @@ Per ogni entry del glossary il sistema deve poter risalire a:
 - prefisso suggerito per term: `term-`
 - prefisso suggerito per grammar: `grammar-`
 - prefisso suggerito per card: `card-`
+- formato suggerito per `cross_media_group`: slug descrittivo ASCII, per esempio
+  `shared-taberu-core` o `shared-progressive-state`
+- convenzione pratica consigliata per il corpus reale: prefisso del tipo +
+  nucleo condiviso, per esempio `term-shared-ranked-match` o
+  `grammar-shared-progressive-state`
 
 Esempio:
 
@@ -532,3 +602,6 @@ Per partire velocemente:
 - il glossary nasce dalla fusione delle entita dichiarate e dei riferimenti;
 - se una entry e critica per il glossary, va dichiarata esplicitamente come
   `term` o `grammar`, non solo nominata nel testo.
+- se una entry locale compare anche in altri media con collegamento editoriale
+  certo, aggiungi `cross_media_group` invece di riusare o forzare un ID
+  globale.

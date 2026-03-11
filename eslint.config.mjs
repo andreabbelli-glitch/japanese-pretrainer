@@ -10,6 +10,7 @@ const eslintConfig = [
       ".next/**",
       "coverage/**",
       "dist/**",
+      "playwright-report/**",
       "pnpm-lock.yaml"
     ]
   }

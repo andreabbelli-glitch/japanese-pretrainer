@@ -783,7 +783,7 @@ export function LessonArticle({
       case "image":
         const imagePresentation = resolveImagePresentation(block.src);
         const imageEntry = block.cardId
-          ? entriesByKey.get(`card:${block.cardId}`) ?? null
+          ? (entriesByKey.get(`card:${block.cardId}`) ?? null)
           : null;
 
         return (
@@ -935,6 +935,12 @@ export function LessonArticle({
   );
 }
 
+export function formatCrossMediaHintLabel(otherMediaCount: number) {
+  return otherMediaCount === 1
+    ? "Compare anche in 1 altro media."
+    : `Compare anche in altri ${otherMediaCount} media.`;
+}
+
 type FallbackHtmlArticleProps = {
   activeEntryKey: string | null;
   entriesByKey: Map<string, TextbookTooltipEntry>;
@@ -987,7 +993,9 @@ function FallbackHtmlArticle({
     const references = Array.from(
       container.querySelectorAll<HTMLElement>(referenceSelector)
     );
-    const images = Array.from(container.querySelectorAll<HTMLElement>(imageSelector));
+    const images = Array.from(
+      container.querySelectorAll<HTMLElement>(imageSelector)
+    );
     const rubies = Array.from(container.querySelectorAll<HTMLElement>("ruby"));
 
     const resolveEntry = (element: HTMLElement) => {
@@ -1007,7 +1015,7 @@ function FallbackHtmlArticle({
       const cardId = element.dataset.cardId;
 
       return typeof cardId === "string"
-        ? entriesByKey.get(`card:${cardId}`) ?? null
+        ? (entriesByKey.get(`card:${cardId}`) ?? null)
         : null;
     };
 
@@ -1016,7 +1024,9 @@ function FallbackHtmlArticle({
         ? target.closest<HTMLElement>(referenceSelector)
         : null;
     const resolveImageTarget = (target: EventTarget | null) =>
-      target instanceof Element ? target.closest<HTMLElement>(imageSelector) : null;
+      target instanceof Element
+        ? target.closest<HTMLElement>(imageSelector)
+        : null;
     const resolveRubyTarget = (target: EventTarget | null) =>
       target instanceof Element ? target.closest<HTMLElement>("ruby") : null;
 
@@ -1459,11 +1469,18 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
         <p className="entry-tooltip-card__detail">Categoria: {entry.pos}</p>
       ) : null}
       {"typeLabel" in entry ? (
-        <p className="entry-tooltip-card__detail">Tipo card: {entry.typeLabel}</p>
+        <p className="entry-tooltip-card__detail">
+          Tipo card: {entry.typeLabel}
+        </p>
       ) : null}
       {entry.notes ? (
         <p className="entry-tooltip-card__notes">
           {renderFurigana(entry.notes)}
+        </p>
+      ) : null}
+      {"crossMediaHint" in entry && entry.crossMediaHint ? (
+        <p className="entry-tooltip-card__detail">
+          {formatCrossMediaHintLabel(entry.crossMediaHint.otherMediaCount)}
         </p>
       ) : null}
       <Link

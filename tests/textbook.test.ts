@@ -20,6 +20,10 @@ import {
 } from "@/db";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
+  crossMediaFixture,
+  writeCrossMediaContentFixture
+} from "./helpers/cross-media-fixture";
+import {
   getFuriganaMode,
   getTextbookIndexData,
   getTextbookLessonData,
@@ -29,7 +33,10 @@ import {
 } from "@/lib/textbook";
 import { parseTextbookDocument } from "@/lib/textbook-document";
 import { renderFurigana } from "@/lib/render-furigana";
-import { LessonArticle } from "@/components/textbook/lesson-reader-client";
+import {
+  LessonArticle,
+  formatCrossMediaHintLabel
+} from "@/components/textbook/lesson-reader-client";
 
 vi.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -86,6 +93,14 @@ describe("textbook data", () => {
       "行く",
       "〜ている"
     ]);
+    expect(
+      lessonData?.entries.every(
+        (entry) =>
+          entry.kind === "card" ||
+          !("crossMediaHint" in entry) ||
+          entry.crossMediaHint === undefined
+      )
+    ).toBe(true);
     expect(lessonData?.lesson.ast?.blocks).toHaveLength(3);
     expect(lessonData?.lesson.ast?.blocks[1]).toMatchObject({
       type: "paragraph"
@@ -478,5 +493,60 @@ describe("textbook data", () => {
           )
       )
     ).toBe(true);
+  });
+
+  it("resolves textbook tooltip entries inside the current media when source ids are reused across media", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const [alphaLesson, betaLesson] = await Promise.all([
+      getTextbookLessonData(
+        crossMediaFixture.alpha.mediaSlug,
+        crossMediaFixture.alpha.lessonSlug,
+        database
+      ),
+      getTextbookLessonData(
+        crossMediaFixture.beta.mediaSlug,
+        crossMediaFixture.beta.lessonSlug,
+        database
+      )
+    ]);
+
+    expect(
+      alphaLesson?.entries.find((entry) => entry.kind === "term")?.id
+    ).toBe(crossMediaFixture.alpha.termSourceId);
+    expect(
+      alphaLesson?.entries.find((entry) => entry.kind === "term")?.meaning
+    ).toBe(crossMediaFixture.alpha.termMeaning);
+    expect(
+      alphaLesson?.entries.find((entry) => entry.kind === "term")
+    ).toMatchObject({
+      crossMediaHint: {
+        otherMediaCount: 1
+      }
+    });
+    expect(
+      betaLesson?.entries.find((entry) => entry.kind === "term")?.meaning
+    ).toBe(crossMediaFixture.beta.termMeaning);
+    expect(
+      betaLesson?.entries.find((entry) => entry.kind === "grammar")?.meaning
+    ).toBe(crossMediaFixture.beta.grammarMeaning);
+  });
+
+  it("formats textbook cross-media hint labels with the correct singular and plural copy", () => {
+    expect(formatCrossMediaHintLabel(1)).toBe(
+      "Compare anche in 1 altro media."
+    );
+    expect(formatCrossMediaHintLabel(2)).toBe(
+      "Compare anche in altri 2 media."
+    );
   });
 });

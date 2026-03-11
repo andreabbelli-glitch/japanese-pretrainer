@@ -18,6 +18,7 @@ import {
   term,
   type DatabaseClient
 } from "@/db";
+import { buildScopedEntryId } from "@/lib/entry-id";
 import { getGlossaryPageData } from "@/lib/glossary";
 import { getMediaProgressPageData } from "@/lib/progress";
 import { getReviewPageData } from "@/lib/review";
@@ -79,7 +80,12 @@ describe("progress, settings, and study controls", () => {
       notes: "Segmento aggiuntivo per verificare l’ordinamento."
     });
     await database.insert(term).values({
-      id: "term-demo-aisatsu",
+      id: buildScopedEntryId(
+        "term",
+        developmentFixture.mediaId,
+        "term-demo-aisatsu"
+      ),
+      sourceId: "term-demo-aisatsu",
       mediaId: developmentFixture.mediaId,
       segmentId: "segment_demo_bonus",
       lemma: "あいさつ",
@@ -120,7 +126,7 @@ describe("progress, settings, and study controls", () => {
       id: "card_entry_link_fixture_new_limit",
       cardId: "card_fixture_new_limit",
       entryType: "term",
-      entryId: developmentFixture.termId,
+      entryId: developmentFixture.termDbId,
       relationshipType: "secondary"
     });
 
@@ -152,16 +158,22 @@ describe("progress, settings, and study controls", () => {
     });
     expect(glossaryData?.filters.sort).toBe("alphabetical");
     expect(
-      defaultGlossaryData?.results.findIndex((entry) => entry.id === "term-demo-aisatsu")
+      defaultGlossaryData?.results.findIndex(
+        (entry) => entry.id === "term-demo-aisatsu"
+      )
     ).toBeGreaterThan(
       defaultGlossaryData?.results.findIndex(
         (entry) => entry.id === developmentFixture.termId
       ) ?? -1
     );
     expect(
-      glossaryData?.results.findIndex((entry) => entry.id === "term-demo-aisatsu")
+      glossaryData?.results.findIndex(
+        (entry) => entry.id === "term-demo-aisatsu"
+      )
     ).toBeLessThan(
-      glossaryData?.results.findIndex((entry) => entry.id === developmentFixture.termId) ?? 999
+      glossaryData?.results.findIndex(
+        (entry) => entry.id === developmentFixture.termId
+      ) ?? 999
     );
     expect(reviewData?.queue.dailyLimit).toBe(1);
     expect(reviewData?.queue.newAvailableCount).toBe(1);

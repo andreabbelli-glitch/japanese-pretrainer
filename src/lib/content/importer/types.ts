@@ -3,6 +3,7 @@ import type {
   card,
   cardEntryLink,
   contentImport,
+  crossMediaGroup,
   entryLink,
   grammarAlias,
   grammarPattern,
@@ -73,6 +74,7 @@ export interface ImportSourceDocument {
 
 export interface MediaImportPlan {
   cards: CardImportPlan[];
+  crossMediaGroups: Array<typeof crossMediaGroup.$inferInsert>;
   entryLinks: Array<typeof entryLink.$inferInsert>;
   grammarPatterns: GrammarImportPlan[];
   lessonContents: LessonContentImportPlan[];

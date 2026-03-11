@@ -24,6 +24,7 @@ level_hint: custom
 
 :::term
 id: term-mission
+cross_media_group: term-shared-mission-progression
 lemma: ミッション
 reading: みっしょん
 romaji: misshon
@@ -163,6 +164,7 @@ level_hint: n4
 
 :::term
 id: term-constructed-deck
+cross_media_group: term-shared-deck-loadout
 lemma: デッキ
 reading: でっき
 romaji: dekki
@@ -334,6 +336,7 @@ level_hint: custom
 
 :::term
 id: term-ranked-match
+cross_media_group: term-shared-ranked-match
 lemma: ランクマッチ
 reading: らんくまっち
 romaji: ranku macchi

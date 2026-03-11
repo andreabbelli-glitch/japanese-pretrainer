@@ -9,6 +9,7 @@ segment_ref: <segment-ref>
 
 :::term
 id: term-<entry-slug>
+cross_media_group: <shared-group-id-opzionale>
 lemma: <forma-base>
 reading: <reading-kana>
 romaji: <romaji>
@@ -23,6 +24,7 @@ level_hint: <n5|n4|n3|custom>
 
 :::grammar
 id: grammar-<entry-slug>
+cross_media_group: <shared-group-id-opzionale>
 pattern: <pattern>
 title: <titolo-breve>
 meaning_it: <significato-in-italiano>
@@ -71,6 +73,10 @@ tags: [<tag-1>, <tag-2>]
 Regole pratiche:
 - definisci qui le entry canoniche preferite per glossary/review;
 - se una entry esiste gia, non ridefinirla: crea solo la :::card che la usa;
+- usa `cross_media_group` solo per collegare intenzionalmente la stessa entry
+  concettuale tra media diversi; non per omografie dubbie;
+- se lo usi, preferisci uno slug stabile con prefisso del tipo, per esempio
+  `term-shared-mission-progression`;
 - ogni `:::card` deve avere sempre `example_jp` + `example_it`;
 - `example_jp` deve essere una frase completa e contestuale utile sul retro
   review, non una parola isolata o una ripetizione del `front`;

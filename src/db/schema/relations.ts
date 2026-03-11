@@ -7,7 +7,13 @@ import {
   media,
   segment
 } from "./content.ts";
-import { grammarAlias, grammarPattern, term, termAlias } from "./glossary.ts";
+import {
+  crossMediaGroup,
+  grammarAlias,
+  grammarPattern,
+  term,
+  termAlias
+} from "./glossary.ts";
 import { lessonProgress, mediaProgress } from "./progress.ts";
 import { card, cardEntryLink, reviewLog, reviewState } from "./review.ts";
 
@@ -69,6 +75,10 @@ export const contentImportRelations = relations(contentImport, ({ many }) => ({
 }));
 
 export const termRelations = relations(term, ({ many, one }) => ({
+  crossMediaGroup: one(crossMediaGroup, {
+    fields: [term.crossMediaGroupId],
+    references: [crossMediaGroup.id]
+  }),
   media: one(media, {
     fields: [term.mediaId],
     references: [media.id]
@@ -90,6 +100,10 @@ export const termAliasRelations = relations(termAlias, ({ one }) => ({
 export const grammarPatternRelations = relations(
   grammarPattern,
   ({ many, one }) => ({
+    crossMediaGroup: one(crossMediaGroup, {
+      fields: [grammarPattern.crossMediaGroupId],
+      references: [crossMediaGroup.id]
+    }),
     media: one(media, {
       fields: [grammarPattern.mediaId],
       references: [media.id]
@@ -99,6 +113,14 @@ export const grammarPatternRelations = relations(
       references: [segment.id]
     }),
     aliases: many(grammarAlias)
+  })
+);
+
+export const crossMediaGroupRelations = relations(
+  crossMediaGroup,
+  ({ many }) => ({
+    grammarPatterns: many(grammarPattern),
+    terms: many(term)
   })
 );
 

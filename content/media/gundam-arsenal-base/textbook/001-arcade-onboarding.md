@@ -69,6 +69,13 @@ tessera fisica.
 
 I componenti del cabinato hanno funzioni molto precise.
 
+:::image
+src: assets/ui/arcade-cabinet-overview.webp
+alt: "Cabinato ufficiale di Gundam Arsenal Base visto frontalmente, con schermo, fila di card slot, pulsante destro e uscita carte inferiore ben visibili."
+caption: >-
+  Vista ufficiale del cabinato: ti aiuta a separare subito schermo, [カードスロット](term:term-card-slot), [ボタン](term:term-button) e [{{カード取り出し口|かーどとりだしぐち}}](term:term-card-outlet) prima ancora di iniziare la partita.
+:::
+
 - [タッチパネル](term:term-touch-panel): e lo schermo operativo principale. Qui
   selezioni menu, conferme e molte azioni della battaglia.
 - [カードスロット](term:term-card-slot): e la zona in cui inserisci le carte da
@@ -134,3 +141,4 @@ translation_it: >-
 
 Non confondere la tessera che salva i dati con le carte del mazzo: la prima
 serve a riconoscere te, le seconde costruiscono le tue unita.
+

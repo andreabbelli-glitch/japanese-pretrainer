@@ -455,7 +455,7 @@ describe("content parser and validator", () => {
     expect(result.data.terms).toHaveLength(81);
     expect(result.data.grammarPatterns).toHaveLength(18);
     expect(result.data.cards).toHaveLength(92);
-    expect(result.data.references).toHaveLength(455);
+    expect(result.data.references).toHaveLength(459);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
@@ -509,7 +509,7 @@ describe("content parser and validator", () => {
     expect(result.data.bundles[0]?.mediaSlug).toBe("frieren");
   });
 
-  it("rejects duplicate IDs across different media bundles", async () => {
+  it("allows duplicate term and grammar IDs across different media bundles", async () => {
     const contentRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-root-"));
 
     try {
@@ -518,6 +518,7 @@ describe("content parser and validator", () => {
         mediaId: "media-alpha",
         cardsFileId: "cards-alpha",
         cardId: "card-alpha",
+        sharedGrammarId: "grammar-shared",
         sharedTermId: "term-shared"
       });
       await writeMediaBundle(contentRoot, {
@@ -525,7 +526,73 @@ describe("content parser and validator", () => {
         mediaId: "media-beta",
         cardsFileId: "cards-beta",
         cardId: "card-beta",
+        sharedGrammarId: "grammar-shared",
         sharedTermId: "term-shared"
+      });
+
+      const result = await parseContentRoot(contentRoot);
+
+      expect(result.ok).toBe(true);
+      expect(result.issues).toEqual([]);
+      expect(result.data.bundles).toHaveLength(2);
+    } finally {
+      await rm(contentRoot, { recursive: true, force: true });
+    }
+  });
+
+  it("accepts explicit cross_media_group links across media even when local source ids differ", async () => {
+    const contentRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-root-"));
+
+    try {
+      await writeMediaBundle(contentRoot, {
+        mediaSlug: "alpha",
+        mediaId: "media-alpha",
+        cardsFileId: "cards-alpha",
+        cardId: "card-alpha",
+        sharedGrammarId: "grammar-alpha-local",
+        sharedTermId: "term-alpha-local",
+        crossMediaGrammarGroup: "shared-grammar-demo",
+        crossMediaTermGroup: "shared-term-demo"
+      });
+      await writeMediaBundle(contentRoot, {
+        mediaSlug: "beta",
+        mediaId: "media-beta",
+        cardsFileId: "cards-beta",
+        cardId: "card-beta",
+        sharedGrammarId: "grammar-beta-local",
+        sharedTermId: "term-beta-local",
+        crossMediaGrammarGroup: "shared-grammar-demo",
+        crossMediaTermGroup: "shared-term-demo"
+      });
+
+      const result = await parseContentRoot(contentRoot);
+
+      expect(result.ok).toBe(true);
+      expect(result.issues).toEqual([]);
+      expect(result.data.bundles).toHaveLength(2);
+      expect(result.data.bundles[0]?.terms[0]?.crossMediaGroup).toBe(
+        "shared-term-demo"
+      );
+      expect(result.data.bundles[1]?.grammarPatterns[0]?.crossMediaGroup).toBe(
+        "shared-grammar-demo"
+      );
+    } finally {
+      await rm(contentRoot, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects malformed cross_media_group identifiers", async () => {
+    const contentRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-root-"));
+
+    try {
+      await writeMediaBundle(contentRoot, {
+        mediaSlug: "alpha",
+        mediaId: "media-alpha",
+        cardsFileId: "cards-alpha",
+        cardId: "card-alpha",
+        sharedGrammarId: "grammar-alpha-local",
+        sharedTermId: "term-alpha-local",
+        crossMediaTermGroup: "bad group!"
       });
 
       const result = await parseContentRoot(contentRoot);
@@ -533,13 +600,37 @@ describe("content parser and validator", () => {
       expect(result.ok).toBe(false);
       expect(result.issues).toContainEqual(
         expect.objectContaining({
-          code: "id.duplicate",
-          category: "integrity",
-          details: expect.objectContaining({
-            namespace: "term",
-            id: "term-shared",
-            mediaBundleCount: 2
-          })
+          code: "structured-block.invalid-cross-media-group",
+          category: "schema"
+        })
+      );
+    } finally {
+      await rm(contentRoot, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects cross_media_group collisions between term and grammar entries", async () => {
+    const contentRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-root-"));
+
+    try {
+      await writeMediaBundle(contentRoot, {
+        mediaSlug: "alpha",
+        mediaId: "media-alpha",
+        cardsFileId: "cards-alpha",
+        cardId: "card-alpha",
+        sharedGrammarId: "grammar-alpha-local",
+        sharedTermId: "term-alpha-local",
+        crossMediaGrammarGroup: "shared-entry-demo",
+        crossMediaTermGroup: "shared-entry-demo"
+      });
+
+      const result = await parseContentRoot(contentRoot);
+
+      expect(result.ok).toBe(false);
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "cross-media-group.entry-type-mismatch",
+          category: "integrity"
         })
       );
     } finally {
@@ -922,6 +1013,9 @@ async function writeMediaBundle(
     mediaId: string;
     cardsFileId: string;
     cardId: string;
+    crossMediaGrammarGroup?: string;
+    crossMediaTermGroup?: string;
+    sharedGrammarId: string;
     sharedTermId: string;
   }
 ) {
@@ -945,6 +1039,29 @@ base_explanation_language: it
 `
   );
   await writeFile(
+    path.join(textbookDirectory, "001-intro.md"),
+    `---
+id: lesson-${input.mediaSlug}
+media_id: ${input.mediaId}
+slug: ${input.mediaSlug}-intro
+title: ${input.mediaSlug} intro
+order: 1
+---
+
+# Intro
+
+Qui introduciamo [食べる](term:${input.sharedTermId}) e [～ている](grammar:${input.sharedGrammarId}).
+
+:::grammar
+id: ${input.sharedGrammarId}
+${input.crossMediaGrammarGroup ? `cross_media_group: ${input.crossMediaGrammarGroup}` : ""}
+pattern: ～ている
+title: Forma in -te iru
+meaning_it: azione in corso
+:::
+`
+  );
+  await writeFile(
     path.join(cardsDirectory, "001-core.md"),
     `---
 id: ${input.cardsFileId}
@@ -956,6 +1073,7 @@ order: 1
 
 :::term
 id: ${input.sharedTermId}
+${input.crossMediaTermGroup ? `cross_media_group: ${input.crossMediaTermGroup}` : ""}
 lemma: 食べる
 reading: たべる
 romaji: taberu

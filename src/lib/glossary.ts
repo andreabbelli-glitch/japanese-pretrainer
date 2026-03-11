@@ -3,9 +3,11 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import {
   db,
-  getGrammarEntryById,
+  getGrammarCrossMediaFamilyByEntryId,
+  getGrammarEntryBySourceId,
   getMediaBySlug,
-  getTermEntryById,
+  getTermCrossMediaFamilyByEntryId,
+  getTermEntryBySourceId,
   listEntryCardConnections,
   listEntryLessonConnections,
   listEntryStudySignals,
@@ -13,6 +15,9 @@ import {
   listGrammarEntriesByMediaId,
   listTermEntriesByMediaId,
   type DatabaseClient,
+  type CrossMediaGrammarSibling,
+  type CrossMediaGroupRecord,
+  type CrossMediaTermSibling,
   type EntryCardConnection,
   type EntryLessonConnection,
   type GlossaryEntryRef,
@@ -52,6 +57,7 @@ type GlossaryKind = "term" | "grammar";
 
 type GlossaryBaseEntry = {
   id: string;
+  internalId: string;
   kind: GlossaryKind;
   label: string;
   title?: string;
@@ -205,8 +211,26 @@ type GlossaryDetailCard = {
   notes?: string;
 };
 
+type GlossaryCrossMediaSibling = {
+  href: Route;
+  kind: GlossaryKind;
+  label: string;
+  title?: string;
+  reading?: string;
+  romaji?: string;
+  meaning: string;
+  mediaSlug: string;
+  mediaTitle: string;
+  notes?: string;
+  segmentTitle?: string;
+};
+
 export type GlossaryDetailData = {
   cards: GlossaryDetailCard[];
+  crossMedia: {
+    groupKey: string;
+    siblings: GlossaryCrossMediaSibling[];
+  } | null;
   entry: RankedGlossaryEntry & {
     aliasGroups: Array<{
       label: string;
@@ -263,7 +287,7 @@ export async function getGlossaryPageData(
   const studySignalsByEntry = await loadStudySignalsByEntry(
     database,
     entries.map((entry) => ({
-      entryId: entry.id,
+      entryId: entry.internalId,
       entryType: entry.kind
     }))
   );
@@ -282,7 +306,7 @@ export async function getGlossaryPageData(
     );
 
   const resultRefs = rankedEntries.map((entry) => ({
-    entryId: entry.id,
+    entryId: entry.internalId,
     entryType: entry.kind
   }));
   const [lessonConnections, cardConnections] = await Promise.all([
@@ -294,8 +318,10 @@ export async function getGlossaryPageData(
   const mediaSummary = buildGlossaryMediaSummary(media);
 
   const results = rankedEntries.map((entry) => {
-    const lessonRows = lessonsByEntry.get(`${entry.kind}:${entry.id}`) ?? [];
-    const cardRows = cardsByEntry.get(`${entry.kind}:${entry.id}`) ?? [];
+    const lessonRows =
+      lessonsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? [];
+    const cardRows =
+      cardsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? [];
     const uniqueLessons = aggregateLessonConnections(lessonRows);
     const primaryLesson = pickPrimaryLesson(uniqueLessons, media.slug);
     const firstCard = cardRows[0];
@@ -315,13 +341,17 @@ export async function getGlossaryPageData(
     ? buildGlossaryDetailData({
         cardConnections:
           cardsByEntry.get(
-            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
+            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.internalId}`
           ) ?? [],
         entry: selectedPreviewEntry,
         lessonConnections:
           lessonsByEntry.get(
-            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.id}`
+            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.internalId}`
           ) ?? [],
+        crossMediaFamily: {
+          group: null,
+          siblings: []
+        },
         media: mediaSummary
       })
     : undefined;
@@ -388,33 +418,37 @@ async function getGlossaryDetailData(
 
   const entry =
     kind === "term"
-      ? await getTermEntryById(database, entryId)
-      : await getGrammarEntryById(database, entryId);
+      ? await getTermEntryBySourceId(database, media.id, entryId)
+      : await getGrammarEntryBySourceId(database, media.id, entryId);
 
-  if (!entry || entry.mediaId !== media.id) {
+  if (!entry) {
     return null;
   }
 
-  const [studySignals, lessonConnections, cardConnections] = await Promise.all([
-    listEntryStudySignals(database, [
-      {
-        entryId,
-        entryType: kind
-      }
-    ]),
-    listEntryLessonConnections(database, [
-      {
-        entryId,
-        entryType: kind
-      }
-    ]),
-    listEntryCardConnections(database, [
-      {
-        entryId,
-        entryType: kind
-      }
-    ])
-  ]);
+  const [studySignals, lessonConnections, cardConnections, crossMediaFamily] =
+    await Promise.all([
+      listEntryStudySignals(database, [
+        {
+          entryId: entry.id,
+          entryType: kind
+        }
+      ]),
+      listEntryLessonConnections(database, [
+        {
+          entryId: entry.id,
+          entryType: kind
+        }
+      ]),
+      listEntryCardConnections(database, [
+        {
+          entryId: entry.id,
+          entryType: kind
+        }
+      ]),
+      kind === "term"
+        ? getTermCrossMediaFamilyByEntryId(database, entry.id)
+        : getGrammarCrossMediaFamilyByEntryId(database, entry.id)
+    ]);
   const entryStudySignals = studySignals.map((signal) => ({
     manualOverride: signal.manualOverride,
     reviewState: signal.reviewState
@@ -425,7 +459,7 @@ async function getGlossaryDetailData(
       : mapEntryToBaseModel(entry as GrammarGlossaryEntry, "grammar");
   const rankedEntry = {
     ...baseEntry,
-    href: mediaGlossaryEntryHref(media.slug, kind, entryId),
+    href: mediaGlossaryEntryHref(media.slug, kind, entry.sourceId),
     matchBadges: [],
     matchedFields: {
       aliases: []
@@ -439,6 +473,7 @@ async function getGlossaryDetailData(
 
   return buildGlossaryDetailData({
     cardConnections,
+    crossMediaFamily,
     entry: rankedEntry,
     lessonConnections,
     media: buildGlossaryMediaSummary(media)
@@ -488,6 +523,10 @@ function buildGlossaryMediaSummary(
 
 function buildGlossaryDetailData(input: {
   cardConnections: EntryCardConnection[];
+  crossMediaFamily: {
+    group: CrossMediaGroupRecord | null;
+    siblings: CrossMediaTermSibling[] | CrossMediaGrammarSibling[];
+  };
   entry: RankedGlossaryEntry;
   lessonConnections: EntryLessonConnection[];
   media: GlossaryMediaSummary;
@@ -531,6 +570,21 @@ function buildGlossaryDetailData(input: {
       typeLabel: capitalizeToken(row.cardType),
       notes: row.cardNotesIt ?? undefined
     })),
+    crossMedia:
+      input.crossMediaFamily.group && input.crossMediaFamily.siblings.length > 0
+        ? {
+            groupKey: input.crossMediaFamily.group.groupKey,
+            siblings:
+              input.entry.kind === "term"
+                ? (
+                    input.crossMediaFamily.siblings as CrossMediaTermSibling[]
+                  ).map(mapCrossMediaTermSibling)
+                : (
+                    input.crossMediaFamily
+                      .siblings as CrossMediaGrammarSibling[]
+                  ).map(mapCrossMediaGrammarSibling)
+          }
+        : null,
     media: input.media,
     related: {
       cardsLabel:
@@ -542,6 +596,62 @@ function buildGlossaryDetailData(input: {
         : "Nessuna lesson collegata"
     }
   };
+}
+
+function mapCrossMediaTermSibling(
+  sibling: CrossMediaTermSibling
+): GlossaryCrossMediaSibling {
+  return {
+    href: mediaGlossaryEntryHref(sibling.mediaSlug, "term", sibling.sourceId),
+    kind: "term",
+    label: sibling.lemma,
+    reading: sibling.reading,
+    romaji: sibling.romaji,
+    meaning: sibling.meaningIt,
+    mediaSlug: sibling.mediaSlug,
+    mediaTitle: sibling.mediaTitle,
+    notes: buildCrossMediaNotesPreview(sibling.notesIt),
+    segmentTitle: sibling.segmentTitle ?? undefined
+  };
+}
+
+function mapCrossMediaGrammarSibling(
+  sibling: CrossMediaGrammarSibling
+): GlossaryCrossMediaSibling {
+  return {
+    href: mediaGlossaryEntryHref(
+      sibling.mediaSlug,
+      "grammar",
+      sibling.sourceId
+    ),
+    kind: "grammar",
+    label: sibling.pattern,
+    title: sibling.title !== sibling.pattern ? sibling.title : undefined,
+    reading: sibling.reading ?? undefined,
+    meaning: sibling.meaningIt,
+    mediaSlug: sibling.mediaSlug,
+    mediaTitle: sibling.mediaTitle,
+    notes: buildCrossMediaNotesPreview(sibling.notesIt),
+    segmentTitle: sibling.segmentTitle ?? undefined
+  };
+}
+
+function buildCrossMediaNotesPreview(notes?: string | null) {
+  if (!notes) {
+    return undefined;
+  }
+
+  const plainText = stripInlineMarkdown(notes).replace(/\s+/g, " ").trim();
+
+  if (plainText.length === 0) {
+    return undefined;
+  }
+
+  if (plainText.length <= 180) {
+    return plainText;
+  }
+
+  return `${plainText.slice(0, 177).trimEnd()}...`;
 }
 
 function mapEntryToBaseModel(
@@ -560,7 +670,8 @@ function mapEntryToBaseModel(
     const termEntry = entry as TermGlossaryEntry;
 
     return {
-      id: termEntry.id,
+      internalId: termEntry.id,
+      id: termEntry.sourceId,
       kind,
       label: termEntry.lemma,
       reading: termEntry.reading,
@@ -594,7 +705,8 @@ function mapEntryToBaseModel(
   const grammarEntry = entry as GrammarGlossaryEntry;
 
   return {
-    id: grammarEntry.id,
+    internalId: grammarEntry.id,
+    id: grammarEntry.sourceId,
     kind,
     label: grammarEntry.pattern,
     title: grammarEntry.title,
@@ -651,7 +763,7 @@ function rankGlossaryEntry(
   mediaSlug: string
 ): RankedGlossaryEntry | null {
   const studySignals = (
-    studySignalsByEntry.get(`${entry.kind}:${entry.id}`) ?? []
+    studySignalsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? []
   ).map((signal) => ({
     manualOverride: signal.manualOverride,
     reviewState: signal.reviewState
@@ -1200,7 +1312,7 @@ function buildGlossaryStats(
 
   for (const entry of entries) {
     const studySignals = (
-      studySignalsByEntry.get(`${entry.kind}:${entry.id}`) ?? []
+      studySignalsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? []
     ).map((signal) => ({
       manualOverride: signal.manualOverride,
       reviewState: signal.reviewState

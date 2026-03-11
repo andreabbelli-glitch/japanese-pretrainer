@@ -4,10 +4,12 @@ import type { DatabaseClient } from "../client.ts";
 import {
   card,
   cardEntryLink,
+  crossMediaGroup,
   entryLink,
   entryStatus,
   grammarPattern,
   lesson,
+  media,
   reviewState,
   segment,
   type EntryType,
@@ -17,6 +19,40 @@ import {
 export type GlossaryEntryRef = {
   entryId: string;
   entryType: EntryType;
+};
+
+export type CrossMediaGroupRecord = typeof crossMediaGroup.$inferSelect;
+
+export type CrossMediaTermSibling = {
+  entryId: string;
+  groupId: string;
+  groupKey: string;
+  mediaId: string;
+  mediaSlug: string;
+  mediaTitle: string;
+  sourceId: string;
+  lemma: string;
+  reading: string;
+  romaji: string;
+  meaningIt: string;
+  notesIt: string | null;
+  segmentTitle: string | null;
+};
+
+export type CrossMediaGrammarSibling = {
+  entryId: string;
+  groupId: string;
+  groupKey: string;
+  mediaId: string;
+  mediaSlug: string;
+  mediaTitle: string;
+  sourceId: string;
+  pattern: string;
+  title: string;
+  reading: string | null;
+  meaningIt: string;
+  notesIt: string | null;
+  segmentTitle: string | null;
 };
 
 async function getEntryStatusMap(
@@ -165,6 +201,31 @@ export async function getTermEntryById(
   return entry ?? null;
 }
 
+export async function getTermEntryBySourceId(
+  database: DatabaseClient,
+  mediaId: string,
+  sourceId: string
+) {
+  const row = await database.query.term.findFirst({
+    where: and(eq(term.mediaId, mediaId), eq(term.sourceId, sourceId)),
+    with: {
+      aliases: true,
+      segment: true
+    }
+  });
+
+  if (!row) {
+    return null;
+  }
+
+  const statusMap = await getEntryStatusMap(database, "term", [row.id]);
+
+  return {
+    ...row,
+    status: statusMap.get(row.id) ?? null
+  };
+}
+
 export async function getGrammarEntryById(
   database: DatabaseClient,
   entryId: string
@@ -172,6 +233,265 @@ export async function getGrammarEntryById(
   const [entry] = await getGrammarEntriesByIds(database, [entryId]);
 
   return entry ?? null;
+}
+
+export async function getGrammarEntryBySourceId(
+  database: DatabaseClient,
+  mediaId: string,
+  sourceId: string
+) {
+  const row = await database.query.grammarPattern.findFirst({
+    where: and(
+      eq(grammarPattern.mediaId, mediaId),
+      eq(grammarPattern.sourceId, sourceId)
+    ),
+    with: {
+      aliases: true,
+      segment: true
+    }
+  });
+
+  if (!row) {
+    return null;
+  }
+
+  const statusMap = await getEntryStatusMap(database, "grammar", [row.id]);
+
+  return {
+    ...row,
+    status: statusMap.get(row.id) ?? null
+  };
+}
+
+export async function getTermCrossMediaFamilyByEntryId(
+  database: DatabaseClient,
+  entryId: string
+): Promise<{
+  group: CrossMediaGroupRecord | null;
+  siblings: CrossMediaTermSibling[];
+}> {
+  const row = await database.query.term.findFirst({
+    where: eq(term.id, entryId)
+  });
+
+  if (!row?.crossMediaGroupId) {
+    return {
+      group: null,
+      siblings: []
+    };
+  }
+
+  const group = await database.query.crossMediaGroup.findFirst({
+    where: eq(crossMediaGroup.id, row.crossMediaGroupId)
+  });
+
+  if (!group) {
+    return {
+      group: null,
+      siblings: []
+    };
+  }
+
+  const siblings = await database
+    .select({
+      entryId: term.id,
+      groupId: crossMediaGroup.id,
+      groupKey: crossMediaGroup.groupKey,
+      mediaId: media.id,
+      mediaSlug: media.slug,
+      mediaTitle: media.title,
+      sourceId: term.sourceId,
+      lemma: term.lemma,
+      reading: term.reading,
+      romaji: term.romaji,
+      meaningIt: term.meaningIt,
+      notesIt: term.notesIt,
+      segmentTitle: segment.title
+    })
+    .from(term)
+    .innerJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
+    .innerJoin(media, eq(media.id, term.mediaId))
+    .leftJoin(segment, eq(segment.id, term.segmentId))
+    .where(
+      and(
+        eq(term.crossMediaGroupId, row.crossMediaGroupId),
+        ne(term.id, entryId)
+      )
+    )
+    .orderBy(asc(media.title), asc(term.lemma), asc(term.reading));
+
+  return {
+    group,
+    siblings
+  };
+}
+
+export async function getGrammarCrossMediaFamilyByEntryId(
+  database: DatabaseClient,
+  entryId: string
+): Promise<{
+  group: CrossMediaGroupRecord | null;
+  siblings: CrossMediaGrammarSibling[];
+}> {
+  const row = await database.query.grammarPattern.findFirst({
+    where: eq(grammarPattern.id, entryId)
+  });
+
+  if (!row?.crossMediaGroupId) {
+    return {
+      group: null,
+      siblings: []
+    };
+  }
+
+  const group = await database.query.crossMediaGroup.findFirst({
+    where: eq(crossMediaGroup.id, row.crossMediaGroupId)
+  });
+
+  if (!group) {
+    return {
+      group: null,
+      siblings: []
+    };
+  }
+
+  const siblings = await database
+    .select({
+      entryId: grammarPattern.id,
+      groupId: crossMediaGroup.id,
+      groupKey: crossMediaGroup.groupKey,
+      mediaId: media.id,
+      mediaSlug: media.slug,
+      mediaTitle: media.title,
+      sourceId: grammarPattern.sourceId,
+      pattern: grammarPattern.pattern,
+      title: grammarPattern.title,
+      reading: grammarPattern.reading,
+      meaningIt: grammarPattern.meaningIt,
+      notesIt: grammarPattern.notesIt,
+      segmentTitle: segment.title
+    })
+    .from(grammarPattern)
+    .innerJoin(
+      crossMediaGroup,
+      eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
+    )
+    .innerJoin(media, eq(media.id, grammarPattern.mediaId))
+    .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
+    .where(
+      and(
+        eq(grammarPattern.crossMediaGroupId, row.crossMediaGroupId),
+        ne(grammarPattern.id, entryId)
+      )
+    )
+    .orderBy(
+      asc(media.title),
+      asc(grammarPattern.pattern),
+      asc(grammarPattern.title)
+    );
+
+  return {
+    group,
+    siblings
+  };
+}
+
+export async function getTermCrossMediaSiblingCounts(
+  database: DatabaseClient,
+  entryIds: string[]
+) {
+  if (entryIds.length === 0) {
+    return new Map<string, number>();
+  }
+
+  const rows = await database.query.term.findMany({
+    where: inArray(term.id, entryIds)
+  });
+  const groupIds = [
+    ...new Set(
+      rows
+        .map((row) => row.crossMediaGroupId)
+        .filter((value): value is string => typeof value === "string")
+    )
+  ];
+
+  if (groupIds.length === 0) {
+    return new Map<string, number>();
+  }
+
+  const groupedRows = await database.query.term.findMany({
+    where: inArray(term.crossMediaGroupId, groupIds)
+  });
+  const countsByGroup = new Map<string, number>();
+
+  for (const row of groupedRows) {
+    if (!row.crossMediaGroupId) {
+      continue;
+    }
+
+    countsByGroup.set(
+      row.crossMediaGroupId,
+      (countsByGroup.get(row.crossMediaGroupId) ?? 0) + 1
+    );
+  }
+
+  return new Map(
+    rows.map((row) => [
+      row.id,
+      row.crossMediaGroupId
+        ? Math.max((countsByGroup.get(row.crossMediaGroupId) ?? 1) - 1, 0)
+        : 0
+    ])
+  );
+}
+
+export async function getGrammarCrossMediaSiblingCounts(
+  database: DatabaseClient,
+  entryIds: string[]
+) {
+  if (entryIds.length === 0) {
+    return new Map<string, number>();
+  }
+
+  const rows = await database.query.grammarPattern.findMany({
+    where: inArray(grammarPattern.id, entryIds)
+  });
+  const groupIds = [
+    ...new Set(
+      rows
+        .map((row) => row.crossMediaGroupId)
+        .filter((value): value is string => typeof value === "string")
+    )
+  ];
+
+  if (groupIds.length === 0) {
+    return new Map<string, number>();
+  }
+
+  const groupedRows = await database.query.grammarPattern.findMany({
+    where: inArray(grammarPattern.crossMediaGroupId, groupIds)
+  });
+  const countsByGroup = new Map<string, number>();
+
+  for (const row of groupedRows) {
+    if (!row.crossMediaGroupId) {
+      continue;
+    }
+
+    countsByGroup.set(
+      row.crossMediaGroupId,
+      (countsByGroup.get(row.crossMediaGroupId) ?? 0) + 1
+    );
+  }
+
+  return new Map(
+    rows.map((row) => [
+      row.id,
+      row.crossMediaGroupId
+        ? Math.max((countsByGroup.get(row.crossMediaGroupId) ?? 1) - 1, 0)
+        : 0
+    ])
+  );
 }
 
 export async function listEntryLessonConnections(

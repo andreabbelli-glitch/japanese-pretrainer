@@ -62,6 +62,24 @@ Per questo motivo la specifica da sola non basta. Servono:
 - checklist di output;
 - validazione automatica.
 
+### 4.1 Scope degli ID editoriali
+
+Per `term` e `grammar`, l'ID che l'LLM vede nel Markdown non e piu globale al
+workspace: e locale al media su cui sta lavorando.
+
+Regole operative da assumere:
+
+- dentro lo stesso media, `term.id` e `grammar.id` devono restare univoci;
+- tra media diversi, lo stesso ID editoriale puo essere riusato;
+- se vuoi collegare due entry locali di media diversi, usa il campo opzionale
+  `cross_media_group`;
+- `cross_media_group` non sostituisce l'ID locale e non rende globale
+  `term.id` / `grammar.id`;
+- i link semantici `[...](term:...)` e `[...](grammar:...)` vengono risolti nel
+  contesto del media corrente;
+- il confronto runtime "compare anche in altri media" esiste solo per entry con
+  `cross_media_group` esplicito.
+
 ## 5. Modo piu intelligente di collaborare
 
 Il modo piu intelligente non e "chiedi all'LLM di scrivere un textbook".
@@ -133,6 +151,13 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 
 - quali file deve produrre;
 - quali ID esistono gia e non possono cambiare;
+- che per `term` e `grammar` l'unicita vale nel media corrente, non nel
+  workspace intero;
+- che `cross_media_group` e opzionale e va compilato solo quando il
+  collegamento cross-media e editoriale e certo;
+- che, quando serve, il group id va nominato come slug leggibile e stabile,
+  preferibilmente con prefisso del tipo (`term-shared-...`,
+  `grammar-shared-...`);
 - quali segmenti esistono gia;
 - quali entry devono essere riusate;
 - che deve restituire solo Markdown conforme;
@@ -146,6 +171,13 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
 - che non deve aggiungere spiegazioni fuori dai file.
+
+Regola editoriale addizionale:
+
+- non deve proporre `cross_media_group` solo perche due entry condividono
+  lemma, kanji, reading o traduzione letterale.
+- non deve forzare gruppi tra modalita solo analoghe, tra nomi propri o tra
+  entry di tipo diverso anche se condividono lo stesso lessema.
 
 ### 7.1 Regola operativa fondamentale
 
@@ -241,6 +273,8 @@ Vincoli obbligatori:
   segnalano o quali componenti del nome vale la pena riconoscere.
 - Mantieni stabili gli ID esistenti.
 - Se riusi una entry esistente, referenzia il suo ID invece di ridefinirla.
+- Per `term` e `grammar`, tratta gli ID come locali al media corrente: non
+  rinominare un ID solo perche esiste gia in un altro media.
 - Se una entry nuova e importante per glossary/review, dichiarala esplicitamente
   con un blocco `:::term` o `:::grammar`.
 - Tutte le spiegazioni devono essere in italiano.
@@ -273,7 +307,7 @@ Esempi validi:
 Prima di accettare l'output, bisogna verificare:
 
 - frontmatter presente e completo;
-- nessun ID duplicato;
+- nessun ID duplicato dentro lo stesso media;
 - nessun cambio di ID esistente;
 - tutti i riferimenti inline validi;
 - romaji coerenti;
@@ -318,6 +352,11 @@ Regola:
 
 Se `term-taberu` oggi ha certi campi e domani viene ridefinito in modo
 incompatibile, il validatore deve fallire.
+
+Nota di scope:
+
+- questo vale per ridefinizioni incompatibili nello stesso media;
+- la presenza dello stesso ID editoriale in un altro media e consentita.
 
 ### 11.3 Glossary incompleto
 

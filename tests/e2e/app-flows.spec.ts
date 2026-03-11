@@ -104,9 +104,10 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await goodButton.click();
 
   await expect(page).toHaveURL(/answered=1/);
-  await expect(
-    page.locator(".stat-block").filter({ hasText: "Risposte" })
-  ).toContainText("1");
+  await expect(page.getByRole("link", { name: "Mostra risposta" })).toHaveAttribute(
+    "href",
+    /answered=1/
+  );
   await expect(page.locator(".review-stage__front")).not.toHaveText(
     initialReviewFront ?? ""
   );

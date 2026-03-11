@@ -223,6 +223,74 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
           />
         )}
       </Section>
+
+      {data.crossMedia.length > 0 ? (
+        <Section
+          eyebrow="Cross-media"
+          title="Altri media in cui compare"
+          description="Il focus resta sulla card corrente. Questo blocco serve solo a confrontare le sfumature locali delle entry principali collegate."
+        >
+          <div className="stack-list">
+            {data.crossMedia.map((entry) => (
+              <div
+                key={`${entry.kind}:${entry.entryId}`}
+                className="stack-list"
+              >
+                <div className="summary-row">
+                  <span>
+                    {entry.label} · {entry.relationshipLabel}
+                  </span>
+                  <strong>{entry.meaning}</strong>
+                </div>
+                <div className="glossary-detail-list">
+                  {entry.siblings.map((sibling) => (
+                    <Link
+                      key={`${entry.entryId}:${sibling.mediaSlug}:${sibling.href}`}
+                      className="glossary-detail-link"
+                      href={sibling.href}
+                    >
+                      <SurfaceCard
+                        className="glossary-detail-card"
+                        variant="quiet"
+                      >
+                        <div className="glossary-detail-card__top">
+                          <div className="glossary-detail-card__chips">
+                            <span className="chip">{sibling.mediaTitle}</span>
+                            {sibling.reading ? (
+                              <span className="meta-pill">
+                                {sibling.reading}
+                              </span>
+                            ) : null}
+                          </div>
+                          <span className="glossary-result-card__arrow">
+                            Apri entry
+                          </span>
+                        </div>
+                        <h3 className="glossary-detail-card__title jp-inline">
+                          {sibling.label}
+                        </h3>
+                        {sibling.subtitle ? (
+                          <p className="glossary-entry-hero__subtitle">
+                            {sibling.subtitle}
+                          </p>
+                        ) : null}
+                        <p className="glossary-detail-card__body">
+                          {sibling.meaning}
+                        </p>
+                        {sibling.notes ? (
+                          <p className="glossary-detail-card__note">
+                            {renderFurigana(sibling.notes)}
+                          </p>
+                        ) : null}
+                      </SurfaceCard>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      ) : null}
     </div>
   );
 }

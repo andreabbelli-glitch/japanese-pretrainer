@@ -56,12 +56,14 @@ missioni, ricompense e crescita del profilo.
 
 ## Spiegazione
 
-Le quattro modalita principali ufficiali da riconoscere sono
-[ランクマッチ](term:term-rank-match),
-[VEレイドバトル](term:term-ve-raid-battle),
-[チャレンジモード](term:term-challenge-mode) e
-[カジュアルマッチ](term:term-casual-match). Capire queste etichette ti evita
-di usare ogni sessione per lo scopo sbagliato.
+Le quattro modalita principali ufficiali da riconoscere sono [ランクマッチ](term:term-rank-match), [VEレイドバトル](term:term-ve-raid-battle), [チャレンジモード](term:term-challenge-mode) e [カジュアルマッチ](term:term-casual-match). Capire queste etichette ti evita di usare ogni sessione per lo scopo sbagliato.
+
+:::image
+src: assets/ui/mode-select-screen.webp
+alt: "Schermata ufficiale di selezione modalita con riquadri per Rank Match, Challenge Mode e Casual Match, piu il pannello 対戦モード選択."
+caption: >-
+  Schermata ufficiale di selezione modalita: riconosci [ランクマッチ](term:term-rank-match), [チャレンジモード](term:term-challenge-mode) e [カジュアルマッチ](term:term-casual-match), piu il pannello `{{対戦|たいせん}}モード{{選択|せんたく}}` che decide come cercare l'avversario.
+:::
 
 [ランクマッチ](term:term-rank-match) e la modalita classificata contro giocatori
 di tutto il paese. Qui contano [ランクポイント](term:term-rank-point), rank e
@@ -100,11 +102,14 @@ iniziale da ricordare e semplice: quando il
 equipaggiarne una nel [{{メイン枠|めいんわく}}](term:term-main-slot) e una nel
 [{{サブ枠|さぶわく}}](term:term-sub-slot).
 
-[MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di
-controllare il progresso delle [ミッション](term:term-mission), i livelli di MS
-e PL, gli ultimi risultati di battaglia e alcuni dati cumulativi. Per lo studio
-della lingua questo e utile, perche ti fa rivedere con calma le categorie che in
-sala giochi scorrono troppo in fretta.
+[MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di controllare il progresso delle [ミッション](term:term-mission), i livelli di MS e PL, gli ultimi risultati di battaglia e alcuni dati cumulativi. Per lo studio della lingua questo e utile, perche ti fa rivedere con calma le categorie che in sala giochi scorrono troppo in fretta.
+
+:::image
+src: assets/ui/missions-progress-screen.webp
+alt: "Schermata ufficiale delle missioni in MY PAGE con tab di categoria, stato CLEAR e riquadri ricompensa visibili."
+caption: >-
+  Schermata missioni di [MY PAGE](term:term-mypage): categorie, stato `CLEAR!!` e riquadri premio ti fanno rileggere con calma [ミッション](term:term-mission) e avanzamento del profilo fuori dalla sala giochi.
+:::
 
 Il tuo primo [デッキ](term:term-deck) va pensato come una struttura leggibile,
 non come una lista perfetta di rarita alte. La base ufficiale del gioco e sempre
@@ -174,3 +179,5 @@ translation_it: >-
 
 La progressione iniziale funziona meglio se scegli modalita che ti insegnano a
 leggere il campo prima di chiederti efficienza o risultato competitivo.
+
+

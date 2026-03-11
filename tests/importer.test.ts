@@ -28,6 +28,11 @@ import {
   term
 } from "@/db/schema/index.ts";
 import { importContentWorkspace } from "@/lib/content/importer.ts";
+import { buildScopedEntryId } from "@/lib/entry-id";
+import {
+  crossMediaFixture,
+  writeCrossMediaContentFixture
+} from "./helpers/cross-media-fixture";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -44,12 +49,16 @@ const demoMediaFixtureRoot = path.join(
 const mediaId = "media-frieren";
 const lessonId = "lesson-frieren-ep01-intro";
 const termId = "term-taberu";
+const termDbId = buildScopedEntryId("term", mediaId, termId);
+const grammarId = "grammar-teiru";
+const grammarDbId = buildScopedEntryId("grammar", mediaId, grammarId);
 const termCardId = "card-taberu-recognition";
 const grammarCardId = "card-teiru-concept";
 const scopedMediaId = "media-dungeon-meshi";
 const scopedLessonId = "lesson-dungeon-meshi-ep01-intro";
 const scopedCardId = "card-laios-recognition";
 const scopedTermId = "term-laios";
+const scopedTermDbId = buildScopedEntryId("term", scopedMediaId, scopedTermId);
 
 describe("content importer", () => {
   let tempDir = "";
@@ -119,7 +128,7 @@ describe("content importer", () => {
     );
     expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
     expect(importedLesson?.content?.htmlRendered).toContain(
-      '/media/frieren/assets/episode-01/frieren-meal.svg'
+      "/media/frieren/assets/episode-01/frieren-meal.svg"
     );
     expect(importedLesson?.content?.htmlRendered).toContain(
       "grammar-definition"
@@ -166,10 +175,10 @@ describe("content importer", () => {
       }
     });
     const importedTerm = await database.query.term.findFirst({
-      where: eq(term.id, "term-invasion")
+      where: eq(term.sourceId, "term-invasion")
     });
     const importedGrammar = await database.query.grammarPattern.findFirst({
-      where: eq(grammarPattern.id, "grammar-toki")
+      where: eq(grammarPattern.sourceId, "grammar-toki")
     });
     const importedCard = await database.query.card.findFirst({
       where: eq(card.id, "card-invasion-recognition")
@@ -194,7 +203,9 @@ describe("content importer", () => {
     expect(importedCard?.exampleIt).toBe(
       "Con Invasion, sovrapponila su questa creatura."
     );
-    expect(importedCardLink?.entryId).toBe("term-invasion");
+    expect(importedCardLink?.entryId).toBe(
+      buildScopedEntryId("term", "media-duel-masters-dm25", "term-invasion")
+    );
   });
 
   it("reimports the same content idempotently without duplicating rows or wiping user state", async () => {
@@ -232,7 +243,7 @@ describe("content importer", () => {
       where: eq(reviewLog.cardId, termCardId)
     });
     const persistedEntryStatus = await database.query.entryStatus.findFirst({
-      where: eq(entryStatus.entryId, termId)
+      where: eq(entryStatus.entryId, termDbId)
     });
     const persistedLessonProgress =
       await database.query.lessonProgress.findFirst({
@@ -280,7 +291,7 @@ describe("content importer", () => {
         row.sourceId === grammarCardId &&
         row.linkRole === "mentioned" &&
         row.entryType === "term" &&
-        row.entryId === termId
+        row.entryId === termDbId
     );
 
     expect(mentionedTermLink).toBeDefined();
@@ -347,7 +358,8 @@ describe("content importer", () => {
         row.sourceId === lessonId &&
         row.linkRole === "mentioned" &&
         row.entryType === "term" &&
-        row.entryId === noteReferencedTermId
+        row.entryId ===
+          buildScopedEntryId("term", mediaId, noteReferencedTermId)
     );
 
     expect(mentionedTermLink).toBeDefined();
@@ -389,7 +401,7 @@ describe("content importer", () => {
     expect(result.filesChanged).toBe(1);
 
     const importedTerm = await database.query.term.findFirst({
-      where: eq(term.id, termId)
+      where: eq(term.id, termDbId)
     });
     const importedCard = await database.query.card.findFirst({
       where: eq(card.id, termCardId)
@@ -437,7 +449,7 @@ describe("content importer", () => {
           "In questa lezione vediamo solo la forma [～ている](grammar:grammar-teiru)."
         )
         .replace(
-          '\n:::image\nsrc: assets/episode-01/frieren-meal.svg\nalt: Frieren osserva una tavola apparecchiata.\ncaption: >-\n  Screenshot di riferimento per [食べる](term:term-taberu) nel contesto della\n  scena.\n:::\n',
+          "\n:::image\nsrc: assets/episode-01/frieren-meal.svg\nalt: Frieren osserva una tavola apparecchiata.\ncaption: >-\n  Screenshot di riferimento per [食べる](term:term-taberu) nel contesto della\n  scena.\n:::\n",
           "\n"
         )
     );
@@ -476,13 +488,13 @@ tags: [grammar, core]
       throw new Error("Expected import to complete.");
     }
     expect(result.summary.archivedCardIds).toContain(termCardId);
-    expect(result.summary.prunedTermIds).toContain(termId);
+    expect(result.summary.prunedTermIds).toContain(termDbId);
 
     const archivedCard = await database.query.card.findFirst({
       where: eq(card.id, termCardId)
     });
     const missingTerm = await database.query.term.findFirst({
-      where: eq(term.id, termId)
+      where: eq(term.id, termDbId)
     });
     const persistedReviewState = await database.query.reviewState.findFirst({
       where: eq(reviewState.cardId, termCardId)
@@ -491,7 +503,7 @@ tags: [grammar, core]
       where: eq(reviewLog.cardId, termCardId)
     });
     const persistedEntryStatus = await database.query.entryStatus.findFirst({
-      where: eq(entryStatus.entryId, termId)
+      where: eq(entryStatus.entryId, termDbId)
     });
     const activeCards = await listCardsByMediaId(database, mediaId);
 
@@ -555,10 +567,10 @@ tags: [grammar, core]
       where: eq(lesson.id, lessonId)
     });
     const importedTerm = await database.query.term.findFirst({
-      where: eq(term.id, termId)
+      where: eq(term.id, termDbId)
     });
     const importedGrammar = await database.query.grammarPattern.findFirst({
-      where: eq(grammarPattern.id, "grammar-teiru")
+      where: eq(grammarPattern.id, grammarDbId)
     });
     const importedTermCard = await database.query.card.findFirst({
       where: eq(card.id, termCardId)
@@ -622,7 +634,7 @@ tags: [grammar, core]
     expect(result.summary.prunedGrammarIds).toEqual([]);
 
     const updatedFrierenTerm = await database.query.term.findFirst({
-      where: eq(term.id, termId)
+      where: eq(term.id, termDbId)
     });
     const updatedFrierenCard = await database.query.card.findFirst({
       where: eq(card.id, termCardId)
@@ -637,7 +649,7 @@ tags: [grammar, core]
       where: eq(card.id, scopedCardId)
     });
     const preservedScopedTerm = await database.query.term.findFirst({
-      where: eq(term.id, scopedTermId)
+      where: eq(term.id, scopedTermDbId)
     });
 
     expect(updatedFrierenTerm?.meaningIt).toBe("nutrirsi");
@@ -646,6 +658,64 @@ tags: [grammar, core]
     expect(preservedScopedLesson?.status).toBe("active");
     expect(preservedScopedCard?.status).toBe("active");
     expect(preservedScopedTerm?.lemma).toBe("ライオス");
+  });
+
+  it("supports scoped imports when the target media reuses term and grammar source ids from another media", async () => {
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const initialResult = await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-09T10:00:00.000Z")
+    });
+
+    expect(initialResult.status).toBe("completed");
+
+    const betaCardsPath = path.join(
+      contentRoot,
+      "media",
+      crossMediaFixture.beta.mediaSlug,
+      "cards",
+      "001-core.md"
+    );
+
+    await writeFile(
+      betaCardsPath,
+      (await readFile(betaCardsPath, "utf8")).replace(
+        crossMediaFixture.beta.termMeaning,
+        "costo nel media beta aggiornato"
+      )
+    );
+
+    const scopedResult = await importContentWorkspace({
+      contentRoot,
+      database,
+      mediaSlugs: [crossMediaFixture.beta.mediaSlug],
+      now: new Date("2026-03-09T11:00:00.000Z")
+    });
+
+    expect(scopedResult.status).toBe("completed");
+
+    const [updatedBetaTerm, preservedAlphaTerm] = await Promise.all([
+      database.query.term.findFirst({
+        where: eq(term.sourceId, crossMediaFixture.beta.termSourceId)
+      }),
+      database.query.term.findFirst({
+        where: eq(term.sourceId, crossMediaFixture.alpha.termSourceId)
+      })
+    ]);
+
+    expect(updatedBetaTerm?.meaningIt).toBe("costo nel media beta aggiornato");
+    expect(preservedAlphaTerm?.meaningIt).toBe(
+      crossMediaFixture.alpha.termMeaning
+    );
+    expect(updatedBetaTerm?.crossMediaGroupId).toBeTruthy();
+    expect(updatedBetaTerm?.crossMediaGroupId).toBe(
+      preservedAlphaTerm?.crossMediaGroupId
+    );
+    expect(
+      await countRows(database.query.crossMediaGroup.findMany())
+    ).toBeGreaterThanOrEqual(2);
   });
 
   it("fails cleanly on invalid content without partially mutating imported tables", async () => {
@@ -770,7 +840,7 @@ async function seedUserState(database: DatabaseClient) {
   await database.insert(entryStatus).values({
     id: "entry_status_term_taberu",
     entryType: "term",
-    entryId: termId,
+    entryId: termDbId,
     status: "known_manual",
     reason: "Existing manual override",
     setAt: "2026-03-09T09:45:00.000Z"

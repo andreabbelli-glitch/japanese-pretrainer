@@ -27,6 +27,10 @@ import {
 } from "@/lib/glossary";
 import { getReviewCardDetailData } from "@/lib/review";
 import { setReviewCardSuspended } from "@/lib/review-service";
+import {
+  crossMediaFixture,
+  writeCrossMediaContentFixture
+} from "./helpers/cross-media-fixture";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -293,7 +297,7 @@ describe("glossary data", () => {
         notesIt:
           "Nota con **enfasi**, {{日本語|にほんご}} e `[食べる](term:term-taberu)`."
       })
-      .where(eq(grammarPattern.id, "grammar-teiru"));
+      .where(eq(grammarPattern.sourceId, "grammar-teiru"));
     await database
       .update(card)
       .set({
@@ -473,5 +477,55 @@ describe("glossary data", () => {
       "Spiegata",
       "Citata"
     ]);
+  });
+
+  it("keeps glossary detail local to the current media when source ids are reused across media", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const [alphaDetail, betaDetail] = await Promise.all([
+      getTermGlossaryDetailData(
+        crossMediaFixture.alpha.mediaSlug,
+        crossMediaFixture.alpha.termSourceId,
+        database
+      ),
+      getTermGlossaryDetailData(
+        crossMediaFixture.beta.mediaSlug,
+        crossMediaFixture.beta.termSourceId,
+        database
+      )
+    ]);
+
+    expect(alphaDetail?.entry.id).toBe(crossMediaFixture.alpha.termSourceId);
+    expect(alphaDetail?.entry.meaning).toBe(
+      crossMediaFixture.alpha.termMeaning
+    );
+    expect(alphaDetail?.cards[0]?.id).toBe(crossMediaFixture.alpha.termCardId);
+    expect(alphaDetail?.crossMedia?.siblings).toHaveLength(1);
+    expect(alphaDetail?.crossMedia?.siblings[0]?.href).toBe(
+      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+    );
+    expect(betaDetail?.entry.meaning).toBe(crossMediaFixture.beta.termMeaning);
+    expect(betaDetail?.cards[0]?.id).toBe(crossMediaFixture.beta.termCardId);
+    expect(betaDetail?.crossMedia?.siblings[0]?.meaning).toBe(
+      crossMediaFixture.alpha.termMeaning
+    );
+
+    const markup = renderToStaticMarkup(
+      GlossaryDetailPage({ data: alphaDetail! })
+    );
+
+    expect(markup).toContain("Compare anche in altri media");
+    expect(markup).toContain(
+      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+    );
   });
 });

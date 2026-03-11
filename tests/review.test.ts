@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
+import { ReviewCardDetailPage } from "@/components/review/review-card-detail-page";
 import { ReviewPage } from "@/components/review/review-page";
 import {
   card,
@@ -32,6 +33,11 @@ import {
 } from "@/lib/review-service";
 import { scheduleReview } from "@/lib/review-scheduler";
 import { updateStudySettings } from "@/lib/settings";
+import { importContentWorkspace } from "@/lib/content/importer";
+import {
+  crossMediaFixture,
+  writeCrossMediaContentFixture
+} from "./helpers/cross-media-fixture";
 
 describe("review system", () => {
   let tempDir = "";
@@ -133,14 +139,14 @@ describe("review system", () => {
         id: "card_entry_link_fixture_new_context_primary",
         cardId: "card_fixture_new_context",
         entryType: "term",
-        entryId: developmentFixture.termId,
+        entryId: developmentFixture.termDbId,
         relationshipType: "primary"
       },
       {
         id: "card_entry_link_fixture_suspended_primary",
         cardId: "card_fixture_suspended",
         entryType: "term",
-        entryId: developmentFixture.termId,
+        entryId: developmentFixture.termDbId,
         relationshipType: "primary"
       }
     ]);
@@ -260,14 +266,14 @@ describe("review system", () => {
         id: "card_entry_link_fixture_new_limit_a",
         cardId: "card_fixture_new_limit_a",
         entryType: "term",
-        entryId: developmentFixture.termId,
+        entryId: developmentFixture.termDbId,
         relationshipType: "secondary"
       },
       {
         id: "card_entry_link_fixture_new_limit_b",
         cardId: "card_fixture_new_limit_b",
         entryType: "term",
-        entryId: developmentFixture.termId,
+        entryId: developmentFixture.termDbId,
         relationshipType: "secondary"
       }
     ]);
@@ -386,8 +392,12 @@ describe("review system", () => {
     );
 
     expect(primaryPage?.selectedCard?.reading).toBe("いく");
-    expect(primaryPage?.selectedCard?.exampleJp).toBe("{{駅|えき}}まで {{行|い}}く。");
-    expect(primaryPage?.selectedCard?.exampleIt).toBe("Vado fino alla stazione.");
+    expect(primaryPage?.selectedCard?.exampleJp).toBe(
+      "{{駅|えき}}まで {{行|い}}く。"
+    );
+    expect(primaryPage?.selectedCard?.exampleIt).toBe(
+      "Vado fino alla stazione."
+    );
     expect(secondaryPage?.selectedCard?.reading).toBe("〜ている");
     expect(primaryDetail?.card.reading).toBe("いく");
     expect(primaryDetail?.card.exampleJp).toBe("{{駅|えき}}まで {{行|い}}く。");
@@ -416,7 +426,9 @@ describe("review system", () => {
 
     expect(reviewPage?.selectedCardContext.gradePreviews).toHaveLength(4);
     expect(
-      reviewPage?.selectedCardContext.gradePreviews.map((preview) => preview.rating)
+      reviewPage?.selectedCardContext.gradePreviews.map(
+        (preview) => preview.rating
+      )
     ).toEqual(["again", "hard", "good", "easy"]);
 
     const markup = renderToStaticMarkup(ReviewPage({ data: reviewPage! }));
@@ -568,5 +580,54 @@ describe("review system", () => {
     expect(resetState?.dueAt).toBe("2026-03-09T14:10:00.000Z");
     expect(logs).toHaveLength(1);
     expect(resetQueue?.cards[0]?.id).toBe(developmentFixture.primaryCardId);
+  });
+
+  it("keeps review queue and detail local to the current media when source ids are reused across media", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const [alphaQueue, betaDetail] = await Promise.all([
+      getReviewQueueSnapshotForMedia(
+        crossMediaFixture.alpha.mediaSlug,
+        database
+      ),
+      getReviewCardDetailData(
+        crossMediaFixture.beta.mediaSlug,
+        crossMediaFixture.beta.termCardId,
+        database
+      )
+    ]);
+
+    expect(alphaQueue?.cards.map((card) => card.id)).toContain(
+      crossMediaFixture.alpha.termCardId
+    );
+    expect(betaDetail?.entries[0]?.id).toBe(
+      crossMediaFixture.beta.termSourceId
+    );
+    expect(betaDetail?.entries[0]?.meaning).toBe(
+      crossMediaFixture.beta.termMeaning
+    );
+    expect(betaDetail?.entries[0]?.href).toBe(
+      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+    );
+    expect(betaDetail?.crossMedia).toHaveLength(1);
+    expect(betaDetail?.crossMedia[0]?.siblings[0]?.href).toBe(
+      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`
+    );
+
+    const markup = renderToStaticMarkup(
+      ReviewCardDetailPage({ data: betaDetail! })
+    );
+
+    expect(markup).toContain("Altri media in cui compare");
+    expect(markup).toContain(crossMediaFixture.alpha.termMeaning);
   });
 });

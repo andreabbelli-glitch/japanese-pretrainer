@@ -36,8 +36,9 @@ requests:
       Home reale di `デュエプレ` usata per fissare i label base della schermata
       iniziale.
     notes: >-
-      Richiesta aperta: nelle fonti ufficiali trovate finora non compare una
-      home screen leggibile con i label citati dalla lesson.
+      Risolta con screenshot fornito dall'utente. In questa UI alcune entrate
+      chiave sono mostrate come icone nella barra alta, non come label testuali
+      estese dentro il corpo centrale della schermata.
   - id: duel-plays-deck-edit-screen
     lesson_slug: duel-plays-app-decks-and-shop
     anchor: "### 2. `デッキ{{編成|へんせい}}` e `レンタルデッキ` rispondono a due bisogni diversi"
@@ -71,9 +72,9 @@ requests:
       Schermata reale delle modalità di `デュエプレ`, utile per leggere dove puoi
       giocare subito e quali contenuti sono attivi.
     notes: >-
-      Richiesta aperta: le fonti ufficiali trovate espongono battle scene o
-      key visual, ma non una schermata modalità leggibile con i label didattici
-      della lesson.
+      Risolta con screenshot fornito dall'utente. La UI reale presenta le
+      modalità principali dentro la schermata `Battle`, con pannelli grandi per
+      `ランクマッチ`, `カジュアルマッチ` e `ルームマッチ`.
   - id: dm25-sd1-abyssbell-jashintei-card
     lesson_slug: dm25-sd1-overview
     anchor: "### 3. I nomi propri qui non sono decorazione"

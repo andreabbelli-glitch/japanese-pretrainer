@@ -66,6 +66,7 @@ Tabelle incluse nel perimetro del task:
 
 - `media`
 - `segment`
+- `cross_media_group`
 - `lesson`
 - `lesson_content`
 - `term`
@@ -86,11 +87,26 @@ Tabelle incluse nel perimetro del task:
 ## Decisioni implementative
 
 - Gli ID sono stringhe stabili e non autoincrementali.
+- `term` e `grammar_pattern` usano una PK tecnica persistente interna (`id`) e
+  conservano l'ID editoriale importato dal Markdown in `source_id`.
+- Per `term` e `grammar_pattern`, l'unicita editoriale e `(media_id, source_id)`
+  e non piu `source_id` globale al workspace.
+- `cross_media_group` e il layer esplicito di collegamento cross-media.
+  L'authoring usa un campo opzionale `cross_media_group` nei blocchi `:::term`
+  e `:::grammar`; il DB lo materializza nella tabella dedicata e nelle FK
+  nullable `term.cross_media_group_id` / `grammar_pattern.cross_media_group_id`.
+- `cross_media_group` non sostituisce le entry locali: serve solo a recuperare
+  sibling secondarie in altri media, mantenendo `meaning_it` e `notes_it`
+  locali come fonte primaria.
 - `entry_status` e `review_state` restano separati per tenere distinti override
   manuali di entita e stato SRS delle card.
 - I riferimenti polimorfici (`entry_type + entry_id`, `source_type + source_id`)
-  non usano false foreign key; la validazione resta demandata a importer e layer
-  applicativo futuri.
+  non usano false foreign key; per `entry_id` il valore persistito e la chiave
+  tecnica interna della entry, mentre il routing pubblico continua a usare
+  l'ID editoriale locale al media.
+- In fase 2, textbook popup resta locale; glossary detail e review detail
+  possono mostrare sibling cross-media solo quando esiste un
+  `cross_media_group` esplicito.
 - Gli indici minimi richiesti da glossary, ordering e review queue sono gia
   inclusi nella migrazione iniziale.
 

@@ -3,11 +3,15 @@ import { unstable_noStore as noStore } from "next/cache";
 import {
   countNewCardsIntroducedOnDayByMediaId,
   db,
+  getGrammarCrossMediaFamilyByEntryId,
   getMediaBySlug,
+  getTermCrossMediaFamilyByEntryId,
   listGrammarEntriesByMediaId,
   listReviewCardsByMediaId,
   listTermEntriesByMediaId,
   type DatabaseClient,
+  type CrossMediaGrammarSibling,
+  type CrossMediaTermSibling,
   type GrammarGlossaryEntry,
   type ReviewCardListItem,
   type TermGlossaryEntry
@@ -161,6 +165,23 @@ export type ReviewCardDetailData = {
     segmentTitle?: string;
     typeLabel: string;
   };
+  crossMedia: Array<{
+    entryId: string;
+    kind: ReviewCardEntryKind;
+    label: string;
+    meaning: string;
+    relationshipLabel: string;
+    siblings: Array<{
+      href: ReturnType<typeof mediaGlossaryEntryHref>;
+      label: string;
+      meaning: string;
+      mediaSlug: string;
+      mediaTitle: string;
+      notes?: string;
+      reading?: string;
+      subtitle?: string;
+    }>;
+  }>;
   entries: ReviewCardEntrySummary[];
   media: {
     glossaryHref: ReturnType<typeof mediaStudyHref>;
@@ -188,12 +209,12 @@ export async function getReviewPageData(
   const searchState = normalizeReviewSearchState(searchParams);
   const [cards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
-    listReviewCardsByMediaId(database, media.id),
-    listTermEntriesByMediaId(database, media.id),
-    listGrammarEntriesByMediaId(database, media.id),
-    getReviewDailyLimit(database),
-    countNewCardsIntroducedOnDayByMediaId(database, media.id, now)
-  ]);
+      listReviewCardsByMediaId(database, media.id),
+      listTermEntriesByMediaId(database, media.id),
+      listGrammarEntriesByMediaId(database, media.id),
+      getReviewDailyLimit(database),
+      countNewCardsIntroducedOnDayByMediaId(database, media.id, now)
+    ]);
   const queue = buildReviewQueueSnapshot({
     cards,
     dailyLimit,
@@ -216,7 +237,7 @@ export async function getReviewPageData(
     queue.cards[0] ??
     null;
   const selectedRawCard = selectedCard
-    ? cards.find((card) => card.id === selectedCard.id) ?? null
+    ? (cards.find((card) => card.id === selectedCard.id) ?? null)
     : null;
   const queueIndex = selectedCard
     ? queue.cards.findIndex((card) => card.id === selectedCard.id)
@@ -266,12 +287,12 @@ export async function getReviewQueueSnapshotForMedia(
 
   const [cards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
-    listReviewCardsByMediaId(database, media.id),
-    listTermEntriesByMediaId(database, media.id),
-    listGrammarEntriesByMediaId(database, media.id),
-    getReviewDailyLimit(database),
-    countNewCardsIntroducedOnDayByMediaId(database, media.id, now)
-  ]);
+      listReviewCardsByMediaId(database, media.id),
+      listTermEntriesByMediaId(database, media.id),
+      listGrammarEntriesByMediaId(database, media.id),
+      getReviewDailyLimit(database),
+      countNewCardsIntroducedOnDayByMediaId(database, media.id, now)
+    ]);
   const snapshot = buildReviewQueueSnapshot({
     cards,
     dailyLimit,
@@ -319,10 +340,54 @@ export async function getReviewCardDetailData(
   const selectedCard = cards
     .map((card) => mapQueueCard(card, entryLookup, media.slug))
     .find((card) => card.id === cardId);
+  const selectedRawCard = cards.find((card) => card.id === cardId) ?? null;
 
-  if (!selectedCard) {
+  if (!selectedCard || !selectedRawCard) {
     return null;
   }
+
+  const termById = new Map(terms.map((entry) => [entry.id, entry]));
+  const grammarById = new Map(grammar.map((entry) => [entry.id, entry]));
+  const crossMedia = await Promise.all(
+    getDrivingEntryLinks(selectedRawCard.entryLinks).map(async (link) => {
+      const localEntry =
+        link.entryType === "term"
+          ? termById.get(link.entryId)
+          : grammarById.get(link.entryId);
+
+      if (!localEntry) {
+        return null;
+      }
+
+      const family =
+        link.entryType === "term"
+          ? await getTermCrossMediaFamilyByEntryId(database, link.entryId)
+          : await getGrammarCrossMediaFamilyByEntryId(database, link.entryId);
+
+      if (family.siblings.length === 0) {
+        return null;
+      }
+
+      return {
+        entryId: localEntry.sourceId,
+        kind: link.entryType,
+        label:
+          link.entryType === "term"
+            ? (localEntry as TermGlossaryEntry).lemma
+            : (localEntry as GrammarGlossaryEntry).pattern,
+        meaning: localEntry.meaningIt,
+        relationshipLabel: formatCardRelationshipLabel(link.relationshipType),
+        siblings:
+          link.entryType === "term"
+            ? (family.siblings as CrossMediaTermSibling[]).map(
+                mapReviewCrossMediaTermSibling
+              )
+            : (family.siblings as CrossMediaGrammarSibling[]).map(
+                mapReviewCrossMediaGrammarSibling
+              )
+      };
+    })
+  );
 
   return {
     card: {
@@ -342,6 +407,10 @@ export async function getReviewCardDetailData(
       segmentTitle: selectedCard.segmentTitle,
       typeLabel: selectedCard.typeLabel
     },
+    crossMedia: crossMedia.filter(
+      (value): value is NonNullable<(typeof crossMedia)[number]> =>
+        value !== null
+    ),
     entries: selectedCard.entries,
     media: {
       glossaryHref: mediaStudyHref(media.slug, "glossary"),
@@ -350,6 +419,37 @@ export async function getReviewCardDetailData(
       slug: media.slug,
       title: media.title
     }
+  };
+}
+
+function mapReviewCrossMediaTermSibling(sibling: CrossMediaTermSibling) {
+  return {
+    href: mediaGlossaryEntryHref(sibling.mediaSlug, "term", sibling.sourceId),
+    label: sibling.lemma,
+    meaning: sibling.meaningIt,
+    mediaSlug: sibling.mediaSlug,
+    mediaTitle: sibling.mediaTitle,
+    notes: buildReviewCrossMediaNotesPreview(sibling.notesIt),
+    reading: sibling.reading,
+    subtitle:
+      [sibling.reading, sibling.romaji].filter(Boolean).join(" / ") || undefined
+  };
+}
+
+function mapReviewCrossMediaGrammarSibling(sibling: CrossMediaGrammarSibling) {
+  return {
+    href: mediaGlossaryEntryHref(
+      sibling.mediaSlug,
+      "grammar",
+      sibling.sourceId
+    ),
+    label: sibling.pattern,
+    meaning: sibling.meaningIt,
+    mediaSlug: sibling.mediaSlug,
+    mediaTitle: sibling.mediaTitle,
+    notes: buildReviewCrossMediaNotesPreview(sibling.notesIt),
+    reading: sibling.reading ?? undefined,
+    subtitle: sibling.title !== sibling.pattern ? sibling.title : undefined
   };
 }
 
@@ -428,8 +528,8 @@ function buildEntryLookup(
 
   for (const entry of terms) {
     lookup.set(`term:${entry.id}`, {
-      href: mediaGlossaryEntryHref(mediaSlug, "term", entry.id),
-      id: entry.id,
+      href: mediaGlossaryEntryHref(mediaSlug, "term", entry.sourceId),
+      id: entry.sourceId,
       kind: "term",
       label: entry.lemma,
       meaning: entry.meaningIt,
@@ -442,8 +542,8 @@ function buildEntryLookup(
 
   for (const entry of grammar) {
     lookup.set(`grammar:${entry.id}`, {
-      href: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.id),
-      id: entry.id,
+      href: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.sourceId),
+      id: entry.sourceId,
       kind: "grammar",
       label: entry.pattern,
       meaning: entry.meaningIt,
@@ -454,6 +554,27 @@ function buildEntryLookup(
   }
 
   return lookup;
+}
+
+function buildReviewCrossMediaNotesPreview(notes?: string | null) {
+  if (!notes) {
+    return undefined;
+  }
+
+  const plainText = notes
+    .replace(/[`*_~[\]]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (plainText.length === 0) {
+    return undefined;
+  }
+
+  if (plainText.length <= 160) {
+    return plainText;
+  }
+
+  return `${plainText.slice(0, 157).trimEnd()}...`;
 }
 
 function mapQueueCard(
@@ -551,7 +672,9 @@ function resolveReviewCardReading(
     .sort(compareEntryLinks);
 
   for (const link of drivingLinks) {
-    const reading = entryLookup.get(`${link.entryType}:${link.entryId}`)?.reading;
+    const reading = entryLookup.get(
+      `${link.entryType}:${link.entryId}`
+    )?.reading;
 
     if (reading) {
       return reading;
@@ -559,7 +682,9 @@ function resolveReviewCardReading(
   }
 
   for (const link of card.entryLinks.slice().sort(compareEntryLinks)) {
-    const reading = entryLookup.get(`${link.entryType}:${link.entryId}`)?.reading;
+    const reading = entryLookup.get(
+      `${link.entryType}:${link.entryId}`
+    )?.reading;
 
     if (reading) {
       return reading;
