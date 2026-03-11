@@ -95,7 +95,13 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   expect(initialReviewFront?.trim().length).toBeGreaterThan(0);
 
   await page.getByRole("link", { name: "Mostra risposta" }).click();
-  await page.getByRole("button", { name: /^Good/ }).click();
+  const goodButton = page.getByRole("button", { name: /^Good/ });
+  await goodButton.hover();
+  await expect(goodButton).toHaveCSS(
+    "cursor",
+    "pointer"
+  );
+  await goodButton.click();
 
   await expect(page).toHaveURL(/answered=1/);
   await expect(

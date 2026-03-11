@@ -350,8 +350,15 @@ rt {
   padding: 0.75rem 1.15rem;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
+  cursor: pointer;
   font-size: var(--text-small);
   font-weight: var(--font-weight-semibold);
+  transition:
+    background-color var(--motion-base) var(--ease-standard),
+    border-color var(--motion-base) var(--ease-standard),
+    color var(--motion-base) var(--ease-standard),
+    box-shadow var(--motion-base) var(--ease-standard),
+    transform var(--motion-base) var(--ease-standard);
 }
 
 .button--small {
@@ -360,10 +367,21 @@ rt {
   font-size: var(--text-micro);
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.button:disabled:hover,
+.button:disabled:focus-visible {
+  transform: none;
+}
+
 .button:hover,
 .button:focus-visible,
 .text-link:hover,
 .text-link:focus-visible {
+  cursor: pointer;
   transform: translateY(-1px);
 }
 
@@ -1698,7 +1716,32 @@ rt {
   padding: var(--space-4);
   border: 1px solid rgba(192, 175, 150, 0.82);
   border-radius: var(--radius-lg);
+  appearance: none;
+  cursor: pointer;
   text-align: left;
+  transition:
+    border-color var(--motion-base) var(--ease-standard),
+    box-shadow var(--motion-base) var(--ease-standard),
+    transform var(--motion-base) var(--ease-standard);
+}
+
+.review-grade-button:hover,
+.review-grade-button:focus-visible {
+  cursor: pointer;
+  border-color: rgba(158, 136, 105, 0.98);
+  box-shadow: 0 14px 30px rgba(94, 76, 51, 0.08);
+  transform: translateY(-1px);
+}
+
+.review-grade-button:active {
+  transform: translateY(0);
+}
+
+.review-grade-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
 }
 
 .review-grade-button span {
