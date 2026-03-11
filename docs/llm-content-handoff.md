@@ -118,6 +118,8 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 - quali entry devono essere riusate;
 - che deve restituire solo Markdown conforme;
 - che i campi descrittivi in YAML devono usare una serializzazione sicura;
+- che ogni blocco `:::card` deve includere sempre `example_jp` +
+  `example_it`, con una frase giapponese completa e la sua traduzione italiana;
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
 - che non deve aggiungere spiegazioni fuori dai file.
@@ -128,6 +130,11 @@ Per ridurre i fallimenti di import:
 
 - l'LLM esterno deve trattare `notes_it` come campo da serializzare sempre con
   `>-`;
+- per ogni blocco `:::card`, `example_jp` e `example_it` sono obbligatori e
+  vanno compilati sempre insieme;
+- `example_jp` deve essere una frase completa e contestuale utile sul retro
+  review, non una parola isolata, una pseudo-definizione o una semplice
+  ripetizione del `front`;
 - per estensione, anche `summary`, `description` e `notes` vanno preferiti in
   `>-` quando compaiono in YAML;
 - non deve usare plain scalar per testo che contiene `:` o `：`, furigana,
@@ -195,6 +202,9 @@ Vincoli obbligatori:
   intero: `{{2000以下|にせんいか}}`, `{{3000円|さんぜんえん}}`.
 - Per i campi descrittivi in YAML usa `>-` invece di plain scalar quando c'e
   testo libero, markdown inline o una frase completa di rules text.
+- Ogni blocco `:::card` deve includere sempre `example_jp` + `example_it`.
+  `example_jp` deve essere una frase giapponese completa e contestuale utile
+  sul retro review, non una parola isolata o una ripetizione del `front`.
 - Non scrivere spiegazioni tautologiche del tipo "X e utile/importante":
   ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa
   capire o fare nel media.
@@ -239,6 +249,9 @@ Prima di accettare l'output, bisogna verificare:
 - tutti i riferimenti inline validi;
 - romaji coerenti;
 - reading presenti dove obbligatori;
+- ogni `:::card` ha `example_jp` e `example_it`;
+- gli esempi delle card sono frasi complete e contestuali, non placeholder o
+  definizioni camuffate;
 - niente termini importanti lasciati solo nel testo libero;
 - niente spiegazioni tautologiche o solo valutative ("utile", "importante",
   "da fissare") senza contenuto semantico e operativo;

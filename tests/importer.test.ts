@@ -184,8 +184,12 @@ describe("content importer", () => {
     expect(importedGrammar?.pattern).toBe("～時 / ～た時");
     expect(importedGrammar?.reading).toBe("とき / たとき");
     expect(importedCard?.front).toBe("侵略");
-    expect(importedCard?.exampleJp).toBeNull();
-    expect(importedCard?.exampleIt).toBeNull();
+    expect(importedCard?.exampleJp).toBe(
+      "{{侵略|しんりゃく}}でこのクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。"
+    );
+    expect(importedCard?.exampleIt).toBe(
+      "Con Invasion, sovrapponila su questa creatura."
+    );
     expect(importedCardLink?.entryId).toBe("term-invasion");
   });
 

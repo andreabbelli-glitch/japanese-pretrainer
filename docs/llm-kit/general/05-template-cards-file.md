@@ -41,9 +41,9 @@ card_type: recognition
 front: <testo-front>
 back: <testo-back>
 example_jp: >-
-  <frase-opzionale-in-giapponese-che-contiene-la-entry>
+  <frase-obbligatoria-in-giapponese-che-contiene-la-entry-in-un-contesto-reale>
 example_it: >-
-  <traduzione-italiana-della-frase-opzionale>
+  <traduzione-italiana-obbligatoria-della-stessa-frase>
 notes_it: >-
   <nota-opzionale-con-inline-markdown-o-riferimenti: chiarisci il significato
   reale e l'uso concreto della entry nel media>
@@ -58,9 +58,9 @@ card_type: concept
 front: <testo-front>
 back: <testo-back>
 example_jp: >-
-  <frase-opzionale-in-giapponese-che-contiene-il-pattern>
+  <frase-obbligatoria-in-giapponese-che-contiene-il-pattern-in-un-contesto-reale>
 example_it: >-
-  <traduzione-italiana-della-frase-opzionale>
+  <traduzione-italiana-obbligatoria-della-stessa-frase>
 notes_it: >-
   <nota-opzionale-con-inline-markdown-o-riferimenti: chiarisci il significato
   reale e l'uso concreto del pattern nel media>
@@ -71,6 +71,9 @@ tags: [<tag-1>, <tag-2>]
 Regole pratiche:
 - definisci qui le entry canoniche preferite per glossary/review;
 - se una entry esiste gia, non ridefinirla: crea solo la :::card che la usa;
+- ogni `:::card` deve avere sempre `example_jp` + `example_it`;
+- `example_jp` deve essere una frase completa e contestuale utile sul retro
+  review, non una parola isolata o una ripetizione del `front`;
 - i campi `notes_it` vanno trattati come prose YAML e scritti in `>-`;
 - evita plain scalar per testo con `:`/`：`, furigana, link semantici, backtick
   o frasi complete di rules text;

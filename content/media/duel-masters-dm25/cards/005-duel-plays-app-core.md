@@ -579,6 +579,10 @@ entry_id: term-home
 card_type: recognition
 front: ホーム
 back: schermata principale / home
+example_jp: >-
+  ホームからミッションを{{開|ひら}}く。
+example_it: >-
+  Apri le missioni dalla Home.
 notes_it: >-
   È il punto di orientamento base. Se lo riconosci subito, poi tutto il resto
   dell'app smette di sembrare un insieme di schermate scollegate.
@@ -592,6 +596,10 @@ entry_id: term-mission
 card_type: recognition
 front: ミッション
 back: missione / task
+example_jp: >-
+  ミッションを{{達成|たっせい}}して{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
+example_it: >-
+  Completa una missione e riscuoti la ricompensa.
 notes_it: >-
   Parola molto pratica: spesso ti porta a premi, progressione e obiettivi da
   completare. Dentro l'app è una delle etichette più utili da fissare presto.
@@ -605,6 +613,10 @@ entry_id: term-login-bonus
 card_type: recognition
 front: ログインボーナス
 back: bonus di accesso / login bonus
+example_jp: >-
+  ログインボーナスを{{受|う}}け{{取|と}}る。
+example_it: >-
+  Riscuoti il login bonus.
 notes_it: >-
   Conviene leggerlo come blocco unico. Ti serve sia per orientarti sia per
   associare subito quella schermata a ricompense giornaliere.
@@ -618,6 +630,10 @@ entry_id: term-present
 card_type: recognition
 front: プレゼント
 back: casella regali / inbox premi
+example_jp: >-
+  プレゼントから{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
+example_it: >-
+  Riscuoti una ricompensa dalla casella regali.
 notes_it: >-
   In `デュエプレ` non è un "regalo" generico: è il posto dove incassare oggetti
   e premi. Riconoscerlo ti fa agire, non solo capire.
@@ -631,6 +647,10 @@ entry_id: term-shop
 card_type: recognition
 front: ショップ
 back: negozio / shop
+example_jp: >-
+  ショップでカードを{{交換|こうかん}}する。
+example_it: >-
+  Scambia una carta nello shop.
 notes_it: >-
   È l'ingresso alle aree di acquisto e scambio. Quando lo vedi, preparati a
   leggere bene i verbi operativi delle risorse.
@@ -644,6 +664,10 @@ entry_id: term-confirm
 card_type: recognition
 front: 確認
 back: conferma / controllo
+example_jp: >-
+  {{購入|こうにゅう}}の{{前|まえ}}に{{内容|ないよう}}を{{確認|かくにん}}する。
+example_it: >-
+  Controlla i dettagli prima dell'acquisto.
 notes_it: >-
   Bottone o passaggio di verifica molto comune. Vale la pena fissarlo perché
   compare ovunque, non solo in questo media.
@@ -657,6 +681,10 @@ entry_id: term-receive
 card_type: recognition
 front: 受け取る
 back: ricevere / riscuotere
+example_jp: >-
+  {{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
+example_it: >-
+  Riscuoti la ricompensa.
 notes_it: >-
   Se compare vicino a [{{報酬|ほうしゅう}}](term:term-reward), significa che puoi
   davvero incassare qualcosa. È un verbo da collegare subito all'azione pratica.
@@ -670,6 +698,10 @@ entry_id: term-constructed-deck
 card_type: recognition
 front: デッキ
 back: mazzo costruito / deck
+example_jp: >-
+  このデッキで{{対戦|たいせん}}する。
+example_it: >-
+  Gioca una partita con questo deck.
 notes_it: >-
   In app indica la tua lista di gioco, non [{{山札|やまふだ}}](term:term-deck)
   come zona di partita. Questa distinzione evita molte confusioni inutili.
@@ -683,6 +715,10 @@ entry_id: term-hensei
 card_type: recognition
 front: 編成
 back: organizzazione / composizione / setup
+example_jp: >-
+  カードを{{入|い}}れ{{替|か}}えて{{編成|へんせい}}する。
+example_it: >-
+  Riorganizza il mazzo sostituendo le carte.
 notes_it: >-
   Da solo `{{編成|へんせい}}` aggiunge l'idea di mettere insieme elementi in un
   certo assetto. In `デッキ{{編成|へんせい}}` e la parte che ti fa leggere il
@@ -697,6 +733,10 @@ entry_id: term-deck-edit
 card_type: recognition
 front: デッキ編成
 back: costruzione / modifica del mazzo
+example_jp: >-
+  デッキ{{編成|へんせい}}で{{40枚|よんじゅうまい}}に{{調整|ちょうせい}}する。
+example_it: >-
+  Nel deck edit, regola il mazzo fino a 40 carte.
 notes_it: >-
   Va letto come composto: `デッキ` nomina il mazzo, `{{編成|へんせい}}` la sua
   organizzazione. Quindi il label intero indica l'area in cui sistemi la lista
@@ -711,6 +751,10 @@ entry_id: term-rental-deck
 card_type: recognition
 front: レンタルデッキ
 back: mazzo noleggiato / rental deck
+example_jp: >-
+  レンタルデッキで{{対戦|たいせん}}を{{始|はじ}}める。
+example_it: >-
+  Inizia una partita con un rental deck.
 notes_it: >-
   La parte decisiva e `レンタル`: il mazzo ti viene prestato, non costruito da
   te. Se lo riconosci, capisci subito che puoi entrare in modalità di gioco con
@@ -725,6 +769,10 @@ entry_id: term-card-purchase
 card_type: recognition
 front: カード購入
 back: acquisto carte / card purchase
+example_jp: >-
+  カード{{購入|こうにゅう}}でパックを{{買|か}}う。
+example_it: >-
+  Compra un pack nella sezione acquisto carte.
 notes_it: >-
   Il punto chiave e `{{購入|こうにゅう}}`: qui stai comprando, non scambiando o
   craftando. Il composto segnala quindi un flusso di acquisto vero e proprio.
@@ -738,6 +786,10 @@ entry_id: term-card-exchange
 card_type: recognition
 front: カード交換
 back: scambio carte / card exchange
+example_jp: >-
+  カード{{交換|こうかん}}で{{必要|ひつよう}}なカードを{{手|て}}に{{入|い}}れる。
+example_it: >-
+  Ottieni la carta che ti serve tramite Card Exchange.
 notes_it: >-
   Il punto chiave e `{{交換|こうかん}}`: qui stai scambiando risorse, non
   comprando in senso diretto. Questa distinzione evita errori pratici nelle
@@ -752,6 +804,10 @@ entry_id: term-craft
 card_type: recognition
 front: 生成
 back: creare / craftare
+example_jp: >-
+  DMポイントでカードを{{生成|せいせい}}する。
+example_it: >-
+  Crea una carta con i DM Points.
 notes_it: >-
   Qui `{{生成|せいせい}}` non vuol dire "generare" in astratto: vuol dire creare
   direttamente una carta usando una risorsa. Se la riconosci, sai subito che
@@ -767,6 +823,10 @@ entry_id: term-disenchant
 card_type: recognition
 front: 分解
 back: smontare / convertire in risorsa
+example_jp: >-
+  {{不要|ふよう}}なカードを{{分解|ぶんかい}}する。
+example_it: >-
+  Smonta una carta che non ti serve.
 notes_it: >-
   È l'opposto operativo di [{{生成|せいせい}}](term:term-craft). Questa coppia
   vale la pena fissarla presto perché compare spesso in sequenza.
@@ -780,6 +840,10 @@ entry_id: term-dm-points
 card_type: recognition
 front: DMポイント
 back: punti DM / risorsa di scambio o creazione
+example_jp: >-
+  DMポイントを{{300ポイント|さんびゃくぽいんと}} {{使|つか}}う。
+example_it: >-
+  Usa 300 DM Points.
 notes_it: >-
   Quando questo numero compare, non stai leggendo un dettaglio cosmetico: stai
   leggendo un vincolo o una possibilità reale per ottenere carte.
@@ -793,6 +857,10 @@ entry_id: term-ranked-match
 card_type: recognition
 front: ランクマッチ
 back: partita classificata / ranked match
+example_jp: >-
+  ランクマッチで{{1勝|いっしょう}}する。
+example_it: >-
+  Ottieni 1 vittoria in ranked match.
 notes_it: >-
   Modalità competitiva da riconoscere a colpo d'occhio. Se la vedi, sai che il
   contesto è ladder e non semplice prova libera.
@@ -806,6 +874,10 @@ entry_id: term-room-match
 card_type: recognition
 front: ルームマッチ
 back: match in stanza / room match
+example_jp: >-
+  ルームマッチで{{友達|ともだち}}と{{対戦|たいせん}}する。
+example_it: >-
+  Gioca una partita con un amico in room match.
 notes_it: >-
   È il label del contesto privato o organizzato. Ti aiuta a distinguere subito
   la partita in stanza dal matchmaking standard.
@@ -819,6 +891,10 @@ entry_id: term-quick-pick
 card_type: recognition
 front: クイック・ピック
 back: Quick Pick / modalità di scelta rapida
+example_jp: >-
+  クイック・ピックでカードを{{1枚|いちまい}} {{選|えら}}ぶ。
+example_it: >-
+  Scegli 1 carta in Quick Pick.
 notes_it: >-
   Nome di modalità da memorizzare come blocco. Riconoscerlo ti evita di fermarti
   a tradurre ogni parte mentre stai scegliendo dove entrare.
@@ -832,6 +908,10 @@ entry_id: term-solo-play
 card_type: recognition
 front: ソロプレイ
 back: gioco singolo / solo play
+example_jp: >-
+  ソロプレイで{{練習|れんしゅう}}する。
+example_it: >-
+  Fai pratica in Solo Play.
 notes_it: >-
   È il contenitore generale dell'area single-player. Vale la pena fissarlo
   perché spesso è una porta d'ingresso più tranquilla per leggere e giocare.
@@ -845,6 +925,10 @@ entry_id: term-reward
 card_type: recognition
 front: 報酬
 back: ricompensa / reward
+example_jp: >-
+  {{達成|たっせい}}したミッションの{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
+example_it: >-
+  Riscuoti la ricompensa della missione completata.
 notes_it: >-
   È una parola-base da padroneggiare. Se compare, chiediti subito se la
   ricompensa è solo mostrata o già pronta da riscuotere.
@@ -858,6 +942,10 @@ entry_id: term-ongoing
 card_type: recognition
 front: 開催中
 back: in corso / attivo ora
+example_jp: >-
+  このイベントは{{開催中|かいさいちゅう}}だ。
+example_it: >-
+  Questo evento è attualmente in corso.
 notes_it: >-
   `{{開催|かいさい}}` + [～{{中|ちゅう}}](grammar:grammar-ui-chuu) ti dice che
   evento o modalità sono in corso proprio adesso. E un vero label di stato, non
@@ -872,6 +960,10 @@ entry_id: term-unlock
 card_type: recognition
 front: 解放
 back: sblocco / unlock
+example_jp: >-
+  ストーリーを{{進|すす}}めると{{新|あたら}}しいモードが{{解放|かいほう}}される。
+example_it: >-
+  Andando avanti nella storia si sblocca una nuova modalità.
 notes_it: >-
   Quando lo vedi, l'app sta parlando di accesso che si sblocca. Il punto non e
   "apertura" in astratto, ma passaggio concreto da non disponibile a
@@ -886,6 +978,10 @@ entry_id: term-start-match
 card_type: recognition
 front: 対戦開始
 back: avvia la partita / start battle
+example_jp: >-
+  デッキを{{選択|せんたく}}して{{対戦開始|たいせんかいし}}を{{押|お}}す。
+example_it: >-
+  Seleziona il deck e premi Avvia partita.
 notes_it: >-
   `{{対戦|たいせん}}` ti dice che si parla della partita, `{{開始|かいし}}` che
   sta per iniziare. Il bottone segna quindi il passaggio reale dalla selezione
@@ -900,6 +996,10 @@ entry_id: grammar-ichiran
 card_type: concept
 front: ～一覧
 back: elenco / overview di X
+example_jp: >-
+  ミッション{{一覧|いちらん}}を{{開|ひら}}く。
+example_it: >-
+  Apri l'elenco delle missioni.
 notes_it: >-
   Ti aiuta a leggere schermate come `ミッション{{一覧|いちらん}}` senza perderti:
   se vedi `{{一覧|いちらん}}`, stai guardando una lista.
@@ -913,6 +1013,10 @@ entry_id: grammar-ui-chuu
 card_type: concept
 front: ～中
 back: in corso / attualmente attivo
+example_jp: >-
+  メンテナンス{{中|ちゅう}}は{{対戦|たいせん}}できない。
+example_it: >-
+  Durante la manutenzione non puoi fare partite.
 notes_it: >-
   Pattern di stato molto frequente nelle UI. Il punto non è solo memorizzarlo,
   ma capire che `中` comprime l'idea di "in corso proprio adesso": in due
@@ -927,6 +1031,10 @@ entry_id: grammar-zumi
 card_type: concept
 front: ～済み
 back: già fatto / già riscosso
+example_jp: >-
+  この{{報酬|ほうしゅう}}は{{受取済み|うけとりずみ}}だ。
+example_it: >-
+  Questa ricompensa è già stata riscossa.
 notes_it: >-
   Serve a leggere al volo se un'azione o una ricompensa sono già stati gestiti.
   È un pattern molto adatto al review perché torna in molte schermate.
@@ -940,6 +1048,10 @@ entry_id: grammar-mi-prefix
 card_type: concept
 front: 未～
 back: non ancora / ancora non disponibile
+example_jp: >-
+  このモードは{{未解放|みかいほう}}だ。
+example_it: >-
+  Questa modalità non è ancora sbloccata.
 notes_it: >-
   Questo prefisso orienta subito il verso del messaggio: non stai guardando una
   funzione assente, ma una funzione esistente che non ha ancora raggiunto la
@@ -955,6 +1067,10 @@ entry_id: grammar-kanou
 card_type: concept
 front: ～可能
 back: possibile / disponibile
+example_jp: >-
+  このカードは{{交換可能|こうかんかのう}}だ。
+example_it: >-
+  Questa carta è scambiabile.
 notes_it: >-
   Da leggere come "puoi farlo adesso". È un ottimo pattern-ponte tra giapponese
   e decisione pratica nell'app.
@@ -968,6 +1084,10 @@ entry_id: grammar-wo-sentaku
 card_type: concept
 front: ～を選択
 back: seleziona X
+example_jp: >-
+  デッキを{{選択|せんたく}}してください。
+example_it: >-
+  Seleziona un deck.
 notes_it: >-
   Formula di istruzione diretta. Se la riconosci, capisci subito quale oggetto
   l'app si aspetta che tu scelga prima di proseguire.

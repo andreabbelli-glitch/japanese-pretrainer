@@ -51,6 +51,9 @@ Vincoli di formato obbligatori:
 - Per i campi descrittivi YAML come `notes_it`, usa `>-` invece di plain scalar.
 - Se un valore contiene `:`/`：`, furigana, link semantici, backtick o una
   frase completa di rules text, non lasciarlo come plain scalar.
+- Ogni blocco `:::card` deve includere sempre `example_jp` + `example_it`.
+  `example_jp` deve essere una frase giapponese completa e contestuale utile
+  sul retro review, non una parola isolata o una ripetizione del `front`.
 - Non scrivere `notes_it` o paragrafi textbook che si fermano a "X e utile da
   fissare": devi sempre esplicitare significato reale + effetto pratico nel
   media.
@@ -123,4 +126,5 @@ CHECKLIST:
 - unresolved_references: <numero>
 - unsafe_yaml_fields: <numero>
 - explanation_tautologies: <numero>
+- cards_missing_examples: <numero>
 ```

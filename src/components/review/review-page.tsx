@@ -149,10 +149,6 @@ export function ReviewPage({ data }: ReviewPageProps) {
                 </h2>
                 {!data.selectedCardContext.showAnswer ? (
                   <div className="review-stage__veil">
-                    <p className="panel-note">
-                      Mantieni il ritmo: guarda il fronte, poi apri la risposta
-                      solo quando sei pronto a dare un voto.
-                    </p>
                     <Link
                       className="button button--primary review-stage__reveal"
                       href={buildRevealHref(data, selectedCard.id)}

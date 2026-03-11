@@ -807,6 +807,10 @@ entry_id: term-creature
 card_type: recognition
 front: クリーチャー
 back: creatura
+example_jp: >-
+  このクリーチャーは{{攻撃|こうげき}}できる。
+example_it: >-
+  Questa creatura può attaccare.
 notes_it: >-
   È il tipo di carta base del gioco. Se la vedi, pensa a una carta che entra nel
   campo, attacca, blocca o subisce effetti. Nel testo può comparire anche come
@@ -821,6 +825,10 @@ entry_id: term-spell
 card_type: recognition
 front: 呪文
 back: magia / spell
+example_jp: >-
+  この{{呪文|じゅもん}}を{{使|つか}}って、カードを{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  Usa questa magia e pesca 1 carta.
 notes_it: >-
   Indica una magia. In genere la giochi per il suo effetto e poi non resta sul
   campo. Quando leggi {{呪文|じゅもん}}, aspettati un effetto immediato.
@@ -834,6 +842,10 @@ entry_id: term-tamaseed
 card_type: recognition
 front: タマシード
 back: tipo di carta Tamaseed
+example_jp: >-
+  このタマシードの{{上|うえ}}に{{進化|しんか}}クリーチャーを{{重|かさ}}ねる。
+example_it: >-
+  Sovrapponi una creatura evoluzione su questo Tamaseed.
 notes_it: >-
   È un tipo di carta che resta nel campo e che, in questo media, conta
   soprattutto come base per {{進化|しんか}} o シンカライズ. Non leggerla come una
@@ -848,6 +860,10 @@ entry_id: term-blocker
 card_type: recognition
 front: ブロッカー
 back: bloccante
+example_jp: >-
+  ブロッカーを{{持|も}}つクリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
+example_it: >-
+  Scegli 1 creatura che ha Blocker.
 notes_it: >-
   Keyword difensiva. Se la creatura ha ブロッカー, può fermare un attacco
   avversario. È un segnale chiaro di difesa.
@@ -861,6 +877,10 @@ entry_id: term-evolution
 card_type: recognition
 front: 進化
 back: evoluzione
+example_jp: >-
+  {{進化|しんか}}クリーチャーを{{1体|いったい}} {{出|だ}}す。
+example_it: >-
+  Metti in gioco 1 creatura evoluzione.
 notes_it: >-
   Ti dice che la carta va messa sopra una base valida. Se compare, controlla
   sempre quale carta deve stare sotto e quali condizioni servono.
@@ -874,6 +894,10 @@ entry_id: term-invasion
 card_type: recognition
 front: 侵略
 back: invasione
+example_jp: >-
+  {{侵略|しんりゃく}}でこのクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。
+example_it: >-
+  Con Invasion, sovrapponila su questa creatura.
 notes_it: >-
   Keyword offensiva tipica di SD2. Di solito permette di mettere una creatura
   dalla mano sopra un attaccante durante l'attacco. Cerca sempre l'attaccante
@@ -888,6 +912,10 @@ entry_id: term-shinkarize
 card_type: recognition
 front: シンカライズ
 back: effetto che permette di evolvere sopra un Tamaseed
+example_jp: >-
+  このタマシードはシンカライズできる。
+example_it: >-
+  Questo Tamaseed può usare Shinkarize.
 notes_it: >-
   Serve a collegare i Tamaseed alle carte di evoluzione. Quando lo vedi, pensa
   subito a una meccanica di sovrapposizione con un Tamaseed come base.
@@ -901,6 +929,10 @@ entry_id: term-abyss
 card_type: recognition
 front: アビス
 back: Abyss / gruppo di carte Abyss
+example_jp: >-
+  コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}} {{選|えら}}ぶ。
+example_it: >-
+  Scegli 1 Abyss di costo 4 o inferiore.
 notes_it: >-
   È un'etichetta di gruppo fondamentale in SD1. Se appare, controlla se la
   frase sta filtrando quali carte puoi scegliere, recuperare o mettere in campo.
@@ -914,6 +946,10 @@ entry_id: term-command
 card_type: recognition
 front: コマンド
 back: Command / famiglia di creature
+example_jp: >-
+  {{火|ひ}}のコマンドを{{1体|いったい}} {{出|だ}}す。
+example_it: >-
+  Metti in gioco 1 Command di fuoco.
 notes_it: >-
   In SD2 questa famiglia compare soprattutto come condizione di validità
   dell'effetto. Non basta che una creatura attacchi: deve attaccare proprio un
@@ -928,6 +964,10 @@ entry_id: term-civilization
 card_type: recognition
 front: 文明
 back: civiltà / civilization
+example_jp: >-
+  このカードは{{火|ひ}}の{{文明|ぶんめい}}を{{持|も}}つ。
+example_it: >-
+  Questa carta ha la civiltà fuoco.
 notes_it: >-
   È il colore della carta. Serve sia a leggere l'anatomia della carta sia a
   capire filtri come `{{火|ひ}}のコマンド` o effetti che richiedono una civiltà
@@ -942,6 +982,10 @@ entry_id: term-cost
 card_type: recognition
 front: コスト
 back: costo
+example_jp: >-
+  コスト{{5以下|ごいか}}のクリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
+example_it: >-
+  Scegli 1 creatura di costo 5 o inferiore.
 notes_it: >-
   È il numero di mana richiesto per giocare la carta. Nel testo effetto può
   anche diventare un filtro, per esempio in `コスト{{4以下|よんいか}}`.
@@ -955,6 +999,10 @@ entry_id: term-power
 card_type: recognition
 front: パワー
 back: potere / power
+example_jp: >-
+  パワー{{2000以下|にせんいか}}のクリーチャーを{{破壊|はかい}}する。
+example_it: >-
+  Distruggi 1 creatura con power 2000 o inferiore.
 notes_it: >-
   È la forza della creatura. Se compare nel testo, di solito serve a limitare i
   bersagli o a definire quali creature vengono colpite.
@@ -968,6 +1016,10 @@ entry_id: term-goukei
 card_type: recognition
 front: 合計
 back: totale / somma complessiva
+example_jp: >-
+  クリーチャーまたはタマシードを{{合計|ごうけい}}{{3つ|みっつ}}まで{{選|えら}}ぶ。
+example_it: >-
+  Scegli fino a 3 creature e/o Tamaseed in totale.
 notes_it: >-
   Segnala un conteggio aggregato. Se compare, devi sommare tutti gli elementi
   validi nello stesso filtro invece di leggerli come controlli separati.
@@ -981,6 +1033,10 @@ entry_id: term-race
 card_type: recognition
 front: 種族
 back: tribù / race
+example_jp: >-
+  {{種族|しゅぞく}}がアビスロイヤルのクリーチャーを{{1体|いったい}} {{出|だ}}す。
+example_it: >-
+  Metti in gioco 1 creatura la cui razza è Abyss Royal.
 notes_it: >-
   È la linea di appartenenza della carta. In molte frasi non è decorativa:
   decide se una carta rientra davvero nel filtro dell'effetto.
@@ -994,6 +1050,10 @@ entry_id: term-battle-zone
 card_type: recognition
 front: バトルゾーン
 back: battle zone / campo
+example_jp: >-
+  このクリーチャーをバトルゾーンに{{出|だ}}す。
+example_it: >-
+  Metti questa creatura nella battle zone.
 notes_it: >-
   È il campo principale del gioco. Qui entrano le creature, qui si attacca, qui
   molte carte vengono distrutte o sovrapposte.
@@ -1007,6 +1067,10 @@ entry_id: term-mana-zone
 card_type: recognition
 front: マナゾーン
 back: mana zone
+example_jp: >-
+  このカードをマナゾーンに{{置|お}}く。
+example_it: >-
+  Metti questa carta nella mana zone.
 notes_it: >-
   È la zona delle risorse. Se una carta parla di pagare il costo o di spostare
   carte nella mana, devi pensare a questa zona.
@@ -1020,6 +1084,10 @@ entry_id: term-shield-zone
 card_type: recognition
 front: シールドゾーン
 back: shield zone
+example_jp: >-
+  シールドゾーンから{{1枚|いちまい}} {{手札|てふだ}}に{{加|くわ}}える。
+example_it: >-
+  Aggiungi 1 carta dalla shield zone alla tua mano.
 notes_it: >-
   È la zona dei 5 scudi. Conta sia perché gli attacchi colpiscono gli scudi sia
   perché qui si attivano spesso carte con S・トリガー.
@@ -1033,6 +1101,10 @@ entry_id: term-deck
 card_type: recognition
 front: 山札
 back: mazzo / deck
+example_jp: >-
+  {{山札|やまふだ}}の{{上|うえ}}から{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  Pesca 1 carta dalla cima del mazzo.
 notes_it: >-
   Significa "mazzo". Compare spesso in frasi come
   `{{山札|やまふだ}}の{{上|うえ}}からX{{枚|まい}}`. La lettura da fissare bene è
@@ -1047,6 +1119,10 @@ entry_id: term-hand
 card_type: recognition
 front: 手札
 back: mano / hand
+example_jp: >-
+  {{手札|てふだ}}からクリーチャーを{{1体|いったい}} {{出|だ}}す。
+example_it: >-
+  Metti in gioco 1 creatura dalla tua mano.
 notes_it: >-
   Significa "mano". Se compare, controlla se la carta viene scartata, mostrata
   o fatta entrare in gioco dalla mano. La lettura è {{手札|てふだ}}.
@@ -1060,6 +1136,10 @@ entry_id: term-graveyard
 card_type: recognition
 front: 墓地
 back: cimitero / graveyard
+example_jp: >-
+  {{墓地|ぼち}}からカードを{{1枚|いちまい}} {{手札|てふだ}}に{{戻|もど}}す。
+example_it: >-
+  Rimetti 1 carta dal cimitero nella tua mano.
 notes_it: >-
   Significa "cimitero". In questo media è una zona centrale soprattutto in SD1.
   Se compare, chiediti subito se l'effetto manda carte nel cimitero, le riprende
@@ -1074,6 +1154,10 @@ entry_id: term-self
 card_type: recognition
 front: 自分
 back: se stessi / tu
+example_jp: >-
+  {{自分|じぶん}}のクリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
+example_it: >-
+  Scegli 1 delle tue creature.
 notes_it: >-
   Significa "tu" nel contesto della carta. Ti dice che l'effetto riguarda il
   giocatore che controlla la carta o l'effetto stesso.
@@ -1087,6 +1171,10 @@ entry_id: term-opponent
 card_type: recognition
 front: 相手
 back: avversario / opponent
+example_jp: >-
+  {{相手|あいて}}のクリーチャーを{{1体|いったい}} {{破壊|はかい}}する。
+example_it: >-
+  Distruggi 1 creatura del tuo avversario.
 notes_it: >-
   Significa "avversario". È una parola chiave da riconoscere subito, perché ti
   dice che il bersaglio o la zona coinvolta sono dall'altro lato del tavolo.
@@ -1100,6 +1188,10 @@ entry_id: term-summon
 card_type: recognition
 front: 召喚
 back: evocazione / summon
+example_jp: >-
+  このクリーチャーを{{召喚|しょうかん}}してもよい。
+example_it: >-
+  Puoi evocare questa creatura.
 notes_it: >-
   Indica la normale evocazione di una creatura pagando il costo. Se una carta
   distingue `{{召喚|しょうかん}}` da altri modi di entrare in gioco, sta facendo un
@@ -1114,6 +1206,10 @@ entry_id: term-attack
 card_type: recognition
 front: 攻撃
 back: attacco / attack
+example_jp: >-
+  このクリーチャーが{{攻撃|こうげき}}する{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  Quando questa creatura attacca, pesca 1 carta.
 notes_it: >-
   Significa "attacco". Compare spesso in trigger e condizioni: se lo vedi,
   aspettati un effetto che si attiva durante il combattimento.
@@ -1127,6 +1223,10 @@ entry_id: term-destroy
 card_type: recognition
 front: 破壊
 back: distruzione / destroy
+example_jp: >-
+  {{相手|あいて}}のクリーチャーを{{1体|いったい}} {{破壊|はかい}}する。
+example_it: >-
+  Distruggi 1 creatura del tuo avversario.
 notes_it: >-
   Significa "distruggere". Non va confuso con ogni possibile uscita dal campo:
   è un caso specifico, più stretto di {{離|はな}}れる.
@@ -1140,6 +1240,10 @@ entry_id: term-break
 card_type: recognition
 front: ブレイク
 back: rompere gli scudi / break
+example_jp: >-
+  このクリーチャーはシールドを{{1枚|いちまい}}ブレイクする。
+example_it: >-
+  Questa creatura rompe 1 scudo.
 notes_it: >-
   Vuol dire rompere gli scudi dell'avversario. È un verbo da collegare subito
   alla pressione offensiva e alla vittoria.
@@ -1153,6 +1257,10 @@ entry_id: term-tap
 card_type: recognition
 front: タップ
 back: tappare / mettere tapped
+example_jp: >-
+  {{相手|あいて}}のクリーチャーを{{1体|いったい}}タップする。
+example_it: >-
+  Tappa 1 creatura del tuo avversario.
 notes_it: >-
   Significa mettere una carta in stato tappato. Compare spesso in attacco, nel
   blocco e negli effetti che controllano il ritmo del campo.
@@ -1166,6 +1274,10 @@ entry_id: term-untap
 card_type: recognition
 front: アンタップ
 back: stappare / untap
+example_jp: >-
+  このクリーチャーをアンタップする。
+example_it: >-
+  Stappa questa creatura.
 notes_it: >-
   È l'opposto di タップ. Quando lo vedi, una carta torna disponibile sul campo.
 tags: [core, action]
@@ -1178,6 +1290,10 @@ entry_id: term-kasaneru
 card_type: recognition
 front: 重ねる
 back: sovrapporre / mettere sopra
+example_jp: >-
+  このクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。
+example_it: >-
+  Sovrapponila su questa creatura.
 notes_it: >-
   Significa mettere una carta sopra un'altra. È uno dei verbi chiave per capire
   {{進化|しんか}}, {{侵略|しんりゃく}} e tutte le meccaniche di sovrapposizione.
@@ -1191,6 +1307,10 @@ entry_id: term-deru
 card_type: recognition
 front: 出る
 back: uscire / entrare in gioco
+example_jp: >-
+  このクリーチャーが{{出|で}}た{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  Quando questa creatura entra, pesca 1 carta.
 notes_it: >-
   È il verbo intransitivo di ingresso. Se una carta `{{出|で}}た{{時|とき}}`, il
   trigger parte nel momento in cui entra in gioco.
@@ -1204,6 +1324,10 @@ entry_id: term-dasu
 card_type: recognition
 front: 出す
 back: far uscire / mettere in gioco
+example_jp: >-
+  {{手札|てふだ}}からクリーチャーを{{1体|いったい}} {{出|だ}}す。
+example_it: >-
+  Metti in gioco 1 creatura dalla mano.
 notes_it: >-
   È il verbo transitivo di ingresso. Qui c'è sempre un effetto che fa entrare
   una carta in gioco da una certa zona.
@@ -1217,6 +1341,10 @@ entry_id: term-oku
 card_type: recognition
 front: 置く
 back: mettere / porre
+example_jp: >-
+  このカードを{{墓地|ぼち}}に{{置|お}}く。
+example_it: >-
+  Metti questa carta nel cimitero.
 notes_it: >-
   È un verbo molto comune e molto neutro. Per capirlo davvero devi guardare la
   destinazione: nel cimitero, nel mazzo, sopra una carta o altrove.
@@ -1230,6 +1358,10 @@ entry_id: term-erabu
 card_type: recognition
 front: 選ぶ
 back: scegliere
+example_jp: >-
+  クリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
+example_it: >-
+  Scegli 1 creatura.
 notes_it: >-
   Indica una scelta. Se compare, l'effetto non è casuale: qualcuno deve
   selezionare un bersaglio o una carta precisa.
@@ -1243,6 +1375,10 @@ entry_id: term-hiku
 card_type: recognition
 front: 引く
 back: pescare / tirare
+example_jp: >-
+  カードを{{2枚|にまい}} {{引|ひ}}く。
+example_it: >-
+  Pesca 2 carte.
 notes_it: >-
   Nel linguaggio delle carte significa quasi sempre pescare. È uno dei verbi più
   diretti da riconoscere.
@@ -1256,6 +1392,10 @@ entry_id: term-suteru
 card_type: recognition
 front: 捨てる
 back: scartare / buttare via
+example_jp: >-
+  {{手札|てふだ}}を{{1枚|いちまい}} {{捨|す}}てる。
+example_it: >-
+  Scarta 1 carta dalla mano.
 notes_it: >-
   Significa scartare, di solito dalla mano. Spesso è un costo o una perdita che
   serve ad attivare un effetto migliore.
@@ -1269,6 +1409,10 @@ entry_id: term-modosu
 card_type: recognition
 front: 戻す
 back: rimandare / restituire
+example_jp: >-
+  このカードを{{手札|てふだ}}に{{戻|もど}}す。
+example_it: >-
+  Rimetti questa carta nella tua mano.
 notes_it: >-
   Significa riportare una carta in una zona, molto spesso la mano. Leggilo come
   verbo di ritorno.
@@ -1282,6 +1426,10 @@ entry_id: term-hanareru
 card_type: recognition
 front: 離れる
 back: lasciare / allontanarsi
+example_jp: >-
+  このクリーチャーがバトルゾーンを{{離|はな}}れた{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  Quando questa creatura lascia la battle zone, pesca 1 carta.
 notes_it: >-
   Significa lasciare una zona, soprattutto il campo. È più ampio di
   {{破壊|はかい}}, quindi non va letto come semplice distruzione.
@@ -1295,6 +1443,10 @@ entry_id: term-atsukau
 card_type: recognition
 front: 扱う
 back: trattare come / considerare
+example_jp: >-
+  このタマシードをクリーチャーとして{{扱|あつか}}わない。
+example_it: >-
+  Non trattare questo Tamaseed come una creatura.
 notes_it: >-
   Ti dice come il gioco considera una carta. In frasi negative, come
   `クリーチャーとして{{扱|あつか}}わない`, cambia il modo in cui quella carta
@@ -1309,6 +1461,10 @@ entry_id: term-s-trigger
 card_type: recognition
 front: S・トリガー
 back: attivazione da scudo
+example_jp: >-
+  S・トリガーでこの{{呪文|じゅもん}}を{{使|つか}}ってもよい。
+example_it: >-
+  Puoi usare questa magia con S-Trigger.
 notes_it: >-
   Keyword difensiva legata agli scudi. Se appare, la carta può attivarsi da uno
   scudo nel momento giusto invece di restare solo una carta difensiva passiva.
@@ -1322,6 +1478,10 @@ entry_id: term-w-breaker
 card_type: recognition
 front: W・ブレイカー
 back: rompe 2 scudi
+example_jp: >-
+  このクリーチャーはW・ブレイカーを{{持|も}}つ。
+example_it: >-
+  Questa creatura ha W-Breaker.
 notes_it: >-
   Keyword offensiva che fa rompere 2 scudi in un attacco. È un segnale chiaro
   di pressione sul giocatore avversario.
@@ -1335,6 +1495,10 @@ entry_id: term-t-breaker
 card_type: recognition
 front: T・ブレイカー
 back: rompe 3 scudi
+example_jp: >-
+  このクリーチャーはT・ブレイカーを{{持|も}}つ。
+example_it: >-
+  Questa creatura ha T-Breaker.
 notes_it: >-
   Versione ancora più forte di W・ブレイカー: la creatura rompe 3 scudi con un
   solo attacco.
@@ -1348,6 +1512,10 @@ entry_id: grammar-toki
 card_type: concept
 front: ～時 / ～た時
 back: quando / nel momento in cui
+example_jp: >-
+  このクリーチャーが{{出|で}}た{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  Quando questa creatura entra, pesca 1 carta.
 notes_it: >-
   È il pattern base dei trigger. Prima ti dice quando succede qualcosa, poi ti
   lascia leggere l'effetto vero e proprio.
@@ -1361,6 +1529,10 @@ entry_id: grammar-sonoato
 card_type: concept
 front: その後
 back: dopo quello / poi
+example_jp: >-
+  クリーチャーを{{1体|いったい}} {{出|だ}}す。その後、カードを{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  Metti in gioco 1 creatura. Poi pesca 1 carta.
 notes_it: >-
   Ti avvisa che c'è un secondo blocco nella stessa risoluzione. La frase non si
   ferma al primo effetto.
@@ -1374,6 +1546,10 @@ entry_id: grammar-soushitara
 card_type: concept
 front: そうしたら
 back: se lo fai, allora / in quel caso
+example_jp: >-
+  カードを{{1枚|いちまい}} {{捨|す}}てる。そうしたら、{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  Scarta 1 carta. Fatto questo, pescane 1.
 notes_it: >-
   Indica che il secondo pezzo dipende dal fatto che il primo si sia davvero
   realizzato.
@@ -1387,6 +1563,10 @@ entry_id: grammar-temoyoi
 card_type: concept
 front: ～てもよい
 back: puoi fare / è consentito fare
+example_jp: >-
+  {{山札|やまふだ}}の{{上|うえ}}から{{1枚|いちまい}}を{{見|み}}てもよい。
+example_it: >-
+  Puoi guardare la prima carta del tuo mazzo.
 notes_it: >-
   Segnala una scelta opzionale. Quando lo vedi, sai che il giocatore può
   decidere se compiere quell'azione o no.
@@ -1400,6 +1580,10 @@ entry_id: grammar-kawarini
 card_type: concept
 front: かわりに
 back: invece di / al posto di
+example_jp: >-
+  カードを{{1枚|いちまい}} {{引|ひ}}く。かわりに、{{手札|てふだ}}を{{1枚|いちまい}} {{捨|す}}てる。
+example_it: >-
+  Pesca 1 carta. Invece, scarta 1 carta dalla mano.
 notes_it: >-
   Va letto come sostituzione, non come aggiunta. Un evento prende il posto di un
   altro.
@@ -1413,6 +1597,10 @@ entry_id: grammar-nakereba
 card_type: concept
 front: ～なければ ... ない
 back: se non / a meno che non
+example_jp: >-
+  アビスが{{1体|いったい}}もなければ、この効果は{{使|つか}}えない。
+example_it: >-
+  Se non hai nemmeno 1 Abyss, non puoi usare questo effetto.
 notes_it: >-
   Indica una condizione negativa. Se il requisito non è soddisfatto, l'effetto
   o lo stato descritto non valgono.
@@ -1443,6 +1631,10 @@ entry_id: grammar-igai-no-houhou-de
 card_type: concept
 front: ～以外の方法で
 back: con un metodo diverso da
+example_jp: >-
+  このクリーチャーが{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}で{{出|で}}た{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  Quando questa creatura entra con un metodo diverso dall'evocazione, pesca 1 carta.
 notes_it: >-
   Esclude un mezzo preciso. Se compare, chiediti subito quale metodo viene
   escluso dal testo.
@@ -1456,6 +1648,10 @@ entry_id: grammar-matawa
 card_type: concept
 front: または
 back: oppure / o
+example_jp: >-
+  クリーチャーまたはタマシードを{{1つ|ひとつ}} {{選|えら}}ぶ。
+example_it: >-
+  Scegli 1 creatura oppure 1 Tamaseed.
 notes_it: >-
   Collega due alternative valide nello stesso filtro. Quando compare, leggi i
   due lati come parte dello stesso conteggio o della stessa selezione.
@@ -1469,6 +1665,10 @@ entry_id: grammar-ika-ijou
 card_type: concept
 front: ～以下 / ～以上
 back: al massimo / almeno
+example_jp: >-
+  コスト{{4以下|よんいか}}またはコスト{{6以上|ろくいじょう}}のクリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
+example_it: >-
+  Scegli 1 creatura di costo 4 o inferiore, oppure di costo 6 o superiore.
 notes_it: >-
   È il pattern dei limiti numerici. Serve a capire quali carte rientrano nel
   filtro dell'effetto e quali no.
@@ -1482,6 +1682,10 @@ entry_id: grammar-turn-timing
 card_type: concept
 front: ～のはじめに / ～の終わりに
 back: all'inizio di / alla fine di
+example_jp: >-
+  {{自分|じぶん}}のターンのはじめに、カードを{{1枚|いちまい}} {{引|ひ}}く。
+example_it: >-
+  All'inizio del tuo turno, pesca 1 carta.
 notes_it: >-
   Fissa il momento preciso del turno in cui un effetto si attiva. Va letto
   prima del resto della frase.
@@ -1495,6 +1699,10 @@ entry_id: grammar-tadashi
 card_type: concept
 front: ただし
 back: però / salvo che / con la seguente limitazione
+example_jp: >-
+  カードを{{2枚|にまい}} {{引|ひ}}く。ただし、{{手札|てふだ}}を{{1枚|いちまい}} {{捨|す}}てる。
+example_it: >-
+  Pesca 2 carte. Tuttavia, scarta 1 carta dalla mano.
 notes_it: >-
   Introduce la limitazione finale dell'effetto. Dopo ただし devi cercare il
   confine che restringe quello che hai appena letto.

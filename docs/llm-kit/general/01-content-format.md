@@ -253,6 +253,10 @@ entry_id: grammar-teiru
 card_type: concept
 front: ～ている
 back: azione in corso / stato risultante
+example_jp: >-
+  いまカードを{{見|み}}ている。
+example_it: >-
+  In questo momento sto guardando la carta.
 tags: [grammar, core]
 :::
 ```
@@ -273,6 +277,18 @@ Ogni blocco `:::card` deve contenere:
 - `card_type`
 - `front`
 - `back`
+- `example_jp`
+- `example_it`
+
+Regola review obbligatoria per `:::card`:
+
+- ogni card deve avere sia `example_jp` sia `example_it`;
+- i due campi si compilano sempre insieme e non vanno omessi;
+- `example_jp` deve essere una frase giapponese completa e contestuale, non una
+  parola isolata, non una pseudo-definizione e non una semplice ripetizione del
+  `front`;
+- `example_it` deve tradurre quella stessa frase in italiano in modo utile per
+  il retro review.
 
 ## 8. Entita dichiarabili nel contenuto
 

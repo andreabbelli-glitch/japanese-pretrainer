@@ -98,6 +98,8 @@ La richiesta deve esplicitare:
 - segmento reale da continuare;
 - obbligo di restituire solo Markdown;
 - obbligo di usare YAML sicuro per `notes_it`, `summary`, `description`, `notes`;
+- obbligo che ogni blocco `:::card` includa sempre `example_jp` +
+  `example_it`, con frase completa e contestuale utile sul retro review;
 - obbligo che ogni spiegazione chiarisca significato reale + effetto concreto
   nel media, non solo che l'elemento e "utile" o "importante";
 - differenza tra media visibile (`Duel Masters`) e slug tecnico
@@ -150,6 +152,9 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
 
 - se una frase dice che un termine o un pattern e "utile", "importante" o "da
   fissare", verifica che spieghi subito che cosa significa davvero;
+- verifica che ogni `:::card` abbia `example_jp` e `example_it`, che
+  `example_jp` sia una frase completa contestuale e che `example_it` traduca la
+  stessa frase;
 - verifica che la stessa spiegazione dica anche che cosa ti fa capire o fare nel
   media;
 - se la spiegazione riguarda un nome proprio opaco, verifica che chiarisca

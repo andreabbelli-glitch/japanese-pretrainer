@@ -75,6 +75,10 @@ entry_id: term-red-zone
 card_type: recognition
 front: レッドゾーン
 back: Red Zone
+example_jp: >-
+  レッドゾーンで{{一気|いっき}}にシールドを{{攻|せ}}める。
+example_it: >-
+  Con Red Zone metti subito pressione agli scudi.
 notes_it: >-
   Nome da associare subito a pressione offensiva. In `DM25-SD2` è una delle
   ancore lessicali che ti fanno capire in che direzione sta andando il turno.
@@ -88,6 +92,10 @@ entry_id: term-apollonus-dragelion
 card_type: recognition
 front: アポロヌス・ドラゲリオン
 back: Apollonus Dragelion
+example_jp: >-
+  アポロヌス・ドラゲリオンで{{一気|いっき}}に{{勝負|しょうぶ}}を{{決|き}}める。
+example_it: >-
+  Con Apollonus Dragelion chiudi la partita di colpo.
 notes_it: >-
   Se riconosci subito questo nome, riconosci subito il payoff più esplosivo del
   mazzo. Questo conta perché i testi di
@@ -104,6 +112,10 @@ entry_id: term-shinka-sekkeizu
 card_type: recognition
 front: 進化設計図
 back: schema di evoluzione
+example_jp: >-
+  {{進化設計図|しんかせっけいず}}で{{進化|しんか}}クリーチャーを{{手札|てふだ}}に{{加|くわ}}える。
+example_it: >-
+  Con Shinka Sekkeizu aggiungi una creatura evoluzione alla mano.
 notes_it: >-
   Il nome stesso ti aiuta: [進化](term:term-evolution) + `設計図` =
   preparazione del piano. È una buona carta-ancora per distinguere setup e
@@ -118,6 +130,10 @@ entry_id: term-mirai-sekkeizu
 card_type: recognition
 front: 未来設計図
 back: schema del futuro
+example_jp: >-
+  {{未来設計図|みらいせっけいず}}で{{次|つぎ}}のターンの{{準備|じゅんび}}をする。
+example_it: >-
+  Con Mirai Sekkeizu prepari il turno successivo.
 notes_it: >-
   Va memorizzata insieme a [進化設計図](term:term-shinka-sekkeizu) perché
   condividono `設計図`, cioè l'idea di "schema / preparazione". Letto cosi, il

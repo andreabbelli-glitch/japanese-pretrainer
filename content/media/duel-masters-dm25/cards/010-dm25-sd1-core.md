@@ -78,6 +78,10 @@ entry_id: term-abyss-royal
 card_type: recognition
 front: アビスロイヤル
 back: tribu Abyss Royal
+example_jp: >-
+  コスト{{4以下|よんいか}}のアビスロイヤルを{{1体|いったい}} {{出|だ}}してもよい。
+example_it: >-
+  Puoi mettere in gioco 1 Abyss Royal di costo 4 o inferiore.
 notes_it: >-
   Se lo vedi in una frase, trattalo come filtro operativo di
   [種族](term:term-race). In `DM25-SD1` non basta leggere "Abyss": spesso la
@@ -92,6 +96,10 @@ entry_id: term-abyssbell-jashintei
 card_type: recognition
 front: アビスベル=ジャシン帝
 back: Abyssbell Jashin Emperor
+example_jp: >-
+  {{アビスベル=ジャシン帝|あびすべるじゃしんてい}}で{{攻撃|こうげき}}して{{勝負|しょうぶ}}を{{決|き}}める。
+example_it: >-
+  Attacca con Abyssbell Jashin Emperor per chiudere la partita.
 notes_it: >-
   Nome-ancora del mazzo. Riconoscerlo rapidamente ti aiuta a orientarti nel
   payoff principale del deck senza dover rileggere ogni volta tutta la lista.
@@ -105,6 +113,10 @@ entry_id: term-jashinnyuu
 card_type: recognition
 front: 邪侵入
 back: Jashinnyuu
+example_jp: >-
+  {{邪侵入|じゃしんにゅう}}で{{墓地|ぼち}}からアビスを{{出|だ}}す。
+example_it: >-
+  Usa Jashinnyuu per mettere in gioco un Abyss dal cimitero.
 notes_it: >-
   Vale la pena fissarlo come forma compatta. È uno dei nomi che riassumono bene
   il tono del mazzo e allena l'occhio su kanji ricorrenti dell'asse oscuro.
@@ -118,6 +130,10 @@ entry_id: term-jablood
 card_type: recognition
 front: ジャブラッド
 back: Jablood
+example_jp: >-
+  ジャブラッドを{{出|だ}}して{{攻撃|こうげき}}の{{準備|じゅんび}}をする。
+example_it: >-
+  Metti in gioco Jablood e prepara l'attacco.
 notes_it: >-
   Nome da riconoscere a colpo d'occhio nella lista carte. Ti aiuta a non
   leggere il deck come una massa indistinta di nomi propri.

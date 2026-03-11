@@ -478,6 +478,11 @@ describe("content parser and validator", () => {
         (card) => card.id === "card-apollonus-dragelion-recognition"
       )
     ).toBe(true);
+    expect(
+      result.data.cards
+        .filter((card) => !card.exampleJp || !card.exampleIt)
+        .map((card) => card.id)
+    ).toEqual([]);
   });
 
   it("aggregates media bundles from the content root", async () => {
