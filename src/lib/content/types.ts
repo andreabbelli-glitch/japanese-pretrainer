@@ -237,6 +237,8 @@ export interface NormalizedCard {
   cardType: string;
   front: RichTextFragment;
   back: RichTextFragment;
+  exampleJp?: RichTextFragment;
+  exampleIt?: RichTextFragment;
   notesIt?: RichTextFragment;
   tags: string[];
   source: DefinitionSource;

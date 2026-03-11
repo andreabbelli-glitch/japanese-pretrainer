@@ -40,6 +40,10 @@ entry_id: term-<entry-slug>
 card_type: recognition
 front: <testo-front>
 back: <testo-back>
+example_jp: >-
+  <frase-opzionale-in-giapponese-che-contiene-la-entry>
+example_it: >-
+  <traduzione-italiana-della-frase-opzionale>
 notes_it: >-
   <nota-opzionale-con-inline-markdown-o-riferimenti: chiarisci il significato
   reale e l'uso concreto della entry nel media>
@@ -53,6 +57,10 @@ entry_id: grammar-<grammar-slug>
 card_type: concept
 front: <testo-front>
 back: <testo-back>
+example_jp: >-
+  <frase-opzionale-in-giapponese-che-contiene-il-pattern>
+example_it: >-
+  <traduzione-italiana-della-frase-opzionale>
 notes_it: >-
   <nota-opzionale-con-inline-markdown-o-riferimenti: chiarisci il significato
   reale e l'uso concreto del pattern nel media>

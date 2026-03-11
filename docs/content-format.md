@@ -243,6 +243,10 @@ entry_id: term-taberu
 card_type: recognition
 front: 食べる
 back: mangiare
+example_jp: >-
+  パンを{{食|た}}べる。
+example_it: >-
+  Mangio il pane.
 tags: [verb, core]
 :::
 
@@ -273,6 +277,13 @@ Ogni blocco `:::card` deve contenere:
 - `card_type`
 - `front`
 - `back`
+
+Campi opzionali del blocco `:::card`:
+
+- `example_jp`
+- `example_it`
+- `notes_it`
+- `tags`
 
 ## 8. Entita dichiarabili nel contenuto
 

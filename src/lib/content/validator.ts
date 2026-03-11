@@ -1424,7 +1424,18 @@ function normalizeCardBlock(
 
   reportUnknownKeys(
     rawBlock.data,
-    ["id", "entry_type", "entry_id", "card_type", "front", "back", "tags", "notes_it"],
+    [
+      "id",
+      "entry_type",
+      "entry_id",
+      "card_type",
+      "front",
+      "back",
+      "example_jp",
+      "example_it",
+      "tags",
+      "notes_it"
+    ],
     sourceContext.filePath,
     sourcePath,
     issues,
@@ -1432,7 +1443,7 @@ function normalizeCardBlock(
   );
   reportUnsafeYamlPlainScalars(
     rawBlock.data,
-    ["front", "back", "notes_it"],
+    ["front", "back", "example_jp", "example_it", "notes_it"],
     sourceContext.filePath,
     sourcePath,
     rawBlock.fieldRanges ?? {},
@@ -1505,6 +1516,38 @@ function normalizeCardBlock(
     issues,
     rawBlock.position
   );
+  const exampleJp = readOptionalString(
+    rawBlock.data,
+    "example_jp",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  const exampleIt = readOptionalString(
+    rawBlock.data,
+    "example_it",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+
+  if ((exampleJp && !exampleIt) || (!exampleJp && exampleIt)) {
+    issues.push(
+      createIssue({
+        code: "schema.card-example-pair",
+        category: "schema",
+        message:
+          "Card example fields must provide both 'example_jp' and 'example_it'.",
+        filePath: sourceContext.filePath,
+        path: sourcePath,
+        range: rawBlock.position,
+        hint:
+          "Either omit the example entirely or provide both the Japanese sentence and the Italian translation."
+      })
+    );
+  }
 
   if (entryType && !entryTypeValues.includes(entryType as (typeof entryTypeValues)[number])) {
     issues.push(
@@ -1526,6 +1569,8 @@ function normalizeCardBlock(
 
   const frontRange = rawBlock.fieldRanges?.front ?? rawBlock.position;
   const backRange = rawBlock.fieldRanges?.back ?? rawBlock.position;
+  const exampleJpRange = rawBlock.fieldRanges?.example_jp ?? rawBlock.position;
+  const exampleItRange = rawBlock.fieldRanges?.example_it ?? rawBlock.position;
   const notesRange = rawBlock.fieldRanges?.notes_it ?? rawBlock.position;
   const frontFragment = parseInlineFragment({
     source: front,
@@ -1556,8 +1601,38 @@ function normalizeCardBlock(
       fallbackRange: notesRange
     })
     : null;
+  const exampleJpFragment =
+    exampleJp && exampleIt
+      ? parseInlineFragment({
+          source: exampleJp,
+          filePath: sourceContext.filePath,
+          documentKind: sourceContext.documentKind,
+          documentId: sourceContext.documentId,
+          sourcePath: `${sourcePath}.example_jp`,
+          fragmentOrigin: exampleJpRange?.start,
+          fallbackRange: exampleJpRange
+        })
+      : null;
+  const exampleItFragment =
+    exampleJp && exampleIt
+      ? parseInlineFragment({
+          source: exampleIt,
+          filePath: sourceContext.filePath,
+          documentKind: sourceContext.documentKind,
+          documentId: sourceContext.documentId,
+          sourcePath: `${sourcePath}.example_it`,
+          fragmentOrigin: exampleItRange?.start,
+          fallbackRange: exampleItRange
+        })
+      : null;
 
-  issues.push(...frontFragment.issues, ...backFragment.issues, ...(notesFragment?.issues ?? []));
+  issues.push(
+    ...frontFragment.issues,
+    ...backFragment.issues,
+    ...(exampleJpFragment?.issues ?? []),
+    ...(exampleItFragment?.issues ?? []),
+    ...(notesFragment?.issues ?? [])
+  );
 
   return {
     value: {
@@ -1568,6 +1643,8 @@ function normalizeCardBlock(
       cardType,
       front: frontFragment.fragment,
       back: backFragment.fragment,
+      exampleJp: exampleJpFragment?.fragment,
+      exampleIt: exampleItFragment?.fragment,
       notesIt: notesFragment?.fragment,
       tags,
       source: {
@@ -1584,6 +1661,8 @@ function normalizeCardBlock(
     references: [
       ...frontFragment.references,
       ...backFragment.references,
+      ...(exampleJpFragment?.references ?? []),
+      ...(exampleItFragment?.references ?? []),
       ...(notesFragment?.references ?? [])
     ]
   };
@@ -2092,7 +2171,12 @@ function containsUnsafeInlineYamlContent(value: string) {
 }
 
 function isCardTextExamplePlainScalar(key: string, value: string) {
-  if (key !== "front" && key !== "back") {
+  if (
+    key !== "front" &&
+    key !== "back" &&
+    key !== "example_jp" &&
+    key !== "example_it"
+  ) {
     return false;
   }
 

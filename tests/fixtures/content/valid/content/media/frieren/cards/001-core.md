@@ -23,6 +23,10 @@ entry_id: term-taberu
 card_type: recognition
 front: 食べる
 back: mangiare
+example_jp: >-
+  パンを{{食|た}}べる。
+example_it: >-
+  Mangio il pane.
 tags: [verb, core]
 :::
 

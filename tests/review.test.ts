@@ -31,6 +31,7 @@ import {
   setReviewCardSuspended
 } from "@/lib/review-service";
 import { scheduleReview } from "@/lib/review-scheduler";
+import { updateStudySettings } from "@/lib/settings";
 
 describe("review system", () => {
   let tempDir = "";
@@ -207,6 +208,118 @@ describe("review system", () => {
     expect(logs.at(-1)?.rating).toBe("good");
   });
 
+  it("does not keep backfilling fresh new cards after the daily new limit has been used", async () => {
+    await updateStudySettings(
+      {
+        furiganaMode: "on",
+        glossaryDefaultSort: "lesson_order",
+        reviewDailyLimit: 1
+      },
+      database
+    );
+
+    await database
+      .update(reviewState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+
+    await database.insert(card).values([
+      {
+        id: "card_demo_new_limit_a",
+        mediaId: developmentFixture.mediaId,
+        segmentId: developmentFixture.segmentId,
+        sourceFile: "content/media/demo-anime/cards/basic/new-limit-a.md",
+        cardType: "recognition",
+        front: "一枚目",
+        back: "prima carta",
+        notesIt: "Prima nuova del giorno.",
+        status: "active",
+        orderIndex: 10,
+        createdAt: "2026-03-09T10:00:00.000Z",
+        updatedAt: "2026-03-09T10:00:00.000Z"
+      },
+      {
+        id: "card_demo_new_limit_b",
+        mediaId: developmentFixture.mediaId,
+        segmentId: developmentFixture.segmentId,
+        sourceFile: "content/media/demo-anime/cards/basic/new-limit-b.md",
+        cardType: "recognition",
+        front: "二枚目",
+        back: "seconda carta",
+        notesIt: "Non deve rimpiazzare la prima nello stesso giorno.",
+        status: "active",
+        orderIndex: 11,
+        createdAt: "2026-03-09T10:00:00.000Z",
+        updatedAt: "2026-03-09T10:00:00.000Z"
+      }
+    ]);
+    await database.insert(cardEntryLink).values([
+      {
+        id: "card_entry_link_demo_new_limit_a",
+        cardId: "card_demo_new_limit_a",
+        entryType: "term",
+        entryId: developmentFixture.termId,
+        relationshipType: "secondary"
+      },
+      {
+        id: "card_entry_link_demo_new_limit_b",
+        cardId: "card_demo_new_limit_b",
+        entryType: "term",
+        entryId: developmentFixture.termId,
+        relationshipType: "secondary"
+      }
+    ]);
+
+    const initialPage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+
+    expect(initialPage?.queue.dueCount).toBe(0);
+    expect(initialPage?.queue.newQueuedCount).toBe(1);
+    expect(initialPage?.queue.queueCount).toBe(1);
+    expect(initialPage?.selectedCard?.id).toBe("card_demo_new_limit_a");
+
+    await applyReviewGrade({
+      cardId: "card_demo_new_limit_a",
+      database,
+      rating: "good"
+    });
+
+    const afterFirstNew = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+
+    expect(afterFirstNew?.queue.newAvailableCount).toBe(1);
+    expect(afterFirstNew?.queue.newQueuedCount).toBe(0);
+    expect(afterFirstNew?.queue.queueCount).toBe(0);
+    expect(afterFirstNew?.selectedCard).toBeNull();
+
+    const completionMarkup = renderToStaticMarkup(
+      ReviewPage({ data: afterFirstNew! })
+    );
+
+    expect(completionMarkup).toContain("Aggiungi ancora 1 nuova");
+
+    const toppedUpPage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {
+        extraNew: "10"
+      },
+      database
+    );
+
+    expect(toppedUpPage?.queue.effectiveDailyLimit).toBe(11);
+    expect(toppedUpPage?.queue.newQueuedCount).toBe(1);
+    expect(toppedUpPage?.queue.queueCount).toBe(1);
+    expect(toppedUpPage?.selectedCard?.id).toBe("card_demo_new_limit_b");
+  });
+
   it("keeps the main stage in a completion state when the queue is empty unless a card is explicitly selected", async () => {
     await database
       .update(reviewState)
@@ -249,7 +362,7 @@ describe("review system", () => {
     );
   });
 
-  it("exposes and renders the Japanese reading in review answers", async () => {
+  it("exposes reading and example sentences in review answers", async () => {
     const primaryPage = await getReviewPageData(
       developmentFixture.mediaSlug,
       {
@@ -273,8 +386,12 @@ describe("review system", () => {
     );
 
     expect(primaryPage?.selectedCard?.reading).toBe("いく");
+    expect(primaryPage?.selectedCard?.exampleJp).toBe("{{駅|えき}}まで {{行|い}}く。");
+    expect(primaryPage?.selectedCard?.exampleIt).toBe("Vado fino alla stazione.");
     expect(secondaryPage?.selectedCard?.reading).toBe("〜ている");
     expect(primaryDetail?.card.reading).toBe("いく");
+    expect(primaryDetail?.card.exampleJp).toBe("{{駅|えき}}まで {{行|い}}く。");
+    expect(primaryDetail?.card.exampleIt).toBe("Vado fino alla stazione.");
 
     const primaryMarkup = renderToStaticMarkup(
       ReviewPage({ data: primaryPage! })
@@ -282,6 +399,55 @@ describe("review system", () => {
 
     expect(primaryMarkup).toContain("review-stage__reading");
     expect(primaryMarkup).toContain("いく");
+    expect(primaryMarkup).toContain("reader-example-sentence");
+    expect(primaryMarkup).toContain("Mostra traduzione italiana");
+    expect(primaryMarkup).toContain("Vado fino alla stazione.");
+  });
+
+  it("renders grading actions from easy to again with next-review previews", async () => {
+    const reviewPage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {
+        card: developmentFixture.primaryCardId,
+        show: "answer"
+      },
+      database
+    );
+
+    expect(reviewPage?.selectedCardContext.gradePreviews).toHaveLength(4);
+    expect(
+      reviewPage?.selectedCardContext.gradePreviews.map((preview) => preview.rating)
+    ).toEqual(["again", "hard", "good", "easy"]);
+
+    const markup = renderToStaticMarkup(ReviewPage({ data: reviewPage! }));
+    const easyIndex = markup.indexOf(">Easy<");
+    const goodIndex = markup.indexOf(">Good<");
+    const hardIndex = markup.indexOf(">Hard<");
+    const againIndex = markup.indexOf(">Again<");
+
+    expect(easyIndex).toBeGreaterThan(-1);
+    expect(goodIndex).toBeGreaterThan(easyIndex);
+    expect(hardIndex).toBeGreaterThan(goodIndex);
+    expect(againIndex).toBeGreaterThan(hardIndex);
+    expect(markup).toContain("Prossima review:");
+    expect(markup).toContain("Subito");
+    expect(markup).toContain("Tra 30 min");
+  });
+
+  it("keeps the review page focused on the active card instead of rendering the lower queue panels", async () => {
+    const reviewPage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {
+        card: developmentFixture.primaryCardId
+      },
+      database
+    );
+
+    const markup = renderToStaticMarkup(ReviewPage({ data: reviewPage! }));
+
+    expect(markup).not.toContain("Pronte oggi");
+    expect(markup).not.toContain("Contesto utile");
+    expect(markup).not.toContain("Fuori coda");
   });
 
   it("uses entry_status for manual mastery and restores the queue when reopened", async () => {

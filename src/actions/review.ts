@@ -19,6 +19,7 @@ export async function gradeReviewCardAction(formData: FormData) {
   const cardId = readRequiredString(formData, "cardId");
   const rating = readRequiredString(formData, "rating");
   const answeredCount = readCount(formData, "answered");
+  const extraNewCount = readCount(formData, "extraNew");
 
   await applyReviewGrade({
     cardId,
@@ -35,6 +36,7 @@ export async function gradeReviewCardAction(formData: FormData) {
   redirect(
     buildReviewRedirectUrl({
       answeredCount: answeredCount + 1,
+      extraNewCount,
       mediaSlug
     })
   );
@@ -44,6 +46,7 @@ export async function markLinkedEntryKnownAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
   const cardId = readRequiredString(formData, "cardId");
   const answeredCount = readCount(formData, "answered");
+  const extraNewCount = readCount(formData, "extraNew");
   const redirectMode = readRedirectMode(formData);
 
   await setLinkedEntryStatusByCard({
@@ -56,6 +59,7 @@ export async function markLinkedEntryKnownAction(formData: FormData) {
     buildReviewRedirectUrl({
       answeredCount,
       cardId,
+      extraNewCount,
       mediaSlug,
       redirectMode,
       notice: "known"
@@ -67,6 +71,7 @@ export async function setLinkedEntryLearningAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
   const cardId = readRequiredString(formData, "cardId");
   const answeredCount = readCount(formData, "answered");
+  const extraNewCount = readCount(formData, "extraNew");
   const redirectMode = readRedirectMode(formData);
 
   await setLinkedEntryStatusByCard({
@@ -79,6 +84,7 @@ export async function setLinkedEntryLearningAction(formData: FormData) {
     buildReviewRedirectUrl({
       answeredCount,
       cardId,
+      extraNewCount,
       mediaSlug,
       redirectMode,
       notice: "learning"
@@ -90,6 +96,7 @@ export async function resetReviewCardAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
   const cardId = readRequiredString(formData, "cardId");
   const answeredCount = readCount(formData, "answered");
+  const extraNewCount = readCount(formData, "extraNew");
   const redirectMode = readRedirectMode(formData);
 
   await resetReviewCardProgress({
@@ -101,6 +108,7 @@ export async function resetReviewCardAction(formData: FormData) {
     buildReviewRedirectUrl({
       answeredCount,
       cardId,
+      extraNewCount,
       mediaSlug,
       redirectMode,
       notice: "reset"
@@ -112,6 +120,7 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
   const cardId = readRequiredString(formData, "cardId");
   const answeredCount = readCount(formData, "answered");
+  const extraNewCount = readCount(formData, "extraNew");
   const redirectMode = readRedirectMode(formData);
   const suspended = formData.get("suspended") === "true";
 
@@ -125,6 +134,7 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
     buildReviewRedirectUrl({
       answeredCount,
       cardId,
+      extraNewCount,
       mediaSlug,
       redirectMode,
       notice: suspended ? "suspended" : "resumed"
@@ -135,6 +145,7 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
 function buildReviewRedirectUrl(input: {
   answeredCount: number;
   cardId?: string;
+  extraNewCount?: number;
   mediaSlug: string;
   redirectMode?: ReviewRedirectMode;
   notice?: string;
@@ -147,6 +158,10 @@ function buildReviewRedirectUrl(input: {
 
   if (input.answeredCount > 0) {
     params.set("answered", String(input.answeredCount));
+  }
+
+  if (input.extraNewCount && input.extraNewCount > 0) {
+    params.set("extraNew", String(input.extraNewCount));
   }
 
   if (input.cardId && input.redirectMode === "preserve_card") {

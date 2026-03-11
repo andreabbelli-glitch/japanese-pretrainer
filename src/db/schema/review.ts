@@ -30,6 +30,8 @@ export const card = sqliteTable(
     cardType: text("card_type").notNull(),
     front: text("front").notNull(),
     back: text("back").notNull(),
+    exampleJp: text("example_jp"),
+    exampleIt: text("example_it"),
     notesIt: text("notes_it"),
     status: text("status", { enum: cardStatusValues })
       .notNull()

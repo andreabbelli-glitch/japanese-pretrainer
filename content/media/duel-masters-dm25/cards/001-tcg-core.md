@@ -1426,6 +1426,10 @@ entry_id: grammar-teireba
 card_type: concept
 front: ～ていれば
 back: se / quando è già in quello stato
+example_jp: >-
+  {{手札|てふだ}}が{{3枚|さんまい}} {{残|のこ}}っていれば、この効果を使える。
+example_it: >-
+  Se hai gia tre carte in mano, puoi usare questo effetto.
 notes_it: >-
   Controlla uno stato già soddisfatto. La carta verifica una situazione già
   vera prima di concedere il resto dell'effetto.

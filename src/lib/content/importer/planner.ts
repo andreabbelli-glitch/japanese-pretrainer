@@ -475,6 +475,8 @@ function buildCardPlans(input: {
           cardType: card.cardType,
           front: card.front.raw,
           back: card.back.raw,
+          exampleJp: card.exampleJp?.raw ?? null,
+          exampleIt: card.exampleIt?.raw ?? null,
           notesIt: card.notesIt?.raw ?? null,
           status: "active",
           orderIndex: index + 1,
@@ -537,6 +539,8 @@ function collectReferenceKeysFromCard(card: NormalizedMediaBundle["cards"][numbe
   return dedupeReferenceEntries([
     ...collectReferenceKeysFromRichText(card.front),
     ...collectReferenceKeysFromRichText(card.back),
+    ...collectReferenceKeysFromRichText(card.exampleJp),
+    ...collectReferenceKeysFromRichText(card.exampleIt),
     ...collectReferenceKeysFromRichText(card.notesIt)
   ]);
 }

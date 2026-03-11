@@ -109,6 +109,9 @@ describe("content importer", () => {
     const importRow = await database.query.contentImport.findFirst({
       where: eq(contentImport.id, result.importId)
     });
+    const importedCard = await database.query.card.findFirst({
+      where: eq(card.id, termCardId)
+    });
 
     expect(importedSegment?.slug).toBe("episode-01");
     expect(importedLesson?.sourceFile).toBe(
@@ -119,6 +122,8 @@ describe("content importer", () => {
       "grammar-definition"
     );
     expect(importRow?.status).toBe("completed");
+    expect(importedCard?.exampleJp).toBe("パンを{{食|た}}べる。");
+    expect(importedCard?.exampleIt).toBe("Mangio il pane.");
   });
 
   it("imports the real Duel Masters demo bundle", async () => {
@@ -131,20 +136,20 @@ describe("content importer", () => {
     });
 
     expect(result.status).toBe("completed");
-    expect(result.filesScanned).toBe(8);
-    expect(result.filesChanged).toBe(8);
+    expect(result.filesScanned).toBe(12);
+    expect(result.filesChanged).toBe(12);
 
     expect(await countRows(database.query.media.findMany())).toBe(1);
-    expect(await countRows(database.query.segment.findMany())).toBe(3);
-    expect(await countRows(database.query.lesson.findMany())).toBe(4);
-    expect(await countRows(database.query.lessonContent.findMany())).toBe(4);
-    expect(await countRows(database.query.term.findMany())).toBe(49);
-    expect(await countRows(database.query.termAlias.findMany())).toBe(131);
-    expect(await countRows(database.query.grammarPattern.findMany())).toBe(12);
-    expect(await countRows(database.query.grammarAlias.findMany())).toBe(16);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(159);
-    expect(await countRows(database.query.card.findMany())).toBe(61);
-    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(66);
+    expect(await countRows(database.query.segment.findMany())).toBe(4);
+    expect(await countRows(database.query.lesson.findMany())).toBe(7);
+    expect(await countRows(database.query.lessonContent.findMany())).toBe(7);
+    expect(await countRows(database.query.term.findMany())).toBe(80);
+    expect(await countRows(database.query.termAlias.findMany())).toBe(195);
+    expect(await countRows(database.query.grammarPattern.findMany())).toBe(18);
+    expect(await countRows(database.query.grammarAlias.findMany())).toBe(22);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(239);
+    expect(await countRows(database.query.card.findMany())).toBe(91);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(100);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({
@@ -179,6 +184,8 @@ describe("content importer", () => {
     expect(importedGrammar?.pattern).toBe("～時 / ～た時");
     expect(importedGrammar?.reading).toBe("とき / たとき");
     expect(importedCard?.front).toBe("侵略");
+    expect(importedCard?.exampleJp).toBeNull();
+    expect(importedCard?.exampleIt).toBeNull();
     expect(importedCardLink?.entryId).toBe("term-invasion");
   });
 

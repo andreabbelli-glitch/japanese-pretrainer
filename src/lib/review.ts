@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from "next/cache";
 
 import {
+  countNewCardsIntroducedOnDayByMediaId,
   db,
   getMediaBySlug,
   listGrammarEntriesByMediaId,
@@ -31,14 +32,20 @@ import {
   isReviewCardNew,
   resolveEffectiveReviewState,
   type EffectiveReviewState,
+  type ReviewEntryLinkLike,
   type ReviewEntryStatusValue
 } from "./review-model";
-import { type ReviewState } from "./review-scheduler";
+import {
+  scheduleReview,
+  type ReviewRating,
+  type ReviewState
+} from "./review-scheduler";
 
 type ReviewCardEntryKind = "term" | "grammar";
 
 type ReviewSearchState = {
   answeredCount: number;
+  extraNewCount: number;
   noticeCode: string | null;
   selectedCardId: string | null;
   showAnswer: boolean;
@@ -76,6 +83,8 @@ export type ReviewQueueCard = {
   dueLabel?: string;
   effectiveState: EffectiveReviewState["state"];
   effectiveStateLabel: string;
+  exampleIt?: string;
+  exampleJp?: string;
   entries: ReviewCardEntrySummary[];
   front: string;
   href: ReturnType<typeof mediaReviewCardHref>;
@@ -92,6 +101,7 @@ export type ReviewQueueSnapshot = {
   cards: ReviewQueueCard[];
   dailyLimit: number;
   dueCount: number;
+  effectiveDailyLimit: number;
   manualCount: number;
   newAvailableCount: number;
   newQueuedCount: number;
@@ -118,6 +128,7 @@ export type ReviewPageData = {
   selectedCard: ReviewQueueCard | null;
   selectedCardContext: {
     bucket: ReviewQueueCard["bucket"] | null;
+    gradePreviews: ReviewGradePreview[];
     isQueueCard: boolean;
     position: number | null;
     remainingCount: number;
@@ -125,8 +136,14 @@ export type ReviewPageData = {
   };
   session: {
     answeredCount: number;
+    extraNewCount: number;
     notice?: string;
   };
+};
+
+export type ReviewGradePreview = {
+  nextReviewLabel: string;
+  rating: ReviewRating;
 };
 
 export type ReviewCardDetailData = {
@@ -134,6 +151,8 @@ export type ReviewCardDetailData = {
     back: string;
     bucketLabel?: string;
     dueLabel?: string;
+    exampleIt?: string;
+    exampleJp?: string;
     front: string;
     id: string;
     notes?: string;
@@ -158,6 +177,7 @@ export async function getReviewPageData(
   database: DatabaseClient = db
 ): Promise<ReviewPageData | null> {
   markDataAsLive();
+  const now = new Date();
 
   const media = await getMediaBySlug(database, mediaSlug);
 
@@ -166,17 +186,21 @@ export async function getReviewPageData(
   }
 
   const searchState = normalizeReviewSearchState(searchParams);
-  const [cards, terms, grammar, dailyLimit] = await Promise.all([
+  const [cards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
+    await Promise.all([
     listReviewCardsByMediaId(database, media.id),
     listTermEntriesByMediaId(database, media.id),
     listGrammarEntriesByMediaId(database, media.id),
-    getReviewDailyLimit(database)
+    getReviewDailyLimit(database),
+    countNewCardsIntroducedOnDayByMediaId(database, media.id, now)
   ]);
   const queue = buildReviewQueueSnapshot({
     cards,
     dailyLimit,
+    extraNewCount: searchState.extraNewCount,
     grammar,
     mediaSlug: media.slug,
+    newIntroducedTodayCount,
     terms
   });
   const cardGroups = [
@@ -191,6 +215,9 @@ export async function getReviewPageData(
       : null) ??
     queue.cards[0] ??
     null;
+  const selectedRawCard = selectedCard
+    ? cards.find((card) => card.id === selectedCard.id) ?? null
+    : null;
   const queueIndex = selectedCard
     ? queue.cards.findIndex((card) => card.id === selectedCard.id)
     : -1;
@@ -207,6 +234,10 @@ export async function getReviewPageData(
     selectedCard,
     selectedCardContext: {
       bucket: selectedCard?.bucket ?? null,
+      gradePreviews:
+        selectedRawCard && queueIndex >= 0
+          ? buildReviewGradePreviews(selectedRawCard, now)
+          : [],
       isQueueCard: queueIndex >= 0,
       position: queueIndex >= 0 ? queueIndex + 1 : null,
       remainingCount: queue.cards.length,
@@ -214,6 +245,7 @@ export async function getReviewPageData(
     },
     session: {
       answeredCount: searchState.answeredCount,
+      extraNewCount: searchState.extraNewCount,
       notice: resolveReviewNotice(searchState.noticeCode)
     }
   };
@@ -224,6 +256,7 @@ export async function getReviewQueueSnapshotForMedia(
   database: DatabaseClient = db
 ): Promise<ReviewQueueSnapshot | null> {
   markDataAsLive();
+  const now = new Date();
 
   const media = await getMediaBySlug(database, mediaSlug);
 
@@ -231,17 +264,21 @@ export async function getReviewQueueSnapshotForMedia(
     return null;
   }
 
-  const [cards, terms, grammar, dailyLimit] = await Promise.all([
+  const [cards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
+    await Promise.all([
     listReviewCardsByMediaId(database, media.id),
     listTermEntriesByMediaId(database, media.id),
     listGrammarEntriesByMediaId(database, media.id),
-    getReviewDailyLimit(database)
+    getReviewDailyLimit(database),
+    countNewCardsIntroducedOnDayByMediaId(database, media.id, now)
   ]);
   const snapshot = buildReviewQueueSnapshot({
     cards,
     dailyLimit,
+    extraNewCount: 0,
     grammar,
     mediaSlug: media.slug,
+    newIntroducedTodayCount,
     terms
   });
 
@@ -249,6 +286,7 @@ export async function getReviewQueueSnapshotForMedia(
     cards: snapshot.cards,
     dailyLimit: snapshot.dailyLimit,
     dueCount: snapshot.dueCount,
+    effectiveDailyLimit: snapshot.effectiveDailyLimit,
     manualCount: snapshot.manualCount,
     newAvailableCount: snapshot.newAvailableCount,
     newQueuedCount: snapshot.newQueuedCount,
@@ -294,6 +332,8 @@ export async function getReviewCardDetailData(
           ? undefined
           : selectedCard.bucketLabel,
       dueLabel: selectedCard.dueLabel,
+      exampleIt: selectedCard.exampleIt,
+      exampleJp: selectedCard.exampleJp,
       front: selectedCard.front,
       id: selectedCard.id,
       notes: selectedCard.notes,
@@ -316,8 +356,10 @@ export async function getReviewCardDetailData(
 function buildReviewQueueSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
+  extraNewCount: number;
   grammar: GrammarGlossaryEntry[];
   mediaSlug: string;
+  newIntroducedTodayCount: number;
   terms: TermGlossaryEntry[];
 }) {
   const entryLookup = buildEntryLookup(
@@ -343,11 +385,15 @@ function buildReviewQueueSnapshot(input: {
   const upcomingCards = allCards
     .filter((card) => card.bucket === "upcoming")
     .sort(compareReviewCardsByDue);
-  const newSlots = Math.max(input.dailyLimit - dueCards.length, 0);
+  const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
+  const newSlots = Math.max(
+    effectiveDailyLimit - input.newIntroducedTodayCount,
+    0
+  );
   const queuedNewCards = newCards.slice(0, newSlots);
   const queueCards = [...dueCards, ...queuedNewCards];
   const introLabel = buildQueueIntroLabel({
-    dailyLimit: input.dailyLimit,
+    dailyLimit: effectiveDailyLimit,
     dueCount: dueCards.length,
     manualCount: manualCards.length,
     newQueuedCount: queuedNewCards.length,
@@ -358,6 +404,7 @@ function buildReviewQueueSnapshot(input: {
     cards: queueCards,
     dailyLimit: input.dailyLimit,
     dueCount: dueCards.length,
+    effectiveDailyLimit,
     introLabel,
     manualCards,
     manualCount: manualCards.length,
@@ -480,6 +527,8 @@ function mapQueueCard(
             effectiveState.state,
             effectiveState.state === "known_manual"
           ),
+    exampleIt: card.exampleIt ?? undefined,
+    exampleJp: card.exampleJp ?? undefined,
     entries,
     front: card.front,
     href: mediaReviewCardHref(mediaSlug, card.id),
@@ -668,8 +717,8 @@ function formatBucketLabel(
 }
 
 function compareEntryLinks(
-  left: ReviewCardListItem["entryLinks"][number],
-  right: ReviewCardListItem["entryLinks"][number]
+  left: ReviewEntryLinkLike,
+  right: ReviewEntryLinkLike
 ) {
   const leftRank = getRelationshipRank(left.relationshipType);
   const rightRank = getRelationshipRank(right.relationshipType);
@@ -692,10 +741,16 @@ function normalizeReviewSearchState(
     readSearchParam(searchParams, "answered"),
     10
   );
+  const extraNewCount = Number.parseInt(
+    readSearchParam(searchParams, "extraNew"),
+    10
+  );
 
   return {
     answeredCount:
       Number.isFinite(answeredCount) && answeredCount > 0 ? answeredCount : 0,
+    extraNewCount:
+      Number.isFinite(extraNewCount) && extraNewCount > 0 ? extraNewCount : 0,
     noticeCode: readSearchParam(searchParams, "notice") || null,
     selectedCardId: readSearchParam(searchParams, "card") || null,
     showAnswer: readSearchParam(searchParams, "show") === "answer"
@@ -731,6 +786,94 @@ function getRelationshipRank(value: string) {
 
 function formatShortIsoDate(value: string) {
   return value.slice(0, 10);
+}
+
+function buildReviewGradePreviews(
+  card: ReviewCardListItem,
+  now: Date
+): ReviewGradePreview[] {
+  const ratings: ReviewRating[] = ["again", "hard", "good", "easy"];
+
+  return ratings.map((rating) => {
+    const scheduled = scheduleReview({
+      current: {
+        difficulty: card.reviewState?.difficulty ?? null,
+        dueAt: card.reviewState?.dueAt ?? null,
+        lapses: card.reviewState?.lapses ?? 0,
+        lastReviewedAt: card.reviewState?.lastReviewedAt ?? null,
+        reps: card.reviewState?.reps ?? 0,
+        stability: card.reviewState?.stability ?? null,
+        state: card.reviewState?.state as ReviewState | null
+      },
+      now,
+      rating
+    });
+
+    return {
+      nextReviewLabel: formatScheduledReviewPreview(scheduled.dueAt, now),
+      rating
+    };
+  });
+}
+
+function formatScheduledReviewPreview(dueAt: string, now: Date) {
+  const dueDate = new Date(dueAt);
+  const diffMs = dueDate.getTime() - now.getTime();
+  const diffMinutes = Math.round(diffMs / 60_000);
+
+  if (!Number.isFinite(diffMs) || diffMinutes <= 5) {
+    return "Subito";
+  }
+
+  if (diffMinutes < 60) {
+    return `Tra ${diffMinutes} min`;
+  }
+
+  if (isSameLocalDate(dueDate, now)) {
+    return `Oggi alle ${formatShortTime(dueDate)}`;
+  }
+
+  if (isNextLocalDate(dueDate, now)) {
+    return `Domani alle ${formatShortTime(dueDate)}`;
+  }
+
+  const dayDiff = Math.round(
+    (startOfLocalDay(dueDate).getTime() - startOfLocalDay(now).getTime()) /
+      86_400_000
+  );
+
+  if (dayDiff > 1 && dayDiff <= 6) {
+    return `Tra ${dayDiff} giorni`;
+  }
+
+  return `Il ${formatShortIsoDate(dueAt)}`;
+}
+
+function formatShortTime(value: Date) {
+  return new Intl.DateTimeFormat("it-IT", {
+    hour: "2-digit",
+    minute: "2-digit"
+  }).format(value);
+}
+
+function isSameLocalDate(left: Date, right: Date) {
+  return (
+    left.getFullYear() === right.getFullYear() &&
+    left.getMonth() === right.getMonth() &&
+    left.getDate() === right.getDate()
+  );
+}
+
+function isNextLocalDate(left: Date, right: Date) {
+  return (
+    (startOfLocalDay(left).getTime() - startOfLocalDay(right).getTime()) /
+      86_400_000 ===
+    1
+  );
+}
+
+function startOfLocalDay(value: Date) {
+  return new Date(value.getFullYear(), value.getMonth(), value.getDate());
 }
 
 function compareReviewCardsByDue(

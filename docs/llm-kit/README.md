@@ -32,6 +32,8 @@ Disponibile ora:
 
 - `media/duel-masters-dm25/01-brief.md`
 - `media/duel-masters-dm25/02-batch-1-prompt.md`
+- `media/gundam-arsenal-base/01-brief.md`
+- `media/gundam-arsenal-base/02-batch-1-prompt.md`
 
 ## Uso pratico
 

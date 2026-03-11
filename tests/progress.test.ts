@@ -165,6 +165,6 @@ describe("progress, settings, and study controls", () => {
     );
     expect(reviewData?.queue.dailyLimit).toBe(1);
     expect(reviewData?.queue.newAvailableCount).toBe(1);
-    expect(reviewData?.queue.newQueuedCount).toBe(0);
+    expect(reviewData?.queue.newQueuedCount).toBe(1);
   });
 });

@@ -4,18 +4,14 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { primaryNav, readInternalHref } from "@/lib/site";
+import {
+  primaryNav,
+  readInternalHref,
+  resolveActivePrimaryNavHref
+} from "@/lib/site";
 
 type SiteShellProps = {
   children: ReactNode;
-};
-
-const isCurrentRoute = (pathname: string, href: string) => {
-  if (href === "/") {
-    return pathname === href;
-  }
-
-  return pathname.startsWith(href);
 };
 
 export function SiteShell({ children }: SiteShellProps) {
@@ -24,6 +20,7 @@ export function SiteShell({ children }: SiteShellProps) {
   const contextualReviewHref = readInternalHref(
     searchParams.get("returnTo") ?? undefined
   );
+  const activePrimaryHref = resolveActivePrimaryNavHref(pathname);
 
   return (
     <div className="app-shell">
@@ -36,7 +33,7 @@ export function SiteShell({ children }: SiteShellProps) {
 
           <nav aria-label="Navigazione primaria" className="site-nav">
             {primaryNav.map((item) => {
-              const active = isCurrentRoute(pathname, item.href);
+              const active = activePrimaryHref === item.href;
               const href =
                 item.href === "/review" && contextualReviewHref
                   ? contextualReviewHref
@@ -67,27 +64,6 @@ export function SiteShell({ children }: SiteShellProps) {
       </header>
 
       <main className="page-shell">{children}</main>
-
-      <nav aria-label="Navigazione mobile" className="mobile-nav">
-        {primaryNav.map((item) => {
-          const active = isCurrentRoute(pathname, item.href);
-          const href =
-            item.href === "/review" && contextualReviewHref
-              ? contextualReviewHref
-              : item.href;
-
-          return (
-            <Link
-              key={item.href}
-              aria-current={active ? "page" : undefined}
-              className={`mobile-nav__link${active ? " mobile-nav__link--active" : ""}`}
-              href={href}
-            >
-              <span>{item.label}</span>
-            </Link>
-          );
-        })}
-      </nav>
     </div>
   );
 }

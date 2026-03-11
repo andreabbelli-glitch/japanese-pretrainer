@@ -436,22 +436,26 @@ describe("content parser and validator", () => {
     expect(result.issues).toEqual([]);
     expect(result.data.media?.frontmatter.id).toBe("media-duel-masters-dm25");
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
-    expect(result.data.lessons).toHaveLength(4);
-    expect(result.data.cardFiles).toHaveLength(3);
-    expect(result.data.terms).toHaveLength(49);
-    expect(result.data.grammarPatterns).toHaveLength(12);
-    expect(result.data.cards).toHaveLength(61);
-    expect(result.data.references).toHaveLength(292);
+    expect(result.data.lessons).toHaveLength(7);
+    expect(result.data.cardFiles).toHaveLength(4);
+    expect(result.data.terms).toHaveLength(80);
+    expect(result.data.grammarPatterns).toHaveLength(18);
+    expect(result.data.cards).toHaveLength(91);
+    expect(result.data.references).toHaveLength(440);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
       "tcg-core-overview",
       "tcg-core-patterns",
+      "duel-plays-app-overview",
+      "duel-plays-app-decks-and-shop",
+      "duel-plays-app-modes-and-progression",
       "dm25-sd1-overview",
       "dm25-sd2-overview"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
       "cards-duel-masters-dm25-tcg-core-basics",
+      "cards-duel-masters-dm25-duel-plays-app-core",
       "cards-duel-masters-dm25-dm25-sd1-core",
       "cards-duel-masters-dm25-dm25-sd2-core"
     ]);

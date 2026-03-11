@@ -931,6 +931,8 @@ const cardUpsertSet = {
   cardType: excluded("card_type"),
   front: excluded("front"),
   back: excluded("back"),
+  exampleJp: excluded("example_jp"),
+  exampleIt: excluded("example_it"),
   notesIt: excluded("notes_it"),
   status: excluded("status"),
   orderIndex: excluded("order_index"),
@@ -1022,6 +1024,8 @@ const cardComparisonKeys = [
   "cardType",
   "front",
   "back",
+  "exampleJp",
+  "exampleIt",
   "notesIt",
   "status",
   "orderIndex"

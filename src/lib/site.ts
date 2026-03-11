@@ -37,6 +37,30 @@ export const primaryNav: NavItem[] = [
   }
 ];
 
+export function resolveActivePrimaryNavHref(pathname: string): NavItem["href"] {
+  if (pathname === "/" || pathname.length === 0) {
+    return "/";
+  }
+
+  if (
+    pathname === "/review" ||
+    pathname.startsWith("/review/") ||
+    /^\/media\/[^/]+\/review(?:\/|$)/.test(pathname)
+  ) {
+    return "/review";
+  }
+
+  if (pathname === "/settings" || pathname.startsWith("/settings/")) {
+    return "/settings";
+  }
+
+  if (pathname === "/media" || pathname.startsWith("/media/")) {
+    return "/media";
+  }
+
+  return "/";
+}
+
 export function mediaHref(mediaSlug: string): Route {
   return `/media/${mediaSlug}` as Route;
 }
@@ -97,6 +121,7 @@ export function buildHrefWithSearch(
 export function buildReviewSessionHref(input: {
   answeredCount?: number;
   cardId?: string | null;
+  extraNewCount?: number;
   mediaSlug: string;
   showAnswer?: boolean;
 }): Route {
@@ -109,6 +134,10 @@ export function buildReviewSessionHref(input: {
 
       if (input.cardId) {
         params.set("card", input.cardId);
+      }
+
+      if (input.extraNewCount && input.extraNewCount > 0) {
+        params.set("extraNew", String(input.extraNewCount));
       }
 
       if (input.showAnswer) {

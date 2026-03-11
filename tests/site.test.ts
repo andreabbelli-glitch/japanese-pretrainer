@@ -9,6 +9,7 @@ import {
   mediaStudyHref,
   mediaTextbookLessonHref,
   primaryNav,
+  resolveActivePrimaryNavHref,
   type StudyAreaKey
 } from "@/lib/site";
 
@@ -51,5 +52,18 @@ describe("site helpers", () => {
       "/media/demo-anime/review",
       "/media/demo-anime/progress"
     ]);
+  });
+
+  it("resolves the active primary nav entry for nested review routes", () => {
+    expect(resolveActivePrimaryNavHref("/")).toBe("/");
+    expect(resolveActivePrimaryNavHref("/media")).toBe("/media");
+    expect(resolveActivePrimaryNavHref("/media/demo-anime")).toBe("/media");
+    expect(resolveActivePrimaryNavHref("/media/demo-anime/review")).toBe(
+      "/review"
+    );
+    expect(
+      resolveActivePrimaryNavHref("/media/demo-anime/review/card/card-demo-iku")
+    ).toBe("/review");
+    expect(resolveActivePrimaryNavHref("/settings")).toBe("/settings");
   });
 });

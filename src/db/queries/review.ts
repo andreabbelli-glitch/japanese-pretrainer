@@ -1,7 +1,7 @@
-import { and, asc, eq, isNotNull, lte, ne } from "drizzle-orm";
+import { and, asc, eq, gte, isNotNull, lt, lte, ne } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
-import { card, reviewState } from "../schema/index.ts";
+import { card, reviewLog, reviewState } from "../schema/index.ts";
 
 export async function listCardsByMediaId(
   database: DatabaseClient,
@@ -42,6 +42,38 @@ export async function listReviewCardsByMediaId(
     },
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
+}
+
+export async function countNewCardsIntroducedOnDayByMediaId(
+  database: DatabaseClient,
+  mediaId: string,
+  asOf = new Date()
+) {
+  const dayStart = new Date(
+    asOf.getFullYear(),
+    asOf.getMonth(),
+    asOf.getDate()
+  );
+  const dayEnd = new Date(dayStart);
+
+  dayEnd.setDate(dayEnd.getDate() + 1);
+
+  const rows = await database
+    .select({
+      cardId: reviewLog.cardId
+    })
+    .from(reviewLog)
+    .innerJoin(card, eq(reviewLog.cardId, card.id))
+    .where(
+      and(
+        eq(card.mediaId, mediaId),
+        eq(reviewLog.previousState, "new"),
+        gte(reviewLog.answeredAt, dayStart.toISOString()),
+        lt(reviewLog.answeredAt, dayEnd.toISOString())
+      )
+    );
+
+  return new Set(rows.map((row) => row.cardId)).size;
 }
 
 export type DueCardItem = typeof card.$inferSelect & {

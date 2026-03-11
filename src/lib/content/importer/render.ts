@@ -163,6 +163,12 @@ function renderBlock(block: ContentBlock): string {
         `<section class="card-definition" data-card-id="${escapeAttribute(block.card.id)}">`,
         `<div class="card-front">${renderInlineNodes(block.card.front.nodes)}</div>`,
         `<div class="card-back">${renderInlineNodes(block.card.back.nodes)}</div>`,
+        block.card.exampleJp
+          ? `<div class="card-example-jp">${renderInlineNodes(block.card.exampleJp.nodes)}</div>`
+          : "",
+        block.card.exampleIt
+          ? `<div class="card-example-it">${renderInlineNodes(block.card.exampleIt.nodes)}</div>`
+          : "",
         block.card.notesIt
           ? `<div class="card-notes">${renderInlineNodes(block.card.notesIt.nodes)}</div>`
           : "",
@@ -294,6 +300,12 @@ function extractBlockText(block: ContentBlock): string {
       return [
         extractInlineNodesText(block.card.front.nodes),
         extractInlineNodesText(block.card.back.nodes),
+        block.card.exampleJp
+          ? extractInlineNodesText(block.card.exampleJp.nodes)
+          : "",
+        block.card.exampleIt
+          ? extractInlineNodesText(block.card.exampleIt.nodes)
+          : "",
         block.card.notesIt
           ? extractInlineNodesText(block.card.notesIt.nodes)
           : ""
@@ -382,6 +394,8 @@ function collectReferenceKeysFromBlock(
       return dedupeReferenceKeys([
         ...collectReferenceKeysFromInlineNodes(block.card.front.nodes),
         ...collectReferenceKeysFromInlineNodes(block.card.back.nodes),
+        ...collectReferenceKeysFromRichText(block.card.exampleJp),
+        ...collectReferenceKeysFromRichText(block.card.exampleIt),
         ...collectReferenceKeysFromRichText(block.card.notesIt)
       ]);
   }

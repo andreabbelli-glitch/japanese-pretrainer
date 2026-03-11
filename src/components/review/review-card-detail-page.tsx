@@ -75,6 +75,19 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
           <p className="glossary-entry-hero__detail">
             Stato review: {data.card.reviewLabel}
           </p>
+          {data.card.exampleJp && data.card.exampleIt ? (
+            <section className="reader-example-sentence">
+              <p className="reader-example-sentence__jp jp-inline">
+                {renderFurigana(data.card.exampleJp)}
+              </p>
+              <details className="reader-example-sentence__translation">
+                <summary>Mostra traduzione italiana</summary>
+                <div className="reader-example-sentence__translation-body">
+                  <p>{renderFurigana(data.card.exampleIt)}</p>
+                </div>
+              </details>
+            </section>
+          ) : null}
           {data.card.dueLabel ? (
             <p className="glossary-entry-hero__detail">{data.card.dueLabel}</p>
           ) : null}
