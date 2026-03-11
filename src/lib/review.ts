@@ -50,6 +50,7 @@ type ReviewEntryLookupItem = {
   kind: ReviewCardEntryKind;
   label: string;
   meaning: string;
+  reading?: string;
   status: ReviewEntryStatusValue;
   subtitle?: string;
 };
@@ -82,6 +83,7 @@ export type ReviewQueueCard = {
   notes?: string;
   orderIndex: number | null;
   rawReviewLabel: string;
+  reading?: string;
   segmentTitle?: string;
   typeLabel: string;
 };
@@ -135,6 +137,7 @@ export type ReviewCardDetailData = {
     front: string;
     id: string;
     notes?: string;
+    reading?: string;
     reviewLabel: string;
     segmentTitle?: string;
     typeLabel: string;
@@ -294,6 +297,7 @@ export async function getReviewCardDetailData(
       front: selectedCard.front,
       id: selectedCard.id,
       notes: selectedCard.notes,
+      reading: selectedCard.reading,
       reviewLabel: selectedCard.effectiveStateLabel,
       segmentTitle: selectedCard.segmentTitle,
       typeLabel: selectedCard.typeLabel
@@ -382,6 +386,7 @@ function buildEntryLookup(
       kind: "term",
       label: entry.lemma,
       meaning: entry.meaningIt,
+      reading: entry.reading,
       status: entry.status?.status ?? null,
       subtitle:
         [entry.reading, entry.romaji].filter(Boolean).join(" / ") || undefined
@@ -395,6 +400,7 @@ function buildEntryLookup(
       kind: "grammar",
       label: entry.pattern,
       meaning: entry.meaningIt,
+      reading: entry.reading ?? deriveKanaReading(entry.pattern),
       status: entry.status?.status ?? null,
       subtitle: entry.title !== entry.pattern ? entry.title : undefined
     });
@@ -456,6 +462,7 @@ function mapQueueCard(
     effectiveState: effectiveState.state,
     reviewState: (card.reviewState?.state as ReviewState | null) ?? null
   });
+  const reading = resolveReviewCardReading(card, entryLookup);
 
   return {
     back: card.back,
@@ -480,9 +487,48 @@ function mapQueueCard(
     notes: card.notesIt ?? undefined,
     orderIndex: card.orderIndex,
     rawReviewLabel,
+    reading,
     segmentTitle: card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(card.cardType)
   };
+}
+
+function resolveReviewCardReading(
+  card: ReviewCardListItem,
+  entryLookup: Map<string, ReviewEntryLookupItem>
+) {
+  const drivingLinks = getDrivingEntryLinks(card.entryLinks)
+    .slice()
+    .sort(compareEntryLinks);
+
+  for (const link of drivingLinks) {
+    const reading = entryLookup.get(`${link.entryType}:${link.entryId}`)?.reading;
+
+    if (reading) {
+      return reading;
+    }
+  }
+
+  for (const link of card.entryLinks.slice().sort(compareEntryLinks)) {
+    const reading = entryLookup.get(`${link.entryType}:${link.entryId}`)?.reading;
+
+    if (reading) {
+      return reading;
+    }
+  }
+
+  return deriveKanaReading(card.front);
+}
+
+function deriveKanaReading(value: string) {
+  const hasKana = /[\p{Script=Hiragana}\p{Script=Katakana}]/u.test(value);
+  const hasHan = /\p{Script=Han}/u.test(value);
+
+  if (hasKana && !hasHan) {
+    return value;
+  }
+
+  return undefined;
 }
 
 function resolveCardBucket(input: {

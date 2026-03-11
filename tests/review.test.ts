@@ -3,8 +3,10 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { eq } from "drizzle-orm";
+import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
+import { ReviewPage } from "@/components/review/review-page";
 import {
   card,
   cardEntryLink,
@@ -18,6 +20,7 @@ import {
   type DatabaseClient
 } from "@/db";
 import {
+  getReviewCardDetailData,
   getReviewPageData,
   getReviewQueueSnapshotForMedia
 } from "@/lib/review";
@@ -244,6 +247,41 @@ describe("review system", () => {
     expect(explicitSelectionPage?.selectedCard?.id).toBe(
       developmentFixture.secondaryCardId
     );
+  });
+
+  it("exposes and renders the Japanese reading in review answers", async () => {
+    const primaryPage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {
+        card: developmentFixture.primaryCardId,
+        show: "answer"
+      },
+      database
+    );
+    const secondaryPage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {
+        card: developmentFixture.secondaryCardId,
+        show: "answer"
+      },
+      database
+    );
+    const primaryDetail = await getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.primaryCardId,
+      database
+    );
+
+    expect(primaryPage?.selectedCard?.reading).toBe("いく");
+    expect(secondaryPage?.selectedCard?.reading).toBe("〜ている");
+    expect(primaryDetail?.card.reading).toBe("いく");
+
+    const primaryMarkup = renderToStaticMarkup(
+      ReviewPage({ data: primaryPage! })
+    );
+
+    expect(primaryMarkup).toContain("review-stage__reading");
+    expect(primaryMarkup).toContain("いく");
   });
 
   it("uses entry_status for manual mastery and restores the queue when reopened", async () => {

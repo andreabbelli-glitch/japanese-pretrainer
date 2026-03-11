@@ -63,6 +63,11 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
           <h2 className="glossary-entry-hero__title jp-inline">
             {data.card.front}
           </h2>
+          {data.card.reading ? (
+            <p className="glossary-entry-hero__reading jp-inline">
+              {data.card.reading}
+            </p>
+          ) : null}
           <p className="glossary-entry-hero__meaning">{data.card.back}</p>
           <p className="glossary-entry-hero__detail">
             Tipo: {data.card.typeLabel}

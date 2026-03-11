@@ -156,6 +156,11 @@ export function ReviewPage({ data }: ReviewPageProps) {
                 ) : (
                   <div className="review-stage__answer">
                     <p className="eyebrow">Retro</p>
+                    {selectedCard.reading ? (
+                      <p className="review-stage__reading jp-inline">
+                        {selectedCard.reading}
+                      </p>
+                    ) : null}
                     <p className="review-stage__back">{selectedCard.back}</p>
                     {selectedCard.notes ? (
                       <p className="review-stage__notes">
