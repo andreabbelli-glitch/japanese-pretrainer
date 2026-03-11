@@ -1,0 +1,100 @@
+assets:
+  - id: tcg-core-card-anatomy-reference
+    src: assets/cards/abyssbell-jashintei.webp
+    source_type: card-art
+    width: 650
+    height: 908
+    card_id: card-abyssbell-jashintei-recognition
+    lesson_slug: tcg-core-overview
+    anchor: "### 2. La carta si legge dall'esterno verso l'interno"
+    alt_it: >-
+      Carta di アビスベル=ジャシン帝 con costo, nome, tipo, razza, testo effetto e
+      potenza ben visibili.
+    caption_it: >-
+      Carta reale di
+      [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei) usata come
+      riferimento per leggere i campi principali di una carta Duel Masters.
+    notes: >-
+      Fonte ufficiale Takara Tomy. Asset riusato anche per la lesson
+      `DM25-SD1`.
+  - id: duel-plays-deck-edit-screen
+    src: assets/ui/deck-edit.webp
+    source_type: screenshot
+    width: 1285
+    height: 594
+    lesson_slug: duel-plays-app-decks-and-shop
+    anchor: "### 2. `デッキ{{編成|へんせい}}` e `レンタルデッキ` rispondono a due bisogni diversi"
+    alt_it: >-
+      Schermata di editing del deck in デュエプレ con lista carte, filtri e
+      pannello del mazzo a destra.
+    caption_it: >-
+      Schermata reale di editing del deck in `デュエプレ`, utile per riconoscere
+      [デッキ](term:term-constructed-deck), `カード{{一覧|いちらん}}`,
+      [{{所持|しょじ}}](term:term-owned) e i comandi di salvataggio.
+    notes: >-
+      Screenshot ufficiale App Store iPhone.
+  - id: dm25-sd1-abyssbell-jashintei-card
+    src: assets/cards/abyssbell-jashintei.webp
+    source_type: card-art
+    width: 650
+    height: 908
+    card_id: card-abyssbell-jashintei-recognition
+    lesson_slug: dm25-sd1-overview
+    anchor: "### 3. I nomi propri qui non sono decorazione"
+    alt_it: >-
+      Carta di アビスベル=ジャシン帝 centrata e leggibile.
+    caption_it: >-
+      Immagine ufficiale di
+      [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei),
+      carta-ancora del deck `DM25-SD1`.
+    notes: >-
+      Fonte ufficiale Takara Tomy.
+  - id: dm25-sd1-jablood-card
+    src: assets/cards/jablood.webp
+    source_type: card-art
+    width: 650
+    height: 908
+    card_id: card-jablood-recognition
+    lesson_slug: dm25-sd1-overview
+    anchor: "### 3. I nomi propri qui non sono decorazione"
+    alt_it: >-
+      Carta di 邪龍 ジャブラッド centrata e leggibile.
+    caption_it: >-
+      Immagine ufficiale di {{邪龍|じゃりゅう}}
+      [ジャブラッド](term:term-jablood), altro nome-ancora ricorrente del deck
+      `DM25-SD1`.
+    notes: >-
+      Fonte ufficiale Takara Tomy.
+  - id: dm25-sd2-apollonus-dragelion-card
+    src: assets/cards/apollonus-dragelion.webp
+    source_type: card-art
+    width: 650
+    height: 908
+    card_id: card-apollonus-dragelion-recognition
+    lesson_slug: dm25-sd2-overview
+    anchor: "### 3. I nomi-ancora del deck"
+    alt_it: >-
+      Carta di 超神羅星アポロヌス・ドラゲリオン centrata e leggibile.
+    caption_it: >-
+      Immagine ufficiale di
+      {{超神羅星|ちょうしんらせい}}
+      [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion), finisher
+      simbolo del deck `DM25-SD2`.
+    notes: >-
+      Fonte ufficiale Takara Tomy.
+  - id: dm25-sd2-red-zone-card
+    src: assets/cards/red-zone.webp
+    source_type: card-art
+    width: 650
+    height: 908
+    card_id: card-red-zone-recognition
+    lesson_slug: dm25-sd2-overview
+    anchor: "### 3. I nomi-ancora del deck"
+    alt_it: >-
+      Carta di 轟く侵略 レッドゾーン centrata e leggibile.
+    caption_it: >-
+      Immagine ufficiale di {{轟|とどろ}}く{{侵略|しんりゃく}}
+      [レッドゾーン](term:term-red-zone), altra carta-simbolo del lato offensivo
+      di `DM25-SD2`.
+    notes: >-
+      Fonte ufficiale Takara Tomy.

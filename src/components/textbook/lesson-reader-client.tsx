@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -26,18 +27,22 @@ import type {
 } from "@/lib/content/types";
 import type {
   FuriganaMode,
-  TextbookEntryTooltip,
+  TextbookTooltipEntry,
   TextbookLessonData,
   TextbookLessonNavItem
 } from "@/lib/textbook";
-import { mediaStudyHref, mediaTextbookLessonHref } from "@/lib/site";
+import {
+  mediaAssetHref,
+  mediaStudyHref,
+  mediaTextbookLessonHref
+} from "@/lib/site";
 
 type LessonReaderClientProps = {
   data: TextbookLessonData;
 };
 
 type TooltipState = {
-  entry: TextbookEntryTooltip;
+  entry: TextbookTooltipEntry;
   locked: boolean;
   left: number;
   top: number;
@@ -50,8 +55,42 @@ type MobileSheetState =
     }
   | {
       type: "entry";
-      entry: TextbookEntryTooltip;
+      entry: TextbookTooltipEntry;
     };
+
+type ImagePresentation = {
+  height: number;
+  sizes: string;
+  variantClassName: string;
+  width: number;
+};
+
+function resolveImagePresentation(src: string): ImagePresentation {
+  if (src.startsWith("assets/cards/")) {
+    return {
+      height: 908,
+      sizes: "(max-width: 960px) min(100vw - 3rem, 24rem), 26rem",
+      variantClassName: "reader-image--card",
+      width: 650
+    };
+  }
+
+  if (src.startsWith("assets/ui/")) {
+    return {
+      height: 900,
+      sizes: "(max-width: 960px) 100vw, 56rem",
+      variantClassName: "reader-image--ui",
+      width: 1600
+    };
+  }
+
+  return {
+    height: 1000,
+    sizes: "(max-width: 960px) 100vw, 48rem",
+    variantClassName: "reader-image--default",
+    width: 1400
+  };
+}
 
 export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const router = useRouter();
@@ -192,7 +231,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   };
 
   const openReference = (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => {
@@ -375,6 +414,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
               fallbackHtml={data.lesson.htmlRendered}
               furiganaMode={furiganaMode}
               isTouchLayout={isTouchLayout}
+              mediaSlug={data.media.slug}
               onReferenceBlur={closeTooltipSoon}
               onReferenceClick={openReference}
               onReferenceFocus={openReference}
@@ -572,23 +612,24 @@ function LessonRail({
 type LessonArticleProps = {
   activeEntryKey: string | null;
   document: MarkdownDocument | null;
-  entriesByKey: Map<string, TextbookEntryTooltip>;
+  entriesByKey: Map<string, TextbookTooltipEntry>;
   fallbackHtml: string;
   furiganaMode: FuriganaMode;
   isTouchLayout: boolean;
+  mediaSlug: string;
   onReferenceBlur: () => void;
   onReferenceClick: (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceFocus: (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceHover: (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
@@ -602,6 +643,7 @@ export function LessonArticle({
   fallbackHtml,
   furiganaMode,
   isTouchLayout,
+  mediaSlug,
   onReferenceBlur,
   onReferenceClick,
   onReferenceFocus,
@@ -738,6 +780,74 @@ export function LessonArticle({
         );
       case "thematicBreak":
         return <hr className="reader-divider" key={index} />;
+      case "image":
+        const imagePresentation = resolveImagePresentation(block.src);
+        const imageEntry = block.cardId
+          ? entriesByKey.get(`card:${block.cardId}`) ?? null
+          : null;
+
+        return (
+          <figure
+            className={cx(
+              "reader-image",
+              imagePresentation.variantClassName,
+              imageEntry && "reader-image--interactive",
+              imageEntry &&
+                activeEntryKey === `${imageEntry.kind}:${imageEntry.id}` &&
+                "reader-image--active"
+            )}
+            data-card-id={block.cardId ?? undefined}
+            key={index}
+          >
+            {imageEntry ? (
+              <button
+                className="reader-image__button"
+                onBlur={onReferenceBlur}
+                onClick={(event) => {
+                  onReferenceClick(imageEntry, event.currentTarget, "click");
+                }}
+                onFocus={(event) => {
+                  onReferenceFocus(imageEntry, event.currentTarget, "focus");
+                }}
+                onMouseEnter={(event) => {
+                  onReferenceHover(imageEntry, event.currentTarget, "hover");
+                }}
+                onMouseLeave={onReferenceLeave}
+                type="button"
+              >
+                <span className="reader-image__hint">Card</span>
+                <Image
+                  alt={block.alt}
+                  className="reader-image__asset"
+                  decoding="async"
+                  height={imagePresentation.height}
+                  loading="lazy"
+                  sizes={imagePresentation.sizes}
+                  src={mediaAssetHref(mediaSlug, block.src)}
+                  unoptimized
+                  width={imagePresentation.width}
+                />
+              </button>
+            ) : (
+              <Image
+                alt={block.alt}
+                className="reader-image__asset"
+                decoding="async"
+                height={imagePresentation.height}
+                loading="lazy"
+                sizes={imagePresentation.sizes}
+                src={mediaAssetHref(mediaSlug, block.src)}
+                unoptimized
+                width={imagePresentation.width}
+              />
+            )}
+            {block.caption ? (
+              <figcaption className="reader-image__caption">
+                {renderInlineNodes(block.caption.nodes)}
+              </figcaption>
+            ) : null}
+          </figure>
+        );
       case "exampleSentence":
         return (
           <section className="reader-example-sentence" key={index}>
@@ -827,23 +937,23 @@ export function LessonArticle({
 
 type FallbackHtmlArticleProps = {
   activeEntryKey: string | null;
-  entriesByKey: Map<string, TextbookEntryTooltip>;
+  entriesByKey: Map<string, TextbookTooltipEntry>;
   fallbackHtml: string;
   furiganaMode: FuriganaMode;
   isTouchLayout: boolean;
   onReferenceBlur: () => void;
   onReferenceClick: (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceFocus: (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceHover: (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
@@ -873,9 +983,11 @@ function FallbackHtmlArticle({
 
     const referenceSelector =
       ".content-entry-ref[data-entry-type][data-entry-id]";
+    const imageSelector = ".reader-image[data-card-id]";
     const references = Array.from(
       container.querySelectorAll<HTMLElement>(referenceSelector)
     );
+    const images = Array.from(container.querySelectorAll<HTMLElement>(imageSelector));
     const rubies = Array.from(container.querySelectorAll<HTMLElement>("ruby"));
 
     const resolveEntry = (element: HTMLElement) => {
@@ -891,11 +1003,20 @@ function FallbackHtmlArticle({
 
       return entriesByKey.get(`${entryType}:${entryId}`) ?? null;
     };
+    const resolveImageEntry = (element: HTMLElement) => {
+      const cardId = element.dataset.cardId;
+
+      return typeof cardId === "string"
+        ? entriesByKey.get(`card:${cardId}`) ?? null
+        : null;
+    };
 
     const resolveReferenceTarget = (target: EventTarget | null) =>
       target instanceof Element
         ? target.closest<HTMLElement>(referenceSelector)
         : null;
+    const resolveImageTarget = (target: EventTarget | null) =>
+      target instanceof Element ? target.closest<HTMLElement>(imageSelector) : null;
     const resolveRubyTarget = (target: EventTarget | null) =>
       target instanceof Element ? target.closest<HTMLElement>("ruby") : null;
 
@@ -910,6 +1031,25 @@ function FallbackHtmlArticle({
       );
       element.classList.toggle(
         "reader-ref--active",
+        activeEntryKey === `${entry?.kind}:${entry?.id}`
+      );
+
+      if (entry) {
+        element.setAttribute("role", "button");
+        element.tabIndex = 0;
+        return;
+      }
+
+      element.removeAttribute("role");
+      element.removeAttribute("tabindex");
+    });
+
+    images.forEach((element) => {
+      const entry = resolveImageEntry(element);
+
+      element.classList.toggle("reader-image--interactive", Boolean(entry));
+      element.classList.toggle(
+        "reader-image--active",
         activeEntryKey === `${entry?.kind}:${entry?.id}`
       );
 
@@ -944,37 +1084,64 @@ function FallbackHtmlArticle({
     const handleMouseOver = (event: MouseEvent) => {
       const element = resolveReferenceTarget(event.target);
 
-      if (!element) {
-        return;
+      if (element) {
+        const related = event.relatedTarget;
+
+        if (related instanceof Node && element.contains(related)) {
+          return;
+        }
+
+        const entry = resolveEntry(element);
+
+        if (entry) {
+          onReferenceHover(entry, element, "hover");
+          return;
+        }
       }
 
-      const related = event.relatedTarget;
+      const image = resolveImageTarget(event.target);
 
-      if (related instanceof Node && element.contains(related)) {
-        return;
-      }
+      if (image) {
+        const related = event.relatedTarget;
 
-      const entry = resolveEntry(element);
+        if (related instanceof Node && image.contains(related)) {
+          return;
+        }
 
-      if (entry) {
-        onReferenceHover(entry, element, "hover");
+        const imageEntry = resolveImageEntry(image);
+
+        if (imageEntry) {
+          onReferenceHover(imageEntry, image, "hover");
+        }
       }
     };
 
     const handleMouseOut = (event: MouseEvent) => {
       const element = resolveReferenceTarget(event.target);
 
-      if (!element) {
+      if (element) {
+        const related = event.relatedTarget;
+
+        if (related instanceof Node && element.contains(related)) {
+          return;
+        }
+
+        onReferenceLeave();
         return;
       }
 
-      const related = event.relatedTarget;
+      const image = resolveImageTarget(event.target);
 
-      if (related instanceof Node && element.contains(related)) {
+      if (image) {
+        const related = event.relatedTarget;
+
+        if (related instanceof Node && image.contains(related)) {
+          return;
+        }
+
+        onReferenceLeave();
         return;
       }
-
-      onReferenceLeave();
     };
 
     const handleFocusIn = (event: FocusEvent) => {
@@ -985,6 +1152,17 @@ function FallbackHtmlArticle({
 
         if (entry) {
           onReferenceFocus(entry, element, "focus");
+          return;
+        }
+      }
+
+      const image = resolveImageTarget(event.target);
+
+      if (image) {
+        const imageEntry = resolveImageEntry(image);
+
+        if (imageEntry) {
+          onReferenceFocus(imageEntry, image, "focus");
         }
       }
     };
@@ -996,6 +1174,19 @@ function FallbackHtmlArticle({
         const related = event.relatedTarget;
 
         if (related instanceof Node && element.contains(related)) {
+          return;
+        }
+
+        onReferenceBlur();
+        return;
+      }
+
+      const image = resolveImageTarget(event.target);
+
+      if (image) {
+        const related = event.relatedTarget;
+
+        if (related instanceof Node && image.contains(related)) {
           return;
         }
 
@@ -1023,6 +1214,19 @@ function FallbackHtmlArticle({
         return;
       }
 
+      const image = resolveImageTarget(event.target);
+
+      if (image) {
+        const imageEntry = resolveImageEntry(image);
+
+        if (imageEntry) {
+          event.preventDefault();
+          onReferenceClick(imageEntry, image, "click");
+        }
+
+        return;
+      }
+
       const ruby = resolveRubyTarget(event.target);
 
       if (ruby) {
@@ -1043,6 +1247,19 @@ function FallbackHtmlArticle({
         if (entry) {
           event.preventDefault();
           onReferenceClick(entry, element, "click");
+        }
+
+        return;
+      }
+
+      const image = resolveImageTarget(event.target);
+
+      if (image) {
+        const imageEntry = resolveImageEntry(image);
+
+        if (imageEntry) {
+          event.preventDefault();
+          onReferenceClick(imageEntry, image, "click");
         }
 
         return;
@@ -1095,20 +1312,20 @@ function FallbackHtmlArticle({
 type ReferenceTokenProps = {
   active: boolean;
   children: ReactNode;
-  entry: TextbookEntryTooltip;
+  entry: TextbookTooltipEntry;
   onBlur: () => void;
   onClick: (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onFocus: (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onHover: (
-    entry: TextbookEntryTooltip,
+    entry: TextbookTooltipEntry,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
@@ -1193,7 +1410,7 @@ function FuriganaRuby({
 }
 
 type EntryTooltipCardProps = {
-  entry: TextbookEntryTooltip;
+  entry: TextbookTooltipEntry;
   mobile?: boolean;
 };
 
@@ -1207,37 +1424,53 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
     >
       <div className="entry-tooltip-card__top">
         <span
-          className={cx("chip", entry.kind === "grammar" && "chip--grammar")}
+          className={cx(
+            "chip",
+            (entry.kind === "grammar" || entry.kind === "card") &&
+              "chip--grammar"
+          )}
         >
-          {entry.kind === "term" ? "Term" : "Grammar"}
+          {entry.kind === "term"
+            ? "Term"
+            : entry.kind === "grammar"
+              ? "Grammar"
+              : "Card"}
         </span>
         <span className="meta-pill">{entry.statusLabel}</span>
       </div>
       <h2 className="entry-tooltip-card__title jp-inline">{entry.label}</h2>
-      {entry.title && entry.title !== entry.label ? (
+      {"title" in entry && entry.title && entry.title !== entry.label ? (
         <p className="entry-tooltip-card__subtitle">{entry.title}</p>
       ) : null}
-      {entry.reading || entry.romaji ? (
+      {entry.reading || ("romaji" in entry && entry.romaji) ? (
         <p className="entry-tooltip-card__reading jp-inline">
-          {[entry.reading, entry.romaji].filter(Boolean).join(" · ")}
+          {[entry.reading, "romaji" in entry ? entry.romaji : undefined]
+            .filter(Boolean)
+            .join(" · ")}
         </p>
       ) : null}
       <p className="entry-tooltip-card__meaning">{entry.meaning}</p>
-      {entry.literalMeaning ? (
+      {"literalMeaning" in entry && entry.literalMeaning ? (
         <p className="entry-tooltip-card__detail">
           Letterale: {entry.literalMeaning}
         </p>
       ) : null}
-      {entry.pos ? (
+      {"pos" in entry && entry.pos ? (
         <p className="entry-tooltip-card__detail">Categoria: {entry.pos}</p>
+      ) : null}
+      {"typeLabel" in entry ? (
+        <p className="entry-tooltip-card__detail">Tipo card: {entry.typeLabel}</p>
       ) : null}
       {entry.notes ? (
         <p className="entry-tooltip-card__notes">
           {renderFurigana(entry.notes)}
         </p>
       ) : null}
-      <Link className="text-link" href={entry.glossaryHref}>
-        Apri entry
+      <Link
+        className="text-link"
+        href={"glossaryHref" in entry ? entry.glossaryHref : entry.reviewHref}
+      >
+        {"glossaryHref" in entry ? "Apri entry" : "Apri card"}
       </Link>
     </div>
   );

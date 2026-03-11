@@ -9,12 +9,16 @@ La differenza rispetto alla sola specifica e semplice:
 
 - `docs/content-format.md` spiega le regole;
 - questi template mostrano la forma esatta dei file da compilare.
+- il template lesson mostra anche come inserire blocchi `:::image` quando gli
+  asset esistono gia nel bundle.
 
 ## File disponibili
 
 - [Template media](./media.template.md)
 - [Template lesson textbook](./textbook-lesson.template.md)
 - [Template cards](./cards-file.template.md)
+- [Template image requests](./image-requests.template.yaml)
+- [Template image assets](./image-assets.template.yaml)
 
 ## Uso consigliato
 
@@ -24,7 +28,8 @@ Quando chiedi contenuti all'LLM esterno:
 2. passa `docs/llm-content-handoff.md`;
 3. passa il brief del contenuto richiesto;
 4. passa uno o piu template di questa cartella;
-5. chiedi di restituire solo file Markdown completi e validi.
+5. se usi il workflow immagini, passa anche i template YAML sidecar;
+6. chiedi di restituire solo i file richiesti nel formato corretto.
 
 ## Regola pratica
 

@@ -354,6 +354,22 @@ level_hint: n5
 :::
 
 :::term
+id: term-effect
+lemma: 効果
+reading: こうか
+romaji: kouka
+meaning_it: effetto
+pos: noun
+aliases: [効果, こうか, kouka]
+notes_it: >-
+  È una delle parole più importanti del rules text. Non indica la carta in sé,
+  ma ciò che il testo fa davvero: pescare, distruggere, impedire o modificare
+  uno stato. In frasi come `この{{効果|こうか}}` o `{{効果|こうか}}を{{使|つか}}う`,
+  la carta sta richiamando il blocco di testo che produce il risultato reale.
+level_hint: n4
+:::
+
+:::term
 id: term-summon
 lemma: 召喚
 reading: しょうかん
@@ -1179,6 +1195,23 @@ notes_it: >-
   Significa "avversario". È una parola chiave da riconoscere subito, perché ti
   dice che il bersaglio o la zona coinvolta sono dall'altro lato del tavolo.
 tags: [core, actor]
+:::
+
+:::card
+id: card-effect-recognition
+entry_type: term
+entry_id: term-effect
+card_type: recognition
+front: 効果
+back: effetto
+example_jp: >-
+  この{{効果|こうか}}で{{相手|あいて}}のクリーチャーを{{1体|いったい}} {{破壊|はかい}}する。
+example_it: >-
+  Con questo effetto distruggi 1 creatura del tuo avversario.
+notes_it: >-
+  Quando compare 効果, la carta non sta nominando un oggetto ma il risultato
+  prodotto da un'abilità o da una riga di testo.
+tags: [core, rules-text]
 :::
 
 :::card

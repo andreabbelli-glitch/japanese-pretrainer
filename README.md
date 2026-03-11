@@ -95,9 +95,10 @@ Comandi principali:
 Di default il DB viene creato in `./data/japanese-custom-study.db`, ma puoi
 sovrascrivere il path con `DATABASE_URL`.
 
-L'importer esegue parser + validazione prima di sincronizzare il DB. Di default
-legge `./content`; puoi passare una content root diversa con
-`-- --content-root /percorso/content`.
+`pnpm db:seed` importa il contenuto reale presente in `./content` dopo un
+cleanup dei vecchi dati demo legacy. L'importer esegue parser + validazione
+prima di sincronizzare il DB; puoi passare una content root diversa con
+`pnpm content:import -- --content-root /percorso/content`.
 
 Dettagli operativi e schema: [Persistence layer](./docs/database.md)
 
@@ -122,6 +123,8 @@ src/
   styles/
 content/
   media/
+    <media-slug>/
+      assets/
 tests/
 scripts/
 docs/
@@ -136,6 +139,7 @@ docs/
 - [Content parser e validator](./docs/content-parser.md)
 - [Importer sync strategy](./docs/importer-sync-strategy.md)
 - [Handoff per LLM esterno](./docs/llm-content-handoff.md)
+- [Workflow immagini](./docs/content-workflow-playbook.md#31-asset-immagini)
 - [Brief contenuti Duel Masters](./docs/content-briefs/duel-masters-dm25.md)
 - [Template contenuti per LLM esterno](./docs/templates/README.md)
 - [Prompt batch 1 Duel Masters (seed)](./docs/prompts/duel-masters-dm25-batch-1.md)

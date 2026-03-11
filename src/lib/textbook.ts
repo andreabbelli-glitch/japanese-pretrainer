@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 
 import {
   db,
+  getCardsByIds,
   getGrammarEntriesByIds,
   getLessonBySlug,
   getMediaBySlug,
@@ -15,9 +16,14 @@ import {
   type DatabaseClient,
   type GrammarGlossaryEntry,
   type LessonListItem,
+  type CardListItem,
   type TermGlossaryEntry
 } from "@/db";
-import { mediaGlossaryEntryHref, mediaStudyHref } from "@/lib/site";
+import {
+  mediaGlossaryEntryHref,
+  mediaReviewCardHref,
+  mediaStudyHref
+} from "@/lib/site";
 import type { MarkdownDocument } from "@/lib/content/types";
 import {
   getFuriganaModeSetting,
@@ -78,6 +84,21 @@ export type TextbookEntryTooltip = {
   glossaryHref: Route;
 };
 
+export type TextbookCardTooltip = {
+  id: string;
+  kind: "card";
+  label: string;
+  reading?: string;
+  meaning: string;
+  notes?: string;
+  typeLabel: string;
+  statusLabel: string;
+  segmentTitle?: string;
+  reviewHref: Route;
+};
+
+export type TextbookTooltipEntry = TextbookEntryTooltip | TextbookCardTooltip;
+
 export type TextbookIndexData = {
   media: {
     id: string;
@@ -111,7 +132,7 @@ export type TextbookLessonData = TextbookIndexData & {
     ast: MarkdownDocument | null;
     htmlRendered: string;
   };
-  entries: TextbookEntryTooltip[];
+  entries: TextbookTooltipEntry[];
   previousLesson: TextbookLessonNavItem | null;
   nextLesson: TextbookLessonNavItem | null;
 };
@@ -179,10 +200,12 @@ export async function getTextbookLessonData(
   const currentIndex = indexModel.lessons.findIndex(
     (item) => item.id === lesson.id
   );
+  const lessonAst = parseLessonAst(lesson.content?.astJson ?? null);
   const lessonEntryLinks = await listLessonEntryLinks(database, lesson.id);
   const entries = await loadLessonTooltipEntries({
     database,
     lessonEntryLinks,
+    imageCardIds: collectImageCardIds(lessonAst),
     mediaSlug
   });
 
@@ -198,7 +221,7 @@ export async function getTextbookLessonData(
       status: normalizeLessonStatus(lesson.progress?.status ?? null),
       statusLabel: formatLessonProgressStatusLabel(lesson.progress?.status ?? null),
       segmentTitle: lesson.segment?.title ?? "Percorso principale",
-      ast: parseLessonAst(lesson.content?.astJson ?? null),
+      ast: lessonAst,
       htmlRendered: lesson.content?.htmlRendered ?? ""
     },
     entries,
@@ -325,6 +348,7 @@ function buildTextbookIndexModel(input: {
 async function loadLessonTooltipEntries(input: {
   database: DatabaseClient;
   lessonEntryLinks: Awaited<ReturnType<typeof listLessonEntryLinks>>;
+  imageCardIds: string[];
   mediaSlug: string;
 }) {
   const uniqueLessonEntryLinks = dedupeLessonEntryLinks(input.lessonEntryLinks);
@@ -334,7 +358,7 @@ async function loadLessonTooltipEntries(input: {
   const grammarIds = uniqueLessonEntryLinks
     .filter((entry) => entry.entryType === "grammar")
     .map((entry) => entry.entryId);
-  const [terms, grammar, studySignals] = await Promise.all([
+  const [terms, grammar, studySignals, cards] = await Promise.all([
     getTermEntriesByIds(input.database, termIds),
     getGrammarEntriesByIds(input.database, grammarIds),
     listEntryStudySignals(
@@ -343,13 +367,14 @@ async function loadLessonTooltipEntries(input: {
         entryId: entry.entryId,
         entryType: entry.entryType
       }))
-    )
+    ),
+    getCardsByIds(input.database, input.imageCardIds)
   ]);
   const termMap = new Map(terms.map((entry) => [entry.id, entry]));
   const grammarMap = new Map(grammar.map((entry) => [entry.id, entry]));
   const studySignalsByEntry = buildStudySignalMap(studySignals);
 
-  return uniqueLessonEntryLinks.flatMap((link) => {
+  const baseEntries = uniqueLessonEntryLinks.flatMap((link) => {
     if (link.entryType === "term") {
       const entry = termMap.get(link.entryId);
 
@@ -376,6 +401,12 @@ async function loadLessonTooltipEntries(input: {
       )
     ];
   });
+
+  const cardEntries = cards.map((card) =>
+    mapCardTooltipEntry(card, input.mediaSlug)
+  );
+
+  return [...baseEntries, ...cardEntries];
 }
 
 function dedupeLessonEntryLinks(
@@ -518,6 +549,31 @@ function mapGrammarTooltipEntry(
   };
 }
 
+function mapCardTooltipEntry(
+  card: CardListItem,
+  mediaSlug: string
+): TextbookCardTooltip {
+  return {
+    id: card.id,
+    kind: "card",
+    label: card.front,
+    reading: undefined,
+    meaning: card.back,
+    notes: card.notesIt ?? undefined,
+    typeLabel: card.cardType,
+    statusLabel:
+      card.reviewState?.state === "suspended"
+        ? "Sospesa"
+        : card.reviewState?.state === "known_manual"
+          ? "Nota"
+          : card.reviewState?.state
+            ? "In review"
+            : "Disponibile",
+    segmentTitle: card.segment?.title ?? undefined,
+    reviewHref: mediaReviewCardHref(mediaSlug, card.id)
+  };
+}
+
 function resolveEntryStudyStateLabel(
   entryStatus: string | null,
   studySignals: StudySignalRow[]
@@ -537,6 +593,22 @@ function normalizeLessonStatus(
 
 function parseLessonAst(astJson: string | null) {
   return parseTextbookDocument(astJson);
+}
+
+function collectImageCardIds(document: MarkdownDocument | null) {
+  if (!document) {
+    return [];
+  }
+
+  const cardIds = new Set<string>();
+
+  for (const block of document.blocks) {
+    if (block.type === "image" && block.cardId) {
+      cardIds.add(block.cardId);
+    }
+  }
+
+  return [...cardIds];
 }
 
 function markDataAsLive() {

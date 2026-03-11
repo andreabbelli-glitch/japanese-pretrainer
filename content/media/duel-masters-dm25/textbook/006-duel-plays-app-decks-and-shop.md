@@ -80,6 +80,15 @@ Se impari presto questa distinzione, fai due progressi insieme:
 
 ### 2. `デッキ{{編成|へんせい}}` e `レンタルデッキ` rispondono a due bisogni diversi
 
+:::image
+src: assets/ui/deck-edit.webp
+alt: "Schermata di editing del deck in デュエプレ con lista carte, filtri e pannello del mazzo a destra."
+caption: >-
+  Schermata reale di editing del deck in `デュエプレ`, utile per riconoscere
+  [デッキ](term:term-constructed-deck), `カード{{一覧|いちらん}}`,
+  [{{所持|しょじ}}](term:term-owned) e i comandi di salvataggio.
+:::
+
 [デッキ{{編成|へんせい}}](term:term-deck-edit) è il posto in cui modifichi la
 tua lista.
 [レンタルデッキ](term:term-rental-deck) invece ti permette di usare un mazzo

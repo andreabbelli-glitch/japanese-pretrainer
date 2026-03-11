@@ -93,6 +93,7 @@ export type ContentBlock =
   | BlockquoteBlock
   | CodeBlock
   | ThematicBreakBlock
+  | ImageBlock
   | ExampleSentenceBlock
   | TermDefinitionBlock
   | GrammarDefinitionBlock
@@ -142,6 +143,15 @@ export interface CodeBlock {
 export interface ThematicBreakBlock {
   type: "thematicBreak";
   position?: SourceRange;
+}
+
+export interface ImageBlock {
+  type: "image";
+  position?: SourceRange;
+  src: string;
+  alt: string;
+  cardId?: string;
+  caption?: RichTextFragment;
 }
 
 export interface ExampleSentenceBlock {

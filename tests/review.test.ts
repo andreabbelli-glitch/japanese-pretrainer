@@ -100,10 +100,10 @@ describe("review system", () => {
 
     await database.insert(card).values([
       {
-        id: "card_demo_new_context",
+        id: "card_fixture_new_context",
         mediaId: developmentFixture.mediaId,
         segmentId: developmentFixture.segmentId,
-        sourceFile: "content/media/demo-anime/cards/basic/new-context.md",
+        sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-context.md",
         cardType: "production",
         front: "行きます",
         back: "andare (forma educata)",
@@ -114,10 +114,10 @@ describe("review system", () => {
         updatedAt: "2026-03-09T10:00:00.000Z"
       },
       {
-        id: "card_demo_suspended",
+        id: "card_fixture_suspended",
         mediaId: developmentFixture.mediaId,
         segmentId: developmentFixture.segmentId,
-        sourceFile: "content/media/demo-anime/cards/basic/suspended.md",
+        sourceFile: "tests/fixtures/db/fixture-tcg/cards/suspended.md",
         cardType: "recognition",
         front: "行った",
         back: "andato",
@@ -130,22 +130,22 @@ describe("review system", () => {
     ]);
     await database.insert(cardEntryLink).values([
       {
-        id: "card_entry_link_demo_new_context_primary",
-        cardId: "card_demo_new_context",
+        id: "card_entry_link_fixture_new_context_primary",
+        cardId: "card_fixture_new_context",
         entryType: "term",
         entryId: developmentFixture.termId,
         relationshipType: "primary"
       },
       {
-        id: "card_entry_link_demo_suspended_primary",
-        cardId: "card_demo_suspended",
+        id: "card_entry_link_fixture_suspended_primary",
+        cardId: "card_fixture_suspended",
         entryType: "term",
         entryId: developmentFixture.termId,
         relationshipType: "primary"
       }
     ]);
     await database.insert(reviewState).values({
-      cardId: "card_demo_suspended",
+      cardId: "card_fixture_suspended",
       state: "review",
       stability: 4,
       difficulty: 3,
@@ -172,7 +172,7 @@ describe("review system", () => {
     expect(queue?.suspendedCount).toBe(1);
     expect(queue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
       developmentFixture.primaryCardId,
-      "card_demo_new_context"
+      "card_fixture_new_context"
     ]);
   });
 
@@ -227,10 +227,10 @@ describe("review system", () => {
 
     await database.insert(card).values([
       {
-        id: "card_demo_new_limit_a",
+        id: "card_fixture_new_limit_a",
         mediaId: developmentFixture.mediaId,
         segmentId: developmentFixture.segmentId,
-        sourceFile: "content/media/demo-anime/cards/basic/new-limit-a.md",
+        sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-limit-a.md",
         cardType: "recognition",
         front: "一枚目",
         back: "prima carta",
@@ -241,10 +241,10 @@ describe("review system", () => {
         updatedAt: "2026-03-09T10:00:00.000Z"
       },
       {
-        id: "card_demo_new_limit_b",
+        id: "card_fixture_new_limit_b",
         mediaId: developmentFixture.mediaId,
         segmentId: developmentFixture.segmentId,
-        sourceFile: "content/media/demo-anime/cards/basic/new-limit-b.md",
+        sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-limit-b.md",
         cardType: "recognition",
         front: "二枚目",
         back: "seconda carta",
@@ -257,15 +257,15 @@ describe("review system", () => {
     ]);
     await database.insert(cardEntryLink).values([
       {
-        id: "card_entry_link_demo_new_limit_a",
-        cardId: "card_demo_new_limit_a",
+        id: "card_entry_link_fixture_new_limit_a",
+        cardId: "card_fixture_new_limit_a",
         entryType: "term",
         entryId: developmentFixture.termId,
         relationshipType: "secondary"
       },
       {
-        id: "card_entry_link_demo_new_limit_b",
-        cardId: "card_demo_new_limit_b",
+        id: "card_entry_link_fixture_new_limit_b",
+        cardId: "card_fixture_new_limit_b",
         entryType: "term",
         entryId: developmentFixture.termId,
         relationshipType: "secondary"
@@ -281,10 +281,10 @@ describe("review system", () => {
     expect(initialPage?.queue.dueCount).toBe(0);
     expect(initialPage?.queue.newQueuedCount).toBe(1);
     expect(initialPage?.queue.queueCount).toBe(1);
-    expect(initialPage?.selectedCard?.id).toBe("card_demo_new_limit_a");
+    expect(initialPage?.selectedCard?.id).toBe("card_fixture_new_limit_a");
 
     await applyReviewGrade({
-      cardId: "card_demo_new_limit_a",
+      cardId: "card_fixture_new_limit_a",
       database,
       rating: "good"
     });
@@ -317,7 +317,7 @@ describe("review system", () => {
     expect(toppedUpPage?.queue.effectiveDailyLimit).toBe(11);
     expect(toppedUpPage?.queue.newQueuedCount).toBe(1);
     expect(toppedUpPage?.queue.queueCount).toBe(1);
-    expect(toppedUpPage?.selectedCard?.id).toBe("card_demo_new_limit_b");
+    expect(toppedUpPage?.selectedCard?.id).toBe("card_fixture_new_limit_b");
   });
 
   it("keeps the main stage in a completion state when the queue is empty unless a card is explicitly selected", async () => {

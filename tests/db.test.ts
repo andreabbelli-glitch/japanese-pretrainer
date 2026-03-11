@@ -68,11 +68,11 @@ describe("database layer", () => {
     const lesson = await getLessonBySlug(
       database,
       developmentFixture.mediaId,
-      "intro-vocab"
+      "core-vocab"
     );
 
     expect(lesson?.content?.markdownRaw).toContain("行く");
-    expect(lesson?.segment?.slug).toBe("ep-1");
+    expect(lesson?.segment?.slug).toBe("starter-core");
   });
 
   it("keeps entry_status separate from canonical glossary entries", async () => {

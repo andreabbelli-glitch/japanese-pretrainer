@@ -73,13 +73,13 @@ describe("textbook data", () => {
     );
     const lessonData = await getTextbookLessonData(
       developmentFixture.mediaSlug,
-      "intro-vocab",
+      "core-vocab",
       database
     );
 
     expect(indexData).not.toBeNull();
     expect(indexData?.furiganaMode).toBe("hover");
-    expect(indexData?.resumeLesson?.slug).toBe("intro-vocab");
+    expect(indexData?.resumeLesson?.slug).toBe("core-vocab");
 
     expect(lessonData).not.toBeNull();
     expect(lessonData?.entries.map((entry) => entry.label)).toEqual([
@@ -102,7 +102,7 @@ describe("textbook data", () => {
             {
               type: "heading",
               depth: 1,
-              value: "Intro Vocab"
+              value: "Core Vocabulary"
             },
             {
               type: "list",
@@ -111,13 +111,13 @@ describe("textbook data", () => {
           ]
         }),
         htmlRendered:
-          "<h1>Intro Vocab</h1><ul><li>行く</li><li>〜ている</li></ul>"
+          "<h1>Core Vocabulary</h1><ul><li>行く</li><li>〜ている</li></ul>"
       })
       .where(eq(lessonContent.lessonId, developmentFixture.lessonId));
 
     const lessonData = await getTextbookLessonData(
       developmentFixture.mediaSlug,
-      "intro-vocab",
+      "core-vocab",
       database
     );
 
@@ -126,7 +126,7 @@ describe("textbook data", () => {
       {
         type: "heading",
         depth: 1,
-        children: [{ type: "text", value: "Intro Vocab" }]
+        children: [{ type: "text", value: "Core Vocabulary" }]
       },
       {
         type: "list",
@@ -184,7 +184,7 @@ describe("textbook data", () => {
 
     const lessonData = await getTextbookLessonData(
       developmentFixture.mediaSlug,
-      "intro-vocab",
+      "core-vocab",
       database
     );
 
@@ -398,6 +398,7 @@ describe("textbook data", () => {
         fallbackHtml: "",
         furiganaMode: "hover",
         isTouchLayout: false,
+        mediaSlug: "demo-media",
         onReferenceBlur() {},
         onReferenceClick() {},
         onReferenceFocus() {},
@@ -429,7 +430,7 @@ describe("textbook data", () => {
     const furiganaMode = await getFuriganaMode(database);
     const lessonData = await getTextbookLessonData(
       developmentFixture.mediaSlug,
-      "intro-vocab",
+      "core-vocab",
       database
     );
 

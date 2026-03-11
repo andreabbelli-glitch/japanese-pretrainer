@@ -1,0 +1,133 @@
+requests:
+  - id: tcg-core-card-anatomy-reference
+    lesson_slug: tcg-core-overview
+    anchor: "### 2. La carta si legge dall'esterno verso l'interno"
+    kind: card-art
+    priority: high
+    search_hint: >-
+      Duel Masters アビスベル=ジャシン帝 official card image
+    capture_instructions: >-
+      Usa l'immagine ufficiale completa della carta, centrata e leggibile, così
+      siano visibili costo, nome, tipo, razza, testo effetto e potenza.
+    alt_it: >-
+      Carta di アビスベル=ジャシン帝 con costo, nome, tipo, razza, testo effetto e
+      potenza ben visibili.
+    caption_it: >-
+      Carta reale di [アビスベル=ジャシン帝](term:term-abyssbell-jashintei) usata
+      come riferimento per leggere i campi principali di una carta Duel Masters.
+    notes: >-
+      Assunzione minima prudente: riuso la stessa carta anche come asset
+      riutilizzabile per la lesson verticale su `DM25-SD1`.
+  - id: duel-plays-home-screen
+    lesson_slug: duel-plays-app-overview
+    anchor: "### 1. La home non è contenuto: è una mappa"
+    kind: app-screen
+    priority: high
+    search_hint: >-
+      デュエプレ ホーム 公式 スクリーンショット
+    capture_instructions: >-
+      Serve una schermata home reale dell'app con label leggibili per missioni,
+      premi, avvisi o impostazioni. Non usare key visual, poster promozionali o
+      schermate di combattimento.
+    alt_it: >-
+      Schermata home di デュエプレ con accessi visibili a missioni, premi,
+      avvisi e impostazioni.
+    caption_it: >-
+      Home reale di `デュエプレ` usata per fissare i label base della schermata
+      iniziale.
+    notes: >-
+      Richiesta aperta: nelle fonti ufficiali trovate finora non compare una
+      home screen leggibile con i label citati dalla lesson.
+  - id: duel-plays-deck-edit-screen
+    lesson_slug: duel-plays-app-decks-and-shop
+    anchor: "### 2. `デッキ{{編成|へんせい}}` e `レンタルデッキ` rispondono a due bisogni diversi"
+    kind: app-screen
+    priority: high
+    search_hint: >-
+      デュエプレ デッキ編成 official screenshot
+    capture_instructions: >-
+      Preferisci una schermata reale di editing del deck con lista carte,
+      pannello mazzo e pulsanti di salvataggio leggibili.
+    alt_it: >-
+      Schermata di editing del deck in デュエプレ con lista carte, filtri e
+      pannello del mazzo a destra.
+    caption_it: >-
+      Schermata reale di editing del deck in `デュエプレ`, utile per riconoscere
+      `デッキ`, `カード一覧`, `所持` e i comandi di salvataggio.
+  - id: duel-plays-modes-screen
+    lesson_slug: duel-plays-app-modes-and-progression
+    anchor: "### 1. I nomi modalità sono mappe, non lessico decorativo"
+    kind: app-screen
+    priority: high
+    search_hint: >-
+      デュエプレ ランクマッチ カジュアルマッチ 公式 スクリーンショット
+    capture_instructions: >-
+      Serve una schermata modalità reale con label leggibili per ranked,
+      casual, solo o pulsanti di avvio partita. Non usare banner promozionali.
+    alt_it: >-
+      Schermata modalità di デュエプレ con label visibili per match, eventi o
+      contenuti solo.
+    caption_it: >-
+      Schermata reale delle modalità di `デュエプレ`, utile per leggere dove puoi
+      giocare subito e quali contenuti sono attivi.
+    notes: >-
+      Richiesta aperta: le fonti ufficiali trovate espongono battle scene o
+      key visual, ma non una schermata modalità leggibile con i label didattici
+      della lesson.
+  - id: dm25-sd1-abyssbell-jashintei-card
+    lesson_slug: dm25-sd1-overview
+    anchor: "### 3. I nomi propri qui non sono decorazione"
+    kind: card-art
+    priority: high
+    search_hint: >-
+      Duel Masters アビスベル=ジャシン帝 official card image
+    capture_instructions: >-
+      Usa l'immagine ufficiale completa della carta, centrata e leggibile.
+    alt_it: >-
+      Carta di アビスベル=ジャシン帝 centrata e leggibile.
+    caption_it: >-
+      Immagine ufficiale di [アビスベル=ジャシン帝](term:term-abyssbell-jashintei),
+      carta-ancora del deck `DM25-SD1`.
+  - id: dm25-sd1-jablood-card
+    lesson_slug: dm25-sd1-overview
+    anchor: "### 3. I nomi propri qui non sono decorazione"
+    kind: card-art
+    priority: medium
+    search_hint: >-
+      Duel Masters 邪龍 ジャブラッド official card image
+    capture_instructions: >-
+      Usa l'immagine ufficiale completa della carta, centrata e leggibile.
+    alt_it: >-
+      Carta di 邪龍 ジャブラッド centrata e leggibile.
+    caption_it: >-
+      Immagine ufficiale di [ジャブラッド](term:term-jablood), altro nome-ancora
+      ricorrente del deck `DM25-SD1`.
+  - id: dm25-sd2-apollonus-dragelion-card
+    lesson_slug: dm25-sd2-overview
+    anchor: "### 3. I nomi-ancora del deck"
+    kind: card-art
+    priority: high
+    search_hint: >-
+      Duel Masters 超神羅星アポロヌス・ドラゲリオン official card image
+    capture_instructions: >-
+      Usa l'immagine ufficiale completa della carta, centrata e leggibile.
+    alt_it: >-
+      Carta di 超神羅星アポロヌス・ドラゲリオン centrata e leggibile.
+    caption_it: >-
+      Immagine ufficiale di
+      [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion), finisher simbolo
+      del deck `DM25-SD2`.
+  - id: dm25-sd2-red-zone-card
+    lesson_slug: dm25-sd2-overview
+    anchor: "### 3. I nomi-ancora del deck"
+    kind: card-art
+    priority: medium
+    search_hint: >-
+      Duel Masters 轟く侵略 レッドゾーン official card image
+    capture_instructions: >-
+      Usa l'immagine ufficiale completa della carta, centrata e leggibile.
+    alt_it: >-
+      Carta di 轟く侵略 レッドゾーン centrata e leggibile.
+    caption_it: >-
+      Immagine ufficiale di [レッドゾーン](term:term-red-zone), altra carta-simbolo
+      del lato offensivo di `DM25-SD2`.

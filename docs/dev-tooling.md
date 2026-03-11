@@ -50,6 +50,18 @@ Verifica completa del setup:
 ./scripts/tooling-doctor.sh
 ```
 
+Workflow immagini:
+
+```sh
+./scripts/with-node.sh pnpm image:status -- --media-slug duel-masters-dm25
+./scripts/with-node.sh pnpm image:apply -- --media-slug duel-masters-dm25 --dry-run
+./scripts/with-node.sh pnpm image:apply -- --media-slug duel-masters-dm25
+./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug duel-masters-dm25
+```
+
+`image:apply` aggiorna i markdown, ma il reader usa il contenuto importato nel
+DB locale. Dopo un apply reale serve quindi un nuovo `content:import`.
+
 ## Tool da avere pronti
 
 - browser Playwright per test E2E;

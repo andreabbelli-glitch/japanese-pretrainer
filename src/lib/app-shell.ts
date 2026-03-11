@@ -57,6 +57,7 @@ export type MediaShellSnapshot = {
 
 export type DashboardData = {
   focusMedia: MediaShellSnapshot | null;
+  reviewMedia: MediaShellSnapshot | null;
   media: MediaShellSnapshot[];
   totals: {
     cardsDue: number;
@@ -76,9 +77,11 @@ export async function getDashboardData(
   const rows = await listMedia(database);
   const media = await Promise.all(rows.map((row) => buildMediaShellSnapshot(database, row)));
   const focusMedia = pickFocusMedia(media);
+  const reviewMedia = pickReviewMedia(media);
 
   return {
     focusMedia,
+    reviewMedia,
     media,
     totals: {
       cardsDue: media.reduce((sum, item) => sum + item.cardsDue, 0),
@@ -180,6 +183,30 @@ function pickFocusMedia(media: MediaShellSnapshot[]) {
   })[0] ?? null;
 }
 
+function pickReviewMedia(media: MediaShellSnapshot[]) {
+  return [...media].sort((left, right) => {
+    const scoreDifference = scoreMediaReview(left) - scoreMediaReview(right);
+
+    if (scoreDifference !== 0) {
+      return scoreDifference;
+    }
+
+    if (left.cardsDue !== right.cardsDue) {
+      return right.cardsDue - left.cardsDue;
+    }
+
+    if (left.activeReviewCards !== right.activeReviewCards) {
+      return right.activeReviewCards - left.activeReviewCards;
+    }
+
+    if (left.cardsTotal !== right.cardsTotal) {
+      return right.cardsTotal - left.cardsTotal;
+    }
+
+    return left.title.localeCompare(right.title, "it");
+  })[0] ?? null;
+}
+
 function markDataAsLive() {
   try {
     noStore();
@@ -198,6 +225,22 @@ function scoreMediaFocus(item: MediaShellSnapshot) {
   }
 
   if ((item.textbookProgressPercent ?? 0) < 100) {
+    return 2;
+  }
+
+  return 3;
+}
+
+function scoreMediaReview(item: MediaShellSnapshot) {
+  if (item.cardsDue > 0) {
+    return 0;
+  }
+
+  if (item.activeReviewCards > 0) {
+    return 1;
+  }
+
+  if (item.cardsTotal > 0) {
     return 2;
   }
 

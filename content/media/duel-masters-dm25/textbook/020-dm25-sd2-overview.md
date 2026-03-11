@@ -98,6 +98,26 @@ requisito e payoff.
 
 ### 3. I nomi-ancora del deck
 
+:::image
+src: assets/cards/red-zone.webp
+alt: "Carta di 轟く侵略 レッドゾーン centrata e leggibile."
+card_id: card-red-zone-recognition
+caption: >-
+  Immagine ufficiale di {{轟|とどろ}}く{{侵略|しんりゃく}}
+  [レッドゾーン](term:term-red-zone), altra carta-simbolo del lato offensivo
+  di `DM25-SD2`.
+:::
+
+:::image
+src: assets/cards/apollonus-dragelion.webp
+alt: "Carta di 超神羅星アポロヌス・ドラゲリオン centrata e leggibile."
+card_id: card-apollonus-dragelion-recognition
+caption: >-
+  Immagine ufficiale di {{超神羅星|ちょうしんらせい}}
+  [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion), finisher
+  simbolo del deck `DM25-SD2`.
+:::
+
 Vale la pena fissare subito questi nomi:
 
 - [レッドゾーン](term:term-red-zone)
@@ -216,3 +236,4 @@ translation_it: >-
 leggere bene [進化](term:term-evolution), [侵略](term:term-invasion),
 [攻撃](term:term-attack) e [重ねる](term:term-kasaneru), poi molti testi
 aggressivi di Duel Masters iniziano a sembrarti immediatamente più ordinati.
+

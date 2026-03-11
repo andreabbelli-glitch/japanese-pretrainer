@@ -9,10 +9,10 @@ import { EmptyState } from "@/components/ui/empty-state";
 export const dynamic = "force-dynamic";
 
 export default async function ReviewPage() {
-  const { focusMedia } = await getDashboardData();
+  const { reviewMedia } = await getDashboardData();
 
-  if (focusMedia) {
-    redirect(mediaStudyHref(focusMedia.slug, "review"));
+  if (reviewMedia) {
+    redirect(mediaStudyHref(reviewMedia.slug, "review"));
   }
 
   return (

@@ -4,6 +4,7 @@ import path from "node:path";
 import type {
   ContentBlock,
   GrammarDefinitionBlock,
+  ImageBlock,
   InlineNode,
   MarkdownDocument,
   NormalizedGrammarPattern,
@@ -12,6 +13,7 @@ import type {
   TermDefinitionBlock
 } from "../types.ts";
 import { normalizeSearchText } from "../../study-search.ts";
+import { mediaAssetHref } from "../../site.ts";
 
 export {
   normalizeGrammarSearchText,
@@ -82,8 +84,11 @@ export function humanizeSegmentSlug(slug: string): string {
     .join(" ");
 }
 
-export function renderLessonHtml(document: MarkdownDocument): string {
-  return document.blocks.map((block) => renderBlock(block)).join("");
+export function renderLessonHtml(
+  document: MarkdownDocument,
+  mediaSlug: string
+): string {
+  return document.blocks.map((block) => renderBlock(block, mediaSlug)).join("");
 }
 
 export function buildLessonExcerpt(
@@ -123,16 +128,16 @@ export function collectReferenceKeysFromBlocks(blocks: ContentBlock[]) {
   return dedupeReferenceKeys(keys);
 }
 
-function renderBlock(block: ContentBlock): string {
+function renderBlock(block: ContentBlock, mediaSlug: string): string {
   switch (block.type) {
     case "paragraph":
       return `<p>${renderInlineNodes(block.children)}</p>`;
     case "heading":
       return `<h${block.depth}>${renderInlineNodes(block.children)}</h${block.depth}>`;
     case "list":
-      return renderList(block);
+      return renderList(block, mediaSlug);
     case "blockquote":
-      return `<blockquote>${block.children.map((child) => renderBlock(child)).join("")}</blockquote>`;
+      return `<blockquote>${block.children.map((child) => renderBlock(child, mediaSlug)).join("")}</blockquote>`;
     case "code": {
       const className = block.lang
         ? ` class="language-${escapeHtml(block.lang)}"`
@@ -142,6 +147,8 @@ function renderBlock(block: ContentBlock): string {
     }
     case "thematicBreak":
       return "<hr />";
+    case "image":
+      return renderImage(block, mediaSlug);
     case "exampleSentence":
       return [
         '<section class="reader-example-sentence">',
@@ -177,7 +184,10 @@ function renderBlock(block: ContentBlock): string {
   }
 }
 
-function renderList(block: Extract<ContentBlock, { type: "list" }>) {
+function renderList(
+  block: Extract<ContentBlock, { type: "list" }>,
+  mediaSlug: string
+) {
   const tagName = block.ordered ? "ol" : "ul";
   const startAttribute =
     block.ordered && block.start && block.start !== 1
@@ -187,9 +197,38 @@ function renderList(block: Extract<ContentBlock, { type: "list" }>) {
   return `<${tagName}${startAttribute}>${block.items
     .map(
       (item) =>
-        `<li>${item.children.map((child) => renderBlock(child)).join("")}</li>`
+        `<li>${item.children.map((child) => renderBlock(child, mediaSlug)).join("")}</li>`
     )
     .join("")}</${tagName}>`;
+}
+
+function renderImage(block: ImageBlock, mediaSlug: string) {
+  const variantClassName = block.src.startsWith("assets/cards/")
+    ? "reader-image reader-image--card"
+    : block.src.startsWith("assets/ui/")
+      ? "reader-image reader-image--ui"
+      : "reader-image reader-image--default";
+  const cardDataAttribute = block.cardId
+    ? ` data-card-id="${escapeAttribute(block.cardId)}"`
+    : "";
+  const media = block.cardId
+    ? [
+        `<button class="reader-image__button" type="button"${cardDataAttribute}>`,
+        '<span class="reader-image__hint">Card</span>',
+        `<img class="reader-image__asset" src="${escapeAttribute(mediaAssetHref(mediaSlug, block.src))}" alt="${escapeAttribute(block.alt)}" loading="lazy" decoding="async" />`,
+        "</button>"
+      ].join("")
+    : `<img class="reader-image__asset" src="${escapeAttribute(mediaAssetHref(mediaSlug, block.src))}" alt="${escapeAttribute(block.alt)}" loading="lazy" decoding="async" />`;
+  const caption = block.caption
+    ? `<figcaption class="reader-image__caption">${renderInlineNodes(block.caption.nodes)}</figcaption>`
+    : "";
+
+  return [
+    `<figure class="${variantClassName}"${cardDataAttribute}>`,
+    media,
+    caption,
+    "</figure>"
+  ].join("");
 }
 
 function renderTermDefinition(block: TermDefinitionBlock) {
@@ -285,6 +324,8 @@ function extractBlockText(block: ContentBlock): string {
       return block.value;
     case "thematicBreak":
       return "";
+    case "image":
+      return block.caption ? extractInlineNodesText(block.caption.nodes) : block.alt;
     case "exampleSentence":
       return [
         extractInlineNodesText(block.sentence.nodes),
@@ -381,6 +422,8 @@ function collectReferenceKeysFromBlock(
     case "code":
     case "thematicBreak":
       return [];
+    case "image":
+      return collectReferenceKeysFromRichText(block.caption);
     case "exampleSentence":
       return dedupeReferenceKeys([
         ...collectReferenceKeysFromInlineNodes(block.sentence.nodes),

@@ -68,6 +68,19 @@ translation_it: >-
 :::
 ```
 
+Per inserire una schermata o una carta di supporto visivo gia presente nel
+bundle, usa:
+
+```md
+:::image
+src: assets/ui/deck-edit.webp
+alt: Schermata デッキ編成 nell'app.
+caption: >-
+  Qui il label [{{編成|へんせい}}](term:term-formation) indica la schermata di
+  deckbuilding.
+:::
+```
+
 ## Nota finale
 
 <Nota didattica breve.>
@@ -77,6 +90,10 @@ Usa blocchi :::term o :::grammar solo se devi introdurre una entry nuova non
 ancora dichiarata altrove. Se una entry esiste gia, referenzia il suo ID.
 Usa :::example_sentence quando vuoi una frase con traduzione italiana
 collassabile nel reader.
+Se l'asset non esiste ancora, non usare subito :::image: crea prima una voce in
+`workflow/image-requests.yaml`.
+Usa :::image solo se esiste gia un asset reale sotto `assets/`; non inventare
+path immagine.
 Se aggiungi campi descrittivi YAML nel frontmatter, come `summary`, usa `>-`.
 Una spiegazione debole del tipo "X e utile da fissare" non basta: scrivi
 "X vuol dire Y; qui ti segnala Z".

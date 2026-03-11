@@ -32,7 +32,7 @@ Applica le migrazioni al DB locale:
 ./scripts/with-node.sh pnpm db:migrate
 ```
 
-Carica la fixture minima di sviluppo:
+Importa il contenuto reale disponibile in `./content`:
 
 ```sh
 ./scripts/with-node.sh pnpm db:seed
@@ -55,10 +55,10 @@ Apri Drizzle Studio:
 - `src/db/schema/*`: schema tipizzato per i domini content, glossary, review e progress
 - `src/db/client.ts`: client Drizzle condiviso e factory per DB custom
 - `src/db/migrate.ts`: wrapper applicativo per eseguire le migrazioni versionate
-- `src/db/seed.ts`: fixture minima di sviluppo, idempotente
+- `src/db/seed.ts`: fixture tecnica minima usata dai test unitari
 - `src/db/queries/*`: helper tipizzati per media, lessons, glossary e cards/review
 - `scripts/db-migrate.ts`: entrypoint CLI per applicare le migrazioni
-- `scripts/db-seed.ts`: entrypoint CLI per popolare il DB locale
+- `scripts/db-seed.ts`: entrypoint CLI per importare il contenuto reale nel DB locale
 
 ## Schema coperto in v1
 
@@ -94,17 +94,11 @@ Tabelle incluse nel perimetro del task:
 - Gli indici minimi richiesti da glossary, ordering e review queue sono gia
   inclusi nella migrazione iniziale.
 
-## Fixture di sviluppo
+## Seed locale
 
-La seed inserisce un media demo con:
+`pnpm db:seed` esegue un import completo del contenuto reale presente in
+`./content`, dopo aver rimosso eventuali dati legacy rimasti da seed
+precedenti.
 
-- 1 media
-- 1 segmento
-- 1 lesson con contenuto importato
-- 1 term con alias
-- 1 grammar pattern con alias
-- 2 card con review state
-- progress, log review, user settings e content import minimi
-
-La fixture e idempotente: puoi rieseguire `pnpm db:seed` senza duplicare i
-record seed.
+La fixture tecnica in `src/db/seed.ts` resta disponibile solo per i test
+unitari, dove serve un dataset minimo e controllato.

@@ -9,7 +9,7 @@ import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
 
 export async function DashboardHome() {
-  const { focusMedia, media, totals } = await getDashboardData();
+  const { focusMedia, media, reviewMedia, totals } = await getDashboardData();
 
   if (!focusMedia) {
     return (
@@ -31,6 +31,7 @@ export async function DashboardHome() {
   const focusResumeHref = focusMedia.currentLesson
     ? mediaTextbookLessonHref(focusMedia.slug, focusMedia.currentLesson.slug)
     : mediaStudyHref(focusMedia.slug, "textbook");
+  const effectiveReviewMedia = reviewMedia ?? focusMedia;
 
   return (
     <div className="dashboard-page">
@@ -219,10 +220,10 @@ export async function DashboardHome() {
 
             <SurfaceCard className="cue-card" variant="quiet">
               <h3 className="cue-card__title">Review</h3>
-              <p className="cue-card__body">{focusMedia.reviewQueueLabel}</p>
+              <p className="cue-card__body">{effectiveReviewMedia.reviewQueueLabel}</p>
               <Link
                 className="text-link"
-                href={mediaStudyHref(focusMedia.slug, "review")}
+                href={mediaStudyHref(effectiveReviewMedia.slug, "review")}
               >
                 Apri review
               </Link>

@@ -57,7 +57,7 @@ describe("progress, settings, and study controls", () => {
 
     expect(data).not.toBeNull();
     expect(data?.textbook.totalLessons).toBe(1);
-    expect(data?.textbook.lastOpenedLesson?.slug).toBe("intro-vocab");
+    expect(data?.textbook.lastOpenedLesson?.slug).toBe("core-vocab");
     expect(data?.glossary.entriesCovered).toBe(2);
     expect(data?.glossary.breakdown.learning).toBe(1);
     expect(data?.glossary.breakdown.known).toBe(1);
@@ -103,10 +103,10 @@ describe("progress, settings, and study controls", () => {
       })
       .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
     await database.insert(card).values({
-      id: "card_demo_new_limit",
+      id: "card_fixture_new_limit",
       mediaId: developmentFixture.mediaId,
       segmentId: developmentFixture.segmentId,
-      sourceFile: "content/media/demo-anime/cards/basic/new-limit.md",
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-limit.md",
       cardType: "recognition",
       front: "行きます",
       back: "andare (forma educata)",
@@ -117,8 +117,8 @@ describe("progress, settings, and study controls", () => {
       updatedAt: "2026-03-09T10:00:00.000Z"
     });
     await database.insert(cardEntryLink).values({
-      id: "card_entry_link_demo_new_limit",
-      cardId: "card_demo_new_limit",
+      id: "card_entry_link_fixture_new_limit",
+      cardId: "card_fixture_new_limit",
       entryType: "term",
       entryId: developmentFixture.termId,
       relationshipType: "secondary"

@@ -23,15 +23,15 @@ import {
 } from "./schema/index.ts";
 
 export const developmentFixture = {
-  mediaId: "media_demo_anime",
-  mediaSlug: "demo-anime",
-  segmentId: "segment_demo_episode_1",
-  lessonId: "lesson_demo_intro",
-  importId: "import_demo_initial",
-  termId: "term_demo_iku",
-  grammarId: "grammar_demo_teiru",
-  primaryCardId: "card_demo_iku",
-  secondaryCardId: "card_demo_teiru"
+  mediaId: "media_fixture_tcg",
+  mediaSlug: "fixture-tcg",
+  segmentId: "segment_fixture_starter_core",
+  lessonId: "lesson_fixture_core_vocab",
+  importId: "import_fixture_initial",
+  termId: "term_fixture_iku",
+  grammarId: "grammar_fixture_teiru",
+  primaryCardId: "card_fixture_iku",
+  secondaryCardId: "card_fixture_teiru"
 } as const;
 
 const createdAt = "2026-03-08T09:00:00.000Z";
@@ -52,7 +52,7 @@ export async function seedDevelopmentDatabase(
         status: "completed",
         filesScanned: 3,
         filesChanged: 3,
-        message: "Initial demo import."
+        message: "Initial fixture import."
       })
       .onConflictDoUpdate({
         target: contentImport.id,
@@ -62,7 +62,7 @@ export async function seedDevelopmentDatabase(
           status: "completed",
           filesScanned: 3,
           filesChanged: 3,
-          message: "Initial demo import."
+          message: "Initial fixture import."
         }
       });
 
@@ -71,12 +71,12 @@ export async function seedDevelopmentDatabase(
       .values({
         id: developmentFixture.mediaId,
         slug: developmentFixture.mediaSlug,
-        title: "Demo Anime",
-        mediaType: "anime",
-        segmentKind: "episode",
+        title: "Fixture TCG",
+        mediaType: "tcg",
+        segmentKind: "deck",
         language: "ja",
         baseExplanationLanguage: "it",
-        description: "Fixture locale per validare il layer database.",
+        description: "Fixture tecnica minima per validare il layer database.",
         status: "active",
         createdAt,
         updatedAt
@@ -85,12 +85,12 @@ export async function seedDevelopmentDatabase(
         target: media.id,
         set: {
           slug: developmentFixture.mediaSlug,
-          title: "Demo Anime",
-          mediaType: "anime",
-          segmentKind: "episode",
+          title: "Fixture TCG",
+          mediaType: "tcg",
+          segmentKind: "deck",
           language: "ja",
           baseExplanationLanguage: "it",
-          description: "Fixture locale per validare il layer database.",
+          description: "Fixture tecnica minima per validare il layer database.",
           status: "active",
           createdAt,
           updatedAt
@@ -102,21 +102,21 @@ export async function seedDevelopmentDatabase(
       .values({
         id: developmentFixture.segmentId,
         mediaId: developmentFixture.mediaId,
-        slug: "ep-1",
-        title: "Episode 1",
+        slug: "starter-core",
+        title: "Starter Core",
         orderIndex: 1,
-        segmentType: "episode",
-        notes: "Introduzione al media demo."
+        segmentType: "deck",
+        notes: "Segmento tecnico minimo per i test del database."
       })
       .onConflictDoUpdate({
         target: segment.id,
         set: {
           mediaId: developmentFixture.mediaId,
-          slug: "ep-1",
-          title: "Episode 1",
+          slug: "starter-core",
+          title: "Starter Core",
           orderIndex: 1,
-          segmentType: "episode",
-          notes: "Introduzione al media demo."
+          segmentType: "deck",
+          notes: "Segmento tecnico minimo per i test del database."
         }
       });
 
@@ -126,13 +126,13 @@ export async function seedDevelopmentDatabase(
         id: developmentFixture.lessonId,
         mediaId: developmentFixture.mediaId,
         segmentId: developmentFixture.segmentId,
-        slug: "intro-vocab",
-        title: "Intro Vocab",
+        slug: "core-vocab",
+        title: "Core Vocabulary",
         orderIndex: 1,
         difficulty: "beginner",
-        summary: "Prima lezione importata nel DB locale.",
+        summary: "Lezione fixture minima importata nel DB locale.",
         status: "active",
-        sourceFile: "content/media/demo-anime/textbook/intro-vocab.md",
+        sourceFile: "tests/fixtures/db/fixture-tcg/textbook/core-vocab.md",
         createdAt,
         updatedAt
       })
@@ -141,13 +141,13 @@ export async function seedDevelopmentDatabase(
         set: {
           mediaId: developmentFixture.mediaId,
           segmentId: developmentFixture.segmentId,
-          slug: "intro-vocab",
-          title: "Intro Vocab",
+          slug: "core-vocab",
+          title: "Core Vocabulary",
           orderIndex: 1,
           difficulty: "beginner",
-          summary: "Prima lezione importata nel DB locale.",
+          summary: "Lezione fixture minima importata nel DB locale.",
           status: "active",
-          sourceFile: "content/media/demo-anime/textbook/intro-vocab.md",
+          sourceFile: "tests/fixtures/db/fixture-tcg/textbook/core-vocab.md",
           createdAt,
           updatedAt
         }
@@ -158,16 +158,16 @@ export async function seedDevelopmentDatabase(
       .values({
         lessonId: developmentFixture.lessonId,
         markdownRaw:
-          "# Intro Vocab\n\nIn questa lesson incontriamo [行く](term:term_demo_iku) e [〜ている](grammar:grammar_demo_teiru).\n\nLa forma {{日本語|にほんご}} resta visibile quando serve.\n",
+          "# Core Vocabulary\n\nIn questa lesson incontriamo [行く](term:term_fixture_iku) e [〜ている](grammar:grammar_fixture_teiru).\n\nLa forma {{日本語|にほんご}} resta visibile quando serve.\n",
         htmlRendered:
-          '<h1>Intro Vocab</h1><p>In questa lesson incontriamo <span class="content-entry-ref" data-entry-type="term" data-entry-id="term_demo_iku">行く</span> e <span class="content-entry-ref" data-entry-type="grammar" data-entry-id="grammar_demo_teiru">〜ている</span>.</p><p>La forma <ruby><rb>日本語</rb><rt>にほんご</rt></ruby> resta visibile quando serve.</p>',
+          '<h1>Core Vocabulary</h1><p>In questa lesson incontriamo <span class="content-entry-ref" data-entry-type="term" data-entry-id="term_fixture_iku">行く</span> e <span class="content-entry-ref" data-entry-type="grammar" data-entry-id="grammar_fixture_teiru">〜ている</span>.</p><p>La forma <ruby><rb>日本語</rb><rt>にほんご</rt></ruby> resta visibile quando serve.</p>',
         astJson: JSON.stringify({
-          raw: "# Intro Vocab\n\nIn questa lesson incontriamo 行く e 〜ている.\n",
+          raw: "# Core Vocabulary\n\nIn questa lesson incontriamo 行く e 〜ている.\n",
           blocks: [
             {
               type: "heading",
               depth: 1,
-              children: [{ type: "text", value: "Intro Vocab" }]
+              children: [{ type: "text", value: "Core Vocabulary" }]
             },
             {
               type: "paragraph",
@@ -175,7 +175,7 @@ export async function seedDevelopmentDatabase(
                 { type: "text", value: "In questa lesson incontriamo " },
                 {
                   type: "reference",
-                  raw: "[行く](term:term_demo_iku)",
+                  raw: "[行く](term:term_fixture_iku)",
                   display: "行く",
                   targetType: "term",
                   targetId: developmentFixture.termId,
@@ -184,7 +184,7 @@ export async function seedDevelopmentDatabase(
                 { type: "text", value: " e " },
                 {
                   type: "reference",
-                  raw: "[〜ている](grammar:grammar_demo_teiru)",
+                  raw: "[〜ている](grammar:grammar_fixture_teiru)",
                   display: "〜ている",
                   targetType: "grammar",
                   targetId: developmentFixture.grammarId,
@@ -209,23 +209,23 @@ export async function seedDevelopmentDatabase(
           ]
         }),
         excerpt:
-          "Lezione demo con una voce lessicale, un pattern grammaticale e furigana reali.",
+          "Lezione fixture con una voce lessicale, un pattern grammaticale e furigana reali.",
         lastImportId: developmentFixture.importId
       })
       .onConflictDoUpdate({
         target: lessonContent.lessonId,
         set: {
           markdownRaw:
-            "# Intro Vocab\n\nIn questa lesson incontriamo [行く](term:term_demo_iku) e [〜ている](grammar:grammar_demo_teiru).\n\nLa forma {{日本語|にほんご}} resta visibile quando serve.\n",
+            "# Core Vocabulary\n\nIn questa lesson incontriamo [行く](term:term_fixture_iku) e [〜ている](grammar:grammar_fixture_teiru).\n\nLa forma {{日本語|にほんご}} resta visibile quando serve.\n",
           htmlRendered:
-            '<h1>Intro Vocab</h1><p>In questa lesson incontriamo <span class="content-entry-ref" data-entry-type="term" data-entry-id="term_demo_iku">行く</span> e <span class="content-entry-ref" data-entry-type="grammar" data-entry-id="grammar_demo_teiru">〜ている</span>.</p><p>La forma <ruby><rb>日本語</rb><rt>にほんご</rt></ruby> resta visibile quando serve.</p>',
+            '<h1>Core Vocabulary</h1><p>In questa lesson incontriamo <span class="content-entry-ref" data-entry-type="term" data-entry-id="term_fixture_iku">行く</span> e <span class="content-entry-ref" data-entry-type="grammar" data-entry-id="grammar_fixture_teiru">〜ている</span>.</p><p>La forma <ruby><rb>日本語</rb><rt>にほんご</rt></ruby> resta visibile quando serve.</p>',
           astJson: JSON.stringify({
-            raw: "# Intro Vocab\n\nIn questa lesson incontriamo 行く e 〜ている.\n",
+            raw: "# Core Vocabulary\n\nIn questa lesson incontriamo 行く e 〜ている.\n",
             blocks: [
               {
                 type: "heading",
                 depth: 1,
-                children: [{ type: "text", value: "Intro Vocab" }]
+                children: [{ type: "text", value: "Core Vocabulary" }]
               },
               {
                 type: "paragraph",
@@ -233,7 +233,7 @@ export async function seedDevelopmentDatabase(
                   { type: "text", value: "In questa lesson incontriamo " },
                   {
                     type: "reference",
-                    raw: "[行く](term:term_demo_iku)",
+                    raw: "[行く](term:term_fixture_iku)",
                     display: "行く",
                     targetType: "term",
                     targetId: developmentFixture.termId,
@@ -242,7 +242,7 @@ export async function seedDevelopmentDatabase(
                   { type: "text", value: " e " },
                   {
                     type: "reference",
-                    raw: "[〜ている](grammar:grammar_demo_teiru)",
+                    raw: "[〜ている](grammar:grammar_fixture_teiru)",
                     display: "〜ている",
                     targetType: "grammar",
                     targetId: developmentFixture.grammarId,
@@ -267,7 +267,7 @@ export async function seedDevelopmentDatabase(
             ]
           }),
           excerpt:
-            "Lezione demo con una voce lessicale, un pattern grammaticale e furigana reali.",
+            "Lezione fixture con una voce lessicale, un pattern grammaticale e furigana reali.",
           lastImportId: developmentFixture.importId
         }
       });
@@ -317,14 +317,14 @@ export async function seedDevelopmentDatabase(
       .insert(termAlias)
       .values([
         {
-          id: "term_alias_demo_iku_polite",
+          id: "term_alias_fixture_iku_polite",
           termId: developmentFixture.termId,
           aliasText: "いきます",
           aliasNorm: "いきます",
           aliasType: "inflected"
         },
         {
-          id: "term_alias_demo_iku_romaji",
+          id: "term_alias_fixture_iku_romaji",
           termId: developmentFixture.termId,
           aliasText: "iku",
           aliasNorm: "iku",
@@ -376,7 +376,7 @@ export async function seedDevelopmentDatabase(
       .insert(grammarAlias)
       .values([
         {
-          id: "grammar_alias_demo_teiru_short",
+          id: "grammar_alias_fixture_teiru_short",
           grammarId: developmentFixture.grammarId,
           aliasText: "〜てる",
           aliasNorm: "てる"
@@ -395,7 +395,7 @@ export async function seedDevelopmentDatabase(
       .insert(entryLink)
       .values([
         {
-          id: "entry_link_demo_term_intro",
+          id: "entry_link_fixture_term_intro",
           entryType: "term",
           entryId: developmentFixture.termId,
           sourceType: "lesson",
@@ -404,7 +404,7 @@ export async function seedDevelopmentDatabase(
           sortOrder: 1
         },
         {
-          id: "entry_link_demo_grammar_explained",
+          id: "entry_link_fixture_grammar_explained",
           entryType: "grammar",
           entryId: developmentFixture.grammarId,
           sourceType: "lesson",
@@ -413,7 +413,7 @@ export async function seedDevelopmentDatabase(
           sortOrder: 2
         },
         {
-          id: "entry_link_demo_term_card",
+          id: "entry_link_fixture_term_card",
           entryType: "term",
           entryId: developmentFixture.termId,
           sourceType: "card",
@@ -422,7 +422,7 @@ export async function seedDevelopmentDatabase(
           sortOrder: 1
         },
         {
-          id: "entry_link_demo_grammar_card",
+          id: "entry_link_fixture_grammar_card",
           entryType: "grammar",
           entryId: developmentFixture.grammarId,
           sourceType: "card",
@@ -450,7 +450,7 @@ export async function seedDevelopmentDatabase(
           id: developmentFixture.primaryCardId,
           mediaId: developmentFixture.mediaId,
           segmentId: developmentFixture.segmentId,
-          sourceFile: "content/media/demo-anime/cards/basic/iku.md",
+          sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku.md",
           cardType: "recognition",
           front: "行く",
           back: "andare",
@@ -466,7 +466,7 @@ export async function seedDevelopmentDatabase(
           id: developmentFixture.secondaryCardId,
           mediaId: developmentFixture.mediaId,
           segmentId: developmentFixture.segmentId,
-          sourceFile: "content/media/demo-anime/cards/basic/teiru.md",
+          sourceFile: "tests/fixtures/db/fixture-tcg/cards/teiru.md",
           cardType: "grammar",
           front: "〜ている",
           back: "azione in corso / stato risultante",
@@ -502,14 +502,14 @@ export async function seedDevelopmentDatabase(
       .insert(cardEntryLink)
       .values([
         {
-          id: "card_entry_link_demo_iku_primary",
+          id: "card_entry_link_fixture_iku_primary",
           cardId: developmentFixture.primaryCardId,
           entryType: "term",
           entryId: developmentFixture.termId,
           relationshipType: "primary"
         },
         {
-          id: "card_entry_link_demo_teiru_primary",
+          id: "card_entry_link_fixture_teiru_primary",
           cardId: developmentFixture.secondaryCardId,
           entryType: "grammar",
           entryId: developmentFixture.grammarId,
@@ -530,7 +530,7 @@ export async function seedDevelopmentDatabase(
       .insert(entryStatus)
       .values([
         {
-          id: "entry_status_demo_iku",
+          id: "entry_status_fixture_iku",
           entryType: "term",
           entryId: developmentFixture.termId,
           status: "learning",
@@ -538,7 +538,7 @@ export async function seedDevelopmentDatabase(
           setAt: updatedAt
         },
         {
-          id: "entry_status_demo_teiru",
+          id: "entry_status_fixture_teiru",
           entryType: "grammar",
           entryId: developmentFixture.grammarId,
           status: "known_manual",
@@ -607,7 +607,7 @@ export async function seedDevelopmentDatabase(
       .insert(reviewLog)
       .values([
         {
-          id: "review_log_demo_iku_1",
+          id: "review_log_fixture_iku_1",
           cardId: developmentFixture.primaryCardId,
           answeredAt: updatedAt,
           rating: "good",
@@ -618,7 +618,7 @@ export async function seedDevelopmentDatabase(
           responseMs: 4200
         },
         {
-          id: "review_log_demo_teiru_1",
+          id: "review_log_fixture_teiru_1",
           cardId: developmentFixture.secondaryCardId,
           answeredAt: updatedAt,
           rating: "easy",

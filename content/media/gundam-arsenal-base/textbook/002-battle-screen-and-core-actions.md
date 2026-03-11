@@ -1,0 +1,176 @@
+---
+id: lesson-gundam-arsenal-base-battle-screen-and-core-actions
+media_id: media-gundam-arsenal-base
+slug: battle-screen-and-core-actions
+title: Schermata di battaglia e azioni base
+order: 20
+segment_ref: battle-core
+difficulty: n4
+status: active
+tags: [battle, ui, roles, resources]
+prerequisites: [lesson-gundam-arsenal-base-arcade-onboarding]
+summary: >-
+  Leggi la schermata di battaglia, distingui risorse e ruoli, e capisci quando
+  usare {{出撃|しゅつげき}}, abilita e {{戦術技|せんじゅつぎ}}.
+---
+
+# Obiettivo
+
+In questa lesson impari a leggere la schermata di battaglia senza farti
+travolgere dalle animazioni. L'obiettivo e capire che cosa guardare per primo,
+che cosa ti stanno dicendo gauge e minimappa, e quali decisioni reali aprono
+[{{出撃|しゅつげき}}](term:term-sortie), [アビリティ](term:term-ability) e
+[{{戦術技|せんじゅつぎ}}](term:term-special-attack).
+
+## Contesto
+
+Questi termini compaiono durante il match. Sono la lingua operativa del campo:
+barre in alto, unita sul lato, mappa, obiettivi e comandi che consumano risorse.
+Qui non stai ancora studiando meta o carte forti: stai imparando a vedere il
+campo e a collegare un label a una decisione.
+
+## Termini chiave
+
+- [{{自軍|じぐん}}{{戦力|せんりょく}}ゲージ](term:term-friendly-strength-gauge)
+- [{{敵軍|てきぐん}}{{戦力|せんりょく}}ゲージ](term:term-enemy-strength-gauge)
+- [ユニット](term:term-unit)
+- [ミニマップ](term:term-minimap)
+- [バトルフィールド](term:term-battlefield)
+- [{{作戦|さくせん}}カード](term:term-tactics-card)
+- [{{出撃|しゅつげき}}](term:term-sortie)
+- [アビリティ](term:term-ability)
+- [{{戦術技|せんじゅつぎ}}](term:term-special-attack)
+- [コスト](term:term-cost)
+- [SPゲージ](term:term-sp-gauge)
+- [{{殲滅|せんめつ}}](term:term-role-shoumetsu)
+- [{{制圧|せいあつ}}](term:term-role-seiatsu)
+- [{{防衛|ぼうえい}}](term:term-role-bouei)
+- [{{拠点|きょてん}}](term:term-base)
+- [{{戦艦|せんかん}}](term:term-warship)
+- [クライマックスブースト](term:term-climax-boost)
+
+## Pattern grammaticali chiave
+
+- [～が{{表示|ひょうじ}}される](grammar:grammar-ga-hyouji-sareru)
+- [～することで](grammar:grammar-suru-koto-de)
+- [～をタッチする](grammar:grammar-wo-tacchi-suru)
+
+## Spiegazione
+
+La schermata sembra piena di informazioni, ma all'inizio non devi leggerle tutte
+insieme. L'ordine piu utile e questo: prima guarda dove sono
+[{{殲滅|せんめつ}}](term:term-role-shoumetsu),
+[{{制圧|せいあつ}}](term:term-role-seiatsu) e
+[{{防衛|ぼうえい}}](term:term-role-bouei); poi individua quale
+[{{拠点|きょてん}}](term:term-base) o
+[{{戦艦|せんかん}}](term:term-warship) sta per subire pressione; solo dopo
+controlla i dettagli delle singole carte. Le guide fan per principianti
+insistono molto su questo punto: se provi a capire tutto nello stesso istante,
+reagisci tardi.
+
+Le barre in alto non sono semplici indicatori generici di HP. La
+[{{自軍|じぐん}}{{戦力|せんりょく}}ゲージ](term:term-friendly-strength-gauge)
+e la [{{敵軍|てきぐん}}{{戦力|せんりょく}}ゲージ](term:term-enemy-strength-gauge)
+riassumono la resistenza di [{{戦艦|せんかん}}](term:term-warship) e
+[{{拠点|きょてん}}](term:term-base). Se la
+[{{戦艦|せんかん}}](term:term-warship) nemica viene distrutta, vinci subito. Se
+il tempo finisce, vince chi conserva piu gauge. Se invece cade la tua
+[{{戦艦|せんかん}}](term:term-warship), perdi anche se in altre zone della mappa
+stai ancora combattendo bene.
+
+La [ミニマップ](term:term-minimap) e il riassunto piu rapido del match. Serve a
+capire dove una corsia e aperta, dove c'e una difesa e dove il tuo
+[{{制圧|せいあつ}}](term:term-role-seiatsu) sta per arrivare davvero su un
+obiettivo. Il [バトルフィールド](term:term-battlefield) ti fa vedere la scena in
+grande e ti permette di spostare o zoomare la camera, ma se guardi solo quello
+rischi di seguire l'animazione sbagliata e di perdere la lettura globale.
+
+Sul lato dello schermo trovi i pannelli dei tuoi [ユニット](term:term-unit). E li
+che decidi tre azioni base. Nel PDF ufficiale compare anche
+`{{敵|てき}}デッキ{{情報|じょうほう}}`: e una zona che si riempie man mano che
+le unita nemiche entrano in campo, utile per leggere quali pezzi hai gia visto,
+ma non e la tua prima priorita mentale.
+
+Le tre azioni base funzionano cosi.
+
+- [{{出撃|しゅつげき}}](term:term-sortie): trascini un
+  [ユニット](term:term-unit) sulla zona valida della mappa e paghi
+  [コスト](term:term-cost). La decisione vera non e solo "farlo uscire", ma
+  scegliere quale corsia vuoi aprire o difendere.
+- [アビリティ](term:term-ability): attivi l'effetto speciale del MS pagando
+  ancora [コスト](term:term-cost). Alcune abilita chiedono anche una posizione
+  precisa sulla mappa, quindi qui la lettura dello spazio conta davvero.
+- [{{戦術技|せんじゅつぎ}}](term:term-special-attack): la attivi con uno
+  slide verso il basso e consumi [SPゲージ](term:term-sp-gauge). Durante
+  l'animazione compare un minigioco col bottone che puo aumentare il danno o
+  ridurre quello subito.
+
+I tre ruoli base vanno letti come funzioni del campo, non come etichette
+astratte.
+
+- [{{殲滅|せんめつ}}](term:term-role-shoumetsu) vuol dire che l'unita punta prima
+  ai nemici. In pratica e il ruolo che libera la strada rimuovendo unità
+  avversarie, soprattutto quando una difesa ti sta bloccando.
+- [{{制圧|せいあつ}}](term:term-role-seiatsu) vuol dire che l'unita cerca
+  [{{拠点|きょてん}}](term:term-base) e
+  [{{戦艦|せんかん}}](term:term-warship). In pratica e il ruolo che trasforma una
+  corsia aperta in danno reale alla gauge.
+- [{{防衛|ぼうえい}}](term:term-role-bouei) vuol dire che l'unita difende il
+  punto vicino. Quando protegge un obiettivo, la sua difesa sale; l'ufficiale
+  specifica anche che mettere due difensori sullo stesso punto non aggiunge un
+  secondo bonus di difesa.
+
+Per le prime partite, puoi usare questa scorciatoia mentale: il
+[{{防衛|ぼうえい}}](term:term-role-bouei) rallenta il
+[{{制圧|せいあつ}}](term:term-role-seiatsu); il
+[{{殲滅|せんめつ}}](term:term-role-shoumetsu) serve a togliere il
+[{{防衛|ぼうえい}}](term:term-role-bouei); il
+[{{制圧|せいあつ}}](term:term-role-seiatsu) punisce subito una corsia rimasta
+senza protezione. Non e tutta la profondita del gioco, ma e la griglia minima
+che ti permette di non perderti.
+
+Le risorse che scandiscono il ritmo sono [コスト](term:term-cost) e
+[SPゲージ](term:term-sp-gauge). La prima cresce nel tempo e ti permette di far
+uscire unita o usare abilita. La seconda cresce nel tempo e alimenta
+[{{戦術技|せんじゅつぎ}}](term:term-special-attack). Per questo non conviene
+spendere tutto appena si accende: prima chiediti se quella spesa cambia davvero
+la corsia che decide il prossimo obiettivo. In finale di partita, il
+[クライマックスブースト](term:term-climax-boost) accelera il recupero del
+[コスト](term:term-cost). Ufficialmente entra quando il match arriva davvero in
+zona finale, per esempio con 60 secondi o meno, con una delle due
+[{{戦艦|せんかん}}](term:term-warship) al 50% o meno, oppure quando le due
+[{{拠点|きょてん}}](term:term-base) di un lato sono gia state distrutte. Da quel
+momento le finestre di decisione diventano piu corte e gli errori si pagano piu
+in fretta.
+
+## Esempi guidati
+
+:::example_sentence
+jp: >-
+  {{自軍|じぐん}}{{戦力|せんりょく}}ゲージが{{残|のこ}}っていても、{{戦艦|せんかん}}が{{落|お}}ちると{{敗北|はいぼく}}です。
+translation_it: >-
+  Anche se una parte della tua gauge resta, se cade la nave perdi.
+:::
+
+:::example_sentence
+jp: >-
+  {{殲滅|せんめつ}}を{{先|さき}}に{{出|だ}}して{{防衛|ぼうえい}}をどかすと、{{制圧|せいあつ}}が{{拠点|きょてん}}を{{削|けず}}りやすくなります。
+translation_it: >-
+  Se fai uscire prima un ruolo di annientamento e togli la difesa, il ruolo di
+  pressione riesce piu facilmente a danneggiare la base.
+:::
+
+:::example_sentence
+jp: >-
+  SPゲージが{{溜|た}}まっても、{{守|まも}}られている{{拠点|きょてん}}に{{戦術技|せんじゅつぎ}}を{{切|き}}るより、{{開|あ}}いた{{場所|ばしょ}}に{{合|あ}}わせたほうが{{強|つよ}}いです。
+translation_it: >-
+  Anche con la barra SP piena, usare la tecnica speciale su una base protetta e
+  spesso peggio che usarla nel punto davvero aperto.
+:::
+
+## Nota finale
+
+Se ti perdi, non chiederti per prima cosa quale carta e forte. Chiediti dove
+sono [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
+[{{制圧|せいあつ}}](term:term-role-seiatsu) e
+[{{防衛|ぼうえい}}](term:term-role-bouei), e quale obiettivo sta per cedere.

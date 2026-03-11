@@ -1,0 +1,14 @@
+assets:
+  - id: <stable-image-id>
+    src: assets/<cartella>/<file.webp>
+    source_type: <screenshot|card-art|crop|photo|other>
+    width: <numero-pixel>
+    height: <numero-pixel>
+    lesson_slug: <lesson-slug>
+    anchor: "## <heading-esatta>"
+    alt_it: >-
+      <Override opzionale del testo alternativo.>
+    caption_it: >-
+      <Override opzionale della caption.>
+    notes: >-
+      <Note facoltative sul file o sulla provenienza.>

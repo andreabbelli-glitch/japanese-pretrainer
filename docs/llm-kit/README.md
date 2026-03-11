@@ -25,6 +25,8 @@ Da passare sempre:
 - `general/04-template-textbook-lesson.md`
 - `general/05-template-cards-file.md`
 - `general/06-content-workflow-playbook.md`
+- `general/07-template-image-requests.yaml`
+- `general/08-template-image-assets.yaml`
 
 ## Kit media-specifico attuale
 
@@ -36,6 +38,11 @@ Disponibile ora:
 - `media/gundam-arsenal-base/02-batch-1-prompt.md`
 
 ## Uso pratico
+
+> [!IMPORTANT]
+> Se il workflow immagini inserisce o aggiorna blocchi `:::image` nei textbook,
+> dopo `image:apply` serve sempre `content:import`: la webapp legge il
+> contenuto importato nel DB locale, non il markdown appena modificato.
 
 ### Se vuoi dare contesto completo
 
@@ -54,6 +61,8 @@ Passa almeno:
 - `general/04-template-textbook-lesson.md`
 - `general/05-template-cards-file.md`
 - `general/06-content-workflow-playbook.md`
+- `general/07-template-image-requests.yaml`
+- `general/08-template-image-assets.yaml`
 - `media/duel-masters-dm25/01-brief.md`
 - `media/duel-masters-dm25/02-batch-1-prompt.md`
 

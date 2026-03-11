@@ -51,6 +51,8 @@ Vincoli di formato obbligatori:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
 - Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati.
+- Usa `:::image` solo se ti viene fornito un `src` reale sotto `assets/`; non
+  inventare path immagine.
 - Se il label visibile di un link semantico contiene kanji, metti il furigana
   direttamente nel label: `[{{単語|たんご}}](term:term-id)`.
 - Se usi inline code con giapponese non trasparente, annota anche li:

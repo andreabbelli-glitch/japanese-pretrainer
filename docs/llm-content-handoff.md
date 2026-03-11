@@ -69,15 +69,34 @@ Il modo piu intelligente non e "chiedi all'LLM di scrivere un textbook".
 Il modo piu intelligente e separare il lavoro in due ruoli:
 
 - LLM specializzato esterno: ricerca, traduzione, draft del contenuto.
+- Agent immagini / automation: recupero screenshot, crop, normalizzazione asset.
 - Pipeline locale / Codex: validazione, normalizzazione, import, correzione del
   formato.
 
 In pratica:
 
 - l'LLM esterno produce contenuti;
+- l'agent immagini salva file reali sotto `content/media/<slug>/assets/`;
 - il sistema locale decide se i contenuti sono accettabili.
 
 Questo evita di fidarsi ciecamente dell'LLM sulla parte strutturale.
+
+### 5.1 Regola pratica per le immagini
+
+Non far inventare all'LLM contenuti un `src` immagine che non esiste ancora.
+
+Workflow consigliato:
+
+1. il content drafter segnala dove una immagine sarebbe utile;
+2. salva le richieste in `content/media/<slug>/workflow/image-requests.yaml`;
+3. l'agent immagini recupera il file e aggiorna
+   `content/media/<slug>/workflow/image-assets.yaml`;
+4. solo dopo si inserisce nel textbook un blocco `:::image` con `src` reale.
+5. dopo l'apply reale dei blocchi nel textbook, riesegui `content:import` prima
+   di controllare la webapp: il reader legge il contenuto importato nel DB, non
+   il markdown appena cambiato sul filesystem.
+
+Il validatore fallisce se il file non esiste.
 
 ## 6. Strategia consigliata per v1
 
@@ -120,6 +139,10 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 - che i campi descrittivi in YAML devono usare una serializzazione sicura;
 - che ogni blocco `:::card` deve includere sempre `example_jp` +
   `example_it`, con una frase giapponese completa e la sua traduzione italiana;
+- che un blocco `:::image` e valido solo se `src` punta a un file gia esistente
+  sotto `assets/`;
+- che, se il task include il workflow immagini, il primo agente deve produrre
+  `workflow/image-requests.yaml` invece di inventare direttamente `src`;
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
 - che non deve aggiungere spiegazioni fuori dai file.
@@ -145,6 +168,10 @@ Per ridurre i fallimenti di import:
 - non deve assumere che la `reading` della entry basti nel reader: il furigana
   va messo anche nelle spiegazioni, nelle note e nelle stringhe inline mostrate
   all'utente quando la lettura non e trasparente.
+- se usa `:::image`, `src` deve iniziare con `assets/` e non puo essere
+  inventato: va usato solo quando l'asset e gia stato predisposto nel bundle;
+- `alt` e obbligatorio per ogni `:::image`; `caption`, se presente, va scritto
+  con `>-` quando contiene testo libero o riferimenti inline.
 
 Esempio corretto:
 
@@ -190,6 +217,8 @@ Vincoli obbligatori:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
 - Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati.
+- Un blocco `:::image` e ammesso solo se ricevi un `src` reale gia disponibile
+  sotto `assets/`; non inventare path immagine.
 - Se il label visibile di un link semantico contiene kanji, metti il furigana
   direttamente nel label: `[{{単語|たんご}}](term:term-id)`.
 - Se usi inline code con giapponese non trasparente, annota anche li:
@@ -333,4 +362,5 @@ Il playbook fissa il ciclo reale da seguire:
 2. output LLM esterno;
 3. validazione locale con `content:validate`;
 4. correzione iterativa sui file che falliscono;
-5. import con `content:import`.
+5. eventuale `image:apply` se hai risolto asset immagini;
+6. import con `content:import` per aggiornare il DB che alimenta la webapp.

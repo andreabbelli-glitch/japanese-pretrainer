@@ -119,8 +119,12 @@ describe("content importer", () => {
     );
     expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
     expect(importedLesson?.content?.htmlRendered).toContain(
+      '/media/frieren/assets/episode-01/frieren-meal.svg'
+    );
+    expect(importedLesson?.content?.htmlRendered).toContain(
       "grammar-definition"
     );
+    expect(importedLesson?.content?.astJson).toContain('"type":"image"');
     expect(importRow?.status).toBe("completed");
     expect(importedCard?.exampleJp).toBe("パンを{{食|た}}べる。");
     expect(importedCard?.exampleIt).toBe("Mangio il pane.");
@@ -143,13 +147,13 @@ describe("content importer", () => {
     expect(await countRows(database.query.segment.findMany())).toBe(4);
     expect(await countRows(database.query.lesson.findMany())).toBe(7);
     expect(await countRows(database.query.lessonContent.findMany())).toBe(7);
-    expect(await countRows(database.query.term.findMany())).toBe(80);
-    expect(await countRows(database.query.termAlias.findMany())).toBe(195);
+    expect(await countRows(database.query.term.findMany())).toBe(81);
+    expect(await countRows(database.query.termAlias.findMany())).toBe(198);
     expect(await countRows(database.query.grammarPattern.findMany())).toBe(18);
     expect(await countRows(database.query.grammarAlias.findMany())).toBe(22);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(239);
-    expect(await countRows(database.query.card.findMany())).toBe(91);
-    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(100);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(244);
+    expect(await countRows(database.query.card.findMany())).toBe(92);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(101);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({
@@ -427,10 +431,15 @@ describe("content importer", () => {
 
     await writeFile(
       lessonPath,
-      lessonSource.replace(
-        "In questa lezione vediamo [食べる](term:term-taberu) e la forma\n[～ている](grammar:grammar-teiru).",
-        "In questa lezione vediamo solo la forma [～ている](grammar:grammar-teiru)."
-      )
+      lessonSource
+        .replace(
+          "In questa lezione vediamo [食べる](term:term-taberu) e la forma\n[～ている](grammar:grammar-teiru).",
+          "In questa lezione vediamo solo la forma [～ている](grammar:grammar-teiru)."
+        )
+        .replace(
+          '\n:::image\nsrc: assets/episode-01/frieren-meal.svg\nalt: Frieren osserva una tavola apparecchiata.\ncaption: >-\n  Screenshot di riferimento per [食べる](term:term-taberu) nel contesto della\n  scena.\n:::\n',
+          "\n"
+        )
     );
     await writeFile(
       cardsPath,

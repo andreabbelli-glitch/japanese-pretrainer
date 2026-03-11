@@ -3,6 +3,7 @@ import type {
   ContentBlock,
   ExampleSentenceBlock,
   GrammarDefinitionBlock,
+  ImageBlock,
   InlineNode,
   MarkdownDocument,
   NormalizedCard,
@@ -90,6 +91,32 @@ function normalizeBlock(value: unknown): ContentBlock | null {
       return {
         type: "thematicBreak"
       };
+    case "image": {
+      const src = typeof value.src === "string" ? value.src : null;
+      const alt = typeof value.alt === "string" ? value.alt : null;
+
+      if (!src || !alt) {
+        return null;
+      }
+
+      const block: ImageBlock = {
+        type: "image",
+        src,
+        alt
+      };
+      const cardId = typeof value.cardId === "string" ? value.cardId : null;
+      const caption = normalizeRichTextFragment(value.caption);
+
+      if (cardId) {
+        block.cardId = cardId;
+      }
+
+      if (caption) {
+        block.caption = caption;
+      }
+
+      return block;
+    }
     case "exampleSentence": {
       const sentence =
         normalizeRichTextFragment(value.sentence) ??

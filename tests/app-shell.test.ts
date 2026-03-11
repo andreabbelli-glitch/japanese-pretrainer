@@ -6,10 +6,13 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
+  card,
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
+  lesson,
   lessonProgress,
+  media,
   mediaProgress,
   reviewState,
   runMigrations,
@@ -86,5 +89,76 @@ describe("app shell live data", () => {
     expect(dashboard.totals.entriesKnown).toBe(2);
     expect(dashboard.totals.cardsDue).toBe(0);
     expect(dashboard.totals.activeReviewCards).toBe(1);
+  });
+
+  it("prefers the most reviewable media for review entry points", async () => {
+    await database
+      .update(reviewState)
+      .set({
+        dueAt: "2026-03-20T00:00:00.000Z"
+      })
+      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+
+    await database.insert(media).values({
+      id: "media_duel_masters",
+      slug: "duel-masters-dm25",
+      title: "Duel Masters",
+      mediaType: "tcg",
+      segmentKind: "deck",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      description: "Media con review veramente pronta.",
+      status: "active",
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-08T09:30:00.000Z"
+    });
+
+    await database.insert(lesson).values({
+      id: "lesson_duel_masters_intro",
+      mediaId: "media_duel_masters",
+      segmentId: null,
+      slug: "tcg-core-overview",
+      title: "TCG Core Overview",
+      orderIndex: 1,
+      difficulty: "beginner",
+      summary: "Lesson Duel Masters.",
+      status: "active",
+      sourceFile: "content/media/duel-masters-dm25/textbook/001-tcg-core-overview.md",
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-08T09:30:00.000Z"
+    });
+
+    await database.insert(card).values({
+      id: "card_duel_masters_due",
+      mediaId: "media_duel_masters",
+      segmentId: null,
+      sourceFile: "content/media/duel-masters-dm25/cards/001-tcg-core.md",
+      cardType: "recognition",
+      front: "シールド",
+      back: "scudo",
+      status: "active",
+      orderIndex: 1,
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-08T09:30:00.000Z"
+    });
+
+    await database.insert(reviewState).values({
+      cardId: "card_duel_masters_due",
+      state: "review",
+      stability: 3,
+      difficulty: 2.5,
+      dueAt: "2026-03-01T00:00:00.000Z",
+      lastReviewedAt: "2026-03-08T09:00:00.000Z",
+      lapses: 0,
+      reps: 3,
+      manualOverride: false,
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-08T09:30:00.000Z"
+    });
+
+    const dashboard = await getDashboardData(database);
+
+    expect(dashboard.focusMedia?.slug).toBe(developmentFixture.mediaSlug);
+    expect(dashboard.reviewMedia?.slug).toBe("duel-masters-dm25");
   });
 });

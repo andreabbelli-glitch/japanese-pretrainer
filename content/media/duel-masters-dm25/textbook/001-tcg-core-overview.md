@@ -63,6 +63,7 @@ però, ti serve una base comune.
 - [墓地](term:term-graveyard)
 - [自分](term:term-self)
 - [相手](term:term-opponent)
+- [効果](term:term-effect)
 - [出る](term:term-deru)
 - [出す](term:term-dasu)
 - [置く](term:term-oku)
@@ -94,6 +95,16 @@ libera. Stai leggendo istruzioni.
 
 ### 2. La carta si legge dall'esterno verso l'interno
 
+:::image
+src: assets/cards/abyssbell-jashintei.webp
+alt: "Carta di アビスベル=ジャシン帝 con costo, nome, tipo, razza, testo effetto e potenza ben visibili."
+card_id: card-abyssbell-jashintei-recognition
+caption: >-
+  Carta reale di
+  [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei) usata come
+  riferimento per leggere i campi principali di una carta Duel Masters.
+:::
+
 Prima ancora del testo effetto, guarda i dati più visibili:
 
 - tipo di carta;
@@ -106,6 +117,11 @@ Questa passata ti dice già molto. Se leggi [クリーチャー](term:term-creat
 [火](term:term-civilization), [コスト](term:term-cost) alto e magari una
 keyword evidente, ti fai subito un'idea del ruolo della carta prima di
 decifrare ogni frase.
+
+Appena entri nel testo centrale, una parola da fissare presto è
+[効果](term:term-effect). Quando la carta dice `この効果`, non sta parlando del
+nome della carta: sta indicando il risultato concreto prodotto da quel blocco
+di testo.
 
 ### 3. Le zone sono la mappa del gioco
 
@@ -237,6 +253,18 @@ translation_it: >-
 - Non sai ancora il seguito, ma hai già capito chi viene colpito.
 
 **Esempio 4**
+
+:::example_sentence
+jp: >-
+  この{{効果|こうか}}で{{相手|あいて}}のクリーチャーを{{1体|いったい}}{{破壊|はかい}}する。
+translation_it: >-
+  Con questo effetto distruggi 1 creatura del tuo avversario.
+:::
+
+- [効果](term:term-effect) = il testo richiama il risultato prodotto.
+- [相手](term:term-opponent) + [破壊](term:term-destroy) = bersaglio e azione.
+
+**Esempio 5**
 
 :::example_sentence
 jp: >-

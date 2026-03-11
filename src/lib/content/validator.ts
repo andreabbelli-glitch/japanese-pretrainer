@@ -8,6 +8,12 @@ import {
 } from "../../domain/content.ts";
 
 import { parseFrontmatter } from "./parser/frontmatter.ts";
+import {
+  isSupportedMediaAssetPath,
+  isValidMediaAssetPath,
+  isWithinMediaAssetRoot,
+  resolveMediaAssetAbsolutePath
+} from "../media-assets.ts";
 import type { ParsedDocumentDraft, RawStructuredBlock } from "./parser/internal.ts";
 import { parseInlineFragment, parseMarkdownDocument } from "./parser/markdown.ts";
 import { extractStructuredBlocks } from "./parser/structured-blocks.ts";
@@ -20,6 +26,7 @@ import type {
   ContentParseResult,
   ExampleSentenceBlock,
   GrammarDefinitionBlock,
+  ImageBlock,
   LessonFrontmatter,
   MarkdownDocument,
   MediaFrontmatter,
@@ -72,6 +79,7 @@ interface DocumentSourceContext {
   documentId?: string;
   documentOrder?: number;
   documentSegmentRef?: string;
+  mediaDirectory: string;
 }
 
 interface MarkdownDirectoryInspection {
@@ -142,11 +150,15 @@ export async function parseMediaDirectory(
   const expectedMediaId =
     normalizedMedia?.frontmatter.id ?? mediaState?.rawId ?? undefined;
 
-  const lessonResults = lessonStates.map((state) =>
-    normalizeLessonDocument(state, issues, expectedMediaId)
+  const lessonResults = await Promise.all(
+    lessonStates.map((state) =>
+      normalizeLessonDocument(state, mediaDirectory, issues, expectedMediaId)
+    )
   );
-  const cardsResults = cardsStates.map((state) =>
-    normalizeCardsDocument(state, issues, expectedMediaId)
+  const cardsResults = await Promise.all(
+    cardsStates.map((state) =>
+      normalizeCardsDocument(state, mediaDirectory, issues, expectedMediaId)
+    )
   );
 
   validateDuplicateIds(
@@ -393,16 +405,17 @@ function normalizeMediaDocument(
   };
 }
 
-function normalizeLessonDocument(
+async function normalizeLessonDocument(
   state: ParsedDocumentState & { draft: ParsedDocumentDraft & { kind: "lesson" } },
+  mediaDirectory: string,
   issues: ValidationIssue[],
   expectedMediaId?: string
-): {
+): Promise<{
   document: NormalizedLessonDocument | null;
   terms: TermRecord[];
   grammarPatterns: GrammarRecord[];
   references: CollectedReference[];
-} {
+}> {
   const frontmatter = normalizeLessonFrontmatter(
     state.draft.frontmatter,
     state.draft.sourceFile,
@@ -433,13 +446,14 @@ function normalizeLessonDocument(
     documentKind: "lesson",
     documentId: frontmatter?.id ?? state.rawId,
     documentOrder: frontmatter?.order,
-    documentSegmentRef: frontmatter?.segmentRef
+    documentSegmentRef: frontmatter?.segmentRef,
+    mediaDirectory
   };
-  const resolved = resolveStructuredBody(
+  const resolved = await resolveStructuredBody(
     state,
     sourceContext,
     issues,
-    new Set(["term", "grammar", "example_sentence"])
+    new Set(["term", "grammar", "example_sentence", "image"])
   );
 
   return {
@@ -466,17 +480,18 @@ function normalizeLessonDocument(
   };
 }
 
-function normalizeCardsDocument(
+async function normalizeCardsDocument(
   state: ParsedDocumentState & { draft: ParsedDocumentDraft & { kind: "cards" } },
+  mediaDirectory: string,
   issues: ValidationIssue[],
   expectedMediaId?: string
-): {
+): Promise<{
   document: NormalizedCardsDocument | null;
   terms: TermRecord[];
   grammarPatterns: GrammarRecord[];
   cards: CardRecord[];
   references: CollectedReference[];
-} {
+}> {
   const frontmatter = normalizeCardsFrontmatter(
     state.draft.frontmatter,
     state.draft.sourceFile,
@@ -507,9 +522,10 @@ function normalizeCardsDocument(
     documentKind: "cards",
     documentId: frontmatter?.id ?? state.rawId,
     documentOrder: frontmatter?.order,
-    documentSegmentRef: frontmatter?.segmentRef
+    documentSegmentRef: frontmatter?.segmentRef,
+    mediaDirectory
   };
-  const resolved = resolveStructuredBody(
+  const resolved = await resolveStructuredBody(
     state,
     sourceContext,
     issues,
@@ -607,18 +623,18 @@ function resolveMediaBody(
   };
 }
 
-function resolveStructuredBody(
+async function resolveStructuredBody(
   state: ParsedDocumentState,
   sourceContext: DocumentSourceContext,
   issues: ValidationIssue[],
   allowedBlockTypes: Set<string>
-): {
+): Promise<{
   body: MarkdownDocument;
   terms: TermRecord[];
   grammarPatterns: GrammarRecord[];
   cards: CardRecord[];
   references: CollectedReference[];
-} {
+}> {
   const blocks: ContentBlock[] = [];
   const terms: TermRecord[] = [];
   const grammarPatterns: GrammarRecord[] = [];
@@ -737,6 +753,22 @@ function resolveStructuredBody(
       continue;
     }
 
+    if (rawBlock.blockType === "image") {
+      const image = await normalizeImageBlock(
+        rawBlock,
+        sourceContext,
+        sourcePath,
+        issues
+      );
+
+      if (image) {
+        blocks.push(image.block);
+        references.push(...image.references);
+      }
+
+      continue;
+    }
+
     issues.push(
       createIssue({
         code: "structured-block.unknown-type",
@@ -745,7 +777,7 @@ function resolveStructuredBody(
         filePath: state.draft.sourceFile,
         path: sourcePath,
         range: rawBlock.position,
-        hint: "Use supported structured blocks such as :::term, :::grammar, :::card, or :::example_sentence."
+        hint: "Use supported structured blocks such as :::term, :::grammar, :::card, :::example_sentence, or :::image."
       })
     );
   }
@@ -1751,6 +1783,174 @@ function normalizeExampleSentenceBlock(
       ...sentenceFragment.references,
       ...translationFragment.references
     ]
+  };
+}
+
+async function normalizeImageBlock(
+  rawBlock: RawStructuredBlock,
+  sourceContext: DocumentSourceContext,
+  sourcePath: string,
+  issues: ValidationIssue[]
+): Promise<{ block: ImageBlock; references: CollectedReference[] } | null> {
+  if (!rawBlock.data) {
+    return null;
+  }
+
+  reportUnknownKeys(
+    rawBlock.data,
+    ["src", "alt", "card_id", "caption"],
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  reportUnsafeYamlPlainScalars(
+    rawBlock.data,
+    ["caption"],
+    sourceContext.filePath,
+    sourcePath,
+    rawBlock.fieldRanges ?? {},
+    rawBlock.fieldStyles ?? {},
+    issues
+  );
+
+  const src = readRequiredString(
+    rawBlock.data,
+    "src",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  const alt = readRequiredString(
+    rawBlock.data,
+    "alt",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  const caption = readOptionalString(
+    rawBlock.data,
+    "caption",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  const cardId = readOptionalString(
+    rawBlock.data,
+    "card_id",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+
+  if (!src || !alt) {
+    return null;
+  }
+
+  if (!isValidMediaAssetPath(src) || !src.startsWith("assets/")) {
+    issues.push(
+      createIssue({
+        code: "image.invalid-src",
+        category: "schema",
+        message:
+          "Image src must be a relative media asset path rooted at assets/.",
+        filePath: sourceContext.filePath,
+        path: `${sourcePath}.src`,
+        range: rawBlock.fieldRanges?.src ?? rawBlock.position,
+        hint: "Use paths like assets/duel-plays/deck-edit.webp."
+      })
+    );
+    return null;
+  }
+
+  if (!isSupportedMediaAssetPath(src)) {
+    issues.push(
+      createIssue({
+        code: "image.unsupported-extension",
+        category: "schema",
+        message: "Image src must point to a supported image format.",
+        filePath: sourceContext.filePath,
+        path: `${sourcePath}.src`,
+        range: rawBlock.fieldRanges?.src ?? rawBlock.position,
+        hint: "Use png, jpg, jpeg, webp, gif, svg, or avif files."
+      })
+    );
+    return null;
+  }
+
+  const resolvedAssetPath = resolveMediaAssetAbsolutePath(
+    sourceContext.mediaDirectory,
+    src
+  );
+
+  if (
+    !isWithinMediaAssetRoot(
+      resolvedAssetPath.assetRoot,
+      resolvedAssetPath.absolutePath
+    )
+  ) {
+    issues.push(
+      createIssue({
+        code: "image.invalid-src",
+        category: "schema",
+        message:
+          "Image src escapes the media asset directory and is not allowed.",
+        filePath: sourceContext.filePath,
+        path: `${sourcePath}.src`,
+        range: rawBlock.fieldRanges?.src ?? rawBlock.position
+      })
+    );
+    return null;
+  }
+
+  const assetExists = await fileExists(resolvedAssetPath.absolutePath);
+
+  if (!assetExists) {
+    issues.push(
+      createIssue({
+        code: "image.missing-asset",
+        category: "integrity",
+        message: `Image asset '${src}' does not exist in this media bundle.`,
+        filePath: sourceContext.filePath,
+        path: `${sourcePath}.src`,
+        range: rawBlock.fieldRanges?.src ?? rawBlock.position,
+        hint:
+          "Add the file under content/media/<slug>/assets/ or fix the src path."
+      })
+    );
+    return null;
+  }
+
+  const captionRange = rawBlock.fieldRanges?.caption ?? rawBlock.position;
+  const captionFragment =
+    typeof caption === "string"
+      ? parseInlineFragment({
+          source: caption,
+          filePath: sourceContext.filePath,
+          documentKind: sourceContext.documentKind,
+          documentId: sourceContext.documentId,
+          sourcePath: `${sourcePath}.caption`,
+          fragmentOrigin: captionRange?.start,
+          fallbackRange: captionRange
+        })
+      : null;
+
+  issues.push(...(captionFragment?.issues ?? []));
+
+  return {
+    block: {
+      type: "image",
+      position: rawBlock.position,
+      src,
+      alt,
+      cardId: cardId ?? undefined,
+      caption: captionFragment?.fragment
+    },
+    references: [...(captionFragment?.references ?? [])]
   };
 }
 

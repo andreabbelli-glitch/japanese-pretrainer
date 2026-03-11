@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  mediaAssetHref,
   mediaGlossaryEntryHref,
   mediaGlossaryGrammarHref,
   mediaGlossaryTermHref,
@@ -30,39 +31,42 @@ describe("site helpers", () => {
       "progress"
     ];
 
-    expect(mediaHref("demo-anime")).toBe("/media/demo-anime");
-    expect(mediaTextbookLessonHref("demo-anime", "intro-vocab")).toBe(
-      "/media/demo-anime/textbook/intro-vocab"
+    expect(mediaHref("fixture-tcg")).toBe("/media/fixture-tcg");
+    expect(mediaTextbookLessonHref("fixture-tcg", "core-vocab")).toBe(
+      "/media/fixture-tcg/textbook/core-vocab"
     );
-    expect(mediaGlossaryTermHref("demo-anime", "term-iku")).toBe(
-      "/media/demo-anime/glossary/term/term-iku"
+    expect(mediaAssetHref("fixture-tcg", "assets/ui/deck-edit.webp")).toBe(
+      "/media/fixture-tcg/assets/ui/deck-edit.webp"
     );
-    expect(mediaGlossaryGrammarHref("demo-anime", "grammar-teiru")).toBe(
-      "/media/demo-anime/glossary/grammar/grammar-teiru"
+    expect(mediaGlossaryTermHref("fixture-tcg", "term-iku")).toBe(
+      "/media/fixture-tcg/glossary/term/term-iku"
     );
-    expect(mediaGlossaryEntryHref("demo-anime", "term", "term-iku")).toBe(
-      "/media/demo-anime/glossary/term/term-iku"
+    expect(mediaGlossaryGrammarHref("fixture-tcg", "grammar-teiru")).toBe(
+      "/media/fixture-tcg/glossary/grammar/grammar-teiru"
     );
-    expect(mediaReviewCardHref("demo-anime", "card-iku-review")).toBe(
-      "/media/demo-anime/review/card/card-iku-review"
+    expect(mediaGlossaryEntryHref("fixture-tcg", "term", "term-iku")).toBe(
+      "/media/fixture-tcg/glossary/term/term-iku"
     );
-    expect(areas.map((area) => mediaStudyHref("demo-anime", area))).toEqual([
-      "/media/demo-anime/textbook",
-      "/media/demo-anime/glossary",
-      "/media/demo-anime/review",
-      "/media/demo-anime/progress"
+    expect(mediaReviewCardHref("fixture-tcg", "card-iku-review")).toBe(
+      "/media/fixture-tcg/review/card/card-iku-review"
+    );
+    expect(areas.map((area) => mediaStudyHref("fixture-tcg", area))).toEqual([
+      "/media/fixture-tcg/textbook",
+      "/media/fixture-tcg/glossary",
+      "/media/fixture-tcg/review",
+      "/media/fixture-tcg/progress"
     ]);
   });
 
   it("resolves the active primary nav entry for nested review routes", () => {
     expect(resolveActivePrimaryNavHref("/")).toBe("/");
     expect(resolveActivePrimaryNavHref("/media")).toBe("/media");
-    expect(resolveActivePrimaryNavHref("/media/demo-anime")).toBe("/media");
-    expect(resolveActivePrimaryNavHref("/media/demo-anime/review")).toBe(
+    expect(resolveActivePrimaryNavHref("/media/fixture-tcg")).toBe("/media");
+    expect(resolveActivePrimaryNavHref("/media/fixture-tcg/review")).toBe(
       "/review"
     );
     expect(
-      resolveActivePrimaryNavHref("/media/demo-anime/review/card/card-demo-iku")
+      resolveActivePrimaryNavHref("/media/fixture-tcg/review/card/card-fixture-iku")
     ).toBe("/review");
     expect(resolveActivePrimaryNavHref("/settings")).toBe("/settings");
   });

@@ -1,0 +1,16 @@
+requests:
+  - id: <stable-image-id>
+    lesson_slug: <lesson-slug>
+    anchor: "## <heading-esatta>"
+    kind: <app-screen|card-art|ui-detail|board-state|other>
+    priority: <low|medium|high>
+    search_hint: >-
+      <Query o hint corto per il secondo agent.>
+    capture_instructions: >-
+      <Istruzioni pratiche per catturare o cercare l'immagine giusta.>
+    alt_it: >-
+      <Testo alternativo in italiano obbligatorio.>
+    caption_it: >-
+      <Caption in italiano da usare nel blocco :::image.>
+    notes: >-
+      <Note facoltative per evitare ambiguita.>

@@ -1,4 +1,4 @@
-import { and, asc, eq, gte, isNotNull, lt, lte, ne } from "drizzle-orm";
+import { and, asc, eq, gte, inArray, isNotNull, lt, lte, ne } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import { card, reviewLog, reviewState } from "../schema/index.ts";
@@ -26,6 +26,25 @@ export async function getCardById(database: DatabaseClient, cardId: string) {
       reviewState: true,
       entryLinks: true
     }
+  });
+}
+
+export async function getCardsByIds(
+  database: DatabaseClient,
+  cardIds: string[]
+) {
+  if (cardIds.length === 0) {
+    return [];
+  }
+
+  return database.query.card.findMany({
+    where: and(eq(card.status, "active"), inArray(card.id, cardIds)),
+    with: {
+      segment: true,
+      reviewState: true,
+      entryLinks: true
+    },
+    orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
 }
 

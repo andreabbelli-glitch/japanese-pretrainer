@@ -43,6 +43,8 @@ Vincoli di formato obbligatori:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
 - Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati.
+- Usa `:::image` solo se ti viene fornito un `src` reale sotto `assets/`; non
+  inventare path immagine.
 - MAPPA I KANJI CON FURIGANA ANCHE DENTRO LE CITAZIONI IN CODICE
   (esempio: `` `{{墓地|ぼち}}から{{出|だ}}す` ``).
 - Per composti numerici con contatori o qualificatori usa un solo furigana sul

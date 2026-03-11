@@ -99,6 +99,26 @@ risorsa.
 
 ### 3. I nomi propri qui non sono decorazione
 
+:::image
+src: assets/cards/jablood.webp
+alt: "Carta di 邪龍 ジャブラッド centrata e leggibile."
+card_id: card-jablood-recognition
+caption: >-
+  Immagine ufficiale di {{邪龍|じゃりゅう}}
+  [ジャブラッド](term:term-jablood), altro nome-ancora ricorrente del deck
+  `DM25-SD1`.
+:::
+
+:::image
+src: assets/cards/abyssbell-jashintei.webp
+alt: "Carta di アビスベル=ジャシン帝 centrata e leggibile."
+card_id: card-abyssbell-jashintei-recognition
+caption: >-
+  Immagine ufficiale di
+  [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei),
+  carta-ancora del deck `DM25-SD1`.
+:::
+
 In un anime spesso puoi ignorare il nome esatto di un personaggio per qualche
 minuto. In un TCG no: i nomi carta sono ancore cognitive.
 
@@ -220,3 +240,4 @@ translation_it: >-
 riesci a seguire bene [墓地](term:term-graveyard), filtri di
 [コスト](term:term-cost) e famiglie Abyss, stai già costruendo un riflesso molto
 riutilizzabile.
+

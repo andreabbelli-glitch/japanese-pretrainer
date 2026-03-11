@@ -26,6 +26,11 @@ content/
   media/
     <media-slug>/
       media.md
+      assets/
+        ui/
+          deck-edit.webp
+        cards/
+          abyss-bell.svg
       textbook/
         001-intro.md
         002-episode-01.md
@@ -43,6 +48,8 @@ content/
 - Le chiavi obbligatorie non possono essere omesse.
 - I riferimenti devono puntare a ID esistenti oppure l'import deve fallire.
 - Il contenuto testuale libero e permesso solo nelle zone previste.
+- Gli asset immagine di un media vanno salvati sotto `assets/` nello stesso
+  bundle.
 
 ### 4.0 Regola furigana per testo visibile
 
@@ -390,6 +397,40 @@ Campi obbligatori:
 
 - `jp`
 - `translation_it`
+
+### 8.4 Blocco `image`
+
+Usalo nel textbook quando una schermata, una carta o un dettaglio visivo aiuta
+davvero la lettura.
+
+```md
+:::image
+src: assets/ui/deck-edit.webp
+alt: Schermata デッキ編成 nell'app Duel Masters Play's.
+caption: >-
+  Qui il label [{{編成|へんせい}}](term:term-formation) compare nella UI di
+  deckbuilding.
+:::
+```
+
+Campi obbligatori:
+
+- `src`
+- `alt`
+
+Campi opzionali:
+
+- `caption`
+
+Regole:
+
+- `src` deve essere un path relativo al media bundle e deve iniziare con
+  `assets/`;
+- il file deve esistere davvero sotto `content/media/<slug>/assets/`;
+- sono ammessi formati immagine comuni: `png`, `jpg`, `jpeg`, `webp`, `gif`,
+  `svg`, `avif`;
+- `caption`, se presente, supporta furigana e riferimenti semantici inline;
+- il blocco `image` e ammesso nel textbook, non nei file `cards/`.
 
 ## 9. Riferimenti semantici inline
 

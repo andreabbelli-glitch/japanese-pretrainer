@@ -80,6 +80,18 @@ export function mediaTextbookLessonHref(
   return `/media/${mediaSlug}/textbook/${lessonSlug}` as Route;
 }
 
+export function mediaAssetHref(mediaSlug: string, assetPath: string): Route {
+  const normalizedAssetPath = assetPath.startsWith("assets/")
+    ? assetPath.slice("assets/".length)
+    : assetPath;
+  const normalizedPath = normalizedAssetPath
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
+
+  return `/media/${mediaSlug}/assets/${normalizedPath}` as Route;
+}
+
 export function mediaGlossaryTermHref(
   mediaSlug: string,
   entryId: string

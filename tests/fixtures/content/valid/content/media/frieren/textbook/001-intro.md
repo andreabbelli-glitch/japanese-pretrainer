@@ -18,6 +18,14 @@ In questa lezione vediamo [食べる](term:term-taberu) e la forma
 
 La parola {{日本語|にほんご}} compare spesso nelle spiegazioni.
 
+:::image
+src: assets/episode-01/frieren-meal.svg
+alt: Frieren osserva una tavola apparecchiata.
+caption: >-
+  Screenshot di riferimento per [食べる](term:term-taberu) nel contesto della
+  scena.
+:::
+
 :::grammar
 id: grammar-teiru
 pattern: ～ている

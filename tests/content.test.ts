@@ -65,6 +65,13 @@ const incompleteBundleMediaDirectory = path.join(
   "media",
   "incomplete-bundle"
 );
+const missingImageAssetMediaDirectory = path.join(
+  fixturesRoot,
+  "invalid",
+  "content",
+  "media",
+  "missing-image-asset"
+);
 const cardTextPlainScalarMediaDirectory = path.join(
   fixturesRoot,
   "invalid",
@@ -383,7 +390,7 @@ describe("content parser and validator", () => {
     expect(result.data.terms).toHaveLength(1);
     expect(result.data.grammarPatterns).toHaveLength(1);
     expect(result.data.cards).toHaveLength(2);
-    expect(result.data.references).toHaveLength(3);
+    expect(result.data.references).toHaveLength(4);
 
     const lesson = result.data.lessons[0];
     const cardsFile = result.data.cardFiles[0];
@@ -408,6 +415,13 @@ describe("content parser and validator", () => {
     expect(
       lesson?.body.blocks.some((block) => block.type === "grammarDefinition")
     ).toBe(true);
+    expect(lesson?.body.blocks).toContainEqual(
+      expect.objectContaining({
+        type: "image",
+        src: "assets/episode-01/frieren-meal.svg",
+        alt: "Frieren osserva una tavola apparecchiata."
+      })
+    );
 
     expect(cardsFile?.declaredTermIds).toEqual(["term-taberu"]);
     expect(cardsFile?.declaredCardIds).toEqual([
@@ -438,10 +452,10 @@ describe("content parser and validator", () => {
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
     expect(result.data.lessons).toHaveLength(7);
     expect(result.data.cardFiles).toHaveLength(4);
-    expect(result.data.terms).toHaveLength(80);
+    expect(result.data.terms).toHaveLength(81);
     expect(result.data.grammarPatterns).toHaveLength(18);
-    expect(result.data.cards).toHaveLength(91);
-    expect(result.data.references).toHaveLength(440);
+    expect(result.data.cards).toHaveLength(92);
+    expect(result.data.references).toHaveLength(455);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
@@ -641,6 +655,18 @@ describe("content parser and validator", () => {
     expect(result.ok).toBe(false);
     expect(issueCodes).toContain("reference.missing-target");
     expect(issueCodes).toContain("card.missing-entry");
+  });
+
+  it("fails on textbook image blocks that reference missing assets", async () => {
+    const result = await parseMediaDirectory(missingImageAssetMediaDirectory);
+
+    expect(result.ok).toBe(false);
+    expect(result.issues).toContainEqual(
+      expect.objectContaining({
+        code: "image.missing-asset",
+        category: "integrity"
+      })
+    );
   });
 
   it("fails on an incomplete bundle fixture without cards/", async () => {

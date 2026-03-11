@@ -29,6 +29,11 @@ Se stai ricreando il seed core iniziale, passa anche:
 
 - `docs/llm-kit/media/duel-masters-dm25/02-batch-1-prompt.md`
 
+Se il batch include immagini, passa anche:
+
+- `docs/llm-kit/general/07-template-image-requests.yaml`
+- `docs/llm-kit/general/08-template-image-assets.yaml`
+
 ## Regola chiave di contesto
 
 Se l'LLM deve estendere contenuto gia esistente, non basta passargli brief,
@@ -124,6 +129,36 @@ Distinzione da mantenere:
 - fixture test: `tests/fixtures/content/...`
 - kit LLM: `docs/llm-kit/...`
 
+### 3.1 Asset immagini
+
+Se una lesson usa screenshot o immagini carte:
+
+- salva i file sotto `content/media/<slug>/assets/...`;
+- salva le richieste del primo agente in
+  `content/media/<slug>/workflow/image-requests.yaml`;
+- salva le risoluzioni del secondo agente in
+  `content/media/<slug>/workflow/image-assets.yaml`;
+- usa nomi stabili e descrittivi, per esempio
+  `assets/ui/deck-edit.webp` o `assets/cards/abyss-bell.svg`;
+- inserisci nel textbook un blocco `:::image` solo quando il file esiste gia;
+- non lasciare in `content/media/...` placeholder tipo `TODO`, URL remoti o
+  `src` inventati.
+
+Comandi pratici:
+
+```sh
+./scripts/with-node.sh pnpm image:status -- --media-slug duel-masters-dm25
+./scripts/with-node.sh pnpm image:apply -- --media-slug duel-masters-dm25 --dry-run
+./scripts/with-node.sh pnpm image:apply -- --media-slug duel-masters-dm25
+```
+
+Nota operativa:
+
+- `image:apply` aggiorna i file textbook sul filesystem;
+- la webapp renderizza il contenuto importato nel DB locale;
+- quindi, dopo un apply reale, va rieseguito `content:import` prima di
+  verificare il risultato nel reader.
+
 ### 4. Valida localmente prima dell'import
 
 Valida il singolo bundle:
@@ -157,6 +192,8 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
   stessa frase;
 - verifica che la stessa spiegazione dica anche che cosa ti fa capire o fare nel
   media;
+- se una lesson contiene `:::image`, verifica che l'immagine mostri davvero il
+  label, la schermata o la carta promessa dalla caption;
 - se la spiegazione riguarda un nome proprio opaco, verifica che chiarisca
   almeno quale ruolo ricorrente segnala nel deck o nell'app.
 
@@ -196,6 +233,9 @@ Import completo:
 ./scripts/with-node.sh pnpm content:import -- --content-root ./content
 ```
 
+Se hai appena eseguito `image:apply`, questo passaggio non e opzionale: senza
+reimport il reader continua a mostrare l'AST precedente salvato nel DB.
+
 ### 7. Verifica il risultato
 
 Dopo l'import verifica almeno:
@@ -203,7 +243,8 @@ Dopo l'import verifica almeno:
 - che l'import completi senza issue;
 - che i file scansionati siano quelli attesi;
 - che non ci siano archive/prune inattesi;
-- che il bundle resti validabile con `content:validate`.
+- che il bundle resti validabile con `content:validate`;
+- che nel reader compaiano davvero i nuovi blocchi `:::image`.
 
 ## Errori LLM piu comuni da aspettarsi
 
@@ -227,5 +268,6 @@ L'LLM esterno produce draft.
 Il repository accetta solo output che passa:
 
 1. `content:validate`
-2. eventuale correzione iterativa
-3. `content:import`
+2. eventuale `image:apply` quando ci sono asset immagini risolti
+3. eventuale correzione iterativa
+4. `content:import`

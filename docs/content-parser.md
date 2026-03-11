@@ -29,7 +29,7 @@ Il bundle normalizzato include:
 
 - media, lesson e cards file con frontmatter tipizzato;
 - AST Markdown normalizzato con paragrafi, heading, liste, blocchi `term`,
-  `grammar` e `card`;
+  `grammar`, `card`, `example_sentence` e `image`;
 - riferimenti semanticamente raccolti;
 - furigana parse-ati come nodi dedicati;
 - array canonici di `terms`, `grammarPatterns` e `cards`.
@@ -42,7 +42,8 @@ Le issue usano quattro categorie:
 - `schema`: campi mancanti, tipi errati, campi sconosciuti, blocchi non ammessi;
 - `reference`: link o `entry_id` che puntano a ID inesistenti;
 - `integrity`: duplicate ID, incoerenze tra file o bundle incompleti
-  (`media.md`, `textbook/`, `cards/` mancanti o directory senza file `.md`).
+  (`media.md`, `textbook/`, `cards/` mancanti o directory senza file `.md`,
+  asset immagine mancanti).
 
 Ogni issue contiene `code`, `message`, `location.filePath` e, quando
 disponibile, `location.range`.
@@ -84,6 +85,8 @@ code `1` se trova issue di tipo `syntax`, `schema`, `reference` o `integrity`.
 - Un media bundle e considerato valido solo se include `media.md`, `textbook/` e
   `cards/`; entrambe le directory devono esistere e contenere almeno un file
   Markdown.
+- I blocchi `:::image` nei lesson sono validi solo se `src` punta a un file
+  reale sotto `content/media/<slug>/assets/`.
 - I file cards sono volutamente strict: accettano solo blocchi strutturati.
 - Il payload e pensato per essere consumato dal Task 05 senza dover riparse-are
   il Markdown grezzo.

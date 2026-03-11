@@ -52,6 +52,7 @@ export function buildMediaImportPlan(input: {
       contentRoot: input.contentRoot,
       lesson,
       mediaId: mediaDocument.frontmatter.id,
+      mediaSlug: input.bundle.mediaSlug,
       nowIso: input.nowIso,
       segmentIdByRef
     })
@@ -234,6 +235,7 @@ function buildLessonPlan(input: {
   contentRoot: string;
   lesson: NormalizedMediaBundle["lessons"][number];
   mediaId: string;
+  mediaSlug: string;
   nowIso: string;
   segmentIdByRef: Map<string, string>;
 }) {
@@ -243,7 +245,7 @@ function buildLessonPlan(input: {
       ? input.segmentIdByRef.get(input.lesson.frontmatter.segmentRef)
       : undefined) ?? null;
   const entryLinks = buildLessonEntryLinks(input.lesson.frontmatter.id, input.lesson.body);
-  const htmlRendered = renderLessonHtml(input.lesson.body);
+  const htmlRendered = renderLessonHtml(input.lesson.body, input.mediaSlug);
   const astJson = JSON.stringify(input.lesson.body);
   const excerpt = buildLessonExcerpt(input.lesson.body);
   const lesson: LessonImportPlan = {
