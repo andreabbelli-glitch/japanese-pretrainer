@@ -155,6 +155,8 @@ Ogni `notes_it` o paragrafo textbook deve chiarire almeno:
 
 - che cosa vuol dire davvero l'elemento giapponese;
 - che cosa cambia nella lettura o nell'azione quando compare nel media;
+- se l'elemento compare in un composto, che cosa aggiunge il singolo componente
+  e che cosa vuol dire il composto intero;
 - per nomi propri opachi, quale ruolo ricorrente o quale parte del nome conviene
   riconoscere.
 
@@ -165,8 +167,9 @@ Anti-esempi:
 
 Forme consigliate:
 
-- `{{編成|へんせい}}` vuol dire "organizzazione / composizione"; in
-  `デッキ{{編成|へんせい}}` segnala la schermata in cui costruisci la lista.
+- in `デッキ{{編成|へんせい}}`, `デッキ` nomina il mazzo e
+  `{{編成|へんせい}}` aggiunge l'idea di organizzazione / composizione; il
+  composto intero indica la schermata in cui costruisci la lista.
 - `または` vuol dire "oppure", ma nelle carte collega due categorie che valgono
   entrambe per lo stesso filtro.
 

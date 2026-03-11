@@ -92,9 +92,11 @@ Dal lato pratico:
 
 Dal lato linguistico:
 
-- `{{編成|へんせい}}` non vuol dire genericamente "deck": vuol dire
-  "organizzazione / composizione". In `デッキ{{編成|へんせい}}` il focus è che stai
-  entrando nella schermata dove sistemi i pezzi del mazzo, non nella partita.
+- nel composto `デッキ{{編成|へんせい}}`, `デッキ` nomina l'oggetto e
+  [{{編成|へんせい}}](term:term-hensei) aggiunge l'idea di organizzazione /
+  composizione;
+- quindi il label intero non va letto come "deck" e basta, ma come schermata di
+  deckbuilding / assetto del mazzo.
 - `レンタル` non è un dettaglio lessicale neutro: segnala che quel mazzo ti viene
   prestato. Se lo leggi bene, capisci subito che puoi usare una lista pronta
   anche senza possedere ancora tutte le carte.

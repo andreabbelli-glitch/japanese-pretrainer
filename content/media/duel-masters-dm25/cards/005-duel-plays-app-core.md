@@ -178,6 +178,22 @@ level_hint: custom
 :::
 
 :::term
+id: term-hensei
+lemma: 編成
+reading: へんせい
+romaji: hensei
+meaning_it: organizzazione / composizione / setup
+pos: verbal-noun
+aliases: [編成, hensei]
+notes_it: >-
+  Da solo `{{編成|へんせい}}` vuol dire organizzazione, composizione, assetto di
+  elementi messi insieme per uno scopo. Dentro `デッキ{{編成|へんせい}}` e la parte
+  che trasforma `デッキ` da semplice nome dell'oggetto a schermata in cui
+  costruisci e sistemi la lista.
+level_hint: n4
+:::
+
+:::term
 id: term-deck-edit
 lemma: デッキ編成
 reading: でっきへんせい
@@ -186,11 +202,10 @@ meaning_it: costruzione / modifica del mazzo
 pos: screen-label
 aliases: [デッキ編成, dekki hensei]
 notes_it: >-
-  È la schermata in cui costruisci, modifichi e controlli il tuo mazzo. Per il
-  tuo giapponese conta perché `{{編成|へんせい}}` non vuol dire genericamente
-  "deck", ma "organizzazione / composizione". Quindi `デッキ{{編成|へんせい}}`
-  va letto come area in cui sistemi la lista, non come oggetto di gioco dentro
-  la partita.
+  Il composto va letto a blocchi: `デッキ` e il mazzo come lista di gioco,
+  [{{編成|へんせい}}](term:term-hensei) e l'atto di organizzarla / comporla.
+  Insieme indicano quindi la schermata in cui prepari e sistemi il mazzo, non il
+  deck come zona o oggetto di partita.
 level_hint: custom
 :::
 
@@ -219,11 +234,12 @@ meaning_it: acquisto carte / card purchase
 pos: screen-label
 aliases: [カード購入, kaado kounyuu]
 notes_it: >-
-  Etichetta di shop legata all'acquisto. Ti conviene fissarla insieme a
+  Anche qui il composto e trasparente se lo separi: `カード` e l'oggetto,
+  `{{購入|こうにゅう}}` e l'acquisto. Il label indica quindi un flusso in cui
+  compri carte, non uno scambio o una creazione diretta. Va distinto da
   [カード{{交換|こうかん}}](term:term-card-exchange),
   [{{生成|せいせい}}](term:term-craft) e
-  [{{分解|ぶんかい}}](term:term-disenchant), perché queste quattro parole non
-  sono sinonimi e sbloccano azioni diverse.
+  [{{分解|ぶんかい}}](term:term-disenchant).
 level_hint: custom
 :::
 
@@ -236,8 +252,9 @@ meaning_it: scambio carte / card exchange
 pos: screen-label
 aliases: [カード交換, kaado koukan]
 notes_it: >-
-  Indica l'area in cui ottieni carte tramite uno scambio di risorse, non un
-  acquisto diretto. È una parola chiave per non confondere i menu dello shop.
+  Il composto si legge come `カード` + `{{交換|こうかん}}`: l'oggetto resta la
+  carta, ma l'azione e lo scambio, non l'acquisto. Per questo il label indica
+  l'area in cui converti o scambi risorse, non il menu di compra-vendita.
 level_hint: custom
 :::
 
@@ -430,9 +447,9 @@ meaning_it: in corso / attivo ora
 pos: status-label
 aliases: [開催中, kaisaichuu]
 notes_it: >-
-  È il label che ti dice che un evento o una modalità sono attivi nel momento
-  presente. Per giocare davvero dentro l'app è una parola molto pratica, non
-  solo lessicale.
+  Il composto si legge come `{{開催|かいさい}}` + [～{{中|ちゅう}}](grammar:grammar-ui-chuu):
+  l'evento e "in svolgimento adesso". Non e un titolo statico, ma un'indicazione
+  di stato che ti dice che quella modalità o campagna e attiva nel presente.
 level_hint: custom
 :::
 
@@ -445,9 +462,10 @@ meaning_it: sblocco / unlock
 pos: verbal-noun
 aliases: [解放, kaihou]
 notes_it: >-
-  Indica che una funzione, una modalità o un contenuto diventano disponibili.
-  Nelle schermate di progresso ti aiuta a capire se qualcosa è già accessibile
-  o se devi ancora soddisfare una condizione.
+  `{{解放|かいほう}}` qui va letto come sblocco / rilascio di accesso. Non
+  descrive solo "aprire" in astratto: ti dice che una funzione o modalità passa
+  dallo stato non disponibile a quello accessibile quando la condizione giusta e
+  soddisfatta.
 level_hint: n4
 :::
 
@@ -460,9 +478,10 @@ meaning_it: avvia la partita / start battle
 pos: ui-action
 aliases: [対戦開始, taisen kaishi]
 notes_it: >-
-  È uno dei bottoni più concreti dell'app: qui il testo smette di essere solo
-  informativo e diventa azione immediata. Se lo riconosci subito, sai che hai
-  già superato la fase di selezione.
+  Il composto unisce `{{対戦|たいせん}}`, cioe confronto / match, e
+  `{{開始|かいし}}`, cioe inizio. Per questo il bottone non ti porta a una
+  schermata informativa: avvia davvero la partita e segna la fine della fase di
+  selezione.
 level_hint: n4
 :::
 
@@ -658,6 +677,20 @@ tags: [duel-plays, app, deck]
 :::
 
 :::card
+id: card-hensei-recognition
+entry_type: term
+entry_id: term-hensei
+card_type: recognition
+front: 編成
+back: organizzazione / composizione / setup
+notes_it: >-
+  Da solo `{{編成|へんせい}}` aggiunge l'idea di mettere insieme elementi in un
+  certo assetto. In `デッキ{{編成|へんせい}}` e la parte che ti fa leggere il
+  label come schermata di deckbuilding, non come semplice nome del mazzo.
+tags: [duel-plays, app, deck, kanji]
+:::
+
+:::card
 id: card-deck-edit-recognition
 entry_type: term
 entry_id: term-deck-edit
@@ -665,8 +698,9 @@ card_type: recognition
 front: デッキ編成
 back: costruzione / modifica del mazzo
 notes_it: >-
-  È la schermata che ti permette di preparare davvero un deck giocabile. Qui il
-  giapponese incontra subito una funzione concreta.
+  Va letto come composto: `デッキ` nomina il mazzo, `{{編成|へんせい}}` la sua
+  organizzazione. Quindi il label intero indica l'area in cui sistemi la lista
+  e prepari un deck giocabile.
 tags: [duel-plays, app, deck]
 :::
 
@@ -678,8 +712,9 @@ card_type: recognition
 front: レンタルデッキ
 back: mazzo noleggiato / rental deck
 notes_it: >-
-  Utile sia in gioco sia nello studio: ti permette di entrare in una modalità
-  senza aver costruito da zero tutta la collezione.
+  La parte decisiva e `レンタル`: il mazzo ti viene prestato, non costruito da
+  te. Se lo riconosci, capisci subito che puoi entrare in modalità di gioco con
+  una lista pronta anche senza una collezione completa.
 tags: [duel-plays, app, deck]
 :::
 
@@ -691,9 +726,8 @@ card_type: recognition
 front: カード購入
 back: acquisto carte / card purchase
 notes_it: >-
-  Non è sinonimo di [カード{{交換|こうかん}}](term:term-card-exchange) o
-  [{{生成|せいせい}}](term:term-craft). Ti dice che sei in un flusso di
-  acquisto.
+  Il punto chiave e `{{購入|こうにゅう}}`: qui stai comprando, non scambiando o
+  craftando. Il composto segnala quindi un flusso di acquisto vero e proprio.
 tags: [duel-plays, app, shop]
 :::
 
@@ -705,8 +739,9 @@ card_type: recognition
 front: カード交換
 back: scambio carte / card exchange
 notes_it: >-
-  Leggilo come flusso di scambio, non di acquisto puro. È una distinzione
-  pratica fondamentale nelle schermate shop.
+  Il punto chiave e `{{交換|こうかん}}`: qui stai scambiando risorse, non
+  comprando in senso diretto. Questa distinzione evita errori pratici nelle
+  schermate shop.
 tags: [duel-plays, app, shop]
 :::
 
@@ -824,8 +859,9 @@ card_type: recognition
 front: 開催中
 back: in corso / attivo ora
 notes_it: >-
-  Label di stato molto pratico. Ti dice immediatamente che evento o modalità
-  sono disponibili nel presente.
+  `{{開催|かいさい}}` + [～{{中|ちゅう}}](grammar:grammar-ui-chuu) ti dice che
+  evento o modalità sono in corso proprio adesso. E un vero label di stato, non
+  solo il nome della sezione.
 tags: [duel-plays, app, status, kanji]
 :::
 
@@ -837,8 +873,9 @@ card_type: recognition
 front: 解放
 back: sblocco / unlock
 notes_it: >-
-  Quando lo vedi, l'app sta parlando di accesso a funzioni o contenuti. È una
-  parola da collegare subito all'idea di disponibilità reale.
+  Quando lo vedi, l'app sta parlando di accesso che si sblocca. Il punto non e
+  "apertura" in astratto, ma passaggio concreto da non disponibile a
+  disponibile.
 tags: [duel-plays, app, status, kanji]
 :::
 
@@ -850,8 +887,9 @@ card_type: recognition
 front: 対戦開始
 back: avvia la partita / start battle
 notes_it: >-
-  È il momento in cui la lettura del menu diventa azione. Se lo riconosci
-  subito, sai che la fase preparatoria è finita.
+  `{{対戦|たいせん}}` ti dice che si parla della partita, `{{開始|かいし}}` che
+  sta per iniziare. Il bottone segna quindi il passaggio reale dalla selezione
+  all'avvio del match.
 tags: [duel-plays, app, action, kanji]
 :::
 

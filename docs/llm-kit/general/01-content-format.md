@@ -111,6 +111,8 @@ Minimo richiesto:
 
 - chiarire che cosa vuol dire davvero l'elemento giapponese nel corpus;
 - chiarire che cosa ti fa capire, distinguere o fare quando compare nel media;
+- se l'elemento compare dentro un composto, distinguere il significato del
+  singolo componente da quello del label intero;
 - se l'elemento e un nome proprio opaco, spiegare almeno quale ruolo ricorrente
   segnala o quali componenti del nome conviene riconoscere.
 
@@ -121,8 +123,9 @@ Esempi da evitare:
 
 Esempi accettabili:
 
-- `{{編成|へんせい}}` vuol dire "organizzazione / composizione"; in
-  `デッキ{{編成|へんせい}}` segnala la schermata in cui sistemi la lista del mazzo.
+- in `デッキ{{編成|へんせい}}`, `デッキ` nomina il mazzo e `{{編成|へんせい}}`
+  aggiunge l'idea di organizzazione / composizione; il composto intero indica la
+  schermata di deckbuilding.
 - `または` vuol dire "oppure", ma nelle carte collega due categorie che valgono
   entrambe per lo stesso filtro.
 

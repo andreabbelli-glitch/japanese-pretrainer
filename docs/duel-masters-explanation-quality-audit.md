@@ -22,6 +22,10 @@ senza chiarire almeno uno dei due punti seguenti:
 - che cosa vuol dire davvero l'elemento giapponese;
 - che cosa ti fa capire, distinguere o fare dentro Duel Masters / `デュエプレ`.
 
+Nei composti il criterio e ancora piu stretto: la spiegazione non deve far
+sembrare che il singolo componente significhi l'intero label. Deve chiarire che
+cosa aggiunge il componente e che cosa vuol dire il composto completo.
+
 Per i nomi propri poco trasparenti il criterio e leggermente diverso: non sempre
 si puo dare una glossa letterale forte, ma si deve almeno spiegare quale ruolo
 ricorrente segnala il nome o quali componenti del nome conviene riconoscere.
@@ -42,6 +46,10 @@ ricorrente segnala il nome o quali componenti del nome conviene riconoscere.
 
 - Kanji o pattern UI descritti solo come utili, senza spiegare la funzione
   concreta. Esempi tipici: `{{編成|へんせい}}`, `～{{中|ちゅう}}`, `{{未|み}}～`.
+- Componenti di composti spiegati in modo fuorviante, come se valessero per il
+  label intero. Esempio tipico: leggere male `デッキ{{編成|へんせい}}` e far
+  sembrare che `{{編成|へんせい}}` riguardi il "deck" invece
+  dell'organizzazione del deck.
 - Pattern di rules text trattati come importanti senza esplicitare il contrasto
   operativo. Esempi tipici: [または](grammar:grammar-matawa),
   [～なければ ... ない](grammar:grammar-nakereba), [{{召喚|しょうかん}}](term:term-summon),
