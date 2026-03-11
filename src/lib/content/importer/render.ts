@@ -13,7 +13,10 @@ import type {
 } from "../types.ts";
 import { normalizeSearchText } from "../../study-search.ts";
 
-export { normalizeGrammarSearchText, normalizeSearchText } from "../../study-search.ts";
+export {
+  normalizeGrammarSearchText,
+  normalizeSearchText
+} from "../../study-search.ts";
 
 export function buildDeterministicId(
   namespace: string,
@@ -109,7 +112,9 @@ export function collectReferenceKeysFromRichText(fragment?: RichTextFragment) {
     return [];
   }
 
-  return dedupeReferenceKeys(collectReferenceKeysFromInlineNodes(fragment.nodes));
+  return dedupeReferenceKeys(
+    collectReferenceKeysFromInlineNodes(fragment.nodes)
+  );
 }
 
 export function collectReferenceKeysFromBlocks(blocks: ContentBlock[]) {
@@ -137,6 +142,18 @@ function renderBlock(block: ContentBlock): string {
     }
     case "thematicBreak":
       return "<hr />";
+    case "exampleSentence":
+      return [
+        '<section class="reader-example-sentence">',
+        `<p class="reader-example-sentence__jp jp-inline">${renderInlineNodes(block.sentence.nodes)}</p>`,
+        '<details class="reader-example-sentence__translation">',
+        "<summary>Mostra traduzione italiana</summary>",
+        '<div class="reader-example-sentence__translation-body">',
+        `<p>${renderInlineNodes(block.translationIt.nodes)}</p>`,
+        "</div>",
+        "</details>",
+        "</section>"
+      ].join("");
     case "termDefinition":
       return renderTermDefinition(block);
     case "grammarDefinition":
@@ -162,7 +179,10 @@ function renderList(block: Extract<ContentBlock, { type: "list" }>) {
       : "";
 
   return `<${tagName}${startAttribute}>${block.items
-    .map((item) => `<li>${item.children.map((child) => renderBlock(child)).join("")}</li>`)
+    .map(
+      (item) =>
+        `<li>${item.children.map((child) => renderBlock(child)).join("")}</li>`
+    )
     .join("")}</${tagName}>`;
 }
 
@@ -249,7 +269,9 @@ function extractBlockText(block: ContentBlock): string {
       return extractInlineNodesText(block.children);
     case "list":
       return block.items
-        .map((item) => item.children.map((child) => extractBlockText(child)).join(" "))
+        .map((item) =>
+          item.children.map((child) => extractBlockText(child)).join(" ")
+        )
         .join(" ");
     case "blockquote":
       return block.children.map((child) => extractBlockText(child)).join(" ");
@@ -257,6 +279,13 @@ function extractBlockText(block: ContentBlock): string {
       return block.value;
     case "thematicBreak":
       return "";
+    case "exampleSentence":
+      return [
+        extractInlineNodesText(block.sentence.nodes),
+        extractInlineNodesText(block.translationIt.nodes)
+      ]
+        .filter((value) => value.length > 0)
+        .join(" ");
     case "termDefinition":
       return extractTermText(block.entry);
     case "grammarDefinition":
@@ -265,7 +294,9 @@ function extractBlockText(block: ContentBlock): string {
       return [
         extractInlineNodesText(block.card.front.nodes),
         extractInlineNodesText(block.card.back.nodes),
-        block.card.notesIt ? extractInlineNodesText(block.card.notesIt.nodes) : ""
+        block.card.notesIt
+          ? extractInlineNodesText(block.card.notesIt.nodes)
+          : ""
       ]
         .filter((value) => value.length > 0)
         .join(" ");
@@ -332,10 +363,17 @@ function collectReferenceKeysFromBlock(
         item.children.flatMap((child) => collectReferenceKeysFromBlock(child))
       );
     case "blockquote":
-      return block.children.flatMap((child) => collectReferenceKeysFromBlock(child));
+      return block.children.flatMap((child) =>
+        collectReferenceKeysFromBlock(child)
+      );
     case "code":
     case "thematicBreak":
       return [];
+    case "exampleSentence":
+      return dedupeReferenceKeys([
+        ...collectReferenceKeysFromInlineNodes(block.sentence.nodes),
+        ...collectReferenceKeysFromInlineNodes(block.translationIt.nodes)
+      ]);
     case "termDefinition":
       return collectReferenceKeysFromRichText(block.entry.notesIt);
     case "grammarDefinition":

@@ -46,6 +46,17 @@ complesso, annota il composto intero: `{{2000以下|にせんいか}}`.
 
 <Inserisci esempi di lettura o analisi.>
 
+Per una frase giapponese con traduzione italiana apribile a toggle, usa:
+
+```md
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{墓地|ぼち}}からクリーチャーを{{1体|いったい}}{{出|だ}}す。
+translation_it: >-
+  Metti in gioco 1 creatura dal tuo cimitero.
+:::
+```
+
 ## Nota finale
 
 <Nota didattica breve.>
@@ -53,5 +64,7 @@ complesso, annota il composto intero: `{{2000以下|にせんいか}}`.
 <!--
 Usa blocchi :::term o :::grammar solo se devi introdurre una entry nuova non
 ancora dichiarata altrove. Se una entry esiste gia, referenzia il suo ID.
+Usa :::example_sentence quando vuoi una frase con traduzione italiana
+collassabile nel reader.
 Se aggiungi campi descrittivi YAML nel frontmatter, come `summary`, usa `>-`.
 -->

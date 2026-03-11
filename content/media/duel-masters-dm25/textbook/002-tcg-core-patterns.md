@@ -94,7 +94,13 @@ la frase continua con un secondo blocco.
 
 Esempio:
 
-`{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。{{その後|そのあと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。`
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。{{その後|そのあと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
+translation_it: >-
+  Metti le prime 4 carte del tuo mazzo nel cimitero. Poi metti in gioco 1
+  Abyss di costo 4 o inferiore dal tuo cimitero.
+:::
 
 Qui il testo dice: prima fai una cosa, poi ne fai un'altra.
 
@@ -103,7 +109,12 @@ Qui il testo dice: prima fai una cosa, poi ne fai un'altra.
 
 Esempio:
 
-`{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を{{墓地|ぼち}}に{{置|お}}いてもよい。そうしたら、...`
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を{{墓地|ぼち}}に{{置|お}}いてもよい。そうしたら、...
+translation_it: >-
+  Puoi mettere le prime 3 carte del tuo mazzo nel cimitero. Se lo fai, ...
+:::
 
 Per la lettura pratica:
 
@@ -133,7 +144,13 @@ fai quest'altro".
 
 Schema tipico:
 
-`このクリーチャーが{{離|はな}}れる{{時|とき}}、かわりに{{自分|じぶん}}の{{手札|てふだ}}を{{2枚|にまい}}{{捨|す}}ててもよい。`
+:::example_sentence
+jp: >-
+  このクリーチャーが{{離|はな}}れる{{時|とき}}、かわりに{{自分|じぶん}}の{{手札|てふだ}}を{{2枚|にまい}}{{捨|す}}ててもよい。
+translation_it: >-
+  Quando questa creatura lascia il campo, al suo posto puoi scartare 2 carte
+  dalla tua mano.
+:::
 
 Qui il punto centrale è capire che scartare due carte prende il posto
 dell'uscita della creatura.
@@ -145,7 +162,12 @@ Se leggi `かわりに` come semplice "poi", sbagli la logica dell'effetto.
 Un pattern molto utile è [～なければ ... ない](grammar:grammar-nakereba). Nelle
 carte compare spesso in formule tecniche come:
 
-`...なければ、クリーチャーとして{{扱|あつか}}わない。`
+:::example_sentence
+jp: >-
+  ...なければ、クリーチャーとして{{扱|あつか}}わない。
+translation_it: >-
+  ...altrimenti non viene trattata come una creatura.
+:::
 
 Se non riconosci [扱う](term:term-atsukau), la frase può sembrare oscura. Se la
 leggi a blocchi, invece, il senso è semplice: se la condizione non è soddisfatta,
@@ -156,7 +178,12 @@ uno stato già presente.
 
 Esempio:
 
-`タマシードから{{進化|しんか}}していれば、カードをもう{{1枚|いちまい}}{{引|ひ}}く。`
+:::example_sentence
+jp: >-
+  タマシードから{{進化|しんか}}していれば、カードをもう{{1枚|いちまい}}{{引|ひ}}く。
+translation_it: >-
+  Se si è evoluta da un Tamashido, pesca 1 carta in più.
+:::
 
 Qui la carta controlla prima una condizione già vera e poi concede un bonus.
 
@@ -206,7 +233,13 @@ Le carte moderne mettono spesso più azioni nella stessa frase. Inoltre molte
 keyword si aprono con una parentesi che spiega il funzionamento reale. Per
 esempio:
 
-`{{侵略|しんりゃく}}：{{火|ひ}}のコマンド（{{自分|じぶん}}の{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、{{自分|じぶん}}の{{手札|てふだ}}にあるこのクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい）`
+:::example_sentence
+jp: >-
+  {{侵略|しんりゃく}}：{{火|ひ}}のコマンド（{{自分|じぶん}}の{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、{{自分|じぶん}}の{{手札|てふだ}}にあるこのクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい）
+translation_it: >-
+  Invasione: comando di fuoco (quando un tuo comando di fuoco attacca, puoi
+  sovrapporre su di esso questa creatura che hai in mano).
+:::
 
 Qui devi separare così:
 
@@ -218,7 +251,13 @@ Qui devi separare così:
 
 Poi ci sono frasi come questa:
 
-`{{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。`
+:::example_sentence
+jp: >-
+  {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。
+translation_it: >-
+  A ogni turno, alla fine del primo attacco di questa creatura, STAPpa questa
+  creatura e distruggi la carta in cima.
+:::
 
 Se la traduci tutta in un colpo solo, rischi di perderti. Se la separi, diventa
 molto più chiara:
@@ -245,40 +284,103 @@ Quando una frase ti sembra troppo densa, prova sempre questo ordine:
 
 ## Esempi guidati
 
-1. `このクリーチャーが{{出|で}}た{{時|とき}}、{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}を{{墓地|ぼち}}に{{置|お}}く。`  
-   - [出る](term:term-deru) + [～時 / ～た時](grammar:grammar-toki) = trigger.  
-   - [山札](term:term-deck) + [墓地](term:term-graveyard) + [置く](term:term-oku)
-     = movimento di zona.
+**Esempio 1**
 
-2. `{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。{{その後|そのあと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。`  
-   - [その後](grammar:grammar-sonoato) = la frase continua.  
-   - [アビス](term:term-abyss) + [墓地](term:term-graveyard) + [出す](term:term-dasu)
-     = recupero in campo.
+:::example_sentence
+jp: >-
+  このクリーチャーが{{出|で}}た{{時|とき}}、{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}を{{墓地|ぼち}}に{{置|お}}く。
+translation_it: >-
+  Quando questa creatura entra, metti la prima carta del tuo mazzo nel
+  cimitero.
+:::
 
-3. `{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を{{墓地|ぼち}}に{{置|お}}いてもよい。そうしたら、アビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{手札|てふだ}}に{{戻|もど}}してもよい。`  
-   - [～てもよい](grammar:grammar-temoyoi) = scelta.  
-   - [そうしたら](grammar:grammar-soushitara) = il secondo effetto dipende dal primo.  
-   - [墓地](term:term-graveyard) + [手札](term:term-hand) +
-     [戻す](term:term-modosu) = recupero in mano.
+- [出る](term:term-deru) + [～時 / ～た時](grammar:grammar-toki) = trigger.
+- [山札](term:term-deck) + [墓地](term:term-graveyard) + [置く](term:term-oku)
+  = movimento di zona.
 
-4. `{{相手|あいて}}が{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}でクリーチャーを{{出|だ}}した{{時|とき}}、そのクリーチャーを{{破壊|はかい}}する。`  
-   - [～以外の方法で](grammar:grammar-igai-no-houhou-de) = esclusione di mezzo.  
-   - [出す](term:term-dasu) e [破壊](term:term-destroy) sono le due azioni chiave.
+**Esempio 2**
 
-5. `{{自分|じぶん}}の{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシードが{{合計|ごうけい}}{{4つ以上|よっついじょう}}なければ、バトルゾーンにあるこのタマシードはクリーチャーとして{{扱|あつか}}わない。`  
-   - [～なければ ... ない](grammar:grammar-nakereba) = condizione negativa.  
-   - [扱う](term:term-atsukau) qui significa "contare come".
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。{{その後|そのあと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
+translation_it: >-
+  Metti le prime 4 carte del tuo mazzo nel cimitero. Poi metti in gioco 1
+  Abyss di costo 4 o inferiore dal tuo cimitero.
+:::
 
-6. `{{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。`  
-   - [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) = timing.  
-   - [アンタップ](term:term-untap) e [破壊](term:term-destroy) sono azioni in
-     sequenza.
+- [その後](grammar:grammar-sonoato) = la frase continua.
+- [アビス](term:term-abyss) + [墓地](term:term-graveyard) + [出す](term:term-dasu)
+  = recupero in campo.
 
-7. `{{侵略|しんりゃく}}：{{火|ひ}}のコマンド（{{自分|じぶん}}の{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、{{自分|じぶん}}の{{手札|てふだ}}にあるこのクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい）`  
-   - [侵略](term:term-invasion) = keyword.  
-   - [コマンド](term:term-command) = requisito sul tipo di attaccante.  
-   - [重ねる](term:term-kasaneru) + [～てもよい](grammar:grammar-temoyoi) =
-     sovrapposizione opzionale.
+**Esempio 3**
+
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を{{墓地|ぼち}}に{{置|お}}いてもよい。そうしたら、アビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{手札|てふだ}}に{{戻|もど}}してもよい。
+translation_it: >-
+  Puoi mettere le prime 3 carte del tuo mazzo nel cimitero. Se lo fai, puoi
+  riprendere 1 Abyss dal tuo cimitero nella tua mano.
+:::
+
+- [～てもよい](grammar:grammar-temoyoi) = scelta.
+- [そうしたら](grammar:grammar-soushitara) = il secondo effetto dipende dal primo.
+- [墓地](term:term-graveyard) + [手札](term:term-hand) + [戻す](term:term-modosu)
+  = recupero in mano.
+
+**Esempio 4**
+
+:::example_sentence
+jp: >-
+  {{相手|あいて}}が{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}でクリーチャーを{{出|だ}}した{{時|とき}}、そのクリーチャーを{{破壊|はかい}}する。
+translation_it: >-
+  Quando il tuo avversario mette in gioco una creatura con un metodo diverso
+  dall'evocazione, distruggi quella creatura.
+:::
+
+- [～以外の方法で](grammar:grammar-igai-no-houhou-de) = esclusione di mezzo.
+- [出す](term:term-dasu) e [破壊](term:term-destroy) sono le due azioni chiave.
+
+**Esempio 5**
+
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシードが{{合計|ごうけい}}{{4つ以上|よっついじょう}}なければ、バトルゾーンにあるこのタマシードはクリーチャーとして{{扱|あつか}}わない。
+translation_it: >-
+  Se non hai in totale almeno 4 creature oscure o Tamashido oscuri, questo
+  Tamashido nel battle zone non viene trattato come creatura.
+:::
+
+- [～なければ ... ない](grammar:grammar-nakereba) = condizione negativa.
+- [扱う](term:term-atsukau) qui significa "contare come".
+
+**Esempio 6**
+
+:::example_sentence
+jp: >-
+  {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。
+translation_it: >-
+  A ogni turno, alla fine del primo attacco di questa creatura, STAPpa questa
+  creatura e distruggi la carta in cima.
+:::
+
+- [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) = timing.
+- [アンタップ](term:term-untap) e [破壊](term:term-destroy) sono azioni in
+  sequenza.
+
+**Esempio 7**
+
+:::example_sentence
+jp: >-
+  {{侵略|しんりゃく}}：{{火|ひ}}のコマンド（{{自分|じぶん}}の{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、{{自分|じぶん}}の{{手札|てふだ}}にあるこのクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい）
+translation_it: >-
+  Invasione: comando di fuoco (quando un tuo comando di fuoco attacca, puoi
+  sovrapporre su di esso questa creatura che hai in mano).
+:::
+
+- [侵略](term:term-invasion) = keyword.
+- [コマンド](term:term-command) = requisito sul tipo di attaccante.
+- [重ねる](term:term-kasaneru) + [～てもよい](grammar:grammar-temoyoi) =
+  sovrapposizione opzionale.
 
 ## Nota finale
 

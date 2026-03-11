@@ -134,7 +134,13 @@ Su `DM25-SD1` tornano spesso due montaggi:
 
 Per esempio, una frase modello da leggere bene è:
 
-`{{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を{{墓地|ぼち}}に{{置|お}}く。{{その後|そのあと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。`
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を{{墓地|ぼち}}に{{置|お}}く。{{その後|そのあと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
+translation_it: >-
+  Metti le prime 3 carte del tuo mazzo nel cimitero. Poi metti in gioco 1
+  Abyss di costo 4 o inferiore dal tuo cimitero.
+:::
 
 Non importa se questa non è la carta precisa che hai davanti. Il pattern è
 quello giusto:
@@ -158,25 +164,53 @@ al cimitero diventano molto meno opachi.
 
 ## Esempi guidati
 
-1. `{{自分|じぶん}}の{{墓地|ぼち}}からアビスを{{1枚|いちまい}}{{手札|てふだ}}に{{戻|もど}}す。`  
-   - Zona di partenza: [墓地](term:term-graveyard).  
-   - Azione: [戻す](term:term-modosu).  
-   - Lettura pratica: il mazzo trasforma il cimitero in risorsa recuperabile.
+**Esempio 1**
 
-2. `コスト{{4以下|よんいか}}のアビスロイヤルを{{1体|いったい}}{{出|だ}}してもよい。`  
-   - [～以下 / ～以上](grammar:grammar-ika-ijou) = filtro.  
-   - [アビスロイヤル](term:term-abyss-royal) = non vale qualunque creatura.  
-   - [～てもよい](grammar:grammar-temoyoi) = la mossa è opzionale.
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{墓地|ぼち}}からアビスを{{1枚|いちまい}}{{手札|てふだ}}に{{戻|もど}}す。
+translation_it: >-
+  Rimetti 1 Abyss dal tuo cimitero nella tua mano.
+:::
 
-3. `このクリーチャーが{{出|で}}た{{時|とき}}、{{相手|あいて}}のクリーチャーを{{1体|いったい}}{{破壊|はかい}}する。`  
-   - [～時 / ～た時](grammar:grammar-toki) = trigger.  
-   - [破壊](term:term-destroy) = payoff di pressione sul campo.  
-   - Qui il mazzo non recupera soltanto: converte la risorsa in attacco.
+- Zona di partenza: [墓地](term:term-graveyard).
+- Azione: [戻す](term:term-modosu).
+- Lettura pratica: il mazzo trasforma il cimitero in risorsa recuperabile.
 
-4. `[邪侵入](term:term-jashinnyuu)` / [ジャブラッド](term:term-jablood) / [アビスベル=ジャシン帝](term:term-abyssbell-jashintei)  
-   - Non è una frase, ma un set di nomi da fissare.  
-   - Quando compaiono nella lista carte, devi riconoscere subito che sei
-     davanti ai punti di riferimento del mazzo, non a nomi incidentali.
+**Esempio 2**
+
+:::example_sentence
+jp: >-
+  コスト{{4以下|よんいか}}のアビスロイヤルを{{1体|いったい}}{{出|だ}}してもよい。
+translation_it: >-
+  Puoi mettere in gioco 1 Abyss Royal di costo 4 o inferiore.
+:::
+
+- [～以下 / ～以上](grammar:grammar-ika-ijou) = filtro.
+- [アビスロイヤル](term:term-abyss-royal) = non vale qualunque creatura.
+- [～てもよい](grammar:grammar-temoyoi) = la mossa è opzionale.
+
+**Esempio 3**
+
+:::example_sentence
+jp: >-
+  このクリーチャーが{{出|で}}た{{時|とき}}、{{相手|あいて}}のクリーチャーを{{1体|いったい}}{{破壊|はかい}}する。
+translation_it: >-
+  Quando questa creatura entra, distruggi 1 creatura del tuo avversario.
+:::
+
+- [～時 / ～た時](grammar:grammar-toki) = trigger.
+- [破壊](term:term-destroy) = payoff di pressione sul campo.
+- Qui il mazzo non recupera soltanto: converte la risorsa in attacco.
+
+**Esempio 4**
+
+[邪侵入](term:term-jashinnyuu) / [ジャブラッド](term:term-jablood) /
+[アビスベル=ジャシン帝](term:term-abyssbell-jashintei)
+
+- Non è una frase, ma un set di nomi da fissare.
+- Quando compaiono nella lista carte, devi riconoscere subito che sei
+  davanti ai punti di riferimento del mazzo, non a nomi incidentali.
 
 ## Nota finale
 

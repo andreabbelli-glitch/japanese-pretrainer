@@ -308,6 +308,25 @@ Campi opzionali:
 - `aliases`
 - `segment_ref`
 
+### 8.3 Blocco `example_sentence`
+
+Usalo quando vuoi mostrare una frase giapponese completa con traduzione
+italiana collassabile nel reader.
+
+```md
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{墓地|ぼち}}からクリーチャーを{{1体|いったい}}{{出|だ}}す。
+translation_it: >-
+  Metti in gioco 1 creatura dal tuo cimitero.
+:::
+```
+
+Campi obbligatori:
+
+- `jp`
+- `translation_it`
+
 ## 9. Riferimenti semantici inline
 
 Per attivare tooltip e linking si usano link con schema custom.

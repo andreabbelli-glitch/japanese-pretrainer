@@ -18,6 +18,7 @@ import type {
   CollectedReference,
   ContentBlock,
   ContentParseResult,
+  ExampleSentenceBlock,
   GrammarDefinitionBlock,
   LessonFrontmatter,
   MarkdownDocument,
@@ -438,7 +439,7 @@ function normalizeLessonDocument(
     state,
     sourceContext,
     issues,
-    new Set(["term", "grammar"])
+    new Set(["term", "grammar", "example_sentence"])
   );
 
   return {
@@ -720,6 +721,22 @@ function resolveStructuredBody(
       continue;
     }
 
+    if (rawBlock.blockType === "example_sentence") {
+      const exampleSentence = normalizeExampleSentenceBlock(
+        rawBlock,
+        sourceContext,
+        sourcePath,
+        issues
+      );
+
+      if (exampleSentence) {
+        blocks.push(exampleSentence.block);
+        references.push(...exampleSentence.references);
+      }
+
+      continue;
+    }
+
     issues.push(
       createIssue({
         code: "structured-block.unknown-type",
@@ -728,7 +745,7 @@ function resolveStructuredBody(
         filePath: state.draft.sourceFile,
         path: sourcePath,
         range: rawBlock.position,
-        hint: "Use :::term, :::grammar, or :::card."
+        hint: "Use supported structured blocks such as :::term, :::grammar, :::card, or :::example_sentence."
       })
     );
   }
@@ -1568,6 +1585,92 @@ function normalizeCardBlock(
       ...frontFragment.references,
       ...backFragment.references,
       ...(notesFragment?.references ?? [])
+    ]
+  };
+}
+
+function normalizeExampleSentenceBlock(
+  rawBlock: RawStructuredBlock,
+  sourceContext: DocumentSourceContext,
+  sourcePath: string,
+  issues: ValidationIssue[]
+): { block: ExampleSentenceBlock; references: CollectedReference[] } | null {
+  if (!rawBlock.data) {
+    return null;
+  }
+
+  reportUnknownKeys(
+    rawBlock.data,
+    ["jp", "translation_it"],
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  reportUnsafeYamlPlainScalars(
+    rawBlock.data,
+    ["jp", "translation_it"],
+    sourceContext.filePath,
+    sourcePath,
+    rawBlock.fieldRanges ?? {},
+    rawBlock.fieldStyles ?? {},
+    issues
+  );
+
+  const sentence = readRequiredString(
+    rawBlock.data,
+    "jp",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  const translationIt = readRequiredString(
+    rawBlock.data,
+    "translation_it",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+
+  if (!sentence || !translationIt) {
+    return null;
+  }
+
+  const sentenceRange = rawBlock.fieldRanges?.jp ?? rawBlock.position;
+  const translationRange = rawBlock.fieldRanges?.translation_it ?? rawBlock.position;
+  const sentenceFragment = parseInlineFragment({
+    source: sentence,
+    filePath: sourceContext.filePath,
+    documentKind: sourceContext.documentKind,
+    documentId: sourceContext.documentId,
+    sourcePath: `${sourcePath}.jp`,
+    fragmentOrigin: sentenceRange?.start,
+    fallbackRange: sentenceRange
+  });
+  const translationFragment = parseInlineFragment({
+    source: translationIt,
+    filePath: sourceContext.filePath,
+    documentKind: sourceContext.documentKind,
+    documentId: sourceContext.documentId,
+    sourcePath: `${sourcePath}.translation_it`,
+    fragmentOrigin: translationRange?.start,
+    fallbackRange: translationRange
+  });
+
+  issues.push(...sentenceFragment.issues, ...translationFragment.issues);
+
+  return {
+    block: {
+      type: "exampleSentence",
+      position: rawBlock.position,
+      sentence: sentenceFragment.fragment,
+      translationIt: translationFragment.fragment
+    },
+    references: [
+      ...sentenceFragment.references,
+      ...translationFragment.references
     ]
   };
 }

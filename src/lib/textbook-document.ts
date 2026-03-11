@@ -1,6 +1,7 @@
 import type {
   CardDefinitionBlock,
   ContentBlock,
+  ExampleSentenceBlock,
   GrammarDefinitionBlock,
   InlineNode,
   MarkdownDocument,
@@ -89,6 +90,36 @@ function normalizeBlock(value: unknown): ContentBlock | null {
       return {
         type: "thematicBreak"
       };
+    case "exampleSentence": {
+      const sentence =
+        normalizeRichTextFragment(value.sentence) ??
+        (typeof value.jp === "string"
+          ? {
+            raw: value.jp,
+            nodes: [{ type: "text" as const, value: value.jp }]
+          }
+          : null);
+      const translationIt =
+        normalizeRichTextFragment(value.translationIt) ??
+        (typeof value.translation_it === "string"
+          ? {
+            raw: value.translation_it,
+            nodes: [{ type: "text" as const, value: value.translation_it }]
+          }
+          : null);
+
+      if (!sentence || !translationIt) {
+        return null;
+      }
+
+      const block: ExampleSentenceBlock = {
+        type: "exampleSentence",
+        sentence,
+        translationIt
+      };
+
+      return block;
+    }
     case "termDefinition": {
       const entry = normalizeTerm(value.entry);
 

@@ -46,12 +46,12 @@ type TooltipState = {
 
 type MobileSheetState =
   | {
-    type: "lessons";
-  }
+      type: "lessons";
+    }
   | {
-    type: "entry";
-    entry: TextbookEntryTooltip;
-  };
+      type: "entry";
+      entry: TextbookEntryTooltip;
+    };
 
 export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const router = useRouter();
@@ -74,8 +74,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   useEffect(() => {
     const updateLayoutMode = () => {
       setIsTouchLayout(
-        window.matchMedia("(hover: none), (pointer: coarse), (max-width: 960px)")
-          .matches
+        window.matchMedia(
+          "(hover: none), (pointer: coarse), (max-width: 960px)"
+        ).matches
       );
     };
 
@@ -115,11 +116,11 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     setTooltip((current) =>
       current
         ? {
-          ...current,
-          left,
-          top,
-          placement: preferTop ? "top" : "bottom"
-        }
+            ...current,
+            left,
+            top,
+            placement: preferTop ? "top" : "bottom"
+          }
         : current
     );
   };
@@ -296,8 +297,14 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
               <span>
                 {data.completedLessons}/{data.totalLessons} lette
               </span>
-              <span>{lessonStatus === "completed" ? "Completata" : data.lesson.statusLabel}</span>
-              {data.lesson.difficulty ? <span>{data.lesson.difficulty}</span> : null}
+              <span>
+                {lessonStatus === "completed"
+                  ? "Completata"
+                  : data.lesson.statusLabel}
+              </span>
+              {data.lesson.difficulty ? (
+                <span>{data.lesson.difficulty}</span>
+              ) : null}
             </div>
           </div>
         </div>
@@ -317,7 +324,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
             onClick={toggleLessonCompletion}
             type="button"
           >
-            {lessonStatus === "completed" ? "Segna in corso" : "Segna completata"}
+            {lessonStatus === "completed"
+              ? "Segna in corso"
+              : "Segna completata"}
           </button>
         </div>
       </header>
@@ -331,7 +340,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
           Lezioni
         </button>
         <div className="reader-mobile-strip__status">
-          <span>{data.completedLessons}/{data.totalLessons} lette</span>
+          <span>
+            {data.completedLessons}/{data.totalLessons} lette
+          </span>
           <span>Furigana: {furiganaMode}</span>
         </div>
       </div>
@@ -356,7 +367,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
             </div>
 
             <LessonArticle
-              activeEntryKey={tooltip ? `${tooltip.entry.kind}:${tooltip.entry.id}` : null}
+              activeEntryKey={
+                tooltip ? `${tooltip.entry.kind}:${tooltip.entry.id}` : null
+              }
               document={data.lesson.ast}
               entriesByKey={entriesByKey}
               fallbackHtml={data.lesson.htmlRendered}
@@ -395,7 +408,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
             <button
               className={cx(
                 "button",
-                lessonStatus === "completed" ? "button--ghost" : "button--primary"
+                lessonStatus === "completed"
+                  ? "button--ghost"
+                  : "button--primary"
               )}
               disabled={isSavingLesson}
               onClick={toggleLessonCompletion}
@@ -481,7 +496,8 @@ function FuriganaModeControl({
           aria-pressed={currentMode === option.mode}
           className={cx(
             "reader-furigana-control__button",
-            currentMode === option.mode && "reader-furigana-control__button--active"
+            currentMode === option.mode &&
+              "reader-furigana-control__button--active"
           )}
           disabled={disabled}
           onClick={() => onChange(option.mode)}
@@ -510,7 +526,12 @@ function LessonRail({
   onNavigate
 }: LessonRailProps) {
   return (
-    <div className={cx("reader-rail__card", compact && "reader-rail__card--compact")}>
+    <div
+      className={cx(
+        "reader-rail__card",
+        compact && "reader-rail__card--compact"
+      )}
+    >
       {groups.map((group) => (
         <section key={group.id} className="reader-rail__group">
           <div className="reader-rail__group-heading">
@@ -574,7 +595,7 @@ type LessonArticleProps = {
   onReferenceLeave: () => void;
 };
 
-function LessonArticle({
+export function LessonArticle({
   activeEntryKey,
   document,
   entriesByKey,
@@ -623,7 +644,11 @@ function LessonArticle({
           const entry = entriesByKey.get(`${node.targetType}:${node.targetId}`);
 
           if (!entry) {
-            return <Fragment key={index}>{renderInlineNodes(node.children)}</Fragment>;
+            return (
+              <Fragment key={index}>
+                {renderInlineNodes(node.children)}
+              </Fragment>
+            );
           }
 
           return (
@@ -644,7 +669,9 @@ function LessonArticle({
         case "emphasis":
           return <em key={index}>{renderInlineNodes(node.children)}</em>;
         case "strong":
-          return <strong key={index}>{renderInlineNodes(node.children)}</strong>;
+          return (
+            <strong key={index}>{renderInlineNodes(node.children)}</strong>
+          );
         case "inlineCode":
           return <code key={index}>{renderInlineNodes(node.children)}</code>;
         case "link":
@@ -711,6 +738,20 @@ function LessonArticle({
         );
       case "thematicBreak":
         return <hr className="reader-divider" key={index} />;
+      case "exampleSentence":
+        return (
+          <section className="reader-example-sentence" key={index}>
+            <p className="reader-example-sentence__jp jp-inline">
+              {renderInlineNodes(block.sentence.nodes)}
+            </p>
+            <details className="reader-example-sentence__translation">
+              <summary>Mostra traduzione italiana</summary>
+              <div className="reader-example-sentence__translation-body">
+                <p>{renderInlineNodes(block.translationIt.nodes)}</p>
+              </div>
+            </details>
+          </section>
+        );
       case "termDefinition":
         return (
           <section className="reader-definition-card" key={index}>
@@ -720,11 +761,15 @@ function LessonArticle({
                 <span className="meta-pill">{block.entry.levelHint}</span>
               ) : null}
             </div>
-            <h3 className="reader-definition-card__jp jp-inline">{block.entry.lemma}</h3>
+            <h3 className="reader-definition-card__jp jp-inline">
+              {block.entry.lemma}
+            </h3>
             <p className="reader-definition-card__reading jp-inline">
               {block.entry.reading} · {block.entry.romaji}
             </p>
-            <p className="reader-definition-card__meaning">{block.entry.meaningIt}</p>
+            <p className="reader-definition-card__meaning">
+              {block.entry.meaningIt}
+            </p>
             {block.entry.notesIt ? (
               <p className="reader-definition-card__notes">
                 {renderInlineNodes(block.entry.notesIt.nodes)}
@@ -734,15 +779,22 @@ function LessonArticle({
         );
       case "grammarDefinition":
         return (
-          <section className="reader-definition-card reader-definition-card--grammar" key={index}>
+          <section
+            className="reader-definition-card reader-definition-card--grammar"
+            key={index}
+          >
             <div className="reader-definition-card__eyebrow">
               <span className="chip chip--grammar">Grammar</span>
               {block.entry.levelHint ? (
                 <span className="meta-pill">{block.entry.levelHint}</span>
               ) : null}
             </div>
-            <h3 className="reader-definition-card__jp jp-inline">{block.entry.pattern}</h3>
-            <p className="reader-definition-card__meaning">{block.entry.meaningIt}</p>
+            <h3 className="reader-definition-card__jp jp-inline">
+              {block.entry.pattern}
+            </h3>
+            <p className="reader-definition-card__meaning">
+              {block.entry.meaningIt}
+            </p>
             {block.entry.notesIt ? (
               <p className="reader-definition-card__notes">
                 {renderInlineNodes(block.entry.notesIt.nodes)}
@@ -766,7 +818,11 @@ function LessonArticle({
     }
   };
 
-  return <article className="reader-article">{renderBlocks(document.blocks)}</article>;
+  return (
+    <article className="reader-article">
+      {renderBlocks(document.blocks)}
+    </article>
+  );
 }
 
 type FallbackHtmlArticleProps = {
@@ -815,7 +871,8 @@ function FallbackHtmlArticle({
       return;
     }
 
-    const referenceSelector = ".content-entry-ref[data-entry-type][data-entry-id]";
+    const referenceSelector =
+      ".content-entry-ref[data-entry-type][data-entry-id]";
     const references = Array.from(
       container.querySelectorAll<HTMLElement>(referenceSelector)
     );
@@ -847,7 +904,10 @@ function FallbackHtmlArticle({
 
       element.classList.add("reader-ref");
       element.classList.toggle("reader-ref--term", entry?.kind === "term");
-      element.classList.toggle("reader-ref--grammar", entry?.kind === "grammar");
+      element.classList.toggle(
+        "reader-ref--grammar",
+        entry?.kind === "grammar"
+      );
       element.classList.toggle(
         "reader-ref--active",
         activeEntryKey === `${entry?.kind}:${entry?.id}`
@@ -877,7 +937,8 @@ function FallbackHtmlArticle({
         return;
       }
 
-      element.dataset.revealed = element.dataset.revealed === "true" ? "false" : "true";
+      element.dataset.revealed =
+        element.dataset.revealed === "true" ? "false" : "true";
     };
 
     const handleMouseOver = (event: MouseEvent) => {
@@ -1138,9 +1199,16 @@ type EntryTooltipCardProps = {
 
 function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
   return (
-    <div className={cx("entry-tooltip-card", mobile && "entry-tooltip-card--mobile")}>
+    <div
+      className={cx(
+        "entry-tooltip-card",
+        mobile && "entry-tooltip-card--mobile"
+      )}
+    >
       <div className="entry-tooltip-card__top">
-        <span className={cx("chip", entry.kind === "grammar" && "chip--grammar")}>
+        <span
+          className={cx("chip", entry.kind === "grammar" && "chip--grammar")}
+        >
           {entry.kind === "term" ? "Term" : "Grammar"}
         </span>
         <span className="meta-pill">{entry.statusLabel}</span>
@@ -1167,9 +1235,15 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
         <p className="entry-tooltip-card__detail">Livello: {entry.levelHint}</p>
       ) : null}
       {entry.segmentTitle ? (
-        <p className="entry-tooltip-card__detail">Segmento: {entry.segmentTitle}</p>
+        <p className="entry-tooltip-card__detail">
+          Segmento: {entry.segmentTitle}
+        </p>
       ) : null}
-      {entry.notes ? <p className="entry-tooltip-card__notes">{renderFurigana(entry.notes)}</p> : null}
+      {entry.notes ? (
+        <p className="entry-tooltip-card__notes">
+          {renderFurigana(entry.notes)}
+        </p>
+      ) : null}
       <Link className="text-link" href={entry.glossaryHref}>
         Apri entry
       </Link>

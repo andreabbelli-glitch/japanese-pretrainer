@@ -116,7 +116,13 @@ lato payoff e finisher del mazzo.
 
 Su `DM25-SD2` c'è una struttura che devi vedere in fretta:
 
-`{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、{{手札|てふだ}}にあるこのクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい。`
+:::example_sentence
+jp: >-
+  {{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、{{手札|てふだ}}にあるこのクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい。
+translation_it: >-
+  Quando un comando di fuoco attacca, puoi sovrapporre su di esso questa
+  creatura che hai in mano.
+:::
 
 Il parsing corretto è:
 
@@ -159,27 +165,50 @@ Per leggere bene questo mazzo conviene usare sempre questa checklist:
 
 ## Esempi guidati
 
-1. `{{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、このクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい。`  
-   - [攻撃](term:term-attack) = finestra.  
-   - [コマンド](term:term-command) = requisito.  
-   - [重ねる](term:term-kasaneru) + [～てもよい](grammar:grammar-temoyoi) =
-     sovrapposizione opzionale.
+**Esempio 1**
 
-2. `{{進化|しんか}}クリーチャーを{{1枚|いちまい}}{{手札|てふだ}}に{{加|くわ}}える。そうしたら、カードを{{1枚|いちまい}}{{引|ひ}}く。`  
-   - [進化](term:term-evolution) = la categoria cercata.  
-   - [そうしたら](grammar:grammar-soushitara) = il secondo beneficio dipende
-     dal primo passaggio.
+:::example_sentence
+jp: >-
+  {{火|ひ}}のコマンドが{{攻撃|こうげき}}する{{時|とき}}、このクリーチャーをその{{上|うえ}}に{{重|かさ}}ねてもよい。
+translation_it: >-
+  Quando un comando di fuoco attacca, puoi sovrapporre questa creatura su di
+  esso.
+:::
 
-3. `[進化設計図](term:term-shinka-sekkeizu)` / [未来設計図](term:term-mirai-sekkeizu)  
-   - Sono nomi che segnalano setup e preparazione.  
-   - Quando li vedi nel deck, pensa subito a carte che allineano le basi prima
-     del payoff offensivo.
+- [攻撃](term:term-attack) = finestra.
+- [コマンド](term:term-command) = requisito.
+- [重ねる](term:term-kasaneru) + [～てもよい](grammar:grammar-temoyoi) =
+  sovrapposizione opzionale.
 
-4. `[レッドゾーン](term:term-red-zone)` / [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion)  
-   - Sono i nomi che devi riconoscere a colpo d'occhio come segnali di
-     chiusura.  
-   - In termini didattici, ti ricordano che questo mazzo va letto dal lato
-     dell'esplosione offensiva, non del vantaggio lento.
+**Esempio 2**
+
+:::example_sentence
+jp: >-
+  {{進化|しんか}}クリーチャーを{{1枚|いちまい}}{{手札|てふだ}}に{{加|くわ}}える。そうしたら、カードを{{1枚|いちまい}}{{引|ひ}}く。
+translation_it: >-
+  Aggiungi 1 creatura evoluzione alla tua mano. Se lo fai, pesca 1 carta.
+:::
+
+- [進化](term:term-evolution) = la categoria cercata.
+- [そうしたら](grammar:grammar-soushitara) = il secondo beneficio dipende
+  dal primo passaggio.
+
+**Esempio 3**
+
+[進化設計図](term:term-shinka-sekkeizu) / [未来設計図](term:term-mirai-sekkeizu)
+
+- Sono nomi che segnalano setup e preparazione.
+- Quando li vedi nel deck, pensa subito a carte che allineano le basi prima
+  del payoff offensivo.
+
+**Esempio 4**
+
+[レッドゾーン](term:term-red-zone) / [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion)
+
+- Sono i nomi che devi riconoscere a colpo d'occhio come segnali di
+  chiusura.
+- In termini didattici, ti ricordano che questo mazzo va letto dal lato
+  dell'esplosione offensiva, non del vantaggio lento.
 
 ## Nota finale
 

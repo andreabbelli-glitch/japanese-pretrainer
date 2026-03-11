@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { eq } from "drizzle-orm";
 import { Fragment, createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   closeDatabaseClient,
@@ -29,6 +29,13 @@ import {
 } from "@/lib/textbook";
 import { parseTextbookDocument } from "@/lib/textbook-document";
 import { renderFurigana } from "@/lib/render-furigana";
+import { LessonArticle } from "@/components/textbook/lesson-reader-client";
+
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({
+    refresh() {}
+  })
+}));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -103,7 +110,8 @@ describe("textbook data", () => {
             }
           ]
         }),
-        htmlRendered: "<h1>Intro Vocab</h1><ul><li>行く</li><li>〜ている</li></ul>"
+        htmlRendered:
+          "<h1>Intro Vocab</h1><ul><li>行く</li><li>〜ている</li></ul>"
       })
       .where(eq(lessonContent.lessonId, developmentFixture.lessonId));
 
@@ -330,6 +338,80 @@ describe("textbook data", () => {
     expect(markup).not.toContain("[食べる](term:term-taberu)");
   });
 
+  it("renders example sentences with a collapsed italian translation toggle", () => {
+    const markup = renderToStaticMarkup(
+      createElement(LessonArticle, {
+        activeEntryKey: null,
+        document: {
+          raw: "stub",
+          blocks: [
+            {
+              type: "exampleSentence",
+              sentence: {
+                raw: "{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。",
+                nodes: [
+                  {
+                    type: "furigana",
+                    raw: "{{自分|じぶん}}",
+                    base: "自分",
+                    reading: "じぶん"
+                  },
+                  {
+                    type: "text",
+                    value: "の"
+                  },
+                  {
+                    type: "furigana",
+                    raw: "{{墓地|ぼち}}",
+                    base: "墓地",
+                    reading: "ぼち"
+                  },
+                  {
+                    type: "text",
+                    value: "から"
+                  },
+                  {
+                    type: "furigana",
+                    raw: "{{出|だ}}す",
+                    base: "出",
+                    reading: "だ"
+                  },
+                  {
+                    type: "text",
+                    value: "す。"
+                  }
+                ]
+              },
+              translationIt: {
+                raw: "Mettila in gioco dal tuo cimitero.",
+                nodes: [
+                  {
+                    type: "text",
+                    value: "Mettila in gioco dal tuo cimitero."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        entriesByKey: new Map(),
+        fallbackHtml: "",
+        furiganaMode: "hover",
+        isTouchLayout: false,
+        onReferenceBlur() {},
+        onReferenceClick() {},
+        onReferenceFocus() {},
+        onReferenceHover() {},
+        onReferenceLeave() {}
+      })
+    );
+
+    expect(markup).toContain("reader-example-sentence");
+    expect(markup).toContain("Mostra traduzione italiana");
+    expect(markup).toContain("Mettila in gioco dal tuo cimitero.");
+    expect(markup).toContain("<details");
+  });
+
   it("persists furigana preference and lesson progress changes", async () => {
     await setFuriganaMode("on", database);
     await database
@@ -366,7 +448,11 @@ describe("textbook data", () => {
     expect(result.status).toBe("completed");
 
     const indexData = await getTextbookIndexData("frieren", database);
-    const lessonData = await getTextbookLessonData("frieren", "ep01-intro", database);
+    const lessonData = await getTextbookLessonData(
+      "frieren",
+      "ep01-intro",
+      database
+    );
 
     expect(indexData?.totalLessons).toBe(1);
     expect(indexData?.resumeLesson?.slug).toBe("ep01-intro");
@@ -374,9 +460,11 @@ describe("textbook data", () => {
       "食べる",
       "～ている"
     ]);
-    expect(lessonData?.lesson.ast?.blocks.some((block) => block.type === "grammarDefinition")).toBe(
-      true
-    );
+    expect(
+      lessonData?.lesson.ast?.blocks.some(
+        (block) => block.type === "grammarDefinition"
+      )
+    ).toBe(true);
     expect(
       lessonData?.lesson.ast?.blocks.some(
         (block) =>

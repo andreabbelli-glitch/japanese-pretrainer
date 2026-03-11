@@ -198,23 +198,55 @@ spingono il giapponese delle carte in due direzioni diverse.
 
 ## Esempi guidati
 
-1. `クリーチャー / コスト5 / パワー{{5000|ごせん}} / 火文明`  
-   - Sai già che stai guardando una creatura rossa di costo medio.  
-   - Prima ancora del rules text hai una prima idea del ruolo della carta.
+**Esempio 1**
 
-2. `{{自分|じぶん}}の{{墓地|ぼち}}からクリーチャーを{{1体|いったい}}{{出|だ}}す。`  
-   - Attore: [自分](term:term-self).  
-   - Traiettoria: [墓地](term:term-graveyard) -> campo.  
-   - Verbo chiave: [出す](term:term-dasu).
+:::example_sentence
+jp: >-
+  クリーチャー / コスト5 / パワー{{5000|ごせん}} / 火文明
+translation_it: >-
+  Creatura / costo 5 / potenza 5000 / civiltà del fuoco.
+:::
 
-3. `{{相手|あいて}}のクリーチャーを{{1体|いったい}}{{選|えら}}ぶ。`  
-   - Bersaglio: lato avversario.  
-   - Azione: [選ぶ](term:term-erabu).  
-   - Non sai ancora il seguito, ma hai già capito chi viene colpito.
+- Sai già che stai guardando una creatura rossa di costo medio.
+- Prima ancora del rules text hai una prima idea del ruolo della carta.
 
-4. `コスト{{4以下|よんいか}}のアビス`  
-   - [～以下 / ～以上](grammar:grammar-ika-ijou) = filtro numerico.  
-   - Non ti dice ancora l'azione, ma ti dice già quali carte contano.
+**Esempio 2**
+
+:::example_sentence
+jp: >-
+  {{自分|じぶん}}の{{墓地|ぼち}}からクリーチャーを{{1体|いったい}}{{出|だ}}す。
+translation_it: >-
+  Metti in gioco 1 creatura dal tuo cimitero.
+:::
+
+- Attore: [自分](term:term-self).
+- Traiettoria: [墓地](term:term-graveyard) -> campo.
+- Verbo chiave: [出す](term:term-dasu).
+
+**Esempio 3**
+
+:::example_sentence
+jp: >-
+  {{相手|あいて}}のクリーチャーを{{1体|いったい}}{{選|えら}}ぶ。
+translation_it: >-
+  Scegli 1 creatura del tuo avversario.
+:::
+
+- Bersaglio: lato avversario.
+- Azione: [選ぶ](term:term-erabu).
+- Non sai ancora il seguito, ma hai già capito chi viene colpito.
+
+**Esempio 4**
+
+:::example_sentence
+jp: >-
+  コスト{{4以下|よんいか}}のアビス
+translation_it: >-
+  Un Abyss di costo 4 o inferiore.
+:::
+
+- [～以下 / ～以上](grammar:grammar-ika-ijou) = filtro numerico.
+- Non ti dice ancora l'azione, ma ti dice già quali carte contano.
 
 ## Nota finale
 
