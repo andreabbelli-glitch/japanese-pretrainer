@@ -1231,14 +1231,6 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
       {entry.pos ? (
         <p className="entry-tooltip-card__detail">Categoria: {entry.pos}</p>
       ) : null}
-      {entry.levelHint ? (
-        <p className="entry-tooltip-card__detail">Livello: {entry.levelHint}</p>
-      ) : null}
-      {entry.segmentTitle ? (
-        <p className="entry-tooltip-card__detail">
-          Segmento: {entry.segmentTitle}
-        </p>
-      ) : null}
       {entry.notes ? (
         <p className="entry-tooltip-card__notes">
           {renderFurigana(entry.notes)}

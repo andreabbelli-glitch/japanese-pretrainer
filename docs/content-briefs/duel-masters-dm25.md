@@ -4,29 +4,49 @@
 
 Media generale di studio su Duel Masters.
 
-Il corpus iniziale usa i due starter deck `DM25-SD1 技の王道` e
-`DM25-SD2 力の王道`, ma i deck sono casi di studio, non l'identita del media.
+Il corpus iniziale usa due assi complementari:
+
+- i due starter deck `DM25-SD1 技の王道` e `DM25-SD2 力の王道`;
+- il lessico operativo dell'app `デュエプレ`.
+
+I deck restano casi di studio, non l'identita completa del media.
 
 Il bundle deve insegnare:
 
 - il linguaggio base delle carte di Duel Masters;
+- il lessico operativo che serve per orientarsi in `デュエプレ`;
 - i termini piu ricorrenti;
 - i pattern grammaticali piu comuni del rules text;
 - i kanji davvero utili in contesto carta;
-- due lesson core nettamente distinte;
+- micro-pattern UI molto compatti ma ad alta utilita pratica;
+- due lesson core nettamente distinte sul testo carta;
+- un mini-percorso app orientato all'azione;
 - due deep dive verticali sui due mazzi di partenza.
 
 ## Perche questo contenuto e adatto come primo media
 
 - linguaggio ricorrente e template-driven;
 - perimetro chiaro ma non troppo stretto;
+- stesso ecosistema, ma due registri complementari: testo carta e linguaggio app;
 - termini e pattern riutilizzabili su molte carte;
 - due deck reali che spingono il linguaggio in direzioni diverse;
 - ottimo materiale per glossary, textbook e review.
 
 ## Struttura didattica consigliata
 
-### Asse 1 - Core Orientation
+### Asse 1 - Duel Plays App Orientation
+
+Serve a usare `デュエプレ` in modo piu consapevole mentre studi giapponese.
+
+Argomenti:
+
+- home, missioni, reward e gift box;
+- shop, deckbuilding, rental deck e risorse;
+- nomi delle modalita principali;
+- label di stato compatti come `開催中`, `未解放`, `達成済み`;
+- differenza tra capire un testo e saper compiere davvero l'azione giusta.
+
+### Asse 2 - Core Orientation
 
 Serve a entrare nel gioco e a capire come si legge una carta prima ancora del
 rules text tecnico.
@@ -41,7 +61,7 @@ Argomenti:
 - verbi di base ad altissima frequenza;
 - ordine pratico di lettura.
 
-### Asse 2 - Rules Text Parsing
+### Asse 3 - Rules Text Parsing
 
 Serve a leggere il testo effetto in modo tecnico, senza sovrapporlo alla lesson
 precedente.
@@ -57,7 +77,7 @@ Argomenti:
 - filtri numerici;
 - keyword con parentesi esplicative.
 
-### Asse 3 - Deck Deep Dives
+### Asse 4 - Deck Deep Dives
 
 Serve a leggere davvero i due mazzi iniziali come corpus reale.
 
@@ -94,6 +114,10 @@ Regole specifiche di struttura:
   tecnica sul parsing;
 - `002-tcg-core-patterns` deve essere una lesson tecnica sul rules text, non un
   secondo overview generale;
+- le lesson app devono spiegare sempre insieme significato giapponese e azione
+  concreta sbloccata nell'interfaccia;
+- le lesson app devono privilegiare label stabili e ricorrenti, non copy
+  stagionale troppo effimero;
 - le lesson deck devono essere verticali, non semplici recap del core;
 - le lesson deck devono restare a meta tra spiegare il gioco e spiegare il
   giapponese, con focus principale sul giapponese.
@@ -104,6 +128,7 @@ Per questo media usare `segment_kind: deck`.
 
 Segmenti attuali:
 
+- `duel-plays-app`
 - `tcg-core`
 - `mazzo-abyss`
 - `mazzo-apollo-red-zone`
@@ -113,10 +138,14 @@ Segmenti attuali:
 Il bundle reale attuale contiene:
 
 - `media.md`
+- `textbook/005-duel-plays-app-overview.md`
+- `textbook/006-duel-plays-app-decks-and-shop.md`
+- `textbook/007-duel-plays-app-modes-and-progression.md`
 - `textbook/001-tcg-core-overview.md`
 - `textbook/002-tcg-core-patterns.md`
 - `textbook/010-dm25-sd1-overview.md`
 - `textbook/020-dm25-sd2-overview.md`
+- `cards/005-duel-plays-app-core.md`
 - `cards/001-tcg-core.md`
 - `cards/010-dm25-sd1-core.md`
 - `cards/020-dm25-sd2-core.md`
@@ -126,6 +155,7 @@ Il bundle reale attuale contiene:
 Se vuoi estendere il bundle senza riscrivere quello che esiste gia, i batch
 successivi sensati sono:
 
+- `textbook/008-duel-plays-app-events-and-notices.md`
 - `textbook/011-dm25-sd1-key-cards.md`
 - `textbook/021-dm25-sd2-key-cards.md`
 
@@ -154,6 +184,7 @@ canoniche utili a glossary/review.
 
 - titolo visibile media: `Duel Masters`
 - media tecnico: `media-duel-masters-dm25` / `duel-masters-dm25`
+- lesson app: `lesson-duel-masters-dm25-duel-plays-app-...`
 - lesson core: `lesson-duel-masters-dm25-tcg-core-...`
 - lesson deck 1: `lesson-duel-masters-dm25-dm25-sd1-...`
 - lesson deck 2: `lesson-duel-masters-dm25-dm25-sd2-...`

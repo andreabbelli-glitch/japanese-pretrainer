@@ -34,6 +34,7 @@ I pattern più utili da riconoscere sono
 [～なければ ... ない](grammar:grammar-nakereba),
 [～ていれば](grammar:grammar-teireba),
 [～以外の方法で](grammar:grammar-igai-no-houhou-de),
+[または](grammar:grammar-matawa),
 [～以下 / ～以上](grammar:grammar-ika-ijou),
 [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) e
 [ただし](grammar:grammar-tadashi).
@@ -53,6 +54,7 @@ I pattern più utili da riconoscere sono
 - [重ねる](term:term-kasaneru)
 - [コスト](term:term-cost)
 - [パワー](term:term-power)
+- [合計](term:term-goukei)
 
 ## Pattern grammaticali chiave
 
@@ -64,6 +66,7 @@ I pattern più utili da riconoscere sono
 - [～なければ ... ない](grammar:grammar-nakereba)
 - [～ていれば](grammar:grammar-teireba)
 - [～以外の方法で](grammar:grammar-igai-no-houhou-de)
+- [または](grammar:grammar-matawa)
 - [～以下 / ～以上](grammar:grammar-ika-ijou)
 - [～のはじめに / ～の終わりに](grammar:grammar-turn-timing)
 - [ただし](grammar:grammar-tadashi)
@@ -190,12 +193,32 @@ Qui la carta controlla prima una condizione già vera e poi concede un bonus.
 Questi due pattern sono centrali perché non descrivono un'azione nuova:
 descrivono *quando un effetto conta davvero*.
 
-### 6. Mezzo escluso, filtri e restrizioni
+### 6. Mezzo escluso, alternative, filtri e restrizioni
 
 [～以外の方法で](grammar:grammar-igai-no-houhou-de) è una formula tecnica molto
 comune. In frasi come
 `{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}でクリーチャーを{{出|だ}}した{{時|とき}}`, il punto non è il lessico difficile,
 ma la struttura: "con un metodo diverso dalla [召喚](term:term-summon)".
+
+[または](grammar:grammar-matawa) è il connettore di alternativa più utile da
+fissare nel rules text. In pratica vuol dire "oppure / o", ma nelle carte
+conviene leggerlo in modo più tecnico: collega due categorie o due bersagli che
+valgono entrambi per lo stesso filtro.
+
+Esempio tipico:
+
+- `{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシード`
+
+Qui non stai leggendo due frasi. Stai leggendo un solo blocco di selezione con
+due strade valide. Il punto pratico è capire subito:
+
+- che cosa c'è a sinistra di [または](grammar:grammar-matawa);
+- che cosa c'è a destra;
+- quale numero, condizione o verbo si applica a entrambe le parti.
+
+Quando [または](grammar:grammar-matawa) compare insieme a
+[合計](term:term-goukei) o a un filtro numerico, le due categorie entrano nello
+stesso conteggio. Non sono due controlli separati.
 
 Poi c'è [ただし](grammar:grammar-tadashi). Questo blocco va letto come una
 limitazione finale.
@@ -217,15 +240,21 @@ restringe.
 Non è un dettaglio secondario. È il filtro che decide quali carte puoi
 scegliere, distruggere o mettere in campo.
 
+[合計](term:term-goukei) merita attenzione a parte perché cambia il modo in cui
+conti. Non ti chiede di verificare ogni categoria da sola: ti chiede di sommare
+gli elementi ammessi e guardare il totale finale.
+
 Per questo conviene allenarsi a vedere subito:
 
 - [コスト](term:term-cost)
 - [パワー](term:term-power)
 - quantità
+- [合計](term:term-goukei), se presente
 - zona
 - bersaglio
 
-Vale la pena fissare anche {{合計|ごうけい}} quando compare in questi filtri.
+Vale la pena fissare [合計](term:term-goukei) quando compare in questi filtri,
+perché spesso è il punto che decide se il controllo è separato o aggregato.
 
 ### 8. Keyword, parentesi e frasi compatte
 
@@ -276,9 +305,10 @@ Quando una frase ti sembra troppo densa, prova sempre questo ordine:
 1. trova il trigger;
 2. trova il verbo principale;
 3. trova bersaglio e zona;
-4. controlla se c'è una sequenza (`その後`, `そうしたら`);
-5. controlla se c'è una scelta (`～てもよい`);
-6. leggi per ultime restrizioni e filtri (`ただし`, `～以下 / ～以上`).
+4. controlla se c'è un'alternativa (`または`);
+5. controlla se c'è una sequenza (`その後`, `そうしたら`);
+6. controlla se c'è una scelta (`～てもよい`);
+7. leggi per ultime restrizioni e filtri (`ただし`, `～以下 / ～以上`).
 
 È una procedura molto più affidabile della traduzione lineare.
 
@@ -351,6 +381,9 @@ translation_it: >-
 :::
 
 - [～なければ ... ない](grammar:grammar-nakereba) = condizione negativa.
+- [または](grammar:grammar-matawa) = le due categorie entrano nello stesso
+  filtro.
+- [合計](term:term-goukei) = il conteggio richiesto è totale, non separato.
 - [扱う](term:term-atsukau) qui significa "contare come".
 
 **Esempio 6**

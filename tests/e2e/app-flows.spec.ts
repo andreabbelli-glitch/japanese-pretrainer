@@ -47,6 +47,8 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await expect(
     entryTooltip.getByRole("heading", { name: "クリーチャー" })
   ).toBeVisible();
+  await expect(entryTooltip).not.toContainText("Livello:");
+  await expect(entryTooltip).not.toContainText("Segmento:");
   const entryLink = entryTooltip.getByRole("link", { name: "Apri entry" });
 
   await expect(entryLink).toHaveAttribute(

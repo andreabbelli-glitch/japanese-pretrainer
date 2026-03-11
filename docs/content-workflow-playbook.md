@@ -36,6 +36,10 @@ template e prompt storico.
 
 Passa sempre anche i file reali dell'area che stai toccando:
 
+- App `デュエプレ`: `media.md`, `textbook/005-duel-plays-app-overview.md`,
+  `textbook/006-duel-plays-app-decks-and-shop.md`,
+  `textbook/007-duel-plays-app-modes-and-progression.md`,
+  `cards/005-duel-plays-app-core.md`
 - Core: `media.md`, `textbook/001-tcg-core-overview.md`,
   `textbook/002-tcg-core-patterns.md`, `cards/001-tcg-core.md`
 - Mazzo Abyss: `textbook/010-dm25-sd1-overview.md`,
@@ -60,16 +64,21 @@ Seed batch storico:
 Stato reale del bundle oggi:
 
 - `content/media/duel-masters-dm25/media.md`
+- `content/media/duel-masters-dm25/textbook/005-duel-plays-app-overview.md`
+- `content/media/duel-masters-dm25/textbook/006-duel-plays-app-decks-and-shop.md`
+- `content/media/duel-masters-dm25/textbook/007-duel-plays-app-modes-and-progression.md`
 - `content/media/duel-masters-dm25/textbook/001-tcg-core-overview.md`
 - `content/media/duel-masters-dm25/textbook/002-tcg-core-patterns.md`
 - `content/media/duel-masters-dm25/textbook/010-dm25-sd1-overview.md`
 - `content/media/duel-masters-dm25/textbook/020-dm25-sd2-overview.md`
+- `content/media/duel-masters-dm25/cards/005-duel-plays-app-core.md`
 - `content/media/duel-masters-dm25/cards/001-tcg-core.md`
 - `content/media/duel-masters-dm25/cards/010-dm25-sd1-core.md`
 - `content/media/duel-masters-dm25/cards/020-dm25-sd2-core.md`
 
 Batch futuri sensati:
 
+- `content/media/duel-masters-dm25/textbook/008-duel-plays-app-events-and-notices.md`
 - `content/media/duel-masters-dm25/textbook/011-dm25-sd1-key-cards.md`
 - `content/media/duel-masters-dm25/textbook/021-dm25-sd2-key-cards.md`
 

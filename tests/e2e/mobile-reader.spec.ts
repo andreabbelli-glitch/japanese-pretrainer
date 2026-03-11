@@ -18,6 +18,8 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
   await expect(
     mobileSheet.getByRole("heading", { name: "クリーチャー" })
   ).toBeVisible();
+  await expect(mobileSheet).not.toContainText("Livello:");
+  await expect(mobileSheet).not.toContainText("Segmento:");
   await expect(mobileSheet.getByRole("link", { name: "Apri entry" })).toBeVisible();
 
   await page.getByRole("button", { name: "Chiudi", exact: true }).click();
@@ -26,7 +28,7 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
   await expect(page.getByRole("dialog")).toContainText("Percorso del media");
   await expect(
     page.getByRole("dialog").getByRole("link", {
-      name: /TCG Core - Pattern del testo effetto/
+      name: /TCG Core - Montare il testo effetto/
     })
   ).toBeVisible();
 });

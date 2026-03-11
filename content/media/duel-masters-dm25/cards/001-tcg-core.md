@@ -197,6 +197,22 @@ level_hint: custom
 :::
 
 :::term
+id: term-goukei
+lemma: 合計
+reading: ごうけい
+romaji: goukei
+meaning_it: totale / somma complessiva
+pos: noun
+aliases: [合計, ごうけい, goukei]
+notes_it: >-
+  Indica il conteggio totale combinato di più elementi. In Duel Masters compare
+  spesso in filtri come `{{合計|ごうけい}}{{4つ以上|よっついじょう}}` e ti dice che
+  non devi contare categorie separate, ma sommare tutto nello stesso controllo.
+  Quando lo vedi insieme a `または`, leggi le due parti come un unico totale.
+level_hint: n4
+:::
+
+:::term
 id: term-race
 lemma: 種族
 reading: しゅぞく
@@ -727,6 +743,20 @@ level_hint: custom
 :::
 
 :::grammar
+id: grammar-matawa
+pattern: または
+title: Alternativa nel filtro
+meaning_it: oppure / o
+aliases: [又は]
+notes_it: >-
+  È il connettore standard di alternativa nel rules text. Collega due categorie
+  o due bersagli validi nello stesso blocco, per esempio
+  `{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシード`. Quando lo vedi,
+  controlla quale numero, condizione o verbo vale per entrambe le parti.
+level_hint: n4
+:::
+
+:::grammar
 id: grammar-ika-ijou
 pattern: ～以下 / ～以上
 title: Limiti numerici
@@ -922,6 +952,19 @@ notes_it: >-
   È la forza della creatura. Se compare nel testo, di solito serve a limitare i
   bersagli o a definire quali creature vengono colpite.
 tags: [core, anatomy, filter]
+:::
+
+:::card
+id: card-goukei-recognition
+entry_type: term
+entry_id: term-goukei
+card_type: recognition
+front: 合計
+back: totale / somma complessiva
+notes_it: >-
+  Segnala un conteggio aggregato. Se compare, devi sommare tutti gli elementi
+  validi nello stesso filtro invece di leggerli come controlli separati.
+tags: [core, filter, kanji]
 :::
 
 :::card
@@ -1393,6 +1436,19 @@ notes_it: >-
   Esclude un mezzo preciso. Se compare, chiediti subito quale metodo viene
   escluso dal testo.
 tags: [core, grammar, restriction]
+:::
+
+:::card
+id: card-matawa-concept
+entry_type: grammar
+entry_id: grammar-matawa
+card_type: concept
+front: または
+back: oppure / o
+notes_it: >-
+  Collega due alternative valide nello stesso filtro. Quando compare, leggi i
+  due lati come parte dello stesso conteggio o della stessa selezione.
+tags: [core, grammar, filter]
 :::
 
 :::card
