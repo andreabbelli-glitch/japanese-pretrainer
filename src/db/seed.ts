@@ -44,7 +44,7 @@ export const developmentFixture = {
 const createdAt = "2026-03-08T09:00:00.000Z";
 const updatedAt = "2026-03-08T09:30:00.000Z";
 const dueSoonAt = "2026-03-09T08:00:00.000Z";
-const dueLaterAt = "2026-03-12T08:00:00.000Z";
+const dueLaterAt = "2030-03-12T08:00:00.000Z";
 
 export async function seedDevelopmentDatabase(
   database: DatabaseClient = db

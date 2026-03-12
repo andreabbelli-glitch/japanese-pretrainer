@@ -51,6 +51,7 @@ preciso, non alla carta in generale.
 - [置く](term:term-oku)
 - [選ぶ](term:term-erabu)
 - [離れる](term:term-hanareru)
+- [残る](term:term-nokoru)
 - [扱う](term:term-atsukau)
 - [攻撃](term:term-attack)
 - [破壊](term:term-destroy)
@@ -196,6 +197,20 @@ translation_it: >-
 :::
 
 Qui la carta controlla prima una condizione già vera e poi concede un bonus.
+
+Qui conviene fissare anche [残る](term:term-nokoru), perché nel rules text di
+Duel Masters segnala spesso che qualcosa resta ancora sul campo dopo che un
+altro pezzo della situazione è cambiato.
+
+:::example_sentence
+jp: >-
+  そのクリーチャーが{{離|はな}}れても、このカードは{{残|のこ}}る。
+translation_it: >-
+  Anche se quella creatura lascia il campo, questa carta resta.
+:::
+
+- [離れる](term:term-hanareru) = una carta esce dalla zona.
+- [残る](term:term-nokoru) = un'altra carta continua a restare dov'è.
 
 Questi due pattern sono centrali perché non descrivono un'azione nuova:
 descrivono *quando un effetto conta davvero*.

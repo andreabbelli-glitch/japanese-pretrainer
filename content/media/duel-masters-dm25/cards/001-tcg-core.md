@@ -603,6 +603,23 @@ level_hint: custom
 :::
 
 :::term
+id: term-nokoru
+lemma: 残る
+reading: のこる
+romaji: nokoru
+meaning_it: restare / rimanere
+pos: godan-verb
+aliases: [残る, のこる, nokoru]
+notes_it: >-
+  Vuol dire che una carta resta sul campo invece di andarsene. In Duel Masters
+  compare spesso per chiarire che una carta rimane nel バトルゾーン anche se la
+  creatura collegata {{離|はな}}れる, oppure che dopo una rimozione devi guardare
+  solo le carte ancora presenti. Leggilo quindi come verbo di persistenza sul
+  campo.
+level_hint: n4
+:::
+
+:::term
 id: term-atsukau
 lemma: 扱う
 reading: あつかう
@@ -1471,6 +1488,24 @@ tags: [core, action, kanji]
 :::
 
 :::card
+id: card-nokoru-recognition
+entry_type: term
+entry_id: term-nokoru
+card_type: recognition
+front: 残る
+back: restare / rimanere
+example_jp: >-
+  そのクリーチャーが{{離|はな}}れても、このカードは{{残|のこ}}る。
+example_it: >-
+  Anche se quella creatura lascia il campo, questa carta resta.
+notes_it: >-
+  Indica che la carta continua a restare sul campo o nella zona attuale. In
+  Duel Masters è utile perché oppone l'idea di permanenza a verbi di uscita
+  come {{離|はな}}れる.
+tags: [core, action, kanji]
+:::
+
+:::card
 id: card-atsukau-recognition
 entry_type: term
 entry_id: term-atsukau
@@ -1632,7 +1667,7 @@ card_type: concept
 front: ～なければ ... ない
 back: se non / a meno che non
 example_jp: >-
-  アビスが{{1体|いったい}}もなければ、この効果は{{使|つか}}えない。
+  アビスが{{1体|いったい}}もなければ、この{{効果|こうか}}は{{使|つか}}えない。
 example_it: >-
   Se non hai nemmeno 1 Abyss, non puoi usare questo effetto.
 notes_it: >-
