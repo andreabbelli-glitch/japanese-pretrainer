@@ -14,6 +14,7 @@ import { appendReturnToParam, buildReviewSessionHref } from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
+import { PronunciationAudio } from "../ui/pronunciation-audio";
 import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
 
@@ -54,6 +55,8 @@ const ratingCopy = [
 
 export function ReviewPage({ data }: ReviewPageProps) {
   const selectedCard = data.selectedCard;
+  const showCompactPronunciation =
+    (selectedCard?.pronunciations.length ?? 0) <= 1;
   const hasQueue = data.queue.cards.length > 0;
   const hasSupportCards =
     data.queue.manualCount +
@@ -165,6 +168,21 @@ export function ReviewPage({ data }: ReviewPageProps) {
                       </p>
                     ) : null}
                     <p className="review-stage__back">{selectedCard.back}</p>
+                    {selectedCard.pronunciations.length > 0 ? (
+                      <div className="stack-list stack-list--tight">
+                        {showCompactPronunciation ? (
+                          <p className="eyebrow">Pronuncia</p>
+                        ) : null}
+                        {selectedCard.pronunciations.map((item) => (
+                          <PronunciationAudio
+                            key={`${item.kind}:${item.label}:${item.audio.src}`}
+                            audio={item.audio}
+                            compact={showCompactPronunciation}
+                            title={`${item.relationshipLabel} · ${item.label}`}
+                          />
+                        ))}
+                      </div>
+                    ) : null}
                     {selectedCard.exampleJp && selectedCard.exampleIt ? (
                       <section className="reader-example-sentence">
                         <p className="reader-example-sentence__jp jp-inline">

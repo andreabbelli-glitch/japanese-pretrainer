@@ -82,6 +82,14 @@ export type ReviewCardEntrySummary = {
   subtitle?: string;
 };
 
+export type ReviewCardPronunciation = {
+  audio: PronunciationData;
+  kind: ReviewCardEntryKind;
+  label: string;
+  meaning: string;
+  relationshipLabel: string;
+};
+
 export type ReviewQueueCard = {
   back: string;
   bucket: "due" | "manual" | "new" | "suspended" | "upcoming";
@@ -100,6 +108,7 @@ export type ReviewQueueCard = {
   id: string;
   notes?: string;
   orderIndex: number | null;
+  pronunciations: ReviewCardPronunciation[];
   rawReviewLabel: string;
   reading?: string;
   segmentTitle?: string;
@@ -188,13 +197,7 @@ export type ReviewCardDetailData = {
     }>;
   }>;
   entries: ReviewCardEntrySummary[];
-  pronunciations: Array<{
-    audio: PronunciationData;
-    kind: ReviewCardEntryKind;
-    label: string;
-    meaning: string;
-    relationshipLabel: string;
-  }>;
+  pronunciations: ReviewCardPronunciation[];
   media: {
     glossaryHref: ReturnType<typeof mediaStudyHref>;
     href: ReturnType<typeof mediaHref>;
@@ -400,26 +403,10 @@ export async function getReviewCardDetailData(
       };
     })
   );
-  const pronunciations = getDrivingEntryLinks(selectedRawCard.entryLinks)
-    .slice()
-    .sort(compareEntryLinks)
-    .flatMap((link) => {
-      const entry = entryLookup.get(`${link.entryType}:${link.entryId}`);
-
-      if (!entry?.pronunciation) {
-        return [];
-      }
-
-      return [
-        {
-          audio: entry.pronunciation,
-          kind: entry.kind,
-          label: entry.label,
-          meaning: entry.meaning,
-          relationshipLabel: formatCardRelationshipLabel(link.relationshipType)
-        }
-      ];
-    });
+  const pronunciations = buildReviewCardPronunciations(
+    selectedRawCard.entryLinks,
+    entryLookup
+  );
 
   return {
     card: {
@@ -484,6 +471,32 @@ function mapReviewCrossMediaGrammarSibling(sibling: CrossMediaGrammarSibling) {
     reading: sibling.reading ?? undefined,
     subtitle: sibling.title !== sibling.pattern ? sibling.title : undefined
   };
+}
+
+function buildReviewCardPronunciations(
+  entryLinks: ReviewEntryLinkLike[],
+  entryLookup: Map<string, ReviewEntryLookupItem>
+): ReviewCardPronunciation[] {
+  return getDrivingEntryLinks(entryLinks)
+    .slice()
+    .sort(compareEntryLinks)
+    .flatMap((link) => {
+      const entry = entryLookup.get(`${link.entryType}:${link.entryId}`);
+
+      if (!entry?.pronunciation) {
+        return [];
+      }
+
+      return [
+        {
+          audio: entry.pronunciation,
+          kind: entry.kind,
+          label: entry.label,
+          meaning: entry.meaning,
+          relationshipLabel: formatCardRelationshipLabel(link.relationshipType)
+        }
+      ];
+    });
 }
 
 function buildReviewQueueSnapshot(input: {
@@ -665,6 +678,10 @@ function mapQueueCard(
     effectiveState: effectiveState.state,
     reviewState: (card.reviewState?.state as ReviewState | null) ?? null
   });
+  const pronunciations = buildReviewCardPronunciations(
+    card.entryLinks,
+    entryLookup
+  );
   const reading = resolveReviewCardReading(card, entryLookup);
 
   return {
@@ -691,6 +708,7 @@ function mapQueueCard(
     id: card.id,
     notes: card.notesIt ?? undefined,
     orderIndex: card.orderIndex,
+    pronunciations,
     rawReviewLabel,
     reading,
     segmentTitle: card.segment?.title ?? undefined,

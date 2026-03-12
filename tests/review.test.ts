@@ -1,6 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { eq } from "drizzle-orm";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -38,6 +39,16 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const validContentRoot = path.join(
+  __dirname,
+  "fixtures",
+  "content",
+  "valid",
+  "content"
+);
 
 describe("review system", () => {
   let tempDir = "";
@@ -412,6 +423,38 @@ describe("review system", () => {
     expect(primaryMarkup).toContain("reader-example-sentence");
     expect(primaryMarkup).toContain("Mostra traduzione italiana");
     expect(primaryMarkup).toContain("Vado fino alla stazione.");
+  });
+
+  it("renders pronunciation audio players directly in the review answer when audio exists", async () => {
+    const imported = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(imported.status).toBe("completed");
+
+    const reviewPage = await getReviewPageData(
+      "frieren",
+      {
+        card: "card-taberu-recognition",
+        show: "answer"
+      },
+      database
+    );
+
+    expect(reviewPage?.selectedCard?.pronunciations).toHaveLength(1);
+    expect(reviewPage?.selectedCard?.pronunciations[0]?.audio.src).toBe(
+      "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
+    );
+
+    const markup = renderToStaticMarkup(ReviewPage({ data: reviewPage! }));
+
+    expect(markup).toContain("Pronuncia");
+    expect(markup).toContain("pronunciation-audio__player");
+    expect(markup).toContain(
+      "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
+    );
   });
 
   it("renders grading actions from easy to again with next-review previews", async () => {
