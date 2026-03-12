@@ -121,6 +121,12 @@ describe("content importer", () => {
     const importedCard = await database.query.card.findFirst({
       where: eq(card.id, termCardId)
     });
+    const importedTerm = await database.query.term.findFirst({
+      where: eq(term.id, termDbId)
+    });
+    const importedGrammar = await database.query.grammarPattern.findFirst({
+      where: eq(grammarPattern.id, grammarDbId)
+    });
 
     expect(importedSegment?.slug).toBe("episode-01");
     expect(importedLesson?.sourceFile).toBe(
@@ -137,6 +143,14 @@ describe("content importer", () => {
     expect(importRow?.status).toBe("completed");
     expect(importedCard?.exampleJp).toBe("パンを{{食|た}}べる。");
     expect(importedCard?.exampleIt).toBe("Mangio il pane.");
+    expect(importedTerm?.audioSrc).toBe(
+      "assets/audio/term/term-taberu/term-taberu.ogg"
+    );
+    expect(importedTerm?.audioSource).toBe("lingua_libre");
+    expect(importedGrammar?.audioSrc).toBe(
+      "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
+    );
+    expect(importedGrammar?.audioLicense).toBe("CC BY 4.0");
   });
 
   it("imports the real Duel Masters demo bundle", async () => {

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-button",
+      "audio_src": "assets/audio/term/term-button/ja-botan-anglonative.oga",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "FreeMediaKid!",
+      "audio_license": "CC0",
+      "audio_attribution": "Own work",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-botan-anglonative.oga"
+    }
+  ]
+}

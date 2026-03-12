@@ -39,9 +39,9 @@ I pattern più utili da riconoscere sono
 [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) e
 [ただし](grammar:grammar-tadashi).
 
-Qui conviene fissare anche [効果](term:term-effect): è la parola con cui il
+Qui conviene fissare anche [{{効果|こうか}}](term:term-effect): è la parola con cui il
 rules text nomina il blocco che sta davvero producendo un risultato o una
-restrizione. Se leggi `この効果`, la carta sta facendo riferimento a un effetto
+restrizione. Se leggi `この{{効果|こうか}}`, la carta sta facendo riferimento a un effetto
 preciso, non alla carta in generale.
 
 ## Termini chiave
@@ -61,7 +61,7 @@ preciso, non alla carta in generale.
 - [コスト](term:term-cost)
 - [パワー](term:term-power)
 - [合計](term:term-goukei)
-- [効果](term:term-effect)
+- [{{効果|こうか}}](term:term-effect)
 
 ## Pattern grammaticali chiave
 
@@ -446,7 +446,7 @@ translation_it: >-
   Con questo effetto distruggi 1 creatura del tuo avversario.
 :::
 
-- [効果](term:term-effect) = la carta punta al blocco di testo che risolve.
+- [{{効果|こうか}}](term:term-effect) = la carta punta al blocco di testo che risolve.
 - [相手](term:term-opponent) + [破壊](term:term-destroy) = bersaglio e risultato
   concreto dell'effetto.
 

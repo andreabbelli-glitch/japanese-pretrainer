@@ -10,6 +10,14 @@ const supportedImageExtensions = new Set([
   ".avif"
 ]);
 
+const supportedAudioExtensions = new Set([
+  ".mp3",
+  ".ogg",
+  ".oga",
+  ".wav",
+  ".m4a"
+]);
+
 export function normalizeMediaAssetPath(assetPath: string) {
   return assetPath.replaceAll("\\", "/").trim();
 }
@@ -35,6 +43,21 @@ export function isValidMediaAssetPath(assetPath: string) {
 }
 
 export function isSupportedMediaAssetPath(assetPath: string) {
+  const extension = path.extname(normalizeMediaAssetPath(assetPath)).toLowerCase();
+
+  return (
+    supportedImageExtensions.has(extension) ||
+    supportedAudioExtensions.has(extension)
+  );
+}
+
+export function isSupportedAudioAssetPath(assetPath: string) {
+  const extension = path.extname(normalizeMediaAssetPath(assetPath)).toLowerCase();
+
+  return supportedAudioExtensions.has(extension);
+}
+
+export function isSupportedImageAssetPath(assetPath: string) {
   const extension = path.extname(normalizeMediaAssetPath(assetPath)).toLowerCase();
 
   return supportedImageExtensions.has(extension);
@@ -82,6 +105,15 @@ export function getMediaAssetContentType(assetPath: string) {
       return "image/svg+xml";
     case ".avif":
       return "image/avif";
+    case ".mp3":
+      return "audio/mpeg";
+    case ".ogg":
+    case ".oga":
+      return "audio/ogg";
+    case ".wav":
+      return "audio/wav";
+    case ".m4a":
+      return "audio/mp4";
     default:
       return "application/octet-stream";
   }

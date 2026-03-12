@@ -1016,6 +1016,12 @@ const termUpsertSet = {
   meaningLiteralIt: excluded("meaning_literal_it"),
   notesIt: excluded("notes_it"),
   levelHint: excluded("level_hint"),
+  audioSrc: excluded("audio_src"),
+  audioSource: excluded("audio_source"),
+  audioSpeaker: excluded("audio_speaker"),
+  audioLicense: excluded("audio_license"),
+  audioAttribution: excluded("audio_attribution"),
+  audioPageUrl: excluded("audio_page_url"),
   searchLemmaNorm: excluded("search_lemma_norm"),
   searchReadingNorm: excluded("search_reading_norm"),
   searchRomajiNorm: excluded("search_romaji_norm"),
@@ -1032,6 +1038,12 @@ const grammarUpsertSet = {
   meaningIt: excluded("meaning_it"),
   notesIt: excluded("notes_it"),
   levelHint: excluded("level_hint"),
+  audioSrc: excluded("audio_src"),
+  audioSource: excluded("audio_source"),
+  audioSpeaker: excluded("audio_speaker"),
+  audioLicense: excluded("audio_license"),
+  audioAttribution: excluded("audio_attribution"),
+  audioPageUrl: excluded("audio_page_url"),
   searchPatternNorm: excluded("search_pattern_norm"),
   updatedAt: excluded("updated_at")
 };
@@ -1114,6 +1126,12 @@ const termComparisonKeys = [
   "meaningLiteralIt",
   "notesIt",
   "levelHint",
+  "audioSrc",
+  "audioSource",
+  "audioSpeaker",
+  "audioLicense",
+  "audioAttribution",
+  "audioPageUrl",
   "searchLemmaNorm",
   "searchReadingNorm",
   "searchRomajiNorm"
@@ -1138,6 +1156,12 @@ const grammarComparisonKeys = [
   "meaningIt",
   "notesIt",
   "levelHint",
+  "audioSrc",
+  "audioSource",
+  "audioSpeaker",
+  "audioLicense",
+  "audioAttribution",
+  "audioPageUrl",
   "searchPatternNorm"
 ];
 

@@ -3,6 +3,7 @@ import path from "node:path";
 
 import {
   getMediaAssetContentType,
+  isSupportedMediaAssetPath,
   isValidMediaAssetPath,
   isWithinMediaAssetRoot,
   normalizeMediaAssetPath,
@@ -22,6 +23,12 @@ export async function GET(_request: Request, context: RouteContext) {
 
   if (!isValidMediaAssetPath(joinedAssetPath)) {
     return new Response("Invalid asset path.", {
+      status: 400
+    });
+  }
+
+  if (!isSupportedMediaAssetPath(joinedAssetPath)) {
+    return new Response("Unsupported asset type.", {
       status: 400
     });
   }

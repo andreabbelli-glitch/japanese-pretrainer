@@ -12,6 +12,7 @@ import type { ReviewCardDetailData } from "@/lib/review";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
+import { PronunciationAudio } from "../ui/pronunciation-audio";
 import { Section } from "../ui/section";
 import { SurfaceCard } from "../ui/surface-card";
 
@@ -95,6 +96,17 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
             <p className="glossary-entry-hero__notes">
               {renderFurigana(data.card.notes)}
             </p>
+          ) : null}
+          {data.pronunciations.length > 0 ? (
+            <div className="stack-list stack-list--tight">
+              {data.pronunciations.map((item) => (
+                <PronunciationAudio
+                  key={`${item.kind}:${item.label}:${item.audio.src}`}
+                  audio={item.audio}
+                  title={`${item.relationshipLabel} · ${item.label}`}
+                />
+              ))}
+            </div>
           ) : null}
         </SurfaceCard>
 

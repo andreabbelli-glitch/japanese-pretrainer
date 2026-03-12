@@ -63,7 +63,7 @@ però, ti serve una base comune.
 - [墓地](term:term-graveyard)
 - [自分](term:term-self)
 - [相手](term:term-opponent)
-- [効果](term:term-effect)
+- [{{効果|こうか}}](term:term-effect)
 - [出る](term:term-deru)
 - [出す](term:term-dasu)
 - [置く](term:term-oku)
@@ -119,7 +119,7 @@ keyword evidente, ti fai subito un'idea del ruolo della carta prima di
 decifrare ogni frase.
 
 Appena entri nel testo centrale, una parola da fissare presto è
-[効果](term:term-effect). Quando la carta dice `この効果`, non sta parlando del
+[{{効果|こうか}}](term:term-effect). Quando la carta dice `この{{効果|こうか}}`, non sta parlando del
 nome della carta: sta indicando il risultato concreto prodotto da quel blocco
 di testo.
 
@@ -261,7 +261,7 @@ translation_it: >-
   Con questo effetto distruggi 1 creatura del tuo avversario.
 :::
 
-- [効果](term:term-effect) = il testo richiama il risultato prodotto.
+- [{{効果|こうか}}](term:term-effect) = il testo richiama il risultato prodotto.
 - [相手](term:term-opponent) + [破壊](term:term-destroy) = bersaglio e azione.
 
 **Esempio 5**

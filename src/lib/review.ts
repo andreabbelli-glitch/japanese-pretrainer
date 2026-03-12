@@ -40,6 +40,10 @@ import {
   type ReviewEntryStatusValue
 } from "./review-model";
 import {
+  buildPronunciationData,
+  type PronunciationData
+} from "./pronunciation";
+import {
   scheduleReview,
   type ReviewRating,
   type ReviewState
@@ -61,6 +65,7 @@ type ReviewEntryLookupItem = {
   kind: ReviewCardEntryKind;
   label: string;
   meaning: string;
+  pronunciation?: PronunciationData;
   reading?: string;
   status: ReviewEntryStatusValue;
   subtitle?: string;
@@ -183,6 +188,13 @@ export type ReviewCardDetailData = {
     }>;
   }>;
   entries: ReviewCardEntrySummary[];
+  pronunciations: Array<{
+    audio: PronunciationData;
+    kind: ReviewCardEntryKind;
+    label: string;
+    meaning: string;
+    relationshipLabel: string;
+  }>;
   media: {
     glossaryHref: ReturnType<typeof mediaStudyHref>;
     href: ReturnType<typeof mediaHref>;
@@ -388,6 +400,26 @@ export async function getReviewCardDetailData(
       };
     })
   );
+  const pronunciations = getDrivingEntryLinks(selectedRawCard.entryLinks)
+    .slice()
+    .sort(compareEntryLinks)
+    .flatMap((link) => {
+      const entry = entryLookup.get(`${link.entryType}:${link.entryId}`);
+
+      if (!entry?.pronunciation) {
+        return [];
+      }
+
+      return [
+        {
+          audio: entry.pronunciation,
+          kind: entry.kind,
+          label: entry.label,
+          meaning: entry.meaning,
+          relationshipLabel: formatCardRelationshipLabel(link.relationshipType)
+        }
+      ];
+    });
 
   return {
     card: {
@@ -412,6 +444,7 @@ export async function getReviewCardDetailData(
         value !== null
     ),
     entries: selectedCard.entries,
+    pronunciations,
     media: {
       glossaryHref: mediaStudyHref(media.slug, "glossary"),
       href: mediaHref(media.slug),
@@ -533,6 +566,7 @@ function buildEntryLookup(
       kind: "term",
       label: entry.lemma,
       meaning: entry.meaningIt,
+      pronunciation: buildPronunciationData(mediaSlug, entry) ?? undefined,
       reading: entry.reading,
       status: entry.status?.status ?? null,
       subtitle:
@@ -547,6 +581,7 @@ function buildEntryLookup(
       kind: "grammar",
       label: entry.pattern,
       meaning: entry.meaningIt,
+      pronunciation: buildPronunciationData(mediaSlug, entry) ?? undefined,
       reading: entry.reading ?? deriveKanaReading(entry.pattern),
       status: entry.status?.status ?? null,
       subtitle: entry.title !== entry.pattern ? entry.title : undefined

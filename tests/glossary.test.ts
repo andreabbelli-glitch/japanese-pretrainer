@@ -235,6 +235,9 @@ describe("glossary data", () => {
     expect(detail?.cards[0]?.href).toBe(
       "/media/frieren/review/card/card-taberu-recognition"
     );
+    expect(detail?.entry.pronunciation?.src).toBe(
+      "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
+    );
   });
 
   it("keeps suspended cards visible in glossary detail so review context does not disappear", async () => {
@@ -280,6 +283,55 @@ describe("glossary data", () => {
     expect(detail?.entries[0]?.href).toBe(
       "/media/frieren/glossary/grammar/grammar-teiru"
     );
+    expect(detail?.pronunciations[0]?.audio.src).toBe(
+      "/media/frieren/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
+    );
+  });
+
+  it("renders audio players only when local pronunciation audio exists", async () => {
+    const imported = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(imported.status).toBe("completed");
+
+    const glossaryDetail = await getTermGlossaryDetailData(
+      "frieren",
+      "term-taberu",
+      database
+    );
+    const reviewDetail = await getReviewCardDetailData(
+      "frieren",
+      "card-teiru-concept",
+      database
+    );
+
+    await seedDevelopmentDatabase(database);
+    const glossaryWithoutAudio = await getTermGlossaryDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.termId,
+      database
+    );
+
+    expect(glossaryDetail).not.toBeNull();
+    expect(reviewDetail).not.toBeNull();
+    expect(glossaryWithoutAudio).not.toBeNull();
+
+    const glossaryMarkup = renderToStaticMarkup(
+      GlossaryDetailPage({ data: glossaryDetail! })
+    );
+    const reviewMarkup = renderToStaticMarkup(
+      ReviewCardDetailPage({ data: reviewDetail! })
+    );
+    const glossaryWithoutAudioMarkup = renderToStaticMarkup(
+      GlossaryDetailPage({ data: glossaryWithoutAudio! })
+    );
+
+    expect(glossaryMarkup).toContain("<audio");
+    expect(reviewMarkup).toContain("<audio");
+    expect(glossaryWithoutAudioMarkup).not.toContain("<audio");
   });
 
   it("renders glossary and review notes through the shared inline AST renderer", async () => {

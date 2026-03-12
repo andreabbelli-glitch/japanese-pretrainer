@@ -7,6 +7,7 @@ import { renderFurigana } from "@/lib/render-furigana";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
+import { PronunciationAudio } from "../ui/pronunciation-audio";
 import { Section } from "../ui/section";
 import { SurfaceCard } from "../ui/surface-card";
 
@@ -90,6 +91,9 @@ export function GlossaryDetailPanels({
             <p className="glossary-entry-hero__notes">
               {renderFurigana(data.entry.notes)}
             </p>
+          ) : null}
+          {data.entry.pronunciation ? (
+            <PronunciationAudio audio={data.entry.pronunciation} />
           ) : null}
 
           {data.entry.aliasGroups.length > 0 ? (

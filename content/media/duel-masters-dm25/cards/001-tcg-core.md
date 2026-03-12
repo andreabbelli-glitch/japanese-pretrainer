@@ -1227,7 +1227,7 @@ example_jp: >-
 example_it: >-
   Con questo effetto distruggi 1 creatura del tuo avversario.
 notes_it: >-
-  Quando compare 効果, la carta non sta nominando un oggetto ma il risultato
+  Quando compare {{効果|こうか}}, la carta non sta nominando un oggetto ma il risultato
   prodotto da un'abilità o da una riga di testo.
 tags: [core, rules-text]
 :::
@@ -1684,7 +1684,7 @@ card_type: concept
 front: ～ていれば
 back: se / quando è già in quello stato
 example_jp: >-
-  {{手札|てふだ}}が{{3枚|さんまい}} {{残|のこ}}っていれば、この効果を使える。
+  {{手札|てふだ}}が{{3枚|さんまい}} {{残|のこ}}っていれば、この{{効果|こうか}}を{{使|つか}}える。
 example_it: >-
   Se hai gia tre carte in mano, puoi usare questo effetto.
 notes_it: >-

@@ -262,6 +262,71 @@ describe("content parser and validator", () => {
     }
   });
 
+  it("accepts optional pronunciation metadata on term blocks and merges grammar audio from pronunciations.json", async () => {
+    const result = await parseMediaDirectory(validMediaDirectory);
+
+    expect(result.ok).toBe(true);
+    expect(result.data.terms[0]?.audio).toEqual({
+      audioAttribution:
+        "Test Native Speaker via Lingua Libre / Wikimedia Commons",
+      audioLicense: "CC BY-SA 4.0",
+      audioPageUrl:
+        "https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg",
+      audioSource: "lingua_libre",
+      audioSpeaker: "Test Native Speaker",
+      audioSrc: "assets/audio/term/term-taberu/term-taberu.ogg"
+    });
+    expect(result.data.grammarPatterns[0]?.audio).toEqual({
+      audioAttribution: "Grammar Sample Speaker via Wikimedia Commons",
+      audioLicense: "CC BY 4.0",
+      audioPageUrl:
+        "https://commons.wikimedia.org/wiki/File:Ja-%E3%81%A6%E3%81%84%E3%82%8B.mp3",
+      audioSource: "wikimedia_commons",
+      audioSpeaker: "Grammar Sample Speaker",
+      audioSrc: "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
+    });
+  });
+
+  it("rejects audio metadata without a local audio_src", async () => {
+    const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-audio-"));
+    const contentRoot = path.join(tempRoot, "content");
+
+    try {
+      await cp(validContentRoot, contentRoot, { recursive: true });
+
+      const cardsPath = path.join(
+        contentRoot,
+        "media",
+        "frieren",
+        "cards",
+        "001-core.md"
+      );
+      const cardsSource = await readFile(cardsPath, "utf8");
+
+      await writeFile(
+        cardsPath,
+        cardsSource.replace(
+          "audio_src: assets/audio/term/term-taberu/term-taberu.ogg\n",
+          ""
+        )
+      );
+
+      const result = await parseMediaDirectory(
+        path.join(contentRoot, "media", "frieren")
+      );
+
+      expect(result.ok).toBe(false);
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "audio.missing-src",
+          category: "schema"
+        })
+      );
+    } finally {
+      await rm(tempRoot, { recursive: true, force: true });
+    }
+  });
+
   it("tracks semantic references declared inside grammar notes", async () => {
     const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-notes-"));
     const contentRoot = path.join(tempRoot, "content");

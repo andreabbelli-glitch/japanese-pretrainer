@@ -9,7 +9,12 @@ import {
 
 import { parseFrontmatter } from "./parser/frontmatter.ts";
 import {
-  isSupportedMediaAssetPath,
+  applyPronunciationManifest,
+  normalizeEntryAudioMetadata,
+  loadPronunciationManifest
+} from "./pronunciations-manifest.ts";
+import {
+  isSupportedImageAssetPath,
   isValidMediaAssetPath,
   isWithinMediaAssetRoot,
   resolveMediaAssetAbsolutePath
@@ -198,6 +203,16 @@ export async function parseMediaDirectory(
     ...lessonResults.flatMap((result) => result.references),
     ...cardsResults.flatMap((result) => result.references)
   ];
+  const pronunciationManifestResult =
+    await loadPronunciationManifest(mediaDirectory);
+
+  issues.push(...pronunciationManifestResult.issues);
+  applyPronunciationManifest({
+    grammarPatterns: grammarPatterns.map((record) => record.value),
+    issues,
+    manifest: pronunciationManifestResult.manifest,
+    terms: terms.map((record) => record.value)
+  });
 
   validateReferences(terms, grammarPatterns, cards, references, issues);
 
@@ -714,7 +729,7 @@ async function resolveStructuredBody(
     }
 
     if (rawBlock.blockType === "term") {
-      const term = normalizeTermBlock(
+      const term = await normalizeTermBlock(
         rawBlock,
         sourceContext,
         sourcePath,
@@ -737,7 +752,7 @@ async function resolveStructuredBody(
     }
 
     if (rawBlock.blockType === "grammar") {
-      const grammar = normalizeGrammarBlock(
+      const grammar = await normalizeGrammarBlock(
         rawBlock,
         sourceContext,
         sourcePath,
@@ -1156,12 +1171,12 @@ function normalizeCardsFrontmatter(
   };
 }
 
-function normalizeTermBlock(
+async function normalizeTermBlock(
   rawBlock: RawStructuredBlock,
   sourceContext: DocumentSourceContext,
   sourcePath: string,
   issues: ValidationIssue[]
-): TermRecord | null {
+): Promise<TermRecord | null> {
   if (!rawBlock.data) {
     return null;
   }
@@ -1180,7 +1195,13 @@ function normalizeTermBlock(
       "notes_it",
       "level_hint",
       "aliases",
-      "segment_ref"
+      "segment_ref",
+      "audio_src",
+      "audio_source",
+      "audio_speaker",
+      "audio_license",
+      "audio_attribution",
+      "audio_page_url"
     ],
     sourceContext.filePath,
     sourcePath,
@@ -1294,6 +1315,15 @@ function normalizeTermBlock(
     issues,
     rawBlock.position
   );
+  const audio = await normalizeEntryAudioMetadata({
+    filePath: sourceContext.filePath,
+    mediaDirectory: sourceContext.mediaDirectory,
+    range: rawBlock.position,
+    sourcePath,
+    values: rawBlock.data
+  });
+
+  issues.push(...audio.issues);
 
   if (crossMediaGroup && !isUrlSafeSlug(crossMediaGroup)) {
     issues.push(
@@ -1344,6 +1374,7 @@ function normalizeTermBlock(
       levelHint: levelHint ?? undefined,
       aliases,
       segmentRef: segmentRef ?? undefined,
+      audio: audio.value ?? undefined,
       source: {
         filePath: sourceContext.filePath,
         documentId: sourceContext.documentId,
@@ -1359,12 +1390,12 @@ function normalizeTermBlock(
   };
 }
 
-function normalizeGrammarBlock(
+async function normalizeGrammarBlock(
   rawBlock: RawStructuredBlock,
   sourceContext: DocumentSourceContext,
   sourcePath: string,
   issues: ValidationIssue[]
-): GrammarRecord | null {
+): Promise<GrammarRecord | null> {
   if (!rawBlock.data) {
     return null;
   }
@@ -1381,7 +1412,13 @@ function normalizeGrammarBlock(
       "notes_it",
       "level_hint",
       "aliases",
-      "segment_ref"
+      "segment_ref",
+      "audio_src",
+      "audio_source",
+      "audio_speaker",
+      "audio_license",
+      "audio_attribution",
+      "audio_page_url"
     ],
     sourceContext.filePath,
     sourcePath,
@@ -1479,6 +1516,15 @@ function normalizeGrammarBlock(
     issues,
     rawBlock.position
   );
+  const audio = await normalizeEntryAudioMetadata({
+    filePath: sourceContext.filePath,
+    mediaDirectory: sourceContext.mediaDirectory,
+    range: rawBlock.position,
+    sourcePath,
+    values: rawBlock.data
+  });
+
+  issues.push(...audio.issues);
 
   if (crossMediaGroup && !isUrlSafeSlug(crossMediaGroup)) {
     issues.push(
@@ -1527,6 +1573,7 @@ function normalizeGrammarBlock(
       levelHint: levelHint ?? undefined,
       aliases,
       segmentRef: segmentRef ?? undefined,
+      audio: audio.value ?? undefined,
       source: {
         filePath: sourceContext.filePath,
         documentId: sourceContext.documentId,
@@ -1968,7 +2015,7 @@ async function normalizeImageBlock(
     return null;
   }
 
-  if (!isSupportedMediaAssetPath(src)) {
+  if (!isSupportedImageAssetPath(src)) {
     issues.push(
       createIssue({
         code: "image.unsupported-extension",

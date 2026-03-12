@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-abyss",
+      "audio_src": "assets/audio/term/term-abyss/abisu.mp3",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "Musaddam Idriss",
+      "audio_license": "CC BY-SA 4.0",
+      "audio_attribution": "Own work",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Abisu.mp3"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-settings",
+      "audio_src": "assets/audio/term/term-settings/ja-settei-setting.ogg",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "marsian",
+      "audio_license": "Public domain",
+      "audio_attribution": "I, marsian recorded my own voice by myself.",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-settei-setting.ogg"
+    }
+  ]
+}

@@ -50,6 +50,10 @@ import {
   romanizeKanaForSearch
 } from "@/lib/study-search";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
+import {
+  buildPronunciationData,
+  type PronunciationData
+} from "@/lib/pronunciation";
 
 type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
 
@@ -63,6 +67,7 @@ type GlossaryBaseEntry = {
   title?: string;
   reading?: string;
   romaji?: string;
+  pronunciation?: PronunciationData;
   meaning: string;
   literalMeaning?: string;
   notes?: string;
@@ -282,7 +287,7 @@ export async function getGlossaryPageData(
   const filters = normalizeGlossaryQuery(searchParams, defaultSort);
   const [segments, entries] = await Promise.all([
     listGlossarySegmentsByMediaId(database, media.id),
-    loadGlossaryBaseEntries(database, media.id)
+    loadGlossaryBaseEntries(database, media.id, media.slug)
   ]);
   const studySignalsByEntry = await loadStudySignalsByEntry(
     database,
@@ -455,8 +460,12 @@ async function getGlossaryDetailData(
   }));
   const baseEntry =
     kind === "term"
-      ? mapEntryToBaseModel(entry as TermGlossaryEntry, "term")
-      : mapEntryToBaseModel(entry as GrammarGlossaryEntry, "grammar");
+      ? mapEntryToBaseModel(entry as TermGlossaryEntry, "term", media.slug)
+      : mapEntryToBaseModel(
+          entry as GrammarGlossaryEntry,
+          "grammar",
+          media.slug
+        );
   const rankedEntry = {
     ...baseEntry,
     href: mediaGlossaryEntryHref(media.slug, kind, entry.sourceId),
@@ -482,7 +491,8 @@ async function getGlossaryDetailData(
 
 async function loadGlossaryBaseEntries(
   database: DatabaseClient,
-  mediaId: string
+  mediaId: string,
+  mediaSlug: string
 ) {
   const [terms, grammar] = await Promise.all([
     listTermEntriesByMediaId(database, mediaId),
@@ -490,8 +500,10 @@ async function loadGlossaryBaseEntries(
   ]);
 
   return [
-    ...terms.map((entry) => mapEntryToBaseModel(entry, "term")),
-    ...grammar.map((entry) => mapEntryToBaseModel(entry, "grammar"))
+    ...terms.map((entry) => mapEntryToBaseModel(entry, "term", mediaSlug)),
+    ...grammar.map((entry) =>
+      mapEntryToBaseModel(entry, "grammar", mediaSlug)
+    )
   ];
 }
 
@@ -656,15 +668,18 @@ function buildCrossMediaNotesPreview(notes?: string | null) {
 
 function mapEntryToBaseModel(
   entry: TermGlossaryEntry,
-  kind: "term"
+  kind: "term",
+  mediaSlug: string
 ): GlossaryBaseEntry;
 function mapEntryToBaseModel(
   entry: GrammarGlossaryEntry,
-  kind: "grammar"
+  kind: "grammar",
+  mediaSlug: string
 ): GlossaryBaseEntry;
 function mapEntryToBaseModel(
   entry: TermGlossaryEntry | GrammarGlossaryEntry,
-  kind: GlossaryKind
+  kind: GlossaryKind,
+  mediaSlug: string
 ): GlossaryBaseEntry {
   if (kind === "term") {
     const termEntry = entry as TermGlossaryEntry;
@@ -676,6 +691,7 @@ function mapEntryToBaseModel(
       label: termEntry.lemma,
       reading: termEntry.reading,
       romaji: termEntry.romaji,
+      pronunciation: buildPronunciationData(mediaSlug, termEntry) ?? undefined,
       meaning: termEntry.meaningIt,
       literalMeaning: termEntry.meaningLiteralIt ?? undefined,
       notes: termEntry.notesIt ?? undefined,
@@ -711,6 +727,8 @@ function mapEntryToBaseModel(
     label: grammarEntry.pattern,
     title: grammarEntry.title,
     reading: grammarEntry.reading ?? undefined,
+    pronunciation:
+      buildPronunciationData(mediaSlug, grammarEntry) ?? undefined,
     meaning: grammarEntry.meaningIt,
     notes: grammarEntry.notesIt ?? undefined,
     levelHint: grammarEntry.levelHint ?? undefined,

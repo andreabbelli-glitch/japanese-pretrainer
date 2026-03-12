@@ -14,6 +14,12 @@ reading: たべる
 romaji: taberu
 meaning_it: mangiare
 aliases: [たべる, taberu]
+audio_src: assets/audio/term/term-taberu/term-taberu.ogg
+audio_source: lingua_libre
+audio_speaker: Test Native Speaker
+audio_license: CC BY-SA 4.0
+audio_attribution: Test Native Speaker via Lingua Libre / Wikimedia Commons
+audio_page_url: https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg
 :::
 
 :::card

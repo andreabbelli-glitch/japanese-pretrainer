@@ -209,6 +209,15 @@ export interface DefinitionSource {
   segmentRef?: string;
 }
 
+export interface EntryAudioMetadata {
+  audioSrc: string;
+  audioSource?: string;
+  audioSpeaker?: string;
+  audioLicense?: string;
+  audioAttribution?: string;
+  audioPageUrl?: string;
+}
+
 export interface NormalizedTerm {
   kind: "term";
   id: string;
@@ -223,6 +232,7 @@ export interface NormalizedTerm {
   levelHint?: string;
   aliases: string[];
   segmentRef?: string;
+  audio?: EntryAudioMetadata;
   source: DefinitionSource;
 }
 
@@ -238,6 +248,7 @@ export interface NormalizedGrammarPattern {
   levelHint?: string;
   aliases: string[];
   segmentRef?: string;
+  audio?: EntryAudioMetadata;
   source: DefinitionSource;
 }
 

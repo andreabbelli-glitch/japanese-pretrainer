@@ -31,6 +31,10 @@ content/
           deck-edit.webp
         cards/
           abyss-bell.svg
+        audio/
+          term/
+            term-taberu/
+              term-taberu.ogg
       textbook/
         001-intro.md
         002-episode-01.md
@@ -38,6 +42,7 @@ content/
       cards/
         001-core-vocab.md
         002-episode-01.md
+      pronunciations.json
 ```
 
 ## 4. Regole generali
@@ -48,8 +53,7 @@ content/
 - Le chiavi obbligatorie non possono essere omesse.
 - I riferimenti devono puntare a ID esistenti oppure l'import deve fallire.
 - Il contenuto testuale libero e permesso solo nelle zone previste.
-- Gli asset immagine di un media vanno salvati sotto `assets/` nello stesso
-  bundle.
+- Gli asset di un media vanno salvati sotto `assets/` nello stesso bundle.
 
 ### 4.0 Regola di scope per gli ID editoriali
 
@@ -390,6 +394,12 @@ notes_it: >-
   Verbo di base molto frequente.
 level_hint: n5
 aliases: [たべる, taberu]
+audio_src: assets/audio/term/term-taberu/term-taberu.ogg
+audio_source: lingua_libre
+audio_speaker: Example Speaker
+audio_license: CC BY-SA 4.0
+audio_attribution: Example Speaker via Lingua Libre / Wikimedia Commons
+audio_page_url: https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Example_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg
 :::
 ```
 
@@ -410,6 +420,23 @@ Campi opzionali:
 - `level_hint`
 - `aliases`
 - `segment_ref`
+- `audio_src`
+- `audio_source`
+- `audio_speaker`
+- `audio_license`
+- `audio_attribution`
+- `audio_page_url`
+
+Regole audio:
+
+- l'audio e opzionale;
+- se presente, `audio_src` deve puntare a un file locale sotto `assets/`;
+- sono ammessi `mp3`, `ogg`, `wav`, `m4a`;
+- `audio_source`, `audio_speaker`, `audio_license`, `audio_attribution` e
+  `audio_page_url` sono metadata opzionali di provenance;
+- se compare qualunque metadata audio, `audio_src` deve esistere e il file deve
+  essere presente nel bundle locale;
+- non usare TTS o placeholder sintetici.
 
 ### 8.2 Blocco `grammar`
 
@@ -423,6 +450,10 @@ meaning_it: azione in corso o stato risultante
 notes_it: >-
   Compare molto spesso nel parlato e nei testi descrittivi.
 level_hint: n4
+audio_src: assets/audio/grammar/grammar-teiru/grammar-teiru.mp3
+audio_source: wikimedia_commons
+audio_speaker: Example Speaker
+audio_license: CC BY 4.0
 :::
 ```
 
@@ -440,6 +471,12 @@ Campi opzionali:
 - `level_hint`
 - `aliases`
 - `segment_ref`
+- `audio_src`
+- `audio_source`
+- `audio_speaker`
+- `audio_license`
+- `audio_attribution`
+- `audio_page_url`
 
 ### 8.3 Blocco `example_sentence`
 
@@ -534,7 +571,8 @@ Il glossary viene costruito unendo:
 - entita `term` dichiarate nei file;
 - entita `grammar` dichiarate nei file;
 - riferimenti da lesson e cards;
-- metadata di card e segmenti.
+- metadata di card e segmenti;
+- eventuale metadata audio locale.
 
 Per ogni entry del glossary il sistema deve poter risalire a:
 
@@ -543,6 +581,41 @@ Per ogni entry del glossary il sistema deve poter risalire a:
 - cards collegate;
 - segmenti collegati;
 - alias di ricerca.
+
+## 11.1 Manifest opzionale `pronunciations.json`
+
+Per l'enrichment offline e disponibile un manifest JSON opzionale nel root del
+bundle media. Serve soprattutto per salvare audio scaricato via CLI senza
+riscrivere i blocchi Markdown editoriali.
+
+Formato minimo:
+
+```json
+{
+  "version": 1,
+  "entries": [
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-teiru",
+      "audio_src": "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "Example Speaker",
+      "audio_license": "CC BY 4.0",
+      "audio_attribution": "Example Speaker via Wikimedia Commons",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-%E3%81%A6%E3%81%84%E3%82%8B.mp3"
+    }
+  ]
+}
+```
+
+Regole:
+
+- `entry_type` deve essere `term` o `grammar`;
+- `entry_id` usa l'ID editoriale locale del blocco sorgente;
+- il manifest integra i campi audio del Markdown;
+- se Markdown e manifest definiscono la stessa entry, il Markdown ha priorita
+  sui campi gia presenti;
+- il manifest viene validato durante `content:validate` e `content:import`.
 
 ## 12. Regole di import
 
