@@ -18,7 +18,7 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
-import { card, grammarPattern } from "@/db/schema/index.ts";
+import { card, grammarPattern, term } from "@/db/schema/index.ts";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
   getGlossaryPageData,
@@ -238,6 +238,10 @@ describe("glossary data", () => {
     expect(detail?.entry.pronunciation?.src).toBe(
       "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
     );
+    expect(detail?.entry.pronunciation?.pitchAccent).toMatchObject({
+      downstep: 2,
+      shape: "nakadaka"
+    });
   });
 
   it("keeps suspended cards visible in glossary detail so review context does not disappear", async () => {
@@ -286,6 +290,10 @@ describe("glossary data", () => {
     expect(detail?.pronunciations[0]?.audio.src).toBe(
       "/media/frieren/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
     );
+    expect(detail?.pronunciations[0]?.audio.pitchAccent).toMatchObject({
+      downstep: 0,
+      shape: "heiban"
+    });
   });
 
   it("renders audio players only when local pronunciation audio exists", async () => {
@@ -331,7 +339,40 @@ describe("glossary data", () => {
 
     expect(glossaryMarkup).toContain("<audio");
     expect(reviewMarkup).toContain("<audio");
+    expect(glossaryMarkup).toContain("pitch-accent__graph");
+    expect(reviewMarkup).toContain("pitch-accent__graph");
     expect(glossaryWithoutAudioMarkup).not.toContain("<audio");
+  });
+
+  it("renders pitch accent even when no local audio exists", async () => {
+    await seedDevelopmentDatabase(database);
+    await database
+      .update(term)
+      .set({
+        pitchAccent: 0
+      })
+      .where(eq(term.id, developmentFixture.termDbId));
+
+    const glossaryWithoutAudio = await getTermGlossaryDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.termId,
+      database
+    );
+
+    expect(glossaryWithoutAudio?.entry.pronunciation?.src).toBeUndefined();
+    expect(glossaryWithoutAudio?.entry.pronunciation?.pitchAccent).toMatchObject(
+      {
+        downstep: 0,
+        shape: "heiban"
+      }
+    );
+
+    const markup = renderToStaticMarkup(
+      GlossaryDetailPage({ data: glossaryWithoutAudio! })
+    );
+
+    expect(markup).toContain("pitch-accent__graph");
+    expect(markup).not.toContain("<audio");
   });
 
   it("renders glossary and review notes through the shared inline AST renderer", async () => {

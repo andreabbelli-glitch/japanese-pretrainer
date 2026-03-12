@@ -1,0 +1,184 @@
+{
+  "version": 1,
+  "media_slug": "gundam-arsenal-base",
+  "total_targets": 63,
+  "audio_backed_count": 13,
+  "known_missing_count": 20,
+  "pending_count": 30,
+  "pending": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-rank-match",
+      "label": "ランクマッチ",
+      "reading": "らんくまっち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ve-raid-battle",
+      "label": "VEレイドバトル",
+      "reading": "ぶいいーれいどばとる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-challenge-mode",
+      "label": "チャレンジモード",
+      "reading": "ちゃれんじもーど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-casual-match",
+      "label": "カジュアルマッチ",
+      "reading": "かじゅあるまっち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-rank-point",
+      "label": "ランクポイント",
+      "reading": "らんくぽいんと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ex-battle",
+      "label": "EXバトル",
+      "reading": "いーえっくすばとる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mighty-strike-freedom-gundam",
+      "label": "マイティーストライクフリーダムガンダム",
+      "reading": "まいてぃーすとらいくふりーだむがんだむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-immortal-justice-gundam",
+      "label": "イモータルジャスティスガンダム",
+      "reading": "いもーたるじゃすてぃすがんだむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-gelgoog-menace-lunamaria-custom",
+      "label": "ゲルググメナース(ルナマリア・ホーク専用機)",
+      "reading": "げるぐぐめなーす るなまりあほーくせんようき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-gquuuuuux-omega-psycommu",
+      "label": "GQuuuuuuX (オメガ・サイコミュ)",
+      "reading": "じーくあくす おめがさいこみゅ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-red-gundam-0085",
+      "label": "赤いガンダム(0085)",
+      "reading": "あかいがんだむ ぜろぜろはちご"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kira-yamato-lacus-clyne",
+      "label": "キラ・ヤマト＆ラクス・クライン",
+      "reading": "きらやまとあんどらくすくらいん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shinn-asuka",
+      "label": "シン・アスカ",
+      "reading": "しんあすか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-lunamaria-hawk",
+      "label": "ルナマリア・ホーク",
+      "reading": "るなまりあほーく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-amate-yuzuriha-machu",
+      "label": "アマテ・ユズリハ(マチュ)",
+      "reading": "あまてゆずりは まちゅ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shuji-itou",
+      "label": "シュウジ・イトウ",
+      "reading": "しゅうじいとう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ms-type-near-range",
+      "label": "近距離",
+      "reading": "きんきょり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ms-type-long-range",
+      "label": "遠距離",
+      "reading": "えんきょり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ms-type-mobility",
+      "label": "機動",
+      "reading": "きどう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-pl-skill",
+      "label": "PLスキル",
+      "reading": "ぴーえるすきる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-link-ability",
+      "label": "リンクアビリティ",
+      "reading": "りんくあびりてぃ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-dedicated-machine",
+      "label": "専用機",
+      "reading": "せんようき"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-wo-setto-suru",
+      "label": "～をセットする"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-wo-tacchi-suru",
+      "label": "～をタッチする"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-suru-koto-de",
+      "label": "～することで"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ga-hyouji-sareru",
+      "label": "～が表示される",
+      "reading": "ひょうじされる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ga-kaihou-sareru",
+      "label": "～が解放される",
+      "reading": "かいほうされる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-a-and-b",
+      "label": "A＆B"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-senyouki",
+      "label": "～専用機"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-parenthetical-label",
+      "label": "～(～)"
+    }
+  ]
+}

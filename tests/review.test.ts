@@ -351,6 +351,12 @@ describe("review system", () => {
       now: new Date("2026-03-11T12:00:00.000Z"),
       rating: "good"
     });
+    await database
+      .update(reviewState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
 
     const completionPage = await getReviewPageData(
       developmentFixture.mediaSlug,
@@ -447,11 +453,18 @@ describe("review system", () => {
     expect(reviewPage?.selectedCard?.pronunciations[0]?.audio.src).toBe(
       "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
     );
+    expect(
+      reviewPage?.selectedCard?.pronunciations[0]?.audio.pitchAccent
+    ).toMatchObject({
+      downstep: 2,
+      shape: "nakadaka"
+    });
 
     const markup = renderToStaticMarkup(ReviewPage({ data: reviewPage! }));
 
     expect(markup).toContain("Pronuncia");
     expect(markup).toContain("pronunciation-audio__player");
+    expect(markup).toContain("pitch-accent__graph");
     expect(markup).toContain(
       "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
     );

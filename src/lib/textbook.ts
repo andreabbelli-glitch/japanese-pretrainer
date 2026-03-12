@@ -567,7 +567,11 @@ function mapTermTooltipEntry(
     notes: entry.notesIt ?? undefined,
     pos: entry.pos ?? undefined,
     levelHint: entry.levelHint ?? undefined,
-    pronunciation: buildPronunciationData(mediaSlug, entry) ?? undefined,
+    pronunciation:
+      buildPronunciationData(mediaSlug, {
+        ...entry,
+        reading: entry.reading
+      }) ?? undefined,
     statusLabel: resolveEntryStudyStateLabel(
       entry.status?.status ?? null,
       studySignals
@@ -598,7 +602,11 @@ function mapGrammarTooltipEntry(
     meaning: entry.meaningIt,
     notes: entry.notesIt ?? undefined,
     levelHint: entry.levelHint ?? undefined,
-    pronunciation: buildPronunciationData(mediaSlug, entry) ?? undefined,
+    pronunciation:
+      buildPronunciationData(mediaSlug, {
+        ...entry,
+        reading: entry.reading ?? entry.pattern
+      }) ?? undefined,
     statusLabel: resolveEntryStudyStateLabel(
       entry.status?.status ?? null,
       studySignals

@@ -20,9 +20,10 @@ const pronunciationManifestFileName = "pronunciations.json";
 
 type ManifestEntryType = "term" | "grammar";
 
-export type PronunciationManifestEntry = EntryAudioMetadata & {
+export type PronunciationManifestEntry = Partial<EntryAudioMetadata> & {
   entryId: string;
   entryType: ManifestEntryType;
+  pitchAccent?: number;
 };
 
 export interface PronunciationManifest {
@@ -110,7 +111,13 @@ export function applyPronunciationManifest(input: {
       continue;
     }
 
-    target.audio = mergeEntryAudio(target.audio, record);
+    if (hasAudioMetadata(record)) {
+      target.audio = mergeEntryAudio(target.audio, record);
+    }
+
+    if (record.pitchAccent !== undefined) {
+      target.pitchAccent = target.pitchAccent ?? record.pitchAccent;
+    }
   }
 }
 
@@ -137,7 +144,8 @@ export function serializePronunciationManifest(manifest: {
         audio_speaker: entry.audioSpeaker,
         audio_license: entry.audioLicense,
         audio_attribution: entry.audioAttribution,
-        audio_page_url: entry.audioPageUrl
+        audio_page_url: entry.audioPageUrl,
+        pitch_accent: entry.pitchAccent
       }))
     },
     null,
@@ -313,6 +321,7 @@ async function parseManifestEntry(input: {
   });
 
   const issues = [...audio.issues];
+  const pitchAccent = readOptionalPitchAccent(input.value.pitch_accent);
 
   if (!entryType) {
     issues.push(
@@ -338,7 +347,19 @@ async function parseManifestEntry(input: {
     );
   }
 
-  if (!entryType || !entryId || !audio.value) {
+  if (pitchAccent.present && pitchAccent.value === null) {
+    issues.push(
+      createIssue({
+        code: "pronunciation-manifest.invalid-pitch-accent",
+        category: "schema",
+        filePath: input.sourceFile,
+        message: "Pronunciation manifest pitch_accent must be an integer greater than or equal to 0.",
+        path: `${scope}.pitch_accent`
+      })
+    );
+  }
+
+  if (!entryType || !entryId || (!audio.value && pitchAccent.value === null)) {
     return {
       issues,
       value: null
@@ -348,9 +369,10 @@ async function parseManifestEntry(input: {
   return {
     issues,
     value: {
-      ...audio.value,
       entryId,
-      entryType
+      entryType,
+      ...(audio.value ?? {}),
+      pitchAccent: pitchAccent.value ?? undefined
     }
   };
 }
@@ -496,10 +518,10 @@ export async function normalizeEntryAudioMetadata(input: {
 
 export function mergeEntryAudio(
   currentAudio: EntryAudioMetadata | undefined,
-  incomingAudio: EntryAudioMetadata
+  incomingAudio: Partial<EntryAudioMetadata>
 ): EntryAudioMetadata {
   return {
-    audioSrc: currentAudio?.audioSrc ?? incomingAudio.audioSrc,
+    audioSrc: currentAudio?.audioSrc ?? incomingAudio.audioSrc ?? "",
     audioSource: currentAudio?.audioSource ?? incomingAudio.audioSource,
     audioSpeaker: currentAudio?.audioSpeaker ?? incomingAudio.audioSpeaker,
     audioLicense: currentAudio?.audioLicense ?? incomingAudio.audioLicense,
@@ -520,6 +542,37 @@ function asTrimmedString(value: unknown) {
 
 function asEntryType(value: unknown): ManifestEntryType | null {
   return value === "term" || value === "grammar" ? value : null;
+}
+
+function readOptionalPitchAccent(value: unknown): {
+  present: boolean;
+  value: number | null;
+} {
+  if (value === undefined || value === null || value === "") {
+    return {
+      present: false,
+      value: null
+    };
+  }
+
+  return {
+    present: true,
+    value:
+      typeof value === "number" && Number.isInteger(value) && value >= 0
+        ? value
+        : null
+  };
+}
+
+function hasAudioMetadata(entry: Partial<EntryAudioMetadata>) {
+  return Boolean(
+    entry.audioSrc ||
+      entry.audioSource ||
+      entry.audioSpeaker ||
+      entry.audioLicense ||
+      entry.audioAttribution ||
+      entry.audioPageUrl
+  );
 }
 
 function isHttpUrl(value: string) {

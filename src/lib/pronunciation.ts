@@ -1,3 +1,7 @@
+import {
+  buildPitchAccentData,
+  type PitchAccentData
+} from "./pitch-accent";
 import { mediaAssetHref } from "./site";
 
 export type PronunciationData = {
@@ -5,9 +9,10 @@ export type PronunciationData = {
   label?: string;
   license?: string;
   pageUrl?: string;
+  pitchAccent?: PitchAccentData;
   source?: string;
   speaker?: string;
-  src: ReturnType<typeof mediaAssetHref>;
+  src?: ReturnType<typeof mediaAssetHref>;
 };
 
 export function buildPronunciationData(
@@ -16,12 +21,17 @@ export function buildPronunciationData(
     audioAttribution?: string | null;
     audioLicense?: string | null;
     audioPageUrl?: string | null;
+    pitchAccent?: number | null;
+    reading?: string | null;
     audioSource?: string | null;
     audioSpeaker?: string | null;
     audioSrc?: string | null;
   }
 ): PronunciationData | null {
-  if (!entry.audioSrc) {
+  const pitchAccent =
+    buildPitchAccentData(entry.reading, entry.pitchAccent) ?? undefined;
+
+  if (!entry.audioSrc && !pitchAccent) {
     return null;
   }
 
@@ -30,9 +40,10 @@ export function buildPronunciationData(
     label: buildPronunciationLabel(entry),
     license: entry.audioLicense ?? undefined,
     pageUrl: entry.audioPageUrl ?? undefined,
+    pitchAccent,
     source: entry.audioSource ?? undefined,
     speaker: entry.audioSpeaker ?? undefined,
-    src: mediaAssetHref(mediaSlug, entry.audioSrc)
+    src: entry.audioSrc ? mediaAssetHref(mediaSlug, entry.audioSrc) : undefined
   };
 }
 

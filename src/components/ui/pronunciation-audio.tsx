@@ -1,14 +1,18 @@
 import type { PronunciationData } from "@/lib/pronunciation";
 
+import { PitchAccentNotation } from "./pitch-accent-notation";
+
 type PronunciationAudioProps = {
   audio: PronunciationData;
   compact?: boolean;
+  showPitchAccent?: boolean;
   title?: string;
 };
 
 export function PronunciationAudio({
   audio,
   compact = false,
+  showPitchAccent = true,
   title = "Pronuncia"
 }: PronunciationAudioProps) {
   return (
@@ -23,9 +27,14 @@ export function PronunciationAudio({
           ) : null}
         </div>
       ) : null}
-      <audio className="pronunciation-audio__player" controls preload="none">
-        <source src={audio.src} />
-      </audio>
+      {showPitchAccent && audio.pitchAccent ? (
+        <PitchAccentNotation compact={compact} pitchAccent={audio.pitchAccent} />
+      ) : null}
+      {audio.src ? (
+        <audio className="pronunciation-audio__player" controls preload="none">
+          <source src={audio.src} />
+        </audio>
+      ) : null}
       {!compact && (audio.attribution || audio.license || audio.pageUrl) ? (
         <p className="pronunciation-audio__meta">
           {audio.attribution ? <span>{audio.attribution}</span> : null}

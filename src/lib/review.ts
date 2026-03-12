@@ -579,7 +579,11 @@ function buildEntryLookup(
       kind: "term",
       label: entry.lemma,
       meaning: entry.meaningIt,
-      pronunciation: buildPronunciationData(mediaSlug, entry) ?? undefined,
+      pronunciation:
+        buildPronunciationData(mediaSlug, {
+          ...entry,
+          reading: entry.reading
+        }) ?? undefined,
       reading: entry.reading,
       status: entry.status?.status ?? null,
       subtitle:
@@ -594,7 +598,11 @@ function buildEntryLookup(
       kind: "grammar",
       label: entry.pattern,
       meaning: entry.meaningIt,
-      pronunciation: buildPronunciationData(mediaSlug, entry) ?? undefined,
+      pronunciation:
+        buildPronunciationData(mediaSlug, {
+          ...entry,
+          reading: entry.reading ?? entry.pattern
+        }) ?? undefined,
       reading: entry.reading ?? deriveKanaReading(entry.pattern),
       status: entry.status?.status ?? null,
       subtitle: entry.title !== entry.pattern ? entry.title : undefined

@@ -7,6 +7,7 @@ import { renderFurigana } from "@/lib/render-furigana";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
+import { PitchAccentNotation } from "../ui/pitch-accent-notation";
 import { PronunciationAudio } from "../ui/pronunciation-audio";
 import { Section } from "../ui/section";
 import { SurfaceCard } from "../ui/surface-card";
@@ -56,6 +57,10 @@ export function GlossaryDetailPanels({
 }: GlossaryDetailPageProps & {
   compact?: boolean;
 }) {
+  const pronunciationAudio = data.entry.pronunciation?.src
+    ? data.entry.pronunciation
+    : null;
+
   return (
     <>
       <section
@@ -70,11 +75,26 @@ export function GlossaryDetailPanels({
             <p className="glossary-entry-hero__subtitle">{data.entry.title}</p>
           ) : null}
           {data.entry.reading || data.entry.romaji ? (
-            <p className="glossary-entry-hero__reading jp-inline">
-              {[data.entry.reading, data.entry.romaji]
-                .filter(Boolean)
-                .join(" / ")}
-            </p>
+            <div className="glossary-entry-hero__reading-group">
+              {data.entry.reading ? (
+                data.entry.pronunciation?.pitchAccent ? (
+                  <PitchAccentNotation
+                    pitchAccent={data.entry.pronunciation.pitchAccent}
+                    showMeta={false}
+                    variant="reading"
+                  />
+                ) : (
+                  <p className="glossary-entry-hero__reading jp-inline">
+                    {data.entry.reading}
+                  </p>
+                )
+              ) : null}
+              {data.entry.romaji ? (
+                <p className="glossary-entry-hero__reading">
+                  {data.entry.romaji}
+                </p>
+              ) : null}
+            </div>
           ) : null}
           <p className="glossary-entry-hero__meaning">{data.entry.meaning}</p>
           {data.entry.literalMeaning ? (
@@ -92,8 +112,11 @@ export function GlossaryDetailPanels({
               {renderFurigana(data.entry.notes)}
             </p>
           ) : null}
-          {data.entry.pronunciation ? (
-            <PronunciationAudio audio={data.entry.pronunciation} />
+          {pronunciationAudio ? (
+            <PronunciationAudio
+              audio={pronunciationAudio}
+              showPitchAccent={false}
+            />
           ) : null}
 
           {data.entry.aliasGroups.length > 0 ? (
@@ -108,8 +131,27 @@ export function GlossaryDetailPanels({
                   </span>
                   <div className="glossary-entry-hero__alias-values">
                     {group.values.map((value) => (
-                      <span key={value} className="chip">
-                        {value}
+                      <span
+                        key={value}
+                        className={`chip${
+                          group.label === "Letture" &&
+                          value === data.entry.reading &&
+                          data.entry.pronunciation?.pitchAccent
+                            ? " chip--pitch-accent"
+                            : ""
+                        }`}
+                      >
+                        {group.label === "Letture" &&
+                        value === data.entry.reading &&
+                        data.entry.pronunciation?.pitchAccent ? (
+                          <PitchAccentNotation
+                            pitchAccent={data.entry.pronunciation.pitchAccent}
+                            showMeta={false}
+                            variant="reading"
+                          />
+                        ) : (
+                          value
+                        )}
                       </span>
                     ))}
                   </div>

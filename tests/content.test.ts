@@ -276,6 +276,7 @@ describe("content parser and validator", () => {
       audioSpeaker: "Test Native Speaker",
       audioSrc: "assets/audio/term/term-taberu/term-taberu.ogg"
     });
+    expect(result.data.terms[0]?.pitchAccent).toBe(2);
     expect(result.data.grammarPatterns[0]?.audio).toEqual({
       audioAttribution: "Grammar Sample Speaker via Wikimedia Commons",
       audioLicense: "CC BY 4.0",
@@ -285,6 +286,7 @@ describe("content parser and validator", () => {
       audioSpeaker: "Grammar Sample Speaker",
       audioSrc: "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
     });
+    expect(result.data.grammarPatterns[0]?.pitchAccent).toBe(0);
   });
 
   it("rejects audio metadata without a local audio_src", async () => {
@@ -322,6 +324,51 @@ describe("content parser and validator", () => {
           category: "schema"
         })
       );
+    } finally {
+      await rm(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  it("accepts pitch accent metadata without requiring a local audio_src", async () => {
+    const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-pitch-"));
+    const contentRoot = path.join(tempRoot, "content");
+
+    try {
+      await cp(validContentRoot, contentRoot, { recursive: true });
+
+      const cardsPath = path.join(
+        contentRoot,
+        "media",
+        "frieren",
+        "cards",
+        "001-core.md"
+      );
+      const cardsSource = await readFile(cardsPath, "utf8");
+
+      await writeFile(
+        cardsPath,
+        cardsSource
+          .replace("audio_src: assets/audio/term/term-taberu/term-taberu.ogg\n", "")
+          .replace("audio_source: lingua_libre\n", "")
+          .replace("audio_speaker: Test Native Speaker\n", "")
+          .replace("audio_license: CC BY-SA 4.0\n", "")
+          .replace(
+            "audio_attribution: Test Native Speaker via Lingua Libre / Wikimedia Commons\n",
+            ""
+          )
+          .replace(
+            "audio_page_url: https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg\n",
+            ""
+          )
+      );
+
+      const result = await parseMediaDirectory(
+        path.join(contentRoot, "media", "frieren")
+      );
+
+      expect(result.ok).toBe(true);
+      expect(result.data.terms[0]?.audio).toBeUndefined();
+      expect(result.data.terms[0]?.pitchAccent).toBe(2);
     } finally {
       await rm(tempRoot, { recursive: true, force: true });
     }

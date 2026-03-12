@@ -28,6 +28,8 @@ entry rimaste senza audio. La source of truth del processo completo e
   speaker dal Giappone, voto migliore e risultato piu alto nella lista;
 - salva l'audio in `content/media/<slug>/assets/audio/...`;
 - aggiorna `content/media/<slug>/pronunciations.json` con `audio_source: "forvo"`.
+- aggiorna anche `content/media/<slug>/workflow/pronunciation-pending.json`
+  con le entry ancora aperte e non marcate come missing.
 
 ## Comandi
 
@@ -87,6 +89,8 @@ term-taberu
 - `--manual` e la modalita operativa standard per questo repo; usa il browser Playwright solo per debug mirato o manutenzione del fetcher;
 - batch operativo consigliato: `10` entry alla volta;
 - gli skip persistenti finiscono di default in `data/forvo-known-missing.json`;
+- il residuo operativo corrente vive in
+  `content/media/<slug>/workflow/pronunciation-pending.json`;
 - `--refresh` forza il rimpiazzo anche se l'entry ha gia audio locale;
 - `--profile-dir` permette di isolare un profilo browser diverso;
 - `--keep-browser-open` lascia Chrome aperto a fine batch per debug.

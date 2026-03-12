@@ -30,6 +30,8 @@ libere e usa Forvo solo come fallback manuale sulle entry rimaste scoperte.
    `data/forvo-known-missing.json`.
 7. Per Forvo usa batch da `10` come default operativo, salvo richiesta diversa
    dell'utente.
+8. Mantieni aggiornata la lista residua in
+   `content/media/<slug>/workflow/pronunciation-pending.json`.
 
 ## Fase 1: fetch offline primario
 
@@ -62,6 +64,8 @@ Dopo `pnpm pronunciations:fetch`, la risposta all'utente deve sempre chiarire:
 - quante entry sono state risolte;
 - quali entry non hanno trovato audio;
 - se conviene fermarsi li oppure passare a Forvo.
+- la sidecar `workflow/pronunciation-pending.json` viene aggiornata
+  automaticamente con le sole entry ancora senza audio e non segnate come skip.
 
 Se non resta nulla da fare, il workflow finisce qui.
 
@@ -80,6 +84,8 @@ Per Forvo:
   esplicita di retry;
 - usa batch da `10` come default;
 - usa sempre il flusso `--manual` nel browser normale.
+- al termine aggiorna `content/media/<slug>/workflow/pronunciation-pending.json`
+  per riflettere il residuo ancora aperto.
 
 Comando tipico:
 

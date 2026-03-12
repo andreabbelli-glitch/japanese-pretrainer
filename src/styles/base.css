@@ -445,6 +445,12 @@ rt {
   color: var(--color-ink-muted);
 }
 
+.chip--pitch-accent {
+  align-items: flex-start;
+  padding-top: 0.45rem;
+  padding-bottom: 0.4rem;
+}
+
 .status-pill {
   background: var(--color-accent-soft);
   color: var(--color-accent-ink);
@@ -2040,6 +2046,12 @@ rt {
   font-size: var(--text-small);
 }
 
+.glossary-entry-hero__reading-group {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+}
+
 .glossary-search-form {
   display: grid;
   gap: var(--space-4);
@@ -2191,6 +2203,130 @@ rt {
 
 .pronunciation-audio__player {
   width: 100%;
+}
+
+.pitch-accent {
+  --pitch-accent-text-color: var(--color-ink-strong);
+  --pitch-accent-trace-color: #7abf2f;
+  --pitch-accent-cell-size: 1.04em;
+  --pitch-accent-trace-size: 0.11rem;
+  display: inline-grid;
+  justify-items: start;
+  gap: 0.2rem;
+}
+
+.pitch-accent__graph {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(
+    var(--pitch-accent-mora-count),
+    var(--pitch-accent-cell-size)
+  );
+  align-items: end;
+  padding-top: 0.72rem;
+  padding-bottom: 0.24rem;
+  font-family: var(--font-family-japanese);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.pitch-accent__cell {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  justify-content: center;
+  min-width: var(--pitch-accent-cell-size);
+}
+
+.pitch-accent__rail,
+.pitch-accent__connector {
+  position: absolute;
+  background: var(--pitch-accent-trace-color);
+}
+
+.pitch-accent__rail {
+  left: calc(
+    var(--pitch-accent-span-start) * var(--pitch-accent-cell-size) + 0.08em
+  );
+  width: calc(
+    var(--pitch-accent-span-length) * var(--pitch-accent-cell-size) - 0.08em
+  );
+  height: var(--pitch-accent-trace-size);
+  border-radius: 999px;
+}
+
+.pitch-accent__rail--upper {
+  top: 0.08rem;
+}
+
+.pitch-accent__rail--lower {
+  top: auto;
+  bottom: 0.06rem;
+}
+
+.pitch-accent__rail--tail {
+  width: calc(
+    var(--pitch-accent-span-length) * var(--pitch-accent-cell-size)
+  );
+}
+
+.pitch-accent__rail--lower.pitch-accent__rail--tail {
+  width: calc(
+    var(--pitch-accent-span-length) * var(--pitch-accent-cell-size) - 0.14em
+  );
+}
+
+.pitch-accent__connector {
+  left: calc(
+    var(--pitch-accent-boundary) * var(--pitch-accent-cell-size) -
+      var(--pitch-accent-trace-size)
+  );
+  width: calc(var(--pitch-accent-trace-size) + 0.02rem);
+  border-radius: 0;
+}
+
+.pitch-accent__connector--drop {
+  top: 0.08rem;
+  height: 0.68rem;
+}
+
+.pitch-accent__connector--rise {
+  bottom: 0.06rem;
+  height: 0.68rem;
+}
+
+.pitch-accent__mora {
+  color: var(--pitch-accent-text-color);
+  white-space: nowrap;
+}
+
+.pitch-accent__meta {
+  color: var(--color-ink-soft);
+  font-size: var(--text-small);
+}
+
+.pitch-accent--compact {
+  gap: 0.12rem;
+}
+
+.pitch-accent--reading {
+  --pitch-accent-text-color: var(--color-ink-muted);
+}
+
+.glossary-entry-hero__reading-group .pitch-accent__graph {
+  font-size: 2.25rem;
+}
+
+.chip--pitch-accent .pitch-accent {
+  gap: 0;
+}
+
+.chip--pitch-accent .pitch-accent__graph {
+  font-size: 1.35rem;
+}
+
+.pitch-accent--compact .pitch-accent__graph {
+  font-size: 1.2rem;
 }
 
 .pronunciation-audio__meta {

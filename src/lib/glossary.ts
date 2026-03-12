@@ -691,7 +691,11 @@ function mapEntryToBaseModel(
       label: termEntry.lemma,
       reading: termEntry.reading,
       romaji: termEntry.romaji,
-      pronunciation: buildPronunciationData(mediaSlug, termEntry) ?? undefined,
+      pronunciation:
+        buildPronunciationData(mediaSlug, {
+          ...termEntry,
+          reading: termEntry.reading
+        }) ?? undefined,
       meaning: termEntry.meaningIt,
       literalMeaning: termEntry.meaningLiteralIt ?? undefined,
       notes: termEntry.notesIt ?? undefined,
@@ -728,7 +732,10 @@ function mapEntryToBaseModel(
     title: grammarEntry.title,
     reading: grammarEntry.reading ?? undefined,
     pronunciation:
-      buildPronunciationData(mediaSlug, grammarEntry) ?? undefined,
+      buildPronunciationData(mediaSlug, {
+        ...grammarEntry,
+        reading: grammarEntry.reading ?? grammarEntry.pattern
+      }) ?? undefined,
     meaning: grammarEntry.meaningIt,
     notes: grammarEntry.notesIt ?? undefined,
     levelHint: grammarEntry.levelHint ?? undefined,

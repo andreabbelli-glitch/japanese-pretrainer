@@ -101,7 +101,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
             <div className="stack-list stack-list--tight">
               {data.pronunciations.map((item) => (
                 <PronunciationAudio
-                  key={`${item.kind}:${item.label}:${item.audio.src}`}
+                  key={`${item.kind}:${item.label}:${item.audio.src ?? item.audio.pitchAccent?.downstep ?? "no-audio"}`}
                   audio={item.audio}
                   title={`${item.relationshipLabel} · ${item.label}`}
                 />

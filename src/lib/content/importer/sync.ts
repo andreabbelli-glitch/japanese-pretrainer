@@ -1022,6 +1022,7 @@ const termUpsertSet = {
   audioLicense: excluded("audio_license"),
   audioAttribution: excluded("audio_attribution"),
   audioPageUrl: excluded("audio_page_url"),
+  pitchAccent: excluded("pitch_accent"),
   searchLemmaNorm: excluded("search_lemma_norm"),
   searchReadingNorm: excluded("search_reading_norm"),
   searchRomajiNorm: excluded("search_romaji_norm"),
@@ -1044,6 +1045,7 @@ const grammarUpsertSet = {
   audioLicense: excluded("audio_license"),
   audioAttribution: excluded("audio_attribution"),
   audioPageUrl: excluded("audio_page_url"),
+  pitchAccent: excluded("pitch_accent"),
   searchPatternNorm: excluded("search_pattern_norm"),
   updatedAt: excluded("updated_at")
 };
@@ -1132,6 +1134,7 @@ const termComparisonKeys = [
   "audioLicense",
   "audioAttribution",
   "audioPageUrl",
+  "pitchAccent",
   "searchLemmaNorm",
   "searchReadingNorm",
   "searchRomajiNorm"
@@ -1162,6 +1165,7 @@ const grammarComparisonKeys = [
   "audioLicense",
   "audioAttribution",
   "audioPageUrl",
+  "pitchAccent",
   "searchPatternNorm"
 ];
 

@@ -1201,7 +1201,8 @@ async function normalizeTermBlock(
       "audio_speaker",
       "audio_license",
       "audio_attribution",
-      "audio_page_url"
+      "audio_page_url",
+      "pitch_accent"
     ],
     sourceContext.filePath,
     sourcePath,
@@ -1322,6 +1323,13 @@ async function normalizeTermBlock(
     sourcePath,
     values: rawBlock.data
   });
+  const pitchAccent = readOptionalPitchAccent(
+    rawBlock.data,
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
 
   issues.push(...audio.issues);
 
@@ -1375,6 +1383,7 @@ async function normalizeTermBlock(
       aliases,
       segmentRef: segmentRef ?? undefined,
       audio: audio.value ?? undefined,
+      pitchAccent,
       source: {
         filePath: sourceContext.filePath,
         documentId: sourceContext.documentId,
@@ -1418,7 +1427,8 @@ async function normalizeGrammarBlock(
       "audio_speaker",
       "audio_license",
       "audio_attribution",
-      "audio_page_url"
+      "audio_page_url",
+      "pitch_accent"
     ],
     sourceContext.filePath,
     sourcePath,
@@ -1523,6 +1533,13 @@ async function normalizeGrammarBlock(
     sourcePath,
     values: rawBlock.data
   });
+  const pitchAccent = readOptionalPitchAccent(
+    rawBlock.data,
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
 
   issues.push(...audio.issues);
 
@@ -1574,6 +1591,7 @@ async function normalizeGrammarBlock(
       aliases,
       segmentRef: segmentRef ?? undefined,
       audio: audio.value ?? undefined,
+      pitchAccent,
       source: {
         filePath: sourceContext.filePath,
         documentId: sourceContext.documentId,
@@ -2870,6 +2888,37 @@ function readOptionalStringArray(
   }
 
   return value;
+}
+
+function readOptionalPitchAccent(
+  values: Record<string, unknown>,
+  filePath: string,
+  sourcePath: string,
+  issues: ValidationIssue[],
+  range?: SourceRange
+) {
+  const value = values.pitch_accent;
+
+  if (value === undefined || value === null || value === "") {
+    return undefined;
+  }
+
+  if (typeof value === "number" && Number.isInteger(value) && value >= 0) {
+    return value;
+  }
+
+  issues.push(
+    createIssue({
+      code: "structured-block.invalid-pitch-accent",
+      category: "schema",
+      message: "Field 'pitch_accent' must be an integer greater than or equal to 0.",
+      filePath,
+      path: `${sourcePath}.pitch_accent`,
+      range
+    })
+  );
+
+  return undefined;
 }
 
 function readRequiredInteger(

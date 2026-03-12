@@ -233,6 +233,7 @@ export interface NormalizedTerm {
   aliases: string[];
   segmentRef?: string;
   audio?: EntryAudioMetadata;
+  pitchAccent?: number;
   source: DefinitionSource;
 }
 
@@ -249,6 +250,7 @@ export interface NormalizedGrammarPattern {
   aliases: string[];
   segmentRef?: string;
   audio?: EntryAudioMetadata;
+  pitchAccent?: number;
   source: DefinitionSource;
 }
 

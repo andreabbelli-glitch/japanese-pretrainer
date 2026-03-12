@@ -7,6 +7,7 @@ import {
   fetchForvoPronunciationsForBundle,
   fetchForvoPronunciationsForBundleManual
 } from "../src/lib/forvo-pronunciation-fetch.ts";
+import { writeBundlePronunciationPendingSummary } from "../src/lib/pronunciation-workflow.ts";
 
 type CliOptions = {
   browserTimeoutMs?: number;
@@ -119,6 +120,17 @@ if (!parseResult.ok) {
         } else {
           console.info(`  miss ${result.kind}:${result.entryId}`);
         }
+      }
+
+      if (!options.dryRun) {
+        const pendingSummary = await writeBundlePronunciationPendingSummary({
+          bundle,
+          knownMissingPath: path.resolve(options.knownMissingPath)
+        });
+
+        console.info(
+          `  pending list updated -> workflow/pronunciation-pending.json (${pendingSummary.pendingCount} entries)`
+        );
       }
     }
   }

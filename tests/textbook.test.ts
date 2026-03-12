@@ -480,12 +480,20 @@ describe("textbook data", () => {
     expect(lessonData?.entries[0]).toMatchObject({
       kind: "term",
       pronunciation: {
+        pitchAccent: {
+          downstep: 2,
+          shape: "nakadaka"
+        },
         src: "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
       }
     });
     expect(lessonData?.entries[1]).toMatchObject({
       kind: "grammar",
       pronunciation: {
+        pitchAccent: {
+          downstep: 0,
+          shape: "heiban"
+        },
         src: "/media/frieren/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
       }
     });

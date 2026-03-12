@@ -43,6 +43,13 @@
       "when": 1773308472892,
       "tag": "0005_married_misty_knight",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1773337473334,
+      "tag": "0006_tan_giant_girl",
+      "breakpoints": true
     }
   ]
 }

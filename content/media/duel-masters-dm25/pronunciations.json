@@ -2,6 +2,54 @@
   "version": 1,
   "entries": [
     {
+      "entry_type": "grammar",
+      "entry_id": "grammar-kawarini",
+      "audio_src": "assets/audio/grammar/grammar-kawarini/forvo-manual-かわりに.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8B%E3%82%8F%E3%82%8A%E3%81%AB/#ja"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-matawa",
+      "audio_src": "assets/audio/grammar/grammar-matawa/forvo-manual-または.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%BE%E3%81%9F%E3%81%AF/#ja"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-sonoato",
+      "audio_src": "assets/audio/grammar/grammar-sonoato/forvo-manual-その後.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9D%E3%81%AE%E5%BE%8C/#ja"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-soushitara",
+      "audio_src": "assets/audio/grammar/grammar-soushitara/forvo-manual-そうしたら.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9D%E3%81%86%E3%81%97%E3%81%9F%E3%82%89/#ja"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-tadashi",
+      "audio_src": "assets/audio/grammar/grammar-tadashi/forvo-manual-たた-し.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9F%E3%81%A0%E3%81%97/#ja"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-temoyoi",
+      "audio_src": "assets/audio/grammar/grammar-temoyoi/forvo-manual-てもよい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%81%A6%E3%82%82%E3%82%88%E3%81%84/#ja"
+    },
+    {
       "entry_type": "term",
       "entry_id": "term-abyss",
       "audio_src": "assets/audio/term/term-abyss/abisu.mp3",
@@ -10,6 +58,14 @@
       "audio_license": "CC BY-SA 4.0",
       "audio_attribution": "Own work",
       "audio_page_url": "https://commons.wikimedia.org/wiki/File:Abisu.mp3"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-achievement",
+      "audio_src": "assets/audio/term/term-achievement/forvo-manual-たっせい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%81%94%E6%88%90/#ja"
     },
     {
       "entry_type": "term",
@@ -53,11 +109,35 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-confirm",
+      "audio_src": "assets/audio/term/term-confirm/forvo-manual-かくにん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%A2%BA%E8%AA%8D/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-constructed-deck",
+      "audio_src": "assets/audio/term/term-constructed-deck/forvo-manual-て-っき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%87%E3%83%83%E3%82%AD/#ja"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-cost",
       "audio_src": "assets/audio/term/term-cost/forvo-manual-こすと.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%82%B3%E3%82%B9%E3%83%88/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-craft",
+      "audio_src": "assets/audio/term/term-craft/forvo-manual-せいせい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%94%9F%E6%88%90/#ja"
     },
     {
       "entry_type": "term",
@@ -101,6 +181,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-disenchant",
+      "audio_src": "assets/audio/term/term-disenchant/forvo-manual-ふ-んかい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%88%86%E8%A7%A3/#ja"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-effect",
       "audio_src": "assets/audio/term/term-effect/forvo-manual-こうか.mp3",
       "audio_source": "forvo",
@@ -121,7 +209,8 @@
       "audio_src": "assets/audio/term/term-evolution/forvo-manual-しんか.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E9%80%B2%E5%8C%96/#ja"
+      "audio_page_url": "https://forvo.com/word/%E9%80%B2%E5%8C%96/#ja",
+      "pitch_accent": 1
     },
     {
       "entry_type": "term",
@@ -154,6 +243,14 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E6%89%8B%E6%9C%AD/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hensei",
+      "audio_src": "assets/audio/term/term-hensei/forvo-manual-へんせい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%B7%A8%E6%88%90/#ja"
     },
     {
       "entry_type": "term",
@@ -229,11 +326,27 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ongoing",
+      "audio_src": "assets/audio/term/term-ongoing/forvo-manual-かいさいちゅう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%96%8B%E5%82%AC%E4%B8%AD/#ja"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-opponent",
       "audio_src": "assets/audio/term/term-opponent/forvo-manual-あいて.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E7%9B%B8%E6%89%8B/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-owned",
+      "audio_src": "assets/audio/term/term-owned/forvo-manual-しょし.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%89%80%E6%8C%81/#ja"
     },
     {
       "entry_type": "term",
@@ -261,6 +374,22 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-receive",
+      "audio_src": "assets/audio/term/term-receive/forvo-manual-うけとる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8B/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-reward",
+      "audio_src": "assets/audio/term/term-reward/forvo-manual-ほうしゅう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%A0%B1%E9%85%AC/#ja"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-self",
       "audio_src": "assets/audio/term/term-self/forvo-manual-し-ふ-ん.mp3",
       "audio_source": "forvo",
@@ -276,6 +405,14 @@
       "audio_license": "Public domain",
       "audio_attribution": "I, marsian recorded my own voice by myself.",
       "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-settei-setting.ogg"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shop",
+      "audio_src": "assets/audio/term/term-shop/forvo-manual-しょっふ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97/#ja"
     },
     {
       "entry_type": "term",
@@ -308,6 +445,22 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%82%BF%E3%83%83%E3%83%97/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ticket",
+      "audio_src": "assets/audio/term/term-ticket/forvo-manual-ちけっと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%81%E3%82%B1%E3%83%83%E3%83%88/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-unlock",
+      "audio_src": "assets/audio/term/term-unlock/forvo-manual-かいほう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A7%A3%E6%94%BE/#ja"
     }
   ]
 }

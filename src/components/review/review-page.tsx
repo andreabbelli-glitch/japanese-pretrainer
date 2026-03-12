@@ -175,7 +175,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
                         ) : null}
                         {selectedCard.pronunciations.map((item) => (
                           <PronunciationAudio
-                            key={`${item.kind}:${item.label}:${item.audio.src}`}
+                            key={`${item.kind}:${item.label}:${item.audio.src ?? item.audio.pitchAccent?.downstep ?? "no-audio"}`}
                             audio={item.audio}
                             compact={showCompactPronunciation}
                             title={`${item.relationshipLabel} · ${item.label}`}
