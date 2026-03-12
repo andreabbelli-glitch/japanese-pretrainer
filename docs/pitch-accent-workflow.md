@@ -4,12 +4,12 @@ Questo documento descrive il flusso automatico per popolare `pitch_accent`.
 
 ## Obiettivo
 
-Popolare `pitch_accent` in modo conservativo:
+Popolare `pitch_accent` in modo semplice e sequenziale:
 
-- si interrogano `Wiktionary` e `OJAD`;
-- si scrive il valore solo se entrambe le fonti concordano;
-- in caso di conflitto o mancanza di una delle due fonti, il manifest non viene
-  modificato per quella entry.
+- si prova prima `Wiktionary`;
+- se non risolve, si prova `OJAD`;
+- quando una fonte risolve, si salva subito il valore;
+- insieme al valore si salvano anche `fonte` e `link` della pagina usata.
 
 ## Comando
 
@@ -25,20 +25,19 @@ Comandi utili:
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media <media-slug> --refresh
 ```
 
-## Regola di consenso
+## Ordine delle fonti
 
 Per ogni entry:
 
-1. si cercano i candidati su Wiktionary;
-2. si cercano i candidati su OJAD;
-3. si normalizzano i risultati come downstep numerico (`0`, `1`, `2`, ...);
-4. si aggiorna `pronunciations.json` solo se i due valori coincidono.
+1. si prova `Wiktionary`;
+2. se non c'e un `acc=` univoco e coerente con la reading, si prova `OJAD`;
+3. se una fonte risolve, si aggiorna `pronunciations.json`.
 
 ## Stati possibili
 
-- `confirmed`: entrambe le fonti concordano; il manifest viene aggiornato.
-- `conflict`: entrambe rispondono, ma con valori diversi; non si scrive nulla.
-- `miss`: non si e trovato un consenso sufficiente.
+- `resolved`: una fonte ha risolto il valore; il manifest viene aggiornato.
+- `miss`: nessuna fonte ha risolto il valore.
+- `source_error`: una o piu fonti hanno fallito a livello di rete o risposta.
 - `skipped_existing`: l'entry ha gia un `pitch_accent` e non si e usato
   `--refresh`.
 
@@ -48,5 +47,6 @@ Per ogni entry:
 puo contenere:
 
 - solo `pitch_accent`;
+- `pitch_accent` con `pitch_accent_source` e `pitch_accent_page_url`;
 - solo metadati audio;
 - entrambi.

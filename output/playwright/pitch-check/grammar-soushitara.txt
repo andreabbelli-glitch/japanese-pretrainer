@@ -1,0 +1,14 @@
+### Result
+- [Screenshot of element](.playwright-cli/element-2026-03-12T22-01-51-502Z.png)
+### Ran Playwright code
+```js
+// Screenshot element and save it as .playwright-cli/element-2026-03-12T22-01-51-502Z.png
+await page.getByLabel('Pitch accent Nakadaka (4)').screenshot({
+path: '.playwright-cli/element-2026-03-12T22-01-51-502Z.png',
+  scale: 'css',
+  type: 'png'
+});
+```
+### Page
+- Page URL: http://localhost:3000/media/duel-masters-dm25/glossary/grammar/grammar-soushitara
+- Page Title: Japanese Custom Study

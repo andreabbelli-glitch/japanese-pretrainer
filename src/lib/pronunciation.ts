@@ -10,6 +10,8 @@ export type PronunciationData = {
   license?: string;
   pageUrl?: string;
   pitchAccent?: PitchAccentData;
+  pitchAccentPageUrl?: string;
+  pitchAccentSource?: string;
   source?: string;
   speaker?: string;
   src?: ReturnType<typeof mediaAssetHref>;
@@ -22,6 +24,8 @@ export function buildPronunciationData(
     audioLicense?: string | null;
     audioPageUrl?: string | null;
     pitchAccent?: number | null;
+    pitchAccentPageUrl?: string | null;
+    pitchAccentSource?: string | null;
     reading?: string | null;
     audioSource?: string | null;
     audioSpeaker?: string | null;
@@ -41,6 +45,8 @@ export function buildPronunciationData(
     license: entry.audioLicense ?? undefined,
     pageUrl: entry.audioPageUrl ?? undefined,
     pitchAccent,
+    pitchAccentPageUrl: entry.pitchAccentPageUrl ?? undefined,
+    pitchAccentSource: entry.pitchAccentSource ?? undefined,
     source: entry.audioSource ?? undefined,
     speaker: entry.audioSpeaker ?? undefined,
     src: entry.audioSrc ? mediaAssetHref(mediaSlug, entry.audioSrc) : undefined

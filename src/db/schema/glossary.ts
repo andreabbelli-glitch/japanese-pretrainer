@@ -63,6 +63,8 @@ export const term = sqliteTable(
     audioAttribution: text("audio_attribution"),
     audioPageUrl: text("audio_page_url"),
     pitchAccent: integer("pitch_accent"),
+    pitchAccentSource: text("pitch_accent_source"),
+    pitchAccentPageUrl: text("pitch_accent_page_url"),
     searchLemmaNorm: text("search_lemma_norm").notNull(),
     searchReadingNorm: text("search_reading_norm").notNull(),
     searchRomajiNorm: text("search_romaji_norm").notNull(),
@@ -132,6 +134,8 @@ export const grammarPattern = sqliteTable(
     audioAttribution: text("audio_attribution"),
     audioPageUrl: text("audio_page_url"),
     pitchAccent: integer("pitch_accent"),
+    pitchAccentSource: text("pitch_accent_source"),
+    pitchAccentPageUrl: text("pitch_accent_page_url"),
     searchPatternNorm: text("search_pattern_norm").notNull(),
     createdAt: text("created_at").notNull(),
     updatedAt: text("updated_at").notNull()

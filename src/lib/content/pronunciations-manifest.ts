@@ -24,6 +24,8 @@ export type PronunciationManifestEntry = Partial<EntryAudioMetadata> & {
   entryId: string;
   entryType: ManifestEntryType;
   pitchAccent?: number;
+  pitchAccentPageUrl?: string;
+  pitchAccentSource?: string;
 };
 
 export interface PronunciationManifest {
@@ -117,6 +119,10 @@ export function applyPronunciationManifest(input: {
 
     if (record.pitchAccent !== undefined) {
       target.pitchAccent = target.pitchAccent ?? record.pitchAccent;
+      target.pitchAccentSource =
+        target.pitchAccentSource ?? record.pitchAccentSource;
+      target.pitchAccentPageUrl =
+        target.pitchAccentPageUrl ?? record.pitchAccentPageUrl;
     }
   }
 }
@@ -145,7 +151,9 @@ export function serializePronunciationManifest(manifest: {
         audio_license: entry.audioLicense,
         audio_attribution: entry.audioAttribution,
         audio_page_url: entry.audioPageUrl,
-        pitch_accent: entry.pitchAccent
+        pitch_accent: entry.pitchAccent,
+        pitch_accent_source: entry.pitchAccentSource,
+        pitch_accent_page_url: entry.pitchAccentPageUrl
       }))
     },
     null,
@@ -322,6 +330,8 @@ async function parseManifestEntry(input: {
 
   const issues = [...audio.issues];
   const pitchAccent = readOptionalPitchAccent(input.value.pitch_accent);
+  const pitchAccentSource = asTrimmedString(input.value.pitch_accent_source);
+  const pitchAccentPageUrl = asTrimmedString(input.value.pitch_accent_page_url);
 
   if (!entryType) {
     issues.push(
@@ -359,6 +369,32 @@ async function parseManifestEntry(input: {
     );
   }
 
+  if (pitchAccentPageUrl && !isHttpUrl(pitchAccentPageUrl)) {
+    issues.push(
+      createIssue({
+        code: "pronunciation-manifest.invalid-pitch-accent-page-url",
+        category: "schema",
+        filePath: input.sourceFile,
+        message:
+          "Pronunciation manifest pitch_accent_page_url must be an absolute http or https URL.",
+        path: `${scope}.pitch_accent_page_url`
+      })
+    );
+  }
+
+  if ((pitchAccentSource || pitchAccentPageUrl) && pitchAccent.value === null) {
+    issues.push(
+      createIssue({
+        code: "pronunciation-manifest.pitch-accent-source-without-value",
+        category: "schema",
+        filePath: input.sourceFile,
+        message:
+          "Pitch accent source metadata requires pitch_accent to be present.",
+        path: `${scope}.pitch_accent`
+      })
+    );
+  }
+
   if (!entryType || !entryId || (!audio.value && pitchAccent.value === null)) {
     return {
       issues,
@@ -372,7 +408,9 @@ async function parseManifestEntry(input: {
       entryId,
       entryType,
       ...(audio.value ?? {}),
-      pitchAccent: pitchAccent.value ?? undefined
+      pitchAccent: pitchAccent.value ?? undefined,
+      pitchAccentSource: pitchAccentSource ?? undefined,
+      pitchAccentPageUrl: pitchAccentPageUrl ?? undefined
     }
   };
 }

@@ -17,7 +17,6 @@ type CliOptions = {
 
 const options = parseCliOptions(process.argv.slice(2));
 const contentRoot = path.resolve(options.contentRoot);
-const cacheRoot = path.resolve(process.cwd(), "data", "pitch-accent-cache");
 const parseResult = await parseContentRoot(contentRoot);
 
 if (!parseResult.ok) {
@@ -40,7 +39,6 @@ if (!parseResult.ok) {
   for (const bundle of bundles) {
     const summary = await fetchPitchAccentsForBundle({
       bundle,
-      cacheRoot,
       dryRun: options.dryRun,
       limit: options.limit,
       network: options.network,
@@ -48,17 +46,13 @@ if (!parseResult.ok) {
     });
 
     console.info(
-      `${bundle.mediaSlug}: ${summary.confirmed} confirmed, ${summary.conflicts} conflicts, ${summary.missed} misses, ${summary.skipped} skipped`
+      `${bundle.mediaSlug}: ${summary.resolved} resolved, ${summary.missed} misses, ${summary.errors} errors, ${summary.skipped} skipped`
     );
 
     for (const result of summary.results) {
-      if (result.status === "confirmed") {
+      if (result.status === "resolved") {
         console.info(
-          `  confirmed ${result.kind}:${result.entryId} -> ${result.pitchAccent} (wiktionary=${result.sources.wiktionary}, ojad=${result.sources.ojad})`
-        );
-      } else if (result.status === "conflict") {
-        console.info(
-          `  conflict ${result.kind}:${result.entryId} -> wiktionary=${result.wiktionary ?? "n/d"} / ojad=${result.ojad ?? "n/d"}`
+          `  resolved ${result.kind}:${result.entryId} -> ${result.pitchAccent} via ${result.source.sourceLabel} (${result.source.pageUrl})`
         );
       } else {
         console.info(
@@ -119,6 +113,17 @@ function parseCliOptions(argv: string[]): CliOptions {
 
       if (Number.isFinite(parsedDelay) && parsedDelay >= 0) {
         options.network.requestDelayMs = parsedDelay;
+      }
+
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--request-timeout-ms") {
+      const parsedTimeout = Number.parseInt(argv[index + 1] ?? "", 10);
+
+      if (Number.isFinite(parsedTimeout) && parsedTimeout >= 0) {
+        options.network.requestTimeoutMs = parsedTimeout;
       }
 
       index += 1;

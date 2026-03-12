@@ -1,5 +1,4 @@
-import { createHash } from "node:crypto";
-import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import {
@@ -20,8 +19,7 @@ import {
 } from "./pronunciation-fetch.ts";
 
 type EntryKind = "term" | "grammar";
-
-type PitchAccentSource = "ojad" | "wiktionary";
+type PitchAccentSourceKey = "wiktionary" | "ojad";
 
 type PitchAccentFetchTarget = {
   aliases: string[];
@@ -32,31 +30,31 @@ type PitchAccentFetchTarget = {
   mediaDirectory: string;
   mediaSlug: string;
   pitchAccent?: number;
+  pitchAccentPageUrl?: string;
+  pitchAccentSource?: string;
   reading?: string;
 };
 
-type PitchAccentResult =
+type PitchAccentLookup = {
+  pageUrl: string;
+  pitchAccent: number;
+  query: string;
+  sourceKey: PitchAccentSourceKey;
+  sourceLabel: string;
+};
+
+export type PitchAccentResult =
   | {
       entryId: string;
       kind: EntryKind;
       pitchAccent: number;
-      sources: Record<PitchAccentSource, number>;
-      status: "confirmed";
+      source: PitchAccentLookup;
+      status: "resolved";
     }
   | {
       entryId: string;
       kind: EntryKind;
-      ojad?: number;
-      status: "conflict";
-      wiktionary?: number;
-    }
-  | {
-      entryId: string;
-      kind: EntryKind;
-      status:
-        | "miss"
-        | "skipped_existing"
-        | "source_error";
+      status: "miss" | "skipped_existing" | "source_error";
       detail?: string;
     };
 
@@ -73,7 +71,8 @@ type WiktionaryTemplate = {
   reading?: string;
 };
 
-const DEFAULT_REQUEST_DELAY_MS = 1200;
+const DEFAULT_REQUEST_DELAY_MS = 400;
+const DEFAULT_REQUEST_TIMEOUT_MS = 15000;
 const DEFAULT_RETRY_BASE_DELAY_MS = 5000;
 const DEFAULT_MAX_RETRIES = 4;
 
@@ -81,16 +80,15 @@ let nextAllowedNetworkRequestAt = 0;
 
 export async function fetchPitchAccentsForBundle(input: {
   bundle: NormalizedMediaBundle;
-  cacheRoot: string;
   dryRun?: boolean;
   limit?: number;
   network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
 }) {
   const allTargets = collectPitchAccentTargets(input.bundle);
-  const targets = allTargets.filter((entry) =>
-    input.refresh ? true : entry.pitchAccent === undefined
-  );
+  const targets = input.refresh
+    ? allTargets
+    : allTargets.filter((entry) => entry.pitchAccent === undefined);
   const limitedTargets =
     typeof input.limit === "number" && input.limit >= 0
       ? targets.slice(0, input.limit)
@@ -113,13 +111,12 @@ export async function fetchPitchAccentsForBundle(input: {
 
   for (const entry of limitedTargets) {
     const resolved = await resolvePitchAccentForEntry({
-      cacheRoot: input.cacheRoot,
       entry,
       network: input.network
     });
     results.push(resolved);
 
-    if (resolved.status !== "confirmed") {
+    if (resolved.status !== "resolved") {
       continue;
     }
 
@@ -133,7 +130,9 @@ export async function fetchPitchAccentsForBundle(input: {
 
     manifestEntries.set(manifestKey, {
       ...manifestEntry,
-      pitchAccent: resolved.pitchAccent
+      pitchAccent: resolved.pitchAccent,
+      pitchAccentPageUrl: resolved.source.pageUrl,
+      pitchAccentSource: resolved.source.sourceLabel
     });
   }
 
@@ -149,85 +148,83 @@ export async function fetchPitchAccentsForBundle(input: {
   }
 
   return {
-    confirmed: results.filter((result) => result.status === "confirmed").length,
-    conflicts: results.filter((result) => result.status === "conflict").length,
+    errors: results.filter((result) => result.status === "source_error").length,
     missed: results.filter((result) => result.status === "miss").length,
+    resolved: results.filter((result) => result.status === "resolved").length,
     results,
-    skipped: results.filter((result) =>
-      result.status === "skipped_existing"
-    ).length
+    skipped: allTargets.length - targets.length
   };
 }
 
 export async function resolvePitchAccentForEntry(input: {
-  cacheRoot: string;
   entry: PitchAccentFetchTarget;
   network?: PronunciationFetchNetworkOptions;
 }): Promise<PitchAccentResult> {
+  const errors: string[] = [];
+
   try {
-    const [wiktionary, ojad] = await Promise.all([
-      lookupWiktionaryPitchAccent({
-        cacheRoot: input.cacheRoot,
-        entry: input.entry,
-        network: input.network
-      }),
-      lookupOjadPitchAccent({
-        cacheRoot: input.cacheRoot,
-        entry: input.entry,
-        network: input.network
-      })
-    ]);
+    const wiktionary = await lookupWiktionaryPitchAccent({
+      entry: input.entry,
+      network: input.network
+    });
 
-    if (typeof wiktionary === "number" && typeof ojad === "number") {
-      if (wiktionary === ojad) {
-        return {
-          entryId: input.entry.id,
-          kind: input.entry.kind,
-          pitchAccent: wiktionary,
-          sources: {
-            ojad,
-            wiktionary
-          },
-          status: "confirmed"
-        };
-      }
-
+    if (wiktionary) {
       return {
         entryId: input.entry.id,
         kind: input.entry.kind,
-        ojad,
-        status: "conflict",
-        wiktionary
+        pitchAccent: wiktionary.pitchAccent,
+        source: wiktionary,
+        status: "resolved"
       };
     }
-
-    return {
-      entryId: input.entry.id,
-      kind: input.entry.kind,
-      status: "miss"
-    };
   } catch (error) {
+    errors.push(error instanceof Error ? error.message : String(error));
+  }
+
+  try {
+    const ojad = await lookupOjadPitchAccent({
+      entry: input.entry,
+      network: input.network
+    });
+
+    if (ojad) {
+      return {
+        entryId: input.entry.id,
+        kind: input.entry.kind,
+        pitchAccent: ojad.pitchAccent,
+        source: ojad,
+        status: "resolved"
+      };
+    }
+  } catch (error) {
+    errors.push(error instanceof Error ? error.message : String(error));
+  }
+
+  if (errors.length > 0) {
     return {
-      detail: error instanceof Error ? error.message : String(error),
+      detail: errors.join(" | "),
       entryId: input.entry.id,
       kind: input.entry.kind,
       status: "source_error"
     };
   }
+
+  return {
+    entryId: input.entry.id,
+    kind: input.entry.kind,
+    status: "miss"
+  };
 }
 
 export async function lookupWiktionaryPitchAccent(input: {
-  cacheRoot: string;
   entry: PitchAccentFetchTarget;
   network?: PronunciationFetchNetworkOptions;
 }) {
-  const candidates = new Set<number>();
-  const variants = buildLookupVariants(input.entry);
+  const titles = buildWiktionaryTitles(input.entry);
 
-  for (const host of ["en.wiktionary.org", "ja.wiktionary.org"] as const) {
-    for (const title of variants) {
-      const cacheKey = hashString(`pitch-wiktionary:${host}:${title}`);
-      const response = await fetchJsonWithCache<{
+  for (const host of ["en.wiktionary.org"] as const) {
+    for (const title of titles) {
+      const response = await fetchJson<{
         query?: {
           pages?: Array<{
             missing?: boolean;
@@ -238,41 +235,64 @@ export async function lookupWiktionaryPitchAccent(input: {
                 };
               };
             }>;
+            title?: string;
           }>;
         };
       }>({
-        cachePath: path.join(input.cacheRoot, "pitch-accent", "wiktionary", `${cacheKey}.json`),
         network: input.network,
         url: `https://${host}/w/api.php?action=query&format=json&formatversion=2&prop=revisions&rvprop=content&rvslots=main&titles=${encodeURIComponent(title)}`
       });
-      const source =
-        response.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content ?? "";
+      const page = response.query?.pages?.[0];
+
+      if (!page || page.missing) {
+        continue;
+      }
+
+      const source = page.revisions?.[0]?.slots?.main?.content ?? "";
       const values = extractPitchAccentFromWiktionaryWikitext(source, input.entry);
 
-      for (const value of values) {
-        candidates.add(value);
+      if (values.length !== 1) {
+        continue;
       }
+
+      const resolvedTitle = page.title ?? title;
+
+      return {
+        pageUrl: `https://${host}/wiki/${encodeURIComponent(resolvedTitle)}`,
+        pitchAccent: values[0]!,
+        query: title,
+        sourceKey: "wiktionary" as const,
+        sourceLabel: "Wiktionary"
+      };
     }
   }
 
-  return candidates.size === 1 ? [...candidates][0] : null;
+  return null;
 }
 
 export async function lookupOjadPitchAccent(input: {
-  cacheRoot: string;
   entry: PitchAccentFetchTarget;
   network?: PronunciationFetchNetworkOptions;
 }) {
-  const variants = buildLookupVariants(input.entry);
+  const queries = buildOjadQueries(input.entry);
   let best: OjadCandidate | null = null;
 
-  for (const query of variants) {
-    const cacheKey = hashString(`pitch-ojad:${query}`);
-    const html = await fetchTextWithCache({
-      cachePath: path.join(input.cacheRoot, "pitch-accent", "ojad", `${cacheKey}.html`),
-      network: input.network,
-      url: `https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:${encodeURIComponent(query)}`
-    });
+  for (const query of queries) {
+    const url = `https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:${encodeURIComponent(query)}`;
+    let html: string;
+
+    try {
+      html = await fetchText({
+        network: input.network,
+        url
+      });
+    } catch (error) {
+      if (isNotFoundError(error)) {
+        continue;
+      }
+
+      throw error;
+    }
     const matches = extractPitchAccentCandidatesFromOjadHtml(html);
 
     for (const candidate of matches) {
@@ -288,7 +308,17 @@ export async function lookupOjadPitchAccent(input: {
     }
   }
 
-  return best && best.score >= 120 ? best.pitchAccent : null;
+  if (!best || best.score < 120) {
+    return null;
+  }
+
+  return {
+    pageUrl: `https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:${encodeURIComponent(best.query)}`,
+    pitchAccent: best.pitchAccent,
+    query: best.query,
+    sourceKey: "ojad" as const,
+    sourceLabel: "OJAD"
+  };
 }
 
 export function extractPitchAccentFromWiktionaryWikitext(
@@ -392,23 +422,61 @@ export function extractPitchAccentCandidatesFromOjadHtml(html: string) {
   return candidates;
 }
 
-function buildLookupVariants(entry: PitchAccentFetchTarget) {
-  const variants = new Set<string>();
+function buildWiktionaryTitles(entry: PitchAccentFetchTarget) {
+  const rawValues =
+    entry.kind === "grammar"
+      ? [entry.reading, entry.label]
+      : [entry.label, entry.reading];
 
-  for (const value of [entry.label, entry.reading, ...entry.aliases]) {
+  return dedupeLookupValues(rawValues);
+}
+
+function buildOjadQueries(entry: PitchAccentFetchTarget) {
+  const rawValues = [
+    entry.reading,
+    isMostlyKana(entry.label) ? entry.label : undefined
+  ].flatMap((value) => splitLookupVariants(value));
+
+  return dedupeLookupValues(rawValues).filter((value) => isMostlyKana(value));
+}
+
+function splitLookupVariants(value: string | undefined) {
+  if (typeof value !== "string") {
+    return [];
+  }
+
+  return value
+    .split(/\s*[\/／]\s*/u)
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0);
+}
+
+function dedupeLookupValues(values: Array<string | undefined>) {
+  const deduped = new Set<string>();
+
+  for (const value of values) {
     if (typeof value !== "string") {
       continue;
     }
 
-    const trimmed = value.trim();
+    const normalized = value.trim().replace(/^[～〜~]+/u, "");
 
-    if (trimmed.length > 0) {
-      variants.add(trimmed);
-      variants.add(trimmed.replace(/^[～〜~]+/u, ""));
+    if (normalized.length === 0 || !containsJapaneseScript(normalized)) {
+      continue;
     }
+
+    deduped.add(normalized);
   }
 
-  return [...variants].filter((value) => value.length > 0);
+  return [...deduped];
+}
+
+function containsJapaneseScript(value: string) {
+  return /[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/u.test(value);
+}
+
+function isMostlyKana(value: string) {
+  return /[\p{Script=Hiragana}\p{Script=Katakana}]/u.test(value);
 }
 
 function collectPitchAccentTargets(bundle: NormalizedMediaBundle) {
@@ -433,6 +501,8 @@ function mapTermToPitchAccentTarget(
     mediaDirectory: bundle.mediaDirectory,
     mediaSlug: bundle.mediaSlug,
     pitchAccent: entry.pitchAccent,
+    pitchAccentPageUrl: entry.pitchAccentPageUrl,
+    pitchAccentSource: entry.pitchAccentSource,
     reading: entry.reading
   };
 }
@@ -450,6 +520,8 @@ function mapGrammarToPitchAccentTarget(
     mediaDirectory: bundle.mediaDirectory,
     mediaSlug: bundle.mediaSlug,
     pitchAccent: entry.pitchAccent,
+    pitchAccentPageUrl: entry.pitchAccentPageUrl,
+    pitchAccentSource: entry.pitchAccentSource,
     reading: entry.reading ?? entry.pattern
   };
 }
@@ -466,7 +538,9 @@ function buildManifestEntryFromTarget(
     audioSrc: entry.audio?.audioSrc,
     entryId: entry.id,
     entryType: entry.kind,
-    pitchAccent: entry.pitchAccent
+    pitchAccent: entry.pitchAccent,
+    pitchAccentPageUrl: entry.pitchAccentPageUrl,
+    pitchAccentSource: entry.pitchAccentSource
   };
 }
 
@@ -539,26 +613,22 @@ function scoreOjadCandidate(
   return score;
 }
 
-async function fetchJsonWithCache<T>(input: {
-  cachePath: string;
+async function fetchJson<T>(input: {
   network?: PronunciationFetchNetworkOptions;
   url: string;
 }) {
-  const body = await fetchTextWithCache(input);
+  const body = await fetchText(input);
   return JSON.parse(body) as T;
 }
 
-async function fetchTextWithCache(input: {
-  cachePath: string;
+async function fetchText(input: {
   network?: PronunciationFetchNetworkOptions;
   url: string;
 }) {
-  if (await fileExists(input.cachePath)) {
-    return readFile(input.cachePath, "utf8");
-  }
-
-  await mkdir(path.dirname(input.cachePath), { recursive: true });
-  const requestDelayMs = input.network?.requestDelayMs ?? DEFAULT_REQUEST_DELAY_MS;
+  const requestDelayMs =
+    input.network?.requestDelayMs ?? DEFAULT_REQUEST_DELAY_MS;
+  const requestTimeoutMs =
+    input.network?.requestTimeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS;
   const retryBaseDelayMs =
     input.network?.retryBaseDelayMs ?? DEFAULT_RETRY_BASE_DELAY_MS;
   const maxRetries = input.network?.maxRetries ?? DEFAULT_MAX_RETRIES;
@@ -566,16 +636,39 @@ async function fetchTextWithCache(input: {
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
     await waitForNextNetworkSlot(requestDelayMs);
 
-    const response = await fetch(input.url, {
-      headers: {
-        "User-Agent": "japanese-custom-study/0.1 pitch-accent fetcher"
+    const abortController = new AbortController();
+    const timeout = setTimeout(() => {
+      abortController.abort();
+    }, requestTimeoutMs);
+    let response: Response;
+    let responseBody: string;
+
+    try {
+      response = await fetch(input.url, {
+        headers: {
+          "User-Agent": "japanese-custom-study/0.1 pitch-accent fetcher"
+        },
+        signal: abortController.signal
+      });
+
+      responseBody = await response.text();
+    } catch (error) {
+      clearTimeout(timeout);
+
+      if (attempt < maxRetries) {
+        await sleep(retryBaseDelayMs * 2 ** attempt);
+        continue;
       }
-    });
+
+      throw new Error(
+        `Failed to fetch ${input.url}: ${error instanceof Error ? error.message : String(error)}`
+      );
+    }
+
+    clearTimeout(timeout);
 
     if (response.ok) {
-      const body = await response.text();
-      await writeFile(input.cachePath, body);
-      return body;
+      return responseBody;
     }
 
     if (
@@ -598,6 +691,10 @@ async function fetchTextWithCache(input: {
   throw new Error(`Failed to fetch ${input.url}: exhausted retries`);
 }
 
+function isNotFoundError(error: unknown) {
+  return error instanceof Error && /:\s404\b/u.test(error.message);
+}
+
 function stripHtml(value: string | undefined) {
   if (!value) {
     return null;
@@ -605,19 +702,6 @@ function stripHtml(value: string | undefined) {
 
   const stripped = value.replace(/<[^>]+>/g, " ").replace(/\s+/gu, " ").trim();
   return stripped.length > 0 ? stripped : null;
-}
-
-function hashString(value: string) {
-  return createHash("sha1").update(value).digest("hex");
-}
-
-async function fileExists(filePath: string) {
-  try {
-    await stat(filePath);
-    return true;
-  } catch {
-    return false;
-  }
 }
 
 async function waitForNextNetworkSlot(requestDelayMs: number) {

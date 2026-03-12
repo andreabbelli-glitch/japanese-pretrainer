@@ -25,6 +25,7 @@ import {
   getGrammarGlossaryDetailData,
   getTermGlossaryDetailData
 } from "@/lib/glossary";
+import { buildPitchAccentData } from "@/lib/pitch-accent";
 import { getReviewCardDetailData } from "@/lib/review";
 import { setReviewCardSuspended } from "@/lib/review-service";
 import {
@@ -213,6 +214,41 @@ describe("glossary data", () => {
     );
   });
 
+  it("renders grammar pitch accent even when the entry has no separate reading field", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const detail = await getGrammarGlossaryDetailData(
+      "frieren",
+      "grammar-teiru",
+      database
+    );
+
+    expect(detail).not.toBeNull();
+
+    const grammarWithoutReading = structuredClone(detail!);
+    grammarWithoutReading.entry.reading = undefined;
+    grammarWithoutReading.entry.romaji = undefined;
+    grammarWithoutReading.entry.pronunciation = {
+      ...(grammarWithoutReading.entry.pronunciation ?? {}),
+      pitchAccent: buildPitchAccentData("そうしたら", 4)!,
+      pitchAccentPageUrl: "https://example.com/pitch",
+      pitchAccentSource: "Wiktionary"
+    };
+
+    const markup = renderToStaticMarkup(
+      GlossaryDetailPage({ data: grammarWithoutReading })
+    );
+
+    expect(markup).toContain("pitch-accent__graph");
+    expect(markup).toContain("Pitch accent da Wiktionary");
+  });
+
   it("builds term detail pages with card links that target the specific card", async () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
@@ -242,6 +278,10 @@ describe("glossary data", () => {
       downstep: 2,
       shape: "nakadaka"
     });
+    expect(detail?.entry.pronunciation?.pitchAccentSource).toBe("Wiktionary");
+    expect(detail?.entry.pronunciation?.pitchAccentPageUrl).toBe(
+      "https://en.wiktionary.org/wiki/%E9%A3%9F%E3%81%B9%E3%82%8B"
+    );
   });
 
   it("keeps suspended cards visible in glossary detail so review context does not disappear", async () => {
@@ -340,6 +380,8 @@ describe("glossary data", () => {
     expect(glossaryMarkup).toContain("<audio");
     expect(reviewMarkup).toContain("<audio");
     expect(glossaryMarkup).toContain("pitch-accent__graph");
+    expect(glossaryMarkup).toContain("Pitch accent da Wiktionary");
+    expect(glossaryMarkup).toContain(">Fonte</a>");
     expect(reviewMarkup).toContain("pitch-accent__graph");
     expect(glossaryWithoutAudioMarkup).not.toContain("<audio");
   });

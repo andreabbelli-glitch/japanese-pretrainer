@@ -2,6 +2,13 @@
   "version": 1,
   "entries": [
     {
+      "entry_type": "term",
+      "entry_id": "term-taberu",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%A3%9F%E3%81%B9%E3%82%8B"
+    },
+    {
       "entry_type": "grammar",
       "entry_id": "grammar-teiru",
       "audio_src": "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3",
@@ -10,7 +17,9 @@
       "audio_license": "CC BY 4.0",
       "audio_attribution": "Grammar Sample Speaker via Wikimedia Commons",
       "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-%E3%81%A6%E3%81%84%E3%82%8B.mp3",
-      "pitch_accent": 0
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%A6%E3%81%84%E3%82%8B"
     }
   ]
 }

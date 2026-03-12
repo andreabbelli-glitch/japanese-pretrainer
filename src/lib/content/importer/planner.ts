@@ -408,6 +408,8 @@ function buildTermPlan(input: {
       audioAttribution: input.term.audio?.audioAttribution ?? null,
       audioPageUrl: input.term.audio?.audioPageUrl ?? null,
       pitchAccent: input.term.pitchAccent ?? null,
+      pitchAccentSource: input.term.pitchAccentSource ?? null,
+      pitchAccentPageUrl: input.term.pitchAccentPageUrl ?? null,
       searchLemmaNorm: normalizeSearchText(input.term.lemma),
       searchReadingNorm,
       searchRomajiNorm,
@@ -477,6 +479,8 @@ function buildGrammarPlan(input: {
       audioAttribution: input.grammarPattern.audio?.audioAttribution ?? null,
       audioPageUrl: input.grammarPattern.audio?.audioPageUrl ?? null,
       pitchAccent: input.grammarPattern.pitchAccent ?? null,
+      pitchAccentSource: input.grammarPattern.pitchAccentSource ?? null,
+      pitchAccentPageUrl: input.grammarPattern.pitchAccentPageUrl ?? null,
       searchPatternNorm: normalizeGrammarSearchText(
         input.grammarPattern.pattern
       ),

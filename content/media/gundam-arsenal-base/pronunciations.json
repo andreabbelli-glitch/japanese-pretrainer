@@ -53,6 +53,30 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-ms-type-long-range",
+      "audio_src": "assets/audio/term/term-ms-type-long-range/forvo-manual-えんきょり.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%81%A0%E8%B7%9D%E9%9B%A2/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ms-type-mobility",
+      "audio_src": "assets/audio/term/term-ms-type-mobility/forvo-manual-きと-う.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%A9%9F%E5%8B%95/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ms-type-near-range",
+      "audio_src": "assets/audio/term/term-ms-type-near-range/forvo-manual-きんきょり.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%BF%91%E8%B7%9D%E9%9B%A2/#ja"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-role-bouei",
       "audio_src": "assets/audio/term/term-role-bouei/forvo-manual-ほ-うえい.mp3",
       "audio_source": "forvo",

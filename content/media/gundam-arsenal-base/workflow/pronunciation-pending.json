@@ -3,69 +3,9 @@
   "media_slug": "gundam-arsenal-base",
   "total_targets": 63,
   "audio_backed_count": 13,
-  "known_missing_count": 20,
-  "pending_count": 30,
+  "known_missing_count": 30,
+  "pending_count": 20,
   "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-rank-match",
-      "label": "ランクマッチ",
-      "reading": "らんくまっち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ve-raid-battle",
-      "label": "VEレイドバトル",
-      "reading": "ぶいいーれいどばとる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-challenge-mode",
-      "label": "チャレンジモード",
-      "reading": "ちゃれんじもーど"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-casual-match",
-      "label": "カジュアルマッチ",
-      "reading": "かじゅあるまっち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-rank-point",
-      "label": "ランクポイント",
-      "reading": "らんくぽいんと"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ex-battle",
-      "label": "EXバトル",
-      "reading": "いーえっくすばとる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-mighty-strike-freedom-gundam",
-      "label": "マイティーストライクフリーダムガンダム",
-      "reading": "まいてぃーすとらいくふりーだむがんだむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-immortal-justice-gundam",
-      "label": "イモータルジャスティスガンダム",
-      "reading": "いもーたるじゃすてぃすがんだむ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-gelgoog-menace-lunamaria-custom",
-      "label": "ゲルググメナース(ルナマリア・ホーク専用機)",
-      "reading": "げるぐぐめなーす るなまりあほーくせんようき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-gquuuuuux-omega-psycommu",
-      "label": "GQuuuuuuX (オメガ・サイコミュ)",
-      "reading": "じーくあくす おめがさいこみゅ"
-    },
     {
       "entry_type": "term",
       "entry_id": "term-red-gundam-0085",

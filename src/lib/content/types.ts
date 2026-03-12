@@ -218,6 +218,12 @@ export interface EntryAudioMetadata {
   audioPageUrl?: string;
 }
 
+export interface EntryPitchAccentMetadata {
+  pitchAccent?: number;
+  pitchAccentSource?: string;
+  pitchAccentPageUrl?: string;
+}
+
 export interface NormalizedTerm {
   kind: "term";
   id: string;
@@ -234,6 +240,8 @@ export interface NormalizedTerm {
   segmentRef?: string;
   audio?: EntryAudioMetadata;
   pitchAccent?: number;
+  pitchAccentSource?: string;
+  pitchAccentPageUrl?: string;
   source: DefinitionSource;
 }
 
@@ -251,6 +259,8 @@ export interface NormalizedGrammarPattern {
   segmentRef?: string;
   audio?: EntryAudioMetadata;
   pitchAccent?: number;
+  pitchAccentSource?: string;
+  pitchAccentPageUrl?: string;
   source: DefinitionSource;
 }
 

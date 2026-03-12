@@ -24,6 +24,7 @@ type EntryKind = "term" | "grammar";
 export type PronunciationFetchNetworkOptions = {
   maxRetries?: number;
   requestDelayMs?: number;
+  requestTimeoutMs?: number;
   retryBaseDelayMs?: number;
 };
 

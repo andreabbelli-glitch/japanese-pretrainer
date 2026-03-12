@@ -57,9 +57,9 @@ export function GlossaryDetailPanels({
 }: GlossaryDetailPageProps & {
   compact?: boolean;
 }) {
-  const pronunciationAudio = data.entry.pronunciation?.src
-    ? data.entry.pronunciation
-    : null;
+  const pronunciation = data.entry.pronunciation;
+  const pitchAccent = pronunciation?.pitchAccent;
+  const pronunciationAudio = pronunciation?.src ? pronunciation : null;
 
   return (
     <>
@@ -74,20 +74,18 @@ export function GlossaryDetailPanels({
           {data.entry.title && data.entry.title !== data.entry.label ? (
             <p className="glossary-entry-hero__subtitle">{data.entry.title}</p>
           ) : null}
-          {data.entry.reading || data.entry.romaji ? (
+          {data.entry.reading || data.entry.romaji || pitchAccent ? (
             <div className="glossary-entry-hero__reading-group">
-              {data.entry.reading ? (
-                data.entry.pronunciation?.pitchAccent ? (
-                  <PitchAccentNotation
-                    pitchAccent={data.entry.pronunciation.pitchAccent}
-                    showMeta={false}
-                    variant="reading"
-                  />
-                ) : (
-                  <p className="glossary-entry-hero__reading jp-inline">
-                    {data.entry.reading}
-                  </p>
-                )
+              {pitchAccent ? (
+                <PitchAccentNotation
+                  pitchAccent={pitchAccent}
+                  showMeta={false}
+                  variant="reading"
+                />
+              ) : data.entry.reading ? (
+                <p className="glossary-entry-hero__reading jp-inline">
+                  {data.entry.reading}
+                </p>
               ) : null}
               {data.entry.romaji ? (
                 <p className="glossary-entry-hero__reading">
@@ -95,6 +93,21 @@ export function GlossaryDetailPanels({
                 </p>
               ) : null}
             </div>
+          ) : null}
+          {pitchAccent &&
+          pronunciation?.pitchAccentSource ? (
+            <p className="glossary-entry-hero__pitch-accent-source">
+              <span>Pitch accent da {pronunciation.pitchAccentSource}</span>
+              {pronunciation.pitchAccentPageUrl ? (
+                <a
+                  href={pronunciation.pitchAccentPageUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Fonte
+                </a>
+              ) : null}
+            </p>
           ) : null}
           <p className="glossary-entry-hero__meaning">{data.entry.meaning}</p>
           {data.entry.literalMeaning ? (
@@ -136,16 +149,16 @@ export function GlossaryDetailPanels({
                         className={`chip${
                           group.label === "Letture" &&
                           value === data.entry.reading &&
-                          data.entry.pronunciation?.pitchAccent
+                          pitchAccent
                             ? " chip--pitch-accent"
                             : ""
                         }`}
                       >
                         {group.label === "Letture" &&
                         value === data.entry.reading &&
-                        data.entry.pronunciation?.pitchAccent ? (
+                        pitchAccent ? (
                           <PitchAccentNotation
-                            pitchAccent={data.entry.pronunciation.pitchAccent}
+                            pitchAccent={pitchAccent}
                             showMeta={false}
                             variant="reading"
                           />

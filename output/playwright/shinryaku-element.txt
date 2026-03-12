@@ -1,0 +1,11 @@
+### Result
+- [Screenshot of element](.playwright-cli/element-2026-03-12T21-49-48-629Z.png)
+### Ran Playwright code
+```js
+// Screenshot element and save it as .playwright-cli/element-2026-03-12T21-49-48-629Z.png
+await page.getByLabel('Pitch accent Heiban (0)').first().screenshot({
+path: '.playwright-cli/element-2026-03-12T21-49-48-629Z.png',
+  scale: 'css',
+  type: 'png'
+});
+```

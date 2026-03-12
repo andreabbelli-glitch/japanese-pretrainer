@@ -277,6 +277,10 @@ describe("content parser and validator", () => {
       audioSrc: "assets/audio/term/term-taberu/term-taberu.ogg"
     });
     expect(result.data.terms[0]?.pitchAccent).toBe(2);
+    expect(result.data.terms[0]?.pitchAccentSource).toBe("Wiktionary");
+    expect(result.data.terms[0]?.pitchAccentPageUrl).toBe(
+      "https://en.wiktionary.org/wiki/%E9%A3%9F%E3%81%B9%E3%82%8B"
+    );
     expect(result.data.grammarPatterns[0]?.audio).toEqual({
       audioAttribution: "Grammar Sample Speaker via Wikimedia Commons",
       audioLicense: "CC BY 4.0",
@@ -287,6 +291,9 @@ describe("content parser and validator", () => {
       audioSrc: "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
     });
     expect(result.data.grammarPatterns[0]?.pitchAccent).toBe(0);
+    expect(result.data.grammarPatterns[0]?.pitchAccentSource).toBe(
+      "Wiktionary"
+    );
   });
 
   it("rejects audio metadata without a local audio_src", async () => {

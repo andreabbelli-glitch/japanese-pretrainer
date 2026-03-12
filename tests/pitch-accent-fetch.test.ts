@@ -61,8 +61,7 @@ describe("pitch accent fetch helpers", () => {
     ]);
   });
 
-  it("confirms a pitch accent only when Wiktionary and OJAD agree", async () => {
-    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-accent-"));
+  it("resolves from Wiktionary before trying later sources", async () => {
     const fetchMock = vi.fn(async (url: string) => {
       if (url.includes("wiktionary")) {
         return new Response(
@@ -70,160 +69,7 @@ describe("pitch accent fetch helpers", () => {
             query: {
               pages: [
                 {
-                  revisions: [
-                    {
-                      slots: {
-                        main: {
-                          content:
-                            "==Japanese==\n===Pronunciation===\n* {{ja-pron|たべる|acc=2|acc_ref=NHK}}\n"
-                        }
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          }),
-          { status: 200 }
-        );
-      }
-
-      if (url.includes("gavo.t.u-tokyo.ac.jp")) {
-        return new Response(sampleOjadHtml, { status: 200 });
-      }
-
-      return new Response("not found", { status: 404, statusText: "Not Found" });
-    });
-    vi.stubGlobal("fetch", fetchMock);
-
-    try {
-      const result = await resolvePitchAccentForEntry({
-        cacheRoot: tempDir,
-        entry: {
-          aliases: [],
-          audio: {
-            audioSrc: "assets/audio/term/term-taberu/term-taberu.ogg"
-          },
-          id: "term-taberu",
-          kind: "term",
-          label: "食べる",
-          mediaDirectory: tempDir,
-          mediaSlug: "fixture",
-          pitchAccent: undefined,
-          reading: "たべる"
-        }
-      });
-
-      expect(result).toMatchObject({
-        pitchAccent: 2,
-        status: "confirmed"
-      });
-    } finally {
-      await rm(tempDir, { force: true, recursive: true });
-    }
-  });
-
-  it("writes pronunciations.json only for confirmed entries", async () => {
-    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-manifest-"));
-    const mediaDirectory = path.join(tempDir, "media", "fixture");
-    const fetchMock = vi.fn(async (url: string) => {
-      if (url.includes("wiktionary")) {
-        return new Response(
-          JSON.stringify({
-            query: {
-              pages: [
-                {
-                  revisions: [
-                    {
-                      slots: {
-                        main: {
-                          content:
-                            "==Japanese==\n===Pronunciation===\n* {{ja-pron|たべる|acc=2|acc_ref=NHK}}\n"
-                        }
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          }),
-          { status: 200 }
-        );
-      }
-
-      return new Response(sampleOjadHtml, { status: 200 });
-    });
-    vi.stubGlobal("fetch", fetchMock);
-
-    try {
-      await fetchPitchAccentsForBundle({
-        bundle: {
-          cardFiles: [],
-          cards: [],
-          grammarPatterns: [],
-          lessons: [],
-          media: null,
-          mediaDirectory,
-          mediaSlug: "fixture",
-          references: [],
-          terms: [
-            {
-              aliases: [],
-              audio: {
-                audioAttribution: "Fixture Speaker",
-                audioSource: "fixture",
-                audioSrc: "assets/audio/term/term-taberu/term-taberu.ogg"
-              },
-              id: "term-taberu",
-              kind: "term",
-              lemma: "食べる",
-              meaningIt: "mangiare",
-              pitchAccent: undefined,
-              reading: "たべる",
-              romaji: "taberu",
-              source: {
-                documentKind: "cards",
-                filePath: "fixture.md",
-                sequence: 0
-              }
-            }
-          ]
-        },
-        cacheRoot: path.join(tempDir, "cache")
-      });
-
-      const manifest = JSON.parse(
-        await readFile(path.join(mediaDirectory, "pronunciations.json"), "utf8")
-      );
-
-      expect(manifest.entries).toEqual([
-        {
-          audio_attribution: "Fixture Speaker",
-          audio_page_url: undefined,
-          audio_license: undefined,
-          audio_source: "fixture",
-          audio_speaker: undefined,
-          audio_src: "assets/audio/term/term-taberu/term-taberu.ogg",
-          entry_id: "term-taberu",
-          entry_type: "term",
-          pitch_accent: 2
-        }
-      ]);
-    } finally {
-      await rm(tempDir, { force: true, recursive: true });
-    }
-  });
-
-  it("writes pitch accent even when the entry has no audio metadata", async () => {
-    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-no-audio-"));
-    const mediaDirectory = path.join(tempDir, "media", "fixture");
-    const fetchMock = vi.fn(async (url: string) => {
-      if (url.includes("wiktionary")) {
-        return new Response(
-          JSON.stringify({
-            query: {
-              pages: [
-                {
+                  title: "進化",
                   revisions: [
                     {
                       slots: {
@@ -242,28 +88,169 @@ describe("pitch accent fetch helpers", () => {
         );
       }
 
-      return new Response(
-        `
-        <table>
-          <tr id="word_7361">
-            <td class="midashi">
-              <div class="midashi_wrapper">
-                <p class="midashi_word">進化</p>
-              </div>
-            </td>
-            <td class="katsuyo katsuyo_jisho_js">
-              <div class="katsuyo_proc">
-                <p>
-                  <span class="katsuyo_accent"><span class="accented_word"><span class=" accent_top mola_-3"><span class="inner"><span class="char">し</span></span></span><span class="mola_-2"><span class="inner"><span class="char">ん</span></span></span><span class="mola_-1"><span class="inner"><span class="char">か</span></span></span></span></span>
-                </p>
-              </div>
-            </td>
-          </tr>
-        </table>
-        `,
-        { status: 200 }
-      );
+      return new Response(sampleOjadHtml, { status: 200 });
     });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await resolvePitchAccentForEntry({
+      entry: {
+        aliases: [],
+        id: "term-shinka",
+        kind: "term",
+        label: "進化",
+        mediaDirectory: "/tmp/fixture",
+        mediaSlug: "fixture",
+        reading: "しんか"
+      },
+      network: {
+        requestDelayMs: 0
+      }
+    });
+
+    expect(result).toMatchObject({
+      pitchAccent: 1,
+      source: {
+        pageUrl: "https://en.wiktionary.org/wiki/%E9%80%B2%E5%8C%96",
+        sourceLabel: "Wiktionary"
+      },
+      status: "resolved"
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("falls back to OJAD when Wiktionary does not resolve", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("wiktionary")) {
+        return new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  title: "食べる",
+                  revisions: [
+                    {
+                      slots: {
+                        main: {
+                          content: "==Japanese==\n===Pronunciation===\n"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }),
+          { status: 200 }
+        );
+      }
+
+      return new Response(sampleOjadHtml, { status: 200 });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await resolvePitchAccentForEntry({
+      entry: {
+        aliases: [],
+        id: "term-taberu",
+        kind: "term",
+        label: "食べる",
+        mediaDirectory: "/tmp/fixture",
+        mediaSlug: "fixture",
+        reading: "たべる"
+      },
+      network: {
+        requestDelayMs: 0
+      }
+    });
+
+    expect(result).toMatchObject({
+      pitchAccent: 2,
+      source: {
+        sourceLabel: "OJAD"
+      },
+      status: "resolved"
+    });
+  });
+
+  it("treats OJAD 404 alternatives as misses instead of source errors", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("wiktionary")) {
+        return new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  title: "時",
+                  revisions: [
+                    {
+                      slots: {
+                        main: {
+                          content: "==Japanese==\n===Pronunciation===\n"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }),
+          { status: 200 }
+        );
+      }
+
+      return new Response("Not Found", { status: 404, statusText: "Not Found" });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await resolvePitchAccentForEntry({
+      entry: {
+        aliases: [],
+        id: "grammar-toki",
+        kind: "grammar",
+        label: "時",
+        mediaDirectory: "/tmp/fixture",
+        mediaSlug: "fixture",
+        reading: "とき / たとき"
+      },
+      network: {
+        requestDelayMs: 0
+      }
+    });
+
+    expect(result).toEqual({
+      entryId: "grammar-toki",
+      kind: "grammar",
+      status: "miss"
+    });
+  });
+
+  it("writes pronunciations.json with pitch accent source metadata", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-manifest-"));
+    const mediaDirectory = path.join(tempDir, "media", "fixture");
+    const fetchMock = vi.fn(async () =>
+      new Response(
+        JSON.stringify({
+          query: {
+            pages: [
+              {
+                title: "進化",
+                revisions: [
+                  {
+                    slots: {
+                      main: {
+                        content:
+                          "==Japanese==\n===Pronunciation===\n* {{ja-pron|しんか|acc=1|acc_ref=NHK}}\n"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }),
+        { status: 200 }
+      )
+    );
     vi.stubGlobal("fetch", fetchMock);
 
     try {
@@ -295,7 +282,9 @@ describe("pitch accent fetch helpers", () => {
             }
           ]
         },
-        cacheRoot: path.join(tempDir, "cache")
+        network: {
+          requestDelayMs: 0
+        }
       });
 
       const manifest = JSON.parse(
@@ -306,7 +295,10 @@ describe("pitch accent fetch helpers", () => {
         {
           entry_id: "term-shinka",
           entry_type: "term",
-          pitch_accent: 1
+          pitch_accent: 1,
+          pitch_accent_page_url:
+            "https://en.wiktionary.org/wiki/%E9%80%B2%E5%8C%96",
+          pitch_accent_source: "Wiktionary"
         }
       ]);
     } finally {
