@@ -153,7 +153,7 @@ async function buildMediaShellSnapshot(
     title: media.title,
     description:
       media.description ??
-      `Pacchetto ${formatMediaTypeLabel(media.mediaType).toLowerCase()} pronto per textbook, glossary e review.`,
+      `Pacchetto ${formatMediaTypeLabel(media.mediaType).toLowerCase()} pronto per Textbook, Glossary e Review.`,
     mediaType: media.mediaType,
     mediaTypeLabel: formatMediaTypeLabel(media.mediaType),
     segmentKindLabel: formatSegmentKindLabel(media.segmentKind),
@@ -270,7 +270,7 @@ function buildReviewSignals({
           : reviewQueue.newQueuedCount > 0
             ? "Nuove pronte"
             : `${reviewQueue.queueCount} in coda`,
-      detail: nextCard ? `Prossima carta: ${nextCard.front}` : "Sessione pronta",
+      detail: nextCard ? `Prossima card: ${nextCard.front}` : "Sessione pronta",
       queueLabel: reviewQueue.queueLabel
     };
   }
@@ -278,7 +278,7 @@ function buildReviewSignals({
   if (cardsDue > 0) {
     return {
       value: `${cardsDue} dovute`,
-      detail: nextCard ? `Prossima carta: ${nextCard.front}` : "Richiedono attenzione adesso",
+      detail: nextCard ? `Prossima card: ${nextCard.front}` : "Richiedono attenzione adesso",
       queueLabel:
         cardsDue === 1
           ? "1 card richiede attenzione adesso."
@@ -303,15 +303,15 @@ function buildReviewSignals({
   if (cardsTotal > 0) {
     return {
       value: "In pausa",
-      detail: "Le card presenti non richiedono review attiva",
-      queueLabel: "Le card presenti non richiedono review attiva in questo momento."
+      detail: "Le card presenti non richiedono Review attiva",
+      queueLabel: "Le card presenti non richiedono Review attiva in questo momento."
     };
   }
 
   return {
     value: "Vuota",
-    detail: "Nessuna card review disponibile",
-    queueLabel: "La coda review si popolerà quando importerai le prime card."
+    detail: "Nessuna card di Review disponibile",
+    queueLabel: "La coda di Review si popolerà quando importerai le prime card."
   };
 }
 

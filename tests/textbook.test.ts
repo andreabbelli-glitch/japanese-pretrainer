@@ -414,6 +414,7 @@ describe("textbook data", () => {
         furiganaMode: "hover",
         isTouchLayout: false,
         mediaSlug: "demo-media",
+        onImageExpand() {},
         onReferenceBlur() {},
         onReferenceClick() {},
         onReferenceFocus() {},

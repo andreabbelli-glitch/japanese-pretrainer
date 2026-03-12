@@ -33,20 +33,12 @@ export function SiteShell({ children }: SiteShellProps) {
         <div className="site-header__inner">
           <Link className="brand" href="/">
             <span className="brand__eyebrow">Japanese Custom Study</span>
-            <span className="brand__title">Scrivania editoriale</span>
+            <span className="brand__title">Studio del giapponese</span>
           </Link>
 
           <Suspense fallback={<SiteShellPrimaryNavFallback />}>
             <SiteShellPrimaryNav />
           </Suspense>
-
-          <div className="site-header__meta">
-            <span className="site-header__meta-label">Locale-first</span>
-            <span className="site-header__meta-divider" aria-hidden="true">
-              ·
-            </span>
-            <span className="site-header__meta-value">single-user</span>
-          </div>
         </div>
       </header>
 

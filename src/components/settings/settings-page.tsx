@@ -26,7 +26,7 @@ const furiganaOptions = [
   },
   {
     description:
-      "Le mostra al bisogno nel reader e resta la modalità più sobria.",
+      "Le mostra solo quando servono, per una lettura più pulita.",
     label: "Su richiesta",
     value: "hover"
   }
@@ -54,10 +54,10 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
     <div className="settings-page">
       <StickyPageHeader
         backHref={returnTo ?? undefined}
-        backLabel={returnTo ? "Torna alla review" : undefined}
+        backLabel={returnTo ? "Torna alla Review" : undefined}
         eyebrow="Settings"
         title="Preferenze di studio"
-        summary="Poche decisioni persistenti, con effetti reali su reader, glossary e review."
+        summary="Poche preferenze persistenti, con effetti reali su reader, Glossary e Review."
         meta={
           <>
             <span>Locale-first</span>
@@ -68,7 +68,7 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
         actions={
           returnTo ? (
             <Link className="button button--ghost" href={returnTo}>
-              Torna alla review
+              Torna alla Review
             </Link>
           ) : null
         }
@@ -81,9 +81,8 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
             Mantieni lo studio leggibile, coerente e facile da riprendere.
           </h2>
           <p className="settings-hero__summary">
-            Le preferenze qui sotto non restano nel client: aggiornano
-            `user_setting` e si riflettono davvero sulle schermate di studio già
-            presenti.
+            Le preferenze qui sotto vengono salvate e si applicano subito alle
+            schermate di studio già presenti.
           </p>
           <div className="settings-hero__chips">
             <span className="chip">Furigana: {settings.furiganaMode}</span>
@@ -126,8 +125,8 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
 
       <Section
         eyebrow="Preferenze"
-        title="Controlli sobri, ma operativi"
-        description="Ogni gruppo modifica una parte già esistente dell’app, senza introdurre pannelli tecnici o stati finti."
+        title="Preferenze essenziali"
+        description="Ogni gruppo aggiorna un comportamento reale dell’app."
       >
         <form action={saveStudySettingsAction} className="settings-form">
           {returnTo ? (
@@ -140,7 +139,7 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
                 <h3 className="settings-panel__title">Furigana</h3>
               </div>
               <p className="settings-panel__body">
-                Vale per il textbook index e per il reader lesson.
+                Vale per l&apos;indice del Textbook e per il reader delle lesson.
               </p>
             </div>
             <div className="settings-choice-grid">
@@ -197,8 +196,7 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
                 <h3 className="settings-panel__title">Ordine predefinito</h3>
               </div>
               <p className="settings-panel__body">
-                Resta un’impostazione essenziale: cambia l’ordine iniziale del
-                glossary, ma lascia invariata la qualità del ranking quando stai
+                Cambia l’ordine iniziale del Glossary, ma lascia invariata la qualità del ranking quando stai
                 cercando qualcosa.
               </p>
             </div>

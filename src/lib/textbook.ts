@@ -339,7 +339,7 @@ function buildTextbookIndexModel(input: {
       title: input.media.title,
       description:
         input.media.description ??
-        `${input.media.title} è pronto per una lettura lunga, ordinata e contestuale.`,
+        `${input.media.title} è pronto per una lettura ordinata e facile da seguire.`,
       mediaTypeLabel: formatMediaTypeLabel(input.media.mediaType),
       segmentKindLabel: formatSegmentKindLabel(input.media.segmentKind)
     },

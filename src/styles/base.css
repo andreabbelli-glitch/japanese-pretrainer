@@ -1313,8 +1313,16 @@ rt {
 }
 
 .reader-image--interactive,
-.reader-article--fallback figure.reader-image--interactive {
+.reader-image--zoomable,
+.reader-article--fallback figure.reader-image--interactive,
+.reader-article--fallback figure.reader-image--zoomable {
   cursor: pointer;
+}
+
+.reader-image--zoomable,
+.reader-image__button--zoom,
+.reader-article--fallback figure.reader-image--zoomable {
+  cursor: zoom-in;
 }
 
 .reader-image__button,
@@ -1359,7 +1367,9 @@ rt {
 }
 
 .reader-image--interactive .reader-image__asset,
-.reader-article--fallback figure.reader-image--interactive .reader-image__asset {
+.reader-image--zoomable .reader-image__asset,
+.reader-article--fallback figure.reader-image--interactive .reader-image__asset,
+.reader-article--fallback figure.reader-image--zoomable .reader-image__asset {
   transition:
     transform 160ms ease,
     box-shadow 160ms ease,
@@ -1367,9 +1377,11 @@ rt {
 }
 
 .reader-image--interactive:hover .reader-image__asset,
+.reader-image--zoomable:hover .reader-image__asset,
 .reader-image__button:focus-visible .reader-image__asset,
 .reader-image--active .reader-image__asset,
 .reader-article--fallback figure.reader-image--interactive:hover .reader-image__asset,
+.reader-article--fallback figure.reader-image--zoomable:hover .reader-image__asset,
 .reader-article--fallback .reader-image__button:focus-visible .reader-image__asset,
 .reader-article--fallback figure.reader-image--active .reader-image__asset {
   border-color: rgba(160, 128, 74, 0.92);
@@ -1396,6 +1408,74 @@ rt {
 .reader-article--fallback figure.reader-image--card .reader-image__caption {
   max-width: 34ch;
   text-align: center;
+}
+
+.reader-image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: grid;
+  place-items: center;
+  padding: clamp(var(--space-4), 2.4vw, var(--space-7));
+}
+
+.reader-image-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(19, 16, 14, 0.82);
+}
+
+.reader-image-lightbox__surface {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-4);
+  width: min(100%, 72rem);
+  max-height: calc(100vh - 2 * var(--space-4));
+  padding: clamp(var(--space-4), 2.2vw, var(--space-6));
+  border: 1px solid rgba(210, 197, 177, 0.24);
+  border-radius: calc(var(--radius-xl) + 0.25rem);
+  background:
+    linear-gradient(180deg, rgba(43, 37, 32, 0.98), rgba(24, 21, 18, 0.98));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+  color: var(--color-ink-inverse);
+  overflow-y: auto;
+}
+
+.reader-image-lightbox__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.reader-image-lightbox__top > .eyebrow {
+  margin: 0;
+  color: rgba(247, 242, 232, 0.72);
+}
+
+.reader-image-lightbox__frame {
+  display: grid;
+  place-items: center;
+}
+
+.reader-image-lightbox__asset {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 13rem);
+  height: auto;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 242, 0.06);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+}
+
+.reader-image-lightbox__caption {
+  margin: 0;
+  color: rgba(247, 242, 232, 0.84);
+  font-size: var(--text-small);
+  line-height: 1.6;
 }
 
 .reader-example-sentence__jp,

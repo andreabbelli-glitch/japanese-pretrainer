@@ -17,7 +17,7 @@ export async function DashboardHome() {
         <EmptyState
           eyebrow="Primo avvio"
           title="La scrivania è pronta, ma non ci sono ancora media importati."
-          description="Quando sincronizzi il primo pacchetto di studio, qui compariranno ripresa lesson, review di oggi e segnali utili per ricominciare senza rumore."
+          description="Quando sincronizzi il primo pacchetto di studio, qui troverai il punto da cui riprendere, le card di oggi e i collegamenti principali."
           action={
             <Link className="button button--primary" href="/media">
               Apri libreria
@@ -37,7 +37,7 @@ export async function DashboardHome() {
     <div className="dashboard-page">
       <section className="hero-grid">
         <SurfaceCard className="dashboard-hero" variant="hero">
-          <p className="eyebrow">Oggi sul tavolo</p>
+          <p className="eyebrow">Da riprendere</p>
           <p className="dashboard-hero__jp jp-inline">読む・拾う・定着させる</p>
           <h1 className="dashboard-hero__title">{focusMedia.title}</h1>
           <p className="dashboard-hero__summary">{focusMedia.description}</p>
@@ -52,10 +52,10 @@ export async function DashboardHome() {
               className="button button--primary"
               href={focusResumeHref}
             >
-              Riprendi studio
+              Riprendi
             </Link>
             <Link className="button button--ghost" href={mediaHref(focusMedia.slug)}>
-              Apri media
+              Vai al media
             </Link>
           </div>
 
@@ -70,7 +70,7 @@ export async function DashboardHome() {
               }
             />
             <StatBlock
-              detail={`${focusMedia.entriesTotal} entry disponibili`}
+              detail={`${focusMedia.entriesTotal} voci disponibili`}
               label="Glossary"
               value={
                 focusMedia.entriesTotal > 0
@@ -89,17 +89,17 @@ export async function DashboardHome() {
 
         <SurfaceCard className="dashboard-focus" variant="accent">
           <p className="eyebrow">Review di oggi</p>
-          <h2 className="dashboard-focus__title">Una decisione chiara sopra la piega</h2>
+          <h2 className="dashboard-focus__title">La tua Review di oggi</h2>
           <div className="dashboard-focus__stats">
             <StatBlock
               detail={buildAggregateDueDetail(totals.cardsDue)}
-              label="Card dovute"
+              label="Da ripassare oggi"
               tone={totals.cardsDue > 0 ? "warning" : "default"}
               value={totals.cardsDue > 0 ? `${totals.cardsDue}` : "0"}
             />
             <StatBlock
               detail={buildAggregateActiveDetail(totals.activeReviewCards)}
-              label="Coda attiva"
+              label="Card attive"
               value={`${totals.activeReviewCards}`}
             />
           </div>
@@ -113,9 +113,9 @@ export async function DashboardHome() {
       </section>
 
       <Section
-        description="Card ampie, pochi segnali utili e gerarchia forte invece di un catalogo da backoffice."
+        description="Scegli rapidamente da dove riprendere, senza perdere il contesto."
         eyebrow="Media attivi"
-        title="Da dove puoi ripartire"
+        title="Continua da qui"
       >
         <div className="media-grid media-grid--dashboard">
           {media.map((item) => (
@@ -137,8 +137,8 @@ export async function DashboardHome() {
                       ? `Ora: ${item.currentLesson.title}`
                       : `${item.lessonsTotal} lesson`}
                   </span>
-                  <span>{item.cardsDue} dovute</span>
-                  <span>{item.entriesTotal} entry</span>
+                  <span>{item.cardsDue} da ripassare</span>
+                  <span>{item.entriesTotal} voci</span>
                 </div>
               </SurfaceCard>
             </Link>
@@ -149,9 +149,9 @@ export async function DashboardHome() {
       <section className="content-section content-section--split">
         <Section
           className="dashboard-progress-section"
-          description="Il progresso orienta e rassicura: niente streak, niente muri di KPI."
-          eyebrow="Progressi calmi"
-          title="Tre segnali, non un cruscotto"
+          description="Qui vedi solo i progressi utili per riprendere."
+          eyebrow="Avanzamento"
+          title="Avanzamento"
         >
           <div className="stats-grid">
             <StatBlock
@@ -164,7 +164,7 @@ export async function DashboardHome() {
               }
             />
             <StatBlock
-              detail={`${totals.entriesTotal} entry canoniche`}
+              detail={`${totals.entriesTotal} voci nel Glossary`}
               label="Glossary"
               value={
                 totals.entriesTotal > 0
@@ -173,7 +173,7 @@ export async function DashboardHome() {
               }
             />
             <StatBlock
-              detail="Da distribuire con calma durante la settimana"
+              detail={`${totals.activeReviewCards} card attive`}
               label="Review"
               tone={totals.cardsDue > 0 ? "warning" : "default"}
               value={totals.cardsDue > 0 ? `${totals.cardsDue} oggi` : "Nessuna urgenza"}
@@ -183,9 +183,9 @@ export async function DashboardHome() {
 
         <Section
           className="dashboard-cues-section"
-          description="La homepage deve rispondere a “e adesso?” prima che a “quanto ho fatto?”."
+          description="Trova subito il prossimo passo utile."
           eyebrow="Continua da qui"
-          title="Prossimi passi morbidi"
+          title="Prossimi passi"
         >
           <div className="stack-list">
             <SurfaceCard className="cue-card" variant="quiet">
@@ -207,14 +207,14 @@ export async function DashboardHome() {
               <h3 className="cue-card__title">Glossary</h3>
               <p className="cue-card__body">
                 {focusMedia.previewEntries[0]
-                  ? `${focusMedia.previewEntries[0].label} e altre ${focusMedia.entriesTotal - 1} entry già nel DB.`
-                  : "Il glossary apparirà qui appena importerai termini e pattern."}
+                  ? `${focusMedia.previewEntries[0].label} e altre ${focusMedia.entriesTotal - 1} voci già disponibili.`
+                  : "Qui troverai il Glossary appena importerai termini e pattern."}
               </p>
               <Link
                 className="text-link"
                 href={mediaStudyHref(focusMedia.slug, "glossary")}
               >
-                Apri glossary
+                Apri Glossary
               </Link>
             </SurfaceCard>
 
@@ -237,36 +237,36 @@ export async function DashboardHome() {
 
 function buildAggregateDueDetail(cardsDue: number) {
   if (cardsDue === 0) {
-    return "Nessuna card richiede attenzione adesso";
+    return "Nessuna card da ripassare";
   }
 
   return cardsDue === 1
-    ? "1 card richiede attenzione adesso"
-    : `${cardsDue} card richiedono attenzione adesso`;
+    ? "Hai 1 card da ripassare"
+    : `Hai ${cardsDue} card da ripassare`;
 }
 
 function buildAggregateActiveDetail(activeReviewCards: number) {
   if (activeReviewCards === 0) {
-    return "Nessuna card e in rotazione";
+    return "Nessuna card attiva";
   }
 
   return activeReviewCards === 1
-    ? "1 card e gia nella rotazione"
-    : `${activeReviewCards} card sono gia nella rotazione`;
+    ? "1 card attiva"
+    : `${activeReviewCards} card attive`;
 }
 
 function buildAggregateQueueNote(cardsDue: number, activeReviewCards: number) {
   if (cardsDue > 0) {
     return activeReviewCards > 0
-      ? `${cardsDue} card richiedono attenzione adesso; ${activeReviewCards} sono gia nella rotazione.`
-      : `${cardsDue} card richiedono attenzione adesso.`;
+      ? `Hai ${cardsDue} card da ripassare; ${activeReviewCards} card sono attive.`
+      : `Hai ${cardsDue} card da ripassare.`;
   }
 
   if (activeReviewCards > 0) {
     return activeReviewCards === 1
-      ? "1 card e gia nella rotazione e oggi la coda e in pari."
-      : `${activeReviewCards} card sono gia nella rotazione e oggi la coda e in pari.`;
+      ? "Oggi non hai card da ripassare; 1 card è ancora attiva."
+      : `Oggi non hai card da ripassare; ${activeReviewCards} card sono ancora attive.`;
   }
 
-  return "La coda review si popolera quando le prime card entreranno in studio.";
+  return "La coda Review si popolerà quando le prime card entreranno in studio.";
 }

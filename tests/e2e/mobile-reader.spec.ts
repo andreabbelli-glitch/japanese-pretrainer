@@ -20,7 +20,7 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
   ).toBeVisible();
   await expect(mobileSheet).not.toContainText("Livello:");
   await expect(mobileSheet).not.toContainText("Segmento:");
-  await expect(mobileSheet.getByRole("link", { name: "Apri entry" })).toBeVisible();
+  await expect(mobileSheet.getByRole("link", { name: "Apri voce" })).toBeVisible();
 
   await page.getByRole("button", { name: "Chiudi", exact: true }).click();
   await page.getByRole("button", { name: "Lezioni" }).click();
@@ -31,4 +31,30 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
       name: /TCG Core - Montare il testo effetto/
     })
   ).toBeVisible();
+});
+
+test("opens textbook screenshots in a lightbox on mobile", async ({ page }) => {
+  await page.goto(
+    "/media/duel-masters-dm25/textbook/duel-plays-app-modes-and-progression"
+  );
+
+  await page
+    .getByRole("button", {
+      name: /Apri immagine ingrandita: Schermata Battle di デュエプレ/
+    })
+    .click();
+
+  const lightbox = page.getByRole("dialog", {
+    name: "Immagine ingrandita"
+  });
+
+  await expect(lightbox).toBeVisible();
+  await expect(
+    lightbox.getByRole("img", {
+      name: /Schermata Battle di デュエプレ/
+    })
+  ).toBeVisible();
+
+  await page.keyboard.press("Escape");
+  await expect(lightbox).toBeHidden();
 });

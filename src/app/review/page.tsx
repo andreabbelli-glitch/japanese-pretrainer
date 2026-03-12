@@ -19,8 +19,8 @@ export default async function ReviewPage() {
     <div className="dashboard-page">
       <EmptyState
         eyebrow="Review"
-        title="Non ci sono ancora media pronti per la review."
-        description="Importa almeno un bundle con card reali, poi questo ingresso ti porterà direttamente alla sessione del media più naturale da riprendere."
+        title="Non ci sono ancora media pronti per la Review."
+        description="Importa almeno un bundle con card reali, poi questa pagina ti porterà direttamente alla sessione più naturale da riprendere."
         action={
           <Link className="button button--primary" href="/media">
             Apri libreria

@@ -23,7 +23,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
         backHref={mediaHref(data.media.slug)}
         backLabel={data.media.title}
         eyebrow="Textbook"
-        title="Percorso lesson"
+        title="Percorso delle lesson"
         summary={data.media.description}
         meta={
           <>
@@ -47,7 +47,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
           <p className="textbook-hero__summary">
             {data.resumeLesson?.summary ??
               data.resumeLesson?.excerpt ??
-              "Le lesson restano ordinate per segmento, con progressi calmi e un ingresso leggibile."}
+              "Le lesson restano ordinate per segmento, con un punto di ripresa chiaro e facile da seguire."}
           </p>
           <div className="textbook-hero__meta">
             <span>{data.completedLessons} completate</span>
@@ -61,7 +61,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
               </Link>
             ) : null}
             <Link className="button button--ghost" href={data.glossaryHref}>
-              Apri glossary
+              Apri Glossary
             </Link>
             <Link className="button button--ghost" href="/settings">
               Settings
@@ -96,8 +96,8 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
 
       <Section
         eyebrow="Lesson"
-        title="Scegli il punto di ingresso"
-        description="La landing del textbook aiuta a capire dove iniziare, cosa è in corso e quale blocco del media stai attraversando."
+        title="Scegli da dove riprendere"
+        description="La pagina iniziale del Textbook ti aiuta a capire dove iniziare, cosa è in corso e quale blocco del media stai attraversando."
       >
         {data.groups.length > 0 ? (
           <div className="textbook-group-list">
@@ -135,7 +135,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
                         <p className="textbook-lesson-card__body">
                           {lesson.summary ??
                             lesson.excerpt ??
-                            "Lesson pronta nel reader con tooltip e controllo furigana."}
+                            "Apri la lesson nel reader con tooltip e controllo furigana."}
                         </p>
                         <div className="textbook-lesson-card__footer">
                           <span>{lesson.segmentTitle}</span>

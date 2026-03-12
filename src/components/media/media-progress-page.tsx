@@ -19,7 +19,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
         backLabel={`Torna a ${data.media.title}`}
         eyebrow="Progress"
         title={data.media.title}
-        summary="Una vista calma per capire quanto hai letto, quante entry hai già toccato e cosa conviene riprendere adesso."
+        summary="Una vista essenziale per capire quanto hai letto, quante voci hai già incontrato e cosa conviene riprendere adesso."
         meta={
           <>
             <span>{data.media.mediaTypeLabel}</span>
@@ -29,7 +29,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
         }
         actions={
           <Link className="button button--ghost" href={data.media.settingsHref}>
-            Apri settings
+            Apri Settings
           </Link>
         }
       />
@@ -49,7 +49,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
               </Link>
             ) : (
               <Link className="button button--ghost" href={data.media.textbookHref}>
-                Apri textbook
+                Apri Textbook
               </Link>
             )}
           </div>
@@ -64,8 +64,8 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
               }
             />
             <StatBlock
-              detail={`${data.glossary.entriesTotal} entry nel media`}
-              label="Coverage"
+              detail={`${data.glossary.entriesTotal} voci nel Glossary`}
+              label="Glossary"
               value={`${data.glossary.entriesCovered}/${data.glossary.entriesTotal}`}
             />
             <StatBlock
@@ -91,11 +91,11 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
               <strong>{data.settings.furiganaMode}</strong>
             </div>
             <div className="summary-row">
-              <span>Nuove review</span>
+              <span>Nuove card</span>
               <strong>{data.settings.reviewDailyLimit}/giorno</strong>
             </div>
             <div className="summary-row">
-              <span>Ordine glossary</span>
+              <span>Ordine del Glossary</span>
               <strong>
                 {data.settings.glossaryDefaultSort === "lesson_order"
                   ? "percorso"
@@ -104,7 +104,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
             </div>
           </div>
           <p className="panel-note">
-            I setting vengono letti dal DB e influenzano già reader, glossary e review.
+            Le preferenze si applicano subito a reader, Glossary e Review.
           </p>
         </SurfaceCard>
       </section>
@@ -156,27 +156,27 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
 
         <Section
           eyebrow="Glossary"
-          title="Coverage delle entry"
-          description="Conta le entry già toccate davvero: override manuali, review attive e stati di studio."
+          title="Voci già coperte"
+          description="Conta le voci che hai già incontrato davvero: segnali manuali, Review attive e stati di studio."
         >
           <div className="stats-grid stats-grid--stacked">
             <StatBlock
-              detail="Entry già toccate in modo reale."
+              detail="Voci già incontrate in modo reale."
               label="Coperte"
               value={`${data.glossary.entriesCovered}/${data.glossary.entriesTotal}`}
             />
             <StatBlock
-              detail="Override manuali o segnali equivalenti."
+              detail="Segnate manualmente o con segnali equivalenti."
               label="Già note"
               value={String(data.glossary.breakdown.known)}
             />
             <StatBlock
-              detail="Entry già entrate nella rotazione review."
-              label="In review"
+              detail="Voci già entrate nella rotazione di Review."
+              label="In Review"
               value={String(data.glossary.breakdown.review)}
             />
             <StatBlock
-              detail="Entry in studio ma non ancora stabili."
+              detail="Voci in studio ma non ancora stabili."
               label="In studio"
               value={String(data.glossary.breakdown.learning)}
             />
@@ -188,7 +188,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
                   <SurfaceCard className="entry-preview-card" variant="quiet">
                     <div className="entry-preview-card__top">
                       <span className="chip">
-                        {entry.kind === "term" ? "Term" : "Grammar"}
+                        {entry.kind === "term" ? "Termine" : "Grammatica"}
                       </span>
                       <span className="meta-pill">{entry.statusLabel}</span>
                     </div>
@@ -209,7 +209,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
         <Section
           eyebrow="Review"
           title="Coda e carico quotidiano"
-          description="Pochi segnali utili: cosa è dovuto ora, quante nuove entrano oggi e quanto rimane in rotazione."
+          description="Pochi segnali utili: cosa è dovuto ora, quante nuove entrano oggi e quante restano attive."
         >
           <div className="stats-grid stats-grid--stacked">
             <StatBlock
@@ -253,7 +253,7 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
         <Section
           eyebrow="Continua"
           title="Ingressi rapidi"
-          description="Le CTA restano poche: una per leggere, una per consultare, una per ripassare."
+          description="Le azioni principali restano tre: leggere, consultare, ripassare."
         >
           <div className="entry-point-grid">
             <Link className="entry-point-link" href={data.resume.currentLessonHref ?? data.media.textbookHref}>
@@ -278,10 +278,10 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
                   <span className="entry-point-card__arrow">Apri</span>
                 </div>
                 <p className="entry-point-card__body">
-                  Consulta le entry già presenti nel media.
+                  Consulta le voci già presenti nel media.
                 </p>
                 <p className="entry-point-card__detail">
-                  {data.glossary.entriesCovered}/{data.glossary.entriesTotal} già toccate
+                  {data.glossary.entriesCovered}/{data.glossary.entriesTotal} già viste
                 </p>
               </SurfaceCard>
             </Link>

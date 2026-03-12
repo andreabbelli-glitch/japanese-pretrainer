@@ -203,6 +203,7 @@ function renderList(
 }
 
 function renderImage(block: ImageBlock, mediaSlug: string) {
+  const imageSrc = mediaAssetHref(mediaSlug, block.src);
   const variantClassName = block.src.startsWith("assets/cards/")
     ? "reader-image reader-image--card"
     : block.src.startsWith("assets/ui/")
@@ -211,20 +212,29 @@ function renderImage(block: ImageBlock, mediaSlug: string) {
   const cardDataAttribute = block.cardId
     ? ` data-card-id="${escapeAttribute(block.cardId)}"`
     : "";
+  const zoomDataAttributes = block.cardId
+    ? ""
+    : [
+        ` data-image-src="${escapeAttribute(imageSrc)}"`,
+        ` data-image-alt="${escapeAttribute(block.alt)}"`,
+        block.caption
+          ? ` data-image-caption="${escapeAttribute(extractInlineNodesText(block.caption.nodes))}"`
+          : ""
+      ].join("");
   const media = block.cardId
     ? [
         `<button class="reader-image__button" type="button"${cardDataAttribute}>`,
         '<span class="reader-image__hint">Card</span>',
-        `<img class="reader-image__asset" src="${escapeAttribute(mediaAssetHref(mediaSlug, block.src))}" alt="${escapeAttribute(block.alt)}" loading="lazy" decoding="async" />`,
+        `<img class="reader-image__asset" src="${escapeAttribute(imageSrc)}" alt="${escapeAttribute(block.alt)}" loading="lazy" decoding="async" />`,
         "</button>"
       ].join("")
-    : `<img class="reader-image__asset" src="${escapeAttribute(mediaAssetHref(mediaSlug, block.src))}" alt="${escapeAttribute(block.alt)}" loading="lazy" decoding="async" />`;
+    : `<img class="reader-image__asset" src="${escapeAttribute(imageSrc)}" alt="${escapeAttribute(block.alt)}" loading="lazy" decoding="async" />`;
   const caption = block.caption
     ? `<figcaption class="reader-image__caption">${renderInlineNodes(block.caption.nodes)}</figcaption>`
     : "";
 
   return [
-    `<figure class="${variantClassName}"${cardDataAttribute}>`,
+    `<figure class="${variantClassName}"${cardDataAttribute}${zoomDataAttributes}>`,
     media,
     caption,
     "</figure>"

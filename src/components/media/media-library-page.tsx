@@ -17,13 +17,13 @@ export async function MediaLibraryPage() {
       <div className="media-library-page">
         <StickyPageHeader
           eyebrow="Libreria"
-          summary="La raccolta dei pacchetti di studio resta leggibile e calma anche quando è vuota o incompleta."
+          summary="La raccolta dei pacchetti di studio resta chiara anche quando è vuota o incompleta."
           title="Media"
         />
         <EmptyState
           eyebrow="Nessun pacchetto ancora pronto"
-          title="La media library comparirà qui dopo il primo import."
-          description="Ogni media sincronizzato nel DB diventa un punto di ingresso per textbook, glossary, review e progress, senza dipendere dal parsing a runtime."
+          title="La libreria comparirà qui dopo il primo import."
+          description="Ogni media importato diventa un punto di accesso a Textbook, Glossary, Review e Progress."
         />
       </div>
     );
@@ -33,13 +33,13 @@ export async function MediaLibraryPage() {
     <div className="media-library-page">
       <StickyPageHeader
         eyebrow="Libreria"
-        summary="Una panoramica sobria dei media attivi, con metriche sintetiche e un entry point chiaro per ciascun percorso di studio."
+        summary="Una panoramica dei media attivi, con metriche essenziali e un punto di accesso chiaro per ogni percorso di studio."
         title="Media"
         meta={<span>{media.length} pacchetti attivi</span>}
       />
 
       <Section
-        description="Ogni card privilegia titolo, stato e prossimo passo. Le metriche restano piccole e secondarie."
+        description="Ogni card mostra titolo, stato e punto di ripresa."
         eyebrow="Pacchetti di studio"
         title="Libreria attiva"
       >
@@ -75,7 +75,7 @@ export async function MediaLibraryPage() {
                     }
                   />
                   <StatBlock
-                    detail={`${item.entriesTotal} entry canoniche`}
+                    detail={`${item.entriesTotal} voci nel Glossary`}
                     label="Glossary"
                     value={
                       item.entriesTotal > 0

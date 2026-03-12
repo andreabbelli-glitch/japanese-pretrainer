@@ -26,7 +26,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
   const hasEntries = data.resultSummary.total > 0;
   const backHref = returnTo ?? mediaHref(data.media.slug);
   const backLabel = returnTo
-    ? "Torna alla review"
+    ? "Torna alla Review"
     : `Torna a ${data.media.title}`;
   const glossaryHref = appendReturnToParam(data.media.glossaryHref, returnTo);
 
@@ -47,20 +47,20 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
         }
         actions={
           <Link className="button button--ghost" href={data.media.textbookHref}>
-            Apri textbook
+            Apri Textbook
           </Link>
         }
       />
 
       <section className="hero-grid hero-grid--detail">
         <SurfaceCard className="glossary-hero" variant="hero">
-          <p className="eyebrow">Lookup</p>
+          <p className="eyebrow">Ricerca</p>
           <h2 className="glossary-hero__title">
             Cerca una forma e ricostruisci subito il contesto di studio.
           </h2>
           <p className="glossary-hero__summary">
-            Exact, prefix e matching normalizzato restano prioritari: prima la
-            forma giusta, poi alias e significato.
+            La ricerca privilegia la forma esatta e i prefissi, poi amplia il
+            risultato con alias e significato.
           </p>
 
           <form className="glossary-search-form" method="get">
@@ -87,8 +87,8 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                   name="type"
                 >
                   <option value="all">Tutto</option>
-                  <option value="term">Term</option>
-                  <option value="grammar">Grammar</option>
+                  <option value="term">Termine</option>
+                  <option value="grammar">Grammatica</option>
                 </select>
               </label>
 
@@ -115,8 +115,8 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                   name="study"
                 >
                   <option value="all">Tutti</option>
-                  <option value="known">Gia note</option>
-                  <option value="review">In review</option>
+                  <option value="known">Già note</option>
+                  <option value="review">In Review</option>
                   <option value="learning">In studio</option>
                   <option value="new">Nuove</option>
                   <option value="available">Disponibili</option>
@@ -142,7 +142,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
               </button>
               {data.hasActiveFilters ? (
                 <Link className="button button--ghost" href={glossaryHref}>
-                  Azzera filtri
+                  Azzera i filtri
                 </Link>
               ) : null}
             </div>
@@ -150,26 +150,26 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
         </SurfaceCard>
 
         <SurfaceCard className="glossary-side">
-          <p className="eyebrow">Snapshot</p>
+          <p className="eyebrow">Panoramica</p>
           <div className="stats-grid stats-grid--stacked">
             <StatBlock
-              detail={`${data.stats.termCount} term nel media`}
-              label="Term"
+              detail={`${data.stats.termCount} termini nel media`}
+              label="Termini"
               value={String(data.stats.termCount)}
             />
             <StatBlock
               detail={`${data.stats.grammarCount} pattern grammaticali`}
-              label="Grammar"
+              label="Grammatica"
               value={String(data.stats.grammarCount)}
             />
             <StatBlock
-              detail="Override manuali o card gia stabili"
-              label="Gia note"
+              detail="Voci segnate manualmente o già consolidate"
+              label="Già note"
               value={String(data.stats.knownCount)}
             />
             <StatBlock
-              detail="Entry gia entrate nel loop review"
-              label="In review"
+              detail="Voci già entrate nella coda di Review"
+              label="In Review"
               value={String(data.stats.reviewCount)}
             />
           </div>
@@ -185,27 +185,27 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
         }
         description={
           data.resultSummary.queryLabel
-            ? `${data.resultSummary.filtered} risultati su ${data.resultSummary.total} entry.`
-            : "Il glossary resta leggibile anche senza query: puoi sfogliare per segmento, tipo e stato."
+            ? `${data.resultSummary.filtered} risultati su ${data.resultSummary.total} voci.`
+            : "Il Glossary resta leggibile anche senza query: puoi sfogliare per segmento, tipo e stato."
         }
       >
         {!hasEntries ? (
           <EmptyState
-            title="Questo media non ha ancora entry nel glossary."
-            description="Importa o sincronizza termini e pattern, poi torna qui per usare ricerca, dettaglio e collegamenti di studio."
+            title="Questo media non ha ancora voci nel Glossary."
+            description="Importa o sincronizza termini e pattern, poi torna qui per cercarli e aprire il dettaglio."
             action={
               <Link
                 className="button button--ghost"
                 href={data.media.textbookHref}
               >
-                Apri textbook
+                Apri Textbook
               </Link>
             }
           />
         ) : data.results.length === 0 ? (
           <EmptyState
             title="Nessun risultato con questi filtri."
-            description="Prova una forma piu breve, passa da romaji a kana oppure rimuovi segmento e stato per allargare il match."
+            description="Prova una forma più breve, passa da romaji a kana oppure rimuovi segmento e stato per allargare la ricerca."
             action={
               <Link className="button button--ghost" href={glossaryHref}>
                 Riparti dall&apos;indice
@@ -243,7 +243,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                       <div className="glossary-result-card__top">
                         <div className="glossary-result-card__chips">
                           <span className="chip">
-                            {entry.kind === "term" ? "Term" : "Grammar"}
+                            {entry.kind === "term" ? "Termine" : "Grammatica"}
                           </span>
                           <span className="meta-pill">
                             {entry.studyState.label}
@@ -362,7 +362,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                           className="text-link glossary-result-card__detail-link"
                           href={detailHref}
                         >
-                          Apri detail page
+                          Apri dettaglio
                         </Link>
                       </div>
                     </SurfaceCard>
@@ -376,7 +376,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                 <div className="glossary-preview-panel">
                   <div className="glossary-preview-panel__header">
                     <div>
-                      <p className="eyebrow">Preview detail</p>
+                      <p className="eyebrow">Anteprima della voce</p>
                       <h3 className="glossary-preview-panel__title">
                         {data.preview.entry.label}
                       </h3>
@@ -388,7 +388,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                         returnTo
                       )}
                     >
-                      Apri pagina
+                      Apri voce
                     </Link>
                   </div>
                   <GlossaryDetailPanels

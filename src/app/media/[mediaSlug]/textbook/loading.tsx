@@ -4,7 +4,7 @@ export default function MediaTextbookLoading() {
   return (
     <LoadingShell
       summary="Sto preparando il percorso lesson e il punto di ripresa."
-      title="Caricamento textbook"
+      title="Caricamento del Textbook"
     />
   );
 }

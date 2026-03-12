@@ -23,8 +23,8 @@ export function GlossaryDetailPage({
     <div className="glossary-page">
       <StickyPageHeader
         backHref={returnTo ?? data.media.glossaryHref}
-        backLabel={returnTo ? "Torna alla review" : "Torna al glossary"}
-        eyebrow={data.entry.kind === "term" ? "Term" : "Grammar"}
+        backLabel={returnTo ? "Torna alla Review" : "Torna al Glossary"}
+        eyebrow={data.entry.kind === "term" ? "Termine" : "Grammatica"}
         title={data.entry.label}
         summary={data.entry.meaning}
         meta={
@@ -38,7 +38,7 @@ export function GlossaryDetailPage({
         }
         actions={
           <Link className="button button--ghost" href={data.media.textbookHref}>
-            Apri textbook
+            Apri Textbook
           </Link>
         }
       />
@@ -123,7 +123,7 @@ export function GlossaryDetailPanels({
               <strong>{data.entry.studyState.label}</strong>
             </div>
             <div className="summary-row">
-              <span>Lesson</span>
+              <span>Lesson collegate</span>
               <strong>{data.related.primaryLessonLabel}</strong>
             </div>
             <div className="summary-row">
@@ -143,8 +143,8 @@ export function GlossaryDetailPanels({
       >
         <Section
           eyebrow="Percorso"
-          title="Lesson dove incontrarla"
-          description="Il dettaglio non si ferma alla scheda: ti riporta al punto del percorso dove la voce entra davvero in gioco."
+          title="Lesson in cui compare"
+          description="Dal dettaglio puoi tornare subito al punto del percorso in cui questa voce entra davvero in gioco."
         >
           {data.lessons.length > 0 ? (
             <div className="glossary-detail-list">
@@ -194,9 +194,9 @@ export function GlossaryDetailPanels({
 
         {data.crossMedia ? (
           <Section
-            eyebrow="Cross-media"
+            eyebrow="Altri media"
             title="Compare anche in altri media"
-            description="La voce locale resta primaria. Qui vedi solo le altre versioni editoriali collegate, con le loro sfumature locali."
+            description="La voce del media corrente resta primaria. Qui trovi solo le versioni collegate negli altri media."
           >
             <div className="glossary-detail-list">
               {data.crossMedia.siblings.map((sibling) => (
@@ -208,9 +208,9 @@ export function GlossaryDetailPanels({
                   <SurfaceCard className="glossary-detail-card" variant="quiet">
                     <div className="glossary-detail-card__top">
                       <div className="glossary-detail-card__chips">
-                        <span className="chip">{sibling.mediaTitle}</span>
-                        <span className="meta-pill">
-                          {sibling.kind === "term" ? "Term" : "Grammar"}
+                      <span className="chip">{sibling.mediaTitle}</span>
+                      <span className="meta-pill">
+                          {sibling.kind === "term" ? "Termine" : "Grammatica"}
                         </span>
                         {sibling.segmentTitle ? (
                           <span className="meta-pill">
@@ -219,7 +219,7 @@ export function GlossaryDetailPanels({
                         ) : null}
                       </div>
                       <span className="glossary-result-card__arrow">
-                        Apri detail
+                        Apri dettaglio
                       </span>
                     </div>
                     <h3 className="glossary-detail-card__title jp-inline">
@@ -255,7 +255,7 @@ export function GlossaryDetailPanels({
         <Section
           eyebrow="Review"
           title="Card collegate"
-          description="Qui trovi le card che rappresentano o richiamano questa entry, con stato review e ruolo."
+          description="Qui trovi le card che rappresentano o richiamano questa voce, con stato Review e ruolo."
         >
           {data.cards.length > 0 ? (
             <div className="glossary-detail-list">
@@ -276,7 +276,7 @@ export function GlossaryDetailPanels({
                         <span className="meta-pill">{card.reviewLabel}</span>
                       </div>
                       <span className="glossary-result-card__arrow">
-                        {returnTo ? "Apri nella review" : "Apri card"}
+                        {returnTo ? "Apri in Review" : "Apri card"}
                       </span>
                     </div>
                     <h3 className="glossary-detail-card__title jp-inline">
@@ -302,7 +302,7 @@ export function GlossaryDetailPanels({
           ) : (
             <EmptyState
               title="Ancora nessuna card collegata."
-              description="La voce è consultabile nel glossary, ma non ha ancora card review associate."
+              description="La voce è consultabile nel Glossary, ma non ha ancora card associate."
             />
           )}
         </Section>

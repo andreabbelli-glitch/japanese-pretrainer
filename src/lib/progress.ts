@@ -228,9 +228,9 @@ function buildResumeModel(input: {
 
   return {
     recommendedArea: "textbook" as const,
-    recommendedBody: "Il textbook è pronto: puoi iniziare dal primo blocco disponibile.",
+    recommendedBody: "Il Textbook è pronto: puoi iniziare dal primo blocco disponibile.",
     recommendedHref: mediaStudyHref(input.mediaSlug, "textbook"),
-    recommendedLabel: "Apri textbook",
+    recommendedLabel: "Apri Textbook",
     recommendedTitle: "Percorso pronto"
   };
 }

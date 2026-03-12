@@ -105,7 +105,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
               className="button button--ghost"
               href={contextualGlossaryHref}
             >
-              Apri glossary
+              Apri Glossary
             </Link>
             <Link
               className="button button--ghost"
@@ -290,15 +290,15 @@ export function ReviewPage({ data }: ReviewPageProps) {
                     className="button button--ghost button--small"
                     href={appendReturnToParam(entry.href, sessionHref)}
                   >
-                    Controlla nel glossario
+                    Apri la voce nel Glossary
                   </Link>
                 ))}
               </div>
 
               {selectedCard.bucket === "manual" ? (
                 <p className="review-stage__hint">
-                  Lo stato manuale vive sulle entry canoniche: la card resta
-                  intatta e riacquista il suo scheduling appena la rimetti in
+                  Lo stato manuale si applica alle voci collegate: la card resta
+                  intatta e riprende il suo scheduling appena la rimetti in
                   studio.
                 </p>
               ) : selectedCard.bucket === "suspended" ? (
@@ -319,7 +319,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
                 additionalNewCount > 0
                   ? `La coda di oggi è finita. Puoi chiudere qui oppure aprire subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} disponibili per questo media.`
                   : hasSupportCards
-                    ? "La coda di oggi non richiede altre risposte. Se ti serve intervenire su card già note, sospese o fuori finestra, puoi farlo dal glossary o dalle impostazioni di studio."
+                    ? "La coda di oggi non richiede altre risposte. Se ti serve intervenire su card già note, sospese o fuori finestra, puoi farlo dal Glossary o dalle impostazioni di studio."
                     : "Per questo media non ci sono altre card da lavorare o mantenere adesso."
               }
               action={
@@ -341,7 +341,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
                     className="button button--ghost"
                     href={contextualGlossaryHref}
                   >
-                    Apri glossary
+                    Apri Glossary
                   </Link>
                 </>
               }
@@ -349,13 +349,13 @@ export function ReviewPage({ data }: ReviewPageProps) {
           ) : (
             <EmptyState
               title="Nessuna card da gestire."
-              description="Quando importerai le prime card o riattiverai una voce dal glossary, qui riapparirà il flusso review del media."
+              description="Quando importerai le prime card o riattiverai una voce dal Glossary, qui riapparirà il flusso di Review del media."
               action={
                 <Link
                   className="button button--ghost"
                   href={contextualGlossaryHref}
                 >
-                  Apri glossary
+                  Apri Glossary
                 </Link>
               }
             />
@@ -371,7 +371,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
               value={String(data.queue.queueCount)}
             />
             <StatBlock
-              detail="Card già in review previste per oggi."
+              detail="Card già in Review previste per oggi."
               label="Da ripassare"
               tone={data.queue.dueCount > 0 ? "warning" : "default"}
               value={String(data.queue.dueCount)}

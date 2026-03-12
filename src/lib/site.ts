@@ -18,22 +18,22 @@ export const primaryNav: NavItem[] = [
   {
     href: "/",
     label: "Home",
-    description: "Ripresa studio"
+    description: "Continua a studiare"
   },
   {
     href: "/media",
     label: "Media",
-    description: "Libreria attiva"
+    description: "I tuoi media"
   },
   {
     href: "/review",
     label: "Review",
-    description: "Sessioni quotidiane"
+    description: "Ripasso di oggi"
   },
   {
     href: "/settings",
     label: "Settings",
-    description: "Preferenze locali"
+    description: "Preferenze"
   }
 ];
 

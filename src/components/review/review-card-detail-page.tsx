@@ -29,8 +29,8 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
     <div className="glossary-page">
       <StickyPageHeader
         backHref={data.media.reviewHref}
-        backLabel="Torna alla review"
-        eyebrow="Review card"
+        backLabel="Torna alla Review"
+        eyebrow="Card"
         title={data.card.front}
         summary={data.card.back}
         meta={
@@ -51,7 +51,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
               className="button button--ghost"
               href={data.media.glossaryHref}
             >
-              Apri glossary
+              Apri Glossary
             </Link>
           </>
         }
@@ -59,7 +59,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
 
       <section className="hero-grid hero-grid--detail">
         <SurfaceCard className="glossary-entry-hero" variant="hero">
-          <p className="eyebrow">Carta</p>
+          <p className="eyebrow">Card</p>
           <h2 className="glossary-entry-hero__title jp-inline">
             {data.card.front}
           </h2>
@@ -110,12 +110,12 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
               <strong>{data.card.id}</strong>
             </div>
             <div className="summary-row">
-              <span>Entry collegate</span>
+              <span>Voci collegate</span>
               <strong>{data.entries.length}</strong>
             </div>
             {data.card.bucketLabel ? (
               <div className="summary-row">
-                <span>Bucket</span>
+                <span>Stato coda</span>
                 <strong>{data.card.bucketLabel}</strong>
               </div>
             ) : null}
@@ -126,7 +126,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
       <Section
         eyebrow="Azioni"
         title="Gestisci la card"
-        description="Le azioni restano locali e non cancellano mai lo storico review già presente nel DB."
+        description="Le azioni restano locali e non cancellano mai lo storico di Review già presente."
       >
         <div className="hero-actions">
           {data.card.reviewLabel === "Già nota" ? (
@@ -180,8 +180,8 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
 
       <Section
         eyebrow="Collegamenti"
-        title="Entry collegate"
-        description="La card resta ancorata alle entry canoniche del glossary, cosi puoi passare dal ripasso al contesto senza perdere il punto."
+        title="Voci collegate"
+        description="La card resta ancorata alle voci del Glossary, così puoi passare dal ripasso al contesto senza perdere il punto."
       >
         {data.entries.length > 0 ? (
           <div className="glossary-detail-list">
@@ -196,11 +196,11 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
                     <div className="glossary-detail-card__chips">
                       <span className="chip">{entry.relationshipLabel}</span>
                       <span className="meta-pill">
-                        {entry.kind === "term" ? "Term" : "Grammar"}
+                        {entry.kind === "term" ? "Termine" : "Grammatica"}
                       </span>
                     </div>
                     <span className="glossary-result-card__arrow">
-                      Apri entry
+                      Apri voce
                     </span>
                   </div>
                   <h3 className="glossary-detail-card__title jp-inline">
@@ -217,18 +217,18 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
             ))}
           </div>
         ) : (
-          <EmptyState
-            title="Nessuna entry collegata."
-            description="La card esiste nel DB, ma non ha ancora entry canoniche leggibili dal glossary."
-          />
-        )}
+            <EmptyState
+              title="Nessuna voce collegata."
+              description="La card esiste, ma non ha ancora voci leggibili nel Glossary."
+            />
+          )}
       </Section>
 
       {data.crossMedia.length > 0 ? (
         <Section
-          eyebrow="Cross-media"
+          eyebrow="Altri media"
           title="Altri media in cui compare"
-          description="Il focus resta sulla card corrente. Questo blocco serve solo a confrontare le sfumature locali delle entry principali collegate."
+          description="Questo blocco ti aiuta a confrontare le sfumature delle voci principali collegate negli altri media."
         >
           <div className="stack-list">
             {data.crossMedia.map((entry) => (
@@ -263,7 +263,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
                             ) : null}
                           </div>
                           <span className="glossary-result-card__arrow">
-                            Apri entry
+                            Apri voce
                           </span>
                         </div>
                         <h3 className="glossary-detail-card__title jp-inline">

@@ -65,6 +65,13 @@ type ImagePresentation = {
   width: number;
 };
 
+type ExpandedImageState = {
+  alt: string;
+  captionText: string | null;
+  presentation: ImagePresentation;
+  src: string;
+};
+
 function resolveImagePresentation(src: string): ImagePresentation {
   if (src.startsWith("assets/cards/")) {
     return {
@@ -92,6 +99,29 @@ function resolveImagePresentation(src: string): ImagePresentation {
   };
 }
 
+function extractInlineText(nodes: InlineNode[]): string {
+  return nodes
+    .map((node) => {
+      switch (node.type) {
+        case "text":
+          return node.value;
+        case "furigana":
+          return node.base;
+        case "reference":
+        case "emphasis":
+        case "strong":
+        case "inlineCode":
+        case "link":
+          return extractInlineText(node.children);
+        case "break":
+          return " ";
+      }
+    })
+    .join("")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const router = useRouter();
   const [furiganaMode, setFuriganaModeState] = useState<FuriganaMode>(
@@ -101,6 +131,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const [isTouchLayout, setIsTouchLayout] = useState(false);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [mobileSheet, setMobileSheet] = useState<MobileSheetState | null>(null);
+  const [expandedImage, setExpandedImage] = useState<ExpandedImageState | null>(
+    null
+  );
   const [isSavingFurigana, startSavingFurigana] = useTransition();
   const [isSavingLesson, startSavingLesson] = useTransition();
   const tooltipRef = useRef<HTMLDivElement | null>(null);
@@ -212,12 +245,30 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   }, [tooltip]);
 
   useEffect(() => {
-    document.body.style.overflow = mobileSheet ? "hidden" : "";
+    document.body.style.overflow = mobileSheet || expandedImage ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileSheet]);
+  }, [expandedImage, mobileSheet]);
+
+  useEffect(() => {
+    if (!expandedImage) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setExpandedImage(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [expandedImage]);
 
   const closeTooltipSoon = () => {
     if (tooltip?.locked) {
@@ -317,6 +368,12 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
         setLessonStatus(data.lesson.status);
       }
     });
+  };
+
+  const openImage = (image: ExpandedImageState) => {
+    clearCloseTimer();
+    setTooltip(null);
+    setExpandedImage(image);
   };
 
   return (
@@ -420,6 +477,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
               onReferenceFocus={openReference}
               onReferenceHover={openReference}
               onReferenceLeave={closeTooltipSoon}
+              onImageExpand={openImage}
             />
           </section>
 
@@ -503,6 +561,13 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
           )}
         </MobileSheet>
       ) : null}
+
+      {expandedImage ? (
+        <ReaderImageLightbox
+          image={expandedImage}
+          onClose={() => setExpandedImage(null)}
+        />
+      ) : null}
     </div>
   );
 }
@@ -519,9 +584,9 @@ function FuriganaModeControl({
   onChange
 }: FuriganaModeControlProps) {
   const options: Array<{ mode: FuriganaMode; label: string }> = [
-    { mode: "off", label: "Off" },
-    { mode: "hover", label: "Hover" },
-    { mode: "on", label: "On" }
+    { mode: "off", label: "Nascoste" },
+    { mode: "hover", label: "Al passaggio" },
+    { mode: "on", label: "Sempre" }
   ];
 
   return (
@@ -634,6 +699,7 @@ type LessonArticleProps = {
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceLeave: () => void;
+  onImageExpand: (image: ExpandedImageState) => void;
 };
 
 export function LessonArticle({
@@ -648,7 +714,8 @@ export function LessonArticle({
   onReferenceClick,
   onReferenceFocus,
   onReferenceHover,
-  onReferenceLeave
+  onReferenceLeave,
+  onImageExpand
 }: LessonArticleProps) {
   if (!document) {
     return (
@@ -663,6 +730,7 @@ export function LessonArticle({
         onReferenceFocus={onReferenceFocus}
         onReferenceHover={onReferenceHover}
         onReferenceLeave={onReferenceLeave}
+        onImageExpand={onImageExpand}
       />
     );
   }
@@ -785,12 +853,21 @@ export function LessonArticle({
         const imageEntry = block.cardId
           ? (entriesByKey.get(`card:${block.cardId}`) ?? null)
           : null;
+        const expandedImage = {
+          alt: block.alt,
+          captionText: block.caption
+            ? extractInlineText(block.caption.nodes)
+            : null,
+          presentation: imagePresentation,
+          src: mediaAssetHref(mediaSlug, block.src)
+        } satisfies ExpandedImageState;
 
         return (
           <figure
             className={cx(
               "reader-image",
               imagePresentation.variantClassName,
+              !imageEntry && "reader-image--zoomable",
               imageEntry && "reader-image--interactive",
               imageEntry &&
                 activeEntryKey === `${imageEntry.kind}:${imageEntry.id}` &&
@@ -829,17 +906,24 @@ export function LessonArticle({
                 />
               </button>
             ) : (
-              <Image
-                alt={block.alt}
-                className="reader-image__asset"
-                decoding="async"
-                height={imagePresentation.height}
-                loading="lazy"
-                sizes={imagePresentation.sizes}
-                src={mediaAssetHref(mediaSlug, block.src)}
-                unoptimized
-                width={imagePresentation.width}
-              />
+              <button
+                aria-label={`Apri immagine ingrandita: ${block.alt}`}
+                className="reader-image__button reader-image__button--zoom"
+                onClick={() => onImageExpand(expandedImage)}
+                type="button"
+              >
+                <Image
+                  alt={block.alt}
+                  className="reader-image__asset"
+                  decoding="async"
+                  height={imagePresentation.height}
+                  loading="lazy"
+                  sizes={imagePresentation.sizes}
+                  src={mediaAssetHref(mediaSlug, block.src)}
+                  unoptimized
+                  width={imagePresentation.width}
+                />
+              </button>
             )}
             {block.caption ? (
               <figcaption className="reader-image__caption">
@@ -866,7 +950,7 @@ export function LessonArticle({
         return (
           <section className="reader-definition-card" key={index}>
             <div className="reader-definition-card__eyebrow">
-              <span className="chip">Term</span>
+              <span className="chip">Termine</span>
               {block.entry.levelHint ? (
                 <span className="meta-pill">{block.entry.levelHint}</span>
               ) : null}
@@ -894,7 +978,7 @@ export function LessonArticle({
             key={index}
           >
             <div className="reader-definition-card__eyebrow">
-              <span className="chip chip--grammar">Grammar</span>
+              <span className="chip chip--grammar">Grammatica</span>
               {block.entry.levelHint ? (
                 <span className="meta-pill">{block.entry.levelHint}</span>
               ) : null}
@@ -916,11 +1000,11 @@ export function LessonArticle({
         return (
           <section className="reader-card-inline" key={index}>
             <div className="reader-card-inline__face">
-              <span className="eyebrow">Card front</span>
+              <span className="eyebrow">Fronte</span>
               <div>{renderInlineNodes(block.card.front.nodes)}</div>
             </div>
             <div className="reader-card-inline__face reader-card-inline__face--back">
-              <span className="eyebrow">Card back</span>
+              <span className="eyebrow">Retro</span>
               <div>{renderInlineNodes(block.card.back.nodes)}</div>
             </div>
           </section>
@@ -964,6 +1048,7 @@ type FallbackHtmlArticleProps = {
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceLeave: () => void;
+  onImageExpand: (image: ExpandedImageState) => void;
 };
 
 function FallbackHtmlArticle({
@@ -976,7 +1061,8 @@ function FallbackHtmlArticle({
   onReferenceClick,
   onReferenceFocus,
   onReferenceHover,
-  onReferenceLeave
+  onReferenceLeave,
+  onImageExpand
 }: FallbackHtmlArticleProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -990,11 +1076,15 @@ function FallbackHtmlArticle({
     const referenceSelector =
       ".content-entry-ref[data-entry-type][data-entry-id]";
     const imageSelector = ".reader-image[data-card-id]";
+    const zoomableImageSelector = ".reader-image[data-image-src]";
     const references = Array.from(
       container.querySelectorAll<HTMLElement>(referenceSelector)
     );
     const images = Array.from(
       container.querySelectorAll<HTMLElement>(imageSelector)
+    );
+    const zoomableImages = Array.from(
+      container.querySelectorAll<HTMLElement>(zoomableImageSelector)
     );
     const rubies = Array.from(container.querySelectorAll<HTMLElement>("ruby"));
 
@@ -1018,6 +1108,25 @@ function FallbackHtmlArticle({
         ? (entriesByKey.get(`card:${cardId}`) ?? null)
         : null;
     };
+    const resolveExpandedImage = (element: HTMLElement) => {
+      const imageSrc = element.dataset.imageSrc;
+      const imageAlt = element.dataset.imageAlt;
+      const imageCaption = element.dataset.imageCaption;
+
+      if (typeof imageSrc !== "string" || typeof imageAlt !== "string") {
+        return null;
+      }
+
+      return {
+        alt: imageAlt,
+        captionText:
+          typeof imageCaption === "string" && imageCaption.trim().length > 0
+            ? imageCaption
+            : null,
+        presentation: resolveImagePresentation(imageSrc),
+        src: imageSrc
+      } satisfies ExpandedImageState;
+    };
 
     const resolveReferenceTarget = (target: EventTarget | null) =>
       target instanceof Element
@@ -1026,6 +1135,10 @@ function FallbackHtmlArticle({
     const resolveImageTarget = (target: EventTarget | null) =>
       target instanceof Element
         ? target.closest<HTMLElement>(imageSelector)
+        : null;
+    const resolveZoomableImageTarget = (target: EventTarget | null) =>
+      target instanceof Element
+        ? target.closest<HTMLElement>(zoomableImageSelector)
         : null;
     const resolveRubyTarget = (target: EventTarget | null) =>
       target instanceof Element ? target.closest<HTMLElement>("ruby") : null;
@@ -1071,6 +1184,12 @@ function FallbackHtmlArticle({
 
       element.removeAttribute("role");
       element.removeAttribute("tabindex");
+    });
+
+    zoomableImages.forEach((element) => {
+      element.classList.add("reader-image--zoomable");
+      element.setAttribute("role", "button");
+      element.tabIndex = 0;
     });
 
     rubies.forEach((element) => {
@@ -1237,6 +1356,19 @@ function FallbackHtmlArticle({
         return;
       }
 
+      const zoomableImage = resolveZoomableImageTarget(event.target);
+
+      if (zoomableImage) {
+        const expandedImage = resolveExpandedImage(zoomableImage);
+
+        if (expandedImage) {
+          event.preventDefault();
+          onImageExpand(expandedImage);
+        }
+
+        return;
+      }
+
       const ruby = resolveRubyTarget(event.target);
 
       if (ruby) {
@@ -1275,6 +1407,19 @@ function FallbackHtmlArticle({
         return;
       }
 
+      const zoomableImage = resolveZoomableImageTarget(event.target);
+
+      if (zoomableImage) {
+        const expandedImage = resolveExpandedImage(zoomableImage);
+
+        if (expandedImage) {
+          event.preventDefault();
+          onImageExpand(expandedImage);
+        }
+
+        return;
+      }
+
       const ruby = resolveRubyTarget(event.target);
 
       if (ruby) {
@@ -1307,7 +1452,8 @@ function FallbackHtmlArticle({
     onReferenceClick,
     onReferenceFocus,
     onReferenceHover,
-    onReferenceLeave
+    onReferenceLeave,
+    onImageExpand
   ]);
 
   return (
@@ -1441,9 +1587,9 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
           )}
         >
           {entry.kind === "term"
-            ? "Term"
+            ? "Termine"
             : entry.kind === "grammar"
-              ? "Grammar"
+              ? "Grammatica"
               : "Card"}
         </span>
         <span className="meta-pill">{entry.statusLabel}</span>
@@ -1487,7 +1633,7 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
         className="text-link"
         href={"glossaryHref" in entry ? entry.glossaryHref : entry.reviewHref}
       >
-        {"glossaryHref" in entry ? "Apri entry" : "Apri card"}
+        {"glossaryHref" in entry ? "Apri voce" : "Apri card"}
       </Link>
     </div>
   );
@@ -1536,6 +1682,61 @@ function MobileSheet({ children, onClose }: MobileSheetProps) {
           Chiudi
         </button>
         {children}
+      </div>
+    </div>
+  );
+}
+
+type ReaderImageLightboxProps = {
+  image: ExpandedImageState;
+  onClose: () => void;
+};
+
+function ReaderImageLightbox({
+  image,
+  onClose
+}: ReaderImageLightboxProps) {
+  const caption = image.captionText ?? image.alt;
+
+  return (
+    <div
+      aria-label="Immagine ingrandita"
+      aria-modal="true"
+      className="reader-image-lightbox"
+      role="dialog"
+    >
+      <button
+        aria-label="Chiudi immagine"
+        className="reader-image-lightbox__backdrop"
+        onClick={onClose}
+        type="button"
+      />
+      <div className="reader-image-lightbox__surface">
+        <div className="reader-image-lightbox__top">
+          <p className="eyebrow">Immagine</p>
+          <button
+            autoFocus
+            className="button button--ghost button--small"
+            onClick={onClose}
+            type="button"
+          >
+            Chiudi
+          </button>
+        </div>
+        <div className="reader-image-lightbox__frame">
+          <Image
+            alt={image.alt}
+            className="reader-image-lightbox__asset"
+            decoding="async"
+            height={image.presentation.height}
+            loading="eager"
+            sizes="100vw"
+            src={image.src}
+            unoptimized
+            width={image.presentation.width}
+          />
+        </div>
+        <p className="reader-image-lightbox__caption">{caption}</p>
       </div>
     </div>
   );

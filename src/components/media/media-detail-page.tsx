@@ -19,7 +19,7 @@ const studyAreas = [
   {
     key: "glossary",
     title: "Glossary",
-    body: "Consulta le entry canoniche gia nel DB con un ingresso sobrio e leggibile."
+    body: "Consulta le voci già presenti nel Glossary e torna rapidamente al contesto."
   },
   {
     key: "review",
@@ -29,7 +29,7 @@ const studyAreas = [
   {
     key: "progress",
     title: "Progress",
-    body: "Tieni insieme textbook, coverage e review con un riepilogo calmo e leggibile."
+    body: "Controlla Textbook, Glossary e Review in un colpo d'occhio."
   }
 ] as const;
 
@@ -86,11 +86,11 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
           <p className="media-detail-hero__summary">
             {media.currentLesson?.summary ??
               media.currentLesson?.excerpt ??
-              "Questa pagina diventa la base operativa del media: ingresso, contesto e collegamenti alle aree di studio."}
+              "Questa pagina raccoglie il punto di ripresa, il contesto e i collegamenti alle aree di studio."}
           </p>
           <div className="hero-actions">
             <Link className="button button--primary" href={resumeHref}>
-              {media.currentLesson ? "Riprendi lesson" : "Apri textbook"}
+              {media.currentLesson ? "Riprendi lesson" : "Apri Textbook"}
             </Link>
             <Link className="button button--ghost" href={mediaStudyHref(media.slug, "review")}>
               {media.cardsDue > 0 ? "Avvia review" : "Controlla review"}
@@ -107,7 +107,7 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
               }
             />
             <StatBlock
-              detail={`${media.entriesTotal} entry nel media`}
+              detail={`${media.entriesTotal} voci nel Glossary`}
               label="Glossary"
               value={
                 media.entriesTotal > 0
@@ -125,7 +125,7 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
         </SurfaceCard>
 
         <SurfaceCard className="media-detail-side">
-          <p className="eyebrow">Snapshot</p>
+          <p className="eyebrow">Panoramica</p>
           <div className="stack-list stack-list--tight">
             <div className="summary-row">
               <span>Media</span>
@@ -136,7 +136,7 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
               <strong>{media.segments.length}</strong>
             </div>
             <div className="summary-row">
-              <span>Card review</span>
+              <span>Card attive</span>
               <strong>{media.activeReviewCards}</strong>
             </div>
             <div className="summary-row">
@@ -150,9 +150,9 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
       </section>
 
       <Section
-        description="Le aree principali restano grandi, immediate e coerenti con il percorso di studio."
+        description="Scegli subito l'area da cui continuare."
         eyebrow="Aree di studio"
-        title="Scegli il punto di ingresso"
+        title="Scegli dove continuare"
       >
         <div className="entry-point-grid">
           {studyAreas.map((area) => (
@@ -168,13 +168,13 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
                     ? `Ora: ${media.currentLesson.title}`
                     : null}
                   {area.key === "glossary"
-                    ? `${media.entriesKnown}/${media.entriesTotal} già toccate`
+                    ? `${media.entriesKnown}/${media.entriesTotal} già viste`
                     : null}
                   {area.key === "review" ? media.reviewQueueLabel : null}
                   {area.key === "progress"
                     ? media.textbookProgressPercent !== null
-                      ? `${media.textbookProgressPercent}% textbook`
-                      : `${media.lessonsTotal} lesson tracciate`
+                      ? `${media.textbookProgressPercent}% completato nel Textbook`
+                      : `${media.lessonsTotal} lesson nel percorso`
                     : null}
                 </p>
               </SurfaceCard>
@@ -185,9 +185,9 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
 
       <section className="content-section content-section--split">
         <Section
-          description="Una struttura sobria che prepara bene l’arrivo del reader e della rail lesson."
+          description="Segui i segmenti e riprendi rapidamente la prossima lesson."
           eyebrow="Percorso"
-          title="Segmenti e lesson"
+          title="Percorso delle lesson"
         >
           {media.segments.length > 0 ? (
             <div className="segment-list">
@@ -220,9 +220,9 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
         </Section>
 
         <Section
-          description="Il giapponese resta in primo piano, con stato e significato subito leggibili."
-          eyebrow="Prime entry"
-          title="Lessico e pattern già emersi"
+          description="Qui trovi le prime voci già emerse nel percorso."
+          eyebrow="Prime voci"
+          title="Voci già emerse"
         >
           {media.previewEntries.length > 0 ? (
             <div className="entry-preview-list">
@@ -249,8 +249,8 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
             </div>
           ) : (
             <EmptyState
-              title="Ancora nessuna entry collegata."
-              description="Termini e pattern appariranno qui quando il media avrà contenuto glossario già importato nel DB."
+              title="Ancora nessuna voce collegata."
+              description="Termini e pattern appariranno qui quando il media avrà contenuti nel Glossary."
             />
           )}
         </Section>

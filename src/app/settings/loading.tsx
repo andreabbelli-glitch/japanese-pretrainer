@@ -4,7 +4,7 @@ export default function SettingsLoading() {
   return (
     <LoadingShell
       summary="Sto caricando le preferenze persistenti di studio."
-      title="Caricamento settings"
+      title="Caricamento di Settings"
     />
   );
 }

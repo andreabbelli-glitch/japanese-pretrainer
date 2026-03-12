@@ -8,7 +8,7 @@ export default function NotFound() {
       <EmptyState
         eyebrow="Percorso non trovato"
         title="Questa pagina non è disponibile nel workspace attuale."
-        description="Controlla lo slug del media o torna alla libreria per riprendere da un pacchetto esistente."
+        description="Controlla l'indirizzo del media o torna alla libreria per riprendere da un pacchetto esistente."
         action={
           <Link className="button button--primary" href="/media">
             Torna ai media

@@ -4,7 +4,7 @@ export default function RootLoading() {
   return (
     <LoadingShell
       summary="Sto caricando la scrivania di studio."
-      title="Preparazione della shell"
+      title="Avvio dell'app"
     />
   );
 }

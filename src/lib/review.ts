@@ -784,11 +784,11 @@ function buildQueueIntroLabel(input: {
 
   if (input.manualCount > 0) {
     return input.manualCount === 1
-      ? "La review di oggi è vuota, ma 1 card è esclusa manualmente."
-      : `La review di oggi è vuota, ma ${input.manualCount} card sono escluse manualmente.`;
+      ? "La Review di oggi è vuota, ma 1 card è esclusa manualmente."
+      : `La Review di oggi è vuota, ma ${input.manualCount} card sono escluse manualmente.`;
   }
 
-  return "La review di oggi è vuota: il media non ha ancora card attive da mettere in coda.";
+  return "La Review di oggi è vuota: il media non ha ancora card attive da mettere in coda.";
 }
 
 function buildBucketDetail(
@@ -802,7 +802,7 @@ function buildBucketDetail(
   }
 
   if (bucket === "new") {
-    return "Pronta per entrare nella coda giornaliera senza perdere il legame col glossary.";
+    return "Pronta per entrare nella coda giornaliera senza perdere il legame con il Glossary.";
   }
 
   if (bucket === "manual") {
@@ -884,11 +884,11 @@ function normalizeReviewSearchState(
 
 function resolveReviewNotice(value: string | null) {
   const notices: Record<string, string> = {
-    known: "Le entry principali della card sono state segnate come gia note.",
-    learning: "Le entry principali della card sono tornate in studio.",
+    known: "Le voci principali della card sono state segnate come già note.",
+    learning: "Le voci principali della card sono tornate in studio.",
     reset:
       "La card è stata riportata allo stato iniziale senza perdere lo storico.",
-    resumed: "La card è tornata attiva nella review.",
+    resumed: "La card è tornata attiva nella Review.",
     suspended: "La card è stata messa in pausa e rimossa dalla coda di oggi."
   };
 

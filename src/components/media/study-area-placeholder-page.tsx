@@ -21,26 +21,26 @@ const areaCopy: Record<
   textbook: {
     eyebrow: "Textbook",
     title: "Percorso lesson pronto per il reader",
-    body: "Questa pagina fa da landing leggera: chiarisce da dove ripartire e tiene il percorso ben orientato.",
-    note: "La lettura resta al centro, con un ingresso semplice e senza rumore."
+    body: "Questa pagina chiarisce da dove ripartire e tiene il percorso ben orientato.",
+    note: "La lettura resta al centro, con un ingresso semplice e diretto."
   },
   glossary: {
     eyebrow: "Glossary",
-    title: "Entry point sobrio verso il lessico del media",
-    body: "Il DB contiene gia termini e pattern; qui la pagina li rende leggibili senza trasformarsi in ricerca avanzata.",
+    title: "Ingresso chiaro al lessico del media",
+    body: "Il media contiene già termini e pattern; qui la pagina li rende leggibili senza trasformarsi in una ricerca avanzata.",
     note: "Pochi segnali chiari, con il lessico del media sempre in primo piano."
   },
   review: {
     eyebrow: "Review",
-    title: "Coda review pronta da consultare",
+    title: "Coda di Review pronta da consultare",
     body: "Questa pagina rende visibile la coda e il suo peso, senza simulare sessioni o numeri cosmetici.",
-    note: "La pagina resta volutamente calma e mostra solo segnali che derivano dai dati reali."
+    note: "La pagina mostra solo segnali che derivano dai dati reali."
   },
   progress: {
     eyebrow: "Progress",
     title: "Riepilogo compatto del media",
-    body: "Questa tappa raccoglie i segnali principali gia disponibili in un quadro compatto.",
-    note: "Le metriche restano poche, leggibili e separate per textbook, glossary e review."
+    body: "Questa tappa raccoglie i segnali principali già disponibili in un quadro compatto.",
+    note: "Le metriche restano poche, leggibili e separate per Textbook, Glossary e Review."
   }
 };
 
@@ -87,7 +87,7 @@ export async function StudyAreaPlaceholderPage({
               Torna al media
             </Link>
             <Link className="button button--ghost" href={mediaStudyHref(media.slug, "textbook")}>
-              Apri textbook landing
+              Apri il Textbook
             </Link>
           </div>
         </SurfaceCard>
@@ -105,7 +105,7 @@ export async function StudyAreaPlaceholderPage({
               }
             />
             <StatBlock
-              detail={`${media.entriesTotal} entry disponibili`}
+              detail={`${media.entriesTotal} voci disponibili`}
               label="Glossary"
               value={
                 media.entriesTotal > 0
@@ -124,7 +124,7 @@ export async function StudyAreaPlaceholderPage({
       </section>
 
       <Section
-        description="Questa schermata e intenzionalmente leggera: da orientamento adesso e lascia spazio a un passo successivo piu ricco."
+        description="Questa schermata è intenzionalmente leggera: ti orienta subito e lascia spazio al passo successivo."
         eyebrow="Stato attuale"
         title="Base già pronta"
       >
@@ -141,11 +141,11 @@ export async function StudyAreaPlaceholderPage({
           ) : null}
           {area === "glossary" ? (
             <SurfaceCard className="cue-card" variant="quiet">
-              <h3 className="cue-card__title">Prime entry</h3>
+              <h3 className="cue-card__title">Prime voci</h3>
               <p className="cue-card__body">
                 {media.previewEntries[0]
-                  ? `${media.previewEntries[0].label} e altre ${Math.max(media.previewEntries.length - 1, 0)} entry già leggibili.`
-                  : "Nessuna entry disponibile nel DB per questo media."}
+                  ? `${media.previewEntries[0].label} e altre ${Math.max(media.previewEntries.length - 1, 0)} voci già leggibili.`
+                  : "Nessuna voce disponibile per questo media."}
               </p>
             </SurfaceCard>
           ) : null}
@@ -160,7 +160,7 @@ export async function StudyAreaPlaceholderPage({
               <h3 className="cue-card__title">Ritmo</h3>
               <p className="cue-card__body">
                 {media.textbookProgressPercent !== null
-                  ? `${media.textbookProgressPercent}% textbook, ${media.entriesTotal} entry e ${media.cardsDue} card dovute.`
+                  ? `${media.textbookProgressPercent}% nel Textbook, ${media.entriesTotal} voci e ${media.cardsDue} card dovute.`
                   : "Le metriche restano poche e leggibili, pronte a orientare il prossimo passo."}
               </p>
             </SurfaceCard>
