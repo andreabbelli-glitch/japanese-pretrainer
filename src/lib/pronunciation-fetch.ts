@@ -21,6 +21,18 @@ import type {
 
 type EntryKind = "term" | "grammar";
 
+export type PronunciationFetchNetworkOptions = {
+  maxRetries?: number;
+  requestDelayMs?: number;
+  retryBaseDelayMs?: number;
+};
+
+const DEFAULT_REQUEST_DELAY_MS = 1200;
+const DEFAULT_RETRY_BASE_DELAY_MS = 5000;
+const DEFAULT_MAX_RETRIES = 4;
+
+let nextAllowedNetworkRequestAt = 0;
+
 export type PronunciationTargetEntry = {
   aliases: string[];
   audioSrc?: string;
@@ -83,11 +95,14 @@ type WiktionaryCommonsReference = {
   spokenTextHint: string;
 };
 
+const WIKTIONARY_HOSTS = ["en.wiktionary.org", "ja.wiktionary.org"] as const;
+
 export async function fetchPronunciationsForBundle(input: {
   bundle: NormalizedMediaBundle;
   cacheRoot: string;
   dryRun?: boolean;
   limit?: number;
+  network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
 }) {
   const entries = collectPronunciationTargets(input.bundle).filter(
@@ -116,7 +131,8 @@ export async function fetchPronunciationsForBundle(input: {
   for (const entry of limitedEntries) {
     const resolved = await resolvePronunciationForEntry({
       cacheRoot: input.cacheRoot,
-      entry
+      entry,
+      network: input.network
     });
 
     if (!resolved) {
@@ -193,19 +209,23 @@ export async function fetchPronunciationsForBundle(input: {
 export async function resolvePronunciationForEntry(input: {
   cacheRoot: string;
   entry: PronunciationTargetEntry;
+  network?: PronunciationFetchNetworkOptions;
 }) {
   const commonsCandidates = await searchCommonsCandidates({
     cacheRoot: input.cacheRoot,
-    entry: input.entry
+    entry: input.entry,
+    network: input.network
   });
   const wiktionaryTitles = await getWiktionaryCommonsFileTitles({
     cacheRoot: input.cacheRoot,
-    entry: input.entry
+    entry: input.entry,
+    network: input.network
   });
   const wiktionaryCandidates =
     wiktionaryTitles.length > 0
       ? await lookupCommonsFiles({
           cacheRoot: input.cacheRoot,
+          network: input.network,
           references: wiktionaryTitles
         })
       : [];
@@ -340,6 +360,7 @@ export function extractCommonsFileTitlesFromWiktionaryWikitext(source: string) {
 async function searchCommonsCandidates(input: {
   cacheRoot: string;
   entry: PronunciationTargetEntry;
+  network?: PronunciationFetchNetworkOptions;
 }) {
   const variants = buildSearchVariants(input.entry);
   const candidates: PronunciationCandidate[] = [];
@@ -348,7 +369,8 @@ async function searchCommonsCandidates(input: {
     const pages = await fetchCommonsSearch({
       cacheRoot: input.cacheRoot,
       query: `intitle:"${variant}"`,
-      limit: 12
+      limit: 12,
+      network: input.network
     });
 
     for (const page of pages) {
@@ -366,6 +388,7 @@ async function searchCommonsCandidates(input: {
 async function getWiktionaryCommonsFileTitles(input: {
   cacheRoot: string;
   entry: PronunciationTargetEntry;
+  network?: PronunciationFetchNetworkOptions;
 }) {
   const titles = new Map<string, string>();
   const lookupTitles = [
@@ -377,17 +400,30 @@ async function getWiktionaryCommonsFileTitles(input: {
   ];
 
   for (const title of lookupTitles) {
-    const cacheKey = hashString(`wiktionary:${title}`);
-    const cachePath = path.join(input.cacheRoot, "wiktionary", `${cacheKey}.json`);
-    const response = await fetchJsonWithCache<WiktionaryResponse>({
-      cachePath,
-      url: `https://en.wiktionary.org/w/api.php?action=query&format=json&formatversion=2&prop=revisions&rvprop=content&rvslots=main&titles=${encodeURIComponent(title)}`
-    });
-    const source =
-      response.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content ?? "";
+    for (const host of WIKTIONARY_HOSTS) {
+      try {
+        const cacheKey = hashString(`wiktionary:${host}:${title}`);
+        const cachePath = path.join(
+          input.cacheRoot,
+          "wiktionary",
+          `${cacheKey}.json`
+        );
+        const response = await fetchJsonWithCache<WiktionaryResponse>({
+          cachePath,
+          network: input.network,
+          url: `https://${host}/w/api.php?action=query&format=json&formatversion=2&prop=revisions&rvprop=content&rvslots=main&titles=${encodeURIComponent(title)}`
+        });
+        const source =
+          response.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content ?? "";
 
-    for (const fileTitle of extractCommonsFileTitlesFromWiktionaryWikitext(source)) {
-      titles.set(fileTitle, title);
+        for (const fileTitle of extractCommonsFileTitlesFromWiktionaryWikitext(source)) {
+          titles.set(fileTitle, title);
+        }
+      } catch (error) {
+        console.warn(
+          `Skipping ${host} lookup for '${title}': ${formatErrorMessage(error)}`
+        );
+      }
     }
   }
 
@@ -401,6 +437,7 @@ async function getWiktionaryCommonsFileTitles(input: {
 
 async function lookupCommonsFiles(input: {
   cacheRoot: string;
+  network?: PronunciationFetchNetworkOptions;
   references: WiktionaryCommonsReference[];
 }) {
   const results: PronunciationCandidate[] = [];
@@ -416,6 +453,7 @@ async function lookupCommonsFiles(input: {
     );
     const response = await fetchJsonWithCache<CommonsSearchResponse>({
       cachePath,
+      network: input.network,
       url: `https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&titles=${encodeURIComponent(normalizedTitle)}&prop=imageinfo&iiprop=url|mime|extmetadata`
     });
     const candidate = mapCommonsPageToCandidate(response.query?.pages?.[0], {
@@ -433,12 +471,14 @@ async function lookupCommonsFiles(input: {
 async function fetchCommonsSearch(input: {
   cacheRoot: string;
   limit: number;
+  network?: PronunciationFetchNetworkOptions;
   query: string;
 }) {
   const cacheKey = hashString(`commons-search:${input.query}:${input.limit}`);
   const cachePath = path.join(input.cacheRoot, "commons-search", `${cacheKey}.json`);
   const response = await fetchJsonWithCache<CommonsSearchResponse>({
     cachePath,
+    network: input.network,
     url: `https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&generator=search&gsrnamespace=6&gsrlimit=${input.limit}&gsrsearch=${encodeURIComponent(input.query)}&prop=imageinfo&iiprop=url|mime|extmetadata`
   });
 
@@ -583,6 +623,7 @@ function mapGrammarToPronunciationTarget(
 
 async function fetchJsonWithCache<T>(input: {
   cachePath: string;
+  network?: PronunciationFetchNetworkOptions;
   url: string;
 }): Promise<T> {
   if (await fileExists(input.cachePath)) {
@@ -591,22 +632,47 @@ async function fetchJsonWithCache<T>(input: {
   }
 
   await mkdir(path.dirname(input.cachePath), { recursive: true });
+  const requestDelayMs = input.network?.requestDelayMs ?? DEFAULT_REQUEST_DELAY_MS;
+  const retryBaseDelayMs =
+    input.network?.retryBaseDelayMs ?? DEFAULT_RETRY_BASE_DELAY_MS;
+  const maxRetries = input.network?.maxRetries ?? DEFAULT_MAX_RETRIES;
 
-  const response = await fetch(input.url, {
-    headers: {
-      "User-Agent": "japanese-custom-study/0.1 local pronunciation fetcher"
+  for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
+    await waitForNextNetworkSlot(requestDelayMs);
+
+    const response = await fetch(input.url, {
+      headers: {
+        "User-Agent": "japanese-custom-study/0.1 local pronunciation fetcher"
+      }
+    });
+
+    if (response.ok) {
+      const body = await response.text();
+      await writeFile(input.cachePath, body);
+      return JSON.parse(body) as T;
     }
-  });
 
-  if (!response.ok) {
+    if (
+      (response.status === 429 || response.status >= 500) &&
+      attempt < maxRetries
+    ) {
+      const retryDelayMs =
+        parseRetryAfterMs(response.headers.get("retry-after")) ??
+        retryBaseDelayMs * 2 ** attempt;
+
+      console.warn(
+        `Retrying ${input.url} after ${retryDelayMs}ms (${response.status} ${response.statusText})`
+      );
+      await sleep(retryDelayMs);
+      continue;
+    }
+
     throw new Error(
       `Failed to fetch ${input.url}: ${response.status} ${response.statusText}`
     );
   }
 
-  const body = await response.text();
-  await writeFile(input.cachePath, body);
-  return JSON.parse(body) as T;
+  throw new Error(`Failed to fetch ${input.url}: exhausted retries`);
 }
 
 function sanitizeCommonsMetadata(value: string | undefined) {
@@ -635,6 +701,35 @@ function hashString(value: string) {
   return createHash("sha1").update(value).digest("hex");
 }
 
+export function parseRetryAfterMs(value: string | null) {
+  if (!value) {
+    return null;
+  }
+
+  const trimmed = value.trim();
+  const asSeconds = Number.parseInt(trimmed, 10);
+
+  if (Number.isFinite(asSeconds) && asSeconds >= 0) {
+    return asSeconds * 1000;
+  }
+
+  const retryAt = Date.parse(trimmed);
+
+  if (Number.isNaN(retryAt)) {
+    return null;
+  }
+
+  return Math.max(0, retryAt - Date.now());
+}
+
+function formatErrorMessage(error: unknown) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return String(error);
+}
+
 async function fileExists(filePath: string) {
   try {
     await stat(filePath);
@@ -642,4 +737,23 @@ async function fileExists(filePath: string) {
   } catch {
     return false;
   }
+}
+
+async function waitForNextNetworkSlot(requestDelayMs: number) {
+  const now = Date.now();
+  const waitMs = Math.max(0, nextAllowedNetworkRequestAt - now);
+
+  if (waitMs > 0) {
+    await sleep(waitMs);
+  }
+
+  nextAllowedNetworkRequestAt = Date.now() + Math.max(0, requestDelayMs);
+}
+
+async function sleep(durationMs: number) {
+  if (durationMs <= 0) {
+    return;
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, durationMs));
 }

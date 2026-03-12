@@ -95,6 +95,7 @@ In pratica:
 
 - l'LLM esterno produce contenuti;
 - l'agent immagini salva file reali sotto `content/media/<slug>/assets/`;
+- la pipeline locale arricchisce in seguito audio e altri asset mancanti;
 - il sistema locale decide se i contenuti sono accettabili.
 
 Questo evita di fidarsi ciecamente dell'LLM sulla parte strutturale.
@@ -115,6 +116,27 @@ Workflow consigliato:
    il markdown appena cambiato sul filesystem.
 
 Il validatore fallisce se il file non esiste.
+
+### 5.2 Regola pratica per l'audio
+
+Il formato supporta gia audio locale e manifest `pronunciations.json`, ma il
+workflow standard non chiede all'LLM esterno di inventare questi campi.
+
+Workflow consigliato:
+
+1. l'LLM esterno produce `media.md`, `textbook/` e `cards/`;
+2. eventuali campi audio restano assenti, salvo che esista gia un asset locale
+   reale con provenance nota;
+3. la pipeline locale prova in seguito il fetch offline delle pronunce;
+4. se restano mancanti, il fallback Forvo completa il residuo;
+5. i metadata audio vengono salvati con asset e provenance reali, non
+   inventati.
+
+Regola operativa:
+
+- non far inventare all'LLM esterno `audio_src`, `audio_source`,
+  `audio_speaker`, `audio_license`, `audio_attribution` o `audio_page_url` se
+  non gli sono stati forniti asset e provenance reali.
 
 ## 6. Strategia consigliata per v1
 
@@ -168,6 +190,8 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
   sotto `assets/`;
 - che, se il task include il workflow immagini, il primo agente deve produrre
   `workflow/image-requests.yaml` invece di inventare direttamente `src`;
+- che i campi audio sono supportati dal formato ma non vanno compilati a
+  fantasia: si popolano solo con asset e provenance reali;
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
 - che non deve aggiungere spiegazioni fuori dai file.
@@ -205,6 +229,8 @@ Per ridurre i fallimenti di import:
   inventato**: usalo solo quando l'asset e gia presente nel bundle.
 - **`alt` e obbligatorio per ogni `:::image`**; `caption`, se presente, va
   serializzato in `>-` quando contiene testo libero o riferimenti inline.
+- **i campi audio sono opzionali ma reali**: se non ricevi un asset locale gia
+  esistente e metadata attendibili, non scriverli.
 
 Esempio corretto:
 
@@ -252,6 +278,8 @@ Vincoli obbligatori:
 - Usa solo la sintassi prevista per furigana, link semantici e blocchi strutturati. **MAPPA I KANJI CON FURIGANA ANCHE E SOPRATTUTTO DENTRO LE CITAZIONI IN CODICE (`` `{{kanji|kana}}` ``)**.
 - Un blocco `:::image` e ammesso solo se ricevi un `src` reale gia disponibile
   sotto `assets/`; non inventare path immagine.
+- I campi audio sono supportati dal formato, ma non vanno compilati se non
+  ricevi un asset reale e metadata attendibili.
 - Se il label visibile di un link semantico contiene kanji, metti il furigana
   direttamente nel label: `[{{単語|たんご}}](term:term-id)`.
 - Quando c'e un composto numerico con contatore o qualificatore (`以下`,

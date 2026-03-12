@@ -4,6 +4,7 @@ import {
   extractCommonsFileTitlesFromWiktionaryWikitext,
   extractSpokenTextFromCommonsTitle,
   normalizePronunciationText,
+  parseRetryAfterMs,
   scorePronunciationCandidate,
   selectBestPronunciationCandidate,
   type PronunciationCandidate,
@@ -46,6 +47,17 @@ describe("pronunciation fetch helpers", () => {
       "File:Ja-settei-setting.ogg",
       "File:Ja-ている.mp3",
       "File:LL-Q188 (jpn)-Speaker-食べる.ogg"
+    ]);
+  });
+
+  it("parses ja-pron audio filenames from ja.wiktionary-style templates", () => {
+    const source = `
+=={{ja}}==
+{{ja-pron|ボタン|a=Ja-botan-anglonative.oga}}
+`;
+
+    expect(extractCommonsFileTitlesFromWiktionaryWikitext(source)).toEqual([
+      "File:Ja-botan-anglonative.oga"
     ]);
   });
 
@@ -143,5 +155,14 @@ describe("pronunciation fetch helpers", () => {
     expect(selectBestPronunciationCandidate(setteiTarget, [candidate])?.fileTitle).toBe(
       "File:Ja-settei-setting.ogg"
     );
+  });
+
+  it("parses Retry-After values expressed in seconds", () => {
+    expect(parseRetryAfterMs("7")).toBe(7000);
+  });
+
+  it("returns null for invalid Retry-After values", () => {
+    expect(parseRetryAfterMs("not-a-date")).toBeNull();
+    expect(parseRetryAfterMs(null)).toBeNull();
   });
 });

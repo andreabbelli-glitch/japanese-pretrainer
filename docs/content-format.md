@@ -659,7 +659,7 @@ Esempio:
 ## 15. Estensioni future possibili
 
 - `sentence` come entita canonica esplicita;
-- supporto ad audio e immagini;
+- workflow piu ricchi e automatizzati per audio e immagini;
 - note grammaticali piu ricche;
 - campi di frequency / priority;
 - deck dinamici e card generate;

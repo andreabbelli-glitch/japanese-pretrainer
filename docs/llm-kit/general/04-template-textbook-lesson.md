@@ -98,6 +98,8 @@ Se l'asset non esiste ancora, non usare subito :::image: crea prima una voce in
 `workflow/image-requests.yaml`.
 Usa :::image solo se esiste gia un asset reale sotto `assets/`; non inventare
 path immagine.
+Non inventare campi audio nel testo editoriale: l'audio, se serve, viene
+arricchito in seguito dalla pipeline locale con asset e provenance reali.
 Se aggiungi campi descrittivi YAML nel frontmatter, come `summary`, usa `>-`.
 Una spiegazione debole del tipo "X e utile da fissare" non basta: scrivi
 "X vuol dire Y; qui ti segnala Z".

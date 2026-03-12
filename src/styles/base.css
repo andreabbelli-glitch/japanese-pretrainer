@@ -57,11 +57,16 @@ main {
   width: 100%;
 }
 
-.jp-inline,
-ruby {
+.jp-inline {
   font-family: var(--font-family-jp);
   font-size: var(--text-body-jp);
   line-height: var(--line-height-jp);
+}
+
+ruby {
+  font-family: var(--font-family-jp);
+  font-size: inherit;
+  line-height: inherit;
 }
 
 rt {

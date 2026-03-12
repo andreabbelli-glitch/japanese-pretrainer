@@ -320,7 +320,8 @@ I documenti da mantenere nel repo in questa fase sono:
 - Deploy iniziale locale.
 - Review system Anki-like con override manuale dello stato appreso.
 - Spiegazioni e tooltip principalmente in italiano.
-- Nessun audio o parsing avanzato in v1.
+- Audio locale e immagini supportati; niente parsing avanzato o pipeline media
+  completamente automatica in v1.
 
 ## 14. Prime milestone pratiche
 

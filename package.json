@@ -20,6 +20,7 @@
     "content:validate": "node --experimental-strip-types --experimental-default-type=module ./scripts/validate-content.ts",
     "content:import": "node --experimental-strip-types --experimental-default-type=module ./scripts/import-content.ts",
     "pronunciations:fetch": "node --experimental-strip-types --experimental-default-type=module ./scripts/fetch-pronunciations.ts",
+    "pronunciations:forvo": "node --experimental-strip-types --experimental-default-type=module ./scripts/fetch-forvo-pronunciations.ts",
     "image:status": "node --experimental-strip-types --experimental-default-type=module ./scripts/image-workflow-status.ts",
     "image:apply": "node --experimental-strip-types --experimental-default-type=module ./scripts/apply-image-blocks.ts",
     "db:setup": "pnpm db:migrate && pnpm db:seed",

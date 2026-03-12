@@ -44,6 +44,15 @@ Disponibile ora:
 > dopo `image:apply` serve sempre `content:import`: la webapp legge il
 > contenuto importato nel DB locale, non il markdown appena modificato.
 
+> [!IMPORTANT]
+> Audio e immagini sono gia supportati dal formato reale del progetto, ma il
+> loro recupero avviene di norma in un secondo passaggio locale. L'LLM esterno
+> non deve inventare file audio, metadata audio di provenance o `src` immagine
+> inesistenti. Per le immagini usa il workflow
+> `workflow/image-requests.yaml` / `workflow/image-assets.yaml`; per l'audio
+> lascia i campi assenti salvo che asset e provenance reali siano gia stati
+> forniti esplicitamente.
+
 ### Se vuoi dare contesto completo
 
 Passa:
@@ -90,6 +99,16 @@ modifica. Per esempio:
 > template di questa cartella. Se il kit non viene tenuto allineato al codice e
 > ai parser dell'applicazione, l'LLM produrra contenuti obsoleti o non
 > compatibili.
+
+Nota pratica aggiornata:
+
+- `general/01-content-format.md` deve restare allineato a
+  `docs/content-format.md`;
+- il formato supporta gia `:::image`, metadata audio locali e
+  `pronunciations.json`;
+- il fatto che audio e immagini vengano spesso arricchiti dopo non significa
+  che siano "non supportati": significa solo che di norma non vengono generati
+  direttamente dall'LLM esterno.
 
 ## Nota Storica sulle Fixtures
 

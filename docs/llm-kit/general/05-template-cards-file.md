@@ -92,6 +92,9 @@ Regole pratiche:
 - per composti numerici con contatori o qualificatori usa un solo furigana sul
   blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
   `{{4つ以上|よっついじょう}}`;
+- non compilare campi audio se non hai un asset locale gia reale e metadata di
+  provenance affidabili; di norma l'audio viene arricchito dopo dal workflow
+  locale;
 - non fermarti a formule come "X e utile/importante": `notes_it` deve dire che
   cosa significa davvero X e che cosa ti fa capire o fare nel media;
 - se la entry e un nome proprio poco trasparente, spiega almeno quale ruolo

@@ -3,12 +3,24 @@
 Lo script `pnpm pronunciations:fetch` arricchisce i bundle locali con audio
 umano gratuito, senza introdurre chiamate live nell'app runtime.
 
+## Ruolo nel workflow
+
+Questo e il primo step del workflow pronunce.
+
+Quando una nuova chat chiede di completare le pronunce mancanti:
+
+1. si parte da questo comando;
+2. si riporta un riepilogo di cio che e stato trovato e di cio che manca;
+3. solo dopo, se serve, si passa al fallback Forvo.
+
+La view completa del processo e in `docs/pronunciation-workflow.md`.
+
 ## Cosa fa
 
 - legge `content/` con lo stesso parser/validator usato dall'import;
 - salta le entry che hanno gia audio locale valido nel Markdown o nel manifest;
 - cerca prima candidate Lingua Libre su Wikimedia Commons;
-- usa Wiktionary solo come indice per ricavare eventuali file Commons gia
+- usa `en.wiktionary` e `ja.wiktionary` solo come indice per ricavare eventuali file Commons gia
   collegati;
 - scarica gli audio sotto `content/media/<slug>/assets/audio/...`;
 - aggiorna `content/media/<slug>/pronunciations.json`.
@@ -20,7 +32,15 @@ pnpm pronunciations:fetch
 pnpm pronunciations:fetch -- --media frieren
 pnpm pronunciations:fetch -- --media frieren --limit 10 --dry-run
 pnpm pronunciations:fetch -- --media frieren --refresh
+pnpm pronunciations:fetch -- --media duel-masters-dm25 --request-delay-ms 1500 --max-retries 6 --retry-base-delay-ms 10000
 ```
+
+Per una passata lenta e one-shot, usa un delay tra richieste e retry piu lunghi:
+
+- `--request-delay-ms`: pausa minima tra richieste HTTP;
+- `--max-retries`: quante volte ritentare su `429` o `5xx`;
+- `--retry-base-delay-ms`: base del backoff esponenziale quando `Retry-After`
+  non e disponibile.
 
 ## Policy di matching
 
@@ -32,8 +52,18 @@ pnpm pronunciations:fetch -- --media frieren --refresh
 
 ## Cache locale
 
-- le risposte di Commons e Wiktionary vengono cache-ate in
+- le risposte di Commons e delle due Wiktionary vengono cache-ate in
   `data/pronunciations-cache/`;
 - la cartella `data/` e gia ignorata da git;
 - il runtime dell'app non legge mai questa cache: usa solo DB, manifest e asset
   locali nel bundle.
+
+## Output operativo atteso
+
+Dopo il run, il comando stampa un riepilogo per bundle:
+
+- `<media-slug>: X matched, Y missing`
+- una riga `matched ...` per ogni entry trovata
+- una riga `miss ...` per ogni entry ancora senza audio
+
+Questo riepilogo e l'input per decidere se lanciare o meno il fallback Forvo.

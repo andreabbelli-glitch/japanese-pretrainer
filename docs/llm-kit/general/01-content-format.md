@@ -31,6 +31,10 @@ content/
           deck-edit.webp
         cards/
           abyss-bell.svg
+        audio/
+          term/
+            term-taberu/
+              term-taberu.ogg
       textbook/
         001-intro.md
         002-episode-01.md
@@ -38,6 +42,7 @@ content/
       cards/
         001-core-vocab.md
         002-episode-01.md
+      pronunciations.json
 ```
 
 ## 4. Regole generali
@@ -48,8 +53,7 @@ content/
 - Le chiavi obbligatorie non possono essere omesse.
 - I riferimenti devono puntare a ID esistenti oppure l'import deve fallire.
 - Il contenuto testuale libero e permesso solo nelle zone previste.
-- Gli asset immagine di un media vanno salvati sotto `assets/` nello stesso
-  bundle.
+- Gli asset di un media vanno salvati sotto `assets/` nello stesso bundle.
 
 ### 4.0 Regola di scope per gli ID editoriali
 
@@ -75,21 +79,39 @@ Implementazione rilevante:
 
 ### 4.0.1 Layer cross-media esplicito
 
-In fase 2 esiste un livello aggiuntivo opzionale:
+In fase 2 esiste un terzo livello distinto dall'ID tecnico e dall'ID
+editoriale locale:
 
 - `cross_media_group`
 
+Serve solo per collegare entry locali appartenenti a media diversi quando il
+collegamento e intenzionale e dichiarato.
+
 Regole:
 
-- collega entry locali di media diversi senza sostituirle;
-- non rende globale `term.id` o `grammar.id`;
-- va usato solo quando il collegamento editoriale e certo;
-- `meaning_it` e `notes_it` restano sempre locali al media;
-- non va usato per omografie o somiglianze dubbie;
-- il confronto deve aggiungere valore didattico reale, non solo somiglianza
-  formale;
+- `cross_media_group` e opzionale;
+- non sostituisce `term.id` o `grammar.id`;
+- non cambia il routing pubblico, che resta `mediaSlug + source_id locale`;
+- `meaning_it`, `notes_it`, lesson e card restano sempre locali al media;
+- non va usato per unire automaticamente omografi, falsi amici o label UI
+  simili ma editorialmente diverse;
 - lo stesso `cross_media_group` puo essere riusato solo dallo stesso tipo di
-  entry (`term` oppure `grammar`).
+  entry: o tutti `term`, o tutti `grammar`;
+- dentro uno stesso media, uno stesso `cross_media_group` deve puntare a una
+  sola entry locale per tipo.
+
+Quando usarlo:
+
+- lo stesso termine o pattern ricorre davvero in media diversi;
+- vuoi mostrare "compare anche in altri media" nel detail e nella review;
+- le sfumature locali restano diverse ma il collegamento editoriale e certo.
+- il confronto aggiunge valore didattico reale, non solo somiglianza formale.
+
+Quando non usarlo:
+
+- due entry condividono solo lemma, kanji o reading;
+- c'e il dubbio che si tratti di omografia o uso troppo diverso;
+- stai cercando un fallback fuzzy per evitare di curare il contenuto.
 
 ### 4.1 Regola furigana per testo visibile
 
@@ -290,6 +312,10 @@ entry_id: term-taberu
 card_type: recognition
 front: 食べる
 back: mangiare
+example_jp: >-
+  パンを{{食|た}}べる。
+example_it: >-
+  Mangio il pane.
 tags: [verb, core]
 :::
 
@@ -337,6 +363,11 @@ Regola review obbligatoria per `:::card`:
 - `example_it` deve tradurre quella stessa frase in italiano in modo utile per
   il retro review.
 
+Campi opzionali del blocco `:::card`:
+
+- `notes_it`
+- `tags`
+
 ## 8. Entita dichiarabili nel contenuto
 
 Per generare il glossary servono entita canoniche. In v1 sono supportate due
@@ -363,6 +394,12 @@ notes_it: >-
   Verbo di base molto frequente.
 level_hint: n5
 aliases: [たべる, taberu]
+audio_src: assets/audio/term/term-taberu/term-taberu.ogg
+audio_source: lingua_libre
+audio_speaker: Example Speaker
+audio_license: CC BY-SA 4.0
+audio_attribution: Example Speaker via Lingua Libre / Wikimedia Commons
+audio_page_url: https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Example_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg
 :::
 ```
 
@@ -383,20 +420,40 @@ Campi opzionali:
 - `level_hint`
 - `aliases`
 - `segment_ref`
+- `audio_src`
+- `audio_source`
+- `audio_speaker`
+- `audio_license`
+- `audio_attribution`
+- `audio_page_url`
+
+Regole audio:
+
+- l'audio e opzionale;
+- se presente, `audio_src` deve puntare a un file locale sotto `assets/`;
+- sono ammessi `mp3`, `ogg`, `wav`, `m4a`;
+- `audio_source`, `audio_speaker`, `audio_license`, `audio_attribution` e
+  `audio_page_url` sono metadata opzionali di provenance;
+- se compare qualunque metadata audio, `audio_src` deve esistere e il file deve
+  essere presente nel bundle locale;
+- non usare TTS o placeholder sintetici.
 
 ### 8.2 Blocco `grammar`
 
 ```md
 :::grammar
-id: grammar-ikan-mo-i-ka
-cross_media_group: shared-limit-expressions
-pattern: ～以下 / ～以上
-title: Limiti numerici
-reading: いか / いじょう
-meaning_it: al massimo / almeno
+id: grammar-teiru
+cross_media_group: shared-progressive-state
+pattern: ～ている
+title: Forma in -te iru
+meaning_it: azione in corso o stato risultante
 notes_it: >-
-  Serve per definire confini.
+  Compare molto spesso nel parlato e nei testi descrittivi.
 level_hint: n4
+audio_src: assets/audio/grammar/grammar-teiru/grammar-teiru.mp3
+audio_source: wikimedia_commons
+audio_speaker: Example Speaker
+audio_license: CC BY 4.0
 :::
 ```
 
@@ -410,11 +467,16 @@ Campi obbligatori:
 Campi opzionali:
 
 - `cross_media_group`
-- `reading` (OBBLIGATORIO in hiragana se `pattern` contiene kanji)
 - `notes_it`
 - `level_hint`
 - `aliases`
 - `segment_ref`
+- `audio_src`
+- `audio_source`
+- `audio_speaker`
+- `audio_license`
+- `audio_attribution`
+- `audio_page_url`
 
 ### 8.3 Blocco `example_sentence`
 
@@ -509,7 +571,8 @@ Il glossary viene costruito unendo:
 - entita `term` dichiarate nei file;
 - entita `grammar` dichiarate nei file;
 - riferimenti da lesson e cards;
-- metadata di card e segmenti.
+- metadata di card e segmenti;
+- eventuale metadata audio locale.
 
 Per ogni entry del glossary il sistema deve poter risalire a:
 
@@ -518,6 +581,41 @@ Per ogni entry del glossary il sistema deve poter risalire a:
 - cards collegate;
 - segmenti collegati;
 - alias di ricerca.
+
+## 11.1 Manifest opzionale `pronunciations.json`
+
+Per l'enrichment offline e disponibile un manifest JSON opzionale nel root del
+bundle media. Serve soprattutto per salvare audio scaricato via CLI senza
+riscrivere i blocchi Markdown editoriali.
+
+Formato minimo:
+
+```json
+{
+  "version": 1,
+  "entries": [
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-teiru",
+      "audio_src": "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "Example Speaker",
+      "audio_license": "CC BY 4.0",
+      "audio_attribution": "Example Speaker via Wikimedia Commons",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-%E3%81%A6%E3%81%84%E3%82%8B.mp3"
+    }
+  ]
+}
+```
+
+Regole:
+
+- `entry_type` deve essere `term` o `grammar`;
+- `entry_id` usa l'ID editoriale locale del blocco sorgente;
+- il manifest integra i campi audio del Markdown;
+- se Markdown e manifest definiscono la stessa entry, il Markdown ha priorita
+  sui campi gia presenti;
+- il manifest viene validato durante `content:validate` e `content:import`.
 
 ## 12. Regole di import
 
@@ -537,7 +635,8 @@ Per ogni entry del glossary il sistema deve poter risalire a:
 - prefisso suggerito per term: `term-`
 - prefisso suggerito per grammar: `grammar-`
 - prefisso suggerito per card: `card-`
-- formato suggerito per `cross_media_group`: slug descrittivo ASCII
+- formato suggerito per `cross_media_group`: slug descrittivo ASCII, per esempio
+  `shared-taberu-core` o `shared-progressive-state`
 - convenzione pratica consigliata per il corpus reale: prefisso del tipo +
   nucleo condiviso, per esempio `term-shared-ranked-match` o
   `grammar-shared-progressive-state`
@@ -560,7 +659,7 @@ Esempio:
 ## 15. Estensioni future possibili
 
 - `sentence` come entita canonica esplicita;
-- supporto ad audio e immagini;
+- workflow piu ricchi e automatizzati per audio e immagini;
 - note grammaticali piu ricche;
 - campi di frequency / priority;
 - deck dinamici e card generate;
@@ -576,5 +675,6 @@ Per partire velocemente:
 - il glossary nasce dalla fusione delle entita dichiarate e dei riferimenti;
 - se una entry e critica per il glossary, va dichiarata esplicitamente come
   `term` o `grammar`, non solo nominata nel testo.
-- se la stessa entry compare anche in altri media con collegamento sicuro,
-  aggiungi `cross_media_group` invece di inventare un ID globale.
+- se una entry locale compare anche in altri media con collegamento editoriale
+  certo, aggiungi `cross_media_group` invece di riusare o forzare un ID
+  globale.

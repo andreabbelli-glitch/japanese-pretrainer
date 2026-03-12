@@ -1,13 +1,17 @@
 import path from "node:path";
 
 import { parseContentRoot } from "../src/lib/content/validator.ts";
-import { fetchPronunciationsForBundle } from "../src/lib/pronunciation-fetch.ts";
+import {
+  fetchPronunciationsForBundle,
+  type PronunciationFetchNetworkOptions
+} from "../src/lib/pronunciation-fetch.ts";
 
 type CliOptions = {
   contentRoot: string;
   dryRun: boolean;
   limit?: number;
   mediaSlugs: string[];
+  network: PronunciationFetchNetworkOptions;
   refresh: boolean;
 };
 
@@ -39,6 +43,7 @@ if (!parseResult.ok) {
       cacheRoot,
       dryRun: options.dryRun,
       limit: options.limit,
+      network: options.network,
       refresh: options.refresh
     });
 
@@ -63,6 +68,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     contentRoot: "content",
     dryRun: false,
     mediaSlugs: [],
+    network: {},
     refresh: false
   };
 
@@ -99,6 +105,39 @@ function parseCliOptions(argv: string[]): CliOptions {
 
     if (argument === "--dry-run") {
       options.dryRun = true;
+      continue;
+    }
+
+    if (argument === "--request-delay-ms") {
+      const parsedDelay = Number.parseInt(argv[index + 1] ?? "", 10);
+
+      if (Number.isFinite(parsedDelay) && parsedDelay >= 0) {
+        options.network.requestDelayMs = parsedDelay;
+      }
+
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--max-retries") {
+      const parsedRetries = Number.parseInt(argv[index + 1] ?? "", 10);
+
+      if (Number.isFinite(parsedRetries) && parsedRetries >= 0) {
+        options.network.maxRetries = parsedRetries;
+      }
+
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--retry-base-delay-ms") {
+      const parsedDelay = Number.parseInt(argv[index + 1] ?? "", 10);
+
+      if (Number.isFinite(parsedDelay) && parsedDelay >= 0) {
+        options.network.retryBaseDelayMs = parsedDelay;
+      }
+
+      index += 1;
       continue;
     }
 

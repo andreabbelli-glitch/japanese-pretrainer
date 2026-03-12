@@ -14,7 +14,8 @@ Questo documento serve invece a chiarire:
 - quali file passare all'LLM;
 - come validare l'output;
 - come gestire le correzioni;
-- quando importare davvero i contenuti.
+- quando importare davvero i contenuti;
+- come gestire il passaggio successivo di enrichment audio e immagini.
 
 ## Quando serve davvero
 
@@ -146,6 +147,7 @@ Distinzione da mantenere:
 - contenuto reale: `content/media/...`
 - kit LLM: `docs/llm-kit/...`
 - fixture test: `tests/fixtures/content/...`
+- enrichment successivo: audio e immagini recuperati da workflow locali.
 
 ### 3.1 Asset immagini
 
@@ -176,6 +178,21 @@ Nota operativa:
 - la webapp renderizza il contenuto importato nel DB locale;
 - quindi, dopo un apply reale, va rieseguito `content:import` prima di
   verificare il risultato nel reader.
+
+### 3.2 Asset audio
+
+Il formato del progetto supporta gia audio locale e `pronunciations.json`, ma
+nel workflow con LLM esterno l'audio di norma non viene scritto nel primo batch
+editoriale.
+
+Regole pratiche:
+
+- non chiedere all'LLM di inventare file audio o metadata di provenance;
+- non chiedere all'LLM di popolare `audio_src` se l'asset non esiste davvero;
+- dopo il batch editoriale, usa il workflow locale di pronunce per cercare
+  audio mancanti;
+- prima esegui il fetch offline;
+- poi, se restano mancanti, puoi usare il fallback Forvo.
 
 ### 4. Valida localmente prima dell'import
 
