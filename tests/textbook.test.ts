@@ -477,6 +477,18 @@ describe("textbook data", () => {
       "食べる",
       "～ている"
     ]);
+    expect(lessonData?.entries[0]).toMatchObject({
+      kind: "term",
+      pronunciation: {
+        src: "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
+      }
+    });
+    expect(lessonData?.entries[1]).toMatchObject({
+      kind: "grammar",
+      pronunciation: {
+        src: "/media/frieren/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
+      }
+    });
     expect(
       lessonData?.lesson.ast?.blocks.some(
         (block) => block.type === "grammarDefinition"

@@ -32,6 +32,10 @@ import {
   updateStudySettings,
   type FuriganaMode
 } from "@/lib/settings";
+import {
+  buildPronunciationData,
+  type PronunciationData
+} from "@/lib/pronunciation";
 import { deriveEntryStudyState } from "@/lib/study-entry";
 import {
   calculatePercent,
@@ -84,6 +88,7 @@ export type TextbookEntryTooltip = {
   notes?: string;
   pos?: string;
   levelHint?: string;
+  pronunciation?: PronunciationData;
   statusLabel: string;
   segmentTitle?: string;
   glossaryHref: Route;
@@ -96,6 +101,7 @@ export type TextbookCardTooltip = {
   reading?: string;
   meaning: string;
   notes?: string;
+  pronunciation?: PronunciationData;
   typeLabel: string;
   statusLabel: string;
   segmentTitle?: string;
@@ -561,6 +567,7 @@ function mapTermTooltipEntry(
     notes: entry.notesIt ?? undefined,
     pos: entry.pos ?? undefined,
     levelHint: entry.levelHint ?? undefined,
+    pronunciation: buildPronunciationData(mediaSlug, entry) ?? undefined,
     statusLabel: resolveEntryStudyStateLabel(
       entry.status?.status ?? null,
       studySignals
@@ -591,6 +598,7 @@ function mapGrammarTooltipEntry(
     meaning: entry.meaningIt,
     notes: entry.notesIt ?? undefined,
     levelHint: entry.levelHint ?? undefined,
+    pronunciation: buildPronunciationData(mediaSlug, entry) ?? undefined,
     statusLabel: resolveEntryStudyStateLabel(
       entry.status?.status ?? null,
       studySignals

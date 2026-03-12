@@ -37,6 +37,8 @@ import {
   mediaTextbookLessonHref
 } from "@/lib/site";
 
+import { PronunciationAudio } from "../ui/pronunciation-audio";
+
 type LessonReaderClientProps = {
   data: TextbookLessonData;
 };
@@ -1605,6 +1607,9 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
             .join(" · ")}
         </p>
       ) : null}
+      {entry.pronunciation ? (
+        <PronunciationAudio audio={entry.pronunciation} compact />
+      ) : null}
       <p className="entry-tooltip-card__meaning">{entry.meaning}</p>
       {"literalMeaning" in entry && entry.literalMeaning ? (
         <p className="entry-tooltip-card__detail">
@@ -1629,12 +1634,14 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
           {formatCrossMediaHintLabel(entry.crossMediaHint.otherMediaCount)}
         </p>
       ) : null}
-      <Link
-        className="text-link"
-        href={"glossaryHref" in entry ? entry.glossaryHref : entry.reviewHref}
-      >
-        {"glossaryHref" in entry ? "Apri voce" : "Apri card"}
-      </Link>
+      {!entry.pronunciation ? (
+        <Link
+          className="text-link"
+          href={"glossaryHref" in entry ? entry.glossaryHref : entry.reviewHref}
+        >
+          {"glossaryHref" in entry ? "Apri voce" : "Apri card"}
+        </Link>
+      ) : null}
     </div>
   );
 }

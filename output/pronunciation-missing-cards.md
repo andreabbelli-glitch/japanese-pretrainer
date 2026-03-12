@@ -1,0 +1,153 @@
+# Missing Pronunciation Coverage
+
+Stato estratto dal DB locale il 2026-03-12.
+
+Nota:
+- L'audio oggi e agganciato alle entry `term` / `grammar`, non direttamente alle `:::card`.
+- Questo report elenca quindi le review card che al momento non possono ancora mostrare audio, perche nessuna delle loro entry guida ha una pronuncia associata.
+
+## Summary
+
+- `duel-masters-dm25`: 92 card senza audio su 93
+- `gundam-arsenal-base`: 43 card senza audio su 43
+
+## Duel Masters
+
+- `card-creature-recognition` — `クリーチャー` → `creatura`
+- `card-spell-recognition` — `呪文` → `magia / spell`
+- `card-tamaseed-recognition` — `タマシード` → `tipo di carta Tamaseed`
+- `card-blocker-recognition` — `ブロッカー` → `bloccante`
+- `card-evolution-recognition` — `進化` → `evoluzione`
+- `card-invasion-recognition` — `侵略` → `invasione`
+- `card-shinkarize-recognition` — `シンカライズ` → `effetto che permette di evolvere sopra un Tamaseed`
+- `card-command-recognition` — `コマンド` → `Command / famiglia di creature`
+- `card-civilization-recognition` — `文明` → `civiltà / civilization`
+- `card-cost-recognition` — `コスト` → `costo`
+- `card-power-recognition` — `パワー` → `potere / power`
+- `card-goukei-recognition` — `合計` → `totale / somma complessiva`
+- `card-race-recognition` — `種族` → `tribù / race`
+- `card-battle-zone-recognition` — `バトルゾーン` → `battle zone / campo`
+- `card-mana-zone-recognition` — `マナゾーン` → `mana zone`
+- `card-shield-zone-recognition` — `シールドゾーン` → `shield zone`
+- `card-deck-recognition` — `山札` → `mazzo / deck`
+- `card-hand-recognition` — `手札` → `mano / hand`
+- `card-graveyard-recognition` — `墓地` → `cimitero / graveyard`
+- `card-self-recognition` — `自分` → `se stessi / tu`
+- `card-opponent-recognition` — `相手` → `avversario / opponent`
+- `card-effect-recognition` — `効果` → `effetto`
+- `card-summon-recognition` — `召喚` → `evocazione / summon`
+- `card-attack-recognition` — `攻撃` → `attacco / attack`
+- `card-destroy-recognition` — `破壊` → `distruzione / destroy`
+- `card-break-recognition` — `ブレイク` → `rompere gli scudi / break`
+- `card-tap-recognition` — `タップ` → `tappare / mettere tapped`
+- `card-untap-recognition` — `アンタップ` → `stappare / untap`
+- `card-kasaneru-recognition` — `重ねる` → `sovrapporre / mettere sopra`
+- `card-deru-recognition` — `出る` → `uscire / entrare in gioco`
+- `card-dasu-recognition` — `出す` → `far uscire / mettere in gioco`
+- `card-oku-recognition` — `置く` → `mettere / porre`
+- `card-erabu-recognition` — `選ぶ` → `scegliere`
+- `card-hiku-recognition` — `引く` → `pescare / tirare`
+- `card-suteru-recognition` — `捨てる` → `scartare / buttare via`
+- `card-modosu-recognition` — `戻す` → `rimandare / restituire`
+- `card-hanareru-recognition` — `離れる` → `lasciare / allontanarsi`
+- `card-nokoru-recognition` — `残る` → `restare / rimanere`
+- `card-atsukau-recognition` — `扱う` → `trattare come / considerare`
+- `card-s-trigger-recognition` — `S・トリガー` → `attivazione da scudo`
+- `card-w-breaker-recognition` — `W・ブレイカー` → `rompe 2 scudi`
+- `card-t-breaker-recognition` — `T・ブレイカー` → `rompe 3 scudi`
+- `card-toki-concept` — `～時 / ～た時` → `quando / nel momento in cui`
+- `card-sonoato-concept` — `その後` → `dopo quello / poi`
+- `card-soushitara-concept` — `そうしたら` → `se lo fai, allora / in quel caso`
+- `card-temoyoi-concept` — `～てもよい` → `puoi fare / è consentito fare`
+- `card-kawarini-concept` — `かわりに` → `invece di / al posto di`
+- `card-nakereba-concept` — `～なければ ... ない` → `se non / a meno che non`
+- `card-teireba-concept` — `～ていれば` → `se / quando è già in quello stato`
+- `card-igai-no-houhou-de-concept` — `～以外の方法で` → `con un metodo diverso da`
+- `card-matawa-concept` — `または` → `oppure / o`
+- `card-ika-ijou-concept` — `～以下 / ～以上` → `al massimo / almeno`
+- `card-turn-timing-concept` — `～のはじめに / ～の終わりに` → `all'inizio di / alla fine di`
+- `card-tadashi-concept` — `ただし` → `però / salvo che / con la seguente limitazione`
+- `card-home-recognition` — `ホーム` → `schermata principale / home`
+- `card-mission-recognition` — `ミッション` → `missione / task`
+- `card-login-bonus-recognition` — `ログインボーナス` → `bonus di accesso / login bonus`
+- `card-present-recognition` — `プレゼント` → `casella regali / inbox premi`
+- `card-shop-recognition` — `ショップ` → `negozio / shop`
+- `card-confirm-recognition` — `確認` → `conferma / controllo`
+- `card-receive-recognition` — `受け取る` → `ricevere / riscuotere`
+- `card-constructed-deck-recognition` — `デッキ` → `mazzo costruito / deck`
+- `card-hensei-recognition` — `編成` → `organizzazione / composizione / setup`
+- `card-deck-edit-recognition` — `デッキ編成` → `costruzione / modifica del mazzo`
+- `card-rental-deck-recognition` — `レンタルデッキ` → `mazzo noleggiato / rental deck`
+- `card-card-purchase-recognition` — `カード購入` → `acquisto carte / card purchase`
+- `card-card-exchange-recognition` — `カード交換` → `scambio carte / card exchange`
+- `card-craft-recognition` — `生成` → `creare / craftare`
+- `card-disenchant-recognition` — `分解` → `smontare / convertire in risorsa`
+- `card-dm-points-recognition` — `DMポイント` → `punti DM / risorsa di scambio o creazione`
+- `card-ranked-match-recognition` — `ランクマッチ` → `partita classificata / ranked match`
+- `card-room-match-recognition` — `ルームマッチ` → `match in stanza / room match`
+- `card-quick-pick-recognition` — `クイック・ピック` → `Quick Pick / modalità di scelta rapida`
+- `card-solo-play-recognition` — `ソロプレイ` → `gioco singolo / solo play`
+- `card-reward-recognition` — `報酬` → `ricompensa / reward`
+- `card-ongoing-recognition` — `開催中` → `in corso / attivo ora`
+- `card-unlock-recognition` — `解放` → `sblocco / unlock`
+- `card-start-match-recognition` — `対戦開始` → `avvia la partita / start battle`
+- `card-ichiran-concept` — `～一覧` → `elenco / overview di X`
+- `card-ui-chuu-concept` — `～中` → `in corso / attualmente attivo`
+- `card-zumi-concept` — `～済み` → `già fatto / già riscosso`
+- `card-mi-prefix-concept` — `未～` → `non ancora / ancora non disponibile`
+- `card-kanou-concept` — `～可能` → `possibile / disponibile`
+- `card-wo-sentaku-concept` — `～を選択` → `seleziona X`
+- `card-abyss-royal-recognition` — `アビスロイヤル` → `tribu Abyss Royal`
+- `card-abyssbell-jashintei-recognition` — `アビスベル=ジャシン帝` → `Abyssbell Jashin Emperor`
+- `card-jashinnyuu-recognition` — `邪侵入` → `Jashinnyuu`
+- `card-jablood-recognition` — `ジャブラッド` → `Jablood`
+- `card-red-zone-recognition` — `レッドゾーン` → `Red Zone`
+- `card-apollonus-dragelion-recognition` — `アポロヌス・ドラゲリオン` → `Apollonus Dragelion`
+- `card-shinka-sekkeizu-recognition` — `進化設計図` → `schema di evoluzione`
+- `card-mirai-sekkeizu-recognition` — `未来設計図` → `schema del futuro`
+
+## Gundam Arsenal Base
+
+- `card-amusement-ic-card-recognition` — `アミューズメントICカード` → `tessera IC usata per salvare i dati`
+- `card-card-slot-recognition` — `カードスロット` → `alloggiamento delle carte da gioco`
+- `card-ms-card-recognition` — `MSカード` → `carta Mobile Suit`
+- `card-pl-card-recognition` — `PLカード` → `carta pilota`
+- `card-unit-recognition` — `ユニット` → `unita composta da MS e PL`
+- `card-mypage-recognition` — `MY PAGE` → `servizio web dei dati giocatore`
+- `card-commander-level-recognition` — `{{指揮官|しきかん}}レベル` → `livello del profilo comandante`
+- `card-tactics-card-recognition` — `{{作戦|さくせん}}カード` → `carta digitale di effetto tattico`
+- `card-friendly-strength-gauge-recognition` — `{{自軍|じぐん}}{{戦力|せんりょく}}ゲージ` → `barra della resistenza complessiva alleata`
+- `card-enemy-strength-gauge-recognition` — `{{敵軍|てきぐん}}{{戦力|せんりょく}}ゲージ` → `barra della resistenza complessiva nemica`
+- `card-sortie-recognition` — `{{出撃|しゅつげき}}` → `far entrare una unita in campo`
+- `card-ability-recognition` — `アビリティ` → `abilita speciale del MS`
+- `card-special-attack-recognition` — `{{戦術技|せんじゅつぎ}}` → `tecnica speciale dell'unita`
+- `card-role-shoumetsu-recognition` — `{{殲滅|せんめつ}}` → `ruolo che punta prima alle unita nemiche`
+- `card-role-seiatsu-recognition` — `{{制圧|せいあつ}}` → `ruolo che colpisce basi e nave nemica`
+- `card-role-bouei-recognition` — `{{防衛|ぼうえい}}` → `ruolo che difende base o nave`
+- `card-challenge-mode-recognition` — `チャレンジモード` → `modalita CPU con missioni`
+- `card-rank-match-recognition` — `ランクマッチ` → `modalita classificata online`
+- `card-ex-battle-recognition` — `EXバトル` → `evento EX citato in guide vecchie`
+- `card-wo-setto-suru-concept` — `～をセットする` → `mettere l'oggetto richiesto nello slot o nella schermata prevista`
+- `card-wo-tacchi-suru-concept` — `～をタッチする` → `toccare l'elemento indicato con un input breve`
+- `card-suru-koto-de-concept` — `～することで` → `compiendo X, succede Y`
+- `card-ga-hyouji-sareru-concept` — `～が{{表示|ひょうじ}}される` → `X viene mostrato`
+- `card-ga-kaihou-sareru-concept` — `～が{{解放|かいほう}}される` → `X diventa utilizzabile`
+- `card-mighty-strike-freedom-gundam-recognition` — `マイティーストライクフリーダムガンダム` → `MS top-end del blocco SEED FREEDOM`
+- `card-immortal-justice-gundam-recognition` — `イモータルジャスティスガンダム` → `MS mobile del blocco SEED FREEDOM`
+- `card-gelgoog-menace-lunamaria-custom-recognition` — `ゲルググメナース(ルナマリア・ホーク専用機)` → `MS dedicata a Lunamaria Hawk`
+- `card-gquuuuuux-omega-psycommu-recognition` — `GQuuuuuuX (オメガ・サイコミュ)` → `GQuuuuuuX con specificazione Omega Psycommu`
+- `card-red-gundam-0085-recognition` — `赤いガンダム(0085)` → `Red Gundam con marcatore (0085)`
+- `card-kira-yamato-lacus-clyne-recognition` — `キラ・ヤマト＆ラクス・クライン` → `PL con doppio nome in un'unica carta`
+- `card-shinn-asuka-recognition` — `シン・アスカ` → `PL Shinn Asuka`
+- `card-lunamaria-hawk-recognition` — `ルナマリア・ホーク` → `PL Lunamaria Hawk`
+- `card-amate-yuzuriha-machu-recognition` — `アマテ・ユズリハ(マチュ)` → `PL con soprannome in parentesi`
+- `card-shuji-itou-recognition` — `シュウジ・イトウ` → `PL Shuji Ito`
+- `card-ms-type-near-range-recognition` — `近距離` → `tipo MS ravvicinato`
+- `card-ms-type-long-range-recognition` — `遠距離` → `tipo MS a distanza`
+- `card-ms-type-mobility-recognition` — `機動` → `tipo MS orientato alla mobilita`
+- `card-pl-skill-recognition` — `PLスキル` → `abilita primaria del pilota`
+- `card-link-ability-recognition` — `リンクアビリティ` → `bonus di collegamento tra carte della stessa unita`
+- `card-dedicated-machine-recognition` — `専用機` → `macchina dedicata a un pilota specifico`
+- `card-a-and-b-concept` — `A＆B` → `due nomi dentro una sola carta`
+- `card-senyouki-concept` — `～専用機` → `variante dedicata a quel personaggio`
+- `card-parenthetical-label-concept` — `～(～)` → `soprannome, variante o specificazione nel nome`

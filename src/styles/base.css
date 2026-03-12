@@ -2197,6 +2197,12 @@ rt {
   font-weight: var(--font-weight-semibold);
 }
 
+.pronunciation-audio--compact {
+  gap: var(--space-1);
+  padding-top: 0;
+  border-top: 0;
+}
+
 .glossary-result-card__footer {
   display: grid;
   gap: var(--space-2);
