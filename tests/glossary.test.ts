@@ -21,7 +21,8 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
-import { card, grammarPattern, term } from "@/db/schema/index.ts";
+import { buildScopedEntryId } from "@/lib/entry-id";
+import { card, cardEntryLink, grammarPattern, term } from "@/db/schema/index.ts";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
   getGlobalGlossaryPageData,
@@ -426,6 +427,81 @@ describe("glossary data", () => {
     expect(learningData.results[0]?.studyState.key).toBe("learning");
     expect(learningData.results[0]?.matchBadges).toContain("romaji");
     expect(grammarData.results).toHaveLength(0);
+  });
+
+  it("handles glossary datasets larger than SQLite expression depth limits", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const bulkTerms = Array.from({ length: 140 }, (_, index) => {
+      const sourceId = `term-bulk-${index}`;
+      const scopedId = buildScopedEntryId(
+        "term",
+        developmentFixture.mediaId,
+        sourceId
+      );
+
+      return {
+        card: {
+          id: `card-bulk-${index}`,
+          mediaId: developmentFixture.mediaId,
+          segmentId: developmentFixture.segmentId,
+          sourceFile: `tests/fixtures/db/fixture-tcg/cards/bulk-${index}.md`,
+          cardType: "recognition",
+          front: `単語 ${index}`,
+          back: `significato ${index}`,
+          notesIt: "Fixture bulk per regression test glossary.",
+          status: "active" as const,
+          orderIndex: 10 + index,
+          createdAt: "2026-03-10T09:00:00.000Z",
+          updatedAt: "2026-03-10T09:00:00.000Z"
+        },
+        cardEntryLink: {
+          id: `card-entry-link-bulk-${index}`,
+          cardId: `card-bulk-${index}`,
+          entryType: "term" as const,
+          entryId: scopedId,
+          relationshipType: "primary" as const
+        },
+        term: {
+          id: scopedId,
+          sourceId,
+          mediaId: developmentFixture.mediaId,
+          segmentId: developmentFixture.segmentId,
+          lemma: `用語${index}`,
+          reading: `ようご${index}`,
+          romaji: `yougo-${index}`,
+          pos: "noun",
+          meaningIt: `voce bulk ${index}`,
+          notesIt: "Fixture bulk per regression test glossary.",
+          searchLemmaNorm: `用語${index}`,
+          searchReadingNorm: `ようご${index}`,
+          searchRomajiNorm: `yougo-${index}`,
+          createdAt: "2026-03-10T09:00:00.000Z",
+          updatedAt: "2026-03-10T09:00:00.000Z"
+        }
+      };
+    });
+
+    await database.insert(term).values(bulkTerms.map((entry) => entry.term));
+    await database.insert(card).values(bulkTerms.map((entry) => entry.card));
+    await database
+      .insert(cardEntryLink)
+      .values(bulkTerms.map((entry) => entry.cardEntryLink));
+
+    const [globalData, localData] = await Promise.all([
+      getGlobalGlossaryPageData({}, database),
+      getGlossaryPageData(developmentFixture.mediaSlug, {}, database)
+    ]);
+
+    expect(globalData.resultSummary.total).toBeGreaterThan(100);
+    expect(globalData.results.some((entry) => entry.id === "term-bulk-139")).toBe(
+      true
+    );
+    expect(localData).not.toBeNull();
+    expect(localData?.results.length).toBeGreaterThan(100);
+    expect(localData?.results.some((entry) => entry.id === "term-bulk-139")).toBe(
+      true
+    );
   });
 
   it("renders the global glossary portal with explicit flashcard signals and return links", async () => {

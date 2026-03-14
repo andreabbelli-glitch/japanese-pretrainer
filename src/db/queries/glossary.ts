@@ -21,6 +21,27 @@ export type GlossaryEntryRef = {
   entryType: EntryType;
 };
 
+function splitGlossaryEntryRefs(entries: GlossaryEntryRef[]) {
+  const termIds = new Set<string>();
+  const grammarIds = new Set<string>();
+
+  for (const entry of entries) {
+    if (entry.entryType === "term") {
+      termIds.add(entry.entryId);
+      continue;
+    }
+
+    if (entry.entryType === "grammar") {
+      grammarIds.add(entry.entryId);
+    }
+  }
+
+  return {
+    grammarIds: [...grammarIds],
+    termIds: [...termIds]
+  };
+}
+
 export type CrossMediaGroupRecord = typeof crossMediaGroup.$inferSelect;
 
 export type CrossMediaTermSibling = {
@@ -552,6 +573,28 @@ export async function listEntryLessonConnections(
     return [];
   }
 
+  const { grammarIds, termIds } = splitGlossaryEntryRefs(entries);
+  const filters = [];
+
+  if (termIds.length > 0) {
+    filters.push(
+      and(eq(entryLink.entryType, "term"), inArray(entryLink.entryId, termIds))
+    );
+  }
+
+  if (grammarIds.length > 0) {
+    filters.push(
+      and(
+        eq(entryLink.entryType, "grammar"),
+        inArray(entryLink.entryId, grammarIds)
+      )
+    );
+  }
+
+  if (filters.length === 0) {
+    return [];
+  }
+
   return database
     .select({
       entryType: entryLink.entryType,
@@ -575,14 +618,7 @@ export async function listEntryLessonConnections(
     .where(
       and(
         eq(lesson.status, "active"),
-        or(
-          ...entries.map((entry) =>
-            and(
-              eq(entryLink.entryType, entry.entryType),
-              eq(entryLink.entryId, entry.entryId)
-            )
-          )
-        )
+        filters.length === 1 ? filters[0]! : or(...filters)
       )
     )
     .orderBy(
@@ -598,6 +634,31 @@ export async function listEntryCardConnections(
   entries: GlossaryEntryRef[]
 ) {
   if (entries.length === 0) {
+    return [];
+  }
+
+  const { grammarIds, termIds } = splitGlossaryEntryRefs(entries);
+  const filters = [];
+
+  if (termIds.length > 0) {
+    filters.push(
+      and(
+        eq(cardEntryLink.entryType, "term"),
+        inArray(cardEntryLink.entryId, termIds)
+      )
+    );
+  }
+
+  if (grammarIds.length > 0) {
+    filters.push(
+      and(
+        eq(cardEntryLink.entryType, "grammar"),
+        inArray(cardEntryLink.entryId, grammarIds)
+      )
+    );
+  }
+
+  if (filters.length === 0) {
     return [];
   }
 
@@ -626,14 +687,7 @@ export async function listEntryCardConnections(
     .where(
       and(
         ne(card.status, "archived"),
-        or(
-          ...entries.map((entry) =>
-            and(
-              eq(cardEntryLink.entryType, entry.entryType),
-              eq(cardEntryLink.entryId, entry.entryId)
-            )
-          )
-        )
+        filters.length === 1 ? filters[0]! : or(...filters)
       )
     )
     .orderBy(asc(card.orderIndex), asc(card.createdAt), asc(card.id));
