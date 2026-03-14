@@ -196,20 +196,17 @@ caption: >-
   conferma che l'incasso è già stato registrato.
 :::
 
-Questo popup è prezioso proprio perché chiarisce la differenza tra due tipi di
-messaggio:
-
-- bottone che ti fa ancora agire;
-- finestra che riassume un'azione già completata.
+Questo popup non ti offre più il claim: lo conferma come già eseguito.
 
 Quando leggi `{{以下|いか}}の{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}りました`,
-il claim non è più in sospeso. Il passato `ました` ti sta dicendo che l'azione
-è già avvenuta. L'app ti mostra *che cosa* hai incassato, non ti chiede *se*
-vuoi incassarlo.
+la spia decisiva è il passato `ました`: l'azione è già avvenuta e i premi sono
+già entrati nell'account. L'app ti mostra *quali* reward hai incassato, non ti
+chiede *se* vuoi incassarle.
 
-È un contrasto molto utile per l'allenamento UI: [{{受け取る|うけとる}}](term:term-receive)
-può apparire sia come azione ancora disponibile sia come parte di un messaggio
-di risultato già concluso.
+Questo ti aiuta a distinguere due usi diversi di
+[{{受け取る|うけとる}}](term:term-receive): come bottone indica un'azione ancora
+disponibile; dentro `{{受|う}}け{{取|と}}りました` indica invece un risultato già
+registrato.
 
 ## Esempi guidati
 
@@ -224,7 +221,8 @@ translation_it: >-
 
 - [{{未受け取り|みうけとり}}](term:term-unclaimed) ti dice subito che
   l'incasso non è stato ancora completato.
-- Qui il punto non è "che premio è", ma "devo ancora fare qualcosa".
+- Qui il contrasto non è il tipo di premio, ma lo stato del claim: la reward è
+  già presente nella box, però non è ancora stata trasferita al tuo inventario.
 
 **Esempio 2**
 
@@ -237,7 +235,8 @@ translation_it: >-
 
 - [{{一括受け取り|いっかつうけとり}}](term:term-bulk-claim) non descrive lo
   stato della reward, ma la modalità del claim.
-- È un ottimo label da leggere come azione rapida.
+- `{{一括|いっかつ}}` ti dice che il bottone applica la stessa riscossione a
+  tutte le reward aperte, invece di fartene ritirare una per una.
 
 **Esempio 3**
 
@@ -249,8 +248,9 @@ translation_it: >-
 :::
 
 - [{{中級|ちゅうきゅう}}](term:term-intermediate-class) definisce il livello.
-- [{{挑戦|ちょうせん}}](term:term-challenge) è il verbo pratico dell'ingresso
-  nello stage.
+- [{{挑戦|ちょうせん}}](term:term-challenge) è il verbo che fa partire davvero lo
+  stage: conferma il livello scelto e consuma il costo in ticket mostrato
+  accanto.
 
 **Esempio 4**
 

@@ -4,7 +4,6 @@ import {
   db,
   getMediaBySlug,
   listLessonsByMediaId,
-  listReviewCardsByMediaId,
   type DatabaseClient
 } from "@/db";
 import {
@@ -23,11 +22,15 @@ import {
   buildSegments,
   loadGlossaryProgressSnapshot,
   mapLessonTarget,
-  selectCurrentLesson,
+  selectActiveLesson,
+  selectResumeLesson,
   selectNextLesson
 } from "@/lib/study-metrics";
 
-import { getReviewQueueSnapshotForMedia } from "./review";
+import {
+  getEligibleReviewCardsByMediaId,
+  getReviewQueueSnapshotForMedia
+} from "./review";
 
 export type ProgressPageData = {
   glossary: Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>;
@@ -45,10 +48,12 @@ export type ProgressPageData = {
     title: string;
   };
   resume: {
-    currentLesson: ReturnType<typeof selectCurrentLesson>;
-    currentLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
+    activeLesson: ReturnType<typeof selectActiveLesson>;
+    activeLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
     lastOpenedLesson: ReturnType<typeof mapLessonTarget>;
     lastOpenedLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
+    resumeLesson: ReturnType<typeof selectResumeLesson>;
+    resumeLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
     nextLesson: ReturnType<typeof selectNextLesson>;
     nextLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
     recommendedArea: "review" | "textbook";
@@ -74,7 +79,8 @@ export type ProgressPageData = {
   settings: Awaited<ReturnType<typeof getStudySettings>>;
   textbook: {
     completedLessons: number;
-    currentLesson: ReturnType<typeof selectCurrentLesson>;
+    activeLesson: ReturnType<typeof selectActiveLesson>;
+    resumeLesson: ReturnType<typeof selectResumeLesson>;
     inProgressLessons: number;
     lastOpenedLesson: ReturnType<typeof mapLessonTarget>;
     nextLesson: ReturnType<typeof selectNextLesson>;
@@ -100,7 +106,7 @@ export async function getMediaProgressPageData(
     listLessonsByMediaId(database, media.id),
     loadGlossaryProgressSnapshot(database, media.id, media.slug),
     getReviewQueueSnapshotForMedia(media.slug, database),
-    listReviewCardsByMediaId(database, media.id),
+    getEligibleReviewCardsByMediaId(media.id, database),
     getStudySettings(database)
   ]);
   const completedLessons = lessons.filter(
@@ -109,7 +115,8 @@ export async function getMediaProgressPageData(
   const inProgressLessons = lessons.filter(
     (lesson) => lesson.progress?.status === "in_progress"
   ).length;
-  const currentLesson = selectCurrentLesson(lessons);
+  const activeLesson = selectActiveLesson(lessons);
+  const resumeLesson = selectResumeLesson(lessons);
   const nextLesson = selectNextLesson(lessons);
   const lastOpenedLesson = selectLastOpenedLesson(lessons);
   const review = {
@@ -136,7 +143,7 @@ export async function getMediaProgressPageData(
     upcomingCount: reviewQueue?.upcomingCount ?? 0
   };
   const resume = buildResumeModel({
-    currentLesson,
+    resumeLesson,
     mediaSlug: media.slug,
     nextLesson,
     review
@@ -161,13 +168,17 @@ export async function getMediaProgressPageData(
     },
     resume: {
       ...resume,
-      currentLesson,
-      currentLessonHref: currentLesson
-        ? mediaTextbookLessonHref(media.slug, currentLesson.slug)
+      activeLesson,
+      activeLessonHref: activeLesson
+        ? mediaTextbookLessonHref(media.slug, activeLesson.slug)
         : undefined,
       lastOpenedLesson,
       lastOpenedLessonHref: lastOpenedLesson
         ? mediaTextbookLessonHref(media.slug, lastOpenedLesson.slug)
+        : undefined,
+      resumeLesson,
+      resumeLessonHref: resumeLesson
+        ? mediaTextbookLessonHref(media.slug, resumeLesson.slug)
         : undefined,
       nextLesson,
       nextLessonHref: nextLesson
@@ -178,7 +189,8 @@ export async function getMediaProgressPageData(
     settings,
     textbook: {
       completedLessons,
-      currentLesson,
+      activeLesson,
+      resumeLesson,
       inProgressLessons,
       lastOpenedLesson,
       nextLesson,
@@ -190,7 +202,7 @@ export async function getMediaProgressPageData(
 }
 
 function buildResumeModel(input: {
-  currentLesson: ReturnType<typeof selectCurrentLesson>;
+  resumeLesson: ReturnType<typeof selectResumeLesson>;
   mediaSlug: string;
   nextLesson: ReturnType<typeof selectNextLesson>;
   review: ProgressPageData["review"];
@@ -211,7 +223,7 @@ function buildResumeModel(input: {
     };
   }
 
-  const lesson = input.currentLesson ?? input.nextLesson;
+  const lesson = input.resumeLesson ?? input.nextLesson;
 
   if (lesson) {
     return {
@@ -219,9 +231,9 @@ function buildResumeModel(input: {
       recommendedBody:
         lesson.summary ??
         lesson.excerpt ??
-        "Riprendi dal punto più naturale del percorso lesson.",
+        "Apri il prossimo passo naturale del percorso lesson.",
       recommendedHref: mediaTextbookLessonHref(input.mediaSlug, lesson.slug),
-      recommendedLabel: "Riprendi lesson",
+      recommendedLabel: "Continua il percorso",
       recommendedTitle: lesson.title
     };
   }

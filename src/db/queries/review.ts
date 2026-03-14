@@ -1,7 +1,25 @@
-import { and, asc, eq, gte, inArray, isNotNull, lt, lte, ne } from "drizzle-orm";
+import {
+  and,
+  asc,
+  eq,
+  gte,
+  inArray,
+  isNotNull,
+  lt,
+  lte,
+  ne
+} from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
-import { card, reviewLog, reviewState } from "../schema/index.ts";
+import {
+  card,
+  entryLink,
+  lesson,
+  lessonProgress,
+  reviewLog,
+  reviewState,
+  type EntryType
+} from "../schema/index.ts";
 
 export async function listCardsByMediaId(
   database: DatabaseClient,
@@ -61,6 +79,37 @@ export async function listReviewCardsByMediaId(
     },
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
+}
+
+export type LessonLinkedReviewEntry = {
+  entryId: string;
+  entryType: EntryType;
+  lessonStatus: (typeof lessonProgress.$inferSelect)["status"] | null;
+};
+
+export async function listLessonLinkedReviewEntriesByMediaId(
+  database: DatabaseClient,
+  mediaId: string
+): Promise<LessonLinkedReviewEntry[]> {
+  return database
+    .select({
+      entryId: entryLink.entryId,
+      entryType: entryLink.entryType,
+      lessonStatus: lessonProgress.status
+    })
+    .from(entryLink)
+    .innerJoin(
+      lesson,
+      and(eq(entryLink.sourceType, "lesson"), eq(entryLink.sourceId, lesson.id))
+    )
+    .leftJoin(lessonProgress, eq(lessonProgress.lessonId, lesson.id))
+    .where(
+      and(
+        eq(lesson.mediaId, mediaId),
+        eq(lesson.status, "active"),
+        inArray(entryLink.linkRole, ["introduced", "explained"])
+      )
+    );
 }
 
 export async function countNewCardsIntroducedOnDayByMediaId(

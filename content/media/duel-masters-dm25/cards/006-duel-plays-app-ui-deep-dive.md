@@ -595,8 +595,9 @@ example_jp: >-
 example_it: >-
   Usa un ticket nella schermata acquisto pack.
 notes_it: >-
-  Ti porta nel flusso dei pack, non in quello di singole carte o deck completi.
-  È utile da review proprio perché va distinto da `カード{{購入|こうにゅう}}`.
+  `カードパック{{購入|こうにゅう}}` apre il flusso in cui spendi ticket o gemme
+  per bustine. Va distinto da `カード{{購入|こうにゅう}}`, che nomina uno shop
+  più ampio o altri tipi di acquisto.
 tags: [duel-plays, app, ui, shop]
 :::
 
@@ -612,8 +613,9 @@ example_jp: >-
 example_it: >-
   Controlla i rates e il contenuto.
 notes_it: >-
-  In queste schermate è il label che ti fa passare dalla curiosità sul pack a
-  una lettura più fredda e utile delle probabilità.
+  `{{提供割合|ていきょうわりあい}}` è la schermata dei drop rate: non ti dice
+  che cosa fa il pack, ma con quale probabilità può contenere certe carte o
+  rarità.
 tags: [duel-plays, app, ui, shop]
 :::
 

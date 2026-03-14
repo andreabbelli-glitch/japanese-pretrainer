@@ -3,12 +3,9 @@ import { unstable_noStore as noStore } from "next/cache";
 import {
   db,
   getMediaBySlug,
-  listCardsByMediaId,
-  listDueCardsByMediaId,
   listLessonsByMediaId,
   listMedia,
   type DatabaseClient,
-  type DueCardItem,
   type MediaListItem
 } from "@/db";
 import {
@@ -17,11 +14,15 @@ import {
   formatSegmentKindLabel,
   formatStatusLabel
 } from "@/lib/study-format";
-import { getReviewQueueSnapshotForMedia } from "@/lib/review";
+import {
+  getEligibleReviewCardsByMediaId,
+  getReviewQueueSnapshotForMedia
+} from "@/lib/review";
 import {
   buildSegments,
   loadGlossaryProgressSnapshot,
-  selectCurrentLesson,
+  selectActiveLesson,
+  selectResumeLesson,
   selectNextLesson,
   type LessonResumeTarget,
   type SegmentStudyPreview,
@@ -49,7 +50,8 @@ export type MediaShellSnapshot = {
   reviewStatValue: string;
   reviewStatDetail: string;
   reviewQueueLabel: string;
-  currentLesson: LessonResumeTarget | null;
+  activeLesson: LessonResumeTarget | null;
+  resumeLesson: LessonResumeTarget | null;
   nextLesson: LessonResumeTarget | null;
   segments: SegmentStudyPreview[];
   previewEntries: StudyEntryPreview[];
@@ -121,11 +123,10 @@ async function buildMediaShellSnapshot(
   database: DatabaseClient,
   media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
 ): Promise<MediaShellSnapshot> {
-  const [lessons, glossary, cards, dueCards, reviewQueue] = await Promise.all([
+  const [lessons, glossary, cards, reviewQueue] = await Promise.all([
     listLessonsByMediaId(database, media.id),
     loadGlossaryProgressSnapshot(database, media.id, media.slug),
-    listCardsByMediaId(database, media.id),
-    listDueCardsByMediaId(database, media.id),
+    getEligibleReviewCardsByMediaId(media.id, database),
     getReviewQueueSnapshotForMedia(media.slug, database)
   ]);
 
@@ -136,15 +137,15 @@ async function buildMediaShellSnapshot(
   const activeReviewCards = cards.filter((card) =>
     isReviewCardActive(card.reviewState?.state ?? null)
   ).length;
-  const cardsDue = dueCards.length;
+  const cardsDue = reviewQueue?.dueCount ?? 0;
   const reviewSignals = buildReviewSignals({
     activeReviewCards,
     cardsDue,
     cardsTotal: cards.length,
-    dueCards,
     reviewQueue
   });
-  const currentLesson = selectCurrentLesson(lessons);
+  const activeLesson = selectActiveLesson(lessons);
+  const resumeLesson = selectResumeLesson(lessons);
   const nextLesson = selectNextLesson(lessons);
 
   return {
@@ -170,7 +171,8 @@ async function buildMediaShellSnapshot(
     reviewStatValue: reviewSignals.value,
     reviewStatDetail: reviewSignals.detail,
     reviewQueueLabel: reviewSignals.queueLabel,
-    currentLesson,
+    activeLesson,
+    resumeLesson,
     nextLesson,
     segments: buildSegments(lessons),
     previewEntries: glossary.previewEntries
@@ -216,7 +218,7 @@ function markDataAsLive() {
 }
 
 function scoreMediaFocus(item: MediaShellSnapshot) {
-  if (item.currentLesson && item.currentLesson.statusLabel === "In corso") {
+  if (item.activeLesson) {
     return 0;
   }
 
@@ -251,16 +253,14 @@ function buildReviewSignals({
   cardsDue,
   activeReviewCards,
   cardsTotal,
-  dueCards,
   reviewQueue
 }: {
   cardsDue: number;
   activeReviewCards: number;
   cardsTotal: number;
-  dueCards: DueCardItem[];
   reviewQueue: Awaited<ReturnType<typeof getReviewQueueSnapshotForMedia>>;
 }) {
-  const nextCard = reviewQueue?.cards[0] ?? dueCards[0];
+  const nextCard = reviewQueue?.cards[0];
 
   if (reviewQueue && reviewQueue.queueCount > 0) {
     return {

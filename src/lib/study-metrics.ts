@@ -42,6 +42,7 @@ export type LessonResumeTarget = {
   title: string;
   summary?: string | null;
   excerpt?: string | null;
+  status: "not_started" | "in_progress" | "completed";
   statusLabel: string;
   segmentTitle?: string;
 };
@@ -151,7 +152,7 @@ export function buildGlossaryProgressSnapshot(input: {
   };
 }
 
-export function selectCurrentLesson(lessons: LessonListItem[]): LessonResumeTarget | null {
+export function selectActiveLesson(lessons: LessonListItem[]): LessonResumeTarget | null {
   const inProgress = [...lessons]
     .filter((lesson) => lesson.progress?.status === "in_progress")
     .sort((left, right) =>
@@ -165,6 +166,10 @@ export function selectCurrentLesson(lessons: LessonListItem[]): LessonResumeTarg
     return mapLessonTarget(inProgress[0]);
   }
 
+  return null;
+}
+
+export function selectResumeLesson(lessons: LessonListItem[]): LessonResumeTarget | null {
   return selectNextLesson(lessons);
 }
 
@@ -186,6 +191,11 @@ export function mapLessonTarget(lesson: LessonListItem | null): LessonResumeTarg
     title: lesson.title,
     summary: lesson.summary,
     excerpt: lesson.content?.excerpt,
+    status:
+      lesson.progress?.status === "in_progress" ||
+      lesson.progress?.status === "completed"
+        ? lesson.progress.status
+        : "not_started",
     statusLabel: formatLessonProgressStatusLabel(lesson.progress?.status ?? null),
     segmentTitle: lesson.segment?.title
   };

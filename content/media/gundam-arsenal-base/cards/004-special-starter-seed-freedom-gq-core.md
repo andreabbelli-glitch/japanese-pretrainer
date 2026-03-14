@@ -15,9 +15,10 @@ romaji: maity strike freedom gundam
 meaning_it: Mighty Strike Freedom Gundam
 pos: proper-noun
 notes_it: >-
-  E la MS dal costo piu alto del deck e funziona bene come nome-ancora del lato
-  `SEED FREEDOM`. Non conviene leggerlo come un blocco unico opaco: fissa
-  almeno `マイティー`, `ストライク` e `フリーダム`.
+  E l'unica MS [{{遠距離|えんきょり}}](term:term-ms-type-long-range) a
+  [コスト](term:term-cost) `7` del deck. Se lo spezzetti in
+  `マイティー / ストライク / フリーダム`, riconosci subito il finisher del lato
+  `SEED FREEDOM` senza dover rileggere tutto il nome.
 level_hint: custom
 :::
 
@@ -29,9 +30,10 @@ romaji: imootal justice gundam
 meaning_it: Immortal Justice Gundam
 pos: proper-noun
 notes_it: >-
-  Altro nome molto utile del blocco `SEED FREEDOM`. Qui vale la pena fissare
-  soprattutto `ジャスティス`, perche ti aiuta a riconoscere subito la linea del
-  Mobile Suit anche quando stai leggendo in fretta.
+  Nel blocco `SEED FREEDOM` il pezzo da agganciare e `ジャスティス`: su questa
+  carta si accompagna a [{{機動|きどう}}](term:term-ms-type-mobility) e
+  [コスト](term:term-cost) `5`, quindi ti segnala la MS mobile intermedia del
+  mazzo, non il top-end `フリーダム`.
 level_hint: custom
 :::
 
@@ -99,9 +101,9 @@ romaji: shin asuka
 meaning_it: Shinn Asuka
 pos: proper-noun
 notes_it: >-
-  Nome corto e molto utile perche nel deck fa da contrasto ai nomi lunghi. Ti
-  permette di allenare subito il colpo d'occhio tra PL semplici e PL con
-  parentesi o nomi multipli.
+  [シン・アスカ](term:term-shinn-asuka) e una PL senza parentesi e senza `＆`.
+  Serve come caso-base per distinguere le pilot card semplici da quelle con
+  doppio nome o alias nel titolo.
 level_hint: custom
 :::
 
@@ -142,8 +144,11 @@ romaji: shuuji itou
 meaning_it: Shuji Ito
 pos: proper-noun
 notes_it: >-
-  Un'altra PL dal nome compatto. Funziona bene come ancora per il lato `GQ`
-  quando vuoi distinguere subito le due coppie franchise del deck.
+  [シュウジ・イトウ](term:term-shuji-itou) e il nome-pilota semplice del lato
+  `GQ`. Ti serve soprattutto per collegarlo subito a
+  [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085) e contrastarlo con
+  [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu), che invece porta un
+  alias in parentesi.
 level_hint: custom
 :::
 
@@ -275,8 +280,9 @@ example_it: >-
   Siccome costa molto, il Mighty Strike Freedom Gundam si conserva bene per la
   spinta di meta o fine partita.
 notes_it: >-
-  Conviene riconoscerlo subito perche nel deck e il nome piu lungo e il pezzo
-  che tende a rappresentare il top-end della curva.
+  Riconoscerlo presto serve perche e la MS col nome piu lungo e con
+  [コスト](term:term-cost) `7`: sul frame questo basta gia a segnalarlo come
+  top-end del lato `SEED FREEDOM`.
 tags: [starter-deck, ms, seed-freedom]
 :::
 
@@ -293,8 +299,10 @@ example_it: >-
   L'Immortal Justice Gundam e di tipo mobilita, quindi si presta bene a
   muoversi verso la corsia che si apre.
 notes_it: >-
-  Allenalo come nome-ancora del pacchetto mobile del deck. Ti aiuta anche a
-  fissare il contrasto tra `ジャスティス` e `フリーダム`.
+  Qui il nome non va solo memorizzato: insieme a
+  [{{機動|きどう}}](term:term-ms-type-mobility) e [コスト](term:term-cost) `5`
+  ti segnala la coppia mobile intermedia del deck e il contrasto con il
+  top-end `フリーダム`.
 tags: [starter-deck, ms, seed-freedom]
 :::
 
@@ -311,7 +319,9 @@ example_it: >-
   Se vedi "macchina dedicata a Lunamaria Hawk", la prima cosa da fare e pensare
   all'abbinamento con Lunamaria Hawk.
 notes_it: >-
-  Ottima carta di riconoscimento per fissare subito il pattern `～専用機`.
+  Qui `～{{専用機|せんようき}}` ti dice quale pilot card cercare per il
+  pairing: la parentesi non aggiunge lore, ma dichiara a chi e assegnata quella
+  variante.
 tags: [starter-deck, ms, seed-freedom, pairing]
 :::
 
@@ -328,7 +338,9 @@ example_it: >-
   GQuuuuuuX (Omega Psycommu) e perfetta per abituarti a leggere nomi misti con
   lettere latine e katakana.
 notes_it: >-
-  Carta molto utile per allenare parentesi e script misto in un unico colpo.
+  Questa carta ti costringe a leggere due strati diversi del nome: base in
+  alfabeto latino e specificazione tecnica in katakana. Qui la parentesi va
+  trattata come parte del nome, non come nota opzionale.
 tags: [starter-deck, ms, gquuuuuux, mixed-script]
 :::
 
@@ -363,7 +375,8 @@ example_it: >-
   In una scrittura come Kira Yamato & Lacus Clyne, l'`＆` va letto all'interno
   di una singola PL card.
 notes_it: >-
-  E la carta migliore del deck per fissare subito il pattern `A＆B`.
+  Su questa PL l'`＆` non separa due carte o due slot: unisce due nomi dentro
+  una singola pilot card.
 tags: [starter-deck, pl, seed-freedom, pattern]
 :::
 
@@ -380,8 +393,8 @@ example_it: >-
   Shinn Asuka ha un nome corto, quindi funziona bene come punto di riferimento
   in mezzo a carte dai titoli piu lunghi.
 notes_it: >-
-  E utile anche per distinguere a colpo d'occhio le PL semplici da quelle con
-  coppie o parentesi.
+  Il valore di [シン・アスカ](term:term-shinn-asuka) sta nel contrasto formale:
+  nome singolo, senza `＆` e senza parentesi, quindi pilot card standard.
 tags: [starter-deck, pl, seed-freedom]
 :::
 
@@ -398,7 +411,8 @@ example_it: >-
   Se la memorizzi accanto al Gelgoog Menace dedicato a lei, l'abbinamento
   naturale diventa molto chiaro.
 notes_it: >-
-  Va fissata insieme alla sua MS dedicata piu che isolatamente.
+  Va letta insieme alla sua MS dedicata perche il deck rende esplicito il
+  pairing gia nel nome della variante [{{専用機|せんようき}}](term:term-dedicated-machine).
 tags: [starter-deck, pl, seed-freedom, pairing]
 :::
 
@@ -432,7 +446,9 @@ example_it: >-
   Tenere Shuji Ito come partner naturale di Red Gundam (0085) rende il deck
   molto piu facile da ordinare mentalmente.
 notes_it: >-
-  Buona ancora per il lato `GQ` del deck e per i pairing iniziali lineari.
+  Serve come etichetta della seconda coppia lineare del lato `GQ`: quando lo
+  vedi vicino a [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085), sai gia
+  quale pairing naturale stai guardando.
 tags: [starter-deck, pl, gquuuuuux, pairing]
 :::
 
@@ -449,7 +465,9 @@ example_it: >-
   Quando leggi "ravvicinato", la prima immagine mentale deve essere il
   combattimento piu avanti sulla linea.
 notes_it: >-
-  E una delle tre etichette MS da riconoscere prima ancora del nome carta.
+  [{{近距離|きんきょり}}](term:term-ms-type-near-range) ti dice che la MS vuole
+  stare sulla linea di scontro: leggerla come pezzo di pressione da lontano
+  sarebbe gia un errore di ruolo.
 tags: [starter-deck, frame, ms-type]
 :::
 
@@ -484,7 +502,9 @@ example_it: >-
   Guardare una MS mobilita come un pezzo da spostare verso la corsia aperta
   rende molto piu chiara la sua funzione.
 notes_it: >-
-  E il terzo grande label MS da fissare a colpo d'occhio.
+  [{{機動|きどう}}](term:term-ms-type-mobility) segnala la MS da riposizionare
+  sulle corsie aperte. Il punto non e "veloce" in astratto, ma mobile nel senso
+  tattico della mappa.
 tags: [starter-deck, frame, ms-type]
 :::
 
@@ -518,8 +538,9 @@ example_it: >-
   Guardare la Link Ability ti permette di pensare subito se la coppia e
   coerente o meno.
 notes_it: >-
-  Sulle carte del deck vale la pena imparare a trovare questo blocco senza
-  rileggere ogni volta tutto il testo.
+  [リンクアビリティ](term:term-link-ability) e il pannello da controllare quando
+  vuoi capire se MS e PL hanno un bonus di coppia. Trovarlo in fretta ti evita
+  di perdere il pairing supportato dalla carta.
 tags: [starter-deck, frame, pairing]
 :::
 
@@ -536,7 +557,8 @@ example_it: >-
   Se c'e scritto "macchina dedicata", leggerla pensando a quel pilota come
   partner naturale diventa molto piu facile.
 notes_it: >-
-  E un ottimo anchor term per leggere velocemente varianti e pairing.
+  [{{専用機|せんようき}}](term:term-dedicated-machine) segnala che il nome della
+  MS incorpora gia il partner naturale da cercare tra le pilot card.
 tags: [starter-deck, frame, pairing]
 :::
 
@@ -553,7 +575,8 @@ example_it: >-
   L'`＆` in Kira Yamato & Lacus Clyne non indica due carte, ma l'unione di due
   nomi dentro una singola PL card.
 notes_it: >-
-  Pattern da fissare subito per non leggere male le PL con doppio nome.
+  Questo pattern dice che due nomi convivono nella stessa PL: non stai
+  guardando due carte, ma una sola entry con doppio nome.
 tags: [starter-deck, grammar, names]
 :::
 
@@ -570,7 +593,9 @@ example_it: >-
   Se trovi "dedicata a Lunamaria Hawk", devi leggere la carta pensando a quale
   PL corrispondente cercare.
 notes_it: >-
-  Nel deck e il pattern piu utile per imparare pairing e varianti di macchina.
+  Nel deck `～{{専用機|せんようき}}` marca una variante MS assegnata a quel
+  pilota. Se lo leggi bene, il passo successivo naturale e cercare la PL
+  corrispondente.
 tags: [starter-deck, grammar, pairing]
 :::
 
@@ -587,6 +612,7 @@ example_it: >-
   Il contenuto tra parentesi puo essere un soprannome come Machu oppure una
   specificazione come Omega Psycommu.
 notes_it: >-
-  In questo starter deck le parentesi fanno lavoro vero e vanno sempre lette.
+  In questo starter deck le parentesi possono segnalare alias, specificazione
+  tecnica o versione. Per questo vanno interpretate ogni volta, non saltate.
 tags: [starter-deck, grammar, names]
 :::

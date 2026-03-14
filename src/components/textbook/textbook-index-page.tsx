@@ -40,7 +40,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
 
       <section className="textbook-hero-grid">
         <SurfaceCard className="textbook-hero" variant="hero">
-          <p className="eyebrow">Da dove riprendere</p>
+          <p className="eyebrow">Prossimo passo nel percorso</p>
           <h2 className="textbook-hero__title">
             {data.resumeLesson?.title ?? "Il textbook è pronto per la prima lezione."}
           </h2>
@@ -57,7 +57,9 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
           <div className="hero-actions">
             {resumeHref ? (
               <Link className="button button--primary" href={resumeHref}>
-                {data.resumeLesson?.status === "completed" ? "Rileggi lesson" : "Apri lesson"}
+                {data.resumeLesson?.status === "completed"
+                  ? "Rileggi lesson"
+                  : "Continua il percorso"}
               </Link>
             ) : null}
             <Link className="button button--ghost" href={data.glossaryHref}>
@@ -77,7 +79,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
               <strong>{data.media.segmentKindLabel}</strong>
             </div>
             <div className="summary-row">
-              <span>Lesson in corso</span>
+              <span>Lesson aperte</span>
               <strong>
                 {data.lessons.filter((lesson) => lesson.status === "in_progress").length}
               </strong>

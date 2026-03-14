@@ -149,7 +149,9 @@ reading: すたーたーでっき
 romaji: sutaataa dekki
 meaning_it: mazzo iniziale pronto da usare
 notes_it: >-
-  Serve a cominciare subito con una struttura completa e leggibile. Per lo studio e utile perche ti fa vedere tutti i ruoli base senza dover improvvisare.
+  Nomina un deck gia pronto da inserire nel cabinato. Nel corpus serve perche ti
+  da subito 5 coppie MS + PL complete da leggere, invece di una collezione
+  sparsa o incompleta.
 level_hint: custom
 :::
 
@@ -359,11 +361,11 @@ reading: やくわり
 romaji: yakuwari
 meaning_it: ruolo / funzione tattica
 notes_it: >-
-  È la parola-base che ti permette di leggere bene la relazione tra una carta e
-  il lavoro che dovrebbe fare sul campo. In questo media conviene fissarla
-  presto perché organizza molto bene [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
+  E la categoria che ordina [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
   [{{制圧|せいあつ}}](term:term-role-seiatsu) e
-  [{{防衛|ぼうえい}}](term:term-role-bouei).
+  [{{防衛|ぼうえい}}](term:term-role-bouei). Quando la leggi, non stai guardando
+  flavor o una vaga "funzione": stai leggendo il lavoro tattico che quella
+  unita dovrebbe svolgere sulla mappa.
 level_hint: n4
 :::
 
@@ -592,7 +594,8 @@ title: Sblocco di una funzione
 reading: かいほうされる
 meaning_it: X diventa utilizzabile
 notes_it: >-
-  Compare quando un sistema non e ancora disponibile all'inizio ma si apre dopo una soglia di avanzamento.
+  Indica il passaggio da funzione bloccata a funzione disponibile dopo una
+  soglia precisa, per esempio avanzamento del profilo o sblocco di sistema.
 level_hint: n4
 :::
 
@@ -760,8 +763,9 @@ example_jp: >-
 example_it: >-
   Controlla insieme l'avanzamento delle missioni.
 notes_it: >-
-  In MY PAGE ti aiuta a leggere subito quali obiettivi stanno davvero andando
-  avanti e quali no.
+  In [MY PAGE](term:term-mypage) non descrive il contenuto della missione: ti
+  dice a che punto sei nel completamento. Va letto come stato di avanzamento,
+  non come lista di task.
 tags: [term, onboarding]
 :::
 
@@ -1177,6 +1181,7 @@ example_it: >-
   Alzando il livello comandante si sbloccano nuove missioni e nuovi slot per le
   carte tattiche.
 notes_it: >-
-  Compare quando un sistema non e ancora disponibile all'inizio ma si apre dopo una soglia di avanzamento.
+  Anche qui il pattern indica il passaggio da funzione bloccata a funzione
+  disponibile dopo una soglia precisa, non un cambiamento vago o astratto.
 tags: [grammar, ui]
 :::

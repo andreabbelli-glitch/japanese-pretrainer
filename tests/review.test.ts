@@ -15,10 +15,12 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
+  lessonProgress,
   reviewLog,
   reviewState,
   runMigrations,
   seedDevelopmentDatabase,
+  term,
   type DatabaseClient
 } from "@/db";
 import {
@@ -62,12 +64,23 @@ describe("review system", () => {
 
     await runMigrations(database);
     await seedDevelopmentDatabase(database);
+    await markFixtureLessonCompleted(database);
   });
 
   afterEach(async () => {
     closeDatabaseClient(database);
     await rm(tempDir, { recursive: true, force: true });
   });
+
+  async function markFixtureLessonCompleted(client: DatabaseClient) {
+    await client
+      .update(lessonProgress)
+      .set({
+        status: "completed",
+        completedAt: "2026-03-09T10:00:00.000Z"
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+  }
 
   it("uses a simple step-based scheduler that stays evolvable", () => {
     const fromNew = scheduleReview({
@@ -105,6 +118,69 @@ describe("review system", () => {
     expect(fromReview.lapses).toBe(2);
     expect(fromReview.reps).toBe(6);
     expect(fromReview.dueAt).toBe("2026-03-12T10:00:00.000Z");
+  });
+
+  it("hides cards tied to incomplete lessons but keeps orphan cards visible", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "in_progress",
+        completedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    await database.insert(term).values({
+      id: "term_fixture_orphan",
+      sourceId: "term_fixture_orphan",
+      mediaId: developmentFixture.mediaId,
+      segmentId: developmentFixture.segmentId,
+      lemma: "孤立",
+      reading: "こりつ",
+      romaji: "koritsu",
+      pos: "sostantivo",
+      meaningIt: "isolamento",
+      meaningLiteralIt: null,
+      notesIt: "Termine non introdotto in alcuna lesson.",
+      levelHint: null,
+      searchLemmaNorm: "孤立",
+      searchReadingNorm: "こりつ",
+      searchRomajiNorm: "koritsu",
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(card).values({
+      id: "card_fixture_orphan",
+      mediaId: developmentFixture.mediaId,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/orphan.md",
+      cardType: "recognition",
+      front: "孤立",
+      back: "orfana",
+      notesIt: "Card senza entry lesson-linked.",
+      status: "active",
+      orderIndex: 99,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card_entry_link_fixture_orphan_primary",
+      cardId: "card_fixture_orphan",
+      entryType: "term",
+      entryId: "term_fixture_orphan",
+      relationshipType: "primary"
+    });
+
+    const queue = await getReviewQueueSnapshotForMedia(
+      developmentFixture.mediaSlug,
+      database
+    );
+
+    expect(queue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
+      "card_fixture_orphan"
+    ]);
+    expect(queue?.dueCount).toBe(0);
+    expect(queue?.newAvailableCount).toBe(1);
+    expect(queue?.newQueuedCount).toBe(1);
   });
 
   it("builds a daily queue that separates due, new, manual, and suspended cards", async () => {

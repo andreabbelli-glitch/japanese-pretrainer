@@ -43,9 +43,9 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
             <Link className="button button--primary" href={data.resume.recommendedHref}>
               {data.resume.recommendedLabel}
             </Link>
-            {data.resume.currentLessonHref ? (
-              <Link className="button button--ghost" href={data.resume.currentLessonHref}>
-                Apri lesson corrente
+            {data.resume.activeLessonHref ? (
+              <Link className="button button--ghost" href={data.resume.activeLessonHref}>
+                Apri lesson aperta
               </Link>
             ) : (
               <Link className="button button--ghost" href={data.media.textbookHref}>
@@ -126,8 +126,8 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
                 <strong>{data.textbook.inProgressLessons}</strong>
               </div>
               <div className="summary-row">
-                <span>Prossima lesson utile</span>
-                <strong>{data.textbook.nextLesson?.title ?? "Percorso completo"}</strong>
+                <span>Prossimo passo nel percorso</span>
+                <strong>{data.textbook.resumeLesson?.title ?? "Percorso completo"}</strong>
               </div>
             </SurfaceCard>
 
@@ -256,17 +256,17 @@ export function MediaProgressPage({ data }: MediaProgressPageProps) {
           description="Le azioni principali restano tre: leggere, consultare, ripassare."
         >
           <div className="entry-point-grid">
-            <Link className="entry-point-link" href={data.resume.currentLessonHref ?? data.media.textbookHref}>
+            <Link className="entry-point-link" href={data.resume.resumeLessonHref ?? data.media.textbookHref}>
               <SurfaceCard className="entry-point-card">
                 <div className="entry-point-card__top">
                   <h3 className="entry-point-card__title">Textbook</h3>
                   <span className="entry-point-card__arrow">Apri</span>
                 </div>
                 <p className="entry-point-card__body">
-                  {data.resume.currentLesson?.title ?? "Apri il percorso lesson."}
+                  {data.resume.resumeLesson?.title ?? "Apri il percorso lesson."}
                 </p>
                 <p className="entry-point-card__detail">
-                  {data.resume.currentLesson?.statusLabel ?? "Pronto a iniziare"}
+                  {data.resume.resumeLesson?.statusLabel ?? "Pronto a iniziare"}
                 </p>
               </SurfaceCard>
             </Link>

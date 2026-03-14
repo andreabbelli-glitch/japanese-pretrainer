@@ -106,7 +106,7 @@ caption: >-
 
 ### 2. Come leggere il frame senza perdere tempo
 
-La scorciatoia utile e questa.
+Per leggere il frame in modo stabile usa sempre questo ordine.
 
 - Sulle MS, in alto a sinistra leggi prima il tipo:
   [{{近距離|きんきょり}}](term:term-ms-type-near-range),
@@ -386,9 +386,10 @@ caption: >-
   [シン・アスカ](term:term-shinn-asuka): immagine completa fronte + retro.
 :::
 
-- Giapponese da leggere: il nome e corto, quindi e utile come punto fermo in un
-  deck pieno di label lunghe. Ti abitua a distinguere subito le PL semplici da
-  quelle con `＆` o parentesi.
+- Giapponese da leggere:
+  [シン・アスカ](term:term-shinn-asuka) e il nome piu semplice fra le PL del
+  deck: niente parentesi, niente `＆`. Usalo come caso-base per riconoscere una
+  pilot card standard prima di passare a ruolo e costo.
 - Frame: in alto a sinistra leggi
   [{{制圧|せいあつ}}](term:term-role-seiatsu) e
   [コスト](term:term-cost) `2`. Questo ti dice che il suo lavoro base e spingere
@@ -412,9 +413,11 @@ caption: >-
   retro.
 :::
 
-- Giapponese da leggere: nome semplice da fissare insieme alla sua controparte
-  [{{専用機|せんようき}}](term:term-dedicated-machine), cioe
+- Giapponese da leggere:
+  [ルナマリア・ホーク](term:term-lunamaria-hawk) va letta insieme a
   [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom).
+  Il nome della pilot compare per intero nella variante `{{専用機|せんようき}}`,
+  quindi il pairing e gia visibile sul front della carta.
 - Frame: in alto a sinistra trovi
   [{{防衛|ぼうえい}}](term:term-role-bouei) e
   [コスト](term:term-cost) `3`. Questa e la carta che nel deck rende visibile la
@@ -460,9 +463,12 @@ caption: >-
   [シュウジ・イトウ](term:term-shuji-itou): immagine completa fronte + retro.
 :::
 
-- Giapponese da leggere: nome compatto e facile da fissare, utile come ancora
-  per il lato `GQ` del deck insieme a
-  [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085).
+- Giapponese da leggere:
+  [シュウジ・イトウ](term:term-shuji-itou) e il nome-pilota semplice del lato
+  `GQ`. Insieme a
+  [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085) ti fa vedere il
+  contrasto fra PL senza parentesi e PL con alias, come
+  [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu).
 - Frame: in alto a sinistra trovi
   [{{制圧|せいあつ}}](term:term-role-seiatsu) e
   [コスト](term:term-cost) `3`. Questo ti dice che non e la PL da lasciare a

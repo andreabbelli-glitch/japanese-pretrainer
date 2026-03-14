@@ -4,6 +4,7 @@ import {
   countNewCardsIntroducedOnDayByMediaId,
   db,
   getGrammarCrossMediaFamilyByEntryId,
+  listLessonLinkedReviewEntriesByMediaId,
   getMediaBySlug,
   getTermCrossMediaFamilyByEntryId,
   listGrammarEntriesByMediaId,
@@ -13,6 +14,7 @@ import {
   type CrossMediaGrammarSibling,
   type CrossMediaTermSibling,
   type GrammarGlossaryEntry,
+  type LessonLinkedReviewEntry,
   type ReviewCardListItem,
   type TermGlossaryEntry
 } from "@/db";
@@ -224,7 +226,7 @@ export async function getReviewPageData(
   const searchState = normalizeReviewSearchState(searchParams);
   const [cards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
-      listReviewCardsByMediaId(database, media.id),
+      getEligibleReviewCardsByMediaId(media.id, database),
       listTermEntriesByMediaId(database, media.id),
       listGrammarEntriesByMediaId(database, media.id),
       getReviewDailyLimit(database),
@@ -302,7 +304,7 @@ export async function getReviewQueueSnapshotForMedia(
 
   const [cards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
-      listReviewCardsByMediaId(database, media.id),
+      getEligibleReviewCardsByMediaId(media.id, database),
       listTermEntriesByMediaId(database, media.id),
       listGrammarEntriesByMediaId(database, media.id),
       getReviewDailyLimit(database),
@@ -347,7 +349,7 @@ export async function getReviewCardDetailData(
   }
 
   const [cards, terms, grammar] = await Promise.all([
-    listReviewCardsByMediaId(database, media.id),
+    getEligibleReviewCardsByMediaId(media.id, database),
     listTermEntriesByMediaId(database, media.id),
     listGrammarEntriesByMediaId(database, media.id)
   ]);
@@ -440,6 +442,57 @@ export async function getReviewCardDetailData(
       title: media.title
     }
   };
+}
+
+export async function getEligibleReviewCardsByMediaId(
+  mediaId: string,
+  database: DatabaseClient = db
+): Promise<ReviewCardListItem[]> {
+  const [cards, lessonLinkedEntries] = await Promise.all([
+    listReviewCardsByMediaId(database, mediaId),
+    listLessonLinkedReviewEntriesByMediaId(database, mediaId)
+  ]);
+
+  return filterReviewCardsByLessonCompletion(cards, lessonLinkedEntries);
+}
+
+function filterReviewCardsByLessonCompletion(
+  cards: ReviewCardListItem[],
+  lessonLinkedEntries: LessonLinkedReviewEntry[]
+) {
+  const linkedEntryKeys = new Set(
+    lessonLinkedEntries.map((row) => buildReviewEntryKey(row.entryType, row.entryId))
+  );
+  const completedEntryKeys = new Set(
+    lessonLinkedEntries
+      .filter((row) => row.lessonStatus === "completed")
+      .map((row) => buildReviewEntryKey(row.entryType, row.entryId))
+  );
+
+  return cards.filter((card) => {
+    const drivingLinks = getDrivingEntryLinks(card.entryLinks);
+
+    if (drivingLinks.length === 0) {
+      return true;
+    }
+
+    const drivingEntryKeys = drivingLinks.map((link) =>
+      buildReviewEntryKey(link.entryType, link.entryId)
+    );
+    const hasLessonLinkedPrimary = drivingEntryKeys.some((key) =>
+      linkedEntryKeys.has(key)
+    );
+
+    if (!hasLessonLinkedPrimary) {
+      return true;
+    }
+
+    return drivingEntryKeys.some((key) => completedEntryKeys.has(key));
+  });
+}
+
+function buildReviewEntryKey(entryType: string, entryId: string) {
+  return `${entryType}:${entryId}`;
 }
 
 function mapReviewCrossMediaTermSibling(sibling: CrossMediaTermSibling) {

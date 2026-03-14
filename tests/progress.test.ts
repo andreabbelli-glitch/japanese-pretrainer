@@ -11,6 +11,7 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
+  lessonProgress,
   reviewState,
   runMigrations,
   seedDevelopmentDatabase,
@@ -36,6 +37,13 @@ describe("progress, settings, and study controls", () => {
 
     await runMigrations(database);
     await seedDevelopmentDatabase(database);
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "completed",
+        completedAt: "2026-03-09T10:00:00.000Z"
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
   });
 
   afterEach(async () => {

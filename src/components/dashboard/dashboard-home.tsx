@@ -28,8 +28,8 @@ export async function DashboardHome() {
     );
   }
 
-  const focusResumeHref = focusMedia.currentLesson
-    ? mediaTextbookLessonHref(focusMedia.slug, focusMedia.currentLesson.slug)
+  const focusResumeHref = focusMedia.resumeLesson
+    ? mediaTextbookLessonHref(focusMedia.slug, focusMedia.resumeLesson.slug)
     : mediaStudyHref(focusMedia.slug, "textbook");
   const effectiveReviewMedia = reviewMedia ?? focusMedia;
 
@@ -42,8 +42,8 @@ export async function DashboardHome() {
           <h1 className="dashboard-hero__title">{focusMedia.title}</h1>
           <p className="dashboard-hero__summary">{focusMedia.description}</p>
           <p className="dashboard-hero__resume">
-            {focusMedia.currentLesson
-              ? `Riprendi da ${focusMedia.currentLesson.title}`
+            {focusMedia.resumeLesson
+              ? `Prossimo passo: ${focusMedia.resumeLesson.title}`
               : "Apri il media e scegli il primo passo di studio."}
           </p>
 
@@ -52,7 +52,7 @@ export async function DashboardHome() {
               className="button button--primary"
               href={focusResumeHref}
             >
-              Riprendi
+              Continua il percorso
             </Link>
             <Link className="button button--ghost" href={mediaHref(focusMedia.slug)}>
               Vai al media
@@ -61,7 +61,11 @@ export async function DashboardHome() {
 
           <div className="dashboard-hero__metrics">
             <StatBlock
-              detail={focusMedia.currentLesson?.statusLabel ?? "Percorso pronto"}
+              detail={
+                focusMedia.resumeLesson?.statusLabel ??
+                focusMedia.activeLesson?.statusLabel ??
+                "Percorso pronto"
+              }
               label="Textbook"
               value={
                 focusMedia.textbookProgressPercent !== null
@@ -115,7 +119,7 @@ export async function DashboardHome() {
       <Section
         description="Scegli rapidamente da dove riprendere, senza perdere il contesto."
         eyebrow="Media attivi"
-        title="Continua da qui"
+        title="Libreria attiva"
       >
         <div className="media-grid media-grid--dashboard">
           {media.map((item) => (
@@ -133,8 +137,8 @@ export async function DashboardHome() {
                 <p className="media-summary-card__description">{item.description}</p>
                 <div className="media-summary-card__metrics">
                   <span>
-                    {item.currentLesson
-                      ? `Ora: ${item.currentLesson.title}`
+                    {item.resumeLesson
+                      ? `Prossimo: ${item.resumeLesson.title}`
                       : `${item.lessonsTotal} lesson`}
                   </span>
                   <span>{item.cardsDue} da ripassare</span>
@@ -146,91 +150,74 @@ export async function DashboardHome() {
         </div>
       </Section>
 
-      <section className="content-section content-section--split">
-        <Section
-          className="dashboard-progress-section"
-          description="Qui vedi solo i progressi utili per riprendere."
-          eyebrow="Avanzamento"
-          title="Avanzamento"
-        >
-          <div className="stats-grid">
-            <StatBlock
-              detail={`${totals.lessonsCompleted} di ${totals.lessonsTotal} lezioni`}
-              label="Textbook"
-              value={
-                totals.lessonsTotal > 0
-                  ? `${Math.round((totals.lessonsCompleted / totals.lessonsTotal) * 100)}%`
-                  : "0%"
-              }
-            />
-            <StatBlock
-              detail={`${totals.entriesTotal} voci nel Glossary`}
-              label="Glossary"
-              value={
-                totals.entriesTotal > 0
-                  ? `${totals.entriesKnown}/${totals.entriesTotal}`
-                  : "0"
-              }
-            />
-            <StatBlock
-              detail={`${totals.activeReviewCards} card attive`}
-              label="Review"
-              tone={totals.cardsDue > 0 ? "warning" : "default"}
-              value={totals.cardsDue > 0 ? `${totals.cardsDue} oggi` : "Nessuna urgenza"}
-            />
-          </div>
-        </Section>
-
-        <Section
-          className="dashboard-cues-section"
-          description="Trova subito il prossimo passo utile."
-          eyebrow="Continua da qui"
-          title="Prossimi passi"
-        >
-          <div className="stack-list">
-            <SurfaceCard className="cue-card" variant="quiet">
+      <Section
+        className="dashboard-cues-section"
+        description="Ogni card mostra il prossimo passo utile e solo il progresso che serve per decidere subito."
+        eyebrow="Continua da qui"
+        title="Prossimi passi"
+      >
+        <div className="entry-point-grid dashboard-next-steps">
+          <SurfaceCard className="cue-card cue-card--next-step" variant="quiet">
+            <div className="cue-card__content">
               <h3 className="cue-card__title">Textbook</h3>
+              <p className="cue-card__meta">
+                {buildTextbookProgressLabel(focusMedia)}
+              </p>
               <p className="cue-card__body">
-                {focusMedia.currentLesson
-                  ? `${focusMedia.currentLesson.title} · ${focusMedia.currentLesson.statusLabel}`
+                {focusMedia.resumeLesson
+                  ? `${focusMedia.resumeLesson.title} · ${focusMedia.resumeLesson.statusLabel}`
                   : "Apri il media e scegli la prima lesson disponibile."}
               </p>
-              <Link
-                className="text-link"
-                href={mediaStudyHref(focusMedia.slug, "textbook")}
-              >
-                Vai al percorso textbook
-              </Link>
-            </SurfaceCard>
+            </div>
+            <Link className="text-link" href={focusResumeHref}>
+              {focusMedia.resumeLesson ? "Continua il percorso" : "Apri Textbook"}
+            </Link>
+          </SurfaceCard>
 
-            <SurfaceCard className="cue-card" variant="quiet">
+          <SurfaceCard className="cue-card cue-card--next-step" variant="quiet">
+            <div className="cue-card__content">
+              <h3 className="cue-card__title">Review</h3>
+              <p className="cue-card__meta">
+                {buildReviewProgressLabel(effectiveReviewMedia)}
+              </p>
+              <p className="cue-card__body">
+                {effectiveReviewMedia.slug === focusMedia.slug
+                  ? effectiveReviewMedia.reviewStatDetail
+                  : `${effectiveReviewMedia.title} · ${effectiveReviewMedia.reviewStatDetail}`}
+              </p>
+            </div>
+            <Link
+              className="text-link"
+              href={mediaStudyHref(effectiveReviewMedia.slug, "review")}
+            >
+              Apri review
+            </Link>
+          </SurfaceCard>
+
+          <SurfaceCard className="cue-card cue-card--next-step" variant="quiet">
+            <div className="cue-card__content">
               <h3 className="cue-card__title">Glossary</h3>
+              <p className="cue-card__meta">
+                {buildGlossaryProgressLabel(focusMedia)}
+              </p>
               <p className="cue-card__body">
                 {focusMedia.previewEntries[0]
-                  ? `${focusMedia.previewEntries[0].label} e altre ${focusMedia.entriesTotal - 1} voci già disponibili.`
+                  ? `${focusMedia.previewEntries[0].label} e altre ${Math.max(
+                      focusMedia.entriesTotal - 1,
+                      0
+                    )} voci già disponibili.`
                   : "Qui troverai il Glossary appena importerai termini e pattern."}
               </p>
-              <Link
-                className="text-link"
-                href={mediaStudyHref(focusMedia.slug, "glossary")}
-              >
-                Apri Glossary
-              </Link>
-            </SurfaceCard>
-
-            <SurfaceCard className="cue-card" variant="quiet">
-              <h3 className="cue-card__title">Review</h3>
-              <p className="cue-card__body">{effectiveReviewMedia.reviewQueueLabel}</p>
-              <Link
-                className="text-link"
-                href={mediaStudyHref(effectiveReviewMedia.slug, "review")}
-              >
-                Apri review
-              </Link>
-            </SurfaceCard>
-          </div>
-        </Section>
-      </section>
+            </div>
+            <Link
+              className="text-link"
+              href={mediaStudyHref(focusMedia.slug, "glossary")}
+            >
+              Apri Glossary
+            </Link>
+          </SurfaceCard>
+        </div>
+      </Section>
     </div>
   );
 }
@@ -269,4 +256,52 @@ function buildAggregateQueueNote(cardsDue: number, activeReviewCards: number) {
   }
 
   return "La coda Review si popolerà quando le prime card entreranno in studio.";
+}
+
+function buildTextbookProgressLabel(media: {
+  lessonsCompleted: number;
+  lessonsTotal: number;
+  textbookProgressPercent: number | null;
+}) {
+  if (media.lessonsTotal === 0) {
+    return "Percorso pronto";
+  }
+
+  const progress =
+    media.textbookProgressPercent !== null ? ` · ${media.textbookProgressPercent}%` : "";
+
+  return `${media.lessonsCompleted} di ${media.lessonsTotal} lezioni${progress}`;
+}
+
+function buildGlossaryProgressLabel(media: {
+  entriesKnown: number;
+  entriesTotal: number;
+}) {
+  if (media.entriesTotal === 0) {
+    return "Glossary in arrivo";
+  }
+
+  return `${media.entriesKnown}/${media.entriesTotal} voci`;
+}
+
+function buildReviewProgressLabel(media: {
+  cardsDue: number;
+  activeReviewCards: number;
+  cardsTotal: number;
+}) {
+  if (media.cardsDue > 0) {
+    return media.cardsDue === 1 ? "1 card da ripassare" : `${media.cardsDue} da ripassare`;
+  }
+
+  if (media.activeReviewCards > 0) {
+    return media.activeReviewCards === 1
+      ? "1 card attiva"
+      : `${media.activeReviewCards} card attive`;
+  }
+
+  if (media.cardsTotal > 0) {
+    return "Coda in pausa";
+  }
+
+  return "Nessuna card attiva";
 }

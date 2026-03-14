@@ -122,6 +122,7 @@ export type TextbookIndexData = {
   furiganaMode: FuriganaMode;
   lessons: TextbookLessonNavItem[];
   groups: TextbookLessonGroup[];
+  activeLesson: TextbookLessonNavItem | null;
   resumeLesson: TextbookLessonNavItem | null;
   completedLessons: number;
   totalLessons: number;
@@ -352,6 +353,7 @@ function buildTextbookIndexModel(input: {
     furiganaMode: input.furiganaMode,
     lessons,
     groups: groupLessons(lessons, input.lessons),
+    activeLesson: selectActiveLesson(lessons),
     resumeLesson: selectResumeLesson(lessons),
     completedLessons,
     totalLessons: lessons.length,
@@ -526,17 +528,17 @@ function groupLessons(
   return [...groups.values()];
 }
 
-function selectResumeLesson(lessons: TextbookLessonNavItem[]) {
+function selectActiveLesson(lessons: TextbookLessonNavItem[]) {
   const inProgress = [...lessons]
     .filter((lesson) => lesson.status === "in_progress")
     .sort((left, right) =>
       compareIsoDates(right.lastOpenedAt, left.lastOpenedAt)
     );
 
-  if (inProgress[0]) {
-    return inProgress[0];
-  }
+  return inProgress[0] ?? null;
+}
 
+function selectResumeLesson(lessons: TextbookLessonNavItem[]) {
   return (
     lessons.find((lesson) => lesson.status !== "completed") ??
     lessons[0] ??

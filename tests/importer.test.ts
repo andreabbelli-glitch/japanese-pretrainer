@@ -163,20 +163,20 @@ describe("content importer", () => {
     });
 
     expect(result.status).toBe("completed");
-    expect(result.filesScanned).toBe(12);
-    expect(result.filesChanged).toBe(12);
+    expect(result.filesScanned).toBe(18);
+    expect(result.filesChanged).toBe(18);
 
     expect(await countRows(database.query.media.findMany())).toBe(1);
-    expect(await countRows(database.query.segment.findMany())).toBe(4);
-    expect(await countRows(database.query.lesson.findMany())).toBe(7);
-    expect(await countRows(database.query.lessonContent.findMany())).toBe(7);
-    expect(await countRows(database.query.term.findMany())).toBe(82);
-    expect(await countRows(database.query.termAlias.findMany())).toBe(201);
+    expect(await countRows(database.query.segment.findMany())).toBe(5);
+    expect(await countRows(database.query.lesson.findMany())).toBe(11);
+    expect(await countRows(database.query.lessonContent.findMany())).toBe(11);
+    expect(await countRows(database.query.term.findMany())).toBe(128);
+    expect(await countRows(database.query.termAlias.findMany())).toBe(318);
     expect(await countRows(database.query.grammarPattern.findMany())).toBe(18);
     expect(await countRows(database.query.grammarAlias.findMany())).toBe(22);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(246);
-    expect(await countRows(database.query.card.findMany())).toBe(93);
-    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(102);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(393);
+    expect(await countRows(database.query.card.findMany())).toBe(144);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(158);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({
@@ -446,7 +446,6 @@ describe("content importer", () => {
       "textbook",
       "001-intro.md"
     );
-    const lessonSource = await readFile(lessonPath, "utf8");
     const cardsPath = path.join(
       contentRoot,
       "media",
@@ -454,19 +453,44 @@ describe("content importer", () => {
       "cards",
       "001-core.md"
     );
+    const pronunciationsPath = path.join(
+      contentRoot,
+      "media",
+      "frieren",
+      "pronunciations.json"
+    );
 
     await writeFile(
       lessonPath,
-      lessonSource
-        .replace(
-          "In questa lezione vediamo [食べる](term:term-taberu) e la forma\n[～ている](grammar:grammar-teiru).",
-          "In questa lezione vediamo solo la forma [～ている](grammar:grammar-teiru)."
-        )
-        .replace(
-          "\n:::image\nsrc: assets/episode-01/frieren-meal.svg\nalt: Frieren osserva una tavola apparecchiata.\ncaption: >-\n  Screenshot di riferimento per [食べる](term:term-taberu) nel contesto della\n  scena.\n:::\n",
-          "\n"
-        )
-    );
+      `---
+id: lesson-frieren-ep01-intro
+media_id: media-frieren
+slug: ep01-intro
+title: Episodio 1 - Introduzione
+order: 10
+segment_ref: episode-01
+difficulty: n5
+status: active
+tags: [intro, core]
+prerequisites: []
+---
+
+# Obiettivo
+
+In questa lezione vediamo solo la forma
+[～ている](grammar:grammar-teiru).
+
+La parola {{日本語|にほんご}} compare spesso nelle spiegazioni.
+
+:::grammar
+id: grammar-teiru
+pattern: ～ている
+title: Forma in -te iru
+meaning_it: azione in corso o stato risultante
+aliases: [てる]
+:::
+`
+      );
     await writeFile(
       cardsPath,
       `---
@@ -485,10 +509,39 @@ entry_id: grammar-teiru
 card_type: concept
 front: ～ている
 back: azione in corso / stato risultante
+example_jp: "フリーレンは旅を続けている。"
+example_it: "Frieren continua il viaggio."
 notes_it: "Si collega a [～ている](grammar:grammar-teiru)."
 tags: [grammar, core]
 :::
 `
+    );
+    await writeFile(
+      pronunciationsPath,
+      JSON.stringify(
+        {
+          version: 1,
+          entries: [
+            {
+              entry_type: "grammar",
+              entry_id: "grammar-teiru",
+              audio_src: "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3",
+              audio_source: "wikimedia_commons",
+              audio_speaker: "Grammar Sample Speaker",
+              audio_license: "CC BY 4.0",
+              audio_attribution: "Grammar Sample Speaker via Wikimedia Commons",
+              audio_page_url:
+                "https://commons.wikimedia.org/wiki/File:Ja-%E3%81%A6%E3%81%84%E3%82%8B.mp3",
+              pitch_accent: 0,
+              pitch_accent_source: "Wiktionary",
+              pitch_accent_page_url:
+                "https://en.wiktionary.org/wiki/%E3%81%A6%E3%81%84%E3%82%8B"
+            }
+          ]
+        },
+        null,
+        2
+      )
     );
 
     const result = await importContentWorkspace({

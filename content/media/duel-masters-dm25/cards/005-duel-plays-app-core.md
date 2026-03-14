@@ -706,8 +706,10 @@ example_jp: >-
 example_it: >-
   Completa una missione e riscuoti la ricompensa.
 notes_it: >-
-  Parola molto pratica: spesso ti porta a premi, progressione e obiettivi da
-  completare. Dentro l'app è una delle etichette più utili da fissare presto.
+  `ミッション` nomina il task da completare. Quando compare accanto a
+  [{{達成|たっせい}}](term:term-achievement) o
+  [{{報酬|ほうしゅう}}](term:term-reward), la schermata sta collegando obiettivo,
+  stato di completamento e ricompensa.
 tags: [duel-plays, app, progression]
 :::
 
@@ -1093,8 +1095,9 @@ example_jp: >-
 example_it: >-
   Possedute: 2 copie.
 notes_it: >-
-  È il label che ti fa leggere un numero come stock reale del tuo account. In
-  shop e collezione è molto più utile di quanto sembri.
+  `{{所持|しょじ}}` indica quante copie sono già presenti nel tuo account. In
+  shop e collezione ti serve per capire se devi ancora comprare, craftare o
+  scambiare quella carta.
 tags: [duel-plays, app, resource, kanji]
 :::
 
@@ -1371,8 +1374,10 @@ example_jp: >-
 example_it: >-
   Questa carta è scambiabile.
 notes_it: >-
-  Da leggere come "puoi farlo adesso". È un ottimo pattern-ponte tra giapponese
-  e decisione pratica nell'app.
+  `～{{可能|かのう}}` segnala che l'operazione di quella schermata è
+  attualmente eseguibile. In composti come `{{交換可能|こうかんかのう}}` o
+  `{{生成可能|せいせいかのう}}` il punto è che il bottone non è bloccato da costi
+  o condizioni mancanti.
 tags: [duel-plays, app, grammar]
 :::
 

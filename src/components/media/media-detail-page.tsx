@@ -44,8 +44,8 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
     notFound();
   }
 
-  const resumeHref = media.currentLesson
-    ? mediaTextbookLessonHref(media.slug, media.currentLesson.slug)
+  const resumeHref = media.resumeLesson
+    ? mediaTextbookLessonHref(media.slug, media.resumeLesson.slug)
     : mediaStudyHref(media.slug, "textbook");
 
   return (
@@ -66,7 +66,7 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
         actions={
           <>
             <Link className="button button--primary" href={resumeHref}>
-              Riprendi studio
+              Continua il percorso
             </Link>
             <Link className="button button--ghost" href={mediaStudyHref(media.slug, "progress")}>
               Apri progress
@@ -79,18 +79,18 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
         <SurfaceCard className="media-detail-hero" variant="hero">
           <p className="eyebrow">Continua da qui</p>
           <h2 className="media-detail-hero__title">
-            {media.currentLesson
-              ? media.currentLesson.title
+            {media.resumeLesson
+              ? media.resumeLesson.title
               : "Il percorso è pronto per la prima lezione."}
           </h2>
           <p className="media-detail-hero__summary">
-            {media.currentLesson?.summary ??
-              media.currentLesson?.excerpt ??
+            {media.resumeLesson?.summary ??
+              media.resumeLesson?.excerpt ??
               "Questa pagina raccoglie il punto di ripresa, il contesto e i collegamenti alle aree di studio."}
           </p>
           <div className="hero-actions">
             <Link className="button button--primary" href={resumeHref}>
-              {media.currentLesson ? "Riprendi lesson" : "Apri Textbook"}
+              {media.resumeLesson ? "Continua il percorso" : "Apri Textbook"}
             </Link>
             <Link className="button button--ghost" href={mediaStudyHref(media.slug, "review")}>
               {media.cardsDue > 0 ? "Avvia review" : "Controlla review"}
@@ -164,8 +164,8 @@ export async function MediaDetailPage({ mediaSlug }: MediaDetailPageProps) {
                 </div>
                 <p className="entry-point-card__body">{area.body}</p>
                 <p className="entry-point-card__detail">
-                  {area.key === "textbook" && media.currentLesson
-                    ? `Ora: ${media.currentLesson.title}`
+                  {area.key === "textbook" && media.resumeLesson
+                    ? `Prossimo: ${media.resumeLesson.title}`
                     : null}
                   {area.key === "glossary"
                     ? `${media.entriesKnown}/${media.entriesTotal} già viste`

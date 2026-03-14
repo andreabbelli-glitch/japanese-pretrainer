@@ -14,6 +14,7 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
+  lessonProgress,
   runMigrations,
   seedDevelopmentDatabase,
   type DatabaseClient
@@ -60,6 +61,34 @@ describe("glossary data", () => {
     closeDatabaseClient(database);
     await rm(tempDir, { recursive: true, force: true });
   });
+
+  async function markAllLessonsCompleted() {
+    const lessons = await database.query.lesson.findMany();
+
+    if (lessons.length === 0) {
+      return;
+    }
+
+    await database
+      .insert(lessonProgress)
+      .values(
+        lessons.map((row) => ({
+          lessonId: row.id,
+          status: "completed" as const,
+          startedAt: "2026-03-09T09:00:00.000Z",
+          completedAt: "2026-03-09T10:00:00.000Z",
+          lastOpenedAt: "2026-03-09T10:00:00.000Z"
+        }))
+      )
+      .onConflictDoUpdate({
+        target: lessonProgress.lessonId,
+        set: {
+          status: "completed",
+          completedAt: "2026-03-09T10:00:00.000Z",
+          lastOpenedAt: "2026-03-09T10:00:00.000Z"
+        }
+      });
+  }
 
   it("ranks romaji queries and carries lesson/card metadata into results", async () => {
     await seedDevelopmentDatabase(database);
@@ -313,6 +342,7 @@ describe("glossary data", () => {
     });
 
     expect(result.status).toBe("completed");
+    await markAllLessonsCompleted();
 
     const detail = await getReviewCardDetailData(
       "frieren",
@@ -344,6 +374,7 @@ describe("glossary data", () => {
     });
 
     expect(imported.status).toBe("completed");
+    await markAllLessonsCompleted();
 
     const glossaryDetail = await getTermGlossaryDetailData(
       "frieren",
@@ -425,6 +456,7 @@ describe("glossary data", () => {
     });
 
     expect(result.status).toBe("completed");
+    await markAllLessonsCompleted();
 
     await database
       .update(grammarPattern)

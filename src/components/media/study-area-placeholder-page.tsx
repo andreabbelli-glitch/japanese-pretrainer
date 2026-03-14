@@ -133,8 +133,8 @@ export async function StudyAreaPlaceholderPage({
             <SurfaceCard className="cue-card" variant="quiet">
               <h3 className="cue-card__title">Lesson correnti</h3>
               <p className="cue-card__body">
-                {media.currentLesson
-                  ? `${media.currentLesson.title} · ${media.currentLesson.statusLabel}`
+                {media.resumeLesson
+                  ? `${media.resumeLesson.title} · ${media.resumeLesson.statusLabel}`
                   : "Il media non ha ancora una lesson da riprendere."}
               </p>
             </SurfaceCard>

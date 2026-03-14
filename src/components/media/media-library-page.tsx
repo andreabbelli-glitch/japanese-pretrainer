@@ -63,8 +63,8 @@ export async function MediaLibraryPage() {
                 <div className="stats-grid stats-grid--compact">
                   <StatBlock
                     detail={
-                      item.currentLesson
-                        ? `Ora: ${item.currentLesson.title}`
+                      item.resumeLesson
+                        ? `Prossimo: ${item.resumeLesson.title}`
                         : `${item.lessonsTotal} lesson disponibili`
                     }
                     label="Textbook"
@@ -93,8 +93,8 @@ export async function MediaLibraryPage() {
 
                 <div className="library-card__footer">
                   <p className="library-card__step">
-                    {item.currentLesson
-                      ? `${item.currentLesson.statusLabel} · ${item.currentLesson.title}`
+                    {item.resumeLesson
+                      ? `${item.resumeLesson.statusLabel} · ${item.resumeLesson.title}`
                       : "Apri il media per scegliere il primo step"}
                   </p>
                   <span className="text-link">Apri media</span>

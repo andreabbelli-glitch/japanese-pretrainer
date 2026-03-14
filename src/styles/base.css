@@ -670,6 +670,10 @@ rt {
   gap: var(--space-4);
 }
 
+.cue-card--next-step {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
 .media-summary-card__top,
 .library-card__top,
 .entry-preview-card__top,
@@ -752,6 +756,23 @@ rt {
 
 .entry-preview-card__reading {
   color: var(--color-ink-muted);
+}
+
+.dashboard-next-steps {
+  align-items: stretch;
+}
+
+.cue-card__content {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+
+.cue-card__meta {
+  margin: 0;
+  color: var(--color-accent-ink);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
 }
 
 .summary-row {
