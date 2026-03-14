@@ -24,13 +24,13 @@ describe("image workflow", () => {
   beforeEach(async () => {
     tempDir = await mkdtemp(path.join(tmpdir(), "jcs-image-workflow-"));
     contentRoot = path.join(tempDir, "content");
-    mediaDirectory = path.join(contentRoot, "media", "frieren");
+    mediaDirectory = path.join(contentRoot, "media", "sample-anime");
     workflowDirectory = path.join(mediaDirectory, "workflow");
 
     await cp(validContentRoot, contentRoot, { recursive: true });
     await mkdir(workflowDirectory, { recursive: true });
     await writeFile(
-      path.join(mediaDirectory, "assets", "episode-01", "frieren-ui.svg"),
+      path.join(mediaDirectory, "assets", "episode-01", "sample-anime-ui.svg"),
       "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 10 10\"><rect width=\"10\" height=\"10\" fill=\"#f3e7cd\"/></svg>\n"
     );
   });
@@ -47,7 +47,7 @@ describe("image workflow", () => {
     expect(initialSummary.requestsTotal).toBe(1);
     expect(initialSummary.assetsTotal).toBe(1);
     expect(initialSummary.pendingRequestIds).toEqual([]);
-    expect(initialSummary.readyToApplyIds).toEqual(["frieren-meal-ref"]);
+    expect(initialSummary.readyToApplyIds).toEqual(["sample-anime-meal-ref"]);
     expect(initialSummary.appliedIds).toEqual([]);
 
     await applyMediaImageBlocks(mediaDirectory);
@@ -55,7 +55,7 @@ describe("image workflow", () => {
     const appliedSummary = await summarizeMediaImageWorkflow(mediaDirectory);
 
     expect(appliedSummary.readyToApplyIds).toEqual([]);
-    expect(appliedSummary.appliedIds).toEqual(["frieren-meal-ref"]);
+    expect(appliedSummary.appliedIds).toEqual(["sample-anime-meal-ref"]);
   });
 
   it("applies image blocks idempotently from workflow sidecars", async () => {
@@ -74,9 +74,9 @@ describe("image workflow", () => {
     const updatedLesson = await readFile(lessonPath, "utf8");
 
     expect(updatedLesson).toContain(":::image");
-    expect(updatedLesson).toContain("src: assets/episode-01/frieren-ui.svg");
+    expect(updatedLesson).toContain("src: assets/episode-01/sample-anime-ui.svg");
     expect(updatedLesson).toContain(
-      'alt: "Frieren osserva una tavola apparecchiata."'
+      'alt: "Sample Anime osserva una tavola apparecchiata."'
     );
     expect(updatedLesson).toContain(
       "Screenshot di riferimento per [食べる](term:term-taberu)."
@@ -92,17 +92,17 @@ describe("image workflow", () => {
     await writeFile(
       path.join(workflowDirectory, "image-requests.yaml"),
       `requests:
-  - id: frieren-meal-ref
+  - id: sample-anime-meal-ref
     lesson_slug: ep01-intro
     anchor: "# Obiettivo"
     kind: app-screen
     priority: medium
     search_hint: >-
-      Frieren meal scene
+      Sample Anime meal scene
     capture_instructions: >-
       Usa lo screenshot gia presente nel bundle fixture.
     alt_it: >-
-      Frieren osserva una tavola apparecchiata.
+      Sample Anime osserva una tavola apparecchiata.
     caption_it: >-
       Screenshot di riferimento per [食べる](term:term-taberu).
 `
@@ -110,8 +110,8 @@ describe("image workflow", () => {
     await writeFile(
       path.join(workflowDirectory, "image-assets.yaml"),
       `assets:
-  - id: frieren-meal-ref
-    src: assets/episode-01/frieren-ui.svg
+  - id: sample-anime-meal-ref
+    src: assets/episode-01/sample-anime-ui.svg
     source_type: screenshot
     width: 640
     height: 360

@@ -46,8 +46,8 @@ const demoMediaFixtureRoot = path.join(
   "media",
   "duel-masters-dm25"
 );
-const mediaId = "media-frieren";
-const lessonId = "lesson-frieren-ep01-intro";
+const mediaId = "media-sample-anime";
+const lessonId = "lesson-sample-anime-ep01-intro";
 const termId = "term-taberu";
 const termDbId = buildScopedEntryId("term", mediaId, termId);
 const grammarId = "grammar-teiru";
@@ -130,11 +130,11 @@ describe("content importer", () => {
 
     expect(importedSegment?.slug).toBe("episode-01");
     expect(importedLesson?.sourceFile).toBe(
-      "media/frieren/textbook/001-intro.md"
+      "media/sample-anime/textbook/001-intro.md"
     );
     expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
     expect(importedLesson?.content?.htmlRendered).toContain(
-      "/media/frieren/assets/episode-01/frieren-meal.svg"
+      "/media/sample-anime/assets/episode-01/sample-anime-meal.svg"
     );
     expect(importedLesson?.content?.htmlRendered).toContain(
       "grammar-definition"
@@ -153,7 +153,7 @@ describe("content importer", () => {
     expect(importedGrammar?.audioLicense).toBe("CC BY 4.0");
   });
 
-  it("imports the real Duel Masters demo bundle", async () => {
+  it("imports the real Duel Masters bundle", async () => {
     await copySingleMediaBundleFixture(demoMediaFixtureRoot, contentRoot);
 
     const result = await importContentWorkspace({
@@ -276,7 +276,7 @@ describe("content importer", () => {
     const cardsPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "cards",
       "001-core.md"
     );
@@ -319,7 +319,7 @@ describe("content importer", () => {
     const lessonPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "textbook",
       "001-intro.md"
     );
@@ -392,7 +392,7 @@ describe("content importer", () => {
     const cardsPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "cards",
       "001-core.md"
     );
@@ -442,29 +442,29 @@ describe("content importer", () => {
     const lessonPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "textbook",
       "001-intro.md"
     );
     const cardsPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "cards",
       "001-core.md"
     );
     const pronunciationsPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "pronunciations.json"
     );
 
     await writeFile(
       lessonPath,
       `---
-id: lesson-frieren-ep01-intro
-media_id: media-frieren
+id: lesson-sample-anime-ep01-intro
+media_id: media-sample-anime
 slug: ep01-intro
 title: Episodio 1 - Introduzione
 order: 10
@@ -494,8 +494,8 @@ aliases: [てる]
     await writeFile(
       cardsPath,
       `---
-id: cards-frieren-ep01
-media_id: media-frieren
+id: cards-sample-anime-ep01
+media_id: media-sample-anime
 slug: ep01-core
 title: Episodio 1 - Core cards
 order: 10
@@ -510,7 +510,7 @@ card_type: concept
 front: ～ている
 back: azione in corso / stato risultante
 example_jp: "フリーレンは旅を続けている。"
-example_it: "Frieren continua il viaggio."
+example_it: "Sample Anime continua il viaggio."
 notes_it: "Si collega a [～ている](grammar:grammar-teiru)."
 tags: [grammar, core]
 :::
@@ -594,14 +594,14 @@ tags: [grammar, core]
     const lessonPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "textbook",
       "001-intro.md"
     );
     const cardsPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "cards",
       "001-core.md"
     );
@@ -663,17 +663,17 @@ tags: [grammar, core]
       now: new Date("2026-03-09T10:00:00.000Z")
     });
 
-    const frierenCardsPath = path.join(
+    const sampleAnimeCardsPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "cards",
       "001-core.md"
     );
 
     await writeFile(
-      frierenCardsPath,
-      (await readFile(frierenCardsPath, "utf8"))
+      sampleAnimeCardsPath,
+      (await readFile(sampleAnimeCardsPath, "utf8"))
         .replace("meaning_it: mangiare", "meaning_it: nutrirsi")
         .replace("back: mangiare", "back: nutrirsi")
     );
@@ -685,7 +685,7 @@ tags: [grammar, core]
     const result = await importContentWorkspace({
       contentRoot,
       database,
-      mediaSlugs: ["frieren"],
+      mediaSlugs: ["sample-anime"],
       now: new Date("2026-03-09T15:00:00.000Z")
     });
 
@@ -700,10 +700,10 @@ tags: [grammar, core]
     expect(result.summary.prunedTermIds).toEqual([]);
     expect(result.summary.prunedGrammarIds).toEqual([]);
 
-    const updatedFrierenTerm = await database.query.term.findFirst({
+    const updatedSampleAnimeTerm = await database.query.term.findFirst({
       where: eq(term.id, termDbId)
     });
-    const updatedFrierenCard = await database.query.card.findFirst({
+    const updatedSampleAnimeCard = await database.query.card.findFirst({
       where: eq(card.id, termCardId)
     });
     const preservedScopedMedia = await database.query.media.findFirst({
@@ -719,8 +719,8 @@ tags: [grammar, core]
       where: eq(term.id, scopedTermDbId)
     });
 
-    expect(updatedFrierenTerm?.meaningIt).toBe("nutrirsi");
-    expect(updatedFrierenCard?.back).toBe("nutrirsi");
+    expect(updatedSampleAnimeTerm?.meaningIt).toBe("nutrirsi");
+    expect(updatedSampleAnimeCard?.back).toBe("nutrirsi");
     expect(preservedScopedMedia?.status).toBe("active");
     expect(preservedScopedLesson?.status).toBe("active");
     expect(preservedScopedCard?.status).toBe("active");

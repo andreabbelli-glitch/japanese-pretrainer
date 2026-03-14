@@ -17,8 +17,8 @@ describe("pronunciation fetch helpers", () => {
     id: "term-taberu",
     kind: "term",
     label: "食べる",
-    mediaDirectory: "/tmp/frieren",
-    mediaSlug: "frieren",
+    mediaDirectory: "/tmp/sample-anime",
+    mediaSlug: "sample-anime",
     reading: "たべる"
   };
 

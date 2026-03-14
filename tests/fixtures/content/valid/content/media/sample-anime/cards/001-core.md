@@ -1,6 +1,6 @@
 ---
-id: cards-frieren-ep01
-media_id: media-frieren
+id: cards-sample-anime-ep01
+media_id: media-sample-anime
 slug: ep01-core
 title: Episodio 1 - Core cards
 order: 10

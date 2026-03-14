@@ -6,7 +6,7 @@ Quality assurance
 
 ## Obiettivo
 
-Portare il prodotto a uno stato v1 credibile e stabile per uso personale.
+Portare il prodotto a uno stato credibile e stabile per uso personale.
 
 ## Input
 
@@ -31,7 +31,7 @@ Portare il prodotto a uno stato v1 credibile e stabile per uso personale.
 - suite E2E minima;
 - checklist manuale di verifica;
 - bugfix finali emersi dal test;
-- note di rilascio v1 locale.
+- documentazione di verifica aggiornata.
 
 ## Dipendenze
 

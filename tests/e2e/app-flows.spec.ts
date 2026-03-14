@@ -8,6 +8,16 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await expect(
     page.getByRole("heading", { level: 1, name: "Duel Masters" })
   ).toBeVisible();
+
+  await page.goto("/media");
+  await expect(
+    page.getByRole("heading", { name: "Duel Masters" }).first()
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Mobile Suit Gundam Arsenal Base" }).first()
+  ).toBeVisible();
+
+  await page.goto("/");
   await page.getByRole("link", { name: "Continua il percorso" }).first().click();
 
   await expect(page).toHaveURL(

@@ -237,13 +237,13 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
 
     const data = await getGlossaryPageData(
-      "frieren",
+      "sample-anime",
       {
         q: "teiru"
       },
@@ -594,20 +594,20 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
 
     const hiraganaData = await getGlossaryPageData(
-      "frieren",
+      "sample-anime",
       {
         q: "たべる"
       },
       database
     );
     const katakanaData = await getGlossaryPageData(
-      "frieren",
+      "sample-anime",
       {
         q: "タベル"
       },
@@ -626,13 +626,13 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
 
     const data = await getGlossaryPageData(
-      "frieren",
+      "sample-anime",
       {
         q: "mangiare"
       },
@@ -648,26 +648,26 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
 
     const detail = await getGrammarGlossaryDetailData(
-      "frieren",
+      "sample-anime",
       "grammar-teiru",
       database
     );
 
     expect(detail).not.toBeNull();
     expect(detail?.entry.label).toBe("～ている");
-    expect(detail?.lessons[0]?.href).toBe("/media/frieren/textbook/ep01-intro");
+    expect(detail?.lessons[0]?.href).toBe("/media/sample-anime/textbook/ep01-intro");
     expect(detail?.lessons).toHaveLength(1);
     expect(detail?.lessons[0]?.roleLabels).toEqual(["Spiegata", "Citata"]);
     expect(detail?.cards[0]?.front).toBe("～ている");
     expect(detail?.cards[0]?.relationshipLabel).toBe("Card principale");
     expect(detail?.cards[0]?.href).toBe(
-      "/media/frieren/review/card/card-teiru-concept"
+      "/media/sample-anime/review/card/card-teiru-concept"
     );
   });
 
@@ -675,13 +675,13 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
 
     const detail = await getGrammarGlossaryDetailData(
-      "frieren",
+      "sample-anime",
       "grammar-teiru",
       database
     );
@@ -710,13 +710,13 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
 
     const detail = await getTermGlossaryDetailData(
-      "frieren",
+      "sample-anime",
       "term-taberu",
       database
     );
@@ -726,10 +726,10 @@ describe("glossary data", () => {
     expect(detail?.cards).toHaveLength(1);
     expect(detail?.cards[0]?.id).toBe("card-taberu-recognition");
     expect(detail?.cards[0]?.href).toBe(
-      "/media/frieren/review/card/card-taberu-recognition"
+      "/media/sample-anime/review/card/card-taberu-recognition"
     );
     expect(detail?.entry.pronunciation?.src).toBe(
-      "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
+      "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
     );
     expect(detail?.entry.pronunciation?.pitchAccent).toMatchObject({
       downstep: 2,
@@ -766,14 +766,14 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
     await markAllLessonsCompleted();
 
     const detail = await getReviewCardDetailData(
-      "frieren",
+      "sample-anime",
       "card-teiru-concept",
       database
     );
@@ -783,10 +783,10 @@ describe("glossary data", () => {
     expect(detail?.card.back).toContain("azione in corso");
     expect(detail?.entries).toHaveLength(1);
     expect(detail?.entries[0]?.href).toBe(
-      "/media/frieren/glossary/grammar/grammar-teiru"
+      "/media/sample-anime/glossary/grammar/grammar-teiru"
     );
     expect(detail?.pronunciations[0]?.audio.src).toBe(
-      "/media/frieren/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
+      "/media/sample-anime/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
     );
     expect(detail?.pronunciations[0]?.audio.pitchAccent).toMatchObject({
       downstep: 0,
@@ -798,19 +798,19 @@ describe("glossary data", () => {
     const imported = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(imported.status).toBe("completed");
     await markAllLessonsCompleted();
 
     const glossaryDetail = await getTermGlossaryDetailData(
-      "frieren",
+      "sample-anime",
       "term-taberu",
       database
     );
     const reviewDetail = await getReviewCardDetailData(
-      "frieren",
+      "sample-anime",
       "card-teiru-concept",
       database
     );
@@ -880,7 +880,7 @@ describe("glossary data", () => {
     const imported = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(imported.status).toBe("completed");
@@ -888,7 +888,7 @@ describe("glossary data", () => {
     const data = await getGlobalGlossaryPageData(
       {
         q: "mangiare",
-        media: "frieren"
+        media: "sample-anime"
       },
       database
     );
@@ -926,7 +926,7 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
@@ -948,12 +948,12 @@ describe("glossary data", () => {
       .where(eq(card.id, "card-teiru-concept"));
 
     const glossaryDetail = await getGrammarGlossaryDetailData(
-      "frieren",
+      "sample-anime",
       "grammar-teiru",
       database
     );
     const reviewDetail = await getReviewCardDetailData(
-      "frieren",
+      "sample-anime",
       "card-teiru-concept",
       database
     );
@@ -993,7 +993,7 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
@@ -1067,7 +1067,7 @@ describe("glossary data", () => {
 
     for (const testCase of cases) {
       const data = await getGlossaryPageData(
-        "frieren",
+        "sample-anime",
         {
           q: testCase.query
         },
@@ -1092,13 +1092,13 @@ describe("glossary data", () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(result.status).toBe("completed");
 
     const data = await getGlossaryPageData(
-      "frieren",
+      "sample-anime",
       {
         preview: "grammar-teiru",
         previewKind: "grammar"

@@ -458,15 +458,15 @@ describe("textbook data", () => {
   it("loads textbook reader data from content imported through the real pipeline", async () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
-      mediaSlugs: ["frieren"],
+      mediaSlugs: ["sample-anime"],
       database
     });
 
     expect(result.status).toBe("completed");
 
-    const indexData = await getTextbookIndexData("frieren", database);
+    const indexData = await getTextbookIndexData("sample-anime", database);
     const lessonData = await getTextbookLessonData(
-      "frieren",
+      "sample-anime",
       "ep01-intro",
       database
     );
@@ -484,7 +484,7 @@ describe("textbook data", () => {
           downstep: 2,
           shape: "nakadaka"
         },
-        src: "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
+        src: "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
       }
     });
     expect(lessonData?.entries[1]).toMatchObject({
@@ -494,7 +494,7 @@ describe("textbook data", () => {
           downstep: 0,
           shape: "heiban"
         },
-        src: "/media/frieren/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
+        src: "/media/sample-anime/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
       }
     });
     expect(

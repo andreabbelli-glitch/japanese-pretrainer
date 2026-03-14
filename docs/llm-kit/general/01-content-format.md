@@ -207,9 +207,9 @@ Esempio:
 
 ```md
 ---
-id: media-frieren
-slug: frieren
-title: Frieren
+id: media-sample-anime
+slug: sample-anime
+title: Sample Anime
 media_type: anime
 segment_kind: episode
 language: ja
@@ -217,7 +217,7 @@ base_explanation_language: it
 status: active
 ---
 
-# Frieren
+# Sample Anime
 
 Pacchetto di studio dedicato alla serie.
 ```
@@ -248,8 +248,8 @@ Esempio:
 
 ```md
 ---
-id: lesson-frieren-ep01-intro
-media_id: media-frieren
+id: lesson-sample-anime-ep01-intro
+media_id: media-sample-anime
 slug: ep01-intro
 title: Episodio 1 - Introduzione
 order: 10
@@ -298,8 +298,8 @@ Esempio:
 
 ```md
 ---
-id: cards-frieren-ep01
-media_id: media-frieren
+id: cards-sample-anime-ep01
+media_id: media-sample-anime
 slug: ep01-cards
 title: Episodio 1 - Core cards
 order: 10
@@ -650,8 +650,8 @@ Regole:
 
 Esempio:
 
-- `media-frieren`
-- `lesson-frieren-ep01-intro`
+- `media-sample-anime`
+- `lesson-sample-anime-ep01-intro`
 - `term-taberu`
 - `grammar-teiru`
 - `card-taberu-recognition`

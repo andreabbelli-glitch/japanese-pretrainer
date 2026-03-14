@@ -64,11 +64,9 @@ Osservazioni:
 - Il cross-media reale e ancora molto poco popolato: esistono solo `4` gruppi
   cross-media e sono tutti di tipo `term`; nessun pattern grammaticale reale e
   ancora raggruppato cross-media.
-- Il corpus locale sembra anche avere un po' di drift ambientale: nel DB esiste
-  `frieren` con `2` card ma `0` entry glossary e la cartella
-  `content/media/frieren` non e presente nel workspace attuale. Quindi il
-  portale va progettato contro il modello dati corretto, ma validato su un DB
-  rigenerato dal contenuto corrente prima del rollout.
+- Il portale va validato sempre contro un DB rigenerato dal contenuto corrente,
+  per evitare drift locale e garantire che il workspace rifletta solo i media
+  realmente presenti in `content/`.
 
 ## Diagnosi
 

@@ -29,9 +29,9 @@ La view completa del processo e in `docs/pronunciation-workflow.md`.
 
 ```bash
 pnpm pronunciations:fetch
-pnpm pronunciations:fetch -- --media frieren
-pnpm pronunciations:fetch -- --media frieren --limit 10 --dry-run
-pnpm pronunciations:fetch -- --media frieren --refresh
+pnpm pronunciations:fetch -- --media duel-masters-dm25
+pnpm pronunciations:fetch -- --media gundam-arsenal-base --limit 10 --dry-run
+pnpm pronunciations:fetch -- --media gundam-arsenal-base --refresh
 pnpm pronunciations:fetch -- --media duel-masters-dm25 --request-delay-ms 1500 --max-retries 6 --retry-base-delay-ms 10000
 ```
 

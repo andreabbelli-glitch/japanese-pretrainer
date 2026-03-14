@@ -110,11 +110,8 @@ Confronto fra `tmp/task19-audit.db` e `data/japanese-custom-study.db`:
 
 - il repo corrente importa `2` media, `190` term, `26` grammar, `194` card,
   `224` card-entry links e `4` cross-media groups;
-- il DB locale attuale contiene invece `3` media e `196` card;
-- il delta e dovuto a un media legacy non piu presente nel repo:
-  `frieren`;
-- nel DB locale `frieren` ha `0` glossary entries ma `2` card residue da
-  `media/frieren/cards/001-core.md`, con front `食べる` e `～ている`.
+- il DB locale riallineato al workspace deve esporre lo stesso perimetro dei
+  `2` media reali presenti nel repo.
 
 Per i bundle ancora presenti nel repo non risultano drift su term o grammar:
 
@@ -126,4 +123,5 @@ Per i bundle ancora presenti nel repo non risultano drift su term o grammar:
 ## Azione raccomandata sul DB locale
 
 Per riallineare il DB di sviluppo al repo basta rigenerare o reimportare il
-contenuto corrente, cosi da rimuovere il bundle legacy `frieren`.
+contenuto corrente, cosi da mantenere solo i bundle reali presenti nel
+workspace.

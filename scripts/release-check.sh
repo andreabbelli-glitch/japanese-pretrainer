@@ -20,8 +20,8 @@ run_step "Lint, typecheck e test unit/integration" \
 run_step "Build di produzione" \
   ./scripts/with-node.sh pnpm build
 
-run_step "Validazione contenuti sul bundle reale duel-masters-dm25" \
-  ./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25
+run_step "Validazione contenuti su tutti i bundle reali" \
+  ./scripts/with-node.sh pnpm content:validate
 
 run_step "Test end-to-end" \
   ./scripts/with-node.sh pnpm test:e2e:runner

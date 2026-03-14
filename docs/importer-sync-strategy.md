@@ -147,11 +147,11 @@ Content root esplicita:
 Import incrementale scoped a uno o piu media slug:
 
 ```sh
-./scripts/with-node.sh pnpm content:import -- --media-slug frieren
+./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25
 ```
 
 ```sh
-./scripts/with-node.sh pnpm content:import -- --media-slug frieren --media-slug dungeon-meshi
+./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25 --media-slug gundam-arsenal-base
 ```
 
 Comportamento della modalita incrementale:

@@ -53,7 +53,7 @@ disponibile, `location.range`.
 ```ts
 import { parseMediaDirectory } from "@/lib/content";
 
-const result = await parseMediaDirectory("/abs/path/content/media/frieren");
+const result = await parseMediaDirectory("/abs/path/content/media/sample-anime");
 
 if (!result.ok) {
   console.error(result.issues);

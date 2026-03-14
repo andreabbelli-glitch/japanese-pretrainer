@@ -114,9 +114,9 @@ describe("site helpers", () => {
         kind: "review",
         pathname: "/media/fixture-tcg/review"
       });
-    expect(resolveReturnToContext("/glossary?q=iku&media=frieren")).toMatchObject(
+    expect(resolveReturnToContext("/glossary?q=iku&media=sample-anime")).toMatchObject(
       {
-        href: "/glossary?q=iku&media=frieren",
+        href: "/glossary?q=iku&media=sample-anime",
         kind: "globalGlossary",
         pathname: "/glossary"
       }

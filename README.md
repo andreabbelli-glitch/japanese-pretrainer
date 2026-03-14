@@ -13,9 +13,9 @@ Per ogni media, l'app deve offrire:
 - tracking dei progressi di studio e della review;
 - supporto nativo a furigana e tooltip contestuali.
 
-## Stato
+## Stato Del Repository
 
-Il repository e allineato a una v1 locale operativa:
+Il repository include attualmente:
 
 - app `Next.js` con App Router e TypeScript;
 - shell desktop/mobile coerente con la direzione UX/UI approvata;
@@ -59,21 +59,21 @@ Lo script `./scripts/with-node.sh` prova a usare `nvm` da `$NVM_DIR`,
 corretta di Node e gia attiva, esegue direttamente il comando senza dipendere
 da `nvm`.
 
-## Gate pre-release v1 locale
+## Gate Di Verifica Locale
 
-Prima di considerare la v1 locale "verde", esegui il gate canonico:
+Per verificare il repository in modo completo, esegui il gate canonico:
 
 ```sh
 ./scripts/with-node.sh pnpm release:check
 ```
 
-Il comando `release:check` copre l'intero set richiesto per la v1 locale:
+Il comando `release:check` copre l'intero set di controlli locali:
 
 - lint
 - typecheck
 - test unit/integration
 - build di produzione
-- validazione contenuti sul bundle reale `duel-masters-dm25`
+- validazione contenuti su tutti i bundle reali presenti in `content/media`
 - E2E
 
 ## Script disponibili
@@ -115,16 +115,17 @@ Comandi principali:
 Di default il DB viene creato in `./data/japanese-custom-study.db`, ma puoi
 sovrascrivere il path con `DATABASE_URL`.
 
-`pnpm db:seed` importa il contenuto reale presente in `./content` riallineando
-eventuali dati seed precedenti. L'importer esegue parser + validazione prima di
-sincronizzare il DB; puoi passare una content root diversa con
+`pnpm db:seed` importa il contenuto reale presente in `./content`, riallinea il
+DB ai media correnti e rimuove eventuali residui legacy non piu presenti nel
+workspace. L'importer esegue parser + validazione prima di sincronizzare il DB;
+puoi passare una content root diversa con
 `pnpm content:import -- --content-root /percorso/content`.
 
 Dettagli operativi e schema: [Persistence layer](./docs/database.md)
 
-## Variabili ambiente
+## Variabili Ambiente
 
-La v1 locale non richiede variabili obbligatorie a runtime, ma
+Il setup locale non richiede variabili obbligatorie a runtime, ma
 [.env.example](./.env.example) documenta i path locali supportati dal setup.
 
 ## Struttura repo
@@ -162,6 +163,8 @@ vanno usati per istruzioni operative correnti.
 - [Specifica contenuti Markdown](./docs/content-format.md)
 - [Content parser e validator](./docs/content-parser.md)
 - [Importer sync strategy](./docs/importer-sync-strategy.md)
+- [Checklist QA manuale](./docs/qa-manual-checklist.md)
+- [Note di verifica locale](./docs/local-verification-notes.md)
 - [Kit operativo LLM esterni (source of truth)](./docs/llm-kit/README.md)
 - [Archivio legacy LLM (non operativo)](./docs/legacy/README.md)
 - [Tooling locale](./docs/dev-tooling.md)

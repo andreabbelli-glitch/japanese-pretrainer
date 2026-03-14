@@ -21,7 +21,7 @@ const __dirname = path.dirname(__filename);
 
 const repositoryRoot = path.join(__dirname, "..");
 const contentLibraryRoot = path.join(repositoryRoot, "src", "lib", "content");
-const demoMediaDirectory = path.join(
+const duelMastersMediaDirectory = path.join(
   repositoryRoot,
   "content",
   "media",
@@ -29,7 +29,7 @@ const demoMediaDirectory = path.join(
 );
 const fixturesRoot = path.join(__dirname, "fixtures", "content");
 const validContentRoot = path.join(fixturesRoot, "valid", "content");
-const validMediaDirectory = path.join(validContentRoot, "media", "frieren");
+const validMediaDirectory = path.join(validContentRoot, "media", "sample-anime");
 const invalidMediaDirectory = path.join(
   fixturesRoot,
   "invalid",
@@ -306,7 +306,7 @@ describe("content parser and validator", () => {
       const cardsPath = path.join(
         contentRoot,
         "media",
-        "frieren",
+        "sample-anime",
         "cards",
         "001-core.md"
       );
@@ -321,7 +321,7 @@ describe("content parser and validator", () => {
       );
 
       const result = await parseMediaDirectory(
-        path.join(contentRoot, "media", "frieren")
+        path.join(contentRoot, "media", "sample-anime")
       );
 
       expect(result.ok).toBe(false);
@@ -346,7 +346,7 @@ describe("content parser and validator", () => {
       const cardsPath = path.join(
         contentRoot,
         "media",
-        "frieren",
+        "sample-anime",
         "cards",
         "001-core.md"
       );
@@ -370,7 +370,7 @@ describe("content parser and validator", () => {
       );
 
       const result = await parseMediaDirectory(
-        path.join(contentRoot, "media", "frieren")
+        path.join(contentRoot, "media", "sample-anime")
       );
 
       expect(result.ok).toBe(true);
@@ -387,7 +387,7 @@ describe("content parser and validator", () => {
     const lessonPath = path.join(
       contentRoot,
       "media",
-      "frieren",
+      "sample-anime",
       "textbook",
       "001-intro.md"
     );
@@ -430,7 +430,7 @@ describe("content parser and validator", () => {
       );
 
       const result = await parseMediaDirectory(
-        path.join(contentRoot, "media", "frieren")
+        path.join(contentRoot, "media", "sample-anime")
       );
 
       expect(result.ok).toBe(true);
@@ -503,7 +503,7 @@ describe("content parser and validator", () => {
     expect(result.ok).toBe(true);
     expect(result.issues).toEqual([]);
 
-    expect(result.data.media?.frontmatter.id).toBe("media-frieren");
+    expect(result.data.media?.frontmatter.id).toBe("media-sample-anime");
     expect(result.data.lessons).toHaveLength(1);
     expect(result.data.cardFiles).toHaveLength(1);
     expect(result.data.terms).toHaveLength(1);
@@ -537,8 +537,8 @@ describe("content parser and validator", () => {
     expect(lesson?.body.blocks).toContainEqual(
       expect.objectContaining({
         type: "image",
-        src: "assets/episode-01/frieren-meal.svg",
-        alt: "Frieren osserva una tavola apparecchiata."
+        src: "assets/episode-01/sample-anime-meal.svg",
+        alt: "Sample Anime osserva una tavola apparecchiata."
       })
     );
 
@@ -562,8 +562,8 @@ describe("content parser and validator", () => {
     );
   });
 
-  it("parses the real Duel Masters demo bundle", async () => {
-    const result = await parseMediaDirectory(demoMediaDirectory);
+  it("parses the real Duel Masters bundle", async () => {
+    const result = await parseMediaDirectory(duelMastersMediaDirectory);
 
     expect(result.ok).toBe(true);
     expect(result.issues).toEqual([]);
@@ -631,7 +631,7 @@ describe("content parser and validator", () => {
     expect(result.issues).toEqual([]);
     expect(result.data.contentRoot).toBe(validContentRoot);
     expect(result.data.bundles).toHaveLength(1);
-    expect(result.data.bundles[0]?.mediaSlug).toBe("frieren");
+    expect(result.data.bundles[0]?.mediaSlug).toBe("sample-anime");
   });
 
   it("allows duplicate term and grammar IDs across different media bundles", async () => {

@@ -1,7 +1,7 @@
 ---
-id: media-frieren
-slug: frieren
-title: Frieren
+id: media-sample-anime
+slug: sample-anime
+title: Sample Anime
 media_type: anime
 segment_kind: episode
 language: ja
@@ -10,6 +10,6 @@ status: active
 tags: [fantasy, anime]
 ---
 
-# Frieren
+# Sample Anime
 
 Pacchetto di studio dedicato alla serie.

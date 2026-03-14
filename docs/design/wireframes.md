@@ -23,7 +23,7 @@ Legenda rapida:
 └──────────────────────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────── Oggi sul tavolo ─────────────────────┬───────────┐
-│ Frieren                                                          │ Review    │
+│ Sample Anime                                                          │ Review    │
 │ Episodio 1 - Introduzione                                        │ 18 dovute │
 │ Riprendi dal paragrafo "Termini chiave"                          │ 7 nuove   │
 │ [Riprendi studio] [Apri glossary]                                │ ~12 min   │
@@ -51,7 +51,7 @@ Legenda rapida:
 └────────────────────────────┘
 
 ┌──── Oggi sul tavolo ───────┐
-│ Frieren                    │
+│ Sample Anime                    │
 │ Riprendi da Episodio 1     │
 │ [Riprendi studio]          │
 │ 42% textbook               │
@@ -94,7 +94,7 @@ Legenda rapida:
 └──────────────────────────────────────────────────────────────────────────────┘
 
 ┌────────────────────────────── Header media ──────────────────────────────────┐
-│ Frieren                         anime · 12 lesson · attivo                   │
+│ Sample Anime                         anime · 12 lesson · attivo                   │
 │ Pacchetto di studio fantasy con focus su lessico e pattern ricorrenti       │
 │ Continua da: Episodio 1 - Introduzione                                      │
 └──────────────────────────────────────────────────────────────────────────────┘
@@ -118,11 +118,11 @@ Legenda rapida:
 
 ```text
 ┌────────────────────────────┐
-│ Back          Frieren   ⋯  │
+│ Back          Sample Anime   ⋯  │
 └────────────────────────────┘
 
 ┌──── Header media ──────────┐
-│ Frieren                    │
+│ Sample Anime                    │
 │ anime · 12 lesson          │
 │ Continua da Ep01           │
 └────────────────────────────┘
@@ -156,7 +156,7 @@ Legenda rapida:
 
 ```text
 ┌──────────────────────────────── *sticky study header* ───────────────────────┐
-│ Back | Frieren / Textbook             Ep01 - Introduzione                    │
+│ Back | Sample Anime / Textbook             Ep01 - Introduzione                    │
 │ 2/12 lesson lette                    [Off][Hover][On]         [Completa]     │
 └───────────────────────────────────────────────────────────────────────────────┘
 

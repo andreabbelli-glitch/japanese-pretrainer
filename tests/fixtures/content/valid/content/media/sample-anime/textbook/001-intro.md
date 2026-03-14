@@ -1,6 +1,6 @@
 ---
-id: lesson-frieren-ep01-intro
-media_id: media-frieren
+id: lesson-sample-anime-ep01-intro
+media_id: media-sample-anime
 slug: ep01-intro
 title: Episodio 1 - Introduzione
 order: 10
@@ -19,8 +19,8 @@ In questa lezione vediamo [食べる](term:term-taberu) e la forma
 La parola {{日本語|にほんご}} compare spesso nelle spiegazioni.
 
 :::image
-src: assets/episode-01/frieren-meal.svg
-alt: Frieren osserva una tavola apparecchiata.
+src: assets/episode-01/sample-anime-meal.svg
+alt: Sample Anime osserva una tavola apparecchiata.
 caption: >-
   Screenshot di riferimento per
   [{{食|た}}べる](term:term-taberu) nel contesto della scena.

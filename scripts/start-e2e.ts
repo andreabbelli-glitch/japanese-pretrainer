@@ -16,7 +16,6 @@ try {
 
   const importResult = await importContentWorkspace({
     contentRoot,
-    mediaSlugs: ["duel-masters-dm25"],
     database
   });
 

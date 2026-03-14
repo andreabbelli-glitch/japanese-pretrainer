@@ -29,7 +29,7 @@ describe("pronunciation workflow", () => {
   beforeEach(async () => {
     tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pronunciation-workflow-"));
     contentRoot = path.join(tempDir, "content");
-    mediaDirectory = path.join(contentRoot, "media", "frieren");
+    mediaDirectory = path.join(contentRoot, "media", "sample-anime");
     knownMissingPath = path.join(tempDir, "data", "forvo-known-missing.json");
 
     await cp(validContentRoot, contentRoot, { recursive: true });
@@ -37,8 +37,8 @@ describe("pronunciation workflow", () => {
     await writeFile(
       path.join(mediaDirectory, "cards", "002-extra.md"),
       `---
-id: cards-frieren-extra
-media_id: media-frieren
+id: cards-sample-anime-extra
+media_id: media-sample-anime
 slug: ep01-extra
 title: Episodio 1 - Extra cards
 order: 20
@@ -84,7 +84,7 @@ tags: [verb, extra]
               entryId: "term-kiku",
               entryKind: "term",
               label: "聞く",
-              mediaSlug: "frieren",
+              mediaSlug: "sample-anime",
               reading: "きく",
               reason: "not_found_on_forvo",
               updatedAt: "2026-03-12T18:30:00.000Z"
@@ -107,7 +107,7 @@ tags: [verb, extra]
     expect(parseResult.ok).toBe(true);
 
     const bundle = parseResult.ok
-      ? parseResult.data.bundles.find((candidate) => candidate.mediaSlug === "frieren")
+      ? parseResult.data.bundles.find((candidate) => candidate.mediaSlug === "sample-anime")
       : undefined;
 
     expect(bundle).toBeDefined();
@@ -135,7 +135,7 @@ tags: [verb, extra]
 
     expect(pending).toEqual({
       version: 1,
-      media_slug: "frieren",
+      media_slug: "sample-anime",
       total_targets: 4,
       audio_backed_count: 2,
       known_missing_count: 1,

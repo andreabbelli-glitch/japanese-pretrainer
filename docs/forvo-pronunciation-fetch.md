@@ -37,9 +37,9 @@ entry rimaste senza audio. La source of truth del processo completo e
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --limit 10
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --dry-run --limit 5
-./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media frieren --word 食べる --word 設定
-./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media frieren --entry term-taberu
-./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media frieren --words-file tmp/forvo-list.tsv
+./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media gundam-arsenal-base --word 専用機 --word 戦艦
+./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --entry term-cost
+./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
 ```
 
 ## Modalita manuale consigliata

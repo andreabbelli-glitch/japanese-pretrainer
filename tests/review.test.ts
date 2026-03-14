@@ -511,13 +511,13 @@ describe("review system", () => {
     const imported = await importContentWorkspace({
       contentRoot: validContentRoot,
       database,
-      mediaSlugs: ["frieren"]
+      mediaSlugs: ["sample-anime"]
     });
 
     expect(imported.status).toBe("completed");
 
     const reviewPage = await getReviewPageData(
-      "frieren",
+      "sample-anime",
       {
         card: "card-taberu-recognition",
         show: "answer"
@@ -527,7 +527,7 @@ describe("review system", () => {
 
     expect(reviewPage?.selectedCard?.pronunciations).toHaveLength(1);
     expect(reviewPage?.selectedCard?.pronunciations[0]?.audio.src).toBe(
-      "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
+      "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
     );
     expect(
       reviewPage?.selectedCard?.pronunciations[0]?.audio.pitchAccent
@@ -542,7 +542,7 @@ describe("review system", () => {
     expect(markup).toContain("pronunciation-audio__player");
     expect(markup).toContain("pitch-accent__graph");
     expect(markup).toContain(
-      "/media/frieren/assets/audio/term/term-taberu/term-taberu.ogg"
+      "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
     );
   });
 

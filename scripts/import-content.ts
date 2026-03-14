@@ -3,6 +3,7 @@ import "dotenv/config";
 import path from "node:path";
 
 import { closeDatabaseClient, db } from "../src/db/client.ts";
+import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
 
 try {
@@ -72,6 +73,14 @@ try {
           .filter((value): value is string => value !== null)
           .join(" | ")
       );
+    }
+
+    if (cliOptions.mediaSlugs.length === 0) {
+      const purgedMedia = await purgeArchivedMedia(db);
+
+      if (purgedMedia.length > 0) {
+        console.info(`purged archived media=${purgedMedia.join(",")}`);
+      }
     }
   }
 } catch (error) {
