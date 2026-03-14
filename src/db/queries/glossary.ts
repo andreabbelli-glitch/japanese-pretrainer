@@ -74,24 +74,20 @@ async function getEntryStatusMap(
   return new Map(rows.map((row) => [row.entryId, row]));
 }
 
-export async function listGlossarySegmentsByMediaId(
-  database: DatabaseClient,
-  mediaId: string
-) {
-  return database.query.segment.findMany({
-    where: eq(segment.mediaId, mediaId),
-    orderBy: [asc(segment.orderIndex), asc(segment.title)]
-  });
-}
+type ListGlossaryEntriesOptions = {
+  mediaId?: string;
+};
 
-export async function listTermEntriesByMediaId(
+async function listTermGlossaryEntries(
   database: DatabaseClient,
-  mediaId: string
+  options: ListGlossaryEntriesOptions = {}
 ) {
   const rows = await database.query.term.findMany({
-    where: eq(term.mediaId, mediaId),
+    where: options.mediaId ? eq(term.mediaId, options.mediaId) : undefined,
     with: {
       aliases: true,
+      crossMediaGroup: true,
+      media: true,
       segment: true
     },
     orderBy: [asc(term.lemma), asc(term.reading)]
@@ -109,14 +105,18 @@ export async function listTermEntriesByMediaId(
   }));
 }
 
-export async function listGrammarEntriesByMediaId(
+async function listGrammarGlossaryEntries(
   database: DatabaseClient,
-  mediaId: string
+  options: ListGlossaryEntriesOptions = {}
 ) {
   const rows = await database.query.grammarPattern.findMany({
-    where: eq(grammarPattern.mediaId, mediaId),
+    where: options.mediaId
+      ? eq(grammarPattern.mediaId, options.mediaId)
+      : undefined,
     with: {
       aliases: true,
+      crossMediaGroup: true,
+      media: true,
       segment: true
     },
     orderBy: [asc(grammarPattern.pattern), asc(grammarPattern.title)]
@@ -134,6 +134,48 @@ export async function listGrammarEntriesByMediaId(
   }));
 }
 
+export async function listGlossarySegmentsByMediaId(
+  database: DatabaseClient,
+  mediaId: string
+) {
+  return database.query.segment.findMany({
+    where: eq(segment.mediaId, mediaId),
+    orderBy: [asc(segment.orderIndex), asc(segment.title)]
+  });
+}
+
+export async function listTermEntriesByMediaId(
+  database: DatabaseClient,
+  mediaId: string
+) {
+  return listTermGlossaryEntries(database, {
+    mediaId
+  });
+}
+
+export async function listGrammarEntriesByMediaId(
+  database: DatabaseClient,
+  mediaId: string
+) {
+  return listGrammarGlossaryEntries(database, {
+    mediaId
+  });
+}
+
+export async function listTermEntries(
+  database: DatabaseClient,
+  options: ListGlossaryEntriesOptions = {}
+) {
+  return listTermGlossaryEntries(database, options);
+}
+
+export async function listGrammarEntries(
+  database: DatabaseClient,
+  options: ListGlossaryEntriesOptions = {}
+) {
+  return listGrammarGlossaryEntries(database, options);
+}
+
 export async function getTermEntriesByIds(
   database: DatabaseClient,
   entryIds: string[]
@@ -146,6 +188,8 @@ export async function getTermEntriesByIds(
     where: inArray(term.id, entryIds),
     with: {
       aliases: true,
+      crossMediaGroup: true,
+      media: true,
       segment: true
     },
     orderBy: [asc(term.lemma), asc(term.reading)]
@@ -175,6 +219,8 @@ export async function getGrammarEntriesByIds(
     where: inArray(grammarPattern.id, entryIds),
     with: {
       aliases: true,
+      crossMediaGroup: true,
+      media: true,
       segment: true
     },
     orderBy: [asc(grammarPattern.pattern), asc(grammarPattern.title)]
@@ -210,6 +256,8 @@ export async function getTermEntryBySourceId(
     where: and(eq(term.mediaId, mediaId), eq(term.sourceId, sourceId)),
     with: {
       aliases: true,
+      crossMediaGroup: true,
+      media: true,
       segment: true
     }
   });
@@ -247,6 +295,8 @@ export async function getGrammarEntryBySourceId(
     ),
     with: {
       aliases: true,
+      crossMediaGroup: true,
+      media: true,
       segment: true
     }
   });

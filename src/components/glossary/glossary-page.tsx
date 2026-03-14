@@ -1,16 +1,16 @@
 import type { Route } from "next";
 import Link from "next/link";
 
-import type { GlossaryMatchMode, GlossaryPageData } from "@/lib/glossary";
-import { appendReturnToParam, mediaHref } from "@/lib/site";
+import type { GlossaryPageData } from "@/lib/glossary";
 import {
-  compactLatinSearchText,
-  foldJapaneseKana,
-  normalizeGrammarSearchText,
-  normalizeSearchText
-} from "@/lib/study-search";
+  appendReturnToParam,
+  buildGlossaryHref,
+  mediaHref,
+  resolveGlossaryBackNavigation
+} from "@/lib/site";
 
 import { GlossaryDetailPanels } from "./glossary-detail-page";
+import { HighlightText } from "./glossary-highlight-text";
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
 import { Section } from "../ui/section";
@@ -24,17 +24,32 @@ type GlossaryPageProps = {
 
 export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
   const hasEntries = data.resultSummary.total > 0;
-  const backHref = returnTo ?? mediaHref(data.media.slug);
-  const backLabel = returnTo
-    ? "Torna alla Review"
-    : `Torna a ${data.media.title}`;
+  const backNavigation = resolveGlossaryBackNavigation({
+    localGlossaryHref: data.media.glossaryHref,
+    mediaHref: mediaHref(data.media.slug),
+    mediaTitle: data.media.title,
+    page: "index",
+    returnTo
+  });
   const glossaryHref = appendReturnToParam(data.media.glossaryHref, returnTo);
+  const detailReturnTo =
+    data.hasActiveFilters || returnTo
+      ? buildGlossaryHref({
+          baseHref: data.media.glossaryHref,
+          entryType: data.filters.entryType,
+          query: data.filters.query,
+          returnTo,
+          segmentId: data.filters.segmentId,
+          sort: data.filters.sort,
+          study: data.filters.study
+        })
+      : null;
 
   return (
     <div className="glossary-page">
       <StickyPageHeader
-        backHref={backHref}
-        backLabel={backLabel}
+        backHref={backNavigation.backHref}
+        backLabel={backNavigation.backLabel}
         eyebrow="Glossary"
         title={data.media.title}
         summary="Ricerca rapida per kanji, kana, romaji e significato, con segnali di studio e collegamenti al percorso."
@@ -223,7 +238,10 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                     filters: data.filters,
                     returnTo
                   });
-                  const detailHref = appendReturnToParam(entry.href, returnTo);
+                  const detailHref = appendReturnToParam(
+                    entry.href,
+                    detailReturnTo
+                  );
                   const isPreviewActive =
                     data.preview?.entry.id === entry.id &&
                     data.preview.entry.kind === entry.kind;
@@ -385,7 +403,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                       className="button button--ghost"
                       href={appendReturnToParam(
                         data.preview.entry.href,
-                        returnTo
+                        detailReturnTo
                       )}
                     >
                       Apri voce
@@ -447,74 +465,4 @@ function buildPreviewHref({
   }
 
   return `?${params.toString()}` as Route;
-}
-
-function HighlightText({
-  mode,
-  query,
-  text
-}: {
-  mode?: GlossaryMatchMode;
-  query: string;
-  text: string;
-}) {
-  if (!mode || !query) {
-    return text;
-  }
-
-  const trimmedQuery = query.trim();
-
-  if (!trimmedQuery) {
-    return text;
-  }
-
-  const parts = splitLiteralMatch(text, trimmedQuery);
-
-  if (parts) {
-    return parts;
-  }
-
-  const normalizedText = normalizeForMatchMode(text, mode);
-  const normalizedQuery = normalizeForMatchMode(trimmedQuery, mode);
-
-  if (
-    !normalizedText ||
-    !normalizedQuery ||
-    !normalizedText.includes(normalizedQuery)
-  ) {
-    return text;
-  }
-
-  return <mark>{text}</mark>;
-}
-
-function splitLiteralMatch(text: string, query: string) {
-  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const matcher = new RegExp(`(${escapedQuery})`, "gi");
-  const parts = text.split(matcher);
-
-  if (parts.length === 1) {
-    return null;
-  }
-
-  return parts.map((part, index) =>
-    part.toLowerCase() === query.toLowerCase() ? (
-      <mark key={`${part}-${index}`}>{part}</mark>
-    ) : (
-      <span key={`${part}-${index}`}>{part}</span>
-    )
-  );
-}
-
-function normalizeForMatchMode(value: string, mode: GlossaryMatchMode) {
-  switch (mode) {
-    case "kana":
-      return foldJapaneseKana(normalizeSearchText(value));
-    case "grammarKana":
-      return foldJapaneseKana(normalizeGrammarSearchText(value));
-    case "romajiCompact":
-      return compactLatinSearchText(value);
-    case "normalized":
-      return normalizeSearchText(value);
-  }
 }

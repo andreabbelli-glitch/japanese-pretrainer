@@ -217,6 +217,26 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
 Se questo check fallisce, il batch va corretto anche se `content:validate` e
 verde.
 
+### 4.2 Lookup-only vs flashcard
+
+Se una entry glossary resta senza card, non trattarla come errore automatico.
+Prima distingui fra due casi:
+
+- puo restare `lookup-only` se e soprattutto un nome di evento o modalita molto
+  specifica, un label storico da riconoscere in guide vecchie, oppure un
+  elemento fisico o di orientamento locale che serve a capire una schermata ma
+  non guida review ricorrente;
+- merita invece una flashcard se compare nei `Termini chiave` di lesson core o
+  progression, guida decisioni ripetute di match o navigazione, oppure ricorre
+  in piu lesson come risorsa, modalita, obiettivo o slot operativo.
+
+Regola conservativa:
+
+- se il dubbio e reale, non inventare una card o un `cross_media_group` nello
+  stesso passaggio;
+- documenta il gap e lascia l'entry non collegata finche non esiste un motivo
+  editoriale chiaro per promuoverla a review.
+
 Nota di fase 2:
 
 - textbook popup e tooltip restano locali al media corrente;

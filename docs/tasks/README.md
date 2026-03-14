@@ -36,6 +36,15 @@ aggiuntivo e con criteri di accettazione chiari.
 - [12 - QA, E2E And Launch Polish](./12-qa-e2e-and-launch-polish.md)
 - [13 - Regression Fixes From Audit](./13-regression-fixes-from-audit.md)
 
+### Wave 5
+
+- [14 - Glossary Portal Navigation And Routing](./14-glossary-portal-navigation-and-routing.md)
+- [15 - Global Glossary Query Layer And Contract](./15-global-glossary-query-layer-and-contract.md)
+- [16 - Global Glossary Portal UI](./16-global-glossary-portal-ui.md)
+- [17 - Global Results To Local Detail Integration](./17-global-results-to-local-detail-integration.md)
+- [18 - Glossary Portal QA And Regression Coverage](./18-glossary-portal-qa-and-regression-coverage.md)
+- [19 - Glossary Cross-Media Data Backfill And Alignment](./19-glossary-cross-media-data-backfill-and-alignment.md)
+
 ## Dipendenze ad alto livello
 
 - `01` informa tutti i task frontend.
@@ -45,6 +54,13 @@ aggiuntivo e con criteri di accettazione chiari.
 - `06` definisce shell e layout per `07`, `08`, `09`, `10`.
 - `09` e `10` condividono dati di review e progress.
 - `12` dipende dal completamento minimo di `05`, `07`, `08`, `09`, `10`, `11`.
+- `14` apre il nuovo entry point globale del glossary.
+- `15` generalizza il query layer e sblocca `16` e `17`.
+- `16` costruisce la UI del portale globale sopra il contratto dati di `15`.
+- `17` completa il collegamento tra discovery globale e detail locale.
+- `18` consolida il rollout di `14`-`17`.
+- `19` migliora la qualita dei dati e puo procedere in parallelo ai task
+  applicativi.
 
 ## Definizione di done globale
 

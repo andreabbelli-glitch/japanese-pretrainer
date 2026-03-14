@@ -2,7 +2,12 @@ import Link from "next/link";
 import type { Route } from "next";
 
 import type { GlossaryDetailData } from "@/lib/glossary";
-import { replaceReviewCardInHref } from "@/lib/site";
+import {
+  appendReturnToParam,
+  replaceReviewCardInHref,
+  resolveGlossaryBackNavigation,
+  resolveGlossaryReviewReturnTo
+} from "@/lib/site";
 import { renderFurigana } from "@/lib/render-furigana";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
@@ -21,11 +26,19 @@ export function GlossaryDetailPage({
   data,
   returnTo
 }: GlossaryDetailPageProps) {
+  const backNavigation = resolveGlossaryBackNavigation({
+    localGlossaryHref: data.media.glossaryHref,
+    mediaHref: data.media.glossaryHref,
+    mediaTitle: data.media.title,
+    page: "detail",
+    returnTo
+  });
+
   return (
     <div className="glossary-page">
       <StickyPageHeader
-        backHref={returnTo ?? data.media.glossaryHref}
-        backLabel={returnTo ? "Torna alla Review" : "Torna al Glossary"}
+        backHref={backNavigation.backHref}
+        backLabel={backNavigation.backLabel}
         eyebrow={data.entry.kind === "term" ? "Termine" : "Grammatica"}
         title={data.entry.label}
         summary={data.entry.meaning}
@@ -57,6 +70,7 @@ export function GlossaryDetailPanels({
 }: GlossaryDetailPageProps & {
   compact?: boolean;
 }) {
+  const reviewReturnTo = resolveGlossaryReviewReturnTo(returnTo);
   const pronunciation = data.entry.pronunciation;
   const pitchAccent = pronunciation?.pitchAccent;
   const pronunciationAudio = pronunciation?.src ? pronunciation : null;
@@ -262,13 +276,13 @@ export function GlossaryDetailPanels({
                 <Link
                   key={`${sibling.mediaSlug}:${sibling.href}`}
                   className="glossary-detail-link"
-                  href={sibling.href}
+                  href={appendReturnToParam(sibling.href, returnTo)}
                 >
                   <SurfaceCard className="glossary-detail-card" variant="quiet">
                     <div className="glossary-detail-card__top">
                       <div className="glossary-detail-card__chips">
-                      <span className="chip">{sibling.mediaTitle}</span>
-                      <span className="meta-pill">
+                        <span className="chip">{sibling.mediaTitle}</span>
+                        <span className="meta-pill">
                           {sibling.kind === "term" ? "Termine" : "Grammatica"}
                         </span>
                         {sibling.segmentTitle ? (
@@ -323,8 +337,8 @@ export function GlossaryDetailPanels({
                   key={card.id}
                   className="glossary-detail-link"
                   href={
-                    returnTo
-                      ? replaceReviewCardInHref(returnTo, card.id)
+                    reviewReturnTo
+                      ? replaceReviewCardInHref(reviewReturnTo, card.id)
                       : card.href
                   }
                 >
@@ -335,7 +349,7 @@ export function GlossaryDetailPanels({
                         <span className="meta-pill">{card.reviewLabel}</span>
                       </div>
                       <span className="glossary-result-card__arrow">
-                        {returnTo ? "Apri in Review" : "Apri card"}
+                        {reviewReturnTo ? "Apri in Review" : "Apri card"}
                       </span>
                     </div>
                     <h3 className="glossary-detail-card__title jp-inline">

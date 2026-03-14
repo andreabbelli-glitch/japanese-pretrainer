@@ -2,6 +2,7 @@ import { saveStudySettingsAction } from "@/actions/settings";
 import type { Route } from "next";
 import Link from "next/link";
 import type { StudySettings } from "@/lib/settings";
+import { resolveReturnToContext, resolveReturnToLabel } from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { Section } from "../ui/section";
@@ -50,11 +51,14 @@ const glossarySortOptions = [
 const reviewLimitOptions = [10, 20, 30, 40, 60] as const;
 
 export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
+  const returnContext = resolveReturnToContext(returnTo);
+  const backLabel = resolveReturnToLabel(returnContext);
+
   return (
     <div className="settings-page">
       <StickyPageHeader
-        backHref={returnTo ?? undefined}
-        backLabel={returnTo ? "Torna alla Review" : undefined}
+        backHref={returnContext?.href}
+        backLabel={backLabel ?? undefined}
         eyebrow="Settings"
         title="Preferenze di studio"
         summary="Poche preferenze persistenti, con effetti reali su reader, Glossary e Review."
@@ -66,9 +70,9 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
           </>
         }
         actions={
-          returnTo ? (
-            <Link className="button button--ghost" href={returnTo}>
-              Torna alla Review
+          returnContext && backLabel ? (
+            <Link className="button button--ghost" href={returnContext.href}>
+              {backLabel}
             </Link>
           ) : null
         }

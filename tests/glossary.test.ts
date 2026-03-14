@@ -1,7 +1,8 @@
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import type { Route } from "next";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { eq } from "drizzle-orm";
@@ -9,6 +10,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
 import { GlossaryPage } from "@/components/glossary/glossary-page";
+import { GlossaryPortalPage } from "@/components/glossary/glossary-portal-page";
 import { ReviewCardDetailPage } from "@/components/review/review-card-detail-page";
 import {
   closeDatabaseClient,
@@ -22,6 +24,7 @@ import {
 import { card, grammarPattern, term } from "@/db/schema/index.ts";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
+  getGlobalGlossaryPageData,
   getGlossaryPageData,
   getGrammarGlossaryDetailData,
   getTermGlossaryDetailData
@@ -29,8 +32,11 @@ import {
 import { buildPitchAccentData } from "@/lib/pitch-accent";
 import { getReviewCardDetailData } from "@/lib/review";
 import { setReviewCardSuspended } from "@/lib/review-service";
+import { buildReviewSessionHref } from "@/lib/site";
 import {
+  crossMediaOverflowFixture,
   crossMediaFixture,
+  writeCrossMediaOverflowContentFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
 
@@ -43,6 +49,115 @@ const validContentRoot = path.join(
   "valid",
   "content"
 );
+
+const reusedSourceIdFixture = {
+  sourceId: "term-shared-source",
+  alpha: {
+    cardId: "card-shared-alpha",
+    lessonId: "lesson-shared-alpha",
+    lessonSlug: "shared-alpha-intro",
+    mediaId: "media-shared-alpha",
+    mediaSlug: "shared-alpha",
+    meaning: "condivisione nel media alpha"
+  },
+  beta: {
+    cardId: "card-shared-beta",
+    lessonId: "lesson-shared-beta",
+    lessonSlug: "shared-beta-intro",
+    mediaId: "media-shared-beta",
+    mediaSlug: "shared-beta",
+    meaning: "condivisione nel media beta"
+  }
+} as const;
+
+async function writeReusedSourceIdContentFixture(contentRoot: string) {
+  await Promise.all([
+    writeReusedSourceIdBundle(contentRoot, reusedSourceIdFixture.alpha),
+    writeReusedSourceIdBundle(contentRoot, reusedSourceIdFixture.beta)
+  ]);
+}
+
+async function writeReusedSourceIdBundle(
+  contentRoot: string,
+  input:
+    | (typeof reusedSourceIdFixture)["alpha"]
+    | (typeof reusedSourceIdFixture)["beta"]
+) {
+  const mediaRoot = path.join(contentRoot, "media", input.mediaSlug);
+  const textbookRoot = path.join(mediaRoot, "textbook");
+  const cardsRoot = path.join(mediaRoot, "cards");
+
+  await mkdir(textbookRoot, { recursive: true });
+  await mkdir(cardsRoot, { recursive: true });
+
+  await writeFile(
+    path.join(mediaRoot, "media.md"),
+    `---
+id: ${input.mediaId}
+slug: ${input.mediaSlug}
+title: ${input.mediaSlug}
+media_type: game
+segment_kind: chapter
+language: ja
+base_explanation_language: it
+status: active
+---
+
+# ${input.mediaSlug}
+
+Fixture con source id riusato tra media diversi.
+`
+  );
+
+  await writeFile(
+    path.join(textbookRoot, "001-intro.md"),
+    `---
+id: ${input.lessonId}
+media_id: ${input.mediaId}
+slug: ${input.lessonSlug}
+title: ${input.mediaSlug} intro
+order: 1
+segment_ref: chapter-01
+status: active
+---
+
+# Intro
+
+Qui compare [共有](term:${reusedSourceIdFixture.sourceId}).
+`
+  );
+
+  await writeFile(
+    path.join(cardsRoot, "001-core.md"),
+    `---
+id: cards-${input.mediaSlug}
+media_id: ${input.mediaId}
+slug: ${input.mediaSlug}-core
+title: ${input.mediaSlug} core
+order: 1
+segment_ref: chapter-01
+---
+
+:::term
+id: ${reusedSourceIdFixture.sourceId}
+lemma: 共有
+reading: きょうゆう
+romaji: kyouyuu
+meaning_it: ${input.meaning}
+aliases: [共有, きょうゆう, kyouyuu]
+:::
+
+:::card
+id: ${input.cardId}
+entry_type: term
+entry_id: ${reusedSourceIdFixture.sourceId}
+card_type: recognition
+front: 共有
+back: ${input.meaning}
+:::
+`
+  );
+}
 
 describe("glossary data", () => {
   let tempDir = "";
@@ -107,8 +222,14 @@ describe("glossary data", () => {
     expect(data?.results[0]?.href).toBe(
       `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}`
     );
+    expect(data?.results[0]?.bestLocalHref).toBe(
+      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}`
+    );
     expect(data?.results[0]?.primaryLesson?.roleLabel).toBe("Introdotta");
+    expect(data?.results[0]?.hasCards).toBe(true);
     expect(data?.results[0]?.cardCount).toBe(1);
+    expect(data?.results[0]?.mediaCount).toBe(1);
+    expect(data?.results[0]?.mediaHits).toHaveLength(1);
     expect(data?.results[0]?.matchBadges).toContain("romaji");
   });
 
@@ -160,6 +281,306 @@ describe("glossary data", () => {
     expect(learningData?.results[0]?.studyState.key).toBe("learning");
     expect(reviewData).not.toBeNull();
     expect(reviewData?.results).toHaveLength(0);
+  });
+
+  it("builds a global glossary result contract across media and selects the filtered local href", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        q: "kosuto",
+        media: crossMediaFixture.beta.mediaSlug
+      },
+      database
+    );
+
+    expect(data.results).toHaveLength(1);
+    expect(data.results[0]?.label).toBe("コスト");
+    expect(data.results[0]?.hasCards).toBe(true);
+    expect(data.results[0]?.cardCount).toBe(2);
+    expect(data.results[0]?.mediaCount).toBe(2);
+    expect(data.results[0]?.bestLocalHref).toBe(
+      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+    );
+    expect(data.results[0]?.mediaHits).toHaveLength(2);
+    expect(data.results[0]?.mediaHits.map((hit) => hit.mediaSlug)).toEqual([
+      crossMediaFixture.beta.mediaSlug,
+      crossMediaFixture.alpha.mediaSlug
+    ]);
+    expect(
+      data.results[0]?.mediaHits.filter((hit) => hit.matchesCurrentFilters)
+    ).toHaveLength(1);
+    expect(
+      data.results[0]?.mediaHits.find((hit) => hit.isBestLocal)?.href
+    ).toBe(
+      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+    );
+  });
+
+  it("keeps cross-media global result metadata coherent with cards filters", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const [allCardsData, withCardsData, withoutCardsData] = await Promise.all([
+      getGlobalGlossaryPageData(
+        {
+          q: "yohaku"
+        },
+        database
+      ),
+      getGlobalGlossaryPageData(
+        {
+          q: "yohaku",
+          cards: "with_cards"
+        },
+        database
+      ),
+      getGlobalGlossaryPageData(
+        {
+          q: "yohaku",
+          cards: "without_cards"
+        },
+        database
+      )
+    ]);
+
+    expect(allCardsData.results.map((entry) => entry.label)).toEqual(["余白"]);
+    expect(allCardsData.results[0]?.hasCards).toBe(true);
+    expect(allCardsData.results[0]?.cardCount).toBe(1);
+    expect(allCardsData.results[0]?.mediaCount).toBe(2);
+    expect(allCardsData.results[0]?.mediaHits).toHaveLength(2);
+    expect(allCardsData.results[0]?.mediaHits.map((hit) => hit.mediaSlug)).toEqual([
+      crossMediaFixture.beta.mediaSlug,
+      crossMediaFixture.alpha.mediaSlug
+    ]);
+    expect(allCardsData.results[0]?.bestLocalHref).toBe(
+      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.mixedCardTermSourceId}`
+    );
+
+    expect(withCardsData.results.map((entry) => entry.label)).toEqual(["余白"]);
+    expect(withCardsData.results[0]?.hasCards).toBe(true);
+    expect(withCardsData.results[0]?.cardCount).toBe(1);
+    expect(withCardsData.results[0]?.mediaCount).toBe(1);
+    expect(withCardsData.results[0]?.mediaHits).toHaveLength(1);
+    expect(withCardsData.results[0]?.mediaHits[0]?.mediaSlug).toBe(
+      crossMediaFixture.beta.mediaSlug
+    );
+    expect(withCardsData.results[0]?.mediaHits[0]?.hasCards).toBe(true);
+    expect(withCardsData.results[0]?.bestLocalHref).toBe(
+      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.mixedCardTermSourceId}`
+    );
+
+    expect(withoutCardsData.results.map((entry) => entry.label)).toEqual(["余白"]);
+    expect(withoutCardsData.results[0]?.hasCards).toBe(false);
+    expect(withoutCardsData.results[0]?.cardCount).toBe(0);
+    expect(withoutCardsData.results[0]?.mediaCount).toBe(1);
+    expect(withoutCardsData.results[0]?.mediaHits).toHaveLength(1);
+    expect(withoutCardsData.results[0]?.mediaHits[0]?.mediaSlug).toBe(
+      crossMediaFixture.alpha.mediaSlug
+    );
+    expect(withoutCardsData.results[0]?.mediaHits[0]?.hasCards).toBe(false);
+    expect(withoutCardsData.results[0]?.bestLocalHref).toBe(
+      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.mixedNoCardTermSourceId}`
+    );
+  });
+
+  it("supports global study and entry type filters without regressing ranking", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const learningData = await getGlobalGlossaryPageData(
+      {
+        q: "iku",
+        study: "learning",
+        type: "term"
+      },
+      database
+    );
+    const grammarData = await getGlobalGlossaryPageData(
+      {
+        q: "iku",
+        type: "grammar"
+      },
+      database
+    );
+
+    expect(learningData.results.map((entry) => entry.id)).toEqual([
+      developmentFixture.termId
+    ]);
+    expect(learningData.results[0]?.studyState.key).toBe("learning");
+    expect(learningData.results[0]?.matchBadges).toContain("romaji");
+    expect(grammarData.results).toHaveLength(0);
+  });
+
+  it("renders the global glossary portal with explicit flashcard signals and return links", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        q: "kosuto",
+        media: crossMediaFixture.beta.mediaSlug
+      },
+      database
+    );
+
+    const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
+
+    expect(markup).not.toContain('<span class="status-pill">Ha flashcard</span>');
+    expect(markup).toContain("Glossary");
+    expect(markup).toContain(
+      `returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
+    );
+    expect(markup).toContain("Apri voce");
+  });
+
+  it("preserves all active global filters inside returnTo links to local detail pages", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        q: "iku",
+        type: "term",
+        media: developmentFixture.mediaSlug,
+        study: "learning",
+        cards: "with_cards",
+        sort: "alphabetical"
+      },
+      database
+    );
+
+    const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
+
+    expect(markup).toContain(
+      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Fglossary%3Fq%3Diku%26type%3Dterm%26media%3D${developmentFixture.mediaSlug}%26study%3Dlearning%26cards%3Dwith_cards%26sort%3Dalphabetical`
+    );
+  });
+
+  it("preserves the filtered local glossary workspace when opening a detail page", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const data = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        q: "iku",
+        segment: developmentFixture.segmentId,
+        sort: "alphabetical",
+        study: "learning"
+      },
+      database
+    );
+
+    expect(data).not.toBeNull();
+
+    const markup = renderToStaticMarkup(
+      GlossaryPage({
+        data: data!,
+        returnTo: `/glossary?q=iku&media=${developmentFixture.mediaSlug}` as Route
+      })
+    );
+
+    expect(markup).toContain(
+      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Fmedia%2F${developmentFixture.mediaSlug}%2Fglossary%3Fq%3Diku%26segment%3D${developmentFixture.segmentId}%26study%3Dlearning%26sort%3Dalphabetical%26returnTo%3D%252Fglossary%253Fq%253Diku%2526media%253D${developmentFixture.mediaSlug}`
+    );
+  });
+
+  it("keeps review deep links available when the detail is opened from a local glossary workspace", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const detail = await getTermGlossaryDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.termId,
+      database
+    );
+
+    expect(detail).not.toBeNull();
+
+    const reviewReturnTo = buildReviewSessionHref({
+      answeredCount: 3,
+      cardId: developmentFixture.secondaryCardId,
+      extraNewCount: 2,
+      mediaSlug: developmentFixture.mediaSlug,
+      showAnswer: true
+    });
+    const markup = renderToStaticMarkup(
+      GlossaryDetailPage({
+        data: detail!,
+        returnTo:
+          `/media/${developmentFixture.mediaSlug}/glossary?q=iku&segment=${developmentFixture.segmentId}&study=learning&returnTo=${encodeURIComponent(reviewReturnTo)}` as Route
+      })
+    );
+
+    expect(markup).toContain("Torna al Glossary");
+    expect(markup).not.toContain("Torna alla Review");
+    expect(markup).toContain("Apri in Review");
+    expect(markup).toContain(
+      `/media/${developmentFixture.mediaSlug}/review?answered=3&amp;card=${developmentFixture.primaryCardId}&amp;extraNew=2`
+    );
+    expect(markup).not.toContain(
+      `/media/${developmentFixture.mediaSlug}/review?answered=3&amp;card=${developmentFixture.primaryCardId}&amp;show=answer`
+    );
+  });
+
+  it("keeps the recommended media visible when a cross-media group overflows the first three chips", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-overflow-content");
+
+    await writeCrossMediaOverflowContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        q: "kosuto",
+        media: crossMediaOverflowFixture.zeta.mediaSlug
+      },
+      database
+    );
+
+    expect(data.results).toHaveLength(1);
+    expect(data.results[0]?.bestLocalHref).toBe(
+      `/media/${crossMediaOverflowFixture.zeta.mediaSlug}/glossary/term/${crossMediaOverflowFixture.zeta.termSourceId}`
+    );
+    expect(data.results[0]?.mediaHits.map((hit) => hit.mediaSlug)).toEqual([
+      crossMediaOverflowFixture.zeta.mediaSlug,
+      crossMediaOverflowFixture.alpha.mediaSlug,
+      crossMediaOverflowFixture.beta.mediaSlug,
+      crossMediaOverflowFixture.gamma.mediaSlug
+    ]);
+
+    const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
+
+    expect(markup).toContain("Apri da zeta");
+    expect(markup).toContain("zeta · Chapter 01 · apri qui");
+    expect(markup).toContain("+1 altri media");
   });
 
   it("matches hiragana and katakana input against readings through kana folding", async () => {
@@ -433,12 +854,12 @@ describe("glossary data", () => {
     );
 
     expect(glossaryWithoutAudio?.entry.pronunciation?.src).toBeUndefined();
-    expect(glossaryWithoutAudio?.entry.pronunciation?.pitchAccent).toMatchObject(
-      {
-        downstep: 0,
-        shape: "heiban"
-      }
-    );
+    expect(
+      glossaryWithoutAudio?.entry.pronunciation?.pitchAccent
+    ).toMatchObject({
+      downstep: 0,
+      shape: "heiban"
+    });
 
     const markup = renderToStaticMarkup(
       GlossaryDetailPage({ data: glossaryWithoutAudio! })
@@ -694,5 +1115,200 @@ describe("glossary data", () => {
     expect(markup).toContain(
       `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
     );
+  });
+
+  it("treats glossary returnTo as glossary context instead of review", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const detail = await getTermGlossaryDetailData(
+      crossMediaFixture.beta.mediaSlug,
+      crossMediaFixture.beta.termSourceId,
+      database
+    );
+
+    expect(detail).not.toBeNull();
+
+    const markup = renderToStaticMarkup(
+      GlossaryDetailPage({
+        data: detail!,
+        returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}` as Route
+      })
+    );
+
+    expect(markup).toContain("Torna al Glossary");
+    expect(markup).not.toContain("Torna alla Review");
+    expect(markup).toContain(
+      `/media/${crossMediaFixture.beta.mediaSlug}/review/card/${crossMediaFixture.beta.termCardId}`
+    );
+    expect(markup).not.toContain("Apri in Review");
+    expect(markup).toContain(
+      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}?returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
+    );
+  });
+
+  it("keeps back navigation anchored to the filtered global portal after opening a local detail", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const detail = await getTermGlossaryDetailData(
+      crossMediaFixture.beta.mediaSlug,
+      crossMediaFixture.beta.termSourceId,
+      database
+    );
+
+    expect(detail).not.toBeNull();
+
+    const markup = renderToStaticMarkup(
+      GlossaryDetailPage({
+        data: detail!,
+        returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}&cards=with_cards` as Route
+      })
+    );
+
+    expect(markup).toContain("Torna al Glossary");
+    expect(markup).toContain(
+      `/glossary?q=kosuto&amp;media=${crossMediaFixture.beta.mediaSlug}&amp;cards=with_cards`
+    );
+    expect(markup).toContain(
+      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}?returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}%26cards%3Dwith_cards`
+    );
+  });
+
+  it("uses glossary returnTo on the local glossary index without relabeling it as review", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlossaryPageData(
+      crossMediaFixture.beta.mediaSlug,
+      {
+        q: "kosuto"
+      },
+      database
+    );
+
+    expect(data).not.toBeNull();
+
+    const markup = renderToStaticMarkup(
+      GlossaryPage({
+        data: data!,
+        returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}` as Route
+      })
+    );
+
+    expect(markup).toContain("Torna al Glossary");
+    expect(markup).not.toContain("Torna alla Review");
+    expect(markup).toContain(
+      `/glossary?q=kosuto&amp;media=${crossMediaFixture.beta.mediaSlug}`
+    );
+    expect(markup).toContain(
+      `returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
+    );
+  });
+
+  it("keeps review-specific card deep links only when returnTo is an actual review session", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const detail = await getTermGlossaryDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.termId,
+      database
+    );
+
+    expect(detail).not.toBeNull();
+
+    const reviewReturnTo = buildReviewSessionHref({
+      answeredCount: 3,
+      cardId: developmentFixture.secondaryCardId,
+      extraNewCount: 2,
+      mediaSlug: developmentFixture.mediaSlug,
+      showAnswer: true
+    });
+    const markup = renderToStaticMarkup(
+      GlossaryDetailPage({
+        data: detail!,
+        returnTo: reviewReturnTo
+      })
+    );
+
+    expect(markup).toContain("Torna alla Review");
+    expect(markup).toContain("Apri in Review");
+    expect(markup).toContain(
+      `/media/${developmentFixture.mediaSlug}/review?answered=3&amp;card=${developmentFixture.primaryCardId}&amp;extraNew=2`
+    );
+    expect(markup).not.toContain(
+      `/media/${developmentFixture.mediaSlug}/review?answered=3&amp;card=${developmentFixture.primaryCardId}&amp;show=answer`
+    );
+  });
+
+  it("does not merge global results when different media reuse the same source id", async () => {
+    const contentRoot = path.join(tempDir, "reused-source-id-content");
+
+    await writeReusedSourceIdContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        q: "共有"
+      },
+      database
+    );
+
+    expect(data.results).toHaveLength(2);
+    expect(new Set(data.results.map((entry) => entry.resultKey)).size).toBe(2);
+    expect(data.results.map((entry) => entry.bestLocalHref)).toEqual([
+      `/media/${reusedSourceIdFixture.alpha.mediaSlug}/glossary/term/${reusedSourceIdFixture.sourceId}`,
+      `/media/${reusedSourceIdFixture.beta.mediaSlug}/glossary/term/${reusedSourceIdFixture.sourceId}`
+    ]);
+    expect(data.results.map((entry) => entry.mediaCount)).toEqual([1, 1]);
+    expect(data.results.map((entry) => entry.cardCount)).toEqual([1, 1]);
+
+    const [alphaDetail, betaDetail] = await Promise.all([
+      getTermGlossaryDetailData(
+        reusedSourceIdFixture.alpha.mediaSlug,
+        reusedSourceIdFixture.sourceId,
+        database
+      ),
+      getTermGlossaryDetailData(
+        reusedSourceIdFixture.beta.mediaSlug,
+        reusedSourceIdFixture.sourceId,
+        database
+      )
+    ]);
+
+    expect(alphaDetail?.entry.meaning).toBe(reusedSourceIdFixture.alpha.meaning);
+    expect(alphaDetail?.cards[0]?.id).toBe(reusedSourceIdFixture.alpha.cardId);
+    expect(betaDetail?.entry.meaning).toBe(reusedSourceIdFixture.beta.meaning);
+    expect(betaDetail?.cards[0]?.id).toBe(reusedSourceIdFixture.beta.cardId);
   });
 });

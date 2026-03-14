@@ -2078,6 +2078,10 @@ rt {
   gap: var(--space-4);
 }
 
+.glossary-search-form--portal {
+  gap: var(--space-5);
+}
+
 .glossary-search-form__filters {
   display: grid;
   gap: var(--space-3);
@@ -2118,6 +2122,11 @@ rt {
   gap: var(--space-3);
 }
 
+.glossary-search-form__actions--portal {
+  align-items: end;
+  justify-content: flex-end;
+}
+
 .glossary-results,
 .glossary-detail-list {
   display: grid;
@@ -2132,6 +2141,10 @@ rt {
 .glossary-detail-card {
   display: grid;
   gap: var(--space-4);
+}
+
+.glossary-result-card--portal {
+  gap: var(--space-5);
 }
 
 .glossary-result-card--active {
@@ -2161,6 +2174,7 @@ rt {
 .glossary-result-card__actions {
   display: flex;
   align-items: center;
+  margin-left: auto;
   gap: var(--space-3);
 }
 
@@ -2174,6 +2188,12 @@ rt {
 
 .glossary-result-card__desktop-action {
   display: none;
+}
+
+.glossary-result-card__mobile-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target-min);
 }
 
 .glossary-result-card__arrow {
@@ -2193,8 +2213,53 @@ rt {
 
 .glossary-result-card__match,
 .glossary-entry-hero__aliases {
+  gap: var(--space-3);
+}
+
+.glossary-result-card__match {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.glossary-result-card__match-preview {
+  flex-basis: 100%;
+}
+
+.glossary-global-result__body,
+.glossary-global-result__copy,
+.glossary-global-result__study,
+.glossary-global-result__media {
   display: grid;
   gap: var(--space-3);
+}
+
+.glossary-global-result__study {
+  padding: var(--space-4);
+  border: 1px solid rgba(210, 197, 177, 0.72);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 242, 0.68);
+}
+
+.glossary-global-result__study-label,
+.glossary-global-result__media-label {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.glossary-global-result__study-note {
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: var(--text-small);
+}
+
+.glossary-global-result__media-hits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
 }
 
 .glossary-entry-hero__pitch-accent-source {
@@ -2404,7 +2469,7 @@ rt {
 
 .glossary-result-card__footer {
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-3);
   padding-top: var(--space-3);
   border-top: 1px solid rgba(210, 197, 177, 0.56);
 }
@@ -2423,6 +2488,51 @@ rt {
 .glossary-workspace {
   display: grid;
   gap: var(--space-5);
+}
+
+.glossary-portal-page {
+  display: grid;
+  gap: var(--section-gap);
+}
+
+.glossary-portal-search {
+  gap: var(--space-5);
+}
+
+.glossary-portal-search__intro {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.glossary-portal-search__copy {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 54rem;
+}
+
+.glossary-portal-search__signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.glossary-portal-search__query-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  align-items: end;
+}
+
+.glossary-portal-search__query-field {
+  min-width: 0;
+}
+
+.glossary-portal-summary {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+
+.glossary-results--portal {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .glossary-workspace__preview {
@@ -2571,6 +2681,19 @@ rt {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .glossary-portal-search__query-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .glossary-search-form__actions--portal {
+    justify-content: flex-start;
+  }
+
+  .glossary-global-result__body {
+    grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.9fr);
+    align-items: start;
+  }
+
   .glossary-workspace__results .glossary-results {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2706,6 +2829,19 @@ rt {
   .glossary-search-form__actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .glossary-search-form__actions--portal .button {
+    width: 100%;
+  }
+
+  .glossary-result-card__actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .glossary-global-result__study {
+    padding: var(--space-3);
   }
 
   .review-grade-grid {

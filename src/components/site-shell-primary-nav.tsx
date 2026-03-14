@@ -1,18 +1,19 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
 import {
   primaryNav,
-  readInternalHref,
+  resolveReturnToContext,
   resolveActivePrimaryNavHref
 } from "@/lib/site";
 
 export function SiteShellPrimaryNav() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const contextualReviewHref = readInternalHref(
+  const returnContext = resolveReturnToContext(
     searchParams.get("returnTo") ?? undefined
   );
   const activePrimaryHref = resolveActivePrimaryNavHref(pathname);
@@ -22,9 +23,9 @@ export function SiteShellPrimaryNav() {
       {primaryNav.map((item) => {
         const active = activePrimaryHref === item.href;
         const href =
-          item.href === "/review" && contextualReviewHref
-            ? contextualReviewHref
-            : item.href;
+          item.href === "/review" && returnContext?.kind === "review"
+            ? returnContext.href
+            : (item.href as Route);
 
         return (
           <Link
