@@ -61,14 +61,7 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
         backLabel={backLabel ?? undefined}
         eyebrow="Settings"
         title="Preferenze di studio"
-        summary="Poche preferenze persistenti, con effetti reali su reader, Glossary e Review."
-        meta={
-          <>
-            <span>Locale-first</span>
-            <span>Single-user</span>
-            <span>Persistenza su DB</span>
-          </>
-        }
+        summary="Si applicano subito a reader, Glossary e Review."
         actions={
           returnContext && backLabel ? (
             <Link className="button button--ghost" href={returnContext.href}>
@@ -78,63 +71,19 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
         }
       />
 
-      <section className="hero-grid hero-grid--detail">
-        <SurfaceCard className="settings-hero" variant="hero">
-          <p className="eyebrow">Esperienza quotidiana</p>
-          <h2 className="settings-hero__title">
-            Mantieni lo studio leggibile, coerente e facile da riprendere.
-          </h2>
-          <p className="settings-hero__summary">
-            Le preferenze qui sotto vengono salvate e si applicano subito alle
-            schermate di studio già presenti.
-          </p>
-          <div className="settings-hero__chips">
-            <span className="chip">Furigana: {settings.furiganaMode}</span>
-            <span className="chip">
-              Review nuove: {settings.reviewDailyLimit}
-            </span>
-            <span className="chip">
-              Glossary:{" "}
-              {settings.glossaryDefaultSort === "lesson_order"
-                ? "ordine percorso"
-                : "alfabetico"}
-            </span>
-          </div>
-          {saved ? (
-            <p className="settings-notice" role="status">
-              Preferenze salvate. Le viste di studio useranno subito i nuovi
-              valori.
-            </p>
-          ) : null}
-        </SurfaceCard>
-
-        <SurfaceCard className="settings-side">
-          <p className="eyebrow">Impatto reale</p>
-          <div className="stack-list stack-list--tight">
-            <div className="summary-row">
-              <span>Reader</span>
-              <strong>Furigana persistenti</strong>
-            </div>
-            <div className="summary-row">
-              <span>Glossary</span>
-              <strong>Ordine predefinito</strong>
-            </div>
-            <div className="summary-row">
-              <span>Review</span>
-              <strong>Limite nuove giornaliere</strong>
-            </div>
-          </div>
-        </SurfaceCard>
-      </section>
-
       <Section
         eyebrow="Preferenze"
-        title="Preferenze essenziali"
-        description="Ogni gruppo aggiorna un comportamento reale dell’app."
+        title="Impostazioni"
+        description="Tre controlli, effetto immediato."
       >
         <form action={saveStudySettingsAction} className="settings-form">
           {returnTo ? (
             <input name="returnTo" type="hidden" value={returnTo} />
+          ) : null}
+          {saved ? (
+            <p className="settings-notice" role="status">
+              Preferenze salvate.
+            </p>
           ) : null}
           <SurfaceCard className="settings-panel">
             <div className="settings-panel__header">

@@ -8,6 +8,14 @@
 
 html {
   font-size: 16px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 body {
@@ -2725,8 +2733,25 @@ rt {
 
   .reader-rail {
     display: block;
+    min-width: 0;
     position: sticky;
-    top: calc(var(--app-header-height-desktop) + 7.8rem);
+    top: calc(var(--app-header-height-desktop) + var(--space-4));
+  }
+
+  .reader-rail .reader-rail__card {
+    max-height: calc(
+      100dvh - var(--app-header-height-desktop) - var(--space-4) - var(--space-5)
+    );
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .reader-rail .reader-rail__card::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   .reader-main {
@@ -2917,8 +2942,7 @@ rt {
   gap: var(--space-8);
 }
 
-.progress-hero__title,
-.settings-hero__title {
+.progress-hero__title {
   margin: 0;
   font-family: var(--font-family-display);
   font-size: var(--text-display);
@@ -2927,7 +2951,6 @@ rt {
 }
 
 .progress-hero__summary,
-.settings-hero__summary,
 .settings-panel__body,
 .settings-choice-card__body,
 .panel-note {
@@ -2945,12 +2968,6 @@ rt {
 .settings-panel {
   display: grid;
   gap: var(--space-4);
-}
-
-.settings-hero__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
 }
 
 .settings-notice {
