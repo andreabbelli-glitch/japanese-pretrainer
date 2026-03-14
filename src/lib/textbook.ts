@@ -23,8 +23,8 @@ import {
 } from "@/db";
 import {
   mediaGlossaryEntryHref,
-  mediaReviewCardHref,
-  mediaStudyHref
+  mediaGlossaryHref,
+  mediaReviewCardHref
 } from "@/lib/site";
 import type { MarkdownDocument } from "@/lib/content/types";
 import {
@@ -358,7 +358,7 @@ function buildTextbookIndexModel(input: {
     completedLessons,
     totalLessons: lessons.length,
     textbookProgressPercent: calculatePercent(completedLessons, lessons.length),
-    glossaryHref: mediaStudyHref(input.media.slug, "glossary")
+    glossaryHref: mediaGlossaryHref(input.media.slug)
   };
 }
 

@@ -52,10 +52,11 @@ async function revalidateSettingsConsumers() {
   for (const item of media) {
     revalidatePath(mediaHref(item.slug));
     revalidatePath(mediaStudyHref(item.slug, "textbook"), "layout");
-    revalidatePath(mediaStudyHref(item.slug, "glossary"));
     revalidatePath(mediaStudyHref(item.slug, "review"));
     revalidatePath(mediaStudyHref(item.slug, "progress"));
   }
+
+  revalidatePath("/glossary");
 }
 
 function readRequiredString(formData: FormData, key: string) {

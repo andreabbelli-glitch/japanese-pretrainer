@@ -511,7 +511,7 @@ describe("glossary data", () => {
     );
 
     expect(markup).toContain(
-      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Fmedia%2F${developmentFixture.mediaSlug}%2Fglossary%3Fq%3Diku%26segment%3D${developmentFixture.segmentId}%26study%3Dlearning%26sort%3Dalphabetical%26returnTo%3D%252Fglossary%253Fq%253Diku%2526media%253D${developmentFixture.mediaSlug}`
+      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Fglossary%3Fq%3Diku%26segment%3D${developmentFixture.segmentId}%26study%3Dlearning%26sort%3Dalphabetical%26returnTo%3D%252Fglossary%253Fq%253Diku%2526media%253D${developmentFixture.mediaSlug}`
     );
   });
 

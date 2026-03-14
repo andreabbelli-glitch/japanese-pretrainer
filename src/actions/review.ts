@@ -181,8 +181,8 @@ function buildReviewRedirectUrl(input: {
 
 function revalidateReviewPaths(mediaSlug: string, cardId: string) {
   revalidatePath("/");
+  revalidatePath("/glossary");
   revalidatePath(mediaHref(mediaSlug));
-  revalidatePath(mediaStudyHref(mediaSlug, "glossary"));
   revalidatePath(mediaStudyHref(mediaSlug, "progress"));
   revalidatePath(mediaStudyHref(mediaSlug, "review"));
   revalidatePath(mediaReviewCardHref(mediaSlug, cardId));

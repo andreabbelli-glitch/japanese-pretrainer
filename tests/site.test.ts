@@ -9,6 +9,7 @@ import {
   mediaAssetHref,
   mediaGlossaryEntryHref,
   mediaGlossaryGrammarHref,
+  mediaGlossaryHref,
   mediaGlossaryTermHref,
   mediaHref,
   mediaReviewCardHref,
@@ -70,6 +71,9 @@ describe("site helpers", () => {
     );
     expect(mediaGlossaryEntryHref("fixture-tcg", "term", "term-iku")).toBe(
       "/media/fixture-tcg/glossary/term/term-iku"
+    );
+    expect(mediaGlossaryHref("fixture-tcg")).toBe(
+      "/glossary?media=fixture-tcg"
     );
     expect(mediaReviewCardHref("fixture-tcg", "card-iku-review")).toBe(
       "/media/fixture-tcg/review/card/card-iku-review"
@@ -137,7 +141,7 @@ describe("site helpers", () => {
   it("derives glossary back navigation from explicit return context with safe fallbacks", () => {
     expect(
       resolveGlossaryBackNavigation({
-        localGlossaryHref: mediaStudyHref("fixture-tcg", "glossary"),
+        localGlossaryHref: mediaGlossaryHref("fixture-tcg"),
         mediaHref: mediaHref("fixture-tcg"),
         mediaTitle: "Fixture TCG",
         page: "index",
@@ -153,7 +157,7 @@ describe("site helpers", () => {
 
     expect(
       resolveGlossaryBackNavigation({
-        localGlossaryHref: mediaStudyHref("fixture-tcg", "glossary"),
+        localGlossaryHref: mediaGlossaryHref("fixture-tcg"),
         mediaHref: mediaHref("fixture-tcg"),
         mediaTitle: "Fixture TCG",
         page: "detail",
@@ -169,13 +173,13 @@ describe("site helpers", () => {
 
     expect(
       resolveGlossaryBackNavigation({
-        localGlossaryHref: mediaStudyHref("fixture-tcg", "glossary"),
+        localGlossaryHref: mediaGlossaryHref("fixture-tcg"),
         mediaHref: mediaHref("fixture-tcg"),
         mediaTitle: "Fixture TCG",
         page: "detail"
       })
     ).toMatchObject({
-      backHref: "/media/fixture-tcg/glossary",
+      backHref: "/glossary?media=fixture-tcg",
       backLabel: "Torna al Glossary",
       returnContext: null
     });

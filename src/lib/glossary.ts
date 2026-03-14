@@ -29,6 +29,7 @@ import {
 } from "@/db";
 import {
   mediaGlossaryEntryHref,
+  mediaGlossaryHref,
   mediaReviewCardHref,
   mediaStudyHref,
   mediaTextbookLessonHref
@@ -994,7 +995,7 @@ function buildGlossaryMediaSummary(
     description:
       media.description ??
       `${media.title} usa il glossary come strumento di lookup rapido dentro il percorso di studio.`,
-    glossaryHref: mediaStudyHref(media.slug, "glossary"),
+    glossaryHref: mediaGlossaryHref(media.slug),
     mediaTypeLabel: formatMediaTypeLabel(media.mediaType),
     segmentKindLabel: formatSegmentKindLabel(media.segmentKind),
     textbookHref: mediaStudyHref(media.slug, "textbook")

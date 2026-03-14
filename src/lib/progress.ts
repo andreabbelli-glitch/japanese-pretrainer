@@ -6,7 +6,12 @@ import {
   listLessonsByMediaId,
   type DatabaseClient
 } from "@/db";
-import { mediaHref, mediaStudyHref, mediaTextbookLessonHref } from "@/lib/site";
+import {
+  mediaGlossaryHref,
+  mediaHref,
+  mediaStudyHref,
+  mediaTextbookLessonHref
+} from "@/lib/site";
 import { getStudySettings } from "@/lib/settings";
 import {
   calculatePercent,
@@ -33,7 +38,7 @@ export type ProgressPageData = {
   glossary: Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>;
   media: {
     description: string;
-    glossaryHref: ReturnType<typeof mediaStudyHref>;
+    glossaryHref: ReturnType<typeof mediaGlossaryHref>;
     href: ReturnType<typeof mediaHref>;
     mediaTypeLabel: string;
     progressHref: ReturnType<typeof mediaStudyHref>;
@@ -157,7 +162,7 @@ export async function getMediaProgressPageData(
       description:
         media.description ??
         `${media.title} tiene insieme textbook, glossary e review in un percorso unico.`,
-      glossaryHref: mediaStudyHref(media.slug, "glossary"),
+      glossaryHref: mediaGlossaryHref(media.slug),
       href: mediaHref(media.slug),
       mediaTypeLabel: formatMediaTypeLabel(media.mediaType),
       progressHref: mediaStudyHref(media.slug, "progress"),

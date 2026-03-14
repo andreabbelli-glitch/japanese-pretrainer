@@ -21,6 +21,7 @@ import {
 import { getReviewDailyLimit } from "@/lib/settings";
 import {
   mediaGlossaryEntryHref,
+  mediaGlossaryHref,
   mediaHref,
   mediaReviewCardHref,
   mediaStudyHref
@@ -133,7 +134,7 @@ export type ReviewQueueSnapshot = {
 
 export type ReviewPageData = {
   media: {
-    glossaryHref: ReturnType<typeof mediaStudyHref>;
+    glossaryHref: ReturnType<typeof mediaGlossaryHref>;
     href: ReturnType<typeof mediaHref>;
     reviewHref: ReturnType<typeof mediaStudyHref>;
     slug: string;
@@ -201,7 +202,7 @@ export type ReviewCardDetailData = {
   entries: ReviewCardEntrySummary[];
   pronunciations: ReviewCardPronunciation[];
   media: {
-    glossaryHref: ReturnType<typeof mediaStudyHref>;
+    glossaryHref: ReturnType<typeof mediaGlossaryHref>;
     href: ReturnType<typeof mediaHref>;
     reviewHref: ReturnType<typeof mediaStudyHref>;
     slug: string;
@@ -262,7 +263,7 @@ export async function getReviewPageData(
 
   return {
     media: {
-      glossaryHref: mediaStudyHref(media.slug, "glossary"),
+      glossaryHref: mediaGlossaryHref(media.slug),
       href: mediaHref(media.slug),
       reviewHref: mediaStudyHref(media.slug, "review"),
       slug: media.slug,
@@ -435,7 +436,7 @@ export async function getReviewCardDetailData(
     entries: selectedCard.entries,
     pronunciations,
     media: {
-      glossaryHref: mediaStudyHref(media.slug, "glossary"),
+      glossaryHref: mediaGlossaryHref(media.slug),
       href: mediaHref(media.slug),
       reviewHref: mediaStudyHref(media.slug, "review"),
       slug: media.slug,

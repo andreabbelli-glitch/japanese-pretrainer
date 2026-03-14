@@ -60,15 +60,16 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
     page.locator(".glossary-entry-hero__meaning").getByText("creatura")
   ).toBeVisible();
 
-  await page.goto("/media/duel-masters-dm25/glossary");
-  await page.getByRole("searchbox", { name: "Cerca" }).fill("bochi");
-  await page.getByRole("button", { name: "Cerca" }).click();
+  await page.goto("/glossary?media=duel-masters-dm25");
+  const glossarySearch = page.getByRole("searchbox", { name: "Cerca" });
+  await glossarySearch.fill("bochi");
+  await glossarySearch.press("Enter");
 
   await expect(page.getByRole("heading", { name: '"bochi"' })).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "墓地" }).first()
   ).toBeVisible();
-  await page.getByRole("link", { name: "Apri dettaglio" }).first().click();
+  await page.locator(".glossary-global-result__media-link").first().click();
 
   await expect(page).toHaveURL(
     /\/media\/duel-masters-dm25\/glossary\/term\/term-graveyard(?:\?|$)/
@@ -119,8 +120,8 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await expect(page).toHaveURL(/saved=1/);
   await expect(page.getByRole("status")).toContainText("Preferenze salvate");
 
-  await page.goto("/media/duel-masters-dm25/glossary");
-  await expect(page.getByRole("combobox", { name: "Ordine" })).toHaveValue(
-    "lesson_order"
+  await page.goto("/glossary?media=duel-masters-dm25");
+  await expect(page.getByRole("combobox", { name: "Media" })).toHaveValue(
+    "duel-masters-dm25"
   );
 });

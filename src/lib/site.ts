@@ -107,6 +107,13 @@ export function mediaHref(mediaSlug: string): Route {
   return `/media/${mediaSlug}` as Route;
 }
 
+export function mediaGlossaryHref(mediaSlug: string): Route {
+  return buildGlossaryHref({
+    baseHref: "/glossary" as Route,
+    media: mediaSlug
+  });
+}
+
 export function mediaStudyHref(mediaSlug: string, area: StudyAreaKey): Route {
   return `/media/${mediaSlug}/${area}` as Route;
 }

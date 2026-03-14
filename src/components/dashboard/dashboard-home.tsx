@@ -1,7 +1,12 @@
 import Link from "next/link";
 
 import { getDashboardData } from "@/lib/app-shell";
-import { mediaHref, mediaStudyHref, mediaTextbookLessonHref } from "@/lib/site";
+import {
+  mediaGlossaryHref,
+  mediaHref,
+  mediaStudyHref,
+  mediaTextbookLessonHref
+} from "@/lib/site";
 
 import { EmptyState } from "../ui/empty-state";
 import { Section } from "../ui/section";
@@ -211,7 +216,7 @@ export async function DashboardHome() {
             </div>
             <Link
               className="text-link"
-              href={mediaStudyHref(focusMedia.slug, "glossary")}
+              href={mediaGlossaryHref(focusMedia.slug)}
             >
               Apri Glossary
             </Link>
