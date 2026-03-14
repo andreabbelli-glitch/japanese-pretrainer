@@ -2094,10 +2094,18 @@ rt {
 }
 
 .glossary-result-card--active {
-  border-color: rgba(98, 114, 77, 0.72);
+  transform: translateY(-1px);
+  border-color: rgba(98, 114, 77, 0.88);
+  background:
+    linear-gradient(140deg, rgba(221, 229, 209, 0.28), transparent 44%),
+    linear-gradient(
+      180deg,
+      rgba(255, 250, 242, 0.99),
+      rgba(248, 244, 234, 0.96)
+    );
   box-shadow:
-    var(--shadow-card),
-    0 0 0 1px rgba(98, 114, 77, 0.22);
+    0 18px 34px rgba(94, 76, 51, 0.12),
+    0 0 0 1px rgba(98, 114, 77, 0.28);
 }
 
 .glossary-result-card {
@@ -2120,6 +2128,16 @@ rt {
 .glossary-result-card:hover .glossary-result-card__title,
 .glossary-result-card:focus-within .glossary-result-card__title {
   color: var(--color-accent-strong);
+}
+
+.glossary-result-card--active .glossary-result-card__title {
+  color: var(--color-accent-strong);
+}
+
+.glossary-result-card--active .chip:first-child,
+.glossary-result-card--active .meta-pill {
+  border-color: rgba(98, 114, 77, 0.24);
+  background: rgba(221, 229, 209, 0.46);
 }
 
 .glossary-result-card__top,

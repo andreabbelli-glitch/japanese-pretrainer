@@ -285,9 +285,6 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                           <Link
                             className="glossary-result-card__mobile-action"
                             href={detailHref}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                            }}
                           >
                             Apri
                           </Link>
@@ -385,9 +382,6 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                         <Link
                           className="text-link glossary-result-card__detail-link"
                           href={detailHref}
-                          onClick={(event) => {
-                            event.stopPropagation();
-                          }}
                         >
                           Apri dettaglio
                         </Link>
