@@ -96,6 +96,7 @@ pnpm db:seed
 pnpm content:import
 pnpm db:setup
 pnpm db:studio
+pnpm auth:hash-password
 ```
 
 ## Database locale
@@ -127,6 +128,38 @@ Dettagli operativi e schema: [Persistence layer](./docs/database.md)
 
 Il setup locale non richiede variabili obbligatorie a runtime, ma
 [.env.example](./.env.example) documenta i path locali supportati dal setup.
+
+Per un deploy pubblico conviene invece impostare almeno:
+
+- `DATABASE_URL` verso un database `libsql://...` remoto oppure un path locale
+  solo se l'hosting garantisce persistenza del filesystem;
+- `DATABASE_AUTH_TOKEN` oppure `LIBSQL_AUTH_TOKEN` se il provider `libsql`
+  richiede un token;
+- `AUTH_USERNAME`, `AUTH_SESSION_SECRET` e una tra `AUTH_PASSWORD_HASH` o
+  `AUTH_PASSWORD` per attivare il login minimale dell'app.
+
+Se nessuna variabile `AUTH_*` e configurata, l'app resta aperta. Se ne imposti
+solo una parte, l'avvio fallisce apposta per evitare deploy pubblici esposti per
+errore.
+
+Per generare un hash password PBKDF2 senza dipendenze extra:
+
+```sh
+./scripts/with-node.sh pnpm auth:hash-password -- "scegli-una-password"
+```
+
+Poi usa l'output come valore di `AUTH_PASSWORD_HASH`.
+
+## Deploy Free Consigliato
+
+Stack minimo consigliato per esporla su internet spendendo zero:
+
+- hosting `Vercel Hobby` per la webapp `Next.js`;
+- database remoto `Turso` sul free tier `libsql`;
+- auth nativa di questa app tramite le variabili `AUTH_*`.
+
+Questo evita di affidarsi a filesystem effimeri del provider e tiene il setup
+coerente con `@libsql/client` gia presente nel repo.
 
 ## Struttura repo
 

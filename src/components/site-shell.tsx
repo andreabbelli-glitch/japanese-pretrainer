@@ -2,7 +2,9 @@ import Link from "next/link";
 import type { Route } from "next";
 import { Suspense, type ReactNode } from "react";
 
+import { logoutAction } from "@/actions/auth";
 import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
+import { isAuthEnabled } from "@/lib/auth";
 import { primaryNav } from "@/lib/site";
 
 type SiteShellProps = {
@@ -27,6 +29,8 @@ function SiteShellPrimaryNavFallback() {
 }
 
 export function SiteShell({ children }: SiteShellProps) {
+  const showLogout = isAuthEnabled();
+
   return (
     <div className="app-shell">
       <header className="site-header">
@@ -39,6 +43,14 @@ export function SiteShell({ children }: SiteShellProps) {
           <Suspense fallback={<SiteShellPrimaryNavFallback />}>
             <SiteShellPrimaryNav />
           </Suspense>
+
+          {showLogout ? (
+            <form action={logoutAction}>
+              <button className="button button--ghost button--small" type="submit">
+                Esci
+              </button>
+            </form>
+          ) : null}
         </div>
       </header>
 

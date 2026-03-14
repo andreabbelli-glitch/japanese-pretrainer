@@ -17,10 +17,15 @@ export function createDatabaseClient(
   options: DatabaseClientOptions = {}
 ): DatabaseClient {
   const location = resolveDatabaseLocation(options.databaseUrl);
+  const authToken =
+    process.env.DATABASE_AUTH_TOKEN?.trim() ||
+    process.env.LIBSQL_AUTH_TOKEN?.trim() ||
+    undefined;
 
   ensureDatabaseDirectory(location.databasePath);
 
   const client = createClient({
+    authToken,
     url: location.connectionUrl
   });
 

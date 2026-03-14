@@ -8,6 +8,7 @@ export interface DatabaseLocation {
   configuredPath: string;
   databasePath?: string;
   connectionUrl: string;
+  isRemote: boolean;
 }
 
 export function resolveDatabaseLocation(
@@ -22,7 +23,8 @@ export function resolveDatabaseLocation(
   if (normalizedUrl === ":memory:" || normalizedUrl === "file::memory:") {
     return {
       configuredPath: normalizedUrl,
-      connectionUrl: "file::memory:"
+      connectionUrl: "file::memory:",
+      isRemote: false
     };
   }
 
@@ -32,7 +34,16 @@ export function resolveDatabaseLocation(
     return {
       configuredPath: normalizedUrl,
       databasePath,
-      connectionUrl: normalizedUrl
+      connectionUrl: normalizedUrl,
+      isRemote: false
+    };
+  }
+
+  if (/^[a-zA-Z][a-zA-Z\d+.-]*:\/\//.test(normalizedUrl)) {
+    return {
+      configuredPath: normalizedUrl,
+      connectionUrl: normalizedUrl,
+      isRemote: true
     };
   }
 
@@ -44,7 +55,8 @@ export function resolveDatabaseLocation(
   return {
     configuredPath: normalizedUrl,
     databasePath,
-    connectionUrl: pathToFileURL(databasePath).toString()
+    connectionUrl: pathToFileURL(databasePath).toString(),
+    isRemote: false
   };
 }
 

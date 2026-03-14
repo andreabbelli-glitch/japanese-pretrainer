@@ -29,6 +29,7 @@
     "image:apply": "node --experimental-strip-types --experimental-default-type=module ./scripts/apply-image-blocks.ts",
     "db:setup": "pnpm db:migrate && pnpm db:seed",
     "db:studio": "drizzle-kit studio --config=drizzle.config.ts",
+    "auth:hash-password": "node --experimental-strip-types --experimental-default-type=module ./scripts/hash-auth-password.ts",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "release:check": "./scripts/release-check.sh"
   },
