@@ -1,5 +1,25 @@
 import { expect, test } from "@playwright/test";
 
+test("shows autocomplete suggestions and navigates when a suggestion is selected", async ({
+  page
+}) => {
+  await page.goto("/glossary");
+
+  const searchbox = page.getByRole("searchbox", { name: "Cerca" });
+
+  await searchbox.fill("kosu");
+
+  const suggestion = page.getByRole("option", { name: /コスト/i }).first();
+
+  await expect(suggestion).toBeVisible();
+  await suggestion.click();
+
+  await expect(page).toHaveURL(
+    /\/glossary\?q=%E3%82%B3%E3%82%B9%E3%83%88&type=all&media=all&study=all&cards=all$/
+  );
+  await expect(searchbox).toHaveValue("コスト");
+});
+
 test("keeps the glossary portal state while moving from global search to local detail and back", async ({
   page
 }) => {

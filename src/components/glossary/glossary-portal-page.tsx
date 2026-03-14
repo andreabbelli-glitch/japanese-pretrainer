@@ -5,6 +5,7 @@ import type { GlobalGlossaryPageData } from "@/lib/glossary";
 import { buildGlossaryHref } from "@/lib/site";
 
 import { GlobalGlossaryResultCard } from "./global-glossary-result-card";
+import { GlossaryPortalSearchForm } from "./glossary-portal-search-form";
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
 import { Section } from "../ui/section";
@@ -91,91 +92,12 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
             </div>
           </div>
 
-          <form className="glossary-search-form glossary-search-form--portal" method="get">
-            <div className="glossary-portal-search__query-row">
-              <label className="glossary-search-form__field glossary-portal-search__query-field">
-                <span className="glossary-search-form__label">Cerca</span>
-                <input
-                  className="glossary-search-form__input"
-                  defaultValue={data.filters.query}
-                  name="q"
-                  placeholder="食べる, たべる, taberu, mangiare"
-                  type="search"
-                />
-              </label>
-
-              <div className="glossary-search-form__actions glossary-search-form__actions--portal">
-                <button className="button button--primary" type="submit">
-                  Cerca
-                </button>
-                {data.hasActiveFilters ? (
-                  <Link className="button button--ghost" href={"/glossary" as Route}>
-                    Azzera i filtri
-                  </Link>
-                ) : null}
-              </div>
-            </div>
-
-            <div className="glossary-search-form__filters">
-              <label className="glossary-search-form__field">
-                <span className="glossary-search-form__label">Tipo</span>
-                <select
-                  className="glossary-search-form__select"
-                  defaultValue={data.filters.entryType}
-                  name="type"
-                >
-                  <option value="all">Tutto</option>
-                  <option value="term">Termine</option>
-                  <option value="grammar">Grammatica</option>
-                </select>
-              </label>
-
-              <label className="glossary-search-form__field">
-                <span className="glossary-search-form__label">Media</span>
-                <select
-                  className="glossary-search-form__select"
-                  defaultValue={data.filters.media}
-                  name="media"
-                >
-                  <option value="all">Tutti i media</option>
-                  {data.mediaOptions.map((media) => (
-                    <option key={media.id} value={media.slug}>
-                      {media.title}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="glossary-search-form__field">
-                <span className="glossary-search-form__label">Stato</span>
-                <select
-                  className="glossary-search-form__select"
-                  defaultValue={data.filters.study}
-                  name="study"
-                >
-                  <option value="all">Tutti</option>
-                  <option value="known">Già note</option>
-                  <option value="review">In Review</option>
-                  <option value="learning">In studio</option>
-                  <option value="new">Nuove</option>
-                  <option value="available">Disponibili</option>
-                </select>
-              </label>
-
-              <label className="glossary-search-form__field">
-                <span className="glossary-search-form__label">Flashcard</span>
-                <select
-                  className="glossary-search-form__select"
-                  defaultValue={data.filters.cards}
-                  name="cards"
-                >
-                  <option value="all">Tutte</option>
-                  <option value="with_cards">Ha flashcard</option>
-                  <option value="without_cards">Senza flashcard</option>
-                </select>
-              </label>
-            </div>
-          </form>
+          <GlossaryPortalSearchForm
+            filters={data.filters}
+            hasActiveFilters={data.hasActiveFilters}
+            mediaOptions={data.mediaOptions}
+            suggestions={data.autocompleteSuggestions}
+          />
         </SurfaceCard>
       </section>
 

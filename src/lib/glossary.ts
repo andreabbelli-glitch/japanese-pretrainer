@@ -232,6 +232,7 @@ export type GlossaryPageData = {
 };
 
 export type GlobalGlossaryPageData = {
+  autocompleteSuggestions: GlobalGlossaryAutocompleteSuggestion[];
   filters: GlossaryQueryState;
   hasActiveFilters: boolean;
   mediaOptions: Array<{
@@ -251,6 +252,25 @@ export type GlobalGlossaryPageData = {
     mediaCount: number;
     withCardsCount: number;
   };
+};
+
+export type GlobalGlossaryAutocompleteSuggestion = {
+  aliases: string[];
+  hasCards: boolean;
+  hasCardlessVariant: boolean;
+  kind: GlossaryKind;
+  label: string;
+  localHits: Array<{
+    hasCards: boolean;
+    mediaSlug: string;
+    studyKey: StudyState["key"];
+  }>;
+  meaning: string;
+  mediaCount: number;
+  reading?: string;
+  resultKey: string;
+  romaji?: string;
+  title?: string;
 };
 
 type GlossaryResolvedEntry = RankedGlossaryEntry & {
@@ -501,6 +521,7 @@ export async function getGlobalGlossaryPageData(
   const total = [...groups.values()].length;
 
   return {
+    autocompleteSuggestions: buildGlobalGlossaryAutocompleteSuggestions(groups),
     filters,
     hasActiveFilters: hasActiveGlossaryFilters(filters, defaultSort),
     mediaOptions: mediaRows.map((row) => ({
@@ -910,6 +931,57 @@ function countResultsWithCards(groups: Map<string, GlossaryResolvedEntry[]>) {
   }
 
   return total;
+}
+
+function buildGlobalGlossaryAutocompleteSuggestions(
+  groups: Map<string, GlossaryResolvedEntry[]>
+) {
+  const suggestions: GlobalGlossaryAutocompleteSuggestion[] = [];
+
+  for (const [resultKey, entries] of groups.entries()) {
+    const representative = [...entries].sort((left, right) => {
+      if (left.hasCards !== right.hasCards) {
+        return left.hasCards ? -1 : 1;
+      }
+
+      if (left.mediaTitle !== right.mediaTitle) {
+        return left.mediaTitle.localeCompare(right.mediaTitle);
+      }
+
+      return left.label.localeCompare(right.label, "ja");
+    })[0];
+
+    if (!representative) {
+      continue;
+    }
+
+    suggestions.push({
+      aliases: [
+        ...new Set(
+          entries.flatMap((entry) => entry.aliases.map((alias) => alias.text))
+        )
+      ],
+      hasCards: entries.some((entry) => entry.hasCards),
+      hasCardlessVariant: entries.some((entry) => !entry.hasCards),
+      kind: representative.kind,
+      label: representative.label,
+      localHits: entries.map((entry) => ({
+        hasCards: entry.hasCards,
+        mediaSlug: entry.mediaSlug,
+        studyKey: entry.studyState.key
+      })),
+      meaning: representative.meaning,
+      mediaCount: new Set(entries.map((entry) => entry.mediaId)).size,
+      reading: representative.reading,
+      resultKey,
+      romaji: representative.romaji,
+      title: representative.title
+    });
+  }
+
+  suggestions.sort((left, right) => left.label.localeCompare(right.label, "ja"));
+
+  return suggestions;
 }
 
 function buildGlossaryMediaSummary(
