@@ -1,0 +1,138 @@
+name: Backup Turso Database
+
+on:
+  schedule:
+    - cron: "15 2 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: backup-turso-database
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      TURSO_API_TOKEN: ${{ secrets.TURSO_PLATFORM_API_TOKEN }}
+      TURSO_DATABASE_NAME: japanese-custom-study
+    steps:
+      - name: Install Turso CLI
+        run: |
+          curl -fsSL https://get.tur.so/install.sh | bash
+          echo "$HOME/.turso" >> "$GITHUB_PATH"
+
+      - name: Prepare backup paths
+        shell: bash
+        run: |
+          timestamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)"
+          backup_dir="$RUNNER_TEMP/turso-backup-$timestamp"
+          mkdir -p "$backup_dir"
+
+          {
+            echo "BACKUP_TIMESTAMP=$timestamp"
+            echo "BACKUP_DIR=$backup_dir"
+            echo "EXPORT_PATH=$backup_dir/$TURSO_DATABASE_NAME.snapshot.db"
+            echo "BACKUP_PATH=$backup_dir/$TURSO_DATABASE_NAME.backup.db"
+            echo "METADATA_PATH=$backup_dir/metadata.json"
+            echo "INTEGRITY_PATH=$backup_dir/integrity-check.txt"
+            echo "CHECKSUM_PATH=$backup_dir/SHA256SUMS"
+            echo "RESTORE_PATH=$backup_dir/restore.txt"
+          } >> "$GITHUB_ENV"
+
+      - name: Export Turso database snapshot
+        run: turso db export "$TURSO_DATABASE_NAME" --output-file "$EXPORT_PATH" --overwrite
+
+      - name: Normalize SQLite backup and validate integrity
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import sqlite3
+
+          export_path = os.environ["EXPORT_PATH"]
+          backup_path = os.environ["BACKUP_PATH"]
+          metadata_path = os.environ["METADATA_PATH"]
+          integrity_path = os.environ["INTEGRITY_PATH"]
+          checksum_path = os.environ["CHECKSUM_PATH"]
+          restore_path = os.environ["RESTORE_PATH"]
+          database_name = os.environ["TURSO_DATABASE_NAME"]
+          backup_timestamp = os.environ["BACKUP_TIMESTAMP"]
+          repo = os.environ["GITHUB_REPOSITORY"]
+          run_id = os.environ["GITHUB_RUN_ID"]
+          run_attempt = os.environ["GITHUB_RUN_ATTEMPT"]
+          actor = os.environ["GITHUB_ACTOR"]
+          commit_sha = os.environ["GITHUB_SHA"]
+
+          export_conn = sqlite3.connect(export_path)
+          export_conn.execute("PRAGMA wal_checkpoint(TRUNCATE);")
+          escaped_backup_path = backup_path.replace("'", "''")
+          export_conn.execute(f"VACUUM INTO '{escaped_backup_path}'")
+          export_conn.close()
+
+          backup_conn = sqlite3.connect(backup_path)
+          integrity_result = backup_conn.execute("PRAGMA integrity_check;").fetchone()[0]
+          media_count = backup_conn.execute("select count(*) from media;").fetchone()[0]
+          backup_conn.close()
+
+          if integrity_result.lower() != "ok":
+              raise SystemExit(f"Integrity check failed: {integrity_result}")
+
+          sha256 = hashlib.sha256()
+          with open(backup_path, "rb") as backup_file:
+              for chunk in iter(lambda: backup_file.read(1024 * 1024), b""):
+                  sha256.update(chunk)
+
+          checksum = sha256.hexdigest()
+          backup_size = os.path.getsize(backup_path)
+
+          with open(integrity_path, "w", encoding="utf-8") as integrity_file:
+              integrity_file.write(integrity_result + "\n")
+
+          with open(checksum_path, "w", encoding="utf-8") as checksum_file:
+              checksum_file.write(f"{checksum}  {os.path.basename(backup_path)}\n")
+
+          metadata = {
+              "database_name": database_name,
+              "backup_timestamp_utc": backup_timestamp,
+              "repository": repo,
+              "commit_sha": commit_sha,
+              "github_actor": actor,
+              "github_run_id": run_id,
+              "github_run_attempt": run_attempt,
+              "github_run_url": f"https://github.com/{repo}/actions/runs/{run_id}",
+              "backup_file": os.path.basename(backup_path),
+              "backup_size_bytes": backup_size,
+              "sha256": checksum,
+              "integrity_check": integrity_result,
+              "media_count": media_count,
+          }
+
+          with open(metadata_path, "w", encoding="utf-8") as metadata_file:
+              json.dump(metadata, metadata_file, indent=2)
+              metadata_file.write("\n")
+
+          with open(restore_path, "w", encoding="utf-8") as restore_file:
+              restore_file.write(
+                  "Restore to a new Turso database:\n"
+                  f"  turso db create <new-database-name> --from-file ./{os.path.basename(backup_path)} -w\n\n"
+                  "Inspect locally:\n"
+                  f"  sqlite3 ./{os.path.basename(backup_path)} 'select count(*) from media;'\n"
+              )
+          PY
+
+      - name: Remove raw export artifacts
+        shell: bash
+        run: rm -f "$EXPORT_PATH" "$EXPORT_PATH-wal" "$EXPORT_PATH-shm"
+
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: turso-backup-${{ env.BACKUP_TIMESTAMP }}
+          path: ${{ env.BACKUP_DIR }}
+          retention-days: 90
+          compression-level: 9

@@ -161,6 +161,44 @@ Stack minimo consigliato per esporla su internet spendendo zero:
 Questo evita di affidarsi a filesystem effimeri del provider e tiene il setup
 coerente con `@libsql/client` gia presente nel repo.
 
+## Backup schedulato del database
+
+Il repository include anche un backup automatico del database remoto Turso via
+GitHub Actions: [`.github/workflows/backup-turso-daily.yml`](./.github/workflows/backup-turso-daily.yml).
+
+Comportamento attuale:
+
+- backup giornaliero alle `02:15 UTC`;
+- avvio manuale possibile da `Actions > Backup Turso Database > Run workflow`;
+- export del DB remoto, conversione in un file SQLite compatto
+  `japanese-custom-study.backup.db`;
+- verifica con `PRAGMA integrity_check`;
+- upload come artifact GitHub con retention di `90` giorni.
+
+Ogni artifact contiene:
+
+- `japanese-custom-study.backup.db`
+- `metadata.json`
+- `integrity-check.txt`
+- `SHA256SUMS`
+- `restore.txt`
+
+Per ripristinare un backup su un nuovo database Turso:
+
+```sh
+turso db create <new-database-name> --from-file ./japanese-custom-study.backup.db -w
+```
+
+Per consultarlo localmente:
+
+```sh
+sqlite3 ./japanese-custom-study.backup.db 'select count(*) from media;'
+```
+
+Il workflow usa il secret GitHub `TURSO_PLATFORM_API_TOKEN` per autenticare la
+CLI Turso in modo non interattivo. I secret gia usati dal sync applicativo
+restano separati.
+
 ## Struttura repo
 
 ```text
