@@ -1,6 +1,5 @@
 import { createInterface } from "node:readline/promises";
 import {
-  appendFile,
   copyFile,
   mkdir,
   readdir,
@@ -65,17 +64,6 @@ type ForvoKnownMissingEntry = {
 type ForvoKnownMissingRegistry = {
   version: 1;
   entries: ForvoKnownMissingEntry[];
-};
-
-type ForvoManualStepState = {
-  entryId: string;
-  entryKind: "term" | "grammar";
-  label: string;
-  mediaSlug: string;
-  reading?: string;
-  startedAt: string;
-  status: "waiting" | "captured" | "skipped_known_missing";
-  url: string;
 };
 
 type SkipResolutionMode = "active" | "pending";
@@ -1176,7 +1164,7 @@ async function waitForManualDownloadOrSkip(input: {
             status: "downloaded"
           });
         }
-      } catch (error) {
+      } catch {
         finish(null);
       }
     }, 1000);

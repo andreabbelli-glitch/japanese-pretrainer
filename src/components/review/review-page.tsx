@@ -137,10 +137,11 @@ export function ReviewPage({ data }: ReviewPageProps) {
                     </span>
                   ) : null}
                 </div>
-                {data.selectedCardContext.position ? (
+                {data.selectedCardContext.remainingCount > 0 ? (
                   <p className="review-stage__position">
-                    {data.selectedCardContext.position} /{" "}
-                    {data.queue.queueCount}
+                    {formatRemainingCardsLabel(
+                      data.selectedCardContext.remainingCount
+                    )}
                   </p>
                 ) : null}
               </div>
@@ -425,6 +426,10 @@ export function ReviewPage({ data }: ReviewPageProps) {
       </section>
     </div>
   );
+}
+
+function formatRemainingCardsLabel(count: number) {
+  return count === 1 ? "1 flashcard rimanente" : `${count} flashcard rimanenti`;
 }
 
 function ReviewActionFields({

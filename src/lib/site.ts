@@ -6,11 +6,6 @@ export type NavItem = {
   description: string;
 };
 
-export type PlaceholderSection = {
-  title: string;
-  body: string;
-};
-
 export type StudyAreaKey = "textbook" | "glossary" | "review" | "progress";
 export type GlossaryEntryKind = "term" | "grammar";
 export type GlossaryCardsFilter = "all" | "with_cards" | "without_cards";

@@ -1,5 +1,12 @@
 # Handoff Per LLM Esterno
 
+> [!IMPORTANT]
+> Documento legacy mantenuto per contesto storico. Umani, agent e LLM non
+> devono usarlo per istruzioni operative correnti. Per il workflow operativo con
+> LLM esterni usa come fonte di verita
+> `docs/llm-kit/general/02-llm-content-handoff.md`. Se trovi differenze, vale
+> il file nel kit.
+
 ## 1. Scopo
 
 Questo documento definisce come un LLM esterno deve produrre contenuti
@@ -398,7 +405,7 @@ La collaborazione migliore e:
 
 Per la procedura concreta del repository usare:
 
-- `docs/content-workflow-playbook.md`
+- `docs/llm-kit/general/06-content-workflow-playbook.md`
 
 Il playbook fissa il ciclo reale da seguire:
 

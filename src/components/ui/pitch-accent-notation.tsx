@@ -109,7 +109,7 @@ export function PitchAccentNotation({
     return () => {
       resizeObserver.disconnect();
     };
-  }, [fallbackUnitsKey, moraKey]);
+  }, [fallbackUnits, fallbackUnitsKey, moraKey, pitchAccent.morae]);
 
   return (
     <div

@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeferredValue, useEffect, useId, useRef, useState } from "react";
+import { useDeferredValue, useId, useRef, useState } from "react";
 
 import type {
   GlobalGlossaryAutocompleteSuggestion,
@@ -31,21 +31,6 @@ export function GlossaryPortalSearchForm({
   const [cards, setCards] = useState(filters.cards);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const deferredQuery = useDeferredValue(query);
-
-  useEffect(() => {
-    setQuery(filters.query);
-    setEntryType(filters.entryType);
-    setMedia(filters.media);
-    setStudy(filters.study);
-    setCards(filters.cards);
-    setShowSuggestions(false);
-  }, [
-    filters.cards,
-    filters.entryType,
-    filters.media,
-    filters.query,
-    filters.study
-  ]);
 
   const visibleSuggestions = getGlossaryAutocompleteSuggestions({
     filters: {
@@ -106,7 +91,6 @@ export function GlossaryPortalSearchForm({
               ref={inputRef}
               aria-autocomplete="list"
               aria-controls={shouldShowSuggestions ? listboxId : undefined}
-              aria-expanded={shouldShowSuggestions}
               autoCapitalize="none"
               autoComplete="off"
               autoCorrect="off"
@@ -155,6 +139,7 @@ export function GlossaryPortalSearchForm({
                     onPointerDown={(event) => {
                       event.preventDefault();
                     }}
+                    aria-selected={false}
                     role="option"
                     type="button"
                   >

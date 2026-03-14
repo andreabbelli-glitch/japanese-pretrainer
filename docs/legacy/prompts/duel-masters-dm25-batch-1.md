@@ -1,5 +1,12 @@
 # Prompt - Duel Masters Batch 1 (Seed)
 
+> [!IMPORTANT]
+> Documento legacy mantenuto come mirror storico. Umani, agent e LLM non devono
+> usarlo come prompt operativo corrente. Per il prompt operativo da passare a un
+> LLM esterno usa
+> `docs/llm-kit/media/duel-masters-dm25/02-batch-1-prompt.md`. Se trovi
+> differenze, vale il file nel kit.
+
 Usa questo prompt con l'LLM esterno specializzato.
 
 ```text
@@ -112,12 +119,12 @@ Regola importante:
   modo esplicito e coerente.
 
 Documenti da seguire:
-- docs/content-format.md
-- docs/llm-content-handoff.md
-- docs/content-briefs/duel-masters-dm25.md
-- docs/templates/media.template.md
-- docs/templates/textbook-lesson.template.md
-- docs/templates/cards-file.template.md
+- docs/llm-kit/general/01-content-format.md
+- docs/llm-kit/general/02-llm-content-handoff.md
+- docs/llm-kit/general/03-template-media.md
+- docs/llm-kit/general/04-template-textbook-lesson.md
+- docs/llm-kit/general/05-template-cards-file.md
+- docs/llm-kit/media/duel-masters-dm25/01-brief.md
 
 Checklist finale da emettere dopo i file, separata dai file stessi:
 CHECKLIST:

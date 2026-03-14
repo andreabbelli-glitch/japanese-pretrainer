@@ -18,6 +18,14 @@ type GlossaryPortalPageProps = {
 
 export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
   const hasCorpus = data.stats.entryCount > 0;
+  const searchFormKey = [
+    data.filters.query,
+    data.filters.entryType,
+    data.filters.media,
+    data.filters.study,
+    data.filters.cards,
+    data.filters.sort
+  ].join("::");
   const currentSearchHref = buildGlossaryHref({
     baseHref: "/glossary" as Route,
     cards: data.filters.cards,
@@ -93,6 +101,7 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
           </div>
 
           <GlossaryPortalSearchForm
+            key={searchFormKey}
             filters={data.filters}
             hasActiveFilters={data.hasActiveFilters}
             mediaOptions={data.mediaOptions}

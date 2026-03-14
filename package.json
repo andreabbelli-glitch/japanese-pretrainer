@@ -12,7 +12,8 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "test": "node ./node_modules/vitest/vitest.mjs run",
-    "test:e2e": "pnpm build && node ./node_modules/@playwright/test/cli.js test",
+    "test:e2e:runner": "node ./node_modules/@playwright/test/cli.js test",
+    "test:e2e": "pnpm build && pnpm test:e2e:runner",
     "test:watch": "node ./node_modules/vitest/vitest.mjs",
     "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
     "db:migrate": "node --experimental-strip-types --experimental-default-type=module ./scripts/db-migrate.ts",
@@ -28,7 +29,8 @@
     "image:apply": "node --experimental-strip-types --experimental-default-type=module ./scripts/apply-image-blocks.ts",
     "db:setup": "pnpm db:migrate && pnpm db:seed",
     "db:studio": "drizzle-kit studio --config=drizzle.config.ts",
-    "check": "pnpm lint && pnpm typecheck && pnpm test"
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "release:check": "./scripts/release-check.sh"
   },
   "dependencies": {
     "@fontsource-variable/instrument-sans": "^5.2.8",

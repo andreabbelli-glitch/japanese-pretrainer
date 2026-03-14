@@ -11,7 +11,7 @@ Implementare il parser e il validatore dei file Markdown conformi alla spec.
 ## Input
 
 - `docs/content-format.md`
-- `docs/llm-content-handoff.md`
+- `docs/llm-kit/general/02-llm-content-handoff.md`
 
 ## Scope
 

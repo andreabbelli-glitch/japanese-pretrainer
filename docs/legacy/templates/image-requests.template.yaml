@@ -1,0 +1,4 @@
+# Legacy template pointer.
+# Source of truth: docs/llm-kit/general/07-template-image-requests.yaml
+# Humans, agents and LLMs must not use this file for current operational work.
+# Tenuto solo per compatibilita storica dei riferimenti legacy.

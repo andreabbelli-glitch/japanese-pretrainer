@@ -1,5 +1,12 @@
 # Playbook Workflow Contenuti LLM
 
+> [!IMPORTANT]
+> Documento legacy mantenuto per riferimento storico. Umani, agent e LLM non
+> devono usarlo per istruzioni operative correnti. Per il workflow operativo con
+> LLM esterni usa come fonte di verita
+> `docs/llm-kit/general/06-content-workflow-playbook.md`. Se trovi differenze,
+> vale il playbook nel kit.
+
 ## Scopo
 
 Questo playbook rende operativo il workflow contenuti per il bundle reale del

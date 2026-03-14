@@ -67,7 +67,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
         }
       />
 
-      <section className="hero-grid hero-grid--detail">
+      <section className="hero-grid hero-grid--detail glossary-page__hero-grid">
         <SurfaceCard className="glossary-hero" variant="hero">
           <p className="eyebrow">Ricerca</p>
           <h2 className="glossary-hero__title">
@@ -164,7 +164,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
           </form>
         </SurfaceCard>
 
-        <SurfaceCard className="glossary-side">
+        <SurfaceCard className="glossary-side glossary-side--summary">
           <p className="eyebrow">Panoramica</p>
           <div className="stats-grid stats-grid--stacked">
             <StatBlock
@@ -258,6 +258,15 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                       key={`${entry.kind}:${entry.id}`}
                       className={`glossary-result-card${isPreviewActive ? " glossary-result-card--active" : ""}`}
                     >
+                      <Link
+                        aria-label={`Anteprima: ${entry.label}`}
+                        className="glossary-result-card__overlay-link"
+                        href={previewHref}
+                      >
+                        <span className="sr-only">
+                          Apri anteprima di {entry.label}
+                        </span>
+                      </Link>
                       <div className="glossary-result-card__top">
                         <div className="glossary-result-card__chips">
                           <span className="chip">
@@ -274,14 +283,11 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                         </div>
                         <div className="glossary-result-card__actions">
                           <Link
-                            className="glossary-result-card__desktop-action"
-                            href={previewHref}
-                          >
-                            Anteprima
-                          </Link>
-                          <Link
                             className="glossary-result-card__mobile-action"
                             href={detailHref}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                            }}
                           >
                             Apri
                           </Link>
@@ -379,6 +385,9 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
                         <Link
                           className="text-link glossary-result-card__detail-link"
                           href={detailHref}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                          }}
                         >
                           Apri dettaglio
                         </Link>
@@ -393,12 +402,9 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
               <aside className="glossary-workspace__preview">
                 <div className="glossary-preview-panel">
                   <div className="glossary-preview-panel__header">
-                    <div>
-                      <p className="eyebrow">Anteprima della voce</p>
-                      <h3 className="glossary-preview-panel__title">
-                        {data.preview.entry.label}
-                      </h3>
-                    </div>
+                    <p className="eyebrow glossary-preview-panel__eyebrow">
+                      Anteprima della voce
+                    </p>
                     <Link
                       className="button button--ghost"
                       href={appendReturnToParam(

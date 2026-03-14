@@ -15,16 +15,16 @@ Per ogni media, l'app deve offrire:
 
 ## Stato
 
-Il repository include ora la foundation applicativa e una prima shell reale:
+Il repository e allineato a una v1 locale operativa:
 
 - app `Next.js` con App Router e TypeScript;
 - shell desktop/mobile coerente con la direzione UX/UI approvata;
 - dashboard `/`, media library `/media` e media detail `/media/[mediaSlug]`;
 - entry point dedicati per `/textbook`, `/glossary`, `/review` e `/progress`
-  sotto ogni media, senza anticipare i task completi successivi;
+  sotto ogni media, coerenti con i flussi reali di studio;
 - font self-hosted, cosi `build` non dipende da fetch esterni;
-- tooling base per lint, format, typecheck e test unitari;
-- struttura cartelle pronta per persistence, importer e UI task successivi.
+- tooling locale per lint, format, typecheck, test unit/integration ed E2E;
+- struttura cartelle coerente con importer, persistence e UI gia in uso.
 
 ## Bootstrap locale
 
@@ -59,6 +59,23 @@ Lo script `./scripts/with-node.sh` prova a usare `nvm` da `$NVM_DIR`,
 corretta di Node e gia attiva, esegue direttamente il comando senza dipendere
 da `nvm`.
 
+## Gate pre-release v1 locale
+
+Prima di considerare la v1 locale "verde", esegui il gate canonico:
+
+```sh
+./scripts/with-node.sh pnpm release:check
+```
+
+Il comando `release:check` copre l'intero set richiesto per la v1 locale:
+
+- lint
+- typecheck
+- test unit/integration
+- build di produzione
+- validazione contenuti sul bundle reale `duel-masters-dm25`
+- E2E
+
 ## Script disponibili
 
 ```sh
@@ -69,7 +86,10 @@ pnpm format
 pnpm format:check
 pnpm typecheck
 pnpm test
+pnpm test:e2e
 pnpm check
+pnpm content:validate
+pnpm release:check
 pnpm db:generate
 pnpm db:migrate
 pnpm db:seed
@@ -95,20 +115,19 @@ Comandi principali:
 Di default il DB viene creato in `./data/japanese-custom-study.db`, ma puoi
 sovrascrivere il path con `DATABASE_URL`.
 
-`pnpm db:seed` importa il contenuto reale presente in `./content` dopo un
-cleanup dei vecchi dati demo legacy. L'importer esegue parser + validazione
-prima di sincronizzare il DB; puoi passare una content root diversa con
+`pnpm db:seed` importa il contenuto reale presente in `./content` riallineando
+eventuali dati seed precedenti. L'importer esegue parser + validazione prima di
+sincronizzare il DB; puoi passare una content root diversa con
 `pnpm content:import -- --content-root /percorso/content`.
 
 Dettagli operativi e schema: [Persistence layer](./docs/database.md)
 
 ## Variabili ambiente
 
-La foundation non richiede ancora variabili obbligatorie a runtime, ma
-[.env.example](./.env.example) documenta i path locali previsti per i task
-successivi.
+La v1 locale non richiede variabili obbligatorie a runtime, ma
+[.env.example](./.env.example) documenta i path locali supportati dal setup.
 
-## Struttura iniziale
+## Struttura repo
 
 ```text
 src/
@@ -132,24 +151,26 @@ docs/
 
 ## Documenti
 
+Per workflow con LLM esterni, il punto di partenza operativo e
+[`docs/llm-kit/README.md`](./docs/llm-kit/README.md). I file in
+[`docs/legacy/`](./docs/legacy/README.md) sono solo archivio storico e non
+vanno usati per istruzioni operative correnti.
+
 - [Blueprint operativo](./docs/blueprint-operativo.md)
 - [Persistence layer](./docs/database.md)
 - [Schema dati iniziale](./docs/schema-dati-iniziale.md)
 - [Specifica contenuti Markdown](./docs/content-format.md)
 - [Content parser e validator](./docs/content-parser.md)
 - [Importer sync strategy](./docs/importer-sync-strategy.md)
-- [Handoff per LLM esterno](./docs/llm-content-handoff.md)
-- [Workflow immagini](./docs/content-workflow-playbook.md#31-asset-immagini)
-- [Brief contenuti Duel Masters](./docs/content-briefs/duel-masters-dm25.md)
-- [Template contenuti per LLM esterno](./docs/templates/README.md)
-- [Prompt batch 1 Duel Masters (seed)](./docs/prompts/duel-masters-dm25-batch-1.md)
+- [Kit operativo LLM esterni (source of truth)](./docs/llm-kit/README.md)
+- [Archivio legacy LLM (non operativo)](./docs/legacy/README.md)
 - [Tooling locale](./docs/dev-tooling.md)
 - [Direzione UX/UI](./docs/design/ux-ui-direction.md)
 - [Design tokens](./docs/design/design-tokens.css)
 - [Wireframes](./docs/design/wireframes.md)
 - [Task index per agenti implementatori](./docs/tasks/README.md)
 
-## Convenzioni UI introdotte
+## Convenzioni UI
 
 - Lo shell usa top bar editoriale su desktop e bottom navigation su mobile.
 - I pattern base riusabili vivono in `src/components/ui` e `src/components/layout`.

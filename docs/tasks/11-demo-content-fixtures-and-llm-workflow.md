@@ -13,7 +13,7 @@ l'LLM esterno.
 
 - `04`
 - `05`
-- `docs/llm-content-handoff.md`
+- `docs/llm-kit/general/02-llm-content-handoff.md`
 
 ## Scope
 

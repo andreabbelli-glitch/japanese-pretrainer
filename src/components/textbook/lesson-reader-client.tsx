@@ -1634,14 +1634,12 @@ function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
           {formatCrossMediaHintLabel(entry.crossMediaHint.otherMediaCount)}
         </p>
       ) : null}
-      {!entry.pronunciation ? (
-        <Link
-          className="text-link"
-          href={"glossaryHref" in entry ? entry.glossaryHref : entry.reviewHref}
-        >
-          {"glossaryHref" in entry ? "Apri voce" : "Apri card"}
-        </Link>
-      ) : null}
+      <Link
+        className="text-link"
+        href={"glossaryHref" in entry ? entry.glossaryHref : entry.reviewHref}
+      >
+        {"glossaryHref" in entry ? "Apri voce" : "Apri card"}
+      </Link>
     </div>
   );
 }

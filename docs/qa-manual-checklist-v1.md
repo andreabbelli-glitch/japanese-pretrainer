@@ -7,13 +7,18 @@
 - Eseguire `./scripts/with-node.sh pnpm content:import -- --content-root ./content --media-slug duel-masters-dm25`
 - Avviare l'app con `./scripts/with-node.sh pnpm dev`
 
+## Gate finale
+
+- Prima di dichiarare la v1 locale "verde", eseguire `./scripts/with-node.sh pnpm release:check`
+- Il comando canonico copre lint, typecheck, test unit/integration, build, validazione contenuti sul bundle reale ed E2E
+
 ## Flussi principali
 
 - Dashboard: compare `Duel Masters`, con CTA per riprendere studio e review.
 - Libreria media: il media Duel Masters e visibile con metriche sintetiche coerenti.
 - Media detail: le entry point `Textbook`, `Glossary`, `Review`, `Progress` sono tutte operative.
-- Root review `/review`: reindirizza direttamente alla review del media di focus, senza placeholder.
-- Textbook index: mostra le 4 lesson con stato coerente.
+- Root review `/review`: reindirizza direttamente alla review del media di focus.
+- Textbook index: mostra le 11 lesson con stato coerente.
 - Reader lesson: il toggle furigana aggiorna davvero il rendering.
 - Reader lesson desktop: clic su un termine apre tooltip con `Apri entry`.
 - Reader lesson mobile: tap su un termine apre sheet; `Lezioni` apre la rail mobile.
@@ -26,7 +31,7 @@
 ## Stati e resilienza
 
 - Loading states: glossary, review, progress, settings e textbook mostrano messaggi contestuali, non generici.
-- Empty states: nessuna pagina primaria espone placeholder incoerenti o “stati finti”.
+- Empty states: nessuna pagina primaria comunica schermate finte o deviazioni dal flusso reale.
 - Content validate fallito: gli errori indicano file, categoria e messaggio leggibile.
 - Content import su DB non migrato: il comando suggerisce esplicitamente `pnpm db:migrate`.
 

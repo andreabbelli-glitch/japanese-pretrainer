@@ -8,14 +8,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await expect(
     page.getByRole("heading", { level: 1, name: "Duel Masters" })
   ).toBeVisible();
-  await page.getByRole("link", { name: "Apri media" }).first().click();
-
-  await expect(page).toHaveURL(/\/media\/duel-masters-dm25$/);
-  await expect(
-    page.getByRole("heading", { level: 1, name: "Duel Masters" })
-  ).toBeVisible();
-
-  await page.getByRole("link", { name: "Riprendi lesson" }).click();
+  await page.getByRole("link", { name: "Continua il percorso" }).first().click();
 
   await expect(page).toHaveURL(
     /\/media\/duel-masters-dm25\/textbook\/tcg-core-overview$/
@@ -32,12 +25,12 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   });
 
   await furiganaControl
-    .getByRole("button", { name: "On", exact: true })
+    .getByRole("button", { name: "Sempre", exact: true })
     .click();
   await expect(rubyReading).toBeVisible();
 
   await furiganaControl
-    .getByRole("button", { name: "Hover", exact: true })
+    .getByRole("button", { name: "Al passaggio", exact: true })
     .click();
   await expect(rubyReading).toBeHidden();
 
@@ -49,7 +42,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   ).toBeVisible();
   await expect(entryTooltip).not.toContainText("Livello:");
   await expect(entryTooltip).not.toContainText("Segmento:");
-  const entryLink = entryTooltip.getByRole("link", { name: "Apri entry" });
+  const entryLink = entryTooltip.getByRole("link", { name: "Apri voce" });
 
   await expect(entryLink).toHaveAttribute(
     "href",
@@ -75,10 +68,10 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await expect(
     page.getByRole("heading", { name: "墓地" }).first()
   ).toBeVisible();
-  await page.getByRole("link", { name: "Apri detail page" }).first().click();
+  await page.getByRole("link", { name: "Apri dettaglio" }).first().click();
 
   await expect(page).toHaveURL(
-    /\/media\/duel-masters-dm25\/glossary\/term\/term-graveyard$/
+    /\/media\/duel-masters-dm25\/glossary\/term\/term-graveyard(?:\?|$)/
   );
   await expect(
     page
@@ -117,7 +110,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
     page.getByRole("heading", { name: "Duel Masters" })
   ).toBeVisible();
   await expect(page.getByText("Furigana")).toBeVisible();
-  await expect(page.getByText("hover")).toBeVisible();
+  await expect(page.getByText("su richiesta")).toBeVisible();
 
   await page.goto("/settings");
   await page.getByRole("radio", { name: /Ordine percorso/ }).check();

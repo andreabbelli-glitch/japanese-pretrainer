@@ -1,5 +1,11 @@
 # LLM Content Kit
 
+> [!IMPORTANT]
+> Questo e il punto di partenza operativo e la fonte di verita per il workflow
+> con LLM esterni. Se un documento in `docs/legacy/` dice qualcosa di diverso,
+> vale questo kit. Umani, agent e LLM non devono usare `docs/legacy/` come
+> input operativo corrente.
+
 ## Scopo
 
 Questa cartella raccoglie in un solo posto tutto cio che serve per lavorare con
@@ -14,6 +20,29 @@ cercare file in cartelle diverse.
   contiene i documenti che vanno passati sempre, indipendentemente dal media.
 - `media/<media-slug>/`
   contiene brief e prompt specifici di un singolo media o batch.
+
+## Mappa Rapida Dai Documenti Legacy
+
+Se incontri riferimenti storici nel resto del repository, usa questa mappa:
+
+- `docs/legacy/llm-content-handoff.md` ->
+  `docs/llm-kit/general/02-llm-content-handoff.md`
+- `docs/legacy/content-workflow-playbook.md` ->
+  `docs/llm-kit/general/06-content-workflow-playbook.md`
+- `docs/legacy/templates/media.template.md` ->
+  `docs/llm-kit/general/03-template-media.md`
+- `docs/legacy/templates/textbook-lesson.template.md` ->
+  `docs/llm-kit/general/04-template-textbook-lesson.md`
+- `docs/legacy/templates/cards-file.template.md` ->
+  `docs/llm-kit/general/05-template-cards-file.md`
+- `docs/legacy/templates/image-requests.template.yaml` ->
+  `docs/llm-kit/general/07-template-image-requests.yaml`
+- `docs/legacy/templates/image-assets.template.yaml` ->
+  `docs/llm-kit/general/08-template-image-assets.yaml`
+- `docs/legacy/content-briefs/duel-masters-dm25.md` ->
+  `docs/llm-kit/media/duel-masters-dm25/01-brief.md`
+- `docs/legacy/prompts/duel-masters-dm25-batch-1.md` ->
+  `docs/llm-kit/media/duel-masters-dm25/02-batch-1-prompt.md`
 
 ## Kit generale
 
@@ -112,6 +141,7 @@ Nota pratica aggiornata:
 
 ## Nota Storica sulle Fixtures
 
-Questa cartella e un kit operativo. I documenti originali nel resto di `docs/`
-restano la sorgente di riferimento del progetto. Il bundle reale valido da
-usare come base operativa e `content/media/duel-masters-dm25`.
+Questa cartella e il kit operativo corrente per orchestrare LLM esterni.
+I documenti legacy raccolti in `docs/legacy/` restano utili come contesto
+storico, ma non sono la fonte di verita per questo workflow. Il bundle reale
+valido da usare come base operativa e `content/media/duel-masters-dm25`.

@@ -1,5 +1,11 @@
 # Brief Contenuti - Duel Masters
 
+> [!IMPORTANT]
+> Documento legacy mantenuto come mirror storico. Umani, agent e LLM non devono
+> usarlo come brief operativo corrente. Per il brief operativo da passare a un
+> LLM esterno usa `docs/llm-kit/media/duel-masters-dm25/01-brief.md`. Se trovi
+> differenze, vale il file nel kit.
+
 ## Scopo
 
 Media generale di studio su Duel Masters.
