@@ -6,17 +6,14 @@ import {
   listLessonsByMediaId,
   type DatabaseClient
 } from "@/db";
-import {
-  mediaHref,
-  mediaStudyHref,
-  mediaTextbookLessonHref
-} from "@/lib/site";
+import { mediaHref, mediaStudyHref, mediaTextbookLessonHref } from "@/lib/site";
 import { getStudySettings } from "@/lib/settings";
 import {
   calculatePercent,
   compareIsoDates,
   formatMediaTypeLabel,
-  formatSegmentKindLabel
+  formatSegmentKindLabel,
+  formatStatusLabel
 } from "@/lib/study-format";
 import {
   buildSegments,
@@ -44,6 +41,7 @@ export type ProgressPageData = {
     segmentKindLabel: string;
     settingsHref: "/settings";
     slug: string;
+    statusLabel: string;
     textbookHref: ReturnType<typeof mediaStudyHref>;
     title: string;
   };
@@ -58,7 +56,9 @@ export type ProgressPageData = {
     nextLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
     recommendedArea: "review" | "textbook";
     recommendedBody: string;
-    recommendedHref: ReturnType<typeof mediaStudyHref> | ReturnType<typeof mediaTextbookLessonHref>;
+    recommendedHref:
+      | ReturnType<typeof mediaStudyHref>
+      | ReturnType<typeof mediaTextbookLessonHref>;
     recommendedLabel: string;
     recommendedTitle: string;
   };
@@ -102,13 +102,14 @@ export async function getMediaProgressPageData(
     return null;
   }
 
-  const [lessons, glossary, reviewQueue, reviewCards, settings] = await Promise.all([
-    listLessonsByMediaId(database, media.id),
-    loadGlossaryProgressSnapshot(database, media.id, media.slug),
-    getReviewQueueSnapshotForMedia(media.slug, database),
-    getEligibleReviewCardsByMediaId(media.id, database),
-    getStudySettings(database)
-  ]);
+  const [lessons, glossary, reviewQueue, reviewCards, settings] =
+    await Promise.all([
+      listLessonsByMediaId(database, media.id),
+      loadGlossaryProgressSnapshot(database, media.id, media.slug),
+      getReviewQueueSnapshotForMedia(media.slug, database),
+      getEligibleReviewCardsByMediaId(media.id, database),
+      getStudySettings(database)
+    ]);
   const completedLessons = lessons.filter(
     (lesson) => lesson.progress?.status === "completed"
   ).length;
@@ -120,10 +121,11 @@ export async function getMediaProgressPageData(
   const nextLesson = selectNextLesson(lessons);
   const lastOpenedLesson = selectLastOpenedLesson(lessons);
   const review = {
-    activeCards: reviewCards.filter((card) =>
-      card.reviewState?.state !== null &&
-      card.reviewState?.state !== "known_manual" &&
-      card.reviewState?.state !== "suspended"
+    activeCards: reviewCards.filter(
+      (card) =>
+        card.reviewState?.state !== null &&
+        card.reviewState?.state !== "known_manual" &&
+        card.reviewState?.state !== "suspended"
     ).length,
     dailyLimit: reviewQueue?.dailyLimit ?? settings.reviewDailyLimit,
     dueCount: reviewQueue?.dueCount ?? 0,
@@ -163,6 +165,7 @@ export async function getMediaProgressPageData(
       segmentKindLabel: formatSegmentKindLabel(media.segmentKind),
       settingsHref: "/settings",
       slug: media.slug,
+      statusLabel: formatStatusLabel(media.status),
       textbookHref: mediaStudyHref(media.slug, "textbook"),
       title: media.title
     },
@@ -210,10 +213,9 @@ function buildResumeModel(input: {
   if (input.review.queueCount > 0 && input.review.dueCount > 0) {
     return {
       recommendedArea: "review" as const,
-      recommendedBody:
-        input.review.nextCardFront
-          ? `La prossima card pronta è ${input.review.nextCardFront}.`
-          : input.review.queueLabel,
+      recommendedBody: input.review.nextCardFront
+        ? `La prossima card pronta è ${input.review.nextCardFront}.`
+        : input.review.queueLabel,
       recommendedHref: mediaStudyHref(input.mediaSlug, "review"),
       recommendedLabel: "Avvia review",
       recommendedTitle:
@@ -240,7 +242,8 @@ function buildResumeModel(input: {
 
   return {
     recommendedArea: "textbook" as const,
-    recommendedBody: "Il Textbook è pronto: puoi iniziare dal primo blocco disponibile.",
+    recommendedBody:
+      "Il Textbook è pronto: puoi iniziare dal primo blocco disponibile.",
     recommendedHref: mediaStudyHref(input.mediaSlug, "textbook"),
     recommendedLabel: "Apri Textbook",
     recommendedTitle: "Percorso pronto"

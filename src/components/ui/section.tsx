@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { cx } from "@/lib/classnames";
 
 type SectionProps = {
+  id?: string;
   eyebrow?: string;
   title?: string;
   description?: string;
@@ -12,6 +13,7 @@ type SectionProps = {
 };
 
 export function Section({
+  id,
   eyebrow,
   title,
   description,
@@ -20,7 +22,7 @@ export function Section({
   children
 }: SectionProps) {
   return (
-    <section className={cx("app-section", className)}>
+    <section id={id} className={cx("app-section", className)}>
       {eyebrow || title || description || actions ? (
         <header className="app-section__header">
           <div className="app-section__copy">
@@ -30,7 +32,9 @@ export function Section({
               <p className="app-section__description">{description}</p>
             ) : null}
           </div>
-          {actions ? <div className="app-section__actions">{actions}</div> : null}
+          {actions ? (
+            <div className="app-section__actions">{actions}</div>
+          ) : null}
         </header>
       ) : null}
       {children}

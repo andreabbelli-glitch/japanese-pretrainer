@@ -2232,22 +2232,12 @@ rt {
   flex-basis: 100%;
 }
 
-.glossary-global-result__body,
 .glossary-global-result__copy,
-.glossary-global-result__study,
 .glossary-global-result__media {
   display: grid;
   gap: var(--space-3);
 }
 
-.glossary-global-result__study {
-  padding: var(--space-4);
-  border: 1px solid rgba(210, 197, 177, 0.72);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 250, 242, 0.68);
-}
-
-.glossary-global-result__study-label,
 .glossary-global-result__media-label {
   margin: 0;
   color: var(--color-ink-strong);
@@ -2255,16 +2245,30 @@ rt {
   font-weight: var(--font-weight-semibold);
 }
 
-.glossary-global-result__study-note {
-  margin: 0;
-  color: var(--color-ink-soft);
-  font-size: var(--text-small);
-}
-
 .glossary-global-result__media-hits {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+.glossary-global-result__media-link {
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.glossary-global-result__media-link:hover {
+  transform: translateY(-1px);
+}
+
+.glossary-global-result__media-link:focus-visible {
+  outline: 2px solid rgba(98, 114, 77, 0.55);
+  outline-offset: 2px;
+}
+
+.glossary-global-result__copy .pronunciation-audio--compact {
+  margin-top: var(--space-1);
 }
 
 .glossary-entry-hero__pitch-accent-source {
@@ -2756,11 +2760,6 @@ rt {
     justify-content: flex-start;
   }
 
-  .glossary-global-result__body {
-    grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.9fr);
-    align-items: start;
-  }
-
   .glossary-workspace__results .glossary-results {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2905,10 +2904,6 @@ rt {
   .glossary-result-card__actions {
     width: 100%;
     justify-content: flex-end;
-  }
-
-  .glossary-global-result__study {
-    padding: var(--space-3);
   }
 
   .review-grade-grid {

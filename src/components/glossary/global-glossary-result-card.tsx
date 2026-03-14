@@ -5,6 +5,7 @@ import type { GlossarySearchResult } from "@/lib/glossary";
 import { appendReturnToParam } from "@/lib/site";
 
 import { HighlightText } from "./glossary-highlight-text";
+import { PronunciationAudio } from "../ui/pronunciation-audio";
 import { SurfaceCard } from "../ui/surface-card";
 
 type GlobalGlossaryResultCardProps = {
@@ -18,12 +19,6 @@ export function GlobalGlossaryResultCard({
   query,
   returnTo
 }: GlobalGlossaryResultCardProps) {
-  const detailHref = appendReturnToParam(entry.bestLocalHref, returnTo);
-  const bestLocalHit =
-    entry.mediaHits.find((hit) => hit.isBestLocal) ?? entry.mediaHits[0];
-  const detailLinkLabel = bestLocalHit
-    ? `Apri il dettaglio locale di ${entry.label} in ${bestLocalHit.mediaTitle}`
-    : `Apri il dettaglio locale di ${entry.label}`;
   const visibleAliasMatches = entry.matchedFields.aliases.filter(
     (alias) =>
       ![entry.label, entry.title, entry.reading, entry.romaji]
@@ -48,80 +43,54 @@ export function GlobalGlossaryResultCard({
             {entry.mediaCount === 1 ? "1 media" : `${entry.mediaCount} media`}
           </span>
         </div>
-        <div className="glossary-result-card__actions">
-          <Link
-            aria-label={detailLinkLabel}
-            className="glossary-result-card__desktop-action"
-            href={detailHref}
-          >
-            Apri voce
-          </Link>
-          <Link
-            aria-label={detailLinkLabel}
-            className="glossary-result-card__mobile-action"
-            href={detailHref}
-          >
-            Apri voce
-          </Link>
-        </div>
       </div>
 
-      <div className="glossary-global-result__body">
-        <div className="glossary-global-result__copy">
-          <h3 className="glossary-result-card__title jp-inline">
+      <div className="glossary-global-result__copy">
+        <h3 className="glossary-result-card__title jp-inline">
+          <HighlightText
+            mode={entry.matchedFields.label}
+            query={query}
+            text={entry.label}
+          />
+        </h3>
+        {entry.title && entry.title !== entry.label ? (
+          <p className="glossary-result-card__subtitle">
             <HighlightText
-              mode={entry.matchedFields.label}
+              mode={entry.matchedFields.title}
               query={query}
-              text={entry.label}
+              text={entry.title}
             />
-          </h3>
-          {entry.title && entry.title !== entry.label ? (
-            <p className="glossary-result-card__subtitle">
+          </p>
+        ) : null}
+        {entry.reading || entry.romaji ? (
+          <p className="glossary-result-card__reading jp-inline">
+            {entry.reading ? (
               <HighlightText
-                mode={entry.matchedFields.title}
+                mode={entry.matchedFields.reading}
                 query={query}
-                text={entry.title}
+                text={entry.reading}
               />
-            </p>
-          ) : null}
-          {entry.reading || entry.romaji ? (
-            <p className="glossary-result-card__reading jp-inline">
-              {entry.reading ? (
-                <HighlightText
-                  mode={entry.matchedFields.reading}
-                  query={query}
-                  text={entry.reading}
-                />
-              ) : null}
-              {entry.reading && entry.romaji ? " / " : null}
-              {entry.romaji ? (
-                <HighlightText
-                  mode={entry.matchedFields.romaji}
-                  query={query}
-                  text={entry.romaji}
-                />
-              ) : null}
-            </p>
-          ) : null}
-          <p className="glossary-result-card__meaning">
-            <HighlightText
-              mode={entry.matchedFields.meaning}
-              query={query}
-              text={entry.meaning}
-            />
+            ) : null}
+            {entry.reading && entry.romaji ? " / " : null}
+            {entry.romaji ? (
+              <HighlightText
+                mode={entry.matchedFields.romaji}
+                query={query}
+                text={entry.romaji}
+              />
+            ) : null}
           </p>
-        </div>
-
-        <div className="glossary-global-result__study">
-          <p className="glossary-global-result__study-label">
-            Apri da {bestLocalHit?.mediaTitle}
-          </p>
-          <p className="glossary-global-result__study-note">
-            {bestLocalHit?.segmentTitle
-              ? `Segmento ${bestLocalHit.segmentTitle}`
-              : "Miglior punto di ingresso locale disponibile"}
-          </p>
-        </div>
+        ) : null}
+        {entry.pronunciation ? (
+          <PronunciationAudio audio={entry.pronunciation} compact />
+        ) : null}
+        <p className="glossary-result-card__meaning">
+          <HighlightText
+            mode={entry.matchedFields.meaning}
+            query={query}
+            text={entry.meaning}
+          />
+        </p>
       </div>
 
       {entry.matchBadges.length > 0 || visibleAliasMatches.length > 0 ? (
@@ -162,18 +131,24 @@ export function GlobalGlossaryResultCard({
 
         <div className="glossary-global-result__media">
           <p className="glossary-global-result__media-label">
-            Dove conviene aprirla
+            Aprila in
           </p>
           <div className="glossary-global-result__media-hits">
             {visibleMediaHits.map((hit) => (
-              <span
+              <Link
+                aria-label={`Apri ${entry.label} in ${hit.mediaTitle}${
+                  hit.segmentTitle ? `, segmento ${hit.segmentTitle}` : ""
+                }`}
                 key={`${hit.mediaSlug}:${hit.internalId}`}
-                className={hit.isBestLocal ? "status-pill" : "meta-pill"}
+                className={`glossary-global-result__media-link ${
+                  hit.isBestLocal ? "status-pill" : "meta-pill"
+                }`}
+                href={appendReturnToParam(hit.href, returnTo)}
               >
                 {hit.mediaTitle}
                 {hit.segmentTitle ? ` · ${hit.segmentTitle}` : ""}
-                {hit.isBestLocal ? " · apri qui" : ""}
-              </span>
+                {hit.isBestLocal ? " · consigliato" : ""}
+              </Link>
             ))}
             {overflowMediaCount > 0 ? (
               <span className="meta-pill">+{overflowMediaCount} altri media</span>

@@ -37,16 +37,15 @@ test("keeps the glossary portal state while moving from global search to local d
   );
   await expect(page.getByRole("heading", { name: "コスト" }).first()).toBeVisible();
 
-  const detailLink = page
-    .getByRole("link", { name: /Apri il dettaglio locale di/i })
-    .first();
+  const mediaLink = page.locator(".glossary-global-result__media-link").first();
 
-  await expect(detailLink).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Apri voce" })).toHaveCount(0);
+  await expect(mediaLink).toHaveAttribute(
     "href",
     /\/media\/duel-masters-dm25\/glossary\/term\/term-cost\?returnTo=%2Fglossary%3Fq%3Dkosuto%26cards%3Dwith_cards$/
   );
 
-  await detailLink.click();
+  await mediaLink.click();
 
   await expect(page).toHaveURL(
     /\/media\/duel-masters-dm25\/glossary\/term\/term-cost\?returnTo=%2Fglossary%3Fq%3Dkosuto%26cards%3Dwith_cards$/
@@ -63,5 +62,13 @@ test("keeps the glossary portal state while moving from global search to local d
   await expect(glossaryNav).toHaveAttribute("aria-current", "page");
   await expect(page.getByRole("combobox", { name: "Flashcard" })).toHaveValue(
     "with_cards"
+  );
+
+  await page.getByRole("button", { name: "Azzera i filtri" }).click();
+
+  await expect(page).toHaveURL("/glossary");
+  await expect(page.getByRole("searchbox", { name: "Cerca" })).toHaveValue("");
+  await expect(page.getByRole("combobox", { name: "Flashcard" })).toHaveValue(
+    "all"
   );
 });

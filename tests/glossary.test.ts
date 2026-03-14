@@ -455,7 +455,14 @@ describe("glossary data", () => {
     expect(markup).toContain(
       `returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
     );
-    expect(markup).toContain("Apri voce");
+    expect(markup).not.toContain("Apri voce");
+    expect(markup).toContain("Aprila in");
+    expect(markup).toContain(
+      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}?returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
+    );
+    expect(markup).toContain(
+      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}?returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
+    );
   });
 
   it("preserves all active global filters inside returnTo links to local detail pages", async () => {
@@ -578,8 +585,8 @@ describe("glossary data", () => {
 
     const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
 
-    expect(markup).toContain("Apri da zeta");
-    expect(markup).toContain("zeta · Chapter 01 · apri qui");
+    expect(markup).toContain("Aprila in");
+    expect(markup).toContain("zeta · Chapter 01 · consigliato");
     expect(markup).toContain("+1 altri media");
   });
 
@@ -867,6 +874,52 @@ describe("glossary data", () => {
 
     expect(markup).toContain("pitch-accent__graph");
     expect(markup).not.toContain("<audio");
+  });
+
+  it("renders pronunciation audio and pitch accent inside global glossary result cards when available", async () => {
+    const imported = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["frieren"]
+    });
+
+    expect(imported.status).toBe("completed");
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        q: "mangiare",
+        media: "frieren"
+      },
+      database
+    );
+
+    const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
+
+    expect(markup).toContain("pronunciation-audio__player");
+    expect(markup).toContain("pitch-accent__graph");
+  });
+
+  it("renders pitch accent in global glossary result cards even without audio", async () => {
+    await seedDevelopmentDatabase(database);
+    await database
+      .update(term)
+      .set({
+        pitchAccent: 0
+      })
+      .where(eq(term.id, developmentFixture.termDbId));
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        q: "iku",
+        media: developmentFixture.mediaSlug
+      },
+      database
+    );
+
+    const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
+
+    expect(markup).toContain("pitch-accent__graph");
+    expect(markup).not.toContain("pronunciation-audio__player");
   });
 
   it("renders glossary and review notes through the shared inline AST renderer", async () => {

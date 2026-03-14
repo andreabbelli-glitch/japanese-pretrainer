@@ -1,7 +1,6 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 
-import { MediaProgressPage } from "@/components/media/media-progress-page";
-import { getMediaProgressPageData } from "@/lib/progress";
+import { mediaHref } from "@/lib/site";
 
 type StudyAreaRouteProps = {
   params: Promise<{
@@ -13,11 +12,6 @@ export default async function MediaProgressRoute({
   params
 }: StudyAreaRouteProps) {
   const { mediaSlug } = await params;
-  const data = await getMediaProgressPageData(mediaSlug);
 
-  if (!data) {
-    notFound();
-  }
-
-  return <MediaProgressPage data={data} />;
+  redirect(`${mediaHref(mediaSlug)}#overview`);
 }

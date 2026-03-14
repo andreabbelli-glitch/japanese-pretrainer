@@ -1,7 +1,6 @@
 "use client";
 
-import { useDeferredValue, useId, useRef, useState } from "react";
-import Link from "next/link";
+import { useDeferredValue, useEffect, useId, useRef, useState } from "react";
 
 import type {
   GlobalGlossaryAutocompleteSuggestion,
@@ -32,6 +31,22 @@ export function GlossaryPortalSearchForm({
   const [cards, setCards] = useState(filters.cards);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const deferredQuery = useDeferredValue(query);
+
+  useEffect(() => {
+    setQuery(filters.query);
+    setEntryType(filters.entryType);
+    setMedia(filters.media);
+    setStudy(filters.study);
+    setCards(filters.cards);
+    setShowSuggestions(false);
+  }, [
+    filters.cards,
+    filters.entryType,
+    filters.media,
+    filters.query,
+    filters.study
+  ]);
+
   const visibleSuggestions = getGlossaryAutocompleteSuggestions({
     filters: {
       cards,
@@ -60,6 +75,17 @@ export function GlossaryPortalSearchForm({
     requestAnimationFrame(() => {
       formRef.current?.requestSubmit();
     });
+  };
+
+  const handleReset = () => {
+    setQuery("");
+    setEntryType("all");
+    setMedia("all");
+    setStudy("all");
+    setCards("all");
+    setShowSuggestions(false);
+    inputRef.current?.blur();
+    window.location.assign("/glossary");
   };
 
   return (
@@ -169,9 +195,13 @@ export function GlossaryPortalSearchForm({
             Cerca
           </button>
           {hasActiveFilters ? (
-            <Link className="button button--ghost" href="/glossary">
+            <button
+              className="button button--ghost"
+              onClick={handleReset}
+              type="button"
+            >
               Azzera i filtri
-            </Link>
+            </button>
           ) : null}
         </div>
       </div>
@@ -181,11 +211,11 @@ export function GlossaryPortalSearchForm({
           <span className="glossary-search-form__label">Tipo</span>
           <select
             className="glossary-search-form__select"
-            defaultValue={filters.entryType}
             name="type"
             onChange={(event) => {
               setEntryType(event.currentTarget.value as typeof entryType);
             }}
+            value={entryType}
           >
             <option value="all">Tutto</option>
             <option value="term">Termine</option>
@@ -197,11 +227,11 @@ export function GlossaryPortalSearchForm({
           <span className="glossary-search-form__label">Media</span>
           <select
             className="glossary-search-form__select"
-            defaultValue={filters.media}
             name="media"
             onChange={(event) => {
               setMedia(event.currentTarget.value);
             }}
+            value={media}
           >
             <option value="all">Tutti i media</option>
             {mediaOptions.map((mediaOption) => (
@@ -216,11 +246,11 @@ export function GlossaryPortalSearchForm({
           <span className="glossary-search-form__label">Stato</span>
           <select
             className="glossary-search-form__select"
-            defaultValue={filters.study}
             name="study"
             onChange={(event) => {
               setStudy(event.currentTarget.value as typeof study);
             }}
+            value={study}
           >
             <option value="all">Tutti</option>
             <option value="known">Già note</option>
@@ -235,11 +265,11 @@ export function GlossaryPortalSearchForm({
           <span className="glossary-search-form__label">Flashcard</span>
           <select
             className="glossary-search-form__select"
-            defaultValue={filters.cards}
             name="cards"
             onChange={(event) => {
               setCards(event.currentTarget.value as typeof cards);
             }}
+            value={cards}
           >
             <option value="all">Tutte</option>
             <option value="with_cards">Ha flashcard</option>
