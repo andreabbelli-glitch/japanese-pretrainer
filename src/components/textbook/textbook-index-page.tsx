@@ -16,6 +16,13 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
   const resumeHref = data.resumeLesson
     ? mediaTextbookLessonHref(data.media.slug, data.resumeLesson.slug)
     : null;
+  const lessonSectionDescription = data.resumeLesson
+    ? `Riprendi da ${data.resumeLesson.title} oppure scegli una lesson dal percorso.`
+    : "Scegli una lesson dal percorso.";
+  const resumeLabel =
+    data.resumeLesson?.status === "completed"
+      ? "Rileggi dall'inizio"
+      : "Continua il percorso";
 
   return (
     <div className="textbook-index-page">
@@ -38,28 +45,15 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
         }
       />
 
-      <section className="textbook-hero-grid">
-        <SurfaceCard className="textbook-hero" variant="hero">
-          <p className="eyebrow">Prossimo passo nel percorso</p>
-          <h2 className="textbook-hero__title">
-            {data.resumeLesson?.title ?? "Il textbook è pronto per la prima lezione."}
-          </h2>
-          <p className="textbook-hero__summary">
-            {data.resumeLesson?.summary ??
-              data.resumeLesson?.excerpt ??
-              "Le lesson restano ordinate per segmento, con un punto di ripresa chiaro e facile da seguire."}
-          </p>
-          <div className="textbook-hero__meta">
-            <span>{data.completedLessons} completate</span>
-            <span>{data.totalLessons - data.completedLessons} da leggere</span>
-            <span>Furigana: {data.furiganaMode}</span>
-          </div>
+      <Section
+        eyebrow="Lesson"
+        title="Scegli da dove riprendere"
+        description={lessonSectionDescription}
+        actions={
           <div className="hero-actions">
             {resumeHref ? (
               <Link className="button button--primary" href={resumeHref}>
-                {data.resumeLesson?.status === "completed"
-                  ? "Rileggi lesson"
-                  : "Continua il percorso"}
+                {resumeLabel}
               </Link>
             ) : null}
             <Link className="button button--ghost" href={data.glossaryHref}>
@@ -69,37 +63,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
               Settings
             </Link>
           </div>
-        </SurfaceCard>
-
-        <SurfaceCard className="textbook-hero-side">
-          <p className="eyebrow">Segnali utili</p>
-          <div className="stack-list stack-list--tight">
-            <div className="summary-row">
-              <span>Segmentazione</span>
-              <strong>{data.media.segmentKindLabel}</strong>
-            </div>
-            <div className="summary-row">
-              <span>Lesson aperte</span>
-              <strong>
-                {data.lessons.filter((lesson) => lesson.status === "in_progress").length}
-              </strong>
-            </div>
-            <div className="summary-row">
-              <span>Completamento</span>
-              <strong>
-                {data.textbookProgressPercent !== null
-                  ? `${data.textbookProgressPercent}%`
-                  : "0%"}
-              </strong>
-            </div>
-          </div>
-        </SurfaceCard>
-      </section>
-
-      <Section
-        eyebrow="Lesson"
-        title="Scegli da dove riprendere"
-        description="La pagina iniziale del Textbook ti aiuta a capire dove iniziare, cosa è in corso e quale blocco del media stai attraversando."
+        }
       >
         {data.groups.length > 0 ? (
           <div className="textbook-group-list">

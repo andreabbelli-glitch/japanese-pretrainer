@@ -933,20 +933,12 @@ rt {
   gap: var(--section-gap);
 }
 
-.textbook-hero-grid {
-  display: grid;
-  gap: var(--space-5);
-}
-
-.textbook-hero,
-.textbook-hero-side,
 .textbook-group,
 .textbook-lesson-card {
   display: grid;
   gap: var(--space-4);
 }
 
-.textbook-hero__title,
 .textbook-group__title,
 .reader-study-header__title,
 .reader-heading,
@@ -958,13 +950,11 @@ rt {
   letter-spacing: var(--tracking-display);
 }
 
-.textbook-hero__title,
 .reader-study-header__title {
   font-size: clamp(1.9rem, 1.55rem + 1vw, 2.55rem);
   line-height: 0.98;
 }
 
-.textbook-hero__summary,
 .textbook-group__note,
 .textbook-lesson-card__body,
 .reader-study-header__back,
@@ -980,7 +970,6 @@ rt {
   color: var(--color-ink-muted);
 }
 
-.textbook-hero__meta,
 .reader-study-header__meta {
   display: flex;
   flex-wrap: wrap;
@@ -2687,10 +2676,6 @@ rt {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .textbook-hero-grid {
-    grid-template-columns: minmax(0, 1.55fr) minmax(17rem, 0.9fr);
-  }
-
   .glossary-result-card__desktop-action {
     display: inline-flex;
   }
@@ -2857,7 +2842,6 @@ rt {
     padding: var(--space-5);
   }
 
-  .textbook-hero-grid,
   .textbook-lesson-grid,
   .reader-footer__nav {
     grid-template-columns: 1fr;
