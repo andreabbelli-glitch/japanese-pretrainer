@@ -161,6 +161,11 @@ Se una lesson usa screenshot o immagini carte:
 - usa nomi stabili e descrittivi, per esempio
   `assets/ui/deck-edit.webp` o `assets/cards/abyss-bell.svg`;
 - inserisci nel textbook un blocco `:::image` solo quando il file esiste gia;
+- in `image-requests.yaml` / `image-assets.yaml`, `alt_it` deve restare testo
+  semplice: evita kanji nudi e preferisci italiano o kana / katakana;
+- in `image-requests.yaml` / `image-assets.yaml`, `caption_it` e testo visibile:
+  se compaiono kanji, annotali con furigana; se richiama una entry glossary /
+  flashcard, usa il link semantico e annota anche il label;
 - non lasciare in `content/media/...` placeholder tipo `TODO`, URL remoti o
   `src` inventati.
 
@@ -295,7 +300,9 @@ Dopo l'import verifica almeno:
 - che i file scansionati siano quelli attesi;
 - che non ci siano archive/prune inattesi;
 - che il bundle resti validabile con `content:validate`;
-- che nel reader compaiano davvero i nuovi blocchi `:::image`.
+- che nel reader compaiano davvero i nuovi blocchi `:::image`;
+- che `alt` non lasci kanji nudi e che `caption` annoti con furigana o link
+  semantico ogni termine visibile che lo richiede.
 
 ## Errori LLM piu comuni da aspettarsi
 

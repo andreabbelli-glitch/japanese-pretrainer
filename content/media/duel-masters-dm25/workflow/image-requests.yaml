@@ -10,11 +10,12 @@ requests:
       Usa l'immagine ufficiale completa della carta, centrata e leggibile, così
       siano visibili costo, nome, tipo, razza, testo effetto e potenza.
     alt_it: >-
-      Carta di アビスベル=ジャシン帝 con costo, nome, tipo, razza, testo effetto e
+      Carta di アビスベル=ジャシンてい con costo, nome, tipo, razza, testo effetto e
       potenza ben visibili.
     caption_it: >-
-      Carta reale di [アビスベル=ジャシン帝](term:term-abyssbell-jashintei) usata
-      come riferimento per leggere i campi principali di una carta Duel Masters.
+      Carta reale di
+      [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei) usata come
+      riferimento per leggere i campi principali di una carta Duel Masters.
     notes: >-
       Assunzione minima prudente: riuso la stessa carta anche come asset
       riutilizzabile per la lesson verticale su `DM25-SD1`.
@@ -54,7 +55,9 @@ requests:
       pannello del mazzo a destra.
     caption_it: >-
       Schermata reale di editing del deck in `デュエプレ`, utile per riconoscere
-      `デッキ`, `カード一覧`, `所持` e i comandi di salvataggio.
+      [デッキ{{編成|へんせい}}](term:term-deck-edit),
+      [カード{{一覧|いちらん}}](grammar:grammar-ichiran),
+      [{{所持|しょじ}}](term:term-owned) e i comandi di salvataggio.
   - id: duel-plays-modes-screen
     lesson_slug: duel-plays-app-modes-and-progression
     anchor: "### 1. I nomi modalità sono mappe, non lessico decorativo"
@@ -85,9 +88,10 @@ requests:
     capture_instructions: >-
       Usa l'immagine ufficiale completa della carta, centrata e leggibile.
     alt_it: >-
-      Carta di アビスベル=ジャシン帝 centrata e leggibile.
+      Carta di アビスベル=ジャシンてい centrata e leggibile.
     caption_it: >-
-      Immagine ufficiale di [アビスベル=ジャシン帝](term:term-abyssbell-jashintei),
+      Immagine ufficiale di
+      [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei),
       carta-ancora del deck `DM25-SD1`.
   - id: dm25-sd1-jablood-card
     lesson_slug: dm25-sd1-overview
@@ -99,7 +103,11 @@ requests:
     capture_instructions: >-
       Usa l'immagine ufficiale completa della carta, centrata e leggibile.
     alt_it: >-
-      Carta di 邪龍 ジャブラッド centrata e leggibile.
+      Carta di ジャブラッド con epiteto じゃりゅう, centrata e leggibile.
+    caption_it: >-
+      Immagine ufficiale di {{邪龍|じゃりゅう}}
+      [ジャブラッド](term:term-jablood), altro nome-ancora ricorrente del deck
+      `DM25-SD1`.
     caption_it: >-
       Immagine ufficiale di [ジャブラッド](term:term-jablood), altro nome-ancora
       ricorrente del deck `DM25-SD1`.
@@ -113,7 +121,7 @@ requests:
     capture_instructions: >-
       Usa l'immagine ufficiale completa della carta, centrata e leggibile.
     alt_it: >-
-      Carta di 超神羅星アポロヌス・ドラゲリオン centrata e leggibile.
+      Carta di ちょうしんらせいアポロヌス・ドラゲリオン centrata e leggibile.
     caption_it: >-
       Immagine ufficiale di
       [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion), finisher simbolo
@@ -128,7 +136,221 @@ requests:
     capture_instructions: >-
       Usa l'immagine ufficiale completa della carta, centrata e leggibile.
     alt_it: >-
-      Carta di 轟く侵略 レッドゾーン centrata e leggibile.
+      Carta di とどろくしんりゃく レッドゾーン centrata e leggibile.
     caption_it: >-
       Immagine ufficiale di [レッドゾーン](term:term-red-zone), altra carta-simbolo
       del lato offensivo di `DM25-SD2`.
+  - id: duel-plays-present-box-screen
+    lesson_slug: duel-plays-app-rewards-and-claim-flow
+    anchor: "### 1. Il present box è una coda di claim, non un semplice archivio"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente della schermata
+      `プレゼントボックス`. Non cercare immagini alternative.
+    alt_it: >-
+      Schermata プレゼントボックス con tab premi da ritirare e storico
+      riscossioni, pulsante di claim multiplo e due reward riscattabili.
+    caption_it: >-
+      Schermata `プレゼントボックス` usata per leggere stato di claim, storico e
+      scadenza delle reward in un colpo solo.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-stage-select-screen
+    lesson_slug: duel-plays-app-rewards-and-claim-flow
+    anchor: "### 3. La stage select comprime livello, costo e reward preview"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente della schermata
+      `ステージ選択`. Non cercare immagini alternative.
+    alt_it: >-
+      Schermata stage select con livelli beginner e intermediate, costo in
+      ticket, NEXT REWARD, checkbox di skip storia gia letta e pulsante avvio
+      sfida.
+    caption_it: >-
+      La schermata [ステージ{{選択|せんたく}}](term:term-stage-select) mostra
+      insieme costo d'ingresso, livello, reward successiva e opzioni di skip
+      del contenuto già letto.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-reward-claim-popup
+    lesson_slug: duel-plays-app-rewards-and-claim-flow
+    anchor: "### 4. Il popup finale conferma che il claim è già avvenuto"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente del popup
+      `報酬受け取り`. Non cercare immagini alternative.
+    alt_it: >-
+      Popup di claim reward che conferma l'incasso di un ticket evento dopo il
+      claim.
+    caption_it: >-
+      Popup finale di `{{報酬|ほうしゅう}}{{受|う}}け{{取|と}}り`: qui l'app non
+      ti chiede se vuoi ricevere, ti sta dicendo che l'incasso è già stato
+      registrato.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-shop-menu-screen
+    lesson_slug: duel-plays-app-shop-packs-and-results
+    anchor: "### 1. La schermata shop classifica subito il tipo di acquisizione"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente della home shop con i
+      pannelli `カード購入`, `カードパック購入`, `構築済みデッキ購入` e
+      `カード交換`. Non cercare immagini alternative.
+    alt_it: >-
+      Home shop con quattro grandi pannelli per acquisto carte, acquisto pack,
+      acquisto deck costruiti e card exchange.
+    caption_it: >-
+      Lo shop di `デュエプレ` separa già a colpo d'occhio i flussi di acquisto,
+      pack, deck prebuilt e scambio.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-pack-purchase-main
+    lesson_slug: duel-plays-app-shop-packs-and-results
+    anchor: "### 2. La schermata principale dei pack va letta come un menu di risorse"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente della schermata
+      `カードパック購入`. Non cercare immagini alternative.
+    alt_it: >-
+      Schermata acquisto pack con banner del pack, costi in gemme e oro, righe
+      ticket e pulsanti lista carte e percentuali.
+    caption_it: >-
+      [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) mostra in
+      una sola schermata pack, valute, ticket, card list e offer rates.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-pack-purchase-count
+    lesson_slug: duel-plays-app-shop-packs-and-results
+    anchor: "### 3. Il popup quantità mette al centro stock e numero di pack"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente del popup quantità per
+      `カードパック購入`. Non cercare immagini alternative.
+    alt_it: >-
+      Popup acquisto pack con contatore della quantità, indicazione ticket
+      posseduti e pulsanti meno, più e MAX.
+    caption_it: >-
+      Nel popup quantità l'informazione davvero importante è quante risorse hai
+      già e quante confezioni stai per comprare.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-pack-purchase-confirm
+    lesson_slug: duel-plays-app-shop-packs-and-results
+    anchor: "### 4. Il popup conferma formula l'azione come frase completa"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente del popup di conferma
+      acquisto pack. Non cercare immagini alternative.
+    alt_it: >-
+      Popup di conferma pack che chiede se usare 4 ticket per comprare quattro
+      pack PLAY'S CHRONICLE PACK II.
+    caption_it: >-
+      Il popup di conferma esplicita risorsa consumata, quantità e oggetto
+      acquistato in una frase sola.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-pack-card-reveal
+    lesson_slug: duel-plays-app-shop-packs-and-results
+    anchor: "### 5. I risultati alternano reveal spettacolare e lista leggibile"
+    kind: app-screen
+    priority: medium
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente del reveal carta dopo
+      l'apertura pack. Non cercare immagini alternative.
+    alt_it: >-
+      Schermata di reveal spettacolare della carta ディアス Z durante
+      l'apertura pack.
+    caption_it: >-
+      Il reveal enfatizza il colpo di scena visivo, ma il lettore deve comunque
+      saper recuperare nome carta e risultato reale.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-pack-obtained-list
+    lesson_slug: duel-plays-app-shop-packs-and-results
+    anchor: "### 5. I risultati alternano reveal spettacolare e lista leggibile"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente della schermata
+      `獲得カード一覧`. Non cercare immagini alternative.
+    alt_it: >-
+      Schermata lista carte ottenute con filtri per civiltà o categoria e
+      griglia delle carte.
+    caption_it: >-
+      `{{獲得|かくとく}}カード{{一覧|いちらん}}` è la schermata che trasforma
+      il reveal in inventario leggibile e filtrabile.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-card-exchange-screen
+    lesson_slug: duel-plays-app-exchange-decks-and-setup
+    anchor: "### 1. La schermata exchange ruota attorno a finestra temporale e tentativi residui"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente della schermata
+      `カード交換`. Non cercare immagini alternative.
+    alt_it: >-
+      Schermata card exchange con tab prize card exchange e arc card exchange,
+      categorie a sinistra e ribbon periodo scambio sulle carte.
+    caption_it: >-
+      In [カード{{交換|こうかん}}](term:term-card-exchange) i label cruciali sono
+      [{{交換期間|こうかんきかん}}](term:term-exchange-period), stock posseduto e
+      numero di scambi ancora disponibili.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-card-exchange-shortage-popup
+    lesson_slug: duel-plays-app-exchange-decks-and-setup
+    anchor: "### 2. I popup di risorsa insufficiente spiegano anche la via di recupero"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente del popup
+      `DMポイントが不足しています`. Non cercare immagini alternative.
+    alt_it: >-
+      Popup che avvisa della mancanza di DMポイント e propone il flusso di
+      dismantle carte come azione successiva.
+    caption_it: >-
+      Il popup non si limita a dire che manca una risorsa: suggerisce subito il
+      flusso corretto per ottenerla.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-constructed-deck-purchase
+    lesson_slug: duel-plays-app-exchange-decks-and-setup
+    anchor: "### 3. I deck prebuilt si leggono tra periodo di vendita e bonus inclusi"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente della schermata
+      `構築済みデッキ購入`. Non cercare immagini alternative.
+    alt_it: >-
+      Schermata acquisto deck prebuilt con più deck in vendita, ribbon periodo
+      vendita e bonus playmat/protector.
+    caption_it: >-
+      I deck costruiti si leggono come prodotti con finestra di vendita e bonus
+      cosmetici allegati, non come semplici liste di carte.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.
+  - id: duel-plays-deck-list-rental
+    lesson_slug: duel-plays-app-exchange-decks-and-setup
+    anchor: "### 4. La deck list collega scelta, preview e avvio della partita"
+    kind: app-screen
+    priority: high
+    capture_instructions: >-
+      Usa direttamente lo screenshot fornito dall'utente della schermata
+      `デッキ一覧`. Non cercare immagini alternative.
+    alt_it: >-
+      Schermata lista deck nella sezione レンタルデッキ con preview del mazzo,
+      pannello キーカード e pulsanti overview deck, verifica legend skill e
+      avvio sfida.
+    caption_it: >-
+      [デッキ{{一覧|いちらん}}](term:term-deck-list) è il punto in cui scegli
+      il mazzo, leggi le sue informazioni e decidi se partire davvero.
+    notes: >-
+      Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.

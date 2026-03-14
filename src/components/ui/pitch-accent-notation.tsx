@@ -276,10 +276,10 @@ function buildRailStyle(
     const segment = getMeasuredSegment(measurements, rail.start, rail.length);
 
     return {
-      left: `calc(${segment.left}px + 0.08em)`,
+      left: `calc(${segment.left}px + var(--pitch-accent-rail-start-inset))`,
       width: rail.tail
-        ? `${segment.width}px`
-        : `calc(${segment.width}px - 0.08em)`
+        ? `calc(${segment.width}px - var(--pitch-accent-tail-end-trim, 0px))`
+        : `calc(${segment.width}px - var(--pitch-accent-rail-end-trim))`
     } as CSSProperties;
   }
 

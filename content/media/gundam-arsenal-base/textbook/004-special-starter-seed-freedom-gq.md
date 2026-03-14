@@ -120,6 +120,11 @@ La scorciatoia utile e questa.
   leggibile: 2, 3, 4 e poi un top-end da 7.
 - Solo per terza cosa fermati sul nome carta.
 
+Gia a questo livello puoi iniziare a immaginare dove lavorera l'unita:
+[{{前線|ぜんせん}}](term:term-frontline),
+[{{戦闘|せんとう}}](term:term-combat) ravvicinato, pressione a distanza o
+mobilita.
+
 Questo ordine ti evita l'errore classico del principiante: fissare l'art o il
 nome e non capire ancora che funzione pratica abbia quella carta nel match.
 
@@ -273,7 +278,7 @@ caption: >-
 
 :::image
 src: assets/cards/starter-seed-freedom-gq/03-gelgoog-menace-lunamaria-custom.webp
-alt: "Carta fronte e retro di ゲルググメナース(ルナマリア・ホーク専用機) nello starter deck SEED FREEDOM & GQ."
+alt: "Carta fronte e retro di ゲルググメナース(ルナマリア・ホークせんようき) nello starter deck SEED FREEDOM & GQ."
 caption: >-
   [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom):
   immagine completa fronte + retro.
@@ -325,7 +330,7 @@ caption: >-
 
 :::image
 src: assets/cards/starter-seed-freedom-gq/05-red-gundam-0085.webp
-alt: "Carta fronte e retro di 赤いガンダム(0085) nello starter deck SEED FREEDOM & GQ."
+alt: "Carta fronte e retro di あかいガンダム(0085) nello starter deck SEED FREEDOM & GQ."
 caption: >-
   [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085): immagine completa
   fronte + retro.
@@ -476,7 +481,7 @@ caption: >-
 
 :::example_sentence
 jp: >-
-  {{近距離|きんきょり}}MSに{{殲滅|せんめつ}}PLを{{組|く}}み{{合|あ}}わせると、{{前線|ぜんせん}}で{{敵|てき}}ユニットをどかす{{役|やく}}が{{見|み}}えやすいです。
+  {{近距離|きんきょり}}MSに{{殲滅|せんめつ}}PLを{{組|く}}み{{合|あ}}わせると、[{{前線|ぜんせん}}](term:term-frontline)で{{敵|てき}}ユニットをどかす{{役|やく}}が{{見|み}}えやすいです。
 translation_it: >-
   Se abbini una MS ravvicinata a una PL di annientamento, diventa piu leggibile
   il ruolo di apripista contro le unita nemiche.

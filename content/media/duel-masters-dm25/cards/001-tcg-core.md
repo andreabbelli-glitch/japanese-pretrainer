@@ -528,6 +528,23 @@ level_hint: n5
 :::
 
 :::term
+id: term-add
+lemma: 加える
+reading: くわえる
+romaji: kuwaeru
+meaning_it: aggiungere / mettere in mano
+pos: godan-verb
+aliases: [加える, くわえる, kuwaeru]
+notes_it: >-
+  Nel rules text conviene leggerlo come verbo di spostamento utile, non come
+  "aggiungere" generico. In frasi come
+  `{{山札|やまふだ}}から{{手札|てふだ}}に{{加|くわ}}える` o
+  `シールドゾーンから{{手札|てふだ}}に{{加|くわ}}える`, il punto pratico è che
+  la carta entra davvero nella tua mano.
+level_hint: n5
+:::
+
+:::term
 id: term-erabu
 lemma: 選ぶ
 reading: えらぶ
@@ -1399,6 +1416,23 @@ example_it: >-
 notes_it: >-
   È un verbo molto comune e molto neutro. Per capirlo davvero devi guardare la
   destinazione: nel cimitero, nel mazzo, sopra una carta o altrove.
+tags: [core, action, kanji]
+:::
+
+:::card
+id: card-add-recognition
+entry_type: term
+entry_id: term-add
+card_type: recognition
+front: 加える
+back: aggiungere / mettere in mano
+example_jp: >-
+  シールドゾーンから{{1枚|いちまい}} {{手札|てふだ}}に{{加|くわ}}える。
+example_it: >-
+  Aggiungi 1 carta dalla shield zone alla tua mano.
+notes_it: >-
+  Conviene fissarlo insieme alle zone: ti aiuta a riconoscere subito quando una
+  carta finisce in mano invece di entrare in campo o andare in un'altra zona.
 tags: [core, action, kanji]
 :::
 

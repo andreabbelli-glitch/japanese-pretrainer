@@ -79,8 +79,8 @@ pos: screen-label
 aliases: [お知らせ, oshirase]
 notes_it: >-
   È la sezione degli avvisi ufficiali. Dentro `デュエプレ` ti aiuta a capire se
-  un evento è attivo, se una modalità è cambiata o se ci sono campagne in
-  corso.
+  un evento è attivo, se una modalità è cambiata o se ci sono campagne o
+  manutenzioni in corso. Non è una inbox personale: è il contesto del gioco.
 level_hint: n4
 :::
 
@@ -95,8 +95,8 @@ aliases: [ショップ, shop]
 notes_it: >-
   È il punto da cui entri nelle aree di acquisto e scambio. Quando leggi
   `ショップ`, preparati a incontrare verbi come
-  [{{購入|こうにゅう}}](term:term-card-purchase),
-  [{{交換|こうかん}}](term:term-card-exchange),
+  [{{購入|こうにゅう}}](term:term-purchase),
+  [{{交換|こうかん}}](term:term-exchange),
   [{{生成|せいせい}}](term:term-craft) e
   [{{分解|ぶんかい}}](term:term-disenchant).
 level_hint: custom
@@ -111,10 +111,27 @@ meaning_it: impostazioni / settings
 pos: screen-label
 aliases: [設定, settei]
 notes_it: >-
-  Etichetta molto comune in qualunque app. In `デュエプレ` ti serve per audio,
+  Etichetta molto comune in qualunque app. In `デュエプレ` ti porta verso audio,
   preferenze e opzioni generali; didatticamente vale la pena fissarla perché è
   un kanji ricorrente anche fuori dal gioco.
 level_hint: n4
+:::
+
+:::term
+id: term-etc
+lemma: その他
+reading: そのた
+romaji: sonota
+meaning_it: altro / varie / etc.
+pos: screen-label
+aliases: [その他, sonota, etc.]
+notes_it: >-
+  In UI funziona spesso come etichetta-cassetto: non nomina una funzione
+  precisa, ma l'area "altro" in cui finiscono opzioni e schermate secondarie.
+  In `デュエプレ` vale la pena distinguerla da [{{設定|せってい}}](term:term-settings):
+  `{{設定|せってい}}` e la schermata delle impostazioni, `{{その他|そのた}}` e
+  il menu piu ampio da cui spesso ci arrivi.
+level_hint: custom
 :::
 
 :::term
@@ -127,8 +144,56 @@ pos: ui-action
 aliases: [確認, kakunin]
 notes_it: >-
   Può voler dire "controlla" o "conferma", a seconda del contesto. Dentro
-  `デュエプレ` appare spesso prima di una scelta importante o come bottone che ti
-  fa proseguire.
+  `デュエプレ` appare spesso prima di una scelta importante: non sempre chiude
+  l'azione, ma quasi sempre ti fa verificare un dettaglio prima del passo
+  successivo.
+level_hint: n4
+:::
+
+:::term
+id: term-open
+lemma: 開く
+reading: ひらく
+romaji: hiraku
+meaning_it: aprire / open
+pos: verb
+aliases: [開く, ひらく, hiraku]
+notes_it: >-
+  Nella UI non vuol dire "sbloccare", ma aprire davvero una schermata, un menu
+  o una lista. In frasi come `ホームからミッションを{{開|ひら}}く`, il punto
+  pratico è il passaggio di navigazione verso il contenuto che ti serve.
+level_hint: n4
+:::
+
+:::term
+id: term-selection
+lemma: 選択
+reading: せんたく
+romaji: sentaku
+meaning_it: selezione / scegliere
+pos: verbal-noun
+aliases: [選択, せんたく, sentaku]
+notes_it: >-
+  È il nome dell'azione che la UI ti chiede quando non basta ancora guardare una
+  schermata e devi scegliere un oggetto preciso. Va distinto dal pattern
+  [～を{{選択|せんたく}}](grammar:grammar-wo-sentaku): quello ti dà la formula
+  completa, questo ti aiuta a riconoscere il nucleo lessicale ricorrente.
+level_hint: n4
+:::
+
+:::term
+id: term-save
+lemma: 保存
+reading: ほぞん
+romaji: hozon
+meaning_it: salvataggio / save
+pos: verbal-noun
+aliases: [保存, ほぞん, hozon]
+notes_it: >-
+  In app è il gesto che fissa davvero uno stato, per esempio un deck appena
+  modificato. Va distinto da [{{確認|かくにん}}](term:term-confirm):
+  `{{確認|かくにん}}` ti fa controllare, `{{保存|ほぞん}}` rende stabile la
+  modifica.
 level_hint: n4
 :::
 
@@ -189,7 +254,7 @@ pos: verbal-noun
 aliases: [編成, hensei]
 notes_it: >-
   Da solo `{{編成|へんせい}}` vuol dire organizzazione, composizione, assetto di
-  elementi messi insieme per uno scopo. Dentro `デッキ{{編成|へんせい}}` e la parte
+  elementi messi insieme per uno scopo. Dentro `デッキ{{編成|へんせい}}` è la parte
   che trasforma `デッキ` da semplice nome dell'oggetto a schermata in cui
   costruisci e sistemi la lista.
 level_hint: n4
@@ -228,6 +293,22 @@ level_hint: custom
 :::
 
 :::term
+id: term-purchase
+lemma: 購入
+reading: こうにゅう
+romaji: kounyuu
+meaning_it: acquisto / comprare
+pos: verbal-noun
+aliases: [購入, こうにゅう, kounyuu]
+notes_it: >-
+  È il verbo-nome base dell'acquisto nelle schermate shop. Dentro composti come
+  [カード{{購入|こうにゅう}}](term:term-card-purchase) o
+  [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase), è la parte che
+  ti dice che stai spendendo una risorsa per ottenere un prodotto.
+level_hint: n4
+:::
+
+:::term
 id: term-card-purchase
 lemma: カード購入
 reading: かーどこうにゅう
@@ -236,13 +317,31 @@ meaning_it: acquisto carte / card purchase
 pos: screen-label
 aliases: [カード購入, kaado kounyuu]
 notes_it: >-
-  Anche qui il composto e trasparente se lo separi: `カード` e l'oggetto,
-  `{{購入|こうにゅう}}` e l'acquisto. Il label indica quindi un flusso in cui
-  compri carte, non uno scambio o una creazione diretta. Va distinto da
+  Anche qui il composto è trasparente se lo separi: `カード` è l'oggetto,
+  [{{購入|こうにゅう}}](term:term-purchase) è l'acquisto. Il label indica quindi
+  il lato shop in cui
+  compri carte, non uno scambio o una creazione diretta. Va distinto sia da
+  `カードパック{{購入|こうにゅう}}`, che è il flusso specifico delle buste, sia da
   [カード{{交換|こうかん}}](term:term-card-exchange),
   [{{生成|せいせい}}](term:term-craft) e
   [{{分解|ぶんかい}}](term:term-disenchant).
 level_hint: custom
+:::
+
+:::term
+id: term-exchange
+lemma: 交換
+reading: こうかん
+romaji: koukan
+meaning_it: scambio / exchange
+pos: verbal-noun
+aliases: [交換, こうかん, koukan]
+notes_it: >-
+  Nel lessico operativo dell'app segnala che ottieni qualcosa passando da una
+  risorsa o da una finestra di scambio, non da un acquisto diretto. Per questo
+  torna spesso in composti come [カード{{交換|こうかん}}](term:term-card-exchange) o
+  [{{交換期間|こうかんきかん}}](term:term-exchange-period).
+level_hint: n4
 :::
 
 :::term
@@ -254,8 +353,9 @@ meaning_it: scambio carte / card exchange
 pos: screen-label
 aliases: [カード交換, kaado koukan]
 notes_it: >-
-  Il composto si legge come `カード` + `{{交換|こうかん}}`: l'oggetto resta la
-  carta, ma l'azione e lo scambio, non l'acquisto. Per questo il label indica
+  Il composto si legge come `カード` +
+  [{{交換|こうかん}}](term:term-exchange): l'oggetto resta la
+  carta, ma l'azione è lo scambio, non l'acquisto. Per questo il label indica
   l'area in cui converti o scambi risorse, non il menu di compra-vendita.
 level_hint: custom
 :::
@@ -301,6 +401,7 @@ aliases: [所持, shoji]
 notes_it: >-
   Compare spesso vicino a numeri o filtri della collezione. Significa che stai
   guardando ciò che possiedi davvero, non ciò che esiste in generale nel gioco.
+  È il label che trasforma un numero in stock reale del tuo account.
 level_hint: n4
 :::
 
@@ -437,7 +538,8 @@ aliases: [達成, tassei]
 notes_it: >-
   Indica che un obiettivo è stato raggiunto o che una condizione conta come
   completata. Nelle schermate missione ti aiuta a leggere lo stato reale dei
-  task, non solo il loro titolo.
+  task, non solo il loro titolo. Molto spesso lo incontri in composti come
+  `{{達成済み|たっせいずみ}}`.
 level_hint: n4
 :::
 
@@ -451,8 +553,8 @@ pos: status-label
 aliases: [開催中, kaisaichuu]
 notes_it: >-
   Il composto si legge come `{{開催|かいさい}}` + [～{{中|ちゅう}}](grammar:grammar-ui-chuu):
-  l'evento e "in svolgimento adesso". Non e un titolo statico, ma un'indicazione
-  di stato che ti dice che quella modalità o campagna e attiva nel presente.
+  l'evento è "in svolgimento adesso". Non è un titolo statico, ma un'indicazione
+  di stato che ti dice che quella modalità o campagna è attiva nel presente.
 level_hint: custom
 :::
 
@@ -644,6 +746,23 @@ tags: [duel-plays, app, reward]
 :::
 
 :::card
+id: card-news-recognition
+entry_type: term
+entry_id: term-news
+card_type: recognition
+front: お知らせ
+back: avvisi / notice
+example_jp: >-
+  お知らせでイベント{{情報|じょうほう}}を{{確認|かくにん}}する。
+example_it: >-
+  Controlla le informazioni evento negli avvisi.
+notes_it: >-
+  È la schermata che ti aggiorna sul contesto del gioco: eventi, campagne,
+  manutenzioni, novità. Non è un premio da ritirare, ma un'area da leggere.
+tags: [duel-plays, app, navigation]
+:::
+
+:::card
 id: card-shop-recognition
 entry_type: term
 entry_id: term-shop
@@ -661,6 +780,41 @@ tags: [duel-plays, app, shop]
 :::
 
 :::card
+id: card-settings-recognition
+entry_type: term
+entry_id: term-settings
+card_type: recognition
+front: 設定
+back: impostazioni / settings
+example_jp: >-
+  {{設定|せってい}}で{{音量|おんりょう}}を{{変|か}}える。
+example_it: >-
+  Cambia il volume nelle impostazioni.
+notes_it: >-
+  Etichetta molto comune e molto pratica: quando la riconosci, sai che stai
+  entrando nelle opzioni dell'app, non in una schermata evento o reward.
+tags: [duel-plays, app, navigation, kanji]
+:::
+
+:::card
+id: card-etc-recognition
+entry_type: term
+entry_id: term-etc
+card_type: recognition
+front: その他
+back: altro / varie / etc.
+example_jp: >-
+  {{その他|そのた}}から{{設定|せってい}}を{{開|ひら}}く。
+example_it: >-
+  Apri le impostazioni dal menu Etc.
+notes_it: >-
+  Non indica un contenuto specifico come missioni o shop: segnala invece un
+  contenitore di voci secondarie. Se lo riconosci, capisci che stai entrando in
+  un menu-cassetto e non in una funzione unica gia definita.
+tags: [duel-plays, app, navigation]
+:::
+
+:::card
 id: card-confirm-recognition
 entry_type: term
 entry_id: term-confirm
@@ -673,7 +827,60 @@ example_it: >-
   Controlla i dettagli prima dell'acquisto.
 notes_it: >-
   Bottone o passaggio di verifica molto comune. Vale la pena fissarlo perché
-  compare ovunque, non solo in questo media.
+  compare ovunque e perché spesso ti dice che non sei ancora al gesto finale,
+  ma a uno step intermedio di controllo.
+tags: [duel-plays, app, action, kanji]
+:::
+
+:::card
+id: card-open-recognition
+entry_type: term
+entry_id: term-open
+card_type: recognition
+front: 開く
+back: aprire / open
+example_jp: >-
+  ホームからミッションを{{開|ひら}}く。
+example_it: >-
+  Apri le missioni dalla Home.
+notes_it: >-
+  Nelle schermate dell'app è un verbo di navigazione molto concreto: ti dice
+  quale sezione stai facendo emergere davvero, non che cosa stai ancora solo
+  guardando.
+tags: [duel-plays, app, action, kanji]
+:::
+
+:::card
+id: card-selection-recognition
+entry_type: term
+entry_id: term-selection
+card_type: recognition
+front: 選択
+back: selezione / scegliere
+example_jp: >-
+  デッキを{{選択|せんたく}}してください。
+example_it: >-
+  Seleziona un deck, per favore.
+notes_it: >-
+  Ti prepara bene ai prompt dell'app: quando compare, la lettura non è più
+  passiva e la schermata ti chiede di scegliere qualcosa di preciso.
+tags: [duel-plays, app, action, kanji]
+:::
+
+:::card
+id: card-save-recognition
+entry_type: term
+entry_id: term-save
+card_type: recognition
+front: 保存
+back: salvataggio / save
+example_jp: >-
+  デッキ{{確認|かくにん}}の{{後|あと}}にデッキ{{保存|ほぞん}}を{{押|お}}す。
+example_it: >-
+  Dopo la deck confirmation, premi deck save.
+notes_it: >-
+  Qui il punto è il passaggio finale: la schermata non ti fa solo controllare il
+  deck, ma ti chiede di fissarlo davvero.
 tags: [duel-plays, app, action, kanji]
 :::
 
@@ -719,13 +926,14 @@ card_type: recognition
 front: 編成
 back: organizzazione / composizione / setup
 example_jp: >-
-  カードを{{入|い}}れ{{替|か}}えて{{編成|へんせい}}する。
+  デッキ{{編成|へんせい}}を{{開|ひら}}く。
 example_it: >-
-  Riorganizza il mazzo sostituendo le carte.
+  Apri la schermata di deck edit.
 notes_it: >-
   Da solo `{{編成|へんせい}}` aggiunge l'idea di mettere insieme elementi in un
-  certo assetto. In `デッキ{{編成|へんせい}}` e la parte che ti fa leggere il
-  label come schermata di deckbuilding, non come semplice nome del mazzo.
+  certo assetto. In UI lo incontri soprattutto in composti come
+  `デッキ{{編成|へんせい}}`, dove segnala che stai entrando nella schermata di
+  costruzione e modifica del mazzo.
 tags: [duel-plays, app, deck, kanji]
 :::
 
@@ -759,10 +967,27 @@ example_jp: >-
 example_it: >-
   Inizia una partita con un rental deck.
 notes_it: >-
-  La parte decisiva e `レンタル`: il mazzo ti viene prestato, non costruito da
+  La parte decisiva è `レンタル`: il mazzo ti viene prestato, non costruito da
   te. Se lo riconosci, capisci subito che puoi entrare in modalità di gioco con
   una lista pronta anche senza una collezione completa.
 tags: [duel-plays, app, deck]
+:::
+
+:::card
+id: card-purchase-recognition
+entry_type: term
+entry_id: term-purchase
+card_type: recognition
+front: 購入
+back: acquisto / comprare
+example_jp: >-
+  チケットで{{購入|こうにゅう}}する。
+example_it: >-
+  Compra usando un ticket.
+notes_it: >-
+  È il verbo-base dell'acquisto nell'app. Ti aiuta a leggere bene sia il costo
+  che il risultato atteso prima di confermare.
+tags: [duel-plays, app, shop, kanji]
 :::
 
 :::card
@@ -773,13 +998,33 @@ card_type: recognition
 front: カード購入
 back: acquisto carte / card purchase
 example_jp: >-
-  カード{{購入|こうにゅう}}でパックを{{買|か}}う。
+  カード{{購入|こうにゅう}}の{{画面|がめん}}を{{開|ひら}}く。
 example_it: >-
-  Compra un pack nella sezione acquisto carte.
+  Apri la schermata acquisto carte.
 notes_it: >-
-  Il punto chiave e `{{購入|こうにゅう}}`: qui stai comprando, non scambiando o
-  craftando. Il composto segnala quindi un flusso di acquisto vero e proprio.
+  Il punto chiave è `{{購入|こうにゅう}}`: qui stai comprando, non scambiando o
+  craftando. Questa card è utile proprio perché ti obbliga a distinguere
+  `カード{{購入|こうにゅう}}` dal flusso più specifico
+  `カードパック{{購入|こうにゅう}}`.
 tags: [duel-plays, app, shop]
+:::
+
+:::card
+id: card-exchange-recognition
+entry_type: term
+entry_id: term-exchange
+card_type: recognition
+front: 交換
+back: scambio / exchange
+example_jp: >-
+  ショップでカードを{{交換|こうかん}}する。
+example_it: >-
+  Scambia una carta nello shop.
+notes_it: >-
+  Conviene fissarlo come azione autonoma, così i composti più lunghi come
+  `カード{{交換|こうかん}}` o `{{交換期間|こうかんきかん}}` smettono di sembrare
+  blocchi opachi.
+tags: [duel-plays, app, shop, kanji]
 :::
 
 :::card
@@ -794,7 +1039,7 @@ example_jp: >-
 example_it: >-
   Ottieni la carta che ti serve tramite Card Exchange.
 notes_it: >-
-  Il punto chiave e `{{交換|こうかん}}`: qui stai scambiando risorse, non
+  Il punto chiave è `{{交換|こうかん}}`: qui stai scambiando risorse, non
   comprando in senso diretto. Questa distinzione evita errori pratici nelle
   schermate shop.
 tags: [duel-plays, app, shop]
@@ -837,6 +1082,23 @@ tags: [duel-plays, app, collection, kanji]
 :::
 
 :::card
+id: card-owned-recognition
+entry_type: term
+entry_id: term-owned
+card_type: recognition
+front: 所持
+back: posseduto / in possesso
+example_jp: >-
+  {{所持|しょじ}}: {{2枚|にまい}}
+example_it: >-
+  Possedute: 2 copie.
+notes_it: >-
+  È il label che ti fa leggere un numero come stock reale del tuo account. In
+  shop e collezione è molto più utile di quanto sembri.
+tags: [duel-plays, app, resource, kanji]
+:::
+
+:::card
 id: card-dm-points-recognition
 entry_type: term
 entry_id: term-dm-points
@@ -850,6 +1112,23 @@ example_it: >-
 notes_it: >-
   Quando questo numero compare, non stai leggendo un dettaglio cosmetico: stai
   leggendo un vincolo o una possibilità reale per ottenere carte.
+tags: [duel-plays, app, resource]
+:::
+
+:::card
+id: card-ticket-recognition
+entry_type: term
+entry_id: term-ticket
+card_type: recognition
+front: チケット
+back: ticket / biglietto
+example_jp: >-
+  チケットを{{1枚|いちまい}}{{使|つか}}う。
+example_it: >-
+  Usa 1 ticket.
+notes_it: >-
+  Parola molto frequente nelle schermate di pack, eventi e accesso alle sfide.
+  Se la riconosci al volo, capisci subito quale risorsa stai per consumare.
 tags: [duel-plays, app, resource]
 :::
 
@@ -922,6 +1201,23 @@ tags: [duel-plays, app, mode]
 :::
 
 :::card
+id: card-achievement-recognition
+entry_type: term
+entry_id: term-achievement
+card_type: recognition
+front: 達成
+back: completamento / raggiungimento
+example_jp: >-
+  {{達成済み|たっせいずみ}}のミッションを{{確認|かくにん}}する。
+example_it: >-
+  Controlla una missione già completata.
+notes_it: >-
+  È il label che ti dice che una condizione è stata soddisfatta. In UI lo
+  incontri molto spesso in composti come `{{達成済み|たっせいずみ}}`.
+tags: [duel-plays, app, status, kanji]
+:::
+
+:::card
 id: card-reward-recognition
 entry_type: term
 entry_id: term-reward
@@ -951,7 +1247,7 @@ example_it: >-
   Questo evento è attualmente in corso.
 notes_it: >-
   `{{開催|かいさい}}` + [～{{中|ちゅう}}](grammar:grammar-ui-chuu) ti dice che
-  evento o modalità sono in corso proprio adesso. E un vero label di stato, non
+  evento o modalità sono in corso proprio adesso. È un vero label di stato, non
   solo il nome della sezione.
 tags: [duel-plays, app, status, kanji]
 :::
@@ -968,7 +1264,7 @@ example_jp: >-
 example_it: >-
   Andando avanti nella storia si sblocca una nuova modalità.
 notes_it: >-
-  Quando lo vedi, l'app sta parlando di accesso che si sblocca. Il punto non e
+  Quando lo vedi, l'app sta parlando di accesso che si sblocca. Il punto non è
   "apertura" in astratto, ma passaggio concreto da non disponibile a
   disponibile.
 tags: [duel-plays, app, status, kanji]

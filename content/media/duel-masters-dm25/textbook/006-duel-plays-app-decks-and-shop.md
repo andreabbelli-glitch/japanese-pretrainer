@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 media_id: media-duel-masters-dm25
 slug: duel-plays-app-decks-and-shop
-title: デュエプレ App 2 - Deckbuilding, collezione e shop
+title: デュエプレ App 2 - Deck, collezione e verbi di acquisizione
 order: 16
 segment_ref: duel-plays-app
 difficulty: n4
@@ -10,22 +10,23 @@ status: active
 tags: [app, deckbuilding, shop, collection, duel-plays]
 prerequisites: [lesson-duel-masters-dm25-duel-plays-app-overview]
 summary: >-
-  Seconda lezione `デュエプレ`: lessico per scegliere un deck, usare rental deck,
-  distinguere acquisto, scambio, generazione e smontaggio delle carte e capire
-  quali risorse contano davvero.
+  Seconda lezione `デュエプレ`: come leggere `デッキ`, `デッキ編成`,
+  `レンタルデッキ` e i verbi che distinguono acquisto, scambio, generazione e
+  smontaggio delle carte.
 ---
 
 # Obiettivo
 
-Questa lesson ti porta nella zona in cui l'app smette di essere solo navigazione
-e diventa preparazione concreta al gioco.
+Questa lesson ti porta nella zona in cui l'app smette di essere solo
+navigazione e diventa preparazione concreta al gioco.
 
 Alla fine dovresti riuscire a:
 
 - distinguere [デッキ](term:term-constructed-deck) da
   [{{山札|やまふだ}}](term:term-deck) senza confonderli;
-- capire che cosa fai in [デッキ{{編成|へんせい}}](term:term-deck-edit) e quando un
-  [レンタルデッキ](term:term-rental-deck) ti basta;
+- capire dove guardi la collezione e dove guardi il mazzo attuale in
+  [デッキ{{編成|へんせい}}](term:term-deck-edit);
+- capire quando un [レンタルデッキ](term:term-rental-deck) ti basta per partire;
 - non trattare come sinonimi [カード{{購入|こうにゅう}}](term:term-card-purchase),
   [カード{{交換|こうかん}}](term:term-card-exchange),
   [{{生成|せいせい}}](term:term-craft) e
@@ -40,14 +41,22 @@ capire un mazzo. Questa parte dell'app è perfetta per i tuoi due obiettivi:
 - ti insegna giapponese pratico, perché il lessico è concreto e riutilizzabile;
 - ti permette davvero di entrare in partita con meno attrito.
 
-Qui il punto chiave è non fermarsi alla traduzione letterale. Devi capire quale
-azione sblocca ogni parola.
+Qui il punto chiave è non fermarsi alla traduzione letterale. Devi capire se un
+label ti fa scegliere un deck, filtrare la collezione o ottenere una carta con
+un certo tipo di risorsa.
+
+Questa lesson introduce la mappa dei verbi di acquisizione. I flussi completi di
+pack, exchange e deck prebuilt verranno poi letti nelle lesson successive.
 
 ## Termini chiave
 
 - [デッキ](term:term-constructed-deck)
 - [デッキ{{編成|へんせい}}](term:term-deck-edit)
 - [レンタルデッキ](term:term-rental-deck)
+- [{{購入|こうにゅう}}](term:term-purchase)
+- [{{交換|こうかん}}](term:term-exchange)
+- [{{保存|ほぞん}}](term:term-save)
+- [{{選択|せんたく}}](term:term-selection)
 - [カード{{購入|こうにゅう}}](term:term-card-purchase)
 - [カード{{交換|こうかん}}](term:term-card-exchange)
 - [{{生成|せいせい}}](term:term-craft)
@@ -82,11 +91,16 @@ Se impari presto questa distinzione, fai due progressi insieme:
 
 :::image
 src: assets/ui/deck-edit.webp
-alt: "Schermata di editing del deck in デュエプレ con lista carte, filtri e pannello del mazzo a destra."
+alt: >-
+  Schermata di editing del deck in デュエプレ con lista carte, filtri,
+  indicatore di possesso, pannello マイデッキ e pulsanti di conferma e
+  salvataggio.
 caption: >-
-  Schermata reale di editing del deck in `デュエプレ`, utile per riconoscere
-  [デッキ](term:term-constructed-deck), `カード{{一覧|いちらん}}`,
-  [{{所持|しょじ}}](term:term-owned) e i comandi di salvataggio.
+  In [デッキ{{編成|へんせい}}](term:term-deck-edit) il lato sinistro è
+  collezione e filtri, il lato destro è il mazzo attuale: leggere bene
+  [カード{{一覧|いちらん}}](grammar:grammar-ichiran),
+  [{{所持|しょじ}}](term:term-owned) e `デッキ{{保存|ほぞん}}` ti evita di
+  confondere consultazione e modifica.
 :::
 
 [デッキ{{編成|へんせい}}](term:term-deck-edit) è il posto in cui modifichi la
@@ -94,7 +108,16 @@ tua lista.
 [レンタルデッキ](term:term-rental-deck) invece ti permette di usare un mazzo
 pronto.
 
-Dal lato pratico:
+Dal lato pratico la schermata separa almeno tre cose:
+
+- a sinistra [カード{{一覧|いちらん}}](grammar:grammar-ichiran) e filtri della
+  collezione;
+- a destra `マイデッキ`, cioè la lista che stai costruendo davvero;
+- in basso pulsanti come `デッキ{{確認|かくにん}}` e
+  `デッキ[{{保存|ほぞん}}](term:term-save)`, che
+  ti dicono se stai solo controllando o fissando le modifiche.
+
+Il contrasto con [レンタルデッキ](term:term-rental-deck) è quindi netto:
 
 - il primo serve a costruire e ottimizzare;
 - il secondo serve a giocare anche se non possiedi ancora tutto.
@@ -113,12 +136,12 @@ Dal lato linguistico:
 ### 3. Acquistare, scambiare, creare, smontare: quattro verbi, quattro flussi
 
 Molti principianti leggono queste parole come se fossero varianti dello stesso
-concetto. Non lo sono.
+concetto. Non lo sono: sono quattro porte diverse.
 
-- [カード{{購入|こうにゅう}}](term:term-card-purchase) = entri in un flusso di
-  acquisto;
+- [カード{{購入|こうにゅう}}](term:term-card-purchase) = entri nel lato
+  [{{購入|こうにゅう}}](term:term-purchase) dello shop;
 - [カード{{交換|こうかん}}](term:term-card-exchange) = ottieni carte tramite
-  scambio;
+  [{{交換|こうかん}}](term:term-exchange);
 - [{{生成|せいせい}}](term:term-craft) = crei direttamente una carta con una
   risorsa;
 - [{{分解|ぶんかい}}](term:term-disenchant) = trasformi una carta in risorsa.
@@ -127,6 +150,10 @@ Qui i tuoi due obiettivi coincidono perfettamente: se capisci male il
 giapponese, rischi di fare l'azione sbagliata; se capisci bene il lessico,
 navighi lo shop con molta più sicurezza.
 
+Per ora ti basta fissare la mappa. Le schermate concrete di
+`カードパック{{購入|こうにゅう}}`, exchange e deck prebuilt verranno aperte in
+modo più dettagliato dopo.
+
 ### 4. `{{所持|しょじ}}`, `DMポイント`, `チケット`: i numeri non sono decorazione
 
 [{{所持|しょじ}}](term:term-owned) ti dice che cosa possiedi già.
@@ -134,13 +161,20 @@ navighi lo shop con molta più sicurezza.
 quali risorse stanno davvero limitando o abilitando una scelta.
 
 Quando vedi un label come [～{{可能|かのう}}](grammar:grammar-kanou), non leggerlo
-in modo astratto. Chiediti subito: "Possibile *perché*? Con quali risorse? In
-quale schermata?"
+in modo astratto. Chiediti subito:
+
+- che cosa possiedo già;
+- che cosa sto per spendere;
+- se quella risorsa basta davvero per concludere l'azione.
 
 ### 5. `〜を{{選択|せんたく}}` è un pattern da riconoscere al volo
 
 Nelle schermate deck e matchmaking compare spesso una formula semplice ma molto
 operativa: [～を{{選択|せんたく}}](grammar:grammar-wo-sentaku).
+
+Qui il nucleo lessicale utile da riconoscere e proprio
+[{{選択|せんたく}}](term:term-selection): la UI non ti sta ancora dicendo di
+partire, ma di scegliere l'oggetto corretto.
 
 Se leggi `デッキを{{選択|せんたく}}`, il messaggio dell'app è diretto:
 
@@ -171,7 +205,7 @@ translation_it: >-
 jp: >-
   レンタルデッキ
 translation_it: >-
-  Mazzo noleggiato / rental deck.
+  Mazzo prestato / rental deck.
 :::
 
 - Qui il punto non è la brevità del label, ma la funzione: `レンタル` ti dice che
@@ -191,6 +225,8 @@ translation_it: >-
 - [DMポイント](term:term-dm-points) = risorsa.
 - [{{生成|せいせい}}](term:term-craft) = azione di creazione.
 - [～{{可能|かのう}}](grammar:grammar-kanou) = l'operazione è davvero disponibile.
+- Il valore pratico sta tutto qui: la schermata non ti sta solo descrivendo la
+  carta, ti sta dicendo che puoi craftarla adesso.
 
 **Esempio 4**
 
@@ -203,8 +239,9 @@ translation_it: >-
 
 - [{{所持|しょじ}}](term:term-owned) ti dice che il numero riguarda ciò che hai
   davvero.
-- In schermata collezione questa parola vale quasi quanto una spiegazione
-  completa.
+- In schermata collezione o shop questa parola vale quasi quanto una frase
+  completa: ti fa leggere il numero come stock reale, non come dato generico del
+  gioco.
 
 ## Nota finale
 

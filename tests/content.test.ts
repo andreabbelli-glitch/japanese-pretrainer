@@ -569,12 +569,12 @@ describe("content parser and validator", () => {
     expect(result.issues).toEqual([]);
     expect(result.data.media?.frontmatter.id).toBe("media-duel-masters-dm25");
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
-    expect(result.data.lessons).toHaveLength(7);
-    expect(result.data.cardFiles).toHaveLength(4);
-    expect(result.data.terms).toHaveLength(82);
+    expect(result.data.lessons).toHaveLength(10);
+    expect(result.data.cardFiles).toHaveLength(5);
+    expect(result.data.terms).toHaveLength(105);
     expect(result.data.grammarPatterns).toHaveLength(18);
-    expect(result.data.cards).toHaveLength(93);
-    expect(result.data.references).toHaveLength(463);
+    expect(result.data.cards).toHaveLength(121);
+    expect(result.data.references).toHaveLength(598);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
@@ -583,12 +583,16 @@ describe("content parser and validator", () => {
       "duel-plays-app-overview",
       "duel-plays-app-decks-and-shop",
       "duel-plays-app-modes-and-progression",
+      "duel-plays-app-rewards-and-claim-flow",
+      "duel-plays-app-shop-packs-and-results",
       "dm25-sd1-overview",
+      "duel-plays-app-exchange-decks-and-setup",
       "dm25-sd2-overview"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
       "cards-duel-masters-dm25-tcg-core-basics",
       "cards-duel-masters-dm25-duel-plays-app-core",
+      "cards-duel-masters-dm25-duel-plays-app-ui-deep-dive",
       "cards-duel-masters-dm25-dm25-sd1-core",
       "cards-duel-masters-dm25-dm25-sd2-core"
     ]);
@@ -877,6 +881,98 @@ describe("content parser and validator", () => {
         category: "integrity"
       })
     );
+  });
+
+  it("flags bare kanji in image alt text and captions", async () => {
+    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-image-kanji-"));
+    const mediaDirectory = path.join(mediaRoot, "demo");
+    const textbookDirectory = path.join(mediaDirectory, "textbook");
+    const cardsDirectory = path.join(mediaDirectory, "cards");
+    const assetsDirectory = path.join(mediaDirectory, "assets", "ui");
+
+    try {
+      await mkdir(textbookDirectory, { recursive: true });
+      await mkdir(cardsDirectory, { recursive: true });
+      await mkdir(assetsDirectory, { recursive: true });
+
+      await writeFile(
+        path.join(mediaDirectory, "media.md"),
+        `---
+id: media-demo
+slug: demo
+title: Demo
+media_type: game
+segment_kind: lesson
+language: ja
+base_explanation_language: it
+---
+`
+      );
+      await writeFile(
+        path.join(textbookDirectory, "001-image.md"),
+        `---
+id: lesson-demo
+media_id: media-demo
+slug: image-demo
+title: Image demo
+order: 1
+---
+
+:::term
+id: term-houshuu-kakunin
+lemma: 報酬確認
+reading: ほうしゅうかくにん
+romaji: houshuu kakunin
+meaning_it: verifica ricompensa
+:::
+
+:::image
+src: assets/ui/demo.svg
+alt: "Schermata 報酬確認."
+caption: >-
+  Apri [報酬確認](term:term-houshuu-kakunin) per vedere il dettaglio.
+:::
+`
+      );
+      await writeFile(
+        path.join(cardsDirectory, "001-core.md"),
+        `---
+id: cards-demo
+media_id: media-demo
+slug: cards-demo
+title: Demo cards
+order: 1
+---
+`
+      );
+      await writeFile(
+        path.join(assetsDirectory, "demo.svg"),
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"></svg>'
+      );
+
+      const result = await parseMediaDirectory(mediaDirectory);
+      const issueCodes = result.issues.map((issue) => issue.code);
+
+      expect(result.ok).toBe(false);
+      expect(issueCodes).toContain("image.alt-bare-kanji");
+      expect(issueCodes).toContain("image.caption-bare-kanji");
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "image.alt-bare-kanji",
+          path: "body.blocks[1].alt",
+          category: "schema"
+        })
+      );
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "image.caption-bare-kanji",
+          path: "body.blocks[1].caption",
+          category: "schema"
+        })
+      );
+    } finally {
+      await rm(mediaRoot, { recursive: true, force: true });
+    }
   });
 
   it("fails on an incomplete bundle fixture without cards/", async () => {

@@ -121,6 +121,7 @@ reader, deve portare il furigana anche quando appare:
 - come testo normale;
 - come label di un link semantico `[...](term:...)` o `[...](grammar:...)`;
 - dentro inline code / backtick;
+- dentro `caption` dei blocchi `:::image`;
 - dentro note, esempi, checklist o spiegazioni.
 
 Quindi non basta che esista una `reading` nella entry glossary: se il testo
@@ -505,7 +506,7 @@ davvero la lettura.
 ```md
 :::image
 src: assets/ui/deck-edit.webp
-alt: Schermata デッキ編成 nell'app Duel Masters Play's.
+alt: Schermata di deckbuilding nell'app Duel Masters Play's.
 caption: >-
   Qui il label [{{編成|へんせい}}](term:term-formation) compare nella UI di
   deckbuilding.
@@ -528,7 +529,13 @@ Regole:
 - il file deve esistere davvero sotto `content/media/<slug>/assets/`;
 - sono ammessi formati immagine comuni: `png`, `jpg`, `jpeg`, `webp`, `gif`,
   `svg`, `avif`;
+- `alt` resta testo semplice: non supporta furigana o riferimenti semantici,
+  quindi evita kanji nudi e preferisci una descrizione italiana o una lettura
+  in kana / katakana;
 - `caption`, se presente, supporta furigana e riferimenti semantici inline;
+- `caption` e testo visibile nel reader: se contiene kanji, annotali con
+  furigana; se richiama una entry glossary / flashcard, collega il termine e
+  annota anche il label visibile quando contiene kanji;
 - il blocco `image` e ammesso nel textbook, non nei file `cards/`.
 
 ## 9. Riferimenti semantici inline

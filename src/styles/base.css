@@ -2224,6 +2224,13 @@ rt {
   --pitch-accent-trace-color: #7abf2f;
   --pitch-accent-cell-size: 1em;
   --pitch-accent-trace-size: 0.1rem;
+  --pitch-accent-rail-start-inset: 0.08em;
+  --pitch-accent-rail-end-trim: 0.08em;
+  --pitch-accent-graph-padding-top: 0.66rem;
+  --pitch-accent-graph-padding-bottom: 0.2rem;
+  --pitch-accent-upper-rail-top: 0.05rem;
+  --pitch-accent-lower-rail-bottom: 0.03rem;
+  --pitch-accent-connector-height: 0.62rem;
   display: inline-grid;
   justify-items: start;
   gap: 0.16rem;
@@ -2232,8 +2239,8 @@ rt {
 .pitch-accent__graph {
   position: relative;
   display: inline-block;
-  padding-top: 0.66rem;
-  padding-bottom: 0.2rem;
+  padding-top: var(--pitch-accent-graph-padding-top);
+  padding-bottom: var(--pitch-accent-graph-padding-bottom);
   font-family: var(--font-family-japanese);
   font-size: 1.5rem;
   line-height: 1;
@@ -2262,34 +2269,39 @@ rt {
 
 .pitch-accent__rail {
   left: calc(
-    var(--pitch-accent-span-offset) * var(--pitch-accent-cell-size) + 0.08em
+    var(--pitch-accent-span-offset) * var(--pitch-accent-cell-size) +
+      var(--pitch-accent-rail-start-inset)
   );
   width: calc(
-    var(--pitch-accent-span-width) * var(--pitch-accent-cell-size) - 0.08em
+    var(--pitch-accent-span-width) * var(--pitch-accent-cell-size) -
+      var(--pitch-accent-rail-end-trim)
   );
   height: var(--pitch-accent-trace-size);
   border-radius: 999px;
 }
 
 .pitch-accent__rail--upper {
-  top: 0.05rem;
+  top: var(--pitch-accent-upper-rail-top);
 }
 
 .pitch-accent__rail--lower {
   top: auto;
-  bottom: 0.03rem;
+  bottom: var(--pitch-accent-lower-rail-bottom);
 }
 
 .pitch-accent__rail--tail {
   width: calc(
-    var(--pitch-accent-span-width) * var(--pitch-accent-cell-size)
+    var(--pitch-accent-span-width) * var(--pitch-accent-cell-size) -
+      var(--pitch-accent-tail-end-trim, 0px)
   );
 }
 
+.pitch-accent__rail--upper.pitch-accent__rail--tail {
+  --pitch-accent-tail-end-trim: 0.08em;
+}
+
 .pitch-accent__rail--lower.pitch-accent__rail--tail {
-  width: calc(
-    var(--pitch-accent-span-width) * var(--pitch-accent-cell-size) - 0.14em
-  );
+  --pitch-accent-tail-end-trim: 0.14em;
 }
 
 .pitch-accent__connector {
@@ -2302,13 +2314,13 @@ rt {
 }
 
 .pitch-accent__connector--drop {
-  top: 0.05rem;
-  height: 0.62rem;
+  top: var(--pitch-accent-upper-rail-top);
+  height: var(--pitch-accent-connector-height);
 }
 
 .pitch-accent__connector--rise {
-  bottom: 0.03rem;
-  height: 0.62rem;
+  bottom: var(--pitch-accent-lower-rail-bottom);
+  height: var(--pitch-accent-connector-height);
 }
 
 .pitch-accent__mora {
@@ -2324,7 +2336,14 @@ rt {
 }
 
 .pitch-accent--compact {
+  --pitch-accent-graph-padding-top: 0.6rem;
+  --pitch-accent-upper-rail-top: 0.1rem;
+  --pitch-accent-connector-height: 0.54rem;
   gap: 0.12rem;
+}
+
+.pitch-accent--compact .pitch-accent__rail--upper.pitch-accent__rail--tail {
+  --pitch-accent-tail-end-trim: 0.12em;
 }
 
 .pitch-accent--reading {

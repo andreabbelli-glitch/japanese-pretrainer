@@ -204,6 +204,11 @@ Per ridurre i fallimenti di import:
   inventato: va usato solo quando l'asset e gia stato predisposto nel bundle;
 - `alt` e obbligatorio per ogni `:::image`; `caption`, se presente, va scritto
   con `>-` quando contiene testo libero o riferimenti inline.
+- in `:::image`, `alt` non renderizza furigana o link: descrivilo in italiano
+  o con kana / katakana, senza lasciare kanji nudi;
+- in `:::image`, `caption` e testo visibile: se compare un termine con kanji,
+  usa furigana; se esiste gia una entry glossary / flashcard, collega il
+  termine e annota anche il label del link quando contiene kanji.
 
 Esempio corretto:
 

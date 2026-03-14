@@ -4,7 +4,7 @@ media_id: media-duel-masters-dm25
 slug: dm25-sd1-overview
 title: DM25-SD1 技の王道 - Abyss, cimitero e pressione
 order: 30
-segment_ref: mazzo-abyss
+segment_ref: analisi-mazzi
 difficulty: n4
 status: active
 tags: [deck, abyss, graveyard, duel-masters]
@@ -101,7 +101,7 @@ risorsa.
 
 :::image
 src: assets/cards/jablood.webp
-alt: "Carta di 邪龍 ジャブラッド centrata e leggibile."
+alt: "Carta di ジャブラッド con epiteto じゃりゅう, centrata e leggibile."
 card_id: card-jablood-recognition
 caption: >-
   Immagine ufficiale di {{邪龍|じゃりゅう}}
@@ -111,7 +111,7 @@ caption: >-
 
 :::image
 src: assets/cards/abyssbell-jashintei.webp
-alt: "Carta di アビスベル=ジャシン帝 centrata e leggibile."
+alt: "Carta di アビスベル=ジャシンてい centrata e leggibile."
 card_id: card-abyssbell-jashintei-recognition
 caption: >-
   Immagine ufficiale di
@@ -240,4 +240,3 @@ translation_it: >-
 riesci a seguire bene [墓地](term:term-graveyard), filtri di
 [コスト](term:term-cost) e famiglie Abyss, stai già costruendo un riflesso molto
 riutilizzabile.
-

@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-duel-plays-app-modes-and-progression
 media_id: media-duel-masters-dm25
 slug: duel-plays-app-modes-and-progression
-title: デュエプレ App 3 - Modalità, eventi e stati di progresso
+title: デュエプレ App 3 - Modalità, stati e ingresso al match
 order: 17
 segment_ref: duel-plays-app
 difficulty: n4
@@ -10,9 +10,9 @@ status: active
 tags: [app, modes, events, progression, duel-plays]
 prerequisites: [lesson-duel-masters-dm25-duel-plays-app-decks-and-shop]
 summary: >-
-  Terza lezione `デュエプレ`: nomi delle modalità principali, label di evento e
-  pattern di stato che ti aiutano a capire dove puoi giocare subito e che cosa
-  è già attivo, completato o ancora bloccato.
+  Terza lezione `デュエプレ`: pannelli modalità, label di stato e passaggi che ti
+  aiutano a capire dove puoi giocare subito e che cosa è attivo, completato o
+  ancora bloccato.
 ---
 
 # Obiettivo
@@ -69,29 +69,35 @@ parole, ma tantissima informazione pratica.
 src: assets/ui/battle-screen-modes.png
 alt: "Schermata Battle di デュエプレ con pannelli visibili per ランクマッチ, カジュアルマッチ e ルームマッチ, oltre alla navigazione inferiore."
 caption: >-
-  Screenshot della schermata `Battle` di `デュエプレ`, utile per fissare come le modalita principali compaiono davvero nell'interfaccia reale: grandi pannelli per [ランクマッチ](term:term-ranked-match), `カジュアルマッチ` e [ルームマッチ](term:term-room-match).
+  Nel tab `Battle` i pannelli grandi ti fanno leggere prima la famiglia di
+  match e solo dopo il dettaglio: [ランクマッチ](term:term-ranked-match),
+  `カジュアルマッチ` e [ルームマッチ](term:term-room-match) non sono solo nomi,
+  ma ingressi a flussi diversi.
 :::
 
 Quando scorri una schermata modalità, il tuo primo compito è classificare il
-contesto:
+contesto. In questo screenshot vedi bene tre pannelli PvP separati anche dal
+layout:
 
 - [ランクマッチ](term:term-ranked-match) = ladder competitiva;
+- `カジュアルマッチ` = partita non ranked, utile come confronto immediato anche
+  se non la trasformiamo in card dedicata;
 - [ルームマッチ](term:term-room-match) = stanza privata o organizzata;
 - [クイック・ピック](term:term-quick-pick) = modalità dal flusso diverso rispetto
   al deck costruito classico;
 - [ソロプレイ](term:term-solo-play) = area single-player;
 - [レジェンドバトル](term:term-legend-battle) e
-  [{{試練の塔|しれんのとう}}](term:term-tower-of-trials) = nomi di contenuti specifici dentro
-  l'asse solo o evento.
+  [{{試練の塔|しれんのとう}}](term:term-tower-of-trials) = nomi di contenuti specifici
+  dentro l'asse solo o evento.
 
 Imparare questi label non significa solo "sapere come si chiamano". Significa
 entrare nel posto giusto senza perdere tempo.
 
-Nell'interfaccia reale questa scelta non appare come una lista neutra: entra
-nel tab `Battle` e ti trovi davanti pannelli grandi con modalita precise, come
-`ランクマッチ`, `カジュアルマッチ` e `ルームマッチ`. Quindi la lettura utile non
-e solo lessicale: e anche spaziale, perche il layout ti dice subito quale
-famiglia di partita stai per aprire.
+La stessa logica vale anche fuori da questa schermata: quando più avanti vedi
+label come [ソロプレイ](term:term-solo-play),
+[クイック・ピック](term:term-quick-pick) o
+[レジェンドバトル](term:term-legend-battle), non stai leggendo "decorazioni".
+Stai leggendo la porta d'ingresso a un flusso preciso.
 
 ### 2. `{{開催中|かいさいちゅう}}`, `{{未|み}}〜`, `〜{{済|ず}}み`: tre stati che cambiano la tua decisione
 
@@ -144,6 +150,11 @@ Per arrivarci bene, il tuo ordine dovrebbe essere:
 3. verifica se la reward o il progresso ti interessano;
 4. solo alla fine premi [{{対戦開始|たいせんかいし}}](term:term-start-match).
 
+Su alcune schermate questo bottone arriva subito. Su altre compare solo dopo
+deck selection, room setup o scelta dello stage. Ma il principio resta uguale:
+`対戦開始` è il punto in cui la lettura smette di essere orientamento e diventa
+partita.
+
 ## Esempi guidati
 
 **Esempio 1**
@@ -152,7 +163,7 @@ Per arrivarci bene, il tuo ordine dovrebbe essere:
 jp: >-
   ランクマッチ {{開催中|かいさいちゅう}}
 translation_it: >-
-  Ranked match attualmente disponibile.
+  Ranked match attualmente attivo.
 :::
 
 - [ランクマッチ](term:term-ranked-match) ti dice il tipo di contenuto.
@@ -195,11 +206,11 @@ translation_it: >-
 
 - È il bottone finale del flusso.
 - Se lo leggi con sicurezza, vuol dire che hai capito abbastanza giapponese da
-  usare davvero quella parte dell'app.
+  usare davvero quella parte dell'app, non solo da riconoscerne il titolo.
 
 ## Nota finale
 
 Lo scopo di questa lesson è semplice: farti leggere le modalità di `デュエプレ`
 come segnali chiari, non come etichette vaghe. Quando succede, il giapponese ti
-aiuta direttamente a scegliere dove giocare e quando farlo.
-
+aiuta direttamente a scegliere dove giocare, quando farlo e quando invece è il
+caso di aspettare, sbloccare o riscuotere altro.

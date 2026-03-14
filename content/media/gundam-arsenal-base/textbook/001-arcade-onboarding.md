@@ -63,7 +63,8 @@ salvati dalla tessera registrata.
 La logica pratica e questa. La tessera IC viene usata davanti alla macchina.
 L'account Bandai Namco ID serve per collegare quella tessera al servizio web.
 [MY PAGE](term:term-mypage) ti permette poi di controllare profilo, missioni,
-risultati e livelli fuori dalla sessione arcade. Se confondi questi tre livelli,
+[{{戦績|せんせき}}](term:term-battle-record) e livelli fuori dalla sessione
+arcade. Se confondi questi tre livelli,
 finisci per cercare sul sito una funzione che in realta richiede ancora la
 tessera fisica.
 
@@ -94,7 +95,9 @@ caption: >-
 Il flusso minimo di una prima sessione puo essere letto cosi.
 
 1. Tocchi l'[アミューズメントICカード](term:term-amusement-ic-card) al
-   [カードリーダー](term:term-card-reader) per caricare o creare i dati.
+   [カードリーダー](term:term-card-reader) per
+   [{{呼|よ}}び{{出|だ}}す](term:term-call-up) i dati gia salvati o crearne di
+   nuovi.
 2. Prepari il [デッキ](term:term-deck) nel [カードスロット](term:term-card-slot):
    sopra [MSカード](term:term-ms-card), sotto [PLカード](term:term-pl-card).
 3. Controlli che le coppie verticali MS + PL abbiano senso, perche ogni coppia
@@ -141,4 +144,3 @@ translation_it: >-
 
 Non confondere la tessera che salva i dati con le carte del mazzo: la prima
 serve a riconoscere te, le seconde costruiscono le tue unita.
-

@@ -9,8 +9,8 @@ requests:
     capture_instructions: >-
       <Istruzioni pratiche per catturare o cercare l'immagine giusta.>
     alt_it: >-
-      <Testo alternativo in italiano obbligatorio.>
+      <Testo alternativo in italiano obbligatorio, senza kanji nudi; se serve usa kana/katakana.>
     caption_it: >-
-      <Caption in italiano da usare nel blocco :::image.>
+      <Caption in italiano da usare nel blocco :::image, con furigana e link semantici se compaiono kanji.>
     notes: >-
       <Note facoltative per evitare ambiguita.>

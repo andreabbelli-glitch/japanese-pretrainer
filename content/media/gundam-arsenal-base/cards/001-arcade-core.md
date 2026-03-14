@@ -52,6 +52,19 @@ level_hint: custom
 :::
 
 :::term
+id: term-call-up
+lemma: 呼び出す
+reading: よびだす
+romaji: yobidasu
+meaning_it: richiamare / caricare dati gia registrati
+notes_it: >-
+  Nel flusso arcade vale la pena leggerlo come azione di recupero dati, non come
+  "chiamare" generico. Quando la tessera IC `{{前回|ぜんかい}}のデータを{{呼|よ}}び{{出|だ}}す`,
+  stai facendo riemergere informazioni gia salvate nel profilo.
+level_hint: n4
+:::
+
+:::term
 id: term-button
 lemma: ボタン
 reading: ぼたん
@@ -149,6 +162,45 @@ meaning_it: servizio web dei dati giocatore
 aliases: [マイページ]
 notes_it: >-
   Dopo aver collegato la tessera salvata e il Bandai Namco ID, qui controlli profilo, missioni, livelli, ultimi risultati e ranking. Non sostituisce la tessera fisica.
+level_hint: custom
+:::
+
+:::term
+id: term-after-return-home
+lemma: 帰宅後
+reading: きたくご
+romaji: kitakugo
+meaning_it: dopo essere tornato a casa
+notes_it: >-
+  È un'espressione temporale molto pratica per questo media: ti segnala che
+  l'azione non avviene piu davanti al cabinato ma nel momento di rilettura o
+  controllo da casa, spesso dentro [MY PAGE](term:term-mypage).
+level_hint: n4
+:::
+
+:::term
+id: term-progress
+lemma: 進行
+reading: しんこう
+romaji: shinkou
+meaning_it: avanzamento / progresso
+notes_it: >-
+  In schermate come missioni o profilo non indica un movimento fisico, ma lo
+  stato di avanzamento di un obiettivo. Ti aiuta a leggere [MY PAGE](term:term-mypage)
+  come riepilogo operativo di cio che stai portando avanti.
+level_hint: n4
+:::
+
+:::term
+id: term-battle-record
+lemma: 戦績
+reading: せんせき
+romaji: senseki
+meaning_it: risultati di battaglia / match record
+notes_it: >-
+  È il riepilogo dei risultati ottenuti nelle partite già giocate. Non è un
+  dettaglio cosmetico del profilo: ti dice come sono andate davvero le sessioni
+  precedenti e ti aiuta a rileggere il rendimento del deck.
 level_hint: custom
 :::
 
@@ -298,6 +350,47 @@ meaning_it: barra usata per le tecniche speciali
 notes_it: >-
   Si carica nel tempo e alimenta la tecnica speciale. Avere la barra pronta non basta: conta se l'obiettivo scelto merita davvero quella spesa.
 level_hint: custom
+:::
+
+:::term
+id: term-role
+lemma: 役割
+reading: やくわり
+romaji: yakuwari
+meaning_it: ruolo / funzione tattica
+notes_it: >-
+  È la parola-base che ti permette di leggere bene la relazione tra una carta e
+  il lavoro che dovrebbe fare sul campo. In questo media conviene fissarla
+  presto perché organizza molto bene [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
+  [{{制圧|せいあつ}}](term:term-role-seiatsu) e
+  [{{防衛|ぼうえい}}](term:term-role-bouei).
+level_hint: n4
+:::
+
+:::term
+id: term-frontline
+lemma: 前線
+reading: ぜんせん
+romaji: zensen
+meaning_it: prima linea / frontline
+notes_it: >-
+  In battaglia non è una parola decorativa: ti dice la zona della mappa in cui
+  una unita deve esporsi e lavorare piu vicino allo scontro. È utile perché
+  collega bene tipo MS, pressione e posizione.
+level_hint: custom
+:::
+
+:::term
+id: term-combat
+lemma: 戦闘
+reading: せんとう
+romaji: sentou
+meaning_it: combattimento / combat
+notes_it: >-
+  È il termine pratico dello scontro diretto tra unita. Ti aiuta a separare la
+  logica del duello locale da quella del danno agli obiettivi, che in Arsenal
+  Base non sono sempre la stessa cosa.
+level_hint: n4
 :::
 
 :::term
@@ -523,6 +616,25 @@ tags: [term, onboarding]
 :::
 
 :::card
+id: card-call-up-recognition
+entry_type: term
+entry_id: term-call-up
+card_type: recognition
+front: >-
+  呼び出す
+back: >-
+  richiamare / caricare dati gia registrati
+example_jp: >-
+  {{前回|ぜんかい}}のデータを{{呼|よ}}び{{出|だ}}せます。
+example_it: >-
+  Puoi richiamare i dati della sessione precedente.
+notes_it: >-
+  Qui la parola serve a leggere la tessera IC come accesso a dati salvati, non
+  come oggetto di gioco.
+tags: [term, onboarding]
+:::
+
+:::card
 id: card-card-slot-recognition
 entry_type: term
 entry_id: term-card-slot
@@ -551,7 +663,7 @@ front: >-
 back: >-
   carta Mobile Suit
 example_jp: >-
-  このMSカードは{{近距離|きんきょり}}{{戦闘|せんとう}}が{{強|つよ}}いので、{{前線|ぜんせん}}に{{出|だ}}す{{役|やく}}に{{向|む}}いています。
+  このMSカードは{{近距離|きんきょり}}[{{戦闘|せんとう}}](term:term-combat)が{{強|つよ}}いので、[{{前線|ぜんせん}}](term:term-frontline)に{{出|だ}}す{{役|やく}}に{{向|む}}いています。
 example_it: >-
   Questa MS card e forte nel combattimento a distanza ravvicinata, quindi si
   presta a essere mandata in prima linea.
@@ -570,7 +682,7 @@ front: >-
 back: >-
   carta pilota
 example_jp: >-
-  PLカードを{{変|か}}えるだけで、{{同|おな}}じMSでも{{役割|やくわり}}が{{大|おお}}きく{{変|か}}わります。
+  PLカードを{{変|か}}えるだけで、{{同|おな}}じMSでも[{{役割|やくわり}}](term:term-role)が{{大|おお}}きく{{変|か}}わります。
 example_it: >-
   Basta cambiare la PL card per modificare molto il ruolo della stessa MS.
 notes_it: >-
@@ -607,12 +719,68 @@ front: >-
 back: >-
   servizio web dei dati giocatore
 example_jp: >-
-  {{帰宅後|きたくご}}にMY PAGEを{{開|ひら}}くと、{{今日|きょう}}のミッション{{進行|しんこう}}と{{戦績|せんせき}}をまとめて{{確認|かくにん}}できます。
+  [{{帰宅後|きたくご}}](term:term-after-return-home)にMY PAGEを{{開|ひら}}くと、{{今日|きょう}}のミッション[{{進行|しんこう}}](term:term-progress)と[{{戦績|せんせき}}](term:term-battle-record)をまとめて{{確認|かくにん}}できます。
 example_it: >-
   Se apri MY PAGE una volta tornato a casa, puoi controllare insieme i
   progressi missione e i risultati di oggi.
 notes_it: >-
   Dopo aver collegato la tessera salvata e il Bandai Namco ID, qui controlli profilo, missioni, livelli, ultimi risultati e ranking. Non sostituisce la tessera fisica.
+tags: [term, onboarding]
+:::
+
+:::card
+id: card-after-return-home-recognition
+entry_type: term
+entry_id: term-after-return-home
+card_type: recognition
+front: >-
+  {{帰宅後|きたくご}}
+back: >-
+  dopo essere tornato a casa
+example_jp: >-
+  {{帰宅後|きたくご}}にMY PAGEを{{開|ひら}}く。
+example_it: >-
+  Apri MY PAGE dopo essere tornato a casa.
+notes_it: >-
+  Ti segnala il passaggio tra sessione arcade e rilettura da casa del profilo.
+tags: [term, onboarding]
+:::
+
+:::card
+id: card-progress-recognition
+entry_type: term
+entry_id: term-progress
+card_type: recognition
+front: >-
+  {{進行|しんこう}}
+back: >-
+  avanzamento / progresso
+example_jp: >-
+  ミッション{{進行|しんこう}}をまとめて{{確認|かくにん}}する。
+example_it: >-
+  Controlla insieme l'avanzamento delle missioni.
+notes_it: >-
+  In MY PAGE ti aiuta a leggere subito quali obiettivi stanno davvero andando
+  avanti e quali no.
+tags: [term, onboarding]
+:::
+
+:::card
+id: card-battle-record-recognition
+entry_type: term
+entry_id: term-battle-record
+card_type: recognition
+front: >-
+  {{戦績|せんせき}}
+back: >-
+  risultati di battaglia / match record
+example_jp: >-
+  {{戦績|せんせき}}を{{見|み}}て{{次|つぎ}}のデッキを{{考|かんが}}える。
+example_it: >-
+  Guarda i risultati e pensa al deck successivo.
+notes_it: >-
+  Non è lore o contorno: è il riepilogo pratico che ti fa rileggere come sono
+  andate davvero le partite precedenti.
 tags: [term, onboarding]
 :::
 
@@ -764,6 +932,62 @@ example_it: >-
   pressione.
 notes_it: >-
   Va letto come ruolo anti-unita. Se un avversario ti sta bloccando la corsia con presenza sul campo, questo e il ruolo che di solito apre la strada.
+tags: [term, battle]
+:::
+
+:::card
+id: card-role-recognition
+entry_type: term
+entry_id: term-role
+card_type: recognition
+front: >-
+  {{役割|やくわり}}
+back: >-
+  ruolo / funzione tattica
+example_jp: >-
+  ユニットの{{役割|やくわり}}を{{見|み}}て{{出撃|しゅつげき}}{{先|さき}}を{{決|き}}める。
+example_it: >-
+  Guarda il ruolo dell'unita e decidi dove mandarla.
+notes_it: >-
+  È la parola che ti permette di leggere le carte come pezzi con un compito
+  preciso, non come semplici statistiche isolate.
+tags: [term, battle]
+:::
+
+:::card
+id: card-frontline-recognition
+entry_type: term
+entry_id: term-frontline
+card_type: recognition
+front: >-
+  {{前線|ぜんせん}}
+back: >-
+  prima linea / frontline
+example_jp: >-
+  {{前線|ぜんせん}}に{{出|だ}}す{{役割|やくわり}}を{{先|さき}}に{{決|き}}める。
+example_it: >-
+  Decidi prima quale ruolo mandare in prima linea.
+notes_it: >-
+  Ti aiuta a collegare bene posizione sulla mappa e funzione dell'unita.
+tags: [term, battle]
+:::
+
+:::card
+id: card-combat-recognition
+entry_type: term
+entry_id: term-combat
+card_type: recognition
+front: >-
+  {{戦闘|せんとう}}
+back: >-
+  combattimento / combat
+example_jp: >-
+  {{近距離|きんきょり}}{{戦闘|せんとう}}が{{強|つよ}}いMSを{{前線|ぜんせん}}に{{出|だ}}す。
+example_it: >-
+  Manda in prima linea una MS forte nel combattimento ravvicinato.
+notes_it: >-
+  Fissa bene il lessico dello scontro locale, che in Arsenal Base non coincide
+  sempre con la pressione sugli obiettivi.
 tags: [term, battle]
 :::
 

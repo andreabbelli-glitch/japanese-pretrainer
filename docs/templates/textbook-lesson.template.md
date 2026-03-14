@@ -69,12 +69,17 @@ bundle, usa:
 ```md
 :::image
 src: assets/ui/deck-edit.webp
-alt: Schermata デッキ編成 nell'app.
+alt: Schermata di deckbuilding nell'app.
 caption: >-
   Qui il label [{{編成|へんせい}}](term:term-formation) indica la schermata di
   deckbuilding.
 :::
 ```
+
+`alt` resta testo semplice: niente furigana, niente link e niente kanji nudi.
+`caption` invece e testo visibile nel reader: se citi un termine con kanji,
+annotalo con furigana e, se esiste gia una entry glossary / flashcard,
+collegalo con il relativo link semantico.
 
 ## Nota finale
 

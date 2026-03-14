@@ -8,7 +8,11 @@ segment_ref: tcg-core
 difficulty: n4
 status: active
 tags: [core, grammar, rules-text, effects]
-prerequisites: [lesson-duel-masters-dm25-tcg-core-overview]
+prerequisites:
+  [
+    lesson-duel-masters-dm25-tcg-core-overview,
+    lesson-duel-masters-dm25-tcg-card-types,
+  ]
 summary: >-
   Seconda lezione core più tecnica: trigger, sequenza, opzionalità,
   sostituzione, controllo di stato e restrizioni del rules text di Duel

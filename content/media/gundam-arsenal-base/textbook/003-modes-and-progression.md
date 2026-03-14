@@ -44,6 +44,7 @@ missioni, ricompense e crescita del profilo.
 - [{{作戦|さくせん}}カード](term:term-tactics-card)
 - [{{メイン枠|めいんわく}}](term:term-main-slot)
 - [{{サブ枠|さぶわく}}](term:term-sub-slot)
+- [{{役割|やくわり}}](term:term-role)
 - [{{殲滅|せんめつ}}](term:term-role-shoumetsu)
 - [{{制圧|せいあつ}}](term:term-role-seiatsu)
 - [{{防衛|ぼうえい}}](term:term-role-bouei)
@@ -60,7 +61,7 @@ Le quattro modalita principali ufficiali da riconoscere sono [ランクマッチ
 
 :::image
 src: assets/ui/mode-select-screen.webp
-alt: "Schermata ufficiale di selezione modalita con riquadri per Rank Match, Challenge Mode e Casual Match, piu il pannello 対戦モード選択."
+alt: "Schermata ufficiale di selezione modalita con riquadri per Rank Match, Challenge Mode e Casual Match, piu il pannello di selezione versus."
 caption: >-
   Schermata ufficiale di selezione modalita: riconosci [ランクマッチ](term:term-rank-match), [チャレンジモード](term:term-challenge-mode) e [カジュアルマッチ](term:term-casual-match), piu il pannello `{{対戦|たいせん}}モード{{選択|せんたく}}` che decide come cercare l'avversario.
 :::
@@ -77,7 +78,7 @@ quindi l'ingresso nel rank e meno punitivo di quanto sembri.
 prime partite consapevoli. Combatti contro CPU, vedi piu chiaramente il ritmo
 delle azioni e puoi legare ogni partita a una lettura concreta dello schermo.
 Inoltre ha ricompense dedicate, quindi non e tempo "sprecato": e il posto giusto
-per fissare ruoli, input e ordine di osservazione.
+per fissare [{{役割|やくわり}}](term:term-role), input e ordine di osservazione.
 
 [カジュアルマッチ](term:term-casual-match) usa le stesse regole base del rank,
 ma senza movimento di rank. Ti serve quando vuoi provare un
@@ -102,7 +103,7 @@ iniziale da ricordare e semplice: quando il
 equipaggiarne una nel [{{メイン枠|めいんわく}}](term:term-main-slot) e una nel
 [{{サブ枠|さぶわく}}](term:term-sub-slot).
 
-[MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di controllare il progresso delle [ミッション](term:term-mission), i livelli di MS e PL, gli ultimi risultati di battaglia e alcuni dati cumulativi. Per lo studio della lingua questo e utile, perche ti fa rivedere con calma le categorie che in sala giochi scorrono troppo in fretta.
+[MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di controllare l'[{{進行|しんこう}}](term:term-progress) delle [ミッション](term:term-mission), i livelli di MS e PL, gli ultimi [{{戦績|せんせき}}](term:term-battle-record) e alcuni dati cumulativi. Questa rilettura e particolarmente utile [{{帰宅後|きたくご}}](term:term-after-return-home), perche ti fa rivedere con calma le categorie che in sala giochi scorrono troppo in fretta.
 
 :::image
 src: assets/ui/missions-progress-screen.webp
@@ -161,7 +162,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{最初|さいしょ}}のデッキは、{{殲滅|せんめつ}}{{2枚|にまい}}・{{制圧|せいあつ}}{{2枚|にまい}}・{{防衛|ぼうえい}}{{1枚|いちまい}}くらいだと{{役割|やくわり}}が{{見|み}}えやすいです。
+  {{最初|さいしょ}}のデッキは、{{殲滅|せんめつ}}{{2枚|にまい}}・{{制圧|せいあつ}}{{2枚|にまい}}・{{防衛|ぼうえい}}{{1枚|いちまい}}くらいだと[{{役割|やくわり}}](term:term-role)が{{見|み}}えやすいです。
 translation_it: >-
   In un primo deck, una ripartizione di circa 2 annientamenti, 2 pressioni e 1
   difesa rende le funzioni piu leggibili.
@@ -179,5 +180,3 @@ translation_it: >-
 
 La progressione iniziale funziona meglio se scegli modalita che ti insegnano a
 leggere il campo prima di chiederti efficienza o risultato competitivo.
-
-

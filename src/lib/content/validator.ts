@@ -38,6 +38,7 @@ import type {
   ExampleSentenceBlock,
   GrammarDefinitionBlock,
   ImageBlock,
+  InlineNode,
   LessonFrontmatter,
   MarkdownDocument,
   MediaFrontmatter,
@@ -2105,6 +2106,23 @@ async function normalizeImageBlock(
       : null;
 
   issues.push(...(captionFragment?.issues ?? []));
+  reportImageAltKanjiIssue(
+    alt,
+    sourceContext.filePath,
+    `${sourcePath}.alt`,
+    rawBlock.fieldRanges?.alt ?? rawBlock.position,
+    issues
+  );
+
+  if (captionFragment) {
+    reportImageCaptionKanjiIssue(
+      captionFragment.fragment.nodes,
+      sourceContext.filePath,
+      `${sourcePath}.caption`,
+      captionRange,
+      issues
+    );
+  }
 
   return {
     block: {
@@ -2117,6 +2135,76 @@ async function normalizeImageBlock(
     },
     references: [...(captionFragment?.references ?? [])]
   };
+}
+
+const bareKanjiPattern = /\p{Script=Han}/u;
+
+function reportImageAltKanjiIssue(
+  alt: string,
+  filePath: string,
+  sourcePath: string,
+  range: SourceRange | undefined,
+  issues: ValidationIssue[]
+) {
+  if (!bareKanjiPattern.test(alt)) {
+    return;
+  }
+
+  issues.push(
+    createIssue({
+      code: "image.alt-bare-kanji",
+      category: "schema",
+      message:
+        "Image alt text contains kanji, but alt strings cannot render furigana or semantic references.",
+      filePath,
+      path: sourcePath,
+      range,
+      hint: "Rewrite the alt in Italian or with kana/katakana only; keep kanji support in the visible caption instead."
+    })
+  );
+}
+
+function reportImageCaptionKanjiIssue(
+  nodes: InlineNode[],
+  filePath: string,
+  sourcePath: string,
+  range: SourceRange | undefined,
+  issues: ValidationIssue[]
+) {
+  if (!inlineNodesContainBareKanji(nodes)) {
+    return;
+  }
+
+  issues.push(
+    createIssue({
+      code: "image.caption-bare-kanji",
+      category: "schema",
+      message:
+        "Image caption contains visible kanji outside furigana markup.",
+      filePath,
+      path: sourcePath,
+      range,
+      hint: "Annotate visible labels with furigana, or use a semantic reference whose label is fully annotated, for example [{{報酬確認|ほうしゅうかくにん}}](term:...)."
+    })
+  );
+}
+
+function inlineNodesContainBareKanji(nodes: InlineNode[]): boolean {
+  return nodes.some((node) => {
+    switch (node.type) {
+      case "text":
+        return bareKanjiPattern.test(node.value);
+      case "furigana":
+      case "break":
+        return false;
+      case "reference":
+      case "emphasis":
+      case "strong":
+      case "inlineCode":
+      case "link":
+        return inlineNodesContainBareKanji(node.children);
+    }
+  });
 }
 
 function validateDuplicateIds(

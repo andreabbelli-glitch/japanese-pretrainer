@@ -148,6 +148,11 @@ Se una lesson usa screenshot o immagini carte:
 - usa nomi stabili e descrittivi, per esempio
   `assets/ui/deck-edit.webp` o `assets/cards/abyss-bell.svg`;
 - inserisci nel textbook un blocco `:::image` solo quando il file esiste gia;
+- in `image-requests.yaml` / `image-assets.yaml`, `alt_it` deve restare testo
+  semplice: evita kanji nudi e preferisci italiano o kana / katakana;
+- in `image-requests.yaml` / `image-assets.yaml`, `caption_it` e testo visibile:
+  se compaiono kanji, annotali con furigana; se richiama una entry glossary /
+  flashcard, usa il link semantico e annota anche il label;
 - non lasciare in `content/media/...` placeholder tipo `TODO`, URL remoti o
   `src` inventati.
 
@@ -204,6 +209,8 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
   media;
 - se una lesson contiene `:::image`, verifica che l'immagine mostri davvero il
   label, la schermata o la carta promessa dalla caption;
+- verifica che `alt` delle immagini non lasci kanji nudi e che `caption`
+  annoti con furigana o link semantico ogni termine visibile che lo richiede;
 - se la spiegazione riguarda un nome proprio opaco, verifica che chiarisca
   almeno quale ruolo ricorrente segnala nel deck o nell'app.
 

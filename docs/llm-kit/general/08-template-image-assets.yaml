@@ -7,8 +7,8 @@ assets:
     lesson_slug: <lesson-slug>
     anchor: "## <heading-esatta>"
     alt_it: >-
-      <Override opzionale del testo alternativo.>
+      <Override opzionale del testo alternativo, in italiano o kana/katakana: niente kanji nudi.>
     caption_it: >-
-      <Override opzionale della caption.>
+      <Override opzionale della caption visibile: usa furigana e link semantici se compaiono kanji.>
     notes: >-
       <Note facoltative sul file o sulla provenienza.>

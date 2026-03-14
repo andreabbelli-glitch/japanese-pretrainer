@@ -4,7 +4,7 @@ media_id: media-duel-masters-dm25
 slug: dm25-sd2-overview
 title: DM25-SD2 力の王道 - 侵略, evoluzione e chiusura
 order: 40
-segment_ref: mazzo-apollo-red-zone
+segment_ref: analisi-mazzi
 difficulty: n4
 status: active
 tags: [deck, evolution, invasion, attack, duel-masters]
@@ -100,7 +100,7 @@ requisito e payoff.
 
 :::image
 src: assets/cards/red-zone.webp
-alt: "Carta di 轟く侵略 レッドゾーン centrata e leggibile."
+alt: "Carta di とどろくしんりゃく レッドゾーン centrata e leggibile."
 card_id: card-red-zone-recognition
 caption: >-
   Immagine ufficiale di {{轟|とどろ}}く{{侵略|しんりゃく}}
@@ -110,7 +110,7 @@ caption: >-
 
 :::image
 src: assets/cards/apollonus-dragelion.webp
-alt: "Carta di 超神羅星アポロヌス・ドラゲリオン centrata e leggibile."
+alt: "Carta di ちょうしんらせいアポロヌス・ドラゲリオン centrata e leggibile."
 card_id: card-apollonus-dragelion-recognition
 caption: >-
   Immagine ufficiale di {{超神羅星|ちょうしんらせい}}
@@ -236,4 +236,3 @@ translation_it: >-
 leggere bene [進化](term:term-evolution), [侵略](term:term-invasion),
 [攻撃](term:term-attack) e [重ねる](term:term-kasaneru), poi molti testi
 aggressivi di Duel Masters iniziano a sembrarti immediatamente più ordinati.
-

@@ -67,6 +67,7 @@ però, ti serve una base comune.
 - [出る](term:term-deru)
 - [出す](term:term-dasu)
 - [置く](term:term-oku)
+- [加える](term:term-add)
 - [選ぶ](term:term-erabu)
 - [攻撃](term:term-attack)
 - [ブレイク](term:term-break)
@@ -97,7 +98,7 @@ libera. Stai leggendo istruzioni.
 
 :::image
 src: assets/cards/abyssbell-jashintei.webp
-alt: "Carta di アビスベル=ジャシン帝 con costo, nome, tipo, razza, testo effetto e potenza ben visibili."
+alt: "Carta di アビスベル=ジャシンてい con costo, nome, tipo, razza, testo effetto e potenza ben visibili."
 card_id: card-abyssbell-jashintei-recognition
 caption: >-
   Carta reale di
@@ -142,7 +143,8 @@ Molte frasi si capiscono già a metà se individui la traiettoria:
 
 Per esempio:
 
-- `{{山札|やまふだ}}から{{手札|てふだ}}に{{加|くわ}}える` = deck -> mano;
+- `{{山札|やまふだ}}から{{手札|てふだ}}に[{{加|くわ}}える](term:term-add)` =
+  deck -> mano;
 - `{{墓地|ぼち}}から{{出|だ}}す` = cimitero -> campo;
 - `{{マナゾーン|まなぞーん}}に{{置|お}}く` = mettere nella zona mana.
 
@@ -171,6 +173,7 @@ Per iniziare ti bastano pochi verbi ad altissima frequenza:
 - [出る](term:term-deru)
 - [出す](term:term-dasu)
 - [置く](term:term-oku)
+- [加える](term:term-add)
 - [選ぶ](term:term-erabu)
 - [攻撃](term:term-attack)
 - [破壊](term:term-destroy)
@@ -182,6 +185,10 @@ La coppia più importante è [出る](term:term-deru) / [出す](term:term-dasu)
 - [出す](term:term-dasu) descrive chi la mette in gioco.
 
 Se impari questa differenza presto, leggi meglio metà del gioco.
+
+[加える](term:term-add) è il passo subito dopo: spesso non cambia la carta in
+campo, ma cambia la tua mano. Se lo riconosci presto, leggi meglio gli effetti
+che trasformano deck, scudi o cimitero in risorsa disponibile.
 
 ### 6. Una prima passata non è una traduzione
 
