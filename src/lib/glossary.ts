@@ -8,23 +8,29 @@ import {
   getMediaBySlug,
   getTermCrossMediaFamilyByEntryId,
   getTermEntryBySourceId,
+  listEntryCardCounts,
   listEntryCardConnections,
   listEntryLessonConnections,
   listEntryStudySignals,
   listGlossarySegmentsByMediaId,
+  listGrammarEntrySummaries,
   listGrammarEntries,
   listGrammarEntriesByMediaId,
   listMedia,
+  listTermEntrySummaries,
   listTermEntries,
   listTermEntriesByMediaId,
   type DatabaseClient,
   type CrossMediaGrammarSibling,
   type CrossMediaGroupRecord,
   type CrossMediaTermSibling,
+  type EntryCardCount,
   type EntryCardConnection,
   type EntryLessonConnection,
   type GlossaryEntryRef,
+  type GrammarGlossaryEntrySummary,
   type GrammarGlossaryEntry,
+  type TermGlossaryEntrySummary,
   type TermGlossaryEntry
 } from "@/db";
 import {
@@ -53,6 +59,7 @@ import {
   normalizeSearchText,
   romanizeKanaForSearch
 } from "@/lib/study-search";
+import { getGlossaryAutocompleteSuggestions } from "@/lib/glossary-autocomplete";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 import {
   buildPronunciationData,
@@ -233,7 +240,6 @@ export type GlossaryPageData = {
 };
 
 export type GlobalGlossaryPageData = {
-  autocompleteSuggestions: GlobalGlossaryAutocompleteSuggestion[];
   filters: GlossaryQueryState;
   hasActiveFilters: boolean;
   mediaOptions: Array<{
@@ -280,6 +286,8 @@ type GlossaryResolvedEntry = RankedGlossaryEntry & {
   matchesCurrentFilters: boolean;
   matchesCurrentQuery: boolean;
 };
+
+type GlossaryLoadMode = "list" | "search";
 
 type GlossaryDetailLesson = {
   href: Route;
@@ -384,6 +392,7 @@ export async function getGlossaryPageData(
   const [segments, entries] = await Promise.all([
     listGlossarySegmentsByMediaId(database, media.id),
     loadGlossaryBaseEntries(database, {
+      entryType: filters.entryType,
       mediaId: media.id
     })
   ]);
@@ -503,13 +512,15 @@ export async function getGlobalGlossaryPageData(
 ): Promise<GlobalGlossaryPageData> {
   markDataAsLive();
 
-  const defaultSort = await getGlossaryDefaultSort(database);
-  const filters = normalizeGlossaryQuery(searchParams, defaultSort);
-  const [mediaRows, entries] = await Promise.all([
-    listMedia(database),
-    loadGlossaryBaseEntries(database)
+  const [defaultSort, mediaRows] = await Promise.all([
+    getGlossaryDefaultSort(database),
+    listMedia(database)
   ]);
-  const { candidates } = await buildGlossaryResolvedEntries(
+  const filters = normalizeGlossaryQuery(searchParams, defaultSort);
+  const entries = await loadGlossaryBaseEntries(database, {
+    mode: filters.query ? "search" : "list"
+  });
+  const { candidates } = await buildGlobalGlossaryResolvedEntries(
     database,
     entries,
     filters
@@ -522,7 +533,6 @@ export async function getGlobalGlossaryPageData(
   const total = [...groups.values()].length;
 
   return {
-    autocompleteSuggestions: buildGlobalGlossaryAutocompleteSuggestions(groups),
     filters,
     hasActiveFilters: hasActiveGlossaryFilters(filters, defaultSort),
     mediaOptions: mediaRows.map((row) => ({
@@ -543,6 +553,41 @@ export async function getGlobalGlossaryPageData(
       withCardsCount: countResultsWithCards(groups)
     }
   };
+}
+
+export async function getGlobalGlossaryAutocompleteData(
+  searchParams: Record<string, string | string[] | undefined>,
+  database: DatabaseClient = db
+): Promise<GlobalGlossaryAutocompleteSuggestion[]> {
+  markDataAsLive();
+
+  const defaultSort = await getGlossaryDefaultSort(database);
+  const filters = normalizeGlossaryQuery(searchParams, defaultSort);
+
+  if (filters.query.length === 0) {
+    return [];
+  }
+
+  const entries = await loadGlossaryBaseEntries(database, {
+    mode: "search"
+  });
+  const { candidates } = await buildGlobalGlossaryResolvedEntries(
+    database,
+    entries,
+    filters
+  );
+  const groups = groupResolvedEntriesByResult(candidates);
+  const relevantGroups = new Map(
+    [...groups.entries()].filter(([, entries]) =>
+      entries.some((entry) => entry.matchesCurrentQuery)
+    )
+  );
+
+  return buildGlobalGlossaryAutocompleteSuggestions(
+    relevantGroups,
+    filters.query,
+    filters
+  );
 }
 
 export async function getTermGlossaryDetailData(
@@ -642,21 +687,45 @@ async function getGlossaryDetailData(
 async function loadGlossaryBaseEntries(
   database: DatabaseClient,
   options: {
+    entryType?: GlossaryQueryState["entryType"];
     mediaId?: string;
+    mode?: GlossaryLoadMode;
   } = {}
 ) {
-  const [terms, grammar] = await Promise.all([
-    options.mediaId
-      ? listTermEntriesByMediaId(database, options.mediaId)
-      : listTermEntries(database),
-    options.mediaId
-      ? listGrammarEntriesByMediaId(database, options.mediaId)
-      : listGrammarEntries(database)
-  ]);
+  const mode = options.mode ?? "search";
+  const termPromise =
+    options.entryType === "grammar"
+      ? Promise.resolve([])
+      : mode === "list"
+        ? listTermEntrySummaries(database, {
+            mediaId: options.mediaId
+          })
+        : options.mediaId
+          ? listTermEntriesByMediaId(database, options.mediaId)
+          : listTermEntries(database);
+  const grammarPromise =
+    options.entryType === "term"
+      ? Promise.resolve([])
+      : mode === "list"
+        ? listGrammarEntrySummaries(database, {
+            mediaId: options.mediaId
+          })
+        : options.mediaId
+          ? listGrammarEntriesByMediaId(database, options.mediaId)
+          : listGrammarEntries(database);
+  const [terms, grammar] = await Promise.all([termPromise, grammarPromise]);
 
   return [
-    ...terms.map((entry) => mapEntryToBaseModel(entry, "term")),
-    ...grammar.map((entry) => mapEntryToBaseModel(entry, "grammar"))
+    ...terms.map((entry) =>
+      mode === "list"
+        ? mapTermSummaryToBaseModel(entry as TermGlossaryEntrySummary)
+        : mapEntryToBaseModel(entry as TermGlossaryEntry, "term")
+    ),
+    ...grammar.map((entry) =>
+      mode === "list"
+        ? mapGrammarSummaryToBaseModel(entry as GrammarGlossaryEntrySummary)
+        : mapEntryToBaseModel(entry as GrammarGlossaryEntry, "grammar")
+    )
   ];
 }
 
@@ -683,54 +752,43 @@ async function buildGlossaryResolvedEntries(
     listEntryCardConnections(database, entryRefs)
   ]);
   const cardsByEntry = groupRowsByEntry(cardConnections);
-  const query = buildFilteredQuery(filters.query);
-  const candidates = entries.map((entry) => {
-    const studySignals = (
-      studySignalsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? []
-    ).map((signal) => ({
-      manualOverride: signal.manualOverride,
-      reviewState: signal.reviewState
-    }));
-    const studyState = deriveEntryStudyState(entry.entryStatus, studySignals);
-    const rankedEntry =
-      buildRankedGlossaryEntry(entry, query, studyState) ??
-      ({
-        ...entry,
-        href: mediaGlossaryEntryHref(entry.mediaSlug, entry.kind, entry.id),
-        matchBadges: [],
-        matchedFields: {
-          aliases: []
-        },
-        score: 0,
-        studyState
-      } satisfies RankedGlossaryEntry);
-    const cardCount =
-      cardsByEntry.get(`${entry.kind}:${entry.internalId}`)?.length ?? 0;
-
-    return {
-      ...rankedEntry,
-      cardCount,
-      hasCards: cardCount > 0,
-      matchesCurrentFilters:
-        entryMatchesGlossaryFilters(
-          {
-            cardCount,
-            kind: entry.kind,
-            mediaSlug: entry.mediaSlug,
-            segmentId: entry.segmentId,
-            studyState
-          },
-          filters
-        ) &&
-        (!query || rankedEntry.score > 0),
-      matchesCurrentQuery: !query || rankedEntry.score > 0
-    };
+  const candidates = buildResolvedEntriesFromMaps({
+    cardCountByEntry: new Map(
+      [...cardsByEntry.entries()].map(([key, rows]) => [key, rows.length] as const)
+    ),
+    entries,
+    filters,
+    studySignalsByEntry
   });
 
   return {
     candidates,
     cardsByEntry,
     studySignalsByEntry
+  };
+}
+
+async function buildGlobalGlossaryResolvedEntries(
+  database: DatabaseClient,
+  entries: GlossaryBaseEntry[],
+  filters: GlossaryQueryState
+) {
+  const entryRefs = entries.map((entry) => ({
+    entryId: entry.internalId,
+    entryType: entry.kind
+  }));
+  const [studySignalsByEntry, cardCounts] = await Promise.all([
+    loadStudySignalsByEntry(database, entryRefs),
+    listEntryCardCounts(database, entryRefs)
+  ]);
+
+  return {
+    candidates: buildResolvedEntriesFromMaps({
+      cardCountByEntry: buildEntryCardCountMap(cardCounts),
+      entries,
+      filters,
+      studySignalsByEntry
+    })
   };
 }
 
@@ -935,7 +993,12 @@ function countResultsWithCards(groups: Map<string, GlossaryResolvedEntry[]>) {
 }
 
 function buildGlobalGlossaryAutocompleteSuggestions(
-  groups: Map<string, GlossaryResolvedEntry[]>
+  groups: Map<string, GlossaryResolvedEntry[]>,
+  query?: string,
+  filters?: Pick<
+    GlossaryQueryState,
+    "cards" | "entryType" | "media" | "study"
+  >
 ) {
   const suggestions: GlobalGlossaryAutocompleteSuggestion[] = [];
 
@@ -980,9 +1043,22 @@ function buildGlobalGlossaryAutocompleteSuggestions(
     });
   }
 
-  suggestions.sort((left, right) => left.label.localeCompare(right.label, "ja"));
+  if (!query) {
+    suggestions.sort((left, right) => left.label.localeCompare(right.label, "ja"));
 
-  return suggestions;
+    return suggestions;
+  }
+
+  return getGlossaryAutocompleteSuggestions({
+    filters: filters ?? {
+      cards: "all",
+      entryType: "all",
+      media: "all",
+      study: "all"
+    },
+    query,
+    suggestions
+  });
 }
 
 function buildGlossaryMediaSummary(
@@ -1230,6 +1306,73 @@ function mapEntryToBaseModel(
     notesNorm: grammarEntry.notesIt
       ? normalizeSearchText(stripInlineMarkdown(grammarEntry.notesIt))
       : undefined
+  };
+}
+
+function mapTermSummaryToBaseModel(
+  entry: TermGlossaryEntrySummary
+): GlossaryBaseEntry {
+  return {
+    internalId: entry.id,
+    id: entry.sourceId,
+    kind: "term",
+    crossMediaGroupId: entry.crossMediaGroupId ?? undefined,
+    crossMediaGroupKey: entry.crossMediaGroupKey ?? undefined,
+    label: entry.lemma,
+    mediaId: entry.mediaId,
+    mediaSlug: entry.mediaSlug,
+    mediaTitle: entry.mediaTitle,
+    reading: entry.reading,
+    romaji: entry.romaji,
+    pronunciation:
+      buildPronunciationData(entry.mediaSlug, {
+        ...entry,
+        reading: entry.reading
+      }) ?? undefined,
+    meaning: entry.meaningIt,
+    levelHint: entry.levelHint ?? undefined,
+    segmentId: entry.segmentId,
+    segmentTitle: entry.segmentTitle ?? undefined,
+    aliases: [],
+    entryStatus: entry.entryStatus ?? null,
+    lemmaNorm: entry.searchLemmaNorm,
+    readingNorm: entry.searchReadingNorm,
+    romajiNorm: entry.searchRomajiNorm,
+    meaningNorm: normalizeSearchText(entry.meaningIt)
+  };
+}
+
+function mapGrammarSummaryToBaseModel(
+  entry: GrammarGlossaryEntrySummary
+): GlossaryBaseEntry {
+  return {
+    internalId: entry.id,
+    id: entry.sourceId,
+    kind: "grammar",
+    crossMediaGroupId: entry.crossMediaGroupId ?? undefined,
+    crossMediaGroupKey: entry.crossMediaGroupKey ?? undefined,
+    label: entry.pattern,
+    mediaId: entry.mediaId,
+    mediaSlug: entry.mediaSlug,
+    mediaTitle: entry.mediaTitle,
+    title: entry.title,
+    reading: entry.reading ?? undefined,
+    pronunciation:
+      buildPronunciationData(entry.mediaSlug, {
+        ...entry,
+        reading: entry.reading ?? entry.pattern
+      }) ?? undefined,
+    meaning: entry.meaningIt,
+    levelHint: entry.levelHint ?? undefined,
+    segmentId: entry.segmentId,
+    segmentTitle: entry.segmentTitle ?? undefined,
+    aliases: [],
+    entryStatus: entry.entryStatus ?? null,
+    lemmaNorm: entry.searchPatternNorm,
+    romajiNorm: romanizeKanaForSearch(entry.searchPatternNorm),
+    patternNorm: entry.searchPatternNorm,
+    meaningNorm: normalizeSearchText(entry.meaningIt),
+    titleNorm: normalizeSearchText(entry.title)
   };
 }
 
@@ -1668,6 +1811,64 @@ function buildStudySignalMap(rows: StudySignalRow[]) {
   }
 
   return map;
+}
+
+function buildEntryCardCountMap(rows: EntryCardCount[]) {
+  return new Map(
+    rows.map((row) => [`${row.entryType}:${row.entryId}`, row.cardCount] as const)
+  );
+}
+
+function buildResolvedEntriesFromMaps(input: {
+  cardCountByEntry: Map<string, number>;
+  entries: GlossaryBaseEntry[];
+  filters: GlossaryQueryState;
+  studySignalsByEntry: Map<string, StudySignalRow[]>;
+}) {
+  const query = buildFilteredQuery(input.filters.query);
+
+  return input.entries.map((entry) => {
+    const studySignals = (
+      input.studySignalsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? []
+    ).map((signal) => ({
+      manualOverride: signal.manualOverride,
+      reviewState: signal.reviewState
+    }));
+    const studyState = deriveEntryStudyState(entry.entryStatus, studySignals);
+    const rankedEntry =
+      buildRankedGlossaryEntry(entry, query, studyState) ??
+      ({
+        ...entry,
+        href: mediaGlossaryEntryHref(entry.mediaSlug, entry.kind, entry.id),
+        matchBadges: [],
+        matchedFields: {
+          aliases: []
+        },
+        score: 0,
+        studyState
+      } satisfies RankedGlossaryEntry);
+    const cardCount =
+      input.cardCountByEntry.get(`${entry.kind}:${entry.internalId}`) ?? 0;
+
+    return {
+      ...rankedEntry,
+      cardCount,
+      hasCards: cardCount > 0,
+      matchesCurrentFilters:
+        entryMatchesGlossaryFilters(
+          {
+            cardCount,
+            kind: entry.kind,
+            mediaSlug: entry.mediaSlug,
+            segmentId: entry.segmentId,
+            studyState
+          },
+          input.filters
+        ) &&
+        (!query || rankedEntry.score > 0),
+      matchesCurrentQuery: !query || rankedEntry.score > 0
+    };
+  });
 }
 
 function groupRowsByEntry<Row extends { entryId: string; entryType: string }>(

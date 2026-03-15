@@ -25,6 +25,7 @@ import { buildScopedEntryId } from "@/lib/entry-id";
 import { card, cardEntryLink, grammarPattern, term } from "@/db/schema/index.ts";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
+  getGlobalGlossaryAutocompleteData,
   getGlobalGlossaryPageData,
   getGlossaryPageData,
   getGrammarGlossaryDetailData,
@@ -400,6 +401,31 @@ describe("glossary data", () => {
     expect(withoutCardsData.results[0]?.bestLocalHref).toBe(
       `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.mixedNoCardTermSourceId}`
     );
+  });
+
+  it("loads global autocomplete suggestions on demand with active filters", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const suggestions = await getGlobalGlossaryAutocompleteData(
+      {
+        q: "yohaku",
+        cards: "without_cards"
+      },
+      database
+    );
+
+    expect(suggestions.map((entry) => entry.label)).toEqual(["余白"]);
+    expect(suggestions[0]?.hasCards).toBe(true);
+    expect(suggestions[0]?.hasCardlessVariant).toBe(true);
   });
 
   it("supports global study and entry type filters without regressing ranking", async () => {

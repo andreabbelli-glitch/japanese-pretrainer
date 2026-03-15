@@ -105,7 +105,6 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
             filters={data.filters}
             hasActiveFilters={data.hasActiveFilters}
             mediaOptions={data.mediaOptions}
-            suggestions={data.autocompleteSuggestions}
           />
         </SurfaceCard>
       </section>

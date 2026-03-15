@@ -1,4 +1,4 @@
-import { and, asc, eq, inArray, ne, or } from "drizzle-orm";
+import { and, asc, eq, inArray, ne, or, sql } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import {
@@ -190,11 +190,109 @@ export async function listTermEntries(
   return listTermGlossaryEntries(database, options);
 }
 
+export async function listTermEntrySummaries(
+  database: DatabaseClient,
+  options: ListGlossaryEntriesOptions = {}
+) {
+  return database
+    .select({
+      id: term.id,
+      sourceId: term.sourceId,
+      crossMediaGroupId: term.crossMediaGroupId,
+      mediaId: term.mediaId,
+      segmentId: term.segmentId,
+      lemma: term.lemma,
+      reading: term.reading,
+      romaji: term.romaji,
+      meaningIt: term.meaningIt,
+      levelHint: term.levelHint,
+      audioSrc: term.audioSrc,
+      audioSource: term.audioSource,
+      audioSpeaker: term.audioSpeaker,
+      audioLicense: term.audioLicense,
+      audioAttribution: term.audioAttribution,
+      audioPageUrl: term.audioPageUrl,
+      pitchAccent: term.pitchAccent,
+      pitchAccentSource: term.pitchAccentSource,
+      pitchAccentPageUrl: term.pitchAccentPageUrl,
+      searchLemmaNorm: term.searchLemmaNorm,
+      searchReadingNorm: term.searchReadingNorm,
+      searchRomajiNorm: term.searchRomajiNorm,
+      mediaSlug: media.slug,
+      mediaTitle: media.title,
+      segmentTitle: segment.title,
+      crossMediaGroupKey: crossMediaGroup.groupKey,
+      entryStatus: entryStatus.status
+    })
+    .from(term)
+    .innerJoin(media, eq(media.id, term.mediaId))
+    .leftJoin(segment, eq(segment.id, term.segmentId))
+    .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
+    .leftJoin(
+      entryStatus,
+      and(eq(entryStatus.entryId, term.id), eq(entryStatus.entryType, "term"))
+    )
+    .where(options.mediaId ? eq(term.mediaId, options.mediaId) : undefined)
+    .orderBy(asc(term.lemma), asc(term.reading));
+}
+
 export async function listGrammarEntries(
   database: DatabaseClient,
   options: ListGlossaryEntriesOptions = {}
 ) {
   return listGrammarGlossaryEntries(database, options);
+}
+
+export async function listGrammarEntrySummaries(
+  database: DatabaseClient,
+  options: ListGlossaryEntriesOptions = {}
+) {
+  return database
+    .select({
+      id: grammarPattern.id,
+      sourceId: grammarPattern.sourceId,
+      crossMediaGroupId: grammarPattern.crossMediaGroupId,
+      mediaId: grammarPattern.mediaId,
+      segmentId: grammarPattern.segmentId,
+      pattern: grammarPattern.pattern,
+      title: grammarPattern.title,
+      reading: grammarPattern.reading,
+      meaningIt: grammarPattern.meaningIt,
+      levelHint: grammarPattern.levelHint,
+      audioSrc: grammarPattern.audioSrc,
+      audioSource: grammarPattern.audioSource,
+      audioSpeaker: grammarPattern.audioSpeaker,
+      audioLicense: grammarPattern.audioLicense,
+      audioAttribution: grammarPattern.audioAttribution,
+      audioPageUrl: grammarPattern.audioPageUrl,
+      pitchAccent: grammarPattern.pitchAccent,
+      pitchAccentSource: grammarPattern.pitchAccentSource,
+      pitchAccentPageUrl: grammarPattern.pitchAccentPageUrl,
+      searchPatternNorm: grammarPattern.searchPatternNorm,
+      mediaSlug: media.slug,
+      mediaTitle: media.title,
+      segmentTitle: segment.title,
+      crossMediaGroupKey: crossMediaGroup.groupKey,
+      entryStatus: entryStatus.status
+    })
+    .from(grammarPattern)
+    .innerJoin(media, eq(media.id, grammarPattern.mediaId))
+    .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
+    .leftJoin(
+      crossMediaGroup,
+      eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
+    )
+    .leftJoin(
+      entryStatus,
+      and(
+        eq(entryStatus.entryId, grammarPattern.id),
+        eq(entryStatus.entryType, "grammar")
+      )
+    )
+    .where(
+      options.mediaId ? eq(grammarPattern.mediaId, options.mediaId) : undefined
+    )
+    .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
 }
 
 export async function getTermEntriesByIds(
@@ -693,6 +791,56 @@ export async function listEntryCardConnections(
     .orderBy(asc(card.orderIndex), asc(card.createdAt), asc(card.id));
 }
 
+export async function listEntryCardCounts(
+  database: DatabaseClient,
+  entries: GlossaryEntryRef[]
+) {
+  if (entries.length === 0) {
+    return [];
+  }
+
+  const { grammarIds, termIds } = splitGlossaryEntryRefs(entries);
+  const filters = [];
+
+  if (termIds.length > 0) {
+    filters.push(
+      and(
+        eq(cardEntryLink.entryType, "term"),
+        inArray(cardEntryLink.entryId, termIds)
+      )
+    );
+  }
+
+  if (grammarIds.length > 0) {
+    filters.push(
+      and(
+        eq(cardEntryLink.entryType, "grammar"),
+        inArray(cardEntryLink.entryId, grammarIds)
+      )
+    );
+  }
+
+  if (filters.length === 0) {
+    return [];
+  }
+
+  return database
+    .select({
+      entryType: cardEntryLink.entryType,
+      entryId: cardEntryLink.entryId,
+      cardCount: sql<number>`cast(count(*) as integer)`
+    })
+    .from(cardEntryLink)
+    .innerJoin(card, eq(card.id, cardEntryLink.cardId))
+    .where(
+      and(
+        ne(card.status, "archived"),
+        filters.length === 1 ? filters[0]! : or(...filters)
+      )
+    )
+    .groupBy(cardEntryLink.entryType, cardEntryLink.entryId);
+}
+
 export type GlossarySegment = Awaited<
   ReturnType<typeof listGlossarySegmentsByMediaId>
 >[number];
@@ -707,4 +855,11 @@ export type EntryLessonConnection = Awaited<
 >[number];
 export type EntryCardConnection = Awaited<
   ReturnType<typeof listEntryCardConnections>
+>[number];
+export type EntryCardCount = Awaited<ReturnType<typeof listEntryCardCounts>>[number];
+export type TermGlossaryEntrySummary = Awaited<
+  ReturnType<typeof listTermEntrySummaries>
+>[number];
+export type GrammarGlossaryEntrySummary = Awaited<
+  ReturnType<typeof listGrammarEntrySummaries>
 >[number];

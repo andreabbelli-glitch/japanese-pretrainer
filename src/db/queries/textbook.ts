@@ -77,8 +77,6 @@ export async function listEntryStudySignals(
       entryType: cardEntryLink.entryType,
       relationshipType: cardEntryLink.relationshipType,
       cardId: card.id,
-      cardFront: card.front,
-      cardBack: card.back,
       reviewState: reviewState.state,
       dueAt: reviewState.dueAt,
       manualOverride: reviewState.manualOverride

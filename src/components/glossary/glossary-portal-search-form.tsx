@@ -1,51 +1,128 @@
 "use client";
 
-import { useDeferredValue, useId, useRef, useState } from "react";
+import {
+  startTransition,
+  useDeferredValue,
+  useEffect,
+  useId,
+  useRef,
+  useState
+} from "react";
 
 import type {
   GlobalGlossaryAutocompleteSuggestion,
   GlobalGlossaryPageData
 } from "@/lib/glossary";
-import { getGlossaryAutocompleteSuggestions } from "@/lib/glossary-autocomplete";
 
 type GlossaryPortalSearchFormProps = {
   filters: GlobalGlossaryPageData["filters"];
   hasActiveFilters: boolean;
   mediaOptions: GlobalGlossaryPageData["mediaOptions"];
-  suggestions: GlobalGlossaryAutocompleteSuggestion[];
 };
 
 export function GlossaryPortalSearchForm({
   filters,
   hasActiveFilters,
-  mediaOptions,
-  suggestions
+  mediaOptions
 }: GlossaryPortalSearchFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const suggestionCacheRef = useRef(
+    new Map<string, GlobalGlossaryAutocompleteSuggestion[]>()
+  );
   const listboxId = useId();
   const [query, setQuery] = useState(filters.query);
   const [entryType, setEntryType] = useState(filters.entryType);
   const [media, setMedia] = useState(filters.media);
   const [study, setStudy] = useState(filters.study);
   const [cards, setCards] = useState(filters.cards);
+  const [suggestions, setSuggestions] = useState<
+    GlobalGlossaryAutocompleteSuggestion[]
+  >([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const deferredQuery = useDeferredValue(query);
 
-  const visibleSuggestions = getGlossaryAutocompleteSuggestions({
-    filters: {
-      cards,
-      entryType,
-      media,
-      study
-    },
-    query: deferredQuery,
-    suggestions
-  });
+  useEffect(() => {
+    const trimmedQuery = deferredQuery.trim();
+
+    if (trimmedQuery.length === 0) {
+      startTransition(() => {
+        setSuggestions([]);
+      });
+      return;
+    }
+
+    const params = new URLSearchParams({
+      q: trimmedQuery
+    });
+
+    if (entryType !== "all") {
+      params.set("type", entryType);
+    }
+
+    if (media !== "all") {
+      params.set("media", media);
+    }
+
+    if (study !== "all") {
+      params.set("study", study);
+    }
+
+    if (cards !== "all") {
+      params.set("cards", cards);
+    }
+
+    const cacheKey = params.toString();
+    const cachedSuggestions = suggestionCacheRef.current.get(cacheKey);
+
+    if (cachedSuggestions) {
+      startTransition(() => {
+        setSuggestions(cachedSuggestions);
+      });
+      return;
+    }
+
+    const controller = new AbortController();
+    startTransition(() => {
+      setSuggestions([]);
+    });
+
+    fetch(`/api/glossary/autocomplete?${cacheKey}`, {
+      cache: "no-store",
+      signal: controller.signal
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`Autocomplete request failed: ${response.status}`);
+        }
+
+        const payload =
+          (await response.json()) as GlobalGlossaryAutocompleteSuggestion[];
+
+        suggestionCacheRef.current.set(cacheKey, payload);
+        startTransition(() => {
+          setSuggestions(payload);
+        });
+      })
+      .catch(() => {
+        if (controller.signal.aborted) {
+          return;
+        }
+
+        startTransition(() => {
+          setSuggestions([]);
+        });
+      });
+
+    return () => {
+      controller.abort();
+    };
+  }, [cards, deferredQuery, entryType, media, study]);
+
   const shouldShowSuggestions =
     showSuggestions &&
     deferredQuery.trim().length > 0 &&
-    visibleSuggestions.length > 0;
+    suggestions.length > 0;
 
   const handleSuggestionSelect = (
     suggestion: GlobalGlossaryAutocompleteSuggestion
@@ -126,7 +203,7 @@ export function GlossaryPortalSearchForm({
                 id={listboxId}
                 role="listbox"
               >
-                {visibleSuggestions.map((suggestion) => (
+                {suggestions.map((suggestion) => (
                   <button
                     key={suggestion.resultKey}
                     className="glossary-autocomplete__option"
