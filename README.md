@@ -149,6 +149,8 @@ Per generare un hash password PBKDF2 senza dipendenze extra:
 ```
 
 Poi usa l'output come valore di `AUTH_PASSWORD_HASH`.
+Se lo incolli dentro un file `.env*`, ricordati di fare escape dei simboli
+`$` come `\$`, altrimenti Next prova a espanderli e l'hash risulta troncato.
 
 ## Deploy Free Consigliato
 

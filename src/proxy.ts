@@ -1,20 +1,23 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import {
+  APP_SEARCH_HEADER,
   APP_PATHNAME_HEADER,
   AUTH_SESSION_COOKIE,
   AUTH_LOGIN_PATH,
   getAuthConfig,
-  isLoginPath,
-  verifySessionToken
+  hasValidSessionToken,
+  isLoginPath
 } from "@/lib/auth";
 
 export function proxy(request: NextRequest) {
   const config = getAuthConfig();
   const pathname = request.nextUrl.pathname;
+  const search = request.nextUrl.search;
   const requestHeaders = new Headers(request.headers);
 
   requestHeaders.set(APP_PATHNAME_HEADER, pathname);
+  requestHeaders.set(APP_SEARCH_HEADER, search);
 
   if (!config.enabled) {
     return continueRequest(requestHeaders);
@@ -22,8 +25,7 @@ export function proxy(request: NextRequest) {
 
   const isLoginPage = isLoginPath(pathname);
   const sessionToken = request.cookies.get(AUTH_SESSION_COOKIE)?.value;
-  const isAuthenticated =
-    typeof sessionToken === "string" && verifySessionToken(sessionToken);
+  const isAuthenticated = hasValidSessionToken(sessionToken);
 
   if (isLoginPage && isAuthenticated) {
     return NextResponse.redirect(new URL("/", request.url));

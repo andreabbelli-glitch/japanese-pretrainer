@@ -23,8 +23,9 @@ export async function loginAction(formData: FormData) {
   const nextHref = readInternalHref(formData.get("next")?.toString());
   const username = readRequiredString(formData, "username");
   const password = readRequiredPassword(formData, "password");
+  const credentialsValid = verifyLoginCredentials({ username, password });
 
-  if (!verifyLoginCredentials({ username, password })) {
+  if (!credentialsValid) {
     redirect(buildLoginHref(nextHref, "credentials"));
   }
 

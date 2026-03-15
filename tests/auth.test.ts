@@ -1,13 +1,16 @@
 import { afterEach, describe, expect, it } from "vitest";
 
 import {
+  APP_SEARCH_HEADER,
   APP_PATHNAME_HEADER,
   AUTH_LOGIN_PATH,
   createPasswordHash,
   createSessionToken,
   getAuthConfig,
+  hasValidSessionToken,
   isLoginPath,
   readRequestPathname,
+  readRequestSearch,
   verifyLoginCredentials,
   verifySessionToken
 } from "@/lib/auth";
@@ -105,13 +108,18 @@ describe("auth helpers", () => {
 
   it("normalizes request pathname headers for standalone login rendering", () => {
     expect(APP_PATHNAME_HEADER).toBe("x-jcs-pathname");
+    expect(APP_SEARCH_HEADER).toBe("x-jcs-search");
     expect(AUTH_LOGIN_PATH).toBe("/login");
     expect(readRequestPathname("/login")).toBe("/login");
     expect(readRequestPathname(" /media ")).toBe("/media");
     expect(readRequestPathname("https://example.com")).toBe("/");
+    expect(readRequestSearch("?next=%2Fmedia")).toBe("?next=%2Fmedia");
+    expect(readRequestSearch(" q=owner ")).toBe("");
+    expect(readRequestSearch(null)).toBe("");
     expect(readRequestPathname(null)).toBe("/");
     expect(isLoginPath("/login")).toBe(true);
     expect(isLoginPath("/media")).toBe(false);
+    expect(hasValidSessionToken(undefined)).toBe(false);
   });
 });
 

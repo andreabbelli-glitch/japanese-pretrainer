@@ -1,6 +1,9 @@
 import { createPasswordHash } from "../src/lib/auth.ts";
 
-const password = process.argv[2]?.trim();
+const password = process.argv
+  .slice(2)
+  .find((value) => value !== "--")
+  ?.trim();
 
 if (!password) {
   console.error(

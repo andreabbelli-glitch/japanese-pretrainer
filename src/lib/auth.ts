@@ -8,6 +8,7 @@ import {
 export const AUTH_SESSION_COOKIE = "jcs_session";
 export const AUTH_LOGIN_PATH = "/login";
 export const APP_PATHNAME_HEADER = "x-jcs-pathname";
+export const APP_SEARCH_HEADER = "x-jcs-search";
 const PBKDF2_DIGEST = "sha256";
 const PBKDF2_ITERATIONS = 210_000;
 const PBKDF2_KEY_LENGTH = 32;
@@ -92,6 +93,20 @@ export function readRequestPathname(value: string | null | undefined) {
   const pathname = value.trim();
 
   return pathname.startsWith("/") ? pathname : "/";
+}
+
+export function readRequestSearch(value: string | null | undefined) {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  const search = value.trim();
+
+  if (search.length === 0) {
+    return "";
+  }
+
+  return search.startsWith("?") ? search : "";
 }
 
 export function createPasswordHash(password: string) {
@@ -191,6 +206,15 @@ export function verifySessionToken(token: string, now = Date.now()) {
   } catch {
     return false;
   }
+}
+
+export function hasValidSessionToken(
+  token: string | null | undefined,
+  now = Date.now()
+) {
+  return typeof token === "string" && token.length > 0
+    ? verifySessionToken(token, now)
+    : false;
 }
 
 export function getSessionCookieOptions() {

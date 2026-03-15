@@ -1,17 +1,23 @@
 import Link from "next/link";
 import type { Route } from "next";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { Suspense, type ReactNode } from "react";
 
 import { logoutAction } from "@/actions/auth";
+import { LoginPageContent } from "@/components/auth/login-page-content";
 import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
 import {
+  APP_SEARCH_HEADER,
   APP_PATHNAME_HEADER,
+  AUTH_SESSION_COOKIE,
+  hasValidSessionToken,
   isAuthEnabled,
   isLoginPath,
-  readRequestPathname
+  readRequestPathname,
+  readRequestSearch
 } from "@/lib/auth";
-import { primaryNav } from "@/lib/site";
+import { primaryNav, readInternalHref } from "@/lib/site";
 
 type SiteShellProps = {
   children: ReactNode;
@@ -36,12 +42,32 @@ function SiteShellPrimaryNavFallback() {
 
 export async function SiteShell({ children }: SiteShellProps) {
   const headerStore = await headers();
+  const cookieStore = await cookies();
   const pathname = readRequestPathname(headerStore.get(APP_PATHNAME_HEADER));
+  const search = readRequestSearch(headerStore.get(APP_SEARCH_HEADER));
   const isStandaloneLogin = isLoginPath(pathname);
-  const showLogout = isAuthEnabled();
+  const authEnabled = isAuthEnabled();
+  const showLogout = authEnabled;
+  const isAuthenticated = authEnabled
+    ? hasValidSessionToken(cookieStore.get(AUTH_SESSION_COOKIE)?.value)
+    : true;
 
   if (isStandaloneLogin) {
+    if (isAuthenticated) {
+      redirect("/");
+    }
+
     return <div className="app-shell">{children}</div>;
+  }
+
+  if (!isAuthenticated) {
+    const nextHref = readInternalHref(`${pathname}${search}`);
+
+    return (
+      <div className="app-shell">
+        <LoginPageContent nextHref={nextHref} />
+      </div>
+    );
   }
 
   return (
