@@ -156,9 +156,9 @@ translation_it: >-
 src: assets/cards/dm25-sd1/06-doorknocker-nordocker.webp
 alt: >-
   Carta 6 del mazzo DM25-SD1, Twinpact ドアノッカ＝ノアドッカ /
-  「…開けるか？」 con arte viola e dorata.
+  「…あけるか？」 con arte viola e dorata.
 caption: >-
-  `DM25-SD1 6/13`: ドアノッカ＝ノアドッカ / 「…開けるか？」。
+  `DM25-SD1 6/13`: ドアノッカ＝ノアドッカ / 「…{{開|あ}}けるか？」。
   Carta-studio, lato creatura, per
   [～を{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau).
 :::

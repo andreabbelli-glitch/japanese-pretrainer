@@ -25,7 +25,7 @@ id: card-kouchou-sensei-recognition
 entry_type: term
 entry_id: term-kouchou-sensei
 card_type: recognition
-front: {{校長先生|こうちょうせんせい}}
+front: "{{校長先生|こうちょうせんせい}}"
 back: preside / il preside
 example_jp: >-
   {{校長先生|こうちょうせんせい}}が {{家|いえ}}まで {{来|き}}てくれた。
@@ -51,7 +51,7 @@ id: card-tennyuu-recognition
 entry_type: term
 entry_id: term-tennyuu
 card_type: recognition
-front: {{転入|てんにゅう}}
+front: "{{転入|てんにゅう}}"
 back: trasferimento / arrivo come studente trasferito
 example_jp: >-
   {{今日|きょう}}から アカデミーに {{転入|てんにゅう}}する {{生徒|せいと}}なんだ。
@@ -77,7 +77,7 @@ id: card-smartphone-rotom-recognition
 entry_type: term
 entry_id: term-smartphone-rotom
 card_type: recognition
-front: スマホロトム
+front: "スマホロトム"
 back: Rotom Phone / smartphone di gioco
 example_jp: >-
   スマホロトムで マップと ポケモン{{図鑑|ずかん}}を {{確認|かくにん}}できる。
@@ -103,7 +103,7 @@ id: card-touroku-recognition
 entry_type: term
 entry_id: term-touroku
 card_type: recognition
-front: {{登録|とうろく}}
+front: "{{登録|とうろく}}"
 back: registrazione
 example_jp: >-
   {{捕|つか}}まえた ポケモンは ポケモン{{図鑑|ずかん}}に {{登録|とうろく}}される。
@@ -129,7 +129,7 @@ id: card-shoubu-recognition
 entry_type: term
 entry_id: term-shoubu
 card_type: recognition
-front: {{勝負|しょうぶ}}
+front: "{{勝負|しょうぶ}}"
 back: sfida / match / confronto di battaglia
 example_jp: >-
   {{準備|じゅんび}}が できたら {{下|した}}の ビーチで {{勝負|しょうぶ}}しよう！
@@ -154,7 +154,7 @@ id: card-junbi-recognition
 entry_type: term
 entry_id: term-junbi
 card_type: recognition
-front: {{準備|じゅんび}}
+front: "{{準備|じゅんび}}"
 back: preparazione / essere pronti
 example_jp: >-
   {{勝負|しょうぶ}}の {{準備|じゅんび}}は もう いい？
@@ -180,7 +180,7 @@ id: card-jakuten-recognition
 entry_type: term
 entry_id: term-jakuten
 card_type: recognition
-front: {{弱点|じゃくてん}}
+front: "{{弱点|じゃくてん}}"
 back: debolezza / punto debole
 example_jp: >-
   {{相手|あいて}}の {{弱点|じゃくてん}}を {{突|つ}}くと ダメージが {{上|あ}}がる。
@@ -206,7 +206,7 @@ id: card-kuridasu-recognition
 entry_type: term
 entry_id: term-kuridasu
 card_type: recognition
-front: {{繰り出す|くりだす}}
+front: "{{繰り出す|くりだす}}"
 back: mandare in campo / far uscire
 example_jp: >-
   うっかり いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところだった。
@@ -231,7 +231,7 @@ id: card-te-kudasai-concept
 entry_type: grammar
 entry_id: grammar-te-kudasai
 card_type: concept
-front: ～てください
+front: "～てください"
 back: per favore fai...
 example_jp: >-
   もう {{少|すこ}}し {{家|いえ}}で {{待|ま}}っててください。
@@ -256,7 +256,7 @@ id: card-mitai-concept
 entry_type: grammar
 entry_id: grammar-mitai
 card_type: concept
-front: ～みたい
+front: "～みたい"
 back: sembra / pare
 example_jp: >-
   この {{子|こ}}は きみに {{気|き}}に {{入|い}}った みたいですね。
@@ -282,7 +282,7 @@ id: card-te-shimau-concept
 entry_type: grammar
 entry_id: grammar-te-shimau
 card_type: concept
-front: ～てしまう / ～ちゃう
+front: "～てしまう / ～ちゃう"
 back: finire per / fare per errore
 example_jp: >-
   うっかり いつもの チームを {{使|つか}}っちゃう ところだった。
@@ -307,7 +307,7 @@ id: card-ta-bakari-concept
 entry_type: grammar
 entry_id: grammar-ta-bakari
 card_type: concept
-front: ～たばかり / ～たばっかり
+front: "～たばかり / ～たばっかり"
 back: avere appena fatto / appena iniziato
 example_jp: >-
   ポケモンを {{始|はじ}}めたばかり だから まずは {{基本|きほん}}を {{覚|おぼ}}えよう。
@@ -320,7 +320,7 @@ id: card-pokemon-zukan-prologue-01-recognition
 entry_type: term
 entry_id: term-pokemon-zukan
 card_type: recognition
-front: ポケモン{{図鑑|ずかん}}
+front: "ポケモン{{図鑑|ずかん}}"
 back: Pokedex
 example_jp: >-
   ポケモン{{図鑑|ずかん}}には {{捕|つか}}まえた ポケモンが {{自動|じどう}}で
@@ -337,7 +337,7 @@ id: card-tara-prologue-01-concept
 entry_type: grammar
 entry_id: grammar-tara
 card_type: concept
-front: ～たら
+front: "～たら"
 back: se / quando
 example_jp: >-
   {{道|みち}}に {{迷|まよ}}ったら スマホロトムで マップを {{見|み}}よう。
