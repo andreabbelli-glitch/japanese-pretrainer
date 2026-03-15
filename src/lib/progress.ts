@@ -30,8 +30,7 @@ import {
 } from "@/lib/study-metrics";
 
 import {
-  getEligibleReviewCardsByMediaId,
-  getReviewQueueSnapshotForMedia
+  loadReviewOverviewSnapshots
 } from "./review";
 
 export type ProgressPageData = {
@@ -107,14 +106,17 @@ export async function getMediaProgressPageData(
     return null;
   }
 
-  const [lessons, glossary, reviewQueue, reviewCards, settings] =
-    await Promise.all([
-      listLessonsByMediaId(database, media.id),
-      loadGlossaryProgressSnapshot(database, media.id, media.slug),
-      getReviewQueueSnapshotForMedia(media.slug, database),
-      getEligibleReviewCardsByMediaId(media.id, database),
-      getStudySettings(database)
-    ]);
+  const [lessons, glossary, reviewOverview, settings] = await Promise.all([
+    listLessonsByMediaId(database, media.id),
+    loadGlossaryProgressSnapshot(database, media.id, media.slug),
+    loadReviewOverviewSnapshots(database, [
+      {
+        id: media.id,
+        slug: media.slug
+      }
+    ]).then((snapshots) => snapshots.get(media.id)),
+    getStudySettings(database)
+  ]);
   const completedLessons = lessons.filter(
     (lesson) => lesson.progress?.status === "completed"
   ).length;
@@ -126,28 +128,23 @@ export async function getMediaProgressPageData(
   const nextLesson = selectNextLesson(lessons);
   const lastOpenedLesson = selectLastOpenedLesson(lessons);
   const review = {
-    activeCards: reviewCards.filter(
-      (card) =>
-        card.reviewState?.state !== null &&
-        card.reviewState?.state !== "known_manual" &&
-        card.reviewState?.state !== "suspended"
-    ).length,
-    dailyLimit: reviewQueue?.dailyLimit ?? settings.reviewDailyLimit,
-    dueCount: reviewQueue?.dueCount ?? 0,
-    newAvailableCount: reviewQueue?.newAvailableCount ?? 0,
-    newQueuedCount: reviewQueue?.newQueuedCount ?? 0,
-    nextCardFront: reviewQueue?.cards[0]?.front,
-    queueCount: reviewQueue?.queueCount ?? 0,
+    activeCards: reviewOverview?.activeCards ?? 0,
+    dailyLimit: reviewOverview?.dailyLimit ?? settings.reviewDailyLimit,
+    dueCount: reviewOverview?.dueCount ?? 0,
+    newAvailableCount: reviewOverview?.newAvailableCount ?? 0,
+    newQueuedCount: reviewOverview?.newQueuedCount ?? 0,
+    nextCardFront: reviewOverview?.nextCardFront,
+    queueCount: reviewOverview?.queueCount ?? 0,
     queueLabel:
-      reviewQueue?.queueLabel ??
+      reviewOverview?.queueLabel ??
       "La coda review si popolerà quando importerai le prime card.",
     queuePercent: calculatePercent(
-      reviewQueue?.queueCount ?? 0,
-      reviewCards.length
+      reviewOverview?.queueCount ?? 0,
+      reviewOverview?.totalCards ?? 0
     ),
-    suspendedCount: reviewQueue?.suspendedCount ?? 0,
-    totalCards: reviewCards.length,
-    upcomingCount: reviewQueue?.upcomingCount ?? 0
+    suspendedCount: reviewOverview?.suspendedCount ?? 0,
+    totalCards: reviewOverview?.totalCards ?? 0,
+    upcomingCount: reviewOverview?.upcomingCount ?? 0
   };
   const resume = buildResumeModel({
     resumeLesson,

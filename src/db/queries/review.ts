@@ -81,6 +81,25 @@ export async function listReviewCardsByMediaId(
   });
 }
 
+export async function listReviewCardsByMediaIds(
+  database: DatabaseClient,
+  mediaIds: string[]
+) {
+  if (mediaIds.length === 0) {
+    return [];
+  }
+
+  return database.query.card.findMany({
+    where: and(inArray(card.mediaId, mediaIds), ne(card.status, "archived")),
+    with: {
+      segment: true,
+      reviewState: true,
+      entryLinks: true
+    },
+    orderBy: [asc(card.mediaId), asc(card.orderIndex), asc(card.createdAt)]
+  });
+}
+
 export type LessonLinkedReviewEntry = {
   entryId: string;
   entryType: EntryType;
@@ -106,6 +125,40 @@ export async function listLessonLinkedReviewEntriesByMediaId(
     .where(
       and(
         eq(lesson.mediaId, mediaId),
+        eq(lesson.status, "active"),
+        inArray(entryLink.linkRole, ["introduced", "explained"])
+      )
+    );
+}
+
+export type LessonLinkedReviewEntryByMedia = LessonLinkedReviewEntry & {
+  mediaId: string;
+};
+
+export async function listLessonLinkedReviewEntriesByMediaIds(
+  database: DatabaseClient,
+  mediaIds: string[]
+): Promise<LessonLinkedReviewEntryByMedia[]> {
+  if (mediaIds.length === 0) {
+    return [];
+  }
+
+  return database
+    .select({
+      mediaId: lesson.mediaId,
+      entryId: entryLink.entryId,
+      entryType: entryLink.entryType,
+      lessonStatus: lessonProgress.status
+    })
+    .from(entryLink)
+    .innerJoin(
+      lesson,
+      and(eq(entryLink.sourceType, "lesson"), eq(entryLink.sourceId, lesson.id))
+    )
+    .leftJoin(lessonProgress, eq(lessonProgress.lessonId, lesson.id))
+    .where(
+      and(
+        inArray(lesson.mediaId, mediaIds),
         eq(lesson.status, "active"),
         inArray(entryLink.linkRole, ["introduced", "explained"])
       )
@@ -142,6 +195,59 @@ export async function countNewCardsIntroducedOnDayByMediaId(
     );
 
   return new Set(rows.map((row) => row.cardId)).size;
+}
+
+export async function countNewCardsIntroducedOnDayByMediaIds(
+  database: DatabaseClient,
+  mediaIds: string[],
+  asOf = new Date()
+) {
+  if (mediaIds.length === 0) {
+    return [];
+  }
+
+  const dayStart = new Date(
+    asOf.getFullYear(),
+    asOf.getMonth(),
+    asOf.getDate()
+  );
+  const dayEnd = new Date(dayStart);
+
+  dayEnd.setDate(dayEnd.getDate() + 1);
+
+  const rows = await database
+    .select({
+      mediaId: card.mediaId,
+      cardId: reviewLog.cardId
+    })
+    .from(reviewLog)
+    .innerJoin(card, eq(reviewLog.cardId, card.id))
+    .where(
+      and(
+        inArray(card.mediaId, mediaIds),
+        eq(reviewLog.previousState, "new"),
+        gte(reviewLog.answeredAt, dayStart.toISOString()),
+        lt(reviewLog.answeredAt, dayEnd.toISOString())
+      )
+    );
+
+  const grouped = new Map<string, Set<string>>();
+
+  for (const row of rows) {
+    const existing = grouped.get(row.mediaId);
+
+    if (existing) {
+      existing.add(row.cardId);
+      continue;
+    }
+
+    grouped.set(row.mediaId, new Set([row.cardId]));
+  }
+
+  return [...grouped.entries()].map(([mediaId, cardIds]) => ({
+    mediaId,
+    count: cardIds.size
+  }));
 }
 
 export type ReviewLaunchCandidate = {

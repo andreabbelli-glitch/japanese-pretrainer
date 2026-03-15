@@ -97,14 +97,30 @@ async function getEntryStatusMap(
 
 type ListGlossaryEntriesOptions = {
   mediaId?: string;
+  mediaIds?: string[];
 };
+
+function buildMediaScopeFilter(
+  column: typeof term.mediaId | typeof grammarPattern.mediaId,
+  options: ListGlossaryEntriesOptions
+) {
+  if (options.mediaId) {
+    return eq(column, options.mediaId);
+  }
+
+  if (options.mediaIds && options.mediaIds.length > 0) {
+    return inArray(column, options.mediaIds);
+  }
+
+  return undefined;
+}
 
 async function listTermGlossaryEntries(
   database: DatabaseClient,
   options: ListGlossaryEntriesOptions = {}
 ) {
   const rows = await database.query.term.findMany({
-    where: options.mediaId ? eq(term.mediaId, options.mediaId) : undefined,
+    where: buildMediaScopeFilter(term.mediaId, options),
     with: {
       aliases: true,
       crossMediaGroup: true,
@@ -131,9 +147,7 @@ async function listGrammarGlossaryEntries(
   options: ListGlossaryEntriesOptions = {}
 ) {
   const rows = await database.query.grammarPattern.findMany({
-    where: options.mediaId
-      ? eq(grammarPattern.mediaId, options.mediaId)
-      : undefined,
+    where: buildMediaScopeFilter(grammarPattern.mediaId, options),
     with: {
       aliases: true,
       crossMediaGroup: true,
@@ -232,7 +246,7 @@ export async function listTermEntrySummaries(
       entryStatus,
       and(eq(entryStatus.entryId, term.id), eq(entryStatus.entryType, "term"))
     )
-    .where(options.mediaId ? eq(term.mediaId, options.mediaId) : undefined)
+    .where(buildMediaScopeFilter(term.mediaId, options))
     .orderBy(asc(term.lemma), asc(term.reading));
 }
 
@@ -289,9 +303,7 @@ export async function listGrammarEntrySummaries(
         eq(entryStatus.entryType, "grammar")
       )
     )
-    .where(
-      options.mediaId ? eq(grammarPattern.mediaId, options.mediaId) : undefined
-    )
+    .where(buildMediaScopeFilter(grammarPattern.mediaId, options))
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
 }
 

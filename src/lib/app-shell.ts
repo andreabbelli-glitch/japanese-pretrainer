@@ -4,6 +4,7 @@ import {
   db,
   getMediaBySlug,
   listLessonsByMediaId,
+  listLessonsByMediaIds,
   listMedia,
   type DatabaseClient,
   type MediaListItem
@@ -15,11 +16,14 @@ import {
   formatStatusLabel
 } from "@/lib/study-format";
 import {
-  getEligibleReviewCardsByMediaId,
-  getReviewQueueSnapshotForMedia
+  buildReviewOverviewSnapshot,
+  buildReviewEntryStatusLookup,
+  loadReviewOverviewSnapshots
 } from "@/lib/review";
 import {
   buildSegments,
+  buildGlossaryProgressSnapshot,
+  loadGlossaryProgressSnapshots,
   loadGlossaryProgressSnapshot,
   selectActiveLesson,
   selectResumeLesson,
@@ -77,7 +81,7 @@ export async function getDashboardData(
   markDataAsLive();
 
   const rows = await listMedia(database);
-  const media = await Promise.all(rows.map((row) => buildMediaShellSnapshot(database, row)));
+  const media = await buildMediaShellSnapshots(database, rows);
   const focusMedia = pickFocusMedia(media);
   const reviewMedia = pickReviewMedia(media);
 
@@ -101,7 +105,7 @@ export async function getMediaLibraryData(database: DatabaseClient = db) {
 
   const rows = await listMedia(database);
 
-  return Promise.all(rows.map((row) => buildMediaShellSnapshot(database, row)));
+  return buildMediaShellSnapshots(database, rows);
 }
 
 export async function getMediaDetailData(
@@ -119,64 +123,97 @@ export async function getMediaDetailData(
   return buildMediaShellSnapshot(database, media);
 }
 
+async function buildMediaShellSnapshots(
+  database: DatabaseClient,
+  media: MediaListItem[]
+) {
+  if (media.length === 0) {
+    return [];
+  }
+
+  const [lessons, glossarySnapshots, reviewSnapshots] = await Promise.all([
+    listLessonsByMediaIds(
+      database,
+      media.map((item) => item.id)
+    ),
+    loadGlossaryProgressSnapshots(
+      database,
+      media.map((item) => ({
+        id: item.id,
+        slug: item.slug
+      }))
+    ),
+    loadReviewOverviewSnapshots(
+      database,
+      media.map((item) => ({
+        id: item.id,
+        slug: item.slug
+      }))
+    )
+  ]);
+  const lessonsByMedia = groupLessonsByMedia(lessons);
+
+  return media.map((item) =>
+    mapMediaShellSnapshot({
+      glossary:
+        glossarySnapshots.get(item.id) ??
+        buildGlossaryProgressSnapshot({
+          grammar: [],
+          mediaSlug: item.slug,
+          studySignals: [],
+          terms: []
+        }),
+      lessons: lessonsByMedia.get(item.id) ?? [],
+      media: item,
+      review:
+        reviewSnapshots.get(item.id) ??
+        buildReviewOverviewSnapshot({
+          cards: [],
+          dailyLimit: 0,
+          entryStatuses: buildReviewEntryStatusLookup({
+            grammar: [],
+            terms: []
+          }),
+          extraNewCount: 0,
+          newIntroducedTodayCount: 0
+        })
+    })
+  );
+}
+
 async function buildMediaShellSnapshot(
   database: DatabaseClient,
   media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
 ): Promise<MediaShellSnapshot> {
-  const [lessons, glossary, cards, reviewQueue] = await Promise.all([
+  const [lessons, glossary, review] = await Promise.all([
     listLessonsByMediaId(database, media.id),
     loadGlossaryProgressSnapshot(database, media.id, media.slug),
-    getEligibleReviewCardsByMediaId(media.id, database),
-    getReviewQueueSnapshotForMedia(media.slug, database)
+    loadReviewOverviewSnapshots(database, [
+      {
+        id: media.id,
+        slug: media.slug
+      }
+    ]).then((snapshots) =>
+      snapshots.get(media.id) ??
+      buildReviewOverviewSnapshot({
+        cards: [],
+        dailyLimit: 0,
+        entryStatuses: buildReviewEntryStatusLookup({
+          grammar: [],
+          terms: []
+        }),
+        extraNewCount: 0,
+        newIntroducedTodayCount: 0
+      })
+    )
   ]);
 
-  const lessonsCompleted = lessons.filter(
-    (lesson) => lesson.progress?.status === "completed"
-  ).length;
-  const lessonsTotal = lessons.length;
-  const activeReviewCards = cards.filter((card) =>
-    isReviewCardActive(card.reviewState?.state ?? null)
-  ).length;
-  const cardsDue = reviewQueue?.dueCount ?? 0;
-  const reviewSignals = buildReviewSignals({
-    activeReviewCards,
-    cardsDue,
-    cardsTotal: cards.length,
-    reviewQueue
+  return mapMediaShellSnapshot({
+    glossary,
+    lessons,
+    media,
+    review
   });
-  const activeLesson = selectActiveLesson(lessons);
-  const resumeLesson = selectResumeLesson(lessons);
-  const nextLesson = selectNextLesson(lessons);
-
-  return {
-    id: media.id,
-    slug: media.slug,
-    title: media.title,
-    description:
-      media.description ??
-      `Pacchetto ${formatMediaTypeLabel(media.mediaType).toLowerCase()} pronto per Textbook, Glossary e Review.`,
-    mediaType: media.mediaType,
-    mediaTypeLabel: formatMediaTypeLabel(media.mediaType),
-    segmentKindLabel: formatSegmentKindLabel(media.segmentKind),
-    statusLabel: formatStatusLabel(media.status),
-    lessonsCompleted,
-    lessonsTotal,
-    textbookProgressPercent: calculatePercent(lessonsCompleted, lessonsTotal),
-    entriesKnown: glossary.entriesCovered,
-    entriesTotal: glossary.entriesTotal,
-    glossaryProgressPercent: glossary.progressPercent,
-    cardsDue,
-    cardsTotal: cards.length,
-    activeReviewCards,
-    reviewStatValue: reviewSignals.value,
-    reviewStatDetail: reviewSignals.detail,
-    reviewQueueLabel: reviewSignals.queueLabel,
-    activeLesson,
-    resumeLesson,
-    nextLesson,
-    segments: buildSegments(lessons),
-    previewEntries: glossary.previewEntries
-  };
 }
 
 function pickFocusMedia(media: MediaShellSnapshot[]) {
@@ -253,32 +290,34 @@ function buildReviewSignals({
   cardsDue,
   activeReviewCards,
   cardsTotal,
-  reviewQueue
+  review
 }: {
   cardsDue: number;
   activeReviewCards: number;
   cardsTotal: number;
-  reviewQueue: Awaited<ReturnType<typeof getReviewQueueSnapshotForMedia>>;
+  review: ReturnType<typeof buildReviewOverviewSnapshot>;
 }) {
-  const nextCard = reviewQueue?.cards[0];
+  const nextCardFront = review.nextCardFront;
 
-  if (reviewQueue && reviewQueue.queueCount > 0) {
+  if (review.queueCount > 0) {
     return {
       value:
-        reviewQueue.dueCount > 0
-          ? `${reviewQueue.queueCount} in coda`
-          : reviewQueue.newQueuedCount > 0
+        review.dueCount > 0
+          ? `${review.queueCount} in coda`
+          : review.newQueuedCount > 0
             ? "Nuove pronte"
-            : `${reviewQueue.queueCount} in coda`,
-      detail: nextCard ? `Prossima card: ${nextCard.front}` : "Sessione pronta",
-      queueLabel: reviewQueue.queueLabel
+            : `${review.queueCount} in coda`,
+      detail: nextCardFront ? `Prossima card: ${nextCardFront}` : "Sessione pronta",
+      queueLabel: review.queueLabel
     };
   }
 
   if (cardsDue > 0) {
     return {
       value: `${cardsDue} dovute`,
-      detail: nextCard ? `Prossima card: ${nextCard.front}` : "Richiedono attenzione adesso",
+      detail: nextCardFront
+        ? `Prossima card: ${nextCardFront}`
+        : "Richiedono attenzione adesso",
       queueLabel:
         cardsDue === 1
           ? "1 card richiede attenzione adesso."
@@ -315,6 +354,72 @@ function buildReviewSignals({
   };
 }
 
-function isReviewCardActive(state: string | null) {
-  return state !== null && state !== "known_manual" && state !== "suspended";
+function mapMediaShellSnapshot(input: {
+  glossary: Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>;
+  lessons: Awaited<ReturnType<typeof listLessonsByMediaId>>;
+  media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>;
+  review: ReturnType<typeof buildReviewOverviewSnapshot>;
+}): MediaShellSnapshot {
+  const lessonsCompleted = input.lessons.filter(
+    (lesson) => lesson.progress?.status === "completed"
+  ).length;
+  const lessonsTotal = input.lessons.length;
+  const activeLesson = selectActiveLesson(input.lessons);
+  const resumeLesson = selectResumeLesson(input.lessons);
+  const nextLesson = selectNextLesson(input.lessons);
+  const reviewSignals = buildReviewSignals({
+    activeReviewCards: input.review.activeCards,
+    cardsDue: input.review.dueCount,
+    cardsTotal: input.review.totalCards,
+    review: input.review
+  });
+
+  return {
+    id: input.media.id,
+    slug: input.media.slug,
+    title: input.media.title,
+    description:
+      input.media.description ??
+      `Pacchetto ${formatMediaTypeLabel(input.media.mediaType).toLowerCase()} pronto per Textbook, Glossary e Review.`,
+    mediaType: input.media.mediaType,
+    mediaTypeLabel: formatMediaTypeLabel(input.media.mediaType),
+    segmentKindLabel: formatSegmentKindLabel(input.media.segmentKind),
+    statusLabel: formatStatusLabel(input.media.status),
+    lessonsCompleted,
+    lessonsTotal,
+    textbookProgressPercent: calculatePercent(lessonsCompleted, lessonsTotal),
+    entriesKnown: input.glossary.entriesCovered,
+    entriesTotal: input.glossary.entriesTotal,
+    glossaryProgressPercent: input.glossary.progressPercent,
+    cardsDue: input.review.dueCount,
+    cardsTotal: input.review.totalCards,
+    activeReviewCards: input.review.activeCards,
+    reviewStatValue: reviewSignals.value,
+    reviewStatDetail: reviewSignals.detail,
+    reviewQueueLabel: reviewSignals.queueLabel,
+    activeLesson,
+    resumeLesson,
+    nextLesson,
+    segments: buildSegments(input.lessons),
+    previewEntries: input.glossary.previewEntries
+  };
+}
+
+function groupLessonsByMedia(
+  lessons: Awaited<ReturnType<typeof listLessonsByMediaIds>>
+) {
+  const grouped = new Map<string, Awaited<ReturnType<typeof listLessonsByMediaId>>>();
+
+  for (const lesson of lessons) {
+    const existing = grouped.get(lesson.mediaId);
+
+    if (existing) {
+      existing.push(lesson);
+      continue;
+    }
+
+    grouped.set(lesson.mediaId, [lesson]);
+  }
+
+  return grouped;
 }

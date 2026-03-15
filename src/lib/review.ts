@@ -2,15 +2,20 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import {
   countNewCardsIntroducedOnDayByMediaId,
+  countNewCardsIntroducedOnDayByMediaIds,
   db,
   getGrammarCrossMediaFamilyByEntryId,
   listLessonLinkedReviewEntriesByMediaId,
+  listLessonLinkedReviewEntriesByMediaIds,
   listReviewLaunchCandidates,
   getMediaBySlug,
   getTermCrossMediaFamilyByEntryId,
   listGrammarEntriesByMediaId,
+  listGrammarEntrySummaries,
   listReviewCardsByMediaId,
+  listReviewCardsByMediaIds,
   listTermEntriesByMediaId,
+  listTermEntrySummaries,
   type DatabaseClient,
   type CrossMediaGrammarSibling,
   type CrossMediaTermSibling,
@@ -130,6 +135,22 @@ export type ReviewQueueSnapshot = {
   queueLabel: string;
   queueCount: number;
   suspendedCount: number;
+  upcomingCount: number;
+};
+
+export type ReviewOverviewSnapshot = {
+  activeCards: number;
+  dailyLimit: number;
+  dueCount: number;
+  effectiveDailyLimit: number;
+  manualCount: number;
+  newAvailableCount: number;
+  newQueuedCount: number;
+  nextCardFront?: string;
+  queueCount: number;
+  queueLabel: string;
+  suspendedCount: number;
+  totalCards: number;
   upcomingCount: number;
 };
 
@@ -337,6 +358,37 @@ export async function getReviewQueueSnapshotForMedia(
   };
 }
 
+export async function getEligibleReviewCardsByMediaIds(
+  mediaIds: string[],
+  database: DatabaseClient = db
+) {
+  if (mediaIds.length === 0) {
+    return new Map<string, ReviewCardListItem[]>();
+  }
+
+  const [cards, lessonLinkedEntries] = await Promise.all([
+    listReviewCardsByMediaIds(database, mediaIds),
+    listLessonLinkedReviewEntriesByMediaIds(database, mediaIds)
+  ]);
+  const cardsByMedia = groupCardsByMedia(cards);
+  const lessonLinkedEntriesByMedia = groupLessonLinkedReviewEntriesByMedia(
+    lessonLinkedEntries
+  );
+  const eligibleCards = new Map<string, ReviewCardListItem[]>();
+
+  for (const mediaId of mediaIds) {
+    eligibleCards.set(
+      mediaId,
+      filterReviewCardsByLessonCompletion(
+        cardsByMedia.get(mediaId) ?? [],
+        lessonLinkedEntriesByMedia.get(mediaId) ?? []
+      )
+    );
+  }
+
+  return eligibleCards;
+}
+
 export async function getReviewLaunchMedia(
   database: DatabaseClient = db
 ): Promise<{
@@ -494,6 +546,141 @@ export async function getEligibleReviewCardsByMediaId(
   return filterReviewCardsByLessonCompletion(cards, lessonLinkedEntries);
 }
 
+export async function loadReviewOverviewSnapshots(
+  database: DatabaseClient,
+  media: Array<{
+    id: string;
+    slug: string;
+  }>
+) {
+  if (media.length === 0) {
+    return new Map<string, ReviewOverviewSnapshot>();
+  }
+
+  const now = new Date();
+  const mediaIds = media.map((item) => item.id);
+  const [eligibleCards, terms, grammar, dailyLimit, introducedCounts] =
+    await Promise.all([
+      getEligibleReviewCardsByMediaIds(mediaIds, database),
+      listTermEntrySummaries(database, {
+        mediaIds
+      }),
+      listGrammarEntrySummaries(database, {
+        mediaIds
+      }),
+      getReviewDailyLimit(database),
+      countNewCardsIntroducedOnDayByMediaIds(database, mediaIds, now)
+    ]);
+  const termStatusesByMedia = groupEntryStatusesByMedia(terms);
+  const grammarStatusesByMedia = groupEntryStatusesByMedia(grammar);
+  const introducedCountByMedia = new Map(
+    introducedCounts.map((row) => [row.mediaId, row.count])
+  );
+  const snapshots = new Map<string, ReviewOverviewSnapshot>();
+
+  for (const item of media) {
+    const entryStatuses = buildReviewEntryStatusLookup({
+      grammar: grammarStatusesByMedia.get(item.id) ?? [],
+      terms: termStatusesByMedia.get(item.id) ?? []
+    });
+
+    snapshots.set(
+      item.id,
+      buildReviewOverviewSnapshot({
+        cards: eligibleCards.get(item.id) ?? [],
+        dailyLimit,
+        entryStatuses,
+        extraNewCount: 0,
+        newIntroducedTodayCount: introducedCountByMedia.get(item.id) ?? 0
+      })
+    );
+  }
+
+  return snapshots;
+}
+
+export function buildReviewEntryStatusLookup(input: {
+  grammar: Array<{
+    entryStatus: ReviewEntryStatusValue;
+    id: string;
+  }>;
+  terms: Array<{
+    entryStatus: ReviewEntryStatusValue;
+    id: string;
+  }>;
+}) {
+  const statuses = new Map<string, ReviewEntryStatusValue>();
+
+  for (const entry of input.terms) {
+    statuses.set(`term:${entry.id}`, entry.entryStatus);
+  }
+
+  for (const entry of input.grammar) {
+    statuses.set(`grammar:${entry.id}`, entry.entryStatus);
+  }
+
+  return statuses;
+}
+
+export function buildReviewOverviewSnapshot(input: {
+  cards: ReviewCardListItem[];
+  dailyLimit: number;
+  entryStatuses: Map<string, ReviewEntryStatusValue>;
+  extraNewCount: number;
+  newIntroducedTodayCount: number;
+}): ReviewOverviewSnapshot {
+  const allCards = input.cards.map((card) =>
+    mapReviewOverviewCard(card, input.entryStatuses)
+  );
+  const dueCards = allCards
+    .filter((card) => card.bucket === "due")
+    .sort(compareReviewCardsByDue);
+  const newCards = allCards
+    .filter((card) => card.bucket === "new")
+    .sort(compareReviewCardsByOrder);
+  const manualCards = allCards
+    .filter((card) => card.bucket === "manual")
+    .sort(compareReviewCardsByOrder);
+  const suspendedCards = allCards
+    .filter((card) => card.bucket === "suspended")
+    .sort(compareReviewCardsByOrder);
+  const upcomingCards = allCards
+    .filter((card) => card.bucket === "upcoming")
+    .sort(compareReviewCardsByDue);
+  const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
+  const newSlots = Math.max(
+    effectiveDailyLimit - input.newIntroducedTodayCount,
+    0
+  );
+  const queuedNewCards = newCards.slice(0, newSlots);
+  const queueCards = [...dueCards, ...queuedNewCards];
+  const queueLabel = buildQueueIntroLabel({
+    dailyLimit: effectiveDailyLimit,
+    dueCount: dueCards.length,
+    manualCount: manualCards.length,
+    newQueuedCount: queuedNewCards.length,
+    upcomingCount: upcomingCards.length
+  });
+
+  return {
+    activeCards: input.cards.filter((card) =>
+      isReviewCardActive(card.reviewState?.state ?? null)
+    ).length,
+    dailyLimit: input.dailyLimit,
+    dueCount: dueCards.length,
+    effectiveDailyLimit,
+    manualCount: manualCards.length,
+    newAvailableCount: newCards.length,
+    newQueuedCount: queuedNewCards.length,
+    nextCardFront: queueCards[0]?.front,
+    queueCount: queueCards.length,
+    queueLabel,
+    suspendedCount: suspendedCards.length,
+    totalCards: input.cards.length,
+    upcomingCount: upcomingCards.length
+  };
+}
+
 function filterReviewCardsByLessonCompletion(
   cards: ReviewCardListItem[],
   lessonLinkedEntries: LessonLinkedReviewEntry[]
@@ -529,8 +716,50 @@ function filterReviewCardsByLessonCompletion(
   });
 }
 
+type ReviewOverviewCard = Pick<
+  ReviewQueueCard,
+  "bucket" | "createdAt" | "dueAt" | "front" | "orderIndex"
+>;
+
 function buildReviewEntryKey(entryType: string, entryId: string) {
   return `${entryType}:${entryId}`;
+}
+
+function mapReviewOverviewCard(
+  card: ReviewCardListItem,
+  entryStatuses: Map<string, ReviewEntryStatusValue>
+): ReviewOverviewCard {
+  const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks).map(
+    (entryLink) =>
+      entryStatuses.get(`${entryLink.entryType}:${entryLink.entryId}`) ?? null
+  );
+  const effectiveState = resolveEffectiveReviewState({
+    cardStatus: card.status,
+    drivingEntryStatuses,
+    reviewState: card.reviewState
+      ? {
+          manualOverride: card.reviewState.manualOverride,
+          state: card.reviewState.state as ReviewState
+        }
+      : null
+  });
+  const dueAt = card.reviewState?.dueAt ?? null;
+
+  return {
+    bucket: resolveCardBucket({
+      dueAt,
+      effectiveState: effectiveState.state,
+      reviewState: (card.reviewState?.state as ReviewState | null) ?? null
+    }),
+    createdAt: card.createdAt,
+    dueAt,
+    front: card.front,
+    orderIndex: card.orderIndex
+  };
+}
+
+function isReviewCardActive(state: string | null) {
+  return state !== null && state !== "known_manual" && state !== "suspended";
 }
 
 function scoreReviewLaunchCandidate(candidate: {
@@ -551,6 +780,71 @@ function scoreReviewLaunchCandidate(candidate: {
   }
 
   return 3;
+}
+
+function groupCardsByMedia(cards: ReviewCardListItem[]) {
+  const grouped = new Map<string, ReviewCardListItem[]>();
+
+  for (const card of cards) {
+    const existing = grouped.get(card.mediaId);
+
+    if (existing) {
+      existing.push(card);
+      continue;
+    }
+
+    grouped.set(card.mediaId, [card]);
+  }
+
+  return grouped;
+}
+
+function groupLessonLinkedReviewEntriesByMedia(
+  rows: Array<LessonLinkedReviewEntry & { mediaId: string }>
+) {
+  const grouped = new Map<string, LessonLinkedReviewEntry[]>();
+
+  for (const row of rows) {
+    const existing = grouped.get(row.mediaId);
+
+    if (existing) {
+      existing.push(row);
+      continue;
+    }
+
+    grouped.set(row.mediaId, [
+      {
+        entryId: row.entryId,
+        entryType: row.entryType,
+        lessonStatus: row.lessonStatus
+      }
+    ]);
+  }
+
+  return grouped;
+}
+
+function groupEntryStatusesByMedia<
+  TEntry extends {
+    entryStatus: ReviewEntryStatusValue;
+    id: string;
+    mediaId: string;
+  }
+>(entries: TEntry[]) {
+  const grouped = new Map<string, TEntry[]>();
+
+  for (const entry of entries) {
+    const existing = grouped.get(entry.mediaId);
+
+    if (existing) {
+      existing.push(entry);
+      continue;
+    }
+
+    grouped.set(entry.mediaId, [entry]);
+  }
+
+  return grouped;
 }
 
 function mapReviewCrossMediaTermSibling(sibling: CrossMediaTermSibling) {
@@ -1173,9 +1467,11 @@ function startOfLocalDay(value: Date) {
   return new Date(value.getFullYear(), value.getMonth(), value.getDate());
 }
 
-function compareReviewCardsByDue(
-  left: ReviewQueueCard,
-  right: ReviewQueueCard
+function compareReviewCardsByDue<
+  TCard extends Pick<ReviewQueueCard, "createdAt" | "dueAt" | "orderIndex">
+>(
+  left: TCard,
+  right: TCard
 ) {
   if ((left.dueAt ?? "") !== (right.dueAt ?? "")) {
     return (left.dueAt ?? "9999").localeCompare(right.dueAt ?? "9999");
@@ -1184,9 +1480,11 @@ function compareReviewCardsByDue(
   return compareReviewCardsByOrder(left, right);
 }
 
-function compareReviewCardsByOrder(
-  left: ReviewQueueCard,
-  right: ReviewQueueCard
+function compareReviewCardsByOrder<
+  TCard extends Pick<ReviewQueueCard, "createdAt" | "orderIndex">
+>(
+  left: TCard,
+  right: TCard
 ) {
   if (
     (left.orderIndex ?? Number.MAX_SAFE_INTEGER) !==

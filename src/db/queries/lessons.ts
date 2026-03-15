@@ -1,4 +1,4 @@
-import { asc, eq, and } from "drizzle-orm";
+import { and, asc, eq, inArray } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import { lesson } from "../schema/index.ts";
@@ -19,6 +19,29 @@ export async function listLessonsByMediaId(
       }
     },
     orderBy: [asc(lesson.orderIndex), asc(lesson.slug)]
+  });
+}
+
+export async function listLessonsByMediaIds(
+  database: DatabaseClient,
+  mediaIds: string[]
+) {
+  if (mediaIds.length === 0) {
+    return [];
+  }
+
+  return database.query.lesson.findMany({
+    where: and(inArray(lesson.mediaId, mediaIds), eq(lesson.status, "active")),
+    with: {
+      segment: true,
+      progress: true,
+      content: {
+        columns: {
+          excerpt: true
+        }
+      }
+    },
+    orderBy: [asc(lesson.mediaId), asc(lesson.orderIndex), asc(lesson.slug)]
   });
 }
 
