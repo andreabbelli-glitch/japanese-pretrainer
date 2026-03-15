@@ -21,6 +21,10 @@ export type GlossaryEntryRef = {
   entryType: EntryType;
 };
 
+export type GlossarySearchCandidateRef = GlossaryEntryRef & {
+  crossMediaGroupId: string | null;
+};
+
 function splitGlossaryEntryRefs(entries: GlossaryEntryRef[]) {
   const termIds = new Set<string>();
   const grammarIds = new Set<string>();
@@ -113,6 +117,68 @@ function buildMediaScopeFilter(
   }
 
   return undefined;
+}
+
+type GlossarySearchCandidateInput = {
+  entryType?: EntryType;
+  grammarKana: string;
+  kana: string;
+  normalized: string;
+  romajiCompact: string;
+};
+
+function escapeLikePattern(value: string) {
+  return value.replace(/[\\%_]/g, "\\$&");
+}
+
+function buildTextMatchClause(column: string, value: string) {
+  if (!value) {
+    return null;
+  }
+
+  const escaped = escapeLikePattern(value);
+
+  return {
+    args: [value, `${escaped}%`, `%${escaped}%`],
+    sql: `(${column} = ? or ${column} like ? escape '\\' or ${column} like ? escape '\\')`
+  };
+}
+
+function buildTermCandidateMatchClauses(input: GlossarySearchCandidateInput) {
+  return [
+    buildTextMatchClause("term.search_lemma_norm", input.normalized),
+    buildTextMatchClause("term.search_reading_norm", input.kana),
+    buildTextMatchClause(
+      "replace(replace(term.search_romaji_norm, ' ', ''), '-', '')",
+      input.romajiCompact
+    ),
+    buildTextMatchClause("lower(term.meaning_it)", input.normalized),
+    buildTextMatchClause("lower(coalesce(term.meaning_literal_it, ''))", input.normalized),
+    buildTextMatchClause("lower(coalesce(term.notes_it, ''))", input.normalized),
+    buildTextMatchClause("term_alias.alias_norm", input.normalized),
+    buildTextMatchClause("term_alias.alias_norm", input.kana),
+    buildTextMatchClause(
+      "replace(replace(term_alias.alias_norm, ' ', ''), '-', '')",
+      input.romajiCompact
+    )
+  ].filter((clause): clause is NonNullable<typeof clause> => clause !== null);
+}
+
+function buildGrammarCandidateMatchClauses(input: GlossarySearchCandidateInput) {
+  return [
+    buildTextMatchClause("grammar_pattern.search_pattern_norm", input.normalized),
+    buildTextMatchClause("grammar_pattern.search_pattern_norm", input.grammarKana),
+    buildTextMatchClause("lower(coalesce(grammar_pattern.reading, ''))", input.kana),
+    buildTextMatchClause("lower(grammar_pattern.title)", input.normalized),
+    buildTextMatchClause("lower(grammar_pattern.meaning_it)", input.normalized),
+    buildTextMatchClause("lower(coalesce(grammar_pattern.notes_it, ''))", input.normalized),
+    buildTextMatchClause("grammar_alias.alias_norm", input.normalized),
+    buildTextMatchClause("grammar_alias.alias_norm", input.grammarKana),
+    buildTextMatchClause(
+      "replace(replace(grammar_alias.alias_norm, ' ', ''), '-', '')",
+      input.romajiCompact
+    )
+  ].filter((clause): clause is NonNullable<typeof clause> => clause !== null);
 }
 
 async function listTermGlossaryEntries(
@@ -307,6 +373,85 @@ export async function listGrammarEntrySummaries(
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
 }
 
+export async function listGlossarySearchCandidateRefs(
+  database: DatabaseClient,
+  input: GlossarySearchCandidateInput
+): Promise<GlossarySearchCandidateRef[]> {
+  const termClauses =
+    input.entryType === "grammar" ? [] : buildTermCandidateMatchClauses(input);
+  const grammarClauses =
+    input.entryType === "term" ? [] : buildGrammarCandidateMatchClauses(input);
+  const queries: Array<Promise<GlossarySearchCandidateRef[]>> = [];
+
+  if (termClauses.length > 0) {
+    const termSql = `
+      select distinct
+        term.id as entryId,
+        'term' as entryType,
+        term.cross_media_group_id as crossMediaGroupId
+      from term
+      left join term_alias on term_alias.term_id = term.id
+      where ${termClauses.map((clause) => clause.sql).join(" or ")}
+    `;
+    const termArgs = termClauses.flatMap((clause) => clause.args);
+
+    queries.push(
+      database.$client
+        .execute({
+          sql: termSql,
+          args: termArgs
+        })
+        .then((result) =>
+          result.rows.map((row) => ({
+            crossMediaGroupId:
+              typeof row.crossMediaGroupId === "string"
+                ? row.crossMediaGroupId
+                : null,
+            entryId: String(row.entryId),
+            entryType: "term" as const
+          }))
+        )
+    );
+  }
+
+  if (grammarClauses.length > 0) {
+    const grammarSql = `
+      select distinct
+        grammar_pattern.id as entryId,
+        'grammar' as entryType,
+        grammar_pattern.cross_media_group_id as crossMediaGroupId
+      from grammar_pattern
+      left join grammar_alias on grammar_alias.grammar_id = grammar_pattern.id
+      where ${grammarClauses.map((clause) => clause.sql).join(" or ")}
+    `;
+    const grammarArgs = grammarClauses.flatMap((clause) => clause.args);
+
+    queries.push(
+      database.$client
+        .execute({
+          sql: grammarSql,
+          args: grammarArgs
+        })
+        .then((result) =>
+          result.rows.map((row) => ({
+            crossMediaGroupId:
+              typeof row.crossMediaGroupId === "string"
+                ? row.crossMediaGroupId
+                : null,
+            entryId: String(row.entryId),
+            entryType: "grammar" as const
+          }))
+        )
+    );
+  }
+
+  if (queries.length === 0) {
+    return [];
+  }
+
+  return (await Promise.all(queries)).flat();
+}
+
 export async function getTermEntriesByIds(
   database: DatabaseClient,
   entryIds: string[]
@@ -317,6 +462,37 @@ export async function getTermEntriesByIds(
 
   const rows = await database.query.term.findMany({
     where: inArray(term.id, entryIds),
+    with: {
+      aliases: true,
+      crossMediaGroup: true,
+      media: true,
+      segment: true
+    },
+    orderBy: [asc(term.lemma), asc(term.reading)]
+  });
+
+  const statusMap = await getEntryStatusMap(
+    database,
+    "term",
+    rows.map((row) => row.id)
+  );
+
+  return rows.map((row) => ({
+    ...row,
+    status: statusMap.get(row.id) ?? null
+  }));
+}
+
+export async function getTermEntriesByCrossMediaGroupIds(
+  database: DatabaseClient,
+  groupIds: string[]
+) {
+  if (groupIds.length === 0) {
+    return [];
+  }
+
+  const rows = await database.query.term.findMany({
+    where: inArray(term.crossMediaGroupId, groupIds),
     with: {
       aliases: true,
       crossMediaGroup: true,
@@ -367,6 +543,109 @@ export async function getGrammarEntriesByIds(
     ...row,
     status: statusMap.get(row.id) ?? null
   }));
+}
+
+export async function getGrammarEntriesByCrossMediaGroupIds(
+  database: DatabaseClient,
+  groupIds: string[]
+) {
+  if (groupIds.length === 0) {
+    return [];
+  }
+
+  const rows = await database.query.grammarPattern.findMany({
+    where: inArray(grammarPattern.crossMediaGroupId, groupIds),
+    with: {
+      aliases: true,
+      crossMediaGroup: true,
+      media: true,
+      segment: true
+    },
+    orderBy: [asc(grammarPattern.pattern), asc(grammarPattern.title)]
+  });
+
+  const statusMap = await getEntryStatusMap(
+    database,
+    "grammar",
+    rows.map((row) => row.id)
+  );
+
+  return rows.map((row) => ({
+    ...row,
+    status: statusMap.get(row.id) ?? null
+  }));
+}
+
+export async function getGlobalGlossaryAggregateStats(database: DatabaseClient) {
+  const [
+    termEntryCountResult,
+    grammarEntryCountResult,
+    termCrossMediaCountResult,
+    grammarCrossMediaCountResult,
+    termWithCardsCountResult,
+    grammarWithCardsCountResult
+  ] = await Promise.all([
+    database.$client.execute(
+      "select cast(count(distinct coalesce(cross_media_group_id, id)) as integer) as count from term"
+    ),
+    database.$client.execute(
+      "select cast(count(distinct coalesce(cross_media_group_id, id)) as integer) as count from grammar_pattern"
+    ),
+    database.$client.execute(`
+      select cast(count(*) as integer) as count
+      from (
+        select cross_media_group_id
+        from term
+        where cross_media_group_id is not null
+        group by cross_media_group_id
+        having count(*) > 1
+      ) grouped
+    `),
+    database.$client.execute(`
+      select cast(count(*) as integer) as count
+      from (
+        select cross_media_group_id
+        from grammar_pattern
+        where cross_media_group_id is not null
+        group by cross_media_group_id
+        having count(*) > 1
+      ) grouped
+    `),
+    database.$client.execute(`
+      select cast(count(distinct coalesce(term.cross_media_group_id, term.id)) as integer) as count
+      from term
+      inner join card_entry_link
+        on card_entry_link.entry_type = 'term'
+        and card_entry_link.entry_id = term.id
+      inner join card
+        on card.id = card_entry_link.card_id
+      where card.status != 'archived'
+    `),
+    database.$client.execute(`
+      select cast(count(distinct coalesce(grammar_pattern.cross_media_group_id, grammar_pattern.id)) as integer) as count
+      from grammar_pattern
+      inner join card_entry_link
+        on card_entry_link.entry_type = 'grammar'
+        and card_entry_link.entry_id = grammar_pattern.id
+      inner join card
+        on card.id = card_entry_link.card_id
+      where card.status != 'archived'
+    `)
+  ]);
+  const readCount = (
+    result:
+      | Awaited<ReturnType<DatabaseClient["$client"]["execute"]>>
+      | null
+      | undefined
+  ) => Number(result?.rows[0]?.count ?? 0);
+
+  return {
+    crossMediaCount:
+      readCount(termCrossMediaCountResult) + readCount(grammarCrossMediaCountResult),
+    entryCount: readCount(termEntryCountResult) + readCount(grammarEntryCountResult),
+    withCardsCount:
+      readCount(termWithCardsCountResult) + readCount(grammarWithCardsCountResult)
+  };
 }
 
 export async function getTermEntryById(

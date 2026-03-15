@@ -455,6 +455,48 @@ describe("glossary data", () => {
     expect(grammarData.results).toHaveLength(0);
   });
 
+  it("keeps global grammar romaji queries working after SQL candidate prefiltering", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["sample-anime"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        q: "teiru"
+      },
+      database
+    );
+
+    expect(data.results[0]?.id).toBe("grammar-teiru");
+    expect(data.results[0]?.kind).toBe("grammar");
+    expect(data.results[0]?.matchBadges).toContain("romaji");
+  });
+
+  it("keeps global Italian meaning queries discoverable after SQL candidate prefiltering", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["sample-anime"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        q: "mangiare"
+      },
+      database
+    );
+
+    expect(data.results[0]?.id).toBe("term-taberu");
+    expect(data.results[0]?.kind).toBe("term");
+    expect(data.results[0]?.matchedFields.meaning).toBe("normalized");
+  });
+
   it("handles glossary datasets larger than SQLite expression depth limits", async () => {
     await seedDevelopmentDatabase(database);
 
