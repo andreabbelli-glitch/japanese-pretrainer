@@ -101,6 +101,8 @@ Usa :::example_sentence quando vuoi una frase con traduzione italiana
 collassabile nel reader.
 Se l'asset non esiste ancora, non usare subito :::image: crea prima una voce in
 `workflow/image-requests.yaml`.
+Quella voce non deve essere una nota vaga: deve fissare posizione nel flow,
+immagine scelta, obiettivo visivo e criteri di recupero.
 Usa :::image solo se esiste gia un asset reale sotto `assets/`; non inventare
 path immagine.
 Non inventare campi audio nel testo editoriale: l'audio, se serve, viene

@@ -87,6 +87,13 @@ lo [スマホロトム](term:term-smartphone-rotom) è un oggetto che accompagne
 la progressione e che va letto come interfaccia di viaggio, non come semplice
 regalo di scena.
 
+:::image
+src: assets/story/smart-rotom-field.webp
+alt: "Protagonista in uniforme sul campo con lo Smart Rotom che fluttua accanto."
+caption: >-
+  [スマホロトム](term:term-smartphone-rotom) sul campo accanto al protagonista: qui smette di essere un semplice nome di oggetto e diventa l'interfaccia pratica che accompagna esplorazione, mappa e tutorial.
+:::
+
 Con Nemona il registro cambia subito. Le sue battute sono veloci, emotive e
 molto orientate all'azione. La parola che devi fissare è
 [{{勝負|しょうぶ}}](term:term-shoubu): quando ti dice `{{勝負|しょうぶ}}しよう` o
@@ -104,6 +111,13 @@ fa leggere la reazione del Pokemon come impressione condivisa dai personaggi. In
 pratica, ti aiuta a capire che la scena di scelta è stata accettata dal gioco e
 che quel Pokemon è ormai il tuo partner iniziale.
 
+:::image
+src: assets/story/starter-choice-three-pokemon.webp
+alt: "Scena della scelta dello starter con i tre Pokemon iniziali presentati al protagonista."
+caption: >-
+  La scena della scelta dello starter rende concreto il passaggio descritto nel testo: il partner iniziale non e piu solo nominato, ma entra davvero nel flow della storia.
+:::
+
 Il primo match sulla spiaggia condensa molto lessico che tornerà per tutto il
 gioco. Nemona ti ricorda che i tipi hanno una
 [{{弱点|じゃくてん}}](term:term-jakuten) e, se la sfrutti, il risultato pratico è
@@ -111,6 +125,13 @@ quello che già conosci dal core: [こうかは ばつぐんだ！](term:term-ko
 Questa coppia `{{弱点|じゃくてん}}` + `ばつぐん` è preziosa perché ti fa leggere
 subito il tutorial come catena causa-effetto: scegli il tipo giusto, il danno
 sale, la schermata ti conferma che hai capito la lezione.
+
+:::image
+src: assets/story/nemona-first-battle-beach.webp
+alt: "Primo combattimento tutorial contro Nemona sulla spiaggia con i Pokemon in campo e interfaccia di lotta visibile."
+caption: >-
+  Il primo match con Nemona trasforma subito [{{弱点|じゃくてん}}](term:term-jakuten) e `こうかは ばつぐんだ！` in segnali concreti del tutorial, non in lessico astratto.
+:::
 
 La battuta di Nemona `いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした`
 vale più di una semplice battuta caratteriale. Il verbo
@@ -132,6 +153,13 @@ registrazione ufficiale nel Pokedex senza passaggi manuali. Anche il pattern
 [～たばかり](grammar:grammar-ta-bakari) si incastra bene in questo blocco:
 Nemona ti tratta come qualcuno che ha appena iniziato e per questo calibra
 spiegazioni e complimenti sul livello zero del protagonista.
+
+:::image
+src: assets/ui/pokedex-auto-registration-scene.webp
+alt: "Scena o schermata in cui il Pokedex viene introdotto sullo Smart Rotom."
+caption: >-
+  Qui [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) e [{{登録|とうろく}}](term:term-touroku) entrano nel gioco come funzioni di sistema reali, non solo come termini da memorizzare.
+:::
 
 ## Esempi guidati
 
@@ -200,3 +228,4 @@ reali di Scarlet / Violet. Se stabilizzi
 [{{登録|とうろく}}](term:term-touroku) e i pattern
 [～みたい](grammar:grammar-mitai) / [～てしまう](grammar:grammar-te-shimau),
 entri nel tutorial di cattura del blocco successivo con molto meno attrito.
+

@@ -152,6 +152,9 @@ Se una lesson usa screenshot o immagini carte:
   `content/media/<slug>/workflow/image-requests.yaml`;
 - salva le risoluzioni del secondo agente in
   `content/media/<slug>/workflow/image-assets.yaml`;
+- tratta `image-requests.yaml` come piano editoriale dell'immagine: non basta
+  dire "qui serve uno screenshot", bisogna fissare scena scelta, punto del
+  flow, obiettivo visivo e criteri di recupero;
 - usa nomi stabili e descrittivi, per esempio
   `assets/ui/deck-edit.webp` o `assets/cards/abyss-bell.svg`;
 - inserisci nel textbook un blocco `:::image` solo quando il file esiste gia;
@@ -160,6 +163,9 @@ Se una lesson usa screenshot o immagini carte:
 - in `image-requests.yaml` / `image-assets.yaml`, `caption_it` e testo visibile:
   se compaiono kanji, annotali con furigana; se richiama una entry glossary /
   flashcard, usa il link semantico e annota anche il label;
+- in `image-requests.yaml`, compila anche `placement_rationale`,
+  `visual_goal`, `source_preference`, `must_show` e `avoid` ogni volta che la
+  lesson ha bisogno di una scelta visiva non banale;
 - non lasciare in `content/media/...` placeholder tipo `TODO`, URL remoti o
   `src` inventati.
 

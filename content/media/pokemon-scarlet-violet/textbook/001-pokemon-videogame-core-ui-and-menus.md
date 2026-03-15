@@ -93,6 +93,13 @@ documentata. In Scarlet / Violet la navigazione aggiunge anche
 tutorial, la parola non indica una località generica ma il punto che il gioco
 vuole farti raggiungere o segnare per non perdere la direzione.
 
+:::image
+src: assets/ui/smart-rotom-map-destination.webp
+alt: "Schermata mappa dello Smart Rotom con icone laterali delle app e destinazione evidenziata al centro."
+caption: >-
+  Schermata mappa di [スマホロトム](term:term-smartphone-rotom): qui [{{目的地|もくてきち}}](term:term-mokutekichi) diventa un marker concreto e si vede che mappa, app e navigazione convivono nello stesso dispositivo.
+:::
+
 [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru) va capito come label di
 riepilogo, non come frase astratta "vedere quanto è forte". Aprendo quella
 schermata controlli mosse, tipo, statistiche, abilità e
@@ -156,3 +163,4 @@ stabilizzare poche opposizioni operative. Le più importanti qui sono
 [{{手持ち|てもち}}](term:term-te-mochi) / [ボックス](term:term-box). Quando
 queste coppie sono chiare, la UI smette di essere una lista opaca di label e
 diventa una mappa di azioni.
+

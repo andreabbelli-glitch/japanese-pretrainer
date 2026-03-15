@@ -97,10 +97,20 @@ describe("image workflow", () => {
     anchor: "# Obiettivo"
     kind: app-screen
     priority: medium
+    placement_rationale: >-
+      Serve subito dopo l'obiettivo per ancorare la scena del lessico chiave.
+    visual_goal: >-
+      Far riconoscere il contesto visivo in cui compare il verbo mangiare.
+    source_preference: >-
+      screenshot di gioco gia presente nel bundle
     search_hint: >-
       Sample Anime meal scene
     capture_instructions: >-
       Usa lo screenshot gia presente nel bundle fixture.
+    must_show: >-
+      Tavola apparecchiata e personaggio principale nello stesso frame.
+    avoid: >-
+      Crop che taglia il cibo o overlay estranei.
     alt_it: >-
       Sample Anime osserva una tavola apparecchiata.
     caption_it: >-

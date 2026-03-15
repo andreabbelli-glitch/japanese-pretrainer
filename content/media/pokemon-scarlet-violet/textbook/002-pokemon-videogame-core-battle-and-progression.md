@@ -72,6 +72,13 @@ con [{{急所|きゅうしょ}}](term:term-kyuusho): il colpo critico riguarda u
 picco di danno del singolo attacco, mentre la compatibilità dei tipi dipende
 dalla relazione tra attaccante e bersaglio.
 
+:::image
+src: assets/ui/type-effectiveness-battle.webp
+alt: "Schermata di battaglia con Pokemon teracristallizzato, messaggio di efficacia del colpo e barra HP visibile."
+caption: >-
+  Schermata ufficiale di battaglia: la [タイプ{{相性|あいしょう}}](term:term-type-aishou) non e teoria, ma un messaggio che appare in lotta insieme agli HP e ti dice subito quanto il colpo ha funzionato.
+:::
+
 [{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou) raccoglie problemi
 come sonno, paralisi, veleno e bruciatura. Quando compare questa espressione,
 il punto pratico è capire se il Pokemon può ancora agire normalmente o se perde
@@ -161,3 +168,4 @@ dopo il turno o dopo lo scontro. Se sai leggere bene
 [{{経験値|けいけんち}}](term:term-keikenchi) e
 [{{進化|しんか}}](term:term-shinka), il flusso di lotta diventa molto più
 trasparente.
+

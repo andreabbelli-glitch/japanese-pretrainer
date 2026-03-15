@@ -1,0 +1,178 @@
+assets:
+  - id: smart-rotom-map-destination
+    src: assets/ui/smart-rotom-map-destination.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 001-pokemon-videogame-core-ui-and-menus
+    anchor: "vuole farti raggiungere o segnare per non perdere la direzione."
+    alt_it: >-
+      Schermata mappa dello Smart Rotom con icone laterali delle app e
+      destinazione evidenziata al centro.
+    caption_it: >-
+      Schermata mappa di [スマホロトム](term:term-smartphone-rotom): qui
+      [{{目的地|もくてきち}}](term:term-mokutekichi) diventa un marker concreto e
+      si vede che mappa, app e navigazione convivono nello stesso dispositivo.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/features/220803_02/
+      (`features_img_03.jpg`), convertita in WebP.
+  - id: type-effectiveness-battle
+    src: assets/ui/type-effectiveness-battle.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 002-pokemon-videogame-core-battle-and-progression
+    anchor: "dalla relazione tra attaccante e bersaglio."
+    alt_it: >-
+      Schermata di battaglia con Pokemon teracristallizzato, messaggio di
+      efficacia del colpo e barra HP visibile.
+    caption_it: >-
+      Schermata ufficiale di battaglia: la
+      [タイプ{{相性|あいしょう}}](term:term-type-aishou) non e teoria, ma un
+      messaggio che appare in lotta insieme agli HP e ti dice subito quanto il
+      colpo ha funzionato.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/battle/220822_02/
+      (`battle_img_04.jpg`), convertita in WebP.
+  - id: smart-rotom-field
+    src: assets/story/smart-rotom-field.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+    anchor: "regalo di scena."
+    alt_it: >-
+      Protagonista in uniforme sul campo con lo Smart Rotom che fluttua accanto.
+    caption_it: >-
+      [スマホロトム](term:term-smartphone-rotom) sul campo accanto al protagonista:
+      qui smette di essere un semplice nome di oggetto e diventa l'interfaccia
+      pratica che accompagna esplorazione, mappa e tutorial.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/features/220803_02/
+      (`features_img_02.jpg`), convertita in WebP.
+  - id: pepper-control-ball
+    src: assets/story/pepper-control-ball.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+    anchor: "nel gioco come un normale Pokemon appena catturato."
+    alt_it: >-
+      Pepper in primo piano con una Monster Ball tesa in avanti verso il giocatore.
+    caption_it: >-
+      Pepper entra in scena con la Ball in mano: il visuale aiuta a legare il
+      suo tono ruvido a [{{制御|せいぎょ}}する](term:term-seigyo-suru), cioe l'idea
+      che quell'oggetto serva a gestire il Pokemon misterioso.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/character/220803_01/
+      (`ja/img_01.jpg`), convertita in WebP.
+  - id: starter-choice-three-pokemon
+    src: assets/story/starter-choice-three-pokemon.webp
+    source_type: screenshot
+    width: 710
+    height: 399
+    lesson_slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+    anchor: "che quel Pokemon è ormai il tuo partner iniziale."
+    alt_it: >-
+      Scena della scelta dello starter con i tre Pokemon iniziali presentati al
+      protagonista.
+    caption_it: >-
+      La scena della scelta dello starter rende concreto il passaggio descritto
+      nel testo: il partner iniziale non e piu solo nominato, ma entra davvero
+      nel flow della storia.
+    notes: >-
+      Ricavata dalla guida GameWith `御三家おすすめと最初のポケモンの選び方`
+      (https://gamewith.jp/pokemon-sv/article/show/376372), asset immagine
+      `https://img.gamewith.jp/img/376bd1553acf420b6801bf9fc72bf1f5.png`,
+      convertita in WebP.
+  - id: nemona-first-battle-beach
+    src: assets/story/nemona-first-battle-beach.webp
+    source_type: screenshot
+    width: 710
+    height: 399
+    lesson_slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+    anchor: "sale, la schermata ti conferma che hai capito la lezione."
+    alt_it: >-
+      Primo combattimento tutorial contro Nemona sulla spiaggia con i Pokemon in
+      campo e interfaccia di lotta visibile.
+    caption_it: >-
+      Il primo match con Nemona trasforma subito
+      [{{弱点|じゃくてん}}](term:term-jakuten) e `こうかは ばつぐんだ！` in segnali
+      concreti del tutorial, non in lessico astratto.
+    notes: >-
+      Ricavata dalla guida GameWith `ネモ(最初のポケモンバトル)攻略と手持ち`
+      (https://gamewith.jp/pokemon-sv/article/show/375231), asset immagine
+      `https://img.gamewith.jp/img/04faed0ca5d4537aab9c35c0526363e5.png`,
+      convertita in WebP.
+  - id: pokedex-auto-registration-scene
+    src: assets/ui/pokedex-auto-registration-scene.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+    anchor: "vengono [{{登録|とうろく}}](term:term-touroku) automaticamente. Qui il termine"
+    alt_it: >-
+      Scena o schermata in cui il Pokedex viene introdotto sullo Smart Rotom.
+    caption_it: >-
+      Qui [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) e
+      [{{登録|とうろく}}](term:term-touroku) entrano nel gioco come funzioni di
+      sistema reali, non solo come termini da memorizzare.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/features/220803_01/
+      (`features_img_05.jpg`), convertita in WebP.
+  - id: catch-tutorial-monster-ball
+    src: assets/ui/catch-tutorial-monster-ball.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+    anchor: "lotta."
+    alt_it: >-
+      Tutorial iniziale di cattura con Pokemon selvatico indebolito e opzione di
+      usare una Monster Ball.
+    caption_it: >-
+      Il tutorial di cattura rende visibile la logica di
+      [{{弱|よわ}}らせる](term:term-yowaraseru) prima di lanciare la
+      [モンスターボール](term:term-monster-ball): non devi solo vincere, devi
+      preparare la cattura.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/story/220803_01/
+      (`story_img_03.jpg`), convertita in WebP.
+  - id: inlet-cave-houndour-warning
+    src: assets/story/inlet-cave-houndour-warning.webp
+    source_type: screenshot
+    width: 710
+    height: 372
+    lesson_slug: 102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+    anchor: "come spazio di gameplay."
+    alt_it: >-
+      Area della grotta iniziale vicino al faro con ambiente roccioso e Pokemon
+      selvatici del luogo.
+    caption_it: >-
+      Un'immagine della grotta o dell'area vicina al faro aiuta a leggere
+      [{{生息|せいそく}}する](term:term-seisoku-suru) come informazione di gameplay:
+      certe specie appartengono davvero a quel luogo.
+    notes: >-
+      Ricavata dalla guida GameWith `デルビルの出現場所と色違い/入手方法`
+      (https://gamewith.jp/pokemon-sv/article/show/373809), asset immagine
+      `https://img.gamewith.jp/img/ac821ac348b1fdc69fade9f10959257d.png`,
+      convertita in WebP.
+  - id: weakened-legendary-cave-scene
+    src: assets/story/weakened-legendary-cave-scene.webp
+    source_type: screenshot
+    width: 710
+    height: 399
+    lesson_slug: 102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+    anchor: "corpus parlerà di forme, cambiamenti o condizioni speciali."
+    alt_it: >-
+      Koraidon in una forma speciale del prologo accanto al protagonista.
+    caption_it: >-
+      Il leggendario appare qui in una [{{姿|すがた}}](term:term-sugata) diversa
+      da quella di un Pokemon da battaglia normale: il visuale aiuta a leggere
+      la scena come cambio di stato, non come semplice incontro casuale.
+    notes: >-
+      Ricavata dalla guida GameWith `コライドンとミライドンのライド解放条件`
+      (https://gamewith.jp/pokemon-sv/article/show/373698), asset immagine
+      `https://img.gamewith.jp/img/a81a248678f0ffdb58b8c65a007acc4f.png`,
+      convertita in WebP come fallback visuale in attesa di un frame piu
+      preciso della forma indebolita dentro la grotta.

@@ -1,0 +1,375 @@
+requests:
+  - id: smart-rotom-map-destination
+    lesson_slug: 001-pokemon-videogame-core-ui-and-menus
+    anchor: "vuole farti raggiungere o segnare per non perdere la direzione."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo che introduce mappa, Pokedex e
+      [{{目的地|もくてきち}}](term:term-mokutekichi), cosi il lettore vede davvero
+      come appare la schermata con le icone laterali e il punto da raggiungere.
+    visual_goal: >-
+      Rendere leggibili la schermata mappa di [スマホロトム](term:term-smartphone-rotom),
+      il concetto di destinazione evidenziata e la presenza di piu app nello
+      stesso dispositivo.
+    source_preference: >-
+      Pagina ufficiale Pokemon Scarlet / Violet dedicata a
+      [スマホロトム](term:term-smartphone-rotom).
+    search_hint: >-
+      Usa la pagina ufficiale `features/220803_02` su スマホロトム e scegli la
+      schermata mappa con [{{目的地|もくてきち}}](term:term-mokutekichi) visibile.
+    capture_instructions: >-
+      Preferisci una schermata completa del menu mappa, senza crop aggressivi,
+      con i pulsanti laterali e il marker centrale ancora leggibili.
+    must_show: >-
+      Mappa completa, colonna sinistra delle app, marker di destinazione,
+      pulsanti base in basso e cornice del device.
+    avoid: >-
+      Render del telefono senza UI, crop che tagliano le icone laterali, lingua
+      diversa dal giapponese o schermate prive del marker di destinazione.
+    alt_it: >-
+      Schermata mappa dello Smart Rotom con icone laterali delle app e
+      destinazione evidenziata al centro.
+    caption_it: >-
+      Schermata mappa di [スマホロトム](term:term-smartphone-rotom): qui
+      [{{目的地|もくてきち}}](term:term-mokutekichi) diventa un marker concreto e
+      si vede che mappa, app e navigazione convivono nello stesso dispositivo.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/features/220803_02/
+      asset `features_img_03.jpg`.
+  - id: type-effectiveness-battle
+    lesson_slug: 002-pokemon-videogame-core-battle-and-progression
+    anchor: "dalla relazione tra attaccante e bersaglio."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo sulla
+      [タイプ{{相性|あいしょう}}](term:term-type-aishou), cosi il testo sui messaggi
+      di efficacia non resta astratto e il lettore vede una schermata di lotta
+      reale con testo e HP.
+    visual_goal: >-
+      Mostrare una schermata ufficiale di battaglia in cui l'efficacia del tipo
+      viene comunicata a video insieme allo stato del Pokemon colpito.
+    source_preference: >-
+      Pagina ufficiale battle di Pokemon Scarlet / Violet dedicata al
+      [テラスタル](term:term-terastal).
+    search_hint: >-
+      Usa la pagina ufficiale `battle/220822_02` e scegli un frame con messaggio
+      di efficacia e barra HP visibili.
+    capture_instructions: >-
+      Preferisci uno screenshot con campo di battaglia completo, testo del
+      messaggio leggibile e HUD minima ancora presente.
+    must_show: >-
+      Pokemon in campo, messaggio di efficacia, barra HP e contesto di lotta.
+    avoid: >-
+      Crop che mostrano solo l'effetto luminoso, schermate senza testo o immagini
+      promozionali che non fanno capire il flusso di battaglia.
+    alt_it: >-
+      Schermata di battaglia con Pokemon teracristallizzato, messaggio di
+      efficacia del colpo e barra HP visibile.
+    caption_it: >-
+      Schermata ufficiale di battaglia: la
+      [タイプ{{相性|あいしょう}}](term:term-type-aishou) non e teoria, ma un
+      messaggio che appare in lotta insieme agli HP e ti dice subito quanto il
+      colpo ha funzionato.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/battle/220822_02/
+      asset `battle_img_04.jpg`.
+  - id: smart-rotom-field
+    lesson_slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+    anchor: "regalo di scena."
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va dopo il paragrafo in cui la madre consegna lo
+      [スマホロトム](term:term-smartphone-rotom), cosi il device entra nel flow
+      della lesson come oggetto di campo e non solo come termine lessicale.
+    visual_goal: >-
+      Far vedere [スマホロトム](term:term-smartphone-rotom) accanto al protagonista
+      nel mondo di gioco, per fissarlo come compagno di viaggio e interfaccia.
+    source_preference: >-
+      Pagina ufficiale Pokemon Scarlet / Violet su
+      [スマホロトム](term:term-smartphone-rotom).
+    search_hint: >-
+      Usa la pagina ufficiale `features/220803_02` e scegli uno screenshot di
+      campo con trainer e Smart Rotom insieme.
+    capture_instructions: >-
+      Preferisci un frame pulito con il protagonista e lo Smart Rotom sospeso a
+      lato, senza overlay e con entrambi ben riconoscibili.
+    must_show: >-
+      Protagonista, Smart Rotom, contesto di esplorazione e silhouette chiara del
+      device.
+    avoid: >-
+      Render isolati senza personaggio, schermate di menu o crop troppo stretti
+      che facciano perdere la relazione fra oggetto e protagonista.
+    alt_it: >-
+      Protagonista in uniforme sul campo con lo Smart Rotom che fluttua accanto.
+    caption_it: >-
+      [スマホロトム](term:term-smartphone-rotom) sul campo accanto al protagonista:
+      qui smette di essere un semplice nome di oggetto e diventa l'interfaccia
+      pratica che accompagna esplorazione, mappa e tutorial.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/features/220803_02/
+      asset `features_img_02.jpg`.
+  - id: pepper-control-ball
+    lesson_slug: 102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+    anchor: "nel gioco come un normale Pokemon appena catturato."
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo che introduce Pepper e
+      [{{制御|せいぎょ}}する](term:term-seigyo-suru), cosi la lezione mostra il
+      personaggio proprio nel momento in cui il testo spiega la Ball legata al
+      leggendario.
+    visual_goal: >-
+      Fissare il volto di Pepper e la Monster Ball come oggetto chiave della
+      scena, per dare contesto visivo al suo parlato ruvido e al concetto di
+      controllo del Pokemon misterioso.
+    source_preference: >-
+      Pagina ufficiale personaggio dedicata a Pepper.
+    search_hint: >-
+      Usa la pagina ufficiale `character/220803_01` e scegli l'immagine in cui
+      Pepper tende in avanti la Monster Ball.
+    capture_instructions: >-
+      Preferisci il frame ufficiale a figura ravvicinata con espressione decisa
+      e Ball ben visibile nella mano.
+    must_show: >-
+      Pepper, Monster Ball, espressione energica del personaggio e uniforme.
+    avoid: >-
+      Ritratti troppo neutri, card promozionali senza Ball o immagini di gruppo
+      che facciano perdere il focus sul rapporto fra Pepper e l'oggetto.
+    alt_it: >-
+      Pepper in primo piano con una Monster Ball tesa in avanti verso il giocatore.
+    caption_it: >-
+      Pepper entra in scena con la Ball in mano: il visuale aiuta a legare il
+      suo tono ruvido a [{{制御|せいぎょ}}する](term:term-seigyo-suru), cioe l'idea
+      che quell'oggetto serva a gestire il Pokemon misterioso.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/character/220803_01/
+      asset `ja/img_01.jpg`.
+  - id: starter-choice-three-pokemon
+    lesson_slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+    anchor: "che quel Pokemon è ormai il tuo partner iniziale."
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo sulla scelta dello starter, per far vedere i
+      tre Pokemon nel momento in cui il testo spiega che la scena non e solo
+      narrativa ma una decisione di gioco ormai confermata.
+    visual_goal: >-
+      Rendere visibile la schermata o la scena di scelta con i tre starter e,
+      se possibile, con il testo a schermo che aiuta a distinguere il momento
+      della selezione.
+    source_preference: >-
+      Guida giapponese con screenshot del prologo e schermata di scelta degli
+      starter.
+    search_hint: >-
+      Cerca nelle guide `御三家おすすめと最初のポケモンの選び方` di GameWith o
+      articoli Game8 sulla scelta iniziale dei tre starter in Pokemon SV.
+    capture_instructions: >-
+      Preferisci un frame con i tre starter ben visibili nello stesso contesto,
+      o una schermata di selezione/assegnazione che faccia capire che il
+      giocatore sta scegliendo il partner iniziale.
+    must_show: >-
+      I tre starter o il Pokemon scelto nella scena ufficiale, Nemona o Clavell
+      se presenti, e possibilmente testo o prompt di scelta.
+    avoid: >-
+      Art promozionali isolate, wallpaper senza contesto di gioco, crop che non
+      facciano capire che si tratta proprio del momento di selezione.
+    alt_it: >-
+      Scena della scelta dello starter con i tre Pokemon iniziali presentati al
+      protagonista.
+    caption_it: >-
+      La scena della scelta dello starter rende concreto il passaggio descritto
+      nel testo: il partner iniziale non e piu solo nominato, ma entra davvero
+      nel flow della storia.
+    notes: >-
+      Fonte guida da verificare: GameWith `御三家おすすめと最初のポケモンの選び方`
+      o guida equivalente Game8 con screenshot del prologo.
+  - id: nemona-first-battle-beach
+    lesson_slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+    anchor: "sale, la schermata ti conferma che hai capito la lezione."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va dopo il paragrafo sul primo match in spiaggia, per legare il lessico di
+      [{{弱点|じゃくてん}}](term:term-jakuten) e `ばつぐん` a una schermata del
+      tutorial vero con Nemona.
+    visual_goal: >-
+      Mostrare il primo scontro con Nemona o una schermata molto vicina, con HUD
+      di lotta e testo di efficacia leggibile.
+    source_preference: >-
+      Guida giapponese del primo combattimento con Nemona, con screenshot del
+      tutorial.
+    search_hint: >-
+      Cerca la pagina Game8 `ネモ(最初のポケモンバトル)攻略と手持ち` o guida
+      equivalente che mostri schermate del primo match.
+    capture_instructions: >-
+      Preferisci un frame del combattimento sulla spiaggia con i due Pokemon in
+      campo e, se possibile, il testo del tutorial o il messaggio di efficacia.
+    must_show: >-
+      Campo di battaglia iniziale, Pokemon scelto dal giocatore, Pokemon di
+      Nemona e HUD minima della lotta.
+    avoid: >-
+      Screenshot di battaglie avanzate, teracristallizzazione tardiva o immagini
+      generiche di lotta non riconducibili al primo scontro del prologo.
+    alt_it: >-
+      Primo combattimento tutorial contro Nemona sulla spiaggia con i Pokemon in
+      campo e interfaccia di lotta visibile.
+    caption_it: >-
+      Il primo match con Nemona trasforma subito [{{弱点|じゃくてん}}](term:term-jakuten)
+      e `こうかは ばつぐんだ！` in segnali concreti del tutorial, non in lessico
+      astratto.
+    notes: >-
+      Fonte guida da verificare: Game8 `ネモ(最初のポケモンバトル)攻略と手持ち`.
+  - id: pokedex-auto-registration-scene
+    lesson_slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+    anchor: "vengono [{{登録|とうろく}}](term:term-touroku) automaticamente. Qui il termine"
+    kind: app-screen
+    priority: medium
+    placement_rationale: >-
+      Va nel punto in cui la lesson spiega
+      [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) e
+      [{{登録|とうろく}}](term:term-touroku), per mostrare il momento in cui il
+      sistema viene introdotto e non lasciarlo solo descritto.
+    visual_goal: >-
+      Rendere visibile il passaggio di installazione o registrazione del Pokedex
+      nello Smart Rotom, idealmente con testo a schermo del sistema.
+    source_preference: >-
+      Guida giapponese del primissimo story flow con screenshot del tutorial
+      Pokedex.
+    search_hint: >-
+      Cerca nel beginner guide di GameWith `ポケモンSV初心者向け！序盤の進め方`
+      la sezione del primo match con Nemona e dell'ottenimento del Pokedex.
+    capture_instructions: >-
+      Preferisci un frame in cui si veda lo Smart Rotom o la schermata sistema
+      legata alla [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan), con testo o UI
+      abbastanza leggibile.
+    must_show: >-
+      Smart Rotom o UI di sistema, riferimento al Pokedex e contesto del tutorial
+      immediatamente dopo il primo combattimento.
+    avoid: >-
+      Pokedex aperto in fasi avanzate del gioco, menu troppo tardi nella
+      progressione o screenshot senza contesto del momento in cui viene ottenuto.
+    alt_it: >-
+      Scena o schermata in cui il Pokedex viene introdotto sullo Smart Rotom.
+    caption_it: >-
+      Qui [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) e
+      [{{登録|とうろく}}](term:term-touroku) entrano nel gioco come funzioni di
+      sistema reali, non solo come termini da memorizzare.
+    notes: >-
+      Fonte guida da verificare: GameWith `ポケモンSV初心者向け！序盤の進め方`.
+  - id: catch-tutorial-monster-ball
+    lesson_slug: 102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+    anchor: "lotta."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo che spiega
+      [モンスターボール](term:term-monster-ball) e
+      [{{弱|よわ}}らせる](term:term-yowaraseru), perché il tutorial di cattura e
+      uno dei momenti in cui una schermata reale aiuta di piu del testo.
+    visual_goal: >-
+      Mostrare un incontro selvatico del tutorial con Ball, HP ridotti o prompt
+      di cattura visibile.
+    source_preference: >-
+      Guida giapponese della fase iniziale con screenshot del tutorial di
+      cattura su コサジの小道.
+    search_hint: >-
+      Cerca nel beginner guide GameWith `ポケモンSV初心者向け！序盤の進め方` le
+      tappe di cattura iniziale e i frame con Monster Ball e Pokemon selvatico.
+    capture_instructions: >-
+      Preferisci uno screenshot che mostri il Pokemon selvatico in campo,
+      l'interfaccia di lotta e il momento in cui la Ball diventa una scelta
+      plausibile o guidata.
+    must_show: >-
+      Pokemon selvatico, interfaccia del turno, riferimento alla Ball e contesto
+      del tutorial iniziale con Nemona.
+    avoid: >-
+      Catture avanzate senza Nemona, schermate senza HUD o immagini promozionali
+      prive del contesto di tutorial.
+    alt_it: >-
+      Tutorial iniziale di cattura con Pokemon selvatico indebolito e opzione di
+      usare una Monster Ball.
+    caption_it: >-
+      Il tutorial di cattura rende visibile la logica di
+      [{{弱|よわ}}らせる](term:term-yowaraseru) prima di lanciare la
+      [モンスターボール](term:term-monster-ball): non devi solo vincere, devi
+      preparare la cattura.
+    notes: >-
+      Fonte guida da verificare: GameWith `ポケモンSV初心者向け！序盤の進め方`,
+      step della cattura iniziale.
+  - id: inlet-cave-houndour-warning
+    lesson_slug: 102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+    anchor: "come spazio di gameplay."
+    kind: other
+    priority: medium
+    placement_rationale: >-
+      Va dopo il paragrafo su [{{生息|せいそく}}する](term:term-seisoku-suru), cosi
+      il lettore vede che la grotta e davvero un luogo associato a specie e
+      pericolo, non solo un fondale narrativo.
+    visual_goal: >-
+      Mostrare l'ingresso della grotta o un frame con Houndour / area rocciosa
+      che renda concreto il legame fra habitat e rischio.
+    source_preference: >-
+      Guida giapponese con screenshot della zona della grotta iniziale o pagina
+      dedicata a デルビル con frame dell'area.
+    search_hint: >-
+      Cerca la pagina GameWith `デルビルの出現場所と色違い/入手方法` o guide del
+      faro/入り江のほら穴 con screenshot dell'area iniziale.
+    capture_instructions: >-
+      Preferisci un frame dell'area rocciosa o della grotta con il Pokemon della
+      zona riconoscibile, anche senza molta UI, purche il luogo sia chiaro.
+    must_show: >-
+      Ambiente della grotta o del sentiero vicino al faro, Houndour se possibile
+      e senso di zona pericolosa.
+    avoid: >-
+      Schede Pokedex isolate, artwork del Pokemon senza ambiente o screenshot di
+      aree tarde che non siano riconducibili al prologo.
+    alt_it: >-
+      Area della grotta iniziale vicino al faro con ambiente roccioso e Pokemon
+      selvatici del luogo.
+    caption_it: >-
+      Un'immagine della grotta o dell'area vicina al faro aiuta a leggere
+      [{{生息|せいそく}}する](term:term-seisoku-suru) come informazione di gameplay:
+      certe specie appartengono davvero a quel luogo.
+    notes: >-
+      Fonte guida da verificare: GameWith `デルビルの出現場所と色違い/入手方法` o
+      walkthrough giapponesi del blocco `入り江のほら穴`.
+  - id: weakened-legendary-cave-scene
+    lesson_slug: 102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+    anchor: "corpus parlerà di forme, cambiamenti o condizioni speciali."
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo su [{{姿|すがた}}](term:term-sugata), perché qui
+      una schermata della forma indebolita del leggendario chiarisce in un colpo
+      solo stato, mistero e lessico della scena.
+    visual_goal: >-
+      Mostrare Koraidon o Miraidon nella forma indebolita della grotta, idealmente
+      in un frame che renda evidente che non puo ancora combattere.
+    source_preference: >-
+      Walkthrough giapponese del prologo con screenshot dell'evento nella grotta.
+    search_hint: >-
+      Cerca nelle guide story di GameWith o Game8 le tappe `入り江のほら穴` e
+      `謎のポケモンについていく`, preferendo screenshot dell'incontro nella forma
+      debole.
+    capture_instructions: >-
+      Preferisci un frame dell'evento in grotta con il leggendario a terra o in
+      forma chiaramente affaticata, senza overlay di video o UI estranee.
+    must_show: >-
+      Koraidon o Miraidon nella forma debole, ambiente di grotta e tono di scena
+      narrativa.
+    avoid: >-
+      Artwork promozionali del ride form, immagini di cavalcata successive o
+      screenshot tardi in cui il leggendario appare gia pienamente attivo.
+    alt_it: >-
+      Pokemon leggendario nella forma indebolita all'interno della grotta del
+      prologo.
+    caption_it: >-
+      La forma debole del leggendario rende concreta la parola
+      [{{姿|すがた}}](term:term-sugata): qui non si parla di aspetto estetico, ma
+      di stato in cui il Pokemon non puo ancora combattere.
+    notes: >-
+      Fonte guida da verificare: walkthrough giapponesi del prologo, in
+      particolare sezioni `入り江のほら穴` e `謎のポケモンについていく` su GameWith o Game8.

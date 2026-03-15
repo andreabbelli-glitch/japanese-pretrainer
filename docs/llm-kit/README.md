@@ -84,6 +84,13 @@ Disponibile ora:
 > lascia i campi assenti salvo che asset e provenance reali siano gia stati
 > forniti esplicitamente.
 
+> [!IMPORTANT]
+> `workflow/image-requests.yaml` non e una semplice lista tecnica di cose da
+> scaricare. E il piano editoriale delle immagini: il producer contenuti deve
+> decidere gia li dove va l'immagine, quale scena o schermata serve, che cosa
+> deve rendere leggibile e quali criteri usera poi l'agent immagini per
+> recuperarla correttamente.
+
 ### Se vuoi dare contesto completo
 
 Passa:

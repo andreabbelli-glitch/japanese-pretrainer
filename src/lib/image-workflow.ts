@@ -20,10 +20,15 @@ export interface ImageRequestRecord {
   kind: string;
   altIt: string;
   captionIt?: string;
+  avoid?: string;
+  mustShow?: string;
+  placementRationale?: string;
   priority?: "low" | "medium" | "high";
+  sourcePreference?: string;
   searchHint?: string;
   captureInstructions?: string;
   notes?: string;
+  visualGoal?: string;
 }
 
 export interface ImageAssetRecord {
@@ -353,14 +358,19 @@ function normalizeImageRequestRecord(
   return {
     altIt: readRequiredString(value, "alt_it", filePath, index),
     anchor: readRequiredString(value, "anchor", filePath, index),
+    avoid: readOptionalString(value, "avoid"),
     captionIt: readOptionalString(value, "caption_it"),
     captureInstructions: readOptionalString(value, "capture_instructions"),
     id: readRequiredString(value, "id", filePath, index),
     kind: readRequiredString(value, "kind", filePath, index),
     lessonSlug: readRequiredString(value, "lesson_slug", filePath, index),
+    mustShow: readOptionalString(value, "must_show"),
     notes: readOptionalString(value, "notes"),
+    placementRationale: readOptionalString(value, "placement_rationale"),
     priority: readOptionalPriority(value, "priority", filePath, index),
-    searchHint: readOptionalString(value, "search_hint")
+    searchHint: readOptionalString(value, "search_hint"),
+    sourcePreference: readOptionalString(value, "source_preference"),
+    visualGoal: readOptionalString(value, "visual_goal")
   };
 }
 

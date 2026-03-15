@@ -4,13 +4,23 @@ requests:
     anchor: "## <heading-esatta>"
     kind: <app-screen|card-art|ui-detail|board-state|other>
     priority: <low|medium|high>
+    placement_rationale: >-
+      <Perche l'immagine va inserita proprio dopo questo anchor e quale passaggio del flow chiarisce.>
+    visual_goal: >-
+      <Che cosa deve rendere leggibile all'utente: termini UI, contrasto visivo, stato di gioco, personaggio, ecc.>
+    source_preference: >-
+      <Fonte preferita: ufficiale, screenshot di gioco, walkthrough, wiki, crop da pagina ufficiale, ecc.>
     search_hint: >-
       <Query o hint corto per il secondo agent.>
     capture_instructions: >-
       <Istruzioni pratiche per catturare o cercare l'immagine giusta.>
+    must_show: >-
+      <Elementi obbligatori da vedere nell'immagine finale: label, personaggi, pulsanti, area UI, confronto tra stati, ecc.>
+    avoid: >-
+      <Che cosa evitare: overlay YouTube, testo illeggibile, crop troppo stretto, lingua sbagliata, scena successiva, spoiler, ecc.>
     alt_it: >-
       <Testo alternativo in italiano obbligatorio, senza kanji nudi; se serve usa kana/katakana.>
     caption_it: >-
       <Caption in italiano da usare nel blocco :::image, con furigana e link semantici se compaiono kanji.>
     notes: >-
-      <Note facoltative per evitare ambiguita.>
+      <Note facoltative su nomenclatura, capitolo, equivalenze tra versioni o fonte attesa.>

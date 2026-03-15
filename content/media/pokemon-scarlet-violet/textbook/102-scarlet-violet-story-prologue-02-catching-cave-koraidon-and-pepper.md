@@ -78,6 +78,13 @@ cui la cattura diventa più probabile. Questa distinzione evita uno degli errori
 più comuni: leggere il tutorial come se il tuo unico obiettivo fosse vincere la
 lotta.
 
+:::image
+src: assets/ui/catch-tutorial-monster-ball.webp
+alt: "Tutorial iniziale di cattura con Pokemon selvatico indebolito e opzione di usare una Monster Ball."
+caption: >-
+  Il tutorial di cattura rende visibile la logica di [{{弱|よわ}}らせる](term:term-yowaraseru) prima di lanciare la [モンスターボール](term:term-monster-ball): non devi solo vincere, devi preparare la cattura.
+:::
+
 Il tono di Nemona in questa sezione ruota spesso attorno a
 [～てあげる](grammar:grammar-te-ageru). Quando dice che ti insegna come
 catturare o che ti divide qualche [モンスターボール](term:term-monster-ball), il
@@ -106,6 +113,13 @@ quindi puoi aspettarti incontri, pericoli o materiali collegati a quella specie.
 Non è solo una descrizione naturalistica; ti prepara a leggere il territorio
 come spazio di gameplay.
 
+:::image
+src: assets/story/inlet-cave-houndour-warning.webp
+alt: "Area della grotta iniziale vicino al faro con ambiente roccioso e Pokemon selvatici del luogo."
+caption: >-
+  Un'immagine della grotta o dell'area vicina al faro aiuta a leggere [{{生息|せいそく}}する](term:term-seisoku-suru) come informazione di gameplay: certe specie appartengono davvero a quel luogo.
+:::
+
 Il pattern [～ながら](grammar:grammar-nagara) entra bene nella frase in cui il
 percorso verso il faro continua combattendo e catturando. In Pokemon è molto
 produttivo perché il gioco fa spesso due cose insieme: esplori mentre alleni la
@@ -123,6 +137,13 @@ forza. Per questo la frase `この {{姿|すがた}}じゃ {{戦|たたか}}え�
 Capire [{{姿|すがた}}](term:term-sugata) ti aiuterà più avanti ogni volta che il
 corpus parlerà di forme, cambiamenti o condizioni speciali.
 
+:::image
+src: assets/story/weakened-legendary-cave-scene.webp
+alt: "Koraidon in una forma speciale del prologo accanto al protagonista."
+caption: >-
+  Il leggendario appare qui in una [{{姿|すがた}}](term:term-sugata) diversa da quella di un Pokemon da battaglia normale: il visuale aiuta a leggere la scena come cambio di stato, non come semplice incontro casuale.
+:::
+
 In questo stesso blocco torna utile [～てしまう](grammar:grammar-te-shimau).
 Nella scena della caduta o quando si parla di un oggetto che si consuma, il
 pattern mantiene la sua doppia funzione: qualcosa accade fino in fondo oppure
@@ -139,6 +160,13 @@ che serve a gestire quel Pokemon specifico. Capire
 [{{制御|せいぎょ}}する](term:term-seigyo-suru) ti fa leggere bene il rapporto tra
 Pepper e il leggendario e ti prepara al fatto che Koraidon / Miraidon non entra
 nel gioco come un normale Pokemon appena catturato.
+
+:::image
+src: assets/story/pepper-control-ball.webp
+alt: "Pepper in primo piano con una Monster Ball tesa in avanti verso il giocatore."
+caption: >-
+  Pepper entra in scena con la Ball in mano: il visuale aiuta a legare il suo tono ruvido a [{{制御|せいぎょ}}する](term:term-seigyo-suru), cioe l'idea che quell'oggetto serva a gestire il Pokemon misterioso.
+:::
 
 Pepper porta anche il primo giapponese marcatamente ruvido del percorso.
 Forme come `{{戦|たたか}}えねえ` al posto di `{{戦|たたか}}えない` o `{{持|も}}ってけ`
@@ -224,3 +252,5 @@ Violet. Se stabilizzi [{{捕獲|ほかく}}](term:term-hokaku),
 [{{制御|せいぎょ}}する](term:term-seigyo-suru), entri nel capitolo successivo con
 una lettura molto più chiara di tutorial, premi di sistema e primi dialoghi
 seri del gioco.
+
+

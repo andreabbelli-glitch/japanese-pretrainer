@@ -106,7 +106,8 @@ Non far inventare all'LLM contenuti un `src` immagine che non esiste ancora.
 
 Workflow consigliato:
 
-1. il content drafter segnala dove una immagine sarebbe utile;
+1. il content drafter decide se una immagine serve davvero, dove va nel flow e
+   quale immagine specifica chiarirebbe il passaggio;
 2. salva le richieste in `content/media/<slug>/workflow/image-requests.yaml`;
 3. l'agent immagini recupera il file e aggiorna
    `content/media/<slug>/workflow/image-assets.yaml`;
@@ -116,6 +117,15 @@ Workflow consigliato:
    il markdown appena cambiato sul filesystem.
 
 Il validatore fallisce se il file non esiste.
+
+Tratta `image-requests.yaml` come piano editoriale, non come semplice TODO
+tecnico. La request deve fissare almeno:
+
+- il punto esatto del flow in cui l'immagine va inserita;
+- la scena / schermata / crop scelto;
+- che cosa l'immagine deve rendere leggibile;
+- quali elementi devono essere visibili;
+- quale tipo di fonte e preferibile per recuperarla.
 
 ### 5.2 Regola pratica per l'audio
 
@@ -189,12 +199,21 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 - che un blocco `:::image` e valido solo se `src` punta a un file gia esistente
   sotto `assets/`;
 - che, se il task include il workflow immagini, il primo agente deve produrre
-  `workflow/image-requests.yaml` invece di inventare direttamente `src`;
+  `workflow/image-requests.yaml` invece di inventare direttamente `src`, e deve
+  usarlo come piano editoriale completo della scelta visiva;
 - che i campi audio sono supportati dal formato ma non vanno compilati a
   fantasia: si popolano solo con asset e provenance reali;
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
 - che non deve aggiungere spiegazioni fuori dai file.
+
+Per il workflow immagini, chiedi esplicitamente anche:
+
+- `placement_rationale`: perche l'immagine va proprio in quel punto;
+- `visual_goal`: che cosa deve rendere leggibile;
+- `source_preference`: che tipo di fonte e preferita;
+- `must_show`: elementi che devono comparire nel frame finale;
+- `avoid`: elementi da evitare per non prendere un'immagine sbagliata.
 
 Regola editoriale addizionale:
 
