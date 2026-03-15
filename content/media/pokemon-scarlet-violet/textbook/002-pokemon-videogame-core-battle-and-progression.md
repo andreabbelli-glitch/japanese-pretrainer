@@ -96,6 +96,13 @@ solo vincere il combattimento, ma anche poter
 testo di tutorial e le strategie girano spesso attorno a due idee: ridurre gli
 HP e, se possibile, applicare uno stato che favorisca la cattura.
 
+:::image
+src: assets/ui/catch-tutorial-monster-ball.webp
+alt: "Schermata di lotta contro un Pokemon selvatico durante il tutorial di cattura."
+caption: >-
+  Qui [{{野生|やせい}}](term:term-yasei) e [{{捕まえる|つかまえる}}](term:term-tsukamaeru) si leggono come pratica di battaglia: prima controlli il ritmo dello scontro, poi prepari la cattura.
+:::
+
 Dopo la lotta entrano in scena [{{経験値|けいけんち}}](term:term-keikenchi) e
 [{{進化|しんか}}](term:term-shinka). La prima spiega perché il livello sale; la
 seconda segnala che il Pokemon cambia forma e spesso anche statistiche, tipi o
@@ -168,4 +175,5 @@ dopo il turno o dopo lo scontro. Se sai leggere bene
 [{{経験値|けいけんち}}](term:term-keikenchi) e
 [{{進化|しんか}}](term:term-shinka), il flusso di lotta diventa molto più
 trasparente.
+
 

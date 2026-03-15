@@ -7,7 +7,7 @@ import {
   getCardsByIds,
   getGrammarCrossMediaSiblingCounts,
   getGrammarEntriesByIds,
-  getLessonBySlug,
+  getLessonReaderBySlug,
   getMediaBySlug,
   getTermCrossMediaSiblingCounts,
   getTermEntriesByIds,
@@ -142,11 +142,17 @@ export type TextbookLessonData = TextbookIndexData & {
     statusLabel: string;
     segmentTitle: string;
     ast: MarkdownDocument | null;
-    htmlRendered: string;
+    htmlRendered: string | null;
   };
   entries: TextbookTooltipEntry[];
   previousLesson: TextbookLessonNavItem | null;
   nextLesson: TextbookLessonNavItem | null;
+};
+
+type LessonOpenState = {
+  lastOpenedAt: string;
+  startedAt: string;
+  status: "in_progress" | "completed";
 };
 
 type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
@@ -194,51 +200,28 @@ export async function getTextbookLessonData(
     return null;
   }
 
-  const [lessons, lesson, furiganaMode] = await Promise.all([
-    listLessonsByMediaId(database, media.id),
-    getLessonBySlug(database, media.id, lessonSlug),
-    getFuriganaMode(database)
+  const [indexModel, lesson] = await Promise.all([
+    getTextbookIndexDataForMedia(media, database),
+    getTextbookLessonBodyData({
+      database,
+      lessonSlug,
+      mediaId: media.id,
+      mediaSlug
+    })
   ]);
 
-  if (!lesson) {
+  if (!indexModel || !lesson) {
     return null;
   }
 
-  const indexModel = buildTextbookIndexModel({
-    furiganaMode,
-    lessons,
-    media
-  });
   const currentIndex = indexModel.lessons.findIndex(
-    (item) => item.id === lesson.id
+    (item) => item.id === lesson.lesson.id
   );
-  const lessonAst = parseLessonAst(lesson.content?.astJson ?? null);
-  const lessonEntryLinks = await listLessonEntryLinks(database, lesson.id);
-  const entries = await loadLessonTooltipEntries({
-    database,
-    lessonEntryLinks,
-    imageCardIds: collectImageCardIds(lessonAst),
-    mediaSlug
-  });
 
   return {
     ...indexModel,
-    lesson: {
-      id: lesson.id,
-      slug: lesson.slug,
-      title: lesson.title,
-      difficulty: lesson.difficulty,
-      summary: lesson.summary,
-      excerpt: lesson.content?.excerpt ?? null,
-      status: normalizeLessonStatus(lesson.progress?.status ?? null),
-      statusLabel: formatLessonProgressStatusLabel(
-        lesson.progress?.status ?? null
-      ),
-      segmentTitle: lesson.segment?.title ?? "Percorso principale",
-      ast: lessonAst,
-      htmlRendered: lesson.content?.htmlRendered ?? ""
-    },
-    entries,
+    lesson: lesson.lesson,
+    entries: lesson.entries,
     previousLesson:
       currentIndex > 0 ? indexModel.lessons[currentIndex - 1] : null,
     nextLesson:
@@ -251,7 +234,7 @@ export async function getTextbookLessonData(
 export async function recordLessonOpened(
   lessonId: string,
   database: DatabaseClient = db
-) {
+): Promise<LessonOpenState> {
   const nowIso = new Date().toISOString();
   const existing = await database.query.lessonProgress.findFirst({
     where: eq(lessonProgress.lessonId, lessonId)
@@ -266,22 +249,35 @@ export async function recordLessonOpened(
       lastOpenedAt: nowIso
     });
 
-    return;
+    return {
+      lastOpenedAt: nowIso,
+      startedAt: nowIso,
+      status: "in_progress"
+    };
   }
+
+  const nextStatus = existing.status === "completed" ? "completed" : "in_progress";
+  const nextStartedAt =
+    existing.status === "not_started" || existing.startedAt === null
+      ? nowIso
+      : existing.startedAt;
 
   await database
     .update(lessonProgress)
     .set({
-      status: existing.status === "completed" ? "completed" : "in_progress",
-      startedAt:
-        existing.status === "not_started" || existing.startedAt === null
-          ? nowIso
-          : existing.startedAt,
+      status: nextStatus,
+      startedAt: nextStartedAt,
       completedAt:
         existing.status === "completed" ? existing.completedAt : null,
       lastOpenedAt: nowIso
     })
     .where(eq(lessonProgress.lessonId, lessonId));
+
+  return {
+    lastOpenedAt: nowIso,
+    startedAt: nextStartedAt,
+    status: nextStatus
+  };
 }
 
 export async function setLessonCompletionState(
@@ -327,6 +323,105 @@ export async function setFuriganaMode(
     },
     database
   );
+}
+
+export function applyLessonOpenedState(
+  data: TextbookLessonData,
+  openedState: LessonOpenState
+): TextbookLessonData {
+  if (data.lesson.status === openedState.status) {
+    return data;
+  }
+
+  const nextStatus = openedState.status;
+  const nextStatusLabel = formatLessonProgressStatusLabel(nextStatus);
+  const updateLessonNavItem = (lesson: TextbookLessonNavItem) =>
+    lesson.id === data.lesson.id
+      ? {
+          ...lesson,
+          lastOpenedAt: openedState.lastOpenedAt,
+          status: nextStatus,
+          statusLabel: nextStatusLabel
+        }
+      : lesson;
+  const lessons = data.lessons.map(updateLessonNavItem);
+  const groups = data.groups.map((group) => ({
+    ...group,
+    lessons: group.lessons.map(updateLessonNavItem)
+  }));
+
+  return {
+    ...data,
+    activeLesson: lessons.find((lesson) => lesson.id === data.lesson.id) ?? data.activeLesson,
+    groups,
+    lesson: {
+      ...data.lesson,
+      status: nextStatus,
+      statusLabel: nextStatusLabel
+    },
+    lessons
+  };
+}
+
+async function getTextbookIndexDataForMedia(
+  media: NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>,
+  database: DatabaseClient
+) {
+  const [lessons, furiganaMode] = await Promise.all([
+    listLessonsByMediaId(database, media.id),
+    getFuriganaMode(database)
+  ]);
+
+  return buildTextbookIndexModel({
+    furiganaMode,
+    lessons,
+    media
+  });
+}
+
+async function getTextbookLessonBodyData(input: {
+  database: DatabaseClient;
+  lessonSlug: string;
+  mediaId: string;
+  mediaSlug: string;
+}) {
+  const lesson = await getLessonReaderBySlug(
+    input.database,
+    input.mediaId,
+    input.lessonSlug
+  );
+
+  if (!lesson) {
+    return null;
+  }
+
+  const lessonAst = parseLessonAst(lesson.content?.astJson ?? null);
+  const lessonEntryLinks = await listLessonEntryLinks(input.database, lesson.id);
+  const entries = await loadLessonTooltipEntries({
+    database: input.database,
+    lessonEntryLinks,
+    imageCardIds: collectImageCardIds(lessonAst),
+    mediaSlug: input.mediaSlug
+  });
+
+  return {
+    entries,
+    lesson: {
+      ast: lessonAst,
+      difficulty: lesson.difficulty,
+      excerpt: lesson.content?.excerpt ?? null,
+      htmlRendered: lessonAst ? null : lesson.content?.htmlRendered ?? null,
+      id: lesson.id,
+      segmentTitle: lesson.segment?.title ?? "Percorso principale",
+      slug: lesson.slug,
+      status: normalizeLessonStatus(lesson.progress?.status ?? null),
+      statusLabel: formatLessonProgressStatusLabel(
+        lesson.progress?.status ?? null
+      ),
+      summary: lesson.summary,
+      title: lesson.title
+    }
+  };
 }
 
 function buildTextbookIndexModel(input: {

@@ -5,6 +5,7 @@ import {
   db,
   getGrammarCrossMediaFamilyByEntryId,
   listLessonLinkedReviewEntriesByMediaId,
+  listReviewLaunchCandidates,
   getMediaBySlug,
   getTermCrossMediaFamilyByEntryId,
   listGrammarEntriesByMediaId,
@@ -336,6 +337,42 @@ export async function getReviewQueueSnapshotForMedia(
   };
 }
 
+export async function getReviewLaunchMedia(
+  database: DatabaseClient = db
+): Promise<{
+  slug: string;
+  title: string;
+} | null> {
+  markDataAsLive();
+
+  const candidates = await listReviewLaunchCandidates(database);
+
+  return (
+    [...candidates].sort((left, right) => {
+      const scoreDifference =
+        scoreReviewLaunchCandidate(left) - scoreReviewLaunchCandidate(right);
+
+      if (scoreDifference !== 0) {
+        return scoreDifference;
+      }
+
+      if (left.dueCount !== right.dueCount) {
+        return right.dueCount - left.dueCount;
+      }
+
+      if (left.activeReviewCards !== right.activeReviewCards) {
+        return right.activeReviewCards - left.activeReviewCards;
+      }
+
+      if (left.cardsTotal !== right.cardsTotal) {
+        return right.cardsTotal - left.cardsTotal;
+      }
+
+      return left.title.localeCompare(right.title, "it");
+    })[0] ?? null
+  );
+}
+
 export async function getReviewCardDetailData(
   mediaSlug: string,
   cardId: string,
@@ -494,6 +531,26 @@ function filterReviewCardsByLessonCompletion(
 
 function buildReviewEntryKey(entryType: string, entryId: string) {
   return `${entryType}:${entryId}`;
+}
+
+function scoreReviewLaunchCandidate(candidate: {
+  activeReviewCards: number;
+  cardsTotal: number;
+  dueCount: number;
+}) {
+  if (candidate.dueCount > 0) {
+    return 0;
+  }
+
+  if (candidate.activeReviewCards > 0) {
+    return 1;
+  }
+
+  if (candidate.cardsTotal > 0) {
+    return 2;
+  }
+
+  return 3;
 }
 
 function mapReviewCrossMediaTermSibling(sibling: CrossMediaTermSibling) {

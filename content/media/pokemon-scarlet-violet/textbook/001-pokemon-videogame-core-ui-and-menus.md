@@ -111,6 +111,13 @@ due gestiscono le mosse disponibili. Capire questi label ti fa leggere il menu
 come una serie di operazioni concrete: spostare, riordinare, riaprire una mossa
 vecchia o rimuoverne una.
 
+:::image
+src: assets/ui/summary-moves-management-screen.webp
+alt: "Schermata di riepilogo del Pokemon con elenco mosse e opzione per ricordare una mossa."
+caption: >-
+  Questa schermata rende concreti [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru), [{{思い出す|おもいだす}}](term:term-omoidasu) e [{{忘れる|わすれる}}](term:term-wasureru): il menu non descrive concetti astratti, ma azioni precise sulla scheda del Pokemon.
+:::
+
 I pattern [～ことができる](grammar:grammar-koto-ga-dekiru) e
 [～ようになる](grammar:grammar-you-ni-naru) compaiono spesso nelle schermate di
 spiegazione del sistema. Il primo dice che una funzione è disponibile adesso,

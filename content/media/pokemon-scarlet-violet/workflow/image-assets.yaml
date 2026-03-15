@@ -265,3 +265,74 @@ assets:
       (https://gamewith.jp/pokemon-sv/article/show/374366), asset immagine
       `https://img.gamewith.jp/img/13cc870376147e6b707f03b02b40f999.png`,
       convertita in WebP.
+  - id: summary-moves-management-screen
+    src: assets/ui/summary-moves-management-screen.webp
+    source_type: screenshot
+    width: 710
+    height: 399
+    lesson_slug: 001-pokemon-videogame-core-ui-and-menus
+    anchor: "vecchia o rimuoverne una."
+    alt_it: >-
+      Schermata di riepilogo del Pokemon con elenco mosse e opzione per
+      ricordare una mossa.
+    caption_it: >-
+      Questa schermata rende concreti
+      [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru),
+      [{{思い出す|おもいだす}}](term:term-omoidasu) e
+      [{{忘れる|わすれる}}](term:term-wasureru): il menu non descrive concetti
+      astratti, ma azioni precise sulla scheda del Pokemon.
+    notes: >-
+      Ricavata dalla guida GameWith `序盤の進め方と初心者が覚えておくべき機能`
+      (https://gamewith.jp/pokemon-sv/article/show/374611), asset immagine
+      `https://img.gamewith.jp/img/00e9a6a1aac3ce987f69553e1a8e0f25.png`,
+      convertita in WebP.
+  - id: wild-catch-battle-example
+    src: assets/ui/catch-tutorial-monster-ball.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 002-pokemon-videogame-core-battle-and-progression
+    anchor: "HP e, se possibile, applicare uno stato che favorisca la cattura."
+    alt_it: >-
+      Schermata di lotta contro un Pokemon selvatico durante il tutorial di cattura.
+    caption_it: >-
+      Qui [{{野生|やせい}}](term:term-yasei) e
+      [{{捕まえる|つかまえる}}](term:term-tsukamaeru) si leggono come pratica di
+      battaglia: prima controlli il ritmo dello scontro, poi prepari la cattura.
+    notes: >-
+      Riusa l'asset ufficiale del tutorial di cattura gia registrato in
+      https://www.pokemon.co.jp/ex/sv/ja/story/220803_01/ (`story_img_03.jpg`).
+  - id: tutorial-try-it-dialogue
+    src: assets/story/nemona-second-battle-growth-check.webp
+    source_type: screenshot
+    width: 710
+    height: 399
+    lesson_slug: 003-pokemon-videogame-core-dialogue-and-tutorial-patterns
+    anchor: "vuole farti fare per continuare senza perderti\"."
+    alt_it: >-
+      Nemona parla prima di una sfida con una battuta che invita a mettere alla
+      prova la crescita del giocatore.
+    caption_it: >-
+      Questo frame mostra bene come [～てみる](grammar:grammar-te-miru) funzioni in
+      Pokemon: non come prova astratta, ma come spinta concreta a verificare
+      subito qualcosa nel flow del tutorial.
+    notes: >-
+      Riusa l'asset GameWith gia registrato per il dialogo di Nemona
+      (https://gamewith.jp/pokemon-sv/article/show/374366).
+  - id: system-reward-notification
+    src: assets/story/lets-go-auto-battle-field.webp
+    source_type: screenshot
+    width: 710
+    height: 398
+    lesson_slug: 003-pokemon-videogame-core-dialogue-and-tutorial-patterns
+    anchor: "ricevuti durante dialoghi e tutorial."
+    alt_it: >-
+      Pokemon partner sul campo con notifica laterale di vittoria automatica e
+      oggetto ottenuto.
+    caption_it: >-
+      Anche quando il gioco non usa una grande finestra di dialogo, i messaggi
+      di sistema restano istruzioni vere: qui una piccola notifica basta per
+      dirti che cosa e successo e che cosa hai ottenuto.
+    notes: >-
+      Riusa l'asset GameWith del [レッツゴー](term:term-lets-go) gia registrato in
+      https://gamewith.jp/pokemon-sv/article/show/374611.

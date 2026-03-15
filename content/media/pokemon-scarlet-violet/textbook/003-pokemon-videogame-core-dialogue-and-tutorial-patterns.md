@@ -59,6 +59,13 @@ un invito operativo travestito da suggerimento gentile. Se un personaggio dice
 è "un giorno potresti provare", ma "questa è la prossima azione che il gioco
 vuole farti fare per continuare senza perderti".
 
+:::image
+src: assets/story/nemona-second-battle-growth-check.webp
+alt: "Nemona parla prima di una sfida con una battuta che invita a mettere alla prova la crescita del giocatore."
+caption: >-
+  Questo frame mostra bene come [～てみる](grammar:grammar-te-miru) funzioni in Pokemon: non come prova astratta, ma come spinta concreta a verificare subito qualcosa nel flow del tutorial.
+:::
+
 [～たら](grammar:grammar-tara) segna la condizione che fa scattare una risposta.
 Quando leggi frasi del tipo `{{道|みち}}に {{迷|まよ}}ったら` o
 `{{状態異常|じょうたいいじょう}}に なったら`, il gioco ti sta dicendo in
@@ -100,6 +107,13 @@ una ricompensa; `バッグに しまった` ti dice che l'oggetto è stato archi
 automaticamente nella tasca corretta. Non servono ancora come card canoniche in
 questo seed, ma leggerle bene ti evita di perdere premi, cure o strumenti
 ricevuti durante dialoghi e tutorial.
+
+:::image
+src: assets/story/lets-go-auto-battle-field.webp
+alt: "Pokemon partner sul campo con notifica laterale di vittoria automatica e oggetto ottenuto."
+caption: >-
+  Anche quando il gioco non usa una grande finestra di dialogo, i messaggi di sistema restano istruzioni vere: qui una piccola notifica basta per dirti che cosa e successo e che cosa hai ottenuto.
+:::
 
 ## Esempi guidati
 

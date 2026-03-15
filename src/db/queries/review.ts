@@ -144,6 +144,183 @@ export async function countNewCardsIntroducedOnDayByMediaId(
   return new Set(rows.map((row) => row.cardId)).size;
 }
 
+export type ReviewLaunchCandidate = {
+  activeReviewCards: number;
+  cardsTotal: number;
+  dueCount: number;
+  mediaId: string;
+  slug: string;
+  title: string;
+};
+
+export async function listReviewLaunchCandidates(
+  database: DatabaseClient,
+  asOfIso = new Date().toISOString()
+): Promise<ReviewLaunchCandidate[]> {
+  const quote = (value: string) => `'${value.replaceAll("'", "''")}'`;
+  const asOfSql = quote(asOfIso);
+  const drivingEntryCondition = `
+    (
+      cel.relationship_type = 'primary'
+      OR NOT EXISTS (
+        SELECT 1
+        FROM card_entry_link cel_primary
+        WHERE cel_primary.card_id = c.id
+          AND cel_primary.relationship_type = 'primary'
+      )
+    )
+  `;
+  const lessonLinkedDrivingEntries = `
+    SELECT 1
+    FROM card_entry_link cel
+    JOIN entry_link el
+      ON el.entry_type = cel.entry_type
+     AND el.entry_id = cel.entry_id
+     AND el.source_type = 'lesson'
+     AND el.link_role IN ('introduced', 'explained')
+    JOIN lesson l
+      ON l.id = el.source_id
+     AND l.status = 'active'
+    WHERE cel.card_id = c.id
+      AND ${drivingEntryCondition}
+  `;
+
+  const rows = await database.all<{
+    activeReviewCards: number | string | null;
+    cardsTotal: number | string | null;
+    dueCount: number | string | null;
+    mediaId: string;
+    slug: string;
+    title: string;
+  }>(`
+    WITH eligible_cards AS (
+      SELECT
+        c.id AS card_id,
+        c.media_id AS media_id,
+        c.status AS card_status,
+        rs.state AS review_state,
+        rs.due_at AS due_at,
+        COALESCE(rs.manual_override, 0) AS manual_override,
+        CASE
+          WHEN EXISTS (${lessonLinkedDrivingEntries}) THEN 1
+          ELSE 0
+        END AS has_lesson_linked_driving_entry,
+        CASE
+          WHEN EXISTS (
+            ${lessonLinkedDrivingEntries}
+              AND EXISTS (
+                SELECT 1
+                FROM lesson_progress lp
+                WHERE lp.lesson_id = l.id
+                  AND lp.status = 'completed'
+              )
+          ) THEN 1
+          ELSE 0
+        END AS has_completed_driving_lesson,
+        CASE
+          WHEN EXISTS (
+            SELECT 1
+            FROM card_entry_link cel
+            JOIN entry_status es
+              ON es.entry_type = cel.entry_type
+             AND es.entry_id = cel.entry_id
+            WHERE cel.card_id = c.id
+              AND ${drivingEntryCondition}
+              AND es.status = 'ignored'
+          ) THEN 1
+          ELSE 0
+        END AS has_ignored_driving_entry,
+        CASE
+          WHEN EXISTS (
+            SELECT 1
+            FROM card_entry_link cel
+            JOIN entry_status es
+              ON es.entry_type = cel.entry_type
+             AND es.entry_id = cel.entry_id
+            WHERE cel.card_id = c.id
+              AND ${drivingEntryCondition}
+              AND es.status = 'known_manual'
+          ) THEN 1
+          ELSE 0
+        END AS has_known_manual_driving_entry
+      FROM card c
+      LEFT JOIN review_state rs
+        ON rs.card_id = c.id
+      WHERE c.status != 'archived'
+    )
+    SELECT
+      m.id AS mediaId,
+      m.slug AS slug,
+      m.title AS title,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN ec.card_id IS NOT NULL
+             AND (
+               ec.has_lesson_linked_driving_entry = 0
+               OR ec.has_completed_driving_lesson = 1
+             )
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS cardsTotal,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN ec.card_id IS NOT NULL
+             AND (
+               ec.has_lesson_linked_driving_entry = 0
+               OR ec.has_completed_driving_lesson = 1
+             )
+             AND ec.review_state IS NOT NULL
+             AND ec.review_state NOT IN ('known_manual', 'suspended')
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS activeReviewCards,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN ec.card_id IS NOT NULL
+             AND (
+               ec.has_lesson_linked_driving_entry = 0
+               OR ec.has_completed_driving_lesson = 1
+             )
+             AND ec.card_status != 'suspended'
+             AND ec.review_state IS NOT NULL
+             AND ec.review_state NOT IN ('new', 'known_manual', 'suspended')
+             AND ec.manual_override = 0
+             AND ec.has_ignored_driving_entry = 0
+             AND ec.has_known_manual_driving_entry = 0
+             AND (ec.due_at IS NULL OR ec.due_at <= ${asOfSql})
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS dueCount
+    FROM media m
+    LEFT JOIN eligible_cards ec
+      ON ec.media_id = m.id
+    WHERE m.status = 'active'
+    GROUP BY m.id, m.slug, m.title
+    ORDER BY m.title ASC, m.slug ASC
+  `);
+
+  return rows.map((row) => ({
+    activeReviewCards: Number(row.activeReviewCards ?? 0),
+    cardsTotal: Number(row.cardsTotal ?? 0),
+    dueCount: Number(row.dueCount ?? 0),
+    mediaId: row.mediaId,
+    slug: row.slug,
+    title: row.title
+  }));
+}
+
 export type DueCardItem = typeof card.$inferSelect & {
   reviewState: typeof reviewState.$inferSelect;
 };

@@ -14,8 +14,7 @@ export async function listLessonsByMediaId(
       progress: true,
       content: {
         columns: {
-          excerpt: true,
-          lastImportId: true
+          excerpt: true
         }
       }
     },
@@ -38,6 +37,31 @@ export async function getLessonBySlug(
       segment: true,
       progress: true,
       content: true
+    }
+  });
+}
+
+export async function getLessonReaderBySlug(
+  database: DatabaseClient,
+  mediaId: string,
+  slug: string
+) {
+  return database.query.lesson.findFirst({
+    where: and(
+      eq(lesson.mediaId, mediaId),
+      eq(lesson.slug, slug),
+      eq(lesson.status, "active")
+    ),
+    with: {
+      segment: true,
+      progress: true,
+      content: {
+        columns: {
+          astJson: true,
+          excerpt: true,
+          htmlRendered: true
+        }
+      }
     }
   });
 }

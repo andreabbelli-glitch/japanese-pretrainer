@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { getDashboardData } from "@/lib/app-shell";
+import { getReviewLaunchMedia } from "@/lib/review";
 import { mediaStudyHref } from "@/lib/site";
 
 import { EmptyState } from "@/components/ui/empty-state";
@@ -9,7 +9,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 export const dynamic = "force-dynamic";
 
 export default async function ReviewPage() {
-  const { reviewMedia } = await getDashboardData();
+  const reviewMedia = await getReviewLaunchMedia();
 
   if (reviewMedia) {
     redirect(mediaStudyHref(reviewMedia.slug, "review"));

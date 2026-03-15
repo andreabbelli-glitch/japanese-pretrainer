@@ -16,6 +16,7 @@ import {
   createDatabaseClient,
   developmentFixture,
   lessonProgress,
+  media,
   reviewLog,
   reviewState,
   runMigrations,
@@ -25,6 +26,7 @@ import {
 } from "@/db";
 import {
   getReviewCardDetailData,
+  getReviewLaunchMedia,
   getReviewPageData,
   getReviewQueueSnapshotForMedia
 } from "@/lib/review";
@@ -267,6 +269,85 @@ describe("review system", () => {
       developmentFixture.primaryCardId,
       "card_fixture_new_context"
     ]);
+  });
+
+  it("selects the best review launch media without loading the dashboard", async () => {
+    await database
+      .update(reviewState)
+      .set({
+        dueAt: "2026-03-20T00:00:00.000Z"
+      })
+      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+
+    await database.insert(media).values({
+      id: "media_duel_masters",
+      slug: "duel-masters-dm25",
+      title: "Duel Masters",
+      mediaType: "tcg",
+      segmentKind: "deck",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      description: "Media con review veramente pronta.",
+      status: "active",
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-08T09:30:00.000Z"
+    });
+    await database.insert(term).values({
+      id: "term_duel_masters_review",
+      sourceId: "term_duel_masters_review",
+      mediaId: "media_duel_masters",
+      segmentId: null,
+      lemma: "シールド",
+      reading: "シールド",
+      romaji: "shiirudo",
+      pos: "sostantivo",
+      meaningIt: "scudo",
+      meaningLiteralIt: null,
+      notesIt: null,
+      levelHint: null,
+      searchLemmaNorm: "シールド",
+      searchReadingNorm: "シールド",
+      searchRomajiNorm: "shiirudo",
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-08T09:30:00.000Z"
+    });
+    await database.insert(card).values({
+      id: "card_duel_masters_due",
+      mediaId: "media_duel_masters",
+      segmentId: null,
+      sourceFile: "content/media/duel-masters-dm25/cards/001-tcg-core.md",
+      cardType: "recognition",
+      front: "シールド",
+      back: "scudo",
+      status: "active",
+      orderIndex: 1,
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-08T09:30:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card_entry_link_duel_masters_primary",
+      cardId: "card_duel_masters_due",
+      entryType: "term",
+      entryId: "term_duel_masters_review",
+      relationshipType: "primary"
+    });
+    await database.insert(reviewState).values({
+      cardId: "card_duel_masters_due",
+      state: "review",
+      stability: 3,
+      difficulty: 2.5,
+      dueAt: "2026-03-01T00:00:00.000Z",
+      lastReviewedAt: "2026-03-08T09:00:00.000Z",
+      lapses: 0,
+      reps: 3,
+      manualOverride: false,
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-08T09:30:00.000Z"
+    });
+
+    const launchMedia = await getReviewLaunchMedia(database);
+
+    expect(launchMedia?.slug).toBe("duel-masters-dm25");
   });
 
   it("persists grading into review_state and review_log without overwriting history", async () => {

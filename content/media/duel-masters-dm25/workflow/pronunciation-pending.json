@@ -2,15 +2,8 @@
   "version": 1,
   "media_slug": "duel-masters-dm25",
   "total_targets": 161,
-  "audio_backed_count": 78,
+  "audio_backed_count": 79,
   "known_missing_count": 82,
-  "pending_count": 1,
-  "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-match",
-      "label": "対戦",
-      "reading": "たいせん"
-    }
-  ]
+  "pending_count": 0,
+  "pending": []
 }

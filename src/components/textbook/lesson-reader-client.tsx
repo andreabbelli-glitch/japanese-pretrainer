@@ -680,7 +680,7 @@ type LessonArticleProps = {
   activeEntryKey: string | null;
   document: MarkdownDocument | null;
   entriesByKey: Map<string, TextbookTooltipEntry>;
-  fallbackHtml: string;
+  fallbackHtml: string | null;
   furiganaMode: FuriganaMode;
   isTouchLayout: boolean;
   mediaSlug: string;
@@ -1030,7 +1030,7 @@ export function formatCrossMediaHintLabel(otherMediaCount: number) {
 type FallbackHtmlArticleProps = {
   activeEntryKey: string | null;
   entriesByKey: Map<string, TextbookTooltipEntry>;
-  fallbackHtml: string;
+  fallbackHtml: string | null;
   furiganaMode: FuriganaMode;
   isTouchLayout: boolean;
   onReferenceBlur: () => void;
@@ -1067,6 +1067,7 @@ function FallbackHtmlArticle({
   onImageExpand
 }: FallbackHtmlArticleProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const html = fallbackHtml ?? "";
 
   useEffect(() => {
     const container = containerRef.current;
@@ -1461,7 +1462,7 @@ function FallbackHtmlArticle({
   return (
     <div
       className="reader-article reader-article--fallback"
-      dangerouslySetInnerHTML={{ __html: fallbackHtml }}
+      dangerouslySetInnerHTML={{ __html: html }}
       ref={containerRef}
     />
   );

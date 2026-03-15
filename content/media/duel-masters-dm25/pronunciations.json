@@ -525,6 +525,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-match",
+      "audio_src": "assets/audio/term/term-match/forvo-manual-たいせん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%AF%BE%E6%88%A6/#ja"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-mission",
       "audio_src": "assets/audio/term/term-mission/forvo-manual-みっしょん.mp3",
       "audio_source": "forvo",
@@ -805,7 +813,10 @@
       "audio_speaker": "Speaker: 葵心 Recorder: 葵心",
       "audio_license": "CC0",
       "audio_attribution": "Own work",
-      "audio_page_url": "https://commons.wikimedia.org/wiki/File:LL-Q5287_(jpn)-%E8%91%B5%E5%BF%83-%E9%96%8B%E5%A7%8B.wav"
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:LL-Q5287_(jpn)-%E8%91%B5%E5%BF%83-%E9%96%8B%E5%A7%8B.wav",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8B%E3%81%84%E3%81%97"
     },
     {
       "entry_type": "term",

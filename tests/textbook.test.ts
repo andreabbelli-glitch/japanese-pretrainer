@@ -24,6 +24,7 @@ import {
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
 import {
+  applyLessonOpenedState,
   getFuriganaMode,
   getTextbookIndexData,
   getTextbookLessonData,
@@ -105,6 +106,7 @@ describe("textbook data", () => {
     expect(lessonData?.lesson.ast?.blocks[1]).toMatchObject({
       type: "paragraph"
     });
+    expect(lessonData?.lesson.htmlRendered).toBeNull();
   });
 
   it("normalizes legacy lesson AST payloads without crashing the reader", async () => {
@@ -218,6 +220,55 @@ describe("textbook data", () => {
         ]
       }
     ]);
+  });
+
+  it("keeps rendered HTML only when structured AST is unavailable", async () => {
+    await database
+      .update(lessonContent)
+      .set({
+        astJson: null,
+        htmlRendered: "<p>Fallback <strong>HTML</strong>.</p>"
+      })
+      .where(eq(lessonContent.lessonId, developmentFixture.lessonId));
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(lessonData?.lesson.ast).toBeNull();
+    expect(lessonData?.lesson.htmlRendered).toBe(
+      "<p>Fallback <strong>HTML</strong>.</p>"
+    );
+  });
+
+  it("applies the opened lesson state without reloading the full lesson payload", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "not_started",
+        startedAt: null,
+        completedAt: null,
+        lastOpenedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(lessonData?.lesson.status).toBe("not_started");
+
+    const openedState = await recordLessonOpened(developmentFixture.lessonId, database);
+    const patched = applyLessonOpenedState(lessonData!, openedState);
+
+    expect(patched.lesson.status).toBe("in_progress");
+    expect(patched.lessons.find((lesson) => lesson.id === developmentFixture.lessonId)?.status).toBe(
+      "in_progress"
+    );
   });
 
   it("preserves grammar reading when lesson AST JSON is reloaded", () => {

@@ -561,3 +561,150 @@ requests:
     notes: >-
       Fonte guida da verificare: GameWith con screenshot del dialogo
       `どれくらい 強くなったか 勝負して 試してみようよ！`.
+  - id: summary-moves-management-screen
+    lesson_slug: 001-pokemon-videogame-core-ui-and-menus
+    anchor: "vecchia o rimuoverne una."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo su
+      [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru),
+      [{{思い出す|おもいだす}}](term:term-omoidasu) e
+      [{{忘れる|わすれる}}](term:term-wasureru), cosi il lettore vede una
+      schermata concreta in cui questi label convivono davvero.
+    visual_goal: >-
+      Mostrare il riepilogo di un Pokemon con il menu mosse e l'opzione
+      `{{思い出す|おもいだす}}`, per dare una forma visiva alla distinzione fra
+      summary, gestione mosse e funzioni interne del menu.
+    source_preference: >-
+      Guida giapponese con screenshot della schermata status o gestione mosse in
+      Pokemon Scarlet / Violet.
+    search_hint: >-
+      Usa la guida GameWith `序盤の進め方と初心者が覚えておくべき機能` e scegli
+      la schermata viola di status con elenco mosse e comando
+      `{{思い出す|おもいだす}}`.
+    capture_instructions: >-
+      Preferisci una schermata completa con nome del Pokemon, elenco mosse e
+      menu laterale o centrale ancora leggibili.
+    must_show: >-
+      UI status, elenco mosse, comando `{{思い出す|おもいだす}}` e contesto di
+      gestione interna del Pokemon.
+    avoid: >-
+      Crop troppo stretti, immagini puramente decorative o schermate che non
+      mostrino chiaramente i label da menu.
+    alt_it: >-
+      Schermata di riepilogo del Pokemon con elenco mosse e opzione per
+      ricordare una mossa.
+    caption_it: >-
+      Questa schermata rende concreti [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru),
+      [{{思い出す|おもいだす}}](term:term-omoidasu) e
+      [{{忘れる|わすれる}}](term:term-wasureru): il menu non descrive concetti
+      astratti, ma azioni precise sulla scheda del Pokemon.
+    notes: >-
+      Fonte guida da verificare: GameWith `序盤の進め方と初心者が覚えておくべき機能`
+      con screenshot della schermata status.
+  - id: wild-catch-battle-example
+    lesson_slug: 002-pokemon-videogame-core-battle-and-progression
+    anchor: "HP e, se possibile, applicare uno stato che favorisca la cattura."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo su
+      [{{野生|やせい}}](term:term-yasei) e
+      [{{捕まえる|つかまえる}}](term:term-tsukamaeru), cosi la cattura entra nel
+      capitolo come flow reale di battaglia e non solo come regola spiegata a parole.
+    visual_goal: >-
+      Mostrare uno scontro con Pokemon selvatico e HUD di lotta, in modo che la
+      logica di indebolire e poi catturare sia immediatamente leggibile.
+    source_preference: >-
+      Screenshot ufficiale del tutorial iniziale di cattura.
+    search_hint: >-
+      Riusa la schermata ufficiale di `story/220803_01` con Pokemon selvatico,
+      menu di battaglia e contesto di cattura iniziale.
+    capture_instructions: >-
+      Preferisci una schermata completa con Pokemon selvatico, HUD e opzioni di
+      turno ancora visibili.
+    must_show: >-
+      Pokemon selvatico, interfaccia di lotta, contesto del tutorial di cattura.
+    avoid: >-
+      Battaglie trainer, immagini promozionali o crop che eliminino il fatto che
+      si tratta di un incontro selvatico.
+    alt_it: >-
+      Schermata di lotta contro un Pokemon selvatico durante il tutorial di cattura.
+    caption_it: >-
+      Qui [{{野生|やせい}}](term:term-yasei) e
+      [{{捕まえる|つかまえる}}](term:term-tsukamaeru) si leggono come pratica di
+      battaglia: prima controlli il ritmo dello scontro, poi prepari la cattura.
+    notes: >-
+      Fonte prevista: asset ufficiale gia recuperato dal tutorial di cattura
+      `story_img_03.jpg`.
+  - id: tutorial-try-it-dialogue
+    lesson_slug: 003-pokemon-videogame-core-dialogue-and-tutorial-patterns
+    anchor: "vuole farti fare per continuare senza perderti\"."
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il primo paragrafo su [～てみる](grammar:grammar-te-miru), per
+      mostrare un dialogo reale in cui il pattern non e teoria grammaticale ma
+      invito operativo dentro la scena.
+    visual_goal: >-
+      Far vedere una battuta di Nemona con `{{試|ため}}してみよう`, cosi il lettore
+      riconosce il pattern direttamente nel parlato di tutorial.
+    source_preference: >-
+      Guida giapponese con screenshot del dialogo di Nemona prima della seconda
+      sfida del prologo.
+    search_hint: >-
+      Usa la guida GameWith su Nemona e scegli il frame con
+      `どれくらい 強くなったか 勝負して 試してみようよ！`.
+    capture_instructions: >-
+      Preferisci uno screenshot con nome del personaggio e textbox completa,
+      senza tagli sul testo della battuta.
+    must_show: >-
+      Nemona, textbox completa e verbo `{{試|ため}}してみよう`.
+    avoid: >-
+      Screenshot di sola battaglia, immagini senza dialogo o frame che non
+      permettano di leggere il pattern.
+    alt_it: >-
+      Nemona parla prima di una sfida con una battuta che invita a mettere alla
+      prova la crescita del giocatore.
+    caption_it: >-
+      Questo frame mostra bene come [～てみる](grammar:grammar-te-miru) funzioni in
+      Pokemon: non come prova astratta, ma come spinta concreta a verificare
+      subito qualcosa nel flow del tutorial.
+    notes: >-
+      Fonte guida da verificare: GameWith `ネモの手持ちポケモンと攻略`.
+  - id: system-reward-notification
+    lesson_slug: 003-pokemon-videogame-core-dialogue-and-tutorial-patterns
+    anchor: "ricevuti durante dialoghi e tutorial."
+    kind: other
+    priority: medium
+    placement_rationale: >-
+      Va dopo il paragrafo sulle formule fisse di sistema, cosi il lettore vede
+      un esempio concreto di notifica reward dentro il flusso di campo.
+    visual_goal: >-
+      Mostrare una notifica di vittoria o ottenimento oggetto sul lato dello
+      schermo, per fissare il fatto che i messaggi di sistema portano informazione
+      operativa immediata.
+    source_preference: >-
+      Guida giapponese con screenshot di auto-battle o raccolta oggetti sul campo.
+    search_hint: >-
+      Riusa la schermata GameWith del [レッツゴー](term:term-lets-go) con notifica
+      di drop o vittoria sul lato destro.
+    capture_instructions: >-
+      Preferisci un frame con il Pokemon partner sul campo e la notifica di drop
+      o vittoria chiaramente visibile.
+    must_show: >-
+      Notifica reward, campo di gioco e collegamento evidente fra azione e messaggio.
+    avoid: >-
+      Mappe statiche, schermate senza messaggio o immagini dove non sia chiaro
+      che il gioco sta restituendo una ricompensa o un esito.
+    alt_it: >-
+      Pokemon partner sul campo con notifica laterale di vittoria automatica e
+      oggetto ottenuto.
+    caption_it: >-
+      Anche quando il gioco non usa una grande finestra di dialogo, i messaggi
+      di sistema restano istruzioni vere: qui una piccola notifica basta per
+      dirti che cosa e successo e che cosa hai ottenuto.
+    notes: >-
+      Fonte guida da verificare: GameWith `序盤の進め方と初心者が覚えておくべき機能`
+      con screenshot di auto-battle / drop.
