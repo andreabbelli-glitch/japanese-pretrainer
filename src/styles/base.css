@@ -3075,8 +3075,9 @@ rt {
 .auth-page {
   display: grid;
   place-items: center;
-  min-height: calc(100vh - var(--app-header-height-desktop) - var(--space-8));
+  min-height: 100vh;
   padding-block: var(--space-6);
+  padding-inline: var(--space-5);
 }
 
 .auth-card {

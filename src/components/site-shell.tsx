@@ -1,10 +1,16 @@
 import Link from "next/link";
 import type { Route } from "next";
+import { headers } from "next/headers";
 import { Suspense, type ReactNode } from "react";
 
 import { logoutAction } from "@/actions/auth";
 import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
-import { isAuthEnabled } from "@/lib/auth";
+import {
+  APP_PATHNAME_HEADER,
+  isAuthEnabled,
+  isLoginPath,
+  readRequestPathname
+} from "@/lib/auth";
 import { primaryNav } from "@/lib/site";
 
 type SiteShellProps = {
@@ -28,8 +34,15 @@ function SiteShellPrimaryNavFallback() {
   );
 }
 
-export function SiteShell({ children }: SiteShellProps) {
+export async function SiteShell({ children }: SiteShellProps) {
+  const headerStore = await headers();
+  const pathname = readRequestPathname(headerStore.get(APP_PATHNAME_HEADER));
+  const isStandaloneLogin = isLoginPath(pathname);
   const showLogout = isAuthEnabled();
+
+  if (isStandaloneLogin) {
+    return <div className="app-shell">{children}</div>;
+  }
 
   return (
     <div className="app-shell">

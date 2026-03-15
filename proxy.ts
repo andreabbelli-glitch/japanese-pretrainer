@@ -1,20 +1,26 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import {
+  APP_PATHNAME_HEADER,
   AUTH_SESSION_COOKIE,
+  AUTH_LOGIN_PATH,
   getAuthConfig,
+  isLoginPath,
   verifySessionToken
 } from "@/lib/auth";
 
 export function proxy(request: NextRequest) {
   const config = getAuthConfig();
+  const pathname = request.nextUrl.pathname;
+  const requestHeaders = new Headers(request.headers);
+
+  requestHeaders.set(APP_PATHNAME_HEADER, pathname);
 
   if (!config.enabled) {
-    return NextResponse.next();
+    return continueRequest(requestHeaders);
   }
 
-  const pathname = request.nextUrl.pathname;
-  const isLoginPage = pathname === "/login";
+  const isLoginPage = isLoginPath(pathname);
   const sessionToken = request.cookies.get(AUTH_SESSION_COOKIE)?.value;
   const isAuthenticated =
     typeof sessionToken === "string" && verifySessionToken(sessionToken);
@@ -24,13 +30,13 @@ export function proxy(request: NextRequest) {
   }
 
   if (isLoginPage || isAuthenticated) {
-    return NextResponse.next();
+    return continueRequest(requestHeaders);
   }
 
-  const loginUrl = new URL("/login", request.url);
+  const loginUrl = new URL(AUTH_LOGIN_PATH, request.url);
   const destination = `${pathname}${request.nextUrl.search}`;
 
-  if (destination !== "/login") {
+  if (!isLoginPath(destination)) {
     loginUrl.searchParams.set("next", destination);
   }
 
@@ -39,6 +45,14 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|icon.svg|.*\\.(?:png|svg|jpg|jpeg|gif|webp|ico|mp3|ogg|wav|txt|xml|webmanifest)$).*)"
+    "/((?!_next/static|_next/image|favicon.ico|icon.svg|apple-icon.png|robots.txt|site.webmanifest).*)"
   ]
 };
+
+function continueRequest(requestHeaders: Headers) {
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders
+    }
+  });
+}

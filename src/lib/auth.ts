@@ -6,6 +6,8 @@ import {
 } from "node:crypto";
 
 export const AUTH_SESSION_COOKIE = "jcs_session";
+export const AUTH_LOGIN_PATH = "/login";
+export const APP_PATHNAME_HEADER = "x-jcs-pathname";
 const PBKDF2_DIGEST = "sha256";
 const PBKDF2_ITERATIONS = 210_000;
 const PBKDF2_KEY_LENGTH = 32;
@@ -76,6 +78,20 @@ export function getAuthConfig(): AuthConfig {
 
 export function isAuthEnabled() {
   return getAuthConfig().enabled;
+}
+
+export function isLoginPath(pathname: string) {
+  return pathname === AUTH_LOGIN_PATH;
+}
+
+export function readRequestPathname(value: string | null | undefined) {
+  if (typeof value !== "string") {
+    return "/";
+  }
+
+  const pathname = value.trim();
+
+  return pathname.startsWith("/") ? pathname : "/";
 }
 
 export function createPasswordHash(password: string) {

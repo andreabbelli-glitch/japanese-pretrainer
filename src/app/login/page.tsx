@@ -26,10 +26,9 @@ export default async function LoginRoute({ searchParams }: LoginRouteProps) {
       <SurfaceCard className="auth-card" variant="hero">
         <div className="auth-card__header">
           <p className="eyebrow">Area privata</p>
-          <h1 className="auth-card__title">Accedi alla libreria di studio</h1>
+          <h1 className="auth-card__title">Login</h1>
           <p className="auth-card__summary">
-            Accesso minimale con utenza creata dietro le quinte. Nessuna
-            registrazione pubblica.
+            Inserisci username e password per entrare nell&apos;app.
           </p>
         </div>
 
@@ -54,10 +53,11 @@ export default async function LoginRoute({ searchParams }: LoginRouteProps) {
             <span className="auth-field__label">Username</span>
             <input
               autoCapitalize="none"
+              autoCorrect="off"
               autoComplete="username"
               className="auth-field__control"
-              defaultValue={config.username}
               name="username"
+              placeholder="Username"
               required
               type="text"
             />
@@ -69,6 +69,7 @@ export default async function LoginRoute({ searchParams }: LoginRouteProps) {
               autoComplete="current-password"
               className="auth-field__control"
               name="password"
+              placeholder="Password"
               required
               type="password"
             />
