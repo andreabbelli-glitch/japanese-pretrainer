@@ -47,7 +47,10 @@
       "audio_src": "assets/audio/term/term-call-up/forvo-manual-よひ-た-す.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99/#ja"
+      "audio_page_url": "https://forvo.com/word/%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99/#ja",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99"
     },
     {
       "entry_type": "term",
@@ -63,7 +66,10 @@
       "audio_src": "assets/audio/term/term-combat/forvo-manual-せんとう.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%88%A6%E9%97%98/#ja"
+      "audio_page_url": "https://forvo.com/word/%E6%88%A6%E9%97%98/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%88%A6%E9%97%98"
     },
     {
       "entry_type": "term",
@@ -101,7 +107,10 @@
       "audio_src": "assets/audio/term/term-frontline/forvo-manual-せ-んせん.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%89%8D%E7%B7%9A/#ja"
+      "audio_page_url": "https://forvo.com/word/%E5%89%8D%E7%B7%9A/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%89%8D%E7%B7%9A"
     },
     {
       "entry_type": "term",
@@ -149,11 +158,21 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-mypage",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%9E%E3%82%A4%E3%83%9A%E3%83%BC%E3%82%B8"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-progress",
       "audio_src": "assets/audio/term/term-progress/forvo-manual-しんこう.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E9%80%B2%E8%A1%8C/#ja"
+      "audio_page_url": "https://forvo.com/word/%E9%80%B2%E8%A1%8C/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%80%B2%E8%A1%8C"
     },
     {
       "entry_type": "term",
@@ -161,7 +180,10 @@
       "audio_src": "assets/audio/term/term-role/forvo-manual-やくわり.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%BD%B9%E5%89%B2/#ja"
+      "audio_page_url": "https://forvo.com/word/%E5%BD%B9%E5%89%B2/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BD%B9%E5%89%B2"
     },
     {
       "entry_type": "term",

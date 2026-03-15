@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-bag",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%90%E3%83%83%E3%82%B0"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-box",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-dougu",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A9%E3%81%86%E3%81%90"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-jakuten",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BC%B1%E7%82%B9"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-junbi",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%BA%96%E5%82%99"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kaifuku",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%9B%9E%E5%BE%A9"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-keikenchi",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%B5%8C%E9%A8%93%E5%80%A4"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kyuusho",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%80%A5%E6%89%80"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mochimono",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%82%82%E3%81%A1%E3%82%82%E3%81%AE"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mokutekichi",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%9B%AE%E7%9A%84%E5%9C%B0"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-omoidasu",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%80%9D%E3%81%84%E5%87%BA%E3%81%99"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-report",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shinka",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%80%B2%E5%8C%96"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tennyuu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%BB%A2%E5%85%A5"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tokusei",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%89%B9%E6%80%A7"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-touroku",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%99%BB%E9%8C%B2"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tsukamaeru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%8D%95%E3%81%BE%E3%81%88%E3%82%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-wasureru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BF%98%E3%82%8C%E3%82%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-waza",
+      "pitch_accent": 2,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%8F%E3%81%96"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-yasei",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%87%8E%E7%94%9F"
+    }
+  ]
+}
