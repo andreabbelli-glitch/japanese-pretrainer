@@ -4,7 +4,6 @@ import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { Suspense, type ReactNode } from "react";
 
-import { logoutAction } from "@/actions/auth";
 import { LoginPageContent } from "@/components/auth/login-page-content";
 import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
 import {
@@ -47,7 +46,6 @@ export async function SiteShell({ children }: SiteShellProps) {
   const search = readRequestSearch(headerStore.get(APP_SEARCH_HEADER));
   const isStandaloneLogin = isLoginPath(pathname);
   const authEnabled = isAuthEnabled();
-  const showLogout = authEnabled;
   const isAuthenticated = authEnabled
     ? hasValidSessionToken(cookieStore.get(AUTH_SESSION_COOKIE)?.value)
     : true;
@@ -82,14 +80,6 @@ export async function SiteShell({ children }: SiteShellProps) {
           <Suspense fallback={<SiteShellPrimaryNavFallback />}>
             <SiteShellPrimaryNav />
           </Suspense>
-
-          {showLogout ? (
-            <form action={logoutAction}>
-              <button className="button button--ghost button--small" type="submit">
-                Esci
-              </button>
-            </form>
-          ) : null}
         </div>
       </header>
 

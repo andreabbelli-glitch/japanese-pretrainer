@@ -1,6 +1,8 @@
+import { logoutAction } from "@/actions/auth";
 import { saveStudySettingsAction } from "@/actions/settings";
 import type { Route } from "next";
 import Link from "next/link";
+import { isAuthEnabled } from "@/lib/auth";
 import type { StudySettings } from "@/lib/settings";
 import { resolveReturnToContext, resolveReturnToLabel } from "@/lib/site";
 
@@ -53,6 +55,7 @@ const reviewLimitOptions = [10, 20, 30, 40, 60] as const;
 export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
   const returnContext = resolveReturnToContext(returnTo);
   const backLabel = resolveReturnToLabel(returnContext);
+  const showAccountSettings = isAuthEnabled();
 
   return (
     <div className="settings-page">
@@ -182,6 +185,39 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
           </div>
         </form>
       </Section>
+
+      {showAccountSettings ? (
+        <Section
+          eyebrow="Account"
+          title="Sessione"
+          description="Opzioni usate raramente, tenute qui in fondo."
+        >
+          <SurfaceCard className="settings-panel" variant="quiet">
+            <div className="settings-panel__header">
+              <div>
+                <p className="eyebrow">Accesso</p>
+                <h3 className="settings-panel__title">
+                  Esci dall&apos;account
+                </h3>
+              </div>
+              <p className="settings-panel__body">
+                Chiude la sessione corrente e ti riporta alla schermata di
+                login.
+              </p>
+            </div>
+            <div className="settings-form__footer">
+              <form action={logoutAction}>
+                <button
+                  className="button button--ghost button--danger"
+                  type="submit"
+                >
+                  Esci
+                </button>
+              </form>
+            </div>
+          </SurfaceCard>
+        </Section>
+      ) : null}
     </div>
   );
 }

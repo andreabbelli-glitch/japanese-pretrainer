@@ -414,6 +414,18 @@ rt {
   background: rgba(239, 229, 213, 0.86);
 }
 
+.button--danger {
+  border-color: rgba(182, 92, 68, 0.4);
+  color: var(--color-danger);
+}
+
+.button--danger:hover,
+.button--danger:focus-visible {
+  background: rgba(241, 221, 214, 0.72);
+  border-color: rgba(182, 92, 68, 0.52);
+  color: var(--color-vermillion-strong);
+}
+
 .text-link {
   display: inline-flex;
   align-items: center;
