@@ -10,16 +10,17 @@ status: active
 tags: [deck, abyss, graveyard, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Lezione verticale sullo starter deck `DM25-SD1 技の王道`: gallery completa del
-  deck, lettura carta per carta dei testi giapponesi e focus solo sulle
-  espressioni davvero nuove rispetto al corpus base.
+  Lezione verticale sullo starter deck `DM25-SD1 技の王道`: selezione guidata
+  delle carte che meritano davvero un'immagine, spiegazione immediata del
+  giapponese nuovo e focus solo sulle espressioni davvero nuove rispetto al
+  corpus base.
 ---
 
 # Obiettivo
 
 Questa lesson prende `DM25-SD1 技の王道` come corpus vero, non come semplice
-lista deck. Partiamo dalla gallery completa e poi filtriamo le carte in base a
-una domanda molto pratica:
+lista deck. Partiamo solo dalle carte che meritano davvero una sosta visiva e
+poi filtriamo il resto in base a una domanda molto pratica:
 
 > quale giapponese mi insegna qualcosa che non avevo ancora fissato?
 
@@ -79,29 +80,22 @@ se non capisci che il cimitero è una risorsa, leggi male metà delle frasi.
 Il modo più semplice di descriverlo è questo: vuole trasformare il
 [墓地](term:term-graveyard) in una zona utile, non in un semplice scarto.
 
-Per questo, quando scorri le carte del mazzo, non devi leggere `墓地` come una
-parola triste o terminale. In `DM25-SD1` il cimitero è spesso:
+Per questo, quando leggi una carta del deck, segui sempre tre cose:
 
-- posto dove accumulare materiale;
-- posto da cui recuperare risorse;
-- posto che rende attive carte o filtri successivi.
+- da dove parte la risorsa;
+- quale filtro applica;
+- dove finisce l'effetto.
 
-Dal punto di vista linguistico, questo ti obbliga a seguire molto bene la
-direzione del movimento: `どこから` e `どこに`.
+Su `DM25-SD1` questo significa soprattutto leggere bene coppie come
+`{{墓地|ぼち}} -> {{出|だ}}す`, `コスト{{4以下|よんいか}}` e
+`アビス / アビスロイヤル`.
 
-### 2. Gallery completa del deck
+### 2. Le carte che meritano davvero un'immagine
 
-Questa è la mappa visiva completa di `DM25-SD1`. Non tutte le carte meritano la
-stessa quantità di studio, ma vedere tutto il mazzo in un colpo solo aiuta a
-riconoscere subito i nomi-ancora e la distribuzione delle funzioni.
+Qui teniamo solo le carte che introducono giapponese nuovo. Sotto ogni immagine
+trovi subito il frammento che vale la sosta e i due o tre punti da fissare.
 
-:::image
-src: assets/cards/dm25-sd1/01-jashin-emperor-abyssal-darkness.webp
-alt: Carta 1 del mazzo DM25-SD1, arte scura con il boss del pacchetto Abyss.
-caption: >-
-  `DM25-SD1 1/13`: **Jashin Emperor, Abyssal Darkness**. Carta di payoff che
-  riassume bene il linguaggio `{{墓地|ぼち}} -> {{枚数|まいすう}} -> {{破壊|はかい}}`.
-:::
+#### 2.1 アビスベル=ジャシン帝
 
 :::image
 src: assets/cards/dm25-sd1/02-abyssbell-jashin-emperor.webp
@@ -109,145 +103,10 @@ alt: Carta 2 del mazzo DM25-SD1, creatura centrale del pacchetto Abyss.
 card_id: card-abyssbell-jashintei-recognition
 caption: >-
   `DM25-SD1 2/13`: [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei)。
-  È la carta che introduce il lessico nuovo di
-  [アビスラッシュ](term:term-abyss-rush).
+  Carta-studio per [アビスラッシュ](term:term-abyss-rush) e `かわりに`.
 :::
 
-:::image
-src: assets/cards/dm25-sd1/03-jablood-wicked-dragon.webp
-alt: Carta 3 del mazzo DM25-SD1, drago oscuro con nome Jablood.
-card_id: card-jablood-recognition
-caption: >-
-  `DM25-SD1 3/13`: [{{邪龍|じゃりゅう}} ジャブラッド](term:term-jablood)。Nome
-  da fissare a vista e buona carta per capire come il deck converte il
-  [{{墓地|ぼち}}](term:term-graveyard) in pressione.
-:::
-
-:::image
-src: assets/cards/dm25-sd1/04-madan-low-abyssal-furnace.webp
-alt: Carta 4 del mazzo DM25-SD1, creatura-fucina Abyss su sfondo rosso scuro.
-caption: >-
-  `DM25-SD1 4/13`: **Madan = Low, Abyssal Furnace**. È quasi un riassunto
-  scolastico del pattern `{{墓地|ぼち}}に{{置|お}}く -> その{{後|あと}} -> {{出|だ}}す`.
-:::
-
-:::image
-src: assets/cards/dm25-sd1/05-ragnarok-the-clock.webp
-alt: Carta 5 del mazzo DM25-SD1, figura meccanica del The Clock.
-caption: >-
-  `DM25-SD1 5/13`: {{終末|しゅうまつ}}の{{時計|とけい}} ザ・クロック。
-  Vale la pena studiarla per la frase `そのターンの{{残|のこ}}りをとばす`.
-:::
-
-:::image
-src: assets/cards/dm25-sd1/06-doorknocker-nordocker.webp
-alt: Carta 6 del mazzo DM25-SD1, twinpact con arte dorata e viola.
-caption: >-
-  `DM25-SD1 6/13`: {{凶鬼|きょうき}}{{卍号|ばんごう}} メラヴォルガル。
-  La metà [{{呪文|じゅもん}}](term:term-spell) è utile per
-  `これを{{2回|にかい}}{{行|おこな}}う`.
-:::
-
-:::image
-src: assets/cards/dm25-sd1/07-cobra-snake-ninja-holy-chaos.webp
-alt: Carta 7 del mazzo DM25-SD1, creatura serpente Cobra.
-caption: >-
-  `DM25-SD1 7/13`: **Cobra, Snake Ninja Holy Chaos**. Qui compare la formula
-  più utile del deck per
-  [{{攻撃先|こうげきさき}}](term:term-attack-target) e riassegnazione
-  dell'attacco.
-:::
-
-:::image
-src: assets/cards/dm25-sd1/08-broom-proof.webp
-alt: Carta 8 del mazzo DM25-SD1, creatura oscura con mantello.
-caption: >-
-  `DM25-SD1 8/13`: ブルーム=プルーフ。Non
-  introduce una flashcard nuova, ma è un ottimo consolidamento di
-  `{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}で`.
-:::
-
-:::image
-src: assets/cards/dm25-sd1/09-cy-cycle.webp
-alt: Carta 9 del mazzo DM25-SD1, creatura con libri e meccanismi.
-caption: >-
-  `DM25-SD1 9/13`: サーイ=サイクル。Reimpiega un
-  pattern già visto bene: `ただし、その「S・トリガー」は{{使|つか}}えない。`
-:::
-
-:::image
-src: assets/cards/dm25-sd1/10-jashinnyuu.webp
-alt: Carta 10 del mazzo DM25-SD1, spell Jashinnyuu con arte oscura.
-card_id: card-jashinnyuu-recognition
-caption: >-
-  `DM25-SD1 10/13`: [{{邪侵入|じゃしんにゅう}}](term:term-jashinnyuu)。È uno dei
-  testi-modello più puliti del deck per `{{墓地|ぼち}}` e `コスト{{4以下|よんいか}}`.
-:::
-
-:::image
-src: assets/cards/dm25-sd1/11-hamma-dhamma.webp
-alt: Carta 11 del mazzo DM25-SD1, creatura scura alata Hamma Dhamma.
-caption: >-
-  `DM25-SD1 11/13`: ハンマ=ダンマ。Utile più per
-  consolidare `S・トリガー` e il conteggio `このようにして` che per lessico nuovo.
-:::
-
-:::image
-src: assets/cards/dm25-sd1/12-fork-fock.webp
-alt: Carta 12 del mazzo DM25-SD1, creatura sottile con lance e vetrate.
-caption: >-
-  `DM25-SD1 12/13`: フォーク=フォック。Altro
-  buon esempio reale di `{{召喚|しょうかん}}{{以外|いがい}}`.
-:::
-
-:::image
-src: assets/cards/dm25-sd1/13-lupia-enki.webp
-alt: Carta 13 del mazzo DM25-SD1, creatura rossa Lupia Enki.
-caption: >-
-  `DM25-SD1 13/13`: ルピア{{炎鬼|えんき}}。
-  Splash rosso che punisce le entrate `{{召喚|しょうかん}}{{以外|いがい}}`.
-:::
-
-### 3. Carta per carta: cosa insegna davvero
-
-Qui il criterio è intenzionale: se una carta ripete un pattern già studiato, la
-usiamo come consolidamento e non ci costruiamo sopra una flashcard nuova.
-
-1. **Jashin Emperor, Abyssal Darkness**: buona carta per il filtro
-   `{{墓地|ぼち}}の{{枚数|まいすう}}{{以下|いか}}`, ma il core grammaticale era già
-   presente.
-2. [アビスベル=ジャシン帝](term:term-abyssbell-jashintei): sì, perché introduce
-   [アビスラッシュ](term:term-abyss-rush).
-3. [ジャブラッド](term:term-jablood): sì come nome-ancora; meccanicamente però
-   lavora soprattutto su materiale già noto del deck.
-4. **Madan = Low, Abyssal Furnace**: no nuova flashcard; ottimo consolidamento
-   di `{{墓地|ぼち}}`, `その{{後|あと}}` e `コスト{{4以下|よんいか}}`.
-5. {{終末|しゅうまつ}}の{{時計|とけい}} ザ・クロック: sì,
-   per il verbo [とばす](term:term-tobasu).
-6. {{凶鬼|きょうき}}{{卍号|ばんごう}} メラヴォルガル:
-   sì, ma solo come pattern corto `これを{{2回|にかい}}{{行|おこな}}う`.
-7. **Cobra, Snake Ninja Holy Chaos**: sì, per
-   [攻撃先](term:term-attack-target) e `{{進化|しんか}}ではない`.
-8. ブルーム=プルーフ: no nuova flashcard;
-   rinforza `{{召喚|しょうかん}}{{以外|いがい}}`.
-9. サーイ=サイクル: no nuova flashcard; è quasi un
-   caso scuola di restrizione con [ただし](grammar:grammar-tadashi).
-10. [邪侵入](term:term-jashinnyuu): no nuova flashcard; è il testo-modello già
-    usato per capire il mazzo.
-11. ハンマ=ダンマ: no nuova flashcard; utile per fissare
-    la struttura `このようにして`.
-12. フォーク=フォック: no nuova flashcard;
-    ripassa bene `{{離|はな}}れた{{時|とき}}`.
-13. ルピア{{炎鬼|えんき}}: no nuova
-    flashcard; è la versione anti-cheat di un pattern già visto.
-
-### 4. Le carte che insegnano qualcosa di nuovo
-
-Le sezioni seguenti sono le vere carte-studio di `DM25-SD1`.
-
-#### 4.1 アビスベル=ジャシン帝: keyword compatta e sostituzione
-
-La riga che vale la lezione è questa:
+Qui il punto è leggere insieme la keyword e la logica di sostituzione.
 
 :::example_sentence
 jp: >-
@@ -259,30 +118,24 @@ translation_it: >-
   scartare 2 carte dalla tua mano.
 :::
 
-Quello che devi imparare qui non è solo la keyword nuova, ma il suo montaggio:
-
-- [アビスラッシュ](term:term-abyss-rush) non è lore; è una regola compressa.
-- [離れる](term:term-hanareru) segnala l'uscita dalla zona, non solo la
+- [アビスラッシュ](term:term-abyss-rush) è una keyword-regola, non un'etichetta
+  decorativa.
+- [離れる](term:term-hanareru) indica l'uscita dalla zona, non solo la
   distruzione.
-- `かわりに` ti dice che lo scarto sostituisce l'uscita.
+- `かわりに` segnala una sostituzione: fai questo **invece di** far lasciare il
+  campo alla creatura.
 
-C'è poi una seconda riga utile perché ti costringe a leggere bene la logica di
-sostituzione offensiva:
+#### 2.2 {{終末|しゅうまつ}}の{{時計|とけい}} ザ・クロック
 
-:::example_sentence
-jp: >-
-  このクリーチャーがシールドを{{1つ|ひとつ}}{{ブレイク|ぶれいく}}する{{時|とき}}、
-  かわりにシールドをさらに{{1つ|ひとつ}}{{ブレイク|ぶれいく}}する。
-translation_it: >-
-  Quando questa creatura romperebbe 1 scudo, invece ne rompe 1 in più.
+:::image
+src: assets/cards/dm25-sd1/05-ragnarok-the-clock.webp
+alt: Carta 5 del mazzo DM25-SD1, figura meccanica del The Clock.
+caption: >-
+  `DM25-SD1 5/13`: {{終末|しゅうまつ}}の{{時計|とけい}} ザ・クロック。
+  Carta-studio per il verbo [とばす](term:term-tobasu).
 :::
 
-Questa carta quindi ti allena a vedere che `かわりに` può comparire sia in
-chiave difensiva sia in chiave offensiva.
-
-#### 4.2 終末の時計 ザ・クロック: il verbo とばす
-
-Qui il pezzo davvero da fissare è cortissimo:
+Qui basta una frase cortissima, ma va letta bene.
 
 :::example_sentence
 jp: >-
@@ -292,19 +145,47 @@ translation_it: >-
   L'avversario salta il resto di quel turno.
 :::
 
-Per il giapponese vale la pena notare tre cose:
+- [とばす](term:term-tobasu) qui vuol dire "saltare", non "volare".
+- `そのターンの{{残|のこ}}り` è un blocco unico: tutto ciò che resta del turno.
+- È il tipo di frase breve e assoluta che conviene riconoscere subito sulle
+  carte difensive.
 
-- [とばす](term:term-tobasu) qui non vuol dire "volare", ma "saltare / mandare
-  avanti" una porzione del turno.
-- `そのターンの{{残|のこ}}り` è un blocco da leggere tutto insieme: non una fase
-  singola, ma tutto ciò che resta.
-- Su una carta con [S・トリガー](term:term-s-trigger), una frase così corta ha un
-  impatto enorme: spesso le carte difensive forti in Duel Masters usano proprio
-  frasi brevissime ma assolute.
+#### 2.3 {{凶鬼|きょうき}}{{卍号|ばんごう}} メラヴォルガル
 
-#### 4.3 Cobra: riassegnare l'attacco
+:::image
+src: assets/cards/dm25-sd1/06-doorknocker-nordocker.webp
+alt: Carta 6 del mazzo DM25-SD1, twinpact con arte dorata e viola.
+caption: >-
+  `DM25-SD1 6/13`: {{凶鬼|きょうき}}{{卍号|ばんごう}} メラヴォルガル。
+  Carta-studio per
+  [～を{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau).
+:::
 
-La riga decisiva è una delle più utili dell'intero starter:
+La novità utile qui è una formula di rules text che Duel Masters usa spesso.
+
+:::example_sentence
+jp: >-
+  {{相手|あいて}}のクリーチャー{{1体|いったい}}のパワーを`-4000`する。これを
+  [{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau)。
+translation_it: >-
+  Dai `-4000` a 1 creatura dell'avversario. Esegui questo due volte.
+:::
+
+- `これを{{2回|にかい}}{{行|おこな}}う` ti fa rieseguire la frase appena letta.
+- Non aspettarti che il testo riscriva due volte l'effetto: spesso Duel Masters
+  lo compatta così.
+
+#### 2.4 Cobra, Snake Ninja Holy Chaos
+
+:::image
+src: assets/cards/dm25-sd1/07-cobra-snake-ninja-holy-chaos.webp
+alt: Carta 7 del mazzo DM25-SD1, creatura serpente Cobra.
+caption: >-
+  `DM25-SD1 7/13`: **Cobra, Snake Ninja Holy Chaos**. Carta-studio per
+  [{{攻撃先|こうげきさき}}](term:term-attack-target) e `{{変更|へんこう}}する`.
+:::
+
+Questa è la carta più utile del deck per il lessico dell'attacco.
 
 :::example_sentence
 jp: >-
@@ -318,27 +199,15 @@ translation_it: >-
   dell'attacco a quella creatura.
 :::
 
-I punti nuovi sono:
+- [攻撃先](term:term-attack-target) è il bersaglio concreto dell'attacco.
+- `{{進化|しんか}}ではない` esclude una categoria precisa.
+- `そうしたら` ti dice che il cambio del bersaglio dipende davvero
+  dall'azione appena fatta.
 
-- [攻撃先](term:term-attack-target) = il bersaglio concreto dell'attacco.
-- `{{変更|へんこう}}する` qui non è generico: sposta davvero dove va l'attacco.
-- `{{進化|しんか}}ではないクリーチャー` è una formulazione pratica da TCG:
-  non ti sta definendo un tipo nuovo, sta escludendo una categoria precisa.
+### 3. La keyword nuova senza immagine: シビルカウント
 
-Sulla stessa carta compare anche un ottimo consolidamento di
-[ブロッカー](term:term-blocker):
-
-:::example_sentence
-jp: >-
-  {{自分|じぶん}}の{{他|ほか}}のアビスがあれば、{{相手|あいて}}の
-  [ブロッカー](term:term-blocker)をすべて{{破壊|はかい}}する。
-translation_it: >-
-  Se hai un altro Abyss, distruggi tutti i blocker dell'avversario.
-:::
-
-#### 4.4 Just In You: keyword di conteggio
-
-Questa è la carta che aggiunge la seconda vera keyword nuova del deck:
+Nel deck c'è anche un'altra keyword da fissare subito, anche senza carta in
+vetrina: [シビルカウント](term:term-civil-count).
 
 :::example_sentence
 jp: >-
@@ -351,220 +220,43 @@ translation_it: >-
   usare l'S-Trigger di questa creatura.
 :::
 
-Qui la cosa importante è il parser mentale:
+- [シビルカウント](term:term-civil-count) introduce una soglia.
+- `コストの{{合計|ごうけい}}` vuol dire che stai sommando un totale, non contando
+  quante carte hai.
+- Dopo aver letto `シビルカウント3`, la prima domanda da farti è: **che cosa si
+  somma?**
 
-1. [シビルカウント](term:term-civil-count) introduce una soglia.
-2. `{{闇|やみ}}のカードのコストの{{合計|ごうけい}}` ti dice che non stai contando
-   quante carte hai, ma il totale dei loro costi.
-3. `{{3以上|さんいじょう}}` chiude il requisito numerico.
+### 4. Il resto del mazzo serve soprattutto a consolidare
 
-È una keyword utile proprio perché cambia il tuo riflesso: dopo aver letto
-`シビルカウント3`, devi cercare subito **che cosa** viene sommato.
+Queste carte restano utili, ma più come ripasso che come lessico nuovo:
 
-#### 4.5 メラヴォルガル: quando la carta ti dice di ripetere
+- **Madan = Low, Abyssal Furnace** e [邪侵入](term:term-jashinnyuu):
+  `{{墓地|ぼち}}に{{置|お}}く -> その{{後|あと}} -> {{出|だ}}す`.
+- ブルーム=プルーフ, フォーク=フォック e ルピア{{炎鬼|えんき}}:
+  `{{召喚|しょうかん}}{{以外|いがい}}`.
+- サーイ=サイクル:
+  `ただし、その「S・トリガー」は{{使|つか}}えない。`
+- ハンマ=ダンマ: conteggio delle carte macinate collegato a un effetto.
+- [ジャブラッド](term:term-jablood): nome-ancora importante del deck, ma senza
+  una struttura nuova da studiare qui.
 
-La metà [呪文](term:term-spell) di questa TwinPact non introduce una meccanica
-nuova del deck, ma una formula di rules text che conviene memorizzare:
+### 5. Cosa cercare a colpo d'occhio quando scorri il deck
 
-:::example_sentence
-jp: >-
-  {{相手|あいて}}のクリーチャー{{1体|いったい}}のパワーを`-4000`する。これを
-  [{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau)。
-translation_it: >-
-  Dai `-4000` a 1 creatura dell'avversario. Esegui questo due volte.
-:::
+Se vuoi leggere `DM25-SD1` in fretta, cerca prima questi segnali:
 
-Il vantaggio didattico è semplice: Duel Masters spesso preferisce dirti
-`これを{{2回|にかい}}{{行|おこな}}う` invece di riscrivere tutto l'effetto due
-volte. Quindi devi sapere che la seconda frase "riavvolge" la prima.
-
-### 5. Le carte che servono soprattutto a consolidare
-
-Non le buttiamo via: semplicemente non meritano una flashcard nuova.
-
-- **Madan = Low, Abyssal Furnace** e [邪侵入](term:term-jashinnyuu): perfetti per
-  ripassare `{{墓地|ぼち}}に{{置|お}}く -> その{{後|あと}} -> {{出|だ}}す`.
-- ブルーム=プルーフ, フォーク=フォック e ルピア{{炎鬼|えんき}}: ottimi esempi reali
-  di `{{召喚|しょうかん}}{{以外|いがい}}`.
-- サーイ=サイクル: da tenere a mente perché ripete
-  esattamente la restrizione `ただし、その「S・トリガー」は{{使|つか}}えない。`
-- ハンマ=ダンマ: buona carta per abituarsi a legare il
-  conteggio delle carte macinate all'effetto di rimozione.
-
-### 6. L'impronta linguistica del deck
-
-Le parole che ti conviene cercare per prime sono:
-
-- [墓地](term:term-graveyard)
-- [アビス](term:term-abyss)
-- [アビスロイヤル](term:term-abyss-royal)
-- [アビスラッシュ](term:term-abyss-rush)
-- [シビルカウント](term:term-civil-count)
-- [出す](term:term-dasu)
-- [戻す](term:term-modosu)
-- `コスト{{4以下|よんいか}}`
-
-Questa combinazione ti dice già tanto sul tipo di frase che stai per leggere:
-prima mandi qualcosa al cimitero o controlli il cimitero, poi filtri una
-categoria precisa, poi recuperi o metti in campo.
-
-In altre parole, `DM25-SD1` insegna molto bene il giapponese dei loop di
-risorsa.
-
-### 7. I nomi propri qui non sono decorazione
-
-In un anime spesso puoi ignorare il nome esatto di un personaggio per qualche
-minuto. In un TCG no: i nomi carta sono ancore cognitive.
-
-Per questo vale la pena fissare subito:
-
-- [邪侵入](term:term-jashinnyuu)
-- [ジャブラッド](term:term-jablood)
-- [アビスベル=ジャシン帝](term:term-abyssbell-jashintei)
-
-Non serve memorizzare immediatamente ogni effetto riga per riga. Serve sapere
-riconoscere che ruolo occupano nel deck mentre leggi supporti, payoff e carte
-di pressione.
-
-### 8. Come leggere il lessico di tribù
-
-[アビス](term:term-abyss) da solo indica la famiglia ampia. Quando invece trovi
-[アビスロイヤル](term:term-abyss-royal), il testo sta diventando più selettivo.
-
-Qui c'è il punto didattico decisivo: in Duel Masters il lessico di
-[種族](term:term-race) non descrive solo il "mondo" della carta. Determina in
-modo operativo quali bersagli sono validi e quali no.
-
-Se una frase dice in pratica "scegli un Abyss Royal", il lavoro di lettura è:
-
-1. capire che non vale qualunque creatura;
-2. capire che il requisito di appartenenza viene prima dell'azione;
-3. collegare quel filtro al piano di gioco del mazzo.
-
-### 9. La grammatica tipica di questo mazzo
-
-Su `DM25-SD1` tornano spesso due montaggi:
-
-- azione iniziale + [その後](grammar:grammar-sonoato) + recupero;
-- costo o filtro + [～以下 / ～以上](grammar:grammar-ika-ijou) + selezione.
-
-Per esempio, una frase modello da leggere bene è:
-
-:::example_sentence
-jp: >-
-  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を{{墓地|ぼち}}に{{置|お}}く。{{その後|そのあと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
-translation_it: >-
-  Metti le prime 3 carte del tuo mazzo nel cimitero. Poi metti in gioco 1
-  Abyss di costo 4 o inferiore dal tuo cimitero.
-:::
-
-Non importa se questa non è la carta precisa che hai davanti. Il pattern è
-quello giusto:
-
-- prima alimenti il [墓地](term:term-graveyard);
-- poi il deck converte quella preparazione in vantaggio;
-- il filtro `コスト{{4以下|よんいか}}` ti dice esattamente quanto è ampia la finestra.
-
-### 10. Perché questo deck è ottimo per il giapponese
-
-`DM25-SD1` ti costringe a sviluppare tre riflessi utili anche fuori da questo
-mazzo:
-
-- vedere subito se una carta parte o torna dal [墓地](term:term-graveyard);
-- non perdere i filtri di [コスト](term:term-cost);
-- riconoscere keyword compatte come [アビスラッシュ](term:term-abyss-rush) o
-  [シビルカウント](term:term-civil-count) e aprirle mentalmente;
-- distinguere tra nome di famiglia ([アビス](term:term-abyss)) e sottofamiglia
-  più tecnica ([アビスロイヤル](term:term-abyss-royal)).
-
-Se questa lettura ti diventa naturale, poi anche altri mazzi neri o orientati
-al cimitero diventano molto meno opachi.
-
-## Esempi guidati
-
-**Esempio 1**
-
-:::example_sentence
-jp: >-
-  {{自分|じぶん}}の{{墓地|ぼち}}からアビスを{{1枚|いちまい}}{{手札|てふだ}}に{{戻|もど}}す。
-translation_it: >-
-  Rimetti 1 Abyss dal tuo cimitero nella tua mano.
-:::
-
-- Zona di partenza: [墓地](term:term-graveyard).
-- Azione: [戻す](term:term-modosu).
-- Lettura pratica: il mazzo trasforma il cimitero in risorsa recuperabile.
-
-**Esempio 2**
-
-:::example_sentence
-jp: >-
-  コスト{{4以下|よんいか}}のアビスロイヤルを{{1体|いったい}}{{出|だ}}してもよい。
-translation_it: >-
-  Puoi mettere in gioco 1 Abyss Royal di costo 4 o inferiore.
-:::
-
-- [～以下 / ～以上](grammar:grammar-ika-ijou) = filtro.
-- [アビスロイヤル](term:term-abyss-royal) = non vale qualunque creatura.
-- [～てもよい](grammar:grammar-temoyoi) = la mossa è opzionale.
-
-**Esempio 3**
-
-:::example_sentence
-jp: >-
-  [シビルカウント](term:term-civil-count)3：{{自分|じぶん}}の{{闇|やみ}}の
-  カードのコストの{{合計|ごうけい}}が{{3以上|さんいじょう}}であれば、この
-  クリーチャーの「S・トリガー」を{{使|つか}}ってもよい。
-translation_it: >-
-  Civil Count 3: se la somma dei costi delle tue carte oscurità è 3 o più, puoi
-  usare l'S-Trigger di questa creatura.
-:::
-
-- [シビルカウント](term:term-civil-count) = keyword-soglia.
-- [合計](term:term-goukei) = stai sommando un totale, non contando pezzi singoli.
-- `{{3以上|さんいじょう}}` chiude il requisito numerico.
-
-**Esempio 4**
-
-:::example_sentence
-jp: >-
-  {{相手|あいて}}は、そのターンの{{残|のこ}}りを[とばす](term:term-tobasu)。
-translation_it: >-
-  L'avversario salta il resto di quel turno.
-:::
-
-- [とばす](term:term-tobasu) = far saltare una porzione di turno.
-- `そのターンの{{残|のこ}}り` va letto come blocco intero.
-- È una frase difensiva brevissima ma ad altissimo impatto.
-
-**Esempio 5**
-
-:::example_sentence
-jp: >-
-  コスト{{5以下|ごいか}}の{{進化|しんか}}ではないクリーチャーを{{1体|いったい}}、
-  {{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}してもよい。そうしたら、その
-  クリーチャーに[攻撃先](term:term-attack-target)を{{変更|へんこう}}する。
-translation_it: >-
-  Puoi mettere in gioco dal tuo cimitero 1 creatura non evoluzione di costo 5 o
-  inferiore. Se lo fai, cambi il bersaglio dell'attacco a quella creatura.
-:::
-
-- [攻撃先](term:term-attack-target) = il bersaglio dell'attacco.
-- `{{進化|しんか}}ではない` esclude una categoria.
-- `そうしたら` ti segnala che il cambio del bersaglio dipende davvero
-  dall'azione precedente.
+- [墓地](term:term-graveyard), [出す](term:term-dasu),
+  [戻す](term:term-modosu): ti dicono se il deck sta riciclando risorse.
+- `コスト{{4以下|よんいか}}` o formule simili: ti dicono subito quanto è stretto
+  il filtro.
+- [アビス](term:term-abyss) e [アビスロイヤル](term:term-abyss-royal): famiglia
+  larga vs sottofamiglia più selettiva.
+- [アビスラッシュ](term:term-abyss-rush) e
+  [シビルカウント](term:term-civil-count): keyword compatte che vanno aperte
+  mentalmente.
 
 ## Nota finale
 
-`DM25-SD1` è un buon mazzo-scuola per leggere il giapponese del cimitero. Se
-riesci a separare bene:
-
-- il **core già noto** (`{{墓地|ぼち}}`, `その{{後|あと}}`, `コスト{{4以下|よんいか}}`);
-- le **vere novità** del deck
-  ([アビスラッシュ](term:term-abyss-rush),
-  [シビルカウント](term:term-civil-count),
-  [攻撃先](term:term-attack-target),
-  [とばす](term:term-tobasu));
-
-allora `DM25-SD1` smette di sembrare una massa di testo scuro e diventa un
-ottimo laboratorio di giapponese da carte.
+`DM25-SD1` funziona bene come mazzo-scuola perché il grosso del lessico gira
+attorno a pochi assi molto leggibili: cimitero, filtri di costo e keyword
+compatte. Se separi bene questi tre livelli, il deck smette di sembrare denso e
+diventa molto più leggibile.
