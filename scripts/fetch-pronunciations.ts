@@ -131,6 +131,17 @@ function parseCliOptions(argv: string[]): CliOptions {
       continue;
     }
 
+    if (argument === "--request-timeout-ms") {
+      const parsedTimeout = Number.parseInt(argv[index + 1] ?? "", 10);
+
+      if (Number.isFinite(parsedTimeout) && parsedTimeout >= 0) {
+        options.network.requestTimeoutMs = parsedTimeout;
+      }
+
+      index += 1;
+      continue;
+    }
+
     if (argument === "--max-retries") {
       const parsedRetries = Number.parseInt(argv[index + 1] ?? "", 10);
 

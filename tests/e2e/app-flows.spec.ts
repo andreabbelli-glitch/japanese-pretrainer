@@ -98,7 +98,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
 
   expect(initialReviewFront?.trim().length).toBeGreaterThan(0);
 
-  await page.getByRole("link", { name: "Mostra risposta" }).click();
+  await page.getByRole("button", { name: "Mostra risposta" }).click();
   const goodButton = page.getByRole("button", { name: /^Good/ });
   await goodButton.hover();
   await expect(goodButton).toHaveCSS(
@@ -107,11 +107,10 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   );
   await goodButton.click();
 
-  await expect(page).toHaveURL(/answered=1/);
-  await expect(page.getByRole("link", { name: "Mostra risposta" })).toHaveAttribute(
-    "href",
-    /answered=1/
-  );
+  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review(?:\?|$)/);
+  await expect(
+    page.getByRole("button", { name: "Mostra risposta" })
+  ).toBeVisible();
   await expect(page.locator(".review-stage__front")).not.toHaveText(
     initialReviewFront ?? ""
   );

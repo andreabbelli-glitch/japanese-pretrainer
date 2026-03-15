@@ -2,6 +2,13 @@
   "version": 1,
   "entries": [
     {
+      "entry_type": "grammar",
+      "entry_id": "grammar-tara",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%9F%E3%82%89"
+    },
+    {
       "entry_type": "term",
       "entry_id": "term-bag",
       "pitch_accent": 1,
@@ -59,6 +66,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-lets-go",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%AC%E3%83%83%E3%83%84%E3%82%B4%E3%83%BC"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-lp",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OpenJTalk"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-mochimono",
       "pitch_accent": 2,
       "pitch_accent_source": "Wiktionary",
@@ -80,6 +100,19 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-otoshimono",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8A%E3%81%A8%E3%81%97%E3%82%82%E3%81%AE"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-pokemon-center",
+      "pitch_accent": 5,
+      "pitch_accent_source": "OpenJTalk"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-report",
       "pitch_accent": 2,
       "pitch_accent_source": "Wiktionary",
@@ -94,10 +127,29 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-shoubu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%97%E3%82%87%E3%81%86%E3%81%B6"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-tennyuu",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%BB%A2%E5%85%A5"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tera-type",
+      "pitch_accent": 4,
+      "pitch_accent_source": "OpenJTalk"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-terastal",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OpenJTalk"
     },
     {
       "entry_type": "term",
@@ -133,6 +185,12 @@
       "pitch_accent": 2,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%8F%E3%81%96"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-waza-machine",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OpenJTalk"
     },
     {
       "entry_type": "term",

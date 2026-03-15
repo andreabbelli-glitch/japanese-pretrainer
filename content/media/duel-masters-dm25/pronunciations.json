@@ -397,9 +397,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-face-up",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A1%A8%E5%90%91%E3%81%8D"
+      "audio_src": "assets/audio/term/term-face-up/forvo-manual-おもてむき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A1%A8%E5%90%91%E3%81%8D/#ja"
     },
     {
       "entry_type": "term",
@@ -795,6 +796,16 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%91%AA%E6%96%87"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-start",
+      "audio_src": "assets/audio/term/term-start/ll-q5287-jpn-葵心-開始.wav",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "Speaker: 葵心 Recorder: 葵心",
+      "audio_license": "CC0",
+      "audio_attribution": "Own work",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:LL-Q5287_(jpn)-%E8%91%B5%E5%BF%83-%E9%96%8B%E5%A7%8B.wav"
     },
     {
       "entry_type": "term",

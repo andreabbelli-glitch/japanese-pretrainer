@@ -1,8 +1,13 @@
-import { describe, expect, it } from "vitest";
+import { mkdtemp, rm } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
+
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
   extractCommonsFileTitlesFromWiktionaryWikitext,
   extractSpokenTextFromCommonsTitle,
+  resolvePronunciationForEntry,
   normalizePronunciationText,
   parseRetryAfterMs,
   scorePronunciationCandidate,
@@ -10,6 +15,10 @@ import {
   type PronunciationCandidate,
   type PronunciationTargetEntry
 } from "@/lib/pronunciation-fetch";
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 
 describe("pronunciation fetch helpers", () => {
   const target: PronunciationTargetEntry = {
@@ -164,5 +173,140 @@ describe("pronunciation fetch helpers", () => {
   it("returns null for invalid Retry-After values", () => {
     expect(parseRetryAfterMs("not-a-date")).toBeNull();
     expect(parseRetryAfterMs(null)).toBeNull();
+  });
+
+  it("retries aborted network requests and eventually resolves from a later response", async () => {
+    const cacheRoot = await mkdtemp(
+      path.join(os.tmpdir(), "pronunciation-fetch-test-")
+    );
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockRejectedValueOnce(new Error("This operation was aborted"))
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  imageinfo: [
+                    {
+                      descriptionurl:
+                        "https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg",
+                      extmetadata: {},
+                      mime: "audio/ogg",
+                      url: "https://commons.wikimedia.org/file/ll-taberu.ogg"
+                    }
+                  ],
+                  title: "File:LL-Q188 (jpn)-Speaker-食べる.ogg"
+                }
+              ]
+            }
+          }),
+          {
+            status: 200
+          }
+        )
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  revisions: [
+                    {
+                      slots: {
+                        main: {
+                          content: ""
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }),
+          {
+            status: 200
+          }
+        )
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            query: {
+              pages: []
+            }
+          }),
+          {
+            status: 200
+          }
+        )
+      );
+
+    vi.stubGlobal("fetch", fetchMock);
+
+    try {
+      const resolved = await resolvePronunciationForEntry({
+        cacheRoot,
+        entry: target,
+        network: {
+          maxRetries: 1,
+          requestDelayMs: 0,
+          requestTimeoutMs: 1,
+          retryBaseDelayMs: 0
+        }
+      });
+
+      expect(resolved?.candidate.fileTitle).toBe(
+        "File:LL-Q188 (jpn)-Speaker-食べる.ogg"
+      );
+      expect(fetchMock.mock.calls.length).toBeGreaterThan(1);
+      expect(
+        fetchMock.mock.calls.some(([url]) =>
+          String(url).includes("commons.wikimedia.org/w/api.php")
+        )
+      ).toBe(true);
+    } finally {
+      warnSpy.mockRestore();
+      await rm(cacheRoot, { force: true, recursive: true });
+    }
+  });
+
+  it("treats Commons rate limits as entry-local misses instead of aborting resolution", async () => {
+    const cacheRoot = await mkdtemp(
+      path.join(os.tmpdir(), "pronunciation-fetch-test-")
+    );
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockResolvedValue(
+        new Response("rate limited", {
+          status: 429,
+          statusText: "Too Many Requests"
+        })
+      );
+
+    vi.stubGlobal("fetch", fetchMock);
+
+    try {
+      const resolved = await resolvePronunciationForEntry({
+        cacheRoot,
+        entry: target,
+        network: {
+          maxRetries: 0,
+          requestDelayMs: 0,
+          requestTimeoutMs: 1,
+          retryBaseDelayMs: 0
+        }
+      });
+
+      expect(resolved).toBeNull();
+      expect(warnSpy).toHaveBeenCalled();
+    } finally {
+      warnSpy.mockRestore();
+      await rm(cacheRoot, { force: true, recursive: true });
+    }
   });
 });

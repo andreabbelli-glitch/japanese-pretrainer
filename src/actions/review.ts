@@ -10,9 +10,17 @@ import {
   setLinkedEntryStatusByCard,
   setReviewCardSuspended
 } from "@/lib/review-service";
+import { getReviewPageData, type ReviewPageData } from "@/lib/review";
 import { mediaHref, mediaReviewCardHref, mediaStudyHref } from "@/lib/site";
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
+type ReviewSessionRedirectMode = Exclude<ReviewRedirectMode, "stay_detail">;
+type ReviewSessionInput = {
+  answeredCount: number;
+  cardId: string;
+  extraNewCount: number;
+  mediaSlug: string;
+};
 
 export async function gradeReviewCardAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
@@ -142,6 +150,135 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
   );
 }
 
+export async function revealReviewAnswerSessionAction(
+  input: ReviewSessionInput
+): Promise<ReviewPageData> {
+  return requireReviewPageData(
+    input.mediaSlug,
+    buildReviewSearchParams({
+      answeredCount: input.answeredCount,
+      cardId: input.cardId,
+      extraNewCount: input.extraNewCount,
+      showAnswer: true
+    })
+  );
+}
+
+export async function gradeReviewCardSessionAction(input: ReviewSessionInput & {
+  rating: "again" | "hard" | "good" | "easy";
+}): Promise<ReviewPageData> {
+  await applyReviewGrade({
+    cardId: input.cardId,
+    rating: input.rating
+  });
+
+  revalidateReviewPaths(input.mediaSlug, input.cardId);
+
+  return requireReviewPageData(
+    input.mediaSlug,
+    buildRedirectSearchParams({
+      answeredCount: input.answeredCount + 1,
+      extraNewCount: input.extraNewCount
+    })
+  );
+}
+
+export async function markLinkedEntryKnownSessionAction(
+  input: ReviewSessionInput & {
+    redirectMode: ReviewSessionRedirectMode;
+  }
+): Promise<ReviewPageData> {
+  await setLinkedEntryStatusByCard({
+    cardId: input.cardId,
+    status: "known_manual"
+  });
+
+  revalidateReviewPaths(input.mediaSlug, input.cardId);
+
+  return requireReviewPageData(
+    input.mediaSlug,
+    buildRedirectSearchParams({
+      answeredCount: input.answeredCount,
+      cardId: input.cardId,
+      extraNewCount: input.extraNewCount,
+      notice: "known",
+      redirectMode: input.redirectMode
+    })
+  );
+}
+
+export async function setLinkedEntryLearningSessionAction(
+  input: ReviewSessionInput & {
+    redirectMode: ReviewSessionRedirectMode;
+  }
+): Promise<ReviewPageData> {
+  await setLinkedEntryStatusByCard({
+    cardId: input.cardId,
+    status: "learning"
+  });
+
+  revalidateReviewPaths(input.mediaSlug, input.cardId);
+
+  return requireReviewPageData(
+    input.mediaSlug,
+    buildRedirectSearchParams({
+      answeredCount: input.answeredCount,
+      cardId: input.cardId,
+      extraNewCount: input.extraNewCount,
+      notice: "learning",
+      redirectMode: input.redirectMode
+    })
+  );
+}
+
+export async function resetReviewCardSessionAction(
+  input: ReviewSessionInput & {
+    redirectMode: ReviewSessionRedirectMode;
+  }
+): Promise<ReviewPageData> {
+  await resetReviewCardProgress({
+    cardId: input.cardId
+  });
+
+  revalidateReviewPaths(input.mediaSlug, input.cardId);
+
+  return requireReviewPageData(
+    input.mediaSlug,
+    buildRedirectSearchParams({
+      answeredCount: input.answeredCount,
+      cardId: input.cardId,
+      extraNewCount: input.extraNewCount,
+      notice: "reset",
+      redirectMode: input.redirectMode
+    })
+  );
+}
+
+export async function setReviewCardSuspendedSessionAction(
+  input: ReviewSessionInput & {
+    redirectMode: ReviewSessionRedirectMode;
+    suspended: boolean;
+  }
+): Promise<ReviewPageData> {
+  await setReviewCardSuspended({
+    cardId: input.cardId,
+    suspended: input.suspended
+  });
+
+  revalidateReviewPaths(input.mediaSlug, input.cardId);
+
+  return requireReviewPageData(
+    input.mediaSlug,
+    buildRedirectSearchParams({
+      answeredCount: input.answeredCount,
+      cardId: input.cardId,
+      extraNewCount: input.extraNewCount,
+      notice: input.suspended ? "suspended" : "resumed",
+      redirectMode: input.redirectMode
+    })
+  );
+}
+
 function buildReviewRedirectUrl(input: {
   answeredCount: number;
   cardId?: string;
@@ -154,23 +291,15 @@ function buildReviewRedirectUrl(input: {
     return mediaReviewCardHref(input.mediaSlug, input.cardId);
   }
 
-  const params = new URLSearchParams();
-
-  if (input.answeredCount > 0) {
-    params.set("answered", String(input.answeredCount));
-  }
-
-  if (input.extraNewCount && input.extraNewCount > 0) {
-    params.set("extraNew", String(input.extraNewCount));
-  }
-
-  if (input.cardId && input.redirectMode === "preserve_card") {
-    params.set("card", input.cardId);
-  }
-
-  if (input.notice) {
-    params.set("notice", input.notice);
-  }
+  const params = new URLSearchParams(
+    buildRedirectSearchParams({
+      answeredCount: input.answeredCount,
+      cardId: input.cardId,
+      extraNewCount: input.extraNewCount,
+      notice: input.notice,
+      redirectMode: input.redirectMode
+    })
+  );
 
   const baseHref = mediaStudyHref(input.mediaSlug, "review");
 
@@ -212,4 +341,67 @@ function readRedirectMode(formData: FormData): ReviewRedirectMode {
   return value === "preserve_card" || value === "stay_detail"
     ? value
     : "advance_queue";
+}
+
+function buildRedirectSearchParams(input: {
+  answeredCount: number;
+  cardId?: string;
+  extraNewCount?: number;
+  notice?: string;
+  redirectMode?: ReviewRedirectMode;
+}) {
+  return buildReviewSearchParams({
+    answeredCount: input.answeredCount,
+    cardId:
+      input.cardId && input.redirectMode === "preserve_card"
+        ? input.cardId
+        : undefined,
+    extraNewCount: input.extraNewCount,
+    notice: input.notice
+  });
+}
+
+function buildReviewSearchParams(input: {
+  answeredCount: number;
+  cardId?: string;
+  extraNewCount?: number;
+  notice?: string;
+  showAnswer?: boolean;
+}) {
+  const params: Record<string, string> = {};
+
+  if (input.answeredCount > 0) {
+    params.answered = String(input.answeredCount);
+  }
+
+  if (input.cardId) {
+    params.card = input.cardId;
+  }
+
+  if (input.extraNewCount && input.extraNewCount > 0) {
+    params.extraNew = String(input.extraNewCount);
+  }
+
+  if (input.notice) {
+    params.notice = input.notice;
+  }
+
+  if (input.showAnswer) {
+    params.show = "answer";
+  }
+
+  return params;
+}
+
+async function requireReviewPageData(
+  mediaSlug: string,
+  searchParams: Record<string, string>
+) {
+  const data = await getReviewPageData(mediaSlug, searchParams);
+
+  if (!data) {
+    throw new Error(`Unable to load review page data for media: ${mediaSlug}`);
+  }
+
+  return data;
 }

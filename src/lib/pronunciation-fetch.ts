@@ -29,6 +29,7 @@ export type PronunciationFetchNetworkOptions = {
 };
 
 const DEFAULT_REQUEST_DELAY_MS = 1200;
+const DEFAULT_REQUEST_TIMEOUT_MS = 15_000;
 const DEFAULT_RETRY_BASE_DELAY_MS = 5000;
 const DEFAULT_MAX_RETRIES = 4;
 
@@ -367,12 +368,21 @@ async function searchCommonsCandidates(input: {
   const candidates: PronunciationCandidate[] = [];
 
   for (const variant of variants) {
-    const pages = await fetchCommonsSearch({
-      cacheRoot: input.cacheRoot,
-      query: `intitle:"${variant}"`,
-      limit: 12,
-      network: input.network
-    });
+    let pages: CommonsPage[];
+
+    try {
+      pages = await fetchCommonsSearch({
+        cacheRoot: input.cacheRoot,
+        query: `intitle:"${variant}"`,
+        limit: 12,
+        network: input.network
+      });
+    } catch (error) {
+      console.warn(
+        `Skipping Commons search for '${variant}': ${formatErrorMessage(error)}`
+      );
+      continue;
+    }
 
     for (const page of pages) {
       const candidate = mapCommonsPageToCandidate(page);
@@ -452,11 +462,21 @@ async function lookupCommonsFiles(input: {
       "commons-files",
       `${cacheKey}.json`
     );
-    const response = await fetchJsonWithCache<CommonsSearchResponse>({
-      cachePath,
-      network: input.network,
-      url: `https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&titles=${encodeURIComponent(normalizedTitle)}&prop=imageinfo&iiprop=url|mime|extmetadata`
-    });
+    let response: CommonsSearchResponse;
+
+    try {
+      response = await fetchJsonWithCache<CommonsSearchResponse>({
+        cachePath,
+        network: input.network,
+        url: `https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2&titles=${encodeURIComponent(normalizedTitle)}&prop=imageinfo&iiprop=url|mime|extmetadata`
+      });
+    } catch (error) {
+      console.warn(
+        `Skipping Commons file lookup for '${normalizedTitle}': ${formatErrorMessage(error)}`
+      );
+      continue;
+    }
+
     const candidate = mapCommonsPageToCandidate(response.query?.pages?.[0], {
       spokenTextHint: reference.spokenTextHint
     });
@@ -634,21 +654,45 @@ async function fetchJsonWithCache<T>(input: {
 
   await mkdir(path.dirname(input.cachePath), { recursive: true });
   const requestDelayMs = input.network?.requestDelayMs ?? DEFAULT_REQUEST_DELAY_MS;
+  const requestTimeoutMs =
+    input.network?.requestTimeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS;
   const retryBaseDelayMs =
     input.network?.retryBaseDelayMs ?? DEFAULT_RETRY_BASE_DELAY_MS;
   const maxRetries = input.network?.maxRetries ?? DEFAULT_MAX_RETRIES;
 
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
     await waitForNextNetworkSlot(requestDelayMs);
+    const abortController = new AbortController();
+    const timeout = setTimeout(() => {
+      abortController.abort();
+    }, requestTimeoutMs);
+    let response: Response;
+    let body: string;
 
-    const response = await fetch(input.url, {
-      headers: {
-        "User-Agent": "japanese-custom-study/0.1 local pronunciation fetcher"
+    try {
+      response = await fetch(input.url, {
+        headers: {
+          "User-Agent": "japanese-custom-study/0.1 local pronunciation fetcher"
+        },
+        signal: abortController.signal
+      });
+      body = await response.text();
+    } catch (error) {
+      clearTimeout(timeout);
+
+      if (attempt < maxRetries) {
+        await sleep(retryBaseDelayMs * 2 ** attempt);
+        continue;
       }
-    });
+
+      throw new Error(
+        `Failed to fetch ${input.url}: ${error instanceof Error ? error.message : String(error)}`
+      );
+    }
+
+    clearTimeout(timeout);
 
     if (response.ok) {
-      const body = await response.text();
       await writeFile(input.cachePath, body);
       return JSON.parse(body) as T;
     }

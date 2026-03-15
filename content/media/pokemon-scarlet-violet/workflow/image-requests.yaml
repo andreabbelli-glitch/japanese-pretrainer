@@ -373,3 +373,191 @@ requests:
     notes: >-
       Fonte guida da verificare: walkthrough giapponesi del prologo, in
       particolare sezioni `入り江のほら穴` e `謎のポケモンについていく` su GameWith o Game8.
+  - id: pokemon-center-service-counter
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "il secondo il banco dove compri oggetti."
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il primo paragrafo sul
+      [ポケモンセンター](term:term-pokemon-center), cosi il lettore vede davvero
+      come il centro esterno raccolga cura, shop e servizi nello stesso hub.
+    visual_goal: >-
+      Mostrare il bancone del Centro Pokemon con le sue sezioni ben distinte, in
+      modo che [ポケモンセンター](term:term-pokemon-center) e
+      [フレンドリィショップ](term:term-friendly-shop) non restino etichette astratte.
+    source_preference: >-
+      Pagina story ufficiale dedicata al Centro Pokemon in Scarlet / Violet.
+    search_hint: >-
+      Usa la pagina ufficiale `story/220803_03` e scegli lo screenshot del
+      bancone con infermiera, shop e dialogo del Centro Pokemon.
+    capture_instructions: >-
+      Preferisci un frame frontale del bancone con i colori dei servizi ancora
+      leggibili e testo a schermo giapponese presente.
+    must_show: >-
+      Bancone del Centro Pokemon, infermiera, area shop o simboli dei servizi,
+      testo di dialogo e struttura esterna dell'hub.
+    avoid: >-
+      Solo esterni senza servizi visibili, crop troppo stretti sul personaggio o
+      schermate che facciano perdere la natura multi-servizio del luogo.
+    alt_it: >-
+      Bancone del Centro Pokemon con infermiera, shop e servizi allineati nello
+      stesso hub esterno.
+    caption_it: >-
+      Qui il [ポケモンセンター](term:term-pokemon-center) si vede come hub reale:
+      cura, negozio e altri servizi convivono nello stesso spazio e spiegano
+      subito perche il testo insiste su funzioni diverse nello stesso luogo.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/story/220803_03/
+      asset `story_img_03.jpg`.
+  - id: tm-machine-materials-ui
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "materiali lasciati dai Pokemon dopo le lotte o gli scontri automatici. Se non"
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va nel paragrafo su [LP（リーグペイ）](term:term-lp),
+      [おとしもの](term:term-otoshimono) e [わざマシン](term:term-waza-machine),
+      cosi la lesson rende visibile il legame fra valuta, materiali e crafting.
+    visual_goal: >-
+      Far vedere la UI della macchina delle MT con LP richiesti e materiali
+      mancanti o necessari ben leggibili.
+    source_preference: >-
+      Pagina story ufficiale del Centro Pokemon con schermata della
+      [わざマシン](term:term-waza-machine).
+    search_hint: >-
+      Usa la pagina ufficiale `story/220803_03` e scegli la schermata completa
+      della [わざマシン](term:term-waza-machine) con LP e materiali a destra.
+    capture_instructions: >-
+      Preferisci una schermata intera della macchina, senza crop aggressivi, con
+      nome mossa, costo LP e materiali ancora leggibili.
+    must_show: >-
+      Lista delle MT, costo in LP, materiali richiesti e titolo della schermata.
+    avoid: >-
+      Crop che mostrano solo un riquadro della UI, schermate prive dei materiali
+      o immagini promozionali senza interfaccia reale.
+    alt_it: >-
+      Schermata della TM Machine con costo in LP e materiali necessari visibili.
+    caption_it: >-
+      La [わざマシン](term:term-waza-machine) rende concreto il lessico del
+      paragrafo: [LP（リーグペイ）](term:term-lp) e
+      [おとしもの](term:term-otoshimono) non sono concetti separati, ma le due
+      risorse che la UI ti chiede davvero per creare una MT.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/story/220803_03/
+      asset `story_img_06.jpg`.
+  - id: lets-go-auto-battle-field
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "la riporta nel tuo flusso di gioco. In pratica questo comando ti fa capire che"
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo su [レッツゴー](term:term-lets-go), per mostrare
+      che il comando non e solo nominato ma ha un output di campo visibile:
+      scontro automatico, drop e ritorno utile al giocatore.
+    visual_goal: >-
+      Mostrare il partner che ha appena combattuto o raccolto qualcosa in
+      automatico, con HUD o notifiche che facciano capire il flusso del comando.
+    source_preference: >-
+      Guida giapponese beginner o story con screenshot del comando
+      [レッツゴー](term:term-lets-go) sul campo.
+    search_hint: >-
+      Cerca nella guida GameWith `序盤の進め方と初心者が覚えておくべき機能`
+      screenshot del partner che ha vinto uno scontro automatico o raccolto un
+      materiale dopo [レッツゴー](term:term-lets-go).
+    capture_instructions: >-
+      Preferisci un frame di campo con il Pokemon partner visibile, notifiche di
+      drop o vittoria sul lato e minimappa ancora presente.
+    must_show: >-
+      Pokemon partner sul campo, HUD o notifiche, contesto di esplorazione e
+      chiaro risultato dell'azione automatica.
+    avoid: >-
+      Sole mappe, menu senza campo, crop che eliminano il partner o immagini che
+      non facciano capire il meccanismo automatico.
+    alt_it: >-
+      Pokemon partner sul campo dopo un'azione di Let's Go, con notifica di drop
+      o vittoria automatica visibile.
+    caption_it: >-
+      [レッツゴー](term:term-lets-go) non e solo un nome di comando: qui si vede
+      il partner che agisce sul campo e ti riporta subito nel loop di
+      esplorazione, lotta rapida e raccolta.
+    notes: >-
+      Fonte guida da verificare: GameWith `序盤の進め方と初心者が覚えておくべき機能`
+      con screenshot di auto-battle / raccolta.
+  - id: first-terastal-opponent-battle
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "Pokemon trasformato."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo che separa
+      [テラスタル](term:term-terastal),
+      [テラスタルオーブ](term:term-terastal-orb) e
+      [テラスタイプ](term:term-tera-type), per agganciare subito la teoria
+      all'effetto visivo della trasformazione in battaglia.
+    visual_goal: >-
+      Mostrare il momento in cui il Pokemon avversario e gia terastallizzato,
+      con cristallo, arena e testo di mossa o azione ancora visibili.
+    source_preference: >-
+      Pagina battle ufficiale dedicata al
+      [テラスタル](term:term-terastal).
+    search_hint: >-
+      Usa la pagina ufficiale `battle/220822_02` e scegli uno screenshot in cui
+      il Pokemon avversario appare gia terastallizzato sul campo.
+    capture_instructions: >-
+      Preferisci una schermata di battaglia completa con effetto cristallino,
+      Pokemon avversario visibile e testo dell'azione ancora a video.
+    must_show: >-
+      Pokemon terastallizzato, arena, avversario sul lato opposto e testo di
+      battaglia o HUD sufficiente a contestualizzare l'azione.
+    avoid: >-
+      Solo esplosioni luminose senza Pokemon, crop troppo stretti o screenshot
+      che non facciano capire che la trasformazione e gia avvenuta.
+    alt_it: >-
+      Pokemon avversario terastallizzato in battaglia con cristallo e testo di
+      azione visibili.
+    caption_it: >-
+      Il primo [テラスタル](term:term-terastal) visto da avversario aiuta a
+      separare subito effetto, oggetto e tipo finale: prima impari a
+      riconoscerlo a schermo, poi il gioco ti lascia comandarlo.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/battle/220822_02/
+      asset `battle_img_01.jpg`.
+  - id: nemona-second-battle-growth-check
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "misurativa: il gioco sta verificando se hai assorbito davvero il mini-loop tra"
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va nel cuore del paragrafo sulla seconda
+      [{{勝負|しょうぶ}}](term:term-shoubu) con Nemona, per legare il lessico del
+      testo a una battuta reale a schermo invece di lasciare `{{試|ため}}してみよう`
+      solo citato in prosa.
+    visual_goal: >-
+      Mostrare Nemona mentre parla prima della seconda sfida, con dialogo
+      giapponese leggibile e chiaro riferimento alla crescita del protagonista.
+    source_preference: >-
+      Guida giapponese del blocco iniziale con screenshot del dialogo di Nemona
+      prima della seconda sfida.
+    search_hint: >-
+      Usa una guida GameWith o equivalente con il frame in cui Nemona dice
+      `どれくらい 強くなったか 勝負して 試してみようよ！`.
+    capture_instructions: >-
+      Preferisci uno screenshot con Nemona ben visibile e textbox completa,
+      senza crop che taglino il nome del personaggio o il testo della battuta.
+    must_show: >-
+      Nemona, textbox con nome personaggio e la battuta su
+      `{{試|ため}}してみよう`, piu contesto del sentiero del prologo.
+    avoid: >-
+      Screenshot di sola battaglia senza dialogo, primi piani senza textbox o
+      immagini che non facciano capire che si tratta della seconda sfida.
+    alt_it: >-
+      Nemona sul sentiero prima della seconda sfida con la battuta giapponese
+      sulla prova della tua crescita.
+    caption_it: >-
+      Questa battuta di Nemona rende leggibile il cuore del paragrafo:
+      `{{勝負|しょうぶ}}して {{試|ため}}してみよう` non e solo entusiasmo, ma un
+      vero controllo di quanto sei cresciuto dopo il mini-loop di tutorial.
+    notes: >-
+      Fonte guida da verificare: GameWith con screenshot del dialogo
+      `どれくらい 強くなったか 勝負して 試してみようよ！`.

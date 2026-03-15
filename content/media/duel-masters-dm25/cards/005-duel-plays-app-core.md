@@ -575,6 +575,36 @@ level_hint: n4
 :::
 
 :::term
+id: term-match
+lemma: 対戦
+reading: たいせん
+romaji: taisen
+meaning_it: partita / match / battle
+pos: verbal-noun
+aliases: [対戦, taisen]
+notes_it: >-
+  È la parola-base per il confronto contro un avversario. In `デュエプレ`
+  compare nei bottoni, nelle modalità e nelle frasi operative per dirti che non
+  stai più gestendo deck o menu: stai entrando nella partita vera e propria.
+level_hint: custom
+:::
+
+:::term
+id: term-start
+lemma: 開始
+reading: かいし
+romaji: kaishi
+meaning_it: inizio / avvio / start
+pos: verbal-noun
+aliases: [開始, kaishi]
+notes_it: >-
+  È il modo formale da UI per dire che qualcosa parte davvero. In composti come
+  [{{対戦開始|たいせんかいし}}](term:term-start-match) non comunica
+  preparazione o selezione, ma l'avvio effettivo dell'azione successiva.
+level_hint: n4
+:::
+
+:::term
 id: term-start-match
 lemma: 対戦開始
 reading: たいせんかいし
@@ -1271,6 +1301,42 @@ notes_it: >-
   "apertura" in astratto, ma passaggio concreto da non disponibile a
   disponibile.
 tags: [duel-plays, app, status, kanji]
+:::
+
+:::card
+id: card-match-recognition
+entry_type: term
+entry_id: term-match
+card_type: recognition
+front: 対戦
+back: partita / match / battle
+example_jp: >-
+  このデッキで{{対戦|たいせん}}する。
+example_it: >-
+  Fai una partita con questo deck.
+notes_it: >-
+  Quando leggi `{{対戦|たいせん}}`, la UI sta parlando del confronto vero e
+  proprio contro un avversario. È il nucleo che poi ritrovi in
+  [{{対戦開始|たいせんかいし}}](term:term-start-match).
+tags: [duel-plays, app, action, kanji]
+:::
+
+:::card
+id: card-start-recognition
+entry_type: term
+entry_id: term-start
+card_type: recognition
+front: 開始
+back: inizio / avvio / start
+example_jp: >-
+  イベント{{開始|かいし}}の{{日時|にちじ}}を{{確認|かくにん}}する。
+example_it: >-
+  Controlla la data e l'ora di inizio dell'evento.
+notes_it: >-
+  `{{開始|かいし}}` è una parola da interfaccia molto compatta: segnala il
+  punto in cui qualcosa parte davvero. Dentro `対戦開始` è il pezzo che trasforma
+  il match da opzione selezionata ad azione avviata.
+tags: [duel-plays, app, action, kanji]
 :::
 
 :::card

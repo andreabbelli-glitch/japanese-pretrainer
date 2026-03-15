@@ -176,3 +176,92 @@ assets:
       `https://img.gamewith.jp/img/a81a248678f0ffdb58b8c65a007acc4f.png`,
       convertita in WebP come fallback visuale in attesa di un frame piu
       preciso della forma indebolita dentro la grotta.
+  - id: pokemon-center-service-counter
+    src: assets/story/pokemon-center-service-counter.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "il secondo il banco dove compri oggetti."
+    alt_it: >-
+      Bancone del Centro Pokemon con infermiera, shop e servizi allineati nello
+      stesso hub esterno.
+    caption_it: >-
+      Qui il [ポケモンセンター](term:term-pokemon-center) si vede come hub reale:
+      cura, negozio e altri servizi convivono nello stesso spazio e spiegano
+      subito perche il testo insiste su funzioni diverse nello stesso luogo.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/story/220803_03/
+      (`story_img_03.jpg`), convertita in WebP.
+  - id: tm-machine-materials-ui
+    src: assets/ui/tm-machine-materials-ui.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "materiali lasciati dai Pokemon dopo le lotte o gli scontri automatici. Se non"
+    alt_it: >-
+      Schermata della TM Machine con costo in LP e materiali necessari visibili.
+    caption_it: >-
+      La [わざマシン](term:term-waza-machine) rende concreto il lessico del
+      paragrafo: [LP（リーグペイ）](term:term-lp) e
+      [おとしもの](term:term-otoshimono) non sono concetti separati, ma le due
+      risorse che la UI ti chiede davvero per creare una MT.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/story/220803_03/
+      (`story_img_06.jpg`), convertita in WebP.
+  - id: lets-go-auto-battle-field
+    src: assets/story/lets-go-auto-battle-field.webp
+    source_type: screenshot
+    width: 710
+    height: 398
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "la riporta nel tuo flusso di gioco. In pratica questo comando ti fa capire che"
+    alt_it: >-
+      Pokemon partner sul campo dopo un'azione di Let's Go, con notifica di drop
+      o vittoria automatica visibile.
+    caption_it: >-
+      [レッツゴー](term:term-lets-go) non e solo un nome di comando: qui si vede
+      il partner che agisce sul campo e ti riporta subito nel loop di
+      esplorazione, lotta rapida e raccolta.
+    notes: >-
+      Ricavata dalla guida GameWith `序盤の進め方と初心者が覚えておくべき機能`
+      (https://gamewith.jp/pokemon-sv/article/show/374611), asset immagine
+      `https://img.gamewith.jp/img/62d7203cf183f8a7c249922a52cfcf23.png`,
+      convertita in WebP.
+  - id: first-terastal-opponent-battle
+    src: assets/ui/first-terastal-opponent-battle.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "Pokemon trasformato."
+    alt_it: >-
+      Pokemon avversario terastallizzato in battaglia con cristallo e testo di
+      azione visibili.
+    caption_it: >-
+      Il primo [テラスタル](term:term-terastal) visto da avversario aiuta a
+      separare subito effetto, oggetto e tipo finale: prima impari a
+      riconoscerlo a schermo, poi il gioco ti lascia comandarlo.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/battle/220822_02/
+      (`battle_img_01.jpg`), convertita in WebP.
+  - id: nemona-second-battle-growth-check
+    src: assets/story/nemona-second-battle-growth-check.webp
+    source_type: screenshot
+    width: 710
+    height: 399
+    lesson_slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+    anchor: "misurativa: il gioco sta verificando se hai assorbito davvero il mini-loop tra"
+    alt_it: >-
+      Nemona sul sentiero prima della seconda sfida con la battuta giapponese
+      sulla prova della tua crescita.
+    caption_it: >-
+      Questa battuta di Nemona rende leggibile il cuore del paragrafo:
+      `{{勝負|しょうぶ}}して {{試|ため}}してみよう` non e solo entusiasmo, ma un
+      vero controllo di quanto sei cresciuto dopo il mini-loop di tutorial.
+    notes: >-
+      Ricavata dalla guida GameWith `ネモの手持ちポケモンと攻略`
+      (https://gamewith.jp/pokemon-sv/article/show/374366), asset immagine
+      `https://img.gamewith.jp/img/13cc870376147e6b707f03b02b40f999.png`,
+      convertita in WebP.
