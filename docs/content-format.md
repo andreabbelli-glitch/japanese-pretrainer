@@ -140,6 +140,9 @@ Regole:
   riga;
 - i plain scalar vanno riservati a valori brevi e atomici come `title`,
   `slug`, `lemma`, `reading`, `romaji`, `meaning_it`;
+- `front` e `back` delle flashcard non vanno trattati come eccezione: se
+  contengono furigana, testo giapponese annotato o rules text, devono essere
+  serializzati in modo sicuro;
 - se un valore contiene uno qualsiasi di questi elementi, non deve essere
   lasciato come plain scalar:
   - `:` o `：`
@@ -147,7 +150,9 @@ Regole:
   - link semantici `[...](term:...)` o `[...](grammar:...)`
   - backtick inline
   - frasi complete di testo carta / rules text
-- quando c'e dubbio, usare `>-`.
+- quando c'e dubbio, usare `>-`;
+- per valori brevi e monoriga come i lati di una flashcard, la forma piu
+  sicura e spesso una stringa quotata `'...'`.
 
 Esempio corretto:
 
@@ -156,10 +161,22 @@ notes_it: >-
   Lettura da fissare: {{山札|やまふだ}}.
 ```
 
+Esempio corretto per `front` di una flashcard:
+
+```md
+front: '{{手持ち|てもち}}'
+```
+
 Esempio da evitare:
 
 ```md
 notes_it: Lettura da fissare: {{山札|やまふだ}}.
+```
+
+Esempio da evitare per `front` di una flashcard:
+
+```md
+front: {{手持ち|てもち}}
 ```
 
 ### 4.3 Regole per furigana su composti numerici

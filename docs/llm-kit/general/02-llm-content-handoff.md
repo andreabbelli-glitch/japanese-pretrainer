@@ -218,6 +218,12 @@ Per ridurre i fallimenti di import:
   `>-` quando compaiono in YAML;
 - non deve usare plain scalar per testo che contiene `:` o `：`, furigana,
   link semantici, backtick o una frase completa di rules text.
+- `front` e `back` delle `:::card` non fanno eccezione: se contengono furigana
+  o testo giapponese annotato, vanno serializzati in modo sicuro;
+- per lati flashcard corti e monoriga, il default consigliato e una stringa
+  quotata, per esempio `front: '{{手持ち|てもち}}'`;
+- non scrivere quindi `front: {{手持ち|てもち}}` o
+  `front: ポケモン{{図鑑|ずかん}}` come plain scalar;
 - **i furigana `{{kanji|kana}}` e i term link funzionano anche dentro i blocchi di codice inline (i backtick ` `), usali e mappali sempre**: es. `` `{{相手|あいて}}のクリーチャー` `` anziché `` `相手のクリーチャー` ``.
 - **se il testo visibile di un term link o grammar link contiene kanji, annota
   anche il label del link**: scrivi

@@ -1,0 +1,783 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ichiran",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%80%E8%A6%A7"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-kanou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%8F%AF%E8%83%BD"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-kawarini",
+      "audio_src": "assets/audio/grammar/grammar-kawarini/forvo-manual-かわりに.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8B%E3%82%8F%E3%82%8A%E3%81%AB/#ja"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-matawa",
+      "audio_src": "assets/audio/grammar/grammar-matawa/forvo-manual-または.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%BE%E3%81%9F%E3%81%AF/#ja"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-sonoato",
+      "audio_src": "assets/audio/grammar/grammar-sonoato/forvo-manual-その後.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9D%E3%81%AE%E5%BE%8C/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%9D%E3%81%AE%E5%BE%8C"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-soushitara",
+      "audio_src": "assets/audio/grammar/grammar-soushitara/forvo-manual-そうしたら.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9D%E3%81%86%E3%81%97%E3%81%9F%E3%82%89/#ja",
+      "pitch_accent": 4,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%9D%E3%81%86%E3%81%97%E3%81%9F%E3%82%89"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-tadashi",
+      "audio_src": "assets/audio/grammar/grammar-tadashi/forvo-manual-たた-し.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9F%E3%81%A0%E3%81%97/#ja"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-temoyoi",
+      "audio_src": "assets/audio/grammar/grammar-temoyoi/forvo-manual-てもよい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%81%A6%E3%82%82%E3%82%88%E3%81%84/#ja"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ui-chuu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%AD"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-zumi",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%9A%E3%81%BF"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-abyss",
+      "audio_src": "assets/audio/term/term-abyss/abisu.mp3",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "Musaddam Idriss",
+      "audio_license": "CC BY-SA 4.0",
+      "audio_attribution": "Own work",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Abisu.mp3"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-achievement",
+      "audio_src": "assets/audio/term/term-achievement/forvo-manual-たっせい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%81%94%E6%88%90/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%81%94%E6%88%90"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-add",
+      "audio_src": "assets/audio/term/term-add/forvo-manual-くわえる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8A%A0%E3%81%88%E3%82%8B/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-atsukau",
+      "audio_src": "assets/audio/term/term-atsukau/forvo-manual-あつかう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%89%B1%E3%81%86/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%89%B1%E3%81%86"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-attack",
+      "audio_src": "assets/audio/term/term-attack/forvo-manual-こうけ-き.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%94%BB%E6%92%83/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-beginner-class",
+      "audio_src": "assets/audio/term/term-beginner-class/forvo-manual-しょきゅう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%88%9D%E7%B4%9A/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-break",
+      "audio_src": "assets/audio/term/term-break/forvo-manual-ふ-れいく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%96%E3%83%AC%E3%82%A4%E3%82%AF/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-castle",
+      "audio_src": "assets/audio/term/term-castle/forvo-manual-しろ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%9F%8E/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-challenge",
+      "audio_src": "assets/audio/term/term-challenge/forvo-manual-ちょうせん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%8C%91%E6%88%A6/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-civilization",
+      "audio_src": "assets/audio/term/term-civilization/forvo-manual-ふ-んめい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%96%87%E6%98%8E/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%96%87%E6%98%8E"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-command",
+      "audio_src": "assets/audio/term/term-command/forvo-manual-こまんと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-confirm",
+      "audio_src": "assets/audio/term/term-confirm/forvo-manual-かくにん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%A2%BA%E8%AA%8D/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%A2%BA%E8%AA%8D"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-constructed-deck",
+      "audio_src": "assets/audio/term/term-constructed-deck/forvo-manual-て-っき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%87%E3%83%83%E3%82%AD/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%87%E3%83%83%E3%82%AD"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-cost",
+      "audio_src": "assets/audio/term/term-cost/forvo-manual-こすと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B3%E3%82%B9%E3%83%88/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%82%B3%E3%82%B9%E3%83%88"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-craft",
+      "audio_src": "assets/audio/term/term-craft/forvo-manual-せいせい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%94%9F%E6%88%90/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%94%9F%E6%88%90"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-creature",
+      "audio_src": "assets/audio/term/term-creature/forvo-manual-くりーちゃー.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-dasu",
+      "audio_src": "assets/audio/term/term-dasu/forvo-manual-た-す.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%87%BA%E3%81%99/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%87%BA%E3%81%99"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-datetime",
+      "audio_src": "assets/audio/term/term-datetime/forvo-manual-にちし.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%97%A5%E6%99%82/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-deadline",
+      "audio_src": "assets/audio/term/term-deadline/forvo-manual-きけ-ん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%9C%9F%E9%99%90/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-deck",
+      "audio_src": "assets/audio/term/term-deck/forvo-manual-やまふた.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%B1%B1%E6%9C%AD/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%B1%B1%E6%9C%AD"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-deru",
+      "audio_src": "assets/audio/term/term-deru/forvo-manual-て-る.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%87%BA%E3%82%8B/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%87%BA%E3%82%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-destroy",
+      "audio_src": "assets/audio/term/term-destroy/forvo-manual-はかい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%A0%B4%E5%A3%8A/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%A0%B4%E5%A3%8A"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-disenchant",
+      "audio_src": "assets/audio/term/term-disenchant/forvo-manual-ふ-んかい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%88%86%E8%A7%A3/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%88%86%E8%A7%A3"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-effect",
+      "audio_src": "assets/audio/term/term-effect/forvo-manual-こうか.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8A%B9%E6%9E%9C/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%93%E3%81%86%E3%81%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-erabu",
+      "audio_src": "assets/audio/term/term-erabu/forvo-manual-えらふ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%81%B8%E3%81%B6/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%81%B8%E3%81%B6"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-etc",
+      "audio_src": "assets/audio/term/term-etc/forvo-manual-そのた.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9D%E3%81%AE%E4%BB%96/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-evolution",
+      "audio_src": "assets/audio/term/term-evolution/forvo-manual-しんか.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%80%B2%E5%8C%96/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%80%B2%E5%8C%96"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-exchange",
+      "audio_src": "assets/audio/term/term-exchange/forvo-manual-こうかん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BA%A4%E6%8F%9B/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-goukei",
+      "audio_src": "assets/audio/term/term-goukei/forvo-manual-こ-うけい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%90%88%E8%A8%88/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%90%88%E8%A8%88"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-graveyard",
+      "audio_src": "assets/audio/term/term-graveyard/forvo-manual-ほ-ち.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%A2%93%E5%9C%B0/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A2%93%E5%9C%B0"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hanareru",
+      "audio_src": "assets/audio/term/term-hanareru/forvo-manual-はなれる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%9B%A2%E3%82%8C%E3%82%8B/#ja",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%9B%A2%E3%82%8C%E3%82%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hand",
+      "audio_src": "assets/audio/term/term-hand/forvo-manual-てふた.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%89%8B%E6%9C%AD/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%89%8B%E6%9C%AD"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hensei",
+      "audio_src": "assets/audio/term/term-hensei/forvo-manual-へんせい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%B7%A8%E6%88%90/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%B7%A8%E6%88%90"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hiku",
+      "audio_src": "assets/audio/term/term-hiku/forvo-manual-ひく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%BC%95%E3%81%8F/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BC%95%E3%81%8F"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-home",
+      "audio_src": "assets/audio/term/term-home/forvo-manual-ほーむ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%9B%E3%83%BC%E3%83%A0/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%9B%E3%83%BC%E3%83%A0"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-intermediate-class",
+      "audio_src": "assets/audio/term/term-intermediate-class/forvo-manual-ちゅうきゅう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%B8%AD%E7%B4%9A/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-invasion",
+      "audio_src": "assets/audio/term/term-invasion/forvo-manual-しんりゃく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BE%B5%E7%95%A5/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BE%B5%E7%95%A5"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kakutoku",
+      "audio_src": "assets/audio/term/term-kakutoku/forvo-manual-かくとく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%8D%B2%E5%BE%97/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kasaneru",
+      "audio_src": "assets/audio/term/term-kasaneru/forvo-manual-かさねる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%87%8D%E3%81%AD%E3%82%8B/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%87%8D%E3%81%AD%E3%82%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mission",
+      "audio_src": "assets/audio/term/term-mission/forvo-manual-みっしょん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-modosu",
+      "audio_src": "assets/audio/term/term-modosu/forvo-manual-もと-す.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%88%BB%E3%81%99/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%88%BB%E3%81%99"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-news",
+      "audio_src": "assets/audio/term/term-news/forvo-manual-おしらせ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-nokoru",
+      "audio_src": "assets/audio/term/term-nokoru/forvo-manual-のこる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%AE%8B%E3%82%8B/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%AE%8B%E3%82%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-oku",
+      "audio_src": "assets/audio/term/term-oku/forvo-manual-おく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%BD%AE%E3%81%8F/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%BD%AE%E3%81%8F"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ongoing",
+      "audio_src": "assets/audio/term/term-ongoing/forvo-manual-かいさいちゅう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%96%8B%E5%82%AC%E4%B8%AD/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-open",
+      "audio_src": "assets/audio/term/term-open/forvo-manual-ひらく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%96%8B%E3%81%8F/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-opponent",
+      "audio_src": "assets/audio/term/term-opponent/forvo-manual-あいて.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%9B%B8%E6%89%8B/#ja",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%9B%B8%E6%89%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-overview",
+      "audio_src": "assets/audio/term/term-overview/forvo-manual-か-いよう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%A6%82%E8%A6%81/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-owned",
+      "audio_src": "assets/audio/term/term-owned/forvo-manual-しょし.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%89%80%E6%8C%81/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%89%80%E6%8C%81"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-power",
+      "audio_src": "assets/audio/term/term-power/forvo-manual-は-わー.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%91%E3%83%AF%E3%83%BC/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%91%E3%83%AF%E3%83%BC"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-present",
+      "audio_src": "assets/audio/term/term-present/forvo-manual-ふ-れせ-んと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%88/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%88"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-purchase",
+      "audio_src": "assets/audio/term/term-purchase/forvo-manual-こうにゅう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%B3%BC%E5%85%A5/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-race",
+      "audio_src": "assets/audio/term/term-race/forvo-manual-しゅそ-く.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%A8%AE%E6%97%8F/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%97%E3%82%85%E3%81%9E%E3%81%8F"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-read-already",
+      "audio_src": "assets/audio/term/term-read-already/forvo-manual-きと-く.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%97%A2%E8%AA%AD/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-receive",
+      "audio_src": "assets/audio/term/term-receive/forvo-manual-うけとる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8B/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-reward",
+      "audio_src": "assets/audio/term/term-reward/forvo-manual-ほうしゅう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%A0%B1%E9%85%AC/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A0%B1%E9%85%AC"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-save",
+      "audio_src": "assets/audio/term/term-save/forvo-manual-ほそ-ん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BF%9D%E5%AD%98/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-selection",
+      "audio_src": "assets/audio/term/term-selection/forvo-manual-せんたく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%81%B8%E6%8A%9E/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-self",
+      "audio_src": "assets/audio/term/term-self/forvo-manual-し-ふ-ん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%87%AA%E5%88%86/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%87%AA%E5%88%86"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-settings",
+      "audio_src": "assets/audio/term/term-settings/ja-settei-setting.ogg",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "marsian",
+      "audio_license": "Public domain",
+      "audio_attribution": "I, marsian recorded my own voice by myself.",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-settei-setting.ogg",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A8%AD%E5%AE%9A"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shop",
+      "audio_src": "assets/audio/term/term-shop/forvo-manual-しょっふ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shortage",
+      "audio_src": "assets/audio/term/term-shortage/forvo-manual-ふそく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%B8%8D%E8%B6%B3/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-skip",
+      "audio_src": "assets/audio/term/term-skip/forvo-manual-すきっふ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B9%E3%82%AD%E3%83%83%E3%83%97/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-spell",
+      "audio_src": "assets/audio/term/term-spell/forvo-manual-し-ゅもん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%91%AA%E6%96%87/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%91%AA%E6%96%87"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-summon",
+      "audio_src": "assets/audio/term/term-summon/forvo-manual-しょうかん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8F%AC%E5%96%9A/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-suteru",
+      "audio_src": "assets/audio/term/term-suteru/forvo-manual-すてる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%8D%A8%E3%81%A6%E3%82%8B/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%8D%A8%E3%81%A6%E3%82%8B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tap",
+      "audio_src": "assets/audio/term/term-tap/forvo-manual-たっふ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%BF%E3%83%83%E3%83%97/#ja"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ticket",
+      "audio_src": "assets/audio/term/term-ticket/forvo-manual-ちけっと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%81%E3%82%B1%E3%83%83%E3%83%88/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%81%E3%82%B1%E3%83%83%E3%83%88"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-unlock",
+      "audio_src": "assets/audio/term/term-unlock/forvo-manual-かいほう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A7%A3%E6%94%BE/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A7%A3%E6%94%BE"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-use",
+      "audio_src": "assets/audio/term/term-use/forvo-manual-しよう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BD%BF%E7%94%A8/#ja"
+    }
+  ]
+}

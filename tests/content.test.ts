@@ -571,10 +571,10 @@ describe("content parser and validator", () => {
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
     expect(result.data.lessons).toHaveLength(11);
     expect(result.data.cardFiles).toHaveLength(6);
-    expect(result.data.terms).toHaveLength(128);
-    expect(result.data.grammarPatterns).toHaveLength(18);
-    expect(result.data.cards).toHaveLength(144);
-    expect(result.data.references).toHaveLength(731);
+    expect(result.data.terms).toHaveLength(138);
+    expect(result.data.grammarPatterns).toHaveLength(21);
+    expect(result.data.cards).toHaveLength(157);
+    expect(result.data.references).toHaveLength(824);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([

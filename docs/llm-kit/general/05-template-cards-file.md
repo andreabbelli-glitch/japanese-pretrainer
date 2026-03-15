@@ -40,8 +40,8 @@ id: card-<entry-slug>-recognition
 entry_type: term
 entry_id: term-<entry-slug>
 card_type: recognition
-front: <testo-front>
-back: <testo-back>
+front: '<testo-front>'
+back: '<testo-back>'
 example_jp: >-
   <frase-obbligatoria-in-giapponese-che-contiene-la-entry-in-un-contesto-reale>
 example_it: >-
@@ -57,8 +57,8 @@ id: card-<grammar-slug>-concept
 entry_type: grammar
 entry_id: grammar-<grammar-slug>
 card_type: concept
-front: <testo-front>
-back: <testo-back>
+front: '<testo-front>'
+back: '<testo-back>'
 example_jp: >-
   <frase-obbligatoria-in-giapponese-che-contiene-il-pattern-in-un-contesto-reale>
 example_it: >-
@@ -80,9 +80,17 @@ Regole pratiche:
 - ogni `:::card` deve avere sempre `example_jp` + `example_it`;
 - `example_jp` deve essere una frase completa e contestuale utile sul retro
   review, non una parola isolata o una ripetizione del `front`;
+- per `front` e `back`, il default sicuro e una stringa YAML quotata;
+- se `front` o `back` contengono furigana `{{base|reading}}`, testo carta,
+  punteggiatura forte o composti markdown-like, non lasciarli mai come plain
+  scalar;
+- per valori corti su una riga, preferisci `'...'`; per valori multi-linea o
+  prose lunghe, usa `>-`;
 - i campi `notes_it` vanno trattati come prose YAML e scritti in `>-`;
 - evita plain scalar per testo con `:`/`：`, furigana, link semantici, backtick
   o frasi complete di rules text;
+- esempio corretto per flashcard side:
+  `front: '{{手持ち|てもち}}'`
 - se un termine o pattern compare nel testo visibile di `notes_it` con kanji,
   annotalo con furigana anche se esiste gia una `reading` nell'entry;
 - se usi un link semantico con label in kanji, annota il label:
