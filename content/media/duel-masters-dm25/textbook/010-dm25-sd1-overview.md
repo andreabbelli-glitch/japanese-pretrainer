@@ -150,14 +150,16 @@ translation_it: >-
 - È il tipo di frase breve e assoluta che conviene riconoscere subito sulle
   carte difensive.
 
-#### 2.3 {{凶鬼|きょうき}}{{卍号|ばんごう}} メラヴォルガル
+#### 2.3 ドアノッカ＝ノアドッカ / 「…開けるか？」
 
 :::image
 src: assets/cards/dm25-sd1/06-doorknocker-nordocker.webp
-alt: Carta 6 del mazzo DM25-SD1, twinpact con arte dorata e viola.
+alt: >-
+  Carta 6 del mazzo DM25-SD1, Twinpact ドアノッカ＝ノアドッカ /
+  「…開けるか？」 con arte viola e dorata.
 caption: >-
-  `DM25-SD1 6/13`: {{凶鬼|きょうき}}{{卍号|ばんごう}} メラヴォルガル。
-  Carta-studio per
+  `DM25-SD1 6/13`: ドアノッカ＝ノアドッカ / 「…開けるか？」。
+  Carta-studio, lato creatura, per
   [～を{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau).
 :::
 

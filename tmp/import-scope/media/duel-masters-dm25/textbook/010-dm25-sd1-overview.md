@@ -141,10 +141,12 @@ caption: >-
 
 :::image
 src: assets/cards/dm25-sd1/06-doorknocker-nordocker.webp
-alt: Carta 6 del mazzo DM25-SD1, twinpact con arte dorata e viola.
+alt: >-
+  Carta 6 del mazzo DM25-SD1, Twinpact ドアノッカ＝ノアドッカ /
+  「…開けるか？」 con arte viola e dorata.
 caption: >-
-  `DM25-SD1 6/13`: {{凶鬼|きょうき}}{{卍号|ばんごう}} メラヴォルガル。
-  La metà [{{呪文|じゅもん}}](term:term-spell) è utile per
+  `DM25-SD1 6/13`: ドアノッカ＝ノアドッカ / 「…開けるか？」。
+  Il lato creatura è utile per
   `これを{{2回|にかい}}{{行|おこな}}う`.
 :::
 
@@ -224,7 +226,7 @@ usiamo come consolidamento e non ci costruiamo sopra una flashcard nuova.
    di `{{墓地|ぼち}}`, `その{{後|あと}}` e `コスト{{4以下|よんいか}}`.
 5. {{終末|しゅうまつ}}の{{時計|とけい}} ザ・クロック: sì,
    per il verbo [とばす](term:term-tobasu).
-6. {{凶鬼|きょうき}}{{卍号|ばんごう}} メラヴォルガル:
+6. ドアノッカ＝ノアドッカ / 「…開けるか？」:
    sì, ma solo come pattern corto `これを{{2回|にかい}}{{行|おこな}}う`.
 7. **Cobra, Snake Ninja Holy Chaos**: sì, per
    [攻撃先](term:term-attack-target) e `{{進化|しんか}}ではない`.
@@ -361,9 +363,9 @@ Qui la cosa importante è il parser mentale:
 È una keyword utile proprio perché cambia il tuo riflesso: dopo aver letto
 `シビルカウント3`, devi cercare subito **che cosa** viene sommato.
 
-#### 4.5 メラヴォルガル: quando la carta ti dice di ripetere
+#### 4.5 ドアノッカ＝ノアドッカ: quando la carta ti dice di ripetere
 
-La metà [呪文](term:term-spell) di questa TwinPact non introduce una meccanica
+Il lato creatura di questa TwinPact non introduce una meccanica
 nuova del deck, ma una formula di rules text che conviene memorizzare:
 
 :::example_sentence
