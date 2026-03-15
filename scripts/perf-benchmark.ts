@@ -639,21 +639,7 @@ async function measureRoute(options: {
       waitUntil: "load"
     });
     const totalTimeMs = nodePerformance.now() - startedAt;
-    const timing = await page.evaluate(() => {
-      const navigation = performance.getEntriesByType(
-        "navigation"
-      )[0] as PerformanceNavigationTiming | undefined;
-
-      if (!navigation) {
-        return null;
-      }
-
-      return {
-        domContentLoadedMs: navigation.domContentLoadedEventEnd,
-        loadEventMs: navigation.loadEventEnd,
-        ttfbMs: navigation.responseStart
-      };
-    });
+    const timing = await readNavigationTiming(page);
 
     if (!timing) {
       throw new Error(`No navigation timing entry was available for ${options.route}.`);
@@ -689,6 +675,48 @@ function calculateMedian(values: number[]) {
   }
 
   return sorted[middleIndex];
+}
+
+async function readNavigationTiming(page: {
+  evaluate: <T>(pageFunction: () => T) => Promise<T>;
+  waitForLoadState: (
+    state: "load",
+    options: {
+      timeout: number;
+    }
+  ) => Promise<void>;
+}) {
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      return await page.evaluate(() => {
+        const navigation = performance.getEntriesByType(
+          "navigation"
+        )[0] as PerformanceNavigationTiming | undefined;
+
+        if (!navigation) {
+          return null;
+        }
+
+        return {
+          domContentLoadedMs: navigation.domContentLoadedEventEnd,
+          loadEventMs: navigation.loadEventEnd,
+          ttfbMs: navigation.responseStart
+        };
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+
+      if (!message.includes("Execution context was destroyed") || attempt === 2) {
+        throw error;
+      }
+
+      await page.waitForLoadState("load", {
+        timeout: NAVIGATION_TIMEOUT_MS
+      });
+    }
+  }
+
+  return null;
 }
 
 function renderConsoleSummary(report: BenchmarkReport) {
