@@ -81,6 +81,7 @@ Il comando `release:check` copre l'intero set di controlli locali:
 ```sh
 pnpm dev
 pnpm build
+pnpm perf:benchmark
 pnpm lint
 pnpm format
 pnpm format:check
@@ -238,6 +239,7 @@ vanno usati per istruzioni operative correnti.
 - [Importer sync strategy](./docs/importer-sync-strategy.md)
 - [Checklist QA manuale](./docs/qa-manual-checklist.md)
 - [Note di verifica locale](./docs/local-verification-notes.md)
+- [Performance baseline](./docs/performance-baseline.md)
 - [Kit operativo LLM esterni (source of truth)](./docs/llm-kit/README.md)
 - [Archivio legacy LLM (non operativo)](./docs/legacy/README.md)
 - [Tooling locale](./docs/dev-tooling.md)

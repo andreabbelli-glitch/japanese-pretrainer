@@ -10,6 +10,7 @@
     "build": "node ./node_modules/next/dist/bin/next build",
     "start": "node ./node_modules/next/dist/bin/next start",
     "start:e2e": "node --experimental-strip-types --experimental-default-type=module ./scripts/start-e2e.ts",
+    "perf:benchmark": "node --experimental-strip-types --experimental-default-type=module ./scripts/perf-benchmark.ts",
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
