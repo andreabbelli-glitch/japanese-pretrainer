@@ -20,6 +20,6 @@ Primer generale sui videogiochi Pokemon con spiegazioni in italiano e focus
 operativo su menu, flusso di battaglia, tutorial e comprensione dei dialoghi.
 
 Il segmento `pokemon-videogame-core` costruisce la base riusabile.
-Il segmento `scarlet-violet-story` servira poi per il pre-training capitolo per
+Il segmento `scarlet-violet-story` servirà poi per il pre-training capitolo per
 capitolo, seguendo una guida walkthrough giapponese stabile e abbastanza
 completa da allineare studio e gioco reale.

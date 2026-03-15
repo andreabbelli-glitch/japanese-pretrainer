@@ -17,7 +17,7 @@ summary: >-
 
 # Obiettivo
 
-Questa lesson usa il tuo starter deck come corpus reale. Il punto non e solo
+Questa lesson usa il tuo starter deck come corpus reale. Il punto non è solo
 riconoscere i nomi delle carte, ma imparare a leggere il frame abbastanza bene
 da non sentirti perso quando prendi in mano un deck fisico di Arsenal Base.
 
@@ -30,10 +30,10 @@ Alla fine dovresti riconoscere tre cose insieme:
 
 ## Contesto
 
-Il prodotto ufficiale e `SPECIAL STARTER DECK SET [SEED FREEDOM & GQ]`. Dentro
+Il prodotto ufficiale è `SPECIAL STARTER DECK SET [SEED FREEDOM & GQ]`. Dentro
 ci sono 10 carte totali: 5 MS e 5 PL.
 
-Didatticamente e un ottimo mazzo-scuola per due motivi. Primo: ti obbliga a
+Didatticamente è un ottimo mazzo-scuola per due motivi. Primo: ti obbliga a
 leggere sia nomi lunghi in katakana sia label operative come
 [{{近距離|きんきょり}}](term:term-ms-type-near-range),
 [{{遠距離|えんきょり}}](term:term-ms-type-long-range),
@@ -89,7 +89,7 @@ Le 5 PL del deck sono:
 - [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu)
 - [シュウジ・イトウ](term:term-shuji-itou)
 
-Sul piano del gioco, la distribuzione dei ruoli PL e gia didatticamente molto
+Sul piano del gioco, la distribuzione dei ruoli PL è già didatticamente molto
 buona: due [{{殲滅|せんめつ}}](term:term-role-shoumetsu), due
 [{{制圧|せいあつ}}](term:term-role-seiatsu), una
 [{{防衛|ぼうえい}}](term:term-role-bouei). Questo vuol dire che il deck ti
@@ -116,14 +116,14 @@ Per leggere il frame in modo stabile usa sempre questo ordine.
   [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
   [{{制圧|せいあつ}}](term:term-role-seiatsu) o
   [{{防衛|ぼうえい}}](term:term-role-bouei).
-- Subito dopo guarda [コスト](term:term-cost). Nel deck c'e una curva molto
+- Subito dopo guarda [コスト](term:term-cost). Nel deck c'è una curva molto
   leggibile: 2, 3, 4 e poi un top-end da 7.
 - Solo per terza cosa fermati sul nome carta.
 
-Gia a questo livello puoi iniziare a immaginare dove lavorera l'unita:
+Già a questo livello puoi iniziare a immaginare dove lavorerà l'unità:
 [{{前線|ぜんせん}}](term:term-frontline),
 [{{戦闘|せんとう}}](term:term-combat) ravvicinato, pressione a distanza o
-mobilita.
+mobilità.
 
 Questo ordine ti evita l'errore classico del principiante: fissare l'art o il
 nome e non capire ancora che funzione pratica abbia quella carta nel match.
@@ -141,24 +141,24 @@ Nel retro PL, invece, i due blocchi che devi trovare subito sono:
 - [リンクアビリティ](term:term-link-ability): il bonus di collegamento quando
   la coppia funziona bene.
 
-Se riesci a distinguere questi blocchi a vista, stai gia leggendo una carta di
+Se riesci a distinguere questi blocchi a vista, stai già leggendo una carta di
 Arsenal Base molto meglio di quanto sembri.
 
-### 3. Le 5 coppie piu naturali del deck
+### 3. Le 5 coppie più naturali del deck
 
-Per le prime partite non c'e motivo di essere creativo subito. Le coppie piu
+Per le prime partite non c'è motivo di essere creativo subito. Le coppie più
 lineari sono queste:
 
 - [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam)
   + [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne):
-  unita costosa da trattare come finisher o pressione centrale quando il campo e
-  gia leggibile.
+  unità costosa da trattare come finisher o pressione centrale quando il campo è
+  già leggibile.
 - [イモータルジャスティスガンダム](term:term-immortal-justice-gundam) +
   [シン・アスカ](term:term-shinn-asuka): coppia mobile e lineare, ottima per
   imparare a leggere [{{機動|きどう}}](term:term-ms-type-mobility) +
   [{{制圧|せいあつ}}](term:term-role-seiatsu).
 - [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom)
-  + [ルナマリア・ホーク](term:term-lunamaria-hawk): unita molto leggibile per
+  + [ルナマリア・ホーク](term:term-lunamaria-hawk): unità molto leggibile per
   capire la logica di [～{{専用機|せんようき}}](grammar:grammar-senyouki) e
   avere una base difensiva economica.
 - [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu) +
@@ -170,20 +170,20 @@ lineari sono queste:
   allenare nome con kanji + parentesi numerica e un ruolo di
   [{{制圧|せいあつ}}](term:term-role-seiatsu) meno costoso.
 
-Il consiglio pratico e semplice: impara prima a pilotare queste 5 coppie come
-se il mazzo fosse gia "risolto", poi eventualmente sperimenta incroci diversi.
+Il consiglio pratico è semplice: impara prima a pilotare queste 5 coppie come
+se il mazzo fosse già "risolto", poi eventualmente sperimenta incroci diversi.
 All'inizio cambiare partner troppo presto ti toglie chiarezza didattica.
 
 ### 4. Che giapponese ti costringe a leggere questo deck
 
-Qui il deck e ottimo perche ti allena tre riflessi molto riutilizzabili.
+Qui il deck è ottimo perché ti allena tre riflessi molto riutilizzabili.
 
-Il primo e leggere nomi lunghi senza andare nel panico. Per esempio
+Il primo è leggere nomi lunghi senza andare nel panico. Per esempio
 [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam)
 sembra enorme, ma in pratica ti conviene fissare tre blocchi:
 `マイティー / ストライク / フリーダム`.
 
-Il secondo e capire che le parentesi non sono decorazione.
+Il secondo è capire che le parentesi non sono decorazione.
 
 - in [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu)
   la parentesi aggiunge una specificazione di sistema;
@@ -192,7 +192,7 @@ Il secondo e capire che le parentesi non sono decorazione.
 - in [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085) la parentesi
   distingue versione o contesto.
 
-Il terzo e leggere bene etichette di coppia. Se trovi
+Il terzo è leggere bene etichette di coppia. Se trovi
 [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne), l'`＆`
 non vuol dire che stai occupando due slot PL: vuol dire che quella singola carta
 porta due nomi dentro una sola entry.
@@ -203,19 +203,19 @@ Per imparare il deck senza sprecare attenzione, puoi usare questa traccia:
 
 1. Apri con una carta a [コスト](term:term-cost) basso o medio, non con
    [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam).
-2. Metti presto in chiaro dov'e la tua
-   [{{防衛|ぼうえい}}](term:term-role-bouei), cioe la coppia con
+2. Metti presto in chiaro dov'è la tua
+   [{{防衛|ぼうえい}}](term:term-role-bouei), cioè la coppia con
    [ルナマリア・ホーク](term:term-lunamaria-hawk).
 3. Usa le due coppie di [{{制圧|せいあつ}}](term:term-role-seiatsu) per capire
    quali corsie arrivano davvero a [{{拠点|きょてん}}](term:term-base) e
    [{{戦艦|せんかん}}](term:term-warship).
 4. Tratta le due coppie di [{{殲滅|せんめつ}}](term:term-role-shoumetsu) come
-   apripista: devono togliere di mezzo cio che impedisce alla
+   apripista: devono togliere di mezzo ciò che impedisce alla
    [{{制圧|せいあつ}}](term:term-role-seiatsu) di passare.
 5. Conserva il pezzo da [コスト](term:term-cost) 7 per un momento in cui la
-   corsia e gia leggibile o la partita sta girando davvero dalla tua parte.
+   corsia è già leggibile o la partita sta girando davvero dalla tua parte.
 
-Questo non e "il meta", ma e un piano molto buono per studiare senza
+Questo non è "il meta", ma è un piano molto buono per studiare senza
 frammentare l'attenzione.
 
 ### 6. Carta per carta
@@ -230,7 +230,7 @@ caption: >-
   immagine completa fronte + retro.
 :::
 
-- Giapponese da leggere: il nome e lungo, ma puoi spezzarlo in
+- Giapponese da leggere: il nome è lungo, ma puoi spezzarlo in
   `マイティー / ストライク / フリーダム / ガンダム`. In alto a sinistra leggi
   prima [{{遠距離|えんきょり}}](term:term-ms-type-long-range) e poi
   [コスト](term:term-cost) `7`.
@@ -242,10 +242,10 @@ caption: >-
   [アビリティ](term:term-ability) e
   [{{戦術技|せんじゅつぎ}}](term:term-special-attack). Anche se non leggi ogni
   riga, sapere dove sono ti orienta.
-- Consiglio di gioco: non e il pezzo con cui aprire. Trattalo come finisher o
+- Consiglio di gioco: non è il pezzo con cui aprire. Trattalo come finisher o
   come pezzo di pressione tardiva insieme a
   [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne), quando
-  la corsia e gia leggibile.
+  la corsia è già leggibile.
 
 #### イモータルジャスティスガンダム
 
@@ -257,20 +257,20 @@ caption: >-
   immagine completa fronte + retro.
 :::
 
-- Giapponese da leggere: qui il nome utile da fissare e soprattutto
+- Giapponese da leggere: qui il nome utile da fissare è soprattutto
   `ジャスティス`. Sul frame, prima ancora del resto, leggi
   [{{機動|きどう}}](term:term-ms-type-mobility) e
   [コスト](term:term-cost) `5`.
 - Frame: ritornano gli stessi pannelli MS del Mighty Strike Freedom, quindi
-  questa carta e ottima per imparare la struttura ripetuta del retro senza
+  questa carta è ottima per imparare la struttura ripetuta del retro senza
   essere distratto da un nome troppo lungo.
 - Sezione effetto: anche qui cerca
   [リンクアビリティ](term:term-link-ability),
   [アビリティ](term:term-ability) e
-  [{{戦術技|せんじゅつぎ}}](term:term-special-attack). Il punto didattico e
+  [{{戦術技|せんじゅつぎ}}](term:term-special-attack). Il punto didattico è
   imparare che il retro MS ha sempre una grammatica visiva stabile.
 - Consiglio di gioco: con
-  [シン・アスカ](term:term-shinn-asuka) e una delle coppie piu lineari del deck.
+  [シン・アスカ](term:term-shinn-asuka) è una delle coppie più lineari del deck.
   Usala per allenare il riflesso "corsia che si apre = MS di
   [{{機動|きどう}}](term:term-ms-type-mobility) che si riposiziona".
 
@@ -284,18 +284,18 @@ caption: >-
   immagine completa fronte + retro.
 :::
 
-- Giapponese da leggere: questa e la carta migliore del deck per il pattern
-  [～{{専用機|せんようき}}](grammar:grammar-senyouki). La parentesi non e lore:
+- Giapponese da leggere: questa è la carta migliore del deck per il pattern
+  [～{{専用機|せんようき}}](grammar:grammar-senyouki). La parentesi non è lore:
   ti segnala una variante dedicata a
   [ルナマリア・ホーク](term:term-lunamaria-hawk).
 - Frame: in alto a sinistra leggi
   [{{遠距離|えんきょり}}](term:term-ms-type-long-range) e
   [コスト](term:term-cost) `2`. Questo ti dice subito che il suo valore didattico
-  non e solo il nome, ma anche il fatto che e una MS economica.
+  non è solo il nome, ma anche il fatto che è una MS economica.
 - Sezione effetto: nel retro ritornano i pannelli standard MS. Qui conviene
   allenarti a trovarli rapidamente su una carta meno "boss" del mazzo.
 - Consiglio di gioco: insieme a
-  [ルナマリア・ホーク](term:term-lunamaria-hawk) costruisce la difesa piu facile
+  [ルナマリア・ホーク](term:term-lunamaria-hawk) costruisce la difesa più facile
   da capire del deck. Se sei all'inizio, usala come ancora di
   [{{防衛|ぼうえい}}](term:term-role-bouei) e come coppia che ti fa fissare bene i
   pairing naturali.
@@ -310,19 +310,19 @@ caption: >-
   immagine completa fronte + retro.
 :::
 
-- Giapponese da leggere: questa carta allena lo script misto. Il nome base e in
-  alfabeto latino, la parentesi in katakana. Devi leggerla come unita unica, non
+- Giapponese da leggere: questa carta allena lo script misto. Il nome base è in
+  alfabeto latino, la parentesi in katakana. Devi leggerla come unità unica, non
   come due pezzi separati.
 - Frame: in alto a sinistra leggi
   [{{近距離|きんきょり}}](term:term-ms-type-near-range) e
-  [コスト](term:term-cost) `6`. Quindi il suo profilo e aggressivo e piu vicino
+  [コスト](term:term-cost) `6`. Quindi il suo profilo è aggressivo e più vicino
   agli scontri che alla pressione da lontano.
 - Sezione effetto: anche su una carta dal nome "strano", il retro resta stabile:
   `WEAPON`, [リンクアビリティ](term:term-link-ability),
   [アビリティ](term:term-ability),
   [{{戦術技|せんじゅつぎ}}](term:term-special-attack).
 - Consiglio di gioco: con
-  [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu) e una coppia ottima
+  [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu) è una coppia ottima
   per allenare [{{殲滅|せんめつ}}](term:term-role-shoumetsu). Usala per togliere
   di mezzo difese o pezzi che bloccano la corsia.
 
@@ -336,18 +336,18 @@ caption: >-
   fronte + retro.
 :::
 
-- Giapponese da leggere: il lavoro qui e doppio. `{{赤|あか}}い` ti costringe a
+- Giapponese da leggere: il lavoro qui è doppio. `{{赤|あか}}い` ti costringe a
   leggere un kanji dentro il nome carta; `(0085)` va letto come etichetta di
-  variante o contesto, non come numero buttato li.
+  variante o contesto, non come numero buttato lì.
 - Frame: in alto a sinistra trovi
   [{{近距離|きんきょり}}](term:term-ms-type-near-range) e
-  [コスト](term:term-cost) `5`. Quindi e un pezzo intermedio, meno pesante del
+  [コスト](term:term-cost) `5`. Quindi è un pezzo intermedio, meno pesante del
   GQuuuuuuX ma ancora adatto a stare vicino al conflitto.
 - Sezione effetto: il retro ti fa vedere che anche una carta con nome in parte
   giapponese usa la stessa grammatica visiva delle altre MS del set.
 - Consiglio di gioco: con [シュウジ・イトウ](term:term-shuji-itou) forma una
   coppia GQ molto semplice da ordinare mentalmente. Usala come pezzo meno
-  costoso per iniziare a capire quando una corsia puo passare a
+  costoso per iniziare a capire quando una corsia può passare a
   [{{制圧|せいあつ}}](term:term-role-seiatsu).
 
 #### キラ・ヤマト＆ラクス・クライン
@@ -360,19 +360,19 @@ caption: >-
   immagine completa fronte + retro.
 :::
 
-- Giapponese da leggere: il pattern decisivo e [A＆B](grammar:grammar-a-and-b).
+- Giapponese da leggere: il pattern decisivo è [A＆B](grammar:grammar-a-and-b).
   L'`＆` non vuol dire due carte PL: vuol dire una sola carta con due nomi.
 - Frame: in alto a sinistra leggi
   [{{殲滅|せんめつ}}](term:term-role-shoumetsu) e
-  [コスト](term:term-cost) `4`. Quindi il suo ruolo-base e prima togliere unita
+  [コスト](term:term-cost) `4`. Quindi il suo ruolo-base è prima togliere unità
   nemiche, poi aprire la strada.
 - Dati PL: il blocco in alto mostra
   `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とうじょうきたい}}`.
-  Nelle PL questo e il pannello biografico minimo che conviene riconoscere.
+  Nelle PL questo è il pannello biografico minimo che conviene riconoscere.
 - Sezione effetto: nel retro PL devi trovare subito
   [PLスキル](term:term-pl-skill) e
   [リンクアビリティ](term:term-link-ability).
-- Consiglio di gioco: e il partner naturale del
+- Consiglio di gioco: è il partner naturale del
   [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam).
   Trattala come parte della tua coppia di punta, non come PL da sacrificare
   subito in un'apertura confusa.
@@ -387,18 +387,18 @@ caption: >-
 :::
 
 - Giapponese da leggere:
-  [シン・アスカ](term:term-shinn-asuka) e il nome piu semplice fra le PL del
+  [シン・アスカ](term:term-shinn-asuka) è il nome più semplice fra le PL del
   deck: niente parentesi, niente `＆`. Usalo come caso-base per riconoscere una
   pilot card standard prima di passare a ruolo e costo.
 - Frame: in alto a sinistra leggi
   [{{制圧|せいあつ}}](term:term-role-seiatsu) e
-  [コスト](term:term-cost) `2`. Questo ti dice che il suo lavoro base e spingere
+  [コスト](term:term-cost) `2`. Questo ti dice che il suo lavoro base è spingere
   sugli obiettivi, non fare da puro duellante.
 - Dati PL: ritornano
   `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とうじょうきたい}}`,
   quindi anche qui puoi riusare la stessa griglia di lettura delle altre PL.
 - Consiglio di gioco: con
-  [イモータルジャスティスガンダム](term:term-immortal-justice-gundam) e una
+  [イモータルジャスティスガンダム](term:term-immortal-justice-gundam) è una
   coppia eccellente per capire come una PL di
   [{{制圧|せいあつ}}](term:term-role-seiatsu) trasformi una MS di
   [{{機動|きどう}}](term:term-ms-type-mobility) in minaccia di corsia.
@@ -417,11 +417,11 @@ caption: >-
   [ルナマリア・ホーク](term:term-lunamaria-hawk) va letta insieme a
   [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom).
   Il nome della pilot compare per intero nella variante `{{専用機|せんようき}}`,
-  quindi il pairing e gia visibile sul front della carta.
+  quindi il pairing è già visibile sul front della carta.
 - Frame: in alto a sinistra trovi
   [{{防衛|ぼうえい}}](term:term-role-bouei) e
-  [コスト](term:term-cost) `3`. Questa e la carta che nel deck rende visibile la
-  funzione di difesa in modo piu pulito.
+  [コスト](term:term-cost) `3`. Questa è la carta che nel deck rende visibile la
+  funzione di difesa in modo più pulito.
 - Dati PL: i pannelli biografici e quelli di
   [PLスキル](term:term-pl-skill) /
   [リンクアビリティ](term:term-link-ability) sono gli stessi delle altre PL, ma
@@ -440,7 +440,7 @@ caption: >-
   fronte + retro.
 :::
 
-- Giapponese da leggere: questa carta e l'esempio migliore del pattern
+- Giapponese da leggere: questa carta è l'esempio migliore del pattern
   [～(～)](grammar:grammar-parenthetical-label) come soprannome. Prima leggi il
   nome completo, poi l'alias `マチュ`.
 - Frame: in alto a sinistra leggi
@@ -464,23 +464,23 @@ caption: >-
 :::
 
 - Giapponese da leggere:
-  [シュウジ・イトウ](term:term-shuji-itou) e il nome-pilota semplice del lato
+  [シュウジ・イトウ](term:term-shuji-itou) è il nome-pilota semplice del lato
   `GQ`. Insieme a
   [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085) ti fa vedere il
   contrasto fra PL senza parentesi e PL con alias, come
   [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu).
 - Frame: in alto a sinistra trovi
   [{{制圧|せいあつ}}](term:term-role-seiatsu) e
-  [コスト](term:term-cost) `3`. Questo ti dice che non e la PL da lasciare a
-  guardare il centro mappa: il suo lavoro-base e trasformare una corsia aperta
+  [コスト](term:term-cost) `3`. Questo ti dice che non è la PL da lasciare a
+  guardare il centro mappa: il suo lavoro-base è trasformare una corsia aperta
   in danno agli obiettivi.
 - Dati PL: come sulle altre pilot card, devi trovare subito il pannello
-  [PLスキル](term:term-pl-skill) e quello di
+  [PLスキル](term:term-pl-skill) è quello di
   [リンクアビリティ](term:term-link-ability), senza perderti nel resto.
 - Consiglio di gioco: usalo con
   [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085) per tenere leggibile
-  la seconda coppia `GQ`. Nelle prime partite e una buona unita da usare quando
-  la corsia e stata gia ripulita da una coppia di
+  la seconda coppia `GQ`. Nelle prime partite è una buona unità da usare quando
+  la corsia è stata già ripulita da una coppia di
   [{{殲滅|せんめつ}}](term:term-role-shoumetsu).
 
 ## Esempi guidati
@@ -489,15 +489,15 @@ caption: >-
 jp: >-
   {{近距離|きんきょり}}MSに{{殲滅|せんめつ}}PLを{{組|く}}み{{合|あ}}わせると、[{{前線|ぜんせん}}](term:term-frontline)で{{敵|てき}}ユニットをどかす{{役|やく}}が{{見|み}}えやすいです。
 translation_it: >-
-  Se abbini una MS ravvicinata a una PL di annientamento, diventa piu leggibile
-  il ruolo di apripista contro le unita nemiche.
+  Se abbini una MS ravvicinata a una PL di annientamento, diventa più leggibile
+  il ruolo di apripista contro le unità nemiche.
 :::
 
 :::example_sentence
 jp: >-
   ルナマリア・ホーク{{専用機|せんようき}}と{{書|か}}いてあるので、{{対応|たいおう}}するパイロットを{{探|さが}}しやすいです。
 translation_it: >-
-  Siccome c'e scritto "macchina dedicata a Lunamaria Hawk", e piu facile capire
+  Siccome c'è scritto "macchina dedicata a Lunamaria Hawk", è più facile capire
   quale pilota cercare come abbinamento naturale.
 :::
 
@@ -511,7 +511,7 @@ translation_it: >-
 
 ## Nota finale
 
-Questo starter deck e utile proprio perche ti fa studiare il gioco partendo da
-cose concrete: 10 nomi, 5 unita, 3 ruoli PL e 3 tipi MS. Se questa griglia ti
-diventa naturale, poi leggere carte singole fuori dal deck sara molto piu
+Questo starter deck è utile proprio perché ti fa studiare il gioco partendo da
+cose concrete: 10 nomi, 5 unità, 3 ruoli PL e 3 tipi MS. Se questa griglia ti
+diventa naturale, poi leggere carte singole fuori dal deck sarà molto più
 facile.

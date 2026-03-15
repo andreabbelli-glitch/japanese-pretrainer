@@ -11,14 +11,14 @@ tags: [pokemon, core, dialogue, tutorial]
 prerequisites: []
 summary: >-
   Riconoscere i micro-pattern che ritornano nei tutorial e nei dialoghi guidati,
-  cosi da capire che cosa il gioco ti sta suggerendo, chiedendo o sbloccando.
+  così da capire che cosa il gioco ti sta suggerendo, chiedendo o sbloccando.
 ---
 
 # Obiettivo
 
 Imparare a leggere le frasi che guidano l'azione nei tutorial, nelle spiegazioni
 di sistema e nei dialoghi con compagni, familiari o NPC guida. Qui il punto non
-e il nome di un menu, ma la forma della frase: invito a provare, condizione,
+è il nome di un menu, ma la forma della frase: invito a provare, condizione,
 richiesta gentile, funzione disponibile, sblocco permanente, aiuto ricevuto.
 
 ## Contesto
@@ -26,7 +26,7 @@ richiesta gentile, funzione disponibile, sblocco permanente, aiuto ricevuto.
 Nei Pokemon molti tutorial non usano un tono rigido da manuale. Spesso
 sembrano frasi amichevoli o consigli di viaggio, ma sotto quella superficie ti
 stanno comunque dicendo che cosa fare adesso, quando farlo e quale funzione si
-e appena aperta. Se riconosci i pattern, riesci a seguire il flusso anche
+è appena aperta. Se riconosci i pattern, riesci a seguire il flusso anche
 quando non capisci ogni parola del dialogo.
 
 ## Termini chiave
@@ -52,28 +52,28 @@ quando non capisci ogni parola del dialogo.
 
 ## Spiegazione
 
-Il pattern [～てみる](grammar:grammar-te-miru) e uno dei piu utili da
-riconoscere subito. Nei tutorial Pokemon spesso non e una proposta astratta ma
+Il pattern [～てみる](grammar:grammar-te-miru) è uno dei più utili da
+riconoscere subito. Nei tutorial Pokemon spesso non è una proposta astratta ma
 un invito operativo travestito da suggerimento gentile. Se un personaggio dice
 `{{目的地|もくてきち}}に {{登録|とうろく}}してみたら？`, il senso pratico non
-e "un giorno potresti provare", ma "questa e la prossima azione che il gioco
+è "un giorno potresti provare", ma "questa è la prossima azione che il gioco
 vuole farti fare per continuare senza perderti".
 
 [～たら](grammar:grammar-tara) segna la condizione che fa scattare una risposta.
 Quando leggi frasi del tipo `{{道|みち}}に {{迷|まよ}}ったら` o
 `{{状態異常|じょうたいいじょう}}に なったら`, il gioco ti sta dicendo in
-quale situazione usare una procedura. E un pattern prezioso perche ti permette
+quale situazione usare una procedura. È un pattern prezioso perché ti permette
 di separare il problema dalla soluzione: prima riconosci l'evento, poi leggi
 l'azione da fare.
 
-[～てね](grammar:grammar-te-ne) e la forma amichevole che troverai spesso nei
-dialoghi di compagni e familiari. Non e un imperativo duro, ma nemmeno solo
+[～てね](grammar:grammar-te-ne) è la forma amichevole che troverai spesso nei
+dialoghi di compagni e familiari. Non è un imperativo duro, ma nemmeno solo
 colore emotivo: quando un NPC dice `ゆっくり {{休|やす}}んでね` oppure
-`レポートしてね`, il contenuto operativo resta reale. Il tono e morbido; la
-funzione e ancora quella di darti una piccola istruzione o raccomandazione.
+`レポートしてね`, il contenuto operativo resta reale. Il tono è morbido; la
+funzione è ancora quella di darti una piccola istruzione o raccomandazione.
 
-[～ことができる](grammar:grammar-koto-ga-dekiru) e il pattern piu tipico delle
-spiegazioni di sistema. In pratica ti dice che una funzione e disponibile nella
+[～ことができる](grammar:grammar-koto-ga-dekiru) è il pattern più tipico delle
+spiegazioni di sistema. In pratica ti dice che una funzione è disponibile nella
 schermata corrente: `この {{画面|がめん}}で もちものを {{変更|へんこう}}する
 ことができる` vuol dire che quel menu ti permette davvero di cambiare l'oggetto
 tenuto, non solo che la cosa esiste in astratto. [～ようになる](grammar:grammar-you-ni-naru),
@@ -81,14 +81,14 @@ invece, descrive uno sblocco o un cambiamento stabile: dopo un certo evento,
 una funzione si apre oppure una regola cambia da quel momento in poi.
 
 [～てくれる](grammar:grammar-te-kureru) segnala che qualcuno o qualcosa agisce a
-tuo favore. Nei Pokemon puo essere un NPC che
+tuo favore. Nei Pokemon può essere un NPC che
 [{{手持ち|てもち}}](term:term-te-mochi) ti
 [{{回復|かいふく}}](term:term-kaifuku)してくれる, oppure un oggetto che ti
 toglie uno [{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou). Il
-punto non e solo "succede un effetto", ma "succede per aiutarti". Questa nuance
+punto non è solo "succede un effetto", ma "succede per aiutarti". Questa nuance
 ti aiuta a capire il ruolo benevolo di sistemi, alleati e servizi.
 
-[～ておく](grammar:grammar-teoku) e il pattern della preparazione. Nei tutorial e
+[～ておく](grammar:grammar-teoku) è il pattern della preparazione. Nei tutorial e
 nei consigli strategici vale quasi sempre "fai questa cosa adesso e lasciala
 pronta". Curare la squadra, fare [レポート](term:term-report) o segnare una
 [{{目的地|もくてきち}}](term:term-mokutekichi) `しておく` significa mettere in
@@ -96,7 +96,7 @@ sicurezza il prossimo blocco di gioco prima che inizi davvero.
 
 Oltre ai pattern grammaticali, conviene riconoscere anche alcune formule fisse
 di sistema. `{{手|て}}に {{入|い}}れた！` ti dice che hai ottenuto un oggetto o
-una ricompensa; `バッグに しまった` ti dice che l'oggetto e stato archiviato
+una ricompensa; `バッグに しまった` ti dice che l'oggetto è stato archiviato
 automaticamente nella tasca corretta. Non servono ancora come card canoniche in
 questo seed, ma leggerle bene ti evita di perdere premi, cure o strumenti
 ricevuti durante dialoghi e tutorial.
@@ -124,7 +124,7 @@ translation_it: >-
 jp: >-
   ベッドで ゆっくり {{休|やす}}んでね。 {{手持ち|てもち}}も {{回復|かいふく}}するよ。
 translation_it: >-
-  Riposati con calma nel letto. Anche la tua squadra si rimettera in sesto.
+  Riposati con calma nel letto. Anche la tua squadra si rimetterà in sesto.
 :::
 
 :::example_sentence
@@ -139,13 +139,13 @@ jp: >-
   ジムバッジが {{増|ふ}}えると {{高|たか}}い レベルの ポケモンも
   {{言|い}}うことを {{聞|き}}くようになる。
 translation_it: >-
-  Quando aumentano le Medaglie Palestra, anche i Pokemon di livello piu alto
+  Quando aumentano le Medaglie Palestra, anche i Pokemon di livello più alto
   iniziano a obbedirti.
 :::
 
 ## Nota finale
 
-Nei tutorial Pokemon il tono puo sembrare casuale, ma la struttura e molto
+Nei tutorial Pokemon il tono può sembrare casuale, ma la struttura è molto
 regolare. Se impari a riconoscere [～てみる](grammar:grammar-te-miru),
 [～たら](grammar:grammar-tara), [～てね](grammar:grammar-te-ne) e
 [～ようになる](grammar:grammar-you-ni-naru), inizi a leggere i dialoghi non come

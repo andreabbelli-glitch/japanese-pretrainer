@@ -2,7 +2,7 @@
 id: lesson-gundam-arsenal-base-modes-and-progression
 media_id: media-gundam-arsenal-base
 slug: modes-and-progression
-title: Modalita e progressione
+title: Modalità e progressione
 order: 30
 segment_ref: modes-and-progression
 difficulty: n4
@@ -10,20 +10,20 @@ status: active
 tags: [modes, progression, deck, beginner]
 prerequisites: [lesson-gundam-arsenal-base-arcade-onboarding, lesson-gundam-arsenal-base-battle-screen-and-core-actions]
 summary: >-
-  Capisci modalita, rank, missioni, deck iniziale e prime scelte consigliate
+  Capisci modalità, rank, missioni, deck iniziale e prime scelte consigliate
   per progredire senza inseguire subito il meta.
 ---
 
 # Obiettivo
 
-In questa lesson impari a distinguere le modalita principali del gioco, a capire
+In questa lesson impari a distinguere le modalità principali del gioco, a capire
 che cosa misura davvero la progressione del profilo e a costruire un piano
-semplice per le prime partite. Qui il focus non e sulla singola schermata di
+semplice per le prime partite. Qui il focus non è sulla singola schermata di
 match, ma su quello che scegli prima e dopo la battaglia.
 
 ## Contesto
 
-Queste parole compaiono nelle schermate di selezione modalita, nella progressione
+Queste parole compaiono nelle schermate di selezione modalità, nella progressione
 stagionale e nei servizi esterni come [MY PAGE](term:term-mypage). Sono i termini
 che ti fanno capire dove stai investendo il tuo tempo: allenamento, rank,
 missioni, ricompense e crescita del profilo.
@@ -57,27 +57,27 @@ missioni, ricompense e crescita del profilo.
 
 ## Spiegazione
 
-Le quattro modalita principali ufficiali da riconoscere sono [ランクマッチ](term:term-rank-match), [VEレイドバトル](term:term-ve-raid-battle), [チャレンジモード](term:term-challenge-mode) e [カジュアルマッチ](term:term-casual-match). Capire queste etichette ti evita di usare ogni sessione per lo scopo sbagliato.
+Le quattro modalità principali ufficiali da riconoscere sono [ランクマッチ](term:term-rank-match), [VEレイドバトル](term:term-ve-raid-battle), [チャレンジモード](term:term-challenge-mode) e [カジュアルマッチ](term:term-casual-match). Capire queste etichette ti evita di usare ogni sessione per lo scopo sbagliato.
 
 :::image
 src: assets/ui/mode-select-screen.webp
-alt: "Schermata ufficiale di selezione modalita con riquadri per Rank Match, Challenge Mode e Casual Match, piu il pannello di selezione versus."
+alt: "Schermata ufficiale di selezione modalità con riquadri per Rank Match, Challenge Mode e Casual Match, più il pannello di selezione versus."
 caption: >-
-  Schermata ufficiale di selezione modalita: riconosci [ランクマッチ](term:term-rank-match), [チャレンジモード](term:term-challenge-mode) e [カジュアルマッチ](term:term-casual-match), piu il pannello `{{対戦|たいせん}}モード{{選択|せんたく}}` che decide come cercare l'avversario.
+  Schermata ufficiale di selezione modalità: riconosci [ランクマッチ](term:term-rank-match), [チャレンジモード](term:term-challenge-mode) e [カジュアルマッチ](term:term-casual-match), più il pannello `{{対戦|たいせん}}モード{{選択|せんたく}}` che decide come cercare l'avversario.
 :::
 
-[ランクマッチ](term:term-rank-match) e la modalita classificata contro giocatori
+[ランクマッチ](term:term-rank-match) è la modalità classificata contro giocatori
 di tutto il paese. Qui contano [ランクポイント](term:term-rank-point), rank e
 ricompense stagionali. La progressione ufficiale va da ブロンズ a ガンダム con
-sottorank da V a I; sopra ガンダムI c'e anche il gradino ニュータイプ per i
-piazzamenti piu alti. La cosa utile per un principiante e un'altra: fra ブロンズ
+sottorank da V a I; sopra ガンダムI c'è anche il gradino ニュータイプ per i
+piazzamenti più alti. La cosa utile per un principiante è un'altra: fra ブロンズ
 e シルバー una sconfitta non ti toglie [ランクポイント](term:term-rank-point),
-quindi l'ingresso nel rank e meno punitivo di quanto sembri.
+quindi l'ingresso nel rank è meno punitivo di quanto sembri.
 
-[チャレンジモード](term:term-challenge-mode) e la modalita migliore per le
-prime partite consapevoli. Combatti contro CPU, vedi piu chiaramente il ritmo
+[チャレンジモード](term:term-challenge-mode) è la modalità migliore per le
+prime partite consapevoli. Combatti contro CPU, vedi più chiaramente il ritmo
 delle azioni e puoi legare ogni partita a una lettura concreta dello schermo.
-Inoltre ha ricompense dedicate, quindi non e tempo "sprecato": e il posto giusto
+Inoltre ha ricompense dedicate, quindi non è tempo "sprecato": è il posto giusto
 per fissare [{{役割|やくわり}}](term:term-role), input e ordine di osservazione.
 
 [カジュアルマッチ](term:term-casual-match) usa le stesse regole base del rank,
@@ -85,10 +85,10 @@ ma senza movimento di rank. Ti serve quando vuoi provare un
 [デッキ](term:term-deck), una diversa apertura o una distribuzione di ruoli senza
 trasformare ogni errore in pressione da classifica.
 
-[VEレイドバトル](term:term-ve-raid-battle) e invece una modalita cooperativa
-contro boss. Ufficialmente si sblocca da シルバーランク5 ed e pensata per due
+[VEレイドバトル](term:term-ve-raid-battle) è invece una modalità cooperativa
+contro boss. Ufficialmente si sblocca da シルバーランク5 ed è pensata per due
 giocatori, anche se puoi selezionare una partnership CPU. Per un assoluto
-principiante non e la prima priorita: prima conviene saper leggere bene
+principiante non è la prima priorità: prima conviene saper leggere bene
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
 [{{制圧|せいあつ}}](term:term-role-seiatsu) e
 [{{防衛|ぼうえい}}](term:term-role-bouei) in una partita standard.
@@ -97,13 +97,13 @@ La progressione fuori dalla partita passa molto da
 [{{指揮官|しきかん}}レベル](term:term-commander-level),
 [ミッション](term:term-mission) e [MY PAGE](term:term-mypage). Il livello del
 comandante misura l'avanzamento del profilo e sblocca sistemi nuovi. La soglia
-iniziale da ricordare e semplice: quando il
+iniziale da ricordare è semplice: quando il
 [{{指揮官|しきかん}}レベル](term:term-commander-level) arriva a 5, le
 [{{作戦|さくせん}}カード](term:term-tactics-card) diventano disponibili e puoi
 equipaggiarne una nel [{{メイン枠|めいんわく}}](term:term-main-slot) e una nel
 [{{サブ枠|さぶわく}}](term:term-sub-slot).
 
-[MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di controllare l'[{{進行|しんこう}}](term:term-progress) delle [ミッション](term:term-mission), i livelli di MS e PL, gli ultimi [{{戦績|せんせき}}](term:term-battle-record) e alcuni dati cumulativi. Questa rilettura e particolarmente utile [{{帰宅後|きたくご}}](term:term-after-return-home), perche ti fa rivedere con calma le categorie che in sala giochi scorrono troppo in fretta.
+[MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di controllare l'[{{進行|しんこう}}](term:term-progress) delle [ミッション](term:term-mission), i livelli di MS e PL, gli ultimi [{{戦績|せんせき}}](term:term-battle-record) e alcuni dati cumulativi. Questa rilettura è particolarmente utile [{{帰宅後|きたくご}}](term:term-after-return-home), perché ti fa rivedere con calma le categorie che in sala giochi scorrono troppo in fretta.
 
 :::image
 src: assets/ui/missions-progress-screen.webp
@@ -113,28 +113,28 @@ caption: >-
 :::
 
 Il tuo primo [デッキ](term:term-deck) va pensato come una struttura leggibile,
-non come una lista perfetta di rarita alte. La base ufficiale del gioco e sempre
-MS + PL, cioe [MSカード](term:term-ms-card) e [PLカード](term:term-pl-card) in
-coppia. Uno [スターターデッキ](term:term-starter-deck) e utile proprio per questo:
+non come una lista perfetta di rarità alte. La base ufficiale del gioco è sempre
+MS + PL, cioè [MSカード](term:term-ms-card) e [PLカード](term:term-pl-card) in
+coppia. Uno [スターターデッキ](term:term-starter-deck) è utile proprio per questo:
 ti mette subito in mano una struttura completa di 10 carte che puoi leggere
 senza dover improvvisare slot vuoti o ruoli mancanti.
 
-Per le prime sessioni, una distribuzione didattica molto usata nelle guide fan e
+Per le prime sessioni, una distribuzione didattica molto usata nelle guide fan è
 2 / 2 / 1: due [{{殲滅|せんめつ}}](term:term-role-shoumetsu), due
 [{{制圧|せいあつ}}](term:term-role-seiatsu), un
-[{{防衛|ぼうえい}}](term:term-role-bouei). Non e una legge fissa e non e "il
-meta": e un punto di partenza che ti fa vedere sul campo tutte e tre le funzioni
+[{{防衛|ぼうえい}}](term:term-role-bouei). Non è una legge fissa e non è "il
+meta": è un punto di partenza che ti fa vedere sul campo tutte e tre le funzioni
 essenziali. Se hai solo [{{制圧|せいあつ}}](term:term-role-seiatsu), rischi di
 toccare gli obiettivi ma non di liberare la strada. Se hai solo
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu), puoi vincere gli scontri locali ma
 non convertire bene il vantaggio in danno agli obiettivi.
 
-Un piano semplice per le prime partite puo essere questo.
+Un piano semplice per le prime partite può essere questo.
 
-1. Parti da [チャレンジモード](term:term-challenge-mode) o da contenuti CPU finche
-   riconosci a colpo d'occhio i ruoli delle unita.
+1. Parti da [チャレンジモード](term:term-challenge-mode) o da contenuti CPU finché
+   riconosci a colpo d'occhio i ruoli delle unità.
 2. Usa uno [スターターデッキ](term:term-starter-deck) o una lista molto lineare,
-   cosi ogni sconfitta ti insegna una lettura del campo e non solo un problema
+   così ogni sconfitta ti insegna una lettura del campo e non solo un problema
    di collezione.
 3. Quando sblocchi le [{{作戦|さくせん}}カード](term:term-tactics-card), equipaggia
    una carta nel [{{メイン枠|めいんわく}}](term:term-main-slot) e una nel
@@ -142,11 +142,11 @@ Un piano semplice per le prime partite puo essere questo.
    sistema.
 4. Passa al [ランクマッチ](term:term-rank-match) quando riesci a trovare subito
    il [{{防衛|ぼうえい}}](term:term-role-bouei) nemico e a capire da quale lato
-   il tuo [{{制圧|せいあつ}}](term:term-role-seiatsu) puo davvero entrare.
+   il tuo [{{制圧|せいあつ}}](term:term-role-seiatsu) può davvero entrare.
 
 Un ultimo punto evita molta confusione quando leggi materiale vecchio.
 [EXバトル](term:term-ex-battle) compare in varie guide storiche, ma nelle fonti
-ufficiali attuali e indicato come non piu attivo dalle stagioni UNITRIBE
+ufficiali attuali è indicato come non più attivo dalle stagioni UNITRIBE
 SEASON:01 in poi. Quindi oggi ti serve soprattutto come termine da riconoscere
 quando leggi documentazione passata, non come passo reale della progressione
 corrente.
@@ -165,7 +165,7 @@ jp: >-
   {{最初|さいしょ}}のデッキは、{{殲滅|せんめつ}}{{2枚|にまい}}・{{制圧|せいあつ}}{{2枚|にまい}}・{{防衛|ぼうえい}}{{1枚|いちまい}}くらいだと[{{役割|やくわり}}](term:term-role)が{{見|み}}えやすいです。
 translation_it: >-
   In un primo deck, una ripartizione di circa 2 annientamenti, 2 pressioni e 1
-  difesa rende le funzioni piu leggibili.
+  difesa rende le funzioni più leggibili.
 :::
 
 :::example_sentence
@@ -178,5 +178,5 @@ translation_it: >-
 
 ## Nota finale
 
-La progressione iniziale funziona meglio se scegli modalita che ti insegnano a
+La progressione iniziale funziona meglio se scegli modalità che ti insegnano a
 leggere il campo prima di chiederti efficienza o risultato competitivo.

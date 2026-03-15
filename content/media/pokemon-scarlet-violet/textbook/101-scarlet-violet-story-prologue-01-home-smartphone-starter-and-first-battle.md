@@ -25,7 +25,7 @@ spiegazione iniziale della [ポケモン{{図鑑|ずかん}}](term:term-pokemon-
 ## Contesto
 
 Questo capitolo copre il blocco lineare che va dall'inizio in casa fino alla
-prima lotta sulla spiaggia e all'installazione dell'app del Pokedex. E il punto
+prima lotta sulla spiaggia e all'installazione dell'app del Pokedex. È il punto
 in cui Scarlet / Violet fissa tre cose insieme: il tono scolastico della
 storia, il ruolo di Nemona come guida di battaglia e l'uso dello
 [スマホロトム](term:term-smartphone-rotom) come interfaccia narrativa e pratica.
@@ -59,7 +59,7 @@ spiega il tutorial subito dopo il match.
 
 ## Spiegazione
 
-Nel primo scambio a casa il lessico piu importante non e quello super-polite di
+Nel primo scambio a casa il lessico più importante non è quello super-polite di
 Clavell, ma i nuclei che reggono la scena:
 [{{校長先生|こうちょうせんせい}}](term:term-kouchou-sensei),
 [{{転入|てんにゅう}}](term:term-tennyuu), `{{学校|がっこう}}の {{準備|じゅんび}}`,
@@ -67,13 +67,13 @@ Clavell, ma i nuclei che reggono la scena:
 Anche se non afferri bene formule come `{{申|もう}}し{{訳|わけ}}ありません` o
 `お{{言葉|ことば}}に {{甘|あま}}えて`, puoi seguire il flusso se capisci che il
 preside porta i documenti della scuola e che il gioco ti rimanda in camera per
-prepararti. Qui [～てください](grammar:grammar-te-kudasai) e una richiesta
+prepararti. Qui [～てください](grammar:grammar-te-kudasai) è una richiesta
 cortese solo in superficie: in pratica ti segnala il prossimo step obbligatorio.
 
 Quando esci, il blocco cambia da dialogo domestico a tutorial leggero. La madre
 ti consegna lo [スマホロトム](term:term-smartphone-rotom) e la frase
 `{{道|みち}}に {{迷|まよ}}ったら Yボタン！` ti insegna subito un pattern che
-tornera spesso: [～たら](grammar:grammar-tara) collega il problema a una
+tornerà spesso: [～たら](grammar:grammar-tara) collega il problema a una
 soluzione concreta. Non stai leggendo un consiglio generico sul perdersi; stai
 ricevendo l'istruzione pratica per aprire la mappa quando non sai dove andare.
 Questo momento prepara anche il riuso futuro di
@@ -82,39 +82,39 @@ dentro lo stesso dispositivo.
 
 La madre usa anche [～てね](grammar:grammar-te-ne) in frasi come
 `{{大事|だいじ}}に {{使|つか}}ってね`.
-Il tono e affettuoso, ma l'effetto pratico resta reale: il gioco ti segnala che
-lo [スマホロトム](term:term-smartphone-rotom) e un oggetto che accompagnera tutta
+Il tono è affettuoso, ma l'effetto pratico resta reale: il gioco ti segnala che
+lo [スマホロトム](term:term-smartphone-rotom) è un oggetto che accompagnerà tutta
 la progressione e che va letto come interfaccia di viaggio, non come semplice
 regalo di scena.
 
 Con Nemona il registro cambia subito. Le sue battute sono veloci, emotive e
-molto orientate all'azione. La parola che devi fissare e
+molto orientate all'azione. La parola che devi fissare è
 [{{勝負|しょうぶ}}](term:term-shoubu): quando ti dice `{{勝負|しょうぶ}}しよう` o
 `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`, non sta parlando della battaglia
 come sistema astratto ma del match che sta per partire davvero. Anche
 [{{準備|じゅんび}}](term:term-junbi) va letta in modo operativo: essere pronti qui
 vuol dire aver scelto il Pokemon, essere scesi in spiaggia e aver confermato che
-il tutorial puo iniziare.
+il tutorial può iniziare.
 
-La scena della scelta dello starter usa un giapponese piu semplice di quanto
+La scena della scelta dello starter usa un giapponese più semplice di quanto
 sembri. Nemona presenta i tre Pokemon con frasi corte basate su tipo ed effetto,
 mentre Clavell usa una formula come `{{気|き}}に {{入|い}}った みたいですね`.
 Qui [～みたい](grammar:grammar-mitai) non vuol dire solo "sembra" in astratto: ti
 fa leggere la reazione del Pokemon come impressione condivisa dai personaggi. In
-pratica, ti aiuta a capire che la scena di scelta e stata accettata dal gioco e
-che quel Pokemon e ormai il tuo partner iniziale.
+pratica, ti aiuta a capire che la scena di scelta è stata accettata dal gioco e
+che quel Pokemon è ormai il tuo partner iniziale.
 
-Il primo match sulla spiaggia condensa molto lessico che tornera per tutto il
+Il primo match sulla spiaggia condensa molto lessico che tornerà per tutto il
 gioco. Nemona ti ricorda che i tipi hanno una
-[{{弱点|じゃくてん}}](term:term-jakuten) e, se la sfrutti, il risultato pratico e
-quello che gia conosci dal core: [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun).
-Questa coppia `{{弱点|じゃくてん}}` + `ばつぐん` e preziosa perche ti fa leggere
+[{{弱点|じゃくてん}}](term:term-jakuten) e, se la sfrutti, il risultato pratico è
+quello che già conosci dal core: [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun).
+Questa coppia `{{弱点|じゃくてん}}` + `ばつぐん` è preziosa perché ti fa leggere
 subito il tutorial come catena causa-effetto: scegli il tipo giusto, il danno
 sale, la schermata ti conferma che hai capito la lezione.
 
 La battuta di Nemona `いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした`
-vale piu di una semplice battuta caratteriale. Il verbo
-[{{繰り出す|くりだす}}](term:term-kuridasu) e uno dei verbi-base del lessico di
+vale più di una semplice battuta caratteriale. Il verbo
+[{{繰り出す|くりだす}}](term:term-kuridasu) è uno dei verbi-base del lessico di
 battaglia: mandare un Pokemon in campo o lanciare qualcosa in modo deciso. La
 forma [～てしまう](grammar:grammar-te-shimau), qui contratta in `～ちゃう`,
 aggiunge l'idea che stava quasi partendo per abitudine con il team sbagliato.
@@ -126,8 +126,8 @@ Dopo la lotta, il gioco passa dalla spiegazione del match alla spiegazione del
 sistema. Nemona prende il tuo telefono, installa la
 [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) e dice che i Pokemon catturati
 vengono [{{登録|とうろく}}](term:term-touroku) automaticamente. Qui il termine
-chiave non e solo l'app, ma il verbo di sistema:
-[{{登録|とうろく}}](term:term-touroku) ti fa capire che la cattura produrra una
+chiave non è solo l'app, ma il verbo di sistema:
+[{{登録|とうろく}}](term:term-touroku) ti fa capire che la cattura produrrà una
 registrazione ufficiale nel Pokedex senza passaggi manuali. Anche il pattern
 [～たばかり](grammar:grammar-ta-bakari) si incastra bene in questo blocco:
 Nemona ti tratta come qualcuno che ha appena iniziato e per questo calibra
@@ -141,7 +141,7 @@ jp: >-
   {{届|とど}}けに {{来|き}}たから、 {{学校|がっこう}}の {{準備|じゅんび}}を
   しよう。
 translation_it: >-
-  Il preside e venuto a consegnare i documenti di iscrizione, quindi
+  Il preside è venuto a consegnare i documenti di iscrizione, quindi
   prepariamoci per la scuola.
 :::
 
@@ -165,7 +165,7 @@ jp: >-
   {{相手|あいて}}の {{弱点|じゃくてん}}を {{突|つ}}ける わざなら こうかは
   ばつぐんだ！
 translation_it: >-
-  Se la mossa colpisce la debolezza dell'avversario, e superefficace.
+  Se la mossa colpisce la debolezza dell'avversario, è superefficace.
 :::
 
 :::example_sentence
@@ -193,7 +193,7 @@ translation_it: >-
 
 ## Nota finale
 
-Questo prologo non va studiato come semplice scena introduttiva. E il punto in
+Questo prologo non va studiato come semplice scena introduttiva. È il punto in
 cui il lessico generale dei giochi Pokemon si attacca a personaggi e schermate
 reali di Scarlet / Violet. Se stabilizzi
 [{{勝負|しょうぶ}}](term:term-shoubu), [{{弱点|じゃくてん}}](term:term-jakuten),

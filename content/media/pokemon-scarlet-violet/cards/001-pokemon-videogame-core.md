@@ -13,7 +13,7 @@ reading: レポート
 romaji: repooto
 meaning_it: salvataggio
 notes_it: >-
-  Nei giochi Pokemon `レポート` non e un documento: e il comando di salvataggio.
+  Nei giochi Pokemon `レポート` non è un documento: è il comando di salvataggio.
   Quando compare nel menu o in una conferma, il gioco sta per registrare
   posizione, squadra, oggetti e progresso della sessione.
 :::
@@ -63,7 +63,7 @@ reading: ボックス
 romaji: bokkusu
 meaning_it: box di deposito
 notes_it: >-
-  E l'area di storage dove finiscono i Pokemon non presenti nella squadra
+  È l'area di storage dove finiscono i Pokemon non presenti nella squadra
   attiva. Capirlo ti fa distinguere subito tra gestione del party e
   organizzazione del deposito.
 :::
@@ -78,7 +78,7 @@ back: box di deposito
 example_jp: >-
   {{手持ち|てもち}}が いっぱいなら ボックスに {{送|おく}}ろう。
 example_it: >-
-  Se la squadra e piena, mandiamolo nel box.
+  Se la squadra è piena, mandiamolo nel box.
 :::
 
 :::term
@@ -113,7 +113,7 @@ reading: どうぐ
 romaji: dougu
 meaning_it: strumento / oggetto
 notes_it: >-
-  E la parola larga per gli oggetti usabili. Quando appare come categoria o
+  È la parola larga per gli oggetti usabili. Quando appare come categoria o
   come parola dentro una spiegazione, ti segnala che il testo sta parlando di
   un item operativo e non di una funzione di menu.
 :::
@@ -128,7 +128,7 @@ back: strumento / oggetto
 example_jp: >-
   この どうぐは バトルの {{前|まえ}}に {{使|つか}}える。
 example_it: >-
-  Questo oggetto si puo usare prima della lotta.
+  Questo oggetto si può usare prima della lotta.
 :::
 
 :::term
@@ -139,7 +139,7 @@ romaji: taisetsu na mono
 meaning_it: strumenti chiave
 notes_it: >-
   La categoria corrisponde all'idea di `{{大切|たいせつ}}なもの`: oggetti chiave legati
-  alla progressione. Se qualcosa finisce qui, di solito non e un consumabile
+  alla progressione. Se qualcosa finisce qui, di solito non è un consumabile
   ma un oggetto che sblocca mappe, sistemi o avanzamento della storia.
 :::
 
@@ -153,7 +153,7 @@ back: strumenti chiave / key items
 example_jp: >-
   それは たいせつなものだから {{売|う}}ったり {{捨|す}}てたり できない。
 example_it: >-
-  Quello e un oggetto chiave, quindi non puoi venderlo ne buttarlo via.
+  Quello è un oggetto chiave, quindi non puoi venderlo né buttarlo via.
 :::
 
 :::term
@@ -188,8 +188,8 @@ reading: もくてきち
 romaji: mokutekichi
 meaning_it: destinazione / obiettivo segnato
 notes_it: >-
-  In mappe e tutorial indica il punto che devi raggiungere o marcare. Non e
-  una localita detta in astratto: ti dice dove il gioco vuole portarti o che
+  In mappe e tutorial indica il punto che devi raggiungere o marcare. Non è
+  una località detta in astratto: ti dice dove il gioco vuole portarti o che
   punto puoi fissare per orientarti meglio.
 :::
 
@@ -213,9 +213,9 @@ reading: つよさをみる
 romaji: tsuyosa o miru
 meaning_it: aprire il riepilogo del Pokemon
 notes_it: >-
-  Come label di menu non vuol dire semplicemente "guardare quanto e forte". E
+  Come label di menu non vuol dire semplicemente "guardare quanto è forte". È
   il comando che apre la schermata di riepilogo con statistiche, tipo, mosse,
-  abilita e oggetto tenuto del Pokemon selezionato.
+  abilità e oggetto tenuto del Pokemon selezionato.
 :::
 
 :::card
@@ -279,7 +279,7 @@ back: riordino / cambia ordine
 example_jp: >-
   よく {{使|つか}}う わざを {{上|うえ}}に {{並び替|ならびか}}えよう。
 example_it: >-
-  Riordina le mosse mettendo in alto quelle che usi di piu.
+  Riordina le mosse mettendo in alto quelle che usi di più.
 :::
 
 :::term
@@ -289,8 +289,8 @@ reading: おもいだす
 romaji: omoidasu
 meaning_it: ricordare di nuovo / recuperare una mossa
 notes_it: >-
-  Nel contesto Pokemon significa far tornare disponibile una mossa gia appresa
-  in passato. Questo ti fa capire che una scelta di mosse non e sempre
+  Nel contesto Pokemon significa far tornare disponibile una mossa già appresa
+  in passato. Questo ti fa capire che una scelta di mosse non è sempre
   definitiva e che il menu permette recuperi, non solo perdite.
 :::
 
@@ -304,7 +304,7 @@ back: ricordare di nuovo / recuperare una mossa
 example_jp: >-
   あとで {{必要|ひつよう}}なら この わざを {{思い出|おもいだ}}せる。
 example_it: >-
-  Se ti servira piu avanti, potrai recuperare questa mossa.
+  Se ti servirà più avanti, potrai recuperare questa mossa.
 :::
 
 :::term
@@ -339,8 +339,8 @@ reading: わざ
 romaji: waza
 meaning_it: mossa
 notes_it: >-
-  E il comando d'azione principale della battaglia. Quando il testo parla di
-  `わざ`, sta parlando di cio che scegli e lanci nel turno, con tipo, potenza,
+  È il comando d'azione principale della battaglia. Quando il testo parla di
+  `わざ`, sta parlando di ciò che scegli e lanci nel turno, con tipo, potenza,
   precisione ed effetti propri.
 :::
 
@@ -362,9 +362,9 @@ id: term-tokusei
 lemma: 特性
 reading: とくせい
 romaji: tokusei
-meaning_it: abilita passiva
+meaning_it: abilità passiva
 notes_it: >-
-  Indica la capacita innata del Pokemon, diversa da una mossa scelta
+  Indica la capacità innata del Pokemon, diversa da una mossa scelta
   manualmente. Ti aiuta a capire quando un effetto nasce dal profilo del
   Pokemon e non dal comando usato in quel turno.
 :::
@@ -375,11 +375,11 @@ entry_type: term
 entry_id: term-tokusei
 card_type: recognition
 front: '{{特性|とくせい}}'
-back: abilita passiva
+back: abilità passiva
 example_jp: >-
   この {{特性|とくせい}}は バトルに {{出|で}}た ときに {{働|はたら}}く。
 example_it: >-
-  Questa abilita si attiva quando il Pokemon entra in battaglia.
+  Questa abilità si attiva quando il Pokemon entra in battaglia.
 :::
 
 :::term
@@ -387,10 +387,10 @@ id: term-type-aishou
 lemma: タイプ相性
 reading: タイプあいしょう
 romaji: taipu aishou
-meaning_it: compatibilita tra tipi
+meaning_it: compatibilità tra tipi
 notes_it: >-
-  Nomina il rapporto di vantaggio, svantaggio o neutralita tra tipi.
-  Riconoscerlo ti permette di capire perche un danno aumenta, cala o viene
+  Nomina il rapporto di vantaggio, svantaggio o neutralità tra tipi.
+  Riconoscerlo ti permette di capire perché un danno aumenta, cala o viene
   annullato, e quindi di scegliere meglio la mossa successiva.
 :::
 
@@ -400,7 +400,7 @@ entry_type: term
 entry_id: term-type-aishou
 card_type: recognition
 front: 'タイプ{{相性|あいしょう}}'
-back: compatibilita tra tipi
+back: compatibilità tra tipi
 example_jp: >-
   タイプ{{相性|あいしょう}}を {{見|み}}ると {{有利|ゆうり}}な わざが わかる。
 example_it: >-
@@ -415,8 +415,8 @@ romaji: joutai ijou
 meaning_it: alterazione di stato
 notes_it: >-
   Raggruppa problemi come paralisi, sonno, veleno o bruciatura. Quando
-  compare, il testo ti sta dicendo che il Pokemon non e piu in condizioni
-  normali e che azioni, danni o velocita possono cambiare.
+  compare, il testo ti sta dicendo che il Pokemon non è più in condizioni
+  normali e che azioni, danni o velocità possono cambiare.
 :::
 
 :::card
@@ -429,7 +429,7 @@ back: alterazione di stato
 example_jp: >-
   {{状態異常|じょうたいいじょう}}に なると {{思|おも}}うように {{動|うご}}けない ことが ある。
 example_it: >-
-  Con un'alterazione di stato puo capitare di non riuscire ad agire come vuoi.
+  Con un'alterazione di stato può capitare di non riuscire ad agire come vuoi.
 :::
 
 :::term
@@ -465,8 +465,8 @@ reading: ひんし
 romaji: hinshi
 meaning_it: fuori combattimento
 notes_it: >-
-  Segnala che il Pokemon non puo piu continuare la lotta. Quando leggi `ひんし`,
-  devi capire che quel membro della squadra non agira piu finche non viene
+  Segnala che il Pokemon non può più continuare la lotta. Quando leggi `ひんし`,
+  devi capire che quel membro della squadra non agirà più finché non viene
   rimesso in condizioni valide.
 :::
 
@@ -480,7 +480,7 @@ back: fuori combattimento / esausto
 example_jp: >-
   ひんしに なった ポケモンは そのままでは {{戦|たたか}}えない。
 example_it: >-
-  Un Pokemon fuori combattimento non puo continuare a lottare cosi com'e.
+  Un Pokemon fuori combattimento non può continuare a lottare così com'è.
 :::
 
 :::term
@@ -490,7 +490,7 @@ reading: やせい
 romaji: yasei
 meaning_it: selvatico / wild
 notes_it: >-
-  Quando precede il nome di un Pokemon, ti dice che l'incontro e con un
+  Quando precede il nome di un Pokemon, ti dice che l'incontro è con un
   esemplare selvatico e non con un allenatore. Questa parola cambia subito le
   aspettative: cattura possibile, flusso di lotta diverso, ricompense diverse.
 :::
@@ -505,7 +505,7 @@ back: selvatico / wild
 example_jp: >-
   {{野生|やせい}}の ポケモンなら ボールを {{投|な}}げて {{捕|つか}}まえられる。
 example_it: >-
-  Se e un Pokemon selvatico, puoi lanciargli una Ball e catturarlo.
+  Se è un Pokemon selvatico, puoi lanciargli una Ball e catturarlo.
 :::
 
 :::term
@@ -515,7 +515,7 @@ reading: つかまえる
 romaji: tsukamaeru
 meaning_it: catturare
 notes_it: >-
-  E il verbo della cattura dei Pokemon. Quando compare in un tutorial o in una
+  È il verbo della cattura dei Pokemon. Quando compare in un tutorial o in una
   spiegazione di lotta, il gioco ti sta spostando dal semplice vincere al
   riuscire a ottenere quel Pokemon per la tua collezione o squadra.
 :::
@@ -530,7 +530,7 @@ back: catturare
 example_jp: >-
   HPを {{減|へ}}らしてから {{捕|つか}}まえると {{成功|せいこう}}しやすい。
 example_it: >-
-  Se lo catturi dopo avergli abbassato gli HP, riesci piu facilmente.
+  Se lo catturi dopo avergli abbassato gli HP, riesci più facilmente.
 :::
 
 :::term
@@ -567,7 +567,7 @@ meaning_it: evoluzione
 notes_it: >-
   Segnala il cambio di forma del Pokemon, spesso legato a livello, oggetti,
   amicizia o altre condizioni. Quando compare, il testo ti sta dicendo che non
-  cambia solo l'aspetto: puo cambiare anche il potenziale del Pokemon.
+  cambia solo l'aspetto: può cambiare anche il potenziale del Pokemon.
 :::
 
 :::card
@@ -588,9 +588,9 @@ id: term-kouka-wa-batsugun
 lemma: こうかは ばつぐんだ！
 reading: こうかは ばつぐんだ
 romaji: kouka wa batsugun da
-meaning_it: E superefficace!
+meaning_it: È superefficace!
 notes_it: >-
-  E la formula fissa che il gioco usa quando colpisci una debolezza di tipo.
+  È la formula fissa che il gioco usa quando colpisci una debolezza di tipo.
   Non descrive un successo generico: ti dice che il rapporto tra tipi ha
   aumentato il danno di quel colpo.
 :::
@@ -601,11 +601,11 @@ entry_type: term
 entry_id: term-kouka-wa-batsugun
 card_type: recognition
 front: 'こうかは ばつぐんだ！'
-back: E superefficace!
+back: È superefficace!
 example_jp: >-
   みずの わざが {{相手|あいて}}の {{弱点|じゃくてん}}なら こうかは ばつぐんだ！
 example_it: >-
-  Se una mossa Acqua colpisce la debolezza dell'avversario, il colpo e
+  Se una mossa Acqua colpisce la debolezza dell'avversario, il colpo è
   superefficace.
 :::
 
@@ -631,7 +631,7 @@ back: colpo critico / punto vitale
 example_jp: >-
   {{急所|きゅうしょ}}に あたって {{大|おお}}きな ダメージが {{出|で}}た。
 example_it: >-
-  E andato a segno un colpo critico e sono usciti grossi danni.
+  È andato a segno un colpo critico e sono usciti grossi danni.
 :::
 
 :::grammar
@@ -641,7 +641,7 @@ title: Provare a fare
 meaning_it: fare qualcosa per prova / per vedere come va
 aliases: [～てみよう, ～てみたら]
 notes_it: >-
-  Nei tutorial Pokemon questo pattern spesso non e una proposta vaga ma una
+  Nei tutorial Pokemon questo pattern spesso non è una proposta vaga ma una
   spinta pratica all'azione. Ti chiede di eseguire subito un test guidato, per
   esempio registrare una [{{目的地|もくてきち}}](term:term-mokutekichi) o aprire
   [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru).
@@ -692,7 +692,7 @@ title: Diventare capace / sbloccarsi
 meaning_it: cominciare a poter fare / cambiare stato in modo stabile
 notes_it: >-
   Segnala che dopo un progresso qualcosa cambia in modo stabile. Nei giochi
-  Pokemon e il pattern tipico degli sblocchi: da quel momento una funzione si
+  Pokemon è il pattern tipico degli sblocchi: da quel momento una funzione si
   apre oppure una regola del gioco inizia a valere.
 :::
 
@@ -706,7 +706,7 @@ back: diventare capace / sbloccarsi
 example_jp: >-
   ジムバッジを {{集|あつ}}めると {{高|たか}}い レベルの ポケモンも {{言|い}}うことを {{聞|き}}くようになる。
 example_it: >-
-  Se raccogli le Medaglie Palestra, anche i Pokemon di livello piu alto
+  Se raccogli le Medaglie Palestra, anche i Pokemon di livello più alto
   iniziano a obbedirti.
 :::
 
@@ -716,7 +716,7 @@ pattern: ～たら
 title: Se / quando
 meaning_it: se / quando dopo che succede qualcosa
 notes_it: >-
-  E il pattern che collega una condizione pratica alla sua risposta. Nei
+  È il pattern che collega una condizione pratica alla sua risposta. Nei
   tutorial ti aiuta a separare subito la situazione-problema dall'azione da
   fare, per esempio quando ti perdi o quando entra in gioco uno stato
   alterato.
@@ -765,8 +765,8 @@ pattern: ～てね
 title: Richiesta amichevole
 meaning_it: mi raccomando, fai...
 notes_it: >-
-  E una richiesta dal tono morbido e vicino, tipica di compagni, familiari e
-  personaggi guida. Nei dialoghi Pokemon non e solo colore affettivo: spesso
+  È una richiesta dal tono morbido e vicino, tipica di compagni, familiari e
+  personaggi guida. Nei dialoghi Pokemon non è solo colore affettivo: spesso
   nasconde una vera istruzione o raccomandazione operativa.
 :::
 

@@ -11,21 +11,21 @@ tags: [pokemon, core, battle, progression]
 prerequisites: []
 summary: >-
   Leggere il lessico che spiega mosse, tipi, stato, cattura, crescita e
-  risultati della battaglia, cosi da capire subito che cosa sta succedendo.
+  risultati della battaglia, così da capire subito che cosa sta succedendo.
 ---
 
 # Obiettivo
 
 Capire le parole che governano il flusso della lotta e della crescita del team:
-quale azione stai scegliendo, perche un colpo ha funzionato bene o male, quando
-un Pokemon non puo piu agire, quando puo essere catturato e come progredisce
+quale azione stai scegliendo, perché un colpo ha funzionato bene o male, quando
+un Pokemon non può più agire, quando può essere catturato e come progredisce
 dopo lo scontro.
 
 ## Contesto
 
-Il giapponese di battaglia nei giochi Pokemon e compatto ma molto stabile.
+Il giapponese di battaglia nei giochi Pokemon è compatto ma molto stabile.
 Messaggi, tutorial e schermate post-battaglia riusano sempre lo stesso piccolo
-insieme di parole. Se quel nucleo ti e chiaro, smetti di leggere ogni turno
+insieme di parole. Se quel nucleo ti è chiaro, smetti di leggere ogni turno
 come una sorpresa e inizi a vedere subito causa ed effetto: debolezza,
 resistenza, stato, cattura, esperienza, evoluzione.
 
@@ -53,56 +53,56 @@ resistenza, stato, cattura, esperienza, evoluzione.
 
 ## Spiegazione
 
-[わざ](term:term-waza) e l'azione che scegli in battaglia: e il comando attivo
-del turno. [{{特性|とくせい}}](term:term-tokusei), invece, e una capacita
+[わざ](term:term-waza) è l'azione che scegli in battaglia: è il comando attivo
+del turno. [{{特性|とくせい}}](term:term-tokusei), invece, è una capacità
 passiva del Pokemon e di solito entra in gioco senza che tu la selezioni
-manualmente. Questa distinzione e fondamentale per leggere bene le spiegazioni:
-se un effetto parte da una [わざ](term:term-waza), lo hai scelto o puo essere
+manualmente. Questa distinzione è fondamentale per leggere bene le spiegazioni:
+se un effetto parte da una [わざ](term:term-waza), lo hai scelto o può essere
 bloccato da condizioni di turno; se parte da una
 [{{特性|とくせい}}](term:term-tokusei), appartiene alla natura stabile di quel
 Pokemon.
 
-Il blocco piu ricorrente del testo di lotta ruota attorno a
+Il blocco più ricorrente del testo di lotta ruota attorno a
 [タイプ{{相性|あいしょう}}](term:term-type-aishou). Il messaggio
 [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) ti dice che hai colpito
-una debolezza e che il danno e aumentato. Quando il gioco usa formule come
+una debolezza e che il danno è aumentato. Quando il gioco usa formule come
 `こうかは いまひとつのようだ` o `こうかが ないみたいだ……`, ti sta dicendo
 l'opposto: resistenza o assenza totale di effetto. Non confondere questo blocco
 con [{{急所|きゅうしょ}}](term:term-kyuusho): il colpo critico riguarda un
-picco di danno del singolo attacco, mentre la compatibilita dei tipi dipende
+picco di danno del singolo attacco, mentre la compatibilità dei tipi dipende
 dalla relazione tra attaccante e bersaglio.
 
 [{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou) raccoglie problemi
 come sonno, paralisi, veleno e bruciatura. Quando compare questa espressione,
-il punto pratico e capire se il Pokemon puo ancora agire normalmente o se perde
+il punto pratico è capire se il Pokemon può ancora agire normalmente o se perde
 HP / turni. [{{回復|かいふく}}](term:term-kaifuku) va letto in modo largo:
 a volte indica solo il recupero degli HP, altre volte anche la rimozione di uno
 stato. Per questo in un oggetto o in una schermata conviene guardare sempre che
 cosa viene recuperato davvero. Se il testo parla di [ひんし](term:term-hinshi),
-il Pokemon non e semplicemente stanco: non puo piu combattere finche non viene
+il Pokemon non è semplicemente stanco: non può più combattere finché non viene
 rimesso in sesto.
 
 Quando leggi [{{野生|やせい}}](term:term-yasei), stai entrando nel contesto di
-un incontro selvatico. Questo ti fa capire subito che la logica principale non e
+un incontro selvatico. Questo ti fa capire subito che la logica principale non è
 solo vincere il combattimento, ma anche poter
 [{{捕まえる|つかまえる}}](term:term-tsukamaeru) il Pokemon. In pratica il
 testo di tutorial e le strategie girano spesso attorno a due idee: ridurre gli
 HP e, se possibile, applicare uno stato che favorisca la cattura.
 
 Dopo la lotta entrano in scena [{{経験値|けいけんち}}](term:term-keikenchi) e
-[{{進化|しんか}}](term:term-shinka). La prima spiega perche il livello sale; la
+[{{進化|しんか}}](term:term-shinka). La prima spiega perché il livello sale; la
 seconda segnala che il Pokemon cambia forma e spesso anche statistiche, tipi o
-possibilita future. Qui il pattern [～ようになる](grammar:grammar-you-ni-naru)
+possibilità future. Qui il pattern [～ようになる](grammar:grammar-you-ni-naru)
 torna spesso utile: nei giochi Pokemon molte regole di progressione non sono
 solo numeriche, ma sbloccano nuovi comportamenti stabili, per esempio
-l'obbedienza di Pokemon piu forti o nuove opzioni di sistema dopo un certo
+l'obbedienza di Pokemon più forti o nuove opzioni di sistema dopo un certo
 traguardo.
 
 Il pattern [～たら](grammar:grammar-tara) compare bene nelle istruzioni di
 battaglia per segnare una condizione pratica: "se succede questo, fai questo".
 [～てくれる](grammar:grammar-te-kureru) compare quando un NPC, un oggetto o una
 funzione ti aiuta attivamente, per esempio curando o proteggendo. Infine
-[～ておく](grammar:grammar-teoku) e il pattern della preparazione: curare la
+[～ておく](grammar:grammar-teoku) è il pattern della preparazione: curare la
 squadra, sistemare le [わざ](term:term-waza) o ricaricare gli oggetti prima del
 prossimo scontro significa mettere il team in stato buono prima che il gioco ti
 chieda una scelta rapida.
@@ -114,7 +114,7 @@ jp: >-
   みずタイプの わざで {{炎|ほのお}}タイプを {{攻撃|こうげき}}すると こうかは
   ばつぐんだ！
 translation_it: >-
-  Se attacchi un tipo Fuoco con una mossa Acqua, il colpo e superefficace.
+  Se attacchi un tipo Fuoco con una mossa Acqua, il colpo è superefficace.
 :::
 
 :::example_sentence
@@ -138,7 +138,7 @@ jp: >-
   タイプ{{相性|あいしょう}}が {{普通|ふつう}}でも {{急所|きゅうしょ}}なら
   {{大|おお}}きな ダメージが {{出|で}}る。
 translation_it: >-
-  Anche se il rapporto tra tipi e neutro, con un colpo critico puoi fare grossi
+  Anche se il rapporto tra tipi è neutro, con un colpo critico puoi fare grossi
   danni.
 :::
 
@@ -147,7 +147,7 @@ jp: >-
   {{経験値|けいけんち}}が たまると レベルが {{上|あ}}がり
   {{進化|しんか}}する ことも ある。
 translation_it: >-
-  Quando accumuli esperienza, il livello sale e a volte puo scattare
+  Quando accumuli esperienza, il livello sale e a volte può scattare
   l'evoluzione.
 :::
 
@@ -159,5 +159,5 @@ dopo il turno o dopo lo scontro. Se sai leggere bene
 [タイプ{{相性|あいしょう}}](term:term-type-aishou),
 [{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou),
 [{{経験値|けいけんち}}](term:term-keikenchi) e
-[{{進化|しんか}}](term:term-shinka), il flusso di lotta diventa molto piu
+[{{進化|しんか}}](term:term-shinka), il flusso di lotta diventa molto più
 trasparente.

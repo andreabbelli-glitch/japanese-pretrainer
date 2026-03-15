@@ -14,7 +14,7 @@ reading: ほかく
 romaji: hokaku
 meaning_it: cattura
 notes_it: >-
-  E il nome dell'attivita di catturare Pokemon, non il verbo in se. Quando un
+  È il nome dell'attività di catturare Pokemon, non il verbo in sé. Quando un
   personaggio parla di `ポケモンの {{捕獲|ほかく}}`, il gioco sta valutando come sta
   andando la raccolta di specie nuove, non solo se stai vincendo le lotte.
 :::
@@ -40,7 +40,7 @@ reading: モンスターボール
 romaji: monsutaa booru
 meaning_it: Pokeball / Monster Ball
 notes_it: >-
-  E il nome giapponese standard della Pokeball. Nel tutorial e nei dialoghi di
+  È il nome giapponese standard della Pokeball. Nel tutorial e nei dialoghi di
   viaggio segnala lo strumento concreto con cui puoi passare dalla semplice
   lotta alla cattura di un Pokemon selvatico.
 :::
@@ -56,7 +56,7 @@ example_jp: >-
   {{弱|よわ}}った タイミングで モンスターボールを {{投|な}}げると
   {{捕|つか}}まえやすい。
 example_it: >-
-  Se lanci la Pokeball quando il Pokemon e indebolito, e piu facile catturarlo.
+  Se lanci la Pokeball quando il Pokemon è indebolito, è più facile catturarlo.
 :::
 
 :::term
@@ -92,7 +92,7 @@ reading: きをつける
 romaji: ki o tsukeru
 meaning_it: fare attenzione / stare attenti
 notes_it: >-
-  Nei giochi Pokemon e un avviso operativo molto ricorrente. Quando un NPC ti
+  Nei giochi Pokemon è un avviso operativo molto ricorrente. Quando un NPC ti
   dice `{{気|き}}をつけて`, sta segnalando pericolo reale sul percorso, in battaglia
   o in una zona nuova, non una formula di cortesia vuota.
 :::
@@ -118,7 +118,7 @@ romaji: seisoku suru
 meaning_it: vivere in una zona / essere stanziato in un habitat
 notes_it: >-
   Descrive la presenza naturale di una specie in un'area. In dialoghi,
-  walkthrough e Pokedex ti dice che quel luogo e davvero habitat del Pokemon,
+  walkthrough e Pokedex ti dice che quel luogo è davvero habitat del Pokemon,
   quindi puoi aspettarti incontri, rischi o materiali collegati a quella specie.
 :::
 
@@ -144,7 +144,7 @@ romaji: waza mashin
 meaning_it: MT / oggetto per insegnare una mossa
 notes_it: >-
   In Scarlet / Violet una `わざマシン` serve a insegnare una mossa a un Pokemon.
-  In questo capitolo compare come premio subito dopo la grotta: non e un
+  In questo capitolo compare come premio subito dopo la grotta: non è un
   oggetto decorativo, ma un primo assaggio della personalizzazione del team e
   del fatto che in questo titolo la MT si consuma quando viene usata.
 :::
@@ -172,7 +172,7 @@ notes_it: >-
   Nel corpus Pokemon `{{姿|すがた}}` non descrive solo come qualcosa appare. Spesso
   segnala una forma o uno stato che cambia il comportamento del Pokemon. Nel
   prologo Pepper lo usa per distinguere la condizione indebolita di Koraidon /
-  Miraidon dalla forma in cui puo davvero combattere.
+  Miraidon dalla forma in cui può davvero combattere.
 :::
 
 :::card
@@ -197,7 +197,7 @@ reading: せいぎょする
 romaji: seigyo suru
 meaning_it: controllare / tenere sotto controllo
 notes_it: >-
-  E un verbo piu avanzato ma molto importante nella scena con Pepper. Quando
+  È un verbo più avanzato ma molto importante nella scena con Pepper. Quando
   parla di una Ball che serve a `{{制御|せいぎょ}}する`, non parla di una cattura
   normale: sta dicendo che quell'oggetto gestisce e contiene il Pokemon in modo
   speciale.
@@ -237,7 +237,7 @@ back: fare qualcosa per qualcuno
 example_jp: >-
   モンスターボールを {{少|すこ}}し わけてあげるね。
 example_it: >-
-  Ti do un po' di Monster Ball, cosi puoi usarle.
+  Ti do un po' di Monster Ball, così puoi usarle.
 :::
 
 :::grammar
@@ -247,7 +247,7 @@ title: Fare attenzione a non...
 meaning_it: fare in modo di non / stare attenti a non
 notes_it: >-
   Nei tutorial Pokemon compare spesso come avviso preventivo. Il gioco non ti
-  vieta qualcosa con durezza, ma ti orienta verso il comportamento piu sicuro o
+  vieta qualcosa con durezza, ma ti orienta verso il comportamento più sicuro o
   corretto per continuare senza problemi.
 :::
 
@@ -299,7 +299,7 @@ back: selvatico / wild
 example_jp: >-
   {{野生|やせい}}の ポケモンは {{近|ちか}}づくと バトルに なる ことが ある。
 example_it: >-
-  Con i Pokemon selvatici puo iniziare una lotta se ti avvicini troppo.
+  Con i Pokemon selvatici può iniziare una lotta se ti avvicini troppo.
 notes_it: >-
   Nel prologo 2 questa parola ti sposta dal mondo protetto del tutorial iniziale
   al campo aperto, dove incontri e cattura cominciano davvero.
@@ -315,7 +315,7 @@ back: catturare
 example_jp: >-
   {{相手|あいて}}が {{弱|よわ}}ったら そのまま {{捕|つか}}まえてみよう。
 example_it: >-
-  Quando l'avversario si e indebolito, prova a catturarlo subito.
+  Quando l'avversario si è indebolito, prova a catturarlo subito.
 notes_it: >-
   Qui il verbo va letto come obiettivo diverso dal semplice KO: la scena ti
   insegna a trasformare la lotta in ottenimento di un nuovo Pokemon.

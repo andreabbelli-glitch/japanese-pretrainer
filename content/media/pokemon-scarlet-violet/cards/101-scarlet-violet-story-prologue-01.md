@@ -14,10 +14,10 @@ reading: こうちょうせんせい
 romaji: kouchou sensei
 meaning_it: preside / il preside
 notes_it: >-
-  Nel prologo e il modo in cui la madre e il gioco presentano Clavell.
+  Nel prologo è il modo in cui la madre e il gioco presentano Clavell.
   Leggere `{{校長先生|こうちょうせんせい}}` ti fa capire subito che stai entrando
   nel registro scolastico dell'Accademia e che il parlante sta usando un tono
-  rispettoso verso l'autorita della scuola.
+  rispettoso verso l'autorità della scuola.
 :::
 
 :::card
@@ -30,7 +30,7 @@ back: preside / il preside
 example_jp: >-
   {{校長先生|こうちょうせんせい}}が {{家|いえ}}まで {{来|き}}てくれた。
 example_it: >-
-  Il preside e venuto fin davanti a casa.
+  Il preside è venuto fin davanti a casa.
 :::
 
 :::term
@@ -42,7 +42,7 @@ meaning_it: trasferimento / ingresso come studente trasferito
 notes_it: >-
   In Scarlet / Violet il protagonista non parte come studente generico ma come
   persona che `{{転入|てんにゅう}}` nell'Accademia. Questa parola ti fa leggere
-  bene le battute iniziali di Clavell e spiega perche molti personaggi parlano
+  bene le battute iniziali di Clavell e spiega perché molti personaggi parlano
   di nuova scuola, presentazioni e ambientamento.
 :::
 
@@ -66,8 +66,8 @@ reading: スマホロトム
 romaji: sumaho rotomu
 meaning_it: Rotom Phone / smartphone di gioco
 notes_it: >-
-  E il telefono del protagonista in Scarlet / Violet. Quando il gioco nomina
-  `スマホロトム`, non sta indicando solo un oggetto narrativo: da li apri
+  È il telefono del protagonista in Scarlet / Violet. Quando il gioco nomina
+  `スマホロトム`, non sta indicando solo un oggetto narrativo: da lì apri
   mappa e [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan), quindi capisci che
   il dialogo sta parlando di orientamento, registrazione e funzioni di sistema.
 :::
@@ -118,7 +118,7 @@ reading: しょうぶ
 romaji: shoubu
 meaning_it: sfida / match / confronto di battaglia
 notes_it: >-
-  E la parola che Nemona usa continuamente per proporre un confronto vero.
+  È la parola che Nemona usa continuamente per proporre un confronto vero.
   Quando senti `{{勝負|しょうぶ}}しよう` o `{{勝負|しょうぶ}}の {{準備|じゅんび}}は
   いい？`, il gioco non sta parlando in astratto di combattimento: ti sta
   portando nel tutorial o in un match concreto.
@@ -159,7 +159,7 @@ back: preparazione / essere pronti
 example_jp: >-
   {{勝負|しょうぶ}}の {{準備|じゅんび}}は もう いい？
 example_it: >-
-  Sei gia pronto per la sfida?
+  Sei già pronto per la sfida?
 :::
 
 :::term
@@ -169,7 +169,7 @@ reading: じゃくてん
 romaji: jakuten
 meaning_it: debolezza / punto debole
 notes_it: >-
-  In battaglia indica il tipo contro cui un Pokemon subisce piu danni. Nel
+  In battaglia indica il tipo contro cui un Pokemon subisce più danni. Nel
   primo match con Nemona questa parola ti fa collegare la teoria dei tipi al
   risultato pratico del turno: se colpisci la `{{弱点|じゃくてん}}`, il danno sale
   e compare spesso [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun).
@@ -297,7 +297,7 @@ title: Appena fatto / appena iniziato
 meaning_it: aver appena fatto qualcosa
 aliases: [～たばっかり]
 notes_it: >-
-  Nel prologo segnala che il protagonista e all'inizio assoluto del percorso.
+  Nel prologo segnala che il protagonista è all'inizio assoluto del percorso.
   Quando Nemona dice che hai `ポケモンを {{始|はじ}}めたばっかり`, sta calibrando
   il tutorial sul fatto che hai appena iniziato a giocare davvero.
 :::
@@ -328,7 +328,7 @@ example_jp: >-
 example_it: >-
   Nel Pokedex i Pokemon catturati vengono registrati automaticamente.
 notes_it: >-
-  Nel prologo questa non e solo una collezione: Nemona te la presenta come app
+  Nel prologo questa non è solo una collezione: Nemona te la presenta come app
   attiva dello [スマホロトム](term:term-smartphone-rotom).
 :::
 
