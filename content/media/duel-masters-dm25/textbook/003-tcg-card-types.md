@@ -25,7 +25,8 @@ guardare un type line un po' strano e capire subito tre cose:
 
 - qual è il tipo base della carta;
 - quale prefisso o forma speciale ne cambia il comportamento;
-- quale vocabolario ricompare con alta frequenza e merita priorità nelle flashcard.
+- quale vocabolario ricompare con alta frequenza e ti fa capire più in fretta
+  che cosa fa la carta.
 
 ## Contesto
 
@@ -224,8 +225,8 @@ translation_it: >-
 - Qui il cuore della frase è che il
   [タマシード](term:term-tamaseed) viene trattato come base valida.
 - È il modo più semplice per sentire perché
-  [タマシード/クリーチャー](term:term-tamaseed-creature) e il lessico collegato
-  meritano flashcard dedicate.
+  [タマシード/クリーチャー](term:term-tamaseed-creature) è il lessico collegato
+  ricompaiono quando una carta fa da base a un'evoluzione.
 
 **Esempio 3**
 

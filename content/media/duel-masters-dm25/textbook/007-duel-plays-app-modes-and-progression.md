@@ -81,8 +81,8 @@ contesto. In questo screenshot vedi bene tre pannelli PvP separati anche dal
 layout:
 
 - [ランクマッチ](term:term-ranked-match) = ladder competitiva;
-- `カジュアルマッチ` = partita non ranked, utile come confronto immediato anche
-  se non la trasformiamo in card dedicata;
+- `カジュアルマッチ` = partita non ranked, utile per leggere il lessico PvP
+  senza pressione di ladder;
 - [ルームマッチ](term:term-room-match) = stanza privata o organizzata;
 - [クイック・ピック](term:term-quick-pick) = modalità dal flusso diverso rispetto
   al deck costruito classico;
@@ -131,7 +131,7 @@ Dentro l'app è una coppia molto pratica:
 [{{解放|かいほう}}](term:term-unlock) ti dice che esiste un contenuto che può
 diventare accessibile. Nelle app giapponesi questo conta perché una parte del
 messaggio resta spesso implicita: il label non ti ripete tutta la frase, ma ti
-fa capire che la funzione esiste gia e che manca ancora una soglia da superare.
+fa capire che la funzione esiste già e che manca ancora una soglia da superare.
 
 Se leggi `{{未解放|みかいほう}}`, il senso pratico è già completo:
 

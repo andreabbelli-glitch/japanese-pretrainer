@@ -10,17 +10,13 @@ status: active
 tags: [deck, evolution, invasion, attack, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Lezione verticale sullo starter deck `DM25-SD2 力の王道`: gallery completa
-  delle 11 carte, selezione delle vere novita linguistiche del deck e parsing
-  mirato di keyword come `G・ストライク`, `究極進化`, `メテオバーン` e
-  `スーパー・S・トリガー`.
+  Starter deck `DM25-SD2 力の王道`: invasione, evoluzione e keyword come
+  `G・ストライク`, `究極進化`, `メテオバーン` e `スーパー・S・トリガー`.
 ---
 
 # Obiettivo
 
-Questa lezione analizza `DM25-SD2` carta per carta. In tutte le 11 card
-mettiamo a fuoco il valore linguistico operativo: keyword, struttura delle condizioni e
-ordine delle azioni nel piano di gioco.
+Leggere `DM25-SD2` carta per carta: keyword, condizioni e ordine delle azioni.
 
 Alla fine dovresti riconoscere:
 
@@ -74,10 +70,10 @@ riunisce payoff aggressivi e setup, quindi la lettura si basa sempre sul flusso:
 
 Mentre scorri la gallery, chiediti sempre:
 
-1. e una carta di payoff immediato o di setup?
+1. è una carta di payoff immediato o di setup?
 2. la carta parla di [{{侵略|しんりゃく}}](term:term-invasion) /
    [{{進化|しんか}}](term:term-evolution) oppure di ricerca nel mazzo?
-3. compare una keyword nuova o solo una combinazione di pezzi gia noti?
+3. compare una keyword nuova o solo una combinazione di pezzi già noti?
 
 ### 2. La gallery del deck, carta per carta
 
@@ -99,7 +95,7 @@ jp: >-
   このクリーチャーの{{攻撃中|こうげきちゅう}}、{{相手|あいて}}は
   「[G・ストライク](term:term-g-strike)」を{{使|つか}}えない。
 translation_it: >-
-  Durante l'attacco di questa creatura, l'avversario non puo usare G-Strike.
+  Durante l'attacco di questa creatura, l'avversario non può usare G-Strike.
 :::
 
 :::example_sentence
@@ -189,9 +185,9 @@ translation_it: >-
 
 Qui separa subito i due piani:
 
-- `{{進化|しんか}}クリーチャー` e gia un filtro richiesto dalla keyword.
+- `{{進化|しんか}}クリーチャー` è già un filtro richiesto dalla keyword.
 - [メテオバーン](term:term-meteorburn) consuma materiale sotto la creatura.
-- `そうしたら` apre il payoff solo se il costo materiale e stato davvero pagato.
+- `そうしたら` apre il payoff solo se il costo materiale è stato davvero pagato.
 
 #### 2.4 {{進化設計図|しんかせっけいず}}
 
@@ -268,7 +264,7 @@ card_id: card-mirai-sekkeizu-recognition
 caption: >-
   Parsing sequenziale per [～てから](grammar:grammar-te-kara) e controllo
   numerico in fase di rivelazione:
-  [～てから](grammar:grammar-te-kara) e il blocco
+  [～てから](grammar:grammar-te-kara) è il blocco
   `{{相手|あいて}}に{{見|み}}せてから`.
 :::
 
@@ -282,7 +278,7 @@ jp: >-
   カードを{{表向|おもてむ}}きにする。
 translation_it: >-
   Rivela carte dalla cima del tuo mazzo in modo che la somma dei numeri stampati
-  nel costo arrivi a 5 o piu.
+  nel costo arrivi a 5 o più.
 :::
 
 :::example_sentence
@@ -295,11 +291,11 @@ translation_it: >-
   aggiungerla alla tua mano.
 :::
 
-Qui il parser giusto e:
+Qui il parser giusto è:
 
 - [{{合計|ごうけい}}](term:term-goukei) ti dice che devi sommare, non leggere
   una singola cifra.
-- [～ように](grammar:grammar-youni) e istruzione pratica sul criterio da
+- [～ように](grammar:grammar-youni) è istruzione pratica sul criterio da
   soddisfare.
 - [～てから](grammar:grammar-te-kara) impone un ordine obbligato: prima mostri,
   poi aggiungi.
@@ -314,7 +310,7 @@ caption: >-
   [バトルさせる](term:term-battle-saseru).
 :::
 
-Qui il punto e il causativo di
+Qui il punto è il causativo di
 [バトルさせる](term:term-battle-saseru).
 
 :::example_sentence
@@ -325,7 +321,7 @@ jp: >-
   その{{選|えら}}んだクリーチャーとこのクリーチャーを
   [バトルさせる](term:term-battle-saseru)。
 translation_it: >-
-  Quando questa creatura entra, se si e evoluta da un Tamaseed puoi scegliere 1
+  Quando questa creatura entra, se si è evoluta da un Tamaseed puoi scegliere 1
   creatura dell'avversario. Fai combattere quella creatura con questa creatura.
 :::
 
@@ -418,4 +414,3 @@ Sequenza di lettura del piano testuale:
   - ストリエ{{雷鬼|らいき}}の{{巻|まき}} per [シンカライズ](term:term-shinkarize).
   - {{冒険妖精|ぼうけんようせい}}ポレコ per
     [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing).
-

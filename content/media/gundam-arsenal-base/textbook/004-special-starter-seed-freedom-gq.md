@@ -17,7 +17,7 @@ summary: >-
 
 # Obiettivo
 
-Questa scheda usa lo starter deck come base di lettura operativa: leggere il frame in modo affidabile evita ambiguità quando giochi una lista fisica di Arsenal Base.
+Leggere il frame dello starter deck in modo affidabile.
 
 Alla fine dovresti riconoscere tre cose insieme:
 
@@ -190,7 +190,7 @@ Il secondo è capire che le parentesi non sono decorazione.
 Il terzo è leggere bene etichette di coppia. Se trovi
 [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne), l'`＆`
 non vuol dire che stai occupando due slot PL: vuol dire che quella singola carta
-porta due nomi dentro una sola entry.
+riunisce due nomi nella stessa carta PL.
 
 ### 5. Come giocarlo nelle prime partite
 
@@ -378,8 +378,8 @@ caption: >-
 
 - Giapponese da leggere:
   [シン・アスカ](term:term-shinn-asuka) è il nome più semplice fra le PL del
-  deck: niente parentesi, niente `＆`. È utile per stabilire un pilot card standard
-  in ingresso prima di leggere ruolo e costo.
+  deck: niente parentesi, niente `＆`. Si riconosce subito prima di leggere
+  ruolo e costo.
 - Frame: in alto a sinistra leggi
   [{{制圧|せいあつ}}](term:term-role-seiatsu) e
   [コスト](term:term-cost) `2`. Questo ti dice che il suo lavoro base è spingere

@@ -32,8 +32,8 @@ orientarti nella maggior parte delle schermate operative senza passare
 dall'inglese.
 
 Accanto a questi label compaiono spesso micro-comandi come `はい`,
-`いいえ`, `やめる`, `{{戻|もど}}る` e `{{設定|せってい}}`. Non vale la pena
-farne il centro del corpus, ma devi riconoscerli al volo: sono le parole che
+`いいえ`, `やめる`, `{{戻|もど}}る` e `{{設定|せってい}}`. Devi riconoscerli al
+volo: sono le parole che
 chiudono, confermano o cambiano una schermata.
 
 ## Termini chiave
@@ -170,4 +170,3 @@ stabilizzare poche opposizioni operative. Le più importanti qui sono
 [{{手持ち|てもち}}](term:term-te-mochi) / [ボックス](term:term-box). Quando
 queste coppie sono chiare, la UI smette di essere una lista opaca di label e
 diventa una mappa di azioni.
-

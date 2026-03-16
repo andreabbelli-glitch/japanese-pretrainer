@@ -67,12 +67,12 @@ jp: >-
   クリーチャーが{{攻撃|こうげき}}する{{時|とき}}、かわりにこの
   クリーチャーを[タップ](term:term-tap)してもよい。
 translation_it: >-
-  Blocker: questa creatura non puo attaccare il giocatore avversario; quando
+  Blocker: questa creatura non può attaccare il giocatore avversario; quando
   una creatura avversaria attacca, puoi tapparla al suo posto per bloccare.
 reveal_mode: sentence
 :::
 
-- `{{相手|あいて}}プレイヤーを攻撃できない` e una restrizione permanente.
+- `{{相手|あいて}}プレイヤーを攻撃できない` è una restrizione permanente.
 - `かわりに` indica il rimpiazzo: la creatura si tappa per bloccare al posto di
   lasciare passare l'attacco.
 
@@ -92,7 +92,7 @@ reveal_mode: sentence
 
 - `{{数|かず}}あれば` contiene [あれば](grammar:grammar-areba), il condizionale di
   `ある`.
-- Il senso e `se ce n'e il numero richiesto`, quindi prima conti e poi controlli
+- Il senso è `se ce n'è il numero richiesto`, quindi prima conti e poi controlli
   se l'effetto si accende.
 
 ### [G・ストライク](term:term-g-strike)
@@ -108,7 +108,7 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- In `「G・ストライク」を{{使|つか}}えない`, `使えない` e il blocco da leggere:
+- In `「G・ストライク」を{{使|つか}}えない`, `使えない` è il blocco da leggere:
   quell'effetto impedisce proprio l'uso della risposta difensiva.
 
 ### [メテオバーン](term:term-meteorburn)
@@ -145,7 +145,7 @@ reveal_mode: sentence
 - `{{手札|てふだ}}に加えた時` fissa il momento del trigger.
 - `[コスト](term:term-cost)を[{{払|はら}}わず](term:term-harau)に` usa il pattern
   [～ずに](grammar:grammar-zuni): ti dice quale passaggio viene saltato.
-- `{{使|つか}}ってもよい` e la parte opzionale del payoff: puoi scegliere di
+- `{{使|つか}}ってもよい` è la parte opzionale del payoff: puoi scegliere di
   usare subito la carta.
 
 ### [シンカライズ](term:term-shinkarize)
@@ -172,12 +172,12 @@ jp: >-
   [{{出|で}}た](term:term-deru)ターンにすぐ
   [{{攻撃|こうげき}}](term:term-attack)できる。
 translation_it: >-
-  Speed Attacker: questa creatura puo attaccare subito nel turno in cui entra.
+  Speed Attacker: questa creatura può attaccare subito nel turno in cui entra.
 reveal_mode: sentence
 :::
 
 - `{{出|で}}たターンに` fissa il turno d'ingresso.
-- `すぐ攻撃できる` dice che l'attacco e permesso subito, senza aspettare il
+- `すぐ攻撃できる` dice che l'attacco è permesso subito, senza aspettare il
   turno successivo.
 
 ### [スーパー・S・トリガー](term:term-super-s-trigger)
@@ -189,13 +189,13 @@ jp: >-
   さらに{{強|つよ}}い{{追加効果|ついかこうか}}まで{{続|つづ}}けて{{使|つか}}える。
 translation_it: >-
   Super S-Trigger: dopo averla usata dallo scudo, puoi anche far entrare una
-  creatura o arrivare fino a un effetto aggiuntivo piu forte.
+  creatura o arrivare fino a un effetto aggiuntivo più forte.
 reveal_mode: sentence
 :::
 
 - `{{使|つか}}った後` significa `dopo averla usata`.
 - `A か、B` introduce l'alternativa.
-- `さらに ... まで` allunga la risoluzione fino a un payoff successivo piu
+- `さらに ... まで` allunga la risoluzione fino a un payoff successivo più
   forte.
 
 ### [T・ブレイカー](term:term-t-breaker)
@@ -220,13 +220,13 @@ jp: >-
   [{{進化|しんか}}](term:term-evolution)しているクリーチャーの{{上|うえ}}に、
   さらに{{重|かさ}}ねて{{出|だ}}す。
 translation_it: >-
-  Ultimate Evolution: la giochi sopra una creatura che e gia evoluzione,
+  Ultimate Evolution: la giochi sopra una creatura che è già evoluzione,
   aggiungendo un ulteriore livello di evoluzione.
 reveal_mode: sentence
 :::
 
-- `{{進化|しんか}}しているクリーチャー` e una relativa verbale: `una creatura che e
-  gia evoluzione`.
+- `{{進化|しんか}}しているクリーチャー` è una relativa verbale: `una creatura che è
+  già evoluzione`.
 - `〜の上に` indica la base di sovrapposizione: questa carta si mette sopra
   quella creatura.
 

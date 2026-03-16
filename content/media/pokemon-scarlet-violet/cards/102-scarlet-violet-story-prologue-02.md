@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02
 media_id: media-pokemon-scarlet-violet
 slug: 102-scarlet-violet-story-prologue-02
-title: Scarlet / Violet Story 102 - Prologo 2 cards
+title: Scarlet / Violet Story 102 - Prologo 2
 order: 120
 segment_ref: scarlet-violet-story
 ---
@@ -169,7 +169,7 @@ reading: すがた
 romaji: sugata
 meaning_it: aspetto / forma / stato visibile
 notes_it: >-
-  Nel corpus Pokemon `{{姿|すがた}}` non descrive solo come qualcosa appare. Spesso
+  In Pokemon `{{姿|すがた}}` non descrive solo come qualcosa appare. Spesso
   segnala una forma o uno stato che cambia il comportamento del Pokemon. Nel
   prologo Pepper lo usa per distinguere la condizione indebolita di Koraidon /
   Miraidon dalla forma in cui può davvero combattere.

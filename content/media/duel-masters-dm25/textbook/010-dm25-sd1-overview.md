@@ -17,12 +17,8 @@ summary: >-
 
 # Obiettivo
 
-Questa lesson analizza `DM25-SD1 技の王道` come esempio operativo di
-sequenza Abyss: dal cimitero alle riattivazioni, fino alla pressione in attacco.
-Il focus è sulla lettura del testo: come ogni riga traduce il suo effetto in
-gameplay.
-
-> come si legge rapidamente questa riga per capire subito quale vantaggio genera?
+Leggere il testo di `DM25-SD1 技の王道`: cimitero, riattivazioni e pressione in
+attacco.
 
 Alla fine dovresti riconoscere:
 
@@ -283,5 +279,3 @@ Se vuoi leggere `DM25-SD1` in fretta, cerca prima questi segnali:
 `DM25-SD1` concentra gran parte del lessico attorno a pochi assi leggibili:
 cimitero, filtri di costo e keyword compatte. Quando questi tre livelli restano
 separati nel parsing, anche il deck diventa più facile da leggere.
-
-

@@ -10,9 +10,8 @@ status: active
 tags: [live-duel, card-encounter, extra-turn, beat-jockey, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Carta encounter dedicata a Crash Hadou: foto della carta, righe effetto
-  davvero da leggere, spiegazione grammaticale concreta dei pattern nuovi e
-  flashcard utile per il chunk del turno extra.
+  Crash Hadou: trigger del turno extra, `タップ状態でいたら` e
+  `このターンの後に自分のターンを追加する`.
 ---
 
 # [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
@@ -65,29 +64,29 @@ reveal_mode: sentence
 
 ### 1. このクリーチャーが破壊された時
 
-- `このクリーチャーが` marca il soggetto dell'intera condizione: e questa
+- `このクリーチャーが` marca il soggetto dell'intera condizione: è questa
   creatura quella che subisce l'evento.
 - [{{破壊|はかい}}](term:term-destroy) + [～された{{時|とき}}](grammar:grammar-sareta-toki)
   crea un trigger passivo: `quando viene distrutta`.
-- Il `た` in `された` non e passato narrativo; e la forma che modifica
-  [{{時|とき}}](grammar:grammar-sareta-toki), cioe `nel momento in cui e stata
+- Il `た` in `された` non è passato narrativo; è la forma che modifica
+  [{{時|とき}}](grammar:grammar-sareta-toki), cioè `nel momento in cui è stata
   distrutta / quando viene distrutta`.
 
 ### 2. タップ状態でいたら
 
-- [タップ{{状態|じょうたい}}](term:term-tap-state) e un nome: `stato tapped`.
+- [タップ{{状態|じょうたい}}](term:term-tap-state) è un nome: `stato tapped`.
 - `でいる` qui non vuol dire "stare facendo", ma "essere in quello stato".
 - [～たら](grammar:grammar-tara) aggiunge la condizione: `se era in stato tapped`.
-- Quindi il senso completo e: il turno extra parte solo se, nel momento della
-  distruzione, la creatura si trovava gia tappata.
+- Quindi il senso completo è: il turno extra parte solo se, nel momento della
+  distruzione, la creatura si trovava già tappata.
 
 ### 3. このターンの後に自分のターンを追加する
 
 - [～の{{後|あと}}に](grammar:grammar-no-ato-ni) significa `dopo X`.
 - `このターンの後に` fissa il punto esatto: subito dopo il turno attuale.
-- [{{自分|じぶん}}](term:term-self)のターン chiarisce che il turno aggiunto e il
+- [{{自分|じぶん}}](term:term-self)のターン chiarisce che il turno aggiunto è il
   tuo, non un turno generico.
-- [ターンを{{追加|ついか}}する](term:term-add-turn) e il chunk lessicale da
+- [ターンを{{追加|ついか}}する](term:term-add-turn) è il chunk lessicale da
   fissare come `aggiungere un turno`.
 
 ### 4. バトル中
@@ -101,11 +100,5 @@ reveal_mode: sentence
 
 - [ドラゴンギルド](term:term-dragonguild) e
   [ビートジョッキー](term:term-beat-jockey) sono le due razze della carta.
-- Se incontri effetti che cercano una di queste razze, questa carta puo essere
+- Se incontri effetti che cercano una di queste razze, questa carta può essere
   un bersaglio valido.
-
-## Flashcard utile
-
-- `タップ状態で破壊された時、このターンの後に自分のターンを追加する`
-  e la flashcard nuova che vale la pena tenere: il chunk unisce passivo, stato
-  e timing nello stesso blocco.

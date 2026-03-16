@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01
 media_id: media-pokemon-scarlet-violet
 slug: 101-scarlet-violet-story-prologue-01
-title: Scarlet / Violet Story 101 - Prologo 1 cards
+title: Scarlet / Violet Story 101 - Prologo 1
 order: 110
 segment_ref: scarlet-violet-story
 ---

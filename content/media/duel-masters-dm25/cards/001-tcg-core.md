@@ -1878,7 +1878,7 @@ back: se / quando è già in quello stato
 example_jp: >-
   {{手札|てふだ}}が{{3枚|さんまい}} {{残|のこ}}っていれば、この{{効果|こうか}}を{{使|つか}}える。
 example_it: >-
-  Se hai gia tre carte in mano, puoi usare questo effetto.
+  Se hai già tre carte in mano, puoi usare questo effetto.
 notes_it: >-
   Controlla uno stato già soddisfatto. La carta verifica una situazione già
   vera prima di concedere il resto dell'effetto.

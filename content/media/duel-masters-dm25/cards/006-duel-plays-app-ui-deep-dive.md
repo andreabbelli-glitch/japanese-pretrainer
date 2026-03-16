@@ -255,7 +255,7 @@ id: term-prebuilt
 lemma: 構築済み
 reading: こうちくずみ
 romaji: kouchikuzumi
-meaning_it: gia costruito / prebuilt
+meaning_it: già costruito / prebuilt
 pos: status-label
 aliases: [構築済み, こうちくずみ, kouchikuzumi]
 notes_it: >-
@@ -705,7 +705,7 @@ entry_type: term
 entry_id: term-prebuilt
 card_type: recognition
 front: 構築済み
-back: gia costruito / prebuilt
+back: già costruito / prebuilt
 example_jp: >-
   {{構築済み|こうちくずみ}}デッキを{{買|か}}う。
 example_it: >-

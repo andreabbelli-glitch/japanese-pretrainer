@@ -395,7 +395,8 @@ example_it: >-
   in mezzo a carte dai titoli più lunghi.
 notes_it: >-
   Il valore di [シン・アスカ](term:term-shinn-asuka) sta nel contrasto formale:
-  nome singolo, senza `＆` e senza parentesi, quindi pilot card standard.
+  nome singolo, senza `＆` e senza parentesi, quindi si riconosce subito nella
+  riga PL.
 tags: [starter-deck, pl, seed-freedom]
 :::
 
@@ -578,7 +579,7 @@ example_it: >-
   nomi dentro una singola PL card.
 notes_it: >-
   Questo pattern dice che due nomi convivono nella stessa PL: non stai
-  guardando due carte, ma una sola entry con doppio nome.
+  guardando due carte, ma una sola carta con doppio nome.
 tags: [starter-deck, grammar, names]
 :::
 

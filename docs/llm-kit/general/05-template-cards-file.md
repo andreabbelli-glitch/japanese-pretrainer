@@ -89,6 +89,9 @@ Regole pratiche:
 - per valori corti su una riga, preferisci `'...'`; per valori multi-linea o
   prose lunghe, usa `>-`;
 - i campi `notes_it` vanno trattati come prose YAML e scritti in `>-`;
+- tutto l'italiano in `meaning_it`, `example_it` e `notes_it` deve essere
+  grammaticalmente corretto e con accenti veri (`è`, `può`, `più`, `già`,
+  `cioè`, `così`, `perché`), non con forme ASCII degradate;
 - evita plain scalar per testo con `:`/`：`, furigana, link semantici, backtick
   o frasi complete di rules text;
 - esempio corretto per flashcard side:
@@ -110,6 +113,9 @@ Regole pratiche:
 - evita note meta del tipo "flashcard utile", "da fissare", "da rendere
   automatico", "qui conviene tenere la card": descrivi invece significato,
   ruolo e conseguenza concreta;
+- evita anche formule come "entry canonica", "card canoniche", "nel corpus",
+  "in questo seed" o "il valore didattico sta in...": parlano della curation,
+  non di quello che il giapponese fa capire;
 - se la entry e un nome proprio poco trasparente, spiega almeno quale ruolo
   ricorrente segnala o quale parte del nome conviene riconoscere;
 - non aggiungere testo libero fuori dai blocchi strutturati.

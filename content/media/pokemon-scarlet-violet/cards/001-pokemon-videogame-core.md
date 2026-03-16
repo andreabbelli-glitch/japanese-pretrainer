@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core
 media_id: media-pokemon-scarlet-violet
 slug: 001-pokemon-videogame-core
-title: Pokemon Videogame Core - Canonical cards
+title: Pokemon Videogame Core
 order: 10
 segment_ref: pokemon-videogame-core
 ---

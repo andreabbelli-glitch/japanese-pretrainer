@@ -32,7 +32,7 @@ pos: proper-noun
 aliases:
   [アポロヌス・ドラゲリオン, 超神羅星アポロヌス・ドラゲリオン, aporonusu doragerion]
 notes_it: >-
-  Nome del payoff piu esplosivo dell'asse Apollo. Nel gioco indica il punto di
+  Nome del payoff più esplosivo dell'asse Apollo. Nel gioco indica il punto di
   arrivo della sequenza di setup/evoluzione: quando compare, il piano passa da
   preparazione a chiusura immediata della partita.
 level_hint: custom
@@ -96,10 +96,10 @@ pos: keyword
 aliases: [究極進化, きゅうきょくしんか, kyuukyoku shinka]
 notes_it: >-
   Forma avanzata di [{{進化|しんか}}](term:term-evolution): non basta una base
-  generica, serve gia una
+  generica, serve già una
   [{{進化|しんか}}クリーチャー](term:term-evolution-creature). In risoluzione il
-  controllo del giocatore e la base sotto: se non e gia evoluzione, la giocata
-  non e legale.
+  controllo del giocatore è la base sotto: se non è già evoluzione, la giocata
+  non è legale.
 level_hint: custom
 :::
 
@@ -129,8 +129,8 @@ pos: keyword
 aliases:
   [スーパー・S・トリガー, スーパーSトリガー, super s-trigger, suupaa shiirudo torigaa]
 notes_it: >-
-  Variante piu spinta di [S・トリガー](term:term-s-trigger). In risoluzione non e
-  solo "uso dagli scudi": puo aprire la sequenza scudo -> mano -> ingresso
+  Variante più spinta di [S・トリガー](term:term-s-trigger). In risoluzione non è
+  solo "uso dagli scudi": può aprire la sequenza scudo -> mano -> ingresso
   immediato senza costo, quindi cambia direttamente il ritmo del turno.
 level_hint: custom
 :::
@@ -189,7 +189,7 @@ meaning_it: nell'ordine che preferisci
 aliases: [好きな順序で, すきなじゅんじょで]
 notes_it: >-
   Formula comune quando il testo rimette "il resto" nel mazzo o sotto una pila.
-  L'ordine non e fissato dalla carta: lo decide il giocatore, quindi il testo
+  L'ordine non è fissato dalla carta: lo decide il giocatore, quindi il testo
   assegna un controllo reale sullo stato futuro delle pescate.
 level_hint: custom
 :::
@@ -237,7 +237,7 @@ example_jp: >-
 example_it: >-
   Con Apollonus Dragelion chiudi la partita di colpo.
 notes_it: >-
-  Questo nome identifica il payoff piu esplosivo del mazzo. Nel piano di gioco
+  Questo nome identifica il payoff più esplosivo del mazzo. Nel piano di gioco
   i testi di [{{進化|しんか}}](term:term-evolution) e
   [{{侵略|しんりゃく}}](term:term-invasion) diventano la sequenza concreta che
   porta al finisher.
@@ -259,7 +259,7 @@ example_it: >-
 notes_it: >-
   [{{進化|しんか}}](term:term-evolution) + `設計図` indica una fase di
   preparazione. In gioco questa carta cerca il pezzo evoluzione e lo porta in
-  mano, cosi il turno successivo puo entrare nella linea di attacco.
+  mano, così il turno successivo può entrare nella linea di attacco.
 tags: [dm25-sd2, setup, proper-name]
 :::
 
@@ -292,7 +292,7 @@ example_jp: >-
   このクリーチャーの{{攻撃中|こうげきちゅう}}、{{相手|あいて}}は
   「G・ストライク」を{{使|つか}}えない。
 example_it: >-
-  Durante l'attacco di questa creatura, l'avversario non puo usare G-Strike.
+  Durante l'attacco di questa creatura, l'avversario non può usare G-Strike.
 notes_it: >-
   Se compare tra virgolette, trattala come nome tecnico di meccanica. In
   risoluzione frasi come `「G・ストライク」を使えない` chiudono quella specifica
@@ -313,7 +313,7 @@ example_jp: >-
 example_it: >-
   Ultimate Evolution: mettila sopra 1 creatura evoluzione.
 notes_it: >-
-  Soglia piu alta di `進化`. Il controllo richiesto e la base: deve essere gia
+  Soglia più alta di `進化`. Il controllo richiesto è la base: deve essere già
   una creatura evoluzione, altrimenti la procedura non parte.
 tags: [dm25-sd2, keyword, evolution]
 :::
@@ -354,7 +354,7 @@ example_it: >-
   Meteorburn: puoi mettere nel cimitero 3 carte da sotto questa creatura.
 notes_it: >-
   Segnala che il testo usa il sotto della creatura come materiale da consumare.
-  Il giocatore deve verificare quanti materiali puo pagare e quale payoff si
+  Il giocatore deve verificare quanti materiali può pagare e quale payoff si
   attiva dopo il pagamento.
 tags: [dm25-sd2, keyword, evolution]
 :::
@@ -373,7 +373,7 @@ example_it: >-
   Con Super S-Trigger puoi evocare subito questa creatura.
 notes_it: >-
   Distingue la variante super dalla keyword base. In gioco prepara una risposta
-  dagli scudi con ingresso immediato piu forte del normale S-Trigger.
+  dagli scudi con ingresso immediato più forte del normale S-Trigger.
 tags: [dm25-sd2, keyword, shield]
 :::
 
@@ -412,7 +412,7 @@ example_jp: >-
 example_it: >-
   Metti a faccia in su le prime 6 carte del tuo mazzo.
 notes_it: >-
-  Segnala che la ricerca non e nascosta. Quando compare, la risoluzione e
+  Segnala che la ricerca non è nascosta. Quando compare, la risoluzione è
   pubblica e leggibile da entrambi i giocatori.
 tags: [dm25-sd2, search, visibility]
 :::
@@ -447,7 +447,7 @@ example_jp: >-
 example_it: >-
   Dopo averla mostrata all'avversario, la aggiungi alla tua mano.
 notes_it: >-
-  Segnala una sequenza obbligata. Se compare, il secondo passo non puo essere
+  Segnala una sequenza obbligata. Se compare, il secondo passo non può essere
   letto come simultaneo o facoltativo rispetto al primo.
 tags: [dm25-sd2, grammar, sequence]
 :::

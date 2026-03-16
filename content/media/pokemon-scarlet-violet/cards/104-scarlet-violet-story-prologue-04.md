@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04
 media_id: media-pokemon-scarlet-violet
 slug: 104-scarlet-violet-story-prologue-04
-title: Scarlet / Violet Story 104 - Prologo 4 cards
+title: Scarlet / Violet Story 104 - Prologo 4
 order: 140
 segment_ref: scarlet-violet-story
 ---

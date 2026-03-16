@@ -12,13 +12,13 @@ id: term-crash-hadou
 lemma: 勝利龍装 クラッシュ“覇道”
 reading: しょうりりゅうそう くらっしゅはどう
 romaji: shouri ryuusou kurasshu hadou
-meaning_it: Crash Hadou / finisher che puo dare un turno extra
+meaning_it: Crash Hadou / finisher che può dare un turno extra
 pos: proper-noun
 aliases:
   [勝利龍装 クラッシュ“覇道”, 勝利龍装 クラッシュ覇道, クラッシュ覇道, crash hadou]
 notes_it: >-
-  E il nome proprio di un finisher aggressivo. Quando compare
-  `クラッシュ“覇道”`, stai guardando una carta Beat Jockey che puo trasformare
+  È il nome proprio di un finisher aggressivo. Quando compare
+  `クラッシュ“覇道”`, stai guardando una carta Beat Jockey che può trasformare
   una distruzione subita da tappata in un turno extra.
 level_hint: custom
 :::
@@ -34,7 +34,7 @@ aliases: [B・A・D 2, BAD 2, bii ei dii tsuu]
 notes_it: >-
   `B・A・D` abbrevia una riduzione del costo di evocazione seguita da
   auto-distruzione a fine turno. In `B・A・D 2` il numero dice di quanto il
-  costo puo scendere, quindi la keyword comunica insieme velocita di ingresso e
+  costo può scendere, quindi la keyword comunica insieme velocità di ingresso e
   limite temporale della carta.
 level_hint: custom
 :::
@@ -44,11 +44,11 @@ id: term-speed-attacker
 lemma: スピードアタッカー
 reading: すぴーどあたっかー
 romaji: supiido atakkaa
-meaning_it: puo attaccare subito nel turno in cui entra
+meaning_it: può attaccare subito nel turno in cui entra
 pos: keyword
 aliases: [スピードアタッカー, speed attacker, supiido atakkaa]
 notes_it: >-
-  Il testo tecnico `{{召喚酔|しょうかんよ}}いしない` dice che la creatura puo
+  Il testo tecnico `{{召喚酔|しょうかんよ}}いしない` dice che la creatura può
   attaccare nello stesso turno in cui entra. Su una carta aggressiva questo
   trasforma subito il corpo in pressione.
 level_hint: custom
@@ -65,7 +65,7 @@ aliases: [ドラゴンギルド, doragon girudo, Dragon Guild]
 notes_it: >-
   Compare nella riga `種族`, quindi indica una razza e non un titolo narrativo.
   In partita questo decide i bersagli validi: se un effetto cerca una carta
-  `ドラゴンギルド`, questa carta puo essere scelta.
+  `ドラゴンギルド`, questa carta può essere scelta.
 level_hint: custom
 :::
 
@@ -78,7 +78,7 @@ meaning_it: Beat Jockey / razza aggressiva di fuoco
 pos: noun
 aliases: [ビートジョッキー, biito jokkii, Beat Jockey]
 notes_it: >-
-  E una razza aggressiva legata al fuoco. Su questa carta si accompagna bene a
+  È una razza aggressiva legata al fuoco. Su questa carta si accompagna bene a
   riduzione di costo e attacco immediato; quando un effetto richiede
   `ビートジョッキー`, questa carta soddisfa il filtro di razza.
 level_hint: custom
@@ -94,7 +94,7 @@ pos: noun
 aliases: [タップ状態, tappu joutai]
 notes_it: >-
   `状態` trasforma [タップ](term:term-tap) da azione a condizione della carta.
-  Nel trigger di Crash Hadou conta proprio questo stato gia presente al momento
+  Nel trigger di Crash Hadou conta proprio questo stato già presente al momento
   della distruzione.
 level_hint: custom
 :::
@@ -109,7 +109,7 @@ pos: noun
 aliases: [バトル, batoru]
 notes_it: >-
   Nel rules text non va confuso con l'attacco in generale. In frasi come
-  `バトル中`, delimita la finestra dello scontro, cioe il momento in cui i
+  `バトル中`, delimita la finestra dello scontro, cioè il momento in cui i
   valori di forza contano davvero nel combattimento.
 level_hint: custom
 :::
@@ -132,14 +132,14 @@ level_hint: custom
 :::grammar
 id: grammar-sareta-toki
 pattern: ～された時
-title: Trigger passivo su cio che subisce la carta
+title: Trigger passivo su ciò che subisce la carta
 reading: されたとき
 meaning_it: quando viene X / quando subisce X
 aliases: [された時]
 notes_it: >-
   Nel rules text questa forma passiva sposta il focus sull'evento subito dalla
-  carta. In `破壊された時`, il punto non e chi distrugge, ma il fatto che questa
-  creatura venga distrutta e che da li parta il trigger.
+  carta. In `破壊された時`, il punto non è chi distrugge, ma il fatto che questa
+  creatura venga distrutta e che da lì parta il trigger.
 level_hint: custom
 :::
 
@@ -172,7 +172,7 @@ example_it: >-
   Se Crash Hadou viene distrutto da tappato, entra un turno extra.
 notes_it: >-
   `クラッシュ“覇道”` va riconosciuto come nome proprio; su questa carta quel nome
-  coincide con un finisher che puo convertire una distruzione da tappato in
+  coincide con un finisher che può convertire una distruzione da tappato in
   turno extra.
 tags: [live-duel, proper-name, extra-turn]
 :::
@@ -187,10 +187,10 @@ back: keyword con riduzione di costo di 2
 example_jp: >-
   B・A・D 2だから、このカードは{{想像|そうぞう}}より{{早|はや}}く{{出|で}}てくる。
 example_it: >-
-  Con B.A.D 2 questa carta puo scendere prima di quanto sembri.
+  Con B.A.D 2 questa carta può scendere prima di quanto sembri.
 notes_it: >-
-  `B・A・D 2` non e una sigla decorativa: riassume una riduzione di costo di `2`
-  e il fatto che la creatura verra distrutta a fine turno se hai usato quella
+  `B・A・D 2` non è una sigla decorativa: riassume una riduzione di costo di `2`
+  e il fatto che la creatura verrà distrutta a fine turno se hai usato quella
   riduzione.
 tags: [live-duel, keyword, cost]
 :::
@@ -215,8 +215,9 @@ example_it: >-
   Se usi B.A.D 2 puoi ridurre di 2 il costo di evocazione, ma alla fine del
   turno distruggi questa creatura.
 notes_it: >-
-  Qui il valore didattico sta nel doppio blocco giapponese: vantaggio immediato
-  `少なくしてもよい` e prezzo finale `終了時に破壊する`.
+  Il testo unisce due informazioni da leggere insieme: `少なくしてもよい`
+  segnala la riduzione facoltativa del costo, `終了時に破壊する` aggiunge il
+  limite finale della carta.
 tags: [live-duel, keyword, cost, chunk]
 :::
 
@@ -226,14 +227,14 @@ entry_type: term
 entry_id: term-speed-attacker
 card_type: recognition
 front: スピードアタッカー
-back: puo attaccare subito
+back: può attaccare subito
 example_jp: >-
   スピードアタッカーなので、{{出|で}}たターンにすぐ
   {{攻撃|こうげき}}できる。
 example_it: >-
-  Siccome ha Speed Attacker, puo attaccare subito nel turno in cui entra.
+  Siccome ha Speed Attacker, può attaccare subito nel turno in cui entra.
 notes_it: >-
-  Questa keyword dice che la creatura puo passare subito all'attacco invece di
+  Questa keyword dice che la creatura può passare subito all'attacco invece di
   aspettare il turno successivo.
 tags: [live-duel, keyword, attack]
 :::
@@ -248,9 +249,9 @@ back: Dragon Guild / razza della carta
 example_jp: >-
   このカードの{{種族|しゅぞく}}にはドラゴンギルドが{{入|はい}}っている。
 example_it: >-
-  Tra le razze di questa carta c'e Dragon Guild.
+  Tra le razze di questa carta c'è Dragon Guild.
 notes_it: >-
-  `ドラゴンギルド` e la razza letta nella riga `種族`; percio puo comparire in
+  `ドラゴンギルド` è la razza letta nella riga `種族`; perciò può comparire in
   sinergie, filtri o riferimenti tribali.
 tags: [live-duel, race, tribe]
 :::
@@ -355,7 +356,7 @@ example_it: >-
   Dopo questo turno, aggiungi un tuo turno.
 notes_it: >-
   Qui delimita il punto esatto in cui il nuovo turno entra nella sequenza. Non
-  e un "poi" generico, ma un aggancio molto preciso nell'ordine del turno.
+  è un "poi" generico, ma un aggancio molto preciso nell'ordine del turno.
 tags: [live-duel, grammar, timing]
 :::
 
@@ -373,10 +374,10 @@ example_jp: >-
   タップ{{状態|じょうたい}}で{{破壊|はかい}}された{{時|とき}}だけ、
   {{追加|ついか}}ターンが{{発生|はっせい}}する。
 example_it: >-
-  Il turno extra parte solo quando la creatura viene distrutta mentre e tappata.
+  Il turno extra parte solo quando la creatura viene distrutta mentre è tappata.
 notes_it: >-
-  Questa card unisce nello stesso chunk tre cose che vale la pena leggere in
-  un colpo solo: stato gia presente, trigger passivo e inserimento del nuovo
-  turno subito dopo quello corrente.
+  Il chunk va letto in tre pezzi: stato già presente `タップ状態`, trigger
+  passivo `破壊された時` e inserimento del nuovo turno subito dopo quello
+  corrente.
 tags: [live-duel, chunk, extra-turn, grammar]
 :::

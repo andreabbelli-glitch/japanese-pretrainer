@@ -161,7 +161,7 @@ assets:
     anchor: "### 3. La stage select comprime livello, costo e reward preview"
     alt_it: >-
       Schermata stage select con lista stage a sinistra, livelli beginner e
-      intermediate, costo in ticket, NEXT REWARD, checkbox di skip storia gia
+      intermediate, costo in ticket, NEXT REWARD, checkbox di skip storia già
       letta e pulsanti verifica reward e avvio sfida.
     caption_it: >-
       In [ステージ{{選択|せんたく}}](term:term-stage-select) scegli lo stage a

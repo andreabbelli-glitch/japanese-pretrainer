@@ -218,6 +218,22 @@ Esempi accettabili:
 
 ### 4.5 Regola anti-meta-editoriale
 
+### 4.6 Regola di correttezza dell'italiano
+
+Tutto il testo italiano finale nei contenuti importabili deve essere
+grammaticalmente corretto e ortograficamente rifinito.
+
+Regole minime:
+
+- usa gli accenti corretti (`è`, `può`, `più`, `già`, `cioè`, `così`,
+  `perché`);
+- non usare apostrofi o forme ASCII degradate al posto degli accenti richiesti;
+- vale per `summary`, `meaning_it`, `notes_it`, `example_it`, caption, alt
+  text e prosa libera del textbook.
+
+Un contenuto formalmente valido ma scritto in italiano scorretto non è
+accettabile.
+
 Il contenuto finale non deve parlare del proprio processo di produzione,
 revisione o studio.
 
@@ -310,7 +326,7 @@ status: active
 
 # Sample Anime
 
-Pacchetto di studio dedicato alla serie.
+Lessico e dialoghi ricorrenti della serie.
 ```
 
 Campi obbligatori:
@@ -392,7 +408,7 @@ Esempio:
 id: cards-sample-anime-ep01
 media_id: media-sample-anime
 slug: ep01-cards
-title: Episodio 1 - Core cards
+title: Episodio 1
 order: 10
 segment_ref: episode-01
 ---

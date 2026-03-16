@@ -9,17 +9,12 @@ base_explanation_language: it
 status: active
 tags: [pokemon, videogame, japanese, scarlet-violet]
 description: >-
-  Pacchetto di studio sul giapponese dei videogiochi Pokemon: costruisce prima
-  una base comune su UI, battaglie e tutorial, poi sviluppa un percorso
-  verticale di pre-training su Pokemon Scarlet / Violet.
+  Giapponese dei videogiochi Pokemon: menu, battaglie, tutorial e scene
+  iniziali di Pokemon Scarlet / Violet.
 ---
 
 # Pokemon Scarlet / Violet
 
-Primer generale sui videogiochi Pokemon con spiegazioni in italiano e focus
-operativo su menu, flusso di battaglia, tutorial e comprensione dei dialoghi.
-
-Il segmento `pokemon-videogame-core` costruisce la base riusabile.
-Il segmento `scarlet-violet-story` servirà poi per il pre-training capitolo per
-capitolo, seguendo una guida walkthrough giapponese stabile e abbastanza
-completa da allineare studio e gioco reale.
+Menu, battaglie e tutorial usano formule molto stabili; i dialoghi iniziali di
+`Pokemon Scarlet / Violet` le riusano insieme a lessico di movimento, cattura,
+oggetti e comandi di sistema.

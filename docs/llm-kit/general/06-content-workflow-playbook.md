@@ -241,7 +241,8 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
   fissare", verifica che spieghi subito che cosa significa davvero;
 - verifica che il testo finale non racconti il workflow editoriale o di studio
   al posto del contenuto: niente "questa lesson", "per questo test", "cosa
-  mandare in review", "conviene mettere in review";
+  mandare in review", "conviene mettere in review", "corpus iniziale",
+  "entry canonica", "card canoniche", "in questo seed";
 - verifica che ogni `:::card` abbia `example_jp` e `example_it`, che
   `example_jp` sia una frase completa contestuale e che `example_it` traduca la
   stessa frase;

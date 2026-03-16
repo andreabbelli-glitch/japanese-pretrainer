@@ -191,7 +191,7 @@ notes_it: >-
   prefisso non aggiunge atmosfera: ti avvisa che stai guardando una famiglia di
   field con regole proprie, fra cui il fatto che l'arrivo di un altro
   `D2フィールド` fa uscire quello precedente. Quindi non è un effetto isolato:
-  è un oggetto di board state che sostituisce il `D2` gia presente.
+  è un oggetto di board state che sostituisce il `D2` già presente.
 level_hint: custom
 :::
 
@@ -395,7 +395,7 @@ example_it: >-
   Quando entra un altro D2 Field, metti questo D2 Field nel cimitero.
 notes_it: >-
   `D2` marca un `フィールド` con regole aggiuntive: se entra un altro `D2`,
-  quello gia presente va in cimitero. Il prefisso quindi anticipa una regola di
+  quello già presente va in cimitero. Il prefisso quindi anticipa una regola di
   sostituzione sul board state.
 tags: [core, type, field]
 :::

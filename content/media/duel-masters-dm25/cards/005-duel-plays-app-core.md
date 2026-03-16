@@ -129,8 +129,8 @@ notes_it: >-
   In UI funziona spesso come etichetta-cassetto: non nomina una funzione
   precisa, ma l'area "altro" in cui finiscono opzioni e schermate secondarie.
   In `デュエプレ` va distinta da [{{設定|せってい}}](term:term-settings):
-  `{{設定|せってい}}` e la schermata delle impostazioni, `{{その他|そのた}}` e
-  il menu piu ampio da cui spesso ci arrivi.
+  `{{設定|せってい}}` è la schermata delle impostazioni, `{{その他|そのた}}` è
+  il menu più ampio da cui spesso ci arrivi.
 level_hint: custom
 :::
 
@@ -269,8 +269,8 @@ meaning_it: costruzione / modifica del mazzo
 pos: screen-label
 aliases: [デッキ編成, dekki hensei]
 notes_it: >-
-  Il composto va letto a blocchi: `デッキ` e il mazzo come lista di gioco,
-  [{{編成|へんせい}}](term:term-hensei) e l'atto di organizzarla / comporla.
+  Il composto va letto a blocchi: `デッキ` è il mazzo come lista di gioco,
+  [{{編成|へんせい}}](term:term-hensei) è l'atto di organizzarla / comporla.
   Insieme indicano quindi la schermata in cui prepari e sistemi il mazzo, non il
   deck come zona o oggetto di partita.
 level_hint: custom
@@ -610,8 +610,8 @@ meaning_it: avvia la partita / start battle
 pos: ui-action
 aliases: [対戦開始, taisen kaishi]
 notes_it: >-
-  Il composto unisce `{{対戦|たいせん}}`, cioe confronto / match, e
-  `{{開始|かいし}}`, cioe inizio. Per questo il bottone non ti porta a una
+  Il composto unisce `{{対戦|たいせん}}`, cioè confronto / match, e
+  `{{開始|かいし}}`, cioè inizio. Per questo il bottone non ti porta a una
   schermata informativa: avvia davvero la partita e segna la fine della fase di
   selezione.
 level_hint: n4
@@ -838,7 +838,7 @@ example_it: >-
 notes_it: >-
   Non indica un contenuto specifico come missioni o shop: segnala invece un
   contenitore di voci secondarie. Se lo riconosci, capisci che stai entrando in
-  un menu-cassetto e non in una funzione unica gia definita.
+  un menu-cassetto e non in una funzione unica già definita.
 tags: [duel-plays, app, navigation]
 :::
 
@@ -1242,8 +1242,8 @@ example_jp: >-
 example_it: >-
   Nella Tower of Trials la difficoltà sale gradualmente.
 notes_it: >-
-  Vale la pena come card perché allena un composto kanji poco trasparente ma
-  ricorrente: `試練` = prova, `塔` = torre.
+  Allena un composto kanji poco trasparente ma ricorrente: `試練` = prova,
+  `塔` = torre.
 tags: [duel-plays, app, mode, kanji]
 :::
 

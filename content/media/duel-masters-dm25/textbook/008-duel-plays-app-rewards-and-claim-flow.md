@@ -17,9 +17,6 @@ summary: >-
 
 # Obiettivo
 
-Questo modulo usa tre schermate reali per descrivere in modo operativo il flusso
-di reclamo reward:
-
 - distinguere ciò che è ancora da riscuotere da ciò che è già stato incassato;
 - leggere date, livelli e costo d'ingresso senza perdere il senso pratico;
 - capire quando un popup richiede ancora un'azione e quando certifica un risultato
@@ -132,7 +129,7 @@ cronologia.
 src: assets/ui/stage-select-collab-event.png
 alt: >-
   Schermata stage select con lista stage a sinistra, livelli beginner e
-  intermediate, costo in ticket, NEXT REWARD, checkbox di skip storia gia
+  intermediate, costo in ticket, NEXT REWARD, checkbox di skip storia già
   letta e pulsanti verifica reward e avvio sfida.
 caption: >-
   In [ステージ{{選択|せんたく}}](term:term-stage-select) scegli lo stage a

@@ -134,8 +134,8 @@ indica solo l'aspetto esteriore del Pokemon misterioso: segnala il suo stato
 attuale, cioè la forma indebolita in cui si trova dopo avere consumato la sua
 forza. Per questo la frase `この {{姿|すがた}}じゃ {{戦|たたか}}えねえ` va letta come
 "in questo stato non può ancora combattere", non come un commento estetico.
-Capire [{{姿|すがた}}](term:term-sugata) ti aiuterà più avanti ogni volta che il
-corpus parlerà di forme, cambiamenti o condizioni speciali.
+Capire [{{姿|すがた}}](term:term-sugata) ti aiuterà più avanti ogni volta che
+incontrerai forme, cambiamenti o condizioni speciali.
 
 :::image
 src: assets/story/weakened-legendary-cave-scene.webp
@@ -252,5 +252,4 @@ Violet. Se stabilizzi [{{捕獲|ほかく}}](term:term-hokaku),
 [{{制御|せいぎょ}}する](term:term-seigyo-suru), entri nel capitolo successivo con
 una lettura molto più chiara di tutorial, premi di sistema e primi dialoghi
 seri del gioco.
-
 

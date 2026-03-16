@@ -51,6 +51,10 @@ gioco / nell'interfaccia -> contrasto con la lettura sbagliata piu probabile.
 Evita formule meta come "qui il punto", "conviene fissare", "cosa mandare in
 review", "per questa pagina" o "per questo batch".>
 
+Scrivi sempre in italiano naturale e corretto: usa gli accenti giusti (`è`,
+`può`, `più`, `già`, `cioè`, `così`, `perché`), non sostituirli con apostrofi o
+forme ASCII degradate.
+
 Se proponi flashcard, ricordati che devono servire prima di tutto a imparare il
 giapponese. La priorita e fissare parole giapponesi importanti e pattern
 grammaticali importanti: kanji, lessico riusabile e grammatica. Non proporre
@@ -62,11 +66,16 @@ corpus, non quando e soltanto facilmente traslitterabile.
 
 Anti-esempi da non usare mai:
 
+- `Tre schermate reali mostrano in modo operativo il flusso di reclamo reward.`
+- `In DM25-SD1 il testo Abyss mostra bene una sequenza tipica...`
+- `Lo starter deck e una buona base di lettura operativa...`
+- `Questo modulo usa tre schermate reali...`
 - `Da qui in poi questa pagina non e piu una monografia su una sola carta: diventa l'archivio progressivo delle carte che incontro davvero durante il gioco.`
 - `Il punto piu importante non e la keyword offensiva in se, ma il blocco タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo stato gia presente nel momento del controllo.`
 
 Perche sono sbagliati:
 
+- spiegano la lesson o il materiale scelto invece del giapponese;
 - spiegano la pagina invece del giapponese;
 - dicono che qualcosa e importante senza aprire la grammatica;
 - non mostrano come si legge davvero la frase.

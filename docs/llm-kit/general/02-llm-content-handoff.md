@@ -307,7 +307,20 @@ Evita quindi formule come:
 - "qui il punto e";
 - "conviene fissare / mettere in review";
 - "per questo batch / per questo test";
+- "corpus iniziale", "seed", "entry canonica", "card canoniche";
 - "la fonte ufficiale dice..." come intera spiegazione.
+- `Media dedicato al giapponese di Duel Masters. Il corpus iniziale combina una
+  base minima di lettura del TCG, un asse operativo su デュエプレ e due
+  verticali sugli starter deck...`
+- `Pacchetto di studio sul giapponese dei videogiochi Pokemon: costruisce prima
+  una base comune su UI, battaglie e tutorial, poi sviluppa un percorso
+  verticale di pre-training...`
+- `Non servono ancora come card canoniche in questo seed...`
+- `[レッツゴー] e un ottimo esempio di katakana che qui merita una entry
+  canonica.`
+- `Qui il valore didattico sta nel doppio blocco giapponese...`
+- `Questa card unisce nello stesso chunk tre cose che vale la pena leggere...`
+- `## Flashcard utile`
 - `Da qui in poi questa pagina non e piu una monografia su una sola carta:
   diventa l'archivio progressivo delle carte che incontro davvero durante il
   gioco.`
@@ -321,6 +334,14 @@ fai emergere nel contenuto finale soprattutto:
 - il significato del giapponese;
 - l'effetto concreto nel gioco / nell'interfaccia;
 - il contrasto con letture sbagliate o troppo vaghe.
+
+Queste formule sono sbagliate perche:
+
+- parlano del corso, del batch o della curation invece del giapponese;
+- giustificano perche una card o una entry esiste, invece di spiegarne il
+  significato;
+- descrivono l'utilita in astratto, invece di aprire forma, grammatica e
+  conseguenza concreta.
 
 ### 7.4 Regola obiettivo flashcard
 
@@ -341,6 +362,22 @@ Devono esistere per allenare il giapponese, quindi privilegia:
 - pattern grammaticali importanti che aiutano a leggere altre carte o schermate;
 - chunk completi solo quando il vantaggio sta nel saper leggere quella forma
   giapponese.
+
+### 7.5 Regola di correttezza dell'italiano
+
+Tutto il testo italiano finale deve essere grammaticalmente corretto e
+ortograficamente rifinito.
+
+Regole minime:
+
+- usa gli accenti corretti (`è`, `può`, `più`, `già`, `cioè`, `così`,
+  `perché`);
+- non sostituire gli accenti con apostrofi o forme ASCII degradate;
+- questa regola vale per `summary`, `meaning_it`, `notes_it`, `example_it`,
+  caption, alt text e prosa libera del textbook.
+
+Una spiegazione contenutisticamente giusta ma scritta in italiano scorretto non
+è accettabile.
 
 Evita invece:
 
@@ -426,9 +463,10 @@ Campi descrittivi da compilare sempre:
   sempre il campo `reading` con la lettura completa in hiragana (es. `とき`).
   Se invece e tutto in kana (es. `かわりに`), ometti il campo.
 - Per media.md: compila il campo `description` nel frontmatter (>-) con 1-2
-  frasi che descrivono il pacchetto di studio, il taglio didattico e il target.
-  Questo testo viene mostrato direttamente nell'UI; se assente, viene usato un
-  excerpt automatico troncato del corpo del documento.
+  frasi che descrivono il contenuto visibile e che cosa l'utente imparera a
+  leggere o capire. Non descrivere il curriculum, il seed, il batch o la
+  struttura del bundle. Questo testo viene mostrato direttamente nell'UI; se
+  assente, viene usato un excerpt automatico troncato del corpo del documento.
 - Per ogni file textbook: compila il campo `summary` nel frontmatter (>-) con
   una frase breve (max 160 caratteri) che descrive l'obiettivo della lesson.
   Viene mostrata nella card del textbook e nell'header della pagina; se assente,

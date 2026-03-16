@@ -9,13 +9,16 @@ base_explanation_language: it
 status: active
 tags: [<tag-1>, <tag-2>]
 description: >-
-  <Una o due frasi che descrivono il pacchetto di studio: cosa copre, con quale
-  taglio didattico e a chi si rivolge. Questo testo viene mostrato nell'UI
-  al posto di un excerpt automatico del corpo del file.>
+  <Una o due frasi che descrivono il contenuto visibile del media e che cosa
+  l'utente imparera a leggere o capire. Non parlare di seed, batch, segmento,
+  curriculum, base comune o pacchetto di studio. Questo testo viene mostrato
+  nell'UI al posto di un excerpt automatico del corpo del file.>
 ---
 
 # <titolo-media>
 
-<Corpo del documento: descrizione estesa facoltativa, note operative, contesto
-del media. Questo testo NON viene usato come description nell'UI se il frontmatter
-ha già il campo description compilato.>
+<Corpo del documento facoltativo: descrivi il linguaggio, le schermate, le
+carte o le scene che l'utente incontrera davvero. Non usare questo spazio per
+spiegare la struttura del corso o la roadmap editoriale. Questo testo NON viene
+usato come description nell'UI se il frontmatter ha gia il campo description
+compilato.>

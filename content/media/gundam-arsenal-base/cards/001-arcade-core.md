@@ -149,9 +149,7 @@ reading: すたーたーでっき
 romaji: sutaataa dekki
 meaning_it: mazzo iniziale pronto da usare
 notes_it: >-
-  Nomina un deck già pronto da inserire nel cabinato. Nel corpus serve perché ti
-  dà subito 5 coppie MS + PL complete da leggere, invece di una collezione
-  sparsa o incompleta.
+  Nomina un deck già pronto da inserire nel cabinato.
 level_hint: custom
 :::
 

@@ -104,9 +104,9 @@ sicurezza il prossimo blocco di gioco prima che inizi davvero.
 Oltre ai pattern grammaticali, conviene riconoscere anche alcune formule fisse
 di sistema. `{{手|て}}に {{入|い}}れた！` ti dice che hai ottenuto un oggetto o
 una ricompensa; `バッグに しまった` ti dice che l'oggetto è stato archiviato
-automaticamente nella tasca corretta. Non servono ancora come card canoniche in
-questo seed, ma leggerle bene ti evita di perdere premi, cure o strumenti
-ricevuti durante dialoghi e tutorial.
+automaticamente nella tasca corretta. Sono formule di sistema da riconoscere
+subito: leggerle bene ti evita di perdere premi, cure o strumenti ricevuti
+durante dialoghi e tutorial.
 
 :::image
 src: assets/story/lets-go-auto-battle-field.webp

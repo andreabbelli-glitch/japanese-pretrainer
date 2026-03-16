@@ -45,7 +45,7 @@ I due starter deck usati più avanti mostrano questo contrasto:
 [アビス](term:term-abyss), mentre `DM25-SD2` insiste di più su
 [攻撃](term:term-attack), [進化](term:term-evolution),
 [侵略](term:term-invasion) e [重ねる](term:term-kasaneru).
-La base comune resta invariata: struttura di zona, attore e verbo.
+Restano invariati struttura di zona, attore e verbo.
 
 ## Termini chiave
 
@@ -209,8 +209,7 @@ tecnici.
 
 ### 7. Dove entrano i due starter deck
 
-Con questa base puoi già capire perché i due mazzi scelti come corpus iniziale
-sono utili:
+Con questa base i due starter deck diventano più leggibili:
 
 - `DM25-SD1` allena bene il linguaggio di [墓地](term:term-graveyard),
   recupero e filtri [コスト](term:term-cost);

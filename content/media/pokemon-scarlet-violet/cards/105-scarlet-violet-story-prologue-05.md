@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05
 media_id: media-pokemon-scarlet-violet
 slug: 105-scarlet-violet-story-prologue-05
-title: Scarlet / Violet Story 105 - Prologo 5 cards
+title: Scarlet / Violet Story 105 - Prologo 5
 order: 150
 segment_ref: scarlet-violet-story
 ---

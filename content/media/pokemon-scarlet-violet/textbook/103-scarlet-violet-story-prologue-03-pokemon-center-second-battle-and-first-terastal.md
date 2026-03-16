@@ -102,8 +102,8 @@ caption: >-
 stabilizzi questa differenza, rischi di capire male la frase sul crafting delle
 MT e di cercare quest item dove il gioco sta parlando di drop di specie.
 
-[レッツゴー](term:term-lets-go) e un ottimo esempio di katakana che qui merita
-una entry canonica. Non e uno slogan inglese messo per colore: e il nome del
+[レッツゴー](term:term-lets-go) e un ottimo esempio di katakana da fissare bene.
+Non e uno slogan inglese messo per colore: e il nome del
 comando con cui mandi in avanti il Pokemon in testa alla squadra. Le frasi che
 Nemona usa per spiegarlo, con verbi come `{{拾|ひろ}}ってきて` e
 `{{戦|たたか}}ってきて`, vanno lette con il pattern
@@ -261,5 +261,4 @@ Se stabilizzi [ポケモンセンター](term:term-pokemon-center),
 [テラスタルオーブ](term:term-terastal-orb) e
 [テラスタイプ](term:term-tera-type), il blocco successivo all'accademia sara
 molto piu leggibile sia nei menu sia nei dialoghi guidati.
-
 

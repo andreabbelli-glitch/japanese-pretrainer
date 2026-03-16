@@ -274,7 +274,7 @@ example_jp: >-
 example_it: >-
   Cambia il bersaglio dell'attacco a quella creatura.
 notes_it: >-
-  `{{攻撃先|こうげきさき}}を{{変更|へんこう}}する` riassegna un attacco gia
+  `{{攻撃先|こうげきさき}}を{{変更|へんこう}}する` riassegna un attacco già
   dichiarato a un nuovo bersaglio. In combattimento cambia direttamente quale
   lato subisce l'esito dell'attacco.
 tags: [dm25-sd1, combat, target]
@@ -293,7 +293,7 @@ example_it: >-
   L'avversario salta il resto di quel turno.
 notes_it: >-
   In questa frase `とばす` tronca il turno avversario: dopo la risoluzione, il
-  resto delle azioni di quel turno non viene piu eseguito.
+  resto delle azioni di quel turno non viene più eseguito.
 tags: [dm25-sd1, timing, control]
 :::
 

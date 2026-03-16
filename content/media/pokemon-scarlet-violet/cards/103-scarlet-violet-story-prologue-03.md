@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03
 media_id: media-pokemon-scarlet-violet
 slug: 103-scarlet-violet-story-prologue-03
-title: Scarlet / Violet Story 103 - Prologo 3 cards
+title: Scarlet / Violet Story 103 - Prologo 3
 order: 130
 segment_ref: scarlet-violet-story
 ---
