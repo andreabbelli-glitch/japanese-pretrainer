@@ -1072,8 +1072,10 @@ export function LessonArticle({
               key={index}
             >
               <details className="reader-example-sentence__translation reader-example-sentence__translation--sentence">
-                <summary className="reader-example-sentence__summary jp-inline">
-                  {renderInlineNodes(block.sentence.nodes)}
+                <summary className="reader-example-sentence__summary">
+                  <span className="reader-example-sentence__summary-text jp-inline">
+                    {renderInlineNodes(block.sentence.nodes)}
+                  </span>
                 </summary>
                 <div className="reader-example-sentence__translation-body">
                   <p>{renderInlineNodes(block.translationIt.nodes)}</p>

@@ -149,6 +149,13 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-battle",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%90%E3%83%88%E3%83%AB"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-beginner-class",
       "audio_src": "assets/audio/term/term-beginner-class/forvo-manual-しょきゅう.mp3",
       "audio_source": "forvo",
@@ -400,7 +407,10 @@
       "audio_src": "assets/audio/term/term-face-up/forvo-manual-おもてむき.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%A1%A8%E5%90%91%E3%81%8D/#ja"
+      "audio_page_url": "https://forvo.com/word/%E8%A1%A8%E5%90%91%E3%81%8D/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A1%A8%E5%90%91%E3%81%8D"
     },
     {
       "entry_type": "term",
@@ -529,7 +539,10 @@
       "audio_src": "assets/audio/term/term-match/forvo-manual-たいせん.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%AF%BE%E6%88%A6/#ja"
+      "audio_page_url": "https://forvo.com/word/%E5%AF%BE%E6%88%A6/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%AF%BE%E6%88%A6"
     },
     {
       "entry_type": "term",

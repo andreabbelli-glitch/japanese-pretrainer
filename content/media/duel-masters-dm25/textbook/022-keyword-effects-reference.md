@@ -15,29 +15,9 @@ prerequisites:
     lesson-duel-masters-dm25-dm25-sd2-overview
   ]
 summary: >-
-  Pagina-reference unica per le keyword incontrate finora. Ogni voce mantiene
-  una definizione operativa in giapponese, una traduzione italiana cliccabile e
-  un focus editoriale solo quando compare davvero un pattern o un chunk che non
-  e ancora coperto bene altrove.
+  Keyword di effetto con definizione operativa in giapponese e traduzione
+  italiana cliccabile.
 ---
-
-# Obiettivo
-
-Questa pagina raccoglie in un solo posto le keyword di effetto che sto
-incontrando nel corpus `Duel Masters`.
-
-Qui non duplico ogni volta la spiegazione completa della lesson sorgente:
-
-- tengo una definizione operativa in giapponese;
-- la lascio cliccabile per avere sotto la traduzione italiana;
-- segnalo solo i punti grammaticali o i chunk che meritano davvero un nuovo
-  focus;
-- aggiungo nuove flashcards soltanto quando il materiale esistente non basta.
-
-## Criterio di ordinamento
-
-L'ordine qui e alfabetico per label editoriale della keyword, cosi la pagina
-puo crescere come una vera bank consultabile.
 
 ## Keyword Bank
 
@@ -55,8 +35,9 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Il vero chunk da fissare qui e `{{離|はな}}れるかわりに`: vale come
-  sostituzione, non come effetto separato che parte dopo.
+- `X かわりに Y` significa `invece di X, fai Y`.
+- Qui quindi la carta non lascia il battle zone nel modo normale: il testo
+  sostituisce quell'uscita con il recupero di un'altra creatura.
 
 ### [B・A・D 2](term:term-b-a-d-two)
 
@@ -73,8 +54,8 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Qui il punto utile non e solo il numero `2`, ma il pacchetto intero
-  `costo ridotto + autodistruzione a fine turno`.
+- `コストを2つ少なくしてもよい` da il vantaggio immediato.
+- `終了時に破壊する` aggiunge il prezzo da pagare alla fine del turno.
 
 ### [ブロッカー](term:term-blocker)
 
@@ -91,8 +72,9 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- `かわりに` resta il vero segnale di sostituzione. Se lo vedi, stai leggendo
-  un rimpiazzo di azione, non un semplice bonus.
+- `{{相手|あいて}}プレイヤーを攻撃できない` e una restrizione permanente.
+- `かわりに` indica il rimpiazzo: la creatura si tappa per bloccare al posto di
+  lasciare passare l'attacco.
 
 ### [シビルカウント](term:term-civil-count)
 
@@ -108,8 +90,9 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Qui il focus non e una nuova grammatica, ma il controllo quantitativo: il
-  testo ti fa contare prima di autorizzare l'effetto.
+- `{{数|かず}}あれば` contiene `あれば`, il condizionale di `ある`.
+- Il senso e `se ce n'e il numero richiesto`, quindi prima conti e poi controlli
+  se l'effetto si accende.
 
 ### [G・ストライク](term:term-g-strike)
 
@@ -124,8 +107,8 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Quando una carta dice `「G・ストライク」を{{使|つか}}えない`, il blocco da
-  leggere al volo e il divieto di quella finestra difensiva specifica.
+- In `「G・ストライク」を{{使|つか}}えない`, `使えない` e il blocco da leggere:
+  quell'effetto impedisce proprio l'uso della risposta difensiva.
 
 ### [メテオバーン](term:term-meteorburn)
 
@@ -141,8 +124,9 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Il chunk che merita review qui e `{{下|した}}にあるカード`: molte carte Apollo
-  leggono davvero quella pila come risorsa spendibile.
+- `{{下|した}}にあるカード` nomina il materiale sotto la creatura.
+- Il verbo successivo dice quante carte di quel materiale devi consumare per
+  ottenere il payoff.
 
 ### [S・トリガー](term:term-s-trigger)
 
@@ -157,8 +141,9 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Qui la cosa da fissare non e solo la keyword, ma la sequenza
-  `scudo -> mano -> uso immediato`.
+- `{{手札|てふだ}}に加えた時` fissa il momento del trigger.
+- `コストを払わずに使ってもよい` e il payoff: la carta si usa subito senza
+  costo.
 
 ### [シンカライズ](term:term-shinkarize)
 
@@ -173,8 +158,8 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Qui il verbo veramente operativo e [{{扱|あつか}}う](term:term-atsukau): il
-  testo ti dice come la carta va considerata ai fini della giocata.
+- Il verbo chiave e [{{扱|あつか}}う](term:term-atsukau): il testo dice come la
+  carta deve essere considerata per la giocata di evoluzione.
 
 ### [スピードアタッカー](term:term-speed-attacker)
 
@@ -188,8 +173,9 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Se la keyword e gia chiara, qui non serve una nuova flashcard: basta tenere
-  vivo il riconoscimento immediato.
+- `{{出|で}}たターンに` fissa il turno d'ingresso.
+- `すぐ攻撃できる` dice che l'attacco e permesso subito, senza aspettare il
+  turno successivo.
 
 ### [スーパー・S・トリガー](term:term-super-s-trigger)
 
@@ -204,8 +190,10 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Qui il salto didattico vero e la continuita della risoluzione: non ti fermi a
-  "la uso", ma leggi fino al payoff successivo.
+- `{{使|つか}}った後` significa `dopo averla usata`.
+- `A か、B` introduce l'alternativa.
+- `さらに ... まで` allunga la risoluzione fino a un payoff successivo piu
+  forte.
 
 ### [T・ブレイカー](term:term-t-breaker)
 
@@ -218,8 +206,8 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Qui il lavoro e soprattutto percettivo: riconoscere subito il numero di
-  scudi che salta.
+- `T` codifica il numero `3`: questa keyword significa che la creatura rompe
+  tre scudi.
 
 ### [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution)
 
@@ -234,8 +222,10 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Il punto decisivo qui e la base richiesta: non basta un corpo qualunque, ma
-  una creatura che sia gia evoluzione.
+- `{{進化|しんか}}しているクリーチャー` e una relativa verbale: `una creatura che e
+  gia evoluzione`.
+- `〜の上に` indica la base di sovrapposizione: questa carta si mette sopra
+  quella creatura.
 
 ### [W・ブレイカー](term:term-w-breaker)
 
@@ -248,15 +238,5 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- Anche qui non serve una nuova spiegazione lunga: la bank serve soprattutto a
-  rendere immediato il riconoscimento del chunk.
-
-## Regola editoriale di crescita
-
-Quando una keyword torna in una nuova carta:
-
-- aggiorno questa bank solo se cambia davvero il chunk da fissare o compare una
-  variante nuova;
-- non duplico la spiegazione base se il lavoro utile e soltanto contestuale;
-- creo nuove flashcards solo per nuovi chunk di rules text, non per riscrivere
-  la stessa recognition gia esistente.
+- `W` codifica il numero `2`: questa keyword significa che la creatura rompe
+  due scudi.

@@ -1486,6 +1486,9 @@ rt {
 }
 
 .reader-example-sentence__translation--sentence summary {
+  position: relative;
+  display: block;
+  padding-left: calc(1.4rem + var(--space-3));
   align-items: flex-start;
   font-size: clamp(1.18rem, 1.03rem + 0.38vw, 1.5rem);
   font-weight: 500;
@@ -1515,8 +1518,9 @@ rt {
 }
 
 .reader-example-sentence__translation--sentence summary::before {
-  margin-top: 0.2rem;
-  flex: 0 0 auto;
+  position: absolute;
+  top: 0.35rem;
+  left: 0;
 }
 
 .reader-example-sentence__translation-body {
@@ -1532,6 +1536,11 @@ rt {
 
 .reader-example-sentence__summary {
   margin: 0;
+}
+
+.reader-example-sentence__summary-text {
+  display: block;
+  min-width: 0;
 }
 
 .reader-definition-card,

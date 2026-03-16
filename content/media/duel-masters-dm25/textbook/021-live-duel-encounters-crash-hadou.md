@@ -2,7 +2,7 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-crash-hadou
-title: Live Duel Encounters - archivio carte incontrate
+title: Carte incontrate - Crash Hadou
 order: 50
 segment_ref: live-duel-encounters
 difficulty: n3
@@ -10,71 +10,33 @@ status: active
 tags: [live-duel, card-encounter, extra-turn, beat-jockey, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Questa lesson diventa il log vivo delle carte incontrate in partita. Ogni
-  entry tiene insieme foto, effect lines in giapponese con traduzione
-  cliccabile, focus solo sul nuovo e flashcards davvero utili da aggiungere o
-  mantenere attive.
+  Carta encounter dedicata a Crash Hadou: foto della carta, righe effetto
+  davvero da leggere, spiegazione grammaticale concreta dei pattern nuovi e
+  flashcard utile per il chunk del turno extra.
 ---
 
-# Obiettivo
-
-Da qui in poi questa pagina non e piu una monografia su una sola carta: diventa
-l'archivio progressivo delle carte che incontro davvero durante il gioco.
-
-Per ogni carta voglio tenere sempre lo stesso schema:
-
-- foto della carta;
-- effect lines in giapponese, cliccabili per vedere la traduzione italiana;
-- focus solo su lessico e grammatica che aggiungono qualcosa di nuovo;
-- flashcards nuove soltanto quando il chunk da ricordare non e gia coperto bene.
-
-## Come leggere questa sezione
-
-Quando aggiungiamo una nuova carta qui, il criterio non e "spiegare tutto da
-zero", ma rispondere a tre domande pratiche:
-
-1. quale riga dell'effetto devo saper leggere al volo?
-2. dove sta il vero punto nuovo di grammatica o di lessico?
-3. serve una flashcard nuova oppure basta riusare quelle gia esistenti?
-
-## Carte incontrate
-
-### 1. [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
+# [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
 
 :::image
 src: assets/cards/crash-hadou.png
-alt: "Crash Hadou card, first encounter recorded in the live duel section."
+alt: "Crash Hadou card."
 caption: >-
-  Primo encounter del log: [{{勝利龍装|しょうりりゅうそう}}
-  クラッシュ{{覇道|はどう}}](term:term-crash-hadou), con package aggressivo
-  di keyword e trigger che puo inserire un turno extra.
+  [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)。
+  Razze: [ドラゴンギルド](term:term-dragonguild) /
+  [ビートジョッキー](term:term-beat-jockey)。 Riga centrale: turno extra se
+  viene distrutta da tappata.
 :::
 
-#### Effect lines
+## Keyword presenti sulla carta
 
-:::example_sentence
-jp: >-
-  [B・A・D 2](term:term-b-a-d-two)
-translation_it: >-
-  B.A.D 2.
-reveal_mode: sentence
-:::
+- [B・A・D 2](term:term-b-a-d-two)
+- [スピードアタッカー](term:term-speed-attacker)
+- [W・ブレイカー](term:term-w-breaker)
 
-:::example_sentence
-jp: >-
-  [スピードアタッカー](term:term-speed-attacker)
-translation_it: >-
-  Speed Attacker.
-reveal_mode: sentence
-:::
+Le keyword stanno nella keyword bank. Qui sotto restano solo le righe che
+richiedono parsing della frase.
 
-:::example_sentence
-jp: >-
-  [W・ブレイカー](term:term-w-breaker)
-translation_it: >-
-  W-Breaker.
-reveal_mode: sentence
-:::
+## Effetti da leggere
 
 :::example_sentence
 jp: >-
@@ -99,35 +61,51 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-#### Cosa e davvero nuovo in questo encounter
+## Parsing grammaticale
 
-- Il punto piu importante non e la keyword offensiva in se, ma il blocco
-  `[タップ{{状態|じょうたい}}](term:term-tap-state)でいたら`: qui non basta
-  sapere cos'e [タップ](term:term-tap), bisogna riconoscere lo stato gia
-  presente nel momento del controllo.
-- [～された{{時|とき}}](grammar:grammar-sareta-toki) sposta il trigger in
-  passivo. La carta non dice "quando distruggi", ma "quando viene distrutta".
-- [～の{{後|あと}}に](grammar:grammar-no-ato-ni) non e un "poi" generico:
-  aggancia un turno extra in un punto preciso dell'ordine del turno.
-- Le razze [ドラゴンギルド](term:term-dragonguild) e
-  [ビートジョッキー](term:term-beat-jockey) non sono il focus grammaticale
-  principale, ma servono a leggere subito dove la carta puo essere contata o
-  cercata da altri effetti.
+### 1. このクリーチャーが破壊された時
 
-#### Flashcards da tenere attive o aggiungere
+- `このクリーチャーが` marca il soggetto dell'intera condizione: e questa
+  creatura quella che subisce l'evento.
+- [{{破壊|はかい}}](term:term-destroy) + [～された{{時|とき}}](grammar:grammar-sareta-toki)
+  crea un trigger passivo: `quando viene distrutta`.
+- Il `た` in `された` non e passato narrativo; e la forma che modifica
+  [{{時|とき}}](grammar:grammar-sareta-toki), cioe `nel momento in cui e stata
+  distrutta / quando viene distrutta`.
 
-- Mantieni attive le recognition su
-  [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou),
-  [B・A・D 2](term:term-b-a-d-two) e
-  [スピードアタッカー](term:term-speed-attacker): sono i tre chunk che devono
-  saltare all'occhio subito.
-- Qui vale la pena avere anche una card di chunk per la riga completa del turno
-  extra, perche unisce insieme stato, passivo e timing di inserimento del nuovo
-  turno.
+### 2. タップ状態でいたら
 
-## Crescita futura
+- [タップ{{状態|じょうたい}}](term:term-tap-state) e un nome: `stato tapped`.
+- `でいる` qui non vuol dire "stare facendo", ma "essere in quello stato".
+- `〜たら` aggiunge la condizione: `se era in stato tapped`.
+- Quindi il senso completo e: il turno extra parte solo se, nel momento della
+  distruzione, la creatura si trovava gia tappata.
 
-Le prossime carte incontrate verranno aggiunte qui sotto con lo stesso formato.
-Se una carta riusa keyword gia note, non duplico le spiegazioni base: tengo
-solo il focus contestuale e creo nuove flashcards soltanto quando emerge un
-chunk davvero nuovo.
+### 3. このターンの後に自分のターンを追加する
+
+- [～の{{後|あと}}に](grammar:grammar-no-ato-ni) significa `dopo X`.
+- `このターンの後に` fissa il punto esatto: subito dopo il turno attuale.
+- [{{自分|じぶん}}](term:term-self)のターン chiarisce che il turno aggiunto e il
+  tuo, non un turno generico.
+- [ターンを{{追加|ついか}}する](term:term-add-turn) e il chunk lessicale da
+  fissare come `aggiungere un turno`.
+
+### 4. バトル中
+
+- [バトル](term:term-battle) + [{{中|ちゅう}}](grammar:grammar-ui-chuu) =
+  `durante il battle`.
+- Non vuol dire genericamente `quando attacca`: delimita proprio la finestra
+  dello scontro.
+
+## Lessico utile in questa carta
+
+- [ドラゴンギルド](term:term-dragonguild) e
+  [ビートジョッキー](term:term-beat-jockey) sono le due razze della carta.
+- Se incontri effetti che cercano una di queste razze, questa carta puo essere
+  un bersaglio valido.
+
+## Flashcard utile
+
+- `タップ状態で破壊された時、このターンの後に自分のターンを追加する`
+  e la flashcard nuova che vale la pena tenere: il chunk unisce passivo, stato
+  e timing nello stesso blocco.

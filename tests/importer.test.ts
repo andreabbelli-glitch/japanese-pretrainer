@@ -174,7 +174,7 @@ describe("content importer", () => {
     expect(await countRows(database.query.termAlias.findMany())).toBe(376);
     expect(await countRows(database.query.grammarPattern.findMany())).toBe(23);
     expect(await countRows(database.query.grammarAlias.findMany())).toBe(29);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(487);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(486);
     expect(await countRows(database.query.card.findMany())).toBe(170);
     expect(await countRows(database.query.cardEntryLink.findMany())).toBe(191);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);

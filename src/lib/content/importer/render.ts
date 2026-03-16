@@ -154,7 +154,7 @@ function renderBlock(block: ContentBlock, mediaSlug: string): string {
         return [
           '<section class="reader-example-sentence reader-example-sentence--sentence-toggle">',
           '<details class="reader-example-sentence__translation reader-example-sentence__translation--sentence">',
-          `<summary class="reader-example-sentence__summary jp-inline">${renderInlineNodes(block.sentence.nodes)}</summary>`,
+          `<summary class="reader-example-sentence__summary"><span class="reader-example-sentence__summary-text jp-inline">${renderInlineNodes(block.sentence.nodes)}</span></summary>`,
           '<div class="reader-example-sentence__translation-body">',
           `<p>${renderInlineNodes(block.translationIt.nodes)}</p>`,
           "</div>",
