@@ -5,8 +5,10 @@ import os from "node:os";
 import { parseContentRoot } from "../src/lib/content/validator.ts";
 import {
   fetchForvoPronunciationsForBundle,
-  fetchForvoPronunciationsForBundleManual
+  fetchForvoPronunciationsForBundleManual,
+  resolveRequestedTargets
 } from "../src/lib/forvo-pronunciation-fetch.ts";
+import { reuseCrossMediaPronunciationsForBundle } from "../src/lib/pronunciation-reuse.ts";
 import { writeBundlePronunciationPendingSummary } from "../src/lib/pronunciation-workflow.ts";
 
 type CliOptions = {
@@ -48,7 +50,8 @@ if (!parseResult.ok) {
 
   process.exitCode = 1;
 } else {
-  const bundles = parseResult.data.bundles.filter(
+  let liveBundles = parseResult.data.bundles;
+  const bundles = liveBundles.filter(
     (bundle) =>
       options.mediaSlugs.length === 0 ||
       options.mediaSlugs.includes(bundle.mediaSlug)
@@ -59,9 +62,67 @@ if (!parseResult.ok) {
     process.exitCode = 1;
   } else {
     for (const bundle of bundles) {
+      const hasExplicitRequests =
+        options.entryIds.length > 0 ||
+        options.words.length > 0 ||
+        typeof wordListSource === "string";
+      const reuseTargets = hasExplicitRequests
+        ? resolveRequestedTargets({
+            bundle,
+            entryIds: options.entryIds,
+            refresh: options.refresh,
+            wordListSource,
+            words: options.words
+          }).targets
+        : undefined;
+      const reuseSummary = await reuseCrossMediaPronunciationsForBundle({
+        bundle,
+        bundles: liveBundles,
+        dryRun: options.dryRun,
+        onlyTargets: reuseTargets
+      });
+
+      for (const result of reuseSummary.results) {
+        if (result.status === "reused") {
+          console.info(
+            `  reused ${result.kind}:${result.entryId} <- ${result.sourceMediaSlug}:${result.sourceEntryId}`
+          );
+        } else {
+          console.info(
+            `  ambiguous ${result.kind}:${result.entryId} -> ${result.candidateMediaSlugs
+              .map(
+                (mediaSlug: string, index: number) =>
+                  `${mediaSlug}:${result.candidateEntryIds[index]}`
+              )
+              .join(", ")}`
+          );
+        }
+      }
+
+      let currentBundle = bundle;
+
+      if (!options.dryRun && reuseSummary.reused > 0) {
+        const refreshed = await parseContentRoot(contentRoot);
+
+        if (!refreshed.ok) {
+          throw new Error("Content validation failed after cross-media pronunciation reuse.");
+        }
+
+        liveBundles = refreshed.data.bundles;
+        const refreshedBundle = liveBundles.find(
+          (candidate) => candidate.mediaSlug === bundle.mediaSlug
+        );
+
+        if (!refreshedBundle) {
+          throw new Error(`Bundle '${bundle.mediaSlug}' disappeared after reuse.`);
+        }
+
+        currentBundle = refreshedBundle;
+      }
+
       const summary = options.manual
         ? await fetchForvoPronunciationsForBundleManual({
-            bundle,
+            bundle: currentBundle,
             dryRun: options.dryRun,
             entryIds: options.entryIds,
             limit: options.limit,
@@ -85,7 +146,7 @@ if (!parseResult.ok) {
               profileDir: path.resolve(options.profileDir),
               retryKnownMissing: options.retryKnownMissing
             },
-            bundle,
+            bundle: currentBundle,
             dryRun: options.dryRun,
             entryIds: options.entryIds,
             limit: options.limit,
@@ -124,7 +185,7 @@ if (!parseResult.ok) {
 
       if (!options.dryRun) {
         const pendingSummary = await writeBundlePronunciationPendingSummary({
-          bundle,
+          bundle: currentBundle,
           knownMissingPath: path.resolve(options.knownMissingPath)
         });
 

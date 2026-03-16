@@ -5,6 +5,7 @@ import {
   fetchPronunciationsForBundle,
   type PronunciationFetchNetworkOptions
 } from "../src/lib/pronunciation-fetch.ts";
+import { reuseCrossMediaPronunciationsForBundle } from "../src/lib/pronunciation-reuse.ts";
 import { writeBundlePronunciationPendingSummary } from "../src/lib/pronunciation-workflow.ts";
 
 type CliOptions = {
@@ -32,15 +33,60 @@ if (!parseResult.ok) {
 
   process.exitCode = 1;
 } else {
-  const bundles = parseResult.data.bundles.filter(
+  let liveBundles = parseResult.data.bundles;
+  const bundles = liveBundles.filter(
     (bundle) =>
       options.mediaSlugs.length === 0 ||
       options.mediaSlugs.includes(bundle.mediaSlug)
   );
 
   for (const bundle of bundles) {
-    const summary = await fetchPronunciationsForBundle({
+    const reuseSummary = await reuseCrossMediaPronunciationsForBundle({
       bundle,
+      bundles: liveBundles,
+      dryRun: options.dryRun
+    });
+
+    for (const result of reuseSummary.results) {
+      if (result.status === "reused") {
+        console.info(
+          `  reused ${result.kind}:${result.entryId} <- ${result.sourceMediaSlug}:${result.sourceEntryId}`
+        );
+      } else {
+        console.info(
+          `  ambiguous ${result.kind}:${result.entryId} -> ${result.candidateMediaSlugs
+            .map(
+              (mediaSlug: string, index: number) =>
+                `${mediaSlug}:${result.candidateEntryIds[index]}`
+            )
+            .join(", ")}`
+        );
+      }
+    }
+
+    let currentBundle = bundle;
+
+    if (!options.dryRun && reuseSummary.reused > 0) {
+      const refreshed = await parseContentRoot(contentRoot);
+
+      if (!refreshed.ok) {
+        throw new Error("Content validation failed after cross-media pronunciation reuse.");
+      }
+
+      liveBundles = refreshed.data.bundles;
+      const refreshedBundle = liveBundles.find(
+        (candidate) => candidate.mediaSlug === bundle.mediaSlug
+      );
+
+      if (!refreshedBundle) {
+        throw new Error(`Bundle '${bundle.mediaSlug}' disappeared after reuse.`);
+      }
+
+      currentBundle = refreshedBundle;
+    }
+
+    const summary = await fetchPronunciationsForBundle({
+      bundle: currentBundle,
       cacheRoot,
       dryRun: options.dryRun,
       limit: options.limit,
@@ -64,7 +110,7 @@ if (!parseResult.ok) {
 
     if (!options.dryRun) {
       const pendingSummary = await writeBundlePronunciationPendingSummary({
-        bundle,
+        bundle: currentBundle,
         knownMissingPath: path.resolve(process.cwd(), "data", "forvo-known-missing.json")
       });
 

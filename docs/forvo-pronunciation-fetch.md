@@ -8,12 +8,15 @@ persistente per scaricare pronunce MP3 da Forvo e inserirle nel bundle locale.
 Questo non e il primo step del workflow pronunce.
 
 Forvo e un fallback da usare solo dopo `pnpm pronunciations:fetch`, sulle sole
-entry rimaste senza audio. La source of truth del processo completo e
+entry rimaste senza audio anche dopo il controllo di riuso cross-media. La
+source of truth del processo completo e
 `docs/pronunciation-workflow.md`.
 
 ## Quando usarlo
 
 - hai gia eseguito il fetch offline e restano entry senza audio locale;
+- hai gia lasciato che il workflow riusasse gli audio compatibili presenti in
+  altri media;
 - hai un account Forvo e puoi scaricare manualmente gli MP3 dal browser;
 - vuoi passare una lista mirata di parole o entry invece di processare tutto il
   bundle.
@@ -21,6 +24,8 @@ entry rimaste senza audio. La source of truth del processo completo e
 ## Come funziona
 
 - legge `content/` con lo stesso parser/validator dell'import;
+- prima di aprire Forvo prova automaticamente a riusare audio gia presenti in
+  altri media con stessa entry type, stesso label e stessa reading;
 - apre Chrome via Playwright con profilo persistente in `data/forvo-profile/`;
 - se Cloudflare o il login richiedono intervento, ti lascia completare la
   pagina nel browser e poi riprende il batch;
@@ -87,6 +92,8 @@ term-taberu
 - default: browser headed, perche Forvo passa da Cloudflare e sessione login;
 - `--headless` esiste ma non e consigliato per il flusso reale;
 - `--manual` e la modalita operativa standard per questo repo; usa il browser Playwright solo per debug mirato o manutenzione del fetcher;
+- se una voce esiste gia in un altro media compatibile, il comando deve
+  collegarla e non proportela su Forvo;
 - batch operativo consigliato: `10` entry alla volta;
 - gli skip persistenti finiscono di default in `data/forvo-known-missing.json`;
 - il residuo operativo corrente vive in

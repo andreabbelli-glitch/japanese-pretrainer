@@ -186,6 +186,22 @@ level_hint: custom
 :::
 
 :::term
+id: term-harau
+lemma: 払う
+reading: はらう
+romaji: harau
+meaning_it: pagare
+pos: godan-verb
+aliases: [払う, はらう, harau]
+notes_it: >-
+  Nei rules text di Duel Masters compare soprattutto in blocchi come
+  `コストを{{払|はら}}う` o `コストを{{払|はら}}わずに`. Non parla di soldi:
+  ti dice se devi spendere mana oppure se l'effetto ti permette di saltare quel
+  pagamento.
+level_hint: n4
+:::
+
+:::term
 id: term-power
 lemma: パワー
 reading: ぱわー
@@ -749,6 +765,20 @@ level_hint: n4
 :::
 
 :::grammar
+id: grammar-zuni
+pattern: ～ずに
+title: Senza fare
+reading: ずに
+meaning_it: senza fare / senza aver fatto
+aliases: [～ないで]
+notes_it: >-
+  Collega un verbo in forma negativa all'azione successiva. In frasi come
+  `コストを{{払|はら}}わずに{{使|つか}}う`, prima ti dice quale passaggio non fai,
+  poi ti dice quale azione puoi comunque compiere.
+level_hint: n4
+:::
+
+:::grammar
 id: grammar-kawarini
 pattern: かわりに
 title: Sostituzione
@@ -781,6 +811,34 @@ aliases: [～でいれば, ～していれば]
 notes_it: >-
   Controlla uno stato già realizzato. In pratica la carta guarda se una certa
   condizione è già vera e, solo in quel caso, concede il resto dell'effetto.
+level_hint: n4
+:::
+
+:::grammar
+id: grammar-tara
+pattern: ～たら
+title: Condizione se / quando
+meaning_it: se / quando
+aliases: [たら]
+notes_it: >-
+  Apre una condizione che decide se il blocco successivo si attiva davvero. Nel
+  rules text spesso controlla uno stato o un evento appena verificato, come in
+  `タップ状態でいたら`.
+level_hint: n4
+:::
+
+:::grammar
+id: grammar-areba
+pattern: あれば / ～であれば
+title: Condizione di esistenza o soglia
+reading: あれば / であれば
+meaning_it: se c'è / se è / se vale la condizione
+aliases: [であれば]
+notes_it: >-
+  È il condizionale usato quando il testo controlla se esiste un numero,
+  una quantità o uno stato sufficiente. In carte come
+  `{{数|かず}}あれば` o `{{3以上|さんいじょう}}であれば`, prima verifichi la
+  soglia e solo dopo leggi l'effetto che si accende.
 level_hint: n4
 :::
 
@@ -919,6 +977,30 @@ tags: [core, keyword]
 :::
 
 :::card
+id: card-blocker-operational-concept
+entry_type: term
+entry_id: term-blocker
+card_type: concept
+front: >-
+  {{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない。{{相手|あいて}}の
+  クリーチャーが{{攻撃|こうげき}}する{{時|とき}}、かわりにこの
+  クリーチャーをタップしてもよい。
+back: >-
+  Non può attaccare il giocatore avversario; quando una creatura avversaria
+  attacca, puoi tapparla al suo posto per bloccare.
+example_jp: >-
+  ブロッカーを{{持|も}}つクリーチャーは、
+  {{相手|あいて}}プレイヤーを{{直接|ちょくせつ}}{{攻撃|こうげき}}できない。
+example_it: >-
+  Una creatura con Blocker non può attaccare direttamente il giocatore
+  avversario.
+notes_it: >-
+  Questa è la lettura operativa della keyword: una restrizione permanente più
+  un rimpiazzo difensivo con `かわりに ... タップしてもよい`.
+tags: [core, keyword, defense]
+:::
+
+:::card
 id: card-evolution-recognition
 entry_type: term
 entry_id: term-evolution
@@ -968,6 +1050,29 @@ notes_it: >-
   Collega i Tamaseed alle carte di evoluzione. La risoluzione usa una
   sovrapposizione con un Tamaseed come base.
 tags: [core, keyword, dm25-sd2]
+:::
+
+:::card
+id: card-shinkarize-connection-concept
+entry_type: term
+entry_id: term-shinkarize
+card_type: concept
+front: >-
+  {{進化元|しんかもと}}にも{{進化先|しんかさき}}にもなれるように{{扱|あつか}}って、
+  {{進化|しんか}}のつながりを{{作|つく}}る。
+back: >-
+  La tratta in modo che possa funzionare sia come base sia come estensione di
+  un'evoluzione, creando il collegamento evolutivo.
+example_jp: >-
+  このタマシードを{{進化元|しんかもと}}にも{{進化先|しんかさき}}にもなれるように
+  {{扱|あつか}}う。
+example_it: >-
+  Tratta questo Tamaseed in modo che possa funzionare sia come base sia come
+  estensione di un'evoluzione.
+notes_it: >-
+  Qui il punto non è il nome della keyword ma il verbo `扱う` con il doppio
+  ruolo `進化元 / 進化先`, che spiega davvero come leggere la meccanica.
+tags: [core, keyword, evolution, dm25-sd2]
 :::
 
 :::card
@@ -1038,6 +1143,24 @@ notes_it: >-
   È il numero di mana richiesto per giocare la carta. Nel testo effetto può
   anche diventare un filtro, per esempio in `コスト{{4以下|よんいか}}`.
 tags: [core, anatomy, filter]
+:::
+
+:::card
+id: card-harau-recognition
+entry_type: term
+entry_id: term-harau
+card_type: recognition
+front: 払う
+back: pagare
+example_jp: >-
+  コストを{{払|はら}}ってこのカードを{{使|つか}}う。
+example_it: >-
+  Paghi il costo e usi questa carta.
+notes_it: >-
+  In Duel Masters compare quasi sempre legato al costo. Quando lo vedi in
+  negativo, come in `{{払|はら}}わずに`, la carta ti sta dicendo che puoi saltare
+  il pagamento.
+tags: [core, action, kanji, cost]
 :::
 
 :::card
@@ -1572,6 +1695,26 @@ tags: [core, keyword]
 :::
 
 :::card
+id: card-s-trigger-no-cost-usage-concept
+entry_type: term
+entry_id: term-s-trigger
+card_type: concept
+front: コストを払わずに使ってもよい
+back: puoi usarla senza pagarne il costo
+example_jp: >-
+  シールドがブレイクされてこのカードを{{手札|てふだ}}に{{加|くわ}}えた{{時|とき}}、
+  このカードをコストを{{払|はら}}わずに{{使|つか}}ってもよい。
+example_it: >-
+  Quando questa carta entra in mano da uno scudo rotto, puoi usarla senza
+  pagarne il costo.
+notes_it: >-
+  È il payoff operativo tipico di S・トリガー. La lettura chiave è doppia:
+  `{{払|はら}}わずに` = senza pagare, `{{使|つか}}ってもよい` = puoi scegliere di
+  usarla subito.
+tags: [core, keyword, cost, option]
+:::
+
+:::card
 id: card-w-breaker-recognition
 entry_type: term
 entry_id: term-w-breaker
@@ -1674,6 +1817,24 @@ tags: [core, grammar, option]
 :::
 
 :::card
+id: card-zuni-concept
+entry_type: grammar
+entry_id: grammar-zuni
+card_type: concept
+front: ～ずに
+back: senza fare / senza
+example_jp: >-
+  コストを{{払|はら}}わずにこの{{呪文|じゅもん}}を{{使|つか}}う。
+example_it: >-
+  Usi questa magia senza pagarne il costo.
+notes_it: >-
+  Prima ti dice quale azione non fai, poi collega subito il verbo successivo.
+  In rules text è un pattern molto utile per leggere costi saltati o passaggi
+  evitati.
+tags: [core, grammar, negation]
+:::
+
+:::card
 id: card-kawarini-concept
 entry_type: grammar
 entry_id: grammar-kawarini
@@ -1721,6 +1882,41 @@ example_it: >-
 notes_it: >-
   Controlla uno stato già soddisfatto. La carta verifica una situazione già
   vera prima di concedere il resto dell'effetto.
+tags: [core, grammar, condition]
+:::
+
+:::card
+id: card-tara-condition-concept
+entry_type: grammar
+entry_id: grammar-tara
+card_type: concept
+front: ～たら
+back: se / quando
+example_jp: >-
+  タップ{{状態|じょうたい}}でいたら、その{{条件|じょうけん}}を{{満|み}}たす。
+example_it: >-
+  Se era in stato tapped, soddisfa quella condizione.
+notes_it: >-
+  Apre una condizione reale nel rules text. Dopo `～たら` va controllato se lo
+  stato o l'evento nominato si è davvero verificato.
+tags: [core, grammar, condition]
+:::
+
+:::card
+id: card-areba-concept
+entry_type: grammar
+entry_id: grammar-areba
+card_type: concept
+front: あれば / ～であれば
+back: se c'è / se è / se vale la soglia
+example_jp: >-
+  コストの{{合計|ごうけい}}が{{3以上|さんいじょう}}であれば、この
+  クリーチャーの「S・トリガー」を{{使|つか}}ってもよい。
+example_it: >-
+  Se la somma dei costi è 3 o più, puoi usare l'S-Trigger di questa creatura.
+notes_it: >-
+  È il condizionale tipico di soglie e quantità. Prima controlli numero o
+  stato, poi leggi il blocco che diventa valido.
 tags: [core, grammar, condition]
 :::
 

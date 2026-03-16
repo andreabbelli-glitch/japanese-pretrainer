@@ -117,10 +117,25 @@ export async function fetchForvoPronunciationsForBundle(input: {
   words?: string[];
   entryIds?: string[];
 }) {
-  const allTargets = collectPronunciationTargets(input.bundle);
-  const filteredTargets = allTargets.filter(
-    (entry) => !entry.audioSrc || input.refresh
+  const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
+
+  if (manifest.issues.length > 0) {
+    throw new Error(
+      `Cannot update pronunciations for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
+    );
+  }
+
+  const manifestEntries = new Map<string, PronunciationManifestEntry>(
+    (manifest.manifest?.entries ?? []).map((entry) => [
+      `${entry.entryType}:${entry.entryId}`,
+      entry
+    ])
   );
+  const allTargets = collectPronunciationTargets(input.bundle);
+  const isStillMissing = (entry: PronunciationTargetEntry) =>
+    input.refresh ||
+    !(entry.audioSrc || manifestEntries.get(`${entry.kind}:${entry.id}`)?.audioSrc);
+  const filteredTargets = allTargets.filter(isStillMissing);
   const hasExplicitRequests =
     (input.entryIds?.length ?? 0) > 0 ||
     (input.words?.length ?? 0) > 0 ||
@@ -132,8 +147,10 @@ export async function fetchForvoPronunciationsForBundle(input: {
     wordListSource: input.wordListSource,
     words: input.words
   });
-  const selectedTargets =
-    hasExplicitRequests ? requestedTargets.targets : filteredTargets;
+  const selectedTargets = (hasExplicitRequests
+    ? requestedTargets.targets
+    : filteredTargets
+  ).filter(isStillMissing);
   const limitedTargets =
     typeof input.limit === "number" && input.limit >= 0
       ? selectedTargets.slice(0, input.limit)
@@ -179,20 +196,6 @@ export async function fetchForvoPronunciationsForBundle(input: {
     };
   }
 
-  const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
-
-  if (manifest.issues.length > 0) {
-    throw new Error(
-      `Cannot update pronunciations for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
-    );
-  }
-
-  const manifestEntries = new Map<string, PronunciationManifestEntry>(
-    (manifest.manifest?.entries ?? []).map((entry) => [
-      `${entry.entryType}:${entry.entryId}`,
-      entry
-    ])
-  );
   const context = await chromium.launchPersistentContext(input.browser.profileDir, {
     acceptDownloads: true,
     channel: "chrome",
@@ -278,10 +281,25 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
   wordListSource?: string;
   words?: string[];
 }) {
-  const allTargets = collectPronunciationTargets(input.bundle);
-  const filteredTargets = allTargets.filter(
-    (entry) => !entry.audioSrc || input.refresh
+  const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
+
+  if (manifest.issues.length > 0) {
+    throw new Error(
+      `Cannot update pronunciations for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
+    );
+  }
+
+  const manifestEntries = new Map<string, PronunciationManifestEntry>(
+    (manifest.manifest?.entries ?? []).map((entry) => [
+      `${entry.entryType}:${entry.entryId}`,
+      entry
+    ])
   );
+  const allTargets = collectPronunciationTargets(input.bundle);
+  const isStillMissing = (entry: PronunciationTargetEntry) =>
+    input.refresh ||
+    !(entry.audioSrc || manifestEntries.get(`${entry.kind}:${entry.id}`)?.audioSrc);
+  const filteredTargets = allTargets.filter(isStillMissing);
   const hasExplicitRequests =
     (input.entryIds?.length ?? 0) > 0 ||
     (input.words?.length ?? 0) > 0 ||
@@ -293,8 +311,10 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
     wordListSource: input.wordListSource,
     words: input.words
   });
-  const selectedTargets =
-    hasExplicitRequests ? requestedTargets.targets : filteredTargets;
+  const selectedTargets = (hasExplicitRequests
+    ? requestedTargets.targets
+    : filteredTargets
+  ).filter(isStillMissing);
   const limitedTargets =
     typeof input.limit === "number" && input.limit >= 0
       ? selectedTargets.slice(0, input.limit)
@@ -340,20 +360,6 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
     };
   }
 
-  const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
-
-  if (manifest.issues.length > 0) {
-    throw new Error(
-      `Cannot update pronunciations for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
-    );
-  }
-
-  const manifestEntries = new Map<string, PronunciationManifestEntry>(
-    (manifest.manifest?.entries ?? []).map((entry) => [
-      `${entry.entryType}:${entry.entryId}`,
-      entry
-    ])
-  );
   const results = [];
 
   try {

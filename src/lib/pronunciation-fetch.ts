@@ -38,6 +38,7 @@ let nextAllowedNetworkRequestAt = 0;
 export type PronunciationTargetEntry = {
   aliases: string[];
   audioSrc?: string;
+  crossMediaGroup?: string;
   id: string;
   kind: EntryKind;
   label: string;
@@ -107,13 +108,6 @@ export async function fetchPronunciationsForBundle(input: {
   network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
 }) {
-  const entries = collectPronunciationTargets(input.bundle).filter(
-    (entry) => !entry.audioSrc || input.refresh
-  );
-  const limitedEntries =
-    typeof input.limit === "number" && input.limit >= 0
-      ? entries.slice(0, input.limit)
-      : entries;
   const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
 
   if (manifest.issues.length > 0) {
@@ -128,6 +122,17 @@ export async function fetchPronunciationsForBundle(input: {
       entry
     ])
   );
+  const entries = collectPronunciationTargets(input.bundle).filter((entry) => {
+    if (input.refresh) {
+      return true;
+    }
+
+    return !(entry.audioSrc || manifestEntries.get(`${entry.kind}:${entry.id}`)?.audioSrc);
+  });
+  const limitedEntries =
+    typeof input.limit === "number" && input.limit >= 0
+      ? entries.slice(0, input.limit)
+      : entries;
   const results = [];
 
   for (const entry of limitedEntries) {
@@ -617,6 +622,7 @@ function mapTermToPronunciationTarget(
   return {
     aliases: entry.aliases,
     audioSrc: entry.audio?.audioSrc,
+    crossMediaGroup: entry.crossMediaGroup,
     id: entry.id,
     kind: "term",
     label: entry.lemma,
@@ -633,6 +639,7 @@ function mapGrammarToPronunciationTarget(
   return {
     aliases: entry.aliases,
     audioSrc: entry.audio?.audioSrc,
+    crossMediaGroup: entry.crossMediaGroup,
     id: entry.id,
     kind: "grammar",
     label: entry.pattern,

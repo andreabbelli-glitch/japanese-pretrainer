@@ -150,9 +150,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-battle",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%90%E3%83%88%E3%83%AB"
+      "audio_src": "assets/audio/term/term-battle/forvo-manual-は-とる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%90%E3%83%88%E3%83%AB/#ja"
     },
     {
       "entry_type": "term",
@@ -455,6 +456,14 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%89%8B%E6%9C%AD"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-harau",
+      "audio_src": "assets/audio/term/term-harau/forvo-manual-はらう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%89%95%E3%81%86/#ja"
     },
     {
       "entry_type": "term",

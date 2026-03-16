@@ -308,6 +308,12 @@ Evita quindi formule come:
 - "conviene fissare / mettere in review";
 - "per questo batch / per questo test";
 - "la fonte ufficiale dice..." come intera spiegazione.
+- `Da qui in poi questa pagina non e piu una monografia su una sola carta:
+  diventa l'archivio progressivo delle carte che incontro davvero durante il
+  gioco.`
+- `Il punto piu importante non e la keyword offensiva in se, ma il blocco
+  タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo
+  stato gia presente nel momento del controllo.`
 
 Se una fonte ufficiale serve, usala per confermare un testo o una regola, ma
 fai emergere nel contenuto finale soprattutto:
@@ -315,6 +321,45 @@ fai emergere nel contenuto finale soprattutto:
 - il significato del giapponese;
 - l'effetto concreto nel gioco / nell'interfaccia;
 - il contrasto con letture sbagliate o troppo vaghe.
+
+### 7.4 Regola obiettivo flashcard
+
+Le flashcard non sono mini-riassunti di game design o di ruling.
+
+Questa e la priorita primaria:
+
+- tutto il sistema serve al 100% per insegnare giapponese;
+- quindi le flashcard devono nascere prima di tutto da parole giapponesi
+  importanti e pattern grammaticali importanti;
+- se c'e tensione tra chiarezza meccanica e valore linguistico, vince il valore
+  linguistico.
+
+Devono esistere per allenare il giapponese, quindi privilegia:
+
+- kanji da riconoscere bene;
+- lessico o chunk importanti che ricompaiono in altre frasi;
+- pattern grammaticali importanti che aiutano a leggere altre carte o schermate;
+- chunk completi solo quando il vantaggio sta nel saper leggere quella forma
+  giapponese.
+
+Evita invece:
+
+- card create solo per ricordare "cosa succede in partita";
+- parafrasi italiane del regolamento senza una forma giapponese forte da
+  fissare;
+- duplicati concettuali che non aumentano la capacita di leggere il testo
+  originale.
+- flashcard di puro katakana se il loro unico contenuto e una parola gia
+  trasparente o facilmente traslitterabile.
+- scelte che ignorano un pattern grammaticale importante o una parola
+  importante del corpus per aggiungere invece una card piu "comoda" ma meno
+  utile per il giapponese.
+
+Eccezione:
+
+- usa una card di katakana puro solo quando il termine e ricorrente, poco
+  trasparente o importante per la lettura del corpus, e quando la card allena
+  anche il suo ruolo nel testo, non soltanto la sua lettura.
 
 ## 8. Prompt template consigliato
 
@@ -343,12 +388,25 @@ Vincoli obbligatori:
 - Ogni blocco `:::card` deve includere sempre `example_jp` + `example_it`.
   `example_jp` deve essere una frase giapponese completa e contestuale utile
   sul retro review, non una parola isolata o una ripetizione del `front`.
+- Le flashcard devono avere un obiettivo linguistico chiaro: allenare kanji,
+  lessico o grammatica giapponese. Non creare card che servono solo a
+  memorizzare una meccanica di gioco in astratto.
+- Se il contenuto introduce una parola giapponese importante o un pattern
+  grammaticale importante ancora scoperto, trattalo come candidato primario a
+  nuova flashcard.
+- Non creare flashcard di puro katakana per parole banali o trasparenti: di
+  default non aggiungono vero valore di studio.
 - Non scrivere spiegazioni tautologiche del tipo "X e utile/importante":
   ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa
   capire o fare nel media.
 - Non scrivere meta-discorso nel contenuto finale: niente "questa lesson",
   "qui facciamo review", "per questo batch", "conviene fissare" o "verifica
   ufficiale" come contenuto principale della spiegazione.
+- Non scrivere nemmeno frasi come:
+  `Da qui in poi questa pagina non e piu una monografia...`
+  `Il punto piu importante non e la keyword offensiva in se...`
+  Queste formule sono sbagliate perche parlano della pagina o dell'importanza
+  del punto, ma non spiegano il giapponese.
 - Quando spieghi un punto, preferisci questa sequenza: forma giapponese ->
   significato letterale o tecnico -> effetto concreto nel gioco /
   nell'interfaccia -> contrasto con la lettura sbagliata piu probabile.

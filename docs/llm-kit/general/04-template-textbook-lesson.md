@@ -51,6 +51,33 @@ gioco / nell'interfaccia -> contrasto con la lettura sbagliata piu probabile.
 Evita formule meta come "qui il punto", "conviene fissare", "cosa mandare in
 review", "per questa pagina" o "per questo batch".>
 
+Se proponi flashcard, ricordati che devono servire prima di tutto a imparare il
+giapponese. La priorita e fissare parole giapponesi importanti e pattern
+grammaticali importanti: kanji, lessico riusabile e grammatica. Non proporre
+card che riassumono soltanto la meccanica del gioco senza un vero target
+linguistico.
+Evita anche card di puro katakana se non c'e un motivo forte di lettura:
+vanno bene solo quando il termine e davvero ricorrente, opaco o rilevante nel
+corpus, non quando e soltanto facilmente traslitterabile.
+
+Anti-esempi da non usare mai:
+
+- `Da qui in poi questa pagina non e piu una monografia su una sola carta: diventa l'archivio progressivo delle carte che incontro davvero durante il gioco.`
+- `Il punto piu importante non e la keyword offensiva in se, ma il blocco タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo stato gia presente nel momento del controllo.`
+
+Perche sono sbagliati:
+
+- spiegano la pagina invece del giapponese;
+- dicono che qualcosa e importante senza aprire la grammatica;
+- non mostrano come si legge davvero la frase.
+
+Forma corretta attesa:
+
+- `タップ状態` = sintagma nominale, "stato tapped"`
+- `でいる` = essere in quello stato
+- `〜たら` = se / quando
+- `このターンの後に` = dopo questo turno
+
 Puoi usare furigana inline con la sintassi `{{base|reading}}`, per esempio
 `{{<kanji>|<reading>}}`. Se c'e un composto numerico con contatore o
 qualificatore, annota tutto il blocco: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
@@ -124,4 +151,9 @@ Una spiegazione debole del tipo "X e utile da fissare" non basta: scrivi
   "questa lesson", "qui facciamo review", "per questo test", "conviene mettere
   in review" o "verifichiamo la fonte": se una fonte serve, usala solo per
   sostenere una spiegazione sul testo o sulla regola.
+- Anti-esempi aggiuntivi da evitare sempre:
+  `Da qui in poi questa pagina non e piu una monografia...`
+  `Il punto piu importante non e la keyword offensiva in se...`
+  Se un testo somiglia a questi esempi, riscrivilo come analisi di grammatica,
+  timing, condizione, target o funzione nel rules text.
 -->

@@ -1231,6 +1231,23 @@ tags: [duel-plays, app, mode]
 :::
 
 :::card
+id: card-tower-of-trials-recognition
+entry_type: term
+entry_id: term-tower-of-trials
+card_type: recognition
+front: '{{試練|しれん}}の{{塔|とう}}'
+back: torre delle prove / Tower of Trials
+example_jp: >-
+  {{試練|しれん}}の{{塔|とう}}で{{段階的|だんかいてき}}に{{難易度|なんいど}}が{{上|あ}}がる。
+example_it: >-
+  Nella Tower of Trials la difficoltà sale gradualmente.
+notes_it: >-
+  Vale la pena come card perché allena un composto kanji poco trasparente ma
+  ricorrente: `試練` = prova, `塔` = torre.
+tags: [duel-plays, app, mode, kanji]
+:::
+
+:::card
 id: card-achievement-recognition
 entry_type: term
 entry_id: term-achievement

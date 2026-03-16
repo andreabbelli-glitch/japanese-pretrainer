@@ -77,7 +77,7 @@ reveal_mode: sentence
 
 - [タップ{{状態|じょうたい}}](term:term-tap-state) e un nome: `stato tapped`.
 - `でいる` qui non vuol dire "stare facendo", ma "essere in quello stato".
-- `〜たら` aggiunge la condizione: `se era in stato tapped`.
+- [～たら](grammar:grammar-tara) aggiunge la condizione: `se era in stato tapped`.
 - Quindi il senso completo e: il turno extra parte solo se, nel momento della
   distruzione, la creatura si trovava gia tappata.
 

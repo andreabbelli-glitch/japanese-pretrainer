@@ -194,6 +194,20 @@ notes_it: >-
 level_hint: custom
 :::
 
+:::grammar
+id: grammar-youni
+pattern: ～ように
+title: Criterio da soddisfare
+meaning_it: in modo che / così che
+aliases: [ように]
+notes_it: >-
+  Nel rules text introduce il criterio che l'azione deve soddisfare. In
+  frasi come `{{合計|ごうけい}}したものが{{5以上|ごいじょう}}になるように`, non
+  descrive un desiderio: imposta la condizione pratica con cui devi rivelare o
+  scegliere le carte.
+level_hint: n4
+:::
+
 :::card
 id: card-red-zone-recognition
 entry_type: term
@@ -305,6 +319,28 @@ tags: [dm25-sd2, keyword, evolution]
 :::
 
 :::card
+id: card-ultimate-evolution-placement-concept
+entry_type: term
+entry_id: term-ultimate-evolution
+card_type: concept
+front: >-
+  {{進化|しんか}}しているクリーチャーの{{上|うえ}}に、さらに{{重|かさ}}ねて{{出|だ}}す。
+back: >-
+  La metti sopra una creatura che è già evoluzione, aggiungendo un altro
+  livello di evoluzione.
+example_jp: >-
+  {{究極進化|きゅうきょくしんか}}では、{{進化|しんか}}しているクリーチャーの
+  {{上|うえ}}にさらに{{重|かさ}}ねて{{出|だ}}す。
+example_it: >-
+  Con Ultimate Evolution la metti sopra una creatura già evoluzione,
+  sovrapponendola ancora.
+notes_it: >-
+  Qui il pezzo importante è la relativa `進化しているクリーチャー` più
+  `～の上に`, che insieme dicono quale base è legalmente valida.
+tags: [dm25-sd2, keyword, evolution, chunk]
+:::
+
+:::card
 id: card-meteorburn-recognition
 entry_type: term
 entry_id: term-meteorburn
@@ -339,6 +375,29 @@ notes_it: >-
   Distingue la variante super dalla keyword base. In gioco prepara una risposta
   dagli scudi con ingresso immediato piu forte del normale S-Trigger.
 tags: [dm25-sd2, keyword, shield]
+:::
+
+:::card
+id: card-super-s-trigger-branching-concept
+entry_type: term
+entry_id: term-super-s-trigger
+card_type: concept
+front: >-
+  シールドから{{使|つか}}った{{後|あと}}、そのままクリーチャーを{{出|だ}}すか、
+  さらに{{強|つよ}}い{{追加効果|ついかこうか}}まで{{続|つづ}}けて{{使|つか}}える。
+back: >-
+  Dopo averla usata dallo scudo, puoi far entrare subito una creatura oppure
+  arrivare fino a un effetto aggiuntivo più forte.
+example_jp: >-
+  スーパー・S・トリガーなら、{{使|つか}}った{{後|あと}}にそのまま
+  クリーチャーを{{出|だ}}すか、さらに{{追加効果|ついかこうか}}まで{{使|つか}}える。
+example_it: >-
+  Con Super S-Trigger, dopo averla usata puoi far entrare subito una creatura
+  oppure continuare fino all'effetto aggiuntivo.
+notes_it: >-
+  Questa card allena il branching del rules text: `～た後`, l'alternativa
+  `A か、B` e l'estensione `さらに ... まで`.
+tags: [dm25-sd2, keyword, shield, chunk]
 :::
 
 :::card
@@ -408,4 +467,23 @@ notes_it: >-
   Assegna controllo sull'ordine finale. In risoluzione decide il giocatore come
   rimettere le carte, quindi influenza direttamente le pescate successive.
 tags: [dm25-sd2, grammar, order]
+:::
+
+:::card
+id: card-youni-concept
+entry_type: grammar
+entry_id: grammar-youni
+card_type: concept
+front: ～ように
+back: in modo che / così da soddisfare
+example_jp: >-
+  コスト{{表記|ひょうき}}にある{{数字|すうじ}}を{{合計|ごうけい}}したものが
+  {{5以上|ごいじょう}}になるように、カードを{{表向|おもてむ}}きにする。
+example_it: >-
+  Rivela carte in modo che la somma dei numeri stampati nel costo arrivi a 5 o
+  più.
+notes_it: >-
+  In questo uso non esprime intenzione personale: indica il criterio pratico
+  che l'azione deve soddisfare.
+tags: [dm25-sd2, grammar, condition]
 :::

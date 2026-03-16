@@ -90,7 +90,8 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- `{{数|かず}}あれば` contiene `あれば`, il condizionale di `ある`.
+- `{{数|かず}}あれば` contiene [あれば](grammar:grammar-areba), il condizionale di
+  `ある`.
 - Il senso e `se ce n'e il numero richiesto`, quindi prima conti e poi controlli
   se l'effetto si accende.
 
@@ -142,8 +143,10 @@ reveal_mode: sentence
 :::
 
 - `{{手札|てふだ}}に加えた時` fissa il momento del trigger.
-- `コストを払わずに使ってもよい` e il payoff: la carta si usa subito senza
-  costo.
+- `[コスト](term:term-cost)を[{{払|はら}}わず](term:term-harau)に` usa il pattern
+  [～ずに](grammar:grammar-zuni): ti dice quale passaggio viene saltato.
+- `{{使|つか}}ってもよい` e la parte opzionale del payoff: puoi scegliere di
+  usare subito la carta.
 
 ### [シンカライズ](term:term-shinkarize)
 

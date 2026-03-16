@@ -12,25 +12,29 @@ Quando in una nuova chat arriva una richiesta del tipo:
 - "riempi gli audio che non ci sono ancora"
 
 il flusso corretto non parte da Forvo. Parte sempre dal fetch offline su fonti
-libere e usa Forvo solo come fallback manuale sulle entry rimaste scoperte.
+libere, riusa prima gli audio gia presenti in altri media compatibili e usa
+Forvo solo come fallback manuale sulle entry rimaste scoperte.
 
 ## Flusso canonico
 
 1. Identifica le entry del bundle che non hanno ancora audio locale valido.
 2. Escludi solo le entry che hanno gia audio locale nel Markdown o in
    `pronunciations.json`.
-3. Esegui il fetch offline con `pnpm pronunciations:fetch`.
-4. Raccogli il riepilogo del comando e riporta chiaramente:
+3. Prima di cercare audio fuori dal bundle, controlla sempre se esiste gia una
+   card equivalente in un altro media con stesso tipo entry, stesso label e
+   stessa reading; in quel caso riusa lo stesso audio e collega le due card.
+4. Esegui il fetch offline con `pnpm pronunciations:fetch`.
+5. Raccogli il riepilogo del comando e riporta chiaramente:
    - quante entry sono state completate;
    - quali entry sono ancora senza audio;
    - eventuali errori o limitazioni del run.
-5. Se dopo il fetch offline restano mancanti, proponi il fallback Forvo.
-6. Se il fallback viene richiesto, costruisci un batch Forvo solo con le entry
+6. Se dopo il fetch offline restano mancanti, proponi il fallback Forvo.
+7. Se il fallback viene richiesto, costruisci un batch Forvo solo con le entry
    ancora mancanti, escludendo quelle gia marcate in
    `data/forvo-known-missing.json`.
-7. Per Forvo usa batch da `10` come default operativo, salvo richiesta diversa
+8. Per Forvo usa batch da `10` come default operativo, salvo richiesta diversa
    dell'utente.
-8. Mantieni aggiornata la lista residua in
+9. Mantieni aggiornata la lista residua in
    `content/media/<slug>/workflow/pronunciation-pending.json`.
 
 ## Fase 1: fetch offline primario
@@ -51,6 +55,7 @@ Comandi utili:
 
 Questo step:
 
+- esegue automaticamente un pass di riuso cross-media prima del download;
 - usa Lingua Libre e Wikimedia Commons come fonti reali di download;
 - usa `en.wiktionary` e `ja.wiktionary` solo come indice per trovare file
   Commons collegati;
@@ -79,6 +84,9 @@ Forvo non e il primo step. Si usa solo se:
 
 Per Forvo:
 
+- riesegui sempre il controllo cross-media prima di aprire Forvo; se esiste gia
+  un audio compatibile in un altro media, va riusato e Forvo non va aperto per
+  quella entry;
 - costruisci la lista solo dalle entry ancora senza audio dopo la fase 1;
 - escludi quelle presenti in `data/forvo-known-missing.json`, salvo richiesta
   esplicita di retry;
@@ -101,6 +109,8 @@ La documentazione operativa dettagliata di Forvo resta in
 - Non saltare direttamente a Forvo quando la richiesta utente e generica.
 - Non usare il browser Playwright per i batch reali Forvo; il comportamento
   standard e il browser normale in `--manual`.
+- Non aprire Forvo per entry che possono essere collegate a un audio gia
+  presente in un altro media compatibile.
 - Non proporre batch Forvo su tutto il bundle se prima non e stato eseguito il
   fetch offline o non e stato almeno riportato un elenco dei mancanti.
 - Le entry gia marcate in `data/forvo-known-missing.json` vanno escluse dal

@@ -228,6 +228,51 @@ Da evitare nel textbook e in `notes_it`:
 - "conviene fissare / mettere in review";
 - "per questo batch / per questo test";
 - "la fonte ufficiale dice..." come frase principale della spiegazione.
+- `Da qui in poi questa pagina non e piu una monografia su una sola carta:
+  diventa l'archivio progressivo delle carte che incontro davvero durante il
+  gioco.`
+- `Il punto piu importante non e la keyword offensiva in se, ma il blocco
+  タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo
+  stato gia presente nel momento del controllo.`
+
+### 4.6 Regola obiettivo flashcard
+
+Le flashcard servono prima di tutto, e in modo prioritario, a imparare il
+giapponese.
+
+Questa e la regola primaria del sistema:
+
+- lo scopo principale non e memorizzare regole del gioco;
+- lo scopo principale e fissare parole giapponesi importanti e pattern
+  grammaticali importanti;
+- se devi scegliere tra una card di meccanica e una card di giapponese, scegli
+  la card di giapponese.
+
+Quindi una `:::card` e giustificata quando allena almeno uno di questi aspetti:
+
+- riconoscimento di kanji o letture importanti;
+- lessico o chunk giapponesi importanti e riusabili;
+- pattern grammaticali importanti che aiutano a leggere altre frasi del corpus;
+- un chunk effetto completo, ma solo se il valore didattico sta nella sua forma
+  giapponese e non in un riassunto astratto della regola.
+
+Da evitare:
+
+- flashcard che insegnano solo "cosa fa la carta" senza allenare una forma
+  giapponese precisa;
+- back che riassumono la regola di gioco ma non aiutano a leggere il testo;
+- chunk creati solo per memorizzare la meccanica, senza valore su kanji,
+  lessico o grammatica.
+- flashcard di puro katakana quando il contenuto non allena altro oltre alla
+  semplice traslitterazione.
+- scelte che lasciano fuori una parola giapponese importante o un pattern
+  grammaticale importante per fare spazio a una card di sola meccanica.
+
+Eccezione stretta:
+
+- una card su katakana puro ha senso solo se il termine e davvero opaco,
+  ricorrente e necessario per leggere il corpus, e se la card allena anche il
+  suo ruolo o uso concreto, non solo la pronuncia.
 
 Se una fonte serve, va usata solo per sostenere una spiegazione sul testo, sulla
 regola o sulla schermata. La frase visibile all'utente deve restare centrata su:
@@ -235,6 +280,15 @@ regola o sulla schermata. La frase visibile all'utente deve restare centrata su:
 - che cosa significa il giapponese;
 - che cosa succede nel gioco / nell'interfaccia;
 - quale contrasto o ambiguita conviene sciogliere.
+
+Se stai per scrivere una frase simile agli ultimi due anti-esempi, fermati e
+riscrivila come parsing concreto di:
+
+- forma grammaticale;
+- condizione;
+- timing;
+- soggetto / bersaglio;
+- effetto operativo.
 
 ## 5. `media.md`
 
@@ -400,6 +454,15 @@ Regola review obbligatoria per `:::card`:
   `front`;
 - `example_it` deve tradurre quella stessa frase in italiano in modo utile per
   il retro review.
+- Il valore review della card deve restare linguistico: la carta deve aiutare a
+  leggere kanji, lessico o grammatica giapponese, non solo a ricordare una
+  regola del gioco.
+- Se una sezione introduce un pattern grammaticale importante o una parola
+  giapponese importante che non e ancora coperta, la default action e creare la
+  flashcard relativa.
+- Una card con `front` in puro katakana non e di default una buona card: va
+  evitata se non allena anche un uso ricorrente, una distinzione utile nel
+  corpus o un reale ostacolo di lettura.
 
 Campi opzionali del blocco `:::card`:
 

@@ -1474,6 +1474,10 @@ rt {
   gap: var(--space-3);
 }
 
+.reader-example-sentence__translation--sentence {
+  display: block;
+}
+
 .reader-example-sentence__translation summary {
   display: flex;
   align-items: center;
@@ -1488,11 +1492,16 @@ rt {
 .reader-example-sentence__translation--sentence summary {
   position: relative;
   display: block;
+  width: 100%;
   padding-left: calc(1.4rem + var(--space-3));
   align-items: flex-start;
   font-size: clamp(1.18rem, 1.03rem + 0.38vw, 1.5rem);
   font-weight: 500;
   line-height: 1.7;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  writing-mode: horizontal-tb;
 }
 
 .reader-example-sentence__translation summary::-webkit-details-marker {
@@ -1539,8 +1548,19 @@ rt {
 }
 
 .reader-example-sentence__summary-text {
-  display: block;
+  display: inline;
   min-width: 0;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  writing-mode: horizontal-tb;
+}
+
+.reader-example-sentence__summary-text .reader-ref,
+.reader-example-sentence__summary-text .reader-ruby,
+.reader-example-sentence__summary-text ruby {
+  white-space: nowrap;
+  writing-mode: horizontal-tb;
 }
 
 .reader-definition-card,

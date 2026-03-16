@@ -196,6 +196,31 @@ tags: [live-duel, keyword, cost]
 :::
 
 :::card
+id: card-b-a-d-two-operational-concept
+entry_type: term
+entry_id: term-b-a-d-two
+card_type: concept
+front: >-
+  このクリーチャーの{{召喚|しょうかん}}コストを{{2|ふた}}つ{{少|すく}}なくしてもよい。
+  そうした{{場合|ばあい}}、このターン{{終了時|しゅうりょうじ}}にこの
+  クリーチャーを{{破壊|はかい}}する。
+back: >-
+  Puoi ridurre di 2 il costo di evocazione di questa creatura; se lo fai, alla
+  fine di questo turno la distruggi.
+example_jp: >-
+  B・A・D 2を{{使|つか}}うと、{{召喚|しょうかん}}コストを{{2|ふた}}つ
+  {{少|すく}}なくできるが、{{終了時|しゅうりょうじ}}にこのクリーチャーを
+  {{破壊|はかい}}する。
+example_it: >-
+  Se usi B.A.D 2 puoi ridurre di 2 il costo di evocazione, ma alla fine del
+  turno distruggi questa creatura.
+notes_it: >-
+  Qui il valore didattico sta nel doppio blocco giapponese: vantaggio immediato
+  `少なくしてもよい` e prezzo finale `終了時に破壊する`.
+tags: [live-duel, keyword, cost, chunk]
+:::
+
+:::card
 id: card-speed-attacker-recognition
 entry_type: term
 entry_id: term-speed-attacker

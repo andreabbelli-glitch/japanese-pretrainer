@@ -299,7 +299,8 @@ Qui il parser giusto e:
 
 - [{{合計|ごうけい}}](term:term-goukei) ti dice che devi sommare, non leggere
   una singola cifra.
-- `〜ように` e istruzione pratica sul criterio da soddisfare.
+- [～ように](grammar:grammar-youni) e istruzione pratica sul criterio da
+  soddisfare.
 - [～てから](grammar:grammar-te-kara) impone un ordine obbligato: prima mostri,
   poi aggiungi.
 
@@ -417,5 +418,4 @@ Sequenza di lettura del piano testuale:
   - ストリエ{{雷鬼|らいき}}の{{巻|まき}} per [シンカライズ](term:term-shinkarize).
   - {{冒険妖精|ぼうけんようせい}}ポレコ per
     [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing).
-
 
