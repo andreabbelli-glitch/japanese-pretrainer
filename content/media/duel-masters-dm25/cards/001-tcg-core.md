@@ -16,10 +16,10 @@ meaning_it: creatura
 pos: noun
 aliases: [クリーチャー, kuriichaa]
 notes_it: >-
-  È il tipo di carta più importante di Duel Masters. Le creature entrano nel
+  È il tipo di carta base di Duel Masters. Le creature entrano nel
   バトルゾーン, possono attaccare, possono essere distrutte e spesso portano
-  keyword o effetti continui. In questo media la vedrai sia da sola sia dentro
-  composti come `{{進化|しんか}}クリーチャー`.
+  keyword o effetti continui. Compare sia da sola sia dentro composti come
+  `{{進化|しんか}}クリーチャー`.
 level_hint: custom
 :::
 
@@ -33,8 +33,8 @@ pos: noun
 aliases: [呪文, じゅもん, jumon]
 notes_it: >-
   Indica una magia. Di solito la giochi, risolvi l'effetto e poi la carta va in
-  {{墓地|ぼち}}. Quando leggi {{呪文|じゅもん}}, aspettati un effetto immediato
-  più che una presenza stabile sul campo.
+  {{墓地|ぼち}}. Nel rules text {{呪文|じゅもん}} indica quindi una risoluzione
+  immediata, non una presenza stabile sul campo.
 level_hint: n4
 :::
 
@@ -48,9 +48,9 @@ pos: noun
 aliases: [タマシード, tamashiido]
 notes_it: >-
   È un tipo di carta che resta nel バトルゾーン ma non si legge come una normale
-  creatura. In questo media conta soprattutto perché può diventare base per
-  {{進化|しんか}} o per シンカライズ. Quando compare, chiediti subito se la carta
-  viene trattata come supporto o come parte di una sovrapposizione.
+  creatura. Conta soprattutto perché può diventare base per
+  {{進化|しんか}} o per シンカライズ. Quando compare, va verificato se la carta
+  è trattata come supporto o come parte di una sovrapposizione.
 level_hint: custom
 :::
 
@@ -64,7 +64,7 @@ pos: keyword
 aliases: [ブロッカー, burokkaa]
 notes_it: >-
   È una keyword difensiva. Ti dice che quella creatura può fermare un attacco
-  avversario. Quando la vedi, pensa subito a una funzione di protezione del
+  avversario. Segnala quindi una funzione di protezione del
   campo o degli scudi.
 level_hint: custom
 :::
@@ -113,8 +113,9 @@ aliases: [シンカライズ, shinkaraizu]
 notes_it: >-
   È la keyword che collega i タマシード alle carte di evoluzione. In pratica ti
   sta dicendo che il Tamaseed non va letto come pezzo isolato: può funzionare
-  da base su cui sovrapporre un'altra carta. Se trovi シンカライズ, pensa subito
-  a una meccanica di evoluzione appoggiata su un supporto già in campo.
+  da base su cui sovrapporre un'altra carta. Se trovi シンカライズ, la
+  risoluzione include una meccanica di evoluzione appoggiata su un supporto già
+  in campo.
 level_hint: custom
 :::
 
@@ -179,8 +180,8 @@ aliases: [コスト, kosuto]
 notes_it: >-
   È il numero che ti dice quanta mana serve per giocare la carta. Nel testo
   effetto compare continuamente anche come filtro, per esempio
-  `コスト{{4以下|よんいか}}`. Quando lo vedi, chiediti se sta parlando del costo da
-  pagare o del limite di una carta bersaglio.
+  `コスト{{4以下|よんいか}}`. Quando compare, va distinto il costo da pagare dal
+  limite di costo della carta bersaglio.
 level_hint: custom
 :::
 
@@ -209,9 +210,9 @@ pos: noun
 aliases: [合計, ごうけい, goukei]
 notes_it: >-
   Indica il conteggio totale combinato di più elementi. In Duel Masters compare
-  spesso in filtri come `{{合計|ごうけい}}{{4つ以上|よっついじょう}}` e ti dice che
-  non devi contare categorie separate, ma sommare tutto nello stesso controllo.
-  Quando lo vedi insieme a `または`, leggi le due parti come un unico totale.
+  spesso in filtri come `{{合計|ごうけい}}{{4つ以上|よっついじょう}}`: il
+  conteggio somma tutto nello stesso controllo, non in categorie separate.
+  Insieme a `または`, le due parti entrano nello stesso totale.
 level_hint: n4
 :::
 
@@ -255,7 +256,7 @@ pos: noun
 aliases: [マナゾーン, manazoon]
 notes_it: >-
   È la zona delle risorse con cui paghi il costo delle carte. Quando una carta
-  parla di コスト, questa è la zona che devi tenere a mente. Nel testo effetto
+  parla di コスト, questa è la zona di riferimento. Nel testo effetto
   può comparire anche come luogo da cui spostare o controllare carte.
 level_hint: custom
 :::
@@ -271,7 +272,8 @@ aliases: [シールドゾーン, shiirudozoon]
 notes_it: >-
   È la zona dei 5 scudi iniziali. Conta perché gli scudi sono il bersaglio
   principale degli attacchi e perché da qui si attivano spesso carte con
-  S・トリガー. Se leggi シールド, pensa subito a difesa e rottura degli scudi.
+  S・トリガー. Se leggi シールド, la lettura operativa è difesa e rottura degli
+  scudi.
 level_hint: custom
 :::
 
@@ -287,8 +289,7 @@ notes_it: >-
   È il mazzo di gioco. In Duel Masters compare molto spesso in frasi come
   `{{山札|やまふだ}}の{{上|うえ}}からX{{枚|まい}}` perché molte carte fanno
   pescare, mandano carte al cimitero o controllano la cima del mazzo. La lettura
-  da fissare bene è
-  {{山札|やまふだ}}.
+  chiave è {{山札|やまふだ}}.
 level_hint: n4
 :::
 
@@ -301,9 +302,9 @@ meaning_it: mano / hand
 pos: noun
 aliases: [手札, てふだ, tefuda]
 notes_it: >-
-  È la mano del giocatore. Nel testo delle carte compare spesso quando devi
-  scartare, mostrare, scegliere o far entrare una carta in gioco. La lettura da
-  memorizzare è {{手札|てふだ}}.
+  È la mano del giocatore. Nel testo delle carte compare spesso in azioni di
+  scarto, rivelazione, scelta o ingresso in gioco dalla mano. La lettura chiave
+  è {{手札|てふだ}}.
 level_hint: n4
 :::
 
@@ -318,9 +319,8 @@ aliases: [墓地, ぼち, bochi]
 notes_it: >-
   È il cimitero del gioco. Qui finiscono spesso carte usate, distrutte o
   scartate, ma da qui molte carte possono anche essere recuperate o rimesse in
-  campo. In questo media è una zona centrale soprattutto in SD1, quindi quando
-  leggi {{墓地|ぼち}} chiediti subito se l'effetto manda carte lì oppure le prende
-  da lì.
+  campo. In SD1 è una zona centrale: quando leggi {{墓地|ぼち}}, va verificato se
+  l'effetto manda carte lì oppure le recupera da lì.
 level_hint: n4
 :::
 
@@ -334,8 +334,8 @@ pos: noun
 aliases: [自分, じぶん, jibun]
 notes_it: >-
   Nel testo delle carte significa quasi sempre "tu" o "il giocatore che
-  controlla questo effetto". Quando lo vedi, capisci subito da quale lato del
-  tavolo devi leggere l'azione.
+  controlla questo effetto". Quando compare, l'azione va letta dal lato del
+  controllore.
 level_hint: n5
 :::
 
@@ -398,8 +398,8 @@ aliases: [攻撃, こうげき, kougeki]
 notes_it: >-
   Indica l'attacco. Compare spesso in trigger come
   `{{攻撃|こうげき}}する{{時|とき}}` e in condizioni che si attivano proprio mentre
-  una creatura sta attaccando. Se vedi {{攻撃|こうげき}}, pensa subito a timing di
-  combattimento.
+  una creatura sta attaccando. Se vedi {{攻撃|こうげき}}, il riferimento è il
+  timing di combattimento.
 level_hint: n4
 :::
 
@@ -491,8 +491,8 @@ aliases: [出る, でる, deru]
 notes_it: >-
   È il verbo intransitivo di ingresso. La carta "entra" o "appare" nel campo.
   Nelle carte compare spesso in trigger come
-  `このクリーチャーが{{出|で}}た{{時|とき}}`. Quando lo vedi, pensa al fatto che la
-  carta entra da sola nella frase, senza indicare chi la mette.
+  `このクリーチャーが{{出|で}}た{{時|とき}}`. Qui il trigger è sull'ingresso della
+  carta, senza indicare chi la mette.
 level_hint: n5
 :::
 
@@ -536,8 +536,8 @@ meaning_it: aggiungere / mettere in mano
 pos: godan-verb
 aliases: [加える, くわえる, kuwaeru]
 notes_it: >-
-  Nel rules text conviene leggerlo come verbo di spostamento utile, non come
-  "aggiungere" generico. In frasi come
+  Nel rules text è un verbo di spostamento, non un "aggiungere" generico. In
+  frasi come
   `{{山札|やまふだ}}から{{手札|てふだ}}に{{加|くわ}}える` o
   `シールドゾーンから{{手札|てふだ}}に{{加|くわ}}える`, il punto pratico è che
   la carta entra davvero nella tua mano.
@@ -553,8 +553,8 @@ meaning_it: scegliere
 pos: godan-verb
 aliases: [選ぶ, えらぶ, erabu]
 notes_it: >-
-  Vuol dire scegliere un bersaglio o una carta. È il verbo che ti fa capire che
-  l'effetto non è casuale ma richiede una selezione precisa.
+  Vuol dire scegliere un bersaglio o una carta. Segnala che l'effetto non è
+  casuale ma richiede una selezione precisa.
 level_hint: n5
 :::
 
@@ -582,9 +582,8 @@ meaning_it: scartare / buttare via
 pos: ichidan-verb
 aliases: [捨てる, すてる, suteru]
 notes_it: >-
-  Significa scartare, di solito dalla mano. Quando lo vedi, pensa subito a una
-  perdita di risorse in mano o a un costo da pagare per ottenere un altro
-  effetto.
+  Significa scartare, di solito dalla mano. Indica una perdita di risorse in
+  mano o un costo da pagare per ottenere un altro effetto.
 level_hint: n5
 :::
 
@@ -630,7 +629,7 @@ aliases: [残る, のこる, nokoru]
 notes_it: >-
   Vuol dire che una carta resta sul campo invece di andarsene. In Duel Masters
   compare spesso per chiarire che una carta rimane nel バトルゾーン anche se la
-  creatura collegata {{離|はな}}れる, oppure che dopo una rimozione devi guardare
+  creatura collegata {{離|はな}}れる, oppure che dopo una rimozione vanno guardate
   solo le carte ancora presenti. Leggilo quindi come verbo di persistenza sul
   campo.
 level_hint: n4
@@ -834,8 +833,8 @@ reading: のはじめに / のおわりに
 meaning_it: all'inizio di / alla fine di
 aliases: [ターンのはじめに, ターンの終わりに]
 notes_it: >-
-  Serve a fissare un punto preciso del turno. Prima di leggere il resto,
-  chiediti sempre: l'effetto scatta all'inizio o alla fine di qualcosa?
+  Fissa un punto preciso del turno. La prima verifica è se l'effetto scatta
+  all'inizio o alla fine di qualcosa.
 level_hint: n4
 :::
 
@@ -846,8 +845,8 @@ title: Restrizione o eccezione
 meaning_it: però / salvo che / con la seguente limitazione
 aliases: [但し]
 notes_it: >-
-  Introduce una limitazione finale. In pratica ti dice che l'effetto vale, ma
-  con un confine preciso che non puoi superare.
+  Introduce una limitazione finale: l'effetto vale, ma entro un confine preciso
+  che non può essere superato.
 level_hint: n4
 :::
 
@@ -863,9 +862,8 @@ example_jp: >-
 example_it: >-
   Questa creatura può attaccare.
 notes_it: >-
-  È il tipo di carta base del gioco. Se la vedi, pensa a una carta che entra nel
-  campo, attacca, blocca o subisce effetti. Nel testo può comparire anche come
-  bersaglio o come requisito.
+  È il tipo di carta base del gioco: entra nel campo, attacca, blocca o subisce
+  effetti. Nel testo può comparire anche come bersaglio o come requisito.
 tags: [core, type]
 :::
 
@@ -882,7 +880,7 @@ example_it: >-
   Usa questa magia e pesca 1 carta.
 notes_it: >-
   Indica una magia. In genere la giochi per il suo effetto e poi non resta sul
-  campo. Quando leggi {{呪文|じゅもん}}, aspettati un effetto immediato.
+  campo. {{呪文|じゅもん}} segnala quindi una risoluzione immediata.
 tags: [core, type]
 :::
 
@@ -898,9 +896,8 @@ example_jp: >-
 example_it: >-
   Sovrapponi una creatura evoluzione su questo Tamaseed.
 notes_it: >-
-  È un tipo di carta che resta nel campo e che, in questo media, conta
-  soprattutto come base per {{進化|しんか}} o シンカライズ. Non leggerla come una
-  creatura normale.
+  È un tipo di carta che resta nel campo e funge soprattutto da base per
+  {{進化|しんか}} o シンカライズ. Non va letta come una creatura normale.
 tags: [core, type, keyword]
 :::
 
@@ -968,8 +965,8 @@ example_jp: >-
 example_it: >-
   Questo Tamaseed può usare Shinkarize.
 notes_it: >-
-  Serve a collegare i Tamaseed alle carte di evoluzione. Quando lo vedi, pensa
-  subito a una meccanica di sovrapposizione con un Tamaseed come base.
+  Collega i Tamaseed alle carte di evoluzione. La risoluzione usa una
+  sovrapposizione con un Tamaseed come base.
 tags: [core, keyword, dm25-sd2]
 :::
 
@@ -1072,8 +1069,8 @@ example_jp: >-
 example_it: >-
   Scegli fino a 3 creature e/o Tamaseed in totale.
 notes_it: >-
-  Segnala un conteggio aggregato. Se compare, devi sommare tutti gli elementi
-  validi nello stesso filtro invece di leggerli come controlli separati.
+  Segnala un conteggio aggregato. Se compare, il filtro somma tutti gli elementi
+  validi invece di trattarli come controlli separati.
 tags: [core, filter, kanji]
 :::
 
@@ -1124,7 +1121,7 @@ example_it: >-
   Metti questa carta nella mana zone.
 notes_it: >-
   È la zona delle risorse. Se una carta parla di pagare il costo o di spostare
-  carte nella mana, devi pensare a questa zona.
+  carte nella mana, questa è la zona di riferimento.
 tags: [core, zone]
 :::
 
@@ -1158,7 +1155,7 @@ example_it: >-
   Pesca 1 carta dalla cima del mazzo.
 notes_it: >-
   Significa "mazzo". Compare spesso in frasi come
-  `{{山札|やまふだ}}の{{上|うえ}}からX{{枚|まい}}`. La lettura da fissare bene è
+  `{{山札|やまふだ}}の{{上|うえ}}からX{{枚|まい}}`. La lettura chiave è
   {{山札|やまふだ}}.
 tags: [core, zone, kanji]
 :::
@@ -1192,9 +1189,9 @@ example_jp: >-
 example_it: >-
   Rimetti 1 carta dal cimitero nella tua mano.
 notes_it: >-
-  Significa "cimitero". In questo media è una zona centrale soprattutto in SD1.
-  Se compare, chiediti subito se l'effetto manda carte nel cimitero, le riprende
-  da lì o le mette di nuovo in campo. La lettura è {{墓地|ぼち}}.
+  Significa "cimitero". In SD1 è una zona centrale.
+  Se compare, va verificato se l'effetto manda carte nel cimitero, le riprende
+  da lì o le rimette in campo. La lettura è {{墓地|ぼち}}.
 tags: [core, zone, kanji, dm25-sd1]
 :::
 
@@ -1263,7 +1260,7 @@ example_it: >-
 notes_it: >-
   Indica la normale evocazione di una creatura pagando il costo. Se una carta
   distingue `{{召喚|しょうかん}}` da altri modi di entrare in gioco, sta facendo un
-  contrasto regolisticamente importante.
+  contrasto regolistico diretto.
 tags: [core, action, kanji]
 :::
 
@@ -1280,7 +1277,7 @@ example_it: >-
   Quando questa creatura attacca, pesca 1 carta.
 notes_it: >-
   Significa "attacco". Compare spesso in trigger e condizioni: se lo vedi,
-  aspettati un effetto che si attiva durante il combattimento.
+  si attiva un effetto durante il combattimento.
 tags: [core, action, kanji]
 :::
 
@@ -1414,7 +1411,7 @@ example_jp: >-
 example_it: >-
   Metti questa carta nel cimitero.
 notes_it: >-
-  È un verbo molto comune e molto neutro. Per capirlo davvero devi guardare la
+  È un verbo molto comune e neutro. Il significato operativo dipende dalla
   destinazione: nel cimitero, nel mazzo, sopra una carta o altrove.
 tags: [core, action, kanji]
 :::
@@ -1431,8 +1428,8 @@ example_jp: >-
 example_it: >-
   Aggiungi 1 carta dalla shield zone alla tua mano.
 notes_it: >-
-  Conviene fissarlo insieme alle zone: ti aiuta a riconoscere subito quando una
-  carta finisce in mano invece di entrare in campo o andare in un'altra zona.
+  Va letto insieme alle zone: indica quando una carta finisce in mano invece di
+  entrare in campo o andare in un'altra zona.
 tags: [core, action, kanji]
 :::
 
@@ -1534,8 +1531,8 @@ example_it: >-
   Anche se quella creatura lascia il campo, questa carta resta.
 notes_it: >-
   Indica che la carta continua a restare sul campo o nella zona attuale. In
-  Duel Masters è utile perché oppone l'idea di permanenza a verbi di uscita
-  come {{離|はな}}れる.
+  Duel Masters oppone l'idea di permanenza ai verbi di uscita come
+  {{離|はな}}れる.
 tags: [core, action, kanji]
 :::
 
@@ -1739,7 +1736,7 @@ example_jp: >-
 example_it: >-
   Quando questa creatura entra con un metodo diverso dall'evocazione, pesca 1 carta.
 notes_it: >-
-  Esclude un mezzo preciso. Se compare, chiediti subito quale metodo viene
+  Esclude un mezzo preciso. Se compare, va identificato quale metodo viene
   escluso dal testo.
 tags: [core, grammar, restriction]
 :::
@@ -1807,7 +1804,7 @@ example_jp: >-
 example_it: >-
   Pesca 2 carte. Tuttavia, scarta 1 carta dalla mano.
 notes_it: >-
-  Introduce la limitazione finale dell'effetto. Dopo ただし devi cercare il
+  Introduce la limitazione finale dell'effetto. Dopo ただし va individuato il
   confine che restringe quello che hai appena letto.
 tags: [core, grammar, restriction]
 :::

@@ -17,8 +17,8 @@ notes_it: >-
   In Scarlet / Violet non e solo il posto dove curi la squadra. E il nodo dove
   rimetti in sesto la [{{手持ち|てもち}}](term:term-te-mochi), compri oggetti,
   usi il [わざマシン](term:term-waza-machine) e, dopo lo sblocco,
-  ricarichi il [テラスタルオーブ](term:term-terastal-orb). Quando lo vedi sulla
-  mappa o nei dialoghi, il gioco ti sta indicando un checkpoint operativo.
+  ricarichi il [テラスタルオーブ](term:term-terastal-orb). Quando compare sulla
+  mappa o nei dialoghi, indica un checkpoint operativo.
 :::
 
 :::card
@@ -32,7 +32,7 @@ example_jp: >-
   ポケモンセンターが {{見|み}}えたら いったん {{手持ち|てもち}}を
   {{整|ととの}}えよう。
 example_it: >-
-  Appena vedi un Centro Pokemon, conviene sistemare un attimo la squadra.
+  Quando vedi un Centro Pokemon, puoi sistemare la squadra.
 :::
 
 :::term
@@ -44,7 +44,7 @@ meaning_it: negozio del Centro Pokemon
 notes_it: >-
   Non nomina un negozio qualsiasi della citta ma il banco collegato al
   [ポケモンセンター](term:term-pokemon-center) dove compri Ball, medicine e
-  altri oggetti di base. Capirlo ti fa distinguere subito il punto cura dal
+  altri oggetti di base. Il termine distingue subito il punto cura dal
   punto acquisti dentro lo stesso hub.
 :::
 
@@ -58,7 +58,7 @@ back: negozio del Centro Pokemon
 example_jp: >-
   フレンドリィショップで ボールと キズぐすりを {{買|か}}い{{足|た}}そう。
 example_it: >-
-  Facciamo scorta di Ball e medicine al negozio del Centro Pokemon.
+  Al negozio del Centro Pokemon puoi fare scorta di Ball e medicine.
 :::
 
 :::term
@@ -124,8 +124,8 @@ meaning_it: comando Let's Go / manda avanti il Pokemon
 notes_it: >-
   In questo gioco non e un semplice inglesismo trasparente. E il nome del
   comando con cui mandi avanti il Pokemon in testa alla squadra per fargli
-  raccogliere oggetti o affrontare da solo piccoli scontri. Capirlo ti fa
-  leggere bene sia il tutorial di Nemona sia le istruzioni future sul campo.
+  raccogliere oggetti o affrontare da solo piccoli scontri. Il termine
+  compare sia nel tutorial di Nemona sia nelle istruzioni future sul campo.
 :::
 
 :::card
@@ -229,9 +229,9 @@ title: Ricevere un favore o un servizio
 meaning_it: qualcuno fa qualcosa per te / a tuo vantaggio
 notes_it: >-
   E il punto di vista di chi riceve aiuto, servizio o gestione da parte di un
-  altro. In questo capitolo serve soprattutto per leggere bene la cura al
-  [ポケモンセンター](term:term-pokemon-center) e le procedure che Nemona ti
-  sistema prima del primo [テラスタル](term:term-terastal).
+  altro. In questo capitolo marca la cura al
+  [ポケモンセンター](term:term-pokemon-center) e le procedure che Nemona
+  organizza prima del primo [テラスタル](term:term-terastal).
 :::
 
 :::card
@@ -244,7 +244,7 @@ back: ricevere un favore o un servizio
 example_jp: >-
   ポケモンセンターで {{手持ち|てもち}}を {{回復|かいふく}}してもらおう。
 example_it: >-
-  Facciamoci curare la squadra al Centro Pokemon.
+  Al Centro Pokemon puoi ricevere la cura della squadra.
 :::
 
 :::grammar
@@ -284,7 +284,7 @@ example_jp: >-
   {{長|なが}}い {{坂|さか}}の {{前|まえ}}に {{手持ち|てもち}}を {{回復|かいふく}}
   してもらえば {{安心|あんしん}}だ。
 example_it: >-
-  Se ti fai curare la squadra prima della lunga salita, affronti il percorso piu sereno.
+  Se la squadra viene curata prima della lunga salita, il percorso prosegue con meno rischio.
 notes_it: >-
   In questo blocco la cura puo essere espressa anche come `{{元気|げんき}}にする`.
   Il significato operativo pero resta lo stesso: rimettere il team in condizioni
@@ -302,10 +302,10 @@ example_jp: >-
   ポケモンセンターの {{端末|たんまつ}}で {{新|あたら}}しい わざマシンを
   {{作|つく}}ってみよう。
 example_it: >-
-  Prova a creare una nuova MT al terminale del Centro Pokemon.
+  Al terminale del Centro Pokemon puoi creare una nuova MT.
 notes_it: >-
   Qui la parola smette di essere solo ricompensa e diventa parte di un loop di
-  sistema: raccogli materiali, spendi LP e costruisci la MT che ti serve.
+  sistema: raccogli materiali, spendi LP e costruisci la MT necessaria.
 :::
 
 :::card
@@ -318,7 +318,7 @@ back: sfida / match / confronto di battaglia
 example_jp: >-
   どれくらい {{強|つよ}}くなったか {{勝負|しょうぶ}}して {{確|たし}}かめよう！
 example_it: >-
-  Facciamo una sfida e vediamo quanto sei diventato forte!
+  Una sfida permette di verificare quanto e aumentata la forza del team.
 notes_it: >-
   In questo capitolo Nemona usa `{{勝負|しょうぶ}}` per misurare la tua crescita
   dopo il tratto di strada, non solo per proporti un'altra lotta qualsiasi.
@@ -336,8 +336,8 @@ example_jp: >-
 example_it: >-
   Ti do un po' di LP, cosi li usi per comprare o creare quello che ti serve.
 notes_it: >-
-  Qui il pattern evidenzia l'aiuto pratico di Nemona, che non commenta soltanto
-  il sistema ma ti mette subito nelle condizioni di usarlo.
+  Qui il pattern evidenzia un aiuto concreto di Nemona: trasferisce LP al
+  giocatore e abilita subito acquisti e crafting.
 :::
 
 :::card
@@ -353,8 +353,8 @@ example_jp: >-
 example_it: >-
   Dopo aver fatto un giro per Table City, ritroviamoci davanti alla scuola.
 notes_it: >-
-  In questo capitolo [～たら](grammar:grammar-tara) continua a segnare i passaggi
-  che sbloccano il prossimo step della progressione.
+  In questo capitolo [～たら](grammar:grammar-tara) segna i passaggi che
+  sbloccano il blocco successivo della progressione.
 :::
 
 :::card
@@ -367,10 +367,10 @@ back: provare a fare
 example_jp: >-
   {{今|いま}}の チームで どこまで {{戦|たたか}}えるか {{試|ため}}してみよう。
 example_it: >-
-  Proviamo a vedere fin dove riesce ad arrivare la squadra che hai adesso.
+  Con la squadra attuale puoi testare fin dove riesci ad arrivare.
 notes_it: >-
-  Nemona usa spesso questa forma per trasformare il test della tua crescita in
-  una proposta energica ma operativa.
+  In questo capitolo la forma marca un test pratico: verificare sul campo la
+  soglia reale della squadra attuale.
 :::
 
 :::card

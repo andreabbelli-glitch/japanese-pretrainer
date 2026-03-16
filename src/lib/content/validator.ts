@@ -1878,7 +1878,7 @@ function normalizeExampleSentenceBlock(
 
   reportUnknownKeys(
     rawBlock.data,
-    ["jp", "translation_it"],
+    ["jp", "translation_it", "reveal_mode"],
     sourceContext.filePath,
     sourcePath,
     issues,
@@ -1910,9 +1910,35 @@ function normalizeExampleSentenceBlock(
     issues,
     rawBlock.position
   );
+  const revealMode = readOptionalString(
+    rawBlock.data,
+    "reveal_mode",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
 
   if (!sentence || !translationIt) {
     return null;
+  }
+
+  if (
+    revealMode !== undefined &&
+    revealMode !== "default" &&
+    revealMode !== "sentence"
+  ) {
+    issues.push(
+      createIssue({
+        code: "schema.invalid-enum",
+        category: "schema",
+        message:
+          "Field 'reveal_mode' must be either 'default' or 'sentence'.",
+        filePath: sourceContext.filePath,
+        path: `${sourcePath}.reveal_mode`,
+        range: rawBlock.fieldRanges?.reveal_mode ?? rawBlock.position
+      })
+    );
   }
 
   const sentenceRange = rawBlock.fieldRanges?.jp ?? rawBlock.position;
@@ -1944,7 +1970,11 @@ function normalizeExampleSentenceBlock(
       type: "exampleSentence",
       position: rawBlock.position,
       sentence: sentenceFragment.fragment,
-      translationIt: translationFragment.fragment
+      translationIt: translationFragment.fragment,
+      revealMode:
+        revealMode === "default" || revealMode === "sentence"
+          ? revealMode
+          : undefined
     },
     references: [
       ...sentenceFragment.references,

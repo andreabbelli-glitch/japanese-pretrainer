@@ -66,10 +66,10 @@ reading: よわらせる
 romaji: yowaraseru
 meaning_it: indebolire
 notes_it: >-
-  Nel tutorial di cattura vuol dire abbassare abbastanza gli HP del bersaglio
-  per aumentare le probabilita di cattura, non mandarlo per forza KO. Ti aiuta
-  quindi a distinguere il turno per preparare la Ball dal turno pensato solo per
-  finire la lotta.
+  Nel contesto di cattura indica la riduzione degli HP del bersaglio fino a una
+  soglia che aumenta la probabilita di presa, senza arrivare per forza al KO.
+  Operativamente separa il turno di setup della Ball dal turno di chiusura del
+  combattimento.
 :::
 
 :::card
@@ -117,9 +117,9 @@ reading: せいそくする
 romaji: seisoku suru
 meaning_it: vivere in una zona / essere stanziato in un habitat
 notes_it: >-
-  Descrive la presenza naturale di una specie in un'area. In dialoghi,
-  walkthrough e Pokedex ti dice che quel luogo è davvero habitat del Pokemon,
-  quindi puoi aspettarti incontri, rischi o materiali collegati a quella specie.
+  Descrive la presenza naturale di una specie in un'area. Quando compare in
+  dialoghi o Pokedex, quel luogo e marcato come habitat effettivo: li sono
+  previsti incontri, rischi e risorse collegati a quella specie.
 :::
 
 :::card
@@ -197,10 +197,9 @@ reading: せいぎょする
 romaji: seigyo suru
 meaning_it: controllare / tenere sotto controllo
 notes_it: >-
-  È un verbo più avanzato ma molto importante nella scena con Pepper. Quando
-  parla di una Ball che serve a `{{制御|せいぎょ}}する`, non parla di una cattura
-  normale: sta dicendo che quell'oggetto gestisce e contiene il Pokemon in modo
-  speciale.
+  `{{制御|せいぎょ}}する` indica gestione stabile di un Pokemon, non semplice cattura.
+  Nella scena con Pepper la Ball non registra una presa standard: limita e
+  contiene il Pokemon in uno stato speciale.
 :::
 
 :::card
@@ -222,9 +221,9 @@ pattern: ～てあげる
 title: Fare qualcosa per qualcuno
 meaning_it: fare un'azione a favore di qualcuno
 notes_it: >-
-  Nei dialoghi di Nemona questo pattern costruisce un aiuto concreto e amichevole.
-  `{{教|おし}}えてあげる` o `わけてあげる` non sono frasi decorative: ti dicono che
-  un personaggio ti sta dando supporto pratico nel tutorial o nella progressione.
+  Nei dialoghi marca un'azione fatta a vantaggio di un altro personaggio.
+  `{{教|おし}}えてあげる` o `わけてあげる` indicano supporto concreto: ricezione di
+  informazioni o oggetti che sbloccano il passo successivo.
 :::
 
 :::card
@@ -246,9 +245,9 @@ pattern: ～ないように
 title: Fare attenzione a non...
 meaning_it: fare in modo di non / stare attenti a non
 notes_it: >-
-  Nei tutorial Pokemon compare spesso come avviso preventivo. Il gioco non ti
-  vieta qualcosa con durezza, ma ti orienta verso il comportamento più sicuro o
-  corretto per continuare senza problemi.
+  Nei tutorial compare come avviso preventivo. La struttura imposta un vincolo
+  comportamentale ("non fare X") che riduce rischio di KO, perdita di risorse o
+  blocchi di avanzamento.
 :::
 
 :::card
@@ -270,9 +269,9 @@ pattern: ～ながら
 title: Mentre si fa...
 meaning_it: fare una cosa mentre se ne fa un'altra
 notes_it: >-
-  In Scarlet / Violet questo pattern rende bene la logica del campo aperto:
-  esplori, combatti e catturi nello stesso flusso. Ti aiuta quindi a leggere
-  istruzioni in cui avanzamento e allenamento succedono insieme.
+  In Scarlet / Violet descrive azioni parallele nel campo aperto. Una singola
+  frase combina movimento, incontri e cattura nello stesso segmento di
+  esplorazione.
 :::
 
 :::card
@@ -301,8 +300,8 @@ example_jp: >-
 example_it: >-
   Con i Pokemon selvatici può iniziare una lotta se ti avvicini troppo.
 notes_it: >-
-  Nel prologo 2 questa parola ti sposta dal mondo protetto del tutorial iniziale
-  al campo aperto, dove incontri e cattura cominciano davvero.
+  `{{野生|やせい}}` marca un incontro non scriptato. Nel flusso di gioco segnala
+  che avvicinarsi puo aprire una battaglia e avviare la finestra di cattura.
 :::
 
 :::card
@@ -315,10 +314,11 @@ back: catturare
 example_jp: >-
   {{相手|あいて}}が {{弱|よわ}}ったら そのまま {{捕|つか}}まえてみよう。
 example_it: >-
-  Quando l'avversario si è indebolito, prova a catturarlo subito.
+  Quando l'avversario si è indebolito, puoi passare subito alla cattura.
 notes_it: >-
-  Qui il verbo va letto come obiettivo diverso dal semplice KO: la scena ti
-  insegna a trasformare la lotta in ottenimento di un nuovo Pokemon.
+  `{{捕|つか}}まえる` indica un obiettivo diverso dal semplice KO. In pratica il
+  combattimento passa da riduzione HP a lancio Ball per aggiungere la specie al
+  team o al Pokedex.
 :::
 
 :::card
@@ -333,8 +333,8 @@ example_jp: >-
 example_it: >-
   Per iniziare, prova a combattere contro un Pokemon selvatico!
 notes_it: >-
-  Nel tutorial di cattura questa forma funziona come spinta immediata all'azione,
-  non come proposta vaga per il futuro.
+  Qui `～てみる` funziona come invito a testare subito un'azione. Nel flusso
+  tutorial apre un comando pratico immediato, non un'intenzione futura astratta.
 :::
 
 :::card
@@ -349,6 +349,7 @@ example_jp: >-
 example_it: >-
   Una MT, quando la usi una volta, sparisce.
 notes_it: >-
-  In questo capitolo il pattern ti aiuta a leggere bene il consumo definitivo di
-  un oggetto e, in altri punti della scena, esiti improvvisi o indesiderati.
+  Qui il pattern marca un esito completato e irreversibile: la MT viene
+  consumata dopo l'uso. In altri punti della scena puo anche segnalare un
+  risultato imprevisto o indesiderato.
 :::

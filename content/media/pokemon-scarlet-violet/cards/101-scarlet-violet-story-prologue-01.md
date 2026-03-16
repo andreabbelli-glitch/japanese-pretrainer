@@ -14,10 +14,9 @@ reading: こうちょうせんせい
 romaji: kouchou sensei
 meaning_it: preside / il preside
 notes_it: >-
-  Nel prologo è il modo in cui la madre e il gioco presentano Clavell.
-  Leggere `{{校長先生|こうちょうせんせい}}` ti fa capire subito che stai entrando
-  nel registro scolastico dell'Accademia e che il parlante sta usando un tono
-  rispettoso verso l'autorità della scuola.
+  Nel prologo è la forma con cui la madre presenta Clavell.
+  `{{校長先生|こうちょうせんせい}}` marca subito un registro scolastico formale:
+  il parlante riconosce il ruolo di autorità dell'Accademia.
 :::
 
 :::card
@@ -41,9 +40,9 @@ romaji: tennyuu
 meaning_it: trasferimento / ingresso come studente trasferito
 notes_it: >-
   In Scarlet / Violet il protagonista non parte come studente generico ma come
-  persona che `{{転入|てんにゅう}}` nell'Accademia. Questa parola ti fa leggere
-  bene le battute iniziali di Clavell e spiega perché molti personaggi parlano
-  di nuova scuola, presentazioni e ambientamento.
+  persona che `{{転入|てんにゅう}}` nell'Accademia.
+  Nel flusso narrativo questo stato attiva dialoghi di presentazione, nuova
+  scuola e ambientamento.
 :::
 
 :::card
@@ -67,9 +66,9 @@ romaji: sumaho rotomu
 meaning_it: Rotom Phone / smartphone di gioco
 notes_it: >-
   È il telefono del protagonista in Scarlet / Violet. Quando il gioco nomina
-  `スマホロトム`, non sta indicando solo un oggetto narrativo: da lì apri
-  mappa e [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan), quindi capisci che
-  il dialogo sta parlando di orientamento, registrazione e funzioni di sistema.
+  `スマホロトム`, non indica solo un oggetto narrativo: è l'interfaccia da cui si
+  aprono mappa e [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan).
+  Nel gioco segnala quindi funzioni di orientamento, registrazione e stato.
 :::
 
 :::card
@@ -93,9 +92,9 @@ romaji: touroku
 meaning_it: registrazione
 notes_it: >-
   Vuol dire inserire ufficialmente un dato nel sistema. Nel prologo compare
-  soprattutto con la [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan): capisci
-  quindi che i Pokemon catturati non vanno segnati a mano ma vengono aggiunti
-  automaticamente all'app.
+  soprattutto con la [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan):
+  i Pokemon catturati vengono aggiunti automaticamente all'app senza inserimento
+  manuale.
 :::
 
 :::card
@@ -120,8 +119,8 @@ meaning_it: sfida / match / confronto di battaglia
 notes_it: >-
   È la parola che Nemona usa continuamente per proporre un confronto vero.
   Quando senti `{{勝負|しょうぶ}}しよう` o `{{勝負|しょうぶ}}の {{準備|じゅんび}}は
-  いい？`, il gioco non sta parlando in astratto di combattimento: ti sta
-  portando nel tutorial o in un match concreto.
+  いい？`, non è un riferimento astratto al combattimento:
+  la scena entra in un tutorial o in un match concreto.
 :::
 
 :::card
@@ -134,7 +133,7 @@ back: sfida / match / confronto di battaglia
 example_jp: >-
   {{準備|じゅんび}}が できたら {{下|した}}の ビーチで {{勝負|しょうぶ}}しよう！
 example_it: >-
-  Quando sei pronto, facciamo una sfida sulla spiaggia qui sotto!
+  Quando sei pronto, facciamo un match sulla spiaggia qui sotto!
 :::
 
 :::term
@@ -144,9 +143,9 @@ reading: じゅんび
 romaji: junbi
 meaning_it: preparazione / essere pronti
 notes_it: >-
-  Segnala che devi sistemare qualcosa prima dell'azione successiva: metterti la
-  divisa, scegliere il Pokemon o confermare che sei pronto per la battaglia.
-  Nel prologo compare spesso subito prima di un passaggio di stato del gioco.
+  Segnala un check prima dell'azione successiva: mettere la divisa, scegliere il
+  Pokemon o confermare l'ingresso in battaglia.
+  Nel prologo compare spesso subito prima di un passaggio di stato.
 :::
 
 :::card
@@ -170,8 +169,8 @@ romaji: jakuten
 meaning_it: debolezza / punto debole
 notes_it: >-
   In battaglia indica il tipo contro cui un Pokemon subisce più danni. Nel
-  primo match con Nemona questa parola ti fa collegare la teoria dei tipi al
-  risultato pratico del turno: se colpisci la `{{弱点|じゃくてん}}`, il danno sale
+  primo match con Nemona collega la teoria dei tipi al risultato del turno:
+  se colpisci la `{{弱点|じゃくてん}}`, il danno sale
   e compare spesso [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun).
 :::
 
@@ -197,7 +196,7 @@ meaning_it: mandare in campo / far uscire
 notes_it: >-
   Nel giapponese Pokemon descrive l'atto di far scendere in campo un Pokemon o
   di lanciare una [わざ](term:term-waza). Nel prologo appare nella forma
-  colloquiale `くりだしちゃう`: Nemona sta dicendo che per abitudine stava quasi
+  colloquiale `くりだしちゃう`: Nemona segnala che, per abitudine, stava quasi
   mandando in campo un Pokemon troppo forte.
 :::
 
@@ -222,8 +221,8 @@ meaning_it: per favore fai...
 notes_it: >-
   Nel prologo questa forma non suona come richiesta facoltativa ma come
   istruzione gentile del sistema o degli adulti. Se la madre dice
-  `もう {{少|すこ}}し {{家|いえ}}で {{待|ま}}っててください`, il gioco ti sta
-  bloccando temporaneamente e ti dice quale azione fare dopo.
+  `もう {{少|すこ}}し {{家|いえ}}で {{待|ま}}っててください`, il gioco applica un
+  blocco temporaneo e indica l'azione successiva.
 :::
 
 :::card
@@ -247,8 +246,8 @@ meaning_it: sembra / pare
 notes_it: >-
   Compare spesso nei dialoghi per valutare una situazione senza dirla in modo
   assoluto. In apertura lo senti con oggetti non ancora arrivati o con i
-  Pokemon che sembrano aver preso simpatia per il protagonista; serve quindi a
-  leggere impressione, non certezza secca.
+  Pokemon che sembrano aver preso simpatia per il protagonista;
+  il valore è di impressione, non di certezza secca.
 :::
 
 :::card
@@ -298,8 +297,8 @@ meaning_it: aver appena fatto qualcosa
 aliases: [～たばっかり]
 notes_it: >-
   Nel prologo segnala che il protagonista è all'inizio assoluto del percorso.
-  Quando Nemona dice che hai `ポケモンを {{始|はじ}}めたばっかり`, sta calibrando
-  il tutorial sul fatto che hai appena iniziato a giocare davvero.
+  Quando Nemona dice `ポケモンを {{始|はじ}}めたばっかり`, il tutorial viene
+  calibrato su un profilo principiante.
 :::
 
 :::card
@@ -328,8 +327,9 @@ example_jp: >-
 example_it: >-
   Nel Pokedex i Pokemon catturati vengono registrati automaticamente.
 notes_it: >-
-  Nel prologo questa non è solo una collezione: Nemona te la presenta come app
-  attiva dello [スマホロトム](term:term-smartphone-rotom).
+  Nel prologo non è solo una collezione:
+  è un'app attiva dello [スマホロトム](term:term-smartphone-rotom) che aggiorna
+  automaticamente le catture.
 :::
 
 :::card

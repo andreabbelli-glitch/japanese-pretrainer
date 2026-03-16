@@ -150,6 +150,19 @@ function renderBlock(block: ContentBlock, mediaSlug: string): string {
     case "image":
       return renderImage(block, mediaSlug);
     case "exampleSentence":
+      if (block.revealMode === "sentence") {
+        return [
+          '<section class="reader-example-sentence reader-example-sentence--sentence-toggle">',
+          '<details class="reader-example-sentence__translation reader-example-sentence__translation--sentence">',
+          `<summary class="reader-example-sentence__summary jp-inline">${renderInlineNodes(block.sentence.nodes)}</summary>`,
+          '<div class="reader-example-sentence__translation-body">',
+          `<p>${renderInlineNodes(block.translationIt.nodes)}</p>`,
+          "</div>",
+          "</details>",
+          "</section>"
+        ].join("");
+      }
+
       return [
         '<section class="reader-example-sentence">',
         `<p class="reader-example-sentence__jp jp-inline">${renderInlineNodes(block.sentence.nodes)}</p>`,

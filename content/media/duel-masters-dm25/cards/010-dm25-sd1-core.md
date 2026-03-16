@@ -28,14 +28,14 @@ id: term-abyssbell-jashintei
 lemma: アビスベル=ジャシン帝
 reading: あびすべるじゃしんてい
 romaji: abisuberu jashintei
-meaning_it: Abyssbell Jashin Emperor / carta-ancora del deck
+meaning_it: Abyssbell Jashin Emperor / finisher dell'asse Abyss
 pos: proper-noun
 aliases: [アビスベル=ジャシン帝, ジャシン帝, abisuberu jashintei]
 notes_it: >-
-  È uno dei nomi che conviene riconoscere subito nel deck Abyss perché
-  `ジャシン` ricorre come ancora lessicale del pacchetto e `帝` segnala una figura
-  dominante o "boss". Anche se non ricordi ancora tutto il testo, riconoscerlo
-  ti orienta tra payoff e carte simbolo dell'asse SD1.
+  `ジャシン` marca il sottoblocco lessicale dell'asse Abyss e `帝` segnala un
+  pezzo di vertice. Quando la stringa compare in riferimenti o regole di carta,
+  identifica un payoff ad alta pressione che trasforma vantaggio di board in
+  chiusura della partita.
 level_hint: custom
 :::
 
@@ -49,9 +49,9 @@ pos: proper-noun
 aliases: [邪侵入, じゃしんにゅう, jashinnyuu]
 notes_it: >-
   Il nome mette insieme `邪`, che richiama l'asse oscuro del mazzo, e
-  `侵入`, cioè "irruzione / ingresso forzato". Per questo non è un nome da
-  memorizzare a caso: riassume bene l'idea di pressione improvvisa tipica di
-  `DM25-SD1` ed è un'ancora lessicale facile da riconoscere nella lista carte.
+  `侵入`, cioè "irruzione / ingresso forzato". Sul piano operativo segnala una
+  linea che porta un Abyss in campo senza passare da un normale sviluppo dalla
+  mano, aumentando la pressione immediata.
 level_hint: custom
 :::
 
@@ -64,10 +64,9 @@ meaning_it: Jablood / creatura simbolo del deck
 pos: proper-noun
 aliases: [ジャブラッド, jaburaddo]
 notes_it: >-
-  In `DM25-SD1` è uno dei nomi che conviene riconoscere subito a vista perché
-  torna tra le carte che tengono insieme il piano del mazzo. Ti abitua anche ai
-  nomi ibridi, spesso opachi a livello semantico, che in Duel Masters vanno
-  letti soprattutto come indicatori di ruolo e ricorrenza.
+  In `DM25-SD1` ricorre tra i pezzi che tengono insieme il piano Abyss. Nel
+  parsing va trattato come nome-proprio di ruolo: non descrive un effetto con
+  lessico trasparente, ma indica un nodo funzionale ricorrente del deck.
 level_hint: custom
 :::
 
@@ -101,8 +100,9 @@ example_jp: >-
 example_it: >-
   Attacca con Abyssbell Jashin Emperor per chiudere la partita.
 notes_it: >-
-  Nome-ancora del mazzo. Riconoscerlo rapidamente ti aiuta a orientarti nel
-  payoff principale del deck senza dover rileggere ogni volta tutta la lista.
+  La stringa completa identifica un riferimento di carta specifico, non una
+  categoria generica. Nel flusso di gioco segnala il payoff principale del
+  blocco Abyss e quindi un asse di chiusura della partita.
 tags: [dm25-sd1, abyss, proper-name]
 :::
 
@@ -118,8 +118,9 @@ example_jp: >-
 example_it: >-
   Usa Jashinnyuu per mettere in gioco un Abyss dal cimitero.
 notes_it: >-
-  Vale la pena fissarlo come forma compatta. È uno dei nomi che riassumono bene
-  il tono del mazzo e allena l'occhio su kanji ricorrenti dell'asse oscuro.
+  Forma compatta legata a una magia che converte risorse dal
+  [墓地](term:term-graveyard) in presenza immediata sul campo. La lettura corretta
+  separa subito nome della carta e risultato pratico dell'effetto.
 tags: [dm25-sd1, abyss, spell-name]
 :::
 
@@ -135,8 +136,9 @@ example_jp: >-
 example_it: >-
   Metti in gioco Jablood e prepara l'attacco.
 notes_it: >-
-  Nome da riconoscere a colpo d'occhio nella lista carte. Ti aiuta a non
-  leggere il deck come una massa indistinta di nomi propri.
+  Nome proprio ricorrente dell'asse Abyss. Quando compare nel testo o nella
+  lista, identifica un pezzo che partecipa al passaggio da setup a pressione di
+  combattimento.
 tags: [dm25-sd1, abyss, proper-name]
 :::
 
@@ -151,9 +153,9 @@ aliases: [アビスラッシュ, abisurasshu, abyss rush]
 notes_it: >-
   È una keyword dell'asse Abyss che comprime una regola di sostituzione:
   quando la creatura sta per [離れる](term:term-hanareru), puoi tenere il corpo
-  in gioco pagando un costo alternativo, spesso scartando carte. In lettura
-  pratica non va trattata come un titolo decorativo, ma come una scorciatoia
-  che apre subito un testo tecnico.
+  in gioco pagando un costo alternativo, spesso scartando carte. In partita
+  cambia l'esito di una rimozione: la perdita di board viene convertita in
+  consumo di mano.
 level_hint: custom
 :::
 
@@ -199,8 +201,8 @@ aliases: [とばす, 飛ばす, tobasu]
 notes_it: >-
   In Duel Masters compare spesso in formule brevi ma molto forti come
   `そのターンの{{残|のこ}}りをとばす`. Qui non parla di movimento fisico: vuol
-  dire far saltare una porzione del turno o della sequenza. Conviene leggerlo
-  come verbo di cancellazione temporale.
+  dire far saltare una porzione del turno o della sequenza. Sul piano del
+  gameplay cancella le azioni residue disponibili in quel turno.
 level_hint: custom
 :::
 
@@ -214,7 +216,8 @@ aliases: [2回行う, これを2回行う]
 notes_it: >-
   È una formula compatta del rules text: invece di riscrivere l'effetto una
   seconda volta, la carta ti dice di eseguire di nuovo il blocco appena letto.
-  Quando compare, devi quindi "riapplicare" mentalmente la frase precedente.
+  Quando compare, la risoluzione avviene due volte in sequenza e l'impatto sul
+  board viene raddoppiato secondo lo stesso testo.
 level_hint: custom
 :::
 
@@ -232,9 +235,9 @@ example_it: >-
   Abyss Rush: quando questa creatura sta per lasciare il campo, puoi invece
   scartare 2 carte dalla tua mano.
 notes_it: >-
-  Keyword da riconoscere subito in `DM25-SD1`. Se la vedi, aspettati una
-  regola compressa che usa [離れる](term:term-hanareru) e
-  [かわりに](grammar:grammar-kawarini).
+  Questa keyword applica una sostituzione con [離れる](term:term-hanareru) +
+  [かわりに](grammar:grammar-kawarini): invece di uscire dal campo, la creatura
+  resta in gioco pagando il costo richiesto.
 tags: [dm25-sd1, abyss, keyword]
 :::
 
@@ -253,8 +256,9 @@ example_it: >-
   Civil Count 3: se la somma dei costi delle tue carte oscurità è 3 o più, puoi
   usare l'S-Trigger di questa creatura.
 notes_it: >-
-  La tentazione è leggere solo il numero. In realtà la parte decisiva è capire
-  che cosa il testo sta sommando davvero dopo la keyword.
+  Il numero non basta: la soglia controlla un totale di costi specifico. Se il
+  totale richiesto è raggiunto, l'abilita si attiva; se non è raggiunto,
+  l'effetto resta bloccato.
 tags: [dm25-sd1, keyword, threshold]
 :::
 
@@ -270,9 +274,9 @@ example_jp: >-
 example_it: >-
   Cambia il bersaglio dell'attacco a quella creatura.
 notes_it: >-
-  Molto utile perché condensa un'intera operazione di combattimento in una
-  parola sola. Se la riconosci, il resto della frase diventa subito più
-  ordinato.
+  `{{攻撃先|こうげきさき}}を{{変更|へんこう}}する` riassegna un attacco gia
+  dichiarato a un nuovo bersaglio. In combattimento cambia direttamente quale
+  lato subisce l'esito dell'attacco.
 tags: [dm25-sd1, combat, target]
 :::
 
@@ -288,8 +292,8 @@ example_jp: >-
 example_it: >-
   L'avversario salta il resto di quel turno.
 notes_it: >-
-  Qui il verbo vale molto più del suo livello lessicale: è una di quelle forme
-  brevi da TCG che conviene fissare una volta sola e poi riusare ovunque.
+  In questa frase `とばす` tronca il turno avversario: dopo la risoluzione, il
+  resto delle azioni di quel turno non viene piu eseguito.
 tags: [dm25-sd1, timing, control]
 :::
 
@@ -306,7 +310,8 @@ example_jp: >-
 example_it: >-
   Dai `-4000` a 1 creatura dell'avversario. Esegui questo due volte.
 notes_it: >-
-  Formula molto comune nei testi di gioco: non ripete l'effetto da capo, ma ti
-  chiede di riapplicare quello appena letto.
+  Non ripete il testo da capo: fa rieseguire lo stesso blocco subito dopo la
+  prima risoluzione. In partita significa applicare due volte lo stesso effetto
+  sul board.
 tags: [dm25-sd1, grammar, repetition]
 :::

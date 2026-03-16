@@ -2,7 +2,7 @@
 id: cards-duel-masters-dm25-live-duel-encounters-crash-hadou
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-crash-hadou
-title: Carte incontrate in partita 1 - Nome, razze e parsing di Crash "Hadou"
+title: Carte incontrate in partita 1 - Crash "Hadou" e trigger del turno extra
 order: 50
 segment_ref: live-duel-encounters
 ---
@@ -20,21 +20,6 @@ notes_it: >-
   E il nome proprio di un finisher aggressivo. Quando compare
   `クラッシュ“覇道”`, stai guardando una carta Beat Jockey che puo trasformare
   una distruzione subita da tappata in un turno extra.
-level_hint: custom
-:::
-
-:::term
-id: term-victory
-lemma: 勝利
-reading: しょうり
-romaji: shouri
-meaning_it: vittoria
-pos: noun
-aliases: [勝利, shouri, victory]
-notes_it: >-
-  Vuol dire "vittoria". Dentro un nome proprio come
-  `{{勝利龍装|しょうりりゅうそう}}` mantiene il suo valore semantico, ma non
-  funziona da sola come keyword tecnica di regolamento.
 level_hint: custom
 :::
 
@@ -79,8 +64,8 @@ pos: noun
 aliases: [ドラゴンギルド, doragon girudo, Dragon Guild]
 notes_it: >-
   Compare nella riga `種族`, quindi indica una razza e non un titolo narrativo.
-  Quando lo leggi sai che la carta puo entrare in filtri, sinergie o riferimenti
-  basati sulla razza.
+  In partita questo decide i bersagli validi: se un effetto cerca una carta
+  `ドラゴンギルド`, questa carta puo essere scelta.
 level_hint: custom
 :::
 
@@ -94,7 +79,8 @@ pos: noun
 aliases: [ビートジョッキー, biito jokkii, Beat Jockey]
 notes_it: >-
   E una razza aggressiva legata al fuoco. Su questa carta si accompagna bene a
-  riduzione di costo, attacco immediato e piano di gioco rapido.
+  riduzione di costo e attacco immediato; quando un effetto richiede
+  `ビートジョッキー`, questa carta soddisfa il filtro di razza.
 level_hint: custom
 :::
 
@@ -257,7 +243,8 @@ example_it: >-
   Da buon Beat Jockey, sostiene un piano di gioco veloce.
 notes_it: >-
   `ビートジョッキー` segnala una razza aggressiva. Qui si combina con
-  riduzione di costo, attacco immediato e pressione sugli scudi.
+  riduzione di costo e attacco immediato; inoltre rende la carta bersaglio
+  valido quando il testo richiede `ビートジョッキー`.
 tags: [live-duel, race, aggression]
 :::
 
@@ -290,8 +277,8 @@ example_jp: >-
 example_it: >-
   Durante il battle, il potere di questa creatura sale.
 notes_it: >-
-  Serve per leggere bene `バトル中`: appena lo vedi, sai che sei dentro la
-  finestra dello scontro e non in un altro timing del turno.
+  In `バトル中` bonus e modifiche valgono solo nella finestra dello scontro.
+  Fuori da quel momento, lo stesso testo non cambia il combattimento.
 tags: [live-duel, combat, timing]
 :::
 
@@ -345,4 +332,26 @@ notes_it: >-
   Qui delimita il punto esatto in cui il nuovo turno entra nella sequenza. Non
   e un "poi" generico, ma un aggancio molto preciso nell'ordine del turno.
 tags: [live-duel, grammar, timing]
+:::
+
+:::card
+id: card-crash-hadou-extra-turn-trigger-concept
+entry_type: grammar
+entry_id: grammar-sareta-toki
+card_type: concept
+front: >-
+  タップ{{状態|じょうたい}}で{{破壊|はかい}}された{{時|とき}}、このターンの{{後|あと}}に
+  {{自分|じぶん}}のターンを{{追加|ついか}}する
+back: >-
+  Se viene distrutta da tappata, dopo questo turno ne aggiungi uno tuo.
+example_jp: >-
+  タップ{{状態|じょうたい}}で{{破壊|はかい}}された{{時|とき}}だけ、
+  {{追加|ついか}}ターンが{{発生|はっせい}}する。
+example_it: >-
+  Il turno extra parte solo quando la creatura viene distrutta mentre e tappata.
+notes_it: >-
+  Questa card unisce nello stesso chunk tre cose che vale la pena leggere in
+  un colpo solo: stato gia presente, trigger passivo e inserimento del nuovo
+  turno subito dopo quello corrente.
+tags: [live-duel, chunk, extra-turn, grammar]
 :::

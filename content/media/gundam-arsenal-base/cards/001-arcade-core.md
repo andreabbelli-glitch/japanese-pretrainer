@@ -58,8 +58,8 @@ reading: よびだす
 romaji: yobidasu
 meaning_it: richiamare / caricare dati già registrati
 notes_it: >-
-  Nel flusso arcade vale la pena leggerlo come azione di recupero dati, non come
-  "chiamare" generico. Quando la tessera IC `{{前回|ぜんかい}}のデータを{{呼|よ}}び{{出|だ}}す`,
+  Nel flusso arcade va letto come azione di recupero dati, non come "chiamare"
+  generico. Quando la tessera IC `{{前回|ぜんかい}}のデータを{{呼|よ}}び{{出|だ}}す`,
   stai facendo riemergere informazioni già salvate nel profilo.
 level_hint: n4
 :::
@@ -188,8 +188,8 @@ romaji: shinkou
 meaning_it: avanzamento / progresso
 notes_it: >-
   In schermate come missioni o profilo non indica un movimento fisico, ma lo
-  stato di avanzamento di un obiettivo. Ti aiuta a leggere [MY PAGE](term:term-mypage)
-  come riepilogo operativo di ciò che stai portando avanti.
+  stato di avanzamento di un obiettivo. In [MY PAGE](term:term-mypage) segnala
+  quanta parte della missione è già completata e quanta resta.
 level_hint: n4
 :::
 
@@ -201,8 +201,8 @@ romaji: senseki
 meaning_it: risultati di battaglia / match record
 notes_it: >-
   È il riepilogo dei risultati ottenuti nelle partite già giocate. Non è un
-  dettaglio cosmetico del profilo: ti dice come sono andate davvero le sessioni
-  precedenti e ti aiuta a rileggere il rendimento del deck.
+  dettaglio cosmetico del profilo: mostra l'andamento reale delle sessioni
+  precedenti e se il deck sta reggendo sul campo.
 level_hint: custom
 :::
 
@@ -213,7 +213,8 @@ reading: しきかんれべる
 romaji: shikikan reberu
 meaning_it: livello del profilo comandante
 notes_it: >-
-  Misura l'avanzamento generale del profilo e sblocca funzioni nuove. La soglia da ricordare subito è il livello 5 per le carte tattiche.
+  Misura l'avanzamento generale del profilo e sblocca funzioni nuove. Al livello
+  5 si sblocca l'equipaggiamento delle carte tattiche.
 level_hint: custom
 :::
 
@@ -338,8 +339,8 @@ romaji: kosuto
 meaning_it: risorsa da spendere per le azioni
 notes_it: >-
   Qui non è il costo stampato di una carta: cresce nel tempo e viene consumato
-  da uscite, abilità e alcuni cambi tattici. Capire il costo ti fa capire non
-  solo cosa puoi fare, ma quando puoi farlo.
+  da uscite, abilità e alcuni cambi tattici. Determina non solo cosa puoi fare,
+  ma anche quando puoi farlo.
 level_hint: custom
 :::
 
@@ -377,8 +378,8 @@ romaji: zensen
 meaning_it: prima linea / frontline
 notes_it: >-
   In battaglia non è una parola decorativa: ti dice la zona della mappa in cui
-  una unità deve esporsi e lavorare più vicino allo scontro. È utile perché
-  collega bene tipo MS, pressione e posizione.
+  una unità entra nello scontro diretto. Questa scelta decide quale ruolo apre
+  la corsia e quale resta in protezione.
 level_hint: custom
 :::
 
@@ -389,9 +390,9 @@ reading: せんとう
 romaji: sentou
 meaning_it: combattimento / combat
 notes_it: >-
-  È il termine pratico dello scontro diretto tra unità. Ti aiuta a separare la
-  logica del duello locale da quella del danno agli obiettivi, che in Arsenal
-  Base non sono sempre la stessa cosa.
+  È il termine pratico dello scontro diretto tra unità. Se compare, la
+  risoluzione riguarda il duello locale e non implica automaticamente danno a
+  basi o nave.
 level_hint: n4
 :::
 
@@ -427,7 +428,8 @@ romaji: bouei
 meaning_it: ruolo che difende base o nave
 aliases: [防衛タイプ]
 notes_it: >-
-  Resta vicino all'obiettivo e ne aumenta la difesa. Leggerlo bene ti fa capire perché un tuo attacco agli obiettivi improvvisamente fa pochissimo danno.
+  Resta vicino all'obiettivo e ne aumenta la difesa. Quando compare, un attacco
+  agli obiettivi può infliggere molto meno danno del previsto.
 level_hint: custom
 :::
 
@@ -542,7 +544,9 @@ reading: いーえっくすばとる
 romaji: EX batoru
 meaning_it: evento EX citato in guide vecchie
 notes_it: >-
-  Serve soprattutto a leggere materiale storico. Nella versione ufficiale attuale il sistema non si attiva più dalle stagioni UNITRIBE SEASON:01 in poi.
+  È un riferimento storico presente in guide precedenti. Nella versione
+  ufficiale attuale il sistema non si attiva più dalle stagioni UNITRIBE
+  SEASON:01 in poi.
 level_hint: custom
 :::
 
@@ -572,7 +576,8 @@ pattern: ～することで
 title: Facendo X
 meaning_it: compiendo X, succede Y
 notes_it: >-
-  Collega una causa pratica a un risultato di gioco. Quando compare, la frase ti sta spiegando quale effetto ottieni da un'azione o da una condizione.
+  Collega una causa pratica a un risultato di gioco. Se compare, la seconda
+  parte descrive l'esito che si attiva dopo l'azione o la condizione iniziale.
 level_hint: n4
 :::
 
@@ -784,7 +789,7 @@ example_it: >-
   Guarda i risultati e pensa al deck successivo.
 notes_it: >-
   Non è lore o contorno: è il riepilogo pratico che ti fa rileggere come sono
-  andate davvero le partite precedenti.
+  andate davvero le partite precedenti e se il deck mantiene rendimento.
 tags: [term, onboarding]
 :::
 
@@ -803,7 +808,8 @@ example_it: >-
   Quando il livello comandante arriva a 5, si sblocca l'equipaggiamento delle
   carte tattiche.
 notes_it: >-
-  Misura l'avanzamento generale del profilo e sblocca funzioni nuove. La soglia da ricordare subito è il livello 5 per le carte tattiche.
+  Misura l'avanzamento generale del profilo e sblocca funzioni nuove. Al livello
+  5 si sblocca l'equipaggiamento delle carte tattiche.
 tags: [term, onboarding]
 :::
 
@@ -838,7 +844,7 @@ back: >-
 example_jp: >-
   {{自軍|じぐん}}{{戦力|せんりょく}}ゲージが{{残|のこ}}り{{少|すく}}ないなら、{{無理|むり}}に{{攻|せ}}めず{{戦艦|せんかん}}の{{防衛|ぼうえい}}を{{優先|ゆうせん}}します。
 example_it: >-
-  Se la gauge alleata è quasi finita, conviene dare priorità alla difesa della
+  Se la gauge alleata è quasi finita, dai priorità alla difesa della
   nave invece di forzare l'attacco.
 notes_it: >-
   Riassume la resistenza residua di basi e nave alleate. Non è un semplice HP personale di un'unità: ti dice quanto sei vicino alla sconfitta.
@@ -913,7 +919,7 @@ back: >-
 example_jp: >-
   SPゲージが{{満タン|まんたん}}でも、{{守|まも}}られた{{拠点|きょてん}}には{{戦術技|せんじゅつぎ}}を{{撃|う}}たないほうがいいです。
 example_it: >-
-  Anche con la barra SP piena, è meglio non usare la tecnica speciale su una
+  Anche con la barra SP piena, non usare la tecnica speciale su una
   base che è ancora protetta.
 notes_it: >-
   È la mossa ad alto impatto attivata con la barra SP. Non è solo spettacolo: il suo valore dipende dal momento in cui la usi e dall'obiettivo che colpisci.
@@ -972,7 +978,8 @@ example_jp: >-
 example_it: >-
   Decidi prima quale ruolo mandare in prima linea.
 notes_it: >-
-  Ti aiuta a collegare bene posizione sulla mappa e funzione dell'unità.
+  Indica la zona di ingaggio immediato sulla mappa. La lettura decide quale
+  ruolo entra in contatto e quale resta in retrovia.
 tags: [term, battle]
 :::
 
@@ -990,8 +997,9 @@ example_jp: >-
 example_it: >-
   Manda in prima linea una MS forte nel combattimento ravvicinato.
 notes_it: >-
-  Fissa bene il lessico dello scontro locale, che in Arsenal Base non coincide
-  sempre con la pressione sugli obiettivi.
+  Indica lo scontro locale tra unità. Va separato dalla pressione agli
+  obiettivi: vincere il combattimento non implica sempre danno immediato a base
+  o nave.
 tags: [term, battle]
 :::
 
@@ -1029,7 +1037,8 @@ example_it: >-
   Se metti una unità di difesa sulla tua base, la pressione avversaria passa con
   molta più difficoltà.
 notes_it: >-
-  Resta vicino all'obiettivo e ne aumenta la difesa. Leggerlo bene ti fa capire perché un tuo attacco agli obiettivi improvvisamente fa pochissimo danno.
+  Resta vicino all'obiettivo e ne aumenta la difesa. Quando compare, un attacco
+  agli obiettivi può infliggere molto meno danno del previsto.
 tags: [term, battle]
 :::
 
@@ -1086,7 +1095,9 @@ example_it: >-
   Anche se un articolo vecchio parla di EX Battle, va letto separandolo dal
   percorso di gioco attuale.
 notes_it: >-
-  Serve soprattutto a leggere materiale storico. Nella versione ufficiale attuale il sistema non si attiva più dalle stagioni UNITRIBE SEASON:01 in poi.
+  È un riferimento storico presente in guide precedenti. Nella versione
+  ufficiale attuale il sistema non si attiva più dalle stagioni UNITRIBE
+  SEASON:01 in poi.
 tags: [term, progression]
 :::
 
@@ -1143,7 +1154,8 @@ example_it: >-
   Equipaggiando una carta tattica, la spinta finale diventa molto più facile da
   gestire.
 notes_it: >-
-  Collega una causa pratica a un risultato di gioco. Quando compare, la frase ti sta spiegando quale effetto ottieni da un'azione o da una condizione.
+  Collega una causa pratica a un risultato di gioco. Se compare, la seconda
+  parte descrive l'esito che si attiva dopo l'azione o la condizione iniziale.
 tags: [grammar, ui]
 :::
 

@@ -14,10 +14,9 @@ reading: がくせいしょくどう
 romaji: gakusei shokudou
 meaning_it: mensa studentesca
 notes_it: >-
-  Nomina la mensa della scuola, ma nel prologo non e solo un posto dove si
-  mangia. Quando il gioco ti manda alla `{{学生食堂|がくせいしょくどう}}`, sta spesso
-  agganciando un dialogo importante o una proposta di route in un contesto piu
-  informale.
+  Nomina la mensa della scuola. Nel prologo funziona come punto-evento: quando
+  il gioco ti manda alla `{{学生食堂|がくせいしょくどう}}`, di solito si attiva un
+  dialogo che aggiorna obiettivo corrente o direzione della route.
 :::
 
 :::card
@@ -68,8 +67,8 @@ romaji: kouchoushitsu
 meaning_it: ufficio del preside
 notes_it: >-
   Non indica una stanza qualsiasi del campus ma l'ufficio del preside. Quando
-  compare `{{校長室|こうちょうしつ}}`, il gioco sta preparando un confronto piu
-  ufficiale o un passaggio narrativo che ha il peso di una decisione scolastica.
+  compare `{{校長室|こうちょうしつ}}`, il gioco sta aprendo una scena formale che
+  conferma istruzioni, permessi o passaggi successivi dell'avventura scolastica.
 :::
 
 :::card
@@ -83,8 +82,8 @@ example_jp: >-
   {{校長室|こうちょうしつ}}に {{呼|よ}}ばれると {{大事|だいじ}}な
   {{話|はなし}}が {{始|はじ}}まる ことが {{多|おお}}い。
 example_it: >-
-  Quando vieni chiamato nell'ufficio del preside, spesso sta per iniziare un
-  discorso importante.
+  Quando vieni chiamato nell'ufficio del preside, in genere parte una scena che
+  aggiorna istruzioni o obiettivo.
 :::
 
 :::term
@@ -94,9 +93,9 @@ reading: がくせいりょう
 romaji: gakusei ryou
 meaning_it: dormitorio studentesco
 notes_it: >-
-  E la zona abitativa degli studenti. Nel prologo conta perche non e solo la
-  tua nuova casa: riposare nella `{{学生寮|がくせいりょう}}` fa avanzare il
-  flusso della storia e prepara l'apertura della
+  E la zona abitativa degli studenti. Nel prologo non e solo ambientazione:
+  riposare nella `{{学生寮|がくせいりょう}}` avanza il tempo di gioco e prepara
+  l'apertura della
   [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou).
 :::
 
@@ -148,8 +147,8 @@ romaji: mezasu
 meaning_it: puntare a / mirare a diventare
 notes_it: >-
   In questo arco non vuol dire solo "volere" in modo vago. Quando il gioco ti
-  chiede che cosa vuoi `{{目指|めざ}}す`, ti sta facendo dichiarare un obiettivo
-  che orienta la lettura della route successiva.
+  chiede che cosa vuoi `{{目指|めざ}}す`, ti fa esplicitare una direzione
+  (ruolo/risultato) che incornicia dialoghi e prossimi step della route.
 :::
 
 :::card

@@ -159,6 +159,7 @@ export interface ExampleSentenceBlock {
   position?: SourceRange;
   sentence: RichTextFragment;
   translationIt: RichTextFragment;
+  revealMode?: "default" | "sentence";
 }
 
 export interface MediaFrontmatter {

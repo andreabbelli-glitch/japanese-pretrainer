@@ -145,6 +145,10 @@ function normalizeBlock(value: unknown): ContentBlock | null {
         translationIt
       };
 
+      if (value.revealMode === "default" || value.revealMode === "sentence") {
+        block.revealMode = value.revealMode;
+      }
+
       return block;
     }
     case "termDefinition": {

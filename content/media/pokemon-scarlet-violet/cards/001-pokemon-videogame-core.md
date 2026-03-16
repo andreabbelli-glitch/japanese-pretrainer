@@ -53,7 +53,7 @@ back: squadra attiva / Pokemon con te
 example_jp: >-
   {{手持ち|てもち}}の ポケモンを {{先|さき}}に {{回復|かいふく}}しておこう。
 example_it: >-
-  Prima conviene curare i Pokemon che hai in squadra.
+  Prima della lotta, cura i Pokemon che hai in squadra.
 :::
 
 :::term
@@ -64,8 +64,8 @@ romaji: bokkusu
 meaning_it: box di deposito
 notes_it: >-
   È l'area di storage dove finiscono i Pokemon non presenti nella squadra
-  attiva. Capirlo ti fa distinguere subito tra gestione del party e
-  organizzazione del deposito.
+  attiva. Il termine separa la gestione del party dall'organizzazione del
+  deposito.
 :::
 
 :::card
@@ -164,8 +164,8 @@ romaji: pokemon zukan
 meaning_it: Pokedex
 notes_it: >-
   Nomina il catalogo che registra i Pokemon visti o catturati. Quando compare,
-  il gioco ti sta parlando della raccolta delle specie e del tracciamento dei
-  progressi di scoperta, non di una semplice lista decorativa.
+  indica il sistema che registra specie viste o catturate e aggiorna il
+  tracciamento dei progressi di scoperta.
 :::
 
 :::card
@@ -290,8 +290,8 @@ romaji: omoidasu
 meaning_it: ricordare di nuovo / recuperare una mossa
 notes_it: >-
   Nel contesto Pokemon significa far tornare disponibile una mossa già appresa
-  in passato. Questo ti fa capire che una scelta di mosse non è sempre
-  definitiva e che il menu permette recuperi, non solo perdite.
+  in passato. Quindi una scelta di mosse non è sempre definitiva: il menu può
+  riaprire l'accesso a tecniche rimosse dal set attivo.
 :::
 
 :::card
@@ -315,8 +315,7 @@ romaji: wasureru
 meaning_it: dimenticare / rimuovere una mossa
 notes_it: >-
   Nei prompt di apprendimento mosse indica la rimozione di una mossa dal set
-  attivo del Pokemon. Capirlo evita di leggere male una scelta critica del
-  menu: il gioco ti sta chiedendo quale slot liberare per la nuova tecnica.
+  attivo del Pokemon. Il menu chiede quale slot liberare per la nuova tecnica.
 :::
 
 :::card
@@ -365,8 +364,8 @@ romaji: tokusei
 meaning_it: abilità passiva
 notes_it: >-
   Indica la capacità innata del Pokemon, diversa da una mossa scelta
-  manualmente. Ti aiuta a capire quando un effetto nasce dal profilo del
-  Pokemon e non dal comando usato in quel turno.
+  manualmente. Se compare, l'effetto nasce dal profilo del Pokemon e non dal
+  comando selezionato in quel turno.
 :::
 
 :::card
@@ -516,8 +515,8 @@ romaji: tsukamaeru
 meaning_it: catturare
 notes_it: >-
   È il verbo della cattura dei Pokemon. Quando compare in un tutorial o in una
-  spiegazione di lotta, il gioco ti sta spostando dal semplice vincere al
-  riuscire a ottenere quel Pokemon per la tua collezione o squadra.
+  spiegazione di lotta, il focus passa dal semplice vincere al riuscire a
+  ottenere quel Pokemon per collezione o squadra.
 :::
 
 :::card
@@ -567,7 +566,8 @@ meaning_it: evoluzione
 notes_it: >-
   Segnala il cambio di forma del Pokemon, spesso legato a livello, oggetti,
   amicizia o altre condizioni. Quando compare, il testo ti sta dicendo che non
-  cambia solo l'aspetto: può cambiare anche il potenziale del Pokemon.
+  cambia solo l'aspetto: aggiornano anche statistiche, mosse disponibili e
+  prestazione in battaglia.
 :::
 
 :::card
@@ -641,9 +641,9 @@ title: Provare a fare
 meaning_it: fare qualcosa per prova / per vedere come va
 aliases: [～てみよう, ～てみたら]
 notes_it: >-
-  Nei tutorial Pokemon questo pattern spesso non è una proposta vaga ma una
-  spinta pratica all'azione. Ti chiede di eseguire subito un test guidato, per
-  esempio registrare una [{{目的地|もくてきち}}](term:term-mokutekichi) o aprire
+  Nei tutorial Pokemon introduce un test operativo immediato. Dopo `～てみる`,
+  il gioco richiede di eseguire l'azione nella UI, per esempio registrare una
+  [{{目的地|もくてきち}}](term:term-mokutekichi) o aprire
   [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru).
 :::
 
@@ -717,9 +717,8 @@ title: Se / quando
 meaning_it: se / quando dopo che succede qualcosa
 notes_it: >-
   È il pattern che collega una condizione pratica alla sua risposta. Nei
-  tutorial ti aiuta a separare subito la situazione-problema dall'azione da
-  fare, per esempio quando ti perdi o quando entra in gioco uno stato
-  alterato.
+  tutorial separa la condizione dall'azione richiesta, per esempio quando ti
+  perdi o quando entra in gioco uno stato alterato.
 :::
 
 :::card
@@ -742,8 +741,8 @@ title: Fare per te
 meaning_it: qualcuno / qualcosa fa un'azione a tuo favore
 notes_it: >-
   Aggiunge l'idea che l'azione avviene a tuo beneficio. Nei Pokemon questo
-  aiuta a leggere il ruolo di NPC, oggetti e servizi: non stanno solo
-  compiendo un effetto, stanno aiutando il giocatore o la squadra.
+  marca il ruolo di NPC, oggetti e servizi: l'effetto viene applicato al
+  giocatore o alla squadra come supporto.
 :::
 
 :::card
@@ -789,9 +788,9 @@ pattern: ～ておく
 title: Fare in anticipo / lasciare pronto
 meaning_it: fare qualcosa prima per prepararsi o lasciarlo fatto
 notes_it: >-
-  Nei consigli di gioco segnala preparazione preventiva. Se leggi
-  `{{回復|かいふく}}しておく` o `レポートしておく`, il gioco ti sta suggerendo di sistemare
-  tutto prima del prossimo blocco importante.
+  Segnala preparazione preventiva. Se leggi `{{回復|かいふく}}しておく` o
+  `レポートしておく`, l'azione viene completata prima dell'evento successivo, così
+  stato squadra e progresso restano gia aggiornati.
 :::
 
 :::card
@@ -804,5 +803,5 @@ back: fare in anticipo / lasciare pronto
 example_jp: >-
   {{次|つぎ}}の バトルの {{前|まえ}}に レポートしておこう。
 example_it: >-
-  Prima della prossima lotta, conviene salvare in anticipo.
+  Prima della prossima lotta, salva in anticipo.
 :::

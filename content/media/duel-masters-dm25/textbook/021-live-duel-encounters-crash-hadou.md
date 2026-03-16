@@ -2,79 +2,79 @@
 id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-crash-hadou
-title: Carte incontrate in partita 1 - Crash "Hadou" e il trigger del turno extra
+title: Live Duel Encounters - archivio carte incontrate
 order: 50
 segment_ref: live-duel-encounters
 difficulty: n3
 status: active
-tags: [live-duel, extra-turn, beat-jockey, duel-masters]
+tags: [live-duel, card-encounter, extra-turn, beat-jockey, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Leggiamo `勝利龍装 クラッシュ“覇道”` pezzo per pezzo: nome, razze, keyword e
-  trigger che aggiunge un turno extra se la creatura viene distrutta da
-  tappata.
+  Questa lesson diventa il log vivo delle carte incontrate in partita. Ogni
+  entry tiene insieme foto, effect lines in giapponese con traduzione
+  cliccabile, focus solo sul nuovo e flashcards davvero utili da aggiungere o
+  mantenere attive.
 ---
 
 # Obiettivo
 
-Qui impari a leggere
-[{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
-senza ritradurre ogni riga da zero.
+Da qui in poi questa pagina non e piu una monografia su una sola carta: diventa
+l'archivio progressivo delle carte che incontro davvero durante il gioco.
 
-In questa carta il lessico gia noto, come
-[{{破壊|はかい}}](term:term-destroy), [タップ](term:term-tap) e
-[W・ブレイカー](term:term-w-breaker), si combina con tre punti che cambiano
-davvero la lettura:
+Per ogni carta voglio tenere sempre lo stesso schema:
 
-- il composto [タップ{{状態|じょうたい}}](term:term-tap-state);
-- il trigger passivo [～された{{時|とき}}](grammar:grammar-sareta-toki);
-- la finestra [～の{{後|あと}}に](grammar:grammar-no-ato-ni), che qui produce un
-  turno extra.
+- foto della carta;
+- effect lines in giapponese, cliccabili per vedere la traduzione italiana;
+- focus solo su lessico e grammatica che aggiungono qualcosa di nuovo;
+- flashcards nuove soltanto quando il chunk da ricordare non e gia coperto bene.
 
-Alla fine saprai:
+## Come leggere questa sezione
 
-- riconoscere il nome
-  [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou);
-- leggere il blocco `タップ{{状態|じょうたい}}で{{破壊|はかい}}された{{時|とき}}`;
-- capire perche `このターンの{{後|あと}}に` inserisce subito un tuo turno extra.
+Quando aggiungiamo una nuova carta qui, il criterio non e "spiegare tutto da
+zero", ma rispondere a tre domande pratiche:
 
-## Contesto
+1. quale riga dell'effetto devo saper leggere al volo?
+2. dove sta il vero punto nuovo di grammatica o di lessico?
+3. serve una flashcard nuova oppure basta riusare quelle gia esistenti?
 
-Dallo screenshot la carta identificata e
-[{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou),
-creatura di [ドラゴンギルド](term:term-dragonguild) /
-[ビートジョッキー](term:term-beat-jockey), fuoco, costo 10, potere `9000+`.
+## Carte incontrate
 
-La carta concentra tre livelli diversi:
+### 1. [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
 
-- un nome proprio molto carico, che va riconosciuto come etichetta unica;
-- una riga di razze che colloca la carta dentro famiglie precise;
-- un trigger che parla di distruzione, stato tapped e ordine dei turni.
+:::image
+src: assets/cards/crash-hadou.png
+alt: "Crash Hadou card, first encounter recorded in the live duel section."
+caption: >-
+  Primo encounter del log: [{{勝利龍装|しょうりりゅうそう}}
+  クラッシュ{{覇道|はどう}}](term:term-crash-hadou), con package aggressivo
+  di keyword e trigger che puo inserire un turno extra.
+:::
 
-## Termini chiave
+#### Effect lines
 
-- [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
-- [B・A・D 2](term:term-b-a-d-two)
-- [スピードアタッカー](term:term-speed-attacker)
-- [ドラゴンギルド](term:term-dragonguild)
-- [ビートジョッキー](term:term-beat-jockey)
-- [タップ{{状態|じょうたい}}](term:term-tap-state)
-- [バトル](term:term-battle)
-- [ターンを{{追加|ついか}}する](term:term-add-turn)
+:::example_sentence
+jp: >-
+  [B・A・D 2](term:term-b-a-d-two)
+translation_it: >-
+  B.A.D 2.
+reveal_mode: sentence
+:::
 
-## Pattern grammaticali chiave
+:::example_sentence
+jp: >-
+  [スピードアタッカー](term:term-speed-attacker)
+translation_it: >-
+  Speed Attacker.
+reveal_mode: sentence
+:::
 
-- [～された{{時|とき}}](grammar:grammar-sareta-toki)
-- [～の{{後|あと}}に](grammar:grammar-no-ato-ni)
-- [～{{中|ちゅう}}](grammar:grammar-ui-chuu)
-
-## Spiegazione
-
-### 1. Effetto completo
-
-- [B・A・D 2](term:term-b-a-d-two)
-- [スピードアタッカー](term:term-speed-attacker)
-- [W・ブレイカー](term:term-w-breaker)
+:::example_sentence
+jp: >-
+  [W・ブレイカー](term:term-w-breaker)
+translation_it: >-
+  W-Breaker.
+reveal_mode: sentence
+:::
 
 :::example_sentence
 jp: >-
@@ -87,6 +87,7 @@ jp: >-
 translation_it: >-
   Quando questa creatura viene distrutta, se era in stato tapped, aggiungi un
   tuo turno dopo questo turno.
+reveal_mode: sentence
 :::
 
 :::example_sentence
@@ -95,132 +96,38 @@ jp: >-
   クリーチャーの[パワー](term:term-power)を+5000する。
 translation_it: >-
   Durante il battle, questa creatura prende +5000 potere.
+reveal_mode: sentence
 :::
 
-### 2. Nome e razze
+#### Cosa e davvero nuovo in questo encounter
 
-Nel nome
-[{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
-la parte meccanicamente importante e riconoscere l'etichetta completa; pero il
-giapponese del nome dice comunque qualcosa.
+- Il punto piu importante non e la keyword offensiva in se, ma il blocco
+  `[タップ{{状態|じょうたい}}](term:term-tap-state)でいたら`: qui non basta
+  sapere cos'e [タップ](term:term-tap), bisogna riconoscere lo stato gia
+  presente nel momento del controllo.
+- [～された{{時|とき}}](grammar:grammar-sareta-toki) sposta il trigger in
+  passivo. La carta non dice "quando distruggi", ma "quando viene distrutta".
+- [～の{{後|あと}}に](grammar:grammar-no-ato-ni) non e un "poi" generico:
+  aggancia un turno extra in un punto preciso dell'ordine del turno.
+- Le razze [ドラゴンギルド](term:term-dragonguild) e
+  [ビートジョッキー](term:term-beat-jockey) non sono il focus grammaticale
+  principale, ma servono a leggere subito dove la carta puo essere contata o
+  cercata da altri effetti.
 
-- `{{勝利|しょうり}}` vuol dire "vittoria".
-- `{{龍装|りゅうそう}}` contiene `{{龍|りゅう}}`, "drago", e `{{装|そう}}`,
-  "equipaggiare / armare": in un nome proprio suona come un titolo enfatico
-  legato ai draghi, non come una keyword di rules text.
-- `クラッシュ` e katakana inglese: "crash", quindi impatto distruttivo.
-- `{{覇道|はどう}}` vuol dire letteralmente "via del dominio / dell'egemonia",
-  con tono da finisher o boss card.
+#### Flashcards da tenere attive o aggiungere
 
-Questo ti aiuta a separare subito due piani:
-
-- il nome della carta, che va letto come nome proprio;
-- la riga `種族`, dove
-  [ドラゴンギルド](term:term-dragonguild) e
-  [ビートジョッキー](term:term-beat-jockey) sono invece categorie di gioco che
-  possono contare per sinergie e riferimenti di razza.
-
-### 3. Come leggere le keyword
-
-:::example_sentence
-jp: >-
-  [B・A・D](term:term-b-a-d-two)：
-  このクリーチャーの{{召喚|しょうかん}}コストを{{指定|してい}}された{{数|かず}}
-  {{少|すく}}なくしてもよい。そうした{{場合|ばあい}}、このターン
-  {{終了時|しゅうりょうじ}}にこのクリーチャーを[{{破壊|はかい}}](term:term-destroy)する。
-translation_it: >-
-  B.A.D: puoi ridurre il costo di evocazione di questa creatura del numero
-  indicato. Se lo fai, alla fine di questo turno distruggi questa creatura.
-:::
-
-La prima riga della carta e un blocco di keyword aggressive:
-
-- [B・A・D 2](term:term-b-a-d-two) ti dice che puoi farla scendere con costo
-  ridotto di `2`, ma poi la carta si autodistrugge a fine turno se hai usato
-  quella riduzione.
-- [スピードアタッカー](term:term-speed-attacker) vuol dire che puo attaccare
-  subito nel turno in cui entra.
-- [W・ブレイカー](term:term-w-breaker) vuol dire che quando rompe gli scudi ne
-  rompe `2`.
-
-:::example_sentence
-jp: >-
-  [スピードアタッカー](term:term-speed-attacker)：
-  {{召喚酔|しょうかんよ}}いしない。
-translation_it: >-
-  Speed Attacker: non soffre di "summoning sickness".
-:::
-
-:::example_sentence
-jp: >-
-  [W・ブレイカー](term:term-w-breaker)：
-  シールドを{{2|ふた}}つブレイクする。
-translation_it: >-
-  W-Breaker: rompe 2 scudi.
-:::
-
-Su una carta cosi queste keyword spiegano il piano di gioco: entra in fretta,
-puo attaccare subito, rompe due scudi e, se muore tappata, lascia dietro di se
-un altro turno.
-
-### 4. Dove cambia davvero la lettura
-
-Molte parole-base qui sono gia note:
-[{{破壊|はかい}}](term:term-destroy),
-[タップ](term:term-tap),
-[W・ブレイカー](term:term-w-breaker),
-[パワー](term:term-power).
-
-La parte nuova sta nel blocco completo:
-
-- `タップ{{状態|じょうたい}}` aggiunge l'idea di stato, non solo l'azione di
-  tap: la carta deve essere gia tappata quando il gioco controlla la condizione;
-- `～された{{時|とき}}` sposta il trigger in passivo: non "quando distruggi",
-  ma "quando viene distrutta";
-- `このターンの{{後|あと}}に` non vuol dire genericamente "piu tardi": inserisce
-  un turno extra subito dopo quello corrente.
-
-### 5. Parsing del trigger principale
-
-Leggilo in tre pezzi fissi:
-
-1. `このクリーチャーが{{破壊|はかい}}された{{時|とき}}`
-   `= quando questa creatura viene distrutta`.
-2. `タップ{{状態|じょうたい}}でいたら`
-   `= solo se, in quel momento, era tappata`.
-3. `このターンの{{後|あと}}に{{自分|じぶん}}のターンを{{追加|ついか}}する`
-   `= dopo il turno attuale ne ottieni subito un altro`.
-
-Il punto importante di gioco e la seconda riga: se la creatura viene distrutta
-ma non era tappata, il turno extra non parte. Il trigger non chiede soltanto
-"muore?"; chiede "muore mentre si trova gia in stato tapped?".
-
-### 6. Come leggere l'ultima riga
-
-`[バトル](term:term-battle)[{{中|ちゅう}}](grammar:grammar-ui-chuu)` va letto come
-finestra di combattimento, non come semplice "mentre attacca". La riga quindi
-non parla di ingresso o di fine turno: ti dice che nello scontro questa
-creatura sale a `+5000`.
-
-### 7. Riepilogo operativo
-
-Su questa carta vale la pena tenere insieme quattro cose:
-
-- il nome completo
+- Mantieni attive le recognition su
   [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou),
-  che funziona come etichetta unica della carta;
-- le due razze
-  [ドラゴンギルド](term:term-dragonguild) e
-  [ビートジョッキー](term:term-beat-jockey);
-- il pacchetto aggressivo di keyword:
-  [B・A・D 2](term:term-b-a-d-two),
-  [スピードアタッカー](term:term-speed-attacker) e
-  [W・ブレイカー](term:term-w-breaker);
-- i due blocchi di parsing che decidono l'effetto:
-  [～された{{時|とき}}](grammar:grammar-sareta-toki) e
-  [～の{{後|あと}}に](grammar:grammar-no-ato-ni).
+  [B・A・D 2](term:term-b-a-d-two) e
+  [スピードアタッカー](term:term-speed-attacker): sono i tre chunk che devono
+  saltare all'occhio subito.
+- Qui vale la pena avere anche una card di chunk per la riga completa del turno
+  extra, perche unisce insieme stato, passivo e timing di inserimento del nuovo
+  turno.
 
-Se questi quattro pezzi sono chiari, il testo della carta smette di sembrare un
-insieme di keyword sparse e diventa una sequenza molto netta: entra in fretta,
-attacca subito, spinge sugli scudi e, se viene abbattuta da tappata, ti lascia
-un turno extra.
+## Crescita futura
+
+Le prossime carte incontrate verranno aggiunte qui sotto con lo stesso formato.
+Se una carta riusa keyword gia note, non duplico le spiegazioni base: tengo
+solo il focus contestuale e creo nuove flashcards soltanto quando emerge un
+chunk davvero nuovo.

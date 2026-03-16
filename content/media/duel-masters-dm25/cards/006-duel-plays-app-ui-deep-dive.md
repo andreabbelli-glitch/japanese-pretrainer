@@ -47,9 +47,9 @@ meaning_it: storico delle riscossioni / claim history
 pos: screen-label
 aliases: [受け取り履歴, claim history]
 notes_it: >-
-  Qui il punto decisivo è `{{履歴|りれき}}`: non stai guardando reward ancora
-  aperte, ma lo storico delle operazioni già elaborate. È una schermata di
-  controllo, non una coda da svuotare.
+  `{{履歴|りれき}}` indica che non stai guardando reward ancora aperte, ma lo
+  storico delle operazioni già elaborate. È una schermata di controllo, non una
+  coda da svuotare.
 level_hint: custom
 :::
 
@@ -79,7 +79,7 @@ aliases: [受け取り期限, claim deadline]
 notes_it: >-
   Non descrive quando hai ottenuto la reward, ma fino a quando puoi ancora
   incassarla. In UI questo label conta perché ti dice se la reward è solo
-  presente o ancora davvero riscattabile.
+  presente o ancora riscattabile.
 level_hint: custom
 :::
 
@@ -94,8 +94,8 @@ aliases: [期限, きげん, kigen]
 notes_it: >-
   Nelle schermate reward e shop indica il limite temporale entro cui un'azione
   o un prodotto restano validi. Compare dentro composti come
-  [{{受け取り期限|うけとりきげん}}](term:term-claim-deadline), ma conviene
-  fissarlo anche da solo perché ti segnala subito l'idea di urgenza.
+  [{{受け取り期限|うけとりきげん}}](term:term-claim-deadline), ma funziona anche da
+  solo: quando compare, il blocco UI sta imponendo un limite temporale.
 level_hint: n4
 :::
 
@@ -110,7 +110,7 @@ aliases: [獲得, kakutoku]
 notes_it: >-
   Nell'app compare in stringhe come `{{獲得|かくとく}}{{日時|にちじ}}` e
   `{{獲得|かくとく}}カード{{一覧|いちらん}}`. Non vuol dire soltanto "ricevere"
-  in astratto: segnala che qualcosa entra davvero nel tuo stock o nel tuo
+  in astratto: segnala che qualcosa entra nel tuo stock o nel tuo
   risultato.
 level_hint: custom
 :::
@@ -141,7 +141,7 @@ aliases: [ステージ選択, stage select]
 notes_it: >-
   È la schermata in cui scegli il livello o lo stage da affrontare. Il composto
   va letto come blocco operativo: non è una descrizione narrativa, ma il punto
-  in cui decidi costo, difficoltà e reward preview.
+  in cui si definiscono costo, difficoltà e reward preview.
 level_hint: custom
 :::
 
@@ -184,7 +184,7 @@ meaning_it: usare / impiegare
 pos: verbal-noun
 aliases: [使用, shiyou]
 notes_it: >-
-  Nelle schermate di conferma indica la risorsa che stai davvero consumando per
+  Nelle schermate di conferma indica la risorsa che stai consumando per
   compiere un acquisto o un'altra operazione. Qui non vuol dire solo "usare" in
   astratto: vuol dire spendere ticket, punti o altre unità disponibili.
 level_hint: n4
@@ -262,7 +262,7 @@ notes_it: >-
   Ti dice che il deck o il prodotto sono già preparati e non richiedono deck
   building da zero. Per questo, dentro
   [{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase),
-  la parte davvero importante è che stai guardando un prodotto pronto.
+  il valore operativo è che stai guardando un prodotto pronto.
 level_hint: custom
 :::
 
@@ -321,9 +321,9 @@ meaning_it: carta chiave / key card
 pos: screen-label
 aliases: [キーカード, key card]
 notes_it: >-
-  È il pannello che ti mostra la carta-ancora più importante per leggere
-  l'identità di un deck. Nella UI vale come scorciatoia interpretativa: guardi
-  quella carta e capisci subito il tema del mazzo.
+  È il pannello che mostra la carta rappresentativa del deck. Nella UI funziona
+  come sintesi: il tema del mazzo è leggibile da quella carta senza aprire tutto
+  l'elenco.
 level_hint: custom
 :::
 
@@ -336,9 +336,9 @@ meaning_it: abilità leggenda / legend skill
 pos: feature-label
 aliases: [レジェンドスキル, legend skill]
 notes_it: >-
-  È un'informazione di setup importante nelle schermate deck o stage. Anche
-  quando compare con `なし`, ti sta dicendo qualcosa di concreto sulle regole o
-  sulle capacità aggiuntive del contesto scelto.
+  È un'informazione di setup nelle schermate deck o stage. Anche quando compare
+  con `なし`, esplicita che in quel contesto non ci sono regole o capacità
+  aggiuntive.
 level_hint: custom
 :::
 
@@ -367,7 +367,7 @@ pos: status-label
 aliases: [既読, already read]
 notes_it: >-
   È un label di stato che ti segnala che il contenuto testuale o narrativo è già
-  stato visto. In UI questo è importante perché spesso sblocca o giustifica
+  stato visto. In UI questo stato spesso sblocca o giustifica
   l'opzione [スキップ](term:term-skip), soprattutto sulle scene di storia.
 level_hint: custom
 :::
@@ -412,8 +412,8 @@ pos: difficulty-label
 aliases: [中級, intermediate]
 notes_it: >-
   È il livello subito sopra [{{初級|しょきゅう}}](term:term-beginner-class).
-  Dentro la UI ti prepara a una sfida più impegnativa e spesso a un costo
-  d'accesso diverso.
+  Dentro la UI indica una sfida più impegnativa e spesso un costo d'accesso
+  diverso.
 level_hint: n4
 :::
 
@@ -527,7 +527,7 @@ example_it: >-
   Riscuoti la reward entro la scadenza.
 notes_it: >-
   È il nucleo lessicale che poi ritrovi dentro molti label più lunghi. Se lo
-  riconosci, capisci subito che la UI ti sta parlando di tempo residuo.
+  riconosci, la UI sta parlando di tempo residuo.
 tags: [duel-plays, app, ui, time, kanji]
 :::
 
@@ -544,8 +544,7 @@ example_it: >-
   In questo stage puoi ottenere 100 punti.
 notes_it: >-
   È il verbo che lega reward, punti e carte ottenute a un risultato concreto.
-  Ti aiuta a leggere sia il risultato finale sia la preview di ciò che puoi
-  ancora ottenere.
+  Collega il risultato finale e la preview di ciò che resta ottenibile.
 tags: [duel-plays, app, ui, reward]
 :::
 
@@ -561,8 +560,8 @@ example_jp: >-
 example_it: >-
   Controlla la data e l'ora di ottenimento.
 notes_it: >-
-  Ti aiuta a leggere il momento registrato di un reward o di un risultato, non
-  la sua scadenza.
+  Indica il momento registrato di un reward o di un risultato, non la sua
+  scadenza.
 tags: [duel-plays, app, ui, time, kanji]
 :::
 
@@ -578,8 +577,7 @@ example_jp: >-
 example_it: >-
   Scegli la difficoltà nella schermata stage select.
 notes_it: >-
-  È il punto in cui livello, costo, reward preview e pulsanti di ingresso si
-  incontrano.
+  Qui confluiscono livello, costo, reward preview e pulsanti di ingresso.
 tags: [duel-plays, app, ui, stage]
 :::
 
@@ -632,7 +630,7 @@ example_it: >-
   Usa 4 ticket per comprare i pack.
 notes_it: >-
   Nelle conferme shop è il verbo che collega stock attuale e consumo reale della
-  risorsa. Quando lo leggi, sai che l'app sta per spendere qualcosa davvero.
+  risorsa. Quando compare, l'app sta per spendere una risorsa reale.
 tags: [duel-plays, app, ui, action]
 :::
 
@@ -713,8 +711,8 @@ example_jp: >-
 example_it: >-
   Compra un deck già costruito.
 notes_it: >-
-  Conviene fissarlo da solo, così i label più lunghi che lo contengono
-  diventano molto più trasparenti.
+  Letto da solo, chiarisce subito i label composti che lo contengono:
+  l'oggetto è già pronto e non richiede deck building.
 tags: [duel-plays, app, ui, deck, kanji]
 :::
 
@@ -730,7 +728,7 @@ example_jp: >-
 example_it: >-
   Compra un deck collaborazione nella schermata deck prebuilt.
 notes_it: >-
-  Il punto chiave è `{{構築済み|こうちくずみ}}`: il mazzo è già pronto, non da
+  `{{構築済み|こうちくずみ}}` indica che il mazzo è già pronto, non da
   costruire pezzo per pezzo. Questa schermata va letta come prodotto shop, non
   come deck edit.
 tags: [duel-plays, app, ui, deck]
@@ -748,8 +746,8 @@ example_jp: >-
 example_it: >-
   Controlla la key card nella panoramica del deck.
 notes_it: >-
-  Ti allena a distinguere bene i bottoni di ispezione da quelli che modificano o
-  avviano davvero qualcosa.
+  Distingue i bottoni di ispezione da quelli che modificano o avviano
+  un'azione.
 tags: [duel-plays, app, ui, deck, kanji]
 :::
 
@@ -765,8 +763,8 @@ example_jp: >-
 example_it: >-
   Scegli un rental deck dalla deck list.
 notes_it: >-
-  È la schermata da cui confronti mazzi e passi alla preview dettagliata. Qui la
-  UI ti fa scegliere, ispezionare e solo alla fine avviare la partita.
+  È la schermata da cui confronti mazzi e passi alla preview dettagliata. La UI
+  ordina le azioni in sequenza: scelta, ispezione, poi avvio della partita.
 tags: [duel-plays, app, ui, deck]
 :::
 
@@ -782,8 +780,7 @@ example_jp: >-
 example_it: >-
   I DM Points non sono sufficienti.
 notes_it: >-
-  È il segnale lessicale più utile dei popup di blocco: ti dice immediatamente
-  che il problema è la risorsa disponibile.
+  Nei popup di blocco segnala che il problema è la risorsa disponibile.
 tags: [duel-plays, app, ui, status, kanji]
 :::
 
@@ -799,7 +796,8 @@ example_jp: >-
 example_it: >-
   Guarda la key card per capire il carattere del deck.
 notes_it: >-
-  È una scorciatoia visiva per orientarti subito sul tema del mazzo.
+  È un pannello di sintesi visiva: mostra il tema del mazzo prima di aprire
+  dettagli e lista completa.
 tags: [duel-plays, app, ui, deck]
 :::
 

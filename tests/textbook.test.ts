@@ -532,6 +532,57 @@ describe("textbook data", () => {
     expect(markup).toContain("<details");
   });
 
+  it("can use the japanese sentence itself as the click-to-reveal summary", () => {
+    const markup = renderToStaticMarkup(
+      createElement(LessonArticle, {
+        activeEntryKey: null,
+        document: {
+          raw: "stub",
+          blocks: [
+            {
+              type: "exampleSentence",
+              revealMode: "sentence",
+              sentence: {
+                raw: "このターンの後に自分のターンを追加する。",
+                nodes: [
+                  {
+                    type: "text",
+                    value: "このターンの後に自分のターンを追加する。"
+                  }
+                ]
+              },
+              translationIt: {
+                raw: "Dopo questo turno, aggiungi un tuo turno.",
+                nodes: [
+                  {
+                    type: "text",
+                    value: "Dopo questo turno, aggiungi un tuo turno."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        fallbackHtml: "",
+        furiganaMode: "hover",
+        isTouchLayout: false,
+        mediaSlug: "demo-media",
+        onImageExpand() {},
+        onReferenceBlur() {},
+        onReferenceClick() {},
+        onReferenceFocus() {},
+        onReferenceHover() {},
+        onReferenceLeave() {}
+      })
+    );
+
+    expect(markup).toContain("reader-example-sentence--sentence-toggle");
+    expect(markup).toContain("reader-example-sentence__translation--sentence");
+    expect(markup).toContain("<summary");
+    expect(markup).toContain("このターンの後に自分のターンを追加する。");
+    expect(markup).toContain("Dopo questo turno, aggiungi un tuo turno.");
+  });
+
   it("persists furigana preference and lesson progress changes", async () => {
     await setFuriganaMode("on", database);
     await database

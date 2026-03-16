@@ -1267,6 +1267,10 @@ rt {
     rgba(255, 250, 242, 0.88);
 }
 
+.reader-example-sentence--sentence-toggle {
+  gap: 0;
+}
+
 .reader-image,
 .reader-article--fallback figure.reader-image {
   display: grid;
@@ -1481,6 +1485,13 @@ rt {
   font-weight: 600;
 }
 
+.reader-example-sentence__translation--sentence summary {
+  align-items: flex-start;
+  font-size: clamp(1.18rem, 1.03rem + 0.38vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
 .reader-example-sentence__translation summary::-webkit-details-marker {
   display: none;
 }
@@ -1503,6 +1514,11 @@ rt {
   content: "-";
 }
 
+.reader-example-sentence__translation--sentence summary::before {
+  margin-top: 0.2rem;
+  flex: 0 0 auto;
+}
+
 .reader-example-sentence__translation-body {
   padding: var(--space-4);
   border: 1px solid rgba(210, 197, 177, 0.72);
@@ -1512,6 +1528,10 @@ rt {
 
 .reader-example-sentence__translation-body > p {
   color: var(--color-ink);
+}
+
+.reader-example-sentence__summary {
+  margin: 0;
 }
 
 .reader-definition-card,

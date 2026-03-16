@@ -139,9 +139,9 @@ aliases: [ドラグハート, どらぐはーと, doraguhaato]
 notes_it: >-
   Segnala una famiglia a due facce collegata a
   `ドラグハート・クリーチャー`, `ドラグハート・ウエポン` e
-  `ドラグハート・フォートレス`. Qui la cosa utile non è tradurre il nome alla
-  lettera, ma capire che la parola dopo il punto mediano ti dice se la carta
-  combatte, si equipaggia o resta come struttura nel campo.
+  `ドラグハート・フォートレス`. La parola dopo il punto mediano determina la
+  funzione in partita: creatura che combatte, arma che si equipaggia o
+  struttura che resta sul board.
 level_hint: custom
 :::
 
@@ -190,8 +190,8 @@ notes_it: >-
   È un `フィールド` con il prefisso speciale `D2`. Questo
   prefisso non aggiunge atmosfera: ti avvisa che stai guardando una famiglia di
   field con regole proprie, fra cui il fatto che l'arrivo di un altro
-  `D2フィールド` fa uscire quello precedente. In lettura pratica ti conviene
-  trattarlo come un oggetto di board state, non come testo effetto isolato.
+  `D2フィールド` fa uscire quello precedente. Quindi non è un effetto isolato:
+  è un oggetto di board state che sostituisce il `D2` gia presente.
 level_hint: custom
 :::
 
@@ -227,8 +227,9 @@ example_it: >-
   Star Evolution: mettila sopra 1 Rexterz o 1 creatura di fuoco.
 notes_it: >-
   `スター` non serve a "fare scena": ti segnala che la gestione della pila è
-  diversa da una [{{進化|しんか}}](term:term-evolution) standard. Nel corpus DM25
-  è un'etichetta che conviene riconoscere a colpo d'occhio.
+  diversa da una [{{進化|しんか}}](term:term-evolution) standard. In risoluzione,
+  quando la carta in cima lascia il campo, la base sotto resta normalmente in
+  gioco.
 tags: [core, type, evolution, dm25-sd2]
 :::
 
@@ -245,9 +246,9 @@ example_it: >-
   Una creatura NEO, se ha carte sotto, viene trattata come una creatura NEO
   evoluzione.
 notes_it: >-
-  La cosa da memorizzare non è una traduzione elegante, ma il cambio di stato:
-  stessa carta, due letture possibili. Se non controlli la pila sotto, rischi
-  di leggere male anche le restrizioni successive.
+  La stessa carta ha due stati: corpo singolo oppure `NEO進化` se ha carte
+  sotto. Questo cambia subito quali restrizioni e quali effetti le si applicano
+  nella riga successiva del testo.
 tags: [core, type, evolution, special]
 :::
 
@@ -264,8 +265,9 @@ example_it: >-
   Quando una creatura G-NEO lascia il campo, se ne vanno anche tutte le carte
   sotto.
 notes_it: >-
-  Qui l'etichetta cambia il comportamento dell'intera pila. È quindi un ottimo
-  termine da fissare per evitare di confondere `G-NEO` con `NEO` semplice o con
+  Qui l'etichetta cambia il comportamento dell'intera pila: quando il pezzo in
+  cima lascia il campo, escono anche tutte le carte sotto. Questo separa
+  `G-NEO` da `NEO` semplice e da
   [スター進化クリーチャー](term:term-star-evolution-creature).
 tags: [core, type, evolution, special]
 :::
@@ -282,9 +284,10 @@ example_jp: >-
 example_it: >-
   Questa carta Tamaseed/Creatura per questo turno diventa anche una creatura.
 notes_it: >-
-  La barra `/` è il punto da leggere bene: non hai due carte separate, hai una
-  carta che può contare in più modi. In pratica devi controllare quali effetti
-  la stanno facendo contare come [クリーチャー](term:term-creature) e quali no.
+  La barra `/` indica un'unica carta con doppia identita. In partita conta
+  contemporaneamente per i filtri che chiedono [タマシード](term:term-tamaseed) e
+  per quelli che chiedono [クリーチャー](term:term-creature), secondo lo stato
+  indicato dall'effetto attivo.
 tags: [core, type, special, abyss]
 :::
 
@@ -300,9 +303,9 @@ example_jp: >-
 example_it: >-
   Questa carta TwinPact può essere usata sia come creatura sia come magia.
 notes_it: >-
-  Il valore pratico è tutto qui: una stessa carta ti obbliga a distinguere metà
-  creatura e metà [{{呪文|じゅもん}}](term:term-spell). Se leggi in fretta senza
-  separare le due facce funzionali, sbagli costo, timing o effetto.
+  Una stessa carta offre due facce funzionali: metà creatura e metà
+  [{{呪文|じゅもん}}](term:term-spell). La faccia scelta decide costo, timing di
+  utilizzo e testo effetto da risolvere.
 tags: [core, type, special, split]
 :::
 
@@ -337,9 +340,9 @@ example_jp: >-
 example_it: >-
   Un Dragheart Fortress si libera e diventa un Dragheart Creature.
 notes_it: >-
-  Quando vedi `ドラグハート`, la lettura utile è "famiglia a due facce"; poi
-  il termine dopo il punto mediano ti dice la funzione concreta della faccia
-  attuale.
+  `ドラグハート` indica una famiglia a due facce. Il termine dopo il punto
+  mediano determina la funzione concreta della faccia attuale e quindi la
+  regola che si applica nel board.
 tags: [core, type, special, alternate-zone]
 :::
 
@@ -374,8 +377,8 @@ example_it: >-
   Una Castle si mette su uno scudo e lo fortifica.
 notes_it: >-
   Qui il kanji [{{城|しろ}}](term:term-castle) va collegato subito alla zona
-  scudi. Se la leggi come una normale carta da campo, perdi il punto didattico
-  principale.
+  scudi. La carta entra in `要塞化` sugli scudi, non come permanente standard
+  nel battle zone.
 tags: [core, type, shield]
 :::
 
@@ -391,8 +394,8 @@ example_jp: >-
 example_it: >-
   Quando entra un altro D2 Field, metti questo D2 Field nel cimitero.
 notes_it: >-
-  `D2` è la parte che devi notare per prima, perché ti avvisa che stai leggendo
-  un `フィールド` con regole aggiuntive. In pratica ti aiuta a leggere il board
-  state prima ancora del resto del testo.
+  `D2` marca un `フィールド` con regole aggiuntive: se entra un altro `D2`,
+  quello gia presente va in cimitero. Il prefisso quindi anticipa una regola di
+  sostituzione sul board state.
 tags: [core, type, field]
 :::

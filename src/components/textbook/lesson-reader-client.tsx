@@ -1065,6 +1065,24 @@ export function LessonArticle({
           </figure>
         );
       case "exampleSentence":
+        if (block.revealMode === "sentence") {
+          return (
+            <section
+              className="reader-example-sentence reader-example-sentence--sentence-toggle"
+              key={index}
+            >
+              <details className="reader-example-sentence__translation reader-example-sentence__translation--sentence">
+                <summary className="reader-example-sentence__summary jp-inline">
+                  {renderInlineNodes(block.sentence.nodes)}
+                </summary>
+                <div className="reader-example-sentence__translation-body">
+                  <p>{renderInlineNodes(block.translationIt.nodes)}</p>
+                </div>
+              </details>
+            </section>
+          );
+        }
+
         return (
           <section className="reader-example-sentence" key={index}>
             <p className="reader-example-sentence__jp jp-inline">

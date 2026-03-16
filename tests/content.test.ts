@@ -569,12 +569,12 @@ describe("content parser and validator", () => {
     expect(result.issues).toEqual([]);
     expect(result.data.media?.frontmatter.id).toBe("media-duel-masters-dm25");
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
-    expect(result.data.lessons).toHaveLength(11);
-    expect(result.data.cardFiles).toHaveLength(6);
-    expect(result.data.terms).toHaveLength(138);
-    expect(result.data.grammarPatterns).toHaveLength(21);
-    expect(result.data.cards).toHaveLength(157);
-    expect(result.data.references).toHaveLength(824);
+    expect(result.data.lessons).toHaveLength(13);
+    expect(result.data.cardFiles).toHaveLength(7);
+    expect(result.data.terms).toHaveLength(148);
+    expect(result.data.grammarPatterns).toHaveLength(23);
+    expect(result.data.cards).toHaveLength(170);
+    expect(result.data.references).toHaveLength(859);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
@@ -588,7 +588,9 @@ describe("content parser and validator", () => {
       "duel-plays-app-shop-packs-and-results",
       "dm25-sd1-overview",
       "duel-plays-app-exchange-decks-and-setup",
-      "dm25-sd2-overview"
+      "dm25-sd2-overview",
+      "live-duel-encounters-crash-hadou",
+      "keyword-effects-reference"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
       "cards-duel-masters-dm25-tcg-core-basics",
@@ -596,7 +598,8 @@ describe("content parser and validator", () => {
       "cards-duel-masters-dm25-duel-plays-app-core",
       "cards-duel-masters-dm25-duel-plays-app-ui-deep-dive",
       "cards-duel-masters-dm25-dm25-sd1-core",
-      "cards-duel-masters-dm25-dm25-sd2-core"
+      "cards-duel-masters-dm25-dm25-sd2-core",
+      "cards-duel-masters-dm25-live-duel-encounters-crash-hadou"
     ]);
     expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
       true

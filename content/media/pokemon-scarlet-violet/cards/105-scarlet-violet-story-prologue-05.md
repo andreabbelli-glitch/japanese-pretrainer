@@ -14,9 +14,10 @@ reading: かがいじゅぎょう
 romaji: kagai jugyou
 meaning_it: lezione sul campo / attivita scolastica fuori dal campus
 notes_it: >-
-  In Scarlet / Violet non indica un club o una lezione extra qualunque. La
-  `{{課外授業|かがいじゅぎょう}}` e il quadro ufficiale con cui l'accademia ti manda
-  fuori a esplorare Paldea e apre la struttura libera della storia.
+  In Scarlet / Violet indica il programma ufficiale dell'accademia per
+  l'esplorazione esterna. Quando compare `{{課外授業|かがいじゅぎょう}}`, la scena
+  segna il passaggio da attivita interne al campus a progressione libera nel
+  mondo di Paldea.
 :::
 
 :::card
@@ -41,10 +42,9 @@ reading: たからさがし
 romaji: takara sagashi
 meaning_it: Treasure Hunt / caccia al proprio tesoro
 notes_it: >-
-  E il nome dato all'intera esperienza di esplorazione libera. Il punto non e
-  trovare per forza un tesoro materiale: il gioco usa `{{宝探し|たからさがし}}` per
-  parlare di incontri, prove, strade diverse e di cio che per il protagonista
-  diventera davvero un "tesoro" personale.
+  E l'etichetta della fase di esplorazione libera. `{{宝探し|たからさがし}}` non
+  restringe l'obiettivo a un oggetto: nel gioco copre incontri, prove e rotte
+  alternative che avanzano la storia attraverso scelte del giocatore.
 :::
 
 :::card
@@ -68,10 +68,10 @@ reading: チャンピオンランク
 romaji: chanpion ranku
 meaning_it: Champion Rank / rango Campione
 notes_it: >-
-  Non e la parola "campione" detta in modo vago. In Paldea indica il rango di
-  Allenatori riconosciuti dalla Lega Pokemon dopo il percorso Gym e il test
-  finale. Quando Nemona ti chiede se vuoi `{{目指|めざ}}してみない`, ti sta
-  proponendo un asse concreto della storia.
+  In Paldea indica un rango ufficiale riconosciuto dalla Lega Pokemon dopo il
+  percorso Gym e il test finale. Quando il dialogo usa `チャンピオンランク` o
+  `{{目指|めざ}}してみない`, la scena sta aprendo un obiettivo di progressione
+  preciso, non un incoraggiamento generico.
 :::
 
 :::card
@@ -96,9 +96,9 @@ reading: ジムバッジ
 romaji: jimu bajji
 meaning_it: Medaglia Palestra
 notes_it: >-
-  E la prova che hai superato un Gym, non un semplice souvenir. Nel flusso di
-  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemona e, piu avanti,
-  incidono anche su quali Pokemon forti ti obbediscono senza problemi.
+  Segna il superamento di un Gym, non un semplice souvenir. Nel flusso di
+  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemona e, piu
+  avanti, incidono anche su quali Pokemon forti ti obbediscono senza problemi.
 :::
 
 :::card
@@ -123,9 +123,9 @@ title: Definizione colloquiale di un concetto
 meaning_it: X sarebbe... / quanto a X...
 aliases: [～っていうのは]
 notes_it: >-
-  Nelle spiegazioni di Nemona introduce una definizione vera e propria con tono
-  parlato. Quando senti `Xってのは`, preparati a una mini-spiegazione di sistema
-  o di route, non a una semplice battuta di colore.
+  Introduce una definizione in registro parlato. Dopo `Xってのは` arriva di norma
+  la regola pratica del termine: rango, obiettivo o condizione che orienta la
+  route corrente.
 :::
 
 :::card
@@ -176,10 +176,9 @@ pattern: ～たり ～たりする
 title: Fare cose come...
 meaning_it: fare azioni del tipo A, B, ecc.
 notes_it: >-
-  Serve a elencare esempi senza chiudere la lista. Nel briefing del Treasure
-  Hunt e fondamentale per capire che il gioco non ti impone un solo compito, ma
-  apre un ventaglio di attivita possibili che contano tutte come esperienza di
-  viaggio.
+  Elenca esempi senza chiudere la lista. Nel briefing del Treasure Hunt segnala
+  che piu tipi di attivita possono avanzare l'avventura, invece di imporre una
+  sequenza unica di missioni.
 :::
 
 :::card
@@ -203,9 +202,9 @@ pattern: ～とはいっても
 title: Anche se si chiama / anche se si dice
 meaning_it: anche se si dice X, in realta...
 notes_it: >-
-  Questo pattern corregge una lettura troppo letterale. E perfetto per
-  `{{宝探し|たからさがし}}とは いっても`, dove il gioco prende il nome della
-  modalita e subito ne allarga il senso pratico.
+  Corregge una lettura troppo letterale del termine precedente. In frasi come
+  `{{宝探し|たからさがし}}とは いっても`, il testo ridefinisce subito il perimetro
+  pratico dell'obiettivo e chiarisce cosa conta davvero nella scena.
 :::
 
 :::card
