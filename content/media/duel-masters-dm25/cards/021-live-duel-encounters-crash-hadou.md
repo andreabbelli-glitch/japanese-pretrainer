@@ -1,21 +1,21 @@
 ---
-id: cards-duel-masters-dm25-live-duel-encounters-crash-haou
+id: cards-duel-masters-dm25-live-duel-encounters-crash-hadou
 media_id: media-duel-masters-dm25
-slug: live-duel-encounters-crash-haou
-title: Carte incontrate in partita 1 - Nome, razze e parsing di Crash "Haou"
+slug: live-duel-encounters-crash-hadou
+title: Carte incontrate in partita 1 - Nome, razze e parsing di Crash "Hadou"
 order: 50
 segment_ref: live-duel-encounters
 ---
 
 :::term
-id: term-crash-haou
+id: term-crash-hadou
 lemma: 勝利龍装 クラッシュ“覇道”
 reading: しょうりりゅうそう くらっしゅはどう
 romaji: shouri ryuusou kurasshu hadou
-meaning_it: Crash Haou / finisher che puo dare un turno extra
+meaning_it: Crash Hadou / finisher che puo dare un turno extra
 pos: proper-noun
 aliases:
-  [勝利龍装 クラッシュ“覇道”, 勝利龍装 クラッシュ覇道, クラッシュ覇道, crash haou]
+  [勝利龍装 クラッシュ“覇道”, 勝利龍装 クラッシュ覇道, クラッシュ覇道, crash hadou]
 notes_it: >-
   Questa non e una carta da leggere parola per parola ogni volta: conviene
   fissarla come etichetta unica. Se riconosci subito `クラッシュ“覇道”`, sai gia
@@ -160,18 +160,18 @@ level_hint: n4
 :::
 
 :::card
-id: card-crash-haou-recognition
+id: card-crash-hadou-recognition
 entry_type: term
-entry_id: term-crash-haou
+entry_id: term-crash-hadou
 card_type: recognition
 front: '{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}'
-back: Crash Haou / finisher con turno extra
+back: Crash Hadou / finisher con turno extra
 example_jp: >-
   {{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}が
   タップ{{状態|じょうたい}}で{{破壊|はかい}}されると、
   {{追加|ついか}}ターンが{{入|はい}}る。
 example_it: >-
-  Se Crash Haou viene distrutto da tappato, entra un turno extra.
+  Se Crash Hadou viene distrutto da tappato, entra un turno extra.
 notes_it: >-
   Qui la priorita e il riconoscimento immediato del nome. Se lo identifichi a
   colpo d'occhio, riconosci anche la minaccia che porta con se.

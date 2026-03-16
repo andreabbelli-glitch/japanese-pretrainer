@@ -1,8 +1,8 @@
 ---
-id: lesson-duel-masters-dm25-live-duel-encounters-crash-haou
+id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 media_id: media-duel-masters-dm25
-slug: live-duel-encounters-crash-haou
-title: Carte incontrate in partita 1 - Crash "Haou" e il trigger del turno extra
+slug: live-duel-encounters-crash-hadou
+title: Carte incontrate in partita 1 - Crash "Hadou" e il trigger del turno extra
 order: 50
 segment_ref: live-duel-encounters
 difficulty: n3
@@ -11,9 +11,9 @@ tags: [live-duel, extra-turn, beat-jockey, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
   Prima lesson della nuova sezione "carte incontrate in partita": partiamo da
-  `{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}`, verifichiamo il
-  nome su fonte ufficiale DMPS e isoliamo il lessico e il parsing davvero nuovi
-  che servono per leggere il trigger del turno extra.
+  `勝利龍装 クラッシュ“覇道”`, verifichiamo il nome su fonte ufficiale DMPS e
+  isoliamo il lessico e il parsing davvero nuovi che servono per leggere il
+  trigger del turno extra.
 ---
 
 # Obiettivo
@@ -28,7 +28,7 @@ Qui il punto non e "tradurre tutto da zero", ma separare:
 
 Alla fine dovresti riconoscere subito:
 
-- il nome [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-haou);
+- il nome [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou);
 - il blocco tecnico `タップ{{状態|じょうたい}}で{{破壊|はかい}}された{{時|とき}}`;
 - la finestra `このターンの{{後|あと}}に`, cioe il punto in cui si inserisce il
   turno extra.
@@ -36,7 +36,7 @@ Alla fine dovresti riconoscere subito:
 ## Contesto
 
 Dallo screenshot la carta identificata e
-[{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-haou),
+[{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou),
 creatura di [ドラゴンギルド](term:term-dragonguild) /
 [ビートジョッキー](term:term-beat-jockey), fuoco, costo 10, potere `9000+`.
 
@@ -47,7 +47,7 @@ anche i tooltip ufficiali del card list DMPS.
 
 ## Termini chiave
 
-- [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-haou)
+- [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
 - [B・A・D 2](term:term-b-a-d-two)
 - [スピードアタッカー](term:term-speed-attacker)
 - [ドラゴンギルド](term:term-dragonguild)
