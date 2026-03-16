@@ -8,6 +8,7 @@ import {
   type CSSProperties,
   type ReactNode,
   startTransition,
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -27,14 +28,15 @@ import type {
 } from "@/lib/content/types";
 import type {
   FuriganaMode,
-  TextbookTooltipEntry,
   TextbookLessonData,
-  TextbookLessonNavItem
+  TextbookLessonNavItem,
+  TextbookTooltipEntry
 } from "@/lib/textbook";
 import {
   mediaAssetHref,
   mediaStudyHref,
-  mediaTextbookLessonHref
+  mediaTextbookLessonHref,
+  mediaTextbookLessonTooltipsHref
 } from "@/lib/site";
 
 import { PronunciationAudio } from "../ui/pronunciation-audio";
@@ -43,8 +45,13 @@ type LessonReaderClientProps = {
   data: TextbookLessonData;
 };
 
+type TooltipTarget = {
+  id: string;
+  kind: TextbookTooltipEntry["kind"];
+};
+
 type TooltipState = {
-  entry: TextbookTooltipEntry;
+  entryKey: string;
   locked: boolean;
   left: number;
   top: number;
@@ -57,8 +64,10 @@ type MobileSheetState =
     }
   | {
       type: "entry";
-      entry: TextbookTooltipEntry;
+      entryKey: string;
     };
+
+type TooltipLoadState = "idle" | "loading" | "loaded" | "error";
 
 type ImagePresentation = {
   height: number;
@@ -124,6 +133,16 @@ function extractInlineText(nodes: InlineNode[]): string {
     .trim();
 }
 
+function getTooltipEntryKey(target: TooltipTarget) {
+  return `${target.kind}:${target.id}`;
+}
+
+function buildTooltipEntryMap(entries: TextbookTooltipEntry[]) {
+  return new Map(
+    entries.map((entry) => [getTooltipEntryKey(entry), entry] as const)
+  );
+}
+
 export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const router = useRouter();
   const [furiganaMode, setFuriganaModeState] = useState<FuriganaMode>(
@@ -136,14 +155,42 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const [expandedImage, setExpandedImage] = useState<ExpandedImageState | null>(
     null
   );
+  const [entriesByKey, setEntriesByKey] = useState(() =>
+    buildTooltipEntryMap(data.entries)
+  );
+  const [tooltipLoadState, setTooltipLoadState] = useState<TooltipLoadState>(
+    data.entries.length > 0 ? "loaded" : "idle"
+  );
   const [isSavingFurigana, startSavingFurigana] = useTransition();
   const [isSavingLesson, startSavingLesson] = useTransition();
   const tooltipRef = useRef<HTMLDivElement | null>(null);
   const anchorRef = useRef<HTMLElement | null>(null);
   const closeTimerRef = useRef<number | null>(null);
-  const entriesByKey = new Map(
-    data.entries.map((entry) => [`${entry.kind}:${entry.id}`, entry] as const)
-  );
+  const tooltipRequestRef = useRef<Promise<void> | null>(null);
+  const tooltipAbortRef = useRef<AbortController | null>(null);
+  const currentLessonIdRef = useRef(data.lesson.id);
+
+  useEffect(() => {
+    if (currentLessonIdRef.current === data.lesson.id) {
+      return;
+    }
+
+    currentLessonIdRef.current = data.lesson.id;
+    tooltipAbortRef.current?.abort();
+    tooltipAbortRef.current = null;
+    tooltipRequestRef.current = null;
+    setEntriesByKey(buildTooltipEntryMap(data.entries));
+    setTooltipLoadState(data.entries.length > 0 ? "loaded" : "idle");
+    setTooltip(null);
+    setMobileSheet(null);
+    anchorRef.current = null;
+  }, [data.entries, data.lesson.id]);
+
+  useEffect(() => {
+    return () => {
+      tooltipAbortRef.current?.abort();
+    };
+  }, []);
 
   useEffect(() => {
     const updateLayoutMode = () => {
@@ -168,6 +215,66 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
       closeTimerRef.current = null;
     }
   };
+
+  const ensureTooltipEntries = useCallback(async () => {
+    if (entriesByKey.size > 0 || tooltipLoadState === "loaded") {
+      return;
+    }
+
+    if (tooltipRequestRef.current) {
+      await tooltipRequestRef.current;
+      return;
+    }
+
+    const controller = new AbortController();
+
+    tooltipAbortRef.current?.abort();
+    tooltipAbortRef.current = controller;
+    setTooltipLoadState("loading");
+
+    const request = (async () => {
+      try {
+        const response = await fetch(
+          mediaTextbookLessonTooltipsHref(data.media.slug, data.lesson.slug),
+          {
+            cache: "no-store",
+            signal: controller.signal
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Tooltip request failed with status ${response.status}.`
+          );
+        }
+
+        const entries = (await response.json()) as TextbookTooltipEntry[];
+
+        if (controller.signal.aborted) {
+          return;
+        }
+
+        setEntriesByKey(buildTooltipEntryMap(entries));
+        setTooltipLoadState("loaded");
+      } catch (error) {
+        if (controller.signal.aborted) {
+          return;
+        }
+
+        console.error("Unable to load textbook tooltip entries.", error);
+        setTooltipLoadState("error");
+      } finally {
+        if (tooltipAbortRef.current === controller) {
+          tooltipAbortRef.current = null;
+        }
+
+        tooltipRequestRef.current = null;
+      }
+    })();
+
+    tooltipRequestRef.current = request;
+    await request;
+  }, [data.lesson.slug, data.media.slug, entriesByKey, tooltipLoadState]);
 
   const recomputeTooltipPosition = () => {
     if (!anchorRef.current) {
@@ -284,16 +391,19 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   };
 
   const openReference = (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => {
+    const entryKey = getTooltipEntryKey(target);
+
     clearCloseTimer();
+    void ensureTooltipEntries();
 
     if (isTouchLayout) {
       setMobileSheet({
         type: "entry",
-        entry
+        entryKey
       });
       setTooltip(null);
       return;
@@ -316,8 +426,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     setTooltip((current) => {
       if (
         current &&
-        current.entry.id === entry.id &&
-        current.entry.kind === entry.kind &&
+        current.entryKey === entryKey &&
         current.locked &&
         intent === "click"
       ) {
@@ -325,7 +434,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
       }
 
       return {
-        entry,
+        entryKey,
         locked: intent === "click",
         left,
         top,
@@ -377,6 +486,13 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     setTooltip(null);
     setExpandedImage(image);
   };
+  const tooltipEntry = tooltip
+    ? (entriesByKey.get(tooltip.entryKey) ?? null)
+    : null;
+  const mobileSheetEntry =
+    mobileSheet?.type === "entry"
+      ? (entriesByKey.get(mobileSheet.entryKey) ?? null)
+      : null;
 
   return (
     <div className="reader-page" data-furigana-mode={furiganaMode}>
@@ -465,11 +581,8 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
             </div>
 
             <LessonArticle
-              activeEntryKey={
-                tooltip ? `${tooltip.entry.kind}:${tooltip.entry.id}` : null
-              }
+              activeEntryKey={tooltip?.entryKey ?? null}
               document={data.lesson.ast}
-              entriesByKey={entriesByKey}
               fallbackHtml={data.lesson.htmlRendered}
               furiganaMode={furiganaMode}
               isTouchLayout={isTouchLayout}
@@ -538,7 +651,17 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
             } satisfies CSSProperties
           }
         >
-          <EntryTooltipCard entry={tooltip.entry} />
+          <EntryTooltipCard
+            entry={tooltipEntry}
+            isLoading={tooltipLoadState === "loading" && !tooltipEntry}
+            onRetry={
+              tooltipLoadState === "error"
+                ? () => {
+                    void ensureTooltipEntries();
+                  }
+                : undefined
+            }
+          />
         </div>
       ) : null}
 
@@ -559,7 +682,18 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
               />
             </div>
           ) : (
-            <EntryTooltipCard entry={mobileSheet.entry} mobile />
+            <EntryTooltipCard
+              entry={mobileSheetEntry}
+              isLoading={tooltipLoadState === "loading" && !mobileSheetEntry}
+              mobile
+              onRetry={
+                tooltipLoadState === "error"
+                  ? () => {
+                      void ensureTooltipEntries();
+                    }
+                  : undefined
+              }
+            />
           )}
         </MobileSheet>
       ) : null}
@@ -679,24 +813,23 @@ function LessonRail({
 type LessonArticleProps = {
   activeEntryKey: string | null;
   document: MarkdownDocument | null;
-  entriesByKey: Map<string, TextbookTooltipEntry>;
   fallbackHtml: string | null;
   furiganaMode: FuriganaMode;
   isTouchLayout: boolean;
   mediaSlug: string;
   onReferenceBlur: () => void;
   onReferenceClick: (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceFocus: (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceHover: (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
@@ -707,7 +840,6 @@ type LessonArticleProps = {
 export function LessonArticle({
   activeEntryKey,
   document,
-  entriesByKey,
   fallbackHtml,
   furiganaMode,
   isTouchLayout,
@@ -723,7 +855,6 @@ export function LessonArticle({
     return (
       <FallbackHtmlArticle
         activeEntryKey={activeEntryKey}
-        entriesByKey={entriesByKey}
         fallbackHtml={fallbackHtml}
         furiganaMode={furiganaMode}
         isTouchLayout={isTouchLayout}
@@ -753,26 +884,22 @@ export function LessonArticle({
             />
           );
         case "reference": {
-          const entry = entriesByKey.get(`${node.targetType}:${node.targetId}`);
-
-          if (!entry) {
-            return (
-              <Fragment key={index}>
-                {renderInlineNodes(node.children)}
-              </Fragment>
-            );
-          }
+          const target = {
+            id: node.targetId,
+            kind: node.targetType
+          } satisfies TooltipTarget;
 
           return (
             <ReferenceToken
-              active={activeEntryKey === `${entry.kind}:${entry.id}`}
-              entry={entry}
+              active={activeEntryKey === getTooltipEntryKey(target)}
+              kind={target.kind}
               key={index}
               onBlur={onReferenceBlur}
               onClick={onReferenceClick}
               onFocus={onReferenceFocus}
               onHover={onReferenceHover}
               onLeave={onReferenceLeave}
+              target={target}
             >
               {renderInlineNodes(node.children)}
             </ReferenceToken>
@@ -852,8 +979,11 @@ export function LessonArticle({
         return <hr className="reader-divider" key={index} />;
       case "image":
         const imagePresentation = resolveImagePresentation(block.src);
-        const imageEntry = block.cardId
-          ? (entriesByKey.get(`card:${block.cardId}`) ?? null)
+        const imageTarget = block.cardId
+          ? ({
+              id: block.cardId,
+              kind: "card"
+            } satisfies TooltipTarget)
           : null;
         const expandedImage = {
           alt: block.alt,
@@ -869,27 +999,27 @@ export function LessonArticle({
             className={cx(
               "reader-image",
               imagePresentation.variantClassName,
-              !imageEntry && "reader-image--zoomable",
-              imageEntry && "reader-image--interactive",
-              imageEntry &&
-                activeEntryKey === `${imageEntry.kind}:${imageEntry.id}` &&
+              !imageTarget && "reader-image--zoomable",
+              imageTarget && "reader-image--interactive",
+              imageTarget &&
+                activeEntryKey === getTooltipEntryKey(imageTarget) &&
                 "reader-image--active"
             )}
             data-card-id={block.cardId ?? undefined}
             key={index}
           >
-            {imageEntry ? (
+            {imageTarget ? (
               <button
                 className="reader-image__button"
                 onBlur={onReferenceBlur}
                 onClick={(event) => {
-                  onReferenceClick(imageEntry, event.currentTarget, "click");
+                  onReferenceClick(imageTarget, event.currentTarget, "click");
                 }}
                 onFocus={(event) => {
-                  onReferenceFocus(imageEntry, event.currentTarget, "focus");
+                  onReferenceFocus(imageTarget, event.currentTarget, "focus");
                 }}
                 onMouseEnter={(event) => {
-                  onReferenceHover(imageEntry, event.currentTarget, "hover");
+                  onReferenceHover(imageTarget, event.currentTarget, "hover");
                 }}
                 onMouseLeave={onReferenceLeave}
                 type="button"
@@ -1029,23 +1159,22 @@ export function formatCrossMediaHintLabel(otherMediaCount: number) {
 
 type FallbackHtmlArticleProps = {
   activeEntryKey: string | null;
-  entriesByKey: Map<string, TextbookTooltipEntry>;
   fallbackHtml: string | null;
   furiganaMode: FuriganaMode;
   isTouchLayout: boolean;
   onReferenceBlur: () => void;
   onReferenceClick: (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceFocus: (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceHover: (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
@@ -1055,7 +1184,6 @@ type FallbackHtmlArticleProps = {
 
 function FallbackHtmlArticle({
   activeEntryKey,
-  entriesByKey,
   fallbackHtml,
   furiganaMode,
   isTouchLayout,
@@ -1091,7 +1219,7 @@ function FallbackHtmlArticle({
     );
     const rubies = Array.from(container.querySelectorAll<HTMLElement>("ruby"));
 
-    const resolveEntry = (element: HTMLElement) => {
+    const resolveEntryTarget = (element: HTMLElement) => {
       const entryType = element.dataset.entryType;
       const entryId = element.dataset.entryId;
 
@@ -1102,13 +1230,19 @@ function FallbackHtmlArticle({
         return null;
       }
 
-      return entriesByKey.get(`${entryType}:${entryId}`) ?? null;
+      return {
+        id: entryId,
+        kind: entryType
+      } satisfies TooltipTarget;
     };
-    const resolveImageEntry = (element: HTMLElement) => {
+    const resolveImageEntryTarget = (element: HTMLElement) => {
       const cardId = element.dataset.cardId;
 
       return typeof cardId === "string"
-        ? (entriesByKey.get(`card:${cardId}`) ?? null)
+        ? ({
+            id: cardId,
+            kind: "card"
+          } satisfies TooltipTarget)
         : null;
     };
     const resolveExpandedImage = (element: HTMLElement) => {
@@ -1135,7 +1269,7 @@ function FallbackHtmlArticle({
       target instanceof Element
         ? target.closest<HTMLElement>(referenceSelector)
         : null;
-    const resolveImageTarget = (target: EventTarget | null) =>
+    const resolveImageElement = (target: EventTarget | null) =>
       target instanceof Element
         ? target.closest<HTMLElement>(imageSelector)
         : null;
@@ -1147,20 +1281,20 @@ function FallbackHtmlArticle({
       target instanceof Element ? target.closest<HTMLElement>("ruby") : null;
 
     references.forEach((element) => {
-      const entry = resolveEntry(element);
+      const target = resolveEntryTarget(element);
 
       element.classList.add("reader-ref");
-      element.classList.toggle("reader-ref--term", entry?.kind === "term");
+      element.classList.toggle("reader-ref--term", target?.kind === "term");
       element.classList.toggle(
         "reader-ref--grammar",
-        entry?.kind === "grammar"
+        target?.kind === "grammar"
       );
       element.classList.toggle(
         "reader-ref--active",
-        activeEntryKey === `${entry?.kind}:${entry?.id}`
+        target ? activeEntryKey === getTooltipEntryKey(target) : false
       );
 
-      if (entry) {
+      if (target) {
         element.setAttribute("role", "button");
         element.tabIndex = 0;
         return;
@@ -1171,15 +1305,15 @@ function FallbackHtmlArticle({
     });
 
     images.forEach((element) => {
-      const entry = resolveImageEntry(element);
+      const target = resolveImageEntryTarget(element);
 
-      element.classList.toggle("reader-image--interactive", Boolean(entry));
+      element.classList.toggle("reader-image--interactive", Boolean(target));
       element.classList.toggle(
         "reader-image--active",
-        activeEntryKey === `${entry?.kind}:${entry?.id}`
+        target ? activeEntryKey === getTooltipEntryKey(target) : false
       );
 
-      if (entry) {
+      if (target) {
         element.setAttribute("role", "button");
         element.tabIndex = 0;
         return;
@@ -1223,15 +1357,15 @@ function FallbackHtmlArticle({
           return;
         }
 
-        const entry = resolveEntry(element);
+        const entryTarget = resolveEntryTarget(element);
 
-        if (entry) {
-          onReferenceHover(entry, element, "hover");
+        if (entryTarget) {
+          onReferenceHover(entryTarget, element, "hover");
           return;
         }
       }
 
-      const image = resolveImageTarget(event.target);
+      const image = resolveImageElement(event.target);
 
       if (image) {
         const related = event.relatedTarget;
@@ -1240,10 +1374,10 @@ function FallbackHtmlArticle({
           return;
         }
 
-        const imageEntry = resolveImageEntry(image);
+        const imageTarget = resolveImageEntryTarget(image);
 
-        if (imageEntry) {
-          onReferenceHover(imageEntry, image, "hover");
+        if (imageTarget) {
+          onReferenceHover(imageTarget, image, "hover");
         }
       }
     };
@@ -1262,7 +1396,7 @@ function FallbackHtmlArticle({
         return;
       }
 
-      const image = resolveImageTarget(event.target);
+      const image = resolveImageElement(event.target);
 
       if (image) {
         const related = event.relatedTarget;
@@ -1280,21 +1414,21 @@ function FallbackHtmlArticle({
       const element = resolveReferenceTarget(event.target);
 
       if (element) {
-        const entry = resolveEntry(element);
+        const entryTarget = resolveEntryTarget(element);
 
-        if (entry) {
-          onReferenceFocus(entry, element, "focus");
+        if (entryTarget) {
+          onReferenceFocus(entryTarget, element, "focus");
           return;
         }
       }
 
-      const image = resolveImageTarget(event.target);
+      const image = resolveImageElement(event.target);
 
       if (image) {
-        const imageEntry = resolveImageEntry(image);
+        const imageTarget = resolveImageEntryTarget(image);
 
-        if (imageEntry) {
-          onReferenceFocus(imageEntry, image, "focus");
+        if (imageTarget) {
+          onReferenceFocus(imageTarget, image, "focus");
         }
       }
     };
@@ -1313,7 +1447,7 @@ function FallbackHtmlArticle({
         return;
       }
 
-      const image = resolveImageTarget(event.target);
+      const image = resolveImageElement(event.target);
 
       if (image) {
         const related = event.relatedTarget;
@@ -1336,24 +1470,24 @@ function FallbackHtmlArticle({
       const element = resolveReferenceTarget(event.target);
 
       if (element) {
-        const entry = resolveEntry(element);
+        const entryTarget = resolveEntryTarget(element);
 
-        if (entry) {
+        if (entryTarget) {
           event.preventDefault();
-          onReferenceClick(entry, element, "click");
+          onReferenceClick(entryTarget, element, "click");
         }
 
         return;
       }
 
-      const image = resolveImageTarget(event.target);
+      const image = resolveImageElement(event.target);
 
       if (image) {
-        const imageEntry = resolveImageEntry(image);
+        const imageTarget = resolveImageEntryTarget(image);
 
-        if (imageEntry) {
+        if (imageTarget) {
           event.preventDefault();
-          onReferenceClick(imageEntry, image, "click");
+          onReferenceClick(imageTarget, image, "click");
         }
 
         return;
@@ -1387,24 +1521,24 @@ function FallbackHtmlArticle({
       const element = resolveReferenceTarget(event.target);
 
       if (element) {
-        const entry = resolveEntry(element);
+        const entryTarget = resolveEntryTarget(element);
 
-        if (entry) {
+        if (entryTarget) {
           event.preventDefault();
-          onReferenceClick(entry, element, "click");
+          onReferenceClick(entryTarget, element, "click");
         }
 
         return;
       }
 
-      const image = resolveImageTarget(event.target);
+      const image = resolveImageElement(event.target);
 
       if (image) {
-        const imageEntry = resolveImageEntry(image);
+        const imageTarget = resolveImageEntryTarget(image);
 
-        if (imageEntry) {
+        if (imageTarget) {
           event.preventDefault();
-          onReferenceClick(imageEntry, image, "click");
+          onReferenceClick(imageTarget, image, "click");
         }
 
         return;
@@ -1448,7 +1582,6 @@ function FallbackHtmlArticle({
     };
   }, [
     activeEntryKey,
-    entriesByKey,
     furiganaMode,
     isTouchLayout,
     onReferenceBlur,
@@ -1471,35 +1604,37 @@ function FallbackHtmlArticle({
 type ReferenceTokenProps = {
   active: boolean;
   children: ReactNode;
-  entry: TextbookTooltipEntry;
+  kind: "term" | "grammar";
   onBlur: () => void;
   onClick: (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onFocus: (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onHover: (
-    entry: TextbookTooltipEntry,
+    target: TooltipTarget,
     element: HTMLElement,
     intent: "hover" | "focus" | "click"
   ) => void;
   onLeave: () => void;
+  target: TooltipTarget;
 };
 
 function ReferenceToken({
   active,
   children,
-  entry,
+  kind,
   onBlur,
   onClick,
   onFocus,
   onHover,
-  onLeave
+  onLeave,
+  target
 }: ReferenceTokenProps) {
   const ref = useRef<HTMLButtonElement | null>(null);
 
@@ -1507,23 +1642,23 @@ function ReferenceToken({
     <button
       className={cx(
         "reader-ref",
-        entry.kind === "grammar" ? "reader-ref--grammar" : "reader-ref--term",
+        kind === "grammar" ? "reader-ref--grammar" : "reader-ref--term",
         active && "reader-ref--active"
       )}
       onBlur={onBlur}
       onClick={() => {
         if (ref.current) {
-          onClick(entry, ref.current, "click");
+          onClick(target, ref.current, "click");
         }
       }}
       onFocus={() => {
         if (ref.current) {
-          onFocus(entry, ref.current, "focus");
+          onFocus(target, ref.current, "focus");
         }
       }}
       onMouseEnter={() => {
         if (ref.current) {
-          onHover(entry, ref.current, "hover");
+          onHover(target, ref.current, "hover");
         }
       }}
       onMouseLeave={onLeave}
@@ -1569,11 +1704,45 @@ function FuriganaRuby({
 }
 
 type EntryTooltipCardProps = {
-  entry: TextbookTooltipEntry;
+  entry: TextbookTooltipEntry | null;
+  isLoading?: boolean;
   mobile?: boolean;
+  onRetry?: () => void;
 };
 
-function EntryTooltipCard({ entry, mobile = false }: EntryTooltipCardProps) {
+function EntryTooltipCard({
+  entry,
+  isLoading = false,
+  mobile = false,
+  onRetry
+}: EntryTooltipCardProps) {
+  if (!entry) {
+    return (
+      <div
+        className={cx(
+          "entry-tooltip-card",
+          mobile && "entry-tooltip-card--mobile"
+        )}
+      >
+        <div className="entry-tooltip-card__top">
+          <span className="chip chip--grammar">
+            {isLoading ? "Caricamento" : "Dettagli"}
+          </span>
+        </div>
+        <p className="entry-tooltip-card__meaning">
+          {isLoading
+            ? "Sto caricando i dettagli del riferimento."
+            : "I dettagli del riferimento non sono disponibili al momento."}
+        </p>
+        {onRetry ? (
+          <button className="text-link" onClick={onRetry} type="button">
+            Riprova
+          </button>
+        ) : null}
+      </div>
+    );
+  }
+
   return (
     <div
       className={cx(
@@ -1698,10 +1867,7 @@ type ReaderImageLightboxProps = {
   onClose: () => void;
 };
 
-function ReaderImageLightbox({
-  image,
-  onClose
-}: ReaderImageLightboxProps) {
+function ReaderImageLightbox({ image, onClose }: ReaderImageLightboxProps) {
   const caption = image.captionText ?? image.alt;
 
   return (

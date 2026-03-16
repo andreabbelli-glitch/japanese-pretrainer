@@ -129,6 +129,13 @@ export function mediaTextbookLessonHref(
   return `/media/${mediaSlug}/textbook/${lessonSlug}` as Route;
 }
 
+export function mediaTextbookLessonTooltipsHref(
+  mediaSlug: string,
+  lessonSlug: string
+): Route {
+  return `/media/${mediaSlug}/textbook/${lessonSlug}/tooltips` as Route;
+}
+
 export function mediaAssetHref(mediaSlug: string, assetPath: string): Route {
   const normalizedAssetPath = assetPath.startsWith("assets/")
     ? assetPath.slice("assets/".length)

@@ -28,6 +28,7 @@ import {
   getFuriganaMode,
   getTextbookIndexData,
   getTextbookLessonData,
+  getTextbookLessonTooltipEntries,
   recordLessonOpened,
   setFuriganaMode,
   setLessonCompletionState
@@ -90,12 +91,18 @@ describe("textbook data", () => {
     expect(indexData?.resumeLesson?.slug).toBe("core-vocab");
 
     expect(lessonData).not.toBeNull();
-    expect(lessonData?.entries.map((entry) => entry.label)).toEqual([
+    expect(lessonData?.entries).toEqual([]);
+    const tooltipEntries = await getTextbookLessonTooltipEntries(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+    expect(tooltipEntries?.map((entry) => entry.label)).toEqual([
       "行く",
       "〜ている"
     ]);
     expect(
-      lessonData?.entries.every(
+      tooltipEntries?.every(
         (entry) =>
           entry.kind === "card" ||
           !("crossMediaHint" in entry) ||
@@ -262,13 +269,18 @@ describe("textbook data", () => {
 
     expect(lessonData?.lesson.status).toBe("not_started");
 
-    const openedState = await recordLessonOpened(developmentFixture.lessonId, database);
+    const openedState = await recordLessonOpened(
+      developmentFixture.lessonId,
+      database
+    );
     const patched = applyLessonOpenedState(lessonData!, openedState);
 
     expect(patched.lesson.status).toBe("in_progress");
-    expect(patched.lessons.find((lesson) => lesson.id === developmentFixture.lessonId)?.status).toBe(
-      "in_progress"
-    );
+    expect(
+      patched.lessons.find(
+        (lesson) => lesson.id === developmentFixture.lessonId
+      )?.status
+    ).toBe("in_progress");
   });
 
   it("preserves grammar reading when lesson AST JSON is reloaded", () => {
@@ -404,6 +416,47 @@ describe("textbook data", () => {
     expect(markup).not.toContain("[食べる](term:term-taberu)");
   });
 
+  it("keeps lesson references interactive even before tooltip details are loaded", () => {
+    const markup = renderToStaticMarkup(
+      createElement(LessonArticle, {
+        activeEntryKey: null,
+        document: {
+          raw: "stub",
+          blocks: [
+            {
+              type: "paragraph",
+              children: [
+                {
+                  type: "reference",
+                  raw: "[食べる](term:term-taberu)",
+                  display: "食べる",
+                  targetType: "term",
+                  targetId: "term-taberu",
+                  children: [{ type: "text", value: "食べる" }]
+                }
+              ]
+            }
+          ]
+        },
+        fallbackHtml: "",
+        furiganaMode: "hover",
+        isTouchLayout: false,
+        mediaSlug: "demo-media",
+        onImageExpand() {},
+        onReferenceBlur() {},
+        onReferenceClick() {},
+        onReferenceFocus() {},
+        onReferenceHover() {},
+        onReferenceLeave() {}
+      })
+    );
+
+    expect(markup).toContain("<button");
+    expect(markup).toContain("reader-ref");
+    expect(markup).toContain("reader-ref--term");
+    expect(markup).toContain("食べる");
+  });
+
   it("renders example sentences with a collapsed italian translation toggle", () => {
     const markup = renderToStaticMarkup(
       createElement(LessonArticle, {
@@ -460,7 +513,6 @@ describe("textbook data", () => {
             }
           ]
         },
-        entriesByKey: new Map(),
         fallbackHtml: "",
         furiganaMode: "hover",
         isTouchLayout: false,
@@ -521,14 +573,20 @@ describe("textbook data", () => {
       "ep01-intro",
       database
     );
+    const tooltipEntries = await getTextbookLessonTooltipEntries(
+      "sample-anime",
+      "ep01-intro",
+      database
+    );
 
     expect(indexData?.totalLessons).toBe(1);
     expect(indexData?.resumeLesson?.slug).toBe("ep01-intro");
-    expect(lessonData?.entries.map((entry) => entry.label)).toEqual([
+    expect(lessonData?.entries).toEqual([]);
+    expect(tooltipEntries?.map((entry) => entry.label)).toEqual([
       "食べる",
       "～ている"
     ]);
-    expect(lessonData?.entries[0]).toMatchObject({
+    expect(tooltipEntries?.[0]).toMatchObject({
       kind: "term",
       pronunciation: {
         pitchAccent: {
@@ -538,7 +596,7 @@ describe("textbook data", () => {
         src: "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
       }
     });
-    expect(lessonData?.entries[1]).toMatchObject({
+    expect(tooltipEntries?.[1]).toMatchObject({
       kind: "grammar",
       pronunciation: {
         pitchAccent: {
@@ -580,37 +638,35 @@ describe("textbook data", () => {
     expect(result.status).toBe("completed");
 
     const [alphaLesson, betaLesson] = await Promise.all([
-      getTextbookLessonData(
+      getTextbookLessonTooltipEntries(
         crossMediaFixture.alpha.mediaSlug,
         crossMediaFixture.alpha.lessonSlug,
         database
       ),
-      getTextbookLessonData(
+      getTextbookLessonTooltipEntries(
         crossMediaFixture.beta.mediaSlug,
         crossMediaFixture.beta.lessonSlug,
         database
       )
     ]);
 
-    expect(
-      alphaLesson?.entries.find((entry) => entry.kind === "term")?.id
-    ).toBe(crossMediaFixture.alpha.termSourceId);
-    expect(
-      alphaLesson?.entries.find((entry) => entry.kind === "term")?.meaning
-    ).toBe(crossMediaFixture.alpha.termMeaning);
-    expect(
-      alphaLesson?.entries.find((entry) => entry.kind === "term")
-    ).toMatchObject({
+    expect(alphaLesson?.find((entry) => entry.kind === "term")?.id).toBe(
+      crossMediaFixture.alpha.termSourceId
+    );
+    expect(alphaLesson?.find((entry) => entry.kind === "term")?.meaning).toBe(
+      crossMediaFixture.alpha.termMeaning
+    );
+    expect(alphaLesson?.find((entry) => entry.kind === "term")).toMatchObject({
       crossMediaHint: {
         otherMediaCount: 1
       }
     });
-    expect(
-      betaLesson?.entries.find((entry) => entry.kind === "term")?.meaning
-    ).toBe(crossMediaFixture.beta.termMeaning);
-    expect(
-      betaLesson?.entries.find((entry) => entry.kind === "grammar")?.meaning
-    ).toBe(crossMediaFixture.beta.grammarMeaning);
+    expect(betaLesson?.find((entry) => entry.kind === "term")?.meaning).toBe(
+      crossMediaFixture.beta.termMeaning
+    );
+    expect(betaLesson?.find((entry) => entry.kind === "grammar")?.meaning).toBe(
+      crossMediaFixture.beta.grammarMeaning
+    );
   });
 
   it("formats textbook cross-media hint labels with the correct singular and plural copy", () => {

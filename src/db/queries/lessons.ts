@@ -89,6 +89,31 @@ export async function getLessonReaderBySlug(
   });
 }
 
+export async function getLessonTooltipSourceBySlug(
+  database: DatabaseClient,
+  mediaId: string,
+  slug: string
+) {
+  return database.query.lesson.findFirst({
+    where: and(
+      eq(lesson.mediaId, mediaId),
+      eq(lesson.slug, slug),
+      eq(lesson.status, "active")
+    ),
+    columns: {
+      id: true
+    },
+    with: {
+      content: {
+        columns: {
+          astJson: true,
+          htmlRendered: true
+        }
+      }
+    }
+  });
+}
+
 export type LessonListItem = Awaited<
   ReturnType<typeof listLessonsByMediaId>
 >[number];

@@ -8,6 +8,7 @@ import {
   getGrammarCrossMediaSiblingCounts,
   getGrammarEntriesByIds,
   getLessonReaderBySlug,
+  getLessonTooltipSourceBySlug,
   getMediaBySlug,
   getTermCrossMediaSiblingCounts,
   getTermEntriesByIds,
@@ -205,8 +206,7 @@ export async function getTextbookLessonData(
     getTextbookLessonBodyData({
       database,
       lessonSlug,
-      mediaId: media.id,
-      mediaSlug
+      mediaId: media.id
     })
   ]);
 
@@ -221,7 +221,7 @@ export async function getTextbookLessonData(
   return {
     ...indexModel,
     lesson: lesson.lesson,
-    entries: lesson.entries,
+    entries: [],
     previousLesson:
       currentIndex > 0 ? indexModel.lessons[currentIndex - 1] : null,
     nextLesson:
@@ -229,6 +229,42 @@ export async function getTextbookLessonData(
         ? indexModel.lessons[currentIndex + 1]
         : null
   };
+}
+
+export async function getTextbookLessonTooltipEntries(
+  mediaSlug: string,
+  lessonSlug: string,
+  database: DatabaseClient = db
+): Promise<TextbookTooltipEntry[] | null> {
+  markDataAsLive();
+
+  const media = await getMediaBySlug(database, mediaSlug);
+
+  if (!media) {
+    return null;
+  }
+
+  const lesson = await getLessonTooltipSourceBySlug(
+    database,
+    media.id,
+    lessonSlug
+  );
+
+  if (!lesson) {
+    return null;
+  }
+
+  const lessonEntryLinks = await listLessonEntryLinks(database, lesson.id);
+
+  return loadLessonTooltipEntries({
+    database,
+    lessonEntryLinks,
+    imageCardIds: collectLessonImageCardIds(
+      lesson.content?.astJson ?? null,
+      lesson.content?.htmlRendered ?? null
+    ),
+    mediaSlug
+  });
 }
 
 export async function recordLessonOpened(
@@ -256,7 +292,8 @@ export async function recordLessonOpened(
     };
   }
 
-  const nextStatus = existing.status === "completed" ? "completed" : "in_progress";
+  const nextStatus =
+    existing.status === "completed" ? "completed" : "in_progress";
   const nextStartedAt =
     existing.status === "not_started" || existing.startedAt === null
       ? nowIso
@@ -352,7 +389,9 @@ export function applyLessonOpenedState(
 
   return {
     ...data,
-    activeLesson: lessons.find((lesson) => lesson.id === data.lesson.id) ?? data.activeLesson,
+    activeLesson:
+      lessons.find((lesson) => lesson.id === data.lesson.id) ??
+      data.activeLesson,
     groups,
     lesson: {
       ...data.lesson,
@@ -383,7 +422,6 @@ async function getTextbookLessonBodyData(input: {
   database: DatabaseClient;
   lessonSlug: string;
   mediaId: string;
-  mediaSlug: string;
 }) {
   const lesson = await getLessonReaderBySlug(
     input.database,
@@ -396,21 +434,13 @@ async function getTextbookLessonBodyData(input: {
   }
 
   const lessonAst = parseLessonAst(lesson.content?.astJson ?? null);
-  const lessonEntryLinks = await listLessonEntryLinks(input.database, lesson.id);
-  const entries = await loadLessonTooltipEntries({
-    database: input.database,
-    lessonEntryLinks,
-    imageCardIds: collectImageCardIds(lessonAst),
-    mediaSlug: input.mediaSlug
-  });
 
   return {
-    entries,
     lesson: {
       ast: lessonAst,
       difficulty: lesson.difficulty,
       excerpt: lesson.content?.excerpt ?? null,
-      htmlRendered: lessonAst ? null : lesson.content?.htmlRendered ?? null,
+      htmlRendered: lessonAst ? null : (lesson.content?.htmlRendered ?? null),
       id: lesson.id,
       segmentTitle: lesson.segment?.title ?? "Percorso principale",
       slug: lesson.slug,
@@ -773,6 +803,38 @@ function collectImageCardIds(document: MarkdownDocument | null) {
   }
 
   return [...cardIds];
+}
+
+function collectImageCardIdsFromRenderedHtml(htmlRendered: string | null) {
+  if (!htmlRendered) {
+    return [];
+  }
+
+  const cardIds = new Set<string>();
+
+  for (const match of htmlRendered.matchAll(/data-card-id="([^"]+)"/g)) {
+    const cardId = match[1]?.trim();
+
+    if (cardId) {
+      cardIds.add(cardId);
+    }
+  }
+
+  return [...cardIds];
+}
+
+function collectLessonImageCardIds(
+  astJson: string | null,
+  htmlRendered: string | null
+) {
+  const lessonAst = parseLessonAst(astJson);
+  const cardIds = collectImageCardIds(lessonAst);
+
+  if (cardIds.length > 0 || lessonAst) {
+    return cardIds;
+  }
+
+  return collectImageCardIdsFromRenderedHtml(htmlRendered);
 }
 
 function markDataAsLive() {
