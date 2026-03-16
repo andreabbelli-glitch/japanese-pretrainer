@@ -31,7 +31,7 @@ reading: びーえーでぃーつー
 romaji: bii ei dii tsuu
 meaning_it: keyword che fa scendere la creatura con costo ridotto di 2
 pos: keyword
-aliases: [B・A・D 2, BAD 2, bad 2, bii ei dii tsuu]
+aliases: [B・A・D 2, BAD 2, bii ei dii tsuu]
 notes_it: >-
   Nel deck language dei Beat Jockey va riconosciuta come blocco tecnico unico.
   Nel tooltip ufficiale DMPS `B・A・D` viene spiegato come riduzione del costo di
