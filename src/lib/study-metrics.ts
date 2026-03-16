@@ -62,6 +62,7 @@ export type GlossaryProgressSnapshot = {
 };
 
 type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
+type StudySignalLookup = Map<string, StudySignalRow[]>;
 type TermGlossaryProgressEntry = Pick<
   TermGlossaryEntrySummary,
   "id" | "sourceId" | "mediaId" | "lemma" | "meaningIt" | "reading" | "segmentTitle" | "entryStatus"
@@ -143,6 +144,20 @@ export function buildGlossaryProgressSnapshot(input: {
   studySignals: StudySignalRow[];
   terms: TermGlossaryProgressEntry[];
 }): GlossaryProgressSnapshot {
+  return buildGlossaryProgressSnapshotWithLookup({
+    grammar: input.grammar,
+    mediaSlug: input.mediaSlug,
+    studySignalsByEntry: groupStudySignals(input.studySignals),
+    terms: input.terms
+  });
+}
+
+function buildGlossaryProgressSnapshotWithLookup(input: {
+  grammar: GrammarGlossaryProgressEntry[];
+  mediaSlug: string;
+  studySignalsByEntry: StudySignalLookup;
+  terms: TermGlossaryProgressEntry[];
+}): GlossaryProgressSnapshot {
   const entries = [
     ...input.terms.map((entry) => ({
       entry,
@@ -153,7 +168,6 @@ export function buildGlossaryProgressSnapshot(input: {
       kind: "grammar" as const
     }))
   ];
-  const studySignalsByEntry = groupStudySignals(input.studySignals);
   const breakdown = {
     available: 0,
     known: 0,
@@ -164,7 +178,7 @@ export function buildGlossaryProgressSnapshot(input: {
   const previewEntries = entries.map(({ entry, kind }) => {
     const studyState = deriveEntryStudyState(
       entry.entryStatus ?? null,
-      (studySignalsByEntry.get(`${kind}:${entry.id}`) ?? []).map((signal) => ({
+      (input.studySignalsByEntry.get(`${kind}:${entry.id}`) ?? []).map((signal) => ({
         manualOverride: signal.manualOverride,
         reviewState: signal.reviewState
       }))
@@ -203,15 +217,16 @@ export function buildGlossaryProgressSnapshots(input: {
 }) {
   const termsByMedia = groupEntriesByMedia(input.terms);
   const grammarByMedia = groupEntriesByMedia(input.grammar);
+  const studySignalsByEntry = groupStudySignals(input.studySignals);
   const snapshots = new Map<string, GlossaryProgressSnapshot>();
 
   for (const item of input.media) {
     snapshots.set(
       item.id,
-      buildGlossaryProgressSnapshot({
+      buildGlossaryProgressSnapshotWithLookup({
         grammar: grammarByMedia.get(item.id) ?? [],
         mediaSlug: item.slug,
-        studySignals: input.studySignals,
+        studySignalsByEntry,
         terms: termsByMedia.get(item.id) ?? []
       })
     );
@@ -302,8 +317,8 @@ export function buildSegments(lessons: LessonListItem[]): SegmentStudyPreview[] 
   return [...groups.values()];
 }
 
-function groupStudySignals(rows: StudySignalRow[]) {
-  const map = new Map<string, StudySignalRow[]>();
+function groupStudySignals(rows: StudySignalRow[]): StudySignalLookup {
+  const map: StudySignalLookup = new Map();
 
   for (const row of rows) {
     const key = `${row.entryType}:${row.entryId}`;

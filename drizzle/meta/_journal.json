@@ -57,6 +57,13 @@
       "when": 1773341300000,
       "tag": "0007_pitch_accent_sources",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1773649156301,
+      "tag": "0008_married_thanos",
+      "breakpoints": true
     }
   ]
 }

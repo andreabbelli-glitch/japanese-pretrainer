@@ -96,6 +96,7 @@ export const termAlias = sqliteTable(
   },
   (table) => [
     index("term_alias_term_idx").on(table.termId),
+    index("term_alias_norm_idx").on(table.aliasNorm),
     uniqueIndex("term_alias_term_norm_type_unique").on(
       table.termId,
       table.aliasNorm,
@@ -162,6 +163,7 @@ export const grammarAlias = sqliteTable(
   },
   (table) => [
     index("grammar_alias_grammar_idx").on(table.grammarId),
+    index("grammar_alias_norm_idx").on(table.aliasNorm),
     uniqueIndex("grammar_alias_grammar_norm_unique").on(
       table.grammarId,
       table.aliasNorm

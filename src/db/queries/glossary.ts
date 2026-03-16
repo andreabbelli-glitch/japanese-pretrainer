@@ -144,7 +144,7 @@ function buildTextMatchClause(column: string, value: string) {
   };
 }
 
-function buildTermCandidateMatchClauses(input: GlossarySearchCandidateInput) {
+function buildTermBaseMatchClauses(input: GlossarySearchCandidateInput) {
   return [
     buildTextMatchClause("term.search_lemma_norm", input.normalized),
     buildTextMatchClause("term.search_reading_norm", input.kana),
@@ -154,7 +154,12 @@ function buildTermCandidateMatchClauses(input: GlossarySearchCandidateInput) {
     ),
     buildTextMatchClause("lower(term.meaning_it)", input.normalized),
     buildTextMatchClause("lower(coalesce(term.meaning_literal_it, ''))", input.normalized),
-    buildTextMatchClause("lower(coalesce(term.notes_it, ''))", input.normalized),
+    buildTextMatchClause("lower(coalesce(term.notes_it, ''))", input.normalized)
+  ].filter((clause): clause is NonNullable<typeof clause> => clause !== null);
+}
+
+function buildTermAliasMatchClauses(input: GlossarySearchCandidateInput) {
+  return [
     buildTextMatchClause("term_alias.alias_norm", input.normalized),
     buildTextMatchClause("term_alias.alias_norm", input.kana),
     buildTextMatchClause(
@@ -164,14 +169,19 @@ function buildTermCandidateMatchClauses(input: GlossarySearchCandidateInput) {
   ].filter((clause): clause is NonNullable<typeof clause> => clause !== null);
 }
 
-function buildGrammarCandidateMatchClauses(input: GlossarySearchCandidateInput) {
+function buildGrammarBaseMatchClauses(input: GlossarySearchCandidateInput) {
   return [
     buildTextMatchClause("grammar_pattern.search_pattern_norm", input.normalized),
     buildTextMatchClause("grammar_pattern.search_pattern_norm", input.grammarKana),
     buildTextMatchClause("lower(coalesce(grammar_pattern.reading, ''))", input.kana),
     buildTextMatchClause("lower(grammar_pattern.title)", input.normalized),
     buildTextMatchClause("lower(grammar_pattern.meaning_it)", input.normalized),
-    buildTextMatchClause("lower(coalesce(grammar_pattern.notes_it, ''))", input.normalized),
+    buildTextMatchClause("lower(coalesce(grammar_pattern.notes_it, ''))", input.normalized)
+  ].filter((clause): clause is NonNullable<typeof clause> => clause !== null);
+}
+
+function buildGrammarAliasMatchClauses(input: GlossarySearchCandidateInput) {
+  return [
     buildTextMatchClause("grammar_alias.alias_norm", input.normalized),
     buildTextMatchClause("grammar_alias.alias_norm", input.grammarKana),
     buildTextMatchClause(
@@ -377,23 +387,52 @@ export async function listGlossarySearchCandidateRefs(
   database: DatabaseClient,
   input: GlossarySearchCandidateInput
 ): Promise<GlossarySearchCandidateRef[]> {
-  const termClauses =
-    input.entryType === "grammar" ? [] : buildTermCandidateMatchClauses(input);
-  const grammarClauses =
-    input.entryType === "term" ? [] : buildGrammarCandidateMatchClauses(input);
+  const termBaseClauses =
+    input.entryType === "grammar" ? [] : buildTermBaseMatchClauses(input);
+  const termAliasClauses =
+    input.entryType === "grammar" ? [] : buildTermAliasMatchClauses(input);
+  const grammarBaseClauses =
+    input.entryType === "term" ? [] : buildGrammarBaseMatchClauses(input);
+  const grammarAliasClauses =
+    input.entryType === "term" ? [] : buildGrammarAliasMatchClauses(input);
   const queries: Array<Promise<GlossarySearchCandidateRef[]>> = [];
 
-  if (termClauses.length > 0) {
+  if (termBaseClauses.length > 0 || termAliasClauses.length > 0) {
+    const termSubqueries: string[] = [];
+    const termArgs: string[] = [];
+
+    if (termBaseClauses.length > 0) {
+      termSubqueries.push(`
+        select
+          term.id as entryId,
+          term.cross_media_group_id as crossMediaGroupId
+        from term
+        where ${termBaseClauses.map((clause) => clause.sql).join(" or ")}
+      `);
+      termArgs.push(...termBaseClauses.flatMap((clause) => clause.args));
+    }
+
+    if (termAliasClauses.length > 0) {
+      termSubqueries.push(`
+        select
+          term.id as entryId,
+          term.cross_media_group_id as crossMediaGroupId
+        from term
+        inner join term_alias on term_alias.term_id = term.id
+        where ${termAliasClauses.map((clause) => clause.sql).join(" or ")}
+      `);
+      termArgs.push(...termAliasClauses.flatMap((clause) => clause.args));
+    }
+
     const termSql = `
       select distinct
-        term.id as entryId,
+        entryId,
         'term' as entryType,
-        term.cross_media_group_id as crossMediaGroupId
-      from term
-      left join term_alias on term_alias.term_id = term.id
-      where ${termClauses.map((clause) => clause.sql).join(" or ")}
+        crossMediaGroupId
+      from (
+        ${termSubqueries.join("\n        union\n")}
+      )
     `;
-    const termArgs = termClauses.flatMap((clause) => clause.args);
 
     queries.push(
       database.$client
@@ -414,17 +453,42 @@ export async function listGlossarySearchCandidateRefs(
     );
   }
 
-  if (grammarClauses.length > 0) {
+  if (grammarBaseClauses.length > 0 || grammarAliasClauses.length > 0) {
+    const grammarSubqueries: string[] = [];
+    const grammarArgs: string[] = [];
+
+    if (grammarBaseClauses.length > 0) {
+      grammarSubqueries.push(`
+        select
+          grammar_pattern.id as entryId,
+          grammar_pattern.cross_media_group_id as crossMediaGroupId
+        from grammar_pattern
+        where ${grammarBaseClauses.map((clause) => clause.sql).join(" or ")}
+      `);
+      grammarArgs.push(...grammarBaseClauses.flatMap((clause) => clause.args));
+    }
+
+    if (grammarAliasClauses.length > 0) {
+      grammarSubqueries.push(`
+        select
+          grammar_pattern.id as entryId,
+          grammar_pattern.cross_media_group_id as crossMediaGroupId
+        from grammar_pattern
+        inner join grammar_alias on grammar_alias.grammar_id = grammar_pattern.id
+        where ${grammarAliasClauses.map((clause) => clause.sql).join(" or ")}
+      `);
+      grammarArgs.push(...grammarAliasClauses.flatMap((clause) => clause.args));
+    }
+
     const grammarSql = `
       select distinct
-        grammar_pattern.id as entryId,
+        entryId,
         'grammar' as entryType,
-        grammar_pattern.cross_media_group_id as crossMediaGroupId
-      from grammar_pattern
-      left join grammar_alias on grammar_alias.grammar_id = grammar_pattern.id
-      where ${grammarClauses.map((clause) => clause.sql).join(" or ")}
+        crossMediaGroupId
+      from (
+        ${grammarSubqueries.join("\n        union\n")}
+      )
     `;
-    const grammarArgs = grammarClauses.flatMap((clause) => clause.args);
 
     queries.push(
       database.$client
