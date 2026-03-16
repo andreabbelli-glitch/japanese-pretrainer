@@ -17,8 +17,8 @@ meaning_it: <significato-principale-in-italiano>
 pos: <part-of-speech-opzionale>
 aliases: [<alias-1>, <alias-2>]
 notes_it: >-
-  <nota-opzionale: spiega che cosa significa davvero la entry e che cosa ti fa
-  capire o fare nel media>
+  <nota-opzionale: spiega che cosa significa davvero la entry, quale ruolo
+  svolge nel media e che cosa cambia quando la incontri>
 level_hint: <n5|n4|n3|custom>
 :::
 
@@ -30,8 +30,8 @@ title: <titolo-breve>
 meaning_it: <significato-in-italiano>
 aliases: [<alias-1>, <alias-2>]
 notes_it: >-
-  <nota-opzionale: spiega che cosa significa davvero il pattern e quale effetto
-  ha sulla lettura o sull'azione nel media>
+  <nota-opzionale: spiega che cosa significa davvero il pattern, dove aggancia
+  la frase e quale effetto ha sulla lettura o sull'azione nel media>
 level_hint: <n5|n4|n3|custom>
 :::
 
@@ -48,7 +48,8 @@ example_it: >-
   <traduzione-italiana-obbligatoria-della-stessa-frase>
 notes_it: >-
   <nota-opzionale-con-inline-markdown-o-riferimenti: chiarisci il significato
-  reale e l'uso concreto della entry nel media>
+  reale e l'uso concreto della entry nel media, senza parlare della flashcard o
+  del processo di studio>
 tags: [<tag-1>, <tag-2>]
 :::
 
@@ -65,7 +66,8 @@ example_it: >-
   <traduzione-italiana-obbligatoria-della-stessa-frase>
 notes_it: >-
   <nota-opzionale-con-inline-markdown-o-riferimenti: chiarisci il significato
-  reale e l'uso concreto del pattern nel media>
+  reale e l'uso concreto del pattern nel media, senza parlare della flashcard o
+  del processo di studio>
 tags: [<tag-1>, <tag-2>]
 :::
 
@@ -105,6 +107,9 @@ Regole pratiche:
   locale;
 - non fermarti a formule come "X e utile/importante": `notes_it` deve dire che
   cosa significa davvero X e che cosa ti fa capire o fare nel media;
+- evita note meta del tipo "flashcard utile", "da fissare", "da rendere
+  automatico", "qui conviene tenere la card": descrivi invece significato,
+  ruolo e conseguenza concreta;
 - se la entry e un nome proprio poco trasparente, spiega almeno quale ruolo
   ricorrente segnala o quale parte del nome conviene riconoscere;
 - non aggiungere testo libero fuori dai blocchi strutturati.

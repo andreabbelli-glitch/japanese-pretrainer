@@ -17,8 +17,8 @@ summary: >-
 
 # Obiettivo
 
-Questa lesson ti porta nella zona in cui l'app smette di essere solo
-navigazione e diventa preparazione concreta al gioco.
+Qui passi dalla pura navigazione alle scelte operative: leggere etichette UI, interpretare
+i verbi e prendere decisioni di deck e acquisto dentro `デュエプレ`.
 
 Alla fine dovresti riuscire a:
 
@@ -45,8 +45,8 @@ Qui il punto chiave è non fermarsi alla traduzione letterale. Devi capire se un
 label ti fa scegliere un deck, filtrare la collezione o ottenere una carta con
 un certo tipo di risorsa.
 
-Questa lesson introduce la mappa dei verbi di acquisizione. I flussi completi di
-pack, exchange e deck prebuilt verranno poi letti nelle lesson successive.
+Qui presenti i verbi di acquisizione usati nelle schermate principali. I flussi completi di
+pack, exchange e deck prebuilt verranno poi letti nelle lezioni successive.
 
 ## Termini chiave
 
@@ -75,7 +75,7 @@ pack, exchange e deck prebuilt verranno poi letti nelle lesson successive.
 
 ### 1. `{{デッキ|でっき}}` nell'app non è `{{山札|やまふだ}}` durante la partita
 
-Questo è il contrasto più importante della lesson.
+Questo è il contrasto operativo più importante da tenere presente in questa schermata.
 
 [デッキ](term:term-constructed-deck) in app significa il mazzo che costruisci,
 salvi o selezioni prima della partita. [{{山札|やまふだ}}](term:term-deck) invece
@@ -114,8 +114,8 @@ Dal lato pratico la schermata separa almeno tre cose:
   collezione;
 - a destra `マイデッキ`, cioè la lista che stai costruendo davvero;
 - in basso pulsanti come `デッキ{{確認|かくにん}}` e
-  `デッキ[{{保存|ほぞん}}](term:term-save)`, che
-  ti dicono se stai solo controllando o fissando le modifiche.
+  `デッキ[{{保存|ほぞん}}](term:term-save)`, che ti dicono se stai solo
+  visualizzando lo stato del mazzo o salvando una nuova versione.
 
 Il contrasto con [レンタルデッキ](term:term-rental-deck) è quindi netto:
 
@@ -150,7 +150,7 @@ Qui i tuoi due obiettivi coincidono perfettamente: se capisci male il
 giapponese, rischi di fare l'azione sbagliata; se capisci bene il lessico,
 navighi lo shop con molta più sicurezza.
 
-Per ora ti basta fissare la mappa. Le schermate concrete di
+Usa questa distinzione prima di entrare nei dettagli. Le schermate concrete di
 `カードパック{{購入|こうにゅう}}`, exchange e deck prebuilt verranno aperte in
 modo più dettagliato dopo.
 
@@ -169,10 +169,10 @@ in modo astratto. Chiediti subito:
 
 ### 5. `〜を{{選択|せんたく}}` è un pattern da riconoscere al volo
 
-Nelle schermate deck e matchmaking compare spesso una formula semplice ma molto
+Nelle schermate deck e matchmaking compare spesso un pattern semplice ma molto
 operativa: [～を{{選択|せんたく}}](grammar:grammar-wo-sentaku).
 
-Qui il nucleo lessicale utile da riconoscere e proprio
+Qui il nucleo lessicale attivo da riconoscere è proprio
 [{{選択|せんたく}}](term:term-selection): la UI non ti sta ancora dicendo di
 partire, ma di scegliere l'oggetto corretto.
 
@@ -194,7 +194,7 @@ translation_it: >-
   Seleziona un mazzo.
 :::
 
-- [～を{{選択|せんたく}}](grammar:grammar-wo-sentaku) è una formula-istruzione molto
+- [～を{{選択|せんたく}}](grammar:grammar-wo-sentaku) è un pattern operativo molto
   comune.
 - Qui l'oggetto da scegliere è [デッキ](term:term-constructed-deck), non
   [{{山札|やまふだ}}](term:term-deck).
@@ -245,6 +245,6 @@ translation_it: >-
 
 ## Nota finale
 
-Se questa lesson funziona, succede una cosa molto concreta: smetti di leggere
-deckbuilding e shop come blocchi tecnici separati dal giapponese. Cominci
-invece a usare il giapponese per prendere decisioni corrette dentro l'app.
+Quando applichi questa distinzione, deckbuilding e shop non sono più blocchi separati
+dal giapponese: diventano segnali d'azione per scegliere rapidamente se
+costruire, comprare o cambiare un mazzo.

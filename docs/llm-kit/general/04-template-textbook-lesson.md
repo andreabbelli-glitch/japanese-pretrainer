@@ -10,20 +10,25 @@ status: active
 tags: [<tag-1>, <tag-2>]
 prerequisites: []
 summary: >-
-  <Una frase (max 160 caratteri) che descrive l'obiettivo della lesson.
+  <Una frase (max 160 caratteri) che descrive il risultato concreto di lettura.
   Viene mostrata nella card del textbook e nell'header della pagina.
   Se assente, il sistema genera automaticamente un excerpt dal corpo
-  del documento (tagliato a 400 caratteri): meglio scriverla a mano.>
+  del documento (tagliato a 400 caratteri): meglio scriverla a mano. Non
+  parlare del batch, della lesson come oggetto editoriale o del workflow.>
 ---
 
 # Obiettivo
 
-<Spiega in italiano cosa imparera l'utente in questa lesson.>
+<Spiega in italiano quale testo, schermata o carta il lettore sapra leggere
+meglio dopo questa lesson. Non parlare della lesson come prodotto editoriale
+("questa lesson inaugura...", "qui faremo review..."): vai subito sul
+giapponese e sul gioco.>
 
 ## Contesto
 
 <Spiega in italiano in quale contesto del media compaiono questi termini o
-pattern.>
+pattern. Descrivi scena, carta, schermata o regola di gioco; evita meta-discorso
+sul processo editoriale, sulla raccolta fonti o sul batch.>
 
 ## Termini chiave
 
@@ -40,7 +45,11 @@ pattern.>
 <Testo libero in italiano. Usa riferimenti semantici quando richiami termini o
 grammar gia dichiarati. Ogni blocco deve chiarire che cosa significa davvero
 l'elemento giapponese e che cosa ti fa capire o fare nel media. Non basta
-scrivere che e "utile" o "importante".>
+scrivere che e "utile" o "importante". Quando serve, usa questa sequenza:
+forma giapponese -> significato letterale o tecnico -> effetto concreto nel
+gioco / nell'interfaccia -> contrasto con la lettura sbagliata piu probabile.
+Evita formule meta come "qui il punto", "conviene fissare", "cosa mandare in
+review", "per questa pagina" o "per questo batch".>
 
 Puoi usare furigana inline con la sintassi `{{base|reading}}`, per esempio
 `{{<kanji>|<reading>}}`. Se c'e un composto numerico con contatore o
@@ -88,7 +97,8 @@ collegalo con il relativo link semantico.
 
 ## Nota finale
 
-<Nota didattica breve.>
+<Nota didattica breve, ancora centrata su testo e gioco. Niente meta-commenti
+sul workflow di studio, sulla review o sulla produzione del contenuto.>
 
 <!--
 Usa blocchi :::term o :::grammar solo se devi introdurre una entry nuova non
@@ -110,4 +120,8 @@ arricchito in seguito dalla pipeline locale con asset e provenance reali.
 Se aggiungi campi descrittivi YAML nel frontmatter, come `summary`, usa `>-`.
 Una spiegazione debole del tipo "X e utile da fissare" non basta: scrivi
 "X vuol dire Y; qui ti segnala Z".
+- Evita nel testo finale frasi sul processo editoriale o di studio come
+  "questa lesson", "qui facciamo review", "per questo test", "conviene mettere
+  in review" o "verifichiamo la fonte": se una fonte serve, usala solo per
+  sostenere una spiegazione sul testo o sulla regola.
 -->

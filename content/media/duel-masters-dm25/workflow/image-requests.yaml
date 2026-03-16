@@ -80,7 +80,7 @@ requests:
       `ランクマッチ`, `カジュアルマッチ` e `ルームマッチ`.
   - id: dm25-sd1-abyssbell-jashintei-card
     lesson_slug: dm25-sd1-overview
-    anchor: "### 3. I nomi propri qui non sono decorazione"
+    anchor: "#### 2.1 アビスベル=ジャシン帝"
     kind: card-art
     priority: high
     search_hint: >-
@@ -95,7 +95,7 @@ requests:
       carta-ancora del deck `DM25-SD1`.
   - id: dm25-sd1-jablood-card
     lesson_slug: dm25-sd1-overview
-    anchor: "### 3. I nomi propri qui non sono decorazione"
+    anchor: "### 4. Le carte di supporto al piano di gioco"
     kind: card-art
     priority: medium
     search_hint: >-
@@ -113,7 +113,7 @@ requests:
       ricorrente del deck `DM25-SD1`.
   - id: dm25-sd2-apollonus-dragelion-card
     lesson_slug: dm25-sd2-overview
-    anchor: "### 3. I nomi-ancora del deck"
+    anchor: "#### 2.3 {{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン"
     kind: card-art
     priority: high
     search_hint: >-
@@ -128,7 +128,7 @@ requests:
       del deck `DM25-SD2`.
   - id: dm25-sd2-red-zone-card
     lesson_slug: dm25-sd2-overview
-    anchor: "### 3. I nomi-ancora del deck"
+    anchor: "#### 2.2 {{轟|とどろ}}く{{侵略|しんりゃく}} レッドゾーン"
     kind: card-art
     priority: medium
     search_hint: >-

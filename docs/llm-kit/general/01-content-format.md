@@ -158,7 +158,7 @@ Esempio corretto:
 
 ```md
 notes_it: >-
-  Lettura da fissare: {{山札|やまふだ}}.
+  {{山札|やまふだ}} vuol dire deck; nelle carte indica il mazzo da cui peschi.
 ```
 
 Esempio corretto per `front` di una flashcard:
@@ -215,6 +215,26 @@ Esempi accettabili:
   schermata di deckbuilding.
 - `または` vuol dire "oppure", ma nelle carte collega due categorie che valgono
   entrambe per lo stesso filtro.
+
+### 4.5 Regola anti-meta-editoriale
+
+Il contenuto finale non deve parlare del proprio processo di produzione,
+revisione o studio.
+
+Da evitare nel textbook e in `notes_it`:
+
+- "questa lesson";
+- "qui il punto e";
+- "conviene fissare / mettere in review";
+- "per questo batch / per questo test";
+- "la fonte ufficiale dice..." come frase principale della spiegazione.
+
+Se una fonte serve, va usata solo per sostenere una spiegazione sul testo, sulla
+regola o sulla schermata. La frase visibile all'utente deve restare centrata su:
+
+- che cosa significa il giapponese;
+- che cosa succede nel gioco / nell'interfaccia;
+- quale contrasto o ambiguita conviene sciogliere.
 
 ## 5. `media.md`
 

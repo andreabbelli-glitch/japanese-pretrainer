@@ -18,16 +18,13 @@ summary: >-
 
 # Obiettivo
 
-Questa lesson usa `DM25-SD2` come corpus reale: guardiamo tutte le 11 carte
-della gallery e separiamo subito due cose:
-
-- il giapponese che hai gia incontrato nelle unita core;
-- le espressioni che qui meritano davvero una nuova flashcard o una spiegazione
-  mirata.
+Questa lezione analizza `DM25-SD2` carta per carta. In tutte le 11 card
+mettiamo a fuoco il valore linguistico operativo: keyword, struttura delle condizioni e
+ordine delle azioni nel piano di gioco.
 
 Alla fine dovresti riconoscere:
 
-- quali carte del deck aggiungono davvero lessico o parsing nuovi;
+- quali card cambiano la lettura operativa del deck;
 - come leggere keyword compatte come [G・ストライク](term:term-g-strike),
   [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
   [メテオバーン](term:term-meteorburn);
@@ -38,9 +35,9 @@ Alla fine dovresti riconoscere:
 
 ## Contesto
 
-`DM25-SD2 力の王道` e il deck d'ingresso dell'asse Apollo / Red Zone. Il punto
-didattico forte e che, in sole 11 carte, mette insieme payoff aggressivi e
-magie di setup scritte in un giapponese molto operativo.
+`DM25-SD2 力の王道` è un deck d'ingresso dell'asse Apollo / Red Zone. In 11 carte
+riunisce payoff aggressivi e setup, quindi la lettura si basa sempre sul flusso:
+`condizione -> tempo dell'effetto -> esito`.
 
 ## Termini chiave
 
@@ -90,13 +87,12 @@ Mentre scorri la gallery, chiediti sempre:
 src: assets/cards/dm25-sd2/01-redzone-formula-overlordless-invasion.jpg
 alt: "Carta di Redzone Formula, centrata e leggibile."
 caption: >-
-  Carta-studio importante: qui compaiono [G・ストライク](term:term-g-strike) e
-  la clausola `{{各|かく}}ターン、{{最初|さいしょ}}の{{攻撃|こうげき}}の
-  {{終|お}}わりに`.
+  Qui compaiono [G・ストライク](term:term-g-strike) e la finestra di timing
+  `{{各|かく}}ターン、{{最初|さいしょ}}の{{攻撃|こうげき}}の
+  {{終|お}}わりに`, con cui si legge il vincolo temporale dell'attacco.
 :::
 
-Qui devi leggere due cose: il divieto su `G・ストライク` e il timing del primo
-attacco.
+Il parsing utile qui è: `vincolo di uso + timing di fine attacco`.
 
 :::example_sentence
 jp: >-
@@ -126,31 +122,47 @@ Qui conta:
 #### 2.2 {{轟|とどろ}}く{{侵略|しんりゃく}} レッドゾーン
 
 :::image
+src: assets/cards/red-zone.webp
+alt: "Carta di とどろくしんりゃく レッドゾーン centrata e leggibile."
+card_id: card-red-zone-recognition
+caption: >-
+  Immagine ufficiale di {{轟|とどろ}}く{{侵略|しんりゃく}} [レッドゾーン](term:term-red-zone), altra carta-simbolo del lato offensivo di `DM25-SD2`.
+:::
+
+:::image
 src: assets/cards/dm25-sd2/02-redzone-roaring-invasion.jpg
 alt: "Carta di Red Zone, centrata e leggibile."
 card_id: card-red-zone-recognition
 caption: >-
-  Ottimo consolidamento di [{{侵略|しんりゃく}}](term:term-invasion) e
-  [T・ブレイカー](term:term-t-breaker), con una formula utile:
+  Formula operativa di [{{侵略|しんりゃく}}](term:term-invasion) e
+  [T・ブレイカー](term:term-t-breaker):
   `{{相手|あいて}}のパワーが{{一番|いちばん}}{{大|おお}}きい`.
 :::
 
-Usala per rendere automatico il pattern
+Registra il pattern:
 `{{相手|あいて}}のパワーが{{一番|いちばん}}{{大|おお}}きい`.
 
 #### 2.3 {{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン
+
+:::image
+src: assets/cards/apollonus-dragelion.webp
+alt: "Carta di ちょうしんらせいアポロヌス・ドラゲリオン centrata e leggibile."
+card_id: card-apollonus-dragelion-recognition
+caption: >-
+  Immagine ufficiale di {{超神羅星|ちょうしんらせい}} [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion), finisher simbolo del deck `DM25-SD2`.
+:::
 
 :::image
 src: assets/cards/dm25-sd2/03-super-enlightened-nova-apollonus-dragerion.jpg
 alt: "Carta di Apollonus Dragelion, centrata e leggibile."
 card_id: card-apollonus-dragelion-recognition
 caption: >-
-  Carta chiave del deck: introduce
+  Questa carta introduce
   [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
   [メテオバーン](term:term-meteorburn).
 :::
 
-Qui entrano due keyword che cambiano davvero il livello del deck:
+Qui entrano due keyword di impatto sul parsing del turno:
 [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
 [メテオバーン](term:term-meteorburn).
 
@@ -188,12 +200,11 @@ src: assets/cards/dm25-sd2/04-evolution-blueprint.jpg
 alt: "Carta di Evolution Blueprint, centrata e leggibile."
 card_id: card-shinka-sekkeizu-recognition
 caption: >-
-  Supporto eccellente per il giapponese del deck-search:
-  [{{表向|おもてむ}}き](term:term-face-up) e
+  Schema leggibile per [{{表向|おもてむ}}き](term:term-face-up) e
   [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de).
 :::
 
-Qui il nucleo e semplice: riveli 6 carte, prendi le evoluzioni e riordini il
+Il nucleo operativo è: rivelazione iniziale, filtro delle evoluzioni, riordino del
 resto.
 
 :::example_sentence
@@ -210,12 +221,12 @@ translation_it: >-
   nell'ordine che preferisci.
 :::
 
-Da qui ti conviene fissare tre cose:
+Qui confermiamo tre punti:
 
-- [{{表向|おもてむ}}き](term:term-face-up) vuol dire che l'operazione e aperta.
-- `その{{中|なか}}から` ti fa lavorare su un sottoinsieme appena rivelato.
-- [好きな順序で](grammar:grammar-sukina-junjo-de) e una formula TCG da
-  riconoscere a colpo d'occhio.
+- [{{表向|おもてむ}}き](term:term-face-up) rende esplicita la scoperta
+  dell'insieme.
+- `その{{中|なか}}から` limita il filtro alle carte già rivelate.
+- [好きな順序で](grammar:grammar-sukina-junjo-de) organizza il riordino finale.
 
 #### 2.5 SMAPON
 
@@ -223,12 +234,11 @@ Da qui ti conviene fissare tre cose:
 src: assets/cards/dm25-sd2/05-smapon.jpg
 alt: "Carta di SMAPON, centrata e leggibile."
 caption: >-
-  La carta piu utile per imparare
-  [スーパー・S・トリガー](term:term-super-s-trigger) senza confonderlo con
-  [S・トリガー](term:term-s-trigger).
+  Parsing comparativo tra [スーパー・S・トリガー](term:term-super-s-trigger) e
+  [S・トリガー](term:term-s-trigger): la carta mostra il salto operativo.
 :::
 
-Qui il punto e capire che cosa aggiunge
+Il punto tecnico e distinguere:
 [スーパー・S・トリガー](term:term-super-s-trigger) rispetto a
 [S・トリガー](term:term-s-trigger).
 
@@ -243,7 +253,7 @@ translation_it: >-
   evocarla subito senza pagarne il costo.
 :::
 
-La distinzione utile e questa:
+La distinzione sintattica è questa:
 
 - [S・トリガー](term:term-s-trigger) ti fa usare la carta dallo scudo.
 - [スーパー・S・トリガー](term:term-super-s-trigger) qui ti porta da scudo a
@@ -256,7 +266,8 @@ src: assets/cards/dm25-sd2/06-future-blueprint.jpg
 alt: "Carta di Future Blueprint, centrata e leggibile."
 card_id: card-mirai-sekkeizu-recognition
 caption: >-
-  Molto utile per leggere sequenza e rivelazione:
+  Parsing sequenziale per [～てから](grammar:grammar-te-kara) e controllo
+  numerico in fase di rivelazione:
   [～てから](grammar:grammar-te-kara) e il blocco
   `{{相手|あいて}}に{{見|み}}せてから`.
 :::
@@ -298,7 +309,7 @@ Qui il parser giusto e:
 src: assets/cards/dm25-sd2/07-kachikomi-nyudo-batorai-oni.jpg
 alt: "Carta di Kachikomi Nyudo, centrata e leggibile."
 caption: >-
-  Qui il punto forte non e il nome proprio, ma il verbo
+  Focus sul verbo operativo:
   [バトルさせる](term:term-battle-saseru).
 :::
 
@@ -317,7 +328,7 @@ translation_it: >-
   creatura dell'avversario. Fai combattere quella creatura con questa creatura.
 :::
 
-Qui la vera novita e:
+Qui cambia il parsing dell'effetto:
 
 - [バトルさせる](term:term-battle-saseru) non descrive un attacco normale.
 - La forma `させる` ti dice che il gioco fa succedere il battle.
@@ -329,11 +340,11 @@ Qui la vera novita e:
 src: assets/cards/dm25-sd2/08-onsoku-doji-turbo-oni.jpg
 alt: "Carta di Onsoku Doji, centrata e leggibile."
 caption: >-
-  Buon consolidamento di [～てもよい](grammar:grammar-temoyoi),
-  [{{捨|す}}てる](term:term-suteru) e `もう{{1枚|いちまい}}`.
+  Parsing operativo di [～てもよい](grammar:grammar-temoyoi),
+  [{{捨|す}}てる](term:term-suteru) e `もう{{1枚|いちまい}}` in sequenza.
 :::
 
-Serve per rendere automatico il montaggio `scarta -> poi pesca ancora`.
+La sequenza qui è: condizione (`〜てもよい`) → scarto → pescata.
 
 #### 2.9 ストリエ{{雷鬼|らいき}}の{{巻|まき}}
 
@@ -341,11 +352,11 @@ Serve per rendere automatico il montaggio `scarta -> poi pesca ancora`.
 src: assets/cards/dm25-sd2/09-stris-thunder-oni-scroll.jpg
 alt: "Carta di Stri's Thunder Oni Scroll, centrata e leggibile."
 caption: >-
-  Ottimo consolidamento di [シンカライズ](term:term-shinkarize) e della formula
+  Parsing di [シンカライズ](term:term-shinkarize) e applicazione formula
   `クリーチャーであるかのように`.
 :::
 
-Serve a rileggere bene [シンカライズ](term:term-shinkarize) in un contesto reale.
+Qui la verifica passa da: trigger -> effetto -> verifica categoria.
 
 #### 2.10 {{冒険妖精|ぼうけんようせい}}ポレコ
 
@@ -353,12 +364,13 @@ Serve a rileggere bene [シンカライズ](term:term-shinkarize) in un contesto
 src: assets/cards/dm25-sd2/10-pollico-adventure-faerie.jpg
 alt: "Carta di Pollico, centrata e leggibile."
 caption: >-
-  Carta pulita per fissare
+  Punto di parsing per il timing:
   [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing)
   con `{{自分|じぶん}}のターンの{{終|お}}わりに`.
 :::
 
-Usala per fissare `{{自分|じぶん}}のターンの{{終|お}}わりに`.
+Il marker operativo e:
+`{{自分|じぶん}}のターンの{{終|お}}わりに`.
 
 #### 2.11 ヘルコプ{{太|た}}の{{心絵|めもりー}}
 
@@ -366,41 +378,44 @@ Usala per fissare `{{自分|じぶん}}のターンの{{終|お}}わりに`.
 src: assets/cards/dm25-sd2/11-helcoptas-memory.jpg
 alt: "Carta di Helcopta's Memory, centrata e leggibile."
 caption: >-
-  Consolidamento utile di ricerca, rivelazione e riordino del resto del mazzo.
+  Parsing di ricerca, rivelazione e riordino del mazzo.
 :::
 
 Fa da ponte tra
 [{{進化設計図|しんかせっけいず}}](term:term-shinka-sekkeizu) e
 [{{未来設計図|みらいせっけいず}}](term:term-mirai-sekkeizu).
 
-### 3. Priorita di studio
+### 3. Piano del deck
 
-Studia per prime queste carte:
+Sequenza di lettura del piano testuale:
 
-- {{覇帝|はてい}}なき{{侵略|しんりゃく}} レッドゾーンF per negazione di
-  [G・ストライク](term:term-g-strike) e timing di attacco.
-- {{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン per
-  [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
-  [メテオバーン](term:term-meteorburn).
-- {{進化設計図|しんかせっけいず}} per
-  [{{表向|おもてむ}}き](term:term-face-up) e
-  [好きな順序で](grammar:grammar-sukina-junjo-de).
-- {{未来設計図|みらいせっけいず}} per
-  [{{合計|ごうけい}}](term:term-goukei) e [～てから](grammar:grammar-te-kara).
-- SMAPON per [スーパー・S・トリガー](term:term-super-s-trigger).
-- カチコミ{{入道|にゅうどう}} ＜バトライ.{{鬼|おーが}}＞ per
-  [バトルさせる](term:term-battle-saseru).
+- Fase offensiva:
+  - {{覇帝|はてい}}なき{{侵略|しんりゃく}} レッドゾーンF per
+    [G・ストライク](term:term-g-strike) e timing del primo attacco.
+  - [{{轟|とどろ}}く{{侵略|しんりゃく}} レッドゾーン](term:term-red-zone):
+    confronto di potenza `{{相手|あいて}}のパワーが{{一番|いちばん}}{{大|おお}}きい`
+    e rottura totale.
+- Fase di setup:
+  - {{進化設計図|しんかせっけいず}} per [{{表向|おもてむ}}き](term:term-face-up),
+    [好きな順序で](grammar:grammar-sukina-junjo-de).
+  - {{未来設計図|みらいせっけいず}} per [{{合計|ごうけい}}](term:term-goukei),
+    [～てから](grammar:grammar-te-kara).
+  - ヘルコプ{{太|た}}の{{心絵|めもりー}} come passaggio tecnico tra
+    ricerca e riordino del mazzo.
+- Fase payoff:
+  - {{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン per
+    [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
+    [メテオバーン](term:term-meteorburn).
+  - SMAPON per differenza funzionale tra
+    [スーパー・S・トリガー](term:term-super-s-trigger) e
+    [S・トリガー](term:term-s-trigger).
+  - カチコミ{{入道|にゅうどう}} ＜バトライ.{{鬼|おーが}}＞ per
+    [バトルさせる](term:term-battle-saseru).
+- Fase di verifica e chiusura:
+  - オンクン{{童子|どうじ}} ＜ターボ.{{鬼|おーが}}＞ per
+    [～てもよい](grammar:grammar-temoyoi) e [{{捨|す}}てる](term:term-suteru).
+  - ストリエ{{雷鬼|らいき}}の{{巻|まき}} per [シンカライズ](term:term-shinkarize).
+  - {{冒険妖精|ぼうけんようせい}}ポレコ per
+    [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing).
 
-Tieni invece come consolidamento:
 
-- [{{轟|とどろ}}く{{侵略|しんりゃく}} レッドゾーン](term:term-red-zone): ottima per
-  fissare `{{一番|いちばん}}{{大|おお}}きい` e `すべて{{破壊|はかい}}する`.
-- オンクン{{童子|どうじ}} ＜ターボ.{{鬼|おーが}}＞: perfetta per ripassare
-  [{{捨|す}}てる](term:term-suteru) e il guadagno successivo di carte.
-- ストリエ{{雷鬼|らいき}}の{{巻|まき}}: fa bene per rendere meno opaco
-  [シンカライズ](term:term-shinkarize) in un testo reale.
-- {{冒険妖精|ぼうけんようせい}}ポレコ: carta pulita per
-  [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) e
-  [{{戻|もど}}す](term:term-modosu).
-- ヘルコプ{{太|た}}の{{心絵|めもりー}}: buon ponte di consolidamento tra
-  blueprint, rivelazione e riordino del resto del mazzo.

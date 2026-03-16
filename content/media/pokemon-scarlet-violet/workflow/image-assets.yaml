@@ -336,3 +336,84 @@ assets:
     notes: >-
       Riusa l'asset GameWith del [レッツゴー](term:term-lets-go) gia registrato in
       https://gamewith.jp/pokemon-sv/article/show/374611.
+  - id: academy-route-map-destination
+    src: assets/ui/smart-rotom-map-destination.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
+    anchor: "pronta una direzione prima di uscire davvero nel mondo aperto."
+    alt_it: >-
+      Mappa dello Smart Rotom con destinazione registrata prima dell'uscita nel mondo aperto.
+    caption_it: >-
+      Registrare una [{{目的地|もくてきち}}](term:term-mokutekichi) sullo
+      [スマホロトム](term:term-smartphone-rotom) trasforma il briefing scolastico in
+      una direzione concreta: il gioco non ti lascia solo libero, ti insegna
+      anche come non perderti.
+    notes: >-
+      Riusa l'asset ufficiale dello Smart Rotom gia registrato in
+      https://www.pokemon.co.jp/ex/sv/ja/features/220803_02/ (`features_img_03.jpg`).
+  - id: academy-campus-exterior
+    src: assets/story/academy-campus-exterior.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
+    anchor: "alla fine, stanza personale nella [{{学生寮|がくせいりょう}}](term:term-gakusei-ryou)."
+    alt_it: >-
+      Edificio principale dell'accademia di Paldea visto dall'esterno.
+    caption_it: >-
+      L'accademia entra qui come spazio reale del prologo: non e solo sfondo
+      scolastico, ma il nodo da cui partono aula, uffici, dormitorio e i primi
+      veri briefing della storia.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/story/220803_05/
+      (`story_img_03.jpg`), convertita in WebP.
+  - id: clavell-academy-briefing
+    src: assets/story/clavell-academy-briefing.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
+    anchor: "ufficializzato o rimesso nelle mani del protagonista."
+    alt_it: >-
+      Clavell, figura autoritativa dell'accademia, in una presentazione ufficiale.
+    caption_it: >-
+      Clavell rende concreto il lato piu ufficiale dell'accademia: quando il
+      prologo passa da aula e corridoi a briefing scolastici seri, il tono della
+      progressione diventa subito piu istituzionale.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/character/220803_03/
+      (`ja/img_01.jpg`), convertita in WebP.
+  - id: academy-treasure-hunt-announcement
+    src: assets/story/academy-treasure-hunt-announcement.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
+    anchor: "obiettivo personale."
+    alt_it: >-
+      Raduno degli studenti dell'accademia durante l'annuncio del Treasure Hunt.
+    caption_it: >-
+      Il briefing del [{{宝探し|たからさがし}}](term:term-takara-sagashi) rende
+      visibile il cambio di scala del prologo: la scuola smette di guidarti solo
+      dentro il campus e ti consegna la struttura aperta dell'avventura.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/story/220803_05/
+      (`story_img_04.jpg`), convertita in WebP.
+  - id: nemona-champion-rank-briefing
+    src: assets/story/nemona-champion-rank-briefing.webp
+    source_type: screenshot
+    width: 1024
+    height: 576
+    lesson_slug: 105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
+    anchor: "raccogliere badge e superare altri passaggi di progressione."
+    alt_it: >-
+      Nemona spiega al protagonista il Champion Rank e la raccolta dei Gym Badge.
+    caption_it: >-
+      Quando Nemona parla di [チャンピオンランク](term:term-champion-rank), il suo
+      tono colloquiale nasconde una vera definizione di route: i
+      [ジムバッジ](term:term-gym-badge) diventano la prova concreta di quel percorso.
+    notes: >-
+      Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/story/220803_07/
+      (`story_img_03.jpg`), convertita in WebP.

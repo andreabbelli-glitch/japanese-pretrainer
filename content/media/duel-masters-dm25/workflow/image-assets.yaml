@@ -76,7 +76,7 @@ assets:
     height: 908
     card_id: card-abyssbell-jashintei-recognition
     lesson_slug: dm25-sd1-overview
-    anchor: "### 3. I nomi propri qui non sono decorazione"
+    anchor: "#### 2.1 アビスベル=ジャシン帝"
     alt_it: >-
       Carta di アビスベル=ジャシンてい centrata e leggibile.
     caption_it: >-
@@ -92,7 +92,7 @@ assets:
     height: 908
     card_id: card-jablood-recognition
     lesson_slug: dm25-sd1-overview
-    anchor: "### 3. I nomi propri qui non sono decorazione"
+    anchor: "### 4. Le carte di supporto al piano di gioco"
     alt_it: >-
       Carta di ジャブラッド con epiteto じゃりゅう, centrata e leggibile.
     caption_it: >-
@@ -108,7 +108,7 @@ assets:
     height: 908
     card_id: card-apollonus-dragelion-recognition
     lesson_slug: dm25-sd2-overview
-    anchor: "### 3. I nomi-ancora del deck"
+    anchor: "#### 2.3 {{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン"
     alt_it: >-
       Carta di ちょうしんらせいアポロヌス・ドラゲリオン centrata e leggibile.
     caption_it: >-
@@ -125,7 +125,7 @@ assets:
     height: 908
     card_id: card-red-zone-recognition
     lesson_slug: dm25-sd2-overview
-    anchor: "### 3. I nomi-ancora del deck"
+    anchor: "#### 2.2 {{轟|とどろ}}く{{侵略|しんりゃく}} レッドゾーン"
     alt_it: >-
       Carta di とどろくしんりゃく レッドゾーン centrata e leggibile.
     caption_it: >-

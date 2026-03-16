@@ -16,18 +16,19 @@ summary: >-
 
 # Obiettivo
 
-In questa lesson impari a leggere la schermata di battaglia senza farti
-travolgere dalle animazioni. L'obiettivo è capire che cosa guardare per primo,
-che cosa ti stanno dicendo gauge e minimappa, e quali decisioni reali aprono
-[{{出撃|しゅつげき}}](term:term-sortie), [アビリティ](term:term-ability) e
+Questa pagina insegna a leggere la schermata di battaglia senza farsi distrarre
+dalle animazioni. L'obiettivo operativo è identificare rapidamente cosa guardare
+per primo, cosa comunicano gauge e minimappa, e quali condizioni attivano
+in modo pratico [{{出撃|しゅつげき}}](term:term-sortie),
+[アビリティ](term:term-ability) e
 [{{戦術技|せんじゅつぎ}}](term:term-special-attack).
 
 ## Contesto
 
 Questi termini compaiono durante il match. Sono la lingua operativa del campo:
 barre in alto, unità sul lato, mappa, obiettivi e comandi che consumano risorse.
-Qui non stai ancora studiando meta o carte forti: stai imparando a vedere il
-campo e a collegare un label a una decisione.
+La lettura è centrata su campo e termini, non su meta generale o teoria esterna alle
+decisioni della partita.
 
 ## Termini chiave
 
@@ -57,7 +58,14 @@ campo e a collegare un label a una decisione.
 
 ## Spiegazione
 
-La schermata sembra piena di informazioni, ma all'inizio non devi leggerle tutte insieme. L'ordine più utile è questo: prima guarda dove sono [{{殲滅|せんめつ}}](term:term-role-shoumetsu), [{{制圧|せいあつ}}](term:term-role-seiatsu) e [{{防衛|ぼうえい}}](term:term-role-bouei); poi individua quale [{{拠点|きょてん}}](term:term-base) o [{{戦艦|せんかん}}](term:term-warship) sta per subire pressione; solo dopo controlla i dettagli delle singole carte. Le guide fan per principianti insistono molto su questo punto: se provi a capire tutto nello stesso istante, reagisci tardi.
+La schermata sembra piena di informazioni, ma non va letta tutta insieme. L'ordine
+utile è questo: prima guarda dove sono [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
+[{{制圧|せいあつ}}](term:term-role-seiatsu) e
+[{{防衛|ぼうえい}}](term:term-role-bouei); poi individua quale
+[{{拠点|きょてん}}](term:term-base) o [{{戦艦|せんかん}}](term:term-warship) sta per
+subire pressione; solo dopo controlla i dettagli delle singole carte. Se
+cerchi di processarle tutte insieme, la lettura delle priorità tende a rallentare
+l'identificazione delle reali azioni urgenti.
 
 :::image
 src: assets/ui/battle-screen-reference.webp
@@ -118,21 +126,22 @@ astratte.
   specifica anche che mettere due difensori sullo stesso punto non aggiunge un
   secondo bonus di difesa.
 
-Per le prime partite, puoi usare questa scorciatoia mentale: il
+Nell'analisi della scena corrente, la relazione operativa di base è:
 [{{防衛|ぼうえい}}](term:term-role-bouei) rallenta il
 [{{制圧|せいあつ}}](term:term-role-seiatsu); il
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu) serve a togliere il
 [{{防衛|ぼうえい}}](term:term-role-bouei); il
 [{{制圧|せいあつ}}](term:term-role-seiatsu) punisce subito una corsia rimasta
-senza protezione. Non è tutta la profondità del gioco, ma è la griglia minima
-che ti permette di non perderti.
+senza protezione. È una relazione minimale usata in fase di lettura rapida
+dell'interfaccia.
 
 Le risorse che scandiscono il ritmo sono [コスト](term:term-cost) e
-[SPゲージ](term:term-sp-gauge). La prima cresce nel tempo e ti permette di far
+[SPゲージ](term:term-sp-gauge). La prima cresce nel tempo e permette di far
 uscire unità o usare abilità. La seconda cresce nel tempo e alimenta
-[{{戦術技|せんじゅつぎ}}](term:term-special-attack). Per questo non conviene
-spendere tutto appena si accende: prima chiediti se quella spesa cambia davvero
-la corsia che decide il prossimo obiettivo. In finale di partita, il
+[{{戦術技|せんじゅつぎ}}](term:term-special-attack). In base allo stato della
+mappa, la spesa di risorse si orienta in base a una domanda operativa: cambia
+l'orientamento della pressione immediata di un corridoio obiettivo?
+In finale di partita, il
 [クライマックスブースト](term:term-climax-boost) accelera il recupero del
 [コスト](term:term-cost). Ufficialmente entra quando il match arriva davvero in
 zona finale, per esempio con 60 secondi o meno, con una delle due
@@ -168,7 +177,8 @@ translation_it: >-
 
 ## Nota finale
 
-Se ti perdi, non chiederti per prima cosa quale carta è forte. Chiediti dove
-sono [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
+Nell'analisi finale del turno, priorità di verifica:
+[{{殲滅|せんめつ}}](term:term-role-shoumetsu),
 [{{制圧|せいあつ}}](term:term-role-seiatsu) e
-[{{防衛|ぼうえい}}](term:term-role-bouei), e quale obiettivo sta per cedere.
+[{{防衛|ぼうえい}}](term:term-role-bouei), più l'obiettivo vicino al punto di
+carenza più immediata.

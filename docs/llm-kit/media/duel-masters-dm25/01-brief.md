@@ -130,6 +130,12 @@ Regola di spiegazione obbligatoria:
   Masters;
 - se il nome carta e opaco, spiega almeno quale ruolo ricorrente segnala nel
   deck o quali componenti del nome conviene riconoscere.
+- il contenuto finale non deve parlare del batch, della lesson come oggetto,
+  della review o del recupero fonti; deve parlare direttamente di testo carta,
+  regole e decisioni di gioco.
+- quando spieghi un punto, la struttura preferita e: forma giapponese ->
+  significato letterale o tecnico -> effetto concreto nel gioco -> contrasto
+  con la lettura sbagliata piu probabile.
 
 ## Segmentazione consigliata
 

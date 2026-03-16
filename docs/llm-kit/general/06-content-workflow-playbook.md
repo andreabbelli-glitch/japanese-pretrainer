@@ -124,6 +124,9 @@ La richiesta deve esplicitare:
   `example_it`, con frase completa e contestuale utile sul retro review;
 - obbligo che ogni spiegazione chiarisca significato reale + effetto concreto
   nel media, non solo che l'elemento e "utile" o "importante";
+- obbligo che il contenuto finale non parli del proprio processo editoriale o
+  di studio ("questa lesson", "qui facciamo review", "per questo batch",
+  "conviene fissare");
 - eventuali priorita tra fonti ufficiali e fonti fan;
 - eventuali file reali da considerare come base da continuare, non da riscrivere
   liberamente.
@@ -236,6 +239,9 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
 
 - se una frase dice che un termine o un pattern e "utile", "importante" o "da
   fissare", verifica che spieghi subito che cosa significa davvero;
+- verifica che il testo finale non racconti il workflow editoriale o di studio
+  al posto del contenuto: niente "questa lesson", "per questo test", "cosa
+  mandare in review", "conviene mettere in review";
 - verifica che ogni `:::card` abbia `example_jp` e `example_it`, che
   `example_jp` sia una frase completa contestuale e che `example_it` traduca la
   stessa frase;

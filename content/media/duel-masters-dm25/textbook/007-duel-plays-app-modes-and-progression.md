@@ -10,17 +10,17 @@ status: active
 tags: [app, modes, events, progression, duel-plays]
 prerequisites: [lesson-duel-masters-dm25-duel-plays-app-decks-and-shop]
 summary: >-
-  Terza lezione `デュエプレ`: pannelli modalità, label di stato e passaggi che ti
-  aiutano a capire dove puoi giocare subito e che cosa è attivo, completato o
-  ancora bloccato.
+  Pannelli modalità, label di stato e conseguenze pratiche: capire se si può
+  entrare subito, se l'evento è attivo, se una reward è disponibile o se
+  qualcosa è ancora bloccato.
 ---
 
 # Obiettivo
 
-Questa lesson ti insegna a leggere le parti dell'app dove devi decidere *dove*
-giocare e *se* una modalità o una reward sono davvero disponibili.
+Usa questa scheda per leggere le aree dell'app dove si decide *dove*
+giocare e se una modalità o una reward sono davvero disponibili.
 
-Alla fine dovresti riuscire a:
+Usa questo percorso operativo per:
 
 - distinguere a colpo d'occhio le modalità principali;
 - capire che cosa ti dicono label come
@@ -28,14 +28,15 @@ Alla fine dovresti riuscire a:
   [{{解放|かいほう}}](term:term-unlock) o
   [{{達成|たっせい}}](term:term-achievement);
 - leggere i piccoli stati compatti senza perdere il senso del messaggio;
-- arrivare fino a [{{対戦開始|たいせんかいし}}](term:term-start-match) senza
-  tirare a indovinare.
+- arrivare a [{{対戦開始|たいせんかいし}}](term:term-start-match) solo quando la
+  condizione tecnica è corretta (modalità valida + stato coerente + reward
+  disponibile).
 
 ## Contesto
 
-Nel gioco reale non basta conoscere il lessico della home o dello shop. Devi
-anche capire se stai entrando in PvP, in una modalità solo, in un evento attivo
-o in un contenuto ancora bloccato.
+Nel gioco reale non basta conoscere il lessico della home o dello shop: serve
+stabilire subito se la schermata indica PvP, modalità single player, evento attivo
+o contenuto ancora bloccato.
 
 Qui il giapponese dell'app è molto compatto. Proprio per questo è utile: poche
 parole, ma tantissima informazione pratica.
@@ -75,7 +76,7 @@ caption: >-
   ma ingressi a flussi diversi.
 :::
 
-Quando scorri una schermata modalità, il tuo primo compito è classificare il
+Quando scorri una schermata modalità, il primo passo è classificare il
 contesto. In questo screenshot vedi bene tre pannelli PvP separati anche dal
 layout:
 
@@ -90,14 +91,14 @@ layout:
   [{{試練の塔|しれんのとう}}](term:term-tower-of-trials) = nomi di contenuti specifici
   dentro l'asse solo o evento.
 
-Imparare questi label non significa solo "sapere come si chiamano". Significa
-entrare nel posto giusto senza perdere tempo.
+Questi label non servono solo a nominare una voce: indicano direttamente il
+percorso corretto e riducono i tentativi fuori posto.
 
-La stessa logica vale anche fuori da questa schermata: quando più avanti vedi
+La stessa logica vale anche fuori da questa schermata: quando compaiono
 label come [ソロプレイ](term:term-solo-play),
 [クイック・ピック](term:term-quick-pick) o
-[レジェンドバトル](term:term-legend-battle), non stai leggendo "decorazioni".
-Stai leggendo la porta d'ingresso a un flusso preciso.
+[レジェンドバトル](term:term-legend-battle), non stai leggendo "decorazioni":
+stai leggendo la porta d'ingresso a un flusso preciso.
 
 ### 2. `{{開催中|かいさいちゅう}}`, `{{未|み}}〜`, `〜{{済|ず}}み`: tre stati che cambiano la tua decisione
 
@@ -109,9 +110,9 @@ Nelle UI di gioco le parole di stato contano tantissimo:
 - [～{{済|ず}}み](grammar:grammar-zumi) ti dice che una parte è già stata completata o
   riscossa.
 
-Qui il valore didattico non è astratto: questi pattern comprimono in pochissimi
-caratteri lo stato reale della schermata. Se li capisci, non stai solo
-"leggendo giapponese": stai decidendo se entrare, aspettare o riscuotere.
+Qui il valore pratico è diretto: questi pattern comprimono in pochissimi
+caratteri lo stato reale della schermata. Lo stato `{{開催中|かいさいちゅう}}`,
+`{{未|み}}〜`, `〜{{済|ず}}み` dicono subito se entrare, attendere o riscuotere.
 
 ### 3. `{{達成|たっせい}}` e `{{報酬|ほうしゅう}}` vanno lette insieme
 
@@ -143,7 +144,7 @@ Se leggi `{{未解放|みかいほう}}`, il senso pratico è già completo:
 [{{対戦開始|たいせんかいし}}](term:term-start-match) è il bottone che traduce
 tutte le letture precedenti in azione vera.
 
-Per arrivarci bene, il tuo ordine dovrebbe essere:
+Flusso pratico prima del click:
 
 1. riconosci la modalità;
 2. controlla lo stato (`{{開催中|かいさいちゅう}}`, `{{未|み}}〜`, `〜{{済|ず}}み`);
@@ -193,7 +194,7 @@ translation_it: >-
 
 - [{{達成|たっせい}}](term:term-achievement) = completamento.
 - [～{{済|ず}}み](grammar:grammar-zumi) = stato già concluso.
-- Questo tipo di label ti evita di controllare due volte contenuti già fatti.
+- Questo tipo di label evita di controllare due volte contenuti già conclusi.
 
 **Esempio 4**
 
@@ -205,12 +206,10 @@ translation_it: >-
 :::
 
 - È il bottone finale del flusso.
-- Se lo leggi con sicurezza, vuol dire che hai capito abbastanza giapponese da
-  usare davvero quella parte dell'app, non solo da riconoscerne il titolo.
+- È la conferma che la lettura modalità/stato/ricompensa è allineata prima
+  dell'azione finale.
 
 ## Nota finale
 
-Lo scopo di questa lesson è semplice: farti leggere le modalità di `デュエプレ`
-come segnali chiari, non come etichette vaghe. Quando succede, il giapponese ti
-aiuta direttamente a scegliere dove giocare, quando farlo e quando invece è il
-caso di aspettare, sbloccare o riscuotere altro.
+In pratica, se le label di stato e modalità sono lette correttamente, ogni schermata
+indica subito cosa fare: entrare, aspettare, sbloccare o riscuotere.

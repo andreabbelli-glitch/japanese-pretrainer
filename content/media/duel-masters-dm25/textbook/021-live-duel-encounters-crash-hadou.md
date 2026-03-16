@@ -10,28 +10,33 @@ status: active
 tags: [live-duel, extra-turn, beat-jockey, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Prima lesson della nuova sezione "carte incontrate in partita": partiamo da
-  `勝利龍装 クラッシュ“覇道”`, verifichiamo il nome su fonte ufficiale DMPS e
-  isoliamo il lessico e il parsing davvero nuovi che servono per leggere il
-  trigger del turno extra.
+  Leggiamo `勝利龍装 クラッシュ“覇道”` pezzo per pezzo: nome, razze, keyword e
+  trigger che aggiunge un turno extra se la creatura viene distrutta da
+  tappata.
 ---
 
 # Obiettivo
 
-Questa lesson inaugura una nuova sottosezione del textbook: carte che incontri
-mentre giochi, riconosciute dallo screenshot e poi ripulite in chiave studio.
+Qui impari a leggere
+[{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
+senza ritradurre ogni riga da zero.
 
-Qui il punto non e "tradurre tutto da zero", ma separare:
+In questa carta il lessico gia noto, come
+[{{破壊|はかい}}](term:term-destroy), [タップ](term:term-tap) e
+[W・ブレイカー](term:term-w-breaker), si combina con tre punti che cambiano
+davvero la lettura:
 
-- cio che il media ti ha gia insegnato;
-- cio che questa carta aggiunge davvero come nome, razze, keyword e parsing.
-
-Alla fine dovresti riconoscere subito:
-
-- il nome [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou);
-- il blocco tecnico `タップ{{状態|じょうたい}}で{{破壊|はかい}}された{{時|とき}}`;
-- la finestra `このターンの{{後|あと}}に`, cioe il punto in cui si inserisce il
+- il composto [タップ{{状態|じょうたい}}](term:term-tap-state);
+- il trigger passivo [～された{{時|とき}}](grammar:grammar-sareta-toki);
+- la finestra [～の{{後|あと}}に](grammar:grammar-no-ato-ni), che qui produce un
   turno extra.
+
+Alla fine saprai:
+
+- riconoscere il nome
+  [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou);
+- leggere il blocco `タップ{{状態|じょうたい}}で{{破壊|はかい}}された{{時|とき}}`;
+- capire perche `このターンの{{後|あと}}に` inserisce subito un tuo turno extra.
 
 ## Contesto
 
@@ -40,10 +45,11 @@ Dallo screenshot la carta identificata e
 creatura di [ドラゴンギルド](term:term-dragonguild) /
 [ビートジョッキー](term:term-beat-jockey), fuoco, costo 10, potere `9000+`.
 
-Per questo primo test la verifica ufficiale e stata fatta sul card list di
-`DUEL MASTERS PLAY'S` e sulla FAQ ufficiale che usa proprio il caso del turno
-extra di `クラッシュ“覇道”`. Per le keyword di gioco, in piu, conviene usare
-anche i tooltip ufficiali del card list DMPS.
+La carta concentra tre livelli diversi:
+
+- un nome proprio molto carico, che va riconosciuto come etichetta unica;
+- una riga di razze che colloca la carta dentro famiglie precise;
+- un trigger che parla di distruzione, stato tapped e ordine dei turni.
 
 ## Termini chiave
 
@@ -91,10 +97,30 @@ translation_it: >-
   Durante il battle, questa creatura prende +5000 potere.
 :::
 
-### 2. Keyword ufficiali da recuperare
+### 2. Nome e razze
 
-Per keyword di gioco come `B・A・D 2`, non basta leggere il nome sulla carta:
-va recuperata anche la spiegazione ufficiale del database.
+Nel nome
+[{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
+la parte meccanicamente importante e riconoscere l'etichetta completa; pero il
+giapponese del nome dice comunque qualcosa.
+
+- `{{勝利|しょうり}}` vuol dire "vittoria".
+- `{{龍装|りゅうそう}}` contiene `{{龍|りゅう}}`, "drago", e `{{装|そう}}`,
+  "equipaggiare / armare": in un nome proprio suona come un titolo enfatico
+  legato ai draghi, non come una keyword di rules text.
+- `クラッシュ` e katakana inglese: "crash", quindi impatto distruttivo.
+- `{{覇道|はどう}}` vuol dire letteralmente "via del dominio / dell'egemonia",
+  con tono da finisher o boss card.
+
+Questo ti aiuta a separare subito due piani:
+
+- il nome della carta, che va letto come nome proprio;
+- la riga `種族`, dove
+  [ドラゴンギルド](term:term-dragonguild) e
+  [ビートジョッキー](term:term-beat-jockey) sono invece categorie di gioco che
+  possono contare per sinergie e riferimenti di razza.
+
+### 3. Come leggere le keyword
 
 :::example_sentence
 jp: >-
@@ -107,10 +133,15 @@ translation_it: >-
   indicato. Se lo fai, alla fine di questo turno distruggi questa creatura.
 :::
 
-Qui la fonte ufficiale DMPS definisce `B・A・D` in forma generale; su
-`[B・A・D 2](term:term-b-a-d-two)` il `2` specifica il numero della riduzione.
-Questa ultima parte e quindi un'inferenza diretta dalla keyword numerata sulla
-carta.
+La prima riga della carta e un blocco di keyword aggressive:
+
+- [B・A・D 2](term:term-b-a-d-two) ti dice che puoi farla scendere con costo
+  ridotto di `2`, ma poi la carta si autodistrugge a fine turno se hai usato
+  quella riduzione.
+- [スピードアタッカー](term:term-speed-attacker) vuol dire che puo attaccare
+  subito nel turno in cui entra.
+- [W・ブレイカー](term:term-w-breaker) vuol dire che quando rompe gli scudi ne
+  rompe `2`.
 
 :::example_sentence
 jp: >-
@@ -128,28 +159,28 @@ translation_it: >-
   W-Breaker: rompe 2 scudi.
 :::
 
-### 3. Dove sta davvero la novita
+Su una carta cosi queste keyword spiegano il piano di gioco: entra in fretta,
+puo attaccare subito, rompe due scudi e, se muore tappata, lascia dietro di se
+un altro turno.
 
-Qui molte parole-base le hai gia:
+### 4. Dove cambia davvero la lettura
+
+Molte parole-base qui sono gia note:
 [{{破壊|はかい}}](term:term-destroy),
 [タップ](term:term-tap),
 [W・ブレイカー](term:term-w-breaker),
 [パワー](term:term-power).
 
-La novita vera e il blocco completo:
+La parte nuova sta nel blocco completo:
 
 - `タップ{{状態|じょうたい}}` aggiunge l'idea di stato, non solo l'azione di
-  tap;
+  tap: la carta deve essere gia tappata quando il gioco controlla la condizione;
 - `～された{{時|とき}}` sposta il trigger in passivo: non "quando distruggi",
   ma "quando viene distrutta";
 - `このターンの{{後|あと}}に` non vuol dire genericamente "piu tardi": inserisce
   un turno extra subito dopo quello corrente.
 
-Per questo motivo, qui la flashcard su [B・A・D 2](term:term-b-a-d-two) resta
-utile: la keyword non e solo da riconoscere, ma da associare subito al suo
-testo ufficiale abbreviato.
-
-### 4. Parsing del trigger principale
+### 5. Parsing del trigger principale
 
 Leggilo in tre pezzi fissi:
 
@@ -160,25 +191,36 @@ Leggilo in tre pezzi fissi:
 3. `このターンの{{後|あと}}に{{自分|じぶん}}のターンを{{追加|ついか}}する`
    `= dopo il turno attuale ne ottieni subito un altro`.
 
-Questo e il vero blocco da rendere automatico, perche la FAQ ufficiale DMPS
-usa proprio questo trigger come caso regolistico reale.
+Il punto importante di gioco e la seconda riga: se la creatura viene distrutta
+ma non era tappata, il turno extra non parte. Il trigger non chiede soltanto
+"muore?"; chiede "muore mentre si trova gia in stato tapped?".
 
-### 5. Come leggere l'ultima riga
+### 6. Come leggere l'ultima riga
 
 `[バトル](term:term-battle)[{{中|ちゅう}}](grammar:grammar-ui-chuu)` va letto come
 finestra di combattimento, non come semplice "mentre attacca". La riga quindi
 non parla di ingresso o di fine turno: ti dice che nello scontro questa
 creatura sale a `+5000`.
 
-### 6. Cosa mandare in review
+### 7. Riepilogo operativo
 
-Per questa carta conviene mettere in review:
+Su questa carta vale la pena tenere insieme quattro cose:
 
-- il nome completo, cosi lo riconosci subito in partita;
-- le due razze nuove, [ドラゴンギルド](term:term-dragonguild) e
+- il nome completo
+  [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou),
+  che funziona come etichetta unica della carta;
+- le due razze
+  [ドラゴンギルド](term:term-dragonguild) e
   [ビートジョッキー](term:term-beat-jockey);
-- le keyword [B・A・D 2](term:term-b-a-d-two) e
-  [スピードアタッカー](term:term-speed-attacker);
-- i due blocchi di parsing che qui fanno davvero la differenza:
+- il pacchetto aggressivo di keyword:
+  [B・A・D 2](term:term-b-a-d-two),
+  [スピードアタッカー](term:term-speed-attacker) e
+  [W・ブレイカー](term:term-w-breaker);
+- i due blocchi di parsing che decidono l'effetto:
   [～された{{時|とき}}](grammar:grammar-sareta-toki) e
   [～の{{後|あと}}に](grammar:grammar-no-ato-ni).
+
+Se questi quattro pezzi sono chiari, il testo della carta smette di sembrare un
+insieme di keyword sparse e diventa una sequenza molto netta: entra in fretta,
+attacca subito, spinge sugli scudi e, se viene abbattuta da tappata, ti lascia
+un turno extra.

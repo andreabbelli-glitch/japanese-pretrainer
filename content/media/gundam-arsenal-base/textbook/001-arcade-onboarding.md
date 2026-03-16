@@ -16,10 +16,10 @@ summary: >-
 
 # Obiettivo
 
-In questa lesson impari a orientarti davanti al cabinato di Arsenal Base senza
-confondere oggetti fisici, dati del profilo e carte del gioco. Il punto non è
-ancora vincere bene una partita: è capire che cosa devi toccare, dove devi
-mettere le carte e quale passaggio arriva dopo.
+Orientati davanti al cabinato di Arsenal Base senza confondere oggetti fisici,
+dati del profilo e carte del gioco. Qui non si tratta ancora di ottimizzare la
+partita: serve mappare rapidamente cosa toccare, dove inserire le carte e quale
+passaggio segue.
 
 ## Contesto
 
@@ -53,19 +53,20 @@ servizi collegati fuori dalla sala giochi.
 
 ## Spiegazione
 
-Per non confonderti, separa subito tre livelli diversi. L'[アミューズメントICカード](term:term-amusement-ic-card)
+Per separare chiaramente i passaggi, usa subito tre livelli distinti.
+L'[アミューズメントICカード](term:term-amusement-ic-card)
 serve a identificare il tuo profilo al cabinato e a salvare i dati. Le carte di
 gioco, cioè [MSカード](term:term-ms-card) e [PLカード](term:term-pl-card),
 servono invece a costruire il tuo [デッキ](term:term-deck). [MY PAGE](term:term-mypage)
 non sostituisce la tessera fisica: è il servizio web che legge i dati già
 salvati dalla tessera registrata.
 
-La logica pratica è questa. La tessera IC viene usata davanti alla macchina.
+La tessera IC viene usata davanti alla macchina.
 L'account Bandai Namco ID serve per collegare quella tessera al servizio web.
 [MY PAGE](term:term-mypage) ti permette poi di controllare profilo, missioni,
 [{{戦績|せんせき}}](term:term-battle-record) e livelli fuori dalla sessione
 arcade. Se confondi questi tre livelli,
-finisci per cercare sul sito una funzione che in realtà richiede ancora la
+ti ritrovi a cercare sul sito una funzione che in realtà richiede ancora la
 tessera fisica.
 
 I componenti del cabinato hanno funzioni molto precise.
@@ -92,7 +93,7 @@ caption: >-
 - [{{カード取り出し口|かーどとりだしぐち}}](term:term-card-outlet): è
   l'uscita da cui ritiri le carte erogate dalla macchina.
 
-Il flusso minimo di una prima sessione può essere letto così.
+La sequenza minimale di una prima sessione è:
 
 1. Tocchi l'[アミューズメントICカード](term:term-amusement-ic-card) al
    [カードリーダー](term:term-card-reader) per
@@ -111,10 +112,9 @@ Il flusso minimo di una prima sessione può essere letto così.
    [{{カード取り出し口|かーどとりだしぐち}}](term:term-card-outlet), perché
    le carte fisiche nuove escono da lì.
 
-Per le primissime prove c'è un dettaglio utile: il gioco può partire anche
-senza avere già una collezione completa. Però, dal punto di vista didattico, uno
-[スターターデッキ](term:term-starter-deck) rende molto più leggibile la logica
-MS + PL, perché ti fa vedere subito una struttura completa di [デッキ](term:term-deck)
+Dettaglio utile: il gioco può partire anche senza una collezione completa.
+Un [スターターデッキ](term:term-starter-deck) rende comunque più leggibile la logica
+MS + PL, perché mostra subito una struttura completa di [デッキ](term:term-deck)
 senza buchi.
 
 ## Esempi guidati

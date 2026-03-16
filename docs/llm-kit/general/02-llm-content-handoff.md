@@ -266,7 +266,7 @@ Esempio corretto:
 
 ```md
 notes_it: >-
-  Lettura da fissare: {{山札|やまふだ}}.
+  {{山札|やまふだ}} vuol dire deck; nelle carte indica il mazzo da cui peschi.
 ```
 
 ### 7.2 Regola operativa sulla qualita esplicativa
@@ -295,6 +295,26 @@ Forme consigliate:
   composto intero indica la schermata in cui costruisci la lista.
 - `または` vuol dire "oppure", ma nelle carte collega due categorie che valgono
   entrambe per lo stesso filtro.
+
+### 7.3 Regola anti-meta-editoriale
+
+Il contenuto finale non deve descrivere il proprio processo editoriale o il
+workflow di studio.
+
+Evita quindi formule come:
+
+- "questa lesson";
+- "qui il punto e";
+- "conviene fissare / mettere in review";
+- "per questo batch / per questo test";
+- "la fonte ufficiale dice..." come intera spiegazione.
+
+Se una fonte ufficiale serve, usala per confermare un testo o una regola, ma
+fai emergere nel contenuto finale soprattutto:
+
+- il significato del giapponese;
+- l'effetto concreto nel gioco / nell'interfaccia;
+- il contrasto con letture sbagliate o troppo vaghe.
 
 ## 8. Prompt template consigliato
 
@@ -326,6 +346,12 @@ Vincoli obbligatori:
 - Non scrivere spiegazioni tautologiche del tipo "X e utile/importante":
   ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa
   capire o fare nel media.
+- Non scrivere meta-discorso nel contenuto finale: niente "questa lesson",
+  "qui facciamo review", "per questo batch", "conviene fissare" o "verifica
+  ufficiale" come contenuto principale della spiegazione.
+- Quando spieghi un punto, preferisci questa sequenza: forma giapponese ->
+  significato letterale o tecnico -> effetto concreto nel gioco /
+  nell'interfaccia -> contrasto con la lettura sbagliata piu probabile.
 - Per nomi propri poco trasparenti, spiega almeno quale ruolo ricorrente
   segnalano o quali componenti del nome vale la pena riconoscere.
 - Mantieni stabili gli ID esistenti.

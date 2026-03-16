@@ -10,35 +10,35 @@ status: active
 tags: [deck, abyss, graveyard, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Lezione verticale sullo starter deck `DM25-SD1 技の王道`: selezione guidata
-  delle carte che meritano davvero un'immagine, spiegazione immediata del
-  giapponese nuovo e focus solo sulle espressioni davvero nuove rispetto al
-  corpus base.
+  Lezione pratica sullo starter deck `DM25-SD1 技の王道`: spiegazione diretta
+  del testo in giapponese legato al piano Abyss, con enfasi su [墓地](term:term-graveyard),
+  [コスト](term:term-cost) e keyword che guidano la sequenza di gioco.
 ---
 
 # Obiettivo
 
-Questa lesson prende `DM25-SD1 技の王道` come corpus vero, non come semplice
-lista deck. Partiamo solo dalle carte che meritano davvero una sosta visiva e
-poi filtriamo il resto in base a una domanda molto pratica:
+Questa lesson analizza `DM25-SD1 技の王道` come esempio operativo di
+sequenza Abyss: dal cimitero alle riattivazioni, fino alla pressione in attacco.
+Il focus è sulla lettura del testo: come ogni riga traduce il suo effetto in
+gameplay.
 
-> quale giapponese mi insegna qualcosa che non avevo ancora fissato?
+> come si legge rapidamente questa riga per capire subito quale vantaggio genera?
 
 Alla fine dovresti riconoscere:
 
 - perché il mazzo ruota attorno a [墓地](term:term-graveyard) e
   [アビス](term:term-abyss);
-- quali carte aggiungono davvero lessico o sintassi nuovi;
-- come leggere in fretta keyword di deck come
+- quali pattern ricorrono sempre nel piano di gioco;
+- come leggere in fretta keyword come
   [アビスラッシュ](term:term-abyss-rush) e
   [シビルカウント](term:term-civil-count);
-- come distinguere tra carte che insegnano qualcosa di nuovo e carte che
-  servono soprattutto a consolidare pattern già studiati.
+- come distinguere le righe che costruiscono la sequenza principale da quelle di
+  supporto.
 
 ## Contesto
 
-`DM25-SD1 技の王道` è il deck d'ingresso dell'asse Abyss. Come corpus didattico
-funziona bene perché concentra in un solo mazzo tre famiglie di linguaggio che
+`DM25-SD1 技の王道` è il deck d'ingresso dell'asse Abyss. Funziona bene perché
+concentra in un solo mazzo tre famiglie di linguaggio che
 poi tornano insieme nelle carte reali:
 
 - movimento verso e dal [墓地](term:term-graveyard);
@@ -90,12 +90,21 @@ Su `DM25-SD1` questo significa soprattutto leggere bene coppie come
 `{{墓地|ぼち}} -> {{出|だ}}す`, `コスト{{4以下|よんいか}}` e
 `アビス / アビスロイヤル`.
 
-### 2. Le carte che meritano davvero un'immagine
+### 2. Carte chiave per leggere il piano Abyss
 
-Qui teniamo solo le carte che introducono giapponese nuovo. Sotto ogni immagine
-trovi subito il frammento che vale la sosta e i due o tre punti da fissare.
+Qui troviamo le carte che espongono direttamente i nodi di gioco principali: uscite
+dal campo, recupero dal cimitero, costi di attivazione e variazioni della
+finestra di attacco.
 
 #### 2.1 アビスベル=ジャシン帝
+
+:::image
+src: assets/cards/abyssbell-jashintei.webp
+alt: "Carta di アビスベル=ジャシンてい centrata e leggibile."
+card_id: card-abyssbell-jashintei-recognition
+caption: >-
+  Immagine ufficiale di [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei), carta-ancora del deck `DM25-SD1`.
+:::
 
 :::image
 src: assets/cards/dm25-sd1/02-abyssbell-jashin-emperor.webp
@@ -103,7 +112,8 @@ alt: Carta 2 del mazzo DM25-SD1, creatura centrale del pacchetto Abyss.
 card_id: card-abyssbell-jashintei-recognition
 caption: >-
   `DM25-SD1 2/13`: [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei)。
-  Carta-studio per [アビスラッシュ](term:term-abyss-rush) e `かわりに`.
+  [アビスラッシュ](term:term-abyss-rush) + `かわりに` mostrano come un'uscita
+  gestisce una carta della mano in cambio.
 :::
 
 Qui il punto è leggere insieme la keyword e la logica di sostituzione.
@@ -132,7 +142,7 @@ src: assets/cards/dm25-sd1/05-ragnarok-the-clock.webp
 alt: Carta 5 del mazzo DM25-SD1, figura meccanica del The Clock.
 caption: >-
   `DM25-SD1 5/13`: {{終末|しゅうまつ}}の{{時計|とけい}} ザ・クロック。
-  Carta-studio per il verbo [とばす](term:term-tobasu).
+  La riga fissa il significato operativo di [とばす](term:term-tobasu) sul turno.
 :::
 
 Qui basta una frase cortissima, ma va letta bene.
@@ -159,8 +169,8 @@ alt: >-
   「…あけるか？」 con arte viola e dorata.
 caption: >-
   `DM25-SD1 6/13`: ドアノッカ＝ノアドッカ / 「…{{開|あ}}けるか？」。
-  Carta-studio, lato creatura, per
-  [～を{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau).
+  Il testo espone il costrutto [～を{{2回|にかい}}{{行|おこな}}う] per
+  applicare due volte la stessa riduzione.
 :::
 
 La novità utile qui è una formula di rules text che Duel Masters usa spesso.
@@ -183,11 +193,13 @@ translation_it: >-
 src: assets/cards/dm25-sd1/07-cobra-snake-ninja-holy-chaos.webp
 alt: Carta 7 del mazzo DM25-SD1, creatura serpente Cobra.
 caption: >-
-  `DM25-SD1 7/13`: **Cobra, Snake Ninja Holy Chaos**. Carta-studio per
-  [{{攻撃先|こうげきさき}}](term:term-attack-target) e `{{変更|へんこう}}する`.
+  `DM25-SD1 7/13`: **Cobra, Snake Ninja Holy Chaos**.
+  Qui compare [{{攻撃先|こうげきさき}}](term:term-attack-target) e
+  `{{変更|へんこう}}する` nel contesto di attacco dopo un recupero.
 :::
 
-Questa è la carta più utile del deck per il lessico dell'attacco.
+In questa carta, l'attacco entra in gioco dopo il recupero e cambia
+il bersaglio quando recuperi una creatura dal cimitero.
 
 :::example_sentence
 jp: >-
@@ -206,10 +218,10 @@ translation_it: >-
 - `そうしたら` ti dice che il cambio del bersaglio dipende davvero
   dall'azione appena fatta.
 
-### 3. La keyword nuova senza immagine: シビルカウント
+### 3. Soglia e attivazione: シビルカウント
 
-Nel deck c'è anche un'altra keyword da fissare subito, anche senza carta in
-vetrina: [シビルカウント](term:term-civil-count).
+Nel deck questa keyword chiude il controllo quantitativo prima di un'azione:
+[シビルカウント](term:term-civil-count).
 
 :::example_sentence
 jp: >-
@@ -228,19 +240,29 @@ translation_it: >-
 - Dopo aver letto `シビルカウント3`, la prima domanda da farti è: **che cosa si
   somma?**
 
-### 4. Il resto del mazzo serve soprattutto a consolidare
+### 4. Le carte di supporto al piano di gioco
 
-Queste carte restano utili, ma più come ripasso che come lessico nuovo:
+:::image
+src: assets/cards/jablood.webp
+alt: "Carta di ジャブラッド con epiteto じゃりゅう, centrata e leggibile."
+card_id: card-jablood-recognition
+caption: >-
+  Immagine ufficiale di {{邪龍|じゃりゅう}} [ジャブラッド](term:term-jablood), altro nome-ancora ricorrente del deck `DM25-SD1`.
+:::
 
-- **Madan = Low, Abyssal Furnace** e [邪侵入](term:term-jashinnyuu):
+Queste carte applicano la stessa architettura di testo in varianti più specifiche:
+
+- **Madan = Low, Abyssal Furnace** e [邪侵入](term:term-jashinnyuu) chiudono
+  il ciclo:
   `{{墓地|ぼち}}に{{置|お}}く -> その{{後|あと}} -> {{出|だ}}す`.
-- ブルーム=プルーフ, フォーク=フォック e ルピア{{炎鬼|えんき}}:
+- ブルーム=プルーフ, フォーク=フォック e ルピア{{炎鬼|えんき}} regolano
+  esplicitamente la condizione:
   `{{召喚|しょうかん}}{{以外|いがい}}`.
-- サーイ=サイクル:
+- サーイ=サイクル limita:
   `ただし、その「S・トリガー」は{{使|つか}}えない。`
-- ハンマ=ダンマ: conteggio delle carte macinate collegato a un effetto.
-- [ジャブラッド](term:term-jablood): nome-ancora importante del deck, ma senza
-  una struttura nuova da studiare qui.
+- ハンマ=ダンマ lega il conteggio delle carte macinate a un effetto.
+- [ジャブラッド](term:term-jablood): nome-ancora del mazzo, utile per leggere il
+  blocco di riferimento dell'Asse Abyss.
 
 ### 5. Cosa cercare a colpo d'occhio quando scorri il deck
 
@@ -258,7 +280,8 @@ Se vuoi leggere `DM25-SD1` in fretta, cerca prima questi segnali:
 
 ## Nota finale
 
-`DM25-SD1` funziona bene come mazzo-scuola perché il grosso del lessico gira
-attorno a pochi assi molto leggibili: cimitero, filtri di costo e keyword
-compatte. Se separi bene questi tre livelli, il deck smette di sembrare denso e
-diventa molto più leggibile.
+`DM25-SD1` concentra gran parte del lessico attorno a pochi assi leggibili:
+cimitero, filtri di costo e keyword compatte. Quando questi tre livelli restano
+separati nel parsing, anche il deck diventa più facile da leggere.
+
+

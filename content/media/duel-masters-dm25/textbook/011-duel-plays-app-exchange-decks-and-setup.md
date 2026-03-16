@@ -17,11 +17,10 @@ summary: >-
 
 # Obiettivo
 
-Questa lesson collega tre zone dell'app che spesso vengono percepite come
-separate ma in realtà fanno parte dello stesso lavoro: prepararti a giocare con
-il mazzo giusto e le risorse giuste.
+L'obiettivo delle schermate in questo argomento è un flusso operativo unico:
+controllare exchange, risorse e deck prima del match.
 
-Alla fine dovresti riuscire a:
+Al termine controlli che puoi:
 
 - leggere bene una schermata exchange senza confondere prezzo, finestra attiva e
   numero di scambi residui;
@@ -30,15 +29,13 @@ Alla fine dovresti riuscire a:
 
 ## Contesto
 
-Qui la UI di `デュエプレ` cambia tono: meno claim immediato, più preparazione.
-
-Le domande che la schermata ti sta facendo sono di questo tipo:
+Qui devi controllare se sono soddisfatti questi punti operativi:
 
 - puoi ancora scambiare questa carta o il periodo è finito?
 - ti manca la risorsa o stai solo guardando il menu sbagliato?
 - il deck che stai per usare è prebuilt, rental o già selezionato?
 
-Leggere bene questi label ti evita due errori tipici:
+Leggere correttamente label e indicatori evita:
 
 - entrare in un flusso giusto con la risorsa sbagliata;
 - arrivare troppo tardi al bottone [{{対戦開始|たいせんかいし}}](term:term-start-match)
@@ -85,8 +82,8 @@ caption: >-
 :::
 
 In [カード{{交換|こうかん}}](term:term-card-exchange) la carta in evidenza non è
-mai l'unica cosa da leggere. Prima della singola riga conviene leggere la
-struttura della schermata:
+mai l'unica cosa da leggere. Prima della riga della carta leggi la struttura
+della schermata:
 
 - i tab superiori, come `プライズカード交換` e `アークカード交換`, che ti dicono
   quale famiglia di risorse o oggetti stai usando;
@@ -101,9 +98,8 @@ I label decisivi sono intorno:
 - `あと4回{{交換可能|こうかんかのう}}!` = quante volte puoi ancora completare
   l'operazione.
 
-Il punto pratico è questo: la schermata ti sta dicendo contemporaneamente
-*tempo*, *stock* e *possibilità residua*. Se ne leggi solo uno, perdi il senso
-operativo dell'interfaccia.
+La schermata comunica insieme *tempo*, *stock* e *possibilità residua*. Se ne
+leggi solo uno, perdi il senso operativo dell'interfaccia.
 
 ### 2. I popup di risorsa insufficiente spiegano anche la via di recupero
 
@@ -117,7 +113,7 @@ caption: >-
   e propone subito il flusso di recupero (`カード{{分解|ぶんかい}}しますか？`).
 :::
 
-Questo popup è molto istruttivo perché non si ferma a
+Questo popup non si limita a segnalare
 [{{不足|ふそく}}](term:term-shortage) "manca".
 Ti dice anche quale passaggio successivo è sensato.
 
@@ -128,8 +124,9 @@ La logica è:
 - puoi passare a [{{分解|ぶんかい}}](term:term-disenchant) per recuperare la
   risorsa necessaria.
 
-Qui l'app è molto onesta: non ti sta dicendo che la carta non esiste o che lo
-scambio è chiuso. Ti sta dicendo che *il blocco attuale è la valuta*.
+Il messaggio indica un blocco operativo: non hai abbastanza
+[{{DMポイント|でぃーえむぽいんと}}](term:term-dm-points) per completare
+l'azione.
 
 ### 3. I deck prebuilt si leggono tra periodo di vendita e bonus inclusi
 
@@ -146,7 +143,7 @@ caption: >-
 :::
 
 [{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase)
-è un composto molto ricco:
+è composto da:
 
 - [{{構築済み|こうちくずみ}}](term:term-prebuilt) = deck già preparato /
   prebuilt;
@@ -158,8 +155,8 @@ La schermata aggiunge due elementi molto tipici della UI shop:
 - [{{販売期間|はんばいきかん}}](term:term-sale-period) = finestra di vendita;
 - `{{特典|とくてん}}プレイマット/プロテクト` = bonus inclusi.
 
-Questo vuol dire che non stai leggendo solo "quale deck è disponibile", ma
-anche *fino a quando* e *con quali extra*.
+La lettura include anche *fino a quando* il prodotto è disponibile e *quali extra*
+accompagnano l'acquisto.
 
 ### 4. La deck list collega scelta, preview e avvio della partita
 
@@ -190,19 +187,17 @@ schermata: non stai solo editando una lista tua, stai scegliendo un mazzo già
 fornito dal gioco.
 
 [レジェンドスキル](term:term-legend-skill) e [キーカード](term:term-key-card)
-sono ottimi esempi di label che non vanno tradotti in modo scolastico. Vanno
-letti come "questo pulsante mi fa capire il carattere del deck" o "questo
-pannello mi mostra subito la carta-ancora da riconoscere".
+sono label operative: mostrano rispettivamente controllo avanzato del mazzo e
+identità rapida del deck.
 
-Vale la pena separare bene anche i pulsanti:
+Classifica i pulsanti per funzione:
 
 - `デッキ[{{概要|がいよう}}](term:term-overview)` e
   `デッキ{{確認|かくにん}}` = ispezioni;
 - `デッキ{{編成|へんせい}}` = modifichi;
 - [{{対戦開始|たいせんかいし}}](term:term-start-match) = parti davvero.
 
-Questa distinzione ti evita un errore tipico: vedere tanti pulsanti vicino al
-deck e trattarli come varianti dello stesso "apri il mazzo".
+Così eviti di trattare pulsanti diversi come varianti dello stesso flusso.
 
 ## Esempi guidati
 

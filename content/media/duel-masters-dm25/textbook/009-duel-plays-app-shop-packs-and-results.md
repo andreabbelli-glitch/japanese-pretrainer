@@ -17,7 +17,7 @@ summary: >-
 
 # Obiettivo
 
-Questa lesson ti allena a leggere il flusso che va dall'ingresso nello shop
+Questo contenuto descrive il flusso che va dall'ingresso nello shop
 fino al risultato finale dell'apertura pack.
 
 Alla fine dovresti riuscire a:
@@ -76,8 +76,8 @@ caption: >-
   exchange: capire il pannello giusto evita di entrare nel flusso sbagliato.
 :::
 
-Questa schermata è un ottimo promemoria del fatto che nello shop non esiste un
-solo verbo "ottenere".
+In questa schermata lo shop separa i tipi di acquisizione: non si tratta di un
+unico verbo "ottenere", ma di flussi diversi.
 
 I quattro pannelli principali ti portano verso flussi diversi:
 
@@ -90,14 +90,14 @@ I quattro pannelli principali ti portano verso flussi diversi:
 - [カード{{交換|こうかん}}](term:term-card-exchange) = apri lo scambio con
   risorse dedicate.
 
-Questa classificazione iniziale è già metà del lavoro di lettura. Se capisci il
+La classificazione iniziale indica subito quale percorso prendere. Se capisci il
 nome del pannello, capisci anche quale tipo di decisione ti aspetta.
 
-La distinzione più utile da fissare qui è questa:
+I due ingressi principali nello shop sono:
 
-- [カード{{購入|こうにゅう}}](term:term-card-purchase) = lato shop più ampio;
-- [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) = flusso
-  specifico delle buste.
+- [カード{{購入|こうにゅう}}](term:term-card-purchase) = percorso acquisto generale;
+- [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) = percorso
+  specifico per l'apertura pack.
 
 ### 2. La schermata principale dei pack va letta come un menu di risorse
 
@@ -122,9 +122,8 @@ come tabella di accesso:
 - quanti [{{所持チケット|しょじちけっと}}](term:term-owned-ticket) hai;
 - dove puoi aprire `カード{{一覧|いちらん}}` o `{{提供割合|ていきょうわりあい}}`.
 
-In altre parole, il layout ti sta già dicendo se la tua strada è gemme, oro o
-ticket. Questo è uno dei punti in cui leggere bene la UI ti impedisce un errore
-pratico immediato.
+In altre parole, il layout ti dice se stai usando gemme, oro o ticket e ti evita
+errori di acquisto.
 
 Qui è utile separare anche i bottoni per funzione:
 
@@ -161,7 +160,7 @@ precisione una quantità.
 La frase in alto ti aiuta a non perdere il focus: stai usando ticket per
 comprare pack, non solo guardando un logo o un'illustrazione.
 
-### 4. Il popup conferma formula l'azione come frase completa
+### 4. Il popup conferma imposta quantità, risorsa e acquisto in una riga
 
 :::image
 src: assets/ui/card-pack-purchase-confirm.png
@@ -173,8 +172,7 @@ caption: >-
   mentre la riga in basso ti fa controllare la risorsa consumata.
 :::
 
-Il popup di conferma è un ottimo mini-esercizio di lettura funzionale, perché
-condensa tutta l'azione in una sola frase:
+Il popup di conferma riassume i dati chiave dell'operazione in una riga:
 
 - quante unità stai spendendo;
 - quale risorsa stai usando;
@@ -187,10 +185,9 @@ Quando leggi `{{4枚|よんまい}}を{{使用|しよう}}して...{{購入|こ�
 la schermata ti sta chiedendo un consenso operativo completo, non una semplice
 conferma generica.
 
-Questa è una distinzione molto utile: `{{使用|しよう}}` è il lato risorsa,
-[{{購入|こうにゅう}}](term:term-purchase) è il lato risultato. Se li leggi
-insieme, capisci sia che
-cosa perdi sia che cosa ottieni.
+`{{使用|しよう}}` descrive la risorsa che si consuma,
+[{{購入|こうにゅう}}](term:term-purchase) descrive il risultato atteso.
+Insieme indicano cosa esce dallo stock e cosa entra nel risultato.
 
 ### 5. I risultati alternano reveal spettacolare e lista leggibile
 
@@ -221,10 +218,10 @@ Queste due schermate fanno due lavori diversi:
 - `{{獲得|かくとく}}`カード{{一覧|いちらん}} serve a verificare davvero che cosa
   hai ottenuto.
 
-Per il tuo obiettivo di lettura, la seconda schermata è spesso più importante.
-Il bello della prima non va scambiato per informazione strutturata: se vuoi
-leggere la UI bene, devi saper passare dal momento spettacolare alla lista
-ordinabile.
+La riga `{{獲得|かくとく}}カード{{一覧|いちらん}}` è quella da usare per
+verificare l'esito reale con filtri e confronto diretto.
+Il reveal serve a mostrare l'apertura, mentre la lista finale conferma in modo
+contabile il contenuto ricevuto.
 
 ## Esempi guidati
 
@@ -283,6 +280,6 @@ translation_it: >-
 
 ## Nota finale
 
-Se questa lesson funziona, quando apri un pack non leggi più soltanto "pack
-bello / popup / ok". Leggi il flusso completo: entrata nello shop, risorsa
-consumata, conferma e controllo reale del risultato.
+Quando apri un pack, segui sempre lo stesso controllo: entrata nello shop, risorsa
+consumata, conferma esplicita e verifica finale del risultato nella lista
+`{{獲得|かくとく}}カード{{一覧|いちらん}}`.

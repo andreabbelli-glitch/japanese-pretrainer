@@ -25,6 +25,12 @@ Regola didattica importante:
   capire o fare in Duel Masters.
 - Se un nome carta e poco trasparente, spiega almeno quale ruolo ricorrente
   segnala nel mazzo o quali componenti del nome conviene riconoscere.
+- Nel contenuto finale non parlare del batch, della lesson come oggetto, della
+  review, del recupero fonti o del fatto che qualcosa "conviene fissare":
+  spiega direttamente il giapponese e il suo effetto di gioco.
+- Quando spieghi un punto, preferisci questa sequenza: forma giapponese ->
+  significato letterale o tecnico -> effetto concreto nel gioco -> contrasto
+  con la lettura sbagliata piu probabile.
 
 Obiettivo di questo batch:
 Creare solo il seed core del media. In questo batch non devi produrre lesson
@@ -59,6 +65,9 @@ Vincoli di formato obbligatori:
 - Non scrivere `notes_it` o paragrafi textbook che si fermano a "X e utile da
   fissare": devi sempre esplicitare significato reale + effetto pratico nel
   media.
+- Non usare nel contenuto finale formule meta come "questa lesson",
+  "qui il punto e", "per questo test", "cosa mandare in review" o
+  "conviene mettere in review".
 - Mantieni stabili gli ID.
 - Se una entry nuova e importante per glossary/review, dichiarala esplicitamente
   con un blocco `:::term` o `:::grammar`.

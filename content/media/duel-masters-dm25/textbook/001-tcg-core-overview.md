@@ -17,9 +17,10 @@ summary: >-
 
 # Obiettivo
 
-Questa prima lesson non serve a tradurre tutto. Serve a darti una mappa.
+Il focus di questa scheda è una lettura funzionale di base: capire cosa accade in una
+partita e come quel flusso è scritto in giapponese.
 
-Alla fine dovresti saper fare quattro cose:
+Il risultato atteso è identificare quattro elementi fondamentali:
 
 - capire che cosa stai cercando di fare in una partita di Duel Masters;
 - riconoscere i dati più visibili della carta prima ancora del testo effetto;
@@ -28,7 +29,7 @@ Alla fine dovresti saper fare quattro cose:
 
 ## Contesto
 
-Studiare Duel Masters bene vuol dire imparare due cose insieme:
+Duel Masters combina in modo diretto due livelli:
 
 - come funziona il gioco in termini molto pratici;
 - come il gioco scrive quelle azioni in giapponese.
@@ -39,12 +40,12 @@ campo, scudi che vengono [ブレイク](term:term-break), carte che si spostano 
 [山札](term:term-deck), [手札](term:term-hand), [墓地](term:term-graveyard) e
 [マナゾーン](term:term-mana-zone).
 
-I due starter deck usati più avanti servono proprio a questo contrasto:
+I due starter deck usati più avanti mostrano questo contrasto:
 `DM25-SD1` ti fa vedere molto linguaggio di [墓地](term:term-graveyard) e
 [アビス](term:term-abyss), mentre `DM25-SD2` insiste di più su
 [攻撃](term:term-attack), [進化](term:term-evolution),
-[侵略](term:term-invasion) e [重ねる](term:term-kasaneru). Prima di dividerli,
-però, ti serve una base comune.
+[侵略](term:term-invasion) e [重ねる](term:term-kasaneru).
+La base comune resta invariata: struttura di zona, attore e verbo.
 
 ## Termini chiave
 
@@ -82,7 +83,7 @@ però, ti serve una base comune.
 
 ### 1. Duel Masters in 30 secondi
 
-Se vuoi una versione davvero minima, pensa alla partita cosi:
+La dinamica minima della partita è:
 
 - metti risorse nel [マナゾーン](term:term-mana-zone);
 - giochi carte pagando il [コスト](term:term-cost);
@@ -114,19 +115,19 @@ Prima ancora del testo effetto, guarda i dati più visibili:
 - [パワー](term:term-power), se c'è;
 - [種族](term:term-race).
 
-Questa passata ti dice già molto. Se leggi [クリーチャー](term:term-creature),
+Questa lettura preliminare dà molti indizi. Se leggi [クリーチャー](term:term-creature),
 [火](term:term-civilization), [コスト](term:term-cost) alto e magari una
-keyword evidente, ti fai subito un'idea del ruolo della carta prima di
+keyword evidente, puoi definire il possibile ruolo della carta prima di
 decifrare ogni frase.
 
-Appena entri nel testo centrale, una parola da fissare presto è
+Appena entri nel testo centrale, la chiave di lettura è
 [{{効果|こうか}}](term:term-effect). Quando la carta dice `この{{効果|こうか}}`, non sta parlando del
 nome della carta: sta indicando il risultato concreto prodotto da quel blocco
 di testo.
 
 ### 3. Le zone sono la mappa del gioco
 
-Le zone da fissare subito sono:
+Le zone centrali da riconoscere sono:
 
 - [バトルゾーン](term:term-battle-zone)
 - [マナゾーン](term:term-mana-zone)
@@ -148,27 +149,27 @@ Per esempio:
 - `{{墓地|ぼち}}から{{出|だ}}す` = cimitero -> campo;
 - `{{マナゾーン|まなぞーん}}に{{置|お}}く` = mettere nella zona mana.
 
-Versione ELI5: il giapponese delle carte è spesso una freccia tra zone.
+Il giapponese delle carte codifica spesso una freccia tra zone.
 
 ### 4. Chi agisce e su chi ricade l'effetto
 
 Le prime due parole che cambiano davvero il senso della frase sono
 [自分](term:term-self) e [相手](term:term-opponent).
 
-Quando le vedi, non soffermarti sulla traduzione elegante. Chiediti subito:
-"questo effetto favorisce me o colpisce l'altro?"
+La coppia [自分](term:term-self) / [相手](term:term-opponent) stabilisce subito
+chi viene favorito e chi diventa bersaglio dell'effetto.
 
-Una struttura semplicissima ma utilissima è:
+Una struttura ricorrente del testo è:
 
 - `{{自分|じぶん}}の{{山札|やまふだ}}` = il tuo deck;
 - `{{相手|あいて}}のクリーチャー` = le creature avversarie;
 - `このクリーチャー` = questa carta stessa.
 
-Se perdi l'attore della frase, perdi tutto il resto.
+L'attore della frase definisce sempre il soggetto dell'effetto.
 
 ### 5. I primi verbi da riconoscere al volo
 
-Per iniziare ti bastano pochi verbi ad altissima frequenza:
+I verbi ad alta frequenza utili nelle prime letture sono:
 
 - [出る](term:term-deru)
 - [出す](term:term-dasu)
@@ -184,15 +185,15 @@ La coppia più importante è [出る](term:term-deru) / [出す](term:term-dasu)
 - [出る](term:term-deru) descrive la carta che entra;
 - [出す](term:term-dasu) descrive chi la mette in gioco.
 
-Se impari questa differenza presto, leggi meglio metà del gioco.
+Questa distinzione separa ingresso automatico e azione del giocatore.
 
-[加える](term:term-add) è il passo subito dopo: spesso non cambia la carta in
-campo, ma cambia la tua mano. Se lo riconosci presto, leggi meglio gli effetti
-che trasformano deck, scudi o cimitero in risorsa disponibile.
+[加える](term:term-add) compare spesso dopo azioni simili: non cambia la carta in
+campo, ma cambia la tua mano e rende chiara la conversione di deck, scudi o
+cimitero in risorsa disponibile.
 
 ### 6. Una prima passata non è una traduzione
 
-Quando prendi una carta nuova, fai sempre questo ordine:
+Ordine di lettura per una carta nuova:
 
 1. tipo di carta;
 2. [コスト](term:term-cost), [文明](term:term-civilization),
@@ -203,7 +204,8 @@ Quando prendi una carta nuova, fai sempre questo ordine:
 5. verbo principale;
 6. solo dopo, eventuali dettagli tecnici.
 
-Il tuo obiettivo qui non è "tradurre bene". È "sapere dove guardare".
+La priorità è identificare subito funzione e flusso dell'effetto prima dei dettagli
+tecnici.
 
 ### 7. Dove entrano i due starter deck
 
@@ -216,8 +218,10 @@ sono utili:
   [進化](term:term-evolution), [侵略](term:term-invasion) e
   [重ねる](term:term-kasaneru).
 
-Questa distinzione la userai dopo. Per ora ti basta sapere che i due mazzi
-spingono il giapponese delle carte in due direzioni diverse.
+Questa distinzione separa due assi lessicali:
+`DM25-SD1` privilegia i passaggi legati al [墓地](term:term-graveyard), mentre
+`DM25-SD2` mette più in evidenza [攻撃](term:term-attack),
+[進化](term:term-evolution), [侵略](term:term-invasion) e [重ねる](term:term-kasaneru).
 
 ## Esempi guidati
 
@@ -230,8 +234,8 @@ translation_it: >-
   Creatura / costo 5 / potenza 5000 / civiltà del fuoco.
 :::
 
-- Sai già che stai guardando una creatura rossa di costo medio.
-- Prima ancora del rules text hai una prima idea del ruolo della carta.
+- La carta è una creatura rossa di costo medio.
+- Il blocco iniziale dà già un'indicazione di ruolo prima del rules text.
 
 **Esempio 2**
 
@@ -257,7 +261,7 @@ translation_it: >-
 
 - Bersaglio: lato avversario.
 - Azione: [選ぶ](term:term-erabu).
-- Non sai ancora il seguito, ma hai già capito chi viene colpito.
+- Il bersaglio dell'effetto è già determinato dal complemento oggetto.
 
 **Esempio 4**
 
@@ -281,10 +285,9 @@ translation_it: >-
 :::
 
 - [～以下 / ～以上](grammar:grammar-ika-ijou) = filtro numerico.
-- Non ti dice ancora l'azione, ma ti dice già quali carte contano.
+- Il filtro numerico non specifica l'azione, ma restringe già le carte rilevanti.
 
 ## Nota finale
 
-Se esci da questa lesson con una buona orientazione, hai già fatto la parte più
-importante. La tecnica di parsing viene dopo; prima ti serve sapere dove
-guardare quando prendi in mano una carta nuova.
+Con questa struttura il testo delle carte resta leggibile dalle prime
+letture: dati visivi, zona, attore e verbo guidano subito la comprensione.

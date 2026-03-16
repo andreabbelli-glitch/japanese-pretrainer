@@ -708,3 +708,180 @@ requests:
     notes: >-
       Fonte guida da verificare: GameWith `序盤の進め方と初心者が覚えておくべき機能`
       con screenshot di auto-battle / drop.
+  - id: academy-campus-exterior
+    lesson_slug: 104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
+    anchor: "alla fine, stanza personale nella [{{学生寮|がくせいりょう}}](term:term-gakusei-ryou)."
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il contesto iniziale della lesson, cosi il lettore aggancia
+      subito aula, uffici e dormitorio a un'immagine chiara del campus
+      dell'accademia prima di entrare nei singoli label giapponesi.
+    visual_goal: >-
+      Mostrare l'edificio principale dell'accademia e il suo ruolo di hub
+      scolastico, per fissare il blocco academy come vero spazio di onboarding.
+    source_preference: >-
+      Pagina ufficiale story dedicata alla scuola piu antica della regione di
+      Paldea.
+    search_hint: >-
+      Usa la pagina ufficiale `story/220803_05` e scegli il frame panoramico
+      dell'edificio dell'accademia.
+    capture_instructions: >-
+      Preferisci uno screenshot ufficiale largo con facciata completa,
+      architettura riconoscibile e il campus ben leggibile.
+    must_show: >-
+      Edificio dell'accademia, scala del campus e atmosfera di scuola-hub.
+    avoid: >-
+      Crop troppo stretti, loghi isolati o immagini che facciano perdere la
+      lettura del campus come luogo fisico.
+    alt_it: >-
+      Edificio principale dell'accademia di Paldea visto dall'esterno.
+    caption_it: >-
+      L'accademia entra qui come spazio reale del prologo: non e solo sfondo
+      scolastico, ma il nodo da cui partono aula, uffici, dormitorio e i primi
+      veri briefing della storia.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/story/220803_05/
+      asset `story_img_03.jpg`.
+  - id: clavell-academy-briefing
+    lesson_slug: 104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
+    anchor: "ufficializzato o rimesso nelle mani del protagonista."
+    kind: other
+    priority: medium
+    placement_rationale: >-
+      Va subito dopo il passaggio sulle sale ufficiali della scuola, cosi la
+      lezione associa il cambio di tono a una figura d'autorita ben riconoscibile
+      senza inventare un frame d'ufficio non stabile.
+    visual_goal: >-
+      Mostrare il preside Clavell davanti all'accademia per dare un volto chiaro
+      al registro piu istituzionale del blocco school onboarding.
+    source_preference: >-
+      Pagina ufficiale personaggio dedicata a Clavell.
+    search_hint: >-
+      Usa la pagina personaggio `character/220803_03` e scegli il frame ufficiale
+      di Clavell con sfondo dell'accademia.
+    capture_instructions: >-
+      Preferisci un frame a mezzo busto o figura intera con Clavell ben
+      riconoscibile e sfondo scolastico leggibile.
+    must_show: >-
+      Clavell, uniforme / look da dirigente e contesto accademico.
+    avoid: >-
+      Crop troppo stretti sul volto o immagini senza elementi visivi che facciano
+      capire il legame con la scuola.
+    alt_it: >-
+      Clavell, figura autoritativa dell'accademia, in una presentazione ufficiale.
+    caption_it: >-
+      Clavell rende concreto il lato piu ufficiale dell'accademia: quando il
+      prologo passa da aula e corridoi a briefing scolastici seri, il tono della
+      progressione diventa subito piu istituzionale.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/character/220803_03/
+      asset `ja/img_01.jpg`.
+  - id: academy-treasure-hunt-announcement
+    lesson_slug: 105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
+    anchor: "obiettivo personale."
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va subito dopo i paragrafi che spiegano
+      [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou) e
+      [{{宝探し|たからさがし}}](term:term-takara-sagashi), cosi il lettore vede il
+      momento in cui la scuola consegna davvero il briefing che apre il mondo.
+    visual_goal: >-
+      Mostrare il raduno degli studenti o l'annuncio del Treasure Hunt nel campus,
+      con Clavell o il palco scolastico, per dare forma visiva al passaggio dalla
+      routine di scuola all'esplorazione libera.
+    source_preference: >-
+      Pagina ufficiale story dedicata alla scuola di Paldea.
+    search_hint: >-
+      Usa la pagina ufficiale `story/220803_05` e scegli il frame con studenti
+      riuniti davanti al palco / display dell'accademia.
+    capture_instructions: >-
+      Preferisci un frame ufficiale largo con studenti, palco scolastico e
+      atmosfera da annuncio collettivo.
+    must_show: >-
+      Contesto di assemblea scolastica, protagonista insieme agli studenti e tono
+      da briefing ufficiale del Treasure Hunt.
+    avoid: >-
+      Dialoghi privati senza campus, artwork promozionali o frame che non facciano
+      capire il passaggio a un'attivita scolastica collettiva.
+    alt_it: >-
+      Raduno degli studenti dell'accademia durante l'annuncio del Treasure Hunt.
+    caption_it: >-
+      Il briefing del [{{宝探し|たからさがし}}](term:term-takara-sagashi) rende
+      visibile il cambio di scala del prologo: la scuola smette di guidarti solo
+      dentro il campus e ti consegna la struttura aperta dell'avventura.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/story/220803_05/
+      asset `story_img_04.jpg`.
+  - id: nemona-champion-rank-briefing
+    lesson_slug: 105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
+    anchor: "raccogliere badge e superare altri passaggi di progressione."
+    kind: other
+    priority: high
+    placement_rationale: >-
+      Va subito dopo la spiegazione di [チャンピオンランク](term:term-champion-rank) e
+      [ジムバッジ](term:term-gym-badge), cosi la definizione colloquiale di Nemona
+      viene agganciata a una scena concreta invece di restare solo raccontata.
+    visual_goal: >-
+      Mostrare Nemona mentre spiega il Champion Rank o un frame con textbox sul
+      tema dei Gym Badge, per fissare il tono da mini-enciclopedia parlata.
+    source_preference: >-
+      Pagina ufficiale story dedicata al Champion Rank.
+    search_hint: >-
+      Usa la pagina ufficiale `story/220803_07` e scegli il frame con Nemona e
+      textbox sul [チャンピオンランク](term:term-champion-rank).
+    capture_instructions: >-
+      Preferisci uno screenshot con Nemona ben visibile e textbox leggibile sul
+      tema del Champion Rank.
+    must_show: >-
+      Nemona, contesto di briefing e riferimento leggibile al Champion Rank o ai Gym Badge.
+    avoid: >-
+      Schermate di sola battaglia Gym, artwork del personaggio o frame dove non si
+      capisce che sta spiegando una route da seguire.
+    alt_it: >-
+      Nemona spiega al protagonista il Champion Rank e la raccolta dei Gym Badge.
+    caption_it: >-
+      Quando Nemona parla di [チャンピオンランク](term:term-champion-rank), il suo
+      tono colloquiale nasconde una vera definizione di route: i
+      [ジムバッジ](term:term-gym-badge) diventano la prova concreta di quel percorso.
+    notes: >-
+      Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/story/220803_07/
+      asset `story_img_03.jpg`.
+  - id: academy-route-map-destination
+    lesson_slug: 105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
+    anchor: "pronta una direzione prima di uscire davvero nel mondo aperto."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il paragrafo sulla registrazione della
+      [{{目的地|もくてきち}}](term:term-mokutekichi), cosi il briefing astratto sul
+      viaggio si traduce in una procedura visibile sulla mappa.
+    visual_goal: >-
+      Mostrare la schermata mappa dello [スマホロトム](term:term-smartphone-rotom) con
+      una destinazione registrata, per rendere evidente il passaggio da libertà
+      esplorativa a orientamento pratico.
+    source_preference: >-
+      Asset ufficiale gia presente nel media oppure pagina ufficiale Pokemon
+      dedicata allo [スマホロトム](term:term-smartphone-rotom).
+    search_hint: >-
+      Riusa lo screenshot ufficiale gia registrato della mappa con
+      [{{目的地|もくてきち}}](term:term-mokutekichi) visibile; in alternativa
+      recupera `features/220803_02` asset `features_img_03.jpg`.
+    capture_instructions: >-
+      Preferisci una schermata completa della mappa con colonna app laterale,
+      marker centrale e UI leggibile.
+    must_show: >-
+      Mappa completa, marker di destinazione, icone laterali e cornice dello Smart Rotom.
+    avoid: >-
+      Render del telefono senza UI, crop senza marker o immagini in lingua non
+      giapponese prive del contesto di navigazione.
+    alt_it: >-
+      Mappa dello Smart Rotom con destinazione registrata prima dell'uscita nel mondo aperto.
+    caption_it: >-
+      Registrare una [{{目的地|もくてきち}}](term:term-mokutekichi) sullo
+      [スマホロトム](term:term-smartphone-rotom) trasforma il briefing scolastico in
+      una direzione concreta: il gioco non ti lascia solo libero, ti insegna
+      anche come non perderti.
+    notes: >-
+      Riusa l'asset ufficiale gia presente `assets/ui/smart-rotom-map-destination.webp`.

@@ -11,15 +11,14 @@ tags: [modes, progression, deck, beginner]
 prerequisites: [lesson-gundam-arsenal-base-arcade-onboarding, lesson-gundam-arsenal-base-battle-screen-and-core-actions]
 summary: >-
   Capisci modalità, rank, missioni, deck iniziale e prime scelte consigliate
-  per progredire senza inseguire subito il meta.
+  per progredire con scelte operative e priorità chiare.
 ---
 
 # Obiettivo
 
-In questa lesson impari a distinguere le modalità principali del gioco, a capire
-che cosa misura davvero la progressione del profilo e a costruire un piano
-semplice per le prime partite. Qui il focus non è sulla singola schermata di
-match, ma su quello che scegli prima e dopo la battaglia.
+In questa unità distingui le modalità principali del gioco, individui cosa misura
+davvero la progressione del profilo e imposti un flusso pratico di preparazione
+prima e dopo la battaglia.
 
 ## Contesto
 
@@ -70,12 +69,12 @@ caption: >-
 di tutto il paese. Qui contano [ランクポイント](term:term-rank-point), rank e
 ricompense stagionali. La progressione ufficiale va da ブロンズ a ガンダム con
 sottorank da V a I; sopra ガンダムI c'è anche il gradino ニュータイプ per i
-piazzamenti più alti. La cosa utile per un principiante è un'altra: fra ブロンズ
-e シルバー una sconfitta non ti toglie [ランクポイント](term:term-rank-point),
+piazzamenti più alti. Il punto operativo: fra ブロンズ e シルバー una sconfitta
+non toglie [ランクポイント](term:term-rank-point),
 quindi l'ingresso nel rank è meno punitivo di quanto sembri.
 
-[チャレンジモード](term:term-challenge-mode) è la modalità migliore per le
-prime partite consapevoli. Combatti contro CPU, vedi più chiaramente il ritmo
+[チャレンジモード](term:term-challenge-mode) è la modalità ideale per
+stabilizzare la lettura. Combatti contro CPU, vedi più chiaramente il ritmo
 delle azioni e puoi legare ogni partita a una lettura concreta dello schermo.
 Inoltre ha ricompense dedicate, quindi non è tempo "sprecato": è il posto giusto
 per fissare [{{役割|やくわり}}](term:term-role), input e ordine di osservazione.
@@ -87,8 +86,8 @@ trasformare ogni errore in pressione da classifica.
 
 [VEレイドバトル](term:term-ve-raid-battle) è invece una modalità cooperativa
 contro boss. Ufficialmente si sblocca da シルバーランク5 ed è pensata per due
-giocatori, anche se puoi selezionare una partnership CPU. Per un assoluto
-principiante non è la prima priorità: prima conviene saper leggere bene
+giocatori, anche se puoi selezionare una partnership CPU. Prima di
+affrontarla conviene avere ben chiari i tre ruoli base:
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
 [{{制圧|せいあつ}}](term:term-role-seiatsu) e
 [{{防衛|ぼうえい}}](term:term-role-bouei) in una partita standard.
@@ -119,23 +118,23 @@ coppia. Uno [スターターデッキ](term:term-starter-deck) è utile proprio 
 ti mette subito in mano una struttura completa di 10 carte che puoi leggere
 senza dover improvvisare slot vuoti o ruoli mancanti.
 
-Per le prime sessioni, una distribuzione didattica molto usata nelle guide fan è
+Per iniziare, una distribuzione molto usata nelle guide è
 2 / 2 / 1: due [{{殲滅|せんめつ}}](term:term-role-shoumetsu), due
 [{{制圧|せいあつ}}](term:term-role-seiatsu), un
-[{{防衛|ぼうえい}}](term:term-role-bouei). Non è una legge fissa e non è "il
-meta": è un punto di partenza che ti fa vedere sul campo tutte e tre le funzioni
+[{{防衛|ぼうえい}}](term:term-role-bouei). Non è una legge fissa: è un punto di
+partenza che ti fa vedere sul campo tutte e tre le funzioni
 essenziali. Se hai solo [{{制圧|せいあつ}}](term:term-role-seiatsu), rischi di
 toccare gli obiettivi ma non di liberare la strada. Se hai solo
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu), puoi vincere gli scontri locali ma
 non convertire bene il vantaggio in danno agli obiettivi.
 
-Un piano semplice per le prime partite può essere questo.
+Una sequenza pratica per iniziare può essere questa.
 
 1. Parti da [チャレンジモード](term:term-challenge-mode) o da contenuti CPU finché
    riconosci a colpo d'occhio i ruoli delle unità.
 2. Usa uno [スターターデッキ](term:term-starter-deck) o una lista molto lineare,
-   così ogni sconfitta ti insegna una lettura del campo e non solo un problema
-   di collezione.
+   così ogni errore ti restituisce una lettura del campo più affidabile e meno
+   rumore sulle scelte di collezione.
 3. Quando sblocchi le [{{作戦|さくせん}}カード](term:term-tactics-card), equipaggia
    una carta nel [{{メイン枠|めいんわく}}](term:term-main-slot) e una nel
    [{{サブ枠|さぶわく}}](term:term-sub-slot), invece di ignorare del tutto il

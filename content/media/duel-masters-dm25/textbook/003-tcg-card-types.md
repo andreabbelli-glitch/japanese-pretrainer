@@ -17,7 +17,7 @@ summary: >-
 
 # Obiettivo
 
-Questa lesson serve a fare ordine in una parte di Duel Masters che all'inizio
+Questa sezione chiarisce una parte di Duel Masters che all'inizio
 sembra più complicata di quanto sia davvero: la riga del tipo carta.
 
 L'obiettivo non è memorizzare tutta la storia del gioco. L'obiettivo è saper
@@ -25,11 +25,11 @@ guardare un type line un po' strano e capire subito tre cose:
 
 - qual è il tipo base della carta;
 - quale prefisso o forma speciale ne cambia il comportamento;
-- quale vocabolario vale la pena fissare come flashcard perché ricompare davvero.
+- quale vocabolario ricompare con alta frequenza e merita priorità nelle flashcard.
 
 ## Contesto
 
-Nella lesson precedente abbiamo già fissato le basi:
+Nel modulo precedente abbiamo già fissato le basi:
 [クリーチャー](term:term-creature), [{{呪文|じゅもん}}](term:term-spell),
 [タマシード](term:term-tamaseed), [コスト](term:term-cost),
 [文明](term:term-civilization), [種族](term:term-race).
@@ -117,8 +117,9 @@ succede quando quella pila entra o si smonta.
 ### 3. Carte con doppia natura: non un'etichetta, ma due letture possibili
 
 [タマシード/クリーチャー](term:term-tamaseed-creature) e
-[ツインパクトカード](term:term-twinpact-card) sono utilissimi da fissare perché
-fanno cadere una semplificazione sbagliata: "ogni carta ha una sola identità".
+[ツインパクトカード](term:term-twinpact-card) sono fondamentali perché il type
+line specifica subito una carta con due ingressi di ruolo, quindi la loro regola si
+applica in modo diverso a seconda che venga usata come creatura o come spell.
 
 [タマシード/クリーチャー](term:term-tamaseed-creature) ti dice che la carta
 può contare come [タマシード](term:term-tamaseed), come
@@ -158,8 +159,8 @@ quello che ti dice il ruolo reale della faccia attuale.
 
 ### 5. Oggetti di campo che non sono creature
 
-Per una panoramica sensata conviene fissare anche tre tipi di carta che
-spostano subito la tua attenzione fuori dal "corpo che attacca":
+Per leggere bene un type line, riconosci anche tre tipi di carta che
+spostano subito l'attenzione fuori dal "corpo che attacca":
 
 - [クロスギア](term:term-crossgear)
 - [{{城|しろ}}](term:term-castle)
@@ -205,7 +206,7 @@ translation_it: >-
   Star Evolution: mettila sopra 1 Rexterz o 1 creatura di fuoco.
 :::
 
-- Il tipo speciale da fissare è
+- Il punto chiave nel label è
   [スター{{進化|しんか}}クリーチャー](term:term-star-evolution-creature).
 - La parte importante non è solo `{{進化|しんか}}`, ma il fatto che il label ti
   sta già descrivendo come entra la carta.

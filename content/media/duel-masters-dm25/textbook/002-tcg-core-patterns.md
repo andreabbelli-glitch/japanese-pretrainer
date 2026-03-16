@@ -21,9 +21,10 @@ summary: >-
 
 # Obiettivo
 
-In questa lesson passi dall'orientamento alla meccanica della frase. L'obiettivo
-è capire come il testo effetto monta le informazioni: prima il momento in cui
-succede qualcosa, poi l'azione, poi eventuali dipendenze, eccezioni o limiti.
+Questa sezione passa dal riconoscimento lessicale alla meccanica della frase.
+Il rules text monta le informazioni in ordine funzionale: primo il momento in cui
+l'effetto si attiva, poi l'azione, quindi eventuali dipendenze, eccezioni o
+limiti.
 
 ## Contesto
 
@@ -43,10 +44,9 @@ I pattern più utili da riconoscere sono
 [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) e
 [ただし](grammar:grammar-tadashi).
 
-Qui conviene fissare anche [{{効果|こうか}}](term:term-effect): è la parola con cui il
-rules text nomina il blocco che sta davvero producendo un risultato o una
-restrizione. Se leggi `この{{効果|こうか}}`, la carta sta facendo riferimento a un effetto
-preciso, non alla carta in generale.
+[{{効果|こうか}}](term:term-effect) è il riferimento semantico del blocco operativo:
+indica il singolo effetto che produce un risultato o una restrizione. Con `この{{効果|こうか}}`,
+la frase indica quel blocco d'effetto specifico, non la carta in generale.
 
 ## Termini chiave
 
@@ -90,16 +90,16 @@ Il pattern più importante è [～時 / ～た時](grammar:grammar-toki). Nelle 
 trovi in forme come `{{出|で}}た{{時|とき}}`, `{{攻撃|こうげき}}する{{時|とき}}`,
 `{{離|はな}}れる{{時|とき}}`, `ブレイクされた{{時|とき}}`.
 
-Quando lo vedi, fermati un attimo. Quella parte non ti sta ancora dicendo che
-cosa fa la carta. Ti sta dicendo *quando* l'effetto si attiva.
+Quando la vedi, quella porzione definisce il *quando* dell'attivazione e non
+l'azione stessa.
 
 Anche [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) serve a questo:
 fissa il momento preciso del turno. Forme come `{{自分|じぶん}}のターンのはじめに` o
 `このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに` sono prima di tutto indicatori di
 timing.
 
-Regola pratica: finché non hai capito il trigger, non leggere il resto come se
-fosse un'azione immediata.
+Se il trigger non è identificato, il resto della frase non va letto come azione
+immediata.
 
 ### 2. Sequenza: {{その後|そのあと}} e そうしたら non dicono la stessa cosa
 
@@ -116,7 +116,8 @@ translation_it: >-
   Abyss di costo 4 o inferiore dal tuo cimitero.
 :::
 
-Qui il testo dice: prima fai una cosa, poi ne fai un'altra.
+La forma impone una sequenza operativa: prima la prima istruzione, poi la
+successiva.
 
 [そうしたら](grammar:grammar-soushitara) è più stretto. Di solito vuol dire:
 "se fai davvero il primo passo, allora succede il secondo".
@@ -130,25 +131,24 @@ translation_it: >-
   Puoi mettere le prime 3 carte del tuo mazzo nel cimitero. Se lo fai, ...
 :::
 
-Per la lettura pratica:
+Nel parsing:
 
 - [その後](grammar:grammar-sonoato) = la frase continua;
 - [そうしたら](grammar:grammar-soushitara) = il seguito dipende dal primo passo.
 
-Il punto non è solo grammaticale. Cambia la risoluzione dell'effetto.
+La differenza influisce sulla risoluzione dell'effetto, non solo sulla grammatica.
 
 ### 3. Opzionalità: ～てもよい e dipendenze locali
 
-[～てもよい](grammar:grammar-temoyoi) indica un'azione opzionale. Quando lo
-vedi, capisci subito che il giocatore può scegliere.
+[～てもよい](grammar:grammar-temoyoi) è il marcatore di azione opzionale: la
+scelta del giocatore deve essere confermata prima dell'esecuzione.
 
-Questo cambia la lettura della frase. Non stai più leggendo un effetto
-obbligatorio, ma una possibilità.
+Così il blocco risulta condizionato. L'effetto diventa una possibilità, non un
+vincolo automatico.
 
-Il punto pratico è questo: individua bene quale parte è opzionale e quale parte
-resta fissa. In Duel Masters capita spesso che la scelta sia locale, non
-globale: puoi scegliere un passaggio, ma il resto della frase continua a
-contare.
+Separa esplicitamente la parte opzionale da quella fissa. In Duel Masters la
+scelta è spesso locale: il ramo scelto cambia un passaggio, ma le istruzioni
+esterne restano valide.
 
 ### 4. Sostituzione: かわりに non aggiunge, rimpiazza
 
@@ -166,8 +166,8 @@ translation_it: >-
   dalla tua mano.
 :::
 
-Qui il punto centrale è capire che scartare due carte prende il posto
-dell'uscita della creatura.
+In termini di esecuzione, `かわりに` sostituisce l'azione precedente con
+quella introdotta nel nuovo ramo.
 
 Se leggi `かわりに` come semplice "poi", sbagli la logica dell'effetto.
 
@@ -200,11 +200,10 @@ translation_it: >-
   Se si è evoluta da un Tamashido, pesca 1 carta in più.
 :::
 
-Qui la carta controlla prima una condizione già vera e poi concede un bonus.
+Il pattern verifica uno stato preesistente e solo dopo concede il bonus.
 
-Qui conviene fissare anche [残る](term:term-nokoru), perché nel rules text di
-Duel Masters segnala spesso che qualcosa resta ancora sul campo dopo che un
-altro pezzo della situazione è cambiato.
+[残る](term:term-nokoru) nel rules text descrive continuità di presenza di una
+carta nonostante cambi successivi in altra parte della situazione.
 
 :::example_sentence
 jp: >-
@@ -226,17 +225,14 @@ comune. In frasi come
 `{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}でクリーチャーを{{出|だ}}した{{時|とき}}`, il punto non è il lessico difficile,
 ma la struttura: "con un metodo diverso dalla [召喚](term:term-summon)".
 
-[または](grammar:grammar-matawa) è il connettore di alternativa che conviene
-fissare prima nel rules text. In pratica vuol dire "oppure / o", ma nelle carte
-conviene leggerlo in modo più tecnico: collega due categorie o due bersagli che
-valgono entrambi per lo stesso filtro.
+[または](grammar:grammar-matawa) è il connettore di alternativa del rules text:
+due categorie o bersagli condividono lo stesso filtro per un'unica verifica.
 
 Esempio tipico:
 
 - `{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシード`
 
-Qui non stai leggendo due frasi. Stai leggendo un solo blocco di selezione con
-due strade valide. Il punto pratico è capire subito:
+Il blocco applica un'unica selezione con due opzioni valide. Individua subito:
 
 - che cosa c'è a sinistra di [または](grammar:grammar-matawa);
 - che cosa c'è a destra;
@@ -246,16 +242,15 @@ Quando [または](grammar:grammar-matawa) compare insieme a
 [合計](term:term-goukei) o a un filtro numerico, le due categorie entrano nello
 stesso conteggio. Non sono due controlli separati.
 
-Poi c'è [ただし](grammar:grammar-tadashi). Questo blocco va letto come una
-limitazione finale.
+Con [ただし](grammar:grammar-tadashi), il testo successivo imposta una
+limitazione finale all'effetto principale.
 
 Esempi:
 
 - `ただし、コストは{{0以下|ぜろいか}}にはならない。`
 - `ただし、その「S・トリガー」は{{使|つか}}えない。`
 
-Metodo pratico: prima leggi l'effetto principale, poi leggi la parte che lo
-restringe.
+Ordine operativo: prima l'effetto principale, poi la restrizione finale.
 
 ### 7. Numeri e filtri non sono dettagli secondari
 
@@ -266,11 +261,10 @@ restringe.
 Non è un dettaglio secondario. È il filtro che decide quali carte puoi
 scegliere, distruggere o mettere in campo.
 
-[合計](term:term-goukei) merita attenzione a parte perché cambia il modo in cui
-conti. Non ti chiede di verificare ogni categoria da sola: ti chiede di sommare
-gli elementi ammessi e guardare il totale finale.
+[合計](term:term-goukei) definisce come va aggregato il conteggio: la verifica non
+è per categoria separata, ma sul totale dei soggetti ammessi.
 
-Per questo conviene allenarsi a vedere subito:
+Per identificare subito il tipo di controllo usa sempre questa lista:
 
 - [コスト](term:term-cost)
 - [パワー](term:term-power)
@@ -279,8 +273,8 @@ Per questo conviene allenarsi a vedere subito:
 - zona
 - bersaglio
 
-Vale la pena fissare [合計](term:term-goukei) quando compare in questi filtri,
-perché spesso è il punto che decide se il controllo è separato o aggregato.
+Quando compare [合計](term:term-goukei), la forma decide subito se il filtro è
+aggregato o separato. Questo punto influenza direttamente la validità dei target.
 
 ### 8. Keyword, parentesi e frasi compatte
 
@@ -296,7 +290,7 @@ translation_it: >-
   sovrapporre su di esso questa creatura che hai in mano).
 :::
 
-Qui devi separare così:
+La decomposizione della frase segue questo ordine:
 
 - [侵略](term:term-invasion) = nome della keyword;
 - `{{火|ひ}}のコマンド` = requisito;
@@ -314,19 +308,19 @@ translation_it: >-
   creatura e distruggi la carta in cima.
 :::
 
-Se la traduci tutta in un colpo solo, rischi di perderti. Se la separi, diventa
-molto più chiara:
+La traduzione lineare può perdere priorità temporali; la separazione rende
+esplicito il flusso:
 
 - [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) = quando succede;
 - [アンタップ](term:term-untap) = prima azione;
 - [破壊](term:term-destroy) = seconda azione;
 - `{{一番上|いちばんうえ}}` = quale carta viene colpita.
 
-Regola semplice: separa prima timing, poi azione, poi bersaglio.
+Regola operativa: timing, poi azione, poi bersaglio.
 
 ### 9. Una ricetta di parsing che puoi riusare subito
 
-Quando una frase ti sembra troppo densa, prova sempre questo ordine:
+Quando una frase è densa, applica sempre questo ordine:
 
 1. trova il trigger;
 2. trova il verbo principale;

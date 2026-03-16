@@ -17,20 +17,17 @@ summary: >-
 
 # Obiettivo
 
-Questa lesson prende tre schermate reali e le usa come micro-percorso di
-lettura operativa.
-
-Alla fine dovresti riuscire a:
+Questo modulo usa tre schermate reali per descrivere in modo operativo il flusso
+di reclamo reward:
 
 - distinguere ciò che è ancora da riscuotere da ciò che è già stato incassato;
 - leggere date, livelli e costo d'ingresso senza perdere il senso pratico;
-- capire quando un popup ti sta ancora chiedendo di agire e quando invece ti
-  sta mostrando un risultato già registrato.
+- capire quando un popup richiede ancora un'azione e quando certifica un risultato
+  già registrato.
 
 ## Contesto
 
-Nel giapponese dell'app i claim di reward non sono mai spiegati con un paragrafo
-lungo. Quasi tutto passa da label molto compatti:
+Nell'interfaccia di `デュエプレ`, i claim sono comunicati da label compatte:
 
 - stato della reward;
 - storico;
@@ -38,8 +35,7 @@ lungo. Quasi tutto passa da label molto compatti:
 - livello dello stage;
 - bottone finale di riscossione o avvio.
 
-Se impari a leggere questi blocchi come parti di un flusso, l'interfaccia smette
-di sembrare una serie di finestre isolate e diventa una sequenza chiara:
+Questi elementi vanno letti in sequenza:
 
 1. vedi che cosa è pronto;
 2. controlli se scade;
@@ -89,11 +85,12 @@ caption: >-
   di premi.
 :::
 
-[プレゼントボックス](term:term-present-box) non è solo il posto dove "ci sono
-dei premi". È la schermata che ti dice in che stato si trova il premio nel suo
-percorso.
+[プレゼントボックス](term:term-present-box) mostra lo stato operativo della
+reward:
+- nella coda dei claim da completare;
+- nello storico delle reward già completate.
 
-Ogni riga ti consegna già quasi tutta la frase utile:
+Ogni riga espone tutti i dati operativi della singola reward:
 
 - che premio è;
 - da dove arriva;
@@ -108,10 +105,6 @@ Qui i due label da separare subito sono:
 - [{{受け取り履歴|うけとりりれき}}](term:term-claim-history): l'incasso è già
   stato registrato e stai guardando lo storico, non il residuo aperto.
 
-Questo è un ottimo esempio di giapponese UI che va letto per funzione, non per
-traduzione parola per parola. Se sbagli qui, non stai facendo un errore solo
-linguistico: rischi di non capire se c'è ancora un'azione da completare.
-
 Anche [{{一括受け取り|いっかつうけとり}}](term:term-bulk-claim) è più
 operativo di quanto sembri. Il label ti dice che l'app può elaborare più reward
 insieme, non una alla volta.
@@ -124,12 +117,10 @@ Nella stessa schermata compaiono due informazioni temporali diverse:
   puoi ancora ritirare quel premio;
 - `{{獲得|かくとく}}{{日時|にちじ}}` = quando quella reward è entrata nella box.
 
-Qui [{{獲得|かくとく}}](term:term-kakutoku) non va letto in modo astratto. Ti
-sta dicendo il momento in cui l'oggetto è stato ottenuto e registrato dal gioco.
-Questo ti aiuta a non confondere:
-
-- la data in cui hai sbloccato qualcosa;
-- la data entro cui devi ancora riscuoterla.
+Qui [{{獲得|かくとく}}](term:term-kakutoku) marca l'ora di registrazione del
+premio; [{{受け取り期限|うけとりきげん}}](term:term-claim-deadline) marca
+l'ultima ora valida per reclamare. Le due etichette sono usate per decidere se la
+reward è ancora recuperabile.
 
 In pratica, [{{期限|きげん}}](term:term-deadline) ti parla di urgenza.
 [{{日時|にちじ}}](term:term-datetime) ti parla di provenienza e
@@ -160,7 +151,7 @@ La schermata ti fa leggere tre blocchi insieme:
 - il pannello destro basso, che mostra `NEXT REWARD`, punti attuali e opzioni
   di avanzamento.
 
-Le parole davvero importanti da fissare sono:
+Le etichette operative da distinguere sono:
 
 - [{{初級|しょきゅう}}](term:term-beginner-class) e
   [{{中級|ちゅうきゅう}}](term:term-intermediate-class): non indicano un corso
@@ -173,9 +164,7 @@ Le parole davvero importanti da fissare sono:
 - [レジェンドスキル](term:term-legend-skill): qui compare come informazione di
   setup del confronto, non come testo decorativo.
 
-Anche `あと13日` è un pattern molto importante da leggere al volo: l'interfaccia
-non ti sta dicendo una data assoluta, ma il tempo residuo che resta per quella
-finestra evento.
+`あと13日` indica tempo residuo (`13 giorni rimasti`) e non una data assoluta.
 
 Anche i pulsanti in basso fanno lavori diversi:
 
@@ -196,17 +185,18 @@ caption: >-
   conferma che l'incasso è già stato registrato.
 :::
 
-Questo popup non ti offre più il claim: lo conferma come già eseguito.
+Questo popup non richiede conferma utente: certifica che il claim è già stato
+eseguito.
 
 Quando leggi `{{以下|いか}}の{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}りました`,
 la spia decisiva è il passato `ました`: l'azione è già avvenuta e i premi sono
 già entrati nell'account. L'app ti mostra *quali* reward hai incassato, non ti
 chiede *se* vuoi incassarle.
 
-Questo ti aiuta a distinguere due usi diversi di
-[{{受け取る|うけとる}}](term:term-receive): come bottone indica un'azione ancora
-disponibile; dentro `{{受|う}}け{{取|と}}りました` indica invece un risultato già
-registrato.
+Regola operativa:
+
+- [{{受け取る|うけとる}}](term:term-receive) come verbo in etichetta/interfaccia = azione ancora da fare;
+- `{{受け取りました|うけとりました}}` come forma già coniugata = azione già completata.
 
 ## Esempi guidati
 
@@ -267,7 +257,8 @@ translation_it: >-
 
 ## Nota finale
 
-Questa famiglia di schermate allena una cosa essenziale: non fermarti alla
-parola "reward". Devi capire se stai guardando un premio ancora aperto, uno
-storico già chiuso, una preview di reward futura o un popup che certifica un
-incasso già concluso.
+Questa sequenza di schermate separa quattro stati operativi:
+- reward presenti in coda ma non ancora riscossa;
+- reward con scadenza monitorata;
+- stage scelto con costo, livello e reward preview;
+- popup di conferma dopo claim completato.
