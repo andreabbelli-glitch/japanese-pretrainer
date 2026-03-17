@@ -1068,6 +1068,24 @@ function normalizeLessonFrontmatter(
     readOptionalStringArray(raw, "prerequisites", filePath, scope, issues) ??
     [];
 
+  if (summary && containsUnsupportedLessonSummaryMarkup(summary)) {
+    issues.push(
+      createIssue({
+        code: "frontmatter.summary-plain-text-only",
+        category: "schema",
+        message:
+          "Lesson summary must be plain text; semantic links, furigana markup, and inline code are rendered literally in the UI.",
+        filePath,
+        path: `${scope}.summary`,
+        range: fieldRanges.summary,
+        hint: "Rewrite the summary as plain text without semantic links, furigana markup, or backticks.",
+        details: {
+          field: "summary"
+        }
+      })
+    );
+  }
+
   if (slug && !isUrlSafeSlug(slug)) {
     issues.push(
       createIssue({
@@ -2844,6 +2862,14 @@ function containsUnsafeInlineYamlContent(value: string) {
     value.includes("：") ||
     /\{\{[^|}]+\|[^}]+\}\}/.test(value) ||
     /\[[^\]]+\]\((?:term|grammar):[^)]+\)/.test(value) ||
+    /`[^`]+`/.test(value)
+  );
+}
+
+function containsUnsupportedLessonSummaryMarkup(value: string) {
+  return (
+    /\[[^\]]+\]\((?:term|grammar):[^)]+\)/.test(value) ||
+    /\{\{[^|}]+\|[^}]+\}\}/.test(value) ||
     /`[^`]+`/.test(value)
   );
 }

@@ -12,7 +12,7 @@ prerequisites: [lesson-duel-masters-dm25-duel-plays-app-modes-and-progression]
 summary: >-
   Approfondimento guidato su present box, stage select evento e popup reward:
   come leggere stato di riscossione, scadenze, livelli, preview delle reward e
-  risultato finale direttamente nella UI di `デュエプレ`.
+  risultato finale direttamente nella UI di Duel Plays.
 ---
 
 # Obiettivo

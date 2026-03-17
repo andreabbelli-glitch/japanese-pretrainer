@@ -27,6 +27,7 @@ id: grammar-<entry-slug>
 cross_media_group: <shared-group-id-opzionale>
 pattern: <pattern>
 title: <titolo-breve>
+reading: <reading-kana-se-il-pattern-contiene-kanji-o-letture-non-banali>
 meaning_it: <significato-in-italiano>
 aliases: [<alias-1>, <alias-2>]
 notes_it: >-
@@ -82,6 +83,15 @@ Regole pratiche:
 - ogni `:::card` deve avere sempre `example_jp` + `example_it`;
 - `example_jp` deve essere una frase completa e contestuale utile sul retro
   review, non una parola isolata o una ripetizione del `front`;
+- `front` e `example_jp` devono annotare con furigana i kanji che il learner
+  deve leggere davvero nella card review;
+- per i `:::grammar`, se `pattern` contiene kanji o una lettura non banale,
+  aggiungi sempre `reading`;
+- lo stesso vale per pattern misti kana+kanji: `それ{{以外|いがい}}なら` va
+  annotato nel testo visibile e `reading: それいがいなら` va dichiarato
+  nell'entry;
+- se in `notes_it` compare giapponese con kanji come parte del punto didattico,
+  annotalo con furigana anche li;
 - per `front` e `back`, il default sicuro e una stringa YAML quotata;
 - se `front` o `back` contengono furigana `{{base|reading}}`, testo carta,
   punteggiatura forte o composti markdown-like, non lasciarli mai come plain
@@ -104,7 +114,7 @@ Regole pratiche:
   `` `{{達成済み|たっせいずみ}}` ``;
 - per composti numerici con contatori o qualificatori usa un solo furigana sul
   blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
-  `{{4つ以上|よっついじょう}}`;
+  `{{4つ以上|よっついじょう}}`, `{{2つ|ふたつ}}`;
 - non compilare campi audio se non hai un asset locale gia reale e metadata di
   provenance affidabili; di norma l'audio viene arricchito dopo dal workflow
   locale;
@@ -113,6 +123,12 @@ Regole pratiche:
 - privilegia entry con buona spendibilita linguistica: kanji, lessico e pattern
   che puoi reincontrare anche fuori da una singola scena o da uno specifico
   media;
+- non trascurare elementi piccoli ma strutturalmente decisivi come marcatori di
+  scope, totalita, riferimento o distribuzione (`すべて`, `各`, `それら`,
+  `その中`, `ずつ`) quando cambiano davvero come si legge la frase;
+- se uno di questi elementi non e ancora coperto nello stesso media e serve a
+  capire bersagli, quantita o referente, puo meritare una nuova entry e una
+  card anche se da solo sembra "piccolo";
 - evita note meta del tipo "flashcard utile", "da fissare", "da rendere
   automatico", "qui conviene tenere la card": descrivi invece significato,
   ruolo e conseguenza concreta;

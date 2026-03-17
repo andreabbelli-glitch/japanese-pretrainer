@@ -128,6 +128,12 @@ Quindi non basta che esista una `reading` nella entry glossary: se il testo
 mostrato al lettore contiene kanji, la forma visibile deve essere annotata con
 `{{base|reading}}` quando la lettura non e banale.
 
+Questo vale anche per pattern misti kana+kanji, non solo per parole tutte in
+kanji:
+
+- scrivi `それ{{以外|いがい}}なら`, non `それ以外なら`;
+- scrivi `その{{中|なか}}から`, non `その中から`.
+
 ### 4.2 Regole di scrittura YAML sicura
 
 Per evitare errori di import, i campi testuali descrittivi dentro frontmatter o
@@ -215,6 +221,28 @@ Esempi accettabili:
   schermata di deckbuilding.
 - `または` vuol dire "oppure", ma nelle carte collega due categorie che valgono
   entrambe per lo stesso filtro.
+
+### 4.4.1 Regola per micro-elementi strutturali
+
+Quando selezioni nuove entry o nuove flashcard, non fermarti a kanji vistosi,
+keyword appariscenti o chunk lunghi di rules text.
+
+Se un elemento piccolo ma frequente controlla davvero la lettura della frase,
+puo meritare una entry e una card dedicate, purché non esista gia una copertura
+equivalente nello stesso media.
+
+Casi tipici:
+
+- marcatori di scope o totalita come `すべて`, `各`, `全部`;
+- riprese referenziali come `それ`, `それら`, `その中`;
+- filtri o snodi che cambiano davvero il parsing operativo della frase.
+
+Regola pratica:
+
+- se senza quell'elemento leggeresti male bersagli, quantita, referente o
+  insieme colpito, trattalo come candidato serio da glossary/review;
+- se esiste gia una entry che copre davvero lo stesso compito di lettura, riusa
+  quella invece di duplicare.
 
 ### 4.5 Regola anti-meta-editoriale
 
@@ -380,8 +408,7 @@ segment_ref: episode-01
 difficulty: n5
 status: active
 summary: >-
-  Riconoscere [食べる](term:term-taberu), [大丈夫](term:term-daijoubu) e
-  {{魔法|まほう}} come lessico di azione, rassicurazione e causa in una scena
+  Riconoscere 食べる, 大丈夫 e 魔法 come lessico di azione, rassicurazione e causa in una scena
   fantasy.
 ---
 
@@ -465,7 +492,7 @@ id: card-taberu-recognition
 entry_type: term
 entry_id: term-taberu
 card_type: recognition
-front: 食べる
+front: '{{食|た}}べる'
 back: mangiare
 example_jp: >-
   パンを{{食|た}}べる。
@@ -517,6 +544,13 @@ Regola review obbligatoria per `:::card`:
   `front`;
 - `example_it` deve tradurre quella stessa frase in italiano in modo utile per
   il retro review.
+- `front` e `example_jp` devono usare i furigana ogni volta che compare un
+  kanji che il learner deve davvero leggere.
+- Se in `notes_it` citi giapponese con kanji come parte del punto didattico,
+  annotalo con furigana anche li.
+- Per composti numerici con contatori o qualificatori usa un solo blocco con la
+  pronuncia corretta dell'intero chunk, per esempio `{{1枚|いちまい}}`,
+  `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`, `{{2つ|ふたつ}}`.
 - Il valore review della card deve restare linguistico: la carta deve aiutare a
   leggere kanji, lessico o grammatica giapponese, non solo a ricordare una
   regola del gioco.

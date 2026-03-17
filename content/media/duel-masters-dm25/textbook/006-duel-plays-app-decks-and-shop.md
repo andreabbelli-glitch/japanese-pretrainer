@@ -10,8 +10,8 @@ status: active
 tags: [app, deckbuilding, shop, collection, duel-plays]
 prerequisites: [lesson-duel-masters-dm25-duel-plays-app-overview]
 summary: >-
-  Seconda lezione `デュエプレ`: come leggere `デッキ`, `デッキ編成`,
-  `レンタルデッキ` e i verbi che distinguono acquisto, scambio, generazione e
+  Seconda lezione Duel Plays: come leggere deck, deck building, rental deck e
+  i verbi che distinguono acquisto, scambio, generazione e
   smontaggio delle carte.
 ---
 

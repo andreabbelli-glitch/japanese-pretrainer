@@ -10,7 +10,7 @@ status: active
 tags: [app, ui, navigation, duel-plays]
 prerequisites: []
 summary: >-
-  `デュエプレ` in prima schermata: home, scorciatoie e label operativi per
+  Duel Plays in prima schermata: home, scorciatoie e label operativi per
   distinguere missioni, premi, conferme e azioni di claim.
 ---
 

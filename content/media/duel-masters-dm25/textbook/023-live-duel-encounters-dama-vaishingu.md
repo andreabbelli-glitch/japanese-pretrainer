@@ -14,8 +14,8 @@ prerequisites:
     lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
   ]
 summary: >-
-  堕魔 ヴァイシング: recupero dal cimitero, filtro `コスト4以下の魔導具` e
-  bivio `それ以外なら手札に加える`.
+  堕魔 ヴァイシング: recupero dal cimitero, filtro sui Magic Tool di costo 4
+  o meno e bivio finale verso campo o mano.
 ---
 
 # [{{堕魔|だーま}}](term:term-dama) ヴァイシング
@@ -61,7 +61,8 @@ reveal_mode: sentence
 
 ### 2. それがコスト4以下の魔導具なら
 
-- `それが` riprende proprio la carta appena scelta dal cimitero.
+- [それが～なら](grammar:grammar-sorega-nara) riprende proprio la carta appena
+  scelta dal cimitero e la mette subito sotto verifica.
 - `コスト4以下` riusa il filtro numerico già noto: conta il costo stampato della
   carta scelta.
 - `魔導具なら` aggiunge il secondo controllo: per tornare direttamente sul campo,
@@ -76,6 +77,8 @@ reveal_mode: sentence
   cimitero, ma la mandi in mano.
 - [{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}える](term:term-add) è quindi il
   piano di ripiego, non un secondo premio separato.
+- Le due metà della frase vanno lette come un bivio chiuso sullo stesso
+  bersaglio: `それが ... なら` manda sul campo, `それ以外なら` manda in mano.
 
 ### 4. Perché questa frase vale la pena di essere letta bene
 

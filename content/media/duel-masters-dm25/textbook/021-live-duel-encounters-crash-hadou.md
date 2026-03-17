@@ -10,8 +10,8 @@ status: active
 tags: [live-duel, card-encounter, extra-turn, beat-jockey, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Crash Hadou: trigger del turno extra, `タップ状態でいたら` e
-  `このターンの後に自分のターンを追加する`.
+  Crash Hadou: trigger del turno extra, controllo dello stato tapped e aggiunta
+  di un turno subito dopo quello attuale.
 ---
 
 # [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)

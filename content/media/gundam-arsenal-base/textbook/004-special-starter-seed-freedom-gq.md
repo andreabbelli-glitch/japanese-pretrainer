@@ -10,8 +10,8 @@ status: active
 tags: [starter-deck, cards, seed-freedom, gquuuuuux]
 prerequisites: [lesson-gundam-arsenal-base-battle-screen-and-core-actions, lesson-gundam-arsenal-base-modes-and-progression]
 summary: >-
-  Lezione verticale sullo starter deck ufficiale `SPECIAL STARTER DECK SET
-  [SEED FREEDOM & GQ]`: leggere il frame delle carte, identificare i 10 nomi del
+  Lezione verticale sullo starter deck ufficiale Special Starter Deck Set
+  SEED FREEDOM and GQ: leggere il frame delle carte, identificare i 10 nomi del
   deck e gestire i pairing iniziali.
 ---
 

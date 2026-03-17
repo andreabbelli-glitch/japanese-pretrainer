@@ -14,7 +14,8 @@ summary: >-
   Viene mostrata nella card del textbook e nell'header della pagina.
   Se assente, il sistema genera automaticamente un excerpt dal corpo
   del documento (tagliato a 400 caratteri): meglio scriverla a mano. Non
-  parlare del batch, della lesson come oggetto editoriale o del workflow.>
+  parlare del batch, della lesson come oggetto editoriale o del workflow.
+  Deve restare plain text: niente semantic links, furigana markup o backtick.>
 ---
 
 # Obiettivo

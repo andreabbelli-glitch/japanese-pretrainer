@@ -170,13 +170,13 @@ describe("content importer", () => {
     expect(await countRows(database.query.segment.findMany())).toBe(7);
     expect(await countRows(database.query.lesson.findMany())).toBe(15);
     expect(await countRows(database.query.lessonContent.findMany())).toBe(15);
-    expect(await countRows(database.query.term.findMany())).toBe(155);
-    expect(await countRows(database.query.termAlias.findMany())).toBe(397);
-    expect(await countRows(database.query.grammarPattern.findMany())).toBe(29);
-    expect(await countRows(database.query.grammarAlias.findMany())).toBe(35);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(548);
-    expect(await countRows(database.query.card.findMany())).toBe(189);
-    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(211);
+    expect(await countRows(database.query.term.findMany())).toBe(156);
+    expect(await countRows(database.query.termAlias.findMany())).toBe(399);
+    expect(await countRows(database.query.grammarPattern.findMany())).toBe(31);
+    expect(await countRows(database.query.grammarAlias.findMany())).toBe(37);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(554);
+    expect(await countRows(database.query.card.findMany())).toBe(192);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(214);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({

@@ -10,9 +10,9 @@ status: active
 tags: [deck, abyss, graveyard, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Lezione pratica sullo starter deck `DM25-SD1 技の王道`: spiegazione diretta
-  del testo in giapponese legato al piano Abyss, con enfasi su [墓地](term:term-graveyard),
-  [コスト](term:term-cost) e keyword che guidano la sequenza di gioco.
+  Lezione pratica sullo starter deck DM25-SD1 技の王道: spiegazione diretta del
+  testo in giapponese legato al piano Abyss, con enfasi su cimitero, costo e
+  keyword che guidano la sequenza di gioco.
 ---
 
 # Obiettivo

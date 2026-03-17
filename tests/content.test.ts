@@ -608,10 +608,10 @@ describe("content parser and validator", () => {
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
     expect(result.data.lessons).toHaveLength(15);
     expect(result.data.cardFiles).toHaveLength(9);
-    expect(result.data.terms).toHaveLength(155);
-    expect(result.data.grammarPatterns).toHaveLength(29);
-    expect(result.data.cards).toHaveLength(189);
-    expect(result.data.references).toHaveLength(950);
+    expect(result.data.terms).toHaveLength(156);
+    expect(result.data.grammarPatterns).toHaveLength(31);
+    expect(result.data.cards).toHaveLength(192);
+    expect(result.data.references).toHaveLength(955);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
@@ -890,6 +890,41 @@ describe("content parser and validator", () => {
         })
       })
     );
+  });
+
+  it("rejects markdown syntax inside lesson summaries because the UI renders them as plain text", async () => {
+    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-summary-plain-"));
+    const mediaDirectory = path.join(mediaRoot, "sample-anime");
+    const lessonPath = path.join(mediaDirectory, "textbook", "001-intro.md");
+
+    try {
+      await cp(validMediaDirectory, mediaDirectory, { recursive: true });
+
+      const lessonSource = await readFile(lessonPath, "utf8");
+      const updatedLessonSource = lessonSource.replace(
+        "prerequisites: []\n---",
+        [
+          "prerequisites: []",
+          "summary: >-",
+          "  Riconoscere [食べる](term:term-taberu), {{日本語|にほんご}} e `大丈夫` nella scena iniziale.",
+          "---"
+        ].join("\n")
+      );
+      await writeFile(lessonPath, updatedLessonSource);
+
+      const result = await parseMediaDirectory(mediaDirectory);
+
+      expect(result.ok).toBe(false);
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "frontmatter.summary-plain-text-only",
+          category: "schema",
+          path: "frontmatter.summary"
+        })
+      );
+    } finally {
+      await rm(mediaRoot, { recursive: true, force: true });
+    }
   });
 
   it("fails on duplicate IDs in a small targeted fixture", async () => {

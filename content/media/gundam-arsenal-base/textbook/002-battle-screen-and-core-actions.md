@@ -11,7 +11,7 @@ tags: [battle, ui, roles, resources]
 prerequisites: [lesson-gundam-arsenal-base-arcade-onboarding]
 summary: >-
   Leggi la schermata di battaglia, distingui risorse e ruoli, e capisci quando
-  usare {{出撃|しゅつげき}}, abilità e {{戦術技|せんじゅつぎ}}.
+  usare sortie, abilità e tecniche tattiche.
 ---
 
 # Obiettivo

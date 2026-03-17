@@ -10,8 +10,8 @@ status: active
 tags: [deck, evolution, invasion, attack, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Starter deck `DM25-SD2 力の王道`: invasione, evoluzione e keyword come
-  `G・ストライク`, `究極進化`, `メテオバーン` e `スーパー・S・トリガー`.
+  Starter deck DM25-SD2 力の王道: invasione, evoluzione e keyword come
+  G-Strike, Ultimate Evolution, Meteorburn e Super S-Trigger.
 ---
 
 # Obiettivo

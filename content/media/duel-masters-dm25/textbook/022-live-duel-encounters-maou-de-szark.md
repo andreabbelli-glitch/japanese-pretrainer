@@ -14,8 +14,8 @@ prerequisites:
     lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
   ]
 summary: >-
-  魔凰 デ・スザーク: [無月の門](term:term-mugestsu-no-mon), lettura di
-  `2つずつ` e chunk `コストを払わずに召喚してもよい`.
+  魔凰 デ・スザーク: Gate of Moonless Night, lettura di due per ciascun gruppo
+  e del chunk che permette di evocare senza pagare il costo.
 ---
 
 # [{{魔凰|まおう}} デ・スザーク](term:term-maou-de-szark)
@@ -65,7 +65,8 @@ reveal_mode: sentence
 jp: >-
   [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
   [{{時|とき}}](grammar:grammar-toki)、そのターン、
-  [{{相手|あいて}}](term:term-opponent)のクリーチャーすべての
+  [{{相手|あいて}}](term:term-opponent)のクリーチャー
+  [すべて](term:term-subete)の
   [パワー](term:term-power)を-3000する。
 translation_it: >-
   Quando entra nel battle zone, per quel turno tutte le creature avversarie
@@ -96,6 +97,10 @@ reveal_mode: sentence
 ### 3. それら4枚の上にコストを払わずに召喚してもよい
 
 - `それら4枚` riprende esattamente le quattro carte appena scelte.
+- `それら` non aggiunge un nuovo gruppo: serve a richiudere la frase e a dire
+  `quelle appena nominate`.
+- Nel rules text è un ottimo campanello d'allarme: quando compare `それら`,
+  fermati e recupera l'ultimo insieme esplicito costruito subito prima.
 - `〜の上に` dice che De Szark entra sopra quel gruppo di carte: non è una
   semplice messa in campo separata.
 - [コスト](term:term-cost)を[{{払|はら}}わ](term:term-harau)ずに +
@@ -110,14 +115,21 @@ reveal_mode: sentence
   implicito è proprio questa creatura.
 - `そのターン` delimita la durata del debuff: non è permanente, vale solo per
   il turno in corso.
-- `すべてのパワーを-3000する` colpisce tutte le creature avversarie insieme,
-  non un bersaglio singolo.
+- [すべて](term:term-subete) allarga subito lo scope all'intero gruppo appena
+  nominato: qui vuol dire `tutte le creature avversarie`.
+- `すべてのパワーを-3000する` colpisce quindi tutto il lato avversario insieme,
+  non un bersaglio singolo e non solo una parte del gruppo.
 
 ## Lessico utile in questa carta
 
 - [魔導具](term:term-madougu) è il filtro davvero importante: se un effetto
   parla di `魔導具`, De Szark e i suoi pezzi di supporto entrano nello stesso
   gruppo operativo.
+- [それら](grammar:grammar-sorera) è piccolo ma utile: nei testi di carta
+  riaggancia spesso un gruppo appena costruito e ti evita di perdere il
+  referente nel mezzo della procedura.
+- [すべて](term:term-subete) è un marcatore di scope molto frequente: quando lo
+  incontri dopo un nome di gruppo, l'effetto si estende all'insieme intero.
 - [マスター・ドルスザク](term:term-master-dolszak) è la razza boss della carta.
   Quando la rileggi nella riga `種族`, sai che non è sapore narrativo ma un
   marcatore tribale.
