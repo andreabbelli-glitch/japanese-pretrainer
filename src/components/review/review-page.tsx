@@ -18,6 +18,9 @@ function buildReviewPageClientKey(data: ReviewPageData) {
     data.session.answeredCount,
     data.session.extraNewCount,
     data.session.notice ?? "no-notice",
-    data.queue.queueCount
+    data.queue.queueCount,
+    data.settings.reviewFrontFurigana
+      ? "review-furigana-on"
+      : "review-furigana-off"
   ].join(":");
 }

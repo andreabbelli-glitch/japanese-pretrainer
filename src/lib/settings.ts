@@ -1,4 +1,9 @@
-import { db, getUserSettingValue, userSetting, type DatabaseClient } from "@/db";
+import {
+  db,
+  getUserSettingValue,
+  userSetting,
+  type DatabaseClient
+} from "@/db";
 
 import { reviewSchedulerConfig } from "./review-scheduler";
 
@@ -8,6 +13,7 @@ export type GlossaryDefaultSort = "lesson_order" | "alphabetical";
 export type StudySettings = {
   furiganaMode: FuriganaMode;
   glossaryDefaultSort: GlossaryDefaultSort;
+  reviewFrontFurigana: boolean;
   reviewDailyLimit: number;
 };
 
@@ -16,21 +22,29 @@ export type StudySettingsInput = Partial<StudySettings>;
 export const defaultStudySettings: StudySettings = {
   furiganaMode: "hover",
   glossaryDefaultSort: "lesson_order",
+  reviewFrontFurigana: true,
   reviewDailyLimit: reviewSchedulerConfig.defaultDailyLimit
 };
 
 export async function getStudySettings(
   database: DatabaseClient = db
 ): Promise<StudySettings> {
-  const [furiganaMode, glossaryDefaultSort, reviewDailyLimit] = await Promise.all([
+  const [
+    furiganaMode,
+    glossaryDefaultSort,
+    reviewFrontFurigana,
+    reviewDailyLimit
+  ] = await Promise.all([
     getFuriganaModeSetting(database),
     getGlossaryDefaultSort(database),
+    getReviewFrontFuriganaSetting(database),
     getReviewDailyLimit(database)
   ]);
 
   return {
     furiganaMode,
     glossaryDefaultSort,
+    reviewFrontFurigana,
     reviewDailyLimit
   };
 }
@@ -49,6 +63,14 @@ export async function getReviewDailyLimit(
   const row = await getUserSettingValue(database, "review_daily_limit");
 
   return parseReviewDailyLimit(row?.valueJson);
+}
+
+export async function getReviewFrontFuriganaSetting(
+  database: DatabaseClient = db
+): Promise<boolean> {
+  const row = await getUserSettingValue(database, "review_front_furigana");
+
+  return parseReviewFrontFurigana(row?.valueJson);
 }
 
 export async function getGlossaryDefaultSort(
@@ -73,6 +95,10 @@ export async function updateStudySettings(
       input.glossaryDefaultSort === undefined
         ? current.glossaryDefaultSort
         : normalizeGlossaryDefaultSort(input.glossaryDefaultSort),
+    reviewFrontFurigana:
+      input.reviewFrontFurigana === undefined
+        ? current.reviewFrontFurigana
+        : normalizeReviewFrontFurigana(input.reviewFrontFurigana),
     reviewDailyLimit:
       input.reviewDailyLimit === undefined
         ? current.reviewDailyLimit
@@ -92,6 +118,12 @@ export async function updateStudySettings(
       key: "glossary_default_sort",
       nowIso,
       valueJson: JSON.stringify(next.glossaryDefaultSort)
+    }),
+    upsertUserSetting({
+      database,
+      key: "review_front_furigana",
+      nowIso,
+      valueJson: JSON.stringify(next.reviewFrontFurigana)
     }),
     upsertUserSetting({
       database,
@@ -116,6 +148,18 @@ export function normalizeGlossaryDefaultSort(
   return value === "alphabetical" || value === "lesson_order"
     ? value
     : defaultStudySettings.glossaryDefaultSort;
+}
+
+export function normalizeReviewFrontFurigana(value: boolean | string) {
+  if (typeof value === "boolean") {
+    return value;
+  }
+
+  return value === "false"
+    ? false
+    : value === "true"
+      ? true
+      : defaultStudySettings.reviewFrontFurigana;
 }
 
 export function normalizeReviewDailyLimit(value: number) {
@@ -147,6 +191,18 @@ function parseGlossaryDefaultSort(valueJson?: string) {
     return normalizeGlossaryDefaultSort(JSON.parse(valueJson));
   } catch {
     return defaultStudySettings.glossaryDefaultSort;
+  }
+}
+
+function parseReviewFrontFurigana(valueJson?: string) {
+  if (!valueJson) {
+    return defaultStudySettings.reviewFrontFurigana;
+  }
+
+  try {
+    return normalizeReviewFrontFurigana(JSON.parse(valueJson));
+  } catch {
+    return defaultStudySettings.reviewFrontFurigana;
   }
 }
 

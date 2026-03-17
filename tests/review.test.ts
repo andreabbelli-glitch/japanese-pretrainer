@@ -104,20 +104,21 @@ describe("review system", () => {
       rating: "good"
     });
     const now = new Date("2026-03-12T10:00:00.000Z");
-    const scheduled = (["again", "hard", "good", "easy"] as const).map((rating) =>
-      scheduleReview({
-        current: {
-          difficulty: 3.2,
-          dueAt: "2026-03-12T10:00:00.000Z",
-          lapses: 1,
-          lastReviewedAt: "2026-03-09T10:00:00.000Z",
-          reps: 5,
-          stability: 3,
-          state: "review"
-        },
-        now,
-        rating
-      })
+    const scheduled = (["again", "hard", "good", "easy"] as const).map(
+      (rating) =>
+        scheduleReview({
+          current: {
+            difficulty: 3.2,
+            dueAt: "2026-03-12T10:00:00.000Z",
+            lapses: 1,
+            lastReviewedAt: "2026-03-09T10:00:00.000Z",
+            reps: 5,
+            stability: 3,
+            state: "review"
+          },
+          now,
+          rating
+        })
     );
     const dueTimes = scheduled.map((item) => new Date(item.dueAt).getTime());
 
@@ -962,7 +963,9 @@ describe("review system", () => {
     expect(reviewPage).not.toBeNull();
     expect(reviewDetail).not.toBeNull();
 
-    const reviewMarkup = renderToStaticMarkup(ReviewPage({ data: reviewPage! }));
+    const reviewMarkup = renderToStaticMarkup(
+      ReviewPage({ data: reviewPage! })
+    );
     const detailMarkup = renderToStaticMarkup(
       ReviewCardDetailPage({ data: reviewDetail! })
     );
@@ -973,6 +976,59 @@ describe("review system", () => {
       'glossary-entry-hero__title jp-inline"><ruby>'
     );
     expect(detailMarkup).not.toContain("{{語彙|ごい}}");
+  });
+
+  it("can hide furigana on the review front until the answer is revealed", async () => {
+    await database
+      .update(card)
+      .set({
+        front: "{{語彙|ごい}}"
+      })
+      .where(eq(card.id, developmentFixture.primaryCardId));
+
+    await updateStudySettings(
+      {
+        reviewFrontFurigana: false
+      },
+      database
+    );
+
+    const [frontHiddenPage, revealedPage] = await Promise.all([
+      getReviewPageData(
+        developmentFixture.mediaSlug,
+        {
+          card: developmentFixture.primaryCardId
+        },
+        database
+      ),
+      getReviewPageData(
+        developmentFixture.mediaSlug,
+        {
+          card: developmentFixture.primaryCardId,
+          show: "answer"
+        },
+        database
+      )
+    ]);
+
+    expect(frontHiddenPage).not.toBeNull();
+    expect(revealedPage).not.toBeNull();
+
+    const frontHiddenMarkup = renderToStaticMarkup(
+      ReviewPage({ data: frontHiddenPage! })
+    );
+    const revealedMarkup = renderToStaticMarkup(
+      ReviewPage({ data: revealedPage! })
+    );
+
+    expect(frontHiddenMarkup).toContain(
+      'review-stage__front jp-inline">語彙</h2>'
+    );
+    expect(frontHiddenMarkup).not.toContain(
+      'review-stage__front jp-inline"><ruby>'
+    );
+    expect(frontHiddenMarkup).not.toContain("{{語彙|ごい}}");
+    expect(revealedMarkup).toContain('review-stage__front jp-inline"><ruby>');
   });
 
   it("renders grading actions from easy to again with next-review previews", async () => {

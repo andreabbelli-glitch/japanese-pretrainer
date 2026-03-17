@@ -721,6 +721,11 @@ export async function seedDevelopmentDatabase(
           updatedAt
         },
         {
+          key: "review_front_furigana",
+          valueJson: JSON.stringify(true),
+          updatedAt
+        },
+        {
           key: "glossary_default_sort",
           valueJson: JSON.stringify("lesson_order"),
           updatedAt

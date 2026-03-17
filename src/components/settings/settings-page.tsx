@@ -28,8 +28,7 @@ const furiganaOptions = [
     value: "off"
   },
   {
-    description:
-      "Le mostra solo quando servono, per una lettura più pulita.",
+    description: "Le mostra solo quando servono, per una lettura più pulita.",
     label: "Su richiesta",
     value: "hover"
   }
@@ -47,6 +46,21 @@ const glossarySortOptions = [
       "Ordina il glossary per forma giapponese in modo più consultivo.",
     label: "Alfabetico",
     value: "alphabetical"
+  }
+] as const;
+
+const reviewFrontFuriganaOptions = [
+  {
+    description:
+      "Mostra subito il furigana sopra il fronte della card durante la review.",
+    label: "Visibile subito",
+    value: "true"
+  },
+  {
+    description:
+      "Lascia il fronte senza ruby finche non riveli la risposta della card.",
+    label: "Solo dopo risposta",
+    value: "false"
   }
 ] as const;
 
@@ -77,7 +91,7 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
       <Section
         eyebrow="Preferenze"
         title="Impostazioni"
-        description="Tre controlli, effetto immediato."
+        description="Quattro controlli, effetto immediato."
       >
         <form action={saveStudySettingsAction} className="settings-form">
           {returnTo ? (
@@ -95,7 +109,8 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
                 <h3 className="settings-panel__title">Furigana</h3>
               </div>
               <p className="settings-panel__body">
-                Vale per l&apos;indice del Textbook e per il reader delle lesson.
+                Vale per l&apos;indice del Textbook e per il reader delle
+                lesson.
               </p>
             </div>
             <div className="settings-choice-grid">
@@ -104,6 +119,39 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
                   <input
                     defaultChecked={settings.furiganaMode === option.value}
                     name="furiganaMode"
+                    type="radio"
+                    value={option.value}
+                  />
+                  <span className="settings-choice-card__title">
+                    {option.label}
+                  </span>
+                  <span className="settings-choice-card__body">
+                    {option.description}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </SurfaceCard>
+
+          <SurfaceCard className="settings-panel">
+            <div className="settings-panel__header">
+              <div>
+                <p className="eyebrow">Review</p>
+                <h3 className="settings-panel__title">Furigana sul fronte</h3>
+              </div>
+              <p className="settings-panel__body">
+                Decide se la review mostra subito la lettura sopra la card o
+                solo dopo aver rivelato la risposta.
+              </p>
+            </div>
+            <div className="settings-choice-grid settings-choice-grid--compact">
+              {reviewFrontFuriganaOptions.map((option) => (
+                <label key={option.value} className="settings-choice-card">
+                  <input
+                    defaultChecked={
+                      settings.reviewFrontFurigana === (option.value === "true")
+                    }
+                    name="reviewFrontFurigana"
                     type="radio"
                     value={option.value}
                   />
@@ -152,8 +200,8 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
                 <h3 className="settings-panel__title">Ordine predefinito</h3>
               </div>
               <p className="settings-panel__body">
-                Cambia l’ordine iniziale del Glossary, ma lascia invariata la qualità del ranking quando stai
-                cercando qualcosa.
+                Cambia l’ordine iniziale del Glossary, ma lascia invariata la
+                qualità del ranking quando stai cercando qualcosa.
               </p>
             </div>
             <div className="settings-choice-grid settings-choice-grid--compact">

@@ -41,6 +41,7 @@ describe("settings page", () => {
         settings: {
           furiganaMode: "hover",
           glossaryDefaultSort: "lesson_order",
+          reviewFrontFurigana: true,
           reviewDailyLimit: 20
         }
       })
@@ -48,6 +49,8 @@ describe("settings page", () => {
 
     expect(markup).toContain("Preferenze di studio");
     expect(markup).toContain("Salva preferenze");
+    expect(markup).toContain("Furigana sul fronte");
+    expect(markup).toContain("Solo dopo risposta");
     expect(markup).toContain("Esci dall&#x27;account");
     expect(markup).toContain(">Esci<");
     expect(markup.indexOf("Salva preferenze")).toBeLessThan(
@@ -64,6 +67,7 @@ describe("settings page", () => {
         settings: {
           furiganaMode: "hover",
           glossaryDefaultSort: "lesson_order",
+          reviewFrontFurigana: true,
           reviewDailyLimit: 20
         }
       })

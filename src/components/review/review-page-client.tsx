@@ -12,7 +12,7 @@ import {
   setLinkedEntryLearningSessionAction,
   setReviewCardSuspendedSessionAction
 } from "@/actions/review";
-import { renderFurigana } from "@/lib/render-furigana";
+import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import type { ReviewPageData } from "@/lib/review";
 import { appendReturnToParam, buildReviewSessionHref } from "@/lib/site";
 
@@ -63,6 +63,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       viewData.queue.suspendedCount +
       viewData.queue.upcomingCount >
     0;
+  const showFrontFurigana =
+    viewData.settings.reviewFrontFurigana ||
+    viewData.selectedCardContext.showAnswer;
   const additionalNewCount = showCompletionTopUp(viewData);
   const sessionHref = buildReviewSessionHref({
     answeredCount: viewData.session.answeredCount,
@@ -261,7 +264,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
               <div className="review-stage__card">
                 <p className="eyebrow">Fronte</p>
                 <h2 className="review-stage__front jp-inline">
-                  {renderFurigana(selectedCard.front)}
+                  {showFrontFurigana
+                    ? renderFurigana(selectedCard.front)
+                    : stripInlineMarkdown(selectedCard.front)}
                 </h2>
                 {!viewData.selectedCardContext.showAnswer ? (
                   <div className="review-stage__veil">

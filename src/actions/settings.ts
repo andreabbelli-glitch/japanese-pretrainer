@@ -10,6 +10,7 @@ import { mediaHref, mediaStudyHref } from "@/lib/site";
 import {
   normalizeFuriganaMode,
   normalizeGlossaryDefaultSort,
+  normalizeReviewFrontFurigana,
   normalizeReviewDailyLimit,
   updateStudySettings
 } from "@/lib/settings";
@@ -23,6 +24,9 @@ export async function saveStudySettingsAction(formData: FormData) {
     ),
     glossaryDefaultSort: normalizeGlossaryDefaultSort(
       readRequiredString(formData, "glossaryDefaultSort")
+    ),
+    reviewFrontFurigana: normalizeReviewFrontFurigana(
+      readRequiredString(formData, "reviewFrontFurigana")
     ),
     reviewDailyLimit: normalizeReviewDailyLimit(
       Number.parseInt(readRequiredString(formData, "reviewDailyLimit"), 10)

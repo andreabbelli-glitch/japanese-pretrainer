@@ -415,6 +415,7 @@ Campi:
 Chiavi minime:
 
 - `furigana_mode`
+- `review_front_furigana`
 - `review_daily_limit`
 - `glossary_default_sort`
 

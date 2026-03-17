@@ -24,7 +24,10 @@ import {
   type ReviewCardListItem,
   type TermGlossaryEntry
 } from "@/db";
-import { getReviewDailyLimit } from "@/lib/settings";
+import {
+  getReviewDailyLimit,
+  getReviewFrontFuriganaSetting
+} from "@/lib/settings";
 import {
   mediaGlossaryEntryHref,
   mediaGlossaryHref,
@@ -163,6 +166,9 @@ export type ReviewPageData = {
     slug: string;
     title: string;
   };
+  settings: {
+    reviewFrontFurigana: boolean;
+  };
   queue: ReviewQueueSnapshot & {
     introLabel: string;
     manualCards: ReviewQueueCard[];
@@ -248,14 +254,21 @@ export async function getReviewPageData(
   }
 
   const searchState = normalizeReviewSearchState(searchParams);
-  const [cards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
-    await Promise.all([
-      getEligibleReviewCardsByMediaId(media.id, database),
-      listTermEntriesByMediaId(database, media.id),
-      listGrammarEntriesByMediaId(database, media.id),
-      getReviewDailyLimit(database),
-      countNewCardsIntroducedOnDayByMediaId(database, media.id, now)
-    ]);
+  const [
+    cards,
+    terms,
+    grammar,
+    dailyLimit,
+    newIntroducedTodayCount,
+    reviewFrontFurigana
+  ] = await Promise.all([
+    getEligibleReviewCardsByMediaId(media.id, database),
+    listTermEntriesByMediaId(database, media.id),
+    listGrammarEntriesByMediaId(database, media.id),
+    getReviewDailyLimit(database),
+    countNewCardsIntroducedOnDayByMediaId(database, media.id, now),
+    getReviewFrontFuriganaSetting(database)
+  ]);
   const queue = buildReviewQueueSnapshot({
     cards,
     dailyLimit,
@@ -291,6 +304,9 @@ export async function getReviewPageData(
       reviewHref: mediaStudyHref(media.slug, "review"),
       slug: media.slug,
       title: media.title
+    },
+    settings: {
+      reviewFrontFurigana
     },
     queue,
     selectedCard,
@@ -372,9 +388,8 @@ export async function getEligibleReviewCardsByMediaIds(
     listLessonLinkedReviewEntriesByMediaIds(database, mediaIds)
   ]);
   const cardsByMedia = groupCardsByMedia(cards);
-  const lessonLinkedEntriesByMedia = groupLessonLinkedReviewEntriesByMedia(
-    lessonLinkedEntries
-  );
+  const lessonLinkedEntriesByMedia =
+    groupLessonLinkedReviewEntriesByMedia(lessonLinkedEntries);
   const eligibleCards = new Map<string, ReviewCardListItem[]>();
 
   for (const mediaId of mediaIds) {
@@ -688,7 +703,9 @@ function filterReviewCardsByLessonCompletion(
   lessonLinkedEntries: LessonLinkedReviewEntry[]
 ) {
   const linkedEntryKeys = new Set(
-    lessonLinkedEntries.map((row) => buildReviewEntryKey(row.entryType, row.entryId))
+    lessonLinkedEntries.map((row) =>
+      buildReviewEntryKey(row.entryType, row.entryId)
+    )
   );
   const completedEntryKeys = new Set(
     lessonLinkedEntries
@@ -1469,10 +1486,7 @@ function startOfLocalDay(value: Date) {
 
 function compareReviewCardsByDue<
   TCard extends Pick<ReviewQueueCard, "createdAt" | "dueAt" | "orderIndex">
->(
-  left: TCard,
-  right: TCard
-) {
+>(left: TCard, right: TCard) {
   if ((left.dueAt ?? "") !== (right.dueAt ?? "")) {
     return (left.dueAt ?? "9999").localeCompare(right.dueAt ?? "9999");
   }
@@ -1482,10 +1496,7 @@ function compareReviewCardsByDue<
 
 function compareReviewCardsByOrder<
   TCard extends Pick<ReviewQueueCard, "createdAt" | "orderIndex">
->(
-  left: TCard,
-  right: TCard
-) {
+>(left: TCard, right: TCard) {
   if (
     (left.orderIndex ?? Number.MAX_SAFE_INTEGER) !==
     (right.orderIndex ?? Number.MAX_SAFE_INTEGER)

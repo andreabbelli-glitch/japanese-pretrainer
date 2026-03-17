@@ -193,6 +193,7 @@ describe("progress, settings, and study controls", () => {
       {
         furiganaMode: "on",
         glossaryDefaultSort: "alphabetical",
+        reviewFrontFurigana: false,
         reviewDailyLimit: 1
       },
       database
@@ -207,6 +208,7 @@ describe("progress, settings, and study controls", () => {
     expect(settings).toEqual({
       furiganaMode: "on",
       glossaryDefaultSort: "alphabetical",
+      reviewFrontFurigana: false,
       reviewDailyLimit: 1
     });
     expect(glossaryData?.filters.sort).toBe("alphabetical");
@@ -231,5 +233,6 @@ describe("progress, settings, and study controls", () => {
     expect(reviewData?.queue.dailyLimit).toBe(1);
     expect(reviewData?.queue.newAvailableCount).toBe(1);
     expect(reviewData?.queue.newQueuedCount).toBe(1);
+    expect(reviewData?.settings.reviewFrontFurigana).toBe(false);
   });
 });

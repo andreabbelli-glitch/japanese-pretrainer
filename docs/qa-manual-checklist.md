@@ -27,9 +27,10 @@
 - Reader lesson mobile: tap su un termine apre sheet; `Lezioni` apre la rail mobile.
 - Glossary: ricerca per kanji, kana e romaji (`bochi`, `yamafuda`, `侵略`) restituisce risultati sensati.
 - Glossary detail: lesson e card collegate sono navigabili.
+- Review: il toggle `Furigana sul fronte` rispetta sia la modalita immediata sia quella solo dopo risposta.
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione.
 - Progress: mostra textbook, coverage, review e setting persistiti.
-- Settings: salvare furigana e ordine glossary aggiorna le viste collegate.
+- Settings: salvare furigana reader, furigana review e ordine glossary aggiorna le viste collegate.
 - Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook, glossary e progress risultano navigabili senza errori o stati vuoti incoerenti.
 
 ## Stati e resilienza
