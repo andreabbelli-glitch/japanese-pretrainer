@@ -85,8 +85,6 @@ export async function applyReviewGrade(input: {
         learningSteps: loadedCard.reviewState?.learningSteps ?? 0,
         reps: loadedCard.reviewState?.reps ?? 0,
         scheduledDays: loadedCard.reviewState?.scheduledDays ?? 0,
-        schedulerVersion:
-          loadedCard.reviewState?.schedulerVersion ?? "legacy_simple",
         stability: loadedCard.reviewState?.stability ?? null,
         state: loadedCard.reviewState?.state as ReviewState | null
       },

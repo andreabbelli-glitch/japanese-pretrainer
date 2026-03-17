@@ -339,7 +339,8 @@ id: ${input.grammarCardId}
 entry_type: grammar
 entry_id: ${input.grammarSourceId}
 card_type: concept
-front: ～共有
+front: >-
+  ～共有
 back: ${input.grammarMeaning}
 tags: [shared, grammar]
 :::

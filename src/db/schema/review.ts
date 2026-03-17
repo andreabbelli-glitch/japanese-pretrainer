@@ -91,7 +91,7 @@ export const reviewState = sqliteTable(
       enum: reviewSchedulerVersionValues
     })
       .notNull()
-      .default("legacy_simple"),
+      .default("fsrs_v1"),
     manualOverride: integer("manual_override", { mode: "boolean" })
       .notNull()
       .default(false),
@@ -119,7 +119,7 @@ export const reviewLog = sqliteTable(
       enum: reviewSchedulerVersionValues
     })
       .notNull()
-      .default("legacy_simple")
+      .default("fsrs_v1")
   },
   (table) => [
     index("review_log_card_answered_idx").on(table.cardId, table.answeredAt)

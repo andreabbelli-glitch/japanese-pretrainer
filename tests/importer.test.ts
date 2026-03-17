@@ -210,7 +210,7 @@ describe("content importer", () => {
     expect(importedTerm?.lemma).toBe("侵略");
     expect(importedGrammar?.pattern).toBe("～時 / ～た時");
     expect(importedGrammar?.reading).toBe("とき / たとき");
-    expect(importedCard?.front).toBe("侵略");
+    expect(importedCard?.front).toBe("{{侵略|しんりゃく}}");
     expect(importedCard?.exampleJp).toBe(
       "{{侵略|しんりゃく}}でこのクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。"
     );
@@ -923,7 +923,7 @@ async function seedUserState(database: DatabaseClient) {
     learningSteps: 0,
     lapses: 1,
     reps: 3,
-    schedulerVersion: "legacy_simple",
+    schedulerVersion: "fsrs_v1",
     manualOverride: false,
     createdAt: "2026-03-09T09:00:00.000Z",
     updatedAt: "2026-03-09T09:30:00.000Z"
@@ -938,7 +938,7 @@ async function seedUserState(database: DatabaseClient) {
     scheduledDueAt: "2026-03-10T09:00:00.000Z",
     elapsedDays: 0.25,
     responseMs: 2100,
-    schedulerVersion: "legacy_simple"
+    schedulerVersion: "fsrs_v1"
   });
   await database.insert(lessonProgress).values({
     lessonId,

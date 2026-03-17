@@ -112,8 +112,9 @@ Tabelle incluse nel perimetro del task:
 - `review_state` materializza lo stato FSRS della card. Dopo la migrazione il
   layer review conserva il memory state con `stability`, `difficulty`,
   `due_at`, `last_reviewed_at`, `lapses`, `reps`, `scheduled_days`,
-  `learning_steps` e un `scheduler_version` esplicito per distinguere i record
-  legacy da quelli calcolati con FSRS.
+  `learning_steps` e un `scheduler_version` esplicito. I database storici
+  vengono convertiti una tantum a `fsrs_v1` replayando `review_log`; il runtime
+  non usa piu un branch legacy separato.
 - `review_log` continua a registrare ogni voto con lo stato precedente e
   successivo, il `scheduled_due_at` derivato dal motore, e il tempo di risposta
   quando disponibile, cosi la cronologia resta ricostruibile anche dopo

@@ -582,7 +582,7 @@ export async function seedDevelopmentDatabase(
           learningSteps: 0,
           lapses: 1,
           reps: 3,
-          schedulerVersion: "legacy_simple",
+          schedulerVersion: "fsrs_v1",
           manualOverride: false,
           createdAt,
           updatedAt
@@ -598,7 +598,7 @@ export async function seedDevelopmentDatabase(
           learningSteps: 0,
           lapses: 0,
           reps: 5,
-          schedulerVersion: "legacy_simple",
+          schedulerVersion: "fsrs_v1",
           manualOverride: false,
           createdAt,
           updatedAt
@@ -636,7 +636,7 @@ export async function seedDevelopmentDatabase(
           scheduledDueAt: dueSoonAt,
           elapsedDays: 0.5,
           responseMs: 4200,
-          schedulerVersion: "legacy_simple"
+          schedulerVersion: "fsrs_v1"
         },
         {
           id: "review_log_fixture_teiru_1",
@@ -648,7 +648,7 @@ export async function seedDevelopmentDatabase(
           scheduledDueAt: dueLaterAt,
           elapsedDays: 2.1,
           responseMs: 3800,
-          schedulerVersion: "legacy_simple"
+          schedulerVersion: "fsrs_v1"
         }
       ])
       .onConflictDoUpdate({

@@ -3,6 +3,7 @@ import path from "node:path";
 import { migrate } from "drizzle-orm/libsql/migrator";
 
 import { db, type DatabaseClient } from "./client.ts";
+import { migrateReviewHistoryToFsrs } from "./review-fsrs-migration.ts";
 
 export async function runMigrations(
   database: DatabaseClient = db,
@@ -10,6 +11,7 @@ export async function runMigrations(
 ): Promise<void> {
   await migrate(database, { migrationsFolder });
   await repairPitchAccentSourceColumns(database);
+  await migrateReviewHistoryToFsrs(database);
 }
 
 async function repairPitchAccentSourceColumns(

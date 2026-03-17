@@ -9,14 +9,12 @@ import {
 
 import type {
   reviewRatingValues,
-  reviewSchedulerVersionValues,
   reviewStateValues
-} from "@/db";
+} from "@/db/schema/enums.ts";
 
 export type ReviewRating = (typeof reviewRatingValues)[number];
-export type ReviewSchedulerVersion =
-  (typeof reviewSchedulerVersionValues)[number];
 export type ReviewState = (typeof reviewStateValues)[number];
+export type ReviewSchedulerVersion = "fsrs_v1";
 
 const DAY = 24 * 60 * 60_000;
 const MINIMUM_STABILITY = 0.1;
@@ -45,7 +43,6 @@ type ScheduleReviewInput = {
     learningSteps?: number | null;
     reps: number;
     scheduledDays?: number | null;
-    schedulerVersion?: ReviewSchedulerVersion | null;
     stability: number | null;
     state: ReviewState | null;
   };
@@ -66,6 +63,34 @@ export type ScheduleReviewResult = {
   schedulerVersion: "fsrs_v1";
   stability: number;
   state: SchedulableReviewState;
+};
+
+export type ReviewLogReplayInput = {
+  answeredAt: string;
+  id: string;
+  previousState: ReviewState | null;
+  rating: ReviewRating;
+  responseMs: number | null;
+};
+
+export type ReplayedReviewLog = {
+  answeredAt: string;
+  elapsedDays: number;
+  id: string;
+  newState: SchedulableReviewState;
+  previousState: SchedulableReviewState;
+  rating: ReviewRating;
+  responseMs: number | null;
+  scheduledDueAt: string;
+  schedulerVersion: "fsrs_v1";
+};
+
+export type ReplayedReviewHistory = {
+  logs: ReplayedReviewLog[];
+  state: Omit<ScheduleReviewResult, "elapsedDays"> & {
+    dueAt: string;
+    lastReviewedAt: string;
+  };
 };
 
 export function scheduleReview(
@@ -112,7 +137,6 @@ function buildFsrsCard(
   now: Date
 ): Card {
   const normalizedState = normalizeSchedulableState(current.state);
-  const schedulerVersion = current.schedulerVersion ?? "legacy_simple";
 
   if (normalizedState === "new") {
     return createEmptyCard(now);
@@ -122,12 +146,8 @@ function buildFsrsCard(
     current.lastReviewedAt,
     now.toISOString()
   );
-  const scheduledDays =
-    schedulerVersion === "fsrs_v1"
-      ? normalizeCount(current.scheduledDays)
-      : normalizeCount(deriveScheduledDays(current));
-  const learningSteps =
-    schedulerVersion === "fsrs_v1" ? normalizeCount(current.learningSteps) : 0;
+  const scheduledDays = normalizeCount(current.scheduledDays);
+  const learningSteps = normalizeCount(current.learningSteps);
 
   return {
     difficulty: clampDifficulty(
@@ -145,24 +165,6 @@ function buildFsrsCard(
       ? new Date(current.lastReviewedAt)
       : undefined
   };
-}
-
-function deriveScheduledDays(current: ScheduleReviewInput["current"]) {
-  if (current.lastReviewedAt && current.dueAt) {
-    const scheduledMs =
-      new Date(current.dueAt).getTime() -
-      new Date(current.lastReviewedAt).getTime();
-
-    if (Number.isFinite(scheduledMs) && scheduledMs > 0) {
-      return Math.max(0, Math.round(scheduledMs / DAY));
-    }
-  }
-
-  if (current.stability && Number.isFinite(current.stability)) {
-    return Math.max(0, Math.round(current.stability));
-  }
-
-  return 0;
 }
 
 function normalizeCount(value: number | null | undefined, fallback = 0) {
@@ -228,6 +230,74 @@ function mapReviewRating(value: ReviewRating) {
     default:
       return Rating.Good;
   }
+}
+
+export function replayReviewHistory(
+  logs: readonly ReviewLogReplayInput[]
+): ReplayedReviewHistory | null {
+  if (logs.length === 0) {
+    return null;
+  }
+
+  const orderedLogs = [...logs].sort((left, right) => {
+    const answeredAtComparison =
+      new Date(left.answeredAt).getTime() - new Date(right.answeredAt).getTime();
+
+    if (answeredAtComparison !== 0) {
+      return answeredAtComparison;
+    }
+
+    return left.id.localeCompare(right.id);
+  });
+
+  let card = createEmptyCard(new Date(orderedLogs[0]!.answeredAt));
+  const replayedLogs: ReplayedReviewLog[] = [];
+
+  for (const [index, log] of orderedLogs.entries()) {
+    const reviewAt = new Date(log.answeredAt);
+    const startsFreshSession =
+      index === 0 || normalizeSchedulableState(log.previousState) === "new";
+
+    if (startsFreshSession) {
+      card = createEmptyCard(reviewAt);
+    }
+
+    const result = reviewScheduler.next(card, reviewAt, mapReviewRating(log.rating));
+
+    replayedLogs.push({
+      answeredAt: log.answeredAt,
+      elapsedDays: Number.isFinite(result.log.elapsed_days)
+        ? result.log.elapsed_days
+        : calculateElapsedDays(card.last_review?.toISOString() ?? null, reviewAt.toISOString()) ?? 0,
+      id: log.id,
+      newState: mapFsrsState(result.card.state),
+      previousState: mapFsrsState(result.log.state),
+      rating: log.rating,
+      responseMs: log.responseMs,
+      scheduledDueAt: result.card.due.toISOString(),
+      schedulerVersion: "fsrs_v1"
+    });
+
+    card = result.card;
+  }
+
+  const lastLog = orderedLogs.at(-1)!;
+
+  return {
+    logs: replayedLogs,
+    state: {
+      difficulty: roundTo(card.difficulty, 3),
+      dueAt: card.due.toISOString(),
+      lapses: card.lapses,
+      learningSteps: card.learning_steps,
+      lastReviewedAt: lastLog.answeredAt,
+      reps: card.reps,
+      scheduledDays: card.scheduled_days,
+      schedulerVersion: "fsrs_v1",
+      stability: roundTo(card.stability, 3),
+      state: mapFsrsState(card.state)
+    }
+  };
 }
 
 function clampDifficulty(value: number) {

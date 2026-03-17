@@ -45,10 +45,9 @@ so gia".
 
 ## Note
 
-Lo scheduler deve restare compatibile con i record legacy, ma il comportamento
-corrente va espresso come FSRS in modo esplicito. Se servono campi extra per
-distinguere gli stati legacy, il modello dati li espone senza rompere la queue
-esistente.
+Lo scheduler gira a regime solo in modalita FSRS. I database storici vengono
+migrati una tantum replayando `review_log`, cosi il runtime non deve mantenere
+una doppia semantica legacy/FSRS.
 
 Le card collegate a piu entry driving restano intenzionalmente sbloccabili non
 appena almeno una delle entry driving lesson-linked e stata completata. Questo

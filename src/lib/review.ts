@@ -1393,7 +1393,6 @@ function buildReviewGradePreviews(
         learningSteps: card.reviewState?.learningSteps ?? 0,
         reps: card.reviewState?.reps ?? 0,
         scheduledDays: card.reviewState?.scheduledDays ?? 0,
-        schedulerVersion: card.reviewState?.schedulerVersion ?? "legacy_simple",
         stability: card.reviewState?.stability ?? null,
         state: card.reviewState?.state as ReviewState | null
       },

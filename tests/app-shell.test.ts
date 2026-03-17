@@ -79,16 +79,16 @@ describe("app shell live data", () => {
     expect(media?.entriesKnown).toBe(2);
     expect(media?.entriesTotal).toBe(2);
     expect(media?.cardsDue).toBe(0);
-    expect(media?.activeReviewCards).toBe(1);
-    expect(media?.reviewStatValue).toBe("In pari");
-    expect(media?.reviewStatDetail).toContain("rotazione");
+    expect(media?.activeReviewCards).toBe(0);
+    expect(media?.reviewStatValue).toBe("In pausa");
+    expect(media?.reviewStatDetail).toContain("non richiedono Review attiva");
 
     const dashboard = await getDashboardData(database);
 
     expect(dashboard.totals.lessonsCompleted).toBe(1);
     expect(dashboard.totals.entriesKnown).toBe(2);
     expect(dashboard.totals.cardsDue).toBe(0);
-    expect(dashboard.totals.activeReviewCards).toBe(1);
+    expect(dashboard.totals.activeReviewCards).toBe(0);
   });
 
   it("prefers the most reviewable media for review entry points", async () => {
