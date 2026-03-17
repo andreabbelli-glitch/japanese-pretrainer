@@ -73,29 +73,25 @@ function matchesSuggestionFilters(
     return false;
   }
 
-  if (
-    filters.media !== "all" &&
-    !suggestion.localHits.some((hit) => hit.mediaSlug === filters.media)
-  ) {
-    return false;
-  }
+  return suggestion.localHits.some((hit) => {
+    if (filters.media !== "all" && hit.mediaSlug !== filters.media) {
+      return false;
+    }
 
-  if (
-    filters.study !== "all" &&
-    !suggestion.localHits.some((hit) => hit.studyKey === filters.study)
-  ) {
-    return false;
-  }
+    if (filters.study !== "all" && hit.studyKey !== filters.study) {
+      return false;
+    }
 
-  if (filters.cards === "with_cards" && !suggestion.hasCards) {
-    return false;
-  }
+    if (filters.cards === "with_cards" && !hit.hasCards) {
+      return false;
+    }
 
-  if (filters.cards === "without_cards" && !suggestion.hasCardlessVariant) {
-    return false;
-  }
+    if (filters.cards === "without_cards" && hit.hasCards) {
+      return false;
+    }
 
-  return true;
+    return true;
+  });
 }
 
 function scoreSuggestion(

@@ -14,7 +14,9 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 import { parseContentRoot, parseMediaDirectory } from "@/lib/content";
+import { parseFrontmatter } from "@/lib/content/parser/frontmatter";
 import { parseInlineFragment } from "@/lib/content/parser/markdown";
+import { extractStructuredBlocks } from "@/lib/content/parser/structured-blocks";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -81,6 +83,41 @@ const cardTextPlainScalarMediaDirectory = path.join(
 );
 
 describe("content parser and validator", () => {
+  it("parses frontmatter when the file starts with BOM and uses CRLF", () => {
+    const source =
+      "\uFEFF---\r\nid: media-demo\r\nslug: demo\r\n---\r\n# Body\r\n";
+    const result = parseFrontmatter(source, "fixture.md");
+
+    expect(result.issues).toEqual([]);
+    expect(result.data).toEqual({
+      id: "media-demo",
+      slug: "demo"
+    });
+    expect(result.bodyLineOffset).toBe(4);
+    expect(result.body).toBe("# Body\n");
+  });
+
+  it("does not parse structured blocks inside longer code fences", () => {
+    const source = [
+      "````md",
+      "```yaml",
+      ":::term",
+      "id: term-ignored",
+      "lemma: 例",
+      "reading: れい",
+      "romaji: rei",
+      "meaning_it: esempio",
+      ":::",
+      "```",
+      "````"
+    ].join("\n");
+    const result = extractStructuredBlocks(source, "fixture.md", 0);
+
+    expect(result.issues).toEqual([]);
+    expect(result.blocks).toEqual([]);
+    expect(result.transformedSource).toBe(source);
+  });
+
   it("tracks semantic references nested inside inline code fragments", () => {
     const result = parseInlineFragment({
       source: "`[食べる](term:term-taberu)`",

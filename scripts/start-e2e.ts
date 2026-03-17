@@ -10,6 +10,7 @@ const database = createDatabaseClient({
   databaseUrl: process.env.DATABASE_URL
 });
 const contentRoot = path.resolve(process.cwd(), "content");
+const runtimeEnv = createE2ERuntimeEnv(process.env);
 
 try {
   await runMigrations(database);
@@ -39,7 +40,7 @@ const nextStart = spawn(
   ["./node_modules/next/dist/bin/next", "start", "--port", "3100"],
   {
     cwd: process.cwd(),
-    env: process.env,
+    env: runtimeEnv,
     stdio: "inherit"
   }
 );
@@ -57,4 +58,16 @@ for (const eventName of ["SIGINT", "SIGTERM"] as const) {
   process.on(eventName, () => {
     nextStart.kill(eventName);
   });
+}
+
+function createE2ERuntimeEnv(
+  sourceEnv: NodeJS.ProcessEnv
+): NodeJS.ProcessEnv {
+  return {
+    ...sourceEnv,
+    AUTH_PASSWORD: "",
+    AUTH_PASSWORD_HASH: "",
+    AUTH_SESSION_SECRET: "",
+    AUTH_USERNAME: ""
+  };
 }

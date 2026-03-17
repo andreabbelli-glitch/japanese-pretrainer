@@ -13,8 +13,11 @@ import {
   card,
   cardEntryLink,
   closeDatabaseClient,
+  countNewCardsIntroducedOnDayByMediaId,
+  countNewCardsIntroducedOnDayByMediaIds,
   createDatabaseClient,
   developmentFixture,
+  getUtcDayBounds,
   lessonProgress,
   media,
   reviewLog,
@@ -120,6 +123,105 @@ describe("review system", () => {
     expect(fromReview.lapses).toBe(2);
     expect(fromReview.reps).toBe(6);
     expect(fromReview.dueAt).toBe("2026-03-12T10:00:00.000Z");
+  });
+
+  it("derives study-day boundaries in UTC regardless of runtime timezone", () => {
+    expect(getUtcDayBounds(new Date("2026-03-10T23:30:00.000-05:00"))).toEqual({
+      dayEndIso: "2026-03-12T00:00:00.000Z",
+      dayStartIso: "2026-03-11T00:00:00.000Z"
+    });
+  });
+
+  it("counts newly introduced cards against a stable UTC study day", async () => {
+    await database.insert(media).values({
+      id: "media_timezone_fixture",
+      slug: "timezone-fixture",
+      title: "Timezone Fixture",
+      mediaType: "game",
+      segmentKind: "chapter",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      description: "Fixture per il boundary UTC della review.",
+      status: "active",
+      createdAt: "2026-03-10T00:00:00.000Z",
+      updatedAt: "2026-03-10T00:00:00.000Z"
+    });
+    await database.insert(card).values([
+      {
+        id: "card_timezone_fixture_before",
+        mediaId: "media_timezone_fixture",
+        segmentId: null,
+        sourceFile: "tests/fixtures/db/timezone/before.md",
+        cardType: "recognition",
+        front: "前日",
+        back: "giorno precedente",
+        notesIt: null,
+        status: "active",
+        orderIndex: 1,
+        createdAt: "2026-03-10T00:00:00.000Z",
+        updatedAt: "2026-03-10T00:00:00.000Z"
+      },
+      {
+        id: "card_timezone_fixture_target",
+        mediaId: "media_timezone_fixture",
+        segmentId: null,
+        sourceFile: "tests/fixtures/db/timezone/target.md",
+        cardType: "recognition",
+        front: "当日",
+        back: "giorno target",
+        notesIt: null,
+        status: "active",
+        orderIndex: 2,
+        createdAt: "2026-03-10T00:00:00.000Z",
+        updatedAt: "2026-03-10T00:00:00.000Z"
+      }
+    ]);
+    await database.insert(reviewLog).values([
+      {
+        id: "review_log_timezone_before",
+        cardId: "card_timezone_fixture_before",
+        answeredAt: "2026-03-10T23:59:59.000Z",
+        rating: "good",
+        previousState: "new",
+        newState: "review",
+        scheduledDueAt: "2026-03-11T23:59:59.000Z",
+        elapsedDays: 0,
+        responseMs: null
+      },
+      {
+        id: "review_log_timezone_target",
+        cardId: "card_timezone_fixture_target",
+        answeredAt: "2026-03-11T00:00:00.000Z",
+        rating: "good",
+        previousState: "new",
+        newState: "review",
+        scheduledDueAt: "2026-03-12T00:00:00.000Z",
+        elapsedDays: 0,
+        responseMs: null
+      }
+    ]);
+
+    const asOf = new Date("2026-03-10T23:30:00.000-05:00");
+    const [singleMediaCount, groupedCounts] = await Promise.all([
+      countNewCardsIntroducedOnDayByMediaId(
+        database,
+        "media_timezone_fixture",
+        asOf
+      ),
+      countNewCardsIntroducedOnDayByMediaIds(
+        database,
+        ["media_timezone_fixture"],
+        asOf
+      )
+    ]);
+
+    expect(singleMediaCount).toBe(1);
+    expect(groupedCounts).toEqual([
+      {
+        mediaId: "media_timezone_fixture",
+        count: 1
+      }
+    ]);
   });
 
   it("hides cards tied to incomplete lessons but keeps orphan cards visible", async () => {
@@ -380,6 +482,43 @@ describe("review system", () => {
     expect(logs.at(-1)?.previousState).toBe("learning");
     expect(logs.at(-1)?.newState).toBe("review");
     expect(logs.at(-1)?.rating).toBe("good");
+  });
+
+  it("rejects review mutations when card and requested media do not match", async () => {
+    await expect(
+      applyReviewGrade({
+        cardId: developmentFixture.primaryCardId,
+        database,
+        expectedMediaId: "media_other",
+        rating: "good"
+      })
+    ).rejects.toThrow("Review card does not belong to the requested media.");
+
+    await expect(
+      setLinkedEntryStatusByCard({
+        cardId: developmentFixture.primaryCardId,
+        database,
+        expectedMediaId: "media_other",
+        status: "learning"
+      })
+    ).rejects.toThrow("Review card does not belong to the requested media.");
+
+    await expect(
+      setReviewCardSuspended({
+        cardId: developmentFixture.primaryCardId,
+        database,
+        expectedMediaId: "media_other",
+        suspended: true
+      })
+    ).rejects.toThrow("Review card does not belong to the requested media.");
+
+    await expect(
+      resetReviewCardProgress({
+        cardId: developmentFixture.primaryCardId,
+        database,
+        expectedMediaId: "media_other"
+      })
+    ).rejects.toThrow("Review card does not belong to the requested media.");
   });
 
   it("does not keep backfilling fresh new cards after the daily new limit has been used", async () => {

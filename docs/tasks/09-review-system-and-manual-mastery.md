@@ -47,3 +47,9 @@ gia".
 
 Lo scheduler puo essere inizialmente semplice, purche il modello dati resti
 compatibile con un raffinamento futuro.
+
+Le card collegate a piu entry driving restano intenzionalmente sbloccabili non
+appena almeno una delle entry driving lesson-linked e stata completata. Questo
+comportamento e voluto: serve a far emergere card di rinforzo o recap cross-
+lesson appena esiste gia un ancoraggio didattico sufficiente, senza aspettare
+che tutte le entry driving coinvolte abbiano completato l'intero percorso.

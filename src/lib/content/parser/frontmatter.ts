@@ -17,12 +17,13 @@ export function parseFrontmatter(
   source: string,
   filePath: string
 ): ParsedFrontmatterResult {
-  const lines = source.split("\n");
+  const normalizedSource = normalizeSourceForFrontmatter(source);
+  const lines = normalizedSource.split("\n");
 
   if (lines[0] !== "---") {
     return {
       data: null,
-      body: source,
+      body: normalizedSource,
       bodyLineOffset: 0,
       fieldRanges: {},
       fieldStyles: {},
@@ -134,6 +135,12 @@ export function parseFrontmatter(
     fieldStyles,
     issues
   };
+}
+
+function normalizeSourceForFrontmatter(source: string) {
+  const withoutBom = source.startsWith("\uFEFF") ? source.slice(1) : source;
+
+  return withoutBom.replace(/\r\n?/g, "\n");
 }
 
 function collectFieldMetadata(

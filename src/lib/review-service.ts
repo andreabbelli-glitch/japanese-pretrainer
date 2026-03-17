@@ -36,6 +36,7 @@ type LinkedEntryRef = {
 export async function applyReviewGrade(input: {
   cardId: string;
   database?: DatabaseClient;
+  expectedMediaId?: string;
   now?: Date;
   rating: ReviewRating;
   responseMs?: number | null;
@@ -50,6 +51,8 @@ export async function applyReviewGrade(input: {
     if (!loadedCard || loadedCard.status !== "active") {
       throw new Error("Review card not available for grading.");
     }
+
+    assertCardBelongsToExpectedMedia(loadedCard.mediaId, input.expectedMediaId);
 
     const effectiveState = resolveEffectiveReviewState({
       cardStatus: loadedCard.status,
@@ -142,6 +145,7 @@ export async function applyReviewGrade(input: {
 export async function resetReviewCardProgress(input: {
   cardId: string;
   database?: DatabaseClient;
+  expectedMediaId?: string;
   now?: Date;
 }) {
   const database = input.database ?? db;
@@ -153,6 +157,8 @@ export async function resetReviewCardProgress(input: {
     if (!loadedCard || loadedCard.status === "archived") {
       throw new Error("Review card not available for reset.");
     }
+
+    assertCardBelongsToExpectedMedia(loadedCard.mediaId, input.expectedMediaId);
 
     await tx
       .update(card)
@@ -202,6 +208,7 @@ export async function resetReviewCardProgress(input: {
 export async function setReviewCardSuspended(input: {
   cardId: string;
   database?: DatabaseClient;
+  expectedMediaId?: string;
   now?: Date;
   suspended: boolean;
 }) {
@@ -214,6 +221,8 @@ export async function setReviewCardSuspended(input: {
     if (!loadedCard || loadedCard.status === "archived") {
       throw new Error("Review card not available for suspension changes.");
     }
+
+    assertCardBelongsToExpectedMedia(loadedCard.mediaId, input.expectedMediaId);
 
     await tx
       .update(card)
@@ -234,6 +243,7 @@ export async function setReviewCardSuspended(input: {
 export async function setLinkedEntryStatusByCard(input: {
   cardId: string;
   database?: DatabaseClient;
+  expectedMediaId?: string;
   now?: Date;
   status: Exclude<ReviewEntryStatusValue, null>;
 }) {
@@ -246,6 +256,8 @@ export async function setLinkedEntryStatusByCard(input: {
     if (!loadedCard || loadedCard.status === "archived") {
       throw new Error("Linked entry status cannot be changed for this card.");
     }
+
+    assertCardBelongsToExpectedMedia(loadedCard.mediaId, input.expectedMediaId);
 
     if (loadedCard.drivingEntries.length === 0) {
       throw new Error("This card has no canonical entry to update.");
@@ -356,4 +368,13 @@ async function loadEntryStatusRows(
       status: statusMap.get(`${entry.entryType}:${entry.entryId}`) ?? null
     })
   );
+}
+
+function assertCardBelongsToExpectedMedia(
+  mediaId: string,
+  expectedMediaId: string | undefined
+) {
+  if (expectedMediaId && mediaId !== expectedMediaId) {
+    throw new Error("Review card does not belong to the requested media.");
+  }
 }

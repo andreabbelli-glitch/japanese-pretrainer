@@ -212,7 +212,10 @@ function buildResumeModel(input: {
   nextLesson: ReturnType<typeof selectNextLesson>;
   review: ProgressPageData["review"];
 }) {
-  if (input.review.queueCount > 0 && input.review.dueCount > 0) {
+  if (input.review.queueCount > 0) {
+    const headlineCount =
+      input.review.dueCount > 0 ? input.review.dueCount : input.review.queueCount;
+
     return {
       recommendedArea: "review" as const,
       recommendedBody: input.review.nextCardFront
@@ -221,9 +224,9 @@ function buildResumeModel(input: {
       recommendedHref: mediaStudyHref(input.mediaSlug, "review"),
       recommendedLabel: "Avvia review",
       recommendedTitle:
-        input.review.dueCount === 1
+        headlineCount === 1
           ? "1 card richiede attenzione"
-          : `${input.review.dueCount} card richiedono attenzione`
+          : `${headlineCount} card richiedono attenzione`
     };
   }
 

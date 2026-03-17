@@ -170,14 +170,7 @@ export async function countNewCardsIntroducedOnDayByMediaId(
   mediaId: string,
   asOf = new Date()
 ) {
-  const dayStart = new Date(
-    asOf.getFullYear(),
-    asOf.getMonth(),
-    asOf.getDate()
-  );
-  const dayEnd = new Date(dayStart);
-
-  dayEnd.setDate(dayEnd.getDate() + 1);
+  const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
 
   const rows = await database
     .select({
@@ -189,8 +182,8 @@ export async function countNewCardsIntroducedOnDayByMediaId(
       and(
         eq(card.mediaId, mediaId),
         eq(reviewLog.previousState, "new"),
-        gte(reviewLog.answeredAt, dayStart.toISOString()),
-        lt(reviewLog.answeredAt, dayEnd.toISOString())
+        gte(reviewLog.answeredAt, dayStartIso),
+        lt(reviewLog.answeredAt, dayEndIso)
       )
     );
 
@@ -206,14 +199,7 @@ export async function countNewCardsIntroducedOnDayByMediaIds(
     return [];
   }
 
-  const dayStart = new Date(
-    asOf.getFullYear(),
-    asOf.getMonth(),
-    asOf.getDate()
-  );
-  const dayEnd = new Date(dayStart);
-
-  dayEnd.setDate(dayEnd.getDate() + 1);
+  const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
 
   const rows = await database
     .select({
@@ -226,8 +212,8 @@ export async function countNewCardsIntroducedOnDayByMediaIds(
       and(
         inArray(card.mediaId, mediaIds),
         eq(reviewLog.previousState, "new"),
-        gte(reviewLog.answeredAt, dayStart.toISOString()),
-        lt(reviewLog.answeredAt, dayEnd.toISOString())
+        gte(reviewLog.answeredAt, dayStartIso),
+        lt(reviewLog.answeredAt, dayEndIso)
       )
     );
 
@@ -248,6 +234,20 @@ export async function countNewCardsIntroducedOnDayByMediaIds(
     mediaId,
     count: cardIds.size
   }));
+}
+
+export function getUtcDayBounds(asOf: Date) {
+  const dayStart = new Date(
+    Date.UTC(asOf.getUTCFullYear(), asOf.getUTCMonth(), asOf.getUTCDate())
+  );
+  const dayEnd = new Date(dayStart);
+
+  dayEnd.setUTCDate(dayEnd.getUTCDate() + 1);
+
+  return {
+    dayEndIso: dayEnd.toISOString(),
+    dayStartIso: dayStart.toISOString()
+  };
 }
 
 export type ReviewLaunchCandidate = {

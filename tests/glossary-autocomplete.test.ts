@@ -89,4 +89,30 @@ describe("glossary autocomplete", () => {
     expect(withoutCards.map((entry) => entry.label)).toEqual(["余白"]);
     expect(withCards.map((entry) => entry.label)).toEqual(["余白"]);
   });
+
+  it("requires one local hit to satisfy combined media, study, and cards filters", () => {
+    const impossibleCombination = getGlossaryAutocompleteSuggestions({
+      filters: {
+        cards: "with_cards",
+        entryType: "all",
+        media: "alpha",
+        study: "review"
+      },
+      query: "yohaku",
+      suggestions
+    });
+    const matchingCombination = getGlossaryAutocompleteSuggestions({
+      filters: {
+        cards: "with_cards",
+        entryType: "all",
+        media: "beta",
+        study: "review"
+      },
+      query: "yohaku",
+      suggestions
+    });
+
+    expect(impossibleCombination).toEqual([]);
+    expect(matchingCombination.map((entry) => entry.label)).toEqual(["余白"]);
+  });
 });

@@ -24,7 +24,12 @@ export function extractStructuredBlocks(
   const blocks: RawStructuredBlock[] = [];
   const issues: ValidationIssue[] = [];
 
-  let activeFence: string | null = null;
+  let activeFence:
+    | {
+        character: string;
+        length: number;
+      }
+    | null = null;
   let cursor = 0;
 
   while (cursor < lines.length) {
@@ -33,10 +38,20 @@ export function extractStructuredBlocks(
 
     if (fenceMatch) {
       const fence = fenceMatch[1];
+      const character = fence[0] ?? null;
+      const length = fence.length;
 
       if (activeFence === null) {
-        activeFence = fence[0] ?? null;
-      } else if (activeFence === fence[0]) {
+        if (character) {
+          activeFence = {
+            character,
+            length
+          };
+        }
+      } else if (
+        character === activeFence.character &&
+        length >= activeFence.length
+      ) {
         activeFence = null;
       }
 

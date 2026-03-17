@@ -159,14 +159,21 @@ function buildTermBaseMatchClauses(input: GlossarySearchCandidateInput) {
 }
 
 function buildTermAliasMatchClauses(input: GlossarySearchCandidateInput) {
-  return [
+  const clauses = [
     buildTextMatchClause("term_alias.alias_norm", input.normalized),
     buildTextMatchClause("term_alias.alias_norm", input.kana),
     buildTextMatchClause(
       "replace(replace(term_alias.alias_norm, ' ', ''), '-', '')",
       input.romajiCompact
     )
-  ].filter((clause): clause is NonNullable<typeof clause> => clause !== null);
+  ];
+  const kanaScriptVariant = toKatakana(input.kana);
+
+  if (kanaScriptVariant && kanaScriptVariant !== input.kana) {
+    clauses.push(buildTextMatchClause("term_alias.alias_norm", kanaScriptVariant));
+  }
+
+  return clauses.filter((clause): clause is NonNullable<typeof clause> => clause !== null);
 }
 
 function buildGrammarBaseMatchClauses(input: GlossarySearchCandidateInput) {
@@ -189,6 +196,22 @@ function buildGrammarAliasMatchClauses(input: GlossarySearchCandidateInput) {
       input.romajiCompact
     )
   ].filter((clause): clause is NonNullable<typeof clause> => clause !== null);
+}
+
+function toKatakana(value: string) {
+  return [...value].map((char) => {
+    const codePoint = char.codePointAt(0);
+
+    if (!codePoint) {
+      return char;
+    }
+
+    if (codePoint >= 0x3041 && codePoint <= 0x3096) {
+      return String.fromCodePoint(codePoint + 0x60);
+    }
+
+    return char;
+  }).join("");
 }
 
 async function listTermGlossaryEntries(

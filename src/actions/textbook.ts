@@ -40,8 +40,10 @@ export async function setLessonCompletionAction(input: {
   await setLessonCompletionState(input.lessonId, input.completed);
 
   revalidatePath("/");
+  revalidatePath("/review");
   revalidatePath(mediaHref(input.mediaSlug));
   revalidatePath(mediaStudyHref(input.mediaSlug, "progress"));
+  revalidatePath(mediaStudyHref(input.mediaSlug, "review"));
   revalidatePath(mediaStudyHref(input.mediaSlug, "textbook"));
   revalidatePath(`${mediaStudyHref(input.mediaSlug, "textbook")}/${input.lessonSlug}`);
 

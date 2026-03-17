@@ -4,6 +4,7 @@ import type { Route } from "next";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { db, getMediaBySlug } from "@/db";
 import {
   applyReviewGrade,
   resetReviewCardProgress,
@@ -28,9 +29,11 @@ export async function gradeReviewCardAction(formData: FormData) {
   const rating = readRequiredString(formData, "rating");
   const answeredCount = readCount(formData, "answered");
   const extraNewCount = readCount(formData, "extraNew");
+  const mediaId = await requireMediaIdForSlug(mediaSlug);
 
   await applyReviewGrade({
     cardId,
+    expectedMediaId: mediaId,
     rating:
       rating === "again" ||
       rating === "hard" ||
@@ -56,9 +59,11 @@ export async function markLinkedEntryKnownAction(formData: FormData) {
   const answeredCount = readCount(formData, "answered");
   const extraNewCount = readCount(formData, "extraNew");
   const redirectMode = readRedirectMode(formData);
+  const mediaId = await requireMediaIdForSlug(mediaSlug);
 
   await setLinkedEntryStatusByCard({
     cardId,
+    expectedMediaId: mediaId,
     status: "known_manual"
   });
 
@@ -81,9 +86,11 @@ export async function setLinkedEntryLearningAction(formData: FormData) {
   const answeredCount = readCount(formData, "answered");
   const extraNewCount = readCount(formData, "extraNew");
   const redirectMode = readRedirectMode(formData);
+  const mediaId = await requireMediaIdForSlug(mediaSlug);
 
   await setLinkedEntryStatusByCard({
     cardId,
+    expectedMediaId: mediaId,
     status: "learning"
   });
 
@@ -106,9 +113,11 @@ export async function resetReviewCardAction(formData: FormData) {
   const answeredCount = readCount(formData, "answered");
   const extraNewCount = readCount(formData, "extraNew");
   const redirectMode = readRedirectMode(formData);
+  const mediaId = await requireMediaIdForSlug(mediaSlug);
 
   await resetReviewCardProgress({
-    cardId
+    cardId,
+    expectedMediaId: mediaId
   });
 
   revalidateReviewPaths(mediaSlug, cardId);
@@ -131,9 +140,11 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
   const extraNewCount = readCount(formData, "extraNew");
   const redirectMode = readRedirectMode(formData);
   const suspended = formData.get("suspended") === "true";
+  const mediaId = await requireMediaIdForSlug(mediaSlug);
 
   await setReviewCardSuspended({
     cardId,
+    expectedMediaId: mediaId,
     suspended
   });
 
@@ -167,8 +178,11 @@ export async function revealReviewAnswerSessionAction(
 export async function gradeReviewCardSessionAction(input: ReviewSessionInput & {
   rating: "again" | "hard" | "good" | "easy";
 }): Promise<ReviewPageData> {
+  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+
   await applyReviewGrade({
     cardId: input.cardId,
+    expectedMediaId: mediaId,
     rating: input.rating
   });
 
@@ -188,8 +202,11 @@ export async function markLinkedEntryKnownSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
+  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+
   await setLinkedEntryStatusByCard({
     cardId: input.cardId,
+    expectedMediaId: mediaId,
     status: "known_manual"
   });
 
@@ -212,8 +229,11 @@ export async function setLinkedEntryLearningSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
+  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+
   await setLinkedEntryStatusByCard({
     cardId: input.cardId,
+    expectedMediaId: mediaId,
     status: "learning"
   });
 
@@ -236,8 +256,11 @@ export async function resetReviewCardSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
+  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+
   await resetReviewCardProgress({
-    cardId: input.cardId
+    cardId: input.cardId,
+    expectedMediaId: mediaId
   });
 
   revalidateReviewPaths(input.mediaSlug, input.cardId);
@@ -260,8 +283,11 @@ export async function setReviewCardSuspendedSessionAction(
     suspended: boolean;
   }
 ): Promise<ReviewPageData> {
+  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+
   await setReviewCardSuspended({
     cardId: input.cardId,
+    expectedMediaId: mediaId,
     suspended: input.suspended
   });
 
@@ -404,4 +430,14 @@ async function requireReviewPageData(
   }
 
   return data;
+}
+
+async function requireMediaIdForSlug(mediaSlug: string) {
+  const media = await getMediaBySlug(db, mediaSlug);
+
+  if (!media) {
+    throw new Error(`Unable to resolve media for slug: ${mediaSlug}`);
+  }
+
+  return media.id;
 }

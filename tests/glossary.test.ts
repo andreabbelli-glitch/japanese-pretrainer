@@ -22,7 +22,13 @@ import {
   type DatabaseClient
 } from "@/db";
 import { buildScopedEntryId } from "@/lib/entry-id";
-import { card, cardEntryLink, grammarPattern, term } from "@/db/schema/index.ts";
+import {
+  card,
+  cardEntryLink,
+  grammarPattern,
+  term,
+  termAlias
+} from "@/db/schema/index.ts";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
   getGlobalGlossaryAutocompleteData,
@@ -495,6 +501,50 @@ describe("glossary data", () => {
     expect(data.results[0]?.id).toBe("term-taberu");
     expect(data.results[0]?.kind).toBe("term");
     expect(data.results[0]?.matchedFields.meaning).toBe("normalized");
+  });
+
+  it("keeps global term alias kana queries consistent with local matching", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["sample-anime"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const termId = buildScopedEntryId("term", "media-sample-anime", "term-taberu");
+
+    await database.insert(termAlias).values({
+      id: "term_alias_katakana_only_taberu",
+      termId,
+      aliasText: "タベモノ",
+      aliasNorm: "タベモノ",
+      aliasType: "alt"
+    });
+
+    const [localData, globalData] = await Promise.all([
+      getGlossaryPageData(
+        "sample-anime",
+        {
+          q: "たべもの"
+        },
+        database
+      ),
+      getGlobalGlossaryPageData(
+        {
+          q: "たべもの"
+        },
+        database
+      )
+    ]);
+
+    expect(localData).not.toBeNull();
+    expect(localData?.results[0]?.id).toBe("term-taberu");
+    expect(globalData.results[0]?.id).toBe("term-taberu");
+    expect(globalData.results[0]?.matchedFields.aliases).toContainEqual({
+      mode: "kana",
+      text: "タベモノ"
+    });
   });
 
   it("handles glossary datasets larger than SQLite expression depth limits", async () => {

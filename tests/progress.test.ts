@@ -77,6 +77,51 @@ describe("progress, settings, and study controls", () => {
     );
   });
 
+  it("recommends review when the queue has only new cards", async () => {
+    await database
+      .update(reviewState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+
+    await database.insert(card).values({
+      id: "card_fixture_progress_new_only",
+      mediaId: developmentFixture.mediaId,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-only.md",
+      cardType: "recognition",
+      front: "新カード",
+      back: "card nuova",
+      notesIt: "Serve per verificare il resume verso review senza due card.",
+      status: "active",
+      orderIndex: 44,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card_entry_link_fixture_progress_new_only",
+      cardId: "card_fixture_progress_new_only",
+      entryType: "term",
+      entryId: developmentFixture.termDbId,
+      relationshipType: "secondary"
+    });
+
+    const data = await getMediaProgressPageData(
+      developmentFixture.mediaSlug,
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(data?.review.dueCount).toBe(0);
+    expect(data?.review.queueCount).toBe(1);
+    expect(data?.review.newQueuedCount).toBe(1);
+    expect(data?.resume.recommendedArea).toBe("review");
+    expect(data?.resume.recommendedHref).toBe(
+      `/media/${developmentFixture.mediaSlug}/review`
+    );
+  });
+
   it("persists settings and applies them to glossary ordering and review queue limits", async () => {
     await database.insert(segment).values({
       id: "segment_demo_bonus",
