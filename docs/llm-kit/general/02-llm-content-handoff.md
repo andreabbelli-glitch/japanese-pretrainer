@@ -203,6 +203,9 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
   usarlo come piano editoriale completo della scelta visiva;
 - che i campi audio sono supportati dal formato ma non vanno compilati a
   fantasia: si popolano solo con asset e provenance reali;
+- che anche nel textbook l'obiettivo primario resta capire il giapponese:
+  il gioco o il media vanno spiegati come contesto che chiarisce significato,
+  funzione e conseguenza pratica, non come focus principale separato;
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
 - che non deve aggiungere spiegazioni fuori dai file.
@@ -352,6 +355,8 @@ Questa e la priorita primaria:
 - tutto il sistema serve al 100% per insegnare giapponese;
 - quindi le flashcard devono nascere prima di tutto da parole giapponesi
   importanti e pattern grammaticali importanti;
+- quando devi scegliere, privilegia il giapponese piu spendibile e riusabile
+  possibile anche fuori dal singolo media;
 - se c'e tensione tra chiarezza meccanica e valore linguistico, vince il valore
   linguistico.
 
@@ -360,8 +365,19 @@ Devono esistere per allenare il giapponese, quindi privilegia:
 - kanji da riconoscere bene;
 - lessico o chunk importanti che ricompaiono in altre frasi;
 - pattern grammaticali importanti che aiutano a leggere altre carte o schermate;
+- termini che tornano utili anche fuori da una singola scena, decklist, evento
+  o schermata;
 - chunk completi solo quando il vantaggio sta nel saper leggere quella forma
   giapponese.
+
+Regola complementare fondamentale:
+
+- il textbook deve comunque spiegare anche termini, keyword, sigle o nomi molto
+  verticali quando servono per capire il testo o il contesto del media, oppure
+  per interagire correttamente con esso;
+- se un elemento e necessario per leggere la scena o per compiere l'azione
+  giusta nel media ma non ha abbastanza valore di memoria attiva, spiegalo nel
+  textbook e non trasformarlo per forza in una nuova flashcard.
 
 ### 7.5 Regola di correttezza dell'italiano
 
@@ -388,6 +404,8 @@ Evita invece:
   originale.
 - flashcard di puro katakana se il loro unico contenuto e una parola gia
   trasparente o facilmente traslitterabile.
+- flashcard su acronimi, sigle prodotto, codici set, nomi evento, nomi interni
+  o dettagli troppo verticali se non costruiscono vera literacy.
 - scelte che ignorano un pattern grammaticale importante o una parola
   importante del corpus per aggiungere invece una card piu "comoda" ma meno
   utile per il giapponese.
@@ -431,11 +449,19 @@ Vincoli obbligatori:
 - Se il contenuto introduce una parola giapponese importante o un pattern
   grammaticale importante ancora scoperto, trattalo come candidato primario a
   nuova flashcard.
+- Tra piu candidati, privilegia il giapponese con migliore spendibilita:
+  parole e pattern che puoi reincontrare anche fuori da questo singolo media
+  valgono piu di acronimi, sigle e dettagli ultra-verticali.
 - Non creare flashcard di puro katakana per parole banali o trasparenti: di
   default non aggiungono vero valore di studio.
+- Se un termine verticale serve per capire il testo corrente o per interagire
+  correttamente con il media ma non ha vero valore di riuso, spiegalo bene nel
+  textbook e fermati li: non promuoverlo per forza a flashcard.
 - Non scrivere spiegazioni tautologiche del tipo "X e utile/importante":
   ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa
   capire o fare nel media.
+- Non usare la semplicita come alibi per togliere informazione: il testo deve
+  restare lineare ma denso di concetti utili.
 - Non scrivere meta-discorso nel contenuto finale: niente "questa lesson",
   "qui facciamo review", "per questo batch", "conviene fissare" o "verifica
   ufficiale" come contenuto principale della spiegazione.

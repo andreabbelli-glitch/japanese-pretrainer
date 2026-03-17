@@ -110,12 +110,20 @@ Regole pratiche:
   locale;
 - non fermarti a formule come "X e utile/importante": `notes_it` deve dire che
   cosa significa davvero X e che cosa ti fa capire o fare nel media;
+- privilegia entry con buona spendibilita linguistica: kanji, lessico e pattern
+  che puoi reincontrare anche fuori da una singola scena o da uno specifico
+  media;
 - evita note meta del tipo "flashcard utile", "da fissare", "da rendere
   automatico", "qui conviene tenere la card": descrivi invece significato,
   ruolo e conseguenza concreta;
 - evita anche formule come "entry canonica", "card canoniche", "nel corpus",
   "in questo seed" o "il valore didattico sta in...": parlano della curation,
   non di quello che il giapponese fa capire;
+- non sprecare card su sigle, acronimi, codici prodotto, nomi evento o dettagli
+  troppo verticali se non allenano davvero una forma giapponese spendibile;
+- se un termine molto verticale serve a capire il media o a interagirci
+  correttamente ma non merita memoria attiva, spiegalo nel textbook senza
+  trasformarlo in nuova card;
 - se la entry e un nome proprio poco trasparente, spiega almeno quale ruolo
   ricorrente segnala o quale parte del nome conviene riconoscere;
 - non aggiungere testo libero fuori dai blocchi strutturati.

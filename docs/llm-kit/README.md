@@ -56,6 +56,7 @@ Da passare sempre:
 - `general/06-content-workflow-playbook.md`
 - `general/07-template-image-requests.yaml`
 - `general/08-template-image-assets.yaml`
+- `general/09-editorial-quality-rubric.md`
 
 ## Kit media-specifico attuale
 
@@ -110,6 +111,7 @@ Passa almeno:
 - `general/06-content-workflow-playbook.md`
 - `general/07-template-image-requests.yaml`
 - `general/08-template-image-assets.yaml`
+- `general/09-editorial-quality-rubric.md`
 - `media/duel-masters-dm25/01-brief.md`
 - `media/duel-masters-dm25/02-batch-1-prompt.md`
 

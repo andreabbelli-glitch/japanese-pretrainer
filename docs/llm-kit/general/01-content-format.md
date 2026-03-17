@@ -261,6 +261,8 @@ Questa e la regola primaria del sistema:
 - lo scopo principale non e memorizzare regole del gioco;
 - lo scopo principale e fissare parole giapponesi importanti e pattern
   grammaticali importanti;
+- la priorita va al giapponese piu spendibile e riusabile possibile, non al
+  dettaglio piu verticale del singolo media;
 - se devi scegliere tra una card di meccanica e una card di giapponese, scegli
   la card di giapponese.
 
@@ -269,8 +271,16 @@ Quindi una `:::card` e giustificata quando allena almeno uno di questi aspetti:
 - riconoscimento di kanji o letture importanti;
 - lessico o chunk giapponesi importanti e riusabili;
 - pattern grammaticali importanti che aiutano a leggere altre frasi del corpus;
+- termini che hanno buona spendibilita anche fuori da una singola scena,
+  schermata, decklist o prodotto;
 - un chunk effetto completo, ma solo se il valore didattico sta nella sua forma
   giapponese e non in un riassunto astratto della regola.
+
+Regola complementare:
+
+- se un termine, una keyword o una sigla serve per capire il media corrente o
+  per interagirci correttamente ma non ha abbastanza valore di riuso, spiegalo
+  nel textbook e non forzarlo in flashcard.
 
 Da evitare:
 
@@ -281,6 +291,8 @@ Da evitare:
   lessico o grammatica.
 - flashcard di puro katakana quando il contenuto non allena altro oltre alla
   semplice traslitterazione.
+- flashcard su sigle, acronimi, codici prodotto, nomi evento o dettagli che
+  spiegano il singolo media ma non costruiscono literacy generale.
 - scelte che lasciano fuori una parola giapponese importante o un pattern
   grammaticale importante per fare spazio a una card di sola meccanica.
 
@@ -351,6 +363,10 @@ Campi opzionali:
 
 Ogni file in `textbook/` rappresenta una lesson.
 
+Anche nel textbook la priorita resta insegnare il giapponese. Il media, il
+gioco o la scena servono come contesto per chiarire significato, funzione e
+conseguenza pratica del testo, non come obiettivo principale autonomo.
+
 Esempio:
 
 ```md
@@ -363,21 +379,52 @@ order: 10
 segment_ref: episode-01
 difficulty: n5
 status: active
+summary: >-
+  Riconoscere [食べる](term:term-taberu), [大丈夫](term:term-daijoubu) e
+  {{魔法|まほう}} come lessico di azione, rassicurazione e causa in una scena
+  fantasy.
 ---
 
 # Obiettivo
 
-In questa lezione vediamo il lessico base dell'apertura.
+Capire quando il dialogo parla di mangiare, rassicurare qualcuno o attribuire
+un evento alla magia.
+
+## Contesto
+
+In una scena fantasy iniziale questi tre elementi non stanno sullo stesso
+piano: [食べる](term:term-taberu) descrive l'azione concreta, [大丈夫](term:term-daijoubu)
+controlla se la situazione e sotto controllo, {{魔法|まほう}} spiega invece la
+causa soprannaturale di cio che succede.
 
 ## Termini chiave
 
 - [食べる](term:term-taberu)
 - [大丈夫](term:term-daijoubu)
 
-## Nota
+## Spiegazione
 
-La forma {{魔法|まほう}} ricorre spesso in contesto fantasy.
+[食べる](term:term-taberu) indica l'azione di mangiare. In dialogo non serve
+solo a nominare il cibo: spesso distingue cio che viene davvero consumato da
+un semplice invito o da un'offerta.
+
+[大丈夫](term:term-daijoubu) qui non va letto come formula vaga positiva. Di
+solito segnala che qualcuno sta verificando se va tutto bene o se un problema e
+gestibile.
+
+{{魔法|まほう}} non va trattato come decorazione fantasy generica. Quando
+compare, di solito ti dice che la causa dell'evento non e fisica o ordinaria,
+ma soprannaturale.
+
+## Nota finale
+
+Quando questi elementi compaiono vicini, la scena alterna spesso azione
+pratica, verifica dello stato e spiegazione della causa.
 ```
+
+Questo esempio serve a mostrare il livello minimo di sostanza atteso: niente
+meta-discorso, niente frasi del tipo "e utile/importante", sempre significato +
+funzione concreta.
 
 Campi obbligatori:
 

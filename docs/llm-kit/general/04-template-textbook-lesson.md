@@ -48,6 +48,15 @@ l'elemento giapponese e che cosa ti fa capire o fare nel media. Non basta
 scrivere che e "utile" o "importante". Quando serve, usa questa sequenza:
 forma giapponese -> significato letterale o tecnico -> effetto concreto nel
 gioco / nell'interfaccia -> contrasto con la lettura sbagliata piu probabile.
+La semplicita deve essere lineare, non vuota: ogni paragrafo deve consegnare
+informazione concreta, non solo valutazione. Se un termine o un effetto e molto
+verticale ma serve davvero per capire questa scena o per interagire
+correttamente con il media, spiegalo comunque nel textbook anche se non merita
+una flashcard. Per rules text, prompt e keyword esplicita almeno chi agisce, su
+che cosa, in quale timing e con quale effetto.
+Anche qui il focus primario resta il giapponese: il gioco o il media vanno
+spiegati come contesto che ti aiuta a capire meglio la frase, non come fine
+principale della spiegazione.
 Evita formule meta come "qui il punto", "conviene fissare", "cosa mandare in
 review", "per questa pagina" o "per questo batch".>
 
@@ -55,11 +64,14 @@ Scrivi sempre in italiano naturale e corretto: usa gli accenti giusti (`è`,
 `può`, `più`, `già`, `cioè`, `così`, `perché`), non sostituirli con apostrofi o
 forme ASCII degradate.
 
-Se proponi flashcard, ricordati che devono servire prima di tutto a imparare il
-giapponese. La priorita e fissare parole giapponesi importanti e pattern
-grammaticali importanti: kanji, lessico riusabile e grammatica. Non proporre
-card che riassumono soltanto la meccanica del gioco senza un vero target
-linguistico.
+Quando da una lesson emergono candidati a flashcard, ricordati che devono
+servire prima di tutto a imparare il giapponese. La priorita e fissare parole
+giapponesi importanti e pattern grammaticali importanti: kanji, lessico
+riusabile e grammatica. Non proporre card che riassumono soltanto la meccanica
+del gioco senza un vero target linguistico.
+Tra piu candidati, privilegia il giapponese piu spendibile possibile anche
+fuori dal singolo media: parole come `わざ` hanno piu valore di sigle, acronimi
+o keyword troppo verticali da memorizzare solo per quella carta o schermata.
 Evita anche card di puro katakana se non c'e un motivo forte di lettura:
 vanno bene solo quando il termine e davvero ricorrente, opaco o rilevante nel
 corpus, non quando e soltanto facilmente traslitterabile.

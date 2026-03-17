@@ -124,6 +124,13 @@ La richiesta deve esplicitare:
   `example_it`, con frase completa e contestuale utile sul retro review;
 - obbligo che ogni spiegazione chiarisca significato reale + effetto concreto
   nel media, non solo che l'elemento e "utile" o "importante";
+- obbligo di tenere distinti textbook e flashcard: il textbook deve spiegare
+  anche elementi molto verticali quando servono a capire la scena o a
+  interagire correttamente con il media, mentre le flashcard devono
+  privilegiare il giapponese piu spendibile e riusabile;
+- obbligo che anche nel textbook il bersaglio primario resti il giapponese:
+  il gioco o il media servono come contesto esplicativo, non come focus
+  principale separato;
 - obbligo che il contenuto finale non parli del proprio processo editoriale o
   di studio ("questa lesson", "qui facciamo review", "per questo batch",
   "conviene fissare");
@@ -248,6 +255,16 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
   stessa frase;
 - verifica che la stessa spiegazione dica anche che cosa ti fa capire o fare
   nel media;
+- verifica che la spiegazione non deragli in una guida al gioco: il focus
+  principale deve restare il giapponese che quella scena, schermata o regola ti
+  fa leggere;
+- verifica che i termini troppo verticali necessari alla comprensione o
+  all'interazione corretta con il media siano spiegati nel textbook anche
+  quando non diventano flashcard;
+- verifica che le flashcard selezionate non siano soprattutto sigle, acronimi,
+  nomi interni o dettagli poco spendibili fuori da quel singolo media;
+- verifica che la semplicita della prosa non abbia svuotato il contenuto:
+  ogni paragrafo deve consegnare informazione concreta, non solo enfasi;
 - se una lesson contiene `:::image`, verifica che l'immagine mostri davvero il
   label, la schermata o la carta promessa dalla caption;
 - se la spiegazione riguarda un nome proprio opaco o una label UI compatta,
