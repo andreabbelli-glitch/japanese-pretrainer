@@ -179,15 +179,23 @@ Esempio da evitare per `front` di una flashcard:
 front: {{手持ち|てもち}}
 ```
 
-### 4.3 Regole per furigana su composti numerici
+### 4.3 Regole per furigana sui numeri
 
+- tutti i numeri visibili al lettore vanno annotati con furigana, anche quando
+  sono semplici e anche quando non hanno contatori;
+- usare quindi `{{1|いち}}`, `{{4|よん}}`, `{{5000|ごせん}}`,
+  `{{-3000|マイナスさんぜん}}`, non `1`, `4`, `5000` o `-3000` lasciati nudi;
 - quando un numero e seguito da un contatore o da un qualificatore numerico
   (`以下`, `以上`, `未満`, ecc.), il furigana va messo sull'espressione completa;
-- usare quindi `{{1枚|いちまい}}`, `{{3本|さんぼん}}`, `{{4以下|よんいか}}`,
+- usare quindi `{{1枚|いちまい}}`, `{{1体|いったい}}`, `{{2つ|ふたつ}}`,
+  `{{2回|にかい}}`, `{{3本|さんぼん}}`, `{{4以下|よんいか}}`,
   `{{4つ以上|よっついじょう}}`, non `1{{枚|まい}}`, `4{{以下|いか}}` o
   `{{4つ|よっつ}}{{以上|いじょう}}`;
-- se il numero e poco trasparente o "grande", annotare il composto intero:
-  `{{2000以下|にせんいか}}`, `{{3000円|さんぜんえん}}`.
+- quando c'e un contatore, la lettura va verificata e scritta nella forma
+  corretta dell'intero chunk: non va mai indovinata per composizione;
+- se il numero ha segni, unita o suffissi rilevanti, annotare il chunk intero:
+  `{{-3000|マイナスさんぜん}}`, `{{3000円|さんぜんえん}}`,
+  `{{2000以下|にせんいか}}`.
 
 ### 4.4 Regola di qualita esplicativa
 

@@ -85,6 +85,12 @@ Regole pratiche:
   review, non una parola isolata o una ripetizione del `front`;
 - `front` e `example_jp` devono annotare con furigana i kanji che il learner
   deve leggere davvero nella card review;
+- i numeri visibili nelle card vanno annotati sempre con la lettura corretta,
+  anche quando non hanno contatori: `{{4|よん}}`, `{{5000|ごせん}}`,
+  `{{-3000|マイナスさんぜん}}`;
+- quando un numero e legato a un contatore, scrivi la lettura corretta
+  dell'intero chunk e non una ricostruzione meccanica: `{{1体|いったい}}`,
+  `{{2つ|ふたつ}}`, `{{2回|にかい}}`, `{{4枚|よんまい}}`;
 - per i `:::grammar`, se `pattern` contiene kanji o una lettura non banale,
   aggiungi sempre `reading`;
 - lo stesso vale per pattern misti kana+kanji: `それ{{以外|いがい}}なら` va
@@ -112,9 +118,12 @@ Regole pratiche:
   `[{{報酬|ほうしゅう}}](term:term-reward)`;
 - se usi inline code con giapponese non trasparente, annota anche li:
   `` `{{達成済み|たっせいずみ}}` ``;
-- per composti numerici con contatori o qualificatori usa un solo furigana sul
-  blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
-  `{{4つ以上|よっついじょう}}`, `{{2つ|ふたつ}}`;
+- per i numeri usa sempre un solo furigana sul chunk intero rilevante:
+  `{{4|よん}}`, `{{5000|ごせん}}`, `{{-3000|マイナスさんぜん}}`,
+  `{{1枚|いちまい}}`, `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`,
+  `{{2つ|ふたつ}}`;
+- se il numero ha un contatore, controlla esplicitamente che la pronuncia sia
+  quella corretta del blocco completo prima di chiudere il file;
 - non compilare campi audio se non hai un asset locale gia reale e metadata di
   provenance affidabili; di norma l'audio viene arricchito dopo dal workflow
   locale;

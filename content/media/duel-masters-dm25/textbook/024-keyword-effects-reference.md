@@ -44,7 +44,7 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   [B・A・D 2](term:term-b-a-d-two)：このクリーチャーの
-  [{{召喚|しょうかん}}](term:term-summon)コストを{{2|ふた}}つ
+  [{{召喚|しょうかん}}](term:term-summon)コストを{{2つ|ふたつ}}
   {{少|すく}}なくしてもよい。そうした{{場合|ばあい}}、このターン
   {{終了時|しゅうりょうじ}}にこのクリーチャーを
   [{{破壊|はかい}}](term:term-destroy)する。
@@ -54,7 +54,7 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- `コストを2つ少なくしてもよい` da il vantaggio immediato.
+- `コストを{{2つ|ふたつ}}少なくしてもよい` dà il vantaggio immediato.
 - `終了時に破壊する` aggiunge il prezzo da pagare alla fine del turno.
 
 ### [ブロッカー](term:term-blocker)
@@ -137,10 +137,10 @@ jp: >-
   [魔導具](term:term-madougu)が[バトルゾーン](term:term-battle-zone)に
   {{出|で}}た{{時|とき}}、{{自分|じぶん}}の
   [魔導具](term:term-madougu)を[バトルゾーン](term:term-battle-zone)と
-  [{{墓地|ぼち}}](term:term-graveyard)から2つ[ずつ](grammar:grammar-zutsu)
+  [{{墓地|ぼち}}](term:term-graveyard)から{{2つ|ふたつ}}[ずつ](grammar:grammar-zutsu)
   {{選|えら}}び、このクリーチャーを{{自分|じぶん}}の
   [{{手札|てふだ}}](term:term-hand)または[{{墓地|ぼち}}](term:term-graveyard)から
-  それら4枚の上に[コスト](term:term-cost)を{{払|はら}}わずに
+  それら{{4枚|よんまい}}の上に[コスト](term:term-cost)を{{払|はら}}わずに
   {{召喚|しょうかん}}してもよい。
 translation_it: >-
   Gate of Moonless Night: quando un tuo Magic Tool entra nel battle zone,
@@ -150,9 +150,9 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- `2つずつ` distribuisce il numero sui due gruppi nominati: due dal battle
+- `{{2つ|ふたつ}}ずつ` distribuisce il numero sui due gruppi nominati: due dal battle
   zone e due dal cimitero.
-- `それら4枚の上に` segnala che non è una semplice messa in campo: la carta
+- `それら{{4枚|よんまい}}の上に` segnala che non è una semplice messa in campo: la carta
   entra sopra il materiale appena scelto.
 
 ### [S・トリガー](term:term-s-trigger)
@@ -229,7 +229,7 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   [T・ブレイカー](term:term-t-breaker)：このクリーチャーはシールドを
-  {{3|みっ}}つブレイクする。
+  {{3つ|みっつ}}ブレイクする。
 translation_it: >-
   T-Breaker: questa creatura rompe 3 scudi.
 reveal_mode: sentence
@@ -261,7 +261,7 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   [W・ブレイカー](term:term-w-breaker)：このクリーチャーはシールドを
-  {{2|ふた}}つブレイクする。
+  {{2つ|ふたつ}}ブレイクする。
 translation_it: >-
   W-Breaker: questa creatura rompe 2 scudi.
 reveal_mode: sentence

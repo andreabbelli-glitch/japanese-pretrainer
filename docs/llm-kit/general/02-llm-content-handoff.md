@@ -432,12 +432,16 @@ Vincoli obbligatori:
   ricevi un asset reale e metadata attendibili.
 - Se il label visibile di un link semantico contiene kanji, metti il furigana
   direttamente nel label: `[{{単語|たんご}}](term:term-id)`.
-- Quando c'e un composto numerico con contatore o qualificatore (`以下`,
-  `以上`, `未満`, ecc.), annota il blocco completo: `{{1枚|いちまい}}`,
-  `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`. Non scrivere
-  `1{{枚|まい}}`, `4{{以下|いか}}` o `{{4つ|よっつ}}{{以上|いじょう}}`.
-- Quando il numero e poco trasparente o grande, metti furigana sul composto
-  intero: `{{2000以下|にせんいか}}`, `{{3000円|さんぜんえん}}`.
+- Quando c'e un numero con contatore o qualificatore (`以下`, `以上`, `未満`,
+  ecc.), annota il blocco completo con la pronuncia corretta del chunk intero:
+  `{{1枚|いちまい}}`, `{{1体|いったい}}`, `{{2つ|ふたつ}}`,
+  `{{2回|にかい}}`, `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`.
+- Non scrivere `1{{枚|まい}}`, `4{{以下|いか}}` o
+  `{{4つ|よっつ}}{{以上|いじょう}}`, e non indovinare le letture dei
+  contatori per composizione.
+- Quando il numero e poco trasparente, grande o con segni/unita, metti
+  furigana sul composto intero: `{{-3000|マイナスさんぜん}}`,
+  `{{2000以下|にせんいか}}`, `{{3000円|さんぜんえん}}`.
 - Per i campi descrittivi in YAML usa `>-` invece di plain scalar quando c'e
   testo libero, markdown inline o una frase completa di rules text.
 - Ogni blocco `:::card` deve includere sempre `example_jp` + `example_it`.

@@ -53,9 +53,15 @@ Vincoli di formato obbligatori:
   inventare path immagine.
 - MAPPA I KANJI CON FURIGANA ANCHE DENTRO LE CITAZIONI IN CODICE
   (esempio: `` `{{墓地|ぼち}}から{{出|だ}}す` ``).
+- Per tutti i numeri visibili usa il furigana con la lettura corretta, anche
+  quando il numero appare da solo: `{{4|よん}}`, `{{5000|ごせん}}`,
+  `{{-3000|マイナスさんぜん}}`.
 - Per composti numerici con contatori o qualificatori usa un solo furigana sul
   blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
   `{{4つ以上|よっついじょう}}`.
+- Se c'e un contatore, verifica sempre la pronuncia corretta dell'intero chunk
+  e non ricostruirla a intuito: `{{1体|いったい}}`, `{{2つ|ふたつ}}`,
+  `{{2回|にかい}}`, `{{4枚|よんまい}}`.
 - Per i campi descrittivi YAML come `notes_it`, usa `>-` invece di plain scalar.
 - Se un valore contiene `:`/`：`, furigana, link semantici, backtick o una
   frase completa di rules text, non lasciarlo come plain scalar.
@@ -63,8 +69,8 @@ Vincoli di formato obbligatori:
   `example_jp` deve essere una frase giapponese completa e contestuale utile
   sul retro review, non una parola isolata o una ripetizione del `front`.
 - Nei campi cards `front`, `back`, `example_jp` e nel giapponese visibile di
-  `notes_it`, annota con furigana i kanji e i composti numerici non banali che
-  il learner deve leggere davvero.
+  `notes_it`, annota con furigana i kanji e tutti i numeri che il learner deve
+  leggere davvero, non solo quelli non banali.
 - Quando un elemento piccolo ma frequente controlla scope, totalita, referente,
   distribuzione o filtro operativo della frase (`すべて`, `各`, `それら`,
   `その中`, `ずつ`), trattalo come candidato reale da glossary/review, non come

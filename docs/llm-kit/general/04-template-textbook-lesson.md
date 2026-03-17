@@ -101,11 +101,18 @@ Forma corretta attesa:
 - `このターンの後に` = dopo questo turno
 
 Puoi usare furigana inline con la sintassi `{{base|reading}}`, per esempio
-`{{<kanji>|<reading>}}`. Se c'e un composto numerico con contatore o
+`{{<kanji>|<reading>}}`. Da ora anche i numeri vanno annotati sempre quando
+sono visibili nel reader: `{{4|よん}}`, `{{5000|ごせん}}`,
+`{{-3000|マイナスさんぜん}}`. Se c'e un composto numerico con contatore o
 qualificatore, annota tutto il blocco: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
 `{{4つ以上|よっついじょう}}`; non scrivere `1{{枚|まい}}`,
-`4{{以下|いか}}` o `{{4つ|よっつ}}{{以上|いじょう}}`. Se il numero e
-complesso, annota il composto intero: `{{2000以下|にせんいか}}`.
+`4{{以下|いか}}` o `{{4つ|よっつ}}{{以上|いじょう}}`. Se il numero ha segni,
+unita o filtri, annota il chunk intero: `{{-3000|マイナスさんぜん}}`,
+`{{2000以下|にせんいか}}`.
+
+Quando il numero e legato a un contatore, la lettura va verificata e scritta
+in forma corretta sull'intero chunk, non ricostruita a intuito: per esempio
+`{{1体|いったい}}`, `{{2つ|ふたつ}}`, `{{2回|にかい}}`, `{{4枚|よんまい}}`.
 
 Se un riferimento semantico ha un label con kanji, annota anche il label:
 `[{{報酬|ほうしゅう}}](term:term-reward)`, non `[報酬](term:term-reward)`.

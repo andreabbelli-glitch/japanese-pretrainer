@@ -208,7 +208,7 @@ level_hint: custom
 
 :::grammar
 id: grammar-nikai-okonau
-pattern: ～を2回行う
+pattern: ～を{{2回|にかい}}{{行|おこな}}う
 title: Ripetere due volte lo stesso effetto
 reading: にかいおこなう
 meaning_it: esegui questo due volte
@@ -302,10 +302,11 @@ id: card-nikai-okonau-recognition
 entry_type: grammar
 entry_id: grammar-nikai-okonau
 card_type: recognition
-front: ～を2回行う
+front: '～を{{2回|にかい}}{{行|おこな}}う'
 back: esegui questo due volte
 example_jp: >-
-  {{相手|あいて}}のクリーチャー{{1体|いったい}}のパワーを`-4000`する。これを
+  {{相手|あいて}}のクリーチャー{{1体|いったい}}のパワーを
+  `{{-4000|マイナスよんせん}}`する。これを
   {{2回|にかい}}{{行|おこな}}う。
 example_it: >-
   Dai `-4000` a 1 creatura dell'avversario. Esegui questo due volte.

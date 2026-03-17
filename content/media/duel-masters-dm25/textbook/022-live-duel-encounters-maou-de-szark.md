@@ -48,9 +48,9 @@ jp: >-
   [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
   [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の[魔導具](term:term-madougu)を
   [バトルゾーン](term:term-battle-zone)と[{{墓地|ぼち}}](term:term-graveyard)から
-  2つ[ずつ](grammar:grammar-zutsu)[{{選|えら}}び](term:term-erabu)、この
+  {{2つ|ふたつ}}[ずつ](grammar:grammar-zutsu)[{{選|えら}}び](term:term-erabu)、この
   クリーチャーを{{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
-  [{{墓地|ぼち}}](term:term-graveyard)からそれら4枚の上に
+  [{{墓地|ぼち}}](term:term-graveyard)からそれら{{4枚|よんまい}}の上に
   [コスト](term:term-cost)を[{{払|はら}}わ](term:term-harau)ずに
   [{{召喚|しょうかん}}](term:term-summon)してもよい。
 translation_it: >-
@@ -67,7 +67,7 @@ jp: >-
   [{{時|とき}}](grammar:grammar-toki)、そのターン、
   [{{相手|あいて}}](term:term-opponent)のクリーチャー
   [すべて](term:term-subete)の
-  [パワー](term:term-power)を-3000する。
+  [パワー](term:term-power)を{{-3000|マイナスさんぜん}}する。
 translation_it: >-
   Quando entra nel battle zone, per quel turno tutte le creature avversarie
   prendono -3000 potere.
@@ -85,7 +85,7 @@ reveal_mode: sentence
 - Questo conta anche se la carta che entra non è De Szark: l'effetto guarda la
   famiglia `魔導具`, non il nome proprio.
 
-### 2. バトルゾーンと墓地から2つずつ選び
+### 2. バトルゾーンと墓地から{{2つ|ふたつ}}ずつ選び
 
 - Il blocco difficile qui è [ずつ](grammar:grammar-zutsu): distribuisce la
   quantità su ciascun gruppo nominato.
@@ -94,9 +94,9 @@ reveal_mode: sentence
 - `自分の魔導具を` resta sottinteso anche dopo `墓地から`: i bersagli validi
   sono sempre i tuoi Magic Tool.
 
-### 3. それら4枚の上にコストを払わずに召喚してもよい
+### 3. それら{{4枚|よんまい}}の上にコストを払わずに召喚してもよい
 
-- `それら4枚` riprende esattamente le quattro carte appena scelte.
+- `それら{{4枚|よんまい}}` riprende esattamente le quattro carte appena scelte.
 - `それら` non aggiunge un nuovo gruppo: serve a richiudere la frase e a dire
   `quelle appena nominate`.
 - Nel rules text è un ottimo campanello d'allarme: quando compare `それら`,
@@ -117,8 +117,9 @@ reveal_mode: sentence
   il turno in corso.
 - [すべて](term:term-subete) allarga subito lo scope all'intero gruppo appena
   nominato: qui vuol dire `tutte le creature avversarie`.
-- `すべてのパワーを-3000する` colpisce quindi tutto il lato avversario insieme,
-  non un bersaglio singolo e non solo una parte del gruppo.
+- `すべてのパワーを{{-3000|マイナスさんぜん}}する` colpisce quindi tutto il
+  lato avversario insieme, non un bersaglio singolo e non solo una parte del
+  gruppo.
 
 ## Lessico utile in questa carta
 

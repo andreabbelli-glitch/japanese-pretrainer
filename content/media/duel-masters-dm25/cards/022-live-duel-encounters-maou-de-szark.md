@@ -242,7 +242,7 @@ card_type: recognition
 front: 'すべて'
 back: tutti / tutto il gruppo nominato
 example_jp: >-
-  {{相手|あいて}}のクリーチャーすべてのパワーを-3000する。
+  {{相手|あいて}}のクリーチャーすべてのパワーを{{-3000|マイナスさんぜん}}する。
 example_it: >-
   Riduci di 3000 il potere di tutte le creature avversarie.
 notes_it: >-

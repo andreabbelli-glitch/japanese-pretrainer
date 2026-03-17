@@ -37,7 +37,7 @@ caption: >-
 jp: >-
   [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
   [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の
-  [{{墓地|ぼち}}](term:term-graveyard)からクリーチャー1枚を
+  [{{墓地|ぼち}}](term:term-graveyard)からクリーチャー{{1枚|いちまい}}を
   [{{選|えら}}ぶ](term:term-erabu)。それが[コスト](term:term-cost)
   {{4以下|よんいか}}の[魔導具](term:term-madougu)なら
   [バトルゾーン](term:term-battle-zone)に[{{出|だ}}し](term:term-dasu)、
@@ -52,19 +52,20 @@ reveal_mode: sentence
 
 ## Parsing grammaticale
 
-### 1. 自分の墓地からクリーチャー1枚を選ぶ
+### 1. 自分の墓地からクリーチャー{{1枚|いちまい}}を選ぶ
 
 - Il primo verbo importante è [{{選|えら}}ぶ](term:term-erabu): qui la carta
   non recupera a caso, ma ti fa scegliere in modo mirato.
-- Il bersaglio iniziale è largo: `クリーチャー1枚`, non ancora `魔導具1枚`.
+- Il bersaglio iniziale è largo: `クリーチャー{{1枚|いちまい}}`, non ancora
+  `{{魔導具|まどうぐ}}{{1枚|いちまい}}`.
 - Quindi la restrizione vera arriva solo nella frase successiva.
 
-### 2. それがコスト4以下の魔導具なら
+### 2. それがコスト{{4以下|よんいか}}の魔導具なら
 
 - [それが～なら](grammar:grammar-sorega-nara) riprende proprio la carta appena
   scelta dal cimitero e la mette subito sotto verifica.
-- `コスト4以下` riusa il filtro numerico già noto: conta il costo stampato della
-  carta scelta.
+- `コスト{{4以下|よんいか}}` riusa il filtro numerico già noto: conta il costo
+  stampato della carta scelta.
 - `魔導具なら` aggiunge il secondo controllo: per tornare direttamente sul campo,
   la carta deve essere sia Magic Tool sia di costo `4` o meno.
 

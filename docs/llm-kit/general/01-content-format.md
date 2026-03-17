@@ -128,6 +128,17 @@ Quindi non basta che esista una `reading` nella entry glossary: se il testo
 mostrato al lettore contiene kanji, la forma visibile deve essere annotata con
 `{{base|reading}}` quando la lettura non e banale.
 
+Da ora, nei contenuti visibili al lettore, anche i numeri vanno annotati in
+modo sistematico con la lettura corretta, non solo i casi "difficili".
+
+Esempi:
+
+- `{{4|よん}}`
+- `{{5000|ごせん}}`
+- `{{-3000|マイナスさんぜん}}`
+- `{{3000円|さんぜんえん}}`
+- `{{4以下|よんいか}}`
+
 Questo vale anche per pattern misti kana+kanji, non solo per parole tutte in
 kanji:
 
@@ -185,15 +196,23 @@ Esempio da evitare per `front` di una flashcard:
 front: {{手持ち|てもち}}
 ```
 
-### 4.3 Regole per furigana su composti numerici
+### 4.3 Regole per furigana sui numeri
 
+- tutti i numeri visibili al lettore vanno annotati con furigana, anche quando
+  sono "semplici" e anche quando non hanno contatori;
+- usare quindi `{{1|いち}}`, `{{4|よん}}`, `{{5000|ごせん}}`,
+  `{{-3000|マイナスさんぜん}}`, non `1`, `4`, `5000` o `-3000` lasciati nudi;
 - quando un numero e seguito da un contatore o da un qualificatore numerico
   (`以下`, `以上`, `未満`, ecc.), il furigana va messo sull'espressione completa;
 - usare quindi `{{1枚|いちまい}}`, `{{3本|さんぼん}}`, `{{4以下|よんいか}}`,
   `{{4つ以上|よっついじょう}}`, non `1{{枚|まい}}`, `4{{以下|いか}}` o
   `{{4つ|よっつ}}{{以上|いじょう}}`;
-- se il numero e poco trasparente o "grande", annotare il composto intero:
-  `{{2000以下|にせんいか}}`, `{{3000円|さんぜんえん}}`.
+- quando c'e un contatore, non indovinare mai la lettura per composizione:
+  va usata la pronuncia corretta dell'intero chunk, per esempio
+  `{{1体|いったい}}`, `{{2つ|ふたつ}}`, `{{2回|にかい}}`, `{{4枚|よんまい}}`;
+- se il numero ha segni, unita o suffissi rilevanti, annotare il chunk intero:
+  `{{-3000|マイナスさんぜん}}`, `{{3000円|さんぜんえん}}`,
+  `{{2000以下|にせんいか}}`.
 
 ### 4.4 Regola di qualita esplicativa
 
@@ -548,9 +567,12 @@ Regola review obbligatoria per `:::card`:
   kanji che il learner deve davvero leggere.
 - Se in `notes_it` citi giapponese con kanji come parte del punto didattico,
   annotalo con furigana anche li.
-- Per composti numerici con contatori o qualificatori usa un solo blocco con la
-  pronuncia corretta dell'intero chunk, per esempio `{{1枚|いちまい}}`,
-  `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`, `{{2つ|ふたつ}}`.
+- Per numeri con contatori o qualificatori usa un solo blocco con la pronuncia
+  corretta dell'intero chunk, per esempio `{{1枚|いちまい}}`,
+  `{{1体|いったい}}`, `{{2つ|ふたつ}}`, `{{2回|にかい}}`,
+  `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`.
+- Non inferire in modo meccanico le letture dei contatori: vanno sempre
+  verificate e scritte nella forma corretta.
 - Il valore review della card deve restare linguistico: la carta deve aiutare a
   leggere kanji, lessico o grammatica giapponese, non solo a ricordare una
   regola del gioco.

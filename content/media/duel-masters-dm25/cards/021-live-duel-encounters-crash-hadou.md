@@ -201,14 +201,14 @@ entry_type: term
 entry_id: term-b-a-d-two
 card_type: concept
 front: >-
-  このクリーチャーの{{召喚|しょうかん}}コストを{{2|ふた}}つ{{少|すく}}なくしてもよい。
+  このクリーチャーの{{召喚|しょうかん}}コストを{{2つ|ふたつ}}{{少|すく}}なくしてもよい。
   そうした{{場合|ばあい}}、このターン{{終了時|しゅうりょうじ}}にこの
   クリーチャーを{{破壊|はかい}}する。
 back: >-
   Puoi ridurre di 2 il costo di evocazione di questa creatura; se lo fai, alla
   fine di questo turno la distruggi.
 example_jp: >-
-  B・A・D 2を{{使|つか}}うと、{{召喚|しょうかん}}コストを{{2|ふた}}つ
+  B・A・D 2を{{使|つか}}うと、{{召喚|しょうかん}}コストを{{2つ|ふたつ}}
   {{少|すく}}なくできるが、{{終了時|しゅうりょうじ}}にこのクリーチャーを
   {{破壊|はかい}}する。
 example_it: >-

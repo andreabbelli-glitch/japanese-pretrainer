@@ -67,7 +67,7 @@ se non capisci che il cimitero è una risorsa, leggi male metà delle frasi.
 - [～てもよい](grammar:grammar-temoyoi)
 - [～以下 / ～以上](grammar:grammar-ika-ijou)
 - [ただし](grammar:grammar-tadashi)
-- [～を2回行う](grammar:grammar-nikai-okonau)
+- [～を{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau)
 
 ## Spiegazione
 
@@ -173,7 +173,8 @@ La novità utile qui è una formula di rules text che Duel Masters usa spesso.
 
 :::example_sentence
 jp: >-
-  {{相手|あいて}}のクリーチャー{{1体|いったい}}のパワーを`-4000`する。これを
+  {{相手|あいて}}のクリーチャー{{1体|いったい}}のパワーを
+  `{{-4000|マイナスよんせん}}`する。これを
   [{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau)。
 translation_it: >-
   Dai `-4000` a 1 creatura dell'avversario. Esegui questo due volte.
