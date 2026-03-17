@@ -1,8 +1,13 @@
-# Schema Dati Iniziale
+# Schema Dati Attuale
+
+> [!IMPORTANT]
+> Questo documento descrive il modello dati corrente del progetto in forma
+> sintetica. Per dettagli operativi e decisioni implementative puntuali, la
+> source of truth resta [docs/database.md](./database.md).
 
 ## 1. Obiettivo
 
-Definire uno schema relazionale v1 abbastanza solido da supportare:
+Riassumere lo schema relazionale corrente che supporta:
 
 - import dei contenuti Markdown;
 - textbook reader;
@@ -112,8 +117,10 @@ Entita lessicali canoniche.
 Campi:
 
 - `id` TEXT PRIMARY KEY
+- `source_id` TEXT NOT NULL
 - `media_id` TEXT NOT NULL
 - `segment_id` TEXT
+- `cross_media_group_id` TEXT
 - `lemma` TEXT NOT NULL
 - `reading` TEXT NOT NULL
 - `romaji` TEXT NOT NULL
@@ -132,6 +139,8 @@ Vincoli:
 
 - FK `media_id -> media.id`
 - FK `segment_id -> segment.id`
+- FK `cross_media_group_id -> cross_media_group.id`
+- UNIQUE (`media_id`, `source_id`)
 
 ## 3.6 `term_alias`
 
@@ -156,8 +165,10 @@ Pattern grammaticali canonici.
 Campi:
 
 - `id` TEXT PRIMARY KEY
+- `source_id` TEXT NOT NULL
 - `media_id` TEXT NOT NULL
 - `segment_id` TEXT
+- `cross_media_group_id` TEXT
 - `pattern` TEXT NOT NULL
 - `title` TEXT NOT NULL
 - `meaning_it` TEXT NOT NULL
@@ -171,6 +182,8 @@ Vincoli:
 
 - FK `media_id -> media.id`
 - FK `segment_id -> segment.id`
+- FK `cross_media_group_id -> cross_media_group.id`
+- UNIQUE (`media_id`, `source_id`)
 
 ## 3.8 `grammar_alias`
 
@@ -186,6 +199,27 @@ Campi:
 Vincoli:
 
 - FK `grammar_id -> grammar_pattern.id`
+
+## 3.8.1 `cross_media_group`
+
+Layer esplicito per collegare entry locali di media diversi quando il legame
+editoriale e dichiarato e certo.
+
+Campi:
+
+- `id` TEXT PRIMARY KEY
+- `entry_type` TEXT NOT NULL
+- `slug` TEXT NOT NULL
+- `label` TEXT
+
+Vincoli:
+
+- UNIQUE (`entry_type`, `slug`)
+
+Nota:
+
+`cross_media_group` non sostituisce gli ID locali del bundle. Serve solo a
+recuperare sibling cross-media secondarie quando il collegamento e intenzionale.
 
 ## 3.9 `entry_link`
 
@@ -211,6 +245,10 @@ Nota:
 
 `entry_link` serve a costruire il glossary, trovare la lesson di introduzione e
 spiegare dove una entry compare.
+
+Per le entry canoniche, `entry_id` persiste la chiave tecnica interna della
+entry (`term.id` o `grammar_pattern.id`). Il routing pubblico continua invece a
+usare l'ID editoriale locale (`source_id`) nel contesto del media.
 
 ## 3.10 `card`
 
@@ -407,12 +445,19 @@ Campi:
 
 In aggiunta:
 
-- tabella FTS per testo glossary e contenuti lesson, se necessario
+- FTS per testo glossary e contenuti lesson solo come possibile evoluzione
+  futura: non e un prerequisito gia implementato nel codice corrente
 
 ## 5. Note implementative
 
 - I riferimenti polimorfici (`entry_type` + `entry_id`) richiedono validazione
   applicativa in import, perche SQLite non puo esprimerli come FK nativa.
+- `term` e `grammar_pattern` distinguono tra chiave tecnica persistente (`id`)
+  e ID editoriale locale al media (`source_id`).
+- L'unicita editoriale per `term` e `grammar_pattern` vale su
+  (`media_id`, `source_id`), non piu su `source_id` globale al workspace.
+- `cross_media_group` e opzionale e non rende globale il routing delle entry:
+  collega solo sibling secondarie quando il confronto cross-media e dichiarato.
 - `entry_status` e `review_state` hanno ruoli diversi: il primo descrive una
   scelta o sintesi a livello entita, il secondo il comportamento SRS di una
   singola card.

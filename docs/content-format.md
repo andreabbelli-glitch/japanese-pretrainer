@@ -128,6 +128,23 @@ Quindi non basta che esista una `reading` nella entry glossary: se il testo
 mostrato al lettore contiene kanji, la forma visibile deve essere annotata con
 `{{base|reading}}` quando la lettura non e banale.
 
+Da ora, nei contenuti visibili al lettore, anche i numeri vanno annotati in
+modo sistematico con la lettura corretta, non solo i casi "difficili".
+
+Esempi:
+
+- `{{4|よん}}`
+- `{{5000|ごせん}}`
+- `{{-3000|マイナスさんぜん}}`
+- `{{3000円|さんぜんえん}}`
+- `{{4以下|よんいか}}`
+
+Questo vale anche per pattern misti kana+kanji, non solo per parole tutte in
+kanji:
+
+- scrivi `それ{{以外|いがい}}なら`, non `それ以外なら`;
+- scrivi `その{{中|なか}}から`, non `その中から`.
+
 ### 4.2 Regole di scrittura YAML sicura
 
 Per evitare errori di import, i campi testuali descrittivi dentro frontmatter o
@@ -158,7 +175,7 @@ Esempio corretto:
 
 ```md
 notes_it: >-
-  Lettura da fissare: {{山札|やまふだ}}.
+  {{山札|やまふだ}} vuol dire deck; nelle carte indica il mazzo da cui peschi.
 ```
 
 Esempio corretto per `front` di una flashcard:
@@ -182,17 +199,17 @@ front: {{手持ち|てもち}}
 ### 4.3 Regole per furigana sui numeri
 
 - tutti i numeri visibili al lettore vanno annotati con furigana, anche quando
-  sono semplici e anche quando non hanno contatori;
+  sono "semplici" e anche quando non hanno contatori;
 - usare quindi `{{1|いち}}`, `{{4|よん}}`, `{{5000|ごせん}}`,
   `{{-3000|マイナスさんぜん}}`, non `1`, `4`, `5000` o `-3000` lasciati nudi;
 - quando un numero e seguito da un contatore o da un qualificatore numerico
   (`以下`, `以上`, `未満`, ecc.), il furigana va messo sull'espressione completa;
-- usare quindi `{{1枚|いちまい}}`, `{{1体|いったい}}`, `{{2つ|ふたつ}}`,
-  `{{2回|にかい}}`, `{{3本|さんぼん}}`, `{{4以下|よんいか}}`,
+- usare quindi `{{1枚|いちまい}}`, `{{3本|さんぼん}}`, `{{4以下|よんいか}}`,
   `{{4つ以上|よっついじょう}}`, non `1{{枚|まい}}`, `4{{以下|いか}}` o
   `{{4つ|よっつ}}{{以上|いじょう}}`;
-- quando c'e un contatore, la lettura va verificata e scritta nella forma
-  corretta dell'intero chunk: non va mai indovinata per composizione;
+- quando c'e un contatore, non indovinare mai la lettura per composizione:
+  va usata la pronuncia corretta dell'intero chunk, per esempio
+  `{{1体|いったい}}`, `{{2つ|ふたつ}}`, `{{2回|にかい}}`, `{{4枚|よんまい}}`;
 - se il numero ha segni, unita o suffissi rilevanti, annotare il chunk intero:
   `{{-3000|マイナスさんぜん}}`, `{{3000円|さんぜんえん}}`,
   `{{2000以下|にせんいか}}`.
@@ -224,6 +241,130 @@ Esempi accettabili:
 - `または` vuol dire "oppure", ma nelle carte collega due categorie che valgono
   entrambe per lo stesso filtro.
 
+### 4.4.1 Regola per micro-elementi strutturali
+
+Quando selezioni nuove entry o nuove flashcard, non fermarti a kanji vistosi,
+keyword appariscenti o chunk lunghi di rules text.
+
+Se un elemento piccolo ma frequente controlla davvero la lettura della frase,
+puo meritare una entry e una card dedicate, purché non esista gia una copertura
+equivalente nello stesso media.
+
+Casi tipici:
+
+- marcatori di scope o totalita come `すべて`, `各`, `全部`;
+- riprese referenziali come `それ`, `それら`, `その中`;
+- filtri o snodi che cambiano davvero il parsing operativo della frase.
+
+Regola pratica:
+
+- se senza quell'elemento leggeresti male bersagli, quantita, referente o
+  insieme colpito, trattalo come candidato serio da glossary/review;
+- se esiste gia una entry che copre davvero lo stesso compito di lettura, riusa
+  quella invece di duplicare.
+
+### 4.5 Regola anti-meta-editoriale
+
+Il contenuto finale non deve parlare del proprio processo di produzione,
+revisione o studio.
+
+Da evitare nel textbook e in `notes_it`:
+
+- "questa lesson";
+- "qui il punto e";
+- "conviene fissare / mettere in review";
+- "per questo batch / per questo test";
+- "la fonte ufficiale dice..." come frase principale della spiegazione.
+- `Da qui in poi questa pagina non e piu una monografia su una sola carta:
+  diventa l'archivio progressivo delle carte che incontro davvero durante il
+  gioco.`
+- `Il punto piu importante non e la keyword offensiva in se, ma il blocco
+  タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo
+  stato gia presente nel momento del controllo.`
+
+### 4.6 Regola di correttezza dell'italiano
+
+Tutto il testo italiano finale nei contenuti importabili deve essere
+grammaticalmente corretto e ortograficamente rifinito.
+
+Regole minime:
+
+- usa gli accenti corretti (`è`, `può`, `più`, `già`, `cioè`, `così`,
+  `perché`);
+- non usare apostrofi o forme ASCII degradate al posto degli accenti richiesti;
+- vale per `summary`, `meaning_it`, `notes_it`, `example_it`, caption, alt
+  text e prosa libera del textbook.
+
+Un contenuto formalmente valido ma scritto in italiano scorretto non e
+accettabile.
+
+### 4.7 Regola obiettivo flashcard
+
+Le flashcard servono prima di tutto, e in modo prioritario, a imparare il
+giapponese.
+
+Questa e la regola primaria del sistema:
+
+- lo scopo principale non e memorizzare regole del gioco;
+- lo scopo principale e fissare parole giapponesi importanti e pattern
+  grammaticali importanti;
+- la priorita va al giapponese piu spendibile e riusabile possibile, non al
+  dettaglio piu verticale del singolo media;
+- se devi scegliere tra una card di meccanica e una card di giapponese, scegli
+  la card di giapponese.
+
+Quindi una `:::card` e giustificata quando allena almeno uno di questi aspetti:
+
+- riconoscimento di kanji o letture importanti;
+- lessico o chunk giapponesi importanti e riusabili;
+- pattern grammaticali importanti che aiutano a leggere altre frasi del corpus;
+- termini che hanno buona spendibilita anche fuori da una singola scena,
+  schermata, decklist o prodotto;
+- un chunk effetto completo, ma solo se il valore didattico sta nella sua forma
+  giapponese e non in un riassunto astratto della regola.
+
+Regola complementare:
+
+- se un termine, una keyword o una sigla serve per capire il media corrente o
+  per interagirci correttamente ma non ha abbastanza valore di riuso, spiegalo
+  nel textbook e non forzarlo in flashcard.
+
+Da evitare:
+
+- flashcard che insegnano solo "cosa fa la carta" senza allenare una forma
+  giapponese precisa;
+- back che riassumono la regola di gioco ma non aiutano a leggere il testo;
+- chunk creati solo per memorizzare la meccanica, senza valore su kanji,
+  lessico o grammatica.
+- flashcard di puro katakana quando il contenuto non allena altro oltre alla
+  semplice traslitterazione.
+- flashcard su sigle, acronimi, codici prodotto, nomi evento o dettagli che
+  spiegano il singolo media ma non costruiscono literacy generale.
+- scelte che lasciano fuori una parola giapponese importante o un pattern
+  grammaticale importante per fare spazio a una card di sola meccanica.
+
+Eccezione stretta:
+
+- una card su katakana puro ha senso solo se il termine e davvero opaco,
+  ricorrente e necessario per leggere il corpus, e se la card allena anche il
+  suo ruolo o uso concreto, non solo la pronuncia.
+
+Se una fonte serve, va usata solo per sostenere una spiegazione sul testo, sulla
+regola o sulla schermata. La frase visibile all'utente deve restare centrata su:
+
+- che cosa significa il giapponese;
+- che cosa succede nel gioco / nell'interfaccia;
+- quale contrasto o ambiguita conviene sciogliere.
+
+Se stai per scrivere una frase simile agli ultimi due anti-esempi, fermati e
+riscrivila come parsing concreto di:
+
+- forma grammaticale;
+- condizione;
+- timing;
+- soggetto / bersaglio;
+- effetto operativo.
+
 ## 5. `media.md`
 
 Definisce il contenitore del media.
@@ -244,7 +385,7 @@ status: active
 
 # Sample Anime
 
-Pacchetto di studio dedicato alla serie.
+Lessico e dialoghi ricorrenti della serie.
 ```
 
 Campi obbligatori:
@@ -269,6 +410,10 @@ Campi opzionali:
 
 Ogni file in `textbook/` rappresenta una lesson.
 
+Anche nel textbook la priorita resta insegnare il giapponese. Il media, il
+gioco o la scena servono come contesto per chiarire significato, funzione e
+conseguenza pratica del testo, non come obiettivo principale autonomo.
+
 Esempio:
 
 ```md
@@ -281,21 +426,51 @@ order: 10
 segment_ref: episode-01
 difficulty: n5
 status: active
+summary: >-
+  Riconoscere 食べる, 大丈夫 e 魔法 come lessico di azione, rassicurazione e causa in una scena
+  fantasy.
 ---
 
 # Obiettivo
 
-In questa lezione vediamo il lessico base dell'apertura.
+Capire quando il dialogo parla di mangiare, rassicurare qualcuno o attribuire
+un evento alla magia.
+
+## Contesto
+
+In una scena fantasy iniziale questi tre elementi non stanno sullo stesso
+piano: [食べる](term:term-taberu) descrive l'azione concreta, [大丈夫](term:term-daijoubu)
+controlla se la situazione e sotto controllo, {{魔法|まほう}} spiega invece la
+causa soprannaturale di cio che succede.
 
 ## Termini chiave
 
 - [食べる](term:term-taberu)
 - [大丈夫](term:term-daijoubu)
 
-## Nota
+## Spiegazione
 
-La forma {{魔法|まほう}} ricorre spesso in contesto fantasy.
+[食べる](term:term-taberu) indica l'azione di mangiare. In dialogo non serve
+solo a nominare il cibo: spesso distingue cio che viene davvero consumato da
+un semplice invito o da un'offerta.
+
+[大丈夫](term:term-daijoubu) qui non va letto come formula vaga positiva. Di
+solito segnala che qualcuno sta verificando se va tutto bene o se un problema e
+gestibile.
+
+{{魔法|まほう}} non va trattato come decorazione fantasy generica. Quando
+compare, di solito ti dice che la causa dell'evento non e fisica o ordinaria,
+ma soprannaturale.
+
+## Nota finale
+
+Quando questi elementi compaiono vicini, la scena alterna spesso azione
+pratica, verifica dello stato e spiegazione della causa.
 ```
+
+Questo esempio serve a mostrare il livello minimo di sostanza atteso: niente
+meta-discorso, niente frasi del tipo "e utile/importante", sempre significato +
+funzione concreta.
 
 Campi obbligatori:
 
@@ -326,7 +501,7 @@ Esempio:
 id: cards-sample-anime-ep01
 media_id: media-sample-anime
 slug: ep01-cards
-title: Episodio 1 - Core cards
+title: Episodio 1
 order: 10
 segment_ref: episode-01
 ---
@@ -336,7 +511,7 @@ id: card-taberu-recognition
 entry_type: term
 entry_id: term-taberu
 card_type: recognition
-front: 食べる
+front: '{{食|た}}べる'
 back: mangiare
 example_jp: >-
   パンを{{食|た}}べる。
@@ -388,6 +563,25 @@ Regola review obbligatoria per `:::card`:
   `front`;
 - `example_it` deve tradurre quella stessa frase in italiano in modo utile per
   il retro review.
+- `front` e `example_jp` devono usare i furigana ogni volta che compare un
+  kanji che il learner deve davvero leggere.
+- Se in `notes_it` citi giapponese con kanji come parte del punto didattico,
+  annotalo con furigana anche li.
+- Per numeri con contatori o qualificatori usa un solo blocco con la pronuncia
+  corretta dell'intero chunk, per esempio `{{1枚|いちまい}}`,
+  `{{1体|いったい}}`, `{{2つ|ふたつ}}`, `{{2回|にかい}}`,
+  `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`.
+- Non inferire in modo meccanico le letture dei contatori: vanno sempre
+  verificate e scritte nella forma corretta.
+- Il valore review della card deve restare linguistico: la carta deve aiutare a
+  leggere kanji, lessico o grammatica giapponese, non solo a ricordare una
+  regola del gioco.
+- Se una sezione introduce un pattern grammaticale importante o una parola
+  giapponese importante che non e ancora coperta, la default action e creare la
+  flashcard relativa.
+- Una card con `front` in puro katakana non e di default una buona card: va
+  evitata se non allena anche un uso ricorrente, una distinzione utile nel
+  corpus o un reale ostacolo di lettura.
 
 Campi opzionali del blocco `:::card`:
 

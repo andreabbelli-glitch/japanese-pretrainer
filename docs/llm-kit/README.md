@@ -69,6 +69,13 @@ Disponibile ora:
 - `media/pokemon-scarlet-violet/01-brief.md`
 - `media/pokemon-scarlet-violet/02-batch-1-prompt.md`
 
+Nota pratica:
+
+- il brief `media/duel-masters-dm25/01-brief.md` resta utile come contesto
+  storico del seed iniziale, ma non descrive piu lo snapshot corrente del
+  bundle reale; per estensioni o correzioni attuali passa sempre anche i file
+  reali in `content/media/duel-masters-dm25/...`.
+
 ## Uso pratico
 
 > [!IMPORTANT]

@@ -1,7 +1,9 @@
 # Fetch pronunce da Forvo
 
-Lo script `pnpm pronunciations:forvo` usa una sessione browser reale con profilo
-persistente per scaricare pronunce MP3 da Forvo e inserirle nel bundle locale.
+Lo script `pnpm pronunciations:forvo` supporta il fallback Forvo per scaricare
+pronunce MP3 e inserirle nel bundle locale. Nel flusso operativo standard usa
+`--manual` nel browser normale; il percorso browser dedicato resta per debug o
+manutenzione del fetcher.
 
 ## Ruolo nel workflow
 
@@ -26,7 +28,10 @@ source of truth del processo completo e
 - legge `content/` con lo stesso parser/validator dell'import;
 - prima di aprire Forvo prova automaticamente a riusare audio gia presenti in
   altri media con stessa entry type, stesso label e stessa reading;
-- apre Chrome via Playwright con profilo persistente in `data/forvo-profile/`;
+- nel flusso operativo standard apre l'URL Forvo nel browser normale e osserva
+  il download locale del file scelto;
+- il profilo browser dedicato in `data/forvo-profile/` resta disponibile per il
+  percorso Playwright di debug o manutenzione del fetcher;
 - se Cloudflare o il login richiedono intervento, ti lascia completare la
   pagina nel browser e poi riprende il batch;
 - per ogni parola sceglie il candidato con ranking migliore, privilegiando:

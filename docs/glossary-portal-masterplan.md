@@ -1,5 +1,18 @@
 # Masterplan - Glossary Portal Globale
 
+> [!IMPORTANT]
+> Questo documento conserva il masterplan e l'audit pre-rollout del portale
+> glossary globale. Non descrive piu lo stato corrente della UI.
+>
+> Oggi il progetto espone gia una route top-level `/glossary` e una navbar
+> primaria con `Glossary`. Le sezioni di audit qui sotto vanno quindi lette come
+> snapshot storico prima dell'implementazione, non come source of truth
+> operativa corrente.
+>
+> Nota tecnica: i riferimenti assoluti OneDrive presenti in questo file sono
+> anch'essi storici. Per il comportamento attuale fai riferimento ai file nel
+> workspace locale e alla documentazione tecnica corrente.
+
 ## Obiettivo
 
 Trasformare il glossary da area locale per singolo media a portale unico di

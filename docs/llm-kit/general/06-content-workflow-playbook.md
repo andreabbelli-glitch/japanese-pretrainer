@@ -30,22 +30,24 @@ Quindi il valore di questo playbook e operativo:
 - ti aiuta a evitare batch troppo grandi;
 - riduce il rischio di ID duplicati, riferimenti rotti e sovrapposizioni.
 
-## Input minimo da passare all'LLM esterno
+## Kit da passare all'LLM esterno
 
-Per qualunque media, passa sempre almeno:
+Per qualunque media, passa sempre il kit generale completo:
 
 - `docs/llm-kit/general/01-content-format.md`
 - `docs/llm-kit/general/02-llm-content-handoff.md`
 - `docs/llm-kit/general/03-template-media.md`
 - `docs/llm-kit/general/04-template-textbook-lesson.md`
 - `docs/llm-kit/general/05-template-cards-file.md`
-- il brief media-specifico in `docs/llm-kit/media/<media-slug>/...`
-- l'eventuale prompt batch-specifico in `docs/llm-kit/media/<media-slug>/...`
-
-Se il batch include immagini, passa anche:
-
+- `docs/llm-kit/general/06-content-workflow-playbook.md`
 - `docs/llm-kit/general/07-template-image-requests.yaml`
 - `docs/llm-kit/general/08-template-image-assets.yaml`
+- `docs/llm-kit/general/09-editorial-quality-rubric.md`
+
+In aggiunta, passa sempre anche:
+
+- il brief media-specifico in `docs/llm-kit/media/<media-slug>/...`
+- l'eventuale prompt batch-specifico in `docs/llm-kit/media/<media-slug>/...`
 
 ## Regola chiave di contesto
 

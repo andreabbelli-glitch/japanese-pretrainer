@@ -17,9 +17,11 @@
 - Dashboard: compare `Duel Masters`, con CTA per riprendere studio e review.
 - Libreria media: `Duel Masters` e `Mobile Suit Gundam Arsenal Base` sono entrambi visibili con metriche sintetiche coerenti.
 - Ogni media attivo in `content/media` apre senza errori almeno `detail`, `textbook`, `glossary`, `review` e il redirect `progress`.
+- Glossary globale `/glossary`: ricerca cross-media navigabile e coerente con
+  le viste locali.
 - Media detail: le entry point `Textbook`, `Glossary`, `Review`, `Progress` sono tutte operative.
 - Root review `/review`: reindirizza direttamente alla review del media di focus.
-- Textbook index: mostra le 11 lesson con stato coerente.
+- Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.
 - Reader lesson: il toggle furigana aggiorna davvero il rendering.
 - Reader lesson desktop: clic su un termine apre tooltip con `Apri entry`.
 - Reader lesson mobile: tap su un termine apre sheet; `Lezioni` apre la rail mobile.

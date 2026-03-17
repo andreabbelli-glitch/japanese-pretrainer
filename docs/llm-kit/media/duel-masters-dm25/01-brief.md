@@ -1,5 +1,11 @@
 # Brief Contenuti - Duel Masters
 
+> [!IMPORTANT]
+> Questo brief resta utile come contesto storico del seed iniziale del bundle.
+> Non va trattato come fotografia aggiornata del contenuto reale attuale in
+> `content/media/duel-masters-dm25`. Se devi estendere o correggere il bundle
+> corrente, passa sempre anche i file reali gia presenti nel repo.
+
 ## Scopo
 
 Media generale di studio su Duel Masters.
@@ -148,7 +154,7 @@ Segmenti attuali:
 - `mazzo-abyss`
 - `mazzo-apollo-red-zone`
 
-## Stato reale del bundle
+## Snapshot storico del bundle (seed)
 
 Il bundle reale attuale contiene:
 
@@ -165,7 +171,7 @@ Il bundle reale attuale contiene:
 - `cards/010-dm25-sd1-core.md`
 - `cards/020-dm25-sd2-core.md`
 
-## Batch futuri consigliati
+## Batch futuri consigliati nel seed storico
 
 Se vuoi estendere il bundle senza riscrivere quello che esiste gia, i batch
 successivi sensati sono:

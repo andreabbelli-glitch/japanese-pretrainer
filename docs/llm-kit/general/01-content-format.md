@@ -265,22 +265,6 @@ Regola pratica:
 
 ### 4.5 Regola anti-meta-editoriale
 
-### 4.6 Regola di correttezza dell'italiano
-
-Tutto il testo italiano finale nei contenuti importabili deve essere
-grammaticalmente corretto e ortograficamente rifinito.
-
-Regole minime:
-
-- usa gli accenti corretti (`è`, `può`, `più`, `già`, `cioè`, `così`,
-  `perché`);
-- non usare apostrofi o forme ASCII degradate al posto degli accenti richiesti;
-- vale per `summary`, `meaning_it`, `notes_it`, `example_it`, caption, alt
-  text e prosa libera del textbook.
-
-Un contenuto formalmente valido ma scritto in italiano scorretto non è
-accettabile.
-
 Il contenuto finale non deve parlare del proprio processo di produzione,
 revisione o studio.
 
@@ -298,7 +282,23 @@ Da evitare nel textbook e in `notes_it`:
   タップ状態でいたら: qui non basta sapere cos'e タップ, bisogna riconoscere lo
   stato gia presente nel momento del controllo.`
 
-### 4.6 Regola obiettivo flashcard
+### 4.6 Regola di correttezza dell'italiano
+
+Tutto il testo italiano finale nei contenuti importabili deve essere
+grammaticalmente corretto e ortograficamente rifinito.
+
+Regole minime:
+
+- usa gli accenti corretti (`è`, `può`, `più`, `già`, `cioè`, `così`,
+  `perché`);
+- non usare apostrofi o forme ASCII degradate al posto degli accenti richiesti;
+- vale per `summary`, `meaning_it`, `notes_it`, `example_it`, caption, alt
+  text e prosa libera del textbook.
+
+Un contenuto formalmente valido ma scritto in italiano scorretto non e
+accettabile.
+
+### 4.7 Regola obiettivo flashcard
 
 Le flashcard servono prima di tutto, e in modo prioritario, a imparare il
 giapponese.

@@ -54,6 +54,37 @@ notes_it: >-
 level_hint: custom
 :::
 
+:::term
+id: term-ichiban-shita
+lemma: 一番下
+reading: いちばんした
+romaji: ichiban shita
+meaning_it: il punto piu in basso / il fondo
+pos: noun
+aliases: [一番下, いちばんした, bottom]
+notes_it: >-
+  `{{一番|いちばん}}` marca l'estremo e `{{下|した}}` indica la parte bassa.
+  Insieme formano un chunk di posizione molto utile: `il punto piu in basso` o
+  `il fondo`. In Duel Masters compare spesso con il mazzo per dire dove una
+  carta viene rimessa quando non resta in cima.
+level_hint: n4
+:::
+
+:::grammar
+id: grammar-me-ordinal
+pattern: ～目
+title: Numero + contatore come posizione nell'ordine
+reading: め
+meaning_it: il numero -esimo / in posizione numero
+aliases: [目, ～枚目, ～番目]
+notes_it: >-
+  `{{目|め}}` trasforma un numero o un contatore in una posizione ordinata.
+  In `{{1枚目|いちまいめ}}`, `{{1枚|いちまい}}` non significa piu soltanto
+  "una carta": con `{{目|め}}` diventa `la prima carta`. Nel rules text questo
+  serve a bloccare un posto preciso nella sequenza, non una quantita generica.
+level_hint: n4
+:::
+
 :::card
 id: card-bad-brand-first-recognition
 entry_type: term
@@ -115,6 +146,27 @@ tags: [live-duel, deck, reveal, chunk]
 :::
 
 :::card
+id: card-ichimaime-me-concept
+entry_type: grammar
+entry_id: grammar-me-ordinal
+card_type: concept
+front: '{{1枚目|いちまいめ}}'
+back: >-
+  la prima carta; `目` marca la posizione nell'ordine
+example_jp: >-
+  `{{1枚目|いちまいめ}}`の`{{目|め}}`は、{{1枚|いちまい}}を
+  「{{最初|さいしょ}}の{{1枚|いちまい}}」にする。
+example_it: >-
+  In `1枚目`, `目` trasforma `1枚` in "la prima carta" invece di "una carta".
+notes_it: >-
+  Questa e una distinzione molto utile: `{{1枚|いちまい}}` conta una carta,
+  `{{1枚目|いちまいめ}}` indica quale carta nella fila o nella pila. Su Bad
+  Brand il testo non prende una carta qualsiasi dal mazzo: prende proprio la
+  prima.
+tags: [live-duel, grammar, counters, order]
+:::
+
+:::card
 id: card-bottom-of-deck-recognition
 entry_type: term
 entry_id: term-bottom-of-deck
@@ -130,6 +182,25 @@ notes_it: >-
   `{{一番下|いちばんした}}` è una posizione molto concreta: nel rules text
   cambia davvero il ritmo con cui quella carta potrà tornare disponibile.
 tags: [live-duel, deck, position]
+:::
+
+:::card
+id: card-ichiban-shita-recognition
+entry_type: term
+entry_id: term-ichiban-shita
+card_type: recognition
+front: '{{一番下|いちばんした}}'
+back: il punto piu in basso; il fondo
+example_jp: >-
+  {{山札|やまふだ}}の{{一番下|いちばんした}}に{{置|お}}くと、すぐには
+  {{見|み}}えなくなる。
+example_it: >-
+  Se la metti sul fondo del mazzo, non la rivedi subito.
+notes_it: >-
+  Qui il valore utile e posizionale: `{{一番下|いちばんした}}` non significa una
+  carta specifica, ma il punto finale della pila. Quando lo incontri, pensa a
+  `fondo` o `parte piu bassa`.
+tags: [live-duel, position, chunk]
 :::
 
 :::card

@@ -20,7 +20,7 @@ funzionare bene sia su desktop sia su mobile.
 ## 3. Non obiettivi iniziali
 
 - Multi-user o collaborazione.
-- Audio, parsing di subtitle, OCR o import automatici da fonti esterne.
+- Parsing di subtitle, OCR o import automatici indiscriminati da fonti esterne.
 - Accesso remoto esposto pubblicamente senza hardening esplicito.
 - Authoring visuale avanzato del contenuto dentro la webapp.
 
@@ -62,9 +62,10 @@ migrazioni semplici, ottimo punto di partenza.
 
 ### Search
 
-- SQLite FTS5 per full-text search
 - Campi normalizzati per kana e romaji
 - Normalizzazione via libreria tipo `wanakana`
+- FTS5 come evoluzione futura, da introdurre solo quando il corpus o i pattern
+  di query lo richiedono davvero
 
 ### Test
 
@@ -97,11 +98,13 @@ model delle entita.
 
 - `media`
 - `segment`
+- `cross_media_group`
 - `lesson`
 - `term`
 - `grammar_pattern`
 - `example_sentence`
 - `card`
+- `entry_link`
 - `card_entry_link`
 - `entry_status`
 - `review_state`
@@ -141,6 +144,8 @@ sono la sorgente operativa.
 
 - `/`
 - `/media`
+- `/glossary`
+- `/review`
 - `/media/[mediaSlug]`
 - `/media/[mediaSlug]/textbook`
 - `/media/[mediaSlug]/textbook/[lessonSlug]`
@@ -201,7 +206,9 @@ Scelta tecnica:
 
 - campi raw;
 - campi normalizzati;
-- FTS per testo libero;
+- query applicativa su campi normalizzati e ranking dedicato nel corpus attuale;
+- FTS per testo libero come evoluzione futura, non come prerequisito gia
+  implementato;
 - matching prioritario exact > prefix > fuzzy leggero.
 
 ## 9. Review system

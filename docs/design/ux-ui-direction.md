@@ -148,7 +148,7 @@ Per Task 06 lo shell raccomandato e:
 
 - desktop: top bar sottile e orizzontale, non sidebar fissa da applicazione
   gestionale;
-- mobile: bottom navigation con massimo 4 destinazioni primarie;
+- mobile: bottom navigation con 5 destinazioni primarie;
 - contenuto su container centrale con grandi margini respiranti.
 
 Motivazione: una sidebar persistente farebbe sembrare il prodotto un backoffice.
@@ -327,7 +327,7 @@ Ridurre l'attrito decisionale e mantenere un ritmo calmo ma veloce.
 ### Navigazione
 
 - desktop: top bar con navigazione principale sempre visibile
-- mobile: bottom nav persistente per home, media, review, settings
+- mobile: bottom nav persistente per home, media, glossary, review, settings
 - nelle pagine interne del media la navigazione secondaria resta contestuale al
   media, non nella nav globale
 
