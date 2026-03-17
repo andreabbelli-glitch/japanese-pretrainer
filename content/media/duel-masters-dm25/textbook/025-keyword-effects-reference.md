@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 55
+order: 54
 segment_ref: keyword-bank
 difficulty: n3
 status: active
