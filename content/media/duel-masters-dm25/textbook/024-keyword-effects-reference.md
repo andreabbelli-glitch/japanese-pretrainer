@@ -129,6 +129,32 @@ reveal_mode: sentence
 - Il verbo successivo dice quante carte di quel materiale devi consumare per
   ottenere il payoff.
 
+### [無月の門](term:term-mugestsu-no-mon)
+
+:::example_sentence
+jp: >-
+  [無月の門](term:term-mugestsu-no-mon)：{{自分|じぶん}}の
+  [魔導具](term:term-madougu)が[バトルゾーン](term:term-battle-zone)に
+  {{出|で}}た{{時|とき}}、{{自分|じぶん}}の
+  [魔導具](term:term-madougu)を[バトルゾーン](term:term-battle-zone)と
+  [{{墓地|ぼち}}](term:term-graveyard)から2つ[ずつ](grammar:grammar-zutsu)
+  {{選|えら}}び、このクリーチャーを{{自分|じぶん}}の
+  [{{手札|てふだ}}](term:term-hand)または[{{墓地|ぼち}}](term:term-graveyard)から
+  それら4枚の上に[コスト](term:term-cost)を{{払|はら}}わずに
+  {{召喚|しょうかん}}してもよい。
+translation_it: >-
+  Gate of Moonless Night: quando un tuo Magic Tool entra nel battle zone,
+  scegli due tuoi Magic Tool dal battle zone e due dal cimitero, poi puoi
+  evocare questa creatura dalla mano o dal cimitero sopra quelle quattro carte
+  senza pagarne il costo.
+reveal_mode: sentence
+:::
+
+- `2つずつ` distribuisce il numero sui due gruppi nominati: due dal battle
+  zone e due dal cimitero.
+- `それら4枚の上に` segnala che non è una semplice messa in campo: la carta
+  entra sopra il materiale appena scelto.
+
 ### [S・トリガー](term:term-s-trigger)
 
 :::example_sentence
