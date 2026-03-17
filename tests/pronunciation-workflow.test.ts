@@ -68,7 +68,7 @@ id: card-miru-recognition
 entry_type: term
 entry_id: term-miru
 card_type: recognition
-front: 見る
+front: '{{見る|みる}}'
 back: vedere
 tags: [verb, extra]
 :::

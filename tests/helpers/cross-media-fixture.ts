@@ -184,7 +184,7 @@ id: ${input.mixedCardTermCardId}
 entry_type: term
 entry_id: ${input.mixedCardTermSourceId}
 card_type: recognition
-front: 余白
+front: '{{余白|よはく}}'
 back: ${input.mixedCardTermMeaning}
 tags: [shared, mixed]
 :::
@@ -235,7 +235,7 @@ id: ${input.grammarCardId}
 entry_type: grammar
 entry_id: ${input.grammarSourceId}
 card_type: concept
-front: ～共有
+front: ～{{共有|きょうゆう}}
 back: ${input.grammarMeaning}
 tags: [shared, grammar]
 :::

@@ -1786,7 +1786,9 @@ function EntryTooltipCard({
         </span>
         <span className="meta-pill">{entry.statusLabel}</span>
       </div>
-      <h2 className="entry-tooltip-card__title jp-inline">{entry.label}</h2>
+      <h2 className="entry-tooltip-card__title jp-inline">
+        {renderFurigana(entry.label)}
+      </h2>
       {"title" in entry && entry.title && entry.title !== entry.label ? (
         <p className="entry-tooltip-card__subtitle">{entry.title}</p>
       ) : null}

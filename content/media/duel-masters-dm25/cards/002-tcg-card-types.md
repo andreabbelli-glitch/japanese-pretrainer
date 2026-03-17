@@ -20,7 +20,7 @@ notes_it: >-
   sopra una base valida. Quando leggi
   [{{進化|しんか}}クリーチャー](term:term-evolution-creature), la richiesta della
   base fa già parte del tipo di carta, quindi devi cercare subito che cosa può
-  stare sotto e se il testo parla di [重ねる](term:term-kasaneru).
+  stare sotto e se il testo parla di [{{重|かさ}}ねる](term:term-kasaneru).
 level_hint: custom
 :::
 
@@ -190,7 +190,7 @@ notes_it: >-
   È un `フィールド` con il prefisso speciale `D2`. Questo
   prefisso non aggiunge atmosfera: ti avvisa che stai guardando una famiglia di
   field con regole proprie, fra cui il fatto che l'arrivo di un altro
-  `D2フィールド` fa uscire quello precedente. Quindi non è un effetto isolato:
+  `D{{2|でぃーつー}}フィールド` fa uscire quello precedente. Quindi non è un effetto isolato:
   è un oggetto di board state che sostituisce il `D2` già presente.
 level_hint: custom
 :::
@@ -200,7 +200,7 @@ id: card-evolution-creature-recognition
 entry_type: term
 entry_id: term-evolution-creature
 card_type: recognition
-front: 進化クリーチャー
+front: '{{進化|しんか}}クリーチャー'
 back: creatura evoluzione / evolution creature
 example_jp: >-
   {{進化|しんか}}クリーチャーをこのクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。
@@ -208,7 +208,7 @@ example_it: >-
   Sovrapponi una creatura evoluzione su questa creatura.
 notes_it: >-
   Qui il tipo di carta ti dice già il verbo operativo da aspettarti:
-  [重ねる](term:term-kasaneru). Non leggerla come una creatura qualunque che poi
+  [{{重|かさ}}ねる](term:term-kasaneru). Non leggerla come una creatura qualunque che poi
   "ha un effetto di evoluzione": l'idea di base valida è già parte
   dell'etichetta.
 tags: [core, type, evolution]
@@ -219,7 +219,7 @@ id: card-star-evolution-creature-recognition
 entry_type: term
 entry_id: term-star-evolution-creature
 card_type: recognition
-front: スター進化クリーチャー
+front: 'スター{{進化|しんか}}クリーチャー'
 back: creatura Star Evolution
 example_jp: >-
   スター{{進化|しんか}}：レクスターズまたは{{火|ひ}}のクリーチャー{{1体|いったい}}の{{上|うえ}}に{{置|お}}く。
@@ -257,7 +257,7 @@ id: card-g-neo-creature-recognition
 entry_type: term
 entry_id: term-g-neo-creature
 card_type: recognition
-front: G-NEOクリーチャー
+front: 'G{{-|じーねおくりーちゃー}}NEOクリーチャー'
 back: creatura G-NEO
 example_jp: >-
   G-NEOクリーチャーが{{離|はな}}れる{{時|とき}}、{{下|した}}のカードもすべて{{離|はな}}れる。
@@ -268,7 +268,7 @@ notes_it: >-
   Qui l'etichetta cambia il comportamento dell'intera pila: quando il pezzo in
   cima lascia il campo, escono anche tutte le carte sotto. Questo separa
   `G-NEO` da `NEO` semplice e da
-  [スター進化クリーチャー](term:term-star-evolution-creature).
+  [スター{{進化|しんか}}クリーチャー](term:term-star-evolution-creature).
 tags: [core, type, evolution, special]
 :::
 
@@ -369,7 +369,7 @@ id: card-castle-recognition
 entry_type: term
 entry_id: term-castle
 card_type: recognition
-front: 城
+front: '{{城|しろ}}'
 back: Castle / carta fortezza sugli scudi
 example_jp: >-
   {{城|しろ}}はシールドに{{付|つ}}けて{{要塞化|ようさいか}}する。
@@ -387,10 +387,11 @@ id: card-d2-field-recognition
 entry_type: term
 entry_id: term-d2-field
 card_type: recognition
-front: D2フィールド
+front: 'D{{2|ツー}}フィールド'
 back: D2 Field
 example_jp: >-
-  {{別|べつ}}のD2フィールドが{{出|で}}た{{時|とき}}、このD2フィールドを{{墓地|ぼち}}に{{置|お}}く。
+  {{別|べつ}}のD{{2|ツー}}フィールドが{{出|で}}た{{時|とき}}、
+  このD{{2|ツー}}フィールドを{{墓地|ぼち}}に{{置|お}}く。
 example_it: >-
   Quando entra un altro D2 Field, metti questo D2 Field nel cimitero.
 notes_it: >-

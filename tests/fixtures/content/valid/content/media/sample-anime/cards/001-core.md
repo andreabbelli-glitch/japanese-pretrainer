@@ -28,7 +28,7 @@ id: card-taberu-recognition
 entry_type: term
 entry_id: term-taberu
 card_type: recognition
-front: 食べる
+front: '{{食べる|たべる}}'
 back: mangiare
 example_jp: >-
   パンを{{食|た}}べる。

@@ -38,6 +38,7 @@ import {
   formatEntryStatusLabel,
   formatReviewStateLabel
 } from "@/lib/study-format";
+import { stripInlineMarkdown } from "@/lib/render-furigana";
 
 import {
   getDrivingEntryLinks,
@@ -661,18 +662,19 @@ export function buildReviewOverviewSnapshot(input: {
     newQueuedCount: queuedNewCards.length,
     upcomingCount: upcomingCards.length
   });
+  const activeCards = dueCards.length + upcomingCards.length;
 
   return {
-    activeCards: input.cards.filter((card) =>
-      isReviewCardActive(card.reviewState?.state ?? null)
-    ).length,
+    activeCards,
     dailyLimit: input.dailyLimit,
     dueCount: dueCards.length,
     effectiveDailyLimit,
     manualCount: manualCards.length,
     newAvailableCount: newCards.length,
     newQueuedCount: queuedNewCards.length,
-    nextCardFront: queueCards[0]?.front,
+    nextCardFront: queueCards[0]?.front
+      ? stripInlineMarkdown(queueCards[0].front)
+      : undefined,
     queueCount: queueCards.length,
     queueLabel,
     suspendedCount: suspendedCards.length,
@@ -756,10 +758,6 @@ function mapReviewOverviewCard(
     front: card.front,
     orderIndex: card.orderIndex
   };
-}
-
-function isReviewCardActive(state: string | null) {
-  return state !== null && state !== "known_manual" && state !== "suspended";
 }
 
 function scoreReviewLaunchCandidate(candidate: {

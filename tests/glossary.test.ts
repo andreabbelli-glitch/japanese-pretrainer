@@ -160,7 +160,7 @@ id: ${input.cardId}
 entry_type: term
 entry_id: ${reusedSourceIdFixture.sourceId}
 card_type: recognition
-front: 共有
+front: '{{共有|きょうゆう}}'
 back: ${input.meaning}
 :::
 `

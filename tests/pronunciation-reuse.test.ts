@@ -61,7 +61,7 @@ id: card-eat-recognition
 entry_type: term
 entry_id: term-eat
 card_type: recognition
-front: 食べる
+front: '{{食べる|たべる}}'
 back: mangiare
 :::
 `
@@ -156,7 +156,7 @@ id: card-eat-recognition
 entry_type: term
 entry_id: term-eat
 card_type: recognition
-front: 食べる
+front: '{{食べる|たべる}}'
 back: mangiare
 :::
 `
@@ -192,7 +192,7 @@ id: card-devour-recognition
 entry_type: term
 entry_id: term-devour
 card_type: recognition
-front: 食べる
+front: '{{食べる|たべる}}'
 back: divorare
 :::
 `

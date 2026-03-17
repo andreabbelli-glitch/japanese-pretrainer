@@ -152,7 +152,7 @@ Questi marker ti indicano se una sezione richiede un'azione ora o è già chiusa
 - [{{受け取る|うけとる}}](term:term-receive) chiude la reward mostrata e la
   rende disponibile.
 
-In pratica: `確認` cambia stato informativo, `受け取る` finalizza il flusso.
+In pratica: `{{確認|かくにん}}` cambia stato informativo, `{{受|う}}け{{取|と}}る` finalizza il flusso.
 
 ### 5. `{{お知らせ|おしらせ}}`, `{{設定|せってい}}` e `{{その他|そのた}}`: tre aree da distinguere
 

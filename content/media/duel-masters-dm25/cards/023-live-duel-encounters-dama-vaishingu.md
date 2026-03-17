@@ -106,7 +106,7 @@ example_jp: >-
   {{条件|じょうけん}}を{{満|み}}たさないなら、`それ{{以外|いがい}}なら`で
   {{手札|てふだ}}に{{加|くわ}}える。
 example_it: >-
-  Se non soddisfa la condizione, il ramo `それ以外なら` la manda in mano.
+  Se non soddisfa la condizione, il ramo `それ{{以外|いがい}}なら` la manda in mano.
 notes_it: >-
   `それ{{以外|いがい}}なら` è il modo compatto con cui il rules text chiude un
   bivio: stesso bersaglio, uscita alternativa.

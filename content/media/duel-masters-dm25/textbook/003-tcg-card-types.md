@@ -33,7 +33,7 @@ guardare un type line un po' strano e capire subito tre cose:
 Nel modulo precedente abbiamo già fissato le basi:
 [クリーチャー](term:term-creature), [{{呪文|じゅもん}}](term:term-spell),
 [タマシード](term:term-tamaseed), [コスト](term:term-cost),
-[文明](term:term-civilization), [種族](term:term-race).
+[{{文明|ぶんめい}}](term:term-civilization), [{{種族|しゅぞく}}](term:term-race).
 
 Qui facciamo un passo più specifico. In Duel Masters, la riga del tipo non ti
 dice solo "che categoria è questa carta". Molto spesso ti dice già:
@@ -52,14 +52,14 @@ dal suo label più compatto, non solo dal paragrafo effetto.
 - [{{進化|しんか}}クリーチャー](term:term-evolution-creature)
 - [スター{{進化|しんか}}クリーチャー](term:term-star-evolution-creature)
 - [NEOクリーチャー](term:term-neo-creature)
-- [G-NEOクリーチャー](term:term-g-neo-creature)
+- [G{{-|じーねおくりーちゃー}}NEOクリーチャー](term:term-g-neo-creature)
 - [タマシード/クリーチャー](term:term-tamaseed-creature)
 - [ツインパクトカード](term:term-twinpact-card)
 - [サイキック・クリーチャー](term:term-psychic-creature)
 - [ドラグハート](term:term-dragheart)
 - [クロスギア](term:term-crossgear)
 - [{{城|しろ}}](term:term-castle)
-- [D2フィールド](term:term-d2-field)
+- [D{{2|でぃーつー}}フィールド](term:term-d2-field)
 
 ## Pattern grammaticali chiave
 
@@ -81,7 +81,7 @@ Esempi rapidi:
 - [{{進化|しんか}}クリーチャー](term:term-evolution-creature) =
   [クリーチャー](term:term-creature) come tipo base +
   [{{進化|しんか}}](term:term-evolution) come modo speciale di entrare;
-- [D2フィールド](term:term-d2-field) = `フィールド` come oggetto di campo +
+- [D{{2|でぃーつー}}フィールド](term:term-d2-field) = `フィールド` come oggetto di campo +
   `D2` come famiglia con regole dedicate;
 - [サイキック・クリーチャー](term:term-psychic-creature) =
   [クリーチャー](term:term-creature) come corpo +
@@ -97,7 +97,7 @@ La prima famiglia da tenere distinta è quella di
 [{{進化|しんか}}クリーチャー](term:term-evolution-creature),
 [スター{{進化|しんか}}クリーチャー](term:term-star-evolution-creature),
 [NEOクリーチャー](term:term-neo-creature) e
-[G-NEOクリーチャー](term:term-g-neo-creature).
+[G{{-|じーねおくりーちゃー}}NEOクリーチャー](term:term-g-neo-creature).
 
 Sembrano tutti parenti, e in effetti lo sono, ma non dicono la stessa cosa:
 
@@ -108,7 +108,7 @@ Sembrano tutti parenti, e in effetti lo sono, ma non dicono la stessa cosa:
 - [NEOクリーチャー](term:term-neo-creature) ti dice che la stessa carta può
   essere letta come creatura normale o come `NEO{{進化|しんか}}` a seconda dello
   stato;
-- [G-NEOクリーチャー](term:term-g-neo-creature) ti avvisa che la gestione della
+- [G{{-|じーねおくりーちゃー}}NEOクリーチャー](term:term-g-neo-creature) ti avvisa che la gestione della
   pila quando lascia il campo cambia ancora.
 
 Didatticamente il punto è questo: non memorizzare solo la traduzione di
@@ -141,7 +141,7 @@ devi capire se la frase sta parlando del lato creatura o del lato
 [サイキック・クリーチャー](term:term-psychic-creature) e
 [ドラグハート](term:term-dragheart) hanno un altro valore didattico forte:
 ti allenano a non dare per scontato che ogni carta nasca dalla
-[手札](term:term-hand) e resti sempre la stessa.
+[{{手札|てふだ}}](term:term-hand) e resti sempre la stessa.
 
 [サイキック・クリーチャー](term:term-psychic-creature) segnala una carta a due
 facce che può ribaltarsi.
@@ -165,7 +165,7 @@ spostano subito l'attenzione fuori dal "corpo che attacca":
 
 - [クロスギア](term:term-crossgear)
 - [{{城|しろ}}](term:term-castle)
-- [D2フィールド](term:term-d2-field)
+- [D{{2|でぃーつー}}フィールド](term:term-d2-field)
 
 [クロスギア](term:term-crossgear) è un oggetto che entra nel campo e poi si
 `クロスする` a una [クリーチャー](term:term-creature). Ti serve quindi il
@@ -176,7 +176,7 @@ facile da ricordare, ma in Duel Masters non indica "un edificio" in senso
 vago. Ti manda direttamente alla zona scudi e alla logica di
 `{{要塞化|ようさいか}}`.
 
-[D2フィールド](term:term-d2-field) ti insegna a leggere `フィールド` come pezzo
+[D{{2|でぃーつー}}フィールド](term:term-d2-field) ti insegna a leggere `フィールド` come pezzo
 di board state e `D2` come regola di famiglia. Se resti solo sulla traduzione
 "field", perdi la parte utile.
 
@@ -245,7 +245,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{別|べつ}}のD2フィールドが{{出|で}}た{{時|とき}}、このD2フィールドを{{墓地|ぼち}}に{{置|お}}く。
+  {{別|べつ}}のD{{2|ツー}}フィールドが{{出|で}}た{{時|とき}}、このD{{2|ツー}}フィールドを{{墓地|ぼち}}に{{置|お}}く。
 translation_it: >-
   Quando entra un altro D2 Field, metti questo D2 Field nel cimitero.
 :::

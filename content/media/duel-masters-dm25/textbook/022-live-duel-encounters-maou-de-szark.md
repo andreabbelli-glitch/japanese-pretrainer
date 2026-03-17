@@ -14,8 +14,8 @@ prerequisites:
     lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
   ]
 summary: >-
-  魔凰 デ・スザーク: Gate of Moonless Night, lettura di due per ciascun gruppo
-  e del chunk che permette di evocare senza pagare il costo.
+  Maou De Szark: Gate of Moonless Night, lettura di due per ciascun gruppo e
+  del chunk che permette di evocare senza pagare il costo.
 ---
 
 # [{{魔凰|まおう}} デ・スザーク](term:term-maou-de-szark)
@@ -33,24 +33,24 @@ caption: >-
 
 ## Keyword presenti sulla carta
 
-- [無月の門](term:term-mugestsu-no-mon)
+- [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon)
 - [W・ブレイカー](term:term-w-breaker)
 
 `W・ブレイカー` sta già nella keyword bank. Qui ci concentriamo sul blocco
-lungo di `無月の門` e sul secondo effetto di ingresso.
+lungo di `{{無月|むげつ}}の{{門|もん}}` e sul secondo effetto di ingresso.
 
 ## Effetti da leggere
 
 :::example_sentence
 jp: >-
-  [無月の門](term:term-mugestsu-no-mon)：
-  [{{自分|じぶん}}](term:term-self)の[魔導具](term:term-madougu)が
+  [{{無月の門|むげつのもん}}](term:term-mugestsu-no-mon)：
+  [{{自分|じぶん}}](term:term-self)の[{{魔導具|まどうぐ}}](term:term-madougu)が
   [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
-  [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の[魔導具](term:term-madougu)を
+  [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)を
   [バトルゾーン](term:term-battle-zone)と[{{墓地|ぼち}}](term:term-graveyard)から
   {{2つ|ふたつ}}[ずつ](grammar:grammar-zutsu)[{{選|えら}}び](term:term-erabu)、この
   クリーチャーを{{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
-  [{{墓地|ぼち}}](term:term-graveyard)からそれら{{4枚|よんまい}}の上に
+  [{{墓地|ぼち}}](term:term-graveyard)からそれら{{4枚|よんまい}}の{{上|うえ}}に
   [コスト](term:term-cost)を[{{払|はら}}わ](term:term-harau)ずに
   [{{召喚|しょうかん}}](term:term-summon)してもよい。
 translation_it: >-
@@ -83,7 +83,7 @@ reveal_mode: sentence
   il classico trigger di ingresso: la keyword si accende quando un tuo Magic
   Tool arriva sul campo.
 - Questo conta anche se la carta che entra non è De Szark: l'effetto guarda la
-  famiglia `魔導具`, non il nome proprio.
+  famiglia `{{魔導具|まどうぐ}}`, non il nome proprio.
 
 ### 2. バトルゾーンと墓地から{{2つ|ふたつ}}ずつ選び
 
@@ -123,8 +123,8 @@ reveal_mode: sentence
 
 ## Lessico utile in questa carta
 
-- [魔導具](term:term-madougu) è il filtro davvero importante: se un effetto
-  parla di `魔導具`, De Szark e i suoi pezzi di supporto entrano nello stesso
+- [{{魔導具|まどうぐ}}](term:term-madougu) è il filtro davvero importante: se un effetto
+  parla di `{{魔導具|まどうぐ}}`, De Szark e i suoi pezzi di supporto entrano nello stesso
   gruppo operativo.
 - [それら](grammar:grammar-sorera) è piccolo ma utile: nei testi di carta
   riaggancia spesso un gruppo appena costruito e ti evita di perdere il
@@ -132,7 +132,7 @@ reveal_mode: sentence
 - [すべて](term:term-subete) è un marcatore di scope molto frequente: quando lo
   incontri dopo un nome di gruppo, l'effetto si estende all'insieme intero.
 - [マスター・ドルスザク](term:term-master-dolszak) è la razza boss della carta.
-  Quando la rileggi nella riga `種族`, sai che non è sapore narrativo ma un
+  Quando la rileggi nella riga `{{種族|しゅぞく}}`, sai che non è sapore narrativo ma un
   marcatore tribale.
 - [マフィ・ギャング](term:term-mafi-gang) accompagna spesso le carte oscure più
   aggressive o sporche di vantaggio. Qui è una seconda etichetta di razza da

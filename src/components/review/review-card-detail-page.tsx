@@ -32,7 +32,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
         backHref={data.media.reviewHref}
         backLabel="Torna alla Review"
         eyebrow="Card"
-        title={data.card.front}
+        title={renderFurigana(data.card.front)}
         summary={data.card.back}
         meta={
           <>
@@ -62,7 +62,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
         <SurfaceCard className="glossary-entry-hero" variant="hero">
           <p className="eyebrow">Card</p>
           <h2 className="glossary-entry-hero__title jp-inline">
-            {data.card.front}
+            {renderFurigana(data.card.front)}
           </h2>
           {data.card.reading ? (
             <p className="glossary-entry-hero__reading jp-inline">

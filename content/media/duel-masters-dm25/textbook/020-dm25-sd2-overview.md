@@ -10,7 +10,7 @@ status: active
 tags: [deck, evolution, invasion, attack, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Starter deck DM25-SD2 力の王道: invasione, evoluzione e keyword come
+  Starter deck DM25-SD2 Chikara no Oudo: invasione, evoluzione e keyword come
   G-Strike, Ultimate Evolution, Meteorburn e Super S-Trigger.
 ---
 
@@ -26,7 +26,7 @@ Alla fine dovresti riconoscere:
   [メテオバーン](term:term-meteorburn);
 - come funzionano frasi di supporto molto tipiche del deck, per esempio
   [{{表向|おもてむ}}き](term:term-face-up),
-  [好きな順序で](grammar:grammar-sukina-junjo-de) e
+  [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) e
   [～てから](grammar:grammar-te-kara).
 
 ## Contesto
@@ -51,11 +51,11 @@ riunisce payoff aggressivi e setup, quindi la lettura si basa sempre sul flusso:
 ## Pattern grammaticali chiave
 
 - [～てから](grammar:grammar-te-kara)
-- [好きな順序で](grammar:grammar-sukina-junjo-de)
+- [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de)
 - [～ていれば](grammar:grammar-teireba)
 - [そうしたら](grammar:grammar-soushitara)
 - [～てもよい](grammar:grammar-temoyoi)
-- [～のはじめに / ～の終わりに](grammar:grammar-turn-timing)
+- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing)
 
 ## Spiegazione
 
@@ -206,10 +206,10 @@ resto.
 :::example_sentence
 jp: >-
   {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
-  {{6枚|ろくまい}}を[{{表向|おもてむ}}き](term:term-face-up)にする。その
+  {{6枚|ろくまい}}を[{{表向き|おもてむき}}](term:term-face-up)にする。その
   {{中|なか}}から[{{進化|しんか}}クリーチャー](term:term-evolution-creature)を
   すべて{{手札|てふだ}}に{{加|くわ}}え、
-  {{残|のこ}}りを[好きな順序で](grammar:grammar-sukina-junjo-de)
+  {{残|のこ}}りを[{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de)
   [{{山札|やまふだ}}](term:term-deck)の{{下|した}}に{{置|お}}く。
 translation_it: >-
   Metti a faccia in su le prime 6 carte del tuo mazzo. Aggiungi alla mano tutte
@@ -222,7 +222,7 @@ Qui confermiamo tre punti:
 - [{{表向|おもてむ}}き](term:term-face-up) rende esplicita la scoperta
   dell'insieme.
 - `その{{中|なか}}から` limita il filtro alle carte già rivelate.
-- [好きな順序で](grammar:grammar-sukina-junjo-de) organizza il riordino finale.
+- [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) organizza il riordino finale.
 
 #### 2.5 SMAPON
 
@@ -394,7 +394,7 @@ Sequenza di lettura del piano testuale:
     e rottura totale.
 - Fase di setup:
   - {{進化設計図|しんかせっけいず}} per [{{表向|おもてむ}}き](term:term-face-up),
-    [好きな順序で](grammar:grammar-sukina-junjo-de).
+    [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de).
   - {{未来設計図|みらいせっけいず}} per [{{合計|ごうけい}}](term:term-goukei),
     [～てから](grammar:grammar-te-kara).
   - ヘルコプ{{太|た}}の{{心絵|めもりー}} come passaggio tecnico tra

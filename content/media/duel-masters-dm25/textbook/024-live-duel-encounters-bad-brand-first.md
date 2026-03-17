@@ -14,8 +14,8 @@ prerequisites:
     lesson-duel-masters-dm25-live-duel-encounters-dama-vaishingu
   ]
 summary: >-
-  “罰怒”ブランド 1st: trigger di attacco, rivelazione della prima carta del mazzo
-  e bivio tra ingresso diretto di un Beat Jockey non evoluzione o fondo del
+  Bad Brand 1st: trigger di attacco, rivelazione della prima carta del mazzo e
+  bivio tra ingresso diretto di un Beat Jockey non evoluzione o fondo del
   mazzo.
 ---
 
@@ -33,7 +33,7 @@ caption: >-
 
 ## Keyword presenti sulla carta
 
-- [B・A・D 2](term:term-b-a-d-two)
+- [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)
 - [スピードアタッカー](term:term-speed-attacker)
 - [W・ブレイカー](term:term-w-breaker)
 
@@ -58,7 +58,7 @@ jp: >-
   それが[{{進化|しんか}}](term:term-evolution)でない
   [ビートジョッキー](term:term-beat-jockey)なら
   [バトルゾーン](term:term-battle-zone)に[{{出|だ}}し](term:term-dasu)、
-  [それ以外なら](grammar:grammar-soreigai-nara){{自分|じぶん}}の
+  [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara){{自分|じぶん}}の
   [{{山札|やまふだ}}](term:term-deck)の{{一番下|いちばんした}}に
   [{{置|お}}く](term:term-oku)。
 translation_it: >-
@@ -96,11 +96,11 @@ reveal_mode: sentence
   un [ビートジョッキー](term:term-beat-jockey), bisogna anche non essere una
   creatura evoluzione.
 - Il blocco intero è quindi un filtro doppio: tribù corretta e assenza della
-  proprietà `進化`.
+  proprietà `{{進化|しんか}}`.
 
 ### 4. それ以外なら自分の山札の一番下に置く
 
-- [それ以外なら](grammar:grammar-soreigai-nara) apre il ramo alternativo sullo
+- [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara) apre il ramo alternativo sullo
   stesso referente appena controllato.
 - `{{一番下|いちばんした}}に[{{置|お}}く](term:term-oku)` non lascia la carta
   dov'è: la sposta in fondo al mazzo, quindi fuori dalla pescata immediata.

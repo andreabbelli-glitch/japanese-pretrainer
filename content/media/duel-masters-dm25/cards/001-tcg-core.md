@@ -930,7 +930,7 @@ id: card-spell-recognition
 entry_type: term
 entry_id: term-spell
 card_type: recognition
-front: 呪文
+front: '{{呪文|じゅもん}}'
 back: magia / spell
 example_jp: >-
   この{{呪文|じゅもん}}を{{使|つか}}って、カードを{{1枚|いちまい}} {{引|ひ}}く。
@@ -1005,7 +1005,7 @@ id: card-evolution-recognition
 entry_type: term
 entry_id: term-evolution
 card_type: recognition
-front: 進化
+front: '{{進化|しんか}}'
 back: evoluzione
 example_jp: >-
   {{進化|しんか}}クリーチャーを{{1体|いったい}} {{出|だ}}す。
@@ -1022,7 +1022,7 @@ id: card-invasion-recognition
 entry_type: term
 entry_id: term-invasion
 card_type: recognition
-front: 侵略
+front: '{{侵略|しんりゃく}}'
 back: invasione
 example_jp: >-
   {{侵略|しんりゃく}}でこのクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。
@@ -1070,7 +1070,7 @@ example_it: >-
   Tratta questo Tamaseed in modo che possa funzionare sia come base sia come
   estensione di un'evoluzione.
 notes_it: >-
-  Qui il punto non è il nome della keyword ma il verbo `扱う` con il doppio
+  Qui il punto non è il nome della keyword ma il verbo `{{扱|あつか}}う` con il doppio
   ruolo `進化元 / 進化先`, che spiega davvero come leggere la meccanica.
 tags: [core, keyword, evolution, dm25-sd2]
 :::
@@ -1115,7 +1115,7 @@ id: card-civilization-recognition
 entry_type: term
 entry_id: term-civilization
 card_type: recognition
-front: 文明
+front: '{{文明|ぶんめい}}'
 back: civiltà / civilization
 example_jp: >-
   このカードは{{火|ひ}}の{{文明|ぶんめい}}を{{持|も}}つ。
@@ -1150,7 +1150,7 @@ id: card-harau-recognition
 entry_type: term
 entry_id: term-harau
 card_type: recognition
-front: 払う
+front: '{{払う|はらう}}'
 back: pagare
 example_jp: >-
   コストを{{払|はら}}ってこのカードを{{使|つか}}う。
@@ -1185,7 +1185,7 @@ id: card-goukei-recognition
 entry_type: term
 entry_id: term-goukei
 card_type: recognition
-front: 合計
+front: '{{合計|ごうけい}}'
 back: totale / somma complessiva
 example_jp: >-
   クリーチャーまたはタマシードを{{合計|ごうけい}}{{3つ|みっつ}}まで{{選|えら}}ぶ。
@@ -1202,7 +1202,7 @@ id: card-race-recognition
 entry_type: term
 entry_id: term-race
 card_type: recognition
-front: 種族
+front: '{{種族|しゅぞく}}'
 back: tribù / race
 example_jp: >-
   {{種族|しゅぞく}}がアビスロイヤルのクリーチャーを{{1体|いったい}} {{出|だ}}す。
@@ -1270,7 +1270,7 @@ id: card-deck-recognition
 entry_type: term
 entry_id: term-deck
 card_type: recognition
-front: 山札
+front: '{{山札|やまふだ}}'
 back: mazzo / deck
 example_jp: >-
   {{山札|やまふだ}}の{{上|うえ}}から{{1枚|いちまい}} {{引|ひ}}く。
@@ -1288,7 +1288,7 @@ id: card-hand-recognition
 entry_type: term
 entry_id: term-hand
 card_type: recognition
-front: 手札
+front: '{{手札|てふだ}}'
 back: mano / hand
 example_jp: >-
   {{手札|てふだ}}からクリーチャーを{{1体|いったい}} {{出|だ}}す。
@@ -1305,7 +1305,7 @@ id: card-graveyard-recognition
 entry_type: term
 entry_id: term-graveyard
 card_type: recognition
-front: 墓地
+front: '{{墓地|ぼち}}'
 back: cimitero / graveyard
 example_jp: >-
   {{墓地|ぼち}}からカードを{{1枚|いちまい}} {{手札|てふだ}}に{{戻|もど}}す。
@@ -1323,7 +1323,7 @@ id: card-self-recognition
 entry_type: term
 entry_id: term-self
 card_type: recognition
-front: 自分
+front: '{{自分|じぶん}}'
 back: se stessi / tu
 example_jp: >-
   {{自分|じぶん}}のクリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
@@ -1340,7 +1340,7 @@ id: card-opponent-recognition
 entry_type: term
 entry_id: term-opponent
 card_type: recognition
-front: 相手
+front: '{{相手|あいて}}'
 back: avversario / opponent
 example_jp: >-
   {{相手|あいて}}のクリーチャーを{{1体|いったい}} {{破壊|はかい}}する。
@@ -1357,7 +1357,7 @@ id: card-effect-recognition
 entry_type: term
 entry_id: term-effect
 card_type: recognition
-front: 効果
+front: '{{効果|こうか}}'
 back: effetto
 example_jp: >-
   この{{効果|こうか}}で{{相手|あいて}}のクリーチャーを{{1体|いったい}} {{破壊|はかい}}する。
@@ -1374,7 +1374,7 @@ id: card-summon-recognition
 entry_type: term
 entry_id: term-summon
 card_type: recognition
-front: 召喚
+front: '{{召喚|しょうかん}}'
 back: evocazione / summon
 example_jp: >-
   このクリーチャーを{{召喚|しょうかん}}してもよい。
@@ -1392,7 +1392,7 @@ id: card-attack-recognition
 entry_type: term
 entry_id: term-attack
 card_type: recognition
-front: 攻撃
+front: '{{攻撃|こうげき}}'
 back: attacco / attack
 example_jp: >-
   このクリーチャーが{{攻撃|こうげき}}する{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
@@ -1409,7 +1409,7 @@ id: card-destroy-recognition
 entry_type: term
 entry_id: term-destroy
 card_type: recognition
-front: 破壊
+front: '{{破壊|はかい}}'
 back: distruzione / destroy
 example_jp: >-
   {{相手|あいて}}のクリーチャーを{{1体|いったい}} {{破壊|はかい}}する。
@@ -1476,7 +1476,7 @@ id: card-kasaneru-recognition
 entry_type: term
 entry_id: term-kasaneru
 card_type: recognition
-front: 重ねる
+front: '{{重ねる|かさねる}}'
 back: sovrapporre / mettere sopra
 example_jp: >-
   このクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。
@@ -1493,7 +1493,7 @@ id: card-deru-recognition
 entry_type: term
 entry_id: term-deru
 card_type: recognition
-front: 出る
+front: '{{出る|でる}}'
 back: uscire / entrare in gioco
 example_jp: >-
   このクリーチャーが{{出|で}}た{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
@@ -1510,7 +1510,7 @@ id: card-dasu-recognition
 entry_type: term
 entry_id: term-dasu
 card_type: recognition
-front: 出す
+front: '{{出す|だす}}'
 back: far uscire / mettere in gioco
 example_jp: >-
   {{手札|てふだ}}からクリーチャーを{{1体|いったい}} {{出|だ}}す。
@@ -1527,7 +1527,7 @@ id: card-oku-recognition
 entry_type: term
 entry_id: term-oku
 card_type: recognition
-front: 置く
+front: '{{置く|おく}}'
 back: mettere / porre
 example_jp: >-
   このカードを{{墓地|ぼち}}に{{置|お}}く。
@@ -1544,7 +1544,7 @@ id: card-add-recognition
 entry_type: term
 entry_id: term-add
 card_type: recognition
-front: 加える
+front: '{{加える|くわえる}}'
 back: aggiungere / mettere in mano
 example_jp: >-
   シールドゾーンから{{1枚|いちまい}} {{手札|てふだ}}に{{加|くわ}}える。
@@ -1561,7 +1561,7 @@ id: card-erabu-recognition
 entry_type: term
 entry_id: term-erabu
 card_type: recognition
-front: 選ぶ
+front: '{{選ぶ|えらぶ}}'
 back: scegliere
 example_jp: >-
   クリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
@@ -1578,7 +1578,7 @@ id: card-hiku-recognition
 entry_type: term
 entry_id: term-hiku
 card_type: recognition
-front: 引く
+front: '{{引く|ひく}}'
 back: pescare / tirare
 example_jp: >-
   カードを{{2枚|にまい}} {{引|ひ}}く。
@@ -1595,7 +1595,7 @@ id: card-suteru-recognition
 entry_type: term
 entry_id: term-suteru
 card_type: recognition
-front: 捨てる
+front: '{{捨てる|すてる}}'
 back: scartare / buttare via
 example_jp: >-
   {{手札|てふだ}}を{{1枚|いちまい}} {{捨|す}}てる。
@@ -1612,7 +1612,7 @@ id: card-modosu-recognition
 entry_type: term
 entry_id: term-modosu
 card_type: recognition
-front: 戻す
+front: '{{戻す|もどす}}'
 back: rimandare / restituire
 example_jp: >-
   このカードを{{手札|てふだ}}に{{戻|もど}}す。
@@ -1629,7 +1629,7 @@ id: card-hanareru-recognition
 entry_type: term
 entry_id: term-hanareru
 card_type: recognition
-front: 離れる
+front: '{{離れる|はなれる}}'
 back: lasciare / allontanarsi
 example_jp: >-
   このクリーチャーがバトルゾーンを{{離|はな}}れた{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
@@ -1646,7 +1646,7 @@ id: card-nokoru-recognition
 entry_type: term
 entry_id: term-nokoru
 card_type: recognition
-front: 残る
+front: '{{残る|のこる}}'
 back: restare / rimanere
 example_jp: >-
   そのクリーチャーが{{離|はな}}れても、このカードは{{残|のこ}}る。
@@ -1664,7 +1664,7 @@ id: card-atsukau-recognition
 entry_type: term
 entry_id: term-atsukau
 card_type: recognition
-front: 扱う
+front: '{{扱う|あつかう}}'
 back: trattare come / considerare
 example_jp: >-
   このタマシードをクリーチャーとして{{扱|あつか}}わない。
@@ -1699,7 +1699,7 @@ id: card-s-trigger-no-cost-usage-concept
 entry_type: term
 entry_id: term-s-trigger
 card_type: concept
-front: コストを払わずに使ってもよい
+front: 'コストを{{払|はら}}わずに{{使|つか}}ってもよい'
 back: puoi usarla senza pagarne il costo
 example_jp: >-
   シールドがブレイクされてこのカードを{{手札|てふだ}}に{{加|くわ}}えた{{時|とき}}、
@@ -1753,7 +1753,7 @@ id: card-toki-concept
 entry_type: grammar
 entry_id: grammar-toki
 card_type: concept
-front: ～時 / ～た時
+front: '～{{時|とき}} / ～た{{時|とき}}'
 back: quando / nel momento in cui
 example_jp: >-
   このクリーチャーが{{出|で}}た{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
@@ -1770,10 +1770,11 @@ id: card-sonoato-concept
 entry_type: grammar
 entry_id: grammar-sonoato
 card_type: concept
-front: その後
+front: 'その{{後|あと}}'
 back: dopo quello / poi
 example_jp: >-
-  クリーチャーを{{1体|いったい}} {{出|だ}}す。その後、カードを{{1枚|いちまい}} {{引|ひ}}く。
+  クリーチャーを{{1体|いったい}} {{出|だ}}す。その{{後|あと}}、
+  カードを{{1枚|いちまい}} {{引|ひ}}く。
 example_it: >-
   Metti in gioco 1 creatura. Poi pesca 1 carta.
 notes_it: >-
@@ -1925,7 +1926,7 @@ id: card-igai-no-houhou-de-concept
 entry_type: grammar
 entry_id: grammar-igai-no-houhou-de
 card_type: concept
-front: ～以外の方法で
+front: '～{{以外|いがい}}の{{方法|ほうほう}}で'
 back: con un metodo diverso da
 example_jp: >-
   このクリーチャーが{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}で{{出|で}}た{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
@@ -1959,7 +1960,7 @@ id: card-ika-ijou-concept
 entry_type: grammar
 entry_id: grammar-ika-ijou
 card_type: concept
-front: ～以下 / ～以上
+front: '～{{以下|いか}} / ～{{以上|いじょう}}'
 back: al massimo / almeno
 example_jp: >-
   コスト{{4以下|よんいか}}またはコスト{{6以上|ろくいじょう}}のクリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
@@ -1976,7 +1977,7 @@ id: card-turn-timing-concept
 entry_type: grammar
 entry_id: grammar-turn-timing
 card_type: concept
-front: ～のはじめに / ～の終わりに
+front: '～の{{始め|はじめ}}に / ～の{{終わり|おわり}}に'
 back: all'inizio di / alla fine di
 example_jp: >-
   {{自分|じぶん}}のターンのはじめに、カードを{{1枚|いちまい}} {{引|ひ}}く。

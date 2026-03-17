@@ -37,47 +37,47 @@ Duel Masters combina in modo diretto due livelli:
 In questa fase non ci interessa la teoria completa del regolamento. Ci interessa
 riconoscere la struttura base che poi rivedrai ovunque: carte che entrano nel
 campo, scudi che vengono [ブレイク](term:term-break), carte che si spostano tra
-[山札](term:term-deck), [手札](term:term-hand), [墓地](term:term-graveyard) e
+[{{山札|やまふだ}}](term:term-deck), [{{手札|てふだ}}](term:term-hand), [{{墓地|ぼち}}](term:term-graveyard) e
 [マナゾーン](term:term-mana-zone).
 
 I due starter deck usati più avanti mostrano questo contrasto:
-`DM25-SD1` ti fa vedere molto linguaggio di [墓地](term:term-graveyard) e
+`DM25-SD1` ti fa vedere molto linguaggio di [{{墓地|ぼち}}](term:term-graveyard) e
 [アビス](term:term-abyss), mentre `DM25-SD2` insiste di più su
-[攻撃](term:term-attack), [進化](term:term-evolution),
-[侵略](term:term-invasion) e [重ねる](term:term-kasaneru).
+[{{攻撃|こうげき}}](term:term-attack), [{{進化|しんか}}](term:term-evolution),
+[{{侵略|しんりゃく}}](term:term-invasion) e [{{重|かさ}}ねる](term:term-kasaneru).
 Restano invariati struttura di zona, attore e verbo.
 
 ## Termini chiave
 
 - [クリーチャー](term:term-creature)
-- [呪文](term:term-spell)
+- [{{呪文|じゅもん}}](term:term-spell)
 - [タマシード](term:term-tamaseed)
 - [コスト](term:term-cost)
 - [パワー](term:term-power)
-- [文明](term:term-civilization)
-- [種族](term:term-race)
+- [{{文明|ぶんめい}}](term:term-civilization)
+- [{{種族|しゅぞく}}](term:term-race)
 - [バトルゾーン](term:term-battle-zone)
 - [シールドゾーン](term:term-shield-zone)
 - [マナゾーン](term:term-mana-zone)
-- [山札](term:term-deck)
-- [手札](term:term-hand)
-- [墓地](term:term-graveyard)
-- [自分](term:term-self)
-- [相手](term:term-opponent)
+- [{{山札|やまふだ}}](term:term-deck)
+- [{{手札|てふだ}}](term:term-hand)
+- [{{墓地|ぼち}}](term:term-graveyard)
+- [{{自分|じぶん}}](term:term-self)
+- [{{相手|あいて}}](term:term-opponent)
 - [{{効果|こうか}}](term:term-effect)
-- [出る](term:term-deru)
-- [出す](term:term-dasu)
-- [置く](term:term-oku)
-- [加える](term:term-add)
-- [選ぶ](term:term-erabu)
-- [攻撃](term:term-attack)
+- [{{出|で}}る](term:term-deru)
+- [{{出|だ}}す](term:term-dasu)
+- [{{置|お}}く](term:term-oku)
+- [{{加|くわ}}える](term:term-add)
+- [{{選|えら}}ぶ](term:term-erabu)
+- [{{攻撃|こうげき}}](term:term-attack)
 - [ブレイク](term:term-break)
 
 ## Pattern grammaticali chiave
 
-- [～時 / ～た時](grammar:grammar-toki)
-- [～以下 / ～以上](grammar:grammar-ika-ijou)
-- [～のはじめに / ～の終わりに](grammar:grammar-turn-timing)
+- [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki)
+- [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou)
+- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing)
 
 ## Spiegazione
 
@@ -111,12 +111,12 @@ Prima ancora del testo effetto, guarda i dati più visibili:
 
 - tipo di carta;
 - [コスト](term:term-cost);
-- [文明](term:term-civilization);
+- [{{文明|ぶんめい}}](term:term-civilization);
 - [パワー](term:term-power), se c'è;
-- [種族](term:term-race).
+- [{{種族|しゅぞく}}](term:term-race).
 
 Questa lettura preliminare dà molti indizi. Se leggi [クリーチャー](term:term-creature),
-[火](term:term-civilization), [コスト](term:term-cost) alto e magari una
+[{{火|ぶんめい}}](term:term-civilization), [コスト](term:term-cost) alto e magari una
 keyword evidente, puoi definire il possibile ruolo della carta prima di
 decifrare ogni frase.
 
@@ -132,9 +132,9 @@ Le zone centrali da riconoscere sono:
 - [バトルゾーン](term:term-battle-zone)
 - [マナゾーン](term:term-mana-zone)
 - [シールドゾーン](term:term-shield-zone)
-- [山札](term:term-deck)
-- [手札](term:term-hand)
-- [墓地](term:term-graveyard)
+- [{{山札|やまふだ}}](term:term-deck)
+- [{{手札|てふだ}}](term:term-hand)
+- [{{墓地|ぼち}}](term:term-graveyard)
 
 Molte frasi si capiscono già a metà se individui la traiettoria:
 
@@ -154,9 +154,9 @@ Il giapponese delle carte codifica spesso una freccia tra zone.
 ### 4. Chi agisce e su chi ricade l'effetto
 
 Le prime due parole che cambiano davvero il senso della frase sono
-[自分](term:term-self) e [相手](term:term-opponent).
+[{{自分|じぶん}}](term:term-self) e [{{相手|あいて}}](term:term-opponent).
 
-La coppia [自分](term:term-self) / [相手](term:term-opponent) stabilisce subito
+La coppia [{{自分|じぶん}}](term:term-self) / [{{相手|あいて}}](term:term-opponent) stabilisce subito
 chi viene favorito e chi diventa bersaglio dell'effetto.
 
 Una struttura ricorrente del testo è:
@@ -171,23 +171,23 @@ L'attore della frase definisce sempre il soggetto dell'effetto.
 
 I verbi ad alta frequenza utili nelle prime letture sono:
 
-- [出る](term:term-deru)
-- [出す](term:term-dasu)
-- [置く](term:term-oku)
-- [加える](term:term-add)
-- [選ぶ](term:term-erabu)
-- [攻撃](term:term-attack)
-- [破壊](term:term-destroy)
+- [{{出|で}}る](term:term-deru)
+- [{{出|だ}}す](term:term-dasu)
+- [{{置|お}}く](term:term-oku)
+- [{{加|くわ}}える](term:term-add)
+- [{{選|えら}}ぶ](term:term-erabu)
+- [{{攻撃|こうげき}}](term:term-attack)
+- [{{破壊|はかい}}](term:term-destroy)
 - [ブレイク](term:term-break)
 
-La coppia più importante è [出る](term:term-deru) / [出す](term:term-dasu):
+La coppia più importante è [{{出|で}}る](term:term-deru) / [{{出|だ}}す](term:term-dasu):
 
-- [出る](term:term-deru) descrive la carta che entra;
-- [出す](term:term-dasu) descrive chi la mette in gioco.
+- [{{出|で}}る](term:term-deru) descrive la carta che entra;
+- [{{出|だ}}す](term:term-dasu) descrive chi la mette in gioco.
 
 Questa distinzione separa ingresso automatico e azione del giocatore.
 
-[加える](term:term-add) compare spesso dopo azioni simili: non cambia la carta in
+[{{加|くわ}}える](term:term-add) compare spesso dopo azioni simili: non cambia la carta in
 campo, ma cambia la tua mano e rende chiara la conversione di deck, scudi o
 cimitero in risorsa disponibile.
 
@@ -196,9 +196,9 @@ cimitero in risorsa disponibile.
 Ordine di lettura per una carta nuova:
 
 1. tipo di carta;
-2. [コスト](term:term-cost), [文明](term:term-civilization),
-   [パワー](term:term-power), [種族](term:term-race);
-3. attore della frase: [自分](term:term-self), [相手](term:term-opponent),
+2. [コスト](term:term-cost), [{{文明|ぶんめい}}](term:term-civilization),
+   [パワー](term:term-power), [{{種族|しゅぞく}}](term:term-race);
+3. attore della frase: [{{自分|じぶん}}](term:term-self), [{{相手|あいて}}](term:term-opponent),
    `このクリーチャー`;
 4. zone che compaiono;
 5. verbo principale;
@@ -211,16 +211,16 @@ tecnici.
 
 Con questa base i due starter deck diventano più leggibili:
 
-- `DM25-SD1` allena bene il linguaggio di [墓地](term:term-graveyard),
+- `DM25-SD1` allena bene il linguaggio di [{{墓地|ぼち}}](term:term-graveyard),
   recupero e filtri [コスト](term:term-cost);
-- `DM25-SD2` allena bene il linguaggio di [攻撃](term:term-attack),
-  [進化](term:term-evolution), [侵略](term:term-invasion) e
-  [重ねる](term:term-kasaneru).
+- `DM25-SD2` allena bene il linguaggio di [{{攻撃|こうげき}}](term:term-attack),
+  [{{進化|しんか}}](term:term-evolution), [{{侵略|しんりゃく}}](term:term-invasion) e
+  [{{重|かさ}}ねる](term:term-kasaneru).
 
 Questa distinzione separa due assi lessicali:
-`DM25-SD1` privilegia i passaggi legati al [墓地](term:term-graveyard), mentre
-`DM25-SD2` mette più in evidenza [攻撃](term:term-attack),
-[進化](term:term-evolution), [侵略](term:term-invasion) e [重ねる](term:term-kasaneru).
+`DM25-SD1` privilegia i passaggi legati al [{{墓地|ぼち}}](term:term-graveyard), mentre
+`DM25-SD2` mette più in evidenza [{{攻撃|こうげき}}](term:term-attack),
+[{{進化|しんか}}](term:term-evolution), [{{侵略|しんりゃく}}](term:term-invasion) e [{{重|かさ}}ねる](term:term-kasaneru).
 
 ## Esempi guidati
 
@@ -228,7 +228,8 @@ Questa distinzione separa due assi lessicali:
 
 :::example_sentence
 jp: >-
-  クリーチャー / コスト5 / パワー{{5000|ごせん}} / 火文明
+  クリーチャー / コスト{{5|ご}} / パワー{{5000|ごせん}} /
+  {{火文明|ひぶんめい}}
 translation_it: >-
   Creatura / costo 5 / potenza 5000 / civiltà del fuoco.
 :::
@@ -245,9 +246,9 @@ translation_it: >-
   Metti in gioco 1 creatura dal tuo cimitero.
 :::
 
-- Attore: [自分](term:term-self).
-- Traiettoria: [墓地](term:term-graveyard) -> campo.
-- Verbo chiave: [出す](term:term-dasu).
+- Attore: [{{自分|じぶん}}](term:term-self).
+- Traiettoria: [{{墓地|ぼち}}](term:term-graveyard) -> campo.
+- Verbo chiave: [{{出|だ}}す](term:term-dasu).
 
 **Esempio 3**
 
@@ -259,7 +260,7 @@ translation_it: >-
 :::
 
 - Bersaglio: lato avversario.
-- Azione: [選ぶ](term:term-erabu).
+- Azione: [{{選|えら}}ぶ](term:term-erabu).
 - Il bersaglio dell'effetto è già determinato dal complemento oggetto.
 
 **Esempio 4**
@@ -272,7 +273,7 @@ translation_it: >-
 :::
 
 - [{{効果|こうか}}](term:term-effect) = il testo richiama il risultato prodotto.
-- [相手](term:term-opponent) + [破壊](term:term-destroy) = bersaglio e azione.
+- [{{相手|あいて}}](term:term-opponent) + [{{破壊|はかい}}](term:term-destroy) = bersaglio e azione.
 
 **Esempio 5**
 
@@ -283,7 +284,7 @@ translation_it: >-
   Un Abyss di costo 4 o inferiore.
 :::
 
-- [～以下 / ～以上](grammar:grammar-ika-ijou) = filtro numerico.
+- [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou) = filtro numerico.
 - Il filtro numerico non specifica l'azione, ma restringe già le carte rilevanti.
 
 ## Nota finale

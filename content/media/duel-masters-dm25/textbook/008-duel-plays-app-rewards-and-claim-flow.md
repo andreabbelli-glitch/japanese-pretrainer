@@ -106,7 +106,7 @@ Anche [{{一括受け取り|いっかつうけとり}}](term:term-bulk-claim) è
 operativo di quanto sembri. Il label ti dice che l'app può elaborare più reward
 insieme, non una alla volta.
 
-### 2. `受け取り期限` e `獲得日時` ti dicono quanto è urgente il claim
+### 2. `{{受|う}}け{{取|と}}り{{期限|きげん}}` e `獲得日時` ti dicono quanto è urgente il claim
 
 Nella stessa schermata compaiono due informazioni temporali diverse:
 

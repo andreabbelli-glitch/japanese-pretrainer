@@ -353,7 +353,7 @@ export function GlossaryDetailPanels({
                       </span>
                     </div>
                     <h3 className="glossary-detail-card__title jp-inline">
-                      {card.front}
+                      {renderFurigana(card.front)}
                     </h3>
                     <p className="glossary-detail-card__body">{card.back}</p>
                     <div className="glossary-detail-card__meta">

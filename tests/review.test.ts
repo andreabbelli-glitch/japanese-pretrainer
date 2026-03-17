@@ -31,7 +31,8 @@ import {
   getReviewCardDetailData,
   getReviewLaunchMedia,
   getReviewPageData,
-  getReviewQueueSnapshotForMedia
+  getReviewQueueSnapshotForMedia,
+  loadReviewOverviewSnapshots
 } from "@/lib/review";
 import {
   applyReviewGrade,
@@ -371,6 +372,93 @@ describe("review system", () => {
       developmentFixture.primaryCardId,
       "card_fixture_new_context"
     ]);
+  });
+
+  it("counts only due and upcoming cards as active review cards in overview snapshots", async () => {
+    await database
+      .update(reviewState)
+      .set({
+        dueAt: "2000-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+
+    await database.insert(card).values([
+      {
+        id: "card_fixture_overview_new",
+        mediaId: developmentFixture.mediaId,
+        segmentId: developmentFixture.segmentId,
+        sourceFile: "tests/fixtures/db/fixture-tcg/cards/overview-new.md",
+        cardType: "production",
+        front: "行きます",
+        back: "andare (forma educata)",
+        notesIt: "Nuova card che non deve contare come attiva.",
+        status: "active",
+        orderIndex: 30,
+        createdAt: "2026-03-09T10:00:00.000Z",
+        updatedAt: "2026-03-09T10:00:00.000Z"
+      },
+      {
+        id: "card_fixture_overview_suspended",
+        mediaId: developmentFixture.mediaId,
+        segmentId: developmentFixture.segmentId,
+        sourceFile: "tests/fixtures/db/fixture-tcg/cards/overview-suspended.md",
+        cardType: "recognition",
+        front: "行った",
+        back: "andato",
+        notesIt: "Card sospesa che non deve contare come attiva.",
+        status: "suspended",
+        orderIndex: 31,
+        createdAt: "2026-03-09T10:00:00.000Z",
+        updatedAt: "2026-03-09T10:00:00.000Z"
+      }
+    ]);
+    await database.insert(cardEntryLink).values([
+      {
+        id: "card_entry_link_fixture_overview_new_primary",
+        cardId: "card_fixture_overview_new",
+        entryType: "term",
+        entryId: developmentFixture.termDbId,
+        relationshipType: "primary"
+      },
+      {
+        id: "card_entry_link_fixture_overview_suspended_primary",
+        cardId: "card_fixture_overview_suspended",
+        entryType: "term",
+        entryId: developmentFixture.termDbId,
+        relationshipType: "primary"
+      }
+    ]);
+    await database.insert(reviewState).values({
+      cardId: "card_fixture_overview_suspended",
+      state: "review",
+      stability: 4,
+      difficulty: 3,
+      dueAt: "2999-01-01T00:00:00.000Z",
+      lastReviewedAt: "2026-03-08T10:00:00.000Z",
+      lapses: 0,
+      reps: 4,
+      manualOverride: false,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+
+    const [queue, overviewSnapshots] = await Promise.all([
+      getReviewQueueSnapshotForMedia(developmentFixture.mediaSlug, database),
+      loadReviewOverviewSnapshots(database, [
+        {
+          id: developmentFixture.mediaId,
+          slug: developmentFixture.mediaSlug
+        }
+      ])
+    ]);
+    const overview = overviewSnapshots.get(developmentFixture.mediaId);
+
+    expect(queue).not.toBeNull();
+    expect(overview).not.toBeUndefined();
+    expect(overview?.activeCards).toBe(
+      (queue?.dueCount ?? 0) + (queue?.upcomingCount ?? 0)
+    );
+    expect(overview?.activeCards).toBe(1);
   });
 
   it("selects the best review launch media without loading the dashboard", async () => {
@@ -764,6 +852,45 @@ describe("review system", () => {
     expect(markup).toContain(
       "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
     );
+  });
+
+  it("renders furigana markup in review card fronts instead of showing raw braces", async () => {
+    await database
+      .update(card)
+      .set({
+        front: "{{語彙|ごい}}"
+      })
+      .where(eq(card.id, developmentFixture.primaryCardId));
+
+    const [reviewPage, reviewDetail] = await Promise.all([
+      getReviewPageData(
+        developmentFixture.mediaSlug,
+        {
+          card: developmentFixture.primaryCardId
+        },
+        database
+      ),
+      getReviewCardDetailData(
+        developmentFixture.mediaSlug,
+        developmentFixture.primaryCardId,
+        database
+      )
+    ]);
+
+    expect(reviewPage).not.toBeNull();
+    expect(reviewDetail).not.toBeNull();
+
+    const reviewMarkup = renderToStaticMarkup(ReviewPage({ data: reviewPage! }));
+    const detailMarkup = renderToStaticMarkup(
+      ReviewCardDetailPage({ data: reviewDetail! })
+    );
+
+    expect(reviewMarkup).toContain('review-stage__front jp-inline"><ruby>');
+    expect(reviewMarkup).not.toContain("{{語彙|ごい}}");
+    expect(detailMarkup).toContain(
+      'glossary-entry-hero__title jp-inline"><ruby>'
+    );
+    expect(detailMarkup).not.toContain("{{語彙|ごい}}");
   });
 
   it("renders grading actions from easy to again with next-review previews", async () => {

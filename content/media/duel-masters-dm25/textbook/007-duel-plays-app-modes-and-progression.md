@@ -153,7 +153,7 @@ Flusso pratico prima del click:
 
 Su alcune schermate questo bottone arriva subito. Su altre compare solo dopo
 deck selection, room setup o scelta dello stage. Ma il principio resta uguale:
-`対戦開始` è il punto in cui la lettura smette di essere orientamento e diventa
+`{{対戦開始|たいせんかいし}}` è il punto in cui la lettura smette di essere orientamento e diventa
 partita.
 
 ## Esempi guidati

@@ -16,7 +16,7 @@ meaning_it: tribu Abyss Royal
 pos: noun
 aliases: [アビスロイヤル, abyss royal]
 notes_it: >-
-  È una linea di [種族](term:term-race) decisiva per leggere bene `DM25-SD1`.
+  È una linea di [{{種族|しゅぞく}}](term:term-race) decisiva per leggere bene `DM25-SD1`.
   Quando compare, non aggiunge solo "lore" al nome della carta: restringe in
   modo concreto quali carte il mazzo può recuperare, mettere in campo o
   premiare.
@@ -83,7 +83,7 @@ example_it: >-
   Puoi mettere in gioco 1 Abyss Royal di costo 4 o inferiore.
 notes_it: >-
   Se lo vedi in una frase, trattalo come filtro operativo di
-  [種族](term:term-race). In `DM25-SD1` non basta leggere "Abyss": spesso la
+  [{{種族|しゅぞく}}](term:term-race). In `DM25-SD1` non basta leggere "Abyss": spesso la
   carta vuole proprio la sottofamiglia corretta.
 tags: [dm25-sd1, abyss, tribe]
 :::
@@ -93,7 +93,7 @@ id: card-abyssbell-jashintei-recognition
 entry_type: term
 entry_id: term-abyssbell-jashintei
 card_type: recognition
-front: アビスベル=ジャシン帝
+front: 'アビスベル=ジャシン{{帝|てい}}'
 back: Abyssbell Jashin Emperor
 example_jp: >-
   {{アビスベル=ジャシン帝|あびすべるじゃしんてい}}で{{攻撃|こうげき}}して{{勝負|しょうぶ}}を{{決|き}}める。
@@ -111,7 +111,7 @@ id: card-jashinnyuu-recognition
 entry_type: term
 entry_id: term-jashinnyuu
 card_type: recognition
-front: 邪侵入
+front: '{{邪侵入|じゃしんにゅう}}'
 back: Jashinnyuu
 example_jp: >-
   {{邪侵入|じゃしんにゅう}}で{{墓地|ぼち}}からアビスを{{出|だ}}す。
@@ -119,7 +119,7 @@ example_it: >-
   Usa Jashinnyuu per mettere in gioco un Abyss dal cimitero.
 notes_it: >-
   Forma compatta legata a una magia che converte risorse dal
-  [墓地](term:term-graveyard) in presenza immediata sul campo. La lettura corretta
+  [{{墓地|ぼち}}](term:term-graveyard) in presenza immediata sul campo. La lettura corretta
   separa subito nome della carta e risultato pratico dell'effetto.
 tags: [dm25-sd1, abyss, spell-name]
 :::
@@ -152,7 +152,7 @@ pos: keyword
 aliases: [アビスラッシュ, abisurasshu, abyss rush]
 notes_it: >-
   È una keyword dell'asse Abyss che comprime una regola di sostituzione:
-  quando la creatura sta per [離れる](term:term-hanareru), puoi tenere il corpo
+  quando la creatura sta per [{{離|はな}}れる](term:term-hanareru), puoi tenere il corpo
   in gioco pagando un costo alternativo, spesso scartando carte. In partita
   cambia l'esito di una rimozione: la perdita di board viene convertita in
   consumo di mano.
@@ -171,7 +171,7 @@ notes_it: >-
   Introduce un conteggio-soglia: dopo il numero devi cercare quale totale il
   testo sta sommando davvero. In `DM25-SD1` non conta quante carte hai, ma il
   costo totale delle carte di una certa civiltà. È quindi una keyword che va
-  letta insieme a [合計](term:term-goukei) e a un filtro come `{{3以上|さんいじょう}}`.
+  letta insieme a [{{合計|ごうけい}}](term:term-goukei) e a un filtro come `{{3以上|さんいじょう}}`.
 level_hint: custom
 :::
 
@@ -235,7 +235,7 @@ example_it: >-
   Abyss Rush: quando questa creatura sta per lasciare il campo, puoi invece
   scartare 2 carte dalla tua mano.
 notes_it: >-
-  Questa keyword applica una sostituzione con [離れる](term:term-hanareru) +
+  Questa keyword applica una sostituzione con [{{離|はな}}れる](term:term-hanareru) +
   [かわりに](grammar:grammar-kawarini): invece di uscire dal campo, la creatura
   resta in gioco pagando il costo richiesto.
 tags: [dm25-sd1, abyss, keyword]
@@ -249,7 +249,7 @@ card_type: recognition
 front: シビルカウント
 back: Civil Count
 example_jp: >-
-  シビルカウント3：{{自分|じぶん}}の{{闇|やみ}}のカードのコストの
+  シビルカウント{{3|さん}}：{{自分|じぶん}}の{{闇|やみ}}のカードのコストの
   {{合計|ごうけい}}が{{3以上|さんいじょう}}であれば、このクリーチャーの
   「S・トリガー」を{{使|つか}}ってもよい。
 example_it: >-
@@ -267,7 +267,7 @@ id: card-attack-target-recognition
 entry_type: term
 entry_id: term-attack-target
 card_type: recognition
-front: 攻撃先
+front: '{{攻撃先|こうげきさき}}'
 back: bersaglio dell'attacco
 example_jp: >-
   そのクリーチャーに{{攻撃先|こうげきさき}}を{{変更|へんこう}}する。

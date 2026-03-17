@@ -39,11 +39,11 @@ reveal_mode: sentence
 - Qui quindi la carta non lascia il battle zone nel modo normale: il testo
   sostituisce quell'uscita con il recupero di un'altra creatura.
 
-### [B・A・D 2](term:term-b-a-d-two)
+### [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)
 
 :::example_sentence
 jp: >-
-  [B・A・D 2](term:term-b-a-d-two)：このクリーチャーの
+  [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)：このクリーチャーの
   [{{召喚|しょうかん}}](term:term-summon)コストを{{2つ|ふたつ}}
   {{少|すく}}なくしてもよい。そうした{{場合|ばあい}}、このターン
   {{終了時|しゅうりょうじ}}にこのクリーチャーを
@@ -129,18 +129,18 @@ reveal_mode: sentence
 - Il verbo successivo dice quante carte di quel materiale devi consumare per
   ottenere il payoff.
 
-### [無月の門](term:term-mugestsu-no-mon)
+### [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon)
 
 :::example_sentence
 jp: >-
-  [無月の門](term:term-mugestsu-no-mon)：{{自分|じぶん}}の
-  [魔導具](term:term-madougu)が[バトルゾーン](term:term-battle-zone)に
+  [{{無月の門|むげつのもん}}](term:term-mugestsu-no-mon)：{{自分|じぶん}}の
+  [{{魔導具|まどうぐ}}](term:term-madougu)が[バトルゾーン](term:term-battle-zone)に
   {{出|で}}た{{時|とき}}、{{自分|じぶん}}の
-  [魔導具](term:term-madougu)を[バトルゾーン](term:term-battle-zone)と
+  [{{魔導具|まどうぐ}}](term:term-madougu)を[バトルゾーン](term:term-battle-zone)と
   [{{墓地|ぼち}}](term:term-graveyard)から{{2つ|ふたつ}}[ずつ](grammar:grammar-zutsu)
   {{選|えら}}び、このクリーチャーを{{自分|じぶん}}の
   [{{手札|てふだ}}](term:term-hand)または[{{墓地|ぼち}}](term:term-graveyard)から
-  それら{{4枚|よんまい}}の上に[コスト](term:term-cost)を{{払|はら}}わずに
+  それら{{4枚|よんまい}}の{{上|うえ}}に[コスト](term:term-cost)を{{払|はら}}わずに
   {{召喚|しょうかん}}してもよい。
 translation_it: >-
   Gate of Moonless Night: quando un tuo Magic Tool entra nel battle zone,

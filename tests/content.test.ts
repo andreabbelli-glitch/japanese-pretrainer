@@ -927,6 +927,66 @@ describe("content parser and validator", () => {
     }
   });
 
+  it("flags bare kanji inside plain-text summaries and media descriptions", async () => {
+    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-plain-summary-"));
+
+    try {
+      const mediaDirectory = path.join(mediaRoot, "sample-anime");
+      await cp(validMediaDirectory, mediaDirectory, { recursive: true });
+
+      const mediaPath = path.join(mediaDirectory, "media.md");
+      const lessonPath = path.join(
+        mediaDirectory,
+        "textbook",
+        "001-intro.md"
+      );
+
+      const mediaSource = await readFile(mediaPath, "utf8");
+      const updatedMediaSource = mediaSource.replace(
+        "---\n",
+        [
+          "---",
+          "description: >-",
+          "  Media con 報酬確認 nel testo descrittivo.",
+          ""
+        ].join("\n")
+      );
+      await writeFile(mediaPath, updatedMediaSource);
+
+      const lessonSource = await readFile(lessonPath, "utf8");
+      const updatedLessonSource = lessonSource.replace(
+        "prerequisites: []\n---",
+        [
+          "prerequisites: []",
+          "summary: >-",
+          "  Riconoscere 報酬確認 nella scena iniziale.",
+          "---"
+        ].join("\n")
+      );
+      await writeFile(lessonPath, updatedLessonSource);
+
+      const result = await parseMediaDirectory(mediaDirectory);
+
+      expect(result.ok).toBe(false);
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "frontmatter.description-bare-kanji",
+          category: "schema",
+          path: "frontmatter.description"
+        })
+      );
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "frontmatter.summary-bare-kanji",
+          category: "schema",
+          path: "frontmatter.summary"
+        })
+      );
+    } finally {
+      await rm(mediaRoot, { recursive: true, force: true });
+    }
+  });
+
   it("fails on duplicate IDs in a small targeted fixture", async () => {
     const result = await parseMediaDirectory(duplicateIdsMediaDirectory);
 
@@ -1049,6 +1109,128 @@ order: 1
           code: "image.caption-bare-kanji",
           path: "body.blocks[1].caption",
           category: "schema"
+        })
+      );
+    } finally {
+      await rm(mediaRoot, { recursive: true, force: true });
+    }
+  });
+
+  it("flags bare learner-facing kanji and numerals outside furigana markup", async () => {
+    const mediaRoot = await mkdtemp(
+      path.join(tmpdir(), "jcs-content-visible-furigana-")
+    );
+    const mediaDirectory = path.join(mediaRoot, "demo");
+    const textbookDirectory = path.join(mediaDirectory, "textbook");
+    const cardsDirectory = path.join(mediaDirectory, "cards");
+
+    try {
+      await mkdir(textbookDirectory, { recursive: true });
+      await mkdir(cardsDirectory, { recursive: true });
+      await writeFile(
+        path.join(mediaDirectory, "media.md"),
+        `---
+id: media-demo
+slug: demo
+title: Demo
+media_type: game
+segment_kind: lesson
+language: ja
+base_explanation_language: it
+---
+`
+      );
+      await writeFile(
+        path.join(textbookDirectory, "001-visible.md"),
+        `---
+id: lesson-demo
+media_id: media-demo
+slug: visible-demo
+title: Visible demo
+order: 1
+---
+
+Leggi 破壊された時 quando compare nel testo.
+
+:::example_sentence
+jp: >-
+  このクリーチャーのパワーを+5000する。
+translation_it: >-
+  In italiano puoi citare 破壊された時 come trigger.
+:::
+`
+      );
+      await writeFile(
+        path.join(cardsDirectory, "001-core.md"),
+        `---
+id: cards-demo
+media_id: media-demo
+slug: cards-demo
+title: Demo cards
+order: 1
+---
+
+:::term
+id: term-demo
+lemma: 破壊
+reading: はかい
+romaji: hakai
+meaning_it: distruzione
+notes_it: >-
+  Qui 破壊された時 resta visibile senza furigana.
+:::
+
+:::card
+id: card-demo
+entry_type: term
+entry_id: term-demo
+card_type: recognition
+front: 破壊された時
+back: ok
+example_jp: >-
+  このクリーチャーのパワーを5000する。
+example_it: >-
+  Anche qui 破壊された時 compare in chiaro.
+notes_it: >-
+  Nota su 破壊された時.
+:::
+`
+      );
+
+      const result = await parseMediaDirectory(mediaDirectory);
+      const issueCodes = result.issues.map((issue) => issue.code);
+
+      expect(result.ok).toBe(false);
+      expect(issueCodes).toContain("furigana.visible-text-bare-kanji");
+      expect(issueCodes).toContain("furigana.visible-text-bare-numerals");
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "furigana.visible-text-bare-numerals",
+          path: "body.blocks[1].jp",
+          category: "schema",
+          location: expect.objectContaining({
+            filePath: path.join(textbookDirectory, "001-visible.md")
+          })
+        })
+      );
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "furigana.visible-text-bare-kanji",
+          path: "body.blocks[1].front",
+          category: "schema",
+          location: expect.objectContaining({
+            filePath: path.join(cardsDirectory, "001-core.md")
+          })
+        })
+      );
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "furigana.visible-text-bare-numerals",
+          path: "body.blocks[1].example_jp",
+          category: "schema",
+          location: expect.objectContaining({
+            filePath: path.join(cardsDirectory, "001-core.md")
+          })
         })
       );
     } finally {
@@ -1381,7 +1563,7 @@ id: ${input.cardId}
 entry_type: term
 entry_id: ${input.sharedTermId}
 card_type: recognition
-front: 食べる
+front: '{{食べる|たべる}}'
 back: mangiare
 :::
 `
@@ -1465,7 +1647,7 @@ id: card-${input.slugPrefix}
 entry_type: term
 entry_id: term-${input.slugPrefix}
 card_type: recognition
-front: 食べる
+front: '{{食べる|たべる}}'
 back: mangiare
 :::
 `

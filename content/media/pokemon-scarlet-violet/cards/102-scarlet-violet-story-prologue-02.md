@@ -105,7 +105,7 @@ card_type: recognition
 front: "{{気|き}}をつける"
 back: fare attenzione / stare attenti
 example_jp: >-
-  {{崖|がけ}}の {{近|ちか}}くは {{足元|あしもと}}に {{気|き}}をつけて 進もう。
+  {{崖|がけ}}の {{近|ちか}}くは {{足元|あしもと}}に {{気|き}}をつけて {{進|すす}}もう。
 example_it: >-
   Vicino al dirupo avanza facendo attenzione a dove metti i piedi.
 :::

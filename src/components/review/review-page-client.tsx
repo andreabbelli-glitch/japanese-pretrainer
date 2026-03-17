@@ -261,7 +261,7 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
               <div className="review-stage__card">
                 <p className="eyebrow">Fronte</p>
                 <h2 className="review-stage__front jp-inline">
-                  {selectedCard.front}
+                  {renderFurigana(selectedCard.front)}
                 </h2>
                 {!viewData.selectedCardContext.showAnswer ? (
                   <div className="review-stage__veil">

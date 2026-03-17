@@ -28,7 +28,7 @@ caption: >-
 
 ## Keyword presenti sulla carta
 
-- [B・A・D 2](term:term-b-a-d-two)
+- [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)
 - [スピードアタッカー](term:term-speed-attacker)
 - [W・ブレイカー](term:term-w-breaker)
 
@@ -54,7 +54,7 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   [バトル](term:term-battle)[{{中|ちゅう}}](grammar:grammar-ui-chuu)、この
-  クリーチャーの[パワー](term:term-power)を+5000する。
+  クリーチャーの[パワー](term:term-power)を{{+5000|プラスごせん}}する。
 translation_it: >-
   Durante il battle, questa creatura prende +5000 potere.
 reveal_mode: sentence

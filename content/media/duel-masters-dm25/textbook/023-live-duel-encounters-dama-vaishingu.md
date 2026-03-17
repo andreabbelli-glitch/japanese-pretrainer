@@ -14,8 +14,8 @@ prerequisites:
     lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
   ]
 summary: >-
-  堕魔 ヴァイシング: recupero dal cimitero, filtro sui Magic Tool di costo 4
-  o meno e bivio finale verso campo o mano.
+  Dama Vaishingu: recupero dal cimitero, filtro sui Magic Tool di costo 4 o
+  meno e bivio finale verso campo o mano.
 ---
 
 # [{{堕魔|だーま}}](term:term-dama) ヴァイシング
@@ -39,9 +39,9 @@ jp: >-
   [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の
   [{{墓地|ぼち}}](term:term-graveyard)からクリーチャー{{1枚|いちまい}}を
   [{{選|えら}}ぶ](term:term-erabu)。それが[コスト](term:term-cost)
-  {{4以下|よんいか}}の[魔導具](term:term-madougu)なら
+  {{4以下|よんいか}}の[{{魔導具|まどうぐ}}](term:term-madougu)なら
   [バトルゾーン](term:term-battle-zone)に[{{出|だ}}し](term:term-dasu)、
-  [それ以外なら](grammar:grammar-soreigai-nara)
+  [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara)
   [{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}える](term:term-add)。
 translation_it: >-
   Quando entra nel battle zone, scegli una creatura dal tuo cimitero. Se quella
@@ -73,13 +73,13 @@ reveal_mode: sentence
 
 - [{{出|だ}}す](term:term-dasu) è il verbo transitivo: l'effetto fa entrare la
   carta nel battle zone.
-- [それ以外なら](grammar:grammar-soreigai-nara) apre il ramo alternativo: se la
+- [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara) apre il ramo alternativo: se la
   carta scelta non passa il filtro precedente, non la perdi e non la lasci nel
   cimitero, ma la mandi in mano.
 - [{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}える](term:term-add) è quindi il
   piano di ripiego, non un secondo premio separato.
 - Le due metà della frase vanno lette come un bivio chiuso sullo stesso
-  bersaglio: `それが ... なら` manda sul campo, `それ以外なら` manda in mano.
+  bersaglio: `それが ... なら` manda sul campo, `それ{{以外|いがい}}なら` manda in mano.
 
 ### 4. Perché questa frase vale la pena di essere letta bene
 
@@ -92,8 +92,8 @@ reveal_mode: sentence
 ## Lessico utile in questa carta
 
 - [{{堕魔|だーま}}](term:term-dama) compare in molti nomi del pacchetto
-  `魔導具`: è un prefisso d'archetipo, non un kanji ornamentale.
-- [魔導具](term:term-madougu) qui decide il risultato pratico dell'effetto:
+  `{{魔導具|まどうぐ}}`: è un prefisso d'archetipo, non un kanji ornamentale.
+- [{{魔導具|まどうぐ}}](term:term-madougu) qui decide il risultato pratico dell'effetto:
   campo se il filtro passa, mano se non passa.
-- [マフィ・ギャング](term:term-mafi-gang) resta nella riga `種族` come seconda
+- [マフィ・ギャング](term:term-mafi-gang) resta nella riga `{{種族|しゅぞく}}` come seconda
   etichetta tribale della carta.

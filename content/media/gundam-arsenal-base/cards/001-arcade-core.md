@@ -627,7 +627,7 @@ entry_type: term
 entry_id: term-call-up
 card_type: recognition
 front: >-
-  呼び出す
+  {{呼|よ}}び{{出|だ}}す
 back: >-
   richiamare / caricare dati già registrati
 example_jp: >-
@@ -801,7 +801,7 @@ front: >-
 back: >-
   livello del profilo comandante
 example_jp: >-
-  {{指揮官|しきかん}}レベルが5に{{上|あ}}がると、{{作戦|さくせん}}カードの{{装備|そうび}}が{{解放|かいほう}}されます。
+  {{指揮官|しきかん}}レベルが{{5|ご}}に{{上|あ}}がると、{{作戦|さくせん}}カードの{{装備|そうび}}が{{解放|かいほう}}されます。
 example_it: >-
   Quando il livello comandante arriva a 5, si sblocca l'equipaggiamento delle
   carte tattiche.

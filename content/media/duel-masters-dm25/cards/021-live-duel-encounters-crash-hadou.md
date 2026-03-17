@@ -33,9 +33,9 @@ pos: keyword
 aliases: [B・A・D 2, BAD 2, bii ei dii tsuu]
 notes_it: >-
   `B・A・D` abbrevia una riduzione del costo di evocazione seguita da
-  auto-distruzione a fine turno. In `B・A・D 2` il numero dice di quanto il
-  costo può scendere, quindi la keyword comunica insieme velocità di ingresso e
-  limite temporale della carta.
+  auto-distruzione a fine turno. In `{{B・A・D 2|びーえーでぃーつー}}` il
+  numero dice di quanto il costo può scendere, quindi la keyword comunica
+  insieme velocità di ingresso e limite temporale della carta.
 level_hint: custom
 :::
 
@@ -63,7 +63,7 @@ meaning_it: Dragon Guild / razza-famiglia di carte
 pos: noun
 aliases: [ドラゴンギルド, doragon girudo, Dragon Guild]
 notes_it: >-
-  Compare nella riga `種族`, quindi indica una razza e non un titolo narrativo.
+  Compare nella riga `{{種族|しゅぞく}}`, quindi indica una razza e non un titolo narrativo.
   In partita questo decide i bersagli validi: se un effetto cerca una carta
   `ドラゴンギルド`, questa carta può essere scelta.
 level_hint: custom
@@ -123,9 +123,9 @@ meaning_it: aggiungere un turno / ottenere un turno extra
 pos: verb
 aliases: [ターンを追加する, 追加する, taan o tsuika suru]
 notes_it: >-
-  Qui `追加する` si applica a `ターン` e produce davvero un turno extra. La frase
-  intera descrive un cambiamento nell'ordine dei turni, non un'aggiunta
-  generica.
+  Qui `ターンを{{追加|ついか}}する` si applica a `ターン` e produce davvero un
+  turno extra. La frase intera descrive un cambiamento nell'ordine dei turni,
+  non un'aggiunta generica.
 level_hint: custom
 :::
 
@@ -182,16 +182,16 @@ id: card-b-a-d-two-recognition
 entry_type: term
 entry_id: term-b-a-d-two
 card_type: recognition
-front: B・A・D 2
+front: '{{B・A・D 2|びーえーでぃーつー}}'
 back: keyword con riduzione di costo di 2
 example_jp: >-
-  B・A・D 2だから、このカードは{{想像|そうぞう}}より{{早|はや}}く{{出|で}}てくる。
+  {{B・A・D 2|びーえーでぃーつー}}だから、このカードは{{想像|そうぞう}}より{{早|はや}}く{{出|で}}てくる。
 example_it: >-
   Con B.A.D 2 questa carta può scendere prima di quanto sembri.
 notes_it: >-
-  `B・A・D 2` non è una sigla decorativa: riassume una riduzione di costo di `2`
-  e il fatto che la creatura verrà distrutta a fine turno se hai usato quella
-  riduzione.
+  `{{B・A・D 2|びーえーでぃーつー}}` non è una sigla decorativa: riassume una
+  riduzione di costo di `2` e il fatto che la creatura verrà distrutta a fine
+  turno se hai usato quella riduzione.
 tags: [live-duel, keyword, cost]
 :::
 
@@ -208,7 +208,7 @@ back: >-
   Puoi ridurre di 2 il costo di evocazione di questa creatura; se lo fai, alla
   fine di questo turno la distruggi.
 example_jp: >-
-  B・A・D 2を{{使|つか}}うと、{{召喚|しょうかん}}コストを{{2つ|ふたつ}}
+  {{B・A・D 2|びーえーでぃーつー}}を{{使|つか}}うと、{{召喚|しょうかん}}コストを{{2つ|ふたつ}}
   {{少|すく}}なくできるが、{{終了時|しゅうりょうじ}}にこのクリーチャーを
   {{破壊|はかい}}する。
 example_it: >-
@@ -251,7 +251,7 @@ example_jp: >-
 example_it: >-
   Tra le razze di questa carta c'è Dragon Guild.
 notes_it: >-
-  `ドラゴンギルド` è la razza letta nella riga `種族`; perciò può comparire in
+  `ドラゴンギルド` è la razza letta nella riga `{{種族|しゅぞく}}`; perciò può comparire in
   sinergie, filtri o riferimenti tribali.
 tags: [live-duel, race, tribe]
 :::
@@ -321,7 +321,7 @@ example_it: >-
   Dopo questo turno, aggiungi un tuo turno.
 notes_it: >-
   La frase intera dice che ottieni un turno extra subito dopo quello attuale.
-  `追加する` da solo non basta a esprimere questa idea.
+  `ターンを{{追加|ついか}}する` da solo non basta a esprimere questa idea.
 tags: [live-duel, turn-order, payoff]
 :::
 
@@ -376,7 +376,7 @@ example_jp: >-
 example_it: >-
   Il turno extra parte solo quando la creatura viene distrutta mentre è tappata.
 notes_it: >-
-  Il chunk va letto in tre pezzi: stato già presente `タップ状態`, trigger
+  Il chunk va letto in tre pezzi: stato già presente `タップ{{状態|じょうたい}}`, trigger
   passivo `破壊された時` e inserimento del nuovo turno subito dopo quello
   corrente.
 tags: [live-duel, chunk, extra-turn, grammar]

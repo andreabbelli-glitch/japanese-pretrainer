@@ -152,12 +152,12 @@ entry_id: grammar-me-ordinal
 card_type: concept
 front: '{{1枚目|いちまいめ}}'
 back: >-
-  la prima carta; `目` marca la posizione nell'ordine
+  la prima carta; `{{目|め}}` marca la posizione nell'ordine
 example_jp: >-
   `{{1枚目|いちまいめ}}`の`{{目|め}}`は、{{1枚|いちまい}}を
   「{{最初|さいしょ}}の{{1枚|いちまい}}」にする。
 example_it: >-
-  In `1枚目`, `目` trasforma `1枚` in "la prima carta" invece di "una carta".
+  In `1枚目`, `{{目|め}}` trasforma `1枚` in "la prima carta" invece di "una carta".
 notes_it: >-
   Questa e una distinzione molto utile: `{{1枚|いちまい}}` conta una carta,
   `{{1枚目|いちまいめ}}` indica quale carta nella fila o nella pila. Su Bad

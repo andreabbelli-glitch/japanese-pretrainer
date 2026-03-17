@@ -970,6 +970,21 @@ function normalizeMediaFrontmatter(
     );
   }
 
+  if (description && bareKanjiPattern.test(description)) {
+    issues.push(
+      createIssue({
+        code: "frontmatter.description-bare-kanji",
+        category: "schema",
+        message:
+          "Media description is plain text and cannot render furigana, so visible kanji should be avoided.",
+        filePath,
+        path: `${scope}.description`,
+        range: fieldRanges.description,
+        hint: "Rewrite the description in Italian or with kana/katakana only."
+      })
+    );
+  }
+
   if (
     !id ||
     !slug ||
@@ -1082,6 +1097,21 @@ function normalizeLessonFrontmatter(
         details: {
           field: "summary"
         }
+        })
+      );
+  }
+
+  if (summary && bareKanjiPattern.test(summary)) {
+    issues.push(
+      createIssue({
+        code: "frontmatter.summary-bare-kanji",
+        category: "schema",
+        message:
+          "Lesson summary is plain text and cannot render furigana, so visible kanji should be avoided.",
+        filePath,
+        path: `${scope}.summary`,
+        range: fieldRanges.summary,
+        hint: "Rewrite the summary in Italian or with kana/katakana only."
       })
     );
   }
@@ -1849,6 +1879,26 @@ function normalizeCardBlock(
     ...(exampleItFragment?.issues ?? []),
     ...(notesFragment?.issues ?? [])
   );
+  reportVisibleRichTextIssue({
+    fragment: frontFragment.fragment,
+    filePath: sourceContext.filePath,
+    sourcePath: `${sourcePath}.front`,
+    range: frontRange,
+    issues,
+    checkBareKanji: true,
+    checkBareNumerals: true
+  });
+  if (exampleJpFragment) {
+    reportVisibleRichTextIssue({
+      fragment: exampleJpFragment.fragment,
+      filePath: sourceContext.filePath,
+      sourcePath: `${sourcePath}.example_jp`,
+      range: exampleJpRange,
+      issues,
+      checkBareKanji: true,
+      checkBareNumerals: true
+    });
+  }
 
   return {
     value: {
@@ -1982,6 +2032,15 @@ function normalizeExampleSentenceBlock(
   });
 
   issues.push(...sentenceFragment.issues, ...translationFragment.issues);
+  reportVisibleRichTextIssue({
+    fragment: sentenceFragment.fragment,
+    filePath: sourceContext.filePath,
+    sourcePath: `${sourcePath}.jp`,
+    range: sentenceRange,
+    issues,
+    checkBareKanji: true,
+    checkBareNumerals: true
+  });
 
   return {
     block: {
@@ -2186,6 +2245,9 @@ async function normalizeImageBlock(
 }
 
 const bareKanjiPattern = /\p{Script=Han}/u;
+const japaneseScriptPattern =
+  /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u;
+const bareNumeralPattern = /[+-]?\d[\d,]*(?:\.\d+)?/u;
 
 function reportImageAltKanjiIssue(
   alt: string,
@@ -2237,6 +2299,53 @@ function reportImageCaptionKanjiIssue(
   );
 }
 
+function reportVisibleRichTextIssue(input: {
+  fragment: { nodes: InlineNode[] };
+  filePath: string;
+  sourcePath: string;
+  range: SourceRange | undefined;
+  issues: ValidationIssue[];
+  checkBareKanji?: boolean;
+  checkBareNumerals?: boolean;
+}) {
+  if (
+    input.checkBareKanji &&
+    inlineNodesContainBareKanji(input.fragment.nodes)
+  ) {
+    input.issues.push(
+      createIssue({
+        code: "furigana.visible-text-bare-kanji",
+        category: "schema",
+        message:
+          "Visible learner-facing text contains kanji outside furigana markup.",
+        filePath: input.filePath,
+        path: input.sourcePath,
+        range: input.range,
+        hint: "Annotate visible kanji with furigana, or use a semantic reference whose full label is already annotated."
+      })
+    );
+  }
+
+  if (
+    input.checkBareNumerals &&
+    inlineNodesContainJapaneseScript(input.fragment.nodes) &&
+    inlineNodesContainBareNumerals(input.fragment.nodes)
+  ) {
+    input.issues.push(
+      createIssue({
+        code: "furigana.visible-text-bare-numerals",
+        category: "schema",
+        message:
+          "Visible learner-facing Japanese text contains numerals outside furigana markup.",
+        filePath: input.filePath,
+        path: input.sourcePath,
+        range: input.range,
+        hint: "Annotate visible numbers with one furigana block on the full chunk, for example {{4|よん}}, {{5000|ごせん}}, or {{1枚|いちまい}}."
+      })
+    );
+  }
+}
+
 function inlineNodesContainBareKanji(nodes: InlineNode[]): boolean {
   return nodes.some((node) => {
     switch (node.type) {
@@ -2251,6 +2360,46 @@ function inlineNodesContainBareKanji(nodes: InlineNode[]): boolean {
       case "inlineCode":
       case "link":
         return inlineNodesContainBareKanji(node.children);
+    }
+  });
+}
+
+function inlineNodesContainJapaneseScript(nodes: InlineNode[]): boolean {
+  return nodes.some((node) => {
+    switch (node.type) {
+      case "text":
+        return japaneseScriptPattern.test(node.value);
+      case "furigana":
+        return (
+          japaneseScriptPattern.test(node.base) ||
+          japaneseScriptPattern.test(node.reading)
+        );
+      case "break":
+        return false;
+      case "reference":
+      case "emphasis":
+      case "strong":
+      case "inlineCode":
+      case "link":
+        return inlineNodesContainJapaneseScript(node.children);
+    }
+  });
+}
+
+function inlineNodesContainBareNumerals(nodes: InlineNode[]): boolean {
+  return nodes.some((node) => {
+    switch (node.type) {
+      case "text":
+        return bareNumeralPattern.test(node.value);
+      case "furigana":
+      case "break":
+        return false;
+      case "reference":
+      case "emphasis":
+      case "strong":
+      case "inlineCode":
+      case "link":
+        return inlineNodesContainBareNumerals(node.children);
     }
   });
 }

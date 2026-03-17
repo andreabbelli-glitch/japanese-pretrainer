@@ -33,15 +33,15 @@ compatto, più tecnico e soprattutto più sequenziale. Le carte ti costringono a
 leggere in ordine: trigger, azione, bersaglio, filtro, eccezione.
 
 I pattern più utili da riconoscere sono
-[～時 / ～た時](grammar:grammar-toki), [その後](grammar:grammar-sonoato),
+[～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki), [その後](grammar:grammar-sonoato),
 [そうしたら](grammar:grammar-soushitara),
 [～てもよい](grammar:grammar-temoyoi), [かわりに](grammar:grammar-kawarini),
 [～なければ ... ない](grammar:grammar-nakereba),
 [～ていれば](grammar:grammar-teireba),
-[～以外の方法で](grammar:grammar-igai-no-houhou-de),
+[～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de),
 [または](grammar:grammar-matawa),
-[～以下 / ～以上](grammar:grammar-ika-ijou),
-[～のはじめに / ～の終わりに](grammar:grammar-turn-timing) e
+[～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou),
+[～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) e
 [ただし](grammar:grammar-tadashi).
 
 [{{効果|こうか}}](term:term-effect) è il riferimento semantico del blocco operativo:
@@ -50,50 +50,50 @@ la frase indica quel blocco d'effetto specifico, non la carta in generale.
 
 ## Termini chiave
 
-- [出る](term:term-deru)
-- [出す](term:term-dasu)
-- [置く](term:term-oku)
-- [選ぶ](term:term-erabu)
-- [離れる](term:term-hanareru)
-- [残る](term:term-nokoru)
-- [扱う](term:term-atsukau)
-- [攻撃](term:term-attack)
-- [破壊](term:term-destroy)
+- [{{出|で}}る](term:term-deru)
+- [{{出|だ}}す](term:term-dasu)
+- [{{置|お}}く](term:term-oku)
+- [{{選|えら}}ぶ](term:term-erabu)
+- [{{離|はな}}れる](term:term-hanareru)
+- [{{残|のこ}}る](term:term-nokoru)
+- [{{扱|あつか}}う](term:term-atsukau)
+- [{{攻撃|こうげき}}](term:term-attack)
+- [{{破壊|はかい}}](term:term-destroy)
 - [タップ](term:term-tap)
 - [アンタップ](term:term-untap)
-- [重ねる](term:term-kasaneru)
+- [{{重|かさ}}ねる](term:term-kasaneru)
 - [コスト](term:term-cost)
 - [パワー](term:term-power)
-- [合計](term:term-goukei)
+- [{{合計|ごうけい}}](term:term-goukei)
 - [{{効果|こうか}}](term:term-effect)
 
 ## Pattern grammaticali chiave
 
-- [～時 / ～た時](grammar:grammar-toki)
+- [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki)
 - [その後](grammar:grammar-sonoato)
 - [そうしたら](grammar:grammar-soushitara)
 - [～てもよい](grammar:grammar-temoyoi)
 - [かわりに](grammar:grammar-kawarini)
 - [～なければ ... ない](grammar:grammar-nakereba)
 - [～ていれば](grammar:grammar-teireba)
-- [～以外の方法で](grammar:grammar-igai-no-houhou-de)
+- [～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de)
 - [または](grammar:grammar-matawa)
-- [～以下 / ～以上](grammar:grammar-ika-ijou)
-- [～のはじめに / ～の終わりに](grammar:grammar-turn-timing)
+- [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou)
+- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing)
 - [ただし](grammar:grammar-tadashi)
 
 ## Spiegazione
 
 ### 1. Trigger: prima il momento, poi l'effetto
 
-Il pattern più importante è [～時 / ～た時](grammar:grammar-toki). Nelle carte lo
+Il pattern più importante è [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki). Nelle carte lo
 trovi in forme come `{{出|で}}た{{時|とき}}`, `{{攻撃|こうげき}}する{{時|とき}}`,
 `{{離|はな}}れる{{時|とき}}`, `ブレイクされた{{時|とき}}`.
 
 Quando la vedi, quella porzione definisce il *quando* dell'attivazione e non
 l'azione stessa.
 
-Anche [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) serve a questo:
+Anche [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) serve a questo:
 fissa il momento preciso del turno. Forme come `{{自分|じぶん}}のターンのはじめに` o
 `このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに` sono prima di tutto indicatori di
 timing.
@@ -183,7 +183,7 @@ translation_it: >-
   ...altrimenti non viene trattata come una creatura.
 :::
 
-Se non riconosci [扱う](term:term-atsukau), la frase può sembrare oscura. Se la
+Se non riconosci [{{扱|あつか}}う](term:term-atsukau), la frase può sembrare oscura. Se la
 leggi a blocchi, invece, il senso è semplice: se la condizione non è soddisfatta,
 la carta non conta come creatura.
 
@@ -202,7 +202,7 @@ translation_it: >-
 
 Il pattern verifica uno stato preesistente e solo dopo concede il bonus.
 
-[残る](term:term-nokoru) nel rules text descrive continuità di presenza di una
+[{{残|のこ}}る](term:term-nokoru) nel rules text descrive continuità di presenza di una
 carta nonostante cambi successivi in altra parte della situazione.
 
 :::example_sentence
@@ -212,18 +212,18 @@ translation_it: >-
   Anche se quella creatura lascia il campo, questa carta resta.
 :::
 
-- [離れる](term:term-hanareru) = una carta esce dalla zona.
-- [残る](term:term-nokoru) = un'altra carta continua a restare dov'è.
+- [{{離|はな}}れる](term:term-hanareru) = una carta esce dalla zona.
+- [{{残|のこ}}る](term:term-nokoru) = un'altra carta continua a restare dov'è.
 
 Questi due pattern sono centrali perché non descrivono un'azione nuova:
 descrivono *quando un effetto conta davvero*.
 
 ### 6. Mezzo escluso, alternative, filtri e restrizioni
 
-[～以外の方法で](grammar:grammar-igai-no-houhou-de) è una formula tecnica molto
+[～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de) è una formula tecnica molto
 comune. In frasi come
 `{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}でクリーチャーを{{出|だ}}した{{時|とき}}`, il punto non è il lessico difficile,
-ma la struttura: "con un metodo diverso dalla [召喚](term:term-summon)".
+ma la struttura: "con un metodo diverso dalla [{{召喚|しょうかん}}](term:term-summon)".
 
 [または](grammar:grammar-matawa) è il connettore di alternativa del rules text:
 due categorie o bersagli condividono lo stesso filtro per un'unica verifica.
@@ -239,7 +239,7 @@ Il blocco applica un'unica selezione con due opzioni valide. Individua subito:
 - quale numero, condizione o verbo si applica a entrambe le parti.
 
 Quando [または](grammar:grammar-matawa) compare insieme a
-[合計](term:term-goukei) o a un filtro numerico, le due categorie entrano nello
+[{{合計|ごうけい}}](term:term-goukei) o a un filtro numerico, le due categorie entrano nello
 stesso conteggio. Non sono due controlli separati.
 
 Con [ただし](grammar:grammar-tadashi), il testo successivo imposta una
@@ -254,14 +254,14 @@ Ordine operativo: prima l'effetto principale, poi la restrizione finale.
 
 ### 7. Numeri e filtri non sono dettagli secondari
 
-[～以下 / ～以上](grammar:grammar-ika-ijou) compare ovunque:
+[～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou) compare ovunque:
 `コスト{{4以下|よんいか}}`, `パワー{{2000以下|にせんいか}}`,
 `{{合計|ごうけい}}{{4つ以上|よっついじょう}}`.
 
 Non è un dettaglio secondario. È il filtro che decide quali carte puoi
 scegliere, distruggere o mettere in campo.
 
-[合計](term:term-goukei) definisce come va aggregato il conteggio: la verifica non
+[{{合計|ごうけい}}](term:term-goukei) definisce come va aggregato il conteggio: la verifica non
 è per categoria separata, ma sul totale dei soggetti ammessi.
 
 Per identificare subito il tipo di controllo usa sempre questa lista:
@@ -269,11 +269,11 @@ Per identificare subito il tipo di controllo usa sempre questa lista:
 - [コスト](term:term-cost)
 - [パワー](term:term-power)
 - quantità
-- [合計](term:term-goukei), se presente
+- [{{合計|ごうけい}}](term:term-goukei), se presente
 - zona
 - bersaglio
 
-Quando compare [合計](term:term-goukei), la forma decide subito se il filtro è
+Quando compare [{{合計|ごうけい}}](term:term-goukei), la forma decide subito se il filtro è
 aggregato o separato. Questo punto influenza direttamente la validità dei target.
 
 ### 8. Keyword, parentesi e frasi compatte
@@ -292,10 +292,10 @@ translation_it: >-
 
 La decomposizione della frase segue questo ordine:
 
-- [侵略](term:term-invasion) = nome della keyword;
+- [{{侵略|しんりゃく}}](term:term-invasion) = nome della keyword;
 - `{{火|ひ}}のコマンド` = requisito;
 - parentesi = istruzione concreta;
-- [攻撃](term:term-attack) + [重ねる](term:term-kasaneru) =
+- [{{攻撃|こうげき}}](term:term-attack) + [{{重|かさ}}ねる](term:term-kasaneru) =
   finestra pratica in cui succede tutto.
 
 Poi ci sono frasi come questa:
@@ -311,9 +311,9 @@ translation_it: >-
 La traduzione lineare può perdere priorità temporali; la separazione rende
 esplicito il flusso:
 
-- [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) = quando succede;
+- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) = quando succede;
 - [アンタップ](term:term-untap) = prima azione;
-- [破壊](term:term-destroy) = seconda azione;
+- [{{破壊|はかい}}](term:term-destroy) = seconda azione;
 - `{{一番上|いちばんうえ}}` = quale carta viene colpita.
 
 Regola operativa: timing, poi azione, poi bersaglio.
@@ -328,7 +328,7 @@ Quando una frase è densa, applica sempre questo ordine:
 4. controlla se c'è un'alternativa (`または`);
 5. controlla se c'è una sequenza (`その後`, `そうしたら`);
 6. controlla se c'è una scelta (`～てもよい`);
-7. leggi per ultime restrizioni e filtri (`ただし`, `～以下 / ～以上`).
+7. leggi per ultime restrizioni e filtri (`ただし`, `～{{以下|いか}} / ～{{以上|いじょう}}`).
 
 È una procedura molto più affidabile della traduzione lineare.
 
@@ -344,8 +344,8 @@ translation_it: >-
   cimitero.
 :::
 
-- [出る](term:term-deru) + [～時 / ～た時](grammar:grammar-toki) = trigger.
-- [山札](term:term-deck) + [墓地](term:term-graveyard) + [置く](term:term-oku)
+- [{{出|で}}る](term:term-deru) + [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki) = trigger.
+- [{{山札|やまふだ}}](term:term-deck) + [{{墓地|ぼち}}](term:term-graveyard) + [{{置|お}}く](term:term-oku)
   = movimento di zona.
 
 **Esempio 2**
@@ -359,7 +359,7 @@ translation_it: >-
 :::
 
 - [その後](grammar:grammar-sonoato) = la frase continua.
-- [アビス](term:term-abyss) + [墓地](term:term-graveyard) + [出す](term:term-dasu)
+- [アビス](term:term-abyss) + [{{墓地|ぼち}}](term:term-graveyard) + [{{出|だ}}す](term:term-dasu)
   = recupero in campo.
 
 **Esempio 3**
@@ -374,7 +374,7 @@ translation_it: >-
 
 - [～てもよい](grammar:grammar-temoyoi) = scelta.
 - [そうしたら](grammar:grammar-soushitara) = il secondo effetto dipende dal primo.
-- [墓地](term:term-graveyard) + [手札](term:term-hand) + [戻す](term:term-modosu)
+- [{{墓地|ぼち}}](term:term-graveyard) + [{{手札|てふだ}}](term:term-hand) + [{{戻|もど}}す](term:term-modosu)
   = recupero in mano.
 
 **Esempio 4**
@@ -387,8 +387,8 @@ translation_it: >-
   dall'evocazione, distruggi quella creatura.
 :::
 
-- [～以外の方法で](grammar:grammar-igai-no-houhou-de) = esclusione di mezzo.
-- [出す](term:term-dasu) e [破壊](term:term-destroy) sono le due azioni chiave.
+- [～{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de) = esclusione di mezzo.
+- [{{出|だ}}す](term:term-dasu) e [{{破壊|はかい}}](term:term-destroy) sono le due azioni chiave.
 
 **Esempio 5**
 
@@ -403,8 +403,8 @@ translation_it: >-
 - [～なければ ... ない](grammar:grammar-nakereba) = condizione negativa.
 - [または](grammar:grammar-matawa) = le due categorie entrano nello stesso
   filtro.
-- [合計](term:term-goukei) = il conteggio richiesto è totale, non separato.
-- [扱う](term:term-atsukau) qui significa "contare come".
+- [{{合計|ごうけい}}](term:term-goukei) = il conteggio richiesto è totale, non separato.
+- [{{扱|あつか}}う](term:term-atsukau) qui significa "contare come".
 
 **Esempio 6**
 
@@ -416,8 +416,8 @@ translation_it: >-
   creatura e distruggi la carta in cima.
 :::
 
-- [～のはじめに / ～の終わりに](grammar:grammar-turn-timing) = timing.
-- [アンタップ](term:term-untap) e [破壊](term:term-destroy) sono azioni in
+- [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) = timing.
+- [アンタップ](term:term-untap) e [{{破壊|はかい}}](term:term-destroy) sono azioni in
   sequenza.
 
 **Esempio 7**
@@ -430,9 +430,9 @@ translation_it: >-
   sovrapporre su di esso questa creatura che hai in mano).
 :::
 
-- [侵略](term:term-invasion) = keyword.
+- [{{侵略|しんりゃく}}](term:term-invasion) = keyword.
 - [コマンド](term:term-command) = requisito sul tipo di attaccante.
-- [重ねる](term:term-kasaneru) + [～てもよい](grammar:grammar-temoyoi) =
+- [{{重|かさ}}ねる](term:term-kasaneru) + [～てもよい](grammar:grammar-temoyoi) =
   sovrapposizione opzionale.
 
 **Esempio 8**
@@ -445,7 +445,7 @@ translation_it: >-
 :::
 
 - [{{効果|こうか}}](term:term-effect) = la carta punta al blocco di testo che risolve.
-- [相手](term:term-opponent) + [破壊](term:term-destroy) = bersaglio e risultato
+- [{{相手|あいて}}](term:term-opponent) + [{{破壊|はかい}}](term:term-destroy) = bersaglio e risultato
   concreto dell'effetto.
 
 ## Nota finale

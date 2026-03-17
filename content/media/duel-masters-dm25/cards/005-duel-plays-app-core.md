@@ -778,10 +778,10 @@ id: card-news-recognition
 entry_type: term
 entry_id: term-news
 card_type: recognition
-front: お知らせ
+front: '{{お知らせ|おしらせ}}'
 back: avvisi / notice
 example_jp: >-
-  お知らせでイベント{{情報|じょうほう}}を{{確認|かくにん}}する。
+  {{お知らせ|おしらせ}}でイベント{{情報|じょうほう}}を{{確認|かくにん}}する。
 example_it: >-
   Controlla le informazioni evento negli avvisi.
 notes_it: >-
@@ -812,7 +812,7 @@ id: card-settings-recognition
 entry_type: term
 entry_id: term-settings
 card_type: recognition
-front: 設定
+front: '{{設定|せってい}}'
 back: impostazioni / settings
 example_jp: >-
   {{設定|せってい}}で{{音量|おんりょう}}を{{変|か}}える。
@@ -829,7 +829,7 @@ id: card-etc-recognition
 entry_type: term
 entry_id: term-etc
 card_type: recognition
-front: その他
+front: '{{その他|そのた}}'
 back: altro / varie / etc.
 example_jp: >-
   {{その他|そのた}}から{{設定|せってい}}を{{開|ひら}}く。
@@ -847,7 +847,7 @@ id: card-confirm-recognition
 entry_type: term
 entry_id: term-confirm
 card_type: recognition
-front: 確認
+front: '{{確認|かくにん}}'
 back: conferma / controllo
 example_jp: >-
   {{購入|こうにゅう}}の{{前|まえ}}に{{内容|ないよう}}を{{確認|かくにん}}する。
@@ -864,7 +864,7 @@ id: card-open-recognition
 entry_type: term
 entry_id: term-open
 card_type: recognition
-front: 開く
+front: '{{開く|ひらく}}'
 back: aprire / open
 example_jp: >-
   ホームからミッションを{{開|ひら}}く。
@@ -882,7 +882,7 @@ id: card-selection-recognition
 entry_type: term
 entry_id: term-selection
 card_type: recognition
-front: 選択
+front: '{{選択|せんたく}}'
 back: selezione / scegliere
 example_jp: >-
   デッキを{{選択|せんたく}}してください。
@@ -899,7 +899,7 @@ id: card-save-recognition
 entry_type: term
 entry_id: term-save
 card_type: recognition
-front: 保存
+front: '{{保存|ほぞん}}'
 back: salvataggio / save
 example_jp: >-
   デッキ{{確認|かくにん}}の{{後|あと}}にデッキ{{保存|ほぞん}}を{{押|お}}す。
@@ -916,7 +916,7 @@ id: card-receive-recognition
 entry_type: term
 entry_id: term-receive
 card_type: recognition
-front: 受け取る
+front: '{{受け取る|うけとる}}'
 back: ricevere / riscuotere
 example_jp: >-
   {{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
@@ -950,7 +950,7 @@ id: card-hensei-recognition
 entry_type: term
 entry_id: term-hensei
 card_type: recognition
-front: 編成
+front: '{{編成|へんせい}}'
 back: organizzazione / composizione / setup
 example_jp: >-
   デッキ{{編成|へんせい}}を{{開|ひら}}く。
@@ -969,7 +969,7 @@ id: card-deck-edit-recognition
 entry_type: term
 entry_id: term-deck-edit
 card_type: recognition
-front: デッキ編成
+front: '{{デッキ編成|でっきへんせい}}'
 back: costruzione / modifica del mazzo
 example_jp: >-
   デッキ{{編成|へんせい}}で{{40枚|よんじゅうまい}}に{{調整|ちょうせい}}する。
@@ -1005,7 +1005,7 @@ id: card-purchase-recognition
 entry_type: term
 entry_id: term-purchase
 card_type: recognition
-front: 購入
+front: '{{購入|こうにゅう}}'
 back: acquisto / comprare
 example_jp: >-
   チケットで{{購入|こうにゅう}}する。
@@ -1022,7 +1022,7 @@ id: card-card-purchase-recognition
 entry_type: term
 entry_id: term-card-purchase
 card_type: recognition
-front: カード購入
+front: '{{カード購入|かーどこうにゅう}}'
 back: acquisto carte / card purchase
 example_jp: >-
   カード{{購入|こうにゅう}}の{{画面|がめん}}を{{開|ひら}}く。
@@ -1042,7 +1042,7 @@ id: card-exchange-recognition
 entry_type: term
 entry_id: term-exchange
 card_type: recognition
-front: 交換
+front: '{{交換|こうかん}}'
 back: scambio / exchange
 example_jp: >-
   ショップでカードを{{交換|こうかん}}する。
@@ -1060,7 +1060,7 @@ id: card-card-exchange-recognition
 entry_type: term
 entry_id: term-card-exchange
 card_type: recognition
-front: カード交換
+front: '{{カード交換|かーどこうかん}}'
 back: scambio carte / card exchange
 example_jp: >-
   カード{{交換|こうかん}}で{{必要|ひつよう}}なカードを{{手|て}}に{{入|い}}れる。
@@ -1078,7 +1078,7 @@ id: card-craft-recognition
 entry_type: term
 entry_id: term-craft
 card_type: recognition
-front: 生成
+front: '{{生成|せいせい}}'
 back: creare / craftare
 example_jp: >-
   DMポイントでカードを{{生成|せいせい}}する。
@@ -1097,7 +1097,7 @@ id: card-disenchant-recognition
 entry_type: term
 entry_id: term-disenchant
 card_type: recognition
-front: 分解
+front: '{{分解|ぶんかい}}'
 back: smontare / convertire in risorsa
 example_jp: >-
   {{不要|ふよう}}なカードを{{分解|ぶんかい}}する。
@@ -1105,7 +1105,7 @@ example_it: >-
   Smonta una carta che non ti serve.
 notes_it: >-
   È l'opposto operativo di [{{生成|せいせい}}](term:term-craft). Questa coppia
-  compare spesso in sequenza: `分解` converte una carta in risorsa, `生成` usa la
+  compare spesso in sequenza: `{{分解|ぶんかい}}` converte una carta in risorsa, `{{生成|せいせい}}` usa la
   risorsa per creare una carta.
 tags: [duel-plays, app, collection, kanji]
 :::
@@ -1115,7 +1115,7 @@ id: card-owned-recognition
 entry_type: term
 entry_id: term-owned
 card_type: recognition
-front: 所持
+front: '{{所持|しょじ}}'
 back: posseduto / in possesso
 example_jp: >-
   {{所持|しょじ}}: {{2枚|にまい}}
@@ -1252,7 +1252,7 @@ id: card-achievement-recognition
 entry_type: term
 entry_id: term-achievement
 card_type: recognition
-front: 達成
+front: '{{達成|たっせい}}'
 back: completamento / raggiungimento
 example_jp: >-
   {{達成済み|たっせいずみ}}のミッションを{{確認|かくにん}}する。
@@ -1269,7 +1269,7 @@ id: card-reward-recognition
 entry_type: term
 entry_id: term-reward
 card_type: recognition
-front: 報酬
+front: '{{報酬|ほうしゅう}}'
 back: ricompensa / reward
 example_jp: >-
   {{達成|たっせい}}したミッションの{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
@@ -1287,7 +1287,7 @@ id: card-ongoing-recognition
 entry_type: term
 entry_id: term-ongoing
 card_type: recognition
-front: 開催中
+front: '{{開催中|かいさいちゅう}}'
 back: in corso / attivo ora
 example_jp: >-
   このイベントは{{開催中|かいさいちゅう}}だ。
@@ -1305,7 +1305,7 @@ id: card-unlock-recognition
 entry_type: term
 entry_id: term-unlock
 card_type: recognition
-front: 解放
+front: '{{解放|かいほう}}'
 back: sblocco / unlock
 example_jp: >-
   ストーリーを{{進|すす}}めると{{新|あたら}}しいモードが{{解放|かいほう}}される。
@@ -1323,7 +1323,7 @@ id: card-match-recognition
 entry_type: term
 entry_id: term-match
 card_type: recognition
-front: 対戦
+front: '{{対戦|たいせん}}'
 back: partita / match / battle
 example_jp: >-
   このデッキで{{対戦|たいせん}}する。
@@ -1341,7 +1341,7 @@ id: card-start-recognition
 entry_type: term
 entry_id: term-start
 card_type: recognition
-front: 開始
+front: '{{開始|かいし}}'
 back: inizio / avvio / start
 example_jp: >-
   イベント{{開始|かいし}}の{{日時|にちじ}}を{{確認|かくにん}}する。
@@ -1349,7 +1349,7 @@ example_it: >-
   Controlla la data e l'ora di inizio dell'evento.
 notes_it: >-
   `{{開始|かいし}}` è una parola da interfaccia molto compatta: segnala il
-  punto in cui qualcosa parte davvero. Dentro `対戦開始` è il pezzo che trasforma
+  punto in cui qualcosa parte davvero. Dentro `{{対戦開始|たいせんかいし}}` è il pezzo che trasforma
   il match da opzione selezionata ad azione avviata.
 tags: [duel-plays, app, action, kanji]
 :::
@@ -1359,7 +1359,7 @@ id: card-start-match-recognition
 entry_type: term
 entry_id: term-start-match
 card_type: recognition
-front: 対戦開始
+front: '{{対戦開始|たいせんかいし}}'
 back: avvia la partita / start battle
 example_jp: >-
   デッキを{{選択|せんたく}}して{{対戦開始|たいせんかいし}}を{{押|お}}す。
@@ -1377,7 +1377,7 @@ id: card-ichiran-concept
 entry_type: grammar
 entry_id: grammar-ichiran
 card_type: concept
-front: ～一覧
+front: '～{{一覧|いちらん}}'
 back: elenco / overview di X
 example_jp: >-
   ミッション{{一覧|いちらん}}を{{開|ひら}}く。
@@ -1394,7 +1394,7 @@ id: card-ui-chuu-concept
 entry_type: grammar
 entry_id: grammar-ui-chuu
 card_type: concept
-front: ～中
+front: '～{{中|ちゅう}}'
 back: in corso / attualmente attivo
 example_jp: >-
   メンテナンス{{中|ちゅう}}は{{対戦|たいせん}}できない。
@@ -1402,7 +1402,7 @@ example_it: >-
   Durante la manutenzione non puoi fare partite.
 notes_it: >-
   Pattern di stato molto frequente nelle UI. Il punto non è solo memorizzarlo,
-  ma capire che `中` comprime l'idea di "in corso proprio adesso": in due
+  ma capire che `{{中|ちゅう}}` comprime l'idea di "in corso proprio adesso": in due
   caratteri la schermata ti comunica lo stato attivo del contenuto.
 tags: [duel-plays, app, grammar]
 :::
@@ -1412,7 +1412,7 @@ id: card-zumi-concept
 entry_type: grammar
 entry_id: grammar-zumi
 card_type: concept
-front: ～済み
+front: '～{{済み|ずみ}}'
 back: già fatto / già riscosso
 example_jp: >-
   この{{報酬|ほうしゅう}}は{{受取済み|うけとりずみ}}だ。
@@ -1430,7 +1430,7 @@ id: card-mi-prefix-concept
 entry_type: grammar
 entry_id: grammar-mi-prefix
 card_type: concept
-front: 未～
+front: '{{未|み}}～'
 back: non ancora / ancora non disponibile
 example_jp: >-
   このモードは{{未解放|みかいほう}}だ。
@@ -1449,7 +1449,7 @@ id: card-kanou-concept
 entry_type: grammar
 entry_id: grammar-kanou
 card_type: concept
-front: ～可能
+front: '～{{可能|かのう}}'
 back: possibile / disponibile
 example_jp: >-
   このカードは{{交換可能|こうかんかのう}}だ。
@@ -1468,7 +1468,7 @@ id: card-wo-sentaku-concept
 entry_type: grammar
 entry_id: grammar-wo-sentaku
 card_type: concept
-front: ～を選択
+front: '～を{{選択|せんたく}}'
 back: seleziona X
 example_jp: >-
   デッキを{{選択|せんたく}}してください。

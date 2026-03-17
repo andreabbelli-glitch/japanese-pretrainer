@@ -10,9 +10,9 @@ status: active
 tags: [deck, abyss, graveyard, duel-masters]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Lezione pratica sullo starter deck DM25-SD1 技の王道: spiegazione diretta del
-  testo in giapponese legato al piano Abyss, con enfasi su cimitero, costo e
-  keyword che guidano la sequenza di gioco.
+  Lezione pratica sullo starter deck DM25-SD1 Waza no Oudo: spiegazione
+  diretta del testo in giapponese legato al piano Abyss, con enfasi su
+  cimitero, costo e keyword che guidano la sequenza di gioco.
 ---
 
 # Obiettivo
@@ -22,7 +22,7 @@ attacco.
 
 Alla fine dovresti riconoscere:
 
-- perché il mazzo ruota attorno a [墓地](term:term-graveyard) e
+- perché il mazzo ruota attorno a [{{墓地|ぼち}}](term:term-graveyard) e
   [アビス](term:term-abyss);
 - quali pattern ricorrono sempre nel piano di gioco;
 - come leggere in fretta keyword come
@@ -37,7 +37,7 @@ Alla fine dovresti riconoscere:
 concentra in un solo mazzo tre famiglie di linguaggio che
 poi tornano insieme nelle carte reali:
 
-- movimento verso e dal [墓地](term:term-graveyard);
+- movimento verso e dal [{{墓地|ぼち}}](term:term-graveyard);
 - filtri su [コスト](term:term-cost) e appartenenza di tribù;
 - keyword compatte che condensano parecchie regole in poche sillabe.
 
@@ -49,23 +49,23 @@ se non capisci che il cimitero è una risorsa, leggi male metà delle frasi.
 - [アビス](term:term-abyss)
 - [アビスロイヤル](term:term-abyss-royal)
 - [アビスラッシュ](term:term-abyss-rush)
-- [墓地](term:term-graveyard)
-- [出す](term:term-dasu)
-- [戻す](term:term-modosu)
-- [破壊](term:term-destroy)
+- [{{墓地|ぼち}}](term:term-graveyard)
+- [{{出|だ}}す](term:term-dasu)
+- [{{戻|もど}}す](term:term-modosu)
+- [{{破壊|はかい}}](term:term-destroy)
 - [シビルカウント](term:term-civil-count)
-- [攻撃先](term:term-attack-target)
+- [{{攻撃先|こうげきさき}}](term:term-attack-target)
 - [とばす](term:term-tobasu)
-- [アビスベル=ジャシン帝](term:term-abyssbell-jashintei)
-- [邪侵入](term:term-jashinnyuu)
+- [{{アビスベル=ジャシン帝|あびすべるじゃしんてい}}](term:term-abyssbell-jashintei)
+- [{{邪侵入|じゃしんにゅう}}](term:term-jashinnyuu)
 - [ジャブラッド](term:term-jablood)
 
 ## Pattern grammaticali chiave
 
-- [～時 / ～た時](grammar:grammar-toki)
+- [～{{時|とき}} / ～た{{時|とき}}](grammar:grammar-toki)
 - [その後](grammar:grammar-sonoato)
 - [～てもよい](grammar:grammar-temoyoi)
-- [～以下 / ～以上](grammar:grammar-ika-ijou)
+- [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou)
 - [ただし](grammar:grammar-tadashi)
 - [～を{{2回|にかい}}{{行|おこな}}う](grammar:grammar-nikai-okonau)
 
@@ -74,7 +74,7 @@ se non capisci che il cimitero è una risorsa, leggi male metà delle frasi.
 ### 1. Che cosa prova a fare questo mazzo
 
 Il modo più semplice di descriverlo è questo: vuole trasformare il
-[墓地](term:term-graveyard) in una zona utile, non in un semplice scarto.
+[{{墓地|ぼち}}](term:term-graveyard) in una zona utile, non in un semplice scarto.
 
 Per questo, quando leggi una carta del deck, segui sempre tre cose:
 
@@ -126,7 +126,7 @@ translation_it: >-
 
 - [アビスラッシュ](term:term-abyss-rush) è una keyword-regola, non un'etichetta
   decorativa.
-- [離れる](term:term-hanareru) indica l'uscita dalla zona, non solo la
+- [{{離|はな}}れる](term:term-hanareru) indica l'uscita dalla zona, non solo la
   distruzione.
 - `かわりに` segnala una sostituzione: fai questo **invece di** far lasciare il
   campo alla creatura.
@@ -203,14 +203,14 @@ jp: >-
   このクリーチャーが{{攻撃|こうげき}}する{{時|とき}}、コスト{{5以下|ごいか}}の
   {{進化|しんか}}ではないクリーチャーを{{1体|いったい}}、
   {{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}してもよい。そうしたら、その
-  クリーチャーに[攻撃先](term:term-attack-target)を{{変更|へんこう}}する。
+  クリーチャーに[{{攻撃先|こうげきさき}}](term:term-attack-target)を{{変更|へんこう}}する。
 translation_it: >-
   Quando questa creatura attacca, puoi mettere in gioco dal tuo cimitero 1
   creatura non evoluzione di costo 5 o inferiore. Se lo fai, cambi il bersaglio
   dell'attacco a quella creatura.
 :::
 
-- [攻撃先](term:term-attack-target) è il bersaglio concreto dell'attacco.
+- [{{攻撃先|こうげきさき}}](term:term-attack-target) è il bersaglio concreto dell'attacco.
 - `{{進化|しんか}}ではない` esclude una categoria precisa.
 - `そうしたら` ti dice che il cambio del bersaglio dipende davvero
   dall'azione appena fatta.
@@ -222,7 +222,7 @@ Nel deck questa keyword chiude il controllo quantitativo prima di un'azione:
 
 :::example_sentence
 jp: >-
-  [シビルカウント](term:term-civil-count)3：
+  [{{シビルカウント3|しびるかうんとすりー}}](term:term-civil-count)：
   {{自分|じぶん}}の{{闇|やみ}}のカードのコストの{{合計|ごうけい}}が
   {{3以上|さんいじょう}}であれば、このクリーチャーの「S・トリガー」を
   {{使|つか}}ってもよい。
@@ -249,7 +249,7 @@ caption: >-
 
 Queste carte applicano la stessa architettura di testo in varianti più specifiche:
 
-- **Madan = Low, Abyssal Furnace** e [邪侵入](term:term-jashinnyuu) chiudono
+- **Madan = Low, Abyssal Furnace** e [{{邪侵入|じゃしんにゅう}}](term:term-jashinnyuu) chiudono
   il ciclo:
   `{{墓地|ぼち}}に{{置|お}}く -> その{{後|あと}} -> {{出|だ}}す`.
 - ブルーム=プルーフ, フォーク=フォック e ルピア{{炎鬼|えんき}} regolano
@@ -265,8 +265,8 @@ Queste carte applicano la stessa architettura di testo in varianti più specific
 
 Se vuoi leggere `DM25-SD1` in fretta, cerca prima questi segnali:
 
-- [墓地](term:term-graveyard), [出す](term:term-dasu),
-  [戻す](term:term-modosu): ti dicono se il deck sta riciclando risorse.
+- [{{墓地|ぼち}}](term:term-graveyard), [{{出|だ}}す](term:term-dasu),
+  [{{戻|もど}}す](term:term-modosu): ti dicono se il deck sta riciclando risorse.
 - `コスト{{4以下|よんいか}}` o formule simili: ti dicono subito quanto è stretto
   il filtro.
 - [アビス](term:term-abyss) e [アビスロイヤル](term:term-abyss-royal): famiglia

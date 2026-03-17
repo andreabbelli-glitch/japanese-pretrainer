@@ -73,8 +73,9 @@ romaji: akai gundam 0085
 meaning_it: Red Gundam (0085)
 pos: proper-noun
 notes_it: >-
-  Qui il lavoro è doppio: `赤い` ti costringe a leggere il kanji nel nome carta,
-  mentre `(0085)` funziona da marcatore di versione o contesto. Le parentesi,
+  Qui il lavoro è doppio: `{{赤|あか}}い` ti costringe a leggere il kanji nel nome
+  carta, mentre `{{(0085)|ぜろぜろはちご}}` funziona da marcatore di versione o
+  contesto. Le parentesi,
   ancora una volta, non sono decorative.
 level_hint: custom
 :::
@@ -116,8 +117,8 @@ meaning_it: Lunamaria Hawke
 pos: proper-noun
 notes_it: >-
   Va letta insieme a
-  [ゲルググメナース(ルナマリア・ホーク専用機)](term:term-gelgoog-menace-lunamaria-custom),
-  perché il pattern nome-pilota + `専用機` identifica subito la coppia naturale
+  [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom),
+  perché il pattern nome-pilota + `{{専用機|せんようき}}` identifica subito la coppia naturale
   da cercare nel pairing.
 level_hint: custom
 :::
@@ -146,7 +147,7 @@ pos: proper-noun
 notes_it: >-
   [シュウジ・イトウ](term:term-shuji-itou) è il nome-pilota semplice del lato
   `GQ`. Ti serve soprattutto per collegarlo subito a
-  [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085) e contrastarlo con
+  [{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}](term:term-red-gundam-0085) e contrastarlo con
   [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu), che invece porta un
   alias in parentesi.
 level_hint: custom
@@ -186,8 +187,8 @@ meaning_it: tipo MS orientato alla mobilità
 notes_it: >-
   Non indica solo velocità in astratto. Sul frame di Arsenal Base ti segnala una
   categoria MS da distinguere a colpo d'occhio da
-  [近距離](term:term-ms-type-near-range) e
-  [遠距離](term:term-ms-type-long-range).
+  [{{近距離|きんきょり}}](term:term-ms-type-near-range) e
+  [{{遠距離|えんきょり}}](term:term-ms-type-long-range).
 level_hint: custom
 :::
 
@@ -263,7 +264,7 @@ notes_it: >-
   In questo set le parentesi fanno tre lavori diversi: soprannome
   ([アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu)), specificazione
   tecnica ([GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu))
-  e marcatore di versione ([赤いガンダム(0085)](term:term-red-gundam-0085)).
+  e marcatore di versione ([{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}](term:term-red-gundam-0085)).
 level_hint: custom
 :::
 
@@ -311,7 +312,7 @@ id: card-gelgoog-menace-lunamaria-custom-recognition
 entry_type: term
 entry_id: term-gelgoog-menace-lunamaria-custom
 card_type: recognition
-front: ゲルググメナース(ルナマリア・ホーク専用機)
+front: 'ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})'
 back: MS dedicata a Lunamaria Hawk
 example_jp: >-
   ルナマリア・ホーク{{専用機|せんようき}}と{{見|み}}えたら、まず[ルナマリア・ホーク](term:term-lunamaria-hawk)との{{組|く}}み{{合|あ}}わせを{{考|かんが}}えます。
@@ -349,17 +350,18 @@ id: card-red-gundam-0085-recognition
 entry_type: term
 entry_id: term-red-gundam-0085
 card_type: recognition
-front: 赤いガンダム(0085)
+front: '{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}'
 back: Red Gundam con marcatore (0085)
 example_jp: >-
-  {{赤|あか}}いガンダム(0085)は、{{名前|なまえ}}の{{最初|さいしょ}}で{{色|いろ}}の{{漢字|かんじ}}を{{読|よ}}ませるタイプです。
+  {{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}は、{{名前|なまえ}}の{{最初|さいしょ}}で{{色|いろ}}の{{漢字|かんじ}}を{{読|よ}}ませるタイプです。
 example_it: >-
   Red Gundam (0085) è il tipo di nome che ti costringe a leggere un kanji di
   colore già nel primo blocco del titolo.
 notes_it: >-
-  `赤い` + `(0085)` separano subito due informazioni operative: identita nominale
-  in kanji e variante/versione del modello. Questa combinazione evita errori di
-  riconoscimento quando il board contiene nomi simili.
+  `{{赤|あか}}い` + `{{(0085)|ぜろぜろはちご}}` separano subito due informazioni
+  operative: identita nominale in kanji e variante/versione del modello.
+  Questa combinazione evita errori di riconoscimento quando il board contiene
+  nomi simili.
 tags: [starter-deck, ms, gquuuuuux, kanji]
 :::
 
@@ -408,7 +410,7 @@ card_type: recognition
 front: ルナマリア・ホーク
 back: PL Lunamaria Hawk
 example_jp: >-
-  [ゲルググメナース(ルナマリア・ホーク専用機)](term:term-gelgoog-menace-lunamaria-custom)と{{並|なら}}べて{{覚|おぼ}}えると、{{対応|たいおう}}がとても{{見|み}}えやすいです。
+  [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom)と{{並|なら}}べて{{覚|おぼ}}えると、{{対応|たいおう}}がとても{{見|み}}えやすいです。
 example_it: >-
   Se la memorizzi accanto al Gelgoog Menace dedicato a lei, l'abbinamento
   naturale diventa molto chiaro.
@@ -443,13 +445,13 @@ card_type: recognition
 front: シュウジ・イトウ
 back: PL Shuji Ito
 example_jp: >-
-  シュウジ・イトウは、[赤いガンダム(0085)](term:term-red-gundam-0085)の{{相方|あいかた}}として{{見|み}}ておくと{{整理|せいり}}しやすいです。
+  シュウジ・イトウは、[{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}](term:term-red-gundam-0085)の{{相方|あいかた}}として{{見|み}}ておくと{{整理|せいり}}しやすいです。
 example_it: >-
   Trattare Shuji Ito come partner naturale di Red Gundam (0085) rende piu
   chiaro l'ordine delle coppie durante la lettura del board.
 notes_it: >-
   Serve come etichetta della seconda coppia lineare del lato `GQ`: quando lo
-  vedi vicino a [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085), sai già
+  vedi vicino a [{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}](term:term-red-gundam-0085), sai già
   quale pairing naturale stai guardando.
 tags: [starter-deck, pl, gquuuuuux, pairing]
 :::
@@ -459,7 +461,7 @@ id: card-ms-type-near-range-recognition
 entry_type: term
 entry_id: term-ms-type-near-range
 card_type: recognition
-front: 近距離
+front: '{{近距離|きんきょり}}'
 back: tipo MS ravvicinato
 example_jp: >-
   {{近距離|きんきょり}}と{{見|み}}えたら、まず{{前線|ぜんせん}}での{{戦闘|せんとう}}を{{想像|そうぞう}}します。
@@ -478,7 +480,7 @@ id: card-ms-type-long-range-recognition
 entry_type: term
 entry_id: term-ms-type-long-range
 card_type: recognition
-front: 遠距離
+front: '{{遠距離|えんきょり}}'
 back: tipo MS a distanza
 example_jp: >-
   {{遠距離|えんきょり}}の{{表示|ひょうじ}}があれば、{{位置|いち}}どりと{{射程|しゃてい}}をまず{{意識|いしき}}します。
@@ -496,7 +498,7 @@ id: card-ms-type-mobility-recognition
 entry_type: term
 entry_id: term-ms-type-mobility
 card_type: recognition
-front: 機動
+front: '{{機動|きどう}}'
 back: tipo MS orientato alla mobilità
 example_jp: >-
   {{機動|きどう}}MSは、{{空|あ}}いたレーンへ{{回|まわ}}す{{感覚|かんかく}}で{{見|み}}ると{{整理|せいり}}しやすいです。
@@ -552,7 +554,7 @@ id: card-dedicated-machine-recognition
 entry_type: term
 entry_id: term-dedicated-machine
 card_type: recognition
-front: 専用機
+front: '{{専用機|せんようき}}'
 back: macchina dedicata a un pilota specifico
 example_jp: >-
   {{専用機|せんようき}}と{{書|か}}かれていれば、その{{名前|なまえ}}のパイロットと{{組|く}}む{{前提|ぜんてい}}で{{読|よ}}みやすいです。
@@ -588,7 +590,7 @@ id: card-senyouki-concept
 entry_type: grammar
 entry_id: grammar-senyouki
 card_type: concept
-front: ～専用機
+front: '～{{専用機|せんようき}}'
 back: variante dedicata a quel personaggio
 example_jp: >-
   ルナマリア・ホーク{{専用機|せんようき}}とあれば、{{対応|たいおう}}するPLを{{探|さが}}す{{方向|ほうこう}}で{{読|よ}}みます。

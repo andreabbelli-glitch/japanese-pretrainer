@@ -454,7 +454,7 @@ id: card-unclaimed-recognition
 entry_type: term
 entry_id: term-unclaimed
 card_type: recognition
-front: 未受け取り
+front: '{{未受け取り|みうけとり}}'
 back: non ancora riscosso / unclaimed
 example_jp: >-
   {{未受け取り|みうけとり}}の{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
@@ -470,7 +470,7 @@ id: card-claim-history-recognition
 entry_type: term
 entry_id: term-claim-history
 card_type: recognition
-front: 受け取り履歴
+front: '{{受け取り履歴|うけとりりれき}}'
 back: storico delle riscossioni / claim history
 example_jp: >-
   {{受け取り履歴|うけとりりれき}}で{{昨日|きのう}}の{{報酬|ほうしゅう}}を{{確認|かくにん}}する。
@@ -487,7 +487,7 @@ id: card-bulk-claim-recognition
 entry_type: term
 entry_id: term-bulk-claim
 card_type: recognition
-front: 一括受け取り
+front: '{{一括受け取り|いっかつうけとり}}'
 back: riscuoti tutto insieme / bulk claim
 example_jp: >-
   {{一括受け取り|いっかつうけとり}}で{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
@@ -503,7 +503,7 @@ id: card-claim-deadline-recognition
 entry_type: term
 entry_id: term-claim-deadline
 card_type: recognition
-front: 受け取り期限
+front: '{{受け取り期限|うけとりきげん}}'
 back: scadenza del claim / claim deadline
 example_jp: >-
   {{受け取り期限|うけとりきげん}}までに{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
@@ -519,7 +519,7 @@ id: card-deadline-recognition
 entry_type: term
 entry_id: term-deadline
 card_type: recognition
-front: 期限
+front: '{{期限|きげん}}'
 back: scadenza / termine valido
 example_jp: >-
   {{期限|きげん}}までに{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
@@ -536,7 +536,7 @@ id: card-kakutoku-recognition
 entry_type: term
 entry_id: term-kakutoku
 card_type: recognition
-front: 獲得
+front: '{{獲得|かくとく}}'
 back: ottenere / guadagnare
 example_jp: >-
   このステージで{{100PT|ひゃくぴーてぃー}} {{獲得|かくとく}}できる。
@@ -553,7 +553,7 @@ id: card-datetime-recognition
 entry_type: term
 entry_id: term-datetime
 card_type: recognition
-front: 日時
+front: '{{日時|にちじ}}'
 back: data e ora / date-time
 example_jp: >-
   {{獲得|かくとく}}{{日時|にちじ}}を{{確認|かくにん}}する。
@@ -570,7 +570,7 @@ id: card-stage-select-recognition
 entry_type: term
 entry_id: term-stage-select
 card_type: recognition
-front: ステージ選択
+front: '{{ステージ選択|すてーじせんたく}}'
 back: selezione stage / stage select
 example_jp: >-
   ステージ{{選択|せんたく}}で{{難易度|なんいど}}を{{選|えら}}ぶ。
@@ -586,7 +586,7 @@ id: card-card-pack-purchase-recognition
 entry_type: term
 entry_id: term-card-pack-purchase
 card_type: recognition
-front: カードパック購入
+front: '{{カードパック購入|かーどぱっくこうにゅう}}'
 back: acquisto pack / card pack purchase
 example_jp: >-
   カードパック{{購入|こうにゅう}}でチケットを{{使|つか}}う。
@@ -604,7 +604,7 @@ id: card-offer-rate-recognition
 entry_type: term
 entry_id: term-offer-rate
 card_type: recognition
-front: 提供割合
+front: '{{提供割合|ていきょうわりあい}}'
 back: percentuali di apparizione / rates
 example_jp: >-
   {{提供割合|ていきょうわりあい}}で{{内容|ないよう}}を{{確認|かくにん}}する。
@@ -622,7 +622,7 @@ id: card-use-recognition
 entry_type: term
 entry_id: term-use
 card_type: recognition
-front: 使用
+front: '{{使用|しよう}}'
 back: usare / impiegare
 example_jp: >-
   {{4枚|よんまい}}を{{使用|しよう}}してパックを{{購入|こうにゅう}}する。
@@ -639,7 +639,7 @@ id: card-owned-ticket-recognition
 entry_type: term
 entry_id: term-owned-ticket
 card_type: recognition
-front: 所持チケット
+front: '{{所持チケット|しょじちけっと}}'
 back: ticket posseduti / owned tickets
 example_jp: >-
   {{所持チケット|しょじちけっと}}は{{4枚|よんまい}}ある。
@@ -656,7 +656,7 @@ id: card-purchase-quantity-recognition
 entry_type: term
 entry_id: term-purchase-quantity
 card_type: recognition
-front: 購入個数
+front: '{{購入個数|こうにゅうこすう}}'
 back: quantità da acquistare / purchase quantity
 example_jp: >-
   {{購入個数|こうにゅうこすう}}を{{4個|よんこ}}にする。
@@ -672,7 +672,7 @@ id: card-exchange-period-recognition
 entry_type: term
 entry_id: term-exchange-period
 card_type: recognition
-front: 交換期間
+front: '{{交換期間|こうかんきかん}}'
 back: periodo di scambio / exchange period
 example_jp: >-
   {{交換期間|こうかんきかん}}は{{3月26日|さんがつにじゅうろくにち}}までだ。
@@ -688,7 +688,7 @@ id: card-sale-period-recognition
 entry_type: term
 entry_id: term-sale-period
 card_type: recognition
-front: 販売期間
+front: '{{販売期間|はんばいきかん}}'
 back: periodo di vendita / sale period
 example_jp: >-
   {{販売期間|はんばいきかん}}を{{見|み}}てからデッキを{{買|か}}う。
@@ -704,7 +704,7 @@ id: card-prebuilt-recognition
 entry_type: term
 entry_id: term-prebuilt
 card_type: recognition
-front: 構築済み
+front: '{{構築済み|こうちくずみ}}'
 back: già costruito / prebuilt
 example_jp: >-
   {{構築済み|こうちくずみ}}デッキを{{買|か}}う。
@@ -721,7 +721,7 @@ id: card-constructed-deck-purchase-recognition
 entry_type: term
 entry_id: term-constructed-deck-purchase
 card_type: recognition
-front: 構築済みデッキ購入
+front: '{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}'
 back: acquisto deck prebuilt / constructed deck purchase
 example_jp: >-
   {{構築済みデッキ購入|こうちくずみでっきこうにゅう}}でコラボデッキを{{買|か}}う。
@@ -739,7 +739,7 @@ id: card-overview-recognition
 entry_type: term
 entry_id: term-overview
 card_type: recognition
-front: 概要
+front: '{{概要|がいよう}}'
 back: panoramica / overview
 example_jp: >-
   デッキ{{概要|がいよう}}でキーカードを{{確認|かくにん}}する。
@@ -756,7 +756,7 @@ id: card-deck-list-recognition
 entry_type: term
 entry_id: term-deck-list
 card_type: recognition
-front: デッキ一覧
+front: '{{デッキ一覧|でっきいちらん}}'
 back: lista dei deck / deck list
 example_jp: >-
   デッキ{{一覧|いちらん}}からレンタルデッキを{{選|えら}}ぶ。
@@ -773,7 +773,7 @@ id: card-shortage-recognition
 entry_type: term
 entry_id: term-shortage
 card_type: recognition
-front: 不足
+front: '{{不足|ふそく}}'
 back: insufficienza / mancanza
 example_jp: >-
   DMポイントが{{不足|ふそく}}している。
@@ -823,7 +823,7 @@ id: card-read-already-recognition
 entry_type: term
 entry_id: term-read-already
 card_type: recognition
-front: 既読
+front: '{{既読|きどく}}'
 back: già letto / already read
 example_jp: >-
   {{既読|きどく}}ストーリーはスキップできる。
@@ -855,7 +855,7 @@ id: card-beginner-class-recognition
 entry_type: term
 entry_id: term-beginner-class
 card_type: recognition
-front: 初級
+front: '{{初級|しょきゅう}}'
 back: livello base / beginner tier
 example_jp: >-
   {{初級|しょきゅう}}をクリアしてから{{中級|ちゅうきゅう}}へ{{進|すす}}む。
@@ -871,7 +871,7 @@ id: card-intermediate-class-recognition
 entry_type: term
 entry_id: term-intermediate-class
 card_type: recognition
-front: 中級
+front: '{{中級|ちゅうきゅう}}'
 back: livello intermedio / intermediate tier
 example_jp: >-
   {{中級|ちゅうきゅう}}はチケット{{2枚|にまい}}で{{挑戦|ちょうせん}}する。
@@ -887,7 +887,7 @@ id: card-challenge-recognition
 entry_type: term
 entry_id: term-challenge
 card_type: recognition
-front: 挑戦
+front: '{{挑戦|ちょうせん}}'
 back: tentativo / sfida / challenge
 example_jp: >-
   このステージに{{2回|にかい}}{{挑戦|ちょうせん}}する。

@@ -145,7 +145,7 @@ pos: noun
 aliases: [表向き, おもてむき, omotemuki]
 notes_it: >-
   Nel TCG non vuol dire solo "visibile": segnala che ricerca o rivelazione
-  avvengono apertamente. In carte come `進化設計図` o `未来設計図`, il controllo
+  avvengono apertamente. In carte come `{{進化設計図|しんかせっけいず}}` o `{{未来設計図|みらいせっけいず}}`, il controllo
   del giocatore e distinguere informazione pubblica da informazione privata
   durante la risoluzione.
 level_hint: custom
@@ -249,7 +249,7 @@ id: card-shinka-sekkeizu-recognition
 entry_type: term
 entry_id: term-shinka-sekkeizu
 card_type: recognition
-front: 進化設計図
+front: '{{進化設計図|しんかせっけいず}}'
 back: schema di evoluzione
 example_jp: >-
   {{進化設計図|しんかせっけいず}}で
@@ -268,7 +268,7 @@ id: card-mirai-sekkeizu-recognition
 entry_type: term
 entry_id: term-mirai-sekkeizu
 card_type: recognition
-front: 未来設計図
+front: '{{未来設計図|みらいせっけいず}}'
 back: schema del futuro
 example_jp: >-
   {{未来設計図|みらいせっけいず}}で{{次|つぎ}}のターンの{{準備|じゅんび}}をする。
@@ -305,7 +305,7 @@ id: card-ultimate-evolution-recognition
 entry_type: term
 entry_id: term-ultimate-evolution
 card_type: recognition
-front: 究極進化
+front: '{{究極進化|きゅうきょくしんか}}'
 back: Ultimate Evolution
 example_jp: >-
   {{究極進化|きゅうきょくしんか}}：
@@ -313,7 +313,7 @@ example_jp: >-
 example_it: >-
   Ultimate Evolution: mettila sopra 1 creatura evoluzione.
 notes_it: >-
-  Soglia più alta di `進化`. Il controllo richiesto è la base: deve essere già
+  Soglia più alta di `{{進化|しんか}}`. Il controllo richiesto è la base: deve essere già
   una creatura evoluzione, altrimenti la procedura non parte.
 tags: [dm25-sd2, keyword, evolution]
 :::
@@ -405,7 +405,7 @@ id: card-face-up-recognition
 entry_type: term
 entry_id: term-face-up
 card_type: recognition
-front: 表向き
+front: '{{表向き|おもてむき}}'
 back: a faccia in su / face-up
 example_jp: >-
   {{山札|やまふだ}}の{{上|うえ}}から{{6枚|ろくまい}}を{{表向|おもてむ}}きにする。
@@ -457,7 +457,7 @@ id: card-sukina-junjo-de-concept
 entry_type: grammar
 entry_id: grammar-sukina-junjo-de
 card_type: concept
-front: 好きな順序で
+front: '{{好きな順序で|すきなしゅんじょで}}'
 back: nell'ordine che preferisci
 example_jp: >-
   {{残|のこ}}りを{{好|す}}きな{{順序|じゅんじょ}}で{{山札|やまふだ}}の{{下|した}}に{{置|お}}く。
