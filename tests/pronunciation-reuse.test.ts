@@ -37,6 +37,7 @@ describe("pronunciation reuse", () => {
 
   it("reuses audio from another media when lemma and reading match", async () => {
     await seedMedia({
+      contentRoot,
       cardsSource: `---
 id: cards-sample-game-ep01
 media_id: media-sample-game
@@ -131,6 +132,7 @@ back: mangiare
 
   it("stops on ambiguous cross-media matches instead of picking one", async () => {
     await seedMedia({
+      contentRoot,
       cardsSource: `---
 id: cards-sample-game-ep01
 media_id: media-sample-game
@@ -148,9 +150,19 @@ romaji: taberu
 meaning_it: mangiare
 aliases: [たべる, taberu]
 :::
+
+:::card
+id: card-eat-recognition
+entry_type: term
+entry_id: term-eat
+card_type: recognition
+front: 食べる
+back: mangiare
+:::
 `
     });
     await seedMedia({
+      contentRoot,
       cardsSource: `---
 id: cards-sample-manga-ep01
 media_id: media-sample-manga
@@ -173,6 +185,15 @@ audio_speaker: Ambiguous Speaker
 audio_license: CC BY-SA 4.0
 audio_attribution: Ambiguous Speaker via Lingua Libre / Wikimedia Commons
 audio_page_url: https://example.com/devour
+:::
+
+:::card
+id: card-devour-recognition
+entry_type: term
+entry_id: term-devour
+card_type: recognition
+front: 食べる
+back: divorare
 :::
 `
     });
@@ -230,8 +251,12 @@ audio_page_url: https://example.com/devour
   });
 });
 
-async function seedMedia(input: { cardsSource: string }) {
-  const mediaDirectory = path.join(contentRoot, "media", inferMediaSlug(input.cardsSource));
+async function seedMedia(input: { cardsSource: string; contentRoot: string }) {
+  const mediaDirectory = path.join(
+    input.contentRoot,
+    "media",
+    inferMediaSlug(input.cardsSource)
+  );
 
   await mkdir(path.join(mediaDirectory, "cards"), { recursive: true });
   await mkdir(path.join(mediaDirectory, "textbook"), { recursive: true });
