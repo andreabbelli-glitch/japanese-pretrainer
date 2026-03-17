@@ -2,6 +2,7 @@ import type { Route } from "next";
 import Link from "next/link";
 
 import type { ProgressPageData } from "@/lib/progress";
+import { renderFurigana } from "@/lib/render-furigana";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
@@ -105,7 +106,9 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
         backHref="/media"
         backLabel="Torna alla libreria"
         eyebrow={data.media.mediaTypeLabel}
-        summary={data.media.description}
+        summary={renderFurigana(data.media.description, {
+          linkBehavior: "flatten"
+        })}
         title={data.media.title}
         meta={
           <>

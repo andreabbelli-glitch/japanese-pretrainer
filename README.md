@@ -9,7 +9,7 @@ Per ogni media, l'app deve offrire:
 
 - un textbook progressivo organizzato per difficolta e per segmenti del media;
 - un glossary ricercabile per kanji, kana e romaji;
-- un sistema di review Anki-like per vocaboli, frasi e pattern grammaticali;
+- un sistema di review FSRS-based con grading tipo Anki per vocaboli, frasi e pattern grammaticali;
 - tracking dei progressi di studio e della review;
 - supporto nativo a furigana e tooltip contestuali.
 

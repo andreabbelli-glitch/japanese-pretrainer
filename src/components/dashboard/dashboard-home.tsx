@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { getDashboardData } from "@/lib/app-shell";
+import { renderFurigana } from "@/lib/render-furigana";
 import {
   mediaGlossaryHref,
   mediaHref,
@@ -45,7 +46,11 @@ export async function DashboardHome() {
           <p className="eyebrow">Da riprendere</p>
           <p className="dashboard-hero__jp jp-inline">読む・拾う・定着させる</p>
           <h1 className="dashboard-hero__title">{focusMedia.title}</h1>
-          <p className="dashboard-hero__summary">{focusMedia.description}</p>
+          <p className="dashboard-hero__summary">
+            {renderFurigana(focusMedia.description, {
+              linkBehavior: "flatten"
+            })}
+          </p>
           <p className="dashboard-hero__resume">
             {focusMedia.resumeLesson
               ? `Prossimo passo: ${focusMedia.resumeLesson.title}`
@@ -139,7 +144,11 @@ export async function DashboardHome() {
                   <span className="status-pill">{item.statusLabel}</span>
                 </div>
                 <h3 className="media-summary-card__title">{item.title}</h3>
-                <p className="media-summary-card__description">{item.description}</p>
+                <p className="media-summary-card__description">
+                  {renderFurigana(item.description, {
+                    linkBehavior: "flatten"
+                  })}
+                </p>
                 <div className="media-summary-card__metrics">
                   <span>
                     {item.resumeLesson

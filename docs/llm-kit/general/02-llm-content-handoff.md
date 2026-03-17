@@ -497,6 +497,8 @@ Campi descrittivi da compilare sempre:
   leggere o capire. Non descrivere il curriculum, il seed, il batch o la
   struttura del bundle. Questo testo viene mostrato direttamente nell'UI; se
   assente, viene usato un excerpt automatico troncato del corpo del documento.
+  Se contiene giapponese learner-facing, puo usare furigana
+  `{{base|reading}}`.
 - Per ogni file textbook: compila il campo `summary` nel frontmatter (>-) con
   una frase breve (max 160 caratteri) che descrive l'obiettivo della lesson.
   Viene mostrata nella card del textbook e nell'header della pagina; se assente,

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { renderFurigana } from "@/lib/render-furigana";
 import type { TextbookIndexData } from "@/lib/textbook";
 import { mediaHref, mediaTextbookLessonHref } from "@/lib/site";
 
@@ -31,7 +32,9 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
         backLabel={data.media.title}
         eyebrow="Textbook"
         title="Percorso delle lesson"
-        summary={data.media.description}
+        summary={renderFurigana(data.media.description, {
+          linkBehavior: "flatten"
+        })}
         meta={
           <>
             <span>{data.media.mediaTypeLabel}</span>

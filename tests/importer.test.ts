@@ -163,20 +163,20 @@ describe("content importer", () => {
     });
 
     expect(result.status).toBe("completed");
-    expect(result.filesScanned).toBe(25);
-    expect(result.filesChanged).toBe(25);
+    expect(result.filesScanned).toBe(27);
+    expect(result.filesChanged).toBe(27);
 
     expect(await countRows(database.query.media.findMany())).toBe(1);
     expect(await countRows(database.query.segment.findMany())).toBe(7);
-    expect(await countRows(database.query.lesson.findMany())).toBe(15);
-    expect(await countRows(database.query.lessonContent.findMany())).toBe(15);
-    expect(await countRows(database.query.term.findMany())).toBe(156);
-    expect(await countRows(database.query.termAlias.findMany())).toBe(399);
-    expect(await countRows(database.query.grammarPattern.findMany())).toBe(31);
-    expect(await countRows(database.query.grammarAlias.findMany())).toBe(37);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(554);
-    expect(await countRows(database.query.card.findMany())).toBe(192);
-    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(214);
+    expect(await countRows(database.query.lesson.findMany())).toBe(16);
+    expect(await countRows(database.query.lessonContent.findMany())).toBe(16);
+    expect(await countRows(database.query.term.findMany())).toBe(160);
+    expect(await countRows(database.query.termAlias.findMany())).toBe(412);
+    expect(await countRows(database.query.grammarPattern.findMany())).toBe(32);
+    expect(await countRows(database.query.grammarAlias.findMany())).toBe(40);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(575);
+    expect(await countRows(database.query.card.findMany())).toBe(199);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(221);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({
@@ -379,7 +379,7 @@ describe("content importer", () => {
     expect(mentionedTermLink).toBeDefined();
   });
 
-  it("updates imported content on reimport while preserving existing user state", async () => {
+  it("updates imported content on reimport while preserving existing user review state", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
 
     await importContentWorkspace({
@@ -509,7 +509,7 @@ entry_id: grammar-teiru
 card_type: concept
 front: ～ている
 back: azione in corso / stato risultante
-example_jp: "フリーレンは旅を続けている。"
+example_jp: "フリーレンは{{旅|たび}}を{{続|つづ}}けている。"
 example_it: "Sample Anime continua il viaggio."
 notes_it: "Si collega a [～ている](grammar:grammar-teiru)."
 tags: [grammar, core]
@@ -919,8 +919,11 @@ async function seedUserState(database: DatabaseClient) {
     difficulty: 4.1,
     dueAt: "2026-03-10T09:00:00.000Z",
     lastReviewedAt: "2026-03-09T09:30:00.000Z",
+    scheduledDays: 0,
+    learningSteps: 0,
     lapses: 1,
     reps: 3,
+    schedulerVersion: "legacy_simple",
     manualOverride: false,
     createdAt: "2026-03-09T09:00:00.000Z",
     updatedAt: "2026-03-09T09:30:00.000Z"
@@ -934,7 +937,8 @@ async function seedUserState(database: DatabaseClient) {
     newState: "learning",
     scheduledDueAt: "2026-03-10T09:00:00.000Z",
     elapsedDays: 0.25,
-    responseMs: 2100
+    responseMs: 2100,
+    schedulerVersion: "legacy_simple"
   });
   await database.insert(lessonProgress).values({
     lessonId,

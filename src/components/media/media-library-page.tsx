@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { getMediaLibraryData } from "@/lib/app-shell";
+import { renderFurigana } from "@/lib/render-furigana";
 import { mediaHref } from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
@@ -52,7 +53,11 @@ export async function MediaLibraryPage() {
 
               <div className="library-card__copy">
                 <h2 className="library-card__title">{item.title}</h2>
-                <p className="library-card__description">{item.description}</p>
+                <p className="library-card__description">
+                  {renderFurigana(item.description, {
+                    linkBehavior: "flatten"
+                  })}
+                </p>
               </div>
 
               <div className="stats-grid stats-grid--compact">

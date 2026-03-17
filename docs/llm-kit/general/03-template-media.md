@@ -12,7 +12,8 @@ description: >-
   <Una o due frasi che descrivono il contenuto visibile del media e che cosa
   l'utente imparera a leggere o capire. Non parlare di seed, batch, segmento,
   curriculum, base comune o pacchetto di studio. Questo testo viene mostrato
-  nell'UI al posto di un excerpt automatico del corpo del file.>
+  nell'UI al posto di un excerpt automatico del corpo del file. Se contiene
+  giapponese learner-facing, puo usare furigana `{{base|reading}}`.>
 ---
 
 # <titolo-media>

@@ -7,7 +7,7 @@ import { cx } from "@/lib/classnames";
 type StickyPageHeaderProps = {
   eyebrow?: string;
   title: ReactNode;
-  summary?: string;
+  summary?: ReactNode;
   backHref?: Route;
   backLabel?: string;
   meta?: ReactNode;

@@ -406,6 +406,10 @@ Campi opzionali:
 - `cover_image`
 - `notes`
 
+Note:
+- `description` viene mostrato direttamente nell'UI del media; se contiene
+  giapponese learner-facing, puo usare furigana `{{base|reading}}`.
+
 ## 6. File textbook
 
 Ogni file in `textbook/` rappresenta una lesson.

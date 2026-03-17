@@ -235,7 +235,8 @@ id: ${input.grammarCardId}
 entry_type: grammar
 entry_id: ${input.grammarSourceId}
 card_type: concept
-front: ～{{共有|きょうゆう}}
+front: >-
+  ～{{共有|きょうゆう}}
 back: ${input.grammarMeaning}
 tags: [shared, grammar]
 :::

@@ -88,7 +88,7 @@ describe("review system", () => {
       .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
   }
 
-  it("uses a simple step-based scheduler that stays evolvable", () => {
+  it("maps new and legacy review cards into FSRS scheduling outputs", () => {
     const fromNew = scheduleReview({
       current: {
         difficulty: null,
@@ -102,28 +102,56 @@ describe("review system", () => {
       now: new Date("2026-03-09T10:00:00.000Z"),
       rating: "good"
     });
-    const fromReview = scheduleReview({
-      current: {
-        difficulty: 3.2,
-        dueAt: "2026-03-12T10:00:00.000Z",
-        lapses: 1,
-        lastReviewedAt: "2026-03-09T10:00:00.000Z",
-        reps: 5,
-        stability: 3,
-        state: "review"
-      },
-      now: new Date("2026-03-12T10:00:00.000Z"),
-      rating: "again"
+    const now = new Date("2026-03-12T10:00:00.000Z");
+    const scheduled = (["again", "hard", "good", "easy"] as const).map((rating) =>
+      scheduleReview({
+        current: {
+          difficulty: 3.2,
+          dueAt: "2026-03-12T10:00:00.000Z",
+          lapses: 1,
+          lastReviewedAt: "2026-03-09T10:00:00.000Z",
+          reps: 5,
+          stability: 3,
+          state: "review"
+        },
+        now,
+        rating
+      })
+    );
+    const dueTimes = scheduled.map((item) => new Date(item.dueAt).getTime());
+
+    expect(fromNew).toEqual({
+      difficulty: 2.118,
+      dueAt: "2026-03-09T10:10:00.000Z",
+      elapsedDays: 0,
+      lapses: 0,
+      learningSteps: 1,
+      reps: 1,
+      scheduledDays: 0,
+      schedulerVersion: "fsrs_v1",
+      stability: 2.307,
+      state: "learning"
     });
-
-    expect(fromNew.state).toBe("review");
-    expect(fromNew.stability).toBe(1);
-    expect(fromNew.dueAt).toBe("2026-03-10T10:00:00.000Z");
-
-    expect(fromReview.state).toBe("relearning");
-    expect(fromReview.lapses).toBe(2);
-    expect(fromReview.reps).toBe(6);
-    expect(fromReview.dueAt).toBe("2026-03-12T10:00:00.000Z");
+    expect(dueTimes.every((value) => Number.isFinite(value))).toBe(true);
+    expect(dueTimes[0]).toBeLessThanOrEqual(dueTimes[1]);
+    expect(dueTimes[1]).toBeLessThanOrEqual(dueTimes[2]);
+    expect(dueTimes[2]).toBeLessThanOrEqual(dueTimes[3]);
+    expect(scheduled[0]).toMatchObject({
+      dueAt: "2026-03-12T10:10:00.000Z",
+      elapsedDays: 3,
+      lapses: 2,
+      learningSteps: 0,
+      reps: 6,
+      scheduledDays: 0,
+      schedulerVersion: "fsrs_v1",
+      stability: 0.716,
+      state: "relearning"
+    });
+    expect(scheduled.map((item) => item.reps)).toEqual([6, 6, 6, 6]);
+    expect(scheduled[0]?.lapses).toBe(2);
+    expect(scheduled[1]?.lapses).toBe(1);
+    expect(scheduled[2]?.lapses).toBe(1);
+    expect(scheduled[3]?.lapses).toBe(1);
   });
 
   it("derives study-day boundaries in UTC regardless of runtime timezone", () => {
@@ -566,10 +594,14 @@ describe("review system", () => {
     expect(persistedState?.reps).toBe(4);
     expect(persistedState?.lapses).toBe(1);
     expect(persistedState?.dueAt).toBe("2026-03-10T12:00:00.000Z");
+    expect(persistedState?.schedulerVersion).toBe("fsrs_v1");
+    expect(persistedState?.scheduledDays).toBe(1);
+    expect(persistedState?.learningSteps).toBe(0);
     expect(logs).toHaveLength(2);
     expect(logs.at(-1)?.previousState).toBe("learning");
     expect(logs.at(-1)?.newState).toBe("review");
     expect(logs.at(-1)?.rating).toBe("good");
+    expect(logs.at(-1)?.schedulerVersion).toBe("fsrs_v1");
   });
 
   it("rejects review mutations when card and requested media do not match", async () => {
@@ -921,8 +953,11 @@ describe("review system", () => {
     expect(hardIndex).toBeGreaterThan(goodIndex);
     expect(againIndex).toBeGreaterThan(hardIndex);
     expect(markup).toContain("Prossima review:");
-    expect(markup).toContain("Subito");
-    expect(markup).toContain("Tra 30 min");
+    expect(
+      reviewPage?.selectedCardContext.gradePreviews.every(
+        (preview) => preview.nextReviewLabel.length > 0
+      )
+    ).toBe(true);
   });
 
   it("keeps the review page focused on the active card instead of rendering the lower queue panels", async () => {

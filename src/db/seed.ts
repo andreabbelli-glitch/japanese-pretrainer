@@ -578,8 +578,11 @@ export async function seedDevelopmentDatabase(
           difficulty: 4.2,
           dueAt: dueSoonAt,
           lastReviewedAt: updatedAt,
+          scheduledDays: 0,
+          learningSteps: 0,
           lapses: 1,
           reps: 3,
+          schedulerVersion: "legacy_simple",
           manualOverride: false,
           createdAt,
           updatedAt
@@ -591,8 +594,11 @@ export async function seedDevelopmentDatabase(
           difficulty: 3.1,
           dueAt: dueLaterAt,
           lastReviewedAt: updatedAt,
+          scheduledDays: 4,
+          learningSteps: 0,
           lapses: 0,
           reps: 5,
+          schedulerVersion: "legacy_simple",
           manualOverride: false,
           createdAt,
           updatedAt
@@ -606,8 +612,11 @@ export async function seedDevelopmentDatabase(
           difficulty: sql`excluded.difficulty`,
           dueAt: sql`excluded.due_at`,
           lastReviewedAt: sql`excluded.last_reviewed_at`,
+          scheduledDays: sql`excluded.scheduled_days`,
+          learningSteps: sql`excluded.learning_steps`,
           lapses: sql`excluded.lapses`,
           reps: sql`excluded.reps`,
+          schedulerVersion: sql`excluded.scheduler_version`,
           manualOverride: sql`excluded.manual_override`,
           createdAt: sql`excluded.created_at`,
           updatedAt: sql`excluded.updated_at`
@@ -626,7 +635,8 @@ export async function seedDevelopmentDatabase(
           newState: "learning",
           scheduledDueAt: dueSoonAt,
           elapsedDays: 0.5,
-          responseMs: 4200
+          responseMs: 4200,
+          schedulerVersion: "legacy_simple"
         },
         {
           id: "review_log_fixture_teiru_1",
@@ -637,7 +647,8 @@ export async function seedDevelopmentDatabase(
           newState: "review",
           scheduledDueAt: dueLaterAt,
           elapsedDays: 2.1,
-          responseMs: 3800
+          responseMs: 3800,
+          schedulerVersion: "legacy_simple"
         }
       ])
       .onConflictDoUpdate({

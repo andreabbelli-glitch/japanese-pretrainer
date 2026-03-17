@@ -109,6 +109,15 @@ Tabelle incluse nel perimetro del task:
   `cross_media_group` esplicito.
 - Gli indici minimi richiesti da glossary, ordering e review queue sono gia
   inclusi nella migrazione iniziale.
+- `review_state` materializza lo stato FSRS della card. Dopo la migrazione il
+  layer review conserva il memory state con `stability`, `difficulty`,
+  `due_at`, `last_reviewed_at`, `lapses`, `reps`, `scheduled_days`,
+  `learning_steps` e un `scheduler_version` esplicito per distinguere i record
+  legacy da quelli calcolati con FSRS.
+- `review_log` continua a registrare ogni voto con lo stato precedente e
+  successivo, il `scheduled_due_at` derivato dal motore, e il tempo di risposta
+  quando disponibile, cosi la cronologia resta ricostruibile anche dopo
+  l'adozione di FSRS.
 
 ## Seed locale
 

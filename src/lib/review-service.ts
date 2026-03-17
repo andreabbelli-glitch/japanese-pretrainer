@@ -82,7 +82,11 @@ export async function applyReviewGrade(input: {
         dueAt: loadedCard.reviewState?.dueAt ?? null,
         lapses: loadedCard.reviewState?.lapses ?? 0,
         lastReviewedAt: loadedCard.reviewState?.lastReviewedAt ?? null,
+        learningSteps: loadedCard.reviewState?.learningSteps ?? 0,
         reps: loadedCard.reviewState?.reps ?? 0,
+        scheduledDays: loadedCard.reviewState?.scheduledDays ?? 0,
+        schedulerVersion:
+          loadedCard.reviewState?.schedulerVersion ?? "legacy_simple",
         stability: loadedCard.reviewState?.stability ?? null,
         state: loadedCard.reviewState?.state as ReviewState | null
       },
@@ -99,8 +103,11 @@ export async function applyReviewGrade(input: {
         difficulty: scheduled.difficulty,
         dueAt: scheduled.dueAt,
         lastReviewedAt: nowIso,
+        scheduledDays: scheduled.scheduledDays,
+        learningSteps: scheduled.learningSteps,
         lapses: scheduled.lapses,
         reps: scheduled.reps,
+        schedulerVersion: scheduled.schedulerVersion,
         manualOverride: false,
         createdAt: loadedCard.reviewState?.createdAt ?? nowIso,
         updatedAt: nowIso
@@ -113,8 +120,11 @@ export async function applyReviewGrade(input: {
           difficulty: scheduled.difficulty,
           dueAt: scheduled.dueAt,
           lastReviewedAt: nowIso,
+          scheduledDays: scheduled.scheduledDays,
+          learningSteps: scheduled.learningSteps,
           lapses: scheduled.lapses,
           reps: scheduled.reps,
+          schedulerVersion: scheduled.schedulerVersion,
           manualOverride: false,
           updatedAt: nowIso
         }
@@ -129,7 +139,8 @@ export async function applyReviewGrade(input: {
       newState: scheduled.state,
       scheduledDueAt: scheduled.dueAt,
       elapsedDays: scheduled.elapsedDays,
-      responseMs: input.responseMs ?? null
+      responseMs: input.responseMs ?? null,
+      schedulerVersion: scheduled.schedulerVersion
     });
 
     return {
@@ -177,8 +188,11 @@ export async function resetReviewCardProgress(input: {
         difficulty: null,
         dueAt: nowIso,
         lastReviewedAt: null,
+        scheduledDays: 0,
+        learningSteps: 0,
         lapses: 0,
         reps: 0,
+        schedulerVersion: "fsrs_v1",
         manualOverride: false,
         createdAt: loadedCard.reviewState?.createdAt ?? nowIso,
         updatedAt: nowIso
@@ -191,8 +205,11 @@ export async function resetReviewCardProgress(input: {
           difficulty: null,
           dueAt: nowIso,
           lastReviewedAt: null,
+          scheduledDays: 0,
+          learningSteps: 0,
           lapses: 0,
           reps: 0,
+          schedulerVersion: "fsrs_v1",
           manualOverride: false,
           updatedAt: nowIso
         }
