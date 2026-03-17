@@ -7,6 +7,7 @@ import {
   createPasswordHash,
   createSessionToken,
   getAuthConfig,
+  getSessionCookieOptions,
   hasValidSessionToken,
   isLoginPath,
   readRequestPathname,
@@ -104,6 +105,17 @@ describe("auth helpers", () => {
       false
     );
     expect(verifySessionToken(`${token}tampered`, issuedAt + 1_000)).toBe(false);
+  });
+
+  it("uses the same timestamp base for session cookie expiry", () => {
+    const issuedAt = Date.UTC(2026, 2, 14, 10, 0, 0);
+
+    expect(getSessionCookieOptions(issuedAt)).toMatchObject({
+      expires: new Date("2026-04-13T10:00:00.000Z"),
+      httpOnly: true,
+      path: "/",
+      sameSite: "lax"
+    });
   });
 
   it("normalizes request pathname headers for standalone login rendering", () => {

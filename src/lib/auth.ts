@@ -217,9 +217,9 @@ export function hasValidSessionToken(
     : false;
 }
 
-export function getSessionCookieOptions() {
+export function getSessionCookieOptions(now = Date.now()) {
   return {
-    expires: new Date(Date.now() + SESSION_DURATION_MS),
+    expires: new Date(now + SESSION_DURATION_MS),
     httpOnly: true,
     path: "/",
     sameSite: "lax" as const,

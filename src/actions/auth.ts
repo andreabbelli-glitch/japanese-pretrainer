@@ -30,11 +30,12 @@ export async function loginAction(formData: FormData) {
   }
 
   const cookieStore = await cookies();
+  const now = Date.now();
 
   cookieStore.set(
     AUTH_SESSION_COOKIE,
-    createSessionToken(),
-    getSessionCookieOptions()
+    createSessionToken(now),
+    getSessionCookieOptions(now)
   );
 
   redirect(nextHref ?? "/");
