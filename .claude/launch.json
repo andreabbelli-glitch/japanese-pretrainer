@@ -4,14 +4,14 @@
     {
       "name": "Next.js dev",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["/Users/abelli/Library/CloudStorage/OneDrive-Microsoft/Documents/Japanese Custom Study/node_modules/next/dist/bin/next", "dev"],
+      "runtimeArgs": ["/Users/abelli/Codex/Japanese Custom Study/node_modules/next/dist/bin/next", "dev"],
       "port": 3000,
       "autoPort": true
     },
     {
       "name": "Drizzle Studio",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["/Users/abelli/Library/CloudStorage/OneDrive-Microsoft/Documents/Japanese Custom Study/node_modules/.pnpm/drizzle-kit@0.31.9/node_modules/drizzle-kit/bin.cjs", "studio", "--config=drizzle.config.ts"],
+      "runtimeArgs": ["/Users/abelli/Codex/Japanese Custom Study/node_modules/.pnpm/drizzle-kit@0.31.9/node_modules/drizzle-kit/bin.cjs", "studio", "--config=drizzle.config.ts"],
       "port": 4983
     }
   ]

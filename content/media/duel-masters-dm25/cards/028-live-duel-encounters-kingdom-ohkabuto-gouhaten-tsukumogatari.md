@@ -105,6 +105,54 @@ notes_it: >-
 level_hint: n3
 :::
 
+:::term
+id: term-jougen
+lemma: 上限
+reading: じょうげん
+romaji: jougen
+meaning_it: limite massimo / cap
+pos: noun
+aliases: [上限, じょうげん, jougen]
+notes_it: >-
+  `{{上限|じょうげん}}` indica il tetto che non si può superare. In
+  `バトルゾーンの{{上限|じょうげん}}になるまで`, il testo non ti chiede di mettere
+  in campo tutte le creature possibili: ti dice di continuare finché la zona
+  raggiunge il numero massimo consentito.
+level_hint: n3
+:::
+
+:::term
+id: term-okoru
+lemma: 起こる
+reading: おこる
+romaji: okoru
+meaning_it: verificarsi / accadere / attivarsi
+pos: verb
+aliases: [起こる, おこる, okoru]
+notes_it: >-
+  Nel rules text `{{起|お}}こる` segnala che qualcosa si verifica davvero come
+  conseguenza di un evento. In
+  `{{出|で}}ることによって{{起|お}}こる[{{効果|こうか}}](term:term-effect)`, il
+  focus non è su qualsiasi effetto scritto sulla carta, ma sugli effetti che si
+  attivano proprio perché quelle creature sono entrate nel battle zone.
+level_hint: n4
+:::
+
+:::grammar
+id: grammar-demo-demo-nai
+pattern: ～でも～でもない
+title: Doppia esclusione "né A né B"
+reading: でも でも ない
+meaning_it: né A né B / non essere né l'uno né l'altro
+aliases: [～でも～でもない]
+notes_it: >-
+  Qui `でも` non significa `anche`, ma viene ripetuto per escludere due
+  categorie nello stesso filtro. In `{{進化|しんか}}でもNEOでもない`, la creatura
+  valida deve passare entrambe le esclusioni: non essere un'evoluzione e non
+  essere nemmeno NEO.
+level_hint: n3
+:::
+
 :::grammar
 id: grammar-koto-ni-yotte
 pattern: ～ことによって
@@ -196,6 +244,63 @@ notes_it: >-
   Questo chunk cambia la quantità, non l'identità del gruppo. Quando lo vedi,
   chiediti subito `quanti?`, non soltanto `quali?`.
 tags: [live-duel, quantity, chunk]
+:::
+
+:::card
+id: card-jougen-recognition
+entry_type: term
+entry_id: term-jougen
+card_type: recognition
+front: '{{上限|じょうげん}}'
+back: limite massimo / cap
+example_jp: >-
+  バトルゾーンの{{上限|じょうげん}}になれば、もうそれ{{以上|いじょう}}は
+  クリーチャーを{{出|だ}}せない。
+example_it: >-
+  Se il battle zone raggiunge il suo limite massimo, non puoi più metterci
+  altre creature.
+notes_it: >-
+  Quando vedi `{{上限|じょうげん}}`, la domanda giusta non è `quante ne voglio?`
+  ma `qual è il cap che non posso superare?`.
+tags: [live-duel, quantity, limit]
+:::
+
+:::card
+id: card-okoru-recognition
+entry_type: term
+entry_id: term-okoru
+card_type: recognition
+front: '{{起|お}}こる'
+back: verificarsi / accadere / attivarsi
+example_jp: >-
+  {{出|で}}たことによって{{起|お}}こる[{{効果|こうか}}](term:term-effect)なら、
+  {{登場|とうじょう}}そのものが{{原因|げんいん}}になっている。
+example_it: >-
+  Se è un effetto che si verifica per l'ingresso, l'ingresso stesso ne è la causa.
+notes_it: >-
+  Nel rules text `{{起|お}}こる` vale spesso come `scattare / verificarsi` più
+  che come semplice `succedere`. Qui restringe il focus agli effetti davvero
+  causati dall'ingresso nel battle zone.
+tags: [live-duel, verb, trigger, cause]
+:::
+
+:::card
+id: card-demo-demo-nai-concept
+entry_type: grammar
+entry_id: grammar-demo-demo-nai
+card_type: concept
+front: '{{進化|しんか}}でもNEOでもない'
+back: non è né un'evoluzione né un NEO
+example_jp: >-
+  `{{進化|しんか}}でもNEOでもない`なら、{{2|ふた}}つの{{種類|しゅるい}}の
+  どちらにも{{入|はい}}らないクリーチャーだけが{{残|のこ}}る。
+example_it: >-
+  Se è "né evoluzione né NEO", restano solo creature che non rientrano in
+  nessuna delle due categorie.
+notes_it: >-
+  Il punto utile non è `でも` come `anche`, ma il suo uso ripetuto in serie
+  negativa: `AでもBでもない` costruisce un doppio filtro esclusivo.
+tags: [live-duel, grammar, filter, exclusion]
 :::
 
 :::card

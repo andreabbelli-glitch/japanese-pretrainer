@@ -81,12 +81,13 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   その{{後|あと}}、{{相手|あいて}}の[マナゾーン](term:term-mana-zone)から
-  {{進化|しんか}}でもNEOでもないクリーチャーを、
-  [バトルゾーン](term:term-battle-zone)の{{上限|じょうげん}}になるまで
+  [{{進化|しんか}}でもNEOでもない](grammar:grammar-demo-demo-nai)クリーチャーを、
+  [バトルゾーン](term:term-battle-zone)の[{{上限|じょうげん}}](term:term-jougen)になるまで
   ランダムに[バトルゾーン](term:term-battle-zone)に{{出|だ}}す。
   [これら](term:term-kore-ra)が[バトルゾーン](term:term-battle-zone)に
   {{出|で}}る[ことによって](grammar:grammar-koto-ni-yotte)
-  {{起|お}}こる{{効果|こうか}}はすべて[{{無視|むし}}する](term:term-mushi-suru)。
+  [{{起|お}}こる](term:term-okoru)[{{効果|こうか}}](term:term-effect)はすべて
+  [{{無視|むし}}する](term:term-mushi-suru)。
 translation_it: >-
   Dopo di ciò, dalla mana zone dell'avversario metti nel battle zone, a caso,
   creature che non siano né evoluzione né NEO fino a riempire il limite del
@@ -131,10 +132,12 @@ reveal_mode: sentence
 
 ### 4. 進化でもNEOでもないクリーチャーを、バトルゾーンの上限になるまでランダムに
 
-- `{{進化|しんか}}でもNEOでもない` costruisce un doppio filtro negativo: la
-  creatura dell'avversario deve passare entrambe le esclusioni.
-- `{{上限|じょうげん}}になるまで` non significa `tutte quelle possibili`: vuol
-  dire `finché il battle zone non raggiunge il suo limite`.
+- [～でも～でもない](grammar:grammar-demo-demo-nai) qui non vale come `anche`:
+  ripete `でも` per escludere entrambe le categorie. La creatura dell'avversario
+  deve quindi passare due filtri insieme: non essere né `{{進化|しんか}}` né NEO.
+- [{{上限|じょうげん}}](term:term-jougen) è il tetto massimo della zona.
+  `{{上限|じょうげん}}になるまで` non significa `tutte quelle possibili`: vuol dire
+  `finché il battle zone non raggiunge il suo cap`.
 - `ランダムに` sposta il controllo fuori dal giocatore: dopo il tuo blocco
   iniziale, il secondo blocco non è più una scelta mirata.
 
@@ -145,6 +148,10 @@ reveal_mode: sentence
 - [ことによって](grammar:grammar-koto-ni-yotte) lega l'evento e il suo
   risultato: qui il testo sta parlando proprio degli effetti che nascono dal
   fatto che quelle creature entrano nel battle zone.
+- [{{起|お}}こる](term:term-okoru) non vuol dire genericamente `esistere` o
+  `stare sulla carta`: vuol dire `verificarsi / attivarsi come conseguenza`.
+  Per questo `{{起|お}}こる[{{効果|こうか}}](term:term-effect)` restringe il focus
+  agli effetti che scattano davvero a causa dell'ingresso.
 - [{{無視|むし}}する](term:term-mushi-suru) non cancella ogni abilità futura della
   creatura; blocca solo gli effetti che si accendono a causa di quell'ingresso.
 
@@ -155,5 +162,10 @@ reveal_mode: sentence
 - [{{好|す}}きな{{数|かず}}](term:term-suki-na-kazu) è un chunk molto utile perché
   compare quando il testo ti lascia decidere la quantità e non solo il
   bersaglio.
+- [{{上限|じょうげん}}](term:term-jougen) è utile oltre questa carta: ogni volta
+  che compare, il testo sta fissando un limite massimo e non una quantità libera.
 - [これら](term:term-kore-ra) è piccolo ma decisivo: se perdi il referente,
   perdi subito anche il perimetro di `{{無視|むし}}する`.
+- [{{起|お}}こる](term:term-okoru) qui lavora insieme a
+  [{{効果|こうか}}](term:term-effect): `効果` è il blocco di risultato, `起こる`
+  dice che quel blocco si verifica proprio in quel timing.

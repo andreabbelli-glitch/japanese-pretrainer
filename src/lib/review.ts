@@ -1622,10 +1622,9 @@ export function buildReviewOverviewSnapshot(input: {
     models,
     input.visibleMediaId
   );
-  const dueCards = models
+  const dueCards = relevantModels
     .filter((model) => model.overviewCard.bucket === "due")
     .sort(compareReviewOverviewSubjectModelsByDue)
-    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId))
     .map((model) => model.overviewCard);
   const globalNewCards = models
     .filter((model) => model.overviewCard.bucket === "new")
@@ -1929,10 +1928,9 @@ function buildReviewQueueSnapshot(input: {
     subjectModels,
     input.visibleMediaId
   );
-  const dueCards = subjectModels
+  const dueCards = relevantModels
     .filter((model) => model.resolvedState.bucket === "due")
-    .sort(compareReviewQueueSubjectModelsByDue)
-    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId));
+    .sort(compareReviewQueueSubjectModelsByDue);
   const globalNewCards = subjectModels
     .filter((model) => model.resolvedState.bucket === "new")
     .sort(compareReviewQueueSubjectModelsByOrder);

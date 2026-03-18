@@ -1,6 +1,7 @@
 import type { EntryType, ReviewCardListItem } from "@/db";
 
 import {
+  getDrivingEntryLinks,
   resolveEffectiveReviewState,
   type ReviewEntryLinkLike,
   type ReviewEntryStatusValue
@@ -389,12 +390,6 @@ function maxIso(left: string, right: string) {
 
 function toTime(value: string) {
   return new Date(value).getTime();
-}
-
-function getDrivingEntryLinks(links: ReviewEntryLinkLike[]) {
-  const primaryLinks = links.filter((link) => link.relationshipType === "primary");
-
-  return primaryLinks.length > 0 ? primaryLinks : links;
 }
 
 function getReviewCardPriority(

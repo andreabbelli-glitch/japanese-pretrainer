@@ -319,9 +319,76 @@ Nota:
 Questa tabella e fondamentale per supportare il caso "questa parola l'ho gia
 imparata" senza dover toccare manualmente tutte le card collegate.
 
-## 3.13 `review_state`
+## 3.13 `review_subject_state`
 
-Stato SRS per card.
+Stato SRS canonico a livello subject. Condivide il memory state FSRS tra sibling
+cross-media. E la source of truth per scheduling e queue.
+
+Campi:
+
+- `subject_key` TEXT PRIMARY KEY
+- `subject_type` TEXT NOT NULL (`group` | `entry` | `card`)
+- `entry_type` TEXT
+- `cross_media_group_id` TEXT
+- `entry_id` TEXT
+- `card_id` TEXT (representative card, FK nullable -> `card.id` ON DELETE SET NULL)
+- `state` TEXT NOT NULL
+- `stability` REAL
+- `difficulty` REAL
+- `due_at` TEXT
+- `last_reviewed_at` TEXT
+- `last_interaction_at` TEXT NOT NULL
+- `scheduled_days` INTEGER NOT NULL DEFAULT 0
+- `learning_steps` INTEGER NOT NULL DEFAULT 0
+- `lapses` INTEGER NOT NULL DEFAULT 0
+- `reps` INTEGER NOT NULL DEFAULT 0
+- `scheduler_version` TEXT NOT NULL DEFAULT 'fsrs_v1'
+- `manual_override` INTEGER NOT NULL DEFAULT 0
+- `suspended` INTEGER NOT NULL DEFAULT 0
+- `created_at` TEXT NOT NULL
+- `updated_at` TEXT NOT NULL
+
+Indici:
+
+- `due_at`
+- `last_interaction_at`
+- `card_id`
+- `(entry_type, cross_media_group_id, entry_id)`
+
+## 3.14 `review_subject_log`
+
+Cronologia canonica delle risposte a livello subject.
+
+Campi:
+
+- `id` TEXT PRIMARY KEY
+- `subject_key` TEXT NOT NULL
+- `card_id` TEXT NOT NULL
+- `answered_at` TEXT NOT NULL
+- `rating` TEXT NOT NULL
+- `previous_state` TEXT
+- `new_state` TEXT
+- `scheduled_due_at` TEXT
+- `elapsed_days` REAL
+- `response_ms` INTEGER
+- `scheduler_version` TEXT NOT NULL DEFAULT 'fsrs_v1'
+
+Vincoli:
+
+- FK `subject_key -> review_subject_state.subject_key` ON DELETE CASCADE
+- FK `card_id -> card.id` ON DELETE CASCADE
+
+Indici:
+
+- `(subject_key, answered_at)`
+- `(card_id, answered_at)`
+
+## 3.15 `review_state` (legacy)
+
+> **Tabella residuale card-level.** Lo stato canonico e ora in
+> `review_subject_state`. Questa tabella viene mantenuta come mirror per
+> compatibilita e upgrade di DB preesistenti. Il runtime la legge solo quando
+> manca il corrispondente state subject-level (fallback legacy).
 
 Campi:
 
@@ -331,24 +398,23 @@ Campi:
 - `difficulty` REAL
 - `due_at` TEXT
 - `last_reviewed_at` TEXT
+- `scheduled_days` INTEGER NOT NULL DEFAULT 0
+- `learning_steps` INTEGER NOT NULL DEFAULT 0
 - `lapses` INTEGER NOT NULL DEFAULT 0
 - `reps` INTEGER NOT NULL DEFAULT 0
+- `scheduler_version` TEXT NOT NULL DEFAULT 'fsrs_v1'
 - `manual_override` INTEGER NOT NULL DEFAULT 0
 - `created_at` TEXT NOT NULL
 - `updated_at` TEXT NOT NULL
 
 Vincoli:
 
-- FK `card_id -> card.id`
+- FK `card_id -> card.id` ON DELETE CASCADE
 
-Nota:
+## 3.16 `review_log` (legacy)
 
-Lo schema e compatibile con un approccio tipo FSRS o con uno scheduler piu
-semplice, senza vincolare ora l'algoritmo preciso.
-
-## 3.14 `review_log`
-
-Storico immutabile delle review.
+> **Tabella residuale card-level.** La cronologia canonica e ora in
+> `review_subject_log`. Mantenuta per compatibilita.
 
 Campi:
 
@@ -361,12 +427,13 @@ Campi:
 - `scheduled_due_at` TEXT
 - `elapsed_days` REAL
 - `response_ms` INTEGER
+- `scheduler_version` TEXT NOT NULL DEFAULT 'fsrs_v1'
 
 Vincoli:
 
-- FK `card_id -> card.id`
+- FK `card_id -> card.id` ON DELETE CASCADE
 
-## 3.15 `lesson_progress`
+## 3.17 `lesson_progress`
 
 Progress dell'utente sulle lesson.
 
@@ -384,7 +451,7 @@ Valori consigliati:
 - `in_progress`
 - `completed`
 
-## 3.16 `media_progress`
+## 3.18 `media_progress`
 
 Aggregati per dashboard.
 
@@ -402,7 +469,7 @@ Nota:
 
 Questa tabella puo anche essere una view materializzata rigenerata.
 
-## 3.17 `user_setting`
+## 3.19 `user_setting`
 
 Preferenze applicative globali.
 
@@ -419,7 +486,7 @@ Chiavi minime:
 - `review_daily_limit`
 - `glossary_default_sort`
 
-## 3.18 `content_import`
+## 3.20 `content_import`
 
 Log degli import.
 

@@ -31,7 +31,11 @@ const duelMastersMediaDirectory = path.join(
 );
 const fixturesRoot = path.join(__dirname, "fixtures", "content");
 const validContentRoot = path.join(fixturesRoot, "valid", "content");
-const validMediaDirectory = path.join(validContentRoot, "media", "sample-anime");
+const validMediaDirectory = path.join(
+  validContentRoot,
+  "media",
+  "sample-anime"
+);
 const invalidMediaDirectory = path.join(
   fixturesRoot,
   "invalid",
@@ -429,7 +433,10 @@ describe("content parser and validator", () => {
       await writeFile(
         cardsPath,
         cardsSource
-          .replace("audio_src: assets/audio/term/term-taberu/term-taberu.ogg\n", "")
+          .replace(
+            "audio_src: assets/audio/term/term-taberu/term-taberu.ogg\n",
+            ""
+          )
           .replace("audio_source: lingua_libre\n", "")
           .replace("audio_speaker: Test Native Speaker\n", "")
           .replace("audio_license: CC BY-SA 4.0\n", "")
@@ -645,10 +652,10 @@ describe("content parser and validator", () => {
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
     expect(result.data.lessons).toHaveLength(20);
     expect(result.data.cardFiles).toHaveLength(14);
-    expect(result.data.terms).toHaveLength(174);
-    expect(result.data.grammarPatterns).toHaveLength(35);
-    expect(result.data.cards).toHaveLength(218);
-    expect(result.data.references).toHaveLength(1123);
+    expect(result.data.terms).toHaveLength(176);
+    expect(result.data.grammarPatterns).toHaveLength(36);
+    expect(result.data.cards).toHaveLength(221);
+    expect(result.data.references).toHaveLength(1136);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
@@ -982,11 +989,7 @@ describe("content parser and validator", () => {
       await cp(validMediaDirectory, mediaDirectory, { recursive: true });
 
       const mediaPath = path.join(mediaDirectory, "media.md");
-      const lessonPath = path.join(
-        mediaDirectory,
-        "textbook",
-        "001-intro.md"
-      );
+      const lessonPath = path.join(mediaDirectory, "textbook", "001-intro.md");
 
       const mediaSource = await readFile(mediaPath, "utf8");
       const updatedMediaSource = mediaSource.replace(
