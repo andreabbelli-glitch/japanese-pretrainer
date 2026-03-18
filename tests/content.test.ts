@@ -654,8 +654,8 @@ describe("content parser and validator", () => {
     expect(result.data.cardFiles).toHaveLength(14);
     expect(result.data.terms).toHaveLength(176);
     expect(result.data.grammarPatterns).toHaveLength(36);
-    expect(result.data.cards).toHaveLength(221);
-    expect(result.data.references).toHaveLength(1136);
+    expect(result.data.cards).toHaveLength(222);
+    expect(result.data.references).toHaveLength(1134);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
