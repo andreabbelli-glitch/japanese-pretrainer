@@ -79,6 +79,8 @@ Tabelle incluse nel perimetro del task:
 - `entry_status`
 - `review_state`
 - `review_log`
+- `review_subject_state`
+- `review_subject_log`
 - `lesson_progress`
 - `media_progress`
 - `user_setting`
@@ -98,8 +100,8 @@ Tabelle incluse nel perimetro del task:
 - `cross_media_group` non sostituisce le entry locali: serve solo a recuperare
   sibling secondarie in altri media, mantenendo `meaning_it` e `notes_it`
   locali come fonte primaria.
-- `entry_status` e `review_state` restano separati per tenere distinti override
-  manuali di entita e stato SRS delle card.
+- `entry_status` e il modello review restano separati per tenere distinti
+  override manuali di entita e stato SRS.
 - I riferimenti polimorfici (`entry_type + entry_id`, `source_type + source_id`)
   non usano false foreign key; per `entry_id` il valore persistito e la chiave
   tecnica interna della entry, mentre il routing pubblico continua a usare
@@ -109,16 +111,26 @@ Tabelle incluse nel perimetro del task:
   `cross_media_group` esplicito.
 - Gli indici minimi richiesti da glossary, ordering e review queue sono gia
   inclusi nella migrazione iniziale.
-- `review_state` materializza lo stato FSRS della card. Dopo la migrazione il
-  layer review conserva il memory state con `stability`, `difficulty`,
-  `due_at`, `last_reviewed_at`, `lapses`, `reps`, `scheduled_days`,
-  `learning_steps` e un `scheduler_version` esplicito. I database storici
-  vengono convertiti una tantum a `fsrs_v1` replayando `review_log`; il runtime
-  non usa piu un branch legacy separato.
-- `review_log` continua a registrare ogni voto con lo stato precedente e
-  successivo, il `scheduled_due_at` derivato dal motore, e il tempo di risposta
-  quando disponibile, cosi la cronologia resta ricostruibile anche dopo
-  l'adozione di FSRS.
+- `review_subject_state` e lo stato canonico della review globale a livello
+  subject. Tiene il memory state FSRS condiviso tra sibling cross-media, con
+  `stability`, `difficulty`, `due_at`, `last_reviewed_at`,
+  `last_interaction_at`, `lapses`, `reps`, `scheduled_days`,
+  `learning_steps` e `scheduler_version`.
+- `review_subject_log` e la cronologia canonica delle risposte a livello
+  subject. Ogni voto salva stato precedente e successivo, `scheduled_due_at` e
+  tempo di risposta quando disponibile.
+- `review_state` e `review_log` restano tabelle card-level residuali per
+  compatibilita, mirror e upgrade dei DB esistenti. Il runtime continua a
+  leggerle quando manca il corrispondente state subject-level.
+- La migrazione `drizzle/0011_global_review_subjects.sql` crea
+  `review_subject_state` e `review_subject_log`, ma non esegue un backfill
+  automatico di `review_subject_state`. Sugli upgrade reali esiste quindi un
+  fallback legacy che ricostruisce temporaneamente lo state del subject e il
+  representative card a partire da `review_state`.
+- A livello UI e query: `/review` usa la queue globale reale sui subject, mentre
+  `/media/[mediaSlug]/review` resta una vista filtrata locale. I numeri
+  etichettati come globali devono arrivare dal modello subject-level globale;
+  i numeri per-media restano locali e vanno etichettati come tali.
 
 ## Seed locale
 

@@ -118,6 +118,14 @@ export function mediaStudyHref(mediaSlug: string, area: StudyAreaKey): Route {
   return `/media/${mediaSlug}/${area}` as Route;
 }
 
+export function reviewHref(): Route {
+  return "/review" as Route;
+}
+
+export function mediaReviewHref(mediaSlug: string): Route {
+  return mediaStudyHref(mediaSlug, "review");
+}
+
 export function mediaReviewCardHref(mediaSlug: string, cardId: string): Route {
   return `/media/${mediaSlug}/review/card/${cardId}` as Route;
 }
@@ -193,26 +201,16 @@ export function buildReviewSessionHref(input: {
   mediaSlug: string;
   showAnswer?: boolean;
 }): Route {
-  return buildHrefWithSearch(
-    mediaStudyHref(input.mediaSlug, "review"),
-    (params) => {
-      if (input.answeredCount && input.answeredCount > 0) {
-        params.set("answered", String(input.answeredCount));
-      }
+  return buildReviewSessionHrefForBase(mediaReviewHref(input.mediaSlug), input);
+}
 
-      if (input.cardId) {
-        params.set("card", input.cardId);
-      }
-
-      if (input.extraNewCount && input.extraNewCount > 0) {
-        params.set("extraNew", String(input.extraNewCount));
-      }
-
-      if (input.showAnswer) {
-        params.set("show", "answer");
-      }
-    }
-  );
+export function buildGlobalReviewSessionHref(input: {
+  answeredCount?: number;
+  cardId?: string | null;
+  extraNewCount?: number;
+  showAnswer?: boolean;
+}): Route {
+  return buildReviewSessionHrefForBase(reviewHref(), input);
 }
 
 export function shouldPersistReviewSessionCard(input: {
@@ -246,6 +244,51 @@ export function buildCanonicalReviewSessionHref(input: {
     extraNewCount: input.extraNewCount,
     mediaSlug: input.mediaSlug,
     showAnswer: input.showAnswer
+  });
+}
+
+export function buildCanonicalReviewSessionHrefForBase(input: {
+  answeredCount?: number;
+  baseHref: Route;
+  cardId?: string | null;
+  extraNewCount?: number;
+  isQueueCard: boolean;
+  position: number | null;
+  showAnswer?: boolean;
+}): Route {
+  return buildReviewSessionHrefForBase(input.baseHref, {
+    answeredCount: input.answeredCount,
+    cardId: shouldPersistReviewSessionCard(input) ? input.cardId : null,
+    extraNewCount: input.extraNewCount,
+    showAnswer: input.showAnswer
+  });
+}
+
+function buildReviewSessionHrefForBase(
+  baseHref: Route,
+  input: {
+    answeredCount?: number;
+    cardId?: string | null;
+    extraNewCount?: number;
+    showAnswer?: boolean;
+  }
+) {
+  return buildHrefWithSearch(baseHref, (params) => {
+    if (input.answeredCount && input.answeredCount > 0) {
+      params.set("answered", String(input.answeredCount));
+    }
+
+    if (input.cardId) {
+      params.set("card", input.cardId);
+    }
+
+    if (input.extraNewCount && input.extraNewCount > 0) {
+      params.set("extraNew", String(input.extraNewCount));
+    }
+
+    if (input.showAnswer) {
+      params.set("show", "answer");
+    }
   });
 }
 

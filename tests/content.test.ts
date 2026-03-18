@@ -643,12 +643,12 @@ describe("content parser and validator", () => {
     expect(result.issues).toEqual([]);
     expect(result.data.media?.frontmatter.id).toBe("media-duel-masters-dm25");
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
-    expect(result.data.lessons).toHaveLength(16);
-    expect(result.data.cardFiles).toHaveLength(10);
-    expect(result.data.terms).toHaveLength(160);
-    expect(result.data.grammarPatterns).toHaveLength(32);
-    expect(result.data.cards).toHaveLength(199);
-    expect(result.data.references).toHaveLength(981);
+    expect(result.data.lessons).toHaveLength(20);
+    expect(result.data.cardFiles).toHaveLength(14);
+    expect(result.data.terms).toHaveLength(174);
+    expect(result.data.grammarPatterns).toHaveLength(35);
+    expect(result.data.cards).toHaveLength(218);
+    expect(result.data.references).toHaveLength(1123);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
@@ -667,6 +667,10 @@ describe("content parser and validator", () => {
       "live-duel-encounters-maou-de-szark",
       "live-duel-encounters-dama-vaishingu",
       "live-duel-encounters-bad-brand-first",
+      "live-duel-encounters-kenzan-no-sabaki",
+      "live-duel-encounters-kuromame-danshaku",
+      "live-duel-encounters-tamatango-panzer",
+      "live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari",
       "keyword-effects-reference"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
@@ -679,7 +683,11 @@ describe("content parser and validator", () => {
       "cards-duel-masters-dm25-live-duel-encounters-crash-hadou",
       "cards-duel-masters-dm25-live-duel-encounters-maou-de-szark",
       "cards-duel-masters-dm25-live-duel-encounters-dama-vaishingu",
-      "cards-duel-masters-dm25-live-duel-encounters-bad-brand-first"
+      "cards-duel-masters-dm25-live-duel-encounters-bad-brand-first",
+      "cards-duel-masters-dm25-live-duel-encounters-kenzan-no-sabaki",
+      "cards-duel-masters-dm25-live-duel-encounters-kuromame-danshaku",
+      "cards-duel-masters-dm25-live-duel-encounters-tamatango-panzer",
+      "cards-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari"
     ]);
     expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
       true

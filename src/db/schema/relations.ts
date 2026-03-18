@@ -15,7 +15,14 @@ import {
   termAlias
 } from "./glossary.ts";
 import { lessonProgress, mediaProgress } from "./progress.ts";
-import { card, cardEntryLink, reviewLog, reviewState } from "./review.ts";
+import {
+  card,
+  cardEntryLink,
+  reviewLog,
+  reviewState,
+  reviewSubjectLog,
+  reviewSubjectState
+} from "./review.ts";
 
 export const mediaRelations = relations(media, ({ many, one }) => ({
   segments: many(segment),
@@ -168,6 +175,31 @@ export const reviewLogRelations = relations(reviewLog, ({ one }) => ({
     references: [card.id]
   })
 }));
+
+export const reviewSubjectStateRelations = relations(
+  reviewSubjectState,
+  ({ many, one }) => ({
+    lastCard: one(card, {
+      fields: [reviewSubjectState.cardId],
+      references: [card.id]
+    }),
+    logs: many(reviewSubjectLog)
+  })
+);
+
+export const reviewSubjectLogRelations = relations(
+  reviewSubjectLog,
+  ({ one }) => ({
+    card: one(card, {
+      fields: [reviewSubjectLog.cardId],
+      references: [card.id]
+    }),
+    subjectState: one(reviewSubjectState, {
+      fields: [reviewSubjectLog.subjectKey],
+      references: [reviewSubjectState.subjectKey]
+    })
+  })
+);
 
 export const lessonProgressRelations = relations(lessonProgress, ({ one }) => ({
   lesson: one(lesson, {

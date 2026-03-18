@@ -1,5 +1,13 @@
 import path from "node:path";
-import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import {
+  cp,
+  mkdir,
+  mkdtemp,
+  readFile,
+  readdir,
+  rm,
+  writeFile
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 
@@ -155,6 +163,8 @@ describe("content importer", () => {
 
   it("imports the real Duel Masters bundle", async () => {
     await copySingleMediaBundleFixture(demoMediaFixtureRoot, contentRoot);
+    const expectedSourceFileCount =
+      await countImportableMediaSourceFiles(demoMediaFixtureRoot);
 
     const result = await importContentWorkspace({
       contentRoot,
@@ -163,20 +173,20 @@ describe("content importer", () => {
     });
 
     expect(result.status).toBe("completed");
-    expect(result.filesScanned).toBe(27);
-    expect(result.filesChanged).toBe(27);
+    expect(result.filesScanned).toBe(expectedSourceFileCount);
+    expect(result.filesChanged).toBe(expectedSourceFileCount);
 
     expect(await countRows(database.query.media.findMany())).toBe(1);
     expect(await countRows(database.query.segment.findMany())).toBe(7);
-    expect(await countRows(database.query.lesson.findMany())).toBe(16);
-    expect(await countRows(database.query.lessonContent.findMany())).toBe(16);
-    expect(await countRows(database.query.term.findMany())).toBe(160);
-    expect(await countRows(database.query.termAlias.findMany())).toBe(412);
-    expect(await countRows(database.query.grammarPattern.findMany())).toBe(32);
-    expect(await countRows(database.query.grammarAlias.findMany())).toBe(40);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(575);
-    expect(await countRows(database.query.card.findMany())).toBe(199);
-    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(221);
+    expect(await countRows(database.query.lesson.findMany())).toBe(20);
+    expect(await countRows(database.query.lessonContent.findMany())).toBe(20);
+    expect(await countRows(database.query.term.findMany())).toBe(174);
+    expect(await countRows(database.query.termAlias.findMany())).toBe(451);
+    expect(await countRows(database.query.grammarPattern.findMany())).toBe(35);
+    expect(await countRows(database.query.grammarAlias.findMany())).toBe(43);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(658);
+    expect(await countRows(database.query.card.findMany())).toBe(218);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(243);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({
@@ -824,6 +834,25 @@ async function copySingleMediaBundleFixture(
     path.join(destinationMediaRoot, path.basename(sourceMediaDirectory)),
     { recursive: true }
   );
+}
+
+async function countImportableMediaSourceFiles(mediaDirectory: string) {
+  const textbookDirectory = path.join(mediaDirectory, "textbook");
+  const cardsDirectory = path.join(mediaDirectory, "cards");
+  const [textbookFiles, cardFiles] = await Promise.all([
+    listMarkdownFiles(textbookDirectory),
+    listMarkdownFiles(cardsDirectory)
+  ]);
+
+  return 1 + textbookFiles.length + cardFiles.length;
+}
+
+async function listMarkdownFiles(directory: string) {
+  const entries = await readdir(directory, {
+    withFileTypes: true
+  });
+
+  return entries.filter((entry) => entry.isFile() && entry.name.endsWith(".md"));
 }
 
 async function writeScopedMediaFixture(destinationRoot: string) {

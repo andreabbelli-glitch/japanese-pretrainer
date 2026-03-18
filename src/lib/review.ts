@@ -1,28 +1,34 @@
 import { unstable_noStore as noStore } from "next/cache";
 
 import {
-  countNewCardsIntroducedOnDayByMediaId,
-  countNewCardsIntroducedOnDayByMediaIds,
+  countReviewSubjectsIntroducedOnDay,
   db,
   getGrammarCrossMediaFamilyByEntryId,
   listLessonLinkedReviewEntriesByMediaId,
   listLessonLinkedReviewEntriesByMediaIds,
+  listMedia,
   listReviewLaunchCandidates,
   getMediaBySlug,
   getTermCrossMediaFamilyByEntryId,
   listGrammarEntriesByMediaId,
   listGrammarEntrySummaries,
+  listReviewCardIdsByEntryRefs,
+  listReviewCardsByIds,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
   listTermEntriesByMediaId,
   listTermEntrySummaries,
+  listReviewSubjectStatesByKeys,
   type DatabaseClient,
   type CrossMediaGrammarSibling,
   type CrossMediaTermSibling,
   type GrammarGlossaryEntry,
+  type GrammarGlossaryEntrySummary,
   type LessonLinkedReviewEntry,
+  type MediaListItem,
   type ReviewCardListItem,
-  type TermGlossaryEntry
+  type TermGlossaryEntry,
+  type TermGlossaryEntrySummary
 } from "@/db";
 import {
   getReviewDailyLimit,
@@ -33,7 +39,8 @@ import {
   mediaGlossaryHref,
   mediaHref,
   mediaReviewCardHref,
-  mediaStudyHref
+  mediaStudyHref,
+  reviewHref
 } from "@/lib/site";
 import {
   capitalizeToken,
@@ -42,6 +49,16 @@ import {
   formatReviewStateLabel
 } from "@/lib/study-format";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
+import {
+  buildReviewSubjectEntryLookup,
+  deriveReviewSubjectIdentity,
+  groupReviewCardsBySubject,
+  selectReviewSubjectRepresentativeCard,
+  type ReviewSubjectEntryMeta,
+  type ReviewSubjectIdentity,
+  type ReviewSubjectGroup,
+  type ReviewSubjectStateSnapshot
+} from "./review-subject";
 
 import {
   getDrivingEntryLinks,
@@ -84,6 +101,388 @@ type ReviewEntryLookupItem = {
   subtitle?: string;
 };
 
+type ReviewScope = "global" | "media";
+type ReviewTermLookupEntry = TermGlossaryEntry | TermGlossaryEntrySummary;
+type ReviewGrammarLookupEntry =
+  | GrammarGlossaryEntry
+  | GrammarGlossaryEntrySummary;
+type ReviewMediaLookup = Map<
+  string,
+  {
+    slug: string;
+    title: string;
+  }
+>;
+
+type SubjectReviewCard = ReviewCardListItem & {
+  reviewState: NonNullable<ReviewCardListItem["reviewState"]> | null;
+};
+
+async function loadReviewSubjectStateLookup(input: {
+  cards: ReviewCardListItem[];
+  database: DatabaseClient;
+  grammar: Array<{
+    crossMediaGroupId: string | null;
+    id: string;
+  }>;
+  nowIso?: string;
+  terms: Array<{
+    crossMediaGroupId: string | null;
+    id: string;
+  }>;
+}) {
+  const entryLookup = buildReviewSubjectEntryLookup({
+    grammar: input.grammar,
+    terms: input.terms
+  });
+  const subjectKeys = [
+    ...new Set(
+      input.cards.map((card) =>
+        deriveReviewSubjectIdentity({
+          cardId: card.id,
+          entryLinks: card.entryLinks,
+          entryLookup
+        }).subjectKey
+      )
+    )
+  ];
+  const subjectStateRows = await listReviewSubjectStatesByKeys(
+    input.database,
+    subjectKeys
+  );
+  const subjectStates = new Map(
+    [...subjectStateRows.entries()].map(([subjectKey, row]) => [
+      subjectKey,
+      row as ReviewSubjectStateSnapshot
+    ])
+  );
+  const subjectGroups = groupReviewCardsBySubject({
+    cards: input.cards,
+    entryLookup,
+    nowIso: input.nowIso,
+    subjectStates
+  });
+  const missingSubjectGroups = subjectGroups.filter(
+    (group) => !subjectStates.has(group.identity.subjectKey)
+  );
+  const fallbackStates = await Promise.all(
+    missingSubjectGroups.map(async (group) => {
+      const memberCards = await loadLegacyReviewSubjectMemberCards({
+        database: input.database,
+        fallbackCards: group.cards,
+        identity: group.identity
+      });
+
+      return buildLegacyReviewSubjectState({
+        database: input.database,
+        cards: memberCards,
+        identity: group.identity,
+        nowIso: input.nowIso
+      });
+    })
+  );
+
+  for (const fallbackState of fallbackStates) {
+    subjectStates.set(fallbackState.subjectKey, fallbackState);
+  }
+
+  return {
+    entryLookup,
+    subjectStates
+  };
+}
+
+async function loadLegacyReviewSubjectMemberCards(input: {
+  database: DatabaseClient;
+  fallbackCards: ReviewCardListItem[];
+  identity: ReviewSubjectIdentity;
+}) {
+  if (input.identity.subjectKind === "card") {
+    return input.fallbackCards;
+  }
+
+  const entryRefs =
+    input.identity.subjectKind === "entry"
+      ? [
+          {
+            entryId: input.identity.entryId!,
+            entryType: input.identity.entryType!
+          }
+        ]
+      : await resolveLegacyReviewSubjectEntryRefs(
+          input.database,
+          input.identity
+        );
+  const memberCardIds = await listReviewCardIdsByEntryRefs(input.database, entryRefs);
+
+  if (memberCardIds.length === 0) {
+    return input.fallbackCards;
+  }
+
+  const memberCards = await listReviewCardsByIds(input.database, memberCardIds);
+
+  return memberCards.length > 0 ? memberCards : input.fallbackCards;
+}
+
+async function resolveLegacyReviewSubjectEntryRefs(
+  database: DatabaseClient,
+  identity: ReviewSubjectIdentity
+) {
+  if (!identity.entryId || !identity.entryType) {
+    return [];
+  }
+
+  if (identity.subjectKind !== "group") {
+    return [
+      {
+        entryId: identity.entryId,
+        entryType: identity.entryType
+      }
+    ];
+  }
+
+  if (identity.entryType === "term") {
+    const family = await getTermCrossMediaFamilyByEntryId(database, identity.entryId);
+
+    return dedupeReviewSubjectEntryRefs([
+      {
+        entryId: identity.entryId,
+        entryType: identity.entryType
+      },
+      ...family.siblings.map((sibling) => ({
+        entryId: sibling.entryId,
+        entryType: "term" as const
+      }))
+    ]);
+  }
+
+  const family = await getGrammarCrossMediaFamilyByEntryId(database, identity.entryId);
+
+  return dedupeReviewSubjectEntryRefs([
+    {
+      entryId: identity.entryId,
+      entryType: identity.entryType
+    },
+    ...family.siblings.map((sibling) => ({
+      entryId: sibling.entryId,
+      entryType: "grammar" as const
+    }))
+  ]);
+}
+
+async function buildLegacyReviewSubjectState(input: {
+  database: DatabaseClient;
+  cards: ReviewCardListItem[];
+  identity: ReviewSubjectIdentity;
+  nowIso?: string;
+}) {
+  const drivingEntryStatusesByCardId =
+    input.cards.length > 0
+      ? await loadLegacyReviewSubjectDrivingEntryStatuses({
+          cards: input.cards,
+          database: input.database
+        })
+      : new Map<string, ReviewEntryStatusValue[]>();
+  const representativeCard = selectReviewSubjectRepresentativeCard(
+    input.cards,
+    null,
+    input.nowIso,
+    {
+      drivingEntryStatusesByCardId
+    }
+  );
+  const reviewState = representativeCard.reviewState;
+
+  return {
+    cardId: representativeCard.id,
+    createdAt: reviewState?.createdAt ?? representativeCard.createdAt,
+    crossMediaGroupId: input.identity.crossMediaGroupId,
+    difficulty: reviewState?.difficulty ?? null,
+    dueAt: reviewState?.dueAt ?? null,
+    entryId: input.identity.entryId,
+    entryType: input.identity.entryType,
+    lapses: reviewState?.lapses ?? 0,
+    lastInteractionAt:
+      reviewState?.lastReviewedAt ??
+      representativeCard.updatedAt ??
+      representativeCard.createdAt,
+    lastReviewedAt: reviewState?.lastReviewedAt ?? null,
+    learningSteps: reviewState?.learningSteps ?? 0,
+    manualOverride: reviewState?.manualOverride ?? false,
+    reps: reviewState?.reps ?? 0,
+    scheduledDays: reviewState?.scheduledDays ?? 0,
+    stability: reviewState?.stability ?? null,
+    state: (reviewState?.state as ReviewSubjectStateSnapshot["state"]) ?? "new",
+    subjectKey: input.identity.subjectKey,
+    subjectType: input.identity.subjectKind,
+    updatedAt: reviewState?.updatedAt ?? representativeCard.updatedAt
+  } satisfies ReviewSubjectStateSnapshot;
+}
+
+async function loadLegacyReviewSubjectDrivingEntryStatuses(input: {
+  cards: ReviewCardListItem[];
+  database: DatabaseClient;
+}) {
+  const refsByCardId = new Map<
+    string,
+    Array<{
+      entryId: string;
+      entryType: "term" | "grammar";
+    }>
+  >();
+  const termEntryIds = new Set<string>();
+  const grammarEntryIds = new Set<string>();
+
+  for (const card of input.cards) {
+    const refs = dedupeReviewSubjectEntryRefs(
+      getDrivingEntryLinks(card.entryLinks).flatMap((link) =>
+        link.entryType === "term" || link.entryType === "grammar"
+          ? [
+              {
+                entryId: link.entryId,
+                entryType: link.entryType
+              }
+            ]
+          : []
+      )
+    );
+
+    refsByCardId.set(card.id, refs);
+
+    for (const ref of refs) {
+      if (ref.entryType === "term") {
+        termEntryIds.add(ref.entryId);
+      } else {
+        grammarEntryIds.add(ref.entryId);
+      }
+    }
+  }
+
+  if (termEntryIds.size === 0 && grammarEntryIds.size === 0) {
+    return new Map<string, ReviewEntryStatusValue[]>();
+  }
+
+  const matchClauses = [
+    termEntryIds.size > 0
+      ? `(entry_type = 'term' AND entry_id IN (${[...termEntryIds]
+          .map((value) => `'${value.replaceAll("'", "''")}'`)
+          .join(", ")}))`
+      : null,
+    grammarEntryIds.size > 0
+      ? `(entry_type = 'grammar' AND entry_id IN (${[...grammarEntryIds]
+          .map((value) => `'${value.replaceAll("'", "''")}'`)
+          .join(", ")}))`
+      : null
+  ].filter((clause): clause is string => clause !== null);
+
+  const rows = await input.database.all<{
+    entryId: string;
+    entryType: "grammar" | "term";
+    status: ReviewEntryStatusValue;
+  }>(`
+    SELECT
+      entry_id AS entryId,
+      entry_type AS entryType,
+      status AS status
+    FROM entry_status
+    WHERE ${matchClauses.join(" OR ")}
+  `);
+
+  const statusByEntryKey = new Map(
+    rows.map((row) => [
+      `${row.entryType}:${row.entryId}`,
+      row.status as ReviewEntryStatusValue
+    ])
+  );
+
+  return new Map(
+    [...refsByCardId.entries()].map(([cardId, refs]) => [
+      cardId,
+      refs.map(
+        (ref) => statusByEntryKey.get(`${ref.entryType}:${ref.entryId}`) ?? null
+      )
+    ])
+  );
+}
+
+function dedupeReviewSubjectEntryRefs(
+  entryRefs: Array<{
+    entryId: string;
+    entryType: ReviewSubjectIdentity["entryType"];
+  }>
+) {
+  const seen = new Set<string>();
+  const deduped: Array<{
+    entryId: string;
+    entryType: NonNullable<ReviewSubjectIdentity["entryType"]>;
+  }> = [];
+
+  for (const entry of entryRefs) {
+    if (!entry.entryType) {
+      continue;
+    }
+
+    const key = `${entry.entryType}:${entry.entryId}`;
+
+    if (seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    deduped.push({
+      entryId: entry.entryId,
+      entryType: entry.entryType
+    });
+  }
+
+  return deduped;
+}
+
+function getReviewEntryStatus(entry: {
+  entryStatus?: ReviewEntryStatusValue;
+  status?: { status: ReviewEntryStatusValue } | null;
+}) {
+  if ("entryStatus" in entry) {
+    return entry.entryStatus ?? null;
+  }
+
+  return entry.status?.status ?? null;
+}
+
+function applySubjectStateToReviewCard(
+  card: ReviewCardListItem,
+  subjectState: ReviewSubjectStateSnapshot | null
+): SubjectReviewCard {
+  if (!subjectState) {
+    return {
+      ...card,
+      reviewState: card.reviewState ?? null
+    };
+  }
+
+  return {
+    ...card,
+    status:
+      subjectState.state === "suspended" ? "suspended" : card.status,
+    reviewState: {
+      cardId: card.id,
+      createdAt: card.reviewState?.createdAt ?? subjectState.createdAt,
+      difficulty: subjectState.difficulty,
+      dueAt: subjectState.dueAt,
+      lapses: subjectState.lapses,
+      lastReviewedAt: subjectState.lastReviewedAt,
+      learningSteps: subjectState.learningSteps,
+      manualOverride: subjectState.manualOverride,
+      reps: subjectState.reps,
+      scheduledDays: subjectState.scheduledDays,
+      schedulerVersion: card.reviewState?.schedulerVersion ?? "fsrs_v1",
+      state: subjectState.state,
+      stability: subjectState.stability,
+      updatedAt: subjectState.updatedAt
+    }
+  };
+}
+
 export type ReviewCardEntrySummary = {
   href: ReturnType<typeof mediaGlossaryEntryHref>;
   id: string;
@@ -108,6 +507,13 @@ export type ReviewQueueCard = {
   bucket: "due" | "manual" | "new" | "suspended" | "upcoming";
   bucketDetail: string;
   bucketLabel: string;
+  contexts: Array<{
+    cardId: string;
+    front: string;
+    mediaSlug: string;
+    mediaTitle: string;
+    segmentTitle?: string;
+  }>;
   createdAt: string;
   dueAt: string | null;
   dueLabel?: string;
@@ -119,11 +525,24 @@ export type ReviewQueueCard = {
   front: string;
   href: ReturnType<typeof mediaReviewCardHref>;
   id: string;
+  mediaSlug: string;
+  mediaTitle: string;
   notes?: string;
   orderIndex: number | null;
   pronunciations: ReviewCardPronunciation[];
   rawReviewLabel: string;
   reading?: string;
+  reviewSeedState: {
+    difficulty: number | null;
+    dueAt: string | null;
+    lapses: number;
+    lastReviewedAt: string | null;
+    learningSteps: number;
+    reps: number;
+    scheduledDays: number;
+    stability: number | null;
+    state: ReviewState | null;
+  };
   segmentTitle?: string;
   typeLabel: string;
 };
@@ -159,10 +578,11 @@ export type ReviewOverviewSnapshot = {
 };
 
 export type ReviewPageData = {
+  scope: ReviewScope;
   media: {
     glossaryHref: ReturnType<typeof mediaGlossaryHref>;
-    href: ReturnType<typeof mediaHref>;
-    reviewHref: ReturnType<typeof mediaStudyHref>;
+    href: ReturnType<typeof mediaHref> | "/";
+    reviewHref: ReturnType<typeof mediaStudyHref> | ReturnType<typeof reviewHref>;
     slug: string;
     title: string;
   };
@@ -239,6 +659,134 @@ export type ReviewCardDetailData = {
   };
 };
 
+type ReviewPageWorkspace = ReviewPageData["media"];
+type ResolvedReviewQueueState = {
+  bucket: ReviewQueueCard["bucket"];
+  dueAt: string | null;
+  effectiveState: EffectiveReviewState["state"];
+  rawReviewLabel: string;
+  reviewSeedState: ReviewQueueCard["reviewSeedState"];
+};
+
+type ReviewQueueSubjectModel = {
+  globalCard: ReviewCardListItem;
+  group: ReviewSubjectGroup;
+  resolvedState: ResolvedReviewQueueState;
+};
+
+type ReviewOverviewSubjectModel = {
+  card: ReviewCardListItem;
+  group: ReviewSubjectGroup;
+  overviewCard: ReviewOverviewCard;
+};
+
+async function buildReviewPageDataFromWorkspace(input: {
+  cards: ReviewCardListItem[];
+  dailyLimit: number;
+  database: DatabaseClient;
+  grammar: ReviewGrammarLookupEntry[];
+  media: ReviewPageWorkspace;
+  newIntroducedTodayCount: number;
+  now: Date;
+  reviewFrontFurigana: boolean;
+  scope: ReviewScope;
+  searchState: ReviewSearchState;
+  terms: ReviewTermLookupEntry[];
+  visibleMediaId?: string;
+}) {
+  const nowIso = input.now.toISOString();
+  const mediaById = buildReviewMediaLookup(await listMedia(input.database));
+
+  const { subjectStates } = await loadReviewSubjectStateLookup({
+    cards: input.cards,
+    database: input.database,
+    grammar: input.grammar,
+    nowIso,
+    terms: input.terms
+  });
+  const entryLookup = buildEntryLookup(input.terms, input.grammar);
+  const subjectEntryLookup = buildReviewSubjectEntryLookup({
+    grammar: input.grammar,
+    terms: input.terms
+  });
+  const subjectGroups = groupReviewCardsBySubject({
+    cards: input.cards,
+    entryLookup: subjectEntryLookup,
+    nowIso,
+    subjectStates
+  });
+  const queue = buildReviewQueueSnapshot({
+    cards: input.cards,
+    dailyLimit: input.dailyLimit,
+    extraNewCount: input.searchState.extraNewCount,
+    grammar: input.grammar,
+    mediaById,
+    newIntroducedTodayCount: input.newIntroducedTodayCount,
+    nowIso,
+    subjectStates,
+    terms: input.terms,
+    visibleMediaId: input.visibleMediaId
+  });
+  const queueCards = [
+    ...queue.cards,
+    ...queue.manualCards,
+    ...queue.suspendedCards,
+    ...queue.upcomingCards
+  ];
+  const selectedCard =
+    (input.searchState.selectedCardId
+      ? queueCards.find((card) => card.id === input.searchState.selectedCardId)
+      : null) ??
+    (input.searchState.selectedCardId
+      ? buildExplicitReviewSelection({
+        cardId: input.searchState.selectedCardId,
+        entryLookup,
+        mediaById,
+        nowIso,
+        subjectModels: buildReviewQueueSubjectModels({
+          cards: input.cards,
+          entryLookup,
+          nowIso,
+          subjectGroups
+        })
+      })
+      : null) ??
+    queue.cards[0] ??
+    null;
+  const queueIndex = selectedCard
+    ? queue.cards.findIndex(
+        (card) =>
+          card.id === selectedCard.id ||
+          card.contexts.some((context) => context.cardId === selectedCard.id)
+      )
+    : -1;
+
+  return {
+    scope: input.scope,
+    media: input.media,
+    settings: {
+      reviewFrontFurigana: input.reviewFrontFurigana
+    },
+    queue,
+    selectedCard,
+    selectedCardContext: {
+      bucket: selectedCard?.bucket ?? null,
+      gradePreviews: selectedCard
+        ? buildReviewGradePreviews(selectedCard.reviewSeedState, input.now)
+        : [],
+      isQueueCard: queueIndex >= 0,
+      position: queueIndex >= 0 ? queueIndex + 1 : null,
+      remainingCount: queueIndex >= 0 ? queue.cards.length - queueIndex - 1 : 0,
+      showAnswer: input.searchState.showAnswer || queueIndex < 0
+    },
+    session: {
+      answeredCount: input.searchState.answeredCount,
+      extraNewCount: input.searchState.extraNewCount,
+      notice: resolveReviewNotice(input.searchState.noticeCode)
+    }
+  } satisfies ReviewPageData;
+}
+
 export async function getReviewPageData(
   mediaSlug: string,
   searchParams: Record<string, string | string[] | undefined>,
@@ -246,7 +794,6 @@ export async function getReviewPageData(
 ): Promise<ReviewPageData | null> {
   markDataAsLive();
   const now = new Date();
-  const nowIso = now.toISOString();
 
   const media = await getMediaBySlug(database, mediaSlug);
 
@@ -254,52 +801,33 @@ export async function getReviewPageData(
     return null;
   }
 
+  const mediaRows = await listMedia(database);
+  const mediaIds = mediaRows.map((item) => item.id);
   const searchState = normalizeReviewSearchState(searchParams);
   const [
-    cards,
+    eligibleCards,
     terms,
     grammar,
     dailyLimit,
     newIntroducedTodayCount,
     reviewFrontFurigana
   ] = await Promise.all([
-    getEligibleReviewCardsByMediaId(media.id, database),
-    listTermEntriesByMediaId(database, media.id),
-    listGrammarEntriesByMediaId(database, media.id),
+    getEligibleReviewCardsByMediaIds(mediaIds, database),
+    listTermEntrySummaries(database, {
+      mediaIds
+    }),
+    listGrammarEntrySummaries(database, {
+      mediaIds
+    }),
     getReviewDailyLimit(database),
-    countNewCardsIntroducedOnDayByMediaId(database, media.id, now),
+    countReviewSubjectsIntroducedOnDay(database, now),
     getReviewFrontFuriganaSetting(database)
   ]);
-  const queue = buildReviewQueueSnapshot({
-    cards,
+  return buildReviewPageDataFromWorkspace({
+    cards: [...eligibleCards.values()].flat(),
     dailyLimit,
-    extraNewCount: searchState.extraNewCount,
+    database,
     grammar,
-    mediaSlug: media.slug,
-    newIntroducedTodayCount,
-    nowIso,
-    terms
-  });
-  const cardGroups = [
-    ...queue.cards,
-    ...queue.manualCards,
-    ...queue.suspendedCards,
-    ...queue.upcomingCards
-  ];
-  const selectedCard =
-    (searchState.selectedCardId
-      ? cardGroups.find((card) => card.id === searchState.selectedCardId)
-      : null) ??
-    queue.cards[0] ??
-    null;
-  const selectedRawCard = selectedCard
-    ? (cards.find((card) => card.id === selectedCard.id) ?? null)
-    : null;
-  const queueIndex = selectedCard
-    ? queue.cards.findIndex((card) => card.id === selectedCard.id)
-    : -1;
-
-  return {
     media: {
       glossaryHref: mediaGlossaryHref(media.slug),
       href: mediaHref(media.slug),
@@ -307,28 +835,54 @@ export async function getReviewPageData(
       slug: media.slug,
       title: media.title
     },
-    settings: {
-      reviewFrontFurigana
+    newIntroducedTodayCount,
+    now,
+    reviewFrontFurigana,
+    scope: "media",
+    searchState,
+    terms,
+    visibleMediaId: media.id
+  });
+}
+
+export async function getGlobalReviewPageData(
+  searchParams: Record<string, string | string[] | undefined>,
+  database: DatabaseClient = db
+): Promise<ReviewPageData> {
+  markDataAsLive();
+  const now = new Date();
+  const media = await listMedia(database);
+  const mediaIds = media.map((item) => item.id);
+  const searchState = normalizeReviewSearchState(searchParams);
+  const [eligibleCards, terms, grammar, dailyLimit, newIntroducedTodayCount, reviewFrontFurigana] =
+    await Promise.all([
+      getEligibleReviewCardsByMediaIds(mediaIds, database),
+      listTermEntrySummaries(database, { mediaIds }),
+      listGrammarEntrySummaries(database, { mediaIds }),
+      getReviewDailyLimit(database),
+      countReviewSubjectsIntroducedOnDay(database, now),
+      getReviewFrontFuriganaSetting(database)
+    ]);
+
+  return buildReviewPageDataFromWorkspace({
+    cards: [...eligibleCards.values()].flat(),
+    dailyLimit,
+    grammar,
+    database,
+    media: {
+      glossaryHref: "/glossary",
+      href: "/",
+      reviewHref: "/review",
+      slug: "global-review",
+      title: "Review globale"
     },
-    queue,
-    selectedCard,
-    selectedCardContext: {
-      bucket: selectedCard?.bucket ?? null,
-      gradePreviews:
-        selectedRawCard && queueIndex >= 0
-          ? buildReviewGradePreviews(selectedRawCard, now)
-          : [],
-      isQueueCard: queueIndex >= 0,
-      position: queueIndex >= 0 ? queueIndex + 1 : null,
-      remainingCount: queueIndex >= 0 ? queue.cards.length - queueIndex - 1 : 0,
-      showAnswer: searchState.showAnswer || queueIndex < 0
-    },
-    session: {
-      answeredCount: searchState.answeredCount,
-      extraNewCount: searchState.extraNewCount,
-      notice: resolveReviewNotice(searchState.noticeCode)
-    }
-  };
+    newIntroducedTodayCount,
+    now,
+    reviewFrontFurigana,
+    scope: "global",
+    searchState,
+    terms
+  });
 }
 
 export async function getReviewQueueSnapshotForMedia(
@@ -345,23 +899,35 @@ export async function getReviewQueueSnapshotForMedia(
     return null;
   }
 
-  const [cards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
+  const mediaRows = await listMedia(database);
+  const mediaIds = mediaRows.map((item) => item.id);
+  const [eligibleCards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
-      getEligibleReviewCardsByMediaId(media.id, database),
-      listTermEntriesByMediaId(database, media.id),
-      listGrammarEntriesByMediaId(database, media.id),
+      getEligibleReviewCardsByMediaIds(mediaIds, database),
+      listTermEntrySummaries(database, { mediaIds }),
+      listGrammarEntrySummaries(database, { mediaIds }),
       getReviewDailyLimit(database),
-      countNewCardsIntroducedOnDayByMediaId(database, media.id, now)
+      countReviewSubjectsIntroducedOnDay(database, now)
     ]);
+  const cards = [...eligibleCards.values()].flat();
+  const { subjectStates } = await loadReviewSubjectStateLookup({
+    cards,
+    database,
+    grammar,
+    nowIso,
+    terms
+  });
   const snapshot = buildReviewQueueSnapshot({
     cards,
     dailyLimit,
     extraNewCount: 0,
     grammar,
-    mediaSlug: media.slug,
+    mediaById: buildReviewMediaLookup(mediaRows),
     newIntroducedTodayCount,
     nowIso,
-    terms
+    subjectStates,
+    terms,
+    visibleMediaId: media.id
   });
 
   return {
@@ -464,9 +1030,17 @@ export async function getReviewCardDetailData(
     listTermEntriesByMediaId(database, media.id),
     listGrammarEntriesByMediaId(database, media.id)
   ]);
-  const entryLookup = buildEntryLookup(terms, grammar, media.slug);
+  const entryLookup = buildEntryLookup(terms, grammar);
   const selectedCard = cards
-    .map((card) => mapQueueCard(card, entryLookup, media.slug, nowIso))
+    .map((card) =>
+      mapQueueCard(
+        card,
+        entryLookup,
+        [card],
+        new Map([[media.id, { slug: media.slug, title: media.title }]]),
+        nowIso
+      )
+    )
     .find((card) => card.id === cardId);
   const selectedRawCard = cards.find((card) => card.id === cardId) ?? null;
 
@@ -581,7 +1155,7 @@ export async function loadReviewOverviewSnapshots(
   const now = new Date();
   const nowIso = now.toISOString();
   const mediaIds = media.map((item) => item.id);
-  const [eligibleCards, terms, grammar, dailyLimit, introducedCounts] =
+  const [eligibleCards, terms, grammar, dailyLimit, introducedTodayCount] =
     await Promise.all([
       getEligibleReviewCardsByMediaIds(mediaIds, database),
       listTermEntrySummaries(database, {
@@ -591,35 +1165,101 @@ export async function loadReviewOverviewSnapshots(
         mediaIds
       }),
       getReviewDailyLimit(database),
-      countNewCardsIntroducedOnDayByMediaIds(database, mediaIds, now)
+      countReviewSubjectsIntroducedOnDay(database, now)
     ]);
-  const termStatusesByMedia = groupEntryStatusesByMedia(terms);
-  const grammarStatusesByMedia = groupEntryStatusesByMedia(grammar);
-  const introducedCountByMedia = new Map(
-    introducedCounts.map((row) => [row.mediaId, row.count])
-  );
+  const allCards = [...eligibleCards.values()].flat();
+  const { subjectStates } = await loadReviewSubjectStateLookup({
+    cards: allCards,
+    database,
+    grammar,
+    nowIso,
+    terms
+  });
   const snapshots = new Map<string, ReviewOverviewSnapshot>();
+  const entryLookup = buildReviewSubjectEntryLookup({
+    grammar,
+    terms
+  });
+  const entryStatuses = buildReviewEntryStatusLookup({
+    grammar,
+    terms
+  });
 
   for (const item of media) {
-    const entryStatuses = buildReviewEntryStatusLookup({
-      grammar: grammarStatusesByMedia.get(item.id) ?? [],
-      terms: termStatusesByMedia.get(item.id) ?? []
-    });
-
     snapshots.set(
       item.id,
       buildReviewOverviewSnapshot({
-        cards: eligibleCards.get(item.id) ?? [],
+        cards: allCards,
         dailyLimit,
+        entryLookup,
         entryStatuses,
         extraNewCount: 0,
-        newIntroducedTodayCount: introducedCountByMedia.get(item.id) ?? 0,
-        nowIso
+        newIntroducedTodayCount: introducedTodayCount,
+        nowIso,
+        subjectStates,
+        visibleMediaId: item.id
       })
     );
   }
 
   return snapshots;
+}
+
+export async function loadGlobalReviewOverviewSnapshot(
+  database: DatabaseClient = db
+) {
+  const media = await listMedia(database);
+
+  if (media.length === 0) {
+    return buildReviewOverviewSnapshot({
+      cards: [],
+      dailyLimit: 0,
+      entryLookup: new Map(),
+      entryStatuses: new Map(),
+      extraNewCount: 0,
+      newIntroducedTodayCount: 0,
+      nowIso: new Date().toISOString(),
+      subjectStates: new Map()
+    });
+  }
+
+  const now = new Date();
+  const nowIso = now.toISOString();
+  const mediaIds = media.map((item) => item.id);
+  const [eligibleCards, terms, grammar, dailyLimit, introducedTodayCount] =
+    await Promise.all([
+      getEligibleReviewCardsByMediaIds(mediaIds, database),
+      listTermEntrySummaries(database, { mediaIds }),
+      listGrammarEntrySummaries(database, { mediaIds }),
+      getReviewDailyLimit(database),
+      countReviewSubjectsIntroducedOnDay(database, now)
+    ]);
+  const cards = [...eligibleCards.values()].flat();
+  const { subjectStates } = await loadReviewSubjectStateLookup({
+    cards,
+    database,
+    grammar,
+    nowIso,
+    terms
+  });
+  const entryLookup = buildReviewSubjectEntryLookup({
+    grammar,
+    terms
+  });
+
+  return buildReviewOverviewSnapshot({
+    cards,
+    dailyLimit,
+    entryLookup,
+    entryStatuses: buildReviewEntryStatusLookup({
+      grammar,
+      terms
+    }),
+    extraNewCount: 0,
+    newIntroducedTodayCount: introducedTodayCount,
+    nowIso,
+    subjectStates
+  });
 }
 
 export function buildReviewEntryStatusLookup(input: {
@@ -645,38 +1285,375 @@ export function buildReviewEntryStatusLookup(input: {
   return statuses;
 }
 
+function isReviewSubjectVisibleInMedia(
+  group: ReviewSubjectGroup,
+  visibleMediaId?: string
+) {
+  return (
+    !visibleMediaId ||
+    group.cards.some((card) => card.mediaId === visibleMediaId)
+  );
+}
+
+function filterReviewSubjectModelsByMedia<T extends { group: ReviewSubjectGroup }>(
+  models: T[],
+  visibleMediaId?: string
+) {
+  return models.filter((model) =>
+    isReviewSubjectVisibleInMedia(model.group, visibleMediaId)
+  );
+}
+
+function getReviewBucketPriority(bucket: ReviewQueueCard["bucket"]) {
+  const priorities: Record<ReviewQueueCard["bucket"], number> = {
+    due: 0,
+    new: 1,
+    upcoming: 2,
+    manual: 3,
+    suspended: 4
+  };
+
+  return priorities[bucket];
+}
+
+function resolveReviewQueueState(
+  card: ReviewCardListItem,
+  entryLookup: Map<string, ReviewEntryLookupItem>,
+  nowIso: string
+): ResolvedReviewQueueState {
+  const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks).map(
+    (entryLink) =>
+      (entryLookup.get(`${entryLink.entryType}:${entryLink.entryId}`)?.status ??
+        null) as ReviewEntryStatusValue
+  );
+  const effectiveState = resolveEffectiveReviewState({
+    cardStatus: card.status,
+    drivingEntryStatuses,
+    reviewState: card.reviewState
+      ? {
+          manualOverride: card.reviewState.manualOverride,
+          state: card.reviewState.state as ReviewState
+        }
+      : null
+  });
+  const rawReviewLabel = formatReviewStateLabel(
+    card.reviewState?.state ?? null,
+    card.reviewState?.manualOverride ?? false
+  );
+  const dueAt = card.reviewState?.dueAt ?? null;
+
+  return {
+    bucket: resolveCardBucket({
+      asOfIso: nowIso,
+      dueAt,
+      effectiveState: effectiveState.state,
+      reviewState: (card.reviewState?.state as ReviewState | null) ?? null
+    }),
+    dueAt,
+    effectiveState: effectiveState.state,
+    rawReviewLabel,
+    reviewSeedState: {
+      difficulty: card.reviewState?.difficulty ?? null,
+      dueAt: card.reviewState?.dueAt ?? null,
+      lapses: card.reviewState?.lapses ?? 0,
+      lastReviewedAt: card.reviewState?.lastReviewedAt ?? null,
+      learningSteps: card.reviewState?.learningSteps ?? 0,
+      reps: card.reviewState?.reps ?? 0,
+      scheduledDays: card.reviewState?.scheduledDays ?? 0,
+      stability: card.reviewState?.stability ?? null,
+      state: (card.reviewState?.state as ReviewState | null) ?? null
+    }
+  };
+}
+
+function selectReviewQueueSubjectCard(input: {
+  cards: ReviewCardListItem[];
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+  nowIso: string;
+  preferredMediaId?: string;
+  subjectState: ReviewSubjectStateSnapshot | null;
+}) {
+  const preferredCards = input.preferredMediaId
+    ? input.cards.filter((card) => card.mediaId === input.preferredMediaId)
+    : [];
+  const candidates = preferredCards.length > 0 ? preferredCards : input.cards;
+  let bestPriority = Number.MAX_SAFE_INTEGER;
+  let bestCards: ReviewCardListItem[] = [];
+
+  for (const candidate of candidates) {
+    const resolved = resolveReviewQueueState(
+      applySubjectStateToReviewCard(candidate, input.subjectState),
+      input.entryLookup,
+      input.nowIso
+    );
+    const priority = getReviewBucketPriority(resolved.bucket);
+
+    if (priority < bestPriority) {
+      bestPriority = priority;
+      bestCards = [candidate];
+      continue;
+    }
+
+    if (priority === bestPriority) {
+      bestCards.push(candidate);
+    }
+  }
+
+  return selectReviewSubjectRepresentativeCard(
+    bestCards.length > 0 ? bestCards : candidates,
+    input.subjectState,
+    input.nowIso
+  );
+}
+
+function buildReviewQueueSubjectModels(input: {
+  cards: ReviewCardListItem[];
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+  nowIso: string;
+  subjectGroups: ReviewSubjectGroup[];
+}) {
+  return input.subjectGroups.map((group) => {
+    const globalCard = selectReviewQueueSubjectCard({
+      cards: group.cards,
+      entryLookup: input.entryLookup,
+      nowIso: input.nowIso,
+      subjectState: group.subjectState
+    });
+
+    return {
+      globalCard,
+      group,
+      resolvedState: resolveReviewQueueState(
+        applySubjectStateToReviewCard(globalCard, group.subjectState),
+        input.entryLookup,
+        input.nowIso
+      )
+    } satisfies ReviewQueueSubjectModel;
+  });
+}
+
+function mapReviewQueueSubjectModel(
+  model: ReviewQueueSubjectModel,
+  input: {
+    entryLookup: Map<string, ReviewEntryLookupItem>;
+    mediaById: ReviewMediaLookup;
+    nowIso: string;
+    visibleMediaId?: string;
+  }
+) {
+  const scopedCard = selectReviewQueueSubjectCard({
+    cards: model.group.cards,
+    entryLookup: input.entryLookup,
+    nowIso: input.nowIso,
+    preferredMediaId: input.visibleMediaId,
+    subjectState: model.group.subjectState
+  });
+
+  return mapQueueCard(
+    applySubjectStateToReviewCard(scopedCard, model.group.subjectState),
+    input.entryLookup,
+    model.group.cards,
+    input.mediaById,
+    input.nowIso,
+    model.resolvedState
+  );
+}
+
+function compareReviewQueueSubjectModelsByDue(
+  left: ReviewQueueSubjectModel,
+  right: ReviewQueueSubjectModel
+) {
+  if ((left.resolvedState.dueAt ?? "") !== (right.resolvedState.dueAt ?? "")) {
+    return (left.resolvedState.dueAt ?? "9999").localeCompare(
+      right.resolvedState.dueAt ?? "9999"
+    );
+  }
+
+  const interactionDifference = right.group.lastInteractionAt.localeCompare(
+    left.group.lastInteractionAt
+  );
+
+  if (interactionDifference !== 0) {
+    return interactionDifference;
+  }
+
+  return compareReviewCardsByOrder(left.globalCard, right.globalCard);
+}
+
+function compareReviewQueueSubjectModelsByOrder(
+  left: ReviewQueueSubjectModel,
+  right: ReviewQueueSubjectModel
+) {
+  const interactionDifference = right.group.lastInteractionAt.localeCompare(
+    left.group.lastInteractionAt
+  );
+
+  if (interactionDifference !== 0) {
+    return interactionDifference;
+  }
+
+  return compareReviewCardsByOrder(left.globalCard, right.globalCard);
+}
+
+function selectReviewOverviewSubjectCard(input: {
+  cards: ReviewCardListItem[];
+  entryStatuses: Map<string, ReviewEntryStatusValue>;
+  nowIso: string;
+  subjectState: ReviewSubjectStateSnapshot | null;
+}) {
+  let bestPriority = Number.MAX_SAFE_INTEGER;
+  let bestCards: ReviewCardListItem[] = [];
+
+  for (const candidate of input.cards) {
+    const overviewCard = mapReviewOverviewCard(
+      applySubjectStateToReviewCard(candidate, input.subjectState),
+      input.entryStatuses,
+      input.nowIso
+    );
+    const priority = getReviewBucketPriority(overviewCard.bucket);
+
+    if (priority < bestPriority) {
+      bestPriority = priority;
+      bestCards = [candidate];
+      continue;
+    }
+
+    if (priority === bestPriority) {
+      bestCards.push(candidate);
+    }
+  }
+
+  return selectReviewSubjectRepresentativeCard(
+    bestCards.length > 0 ? bestCards : input.cards,
+    input.subjectState,
+    input.nowIso
+  );
+}
+
+function buildReviewOverviewSubjectModels(input: {
+  cards: ReviewCardListItem[];
+  entryLookup: Map<string, ReviewSubjectEntryMeta>;
+  entryStatuses: Map<string, ReviewEntryStatusValue>;
+  nowIso: string;
+  subjectStates: Map<string, ReviewSubjectStateSnapshot>;
+}) {
+  const subjectGroups = groupReviewCardsBySubject({
+    cards: input.cards,
+    entryLookup: input.entryLookup,
+    nowIso: input.nowIso,
+    subjectStates: input.subjectStates
+  });
+
+  return subjectGroups.map((group) => {
+    const card = selectReviewOverviewSubjectCard({
+      cards: group.cards,
+      entryStatuses: input.entryStatuses,
+      nowIso: input.nowIso,
+      subjectState: group.subjectState
+    });
+
+    return {
+      card,
+      group,
+      overviewCard: mapReviewOverviewCard(
+        applySubjectStateToReviewCard(card, group.subjectState),
+        input.entryStatuses,
+        input.nowIso
+      )
+    } satisfies ReviewOverviewSubjectModel;
+  });
+}
+
+function compareReviewOverviewSubjectModelsByDue(
+  left: ReviewOverviewSubjectModel,
+  right: ReviewOverviewSubjectModel
+) {
+  if ((left.overviewCard.dueAt ?? "") !== (right.overviewCard.dueAt ?? "")) {
+    return (left.overviewCard.dueAt ?? "9999").localeCompare(
+      right.overviewCard.dueAt ?? "9999"
+    );
+  }
+
+  const interactionDifference = right.group.lastInteractionAt.localeCompare(
+    left.group.lastInteractionAt
+  );
+
+  if (interactionDifference !== 0) {
+    return interactionDifference;
+  }
+
+  return compareReviewCardsByOrder(left.card, right.card);
+}
+
+function compareReviewOverviewSubjectModelsByOrder(
+  left: ReviewOverviewSubjectModel,
+  right: ReviewOverviewSubjectModel
+) {
+  const interactionDifference = right.group.lastInteractionAt.localeCompare(
+    left.group.lastInteractionAt
+  );
+
+  if (interactionDifference !== 0) {
+    return interactionDifference;
+  }
+
+  return compareReviewCardsByOrder(left.card, right.card);
+}
+
 export function buildReviewOverviewSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
+  entryLookup: Map<string, ReviewSubjectEntryMeta>;
   entryStatuses: Map<string, ReviewEntryStatusValue>;
   extraNewCount: number;
   newIntroducedTodayCount: number;
   nowIso: string;
+  subjectStates: Map<string, ReviewSubjectStateSnapshot>;
+  visibleMediaId?: string;
 }): ReviewOverviewSnapshot {
-  const allCards = input.cards.map((card) =>
-    mapReviewOverviewCard(card, input.entryStatuses, input.nowIso)
+  const models = buildReviewOverviewSubjectModels({
+    cards: input.cards,
+    entryLookup: input.entryLookup,
+    entryStatuses: input.entryStatuses,
+    nowIso: input.nowIso,
+    subjectStates: input.subjectStates
+  });
+  const relevantModels = filterReviewSubjectModelsByMedia(
+    models,
+    input.visibleMediaId
   );
-  const dueCards = allCards
-    .filter((card) => card.bucket === "due")
-    .sort(compareReviewCardsByDue);
-  const newCards = allCards
-    .filter((card) => card.bucket === "new")
-    .sort(compareReviewCardsByOrder);
-  const manualCards = allCards
-    .filter((card) => card.bucket === "manual")
-    .sort(compareReviewCardsByOrder);
-  const suspendedCards = allCards
-    .filter((card) => card.bucket === "suspended")
-    .sort(compareReviewCardsByOrder);
-  const upcomingCards = allCards
-    .filter((card) => card.bucket === "upcoming")
-    .sort(compareReviewCardsByDue);
+  const dueCards = models
+    .filter((model) => model.overviewCard.bucket === "due")
+    .sort(compareReviewOverviewSubjectModelsByDue)
+    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId))
+    .map((model) => model.overviewCard);
+  const globalNewCards = models
+    .filter((model) => model.overviewCard.bucket === "new")
+    .sort(compareReviewOverviewSubjectModelsByOrder);
+  const newCards = globalNewCards
+    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId))
+    .map((model) => model.overviewCard);
+  const manualCards = relevantModels
+    .filter((model) => model.overviewCard.bucket === "manual")
+    .sort(compareReviewOverviewSubjectModelsByOrder)
+    .map((model) => model.overviewCard);
+  const suspendedCards = relevantModels
+    .filter((model) => model.overviewCard.bucket === "suspended")
+    .sort(compareReviewOverviewSubjectModelsByOrder)
+    .map((model) => model.overviewCard);
+  const upcomingCards = relevantModels
+    .filter((model) => model.overviewCard.bucket === "upcoming")
+    .sort(compareReviewOverviewSubjectModelsByDue)
+    .map((model) => model.overviewCard);
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
   const newSlots = Math.max(
     effectiveDailyLimit - input.newIntroducedTodayCount,
     0
   );
-  const queuedNewCards = newCards.slice(0, newSlots);
+  const queuedNewCards = globalNewCards
+    .slice(0, newSlots)
+    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId))
+    .map((model) => model.overviewCard);
   const queueCards = [...dueCards, ...queuedNewCards];
   const queueLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
@@ -701,7 +1678,7 @@ export function buildReviewOverviewSnapshot(input: {
     queueCount: queueCards.length,
     queueLabel,
     suspendedCount: suspendedCards.length,
-    totalCards: input.cards.length,
+    totalCards: relevantModels.length,
     upcomingCount: upcomingCards.length
   };
 }
@@ -745,7 +1722,7 @@ function filterReviewCardsByLessonCompletion(
 
 type ReviewOverviewCard = Pick<
   ReviewQueueCard,
-  "bucket" | "createdAt" | "dueAt" | "front" | "orderIndex"
+  "bucket" | "createdAt" | "dueAt" | "front" | "id" | "orderIndex"
 >;
 
 function buildReviewEntryKey(entryType: string, entryId: string) {
@@ -783,6 +1760,7 @@ function mapReviewOverviewCard(
     createdAt: card.createdAt,
     dueAt,
     front: card.front,
+    id: card.id,
     orderIndex: card.orderIndex
   };
 }
@@ -824,6 +1802,18 @@ function groupCardsByMedia(cards: ReviewCardListItem[]) {
   return grouped;
 }
 
+function buildReviewMediaLookup(media: MediaListItem[]) {
+  return new Map(
+    media.map((item) => [
+      item.id,
+      {
+        slug: item.slug,
+        title: item.title
+      }
+    ])
+  );
+}
+
 function groupLessonLinkedReviewEntriesByMedia(
   rows: Array<LessonLinkedReviewEntry & { mediaId: string }>
 ) {
@@ -844,29 +1834,6 @@ function groupLessonLinkedReviewEntriesByMedia(
         lessonStatus: row.lessonStatus
       }
     ]);
-  }
-
-  return grouped;
-}
-
-function groupEntryStatusesByMedia<
-  TEntry extends {
-    entryStatus: ReviewEntryStatusValue;
-    id: string;
-    mediaId: string;
-  }
->(entries: TEntry[]) {
-  const grouped = new Map<string, TEntry[]>();
-
-  for (const entry of entries) {
-    const existing = grouped.get(entry.mediaId);
-
-    if (existing) {
-      existing.push(entry);
-      continue;
-    }
-
-    grouped.set(entry.mediaId, [entry]);
   }
 
   return grouped;
@@ -933,42 +1900,94 @@ function buildReviewQueueSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
   extraNewCount: number;
-  grammar: GrammarGlossaryEntry[];
-  mediaSlug: string;
+  grammar: ReviewGrammarLookupEntry[];
+  mediaById: ReviewMediaLookup;
   newIntroducedTodayCount: number;
   nowIso: string;
-  terms: TermGlossaryEntry[];
+  subjectStates: Map<string, ReviewSubjectStateSnapshot>;
+  terms: ReviewTermLookupEntry[];
+  visibleMediaId?: string;
 }) {
-  const entryLookup = buildEntryLookup(
-    input.terms,
-    input.grammar,
-    input.mediaSlug
+  const entryLookup = buildEntryLookup(input.terms, input.grammar);
+  const subjectEntryLookup = buildReviewSubjectEntryLookup({
+    grammar: input.grammar,
+    terms: input.terms
+  });
+  const subjectGroups = groupReviewCardsBySubject({
+    cards: input.cards,
+    entryLookup: subjectEntryLookup,
+    nowIso: input.nowIso,
+    subjectStates: input.subjectStates
+  });
+  const subjectModels = buildReviewQueueSubjectModels({
+    cards: input.cards,
+    entryLookup,
+    nowIso: input.nowIso,
+    subjectGroups
+  });
+  const relevantModels = filterReviewSubjectModelsByMedia(
+    subjectModels,
+    input.visibleMediaId
   );
-  const allCards = input.cards.map((card) =>
-    mapQueueCard(card, entryLookup, input.mediaSlug, input.nowIso)
+  const dueCards = subjectModels
+    .filter((model) => model.resolvedState.bucket === "due")
+    .sort(compareReviewQueueSubjectModelsByDue)
+    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId));
+  const globalNewCards = subjectModels
+    .filter((model) => model.resolvedState.bucket === "new")
+    .sort(compareReviewQueueSubjectModelsByOrder);
+  const newCards = globalNewCards.filter((model) =>
+    isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
   );
-  const dueCards = allCards
-    .filter((card) => card.bucket === "due")
-    .sort(compareReviewCardsByDue);
-  const newCards = allCards
-    .filter((card) => card.bucket === "new")
-    .sort(compareReviewCardsByOrder);
-  const manualCards = allCards
-    .filter((card) => card.bucket === "manual")
-    .sort(compareReviewCardsByOrder);
-  const suspendedCards = allCards
-    .filter((card) => card.bucket === "suspended")
-    .sort(compareReviewCardsByOrder);
-  const upcomingCards = allCards
-    .filter((card) => card.bucket === "upcoming")
-    .sort(compareReviewCardsByDue);
+  const manualCards = relevantModels
+    .filter((model) => model.resolvedState.bucket === "manual")
+    .sort(compareReviewQueueSubjectModelsByOrder);
+  const suspendedCards = relevantModels
+    .filter((model) => model.resolvedState.bucket === "suspended")
+    .sort(compareReviewQueueSubjectModelsByOrder);
+  const upcomingCards = relevantModels
+    .filter((model) => model.resolvedState.bucket === "upcoming")
+    .sort(compareReviewQueueSubjectModelsByDue);
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
   const newSlots = Math.max(
     effectiveDailyLimit - input.newIntroducedTodayCount,
     0
   );
-  const queuedNewCards = newCards.slice(0, newSlots);
-  const queueCards = [...dueCards, ...queuedNewCards];
+  const queuedNewCards = globalNewCards
+    .slice(0, newSlots)
+    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId));
+  const queueCards = [...dueCards, ...queuedNewCards].map((model) =>
+    mapReviewQueueSubjectModel(model, {
+      entryLookup,
+      mediaById: input.mediaById,
+      nowIso: input.nowIso,
+      visibleMediaId: input.visibleMediaId
+    })
+  );
+  const manualQueueCards = manualCards.map((model) =>
+    mapReviewQueueSubjectModel(model, {
+      entryLookup,
+      mediaById: input.mediaById,
+      nowIso: input.nowIso,
+      visibleMediaId: input.visibleMediaId
+    })
+  );
+  const suspendedQueueCards = suspendedCards.map((model) =>
+    mapReviewQueueSubjectModel(model, {
+      entryLookup,
+      mediaById: input.mediaById,
+      nowIso: input.nowIso,
+      visibleMediaId: input.visibleMediaId
+    })
+  );
+  const upcomingQueueCards = upcomingCards.map((model) =>
+    mapReviewQueueSubjectModel(model, {
+      entryLookup,
+      mediaById: input.mediaById,
+      nowIso: input.nowIso,
+      visibleMediaId: input.visibleMediaId
+    })
+  );
   const introLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
     dueCount: dueCards.length,
@@ -983,27 +2002,28 @@ function buildReviewQueueSnapshot(input: {
     dueCount: dueCards.length,
     effectiveDailyLimit,
     introLabel,
-    manualCards,
+    manualCards: manualQueueCards,
     manualCount: manualCards.length,
     newAvailableCount: newCards.length,
     newQueuedCount: queuedNewCards.length,
     queueLabel: introLabel,
     queueCount: queueCards.length,
-    suspendedCards,
+    suspendedCards: suspendedQueueCards,
     suspendedCount: suspendedCards.length,
-    upcomingCards,
+    upcomingCards: upcomingQueueCards,
     upcomingCount: upcomingCards.length
   };
 }
 
 function buildEntryLookup(
-  terms: TermGlossaryEntry[],
-  grammar: GrammarGlossaryEntry[],
-  mediaSlug: string
+  terms: ReviewTermLookupEntry[],
+  grammar: ReviewGrammarLookupEntry[]
 ) {
   const lookup = new Map<string, ReviewEntryLookupItem>();
 
   for (const entry of terms) {
+    const mediaSlug = getEntryMediaSlug(entry);
+
     lookup.set(`term:${entry.id}`, {
       href: mediaGlossaryEntryHref(mediaSlug, "term", entry.sourceId),
       id: entry.sourceId,
@@ -1016,13 +2036,15 @@ function buildEntryLookup(
           reading: entry.reading
         }) ?? undefined,
       reading: entry.reading,
-      status: entry.status?.status ?? null,
+      status: getReviewEntryStatus(entry),
       subtitle:
         [entry.reading, entry.romaji].filter(Boolean).join(" / ") || undefined
     });
   }
 
   for (const entry of grammar) {
+    const mediaSlug = getEntryMediaSlug(entry);
+
     lookup.set(`grammar:${entry.id}`, {
       href: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.sourceId),
       id: entry.sourceId,
@@ -1035,12 +2057,94 @@ function buildEntryLookup(
           reading: entry.reading ?? entry.pattern
         }) ?? undefined,
       reading: entry.reading ?? deriveKanaReading(entry.pattern),
-      status: entry.status?.status ?? null,
+      status: getReviewEntryStatus(entry),
       subtitle: entry.title !== entry.pattern ? entry.title : undefined
     });
   }
 
   return lookup;
+}
+
+function getEntryMediaSlug(
+  entry:
+    | ReviewTermLookupEntry
+    | ReviewGrammarLookupEntry
+) {
+  if ("mediaSlug" in entry) {
+    return entry.mediaSlug;
+  }
+
+  return entry.media.slug;
+}
+
+function resolveReviewCardMedia(
+  card: ReviewCardListItem,
+  mediaById: ReviewMediaLookup
+) {
+  return (
+    mediaById.get(card.mediaId) ?? {
+      slug: "unknown-media",
+      title: "Media"
+    }
+  );
+}
+
+function buildReviewCardContexts(
+  cards: ReviewCardListItem[],
+  mediaById: ReviewMediaLookup
+) {
+  return cards
+    .map((item) => {
+      const media = resolveReviewCardMedia(item, mediaById);
+
+      return {
+        cardId: item.id,
+        front: stripInlineMarkdown(item.front),
+        mediaSlug: media.slug,
+        mediaTitle: media.title,
+        segmentTitle: item.segment?.title ?? undefined
+      };
+    })
+    .sort((left, right) => {
+      if (left.mediaTitle !== right.mediaTitle) {
+        return left.mediaTitle.localeCompare(right.mediaTitle, "it");
+      }
+
+      if ((left.segmentTitle ?? "") !== (right.segmentTitle ?? "")) {
+        return (left.segmentTitle ?? "").localeCompare(right.segmentTitle ?? "", "it");
+      }
+
+      return left.front.localeCompare(right.front, "it");
+    });
+}
+
+function buildExplicitReviewSelection(input: {
+  cardId: string;
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+  mediaById: ReviewMediaLookup;
+  nowIso: string;
+  subjectModels: ReviewQueueSubjectModel[];
+}) {
+  const matchingModel = input.subjectModels.find((model) =>
+    model.group.cards.some((card) => card.id === input.cardId)
+  );
+
+  if (!matchingModel) {
+    return null;
+  }
+
+  const selectedMember =
+    matchingModel.group.cards.find((card) => card.id === input.cardId) ??
+    matchingModel.globalCard;
+
+  return mapQueueCard(
+    applySubjectStateToReviewCard(selectedMember, matchingModel.group.subjectState),
+    input.entryLookup,
+    matchingModel.group.cards,
+    input.mediaById,
+    input.nowIso,
+    matchingModel.resolvedState
+  );
 }
 
 function buildReviewCrossMediaNotesPreview(notes?: string | null) {
@@ -1067,9 +2171,12 @@ function buildReviewCrossMediaNotesPreview(notes?: string | null) {
 function mapQueueCard(
   card: ReviewCardListItem,
   entryLookup: Map<string, ReviewEntryLookupItem>,
-  mediaSlug: string,
-  nowIso: string
+  subjectCards: ReviewCardListItem[],
+  mediaById: ReviewMediaLookup,
+  nowIso: string,
+  resolvedState?: ResolvedReviewQueueState
 ): ReviewQueueCard {
+  const cardMedia = resolveReviewCardMedia(card, mediaById);
   const entries = card.entryLinks
     .slice()
     .sort(compareEntryLinks)
@@ -1093,32 +2200,13 @@ function mapQueueCard(
         } satisfies ReviewCardEntrySummary
       ];
     });
-  const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks).map(
-    (entryLink) =>
-      (entryLookup.get(`${entryLink.entryType}:${entryLink.entryId}`)?.status ??
-        null) as ReviewEntryStatusValue
-  );
-  const effectiveState = resolveEffectiveReviewState({
-    cardStatus: card.status,
-    drivingEntryStatuses,
-    reviewState: card.reviewState
-      ? {
-          manualOverride: card.reviewState.manualOverride,
-          state: card.reviewState.state as ReviewState
-        }
-      : null
-  });
-  const rawReviewLabel = formatReviewStateLabel(
-    card.reviewState?.state ?? null,
-    card.reviewState?.manualOverride ?? false
-  );
-  const dueAt = card.reviewState?.dueAt ?? null;
-  const bucket = resolveCardBucket({
-    asOfIso: nowIso,
-    dueAt,
-    effectiveState: effectiveState.state,
-    reviewState: (card.reviewState?.state as ReviewState | null) ?? null
-  });
+  const resolved =
+    resolvedState ??
+    resolveReviewQueueState(
+      applySubjectStateToReviewCard(card, null),
+      entryLookup,
+      nowIso
+    );
   const pronunciations = buildReviewCardPronunciations(
     card.entryLinks,
     entryLookup
@@ -1127,31 +2215,37 @@ function mapQueueCard(
 
   return {
     back: card.back,
-    bucket,
-    bucketDetail: buildBucketDetail(bucket, dueAt),
-    bucketLabel: formatBucketLabel(bucket, effectiveState.state),
+    bucket: resolved.bucket,
+    bucketDetail: buildBucketDetail(resolved.bucket, resolved.dueAt),
+    bucketLabel: formatBucketLabel(resolved.bucket, resolved.effectiveState),
+    contexts: buildReviewCardContexts(subjectCards, mediaById),
     createdAt: card.createdAt,
-    dueAt,
-    dueLabel: dueAt ? `Scadenza ${formatShortIsoDate(dueAt)}` : undefined,
-    effectiveState: effectiveState.state,
+    dueAt: resolved.dueAt,
+    dueLabel: resolved.dueAt
+      ? `Scadenza ${formatShortIsoDate(resolved.dueAt)}`
+      : undefined,
+    effectiveState: resolved.effectiveState,
     effectiveStateLabel:
-      effectiveState.state === "ignored"
+      resolved.effectiveState === "ignored"
         ? "Ignorata"
         : formatReviewStateLabel(
-            effectiveState.state,
-            effectiveState.state === "known_manual"
+            resolved.effectiveState,
+            resolved.effectiveState === "known_manual"
           ),
     exampleIt: card.exampleIt ?? undefined,
     exampleJp: card.exampleJp ?? undefined,
     entries,
     front: card.front,
-    href: mediaReviewCardHref(mediaSlug, card.id),
+    href: mediaReviewCardHref(cardMedia.slug, card.id),
     id: card.id,
+    mediaSlug: cardMedia.slug,
+    mediaTitle: cardMedia.title,
     notes: card.notesIt ?? undefined,
     orderIndex: card.orderIndex,
     pronunciations,
-    rawReviewLabel,
+    rawReviewLabel: resolved.rawReviewLabel,
     reading,
+    reviewSeedState: resolved.reviewSeedState,
     segmentTitle: card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(card.cardType)
   };
@@ -1409,7 +2503,7 @@ function formatShortIsoDate(value: string) {
 }
 
 function buildReviewGradePreviews(
-  card: ReviewCardListItem,
+  reviewSeedState: ReviewQueueCard["reviewSeedState"],
   now: Date
 ): ReviewGradePreview[] {
   const ratings: ReviewRating[] = ["again", "hard", "good", "easy"];
@@ -1417,15 +2511,15 @@ function buildReviewGradePreviews(
   return ratings.map((rating) => {
     const scheduled = scheduleReview({
       current: {
-        difficulty: card.reviewState?.difficulty ?? null,
-        dueAt: card.reviewState?.dueAt ?? null,
-        lapses: card.reviewState?.lapses ?? 0,
-        lastReviewedAt: card.reviewState?.lastReviewedAt ?? null,
-        learningSteps: card.reviewState?.learningSteps ?? 0,
-        reps: card.reviewState?.reps ?? 0,
-        scheduledDays: card.reviewState?.scheduledDays ?? 0,
-        stability: card.reviewState?.stability ?? null,
-        state: card.reviewState?.state as ReviewState | null
+        difficulty: reviewSeedState.difficulty,
+        dueAt: reviewSeedState.dueAt,
+        lapses: reviewSeedState.lapses,
+        lastReviewedAt: reviewSeedState.lastReviewedAt,
+        learningSteps: reviewSeedState.learningSteps,
+        reps: reviewSeedState.reps,
+        scheduledDays: reviewSeedState.scheduledDays,
+        stability: reviewSeedState.stability,
+        state: reviewSeedState.state
       },
       now,
       rating
@@ -1498,16 +2592,6 @@ function startOfLocalDay(value: Date) {
   return new Date(value.getFullYear(), value.getMonth(), value.getDate());
 }
 
-function compareReviewCardsByDue<
-  TCard extends Pick<ReviewQueueCard, "createdAt" | "dueAt" | "orderIndex">
->(left: TCard, right: TCard) {
-  if ((left.dueAt ?? "") !== (right.dueAt ?? "")) {
-    return (left.dueAt ?? "9999").localeCompare(right.dueAt ?? "9999");
-  }
-
-  return compareReviewCardsByOrder(left, right);
-}
-
 function compareReviewCardsByOrder<
   TCard extends Pick<ReviewQueueCard, "createdAt" | "orderIndex">
 >(left: TCard, right: TCard) {
@@ -1523,7 +2607,6 @@ function compareReviewCardsByOrder<
 
   return left.createdAt.localeCompare(right.createdAt);
 }
-
 function readSearchParam(
   searchParams: Record<string, string | string[] | undefined>,
   key: string

@@ -174,7 +174,7 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
               </div>
               <p className="settings-panel__body">
                 La review usa questo valore per decidere quante nuove card
-                entrano nella coda quotidiana dopo le dovute.
+                entrano nella coda quotidiana dopo le card da ripassare.
               </p>
             </div>
             <label className="settings-field">

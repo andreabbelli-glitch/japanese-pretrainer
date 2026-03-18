@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 54
+order: 58
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -75,6 +75,24 @@ reveal_mode: sentence
 - `{{相手|あいて}}プレイヤーを攻撃できない` è una restrizione permanente.
 - `かわりに` indica il rimpiazzo: la creatura si tappa per bloccare al posto di
   lasciare passare l'attacco.
+
+### [マッハファイター](term:term-mach-fighter)
+
+:::example_sentence
+jp: >-
+  [マッハファイター](term:term-mach-fighter)：このクリーチャーは、
+  [バトルゾーン](term:term-battle-zone)に{{出|で}}たターン、
+  [タップ](term:term-tap)またはアンタップしているクリーチャーを
+  [{{攻撃|こうげき}}](term:term-attack)できる。
+translation_it: >-
+  Mach Fighter: nel turno in cui entra nel battle zone, questa creatura può
+  attaccare creature tapped o untapped.
+reveal_mode: sentence
+:::
+
+- `バトルゾーンに{{出|で}}たターン` fissa la finestra immediata dopo l'ingresso.
+- `タップまたはアンタップしているクリーチャー` allarga i bersagli: la keyword
+  non si limita alle creature già tappate.
 
 ### [シビルカウント](term:term-civil-count)
 

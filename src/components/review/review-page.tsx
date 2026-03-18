@@ -12,6 +12,7 @@ export function ReviewPage({ data }: ReviewPageProps) {
 
 function buildReviewPageClientKey(data: ReviewPageData) {
   return [
+    data.scope,
     data.media.slug,
     data.selectedCard?.id ?? "no-card",
     data.selectedCardContext.showAnswer ? "answer" : "front",

@@ -1168,14 +1168,14 @@ describe("glossary data", () => {
     );
 
     expect(glossaryMarkup).toContain("<strong>enfasi</strong>");
-    expect(glossaryMarkup).toContain("<ruby>");
+    expect(glossaryMarkup).toContain("<ruby class=\"app-ruby\">");
     expect(glossaryMarkup).toContain("<code");
     expect(glossaryMarkup).toContain("inline-ref");
     expect(glossaryMarkup).not.toContain("**enfasi**");
     expect(glossaryMarkup).not.toContain("{{日本語|にほんご}}");
     expect(glossaryMarkup).not.toContain("[食べる](term:term-taberu)");
     expect(reviewMarkup).toContain("<strong>enfasi</strong>");
-    expect(reviewMarkup).toContain("<ruby>");
+    expect(reviewMarkup).toContain("<ruby class=\"app-ruby\">");
     expect(reviewMarkup).toContain("<code");
     expect(reviewMarkup).toContain("inline-ref");
     expect(reviewMarkup).not.toContain("**enfasi**");

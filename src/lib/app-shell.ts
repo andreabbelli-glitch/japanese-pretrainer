@@ -18,6 +18,7 @@ import {
 import {
   buildReviewOverviewSnapshot,
   buildReviewEntryStatusLookup,
+  loadGlobalReviewOverviewSnapshot,
   loadReviewOverviewSnapshots
 } from "@/lib/review";
 import {
@@ -81,7 +82,10 @@ export async function getDashboardData(
   markDataAsLive();
 
   const rows = await listMedia(database);
-  const media = await buildMediaShellSnapshots(database, rows);
+  const [media, globalReview] = await Promise.all([
+    buildMediaShellSnapshots(database, rows),
+    loadGlobalReviewOverviewSnapshot(database)
+  ]);
   const focusMedia = pickFocusMedia(media);
   const reviewMedia = pickReviewMedia(media);
 
@@ -90,12 +94,12 @@ export async function getDashboardData(
     reviewMedia,
     media,
     totals: {
-      cardsDue: media.reduce((sum, item) => sum + item.cardsDue, 0),
+      cardsDue: globalReview.dueCount,
       lessonsCompleted: media.reduce((sum, item) => sum + item.lessonsCompleted, 0),
       lessonsTotal: media.reduce((sum, item) => sum + item.lessonsTotal, 0),
       entriesKnown: media.reduce((sum, item) => sum + item.entriesKnown, 0),
       entriesTotal: media.reduce((sum, item) => sum + item.entriesTotal, 0),
-      activeReviewCards: media.reduce((sum, item) => sum + item.activeReviewCards, 0)
+      activeReviewCards: globalReview.activeCards
     }
   };
 }
@@ -171,13 +175,15 @@ async function buildMediaShellSnapshots(
         buildReviewOverviewSnapshot({
           cards: [],
           dailyLimit: 0,
+          entryLookup: new Map(),
           entryStatuses: buildReviewEntryStatusLookup({
             grammar: [],
             terms: []
           }),
           extraNewCount: 0,
           newIntroducedTodayCount: 0,
-          nowIso
+          nowIso,
+          subjectStates: new Map()
         })
     })
   );
@@ -201,13 +207,15 @@ async function buildMediaShellSnapshot(
       buildReviewOverviewSnapshot({
         cards: [],
         dailyLimit: 0,
+        entryLookup: new Map(),
         entryStatuses: buildReviewEntryStatusLookup({
           grammar: [],
           terms: []
         }),
         extraNewCount: 0,
         newIntroducedTodayCount: 0,
-        nowIso
+        nowIso,
+        subjectStates: new Map()
       })
     )
   ]);
@@ -307,7 +315,7 @@ function buildReviewSignals({
     return {
       value:
         review.dueCount > 0
-          ? `${review.queueCount} in coda`
+          ? `${review.dueCount} da ripassare`
           : review.newQueuedCount > 0
             ? "Nuove pronte"
             : `${review.queueCount} in coda`,
@@ -318,7 +326,7 @@ function buildReviewSignals({
 
   if (cardsDue > 0) {
     return {
-      value: `${cardsDue} dovute`,
+      value: `${cardsDue} da ripassare`,
       detail: nextCardFront
         ? `Prossima card: ${nextCardFront}`
         : "Richiedono attenzione adesso",

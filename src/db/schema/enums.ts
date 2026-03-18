@@ -36,6 +36,7 @@ export const reviewStateValues = [
   "suspended",
   "known_manual"
 ] as const;
+export const reviewSubjectKindValues = ["group", "entry", "card"] as const;
 export const reviewRatingValues = ["again", "hard", "good", "easy"] as const;
 export const reviewSchedulerVersionValues = [
   "legacy_simple",

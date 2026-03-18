@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -15,6 +15,7 @@ import {
   closeDatabaseClient,
   countNewCardsIntroducedOnDayByMediaId,
   countNewCardsIntroducedOnDayByMediaIds,
+  countReviewSubjectsIntroducedOnDay,
   createDatabaseClient,
   developmentFixture,
   entryStatus,
@@ -23,6 +24,7 @@ import {
   media,
   reviewLog,
   reviewState,
+  reviewSubjectState,
   runMigrations,
   seedDevelopmentDatabase,
   term,
@@ -30,11 +32,14 @@ import {
 } from "@/db";
 import { migrateReviewHistoryToFsrs } from "@/db/review-fsrs-migration";
 import {
+  getGlobalReviewPageData,
   getReviewCardDetailData,
   getReviewLaunchMedia,
   getReviewPageData,
   getReviewQueueSnapshotForMedia,
-  loadReviewOverviewSnapshots
+  loadGlobalReviewOverviewSnapshot,
+  loadReviewOverviewSnapshots,
+  type ReviewPageData
 } from "@/lib/review";
 import {
   applyReviewGrade,
@@ -68,6 +73,96 @@ vi.mock("next/navigation", () => ({
   }),
   useSearchParams: () => new URLSearchParams()
 }));
+
+vi.mock("next/cache", () => ({
+  revalidatePath: () => undefined
+}));
+
+async function prepareReviewSessionRedirectFixture(database: DatabaseClient) {
+  const futureDueAt = "2999-01-01T00:00:00.000Z";
+  const pastDueAt = "2000-01-01T00:00:00.000Z";
+
+  await database
+    .update(reviewState)
+    .set({
+      dueAt: futureDueAt
+    })
+    .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+
+  await database
+    .update(reviewState)
+    .set({
+      dueAt: pastDueAt
+    })
+    .where(eq(reviewState.cardId, developmentFixture.secondaryCardId));
+
+  await database
+    .update(entryStatus)
+    .set({
+      reason: "Test setup manual override.",
+      setAt: "2026-03-09T15:00:00.000Z",
+      status: "known_manual"
+    })
+    .where(
+      and(
+        eq(entryStatus.entryType, "term"),
+        eq(entryStatus.entryId, developmentFixture.termDbId)
+      )
+    );
+
+  return {
+    nextCardId: developmentFixture.secondaryCardId,
+    targetCardId: developmentFixture.primaryCardId
+  };
+}
+
+type ReviewPageLoadCall = {
+  mediaSlug?: string;
+  scope: "global" | "media";
+  searchParams: Record<string, string>;
+};
+
+async function loadReviewActionsForDatabase(database: DatabaseClient) {
+  const globalDatabase = globalThis as {
+    __japaneseCustomStudyDb__?: DatabaseClient;
+  };
+  const previousDatabase = globalDatabase.__japaneseCustomStudyDb__;
+  const reviewPageCalls: ReviewPageLoadCall[] = [];
+
+  try {
+    vi.resetModules();
+    vi.doMock("@/lib/review", () => ({
+      getGlobalReviewPageData: vi.fn(async (searchParams: Record<string, string>) => {
+        reviewPageCalls.push({
+          scope: "global",
+          searchParams
+        });
+
+        return {} as ReviewPageData;
+      }),
+      getReviewPageData: vi.fn(
+        async (mediaSlug: string, searchParams: Record<string, string>) => {
+          reviewPageCalls.push({
+            mediaSlug,
+            scope: "media",
+            searchParams
+          });
+
+          return {} as ReviewPageData;
+        }
+      )
+    }));
+    globalDatabase.__japaneseCustomStudyDb__ = database;
+
+    return {
+      ...(await import("@/actions/review")),
+      reviewPageCalls
+    };
+  } finally {
+    globalDatabase.__japaneseCustomStudyDb__ = previousDatabase;
+    vi.doUnmock("@/lib/review");
+  }
+}
 
 describe("review system", () => {
   let tempDir = "";
@@ -266,6 +361,33 @@ describe("review system", () => {
         updatedAt: "2026-03-10T00:00:00.000Z"
       }
     ]);
+    await database.insert(media).values({
+      id: "media_timezone_fixture_other",
+      slug: "timezone-fixture-other",
+      title: "Timezone Fixture Other",
+      mediaType: "game",
+      segmentKind: "chapter",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      description: "Secondo media per verificare il limite globale dei nuovi.",
+      status: "active",
+      createdAt: "2026-03-10T00:00:00.000Z",
+      updatedAt: "2026-03-10T00:00:00.000Z"
+    });
+    await database.insert(card).values({
+      id: "card_timezone_fixture_other",
+      mediaId: "media_timezone_fixture_other",
+      segmentId: null,
+      sourceFile: "tests/fixtures/db/timezone/other.md",
+      cardType: "recognition",
+      front: "翌日",
+      back: "giorno successivo",
+      notesIt: null,
+      status: "active",
+      orderIndex: 1,
+      createdAt: "2026-03-10T00:00:00.000Z",
+      updatedAt: "2026-03-10T00:00:00.000Z"
+    });
     await database.insert(reviewLog).values([
       {
         id: "review_log_timezone_before",
@@ -288,6 +410,17 @@ describe("review system", () => {
         scheduledDueAt: "2026-03-12T00:00:00.000Z",
         elapsedDays: 0,
         responseMs: null
+      },
+      {
+        id: "review_log_timezone_other",
+        cardId: "card_timezone_fixture_other",
+        answeredAt: "2026-03-11T02:15:00.000Z",
+        rating: "good",
+        previousState: "new",
+        newState: "review",
+        scheduledDueAt: "2026-03-12T02:15:00.000Z",
+        elapsedDays: 0,
+        responseMs: null
       }
     ]);
 
@@ -300,18 +433,63 @@ describe("review system", () => {
       ),
       countNewCardsIntroducedOnDayByMediaIds(
         database,
-        ["media_timezone_fixture"],
+        ["media_timezone_fixture", "media_timezone_fixture_other"],
         asOf
       )
     ]);
+    const groupedCountsByMedia = new Map(
+      groupedCounts.map((row) => [row.mediaId, row.count])
+    );
 
     expect(singleMediaCount).toBe(1);
-    expect(groupedCounts).toEqual([
+    expect(groupedCountsByMedia.get("media_timezone_fixture")).toBe(1);
+    expect(groupedCountsByMedia.get("media_timezone_fixture_other")).toBe(1);
+    expect([...groupedCountsByMedia.values()].reduce((sum, count) => sum + count, 0)).toBe(2);
+  });
+
+  it("counts introduced subjects from legacy review logs without double-counting shared cross-media cards", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-legacy-count");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    await database.insert(reviewLog).values([
       {
-        mediaId: "media_timezone_fixture",
-        count: 1
+        id: "review_log_cross_media_alpha",
+        cardId: crossMediaFixture.alpha.termCardId,
+        answeredAt: "2026-03-11T08:00:00.000Z",
+        rating: "good",
+        previousState: "new",
+        newState: "review",
+        scheduledDueAt: "2026-03-12T08:00:00.000Z",
+        elapsedDays: 0,
+        responseMs: null
+      },
+      {
+        id: "review_log_cross_media_beta",
+        cardId: crossMediaFixture.beta.termCardId,
+        answeredAt: "2026-03-11T09:00:00.000Z",
+        rating: "good",
+        previousState: "new",
+        newState: "review",
+        scheduledDueAt: "2026-03-12T09:00:00.000Z",
+        elapsedDays: 0,
+        responseMs: null
       }
     ]);
+
+    const introducedCount = await countReviewSubjectsIntroducedOnDay(
+      database,
+      new Date("2026-03-11T12:00:00.000Z")
+    );
+
+    expect(introducedCount).toBe(1);
   });
 
   it("hides cards tied to incomplete lessons but keeps orphan cards visible", async () => {
@@ -452,14 +630,13 @@ describe("review system", () => {
 
     expect(queue).not.toBeNull();
     expect(queue?.dueCount).toBe(1);
-    expect(queue?.newAvailableCount).toBe(1);
-    expect(queue?.newQueuedCount).toBe(1);
-    expect(queue?.queueCount).toBe(2);
+    expect(queue?.newAvailableCount).toBe(0);
+    expect(queue?.newQueuedCount).toBe(0);
+    expect(queue?.queueCount).toBe(1);
     expect(queue?.manualCount).toBe(1);
-    expect(queue?.suspendedCount).toBe(1);
+    expect(queue?.suspendedCount).toBe(0);
     expect(queue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
-      developmentFixture.primaryCardId,
-      "card_fixture_new_context"
+      developmentFixture.primaryCardId
     ]);
   });
 
@@ -665,6 +842,40 @@ describe("review system", () => {
     expect(logs.at(-1)?.schedulerVersion).toBe("fsrs_v1");
   });
 
+  it("mirrors lastReviewedAt into legacy review_state on the first cross-media insert", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-legacy-mirror");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
+
+    const now = new Date("2026-03-11T09:00:00.000Z");
+    const nowIso = now.toISOString();
+
+    await applyReviewGrade({
+      cardId: crossMediaFixture.alpha.termCardId,
+      database,
+      now,
+      rating: "good"
+    });
+
+    const alphaState = await database.query.reviewState.findFirst({
+      where: eq(reviewState.cardId, crossMediaFixture.alpha.termCardId)
+    });
+    const betaState = await database.query.reviewState.findFirst({
+      where: eq(reviewState.cardId, crossMediaFixture.beta.termCardId)
+    });
+
+    expect(alphaState?.lastReviewedAt).toBe(nowIso);
+    expect(betaState?.lastReviewedAt).toBe(nowIso);
+  });
+
   it("rejects review mutations when card and requested media do not match", async () => {
     await expect(
       applyReviewGrade({
@@ -718,6 +929,12 @@ describe("review system", () => {
         dueAt: "2999-01-01T00:00:00.000Z"
       })
       .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, `entry:term:${developmentFixture.termDbId}`));
 
     await database.insert(card).values([
       {
@@ -773,9 +990,10 @@ describe("review system", () => {
     );
 
     expect(initialPage?.queue.dueCount).toBe(0);
-    expect(initialPage?.queue.newQueuedCount).toBe(1);
-    expect(initialPage?.queue.queueCount).toBe(1);
-    expect(initialPage?.selectedCard?.id).toBe("card_fixture_new_limit_a");
+    expect(initialPage?.queue.newAvailableCount).toBe(0);
+    expect(initialPage?.queue.newQueuedCount).toBe(0);
+    expect(initialPage?.queue.queueCount).toBe(0);
+    expect(initialPage?.selectedCard).toBeNull();
 
     await applyReviewGrade({
       cardId: "card_fixture_new_limit_a",
@@ -789,7 +1007,7 @@ describe("review system", () => {
       database
     );
 
-    expect(afterFirstNew?.queue.newAvailableCount).toBe(1);
+    expect(afterFirstNew?.queue.newAvailableCount).toBe(0);
     expect(afterFirstNew?.queue.newQueuedCount).toBe(0);
     expect(afterFirstNew?.queue.queueCount).toBe(0);
     expect(afterFirstNew?.selectedCard).toBeNull();
@@ -798,7 +1016,7 @@ describe("review system", () => {
       ReviewPage({ data: afterFirstNew! })
     );
 
-    expect(completionMarkup).toContain("Aggiungi ancora 1 nuova");
+    expect(completionMarkup).not.toContain("Aggiungi ancora 1 nuova");
 
     const toppedUpPage = await getReviewPageData(
       developmentFixture.mediaSlug,
@@ -809,9 +1027,9 @@ describe("review system", () => {
     );
 
     expect(toppedUpPage?.queue.effectiveDailyLimit).toBe(11);
-    expect(toppedUpPage?.queue.newQueuedCount).toBe(1);
-    expect(toppedUpPage?.queue.queueCount).toBe(1);
-    expect(toppedUpPage?.selectedCard?.id).toBe("card_fixture_new_limit_b");
+    expect(toppedUpPage?.queue.newQueuedCount).toBe(0);
+    expect(toppedUpPage?.queue.queueCount).toBe(0);
+    expect(toppedUpPage?.selectedCard).toBeNull();
   });
 
   it("keeps the main stage in a completion state when the queue is empty unless a card is explicitly selected", async () => {
@@ -834,6 +1052,12 @@ describe("review system", () => {
         dueAt: "2999-01-01T00:00:00.000Z"
       })
       .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, `entry:term:${developmentFixture.termDbId}`));
 
     const completionPage = await getReviewPageData(
       developmentFixture.mediaSlug,
@@ -883,12 +1107,31 @@ describe("review system", () => {
       createdAt: "2026-03-09T10:00:00.000Z",
       updatedAt: "2026-03-09T10:00:00.000Z"
     });
+    await database.insert(term).values({
+      id: "term_fixture_remaining_count",
+      sourceId: "term-fixture-remaining-count",
+      mediaId: developmentFixture.mediaId,
+      segmentId: developmentFixture.segmentId,
+      lemma: "残り",
+      reading: "のこり",
+      romaji: "nokori",
+      pos: "sostantivo",
+      meaningIt: "restante",
+      meaningLiteralIt: null,
+      notesIt: "Termine dedicato al test del conteggio rimanente.",
+      levelHint: null,
+      searchLemmaNorm: "残り",
+      searchReadingNorm: "のこり",
+      searchRomajiNorm: "nokori",
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
     await database.insert(cardEntryLink).values({
       id: "card_entry_link_fixture_remaining_count",
       cardId: "card_fixture_remaining_count",
       entryType: "term",
-      entryId: developmentFixture.termDbId,
-      relationshipType: "secondary"
+      entryId: "term_fixture_remaining_count",
+      relationshipType: "primary"
     });
     await database.insert(reviewState).values({
       cardId: "card_fixture_remaining_count",
@@ -1389,7 +1632,335 @@ describe("review system", () => {
     expect(resetQueue?.cards[0]?.id).toBe(developmentFixture.primaryCardId);
   });
 
-  it("keeps review queue and detail local to the current media when source ids are reused across media", async () => {
+  it("advances to the next queue card after resetting a manual card when redirectMode advances queue", async () => {
+    const { targetCardId } = await prepareReviewSessionRedirectFixture(
+      database
+    );
+    const { resetReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    await resetReviewCardSessionAction({
+      answeredCount: 0,
+      cardId: targetCardId,
+      extraNewCount: 0,
+      mediaSlug: developmentFixture.mediaSlug,
+      redirectMode: "advance_queue",
+      scope: "media"
+    });
+
+    expect(reviewPageCalls).toHaveLength(1);
+    expect(reviewPageCalls[0]).toEqual({
+      mediaSlug: developmentFixture.mediaSlug,
+      scope: "media",
+      searchParams: {
+        notice: "reset"
+      }
+    });
+  });
+
+  it("advances to the next queue card after suspending a manual card when redirectMode advances queue", async () => {
+    const { targetCardId } = await prepareReviewSessionRedirectFixture(
+      database
+    );
+    const { setReviewCardSuspendedSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    await setReviewCardSuspendedSessionAction({
+      answeredCount: 0,
+      cardId: targetCardId,
+      extraNewCount: 0,
+      mediaSlug: developmentFixture.mediaSlug,
+      redirectMode: "advance_queue",
+      scope: "media",
+      suspended: true
+    });
+
+    expect(reviewPageCalls).toHaveLength(1);
+    expect(reviewPageCalls[0]).toEqual({
+      mediaSlug: developmentFixture.mediaSlug,
+      scope: "media",
+      searchParams: {
+        notice: "suspended"
+      }
+    });
+  });
+
+  it("advances to the next queue card after reopening a manual card when redirectMode advances queue", async () => {
+    const { targetCardId } = await prepareReviewSessionRedirectFixture(
+      database
+    );
+    const { setLinkedEntryLearningSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    await setLinkedEntryLearningSessionAction({
+      answeredCount: 0,
+      cardId: targetCardId,
+      extraNewCount: 0,
+      mediaSlug: developmentFixture.mediaSlug,
+      redirectMode: "advance_queue",
+      scope: "media"
+    });
+
+    expect(reviewPageCalls).toHaveLength(1);
+    expect(reviewPageCalls[0]).toEqual({
+      mediaSlug: developmentFixture.mediaSlug,
+      scope: "media",
+      searchParams: {
+        notice: "learning"
+      }
+    });
+  });
+
+  it("reuses legacy cross-media review state in both global and local queues before subject backfill exists", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-legacy-fallback");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    await database.insert(lessonProgress).values([
+      {
+        lessonId: crossMediaFixture.alpha.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      },
+      {
+        lessonId: crossMediaFixture.beta.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      }
+    ]);
+    await database.insert(reviewState).values({
+      cardId: crossMediaFixture.alpha.termCardId,
+      state: "review",
+      stability: 2.4,
+      difficulty: 3.1,
+      dueAt: "2000-01-01T00:00:00.000Z",
+      lastReviewedAt: "2026-03-10T08:00:00.000Z",
+      scheduledDays: 2,
+      learningSteps: 0,
+      lapses: 0,
+      reps: 3,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      createdAt: "2026-03-10T08:00:00.000Z",
+      updatedAt: "2026-03-10T08:00:00.000Z"
+    });
+
+    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
+
+    const [globalPage, globalOverview, betaPage] = await Promise.all([
+      getGlobalReviewPageData({}, database),
+      loadGlobalReviewOverviewSnapshot(database),
+      getReviewPageData(crossMediaFixture.beta.mediaSlug, {}, database)
+    ]);
+    const sharedGlobalCard = globalPage.queue.cards.find((reviewCard) =>
+      reviewCard.contexts.some(
+        (context) =>
+          context.cardId === crossMediaFixture.alpha.termCardId ||
+          context.cardId === crossMediaFixture.beta.termCardId
+      )
+    );
+
+    expect(globalPage.queue.dueCount).toBe(1);
+    expect(globalPage.selectedCard?.id).toBe(crossMediaFixture.alpha.termCardId);
+    expect(globalPage.selectedCard?.contexts).toHaveLength(2);
+    expect(sharedGlobalCard?.bucket).toBe("due");
+    expect(sharedGlobalCard?.contexts).toHaveLength(2);
+
+    expect(globalOverview.dueCount).toBe(1);
+
+    expect(betaPage).not.toBeNull();
+    expect(betaPage?.queue.dueCount).toBe(1);
+    expect(betaPage?.selectedCard?.id).toBe(crossMediaFixture.beta.termCardId);
+    expect(betaPage?.selectedCard?.bucket).toBe("due");
+  });
+
+  it("does not let a legacy manual entry_status mask an active cross-media sibling before backfill exists", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-legacy-entry-status");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    await database
+      .insert(reviewState)
+      .values([
+        {
+          cardId: crossMediaFixture.alpha.termCardId,
+          state: "review",
+          stability: 2.4,
+          difficulty: 3.1,
+          dueAt: "2000-01-01T00:00:00.000Z",
+          lastReviewedAt: "2026-03-10T08:00:00.000Z",
+          scheduledDays: 2,
+          learningSteps: 0,
+          lapses: 0,
+          reps: 3,
+          schedulerVersion: "fsrs_v1",
+          manualOverride: false,
+          createdAt: "2026-03-10T08:00:00.000Z",
+          updatedAt: "2026-03-10T08:00:00.000Z"
+        },
+        {
+          cardId: crossMediaFixture.beta.termCardId,
+          state: "review",
+          stability: 2.4,
+          difficulty: 3.1,
+          dueAt: "2000-01-01T00:00:00.000Z",
+          lastReviewedAt: "2026-03-10T08:00:00.000Z",
+          scheduledDays: 2,
+          learningSteps: 0,
+          lapses: 0,
+          reps: 3,
+          schedulerVersion: "fsrs_v1",
+          manualOverride: false,
+          createdAt: "2026-03-10T08:00:00.000Z",
+          updatedAt: "2026-03-10T08:00:00.000Z"
+        }
+      ])
+      .onConflictDoUpdate({
+        target: reviewState.cardId,
+        set: {
+          state: "review",
+          stability: 2.4,
+          difficulty: 3.1,
+          dueAt: "2000-01-01T00:00:00.000Z",
+          lastReviewedAt: "2026-03-10T08:00:00.000Z",
+          scheduledDays: 2,
+          learningSteps: 0,
+          lapses: 0,
+          reps: 3,
+          schedulerVersion: "fsrs_v1",
+          manualOverride: false,
+          createdAt: "2026-03-10T08:00:00.000Z",
+          updatedAt: "2026-03-10T08:00:00.000Z"
+        }
+      });
+
+    const [alphaTermEntry, betaTermEntry] = await Promise.all([
+      database.query.term.findFirst({
+        where: eq(term.sourceId, crossMediaFixture.alpha.termSourceId)
+      }),
+      database.query.term.findFirst({
+        where: eq(term.sourceId, crossMediaFixture.beta.termSourceId)
+      })
+    ]);
+
+    expect(alphaTermEntry).not.toBeNull();
+    expect(betaTermEntry).not.toBeNull();
+
+    await database
+      .insert(entryStatus)
+      .values({
+        id: "entry_status_cross_media_alpha_manual",
+        entryType: "term",
+        entryId: alphaTermEntry!.id,
+        status: "known_manual",
+        reason: "Cross-media legacy manual override.",
+        setAt: "2026-03-11T08:00:00.000Z"
+      })
+      .onConflictDoUpdate({
+        target: entryStatus.id,
+        set: {
+          entryType: "term",
+          entryId: alphaTermEntry!.id,
+          status: "known_manual",
+          reason: "Cross-media legacy manual override.",
+          setAt: "2026-03-11T08:00:00.000Z"
+        }
+      });
+
+    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
+
+    const globalPage = await getGlobalReviewPageData({}, database);
+
+    expect(globalPage.queue.dueCount).toBe(1);
+    expect(globalPage.queue.cards[0]?.id).toBe(crossMediaFixture.beta.termCardId);
+    expect(globalPage.selectedCard?.id).toBe(crossMediaFixture.beta.termCardId);
+    expect(globalPage.selectedCard?.contexts).toHaveLength(2);
+  });
+
+  it("seeds suspended legacy cross-media subjects from the representative sibling state", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-legacy-suspend");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    await database.insert(lessonProgress).values([
+      {
+        lessonId: crossMediaFixture.alpha.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      },
+      {
+        lessonId: crossMediaFixture.beta.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      }
+    ]);
+    await database.insert(reviewState).values({
+      cardId: crossMediaFixture.alpha.termCardId,
+      state: "review",
+      stability: 2.4,
+      difficulty: 3.1,
+      dueAt: "2000-01-01T00:00:00.000Z",
+      lastReviewedAt: "2026-03-10T08:00:00.000Z",
+      scheduledDays: 2,
+      learningSteps: 0,
+      lapses: 1,
+      reps: 3,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      createdAt: "2026-03-10T08:00:00.000Z",
+      updatedAt: "2026-03-10T08:00:00.000Z"
+    });
+
+    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
+
+    await setReviewCardSuspended({
+      cardId: crossMediaFixture.beta.termCardId,
+      database,
+      now: new Date("2026-03-11T09:00:00.000Z"),
+      suspended: true
+    });
+
+    const persistedSubjectStates = await database.query.reviewSubjectState.findMany();
+
+    expect(persistedSubjectStates).toHaveLength(1);
+
+    expect(persistedSubjectStates[0]).toMatchObject({
+      cardId: crossMediaFixture.alpha.termCardId,
+      createdAt: "2026-03-10T08:00:00.000Z",
+      difficulty: 3.1,
+      dueAt: "2000-01-01T00:00:00.000Z",
+      lapses: 1,
+      lastReviewedAt: "2026-03-10T08:00:00.000Z",
+      reps: 3,
+      scheduledDays: 2,
+      stability: 2.4,
+      state: "review",
+      suspended: true
+    });
+  });
+
+  it("surfaces shared cross-media siblings while keeping local review card ids stable", async () => {
     const contentRoot = path.join(tempDir, "cross-media-content");
 
     await writeCrossMediaContentFixture(contentRoot);

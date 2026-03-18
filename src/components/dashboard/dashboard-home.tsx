@@ -5,6 +5,7 @@ import { renderFurigana } from "@/lib/render-furigana";
 import {
   mediaGlossaryHref,
   mediaHref,
+  reviewHref,
   mediaStudyHref,
   mediaTextbookLessonHref
 } from "@/lib/site";
@@ -37,7 +38,9 @@ export async function DashboardHome() {
   const focusResumeHref = focusMedia.resumeLesson
     ? mediaTextbookLessonHref(focusMedia.slug, focusMedia.resumeLesson.slug)
     : mediaStudyHref(focusMedia.slug, "textbook");
-  const effectiveReviewMedia = reviewMedia ?? focusMedia;
+  const reviewPriorityNote = reviewMedia
+    ? `Piu urgente: ${reviewMedia.title}.`
+    : "La queue globale si popolera con le prime card.";
 
   return (
     <div className="dashboard-page">
@@ -58,13 +61,13 @@ export async function DashboardHome() {
           </p>
 
           <div className="hero-actions">
-            <Link
-              className="button button--primary"
-              href={focusResumeHref}
-            >
+            <Link className="button button--primary" href={focusResumeHref}>
               Continua il percorso
             </Link>
-            <Link className="button button--ghost" href={mediaHref(focusMedia.slug)}>
+            <Link
+              className="button button--ghost"
+              href={mediaHref(focusMedia.slug)}
+            >
               Vai al media
             </Link>
           </div>
@@ -120,8 +123,8 @@ export async function DashboardHome() {
           <p className="dashboard-focus__note">
             {buildAggregateQueueNote(totals.cardsDue, totals.activeReviewCards)}
           </p>
-          <Link className="button button--ghost" href="/review">
-            Apri review
+          <Link className="button button--ghost" href={reviewHref()}>
+            Apri review globale
           </Link>
         </SurfaceCard>
       </section>
@@ -184,27 +187,22 @@ export async function DashboardHome() {
               </p>
             </div>
             <Link className="text-link" href={focusResumeHref}>
-              {focusMedia.resumeLesson ? "Continua il percorso" : "Apri Textbook"}
+              {focusMedia.resumeLesson
+                ? "Continua il percorso"
+                : "Apri Textbook"}
             </Link>
           </SurfaceCard>
 
           <SurfaceCard className="cue-card cue-card--next-step" variant="quiet">
             <div className="cue-card__content">
-              <h3 className="cue-card__title">Review</h3>
+              <h3 className="cue-card__title">Review globale</h3>
               <p className="cue-card__meta">
-                {buildReviewProgressLabel(effectiveReviewMedia)}
+                {buildAggregateDueDetail(totals.cardsDue)}
               </p>
-              <p className="cue-card__body">
-                {effectiveReviewMedia.slug === focusMedia.slug
-                  ? effectiveReviewMedia.reviewStatDetail
-                  : `${effectiveReviewMedia.title} · ${effectiveReviewMedia.reviewStatDetail}`}
-              </p>
+              <p className="cue-card__body">{reviewPriorityNote}</p>
             </div>
-            <Link
-              className="text-link"
-              href={mediaStudyHref(effectiveReviewMedia.slug, "review")}
-            >
-              Apri review
+            <Link className="text-link" href={reviewHref()}>
+              Apri review globale
             </Link>
           </SurfaceCard>
 
@@ -269,7 +267,7 @@ function buildAggregateQueueNote(cardsDue: number, activeReviewCards: number) {
       : `Oggi non hai card da ripassare; ${activeReviewCards} card sono ancora attive.`;
   }
 
-  return "La coda Review si popolerà quando le prime card entreranno in studio.";
+  return "La coda Review globale si popolerà quando le prime card entreranno in studio.";
 }
 
 function buildTextbookProgressLabel(media: {
@@ -282,7 +280,9 @@ function buildTextbookProgressLabel(media: {
   }
 
   const progress =
-    media.textbookProgressPercent !== null ? ` · ${media.textbookProgressPercent}%` : "";
+    media.textbookProgressPercent !== null
+      ? ` · ${media.textbookProgressPercent}%`
+      : "";
 
   return `${media.lessonsCompleted} di ${media.lessonsTotal} lezioni${progress}`;
 }
@@ -296,26 +296,4 @@ function buildGlossaryProgressLabel(media: {
   }
 
   return `${media.entriesKnown}/${media.entriesTotal} voci`;
-}
-
-function buildReviewProgressLabel(media: {
-  cardsDue: number;
-  activeReviewCards: number;
-  cardsTotal: number;
-}) {
-  if (media.cardsDue > 0) {
-    return media.cardsDue === 1 ? "1 card da ripassare" : `${media.cardsDue} da ripassare`;
-  }
-
-  if (media.activeReviewCards > 0) {
-    return media.activeReviewCards === 1
-      ? "1 card attiva"
-      : `${media.activeReviewCards} card attive`;
-  }
-
-  if (media.cardsTotal > 0) {
-    return "Coda in pausa";
-  }
-
-  return "Nessuna card attiva";
 }

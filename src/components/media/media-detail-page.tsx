@@ -52,10 +52,10 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
   const overviewNote =
     data.resume.recommendedArea === "review"
       ? data.resume.resumeLesson
-        ? `Dopo la review puoi tornare a ${data.resume.resumeLesson.title}.`
-        : "Dopo la review puoi tornare subito al Textbook."
-      : data.review.dueCount > 0
-        ? `${data.review.dueCount} card aspettano ancora nella review.`
+        ? `Dopo la review globale puoi tornare a ${data.resume.resumeLesson.title}.`
+        : "Dopo la review globale puoi tornare subito al Textbook."
+      : data.globalReview.dueCount > 0
+        ? `${data.globalReview.dueCount} card aspettano ancora nella review globale.`
         : null;
 
   const studyAreas: StudyAreaCard[] = [
@@ -86,10 +86,10 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
     },
     {
       key: "review",
-      title: "Review",
-      body: "Gestisci la coda collegata alle card importate.",
+      title: "Review del media",
+      body: "Gestisci la coda collegata alle card importate in questo media.",
       detail: data.review.nextCardFront
-        ? `Prossima: ${data.review.nextCardFront}`
+        ? `Prossima card: ${data.review.nextCardFront}`
         : data.review.dueCount > 0
           ? `${data.review.dueCount} da ripassare adesso`
           : data.review.queueCount > 0
@@ -207,19 +207,19 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
             />
             <StatBlock
               detail={
-                data.review.dueCount > 0
-                  ? `${data.review.dueCount} richiedono attenzione adesso`
-                  : data.review.activeCards > 0
-                    ? `${data.review.activeCards} card già in rotazione`
-                    : "La coda si popolerà con le prime card"
+                data.globalReview.dueCount > 0
+                  ? `${data.globalReview.dueCount} richiedono attenzione adesso`
+                  : data.globalReview.activeCards > 0
+                    ? `${data.globalReview.activeCards} card già in rotazione`
+                    : "La coda globale si popolerà con le prime card"
               }
-              label="Review"
-              tone={data.review.dueCount > 0 ? "warning" : "default"}
+              label="Review globale"
+              tone={data.globalReview.dueCount > 0 ? "warning" : "default"}
               value={
-                data.review.dueCount > 0
-                  ? `${data.review.dueCount} dovute`
-                  : data.review.queueCount > 0
-                    ? `${data.review.queueCount} in coda`
+                data.globalReview.dueCount > 0
+                  ? `${data.globalReview.dueCount} da ripassare`
+                  : data.globalReview.queueCount > 0
+                    ? `${data.globalReview.queueCount} in coda`
                     : "In pari"
               }
             />
@@ -301,12 +301,12 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
           id="review-overview"
           actions={
             <Link className="text-link" href={data.media.reviewHref}>
-              Apri la Review
+              Apri la review del media
             </Link>
           }
-          description="Solo i numeri che servono per capire se conviene aprire la coda adesso."
-          eyebrow="Review"
-          title="Coda e carico quotidiano"
+          description="Numeri locali del media, separati dalla queue globale reale."
+          eyebrow="Review del media"
+          title="Coda locale e carico quotidiano"
         >
           <div className="stats-grid">
             <StatBlock
@@ -324,7 +324,7 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
                   ? "Richiedono attenzione adesso."
                   : "Nessuna urgenza nel media."
               }
-              label="Dovute"
+              label="Da ripassare"
               tone={data.review.dueCount > 0 ? "warning" : "default"}
               value={String(data.review.dueCount)}
             />
@@ -334,7 +334,7 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
               value={String(data.review.newQueuedCount)}
             />
             <StatBlock
-              detail={`${data.review.activeCards} card già in rotazione`}
+              detail={`${data.review.suspendedCount} escluse dalla coda del media`}
               label="Sospese"
               value={String(data.review.suspendedCount)}
             />

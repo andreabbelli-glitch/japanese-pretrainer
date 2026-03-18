@@ -10,13 +10,30 @@ non sostituisce un audit completo e aggiornato del codice.
 - Copertura dei flussi chiave: dashboard, media detail, textbook reader, tooltip, glossary, review, progress, settings.
 - Smoke parametrica sulle route chiave di ogni media attivo presente in `content/media`.
 - Verifica mobile del reader con sheet touch per termini e rail lesson.
-- Redirect diretto di `/review` verso la review del media di focus.
+- `/review` come workspace globale; `/media/[mediaSlug]/review` come filtro
+  verticale sullo stesso sistema.
+- Root `/review` deve avere uno stato vuoto dedicato per il primo avvio, non un
+  redirect verso una review locale o un copy che parli di un singolo media.
 - Loading state contestuali per glossary, textbook, lesson, review, progress e settings.
 - Messaggio di errore comprensibile in `content:import` quando il DB target non è migrato.
 
 ## Comportamenti Da Verificare
 
-- La nav review globale e la CTA review della dashboard portano entrambe alla sessione pertinente del media di focus.
+- La nav review globale e la CTA review della dashboard portano al workspace
+  review globale, mentre dal media detail resta disponibile il filtro verticale.
+- Il daily limit della review è globale e la coda mostra fusioni cross-media
+  quando la stessa entry o pattern è condivisa tra più media.
+- Su DB già esistenti, il comportamento della review deve restare compatibile
+  con lo storico legacy: la migrazione deve preservare i soggetti già introdotti
+  e non deve far ricomparire card già contate nel limite giornaliero.
+- La migrazione `0011_global_review_subjects.sql` non fa backfill di
+  `review_subject_state`: sugli upgrade il fallback legacy resta realmente
+  attivo finché i subject non vengono riscritti dal runtime.
+- Nel fallback legacy, una sibling `suspended` o `known_manual` non deve mai
+  diventare representative subject se esiste una sibling attiva.
+- Dashboard e CTA globali devono usare numeri globali reali; progress e media
+  detail possono mostrare anche numeri locali, ma devono etichettarli come
+  `Review del media` o equivalente, senza presentarli come globali.
 - Le schermate di studio secondarie non ereditano più il loading generico “Caricamento media”, ma comunicano cosa si sta preparando.
 - `content:import` non esplode più con stacktrace SQL opaco quando manca lo schema: ora indica di eseguire `db:migrate`.
 
@@ -44,8 +61,9 @@ Il gate canonico copre nell'ordine:
 ## Limiti Residui
 
 - La suite E2E è intenzionalmente piccola: copre i flussi ad alto valore, non ogni variante di filtro o ogni card.
-- I flussi E2E restano concentrati sul media di focus per textbook/review; il
-  requisito multi-media è coperto anche da una smoke parametrica per ogni media
-  attivo, ma il livello di profondità resta più alto sul media di focus.
+- I flussi E2E restano concentrati sul media di focus per textbook; per review
+  conviene coprire sia il workspace globale sia il filtro verticale sul media.
+- Il primo avvio di `/review` va controllato anche senza media importati, per
+  verificare che l'empty state dedicato non sembri una review locale vuota.
 - Le performance sono verificate solo a livello locale/percepito, non con budget automatizzati.
 - Il prodotto resta single-user e locale-first; non include hardening per esposizione remota.

@@ -9,6 +9,7 @@ import {
 import {
   mediaGlossaryHref,
   mediaHref,
+  reviewHref,
   mediaStudyHref,
   mediaTextbookLessonHref
 } from "@/lib/site";
@@ -30,10 +31,25 @@ import {
 } from "@/lib/study-metrics";
 
 import {
+  loadGlobalReviewOverviewSnapshot,
   loadReviewOverviewSnapshots
 } from "./review";
 
 export type ProgressPageData = {
+  globalReview: {
+    activeCards: number;
+    dailyLimit: number;
+    dueCount: number;
+    newAvailableCount: number;
+    newQueuedCount: number;
+    nextCardFront?: string;
+    queueCount: number;
+    queueLabel: string;
+    queuePercent: number | null;
+    suspendedCount: number;
+    totalCards: number;
+    upcomingCount: number;
+  };
   glossary: Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>;
   media: {
     description: string;
@@ -61,6 +77,7 @@ export type ProgressPageData = {
     recommendedArea: "review" | "textbook";
     recommendedBody: string;
     recommendedHref:
+      | ReturnType<typeof reviewHref>
       | ReturnType<typeof mediaStudyHref>
       | ReturnType<typeof mediaTextbookLessonHref>;
     recommendedLabel: string;
@@ -106,17 +123,19 @@ export async function getMediaProgressPageData(
     return null;
   }
 
-  const [lessons, glossary, reviewOverview, settings] = await Promise.all([
-    listLessonsByMediaId(database, media.id),
-    loadGlossaryProgressSnapshot(database, media.id, media.slug),
-    loadReviewOverviewSnapshots(database, [
-      {
-        id: media.id,
-        slug: media.slug
-      }
-    ]).then((snapshots) => snapshots.get(media.id)),
-    getStudySettings(database)
-  ]);
+  const [lessons, glossary, reviewOverview, globalReviewOverview, settings] =
+    await Promise.all([
+      listLessonsByMediaId(database, media.id),
+      loadGlossaryProgressSnapshot(database, media.id, media.slug),
+      loadReviewOverviewSnapshots(database, [
+        {
+          id: media.id,
+          slug: media.slug
+        }
+      ]).then((snapshots) => snapshots.get(media.id)),
+      loadGlobalReviewOverviewSnapshot(database),
+      getStudySettings(database)
+    ]);
   const completedLessons = lessons.filter(
     (lesson) => lesson.progress?.status === "completed"
   ).length;
@@ -127,33 +146,20 @@ export async function getMediaProgressPageData(
   const resumeLesson = selectResumeLesson(lessons);
   const nextLesson = selectNextLesson(lessons);
   const lastOpenedLesson = selectLastOpenedLesson(lessons);
-  const review = {
-    activeCards: reviewOverview?.activeCards ?? 0,
-    dailyLimit: reviewOverview?.dailyLimit ?? settings.reviewDailyLimit,
-    dueCount: reviewOverview?.dueCount ?? 0,
-    newAvailableCount: reviewOverview?.newAvailableCount ?? 0,
-    newQueuedCount: reviewOverview?.newQueuedCount ?? 0,
-    nextCardFront: reviewOverview?.nextCardFront,
-    queueCount: reviewOverview?.queueCount ?? 0,
-    queueLabel:
-      reviewOverview?.queueLabel ??
-      "La coda review si popolerà quando importerai le prime card.",
-    queuePercent: calculatePercent(
-      reviewOverview?.queueCount ?? 0,
-      reviewOverview?.totalCards ?? 0
-    ),
-    suspendedCount: reviewOverview?.suspendedCount ?? 0,
-    totalCards: reviewOverview?.totalCards ?? 0,
-    upcomingCount: reviewOverview?.upcomingCount ?? 0
-  };
+  const review = mapReviewSnapshot(reviewOverview, settings.reviewDailyLimit);
+  const globalReview = mapReviewSnapshot(
+    globalReviewOverview,
+    settings.reviewDailyLimit
+  );
   const resume = buildResumeModel({
+    globalReview,
     resumeLesson,
     mediaSlug: media.slug,
-    nextLesson,
-    review
+    nextLesson
   });
 
   return {
+    globalReview,
     glossary,
     media: {
       description:
@@ -207,22 +213,24 @@ export async function getMediaProgressPageData(
 }
 
 function buildResumeModel(input: {
+  globalReview: ProgressPageData["globalReview"];
   resumeLesson: ReturnType<typeof selectResumeLesson>;
   mediaSlug: string;
   nextLesson: ReturnType<typeof selectNextLesson>;
-  review: ProgressPageData["review"];
 }) {
-  if (input.review.queueCount > 0) {
+  if (input.globalReview.queueCount > 0) {
     const headlineCount =
-      input.review.dueCount > 0 ? input.review.dueCount : input.review.queueCount;
+      input.globalReview.dueCount > 0
+        ? input.globalReview.dueCount
+        : input.globalReview.queueCount;
 
     return {
       recommendedArea: "review" as const,
-      recommendedBody: input.review.nextCardFront
-        ? `La prossima card pronta è ${input.review.nextCardFront}.`
-        : input.review.queueLabel,
-      recommendedHref: mediaStudyHref(input.mediaSlug, "review"),
-      recommendedLabel: "Avvia review",
+      recommendedBody: input.globalReview.nextCardFront
+        ? `La prossima card pronta nella review globale è ${input.globalReview.nextCardFront}.`
+        : input.globalReview.queueLabel,
+      recommendedHref: reviewHref(),
+      recommendedLabel: "Apri review globale",
       recommendedTitle:
         headlineCount === 1
           ? "1 card richiede attenzione"
@@ -252,6 +260,34 @@ function buildResumeModel(input: {
     recommendedHref: mediaStudyHref(input.mediaSlug, "textbook"),
     recommendedLabel: "Apri Textbook",
     recommendedTitle: "Percorso pronto"
+  };
+}
+
+function mapReviewSnapshot(
+  reviewOverview:
+    | Awaited<ReturnType<typeof loadGlobalReviewOverviewSnapshot>>
+    | ProgressPageData["review"]
+    | undefined,
+  dailyLimit: number
+): ProgressPageData["review"] {
+  return {
+    activeCards: reviewOverview?.activeCards ?? 0,
+    dailyLimit: reviewOverview?.dailyLimit ?? dailyLimit,
+    dueCount: reviewOverview?.dueCount ?? 0,
+    newAvailableCount: reviewOverview?.newAvailableCount ?? 0,
+    newQueuedCount: reviewOverview?.newQueuedCount ?? 0,
+    nextCardFront: reviewOverview?.nextCardFront,
+    queueCount: reviewOverview?.queueCount ?? 0,
+    queueLabel:
+      reviewOverview?.queueLabel ??
+      "La coda review si popolerà quando importerai le prime card.",
+    queuePercent: calculatePercent(
+      reviewOverview?.queueCount ?? 0,
+      reviewOverview?.totalCards ?? 0
+    ),
+    suspendedCount: reviewOverview?.suspendedCount ?? 0,
+    totalCards: reviewOverview?.totalCards ?? 0,
+    upcomingCount: reviewOverview?.upcomingCount ?? 0
   };
 }
 

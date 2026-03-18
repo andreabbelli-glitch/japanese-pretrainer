@@ -11,16 +11,22 @@ import {
   setLinkedEntryStatusByCard,
   setReviewCardSuspended
 } from "@/lib/review-service";
-import { getReviewPageData, type ReviewPageData } from "@/lib/review";
-import { mediaHref, mediaReviewCardHref, mediaStudyHref } from "@/lib/site";
+import {
+  getGlobalReviewPageData,
+  getReviewPageData,
+  type ReviewPageData
+} from "@/lib/review";
+import { mediaHref, mediaReviewCardHref, mediaStudyHref, reviewHref } from "@/lib/site";
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
 type ReviewSessionRedirectMode = Exclude<ReviewRedirectMode, "stay_detail">;
 type ReviewSessionInput = {
   answeredCount: number;
   cardId: string;
+  cardMediaSlug?: string;
   extraNewCount: number;
-  mediaSlug: string;
+  mediaSlug?: string;
+  scope?: "global" | "media";
 };
 
 export async function gradeReviewCardAction(formData: FormData) {
@@ -164,8 +170,8 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
 export async function revealReviewAnswerSessionAction(
   input: ReviewSessionInput
 ): Promise<ReviewPageData> {
-  return requireReviewPageData(
-    input.mediaSlug,
+  return requireReviewPageDataForScope(
+    input,
     buildReviewSearchParams({
       answeredCount: input.answeredCount,
       cardId: input.cardId,
@@ -178,7 +184,10 @@ export async function revealReviewAnswerSessionAction(
 export async function gradeReviewCardSessionAction(input: ReviewSessionInput & {
   rating: "again" | "hard" | "good" | "easy";
 }): Promise<ReviewPageData> {
-  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+  const mediaId =
+    input.scope === "media" && input.mediaSlug
+      ? await requireMediaIdForSlug(input.mediaSlug)
+      : undefined;
 
   await applyReviewGrade({
     cardId: input.cardId,
@@ -186,11 +195,11 @@ export async function gradeReviewCardSessionAction(input: ReviewSessionInput & {
     rating: input.rating
   });
 
-  revalidateReviewPaths(input.mediaSlug, input.cardId);
+  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
 
-  return requireReviewPageData(
-    input.mediaSlug,
-    buildRedirectSearchParams({
+  return requireReviewPageDataForScope(
+    input,
+    buildReviewSearchParams({
       answeredCount: input.answeredCount + 1,
       extraNewCount: input.extraNewCount
     })
@@ -202,7 +211,10 @@ export async function markLinkedEntryKnownSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
-  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+  const mediaId =
+    input.scope === "media" && input.mediaSlug
+      ? await requireMediaIdForSlug(input.mediaSlug)
+      : undefined;
 
   await setLinkedEntryStatusByCard({
     cardId: input.cardId,
@@ -210,10 +222,10 @@ export async function markLinkedEntryKnownSessionAction(
     status: "known_manual"
   });
 
-  revalidateReviewPaths(input.mediaSlug, input.cardId);
+  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
 
-  return requireReviewPageData(
-    input.mediaSlug,
+  return requireReviewPageDataForScope(
+    input,
     buildRedirectSearchParams({
       answeredCount: input.answeredCount,
       cardId: input.cardId,
@@ -229,7 +241,10 @@ export async function setLinkedEntryLearningSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
-  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+  const mediaId =
+    input.scope === "media" && input.mediaSlug
+      ? await requireMediaIdForSlug(input.mediaSlug)
+      : undefined;
 
   await setLinkedEntryStatusByCard({
     cardId: input.cardId,
@@ -237,10 +252,10 @@ export async function setLinkedEntryLearningSessionAction(
     status: "learning"
   });
 
-  revalidateReviewPaths(input.mediaSlug, input.cardId);
+  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
 
-  return requireReviewPageData(
-    input.mediaSlug,
+  return requireReviewPageDataForScope(
+    input,
     buildRedirectSearchParams({
       answeredCount: input.answeredCount,
       cardId: input.cardId,
@@ -256,17 +271,20 @@ export async function resetReviewCardSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
-  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+  const mediaId =
+    input.scope === "media" && input.mediaSlug
+      ? await requireMediaIdForSlug(input.mediaSlug)
+      : undefined;
 
   await resetReviewCardProgress({
     cardId: input.cardId,
     expectedMediaId: mediaId
   });
 
-  revalidateReviewPaths(input.mediaSlug, input.cardId);
+  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
 
-  return requireReviewPageData(
-    input.mediaSlug,
+  return requireReviewPageDataForScope(
+    input,
     buildRedirectSearchParams({
       answeredCount: input.answeredCount,
       cardId: input.cardId,
@@ -283,7 +301,10 @@ export async function setReviewCardSuspendedSessionAction(
     suspended: boolean;
   }
 ): Promise<ReviewPageData> {
-  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+  const mediaId =
+    input.scope === "media" && input.mediaSlug
+      ? await requireMediaIdForSlug(input.mediaSlug)
+      : undefined;
 
   await setReviewCardSuspended({
     cardId: input.cardId,
@@ -291,10 +312,10 @@ export async function setReviewCardSuspendedSessionAction(
     suspended: input.suspended
   });
 
-  revalidateReviewPaths(input.mediaSlug, input.cardId);
+  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
 
-  return requireReviewPageData(
-    input.mediaSlug,
+  return requireReviewPageDataForScope(
+    input,
     buildRedirectSearchParams({
       answeredCount: input.answeredCount,
       cardId: input.cardId,
@@ -334,9 +355,15 @@ function buildReviewRedirectUrl(input: {
   ) as Route;
 }
 
-function revalidateReviewPaths(mediaSlug: string, cardId: string) {
+function revalidateReviewPaths(mediaSlug: string | undefined, cardId: string) {
   revalidatePath("/");
+  revalidatePath(reviewHref());
   revalidatePath("/glossary");
+
+  if (!mediaSlug) {
+    return;
+  }
+
   revalidatePath(mediaHref(mediaSlug));
   revalidatePath(mediaStudyHref(mediaSlug, "progress"));
   revalidatePath(mediaStudyHref(mediaSlug, "review"));
@@ -430,6 +457,21 @@ async function requireReviewPageData(
   }
 
   return data;
+}
+
+async function requireReviewPageDataForScope(
+  input: Pick<ReviewSessionInput, "mediaSlug" | "scope">,
+  searchParams: Record<string, string>
+) {
+  if (input.scope === "global") {
+    return getGlobalReviewPageData(searchParams);
+  }
+
+  if (!input.mediaSlug) {
+    throw new Error("Media review scope requires a media slug.");
+  }
+
+  return requireReviewPageData(input.mediaSlug, searchParams);
 }
 
 async function requireMediaIdForSlug(mediaSlug: string) {

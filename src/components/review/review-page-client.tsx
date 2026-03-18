@@ -17,7 +17,8 @@ import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import type { ReviewPageData } from "@/lib/review";
 import {
   appendReturnToParam,
-  buildCanonicalReviewSessionHref
+  buildCanonicalReviewSessionHrefForBase,
+  reviewHref
 } from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
@@ -60,6 +61,14 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const isGlobalReview = viewData.scope === "global";
+  const hasAnyReviewCards =
+    viewData.queue.dueCount +
+      viewData.queue.newAvailableCount +
+      viewData.queue.manualCount +
+      viewData.queue.suspendedCount +
+      viewData.queue.upcomingCount >
+    0;
 
   const selectedCard = viewData.selectedCard;
   const showCompactPronunciation =
@@ -74,12 +83,12 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     viewData.settings.reviewFrontFurigana ||
     viewData.selectedCardContext.showAnswer;
   const additionalNewCount = showCompletionTopUp(viewData);
-  const sessionHref = buildCanonicalReviewSessionHref({
+  const sessionHref = buildCanonicalReviewSessionHrefForBase({
     answeredCount: viewData.session.answeredCount,
+    baseHref: viewData.media.reviewHref,
     cardId: selectedCard?.id ?? null,
     extraNewCount: viewData.session.extraNewCount,
     isQueueCard: viewData.selectedCardContext.isQueueCard,
-    mediaSlug: viewData.media.slug,
     position: viewData.selectedCardContext.position,
     showAnswer: viewData.selectedCardContext.showAnswer
   });
@@ -103,6 +112,7 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
 
     return query.length > 0 ? `${pathname}?${query}` : pathname;
   })();
+  const reviewSummary = buildReviewSummary(viewData, isGlobalReview, hasAnyReviewCards);
 
   useEffect(() => {
     if (currentHref !== sessionHref) {
@@ -137,8 +147,10 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       revealReviewAnswerSessionAction({
         answeredCount: viewData.session.answeredCount,
         cardId: selectedCard.id,
+        cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.media.slug
+        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+        scope: viewData.scope
       })
     );
   }
@@ -152,9 +164,11 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       gradeReviewCardSessionAction({
         answeredCount: viewData.session.answeredCount,
         cardId: selectedCard.id,
+        cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.media.slug,
-        rating
+        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+        rating,
+        scope: viewData.scope
       })
     );
   }
@@ -168,9 +182,11 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       markLinkedEntryKnownSessionAction({
         answeredCount: viewData.session.answeredCount,
         cardId: selectedCard.id,
+        cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.media.slug,
-        redirectMode: actionRedirectMode
+        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+        redirectMode: actionRedirectMode,
+        scope: viewData.scope
       })
     );
   }
@@ -184,9 +200,11 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       setLinkedEntryLearningSessionAction({
         answeredCount: viewData.session.answeredCount,
         cardId: selectedCard.id,
+        cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.media.slug,
-        redirectMode: actionRedirectMode
+        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+        redirectMode: actionRedirectMode,
+        scope: viewData.scope
       })
     );
   }
@@ -200,9 +218,11 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       resetReviewCardSessionAction({
         answeredCount: viewData.session.answeredCount,
         cardId: selectedCard.id,
+        cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.media.slug,
-        redirectMode: actionRedirectMode
+        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+        redirectMode: actionRedirectMode,
+        scope: viewData.scope
       })
     );
   }
@@ -216,9 +236,11 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       setReviewCardSuspendedSessionAction({
         answeredCount: viewData.session.answeredCount,
         cardId: selectedCard.id,
+        cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.media.slug,
+        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
+        scope: viewData.scope,
         suspended: selectedCard.bucket !== "suspended"
       })
     );
@@ -228,14 +250,14 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     <div className="review-page">
       <StickyPageHeader
         backHref={viewData.media.href}
-        backLabel={`Torna a ${viewData.media.title}`}
+        backLabel={isGlobalReview ? "Torna alla Home" : `Torna a ${viewData.media.title}`}
         eyebrow="Review"
-        summary={viewData.queue.introLabel}
+        summary={reviewSummary}
         title={viewData.media.title}
         meta={
           <>
             <span>{viewData.queue.queueCount} in coda</span>
-            <span>{viewData.queue.dueCount} da ripassare</span>
+            <span>{viewData.queue.dueCount} due</span>
             <span>Nuove oggi {viewData.queue.effectiveDailyLimit}</span>
           </>
         }
@@ -253,6 +275,11 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
             >
               Settings
             </Link>
+            {!isGlobalReview ? (
+              <Link className="button button--ghost" href={reviewHref()}>
+                Apri review globale
+              </Link>
+            ) : null}
           </>
         }
       />
@@ -268,6 +295,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                   <span className="meta-pill">
                     {selectedCard.effectiveStateLabel}
                   </span>
+                  {viewData.scope === "global" ? (
+                    <span className="meta-pill">{selectedCard.mediaTitle}</span>
+                  ) : null}
                   {selectedCard.segmentTitle ? (
                     <span className="meta-pill">
                       {selectedCard.segmentTitle}
@@ -342,6 +372,20 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                       <p className="review-stage__notes">
                         {renderFurigana(selectedCard.notes)}
                       </p>
+                    ) : null}
+                    {selectedCard.contexts.length > 1 ? (
+                      <div className="stack-list stack-list--tight">
+                        <p className="eyebrow">Compare anche in</p>
+                        {selectedCard.contexts.slice(0, 4).map((context) => (
+                          <p key={context.cardId} className="review-stage__meta">
+                            <strong>{context.mediaTitle}</strong>
+                            {context.segmentTitle
+                              ? ` · ${context.segmentTitle}`
+                              : ""}
+                            {`: ${context.front}`}
+                          </p>
+                        ))}
+                      </div>
                     ) : null}
                     {selectedCard.dueLabel ? (
                       <p className="review-stage__meta">
@@ -442,34 +486,42 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
           ) : showCompletionState ? (
             <EmptyState
               title={
-                viewData.session.answeredCount > 0
-                  ? "Sessione chiusa, ora sei in pari."
-                  : "Oggi sei in pari."
+                isGlobalReview
+                  ? viewData.session.answeredCount > 0
+                    ? "Sessione chiusa, ora sei in pari su tutta la Review."
+                    : "Oggi sei in pari su tutta la Review."
+                  : viewData.session.answeredCount > 0
+                    ? "Sessione chiusa, ora sei in pari."
+                    : "Oggi sei in pari."
               }
               description={
                 additionalNewCount > 0
-                  ? `La coda di oggi è finita. Puoi chiudere qui oppure aprire subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} disponibili per questo media.`
+                  ? isGlobalReview
+                    ? `La coda di oggi è finita. Puoi chiudere qui oppure aprire subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} disponibili nella review globale.`
+                    : `La coda di oggi è finita. Puoi chiudere qui oppure aprire subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} disponibili per questo media.`
                   : hasSupportCards
                     ? "La coda di oggi non richiede altre risposte. Se ti serve intervenire su card già note, sospese o fuori finestra, puoi farlo dal Glossary o dalle impostazioni di studio."
-                    : "Per questo media non ci sono altre card da lavorare o mantenere adesso."
+                    : isGlobalReview
+                      ? "La review globale non ha ancora card da lavorare o mantenere adesso."
+                      : "Per questo media non ci sono altre card da lavorare o mantenere adesso."
               }
               action={
                 <>
                   {additionalNewCount > 0 ? (
                     <Link
                       className="button button--primary"
-                      href={buildCanonicalReviewSessionHref({
+                      href={buildCanonicalReviewSessionHrefForBase({
                         answeredCount: viewData.session.answeredCount,
+                        baseHref: viewData.media.reviewHref,
                         extraNewCount:
                           viewData.session.extraNewCount + additionalNewCount,
                         isQueueCard: true,
-                        mediaSlug: viewData.media.slug,
                         position: 1
                       })}
                     >
                       {formatTopUpLabel(additionalNewCount)}
-                    </Link>
-                  ) : null}
+                      </Link>
+                    ) : null}
                   <Link
                     className="button button--ghost"
                     href={contextualGlossaryHref}
@@ -481,8 +533,16 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
             />
           ) : (
             <EmptyState
-              title="Nessuna card da gestire."
-              description="Quando importerai le prime card o riattiverai una voce dal Glossary, qui riapparirà il flusso di Review del media."
+              title={
+                isGlobalReview
+                  ? "Nessuna card pronta nella review globale."
+                  : "Nessuna card da gestire."
+              }
+              description={
+                isGlobalReview
+                  ? "Quando importerai le prime card o riattiverai una voce dal Glossary, qui riapparirà il flusso della review globale."
+                  : "Quando importerai le prime card o riattiverai una voce dal Glossary, qui riapparirà il flusso di Review del media."
+              }
               action={
                 <Link
                   className="button button--ghost"
@@ -510,7 +570,11 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
               value={String(viewData.queue.dueCount)}
             />
             <StatBlock
-              detail={`${viewData.queue.newAvailableCount} nuove disponibili in totale per questo media.`}
+              detail={
+                isGlobalReview
+                  ? `${viewData.queue.newAvailableCount} nuove disponibili nella review globale.`
+                  : `${viewData.queue.newAvailableCount} nuove disponibili in totale per questo media.`
+              }
               label="Nuove"
               value={String(viewData.queue.newQueuedCount)}
             />
@@ -570,4 +634,16 @@ function formatTopUpLabel(count: number) {
   return count === 1
     ? "Aggiungi ancora 1 nuova"
     : `Aggiungi altre ${count} nuove`;
+}
+
+function buildReviewSummary(
+  data: ReviewPageData,
+  isGlobalReview: boolean,
+  hasAnyReviewCards: boolean
+) {
+  if (!isGlobalReview || hasAnyReviewCards) {
+    return data.queue.introLabel;
+  }
+
+  return "La review globale non ha ancora card attive da mettere in coda.";
 }

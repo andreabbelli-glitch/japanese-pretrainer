@@ -91,7 +91,11 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   ).toBeVisible();
 
   await page.goto("/review");
-  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review$/);
+  await expect(page).toHaveURL(/\/review(?:\?|$)/);
+  await expect(page.locator(".review-page")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Review globale" })
+  ).toBeVisible();
   const initialReviewFront = await page
     .locator(".review-stage__front")
     .textContent();
@@ -107,7 +111,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   );
   await goodButton.click();
 
-  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review(?:\?|$)/);
+  await expect(page).toHaveURL(/\/review(?:\?|$)/);
   await expect(
     page.getByRole("button", { name: "Mostra risposta" })
   ).toBeVisible();
@@ -118,6 +122,9 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await page.goto("/media/duel-masters-dm25/progress");
   await expect(
     page.getByRole("heading", { name: "Duel Masters" })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Apri review globale" })
   ).toBeVisible();
   await expect(page.getByText("Furigana")).toBeVisible();
   await expect(page.getByText("su richiesta")).toBeVisible();
@@ -139,12 +146,12 @@ test("keeps the review session on a valid next state after grading again", async
   page
 }) => {
   await page.goto("/review");
-  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review(?:\?|$)/);
+  await expect(page).toHaveURL(/\/review(?:\?|$)/);
 
   await page.getByRole("button", { name: "Mostra risposta" }).click();
   await page.getByRole("button", { name: /^Again/ }).click();
 
-  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review(?:\?|$)/);
+  await expect(page).toHaveURL(/\/review(?:\?|$)/);
   await expect(page).not.toHaveURL(/show=answer/);
   await expect(page).not.toHaveURL(/card=/);
 

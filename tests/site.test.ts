@@ -108,6 +108,13 @@ describe("site helpers", () => {
   });
 
   it("classifies internal return targets without conflating glossary and review", () => {
+    expect(resolveReturnToContext("/review?answered=3&card=card-iku")).toMatchObject(
+      {
+        href: "/review?answered=3&card=card-iku",
+        kind: "review",
+        pathname: "/review"
+      }
+    );
     expect(resolveReturnToContext("/media/fixture-tcg/review?card=card-iku"))
       .toMatchObject({
         href: "/media/fixture-tcg/review?card=card-iku",

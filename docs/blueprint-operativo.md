@@ -145,12 +145,13 @@ sono la sorgente operativa.
 - `/`
 - `/media`
 - `/glossary`
-- `/review`
+- `/review` come queue globale
 - `/media/[mediaSlug]`
 - `/media/[mediaSlug]/textbook`
 - `/media/[mediaSlug]/textbook/[lessonSlug]`
 - `/media/[mediaSlug]/glossary`
-- `/media/[mediaSlug]/review`
+- `/media/[mediaSlug]/review` come filtro verticale sullo stesso sistema, non
+  come launcher indipendente
 - `/media/[mediaSlug]/progress`
 - `/settings`
 
@@ -230,12 +231,34 @@ segnare qualcosa come gia imparato.
 ## 9.3 Funzioni minime
 
 - queue giornaliera;
+- limite dei nuovi globale, non per media;
 - grading stile Again / Hard / Good / Easy;
 - scheduler SRS;
 - cronologia risposte;
 - mark as known;
 - reset di una card;
 - sospensione temporanea o permanente.
+
+La review deve poter fondere il materiale cross-media quando una stessa entry o
+pattern grammaticale compare in più media, mantenendo visibile il contesto
+locale solo quando serve.
+
+Il subject state canonico è `review_subject_state`, mentre `review_state`
+rimane un layer legacy di compatibilità e mirror. Le migrazioni devono
+preservare lo storico esistente e il conteggio dei nuovi introdotti nel giorno
+non deve azzerarsi sugli upgrade.
+
+La migrazione `0011_global_review_subjects.sql` introduce anche
+`review_subject_log`, ma non esegue un backfill automatico di
+`review_subject_state`. Per questo il runtime deve mantenere un fallback legacy
+sicuro basato su `review_state` finché i subject-level state non esistono
+ancora sugli upgrade. In quel fallback, una sibling sospesa o manuale non può
+mai diventare representative subject se esiste una sibling attiva.
+
+Sul fronte prodotto, `/review` resta la review globale reale sui subject,
+mentre `/media/[mediaSlug]/review` è la vista filtrata locale. Dashboard e CTA
+globali devono usare numeri globali reali; progress e media detail possono
+mostrare anche numeri locali, ma senza etichettarli come globali.
 
 ## 9.4 Nota progettuale
 

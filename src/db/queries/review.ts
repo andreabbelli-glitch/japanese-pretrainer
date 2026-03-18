@@ -66,6 +66,25 @@ export async function getCardsByIds(
   });
 }
 
+export async function listReviewCardsByIds(
+  database: DatabaseClient,
+  cardIds: string[]
+) {
+  if (cardIds.length === 0) {
+    return [];
+  }
+
+  return database.query.card.findMany({
+    where: and(ne(card.status, "archived"), inArray(card.id, cardIds)),
+    with: {
+      segment: true,
+      reviewState: true,
+      entryLinks: true
+    },
+    orderBy: [asc(card.orderIndex), asc(card.createdAt)]
+  });
+}
+
 export async function listReviewCardsByMediaId(
   database: DatabaseClient,
   mediaId: string

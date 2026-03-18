@@ -157,8 +157,10 @@ describe("app shell live data", () => {
     });
 
     const dashboard = await getDashboardData(database);
+    const duelMastersMedia = await getMediaDetailData("duel-masters-dm25", database);
 
     expect(dashboard.focusMedia?.slug).toBe(developmentFixture.mediaSlug);
     expect(dashboard.reviewMedia?.slug).toBe("duel-masters-dm25");
+    expect(duelMastersMedia?.reviewStatValue).toBe("1 da ripassare");
   });
 });

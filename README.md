@@ -20,8 +20,11 @@ Il repository include attualmente:
 - app `Next.js` con App Router e TypeScript;
 - shell desktop/mobile coerente con la direzione UX/UI approvata;
 - dashboard `/`, media library `/media` e media detail `/media/[mediaSlug]`;
-- entry point dedicati per `/textbook`, `/glossary`, `/review` e `/progress`
-  sotto ogni media, coerenti con i flussi reali di studio;
+- entry point dedicati per `/textbook`, `/glossary`, `/review` e `/progress`,
+  con `/review` come workspace globale reale, `/media/[mediaSlug]/review` come
+  filtro verticale locale e un empty state dedicato al primo avvio quando non
+  ci sono ancora media o card da ripassare;
+- limite dei nuovi globale sulla review, non per media;
 - font self-hosted, cosi `build` non dipende da fetch esterni;
 - tooling locale per lint, format, typecheck, test unit/integration ed E2E;
 - struttura cartelle coerente con importer, persistence e UI gia in uso.
@@ -33,6 +36,28 @@ media seguono intenzionalmente il primo step non ancora completato del percorso.
 Non puntano automaticamente all'ultima lesson `in_progress` aperta di recente:
 la scelta privilegia l'avanzamento lineare del curriculum rispetto al semplice
 "ultimo punto visitato".
+
+## Modello Review Globale
+
+La review usa un modello canonico a livello subject:
+
+- `review_subject_state` contiene lo stato FSRS globale del subject condiviso;
+- `review_subject_log` registra la cronologia delle risposte a livello subject;
+- `review_state` e `review_log` restano tabelle card-level residuali per
+  compatibilita, mirror e upgrade di database esistenti.
+
+La migrazione [`drizzle/0011_global_review_subjects.sql`](./drizzle/0011_global_review_subjects.sql)
+crea le tabelle subject-level ma non esegue un backfill automatico di
+`review_subject_state`. Per questo, sugli upgrade reali il runtime mantiene un
+fallback legacy che ricostruisce temporaneamente il representative subject a
+partire da `review_state` finche lo state subject-level non esiste.
+
+A livello di prodotto:
+
+- `/review` e la review globale reale, con dedup cross-media e daily limit globale;
+- `/media/[mediaSlug]/review` resta una vista filtrata locale sul singolo media;
+- dashboard e CTA globali devono mostrare numeri globali reali, mentre le
+  superfici del media devono etichettare chiaramente i numeri locali del media.
 
 ## Bootstrap locale
 

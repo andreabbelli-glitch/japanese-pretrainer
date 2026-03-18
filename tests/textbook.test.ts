@@ -408,7 +408,7 @@ describe("textbook data", () => {
     );
 
     expect(markup).toContain("<strong>enfasi</strong>");
-    expect(markup).toContain("<ruby>");
+    expect(markup).toContain("<ruby class=\"app-ruby\">");
     expect(markup).toContain("<code");
     expect(markup).toContain("inline-ref");
     expect(markup).not.toContain("**enfasi**");

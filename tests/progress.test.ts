@@ -3,8 +3,11 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { eq } from "drizzle-orm";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
+import { MediaDetailPage } from "@/components/media/media-detail-page";
 import {
   card,
   cardEntryLink,
@@ -12,6 +15,7 @@ import {
   createDatabaseClient,
   developmentFixture,
   lessonProgress,
+  media,
   reviewState,
   runMigrations,
   seedDevelopmentDatabase,
@@ -72,8 +76,9 @@ describe("progress, settings, and study controls", () => {
     expect(data?.glossary.breakdown.known).toBe(1);
     expect(data?.review.dueCount).toBe(1);
     expect(data?.resume.recommendedArea).toBe("review");
+    expect(data?.resume.recommendedLabel).toBe("Apri review globale");
     expect(data?.resume.recommendedHref).toBe(
-      `/media/${developmentFixture.mediaSlug}/review`
+      "/review"
     );
   });
 
@@ -114,12 +119,84 @@ describe("progress, settings, and study controls", () => {
 
     expect(data).not.toBeNull();
     expect(data?.review.dueCount).toBe(0);
-    expect(data?.review.queueCount).toBe(1);
-    expect(data?.review.newQueuedCount).toBe(1);
-    expect(data?.resume.recommendedArea).toBe("review");
+    expect(data?.review.queueCount).toBe(0);
+    expect(data?.review.newQueuedCount).toBe(0);
+    expect(data?.resume.recommendedArea).toBe("textbook");
     expect(data?.resume.recommendedHref).toBe(
-      `/media/${developmentFixture.mediaSlug}/review`
+      `/media/${developmentFixture.mediaSlug}/textbook/core-vocab`
     );
+  });
+
+  it("keeps global review signals separate from the local media queue", async () => {
+    await database
+      .update(reviewState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+
+    await database.insert(media).values({
+      id: "media_progress_global_review",
+      slug: "global-review-fixture",
+      title: "Global Review Fixture",
+      mediaType: "game",
+      segmentKind: "chapter",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      description: "Media secondario per verificare la review globale.",
+      status: "active",
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(card).values({
+      id: "card_progress_global_due",
+      mediaId: "media_progress_global_review",
+      segmentId: null,
+      sourceFile: "tests/fixtures/db/progress/global-review-fixture.md",
+      cardType: "recognition",
+      front: "共有レビュー",
+      back: "review globale",
+      notesIt: "Card dovuta in un media diverso.",
+      status: "active",
+      orderIndex: 1,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(reviewState).values({
+      cardId: "card_progress_global_due",
+      state: "review",
+      stability: 3,
+      difficulty: 2.5,
+      dueAt: "2000-01-01T00:00:00.000Z",
+      lastReviewedAt: "2026-03-09T10:00:00.000Z",
+      scheduledDays: 3,
+      learningSteps: 0,
+      lapses: 0,
+      reps: 3,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+
+    const data = await getMediaProgressPageData(
+      developmentFixture.mediaSlug,
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(data?.review.dueCount).toBe(0);
+    expect(data?.globalReview.dueCount).toBe(1);
+    expect(data?.resume.recommendedArea).toBe("review");
+    expect(data?.resume.recommendedHref).toBe("/review");
+
+    const markup = renderToStaticMarkup(
+      createElement(MediaDetailPage, { data: data! })
+    );
+
+    expect(markup).toContain("Review globale");
+    expect(markup).toContain("Review del media");
+    expect(markup).toContain("Coda locale e carico quotidiano");
   });
 
   it("persists settings and applies them to glossary ordering and review queue limits", async () => {
@@ -231,8 +308,8 @@ describe("progress, settings, and study controls", () => {
       ) ?? 999
     );
     expect(reviewData?.queue.dailyLimit).toBe(1);
-    expect(reviewData?.queue.newAvailableCount).toBe(1);
-    expect(reviewData?.queue.newQueuedCount).toBe(1);
+    expect(reviewData?.queue.newAvailableCount).toBe(0);
+    expect(reviewData?.queue.newQueuedCount).toBe(0);
     expect(reviewData?.settings.reviewFrontFurigana).toBe(false);
   });
 });

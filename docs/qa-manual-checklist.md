@@ -20,7 +20,11 @@
 - Glossary globale `/glossary`: ricerca cross-media navigabile e coerente con
   le viste locali.
 - Media detail: le entry point `Textbook`, `Glossary`, `Review`, `Progress` sono tutte operative.
-- Root review `/review`: reindirizza direttamente alla review del media di focus.
+- Root review `/review`: apre la queue globale reale su tutti i subject e, se
+  non esistono ancora media o card disponibili, mostra un empty state dedicato
+  al primo avvio.
+- `/media/[mediaSlug]/review`: resta il filtro verticale locale sul singolo
+  media e non deve diventare un launcher verso un altro media.
 - Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.
 - Textbook resume: la CTA `Continua il percorso` punta al primo step non
   completato del percorso, anche se esiste una lesson diversa gia `in_progress`.
@@ -31,6 +35,15 @@
 - Glossary detail: lesson e card collegate sono navigabili.
 - Review: il toggle `Furigana sul fronte` rispetta sia la modalita immediata sia quella solo dopo risposta.
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione.
+- Review: il daily limit dei nuovi è globale e la coda mostra contenuti fusi
+  quando la stessa entry o pattern compare in più media.
+- Review: le card già introdotte restano contabilizzate anche dopo l'upgrade
+  da DB esistenti; la migrazione non deve azzerare il conteggio giornaliero.
+- Review upgrade legacy: con DB esistente senza backfill in
+  `review_subject_state`, il fallback legacy non deve permettere a una sibling
+  `suspended` o `known_manual` di mascherare una sibling attiva.
+- Progress e media detail: i numeri marcati come review globale coincidono con
+  `/review`; i numeri del media restano chiaramente etichettati come locali.
 - Progress: mostra textbook, coverage, review e setting persistiti.
 - Settings: salvare furigana reader, furigana review e ordine glossary aggiorna le viste collegate.
 - Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook, glossary e progress risultano navigabili senza errori o stati vuoti incoerenti.
