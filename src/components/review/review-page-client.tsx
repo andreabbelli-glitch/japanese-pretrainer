@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import {
   gradeReviewCardSessionAction,
@@ -14,7 +15,10 @@ import {
 } from "@/actions/review";
 import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import type { ReviewPageData } from "@/lib/review";
-import { appendReturnToParam, buildReviewSessionHref } from "@/lib/site";
+import {
+  appendReturnToParam,
+  buildCanonicalReviewSessionHref
+} from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
@@ -53,6 +57,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   const [viewData, setViewData] = useState(data);
   const [clientError, setClientError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   const selectedCard = viewData.selectedCard;
   const showCompactPronunciation =
@@ -67,11 +74,13 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     viewData.settings.reviewFrontFurigana ||
     viewData.selectedCardContext.showAnswer;
   const additionalNewCount = showCompletionTopUp(viewData);
-  const sessionHref = buildReviewSessionHref({
+  const sessionHref = buildCanonicalReviewSessionHref({
     answeredCount: viewData.session.answeredCount,
     cardId: selectedCard?.id ?? null,
     extraNewCount: viewData.session.extraNewCount,
+    isQueueCard: viewData.selectedCardContext.isQueueCard,
     mediaSlug: viewData.media.slug,
+    position: viewData.selectedCardContext.position,
     showAnswer: viewData.selectedCardContext.showAnswer
   });
   const contextualGlossaryHref = appendReturnToParam(
@@ -89,6 +98,19 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       preview.nextReviewLabel
     ])
   );
+  const currentHref = (() => {
+    const query = searchParams.toString();
+
+    return query.length > 0 ? `${pathname}?${query}` : pathname;
+  })();
+
+  useEffect(() => {
+    if (currentHref !== sessionHref) {
+      router.replace(sessionHref, {
+        scroll: false
+      });
+    }
+  }, [currentHref, router, sessionHref]);
 
   function runSessionUpdate(loadNextData: () => Promise<ReviewPageData>) {
     setClientError(null);
@@ -436,11 +458,13 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                   {additionalNewCount > 0 ? (
                     <Link
                       className="button button--primary"
-                      href={buildReviewSessionHref({
+                      href={buildCanonicalReviewSessionHref({
                         answeredCount: viewData.session.answeredCount,
                         extraNewCount:
                           viewData.session.extraNewCount + additionalNewCount,
-                        mediaSlug: viewData.media.slug
+                        isQueueCard: true,
+                        mediaSlug: viewData.media.slug,
+                        position: 1
                       })}
                     >
                       {formatTopUpLabel(additionalNewCount)}

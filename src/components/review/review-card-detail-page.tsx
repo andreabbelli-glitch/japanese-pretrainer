@@ -141,7 +141,8 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
         description="Le azioni restano locali e non cancellano mai lo storico di Review già presente."
       >
         <div className="hero-actions">
-          {data.card.reviewLabel === "Già nota" ? (
+          {data.card.reviewLabel === "Già nota" ||
+          data.card.reviewLabel === "Ignorata" ? (
             <form action={setLinkedEntryLearningAction}>
               <ReviewDetailActionFields
                 cardId={data.card.id}

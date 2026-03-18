@@ -134,3 +134,21 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
     "duel-masters-dm25"
   );
 });
+
+test("keeps the review session on a valid next state after grading again", async ({
+  page
+}) => {
+  await page.goto("/review");
+  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review(?:\?|$)/);
+
+  await page.getByRole("button", { name: "Mostra risposta" }).click();
+  await page.getByRole("button", { name: /^Again/ }).click();
+
+  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review(?:\?|$)/);
+  await expect(page).not.toHaveURL(/show=answer/);
+  await expect(page).not.toHaveURL(/card=/);
+
+  const revealButton = page.getByRole("button", { name: "Mostra risposta" });
+  await expect(revealButton).toBeVisible();
+  await expect(page.getByRole("button", { name: /^Again/ })).toHaveCount(0);
+});

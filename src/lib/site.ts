@@ -215,6 +215,40 @@ export function buildReviewSessionHref(input: {
   );
 }
 
+export function shouldPersistReviewSessionCard(input: {
+  cardId?: string | null;
+  isQueueCard: boolean;
+  position: number | null;
+}) {
+  if (!input.cardId) {
+    return false;
+  }
+
+  if (!input.isQueueCard) {
+    return true;
+  }
+
+  return (input.position ?? 1) > 1;
+}
+
+export function buildCanonicalReviewSessionHref(input: {
+  answeredCount?: number;
+  cardId?: string | null;
+  extraNewCount?: number;
+  isQueueCard: boolean;
+  mediaSlug: string;
+  position: number | null;
+  showAnswer?: boolean;
+}): Route {
+  return buildReviewSessionHref({
+    answeredCount: input.answeredCount,
+    cardId: shouldPersistReviewSessionCard(input) ? input.cardId : null,
+    extraNewCount: input.extraNewCount,
+    mediaSlug: input.mediaSlug,
+    showAnswer: input.showAnswer
+  });
+}
+
 export function replaceReviewCardInHref(
   reviewHref: string,
   cardId: string

@@ -131,6 +131,7 @@ async function buildMediaShellSnapshots(
     return [];
   }
 
+  const nowIso = new Date().toISOString();
   const [lessons, glossarySnapshots, reviewSnapshots] = await Promise.all([
     listLessonsByMediaIds(
       database,
@@ -175,7 +176,8 @@ async function buildMediaShellSnapshots(
             terms: []
           }),
           extraNewCount: 0,
-          newIntroducedTodayCount: 0
+          newIntroducedTodayCount: 0,
+          nowIso
         })
     })
   );
@@ -185,6 +187,7 @@ async function buildMediaShellSnapshot(
   database: DatabaseClient,
   media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
 ): Promise<MediaShellSnapshot> {
+  const nowIso = new Date().toISOString();
   const [lessons, glossary, review] = await Promise.all([
     listLessonsByMediaId(database, media.id),
     loadGlossaryProgressSnapshot(database, media.id, media.slug),
@@ -203,7 +206,8 @@ async function buildMediaShellSnapshot(
           terms: []
         }),
         extraNewCount: 0,
-        newIntroducedTodayCount: 0
+        newIntroducedTodayCount: 0,
+        nowIso
       })
     )
   ]);

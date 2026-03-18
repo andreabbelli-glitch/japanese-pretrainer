@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 import { eq } from "drizzle-orm";
 import { renderToStaticMarkup } from "react-dom/server";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ReviewCardDetailPage } from "@/components/review/review-card-detail-page";
 import { ReviewPage } from "@/components/review/review-page";
@@ -42,6 +42,7 @@ import {
   setReviewCardSuspended
 } from "@/lib/review-service";
 import { scheduleReview } from "@/lib/review-scheduler";
+import { buildCanonicalReviewSessionHref } from "@/lib/site";
 import { updateStudySettings } from "@/lib/settings";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
@@ -58,6 +59,14 @@ const validContentRoot = path.join(
   "valid",
   "content"
 );
+
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/media/test/review",
+  useRouter: () => ({
+    replace: () => undefined
+  }),
+  useSearchParams: () => new URLSearchParams()
+}));
 
 describe("review system", () => {
   let tempDir = "";
@@ -852,6 +861,99 @@ describe("review system", () => {
     );
   });
 
+  it("builds canonical review session urls and tracks only cards remaining after the current one", async () => {
+    await database
+      .update(reviewState)
+      .set({
+        dueAt: "2000-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+    await database.insert(card).values({
+      id: "card_fixture_remaining_count",
+      mediaId: developmentFixture.mediaId,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/remaining-count.md",
+      cardType: "recognition",
+      front: "残り",
+      back: "restante",
+      notesIt: "Serve a verificare il conteggio delle card rimanenti.",
+      status: "active",
+      orderIndex: 2,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card_entry_link_fixture_remaining_count",
+      cardId: "card_fixture_remaining_count",
+      entryType: "term",
+      entryId: developmentFixture.termDbId,
+      relationshipType: "secondary"
+    });
+    await database.insert(reviewState).values({
+      cardId: "card_fixture_remaining_count",
+      state: "review",
+      stability: 2.1,
+      difficulty: 3.6,
+      dueAt: "2000-01-01T00:05:00.000Z",
+      lastReviewedAt: "2026-03-09T09:00:00.000Z",
+      scheduledDays: 1,
+      learningSteps: 0,
+      lapses: 0,
+      reps: 2,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      createdAt: "2026-03-09T09:00:00.000Z",
+      updatedAt: "2026-03-09T09:00:00.000Z"
+    });
+
+    const frontQueuePage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+    const explicitQueuePage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {
+        card: "card_fixture_remaining_count"
+      },
+      database
+    );
+
+    expect(frontQueuePage?.selectedCard?.id).toBe(developmentFixture.primaryCardId);
+    expect(frontQueuePage?.selectedCardContext.position).toBe(1);
+    expect(frontQueuePage?.selectedCardContext.remainingCount).toBe(1);
+    expect(
+      buildCanonicalReviewSessionHref({
+        answeredCount: frontQueuePage?.session.answeredCount,
+        cardId: frontQueuePage?.selectedCard?.id ?? null,
+        extraNewCount: frontQueuePage?.session.extraNewCount,
+        isQueueCard: frontQueuePage?.selectedCardContext.isQueueCard ?? false,
+        mediaSlug: developmentFixture.mediaSlug,
+        position: frontQueuePage?.selectedCardContext.position ?? null,
+        showAnswer: frontQueuePage?.selectedCardContext.showAnswer
+      })
+    ).toBe(`/media/${developmentFixture.mediaSlug}/review`);
+
+    expect(explicitQueuePage?.selectedCard?.id).toBe(
+      "card_fixture_remaining_count"
+    );
+    expect(explicitQueuePage?.selectedCardContext.position).toBe(2);
+    expect(explicitQueuePage?.selectedCardContext.remainingCount).toBe(0);
+    expect(
+      buildCanonicalReviewSessionHref({
+        answeredCount: explicitQueuePage?.session.answeredCount,
+        cardId: explicitQueuePage?.selectedCard?.id ?? null,
+        extraNewCount: explicitQueuePage?.session.extraNewCount,
+        isQueueCard: explicitQueuePage?.selectedCardContext.isQueueCard ?? false,
+        mediaSlug: developmentFixture.mediaSlug,
+        position: explicitQueuePage?.selectedCardContext.position ?? null,
+        showAnswer: explicitQueuePage?.selectedCardContext.showAnswer
+      })
+    ).toBe(
+      `/media/${developmentFixture.mediaSlug}/review?card=card_fixture_remaining_count`
+    );
+  });
+
   it("exposes reading and example sentences in review answers", async () => {
     const primaryPage = await getReviewPageData(
       developmentFixture.mediaSlug,
@@ -1135,6 +1237,30 @@ describe("review system", () => {
       )
     ).toBe(true);
     expect(reopenedQueue?.manualCount).toBe(1);
+  });
+
+  it("shows the reopen action for ignored cards in the review detail page", async () => {
+    await setLinkedEntryStatusByCard({
+      cardId: developmentFixture.primaryCardId,
+      database,
+      now: new Date("2026-03-09T13:00:00.000Z"),
+      status: "ignored"
+    });
+
+    const detailData = await getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.primaryCardId,
+      database
+    );
+
+    expect(detailData?.card.reviewLabel).toBe("Ignorata");
+
+    const markup = renderToStaticMarkup(
+      ReviewCardDetailPage({ data: detailData! })
+    );
+
+    expect(markup).toContain("Rimetti in studio");
+    expect(markup).not.toContain("Segna già nota");
   });
 
   it("suspends and resets cards without destroying the underlying review history", async () => {

@@ -246,6 +246,7 @@ export async function getReviewPageData(
 ): Promise<ReviewPageData | null> {
   markDataAsLive();
   const now = new Date();
+  const nowIso = now.toISOString();
 
   const media = await getMediaBySlug(database, mediaSlug);
 
@@ -276,6 +277,7 @@ export async function getReviewPageData(
     grammar,
     mediaSlug: media.slug,
     newIntroducedTodayCount,
+    nowIso,
     terms
   });
   const cardGroups = [
@@ -318,7 +320,7 @@ export async function getReviewPageData(
           : [],
       isQueueCard: queueIndex >= 0,
       position: queueIndex >= 0 ? queueIndex + 1 : null,
-      remainingCount: queue.cards.length,
+      remainingCount: queueIndex >= 0 ? queue.cards.length - queueIndex - 1 : 0,
       showAnswer: searchState.showAnswer || queueIndex < 0
     },
     session: {
@@ -335,6 +337,7 @@ export async function getReviewQueueSnapshotForMedia(
 ): Promise<ReviewQueueSnapshot | null> {
   markDataAsLive();
   const now = new Date();
+  const nowIso = now.toISOString();
 
   const media = await getMediaBySlug(database, mediaSlug);
 
@@ -357,6 +360,7 @@ export async function getReviewQueueSnapshotForMedia(
     grammar,
     mediaSlug: media.slug,
     newIntroducedTodayCount,
+    nowIso,
     terms
   });
 
@@ -447,6 +451,7 @@ export async function getReviewCardDetailData(
   database: DatabaseClient = db
 ): Promise<ReviewCardDetailData | null> {
   markDataAsLive();
+  const nowIso = new Date().toISOString();
 
   const media = await getMediaBySlug(database, mediaSlug);
 
@@ -461,7 +466,7 @@ export async function getReviewCardDetailData(
   ]);
   const entryLookup = buildEntryLookup(terms, grammar, media.slug);
   const selectedCard = cards
-    .map((card) => mapQueueCard(card, entryLookup, media.slug))
+    .map((card) => mapQueueCard(card, entryLookup, media.slug, nowIso))
     .find((card) => card.id === cardId);
   const selectedRawCard = cards.find((card) => card.id === cardId) ?? null;
 
@@ -574,6 +579,7 @@ export async function loadReviewOverviewSnapshots(
   }
 
   const now = new Date();
+  const nowIso = now.toISOString();
   const mediaIds = media.map((item) => item.id);
   const [eligibleCards, terms, grammar, dailyLimit, introducedCounts] =
     await Promise.all([
@@ -607,7 +613,8 @@ export async function loadReviewOverviewSnapshots(
         dailyLimit,
         entryStatuses,
         extraNewCount: 0,
-        newIntroducedTodayCount: introducedCountByMedia.get(item.id) ?? 0
+        newIntroducedTodayCount: introducedCountByMedia.get(item.id) ?? 0,
+        nowIso
       })
     );
   }
@@ -644,9 +651,10 @@ export function buildReviewOverviewSnapshot(input: {
   entryStatuses: Map<string, ReviewEntryStatusValue>;
   extraNewCount: number;
   newIntroducedTodayCount: number;
+  nowIso: string;
 }): ReviewOverviewSnapshot {
   const allCards = input.cards.map((card) =>
-    mapReviewOverviewCard(card, input.entryStatuses)
+    mapReviewOverviewCard(card, input.entryStatuses, input.nowIso)
   );
   const dueCards = allCards
     .filter((card) => card.bucket === "due")
@@ -746,7 +754,8 @@ function buildReviewEntryKey(entryType: string, entryId: string) {
 
 function mapReviewOverviewCard(
   card: ReviewCardListItem,
-  entryStatuses: Map<string, ReviewEntryStatusValue>
+  entryStatuses: Map<string, ReviewEntryStatusValue>,
+  nowIso: string
 ): ReviewOverviewCard {
   const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks).map(
     (entryLink) =>
@@ -766,6 +775,7 @@ function mapReviewOverviewCard(
 
   return {
     bucket: resolveCardBucket({
+      asOfIso: nowIso,
       dueAt,
       effectiveState: effectiveState.state,
       reviewState: (card.reviewState?.state as ReviewState | null) ?? null
@@ -926,6 +936,7 @@ function buildReviewQueueSnapshot(input: {
   grammar: GrammarGlossaryEntry[];
   mediaSlug: string;
   newIntroducedTodayCount: number;
+  nowIso: string;
   terms: TermGlossaryEntry[];
 }) {
   const entryLookup = buildEntryLookup(
@@ -934,7 +945,7 @@ function buildReviewQueueSnapshot(input: {
     input.mediaSlug
   );
   const allCards = input.cards.map((card) =>
-    mapQueueCard(card, entryLookup, input.mediaSlug)
+    mapQueueCard(card, entryLookup, input.mediaSlug, input.nowIso)
   );
   const dueCards = allCards
     .filter((card) => card.bucket === "due")
@@ -1056,7 +1067,8 @@ function buildReviewCrossMediaNotesPreview(notes?: string | null) {
 function mapQueueCard(
   card: ReviewCardListItem,
   entryLookup: Map<string, ReviewEntryLookupItem>,
-  mediaSlug: string
+  mediaSlug: string,
+  nowIso: string
 ): ReviewQueueCard {
   const entries = card.entryLinks
     .slice()
@@ -1102,6 +1114,7 @@ function mapQueueCard(
   );
   const dueAt = card.reviewState?.dueAt ?? null;
   const bucket = resolveCardBucket({
+    asOfIso: nowIso,
     dueAt,
     effectiveState: effectiveState.state,
     reviewState: (card.reviewState?.state as ReviewState | null) ?? null
@@ -1187,6 +1200,7 @@ function deriveKanaReading(value: string) {
 }
 
 function resolveCardBucket(input: {
+  asOfIso: string;
   dueAt: string | null;
   effectiveState: EffectiveReviewState["state"];
   reviewState: ReviewState | null;
@@ -1204,7 +1218,7 @@ function resolveCardBucket(input: {
 
   if (
     isReviewCardDue({
-      asOfIso: new Date().toISOString(),
+      asOfIso: input.asOfIso,
       dueAt: input.dueAt,
       effectiveState: input.effectiveState,
       reviewState: input.reviewState
