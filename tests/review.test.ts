@@ -17,6 +17,7 @@ import {
   countNewCardsIntroducedOnDayByMediaIds,
   createDatabaseClient,
   developmentFixture,
+  entryStatus,
   getUtcDayBounds,
   lessonProgress,
   media,
@@ -1072,10 +1073,12 @@ describe("review system", () => {
       ReviewCardDetailPage({ data: reviewDetail! })
     );
 
-    expect(reviewMarkup).toContain('review-stage__front jp-inline"><ruby>');
+    expect(reviewMarkup).toContain(
+      'review-stage__front jp-inline"><ruby class="app-ruby">'
+    );
     expect(reviewMarkup).not.toContain("{{語彙|ごい}}");
     expect(detailMarkup).toContain(
-      'glossary-entry-hero__title jp-inline"><ruby>'
+      'glossary-entry-hero__title jp-inline"><ruby class="app-ruby">'
     );
     expect(detailMarkup).not.toContain("{{語彙|ごい}}");
   });
@@ -1127,10 +1130,12 @@ describe("review system", () => {
       'review-stage__front jp-inline">語彙</h2>'
     );
     expect(frontHiddenMarkup).not.toContain(
-      'review-stage__front jp-inline"><ruby>'
+      'review-stage__front jp-inline"><ruby class="app-ruby">'
     );
     expect(frontHiddenMarkup).not.toContain("{{語彙|ごい}}");
-    expect(revealedMarkup).toContain('review-stage__front jp-inline"><ruby>');
+    expect(revealedMarkup).toContain(
+      'review-stage__front jp-inline"><ruby class="app-ruby">'
+    );
   });
 
   it("renders grading actions from easy to again with next-review previews", async () => {
@@ -1237,6 +1242,62 @@ describe("review system", () => {
       )
     ).toBe(true);
     expect(reopenedQueue?.manualCount).toBe(1);
+  });
+
+  it("clears driving entry_status rows when resetting a manually excluded card", async () => {
+    await setLinkedEntryStatusByCard({
+      cardId: developmentFixture.primaryCardId,
+      database,
+      now: new Date("2026-03-09T13:00:00.000Z"),
+      status: "known_manual"
+    });
+
+    const cardWithLinks = await database.query.card.findFirst({
+      where: eq(card.id, developmentFixture.primaryCardId),
+      with: {
+        entryLinks: true
+      }
+    });
+    const primaryLinks =
+      cardWithLinks?.entryLinks.filter(
+        (link) => link.relationshipType === "primary"
+      ) ?? [];
+    const drivingLinks =
+      primaryLinks.length > 0 ? primaryLinks : (cardWithLinks?.entryLinks ?? []);
+    const drivingEntryKeys = new Set(
+      drivingLinks.map((link) => `${link.entryType}:${link.entryId}`)
+    );
+
+    const manualStatuses = await database.query.entryStatus.findMany();
+
+    expect(
+      manualStatuses.filter((row) =>
+        drivingEntryKeys.has(`${row.entryType}:${row.entryId}`)
+      )
+    ).not.toHaveLength(0);
+
+    await resetReviewCardProgress({
+      cardId: developmentFixture.primaryCardId,
+      database,
+      now: new Date("2026-03-09T13:05:00.000Z")
+    });
+
+    const resetQueue = await getReviewQueueSnapshotForMedia(
+      developmentFixture.mediaSlug,
+      database
+    );
+    const remainingStatuses = await database.query.entryStatus.findMany();
+
+    expect(
+      remainingStatuses.filter((row) =>
+        drivingEntryKeys.has(`${row.entryType}:${row.entryId}`)
+      )
+    ).toHaveLength(0);
+    expect(
+      resetQueue?.cards.some(
+        (queuedCard) => queuedCard.id === developmentFixture.primaryCardId
+      )
+    ).toBe(true);
   });
 
   it("shows the reopen action for ignored cards in the review detail page", async () => {

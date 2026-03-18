@@ -324,7 +324,7 @@ assets:
       Schermata acquisto deck prebuilt con più deck in vendita, ribbon periodo
       vendita e bonus playmat/protector.
     caption_it: >-
-      [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
+      [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
       mostra deck-prodotto, [{{販売期間|はんばいきかん}}](term:term-sale-period),
       prezzo e bonus `{{特典|とくてん}}プレイマット/プロテクト`: qui non
       stai ancora editando una lista.

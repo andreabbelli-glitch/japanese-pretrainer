@@ -405,10 +405,10 @@ id: card-face-up-recognition
 entry_type: term
 entry_id: term-face-up
 card_type: recognition
-front: '{{表向|おもてむ}}き'
+front: '{{表|おもて}}{{向|む}}き'
 back: a faccia in su / face-up
 example_jp: >-
-  {{山札|やまふだ}}の{{上|うえ}}から{{6枚|ろくまい}}を{{表向|おもてむ}}きにする。
+  {{山札|やまふだ}}の{{上|うえ}}から{{6枚|ろくまい}}を{{表|おもて}}{{向|む}}きにする。
 example_it: >-
   Metti a faccia in su le prime 6 carte del tuo mazzo.
 notes_it: >-
@@ -478,7 +478,7 @@ front: ～ように
 back: in modo che / così da soddisfare
 example_jp: >-
   コスト{{表記|ひょうき}}にある{{数字|すうじ}}を{{合計|ごうけい}}したものが
-  {{5以上|ごいじょう}}になるように、カードを{{表向|おもてむ}}きにする。
+  {{5以上|ごいじょう}}になるように、カードを{{表|おもて}}{{向|む}}きにする。
 example_it: >-
   Rivela carte in modo che la somma dei numeri stampati nel costo arrivi a 5 o
   più.

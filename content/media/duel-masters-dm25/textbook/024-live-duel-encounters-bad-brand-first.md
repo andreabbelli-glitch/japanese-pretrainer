@@ -47,7 +47,7 @@ jp: >-
   このクリーチャーが[{{攻撃|こうげき}}](term:term-attack)する
   [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の
   [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}を
-  [{{表向|おもてむ}}き](term:term-face-up)にする。
+  [{{表|おもて}}{{向|む}}き](term:term-face-up)にする。
 translation_it: >-
   Quando questa creatura attacca, metti scoperta la prima carta del tuo mazzo.
 reveal_mode: sentence
@@ -83,7 +83,7 @@ reveal_mode: sentence
 
 - [{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から{{1枚目|いちまいめ}}
   fissa una carta molto precisa: proprio quella in cima in questo momento.
-- [{{表向|おもてむ}}き](term:term-face-up)にする non vuol dire pescare né
+- [{{表|おもて}}{{向|む}}き](term:term-face-up)にする non vuol dire pescare né
   aggiungere alla mano: vuol dire rendere pubblica quell'informazione durante
   la risoluzione.
 - Il giapponese quindi costruisce prima la rivelazione e solo dopo il filtro:
@@ -112,7 +112,7 @@ reveal_mode: sentence
 - [ビートジョッキー](term:term-beat-jockey) è il filtro tribale decisivo:
   quando compare nella seconda frase, stai controllando la famiglia della carta
   rivelata.
-- [{{表向|おもてむ}}き](term:term-face-up) segnala informazione pubblica durante
+- [{{表|おもて}}{{向|む}}き](term:term-face-up) segnala informazione pubblica durante
   la risoluzione, non movimento di zona.
 - `{{上|うえ}}から{{1枚目|いちまいめ}}` e `{{一番下|いちばんした}}` sono due
   chunk molto utili perché descrivono posizioni precise del mazzo, non carte

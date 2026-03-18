@@ -95,7 +95,7 @@ back: Bad Brand First / Beat Jockey aggressivo che controlla la cima del mazzo
 example_jp: >-
   “{{罰怒|バッド}}”ブランド {{1st|ファースト}}が
   {{攻撃|こうげき}}すると、{{山札|やまふだ}}の{{上|うえ}}から
-  {{1枚目|いちまいめ}}を{{表向|おもてむ}}きにする。
+  {{1枚目|いちまいめ}}を{{表|おもて}}{{向|む}}きにする。
 example_it: >-
   Quando Bad Brand 1st attacca, rende scoperta la prima carta del mazzo.
 notes_it: >-
@@ -129,18 +129,18 @@ entry_id: term-top-card-of-deck
 card_type: concept
 front: >-
   {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}を
-  {{表向|おもてむ}}きにする
+  {{表|おもて}}{{向|む}}きにする
 back: rendi scoperta la prima carta del tuo mazzo
 example_jp: >-
   {{攻撃|こうげき}}した{{時|とき}}、{{山札|やまふだ}}の{{上|うえ}}から
-  {{1枚目|いちまいめ}}を{{表向|おもてむ}}きにすると、そのカードを
+  {{1枚目|いちまいめ}}を{{表|おもて}}{{向|む}}きにすると、そのカードを
   みんなが{{確認|かくにん}}できる。
 example_it: >-
   Quando attacchi, se metti scoperta la prima carta del mazzo, tutti possono
   verificarla.
 notes_it: >-
   Il punto qui non è pescare la carta ma renderla informazione pubblica. La
-  frase unisce posizione del mazzo e stato `{{表向|おもてむ}}き` nello stesso
+  frase unisce posizione del mazzo e stato `{{表|おもて}}{{向|む}}き` nello stesso
   gesto.
 tags: [live-duel, deck, reveal, chunk]
 :::

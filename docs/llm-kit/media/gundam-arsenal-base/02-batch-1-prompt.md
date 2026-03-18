@@ -58,7 +58,7 @@ Vincoli di formato obbligatori:
 - Se usi inline code con giapponese non trasparente, annota anche li:
   `` `{{未解放|みかいほう}}` `` e non `` `未解放` ``.
 - Nei composti misti non mettere kana gia visibili dentro il ruby:
-  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`,
+  `{{受|う}}け{{取|と}}る`, `{{手|て}}{{持|も}}ち`, `メイン{{枠|わく}}`,
   `{{2|ふた}}つ`.
 - Quando c'e un composto numerico con soli kanji / qualificatori in kanji
   (`以下`, `以上`, `未満`, ecc.), annota il blocco completo:

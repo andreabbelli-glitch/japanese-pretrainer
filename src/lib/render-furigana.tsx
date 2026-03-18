@@ -46,8 +46,8 @@ function renderInlineNode(
       return <Fragment key={key}>{node.value}</Fragment>;
     case "furigana":
       return (
-        <ruby key={key}>
-          {node.base}
+        <ruby className="app-ruby" key={key}>
+          <rb>{node.base}</rb>
           <rt>{node.reading}</rt>
         </ruby>
       );

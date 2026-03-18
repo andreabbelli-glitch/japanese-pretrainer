@@ -1707,7 +1707,7 @@ function FuriganaRuby({
 
   return (
     <ruby
-      className="reader-ruby"
+      className="app-ruby reader-ruby"
       data-revealed={furiganaMode === "hover" && revealed}
       onClick={() => {
         if (furiganaMode === "hover" && isTouchLayout) {
@@ -1717,7 +1717,7 @@ function FuriganaRuby({
       onBlur={() => setRevealed(false)}
       tabIndex={furiganaMode === "hover" ? 0 : -1}
     >
-      {base}
+      <rb>{base}</rb>
       <rt>{reading}</rt>
     </ruby>
   );

@@ -261,7 +261,7 @@ aliases: [構築済み, こうちくずみ, kouchikuzumi]
 notes_it: >-
   Ti dice che il deck o il prodotto sono già preparati e non richiedono deck
   building da zero. Per questo, dentro
-  [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase),
+  [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase),
   il valore operativo è che stai guardando un prodotto pronto.
 level_hint: custom
 :::
@@ -275,7 +275,7 @@ meaning_it: acquisto deck prebuilt / constructed deck purchase
 pos: screen-label
 aliases: [構築済みデッキ購入, constructed deck purchase]
 notes_it: >-
-  [{{構築済|こうちくず}}み](term:term-prebuilt) segnala che il deck è già
+  [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt) segnala che il deck è già
   preparato. Il label intero va quindi letto come acquisto di un prodotto
   prebuilt, non come schermata di editing del tuo mazzo personale.
 level_hint: custom
@@ -454,10 +454,10 @@ id: card-unclaimed-recognition
 entry_type: term
 entry_id: term-unclaimed
 card_type: recognition
-front: '{{未受|みう}}け{{取|と}}り'
+front: '{{未|み}}{{受|う}}け{{取|と}}り'
 back: non ancora riscosso / unclaimed
 example_jp: >-
-  {{未受|みう}}け{{取|と}}りの{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
+  {{未|み}}{{受|う}}け{{取|と}}りの{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
 example_it: >-
   Ci sono 2 reward ancora da riscuotere.
 notes_it: >-
@@ -487,10 +487,10 @@ id: card-bulk-claim-recognition
 entry_type: term
 entry_id: term-bulk-claim
 card_type: recognition
-front: '{{一括受|いっかつう}}け{{取|と}}り'
+front: '{{一括|いっかつ}}{{受|う}}け{{取|と}}り'
 back: riscuoti tutto insieme / bulk claim
 example_jp: >-
-  {{一括受|いっかつう}}け{{取|と}}りで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
+  {{一括|いっかつ}}{{受|う}}け{{取|と}}りで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
 example_it: >-
   Riscuoti tutto in una volta.
 notes_it: >-
@@ -704,10 +704,10 @@ id: card-prebuilt-recognition
 entry_type: term
 entry_id: term-prebuilt
 card_type: recognition
-front: '{{構築済|こうちくず}}み'
+front: '{{構築|こうちく}}{{済|ず}}み'
 back: già costruito / prebuilt
 example_jp: >-
-  {{構築済|こうちくず}}みデッキを{{買|か}}う。
+  {{構築|こうちく}}{{済|ず}}みデッキを{{買|か}}う。
 example_it: >-
   Compra un deck già costruito.
 notes_it: >-
@@ -721,14 +721,14 @@ id: card-constructed-deck-purchase-recognition
 entry_type: term
 entry_id: term-constructed-deck-purchase
 card_type: recognition
-front: '{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}'
+front: '{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}'
 back: acquisto deck prebuilt / constructed deck purchase
 example_jp: >-
-  {{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}でコラボデッキを{{買|か}}う。
+  {{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}でコラボデッキを{{買|か}}う。
 example_it: >-
   Compra un deck collaborazione nella schermata deck prebuilt.
 notes_it: >-
-  `{{構築済|こうちくず}}み` indica che il mazzo è già pronto, non da
+  `{{構築|こうちく}}{{済|ず}}み` indica che il mazzo è già pronto, non da
   costruire pezzo per pezzo. Questa schermata va letta come prodotto shop, non
   come deck edit.
 tags: [duel-plays, app, ui, deck]

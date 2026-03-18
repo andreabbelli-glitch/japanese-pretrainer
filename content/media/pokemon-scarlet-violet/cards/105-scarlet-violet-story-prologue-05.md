@@ -42,7 +42,7 @@ reading: たからさがし
 romaji: takara sagashi
 meaning_it: Treasure Hunt / caccia al proprio tesoro
 notes_it: >-
-  E l'etichetta della fase di esplorazione libera. `{{宝探|たからさが}}し` non
+  E l'etichetta della fase di esplorazione libera. `{{宝|たから}}{{探|さが}}し` non
   restringe l'obiettivo a un oggetto: nel gioco copre incontri, prove e rotte
   alternative che avanzano la storia attraverso scelte del giocatore.
 :::
@@ -52,10 +52,10 @@ id: card-takara-sagashi-recognition
 entry_type: term
 entry_id: term-takara-sagashi
 card_type: recognition
-front: '{{宝探|たからさが}}し'
+front: '{{宝|たから}}{{探|さが}}し'
 back: Treasure Hunt / ricerca del proprio tesoro
 example_jp: >-
-  {{宝探|たからさが}}しは {{自分|じぶん}}だけの {{宝|たから}}を {{見|み}}つける
+  {{宝|たから}}{{探|さが}}しは {{自分|じぶん}}だけの {{宝|たから}}を {{見|み}}つける
   ための {{冒険|ぼうけん}}なんだ。
 example_it: >-
   Il Treasure Hunt e un'avventura pensata per trovare il tuo personale tesoro.
@@ -189,7 +189,7 @@ card_type: concept
 front: '～たり ～たりする'
 back: fare cose come...
 example_jp: >-
-  {{宝探|たからさが}}しでは ジムに {{挑戦|ちょうせん}}したり
+  {{宝|たから}}{{探|さが}}しでは ジムに {{挑戦|ちょうせん}}したり
   {{困|こま}}っている {{人|ひと}}を {{助|たす}}けたり する。
 example_it: >-
   Nel Treasure Hunt puoi per esempio sfidare i Gym oppure aiutare chi e in
@@ -203,7 +203,7 @@ title: Anche se si chiama / anche se si dice
 meaning_it: anche se si dice X, in realta...
 notes_it: >-
   Corregge una lettura troppo letterale del termine precedente. In frasi come
-  `{{宝探|たからさが}}しとは いっても`, il testo ridefinisce subito il perimetro
+  `{{宝|たから}}{{探|さが}}しとは いっても`, il testo ridefinisce subito il perimetro
   pratico dell'obiettivo e chiarisce cosa conta davvero nella scena.
 :::
 
@@ -215,7 +215,7 @@ card_type: concept
 front: '～とはいっても'
 back: anche se si chiama / anche se si dice
 example_jp: >-
-  {{宝探|たからさが}}しとは いっても {{宝箱|たからばこ}}だけを {{探|さが}}す
+  {{宝|たから}}{{探|さが}}しとは いっても {{宝箱|たからばこ}}だけを {{探|さが}}す
   わけじゃない。
 example_it: >-
   Anche se si chiama "caccia al tesoro", non vuol dire che tu debba cercare

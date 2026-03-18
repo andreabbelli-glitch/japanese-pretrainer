@@ -26,7 +26,7 @@ parole che ti dicono dove sei e che azione puoi fare in quel punto del gioco.
 Nei giochi Pokemon il menu principale mescola voci molto stabili della serie e
 voci più specifiche del titolo. Se sai leggere [レポート](term:term-report),
 [バッグ](term:term-bag), [ボックス](term:term-box),
-[{{手持|ても}}ち](term:term-te-mochi) e
+[{{手|て}}{{持|も}}ち](term:term-te-mochi) e
 [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru), riesci già a
 orientarti nella maggior parte delle schermate operative senza passare
 dall'inglese.
@@ -39,7 +39,7 @@ chiudono, confermano o cambiano una schermata.
 ## Termini chiave
 
 - [レポート](term:term-report)
-- [{{手持|ても}}ち](term:term-te-mochi)
+- [{{手|て}}{{持|も}}ち](term:term-te-mochi)
 - [ボックス](term:term-box)
 - [バッグ](term:term-bag)
 - [どうぐ](term:term-dougu)
@@ -67,10 +67,10 @@ e `いいえ`, sta chiedendo se vuoi registrare lo stato attuale della tua
 avventura prima di chiudere o di fermarti.
 
 La coppia più importante da non confondere è
-[{{手持|ても}}ち](term:term-te-mochi) / [ボックス](term:term-box). Il
+[{{手|て}}{{持|も}}ち](term:term-te-mochi) / [ボックス](term:term-box). Il
 primo indica i Pokemon che hai con te e che possono entrare subito in battaglia;
 il secondo è il deposito dove organizzi i Pokemon non attivi. Quando una
-schermata ti dice che un Pokemon va `{{手持|ても}}ちに {{加|くわ}}わる` oppure
+schermata ti dice che un Pokemon va `{{手|て}}{{持|も}}ちに {{加|くわ}}わる` oppure
 `ボックスに {{送|おく}}られる`, non sta solo cambiando posizione: ti sta dicendo
 se quel Pokemon entra davvero nella squadra con cui giochi o finisce nello
 storage.
@@ -139,7 +139,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{手持|ても}}ちが いっぱいなら {{新|あたら}}しい ポケモンは ボックスへ
+  {{手|て}}{{持|も}}ちが いっぱいなら {{新|あたら}}しい ポケモンは ボックスへ
   {{送|おく}}られる。
 translation_it: >-
   Se la squadra attiva è piena, il nuovo Pokemon viene mandato nel box.
@@ -167,6 +167,6 @@ translation_it: >-
 Per leggere bene i menu Pokemon non devi imparare cento parole nuove: devi
 stabilizzare poche opposizioni operative. Le più importanti qui sono
 [バッグ](term:term-bag) / [もちもの](term:term-mochimono) e
-[{{手持|ても}}ち](term:term-te-mochi) / [ボックス](term:term-box). Quando
+[{{手|て}}{{持|も}}ち](term:term-te-mochi) / [ボックス](term:term-box). Quando
 queste coppie sono chiare, la UI smette di essere una lista opaca di label e
 diventa una mappa di azioni.

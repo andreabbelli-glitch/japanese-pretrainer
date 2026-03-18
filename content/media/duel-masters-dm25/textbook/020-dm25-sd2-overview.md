@@ -25,7 +25,7 @@ Alla fine dovresti riconoscere:
   [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
   [メテオバーン](term:term-meteorburn);
 - come funzionano frasi di supporto molto tipiche del deck, per esempio
-  [{{表向|おもてむ}}き](term:term-face-up),
+  [{{表|おもて}}{{向|む}}き](term:term-face-up),
   [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) e
   [～てから](grammar:grammar-te-kara).
 
@@ -43,7 +43,7 @@ riunisce payoff aggressivi e setup, quindi la lettura si basa sempre sul flusso:
 - [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution)
 - [メテオバーン](term:term-meteorburn)
 - [スーパー・S・トリガー](term:term-super-s-trigger)
-- [{{表向|おもてむ}}き](term:term-face-up)
+- [{{表|おもて}}{{向|む}}き](term:term-face-up)
 - [バトルさせる](term:term-battle-saseru)
 - [{{進化設計図|しんかせっけいず}}](term:term-shinka-sekkeizu)
 - [{{未来設計図|みらいせっけいず}}](term:term-mirai-sekkeizu)
@@ -196,7 +196,7 @@ src: assets/cards/dm25-sd2/04-evolution-blueprint.jpg
 alt: "Carta di Evolution Blueprint, centrata e leggibile."
 card_id: card-shinka-sekkeizu-recognition
 caption: >-
-  Schema leggibile per [{{表向|おもてむ}}き](term:term-face-up) e
+  Schema leggibile per [{{表|おもて}}{{向|む}}き](term:term-face-up) e
   [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de).
 :::
 
@@ -206,7 +206,7 @@ resto.
 :::example_sentence
 jp: >-
   {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
-  {{6枚|ろくまい}}を[{{表向|おもてむ}}き](term:term-face-up)にする。その
+  {{6枚|ろくまい}}を[{{表|おもて}}{{向|む}}き](term:term-face-up)にする。その
   {{中|なか}}から[{{進化|しんか}}クリーチャー](term:term-evolution-creature)を
   すべて{{手札|てふだ}}に{{加|くわ}}え、
   {{残|のこ}}りを[{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de)
@@ -219,7 +219,7 @@ translation_it: >-
 
 Qui confermiamo tre punti:
 
-- [{{表向|おもてむ}}き](term:term-face-up) rende esplicita la scoperta
+- [{{表|おもて}}{{向|む}}き](term:term-face-up) rende esplicita la scoperta
   dell'insieme.
 - `その{{中|なか}}から` limita il filtro alle carte già rivelate.
 - [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) organizza il riordino finale.
@@ -275,7 +275,7 @@ jp: >-
   コスト{{表記|ひょうき}}にある{{数字|すうじ}}を
   [{{合計|ごうけい}}](term:term-goukei)したものが{{5以上|ごいじょう}}になる
   ように、{{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
-  カードを{{表向|おもてむ}}きにする。
+  カードを{{表|おもて}}{{向|む}}きにする。
 translation_it: >-
   Rivela carte dalla cima del tuo mazzo in modo che la somma dei numeri stampati
   nel costo arrivi a 5 o più.
@@ -393,7 +393,7 @@ Sequenza di lettura del piano testuale:
     confronto di potenza `{{相手|あいて}}のパワーが{{一番|いちばん}}{{大|おお}}きい`
     e rottura totale.
 - Fase di setup:
-  - {{進化設計図|しんかせっけいず}} per [{{表向|おもてむ}}き](term:term-face-up),
+  - {{進化設計図|しんかせっけいず}} per [{{表|おもて}}{{向|む}}き](term:term-face-up),
     [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de).
   - {{未来設計図|みらいせっけいず}} per [{{合計|ごうけい}}](term:term-goukei),
     [～てから](grammar:grammar-te-kara).

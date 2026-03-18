@@ -149,7 +149,7 @@ kanji:
 - scrivi `それ{{以外|いがい}}なら`, non `それ以外なら`;
 - scrivi `その{{中|なか}}から`, non `その中から`.
 - scrivi `{{受|う}}け{{取|と}}る`, non `{{受け取る|うけとる}}`;
-- scrivi `{{構築済|こうちくず}}み`, non `{{構築済み|こうちくずみ}}`;
+- scrivi `{{構築|こうちく}}{{済|ず}}み`, non `{{構築済み|こうちくずみ}}`;
 - scrivi `{{読|よ}}み{{込|こ}}み{{中|ちゅう}}`, non
   `{{読み込み中|よみこみちゅう}}`.
 
@@ -189,7 +189,7 @@ notes_it: >-
 Esempio corretto per `front` di una flashcard:
 
 ```md
-front: '{{手持|ても}}ち'
+front: '{{手|て}}{{持|も}}ち'
 ```
 
 Esempio da evitare:
@@ -580,7 +580,7 @@ Regola review obbligatoria per `:::card`:
 - Se in `notes_it` citi giapponese con kanji come parte del punto didattico,
   annotalo con furigana anche li.
 - Nei composti misti, lascia fuori dal ruby i kana gia visibili:
-  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`.
+  `{{受|う}}け{{取|と}}る`, `{{手|て}}{{持|も}}ち`, `メイン{{枠|わく}}`.
 - Per numeri con contatori o qualificatori, annota il chunk corretto senza
   inglobare kana gia visibili: `{{1枚|いちまい}}`, `{{1体|いったい}}`,
   `{{2|ふた}}つ`, `{{2回|にかい}}`, `{{4以下|よんいか}}`,

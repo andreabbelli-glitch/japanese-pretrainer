@@ -32,7 +32,7 @@ quando non capisci ogni parola del dialogo.
 ## Termini chiave
 
 - [{{目的地|もくてきち}}](term:term-mokutekichi)
-- [{{手持|ても}}ち](term:term-te-mochi)
+- [{{手|て}}{{持|も}}ち](term:term-te-mochi)
 - [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru)
 - [レポート](term:term-report)
 - [どうぐ](term:term-dougu)
@@ -89,7 +89,7 @@ una funzione si apre oppure una regola cambia da quel momento in poi.
 
 [～てくれる](grammar:grammar-te-kureru) segnala che qualcuno o qualcosa agisce a
 tuo favore. Nei Pokemon può essere un NPC che
-[{{手持|ても}}ち](term:term-te-mochi) ti
+[{{手|て}}{{持|も}}ち](term:term-te-mochi) ti
 [{{回復|かいふく}}](term:term-kaifuku)してくれる, oppure un oggetto che ti
 toglie uno [{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou). Il
 punto non è solo "succede un effetto", ma "succede per aiutarti". Questa nuance
@@ -136,7 +136,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  ベッドで ゆっくり {{休|やす}}んでね。 {{手持|ても}}ちも {{回復|かいふく}}するよ。
+  ベッドで ゆっくり {{休|やす}}んでね。 {{手|て}}{{持|も}}ちも {{回復|かいふく}}するよ。
 translation_it: >-
   Riposati con calma nel letto. Anche la tua squadra si rimetterà in sesto.
 :::

@@ -104,7 +104,7 @@ Puoi usare furigana inline con la sintassi `{{base|reading}}`, per esempio
 `{{<kanji>|<reading>}}`. Da ora anche i numeri vanno annotati sempre quando
 sono visibili nel reader: `{{4|よん}}`, `{{5000|ごせん}}`,
 `{{-3000|マイナスさんぜん}}`. Nei composti misti non includere nel ruby i kana
-gia visibili: scrivi `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`,
+gia visibili: scrivi `{{受|う}}け{{取|と}}る`, `{{手|て}}{{持|も}}ち`,
 `メイン{{枠|わく}}`, non `{{受け取る|うけとる}}`, `{{手持ち|てもち}}`,
 `{{メイン枠|めいんわく}}`. Se c'e un composto numerico con soli kanji dopo il
 numero, puoi annotare il blocco intero: `{{1枚|いちまい}}`,

@@ -42,9 +42,9 @@ Questi elementi vanno letti in sequenza:
 ## Termini chiave
 
 - [プレゼントボックス](term:term-present-box)
-- [{{未受|みう}}け{{取|と}}り](term:term-unclaimed)
+- [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed)
 - [{{受|う}}け{{取|と}}り{{履歴|りれき}}](term:term-claim-history)
-- [{{一括受|いっかつう}}け{{取|と}}り](term:term-bulk-claim)
+- [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim)
 - [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline)
 - [{{期限|きげん}}](term:term-deadline)
 - [{{獲得|かくとく}}](term:term-kakutoku)
@@ -97,12 +97,12 @@ Ogni riga espone tutti i dati operativi della singola reward:
 
 Qui i due label da separare subito sono:
 
-- [{{未受|みう}}け{{取|と}}り](term:term-unclaimed): la reward è dentro la box ma
+- [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed): la reward è dentro la box ma
   devi ancora incassarla;
 - [{{受|う}}け{{取|と}}り{{履歴|りれき}}](term:term-claim-history): l'incasso è già
   stato registrato e stai guardando lo storico, non il residuo aperto.
 
-Anche [{{一括受|いっかつう}}け{{取|と}}り](term:term-bulk-claim) è più
+Anche [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim) è più
 operativo di quanto sembri. Il label ti dice che l'app può elaborare più reward
 insieme, non una alla volta.
 
@@ -201,12 +201,12 @@ Regola operativa:
 
 :::example_sentence
 jp: >-
-  {{未受|みう}}け{{取|と}}りの{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
+  {{未|み}}{{受|う}}け{{取|と}}りの{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
 translation_it: >-
   Ci sono 2 reward ancora da riscuotere.
 :::
 
-- [{{未受|みう}}け{{取|と}}り](term:term-unclaimed) ti dice subito che
+- [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed) ti dice subito che
   l'incasso non è stato ancora completato.
 - Qui il contrasto non è il tipo di premio, ma lo stato del claim: la reward è
   già presente nella box, però non è ancora stata trasferita al tuo inventario.
@@ -215,12 +215,12 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{一括受|いっかつう}}け{{取|と}}りで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
+  {{一括|いっかつ}}{{受|う}}け{{取|と}}りで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
 translation_it: >-
   Riscuoti tutto in una volta.
 :::
 
-- [{{一括受|いっかつう}}け{{取|と}}り](term:term-bulk-claim) non descrive lo
+- [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim) non descrive lo
   stato della reward, ma la modalità del claim.
 - `{{一括|いっかつ}}` ti dice che il bottone applica la stessa riscossione a
   tutte le reward aperte, invece di fartene ritirare una per una.

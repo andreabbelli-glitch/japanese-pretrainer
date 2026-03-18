@@ -46,8 +46,8 @@ molti label sembrano decorativi, ma in realtà sono istruzioni molto precise.
 - [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase)
 - [カード{{交換|こうかん}}](term:term-card-exchange)
 - [{{交換|こうかん}}](term:term-exchange)
-- [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
-- [{{構築済|こうちくず}}み](term:term-prebuilt)
+- [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
+- [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt)
 - [{{所持|しょじ}}チケット](term:term-owned-ticket)
 - [{{購入個数|こうにゅうこすう}}](term:term-purchase-quantity)
 - [{{使用|しよう}}](term:term-use)
@@ -85,7 +85,7 @@ I quattro pannelli principali ti portano verso flussi diversi:
   generale;
 - [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) = entri
   direttamente nella schermata dei pack;
-- [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
+- [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
   = stai guardando deck prebuilt venduti come prodotto;
 - [カード{{交換|こうかん}}](term:term-card-exchange) = apri lo scambio con
   risorse dedicate.

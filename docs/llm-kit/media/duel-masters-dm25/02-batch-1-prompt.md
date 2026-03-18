@@ -57,7 +57,7 @@ Vincoli di formato obbligatori:
   quando il numero appare da solo: `{{4|よん}}`, `{{5000|ごせん}}`,
   `{{-3000|マイナスさんぜん}}`.
 - Nei composti misti non mettere kana gia visibili dentro il ruby:
-  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`,
+  `{{受|う}}け{{取|と}}る`, `{{手|て}}{{持|も}}ち`, `メイン{{枠|わく}}`,
   `{{2|ふた}}つ`.
 - Per composti numerici con soli kanji/qualificatori in kanji puoi usare un
   solo furigana sul blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`.

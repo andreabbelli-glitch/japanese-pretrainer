@@ -39,7 +39,7 @@ romaji: temochi
 meaning_it: squadra attiva
 notes_it: >-
   Indica i Pokemon che hai con te in quel momento. Se un tutorial o un menu
-  parla di `{{手持|ても}}ち`, sta parlando dei membri subito disponibili in
+  parla di `{{手|て}}{{持|も}}ち`, sta parlando dei membri subito disponibili in
   battaglia, non del deposito completo.
 :::
 
@@ -48,10 +48,10 @@ id: card-te-mochi-recognition
 entry_type: term
 entry_id: term-te-mochi
 card_type: recognition
-front: '{{手持|ても}}ち'
+front: '{{手|て}}{{持|も}}ち'
 back: squadra attiva / Pokemon con te
 example_jp: >-
-  {{手持|ても}}ちの ポケモンを {{先|さき}}に {{回復|かいふく}}しておこう。
+  {{手|て}}{{持|も}}ちの ポケモンを {{先|さき}}に {{回復|かいふく}}しておこう。
 example_it: >-
   Prima della lotta, cura i Pokemon che hai in squadra.
 :::
@@ -76,7 +76,7 @@ card_type: recognition
 front: 'ボックス'
 back: box di deposito
 example_jp: >-
-  {{手持|ても}}ちが いっぱいなら ボックスに {{送|おく}}ろう。
+  {{手|て}}{{持|も}}ちが いっぱいなら ボックスに {{送|おく}}ろう。
 example_it: >-
   Se la squadra è piena, mandiamolo nel box.
 :::
@@ -753,7 +753,7 @@ card_type: concept
 front: '～てくれる'
 back: fare qualcosa per te
 example_jp: >-
-  ポケモンセンターの {{人|ひと}}が {{手持|ても}}ちを {{回復|かいふく}}してくれる。
+  ポケモンセンターの {{人|ひと}}が {{手|て}}{{持|も}}ちを {{回復|かいふく}}してくれる。
 example_it: >-
   La persona del Centro Pokemon ti cura la squadra.
 :::

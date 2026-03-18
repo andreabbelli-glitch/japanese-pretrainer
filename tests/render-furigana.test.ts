@@ -19,7 +19,9 @@ describe("renderFurigana", () => {
       )
     );
 
-    expect(markup).toContain("<ruby>用語<rt>ようご</rt></ruby>");
+    expect(markup).toContain(
+      '<ruby class="app-ruby"><rb>用語</rb><rt>ようご</rt></ruby>'
+    );
     expect(markup).toContain("approfondimento");
     expect(markup).not.toContain('<a href="https://example.com"');
     expect(markup).not.toContain("{{用語|ようご}}");

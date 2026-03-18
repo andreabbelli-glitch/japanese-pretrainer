@@ -15,7 +15,7 @@ romaji: pokemon sentaa
 meaning_it: Centro Pokemon
 notes_it: >-
   In Scarlet / Violet non e solo il posto dove curi la squadra. E il nodo dove
-  rimetti in sesto la [{{手持|ても}}ち](term:term-te-mochi), compri oggetti,
+  rimetti in sesto la [{{手|て}}{{持|も}}ち](term:term-te-mochi), compri oggetti,
   usi il [わざマシン](term:term-waza-machine) e, dopo lo sblocco,
   ricarichi il [テラスタルオーブ](term:term-terastal-orb). Quando compare sulla
   mappa o nei dialoghi, indica un checkpoint operativo.
@@ -29,7 +29,7 @@ card_type: recognition
 front: ポケモンセンター
 back: Centro Pokemon
 example_jp: >-
-  ポケモンセンターが {{見|み}}えたら いったん {{手持|ても}}ちを
+  ポケモンセンターが {{見|み}}えたら いったん {{手|て}}{{持|も}}ちを
   {{整|ととの}}えよう。
 example_it: >-
   Quando vedi un Centro Pokemon, puoi sistemare la squadra.
@@ -242,7 +242,7 @@ card_type: concept
 front: ～てもらう
 back: ricevere un favore o un servizio
 example_jp: >-
-  ポケモンセンターで {{手持|ても}}ちを {{回復|かいふく}}してもらおう。
+  ポケモンセンターで {{手|て}}{{持|も}}ちを {{回復|かいふく}}してもらおう。
 example_it: >-
   Al Centro Pokemon puoi ricevere la cura della squadra.
 :::
@@ -281,7 +281,7 @@ card_type: recognition
 front: "{{回復|かいふく}}"
 back: recupero / cura
 example_jp: >-
-  {{長|なが}}い {{坂|さか}}の {{前|まえ}}に {{手持|ても}}ちを {{回復|かいふく}}
+  {{長|なが}}い {{坂|さか}}の {{前|まえ}}に {{手|て}}{{持|も}}ちを {{回復|かいふく}}
   してもらえば {{安心|あんしん}}だ。
 example_it: >-
   Se la squadra viene curata prima della lunga salita, il percorso prosegue con meno rischio.

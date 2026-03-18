@@ -71,14 +71,23 @@ main {
   line-height: var(--line-height-jp);
 }
 
-ruby {
+ruby,
+.app-ruby {
   font-family: var(--font-family-jp);
   font-size: inherit;
   line-height: inherit;
+  ruby-align: space-around;
+  ruby-position: over;
+}
+
+rb {
+  font: inherit;
 }
 
 rt {
   font-size: var(--text-ruby);
+  line-height: 1;
+  letter-spacing: 0;
 }
 
 :focus-visible {
@@ -1668,7 +1677,7 @@ rt {
 }
 
 .reader-ruby {
-  ruby-align: center;
+  ruby-align: space-around;
 }
 
 .reader-page[data-furigana-mode="off"] .reader-ruby rt {
@@ -1877,6 +1886,17 @@ rt {
 .review-stage__front {
   font-size: clamp(2rem, 1.7rem + 1vw, 2.8rem);
   line-height: 1;
+}
+
+.review-stage__front.jp-inline,
+.review-entry-card__title.jp-inline,
+.glossary-hero__title.jp-inline,
+.glossary-entry-hero__title.jp-inline,
+.glossary-detail-card__title.jp-inline {
+  font-family: var(--font-family-jp);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0;
+  line-height: var(--line-height-jp);
 }
 
 .review-stage__veil,

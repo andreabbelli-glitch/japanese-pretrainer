@@ -169,6 +169,8 @@ export async function resetReviewCardProgress(input: {
 
     assertCardBelongsToExpectedMedia(loadedCard.mediaId, input.expectedMediaId);
 
+    const entryStatusFilters = buildEntryStatusFilters(loadedCard.drivingEntries);
+
     await tx
       .update(card)
       .set({
@@ -212,6 +214,16 @@ export async function resetReviewCardProgress(input: {
           updatedAt: nowIso
         }
       });
+
+    if (entryStatusFilters.length > 0) {
+      await tx
+        .delete(entryStatus)
+        .where(
+          entryStatusFilters.length === 1
+            ? entryStatusFilters[0]!
+            : or(entryStatusFilters[0]!, entryStatusFilters[1]!)
+        );
+    }
 
     return {
       cardId: loadedCard.id,
@@ -339,6 +351,30 @@ async function loadEntryStatusRows(
   transaction: DatabaseTransaction,
   entryLinks: ReviewEntryLinkLike[]
 ) {
+  const filters = buildEntryStatusFilters(entryLinks);
+  const statusRows =
+    filters.length > 0
+      ? await transaction.query.entryStatus.findMany({
+          where: filters.length === 1 ? filters[0]! : or(filters[0]!, filters[1]!)
+        })
+      : [];
+  const statusMap = new Map(
+    statusRows.map((statusRow) => [
+      `${statusRow.entryType}:${statusRow.entryId}`,
+      statusRow
+    ])
+  );
+
+  return entryLinks.map(
+    (entry): LinkedEntryRef & { status: typeof entryStatus.$inferSelect | null } => ({
+      entryId: entry.entryId,
+      entryType: entry.entryType,
+      status: statusMap.get(`${entry.entryType}:${entry.entryId}`) ?? null
+    })
+  );
+}
+
+function buildEntryStatusFilters(entryLinks: LinkedEntryRef[]) {
   if (entryLinks.length === 0) {
     return [];
   }
@@ -366,23 +402,7 @@ async function loadEntryStatusRows(
     );
   }
 
-  const statusRows =
-    filters.length > 0
-      ? await transaction.query.entryStatus.findMany({
-          where: filters.length === 1 ? filters[0] : or(filters[0]!, filters[1]!)
-        })
-      : [];
-  const statusMap = new Map(
-    statusRows.map((statusRow) => [`${statusRow.entryType}:${statusRow.entryId}`, statusRow])
-  );
-
-  return entryLinks.map(
-    (entry): LinkedEntryRef & { status: typeof entryStatus.$inferSelect | null } => ({
-      entryId: entry.entryId,
-      entryType: entry.entryType,
-      status: statusMap.get(`${entry.entryType}:${entry.entryId}`) ?? null
-    })
-  );
+  return filters;
 }
 
 function assertCardBelongsToExpectedMedia(

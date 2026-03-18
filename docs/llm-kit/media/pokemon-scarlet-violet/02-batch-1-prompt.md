@@ -81,7 +81,7 @@ Vincoli di formato obbligatori:
 - Se usi inline code con giapponese non trasparente, annota anche li:
   `` `{{未開放|みかいほう}}` ``.
 - Nei composti misti non mettere kana gia visibili dentro il ruby:
-  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`,
+  `{{受|う}}け{{取|と}}る`, `{{手|て}}{{持|も}}ち`, `メイン{{枠|わく}}`,
   `{{2|ふた}}つ`.
 - Per composti numerici con soli kanji / qualificatori in kanji puoi usare un
   solo furigana sul blocco intero: `{{1個|いっこ}}`, `{{3人|さんにん}}`.

@@ -47,7 +47,7 @@ Leggere correttamente label e indicatori evita:
 - [{{交換|こうかん}}](term:term-exchange)
 - [{{交換期間|こうかんきかん}}](term:term-exchange-period)
 - [{{販売期間|はんばいきかん}}](term:term-sale-period)
-- [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
+- [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
 - [{{不足|ふそく}}](term:term-shortage)
 - [デッキ{{一覧|いちらん}}](term:term-deck-list)
 - [{{概要|がいよう}}](term:term-overview)
@@ -136,16 +136,16 @@ alt: >-
   Schermata acquisto deck prebuilt con più deck in vendita, ribbon periodo
   vendita e bonus playmat/protector.
 caption: >-
-  [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
+  [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
   mostra deck-prodotto, [{{販売期間|はんばいきかん}}](term:term-sale-period),
   prezzo e bonus `{{特典|とくてん}}プレイマット/プロテクト`: qui non stai
   ancora editando una lista.
 :::
 
-[{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
+[{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
 è composto da:
 
-- [{{構築済|こうちくず}}み](term:term-prebuilt) = deck già preparato /
+- [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt) = deck già preparato /
   prebuilt;
 - `デッキ` = il prodotto principale;
 - `{{購入|こうにゅう}}` = il flusso di acquisto.
@@ -232,14 +232,14 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{販売期間|はんばいきかん}}を{{見|み}}てから{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}を{{決|き}}める。
+  {{販売期間|はんばいきかん}}を{{見|み}}てから{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}を{{決|き}}める。
 translation_it: >-
   Controlla il periodo di vendita prima di decidere se comprare il deck
   prebuilt.
 :::
 
 - [{{販売期間|はんばいきかん}}](term:term-sale-period) ti orienta sul tempo.
-- [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
+- [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
   ti dice il tipo di prodotto che stai guardando.
 
 **Esempio 4**

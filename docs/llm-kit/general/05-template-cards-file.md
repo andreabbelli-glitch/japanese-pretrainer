@@ -86,7 +86,7 @@ Regole pratiche:
 - `front` e `example_jp` devono annotare con furigana i kanji che il learner
   deve leggere davvero nella card review;
 - nei composti misti, il ruby non deve inglobare kana gia visibili: scrivi
-  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`, non
+  `{{受|う}}け{{取|と}}る`, `{{手|て}}{{持|も}}ち`, `メイン{{枠|わく}}`, non
   `{{受け取る|うけとる}}`, `{{手持ち|てもち}}`, `{{メイン枠|めいんわく}}`;
 - i numeri visibili nelle card vanno annotati sempre con la lettura corretta,
   anche quando non hanno contatori: `{{4|よん}}`, `{{5000|ごせん}}`,
@@ -114,7 +114,7 @@ Regole pratiche:
 - evita plain scalar per testo con `:`/`：`, furigana, link semantici, backtick
   o frasi complete di rules text;
 - esempio corretto per flashcard side:
-  `front: '{{手持|ても}}ち'`
+  `front: '{{手|て}}{{持|も}}ち'`
 - se un termine o pattern compare nel testo visibile di `notes_it` con kanji,
   annotalo con furigana anche se esiste gia una `reading` nell'entry;
 - se usi un link semantico con label in kanji, annota il label:

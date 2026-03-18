@@ -188,7 +188,7 @@ vere su cura, risorse, percorso e [テラスタル](term:term-terastal).
 
 :::example_sentence
 jp: >-
-  ポケモンセンターで {{手持|ても}}ちを {{回復|かいふく}}してもらったら
+  ポケモンセンターで {{手|て}}{{持|も}}ちを {{回復|かいふく}}してもらったら
   {{先|さき}}へ {{進|すす}}もう。
 translation_it: >-
   Una volta curata la squadra al Centro Pokemon, andiamo avanti.
