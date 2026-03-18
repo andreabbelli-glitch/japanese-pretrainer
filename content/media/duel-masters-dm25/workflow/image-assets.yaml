@@ -147,8 +147,8 @@ assets:
       ottenimento, scadenza claim e bottone di riscossione.
     caption_it: >-
       Ogni riga del `プレゼントボックス` combina nome reward,
-      `{{獲得日時|かくとくにちじ}}`, `{{受け取り期限|うけとりきげん}}` e bottone
-      `{{受け取る|うけとる}}`: è una schermata di claim, non un semplice
+      `{{獲得日時|かくとくにちじ}}`, `{{受|う}}け{{取|と}}り{{期限|きげん}}` e bottone
+      `{{受|う}}け{{取|と}}る`: è una schermata di claim, non un semplice
       deposito di premi.
     notes: >-
       Screenshot fornito dall'utente e copiato da Downloads.
@@ -230,7 +230,7 @@ assets:
       posseduti e pulsanti meno, più e MAX.
     caption_it: >-
       Nel popup quantità il punto non è il banner del pack, ma il rapporto tra
-      [{{所持チケット|しょじちけっと}}](term:term-owned-ticket), contatore e
+      [{{所持|しょじ}}チケット](term:term-owned-ticket), contatore e
       `MAX`.
     notes: >-
       Screenshot fornito dall'utente e copiato da Downloads.
@@ -324,7 +324,7 @@ assets:
       Schermata acquisto deck prebuilt con più deck in vendita, ribbon periodo
       vendita e bonus playmat/protector.
     caption_it: >-
-      [{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase)
+      [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
       mostra deck-prodotto, [{{販売期間|はんばいきかん}}](term:term-sale-period),
       prezzo e bonus `{{特典|とくてん}}プレイマット/プロテクト`: qui non
       stai ancora editando una lista.

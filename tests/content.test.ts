@@ -255,6 +255,43 @@ describe("content parser and validator", () => {
     ]);
   });
 
+  it("flags furigana bases that keep visible kana inside the ruby", () => {
+    const cases = [
+      "{{受け取る|うけとる}}",
+      "{{メイン枠|めいんわく}}",
+      "{{2つ|ふたつ}}",
+      "{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}"
+    ];
+
+    for (const source of cases) {
+      const result = parseInlineFragment({
+        source,
+        filePath: "inline.md",
+        documentKind: "lesson",
+        sourcePath: "notesIt"
+      });
+
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          code: "furigana.mixed-kana-base",
+          category: "syntax"
+        })
+      );
+    }
+  });
+
+  it("accepts furigana split so kana stays visible", () => {
+    const result = parseInlineFragment({
+      source:
+        "{{受|う}}け{{取|と}}る / メイン{{枠|わく}} / {{2|ふた}}つ / {{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})",
+      filePath: "inline.md",
+      documentKind: "lesson",
+      sourcePath: "notesIt"
+    });
+
+    expect(result.issues).toEqual([]);
+  });
+
   it("flags furigana split between a number and its counter", () => {
     const result = parseInlineFragment({
       source: "`1{{枚|まい}}`",
@@ -1565,7 +1602,7 @@ id: ${input.cardId}
 entry_type: term
 entry_id: ${input.sharedTermId}
 card_type: recognition
-front: '{{食べる|たべる}}'
+front: '{{食|た}}べる'
 back: mangiare
 :::
 `
@@ -1649,7 +1686,7 @@ id: card-${input.slugPrefix}
 entry_type: term
 entry_id: term-${input.slugPrefix}
 card_type: recognition
-front: '{{食べる|たべる}}'
+front: '{{食|た}}べる'
 back: mangiare
 :::
 `

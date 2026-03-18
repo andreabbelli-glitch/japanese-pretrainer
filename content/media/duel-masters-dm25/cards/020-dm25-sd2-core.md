@@ -405,7 +405,7 @@ id: card-face-up-recognition
 entry_type: term
 entry_id: term-face-up
 card_type: recognition
-front: '{{表向き|おもてむき}}'
+front: '{{表向|おもてむ}}き'
 back: a faccia in su / face-up
 example_jp: >-
   {{山札|やまふだ}}の{{上|うえ}}から{{6枚|ろくまい}}を{{表向|おもてむ}}きにする。
@@ -457,7 +457,7 @@ id: card-sukina-junjo-de-concept
 entry_type: grammar
 entry_id: grammar-sukina-junjo-de
 card_type: concept
-front: '{{好きな順序で|すきなしゅんじょで}}'
+front: '{{好|す}}きな{{順序|しゅんじょ}}で'
 back: nell'ordine che preferisci
 example_jp: >-
   {{残|のこ}}りを{{好|す}}きな{{順序|じゅんじょ}}で{{山札|やまふだ}}の{{下|した}}に{{置|お}}く。

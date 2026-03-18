@@ -101,7 +101,7 @@ timing.
 Se il trigger non è identificato, il resto della frase non va letto come azione
 immediata.
 
-### 2. Sequenza: {{その後|そのあと}} e そうしたら non dicono la stessa cosa
+### 2. Sequenza: その{{後|あと}} e そうしたら non dicono la stessa cosa
 
 [その後](grammar:grammar-sonoato) significa "poi" o "dopo quello". Segnala che
 la frase continua con un secondo blocco.
@@ -110,7 +110,7 @@ Esempio:
 
 :::example_sentence
 jp: >-
-  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。{{その後|そのあと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
+  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。その{{後|あと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
 translation_it: >-
   Metti le prime 4 carte del tuo mazzo nel cimitero. Poi metti in gioco 1
   Abyss di costo 4 o inferiore dal tuo cimitero.
@@ -256,7 +256,7 @@ Ordine operativo: prima l'effetto principale, poi la restrizione finale.
 
 [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou) compare ovunque:
 `コスト{{4以下|よんいか}}`, `パワー{{2000以下|にせんいか}}`,
-`{{合計|ごうけい}}{{4つ以上|よっついじょう}}`.
+`{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}`.
 
 Non è un dettaglio secondario. È il filtro che decide quali carte puoi
 scegliere, distruggere o mettere in campo.
@@ -352,7 +352,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。{{その後|そのあと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
+  {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{4枚|よんまい}}を{{墓地|ぼち}}に{{置|お}}く。その{{後|あと}}、コスト{{4以下|よんいか}}のアビスを{{1枚|いちまい}}、{{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}す。
 translation_it: >-
   Metti le prime 4 carte del tuo mazzo nel cimitero. Poi metti in gioco 1
   Abyss di costo 4 o inferiore dal tuo cimitero.
@@ -394,7 +394,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシードが{{合計|ごうけい}}{{4つ以上|よっついじょう}}なければ、バトルゾーンにあるこのタマシードはクリーチャーとして{{扱|あつか}}わない。
+  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーまたは{{闇|やみ}}のタマシードが{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}なければ、バトルゾーンにあるこのタマシードはクリーチャーとして{{扱|あつか}}わない。
 translation_it: >-
   Se non hai in totale almeno 4 creature oscure o Tamashido oscuri, questo
   Tamashido nel battle zone non viene trattato come creatura.

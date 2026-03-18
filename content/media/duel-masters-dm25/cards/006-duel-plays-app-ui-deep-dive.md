@@ -33,7 +33,7 @@ pos: status-label
 aliases: [未受け取り, unclaimed]
 notes_it: >-
   Combina [{{未|み}}～](grammar:grammar-mi-prefix) e
-  [{{受け取る|うけとる}}](term:term-receive). Il senso pratico è molto preciso:
+  [{{受|う}}け{{取|と}}る](term:term-receive). Il senso pratico è molto preciso:
   la reward esiste già nella box, ma il claim non è ancora stato completato.
 level_hint: n4
 :::
@@ -63,7 +63,7 @@ pos: ui-action
 aliases: [一括受け取り, bulk claim]
 notes_it: >-
   Il composto unisce `{{一括|いっかつ}}` "in blocco / in un colpo solo" e
-  [{{受け取る|うけとる}}](term:term-receive). In pratica ti dice che l'app può
+  [{{受|う}}け{{取|と}}る](term:term-receive). In pratica ti dice che l'app può
   elaborare più reward pendenti nello stesso gesto.
 level_hint: custom
 :::
@@ -94,7 +94,7 @@ aliases: [期限, きげん, kigen]
 notes_it: >-
   Nelle schermate reward e shop indica il limite temporale entro cui un'azione
   o un prodotto restano validi. Compare dentro composti come
-  [{{受け取り期限|うけとりきげん}}](term:term-claim-deadline), ma funziona anche da
+  [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline), ma funziona anche da
   solo: quando compare, il blocco UI sta imponendo un limite temporale.
 level_hint: n4
 :::
@@ -261,7 +261,7 @@ aliases: [構築済み, こうちくずみ, kouchikuzumi]
 notes_it: >-
   Ti dice che il deck o il prodotto sono già preparati e non richiedono deck
   building da zero. Per questo, dentro
-  [{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase),
+  [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase),
   il valore operativo è che stai guardando un prodotto pronto.
 level_hint: custom
 :::
@@ -275,7 +275,7 @@ meaning_it: acquisto deck prebuilt / constructed deck purchase
 pos: screen-label
 aliases: [構築済みデッキ購入, constructed deck purchase]
 notes_it: >-
-  [{{構築済み|こうちくずみ}}](term:term-prebuilt) segnala che il deck è già
+  [{{構築済|こうちくず}}み](term:term-prebuilt) segnala che il deck è già
   preparato. Il label intero va quindi letto come acquisto di un prodotto
   prebuilt, non come schermata di editing del tuo mazzo personale.
 level_hint: custom
@@ -454,10 +454,10 @@ id: card-unclaimed-recognition
 entry_type: term
 entry_id: term-unclaimed
 card_type: recognition
-front: '{{未受け取り|みうけとり}}'
+front: '{{未受|みう}}け{{取|と}}り'
 back: non ancora riscosso / unclaimed
 example_jp: >-
-  {{未受け取り|みうけとり}}の{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
+  {{未受|みう}}け{{取|と}}りの{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
 example_it: >-
   Ci sono 2 reward ancora da riscuotere.
 notes_it: >-
@@ -470,10 +470,10 @@ id: card-claim-history-recognition
 entry_type: term
 entry_id: term-claim-history
 card_type: recognition
-front: '{{受け取り履歴|うけとりりれき}}'
+front: '{{受|う}}け{{取|と}}り{{履歴|りれき}}'
 back: storico delle riscossioni / claim history
 example_jp: >-
-  {{受け取り履歴|うけとりりれき}}で{{昨日|きのう}}の{{報酬|ほうしゅう}}を{{確認|かくにん}}する。
+  {{受|う}}け{{取|と}}り{{履歴|りれき}}で{{昨日|きのう}}の{{報酬|ほうしゅう}}を{{確認|かくにん}}する。
 example_it: >-
   Controlla nello storico la reward di ieri.
 notes_it: >-
@@ -487,10 +487,10 @@ id: card-bulk-claim-recognition
 entry_type: term
 entry_id: term-bulk-claim
 card_type: recognition
-front: '{{一括受け取り|いっかつうけとり}}'
+front: '{{一括受|いっかつう}}け{{取|と}}り'
 back: riscuoti tutto insieme / bulk claim
 example_jp: >-
-  {{一括受け取り|いっかつうけとり}}で{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
+  {{一括受|いっかつう}}け{{取|と}}りで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
 example_it: >-
   Riscuoti tutto in una volta.
 notes_it: >-
@@ -503,10 +503,10 @@ id: card-claim-deadline-recognition
 entry_type: term
 entry_id: term-claim-deadline
 card_type: recognition
-front: '{{受け取り期限|うけとりきげん}}'
+front: '{{受|う}}け{{取|と}}り{{期限|きげん}}'
 back: scadenza del claim / claim deadline
 example_jp: >-
-  {{受け取り期限|うけとりきげん}}までに{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
+  {{受|う}}け{{取|と}}り{{期限|きげん}}までに{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
 example_it: >-
   Riscuoti la reward entro la scadenza.
 notes_it: >-
@@ -570,7 +570,7 @@ id: card-stage-select-recognition
 entry_type: term
 entry_id: term-stage-select
 card_type: recognition
-front: '{{ステージ選択|すてーじせんたく}}'
+front: 'ステージ{{選択|せんたく}}'
 back: selezione stage / stage select
 example_jp: >-
   ステージ{{選択|せんたく}}で{{難易度|なんいど}}を{{選|えら}}ぶ。
@@ -586,7 +586,7 @@ id: card-card-pack-purchase-recognition
 entry_type: term
 entry_id: term-card-pack-purchase
 card_type: recognition
-front: '{{カードパック購入|かーどぱっくこうにゅう}}'
+front: 'カードパック{{購入|こうにゅう}}'
 back: acquisto pack / card pack purchase
 example_jp: >-
   カードパック{{購入|こうにゅう}}でチケットを{{使|つか}}う。
@@ -639,10 +639,10 @@ id: card-owned-ticket-recognition
 entry_type: term
 entry_id: term-owned-ticket
 card_type: recognition
-front: '{{所持チケット|しょじちけっと}}'
+front: '{{所持|しょじ}}チケット'
 back: ticket posseduti / owned tickets
 example_jp: >-
-  {{所持チケット|しょじちけっと}}は{{4枚|よんまい}}ある。
+  {{所持|しょじ}}チケットは{{4枚|よんまい}}ある。
 example_it: >-
   Hai 4 ticket disponibili.
 notes_it: >-
@@ -704,10 +704,10 @@ id: card-prebuilt-recognition
 entry_type: term
 entry_id: term-prebuilt
 card_type: recognition
-front: '{{構築済み|こうちくずみ}}'
+front: '{{構築済|こうちくず}}み'
 back: già costruito / prebuilt
 example_jp: >-
-  {{構築済み|こうちくずみ}}デッキを{{買|か}}う。
+  {{構築済|こうちくず}}みデッキを{{買|か}}う。
 example_it: >-
   Compra un deck già costruito.
 notes_it: >-
@@ -721,14 +721,14 @@ id: card-constructed-deck-purchase-recognition
 entry_type: term
 entry_id: term-constructed-deck-purchase
 card_type: recognition
-front: '{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}'
+front: '{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}'
 back: acquisto deck prebuilt / constructed deck purchase
 example_jp: >-
-  {{構築済みデッキ購入|こうちくずみでっきこうにゅう}}でコラボデッキを{{買|か}}う。
+  {{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}でコラボデッキを{{買|か}}う。
 example_it: >-
   Compra un deck collaborazione nella schermata deck prebuilt.
 notes_it: >-
-  `{{構築済み|こうちくずみ}}` indica che il mazzo è già pronto, non da
+  `{{構築済|こうちくず}}み` indica che il mazzo è già pronto, non da
   costruire pezzo per pezzo. Questa schermata va letta come prodotto shop, non
   come deck edit.
 tags: [duel-plays, app, ui, deck]
@@ -756,7 +756,7 @@ id: card-deck-list-recognition
 entry_type: term
 entry_id: term-deck-list
 card_type: recognition
-front: '{{デッキ一覧|でっきいちらん}}'
+front: 'デッキ{{一覧|いちらん}}'
 back: lista dei deck / deck list
 example_jp: >-
   デッキ{{一覧|いちらん}}からレンタルデッキを{{選|えら}}ぶ。

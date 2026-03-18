@@ -85,12 +85,15 @@ Regole pratiche:
   review, non una parola isolata o una ripetizione del `front`;
 - `front` e `example_jp` devono annotare con furigana i kanji che il learner
   deve leggere davvero nella card review;
+- nei composti misti, il ruby non deve inglobare kana gia visibili: scrivi
+  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`, non
+  `{{受け取る|うけとる}}`, `{{手持ち|てもち}}`, `{{メイン枠|めいんわく}}`;
 - i numeri visibili nelle card vanno annotati sempre con la lettura corretta,
   anche quando non hanno contatori: `{{4|よん}}`, `{{5000|ごせん}}`,
   `{{-3000|マイナスさんぜん}}`;
-- quando un numero e legato a un contatore, scrivi la lettura corretta
-  dell'intero chunk e non una ricostruzione meccanica: `{{1体|いったい}}`,
-  `{{2つ|ふたつ}}`, `{{2回|にかい}}`, `{{4枚|よんまい}}`;
+- quando un numero e legato a un contatore, scrivi la lettura corretta del
+  chunk davvero annotato e non una ricostruzione meccanica: `{{1体|いったい}}`,
+  `{{2|ふた}}つ`, `{{2回|にかい}}`, `{{4枚|よんまい}}`;
 - per i `:::grammar`, se `pattern` contiene kanji o una lettura non banale,
   aggiungi sempre `reading`;
 - lo stesso vale per pattern misti kana+kanji: `それ{{以外|いがい}}なら` va
@@ -111,19 +114,19 @@ Regole pratiche:
 - evita plain scalar per testo con `:`/`：`, furigana, link semantici, backtick
   o frasi complete di rules text;
 - esempio corretto per flashcard side:
-  `front: '{{手持ち|てもち}}'`
+  `front: '{{手持|ても}}ち'`
 - se un termine o pattern compare nel testo visibile di `notes_it` con kanji,
   annotalo con furigana anche se esiste gia una `reading` nell'entry;
 - se usi un link semantico con label in kanji, annota il label:
   `[{{報酬|ほうしゅう}}](term:term-reward)`;
 - se usi inline code con giapponese non trasparente, annota anche li:
   `` `{{達成済み|たっせいずみ}}` ``;
-- per i numeri usa sempre un solo furigana sul chunk intero rilevante:
+- per i numeri annota il chunk corretto senza inglobare kana gia visibili:
   `{{4|よん}}`, `{{5000|ごせん}}`, `{{-3000|マイナスさんぜん}}`,
-  `{{1枚|いちまい}}`, `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`,
-  `{{2つ|ふたつ}}`;
+  `{{1枚|いちまい}}`, `{{4以下|よんいか}}`, `{{4|よっ}}つ{{以上|いじょう}}`,
+  `{{2|ふた}}つ`;
 - se il numero ha un contatore, controlla esplicitamente che la pronuncia sia
-  quella corretta del blocco completo prima di chiudere il file;
+  quella corretta del chunk annotato prima di chiudere il file;
 - non compilare campi audio se non hai un asset locale gia reale e metadata di
   provenance affidabili; di norma l'audio viene arricchito dopo dal workflow
   locale;

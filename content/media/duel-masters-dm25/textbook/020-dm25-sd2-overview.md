@@ -206,7 +206,7 @@ resto.
 :::example_sentence
 jp: >-
   {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
-  {{6枚|ろくまい}}を[{{表向き|おもてむき}}](term:term-face-up)にする。その
+  {{6枚|ろくまい}}を[{{表向|おもてむ}}き](term:term-face-up)にする。その
   {{中|なか}}から[{{進化|しんか}}クリーチャー](term:term-evolution-creature)を
   すべて{{手札|てふだ}}に{{加|くわ}}え、
   {{残|のこ}}りを[{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de)

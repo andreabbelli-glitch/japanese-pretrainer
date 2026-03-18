@@ -44,7 +44,7 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)：このクリーチャーの
-  [{{召喚|しょうかん}}](term:term-summon)コストを{{2つ|ふたつ}}
+  [{{召喚|しょうかん}}](term:term-summon)コストを{{2|ふた}}つ
   {{少|すく}}なくしてもよい。そうした{{場合|ばあい}}、このターン
   {{終了時|しゅうりょうじ}}にこのクリーチャーを
   [{{破壊|はかい}}](term:term-destroy)する。
@@ -54,7 +54,7 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- `コストを{{2つ|ふたつ}}少なくしてもよい` dà il vantaggio immediato.
+- `コストを{{2|ふた}}つ少なくしてもよい` dà il vantaggio immediato.
 - `終了時に破壊する` aggiunge il prezzo da pagare alla fine del turno.
 
 ### [ブロッカー](term:term-blocker)
@@ -133,11 +133,11 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  [{{無月の門|むげつのもん}}](term:term-mugestsu-no-mon)：{{自分|じぶん}}の
+  [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon)：{{自分|じぶん}}の
   [{{魔導具|まどうぐ}}](term:term-madougu)が[バトルゾーン](term:term-battle-zone)に
   {{出|で}}た{{時|とき}}、{{自分|じぶん}}の
   [{{魔導具|まどうぐ}}](term:term-madougu)を[バトルゾーン](term:term-battle-zone)と
-  [{{墓地|ぼち}}](term:term-graveyard)から{{2つ|ふたつ}}[ずつ](grammar:grammar-zutsu)
+  [{{墓地|ぼち}}](term:term-graveyard)から{{2|ふた}}つ[ずつ](grammar:grammar-zutsu)
   {{選|えら}}び、このクリーチャーを{{自分|じぶん}}の
   [{{手札|てふだ}}](term:term-hand)または[{{墓地|ぼち}}](term:term-graveyard)から
   それら{{4枚|よんまい}}の{{上|うえ}}に[コスト](term:term-cost)を{{払|はら}}わずに
@@ -150,7 +150,7 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- `{{2つ|ふたつ}}ずつ` distribuisce il numero sui due gruppi nominati: due dal battle
+- `{{2|ふた}}つずつ` distribuisce il numero sui due gruppi nominati: due dal battle
   zone e due dal cimitero.
 - `それら{{4枚|よんまい}}の上に` segnala che non è una semplice messa in campo: la carta
   entra sopra il materiale appena scelto.
@@ -229,7 +229,7 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   [T・ブレイカー](term:term-t-breaker)：このクリーチャーはシールドを
-  {{3つ|みっつ}}ブレイクする。
+  {{3|みっ}}つブレイクする。
 translation_it: >-
   T-Breaker: questa creatura rompe 3 scudi.
 reveal_mode: sentence
@@ -261,7 +261,7 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   [W・ブレイカー](term:term-w-breaker)：このクリーチャーはシールドを
-  {{2つ|ふたつ}}ブレイクする。
+  {{2|ふた}}つブレイクする。
 translation_it: >-
   W-Breaker: questa creatura rompe 2 scudi.
 reveal_mode: sentence

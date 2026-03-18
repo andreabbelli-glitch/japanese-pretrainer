@@ -73,7 +73,7 @@ pack, exchange e deck prebuilt verranno poi letti nelle lezioni successive.
 
 ## Spiegazione
 
-### 1. `{{デッキ|でっき}}` nell'app non è `{{山札|やまふだ}}` durante la partita
+### 1. `デッキ` nell'app non è `{{山札|やまふだ}}` durante la partita
 
 Questo è il contrasto operativo più importante da tenere presente in questa schermata.
 
@@ -217,7 +217,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{DMポイント|でぃーえむぽいんと}}で{{生成可能|せいせいかのう}}
+  DMポイントで{{生成可能|せいせいかのう}}
 translation_it: >-
   Puoi creare questa carta usando punti DM.
 :::

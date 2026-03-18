@@ -568,13 +568,13 @@ requests:
     priority: high
     placement_rationale: >-
       Va subito dopo il paragrafo su
-      [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru),
-      [{{思い出す|おもいだす}}](term:term-omoidasu) e
-      [{{忘れる|わすれる}}](term:term-wasureru), cosi il lettore vede una
+      [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru),
+      [{{思|おも}}い{{出|だ}}す](term:term-omoidasu) e
+      [{{忘|わす}}れる](term:term-wasureru), cosi il lettore vede una
       schermata concreta in cui questi label convivono davvero.
     visual_goal: >-
       Mostrare il riepilogo di un Pokemon con il menu mosse e l'opzione
-      `{{思い出す|おもいだす}}`, per dare una forma visiva alla distinzione fra
+      `{{思|おも}}い{{出|だ}}す`, per dare una forma visiva alla distinzione fra
       summary, gestione mosse e funzioni interne del menu.
     source_preference: >-
       Guida giapponese con screenshot della schermata status o gestione mosse in
@@ -582,12 +582,12 @@ requests:
     search_hint: >-
       Usa la guida GameWith `序盤の進め方と初心者が覚えておくべき機能` e scegli
       la schermata viola di status con elenco mosse e comando
-      `{{思い出す|おもいだす}}`.
+      `{{思|おも}}い{{出|だ}}す`.
     capture_instructions: >-
       Preferisci una schermata completa con nome del Pokemon, elenco mosse e
       menu laterale o centrale ancora leggibili.
     must_show: >-
-      UI status, elenco mosse, comando `{{思い出す|おもいだす}}` e contesto di
+      UI status, elenco mosse, comando `{{思|おも}}い{{出|だ}}す` e contesto di
       gestione interna del Pokemon.
     avoid: >-
       Crop troppo stretti, immagini puramente decorative o schermate che non
@@ -596,9 +596,9 @@ requests:
       Schermata di riepilogo del Pokemon con elenco mosse e opzione per
       ricordare una mossa.
     caption_it: >-
-      Questa schermata rende concreti [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru),
-      [{{思い出す|おもいだす}}](term:term-omoidasu) e
-      [{{忘れる|わすれる}}](term:term-wasureru): il menu non descrive concetti
+      Questa schermata rende concreti [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru),
+      [{{思|おも}}い{{出|だ}}す](term:term-omoidasu) e
+      [{{忘|わす}}れる](term:term-wasureru): il menu non descrive concetti
       astratti, ma azioni precise sulla scheda del Pokemon.
     notes: >-
       Fonte guida da verificare: GameWith `序盤の進め方と初心者が覚えておくべき機能`
@@ -611,7 +611,7 @@ requests:
     placement_rationale: >-
       Va subito dopo il paragrafo su
       [{{野生|やせい}}](term:term-yasei) e
-      [{{捕まえる|つかまえる}}](term:term-tsukamaeru), cosi la cattura entra nel
+      [{{捕|つか}}まえる](term:term-tsukamaeru), cosi la cattura entra nel
       capitolo come flow reale di battaglia e non solo come regola spiegata a parole.
     visual_goal: >-
       Mostrare uno scontro con Pokemon selvatico e HUD di lotta, in modo che la
@@ -633,7 +633,7 @@ requests:
       Schermata di lotta contro un Pokemon selvatico durante il tutorial di cattura.
     caption_it: >-
       Qui [{{野生|やせい}}](term:term-yasei) e
-      [{{捕まえる|つかまえる}}](term:term-tsukamaeru) si leggono come pratica di
+      [{{捕|つか}}まえる](term:term-tsukamaeru) si leggono come pratica di
       battaglia: prima controlli il ritmo dello scontro, poi prepari la cattura.
     notes: >-
       Fonte prevista: asset ufficiale gia recuperato dal tutorial di cattura
@@ -785,7 +785,7 @@ requests:
     placement_rationale: >-
       Va subito dopo i paragrafi che spiegano
       [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou) e
-      [{{宝探し|たからさがし}}](term:term-takara-sagashi), cosi il lettore vede il
+      [{{宝探|たからさが}}し](term:term-takara-sagashi), cosi il lettore vede il
       momento in cui la scuola consegna davvero il briefing che apre il mondo.
     visual_goal: >-
       Mostrare il raduno degli studenti o l'annuncio del Treasure Hunt nel campus,
@@ -808,7 +808,7 @@ requests:
     alt_it: >-
       Raduno degli studenti dell'accademia durante l'annuncio del Treasure Hunt.
     caption_it: >-
-      Il briefing del [{{宝探し|たからさがし}}](term:term-takara-sagashi) rende
+      Il briefing del [{{宝探|たからさが}}し](term:term-takara-sagashi) rende
       visibile il cambio di scala del prologo: la scuola smette di guidarti solo
       dentro il campus e ti consegna la struttura aperta dell'avventura.
     notes: >-

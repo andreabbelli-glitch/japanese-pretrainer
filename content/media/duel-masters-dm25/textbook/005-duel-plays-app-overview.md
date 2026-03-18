@@ -34,7 +34,7 @@ operativo: identificare cosa informa e cosa apre davvero un nuovo passaggio.
 Nella home di `デュエプレ`, se non separi bene
 [ミッション](term:term-mission), [プレゼント](term:term-present),
 [{{報酬|ほうしゅう}}](term:term-reward) e
-[{{受け取る|うけとる}}](term:term-receive), rischi di riconoscere il vocabolo
+[{{受|う}}け{{取|と}}る](term:term-receive), rischi di riconoscere il vocabolo
 ma non l'azione da fare.
 
 La barra bassa è quasi sempre bilingue (`Home`, `Solo play`, `Battle`, `Shop`),
@@ -53,14 +53,14 @@ La regola pratica è questa:
 - [ミッション](term:term-mission)
 - [ログインボーナス](term:term-login-bonus)
 - [プレゼント](term:term-present)
-- [{{お知らせ|おしらせ}}](term:term-news)
+- [お{{知|し}}らせ](term:term-news)
 - [ショップ](term:term-shop)
 - [{{設定|せってい}}](term:term-settings)
-- [{{その他|そのた}}](term:term-etc)
+- [その{{他|た}}](term:term-etc)
 - [{{開|ひら}}く](term:term-open)
 - [{{確認|かくにん}}](term:term-confirm)
 - [{{報酬|ほうしゅう}}](term:term-reward)
-- [{{受け取る|うけとる}}](term:term-receive)
+- [{{受|う}}け{{取|と}}る](term:term-receive)
 
 ## Pattern grammaticali chiave
 
@@ -100,14 +100,14 @@ Usa subito queste etichette:
 - [ミッション](term:term-mission)
 - [ログインボーナス](term:term-login-bonus)
 - [プレゼント](term:term-present)
-- [{{お知らせ|おしらせ}}](term:term-news)
+- [お{{知|し}}らせ](term:term-news)
 - [ショップ](term:term-shop)
 - [{{設定|せってい}}](term:term-settings)
-- [{{その他|そのた}}](term:term-etc)
+- [その{{他|た}}](term:term-etc)
 
 Quando queste etichette sono chiare, la UI resta leggibile già al primo accesso.
 
-`{{その他|そのた}}` compare spesso anche come `Etc.` sotto un'icona. Non va
+`その{{他|た}}` compare spesso anche come `Etc.` sotto un'icona. Non va
 scambiato con [{{設定|せってい}}](term:term-settings):
 apre un menu "altro / varie" con funzioni secondarie.
 
@@ -126,7 +126,7 @@ In uso pratico:
 - la missione definisce cosa fare;
 - il login bonus dice cosa ricevi;
 - [プレゼント](term:term-present) ti mostra dove è custodito il premio assegnato;
-- [{{受け取る|うけとる}}](term:term-receive) conclude il flusso di claim.
+- [{{受|う}}け{{取|と}}る](term:term-receive) conclude il flusso di claim.
 
 Non basta identificare [{{報酬|ほうしゅう}}](term:term-reward):
 devi verificare dove viene depositato e se resta un bottone attivo da premere.
@@ -142,31 +142,31 @@ L'interfaccia compatta giapponese rende utili questi marker:
 
 Questi marker ti indicano se una sezione richiede un'azione ora o è già chiusa.
 
-### 4. `{{確認|かくにん}}` e `{{受け取る|うけとる}}`: distinzione tra verifica e claim
+### 4. `{{確認|かくにん}}` e `{{受|う}}け{{取|と}}る`: distinzione tra verifica e claim
 
 [{{確認|かくにん}}](term:term-confirm) e
-[{{受け取る|うけとる}}](term:term-receive) non fanno la stessa operazione.
+[{{受|う}}け{{取|と}}る](term:term-receive) non fanno la stessa operazione.
 
 - [{{確認|かくにん}}](term:term-confirm) serve a controllare o confermare un
   dettaglio;
-- [{{受け取る|うけとる}}](term:term-receive) chiude la reward mostrata e la
+- [{{受|う}}け{{取|と}}る](term:term-receive) chiude la reward mostrata e la
   rende disponibile.
 
 In pratica: `{{確認|かくにん}}` cambia stato informativo, `{{受|う}}け{{取|と}}る` finalizza il flusso.
 
-### 5. `{{お知らせ|おしらせ}}`, `{{設定|せってい}}` e `{{その他|そのた}}`: tre aree da distinguere
+### 5. `お{{知|し}}らせ`, `{{設定|せってい}}` e `その{{他|た}}`: tre aree da distinguere
 
-[{{お知らせ|おしらせ}}](term:term-news) porta a informazioni ufficiali,
+[お{{知|し}}らせ](term:term-news) porta a informazioni ufficiali,
 campagne, eventi e aggiornamenti.
 [{{設定|せってい}}](term:term-settings) apre preferenze e impostazioni dell'app.
-[{{その他|そのた}}](term:term-etc) è un contenitore "altro / etc." con voci
+[その{{他|た}}](term:term-etc) è un contenitore "altro / etc." con voci
 secondarie.
 
 Conferma sempre:
 
-- [{{お知らせ|おしらせ}}](term:term-news) per contesto e comunicazioni;
+- [お{{知|し}}らせ](term:term-news) per contesto e comunicazioni;
 - [{{設定|せってい}}](term:term-settings) per preferenze;
-- [{{その他|そのた}}](term:term-etc) per voci eterogenee.
+- [その{{他|た}}](term:term-etc) per voci eterogenee.
 
 L'accesso avviene spesso via icona. In apertura schermata, il titolo ti conferma
 l'area vera in cui sei entrato.
@@ -202,13 +202,13 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{報酬|ほうしゅう}}を{{受け取る|うけとる}}
+  {{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る
 translation_it: >-
   Ritira la ricompensa.
 :::
 
 - [{{報酬|ほうしゅう}}](term:term-reward) = ciò che ottieni;
-- [{{受け取る|うけとる}}](term:term-receive) = chiusura concreta del claim.
+- [{{受|う}}け{{取|と}}る](term:term-receive) = chiusura concreta del claim.
 - Insieme, indicano che c'è un premio da riscattare e quindi un'azione da
   completare.
 
@@ -231,7 +231,7 @@ Schema da applicare a ogni schermata:
 
 1) `informazione` → leggi e passa oltre;
 2) `stato` → valuta subito se il contenuto è aperto o concluso;
-3) `azione` ([{{確認|かくにん}}](term:term-confirm), [{{受け取る|うけとる}}](term:term-receive)) → tocca solo se il flusso richiede una conferma
+3) `azione` ([{{確認|かくにん}}](term:term-confirm), [{{受|う}}け{{取|と}}る](term:term-receive)) → tocca solo se il flusso richiede una conferma
    o un claim.
 
 Con questa lettura, `デュエプレ` diventa prevedibile: meno popup ambiguo, più

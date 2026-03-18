@@ -147,7 +147,7 @@ Per esempio:
 - `{{山札|やまふだ}}から{{手札|てふだ}}に[{{加|くわ}}える](term:term-add)` =
   deck -> mano;
 - `{{墓地|ぼち}}から{{出|だ}}す` = cimitero -> campo;
-- `{{マナゾーン|まなぞーん}}に{{置|お}}く` = mettere nella zona mana.
+- `マナゾーンに{{置|お}}く` = mettere nella zona mana.
 
 Il giapponese delle carte codifica spesso una freccia tra zone.
 

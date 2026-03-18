@@ -41,8 +41,8 @@ missioni, ricompense e crescita del profilo.
 - [MY PAGE](term:term-mypage)
 - [EXバトル](term:term-ex-battle)
 - [{{作戦|さくせん}}カード](term:term-tactics-card)
-- [{{メイン枠|めいんわく}}](term:term-main-slot)
-- [{{サブ枠|さぶわく}}](term:term-sub-slot)
+- [メイン{{枠|わく}}](term:term-main-slot)
+- [サブ{{枠|わく}}](term:term-sub-slot)
 - [{{役割|やくわり}}](term:term-role)
 - [{{殲滅|せんめつ}}](term:term-role-shoumetsu)
 - [{{制圧|せいあつ}}](term:term-role-seiatsu)
@@ -99,8 +99,8 @@ comandante misura l'avanzamento del profilo e sblocca sistemi nuovi. La soglia
 iniziale da ricordare è semplice: quando il
 [{{指揮官|しきかん}}レベル](term:term-commander-level) arriva a 5, le
 [{{作戦|さくせん}}カード](term:term-tactics-card) diventano disponibili e puoi
-equipaggiarne una nel [{{メイン枠|めいんわく}}](term:term-main-slot) e una nel
-[{{サブ枠|さぶわく}}](term:term-sub-slot).
+equipaggiarne una nel [メイン{{枠|わく}}](term:term-main-slot) e una nel
+[サブ{{枠|わく}}](term:term-sub-slot).
 
 [MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di controllare l'[{{進行|しんこう}}](term:term-progress) delle [ミッション](term:term-mission), i livelli di MS e PL, gli ultimi [{{戦績|せんせき}}](term:term-battle-record) e alcuni dati cumulativi. Questa rilettura è particolarmente utile [{{帰宅後|きたくご}}](term:term-after-return-home), perché ti fa rivedere con calma le categorie che in sala giochi scorrono troppo in fretta.
 
@@ -136,8 +136,8 @@ Una sequenza pratica per iniziare può essere questa.
    così ogni errore ti restituisce una lettura del campo più affidabile e meno
    rumore sulle scelte di collezione.
 3. Quando sblocchi le [{{作戦|さくせん}}カード](term:term-tactics-card), equipaggia
-   una carta nel [{{メイン枠|めいんわく}}](term:term-main-slot) e una nel
-   [{{サブ枠|さぶわく}}](term:term-sub-slot), invece di ignorare del tutto il
+   una carta nel [メイン{{枠|わく}}](term:term-main-slot) e una nel
+   [サブ{{枠|わく}}](term:term-sub-slot), invece di ignorare del tutto il
    sistema.
 4. Passa al [ランクマッチ](term:term-rank-match) quando riesci a trovare subito
    il [{{防衛|ぼうえい}}](term:term-role-bouei) nemico e a capire da quale lato

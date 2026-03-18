@@ -47,7 +47,7 @@ Leggere correttamente label e indicatori evita:
 - [{{交換|こうかん}}](term:term-exchange)
 - [{{交換期間|こうかんきかん}}](term:term-exchange-period)
 - [{{販売期間|はんばいきかん}}](term:term-sale-period)
-- [{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase)
+- [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
 - [{{不足|ふそく}}](term:term-shortage)
 - [デッキ{{一覧|いちらん}}](term:term-deck-list)
 - [{{概要|がいよう}}](term:term-overview)
@@ -56,7 +56,7 @@ Leggere correttamente label e indicatori evita:
 - [レジェンドスキル](term:term-legend-skill)
 - [{{確認|かくにん}}](term:term-confirm)
 - [{{分解|ぶんかい}}](term:term-disenchant)
-- [{{DMポイント|でぃーえむぽいんと}}](term:term-dm-points)
+- [DMポイント](term:term-dm-points)
 - [{{対戦開始|たいせんかいし}}](term:term-start-match)
 
 ## Pattern grammaticali chiave
@@ -119,13 +119,13 @@ Ti dice anche quale passaggio successivo è sensato.
 
 La logica è:
 
-- [{{DMポイント|でぃーえむぽいんと}}](term:term-dm-points) non bastano;
+- [DMポイント](term:term-dm-points) non bastano;
 - l'operazione scelta non può chiudersi ora;
 - puoi passare a [{{分解|ぶんかい}}](term:term-disenchant) per recuperare la
   risorsa necessaria.
 
 Il messaggio indica un blocco operativo: non hai abbastanza
-[{{DMポイント|でぃーえむぽいんと}}](term:term-dm-points) per completare
+[DMポイント](term:term-dm-points) per completare
 l'azione.
 
 ### 3. I deck prebuilt si leggono tra periodo di vendita e bonus inclusi
@@ -136,16 +136,16 @@ alt: >-
   Schermata acquisto deck prebuilt con più deck in vendita, ribbon periodo
   vendita e bonus playmat/protector.
 caption: >-
-  [{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase)
+  [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
   mostra deck-prodotto, [{{販売期間|はんばいきかん}}](term:term-sale-period),
   prezzo e bonus `{{特典|とくてん}}プレイマット/プロテクト`: qui non stai
   ancora editando una lista.
 :::
 
-[{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase)
+[{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
 è composto da:
 
-- [{{構築済み|こうちくずみ}}](term:term-prebuilt) = deck già preparato /
+- [{{構築済|こうちくず}}み](term:term-prebuilt) = deck già preparato /
   prebuilt;
 - `デッキ` = il prodotto principale;
 - `{{購入|こうにゅう}}` = il flusso di acquisto.
@@ -232,14 +232,14 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{販売期間|はんばいきかん}}を{{見|み}}てから{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}を{{決|き}}める。
+  {{販売期間|はんばいきかん}}を{{見|み}}てから{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}を{{決|き}}める。
 translation_it: >-
   Controlla il periodo di vendita prima di decidere se comprare il deck
   prebuilt.
 :::
 
 - [{{販売期間|はんばいきかん}}](term:term-sale-period) ti orienta sul tempo.
-- [{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase)
+- [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
   ti dice il tipo di prodotto che stai guardando.
 
 **Esempio 4**

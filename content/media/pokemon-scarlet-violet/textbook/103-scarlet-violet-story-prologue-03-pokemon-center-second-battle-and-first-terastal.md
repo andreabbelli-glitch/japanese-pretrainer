@@ -30,7 +30,7 @@ consegna il [テラスタルオーブ](term:term-terastal-orb).
 
 Questo capitolo copre la sequenza lineare che parte dalla vista sul mondo dal
 faro, passa per プラトタウン e la spiegazione del
-[ポケモンセンター](term:term-pokemon-center), attraversa {{南1番エリア|みなみ1ばんエリア}} fino alla
+[ポケモンセンター](term:term-pokemon-center), attraversa {{南1番|みなみ1ばん}}エリア fino alla
 seconda sfida con Nemona davanti a テーブルシティ e arriva al primo tutorial
 reale del [テラスタル](term:term-terastal) contro uno studente dello Star Team.
 
@@ -188,7 +188,7 @@ vere su cura, risorse, percorso e [テラスタル](term:term-terastal).
 
 :::example_sentence
 jp: >-
-  ポケモンセンターで {{手持ち|てもち}}を {{回復|かいふく}}してもらったら
+  ポケモンセンターで {{手持|ても}}ちを {{回復|かいふく}}してもらったら
   {{先|さき}}へ {{進|すす}}もう。
 translation_it: >-
   Una volta curata la squadra al Centro Pokemon, andiamo avanti.

@@ -156,7 +156,7 @@ id: card-mezasu-recognition
 entry_type: term
 entry_id: term-mezasu
 card_type: recognition
-front: '{{目指す|めざす}}'
+front: '{{目指|めざ}}す'
 back: puntare a / mirare a diventare
 example_jp: >-
   {{将来|しょうらい}} どんな トレーナーを {{目指|めざ}}すのか {{聞|き}}かれた。

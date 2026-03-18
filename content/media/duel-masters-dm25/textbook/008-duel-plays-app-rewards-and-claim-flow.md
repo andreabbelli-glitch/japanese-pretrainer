@@ -42,10 +42,10 @@ Questi elementi vanno letti in sequenza:
 ## Termini chiave
 
 - [プレゼントボックス](term:term-present-box)
-- [{{未受け取り|みうけとり}}](term:term-unclaimed)
-- [{{受け取り履歴|うけとりりれき}}](term:term-claim-history)
-- [{{一括受け取り|いっかつうけとり}}](term:term-bulk-claim)
-- [{{受け取り期限|うけとりきげん}}](term:term-claim-deadline)
+- [{{未受|みう}}け{{取|と}}り](term:term-unclaimed)
+- [{{受|う}}け{{取|と}}り{{履歴|りれき}}](term:term-claim-history)
+- [{{一括受|いっかつう}}け{{取|と}}り](term:term-bulk-claim)
+- [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline)
 - [{{期限|きげん}}](term:term-deadline)
 - [{{獲得|かくとく}}](term:term-kakutoku)
 - [{{日時|にちじ}}](term:term-datetime)
@@ -57,7 +57,7 @@ Questi elementi vanno letti in sequenza:
 - [スキップ](term:term-skip)
 - [レジェンドスキル](term:term-legend-skill)
 - [{{報酬|ほうしゅう}}](term:term-reward)
-- [{{受け取る|うけとる}}](term:term-receive)
+- [{{受|う}}け{{取|と}}る](term:term-receive)
 
 ## Pattern grammaticali chiave
 
@@ -77,8 +77,8 @@ alt: >-
   scadenza claim e bottone di riscossione.
 caption: >-
   Ogni riga del `プレゼントボックス` combina nome reward,
-  `{{獲得日時|かくとくにちじ}}`, `{{受け取り期限|うけとりきげん}}` e bottone
-  `{{受け取る|うけとる}}`: è una schermata di claim, non un semplice deposito
+  `{{獲得日時|かくとくにちじ}}`, `{{受|う}}け{{取|と}}り{{期限|きげん}}` e bottone
+  `{{受|う}}け{{取|と}}る`: è una schermata di claim, non un semplice deposito
   di premi.
 :::
 
@@ -92,17 +92,17 @@ Ogni riga espone tutti i dati operativi della singola reward:
 - che premio è;
 - da dove arriva;
 - quando è stato ottenuto (`{{獲得|かくとく}}{{日時|にちじ}}`);
-- fino a quando puoi ritirarlo (`{{受け取り期限|うけとりきげん}}`);
-- quale bottone chiude la singola azione (`{{受け取る|うけとる}}`).
+- fino a quando puoi ritirarlo (`{{受|う}}け{{取|と}}り{{期限|きげん}}`);
+- quale bottone chiude la singola azione (`{{受|う}}け{{取|と}}る`).
 
 Qui i due label da separare subito sono:
 
-- [{{未受け取り|みうけとり}}](term:term-unclaimed): la reward è dentro la box ma
+- [{{未受|みう}}け{{取|と}}り](term:term-unclaimed): la reward è dentro la box ma
   devi ancora incassarla;
-- [{{受け取り履歴|うけとりりれき}}](term:term-claim-history): l'incasso è già
+- [{{受|う}}け{{取|と}}り{{履歴|りれき}}](term:term-claim-history): l'incasso è già
   stato registrato e stai guardando lo storico, non il residuo aperto.
 
-Anche [{{一括受け取り|いっかつうけとり}}](term:term-bulk-claim) è più
+Anche [{{一括受|いっかつう}}け{{取|と}}り](term:term-bulk-claim) è più
 operativo di quanto sembri. Il label ti dice che l'app può elaborare più reward
 insieme, non una alla volta.
 
@@ -110,12 +110,12 @@ insieme, non una alla volta.
 
 Nella stessa schermata compaiono due informazioni temporali diverse:
 
-- [{{受け取り期限|うけとりきげん}}](term:term-claim-deadline) = fino a quando
+- [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline) = fino a quando
   puoi ancora ritirare quel premio;
 - `{{獲得|かくとく}}{{日時|にちじ}}` = quando quella reward è entrata nella box.
 
 Qui [{{獲得|かくとく}}](term:term-kakutoku) marca l'ora di registrazione del
-premio; [{{受け取り期限|うけとりきげん}}](term:term-claim-deadline) marca
+premio; [{{受|う}}け{{取|と}}り{{期限|きげん}}](term:term-claim-deadline) marca
 l'ultima ora valida per reclamare. Le due etichette sono usate per decidere se la
 reward è ancora recuperabile.
 
@@ -192,8 +192,8 @@ chiede *se* vuoi incassarle.
 
 Regola operativa:
 
-- [{{受け取る|うけとる}}](term:term-receive) come verbo in etichetta/interfaccia = azione ancora da fare;
-- `{{受け取りました|うけとりました}}` come forma già coniugata = azione già completata.
+- [{{受|う}}け{{取|と}}る](term:term-receive) come verbo in etichetta/interfaccia = azione ancora da fare;
+- `{{受|う}}け{{取|と}}りました` come forma già coniugata = azione già completata.
 
 ## Esempi guidati
 
@@ -201,12 +201,12 @@ Regola operativa:
 
 :::example_sentence
 jp: >-
-  {{未受け取り|みうけとり}}の{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
+  {{未受|みう}}け{{取|と}}りの{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
 translation_it: >-
   Ci sono 2 reward ancora da riscuotere.
 :::
 
-- [{{未受け取り|みうけとり}}](term:term-unclaimed) ti dice subito che
+- [{{未受|みう}}け{{取|と}}り](term:term-unclaimed) ti dice subito che
   l'incasso non è stato ancora completato.
 - Qui il contrasto non è il tipo di premio, ma lo stato del claim: la reward è
   già presente nella box, però non è ancora stata trasferita al tuo inventario.
@@ -215,12 +215,12 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{一括受け取り|いっかつうけとり}}で{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
+  {{一括受|いっかつう}}け{{取|と}}りで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
 translation_it: >-
   Riscuoti tutto in una volta.
 :::
 
-- [{{一括受け取り|いっかつうけとり}}](term:term-bulk-claim) non descrive lo
+- [{{一括受|いっかつう}}け{{取|と}}り](term:term-bulk-claim) non descrive lo
   stato della reward, ma la modalità del claim.
 - `{{一括|いっかつ}}` ti dice che il bottone applica la stessa riscossione a
   tutte le reward aperte, invece di fartene ritirare una per una.

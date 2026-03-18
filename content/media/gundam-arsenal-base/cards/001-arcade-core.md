@@ -821,7 +821,7 @@ front: >-
 back: >-
   carta digitale di effetto tattico
 example_jp: >-
-  {{開幕|かいまく}}で{{守|まも}}りを{{固|かた}}めたいので、{{メイン枠|めいんわく}}には{{防御|ぼうぎょ}}よりの{{作戦|さくせん}}カードを{{入|い}}れました。
+  {{開幕|かいまく}}で{{守|まも}}りを{{固|かた}}めたいので、メイン{{枠|わく}}には{{防御|ぼうぎょ}}よりの{{作戦|さくせん}}カードを{{入|い}}れました。
 example_it: >-
   Siccome voglio rinforzare la difesa all'inizio, ho messo nello slot principale
   una carta tattica orientata alla protezione.
@@ -915,7 +915,7 @@ front: >-
 back: >-
   tecnica speciale dell'unità
 example_jp: >-
-  SPゲージが{{満タン|まんたん}}でも、{{守|まも}}られた{{拠点|きょてん}}には{{戦術技|せんじゅつぎ}}を{{撃|う}}たないほうがいいです。
+  SPゲージが{{満|まん}}タンでも、{{守|まも}}られた{{拠点|きょてん}}には{{戦術技|せんじゅつぎ}}を{{撃|う}}たないほうがいいです。
 example_it: >-
   Anche con la barra SP piena, non usare la tecnica speciale su una
   base che è ancora protetta.

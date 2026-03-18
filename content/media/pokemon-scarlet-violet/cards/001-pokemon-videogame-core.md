@@ -39,7 +39,7 @@ romaji: temochi
 meaning_it: squadra attiva
 notes_it: >-
   Indica i Pokemon che hai con te in quel momento. Se un tutorial o un menu
-  parla di `{{手持ち|てもち}}`, sta parlando dei membri subito disponibili in
+  parla di `{{手持|ても}}ち`, sta parlando dei membri subito disponibili in
   battaglia, non del deposito completo.
 :::
 
@@ -48,10 +48,10 @@ id: card-te-mochi-recognition
 entry_type: term
 entry_id: term-te-mochi
 card_type: recognition
-front: '{{手持ち|てもち}}'
+front: '{{手持|ても}}ち'
 back: squadra attiva / Pokemon con te
 example_jp: >-
-  {{手持ち|てもち}}の ポケモンを {{先|さき}}に {{回復|かいふく}}しておこう。
+  {{手持|ても}}ちの ポケモンを {{先|さき}}に {{回復|かいふく}}しておこう。
 example_it: >-
   Prima della lotta, cura i Pokemon che hai in squadra.
 :::
@@ -76,7 +76,7 @@ card_type: recognition
 front: 'ボックス'
 back: box di deposito
 example_jp: >-
-  {{手持ち|てもち}}が いっぱいなら ボックスに {{送|おく}}ろう。
+  {{手持|ても}}ちが いっぱいなら ボックスに {{送|おく}}ろう。
 example_it: >-
   Se la squadra è piena, mandiamolo nel box.
 :::
@@ -223,10 +223,10 @@ id: card-tsuyosa-o-miru-recognition
 entry_type: term
 entry_id: term-tsuyosa-o-miru
 card_type: recognition
-front: '{{強さを見る|つよさをみる}}'
+front: '{{強|つよ}}さを{{見|み}}る'
 back: aprire il riepilogo del Pokemon
 example_jp: >-
-  ポケモンを {{選|えら}}んで 「{{強さを見る|つよさをみる}}」を {{開|ひら}}こう。
+  ポケモンを {{選|えら}}んで 「{{強|つよ}}さを{{見|み}}る」を {{開|ひら}}こう。
 example_it: >-
   Seleziona il Pokemon e apri "Controlla dati".
 :::
@@ -274,10 +274,10 @@ id: card-narabikae-recognition
 entry_type: term
 entry_id: term-narabikae
 card_type: recognition
-front: '{{並び替え|ならびかえ}}'
+front: '{{並|なら}}び{{替|か}}え'
 back: riordino / cambia ordine
 example_jp: >-
-  よく {{使|つか}}う わざを {{上|うえ}}に {{並び替|ならびか}}えよう。
+  よく {{使|つか}}う わざを {{上|うえ}}に {{並|なら}}び{{替|か}}えよう。
 example_it: >-
   Riordina le mosse mettendo in alto quelle che usi di più.
 :::
@@ -299,10 +299,10 @@ id: card-omoidasu-recognition
 entry_type: term
 entry_id: term-omoidasu
 card_type: recognition
-front: '{{思い出す|おもいだす}}'
+front: '{{思|おも}}い{{出|だ}}す'
 back: ricordare di nuovo / recuperare una mossa
 example_jp: >-
-  あとで {{必要|ひつよう}}なら この わざを {{思い出|おもいだ}}せる。
+  あとで {{必要|ひつよう}}なら この わざを {{思|おも}}い{{出|だ}}せる。
 example_it: >-
   Se ti servirà più avanti, potrai recuperare questa mossa.
 :::
@@ -323,7 +323,7 @@ id: card-wasureru-recognition
 entry_type: term
 entry_id: term-wasureru
 card_type: recognition
-front: '{{忘れる|わすれる}}'
+front: '{{忘|わす}}れる'
 back: dimenticare / rimuovere una mossa
 example_jp: >-
   {{新|あたら}}しい わざを {{覚|おぼ}}えるために {{古|ふる}}い わざを {{忘|わす}}れる。
@@ -524,7 +524,7 @@ id: card-tsukamaeru-recognition
 entry_type: term
 entry_id: term-tsukamaeru
 card_type: recognition
-front: '{{捕まえる|つかまえる}}'
+front: '{{捕|つか}}まえる'
 back: catturare
 example_jp: >-
   HPを {{減|へ}}らしてから {{捕|つか}}まえると {{成功|せいこう}}しやすい。
@@ -644,7 +644,7 @@ notes_it: >-
   Nei tutorial Pokemon introduce un test operativo immediato. Dopo `～てみる`,
   il gioco richiede di eseguire l'azione nella UI, per esempio registrare una
   [{{目的地|もくてきち}}](term:term-mokutekichi) o aprire
-  [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru).
+  [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru).
 :::
 
 :::card
@@ -753,7 +753,7 @@ card_type: concept
 front: '～てくれる'
 back: fare qualcosa per te
 example_jp: >-
-  ポケモンセンターの {{人|ひと}}が {{手持ち|てもち}}を {{回復|かいふく}}してくれる。
+  ポケモンセンターの {{人|ひと}}が {{手持|ても}}ちを {{回復|かいふく}}してくれる。
 example_it: >-
   La persona del Centro Pokemon ti cura la squadra.
 :::

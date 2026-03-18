@@ -17,9 +17,9 @@ summary: >-
 # Obiettivo
 
 Capire il giapponese del blocco che va dall'uscita da casa verso
-{{コサジの小道|こさじのこみち}} fino al faro: il
+コサジの{{小道|こみち}} fino al faro: il
 primo tutorial di cattura, le avvertenze di Nemona sul percorso, la scena nella
-{{入り江|いりえ}}の ほら{{穴|あな}}, l'intervento del
+{{入|い}}り{{江|え}}の ほら{{穴|あな}}, l'intervento del
 Pokemon misterioso e il primo dialogo ruvido con Pepper.
 
 ## Contesto

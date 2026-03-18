@@ -54,7 +54,7 @@ caption: >-
 - [{{校長室|こうちょうしつ}}](term:term-kouchoushitsu)
 - [{{学生寮|がくせいりょう}}](term:term-gakusei-ryou)
 - [{{担任|たんにん}}](term:term-tannin)
-- [{{目指す|めざす}}](term:term-mezasu)
+- [{{目指|めざ}}す](term:term-mezasu)
 
 ## Pattern grammaticali chiave
 
@@ -78,7 +78,7 @@ piu ufficiale e di solito la conversazione segna un passaggio importante.
 
 La scena in aula ruota attorno a due parole che vale la pena fissare subito:
 [{{担任|たんにん}}](term:term-tannin) e
-[{{目指す|めざす}}](term:term-mezasu). La prima ti dice chi e il docente che ha
+[{{目指|めざ}}す](term:term-mezasu). La prima ti dice chi e il docente che ha
 in carico la tua classe e che quindi puo darti indicazioni, presentazioni o
 richieste di report. La seconda compare nella domanda su cio che vuoi fare in
 futuro. Quando il gioco ti chiede `{{将来|しょうらい}} 何を {{目指|めざ}}したい
@@ -186,7 +186,7 @@ anche il valore delle stanze. Se stabilizzi
 [{{職員室|しょくいんしつ}}](term:term-shokuinshitsu),
 [{{校長室|こうちょうしつ}}](term:term-kouchoushitsu),
 [{{学生寮|がくせいりょう}}](term:term-gakusei-ryou) e il verbo
-[{{目指す|めざす}}](term:term-mezasu), la parte scolastica smette di sembrare un
+[{{目指|めざ}}す](term:term-mezasu), la parte scolastica smette di sembrare un
 blocco di dialoghi generici e diventa una sequenza leggibile di scelte e
 briefing.
 

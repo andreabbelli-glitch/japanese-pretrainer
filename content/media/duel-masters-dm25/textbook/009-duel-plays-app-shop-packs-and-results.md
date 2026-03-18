@@ -46,15 +46,15 @@ molti label sembrano decorativi, ma in realtà sono istruzioni molto precise.
 - [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase)
 - [カード{{交換|こうかん}}](term:term-card-exchange)
 - [{{交換|こうかん}}](term:term-exchange)
-- [{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase)
-- [{{構築済み|こうちくずみ}}](term:term-prebuilt)
-- [{{所持チケット|しょじちけっと}}](term:term-owned-ticket)
+- [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
+- [{{構築済|こうちくず}}み](term:term-prebuilt)
+- [{{所持|しょじ}}チケット](term:term-owned-ticket)
 - [{{購入個数|こうにゅうこすう}}](term:term-purchase-quantity)
 - [{{使用|しよう}}](term:term-use)
 - [{{獲得|かくとく}}](term:term-kakutoku)
 - [{{提供割合|ていきょうわりあい}}](term:term-offer-rate)
 - [{{確認|かくにん}}](term:term-confirm)
-- [{{チケット|ちけっと}}](term:term-ticket)
+- [チケット](term:term-ticket)
 - [{{所持|しょじ}}](term:term-owned)
 
 ## Pattern grammaticali chiave
@@ -85,7 +85,7 @@ I quattro pannelli principali ti portano verso flussi diversi:
   generale;
 - [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) = entri
   direttamente nella schermata dei pack;
-- [{{構築済みデッキ購入|こうちくずみでっきこうにゅう}}](term:term-constructed-deck-purchase)
+- [{{構築済|こうちくず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
   = stai guardando deck prebuilt venduti come prodotto;
 - [カード{{交換|こうかん}}](term:term-card-exchange) = apri lo scambio con
   risorse dedicate.
@@ -119,7 +119,7 @@ come tabella di accesso:
 
 - quali valute esistono;
 - quale pacchetto o bundle è in evidenza;
-- quanti [{{所持チケット|しょじちけっと}}](term:term-owned-ticket) hai;
+- quanti [{{所持|しょじ}}チケット](term:term-owned-ticket) hai;
 - dove puoi aprire `カード{{一覧|いちらん}}` o `{{提供割合|ていきょうわりあい}}`.
 
 In altre parole, il layout ti dice se stai usando gemme, oro o ticket e ti evita
@@ -142,12 +142,12 @@ alt: >-
   posseduti e pulsanti meno, più e MAX.
 caption: >-
   Nel popup quantità il punto non è il banner del pack, ma il rapporto tra
-  [{{所持チケット|しょじちけっと}}](term:term-owned-ticket), contatore e `MAX`.
+  [{{所持|しょじ}}チケット](term:term-owned-ticket), contatore e `MAX`.
 :::
 
 Nel popup quantità, il testo davvero utile non è il logo del pack. È questo:
 
-- [{{所持チケット|しょじちけっと}}](term:term-owned-ticket) = quanti ingressi
+- [{{所持|しょじ}}チケット](term:term-owned-ticket) = quanti ingressi
   spendibili hai davvero in quel momento;
 - [{{購入個数|こうにゅうこすう}}](term:term-purchase-quantity) = quante unità
   stai per comprare;
@@ -242,12 +242,12 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{所持チケット|しょじちけっと}}は{{4枚|よんまい}}ある。
+  {{所持|しょじ}}チケットは{{4枚|よんまい}}ある。
 translation_it: >-
   Hai 4 ticket disponibili.
 :::
 
-- [{{所持チケット|しょじちけっと}}](term:term-owned-ticket) non parla di ciò
+- [{{所持|しょじ}}チケット](term:term-owned-ticket) non parla di ciò
   che esiste nel gioco, ma dello stock attuale del tuo account.
 - È una lettura molto più pratica di una semplice voce di inventario.
 

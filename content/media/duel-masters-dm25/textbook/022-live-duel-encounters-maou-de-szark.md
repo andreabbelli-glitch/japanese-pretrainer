@@ -43,12 +43,12 @@ lungo di `{{無月|むげつ}}の{{門|もん}}` e sul secondo effetto di ingres
 
 :::example_sentence
 jp: >-
-  [{{無月の門|むげつのもん}}](term:term-mugestsu-no-mon)：
+  [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon)：
   [{{自分|じぶん}}](term:term-self)の[{{魔導具|まどうぐ}}](term:term-madougu)が
   [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
   [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)を
   [バトルゾーン](term:term-battle-zone)と[{{墓地|ぼち}}](term:term-graveyard)から
-  {{2つ|ふたつ}}[ずつ](grammar:grammar-zutsu)[{{選|えら}}び](term:term-erabu)、この
+  {{2|ふた}}つ[ずつ](grammar:grammar-zutsu)[{{選|えら}}び](term:term-erabu)、この
   クリーチャーを{{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
   [{{墓地|ぼち}}](term:term-graveyard)からそれら{{4枚|よんまい}}の{{上|うえ}}に
   [コスト](term:term-cost)を[{{払|はら}}わ](term:term-harau)ずに
@@ -85,7 +85,7 @@ reveal_mode: sentence
 - Questo conta anche se la carta che entra non è De Szark: l'effetto guarda la
   famiglia `{{魔導具|まどうぐ}}`, non il nome proprio.
 
-### 2. バトルゾーンと墓地から{{2つ|ふたつ}}ずつ選び
+### 2. バトルゾーンと墓地から{{2|ふた}}つずつ選び
 
 - Il blocco difficile qui è [ずつ](grammar:grammar-zutsu): distribuisce la
   quantità su ciascun gruppo nominato.

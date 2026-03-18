@@ -205,7 +205,7 @@ id: card-kuridasu-recognition
 entry_type: term
 entry_id: term-kuridasu
 card_type: recognition
-front: "{{繰り出す|くりだす}}"
+front: "{{繰|く}}り{{出|だ}}す"
 back: mandare in campo / far uscire
 example_jp: >-
   うっかり いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところだった。

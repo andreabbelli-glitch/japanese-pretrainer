@@ -147,7 +147,7 @@ pos: proper-noun
 notes_it: >-
   [シュウジ・イトウ](term:term-shuji-itou) è il nome-pilota semplice del lato
   `GQ`. Ti serve soprattutto per collegarlo subito a
-  [{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}](term:term-red-gundam-0085) e contrastarlo con
+  [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085) e contrastarlo con
   [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu), che invece porta un
   alias in parentesi.
 level_hint: custom
@@ -264,7 +264,7 @@ notes_it: >-
   In questo set le parentesi fanno tre lavori diversi: soprannome
   ([アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu)), specificazione
   tecnica ([GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu))
-  e marcatore di versione ([{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}](term:term-red-gundam-0085)).
+  e marcatore di versione ([{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085)).
 level_hint: custom
 :::
 
@@ -350,10 +350,10 @@ id: card-red-gundam-0085-recognition
 entry_type: term
 entry_id: term-red-gundam-0085
 card_type: recognition
-front: '{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}'
+front: '{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})'
 back: Red Gundam con marcatore (0085)
 example_jp: >-
-  {{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}は、{{名前|なまえ}}の{{最初|さいしょ}}で{{色|いろ}}の{{漢字|かんじ}}を{{読|よ}}ませるタイプです。
+  {{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})は、{{名前|なまえ}}の{{最初|さいしょ}}で{{色|いろ}}の{{漢字|かんじ}}を{{読|よ}}ませるタイプです。
 example_it: >-
   Red Gundam (0085) è il tipo di nome che ti costringe a leggere un kanji di
   colore già nel primo blocco del titolo.
@@ -445,13 +445,13 @@ card_type: recognition
 front: シュウジ・イトウ
 back: PL Shuji Ito
 example_jp: >-
-  シュウジ・イトウは、[{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}](term:term-red-gundam-0085)の{{相方|あいかた}}として{{見|み}}ておくと{{整理|せいり}}しやすいです。
+  シュウジ・イトウは、[{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085)の{{相方|あいかた}}として{{見|み}}ておくと{{整理|せいり}}しやすいです。
 example_it: >-
   Trattare Shuji Ito come partner naturale di Red Gundam (0085) rende piu
   chiaro l'ordine delle coppie durante la lettura del board.
 notes_it: >-
   Serve come etichetta della seconda coppia lineare del lato `GQ`: quando lo
-  vedi vicino a [{{赤いガンダム(0085)|あかいがんだむ ぜろぜろはちご}}](term:term-red-gundam-0085), sai già
+  vedi vicino a [{{赤|あか}}いガンダム({{0085|ぜろぜろはちご}})](term:term-red-gundam-0085), sai già
   quale pairing naturale stai guardando.
 tags: [starter-deck, pl, gquuuuuux, pairing]
 :::

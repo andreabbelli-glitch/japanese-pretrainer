@@ -226,7 +226,7 @@ pos: noun
 aliases: [合計, ごうけい, goukei]
 notes_it: >-
   Indica il conteggio totale combinato di più elementi. In Duel Masters compare
-  spesso in filtri come `{{合計|ごうけい}}{{4つ以上|よっついじょう}}`: il
+  spesso in filtri come `{{合計|ごうけい}}{{4|よっ}}つ{{以上|いじょう}}`: il
   conteggio somma tutto nello stesso controllo, non in categorie separate.
   Insieme a `または`, le due parti entrano nello stesso totale.
 level_hint: n4
@@ -735,7 +735,7 @@ meaning_it: dopo quello / poi
 aliases: [そのあと]
 notes_it: >-
   Introduce il blocco successivo della risoluzione. Se leggi
-  {{その後|そのあと}}, la frase non è finita: dopo il primo passo c'è un'altra
+  その{{後|あと}}, la frase non è finita: dopo il primo passo c'è un'altra
   azione da leggere in ordine.
 level_hint: n4
 :::
@@ -1150,7 +1150,7 @@ id: card-harau-recognition
 entry_type: term
 entry_id: term-harau
 card_type: recognition
-front: '{{払う|はらう}}'
+front: '{{払|はら}}う'
 back: pagare
 example_jp: >-
   コストを{{払|はら}}ってこのカードを{{使|つか}}う。
@@ -1188,7 +1188,7 @@ card_type: recognition
 front: '{{合計|ごうけい}}'
 back: totale / somma complessiva
 example_jp: >-
-  クリーチャーまたはタマシードを{{合計|ごうけい}}{{3つ|みっつ}}まで{{選|えら}}ぶ。
+  クリーチャーまたはタマシードを{{合計|ごうけい}}{{3|みっ}}つまで{{選|えら}}ぶ。
 example_it: >-
   Scegli fino a 3 creature e/o Tamaseed in totale.
 notes_it: >-
@@ -1476,7 +1476,7 @@ id: card-kasaneru-recognition
 entry_type: term
 entry_id: term-kasaneru
 card_type: recognition
-front: '{{重ねる|かさねる}}'
+front: '{{重|かさ}}ねる'
 back: sovrapporre / mettere sopra
 example_jp: >-
   このクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。
@@ -1493,7 +1493,7 @@ id: card-deru-recognition
 entry_type: term
 entry_id: term-deru
 card_type: recognition
-front: '{{出る|でる}}'
+front: '{{出|で}}る'
 back: uscire / entrare in gioco
 example_jp: >-
   このクリーチャーが{{出|で}}た{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
@@ -1510,7 +1510,7 @@ id: card-dasu-recognition
 entry_type: term
 entry_id: term-dasu
 card_type: recognition
-front: '{{出す|だす}}'
+front: '{{出|だ}}す'
 back: far uscire / mettere in gioco
 example_jp: >-
   {{手札|てふだ}}からクリーチャーを{{1体|いったい}} {{出|だ}}す。
@@ -1527,7 +1527,7 @@ id: card-oku-recognition
 entry_type: term
 entry_id: term-oku
 card_type: recognition
-front: '{{置く|おく}}'
+front: '{{置|お}}く'
 back: mettere / porre
 example_jp: >-
   このカードを{{墓地|ぼち}}に{{置|お}}く。
@@ -1544,7 +1544,7 @@ id: card-add-recognition
 entry_type: term
 entry_id: term-add
 card_type: recognition
-front: '{{加える|くわえる}}'
+front: '{{加|くわ}}える'
 back: aggiungere / mettere in mano
 example_jp: >-
   シールドゾーンから{{1枚|いちまい}} {{手札|てふだ}}に{{加|くわ}}える。
@@ -1561,7 +1561,7 @@ id: card-erabu-recognition
 entry_type: term
 entry_id: term-erabu
 card_type: recognition
-front: '{{選ぶ|えらぶ}}'
+front: '{{選|えら}}ぶ'
 back: scegliere
 example_jp: >-
   クリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
@@ -1578,7 +1578,7 @@ id: card-hiku-recognition
 entry_type: term
 entry_id: term-hiku
 card_type: recognition
-front: '{{引く|ひく}}'
+front: '{{引|ひ}}く'
 back: pescare / tirare
 example_jp: >-
   カードを{{2枚|にまい}} {{引|ひ}}く。
@@ -1595,7 +1595,7 @@ id: card-suteru-recognition
 entry_type: term
 entry_id: term-suteru
 card_type: recognition
-front: '{{捨てる|すてる}}'
+front: '{{捨|す}}てる'
 back: scartare / buttare via
 example_jp: >-
   {{手札|てふだ}}を{{1枚|いちまい}} {{捨|す}}てる。
@@ -1612,7 +1612,7 @@ id: card-modosu-recognition
 entry_type: term
 entry_id: term-modosu
 card_type: recognition
-front: '{{戻す|もどす}}'
+front: '{{戻|もど}}す'
 back: rimandare / restituire
 example_jp: >-
   このカードを{{手札|てふだ}}に{{戻|もど}}す。
@@ -1629,7 +1629,7 @@ id: card-hanareru-recognition
 entry_type: term
 entry_id: term-hanareru
 card_type: recognition
-front: '{{離れる|はなれる}}'
+front: '{{離|はな}}れる'
 back: lasciare / allontanarsi
 example_jp: >-
   このクリーチャーがバトルゾーンを{{離|はな}}れた{{時|とき}}、カードを{{1枚|いちまい}} {{引|ひ}}く。
@@ -1646,7 +1646,7 @@ id: card-nokoru-recognition
 entry_type: term
 entry_id: term-nokoru
 card_type: recognition
-front: '{{残る|のこる}}'
+front: '{{残|のこ}}る'
 back: restare / rimanere
 example_jp: >-
   そのクリーチャーが{{離|はな}}れても、このカードは{{残|のこ}}る。
@@ -1664,7 +1664,7 @@ id: card-atsukau-recognition
 entry_type: term
 entry_id: term-atsukau
 card_type: recognition
-front: '{{扱う|あつかう}}'
+front: '{{扱|あつか}}う'
 back: trattare come / considerare
 example_jp: >-
   このタマシードをクリーチャーとして{{扱|あつか}}わない。
@@ -1946,7 +1946,7 @@ card_type: concept
 front: または
 back: oppure / o
 example_jp: >-
-  クリーチャーまたはタマシードを{{1つ|ひとつ}} {{選|えら}}ぶ。
+  クリーチャーまたはタマシードを{{1|ひと}}つ {{選|えら}}ぶ。
 example_it: >-
   Scegli 1 creatura oppure 1 Tamaseed.
 notes_it: >-
@@ -1977,7 +1977,7 @@ id: card-turn-timing-concept
 entry_type: grammar
 entry_id: grammar-turn-timing
 card_type: concept
-front: '～の{{始め|はじめ}}に / ～の{{終わり|おわり}}に'
+front: '～の{{始|はじ}}めに / ～の{{終|お}}わりに'
 back: all'inizio di / alla fine di
 example_jp: >-
   {{自分|じぶん}}のターンのはじめに、カードを{{1枚|いちまい}} {{引|ひ}}く。

@@ -22,6 +22,8 @@
 - Media detail: le entry point `Textbook`, `Glossary`, `Review`, `Progress` sono tutte operative.
 - Root review `/review`: reindirizza direttamente alla review del media di focus.
 - Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.
+- Textbook resume: la CTA `Continua il percorso` punta al primo step non
+  completato del percorso, anche se esiste una lesson diversa gia `in_progress`.
 - Reader lesson: il toggle furigana aggiorna davvero il rendering.
 - Reader lesson desktop: clic su un termine apre tooltip con `Apri entry`.
 - Reader lesson mobile: tap su un termine apre sheet; `Lezioni` apre la rail mobile.

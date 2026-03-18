@@ -57,9 +57,14 @@ Vincoli di formato obbligatori:
   direttamente nel label: `[{{単語|たんご}}](term:term-id)`.
 - Se usi inline code con giapponese non trasparente, annota anche li:
   `` `{{未解放|みかいほう}}` `` e non `` `未解放` ``.
-- Quando c'e un composto numerico con contatore o qualificatore (`以下`,
-  `以上`, `未満`, ecc.), annota il blocco completo: `{{1枚|いちまい}}`,
-  `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`.
+- Nei composti misti non mettere kana gia visibili dentro il ruby:
+  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`,
+  `{{2|ふた}}つ`.
+- Quando c'e un composto numerico con soli kanji / qualificatori in kanji
+  (`以下`, `以上`, `未満`, ecc.), annota il blocco completo:
+  `{{1枚|いちまい}}`, `{{4以下|よんいか}}`.
+- Se compaiono kana gia visibili dopo il numero, lasciali fuori dal ruby:
+  `{{4|よっ}}つ{{以上|いじょう}}`, `{{300|さんびゃく}}ポイント`.
 - Per i campi descrittivi YAML come `notes_it`, `summary`, `description`,
   `notes`, usa `>-` invece di plain scalar quando c'e testo libero o markdown
   inline.

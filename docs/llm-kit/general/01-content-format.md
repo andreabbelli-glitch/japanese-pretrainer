@@ -128,6 +128,10 @@ Quindi non basta che esista una `reading` nella entry glossary: se il testo
 mostrato al lettore contiene kanji, la forma visibile deve essere annotata con
 `{{base|reading}}` quando la lettura non e banale.
 
+Nei composti misti, il blocco furigana non deve inglobare kana gia visibili.
+Annota solo i segmenti che richiedono davvero supporto di lettura, cioe kanji
+e numeri.
+
 Da ora, nei contenuti visibili al lettore, anche i numeri vanno annotati in
 modo sistematico con la lettura corretta, non solo i casi "difficili".
 
@@ -144,6 +148,10 @@ kanji:
 
 - scrivi `それ{{以外|いがい}}なら`, non `それ以外なら`;
 - scrivi `その{{中|なか}}から`, non `その中から`.
+- scrivi `{{受|う}}け{{取|と}}る`, non `{{受け取る|うけとる}}`;
+- scrivi `{{構築済|こうちくず}}み`, non `{{構築済み|こうちくずみ}}`;
+- scrivi `{{読|よ}}み{{込|こ}}み{{中|ちゅう}}`, non
+  `{{読み込み中|よみこみちゅう}}`.
 
 ### 4.2 Regole di scrittura YAML sicura
 
@@ -181,7 +189,7 @@ notes_it: >-
 Esempio corretto per `front` di una flashcard:
 
 ```md
-front: '{{手持ち|てもち}}'
+front: '{{手持|ても}}ち'
 ```
 
 Esempio da evitare:
@@ -202,17 +210,21 @@ front: {{手持ち|てもち}}
   sono "semplici" e anche quando non hanno contatori;
 - usare quindi `{{1|いち}}`, `{{4|よん}}`, `{{5000|ごせん}}`,
   `{{-3000|マイナスさんぜん}}`, non `1`, `4`, `5000` o `-3000` lasciati nudi;
-- quando un numero e seguito da un contatore o da un qualificatore numerico
-  (`以下`, `以上`, `未満`, ecc.), il furigana va messo sull'espressione completa;
-- usare quindi `{{1枚|いちまい}}`, `{{3本|さんぼん}}`, `{{4以下|よんいか}}`,
-  `{{4つ以上|よっついじょう}}`, non `1{{枚|まい}}`, `4{{以下|いか}}` o
+- se il numero e seguito solo da kanji numerici / qualificatori in kanji
+  (`枚`, `本`, `以下`, `以上`, `未満`, ecc.), il furigana puo restare sul chunk
+  completo: `{{1枚|いちまい}}`, `{{3本|さんぼん}}`, `{{4以下|よんいか}}`,
+  `{{2000以下|にせんいか}}`;
+- se dopo il numero compaiono kana gia visibili, il kana resta fuori dal ruby e
+  annoti solo i segmenti necessari: `{{2|ふた}}つ`,
+  `{{4|よっ}}つ{{以上|いじょう}}`, `{{300|さんびゃく}}ポイント`;
+- non scrivere `1{{枚|まい}}`, `4{{以下|いか}}` o
   `{{4つ|よっつ}}{{以上|いじょう}}`;
 - quando c'e un contatore, non indovinare mai la lettura per composizione:
-  va usata la pronuncia corretta dell'intero chunk, per esempio
-  `{{1体|いったい}}`, `{{2つ|ふたつ}}`, `{{2回|にかい}}`, `{{4枚|よんまい}}`;
-- se il numero ha segni, unita o suffissi rilevanti, annotare il chunk intero:
-  `{{-3000|マイナスさんぜん}}`, `{{3000円|さんぜんえん}}`,
-  `{{2000以下|にせんいか}}`.
+  va usata la pronuncia corretta del chunk davvero annotato, per esempio
+  `{{1体|いったい}}`, `{{2|ふた}}つ`, `{{2回|にかい}}`, `{{4枚|よんまい}}`;
+- se il numero ha segni, unita o suffissi rilevanti, annota almeno tutta la
+  parte non trasparente: `{{-3000|マイナスさんぜん}}`, `{{3000円|さんぜんえん}}`,
+  `{{300|さんびゃく}}ポイント`, `{{2000以下|にせんいか}}`.
 
 ### 4.4 Regola di qualita esplicativa
 
@@ -567,10 +579,12 @@ Regola review obbligatoria per `:::card`:
   kanji che il learner deve davvero leggere.
 - Se in `notes_it` citi giapponese con kanji come parte del punto didattico,
   annotalo con furigana anche li.
-- Per numeri con contatori o qualificatori usa un solo blocco con la pronuncia
-  corretta dell'intero chunk, per esempio `{{1枚|いちまい}}`,
-  `{{1体|いったい}}`, `{{2つ|ふたつ}}`, `{{2回|にかい}}`,
-  `{{4以下|よんいか}}`, `{{4つ以上|よっついじょう}}`.
+- Nei composti misti, lascia fuori dal ruby i kana gia visibili:
+  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`.
+- Per numeri con contatori o qualificatori, annota il chunk corretto senza
+  inglobare kana gia visibili: `{{1枚|いちまい}}`, `{{1体|いったい}}`,
+  `{{2|ふた}}つ`, `{{2回|にかい}}`, `{{4以下|よんいか}}`,
+  `{{4|よっ}}つ{{以上|いじょう}}`.
 - Non inferire in modo meccanico le letture dei contatori: vanno sempre
   verificate e scritte nella forma corretta.
 - Il valore review della card deve restare linguistico: la carta deve aiutare a
@@ -788,6 +802,10 @@ Regole:
 - il parser converte in nodi `ruby`;
 - il testo base resta sempre disponibile;
 - la visualizzazione dipende dalla preferenza utente;
+- nei composti misti, `base` deve contenere solo i segmenti che richiedono
+  davvero ruby, non i kana gia visibili;
+- quindi scrivi `{{受|う}}け{{取|と}}る` e `{{2|ふた}}つ`, non
+  `{{受け取る|うけとる}}` o `{{2つ|ふたつ}}`;
 - la sintassi e valida anche dentro paragrafi o liste.
 
 ## 11. Glossary derivato

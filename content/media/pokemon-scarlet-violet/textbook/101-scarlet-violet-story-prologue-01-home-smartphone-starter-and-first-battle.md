@@ -44,7 +44,7 @@ spiega il tutorial subito dopo il match.
 - [{{勝負|しょうぶ}}](term:term-shoubu)
 - [{{準備|じゅんび}}](term:term-junbi)
 - [{{弱点|じゃくてん}}](term:term-jakuten)
-- [{{繰り出す|くりだす}}](term:term-kuridasu)
+- [{{繰|く}}り{{出|だ}}す](term:term-kuridasu)
 - [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan)
 - [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun)
 
@@ -135,7 +135,7 @@ caption: >-
 
 La battuta di Nemona `いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした`
 vale più di una semplice battuta caratteriale. Il verbo
-[{{繰り出す|くりだす}}](term:term-kuridasu) è uno dei verbi-base del lessico di
+[{{繰|く}}り{{出|だ}}す](term:term-kuridasu) è uno dei verbi-base del lessico di
 battaglia: mandare un Pokemon in campo o lanciare qualcosa in modo deciso. La
 forma [～てしまう](grammar:grammar-te-shimau), qui contratta in `～ちゃう`,
 aggiunge l'idea che stava quasi partendo per abitudine con il team sbagliato.

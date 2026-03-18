@@ -129,7 +129,7 @@ notes_it: >-
   In UI funziona spesso come etichetta-cassetto: non nomina una funzione
   precisa, ma l'area "altro" in cui finiscono opzioni e schermate secondarie.
   In `デュエプレ` va distinta da [{{設定|せってい}}](term:term-settings):
-  `{{設定|せってい}}` è la schermata delle impostazioni, `{{その他|そのた}}` è
+  `{{設定|せってい}}` è la schermata delle impostazioni, `その{{他|た}}` è
   il menu più ampio da cui spesso ci arrivi.
 level_hint: custom
 :::
@@ -238,7 +238,7 @@ pos: noun
 aliases: [デッキ, deck]
 notes_it: >-
   In app indica il mazzo che costruisci o selezioni per giocare. È importante
-  distinguerlo da [{{山札|やまふだ}}](term:term-deck): `{{デッキ|でっき}}` è la
+  distinguerlo da [{{山札|やまふだ}}](term:term-deck): `デッキ` è la
   lista che prepari fuori dalla partita, `{{山札|やまふだ}}` è il deck come zona
   durante la partita.
 level_hint: custom
@@ -536,7 +536,7 @@ notes_it: >-
   Indica che un obiettivo è stato raggiunto o che una condizione conta come
   completata. Nelle schermate missione ti aiuta a leggere lo stato reale dei
   task, non solo il loro titolo. Molto spesso lo incontri in composti come
-  `{{達成済み|たっせいずみ}}`.
+  `{{達成済|たっせいず}}み`.
 level_hint: n4
 :::
 
@@ -654,7 +654,7 @@ meaning_it: già fatto / già elaborato
 aliases: [済み]
 notes_it: >-
   Ti segnala che un'azione è già stata completata, per esempio in label come
-  `{{受取済み|うけとりずみ}}` o `{{達成済み|たっせいずみ}}`. La label condensa
+  `{{受取済|うけとりず}}み` o `{{達成済|たっせいず}}み`. La label condensa
   subito il risultato operativo: quella ricompensa o quell'obiettivo sono già
   stati gestiti e non richiedono un nuovo claim immediato.
 level_hint: n4
@@ -778,10 +778,10 @@ id: card-news-recognition
 entry_type: term
 entry_id: term-news
 card_type: recognition
-front: '{{お知らせ|おしらせ}}'
+front: 'お{{知|し}}らせ'
 back: avvisi / notice
 example_jp: >-
-  {{お知らせ|おしらせ}}でイベント{{情報|じょうほう}}を{{確認|かくにん}}する。
+  お{{知|し}}らせでイベント{{情報|じょうほう}}を{{確認|かくにん}}する。
 example_it: >-
   Controlla le informazioni evento negli avvisi.
 notes_it: >-
@@ -829,10 +829,10 @@ id: card-etc-recognition
 entry_type: term
 entry_id: term-etc
 card_type: recognition
-front: '{{その他|そのた}}'
+front: 'その{{他|た}}'
 back: altro / varie / etc.
 example_jp: >-
-  {{その他|そのた}}から{{設定|せってい}}を{{開|ひら}}く。
+  その{{他|た}}から{{設定|せってい}}を{{開|ひら}}く。
 example_it: >-
   Apri le impostazioni dal menu Etc.
 notes_it: >-
@@ -864,7 +864,7 @@ id: card-open-recognition
 entry_type: term
 entry_id: term-open
 card_type: recognition
-front: '{{開く|ひらく}}'
+front: '{{開|ひら}}く'
 back: aprire / open
 example_jp: >-
   ホームからミッションを{{開|ひら}}く。
@@ -916,7 +916,7 @@ id: card-receive-recognition
 entry_type: term
 entry_id: term-receive
 card_type: recognition
-front: '{{受け取る|うけとる}}'
+front: '{{受|う}}け{{取|と}}る'
 back: ricevere / riscuotere
 example_jp: >-
   {{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
@@ -969,7 +969,7 @@ id: card-deck-edit-recognition
 entry_type: term
 entry_id: term-deck-edit
 card_type: recognition
-front: '{{デッキ編成|でっきへんせい}}'
+front: 'デッキ{{編成|へんせい}}'
 back: costruzione / modifica del mazzo
 example_jp: >-
   デッキ{{編成|へんせい}}で{{40枚|よんじゅうまい}}に{{調整|ちょうせい}}する。
@@ -1022,7 +1022,7 @@ id: card-card-purchase-recognition
 entry_type: term
 entry_id: term-card-purchase
 card_type: recognition
-front: '{{カード購入|かーどこうにゅう}}'
+front: 'カード{{購入|こうにゅう}}'
 back: acquisto carte / card purchase
 example_jp: >-
   カード{{購入|こうにゅう}}の{{画面|がめん}}を{{開|ひら}}く。
@@ -1060,7 +1060,7 @@ id: card-card-exchange-recognition
 entry_type: term
 entry_id: term-card-exchange
 card_type: recognition
-front: '{{カード交換|かーどこうかん}}'
+front: 'カード{{交換|こうかん}}'
 back: scambio carte / card exchange
 example_jp: >-
   カード{{交換|こうかん}}で{{必要|ひつよう}}なカードを{{手|て}}に{{入|い}}れる。
@@ -1136,7 +1136,7 @@ card_type: recognition
 front: DMポイント
 back: punti DM / risorsa di scambio o creazione
 example_jp: >-
-  DMポイントを{{300ポイント|さんびゃくぽいんと}} {{使|つか}}う。
+  DMポイントを{{300|さんびゃく}}ポイント {{使|つか}}う。
 example_it: >-
   Usa 300 DM Points.
 notes_it: >-
@@ -1255,12 +1255,12 @@ card_type: recognition
 front: '{{達成|たっせい}}'
 back: completamento / raggiungimento
 example_jp: >-
-  {{達成済み|たっせいずみ}}のミッションを{{確認|かくにん}}する。
+  {{達成済|たっせいず}}みのミッションを{{確認|かくにん}}する。
 example_it: >-
   Controlla una missione già completata.
 notes_it: >-
   È il label che ti dice che una condizione è stata soddisfatta. In UI lo
-  incontri molto spesso in composti come `{{達成済み|たっせいずみ}}`.
+  incontri molto spesso in composti come `{{達成済|たっせいず}}み`.
 tags: [duel-plays, app, status, kanji]
 :::
 
@@ -1412,10 +1412,10 @@ id: card-zumi-concept
 entry_type: grammar
 entry_id: grammar-zumi
 card_type: concept
-front: '～{{済み|ずみ}}'
+front: '～{{済|ず}}み'
 back: già fatto / già riscosso
 example_jp: >-
-  この{{報酬|ほうしゅう}}は{{受取済み|うけとりずみ}}だ。
+  この{{報酬|ほうしゅう}}は{{受取済|うけとりず}}みだ。
 example_it: >-
   Questa ricompensa è già stata riscossa.
 notes_it: >-

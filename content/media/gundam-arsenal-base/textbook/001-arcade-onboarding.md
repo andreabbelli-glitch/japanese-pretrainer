@@ -36,13 +36,13 @@ servizi collegati fuori dalla sala giochi.
 - [カードリーダー](term:term-card-reader)
 - [ボタン](term:term-button)
 - [イヤホンジャック](term:term-earphone-jack)
-- [{{カード取り出し口|かーどとりだしぐち}}](term:term-card-outlet)
+- [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet)
 - [MSカード](term:term-ms-card)
 - [PLカード](term:term-pl-card)
 - [ユニット](term:term-unit)
 - [{{作戦|さくせん}}カード](term:term-tactics-card)
-- [{{メイン枠|めいんわく}}](term:term-main-slot)
-- [{{サブ枠|さぶわく}}](term:term-sub-slot)
+- [メイン{{枠|わく}}](term:term-main-slot)
+- [サブ{{枠|わく}}](term:term-sub-slot)
 - [MY PAGE](term:term-mypage)
 
 ## Pattern grammaticali chiave
@@ -75,7 +75,7 @@ I componenti del cabinato hanno funzioni molto precise.
 src: assets/ui/arcade-cabinet-overview.webp
 alt: "Cabinato ufficiale di Gundam Arsenal Base visto frontalmente, con schermo, fila di card slot, pulsante destro e uscita carte inferiore ben visibili."
 caption: >-
-  Vista ufficiale del cabinato: ti aiuta a separare subito schermo, [カードスロット](term:term-card-slot), [ボタン](term:term-button) e [{{カード取り出し口|かーどとりだしぐち}}](term:term-card-outlet) prima ancora di iniziare la partita.
+  Vista ufficiale del cabinato: ti aiuta a separare subito schermo, [カードスロット](term:term-card-slot), [ボタン](term:term-button) e [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet) prima ancora di iniziare la partita.
 :::
 
 - [タッチパネル](term:term-touch-panel): è lo schermo operativo principale. Qui
@@ -90,7 +90,7 @@ caption: >-
   battaglia e nei cambi camera.
 - [イヤホンジャック](term:term-earphone-jack): serve se vuoi ascoltare audio e
   voci direttamente dal cabinato.
-- [{{カード取り出し口|かーどとりだしぐち}}](term:term-card-outlet): è
+- [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet): è
   l'uscita da cui ritiri le carte erogate dalla macchina.
 
 La sequenza minimale di una prima sessione è:
@@ -104,12 +104,12 @@ La sequenza minimale di una prima sessione è:
 3. Controlli che le coppie verticali MS + PL abbiano senso, perché ogni coppia
    diventa un [ユニット](term:term-unit) in battaglia.
 4. Se [{{作戦|さくせん}}カード](term:term-tactics-card) sono già sbloccate,
-   scegli una carta per il [{{メイン枠|めいんわく}}](term:term-main-slot) e
-   una per il [{{サブ枠|さぶわく}}](term:term-sub-slot).
+   scegli una carta per il [メイン{{枠|わく}}](term:term-main-slot) e
+   una per il [サブ{{枠|わく}}](term:term-sub-slot).
 5. Confermi e tocchi [{{出撃|しゅつげき}}](term:term-sortie) per passare alla
    partita.
 6. Alla fine controlli sempre il
-   [{{カード取り出し口|かーどとりだしぐち}}](term:term-card-outlet), perché
+   [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet), perché
    le carte fisiche nuove escono da lì.
 
 Dettaglio utile: il gioco può partire anche senza una collezione completa.

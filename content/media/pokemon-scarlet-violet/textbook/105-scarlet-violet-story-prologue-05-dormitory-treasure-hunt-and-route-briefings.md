@@ -19,7 +19,7 @@ summary: >-
 Capire il giapponese con cui Scarlet / Violet trasforma la scuola in avventura
 vera e propria: riposo al dormitorio, spiegazione di
 [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou), definizione di
-[{{宝探し|たからさがし}}](term:term-takara-sagashi), presentazione del
+[{{宝探|たからさが}}し](term:term-takara-sagashi), presentazione del
 [チャンピオンランク](term:term-champion-rank) e prime istruzioni su mappa e
 [{{目的地|もくてきち}}](term:term-mokutekichi).
 
@@ -29,7 +29,7 @@ Questo capitolo copre il passaggio tra la fine del primo giorno in accademia e
 l'inizio reale della struttura open world. Dopo avere riposato nella
 [{{学生寮|がくせいりょう}}](term:term-gakusei-ryou), il gioco raduna gli studenti,
 annuncia la [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou) e spiega che
-[{{宝探し|たからさがし}}](term:term-takara-sagashi) non e una missione unica ma un
+[{{宝探|たからさが}}し](term:term-takara-sagashi) non e una missione unica ma un
 ombrello sotto cui rientrano strade, sfide e obiettivi molto diversi.
 
 E il blocco in cui il linguaggio scolastico smette di servirti solo a orientarti
@@ -38,10 +38,10 @@ nel campus e inizia a definire il modo in cui giocherai il resto dell'opera.
 ## Termini chiave
 
 - [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou)
-- [{{宝探し|たからさがし}}](term:term-takara-sagashi)
+- [{{宝探|たからさが}}し](term:term-takara-sagashi)
 - [チャンピオンランク](term:term-champion-rank)
 - [ジムバッジ](term:term-gym-badge)
-- [{{目指す|めざす}}](term:term-mezasu)
+- [{{目指|めざ}}す](term:term-mezasu)
 - [{{目的地|もくてきち}}](term:term-mokutekichi)
 
 ## Pattern grammaticali chiave
@@ -64,10 +64,10 @@ il campus ti dice che da ora comincia la
 che la struttura del gioco si apre e non sarai piu trascinato solo da un corridoio
 narrativo unico.
 
-Anche [{{宝探し|たからさがし}}](term:term-takara-sagashi) va letta con attenzione.
+Anche [{{宝探|たからさが}}し](term:term-takara-sagashi) va letta con attenzione.
 Il nome, preso alla lettera, fa pensare a un tesoro concreto da trovare. Ma il
 blocco usa proprio il pattern [～とはいっても](grammar:grammar-to-wa-itte-mo)
-per correggere questa lettura troppo stretta. `{{宝探し|たからさがし}}とは いっても`
+per correggere questa lettura troppo stretta. `{{宝探|たからさが}}しとは いっても`
 vuol dire: il nome e questo, pero nella pratica conta qualunque esperienza ti
 faccia uscire nel mondo, incontrare persone, affrontare sfide e trovare il tuo
 obiettivo personale.
@@ -76,7 +76,7 @@ obiettivo personale.
 src: assets/story/academy-treasure-hunt-announcement.webp
 alt: "Raduno degli studenti dell'accademia durante l'annuncio del Treasure Hunt."
 caption: >-
-  Il briefing del [{{宝探し|たからさがし}}](term:term-takara-sagashi) rende visibile il cambio di scala del prologo: la scuola smette di guidarti solo dentro il campus e ti consegna la struttura aperta dell'avventura.
+  Il briefing del [{{宝探|たからさが}}し](term:term-takara-sagashi) rende visibile il cambio di scala del prologo: la scuola smette di guidarti solo dentro il campus e ti consegna la struttura aperta dell'avventura.
 :::
 
 Il pezzo piu didattico del dialogo di Nemona gira attorno a
@@ -102,7 +102,7 @@ caption: >-
   Quando Nemona parla di [チャンピオンランク](term:term-champion-rank), il suo tono colloquiale nasconde una vera definizione di route: i [ジムバッジ](term:term-gym-badge) diventano la prova concreta di quel percorso.
 :::
 
-Il bello di [{{宝探し|たからさがし}}](term:term-takara-sagashi) e che il gioco non
+Il bello di [{{宝探|たからさが}}し](term:term-takara-sagashi) e che il gioco non
 lo definisce con una sola attivita. Per questo compare bene il pattern
 [～たり ～たりする](grammar:grammar-tari-tari-suru): `ジムに
 {{挑戦|ちょうせん}}したり {{困|こま}}っている {{人|ひと}}を
@@ -144,7 +144,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{宝探し|たからさがし}}とは いっても {{宝箱|たからばこ}}だけを
+  {{宝探|たからさが}}しとは いっても {{宝箱|たからばこ}}だけを
   {{探|さが}}す わけじゃない。
 translation_it: >-
   Anche se si chiama "caccia al tesoro", non significa che devi cercare solo
@@ -170,7 +170,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{宝探し|たからさがし}}では ジムに {{挑戦|ちょうせん}}したり
+  {{宝探|たからさが}}しでは ジムに {{挑戦|ちょうせん}}したり
   {{困|こま}}っている {{人|ひと}}を {{助|たす}}けたり できる。
 translation_it: >-
   Durante il Treasure Hunt puoi per esempio sfidare i Gym oppure aiutare chi e
@@ -197,7 +197,7 @@ translation_it: >-
 Questo blocco non va studiato come semplice cerimonia scolastica. E il punto in
 cui Scarlet / Violet ti spiega, in linguaggio naturale, come leggere la sua
 struttura aperta. Se stabilizzi [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou),
-[{{宝探し|たからさがし}}](term:term-takara-sagashi),
+[{{宝探|たからさが}}し](term:term-takara-sagashi),
 [チャンピオンランク](term:term-champion-rank),
 [ジムバッジ](term:term-gym-badge) e i pattern
 [～ってのは](grammar:grammar-tte-no-wa) /

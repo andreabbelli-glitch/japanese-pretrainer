@@ -262,6 +262,10 @@ Per ridurre i fallimenti di import:
 - **in `:::image`, `caption` e testo visibile**: se compare un termine con
   kanji, usa furigana; se esiste gia una entry glossary / flashcard, collega il
   termine e annota anche il label del link quando contiene kanji.
+- **nei composti misti non mettere kana gia visibili dentro il ruby**: scrivi
+  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`,
+  `{{2|ふた}}つ`, non `{{受け取る|うけとる}}`, `{{手持ち|てもち}}`,
+  `{{メイン枠|めいんわく}}`, `{{2つ|ふたつ}}`.
 - **i campi audio sono opzionali ma reali**: se non ricevi un asset locale gia
   esistente e metadata attendibili, non scriverli.
 

@@ -26,6 +26,14 @@ Il repository include attualmente:
 - tooling locale per lint, format, typecheck, test unit/integration ed E2E;
 - struttura cartelle coerente con importer, persistence e UI gia in uso.
 
+## Semantica Del Resume Textbook
+
+Le CTA come `Continua il percorso` nel Textbook e nei punti di ingresso del
+media seguono intenzionalmente il primo step non ancora completato del percorso.
+Non puntano automaticamente all'ultima lesson `in_progress` aperta di recente:
+la scelta privilegia l'avanzamento lineare del curriculum rispetto al semplice
+"ultimo punto visitato".
+
 ## Bootstrap locale
 
 Runtime previsto:

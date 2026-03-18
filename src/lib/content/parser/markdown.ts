@@ -67,6 +67,9 @@ const numericOrCounterFragmentPattern =
 const counterLikeBasePattern =
   /^(?:つ|人|名|枚|枚目|体|体目|本|本目|冊|冊目|匹|匹目|頭|羽|杯|個|回|回目|階|階目|歳|才|台|分|時|秒|日|日目|月|年|週間|週|時間|か月|ヶ月|ヵ月|カ月)$/u;
 const numericQualifierBasePattern = /^(?:以下|以上|未満|超|以内|以降|以前)$/u;
+const kanaPattern = /[\p{Script=Hiragana}\p{Script=Katakana}ー]/u;
+const rubyRequiredBasePattern =
+  /[\p{Script=Han}0-9０-９〇零一二三四五六七八九十百千万億兆]/u;
 
 export function parseMarkdownDocument(
   options: MarkdownParseOptions
@@ -804,6 +807,15 @@ function tokenizeTextNode(
     const base = inner.slice(0, separatorIndex);
     const reading = inner.slice(separatorIndex + 1);
 
+    maybeReportMixedKanaFurigana({
+      value,
+      base,
+      markerStart,
+      markerEnd,
+      context,
+      sourcePath,
+      range
+    });
     maybeReportSplitNumericFurigana({
       value,
       base,
@@ -825,6 +837,44 @@ function tokenizeTextNode(
   }
 
   return nodes;
+}
+
+function maybeReportMixedKanaFurigana(input: {
+  value: string;
+  base: string;
+  markerStart: number;
+  markerEnd: number;
+  context: ParseContext;
+  sourcePath: string;
+  range?: SourceRange;
+}) {
+  if (
+    !kanaPattern.test(input.base) ||
+    !rubyRequiredBasePattern.test(input.base)
+  ) {
+    return;
+  }
+
+  input.context.issues.push(
+    createIssue({
+      code: "furigana.mixed-kana-base",
+      category: "syntax",
+      message:
+        "Furigana bases must not include kana that are already visible in the text.",
+      filePath: input.context.filePath,
+      path: input.sourcePath,
+      range: sliceRange(
+        input.range,
+        input.value,
+        input.markerStart,
+        input.markerEnd + 2
+      ),
+      hint: "Split the ruby so only kanji or numerals carry furigana, for example {{受|う}}け{{取|と}}る, メイン{{枠|わく}}, or {{2|ふた}}つ.",
+      details: {
+        base: input.base
+      }
+    })
+  );
 }
 
 function maybeReportSplitNumericFurigana(input: {

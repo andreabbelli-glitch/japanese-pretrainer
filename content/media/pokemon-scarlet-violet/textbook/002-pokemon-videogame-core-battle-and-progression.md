@@ -38,7 +38,7 @@ resistenza, stato, cattura, esperienza, evoluzione.
 - [{{回復|かいふく}}](term:term-kaifuku)
 - [ひんし](term:term-hinshi)
 - [{{野生|やせい}}](term:term-yasei)
-- [{{捕まえる|つかまえる}}](term:term-tsukamaeru)
+- [{{捕|つか}}まえる](term:term-tsukamaeru)
 - [{{経験値|けいけんち}}](term:term-keikenchi)
 - [{{進化|しんか}}](term:term-shinka)
 - [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun)
@@ -92,7 +92,7 @@ rimesso in sesto.
 Quando leggi [{{野生|やせい}}](term:term-yasei), stai entrando nel contesto di
 un incontro selvatico. Questo ti fa capire subito che la logica principale non è
 solo vincere il combattimento, ma anche poter
-[{{捕まえる|つかまえる}}](term:term-tsukamaeru) il Pokemon. In pratica il
+[{{捕|つか}}まえる](term:term-tsukamaeru) il Pokemon. In pratica il
 testo di tutorial e le strategie girano spesso attorno a due idee: ridurre gli
 HP e, se possibile, applicare uno stato che favorisca la cattura.
 
@@ -100,7 +100,7 @@ HP e, se possibile, applicare uno stato che favorisca la cattura.
 src: assets/ui/catch-tutorial-monster-ball.webp
 alt: "Schermata di lotta contro un Pokemon selvatico durante il tutorial di cattura."
 caption: >-
-  Qui [{{野生|やせい}}](term:term-yasei) e [{{捕まえる|つかまえる}}](term:term-tsukamaeru) si leggono come pratica di battaglia: prima controlli il ritmo dello scontro, poi prepari la cattura.
+  Qui [{{野生|やせい}}](term:term-yasei) e [{{捕|つか}}まえる](term:term-tsukamaeru) si leggono come pratica di battaglia: prima controlli il ritmo dello scontro, poi prepari la cattura.
 :::
 
 Dopo la lotta entrano in scena [{{経験値|けいけんち}}](term:term-keikenchi) e

@@ -96,7 +96,7 @@ card_type: recognition
 front: 'アビスベル=ジャシン{{帝|てい}}'
 back: Abyssbell Jashin Emperor
 example_jp: >-
-  {{アビスベル=ジャシン帝|あびすべるじゃしんてい}}で{{攻撃|こうげき}}して{{勝負|しょうぶ}}を{{決|き}}める。
+  アビスベル=ジャシン{{帝|てい}}で{{攻撃|こうげき}}して{{勝負|しょうぶ}}を{{決|き}}める。
 example_it: >-
   Attacca con Abyssbell Jashin Emperor per chiudere la partita.
 notes_it: >-

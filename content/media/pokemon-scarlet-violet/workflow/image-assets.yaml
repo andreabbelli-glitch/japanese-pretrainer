@@ -277,9 +277,9 @@ assets:
       ricordare una mossa.
     caption_it: >-
       Questa schermata rende concreti
-      [{{強さを見る|つよさをみる}}](term:term-tsuyosa-o-miru),
-      [{{思い出す|おもいだす}}](term:term-omoidasu) e
-      [{{忘れる|わすれる}}](term:term-wasureru): il menu non descrive concetti
+      [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru),
+      [{{思|おも}}い{{出|だ}}す](term:term-omoidasu) e
+      [{{忘|わす}}れる](term:term-wasureru): il menu non descrive concetti
       astratti, ma azioni precise sulla scheda del Pokemon.
     notes: >-
       Ricavata dalla guida GameWith `序盤の進め方と初心者が覚えておくべき機能`
@@ -297,7 +297,7 @@ assets:
       Schermata di lotta contro un Pokemon selvatico durante il tutorial di cattura.
     caption_it: >-
       Qui [{{野生|やせい}}](term:term-yasei) e
-      [{{捕まえる|つかまえる}}](term:term-tsukamaeru) si leggono come pratica di
+      [{{捕|つか}}まえる](term:term-tsukamaeru) si leggono come pratica di
       battaglia: prima controlli il ritmo dello scontro, poi prepari la cattura.
     notes: >-
       Riusa l'asset ufficiale del tutorial di cattura gia registrato in
@@ -395,7 +395,7 @@ assets:
     alt_it: >-
       Raduno degli studenti dell'accademia durante l'annuncio del Treasure Hunt.
     caption_it: >-
-      Il briefing del [{{宝探し|たからさがし}}](term:term-takara-sagashi) rende
+      Il briefing del [{{宝探|たからさが}}し](term:term-takara-sagashi) rende
       visibile il cambio di scala del prologo: la scuola smette di guidarti solo
       dentro il campus e ti consegna la struttura aperta dell'avventura.
     notes: >-

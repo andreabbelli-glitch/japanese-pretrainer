@@ -48,7 +48,7 @@ parole, ma tantissima informazione pratica.
 - [クイック・ピック](term:term-quick-pick)
 - [ソロプレイ](term:term-solo-play)
 - [レジェンドバトル](term:term-legend-battle)
-- [{{試練の塔|しれんのとう}}](term:term-tower-of-trials)
+- [{{試練|しれん}}の{{塔|とう}}](term:term-tower-of-trials)
 - [{{報酬|ほうしゅう}}](term:term-reward)
 - [{{達成|たっせい}}](term:term-achievement)
 - [{{開催中|かいさいちゅう}}](term:term-ongoing)
@@ -88,7 +88,7 @@ layout:
   al deck costruito classico;
 - [ソロプレイ](term:term-solo-play) = area single-player;
 - [レジェンドバトル](term:term-legend-battle) e
-  [{{試練の塔|しれんのとう}}](term:term-tower-of-trials) = nomi di contenuti specifici
+  [{{試練|しれん}}の{{塔|とう}}](term:term-tower-of-trials) = nomi di contenuti specifici
   dentro l'asse solo o evento.
 
 Questi label non servono solo a nominare una voce: indicano direttamente il
@@ -187,7 +187,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{達成済み|たっせいずみ}}
+  {{達成済|たっせいず}}み
 translation_it: >-
   Già completato.
 :::

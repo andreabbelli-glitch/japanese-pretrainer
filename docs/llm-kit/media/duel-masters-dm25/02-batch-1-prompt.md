@@ -56,12 +56,14 @@ Vincoli di formato obbligatori:
 - Per tutti i numeri visibili usa il furigana con la lettura corretta, anche
   quando il numero appare da solo: `{{4|よん}}`, `{{5000|ごせん}}`,
   `{{-3000|マイナスさんぜん}}`.
-- Per composti numerici con contatori o qualificatori usa un solo furigana sul
-  blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`,
-  `{{4つ以上|よっついじょう}}`.
-- Se c'e un contatore, verifica sempre la pronuncia corretta dell'intero chunk
-  e non ricostruirla a intuito: `{{1体|いったい}}`, `{{2つ|ふたつ}}`,
-  `{{2回|にかい}}`, `{{4枚|よんまい}}`.
+- Nei composti misti non mettere kana gia visibili dentro il ruby:
+  `{{受|う}}け{{取|と}}る`, `{{手持|ても}}ち`, `メイン{{枠|わく}}`,
+  `{{2|ふた}}つ`.
+- Per composti numerici con soli kanji/qualificatori in kanji puoi usare un
+  solo furigana sul blocco intero: `{{1枚|いちまい}}`, `{{4以下|よんいか}}`.
+- Se c'e un contatore, verifica sempre la pronuncia corretta del chunk
+  annotato e non ricostruirla a intuito: `{{1体|いったい}}`, `{{2|ふた}}つ`,
+  `{{2回|にかい}}`, `{{4枚|よんまい}}`, `{{4|よっ}}つ{{以上|いじょう}}`.
 - Per i campi descrittivi YAML come `notes_it`, usa `>-` invece di plain scalar.
 - Se un valore contiene `:`/`：`, furigana, link semantici, backtick o una
   frase completa di rules text, non lasciarlo come plain scalar.

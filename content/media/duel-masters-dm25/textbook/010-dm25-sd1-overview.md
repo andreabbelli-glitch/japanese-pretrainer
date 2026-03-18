@@ -56,7 +56,7 @@ se non capisci che il cimitero è una risorsa, leggi male metà delle frasi.
 - [シビルカウント](term:term-civil-count)
 - [{{攻撃先|こうげきさき}}](term:term-attack-target)
 - [とばす](term:term-tobasu)
-- [{{アビスベル=ジャシン帝|あびすべるじゃしんてい}}](term:term-abyssbell-jashintei)
+- [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei)
 - [{{邪侵入|じゃしんにゅう}}](term:term-jashinnyuu)
 - [ジャブラッド](term:term-jablood)
 
@@ -222,7 +222,7 @@ Nel deck questa keyword chiude il controllo quantitativo prima di un'azione:
 
 :::example_sentence
 jp: >-
-  [{{シビルカウント3|しびるかうんとすりー}}](term:term-civil-count)：
+  [シビルカウント{{3|すりー}}](term:term-civil-count)：
   {{自分|じぶん}}の{{闇|やみ}}のカードのコストの{{合計|ごうけい}}が
   {{3以上|さんいじょう}}であれば、このクリーチャーの「S・トリガー」を
   {{使|つか}}ってもよい。

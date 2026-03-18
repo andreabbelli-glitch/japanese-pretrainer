@@ -83,7 +83,7 @@ notes_it: >-
   È la keyword che fa partire l'ingresso dei De Szark quando un tuo
   [{{魔導具|まどうぐ}}](term:term-madougu) entra nel battle zone. Il blocco
   importante da leggere insieme è
-  `{{2つ|ふたつ}}ずつ{{選|えら}}び` +
+  `{{2|ふた}}つずつ{{選|えら}}び` +
   `それら{{4枚|よんまい}}の{{上|うえ}}に` +
   `コストを{{払|はら}}わずに{{召喚|しょうかん}}してもよい`.
 level_hint: custom
@@ -114,7 +114,7 @@ meaning_it: N ciascuno / N per ciascun gruppo
 aliases: [ずつ]
 notes_it: >-
   Distribuisce la stessa quantità su ogni elemento o gruppo nominato. In
-  `バトルゾーンと{{墓地|ぼち}}から{{2つ|ふたつ}}ずつ{{選|えら}}び`, il senso
+  `バトルゾーンと{{墓地|ぼち}}から{{2|ふた}}つずつ{{選|えら}}び`, il senso
   corretto è `due dal battle zone e due dal cimitero`, non `quattro in totale
   da dove vuoi`.
 level_hint: n4
@@ -187,7 +187,7 @@ example_it: >-
   cimitero.
 notes_it: >-
   Qui la keyword non va memorizzata come etichetta astratta: va collegata
-  subito al suo chunk operativo, cioè scegliere `{{2つ|ふたつ}}ずつ` e poi
+  subito al suo chunk operativo, cioè scegliere `{{2|ふた}}つずつ` e poi
   evocare senza pagare il costo.
 tags: [live-duel, keyword, boss]
 :::
@@ -198,13 +198,13 @@ entry_type: grammar
 entry_id: grammar-zutsu
 card_type: concept
 front: >-
-  バトルゾーンと{{墓地|ぼち}}から{{2つ|ふたつ}}ずつ{{選|えら}}ぶ
+  バトルゾーンと{{墓地|ぼち}}から{{2|ふた}}つずつ{{選|えら}}ぶ
 back: scegli due dal battle zone e due dal cimitero
 example_jp: >-
-  `{{2つ|ふたつ}}ずつ`だから、{{片方|かたほう}}だけから{{4枚|よんまい}}は
+  `{{2|ふた}}つずつ`だから、{{片方|かたほう}}だけから{{4枚|よんまい}}は
   {{選|えら}}べない。
 example_it: >-
-  Siccome c'è `{{2つ|ふたつ}}ずつ`, non puoi sceglierne quattro tutte dalla
+  Siccome c'è `{{2|ふた}}つずつ`, non puoi sceglierne quattro tutte dalla
   stessa zona.
 notes_it: >-
   `ずつ` distribuisce la quantità in modo rigido. Qui è il pezzo grammaticale
