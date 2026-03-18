@@ -95,13 +95,17 @@ id: term-mushi-suru
 lemma: 無視する
 reading: むしする
 romaji: mushi suru
-meaning_it: ignorare / non far valere
+meaning_it: ignorare / fare come se non ci fosse
 pos: verb
 aliases: [無視する, むしする, ignore]
 notes_it: >-
-  `{{無視|むし}}する` non significa distruggere o annullare retroattivamente una
-  carta. Qui segnala che un certo gruppo di effetti non viene preso in conto
-  nella risoluzione corrente.
+  In giapponese generale `{{無視|むし}}する` vuol dire ignorare qualcosa di
+  proposito: un messaggio, una persona, una regola. Il nucleo è `無視` (non
+  guardare, non considerare) + `する`. Nel rules text di Duel Masters il
+  significato non cambia: il gioco ti dice di trattare certi effetti come se non
+  esistessero. La differenza importante è che `{{無視|むし}}する` non cancella né
+  distrugge nulla — quegli effetti restano scritti sulla carta, ma nella
+  risoluzione corrente vengono saltati.
 level_hint: n3
 :::
 
@@ -126,15 +130,19 @@ id: term-okoru
 lemma: 起こる
 reading: おこる
 romaji: okoru
-meaning_it: verificarsi / accadere / attivarsi
+meaning_it: succedere / verificarsi / accadere
 pos: verb
 aliases: [起こる, おこる, okoru]
 notes_it: >-
-  Nel rules text `{{起|お}}こる` segnala che qualcosa si verifica davvero come
-  conseguenza di un evento. In
-  `{{出|で}}ることによって{{起|お}}こる[{{効果|こうか}}](term:term-effect)`, il
-  focus non è su qualsiasi effetto scritto sulla carta, ma sugli effetti che si
-  attivano proprio perché quelle creature sono entrate nel battle zone.
+  In giapponese generale `{{起|お}}こる` è un verbo intransitivo che significa
+  succedere, verificarsi: un terremoto `{{起|お}}こる`, un incidente
+  `{{起|お}}こる`, un problema `{{起|お}}こる`. L'idea di fondo è che qualcosa
+  prende vita da solo, senza che qualcuno lo faccia di proposito. Nel rules text
+  di Duel Masters questo significato si restringe: `{{起|お}}こる` indica un
+  effetto che scatta automaticamente come conseguenza di un evento di gioco.
+  Quando leggi `{{出|で}}ることによって{{起|お}}こる{{効果|こうか}}`, il testo
+  non parla di tutti gli effetti della carta, ma solo di quelli che si attivano
+  da soli perché quelle creature sono entrate in gioco.
 level_hint: n4
 :::
 
@@ -266,22 +274,40 @@ tags: [live-duel, quantity, limit]
 :::
 
 :::card
+id: card-mushi-suru-recognition
+entry_type: term
+entry_id: term-mushi-suru
+card_type: recognition
+front: '{{無視|むし}}する'
+back: ignorare / fare come se non ci fosse
+example_jp: >-
+  {{先生|せんせい}}の{{話|はなし}}を{{無視|むし}}して、ゲームをやっていた。
+example_it: >-
+  Ho ignorato quello che diceva il professore e ho continuato a giocare.
+notes_it: >-
+  Significato base: scegliere di proposito di non considerare qualcosa. Nel TCG
+  il verbo funziona allo stesso modo — il gioco ti dice di saltare certi effetti
+  come se non ci fossero, senza cancellarli dalla carta.
+tags: [live-duel, verb, ignore, general-japanese]
+:::
+
+:::card
 id: card-okoru-recognition
 entry_type: term
 entry_id: term-okoru
 card_type: recognition
 front: '{{起|お}}こる'
-back: verificarsi / accadere / attivarsi
+back: succedere / verificarsi / accadere
 example_jp: >-
-  {{出|で}}たことによって{{起|お}}こる[{{効果|こうか}}](term:term-effect)なら、
-  {{登場|とうじょう}}そのものが{{原因|げんいん}}になっている。
+  {{昨日|きのう}}、{{大|おお}}きな{{地震|じしん}}が{{起|お}}こった。
 example_it: >-
-  Se è un effetto che si verifica per l'ingresso, l'ingresso stesso ne è la causa.
+  Ieri c'è stato un grande terremoto.
 notes_it: >-
-  Nel rules text `{{起|お}}こる` vale spesso come `scattare / verificarsi` più
-  che come semplice `succedere`. Qui restringe il focus agli effetti davvero
-  causati dall'ingresso nel battle zone.
-tags: [live-duel, verb, trigger, cause]
+  Significato base: qualcosa succede da solo, senza che qualcuno lo faccia
+  apposta — un incidente, un problema, un terremoto. Nel rules text il verbo
+  si specializza: indica un effetto che scatta automaticamente a causa di un
+  evento di gioco, come l'ingresso di una creatura nel battle zone.
+tags: [live-duel, verb, trigger, cause, general-japanese]
 :::
 
 :::card
@@ -358,8 +384,13 @@ example_it: >-
   Ignora solo gli effetti che partono dall'ingresso; non cancella in blocco
   ogni altra abilità che potrà funzionare più tardi con condizioni diverse.
 notes_it: >-
-  Il cuore del chunk è l'incastro fra referente e causa: `これら` dice chi,
-  `{{出|で}}ることによって` dice perché, `{{無視|むし}}する` dice cosa non viene
-  fatto valere.
+  Scomponi la frase in tre pezzi: (1) `これら` = il gruppo di creature appena
+  messe in campo, (2) `{{出|で}}ることによって{{起|お}}こる{{効果|こうか}}` =
+  gli effetti che succedono automaticamente perché quelle creature entrano in
+  gioco (es. "quando questa creatura entra nel battle zone, pesca una carta"),
+  (3) `{{無視|むし}}する` = fai come se quegli effetti non esistessero. Nel
+  gioco questo è cruciale: metti creature avversarie in campo dalla loro mana
+  zone, ma i loro effetti d'ingresso non scattano — così non ti si ritorcono
+  contro.
 tags: [live-duel, effect, scope, chunk]
 :::

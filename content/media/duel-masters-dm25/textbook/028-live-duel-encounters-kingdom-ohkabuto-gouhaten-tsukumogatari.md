@@ -148,12 +148,19 @@ reveal_mode: sentence
 - [ことによって](grammar:grammar-koto-ni-yotte) lega l'evento e il suo
   risultato: qui il testo sta parlando proprio degli effetti che nascono dal
   fatto che quelle creature entrano nel battle zone.
-- [{{起|お}}こる](term:term-okoru) non vuol dire genericamente `esistere` o
-  `stare sulla carta`: vuol dire `verificarsi / attivarsi come conseguenza`.
-  Per questo `{{起|お}}こる[{{効果|こうか}}](term:term-effect)` restringe il focus
-  agli effetti che scattano davvero a causa dell'ingresso.
-- [{{無視|むし}}する](term:term-mushi-suru) non cancella ogni abilità futura della
-  creatura; blocca solo gli effetti che si accendono a causa di quell'ingresso.
+- [{{起|お}}こる](term:term-okoru) in giapponese generale vuol dire `succedere,
+  verificarsi` — qualcosa che avviene da solo (un terremoto `{{起|お}}こる`). Nel
+  rules text questo significato si specializza: indica un effetto che scatta
+  automaticamente come conseguenza di un evento di gioco.
+  `{{起|お}}こる[{{効果|こうか}}](term:term-effect)` quindi non parla di tutti gli
+  effetti scritti sulla carta, ma solo di quelli che si attivano da soli perché
+  quelle creature sono entrate in gioco.
+- [{{無視|むし}}する](term:term-mushi-suru) in giapponese generale vuol dire
+  `ignorare` — scegliere di non considerare qualcosa (puoi `{{無視|むし}}する`
+  un messaggio, una regola, una persona). Nel rules text funziona allo stesso
+  modo: il gioco ti dice di trattare quegli effetti come se non ci fossero. Non
+  li cancella dalla carta — le creature mantengono le loro abilità per dopo —
+  ma nella risoluzione corrente quegli effetti d'ingresso vengono saltati.
 
 ## Lessico utile in questa carta
 
@@ -166,6 +173,10 @@ reveal_mode: sentence
   che compare, il testo sta fissando un limite massimo e non una quantità libera.
 - [これら](term:term-kore-ra) è piccolo ma decisivo: se perdi il referente,
   perdi subito anche il perimetro di `{{無視|むし}}する`.
-- [{{起|お}}こる](term:term-okoru) qui lavora insieme a
-  [{{効果|こうか}}](term:term-effect): `効果` è il blocco di risultato, `起こる`
-  dice che quel blocco si verifica proprio in quel timing.
+- [{{起|お}}こる](term:term-okoru) è un verbo intransitivo che in giapponese
+  generale vuol dire `succedere` (un terremoto `{{起|お}}こる`, un problema
+  `{{起|お}}こる`). In questa carta si specializza: indica effetti che scattano
+  da soli come conseguenza dell'ingresso nel battle zone.
+- [{{無視|むし}}する](term:term-mushi-suru) vuol dire `ignorare` in qualsiasi
+  contesto giapponese. In questa carta non cancella le abilità delle creature:
+  dice solo che gli effetti d'ingresso vengono saltati in questa risoluzione.
