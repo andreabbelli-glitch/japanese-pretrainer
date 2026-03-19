@@ -359,6 +359,48 @@ export async function listTermEntrySummaries(
     .orderBy(asc(term.lemma), asc(term.reading));
 }
 
+export async function listTermEntryReviewSummaries(
+  database: DatabaseClient,
+  options: ListGlossaryEntriesOptions = {}
+) {
+  return database
+    .select({
+      id: term.id,
+      sourceId: term.sourceId,
+      crossMediaGroupId: term.crossMediaGroupId,
+      mediaId: term.mediaId,
+      segmentId: term.segmentId,
+      lemma: term.lemma,
+      reading: term.reading,
+      romaji: term.romaji,
+      meaningIt: term.meaningIt,
+      audioSrc: term.audioSrc,
+      audioSource: term.audioSource,
+      audioSpeaker: term.audioSpeaker,
+      audioLicense: term.audioLicense,
+      audioAttribution: term.audioAttribution,
+      audioPageUrl: term.audioPageUrl,
+      pitchAccent: term.pitchAccent,
+      pitchAccentSource: term.pitchAccentSource,
+      pitchAccentPageUrl: term.pitchAccentPageUrl,
+      mediaSlug: media.slug,
+      mediaTitle: media.title,
+      segmentTitle: segment.title,
+      crossMediaGroupKey: crossMediaGroup.groupKey,
+      entryStatus: entryStatus.status
+    })
+    .from(term)
+    .innerJoin(media, eq(media.id, term.mediaId))
+    .leftJoin(segment, eq(segment.id, term.segmentId))
+    .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
+    .leftJoin(
+      entryStatus,
+      and(eq(entryStatus.entryId, term.id), eq(entryStatus.entryType, "term"))
+    )
+    .where(buildMediaScopeFilter(term.mediaId, options))
+    .orderBy(asc(term.lemma), asc(term.reading));
+}
+
 export async function listGrammarEntries(
   database: DatabaseClient,
   options: ListGlossaryEntriesOptions = {}
@@ -392,6 +434,54 @@ export async function listGrammarEntrySummaries(
       pitchAccentSource: grammarPattern.pitchAccentSource,
       pitchAccentPageUrl: grammarPattern.pitchAccentPageUrl,
       searchPatternNorm: grammarPattern.searchPatternNorm,
+      mediaSlug: media.slug,
+      mediaTitle: media.title,
+      segmentTitle: segment.title,
+      crossMediaGroupKey: crossMediaGroup.groupKey,
+      entryStatus: entryStatus.status
+    })
+    .from(grammarPattern)
+    .innerJoin(media, eq(media.id, grammarPattern.mediaId))
+    .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
+    .leftJoin(
+      crossMediaGroup,
+      eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
+    )
+    .leftJoin(
+      entryStatus,
+      and(
+        eq(entryStatus.entryId, grammarPattern.id),
+        eq(entryStatus.entryType, "grammar")
+      )
+    )
+    .where(buildMediaScopeFilter(grammarPattern.mediaId, options))
+    .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
+}
+
+export async function listGrammarEntryReviewSummaries(
+  database: DatabaseClient,
+  options: ListGlossaryEntriesOptions = {}
+) {
+  return database
+    .select({
+      id: grammarPattern.id,
+      sourceId: grammarPattern.sourceId,
+      crossMediaGroupId: grammarPattern.crossMediaGroupId,
+      mediaId: grammarPattern.mediaId,
+      segmentId: grammarPattern.segmentId,
+      pattern: grammarPattern.pattern,
+      title: grammarPattern.title,
+      reading: grammarPattern.reading,
+      meaningIt: grammarPattern.meaningIt,
+      audioSrc: grammarPattern.audioSrc,
+      audioSource: grammarPattern.audioSource,
+      audioSpeaker: grammarPattern.audioSpeaker,
+      audioLicense: grammarPattern.audioLicense,
+      audioAttribution: grammarPattern.audioAttribution,
+      audioPageUrl: grammarPattern.audioPageUrl,
+      pitchAccent: grammarPattern.pitchAccent,
+      pitchAccentSource: grammarPattern.pitchAccentSource,
+      pitchAccentPageUrl: grammarPattern.pitchAccentPageUrl,
       mediaSlug: media.slug,
       mediaTitle: media.title,
       segmentTitle: segment.title,
@@ -1354,4 +1444,10 @@ export type TermGlossaryEntrySummary = Awaited<
 >[number];
 export type GrammarGlossaryEntrySummary = Awaited<
   ReturnType<typeof listGrammarEntrySummaries>
+>[number];
+export type TermEntryReviewSummary = Awaited<
+  ReturnType<typeof listTermEntryReviewSummaries>
+>[number];
+export type GrammarEntryReviewSummary = Awaited<
+  ReturnType<typeof listGrammarEntryReviewSummaries>
 >[number];

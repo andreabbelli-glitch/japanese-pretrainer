@@ -6,6 +6,7 @@ import {
   getGrammarCrossMediaFamilyByEntryId,
   listLessonLinkedReviewEntriesByMediaId,
   listLessonLinkedReviewEntriesByMediaIds,
+  listGrammarEntryReviewSummaries,
   listMedia,
   listGrammarCrossMediaFamiliesByEntryIds,
   listReviewLaunchCandidates,
@@ -13,17 +14,17 @@ import {
   getTermCrossMediaFamilyByEntryId,
   listTermCrossMediaFamiliesByEntryIds,
   listGrammarEntriesByMediaId,
-  listGrammarEntrySummaries,
   listReviewCardIdsByEntryRefs,
   listReviewCardsByIds,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
   listTermEntriesByMediaId,
-  listTermEntrySummaries,
+  listTermEntryReviewSummaries,
   listReviewSubjectStatesByKeys,
   type DatabaseClient,
   type CrossMediaGrammarSibling,
   type CrossMediaTermSibling,
+  type GrammarEntryReviewSummary,
   type GrammarCrossMediaFamily,
   type GrammarGlossaryEntry,
   type GrammarGlossaryEntrySummary,
@@ -32,6 +33,7 @@ import {
   type ReviewCardListItem,
   type ReviewSubjectEntryRef,
   type TermCrossMediaFamily,
+  type TermEntryReviewSummary,
   type TermGlossaryEntry,
   type TermGlossaryEntrySummary
 } from "@/db";
@@ -110,10 +112,14 @@ type ReviewEntryLookupItem = {
 };
 
 type ReviewScope = "global" | "media";
-type ReviewTermLookupEntry = TermGlossaryEntry | TermGlossaryEntrySummary;
+type ReviewTermLookupEntry =
+  | TermGlossaryEntry
+  | TermGlossaryEntrySummary
+  | TermEntryReviewSummary;
 type ReviewGrammarLookupEntry =
   | GrammarGlossaryEntry
-  | GrammarGlossaryEntrySummary;
+  | GrammarGlossaryEntrySummary
+  | GrammarEntryReviewSummary;
 type ReviewMediaLookup = Map<
   string,
   {
@@ -992,10 +998,10 @@ export async function getReviewPageData(
     reviewFrontFurigana
   ] = await Promise.all([
     getEligibleReviewCardsByMediaIds(mediaIds, database),
-    listTermEntrySummaries(database, {
+    listTermEntryReviewSummaries(database, {
       mediaIds
     }),
-    listGrammarEntrySummaries(database, {
+    listGrammarEntryReviewSummaries(database, {
       mediaIds
     }),
     getReviewDailyLimit(database),
@@ -1059,8 +1065,8 @@ async function loadGlobalReviewPageWorkspace(
 
   const [lessonLinkedEntries, terms, grammar] = await Promise.all([
     listLessonLinkedReviewEntriesByMediaIds(database, mediaIds),
-    listTermEntrySummaries(database, { mediaIds }),
-    listGrammarEntrySummaries(database, { mediaIds })
+    listTermEntryReviewSummaries(database, { mediaIds }),
+    listGrammarEntryReviewSummaries(database, { mediaIds })
   ]);
   const eligibleCards = buildEligibleReviewCardsByMedia({
     cards: reviewCards,
@@ -1159,8 +1165,8 @@ export async function getReviewQueueSnapshotForMedia(
   const [eligibleCards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
       getEligibleReviewCardsByMediaIds(mediaIds, database),
-      listTermEntrySummaries(database, { mediaIds }),
-      listGrammarEntrySummaries(database, { mediaIds }),
+      listTermEntryReviewSummaries(database, { mediaIds }),
+      listGrammarEntryReviewSummaries(database, { mediaIds }),
       getReviewDailyLimit(database),
       countReviewSubjectsIntroducedOnDay(database, now)
     ]);
@@ -1414,10 +1420,10 @@ export async function loadReviewOverviewSnapshots(
   const [eligibleCards, terms, grammar, dailyLimit, introducedTodayCount] =
     await Promise.all([
       getEligibleReviewCardsByMediaIds(mediaIds, database),
-      listTermEntrySummaries(database, {
+      listTermEntryReviewSummaries(database, {
         mediaIds
       }),
-      listGrammarEntrySummaries(database, {
+      listGrammarEntryReviewSummaries(database, {
         mediaIds
       }),
       getReviewDailyLimit(database),
@@ -1485,8 +1491,8 @@ export async function loadGlobalReviewOverviewSnapshot(
   const [eligibleCards, terms, grammar, dailyLimit, introducedTodayCount] =
     await Promise.all([
       getEligibleReviewCardsByMediaIds(mediaIds, database),
-      listTermEntrySummaries(database, { mediaIds }),
-      listGrammarEntrySummaries(database, { mediaIds }),
+      listTermEntryReviewSummaries(database, { mediaIds }),
+      listGrammarEntryReviewSummaries(database, { mediaIds }),
       getReviewDailyLimit(database),
       countReviewSubjectsIntroducedOnDay(database, now)
     ]);

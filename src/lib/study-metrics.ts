@@ -2,12 +2,12 @@ import type { Route } from "next";
 
 import {
   listEntryStudySignals,
-  listGrammarEntrySummaries,
-  listTermEntrySummaries,
+  listGrammarEntryReviewSummaries,
+  listTermEntryReviewSummaries,
   type DatabaseClient,
-  type GrammarGlossaryEntrySummary,
+  type GrammarEntryReviewSummary,
   type LessonListItem,
-  type TermGlossaryEntrySummary
+  type TermEntryReviewSummary
 } from "@/db";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import { deriveEntryStudyState } from "@/lib/study-entry";
@@ -64,11 +64,11 @@ export type GlossaryProgressSnapshot = {
 type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
 type StudySignalLookup = Map<string, StudySignalRow[]>;
 type TermGlossaryProgressEntry = Pick<
-  TermGlossaryEntrySummary,
+  TermEntryReviewSummary,
   "id" | "sourceId" | "mediaId" | "lemma" | "meaningIt" | "reading" | "segmentTitle" | "entryStatus"
 >;
 type GrammarGlossaryProgressEntry = Pick<
-  GrammarGlossaryEntrySummary,
+  GrammarEntryReviewSummary,
   "id" | "sourceId" | "mediaId" | "pattern" | "meaningIt" | "reading" | "segmentTitle" | "entryStatus"
 >;
 type GlossaryProgressMediaTarget = {
@@ -109,10 +109,10 @@ export async function loadGlossaryProgressSnapshots(
 
   const mediaIds = media.map((item) => item.id);
   const [terms, grammar] = await Promise.all([
-    listTermEntrySummaries(database, {
+    listTermEntryReviewSummaries(database, {
       mediaIds
     }),
-    listGrammarEntrySummaries(database, {
+    listGrammarEntryReviewSummaries(database, {
       mediaIds
     })
   ]);
