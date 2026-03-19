@@ -1356,6 +1356,79 @@ describe("review system", () => {
     );
   });
 
+  it("keeps non-canonical entry-linked cards separate and hides borrowed reading metadata", async () => {
+    const chunkCardId = "card_fixture_iku_chunk";
+
+    await database.insert(card).values({
+      id: chunkCardId,
+      mediaId: developmentFixture.mediaId,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku-chunk.md",
+      cardType: "concept",
+      front: "{{行|い}}かずに{{残|のこ}}る",
+      back: "restare senza andare",
+      exampleJp: "{{駅|えき}}へ{{行|い}}かずに{{家|いえ}}に{{残|のこ}}る。",
+      exampleIt: "Resto a casa senza andare alla stazione.",
+      notesIt: "Chunk card legata allo stesso termine ma con fronte non canonico.",
+      status: "active",
+      orderIndex: 3,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card_entry_link_fixture_iku_chunk_primary",
+      cardId: chunkCardId,
+      entryType: "term",
+      entryId: developmentFixture.termDbId,
+      relationshipType: "primary"
+    });
+
+    const queueSnapshot = await getReviewQueueSnapshotForMedia(
+      developmentFixture.mediaSlug,
+      database
+    );
+    const reviewPage = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {
+        card: chunkCardId,
+        show: "answer"
+      },
+      database
+    );
+    const detailPage = await getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      chunkCardId,
+      database
+    );
+
+    if (!queueSnapshot) {
+      return;
+    }
+
+    expect(queueSnapshot.queueCount).toBe(2);
+    expect(queueSnapshot.cards.map((item) => item.id)).toContain(chunkCardId);
+    expect(reviewPage?.selectedCard?.reading).toBeUndefined();
+    expect(reviewPage?.selectedCard?.pronunciations).toHaveLength(0);
+    expect(reviewPage?.selectedCard?.entries.map((entry) => entry.id)).toContain(
+      developmentFixture.termId
+    );
+    expect(detailPage?.card.reading).toBeUndefined();
+    expect(detailPage?.pronunciations).toHaveLength(0);
+
+    await applyReviewGrade({
+      cardId: developmentFixture.primaryCardId,
+      database,
+      now: new Date("2026-03-11T12:00:00.000Z"),
+      rating: "good"
+    });
+
+    const chunkReviewState = await database.query.reviewState.findFirst({
+      where: eq(reviewState.cardId, chunkCardId)
+    });
+
+    expect(chunkReviewState).toBeUndefined();
+  });
+
   it("hydrates a single review card with the same render-critical fields as the full page selection", async () => {
     const now = new Date("2026-03-12T10:00:00.000Z");
 

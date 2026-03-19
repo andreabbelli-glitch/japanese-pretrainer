@@ -606,6 +606,11 @@ Regola review obbligatoria per `:::card`:
 - Il valore review della card deve restare linguistico: la carta deve aiutare a
   leggere kanji, lessico o grammatica giapponese, non solo a ricordare una
   regola del gioco.
+- Se piu card puntano alla stessa `entry_id`, condividono lo stesso subject
+  review solo quando il `front` coincide con la forma canonica della voce
+  collegata (lemma/pattern oppure relativa lettura). Le chunk card con un
+  `front` piu lungo o operativo restano card review autonome, anche se sono
+  collegate alla stessa entry del Glossary.
 - Se una sezione introduce un pattern grammaticale importante o una parola
   giapponese importante che non e ancora coperta, la default action e creare la
   flashcard relativa.

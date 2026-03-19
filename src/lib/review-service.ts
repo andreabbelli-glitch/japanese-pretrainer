@@ -633,6 +633,8 @@ async function loadReviewSubjectMutationContext(
   const entryLookup = buildReviewSubjectEntryLookup({ grammar, terms });
   const identity = deriveReviewSubjectIdentity({
     cardId: loadedCard.id,
+    cardType: loadedCard.cardType,
+    front: loadedCard.front,
     entryLinks: loadedCard.entryLinks,
     entryLookup
   });
@@ -650,9 +652,43 @@ async function loadReviewSubjectMutationContext(
       ? [loadedCard.id]
       : await listReviewCardIdsByEntryRefs(txDb, subjectEntryRefs);
   const dedupedMemberCardIds = [...new Set([loadedCard.id, ...memberCardIds])];
-  const memberCards = await listReviewCardsByIds(txDb, dedupedMemberCardIds);
+  const memberEntryRefTerms = [
+    ...new Set(
+      subjectEntryRefs
+        .filter((entry) => entry.entryType === "term")
+        .map((entry) => entry.entryId)
+    )
+  ];
+  const memberEntryRefGrammar = [
+    ...new Set(
+      subjectEntryRefs
+        .filter((entry) => entry.entryType === "grammar")
+        .map((entry) => entry.entryId)
+    )
+  ];
+  const [memberTerms, memberGrammar, loadedMemberCards] = await Promise.all([
+    getTermEntriesByIds(txDb, memberEntryRefTerms),
+    getGrammarEntriesByIds(txDb, memberEntryRefGrammar),
+    listReviewCardsByIds(txDb, dedupedMemberCardIds)
+  ]);
+  const memberEntryLookup = buildReviewSubjectEntryLookup({
+    grammar: memberGrammar,
+    terms: memberTerms
+  });
+  const memberCards = loadedMemberCards.filter(
+    (cardRow) =>
+      deriveReviewSubjectIdentity({
+        cardId: cardRow.id,
+        cardType: cardRow.cardType,
+        front: cardRow.front,
+        entryLinks: cardRow.entryLinks,
+        entryLookup: memberEntryLookup
+      }).subjectKey === identity.subjectKey
+  );
+  const effectiveMemberCards =
+    memberCards.length > 0 ? memberCards : [loadedCard];
   const seedCard = selectReviewSubjectRepresentativeCard(
-    memberCards,
+    effectiveMemberCards,
     subjectState ? (subjectState as ReviewSubjectStateSnapshot) : null,
     nowIso
   );
@@ -660,7 +696,7 @@ async function loadReviewSubjectMutationContext(
     subjectState?.suspended && seedCard.status !== "suspended"
       ? { ...seedCard, status: "suspended" as const }
       : seedCard;
-  const drivingEntryRefs = memberCards.flatMap((cardRow) =>
+  const drivingEntryRefs = effectiveMemberCards.flatMap((cardRow) =>
     getDrivingEntryLinks(cardRow.entryLinks).map((entryLink) => ({
       entryId: entryLink.entryId,
       entryType: entryLink.entryType
@@ -674,7 +710,7 @@ async function loadReviewSubjectMutationContext(
   return {
     drivingEntries,
     identity,
-    memberCards,
+    memberCards: effectiveMemberCards,
     seedCard: effectiveSeedCard,
     subjectState: subjectState
       ? (subjectState as ReviewSubjectStateSnapshot)

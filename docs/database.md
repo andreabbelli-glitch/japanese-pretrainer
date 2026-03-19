@@ -116,6 +116,11 @@ Tabelle incluse nel perimetro del task:
   `stability`, `difficulty`, `due_at`, `last_reviewed_at`,
   `last_interaction_at`, `lapses`, `reps`, `scheduled_days`,
   `learning_steps` e `scheduler_version`.
+- L'identita del subject resta entry-level o cross-media solo per card il cui
+  `front` coincide con la forma canonica della entry collegata. Se una card usa
+  la stessa entry come ancora editoriale ma mostra un chunk piu lungo o
+  operativo, viene trattata come subject card-level autonomo per non fondere
+  review e scheduling con la recognition card base.
 - `review_subject_log` e la cronologia canonica delle risposte a livello
   subject. Ogni voto salva stato precedente e successivo, `scheduled_due_at` e
   tempo di risposta quando disponibile.

@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import type { ReviewCardListItem } from "@/db";
-import { selectReviewSubjectRepresentativeCard } from "@/lib/review-subject";
+import {
+  buildReviewSubjectEntryLookup,
+  deriveReviewSubjectIdentity,
+  selectReviewSubjectRepresentativeCard
+} from "@/lib/review-subject";
 import type { ReviewEntryStatusValue } from "@/lib/review-model";
 
 function buildReviewCard(
@@ -47,6 +51,78 @@ function buildReviewCard(
 }
 
 describe("review subject representative fallback", () => {
+  it("keeps canonical entry cards grouped on the shared subject", () => {
+    const entryLookup = buildReviewSubjectEntryLookup({
+      grammar: [],
+      terms: [
+        {
+          crossMediaGroupId: "shared-iku",
+          id: "term-iku",
+          lemma: "行く",
+          reading: "いく"
+        }
+      ]
+    });
+
+    const identity = deriveReviewSubjectIdentity({
+      cardId: "card-iku",
+      cardType: "recognition",
+      front: "{{行|い}}く",
+      entryLinks: [
+        {
+          entryId: "term-iku",
+          entryType: "term",
+          relationshipType: "primary"
+        }
+      ],
+      entryLookup
+    });
+
+    expect(identity).toMatchObject({
+      crossMediaGroupId: "shared-iku",
+      entryId: "term-iku",
+      entryType: "term",
+      subjectKey: "group:term:shared-iku",
+      subjectKind: "group"
+    });
+  });
+
+  it("falls back to a card subject when the front is a chunk instead of the canonical entry form", () => {
+    const entryLookup = buildReviewSubjectEntryLookup({
+      grammar: [],
+      terms: [
+        {
+          crossMediaGroupId: "shared-iku",
+          id: "term-iku",
+          lemma: "行く",
+          reading: "いく"
+        }
+      ]
+    });
+
+    const identity = deriveReviewSubjectIdentity({
+      cardId: "card-iku-chunk",
+      cardType: "concept",
+      front: "{{行|い}}かずに{{残|のこ}}る",
+      entryLinks: [
+        {
+          entryId: "term-iku",
+          entryType: "term",
+          relationshipType: "primary"
+        }
+      ],
+      entryLookup
+    });
+
+    expect(identity).toMatchObject({
+      crossMediaGroupId: null,
+      entryId: null,
+      entryType: null,
+      subjectKey: "card:card-iku-chunk",
+      subjectKind: "card"
+    });
+  });
+
   it("does not let manual or suspended legacy siblings mask an active sibling", () => {
     const manualCard = buildReviewCard({
       id: "card-manual",

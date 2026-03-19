@@ -47,11 +47,15 @@ export async function loadReviewSubjectStateLookup(input: {
   grammar: Array<{
     crossMediaGroupId: string | null;
     id: string;
+    pattern: string;
+    reading?: string | null;
   }>;
   nowIso?: string;
   terms: Array<{
     crossMediaGroupId: string | null;
     id: string;
+    lemma: string;
+    reading?: string | null;
   }>;
 }): Promise<ReviewSubjectStateLookupResult> {
   const subjectEntryLookup = buildReviewSubjectEntryLookup({
@@ -64,6 +68,8 @@ export async function loadReviewSubjectStateLookup(input: {
         (card) =>
           deriveReviewSubjectIdentity({
             cardId: card.id,
+            cardType: card.cardType,
+            front: card.front,
             entryLinks: card.entryLinks,
             entryLookup: subjectEntryLookup
           }).subjectKey

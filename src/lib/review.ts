@@ -65,9 +65,9 @@ import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
   groupReviewCardsBySubject,
+  matchesReviewSubjectEntrySurface,
   selectReviewSubjectRepresentativeCard,
   type ReviewSubjectEntryMeta,
-  type ReviewSubjectIdentity,
   type ReviewSubjectGroup,
   type ReviewSubjectStateSnapshot
 } from "./review-subject";
@@ -1219,6 +1219,8 @@ export async function hydrateReviewCard(input: {
   const entryLookup = buildEntryLookup(terms, grammar);
   const subjectIdentity = deriveReviewSubjectIdentity({
     cardId: card.id,
+    cardType: card.cardType,
+    front: card.front,
     entryLinks: card.entryLinks,
     entryLookup: buildReviewSubjectEntryLookup({
       grammar,
@@ -1282,7 +1284,7 @@ export async function hydrateReviewCard(input: {
   return {
     ...queueCard,
     gradePreviews: buildReviewGradePreviews(resolvedState.reviewSeedState, now),
-    pronunciations: buildReviewCardPronunciations(card.entryLinks, entryLookup)
+    pronunciations: buildReviewCardPronunciations(card, entryLookup)
   };
 }
 
@@ -1419,7 +1421,7 @@ export async function getReviewCardDetailData(
     })
   );
   const pronunciations = buildReviewCardPronunciations(
-    selectedRawCard.entryLinks,
+    selectedRawCard,
     entryLookup
   );
 
@@ -2213,10 +2215,14 @@ function mapReviewCrossMediaGrammarSibling(sibling: CrossMediaGrammarSibling) {
 }
 
 function buildReviewCardPronunciations(
-  entryLinks: ReviewEntryLinkLike[],
+  card: Pick<ReviewCardListItem, "cardType" | "entryLinks" | "front">,
   entryLookup: Map<string, ReviewEntryLookupItem>
 ): ReviewCardPronunciation[] {
-  return getDrivingEntryLinks(entryLinks)
+  if (!canExposeReviewEntryMedia(card, entryLookup)) {
+    return [];
+  }
+
+  return getDrivingEntryLinks(card.entryLinks)
     .slice()
     .sort(compareEntryLinks)
     .flatMap((link) => {
@@ -2239,10 +2245,14 @@ function buildReviewCardPronunciations(
 }
 
 async function loadReviewCardPronunciations(input: {
-  card: Pick<ReviewCardListItem, "entryLinks">;
+  card: Pick<ReviewCardListItem, "cardType" | "entryLinks" | "front">;
   database: DatabaseClient;
   entryLookup: Map<string, ReviewEntryLookupItem>;
 }) {
+  if (!canExposeReviewEntryMedia(input.card, input.entryLookup)) {
+    return [];
+  }
+
   const drivingLinks = getDrivingEntryLinks(input.card.entryLinks);
   const missingTermIds = new Set<string>();
   const missingGrammarIds = new Set<string>();
@@ -2263,10 +2273,7 @@ async function loadReviewCardPronunciations(input: {
   }
 
   if (missingTermIds.size === 0 && missingGrammarIds.size === 0) {
-    return buildReviewCardPronunciations(
-      input.card.entryLinks,
-      input.entryLookup
-    );
+    return buildReviewCardPronunciations(input.card, input.entryLookup);
   }
 
   const [terms, grammar] = await Promise.all([
@@ -2279,10 +2286,7 @@ async function loadReviewCardPronunciations(input: {
     resolvedEntryLookup.set(key, value);
   }
 
-  return buildReviewCardPronunciations(
-    input.card.entryLinks,
-    resolvedEntryLookup
-  );
+  return buildReviewCardPronunciations(input.card, resolvedEntryLookup);
 }
 
 function buildReviewQueueSubjectSnapshot(input: {
@@ -2743,7 +2747,7 @@ function mapQueueCard(
       nowIso
     );
   const pronunciations = buildReviewCardPronunciations(
-    card.entryLinks,
+    card,
     entryLookup
   );
   const reading = resolveReviewCardReading(card, entryLookup);
@@ -2791,6 +2795,10 @@ function resolveReviewCardReading(
   card: ReviewCardListItem,
   entryLookup: Map<string, ReviewEntryLookupItem>
 ) {
+  if (!canExposeReviewEntryMedia(card, entryLookup)) {
+    return undefined;
+  }
+
   const drivingLinks = getDrivingEntryLinks(card.entryLinks)
     .slice()
     .sort(compareEntryLinks);
@@ -2816,6 +2824,42 @@ function resolveReviewCardReading(
   }
 
   return deriveKanaReading(card.front);
+}
+
+function canExposeReviewEntryMedia(
+  card: Pick<ReviewCardListItem, "cardType" | "entryLinks" | "front">,
+  entryLookup: Map<string, ReviewEntryLookupItem>
+) {
+  const drivingLinks = getDrivingEntryLinks(card.entryLinks);
+  const hasPrimaryLink = card.entryLinks.some(
+    (link) => link.relationshipType === "primary"
+  );
+
+  if (drivingLinks.length !== 1) {
+    return false;
+  }
+
+  const drivingLink = drivingLinks[0]!;
+  const drivingEntry = entryLookup.get(
+    `${drivingLink.entryType}:${drivingLink.entryId}`
+  );
+
+  if (!drivingEntry) {
+    return false;
+  }
+
+  if (!hasPrimaryLink) {
+    return true;
+  }
+
+  if (card.cardType !== "concept") {
+    return true;
+  }
+
+  return matchesReviewSubjectEntrySurface(card.front, {
+    label: drivingEntry.label,
+    reading: drivingEntry.reading
+  });
 }
 
 function deriveKanaReading(value: string) {

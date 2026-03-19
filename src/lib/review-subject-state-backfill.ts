@@ -26,13 +26,17 @@ export async function backfillReviewSubjectState(
     database.query.term.findMany({
       columns: {
         crossMediaGroupId: true,
-        id: true
+        id: true,
+        lemma: true,
+        reading: true
       }
     }),
     database.query.grammarPattern.findMany({
       columns: {
         crossMediaGroupId: true,
-        id: true
+        id: true,
+        pattern: true,
+        reading: true
       }
     })
   ]);

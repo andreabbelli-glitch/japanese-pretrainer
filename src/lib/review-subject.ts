@@ -1,5 +1,6 @@
 import type { ReviewCardListItem } from "../db/queries/review.ts";
 import type { EntryType } from "../db/schema/enums.ts";
+import { stripInlineMarkdown } from "@/lib/render-furigana";
 
 import {
   getDrivingEntryLinks,
@@ -15,6 +16,8 @@ export type ReviewSubjectEntryMeta = {
   crossMediaGroupId: string | null;
   entryId: string;
   entryType: EntryType;
+  label: string;
+  reading?: string | null;
 };
 
 export type ReviewSubjectIdentity = {
@@ -61,10 +64,14 @@ export function buildReviewSubjectEntryLookup(input: {
   grammar: Array<{
     crossMediaGroupId: string | null;
     id: string;
+    pattern: string;
+    reading?: string | null;
   }>;
   terms: Array<{
     crossMediaGroupId: string | null;
     id: string;
+    lemma: string;
+    reading?: string | null;
   }>;
 }) {
   const lookup = new Map<string, ReviewSubjectEntryMeta>();
@@ -73,7 +80,9 @@ export function buildReviewSubjectEntryLookup(input: {
     lookup.set(`term:${entry.id}`, {
       crossMediaGroupId: entry.crossMediaGroupId,
       entryId: entry.id,
-      entryType: "term"
+      entryType: "term",
+      label: entry.lemma,
+      reading: entry.reading
     });
   }
 
@@ -81,7 +90,9 @@ export function buildReviewSubjectEntryLookup(input: {
     lookup.set(`grammar:${entry.id}`, {
       crossMediaGroupId: entry.crossMediaGroupId,
       entryId: entry.id,
-      entryType: "grammar"
+      entryType: "grammar",
+      label: entry.pattern,
+      reading: entry.reading
     });
   }
 
@@ -90,10 +101,15 @@ export function buildReviewSubjectEntryLookup(input: {
 
 export function deriveReviewSubjectIdentity(input: {
   cardId: string;
+  cardType: string;
+  front: string;
   entryLinks: ReviewEntryLinkLike[];
   entryLookup: Map<string, ReviewSubjectEntryMeta>;
 }): ReviewSubjectIdentity {
   const drivingLinks = getDrivingEntryLinks(input.entryLinks);
+  const hasPrimaryLink = input.entryLinks.some(
+    (link) => link.relationshipType === "primary"
+  );
 
   if (drivingLinks.length !== 1) {
     return buildReviewSubjectCardIdentity(input.cardId);
@@ -103,6 +119,18 @@ export function deriveReviewSubjectIdentity(input: {
   const drivingEntry = input.entryLookup.get(
     `${drivingLink.entryType}:${drivingLink.entryId}`
   );
+
+  if (!drivingEntry) {
+    return buildReviewSubjectCardIdentity(input.cardId);
+  }
+
+  if (
+    hasPrimaryLink &&
+    input.cardType === "concept" &&
+    !matchesReviewSubjectEntrySurface(input.front, drivingEntry)
+  ) {
+    return buildReviewSubjectCardIdentity(input.cardId);
+  }
 
   if (drivingEntry?.crossMediaGroupId) {
     return {
@@ -172,6 +200,30 @@ export function buildReviewSubjectKey(input: {
   return `entry:${input.entryType}:${input.entryId}`;
 }
 
+export function matchesReviewSubjectEntrySurface(
+  front: string,
+  entry: Pick<ReviewSubjectEntryMeta, "label" | "reading">
+) {
+  const normalizedFront = normalizeReviewSubjectSurface(front);
+
+  if (normalizedFront.length === 0) {
+    return false;
+  }
+
+  return [entry.label, entry.reading ?? null]
+    .filter((value): value is string => Boolean(value))
+    .some(
+      (value) => normalizeReviewSubjectSurface(value) === normalizedFront
+    );
+}
+
+function normalizeReviewSubjectSurface(value: string) {
+  return stripInlineMarkdown(value)
+    .replace(/[～〜]/g, "〜")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function groupReviewCardsBySubject(input: {
   cards: ReviewCardListItem[];
   entryLookup: Map<string, ReviewSubjectEntryMeta>;
@@ -183,6 +235,8 @@ export function groupReviewCardsBySubject(input: {
   for (const card of input.cards) {
     const identity = deriveReviewSubjectIdentity({
       cardId: card.id,
+      cardType: card.cardType,
+      front: card.front,
       entryLinks: card.entryLinks,
       entryLookup: input.entryLookup
     });
