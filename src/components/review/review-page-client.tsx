@@ -9,7 +9,6 @@ import {
   gradeReviewCardSessionAction,
   markLinkedEntryKnownSessionAction,
   resetReviewCardSessionAction,
-  revealReviewAnswerSessionAction,
   setLinkedEntryLearningSessionAction,
   setReviewCardSuspendedSessionAction
 } from "@/actions/review";
@@ -143,16 +142,14 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
-    runSessionUpdate(() =>
-      revealReviewAnswerSessionAction({
-        answeredCount: viewData.session.answeredCount,
-        cardId: selectedCard.id,
-        cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
-        scope: viewData.scope
-      })
-    );
+    setViewData((prev) => ({
+      ...prev,
+      selectedCardContext: {
+        ...prev.selectedCardContext,
+        gradePreviews: selectedCard.gradePreviews,
+        showAnswer: true
+      }
+    }));
   }
 
   function handleGradeCard(rating: (typeof ratingCopy)[number]["value"]) {

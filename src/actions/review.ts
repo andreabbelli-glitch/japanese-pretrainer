@@ -167,20 +167,6 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
   );
 }
 
-export async function revealReviewAnswerSessionAction(
-  input: ReviewSessionInput
-): Promise<ReviewPageData> {
-  return requireReviewPageDataForScope(
-    input,
-    buildReviewSearchParams({
-      answeredCount: input.answeredCount,
-      cardId: input.cardId,
-      extraNewCount: input.extraNewCount,
-      showAnswer: true
-    })
-  );
-}
-
 export async function gradeReviewCardSessionAction(input: ReviewSessionInput & {
   rating: "again" | "hard" | "good" | "easy";
 }): Promise<ReviewPageData> {
