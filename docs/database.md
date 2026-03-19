@@ -130,10 +130,12 @@ Tabelle incluse nel perimetro del task:
 - La migrazione SQL `drizzle/0011_global_review_subjects.sql` crea
   `review_subject_state` e `review_subject_log`; il comando `pnpm db:migrate`
   esegue poi un backfill applicativo idempotente di `review_subject_state`
-  sugli upgrade legacy. Il fallback runtime resta come rete di sicurezza se
-  manca ancora il corrispondente state subject-level o se il DB e stato
-  migrato solo parzialmente. Lo stesso pass e rieseguibile manualmente con
-  `pnpm db:backfill-review-subject-state`.
+  sugli upgrade legacy. Gli entrypoint di import/seed eseguono lo stesso
+  backfill dopo aver sincronizzato il contenuto, cosi il DB locale arriva alla
+  review con la tabella canonica gia completa. Il fallback runtime resta come
+  rete di sicurezza se manca ancora il corrispondente state subject-level o se
+  il DB e stato migrato solo parzialmente. Lo stesso pass e rieseguibile
+  manualmente con `pnpm db:backfill-review-subject-state`.
 - A livello UI e query: `/review` usa la queue globale reale sui subject, mentre
   `/media/[mediaSlug]/review` resta una vista filtrata locale. I numeri
   etichettati come globali devono arrivare dal modello subject-level globale;

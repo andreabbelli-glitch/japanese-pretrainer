@@ -332,6 +332,32 @@ export async function prefetchReviewCardSessionAction(input: {
   );
 }
 
+export async function loadReviewPageDataSessionAction(input: {
+  mediaSlug?: string;
+  scope: "global" | "media";
+  searchParams: Record<string, string | string[] | undefined>;
+}): Promise<ReviewPageData> {
+  const profiler = await createRequestReviewProfiler({
+    label: "action:loadReviewPageDataSession",
+    meta: {
+      mediaSlug: input.mediaSlug ?? null,
+      scope: input.scope
+    }
+  });
+  scheduleReviewProfilerFlush(profiler);
+
+  return profiler.measure("requireReviewPageDataForScope", () =>
+    requireReviewPageDataForScope(
+      {
+        mediaSlug: input.mediaSlug,
+        scope: input.scope
+      },
+      input.searchParams,
+      profiler
+    )
+  );
+}
+
 export async function markLinkedEntryKnownSessionAction(
   input: ReviewSessionInput & {
     redirectMode: ReviewSessionRedirectMode;
@@ -621,7 +647,7 @@ function buildReviewSearchParams(input: {
 
 async function requireReviewPageData(
   mediaSlug: string,
-  searchParams: Record<string, string>,
+  searchParams: Record<string, string | string[] | undefined>,
   profiler?: ReviewProfiler | null
 ) {
   const data = await getReviewPageData(mediaSlug, searchParams, db, {
@@ -638,7 +664,7 @@ async function requireReviewPageData(
 
 async function requireReviewPageDataForScope(
   input: Pick<ReviewSessionInput, "mediaSlug" | "scope">,
-  searchParams: Record<string, string>,
+  searchParams: Record<string, string | string[] | undefined>,
   profiler?: ReviewProfiler | null
 ) {
   if (input.scope === "global") {

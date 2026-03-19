@@ -1,6 +1,6 @@
 import type { ReviewCardListItem } from "../db/queries/review.ts";
 import type { EntryType } from "../db/schema/enums.ts";
-import { stripInlineMarkdown } from "@/lib/render-furigana";
+import { stripInlineMarkdown } from "./inline-markdown.ts";
 
 import {
   getDrivingEntryLinks,

@@ -1,7 +1,11 @@
 import { Fragment, type ReactNode } from "react";
 
-import { parseInlineFragment } from "@/lib/content/parser/markdown";
-import type { InlineNode } from "@/lib/content/types";
+import type { InlineNode } from "./content/types.ts";
+import {
+  flattenInlineNodes,
+  parseInlineText,
+  stripInlineMarkdown as stripInlineMarkdownText
+} from "./inline-markdown.ts";
 
 type RenderFuriganaOptions = {
   linkBehavior?: "render" | "flatten";
@@ -15,16 +19,7 @@ export function renderFurigana(
 }
 
 export function stripInlineMarkdown(text: string): string {
-  return flattenInlineNodes(parseInlineText(text));
-}
-
-function parseInlineText(text: string): InlineNode[] {
-  return parseInlineFragment({
-    source: text,
-    filePath: "inline-render",
-    documentKind: "lesson",
-    sourcePath: "inline"
-  }).fragment.nodes;
+  return stripInlineMarkdownText(text);
 }
 
 function renderInlineNodes(
@@ -84,25 +79,4 @@ function renderInlineNode(
     case "break":
       return <br key={key} />;
   }
-}
-
-function flattenInlineNodes(nodes: InlineNode[]): string {
-  return nodes
-    .map((node) => {
-      switch (node.type) {
-        case "text":
-          return node.value;
-        case "furigana":
-          return node.base;
-        case "reference":
-        case "emphasis":
-        case "strong":
-        case "inlineCode":
-        case "link":
-          return flattenInlineNodes(node.children);
-        case "break":
-          return " ";
-      }
-    })
-    .join("");
 }

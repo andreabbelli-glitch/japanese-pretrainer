@@ -49,10 +49,12 @@ La review usa un modello canonico a livello subject:
 La migrazione SQL [`drizzle/0011_global_review_subjects.sql`](./drizzle/0011_global_review_subjects.sql)
 crea le tabelle subject-level; il comando `pnpm db:migrate` esegue poi un
 backfill applicativo idempotente di `review_subject_state` per gli upgrade da
-DB legacy. Il fallback runtime basato su `review_state` resta comunque come
-rete di sicurezza se qualche subject-level state manca ancora o il DB e stato
-migrato solo parzialmente. Per rieseguire il pass manualmente esiste anche
-`pnpm db:backfill-review-subject-state`.
+DB legacy. Gli entrypoint di import/seed eseguono lo stesso backfill dopo aver
+materializzato il contenuto, cosi il DB locale arriva alla review con il
+subject state canonico gia completo. Il fallback runtime basato su
+`review_state` resta comunque come rete di sicurezza se qualche subject-level
+state manca ancora o il DB e stato migrato solo parzialmente. Per rieseguire il
+pass manualmente esiste anche `pnpm db:backfill-review-subject-state`.
 
 A livello di prodotto:
 

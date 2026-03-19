@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { connection } from "next/server";
 
-import { ReviewPage } from "@/components/review/review-page";
+import { ReviewPageClient } from "@/components/review/review-page-client";
 import { EmptyState } from "@/components/ui/empty-state";
 import {
   createRequestReviewProfiler,
   scheduleReviewProfilerFlush
 } from "@/lib/review-profiler";
-import { getGlobalReviewPageLoadResult } from "@/lib/review";
+import { getGlobalReviewFirstCandidateLoadResult } from "@/lib/review";
 
 type ReviewRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -25,9 +25,9 @@ export default async function ReviewRoute({ searchParams }: ReviewRouteProps) {
   const resolvedSearchParams = await searchParams;
 
   const reviewResult = await profiler.measure(
-    "getGlobalReviewPageLoadResult",
+    "getGlobalReviewFirstCandidateLoadResult",
     () =>
-      getGlobalReviewPageLoadResult(resolvedSearchParams, undefined, {
+      getGlobalReviewFirstCandidateLoadResult(resolvedSearchParams, undefined, {
         profiler
       })
   );
@@ -69,5 +69,10 @@ export default async function ReviewRoute({ searchParams }: ReviewRouteProps) {
     );
   }
 
-  return <ReviewPage data={reviewResult.data} />;
+  return (
+    <ReviewPageClient
+      data={reviewResult.data}
+      searchParams={resolvedSearchParams}
+    />
+  );
 }

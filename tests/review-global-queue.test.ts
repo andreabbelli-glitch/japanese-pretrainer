@@ -14,6 +14,7 @@ import {
   type DatabaseClient
 } from "@/db";
 import {
+  getGlobalReviewFirstCandidateLoadResult,
   getGlobalReviewPageData,
   getReviewPageData,
   getReviewQueueSnapshotForMedia,
@@ -156,5 +157,108 @@ describe("global review queue filtering", () => {
     expect(snapshots.get("media_b")?.queueCount).toBe(0);
     expect(snapshots.get("media_b")?.newAvailableCount).toBe(1);
     expect(snapshots.get("media_b")?.newQueuedCount).toBe(0);
+  });
+
+  it("returns a minimal first-candidate payload that matches the full global selection", async () => {
+    await database.insert(media).values([
+      {
+        id: "media_a",
+        slug: "media-a",
+        title: "Media A",
+        mediaType: "game",
+        segmentKind: "chapter",
+        language: "ja",
+        baseExplanationLanguage: "it",
+        description: "Fixture A",
+        status: "active",
+        createdAt: "2026-03-10T09:00:00.000Z",
+        updatedAt: "2026-03-10T09:00:00.000Z"
+      },
+      {
+        id: "media_b",
+        slug: "media-b",
+        title: "Media B",
+        mediaType: "game",
+        segmentKind: "chapter",
+        language: "ja",
+        baseExplanationLanguage: "it",
+        description: "Fixture B",
+        status: "active",
+        createdAt: "2026-03-10T09:00:00.000Z",
+        updatedAt: "2026-03-10T09:00:00.000Z"
+      }
+    ]);
+    await database.insert(card).values([
+      {
+        id: "card_a",
+        mediaId: "media_a",
+        segmentId: null,
+        sourceFile: "tests/review-global-queue/media-a.md",
+        cardType: "recognition",
+        front: "A",
+        back: "A back",
+        exampleJp: null,
+        exampleIt: null,
+        notesIt: null,
+        status: "active",
+        orderIndex: 1,
+        createdAt: "2026-03-10T10:00:00.000Z",
+        updatedAt: "2026-03-10T10:00:00.000Z"
+      },
+      {
+        id: "card_b",
+        mediaId: "media_b",
+        segmentId: null,
+        sourceFile: "tests/review-global-queue/media-b.md",
+        cardType: "recognition",
+        front: "B",
+        back: "B back",
+        exampleJp: null,
+        exampleIt: null,
+        notesIt: null,
+        status: "active",
+        orderIndex: 1,
+        createdAt: "2026-03-10T09:00:00.000Z",
+        updatedAt: "2026-03-10T09:00:00.000Z"
+      }
+    ]);
+    await database.insert(userSetting).values({
+      key: "review_daily_limit",
+      valueJson: "1",
+      updatedAt: "2026-03-10T11:00:00.000Z"
+    });
+
+    const [firstCandidate, fullPage] = await Promise.all([
+      getGlobalReviewFirstCandidateLoadResult({}, database),
+      getGlobalReviewPageData({}, database)
+    ]);
+
+    expect(firstCandidate.kind).toBe("ready");
+    expect(fullPage.selectedCard?.id).toBe("card_a");
+
+    if (firstCandidate.kind !== "ready") {
+      return;
+    }
+
+    expect(firstCandidate.data.selectedCard?.id).toBe(
+      fullPage.selectedCard?.id
+    );
+    expect(firstCandidate.data.selectedCard?.bucket).toBe(
+      fullPage.selectedCard?.bucket
+    );
+    expect(firstCandidate.data.selectedCardContext).toMatchObject({
+      bucket: fullPage.selectedCard?.bucket ?? null,
+      isQueueCard: true,
+      position: 1,
+      remainingCount: 0,
+      showAnswer: false
+    });
+    expect(firstCandidate.data.queue.queueCount).toBe(
+      fullPage.queue.queueCount
+    );
+    expect("entries" in firstCandidate.data.selectedCard!).toBe(false);
+    expect("pronunciations" in firstCandidate.data.selectedCard!).toBe(false);
+    expect("contexts" in firstCandidate.data.selectedCard!).toBe(false);
+    expect("gradePreviews" in firstCandidate.data.selectedCard!).toBe(false);
   });
 });

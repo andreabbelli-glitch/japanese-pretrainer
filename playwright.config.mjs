@@ -24,7 +24,7 @@ export default defineConfig({
     video: "retain-on-failure"
   },
   webServer: {
-    command: "./scripts/with-node.sh pnpm start:e2e",
+    command: "env -u NO_COLOR ./scripts/with-node.sh pnpm start:e2e",
     cwd: __dirname,
     env: {
       ...process.env,

@@ -7,6 +7,7 @@ import Link from "next/link";
 import {
   gradeReviewCardSessionAction,
   markLinkedEntryKnownSessionAction,
+  loadReviewPageDataSessionAction,
   prefetchReviewCardSessionAction,
   resetReviewCardSessionAction,
   setLinkedEntryLearningSessionAction,
@@ -14,7 +15,11 @@ import {
 } from "@/actions/review";
 import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review";
+import type {
+  ReviewFirstCandidatePageData,
+  ReviewPageData,
+  ReviewQueueCard
+} from "@/lib/review";
 import {
   appendReturnToParam,
   buildCanonicalReviewSessionHrefForBase,
@@ -54,9 +59,19 @@ const ratingCopy = [
   }
 ] as const;
 
-export function ReviewPageClient({ data }: { data: ReviewPageData }) {
-  const [viewData, setViewData] = useState(data);
-  const [queueCardIds, setQueueCardIds] = useState(data.queueCardIds);
+type ReviewPageClientData = ReviewPageData | ReviewFirstCandidatePageData;
+
+export function ReviewPageClient({
+  data,
+  searchParams
+}: {
+  data: ReviewPageClientData;
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const [viewData, setViewData] = useState<ReviewPageClientData>(data);
+  const [queueCardIds, setQueueCardIds] = useState<string[]>(
+    "queueCardIds" in data ? data.queueCardIds : []
+  );
   const [clientError, setClientError] = useState<string | null>(null);
   const [pendingAnsweredCountScroll, setPendingAnsweredCountScroll] = useState<
     number | null
@@ -67,6 +82,10 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     string | null
   >(null);
   const [isPending, startTransition] = useTransition();
+  const [isHydratingFullData, setIsHydratingFullData] = useState(
+    "queueCardIds" in data ? false : searchParams !== undefined
+  );
+  const isFullReviewPageData = isReviewPageData(viewData);
   const isGlobalReview = viewData.scope === "global";
   const hasAnyReviewCards =
     viewData.queue.dueCount +
@@ -77,15 +96,28 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     0;
 
   const selectedCard = viewData.selectedCard;
-  const queueIndex = selectedCard ? queueCardIds.indexOf(selectedCard.id) : -1;
-  const isQueueCard = queueIndex >= 0;
+  const queueIndex =
+    isFullReviewPageData && selectedCard
+      ? queueCardIds.indexOf(selectedCard.id)
+      : -1;
+  const isQueueCard = selectedCard
+    ? viewData.selectedCardContext.isQueueCard
+    : false;
   const nextQueueCardId = isQueueCard
-    ? (queueCardIds[queueIndex + 1] ?? null)
+    ? isFullReviewPageData
+      ? (queueCardIds[queueIndex + 1] ?? null)
+      : null
     : null;
-  const position = isQueueCard ? queueIndex + 1 : null;
-  const remainingCount = isQueueCard ? queueCardIds.length - queueIndex - 1 : 0;
-  const showCompactPronunciation =
-    (selectedCard?.pronunciations.length ?? 0) <= 1;
+  const position = selectedCard ? viewData.selectedCardContext.position : null;
+  const remainingCount = selectedCard
+    ? viewData.selectedCardContext.remainingCount
+    : 0;
+  const fullSelectedCard = isFullReviewPageData
+    ? (selectedCard as ReviewQueueCard | null)
+    : null;
+  const showCompactPronunciation = fullSelectedCard
+    ? fullSelectedCard.pronunciations.length <= 1
+    : false;
   const hasQueue = viewData.queue.queueCount > 0;
   const hasSupportCards =
     viewData.queue.manualCount +
@@ -112,17 +144,64 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   const contextualSettingsHref = appendReturnToParam("/settings", sessionHref);
   const showCompletionState = !hasQueue && selectedCard === null;
   const actionRedirectMode = isQueueCard ? "advance_queue" : "preserve_card";
-  const gradePreviewLookup = new Map(
-    viewData.selectedCardContext.gradePreviews.map((preview) => [
-      preview.rating,
-      preview.nextReviewLabel
-    ])
-  );
+  const gradePreviewLookup = isFullReviewPageData
+    ? new Map(
+        viewData.selectedCardContext.gradePreviews.map((preview) => [
+          preview.rating,
+          preview.nextReviewLabel
+        ])
+      )
+    : new Map();
   const reviewSummary = buildReviewSummary(
     viewData,
     isGlobalReview,
     hasAnyReviewCards
   );
+
+  useEffect(() => {
+    if (isFullReviewPageData || !searchParams || viewData.scope !== "global") {
+      return;
+    }
+
+    let cancelled = false;
+    setClientError(null);
+    setIsHydratingFullData(true);
+
+    void loadReviewPageDataSessionAction({
+      scope: "global",
+      searchParams
+    })
+      .then((nextData) => {
+        if (cancelled) {
+          return;
+        }
+
+        setViewData((currentData) =>
+          mergeReviewPageData(currentData, nextData)
+        );
+        setQueueCardIds(nextData.queueCardIds);
+      })
+      .catch((error) => {
+        console.error(error);
+
+        if (cancelled) {
+          return;
+        }
+
+        setClientError(
+          "Non sono riuscito a completare i dettagli della review. La stage resta disponibile."
+        );
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setIsHydratingFullData(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isFullReviewPageData, searchParams, viewData.media.slug, viewData.scope]);
 
   useEffect(() => {
     const currentHref = `${window.location.pathname}${window.location.search}`;
@@ -236,14 +315,25 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
+    if (isFullReviewPageData) {
+      setViewData((prev) => ({
+        ...prev,
+        selectedCardContext: {
+          ...prev.selectedCardContext,
+          gradePreviews: buildReviewGradePreviews(
+            selectedCard.reviewSeedState,
+            new Date()
+          ),
+          showAnswer: true
+        }
+      }));
+      return;
+    }
+
     setViewData((prev) => ({
       ...prev,
       selectedCardContext: {
         ...prev.selectedCardContext,
-        gradePreviews: buildReviewGradePreviews(
-          selectedCard.reviewSeedState,
-          new Date()
-        ),
         showAnswer: true
       }
     }));
@@ -254,20 +344,24 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
-    setPendingAnsweredCountScroll(viewData.session.answeredCount);
+    const fullViewData = viewData as ReviewPageData;
+
+    setPendingAnsweredCountScroll(fullViewData.session.answeredCount);
 
     if (!isQueueCard) {
       runSessionUpdate(
         () =>
           gradeReviewCardSessionAction({
-            answeredCount: viewData.session.answeredCount,
+            answeredCount: fullViewData.session.answeredCount,
             cardId: selectedCard.id,
             cardMediaSlug: selectedCard.mediaSlug,
-            extraNewCount: viewData.session.extraNewCount,
+            extraNewCount: fullViewData.session.extraNewCount,
             mediaSlug:
-              viewData.scope === "media" ? viewData.media.slug : undefined,
+              fullViewData.scope === "media"
+                ? fullViewData.media.slug
+                : undefined,
             rating,
-            scope: viewData.scope
+            scope: fullViewData.scope
           }),
         {
           onError: () => {
@@ -291,19 +385,21 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     runSessionUpdate(
       () =>
         gradeReviewCardSessionAction({
-          answeredCount: viewData.session.answeredCount,
+          answeredCount: fullViewData.session.answeredCount,
           cardId: selectedCard.id,
           cardMediaSlug: selectedCard.mediaSlug,
-          extraNewCount: viewData.session.extraNewCount,
+          extraNewCount: fullViewData.session.extraNewCount,
           gradedCardBucket: selectedCard.bucket,
           mediaSlug:
-            viewData.scope === "media" ? viewData.media.slug : undefined,
+            fullViewData.scope === "media"
+              ? fullViewData.media.slug
+              : undefined,
           nextCardId,
           rating,
-          scope: viewData.scope,
-          sessionMedia: viewData.media,
-          sessionQueue: viewData.queue,
-          sessionSettings: viewData.settings
+          scope: fullViewData.scope,
+          sessionMedia: fullViewData.media,
+          sessionQueue: fullViewData.queue,
+          sessionSettings: fullViewData.settings
         }),
       {
         onError: () => {
@@ -311,14 +407,14 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
         },
         optimisticUpdate: canOptimisticallyAdvance
           ? () => {
-              const previousViewData = viewData;
+              const previousViewData = fullViewData;
               const previousQueueCardIds = queueCardIds;
               const previousPrefetchedNextCard = prefetchedNextCard;
               const previousPrefetchedNextCardId = prefetchedNextCardId;
 
               setViewData(
                 buildOptimisticGradeResult({
-                  currentData: viewData,
+                  currentData: fullViewData,
                   gradedCardBucket: selectedCard.bucket,
                   nextCard: optimisticNextCard ?? null,
                   nextQueueCardIds
@@ -351,15 +447,18 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
+    const fullViewData = viewData as ReviewPageData;
+
     runSessionUpdate(() =>
       markLinkedEntryKnownSessionAction({
-        answeredCount: viewData.session.answeredCount,
+        answeredCount: fullViewData.session.answeredCount,
         cardId: selectedCard.id,
         cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+        extraNewCount: fullViewData.session.extraNewCount,
+        mediaSlug:
+          fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
-        scope: viewData.scope
+        scope: fullViewData.scope
       })
     );
   }
@@ -369,15 +468,18 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
+    const fullViewData = viewData as ReviewPageData;
+
     runSessionUpdate(() =>
       setLinkedEntryLearningSessionAction({
-        answeredCount: viewData.session.answeredCount,
+        answeredCount: fullViewData.session.answeredCount,
         cardId: selectedCard.id,
         cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+        extraNewCount: fullViewData.session.extraNewCount,
+        mediaSlug:
+          fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
-        scope: viewData.scope
+        scope: fullViewData.scope
       })
     );
   }
@@ -387,15 +489,18 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
+    const fullViewData = viewData as ReviewPageData;
+
     runSessionUpdate(() =>
       resetReviewCardSessionAction({
-        answeredCount: viewData.session.answeredCount,
+        answeredCount: fullViewData.session.answeredCount,
         cardId: selectedCard.id,
         cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+        extraNewCount: fullViewData.session.extraNewCount,
+        mediaSlug:
+          fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
-        scope: viewData.scope
+        scope: fullViewData.scope
       })
     );
   }
@@ -405,15 +510,18 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
+    const fullViewData = viewData as ReviewPageData;
+
     runSessionUpdate(() =>
       setReviewCardSuspendedSessionAction({
-        answeredCount: viewData.session.answeredCount,
+        answeredCount: fullViewData.session.answeredCount,
         cardId: selectedCard.id,
         cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+        extraNewCount: fullViewData.session.extraNewCount,
+        mediaSlug:
+          fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
-        scope: viewData.scope,
+        scope: fullViewData.scope,
         suspended: selectedCard.bucket !== "suspended"
       })
     );
@@ -513,12 +621,13 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                       </p>
                     ) : null}
                     <p className="review-stage__back">{selectedCard.back}</p>
-                    {selectedCard.pronunciations.length > 0 ? (
+                    {fullSelectedCard &&
+                    fullSelectedCard.pronunciations.length > 0 ? (
                       <div className="stack-list stack-list--tight">
                         {showCompactPronunciation ? (
                           <p className="eyebrow">Pronuncia</p>
                         ) : null}
-                        {selectedCard.pronunciations.map((item) => (
+                        {fullSelectedCard.pronunciations.map((item) => (
                           <PronunciationAudio
                             key={`${item.kind}:${item.label}:${item.audio.src ?? item.audio.pitchAccent?.downstep ?? "no-audio"}`}
                             audio={item.audio}
@@ -547,21 +656,24 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                         {renderFurigana(selectedCard.notes)}
                       </p>
                     ) : null}
-                    {selectedCard.contexts.length > 1 ? (
+                    {fullSelectedCard &&
+                    fullSelectedCard.contexts.length > 1 ? (
                       <div className="stack-list stack-list--tight">
                         <p className="eyebrow">Compare anche in</p>
-                        {selectedCard.contexts.slice(0, 4).map((context) => (
-                          <p
-                            key={context.cardId}
-                            className="review-stage__meta"
-                          >
-                            <strong>{context.mediaTitle}</strong>
-                            {context.segmentTitle
-                              ? ` · ${context.segmentTitle}`
-                              : ""}
-                            {`: ${context.front}`}
-                          </p>
-                        ))}
+                        {fullSelectedCard.contexts
+                          .slice(0, 4)
+                          .map((context) => (
+                            <p
+                              key={context.cardId}
+                              className="review-stage__meta"
+                            >
+                              <strong>{context.mediaTitle}</strong>
+                              {context.segmentTitle
+                                ? ` · ${context.segmentTitle}`
+                                : ""}
+                              {`: ${context.front}`}
+                            </p>
+                          ))}
                       </div>
                     ) : null}
                     {selectedCard.dueLabel ? (
@@ -573,7 +685,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                 )}
               </div>
 
-              {isQueueCard && viewData.selectedCardContext.showAnswer ? (
+              {isFullReviewPageData &&
+              isQueueCard &&
+              viewData.selectedCardContext.showAnswer ? (
                 <div className="review-grade-grid">
                   {ratingCopy.map((rating) => (
                     <button
@@ -592,71 +706,81 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                     </button>
                   ))}
                 </div>
+              ) : isHydratingFullData ? (
+                <div className="review-sidebar__notice">
+                  <p>Sto completando i dettagli della review in background.</p>
+                </div>
               ) : null}
 
-              <div className="review-stage__actions">
-                {selectedCard.bucket === "manual" ? (
-                  <button
-                    className="button button--primary"
-                    disabled={isPending}
-                    type="button"
-                    onClick={handleSetLearning}
-                  >
-                    Rimetti in studio
-                  </button>
-                ) : (
-                  <button
-                    className="button button--ghost"
-                    disabled={isPending}
-                    type="button"
-                    onClick={handleMarkKnown}
-                  >
-                    Segna già nota
-                  </button>
-                )}
+              {isFullReviewPageData ? (
+                <>
+                  <div className="review-stage__actions">
+                    {selectedCard.bucket === "manual" ? (
+                      <button
+                        className="button button--primary"
+                        disabled={isPending}
+                        type="button"
+                        onClick={handleSetLearning}
+                      >
+                        Rimetti in studio
+                      </button>
+                    ) : (
+                      <button
+                        className="button button--ghost"
+                        disabled={isPending}
+                        type="button"
+                        onClick={handleMarkKnown}
+                      >
+                        Segna già nota
+                      </button>
+                    )}
 
-                <button
-                  className="button button--ghost"
-                  disabled={isPending}
-                  type="button"
-                  onClick={handleResetCard}
-                >
-                  Reset card
-                </button>
+                    <button
+                      className="button button--ghost"
+                      disabled={isPending}
+                      type="button"
+                      onClick={handleResetCard}
+                    >
+                      Reset card
+                    </button>
 
-                <button
-                  className="button button--ghost"
-                  disabled={isPending}
-                  type="button"
-                  onClick={handleToggleSuspended}
-                >
-                  {selectedCard.bucket === "suspended"
-                    ? "Riprendi"
-                    : "Sospendi"}
-                </button>
+                    <button
+                      className="button button--ghost"
+                      disabled={isPending}
+                      type="button"
+                      onClick={handleToggleSuspended}
+                    >
+                      {selectedCard.bucket === "suspended"
+                        ? "Riprendi"
+                        : "Sospendi"}
+                    </button>
 
-                {selectedCard.entries.map((entry) => (
-                  <Link
-                    key={entry.id}
-                    className="button button--ghost button--small"
-                    href={appendReturnToParam(entry.href, sessionHref)}
-                  >
-                    Apri la voce nel Glossary
-                  </Link>
-                ))}
-              </div>
+                    {fullSelectedCard
+                      ? fullSelectedCard.entries.map((entry) => (
+                          <Link
+                            key={entry.id}
+                            className="button button--ghost button--small"
+                            href={appendReturnToParam(entry.href, sessionHref)}
+                          >
+                            Apri la voce nel Glossary
+                          </Link>
+                        ))
+                      : null}
+                  </div>
 
-              {selectedCard.bucket === "manual" ? (
-                <p className="review-stage__hint">
-                  Lo stato manuale si applica alle voci collegate: la card resta
-                  intatta e riprende il suo scheduling appena la rimetti in
-                  studio.
-                </p>
-              ) : selectedCard.bucket === "suspended" ? (
-                <p className="review-stage__hint">
-                  La sospensione usa lo stato della card, non cancella
-                  intervalli o log già presenti.
-                </p>
+                  {selectedCard.bucket === "manual" ? (
+                    <p className="review-stage__hint">
+                      Lo stato manuale si applica alle voci collegate: la card
+                      resta intatta e riprende il suo scheduling appena la
+                      rimetti in studio.
+                    </p>
+                  ) : selectedCard.bucket === "suspended" ? (
+                    <p className="review-stage__hint">
+                      La sospensione usa lo stato della card, non cancella
+                      intervalli o log già presenti.
+                    </p>
+                  ) : null}
+                </>
               ) : null}
             </>
           ) : showCompletionState ? (
@@ -856,7 +980,7 @@ function buildOptimisticQueueUpdate(
   };
 }
 
-function showCompletionTopUp(data: ReviewPageData) {
+function showCompletionTopUp(data: ReviewPageClientData) {
   if (data.queue.queueCount > 0 || data.selectedCard !== null) {
     return 0;
   }
@@ -871,7 +995,7 @@ function formatTopUpLabel(count: number) {
 }
 
 function buildReviewSummary(
-  data: ReviewPageData,
+  data: ReviewPageClientData,
   isGlobalReview: boolean,
   hasAnyReviewCards: boolean
 ) {
@@ -880,4 +1004,32 @@ function buildReviewSummary(
   }
 
   return "La review globale non ha ancora card attive da mettere in coda.";
+}
+
+function isReviewPageData(data: ReviewPageClientData): data is ReviewPageData {
+  return "queueCardIds" in data;
+}
+
+function mergeReviewPageData(
+  currentData: ReviewPageClientData,
+  nextData: ReviewPageData
+): ReviewPageData {
+  const showAnswer =
+    currentData.selectedCardContext.showAnswer ||
+    nextData.selectedCardContext.showAnswer;
+
+  return {
+    ...nextData,
+    selectedCardContext: {
+      ...nextData.selectedCardContext,
+      gradePreviews:
+        showAnswer && nextData.selectedCard
+          ? buildReviewGradePreviews(
+              nextData.selectedCard.reviewSeedState,
+              new Date()
+            )
+          : nextData.selectedCardContext.gradePreviews,
+      showAnswer
+    }
+  };
 }

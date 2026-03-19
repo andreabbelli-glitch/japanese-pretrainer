@@ -95,7 +95,8 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
       .getByText("cimitero / graveyard")
   ).toBeVisible();
 
-  await page.goto("/review");
+  const reviewNavigationStartedAt = performance.now();
+  await page.goto("/review", { waitUntil: "domcontentloaded" });
   await expect(page).toHaveURL(/\/review(?:\?|$)/);
   await expect(page.locator(".review-page")).toBeVisible();
   await expect(
@@ -106,6 +107,14 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
     .textContent();
 
   expect(initialReviewFront?.trim().length).toBeGreaterThan(0);
+  await expect(
+    page.getByRole("button", { name: "Mostra risposta" })
+  ).toBeVisible();
+  console.info(
+    `[review-e2e] first-stage-visible=${Math.round(
+      performance.now() - reviewNavigationStartedAt
+    )}ms`
+  );
 
   await page.getByRole("button", { name: "Mostra risposta" }).click();
   const goodButton = page.getByRole("button", { name: /^Good/ });
@@ -114,6 +123,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await goodButton.click();
 
   await expect(page).toHaveURL(/\/review(?:\?|$)/);
+  await page.waitForLoadState("networkidle");
   await expect(
     page.getByRole("button", { name: "Mostra risposta" })
   ).toBeVisible();

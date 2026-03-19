@@ -4,6 +4,7 @@ import path from "node:path";
 
 import { closeDatabaseClient, db } from "../src/db/client.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
+import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
 
 try {
@@ -21,7 +22,9 @@ try {
         cliOptions.mediaSlugs.length > 0
           ? `Scope: media=${cliOptions.mediaSlugs.join(",")}.`
           : null,
-        result.issues.length > 0 ? `Validation issues: ${result.issues.length}.` : null
+        result.issues.length > 0
+          ? `Validation issues: ${result.issues.length}.`
+          : null
       ]
         .filter((value): value is string => value !== null)
         .join(" ")
@@ -82,6 +85,12 @@ try {
         console.info(`purged archived media=${purgedMedia.join(",")}`);
       }
     }
+
+    const backfillResult = await backfillReviewSubjectState(db);
+
+    console.info(
+      `Backfilled review_subject_state: ${backfillResult.insertedCount} subject state(s) from ${backfillResult.cardCount} card(s).`
+    );
   }
 } catch (error) {
   console.error(formatUnexpectedError(error));

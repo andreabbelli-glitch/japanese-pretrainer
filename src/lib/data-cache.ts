@@ -6,6 +6,7 @@ export const MEDIA_LIST_TAG = "media-list";
 export const SETTINGS_TAG = "settings";
 export const GLOSSARY_SUMMARY_TAG = "glossary-summary";
 export const REVIEW_SUMMARY_TAG = "review-summary";
+export const REVIEW_FIRST_CANDIDATE_TAG = "review-first-candidate";
 
 export function buildGlossarySummaryTags(mediaIds: string[] = []) {
   return dedupeTags([
@@ -56,14 +57,17 @@ export async function listMediaCached(database: DatabaseClient = db) {
 
 export function revalidateMediaListCache() {
   safeRevalidateTag(MEDIA_LIST_TAG);
+  safeRevalidateTag(REVIEW_FIRST_CANDIDATE_TAG);
 }
 
 export function revalidateSettingsCache() {
   safeRevalidateTag(SETTINGS_TAG);
+  safeRevalidateTag(REVIEW_FIRST_CANDIDATE_TAG);
 }
 
 export function revalidateGlossarySummaryCache(mediaId?: string | null) {
   safeRevalidateTag(GLOSSARY_SUMMARY_TAG);
+  safeRevalidateTag(REVIEW_FIRST_CANDIDATE_TAG);
 
   if (mediaId) {
     safeRevalidateTag(`${GLOSSARY_SUMMARY_TAG}:${mediaId}`);
@@ -72,6 +76,7 @@ export function revalidateGlossarySummaryCache(mediaId?: string | null) {
 
 export function revalidateReviewSummaryCache(mediaId?: string | null) {
   safeRevalidateTag(REVIEW_SUMMARY_TAG);
+  safeRevalidateTag(REVIEW_FIRST_CANDIDATE_TAG);
 
   if (mediaId) {
     safeRevalidateTag(`${REVIEW_SUMMARY_TAG}:${mediaId}`);

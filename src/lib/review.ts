@@ -35,7 +35,8 @@ import {
   buildReviewSummaryTags,
   canUseDataCache,
   listMediaCached,
-  runWithTaggedCache
+  runWithTaggedCache,
+  REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
 import {
   getReviewDailyLimit,
@@ -102,6 +103,16 @@ type ReviewSearchState = {
   showAnswer: boolean;
 };
 
+function buildReviewSearchStateCacheKeyParts(input: ReviewSearchState) {
+  return [
+    `answered:${input.answeredCount}`,
+    `extra-new:${input.extraNewCount}`,
+    `notice:${input.noticeCode ?? ""}`,
+    `selected:${input.selectedCardId ?? ""}`,
+    `show:${input.showAnswer ? "1" : "0"}`
+  ];
+}
+
 type ReviewEntryLookupItem = {
   href: ReturnType<typeof mediaGlossaryEntryHref>;
   id: string;
@@ -130,6 +141,63 @@ type ReviewMediaLookup = Map<
     title: string;
   }
 >;
+
+type ReviewFirstCandidateCard = {
+  back: string;
+  bucket: ReviewQueueCard["bucket"];
+  bucketDetail: string;
+  bucketLabel: string;
+  createdAt: string;
+  dueAt: string | null;
+  dueLabel?: string;
+  effectiveState: EffectiveReviewState["state"];
+  effectiveStateLabel: string;
+  exampleIt?: string;
+  exampleJp?: string;
+  front: string;
+  href: ReturnType<typeof mediaReviewCardHref>;
+  id: string;
+  mediaSlug: string;
+  mediaTitle: string;
+  notes?: string;
+  orderIndex: number | null;
+  rawReviewLabel: string;
+  reading?: string;
+  reviewSeedState: ReviewSeedState;
+  segmentTitle?: string;
+  typeLabel: string;
+};
+
+type ReviewFirstCandidateQueueSnapshot = Pick<
+  ReviewPageData["queue"],
+  | "dailyLimit"
+  | "dueCount"
+  | "effectiveDailyLimit"
+  | "manualCount"
+  | "newAvailableCount"
+  | "newQueuedCount"
+  | "queueCount"
+  | "suspendedCount"
+  | "upcomingCount"
+> & {
+  introLabel: string;
+  queueLabel: string;
+};
+
+type ReviewFirstCandidateSelectedCardContext = Omit<
+  ReviewPageData["selectedCardContext"],
+  "gradePreviews"
+>;
+
+export type ReviewFirstCandidatePageData = {
+  media: ReviewPageData["media"];
+  queue: ReviewFirstCandidateQueueSnapshot;
+  scope: ReviewScope;
+  selectedCard: ReviewFirstCandidateCard | null;
+  selectedCardContext: ReviewFirstCandidateSelectedCardContext;
+  settings: ReviewPageData["settings"];
+  session: ReviewPageData["session"];
+};
 
 type SubjectReviewCard = ReviewCardListItem & {
   reviewState: NonNullable<ReviewCardListItem["reviewState"]> | null;
@@ -308,6 +376,11 @@ export type GlobalReviewPageLoadResult =
   | { kind: "empty-media" }
   | { kind: "empty-cards" }
   | { kind: "ready"; data: ReviewPageData };
+
+export type GlobalReviewFirstCandidateLoadResult =
+  | { kind: "empty-media" }
+  | { kind: "empty-cards" }
+  | { kind: "ready"; data: ReviewFirstCandidatePageData };
 export type {
   ReviewGradePreview,
   ReviewSeedState
@@ -485,6 +558,10 @@ async function buildReviewPageDataFromWorkspace(input: {
         subjectGroups: input.subjectGroups,
         visibleMediaId: input.visibleMediaId
       });
+  const selection = resolveReviewPageSelection({
+    queueSnapshot,
+    searchState: input.searchState
+  });
   const queueCardMapInput: ReviewQueueCardMapInput = {
     contextCache: new Map(),
     entryLookup: input.entryLookup,
@@ -495,47 +572,19 @@ async function buildReviewPageDataFromWorkspace(input: {
   const queueCardIds = queueSnapshot.queueModels.map(
     (model) => model.globalCard.id
   );
-  const visibleSelectionModels = [
-    ...queueSnapshot.queueModels,
-    ...queueSnapshot.manualModels,
-    ...queueSnapshot.suspendedModels,
-    ...queueSnapshot.upcomingModels
-  ];
-  const explicitSelectionModel = input.searchState.selectedCardId
-    ? findReviewQueueSubjectModelByCardId(
-        visibleSelectionModels,
-        input.searchState.selectedCardId
-      )
-    : null;
-  const fallbackSelectionModel =
-    input.searchState.selectedCardId && explicitSelectionModel === null
-      ? findReviewQueueSubjectModelByCardId(
-          queueSnapshot.subjectModels,
-          input.searchState.selectedCardId
-        )
-      : null;
-  const selectedModel =
-    explicitSelectionModel ??
-    fallbackSelectionModel ??
-    queueSnapshot.queueModels[0] ??
-    null;
-  const selectedCardId =
-    explicitSelectionModel || fallbackSelectionModel
-      ? input.searchState.selectedCardId
-      : null;
-  const selectedCardBase = selectedModel
-    ? mapReviewQueueSubjectModel(selectedModel, {
+  const selectedCardBase = selection.selectedModel
+    ? mapReviewQueueSubjectModel(selection.selectedModel, {
         ...queueCardMapInput,
-        selectedCardId
+        selectedCardId: selection.selectedCardId
       })
     : null;
-  const selectedRawCard = selectedModel
+  const selectedRawCard = selection.selectedModel
     ? resolveReviewQueueSubjectSelectionCard({
-        entryLookup: input.entryLookup,
-        nowIso,
-        preferredMediaId: input.visibleMediaId,
-        selectedCardId,
-        subjectGroup: selectedModel.group
+      entryLookup: input.entryLookup,
+      nowIso,
+      preferredMediaId: input.visibleMediaId,
+      selectedCardId: selection.selectedCardId,
+      subjectGroup: selection.selectedModel.group
       })
     : null;
   const selectedCard =
@@ -560,17 +609,8 @@ async function buildReviewPageDataFromWorkspace(input: {
                 database: input.database,
                 entryLookup: input.entryLookup
               }))
-        }
-      : selectedCardBase;
-  const selectedQueueModel = selectedCard
-    ? findReviewQueueSubjectModelByCardId(
-        queueSnapshot.queueModels,
-        selectedCard.id
-      )
-    : null;
-  const queueIndex = selectedQueueModel
-    ? queueSnapshot.queueModels.indexOf(selectedQueueModel)
-    : -1;
+      }
+    : selectedCardBase;
   const selectedGradePreviews = selectedCard
     ? buildReviewGradePreviews(selectedCard.reviewSeedState, input.now)
     : [];
@@ -606,11 +646,13 @@ async function buildReviewPageDataFromWorkspace(input: {
     selectedCardContext: {
       bucket: selectedCard?.bucket ?? null,
       gradePreviews: selectedGradePreviews,
-      isQueueCard: queueIndex >= 0,
-      position: queueIndex >= 0 ? queueIndex + 1 : null,
+      isQueueCard: selection.queueIndex >= 0,
+      position: selection.queueIndex >= 0 ? selection.queueIndex + 1 : null,
       remainingCount:
-        queueIndex >= 0 ? queueSnapshot.queueCount - queueIndex - 1 : 0,
-      showAnswer: input.searchState.showAnswer || queueIndex < 0
+        selection.queueIndex >= 0
+          ? queueSnapshot.queueCount - selection.queueIndex - 1
+          : 0,
+      showAnswer: input.searchState.showAnswer || selection.queueIndex < 0
     },
     session: {
       answeredCount: input.searchState.answeredCount,
@@ -618,6 +660,237 @@ async function buildReviewPageDataFromWorkspace(input: {
       notice: resolveReviewNotice(input.searchState.noticeCode)
     }
   } satisfies ReviewPageData;
+}
+
+function resolveReviewPageSelection(input: {
+  queueSnapshot: ReviewQueueSubjectSnapshot;
+  searchState: ReviewSearchState;
+}) {
+  const visibleSelectionModels = [
+    ...input.queueSnapshot.queueModels,
+    ...input.queueSnapshot.manualModels,
+    ...input.queueSnapshot.suspendedModels,
+    ...input.queueSnapshot.upcomingModels
+  ];
+  const explicitSelectionModel = input.searchState.selectedCardId
+    ? findReviewQueueSubjectModelByCardId(
+        visibleSelectionModels,
+        input.searchState.selectedCardId
+      )
+    : null;
+  const fallbackSelectionModel =
+    input.searchState.selectedCardId && explicitSelectionModel === null
+      ? findReviewQueueSubjectModelByCardId(
+          input.queueSnapshot.subjectModels,
+          input.searchState.selectedCardId
+        )
+      : null;
+  const selectedModel =
+    explicitSelectionModel ??
+    fallbackSelectionModel ??
+    input.queueSnapshot.queueModels[0] ??
+    null;
+  const selectedCardId =
+    explicitSelectionModel || fallbackSelectionModel
+      ? input.searchState.selectedCardId
+      : null;
+  const selectedQueueModel = selectedModel
+    ? findReviewQueueSubjectModelByCardId(
+        input.queueSnapshot.queueModels,
+        selectedModel.globalCard.id
+      )
+    : null;
+  const queueIndex = selectedQueueModel
+    ? input.queueSnapshot.queueModels.indexOf(selectedQueueModel)
+    : -1;
+
+  return {
+    queueIndex,
+    selectedCardId,
+    selectedModel,
+    selectedQueueModel
+  };
+}
+
+function buildReviewFirstCandidateSelectedCardContext(input: {
+  bucket: ReviewFirstCandidateCard["bucket"] | null;
+  queueIndex: number;
+  queueSnapshot: ReviewQueueSubjectSnapshot;
+  searchState: ReviewSearchState;
+}): ReviewFirstCandidateSelectedCardContext {
+  return {
+    bucket: input.bucket,
+    isQueueCard: input.queueIndex >= 0,
+    position: input.queueIndex >= 0 ? input.queueIndex + 1 : null,
+    remainingCount:
+      input.queueIndex >= 0
+        ? input.queueSnapshot.queueCount - input.queueIndex - 1
+        : 0,
+    showAnswer: input.searchState.showAnswer || input.queueIndex < 0
+  };
+}
+
+function mapReviewQueueSubjectCardPreview(input: {
+  card: ReviewCardListItem;
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+  mediaById: ReviewMediaLookup;
+  nowIso: string;
+  resolvedState: ResolvedReviewQueueState;
+}) {
+  const cardMedia = resolveReviewCardMedia(input.card, input.mediaById);
+
+  return {
+    back: input.card.back,
+    bucket: input.resolvedState.bucket,
+    bucketDetail: buildBucketDetail(
+      input.resolvedState.bucket,
+      input.resolvedState.dueAt
+    ),
+    bucketLabel: formatBucketLabel(
+      input.resolvedState.bucket,
+      input.resolvedState.effectiveState
+    ),
+    createdAt: input.card.createdAt,
+    dueAt: input.resolvedState.dueAt,
+    dueLabel: input.resolvedState.dueAt
+      ? `Scadenza ${formatShortIsoDate(input.resolvedState.dueAt)}`
+      : undefined,
+    effectiveState: input.resolvedState.effectiveState,
+    effectiveStateLabel:
+      input.resolvedState.effectiveState === "ignored"
+        ? "Ignorata"
+        : formatReviewStateLabel(
+            input.resolvedState.effectiveState,
+            input.resolvedState.effectiveState === "known_manual"
+          ),
+    exampleIt: input.card.exampleIt ?? undefined,
+    exampleJp: input.card.exampleJp ?? undefined,
+    front: input.card.front,
+    href: mediaReviewCardHref(cardMedia.slug, input.card.id),
+    id: input.card.id,
+    mediaSlug: cardMedia.slug,
+    mediaTitle: cardMedia.title,
+    notes: input.card.notesIt ?? undefined,
+    orderIndex: input.card.orderIndex,
+    rawReviewLabel: input.resolvedState.rawReviewLabel,
+    reading: resolveReviewCardReading(input.card, input.entryLookup),
+    reviewSeedState: input.resolvedState.reviewSeedState,
+    segmentTitle: input.card.segment?.title ?? undefined,
+    typeLabel: capitalizeToken(input.card.cardType)
+  } satisfies ReviewFirstCandidateCard;
+}
+
+async function buildReviewFirstCandidateDataFromWorkspace(input: {
+  cards: ReviewCardListItem[];
+  dailyLimit: number;
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+  media: ReviewPageWorkspace;
+  mediaById: ReviewMediaLookup;
+  newIntroducedTodayCount: number;
+  now: Date;
+  reviewFrontFurigana: boolean;
+  scope: ReviewScope;
+  searchState: ReviewSearchState;
+  subjectGroups: ReviewSubjectGroup[];
+  visibleMediaId?: string;
+  profiler?: ReviewProfiler | null;
+}): Promise<ReviewFirstCandidatePageData> {
+  const nowIso = input.now.toISOString();
+  const queueSnapshot = input.profiler
+    ? await input.profiler.measure(
+        "buildReviewQueueSubjectSnapshot",
+        () =>
+          buildReviewQueueSubjectSnapshot({
+            cards: input.cards,
+            dailyLimit: input.dailyLimit,
+            entryLookup: input.entryLookup,
+            extraNewCount: input.searchState.extraNewCount,
+            newIntroducedTodayCount: input.newIntroducedTodayCount,
+            nowIso,
+            subjectGroups: input.subjectGroups,
+            visibleMediaId: input.visibleMediaId
+          }),
+        (value) => ({
+          dueCount: value.dueCount,
+          newQueuedCount: value.newQueuedCount,
+          queueCount: value.queueCount,
+          subjectModels: value.subjectModels.length
+        })
+      )
+    : buildReviewQueueSubjectSnapshot({
+        cards: input.cards,
+        dailyLimit: input.dailyLimit,
+        entryLookup: input.entryLookup,
+        extraNewCount: input.searchState.extraNewCount,
+        newIntroducedTodayCount: input.newIntroducedTodayCount,
+        nowIso,
+        subjectGroups: input.subjectGroups,
+        visibleMediaId: input.visibleMediaId
+      });
+  const selection = resolveReviewPageSelection({
+    queueSnapshot,
+    searchState: input.searchState
+  });
+  const selectedRawCard = selection.selectedModel
+    ? resolveReviewQueueSubjectSelectionCard({
+        entryLookup: input.entryLookup,
+        nowIso,
+        preferredMediaId: input.visibleMediaId,
+        selectedCardId: selection.selectedCardId,
+        subjectGroup: selection.selectedModel.group
+      })
+    : null;
+  const selectedCard =
+    selection.selectedModel && selectedRawCard
+      ? mapReviewQueueSubjectCardPreview({
+          card: applySubjectStateToReviewCard(
+            selectedRawCard,
+            selection.selectedModel.group.subjectState
+          ),
+          entryLookup: input.entryLookup,
+          mediaById: input.mediaById,
+          nowIso,
+          resolvedState: selection.selectedModel.resolvedState
+        })
+      : null;
+  const selectedCardContext = buildReviewFirstCandidateSelectedCardContext({
+    bucket: selectedCard?.bucket ?? null,
+    queueIndex: selection.queueIndex,
+    queueSnapshot,
+    searchState: input.searchState
+  });
+
+  input.profiler?.addMeta({
+    selectedCardId: selectedCard?.id ?? null
+  });
+
+  return {
+    media: input.media,
+    queue: {
+      dailyLimit: queueSnapshot.dailyLimit,
+      dueCount: queueSnapshot.dueCount,
+      effectiveDailyLimit: queueSnapshot.effectiveDailyLimit,
+      introLabel: queueSnapshot.introLabel,
+      manualCount: queueSnapshot.manualCount,
+      newAvailableCount: queueSnapshot.newAvailableCount,
+      newQueuedCount: queueSnapshot.newQueuedCount,
+      queueCount: queueSnapshot.queueCount,
+      queueLabel: queueSnapshot.introLabel,
+      suspendedCount: queueSnapshot.suspendedCount,
+      upcomingCount: queueSnapshot.upcomingCount
+    },
+    scope: input.scope,
+    selectedCard,
+    selectedCardContext,
+    settings: {
+      reviewFrontFurigana: input.reviewFrontFurigana
+    },
+    session: {
+      answeredCount: input.searchState.answeredCount,
+      extraNewCount: input.searchState.extraNewCount,
+      notice: resolveReviewNotice(input.searchState.noticeCode)
+    }
+  };
 }
 
 function collectReviewLinkedEntryIds(
@@ -989,33 +1262,47 @@ export async function getReviewPageData(
       });
 }
 
-async function loadGlobalReviewPageWorkspace(
+async function loadGlobalReviewWorkspace(
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db,
   options: ReviewPageLoadOptions = {}
-): Promise<LoadedGlobalReviewPageWorkspace> {
+): Promise<Omit<LoadedGlobalReviewPageWorkspace, "reviewFrontFurigana">> {
   const now = new Date();
   const mediaRows = await (options.profiler
     ? options.profiler.measure("listMediaCached", () => listMediaCached(database))
     : listMediaCached(database));
   const searchState = normalizeReviewSearchState(searchParams);
-  const [workspace, reviewFrontFurigana] = await Promise.all([
-    options.profiler
-      ? options.profiler.measure("loadReviewWorkspaceV2", () =>
-          loadReviewWorkspaceV2({
-            bypassCache: options.bypassCache,
-            database,
-            mediaIds: mediaRows.map((item) => item.id),
-            now,
-            profiler: options.profiler
-          })
-        )
-      : loadReviewWorkspaceV2({
+  const workspace = await (options.profiler
+    ? options.profiler.measure("loadReviewWorkspaceV2", () =>
+        loadReviewWorkspaceV2({
           bypassCache: options.bypassCache,
           database,
           mediaIds: mediaRows.map((item) => item.id),
-          now
-        }),
+          now,
+          profiler: options.profiler
+        })
+      )
+    : loadReviewWorkspaceV2({
+        bypassCache: options.bypassCache,
+        database,
+        mediaIds: mediaRows.map((item) => item.id),
+        now
+      }));
+
+  return {
+    mediaRows,
+    searchState,
+    ...workspace
+  };
+}
+
+async function loadGlobalReviewPageWorkspace(
+  searchParams: Record<string, string | string[] | undefined>,
+  database: DatabaseClient = db,
+  options: ReviewPageLoadOptions = {}
+): Promise<LoadedGlobalReviewPageWorkspace> {
+  const [workspace, reviewFrontFurigana] = await Promise.all([
+    loadGlobalReviewWorkspace(searchParams, database, options),
     options.profiler
       ? options.profiler.measure("getReviewFrontFuriganaSetting", () =>
           getReviewFrontFuriganaSetting(database)
@@ -1024,10 +1311,8 @@ async function loadGlobalReviewPageWorkspace(
   ]);
 
   return {
-    mediaRows,
-    reviewFrontFurigana,
-    searchState,
-    ...workspace
+    ...workspace,
+    reviewFrontFurigana
   };
 }
 
@@ -1113,6 +1398,86 @@ export async function getGlobalReviewPageLoadResult(
       options.profiler
     )
   };
+}
+
+export async function getGlobalReviewFirstCandidateLoadResult(
+  searchParams: Record<string, string | string[] | undefined>,
+  database: DatabaseClient = db,
+  options: ReviewPageLoadOptions = {}
+): Promise<GlobalReviewFirstCandidateLoadResult> {
+  const cacheEligible = !options.bypassCache && canUseDataCache(database);
+  const searchState = normalizeReviewSearchState(searchParams);
+  const cacheKeyParts = [
+    "review",
+    "global-first-candidate",
+    ...buildReviewSearchStateCacheKeyParts(searchState)
+  ];
+
+  const loadSnapshot = async () => {
+    const [workspace, reviewFrontFurigana] = await Promise.all([
+      loadGlobalReviewWorkspace(searchParams, database, options),
+      options.profiler
+        ? options.profiler.measure("getReviewFrontFuriganaSetting", () =>
+            getReviewFrontFuriganaSetting(database)
+          )
+        : getReviewFrontFuriganaSetting(database)
+    ]);
+
+    if (workspace.mediaRows.length === 0) {
+      return {
+        kind: "empty-media" as const
+      };
+    }
+
+    if (workspace.rawCardCount === 0) {
+      return {
+        kind: "empty-cards" as const
+      };
+    }
+
+    return {
+      kind: "ready" as const,
+      data: await buildReviewFirstCandidateDataFromWorkspace({
+        cards: workspace.cards,
+        dailyLimit: workspace.dailyLimit,
+        entryLookup: workspace.entryLookup,
+        media: {
+          glossaryHref: "/glossary",
+          href: "/",
+          reviewHref: "/review",
+          slug: "global-review",
+          title: "Review globale"
+        },
+        mediaById: buildReviewMediaLookup(workspace.mediaRows),
+        newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+        now: workspace.now,
+        profiler: options.profiler,
+        reviewFrontFurigana,
+        scope: "global",
+        searchState: workspace.searchState,
+        subjectGroups: workspace.subjectGroups
+      })
+    };
+  };
+
+  const loadWithCache = () =>
+    runWithTaggedCache({
+      enabled: cacheEligible,
+      keyParts: cacheKeyParts,
+      loader: loadSnapshot,
+      tags: [REVIEW_FIRST_CANDIDATE_TAG]
+    });
+
+  return options.profiler
+    ? options.profiler.measure(
+        "getGlobalReviewFirstCandidateLoadResult",
+        loadWithCache,
+        {
+          cacheEligible,
+          searchState: cacheKeyParts.join("|")
+        }
+      )
+    : loadWithCache();
 }
 
 export async function getGlobalReviewPageData(

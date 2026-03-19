@@ -8,6 +8,12 @@ export NVM_DIR="${ORIGINAL_NVM_DIR:-$DEFAULT_NVM_DIR}"
 NODE_VERSION="$(cat "$ROOT_DIR/.nvmrc")"
 CURRENT_NODE_VERSION="$(node --version 2>/dev/null || true)"
 
+# Some tooling sets FORCE_COLOR while the shell exports NO_COLOR.
+# Node warns and then ignores NO_COLOR anyway, so normalize the env first.
+if [[ -n "${FORCE_COLOR:-}" && -n "${NO_COLOR:-}" ]]; then
+  unset NO_COLOR
+fi
+
 if [[ "$CURRENT_NODE_VERSION" == "v$NODE_VERSION" ]]; then
   exec "$@"
 fi

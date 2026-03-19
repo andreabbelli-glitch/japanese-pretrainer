@@ -12,12 +12,12 @@ import {
   runMigrations,
   type DatabaseClient
 } from "@/db";
-import {
-  getGlobalReviewPageData,
-  getReviewPageData
-} from "@/lib/review";
+import { getGlobalReviewPageData, getReviewPageData } from "@/lib/review";
 import { importContentWorkspace } from "@/lib/content/importer";
-import { backfillReviewSubjectState } from "@/lib/review-subject-state-backfill";
+import {
+  backfillReviewSubjectState,
+  inspectReviewSubjectStateCoverage
+} from "@/lib/review-subject-state-backfill";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture
@@ -84,14 +84,30 @@ describe("review subject state backfill", () => {
 
     expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
 
+    const coverageBefore = await inspectReviewSubjectStateCoverage(database, {
+      now: new Date("2026-03-11T09:00:00.000Z")
+    });
+
+    expect(coverageBefore).toMatchObject({
+      cardCount: 5,
+      complete: false,
+      existingStateCount: 0,
+      missingStateCount: 3,
+      subjectCount: 3
+    });
+
     const [beforeGlobal, beforeBeta] = await Promise.all([
       getGlobalReviewPageData({}, database),
       getReviewPageData(crossMediaFixture.beta.mediaSlug, {}, database)
     ]);
 
-    expect(beforeGlobal.selectedCard?.id).toBe(crossMediaFixture.alpha.termCardId);
+    expect(beforeGlobal.selectedCard?.id).toBe(
+      crossMediaFixture.alpha.termCardId
+    );
     expect(beforeGlobal.selectedCard?.bucket).toBe("due");
-    expect(beforeBeta?.selectedCard?.id).toBe(crossMediaFixture.beta.termCardId);
+    expect(beforeBeta?.selectedCard?.id).toBe(
+      crossMediaFixture.beta.termCardId
+    );
     expect(beforeBeta?.selectedCard?.bucket).toBe("due");
 
     const firstRun = await backfillReviewSubjectState(database, {
@@ -125,6 +141,18 @@ describe("review subject state backfill", () => {
       suspended: false
     });
 
+    const coverageAfter = await inspectReviewSubjectStateCoverage(database, {
+      now: new Date("2026-03-11T09:05:00.000Z")
+    });
+
+    expect(coverageAfter).toMatchObject({
+      cardCount: 5,
+      complete: true,
+      existingStateCount: 3,
+      missingStateCount: 0,
+      subjectCount: 3
+    });
+
     const secondRun = await backfillReviewSubjectState(database, {
       now: new Date("2026-03-11T09:05:00.000Z")
     });
@@ -140,9 +168,13 @@ describe("review subject state backfill", () => {
 
     expect(afterGlobal.queue.dueCount).toBe(beforeGlobal.queue.dueCount);
     expect(afterGlobal.selectedCard?.id).toBe(beforeGlobal.selectedCard?.id);
-    expect(afterGlobal.selectedCard?.bucket).toBe(beforeGlobal.selectedCard?.bucket);
+    expect(afterGlobal.selectedCard?.bucket).toBe(
+      beforeGlobal.selectedCard?.bucket
+    );
     expect(afterBeta?.queue.dueCount).toBe(beforeBeta?.queue.dueCount ?? 0);
-    expect(afterBeta?.selectedCard?.id).toBe(beforeBeta?.selectedCard?.id ?? null);
+    expect(afterBeta?.selectedCard?.id).toBe(
+      beforeBeta?.selectedCard?.id ?? null
+    );
     expect(afterBeta?.selectedCard?.bucket).toBe(
       beforeBeta?.selectedCard?.bucket ?? null
     );

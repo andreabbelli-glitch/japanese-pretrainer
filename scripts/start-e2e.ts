@@ -3,8 +3,14 @@ import "dotenv/config";
 import path from "node:path";
 import { spawn } from "node:child_process";
 
-import { closeDatabaseClient, createDatabaseClient, runMigrations } from "../src/db/index.ts";
+import {
+  closeDatabaseClient,
+  createDatabaseClient,
+  runMigrations
+} from "../src/db/index.ts";
+import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
+import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
 
 const database = createDatabaseClient({
   databaseUrl: process.env.DATABASE_URL
@@ -31,6 +37,9 @@ try {
 
     process.exit(1);
   }
+
+  await purgeArchivedMedia(database);
+  await backfillReviewSubjectState(database);
 } finally {
   closeDatabaseClient(database);
 }
@@ -60,9 +69,7 @@ for (const eventName of ["SIGINT", "SIGTERM"] as const) {
   });
 }
 
-function createE2ERuntimeEnv(
-  sourceEnv: NodeJS.ProcessEnv
-): NodeJS.ProcessEnv {
+function createE2ERuntimeEnv(sourceEnv: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
   return {
     ...sourceEnv,
     AUTH_PASSWORD: "",
