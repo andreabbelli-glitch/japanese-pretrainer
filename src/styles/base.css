@@ -1369,9 +1369,15 @@ rt {
 .reader-image--zoomable:hover .reader-image__asset,
 .reader-image__button:focus-visible .reader-image__asset,
 .reader-image--active .reader-image__asset,
-.reader-article--fallback figure.reader-image--interactive:hover .reader-image__asset,
-.reader-article--fallback figure.reader-image--zoomable:hover .reader-image__asset,
-.reader-article--fallback .reader-image__button:focus-visible .reader-image__asset,
+.reader-article--fallback
+  figure.reader-image--interactive:hover
+  .reader-image__asset,
+.reader-article--fallback
+  figure.reader-image--zoomable:hover
+  .reader-image__asset,
+.reader-article--fallback
+  .reader-image__button:focus-visible
+  .reader-image__asset,
 .reader-article--fallback figure.reader-image--active .reader-image__asset {
   border-color: rgba(160, 128, 74, 0.92);
   box-shadow: 0 22px 42px rgba(90, 70, 39, 0.14);
@@ -1425,8 +1431,11 @@ rt {
   padding: clamp(var(--space-4), 2.2vw, var(--space-6));
   border: 1px solid rgba(210, 197, 177, 0.24);
   border-radius: calc(var(--radius-xl) + 0.25rem);
-  background:
-    linear-gradient(180deg, rgba(43, 37, 32, 0.98), rgba(24, 21, 18, 0.98));
+  background: linear-gradient(
+    180deg,
+    rgba(43, 37, 32, 0.98),
+    rgba(24, 21, 18, 0.98)
+  );
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
   color: var(--color-ink-inverse);
   overflow-y: auto;
@@ -1832,6 +1841,10 @@ rt {
 .review-entry-card {
   display: grid;
   gap: var(--space-4);
+}
+
+.review-stage {
+  scroll-margin-top: calc(var(--app-header-height-desktop) + var(--space-5));
 }
 
 .review-session-stats {
@@ -2790,7 +2803,8 @@ rt {
   .glossary-workspace__results {
     min-width: 0;
     max-height: calc(
-      100dvh - var(--app-header-height-desktop) - var(--space-6) - var(--space-5)
+      100dvh - var(--app-header-height-desktop) - var(--space-6) -
+        var(--space-5)
     );
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -2814,7 +2828,8 @@ rt {
 
   .glossary-preview-panel {
     max-height: calc(
-      100dvh - var(--app-header-height-desktop) - var(--space-6) - var(--space-5)
+      100dvh - var(--app-header-height-desktop) - var(--space-6) -
+        var(--space-5)
     );
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -2839,7 +2854,8 @@ rt {
 
   .reader-rail .reader-rail__card {
     max-height: calc(
-      100dvh - var(--app-header-height-desktop) - var(--space-4) - var(--space-5)
+      100dvh - var(--app-header-height-desktop) - var(--space-4) -
+        var(--space-5)
     );
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -2955,6 +2971,10 @@ rt {
 
   .sticky-page-header {
     position: static;
+  }
+
+  .review-stage {
+    scroll-margin-top: var(--space-4);
   }
 
   .sticky-page-header__inner {

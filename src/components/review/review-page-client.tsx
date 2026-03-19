@@ -58,6 +58,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   const [viewData, setViewData] = useState(data);
   const [queueCardIds, setQueueCardIds] = useState(data.queueCardIds);
   const [clientError, setClientError] = useState<string | null>(null);
+  const [pendingAnsweredCountScroll, setPendingAnsweredCountScroll] = useState<
+    number | null
+  >(null);
   const [prefetchedNextCard, setPrefetchedNextCard] =
     useState<ReviewQueueCard | null>(null);
   const [prefetchedNextCardId, setPrefetchedNextCardId] = useState<
@@ -130,9 +133,27 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   }, [sessionHref]);
 
   useEffect(() => {
+    if (
+      pendingAnsweredCountScroll === null ||
+      viewData.session.answeredCount <= pendingAnsweredCountScroll
+    ) {
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      document
+        .querySelector<HTMLElement>(".review-stage")
+        ?.scrollIntoView({ block: "start" });
+      setPendingAnsweredCountScroll(null);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
+  }, [pendingAnsweredCountScroll, viewData.session.answeredCount]);
+
+  useEffect(() => {
     if (!selectedCard || !isQueueCard || !nextQueueCardId) {
-      setPrefetchedNextCard(null);
-      setPrefetchedNextCardId(null);
       return;
     }
 
@@ -233,18 +254,26 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
+    setPendingAnsweredCountScroll(viewData.session.answeredCount);
+
     if (!isQueueCard) {
-      runSessionUpdate(() =>
-        gradeReviewCardSessionAction({
-          answeredCount: viewData.session.answeredCount,
-          cardId: selectedCard.id,
-          cardMediaSlug: selectedCard.mediaSlug,
-          extraNewCount: viewData.session.extraNewCount,
-          mediaSlug:
-            viewData.scope === "media" ? viewData.media.slug : undefined,
-          rating,
-          scope: viewData.scope
-        })
+      runSessionUpdate(
+        () =>
+          gradeReviewCardSessionAction({
+            answeredCount: viewData.session.answeredCount,
+            cardId: selectedCard.id,
+            cardMediaSlug: selectedCard.mediaSlug,
+            extraNewCount: viewData.session.extraNewCount,
+            mediaSlug:
+              viewData.scope === "media" ? viewData.media.slug : undefined,
+            rating,
+            scope: viewData.scope
+          }),
+        {
+          onError: () => {
+            setPendingAnsweredCountScroll(null);
+          }
+        }
       );
       return;
     }
@@ -277,6 +306,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
           sessionSettings: viewData.settings
         }),
       {
+        onError: () => {
+          setPendingAnsweredCountScroll(null);
+        },
         optimisticUpdate: canOptimisticallyAdvance
           ? () => {
               const previousViewData = viewData;

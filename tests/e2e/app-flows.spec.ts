@@ -14,11 +14,16 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
     page.getByRole("heading", { name: "Duel Masters" }).first()
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "Mobile Suit Gundam Arsenal Base" }).first()
+    page
+      .getByRole("heading", { name: "Mobile Suit Gundam Arsenal Base" })
+      .first()
   ).toBeVisible();
 
   await page.goto("/");
-  await page.getByRole("link", { name: "Continua il percorso" }).first().click();
+  await page
+    .getByRole("link", { name: "Continua il percorso" })
+    .first()
+    .click();
 
   await expect(page).toHaveURL(
     /\/media\/duel-masters-dm25\/textbook\/tcg-core-overview$/
@@ -105,10 +110,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await page.getByRole("button", { name: "Mostra risposta" }).click();
   const goodButton = page.getByRole("button", { name: /^Good/ });
   await goodButton.hover();
-  await expect(goodButton).toHaveCSS(
-    "cursor",
-    "pointer"
-  );
+  await expect(goodButton).toHaveCSS("cursor", "pointer");
   await goodButton.click();
 
   await expect(page).toHaveURL(/\/review(?:\?|$)/);
@@ -160,6 +162,42 @@ test("keeps the review session on a valid next state after grading again", async
   await expect(page.getByRole("button", { name: /^Again/ })).toHaveCount(0);
 });
 
+test("scrolls the review stage back into view after grading the next card", async ({
+  page
+}) => {
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await page.goto("/review");
+  await expect(page).toHaveURL(/\/review(?:\?|$)/);
+
+  await page.getByRole("button", { name: "Mostra risposta" }).click();
+
+  await page.evaluate(() => {
+    window.scrollTo({ top: document.body.scrollHeight });
+  });
+
+  const scrollBeforeGrade = await page.evaluate(() => window.scrollY);
+  expect(scrollBeforeGrade).toBeGreaterThan(0);
+
+  await page.getByRole("button", { name: /^Good/ }).click();
+
+  await expect(
+    page.getByRole("button", { name: "Mostra risposta" })
+  ).toBeVisible();
+
+  await expect
+    .poll(() => page.evaluate(() => window.scrollY))
+    .toBeLessThan(scrollBeforeGrade);
+
+  const frontTop = await page
+    .locator(".review-stage__front")
+    .evaluate((element) => {
+      return element.getBoundingClientRect().top;
+    });
+
+  expect(frontTop).toBeGreaterThanOrEqual(0);
+  expect(frontTop).toBeLessThan(360);
+});
+
 test("keeps the revealed review answer mounted while the answer URL is synchronized", async ({
   page
 }) => {
@@ -167,7 +205,9 @@ test("keeps the revealed review answer mounted while the answer URL is synchroni
   await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review(?:\?|$)/);
 
   await page.getByRole("button", { name: "Mostra risposta" }).click();
-  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review\?show=answer$/);
+  await expect(page).toHaveURL(
+    /\/media\/duel-masters-dm25\/review\?show=answer$/
+  );
 
   await page.evaluate(() => {
     const answer = document.querySelector(".review-stage__answer");
