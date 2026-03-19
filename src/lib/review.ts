@@ -873,7 +873,6 @@ export async function getReviewPageData(
     return null;
   }
 
-  const mediaRows = await listMedia(database);
   const mediaIds = [media.id];
   const searchState = normalizeReviewSearchState(searchParams);
   const [
@@ -907,7 +906,7 @@ export async function getReviewPageData(
       slug: media.slug,
       title: media.title
     },
-    mediaById: buildReviewMediaLookup(mediaRows),
+    mediaById: buildSingleMediaLookup(media),
     newIntroducedTodayCount,
     now,
     reviewFrontFurigana,
@@ -1048,7 +1047,6 @@ export async function getReviewQueueSnapshotForMedia(
     return null;
   }
 
-  const mediaRows = await listMedia(database);
   const mediaIds = [media.id];
   const [eligibleCards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
@@ -1082,7 +1080,7 @@ export async function getReviewQueueSnapshotForMedia(
     dailyLimit,
     entryLookup,
     extraNewCount: 0,
-    mediaById: buildReviewMediaLookup(mediaRows),
+    mediaById: buildSingleMediaLookup(media),
     newIntroducedTodayCount,
     now,
     nowIso,
@@ -1986,6 +1984,20 @@ function buildReviewMediaLookup(media: MediaListItem[]) {
       }
     ])
   );
+}
+
+function buildSingleMediaLookup(
+  media: Pick<MediaListItem, "id" | "slug" | "title">
+): ReviewMediaLookup {
+  return new Map([
+    [
+      media.id,
+      {
+        slug: media.slug,
+        title: media.title
+      }
+    ]
+  ]);
 }
 
 function groupLessonLinkedReviewEntriesByMedia(
