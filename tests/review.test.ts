@@ -121,6 +121,41 @@ async function prepareReviewSessionRedirectFixture(database: DatabaseClient) {
   };
 }
 
+async function prepareTwoQueueCardFixture(database: DatabaseClient) {
+  await database
+    .update(reviewState)
+    .set({
+      dueAt: "2000-01-01T00:00:00.000Z"
+    })
+    .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+
+  await database
+    .update(reviewState)
+    .set({
+      dueAt: "2000-01-01T00:05:00.000Z"
+    })
+    .where(eq(reviewState.cardId, developmentFixture.secondaryCardId));
+
+  await database
+    .update(entryStatus)
+    .set({
+      reason: "Test setup queue state.",
+      setAt: "2026-03-09T15:00:00.000Z",
+      status: "learning"
+    })
+    .where(
+      and(
+        eq(entryStatus.entryType, "grammar"),
+        eq(entryStatus.entryId, developmentFixture.grammarDbId)
+      )
+    );
+
+  return {
+    currentCardId: developmentFixture.primaryCardId,
+    nextCardId: developmentFixture.secondaryCardId
+  };
+}
+
 type ReviewPageLoadCall = {
   mediaSlug?: string;
   scope: "global" | "media";
@@ -136,29 +171,35 @@ async function loadReviewActionsForDatabase(database: DatabaseClient) {
 
   try {
     vi.resetModules();
-    vi.doMock("@/lib/review", () => ({
-      getGlobalReviewPageData: vi.fn(
-        async (searchParams: Record<string, string>) => {
-          reviewPageCalls.push({
-            scope: "global",
-            searchParams
-          });
+    vi.doMock("@/lib/review", async () => {
+      const actual =
+        await vi.importActual<typeof import("@/lib/review")>("@/lib/review");
 
-          return {} as ReviewPageData;
-        }
-      ),
-      getReviewPageData: vi.fn(
-        async (mediaSlug: string, searchParams: Record<string, string>) => {
-          reviewPageCalls.push({
-            mediaSlug,
-            scope: "media",
-            searchParams
-          });
+      return {
+        ...actual,
+        getGlobalReviewPageData: vi.fn(
+          async (searchParams: Record<string, string>) => {
+            reviewPageCalls.push({
+              scope: "global",
+              searchParams
+            });
 
-          return {} as ReviewPageData;
-        }
-      )
-    }));
+            return {} as ReviewPageData;
+          }
+        ),
+        getReviewPageData: vi.fn(
+          async (mediaSlug: string, searchParams: Record<string, string>) => {
+            reviewPageCalls.push({
+              mediaSlug,
+              scope: "media",
+              searchParams
+            });
+
+            return {} as ReviewPageData;
+          }
+        )
+      };
+    });
     globalDatabase.__japaneseCustomStudyDb__ = database;
 
     return {
@@ -1190,6 +1231,10 @@ describe("review system", () => {
     expect(frontQueuePage?.selectedCard?.id).toBe(
       developmentFixture.primaryCardId
     );
+    expect(frontQueuePage?.queueCardIds).toEqual([
+      developmentFixture.primaryCardId,
+      "card_fixture_remaining_count"
+    ]);
     expect(frontQueuePage?.selectedCardContext.position).toBe(1);
     expect(frontQueuePage?.selectedCardContext.remainingCount).toBe(1);
     expect(
@@ -1773,6 +1818,54 @@ describe("review system", () => {
           answered: "1"
         }
       }
+    ]);
+  });
+
+  it("hydrates the next queue card without a full rebuild when the client sends the session plan", async () => {
+    const { currentCardId, nextCardId } =
+      await prepareTwoQueueCardFixture(database);
+    const pageData = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    expect(pageData?.queueCardIds).toEqual([currentCardId, nextCardId]);
+
+    const result = await gradeReviewCardSessionAction({
+      answeredCount: pageData?.session.answeredCount ?? 0,
+      cardId: currentCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      extraNewCount: pageData?.session.extraNewCount ?? 0,
+      gradedCardBucket: pageData?.selectedCard?.bucket,
+      mediaSlug: developmentFixture.mediaSlug,
+      nextCardId,
+      rating: "good",
+      scope: "media",
+      sessionMedia: pageData?.media,
+      sessionQueue: pageData?.queue,
+      sessionSettings: pageData?.settings
+    });
+
+    expect(reviewPageCalls).toEqual([]);
+    expect(result.selectedCard?.id).toBe(nextCardId);
+    expect(result.queue.queueCount).toBe(
+      Math.max(0, (pageData?.queue.queueCount ?? 0) - 1)
+    );
+    expect(result.queue.dueCount).toBe(
+      Math.max(0, (pageData?.queue.dueCount ?? 0) - 1)
+    );
+    expect(result.queueCardIds).toEqual([]);
+    expect(result.selectedCardContext.isQueueCard).toBe(true);
+    expect(result.selectedCardContext.showAnswer).toBe(false);
+    expect(result.session.answeredCount).toBe(
+      (pageData?.session.answeredCount ?? 0) + 1
+    );
+    expect(revalidatePathMock.mock.calls).toEqual([
+      ["/review"],
+      [`/media/${developmentFixture.mediaSlug}/review`]
     ]);
   });
 

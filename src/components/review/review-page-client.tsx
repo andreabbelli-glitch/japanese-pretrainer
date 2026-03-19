@@ -56,6 +56,7 @@ const ratingCopy = [
 
 export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   const [viewData, setViewData] = useState(data);
+  const [queueCardIds, setQueueCardIds] = useState(data.queueCardIds);
   const [clientError, setClientError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
@@ -71,6 +72,10 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     0;
 
   const selectedCard = viewData.selectedCard;
+  const queueIndex = selectedCard ? queueCardIds.indexOf(selectedCard.id) : -1;
+  const isQueueCard = queueIndex >= 0;
+  const position = isQueueCard ? queueIndex + 1 : null;
+  const remainingCount = isQueueCard ? queueCardIds.length - queueIndex - 1 : 0;
   const showCompactPronunciation =
     (selectedCard?.pronunciations.length ?? 0) <= 1;
   const hasQueue = viewData.queue.queueCount > 0;
@@ -88,8 +93,8 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     baseHref: viewData.media.reviewHref,
     cardId: selectedCard?.id ?? null,
     extraNewCount: viewData.session.extraNewCount,
-    isQueueCard: viewData.selectedCardContext.isQueueCard,
-    position: viewData.selectedCardContext.position,
+    isQueueCard,
+    position,
     showAnswer: viewData.selectedCardContext.showAnswer
   });
   const contextualGlossaryHref = appendReturnToParam(
@@ -98,9 +103,7 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   );
   const contextualSettingsHref = appendReturnToParam("/settings", sessionHref);
   const showCompletionState = !hasQueue && selectedCard === null;
-  const actionRedirectMode = viewData.selectedCardContext.isQueueCard
-    ? "advance_queue"
-    : "preserve_card";
+  const actionRedirectMode = isQueueCard ? "advance_queue" : "preserve_card";
   const gradePreviewLookup = new Map(
     viewData.selectedCardContext.gradePreviews.map((preview) => [
       preview.rating,
@@ -126,15 +129,27 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     }
   }, [currentHref, router, sessionHref]);
 
-  function runSessionUpdate(loadNextData: () => Promise<ReviewPageData>) {
+  function runSessionUpdate(
+    loadNextData: () => Promise<ReviewPageData>,
+    options?: {
+      onError?: () => void;
+      onSuccess?: (nextData: ReviewPageData) => void;
+      shouldSyncQueueCardIds?: (nextData: ReviewPageData) => boolean;
+    }
+  ) {
     setClientError(null);
     startTransition(() => {
       void loadNextData()
         .then((nextData) => {
           setViewData(nextData);
+          if (options?.shouldSyncQueueCardIds?.(nextData) ?? true) {
+            setQueueCardIds(nextData.queueCardIds);
+          }
+          options?.onSuccess?.(nextData);
         })
         .catch((error) => {
           console.error(error);
+          options?.onError?.();
           setClientError(
             "Non sono riuscito ad aggiornare la review. Riprova un attimo."
           );
@@ -165,16 +180,52 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
-    runSessionUpdate(() =>
-      gradeReviewCardSessionAction({
-        answeredCount: viewData.session.answeredCount,
-        cardId: selectedCard.id,
-        cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: viewData.session.extraNewCount,
-        mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
-        rating,
-        scope: viewData.scope
-      })
+    if (!isQueueCard) {
+      runSessionUpdate(() =>
+        gradeReviewCardSessionAction({
+          answeredCount: viewData.session.answeredCount,
+          cardId: selectedCard.id,
+          cardMediaSlug: selectedCard.mediaSlug,
+          extraNewCount: viewData.session.extraNewCount,
+          mediaSlug:
+            viewData.scope === "media" ? viewData.media.slug : undefined,
+          rating,
+          scope: viewData.scope
+        })
+      );
+      return;
+    }
+
+    const nextCardId = queueCardIds[queueIndex + 1];
+    const nextQueueCardIds = queueCardIds.filter(
+      (id) => id !== selectedCard.id
+    );
+
+    runSessionUpdate(
+      () =>
+        gradeReviewCardSessionAction({
+          answeredCount: viewData.session.answeredCount,
+          cardId: selectedCard.id,
+          cardMediaSlug: selectedCard.mediaSlug,
+          extraNewCount: viewData.session.extraNewCount,
+          gradedCardBucket: selectedCard.bucket,
+          mediaSlug:
+            viewData.scope === "media" ? viewData.media.slug : undefined,
+          nextCardId,
+          rating,
+          scope: viewData.scope,
+          sessionMedia: viewData.media,
+          sessionQueue: viewData.queue,
+          sessionSettings: viewData.settings
+        }),
+      {
+        onSuccess: (nextData) => {
+          if (nextData.queueCardIds.length === 0) {
+            setQueueCardIds(nextQueueCardIds);
+          }
+        },
+        shouldSyncQueueCardIds: (nextData) => nextData.queueCardIds.length > 0
+      }
     );
   }
 
@@ -311,11 +362,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                     </span>
                   ) : null}
                 </div>
-                {viewData.selectedCardContext.remainingCount > 0 ? (
+                {remainingCount > 0 ? (
                   <p className="review-stage__position">
-                    {formatRemainingCardsLabel(
-                      viewData.selectedCardContext.remainingCount
-                    )}
+                    {formatRemainingCardsLabel(remainingCount)}
                   </p>
                 ) : null}
               </div>
@@ -406,8 +455,7 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                 )}
               </div>
 
-              {viewData.selectedCardContext.isQueueCard &&
-              viewData.selectedCardContext.showAnswer ? (
+              {isQueueCard && viewData.selectedCardContext.showAnswer ? (
                 <div className="review-grade-grid">
                   {ratingCopy.map((rating) => (
                     <button

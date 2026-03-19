@@ -14,7 +14,9 @@ import {
 import {
   getGlobalReviewPageData,
   getReviewPageData,
-  type ReviewPageData
+  hydrateReviewCard,
+  type ReviewPageData,
+  type ReviewQueueCard
 } from "@/lib/review";
 import { mediaReviewCardHref, mediaStudyHref, reviewHref } from "@/lib/site";
 
@@ -25,7 +27,12 @@ type ReviewSessionInput = {
   cardId: string;
   cardMediaSlug?: string;
   extraNewCount: number;
+  gradedCardBucket?: ReviewQueueCard["bucket"];
   mediaSlug?: string;
+  nextCardId?: string;
+  sessionMedia?: ReviewPageData["media"];
+  sessionQueue?: ReviewPageData["queue"];
+  sessionSettings?: ReviewPageData["settings"];
   scope?: "global" | "media";
 };
 
@@ -167,9 +174,11 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
   );
 }
 
-export async function gradeReviewCardSessionAction(input: ReviewSessionInput & {
-  rating: "again" | "hard" | "good" | "easy";
-}): Promise<ReviewPageData> {
+export async function gradeReviewCardSessionAction(
+  input: ReviewSessionInput & {
+    rating: "again" | "hard" | "good" | "easy";
+  }
+): Promise<ReviewPageData> {
   const mediaId =
     input.scope === "media" && input.mediaSlug
       ? await requireMediaIdForSlug(input.mediaSlug)
@@ -182,6 +191,70 @@ export async function gradeReviewCardSessionAction(input: ReviewSessionInput & {
   });
 
   revalidateActiveReviewPaths(input.mediaSlug ?? input.cardMediaSlug);
+
+  if (
+    (input.gradedCardBucket === "due" || input.gradedCardBucket === "new") &&
+    input.sessionMedia &&
+    input.sessionQueue &&
+    input.sessionSettings
+  ) {
+    const updatedQueue = buildIncrementalQueueUpdate(
+      input.sessionQueue,
+      input.gradedCardBucket
+    );
+
+    if (!input.nextCardId) {
+      return {
+        scope: input.scope === "global" ? "global" : "media",
+        media: input.sessionMedia,
+        settings: input.sessionSettings,
+        queue: updatedQueue,
+        queueCardIds: [],
+        selectedCard: null,
+        selectedCardContext: {
+          bucket: null,
+          gradePreviews: [],
+          isQueueCard: false,
+          position: null,
+          remainingCount: 0,
+          showAnswer: false
+        },
+        session: {
+          answeredCount: input.answeredCount + 1,
+          extraNewCount: input.extraNewCount
+        }
+      } satisfies ReviewPageData;
+    }
+
+    const now = new Date();
+    const hydratedCard = await hydrateReviewCard({
+      cardId: input.nextCardId,
+      now
+    });
+
+    if (hydratedCard) {
+      return {
+        scope: input.scope === "global" ? "global" : "media",
+        media: input.sessionMedia,
+        settings: input.sessionSettings,
+        queue: updatedQueue,
+        queueCardIds: [],
+        selectedCard: hydratedCard,
+        selectedCardContext: {
+          bucket: hydratedCard.bucket,
+          gradePreviews: hydratedCard.gradePreviews,
+          isQueueCard: true,
+          position: null,
+          remainingCount: 0,
+          showAnswer: false
+        },
+        session: {
+          answeredCount: input.answeredCount + 1,
+          extraNewCount: input.extraNewCount
+        }
+      } satisfies ReviewPageData;
+    }
+  }
 
   return requireReviewPageDataForScope(
     input,
@@ -310,6 +383,27 @@ export async function setReviewCardSuspendedSessionAction(
       redirectMode: input.redirectMode
     })
   );
+}
+
+function buildIncrementalQueueUpdate(
+  currentQueue: ReviewPageData["queue"],
+  gradedCardBucket: ReviewQueueCard["bucket"]
+): ReviewPageData["queue"] {
+  const isQueuedBucket =
+    gradedCardBucket === "due" || gradedCardBucket === "new";
+
+  return {
+    ...currentQueue,
+    dueCount:
+      gradedCardBucket === "due"
+        ? Math.max(0, currentQueue.dueCount - 1)
+        : currentQueue.dueCount,
+    newQueuedCount:
+      gradedCardBucket === "new"
+        ? Math.max(0, currentQueue.newQueuedCount - 1)
+        : currentQueue.newQueuedCount,
+    queueCount: Math.max(0, currentQueue.queueCount - (isQueuedBucket ? 1 : 0))
+  };
 }
 
 function buildReviewRedirectUrl(input: {

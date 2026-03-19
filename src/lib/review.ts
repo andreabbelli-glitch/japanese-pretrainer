@@ -777,6 +777,7 @@ export type ReviewPageData = {
     upcomingCards: ReviewQueueCard[];
   };
   selectedCard: ReviewQueueCard | null;
+  queueCardIds: string[];
   selectedCardContext: {
     bucket: ReviewQueueCard["bucket"] | null;
     gradePreviews: ReviewGradePreview[];
@@ -957,6 +958,9 @@ async function buildReviewPageDataFromWorkspace(input: {
     nowIso,
     visibleMediaId: input.visibleMediaId
   };
+  const queueCardIds = queueSnapshot.queueModels.map(
+    (model) => model.globalCard.id
+  );
   const allQueueModels = [
     ...queueSnapshot.queueModels,
     ...queueSnapshot.manualModels,
@@ -1004,7 +1008,7 @@ async function buildReviewPageDataFromWorkspace(input: {
         )
       : null);
   const selectedRawCard = selectedCardBase
-    ? input.cards.find((card) => card.id === selectedCardBase.id) ?? null
+    ? (input.cards.find((card) => card.id === selectedCardBase.id) ?? null)
     : null;
   const selectedCard =
     selectedCardBase && selectedRawCard
@@ -1054,6 +1058,7 @@ async function buildReviewPageDataFromWorkspace(input: {
       upcomingCount: queueSnapshot.upcomingCount
     },
     selectedCard,
+    queueCardIds,
     selectedCardContext: {
       bucket: selectedCard?.bucket ?? null,
       gradePreviews: selectedGradePreviews,
@@ -1364,7 +1369,11 @@ export async function hydrateReviewCard(input: {
     subjectIdentity.subjectKey
   );
   const effectiveCard = applySubjectStateToReviewCard(card, subjectState);
-  const resolvedState = resolveReviewQueueState(effectiveCard, entryLookup, nowIso);
+  const resolvedState = resolveReviewQueueState(
+    effectiveCard,
+    entryLookup,
+    nowIso
+  );
   const mediaById = buildSingleMediaLookup({
     id: card.mediaId,
     ...(await resolveHydratedReviewCardMedia({
@@ -2411,7 +2420,10 @@ async function loadReviewCardPronunciations(input: {
   }
 
   if (missingTermIds.size === 0 && missingGrammarIds.size === 0) {
-    return buildReviewCardPronunciations(input.card.entryLinks, input.entryLookup);
+    return buildReviewCardPronunciations(
+      input.card.entryLinks,
+      input.entryLookup
+    );
   }
 
   const [terms, grammar] = await Promise.all([
