@@ -38,7 +38,7 @@ describe("global review queue filtering", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("keeps local review pages and per-media snapshots aligned with the global daily limit", async () => {
+  it("keeps local review pages and per-media snapshots scoped to the selected media while the global queue stays daily-limited", async () => {
     await database.insert(media).values([
       {
         id: "media_a",
@@ -136,19 +136,23 @@ describe("global review queue filtering", () => {
     expect(mediaAPage?.queue.newQueuedCount).toBe(1);
     expect(mediaAPage?.queue.queueCount).toBe(1);
 
-    expect(mediaBPage?.queue.cards).toEqual([]);
+    expect(mediaBPage?.queue.cards.map((reviewCard) => reviewCard.id)).toEqual([
+      "card_b"
+    ]);
     expect(mediaBPage?.queue.newAvailableCount).toBe(1);
-    expect(mediaBPage?.queue.newQueuedCount).toBe(0);
-    expect(mediaBPage?.queue.queueCount).toBe(0);
-    expect(mediaBPage?.selectedCard).toBeNull();
+    expect(mediaBPage?.queue.newQueuedCount).toBe(1);
+    expect(mediaBPage?.queue.queueCount).toBe(1);
+    expect(mediaBPage?.selectedCard?.id).toBe("card_b");
 
     expect(mediaAQueue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
       "card_a"
     ]);
     expect(mediaAQueue?.newQueuedCount).toBe(1);
-    expect(mediaBQueue?.cards).toEqual([]);
+    expect(mediaBQueue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
+      "card_b"
+    ]);
     expect(mediaBQueue?.newAvailableCount).toBe(1);
-    expect(mediaBQueue?.newQueuedCount).toBe(0);
+    expect(mediaBQueue?.newQueuedCount).toBe(1);
 
     expect(snapshots.get("media_a")?.queueCount).toBe(1);
     expect(snapshots.get("media_a")?.newQueuedCount).toBe(1);

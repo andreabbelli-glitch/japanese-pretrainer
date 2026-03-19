@@ -2,8 +2,7 @@ import Link from "next/link";
 
 import { ReviewPage } from "@/components/review/review-page";
 import { EmptyState } from "@/components/ui/empty-state";
-import { db, listMedia, listReviewCardsByMediaIds } from "@/db";
-import { getGlobalReviewPageData } from "@/lib/review";
+import { getGlobalReviewPageLoadResult } from "@/lib/review";
 
 export const dynamic = "force-dynamic";
 
@@ -12,9 +11,9 @@ type ReviewRouteProps = {
 };
 
 export default async function ReviewRoute({ searchParams }: ReviewRouteProps) {
-  const media = await listMedia(db);
+  const reviewResult = await getGlobalReviewPageLoadResult(await searchParams);
 
-  if (media.length === 0) {
+  if (reviewResult.kind === "empty-media") {
     return (
       <div className="dashboard-page">
         <EmptyState
@@ -31,12 +30,7 @@ export default async function ReviewRoute({ searchParams }: ReviewRouteProps) {
     );
   }
 
-  const reviewCards = await listReviewCardsByMediaIds(
-    db,
-    media.map((item) => item.id)
-  );
-
-  if (reviewCards.length === 0) {
+  if (reviewResult.kind === "empty-cards") {
     return (
       <div className="dashboard-page">
         <EmptyState
@@ -53,7 +47,5 @@ export default async function ReviewRoute({ searchParams }: ReviewRouteProps) {
     );
   }
 
-  const reviewData = await getGlobalReviewPageData(await searchParams);
-
-  return <ReviewPage data={reviewData} />;
+  return <ReviewPage data={reviewResult.data} />;
 }

@@ -32,6 +32,7 @@ import {
 } from "@/db";
 import { migrateReviewHistoryToFsrs } from "@/db/review-fsrs-migration";
 import {
+  getGlobalReviewPageLoadResult,
   getGlobalReviewPageData,
   getReviewCardDetailData,
   getReviewLaunchMedia,
@@ -1779,6 +1780,7 @@ describe("review system", () => {
     expect(betaPage?.queue.dueCount).toBe(1);
     expect(betaPage?.selectedCard?.id).toBe(crossMediaFixture.beta.termCardId);
     expect(betaPage?.selectedCard?.bucket).toBe("due");
+    expect(betaPage?.selectedCard?.contexts).toHaveLength(1);
   });
 
   it("does not let a legacy manual entry_status mask an active cross-media sibling before backfill exists", async () => {
@@ -1889,6 +1891,69 @@ describe("review system", () => {
     expect(globalPage.queue.cards[0]?.id).toBe(crossMediaFixture.beta.termCardId);
     expect(globalPage.selectedCard?.id).toBe(crossMediaFixture.beta.termCardId);
     expect(globalPage.selectedCard?.contexts).toHaveLength(2);
+  });
+
+  it("returns the dedicated global empty state when no media exist", async () => {
+    closeDatabaseClient(database);
+    await rm(tempDir, { recursive: true, force: true });
+    tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-empty-media-"));
+    database = createDatabaseClient({
+      databaseUrl: path.join(tempDir, "test.sqlite")
+    });
+    await runMigrations(database);
+
+    await expect(getGlobalReviewPageLoadResult({}, database)).resolves.toEqual({
+      kind: "empty-media"
+    });
+  });
+
+  it("returns the dedicated global empty state when media exist but no active cards do", async () => {
+    closeDatabaseClient(database);
+    await rm(tempDir, { recursive: true, force: true });
+    tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-empty-cards-"));
+    database = createDatabaseClient({
+      databaseUrl: path.join(tempDir, "test.sqlite")
+    });
+    await runMigrations(database);
+
+    await database.insert(media).values({
+      id: "media_empty_cards",
+      slug: "media-empty-cards",
+      title: "Media Empty Cards",
+      mediaType: "game",
+      segmentKind: "chapter",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      description: "Fixture senza card attive",
+      status: "active",
+      createdAt: "2026-03-10T09:00:00.000Z",
+      updatedAt: "2026-03-10T09:00:00.000Z"
+    });
+
+    await expect(getGlobalReviewPageLoadResult({}, database)).resolves.toEqual({
+      kind: "empty-cards"
+    });
+  });
+
+  it("keeps the global route in ready mode when active cards exist but none are eligible yet", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "in_progress",
+        completedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const result = await getGlobalReviewPageLoadResult({}, database);
+
+    expect(result.kind).toBe("ready");
+
+    if (result.kind !== "ready") {
+      return;
+    }
+
+    expect(result.data.queue.queueCount).toBe(0);
+    expect(result.data.selectedCard).toBeNull();
   });
 
   it("seeds suspended legacy cross-media subjects from the representative sibling state", async () => {

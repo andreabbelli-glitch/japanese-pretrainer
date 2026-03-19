@@ -666,6 +666,11 @@ export type ReviewPageData = {
   };
 };
 
+export type GlobalReviewPageLoadResult =
+  | { kind: "empty-media" }
+  | { kind: "empty-cards" }
+  | { kind: "ready"; data: ReviewPageData };
+
 export type ReviewGradePreview = {
   nextReviewLabel: string;
   rating: ReviewRating;
@@ -733,6 +738,19 @@ type ReviewOverviewSubjectModel = {
   card: ReviewCardListItem;
   group: ReviewSubjectGroup;
   overviewCard: ReviewOverviewCard;
+};
+
+type LoadedGlobalReviewPageWorkspace = {
+  cards: ReviewCardListItem[];
+  dailyLimit: number;
+  grammar: ReviewGrammarLookupEntry[];
+  mediaRows: MediaListItem[];
+  newIntroducedTodayCount: number;
+  now: Date;
+  rawCardCount: number;
+  reviewFrontFurigana: boolean;
+  searchState: ReviewSearchState;
+  terms: ReviewTermLookupEntry[];
 };
 
 async function buildReviewPageDataFromWorkspace(input: {
@@ -856,7 +874,7 @@ export async function getReviewPageData(
   }
 
   const mediaRows = await listMedia(database);
-  const mediaIds = mediaRows.map((item) => item.id);
+  const mediaIds = [media.id];
   const searchState = normalizeReviewSearchState(searchParams);
   const [
     eligibleCards,
@@ -900,29 +918,71 @@ export async function getReviewPageData(
   });
 }
 
-export async function getGlobalReviewPageData(
+async function loadGlobalReviewPageWorkspace(
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db
-): Promise<ReviewPageData> {
+): Promise<LoadedGlobalReviewPageWorkspace> {
   markDataAsLive();
   const now = new Date();
-  const media = await listMedia(database);
-  const mediaIds = media.map((item) => item.id);
+  const mediaRows = await listMedia(database);
+  const mediaIds = mediaRows.map((item) => item.id);
   const searchState = normalizeReviewSearchState(searchParams);
-  const [eligibleCards, terms, grammar, dailyLimit, newIntroducedTodayCount, reviewFrontFurigana] =
+  const [reviewCards, dailyLimit, newIntroducedTodayCount, reviewFrontFurigana] =
     await Promise.all([
-      getEligibleReviewCardsByMediaIds(mediaIds, database),
-      listTermEntrySummaries(database, { mediaIds }),
-      listGrammarEntrySummaries(database, { mediaIds }),
+      listReviewCardsByMediaIds(database, mediaIds),
       getReviewDailyLimit(database),
       countReviewSubjectsIntroducedOnDay(database, now),
       getReviewFrontFuriganaSetting(database)
     ]);
 
-  return buildReviewPageDataFromWorkspace({
+  if (mediaIds.length === 0 || reviewCards.length === 0) {
+    return {
+      cards: [],
+      dailyLimit,
+      grammar: [],
+      mediaRows,
+      newIntroducedTodayCount,
+      now,
+      rawCardCount: reviewCards.length,
+      reviewFrontFurigana,
+      searchState,
+      terms: []
+    };
+  }
+
+  const [lessonLinkedEntries, terms, grammar] = await Promise.all([
+    listLessonLinkedReviewEntriesByMediaIds(database, mediaIds),
+    listTermEntrySummaries(database, { mediaIds }),
+    listGrammarEntrySummaries(database, { mediaIds })
+  ]);
+  const eligibleCards = buildEligibleReviewCardsByMedia({
+    cards: reviewCards,
+    lessonLinkedEntries,
+    mediaIds
+  });
+
+  return {
     cards: [...eligibleCards.values()].flat(),
     dailyLimit,
     grammar,
+    mediaRows,
+    newIntroducedTodayCount,
+    now,
+    rawCardCount: reviewCards.length,
+    reviewFrontFurigana,
+    searchState,
+    terms
+  };
+}
+
+async function buildGlobalReviewPageData(
+  input: LoadedGlobalReviewPageWorkspace,
+  database: DatabaseClient = db
+) {
+  return buildReviewPageDataFromWorkspace({
+    cards: input.cards,
+    dailyLimit: input.dailyLimit,
+    grammar: input.grammar,
     database,
     media: {
       glossaryHref: "/glossary",
@@ -931,14 +991,47 @@ export async function getGlobalReviewPageData(
       slug: "global-review",
       title: "Review globale"
     },
-    mediaById: buildReviewMediaLookup(media),
-    newIntroducedTodayCount,
-    now,
-    reviewFrontFurigana,
+    mediaById: buildReviewMediaLookup(input.mediaRows),
+    newIntroducedTodayCount: input.newIntroducedTodayCount,
+    now: input.now,
+    reviewFrontFurigana: input.reviewFrontFurigana,
     scope: "global",
-    searchState,
-    terms
+    searchState: input.searchState,
+    terms: input.terms
   });
+}
+
+export async function getGlobalReviewPageLoadResult(
+  searchParams: Record<string, string | string[] | undefined>,
+  database: DatabaseClient = db
+): Promise<GlobalReviewPageLoadResult> {
+  const workspace = await loadGlobalReviewPageWorkspace(searchParams, database);
+
+  if (workspace.mediaRows.length === 0) {
+    return {
+      kind: "empty-media"
+    };
+  }
+
+  if (workspace.rawCardCount === 0) {
+    return {
+      kind: "empty-cards"
+    };
+  }
+
+  return {
+    kind: "ready",
+    data: await buildGlobalReviewPageData(workspace, database)
+  };
+}
+
+export async function getGlobalReviewPageData(
+  searchParams: Record<string, string | string[] | undefined>,
+  database: DatabaseClient = db
+): Promise<ReviewPageData> {
+  const workspace = await loadGlobalReviewPageWorkspace(searchParams, database);
+
+  return buildGlobalReviewPageData(workspace, database);
 }
 
 export async function getReviewQueueSnapshotForMedia(
@@ -956,7 +1049,7 @@ export async function getReviewQueueSnapshotForMedia(
   }
 
   const mediaRows = await listMedia(database);
-  const mediaIds = mediaRows.map((item) => item.id);
+  const mediaIds = [media.id];
   const [eligibleCards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
       getEligibleReviewCardsByMediaIds(mediaIds, database),
@@ -1024,22 +1117,12 @@ export async function getEligibleReviewCardsByMediaIds(
     listReviewCardsByMediaIds(database, mediaIds),
     listLessonLinkedReviewEntriesByMediaIds(database, mediaIds)
   ]);
-  const cardsByMedia = groupCardsByMedia(cards);
-  const lessonLinkedEntriesByMedia =
-    groupLessonLinkedReviewEntriesByMedia(lessonLinkedEntries);
-  const eligibleCards = new Map<string, ReviewCardListItem[]>();
 
-  for (const mediaId of mediaIds) {
-    eligibleCards.set(
-      mediaId,
-      filterReviewCardsByLessonCompletion(
-        cardsByMedia.get(mediaId) ?? [],
-        lessonLinkedEntriesByMedia.get(mediaId) ?? []
-      )
-    );
-  }
-
-  return eligibleCards;
+  return buildEligibleReviewCardsByMedia({
+    cards,
+    lessonLinkedEntries,
+    mediaIds
+  });
 }
 
 export async function getReviewLaunchMedia(
@@ -1868,6 +1951,29 @@ function groupCardsByMedia(cards: ReviewCardListItem[]) {
   }
 
   return grouped;
+}
+
+function buildEligibleReviewCardsByMedia(input: {
+  cards: ReviewCardListItem[];
+  lessonLinkedEntries: Array<LessonLinkedReviewEntry & { mediaId: string }>;
+  mediaIds: string[];
+}) {
+  const cardsByMedia = groupCardsByMedia(input.cards);
+  const lessonLinkedEntriesByMedia =
+    groupLessonLinkedReviewEntriesByMedia(input.lessonLinkedEntries);
+  const eligibleCards = new Map<string, ReviewCardListItem[]>();
+
+  for (const mediaId of input.mediaIds) {
+    eligibleCards.set(
+      mediaId,
+      filterReviewCardsByLessonCompletion(
+        cardsByMedia.get(mediaId) ?? [],
+        lessonLinkedEntriesByMedia.get(mediaId) ?? []
+      )
+    );
+  }
+
+  return eligibleCards;
 }
 
 function buildReviewMediaLookup(media: MediaListItem[]) {
