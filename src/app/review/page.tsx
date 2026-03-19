@@ -1,16 +1,17 @@
 import Link from "next/link";
+import { connection } from "next/server";
 
 import { ReviewPage } from "@/components/review/review-page";
 import { EmptyState } from "@/components/ui/empty-state";
 import { getGlobalReviewPageLoadResult } from "@/lib/review";
-
-export const dynamic = "force-dynamic";
 
 type ReviewRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export default async function ReviewRoute({ searchParams }: ReviewRouteProps) {
+  await connection();
+
   const reviewResult = await getGlobalReviewPageLoadResult(await searchParams);
 
   if (reviewResult.kind === "empty-media") {

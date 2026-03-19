@@ -1,5 +1,3 @@
-import { unstable_noStore as noStore } from "next/cache";
-
 import {
   countReviewSubjectsIntroducedOnDay,
   db,
@@ -9,8 +7,7 @@ import {
   getMediaById,
   listLessonLinkedReviewEntriesByMediaId,
   listLessonLinkedReviewEntriesByMediaIds,
-  listGrammarEntryReviewSummaries,
-  listMedia,
+  listGrammarEntryReviewSummariesByIds,
   listGrammarCrossMediaFamiliesByEntryIds,
   listReviewLaunchCandidates,
   getMediaBySlug,
@@ -23,7 +20,7 @@ import {
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
   listTermEntriesByMediaId,
-  listTermEntryReviewSummaries,
+  listTermEntryReviewSummariesByIds,
   getReviewSubjectStateByKey,
   listReviewSubjectStatesByKeys,
   type DatabaseClient,
@@ -42,6 +39,12 @@ import {
   type TermGlossaryEntry,
   type TermGlossaryEntrySummary
 } from "@/db";
+import {
+  buildReviewSummaryTags,
+  canUseDataCache,
+  listMediaCached,
+  runWithTaggedCache
+} from "@/lib/data-cache";
 import {
   getReviewDailyLimit,
   getReviewFrontFuriganaSetting
@@ -153,7 +156,7 @@ async function loadReviewSubjectStateLookup(input: {
     id: string;
   }>;
 }) {
-  const entryLookup = buildReviewSubjectEntryLookup({
+  const subjectEntryLookup = buildReviewSubjectEntryLookup({
     grammar: input.grammar,
     terms: input.terms
   });
@@ -164,7 +167,7 @@ async function loadReviewSubjectStateLookup(input: {
           deriveReviewSubjectIdentity({
             cardId: card.id,
             entryLinks: card.entryLinks,
-            entryLookup
+            entryLookup: subjectEntryLookup
           }).subjectKey
       )
     )
@@ -179,13 +182,13 @@ async function loadReviewSubjectStateLookup(input: {
       row as ReviewSubjectStateSnapshot
     ])
   );
-  const subjectGroups = groupReviewCardsBySubject({
+  const groupedCards = groupReviewCardsBySubject({
     cards: input.cards,
-    entryLookup,
+    entryLookup: subjectEntryLookup,
     nowIso: input.nowIso,
     subjectStates
   });
-  const missingSubjectGroups = subjectGroups.filter(
+  const missingSubjectGroups = groupedCards.filter(
     (group) => !subjectStates.has(group.identity.subjectKey)
   );
   const simpleFallbacks: ReviewSubjectStateSnapshot[] = [];
@@ -214,8 +217,30 @@ async function loadReviewSubjectStateLookup(input: {
     subjectStates.set(fallbackState.subjectKey, fallbackState);
   }
 
+  const subjectGroups = groupedCards.map((group) => {
+    const subjectState = subjectStates.get(group.identity.subjectKey) ?? null;
+
+    return {
+      ...group,
+      lastInteractionAt: subjectState
+        ? subjectState.lastInteractionAt
+        : group.lastInteractionAt,
+      representativeCard: selectReviewSubjectRepresentativeCard(
+        group.cards,
+        subjectState,
+        input.nowIso
+      ),
+      subjectState
+    } satisfies ReviewSubjectGroup;
+  });
+
   return {
-    entryLookup,
+    legacyFallbackCounts: {
+      complex: complexMissing.length,
+      inline: simpleFallbacks.length
+    } satisfies ReviewLegacyFallbackCounts,
+    subjectEntryLookup,
+    subjectGroups,
     subjectStates
   };
 }
@@ -871,6 +896,7 @@ type ReviewQueueSubjectSnapshot = {
   newQueuedCount: number;
   queueCount: number;
   queueModels: ReviewQueueSubjectModel[];
+  subjectModels: ReviewQueueSubjectModel[];
   suspendedCount: number;
   suspendedModels: ReviewQueueSubjectModel[];
   upcomingCount: number;
@@ -892,24 +918,47 @@ type ReviewOverviewSubjectModel = {
   overviewCard: ReviewOverviewCard;
 };
 
-type LoadedGlobalReviewPageWorkspace = {
+type ReviewLegacyFallbackCounts = {
+  complex: number;
+  inline: number;
+};
+
+type LoadedReviewWorkspaceV2 = {
   cards: ReviewCardListItem[];
   dailyLimit: number;
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+  entryStatuses: Map<string, ReviewEntryStatusValue>;
   grammar: ReviewGrammarLookupEntry[];
-  mediaRows: MediaListItem[];
+  legacyFallbackCounts: ReviewLegacyFallbackCounts;
   newIntroducedTodayCount: number;
   now: Date;
   rawCardCount: number;
+  subjectGroups: ReviewSubjectGroup[];
+  terms: ReviewTermLookupEntry[];
+};
+
+type CachedReviewWorkspaceV2 = {
+  cards: ReviewCardListItem[];
+  grammar: GrammarEntryReviewSummary[];
+  rawCardCount: number;
+  terms: TermEntryReviewSummary[];
+};
+
+type LoadedGlobalReviewPageWorkspace = {
+  mediaRows: MediaListItem[];
   reviewFrontFurigana: boolean;
   searchState: ReviewSearchState;
-  terms: ReviewTermLookupEntry[];
+} & LoadedReviewWorkspaceV2;
+
+type ReviewPageLoadOptions = {
+  bypassCache?: boolean;
 };
 
 async function buildReviewPageDataFromWorkspace(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
   database: DatabaseClient;
-  grammar: ReviewGrammarLookupEntry[];
+  entryLookup: Map<string, ReviewEntryLookupItem>;
   media: ReviewPageWorkspace;
   mediaById: ReviewMediaLookup;
   newIntroducedTodayCount: number;
@@ -917,43 +966,24 @@ async function buildReviewPageDataFromWorkspace(input: {
   reviewFrontFurigana: boolean;
   scope: ReviewScope;
   searchState: ReviewSearchState;
-  terms: ReviewTermLookupEntry[];
+  subjectGroups: ReviewSubjectGroup[];
   visibleMediaId?: string;
 }) {
   const nowIso = input.now.toISOString();
   const mediaById = input.mediaById;
-
-  const { subjectStates } = await loadReviewSubjectStateLookup({
-    cards: input.cards,
-    database: input.database,
-    grammar: input.grammar,
-    nowIso,
-    terms: input.terms
-  });
-  const entryLookup = buildEntryLookup(input.terms, input.grammar);
-  const subjectEntryLookup = buildReviewSubjectEntryLookup({
-    grammar: input.grammar,
-    terms: input.terms
-  });
-  const subjectGroups = groupReviewCardsBySubject({
-    cards: input.cards,
-    entryLookup: subjectEntryLookup,
-    nowIso,
-    subjectStates
-  });
   const queueSnapshot = buildReviewQueueSubjectSnapshot({
     cards: input.cards,
     dailyLimit: input.dailyLimit,
-    entryLookup,
+    entryLookup: input.entryLookup,
     extraNewCount: input.searchState.extraNewCount,
     newIntroducedTodayCount: input.newIntroducedTodayCount,
     nowIso,
-    subjectGroups,
+    subjectGroups: input.subjectGroups,
     visibleMediaId: input.visibleMediaId
   });
   const queueCardMapInput: ReviewQueueCardMapInput = {
     contextCache: new Map(),
-    entryLookup,
+    entryLookup: input.entryLookup,
     mediaById,
     nowIso,
     visibleMediaId: input.visibleMediaId
@@ -961,54 +991,48 @@ async function buildReviewPageDataFromWorkspace(input: {
   const queueCardIds = queueSnapshot.queueModels.map(
     (model) => model.globalCard.id
   );
-  const allQueueModels = [
+  const visibleSelectionModels = [
     ...queueSnapshot.queueModels,
     ...queueSnapshot.manualModels,
     ...queueSnapshot.suspendedModels,
     ...queueSnapshot.upcomingModels
   ];
-  const explicitSelection = input.searchState.selectedCardId
-    ? (() => {
-        const selectedModel = findReviewQueueSubjectModelByCardId(
-          allQueueModels,
-          input.searchState.selectedCardId
-        );
-
-        return selectedModel
-          ? mapReviewQueueSubjectModel(selectedModel, {
-              ...queueCardMapInput,
-              selectedCardId: input.searchState.selectedCardId
-            })
-          : null;
-      })()
+  const explicitSelectionModel = input.searchState.selectedCardId
+    ? findReviewQueueSubjectModelByCardId(
+        visibleSelectionModels,
+        input.searchState.selectedCardId
+      )
     : null;
-  const fallbackSelection =
-    input.searchState.selectedCardId && explicitSelection === null
-      ? buildExplicitReviewSelection({
-          cardId: input.searchState.selectedCardId,
-          contextCache: queueCardMapInput.contextCache,
-          entryLookup,
-          mediaById,
-          nowIso,
-          subjectModels: buildReviewQueueSubjectModels({
-            cards: input.cards,
-            entryLookup,
-            nowIso,
-            subjectGroups
-          })
-        })
-      : null;
-  const selectedCardBase =
-    explicitSelection ??
-    fallbackSelection ??
-    (queueSnapshot.queueModels[0]
-      ? mapReviewQueueSubjectModel(
-          queueSnapshot.queueModels[0],
-          queueCardMapInput
+  const fallbackSelectionModel =
+    input.searchState.selectedCardId && explicitSelectionModel === null
+      ? findReviewQueueSubjectModelByCardId(
+          queueSnapshot.subjectModels,
+          input.searchState.selectedCardId
         )
-      : null);
-  const selectedRawCard = selectedCardBase
-    ? (input.cards.find((card) => card.id === selectedCardBase.id) ?? null)
+      : null;
+  const selectedModel =
+    explicitSelectionModel ??
+    fallbackSelectionModel ??
+    queueSnapshot.queueModels[0] ??
+    null;
+  const selectedCardId =
+    explicitSelectionModel || fallbackSelectionModel
+      ? input.searchState.selectedCardId
+      : null;
+  const selectedCardBase = selectedModel
+    ? mapReviewQueueSubjectModel(selectedModel, {
+        ...queueCardMapInput,
+        selectedCardId
+      })
+    : null;
+  const selectedRawCard = selectedModel
+    ? resolveReviewQueueSubjectSelectionCard({
+        entryLookup: input.entryLookup,
+        nowIso,
+        preferredMediaId: input.visibleMediaId,
+        selectedCardId,
+        subjectGroup: selectedModel.group
+      })
     : null;
   const selectedCard =
     selectedCardBase && selectedRawCard
@@ -1017,7 +1041,7 @@ async function buildReviewPageDataFromWorkspace(input: {
           pronunciations: await loadReviewCardPronunciations({
             card: selectedRawCard,
             database: input.database,
-            entryLookup
+            entryLookup: input.entryLookup
           })
         }
       : selectedCardBase;
@@ -1076,12 +1100,183 @@ async function buildReviewPageDataFromWorkspace(input: {
   } satisfies ReviewPageData;
 }
 
+function collectReviewLinkedEntryIds(
+  cards: Array<Pick<ReviewCardListItem, "entryLinks">>
+) {
+  const termIds = new Set<string>();
+  const grammarIds = new Set<string>();
+
+  for (const card of cards) {
+    for (const link of card.entryLinks) {
+      if (link.entryType === "term") {
+        termIds.add(link.entryId);
+        continue;
+      }
+
+      if (link.entryType === "grammar") {
+        grammarIds.add(link.entryId);
+      }
+    }
+  }
+
+  return {
+    grammarIds: [...grammarIds],
+    termIds: [...termIds]
+  };
+}
+
+async function loadReviewEntrySummariesForCards(input: {
+  cards: ReviewCardListItem[];
+  database: DatabaseClient;
+}) {
+  const { grammarIds, termIds } = collectReviewLinkedEntryIds(input.cards);
+  const [terms, grammar] = await Promise.all([
+    listTermEntryReviewSummariesByIds(input.database, termIds),
+    listGrammarEntryReviewSummariesByIds(input.database, grammarIds)
+  ]);
+
+  return {
+    grammar,
+    terms
+  };
+}
+
+async function loadStableReviewWorkspaceV2(input: {
+  database: DatabaseClient;
+  mediaIds: string[];
+}): Promise<CachedReviewWorkspaceV2> {
+  const [reviewCards, lessonLinkedEntries] = await Promise.all([
+    input.mediaIds.length > 0
+      ? listReviewCardsByMediaIds(input.database, input.mediaIds)
+      : Promise.resolve([]),
+    input.mediaIds.length > 0
+      ? listLessonLinkedReviewEntriesByMediaIds(input.database, input.mediaIds)
+      : Promise.resolve([])
+  ]);
+  const eligibleCards = buildEligibleReviewCardsByMedia({
+    cards: reviewCards,
+    lessonLinkedEntries,
+    mediaIds: input.mediaIds
+  });
+  const cards = [...eligibleCards.values()].flat();
+
+  if (cards.length === 0) {
+    return {
+      cards,
+      grammar: [],
+      rawCardCount: reviewCards.length,
+      terms: []
+    };
+  }
+
+  const { terms, grammar } = await loadReviewEntrySummariesForCards({
+    cards,
+    database: input.database
+  });
+
+  return {
+    cards,
+    grammar,
+    rawCardCount: reviewCards.length,
+    terms
+  };
+}
+
+async function loadStableReviewWorkspaceV2Cached(input: {
+  bypassCache?: boolean;
+  database: DatabaseClient;
+  mediaIds: string[];
+}) {
+  const orderedMediaIds = [...new Set(input.mediaIds)].sort();
+
+  return runWithTaggedCache({
+    enabled: !input.bypassCache && canUseDataCache(input.database),
+    keyParts: [
+      "review",
+      "stable-workspace",
+      ...orderedMediaIds.map((mediaId) => `media:${mediaId}`)
+    ],
+    loader: () => loadStableReviewWorkspaceV2(input),
+    tags: buildReviewSummaryTags(orderedMediaIds)
+  });
+}
+
+async function loadReviewWorkspaceV2(input: {
+  bypassCache?: boolean;
+  database?: DatabaseClient;
+  mediaIds: string[];
+  now?: Date;
+}): Promise<LoadedReviewWorkspaceV2> {
+  const database = input.database ?? db;
+  const now = input.now ?? new Date();
+  const [stableWorkspace, dailyLimit, newIntroducedTodayCount] =
+    await Promise.all([
+      loadStableReviewWorkspaceV2Cached({
+        bypassCache: input.bypassCache,
+        database,
+        mediaIds: input.mediaIds
+      }),
+      getReviewDailyLimit(database),
+      countReviewSubjectsIntroducedOnDay(database, now)
+    ]);
+  const cards = stableWorkspace.cards;
+
+  if (cards.length === 0) {
+    return {
+      cards,
+      dailyLimit,
+      entryLookup: new Map(),
+      entryStatuses: new Map(),
+      grammar: [],
+      legacyFallbackCounts: {
+        complex: 0,
+        inline: 0
+      },
+      newIntroducedTodayCount,
+      now,
+      rawCardCount: stableWorkspace.rawCardCount,
+      subjectGroups: [],
+      terms: []
+    };
+  }
+
+  const { legacyFallbackCounts, subjectGroups } =
+    await loadReviewSubjectStateLookup({
+      cards,
+      database,
+      grammar: stableWorkspace.grammar,
+      nowIso: now.toISOString(),
+      terms: stableWorkspace.terms
+    });
+
+  return {
+    cards,
+    dailyLimit,
+    entryLookup: buildEntryLookup(
+      stableWorkspace.terms,
+      stableWorkspace.grammar
+    ),
+    entryStatuses: buildReviewEntryStatusLookup({
+      grammar: stableWorkspace.grammar,
+      terms: stableWorkspace.terms
+    }),
+    grammar: stableWorkspace.grammar,
+    // Keep the expensive legacy path visible in the shared workspace shape.
+    legacyFallbackCounts,
+    newIntroducedTodayCount,
+    now,
+    rawCardCount: stableWorkspace.rawCardCount,
+    subjectGroups,
+    terms: stableWorkspace.terms
+  };
+}
+
 export async function getReviewPageData(
   mediaSlug: string,
   searchParams: Record<string, string | string[] | undefined>,
-  database: DatabaseClient = db
+  database: DatabaseClient = db,
+  options: ReviewPageLoadOptions = {}
 ): Promise<ReviewPageData | null> {
-  markDataAsLive();
   const now = new Date();
 
   const media = await getMediaBySlug(database, mediaSlug);
@@ -1090,32 +1285,22 @@ export async function getReviewPageData(
     return null;
   }
 
-  const mediaIds = [media.id];
   const searchState = normalizeReviewSearchState(searchParams);
-  const [
-    eligibleCards,
-    terms,
-    grammar,
-    dailyLimit,
-    newIntroducedTodayCount,
-    reviewFrontFurigana
-  ] = await Promise.all([
-    getEligibleReviewCardsByMediaIds(mediaIds, database),
-    listTermEntryReviewSummaries(database, {
-      mediaIds
+  const [workspace, reviewFrontFurigana] = await Promise.all([
+    loadReviewWorkspaceV2({
+      bypassCache: options.bypassCache,
+      database,
+      mediaIds: [media.id],
+      now
     }),
-    listGrammarEntryReviewSummaries(database, {
-      mediaIds
-    }),
-    getReviewDailyLimit(database),
-    countReviewSubjectsIntroducedOnDay(database, now),
     getReviewFrontFuriganaSetting(database)
   ]);
+
   return buildReviewPageDataFromWorkspace({
-    cards: [...eligibleCards.values()].flat(),
-    dailyLimit,
+    cards: workspace.cards,
+    dailyLimit: workspace.dailyLimit,
     database,
-    grammar,
+    entryLookup: workspace.entryLookup,
     media: {
       glossaryHref: mediaGlossaryHref(media.slug),
       href: mediaHref(media.slug),
@@ -1124,74 +1309,39 @@ export async function getReviewPageData(
       title: media.title
     },
     mediaById: buildSingleMediaLookup(media),
-    newIntroducedTodayCount,
+    newIntroducedTodayCount: workspace.newIntroducedTodayCount,
     now,
     reviewFrontFurigana,
     scope: "media",
     searchState,
-    terms,
+    subjectGroups: workspace.subjectGroups,
     visibleMediaId: media.id
   });
 }
 
 async function loadGlobalReviewPageWorkspace(
   searchParams: Record<string, string | string[] | undefined>,
-  database: DatabaseClient = db
+  database: DatabaseClient = db,
+  options: ReviewPageLoadOptions = {}
 ): Promise<LoadedGlobalReviewPageWorkspace> {
-  markDataAsLive();
   const now = new Date();
-  const mediaRows = await listMedia(database);
-  const mediaIds = mediaRows.map((item) => item.id);
+  const mediaRows = await listMediaCached(database);
   const searchState = normalizeReviewSearchState(searchParams);
-  const [
-    reviewCards,
-    dailyLimit,
-    newIntroducedTodayCount,
-    reviewFrontFurigana
-  ] = await Promise.all([
-    listReviewCardsByMediaIds(database, mediaIds),
-    getReviewDailyLimit(database),
-    countReviewSubjectsIntroducedOnDay(database, now),
+  const [workspace, reviewFrontFurigana] = await Promise.all([
+    loadReviewWorkspaceV2({
+      bypassCache: options.bypassCache,
+      database,
+      mediaIds: mediaRows.map((item) => item.id),
+      now
+    }),
     getReviewFrontFuriganaSetting(database)
   ]);
 
-  if (mediaIds.length === 0 || reviewCards.length === 0) {
-    return {
-      cards: [],
-      dailyLimit,
-      grammar: [],
-      mediaRows,
-      newIntroducedTodayCount,
-      now,
-      rawCardCount: reviewCards.length,
-      reviewFrontFurigana,
-      searchState,
-      terms: []
-    };
-  }
-
-  const [lessonLinkedEntries, terms, grammar] = await Promise.all([
-    listLessonLinkedReviewEntriesByMediaIds(database, mediaIds),
-    listTermEntryReviewSummaries(database, { mediaIds }),
-    listGrammarEntryReviewSummaries(database, { mediaIds })
-  ]);
-  const eligibleCards = buildEligibleReviewCardsByMedia({
-    cards: reviewCards,
-    lessonLinkedEntries,
-    mediaIds
-  });
-
   return {
-    cards: [...eligibleCards.values()].flat(),
-    dailyLimit,
-    grammar,
     mediaRows,
-    newIntroducedTodayCount,
-    now,
-    rawCardCount: reviewCards.length,
     reviewFrontFurigana,
     searchState,
-    terms
+    ...workspace
   };
 }
 
@@ -1202,8 +1352,8 @@ async function buildGlobalReviewPageData(
   return buildReviewPageDataFromWorkspace({
     cards: input.cards,
     dailyLimit: input.dailyLimit,
-    grammar: input.grammar,
     database,
+    entryLookup: input.entryLookup,
     media: {
       glossaryHref: "/glossary",
       href: "/",
@@ -1217,15 +1367,20 @@ async function buildGlobalReviewPageData(
     reviewFrontFurigana: input.reviewFrontFurigana,
     scope: "global",
     searchState: input.searchState,
-    terms: input.terms
+    subjectGroups: input.subjectGroups
   });
 }
 
 export async function getGlobalReviewPageLoadResult(
   searchParams: Record<string, string | string[] | undefined>,
-  database: DatabaseClient = db
+  database: DatabaseClient = db,
+  options: ReviewPageLoadOptions = {}
 ): Promise<GlobalReviewPageLoadResult> {
-  const workspace = await loadGlobalReviewPageWorkspace(searchParams, database);
+  const workspace = await loadGlobalReviewPageWorkspace(
+    searchParams,
+    database,
+    options
+  );
 
   if (workspace.mediaRows.length === 0) {
     return {
@@ -1247,9 +1402,14 @@ export async function getGlobalReviewPageLoadResult(
 
 export async function getGlobalReviewPageData(
   searchParams: Record<string, string | string[] | undefined>,
-  database: DatabaseClient = db
+  database: DatabaseClient = db,
+  options: ReviewPageLoadOptions = {}
 ): Promise<ReviewPageData> {
-  const workspace = await loadGlobalReviewPageWorkspace(searchParams, database);
+  const workspace = await loadGlobalReviewPageWorkspace(
+    searchParams,
+    database,
+    options
+  );
 
   return buildGlobalReviewPageData(workspace, database);
 }
@@ -1258,9 +1418,7 @@ export async function getReviewQueueSnapshotForMedia(
   mediaSlug: string,
   database: DatabaseClient = db
 ): Promise<ReviewQueueSnapshot | null> {
-  markDataAsLive();
   const now = new Date();
-  const nowIso = now.toISOString();
 
   const media = await getMediaBySlug(database, mediaSlug);
 
@@ -1268,43 +1426,20 @@ export async function getReviewQueueSnapshotForMedia(
     return null;
   }
 
-  const mediaIds = [media.id];
-  const [eligibleCards, terms, grammar, dailyLimit, newIntroducedTodayCount] =
-    await Promise.all([
-      getEligibleReviewCardsByMediaIds(mediaIds, database),
-      listTermEntryReviewSummaries(database, { mediaIds }),
-      listGrammarEntryReviewSummaries(database, { mediaIds }),
-      getReviewDailyLimit(database),
-      countReviewSubjectsIntroducedOnDay(database, now)
-    ]);
-  const cards = [...eligibleCards.values()].flat();
-  const { subjectStates } = await loadReviewSubjectStateLookup({
-    cards,
+  const workspace = await loadReviewWorkspaceV2({
     database,
-    grammar,
-    nowIso,
-    terms
-  });
-  const entryLookup = buildEntryLookup(terms, grammar);
-  const subjectEntryLookup = buildReviewSubjectEntryLookup({
-    grammar,
-    terms
-  });
-  const subjectGroups = groupReviewCardsBySubject({
-    cards,
-    entryLookup: subjectEntryLookup,
-    nowIso,
-    subjectStates
+    mediaIds: [media.id],
+    now
   });
   const snapshot = buildReviewQueueSnapshot({
-    cards,
-    dailyLimit,
-    entryLookup,
+    cards: workspace.cards,
+    dailyLimit: workspace.dailyLimit,
+    entryLookup: workspace.entryLookup,
     extraNewCount: 0,
     mediaById: buildSingleMediaLookup(media),
-    newIntroducedTodayCount,
-    nowIso,
-    subjectGroups,
+    newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+    nowIso: workspace.now.toISOString(),
+    subjectGroups: workspace.subjectGroups,
     visibleMediaId: media.id
   });
 
@@ -1328,8 +1463,6 @@ export async function hydrateReviewCard(input: {
   database?: DatabaseClient;
   now?: Date;
 }): Promise<ReviewQueueCard | null> {
-  markDataAsLive();
-
   const database = input.database ?? db;
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
@@ -1425,8 +1558,6 @@ export async function getReviewLaunchMedia(
   slug: string;
   title: string;
 } | null> {
-  markDataAsLive();
-
   const candidates = await listReviewLaunchCandidates(database);
 
   return (
@@ -1460,7 +1591,6 @@ export async function getReviewCardDetailData(
   cardId: string,
   database: DatabaseClient = db
 ): Promise<ReviewCardDetailData | null> {
-  markDataAsLive();
   const nowIso = new Date().toISOString();
 
   const media = await getMediaBySlug(database, mediaSlug);
@@ -1597,50 +1727,27 @@ export async function loadReviewOverviewSnapshots(
   }
 
   const now = new Date();
-  const nowIso = now.toISOString();
   const mediaIds = media.map((item) => item.id);
-  const [eligibleCards, terms, grammar, dailyLimit, introducedTodayCount] =
-    await Promise.all([
-      getEligibleReviewCardsByMediaIds(mediaIds, database),
-      listTermEntryReviewSummaries(database, {
-        mediaIds
-      }),
-      listGrammarEntryReviewSummaries(database, {
-        mediaIds
-      }),
-      getReviewDailyLimit(database),
-      countReviewSubjectsIntroducedOnDay(database, now)
-    ]);
-  const allCards = [...eligibleCards.values()].flat();
-  const { subjectStates } = await loadReviewSubjectStateLookup({
-    cards: allCards,
+  const workspace = await loadReviewWorkspaceV2({
     database,
-    grammar,
-    nowIso,
-    terms
+    mediaIds,
+    now
   });
   const snapshots = new Map<string, ReviewOverviewSnapshot>();
-  const entryLookup = buildReviewSubjectEntryLookup({
-    grammar,
-    terms
-  });
-  const entryStatuses = buildReviewEntryStatusLookup({
-    grammar,
-    terms
-  });
 
   for (const item of media) {
     snapshots.set(
       item.id,
       buildReviewOverviewSnapshot({
-        cards: allCards,
-        dailyLimit,
-        entryLookup,
-        entryStatuses,
+        cards: workspace.cards,
+        dailyLimit: workspace.dailyLimit,
+        entryLookup: new Map(),
+        entryStatuses: workspace.entryStatuses,
         extraNewCount: 0,
-        newIntroducedTodayCount: introducedTodayCount,
-        nowIso,
-        subjectStates,
+        newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+        nowIso: workspace.now.toISOString(),
+        subjectGroups: workspace.subjectGroups,
+        subjectStates: new Map(),
         visibleMediaId: item.id
       })
     );
@@ -1652,7 +1759,7 @@ export async function loadReviewOverviewSnapshots(
 export async function loadGlobalReviewOverviewSnapshot(
   database: DatabaseClient = db
 ) {
-  const media = await listMedia(database);
+  const media = await listMediaCached(database);
 
   if (media.length === 0) {
     return buildReviewOverviewSnapshot({
@@ -1668,41 +1775,22 @@ export async function loadGlobalReviewOverviewSnapshot(
   }
 
   const now = new Date();
-  const nowIso = now.toISOString();
-  const mediaIds = media.map((item) => item.id);
-  const [eligibleCards, terms, grammar, dailyLimit, introducedTodayCount] =
-    await Promise.all([
-      getEligibleReviewCardsByMediaIds(mediaIds, database),
-      listTermEntryReviewSummaries(database, { mediaIds }),
-      listGrammarEntryReviewSummaries(database, { mediaIds }),
-      getReviewDailyLimit(database),
-      countReviewSubjectsIntroducedOnDay(database, now)
-    ]);
-  const cards = [...eligibleCards.values()].flat();
-  const { subjectStates } = await loadReviewSubjectStateLookup({
-    cards,
+  const workspace = await loadReviewWorkspaceV2({
     database,
-    grammar,
-    nowIso,
-    terms
-  });
-  const entryLookup = buildReviewSubjectEntryLookup({
-    grammar,
-    terms
+    mediaIds: media.map((item) => item.id),
+    now
   });
 
   return buildReviewOverviewSnapshot({
-    cards,
-    dailyLimit,
-    entryLookup,
-    entryStatuses: buildReviewEntryStatusLookup({
-      grammar,
-      terms
-    }),
+    cards: workspace.cards,
+    dailyLimit: workspace.dailyLimit,
+    entryLookup: new Map(),
+    entryStatuses: workspace.entryStatuses,
     extraNewCount: 0,
-    newIntroducedTodayCount: introducedTodayCount,
-    nowIso,
-    subjectStates
+    newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+    nowIso: workspace.now.toISOString(),
+    subjectGroups: workspace.subjectGroups,
+    subjectStates: new Map()
   });
 }
 
@@ -1890,17 +1978,13 @@ function mapReviewQueueSubjectModel(
   model: ReviewQueueSubjectModel,
   input: ReviewQueueCardMapInput
 ) {
-  const selectedCard =
-    (input.selectedCardId
-      ? model.group.cards.find((card) => card.id === input.selectedCardId)
-      : null) ??
-    selectReviewQueueSubjectCard({
-      cards: model.group.cards,
-      entryLookup: input.entryLookup,
-      nowIso: input.nowIso,
-      preferredMediaId: input.visibleMediaId,
-      subjectState: model.group.subjectState
-    });
+  const selectedCard = resolveReviewQueueSubjectSelectionCard({
+    entryLookup: input.entryLookup,
+    nowIso: input.nowIso,
+    preferredMediaId: input.visibleMediaId,
+    selectedCardId: input.selectedCardId,
+    subjectGroup: model.group
+  });
 
   return mapQueueCard(
     applySubjectStateToReviewCard(selectedCard, model.group.subjectState),
@@ -1993,14 +2077,17 @@ function buildReviewOverviewSubjectModels(input: {
   entryLookup: Map<string, ReviewSubjectEntryMeta>;
   entryStatuses: Map<string, ReviewEntryStatusValue>;
   nowIso: string;
+  subjectGroups?: ReviewSubjectGroup[];
   subjectStates: Map<string, ReviewSubjectStateSnapshot>;
 }) {
-  const subjectGroups = groupReviewCardsBySubject({
-    cards: input.cards,
-    entryLookup: input.entryLookup,
-    nowIso: input.nowIso,
-    subjectStates: input.subjectStates
-  });
+  const subjectGroups =
+    input.subjectGroups ??
+    groupReviewCardsBySubject({
+      cards: input.cards,
+      entryLookup: input.entryLookup,
+      nowIso: input.nowIso,
+      subjectStates: input.subjectStates
+    });
 
   return subjectGroups.map((group) => {
     const card = selectReviewOverviewSubjectCard({
@@ -2066,6 +2153,7 @@ export function buildReviewOverviewSnapshot(input: {
   extraNewCount: number;
   newIntroducedTodayCount: number;
   nowIso: string;
+  subjectGroups?: ReviewSubjectGroup[];
   subjectStates: Map<string, ReviewSubjectStateSnapshot>;
   visibleMediaId?: string;
 }): ReviewOverviewSnapshot {
@@ -2074,6 +2162,7 @@ export function buildReviewOverviewSnapshot(input: {
     entryLookup: input.entryLookup,
     entryStatuses: input.entryStatuses,
     nowIso: input.nowIso,
+    subjectGroups: input.subjectGroups,
     subjectStates: input.subjectStates
   });
   const relevantModels = filterReviewSubjectModelsByMedia(
@@ -2510,6 +2599,7 @@ function buildReviewQueueSubjectSnapshot(input: {
     newQueuedCount: queuedNewCards.length,
     queueCount: queueModels.length,
     queueModels,
+    subjectModels,
     suspendedCount: suspendedCards.length,
     suspendedModels: suspendedCards,
     upcomingCount: upcomingCards.length,
@@ -2814,41 +2904,26 @@ function resolveReviewQueueSubjectContexts(
   return contexts;
 }
 
-function buildExplicitReviewSelection(input: {
-  cardId: string;
-  contextCache?: Map<string, ReviewQueueCard["contexts"]>;
+function resolveReviewQueueSubjectSelectionCard(input: {
   entryLookup: Map<string, ReviewEntryLookupItem>;
-  mediaById: ReviewMediaLookup;
   nowIso: string;
-  subjectModels: ReviewQueueSubjectModel[];
+  preferredMediaId?: string;
+  selectedCardId?: string | null;
+  subjectGroup: ReviewSubjectGroup;
 }) {
-  const matchingModel = input.subjectModels.find((model) =>
-    model.group.cards.some((card) => card.id === input.cardId)
-  );
-
-  if (!matchingModel) {
-    return null;
-  }
-
-  const selectedMember =
-    matchingModel.group.cards.find((card) => card.id === input.cardId) ??
-    matchingModel.globalCard;
-
-  return mapQueueCard(
-    applySubjectStateToReviewCard(
-      selectedMember,
-      matchingModel.group.subjectState
-    ),
-    input.entryLookup,
-    matchingModel.group.cards,
-    input.mediaById,
-    input.nowIso,
-    matchingModel.resolvedState,
-    resolveReviewQueueSubjectContexts(
-      matchingModel.group,
-      input.mediaById,
-      input.contextCache
-    )
+  return (
+    (input.selectedCardId
+      ? input.subjectGroup.cards.find(
+          (card) => card.id === input.selectedCardId
+        )
+      : null) ??
+    selectReviewQueueSubjectCard({
+      cards: input.subjectGroup.cards,
+      entryLookup: input.entryLookup,
+      nowIso: input.nowIso,
+      preferredMediaId: input.preferredMediaId,
+      subjectState: input.subjectGroup.subjectState
+    })
   );
 }
 
@@ -3242,12 +3317,4 @@ function readSearchParam(
   }
 
   return value?.trim() ?? "";
-}
-
-function markDataAsLive() {
-  try {
-    noStore();
-  } catch {
-    // Rendering hint only.
-  }
 }

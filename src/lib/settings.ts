@@ -4,6 +4,11 @@ import {
   userSetting,
   type DatabaseClient
 } from "@/db";
+import {
+  SETTINGS_TAG,
+  canUseDataCache,
+  runWithTaggedCache
+} from "@/lib/data-cache";
 
 import { reviewSchedulerConfig } from "./review-scheduler";
 
@@ -52,33 +57,61 @@ export async function getStudySettings(
 export async function getFuriganaModeSetting(
   database: DatabaseClient = db
 ): Promise<FuriganaMode> {
-  const row = await getUserSettingValue(database, "furigana_mode");
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["settings", "furigana-mode"],
+    loader: async () => {
+      const row = await getUserSettingValue(database, "furigana_mode");
 
-  return parseFuriganaMode(row?.valueJson);
+      return parseFuriganaMode(row?.valueJson);
+    },
+    tags: [SETTINGS_TAG]
+  });
 }
 
 export async function getReviewDailyLimit(
   database: DatabaseClient = db
 ): Promise<number> {
-  const row = await getUserSettingValue(database, "review_daily_limit");
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["settings", "review-daily-limit"],
+    loader: async () => {
+      const row = await getUserSettingValue(database, "review_daily_limit");
 
-  return parseReviewDailyLimit(row?.valueJson);
+      return parseReviewDailyLimit(row?.valueJson);
+    },
+    tags: [SETTINGS_TAG]
+  });
 }
 
 export async function getReviewFrontFuriganaSetting(
   database: DatabaseClient = db
 ): Promise<boolean> {
-  const row = await getUserSettingValue(database, "review_front_furigana");
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["settings", "review-front-furigana"],
+    loader: async () => {
+      const row = await getUserSettingValue(database, "review_front_furigana");
 
-  return parseReviewFrontFurigana(row?.valueJson);
+      return parseReviewFrontFurigana(row?.valueJson);
+    },
+    tags: [SETTINGS_TAG]
+  });
 }
 
 export async function getGlossaryDefaultSort(
   database: DatabaseClient = db
 ): Promise<GlossaryDefaultSort> {
-  const row = await getUserSettingValue(database, "glossary_default_sort");
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["settings", "glossary-default-sort"],
+    loader: async () => {
+      const row = await getUserSettingValue(database, "glossary_default_sort");
 
-  return parseGlossaryDefaultSort(row?.valueJson);
+      return parseGlossaryDefaultSort(row?.valueJson);
+    },
+    tags: [SETTINGS_TAG]
+  });
 }
 
 export async function updateStudySettings(
