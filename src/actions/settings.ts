@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { db, listMedia } from "@/db";
+import { revalidateSettingsCache } from "@/lib/data-cache";
 import { buildHrefWithSearch } from "@/lib/site";
 import { mediaHref, mediaStudyHref } from "@/lib/site";
 import {
@@ -47,8 +48,10 @@ export async function saveStudySettingsAction(formData: FormData) {
 }
 
 async function revalidateSettingsConsumers() {
+  revalidateSettingsCache();
   revalidatePath("/");
   revalidatePath("/media");
+  revalidatePath("/review");
   revalidatePath("/settings");
 
   const media = await listMedia(db);

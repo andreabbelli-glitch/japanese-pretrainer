@@ -13,11 +13,17 @@ import {
 import type { DatabaseClient } from "../client.ts";
 import {
   card,
+  crossMediaGroup,
   entryLink,
+  entryStatus,
+  grammarPattern,
   lesson,
   lessonProgress,
+  media,
   reviewLog,
   reviewState,
+  segment,
+  term,
   type EntryType
 } from "../schema/index.ts";
 
@@ -182,6 +188,86 @@ export async function listLessonLinkedReviewEntriesByMediaIds(
         inArray(entryLink.linkRole, ["introduced", "explained"])
       )
     );
+}
+
+export async function listTermEntryReviewSummariesByIds(
+  database: DatabaseClient,
+  termIds: string[]
+) {
+  if (termIds.length === 0) {
+    return [];
+  }
+
+  return database
+    .select({
+      id: term.id,
+      sourceId: term.sourceId,
+      crossMediaGroupId: term.crossMediaGroupId,
+      mediaId: term.mediaId,
+      segmentId: term.segmentId,
+      lemma: term.lemma,
+      reading: term.reading,
+      romaji: term.romaji,
+      meaningIt: term.meaningIt,
+      mediaSlug: media.slug,
+      mediaTitle: media.title,
+      segmentTitle: segment.title,
+      crossMediaGroupKey: crossMediaGroup.groupKey,
+      entryStatus: entryStatus.status
+    })
+    .from(term)
+    .innerJoin(media, eq(media.id, term.mediaId))
+    .leftJoin(segment, eq(segment.id, term.segmentId))
+    .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
+    .leftJoin(
+      entryStatus,
+      and(eq(entryStatus.entryId, term.id), eq(entryStatus.entryType, "term"))
+    )
+    .where(inArray(term.id, termIds))
+    .orderBy(asc(term.lemma), asc(term.reading));
+}
+
+export async function listGrammarEntryReviewSummariesByIds(
+  database: DatabaseClient,
+  grammarIds: string[]
+) {
+  if (grammarIds.length === 0) {
+    return [];
+  }
+
+  return database
+    .select({
+      id: grammarPattern.id,
+      sourceId: grammarPattern.sourceId,
+      crossMediaGroupId: grammarPattern.crossMediaGroupId,
+      mediaId: grammarPattern.mediaId,
+      segmentId: grammarPattern.segmentId,
+      pattern: grammarPattern.pattern,
+      title: grammarPattern.title,
+      reading: grammarPattern.reading,
+      meaningIt: grammarPattern.meaningIt,
+      mediaSlug: media.slug,
+      mediaTitle: media.title,
+      segmentTitle: segment.title,
+      crossMediaGroupKey: crossMediaGroup.groupKey,
+      entryStatus: entryStatus.status
+    })
+    .from(grammarPattern)
+    .innerJoin(media, eq(media.id, grammarPattern.mediaId))
+    .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
+    .leftJoin(
+      crossMediaGroup,
+      eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
+    )
+    .leftJoin(
+      entryStatus,
+      and(
+        eq(entryStatus.entryId, grammarPattern.id),
+        eq(entryStatus.entryType, "grammar")
+      )
+    )
+    .where(inArray(grammarPattern.id, grammarIds))
+    .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
 }
 
 export async function countNewCardsIntroducedOnDayByMediaId(

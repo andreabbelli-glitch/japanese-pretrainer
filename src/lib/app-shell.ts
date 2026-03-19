@@ -1,14 +1,17 @@
-import { unstable_noStore as noStore } from "next/cache";
-
 import {
   db,
   getMediaBySlug,
   listLessonsByMediaId,
   listLessonsByMediaIds,
-  listMedia,
   type DatabaseClient,
   type MediaListItem
 } from "@/db";
+import {
+  buildGlossarySummaryTags,
+  listMediaCached,
+  canUseDataCache,
+  runWithTaggedCache
+} from "@/lib/data-cache";
 import {
   calculatePercent,
   formatMediaTypeLabel,
@@ -79,9 +82,7 @@ export type DashboardData = {
 export async function getDashboardData(
   database: DatabaseClient = db
 ): Promise<DashboardData> {
-  markDataAsLive();
-
-  const rows = await listMedia(database);
+  const rows = await listMediaCached(database);
   const [media, globalReview] = await Promise.all([
     buildMediaShellSnapshots(database, rows),
     loadGlobalReviewOverviewSnapshot(database)
@@ -95,7 +96,10 @@ export async function getDashboardData(
     media,
     totals: {
       cardsDue: globalReview.dueCount,
-      lessonsCompleted: media.reduce((sum, item) => sum + item.lessonsCompleted, 0),
+      lessonsCompleted: media.reduce(
+        (sum, item) => sum + item.lessonsCompleted,
+        0
+      ),
       lessonsTotal: media.reduce((sum, item) => sum + item.lessonsTotal, 0),
       entriesKnown: media.reduce((sum, item) => sum + item.entriesKnown, 0),
       entriesTotal: media.reduce((sum, item) => sum + item.entriesTotal, 0),
@@ -105,9 +109,7 @@ export async function getDashboardData(
 }
 
 export async function getMediaLibraryData(database: DatabaseClient = db) {
-  markDataAsLive();
-
-  const rows = await listMedia(database);
+  const rows = await listMediaCached(database);
 
   return buildMediaShellSnapshots(database, rows);
 }
@@ -116,8 +118,6 @@ export async function getMediaDetailData(
   mediaSlug: string,
   database: DatabaseClient = db
 ) {
-  markDataAsLive();
-
   const media = await getMediaBySlug(database, mediaSlug);
 
   if (!media) {
@@ -125,6 +125,53 @@ export async function getMediaDetailData(
   }
 
   return buildMediaShellSnapshot(database, media);
+}
+
+async function loadGlossaryProgressSnapshotsCached(
+  database: DatabaseClient,
+  media: Array<{
+    id: string;
+    slug: string;
+  }>
+) {
+  if (media.length === 0) {
+    return new Map<
+      string,
+      Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>
+    >();
+  }
+
+  const orderedMedia = [...media].sort((left, right) =>
+    left.id.localeCompare(right.id, "it")
+  );
+  const snapshotRows = await runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: [
+      "app-shell",
+      "glossary-progress",
+      ...orderedMedia.map((item) => `media:${item.id}:${item.slug}`)
+    ],
+    loader: async () => {
+      const snapshots = await loadGlossaryProgressSnapshots(database, media);
+
+      return media.map((item) => ({
+        mediaId: item.id,
+        snapshot:
+          snapshots.get(item.id) ??
+          buildGlossaryProgressSnapshot({
+            grammar: [],
+            mediaSlug: item.slug,
+            studySignals: [],
+            terms: []
+          })
+      }));
+    },
+    tags: buildGlossarySummaryTags(media.map((item) => item.id))
+  });
+
+  return new Map(
+    snapshotRows.map((row) => [row.mediaId, row.snapshot] as const)
+  );
 }
 
 async function buildMediaShellSnapshots(
@@ -141,7 +188,7 @@ async function buildMediaShellSnapshots(
       database,
       media.map((item) => item.id)
     ),
-    loadGlossaryProgressSnapshots(
+    loadGlossaryProgressSnapshotsCached(
       database,
       media.map((item) => ({
         id: item.id,
@@ -196,27 +243,42 @@ async function buildMediaShellSnapshot(
   const nowIso = new Date().toISOString();
   const [lessons, glossary, review] = await Promise.all([
     listLessonsByMediaId(database, media.id),
-    loadGlossaryProgressSnapshot(database, media.id, media.slug),
+    loadGlossaryProgressSnapshotsCached(database, [
+      {
+        id: media.id,
+        slug: media.slug
+      }
+    ]).then(
+      (snapshots) =>
+        snapshots.get(media.id) ??
+        buildGlossaryProgressSnapshot({
+          grammar: [],
+          mediaSlug: media.slug,
+          studySignals: [],
+          terms: []
+        })
+    ),
     loadReviewOverviewSnapshots(database, [
       {
         id: media.id,
         slug: media.slug
       }
-    ]).then((snapshots) =>
-      snapshots.get(media.id) ??
-      buildReviewOverviewSnapshot({
-        cards: [],
-        dailyLimit: 0,
-        entryLookup: new Map(),
-        entryStatuses: buildReviewEntryStatusLookup({
-          grammar: [],
-          terms: []
-        }),
-        extraNewCount: 0,
-        newIntroducedTodayCount: 0,
-        nowIso,
-        subjectStates: new Map()
-      })
+    ]).then(
+      (snapshots) =>
+        snapshots.get(media.id) ??
+        buildReviewOverviewSnapshot({
+          cards: [],
+          dailyLimit: 0,
+          entryLookup: new Map(),
+          entryStatuses: buildReviewEntryStatusLookup({
+            grammar: [],
+            terms: []
+          }),
+          extraNewCount: 0,
+          newIntroducedTodayCount: 0,
+          nowIso,
+          subjectStates: new Map()
+        })
     )
   ]);
 
@@ -229,41 +291,37 @@ async function buildMediaShellSnapshot(
 }
 
 function pickFocusMedia(media: MediaShellSnapshot[]) {
-  return [...media].sort((left, right) => {
-    return scoreMediaFocus(left) - scoreMediaFocus(right);
-  })[0] ?? null;
+  return (
+    [...media].sort((left, right) => {
+      return scoreMediaFocus(left) - scoreMediaFocus(right);
+    })[0] ?? null
+  );
 }
 
 function pickReviewMedia(media: MediaShellSnapshot[]) {
-  return [...media].sort((left, right) => {
-    const scoreDifference = scoreMediaReview(left) - scoreMediaReview(right);
+  return (
+    [...media].sort((left, right) => {
+      const scoreDifference = scoreMediaReview(left) - scoreMediaReview(right);
 
-    if (scoreDifference !== 0) {
-      return scoreDifference;
-    }
+      if (scoreDifference !== 0) {
+        return scoreDifference;
+      }
 
-    if (left.cardsDue !== right.cardsDue) {
-      return right.cardsDue - left.cardsDue;
-    }
+      if (left.cardsDue !== right.cardsDue) {
+        return right.cardsDue - left.cardsDue;
+      }
 
-    if (left.activeReviewCards !== right.activeReviewCards) {
-      return right.activeReviewCards - left.activeReviewCards;
-    }
+      if (left.activeReviewCards !== right.activeReviewCards) {
+        return right.activeReviewCards - left.activeReviewCards;
+      }
 
-    if (left.cardsTotal !== right.cardsTotal) {
-      return right.cardsTotal - left.cardsTotal;
-    }
+      if (left.cardsTotal !== right.cardsTotal) {
+        return right.cardsTotal - left.cardsTotal;
+      }
 
-    return left.title.localeCompare(right.title, "it");
-  })[0] ?? null;
-}
-
-function markDataAsLive() {
-  try {
-    noStore();
-  } catch {
-    // `noStore` is a rendering hint; tests can execute these helpers outside a request.
-  }
+      return left.title.localeCompare(right.title, "it");
+    })[0] ?? null
+  );
 }
 
 function scoreMediaFocus(item: MediaShellSnapshot) {
@@ -319,7 +377,9 @@ function buildReviewSignals({
           : review.newQueuedCount > 0
             ? "Nuove pronte"
             : `${review.queueCount} in coda`,
-      detail: nextCardFront ? `Prossima card: ${nextCardFront}` : "Sessione pronta",
+      detail: nextCardFront
+        ? `Prossima card: ${nextCardFront}`
+        : "Sessione pronta",
       queueLabel: review.queueLabel
     };
   }
@@ -355,7 +415,8 @@ function buildReviewSignals({
     return {
       value: "In pausa",
       detail: "Le card presenti non richiedono Review attiva",
-      queueLabel: "Le card presenti non richiedono Review attiva in questo momento."
+      queueLabel:
+        "Le card presenti non richiedono Review attiva in questo momento."
     };
   }
 
@@ -369,7 +430,9 @@ function buildReviewSignals({
 function mapMediaShellSnapshot(input: {
   glossary: Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>;
   lessons: Awaited<ReturnType<typeof listLessonsByMediaId>>;
-  media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>;
+  media:
+    | MediaListItem
+    | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>;
   review: ReturnType<typeof buildReviewOverviewSnapshot>;
 }): MediaShellSnapshot {
   const lessonsCompleted = input.lessons.filter(
@@ -420,7 +483,10 @@ function mapMediaShellSnapshot(input: {
 function groupLessonsByMedia(
   lessons: Awaited<ReturnType<typeof listLessonsByMediaIds>>
 ) {
-  const grouped = new Map<string, Awaited<ReturnType<typeof listLessonsByMediaId>>>();
+  const grouped = new Map<
+    string,
+    Awaited<ReturnType<typeof listLessonsByMediaId>>
+  >();
 
   for (const lesson of lessons) {
     const existing = grouped.get(lesson.mediaId);

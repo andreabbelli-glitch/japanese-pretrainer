@@ -25,6 +25,13 @@ export type GlossarySearchCandidateRef = GlossaryEntryRef & {
   crossMediaGroupId: string | null;
 };
 
+export type GlobalGlossaryBrowseGroupRef = {
+  crossMediaGroupId: string | null;
+  entryType: EntryType;
+  internalId: string;
+  resultKey: string;
+};
+
 function splitGlossaryEntryRefs(entries: GlossaryEntryRef[]) {
   const termIds = new Set<string>();
   const grammarIds = new Set<string>();
@@ -163,7 +170,10 @@ function buildTermBaseMatchClauses(input: GlossarySearchCandidateInput) {
       input.romajiCompact
     ),
     buildTextMatchClause("lower(term.meaning_it)", input.normalized),
-    buildTextMatchClause("lower(coalesce(term.meaning_literal_it, ''))", input.normalized),
+    buildTextMatchClause(
+      "lower(coalesce(term.meaning_literal_it, ''))",
+      input.normalized
+    ),
     buildTextMatchClause("lower(coalesce(term.notes_it, ''))", input.normalized)
   ].filter((clause): clause is NonNullable<typeof clause> => clause !== null);
 }
@@ -180,20 +190,36 @@ function buildTermAliasMatchClauses(input: GlossarySearchCandidateInput) {
   const kanaScriptVariant = toKatakana(input.kana);
 
   if (kanaScriptVariant && kanaScriptVariant !== input.kana) {
-    clauses.push(buildTextMatchClause("term_alias.alias_norm", kanaScriptVariant));
+    clauses.push(
+      buildTextMatchClause("term_alias.alias_norm", kanaScriptVariant)
+    );
   }
 
-  return clauses.filter((clause): clause is NonNullable<typeof clause> => clause !== null);
+  return clauses.filter(
+    (clause): clause is NonNullable<typeof clause> => clause !== null
+  );
 }
 
 function buildGrammarBaseMatchClauses(input: GlossarySearchCandidateInput) {
   return [
-    buildTextMatchClause("grammar_pattern.search_pattern_norm", input.normalized),
-    buildTextMatchClause("grammar_pattern.search_pattern_norm", input.grammarKana),
-    buildTextMatchClause("lower(coalesce(grammar_pattern.reading, ''))", input.kana),
+    buildTextMatchClause(
+      "grammar_pattern.search_pattern_norm",
+      input.normalized
+    ),
+    buildTextMatchClause(
+      "grammar_pattern.search_pattern_norm",
+      input.grammarKana
+    ),
+    buildTextMatchClause(
+      "lower(coalesce(grammar_pattern.reading, ''))",
+      input.kana
+    ),
     buildTextMatchClause("lower(grammar_pattern.title)", input.normalized),
     buildTextMatchClause("lower(grammar_pattern.meaning_it)", input.normalized),
-    buildTextMatchClause("lower(coalesce(grammar_pattern.notes_it, ''))", input.normalized)
+    buildTextMatchClause(
+      "lower(coalesce(grammar_pattern.notes_it, ''))",
+      input.normalized
+    )
   ].filter((clause): clause is NonNullable<typeof clause> => clause !== null);
 }
 
@@ -209,19 +235,21 @@ function buildGrammarAliasMatchClauses(input: GlossarySearchCandidateInput) {
 }
 
 function toKatakana(value: string) {
-  return [...value].map((char) => {
-    const codePoint = char.codePointAt(0);
+  return [...value]
+    .map((char) => {
+      const codePoint = char.codePointAt(0);
 
-    if (!codePoint) {
+      if (!codePoint) {
+        return char;
+      }
+
+      if (codePoint >= 0x3041 && codePoint <= 0x3096) {
+        return String.fromCodePoint(codePoint + 0x60);
+      }
+
       return char;
-    }
-
-    if (codePoint >= 0x3041 && codePoint <= 0x3096) {
-      return String.fromCodePoint(codePoint + 0x60);
-    }
-
-    return char;
-  }).join("");
+    })
+    .join("");
 }
 
 async function listTermGlossaryEntries(
@@ -621,6 +649,379 @@ export async function listGlossarySearchCandidateRefs(
   return (await Promise.all(queries)).flat();
 }
 
+function buildGlobalGlossaryBrowseFilterClause(input: {
+  cards: "all" | "with_cards" | "without_cards";
+  entryType?: EntryType;
+  mediaSlug?: string;
+  study?: "known" | "review" | "learning" | "new" | "available";
+}) {
+  const clauses: string[] = [];
+  const args: string[] = [];
+
+  if (input.entryType) {
+    clauses.push("kind = ?");
+    args.push(input.entryType);
+  }
+
+  if (input.mediaSlug) {
+    clauses.push("mediaSlug = ?");
+    args.push(input.mediaSlug);
+  }
+
+  if (input.study) {
+    clauses.push("studyKey = ?");
+    args.push(input.study);
+  }
+
+  if (input.cards === "with_cards") {
+    clauses.push("cardCount > 0");
+  }
+
+  if (input.cards === "without_cards") {
+    clauses.push("cardCount = 0");
+  }
+
+  return {
+    args,
+    sql: clauses.length > 0 ? `where ${clauses.join(" and ")}` : ""
+  };
+}
+
+function buildGlobalGlossaryBrowseScopeQuery(input: {
+  cards: "all" | "with_cards" | "without_cards";
+  entryType?: EntryType;
+  mediaSlug?: string;
+  study?: "known" | "review" | "learning" | "new" | "available";
+}) {
+  const filters = buildGlobalGlossaryBrowseFilterClause(input);
+
+  return {
+    args: filters.args,
+    sql: `
+      with term_entries as (
+        select
+          'term' as kind,
+          term.id as internalId,
+          term.source_id as sourceId,
+          term.cross_media_group_id as crossMediaGroupId,
+          cross_media_group.group_key as crossMediaGroupKey,
+          media.id as mediaId,
+          media.slug as mediaSlug,
+          media.title as mediaTitle,
+          term.lemma as label,
+          coalesce(segment.order_index, 999999) as segmentOrder,
+          entry_status.status as entryStatus,
+          cast(count(card.id) as integer) as cardCount,
+          max(
+            case
+              when card.status = 'active'
+                and (
+                  coalesce(review_state.manual_override, 0) = 1
+                  or review_state.state = 'known_manual'
+                )
+              then 1
+              else 0
+            end
+          ) as hasKnownSignal,
+          max(
+            case
+              when card.status = 'active' and review_state.state = 'learning'
+              then 1
+              else 0
+            end
+          ) as hasLearningSignal,
+          max(
+            case
+              when card.status = 'active'
+                and review_state.state in ('review', 'relearning')
+              then 1
+              else 0
+            end
+          ) as hasReviewSignal,
+          max(
+            case
+              when card.status = 'active' and review_state.state = 'new'
+              then 1
+              else 0
+            end
+          ) as hasNewSignal
+        from term
+        inner join media on media.id = term.media_id
+        left join segment on segment.id = term.segment_id
+        left join cross_media_group
+          on cross_media_group.id = term.cross_media_group_id
+        left join entry_status
+          on entry_status.entry_type = 'term'
+          and entry_status.entry_id = term.id
+        left join card_entry_link
+          on card_entry_link.entry_type = 'term'
+          and card_entry_link.entry_id = term.id
+        left join card
+          on card.id = card_entry_link.card_id
+          and card.status != 'archived'
+        left join review_state on review_state.card_id = card.id
+        group by
+          term.id,
+          term.source_id,
+          term.cross_media_group_id,
+          cross_media_group.group_key,
+          media.id,
+          media.slug,
+          media.title,
+          term.lemma,
+          segment.order_index,
+          entry_status.status
+      ),
+      grammar_entries as (
+        select
+          'grammar' as kind,
+          grammar_pattern.id as internalId,
+          grammar_pattern.source_id as sourceId,
+          grammar_pattern.cross_media_group_id as crossMediaGroupId,
+          cross_media_group.group_key as crossMediaGroupKey,
+          media.id as mediaId,
+          media.slug as mediaSlug,
+          media.title as mediaTitle,
+          grammar_pattern.pattern as label,
+          coalesce(segment.order_index, 999999) as segmentOrder,
+          entry_status.status as entryStatus,
+          cast(count(card.id) as integer) as cardCount,
+          max(
+            case
+              when card.status = 'active'
+                and (
+                  coalesce(review_state.manual_override, 0) = 1
+                  or review_state.state = 'known_manual'
+                )
+              then 1
+              else 0
+            end
+          ) as hasKnownSignal,
+          max(
+            case
+              when card.status = 'active' and review_state.state = 'learning'
+              then 1
+              else 0
+            end
+          ) as hasLearningSignal,
+          max(
+            case
+              when card.status = 'active'
+                and review_state.state in ('review', 'relearning')
+              then 1
+              else 0
+            end
+          ) as hasReviewSignal,
+          max(
+            case
+              when card.status = 'active' and review_state.state = 'new'
+              then 1
+              else 0
+            end
+          ) as hasNewSignal
+        from grammar_pattern
+        inner join media on media.id = grammar_pattern.media_id
+        left join segment on segment.id = grammar_pattern.segment_id
+        left join cross_media_group
+          on cross_media_group.id = grammar_pattern.cross_media_group_id
+        left join entry_status
+          on entry_status.entry_type = 'grammar'
+          and entry_status.entry_id = grammar_pattern.id
+        left join card_entry_link
+          on card_entry_link.entry_type = 'grammar'
+          and card_entry_link.entry_id = grammar_pattern.id
+        left join card
+          on card.id = card_entry_link.card_id
+          and card.status != 'archived'
+        left join review_state on review_state.card_id = card.id
+        group by
+          grammar_pattern.id,
+          grammar_pattern.source_id,
+          grammar_pattern.cross_media_group_id,
+          cross_media_group.group_key,
+          media.id,
+          media.slug,
+          media.title,
+          grammar_pattern.pattern,
+          segment.order_index,
+          entry_status.status
+      ),
+      glossary_entries as (
+        select * from term_entries
+        union all
+        select * from grammar_entries
+      ),
+      resolved_entries as (
+        select
+          *,
+          case
+            when entryStatus = 'known_manual' or hasKnownSignal = 1 then 'known'
+            when hasLearningSignal = 1 then 'learning'
+            when hasReviewSignal = 1
+              or entryStatus in ('review', 'reviewing', 'relearning')
+            then 'review'
+            when entryStatus = 'learning' then 'learning'
+            when entryStatus in ('new', 'unknown') or hasNewSignal = 1 then 'new'
+            else 'available'
+          end as studyKey,
+          case
+            when crossMediaGroupKey is not null
+            then kind || ':group:' || crossMediaGroupKey
+            else kind || ':entry:' || internalId
+          end as resultKey,
+          case
+            when crossMediaGroupId is not null
+            then kind || ':group:' || crossMediaGroupId
+            else kind || ':entry:' || internalId
+          end as groupToken
+        from glossary_entries
+      ),
+      matching_entries as (
+        select *
+        from resolved_entries
+        ${filters.sql}
+      ),
+      matching_groups as (
+        select distinct groupToken
+        from matching_entries
+      )
+    `
+  };
+}
+
+export async function countGlobalGlossaryBrowseGroups(
+  database: DatabaseClient,
+  input: {
+    cards: "all" | "with_cards" | "without_cards";
+    entryType?: EntryType;
+    mediaSlug?: string;
+    study?: "known" | "review" | "learning" | "new" | "available";
+  }
+) {
+  const scope = buildGlobalGlossaryBrowseScopeQuery(input);
+  const result = await database.$client.execute({
+    sql: `
+      ${scope.sql}
+      select cast(count(*) as integer) as count
+      from matching_groups
+    `,
+    args: scope.args
+  });
+
+  return Number(result.rows[0]?.count ?? 0);
+}
+
+export async function listGlobalGlossaryBrowseGroupRefs(
+  database: DatabaseClient,
+  input: {
+    cards: "all" | "with_cards" | "without_cards";
+    entryType?: EntryType;
+    mediaSlug?: string;
+    page: number;
+    pageSize: number;
+    sort?: "alphabetical" | "lesson_order";
+    study?: "known" | "review" | "learning" | "new" | "available";
+  }
+): Promise<GlobalGlossaryBrowseGroupRef[]> {
+  const scope = buildGlobalGlossaryBrowseScopeQuery(input);
+  const offset = Math.max(input.page - 1, 0) * input.pageSize;
+  const orderByClause =
+    input.sort === "lesson_order"
+      ? `order by
+          segmentOrder,
+          label,
+          entryType,
+          orderMediaCount desc,
+          mediaSlug,
+          sourceId`
+      : `order by
+          label,
+          entryType,
+          orderMediaCount desc,
+          mediaSlug,
+          sourceId`;
+  const result = await database.$client.execute({
+    sql: `
+      ${scope.sql}
+      ,
+      best_local_candidates as (
+        select
+          matching_entries.*,
+          row_number() over (
+            partition by matching_entries.groupToken
+            order by
+              case when matching_entries.cardCount > 0 then 0 else 1 end,
+              matching_entries.mediaTitle,
+              matching_entries.kind,
+              matching_entries.label,
+              matching_entries.mediaSlug,
+              matching_entries.sourceId
+          ) as rowNumber
+        from matching_entries
+      ),
+      best_locals as (
+        select *
+        from best_local_candidates
+        where rowNumber = 1
+      ),
+      all_group_stats as (
+        select
+          resolved_entries.groupToken as groupToken,
+          cast(count(distinct resolved_entries.mediaId) as integer) as mediaCount
+        from resolved_entries
+        inner join matching_groups
+          on matching_groups.groupToken = resolved_entries.groupToken
+        group by resolved_entries.groupToken
+      ),
+      matching_group_stats as (
+        select
+          matching_entries.groupToken as groupToken,
+          cast(count(distinct matching_entries.mediaId) as integer) as mediaCount
+        from matching_entries
+        group by matching_entries.groupToken
+      ),
+      ordered_groups as (
+        select
+          best_locals.resultKey as resultKey,
+          best_locals.kind as entryType,
+          best_locals.internalId as internalId,
+          best_locals.crossMediaGroupId as crossMediaGroupId,
+          best_locals.segmentOrder as segmentOrder,
+          case
+            when ? = 'all'
+            then coalesce(all_group_stats.mediaCount, 0)
+            else coalesce(matching_group_stats.mediaCount, 0)
+          end as orderMediaCount,
+          best_locals.mediaSlug as mediaSlug,
+          best_locals.sourceId as sourceId,
+          best_locals.label as label
+        from best_locals
+        left join all_group_stats
+          on all_group_stats.groupToken = best_locals.groupToken
+        left join matching_group_stats
+          on matching_group_stats.groupToken = best_locals.groupToken
+      )
+      select
+        resultKey,
+        entryType,
+        internalId,
+        crossMediaGroupId
+      from ordered_groups
+      ${orderByClause}
+      limit ? offset ?
+    `,
+    args: [...scope.args, input.cards, input.pageSize, offset]
+  });
+
+  return result.rows.map((row) => ({
+    crossMediaGroupId:
+      typeof row.crossMediaGroupId === "string" ? row.crossMediaGroupId : null,
+    entryType: row.entryType === "grammar" ? "grammar" : "term",
+    internalId: String(row.internalId),
+    resultKey: String(row.resultKey)
+  }));
+}
+
 export async function getTermEntriesByIds(
   database: DatabaseClient,
   entryIds: string[]
@@ -745,7 +1146,9 @@ export async function getGrammarEntriesByCrossMediaGroupIds(
   }));
 }
 
-export async function getGlobalGlossaryAggregateStats(database: DatabaseClient) {
+export async function getGlobalGlossaryAggregateStats(
+  database: DatabaseClient
+) {
   const [
     termEntryCountResult,
     grammarEntryCountResult,
@@ -810,10 +1213,13 @@ export async function getGlobalGlossaryAggregateStats(database: DatabaseClient) 
 
   return {
     crossMediaCount:
-      readCount(termCrossMediaCountResult) + readCount(grammarCrossMediaCountResult),
-    entryCount: readCount(termEntryCountResult) + readCount(grammarEntryCountResult),
+      readCount(termCrossMediaCountResult) +
+      readCount(grammarCrossMediaCountResult),
+    entryCount:
+      readCount(termEntryCountResult) + readCount(grammarEntryCountResult),
     withCardsCount:
-      readCount(termWithCardsCountResult) + readCount(grammarWithCardsCountResult)
+      readCount(termWithCardsCountResult) +
+      readCount(grammarWithCardsCountResult)
   };
 }
 
@@ -999,7 +1405,9 @@ export async function getTermCrossMediaFamilyByEntryId(
   entryId: string
 ): Promise<TermCrossMediaFamily> {
   return (
-    (await listTermCrossMediaFamiliesByEntryIds(database, [entryId])).get(entryId) ?? {
+    (await listTermCrossMediaFamiliesByEntryIds(database, [entryId])).get(
+      entryId
+    ) ?? {
       group: null,
       siblings: []
     }
@@ -1420,7 +1828,9 @@ export type EntryLessonConnection = Awaited<
 export type EntryCardConnection = Awaited<
   ReturnType<typeof listEntryCardConnections>
 >[number];
-export type EntryCardCount = Awaited<ReturnType<typeof listEntryCardCounts>>[number];
+export type EntryCardCount = Awaited<
+  ReturnType<typeof listEntryCardCounts>
+>[number];
 export type TermGlossaryEntrySummary = Awaited<
   ReturnType<typeof listTermEntrySummaries>
 >[number];

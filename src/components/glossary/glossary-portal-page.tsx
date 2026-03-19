@@ -31,10 +31,19 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
     cards: data.filters.cards,
     entryType: data.filters.entryType,
     media: data.filters.media,
+    page: data.pagination.page,
     query: data.filters.query,
     sort: data.filters.sort,
     study: data.filters.study
   });
+  const hasPagination =
+    data.results.length > 0 &&
+    data.resultSummary.filtered > data.pagination.pageSize;
+  const pageStart =
+    data.resultSummary.filtered === 0
+      ? 0
+      : (data.pagination.page - 1) * data.pagination.pageSize + 1;
+  const pageEnd = pageStart + data.results.length - 1;
 
   if (data.mediaOptions.length === 0) {
     return (
@@ -79,17 +88,21 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
       />
 
       <section className="content-section">
-        <SurfaceCard className="glossary-hero glossary-portal-search" variant="hero">
+        <SurfaceCard
+          className="glossary-hero glossary-portal-search"
+          variant="hero"
+        >
           <div className="glossary-portal-search__intro">
             <div className="glossary-portal-search__copy">
               <p className="eyebrow">Ricerca globale</p>
               <h2 className="glossary-hero__title">
-                Cerca nel corpus completo e apri subito il punto di studio migliore.
+                Cerca nel corpus completo e apri subito il punto di studio
+                migliore.
               </h2>
               <p className="glossary-hero__summary">
-                Il portale aggrega i match cross-media, rende esplicito il segnale
-                flashcard e usa il dettaglio locale migliore come destinazione
-                primaria.
+                Il portale aggrega i match cross-media, rende esplicito il
+                segnale flashcard e usa il dettaglio locale migliore come
+                destinazione primaria.
               </p>
             </div>
 
@@ -166,22 +179,77 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
             title="Nessun risultato con questi filtri."
             description="Prova una forma più breve, passa da romaji a kana oppure rimuovi media, stato o filtro flashcard per allargare la ricerca."
             action={
-              <Link className="button button--ghost" href={"/glossary" as Route}>
+              <Link
+                className="button button--ghost"
+                href={"/glossary" as Route}
+              >
                 Riparti dal portale
               </Link>
             }
           />
         ) : (
-          <div className="glossary-results glossary-results--portal">
-            {data.results.map((entry) => (
-              <GlobalGlossaryResultCard
-                key={entry.resultKey}
-                entry={entry}
-                query={data.filters.query}
-                returnTo={currentSearchHref}
-              />
-            ))}
-          </div>
+          <>
+            <div className="glossary-results glossary-results--portal">
+              {data.results.map((entry) => (
+                <GlobalGlossaryResultCard
+                  key={entry.resultKey}
+                  entry={entry}
+                  query={data.filters.query}
+                  returnTo={currentSearchHref}
+                />
+              ))}
+            </div>
+
+            {hasPagination ? (
+              <SurfaceCard
+                as="nav"
+                className="glossary-portal-pagination"
+                variant="quiet"
+              >
+                <p>
+                  Pagina {data.pagination.page} di {data.pagination.totalPages}.
+                  Stai vedendo {pageStart}-{pageEnd} di{" "}
+                  {data.resultSummary.filtered} risultati.
+                </p>
+                <div className="glossary-search-form__actions glossary-search-form__actions--portal">
+                  {data.pagination.page > 1 ? (
+                    <Link
+                      className="button button--ghost"
+                      href={buildGlossaryHref({
+                        baseHref: "/glossary" as Route,
+                        cards: data.filters.cards,
+                        entryType: data.filters.entryType,
+                        media: data.filters.media,
+                        page: data.pagination.page - 1,
+                        query: data.filters.query,
+                        sort: data.filters.sort,
+                        study: data.filters.study
+                      })}
+                    >
+                      Pagina precedente
+                    </Link>
+                  ) : null}
+                  {data.pagination.page < data.pagination.totalPages ? (
+                    <Link
+                      className="button button--ghost"
+                      href={buildGlossaryHref({
+                        baseHref: "/glossary" as Route,
+                        cards: data.filters.cards,
+                        entryType: data.filters.entryType,
+                        media: data.filters.media,
+                        page: data.pagination.page + 1,
+                        query: data.filters.query,
+                        sort: data.filters.sort,
+                        study: data.filters.study
+                      })}
+                    >
+                      Pagina successiva
+                    </Link>
+                  ) : null}
+                </div>
+              </SurfaceCard>
+            ) : null}
+          </>
         )}
       </Section>
     </div>

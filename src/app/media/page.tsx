@@ -1,7 +1,9 @@
+import { connection } from "next/server";
+
 import { MediaLibraryPage } from "@/components/media/media-library-page";
 
-export const dynamic = "force-dynamic";
+export default async function MediaPage() {
+  await connection();
 
-export default function MediaPage() {
   return <MediaLibraryPage />;
 }

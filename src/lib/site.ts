@@ -36,6 +36,7 @@ export type GlossaryHrefInput = {
   cards?: GlossaryCardsFilter;
   entryType?: "all" | GlossaryEntryKind;
   media?: string;
+  page?: number;
   query?: string;
   returnTo?: string | null;
   segmentId?: string;
@@ -320,6 +321,12 @@ export function buildGlossaryHref(input: GlossaryHrefInput): Route {
     setOptionalSearchParam(params, "q", input.query);
     setOptionalSearchParam(params, "type", input.entryType, "all");
     setOptionalSearchParam(params, "media", input.media, "all");
+    setOptionalSearchParam(
+      params,
+      "page",
+      input.page && input.page > 1 ? String(input.page) : undefined,
+      "1"
+    );
     setOptionalSearchParam(params, "segment", input.segmentId, "all");
     setOptionalSearchParam(params, "study", input.study, "all");
     setOptionalSearchParam(params, "cards", input.cards, "all");

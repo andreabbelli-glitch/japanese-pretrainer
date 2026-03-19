@@ -1,5 +1,3 @@
-import "dotenv/config";
-
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
@@ -8,6 +6,7 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { performance as nodePerformance } from "node:perf_hooks";
 
 import { chromium } from "@playwright/test";
+import dotenv from "dotenv";
 
 import {
   closeDatabaseClient,
@@ -16,7 +15,11 @@ import {
 } from "../src/db/index.ts";
 import { resolveDatabaseLocation } from "../src/db/config.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
-import { getAuthConfig } from "../src/lib/auth.ts";
+import {
+  AUTH_SESSION_COOKIE,
+  createSessionToken,
+  getAuthConfig
+} from "../src/lib/auth.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
 
 const BENCHMARK_ROUTES = [
@@ -25,7 +28,7 @@ const BENCHMARK_ROUTES = [
   "/review",
   "/glossary",
   "/media/duel-masters-dm25",
-  "/media/duel-masters-dm25/textbook/tcg-core-overview"
+  "/media/duel-masters-dm25/review"
 ] as const;
 
 const DEFAULT_PORT = 3310;
@@ -124,6 +127,8 @@ type BenchmarkRuntime = {
   databasePrepared: boolean;
 };
 
+loadBenchmarkEnv();
+
 const cliOptions = parseCliArgs(process.argv.slice(2));
 
 if (cliOptions.showHelp) {
@@ -132,7 +137,8 @@ if (cliOptions.showHelp) {
 }
 
 const baseUrl = `http://127.0.0.1:${cliOptions.port}`;
-const databaseUrl = process.env.DATABASE_URL?.trim() || DEFAULT_LOCAL_DATABASE_PATH;
+const databaseUrl =
+  process.env.DATABASE_URL?.trim() || DEFAULT_LOCAL_DATABASE_PATH;
 const databaseLocation = resolveDatabaseLocation(databaseUrl);
 const benchmarkRuntime: BenchmarkRuntime = {
   authEnabled: false,
@@ -276,7 +282,10 @@ function parseCliArgs(argv: string[]): CliOptions {
         options.showHelp = true;
         break;
       case "--runs":
-        options.runs = parsePositiveInteger(readFlagValue(argv, arg, index), arg);
+        options.runs = parsePositiveInteger(
+          readFlagValue(argv, arg, index),
+          arg
+        );
         index += 1;
         break;
       case "--warmup":
@@ -287,7 +296,10 @@ function parseCliArgs(argv: string[]): CliOptions {
         index += 1;
         break;
       case "--port":
-        options.port = parsePositiveInteger(readFlagValue(argv, arg, index), arg);
+        options.port = parsePositiveInteger(
+          readFlagValue(argv, arg, index),
+          arg
+        );
         index += 1;
         break;
       case "--output-json":
@@ -360,15 +372,13 @@ Options:
   --skip-db-prepare  Reuse the target DB without migrations/import.
 
 Environment:
-  DATABASE_URL                 Local SQLite path or remote libsql/Turso URL.
+  DATABASE_URL                 Explicit benchmark DB target (otherwise a local .tmp/perf DB is used).
   DATABASE_AUTH_TOKEN          Preferred libsql auth token env for remote DB.
   LIBSQL_AUTH_TOKEN            Supported fallback auth token env.
   AUTH_USERNAME                Enables app auth when combined with the other AUTH_* values.
-  AUTH_PASSWORD                Plaintext password; benchmark can reuse it directly.
+  AUTH_PASSWORD                Supported auth mode for the app.
   AUTH_PASSWORD_HASH           Supported auth mode for the app.
-  AUTH_SESSION_SECRET          Required when auth is enabled.
-  BENCH_AUTH_PASSWORD          Required only when auth is enabled with AUTH_PASSWORD_HASH.
-  BENCH_AUTH_USERNAME          Optional override for the login username.
+  AUTH_SESSION_SECRET          Required when auth is enabled; benchmark seeds a session automatically.
 `);
 }
 
@@ -505,36 +515,34 @@ async function createAuthenticatedStorageState(
     return undefined;
   }
 
-  const username =
-    process.env.BENCH_AUTH_USERNAME?.trim() || authConfig.username;
-  const password = process.env.BENCH_AUTH_PASSWORD ?? process.env.AUTH_PASSWORD;
-
-  if (!password) {
-    throw new Error(
-      "Auth is enabled, but no benchmark password is available. Set BENCH_AUTH_PASSWORD or AUTH_PASSWORD."
-    );
-  }
-
   const context = await browser.newContext({
     baseURL: baseUrl
   });
 
   try {
-    const page = await context.newPage();
+    await context.addCookies([
+      {
+        httpOnly: true,
+        name: AUTH_SESSION_COOKIE,
+        sameSite: "Lax",
+        url: baseUrl,
+        value: createSessionToken()
+      }
+    ]);
 
-    await page.goto("/login?next=%2F", {
+    const page = await context.newPage();
+    await page.goto("/", {
       timeout: NAVIGATION_TIMEOUT_MS,
       waitUntil: "load"
     });
-    await page.locator('input[name="username"]').fill(username);
-    await page.locator('input[name="password"]').fill(password);
-    await Promise.all([
-      page.waitForURL((url) => url.pathname !== "/login", {
-        timeout: NAVIGATION_TIMEOUT_MS
-      }),
-      page.getByRole("button", { name: "Entra" }).click()
-    ]);
-    await page.waitForLoadState("load", { timeout: NAVIGATION_TIMEOUT_MS });
+
+    const finalUrl = new URL(page.url());
+
+    if (finalUrl.pathname === "/login") {
+      throw new Error(
+        "Unable to bootstrap an authenticated benchmark session. Check AUTH_* configuration."
+      );
+    }
 
     await context.storageState({ path: DEFAULT_STORAGE_STATE_PATH });
   } finally {
@@ -550,7 +558,11 @@ async function runWarmupCycles(options: {
   storageStatePath?: string;
   warmupRuns: number;
 }) {
-  for (let warmupIndex = 0; warmupIndex < options.warmupRuns; warmupIndex += 1) {
+  for (
+    let warmupIndex = 0;
+    warmupIndex < options.warmupRuns;
+    warmupIndex += 1
+  ) {
     for (const route of BENCHMARK_ROUTES) {
       await measureRoute({
         baseUrl: options.baseUrl,
@@ -642,14 +654,23 @@ async function measureRoute(options: {
     const timing = await readNavigationTiming(page);
 
     if (!timing) {
-      throw new Error(`No navigation timing entry was available for ${options.route}.`);
+      throw new Error(
+        `No navigation timing entry was available for ${options.route}.`
+      );
     }
 
     const finalUrl = new URL(page.url());
+    const finalPath = `${finalUrl.pathname}${finalUrl.search}`;
+
+    if (finalPath !== options.route) {
+      throw new Error(
+        `Unexpected redirect while benchmarking ${options.route}: landed on ${finalPath}. Check auth/session setup or route availability.`
+      );
+    }
 
     return {
       domContentLoadedMs: timing.domContentLoadedMs,
-      finalPath: `${finalUrl.pathname}${finalUrl.search}`,
+      finalPath,
       loadEventMs: timing.loadEventMs,
       responseStatus: response?.status() ?? null,
       route: options.route,
@@ -689,9 +710,9 @@ async function readNavigationTiming(page: {
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
       return await page.evaluate(() => {
-        const navigation = performance.getEntriesByType(
-          "navigation"
-        )[0] as PerformanceNavigationTiming | undefined;
+        const navigation = performance.getEntriesByType("navigation")[0] as
+          | PerformanceNavigationTiming
+          | undefined;
 
         if (!navigation) {
           return null;
@@ -706,7 +727,10 @@ async function readNavigationTiming(page: {
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
 
-      if (!message.includes("Execution context was destroyed") || attempt === 2) {
+      if (
+        !message.includes("Execution context was destroyed") ||
+        attempt === 2
+      ) {
         throw error;
       }
 
@@ -722,6 +746,7 @@ async function readNavigationTiming(page: {
 function renderConsoleSummary(report: BenchmarkReport) {
   const header = [
     "Route".padEnd(55),
+    "Status".padStart(8),
     "TTFB".padStart(10),
     "Load".padStart(10),
     "Total".padStart(10)
@@ -730,6 +755,7 @@ function renderConsoleSummary(report: BenchmarkReport) {
   const rows = report.routes.map((route) =>
     [
       route.route.padEnd(55),
+      formatStatus(route.responseStatus).padStart(8),
       formatMs(route.medianTtfbMs).padStart(10),
       formatMs(route.medianLoadEventMs).padStart(10),
       formatMs(route.medianTotalTimeMs).padStart(10)
@@ -778,13 +804,13 @@ function renderMarkdownReport(report: BenchmarkReport) {
     "",
     "## Median summary",
     "",
-    "| Route | Final path | Median TTFB (ms) | Median load (ms) | Median total (ms) |",
-    "| --- | --- | ---: | ---: | ---: |"
+    "| Route | Final path | Status | Median TTFB (ms) | Median load (ms) | Median total (ms) |",
+    "| --- | --- | ---: | ---: | ---: | ---: |"
   ];
 
   for (const route of report.routes) {
     lines.push(
-      `| \`${route.route}\` | \`${route.finalPath}\` | ${formatMs(route.medianTtfbMs)} | ${formatMs(route.medianLoadEventMs)} | ${formatMs(route.medianTotalTimeMs)} |`
+      `| \`${route.route}\` | \`${route.finalPath}\` | ${formatStatus(route.responseStatus)} | ${formatMs(route.medianTtfbMs)} | ${formatMs(route.medianLoadEventMs)} | ${formatMs(route.medianTotalTimeMs)} |`
     );
   }
 
@@ -794,7 +820,7 @@ function renderMarkdownReport(report: BenchmarkReport) {
     "",
     "- `TTFB`: browser navigation timing `responseStart`.",
     "- `load`: browser navigation timing `loadEventEnd`.",
-    "- `total`: wall-clock time around `page.goto(..., { waitUntil: \"load\" })`.",
+    '- `total`: wall-clock time around `page.goto(..., { waitUntil: "load" })`.',
     ""
   );
 
@@ -805,6 +831,10 @@ function formatMs(value: number) {
   return value.toFixed(1);
 }
 
+function formatStatus(value: number | null) {
+  return value === null ? "-" : String(value);
+}
+
 function formatDatabaseLabel(databaseLabel: string) {
   const trimmed = databaseLabel.trim();
 
@@ -813,6 +843,35 @@ function formatDatabaseLabel(databaseLabel: string) {
   }
 
   return trimmed;
+}
+
+function loadBenchmarkEnv() {
+  const initiallyDefinedKeys = new Set(Object.keys(process.env));
+  const ignoredKeys = new Set(["DATABASE_URL"]);
+  const envFiles = [
+    ".env",
+    ".env.production",
+    ".env.local",
+    ".env.production.local"
+  ];
+
+  for (const envFile of envFiles) {
+    const envFilePath = path.resolve(process.cwd(), envFile);
+
+    if (!fs.existsSync(envFilePath)) {
+      continue;
+    }
+
+    const parsedEnv = dotenv.parse(fs.readFileSync(envFilePath, "utf8"));
+
+    for (const [key, value] of Object.entries(parsedEnv)) {
+      if (initiallyDefinedKeys.has(key) || ignoredKeys.has(key)) {
+        continue;
+      }
+
+      process.env[key] = value;
+    }
+  }
 }
 
 async function shutdownServer(child: ChildProcess | null) {

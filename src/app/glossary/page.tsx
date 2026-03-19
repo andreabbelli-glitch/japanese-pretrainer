@@ -1,7 +1,7 @@
+import { connection } from "next/server";
+
 import { GlossaryPortalPage } from "@/components/glossary/glossary-portal-page";
 import { getGlobalGlossaryPageData } from "@/lib/glossary";
-
-export const dynamic = "force-dynamic";
 
 type GlossaryRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -10,6 +10,8 @@ type GlossaryRouteProps = {
 export default async function GlossaryPage({
   searchParams
 }: GlossaryRouteProps) {
+  await connection();
+
   const resolvedSearchParams = await searchParams;
   const glossaryData = await getGlobalGlossaryPageData(resolvedSearchParams);
 

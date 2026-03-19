@@ -6,6 +6,10 @@ import { redirect } from "next/navigation";
 
 import { db, getMediaBySlug } from "@/db";
 import {
+  revalidateGlossarySummaryCache,
+  revalidateReviewSummaryCache
+} from "@/lib/data-cache";
+import {
   applyReviewGrade,
   resetReviewCardProgress,
   setLinkedEntryStatusByCard,
@@ -56,7 +60,10 @@ export async function gradeReviewCardAction(formData: FormData) {
         : "good"
   });
 
-  revalidateActiveReviewPaths(mediaSlug);
+  revalidateActiveReviewPaths({
+    mediaId,
+    mediaSlug
+  });
   redirect(
     buildReviewRedirectUrl({
       answeredCount: answeredCount + 1,
@@ -80,7 +87,10 @@ export async function markLinkedEntryKnownAction(formData: FormData) {
     status: "known_manual"
   });
 
-  revalidateEntryStatusPaths(mediaSlug);
+  revalidateEntryStatusPaths({
+    mediaId,
+    mediaSlug
+  });
   redirect(
     buildReviewRedirectUrl({
       answeredCount,
@@ -107,7 +117,10 @@ export async function setLinkedEntryLearningAction(formData: FormData) {
     status: "learning"
   });
 
-  revalidateEntryStatusPaths(mediaSlug);
+  revalidateEntryStatusPaths({
+    mediaId,
+    mediaSlug
+  });
   redirect(
     buildReviewRedirectUrl({
       answeredCount,
@@ -133,7 +146,10 @@ export async function resetReviewCardAction(formData: FormData) {
     expectedMediaId: mediaId
   });
 
-  revalidateActiveReviewPaths(mediaSlug);
+  revalidateActiveReviewPaths({
+    mediaId,
+    mediaSlug
+  });
   redirect(
     buildReviewRedirectUrl({
       answeredCount,
@@ -161,7 +177,10 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
     suspended
   });
 
-  revalidateActiveReviewPaths(mediaSlug);
+  revalidateActiveReviewPaths({
+    mediaId,
+    mediaSlug
+  });
   redirect(
     buildReviewRedirectUrl({
       answeredCount,
@@ -190,7 +209,10 @@ export async function gradeReviewCardSessionAction(
     rating: input.rating
   });
 
-  revalidateActiveReviewPaths(input.mediaSlug ?? input.cardMediaSlug);
+  revalidateActiveReviewPaths({
+    mediaId,
+    mediaSlug: input.mediaSlug ?? input.cardMediaSlug
+  });
 
   if (
     (input.gradedCardBucket === "due" || input.gradedCardBucket === "new") &&
@@ -281,7 +303,10 @@ export async function markLinkedEntryKnownSessionAction(
     status: "known_manual"
   });
 
-  revalidateEntryStatusPaths(input.mediaSlug ?? input.cardMediaSlug);
+  revalidateEntryStatusPaths({
+    mediaId,
+    mediaSlug: input.mediaSlug ?? input.cardMediaSlug
+  });
 
   return requireReviewPageDataForScope(
     input,
@@ -311,7 +336,10 @@ export async function setLinkedEntryLearningSessionAction(
     status: "learning"
   });
 
-  revalidateEntryStatusPaths(input.mediaSlug ?? input.cardMediaSlug);
+  revalidateEntryStatusPaths({
+    mediaId,
+    mediaSlug: input.mediaSlug ?? input.cardMediaSlug
+  });
 
   return requireReviewPageDataForScope(
     input,
@@ -340,7 +368,10 @@ export async function resetReviewCardSessionAction(
     expectedMediaId: mediaId
   });
 
-  revalidateActiveReviewPaths(input.mediaSlug ?? input.cardMediaSlug);
+  revalidateActiveReviewPaths({
+    mediaId,
+    mediaSlug: input.mediaSlug ?? input.cardMediaSlug
+  });
 
   return requireReviewPageDataForScope(
     input,
@@ -371,7 +402,10 @@ export async function setReviewCardSuspendedSessionAction(
     suspended: input.suspended
   });
 
-  revalidateActiveReviewPaths(input.mediaSlug ?? input.cardMediaSlug);
+  revalidateActiveReviewPaths({
+    mediaId,
+    mediaSlug: input.mediaSlug ?? input.cardMediaSlug
+  });
 
   return requireReviewPageDataForScope(
     input,
@@ -435,25 +469,33 @@ function buildReviewRedirectUrl(input: {
   ) as Route;
 }
 
-function revalidateActiveReviewPaths(mediaSlug: string | undefined) {
+function revalidateActiveReviewPaths(input: {
+  mediaId?: string;
+  mediaSlug: string | undefined;
+}) {
+  revalidateGlossarySummaryCache(input.mediaId);
+  revalidateReviewSummaryCache(input.mediaId);
   revalidatePath(reviewHref());
 
-  if (!mediaSlug) {
+  if (!input.mediaSlug) {
     return;
   }
 
-  revalidatePath(mediaStudyHref(mediaSlug, "review"));
+  revalidatePath(mediaStudyHref(input.mediaSlug, "review"));
 }
 
-function revalidateEntryStatusPaths(mediaSlug: string | undefined) {
-  revalidateActiveReviewPaths(mediaSlug);
+function revalidateEntryStatusPaths(input: {
+  mediaId?: string;
+  mediaSlug: string | undefined;
+}) {
+  revalidateActiveReviewPaths(input);
   revalidatePath("/glossary");
 
-  if (!mediaSlug) {
+  if (!input.mediaSlug) {
     return;
   }
 
-  revalidatePath(mediaStudyHref(mediaSlug, "glossary"));
+  revalidatePath(mediaStudyHref(input.mediaSlug, "glossary"));
 }
 
 function readRequiredString(formData: FormData, key: string) {
@@ -536,7 +578,9 @@ async function requireReviewPageData(
   mediaSlug: string,
   searchParams: Record<string, string>
 ) {
-  const data = await getReviewPageData(mediaSlug, searchParams);
+  const data = await getReviewPageData(mediaSlug, searchParams, db, {
+    bypassCache: true
+  });
 
   if (!data) {
     throw new Error(`Unable to load review page data for media: ${mediaSlug}`);
@@ -550,7 +594,9 @@ async function requireReviewPageDataForScope(
   searchParams: Record<string, string>
 ) {
   if (input.scope === "global") {
-    return getGlobalReviewPageData(searchParams);
+    return getGlobalReviewPageData(searchParams, db, {
+      bypassCache: true
+    });
   }
 
   if (!input.mediaSlug) {

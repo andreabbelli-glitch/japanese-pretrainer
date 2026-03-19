@@ -1,7 +1,9 @@
+import { connection } from "next/server";
+
 import { DashboardHome } from "@/components/dashboard/dashboard-home";
 
-export const dynamic = "force-dynamic";
+export default async function HomePage() {
+  await connection();
 
-export default function HomePage() {
   return <DashboardHome />;
 }

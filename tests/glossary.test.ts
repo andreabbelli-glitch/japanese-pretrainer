@@ -167,6 +167,128 @@ back: ${input.meaning}
   );
 }
 
+async function writeLessonOrderContentFixture(contentRoot: string) {
+  const mediaRoot = path.join(contentRoot, "media", "lesson-order-media");
+  const textbookRoot = path.join(mediaRoot, "textbook");
+  const cardsRoot = path.join(mediaRoot, "cards");
+
+  await mkdir(textbookRoot, { recursive: true });
+  await mkdir(cardsRoot, { recursive: true });
+
+  await writeFile(
+    path.join(mediaRoot, "media.md"),
+    `---
+id: media-lesson-order
+slug: lesson-order-media
+title: Lesson Order Media
+media_type: game
+segment_kind: chapter
+language: ja
+base_explanation_language: it
+status: active
+---
+
+# Lesson Order Media
+`
+  );
+
+  await writeFile(
+    path.join(textbookRoot, "001-chapter-one.md"),
+    `---
+id: lesson-lo-ch1
+media_id: media-lesson-order
+slug: lo-ch1
+title: Chapter 1
+order: 1
+segment_ref: chapter-01
+status: active
+---
+
+# Chapter 1
+
+Qui compare [ゼリー](term:term-lo-jelly).
+`
+  );
+
+  await writeFile(
+    path.join(textbookRoot, "002-chapter-two.md"),
+    `---
+id: lesson-lo-ch2
+media_id: media-lesson-order
+slug: lo-ch2
+title: Chapter 2
+order: 2
+segment_ref: chapter-02
+status: active
+---
+
+# Chapter 2
+
+Qui compare [アイス](term:term-lo-ice).
+`
+  );
+
+  await writeFile(
+    path.join(cardsRoot, "001-ch1.md"),
+    `---
+id: cards-lo-ch1
+media_id: media-lesson-order
+slug: lo-ch1-cards
+title: Chapter 1 cards
+order: 1
+segment_ref: chapter-01
+---
+
+:::term
+id: term-lo-jelly
+lemma: ゼリー
+reading: ぜりー
+romaji: zerii
+meaning_it: gelatina
+:::
+
+:::card
+id: card-lo-jelly
+entry_type: term
+entry_id: term-lo-jelly
+card_type: recognition
+front: ゼリー
+back: gelatina
+:::
+`
+  );
+
+  await writeFile(
+    path.join(cardsRoot, "002-ch2.md"),
+    `---
+id: cards-lo-ch2
+media_id: media-lesson-order
+slug: lo-ch2-cards
+title: Chapter 2 cards
+order: 2
+segment_ref: chapter-02
+---
+
+:::term
+id: term-lo-ice
+lemma: アイス
+reading: あいす
+romaji: aisu
+meaning_it: gelato
+:::
+
+:::card
+id: card-lo-ice
+entry_type: term
+entry_id: term-lo-ice
+card_type: recognition
+front: アイス
+back: gelato
+:::
+`
+  );
+}
+
 describe("glossary data", () => {
   let tempDir = "";
   let database: DatabaseClient;
@@ -374,7 +496,9 @@ describe("glossary data", () => {
     expect(allCardsData.results[0]?.cardCount).toBe(1);
     expect(allCardsData.results[0]?.mediaCount).toBe(2);
     expect(allCardsData.results[0]?.mediaHits).toHaveLength(2);
-    expect(allCardsData.results[0]?.mediaHits.map((hit) => hit.mediaSlug)).toEqual([
+    expect(
+      allCardsData.results[0]?.mediaHits.map((hit) => hit.mediaSlug)
+    ).toEqual([
       crossMediaFixture.beta.mediaSlug,
       crossMediaFixture.alpha.mediaSlug
     ]);
@@ -395,7 +519,9 @@ describe("glossary data", () => {
       `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.mixedCardTermSourceId}`
     );
 
-    expect(withoutCardsData.results.map((entry) => entry.label)).toEqual(["余白"]);
+    expect(withoutCardsData.results.map((entry) => entry.label)).toEqual([
+      "余白"
+    ]);
     expect(withoutCardsData.results[0]?.hasCards).toBe(false);
     expect(withoutCardsData.results[0]?.cardCount).toBe(0);
     expect(withoutCardsData.results[0]?.mediaCount).toBe(1);
@@ -512,7 +638,11 @@ describe("glossary data", () => {
 
     expect(result.status).toBe("completed");
 
-    const termId = buildScopedEntryId("term", "media-sample-anime", "term-taberu");
+    const termId = buildScopedEntryId(
+      "term",
+      "media-sample-anime",
+      "term-taberu"
+    );
 
     await database.insert(termAlias).values({
       id: "term_alias_katakana_only_taberu",
@@ -606,20 +736,110 @@ describe("glossary data", () => {
       .insert(cardEntryLink)
       .values(bulkTerms.map((entry) => entry.cardEntryLink));
 
-    const [globalData, localData] = await Promise.all([
+    const [globalData, globalPageTwoData, localData] = await Promise.all([
       getGlobalGlossaryPageData({}, database),
+      getGlobalGlossaryPageData(
+        {
+          page: "2"
+        },
+        database
+      ),
       getGlossaryPageData(developmentFixture.mediaSlug, {}, database)
     ]);
 
     expect(globalData.resultSummary.total).toBeGreaterThan(100);
-    expect(globalData.results.some((entry) => entry.id === "term-bulk-139")).toBe(
-      true
+    expect(globalData.resultSummary.filtered).toBeGreaterThan(
+      globalData.results.length
+    );
+    expect(globalData.pagination.page).toBe(1);
+    expect(globalData.pagination.pageSize).toBe(globalData.results.length);
+    expect(globalData.pagination.totalPages).toBeGreaterThan(1);
+    expect(globalPageTwoData.filters.page).toBe(2);
+    expect(globalPageTwoData.resultSummary.filtered).toBe(
+      globalData.resultSummary.filtered
+    );
+    expect(globalPageTwoData.results.length).toBeGreaterThan(0);
+    expect(globalPageTwoData.results[0]?.resultKey).not.toBe(
+      globalData.results[0]?.resultKey
     );
     expect(localData).not.toBeNull();
     expect(localData?.results.length).toBeGreaterThan(100);
-    expect(localData?.results.some((entry) => entry.id === "term-bulk-139")).toBe(
-      true
+    expect(
+      localData?.results.some((entry) => entry.id === "term-bulk-139")
+    ).toBe(true);
+  });
+
+  it("preserves the current page inside global glossary return links", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const bulkTerms = Array.from({ length: 30 }, (_, index) => {
+      const sourceId = `term-page-${index}`;
+      const scopedId = buildScopedEntryId(
+        "term",
+        developmentFixture.mediaId,
+        sourceId
+      );
+
+      return {
+        card: {
+          id: `card-page-${index}`,
+          mediaId: developmentFixture.mediaId,
+          segmentId: developmentFixture.segmentId,
+          sourceFile: `tests/fixtures/db/fixture-tcg/cards/page-${index}.md`,
+          cardType: "recognition",
+          front: `Pagina ${index}`,
+          back: `pagina ${index}`,
+          notesIt: "Fixture pagination glossary.",
+          status: "active" as const,
+          orderIndex: 200 + index,
+          createdAt: "2026-03-10T09:00:00.000Z",
+          updatedAt: "2026-03-10T09:00:00.000Z"
+        },
+        cardEntryLink: {
+          id: `card-entry-link-page-${index}`,
+          cardId: `card-page-${index}`,
+          entryType: "term" as const,
+          entryId: scopedId,
+          relationshipType: "primary" as const
+        },
+        term: {
+          id: scopedId,
+          sourceId,
+          mediaId: developmentFixture.mediaId,
+          segmentId: developmentFixture.segmentId,
+          lemma: `頁${index}`,
+          reading: `ぺーじ${index}`,
+          romaji: `peeji-${index}`,
+          pos: "noun",
+          meaningIt: `voce pagina ${index}`,
+          notesIt: "Fixture pagination glossary.",
+          searchLemmaNorm: `頁${index}`,
+          searchReadingNorm: `ぺーじ${index}`,
+          searchRomajiNorm: `peeji-${index}`,
+          createdAt: "2026-03-10T09:00:00.000Z",
+          updatedAt: "2026-03-10T09:00:00.000Z"
+        }
+      };
+    });
+
+    await database.insert(term).values(bulkTerms.map((entry) => entry.term));
+    await database.insert(card).values(bulkTerms.map((entry) => entry.card));
+    await database
+      .insert(cardEntryLink)
+      .values(bulkTerms.map((entry) => entry.cardEntryLink));
+
+    const data = await getGlobalGlossaryPageData(
+      {
+        page: "2"
+      },
+      database
     );
+
+    const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
+
+    expect(data.filters.page).toBe(2);
+    expect(markup).toContain("Pagina 2 di");
+    expect(markup).toContain("returnTo=%2Fglossary%3Fpage%3D2");
   });
 
   it("renders the global glossary portal with explicit flashcard signals and return links", async () => {
@@ -644,7 +864,9 @@ describe("glossary data", () => {
 
     const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
 
-    expect(markup).not.toContain('<span class="status-pill">Ha flashcard</span>');
+    expect(markup).not.toContain(
+      '<span class="status-pill">Ha flashcard</span>'
+    );
     expect(markup).toContain("Glossary");
     expect(markup).toContain(
       `returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
@@ -700,7 +922,8 @@ describe("glossary data", () => {
     const markup = renderToStaticMarkup(
       GlossaryPage({
         data: data!,
-        returnTo: `/glossary?q=iku&media=${developmentFixture.mediaSlug}` as Route
+        returnTo:
+          `/glossary?q=iku&media=${developmentFixture.mediaSlug}` as Route
       })
     );
 
@@ -855,7 +1078,9 @@ describe("glossary data", () => {
 
     expect(detail).not.toBeNull();
     expect(detail?.entry.label).toBe("～ている");
-    expect(detail?.lessons[0]?.href).toBe("/media/sample-anime/textbook/ep01-intro");
+    expect(detail?.lessons[0]?.href).toBe(
+      "/media/sample-anime/textbook/ep01-intro"
+    );
     expect(detail?.lessons).toHaveLength(1);
     expect(detail?.lessons[0]?.roleLabels).toEqual(["Spiegata", "Citata"]);
     expect(detail?.cards[0]?.front).toBe("～ている");
@@ -1168,14 +1393,14 @@ describe("glossary data", () => {
     );
 
     expect(glossaryMarkup).toContain("<strong>enfasi</strong>");
-    expect(glossaryMarkup).toContain("<ruby class=\"app-ruby\">");
+    expect(glossaryMarkup).toContain('<ruby class="app-ruby">');
     expect(glossaryMarkup).toContain("<code");
     expect(glossaryMarkup).toContain("inline-ref");
     expect(glossaryMarkup).not.toContain("**enfasi**");
     expect(glossaryMarkup).not.toContain("{{日本語|にほんご}}");
     expect(glossaryMarkup).not.toContain("[食べる](term:term-taberu)");
     expect(reviewMarkup).toContain("<strong>enfasi</strong>");
-    expect(reviewMarkup).toContain("<ruby class=\"app-ruby\">");
+    expect(reviewMarkup).toContain('<ruby class="app-ruby">');
     expect(reviewMarkup).toContain("<code");
     expect(reviewMarkup).toContain("inline-ref");
     expect(reviewMarkup).not.toContain("**enfasi**");
@@ -1387,7 +1612,8 @@ describe("glossary data", () => {
     const markup = renderToStaticMarkup(
       GlossaryDetailPage({
         data: detail!,
-        returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}` as Route
+        returnTo:
+          `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}` as Route
       })
     );
 
@@ -1425,7 +1651,8 @@ describe("glossary data", () => {
     const markup = renderToStaticMarkup(
       GlossaryDetailPage({
         data: detail!,
-        returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}&cards=with_cards` as Route
+        returnTo:
+          `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}&cards=with_cards` as Route
       })
     );
 
@@ -1463,7 +1690,8 @@ describe("glossary data", () => {
     const markup = renderToStaticMarkup(
       GlossaryPage({
         data: data!,
-        returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}` as Route
+        returnTo:
+          `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}` as Route
       })
     );
 
@@ -1512,6 +1740,44 @@ describe("glossary data", () => {
     );
   });
 
+  it("orders global browse results by segment position when sort is lesson_order", async () => {
+    const contentRoot = path.join(tempDir, "lesson-order-content");
+
+    await writeLessonOrderContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const alphabetical = await getGlobalGlossaryPageData(
+      { sort: "alphabetical" },
+      database
+    );
+    const lessonOrder = await getGlobalGlossaryPageData(
+      { sort: "lesson_order" },
+      database
+    );
+
+    expect(alphabetical.results.length).toBeGreaterThanOrEqual(2);
+    expect(lessonOrder.results.length).toBeGreaterThanOrEqual(2);
+
+    const alphaLabels = alphabetical.results.map((r) => r.label);
+    const lessonLabels = lessonOrder.results.map((r) => r.label);
+
+    // Alphabetical: アイス before ゼリー (ア < ゼ)
+    expect(alphaLabels.indexOf("アイス")).toBeLessThan(
+      alphaLabels.indexOf("ゼリー")
+    );
+
+    // Lesson order: ゼリー (chapter-01, order 0) before アイス (chapter-02, order 1)
+    expect(lessonLabels.indexOf("ゼリー")).toBeLessThan(
+      lessonLabels.indexOf("アイス")
+    );
+  });
+
   it("does not merge global results when different media reuse the same source id", async () => {
     const contentRoot = path.join(tempDir, "reused-source-id-content");
 
@@ -1553,7 +1819,9 @@ describe("glossary data", () => {
       )
     ]);
 
-    expect(alphaDetail?.entry.meaning).toBe(reusedSourceIdFixture.alpha.meaning);
+    expect(alphaDetail?.entry.meaning).toBe(
+      reusedSourceIdFixture.alpha.meaning
+    );
     expect(alphaDetail?.cards[0]?.id).toBe(reusedSourceIdFixture.alpha.cardId);
     expect(betaDetail?.entry.meaning).toBe(reusedSourceIdFixture.beta.meaning);
     expect(betaDetail?.cards[0]?.id).toBe(reusedSourceIdFixture.beta.cardId);
