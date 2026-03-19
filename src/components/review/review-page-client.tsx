@@ -491,6 +491,7 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                             key={`${item.kind}:${item.label}:${item.audio.src ?? item.audio.pitchAccent?.downstep ?? "no-audio"}`}
                             audio={item.audio}
                             compact={showCompactPronunciation}
+                            preload="auto"
                             title={`${item.relationshipLabel} · ${item.label}`}
                           />
                         ))}

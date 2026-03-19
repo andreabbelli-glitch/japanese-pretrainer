@@ -83,6 +83,13 @@ Regole pratiche:
 - ogni `:::card` deve avere sempre `example_jp` + `example_it`;
 - `example_jp` deve essere una frase completa e contestuale utile sul retro
   review, non una parola isolata o una ripetizione del `front`;
+- `example_jp` deve essere centrata il piu possibile sul media attuale: usa il
+  contesto, il lessico e le situazioni del media in cui la card vive, non
+  scenari generici scollegati;
+- `example_jp` non deve contenere kanji che non hanno una flashcard associata
+  nel corpus di studio (indipendentemente dal media e dallo stato di studio
+  della card); anticipare leggermente e ammesso, usare kanji completamente
+  fuori dal corpus no;
 - `front` e `example_jp` devono annotare con furigana i kanji che il learner
   deve leggere davvero nella card review;
 - nei composti misti, il ruby non deve inglobare kana gia visibili: scrivi

@@ -70,6 +70,13 @@ Vincoli di formato obbligatori:
 - Ogni blocco `:::card` deve includere sempre `example_jp` + `example_it`.
   `example_jp` deve essere una frase giapponese completa e contestuale utile
   sul retro review, non una parola isolata o una ripetizione del `front`.
+- `example_jp` deve essere centrata il piu possibile sul media attuale: la
+  frase deve usare il contesto, il lessico e le situazioni del media in cui
+  la card vive, non scenari generici scollegati.
+- `example_jp` non deve contenere kanji che non hanno una flashcard associata
+  nel corpus di studio (indipendentemente dal media e dallo stato di studio
+  della card); anticipare leggermente e ammesso, usare kanji completamente
+  fuori dal corpus no.
 - Nei campi cards `front`, `back`, `example_jp` e nel giapponese visibile di
   `notes_it`, annota con furigana i kanji e tutti i numeri che il learner deve
   leggere davvero, non solo quelli non banali.

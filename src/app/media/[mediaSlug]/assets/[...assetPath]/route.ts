@@ -60,7 +60,7 @@ export async function GET(_request: Request, context: RouteContext) {
 
     return new Response(file, {
       headers: {
-        "Cache-Control": "public, max-age=3600",
+        "Cache-Control": "public, max-age=31536000, immutable",
         "Content-Type": getMediaAssetContentType(joinedAssetPath)
       }
     });

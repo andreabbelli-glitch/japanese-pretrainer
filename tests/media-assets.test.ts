@@ -61,6 +61,9 @@ describe("media asset serving", () => {
     });
 
     expect(response.status).toBe(200);
+    expect(response.headers.get("Cache-Control")).toBe(
+      "public, max-age=31536000, immutable"
+    );
     expect(response.headers.get("Content-Type")).toBe("audio/mpeg");
     expect(await response.text()).toBe("ID3-fixture");
   });

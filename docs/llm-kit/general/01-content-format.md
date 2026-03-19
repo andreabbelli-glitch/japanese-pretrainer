@@ -573,6 +573,13 @@ Regola review obbligatoria per `:::card`:
 - `example_jp` deve essere una frase giapponese completa e contestuale, non una
   parola isolata, non una pseudo-definizione e non una semplice ripetizione del
   `front`;
+- `example_jp` deve essere centrata il piu possibile sul media attuale: la frase
+  deve usare il contesto, il lessico e le situazioni del media in cui la card
+  vive, non scenari generici scollegati;
+- `example_jp` non deve contenere kanji che non hanno una flashcard associata nel
+  corpus di studio (indipendentemente dal media e dallo stato di studio della
+  card); anticipare leggermente e ammesso, usare kanji completamente fuori dal
+  corpus no;
 - `example_it` deve tradurre quella stessa frase in italiano in modo utile per
   il retro review.
 - `front` e `example_jp` devono usare i furigana ogni volta che compare un

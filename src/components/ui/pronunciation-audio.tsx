@@ -5,6 +5,7 @@ import { PitchAccentNotation } from "./pitch-accent-notation";
 type PronunciationAudioProps = {
   audio: PronunciationData;
   compact?: boolean;
+  preload?: "auto" | "metadata" | "none";
   showPitchAccent?: boolean;
   title?: string;
 };
@@ -12,6 +13,7 @@ type PronunciationAudioProps = {
 export function PronunciationAudio({
   audio,
   compact = false,
+  preload = "none",
   showPitchAccent = true,
   title = "Pronuncia"
 }: PronunciationAudioProps) {
@@ -31,7 +33,7 @@ export function PronunciationAudio({
         <PitchAccentNotation compact={compact} pitchAccent={audio.pitchAccent} />
       ) : null}
       {audio.src ? (
-        <audio className="pronunciation-audio__player" controls preload="none">
+        <audio className="pronunciation-audio__player" controls preload={preload}>
           <source src={audio.src} />
         </audio>
       ) : null}

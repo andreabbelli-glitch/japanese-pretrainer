@@ -1349,6 +1349,7 @@ describe("review system", () => {
 
     expect(markup).toContain("Pronuncia");
     expect(markup).toContain("pronunciation-audio__player");
+    expect(markup).toContain('preload="auto"');
     expect(markup).toContain("pitch-accent__graph");
     expect(markup).toContain(
       "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"

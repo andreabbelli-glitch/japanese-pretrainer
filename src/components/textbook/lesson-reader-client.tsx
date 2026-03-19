@@ -83,6 +83,8 @@ type ExpandedImageState = {
   src: string;
 };
 
+const TOOLTIP_AUDIO_PRELOAD_DELAY_MS = 200;
+
 function resolveImagePresentation(src: string): ImagePresentation {
   if (src.startsWith("assets/cards/")) {
     return {
@@ -161,6 +163,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const [tooltipLoadState, setTooltipLoadState] = useState<TooltipLoadState>(
     data.entries.length > 0 ? "loaded" : "idle"
   );
+  const [audioPreloadEntryKey, setAudioPreloadEntryKey] = useState<string | null>(
+    null
+  );
   const [isSavingFurigana, startSavingFurigana] = useTransition();
   const [isSavingLesson, startSavingLesson] = useTransition();
   const tooltipRef = useRef<HTMLDivElement | null>(null);
@@ -191,6 +196,29 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
       tooltipAbortRef.current?.abort();
     };
   }, []);
+
+  const activeTooltipEntryKey =
+    tooltip?.entryKey ??
+    (mobileSheet?.type === "entry" ? mobileSheet.entryKey : null);
+
+  useEffect(() => {
+    if (!activeTooltipEntryKey) {
+      setAudioPreloadEntryKey(null);
+      return;
+    }
+
+    setAudioPreloadEntryKey((current) =>
+      current === activeTooltipEntryKey ? current : null
+    );
+
+    const timeoutId = window.setTimeout(() => {
+      setAudioPreloadEntryKey(activeTooltipEntryKey);
+    }, TOOLTIP_AUDIO_PRELOAD_DELAY_MS);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [activeTooltipEntryKey]);
 
   useEffect(() => {
     const updateLayoutMode = () => {
@@ -653,6 +681,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
         >
           <EntryTooltipCard
             entry={tooltipEntry}
+            audioPreload={
+              audioPreloadEntryKey === tooltip.entryKey ? "auto" : "none"
+            }
             isLoading={tooltipLoadState === "loading" && !tooltipEntry}
             onRetry={
               tooltipLoadState === "error"
@@ -684,6 +715,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
           ) : (
             <EntryTooltipCard
               entry={mobileSheetEntry}
+              audioPreload={
+                audioPreloadEntryKey === mobileSheet.entryKey ? "auto" : "none"
+              }
               isLoading={tooltipLoadState === "loading" && !mobileSheetEntry}
               mobile
               onRetry={
@@ -1724,6 +1758,7 @@ function FuriganaRuby({
 }
 
 type EntryTooltipCardProps = {
+  audioPreload?: "auto" | "metadata" | "none";
   entry: TextbookTooltipEntry | null;
   isLoading?: boolean;
   mobile?: boolean;
@@ -1731,6 +1766,7 @@ type EntryTooltipCardProps = {
 };
 
 function EntryTooltipCard({
+  audioPreload = "none",
   entry,
   isLoading = false,
   mobile = false,
@@ -1800,7 +1836,11 @@ function EntryTooltipCard({
         </p>
       ) : null}
       {entry.pronunciation ? (
-        <PronunciationAudio audio={entry.pronunciation} compact />
+        <PronunciationAudio
+          audio={entry.pronunciation}
+          compact
+          preload={audioPreload}
+        />
       ) : null}
       <p className="entry-tooltip-card__meaning">{entry.meaning}</p>
       {"literalMeaning" in entry && entry.literalMeaning ? (

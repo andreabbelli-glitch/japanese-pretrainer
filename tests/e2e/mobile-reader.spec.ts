@@ -20,6 +20,12 @@ test("keeps reader interactions usable on mobile", async ({ page }) => {
   ).toBeVisible();
   await expect(mobileSheet).not.toContainText("Livello:");
   await expect(mobileSheet).not.toContainText("Segmento:");
+  const pronunciationAudio = mobileSheet.locator(
+    "audio.pronunciation-audio__player"
+  );
+  await expect(pronunciationAudio).toHaveAttribute("preload", "none");
+  await page.waitForTimeout(250);
+  await expect(pronunciationAudio).toHaveAttribute("preload", "auto");
   await expect(mobileSheet.getByRole("link", { name: "Apri voce" })).toBeVisible();
 
   await page.getByRole("button", { name: "Chiudi", exact: true }).click();

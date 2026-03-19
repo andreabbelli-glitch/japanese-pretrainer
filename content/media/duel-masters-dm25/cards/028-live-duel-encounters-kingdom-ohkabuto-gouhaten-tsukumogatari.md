@@ -281,9 +281,9 @@ card_type: recognition
 front: '{{無視|むし}}する'
 back: ignorare / fare come se non ci fosse
 example_jp: >-
-  {{先生|せんせい}}の{{話|はなし}}を{{無視|むし}}して、ゲームをやっていた。
+  {{相手|あいて}}の{{効果|こうか}}を{{無視|むし}}して、そのまま{{攻撃|こうげき}}した。
 example_it: >-
-  Ho ignorato quello che diceva il professore e ho continuato a giocare.
+  Ho ignorato l'effetto dell'avversario e ho attaccato direttamente.
 notes_it: >-
   Significato base: scegliere di proposito di non considerare qualcosa. Nel TCG
   il verbo funziona allo stesso modo — il gioco ti dice di saltare certi effetti
@@ -299,9 +299,11 @@ card_type: recognition
 front: '{{起|お}}こる'
 back: succedere / verificarsi / accadere
 example_jp: >-
-  {{昨日|きのう}}、{{大|おお}}きな{{地震|じしん}}が{{起|お}}こった。
+  クリーチャーが[バトルゾーン](term:term-battle-zone)に{{出|で}}ることで
+  {{起|お}}こる{{効果|こうか}}をすべて{{無視|むし}}する。
 example_it: >-
-  Ieri c'è stato un grande terremoto.
+  Ignora tutti gli effetti che si verificano quando le creature entrano nel
+  battle zone.
 notes_it: >-
   Significato base: qualcosa succede da solo, senza che qualcuno lo faccia
   apposta — un incidente, un problema, un terremoto. Nel rules text il verbo
