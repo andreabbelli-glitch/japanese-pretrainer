@@ -3,7 +3,6 @@
 import { useEffect, useState, useTransition } from "react";
 
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import {
   gradeReviewCardSessionAction,
@@ -59,9 +58,6 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   const [queueCardIds, setQueueCardIds] = useState(data.queueCardIds);
   const [clientError, setClientError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
-  const pathname = usePathname();
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const isGlobalReview = viewData.scope === "global";
   const hasAnyReviewCards =
     viewData.queue.dueCount +
@@ -110,11 +106,6 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       preview.nextReviewLabel
     ])
   );
-  const currentHref = (() => {
-    const query = searchParams.toString();
-
-    return query.length > 0 ? `${pathname}?${query}` : pathname;
-  })();
   const reviewSummary = buildReviewSummary(
     viewData,
     isGlobalReview,
@@ -122,12 +113,12 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   );
 
   useEffect(() => {
+    const currentHref = `${window.location.pathname}${window.location.search}`;
+
     if (currentHref !== sessionHref) {
-      router.replace(sessionHref, {
-        scroll: false
-      });
+      window.history.replaceState(window.history.state, "", sessionHref);
     }
-  }, [currentHref, router, sessionHref]);
+  }, [sessionHref]);
 
   function runSessionUpdate(
     loadNextData: () => Promise<ReviewPageData>,

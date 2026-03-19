@@ -15,7 +15,6 @@ function buildReviewPageClientKey(data: ReviewPageData) {
     data.scope,
     data.media.slug,
     data.selectedCard?.id ?? "no-card",
-    data.selectedCardContext.showAnswer ? "answer" : "front",
     data.session.answeredCount,
     data.session.extraNewCount,
     data.session.notice ?? "no-notice",

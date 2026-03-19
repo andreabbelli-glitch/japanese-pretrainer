@@ -159,3 +159,28 @@ test("keeps the review session on a valid next state after grading again", async
   await expect(revealButton).toBeVisible();
   await expect(page.getByRole("button", { name: /^Again/ })).toHaveCount(0);
 });
+
+test("keeps the revealed review answer mounted while the answer URL is synchronized", async ({
+  page
+}) => {
+  await page.goto("/media/duel-masters-dm25/review");
+  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review(?:\?|$)/);
+
+  await page.getByRole("button", { name: "Mostra risposta" }).click();
+  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review\?show=answer$/);
+
+  await page.evaluate(() => {
+    const answer = document.querySelector(".review-stage__answer");
+
+    if (!answer) {
+      throw new Error("Expected the review answer to be visible after reveal.");
+    }
+
+    answer.setAttribute("data-audit-id", "stable-answer");
+  });
+
+  await page.waitForTimeout(300);
+  await expect(
+    page.locator('.review-stage__answer[data-audit-id="stable-answer"]')
+  ).toHaveCount(1);
+});
