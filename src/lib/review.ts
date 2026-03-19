@@ -74,8 +74,11 @@ import {
   type PronunciationData
 } from "./pronunciation";
 import {
-  scheduleReview,
-  type ReviewRating,
+  buildReviewGradePreviews as buildSharedReviewGradePreviews,
+  type ReviewGradePreview,
+  type ReviewSeedState
+} from "./review-grade-previews";
+import {
   type ReviewState
 } from "./review-scheduler";
 
@@ -587,17 +590,7 @@ export type ReviewQueueCard = {
   rawReviewLabel: string;
   reading?: string;
   gradePreviews: ReviewGradePreview[];
-  reviewSeedState: {
-    difficulty: number | null;
-    dueAt: string | null;
-    lapses: number;
-    lastReviewedAt: string | null;
-    learningSteps: number;
-    reps: number;
-    scheduledDays: number;
-    stability: number | null;
-    state: ReviewState | null;
-  };
+  reviewSeedState: ReviewSeedState;
   segmentTitle?: string;
   typeLabel: string;
 };
@@ -670,11 +663,7 @@ export type GlobalReviewPageLoadResult =
   | { kind: "empty-media" }
   | { kind: "empty-cards" }
   | { kind: "ready"; data: ReviewPageData };
-
-export type ReviewGradePreview = {
-  nextReviewLabel: string;
-  rating: ReviewRating;
-};
+export type { ReviewGradePreview, ReviewSeedState } from "./review-grade-previews";
 
 export type ReviewCardDetailData = {
   card: {
@@ -834,6 +823,9 @@ async function buildReviewPageDataFromWorkspace(input: {
           card.contexts.some((context) => context.cardId === selectedCard.id)
       )
     : -1;
+  const selectedGradePreviews = selectedCard
+    ? buildReviewGradePreviews(selectedCard.reviewSeedState, input.now)
+    : [];
 
   return {
     scope: input.scope,
@@ -845,7 +837,7 @@ async function buildReviewPageDataFromWorkspace(input: {
     selectedCard,
     selectedCardContext: {
       bucket: selectedCard?.bucket ?? null,
-      gradePreviews: selectedCard?.gradePreviews ?? [],
+      gradePreviews: selectedGradePreviews,
       isQueueCard: queueIndex >= 0,
       position: queueIndex >= 0 ? queueIndex + 1 : null,
       remainingCount: queueIndex >= 0 ? queue.cards.length - queueIndex - 1 : 0,
@@ -1604,8 +1596,7 @@ function mapReviewQueueSubjectModel(
     model.group.cards,
     input.mediaById,
     input.nowIso,
-    model.resolvedState,
-    input.now
+    model.resolvedState
   );
 }
 
@@ -2335,8 +2326,7 @@ function mapQueueCard(
   subjectCards: ReviewCardListItem[],
   mediaById: ReviewMediaLookup,
   nowIso: string,
-  resolvedState?: ResolvedReviewQueueState,
-  now?: Date
+  resolvedState?: ResolvedReviewQueueState
 ): ReviewQueueCard {
   const cardMedia = resolveReviewCardMedia(card, mediaById);
   const entries = card.entryLinks
@@ -2398,10 +2388,7 @@ function mapQueueCard(
     exampleJp: card.exampleJp ?? undefined,
     entries,
     front: card.front,
-    gradePreviews: buildReviewGradePreviews(
-      resolved.reviewSeedState,
-      now ?? new Date(nowIso)
-    ),
+    gradePreviews: [],
     href: mediaReviewCardHref(cardMedia.slug, card.id),
     id: card.id,
     mediaSlug: cardMedia.slug,
@@ -2672,90 +2659,7 @@ function buildReviewGradePreviews(
   reviewSeedState: ReviewQueueCard["reviewSeedState"],
   now: Date
 ): ReviewGradePreview[] {
-  const ratings: ReviewRating[] = ["again", "hard", "good", "easy"];
-
-  return ratings.map((rating) => {
-    const scheduled = scheduleReview({
-      current: {
-        difficulty: reviewSeedState.difficulty,
-        dueAt: reviewSeedState.dueAt,
-        lapses: reviewSeedState.lapses,
-        lastReviewedAt: reviewSeedState.lastReviewedAt,
-        learningSteps: reviewSeedState.learningSteps,
-        reps: reviewSeedState.reps,
-        scheduledDays: reviewSeedState.scheduledDays,
-        stability: reviewSeedState.stability,
-        state: reviewSeedState.state
-      },
-      now,
-      rating
-    });
-
-    return {
-      nextReviewLabel: formatScheduledReviewPreview(scheduled.dueAt, now),
-      rating
-    };
-  });
-}
-
-function formatScheduledReviewPreview(dueAt: string, now: Date) {
-  const dueDate = new Date(dueAt);
-  const diffMs = dueDate.getTime() - now.getTime();
-  const diffMinutes = Math.round(diffMs / 60_000);
-
-  if (!Number.isFinite(diffMs) || diffMinutes <= 5) {
-    return "Subito";
-  }
-
-  if (diffMinutes < 60) {
-    return `Tra ${diffMinutes} min`;
-  }
-
-  if (isSameLocalDate(dueDate, now)) {
-    return `Oggi alle ${formatShortTime(dueDate)}`;
-  }
-
-  if (isNextLocalDate(dueDate, now)) {
-    return `Domani alle ${formatShortTime(dueDate)}`;
-  }
-
-  const dayDiff = Math.round(
-    (startOfLocalDay(dueDate).getTime() - startOfLocalDay(now).getTime()) /
-      86_400_000
-  );
-
-  if (dayDiff > 1 && dayDiff <= 6) {
-    return `Tra ${dayDiff} giorni`;
-  }
-
-  return `Il ${formatShortIsoDate(dueAt)}`;
-}
-
-function formatShortTime(value: Date) {
-  return new Intl.DateTimeFormat("it-IT", {
-    hour: "2-digit",
-    minute: "2-digit"
-  }).format(value);
-}
-
-function isSameLocalDate(left: Date, right: Date) {
-  return (
-    left.getFullYear() === right.getFullYear() &&
-    left.getMonth() === right.getMonth() &&
-    left.getDate() === right.getDate()
-  );
-}
-
-function isNextLocalDate(left: Date, right: Date) {
-  return (
-    (startOfLocalDay(left).getTime() - startOfLocalDay(right).getTime()) /
-      86_400_000 ===
-    1
-  );
-}
-
-function startOfLocalDay(value: Date) {
-  return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+  return buildSharedReviewGradePreviews(reviewSeedState, now);
 }
 
 function compareReviewCardsByOrder<

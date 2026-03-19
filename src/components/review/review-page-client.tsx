@@ -13,6 +13,7 @@ import {
   setReviewCardSuspendedSessionAction
 } from "@/actions/review";
 import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
+import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
 import type { ReviewPageData } from "@/lib/review";
 import {
   appendReturnToParam,
@@ -146,7 +147,10 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       ...prev,
       selectedCardContext: {
         ...prev.selectedCardContext,
-        gradePreviews: selectedCard.gradePreviews,
+        gradePreviews: buildReviewGradePreviews(
+          selectedCard.reviewSeedState,
+          new Date()
+        ),
         showAnswer: true
       }
     }));

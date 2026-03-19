@@ -1085,6 +1085,8 @@ describe("review system", () => {
     expect(explicitSelectionPage?.selectedCard?.id).toBe(
       developmentFixture.secondaryCardId
     );
+    expect(explicitSelectionPage?.selectedCard?.gradePreviews).toEqual([]);
+    expect(explicitSelectionPage?.selectedCardContext.gradePreviews).toHaveLength(4);
   });
 
   it("builds canonical review session urls and tracks only cards remaining after the current one", async () => {
@@ -1393,6 +1395,10 @@ describe("review system", () => {
     );
 
     expect(reviewPage?.selectedCardContext.gradePreviews).toHaveLength(4);
+    expect(reviewPage?.selectedCard?.gradePreviews).toEqual([]);
+    expect(
+      reviewPage?.queue.cards.every((card) => card.gradePreviews.length === 0)
+    ).toBe(true);
     expect(
       reviewPage?.selectedCardContext.gradePreviews.map(
         (preview) => preview.rating
