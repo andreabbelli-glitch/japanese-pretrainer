@@ -387,8 +387,10 @@ Indici:
 
 > **Tabella residuale card-level.** Lo stato canonico e ora in
 > `review_subject_state`. Questa tabella viene mantenuta come mirror per
-> compatibilita e upgrade di DB preesistenti. Il runtime la legge solo quando
-> manca il corrispondente state subject-level (fallback legacy).
+> compatibilita e upgrade di DB preesistenti. `pnpm db:migrate` esegue un
+> backfill applicativo idempotente verso `review_subject_state`, mentre il
+> runtime legge questa tabella solo quando manca ancora il corrispondente state
+> subject-level (fallback legacy di sicurezza).
 
 Campi:
 

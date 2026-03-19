@@ -10,7 +10,7 @@ import {
 import type {
   reviewRatingValues,
   reviewStateValues
-} from "@/db/schema/enums.ts";
+} from "../db/schema/enums.ts";
 
 export type ReviewRating = (typeof reviewRatingValues)[number];
 export type ReviewState = (typeof reviewStateValues)[number];

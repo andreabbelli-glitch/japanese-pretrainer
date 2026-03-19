@@ -122,11 +122,13 @@ Tabelle incluse nel perimetro del task:
 - `review_state` e `review_log` restano tabelle card-level residuali per
   compatibilita, mirror e upgrade dei DB esistenti. Il runtime continua a
   leggerle quando manca il corrispondente state subject-level.
-- La migrazione `drizzle/0011_global_review_subjects.sql` crea
-  `review_subject_state` e `review_subject_log`, ma non esegue un backfill
-  automatico di `review_subject_state`. Sugli upgrade reali esiste quindi un
-  fallback legacy che ricostruisce temporaneamente lo state del subject e il
-  representative card a partire da `review_state`.
+- La migrazione SQL `drizzle/0011_global_review_subjects.sql` crea
+  `review_subject_state` e `review_subject_log`; il comando `pnpm db:migrate`
+  esegue poi un backfill applicativo idempotente di `review_subject_state`
+  sugli upgrade legacy. Il fallback runtime resta come rete di sicurezza se
+  manca ancora il corrispondente state subject-level o se il DB e stato
+  migrato solo parzialmente. Lo stesso pass e rieseguibile manualmente con
+  `pnpm db:backfill-review-subject-state`.
 - A livello UI e query: `/review` usa la queue globale reale sui subject, mentre
   `/media/[mediaSlug]/review` resta una vista filtrata locale. I numeri
   etichettati come globali devono arrivare dal modello subject-level globale;

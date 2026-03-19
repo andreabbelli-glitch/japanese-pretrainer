@@ -39,9 +39,10 @@
   quando la stessa entry o pattern compare in più media.
 - Review: le card già introdotte restano contabilizzate anche dopo l'upgrade
   da DB esistenti; la migrazione non deve azzerare il conteggio giornaliero.
-- Review upgrade legacy: con DB esistente senza backfill in
-  `review_subject_state`, il fallback legacy non deve permettere a una sibling
-  `suspended` o `known_manual` di mascherare una sibling attiva.
+- Review upgrade legacy: dopo `pnpm db:migrate` i subject legacy vengono
+  backfillati in `review_subject_state`; se resta un buco reale, il fallback
+  legacy non deve permettere a una sibling `suspended` o `known_manual` di
+  mascherare una sibling attiva.
 - Progress e media detail: i numeri marcati come review globale coincidono con
   `/review`; i numeri del media restano chiaramente etichettati come locali.
 - Progress: mostra textbook, coverage, review e setting persistiti.

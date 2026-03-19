@@ -1,6 +1,6 @@
-import type { EntryType } from "@/db";
+import type { EntryType } from "../db/schema/enums.ts";
 
-import type { ReviewState } from "./review-scheduler";
+import type { ReviewState } from "./review-scheduler.ts";
 
 export type ReviewEntryStatusValue =
   | "unknown"

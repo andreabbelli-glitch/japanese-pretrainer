@@ -1,12 +1,13 @@
-import type { EntryType, ReviewCardListItem } from "@/db";
+import type { ReviewCardListItem } from "../db/queries/review.ts";
+import type { EntryType } from "../db/schema/enums.ts";
 
 import {
   getDrivingEntryLinks,
   resolveEffectiveReviewState,
   type ReviewEntryLinkLike,
   type ReviewEntryStatusValue
-} from "./review-model";
-import type { ReviewState } from "./review-scheduler";
+} from "./review-model.ts";
+import type { ReviewState } from "./review-scheduler.ts";
 
 export type ReviewSubjectKind = "group" | "entry" | "card";
 
@@ -44,6 +45,7 @@ export type ReviewSubjectStateSnapshot = {
   state: ReviewState;
   subjectKey: string;
   subjectType: ReviewSubjectKind;
+  suspended: boolean;
   updatedAt: string;
 };
 

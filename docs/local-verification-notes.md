@@ -26,9 +26,10 @@ non sostituisce un audit completo e aggiornato del codice.
 - Su DB già esistenti, il comportamento della review deve restare compatibile
   con lo storico legacy: la migrazione deve preservare i soggetti già introdotti
   e non deve far ricomparire card già contate nel limite giornaliero.
-- La migrazione `0011_global_review_subjects.sql` non fa backfill di
-  `review_subject_state`: sugli upgrade il fallback legacy resta realmente
-  attivo finché i subject non vengono riscritti dal runtime.
+- La migrazione SQL `0011_global_review_subjects.sql` non fa backfill da sola,
+  ma `pnpm db:migrate` esegue ora un backfill applicativo idempotente di
+  `review_subject_state`. Il fallback legacy deve restare corretto come rete di
+  sicurezza per DB parzialmente migrati o per subject-level state mancanti.
 - Nel fallback legacy, una sibling `suspended` o `known_manual` non deve mai
   diventare representative subject se esiste una sibling attiva.
 - Dashboard e CTA globali devono usare numeri globali reali; progress e media
