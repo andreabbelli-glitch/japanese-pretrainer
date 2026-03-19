@@ -1869,6 +1869,21 @@ describe("review system", () => {
     ]);
   });
 
+  it("prefetches a queued review card without touching session rebuild paths", async () => {
+    const { nextCardId } = await prepareTwoQueueCardFixture(database);
+    const { prefetchReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    const result = await prefetchReviewCardSessionAction({
+      cardId: nextCardId
+    });
+
+    expect(reviewPageCalls).toEqual([]);
+    expect(result?.id).toBe(nextCardId);
+    expect(result?.gradePreviews).toHaveLength(4);
+    expect(revalidatePathMock).not.toHaveBeenCalled();
+  });
+
   it("advances to the next queue card after suspending a manual card when redirectMode advances queue", async () => {
     const { targetCardId } =
       await prepareReviewSessionRedirectFixture(database);

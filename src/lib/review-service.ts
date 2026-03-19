@@ -15,12 +15,12 @@ import {
   type ReviewCardListItem
 } from "@/db";
 import {
+  getGrammarEntriesByIds,
   getGrammarCrossMediaFamilyByEntryId,
+  getTermEntriesByIds,
   getTermCrossMediaFamilyByEntryId,
-  listGrammarEntriesByMediaId,
   listReviewCardIdsByEntryRefs,
   listReviewCardsByIds,
-  listTermEntriesByMediaId,
   getReviewSubjectStateByKey
 } from "@/db";
 
@@ -101,8 +101,13 @@ export async function applyReviewGrade(input: {
       reviewState: subjectReviewState
     });
 
-    if (effectiveState.state === "known_manual" || effectiveState.state === "ignored") {
-      throw new Error("Manual mastery cards cannot be graded until the entry is reopened.");
+    if (
+      effectiveState.state === "known_manual" ||
+      effectiveState.state === "ignored"
+    ) {
+      throw new Error(
+        "Manual mastery cards cannot be graded until the entry is reopened."
+      );
     }
 
     if (effectiveState.state === "suspended") {
@@ -219,7 +224,12 @@ export async function resetReviewCardProgress(input: {
         status: "active",
         updatedAt: nowIso
       })
-      .where(inArray(card.id, subjectContext.memberCards.map((member) => member.id)));
+      .where(
+        inArray(
+          card.id,
+          subjectContext.memberCards.map((member) => member.id)
+        )
+      );
 
     await upsertReviewSubjectState(tx, {
       createdAt:
@@ -314,13 +324,19 @@ export async function setReviewCardSuspended(input: {
         status: input.suspended ? "suspended" : "active",
         updatedAt: nowIso
       })
-      .where(inArray(card.id, subjectContext.memberCards.map((member) => member.id)));
+      .where(
+        inArray(
+          card.id,
+          subjectContext.memberCards.map((member) => member.id)
+        )
+      );
 
     const sourceSeedCard = subjectContext.seedCard;
     const sourceState = subjectContext.subjectState ?? {
       cardId: sourceSeedCard.id,
       crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
-      createdAt: sourceSeedCard.reviewState?.createdAt ?? sourceSeedCard.createdAt,
+      createdAt:
+        sourceSeedCard.reviewState?.createdAt ?? sourceSeedCard.createdAt,
       difficulty: sourceSeedCard.reviewState?.difficulty ?? null,
       dueAt: sourceSeedCard.reviewState?.dueAt ?? null,
       entryId: subjectContext.identity.entryId,
@@ -433,9 +449,7 @@ export async function setLinkedEntryStatusByCard(input: {
     }
 
     await tx
-      .insert(
-        entryStatus
-      )
+      .insert(entryStatus)
       .values(
         subjectContext.drivingEntries.map((entry) => ({
           id: `entry_status_${entry.entryType}_${entry.entryId}`,
@@ -482,7 +496,10 @@ async function loadReviewCardForMutation(
   }
 
   const drivingEntryRefs = getDrivingEntryLinks(row.entryLinks);
-  const drivingEntries = await loadEntryStatusRows(transaction, drivingEntryRefs);
+  const drivingEntries = await loadEntryStatusRows(
+    transaction,
+    drivingEntryRefs
+  );
 
   return {
     ...row,
@@ -498,7 +515,8 @@ async function loadEntryStatusRows(
   const statusRows =
     filters.length > 0
       ? await transaction.query.entryStatus.findMany({
-          where: filters.length === 1 ? filters[0]! : or(filters[0]!, filters[1]!)
+          where:
+            filters.length === 1 ? filters[0]! : or(filters[0]!, filters[1]!)
         })
       : [];
   const statusMap = new Map(
@@ -509,7 +527,9 @@ async function loadEntryStatusRows(
   );
 
   return entryLinks.map(
-    (entry): LinkedEntryRef & { status: typeof entryStatus.$inferSelect | null } => ({
+    (
+      entry
+    ): LinkedEntryRef & { status: typeof entryStatus.$inferSelect | null } => ({
       entryId: entry.entryId,
       entryType: entry.entryType,
       status: statusMap.get(`${entry.entryType}:${entry.entryId}`) ?? null
@@ -532,7 +552,10 @@ function buildEntryStatusFilters(entryLinks: LinkedEntryRef[]) {
 
   if (termEntryIds.length > 0) {
     filters.push(
-      and(eq(entryStatus.entryType, "term"), inArray(entryStatus.entryId, termEntryIds))
+      and(
+        eq(entryStatus.entryType, "term"),
+        inArray(entryStatus.entryId, termEntryIds)
+      )
     );
   }
 
@@ -588,9 +611,24 @@ async function loadReviewSubjectMutationContext(
   nowIso?: string
 ): Promise<ReviewSubjectMutationContext> {
   const txDb = transaction as unknown as DatabaseClient;
+  const drivingLinks = getDrivingEntryLinks(loadedCard.entryLinks);
+  const termEntryIds = [
+    ...new Set(
+      drivingLinks
+        .filter((entryLink) => entryLink.entryType === "term")
+        .map((entryLink) => entryLink.entryId)
+    )
+  ];
+  const grammarEntryIds = [
+    ...new Set(
+      drivingLinks
+        .filter((entryLink) => entryLink.entryType === "grammar")
+        .map((entryLink) => entryLink.entryId)
+    )
+  ];
   const [terms, grammar] = await Promise.all([
-    listTermEntriesByMediaId(txDb, loadedCard.mediaId),
-    listGrammarEntriesByMediaId(txDb, loadedCard.mediaId)
+    getTermEntriesByIds(txDb, termEntryIds),
+    getGrammarEntriesByIds(txDb, grammarEntryIds)
   ]);
   const entryLookup = buildReviewSubjectEntryLookup({ grammar, terms });
   const identity = deriveReviewSubjectIdentity({
@@ -628,14 +666,19 @@ async function loadReviewSubjectMutationContext(
       entryType: entryLink.entryType
     }))
   );
-  const drivingEntries = await loadEntryStatusRows(transaction, drivingEntryRefs);
+  const drivingEntries = await loadEntryStatusRows(
+    transaction,
+    drivingEntryRefs
+  );
 
   return {
     drivingEntries,
     identity,
     memberCards,
     seedCard: effectiveSeedCard,
-    subjectState: subjectState ? (subjectState as ReviewSubjectStateSnapshot) : null
+    subjectState: subjectState
+      ? (subjectState as ReviewSubjectStateSnapshot)
+      : null
   };
 }
 
@@ -800,10 +843,10 @@ async function mirrorLegacyReviewStateToCards(
     scheduled: ReviewSubjectScheduledState;
   }
 ) {
-  for (const legacyCard of cards) {
-    await transaction
-      .insert(reviewState)
-      .values({
+  await transaction
+    .insert(reviewState)
+    .values(
+      cards.map((legacyCard) => ({
         cardId: legacyCard.id,
         state: input.scheduled.state,
         stability: input.scheduled.stability,
@@ -818,25 +861,25 @@ async function mirrorLegacyReviewStateToCards(
         manualOverride: false,
         createdAt: legacyCard.reviewState?.createdAt ?? input.createdAt,
         updatedAt: input.nowIso
-      })
-      .onConflictDoUpdate({
-        target: reviewState.cardId,
-        set: {
-          state: input.scheduled.state,
-          stability: input.scheduled.stability,
-          difficulty: input.scheduled.difficulty,
-          dueAt: input.scheduled.dueAt,
-          lastReviewedAt: input.lastReviewedAt,
-          scheduledDays: input.scheduled.scheduledDays,
-          learningSteps: input.scheduled.learningSteps,
-          lapses: input.scheduled.lapses,
-          reps: input.scheduled.reps,
-          schedulerVersion: input.scheduled.schedulerVersion,
-          manualOverride: false,
-          updatedAt: input.nowIso
-        }
-      });
-  }
+      }))
+    )
+    .onConflictDoUpdate({
+      target: reviewState.cardId,
+      set: {
+        state: input.scheduled.state,
+        stability: input.scheduled.stability,
+        difficulty: input.scheduled.difficulty,
+        dueAt: input.scheduled.dueAt,
+        lastReviewedAt: input.lastReviewedAt,
+        scheduledDays: input.scheduled.scheduledDays,
+        learningSteps: input.scheduled.learningSteps,
+        lapses: input.scheduled.lapses,
+        reps: input.scheduled.reps,
+        schedulerVersion: input.scheduled.schedulerVersion,
+        manualOverride: false,
+        updatedAt: input.nowIso
+      }
+    });
 }
 
 function dedupeLinkedEntryRefs(entryRefs: LinkedEntryRef[]) {

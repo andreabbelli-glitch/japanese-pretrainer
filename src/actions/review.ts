@@ -287,6 +287,14 @@ export async function gradeReviewCardSessionAction(
   );
 }
 
+export async function prefetchReviewCardSessionAction(input: {
+  cardId: string;
+}): Promise<ReviewQueueCard | null> {
+  return hydrateReviewCard({
+    cardId: input.cardId
+  });
+}
+
 export async function markLinkedEntryKnownSessionAction(
   input: ReviewSessionInput & {
     redirectMode: ReviewSessionRedirectMode;

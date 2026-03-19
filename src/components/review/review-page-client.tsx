@@ -7,13 +7,14 @@ import Link from "next/link";
 import {
   gradeReviewCardSessionAction,
   markLinkedEntryKnownSessionAction,
+  prefetchReviewCardSessionAction,
   resetReviewCardSessionAction,
   setLinkedEntryLearningSessionAction,
   setReviewCardSuspendedSessionAction
 } from "@/actions/review";
 import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
-import type { ReviewPageData } from "@/lib/review";
+import type { ReviewPageData, ReviewQueueCard } from "@/lib/review";
 import {
   appendReturnToParam,
   buildCanonicalReviewSessionHrefForBase,
@@ -57,6 +58,11 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   const [viewData, setViewData] = useState(data);
   const [queueCardIds, setQueueCardIds] = useState(data.queueCardIds);
   const [clientError, setClientError] = useState<string | null>(null);
+  const [prefetchedNextCard, setPrefetchedNextCard] =
+    useState<ReviewQueueCard | null>(null);
+  const [prefetchedNextCardId, setPrefetchedNextCardId] = useState<
+    string | null
+  >(null);
   const [isPending, startTransition] = useTransition();
   const isGlobalReview = viewData.scope === "global";
   const hasAnyReviewCards =
@@ -70,6 +76,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   const selectedCard = viewData.selectedCard;
   const queueIndex = selectedCard ? queueCardIds.indexOf(selectedCard.id) : -1;
   const isQueueCard = queueIndex >= 0;
+  const nextQueueCardId = isQueueCard
+    ? (queueCardIds[queueIndex + 1] ?? null)
+    : null;
   const position = isQueueCard ? queueIndex + 1 : null;
   const remainingCount = isQueueCard ? queueCardIds.length - queueIndex - 1 : 0;
   const showCompactPronunciation =
@@ -120,15 +129,67 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     }
   }, [sessionHref]);
 
+  useEffect(() => {
+    if (!selectedCard || !isQueueCard || !nextQueueCardId) {
+      setPrefetchedNextCard(null);
+      setPrefetchedNextCardId(null);
+      return;
+    }
+
+    if (
+      prefetchedNextCardId === nextQueueCardId &&
+      prefetchedNextCard?.id === nextQueueCardId
+    ) {
+      return;
+    }
+
+    let cancelled = false;
+
+    void prefetchReviewCardSessionAction({
+      cardId: nextQueueCardId
+    })
+      .then((card) => {
+        if (cancelled) {
+          return;
+        }
+
+        setPrefetchedNextCard(card?.id === nextQueueCardId ? card : null);
+        setPrefetchedNextCardId(nextQueueCardId);
+      })
+      .catch((error) => {
+        console.error(error);
+
+        if (cancelled) {
+          return;
+        }
+
+        setPrefetchedNextCard(null);
+        setPrefetchedNextCardId(nextQueueCardId);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    isQueueCard,
+    nextQueueCardId,
+    prefetchedNextCard?.id,
+    prefetchedNextCardId,
+    selectedCard
+  ]);
+
   function runSessionUpdate(
     loadNextData: () => Promise<ReviewPageData>,
     options?: {
       onError?: () => void;
       onSuccess?: (nextData: ReviewPageData) => void;
+      optimisticUpdate?: () => (() => void) | void;
       shouldSyncQueueCardIds?: (nextData: ReviewPageData) => boolean;
     }
   ) {
     setClientError(null);
+    const rollbackOptimisticUpdate = options?.optimisticUpdate?.();
+
     startTransition(() => {
       void loadNextData()
         .then((nextData) => {
@@ -140,6 +201,7 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
         })
         .catch((error) => {
           console.error(error);
+          rollbackOptimisticUpdate?.();
           options?.onError?.();
           setClientError(
             "Non sono riuscito ad aggiornare la review. Riprova un attimo."
@@ -187,10 +249,15 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
       return;
     }
 
-    const nextCardId = queueCardIds[queueIndex + 1];
+    const nextCardId = nextQueueCardId ?? undefined;
     const nextQueueCardIds = queueCardIds.filter(
       (id) => id !== selectedCard.id
     );
+    const optimisticNextCard =
+      nextCardId && prefetchedNextCardId === nextCardId
+        ? prefetchedNextCard
+        : null;
+    const canOptimisticallyAdvance = !nextCardId || optimisticNextCard !== null;
 
     runSessionUpdate(
       () =>
@@ -210,6 +277,33 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
           sessionSettings: viewData.settings
         }),
       {
+        optimisticUpdate: canOptimisticallyAdvance
+          ? () => {
+              const previousViewData = viewData;
+              const previousQueueCardIds = queueCardIds;
+              const previousPrefetchedNextCard = prefetchedNextCard;
+              const previousPrefetchedNextCardId = prefetchedNextCardId;
+
+              setViewData(
+                buildOptimisticGradeResult({
+                  currentData: viewData,
+                  gradedCardBucket: selectedCard.bucket,
+                  nextCard: optimisticNextCard ?? null,
+                  nextQueueCardIds
+                })
+              );
+              setQueueCardIds(nextQueueCardIds);
+              setPrefetchedNextCard(null);
+              setPrefetchedNextCardId(null);
+
+              return () => {
+                setViewData(previousViewData);
+                setQueueCardIds(previousQueueCardIds);
+                setPrefetchedNextCard(previousPrefetchedNextCard);
+                setPrefetchedNextCardId(previousPrefetchedNextCardId);
+              };
+            }
+          : undefined,
         onSuccess: (nextData) => {
           if (nextData.queueCardIds.length === 0) {
             setQueueCardIds(nextQueueCardIds);
@@ -669,6 +763,64 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
 
 function formatRemainingCardsLabel(count: number) {
   return count === 1 ? "1 flashcard rimanente" : `${count} flashcard rimanenti`;
+}
+
+function buildOptimisticGradeResult(input: {
+  currentData: ReviewPageData;
+  gradedCardBucket: ReviewQueueCard["bucket"];
+  nextCard: ReviewQueueCard | null;
+  nextQueueCardIds: string[];
+}): ReviewPageData {
+  return {
+    ...input.currentData,
+    queue: buildOptimisticQueueUpdate(
+      input.currentData.queue,
+      input.gradedCardBucket
+    ),
+    selectedCard: input.nextCard,
+    selectedCardContext: input.nextCard
+      ? {
+          bucket: input.nextCard.bucket,
+          gradePreviews: input.nextCard.gradePreviews,
+          isQueueCard: true,
+          position: 1,
+          remainingCount: Math.max(0, input.nextQueueCardIds.length - 1),
+          showAnswer: false
+        }
+      : {
+          bucket: null,
+          gradePreviews: [],
+          isQueueCard: false,
+          position: null,
+          remainingCount: 0,
+          showAnswer: false
+        },
+    session: {
+      answeredCount: input.currentData.session.answeredCount + 1,
+      extraNewCount: input.currentData.session.extraNewCount
+    }
+  };
+}
+
+function buildOptimisticQueueUpdate(
+  currentQueue: ReviewPageData["queue"],
+  gradedCardBucket: ReviewQueueCard["bucket"]
+): ReviewPageData["queue"] {
+  const isQueuedBucket =
+    gradedCardBucket === "due" || gradedCardBucket === "new";
+
+  return {
+    ...currentQueue,
+    dueCount:
+      gradedCardBucket === "due"
+        ? Math.max(0, currentQueue.dueCount - 1)
+        : currentQueue.dueCount,
+    newQueuedCount:
+      gradedCardBucket === "new"
+        ? Math.max(0, currentQueue.newQueuedCount - 1)
+        : currentQueue.newQueuedCount,
+    queueCount: Math.max(0, currentQueue.queueCount - (isQueuedBucket ? 1 : 0))
+  };
 }
 
 function showCompletionTopUp(data: ReviewPageData) {

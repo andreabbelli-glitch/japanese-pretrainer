@@ -195,6 +195,19 @@ AUTH_SESSION_SECRET='super-secret-session-key' \
 Il benchmark usa Chromium headless con cache disabilitata a livello browser per
 tenere i run piu confrontabili.
 
+## Nota sul flusso review
+
+I benchmark di questo documento misurano soprattutto il costo di navigazione e
+render delle route review. La sessione di grading usa anche un fast-path
+interattivo separato: il client prefetcha la card successiva e prova un
+avanzamento ottimistico subito dopo `Again/Hard/Good/Easy`, mentre il server
+completa la mutazione e la riconciliazione in background.
+
+Quando valuti regressioni sulla review non fermarti quindi al solo `TTFB` della
+route `/review`: verifica anche manualmente che il passaggio risposta -> card
+successiva resti immediato e che il fallback con rollback compaia solo in caso
+di errore reale del submit.
+
 Se Chromium non e ancora installato per Playwright:
 
 ```sh

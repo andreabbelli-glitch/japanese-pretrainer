@@ -59,6 +59,12 @@ A livello di prodotto:
 - dashboard e CTA globali devono mostrare numeri globali reali, mentre le
   superfici del media devono etichettare chiaramente i numeri locali del media.
 
+Nel flusso sessione, la UI prova a mantenere il grading percepito come
+istantaneo: il client prefetcha la card successiva quando possibile e, al click
+su `Again/Hard/Good/Easy`, avanza in modo ottimistico mentre il server conferma
+la mutazione in background. Se il submit fallisce, il client ripristina la card
+precedente e mostra l'errore senza perdere il contesto della sessione.
+
 ## Bootstrap locale
 
 Runtime previsto:

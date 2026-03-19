@@ -34,7 +34,7 @@
 - Glossary: ricerca per kanji, kana e romaji (`bochi`, `yamafuda`, `侵略`) restituisce risultati sensati.
 - Glossary detail: lesson e card collegate sono navigabili.
 - Review: il toggle `Furigana sul fronte` rispetta sia la modalita immediata sia quella solo dopo risposta.
-- Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione.
+- Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione subito, senza flash di pagina completa, e in caso di errore ripristina la card precedente con messaggio chiaro.
 - Review: il daily limit dei nuovi è globale e la coda mostra contenuti fusi
   quando la stessa entry o pattern compare in più media.
 - Review: le card già introdotte restano contabilizzate anche dopo l'upgrade
