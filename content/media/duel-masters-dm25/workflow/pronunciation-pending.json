@@ -1,9 +1,9 @@
 {
   "version": 1,
   "media_slug": "duel-masters-dm25",
-  "total_targets": 173,
-  "audio_backed_count": 81,
-  "known_missing_count": 92,
+  "total_targets": 214,
+  "audio_backed_count": 91,
+  "known_missing_count": 123,
   "pending_count": 0,
   "pending": []
 }
