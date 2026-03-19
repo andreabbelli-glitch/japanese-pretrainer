@@ -3,6 +3,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import {
   countReviewSubjectsIntroducedOnDay,
   db,
+  getGrammarEntriesByIds,
   getGrammarCrossMediaFamilyByEntryId,
   listLessonLinkedReviewEntriesByMediaId,
   listLessonLinkedReviewEntriesByMediaIds,
@@ -11,6 +12,7 @@ import {
   listGrammarCrossMediaFamiliesByEntryIds,
   listReviewLaunchCandidates,
   getMediaBySlug,
+  getTermEntriesByIds,
   getTermCrossMediaFamilyByEntryId,
   listTermCrossMediaFamiliesByEntryIds,
   listGrammarEntriesByMediaId,
@@ -989,7 +991,7 @@ async function buildReviewPageDataFromWorkspace(input: {
           })
         })
       : null;
-  const selectedCard =
+  const selectedCardBase =
     explicitSelection ??
     fallbackSelection ??
     (queueSnapshot.queueModels[0]
@@ -998,6 +1000,20 @@ async function buildReviewPageDataFromWorkspace(input: {
           queueCardMapInput
         )
       : null);
+  const selectedRawCard = selectedCardBase
+    ? input.cards.find((card) => card.id === selectedCardBase.id) ?? null
+    : null;
+  const selectedCard =
+    selectedCardBase && selectedRawCard
+      ? {
+          ...selectedCardBase,
+          pronunciations: await loadReviewCardPronunciations({
+            card: selectedRawCard,
+            database: input.database,
+            entryLookup
+          })
+        }
+      : selectedCardBase;
   const selectedQueueModel = selectedCard
     ? findReviewQueueSubjectModelByCardId(
         queueSnapshot.queueModels,
@@ -2295,6 +2311,50 @@ function buildReviewCardPronunciations(
     });
 }
 
+async function loadReviewCardPronunciations(input: {
+  card: Pick<ReviewCardListItem, "entryLinks">;
+  database: DatabaseClient;
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+}) {
+  const drivingLinks = getDrivingEntryLinks(input.card.entryLinks);
+  const missingTermIds = new Set<string>();
+  const missingGrammarIds = new Set<string>();
+
+  for (const link of drivingLinks) {
+    const entry = input.entryLookup.get(`${link.entryType}:${link.entryId}`);
+
+    if (entry?.pronunciation) {
+      continue;
+    }
+
+    if (link.entryType === "term") {
+      missingTermIds.add(link.entryId);
+      continue;
+    }
+
+    missingGrammarIds.add(link.entryId);
+  }
+
+  if (missingTermIds.size === 0 && missingGrammarIds.size === 0) {
+    return buildReviewCardPronunciations(input.card.entryLinks, input.entryLookup);
+  }
+
+  const [terms, grammar] = await Promise.all([
+    getTermEntriesByIds(input.database, [...missingTermIds]),
+    getGrammarEntriesByIds(input.database, [...missingGrammarIds])
+  ]);
+  const resolvedEntryLookup = new Map(input.entryLookup);
+
+  for (const [key, value] of buildEntryLookup(terms, grammar)) {
+    resolvedEntryLookup.set(key, value);
+  }
+
+  return buildReviewCardPronunciations(
+    input.card.entryLinks,
+    resolvedEntryLookup
+  );
+}
+
 function buildReviewQueueSubjectSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
@@ -2441,11 +2501,11 @@ function buildEntryLookup(
       kind: "term",
       label: entry.lemma,
       meaning: entry.meaningIt,
-      pronunciation:
-        buildPronunciationData(mediaSlug, {
-          ...entry,
-          reading: entry.reading
-        }) ?? undefined,
+      pronunciation: buildReviewEntryPronunciation(
+        mediaSlug,
+        entry,
+        entry.reading
+      ),
       reading: entry.reading,
       status: getReviewEntryStatus(entry),
       subtitle:
@@ -2462,11 +2522,11 @@ function buildEntryLookup(
       kind: "grammar",
       label: entry.pattern,
       meaning: entry.meaningIt,
-      pronunciation:
-        buildPronunciationData(mediaSlug, {
-          ...entry,
-          reading: entry.reading ?? entry.pattern
-        }) ?? undefined,
+      pronunciation: buildReviewEntryPronunciation(
+        mediaSlug,
+        entry,
+        entry.reading ?? entry.pattern
+      ),
       reading: entry.reading ?? deriveKanaReading(entry.pattern),
       status: getReviewEntryStatus(entry),
       subtitle: entry.title !== entry.pattern ? entry.title : undefined
@@ -2474,6 +2534,86 @@ function buildEntryLookup(
   }
 
   return lookup;
+}
+
+function buildReviewEntryPronunciation(
+  mediaSlug: string,
+  entry: ReviewTermLookupEntry | ReviewGrammarLookupEntry,
+  reading: string | null | undefined
+) {
+  if (!("audioSrc" in entry || "pitchAccent" in entry)) {
+    return undefined;
+  }
+
+  const pronunciationSource = entry as Record<string, unknown>;
+
+  return (
+    buildPronunciationData(mediaSlug, {
+      audioAttribution: getOptionalPronunciationStringField(
+        pronunciationSource,
+        "audioAttribution"
+      ),
+      audioLicense: getOptionalPronunciationStringField(
+        pronunciationSource,
+        "audioLicense"
+      ),
+      audioPageUrl: getOptionalPronunciationStringField(
+        pronunciationSource,
+        "audioPageUrl"
+      ),
+      audioSource: getOptionalPronunciationStringField(
+        pronunciationSource,
+        "audioSource"
+      ),
+      audioSpeaker: getOptionalPronunciationStringField(
+        pronunciationSource,
+        "audioSpeaker"
+      ),
+      audioSrc: getOptionalPronunciationStringField(
+        pronunciationSource,
+        "audioSrc"
+      ),
+      pitchAccent: getOptionalPronunciationNumberField(
+        pronunciationSource,
+        "pitchAccent"
+      ),
+      pitchAccentPageUrl: getOptionalPronunciationStringField(
+        pronunciationSource,
+        "pitchAccentPageUrl"
+      ),
+      pitchAccentSource: getOptionalPronunciationStringField(
+        pronunciationSource,
+        "pitchAccentSource"
+      ),
+      reading
+    }) ?? undefined
+  );
+}
+
+function getOptionalPronunciationStringField(
+  entry: Record<string, unknown>,
+  key:
+    | "audioAttribution"
+    | "audioLicense"
+    | "audioPageUrl"
+    | "audioSource"
+    | "audioSpeaker"
+    | "audioSrc"
+    | "pitchAccentPageUrl"
+    | "pitchAccentSource"
+) {
+  const value = entry[key];
+
+  return typeof value === "string" || value === null ? value : undefined;
+}
+
+function getOptionalPronunciationNumberField(
+  entry: Record<string, unknown>,
+  key: "pitchAccent"
+) {
+  const value = entry[key];
+
+  return typeof value === "number" || value === null ? value : undefined;
 }
 
 function getEntryMediaSlug(
