@@ -760,6 +760,46 @@ rt {
   justify-content: space-between;
 }
 
+/* Navigable library card: card-level link via overlay, stat blocks as individual links */
+.library-card--navigable {
+  position: relative;
+  cursor: pointer;
+}
+
+.library-card__overlay-link {
+  position: static;
+}
+
+.library-card__overlay-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.stat-block-link {
+  position: relative;
+  z-index: 1;
+  display: block;
+  border-radius: var(--radius-lg);
+  transition: transform 0.12s ease;
+}
+
+.stat-block-link:hover .stat-block,
+.stat-block-link:focus-visible .stat-block {
+  border-color: rgba(180, 165, 140, 0.9);
+  background: rgba(255, 250, 242, 1);
+}
+
+.stat-block-link:active {
+  transform: scale(0.97);
+}
+
+.library-card--navigable:hover {
+  box-shadow: var(--shadow-card), 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
 .entry-point-grid {
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }

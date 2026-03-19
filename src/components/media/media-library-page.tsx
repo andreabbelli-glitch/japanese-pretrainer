@@ -2,7 +2,12 @@ import Link from "next/link";
 
 import { getMediaLibraryData } from "@/lib/app-shell";
 import { renderFurigana } from "@/lib/render-furigana";
-import { mediaHref } from "@/lib/site";
+import {
+  mediaGlossaryHref,
+  mediaHref,
+  mediaReviewHref,
+  mediaStudyHref
+} from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
@@ -41,26 +46,29 @@ export async function MediaLibraryPage() {
 
       <div className="media-library-grid">
         {media.map((item) => (
-          <Link key={item.id} className="library-card-link" href={mediaHref(item.slug)}>
-            <SurfaceCard className="library-card">
-              <div className="library-card__top">
-                <div className="library-card__labels">
-                  <span className="chip">{item.mediaTypeLabel}</span>
-                  <span className="meta-pill">{item.segmentKindLabel}</span>
-                </div>
-                <span className="status-pill">{item.statusLabel}</span>
+          <SurfaceCard key={item.id} className="library-card library-card--navigable">
+            <div className="library-card__top">
+              <div className="library-card__labels">
+                <span className="chip">{item.mediaTypeLabel}</span>
+                <span className="meta-pill">{item.segmentKindLabel}</span>
               </div>
+              <span className="status-pill">{item.statusLabel}</span>
+            </div>
 
-              <div className="library-card__copy">
-                <h2 className="library-card__title">{item.title}</h2>
-                <p className="library-card__description">
-                  {renderFurigana(item.description, {
-                    linkBehavior: "flatten"
-                  })}
-                </p>
-              </div>
+            <div className="library-card__copy">
+              <h2 className="library-card__title">{item.title}</h2>
+              <p className="library-card__description">
+                {renderFurigana(item.description, {
+                  linkBehavior: "flatten"
+                })}
+              </p>
+            </div>
 
-              <div className="stats-grid stats-grid--compact">
+            <div className="stats-grid stats-grid--compact">
+              <Link
+                className="stat-block-link"
+                href={mediaStudyHref(item.slug, "textbook")}
+              >
                 <StatBlock
                   detail={
                     item.resumeLesson
@@ -74,6 +82,11 @@ export async function MediaLibraryPage() {
                       : `${item.lessonsTotal}`
                   }
                 />
+              </Link>
+              <Link
+                className="stat-block-link"
+                href={mediaGlossaryHref(item.slug)}
+              >
                 <StatBlock
                   detail={`${item.entriesTotal} voci nel Glossary`}
                   label="Glossary"
@@ -83,24 +96,31 @@ export async function MediaLibraryPage() {
                       : "0"
                   }
                 />
+              </Link>
+              <Link
+                className="stat-block-link"
+                href={mediaReviewHref(item.slug)}
+              >
                 <StatBlock
                   detail={item.reviewStatDetail}
                   label="Review"
                   tone={item.cardsDue > 0 ? "warning" : "default"}
                   value={item.reviewStatValue}
                 />
-              </div>
+              </Link>
+            </div>
 
-              <div className="library-card__footer">
-                <p className="library-card__step">
-                  {item.resumeLesson
-                    ? `${item.resumeLesson.statusLabel} · ${item.resumeLesson.title}`
-                    : "Apri il media per scegliere il primo step"}
-                </p>
-                <span className="text-link">Apri media</span>
-              </div>
-            </SurfaceCard>
-          </Link>
+            <div className="library-card__footer">
+              <p className="library-card__step">
+                {item.resumeLesson
+                  ? `${item.resumeLesson.statusLabel} · ${item.resumeLesson.title}`
+                  : "Apri il media per scegliere il primo step"}
+              </p>
+              <Link className="library-card__overlay-link text-link" href={mediaHref(item.slug)}>
+                Apri media
+              </Link>
+            </div>
+          </SurfaceCard>
         ))}
       </div>
     </div>
