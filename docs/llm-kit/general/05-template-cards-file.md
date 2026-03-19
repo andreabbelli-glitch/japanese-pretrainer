@@ -142,6 +142,9 @@ Regole pratiche:
 - privilegia entry con buona spendibilita linguistica: kanji, lessico e pattern
   che puoi reincontrare anche fuori da una singola scena o da uno specifico
   media;
+- non creare card sul nome proprio completo di una cosa o entita singola; se
+  il nome serve per il contesto, spiegalo nel textbook e, se contiene
+  giapponese riusabile, carda semmai quel componente invece del nome intero;
 - non trascurare elementi piccoli ma strutturalmente decisivi come marcatori di
   scope, totalita, riferimento o distribuzione (`すべて`, `各`, `それら`,
   `その中`, `ずつ`) quando cambiano davvero come si legge la frase;

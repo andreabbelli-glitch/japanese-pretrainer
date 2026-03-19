@@ -91,7 +91,8 @@ Per ogni deck:
 
 - overview del piano di gioco;
 - impronta lessicale del mazzo;
-- 3-5 nomi o termini da fissare;
+- 3-5 termini o componenti di nome da fissare, non il nome proprio completo
+  di una carta;
 - frasi modello molto vicine al testo carta;
 - spiegazione a meta tra gioco e giapponese, con priorita al giapponese.
 
@@ -136,6 +137,9 @@ Regola di spiegazione obbligatoria:
   Masters;
 - se il nome carta e opaco, spiega almeno quale ruolo ricorrente segnala nel
   deck o quali componenti del nome conviene riconoscere.
+- non trasformare in flashcard il nome proprio completo di una carta solo per
+  memorizzarla; se serve al contesto, spiegalo nel textbook e semmai isola i
+  componenti giapponesi riusabili del nome.
 - il contenuto finale non deve parlare del batch, della lesson come oggetto,
   della review o del recupero fonti; deve parlare direttamente di testo carta,
   regole e decisioni di gioco.

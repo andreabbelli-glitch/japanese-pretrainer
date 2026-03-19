@@ -297,6 +297,9 @@ Vincoli obbligatori:
 - Ogni blocco `:::card` deve includere sempre `example_jp` + `example_it`.
   `example_jp` deve essere una frase giapponese completa e contestuale utile
   sul retro review, non una parola isolata o una ripetizione del `front`.
+- Non creare flashcard sul nome proprio completo di una cosa o entita singola:
+  se serve al contesto, spiegalo nel textbook e isola semmai i componenti
+  giapponesi riusabili del nome.
 - Non scrivere spiegazioni tautologiche del tipo "X e utile/importante":
   ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa
   capire o fare nel media.

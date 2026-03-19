@@ -31,6 +31,9 @@ Regola didattica importante:
 - Non riempire il corpus di katakana autoesplicativi o poco formativi.
 - Se un termine in katakana e quasi trasparente e non sblocca comprensione
   reale, non trasformarlo in una entry canonica salvo necessita concreta.
+- Non trasformare in flashcard i nomi propri di Pokemon, luoghi, oggetti o
+  altre cose singole solo perche compaiono nel gioco: se servono, spiegali nel
+  textbook e isola semmai i componenti giapponesi riusabili del nome.
 - Privilegia sempre vocaboli, pattern e formule che ricorrono davvero.
 - Non scrivere spiegazioni valutative vuote del tipo "X e utile/importante":
   ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa

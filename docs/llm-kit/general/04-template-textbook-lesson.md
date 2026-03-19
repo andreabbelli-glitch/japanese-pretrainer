@@ -69,7 +69,9 @@ Quando da una lesson emergono candidati a flashcard, ricordati che devono
 servire prima di tutto a imparare il giapponese. La priorita e fissare parole
 giapponesi importanti e pattern grammaticali importanti: kanji, lessico
 riusabile e grammatica. Non proporre card che riassumono soltanto la meccanica
-del gioco senza un vero target linguistico.
+del gioco senza un vero target linguistico. Non promuovere a flashcard il nome
+proprio completo di una cosa o entita singola: se serve al contesto, spiegalo
+nel textbook e semmai isola i componenti giapponesi riusabili del nome.
 Tra piu candidati, privilegia il giapponese piu spendibile possibile anche
 fuori dal singolo media: parole come `わざ` hanno piu valore di sigle, acronimi
 o keyword troppo verticali da memorizzare solo per quella carta o schermata.

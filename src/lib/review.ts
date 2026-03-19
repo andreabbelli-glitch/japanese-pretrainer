@@ -63,6 +63,7 @@ import {
   formatEntryStatusLabel,
   formatReviewStateLabel
 } from "@/lib/study-format";
+import { type ReviewProfiler } from "@/lib/review-profiler";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 import {
   buildReviewSubjectEntryLookup,
@@ -952,6 +953,7 @@ type LoadedGlobalReviewPageWorkspace = {
 
 type ReviewPageLoadOptions = {
   bypassCache?: boolean;
+  profiler?: ReviewProfiler | null;
 };
 
 async function buildReviewPageDataFromWorkspace(input: {
@@ -968,19 +970,41 @@ async function buildReviewPageDataFromWorkspace(input: {
   searchState: ReviewSearchState;
   subjectGroups: ReviewSubjectGroup[];
   visibleMediaId?: string;
+  profiler?: ReviewProfiler | null;
 }) {
   const nowIso = input.now.toISOString();
   const mediaById = input.mediaById;
-  const queueSnapshot = buildReviewQueueSubjectSnapshot({
-    cards: input.cards,
-    dailyLimit: input.dailyLimit,
-    entryLookup: input.entryLookup,
-    extraNewCount: input.searchState.extraNewCount,
-    newIntroducedTodayCount: input.newIntroducedTodayCount,
-    nowIso,
-    subjectGroups: input.subjectGroups,
-    visibleMediaId: input.visibleMediaId
-  });
+  const queueSnapshot = input.profiler
+    ? await input.profiler.measure(
+        "buildReviewQueueSubjectSnapshot",
+        () =>
+          buildReviewQueueSubjectSnapshot({
+            cards: input.cards,
+            dailyLimit: input.dailyLimit,
+            entryLookup: input.entryLookup,
+            extraNewCount: input.searchState.extraNewCount,
+            newIntroducedTodayCount: input.newIntroducedTodayCount,
+            nowIso,
+            subjectGroups: input.subjectGroups,
+            visibleMediaId: input.visibleMediaId
+          }),
+        (value) => ({
+          dueCount: value.dueCount,
+          newQueuedCount: value.newQueuedCount,
+          queueCount: value.queueCount,
+          subjectModels: value.subjectModels.length
+        })
+      )
+    : buildReviewQueueSubjectSnapshot({
+        cards: input.cards,
+        dailyLimit: input.dailyLimit,
+        entryLookup: input.entryLookup,
+        extraNewCount: input.searchState.extraNewCount,
+        newIntroducedTodayCount: input.newIntroducedTodayCount,
+        nowIso,
+        subjectGroups: input.subjectGroups,
+        visibleMediaId: input.visibleMediaId
+      });
   const queueCardMapInput: ReviewQueueCardMapInput = {
     contextCache: new Map(),
     entryLookup: input.entryLookup,
@@ -1038,11 +1062,24 @@ async function buildReviewPageDataFromWorkspace(input: {
     selectedCardBase && selectedRawCard
       ? {
           ...selectedCardBase,
-          pronunciations: await loadReviewCardPronunciations({
-            card: selectedRawCard,
-            database: input.database,
-            entryLookup: input.entryLookup
-          })
+          pronunciations: await (input.profiler
+            ? input.profiler.measure(
+                "loadReviewCardPronunciations.selected",
+                () =>
+                  loadReviewCardPronunciations({
+                    card: selectedRawCard,
+                    database: input.database,
+                    entryLookup: input.entryLookup
+                  }),
+                (value) => ({
+                  pronunciations: value.length
+                })
+              )
+            : loadReviewCardPronunciations({
+                card: selectedRawCard,
+                database: input.database,
+                entryLookup: input.entryLookup
+              }))
         }
       : selectedCardBase;
   const selectedQueueModel = selectedCard
@@ -1057,6 +1094,9 @@ async function buildReviewPageDataFromWorkspace(input: {
   const selectedGradePreviews = selectedCard
     ? buildReviewGradePreviews(selectedCard.reviewSeedState, input.now)
     : [];
+  input.profiler?.addMeta({
+    selectedCardId: selectedCard?.id ?? null
+  });
 
   return {
     scope: input.scope,
@@ -1128,11 +1168,20 @@ function collectReviewLinkedEntryIds(
 async function loadReviewEntrySummariesForCards(input: {
   cards: ReviewCardListItem[];
   database: DatabaseClient;
+  profiler?: ReviewProfiler | null;
 }) {
   const { grammarIds, termIds } = collectReviewLinkedEntryIds(input.cards);
   const [terms, grammar] = await Promise.all([
-    listTermEntryReviewSummariesByIds(input.database, termIds),
-    listGrammarEntryReviewSummariesByIds(input.database, grammarIds)
+    input.profiler
+      ? input.profiler.measure("listTermEntryReviewSummariesByIds", () =>
+          listTermEntryReviewSummariesByIds(input.database, termIds)
+        )
+      : listTermEntryReviewSummariesByIds(input.database, termIds),
+    input.profiler
+      ? input.profiler.measure("listGrammarEntryReviewSummariesByIds", () =>
+          listGrammarEntryReviewSummariesByIds(input.database, grammarIds)
+        )
+      : listGrammarEntryReviewSummariesByIds(input.database, grammarIds)
   ]);
 
   return {
@@ -1144,20 +1193,45 @@ async function loadReviewEntrySummariesForCards(input: {
 async function loadStableReviewWorkspaceV2(input: {
   database: DatabaseClient;
   mediaIds: string[];
+  profiler?: ReviewProfiler | null;
 }): Promise<CachedReviewWorkspaceV2> {
   const [reviewCards, lessonLinkedEntries] = await Promise.all([
     input.mediaIds.length > 0
-      ? listReviewCardsByMediaIds(input.database, input.mediaIds)
+      ? input.profiler
+        ? input.profiler.measure("listReviewCardsByMediaIds", () =>
+            listReviewCardsByMediaIds(input.database, input.mediaIds)
+          )
+        : listReviewCardsByMediaIds(input.database, input.mediaIds)
       : Promise.resolve([]),
     input.mediaIds.length > 0
-      ? listLessonLinkedReviewEntriesByMediaIds(input.database, input.mediaIds)
+      ? input.profiler
+        ? input.profiler.measure("listLessonLinkedReviewEntriesByMediaIds", () =>
+            listLessonLinkedReviewEntriesByMediaIds(
+              input.database,
+              input.mediaIds
+            )
+          )
+        : listLessonLinkedReviewEntriesByMediaIds(input.database, input.mediaIds)
       : Promise.resolve([])
   ]);
-  const eligibleCards = buildEligibleReviewCardsByMedia({
-    cards: reviewCards,
-    lessonLinkedEntries,
-    mediaIds: input.mediaIds
-  });
+  const eligibleCards = input.profiler
+    ? await input.profiler.measure(
+        "buildEligibleReviewCardsByMedia",
+        () =>
+          buildEligibleReviewCardsByMedia({
+            cards: reviewCards,
+            lessonLinkedEntries,
+            mediaIds: input.mediaIds
+          }),
+        (value) => ({
+          mediaBuckets: value.size
+        })
+      )
+    : buildEligibleReviewCardsByMedia({
+        cards: reviewCards,
+        lessonLinkedEntries,
+        mediaIds: input.mediaIds
+      });
   const cards = [...eligibleCards.values()].flat();
 
   if (cards.length === 0) {
@@ -1169,10 +1243,23 @@ async function loadStableReviewWorkspaceV2(input: {
     };
   }
 
-  const { terms, grammar } = await loadReviewEntrySummariesForCards({
-    cards,
-    database: input.database
-  });
+  const { terms, grammar } = await (input.profiler
+    ? input.profiler.measure(
+        "loadReviewEntrySummariesForCards",
+        () =>
+          loadReviewEntrySummariesForCards({
+            cards,
+            database: input.database,
+            profiler: input.profiler
+          }),
+        {
+          cards: cards.length
+        }
+      )
+    : loadReviewEntrySummariesForCards({
+        cards,
+        database: input.database
+      }));
 
   return {
     cards,
@@ -1186,19 +1273,40 @@ async function loadStableReviewWorkspaceV2Cached(input: {
   bypassCache?: boolean;
   database: DatabaseClient;
   mediaIds: string[];
+  profiler?: ReviewProfiler | null;
 }) {
   const orderedMediaIds = [...new Set(input.mediaIds)].sort();
+  const cacheEligible = !input.bypassCache && canUseDataCache(input.database);
 
-  return runWithTaggedCache({
-    enabled: !input.bypassCache && canUseDataCache(input.database),
-    keyParts: [
-      "review",
-      "stable-workspace",
-      ...orderedMediaIds.map((mediaId) => `media:${mediaId}`)
-    ],
-    loader: () => loadStableReviewWorkspaceV2(input),
-    tags: buildReviewSummaryTags(orderedMediaIds)
-  });
+  return input.profiler
+    ? input.profiler.measure(
+        "loadStableReviewWorkspaceV2Cached",
+        () =>
+          runWithTaggedCache({
+            enabled: cacheEligible,
+            keyParts: [
+              "review",
+              "stable-workspace",
+              ...orderedMediaIds.map((mediaId) => `media:${mediaId}`)
+            ],
+            loader: () => loadStableReviewWorkspaceV2(input),
+            tags: buildReviewSummaryTags(orderedMediaIds)
+          }),
+        {
+          cacheEligible,
+          mediaIds: orderedMediaIds.length
+        }
+      )
+    : runWithTaggedCache({
+        enabled: cacheEligible,
+        keyParts: [
+          "review",
+          "stable-workspace",
+          ...orderedMediaIds.map((mediaId) => `media:${mediaId}`)
+        ],
+        loader: () => loadStableReviewWorkspaceV2(input),
+        tags: buildReviewSummaryTags(orderedMediaIds)
+      });
 }
 
 async function loadReviewWorkspaceV2(input: {
@@ -1206,20 +1314,43 @@ async function loadReviewWorkspaceV2(input: {
   database?: DatabaseClient;
   mediaIds: string[];
   now?: Date;
+  profiler?: ReviewProfiler | null;
 }): Promise<LoadedReviewWorkspaceV2> {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
   const [stableWorkspace, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
-      loadStableReviewWorkspaceV2Cached({
-        bypassCache: input.bypassCache,
-        database,
-        mediaIds: input.mediaIds
-      }),
-      getReviewDailyLimit(database),
-      countReviewSubjectsIntroducedOnDay(database, now)
+      input.profiler
+        ? input.profiler.measure("loadStableReviewWorkspaceV2", () =>
+            loadStableReviewWorkspaceV2Cached({
+              bypassCache: input.bypassCache,
+              database,
+              mediaIds: input.mediaIds,
+              profiler: input.profiler
+            })
+          )
+        : loadStableReviewWorkspaceV2Cached({
+            bypassCache: input.bypassCache,
+            database,
+            mediaIds: input.mediaIds
+          }),
+      input.profiler
+        ? input.profiler.measure("getReviewDailyLimit", () =>
+            getReviewDailyLimit(database)
+          )
+        : getReviewDailyLimit(database),
+      input.profiler
+        ? input.profiler.measure("countReviewSubjectsIntroducedOnDay", () =>
+            countReviewSubjectsIntroducedOnDay(database, now)
+          )
+        : countReviewSubjectsIntroducedOnDay(database, now)
     ]);
   const cards = stableWorkspace.cards;
+  input.profiler?.addMeta({
+    cards: cards.length,
+    mediaIds: input.mediaIds.length,
+    rawCardCount: stableWorkspace.rawCardCount
+  });
 
   if (cards.length === 0) {
     return {
@@ -1240,14 +1371,30 @@ async function loadReviewWorkspaceV2(input: {
     };
   }
 
-  const { legacyFallbackCounts, subjectGroups } =
-    await loadReviewSubjectStateLookup({
-      cards,
-      database,
-      grammar: stableWorkspace.grammar,
-      nowIso: now.toISOString(),
-      terms: stableWorkspace.terms
-    });
+  const { legacyFallbackCounts, subjectGroups } = await (input.profiler
+    ? input.profiler.measure(
+        "loadReviewSubjectStateLookup",
+        () =>
+          loadReviewSubjectStateLookup({
+            cards,
+            database,
+            grammar: stableWorkspace.grammar,
+            nowIso: now.toISOString(),
+            terms: stableWorkspace.terms
+          }),
+        (value) => ({
+          legacyFallbackComplex: value.legacyFallbackCounts.complex,
+          legacyFallbackInline: value.legacyFallbackCounts.inline,
+          subjectGroups: value.subjectGroups.length
+        })
+      )
+    : loadReviewSubjectStateLookup({
+        cards,
+        database,
+        grammar: stableWorkspace.grammar,
+        nowIso: now.toISOString(),
+        terms: stableWorkspace.terms
+      }));
 
   return {
     cards,
@@ -1279,7 +1426,11 @@ export async function getReviewPageData(
 ): Promise<ReviewPageData | null> {
   const now = new Date();
 
-  const media = await getMediaBySlug(database, mediaSlug);
+  const media = await (options.profiler
+    ? options.profiler.measure("getMediaBySlug", () =>
+        getMediaBySlug(database, mediaSlug)
+      )
+    : getMediaBySlug(database, mediaSlug));
 
   if (!media) {
     return null;
@@ -1287,36 +1438,75 @@ export async function getReviewPageData(
 
   const searchState = normalizeReviewSearchState(searchParams);
   const [workspace, reviewFrontFurigana] = await Promise.all([
-    loadReviewWorkspaceV2({
-      bypassCache: options.bypassCache,
-      database,
-      mediaIds: [media.id],
-      now
-    }),
-    getReviewFrontFuriganaSetting(database)
+    options.profiler
+      ? options.profiler.measure("loadReviewWorkspaceV2", () =>
+          loadReviewWorkspaceV2({
+            bypassCache: options.bypassCache,
+            database,
+            mediaIds: [media.id],
+            now,
+            profiler: options.profiler
+          })
+        )
+      : loadReviewWorkspaceV2({
+          bypassCache: options.bypassCache,
+          database,
+          mediaIds: [media.id],
+          now
+        }),
+    options.profiler
+      ? options.profiler.measure("getReviewFrontFuriganaSetting", () =>
+          getReviewFrontFuriganaSetting(database)
+        )
+      : getReviewFrontFuriganaSetting(database)
   ]);
 
-  return buildReviewPageDataFromWorkspace({
-    cards: workspace.cards,
-    dailyLimit: workspace.dailyLimit,
-    database,
-    entryLookup: workspace.entryLookup,
-    media: {
-      glossaryHref: mediaGlossaryHref(media.slug),
-      href: mediaHref(media.slug),
-      reviewHref: mediaStudyHref(media.slug, "review"),
-      slug: media.slug,
-      title: media.title
-    },
-    mediaById: buildSingleMediaLookup(media),
-    newIntroducedTodayCount: workspace.newIntroducedTodayCount,
-    now,
-    reviewFrontFurigana,
-    scope: "media",
-    searchState,
-    subjectGroups: workspace.subjectGroups,
-    visibleMediaId: media.id
-  });
+  return options.profiler
+    ? options.profiler.measure("buildReviewPageDataFromWorkspace", () =>
+        buildReviewPageDataFromWorkspace({
+          cards: workspace.cards,
+          dailyLimit: workspace.dailyLimit,
+          database,
+          entryLookup: workspace.entryLookup,
+          media: {
+            glossaryHref: mediaGlossaryHref(media.slug),
+            href: mediaHref(media.slug),
+            reviewHref: mediaStudyHref(media.slug, "review"),
+            slug: media.slug,
+            title: media.title
+          },
+          mediaById: buildSingleMediaLookup(media),
+          newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+          now,
+          profiler: options.profiler,
+          reviewFrontFurigana,
+          scope: "media",
+          searchState,
+          subjectGroups: workspace.subjectGroups,
+          visibleMediaId: media.id
+        })
+      )
+    : buildReviewPageDataFromWorkspace({
+        cards: workspace.cards,
+        dailyLimit: workspace.dailyLimit,
+        database,
+        entryLookup: workspace.entryLookup,
+        media: {
+          glossaryHref: mediaGlossaryHref(media.slug),
+          href: mediaHref(media.slug),
+          reviewHref: mediaStudyHref(media.slug, "review"),
+          slug: media.slug,
+          title: media.title
+        },
+        mediaById: buildSingleMediaLookup(media),
+        newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+        now,
+        reviewFrontFurigana,
+        scope: "media",
+        searchState,
+        subjectGroups: workspace.subjectGroups,
+        visibleMediaId: media.id
+      });
 }
 
 async function loadGlobalReviewPageWorkspace(
@@ -1325,16 +1515,32 @@ async function loadGlobalReviewPageWorkspace(
   options: ReviewPageLoadOptions = {}
 ): Promise<LoadedGlobalReviewPageWorkspace> {
   const now = new Date();
-  const mediaRows = await listMediaCached(database);
+  const mediaRows = await (options.profiler
+    ? options.profiler.measure("listMediaCached", () => listMediaCached(database))
+    : listMediaCached(database));
   const searchState = normalizeReviewSearchState(searchParams);
   const [workspace, reviewFrontFurigana] = await Promise.all([
-    loadReviewWorkspaceV2({
-      bypassCache: options.bypassCache,
-      database,
-      mediaIds: mediaRows.map((item) => item.id),
-      now
-    }),
-    getReviewFrontFuriganaSetting(database)
+    options.profiler
+      ? options.profiler.measure("loadReviewWorkspaceV2", () =>
+          loadReviewWorkspaceV2({
+            bypassCache: options.bypassCache,
+            database,
+            mediaIds: mediaRows.map((item) => item.id),
+            now,
+            profiler: options.profiler
+          })
+        )
+      : loadReviewWorkspaceV2({
+          bypassCache: options.bypassCache,
+          database,
+          mediaIds: mediaRows.map((item) => item.id),
+          now
+        }),
+    options.profiler
+      ? options.profiler.measure("getReviewFrontFuriganaSetting", () =>
+          getReviewFrontFuriganaSetting(database)
+        )
+      : getReviewFrontFuriganaSetting(database)
   ]);
 
   return {
@@ -1347,28 +1553,53 @@ async function loadGlobalReviewPageWorkspace(
 
 async function buildGlobalReviewPageData(
   input: LoadedGlobalReviewPageWorkspace,
-  database: DatabaseClient = db
+  database: DatabaseClient = db,
+  profiler?: ReviewProfiler | null
 ) {
-  return buildReviewPageDataFromWorkspace({
-    cards: input.cards,
-    dailyLimit: input.dailyLimit,
-    database,
-    entryLookup: input.entryLookup,
-    media: {
-      glossaryHref: "/glossary",
-      href: "/",
-      reviewHref: "/review",
-      slug: "global-review",
-      title: "Review globale"
-    },
-    mediaById: buildReviewMediaLookup(input.mediaRows),
-    newIntroducedTodayCount: input.newIntroducedTodayCount,
-    now: input.now,
-    reviewFrontFurigana: input.reviewFrontFurigana,
-    scope: "global",
-    searchState: input.searchState,
-    subjectGroups: input.subjectGroups
-  });
+  return profiler
+    ? profiler.measure("buildReviewPageDataFromWorkspace", () =>
+        buildReviewPageDataFromWorkspace({
+          cards: input.cards,
+          dailyLimit: input.dailyLimit,
+          database,
+          entryLookup: input.entryLookup,
+          media: {
+            glossaryHref: "/glossary",
+            href: "/",
+            reviewHref: "/review",
+            slug: "global-review",
+            title: "Review globale"
+          },
+          mediaById: buildReviewMediaLookup(input.mediaRows),
+          newIntroducedTodayCount: input.newIntroducedTodayCount,
+          now: input.now,
+          profiler,
+          reviewFrontFurigana: input.reviewFrontFurigana,
+          scope: "global",
+          searchState: input.searchState,
+          subjectGroups: input.subjectGroups
+        })
+      )
+    : buildReviewPageDataFromWorkspace({
+        cards: input.cards,
+        dailyLimit: input.dailyLimit,
+        database,
+        entryLookup: input.entryLookup,
+        media: {
+          glossaryHref: "/glossary",
+          href: "/",
+          reviewHref: "/review",
+          slug: "global-review",
+          title: "Review globale"
+        },
+        mediaById: buildReviewMediaLookup(input.mediaRows),
+        newIntroducedTodayCount: input.newIntroducedTodayCount,
+        now: input.now,
+        reviewFrontFurigana: input.reviewFrontFurigana,
+        scope: "global",
+        searchState: input.searchState,
+        subjectGroups: input.subjectGroups
+      });
 }
 
 export async function getGlobalReviewPageLoadResult(
@@ -1396,7 +1627,11 @@ export async function getGlobalReviewPageLoadResult(
 
   return {
     kind: "ready",
-    data: await buildGlobalReviewPageData(workspace, database)
+    data: await buildGlobalReviewPageData(
+      workspace,
+      database,
+      options.profiler
+    )
   };
 }
 
@@ -1411,7 +1646,7 @@ export async function getGlobalReviewPageData(
     options
   );
 
-  return buildGlobalReviewPageData(workspace, database);
+  return buildGlobalReviewPageData(workspace, database, options.profiler);
 }
 
 export async function getReviewQueueSnapshotForMedia(
@@ -1462,11 +1697,16 @@ export async function hydrateReviewCard(input: {
   cardId: string;
   database?: DatabaseClient;
   now?: Date;
+  profiler?: ReviewProfiler | null;
 }): Promise<ReviewQueueCard | null> {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
-  const card = await getCardById(database, input.cardId);
+  const card = await (input.profiler
+    ? input.profiler.measure("getCardById", () =>
+        getCardById(database, input.cardId)
+      )
+    : getCardById(database, input.cardId));
 
   if (!card || card.status === "archived") {
     return null;
@@ -1485,8 +1725,16 @@ export async function hydrateReviewCard(input: {
   }
 
   const [terms, grammar] = await Promise.all([
-    getTermEntriesByIds(database, [...termIds]),
-    getGrammarEntriesByIds(database, [...grammarIds])
+    input.profiler
+      ? input.profiler.measure("getTermEntriesByIds", () =>
+          getTermEntriesByIds(database, [...termIds])
+        )
+      : getTermEntriesByIds(database, [...termIds]),
+    input.profiler
+      ? input.profiler.measure("getGrammarEntriesByIds", () =>
+          getGrammarEntriesByIds(database, [...grammarIds])
+        )
+      : getGrammarEntriesByIds(database, [...grammarIds])
   ]);
   const entryLookup = buildEntryLookup(terms, grammar);
   const subjectIdentity = deriveReviewSubjectIdentity({
@@ -1497,10 +1745,11 @@ export async function hydrateReviewCard(input: {
       terms
     })
   });
-  const subjectState = await getReviewSubjectStateByKey(
-    database,
-    subjectIdentity.subjectKey
-  );
+  const subjectState = await (input.profiler
+    ? input.profiler.measure("getReviewSubjectStateByKey", () =>
+        getReviewSubjectStateByKey(database, subjectIdentity.subjectKey)
+      )
+    : getReviewSubjectStateByKey(database, subjectIdentity.subjectKey));
   const effectiveCard = applySubjectStateToReviewCard(card, subjectState);
   const resolvedState = resolveReviewQueueState(
     effectiveCard,
@@ -1509,21 +1758,46 @@ export async function hydrateReviewCard(input: {
   );
   const mediaById = buildSingleMediaLookup({
     id: card.mediaId,
-    ...(await resolveHydratedReviewCardMedia({
-      card,
-      database,
-      grammar,
-      terms
-    }))
+    ...(await (input.profiler
+      ? input.profiler.measure("resolveHydratedReviewCardMedia", () =>
+          resolveHydratedReviewCardMedia({
+            card,
+            database,
+            grammar,
+            terms
+          })
+        )
+      : resolveHydratedReviewCardMedia({
+          card,
+          database,
+          grammar,
+          terms
+        })))
   });
-  const queueCard = mapQueueCard(
-    effectiveCard,
-    entryLookup,
-    [card],
-    mediaById,
-    nowIso,
-    resolvedState
-  );
+  const queueCard = input.profiler
+    ? await input.profiler.measure(
+        "mapQueueCard",
+        () =>
+          mapQueueCard(
+            effectiveCard,
+            entryLookup,
+            [card],
+            mediaById,
+            nowIso,
+            resolvedState
+          ),
+        {
+          cardId: card.id
+        }
+      )
+    : mapQueueCard(
+        effectiveCard,
+        entryLookup,
+        [card],
+        mediaById,
+        nowIso,
+        resolvedState
+      );
 
   return {
     ...queueCard,

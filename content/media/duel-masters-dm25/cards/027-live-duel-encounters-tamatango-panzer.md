@@ -19,7 +19,8 @@ notes_it: >-
   E il nome proprio di un grosso [グランセクト](term:term-gransect) naturale.
   In Duel Masters PLAY'S lo riconosci per tre cose lette insieme: entra gia
   tappato, forza gli attacchi avversari su di se se possibile e puo ottenere
-  `S・トリガー` quando esce dagli scudi.
+  `S・トリガー` mentre si trova nello shield zone se la soglia nel mana e
+  soddisfatta.
 level_hint: custom
 :::
 
@@ -40,17 +41,60 @@ level_hint: custom
 
 :::term
 id: term-enter-battle-zone-tapped
-lemma: タップしてバトルゾーンに出る
-reading: たっぷしてばとるぞーんにでる
-romaji: tappu shite batoruzoon ni deru
-meaning_it: entra nel battle zone tapped
+lemma: タップして置く
+reading: たっぷしておく
+romaji: tappu shite oku
+meaning_it: viene messo nel battle zone gia tapped
 pos: verb-phrase
-aliases: [タップしてバトルゾーンに出る]
+aliases: [タップして置く, タップしてバトルゾーンに出る]
 notes_it: >-
-  E una formula utile da riconoscere in blocco. Non descrive due azioni
-  separate, prima entrare e poi tappare: dice che la carta entra gia nel
-  battle zone in stato tapped.
+  E una formula utile da riconoscere in blocco. Nel rules text compare spesso
+  dopo un timing come `バトルゾーンに{{置|お}}く{{時|とき}}`: non descrive due
+  azioni separate, prima mettere la carta e poi tapparla, ma dice che la carta
+  viene collocata gia nel battle zone in stato tapped.
 level_hint: custom
+:::
+
+:::term
+id: term-baai
+lemma: 場合
+reading: ばあい
+romaji: baai
+meaning_it: caso / situazione / nel caso in cui
+pos: noun
+aliases: [場合, ばあい, baai]
+notes_it: >-
+  In giapponese generale `{{場合|ばあい}}` indica un caso, una situazione, uno
+  scenario preso come riferimento: `in questo caso`, `nel caso in cui succeda
+  X`, `in una situazione del genere`. L'idea di fondo e che il parlante non
+  descrive ancora cosa fare, ma delimita prima il contesto in cui la regola o
+  la conseguenza va letta. Nel rules text di Duel Masters il significato resta
+  questo, solo piu tecnico: `{{攻撃|こうげき}}する{{場合|ばあい}}` non vuol dire
+  semplicemente `quando attacca`, ma `nel caso in cui si presenti la situazione
+  di un attacco`, cioe il momento preciso in cui il gioco controlla quali
+  vincoli o obblighi devono applicarsi.
+level_hint: n3
+:::
+
+:::term
+id: term-ataeru
+lemma: 与える
+reading: あたえる
+romaji: ataeru
+meaning_it: dare / conferire / attribuire
+pos: verb
+aliases: [与える, あたえる, ataeru]
+notes_it: >-
+  In giapponese generale `{{与|あた}}える` vuol dire dare qualcosa a qualcuno,
+  conferire, assegnare: puo essere un oggetto concreto, ma anche un'influenza,
+  un danno, un ruolo o un vantaggio. L'idea di fondo e che una fonte trasferisce
+  o fa comparire una certa proprieta su un bersaglio. Nel rules text di Duel
+  Masters questo nucleo resta identico, ma diventa molto preciso: `「S・トリガー」
+  を{{与|あた}}える` significa che un effetto concede quella keyword a
+  `シールドゾーンにあるこのクリーチャー` in quello stato specifico. Non vuol dire
+  che la keyword sia stampata sulla carta in modo permanente; vuol dire che il
+  gioco gliela attribuisce dentro quella condizione.
+level_hint: n3
 :::
 
 :::grammar
@@ -83,7 +127,8 @@ example_it: >-
 notes_it: >-
   Il nome va fissato come nome proprio completo. In questa carta quel nome
   coincide con una lettura molto riconoscibile: ingresso tapped, attacco
-  reindirizzato e minaccia di `S・トリガー` dagli scudi.
+  reindirizzato e possibilita di `S・トリガー` mentre la carta resta negli
+  scudi.
 tags: [live-duel, proper-name, shield-trigger]
 :::
 
@@ -111,17 +156,56 @@ entry_type: term
 entry_id: term-enter-battle-zone-tapped
 card_type: recognition
 front: >-
-  タップしてバトルゾーンに{{出|で}}る
-back: entra nel battle zone tapped
+  タップして{{置|お}}く
+back: viene messo nel battle zone gia tapped
 example_jp: >-
-  タップしてバトルゾーンに{{出|で}}るなら、{{場|ば}}に{{出|で}}た
-  {{瞬間|しゅんかん}}からもう{{横向|よこむ}}きだ。
+  バトルゾーンに{{置|お}}く{{時|とき}}、このカードはタップして{{置|お}}く。
 example_it: >-
-  Se entra nel battle zone tapped, e gia orizzontale dal momento in cui arriva.
+  Quando viene messa nel battle zone, questa carta viene messa tapped.
 notes_it: >-
-  Il valore utile sta nel blocco intero: il testo non aggiunge un tap dopo
-  l'ingresso, ma descrive un ingresso che avviene gia in quello stato.
+  Il valore utile sta nel blocco intero: il testo non aggiunge un tap dopo la
+  messa in campo, ma descrive una collocazione che avviene gia in quello stato.
 tags: [live-duel, entry, tap, chunk]
+:::
+
+:::card
+id: card-baai-recognition
+entry_type: term
+entry_id: term-baai
+card_type: recognition
+front: '{{場合|ばあい}}'
+back: caso / situazione / nel caso in cui
+example_jp: >-
+  {{相手|あいて}}のクリーチャーが{{攻撃|こうげき}}する{{場合|ばあい}}、
+  {{可能|かのう}}ならこのクリーチャーを{{攻撃|こうげき}}する。
+example_it: >-
+  Nel caso in cui una creatura avversaria attacchi, se puo farlo deve attaccare
+  questa creatura.
+notes_it: >-
+  Significato base: un caso o una situazione presa come cornice. Nel TCG serve
+  spesso a fissare il momento di controllo della regola: qui `{{攻撃|こうげき}}
+  する{{場合|ばあい}}` apre proprio il caso in cui il gioco verifica se
+  l'attaccante e obbligato a scegliere questa creatura come bersaglio.
+tags: [live-duel, condition, rules-text, general-japanese]
+:::
+
+:::card
+id: card-ataeru-recognition
+entry_type: term
+entry_id: term-ataeru
+card_type: recognition
+front: '{{与|あた}}える'
+back: dare / conferire / attribuire
+example_jp: >-
+  シールドゾーンにあるこのクリーチャーに「S・トリガー」を{{与|あた}}える。
+example_it: >-
+  Conferisce "S-Trigger" a questa creatura che si trova nello shield zone.
+notes_it: >-
+  Significato base: dare o conferire qualcosa a un bersaglio. Nel TCG il verbo
+  compare spesso quando un effetto assegna una keyword, un'abilita o una
+  proprieta: qui non descrive uno S-Trigger stampato di base, ma una keyword
+  che il gioco attribuisce a questa creatura mentre si trova nello shield zone.
+tags: [live-duel, verb, keyword, granted-effect, general-japanese]
 :::
 
 :::card
@@ -132,7 +216,7 @@ card_type: concept
 front: '{{可能|かのう}}なら、このクリーチャーを{{攻撃|こうげき}}する'
 back: se puo farlo, deve attaccare questa creatura
 example_jp: >-
-  {{相手|あいて}}のクリーチャーが{{攻撃|こうげき}}する{{場合|ばあい}}、
+  {{相手|あいて}}のクリーチャーが{{攻撃|こうげき}}する[{{場合|ばあい}}](term:term-baai)、
   {{可能|かのう}}ならこのクリーチャーを{{攻撃|こうげき}}する。
 example_it: >-
   Quando una creatura avversaria attacca, se puo farlo deve attaccare questa

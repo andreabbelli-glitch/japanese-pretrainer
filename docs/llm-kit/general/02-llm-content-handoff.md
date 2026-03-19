@@ -382,6 +382,10 @@ Regola complementare fondamentale:
 - se un elemento e necessario per leggere la scena o per compiere l'azione
   giusta nel media ma non ha abbastanza valore di memoria attiva, spiegalo nel
   textbook e non trasformarlo per forza in una nuova flashcard.
+- se l'elemento e soprattutto un nome proprio di una cosa o entita singola,
+  non trasformarlo in flashcard solo perche compare nel corpus: spiegalo nel
+  textbook e, se il nome contiene componenti giapponesi davvero riusabili,
+  valuta quelli invece del nome completo.
 
 ### 7.5 Regola di correttezza dell'italiano
 
@@ -408,8 +412,9 @@ Evita invece:
   originale.
 - flashcard di puro katakana se il loro unico contenuto e una parola gia
   trasparente o facilmente traslitterabile.
-- flashcard su acronimi, sigle prodotto, codici set, nomi evento, nomi interni
-  o dettagli troppo verticali se non costruiscono vera literacy.
+- flashcard su acronimi, sigle prodotto, codici set, nomi evento, nomi propri
+  di cose o entita singole, nomi interni o dettagli troppo verticali se non
+  costruiscono vera literacy.
 - scelte che ignorano un pattern grammaticale importante o una parola
   importante del corpus per aggiungere invece una card piu "comoda" ma meno
   utile per il giapponese.
@@ -460,6 +465,9 @@ Vincoli obbligatori:
 - Tra piu candidati, privilegia il giapponese con migliore spendibilita:
   parole e pattern che puoi reincontrare anche fuori da questo singolo media
   valgono piu di acronimi, sigle e dettagli ultra-verticali.
+- Non creare flashcard sul nome proprio completo di una cosa o entita singola:
+  se serve al contesto, spiegalo nel textbook e isola semmai i componenti
+  giapponesi riusabili del nome.
 - Non creare flashcard di puro katakana per parole banali o trasparenti: di
   default non aggiungono vero valore di studio.
 - Se un termine verticale serve per capire il testo corrente o per interagire

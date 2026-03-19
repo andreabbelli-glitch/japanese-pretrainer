@@ -213,3 +213,30 @@ Se Chromium non e ancora installato per Playwright:
 ```sh
 ./scripts/with-node.sh pnpm exec playwright install chromium
 ```
+
+## Profilazione Review Su Vercel
+
+Per isolare il collo di bottiglia della review sulla deployment reale, puoi
+attivare un profiling temporaneo con:
+
+```txt
+/review?__profile=1
+/media/<mediaSlug>/review?__profile=1
+```
+
+L'app salva un cookie tecnico di breve durata e scrive log strutturati con
+prefisso `[review-timing]` per:
+
+- route review globale e per-media;
+- `getReviewPageData` / `getGlobalReviewPageLoadResult`;
+- workspace review, fallback subject-level e pronunce card selezionata;
+- server actions di prefetch e grading della review.
+
+Per disattivarlo:
+
+```txt
+/review?__profile=0
+```
+
+Su Vercel puoi poi leggere i log del deployment e cercare `[review-timing]`
+per confrontare i passi piu lenti della request reale.

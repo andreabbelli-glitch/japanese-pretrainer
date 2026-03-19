@@ -25,6 +25,9 @@ Regola didattica importante:
   capire o fare in Duel Masters.
 - Se un nome carta e poco trasparente, spiega almeno quale ruolo ricorrente
   segnala nel mazzo o quali componenti del nome conviene riconoscere.
+- Non trasformare in flashcard il nome proprio completo di una carta solo per
+  memorizzarla: se serve al contesto, spiegalo nel textbook e semmai isola i
+  componenti giapponesi riusabili del nome.
 - Nel contenuto finale non parlare del batch, della lesson come oggetto, della
   review, del recupero fonti o del fatto che qualcosa "conviene fissare":
   spiega direttamente il giapponese e il suo effetto di gioco.

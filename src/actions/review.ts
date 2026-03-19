@@ -22,6 +22,11 @@ import {
   type ReviewPageData,
   type ReviewQueueCard
 } from "@/lib/review";
+import {
+  createRequestReviewProfiler,
+  scheduleReviewProfilerFlush,
+  type ReviewProfiler
+} from "@/lib/review-profiler";
 import { mediaReviewCardHref, mediaStudyHref, reviewHref } from "@/lib/site";
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
@@ -198,16 +203,30 @@ export async function gradeReviewCardSessionAction(
     rating: "again" | "hard" | "good" | "easy";
   }
 ): Promise<ReviewPageData> {
+  const profiler = await createRequestReviewProfiler({
+    label: "action:gradeReviewCardSession",
+    meta: {
+      cardId: input.cardId,
+      nextCardId: input.nextCardId ?? null,
+      rating: input.rating,
+      scope: input.scope ?? "media"
+    }
+  });
+  scheduleReviewProfilerFlush(profiler);
   const mediaId =
     input.scope === "media" && input.mediaSlug
-      ? await requireMediaIdForSlug(input.mediaSlug)
+      ? await profiler.measure("requireMediaIdForSlug", () =>
+          requireMediaIdForSlug(input.mediaSlug!)
+        )
       : undefined;
 
-  await applyReviewGrade({
-    cardId: input.cardId,
-    expectedMediaId: mediaId,
-    rating: input.rating
-  });
+  await profiler.measure("applyReviewGrade", () =>
+    applyReviewGrade({
+      cardId: input.cardId,
+      expectedMediaId: mediaId,
+      rating: input.rating
+    })
+  );
 
   revalidateActiveReviewPaths({
     mediaId,
@@ -248,11 +267,15 @@ export async function gradeReviewCardSessionAction(
       } satisfies ReviewPageData;
     }
 
+    const nextCardId = input.nextCardId;
     const now = new Date();
-    const hydratedCard = await hydrateReviewCard({
-      cardId: input.nextCardId,
-      now
-    });
+    const hydratedCard = await profiler.measure("hydrateReviewCard.next", () =>
+      hydrateReviewCard({
+        cardId: nextCardId,
+        now,
+        profiler
+      })
+    );
 
     if (hydratedCard) {
       return {
@@ -278,21 +301,35 @@ export async function gradeReviewCardSessionAction(
     }
   }
 
-  return requireReviewPageDataForScope(
-    input,
-    buildReviewSearchParams({
-      answeredCount: input.answeredCount + 1,
-      extraNewCount: input.extraNewCount
-    })
+  return profiler.measure("requireReviewPageDataForScope", () =>
+    requireReviewPageDataForScope(
+      input,
+      buildReviewSearchParams({
+        answeredCount: input.answeredCount + 1,
+        extraNewCount: input.extraNewCount
+      }),
+      profiler
+    )
   );
 }
 
 export async function prefetchReviewCardSessionAction(input: {
   cardId: string;
 }): Promise<ReviewQueueCard | null> {
-  return hydrateReviewCard({
-    cardId: input.cardId
+  const profiler = await createRequestReviewProfiler({
+    label: "action:prefetchReviewCardSession",
+    meta: {
+      cardId: input.cardId
+    }
   });
+  scheduleReviewProfilerFlush(profiler);
+
+  return profiler.measure("hydrateReviewCard", () =>
+    hydrateReviewCard({
+      cardId: input.cardId,
+      profiler
+    })
+  );
 }
 
 export async function markLinkedEntryKnownSessionAction(
@@ -584,10 +621,12 @@ function buildReviewSearchParams(input: {
 
 async function requireReviewPageData(
   mediaSlug: string,
-  searchParams: Record<string, string>
+  searchParams: Record<string, string>,
+  profiler?: ReviewProfiler | null
 ) {
   const data = await getReviewPageData(mediaSlug, searchParams, db, {
-    bypassCache: true
+    bypassCache: true,
+    profiler
   });
 
   if (!data) {
@@ -599,11 +638,13 @@ async function requireReviewPageData(
 
 async function requireReviewPageDataForScope(
   input: Pick<ReviewSessionInput, "mediaSlug" | "scope">,
-  searchParams: Record<string, string>
+  searchParams: Record<string, string>,
+  profiler?: ReviewProfiler | null
 ) {
   if (input.scope === "global") {
     return getGlobalReviewPageData(searchParams, db, {
-      bypassCache: true
+      bypassCache: true,
+      profiler
     });
   }
 
@@ -611,7 +652,7 @@ async function requireReviewPageDataForScope(
     throw new Error("Media review scope requires a media slug.");
   }
 
-  return requireReviewPageData(input.mediaSlug, searchParams);
+  return requireReviewPageData(input.mediaSlug, searchParams, profiler);
 }
 
 async function requireMediaIdForSlug(mediaSlug: string) {

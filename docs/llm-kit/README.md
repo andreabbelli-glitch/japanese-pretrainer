@@ -99,6 +99,12 @@ Nota pratica:
 > deve rendere leggibile e quali criteri usera poi l'agent immagini per
 > recuperarla correttamente.
 
+> [!IMPORTANT]
+> Le flashcard devono allenare soprattutto giapponese generalizzabile. Di
+> default non vanno spese su nomi propri di cose o entita singole: se quei
+> nomi servono al contesto, spiegali nel textbook e valuta semmai i componenti
+> giapponesi riusabili del nome.
+
 ### Se vuoi dare contesto completo
 
 Passa:

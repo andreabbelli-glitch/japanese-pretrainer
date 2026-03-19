@@ -68,6 +68,9 @@ Il bundle deve insegnare:
 - le spiegazioni devono sempre unire significato giapponese e azione concreta;
 - non basta dire che una label e "utile" o "importante": bisogna spiegare che
   cosa segnala e quale decisione abilita;
+- non trasformare in flashcard i nomi propri di unita, campagne, eventi o
+  altre cose singole solo per memorizzarli; se servono, spiegali nel textbook
+  e semmai isola i componenti giapponesi riusabili del nome;
 - quando un ruolo o un comando ha una funzione tattica, spiegare anche cosa
   cambia nella lettura della schermata.
 

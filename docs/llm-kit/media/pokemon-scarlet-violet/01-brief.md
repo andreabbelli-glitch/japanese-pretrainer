@@ -37,6 +37,9 @@ Regola editoriale forte:
 
 - non creare troppe flashcard su termini in katakana se non sono davvero
   indispensabili;
+- non trasformare in flashcard i nomi propri di Pokemon, luoghi, oggetti o
+  altre cose singole solo perche compaiono nella storia; se servono, spiegali
+  nel textbook e isola semmai i componenti giapponesi riusabili;
 - preferire entry che sbloccano comprensione reale di dialoghi, menu,
   tutorial, battle flow e story progression;
 - se un termine in katakana e quasi autoesplicativo e non aggiunge molto
@@ -226,7 +229,8 @@ Esempi di batch sani:
 
 ## Tipi di contenuto da evitare
 
-- accumulo di nomi propri poco utili;
+- accumulo di nomi propri di cose o entita singole poco utili, soprattutto se
+  finirebbero in flashcard;
 - troppi katakana autoesplicativi;
 - lore o trivia non necessari alla comprensione del giapponese;
 - gloss troppo astratti senza aggancio a scene, UI o dialoghi reali;

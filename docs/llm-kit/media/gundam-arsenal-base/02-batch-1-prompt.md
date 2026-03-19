@@ -81,6 +81,10 @@ Vincoli di formato obbligatori:
 - Non scrivere spiegazioni tautologiche del tipo "X e utile/importante":
   ogni spiegazione deve dire che cosa significa davvero X e che cosa ti fa
   capire o fare nel gioco.
+- Non creare flashcard sul nome proprio completo di una unita, campagna,
+  evento o altra cosa singola solo per memorizzarlo: se serve al contesto,
+  spiegalo nel textbook e semmai isola i componenti giapponesi riusabili del
+  nome.
 - Mantieni stabili gli ID.
 - Se una entry nuova e importante per glossary/review, dichiarala esplicitamente
   con un blocco `:::term` o `:::grammar`.

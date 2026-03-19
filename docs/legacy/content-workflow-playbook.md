@@ -239,6 +239,10 @@ Prima distingui fra due casi:
   specifica, un label storico da riconoscere in guide vecchie, oppure un
   elemento fisico o di orientamento locale che serve a capire una schermata ma
   non guida review ricorrente;
+- puo restare `lookup-only` anche se e soprattutto il nome proprio di una cosa
+  o entita singola: in quel caso va spiegato nel textbook, e solo eventuali
+  componenti giapponesi riusabili del nome possono diventare candidati a
+  flashcard;
 - merita invece una flashcard se compare nei `Termini chiave` di lesson core o
   progression, guida decisioni ripetute di match o navigazione, oppure ricorre
   in piu lesson come risorsa, modalita, obiettivo o slot operativo.

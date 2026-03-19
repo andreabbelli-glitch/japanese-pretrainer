@@ -101,9 +101,14 @@ Di default una entry non dovrebbe diventare flashcard se è soprattutto:
 
 - un acronimo interno o promozionale;
 - un codice set, nome evento o sigla di prodotto;
-- un nome proprio che non costruisce vera literacy;
+- un nome proprio di una cosa o entita singola che non costruisce vera
+  literacy generale;
 - una keyword troppo verticale da memorizzare solo per quella carta o quel menu;
 - una spiegazione di puro ruling senza una forma giapponese forte da allenare.
+
+Se un nome proprio serve per capire la scena, la schermata o il contesto,
+spiegalo nel textbook; se contiene componenti giapponesi riusabili, valuta
+semmai quelli, non il nome completo.
 
 Eccezione:
 

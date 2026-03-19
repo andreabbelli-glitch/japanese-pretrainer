@@ -340,6 +340,10 @@ Regola complementare:
 - se un termine, una keyword o una sigla serve per capire il media corrente o
   per interagirci correttamente ma non ha abbastanza valore di riuso, spiegalo
   nel textbook e non forzarlo in flashcard.
+- se l'elemento e soprattutto un nome proprio di una cosa o entita singola,
+  di default spiegalo nel textbook e non farne una flashcard; se il nome
+  contiene componenti giapponesi davvero riusabili, isola quelli invece del
+  nome completo.
 
 Da evitare:
 
@@ -350,8 +354,9 @@ Da evitare:
   lessico o grammatica.
 - flashcard di puro katakana quando il contenuto non allena altro oltre alla
   semplice traslitterazione.
-- flashcard su sigle, acronimi, codici prodotto, nomi evento o dettagli che
-  spiegano il singolo media ma non costruiscono literacy generale.
+- flashcard su sigle, acronimi, codici prodotto, nomi evento, nomi propri di
+  cose o entita singole o dettagli che spiegano il singolo media ma non
+  costruiscono literacy generale.
 - scelte che lasciano fuori una parola giapponese importante o un pattern
   grammaticale importante per fare spazio a una card di sola meccanica.
 

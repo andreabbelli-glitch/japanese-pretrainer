@@ -130,6 +130,10 @@ La richiesta deve esplicitare:
   anche elementi molto verticali quando servono a capire la scena o a
   interagire correttamente con il media, mentre le flashcard devono
   privilegiare il giapponese piu spendibile e riusabile;
+- obbligo di non trasformare in flashcard i nomi propri di cose o entita
+  singole solo perche compaiono nel media: se servono, vanno spiegati nel
+  textbook, e solo eventuali componenti giapponesi riusabili del nome possono
+  diventare candidati review;
 - obbligo che anche nel textbook il bersaglio primario resti il giapponese:
   il gioco o il media servono come contesto esplicativo, non come focus
   principale separato;
@@ -264,7 +268,8 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
   all'interazione corretta con il media siano spiegati nel textbook anche
   quando non diventano flashcard;
 - verifica che le flashcard selezionate non siano soprattutto sigle, acronimi,
-  nomi interni o dettagli poco spendibili fuori da quel singolo media;
+  nomi interni, nomi propri di cose o entita singole o dettagli poco
+  spendibili fuori da quel singolo media;
 - verifica che la semplicita della prosa non abbia svuotato il contenuto:
   ogni paragrafo deve consegnare informazione concreta, non solo enfasi;
 - se una lesson contiene `:::image`, verifica che l'immagine mostri davvero il

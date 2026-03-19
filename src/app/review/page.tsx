@@ -3,6 +3,10 @@ import { connection } from "next/server";
 
 import { ReviewPage } from "@/components/review/review-page";
 import { EmptyState } from "@/components/ui/empty-state";
+import {
+  createRequestReviewProfiler,
+  scheduleReviewProfilerFlush
+} from "@/lib/review-profiler";
 import { getGlobalReviewPageLoadResult } from "@/lib/review";
 
 type ReviewRouteProps = {
@@ -11,8 +15,25 @@ type ReviewRouteProps = {
 
 export default async function ReviewRoute({ searchParams }: ReviewRouteProps) {
   await connection();
+  const profiler = await createRequestReviewProfiler({
+    label: "route:global-review",
+    meta: {
+      scope: "global"
+    }
+  });
+  scheduleReviewProfilerFlush(profiler);
+  const resolvedSearchParams = await searchParams;
 
-  const reviewResult = await getGlobalReviewPageLoadResult(await searchParams);
+  const reviewResult = await profiler.measure(
+    "getGlobalReviewPageLoadResult",
+    () =>
+      getGlobalReviewPageLoadResult(resolvedSearchParams, undefined, {
+        profiler
+      })
+  );
+  profiler.addMeta({
+    resultKind: reviewResult.kind
+  });
 
   if (reviewResult.kind === "empty-media") {
     return (
