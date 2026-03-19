@@ -38,6 +38,7 @@ import {
   getReviewLaunchMedia,
   getReviewPageData,
   getReviewQueueSnapshotForMedia,
+  hydrateReviewCard,
   loadGlobalReviewOverviewSnapshot,
   loadReviewOverviewSnapshots,
   type ReviewPageData
@@ -1307,6 +1308,65 @@ describe("review system", () => {
     expect(markup).toContain(
       "/media/sample-anime/assets/audio/term/term-taberu/term-taberu.ogg"
     );
+  });
+
+  it("hydrates a single review card with the same render-critical fields as the full page selection", async () => {
+    const now = new Date("2026-03-12T10:00:00.000Z");
+
+    vi.useFakeTimers();
+    vi.setSystemTime(now);
+
+    try {
+      const [hydratedCard, reviewPage] = await Promise.all([
+        hydrateReviewCard({
+          cardId: developmentFixture.primaryCardId,
+          database,
+          now
+        }),
+        getReviewPageData(
+          developmentFixture.mediaSlug,
+          {
+            card: developmentFixture.primaryCardId,
+            show: "answer"
+          },
+          database
+        )
+      ]);
+
+      expect(hydratedCard).not.toBeNull();
+      expect(reviewPage?.selectedCard).not.toBeNull();
+      expect(hydratedCard?.contexts).toHaveLength(1);
+      expect(hydratedCard?.contexts[0]).toMatchObject({
+        cardId: developmentFixture.primaryCardId
+      });
+      expect(hydratedCard).toMatchObject({
+        back: reviewPage?.selectedCard?.back,
+        bucket: reviewPage?.selectedCard?.bucket,
+        bucketDetail: reviewPage?.selectedCard?.bucketDetail,
+        bucketLabel: reviewPage?.selectedCard?.bucketLabel,
+        dueAt: reviewPage?.selectedCard?.dueAt,
+        dueLabel: reviewPage?.selectedCard?.dueLabel,
+        effectiveState: reviewPage?.selectedCard?.effectiveState,
+        effectiveStateLabel: reviewPage?.selectedCard?.effectiveStateLabel,
+        entries: reviewPage?.selectedCard?.entries,
+        front: reviewPage?.selectedCard?.front,
+        href: reviewPage?.selectedCard?.href,
+        id: reviewPage?.selectedCard?.id,
+        mediaSlug: reviewPage?.selectedCard?.mediaSlug,
+        mediaTitle: reviewPage?.selectedCard?.mediaTitle,
+        pronunciations: reviewPage?.selectedCard?.pronunciations,
+        rawReviewLabel: reviewPage?.selectedCard?.rawReviewLabel,
+        reading: reviewPage?.selectedCard?.reading,
+        reviewSeedState: reviewPage?.selectedCard?.reviewSeedState,
+        typeLabel: reviewPage?.selectedCard?.typeLabel
+      });
+      expect(hydratedCard?.gradePreviews).toEqual(
+        reviewPage?.selectedCardContext.gradePreviews
+      );
+      expect(hydratedCard?.gradePreviews).toHaveLength(4);
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("renders furigana markup in review card fronts instead of showing raw braces", async () => {

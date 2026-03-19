@@ -3,8 +3,10 @@ import { unstable_noStore as noStore } from "next/cache";
 import {
   countReviewSubjectsIntroducedOnDay,
   db,
+  getCardById,
   getGrammarEntriesByIds,
   getGrammarCrossMediaFamilyByEntryId,
+  getMediaById,
   listLessonLinkedReviewEntriesByMediaId,
   listLessonLinkedReviewEntriesByMediaIds,
   listGrammarEntryReviewSummaries,
@@ -22,6 +24,7 @@ import {
   listReviewCardsByMediaIds,
   listTermEntriesByMediaId,
   listTermEntryReviewSummaries,
+  getReviewSubjectStateByKey,
   listReviewSubjectStatesByKeys,
   type DatabaseClient,
   type CrossMediaGrammarSibling,
@@ -1312,6 +1315,78 @@ export async function getReviewQueueSnapshotForMedia(
     queueCount: snapshot.queueCount,
     suspendedCount: snapshot.suspendedCount,
     upcomingCount: snapshot.upcomingCount
+  };
+}
+
+export async function hydrateReviewCard(input: {
+  cardId: string;
+  database?: DatabaseClient;
+  now?: Date;
+}): Promise<ReviewQueueCard | null> {
+  markDataAsLive();
+
+  const database = input.database ?? db;
+  const now = input.now ?? new Date();
+  const nowIso = now.toISOString();
+  const card = await getCardById(database, input.cardId);
+
+  if (!card || card.status === "archived") {
+    return null;
+  }
+
+  const termIds = new Set<string>();
+  const grammarIds = new Set<string>();
+
+  for (const link of card.entryLinks) {
+    if (link.entryType === "term") {
+      termIds.add(link.entryId);
+      continue;
+    }
+
+    grammarIds.add(link.entryId);
+  }
+
+  const [terms, grammar] = await Promise.all([
+    getTermEntriesByIds(database, [...termIds]),
+    getGrammarEntriesByIds(database, [...grammarIds])
+  ]);
+  const entryLookup = buildEntryLookup(terms, grammar);
+  const subjectIdentity = deriveReviewSubjectIdentity({
+    cardId: card.id,
+    entryLinks: card.entryLinks,
+    entryLookup: buildReviewSubjectEntryLookup({
+      grammar,
+      terms
+    })
+  });
+  const subjectState = await getReviewSubjectStateByKey(
+    database,
+    subjectIdentity.subjectKey
+  );
+  const effectiveCard = applySubjectStateToReviewCard(card, subjectState);
+  const resolvedState = resolveReviewQueueState(effectiveCard, entryLookup, nowIso);
+  const mediaById = buildSingleMediaLookup({
+    id: card.mediaId,
+    ...(await resolveHydratedReviewCardMedia({
+      card,
+      database,
+      grammar,
+      terms
+    }))
+  });
+  const queueCard = mapQueueCard(
+    effectiveCard,
+    entryLookup,
+    [card],
+    mediaById,
+    nowIso,
+    resolvedState
+  );
+
+  return {
+    ...queueCard,
+    gradePreviews: buildReviewGradePreviews(resolvedState.reviewSeedState, now),
+    pronunciations: buildReviewCardPronunciations(card.entryLinks, entryLookup)
   };
 }
 
@@ -2636,6 +2711,45 @@ function resolveReviewCardMedia(
       title: "Media"
     }
   );
+}
+
+async function resolveHydratedReviewCardMedia(input: {
+  card: Pick<ReviewCardListItem, "mediaId">;
+  database: DatabaseClient;
+  grammar: GrammarGlossaryEntry[];
+  terms: TermGlossaryEntry[];
+}) {
+  for (const entry of input.terms) {
+    if (entry.mediaId === input.card.mediaId) {
+      return {
+        slug: entry.media.slug,
+        title: entry.media.title
+      };
+    }
+  }
+
+  for (const entry of input.grammar) {
+    if (entry.mediaId === input.card.mediaId) {
+      return {
+        slug: entry.media.slug,
+        title: entry.media.title
+      };
+    }
+  }
+
+  const media = await getMediaById(input.database, input.card.mediaId);
+
+  if (media) {
+    return {
+      slug: media.slug,
+      title: media.title
+    };
+  }
+
+  return {
+    slug: "unknown-media",
+    title: "Media"
+  };
 }
 
 function buildReviewCardContexts(
