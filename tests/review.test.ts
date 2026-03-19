@@ -136,14 +136,16 @@ async function loadReviewActionsForDatabase(database: DatabaseClient) {
   try {
     vi.resetModules();
     vi.doMock("@/lib/review", () => ({
-      getGlobalReviewPageData: vi.fn(async (searchParams: Record<string, string>) => {
-        reviewPageCalls.push({
-          scope: "global",
-          searchParams
-        });
+      getGlobalReviewPageData: vi.fn(
+        async (searchParams: Record<string, string>) => {
+          reviewPageCalls.push({
+            scope: "global",
+            searchParams
+          });
 
-        return {} as ReviewPageData;
-      }),
+          return {} as ReviewPageData;
+        }
+      ),
       getReviewPageData: vi.fn(
         async (mediaSlug: string, searchParams: Record<string, string>) => {
           reviewPageCalls.push({
@@ -449,7 +451,9 @@ describe("review system", () => {
     expect(singleMediaCount).toBe(1);
     expect(groupedCountsByMedia.get("media_timezone_fixture")).toBe(1);
     expect(groupedCountsByMedia.get("media_timezone_fixture_other")).toBe(1);
-    expect([...groupedCountsByMedia.values()].reduce((sum, count) => sum + count, 0)).toBe(2);
+    expect(
+      [...groupedCountsByMedia.values()].reduce((sum, count) => sum + count, 0)
+    ).toBe(2);
   });
 
   it("counts introduced subjects from legacy review logs without double-counting shared cross-media cards", async () => {
@@ -939,7 +943,12 @@ describe("review system", () => {
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewSubjectState.subjectKey, `entry:term:${developmentFixture.termDbId}`));
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
 
     await database.insert(card).values([
       {
@@ -1062,7 +1071,12 @@ describe("review system", () => {
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewSubjectState.subjectKey, `entry:term:${developmentFixture.termDbId}`));
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
 
     const completionPage = await getReviewPageData(
       developmentFixture.mediaSlug,
@@ -1090,7 +1104,9 @@ describe("review system", () => {
       developmentFixture.secondaryCardId
     );
     expect(explicitSelectionPage?.selectedCard?.gradePreviews).toEqual([]);
-    expect(explicitSelectionPage?.selectedCardContext.gradePreviews).toHaveLength(4);
+    expect(
+      explicitSelectionPage?.selectedCardContext.gradePreviews
+    ).toHaveLength(4);
   });
 
   it("builds canonical review session urls and tracks only cards remaining after the current one", async () => {
@@ -1170,7 +1186,9 @@ describe("review system", () => {
       database
     );
 
-    expect(frontQueuePage?.selectedCard?.id).toBe(developmentFixture.primaryCardId);
+    expect(frontQueuePage?.selectedCard?.id).toBe(
+      developmentFixture.primaryCardId
+    );
     expect(frontQueuePage?.selectedCardContext.position).toBe(1);
     expect(frontQueuePage?.selectedCardContext.remainingCount).toBe(1);
     expect(
@@ -1195,7 +1213,8 @@ describe("review system", () => {
         answeredCount: explicitQueuePage?.session.answeredCount,
         cardId: explicitQueuePage?.selectedCard?.id ?? null,
         extraNewCount: explicitQueuePage?.session.extraNewCount,
-        isQueueCard: explicitQueuePage?.selectedCardContext.isQueueCard ?? false,
+        isQueueCard:
+          explicitQueuePage?.selectedCardContext.isQueueCard ?? false,
         mediaSlug: developmentFixture.mediaSlug,
         position: explicitQueuePage?.selectedCardContext.position ?? null,
         showAnswer: explicitQueuePage?.selectedCardContext.showAnswer
@@ -1517,7 +1536,9 @@ describe("review system", () => {
         (link) => link.relationshipType === "primary"
       ) ?? [];
     const drivingLinks =
-      primaryLinks.length > 0 ? primaryLinks : (cardWithLinks?.entryLinks ?? []);
+      primaryLinks.length > 0
+        ? primaryLinks
+        : (cardWithLinks?.entryLinks ?? []);
     const drivingEntryKeys = new Set(
       drivingLinks.map((link) => `${link.entryType}:${link.entryId}`)
     );
@@ -1644,9 +1665,8 @@ describe("review system", () => {
   });
 
   it("advances to the next queue card after resetting a manual card when redirectMode advances queue", async () => {
-    const { targetCardId } = await prepareReviewSessionRedirectFixture(
-      database
-    );
+    const { targetCardId } =
+      await prepareReviewSessionRedirectFixture(database);
     const { resetReviewCardSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
 
@@ -1697,9 +1717,8 @@ describe("review system", () => {
   });
 
   it("advances to the next queue card after suspending a manual card when redirectMode advances queue", async () => {
-    const { targetCardId } = await prepareReviewSessionRedirectFixture(
-      database
-    );
+    const { targetCardId } =
+      await prepareReviewSessionRedirectFixture(database);
     const { setReviewCardSuspendedSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
 
@@ -1753,9 +1772,8 @@ describe("review system", () => {
   });
 
   it("advances to the next queue card after reopening a manual card when redirectMode advances queue", async () => {
-    const { targetCardId } = await prepareReviewSessionRedirectFixture(
-      database
-    );
+    const { targetCardId } =
+      await prepareReviewSessionRedirectFixture(database);
     const { setLinkedEntryLearningSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
 
@@ -1826,19 +1844,14 @@ describe("review system", () => {
       loadGlobalReviewOverviewSnapshot(database),
       getReviewPageData(crossMediaFixture.beta.mediaSlug, {}, database)
     ]);
-    const sharedGlobalCard = globalPage.queue.cards.find((reviewCard) =>
-      reviewCard.contexts.some(
-        (context) =>
-          context.cardId === crossMediaFixture.alpha.termCardId ||
-          context.cardId === crossMediaFixture.beta.termCardId
-      )
-    );
-
     expect(globalPage.queue.dueCount).toBe(1);
-    expect(globalPage.selectedCard?.id).toBe(crossMediaFixture.alpha.termCardId);
+    expect(globalPage.queue.cards).toEqual([]);
+    expect(globalPage.queue.queueCount).toBeGreaterThan(0);
+    expect(globalPage.selectedCard?.id).toBe(
+      crossMediaFixture.alpha.termCardId
+    );
+    expect(globalPage.selectedCard?.bucket).toBe("due");
     expect(globalPage.selectedCard?.contexts).toHaveLength(2);
-    expect(sharedGlobalCard?.bucket).toBe("due");
-    expect(sharedGlobalCard?.contexts).toHaveLength(2);
 
     expect(globalOverview.dueCount).toBe(1);
 
@@ -1954,7 +1967,8 @@ describe("review system", () => {
     const globalPage = await getGlobalReviewPageData({}, database);
 
     expect(globalPage.queue.dueCount).toBe(1);
-    expect(globalPage.queue.cards[0]?.id).toBe(crossMediaFixture.beta.termCardId);
+    expect(globalPage.queue.cards).toEqual([]);
+    expect(globalPage.queue.queueCount).toBeGreaterThan(0);
     expect(globalPage.selectedCard?.id).toBe(crossMediaFixture.beta.termCardId);
     expect(globalPage.selectedCard?.contexts).toHaveLength(2);
   });
@@ -2072,7 +2086,8 @@ describe("review system", () => {
       suspended: true
     });
 
-    const persistedSubjectStates = await database.query.reviewSubjectState.findMany();
+    const persistedSubjectStates =
+      await database.query.reviewSubjectState.findMany();
 
     expect(persistedSubjectStates).toHaveLength(1);
 

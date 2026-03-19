@@ -126,19 +126,16 @@ describe("global review queue filtering", () => {
       ])
     ]);
 
-    expect(globalPage.queue.cards.map((reviewCard) => reviewCard.id)).toEqual([
-      "card_a"
-    ]);
+    expect(globalPage.queue.cards).toEqual([]);
+    expect(globalPage.queue.queueCount).toBe(1);
+    expect(globalPage.selectedCard?.id).toBe("card_a");
 
-    expect(mediaAPage?.queue.cards.map((reviewCard) => reviewCard.id)).toEqual([
-      "card_a"
-    ]);
+    expect(mediaAPage?.queue.cards).toEqual([]);
     expect(mediaAPage?.queue.newQueuedCount).toBe(1);
     expect(mediaAPage?.queue.queueCount).toBe(1);
+    expect(mediaAPage?.selectedCard?.id).toBe("card_a");
 
-    expect(mediaBPage?.queue.cards.map((reviewCard) => reviewCard.id)).toEqual([
-      "card_b"
-    ]);
+    expect(mediaBPage?.queue.cards).toEqual([]);
     expect(mediaBPage?.queue.newAvailableCount).toBe(1);
     expect(mediaBPage?.queue.newQueuedCount).toBe(1);
     expect(mediaBPage?.queue.queueCount).toBe(1);

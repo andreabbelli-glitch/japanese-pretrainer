@@ -85,9 +85,7 @@ import {
   type ReviewGradePreview,
   type ReviewSeedState
 } from "./review-grade-previews";
-import {
-  type ReviewState
-} from "./review-scheduler";
+import { type ReviewState } from "./review-scheduler";
 
 type ReviewCardEntryKind = "term" | "grammar";
 
@@ -156,12 +154,13 @@ async function loadReviewSubjectStateLookup(input: {
   });
   const subjectKeys = [
     ...new Set(
-      input.cards.map((card) =>
-        deriveReviewSubjectIdentity({
-          cardId: card.id,
-          entryLinks: card.entryLinks,
-          entryLookup
-        }).subjectKey
+      input.cards.map(
+        (card) =>
+          deriveReviewSubjectIdentity({
+            cardId: card.id,
+            entryLinks: card.entryLinks,
+            entryLookup
+          }).subjectKey
       )
     )
   ];
@@ -285,11 +284,13 @@ async function buildComplexLegacySubjectFallbackStates(input: {
     allEntryRefs
   );
   const memberCards = await listReviewCardsByIds(input.database, memberCardIds);
-  const loadedMemberCardsBySubjectKey = partitionLegacyReviewSubjectMemberCards({
-    cards: memberCards,
-    entryRefsBySubjectKey,
-    groups: input.groups
-  });
+  const loadedMemberCardsBySubjectKey = partitionLegacyReviewSubjectMemberCards(
+    {
+      cards: memberCards,
+      entryRefsBySubjectKey,
+      groups: input.groups
+    }
+  );
   const finalCardsBySubjectKey = new Map<string, ReviewCardListItem[]>();
   const allFinalCards = new Map<string, ReviewCardListItem>();
 
@@ -315,7 +316,8 @@ async function buildComplexLegacySubjectFallbackStates(input: {
 
   return input.groups.map((group) =>
     buildLegacyReviewSubjectState({
-      cards: finalCardsBySubjectKey.get(group.identity.subjectKey) ?? group.cards,
+      cards:
+        finalCardsBySubjectKey.get(group.identity.subjectKey) ?? group.cards,
       drivingEntryStatusesByCardId,
       identity: group.identity,
       nowIso: input.nowIso
@@ -393,7 +395,10 @@ function partitionLegacyReviewSubjectMemberCards(input: {
 
     const drivingLink = drivingLinks[0]!;
 
-    if (drivingLink.entryType !== "term" && drivingLink.entryType !== "grammar") {
+    if (
+      drivingLink.entryType !== "term" &&
+      drivingLink.entryType !== "grammar"
+    ) {
       continue;
     }
 
@@ -641,8 +646,7 @@ function applySubjectStateToReviewCard(
 
   return {
     ...card,
-    status:
-      subjectState.state === "suspended" ? "suspended" : card.status,
+    status: subjectState.state === "suspended" ? "suspended" : card.status,
     reviewState: {
       cardId: card.id,
       createdAt: card.reviewState?.createdAt ?? subjectState.createdAt,
@@ -752,7 +756,9 @@ export type ReviewPageData = {
   media: {
     glossaryHref: ReturnType<typeof mediaGlossaryHref>;
     href: ReturnType<typeof mediaHref> | "/";
-    reviewHref: ReturnType<typeof mediaStudyHref> | ReturnType<typeof reviewHref>;
+    reviewHref:
+      | ReturnType<typeof mediaStudyHref>
+      | ReturnType<typeof reviewHref>;
     slug: string;
     title: string;
   };
@@ -785,7 +791,10 @@ export type GlobalReviewPageLoadResult =
   | { kind: "empty-media" }
   | { kind: "empty-cards" }
   | { kind: "ready"; data: ReviewPageData };
-export type { ReviewGradePreview, ReviewSeedState } from "./review-grade-previews";
+export type {
+  ReviewGradePreview,
+  ReviewSeedState
+} from "./review-grade-previews";
 
 export type ReviewCardDetailData = {
   card: {
@@ -845,6 +854,32 @@ type ReviewQueueSubjectModel = {
   resolvedState: ResolvedReviewQueueState;
 };
 
+type ReviewQueueSubjectSnapshot = {
+  dailyLimit: number;
+  dueCount: number;
+  effectiveDailyLimit: number;
+  introLabel: string;
+  manualCount: number;
+  manualModels: ReviewQueueSubjectModel[];
+  newAvailableCount: number;
+  newQueuedCount: number;
+  queueCount: number;
+  queueModels: ReviewQueueSubjectModel[];
+  suspendedCount: number;
+  suspendedModels: ReviewQueueSubjectModel[];
+  upcomingCount: number;
+  upcomingModels: ReviewQueueSubjectModel[];
+};
+
+type ReviewQueueCardMapInput = {
+  contextCache?: Map<string, ReviewQueueCard["contexts"]>;
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+  mediaById: ReviewMediaLookup;
+  nowIso: string;
+  selectedCardId?: string | null;
+  visibleMediaId?: string;
+};
+
 type ReviewOverviewSubjectModel = {
   card: ReviewCardListItem;
   group: ReviewSubjectGroup;
@@ -900,50 +935,77 @@ async function buildReviewPageDataFromWorkspace(input: {
     nowIso,
     subjectStates
   });
-  const queue = buildReviewQueueSnapshot({
+  const queueSnapshot = buildReviewQueueSubjectSnapshot({
     cards: input.cards,
     dailyLimit: input.dailyLimit,
     entryLookup,
     extraNewCount: input.searchState.extraNewCount,
-    mediaById,
     newIntroducedTodayCount: input.newIntroducedTodayCount,
-    now: input.now,
     nowIso,
     subjectGroups,
     visibleMediaId: input.visibleMediaId
   });
-  const queueCards = [
-    ...queue.cards,
-    ...queue.manualCards,
-    ...queue.suspendedCards,
-    ...queue.upcomingCards
+  const queueCardMapInput: ReviewQueueCardMapInput = {
+    contextCache: new Map(),
+    entryLookup,
+    mediaById,
+    nowIso,
+    visibleMediaId: input.visibleMediaId
+  };
+  const allQueueModels = [
+    ...queueSnapshot.queueModels,
+    ...queueSnapshot.manualModels,
+    ...queueSnapshot.suspendedModels,
+    ...queueSnapshot.upcomingModels
   ];
-  const selectedCard =
-    (input.searchState.selectedCardId
-      ? queueCards.find((card) => card.id === input.searchState.selectedCardId)
-      : null) ??
-    (input.searchState.selectedCardId
+  const explicitSelection = input.searchState.selectedCardId
+    ? (() => {
+        const selectedModel = findReviewQueueSubjectModelByCardId(
+          allQueueModels,
+          input.searchState.selectedCardId
+        );
+
+        return selectedModel
+          ? mapReviewQueueSubjectModel(selectedModel, {
+              ...queueCardMapInput,
+              selectedCardId: input.searchState.selectedCardId
+            })
+          : null;
+      })()
+    : null;
+  const fallbackSelection =
+    input.searchState.selectedCardId && explicitSelection === null
       ? buildExplicitReviewSelection({
-        cardId: input.searchState.selectedCardId,
-        entryLookup,
-        mediaById,
-        nowIso,
-        subjectModels: buildReviewQueueSubjectModels({
-          cards: input.cards,
+          cardId: input.searchState.selectedCardId,
+          contextCache: queueCardMapInput.contextCache,
           entryLookup,
+          mediaById,
           nowIso,
-          subjectGroups
+          subjectModels: buildReviewQueueSubjectModels({
+            cards: input.cards,
+            entryLookup,
+            nowIso,
+            subjectGroups
+          })
         })
-      })
-      : null) ??
-    queue.cards[0] ??
-    null;
-  const queueIndex = selectedCard
-    ? queue.cards.findIndex(
-        (card) =>
-          card.id === selectedCard.id ||
-          card.contexts.some((context) => context.cardId === selectedCard.id)
+      : null;
+  const selectedCard =
+    explicitSelection ??
+    fallbackSelection ??
+    (queueSnapshot.queueModels[0]
+      ? mapReviewQueueSubjectModel(
+          queueSnapshot.queueModels[0],
+          queueCardMapInput
+        )
+      : null);
+  const selectedQueueModel = selectedCard
+    ? findReviewQueueSubjectModelByCardId(
+        queueSnapshot.queueModels,
+        selectedCard.id
       )
+    : null;
+  const queueIndex = selectedQueueModel
+    ? queueSnapshot.queueModels.indexOf(selectedQueueModel)
     : -1;
   const selectedGradePreviews = selectedCard
     ? buildReviewGradePreviews(selectedCard.reviewSeedState, input.now)
@@ -955,14 +1017,31 @@ async function buildReviewPageDataFromWorkspace(input: {
     settings: {
       reviewFrontFurigana: input.reviewFrontFurigana
     },
-    queue,
+    queue: {
+      cards: [],
+      dailyLimit: queueSnapshot.dailyLimit,
+      dueCount: queueSnapshot.dueCount,
+      effectiveDailyLimit: queueSnapshot.effectiveDailyLimit,
+      introLabel: queueSnapshot.introLabel,
+      manualCards: [],
+      manualCount: queueSnapshot.manualCount,
+      newAvailableCount: queueSnapshot.newAvailableCount,
+      newQueuedCount: queueSnapshot.newQueuedCount,
+      queueCount: queueSnapshot.queueCount,
+      queueLabel: queueSnapshot.introLabel,
+      suspendedCards: [],
+      suspendedCount: queueSnapshot.suspendedCount,
+      upcomingCards: [],
+      upcomingCount: queueSnapshot.upcomingCount
+    },
     selectedCard,
     selectedCardContext: {
       bucket: selectedCard?.bucket ?? null,
       gradePreviews: selectedGradePreviews,
       isQueueCard: queueIndex >= 0,
       position: queueIndex >= 0 ? queueIndex + 1 : null,
-      remainingCount: queueIndex >= 0 ? queue.cards.length - queueIndex - 1 : 0,
+      remainingCount:
+        queueIndex >= 0 ? queueSnapshot.queueCount - queueIndex - 1 : 0,
       showAnswer: input.searchState.showAnswer || queueIndex < 0
     },
     session: {
@@ -1040,13 +1119,17 @@ async function loadGlobalReviewPageWorkspace(
   const mediaRows = await listMedia(database);
   const mediaIds = mediaRows.map((item) => item.id);
   const searchState = normalizeReviewSearchState(searchParams);
-  const [reviewCards, dailyLimit, newIntroducedTodayCount, reviewFrontFurigana] =
-    await Promise.all([
-      listReviewCardsByMediaIds(database, mediaIds),
-      getReviewDailyLimit(database),
-      countReviewSubjectsIntroducedOnDay(database, now),
-      getReviewFrontFuriganaSetting(database)
-    ]);
+  const [
+    reviewCards,
+    dailyLimit,
+    newIntroducedTodayCount,
+    reviewFrontFurigana
+  ] = await Promise.all([
+    listReviewCardsByMediaIds(database, mediaIds),
+    getReviewDailyLimit(database),
+    countReviewSubjectsIntroducedOnDay(database, now),
+    getReviewFrontFuriganaSetting(database)
+  ]);
 
   if (mediaIds.length === 0 || reviewCards.length === 0) {
     return {
@@ -1196,7 +1279,6 @@ export async function getReviewQueueSnapshotForMedia(
     extraNewCount: 0,
     mediaById: buildSingleMediaLookup(media),
     newIntroducedTodayCount,
-    now,
     nowIso,
     subjectGroups,
     visibleMediaId: media.id
@@ -1557,10 +1639,9 @@ function isReviewSubjectVisibleInMedia(
   );
 }
 
-function filterReviewSubjectModelsByMedia<T extends { group: ReviewSubjectGroup }>(
-  models: T[],
-  visibleMediaId?: string
-) {
+function filterReviewSubjectModelsByMedia<
+  T extends { group: ReviewSubjectGroup }
+>(models: T[], visibleMediaId?: string) {
   return models.filter((model) =>
     isReviewSubjectVisibleInMedia(model.group, visibleMediaId)
   );
@@ -1694,31 +1775,45 @@ function buildReviewQueueSubjectModels(input: {
   });
 }
 
+function findReviewQueueSubjectModelByCardId(
+  models: ReviewQueueSubjectModel[],
+  cardId: string
+) {
+  return (
+    models.find((model) =>
+      model.group.cards.some((card) => card.id === cardId)
+    ) ?? null
+  );
+}
+
 function mapReviewQueueSubjectModel(
   model: ReviewQueueSubjectModel,
-  input: {
-    entryLookup: Map<string, ReviewEntryLookupItem>;
-    mediaById: ReviewMediaLookup;
-    now?: Date;
-    nowIso: string;
-    visibleMediaId?: string;
-  }
+  input: ReviewQueueCardMapInput
 ) {
-  const scopedCard = selectReviewQueueSubjectCard({
-    cards: model.group.cards,
-    entryLookup: input.entryLookup,
-    nowIso: input.nowIso,
-    preferredMediaId: input.visibleMediaId,
-    subjectState: model.group.subjectState
-  });
+  const selectedCard =
+    (input.selectedCardId
+      ? model.group.cards.find((card) => card.id === input.selectedCardId)
+      : null) ??
+    selectReviewQueueSubjectCard({
+      cards: model.group.cards,
+      entryLookup: input.entryLookup,
+      nowIso: input.nowIso,
+      preferredMediaId: input.visibleMediaId,
+      subjectState: model.group.subjectState
+    });
 
   return mapQueueCard(
-    applySubjectStateToReviewCard(scopedCard, model.group.subjectState),
+    applySubjectStateToReviewCard(selectedCard, model.group.subjectState),
     input.entryLookup,
     model.group.cards,
     input.mediaById,
     input.nowIso,
-    model.resolvedState
+    model.resolvedState,
+    resolveReviewQueueSubjectContexts(
+      model.group,
+      input.mediaById,
+      input.contextCache
+    )
   );
 }
 
@@ -1893,7 +1988,9 @@ export function buildReviewOverviewSnapshot(input: {
     .filter((model) => model.overviewCard.bucket === "new")
     .sort(compareReviewOverviewSubjectModelsByOrder);
   const newCards = globalNewCards
-    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId))
+    .filter((model) =>
+      isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
+    )
     .map((model) => model.overviewCard);
   const manualCards = relevantModels
     .filter((model) => model.overviewCard.bucket === "manual")
@@ -1914,7 +2011,9 @@ export function buildReviewOverviewSnapshot(input: {
   );
   const queuedNewCards = globalNewCards
     .slice(0, newSlots)
-    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId))
+    .filter((model) =>
+      isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
+    )
     .map((model) => model.overviewCard);
   const queueCards = [...dueCards, ...queuedNewCards];
   const queueLabel = buildQueueIntroLabel({
@@ -2070,8 +2169,9 @@ function buildEligibleReviewCardsByMedia(input: {
   mediaIds: string[];
 }) {
   const cardsByMedia = groupCardsByMedia(input.cards);
-  const lessonLinkedEntriesByMedia =
-    groupLessonLinkedReviewEntriesByMedia(input.lessonLinkedEntries);
+  const lessonLinkedEntriesByMedia = groupLessonLinkedReviewEntriesByMedia(
+    input.lessonLinkedEntries
+  );
   const eligibleCards = new Map<string, ReviewCardListItem[]>();
 
   for (const mediaId of input.mediaIds) {
@@ -2195,18 +2295,16 @@ function buildReviewCardPronunciations(
     });
 }
 
-function buildReviewQueueSnapshot(input: {
+function buildReviewQueueSubjectSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
   entryLookup: Map<string, ReviewEntryLookupItem>;
   extraNewCount: number;
-  mediaById: ReviewMediaLookup;
   newIntroducedTodayCount: number;
-  now?: Date;
   nowIso: string;
   subjectGroups: ReviewSubjectGroup[];
   visibleMediaId?: string;
-}) {
+}): ReviewQueueSubjectSnapshot {
   const subjectModels = buildReviewQueueSubjectModels({
     cards: input.cards,
     entryLookup: input.entryLookup,
@@ -2242,26 +2340,10 @@ function buildReviewQueueSnapshot(input: {
   );
   const queuedNewCards = globalNewCards
     .slice(0, newSlots)
-    .filter((model) => isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId));
-  const mapInput = {
-    entryLookup: input.entryLookup,
-    mediaById: input.mediaById,
-    now: input.now,
-    nowIso: input.nowIso,
-    visibleMediaId: input.visibleMediaId
-  };
-  const queueCards = [...dueCards, ...queuedNewCards].map((model) =>
-    mapReviewQueueSubjectModel(model, mapInput)
-  );
-  const manualQueueCards = manualCards.map((model) =>
-    mapReviewQueueSubjectModel(model, mapInput)
-  );
-  const suspendedQueueCards = suspendedCards.map((model) =>
-    mapReviewQueueSubjectModel(model, mapInput)
-  );
-  const upcomingQueueCards = upcomingCards.map((model) =>
-    mapReviewQueueSubjectModel(model, mapInput)
-  );
+    .filter((model) =>
+      isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
+    );
+  const queueModels = [...dueCards, ...queuedNewCards];
   const introLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
     dueCount: dueCards.length,
@@ -2271,21 +2353,76 @@ function buildReviewQueueSnapshot(input: {
   });
 
   return {
-    cards: queueCards,
     dailyLimit: input.dailyLimit,
     dueCount: dueCards.length,
     effectiveDailyLimit,
     introLabel,
-    manualCards: manualQueueCards,
     manualCount: manualCards.length,
+    manualModels: manualCards,
     newAvailableCount: newCards.length,
     newQueuedCount: queuedNewCards.length,
-    queueLabel: introLabel,
-    queueCount: queueCards.length,
-    suspendedCards: suspendedQueueCards,
+    queueCount: queueModels.length,
+    queueModels,
     suspendedCount: suspendedCards.length,
-    upcomingCards: upcomingQueueCards,
-    upcomingCount: upcomingCards.length
+    suspendedModels: suspendedCards,
+    upcomingCount: upcomingCards.length,
+    upcomingModels: upcomingCards
+  };
+}
+
+function buildReviewQueueSnapshot(input: {
+  cards: ReviewCardListItem[];
+  dailyLimit: number;
+  entryLookup: Map<string, ReviewEntryLookupItem>;
+  extraNewCount: number;
+  mediaById: ReviewMediaLookup;
+  newIntroducedTodayCount: number;
+  nowIso: string;
+  subjectGroups: ReviewSubjectGroup[];
+  visibleMediaId?: string;
+}) {
+  const snapshot = buildReviewQueueSubjectSnapshot({
+    cards: input.cards,
+    dailyLimit: input.dailyLimit,
+    entryLookup: input.entryLookup,
+    extraNewCount: input.extraNewCount,
+    newIntroducedTodayCount: input.newIntroducedTodayCount,
+    nowIso: input.nowIso,
+    subjectGroups: input.subjectGroups,
+    visibleMediaId: input.visibleMediaId
+  });
+  const mapInput: ReviewQueueCardMapInput = {
+    contextCache: new Map(),
+    entryLookup: input.entryLookup,
+    mediaById: input.mediaById,
+    nowIso: input.nowIso,
+    visibleMediaId: input.visibleMediaId
+  };
+
+  return {
+    cards: snapshot.queueModels.map((model) =>
+      mapReviewQueueSubjectModel(model, mapInput)
+    ),
+    dailyLimit: snapshot.dailyLimit,
+    dueCount: snapshot.dueCount,
+    effectiveDailyLimit: snapshot.effectiveDailyLimit,
+    introLabel: snapshot.introLabel,
+    manualCards: snapshot.manualModels.map((model) =>
+      mapReviewQueueSubjectModel(model, mapInput)
+    ),
+    manualCount: snapshot.manualCount,
+    newAvailableCount: snapshot.newAvailableCount,
+    newQueuedCount: snapshot.newQueuedCount,
+    queueLabel: snapshot.introLabel,
+    queueCount: snapshot.queueCount,
+    suspendedCards: snapshot.suspendedModels.map((model) =>
+      mapReviewQueueSubjectModel(model, mapInput)
+    ),
+    suspendedCount: snapshot.suspendedCount,
+    upcomingCards: snapshot.upcomingModels.map((model) =>
+      mapReviewQueueSubjectModel(model, mapInput)
+    ),
+    upcomingCount: snapshot.upcomingCount
   };
 }
 
@@ -2340,9 +2477,7 @@ function buildEntryLookup(
 }
 
 function getEntryMediaSlug(
-  entry:
-    | ReviewTermLookupEntry
-    | ReviewGrammarLookupEntry
+  entry: ReviewTermLookupEntry | ReviewGrammarLookupEntry
 ) {
   if ("mediaSlug" in entry) {
     return entry.mediaSlug;
@@ -2385,15 +2520,37 @@ function buildReviewCardContexts(
       }
 
       if ((left.segmentTitle ?? "") !== (right.segmentTitle ?? "")) {
-        return (left.segmentTitle ?? "").localeCompare(right.segmentTitle ?? "", "it");
+        return (left.segmentTitle ?? "").localeCompare(
+          right.segmentTitle ?? "",
+          "it"
+        );
       }
 
       return left.front.localeCompare(right.front, "it");
     });
 }
 
+function resolveReviewQueueSubjectContexts(
+  group: ReviewSubjectGroup,
+  mediaById: ReviewMediaLookup,
+  contextCache?: Map<string, ReviewQueueCard["contexts"]>
+) {
+  const cached = contextCache?.get(group.identity.subjectKey);
+
+  if (cached) {
+    return cached;
+  }
+
+  const contexts = buildReviewCardContexts(group.cards, mediaById);
+
+  contextCache?.set(group.identity.subjectKey, contexts);
+
+  return contexts;
+}
+
 function buildExplicitReviewSelection(input: {
   cardId: string;
+  contextCache?: Map<string, ReviewQueueCard["contexts"]>;
   entryLookup: Map<string, ReviewEntryLookupItem>;
   mediaById: ReviewMediaLookup;
   nowIso: string;
@@ -2412,12 +2569,20 @@ function buildExplicitReviewSelection(input: {
     matchingModel.globalCard;
 
   return mapQueueCard(
-    applySubjectStateToReviewCard(selectedMember, matchingModel.group.subjectState),
+    applySubjectStateToReviewCard(
+      selectedMember,
+      matchingModel.group.subjectState
+    ),
     input.entryLookup,
     matchingModel.group.cards,
     input.mediaById,
     input.nowIso,
-    matchingModel.resolvedState
+    matchingModel.resolvedState,
+    resolveReviewQueueSubjectContexts(
+      matchingModel.group,
+      input.mediaById,
+      input.contextCache
+    )
   );
 }
 
@@ -2448,7 +2613,8 @@ function mapQueueCard(
   subjectCards: ReviewCardListItem[],
   mediaById: ReviewMediaLookup,
   nowIso: string,
-  resolvedState?: ResolvedReviewQueueState
+  resolvedState?: ResolvedReviewQueueState,
+  contexts?: ReviewQueueCard["contexts"]
 ): ReviewQueueCard {
   const cardMedia = resolveReviewCardMedia(card, mediaById);
   const entries = card.entryLinks
@@ -2492,7 +2658,7 @@ function mapQueueCard(
     bucket: resolved.bucket,
     bucketDetail: buildBucketDetail(resolved.bucket, resolved.dueAt),
     bucketLabel: formatBucketLabel(resolved.bucket, resolved.effectiveState),
-    contexts: buildReviewCardContexts(subjectCards, mediaById),
+    contexts: contexts ?? buildReviewCardContexts(subjectCards, mediaById),
     createdAt: card.createdAt,
     dueAt: resolved.dueAt,
     dueLabel: resolved.dueAt

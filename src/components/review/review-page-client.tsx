@@ -73,7 +73,7 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
   const selectedCard = viewData.selectedCard;
   const showCompactPronunciation =
     (selectedCard?.pronunciations.length ?? 0) <= 1;
-  const hasQueue = viewData.queue.cards.length > 0;
+  const hasQueue = viewData.queue.queueCount > 0;
   const hasSupportCards =
     viewData.queue.manualCount +
       viewData.queue.suspendedCount +
@@ -112,7 +112,11 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
 
     return query.length > 0 ? `${pathname}?${query}` : pathname;
   })();
-  const reviewSummary = buildReviewSummary(viewData, isGlobalReview, hasAnyReviewCards);
+  const reviewSummary = buildReviewSummary(
+    viewData,
+    isGlobalReview,
+    hasAnyReviewCards
+  );
 
   useEffect(() => {
     if (currentHref !== sessionHref) {
@@ -251,7 +255,9 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
     <div className="review-page">
       <StickyPageHeader
         backHref={viewData.media.href}
-        backLabel={isGlobalReview ? "Torna alla Home" : `Torna a ${viewData.media.title}`}
+        backLabel={
+          isGlobalReview ? "Torna alla Home" : `Torna a ${viewData.media.title}`
+        }
         eyebrow="Review"
         summary={reviewSummary}
         title={viewData.media.title}
@@ -378,7 +384,10 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                       <div className="stack-list stack-list--tight">
                         <p className="eyebrow">Compare anche in</p>
                         {selectedCard.contexts.slice(0, 4).map((context) => (
-                          <p key={context.cardId} className="review-stage__meta">
+                          <p
+                            key={context.cardId}
+                            className="review-stage__meta"
+                          >
                             <strong>{context.mediaTitle}</strong>
                             {context.segmentTitle
                               ? ` · ${context.segmentTitle}`
@@ -521,8 +530,8 @@ export function ReviewPageClient({ data }: { data: ReviewPageData }) {
                       })}
                     >
                       {formatTopUpLabel(additionalNewCount)}
-                      </Link>
-                    ) : null}
+                    </Link>
+                  ) : null}
                   <Link
                     className="button button--ghost"
                     href={contextualGlossaryHref}
