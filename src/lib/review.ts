@@ -7,9 +7,11 @@ import {
   listLessonLinkedReviewEntriesByMediaId,
   listLessonLinkedReviewEntriesByMediaIds,
   listMedia,
+  listGrammarCrossMediaFamiliesByEntryIds,
   listReviewLaunchCandidates,
   getMediaBySlug,
   getTermCrossMediaFamilyByEntryId,
+  listTermCrossMediaFamiliesByEntryIds,
   listGrammarEntriesByMediaId,
   listGrammarEntrySummaries,
   listReviewCardIdsByEntryRefs,
@@ -22,11 +24,14 @@ import {
   type DatabaseClient,
   type CrossMediaGrammarSibling,
   type CrossMediaTermSibling,
+  type GrammarCrossMediaFamily,
   type GrammarGlossaryEntry,
   type GrammarGlossaryEntrySummary,
   type LessonLinkedReviewEntry,
   type MediaListItem,
   type ReviewCardListItem,
+  type ReviewSubjectEntryRef,
+  type TermCrossMediaFamily,
   type TermGlossaryEntry,
   type TermGlossaryEntrySummary
 } from "@/db";
@@ -121,6 +126,11 @@ type SubjectReviewCard = ReviewCardListItem & {
   reviewState: NonNullable<ReviewCardListItem["reviewState"]> | null;
 };
 
+type LegacyReviewSubjectFamilyLookup = {
+  grammarFamilies: Map<string, GrammarCrossMediaFamily>;
+  termFamilies: Map<string, TermCrossMediaFamily>;
+};
+
 async function loadReviewSubjectStateLookup(input: {
   cards: ReviewCardListItem[];
   database: DatabaseClient;
@@ -183,22 +193,11 @@ async function loadReviewSubjectStateLookup(input: {
 
   const fallbackStates = [
     ...simpleFallbacks,
-    ...(await Promise.all(
-      complexMissing.map(async (group) => {
-        const memberCards = await loadLegacyReviewSubjectMemberCards({
-          database: input.database,
-          fallbackCards: group.cards,
-          identity: group.identity
-        });
-
-        return buildLegacyReviewSubjectState({
-          database: input.database,
-          cards: memberCards,
-          identity: group.identity,
-          nowIso: input.nowIso
-        });
-      })
-    ))
+    ...(await buildComplexLegacySubjectFallbackStates({
+      database: input.database,
+      groups: complexMissing,
+      nowIso: input.nowIso
+    }))
   ];
 
   for (const fallbackState of fallbackStates) {
@@ -249,103 +248,220 @@ function buildInlineLegacySubjectState(
   };
 }
 
-async function loadLegacyReviewSubjectMemberCards(input: {
+async function buildComplexLegacySubjectFallbackStates(input: {
   database: DatabaseClient;
-  fallbackCards: ReviewCardListItem[];
-  identity: ReviewSubjectIdentity;
+  groups: ReviewSubjectGroup[];
+  nowIso?: string;
 }) {
-  if (input.identity.subjectKind === "card") {
-    return input.fallbackCards;
-  }
-
-  const entryRefs =
-    input.identity.subjectKind === "entry"
-      ? [
-          {
-            entryId: input.identity.entryId!,
-            entryType: input.identity.entryType!
-          }
-        ]
-      : await resolveLegacyReviewSubjectEntryRefs(
-          input.database,
-          input.identity
-        );
-  const memberCardIds = await listReviewCardIdsByEntryRefs(input.database, entryRefs);
-
-  if (memberCardIds.length === 0) {
-    return input.fallbackCards;
-  }
-
-  const memberCards = await listReviewCardsByIds(input.database, memberCardIds);
-
-  return memberCards.length > 0 ? memberCards : input.fallbackCards;
-}
-
-async function resolveLegacyReviewSubjectEntryRefs(
-  database: DatabaseClient,
-  identity: ReviewSubjectIdentity
-) {
-  if (!identity.entryId || !identity.entryType) {
+  if (input.groups.length === 0) {
     return [];
   }
 
-  if (identity.subjectKind !== "group") {
+  const familyLookup = await preloadLegacyReviewSubjectFamilies(
+    input.database,
+    input.groups.map((group) => group.identity)
+  );
+  const entryRefsBySubjectKey = new Map<string, ReviewSubjectEntryRef[]>();
+  const allEntryRefs: ReviewSubjectEntryRef[] = [];
+
+  for (const group of input.groups) {
+    const entryRefs = resolveLegacyReviewSubjectEntryRefs({
+      familyLookup,
+      identity: group.identity
+    });
+
+    entryRefsBySubjectKey.set(group.identity.subjectKey, entryRefs);
+    allEntryRefs.push(...entryRefs);
+  }
+
+  const memberCardIds = await listReviewCardIdsByEntryRefs(
+    input.database,
+    allEntryRefs
+  );
+  const memberCards = await listReviewCardsByIds(input.database, memberCardIds);
+  const loadedMemberCardsBySubjectKey = partitionLegacyReviewSubjectMemberCards({
+    cards: memberCards,
+    entryRefsBySubjectKey,
+    groups: input.groups
+  });
+  const finalCardsBySubjectKey = new Map<string, ReviewCardListItem[]>();
+  const allFinalCards = new Map<string, ReviewCardListItem>();
+
+  for (const group of input.groups) {
+    const resolvedCards =
+      loadedMemberCardsBySubjectKey.get(group.identity.subjectKey) ?? [];
+    const finalCards = resolvedCards.length > 0 ? resolvedCards : group.cards;
+
+    finalCardsBySubjectKey.set(group.identity.subjectKey, finalCards);
+
+    for (const card of finalCards) {
+      allFinalCards.set(card.id, card);
+    }
+  }
+
+  const drivingEntryStatusesByCardId =
+    allFinalCards.size > 0
+      ? await loadLegacyReviewSubjectDrivingEntryStatuses({
+          cards: [...allFinalCards.values()],
+          database: input.database
+        })
+      : new Map<string, ReviewEntryStatusValue[]>();
+
+  return input.groups.map((group) =>
+    buildLegacyReviewSubjectState({
+      cards: finalCardsBySubjectKey.get(group.identity.subjectKey) ?? group.cards,
+      drivingEntryStatusesByCardId,
+      identity: group.identity,
+      nowIso: input.nowIso
+    })
+  );
+}
+
+async function preloadLegacyReviewSubjectFamilies(
+  database: DatabaseClient,
+  identities: ReviewSubjectIdentity[]
+): Promise<LegacyReviewSubjectFamilyLookup> {
+  const termEntryIds = new Set<string>();
+  const grammarEntryIds = new Set<string>();
+
+  for (const identity of identities) {
+    if (
+      identity.subjectKind !== "group" ||
+      !identity.entryId ||
+      !identity.entryType
+    ) {
+      continue;
+    }
+
+    if (identity.entryType === "term") {
+      termEntryIds.add(identity.entryId);
+      continue;
+    }
+
+    grammarEntryIds.add(identity.entryId);
+  }
+
+  const [termFamilies, grammarFamilies] = await Promise.all([
+    listTermCrossMediaFamiliesByEntryIds(database, [...termEntryIds]),
+    listGrammarCrossMediaFamiliesByEntryIds(database, [...grammarEntryIds])
+  ]);
+
+  return {
+    grammarFamilies,
+    termFamilies
+  };
+}
+
+function partitionLegacyReviewSubjectMemberCards(input: {
+  cards: ReviewCardListItem[];
+  entryRefsBySubjectKey: Map<string, ReviewSubjectEntryRef[]>;
+  groups: ReviewSubjectGroup[];
+}) {
+  const subjectKeysByEntryRef = new Map<string, string[]>();
+  const cardsBySubjectKey = new Map<string, ReviewCardListItem[]>();
+
+  for (const group of input.groups) {
+    cardsBySubjectKey.set(group.identity.subjectKey, []);
+  }
+
+  for (const [subjectKey, entryRefs] of input.entryRefsBySubjectKey.entries()) {
+    for (const entryRef of entryRefs) {
+      const refKey = `${entryRef.entryType}:${entryRef.entryId}`;
+      const subjectKeys = subjectKeysByEntryRef.get(refKey);
+
+      if (subjectKeys) {
+        subjectKeys.push(subjectKey);
+        continue;
+      }
+
+      subjectKeysByEntryRef.set(refKey, [subjectKey]);
+    }
+  }
+
+  for (const card of input.cards) {
+    const drivingLinks = getDrivingEntryLinks(card.entryLinks);
+
+    if (drivingLinks.length !== 1) {
+      continue;
+    }
+
+    const drivingLink = drivingLinks[0]!;
+
+    if (drivingLink.entryType !== "term" && drivingLink.entryType !== "grammar") {
+      continue;
+    }
+
+    const subjectKeys =
+      subjectKeysByEntryRef.get(
+        `${drivingLink.entryType}:${drivingLink.entryId}`
+      ) ?? [];
+
+    for (const subjectKey of subjectKeys) {
+      cardsBySubjectKey.get(subjectKey)?.push(card);
+    }
+  }
+
+  return cardsBySubjectKey;
+}
+
+function resolveLegacyReviewSubjectEntryRefs(input: {
+  familyLookup: LegacyReviewSubjectFamilyLookup;
+  identity: ReviewSubjectIdentity;
+}) {
+  if (!input.identity.entryId || !input.identity.entryType) {
+    return [];
+  }
+
+  if (input.identity.subjectKind !== "group") {
     return [
       {
-        entryId: identity.entryId,
-        entryType: identity.entryType
+        entryId: input.identity.entryId,
+        entryType: input.identity.entryType
       }
     ];
   }
 
-  if (identity.entryType === "term") {
-    const family = await getTermCrossMediaFamilyByEntryId(database, identity.entryId);
+  if (input.identity.entryType === "term") {
+    const family = input.familyLookup.termFamilies.get(input.identity.entryId);
 
     return dedupeReviewSubjectEntryRefs([
       {
-        entryId: identity.entryId,
-        entryType: identity.entryType
+        entryId: input.identity.entryId,
+        entryType: input.identity.entryType
       },
-      ...family.siblings.map((sibling) => ({
+      ...(family?.siblings ?? []).map((sibling) => ({
         entryId: sibling.entryId,
         entryType: "term" as const
       }))
     ]);
   }
 
-  const family = await getGrammarCrossMediaFamilyByEntryId(database, identity.entryId);
+  const family = input.familyLookup.grammarFamilies.get(input.identity.entryId);
 
   return dedupeReviewSubjectEntryRefs([
     {
-      entryId: identity.entryId,
-      entryType: identity.entryType
+      entryId: input.identity.entryId,
+      entryType: input.identity.entryType
     },
-    ...family.siblings.map((sibling) => ({
+    ...(family?.siblings ?? []).map((sibling) => ({
       entryId: sibling.entryId,
       entryType: "grammar" as const
     }))
   ]);
 }
 
-async function buildLegacyReviewSubjectState(input: {
-  database: DatabaseClient;
+function buildLegacyReviewSubjectState(input: {
   cards: ReviewCardListItem[];
+  drivingEntryStatusesByCardId: Map<string, ReviewEntryStatusValue[]>;
   identity: ReviewSubjectIdentity;
   nowIso?: string;
 }) {
-  const drivingEntryStatusesByCardId =
-    input.cards.length > 0
-      ? await loadLegacyReviewSubjectDrivingEntryStatuses({
-          cards: input.cards,
-          database: input.database
-        })
-      : new Map<string, ReviewEntryStatusValue[]>();
   const representativeCard = selectReviewSubjectRepresentativeCard(
     input.cards,
     null,
     input.nowIso,
     {
-      drivingEntryStatusesByCardId
+      drivingEntryStatusesByCardId: input.drivingEntryStatusesByCardId
     }
   );
   const reviewState = representativeCard.reviewState;

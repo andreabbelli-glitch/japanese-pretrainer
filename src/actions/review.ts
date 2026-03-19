@@ -16,7 +16,7 @@ import {
   getReviewPageData,
   type ReviewPageData
 } from "@/lib/review";
-import { mediaHref, mediaReviewCardHref, mediaStudyHref, reviewHref } from "@/lib/site";
+import { mediaReviewCardHref, mediaStudyHref, reviewHref } from "@/lib/site";
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
 type ReviewSessionRedirectMode = Exclude<ReviewRedirectMode, "stay_detail">;
@@ -49,7 +49,7 @@ export async function gradeReviewCardAction(formData: FormData) {
         : "good"
   });
 
-  revalidateReviewPaths(mediaSlug, cardId);
+  revalidateActiveReviewPaths(mediaSlug);
   redirect(
     buildReviewRedirectUrl({
       answeredCount: answeredCount + 1,
@@ -73,7 +73,7 @@ export async function markLinkedEntryKnownAction(formData: FormData) {
     status: "known_manual"
   });
 
-  revalidateReviewPaths(mediaSlug, cardId);
+  revalidateEntryStatusPaths(mediaSlug);
   redirect(
     buildReviewRedirectUrl({
       answeredCount,
@@ -100,7 +100,7 @@ export async function setLinkedEntryLearningAction(formData: FormData) {
     status: "learning"
   });
 
-  revalidateReviewPaths(mediaSlug, cardId);
+  revalidateEntryStatusPaths(mediaSlug);
   redirect(
     buildReviewRedirectUrl({
       answeredCount,
@@ -126,7 +126,7 @@ export async function resetReviewCardAction(formData: FormData) {
     expectedMediaId: mediaId
   });
 
-  revalidateReviewPaths(mediaSlug, cardId);
+  revalidateActiveReviewPaths(mediaSlug);
   redirect(
     buildReviewRedirectUrl({
       answeredCount,
@@ -154,7 +154,7 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
     suspended
   });
 
-  revalidateReviewPaths(mediaSlug, cardId);
+  revalidateActiveReviewPaths(mediaSlug);
   redirect(
     buildReviewRedirectUrl({
       answeredCount,
@@ -181,7 +181,7 @@ export async function gradeReviewCardSessionAction(input: ReviewSessionInput & {
     rating: input.rating
   });
 
-  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
+  revalidateActiveReviewPaths(input.mediaSlug ?? input.cardMediaSlug);
 
   return requireReviewPageDataForScope(
     input,
@@ -208,7 +208,7 @@ export async function markLinkedEntryKnownSessionAction(
     status: "known_manual"
   });
 
-  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
+  revalidateEntryStatusPaths(input.mediaSlug ?? input.cardMediaSlug);
 
   return requireReviewPageDataForScope(
     input,
@@ -238,7 +238,7 @@ export async function setLinkedEntryLearningSessionAction(
     status: "learning"
   });
 
-  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
+  revalidateEntryStatusPaths(input.mediaSlug ?? input.cardMediaSlug);
 
   return requireReviewPageDataForScope(
     input,
@@ -267,7 +267,7 @@ export async function resetReviewCardSessionAction(
     expectedMediaId: mediaId
   });
 
-  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
+  revalidateActiveReviewPaths(input.mediaSlug ?? input.cardMediaSlug);
 
   return requireReviewPageDataForScope(
     input,
@@ -298,7 +298,7 @@ export async function setReviewCardSuspendedSessionAction(
     suspended: input.suspended
   });
 
-  revalidateReviewPaths(input.mediaSlug ?? input.cardMediaSlug, input.cardId);
+  revalidateActiveReviewPaths(input.mediaSlug ?? input.cardMediaSlug);
 
   return requireReviewPageDataForScope(
     input,
@@ -341,19 +341,25 @@ function buildReviewRedirectUrl(input: {
   ) as Route;
 }
 
-function revalidateReviewPaths(mediaSlug: string | undefined, cardId: string) {
-  revalidatePath("/");
+function revalidateActiveReviewPaths(mediaSlug: string | undefined) {
   revalidatePath(reviewHref());
+
+  if (!mediaSlug) {
+    return;
+  }
+
+  revalidatePath(mediaStudyHref(mediaSlug, "review"));
+}
+
+function revalidateEntryStatusPaths(mediaSlug: string | undefined) {
+  revalidateActiveReviewPaths(mediaSlug);
   revalidatePath("/glossary");
 
   if (!mediaSlug) {
     return;
   }
 
-  revalidatePath(mediaHref(mediaSlug));
-  revalidatePath(mediaStudyHref(mediaSlug, "progress"));
-  revalidatePath(mediaStudyHref(mediaSlug, "review"));
-  revalidatePath(mediaReviewCardHref(mediaSlug, cardId));
+  revalidatePath(mediaStudyHref(mediaSlug, "glossary"));
 }
 
 function readRequiredString(formData: FormData, key: string) {

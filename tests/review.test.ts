@@ -66,6 +66,9 @@ const validContentRoot = path.join(
   "valid",
   "content"
 );
+const { revalidatePathMock } = vi.hoisted(() => ({
+  revalidatePathMock: vi.fn()
+}));
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/media/test/review",
@@ -76,7 +79,7 @@ vi.mock("next/navigation", () => ({
 }));
 
 vi.mock("next/cache", () => ({
-  revalidatePath: () => undefined
+  revalidatePath: revalidatePathMock
 }));
 
 async function prepareReviewSessionRedirectFixture(database: DatabaseClient) {
@@ -170,6 +173,7 @@ describe("review system", () => {
   let database: DatabaseClient;
 
   beforeEach(async () => {
+    revalidatePathMock.mockReset();
     tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-"));
     database = createDatabaseClient({
       databaseUrl: path.join(tempDir, "test.sqlite")
@@ -1665,6 +1669,33 @@ describe("review system", () => {
     });
   });
 
+  it("revalidates only the active review paths after grading a card in global review", async () => {
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    await gradeReviewCardSessionAction({
+      answeredCount: 0,
+      cardId: developmentFixture.primaryCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      extraNewCount: 0,
+      rating: "good",
+      scope: "global"
+    });
+
+    expect(revalidatePathMock.mock.calls).toEqual([
+      ["/review"],
+      [`/media/${developmentFixture.mediaSlug}/review`]
+    ]);
+    expect(reviewPageCalls).toEqual([
+      {
+        scope: "global",
+        searchParams: {
+          answered: "1"
+        }
+      }
+    ]);
+  });
+
   it("advances to the next queue card after suspending a manual card when redirectMode advances queue", async () => {
     const { targetCardId } = await prepareReviewSessionRedirectFixture(
       database
@@ -1690,6 +1721,35 @@ describe("review system", () => {
         notice: "suspended"
       }
     });
+  });
+
+  it("revalidates review and glossary paths after marking a linked entry known in global review", async () => {
+    const { markLinkedEntryKnownSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    await markLinkedEntryKnownSessionAction({
+      answeredCount: 0,
+      cardId: developmentFixture.primaryCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      extraNewCount: 0,
+      redirectMode: "advance_queue",
+      scope: "global"
+    });
+
+    expect(revalidatePathMock.mock.calls).toEqual([
+      ["/review"],
+      [`/media/${developmentFixture.mediaSlug}/review`],
+      ["/glossary"],
+      [`/media/${developmentFixture.mediaSlug}/glossary`]
+    ]);
+    expect(reviewPageCalls).toEqual([
+      {
+        scope: "global",
+        searchParams: {
+          notice: "known"
+        }
+      }
+    ]);
   });
 
   it("advances to the next queue card after reopening a manual card when redirectMode advances queue", async () => {
