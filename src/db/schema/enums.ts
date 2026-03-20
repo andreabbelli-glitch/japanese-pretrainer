@@ -38,10 +38,7 @@ export const reviewStateValues = [
 ] as const;
 export const reviewSubjectKindValues = ["group", "entry", "card"] as const;
 export const reviewRatingValues = ["again", "hard", "good", "easy"] as const;
-export const reviewSchedulerVersionValues = [
-  "legacy_simple",
-  "fsrs_v1"
-] as const;
+export const reviewSchedulerVersionValues = ["fsrs_v1"] as const;
 export const lessonProgressStatusValues = [
   "not_started",
   "in_progress",

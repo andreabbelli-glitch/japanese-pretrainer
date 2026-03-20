@@ -31,7 +31,6 @@ import {
   term,
   type DatabaseClient
 } from "@/db";
-import { migrateReviewHistoryToFsrs } from "@/db/review-fsrs-migration";
 import {
   getGlobalReviewPageLoadResult,
   getGlobalReviewPageData,
@@ -336,55 +335,6 @@ describe("review system", () => {
     expect(scheduled[1]?.lapses).toBe(1);
     expect(scheduled[2]?.lapses).toBe(1);
     expect(scheduled[3]?.lapses).toBe(1);
-  });
-
-  it("migrates legacy review history into FSRS state through replay", async () => {
-    await database
-      .update(reviewState)
-      .set({
-        state: "new",
-        stability: null,
-        difficulty: null,
-        dueAt: "2026-03-09T14:10:00.000Z",
-        lastReviewedAt: null,
-        scheduledDays: 0,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 0,
-        schedulerVersion: "legacy_simple",
-        updatedAt: "2026-03-09T14:10:00.000Z"
-      })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
-
-    await database
-      .update(reviewLog)
-      .set({
-        previousState: "new",
-        newState: "learning",
-        scheduledDueAt: "2026-03-09T08:00:00.000Z",
-        elapsedDays: 0.5,
-        schedulerVersion: "legacy_simple"
-      })
-      .where(eq(reviewLog.cardId, developmentFixture.primaryCardId));
-
-    await migrateReviewHistoryToFsrs(database);
-
-    const migratedState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, developmentFixture.primaryCardId)
-    });
-    const migratedLogs = await database.query.reviewLog.findMany({
-      where: eq(reviewLog.cardId, developmentFixture.primaryCardId)
-    });
-
-    expect(migratedState?.schedulerVersion).toBe("fsrs_v1");
-    expect(migratedState?.state).toBe("new");
-    expect(migratedState?.reps).toBe(0);
-    expect(migratedState?.lapses).toBe(0);
-    expect(migratedState?.lastReviewedAt).toBeNull();
-    expect(migratedLogs).toHaveLength(1);
-    expect(migratedLogs[0]?.schedulerVersion).toBe("fsrs_v1");
-    expect(migratedLogs[0]?.previousState).toBe("new");
-    expect(migratedLogs[0]?.newState).toBe("learning");
   });
 
   it("derives study-day boundaries in UTC regardless of runtime timezone", () => {
