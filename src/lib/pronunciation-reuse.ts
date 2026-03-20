@@ -7,6 +7,7 @@ import {
   type PronunciationManifestEntry
 } from "./content/pronunciations-manifest.ts";
 import type { NormalizedMediaBundle } from "./content/types.ts";
+import { buildEntryKey } from "./entry-id.ts";
 import { resolveMediaAssetAbsolutePath } from "./media-assets.ts";
 import {
   collectPronunciationTargets,
@@ -62,13 +63,16 @@ export async function reusePronunciationsAcrossMedia(input: {
 
   const manifestEntries = new Map<string, PronunciationManifestEntry>(
     (manifest.manifest?.entries ?? []).map((entry) => [
-      `${entry.entryType}:${entry.entryId}`,
+      buildEntryKey(entry.entryType, entry.entryId),
       entry
     ])
   );
-  const targetPool = input.onlyTargets ?? collectPronunciationTargets(input.bundle);
+  const targetPool =
+    input.onlyTargets ?? collectPronunciationTargets(input.bundle);
   const missingTargets = targetPool.filter((entry) => {
-    const manifestEntry = manifestEntries.get(`${entry.kind}:${entry.id}`);
+    const manifestEntry = manifestEntries.get(
+      buildEntryKey(entry.kind, entry.id)
+    );
     return !(entry.audioSrc || manifestEntry?.audioSrc);
   });
   const audioBackedEntries = await collectAudioBackedEntries(input.allBundles);
@@ -112,7 +116,7 @@ export async function reusePronunciationsAcrossMedia(input: {
       await copyFile(sourcePath, targetPath);
     }
 
-    manifestEntries.set(`${target.kind}:${target.id}`, {
+    manifestEntries.set(buildEntryKey(target.kind, target.id), {
       entryId: target.id,
       entryType: target.kind,
       audioAttribution: source.audioAttribution ?? undefined,
@@ -132,7 +136,10 @@ export async function reusePronunciationsAcrossMedia(input: {
   }
 
   if (!input.dryRun && results.some((result) => result.status === "reused")) {
-    const manifestPath = path.join(input.bundle.mediaDirectory, "pronunciations.json");
+    const manifestPath = path.join(
+      input.bundle.mediaDirectory,
+      "pronunciations.json"
+    );
     await writeFile(
       manifestPath,
       serializePronunciationManifest({
@@ -163,22 +170,22 @@ export async function reuseCrossMediaPronunciationsForBundle(input: {
   });
 }
 
-async function collectAudioBackedEntries(
-  bundles: NormalizedMediaBundle[]
-) {
+async function collectAudioBackedEntries(bundles: NormalizedMediaBundle[]) {
   const entries: AudioBackedEntry[] = [];
 
   for (const bundle of bundles) {
     const manifest = await loadPronunciationManifest(bundle.mediaDirectory);
     const manifestEntries = new Map(
       (manifest.manifest?.entries ?? []).map((entry) => [
-        `${entry.entryType}:${entry.entryId}`,
+        buildEntryKey(entry.entryType, entry.entryId),
         entry
       ])
     );
 
     for (const target of bundle.terms) {
-      const manifestEntry = manifestEntries.get(`term:${target.id}`);
+      const manifestEntry = manifestEntries.get(
+        buildEntryKey("term", target.id)
+      );
       const audio = target.audio ?? manifestEntry;
       const audioSrc = target.audio?.audioSrc ?? manifestEntry?.audioSrc;
 
@@ -204,7 +211,9 @@ async function collectAudioBackedEntries(
     }
 
     for (const target of bundle.grammarPatterns) {
-      const manifestEntry = manifestEntries.get(`grammar:${target.id}`);
+      const manifestEntry = manifestEntries.get(
+        buildEntryKey("grammar", target.id)
+      );
       const audio = target.audio ?? manifestEntry;
       const audioSrc = target.audio?.audioSrc ?? manifestEntry?.audioSrc;
 
@@ -237,15 +246,14 @@ function findReuseCandidates(
   target: PronunciationTargetEntry,
   entries: AudioBackedEntry[]
 ) {
-  const crossMediaMatches =
-    target.crossMediaGroup?.length
-      ? entries.filter(
-          (entry) =>
-            entry.mediaSlug !== target.mediaSlug &&
-            entry.entryType === target.kind &&
-            entry.crossMediaGroup === target.crossMediaGroup
-        )
-      : [];
+  const crossMediaMatches = target.crossMediaGroup?.length
+    ? entries.filter(
+        (entry) =>
+          entry.mediaSlug !== target.mediaSlug &&
+          entry.entryType === target.kind &&
+          entry.crossMediaGroup === target.crossMediaGroup
+      )
+    : [];
 
   if (crossMediaMatches.length > 0) {
     return crossMediaMatches;
@@ -255,7 +263,10 @@ function findReuseCandidates(
   const normalizedReading = normalizePronunciationText(target.reading ?? "");
 
   return entries.filter((entry) => {
-    if (entry.mediaSlug === target.mediaSlug || entry.entryType !== target.kind) {
+    if (
+      entry.mediaSlug === target.mediaSlug ||
+      entry.entryType !== target.kind
+    ) {
       return false;
     }
 

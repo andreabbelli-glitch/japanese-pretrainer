@@ -7,6 +7,7 @@ import {
   serializePronunciationManifest,
   type PronunciationManifestEntry
 } from "./content/pronunciations-manifest.ts";
+import { buildEntryKey } from "./entry-id.ts";
 import { isSupportedAudioAssetPath } from "./media-assets.ts";
 import type {
   NormalizedGrammarPattern,
@@ -113,7 +114,7 @@ export async function fetchPronunciationsForBundle(input: {
 
   const manifestEntries = new Map<string, PronunciationManifestEntry>(
     (manifest.manifest?.entries ?? []).map((entry) => [
-      `${entry.entryType}:${entry.entryId}`,
+      buildEntryKey(entry.entryType, entry.entryId),
       entry
     ])
   );
@@ -124,7 +125,7 @@ export async function fetchPronunciationsForBundle(input: {
 
     return !(
       entry.audioSrc ||
-      manifestEntries.get(`${entry.kind}:${entry.id}`)?.audioSrc
+      manifestEntries.get(buildEntryKey(entry.kind, entry.id))?.audioSrc
     );
   });
   const limitedEntries =
@@ -175,7 +176,7 @@ export async function fetchPronunciationsForBundle(input: {
       }
     }
 
-    manifestEntries.set(`${entry.kind}:${entry.id}`, {
+    manifestEntries.set(buildEntryKey(entry.kind, entry.id), {
       entryId: entry.id,
       entryType: entry.kind,
       audioSrc: localAsset,

@@ -1,14 +1,9 @@
-import {
-  mkdir,
-  readFile,
-  writeFile
-} from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import {
-  loadPronunciationManifest
-} from "./content/pronunciations-manifest.ts";
+import { loadPronunciationManifest } from "./content/pronunciations-manifest.ts";
 import type { NormalizedMediaBundle } from "./content/types.ts";
+import { buildEntryKey } from "./entry-id.ts";
 import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
@@ -158,11 +153,10 @@ function hasAudio(
   entry: PronunciationTargetEntry,
   manifestAudioBacked: Set<string>
 ) {
-  return Boolean(entry.audioSrc) || manifestAudioBacked.has(buildEntryKey(entry.kind, entry.id));
-}
-
-function buildEntryKey(entryType: "term" | "grammar", entryId: string) {
-  return `${entryType}:${entryId}`;
+  return (
+    Boolean(entry.audioSrc) ||
+    manifestAudioBacked.has(buildEntryKey(entry.kind, entry.id))
+  );
 }
 
 async function loadForvoKnownMissingRegistry(knownMissingPath?: string) {
@@ -196,7 +190,9 @@ async function loadForvoKnownMissingRegistry(knownMissingPath?: string) {
   }
 }
 
-function isForvoKnownMissingEntry(value: unknown): value is ForvoKnownMissingEntry {
+function isForvoKnownMissingEntry(
+  value: unknown
+): value is ForvoKnownMissingEntry {
   if (!value || typeof value !== "object") {
     return false;
   }

@@ -1,5 +1,5 @@
 import type { EntryType } from "../../../domain/content.ts";
-import { buildScopedEntryId } from "../../entry-id.ts";
+import { buildEntryKey, buildScopedEntryId } from "../../entry-id.ts";
 
 import type { NormalizedMediaBundle } from "../types.ts";
 import {
@@ -832,7 +832,7 @@ function dedupeReferenceEntries(
   const seen = new Set<string>();
 
   return values.filter((value) => {
-    const key = `${value.entryType}:${value.entryId}`;
+    const key = buildEntryKey(value.entryType, value.entryId);
 
     if (seen.has(key)) {
       return false;

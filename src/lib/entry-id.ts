@@ -1,5 +1,9 @@
 import type { EntryType } from "@/domain/content";
 
+export function buildEntryKey(entryType: string, entryId: string) {
+  return `${entryType}:${entryId}`;
+}
+
 export function buildScopedEntryId(
   entryType: EntryType,
   mediaId: string,

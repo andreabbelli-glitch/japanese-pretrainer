@@ -19,6 +19,7 @@ import {
   type PronunciationManifestEntry
 } from "./content/pronunciations-manifest.ts";
 import type { NormalizedMediaBundle } from "./content/types.ts";
+import { buildEntryKey } from "./entry-id.ts";
 import {
   collectPronunciationTargets,
   normalizePronunciationText,
@@ -127,14 +128,17 @@ export async function fetchForvoPronunciationsForBundle(input: {
 
   const manifestEntries = new Map<string, PronunciationManifestEntry>(
     (manifest.manifest?.entries ?? []).map((entry) => [
-      `${entry.entryType}:${entry.entryId}`,
+      buildEntryKey(entry.entryType, entry.entryId),
       entry
     ])
   );
   const allTargets = collectPronunciationTargets(input.bundle);
   const isStillMissing = (entry: PronunciationTargetEntry) =>
     input.refresh ||
-    !(entry.audioSrc || manifestEntries.get(`${entry.kind}:${entry.id}`)?.audioSrc);
+    !(
+      entry.audioSrc ||
+      manifestEntries.get(buildEntryKey(entry.kind, entry.id))?.audioSrc
+    );
   const filteredTargets = allTargets.filter(isStillMissing);
   const hasExplicitRequests =
     (input.entryIds?.length ?? 0) > 0 ||
@@ -147,9 +151,8 @@ export async function fetchForvoPronunciationsForBundle(input: {
     wordListSource: input.wordListSource,
     words: input.words
   });
-  const selectedTargets = (hasExplicitRequests
-    ? requestedTargets.targets
-    : filteredTargets
+  const selectedTargets = (
+    hasExplicitRequests ? requestedTargets.targets : filteredTargets
   ).filter(isStillMissing);
   const limitedTargets =
     typeof input.limit === "number" && input.limit >= 0
@@ -172,13 +175,21 @@ export async function fetchForvoPronunciationsForBundle(input: {
   const knownMissingSkipped = input.browser.retryKnownMissing
     ? []
     : limitedTargets.filter((entry) =>
-        hasKnownMissingForEntry(knownMissingRegistry, input.bundle.mediaSlug, entry)
+        hasKnownMissingForEntry(
+          knownMissingRegistry,
+          input.bundle.mediaSlug,
+          entry
+        )
       );
   const runnableTargets =
     knownMissingSkipped.length > 0
       ? limitedTargets.filter(
           (entry) =>
-            !hasKnownMissingForEntry(knownMissingRegistry, input.bundle.mediaSlug, entry)
+            !hasKnownMissingForEntry(
+              knownMissingRegistry,
+              input.bundle.mediaSlug,
+              entry
+            )
         )
       : limitedTargets;
 
@@ -196,11 +207,14 @@ export async function fetchForvoPronunciationsForBundle(input: {
     };
   }
 
-  const context = await chromium.launchPersistentContext(input.browser.profileDir, {
-    acceptDownloads: true,
-    channel: "chrome",
-    headless: input.browser.headless ?? false
-  });
+  const context = await chromium.launchPersistentContext(
+    input.browser.profileDir,
+    {
+      acceptDownloads: true,
+      channel: "chrome",
+      headless: input.browser.headless ?? false
+    }
+  );
   const page = context.pages()[0] ?? (await context.newPage());
   const results = [];
 
@@ -222,7 +236,7 @@ export async function fetchForvoPronunciationsForBundle(input: {
         continue;
       }
 
-      manifestEntries.set(`${entry.kind}:${entry.id}`, {
+      manifestEntries.set(buildEntryKey(entry.kind, entry.id), {
         entryId: entry.id,
         entryType: entry.kind,
         audioAttribution: resolved.audioAttribution,
@@ -291,14 +305,17 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
 
   const manifestEntries = new Map<string, PronunciationManifestEntry>(
     (manifest.manifest?.entries ?? []).map((entry) => [
-      `${entry.entryType}:${entry.entryId}`,
+      buildEntryKey(entry.entryType, entry.entryId),
       entry
     ])
   );
   const allTargets = collectPronunciationTargets(input.bundle);
   const isStillMissing = (entry: PronunciationTargetEntry) =>
     input.refresh ||
-    !(entry.audioSrc || manifestEntries.get(`${entry.kind}:${entry.id}`)?.audioSrc);
+    !(
+      entry.audioSrc ||
+      manifestEntries.get(buildEntryKey(entry.kind, entry.id))?.audioSrc
+    );
   const filteredTargets = allTargets.filter(isStillMissing);
   const hasExplicitRequests =
     (input.entryIds?.length ?? 0) > 0 ||
@@ -311,9 +328,8 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
     wordListSource: input.wordListSource,
     words: input.words
   });
-  const selectedTargets = (hasExplicitRequests
-    ? requestedTargets.targets
-    : filteredTargets
+  const selectedTargets = (
+    hasExplicitRequests ? requestedTargets.targets : filteredTargets
   ).filter(isStillMissing);
   const limitedTargets =
     typeof input.limit === "number" && input.limit >= 0
@@ -336,13 +352,21 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
   const knownMissingSkipped = input.manual.retryKnownMissing
     ? []
     : limitedTargets.filter((entry) =>
-        hasKnownMissingForEntry(knownMissingRegistry, input.bundle.mediaSlug, entry)
+        hasKnownMissingForEntry(
+          knownMissingRegistry,
+          input.bundle.mediaSlug,
+          entry
+        )
       );
   const runnableTargets =
     knownMissingSkipped.length > 0
       ? limitedTargets.filter(
           (entry) =>
-            !hasKnownMissingForEntry(knownMissingRegistry, input.bundle.mediaSlug, entry)
+            !hasKnownMissingForEntry(
+              knownMissingRegistry,
+              input.bundle.mediaSlug,
+              entry
+            )
         )
       : limitedTargets;
 
@@ -404,7 +428,7 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
         continue;
       }
 
-      manifestEntries.set(`${entry.kind}:${entry.id}`, {
+      manifestEntries.set(buildEntryKey(entry.kind, entry.id), {
         entryId: entry.id,
         entryType: entry.kind,
         audioAttribution: resolved.audioAttribution,
@@ -416,7 +440,10 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
       });
 
       if (!input.dryRun) {
-        await persistPronunciationManifest(input.bundle.mediaDirectory, manifestEntries);
+        await persistPronunciationManifest(
+          input.bundle.mediaDirectory,
+          manifestEntries
+        );
       }
 
       results.push({
@@ -574,7 +601,7 @@ export function resolveRequestedTargets(input: {
       continue;
     }
 
-    const key = `${resolved.target.kind}:${resolved.target.id}`;
+    const key = buildEntryKey(resolved.target.kind, resolved.target.id);
 
     if (seen.has(key)) {
       continue;
@@ -658,7 +685,10 @@ function resolveWordListRow(input: {
   };
 }
 
-function scoreTargetMatch(target: PronunciationTargetEntry, row: WordListRequest) {
+function scoreTargetMatch(
+  target: PronunciationTargetEntry,
+  row: WordListRequest
+) {
   const rowWord = normalizePronunciationText(row.word ?? "");
   const rowReading = normalizePronunciationText(row.reading ?? "");
   const label = normalizePronunciationText(target.label);
@@ -739,7 +769,10 @@ async function downloadForvoPronunciation(input: {
     await mkdir(path.dirname(absoluteAssetPath), { recursive: true });
 
     try {
-      const download = await triggerForvoDownload(input.page, selected.candidateIndex);
+      const download = await triggerForvoDownload(
+        input.page,
+        selected.candidateIndex
+      );
       await download.saveAs(absoluteAssetPath);
 
       return {
@@ -781,7 +814,9 @@ async function captureManualForvoPronunciation(input: {
   }
 
   console.info("");
-  console.info(`Manual Forvo step for ${input.entry.kind}:${input.entry.id}`);
+  console.info(
+    `Manual Forvo step for ${buildEntryKey(input.entry.kind, input.entry.id)}`
+  );
   console.info(`  word: ${input.entry.label}`);
   if (input.entry.reading) {
     console.info(`  reading: ${input.entry.reading}`);
@@ -795,7 +830,9 @@ async function captureManualForvoPronunciation(input: {
   console.info(
     `  waiting for a new audio file in ${input.downloadsDir} to continue automatically`
   );
-  console.info("  type 's' then Enter to mark this entry missing on Forvo and skip it");
+  console.info(
+    "  type 's' then Enter to mark this entry missing on Forvo and skip it"
+  );
 
   const outcome = await waitForManualDownloadOrSkip({
     afterMs: startedAt,
@@ -822,7 +859,9 @@ async function captureManualForvoPronunciation(input: {
   }
 
   const extension = path.extname(downloadedFile).toLowerCase() || ".mp3";
-  const safeLabel = slugifyForvoSegment(input.entry.reading ?? input.entry.label);
+  const safeLabel = slugifyForvoSegment(
+    input.entry.reading ?? input.entry.label
+  );
   const localAssetPath = `assets/audio/${input.entry.kind}/${input.entry.id}/forvo-manual-${safeLabel}${extension}`;
 
   if (!input.dryRun) {
@@ -887,7 +926,9 @@ async function loadForvoCandidatesForEntry(input: {
 async function extractForvoCandidates(page: Page, languageCode: string) {
   return page.evaluate((lang) => {
     const attributeName = "data-codex-forvo-download";
-    const elements = Array.from(document.querySelectorAll<HTMLElement>("body *"));
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>("body *")
+    );
     const isVisible = (element: HTMLElement) => {
       const style = window.getComputedStyle(element);
       const rect = element.getBoundingClientRect();
@@ -900,14 +941,15 @@ async function extractForvoCandidates(page: Page, languageCode: string) {
       );
     };
     const collectDownloadButtons = (root: ParentNode) =>
-      Array.from(root.querySelectorAll<HTMLElement>("a, button, [role='button']"))
-        .filter((element) => {
-          const label = (element.innerText || element.textContent || "")
-            .replace(/\s+/g, " ")
-            .trim();
+      Array.from(
+        root.querySelectorAll<HTMLElement>("a, button, [role='button']")
+      ).filter((element) => {
+        const label = (element.innerText || element.textContent || "")
+          .replace(/\s+/g, " ")
+          .trim();
 
-          return label === "Download MP3" && isVisible(element);
-        });
+        return label === "Download MP3" && isVisible(element);
+      });
     const findHeading = () =>
       elements.find((element) => {
         const text = (element.innerText || "").replace(/\s+/g, " ").trim();
@@ -926,7 +968,11 @@ async function extractForvoCandidates(page: Page, languageCode: string) {
       .forEach((element) => element.removeAttribute(attributeName));
 
     if (heading) {
-      for (let current: HTMLElement | null = heading; current; current = current.parentElement) {
+      for (
+        let current: HTMLElement | null = heading;
+        current;
+        current = current.parentElement
+      ) {
         const found = collectDownloadButtons(current);
 
         if (found.length > 0 && found.length <= 24) {
@@ -947,7 +993,8 @@ async function extractForvoCandidates(page: Page, languageCode: string) {
 
       while (container) {
         const text = (container.innerText || "").replace(/\s+/g, " ").trim();
-        const pronunciationCount = (text.match(/Pronunciation by/giu) ?? []).length;
+        const pronunciationCount = (text.match(/Pronunciation by/giu) ?? [])
+          .length;
 
         if (
           /Pronunciation by/iu.test(text) &&
@@ -960,13 +1007,18 @@ async function extractForvoCandidates(page: Page, languageCode: string) {
         container = container.parentElement;
       }
 
-      const text =
-        (container?.innerText || button.parentElement?.innerText || button.innerText || "")
-          .replace(/\s+/g, " ")
-          .trim();
+      const text = (
+        container?.innerText ||
+        button.parentElement?.innerText ||
+        button.innerText ||
+        ""
+      )
+        .replace(/\s+/g, " ")
+        .trim();
       const speakerMatch =
-        text.match(/Pronunciation by\s+(.+?)\s+\((Male|Female)(?: from ([^)]+))?\)/iu) ??
-        text.match(/Pronunciation by\s+(.+?)(?:\s{2,}|$)/iu);
+        text.match(
+          /Pronunciation by\s+(.+?)\s+\((Male|Female)(?: from ([^)]+))?\)/iu
+        ) ?? text.match(/Pronunciation by\s+(.+?)(?:\s{2,}|$)/iu);
       const votesMatch = text.match(/(-?\d+)\s+votes?\s+Good\s+Bad/iu);
       const accentMatch = text.match(
         /Accent:\s+(.+?)(?:\s{2,}|Pronunciation by|Download MP3|$)/iu
@@ -989,7 +1041,11 @@ async function extractForvoCandidates(page: Page, languageCode: string) {
     });
 
     if (heading && scopedButtons.length > 0) {
-      const headingRootText = (heading.parentElement?.innerText || heading.innerText || "")
+      const headingRootText = (
+        heading.parentElement?.innerText ||
+        heading.innerText ||
+        ""
+      )
         .replace(/\s+/g, " ")
         .trim();
 
@@ -1032,7 +1088,9 @@ async function promptForManualIntervention(message: string) {
   });
 
   try {
-    await readline.question(`${message}\nPress Enter when the browser is ready. `);
+    await readline.question(
+      `${message}\nPress Enter when the browser is ready. `
+    );
   } finally {
     closeInteractiveReadline(readline);
   }
@@ -1313,12 +1371,12 @@ function pruneKnownMissingRegistry(
   const audioBacked = new Set(
     targets
       .filter((entry) => entry.mediaSlug === mediaSlug && entry.audioSrc)
-      .map((entry) => `${entry.kind}:${entry.id}`)
+      .map((entry) => buildEntryKey(entry.kind, entry.id))
   );
   const nextEntries = registry.entries.filter(
     (entry) =>
       entry.mediaSlug !== mediaSlug ||
-      !audioBacked.has(`${entry.entryKind}:${entry.entryId}`)
+      !audioBacked.has(buildEntryKey(entry.entryKind, entry.entryId))
   );
 
   if (nextEntries.length === registry.entries.length) {
@@ -1489,7 +1547,8 @@ function buildForvoWordUrls(entry: PronunciationTargetEntry) {
   return [
     ...new Set(
       [entry.label, entry.reading, ...entry.aliases].filter(
-        (value): value is string => typeof value === "string" && value.length > 0
+        (value): value is string =>
+          typeof value === "string" && value.length > 0
       )
     )
   ].map((query) => `https://forvo.com/word/${encodeURIComponent(query)}/#ja`);
@@ -1508,7 +1567,9 @@ async function openUrlInDefaultBrowser(url: string) {
         return;
       }
 
-      reject(new Error(`Failed to open browser URL ${url} (exit ${code ?? -1}).`));
+      reject(
+        new Error(`Failed to open browser URL ${url} (exit ${code ?? -1}).`)
+      );
     });
   });
 }

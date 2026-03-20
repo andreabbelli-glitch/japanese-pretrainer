@@ -48,6 +48,7 @@ import {
   formatCardRelationshipLabel,
   formatReviewStateLabel
 } from "@/lib/study-format";
+import { buildEntryKey } from "@/lib/entry-id";
 import { type ReviewProfiler } from "@/lib/review-profiler";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 import { loadReviewSubjectStateLookup } from "./review-subject-state-lookup.ts";
@@ -748,11 +749,10 @@ function mapReviewQueueSubjectCardPreview(input: {
       ? `Scadenza ${formatShortIsoDate(input.resolvedState.dueAt)}`
       : undefined,
     effectiveState: input.resolvedState.effectiveState,
-    effectiveStateLabel:
-      formatReviewStateLabel(
-        input.resolvedState.effectiveState,
-        input.resolvedState.effectiveState === "known_manual"
-      ),
+    effectiveStateLabel: formatReviewStateLabel(
+      input.resolvedState.effectiveState,
+      input.resolvedState.effectiveState === "known_manual"
+    ),
     exampleIt: input.card.exampleIt ?? undefined,
     exampleJp: input.card.exampleJp ?? undefined,
     front: input.card.front,
@@ -2437,7 +2437,9 @@ function buildReviewCardPronunciations(
     .slice()
     .sort(compareEntryLinks)
     .flatMap((link) => {
-      const entry = entryLookup.get(`${link.entryType}:${link.entryId}`);
+      const entry = entryLookup.get(
+        buildEntryKey(link.entryType, link.entryId)
+      );
 
       if (!entry?.pronunciation) {
         return [];
@@ -2469,7 +2471,9 @@ async function loadReviewCardPronunciations(input: {
   const missingGrammarIds = new Set<string>();
 
   for (const link of drivingLinks) {
-    const entry = input.entryLookup.get(`${link.entryType}:${link.entryId}`);
+    const entry = input.entryLookup.get(
+      buildEntryKey(link.entryType, link.entryId)
+    );
 
     if (entry?.pronunciation) {
       continue;
@@ -2641,7 +2645,7 @@ function buildEntryLookup(
   for (const entry of terms) {
     const mediaSlug = getEntryMediaSlug(entry);
 
-    lookup.set(`term:${entry.id}`, {
+    lookup.set(buildEntryKey("term", entry.id), {
       href: mediaGlossaryEntryHref(mediaSlug, "term", entry.sourceId),
       id: entry.sourceId,
       kind: "term",
@@ -2661,7 +2665,7 @@ function buildEntryLookup(
   for (const entry of grammar) {
     const mediaSlug = getEntryMediaSlug(entry);
 
-    lookup.set(`grammar:${entry.id}`, {
+    lookup.set(buildEntryKey("grammar", entry.id), {
       href: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.sourceId),
       id: entry.sourceId,
       kind: "grammar",
@@ -2929,7 +2933,9 @@ function mapQueueCard(
     .slice()
     .sort(compareEntryLinks)
     .flatMap((link) => {
-      const entry = entryLookup.get(`${link.entryType}:${link.entryId}`);
+      const entry = entryLookup.get(
+        buildEntryKey(link.entryType, link.entryId)
+      );
 
       if (!entry) {
         return [];
@@ -2970,11 +2976,10 @@ function mapQueueCard(
       ? `Scadenza ${formatShortIsoDate(resolved.dueAt)}`
       : undefined,
     effectiveState: resolved.effectiveState,
-    effectiveStateLabel:
-      formatReviewStateLabel(
-        resolved.effectiveState,
-        resolved.effectiveState === "known_manual"
-      ),
+    effectiveStateLabel: formatReviewStateLabel(
+      resolved.effectiveState,
+      resolved.effectiveState === "known_manual"
+    ),
     exampleIt: card.exampleIt ?? undefined,
     exampleJp: card.exampleJp ?? undefined,
     entries,
@@ -3009,7 +3014,7 @@ function resolveReviewCardReading(
 
   for (const link of drivingLinks) {
     const reading = entryLookup.get(
-      `${link.entryType}:${link.entryId}`
+      buildEntryKey(link.entryType, link.entryId)
     )?.reading;
 
     if (reading) {
@@ -3019,7 +3024,7 @@ function resolveReviewCardReading(
 
   for (const link of card.entryLinks.slice().sort(compareEntryLinks)) {
     const reading = entryLookup.get(
-      `${link.entryType}:${link.entryId}`
+      buildEntryKey(link.entryType, link.entryId)
     )?.reading;
 
     if (reading) {
@@ -3045,7 +3050,7 @@ function canExposeReviewEntryMedia(
 
   const drivingLink = drivingLinks[0]!;
   const drivingEntry = entryLookup.get(
-    `${drivingLink.entryType}:${drivingLink.entryId}`
+    buildEntryKey(drivingLink.entryType, drivingLink.entryId)
   );
 
   if (!drivingEntry) {

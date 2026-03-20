@@ -35,6 +35,7 @@ import {
   buildPronunciationData,
   type PronunciationData
 } from "@/lib/pronunciation";
+import { buildEntryKey } from "@/lib/entry-id";
 import { deriveEntryStudyState } from "@/lib/study-entry";
 import {
   calculatePercent,
@@ -550,7 +551,8 @@ async function loadLessonTooltipEntries(input: {
           entry,
           kind: "term",
           mediaSlug: input.mediaSlug,
-          studySignals: studySignalsByEntry.get(`term:${entry.id}`) ?? []
+          studySignals:
+            studySignalsByEntry.get(buildEntryKey("term", entry.id)) ?? []
         })
       ];
     }
@@ -567,7 +569,8 @@ async function loadLessonTooltipEntries(input: {
         entry,
         kind: "grammar",
         mediaSlug: input.mediaSlug,
-        studySignals: studySignalsByEntry.get(`grammar:${entry.id}`) ?? []
+        studySignals:
+          studySignalsByEntry.get(buildEntryKey("grammar", entry.id)) ?? []
       })
     ];
   });
@@ -589,7 +592,7 @@ function dedupeLessonEntryLinks(
   const seen = new Set<string>();
 
   return links.filter((link) => {
-    const key = `${link.entryType}:${link.entryId}`;
+    const key = buildEntryKey(link.entryType, link.entryId);
 
     if (seen.has(key)) {
       return false;
@@ -604,7 +607,7 @@ function buildStudySignalMap(rows: StudySignalRow[]) {
   const map = new Map<string, StudySignalRow[]>();
 
   for (const row of rows) {
-    const key = `${row.entryType}:${row.entryId}`;
+    const key = buildEntryKey(row.entryType, row.entryId);
     const existing = map.get(key);
 
     if (existing) {
@@ -706,9 +709,7 @@ function mapTooltipEntry(input: {
     meaning: input.entry.meaningIt,
     notes: input.entry.notesIt ?? undefined,
     levelHint: input.entry.levelHint ?? undefined,
-    statusLabel: resolveEntryStudyStateLabel(
-      input.studySignals
-    ),
+    statusLabel: resolveEntryStudyStateLabel(input.studySignals),
     segmentTitle: input.entry.segment?.title ?? undefined,
     glossaryHref: mediaGlossaryEntryHref(
       input.mediaSlug,
@@ -780,9 +781,7 @@ function mapCardTooltipEntry(
   };
 }
 
-function resolveEntryStudyStateLabel(
-  studySignals: StudySignalRow[]
-) {
+function resolveEntryStudyStateLabel(studySignals: StudySignalRow[]) {
   return deriveEntryStudyState(studySignals).label;
 }
 

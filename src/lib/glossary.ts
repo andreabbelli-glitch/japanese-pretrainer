@@ -60,6 +60,7 @@ import {
   normalizeSearchText,
   romanizeKanaForSearch
 } from "@/lib/study-search";
+import { buildEntryKey } from "@/lib/entry-id";
 import { getGlossaryAutocompleteSuggestions } from "@/lib/glossary-autocomplete";
 import {
   GLOSSARY_SUMMARY_TAG,
@@ -1108,7 +1109,7 @@ function dedupeCandidateRefs(refs: GlossarySearchCandidateRef[]) {
   const unique = new Map<string, GlossarySearchCandidateRef>();
 
   for (const ref of refs) {
-    unique.set(`${ref.entryType}:${ref.entryId}`, ref);
+    unique.set(buildEntryKey(ref.entryType, ref.entryId), ref);
   }
 
   return [...unique.values()];
@@ -1120,7 +1121,7 @@ function dedupeFullGlossaryEntries(
   const unique = new Map<string, TermGlossaryEntry | GrammarGlossaryEntry>();
 
   for (const entry of entries) {
-    const key = "lemma" in entry ? `term:${entry.id}` : `grammar:${entry.id}`;
+    const key = buildEntryKey("lemma" in entry ? "term" : "grammar", entry.id);
 
     unique.set(key, entry);
   }
@@ -2158,7 +2159,7 @@ function buildStudySignalMap(rows: StudySignalRow[]) {
   const map = new Map<string, StudySignalRow[]>();
 
   for (const row of rows) {
-    const key = `${row.entryType}:${row.entryId}`;
+    const key = buildEntryKey(row.entryType, row.entryId);
     const existing = map.get(key);
 
     if (existing) {
@@ -2175,7 +2176,8 @@ function buildStudySignalMap(rows: StudySignalRow[]) {
 function buildEntryCardCountMap(rows: EntryCardCount[]) {
   return new Map(
     rows.map(
-      (row) => [`${row.entryType}:${row.entryId}`, row.cardCount] as const
+      (row) =>
+        [buildEntryKey(row.entryType, row.entryId), row.cardCount] as const
     )
   );
 }
@@ -2190,7 +2192,9 @@ function buildResolvedEntriesFromMaps(input: {
 
   return input.entries.map((entry) => {
     const studySignals = (
-      input.studySignalsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? []
+      input.studySignalsByEntry.get(
+        buildEntryKey(entry.kind, entry.internalId)
+      ) ?? []
     ).map((signal) => ({
       manualOverride: signal.manualOverride,
       reviewState: signal.reviewState
@@ -2209,7 +2213,8 @@ function buildResolvedEntriesFromMaps(input: {
         studyState
       } satisfies RankedGlossaryEntry);
     const cardCount =
-      input.cardCountByEntry.get(`${entry.kind}:${entry.internalId}`) ?? 0;
+      input.cardCountByEntry.get(buildEntryKey(entry.kind, entry.internalId)) ??
+      0;
 
     return {
       ...rankedEntry,
@@ -2238,7 +2243,7 @@ function groupRowsByEntry<Row extends { entryId: string; entryType: string }>(
   const map = new Map<string, Row[]>();
 
   for (const row of rows) {
-    const key = `${row.entryType}:${row.entryId}`;
+    const key = buildEntryKey(row.entryType, row.entryId);
     const existing = map.get(key);
 
     if (existing) {

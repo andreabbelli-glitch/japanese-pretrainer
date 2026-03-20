@@ -12,6 +12,7 @@ import type {
   NormalizedMediaBundle,
   NormalizedTerm
 } from "./content/types.ts";
+import { buildEntryKey } from "./entry-id.ts";
 import {
   normalizePronunciationText,
   parseRetryAfterMs,
@@ -105,7 +106,7 @@ export async function fetchPitchAccentsForBundle(input: {
 
   const manifestEntries = new Map<string, PronunciationManifestEntry>(
     (manifestState.manifest?.entries ?? []).map((entry) => [
-      `${entry.entryType}:${entry.entryId}`,
+      buildEntryKey(entry.entryType, entry.entryId),
       entry
     ])
   );
@@ -122,7 +123,7 @@ export async function fetchPitchAccentsForBundle(input: {
       continue;
     }
 
-    const manifestKey = `${entry.kind}:${entry.id}`;
+    const manifestKey = buildEntryKey(entry.kind, entry.id);
     const manifestEntry =
       manifestEntries.get(manifestKey) ?? buildManifestEntryFromTarget(entry);
 

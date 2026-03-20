@@ -35,6 +35,7 @@ import {
   type ReviewRating,
   type ReviewState
 } from "./review-scheduler";
+import { buildEntryKey } from "./entry-id";
 
 type DatabaseTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
@@ -88,9 +89,7 @@ export async function applyReviewGrade(input: {
       reviewState: subjectReviewState
     });
 
-    if (
-      effectiveState.state === "known_manual"
-    ) {
+    if (effectiveState.state === "known_manual") {
       throw new Error(
         "Manual mastery cards cannot be graded until the entry is reopened."
       );
@@ -116,7 +115,8 @@ export async function applyReviewGrade(input: {
 
     await upsertReviewSubjectState(tx, {
       createdAt:
-        subjectContext.subjectState?.createdAt ?? subjectContext.seedCard.createdAt,
+        subjectContext.subjectState?.createdAt ??
+        subjectContext.seedCard.createdAt,
       currentCardId: loadedCard.id,
       identity: subjectContext.identity,
       lastReviewedAt: nowIso,
@@ -188,7 +188,8 @@ export async function resetReviewCardProgress(input: {
 
     await upsertReviewSubjectState(tx, {
       createdAt:
-        subjectContext.subjectState?.createdAt ?? subjectContext.seedCard.createdAt,
+        subjectContext.subjectState?.createdAt ??
+        subjectContext.seedCard.createdAt,
       currentCardId: loadedCard.id,
       identity: subjectContext.identity,
       lastReviewedAt: null,
@@ -803,7 +804,7 @@ function dedupeLinkedEntryRefs(entryRefs: LinkedEntryRef[]) {
   const deduped: LinkedEntryRef[] = [];
 
   for (const entry of entryRefs) {
-    const key = `${entry.entryType}:${entry.entryId}`;
+    const key = buildEntryKey(entry.entryType, entry.entryId);
 
     if (seen.has(key)) {
       continue;

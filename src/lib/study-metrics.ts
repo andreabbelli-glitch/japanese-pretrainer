@@ -9,6 +9,7 @@ import {
   type LessonListItem,
   type TermEntryReviewSummary
 } from "@/db";
+import { buildEntryKey } from "@/lib/entry-id";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import { deriveEntryStudyState } from "@/lib/study-entry";
 import {
@@ -65,11 +66,23 @@ type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
 type StudySignalLookup = Map<string, StudySignalRow[]>;
 type TermGlossaryProgressEntry = Pick<
   TermEntryReviewSummary,
-  "id" | "sourceId" | "mediaId" | "lemma" | "meaningIt" | "reading" | "segmentTitle"
+  | "id"
+  | "sourceId"
+  | "mediaId"
+  | "lemma"
+  | "meaningIt"
+  | "reading"
+  | "segmentTitle"
 >;
 type GrammarGlossaryProgressEntry = Pick<
   GrammarEntryReviewSummary,
-  "id" | "sourceId" | "mediaId" | "pattern" | "meaningIt" | "reading" | "segmentTitle"
+  | "id"
+  | "sourceId"
+  | "mediaId"
+  | "pattern"
+  | "meaningIt"
+  | "reading"
+  | "segmentTitle"
 >;
 type GlossaryProgressMediaTarget = {
   id: string;
@@ -116,19 +129,16 @@ export async function loadGlossaryProgressSnapshots(
       mediaIds
     })
   ]);
-  const studySignals = await listEntryStudySignals(
-    database,
-    [
-      ...terms.map((entry) => ({
-        entryId: entry.id,
-        entryType: "term" as const
-      })),
-      ...grammar.map((entry) => ({
-        entryId: entry.id,
-        entryType: "grammar" as const
-      }))
-    ]
-  );
+  const studySignals = await listEntryStudySignals(database, [
+    ...terms.map((entry) => ({
+      entryId: entry.id,
+      entryType: "term" as const
+    })),
+    ...grammar.map((entry) => ({
+      entryId: entry.id,
+      entryType: "grammar" as const
+    }))
+  ]);
 
   return buildGlossaryProgressSnapshots({
     grammar,
@@ -177,10 +187,12 @@ function buildGlossaryProgressSnapshotWithLookup(input: {
   };
   const previewEntries = entries.map(({ entry, kind }) => {
     const studyState = deriveEntryStudyState(
-      (input.studySignalsByEntry.get(`${kind}:${entry.id}`) ?? []).map((signal) => ({
-        manualOverride: signal.manualOverride,
-        reviewState: signal.reviewState
-      }))
+      (input.studySignalsByEntry.get(`${kind}:${entry.id}`) ?? []).map(
+        (signal) => ({
+          manualOverride: signal.manualOverride,
+          reviewState: signal.reviewState
+        })
+      )
     );
 
     breakdown[studyState.key] += 1;
@@ -196,7 +208,8 @@ function buildGlossaryProgressSnapshotWithLookup(input: {
       statusLabel: studyState.label
     };
   });
-  const entriesCovered = breakdown.known + breakdown.learning + breakdown.review;
+  const entriesCovered =
+    breakdown.known + breakdown.learning + breakdown.review;
   const entriesTotal = entries.length;
 
   return {
@@ -234,7 +247,9 @@ export function buildGlossaryProgressSnapshots(input: {
   return snapshots;
 }
 
-export function selectActiveLesson(lessons: LessonListItem[]): LessonResumeTarget | null {
+export function selectActiveLesson(
+  lessons: LessonListItem[]
+): LessonResumeTarget | null {
   const inProgress = [...lessons]
     .filter((lesson) => lesson.progress?.status === "in_progress")
     .sort((left, right) =>
@@ -251,11 +266,15 @@ export function selectActiveLesson(lessons: LessonListItem[]): LessonResumeTarge
   return null;
 }
 
-export function selectResumeLesson(lessons: LessonListItem[]): LessonResumeTarget | null {
+export function selectResumeLesson(
+  lessons: LessonListItem[]
+): LessonResumeTarget | null {
   return selectNextLesson(lessons);
 }
 
-export function selectNextLesson(lessons: LessonListItem[]): LessonResumeTarget | null {
+export function selectNextLesson(
+  lessons: LessonListItem[]
+): LessonResumeTarget | null {
   const notCompleted = lessons.find(
     (lesson) => lesson.progress?.status !== "completed"
   );
@@ -263,7 +282,9 @@ export function selectNextLesson(lessons: LessonListItem[]): LessonResumeTarget 
   return mapLessonTarget(notCompleted ?? lessons.at(0) ?? null);
 }
 
-export function mapLessonTarget(lesson: LessonListItem | null): LessonResumeTarget | null {
+export function mapLessonTarget(
+  lesson: LessonListItem | null
+): LessonResumeTarget | null {
   if (!lesson) {
     return null;
   }
@@ -278,12 +299,16 @@ export function mapLessonTarget(lesson: LessonListItem | null): LessonResumeTarg
       lesson.progress?.status === "completed"
         ? lesson.progress.status
         : "not_started",
-    statusLabel: formatLessonProgressStatusLabel(lesson.progress?.status ?? null),
+    statusLabel: formatLessonProgressStatusLabel(
+      lesson.progress?.status ?? null
+    ),
     segmentTitle: lesson.segment?.title
   };
 }
 
-export function buildSegments(lessons: LessonListItem[]): SegmentStudyPreview[] {
+export function buildSegments(
+  lessons: LessonListItem[]
+): SegmentStudyPreview[] {
   const groups = new Map<string, SegmentStudyPreview>();
 
   for (const lesson of lessons) {
@@ -294,7 +319,8 @@ export function buildSegments(lessons: LessonListItem[]): SegmentStudyPreview[] 
 
     if (existing) {
       existing.lessonCount += 1;
-      existing.completedLessons += lesson.progress?.status === "completed" ? 1 : 0;
+      existing.completedLessons +=
+        lesson.progress?.status === "completed" ? 1 : 0;
 
       if (!existing.currentLessonTitle && currentLessonTitle) {
         existing.currentLessonTitle = currentLessonTitle;
@@ -320,7 +346,7 @@ function groupStudySignals(rows: StudySignalRow[]): StudySignalLookup {
   const map: StudySignalLookup = new Map();
 
   for (const row of rows) {
-    const key = `${row.entryType}:${row.entryId}`;
+    const key = buildEntryKey(row.entryType, row.entryId);
     const existing = map.get(key);
 
     if (existing) {

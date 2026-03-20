@@ -12,6 +12,7 @@ import type {
   RichTextFragment,
   TermDefinitionBlock
 } from "../types.ts";
+import { buildEntryKey } from "../../entry-id.ts";
 import { normalizeSearchText } from "../../study-search.ts";
 import { mediaAssetHref } from "../../site.ts";
 
@@ -348,7 +349,9 @@ function extractBlockText(block: ContentBlock): string {
     case "thematicBreak":
       return "";
     case "image":
-      return block.caption ? extractInlineNodesText(block.caption.nodes) : block.alt;
+      return block.caption
+        ? extractInlineNodesText(block.caption.nodes)
+        : block.alt;
     case "exampleSentence":
       return [
         extractInlineNodesText(block.sentence.nodes),
@@ -499,7 +502,7 @@ function dedupeReferenceKeys(
   const seen = new Set<string>();
 
   return keys.filter((key) => {
-    const compoundKey = `${key.entryType}:${key.entryId}`;
+    const compoundKey = buildEntryKey(key.entryType, key.entryId);
 
     if (seen.has(compoundKey)) {
       return false;

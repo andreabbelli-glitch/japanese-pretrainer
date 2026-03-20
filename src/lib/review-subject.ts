@@ -1,5 +1,6 @@
 import type { ReviewCardListItem } from "../db/queries/review.ts";
 import type { EntryType } from "../db/schema/enums.ts";
+import { buildEntryKey } from "./entry-id.ts";
 import { stripInlineMarkdown } from "./inline-markdown.ts";
 
 import {
@@ -90,7 +91,7 @@ export function buildReviewSubjectEntryLookup(input: {
   ];
 
   for (const { entry, entryType, label } of entries) {
-    lookup.set(`${entryType}:${entry.id}`, {
+    lookup.set(buildEntryKey(entryType, entry.id), {
       crossMediaGroupId: entry.crossMediaGroupId,
       entryId: entry.id,
       entryType,
@@ -120,7 +121,7 @@ export function deriveReviewSubjectIdentity(input: {
 
   const drivingLink = drivingLinks[0]!;
   const drivingEntry = input.entryLookup.get(
-    `${drivingLink.entryType}:${drivingLink.entryId}`
+    buildEntryKey(drivingLink.entryType, drivingLink.entryId)
   );
 
   if (!drivingEntry) {
@@ -305,16 +306,8 @@ export function selectReviewSubjectRepresentativeCard(
   return (
     [...cards].sort((left, right) => {
       const priorityDifference =
-        getReviewCardPriority(
-          left,
-          subjectState,
-          nowIso
-        ) -
-        getReviewCardPriority(
-          right,
-          subjectState,
-          nowIso
-        );
+        getReviewCardPriority(left, subjectState, nowIso) -
+        getReviewCardPriority(right, subjectState, nowIso);
 
       if (priorityDifference !== 0) {
         return priorityDifference;

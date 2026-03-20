@@ -7,6 +7,7 @@ import {
   isWithinMediaAssetRoot,
   resolveMediaAssetAbsolutePath
 } from "../media-assets.ts";
+import { buildEntryKey } from "../entry-id.ts";
 import type {
   EntryAudioMetadata,
   NormalizedGrammarPattern,
@@ -202,7 +203,7 @@ async function parsePronunciationManifest(input: {
           category: "schema",
           filePath: input.sourceFile,
           message: "Pronunciation manifest root must be a JSON object.",
-          hint: "Use { \"version\": 1, \"entries\": [...] }."
+          hint: 'Use { "version": 1, "entries": [...] }.'
         })
       ],
       manifest: null
@@ -259,7 +260,7 @@ async function parsePronunciationManifest(input: {
       continue;
     }
 
-    const entryKey = `${entry.value.entryType}:${entry.value.entryId}`;
+    const entryKey = buildEntryKey(entry.value.entryType, entry.value.entryId);
 
     if (seenKeys.has(entryKey)) {
       issues.push(
@@ -282,13 +283,12 @@ async function parsePronunciationManifest(input: {
 
   return {
     issues,
-    manifest:
-      issues.some((issue) => issue.category === "syntax")
-        ? null
-        : {
-            sourceFile: input.sourceFile,
-            entries: manifestEntries
-          }
+    manifest: issues.some((issue) => issue.category === "syntax")
+      ? null
+      : {
+          sourceFile: input.sourceFile,
+          entries: manifestEntries
+        }
   };
 }
 
@@ -339,7 +339,8 @@ async function parseManifestEntry(input: {
         code: "pronunciation-manifest.invalid-entry-type",
         category: "schema",
         filePath: input.sourceFile,
-        message: "Pronunciation manifest entry_type must be 'term' or 'grammar'.",
+        message:
+          "Pronunciation manifest entry_type must be 'term' or 'grammar'.",
         path: `${scope}.entry_type`
       })
     );
@@ -363,7 +364,8 @@ async function parseManifestEntry(input: {
         code: "pronunciation-manifest.invalid-pitch-accent",
         category: "schema",
         filePath: input.sourceFile,
-        message: "Pronunciation manifest pitch_accent must be an integer greater than or equal to 0.",
+        message:
+          "Pronunciation manifest pitch_accent must be an integer greater than or equal to 0.",
         path: `${scope}.pitch_accent`
       })
     );
@@ -492,7 +494,10 @@ export async function normalizeEntryAudioMetadata(input: {
       })
     );
   } else {
-    const resolved = resolveMediaAssetAbsolutePath(input.mediaDirectory, audioSrc);
+    const resolved = resolveMediaAssetAbsolutePath(
+      input.mediaDirectory,
+      audioSrc
+    );
 
     if (!isWithinMediaAssetRoot(resolved.assetRoot, resolved.absolutePath)) {
       issues.push(
@@ -605,11 +610,11 @@ function readOptionalPitchAccent(value: unknown): {
 function hasAudioMetadata(entry: Partial<EntryAudioMetadata>) {
   return Boolean(
     entry.audioSrc ||
-      entry.audioSource ||
-      entry.audioSpeaker ||
-      entry.audioLicense ||
-      entry.audioAttribution ||
-      entry.audioPageUrl
+    entry.audioSource ||
+    entry.audioSpeaker ||
+    entry.audioLicense ||
+    entry.audioAttribution ||
+    entry.audioPageUrl
   );
 }
 
