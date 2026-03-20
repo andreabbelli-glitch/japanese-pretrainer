@@ -2547,11 +2547,7 @@ function buildReviewQueueSubjectSnapshot(input: {
     effectiveDailyLimit - input.newIntroducedTodayCount,
     0
   );
-  const queuedNewCards = globalNewCards
-    .slice(0, newSlots)
-    .filter((model) =>
-      isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
-    );
+  const queuedNewCards = newCards.slice(0, newSlots);
   const queueModels = [...dueCards, ...queuedNewCards];
   const introLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,

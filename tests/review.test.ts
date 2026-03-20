@@ -1015,7 +1015,7 @@ describe("review system", () => {
     expect(persistedState?.state).toBe("review");
     expect(persistedState?.reps).toBe(4);
     expect(persistedState?.lapses).toBe(1);
-    expect(persistedState?.dueAt).toBe("2026-03-10T12:00:00.000Z");
+    expect(persistedState?.dueAt).toBe("2026-03-10T00:00:00.000Z");
     expect(persistedState?.schedulerVersion).toBe("fsrs_v1");
     expect(persistedState?.scheduledDays).toBe(1);
     expect(persistedState?.learningSteps).toBe(0);

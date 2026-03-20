@@ -99,6 +99,8 @@ export function scheduleReview(
   const card = buildFsrsCard(input.current, input.now);
   const result = reviewScheduler.next(card, input.now, mapReviewRating(input.rating));
 
+  clampInternalCardDueDate(result.card);
+
   return {
     difficulty: roundTo(result.card.difficulty, 3),
     dueAt: result.card.due.toISOString(),
@@ -263,6 +265,8 @@ export function replayReviewHistory(
     }
 
     const result = reviewScheduler.next(card, reviewAt, mapReviewRating(log.rating));
+    
+    clampInternalCardDueDate(result.card);
 
     replayedLogs.push({
       answeredAt: log.answeredAt,
@@ -314,4 +318,16 @@ function roundTo(value: number, decimals: number) {
   const factor = 10 ** decimals;
 
   return Math.round(value * factor) / factor;
+}
+
+function clampInternalCardDueDate(card: Pick<Card, "due" | "scheduled_days">) {
+  if (card.scheduled_days >= 1) {
+    card.due = new Date(
+      Date.UTC(
+        card.due.getUTCFullYear(),
+        card.due.getUTCMonth(),
+        card.due.getUTCDate()
+      )
+    );
+  }
 }
