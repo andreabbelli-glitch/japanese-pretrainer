@@ -21,7 +21,6 @@ import {
   getAuthConfig
 } from "../src/lib/auth.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
-import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
 
 const BENCHMARK_ROUTES = [
   "/",
@@ -435,7 +434,6 @@ async function prepareDatabase(databaseUrl: string, isRemote: boolean) {
     }
 
     await purgeArchivedMedia(database);
-    await backfillReviewSubjectState(database);
   } finally {
     closeDatabaseClient(database);
   }

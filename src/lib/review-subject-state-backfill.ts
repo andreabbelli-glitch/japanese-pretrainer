@@ -1,15 +1,11 @@
+import { sql } from "drizzle-orm";
+
 import type { DatabaseClient } from "../db/client.ts";
-import { listReviewSubjectStatesByKeys } from "../db/queries/review-subject.ts";
 import { listReviewCardsByMediaIds } from "../db/queries/review.ts";
 import { reviewSubjectState } from "../db/schema/review.ts";
 
-import {
-  buildReviewSubjectEntryLookup,
-  deriveReviewSubjectIdentity,
-  groupReviewCardsBySubject,
-  selectReviewSubjectRepresentativeCard,
-  type ReviewSubjectStateSnapshot
-} from "./review-subject.ts";
+import type { ReviewSubjectStateSnapshot } from "./review-subject.ts";
+import { loadReviewSubjectStateLookup } from "./review-subject-state-lookup.ts";
 
 export type ReviewSubjectStateBackfillResult = {
   cardCount: number;
@@ -17,13 +13,57 @@ export type ReviewSubjectStateBackfillResult = {
   subjectCount: number;
 };
 
-export type ReviewSubjectStateCoverageResult = {
+type ReviewSubjectCoverageSnapshot = {
   cardCount: number;
-  complete: boolean;
   existingStateCount: number;
   missingStateCount: number;
   subjectCount: number;
+  subjectGroups: Awaited<
+    ReturnType<typeof loadReviewSubjectStateLookup>
+  >["subjectGroups"];
 };
+
+export async function syncReviewSubjectState(
+  database: DatabaseClient,
+  input: {
+    now?: Date;
+  } = {}
+): Promise<ReviewSubjectStateBackfillResult> {
+  const snapshot = await loadReviewSubjectCoverageSnapshot(database, input);
+
+  if (snapshot.subjectGroups.length === 0) {
+    return {
+      cardCount: snapshot.cardCount,
+      insertedCount: 0,
+      subjectCount: snapshot.subjectCount
+    };
+  }
+
+  await database
+    .insert(reviewSubjectState)
+    .values(
+      snapshot.subjectGroups.map((group) =>
+        buildSynchronizedReviewSubjectState(group)
+      )
+    )
+    .onConflictDoUpdate({
+      target: reviewSubjectState.subjectKey,
+      set: {
+        cardId: sql.raw("excluded.card_id"),
+        crossMediaGroupId: sql.raw("excluded.cross_media_group_id"),
+        entryId: sql.raw("excluded.entry_id"),
+        entryType: sql.raw("excluded.entry_type"),
+        subjectType: sql.raw("excluded.subject_type"),
+        suspended: sql.raw("excluded.suspended")
+      }
+    });
+
+  return {
+    cardCount: snapshot.cardCount,
+    insertedCount: snapshot.missingStateCount,
+    subjectCount: snapshot.subjectCount
+  };
+}
 
 export async function backfillReviewSubjectState(
   database: DatabaseClient,
@@ -31,135 +71,15 @@ export async function backfillReviewSubjectState(
     now?: Date;
   } = {}
 ): Promise<ReviewSubjectStateBackfillResult> {
-  const [mediaRows, terms, grammar] = await Promise.all([
-    database.query.media.findMany({
-      columns: {
-        id: true
-      }
-    }),
-    database.query.term.findMany({
-      columns: {
-        crossMediaGroupId: true,
-        id: true,
-        lemma: true,
-        reading: true
-      }
-    }),
-    database.query.grammarPattern.findMany({
-      columns: {
-        crossMediaGroupId: true,
-        id: true,
-        pattern: true,
-        reading: true
-      }
-    })
-  ]);
-  const mediaIds = mediaRows.map((row) => row.id);
-
-  if (mediaIds.length === 0) {
-    return {
-      cardCount: 0,
-      insertedCount: 0,
-      subjectCount: 0
-    };
-  }
-
-  const cards = await listReviewCardsByMediaIds(database, mediaIds);
-
-  if (cards.length === 0) {
-    return {
-      cardCount: 0,
-      insertedCount: 0,
-      subjectCount: 0
-    };
-  }
-
-  const subjectEntryLookup = buildReviewSubjectEntryLookup({
-    grammar,
-    terms
-  });
-  const subjectKeys = [
-    ...new Set(
-      cards.map(
-        (card) =>
-          deriveReviewSubjectIdentity({
-            cardId: card.id,
-            cardType: card.cardType,
-            front: card.front,
-            entryLinks: card.entryLinks,
-            entryLookup: subjectEntryLookup
-          }).subjectKey
-      )
-    )
-  ];
-  const subjectStateRows = await listReviewSubjectStatesByKeys(
-    database,
-    subjectKeys
-  );
-  const subjectStates = new Map(
-    [...subjectStateRows.entries()].map(([subjectKey, row]) => [
-      subjectKey,
-      row as ReviewSubjectStateSnapshot
-    ])
-  );
-  const subjectGroups = groupReviewCardsBySubject({
-    cards,
-    entryLookup: subjectEntryLookup,
-    nowIso: input.now?.toISOString(),
-    subjectStates
-  });
-  const missingSubjectGroups = subjectGroups.filter(
-    (group) => !subjectStates.has(group.identity.subjectKey)
-  );
-  const initialStates = missingSubjectGroups.map((group) =>
-    buildInitialReviewSubjectState(group, input.now?.toISOString())
-  );
-
-  if (initialStates.length > 0) {
-    await database
-      .insert(reviewSubjectState)
-      .values(
-        initialStates.map((state) => ({
-          cardId: state.cardId,
-          createdAt: state.createdAt,
-          crossMediaGroupId: state.crossMediaGroupId,
-          difficulty: state.difficulty,
-          dueAt: state.dueAt,
-          entryId: state.entryId,
-          entryType: state.entryType,
-          lapses: state.lapses,
-          lastInteractionAt: state.lastInteractionAt,
-          lastReviewedAt: state.lastReviewedAt,
-          learningSteps: state.learningSteps,
-          manualOverride: state.manualOverride,
-          reps: state.reps,
-          scheduledDays: state.scheduledDays,
-          stability: state.stability,
-          state: state.state,
-          subjectKey: state.subjectKey,
-          subjectType: state.subjectType,
-          suspended: state.suspended,
-          updatedAt: state.updatedAt
-        }))
-      )
-      .onConflictDoNothing({
-        target: reviewSubjectState.subjectKey
-      });
-  }
-
-  return {
-    cardCount: cards.length,
-    insertedCount: initialStates.length,
-    subjectCount: subjectGroups.length
-  };
+  return syncReviewSubjectState(database, input);
 }
 
-export async function inspectReviewSubjectStateCoverage(
+async function loadReviewSubjectCoverageSnapshot(
   database: DatabaseClient,
   input: {
     now?: Date;
-  } = {}
-): Promise<ReviewSubjectStateCoverageResult> {
+  }
+): Promise<ReviewSubjectCoverageSnapshot> {
   const [mediaRows, terms, grammar] = await Promise.all([
     database.query.media.findMany({
       columns: {
@@ -188,10 +108,10 @@ export async function inspectReviewSubjectStateCoverage(
   if (mediaIds.length === 0) {
     return {
       cardCount: 0,
-      complete: true,
       existingStateCount: 0,
       missingStateCount: 0,
-      subjectCount: 0
+      subjectCount: 0,
+      subjectGroups: []
     };
   }
 
@@ -200,90 +120,88 @@ export async function inspectReviewSubjectStateCoverage(
   if (cards.length === 0) {
     return {
       cardCount: 0,
-      complete: true,
       existingStateCount: 0,
       missingStateCount: 0,
-      subjectCount: 0
+      subjectCount: 0,
+      subjectGroups: []
     };
   }
 
-  const subjectEntryLookup = buildReviewSubjectEntryLookup({
+  const { subjectGroups } = await loadReviewSubjectStateLookup({
+    cards,
+    database,
     grammar,
+    nowIso: input.now?.toISOString(),
     terms
   });
-  const subjectKeys = [
-    ...new Set(
-      cards.map(
-        (card) =>
-          deriveReviewSubjectIdentity({
-            cardId: card.id,
-            cardType: card.cardType,
-            front: card.front,
-            entryLinks: card.entryLinks,
-            entryLookup: subjectEntryLookup
-          }).subjectKey
-      )
-    )
-  ];
-  const subjectStateRows = await listReviewSubjectStatesByKeys(
-    database,
-    subjectKeys
-  );
-  const subjectStates = new Map(
-    [...subjectStateRows.entries()].map(([subjectKey, row]) => [
-      subjectKey,
-      row as ReviewSubjectStateSnapshot
-    ])
-  );
-  const subjectGroups = groupReviewCardsBySubject({
-    cards,
-    entryLookup: subjectEntryLookup,
-    nowIso: input.now?.toISOString(),
-    subjectStates
-  });
-  const missingSubjectGroups = subjectGroups.filter(
-    (group) => !subjectStates.has(group.identity.subjectKey)
-  );
+  const existingStateCount = subjectGroups.filter(
+    (group) => group.subjectState !== null
+  ).length;
 
   return {
     cardCount: cards.length,
-    complete: missingSubjectGroups.length === 0,
-    existingStateCount: subjectStates.size,
-    missingStateCount: missingSubjectGroups.length,
-    subjectCount: subjectGroups.length
+    existingStateCount,
+    missingStateCount: subjectGroups.length - existingStateCount,
+    subjectCount: subjectGroups.length,
+    subjectGroups
   };
 }
 
 function buildInitialReviewSubjectState(
-  group: ReturnType<typeof groupReviewCardsBySubject>[number],
-  nowIso?: string
+  group: ReviewSubjectCoverageSnapshot["subjectGroups"][number]
 ): ReviewSubjectStateSnapshot {
-  const representativeCard = selectReviewSubjectRepresentativeCard(
-    group.cards,
-    null,
-    nowIso
-  );
-
   return {
-    cardId: representativeCard.id,
-    createdAt: representativeCard.createdAt,
+    cardId: group.representativeCard.id,
+    createdAt: group.representativeCard.createdAt,
     crossMediaGroupId: group.identity.crossMediaGroupId,
     difficulty: null,
     dueAt: null,
     entryId: group.identity.entryId,
     entryType: group.identity.entryType,
     lapses: 0,
-    lastInteractionAt: representativeCard.updatedAt ?? representativeCard.createdAt,
+    lastInteractionAt:
+      group.representativeCard.updatedAt ?? group.representativeCard.createdAt,
     lastReviewedAt: null,
     learningSteps: 0,
     manualOverride: false,
     reps: 0,
     scheduledDays: 0,
+    schedulerVersion: "fsrs_v1",
     stability: null,
     state: "new",
     subjectKey: group.identity.subjectKey,
     subjectType: group.identity.subjectKind,
-    suspended: representativeCard.status === "suspended",
-    updatedAt: representativeCard.updatedAt
+    suspended: group.representativeCard.status === "suspended",
+    updatedAt: group.representativeCard.updatedAt
+  };
+}
+
+function buildSynchronizedReviewSubjectState(
+  group: ReviewSubjectCoverageSnapshot["subjectGroups"][number]
+) {
+  const currentState = group.subjectState ?? buildInitialReviewSubjectState(group);
+
+  return {
+    cardId: group.representativeCard.id,
+    createdAt: currentState.createdAt,
+    crossMediaGroupId: group.identity.crossMediaGroupId,
+    difficulty: currentState.difficulty,
+    dueAt: currentState.dueAt,
+    entryId: group.identity.entryId,
+    entryType: group.identity.entryType,
+    lapses: currentState.lapses,
+    lastInteractionAt: currentState.lastInteractionAt,
+    lastReviewedAt: currentState.lastReviewedAt,
+    learningSteps: currentState.learningSteps,
+    manualOverride: currentState.manualOverride,
+    reps: currentState.reps,
+    scheduledDays: currentState.scheduledDays,
+    schedulerVersion: currentState.schedulerVersion,
+    stability: currentState.stability,
+    state: currentState.state,
+    subjectKey: group.identity.subjectKey,
+    subjectType: group.identity.subjectKind,
+    suspended: currentState.suspended,
+    updatedAt: currentState.updatedAt
   };
 }

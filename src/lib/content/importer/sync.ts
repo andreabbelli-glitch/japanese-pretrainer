@@ -16,6 +16,7 @@ import {
   termAlias
 } from "../../../db/schema/index.ts";
 
+import { syncReviewSubjectState } from "../../review-subject-state-backfill.ts";
 import { buildMediaImportPlan } from "./planner.ts";
 import type {
   ExistingMediaState,
@@ -99,6 +100,9 @@ export async function syncContentWorkspace(
   }
 
   await pruneOrphanedCrossMediaGroups(transaction);
+  await syncReviewSubjectState(transaction as unknown as DatabaseClient, {
+    now: new Date(input.nowIso)
+  });
 
   return {
     filesChanged,

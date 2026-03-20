@@ -122,14 +122,13 @@ Tabelle incluse nel perimetro del task:
   subject. Ogni voto salva stato precedente e successivo, `scheduled_due_at` e
   tempo di risposta quando disponibile.
 - La migrazione SQL `drizzle/0011_global_review_subjects.sql` crea
-  `review_subject_state` e `review_subject_log`; il comando `pnpm db:migrate`
-  esegue poi un backfill applicativo idempotente di `review_subject_state`
-  sugli upgrade legacy. Gli entrypoint di import/seed eseguono lo stesso
-  backfill dopo aver sincronizzato il contenuto, cosi il DB locale arriva alla
-  review con la tabella canonica gia completa. La cleanup migration
+  `review_subject_state` e `review_subject_log`; il contenuto sincronizzato via
+  importer crea e riallinea direttamente `review_subject_state`, quindi
+  `pnpm db:migrate` non esegue piu un backfill automatico dedicato. La cleanup migration
   `drizzle/0014_oval_expediter.sql` elimina poi le vecchie tabelle card-level
-  `review_state` e `review_log`, ormai non piu usate dal runtime. Lo stesso
-  pass e rieseguibile manualmente con `pnpm db:backfill-review-subject-state`.
+  `review_state` e `review_log`, ormai non piu usate dal runtime. Un recovery
+  manuale resta disponibile con `pnpm db:backfill-review-subject-state`, ma non
+  dovrebbe servire in condizioni normali.
 - A livello UI e query: `/review` usa la queue globale reale sui subject, mentre
   `/media/[mediaSlug]/review` resta una vista filtrata locale. I numeri
   etichettati come globali devono arrivare dal modello subject-level globale;

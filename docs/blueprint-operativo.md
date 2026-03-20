@@ -247,8 +247,9 @@ Il subject state canonico e `review_subject_state` e la cronologia canonica e
 conteggio dei nuovi introdotti nel giorno non deve azzerarsi sugli upgrade.
 
 La migrazione SQL `0011_global_review_subjects.sql` introduce anche
-`review_subject_log`; il comando `pnpm db:migrate` esegue poi un backfill
-applicativo idempotente di `review_subject_state` sugli upgrade legacy. La
+`review_subject_log`; l'importer crea e riallinea `review_subject_state`
+direttamente durante il sync del contenuto, mentre `pnpm db:migrate` non fa
+piu backfill automatici dedicati. La
 cleanup migration `0014_oval_expediter.sql` rimuove poi le vecchie tabelle
 card-level `review_state` e `review_log`, dopo il consolidamento completo del
 modello subject-level.

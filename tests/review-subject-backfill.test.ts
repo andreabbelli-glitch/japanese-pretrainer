@@ -8,21 +8,19 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   lessonProgress,
+  reviewSubjectState,
   runMigrations,
   type DatabaseClient
 } from "@/db";
 import { getGlobalReviewPageData, getReviewPageData } from "@/lib/review";
 import { importContentWorkspace } from "@/lib/content/importer";
-import {
-  backfillReviewSubjectState,
-  inspectReviewSubjectStateCoverage
-} from "@/lib/review-subject-state-backfill";
+import { backfillReviewSubjectState } from "@/lib/review-subject-state-backfill";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
 
-describe("review subject state backfill", () => {
+describe("review subject state recovery backfill", () => {
   let tempDir = "";
   let database: DatabaseClient;
 
@@ -40,7 +38,7 @@ describe("review subject state backfill", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("backfills missing cross-media subject state idempotently without changing queue selection", async () => {
+  it("recovers missing cross-media subject state idempotently without changing queue selection", async () => {
     const contentRoot = path.join(tempDir, "cross-media-backfill");
 
     await writeCrossMediaContentFixture(contentRoot);
@@ -51,6 +49,7 @@ describe("review subject state backfill", () => {
     });
 
     expect(importResult.status).toBe("completed");
+    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(3);
 
     await database.insert(lessonProgress).values([
       {
@@ -65,19 +64,9 @@ describe("review subject state backfill", () => {
       }
     ]);
 
+    await database.delete(reviewSubjectState);
+
     expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
-
-    const coverageBefore = await inspectReviewSubjectStateCoverage(database, {
-      now: new Date("2026-03-11T09:00:00.000Z")
-    });
-
-    expect(coverageBefore).toMatchObject({
-      cardCount: 5,
-      complete: false,
-      existingStateCount: 0,
-      missingStateCount: 3,
-      subjectCount: 3
-    });
 
     const [beforeGlobal, beforeBeta] = await Promise.all([
       getGlobalReviewPageData({}, database),
@@ -123,17 +112,7 @@ describe("review subject state backfill", () => {
       suspended: false
     });
 
-    const coverageAfter = await inspectReviewSubjectStateCoverage(database, {
-      now: new Date("2026-03-11T09:05:00.000Z")
-    });
-
-    expect(coverageAfter).toMatchObject({
-      cardCount: 5,
-      complete: true,
-      existingStateCount: 3,
-      missingStateCount: 0,
-      subjectCount: 3
-    });
+    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(3);
 
     const secondRun = await backfillReviewSubjectState(database, {
       now: new Date("2026-03-11T09:05:00.000Z")

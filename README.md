@@ -45,15 +45,15 @@ La review usa un modello canonico a livello subject:
 - `review_subject_log` registra la cronologia delle risposte a livello subject.
 
 La migrazione SQL [`drizzle/0011_global_review_subjects.sql`](./drizzle/0011_global_review_subjects.sql)
-crea le tabelle subject-level; il comando `pnpm db:migrate` esegue poi un
-backfill applicativo idempotente di `review_subject_state` per gli upgrade da
-DB legacy. Gli entrypoint di import/seed eseguono lo stesso backfill dopo aver
-materializzato il contenuto, cosi il DB locale arriva alla review con il
-subject state canonico gia completo. La cleanup migration
+crea le tabelle subject-level. Il flusso normale materializza e riallinea
+`review_subject_state` direttamente durante `pnpm content:import` e
+`pnpm db:seed`, senza un backfill automatico separato dopo migrate/startup. La
+cleanup migration
 [`drizzle/0014_oval_expediter.sql`](./drizzle/0014_oval_expediter.sql) rimuove
 poi le vecchie tabelle card-level `review_state` e `review_log`, ormai non piu
 usate dal runtime. Per rieseguire il pass manualmente esiste anche
-`pnpm db:backfill-review-subject-state`.
+`pnpm db:backfill-review-subject-state`, da usare solo per recovery di DB
+inconsistenti o upgrade legacy parziali.
 
 A livello di prodotto:
 

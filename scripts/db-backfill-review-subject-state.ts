@@ -1,31 +1,34 @@
 import "dotenv/config";
 
+import { count } from "drizzle-orm";
+
 import { closeDatabaseClient, db } from "../src/db/client.ts";
 import { resolveDatabaseLocation } from "../src/db/config.ts";
-import {
-  backfillReviewSubjectState,
-  inspectReviewSubjectStateCoverage
-} from "../src/lib/review-subject-state-backfill.ts";
+import { reviewSubjectState } from "../src/db/schema/review.ts";
+import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
 
 const location = resolveDatabaseLocation();
 
 try {
-  const before = await inspectReviewSubjectStateCoverage(db);
+  const before = await countReviewSubjectStates();
   const result = await backfillReviewSubjectState(db);
-  const after = await inspectReviewSubjectStateCoverage(db);
+  const after = await countReviewSubjectStates();
 
   console.info(
     [
-      `Coverage before: ${before.existingStateCount}/${before.subjectCount} subject states present`,
-      `(${before.missingStateCount} missing).`,
-      `Backfilled ${result.insertedCount} review subject states`,
-      `from ${result.cardCount} review cards`,
-      `(${result.subjectCount} total subjects).`,
-      `Coverage after: ${after.existingStateCount}/${after.subjectCount} subject states present`,
-      `(${after.missingStateCount} missing).`,
-      `on ${location.databasePath ?? location.configuredPath}.`
+      "Manual recovery only: in condizioni normali questo script non dovrebbe essere necessario.",
+      `review_subject_state prima: ${before}.`,
+      `Recovery completata: ${result.insertedCount} subject state inseriti`,
+      `su ${result.subjectCount} subject derivati da ${result.cardCount} card.`,
+      `review_subject_state dopo: ${after}.`,
+      `DB: ${location.databasePath ?? location.configuredPath}.`
     ].join(" ")
   );
 } finally {
   closeDatabaseClient(db);
+}
+
+async function countReviewSubjectStates() {
+  const rows = await db.select({ value: count() }).from(reviewSubjectState);
+  return rows[0]?.value ?? 0;
 }

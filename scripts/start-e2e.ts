@@ -10,7 +10,6 @@ import {
 } from "../src/db/index.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
-import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
 
 const database = createDatabaseClient({
   databaseUrl: process.env.DATABASE_URL
@@ -39,7 +38,6 @@ try {
   }
 
   await purgeArchivedMedia(database);
-  await backfillReviewSubjectState(database);
 } finally {
   closeDatabaseClient(database);
 }

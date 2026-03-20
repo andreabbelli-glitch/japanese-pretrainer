@@ -11,7 +11,7 @@ import {
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
@@ -111,6 +111,7 @@ describe("content importer", () => {
     expect(await countRows(database.query.entryLink.findMany())).toBe(6);
     expect(await countRows(database.query.card.findMany())).toBe(2);
     expect(await countRows(database.query.cardEntryLink.findMany())).toBe(2);
+    expect(await countRows(database.query.reviewSubjectState.findMany())).toBe(2);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedLesson = await database.query.lesson.findFirst({
@@ -931,29 +932,48 @@ tags: [character]
 }
 
 async function seedUserState(database: DatabaseClient) {
-  await database.insert(reviewSubjectState).values({
-    subjectKey: `entry:term:${termDbId}`,
-    subjectType: "entry",
-    entryType: "term",
-    crossMediaGroupId: null,
-    entryId: termDbId,
-    cardId: termCardId,
-    state: "learning",
-    stability: 1.7,
-    difficulty: 4.1,
-    dueAt: "2026-03-10T09:00:00.000Z",
-    lastReviewedAt: "2026-03-09T09:30:00.000Z",
-    lastInteractionAt: "2026-03-09T09:30:00.000Z",
-    scheduledDays: 0,
-    learningSteps: 0,
-    lapses: 1,
-    reps: 3,
-    schedulerVersion: "fsrs_v1",
-    manualOverride: true,
-    suspended: false,
-    createdAt: "2026-03-09T09:00:00.000Z",
-    updatedAt: "2026-03-09T09:30:00.000Z"
-  });
+  await database
+    .insert(reviewSubjectState)
+    .values({
+      subjectKey: `entry:term:${termDbId}`,
+      subjectType: "entry",
+      entryType: "term",
+      crossMediaGroupId: null,
+      entryId: termDbId,
+      cardId: termCardId,
+      state: "learning",
+      stability: 1.7,
+      difficulty: 4.1,
+      dueAt: "2026-03-10T09:00:00.000Z",
+      lastReviewedAt: "2026-03-09T09:30:00.000Z",
+      lastInteractionAt: "2026-03-09T09:30:00.000Z",
+      scheduledDays: 0,
+      learningSteps: 0,
+      lapses: 1,
+      reps: 3,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: true,
+      suspended: false,
+      createdAt: "2026-03-09T09:00:00.000Z",
+      updatedAt: "2026-03-09T09:30:00.000Z"
+    })
+    .onConflictDoUpdate({
+      target: reviewSubjectState.subjectKey,
+      set: {
+        cardId: sql`excluded.card_id`,
+        state: sql`excluded.state`,
+        stability: sql`excluded.stability`,
+        difficulty: sql`excluded.difficulty`,
+        dueAt: sql`excluded.due_at`,
+        lastReviewedAt: sql`excluded.last_reviewed_at`,
+        lastInteractionAt: sql`excluded.last_interaction_at`,
+        lapses: sql`excluded.lapses`,
+        reps: sql`excluded.reps`,
+        schedulerVersion: sql`excluded.scheduler_version`,
+        manualOverride: sql`excluded.manual_override`,
+        updatedAt: sql`excluded.updated_at`
+      }
+    });
   await database.insert(reviewSubjectLog).values({
     id: "review_subject_log_term_taberu",
     subjectKey: `entry:term:${termDbId}`,

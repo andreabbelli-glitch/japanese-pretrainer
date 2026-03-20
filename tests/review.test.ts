@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { and, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -609,6 +609,9 @@ describe("review system", () => {
     expect(result.status).toBe("completed");
     const { alphaTermEntry, crossMediaGroupId, subjectKey } =
       await loadCrossMediaTermSubjectContext(database);
+    await database
+      .delete(reviewSubjectState)
+      .where(eq(reviewSubjectState.subjectKey, subjectKey));
     await database.insert(reviewSubjectState).values({
       subjectKey,
       subjectType: "group",
@@ -1035,11 +1038,10 @@ describe("review system", () => {
 
     expect(result.status).toBe("completed");
     const { subjectKey } = await loadCrossMediaTermSubjectContext(database);
-    expect(
-      await database.query.reviewSubjectState.findFirst({
-        where: eq(reviewSubjectState.subjectKey, subjectKey)
-      })
-    ).toBeUndefined();
+    const existingSubjectState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, subjectKey)
+    });
+    expect(existingSubjectState?.state).toBe("new");
     await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
 
     const now = new Date("2026-03-11T09:00:00.000Z");
@@ -2238,6 +2240,9 @@ describe("review system", () => {
         completedAt: "2026-03-11T08:00:00.000Z"
       }
     ]);
+    await database
+      .delete(reviewSubjectState)
+      .where(eq(reviewSubjectState.subjectKey, subjectKey));
     await database.insert(reviewSubjectState).values({
       subjectKey,
       subjectType: "group",
@@ -2387,6 +2392,9 @@ describe("review system", () => {
         completedAt: "2026-03-11T08:00:00.000Z"
       }
     ]);
+    await database
+      .delete(reviewSubjectState)
+      .where(eq(reviewSubjectState.subjectKey, subjectKey));
     await database.insert(reviewSubjectState).values({
       subjectKey,
       subjectType: "group",

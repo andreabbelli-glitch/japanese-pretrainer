@@ -43,6 +43,7 @@ export type ReviewSubjectStateSnapshot = {
   manualOverride: boolean;
   reps: number;
   scheduledDays: number;
+  schedulerVersion: "fsrs_v1";
   stability: number | null;
   state: ReviewState;
   subjectKey: string;
