@@ -71,11 +71,12 @@ const kanaPattern = /[\p{Script=Hiragana}\p{Script=Katakana}ー]/u;
 const rubyRequiredBasePattern =
   /[\p{Script=Han}0-9０-９〇零一二三四五六七八九十百千万億兆]/u;
 
+const sharedParser = unified().use(remarkParse);
+
 export function parseMarkdownDocument(
   options: MarkdownParseOptions
 ): MarkdownParseResult {
-  const parser = unified().use(remarkParse);
-  const tree = parser.parse(options.source) as Root;
+  const tree = sharedParser.parse(options.source) as Root;
   const context: ParseContext = {
     filePath: options.filePath,
     documentKind: options.documentKind,
@@ -464,8 +465,7 @@ function parseInlineSource(
   fallbackRange?: SourceRange,
   mode: "fragment" | "inlineCode" = "fragment"
 ): InlineNode[] {
-  const parser = unified().use(remarkParse);
-  const tree = parser.parse(source) as Root;
+  const tree = sharedParser.parse(source) as Root;
 
   if (tree.children.some((child) => child.type !== "paragraph")) {
     if (mode === "fragment") {

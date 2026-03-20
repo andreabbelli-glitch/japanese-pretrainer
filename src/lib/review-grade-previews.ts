@@ -84,11 +84,13 @@ function formatScheduledReviewPreview(dueAt: string, now: Date) {
   return `Il ${dueAt.slice(0, 10)}`;
 }
 
+const shortTimeFormatter = new Intl.DateTimeFormat("it-IT", {
+  hour: "2-digit",
+  minute: "2-digit"
+});
+
 function formatShortTime(value: Date) {
-  return new Intl.DateTimeFormat("it-IT", {
-    hour: "2-digit",
-    minute: "2-digit"
-  }).format(value);
+  return shortTimeFormatter.format(value);
 }
 
 function isSameLocalDate(left: Date, right: Date) {
