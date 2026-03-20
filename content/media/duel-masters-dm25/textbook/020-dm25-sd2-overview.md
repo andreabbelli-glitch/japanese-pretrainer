@@ -128,15 +128,9 @@ src: assets/cards/red-zone.webp
 alt: "Carta di とどろくしんりゃく レッドゾーン centrata e leggibile."
 card_id: card-red-zone-recognition
 caption: >-
-  Immagine ufficiale di {{轟|とどろ}}く{{侵略|しんりゃく}} [レッドゾーン](term:term-red-zone), altra carta-simbolo del lato offensivo di `DM25-SD2`.
-:::
-
-:::image
-src: assets/cards/dm25-sd2/02-redzone-roaring-invasion.jpg
-alt: "Carta di Red Zone, centrata e leggibile."
-card_id: card-red-zone-recognition
-caption: >-
-  Formula operativa di [{{侵略|しんりゃく}}](term:term-invasion) e
+  Immagine ufficiale di {{轟|とどろ}}く{{侵略|しんりゃく}}
+  [レッドゾーン](term:term-red-zone). Qui il parsing utile resta la formula
+  operativa di [{{侵略|しんりゃく}}](term:term-invasion) e
   [T・ブレイカー](term:term-t-breaker):
   `{{相手|あいて}}のパワーが{{一番|いちばん}}{{大|おお}}きい`.
 :::
@@ -151,15 +145,9 @@ src: assets/cards/apollonus-dragelion.webp
 alt: "Carta di ちょうしんらせいアポロヌス・ドラゲリオン centrata e leggibile."
 card_id: card-apollonus-dragelion-recognition
 caption: >-
-  Immagine ufficiale di {{超神羅星|ちょうしんらせい}} [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion), finisher simbolo del deck `DM25-SD2`.
-:::
-
-:::image
-src: assets/cards/dm25-sd2/03-super-enlightened-nova-apollonus-dragerion.jpg
-alt: "Carta di Apollonus Dragelion, centrata e leggibile."
-card_id: card-apollonus-dragelion-recognition
-caption: >-
-  Questa carta introduce
+  Immagine ufficiale di {{超神羅星|ちょうしんらせい}}
+  [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion), finisher simbolo
+  del deck `DM25-SD2`. Questa carta introduce
   [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
   [メテオバーン](term:term-meteorburn).
 :::
