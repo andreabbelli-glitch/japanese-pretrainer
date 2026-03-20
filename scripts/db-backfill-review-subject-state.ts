@@ -17,7 +17,7 @@ try {
   console.info(
     [
       `Coverage before: ${before.existingStateCount}/${before.subjectCount} subject states present`,
-      `(${before.missingStateCount} missing; inline=${before.legacyFallbackCounts.inline}, complex=${before.legacyFallbackCounts.complex}).`,
+      `(${before.missingStateCount} missing).`,
       `Backfilled ${result.insertedCount} review subject states`,
       `from ${result.cardCount} review cards`,
       `(${result.subjectCount} total subjects).`,

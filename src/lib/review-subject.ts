@@ -310,11 +310,13 @@ export function selectReviewSubjectRepresentativeCard(
       const priorityDifference =
         getReviewCardPriority(
           left,
+          subjectState,
           nowIso,
           input?.drivingEntryStatusesByCardId?.get(left.id) ?? []
         ) -
         getReviewCardPriority(
           right,
+          subjectState,
           nowIso,
           input?.drivingEntryStatusesByCardId?.get(right.id) ?? []
         );
@@ -347,7 +349,7 @@ export function resolveReviewSubjectLastInteractionAt(
     return subjectState.lastInteractionAt;
   }
 
-  return card.reviewState?.lastReviewedAt ?? card.updatedAt ?? card.createdAt;
+  return card.updatedAt ?? card.createdAt;
 }
 
 export function buildReviewSubjectSeedState(
@@ -391,19 +393,17 @@ export function buildReviewSubjectSeedState(
     };
   }
 
-  const reviewState = seedCard.reviewState;
-
   return {
     current: {
-      difficulty: reviewState?.difficulty ?? null,
-      dueAt: reviewState?.dueAt ?? null,
-      lapses: reviewState?.lapses ?? 0,
-      lastReviewedAt: reviewState?.lastReviewedAt ?? null,
-      learningSteps: reviewState?.learningSteps ?? 0,
-      reps: reviewState?.reps ?? 0,
-      scheduledDays: reviewState?.scheduledDays ?? 0,
-      stability: reviewState?.stability ?? null,
-      state: (reviewState?.state as ReviewState | null) ?? null
+      difficulty: null,
+      dueAt: null,
+      lapses: 0,
+      lastReviewedAt: null,
+      learningSteps: 0,
+      reps: 0,
+      scheduledDays: 0,
+      stability: null,
+      state: null
     },
     seedCardId: seedCard.id
   };
@@ -414,12 +414,8 @@ function compareReviewCardsBySubjectRecency(
   right: ReviewCardListItem
 ) {
   const interactionDifference =
-    toTime(
-      right.reviewState?.lastReviewedAt ?? right.updatedAt ?? right.createdAt
-    ) -
-    toTime(
-      left.reviewState?.lastReviewedAt ?? left.updatedAt ?? left.createdAt
-    );
+    toTime(right.updatedAt ?? right.createdAt) -
+    toTime(left.updatedAt ?? left.createdAt);
 
   if (interactionDifference !== 0) {
     return interactionDifference;
@@ -467,17 +463,17 @@ function toTime(value: string) {
 
 function getReviewCardPriority(
   card: ReviewCardListItem,
+  subjectState: ReviewSubjectStateSnapshot | null,
   nowIso?: string,
   drivingEntryStatuses: ReviewEntryStatusValue[] = []
 ) {
-  const reviewState = card.reviewState;
   const effectiveState = resolveEffectiveReviewState({
     cardStatus: card.status,
     drivingEntryStatuses,
-    reviewState: reviewState
+    reviewState: subjectState
       ? {
-          manualOverride: reviewState.manualOverride,
-          state: reviewState.state as ReviewState
+          manualOverride: subjectState.manualOverride,
+          state: subjectState.state as ReviewState
         }
       : null
   });
@@ -493,11 +489,11 @@ function getReviewCardPriority(
     return 3;
   }
 
-  if (reviewState === null || reviewState.state === "new") {
+  if (!subjectState || subjectState.state === "new") {
     return 2;
   }
 
-  if (!nowIso || !reviewState.dueAt || reviewState.dueAt <= nowIso) {
+  if (!nowIso || !subjectState.dueAt || subjectState.dueAt <= nowIso) {
     return 0;
   }
 

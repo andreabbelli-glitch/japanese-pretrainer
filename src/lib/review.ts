@@ -51,10 +51,7 @@ import {
 } from "@/lib/study-format";
 import { type ReviewProfiler } from "@/lib/review-profiler";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
-import {
-  loadReviewSubjectStateLookup,
-  type ReviewLegacyFallbackCounts
-} from "./review-subject-state-lookup.ts";
+import { loadReviewSubjectStateLookup } from "./review-subject-state-lookup.ts";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
@@ -194,7 +191,22 @@ export type ReviewFirstCandidatePageData = {
 };
 
 type SubjectReviewCard = ReviewCardListItem & {
-  reviewState: NonNullable<ReviewCardListItem["reviewState"]> | null;
+  reviewState: {
+    cardId: string;
+    createdAt: string;
+    difficulty: number | null;
+    dueAt: string | null;
+    lapses: number;
+    lastReviewedAt: string | null;
+    learningSteps: number;
+    manualOverride: boolean;
+    reps: number;
+    scheduledDays: number;
+    schedulerVersion: "fsrs_v1";
+    stability: number | null;
+    state: ReviewState;
+    updatedAt: string;
+  } | null;
 };
 
 function getReviewEntryStatus(entry: {
@@ -215,7 +227,7 @@ function applySubjectStateToReviewCard(
   if (!subjectState) {
     return {
       ...card,
-      reviewState: card.reviewState ?? null
+      reviewState: null
     };
   }
 
@@ -227,7 +239,7 @@ function applySubjectStateToReviewCard(
         : card.status,
     reviewState: {
       cardId: card.id,
-      createdAt: card.reviewState?.createdAt ?? subjectState.createdAt,
+      createdAt: subjectState.createdAt,
       difficulty: subjectState.difficulty,
       dueAt: subjectState.dueAt,
       lapses: subjectState.lapses,
@@ -236,7 +248,7 @@ function applySubjectStateToReviewCard(
       manualOverride: subjectState.manualOverride,
       reps: subjectState.reps,
       scheduledDays: subjectState.scheduledDays,
-      schedulerVersion: card.reviewState?.schedulerVersion ?? "fsrs_v1",
+      schedulerVersion: "fsrs_v1",
       state: subjectState.state,
       stability: subjectState.stability,
       updatedAt: subjectState.updatedAt
@@ -477,7 +489,6 @@ type LoadedReviewWorkspaceV2 = {
   entryLookup: Map<string, ReviewEntryLookupItem>;
   entryStatuses: Map<string, ReviewEntryStatusValue>;
   grammar: ReviewGrammarLookupEntry[];
-  legacyFallbackCounts: ReviewLegacyFallbackCounts;
   newIntroducedTodayCount: number;
   now: Date;
   rawCardCount: number;
@@ -1092,10 +1103,6 @@ async function loadReviewWorkspaceV2(input: {
       entryLookup: new Map(),
       entryStatuses: new Map(),
       grammar: [],
-      legacyFallbackCounts: {
-        complex: 0,
-        inline: 0
-      },
       newIntroducedTodayCount,
       now,
       rawCardCount: stableWorkspace.rawCardCount,
@@ -1104,7 +1111,7 @@ async function loadReviewWorkspaceV2(input: {
     };
   }
 
-  const { legacyFallbackCounts, subjectGroups } = await (input.profiler
+  const { subjectGroups } = await (input.profiler
     ? input.profiler.measure(
         "loadReviewSubjectStateLookup",
         () =>
@@ -1116,8 +1123,6 @@ async function loadReviewWorkspaceV2(input: {
             terms: stableWorkspace.terms
           }),
         (value) => ({
-          legacyFallbackComplex: value.legacyFallbackCounts.complex,
-          legacyFallbackInline: value.legacyFallbackCounts.inline,
           subjectGroups: value.subjectGroups.length
         })
       )
@@ -1141,8 +1146,6 @@ async function loadReviewWorkspaceV2(input: {
       terms: stableWorkspace.terms
     }),
     grammar: stableWorkspace.grammar,
-    // Keep the expensive legacy path visible in the shared workspace shape.
-    legacyFallbackCounts,
     newIntroducedTodayCount,
     now,
     rawCardCount: stableWorkspace.rawCardCount,
@@ -1941,10 +1944,11 @@ function getReviewBucketPriority(bucket: ReviewQueueCard["bucket"]) {
 }
 
 function resolveReviewQueueState(
-  card: ReviewCardListItem,
+  card: SubjectReviewCard,
   entryLookup: Map<string, ReviewEntryLookupItem>,
   nowIso: string
 ): ResolvedReviewQueueState {
+  const { reviewState } = card;
   const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks).map(
     (entryLink) =>
       (entryLookup.get(`${entryLink.entryType}:${entryLink.entryId}`)?.status ??
@@ -1953,39 +1957,39 @@ function resolveReviewQueueState(
   const effectiveState = resolveEffectiveReviewState({
     cardStatus: card.status,
     drivingEntryStatuses,
-    reviewState: card.reviewState
+    reviewState: reviewState
       ? {
-          manualOverride: card.reviewState.manualOverride,
-          state: card.reviewState.state as ReviewState
+          manualOverride: reviewState.manualOverride,
+          state: reviewState.state as ReviewState
         }
       : null
   });
   const rawReviewLabel = formatReviewStateLabel(
-    card.reviewState?.state ?? null,
-    card.reviewState?.manualOverride ?? false
+    reviewState?.state ?? null,
+    reviewState?.manualOverride ?? false
   );
-  const dueAt = card.reviewState?.dueAt ?? null;
+  const dueAt = reviewState?.dueAt ?? null;
 
   return {
     bucket: resolveCardBucket({
       asOfIso: nowIso,
       dueAt,
       effectiveState: effectiveState.state,
-      reviewState: (card.reviewState?.state as ReviewState | null) ?? null
+      reviewState: (reviewState?.state as ReviewState | null) ?? null
     }),
     dueAt,
     effectiveState: effectiveState.state,
     rawReviewLabel,
     reviewSeedState: {
-      difficulty: card.reviewState?.difficulty ?? null,
-      dueAt: card.reviewState?.dueAt ?? null,
-      lapses: card.reviewState?.lapses ?? 0,
-      lastReviewedAt: card.reviewState?.lastReviewedAt ?? null,
-      learningSteps: card.reviewState?.learningSteps ?? 0,
-      reps: card.reviewState?.reps ?? 0,
-      scheduledDays: card.reviewState?.scheduledDays ?? 0,
-      stability: card.reviewState?.stability ?? null,
-      state: (card.reviewState?.state as ReviewState | null) ?? null
+      difficulty: reviewState?.difficulty ?? null,
+      dueAt: reviewState?.dueAt ?? null,
+      lapses: reviewState?.lapses ?? 0,
+      lastReviewedAt: reviewState?.lastReviewedAt ?? null,
+      learningSteps: reviewState?.learningSteps ?? 0,
+      reps: reviewState?.reps ?? 0,
+      scheduledDays: reviewState?.scheduledDays ?? 0,
+      stability: reviewState?.stability ?? null,
+      state: (reviewState?.state as ReviewState | null) ?? null
     }
   };
 }
@@ -2332,10 +2336,11 @@ type ReviewOverviewCard = Pick<
 >;
 
 function mapReviewOverviewCard(
-  card: ReviewCardListItem,
+  card: SubjectReviewCard,
   entryStatuses: Map<string, ReviewEntryStatusValue>,
   nowIso: string
 ): ReviewOverviewCard {
+  const { reviewState } = card;
   const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks).map(
     (entryLink) =>
       entryStatuses.get(`${entryLink.entryType}:${entryLink.entryId}`) ?? null
@@ -2343,21 +2348,21 @@ function mapReviewOverviewCard(
   const effectiveState = resolveEffectiveReviewState({
     cardStatus: card.status,
     drivingEntryStatuses,
-    reviewState: card.reviewState
+    reviewState: reviewState
       ? {
-          manualOverride: card.reviewState.manualOverride,
-          state: card.reviewState.state as ReviewState
+          manualOverride: reviewState.manualOverride,
+          state: reviewState.state as ReviewState
         }
       : null
   });
-  const dueAt = card.reviewState?.dueAt ?? null;
+  const dueAt = reviewState?.dueAt ?? null;
 
   return {
     bucket: resolveCardBucket({
       asOfIso: nowIso,
       dueAt,
       effectiveState: effectiveState.state,
-      reviewState: (card.reviewState?.state as ReviewState | null) ?? null
+      reviewState: (reviewState?.state as ReviewState | null) ?? null
     }),
     createdAt: card.createdAt,
     dueAt,

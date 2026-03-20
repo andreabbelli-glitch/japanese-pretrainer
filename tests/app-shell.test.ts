@@ -13,7 +13,7 @@ import {
   lesson,
   lessonProgress,
   media,
-  reviewState,
+  reviewSubjectState,
   runMigrations,
   seedDevelopmentDatabase,
   type DatabaseClient
@@ -50,13 +50,18 @@ describe("app shell live data", () => {
       .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
 
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         state: "known_manual",
         dueAt: "2026-03-01T00:00:00.000Z",
         manualOverride: true
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
 
     const media = await getMediaDetailData(developmentFixture.mediaSlug, database);
 
@@ -83,11 +88,16 @@ describe("app shell live data", () => {
 
   it("prefers the most reviewable media for review entry points", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2026-03-20T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
 
     await database.insert(media).values({
       id: "media_duel_masters",
@@ -138,16 +148,26 @@ describe("app shell live data", () => {
       updatedAt: "2026-03-08T09:30:00.000Z"
     });
 
-    await database.insert(reviewState).values({
+    await database.insert(reviewSubjectState).values({
+      subjectKey: "card:card_duel_masters_due",
+      subjectType: "card",
+      entryType: null,
+      crossMediaGroupId: null,
+      entryId: null,
       cardId: "card_duel_masters_due",
       state: "review",
       stability: 3,
       difficulty: 2.5,
       dueAt: "2026-03-01T00:00:00.000Z",
       lastReviewedAt: "2026-03-08T09:00:00.000Z",
+      lastInteractionAt: "2026-03-08T09:00:00.000Z",
+      scheduledDays: 0,
+      learningSteps: 0,
       lapses: 0,
       reps: 3,
+      schedulerVersion: "fsrs_v1",
       manualOverride: false,
+      suspended: false,
       createdAt: "2026-03-08T09:00:00.000Z",
       updatedAt: "2026-03-08T09:30:00.000Z"
     });

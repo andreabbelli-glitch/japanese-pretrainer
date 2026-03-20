@@ -10,7 +10,7 @@ import {
   grammarPattern,
   lesson,
   media,
-  reviewState,
+  reviewSubjectState,
   segment,
   type EntryType,
   term
@@ -791,8 +791,8 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
             case
               when card.status = 'active'
                 and (
-                  coalesce(review_state.manual_override, 0) = 1
-                  or review_state.state = 'known_manual'
+                  coalesce(review_subject_state.manual_override, 0) = 1
+                  or review_subject_state.state = 'known_manual'
                 )
               then 1
               else 0
@@ -800,7 +800,7 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
           ) as hasKnownSignal,
           max(
             case
-              when card.status = 'active' and review_state.state = 'learning'
+              when card.status = 'active' and review_subject_state.state = 'learning'
               then 1
               else 0
             end
@@ -808,14 +808,14 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
           max(
             case
               when card.status = 'active'
-                and review_state.state in ('review', 'relearning')
+                and review_subject_state.state in ('review', 'relearning')
               then 1
               else 0
             end
           ) as hasReviewSignal,
           max(
             case
-              when card.status = 'active' and review_state.state = 'new'
+              when card.status = 'active' and review_subject_state.state = 'new'
               then 1
               else 0
             end
@@ -834,7 +834,18 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
         left join card
           on card.id = card_entry_link.card_id
           and card.status != 'archived'
-        left join review_state on review_state.card_id = card.id
+        left join review_subject_state
+          on review_subject_state.entry_type = 'term'
+          and (
+            (
+              term.cross_media_group_id is not null
+              and review_subject_state.cross_media_group_id = term.cross_media_group_id
+            )
+            or (
+              term.cross_media_group_id is null
+              and review_subject_state.entry_id = term.id
+            )
+          )
         group by
           term.id,
           term.source_id,
@@ -865,8 +876,8 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
             case
               when card.status = 'active'
                 and (
-                  coalesce(review_state.manual_override, 0) = 1
-                  or review_state.state = 'known_manual'
+                  coalesce(review_subject_state.manual_override, 0) = 1
+                  or review_subject_state.state = 'known_manual'
                 )
               then 1
               else 0
@@ -874,7 +885,7 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
           ) as hasKnownSignal,
           max(
             case
-              when card.status = 'active' and review_state.state = 'learning'
+              when card.status = 'active' and review_subject_state.state = 'learning'
               then 1
               else 0
             end
@@ -882,14 +893,14 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
           max(
             case
               when card.status = 'active'
-                and review_state.state in ('review', 'relearning')
+                and review_subject_state.state in ('review', 'relearning')
               then 1
               else 0
             end
           ) as hasReviewSignal,
           max(
             case
-              when card.status = 'active' and review_state.state = 'new'
+              when card.status = 'active' and review_subject_state.state = 'new'
               then 1
               else 0
             end
@@ -908,7 +919,18 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
         left join card
           on card.id = card_entry_link.card_id
           and card.status != 'archived'
-        left join review_state on review_state.card_id = card.id
+        left join review_subject_state
+          on review_subject_state.entry_type = 'grammar'
+          and (
+            (
+              grammar_pattern.cross_media_group_id is not null
+              and review_subject_state.cross_media_group_id = grammar_pattern.cross_media_group_id
+            )
+            or (
+              grammar_pattern.cross_media_group_id is null
+              and review_subject_state.entry_id = grammar_pattern.id
+            )
+          )
         group by
           grammar_pattern.id,
           grammar_pattern.source_id,
@@ -1634,14 +1656,58 @@ export async function listEntryCardConnections(
       cardOrderIndex: card.orderIndex,
       segmentId: segment.id,
       segmentTitle: segment.title,
-      reviewState: reviewState.state,
-      dueAt: reviewState.dueAt,
-      manualOverride: reviewState.manualOverride
+      reviewState: reviewSubjectState.state,
+      dueAt: reviewSubjectState.dueAt,
+      manualOverride: reviewSubjectState.manualOverride
     })
     .from(cardEntryLink)
     .innerJoin(card, eq(card.id, cardEntryLink.cardId))
     .leftJoin(segment, eq(segment.id, card.segmentId))
-    .leftJoin(reviewState, eq(reviewState.cardId, card.id))
+    .leftJoin(
+      term,
+      and(eq(cardEntryLink.entryType, "term"), eq(term.id, cardEntryLink.entryId))
+    )
+    .leftJoin(
+      grammarPattern,
+      and(
+        eq(cardEntryLink.entryType, "grammar"),
+        eq(grammarPattern.id, cardEntryLink.entryId)
+      )
+    )
+    .leftJoin(
+      reviewSubjectState,
+      sql`
+        ${reviewSubjectState.entryType} = ${cardEntryLink.entryType}
+        AND (
+          (
+            ${cardEntryLink.entryType} = 'term'
+            AND (
+              (
+                ${term.crossMediaGroupId} IS NOT NULL
+                AND ${reviewSubjectState.crossMediaGroupId} = ${term.crossMediaGroupId}
+              )
+              OR (
+                ${term.crossMediaGroupId} IS NULL
+                AND ${reviewSubjectState.entryId} = ${cardEntryLink.entryId}
+              )
+            )
+          )
+          OR (
+            ${cardEntryLink.entryType} = 'grammar'
+            AND (
+              (
+                ${grammarPattern.crossMediaGroupId} IS NOT NULL
+                AND ${reviewSubjectState.crossMediaGroupId} = ${grammarPattern.crossMediaGroupId}
+              )
+              OR (
+                ${grammarPattern.crossMediaGroupId} IS NULL
+                AND ${reviewSubjectState.entryId} = ${cardEntryLink.entryId}
+              )
+            )
+          )
+        )
+      `
+    )
     .where(
       and(
         ne(card.status, "archived"),
@@ -1759,6 +1825,7 @@ export async function listGlossaryShellCounts(
         t.id AS entry_id,
         'term' AS entry_type,
         t.media_id AS media_id,
+        t.cross_media_group_id AS cross_media_group_id,
         es.status AS entry_status
       FROM term t
       LEFT JOIN entry_status es
@@ -1770,6 +1837,7 @@ export async function listGlossaryShellCounts(
         gp.id AS entry_id,
         'grammar' AS entry_type,
         gp.media_id AS media_id,
+        gp.cross_media_group_id AS cross_media_group_id,
         es.status AS entry_status
       FROM grammar_pattern gp
       LEFT JOIN entry_status es
@@ -1782,6 +1850,7 @@ export async function listGlossaryShellCounts(
         ae.entry_id,
         ae.entry_type,
         ae.media_id,
+        ae.cross_media_group_id,
         ae.entry_status,
         CASE
           -- "known" via entry status
@@ -1789,32 +1858,53 @@ export async function listGlossaryShellCounts(
           -- "known" via card signal
           WHEN EXISTS (
             SELECT 1
-            FROM card_entry_link cel
-            JOIN card c ON c.id = cel.card_id
-            JOIN review_state rs ON rs.card_id = c.id
-            WHERE cel.entry_id = ae.entry_id
-              AND cel.entry_type = ae.entry_type
-              AND (rs.state = 'known_manual' OR rs.manual_override = 1)
+            FROM review_subject_state rss
+            WHERE rss.entry_type = ae.entry_type
+              AND (
+                (
+                  ae.cross_media_group_id IS NOT NULL
+                  AND rss.cross_media_group_id = ae.cross_media_group_id
+                )
+                OR (
+                  ae.cross_media_group_id IS NULL
+                  AND rss.entry_id = ae.entry_id
+                )
+              )
+              AND (rss.state = 'known_manual' OR rss.manual_override = 1)
           ) THEN 1
           -- "learning" via card signal
           WHEN EXISTS (
             SELECT 1
-            FROM card_entry_link cel
-            JOIN card c ON c.id = cel.card_id
-            JOIN review_state rs ON rs.card_id = c.id
-            WHERE cel.entry_id = ae.entry_id
-              AND cel.entry_type = ae.entry_type
-              AND rs.state = 'learning'
+            FROM review_subject_state rss
+            WHERE rss.entry_type = ae.entry_type
+              AND (
+                (
+                  ae.cross_media_group_id IS NOT NULL
+                  AND rss.cross_media_group_id = ae.cross_media_group_id
+                )
+                OR (
+                  ae.cross_media_group_id IS NULL
+                  AND rss.entry_id = ae.entry_id
+                )
+              )
+              AND rss.state = 'learning'
           ) THEN 1
           -- "review" via card signal
           WHEN EXISTS (
             SELECT 1
-            FROM card_entry_link cel
-            JOIN card c ON c.id = cel.card_id
-            JOIN review_state rs ON rs.card_id = c.id
-            WHERE cel.entry_id = ae.entry_id
-              AND cel.entry_type = ae.entry_type
-              AND rs.state IN ('review', 'relearning')
+            FROM review_subject_state rss
+            WHERE rss.entry_type = ae.entry_type
+              AND (
+                (
+                  ae.cross_media_group_id IS NOT NULL
+                  AND rss.cross_media_group_id = ae.cross_media_group_id
+                )
+                OR (
+                  ae.cross_media_group_id IS NULL
+                  AND rss.entry_id = ae.entry_id
+                )
+              )
+              AND rss.state IN ('review', 'relearning')
           ) THEN 1
           -- "review/learning" via entry status alone
           WHEN ae.entry_status IN ('review', 'reviewing', 'relearning', 'learning') THEN 1

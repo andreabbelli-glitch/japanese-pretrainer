@@ -1,14 +1,4 @@
-import {
-  and,
-  asc,
-  eq,
-  gte,
-  inArray,
-  isNotNull,
-  lt,
-  lte,
-  ne
-} from "drizzle-orm";
+import { and, asc, eq, inArray, ne } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import {
@@ -16,14 +6,14 @@ import {
   crossMediaGroup,
   entryStatus,
   grammarPattern,
-  lesson,
-  lessonProgress,
   media,
-  reviewLog,
-  reviewState,
   segment,
   term
 } from "../schema/index.ts";
+import {
+  buildReviewSubjectIdentityCteSql,
+  quoteSqlString
+} from "./review-query-helpers.ts";
 
 export async function listCardsByMediaId(
   database: DatabaseClient,
@@ -38,7 +28,6 @@ export async function listCardsByMediaId(
         }
       },
       segment: true,
-      reviewState: true,
       entryLinks: true
     },
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
@@ -55,7 +44,6 @@ export async function getCardById(database: DatabaseClient, cardId: string) {
         }
       },
       segment: true,
-      reviewState: true,
       entryLinks: true
     }
   });
@@ -78,7 +66,6 @@ export async function getCardsByIds(
         }
       },
       segment: true,
-      reviewState: true,
       entryLinks: true
     },
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
@@ -102,7 +89,6 @@ export async function listReviewCardsByIds(
         }
       },
       segment: true,
-      reviewState: true,
       entryLinks: true
     },
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
@@ -122,7 +108,6 @@ export async function listReviewCardsByMediaId(
         }
       },
       segment: true,
-      reviewState: true,
       entryLinks: true
     },
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
@@ -146,7 +131,6 @@ export async function listReviewCardsByMediaIds(
         }
       },
       segment: true,
-      reviewState: true,
       entryLinks: true
     },
     orderBy: [asc(card.mediaId), asc(card.orderIndex), asc(card.createdAt)]
@@ -233,91 +217,6 @@ export async function listGrammarEntryReviewSummariesByIds(
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
 }
 
-export async function countNewCardsIntroducedOnDayByMediaId(
-  database: DatabaseClient,
-  mediaId: string,
-  asOf = new Date()
-) {
-  const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
-
-  const rows = await database
-    .select({
-      cardId: reviewLog.cardId
-    })
-    .from(reviewLog)
-    .innerJoin(card, eq(reviewLog.cardId, card.id))
-    .where(
-      and(
-        eq(card.mediaId, mediaId),
-        eq(reviewLog.previousState, "new"),
-        gte(reviewLog.answeredAt, dayStartIso),
-        lt(reviewLog.answeredAt, dayEndIso)
-      )
-    );
-
-  return new Set(rows.map((row) => row.cardId)).size;
-}
-
-export async function countNewCardsIntroducedOnDayByMediaIds(
-  database: DatabaseClient,
-  mediaIds: string[],
-  asOf = new Date()
-) {
-  if (mediaIds.length === 0) {
-    return [];
-  }
-
-  const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
-
-  const rows = await database
-    .select({
-      mediaId: card.mediaId,
-      cardId: reviewLog.cardId
-    })
-    .from(reviewLog)
-    .innerJoin(card, eq(reviewLog.cardId, card.id))
-    .where(
-      and(
-        inArray(card.mediaId, mediaIds),
-        eq(reviewLog.previousState, "new"),
-        gte(reviewLog.answeredAt, dayStartIso),
-        lt(reviewLog.answeredAt, dayEndIso)
-      )
-    );
-
-  const grouped = new Map<string, Set<string>>();
-
-  for (const row of rows) {
-    const existing = grouped.get(row.mediaId);
-
-    if (existing) {
-      existing.add(row.cardId);
-      continue;
-    }
-
-    grouped.set(row.mediaId, new Set([row.cardId]));
-  }
-
-  return [...grouped.entries()].map(([mediaId, cardIds]) => ({
-    mediaId,
-    count: cardIds.size
-  }));
-}
-
-export function getUtcDayBounds(asOf: Date) {
-  const dayStart = new Date(
-    Date.UTC(asOf.getUTCFullYear(), asOf.getUTCMonth(), asOf.getUTCDate())
-  );
-  const dayEnd = new Date(dayStart);
-
-  dayEnd.setUTCDate(dayEnd.getUTCDate() + 1);
-
-  return {
-    dayEndIso: dayEnd.toISOString(),
-    dayStartIso: dayStart.toISOString()
-  };
-}
-
 export type ReviewLaunchCandidate = {
   activeReviewCards: number;
   cardsTotal: number;
@@ -332,19 +231,7 @@ export async function listReviewLaunchCandidates(
   database: DatabaseClient,
   asOfIso = new Date().toISOString()
 ): Promise<ReviewLaunchCandidate[]> {
-  const quote = (value: string) => `'${value.replaceAll("'", "''")}'`;
-  const asOfSql = quote(asOfIso);
-  const drivingEntryCondition = `
-    (
-      cel.relationship_type = 'primary'
-      OR NOT EXISTS (
-        SELECT 1
-        FROM card_entry_link cel_primary
-        WHERE cel_primary.card_id = c.id
-          AND cel_primary.relationship_type = 'primary'
-      )
-    )
-  `;
+  const asOfSql = quoteSqlString(asOfIso);
 
   const rows = await database.all<{
     activeReviewCards: number | string | null;
@@ -355,60 +242,131 @@ export async function listReviewLaunchCandidates(
     slug: string;
     title: string;
   }>(`
-    WITH eligible_cards AS (
+    WITH ${buildReviewSubjectIdentityCteSql()},
+    subject_media_candidates AS (
       SELECT
-        c.id AS card_id,
-        c.media_id AS media_id,
-        c.status AS card_status,
-        c.lesson_id AS lesson_id,
-        rs.state AS review_state,
-        rs.due_at AS due_at,
-        COALESCE(rs.manual_override, 0) AS manual_override,
-        CASE
-          WHEN c.lesson_id IS NOT NULL
-           AND EXISTS (
-             SELECT 1
-             FROM lesson l
-             INNER JOIN lesson_progress lp
-               ON lp.lesson_id = l.id
-             WHERE l.id = c.lesson_id
-               AND l.status = 'active'
-               AND lp.status = 'completed'
-           )
-          THEN 1
-          ELSE 0
-        END AS has_completed_lesson
-        ,
-        CASE
-          WHEN EXISTS (
-            SELECT 1
-            FROM card_entry_link cel
-            JOIN entry_status es
-              ON es.entry_type = cel.entry_type
-             AND es.entry_id = cel.entry_id
-            WHERE cel.card_id = c.id
-              AND ${drivingEntryCondition}
-              AND es.status = 'ignored'
-          ) THEN 1
-          ELSE 0
-        END AS has_ignored_driving_entry,
-        CASE
-          WHEN EXISTS (
-            SELECT 1
-            FROM card_entry_link cel
-            JOIN entry_status es
-              ON es.entry_type = cel.entry_type
-             AND es.entry_id = cel.entry_id
-            WHERE cel.card_id = c.id
-              AND ${drivingEntryCondition}
-              AND es.status = 'known_manual'
-          ) THEN 1
-          ELSE 0
-        END AS has_known_manual_driving_entry
-      FROM card c
-      LEFT JOIN review_state rs
-        ON rs.card_id = c.id
-      WHERE c.status != 'archived'
+        si.media_id AS mediaId,
+        si.subject_key AS subjectKey,
+        MAX(
+          CASE
+            WHEN si.lesson_id IS NOT NULL
+             AND EXISTS (
+               SELECT 1
+               FROM lesson l
+               INNER JOIN lesson_progress lp
+                 ON lp.lesson_id = l.id
+               WHERE l.id = si.lesson_id
+                 AND l.status = 'active'
+                 AND lp.status = 'completed'
+             )
+            THEN 1
+            ELSE 0
+          END
+        ) AS hasCompletedLesson,
+        MAX(
+          CASE
+            WHEN si.entry_type = 'term'
+             AND EXISTS (
+               SELECT 1
+               FROM entry_status es
+               INNER JOIN term t_status
+                 ON t_status.id = es.entry_id
+               WHERE es.entry_type = 'term'
+                 AND (
+                   (
+                     si.cross_media_group_id IS NOT NULL
+                     AND t_status.cross_media_group_id = si.cross_media_group_id
+                   )
+                   OR (
+                     si.cross_media_group_id IS NULL
+                     AND es.entry_id = si.entry_id
+                   )
+                 )
+                 AND es.status = 'ignored'
+             )
+            THEN 1
+            WHEN si.entry_type = 'grammar'
+             AND EXISTS (
+               SELECT 1
+               FROM entry_status es
+               INNER JOIN grammar_pattern gp_status
+                 ON gp_status.id = es.entry_id
+               WHERE es.entry_type = 'grammar'
+                 AND (
+                   (
+                     si.cross_media_group_id IS NOT NULL
+                     AND gp_status.cross_media_group_id = si.cross_media_group_id
+                   )
+                   OR (
+                     si.cross_media_group_id IS NULL
+                     AND es.entry_id = si.entry_id
+                   )
+                 )
+                 AND es.status = 'ignored'
+             )
+            THEN 1
+            ELSE 0
+          END
+        ) AS hasIgnoredDrivingEntry,
+        MAX(
+          CASE
+            WHEN si.entry_type = 'term'
+             AND EXISTS (
+               SELECT 1
+               FROM entry_status es
+               INNER JOIN term t_status
+                 ON t_status.id = es.entry_id
+               WHERE es.entry_type = 'term'
+                 AND (
+                   (
+                     si.cross_media_group_id IS NOT NULL
+                     AND t_status.cross_media_group_id = si.cross_media_group_id
+                   )
+                   OR (
+                     si.cross_media_group_id IS NULL
+                     AND es.entry_id = si.entry_id
+                   )
+                 )
+                 AND es.status = 'known_manual'
+             )
+            THEN 1
+            WHEN si.entry_type = 'grammar'
+             AND EXISTS (
+               SELECT 1
+               FROM entry_status es
+               INNER JOIN grammar_pattern gp_status
+                 ON gp_status.id = es.entry_id
+               WHERE es.entry_type = 'grammar'
+                 AND (
+                   (
+                     si.cross_media_group_id IS NOT NULL
+                     AND gp_status.cross_media_group_id = si.cross_media_group_id
+                   )
+                   OR (
+                     si.cross_media_group_id IS NULL
+                     AND es.entry_id = si.entry_id
+                   )
+                 )
+                 AND es.status = 'known_manual'
+             )
+            THEN 1
+            ELSE 0
+          END
+        ) AS hasKnownManualDrivingEntry,
+        MAX(
+          CASE
+            WHEN si.card_status != 'suspended' THEN 1
+            ELSE 0
+          END
+        ) AS hasActiveCard,
+        MAX(COALESCE(rss.manual_override, 0)) AS manualOverride,
+        MAX(COALESCE(rss.suspended, 0)) AS suspended,
+        MAX(rss.state) AS reviewState,
+        MAX(rss.due_at) AS dueAt
+      FROM subject_identity si
+      LEFT JOIN review_subject_state rss
+        ON rss.subject_key = si.subject_key
+      GROUP BY si.media_id, si.subject_key
     )
     SELECT
       m.id AS mediaId,
@@ -417,9 +375,9 @@ export async function listReviewLaunchCandidates(
       COALESCE(
         SUM(
           CASE
-            WHEN ec.has_completed_lesson = 1
-             AND ec.has_ignored_driving_entry = 0
-             AND ec.has_known_manual_driving_entry = 0
+            WHEN smc.hasCompletedLesson = 1
+             AND smc.hasIgnoredDrivingEntry = 0
+             AND smc.hasKnownManualDrivingEntry = 0
             THEN 1
             ELSE 0
           END
@@ -429,11 +387,13 @@ export async function listReviewLaunchCandidates(
       COALESCE(
         SUM(
           CASE
-            WHEN ec.has_completed_lesson = 1
-             AND ec.review_state IS NOT NULL
-             AND ec.review_state NOT IN ('known_manual', 'suspended')
-             AND ec.has_ignored_driving_entry = 0
-             AND ec.has_known_manual_driving_entry = 0
+            WHEN smc.hasCompletedLesson = 1
+             AND smc.hasActiveCard = 1
+             AND smc.hasIgnoredDrivingEntry = 0
+             AND smc.hasKnownManualDrivingEntry = 0
+             AND smc.suspended = 0
+             AND smc.manualOverride = 0
+             AND smc.reviewState NOT IN ('new', 'known_manual', 'suspended')
             THEN 1
             ELSE 0
           END
@@ -443,14 +403,14 @@ export async function listReviewLaunchCandidates(
       COALESCE(
         SUM(
           CASE
-            WHEN ec.has_completed_lesson = 1
-             AND ec.card_status != 'suspended'
-             AND ec.review_state IS NOT NULL
-             AND ec.review_state NOT IN ('new', 'known_manual', 'suspended')
-             AND ec.manual_override = 0
-             AND ec.has_ignored_driving_entry = 0
-             AND ec.has_known_manual_driving_entry = 0
-             AND (ec.due_at IS NULL OR ec.due_at <= ${asOfSql})
+            WHEN smc.hasCompletedLesson = 1
+             AND smc.hasActiveCard = 1
+             AND smc.hasIgnoredDrivingEntry = 0
+             AND smc.hasKnownManualDrivingEntry = 0
+             AND smc.suspended = 0
+             AND smc.manualOverride = 0
+             AND smc.reviewState NOT IN ('new', 'known_manual', 'suspended')
+             AND (smc.dueAt IS NULL OR smc.dueAt <= ${asOfSql})
             THEN 1
             ELSE 0
           END
@@ -460,11 +420,12 @@ export async function listReviewLaunchCandidates(
       COALESCE(
         SUM(
           CASE
-            WHEN ec.has_completed_lesson = 1
-             AND ec.review_state IS NULL
-             AND ec.card_status != 'suspended'
-             AND ec.has_ignored_driving_entry = 0
-             AND ec.has_known_manual_driving_entry = 0
+            WHEN smc.hasCompletedLesson = 1
+             AND smc.hasActiveCard = 1
+             AND smc.hasIgnoredDrivingEntry = 0
+             AND smc.hasKnownManualDrivingEntry = 0
+             AND smc.suspended = 0
+             AND COALESCE(smc.reviewState, 'new') = 'new'
             THEN 1
             ELSE 0
           END
@@ -472,8 +433,8 @@ export async function listReviewLaunchCandidates(
         0
       ) AS newCount
     FROM media m
-    LEFT JOIN eligible_cards ec
-      ON ec.media_id = m.id
+    LEFT JOIN subject_media_candidates smc
+      ON smc.mediaId = m.id
     WHERE m.status = 'active'
     GROUP BY m.id, m.slug, m.title
     ORDER BY m.title ASC, m.slug ASC
@@ -490,42 +451,67 @@ export async function listReviewLaunchCandidates(
   }));
 }
 
-export type DueCardItem = typeof card.$inferSelect & {
-  reviewState: typeof reviewState.$inferSelect;
-};
-
 export async function listDueCardsByMediaId(
   database: DatabaseClient,
   mediaId: string,
   asOf = new Date().toISOString()
-): Promise<DueCardItem[]> {
-  const rows = await database
-    .select({
-      card,
-      reviewState
-    })
-    .from(card)
-    .innerJoin(reviewState, eq(reviewState.cardId, card.id))
-    .innerJoin(lesson, eq(lesson.id, card.lessonId))
-    .innerJoin(lessonProgress, eq(lessonProgress.lessonId, lesson.id))
-    .where(
-      and(
-        eq(card.mediaId, mediaId),
-        eq(card.status, "active"),
-        eq(lesson.status, "active"),
-        eq(lessonProgress.status, "completed"),
-        isNotNull(reviewState.dueAt),
-        lte(reviewState.dueAt, asOf),
-        ne(reviewState.state, "suspended"),
-        ne(reviewState.state, "known_manual")
-      )
+) {
+  const dueRows = await database.all<{ cardId: string }>(`
+    WITH ${buildReviewSubjectIdentityCteSql()},
+    eligible_due_cards AS (
+      SELECT
+        si.card_id AS cardId,
+        si.subject_key AS subjectKey,
+        si.order_index AS orderIndex,
+        si.created_at AS createdAt,
+        rss.due_at AS dueAt,
+        ROW_NUMBER() OVER (
+          PARTITION BY si.subject_key
+          ORDER BY
+            COALESCE(si.order_index, 2147483647) ASC,
+            si.created_at ASC,
+            si.card_id ASC
+        ) AS rowNumber
+      FROM subject_identity si
+      INNER JOIN lesson l
+        ON l.id = si.lesson_id
+      INNER JOIN lesson_progress lp
+        ON lp.lesson_id = l.id
+      INNER JOIN review_subject_state rss
+        ON rss.subject_key = si.subject_key
+      WHERE si.media_id = ${quoteSqlString(mediaId)}
+        AND si.card_status = 'active'
+        AND l.status = 'active'
+        AND lp.status = 'completed'
+        AND rss.due_at IS NOT NULL
+        AND rss.due_at <= ${quoteSqlString(asOf)}
+        AND COALESCE(rss.manual_override, 0) = 0
+        AND COALESCE(rss.suspended, 0) = 0
+        AND rss.state NOT IN ('new', 'known_manual', 'suspended')
     )
-    .orderBy(asc(reviewState.dueAt), asc(card.orderIndex));
+    SELECT cardId
+    FROM eligible_due_cards
+    WHERE rowNumber = 1
+    ORDER BY
+      dueAt ASC,
+      COALESCE(orderIndex, 2147483647) ASC,
+      createdAt ASC,
+      cardId ASC
+  `);
+  const orderedCardIds = dueRows.map((row) => row.cardId);
 
-  return rows.map((row) => ({
-    ...row.card,
-    reviewState: row.reviewState
-  }));
+  if (orderedCardIds.length === 0) {
+    return [];
+  }
+
+  const cards = await getCardsByIds(database, orderedCardIds);
+  const cardsById = new Map(cards.map((dueCard) => [dueCard.id, dueCard]));
+
+  return orderedCardIds.flatMap((cardId) => {
+    const dueCard = cardsById.get(cardId);
+
+    return dueCard ? [dueCard] : [];
+  });
 }
 
 export type CardListItem = Awaited<

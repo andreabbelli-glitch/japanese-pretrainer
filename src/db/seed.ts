@@ -14,8 +14,8 @@ import {
   lessonContent,
   lessonProgress,
   media,
-  reviewLog,
-  reviewState,
+  reviewSubjectLog,
+  reviewSubjectState,
   segment,
   term,
   termAlias,
@@ -571,65 +571,87 @@ export async function seedDevelopmentDatabase(
       });
 
     await tx
-      .insert(reviewState)
+      .insert(reviewSubjectState)
       .values([
         {
+          subjectKey: `entry:term:${developmentFixture.termDbId}`,
+          subjectType: "entry",
+          entryType: "term",
+          entryId: developmentFixture.termDbId,
+          crossMediaGroupId: null,
           cardId: developmentFixture.primaryCardId,
           state: "learning",
           stability: 1.4,
           difficulty: 4.2,
           dueAt: dueSoonAt,
           lastReviewedAt: updatedAt,
+          lastInteractionAt: updatedAt,
           scheduledDays: 0,
           learningSteps: 0,
           lapses: 1,
           reps: 3,
           schedulerVersion: "fsrs_v1",
           manualOverride: false,
+          suspended: false,
           createdAt,
           updatedAt
         },
         {
+          subjectKey: `entry:grammar:${developmentFixture.grammarDbId}`,
+          subjectType: "entry",
+          entryType: "grammar",
+          entryId: developmentFixture.grammarDbId,
+          crossMediaGroupId: null,
           cardId: developmentFixture.secondaryCardId,
           state: "review",
           stability: 3.5,
           difficulty: 3.1,
           dueAt: dueLaterAt,
           lastReviewedAt: updatedAt,
+          lastInteractionAt: updatedAt,
           scheduledDays: 4,
           learningSteps: 0,
           lapses: 0,
           reps: 5,
           schedulerVersion: "fsrs_v1",
           manualOverride: false,
+          suspended: false,
           createdAt,
           updatedAt
         }
       ])
       .onConflictDoUpdate({
-        target: reviewState.cardId,
+        target: reviewSubjectState.subjectKey,
         set: {
+          subjectType: sql`excluded.subject_type`,
+          entryType: sql`excluded.entry_type`,
+          entryId: sql`excluded.entry_id`,
+          crossMediaGroupId: sql`excluded.cross_media_group_id`,
+          cardId: sql`excluded.card_id`,
           state: sql`excluded.state`,
           stability: sql`excluded.stability`,
           difficulty: sql`excluded.difficulty`,
           dueAt: sql`excluded.due_at`,
           lastReviewedAt: sql`excluded.last_reviewed_at`,
+          lastInteractionAt: sql`excluded.last_interaction_at`,
           scheduledDays: sql`excluded.scheduled_days`,
           learningSteps: sql`excluded.learning_steps`,
           lapses: sql`excluded.lapses`,
           reps: sql`excluded.reps`,
           schedulerVersion: sql`excluded.scheduler_version`,
           manualOverride: sql`excluded.manual_override`,
+          suspended: sql`excluded.suspended`,
           createdAt: sql`excluded.created_at`,
           updatedAt: sql`excluded.updated_at`
         }
       });
 
     await tx
-      .insert(reviewLog)
+      .insert(reviewSubjectLog)
       .values([
         {
-          id: "review_log_fixture_iku_1",
+          id: "review_subject_log_fixture_iku_1",
+          subjectKey: `entry:term:${developmentFixture.termDbId}`,
           cardId: developmentFixture.primaryCardId,
           answeredAt: updatedAt,
           rating: "good",
@@ -641,7 +663,8 @@ export async function seedDevelopmentDatabase(
           schedulerVersion: "fsrs_v1"
         },
         {
-          id: "review_log_fixture_teiru_1",
+          id: "review_subject_log_fixture_teiru_1",
+          subjectKey: `entry:grammar:${developmentFixture.grammarDbId}`,
           cardId: developmentFixture.secondaryCardId,
           answeredAt: updatedAt,
           rating: "easy",
@@ -654,8 +677,9 @@ export async function seedDevelopmentDatabase(
         }
       ])
       .onConflictDoUpdate({
-        target: reviewLog.id,
+        target: reviewSubjectLog.id,
         set: {
+          subjectKey: sql`excluded.subject_key`,
           cardId: sql`excluded.card_id`,
           answeredAt: sql`excluded.answered_at`,
           rating: sql`excluded.rating`,

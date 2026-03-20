@@ -43,6 +43,7 @@ import {
   formatMediaTypeLabel,
   formatSegmentKindLabel
 } from "@/lib/study-format";
+import { loadReviewSubjectStateLookup } from "@/lib/review-subject-state-lookup";
 import { parseTextbookDocument } from "@/lib/textbook-document";
 
 export type { FuriganaMode } from "@/lib/settings";
@@ -525,6 +526,20 @@ async function loadLessonTooltipEntries(input: {
   const termMap = new Map(terms.map((entry) => [entry.id, entry]));
   const grammarMap = new Map(grammar.map((entry) => [entry.id, entry]));
   const studySignalsByEntry = buildStudySignalMap(studySignals);
+  const subjectLookup =
+    cards.length > 0
+      ? await loadReviewSubjectStateLookup({
+          cards,
+          database: input.database,
+          grammar,
+          terms
+        })
+      : { subjectGroups: [] };
+  const subjectStateByCardId = new Map(
+    subjectLookup.subjectGroups.flatMap((group) =>
+      group.cards.map((card) => [card.id, group.subjectState] as const)
+    )
+  );
 
   const baseEntries = uniqueLessonEntryLinks.flatMap((link) => {
     if (link.entryType === "term") {
@@ -563,7 +578,11 @@ async function loadLessonTooltipEntries(input: {
   });
 
   const cardEntries = cards.map((card) =>
-    mapCardTooltipEntry(card, input.mediaSlug)
+    mapCardTooltipEntry(
+      card,
+      input.mediaSlug,
+      subjectStateByCardId.get(card.id) ?? null
+    )
   );
 
   return [...baseEntries, ...cardEntries];
@@ -739,7 +758,12 @@ function mapTooltipEntry(input: {
 
 function mapCardTooltipEntry(
   card: CardListItem,
-  mediaSlug: string
+  mediaSlug: string,
+  subjectState: {
+    manualOverride: boolean;
+    state: string;
+    suspended: boolean;
+  } | null
 ): TextbookCardTooltip {
   return {
     id: card.id,
@@ -750,11 +774,11 @@ function mapCardTooltipEntry(
     notes: card.notesIt ?? undefined,
     typeLabel: card.cardType,
     statusLabel:
-      card.reviewState?.state === "suspended"
+      card.status === "suspended" || subjectState?.suspended
         ? "Sospesa"
-        : card.reviewState?.state === "known_manual"
+        : subjectState?.state === "known_manual" || subjectState?.manualOverride
           ? "Nota"
-          : card.reviewState?.state
+          : subjectState?.state
             ? "In review"
             : "Disponibile",
     segmentTitle: card.segment?.title ?? undefined,

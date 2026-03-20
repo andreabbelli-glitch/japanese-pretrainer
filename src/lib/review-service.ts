@@ -11,8 +11,6 @@ import {
   getReviewSubjectStateByKey,
   listReviewCardIdsByEntryRefs,
   listReviewCardsByIds,
-  reviewLog,
-  reviewState,
   reviewSubjectLog,
   reviewSubjectState,
   type DatabaseClient,
@@ -86,8 +84,7 @@ export async function applyReviewGrade(input: {
       nowIso
     );
     const subjectReviewState = buildSubjectReviewStateForValidation(
-      subjectContext.subjectState,
-      subjectContext.seedCard
+      subjectContext.subjectState
     );
 
     const effectiveState = resolveEffectiveReviewState({
@@ -127,9 +124,7 @@ export async function applyReviewGrade(input: {
 
     await upsertReviewSubjectState(tx, {
       createdAt:
-        subjectContext.subjectState?.createdAt ??
-        subjectContext.seedCard.reviewState?.createdAt ??
-        subjectContext.seedCard.createdAt,
+        subjectContext.subjectState?.createdAt ?? subjectContext.seedCard.createdAt,
       currentCardId: loadedCard.id,
       identity: subjectContext.identity,
       lastReviewedAt: nowIso,
@@ -150,29 +145,6 @@ export async function applyReviewGrade(input: {
       elapsedDays: scheduled.elapsedDays,
       responseMs: input.responseMs ?? null,
       schedulerVersion: scheduled.schedulerVersion
-    });
-
-    await tx.insert(reviewLog).values({
-      id: `review_log_${randomUUID()}`,
-      cardId: loadedCard.id,
-      answeredAt: nowIso,
-      rating: input.rating,
-      previousState,
-      newState: scheduled.state,
-      scheduledDueAt: scheduled.dueAt,
-      elapsedDays: scheduled.elapsedDays,
-      responseMs: input.responseMs ?? null,
-      schedulerVersion: scheduled.schedulerVersion
-    });
-
-    await mirrorLegacyReviewStateToCards(tx, subjectContext.memberCards, {
-      createdAt:
-        subjectContext.subjectState?.createdAt ??
-        subjectContext.seedCard.reviewState?.createdAt ??
-        subjectContext.seedCard.createdAt,
-      lastReviewedAt: nowIso,
-      nowIso,
-      scheduled
     });
 
     return {
@@ -230,9 +202,7 @@ export async function resetReviewCardProgress(input: {
 
     await upsertReviewSubjectState(tx, {
       createdAt:
-        subjectContext.subjectState?.createdAt ??
-        subjectContext.seedCard.reviewState?.createdAt ??
-        subjectContext.seedCard.createdAt,
+        subjectContext.subjectState?.createdAt ?? subjectContext.seedCard.createdAt,
       currentCardId: loadedCard.id,
       identity: subjectContext.identity,
       lastReviewedAt: null,
@@ -250,27 +220,6 @@ export async function resetReviewCardProgress(input: {
         state: "new"
       },
       updatedAt: nowIso
-    });
-
-    await mirrorLegacyReviewStateToCards(tx, subjectContext.memberCards, {
-      createdAt:
-        subjectContext.subjectState?.createdAt ??
-        subjectContext.seedCard.reviewState?.createdAt ??
-        subjectContext.seedCard.createdAt,
-      lastReviewedAt: null,
-      nowIso,
-      scheduled: {
-        difficulty: null,
-        dueAt: nowIso,
-        elapsedDays: null,
-        lapses: 0,
-        learningSteps: 0,
-        reps: 0,
-        scheduledDays: 0,
-        schedulerVersion: "fsrs_v1",
-        stability: null,
-        state: "new"
-      }
     });
 
     if (entryStatusFilters.length > 0) {
@@ -332,31 +281,26 @@ export async function setReviewCardSuspended(input: {
     const sourceState = subjectContext.subjectState ?? {
       cardId: sourceSeedCard.id,
       crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
-      createdAt:
-        sourceSeedCard.reviewState?.createdAt ?? sourceSeedCard.createdAt,
-      difficulty: sourceSeedCard.reviewState?.difficulty ?? null,
-      dueAt: sourceSeedCard.reviewState?.dueAt ?? null,
+      createdAt: sourceSeedCard.createdAt,
+      difficulty: null,
+      dueAt: null,
       entryId: subjectContext.identity.entryId,
       entryType: subjectContext.identity.entryType,
-      lapses: sourceSeedCard.reviewState?.lapses ?? 0,
-      lastInteractionAt:
-        sourceSeedCard.reviewState?.lastReviewedAt ??
-        sourceSeedCard.updatedAt ??
-        sourceSeedCard.createdAt,
-      lastReviewedAt: sourceSeedCard.reviewState?.lastReviewedAt ?? null,
-      learningSteps: sourceSeedCard.reviewState?.learningSteps ?? 0,
-      manualOverride: sourceSeedCard.reviewState?.manualOverride ?? false,
+      lapses: 0,
+      lastInteractionAt: sourceSeedCard.updatedAt ?? sourceSeedCard.createdAt,
+      lastReviewedAt: null,
+      learningSteps: 0,
+      manualOverride: false,
       suspended: false,
-      reps: sourceSeedCard.reviewState?.reps ?? 0,
-      scheduledDays: sourceSeedCard.reviewState?.scheduledDays ?? 0,
-      stability: sourceSeedCard.reviewState?.stability ?? null,
-      state: (sourceSeedCard.reviewState?.state ?? "new") as ReviewState,
+      reps: 0,
+      scheduledDays: 0,
+      stability: null,
+      state: "new" as ReviewState,
       subjectKey: subjectContext.identity.subjectKey,
       subjectType: subjectContext.identity.subjectKind,
       updatedAt: nowIso
     };
-    const schedulerVersion =
-      sourceSeedCard.reviewState?.schedulerVersion ?? "fsrs_v1";
+    const schedulerVersion = "fsrs_v1";
 
     await tx
       .insert(reviewSubjectState)
@@ -488,8 +432,7 @@ async function loadReviewCardForMutation(
         }
       },
       segment: true,
-      entryLinks: true,
-      reviewState: true
+      entryLinks: true
     }
   });
 
@@ -813,8 +756,7 @@ async function resolveReviewSubjectEntryRefs(
 }
 
 function buildSubjectReviewStateForValidation(
-  subjectState: ReviewSubjectStateSnapshot | null,
-  seedCard: ReviewSubjectMemberCard
+  subjectState: ReviewSubjectStateSnapshot | null
 ) {
   if (subjectState) {
     return {
@@ -823,14 +765,7 @@ function buildSubjectReviewStateForValidation(
     };
   }
 
-  if (!seedCard.reviewState) {
-    return null;
-  }
-
-  return {
-    manualOverride: seedCard.reviewState.manualOverride,
-    state: seedCard.reviewState.state as ReviewState
-  };
+  return null;
 }
 
 async function upsertReviewSubjectState(
@@ -894,55 +829,6 @@ async function upsertReviewSubjectState(
         state: input.scheduled.state,
         subjectType: input.identity.subjectKind,
         updatedAt: input.updatedAt
-      }
-    });
-}
-
-async function mirrorLegacyReviewStateToCards(
-  transaction: DatabaseTransaction,
-  cards: ReviewSubjectMemberCard[],
-  input: {
-    createdAt: string;
-    lastReviewedAt: string | null;
-    nowIso: string;
-    scheduled: ReviewSubjectScheduledState;
-  }
-) {
-  await transaction
-    .insert(reviewState)
-    .values(
-      cards.map((legacyCard) => ({
-        cardId: legacyCard.id,
-        state: input.scheduled.state,
-        stability: input.scheduled.stability,
-        difficulty: input.scheduled.difficulty,
-        dueAt: input.scheduled.dueAt,
-        lastReviewedAt: input.lastReviewedAt,
-        scheduledDays: input.scheduled.scheduledDays,
-        learningSteps: input.scheduled.learningSteps,
-        lapses: input.scheduled.lapses,
-        reps: input.scheduled.reps,
-        schedulerVersion: input.scheduled.schedulerVersion,
-        manualOverride: false,
-        createdAt: legacyCard.reviewState?.createdAt ?? input.createdAt,
-        updatedAt: input.nowIso
-      }))
-    )
-    .onConflictDoUpdate({
-      target: reviewState.cardId,
-      set: {
-        state: input.scheduled.state,
-        stability: input.scheduled.stability,
-        difficulty: input.scheduled.difficulty,
-        dueAt: input.scheduled.dueAt,
-        lastReviewedAt: input.lastReviewedAt,
-        scheduledDays: input.scheduled.scheduledDays,
-        learningSteps: input.scheduled.learningSteps,
-        lapses: input.scheduled.lapses,
-        reps: input.scheduled.reps,
-        schedulerVersion: input.scheduled.schedulerVersion,
-        manualOverride: false,
-        updatedAt: input.nowIso
       }
     });
 }

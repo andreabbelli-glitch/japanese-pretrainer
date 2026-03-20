@@ -20,8 +20,8 @@ import {
   entryStatus,
   lessonProgress,
   listCardsByMediaId,
-  reviewLog,
-  reviewState,
+  reviewSubjectLog,
+  reviewSubjectState,
   runMigrations,
   type DatabaseClient
 } from "@/db";
@@ -260,11 +260,12 @@ describe("content importer", () => {
     expect(await countRows(database.query.cardEntryLink.findMany())).toBe(2);
     expect(await countRows(database.query.contentImport.findMany())).toBe(2);
 
-    const persistedReviewState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, termCardId)
-    });
-    const persistedReviewLog = await database.query.reviewLog.findMany({
-      where: eq(reviewLog.cardId, termCardId)
+    const persistedReviewState =
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, `entry:term:${termDbId}`)
+      });
+    const persistedReviewLog = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, `entry:term:${termDbId}`)
     });
     const persistedEntryStatus = await database.query.entryStatus.findFirst({
       where: eq(entryStatus.entryId, termDbId)
@@ -430,9 +431,10 @@ describe("content importer", () => {
     const importedCard = await database.query.card.findFirst({
       where: eq(card.id, termCardId)
     });
-    const persistedReviewState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, termCardId)
-    });
+    const persistedReviewState =
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, `entry:term:${termDbId}`)
+      });
 
     expect(importedTerm?.meaningIt).toBe("assumere cibo");
     expect(importedCard?.back).toBe("assumere cibo");
@@ -574,11 +576,12 @@ tags: [grammar, core]
     const missingTerm = await database.query.term.findFirst({
       where: eq(term.id, termDbId)
     });
-    const persistedReviewState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, termCardId)
-    });
-    const persistedReviewLog = await database.query.reviewLog.findMany({
-      where: eq(reviewLog.cardId, termCardId)
+    const persistedReviewState =
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, `entry:term:${termDbId}`)
+      });
+    const persistedReviewLog = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, `entry:term:${termDbId}`)
     });
     const persistedEntryStatus = await database.query.entryStatus.findFirst({
       where: eq(entryStatus.entryId, termDbId)
@@ -943,24 +946,32 @@ async function seedUserState(database: DatabaseClient) {
     reason: "Existing manual override",
     setAt: "2026-03-09T09:45:00.000Z"
   });
-  await database.insert(reviewState).values({
+  await database.insert(reviewSubjectState).values({
+    subjectKey: `entry:term:${termDbId}`,
+    subjectType: "entry",
+    entryType: "term",
+    crossMediaGroupId: null,
+    entryId: termDbId,
     cardId: termCardId,
     state: "learning",
     stability: 1.7,
     difficulty: 4.1,
     dueAt: "2026-03-10T09:00:00.000Z",
     lastReviewedAt: "2026-03-09T09:30:00.000Z",
+    lastInteractionAt: "2026-03-09T09:30:00.000Z",
     scheduledDays: 0,
     learningSteps: 0,
     lapses: 1,
     reps: 3,
     schedulerVersion: "fsrs_v1",
     manualOverride: false,
+    suspended: false,
     createdAt: "2026-03-09T09:00:00.000Z",
     updatedAt: "2026-03-09T09:30:00.000Z"
   });
-  await database.insert(reviewLog).values({
-    id: "review_log_term_taberu",
+  await database.insert(reviewSubjectLog).values({
+    id: "review_subject_log_term_taberu",
+    subjectKey: `entry:term:${termDbId}`,
     cardId: termCardId,
     answeredAt: "2026-03-09T09:30:00.000Z",
     rating: "good",

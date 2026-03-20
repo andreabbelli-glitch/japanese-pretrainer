@@ -18,8 +18,6 @@ import { lessonProgress } from "./progress.ts";
 import {
   card,
   cardEntryLink,
-  reviewLog,
-  reviewState,
   reviewSubjectLog,
   reviewSubjectState
 } from "./review.ts";
@@ -148,31 +146,12 @@ export const cardRelations = relations(card, ({ many, one }) => ({
     fields: [card.segmentId],
     references: [segment.id]
   }),
-  entryLinks: many(cardEntryLink),
-  reviewState: one(reviewState, {
-    fields: [card.id],
-    references: [reviewState.cardId]
-  }),
-  reviewLogs: many(reviewLog)
+  entryLinks: many(cardEntryLink)
 }));
 
 export const cardEntryLinkRelations = relations(cardEntryLink, ({ one }) => ({
   card: one(card, {
     fields: [cardEntryLink.cardId],
-    references: [card.id]
-  })
-}));
-
-export const reviewStateRelations = relations(reviewState, ({ one }) => ({
-  card: one(card, {
-    fields: [reviewState.cardId],
-    references: [card.id]
-  })
-}));
-
-export const reviewLogRelations = relations(reviewLog, ({ one }) => ({
-  card: one(card, {
-    fields: [reviewLog.cardId],
     references: [card.id]
   })
 }));

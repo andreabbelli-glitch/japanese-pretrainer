@@ -7,14 +7,13 @@ import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
   groupReviewCardsBySubject,
+  selectReviewSubjectRepresentativeCard,
   type ReviewSubjectStateSnapshot
 } from "./review-subject.ts";
-import { loadReviewSubjectStateLookup } from "./review-subject-state-lookup.ts";
 
 export type ReviewSubjectStateBackfillResult = {
   cardCount: number;
   insertedCount: number;
-  legacyFallbackCount: number;
   subjectCount: number;
 };
 
@@ -22,10 +21,6 @@ export type ReviewSubjectStateCoverageResult = {
   cardCount: number;
   complete: boolean;
   existingStateCount: number;
-  legacyFallbackCounts: {
-    complex: number;
-    inline: number;
-  };
   missingStateCount: number;
   subjectCount: number;
 };
@@ -65,7 +60,6 @@ export async function backfillReviewSubjectState(
     return {
       cardCount: 0,
       insertedCount: 0,
-      legacyFallbackCount: 0,
       subjectCount: 0
     };
   }
@@ -76,24 +70,56 @@ export async function backfillReviewSubjectState(
     return {
       cardCount: 0,
       insertedCount: 0,
-      legacyFallbackCount: 0,
       subjectCount: 0
     };
   }
 
-  const lookup = await loadReviewSubjectStateLookup({
-    cards,
-    database,
+  const subjectEntryLookup = buildReviewSubjectEntryLookup({
     grammar,
-    nowIso: input.now?.toISOString(),
     terms
   });
+  const subjectKeys = [
+    ...new Set(
+      cards.map(
+        (card) =>
+          deriveReviewSubjectIdentity({
+            cardId: card.id,
+            cardType: card.cardType,
+            front: card.front,
+            entryLinks: card.entryLinks,
+            entryLookup: subjectEntryLookup
+          }).subjectKey
+      )
+    )
+  ];
+  const subjectStateRows = await listReviewSubjectStatesByKeys(
+    database,
+    subjectKeys
+  );
+  const subjectStates = new Map(
+    [...subjectStateRows.entries()].map(([subjectKey, row]) => [
+      subjectKey,
+      row as ReviewSubjectStateSnapshot
+    ])
+  );
+  const subjectGroups = groupReviewCardsBySubject({
+    cards,
+    entryLookup: subjectEntryLookup,
+    nowIso: input.now?.toISOString(),
+    subjectStates
+  });
+  const missingSubjectGroups = subjectGroups.filter(
+    (group) => !subjectStates.has(group.identity.subjectKey)
+  );
+  const initialStates = missingSubjectGroups.map((group) =>
+    buildInitialReviewSubjectState(group, input.now?.toISOString())
+  );
 
-  if (lookup.fallbackStates.length > 0) {
+  if (initialStates.length > 0) {
     await database
       .insert(reviewSubjectState)
       .values(
-        lookup.fallbackStates.map((state) => ({
+        initialStates.map((state) => ({
           cardId: state.cardId,
           createdAt: state.createdAt,
           crossMediaGroupId: state.crossMediaGroupId,
@@ -123,9 +149,8 @@ export async function backfillReviewSubjectState(
 
   return {
     cardCount: cards.length,
-    insertedCount: lookup.fallbackStates.length,
-    legacyFallbackCount: lookup.fallbackStates.length,
-    subjectCount: lookup.subjectGroups.length
+    insertedCount: initialStates.length,
+    subjectCount: subjectGroups.length
   };
 }
 
@@ -165,10 +190,6 @@ export async function inspectReviewSubjectStateCoverage(
       cardCount: 0,
       complete: true,
       existingStateCount: 0,
-      legacyFallbackCounts: {
-        complex: 0,
-        inline: 0
-      },
       missingStateCount: 0,
       subjectCount: 0
     };
@@ -181,10 +202,6 @@ export async function inspectReviewSubjectStateCoverage(
       cardCount: 0,
       complete: true,
       existingStateCount: 0,
-      legacyFallbackCounts: {
-        complex: 0,
-        inline: 0
-      },
       missingStateCount: 0,
       subjectCount: 0
     };
@@ -232,15 +249,41 @@ export async function inspectReviewSubjectStateCoverage(
     cardCount: cards.length,
     complete: missingSubjectGroups.length === 0,
     existingStateCount: subjectStates.size,
-    legacyFallbackCounts: {
-      complex: missingSubjectGroups.filter(
-        (group) => group.identity.subjectKind !== "card"
-      ).length,
-      inline: missingSubjectGroups.filter(
-        (group) => group.identity.subjectKind === "card"
-      ).length
-    },
     missingStateCount: missingSubjectGroups.length,
     subjectCount: subjectGroups.length
+  };
+}
+
+function buildInitialReviewSubjectState(
+  group: ReturnType<typeof groupReviewCardsBySubject>[number],
+  nowIso?: string
+): ReviewSubjectStateSnapshot {
+  const representativeCard = selectReviewSubjectRepresentativeCard(
+    group.cards,
+    null,
+    nowIso
+  );
+
+  return {
+    cardId: representativeCard.id,
+    createdAt: representativeCard.createdAt,
+    crossMediaGroupId: group.identity.crossMediaGroupId,
+    difficulty: null,
+    dueAt: null,
+    entryId: group.identity.entryId,
+    entryType: group.identity.entryType,
+    lapses: 0,
+    lastInteractionAt: representativeCard.updatedAt ?? representativeCard.createdAt,
+    lastReviewedAt: null,
+    learningSteps: 0,
+    manualOverride: false,
+    reps: 0,
+    scheduledDays: 0,
+    stability: null,
+    state: "new",
+    subjectKey: group.identity.subjectKey,
+    subjectType: group.identity.subjectKind,
+    suspended: representativeCard.status === "suspended",
+    updatedAt: representativeCard.updatedAt
   };
 }

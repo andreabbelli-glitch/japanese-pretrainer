@@ -8,7 +8,6 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   lessonProgress,
-  reviewState,
   runMigrations,
   type DatabaseClient
 } from "@/db";
@@ -65,22 +64,6 @@ describe("review subject state backfill", () => {
         completedAt: "2026-03-11T08:00:00.000Z"
       }
     ]);
-    await database.insert(reviewState).values({
-      cardId: crossMediaFixture.alpha.termCardId,
-      state: "review",
-      stability: 2.4,
-      difficulty: 3.1,
-      dueAt: "2000-01-01T00:00:00.000Z",
-      lastReviewedAt: "2026-03-10T08:00:00.000Z",
-      scheduledDays: 2,
-      learningSteps: 0,
-      lapses: 1,
-      reps: 3,
-      schedulerVersion: "fsrs_v1",
-      manualOverride: false,
-      createdAt: "2026-03-10T08:00:00.000Z",
-      updatedAt: "2026-03-10T08:00:00.000Z"
-    });
 
     expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
 
@@ -104,18 +87,17 @@ describe("review subject state backfill", () => {
     expect(beforeGlobal.selectedCard?.id).toBe(
       crossMediaFixture.alpha.termCardId
     );
-    expect(beforeGlobal.selectedCard?.bucket).toBe("due");
+    expect(beforeGlobal.selectedCard?.bucket).toBe("new");
     expect(beforeBeta?.selectedCard?.id).toBe(
-      crossMediaFixture.beta.termCardId
+      crossMediaFixture.beta.mixedCardTermCardId
     );
-    expect(beforeBeta?.selectedCard?.bucket).toBe("due");
+    expect(beforeBeta?.selectedCard?.bucket).toBe("new");
 
     const firstRun = await backfillReviewSubjectState(database, {
       now: new Date("2026-03-11T09:00:00.000Z")
     });
 
     expect(firstRun.insertedCount).toBe(3);
-    expect(firstRun.legacyFallbackCount).toBe(3);
     expect(firstRun.subjectCount).toBe(3);
 
     const subjectStates = await database.query.reviewSubjectState.findMany();
@@ -129,14 +111,14 @@ describe("review subject state backfill", () => {
     expect(termSubjectState).toMatchObject({
       cardId: crossMediaFixture.alpha.termCardId,
       crossMediaGroupId: expect.any(String),
-      dueAt: "2000-01-01T00:00:00.000Z",
+      dueAt: null,
       entryType: "term",
-      lapses: 1,
-      lastReviewedAt: "2026-03-10T08:00:00.000Z",
-      reps: 3,
-      scheduledDays: 2,
-      stability: 2.4,
-      state: "review",
+      lapses: 0,
+      lastReviewedAt: null,
+      reps: 0,
+      scheduledDays: 0,
+      stability: null,
+      state: "new",
       subjectKey: expect.stringMatching(/^group:term:/),
       suspended: false
     });
@@ -158,7 +140,6 @@ describe("review subject state backfill", () => {
     });
 
     expect(secondRun.insertedCount).toBe(0);
-    expect(secondRun.legacyFallbackCount).toBe(0);
     expect(secondRun.subjectCount).toBe(3);
 
     const [afterGlobal, afterBeta] = await Promise.all([

@@ -1,11 +1,13 @@
-import { and, asc, eq, inArray, or } from "drizzle-orm";
+import { and, asc, eq, inArray, or, sql } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import {
   card,
   cardEntryLink,
   entryLink,
-  reviewState,
+  grammarPattern,
+  reviewSubjectState,
+  term,
   userSetting
 } from "../schema/index.ts";
 
@@ -77,12 +79,56 @@ export async function listEntryStudySignals(
       entryType: cardEntryLink.entryType,
       relationshipType: cardEntryLink.relationshipType,
       cardId: card.id,
-      reviewState: reviewState.state,
-      dueAt: reviewState.dueAt,
-      manualOverride: reviewState.manualOverride
+      reviewState: reviewSubjectState.state,
+      dueAt: reviewSubjectState.dueAt,
+      manualOverride: reviewSubjectState.manualOverride
     })
     .from(cardEntryLink)
     .innerJoin(card, eq(card.id, cardEntryLink.cardId))
-    .leftJoin(reviewState, eq(reviewState.cardId, card.id))
+    .leftJoin(
+      term,
+      and(eq(cardEntryLink.entryType, "term"), eq(term.id, cardEntryLink.entryId))
+    )
+    .leftJoin(
+      grammarPattern,
+      and(
+        eq(cardEntryLink.entryType, "grammar"),
+        eq(grammarPattern.id, cardEntryLink.entryId)
+      )
+    )
+    .leftJoin(
+      reviewSubjectState,
+      sql`
+        ${reviewSubjectState.entryType} = ${cardEntryLink.entryType}
+        AND (
+          (
+            ${cardEntryLink.entryType} = 'term'
+            AND (
+              (
+                ${term.crossMediaGroupId} IS NOT NULL
+                AND ${reviewSubjectState.crossMediaGroupId} = ${term.crossMediaGroupId}
+              )
+              OR (
+                ${term.crossMediaGroupId} IS NULL
+                AND ${reviewSubjectState.entryId} = ${cardEntryLink.entryId}
+              )
+            )
+          )
+          OR (
+            ${cardEntryLink.entryType} = 'grammar'
+            AND (
+              (
+                ${grammarPattern.crossMediaGroupId} IS NOT NULL
+                AND ${reviewSubjectState.crossMediaGroupId} = ${grammarPattern.crossMediaGroupId}
+              )
+              OR (
+                ${grammarPattern.crossMediaGroupId} IS NULL
+                AND ${reviewSubjectState.entryId} = ${cardEntryLink.entryId}
+              )
+            )
+          )
+        )
+      `
+    )
     .where(and(eq(card.status, "active"), or(...filters)));
 }

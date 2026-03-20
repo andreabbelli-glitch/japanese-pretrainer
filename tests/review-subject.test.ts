@@ -51,26 +51,7 @@ function buildReviewCard(
         }
       } satisfies ReviewCardListItem["lesson"]),
     segment: input.segment ?? null,
-    entryLinks: input.entryLinks ?? [],
-    reviewState:
-      input.reviewState === undefined
-        ? {
-            cardId: input.id,
-            state: "new",
-            stability: null,
-            difficulty: null,
-            dueAt: null,
-            lastReviewedAt: null,
-            scheduledDays: 0,
-            learningSteps: 0,
-            lapses: 0,
-            reps: 0,
-            schedulerVersion: "fsrs_v1",
-            manualOverride: false,
-            createdAt: "2026-03-10T08:00:00.000Z",
-            updatedAt: "2026-03-10T08:00:00.000Z"
-          }
-        : input.reviewState
+    entryLinks: input.entryLinks ?? []
   };
 }
 
@@ -151,71 +132,35 @@ describe("review subject representative fallback", () => {
     const manualCard = buildReviewCard({
       id: "card-manual",
       front: "manual",
-      orderIndex: 1,
-      reviewState: {
-        cardId: "card-manual",
-        state: "known_manual",
-        stability: null,
-        difficulty: null,
-        dueAt: "2026-03-10T08:00:00.000Z",
-        lastReviewedAt: "2026-03-10T08:00:00.000Z",
-        scheduledDays: 0,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 1,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: true,
-        createdAt: "2026-03-10T08:00:00.000Z",
-        updatedAt: "2026-03-10T08:00:00.000Z"
-      }
+      orderIndex: 1
     });
     const suspendedCard = buildReviewCard({
       id: "card-suspended",
       front: "suspended",
       orderIndex: 2,
-      status: "suspended",
-      reviewState: {
-        cardId: "card-suspended",
-        state: "suspended",
-        stability: null,
-        difficulty: null,
-        dueAt: "2026-03-10T08:00:00.000Z",
-        lastReviewedAt: "2026-03-10T08:00:00.000Z",
-        scheduledDays: 0,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 1,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: false,
-        createdAt: "2026-03-10T08:00:00.000Z",
-        updatedAt: "2026-03-10T08:00:00.000Z"
-      }
+      status: "suspended"
     });
     const activeCard = buildReviewCard({
       id: "card-active",
       front: "active",
-      orderIndex: 99,
-      reviewState: {
-        cardId: "card-active",
-        state: "review",
-        stability: 3,
-        difficulty: 2.5,
-        dueAt: "2026-03-10T08:00:00.000Z",
-        lastReviewedAt: "2026-03-10T08:00:00.000Z",
-        scheduledDays: 3,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 3,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: false,
-        createdAt: "2026-03-10T08:00:00.000Z",
-        updatedAt: "2026-03-10T08:00:00.000Z"
-      }
+      orderIndex: 99
     });
+    const drivingEntryStatusesByCardId = new Map<
+      string,
+      ReviewEntryStatusValue[]
+    >([
+      ["card-manual", ["known_manual"]],
+      ["card-suspended", [null]],
+      ["card-active", [null]]
+    ]);
 
     const representative = selectReviewSubjectRepresentativeCard(
       [manualCard, suspendedCard, activeCard],
-      null
+      null,
+      "2026-03-10T08:00:00.000Z",
+      {
+        drivingEntryStatusesByCardId
+      }
     );
 
     expect(representative.id).toBe("card-active");
@@ -225,44 +170,12 @@ describe("review subject representative fallback", () => {
     const manualCard = buildReviewCard({
       id: "card-manual-entry-status",
       front: "manual-entry-status",
-      orderIndex: 1,
-      reviewState: {
-        cardId: "card-manual-entry-status",
-        state: "review",
-        stability: 2.2,
-        difficulty: 3.4,
-        dueAt: "2026-03-10T08:00:00.000Z",
-        lastReviewedAt: "2026-03-10T08:00:00.000Z",
-        scheduledDays: 2,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 2,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: false,
-        createdAt: "2026-03-10T08:00:00.000Z",
-        updatedAt: "2026-03-10T08:00:00.000Z"
-      }
+      orderIndex: 1
     });
     const activeCard = buildReviewCard({
       id: "card-active-entry-status",
       front: "active-entry-status",
-      orderIndex: 99,
-      reviewState: {
-        cardId: "card-active-entry-status",
-        state: "review",
-        stability: 2.2,
-        difficulty: 3.4,
-        dueAt: "2026-03-10T08:00:00.000Z",
-        lastReviewedAt: "2026-03-10T08:00:00.000Z",
-        scheduledDays: 2,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 2,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: false,
-        createdAt: "2026-03-10T08:00:00.000Z",
-        updatedAt: "2026-03-10T08:00:00.000Z"
-      }
+      orderIndex: 99
     });
     const drivingEntryStatusesByCardId = new Map<
       string,

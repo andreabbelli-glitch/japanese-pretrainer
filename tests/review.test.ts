@@ -13,18 +13,16 @@ import {
   card,
   cardEntryLink,
   closeDatabaseClient,
-  countNewCardsIntroducedOnDayByMediaId,
-  countNewCardsIntroducedOnDayByMediaIds,
+  countReviewSubjectsIntroducedOnDayByMediaId,
+  countReviewSubjectsIntroducedOnDayByMediaIds,
   countReviewSubjectsIntroducedOnDay,
   createDatabaseClient,
   developmentFixture,
   entryStatus,
-  getUtcDayBounds,
   lesson,
   lessonProgress,
   media,
-  reviewLog,
-  reviewState,
+  reviewSubjectLog,
   reviewSubjectState,
   runMigrations,
   seedDevelopmentDatabase,
@@ -57,6 +55,7 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import { getUtcDayBounds } from "@/db/queries/review-query-helpers";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -67,6 +66,8 @@ const validContentRoot = path.join(
   "valid",
   "content"
 );
+const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
+const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
 const { revalidatePathMock } = vi.hoisted(() => ({
   revalidatePathMock: vi.fn()
 }));
@@ -88,18 +89,18 @@ async function prepareReviewSessionRedirectFixture(database: DatabaseClient) {
   const pastDueAt = "2000-01-01T00:00:00.000Z";
 
   await database
-    .update(reviewState)
+    .update(reviewSubjectState)
     .set({
       dueAt: futureDueAt
     })
-    .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+    .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
   await database
-    .update(reviewState)
+    .update(reviewSubjectState)
     .set({
       dueAt: pastDueAt
     })
-    .where(eq(reviewState.cardId, developmentFixture.secondaryCardId));
+    .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
 
   await database
     .update(entryStatus)
@@ -123,18 +124,18 @@ async function prepareReviewSessionRedirectFixture(database: DatabaseClient) {
 
 async function prepareTwoQueueCardFixture(database: DatabaseClient) {
   await database
-    .update(reviewState)
+    .update(reviewSubjectState)
     .set({
       dueAt: "2000-01-01T00:00:00.000Z"
     })
-    .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+    .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
   await database
-    .update(reviewState)
+    .update(reviewSubjectState)
     .set({
       dueAt: "2000-01-01T00:05:00.000Z"
     })
-    .where(eq(reviewState.cardId, developmentFixture.secondaryCardId));
+    .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
 
   await database
     .update(entryStatus)
@@ -268,6 +269,33 @@ describe("review system", () => {
           lastOpenedAt: completedAt
         }
       });
+  }
+
+  async function loadCrossMediaTermSubjectContext(client: DatabaseClient) {
+    const [alphaTermEntry, betaTermEntry] = await Promise.all([
+      client.query.term.findFirst({
+        where: eq(term.sourceId, crossMediaFixture.alpha.termSourceId)
+      }),
+      client.query.term.findFirst({
+        where: eq(term.sourceId, crossMediaFixture.beta.termSourceId)
+      })
+    ]);
+
+    if (
+      !alphaTermEntry ||
+      !betaTermEntry ||
+      !alphaTermEntry.crossMediaGroupId ||
+      !betaTermEntry.crossMediaGroupId
+    ) {
+      throw new Error("Cross-media term fixture is missing its canonical group.");
+    }
+
+    return {
+      alphaTermEntry,
+      betaTermEntry,
+      crossMediaGroupId: alphaTermEntry.crossMediaGroupId,
+      subjectKey: `group:term:${alphaTermEntry.crossMediaGroupId}`
+    };
   }
 
   it("maps FSRS-native review cards into scheduling outputs", () => {
@@ -446,9 +474,81 @@ describe("review system", () => {
       createdAt: "2026-03-10T00:00:00.000Z",
       updatedAt: "2026-03-10T00:00:00.000Z"
     });
-    await database.insert(reviewLog).values([
+    await database.insert(reviewSubjectState).values([
       {
-        id: "review_log_timezone_before",
+        subjectKey: "entry:term:term_timezone_fixture_before",
+        subjectType: "entry",
+        entryType: "term",
+        entryId: "term_timezone_fixture_before",
+        crossMediaGroupId: null,
+        cardId: "card_timezone_fixture_before",
+        state: "review",
+        stability: 2,
+        difficulty: 3,
+        dueAt: "2026-03-11T23:59:59.000Z",
+        lastReviewedAt: "2026-03-10T23:59:59.000Z",
+        lastInteractionAt: "2026-03-10T23:59:59.000Z",
+        scheduledDays: 1,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 1,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: false,
+        suspended: false,
+        createdAt: "2026-03-10T00:00:00.000Z",
+        updatedAt: "2026-03-10T23:59:59.000Z"
+      },
+      {
+        subjectKey: "entry:term:term_timezone_fixture_target",
+        subjectType: "entry",
+        entryType: "term",
+        entryId: "term_timezone_fixture_target",
+        crossMediaGroupId: null,
+        cardId: "card_timezone_fixture_target",
+        state: "review",
+        stability: 2,
+        difficulty: 3,
+        dueAt: "2026-03-12T00:00:00.000Z",
+        lastReviewedAt: "2026-03-11T00:00:00.000Z",
+        lastInteractionAt: "2026-03-11T00:00:00.000Z",
+        scheduledDays: 1,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 1,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: false,
+        suspended: false,
+        createdAt: "2026-03-10T00:00:00.000Z",
+        updatedAt: "2026-03-11T00:00:00.000Z"
+      },
+      {
+        subjectKey: "entry:term:term_timezone_fixture_other",
+        subjectType: "entry",
+        entryType: "term",
+        entryId: "term_timezone_fixture_other",
+        crossMediaGroupId: null,
+        cardId: "card_timezone_fixture_other",
+        state: "review",
+        stability: 2,
+        difficulty: 3,
+        dueAt: "2026-03-12T02:15:00.000Z",
+        lastReviewedAt: "2026-03-11T02:15:00.000Z",
+        lastInteractionAt: "2026-03-11T02:15:00.000Z",
+        scheduledDays: 1,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 1,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: false,
+        suspended: false,
+        createdAt: "2026-03-10T00:00:00.000Z",
+        updatedAt: "2026-03-11T02:15:00.000Z"
+      }
+    ]);
+    await database.insert(reviewSubjectLog).values([
+      {
+        id: "review_subject_log_timezone_before",
+        subjectKey: "entry:term:term_timezone_fixture_before",
         cardId: "card_timezone_fixture_before",
         answeredAt: "2026-03-10T23:59:59.000Z",
         rating: "good",
@@ -459,7 +559,8 @@ describe("review system", () => {
         responseMs: null
       },
       {
-        id: "review_log_timezone_target",
+        id: "review_subject_log_timezone_target",
+        subjectKey: "entry:term:term_timezone_fixture_target",
         cardId: "card_timezone_fixture_target",
         answeredAt: "2026-03-11T00:00:00.000Z",
         rating: "good",
@@ -470,7 +571,8 @@ describe("review system", () => {
         responseMs: null
       },
       {
-        id: "review_log_timezone_other",
+        id: "review_subject_log_timezone_other",
+        subjectKey: "entry:term:term_timezone_fixture_other",
         cardId: "card_timezone_fixture_other",
         answeredAt: "2026-03-11T02:15:00.000Z",
         rating: "good",
@@ -484,12 +586,12 @@ describe("review system", () => {
 
     const asOf = new Date("2026-03-10T23:30:00.000-05:00");
     const [singleMediaCount, groupedCounts] = await Promise.all([
-      countNewCardsIntroducedOnDayByMediaId(
+      countReviewSubjectsIntroducedOnDayByMediaId(
         database,
         "media_timezone_fixture",
         asOf
       ),
-      countNewCardsIntroducedOnDayByMediaIds(
+      countReviewSubjectsIntroducedOnDayByMediaIds(
         database,
         ["media_timezone_fixture", "media_timezone_fixture_other"],
         asOf
@@ -507,7 +609,7 @@ describe("review system", () => {
     ).toBe(2);
   });
 
-  it("counts introduced subjects from legacy review logs without double-counting shared cross-media cards", async () => {
+  it("counts introduced subjects from canonical review subject logs without double-counting shared cross-media cards", async () => {
     const contentRoot = path.join(tempDir, "cross-media-legacy-count");
 
     await writeCrossMediaContentFixture(contentRoot);
@@ -518,10 +620,36 @@ describe("review system", () => {
     });
 
     expect(result.status).toBe("completed");
+    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
+      await loadCrossMediaTermSubjectContext(database);
+    await database.insert(reviewSubjectState).values({
+      subjectKey,
+      subjectType: "group",
+      entryType: "term",
+      entryId: alphaTermEntry.id,
+      crossMediaGroupId,
+      cardId: crossMediaFixture.alpha.termCardId,
+      state: "review",
+      stability: 2.4,
+      difficulty: 3.1,
+      dueAt: "2026-03-12T08:00:00.000Z",
+      lastReviewedAt: "2026-03-11T08:00:00.000Z",
+      lastInteractionAt: "2026-03-11T08:00:00.000Z",
+      scheduledDays: 1,
+      learningSteps: 0,
+      lapses: 0,
+      reps: 1,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      suspended: false,
+      createdAt: "2026-03-11T08:00:00.000Z",
+      updatedAt: "2026-03-11T08:00:00.000Z"
+    });
 
-    await database.insert(reviewLog).values([
+    await database.insert(reviewSubjectLog).values([
       {
-        id: "review_log_cross_media_alpha",
+        id: "review_subject_log_cross_media_alpha",
+        subjectKey,
         cardId: crossMediaFixture.alpha.termCardId,
         answeredAt: "2026-03-11T08:00:00.000Z",
         rating: "good",
@@ -532,7 +660,8 @@ describe("review system", () => {
         responseMs: null
       },
       {
-        id: "review_log_cross_media_beta",
+        id: "review_subject_log_cross_media_beta",
+        subjectKey,
         cardId: crossMediaFixture.beta.termCardId,
         answeredAt: "2026-03-11T09:00:00.000Z",
         rating: "good",
@@ -616,11 +745,11 @@ describe("review system", () => {
 
   it("builds a daily queue that separates due, new, manual, and suspended cards", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await database.insert(card).values([
       {
@@ -670,20 +799,6 @@ describe("review system", () => {
         relationshipType: "primary"
       }
     ]);
-    await database.insert(reviewState).values({
-      cardId: "card_fixture_suspended",
-      state: "review",
-      stability: 4,
-      difficulty: 3,
-      dueAt: "2999-01-01T00:00:00.000Z",
-      lastReviewedAt: "2026-03-08T10:00:00.000Z",
-      lapses: 0,
-      reps: 4,
-      manualOverride: false,
-      createdAt: "2026-03-09T10:00:00.000Z",
-      updatedAt: "2026-03-09T10:00:00.000Z"
-    });
-
     const queue = await getReviewQueueSnapshotForMedia(
       developmentFixture.mediaSlug,
       database
@@ -703,11 +818,11 @@ describe("review system", () => {
 
   it("counts only due and upcoming cards as active review cards in overview snapshots", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await database.insert(card).values([
       {
@@ -757,20 +872,6 @@ describe("review system", () => {
         relationshipType: "primary"
       }
     ]);
-    await database.insert(reviewState).values({
-      cardId: "card_fixture_overview_suspended",
-      state: "review",
-      stability: 4,
-      difficulty: 3,
-      dueAt: "2999-01-01T00:00:00.000Z",
-      lastReviewedAt: "2026-03-08T10:00:00.000Z",
-      lapses: 0,
-      reps: 4,
-      manualOverride: false,
-      createdAt: "2026-03-09T10:00:00.000Z",
-      updatedAt: "2026-03-09T10:00:00.000Z"
-    });
-
     const [queue, overviewSnapshots] = await Promise.all([
       getReviewQueueSnapshotForMedia(developmentFixture.mediaSlug, database),
       loadReviewOverviewSnapshots(database, [
@@ -792,11 +893,11 @@ describe("review system", () => {
 
   it("selects the best review launch media without loading the dashboard", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2026-03-20T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await database.insert(media).values({
       id: "media_duel_masters",
@@ -870,16 +971,26 @@ describe("review system", () => {
       entryId: "term_duel_masters_review",
       relationshipType: "primary"
     });
-    await database.insert(reviewState).values({
+    await database.insert(reviewSubjectState).values({
+      subjectKey: "entry:term:term_duel_masters_review",
+      subjectType: "entry",
+      entryType: "term",
+      entryId: "term_duel_masters_review",
+      crossMediaGroupId: null,
       cardId: "card_duel_masters_due",
       state: "review",
       stability: 3,
       difficulty: 2.5,
       dueAt: "2026-03-01T00:00:00.000Z",
       lastReviewedAt: "2026-03-08T09:00:00.000Z",
+      lastInteractionAt: "2026-03-08T09:00:00.000Z",
+      scheduledDays: 0,
+      learningSteps: 0,
       lapses: 0,
       reps: 3,
+      schedulerVersion: "fsrs_v1",
       manualOverride: false,
+      suspended: false,
       createdAt: "2026-03-08T09:00:00.000Z",
       updatedAt: "2026-03-08T09:30:00.000Z"
     });
@@ -889,13 +1000,13 @@ describe("review system", () => {
     expect(launchMedia?.slug).toBe("duel-masters-dm25");
   });
 
-  it("persists grading into review_state and review_log without overwriting history", async () => {
+  it("persists grading into review_subject_state and review_subject_log without overwriting history", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await applyReviewGrade({
       cardId: developmentFixture.primaryCardId,
@@ -904,11 +1015,11 @@ describe("review system", () => {
       rating: "good"
     });
 
-    const persistedState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, developmentFixture.primaryCardId)
+    const persistedState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
     });
-    const logs = await database.query.reviewLog.findMany({
-      where: eq(reviewLog.cardId, developmentFixture.primaryCardId)
+    const logs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
     });
 
     expect(persistedState?.state).toBe("review");
@@ -925,7 +1036,7 @@ describe("review system", () => {
     expect(logs.at(-1)?.schedulerVersion).toBe("fsrs_v1");
   });
 
-  it("mirrors lastReviewedAt into legacy review_state on the first cross-media insert", async () => {
+  it("stores cross-media grading on the canonical shared subject state", async () => {
     const contentRoot = path.join(tempDir, "cross-media-legacy-mirror");
 
     await writeCrossMediaContentFixture(contentRoot);
@@ -936,7 +1047,12 @@ describe("review system", () => {
     });
 
     expect(result.status).toBe("completed");
-    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
+    const { subjectKey } = await loadCrossMediaTermSubjectContext(database);
+    expect(
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, subjectKey)
+      })
+    ).toBeUndefined();
     await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
 
     const now = new Date("2026-03-11T09:00:00.000Z");
@@ -949,15 +1065,12 @@ describe("review system", () => {
       rating: "good"
     });
 
-    const alphaState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, crossMediaFixture.alpha.termCardId)
-    });
-    const betaState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, crossMediaFixture.beta.termCardId)
+    const subjectState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, subjectKey)
     });
 
-    expect(alphaState?.lastReviewedAt).toBe(nowIso);
-    expect(betaState?.lastReviewedAt).toBe(nowIso);
+    expect(subjectState?.lastReviewedAt).toBe(nowIso);
+    expect(subjectState?.cardId).toBe(crossMediaFixture.alpha.termCardId);
   });
 
   it("rejects review mutations when card and requested media do not match", async () => {
@@ -1008,11 +1121,11 @@ describe("review system", () => {
     );
 
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
     await database
       .update(reviewSubjectState)
       .set({
@@ -1125,11 +1238,11 @@ describe("review system", () => {
 
   it("keeps the main stage in a completion state when the queue is empty unless a card is explicitly selected", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await applyReviewGrade({
       cardId: developmentFixture.primaryCardId,
@@ -1138,11 +1251,11 @@ describe("review system", () => {
       rating: "good"
     });
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
     await database
       .update(reviewSubjectState)
       .set({
@@ -1188,11 +1301,11 @@ describe("review system", () => {
 
   it("builds canonical review session urls and tracks only cards remaining after the current one", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
     await database.insert(card).values({
       id: "card_fixture_remaining_count",
       mediaId: developmentFixture.mediaId,
@@ -1234,19 +1347,26 @@ describe("review system", () => {
       entryId: "term_fixture_remaining_count",
       relationshipType: "primary"
     });
-    await database.insert(reviewState).values({
+    await database.insert(reviewSubjectState).values({
+      subjectKey: "entry:term:term_fixture_remaining_count",
+      subjectType: "entry",
+      entryType: "term",
+      entryId: "term_fixture_remaining_count",
+      crossMediaGroupId: null,
       cardId: "card_fixture_remaining_count",
       state: "review",
       stability: 2.1,
       difficulty: 3.6,
       dueAt: "2000-01-01T00:05:00.000Z",
       lastReviewedAt: "2026-03-09T09:00:00.000Z",
+      lastInteractionAt: "2026-03-09T09:00:00.000Z",
       scheduledDays: 1,
       learningSteps: 0,
       lapses: 0,
       reps: 2,
       schedulerVersion: "fsrs_v1",
       manualOverride: false,
+      suspended: false,
       createdAt: "2026-03-09T09:00:00.000Z",
       updatedAt: "2026-03-09T09:00:00.000Z"
     });
@@ -1460,8 +1580,8 @@ describe("review system", () => {
       rating: "good"
     });
 
-    const chunkReviewState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, chunkCardId)
+    const chunkReviewState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.cardId, chunkCardId)
     });
 
     expect(chunkReviewState).toBeUndefined();
@@ -1714,11 +1834,11 @@ describe("review system", () => {
 
   it("uses entry_status for manual mastery and restores the queue when reopened", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await setLinkedEntryStatusByCard({
       cardId: developmentFixture.primaryCardId,
@@ -1731,11 +1851,11 @@ describe("review system", () => {
       developmentFixture.mediaSlug,
       database
     );
-    const persistedState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, developmentFixture.primaryCardId)
+    const persistedState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
     });
-    const logs = await database.query.reviewLog.findMany({
-      where: eq(reviewLog.cardId, developmentFixture.primaryCardId)
+    const logs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
     });
 
     expect(
@@ -1851,14 +1971,14 @@ describe("review system", () => {
 
   it("suspends and resets cards without destroying the underlying review history", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
-    const originalState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, developmentFixture.primaryCardId)
+    const originalState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
     });
 
     await setReviewCardSuspended({
@@ -1875,8 +1995,8 @@ describe("review system", () => {
     const suspendedCard = await database.query.card.findFirst({
       where: eq(card.id, developmentFixture.primaryCardId)
     });
-    const preservedState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, developmentFixture.primaryCardId)
+    const preservedState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
     });
 
     expect(suspendedCard?.status).toBe("suspended");
@@ -1895,11 +2015,11 @@ describe("review system", () => {
       now: new Date("2026-03-09T14:10:00.000Z")
     });
 
-    const resetState = await database.query.reviewState.findFirst({
-      where: eq(reviewState.cardId, developmentFixture.primaryCardId)
+    const resetState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
     });
-    const logs = await database.query.reviewLog.findMany({
-      where: eq(reviewLog.cardId, developmentFixture.primaryCardId)
+    const logs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
     });
     const resetQueue = await getReviewQueueSnapshotForMedia(
       developmentFixture.mediaSlug,
@@ -2109,7 +2229,7 @@ describe("review system", () => {
     });
   });
 
-  it("reuses legacy cross-media review state in both global and local queues before subject backfill exists", async () => {
+  it("uses shared cross-media subject state in both global and local queues", async () => {
     const contentRoot = path.join(tempDir, "cross-media-legacy-fallback");
 
     await writeCrossMediaContentFixture(contentRoot);
@@ -2120,6 +2240,8 @@ describe("review system", () => {
     });
 
     expect(result.status).toBe("completed");
+    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
+      await loadCrossMediaTermSubjectContext(database);
 
     await database.insert(lessonProgress).values([
       {
@@ -2133,24 +2255,42 @@ describe("review system", () => {
         completedAt: "2026-03-11T08:00:00.000Z"
       }
     ]);
-    await database.insert(reviewState).values({
+    await database.insert(reviewSubjectState).values({
+      subjectKey,
+      subjectType: "group",
+      entryType: "term",
+      entryId: alphaTermEntry.id,
+      crossMediaGroupId,
       cardId: crossMediaFixture.alpha.termCardId,
       state: "review",
       stability: 2.4,
       difficulty: 3.1,
       dueAt: "2000-01-01T00:00:00.000Z",
       lastReviewedAt: "2026-03-10T08:00:00.000Z",
+      lastInteractionAt: "2026-03-10T08:00:00.000Z",
       scheduledDays: 2,
       learningSteps: 0,
       lapses: 0,
       reps: 3,
       schedulerVersion: "fsrs_v1",
       manualOverride: false,
+      suspended: false,
       createdAt: "2026-03-10T08:00:00.000Z",
       updatedAt: "2026-03-10T08:00:00.000Z"
     });
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "in_progress",
+        completedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
 
-    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
+    expect(
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, subjectKey)
+      })
+    ).not.toBeNull();
 
     const [globalPage, globalOverview, betaPage] = await Promise.all([
       getGlobalReviewPageData({}, database),
@@ -2175,7 +2315,7 @@ describe("review system", () => {
     expect(betaPage?.selectedCard?.contexts).toHaveLength(1);
   });
 
-  it("does not let a legacy manual entry_status mask an active cross-media sibling before backfill exists", async () => {
+  it("does not let a manual entry_status mask an active cross-media sibling", async () => {
     const contentRoot = path.join(tempDir, "cross-media-legacy-entry-status");
 
     await writeCrossMediaContentFixture(contentRoot);
@@ -2187,80 +2327,70 @@ describe("review system", () => {
 
     expect(result.status).toBe("completed");
     await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
+    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
+      await loadCrossMediaTermSubjectContext(database);
 
     await database
-      .insert(reviewState)
-      .values([
-        {
-          cardId: crossMediaFixture.alpha.termCardId,
-          state: "review",
-          stability: 2.4,
-          difficulty: 3.1,
-          dueAt: "2000-01-01T00:00:00.000Z",
-          lastReviewedAt: "2026-03-10T08:00:00.000Z",
-          scheduledDays: 2,
-          learningSteps: 0,
-          lapses: 0,
-          reps: 3,
-          schedulerVersion: "fsrs_v1",
-          manualOverride: false,
-          createdAt: "2026-03-10T08:00:00.000Z",
-          updatedAt: "2026-03-10T08:00:00.000Z"
-        },
-        {
-          cardId: crossMediaFixture.beta.termCardId,
-          state: "review",
-          stability: 2.4,
-          difficulty: 3.1,
-          dueAt: "2000-01-01T00:00:00.000Z",
-          lastReviewedAt: "2026-03-10T08:00:00.000Z",
-          scheduledDays: 2,
-          learningSteps: 0,
-          lapses: 0,
-          reps: 3,
-          schedulerVersion: "fsrs_v1",
-          manualOverride: false,
-          createdAt: "2026-03-10T08:00:00.000Z",
-          updatedAt: "2026-03-10T08:00:00.000Z"
-        }
-      ])
+      .insert(reviewSubjectState)
+      .values({
+        subjectKey,
+        subjectType: "group",
+        entryType: "term",
+        entryId: alphaTermEntry.id,
+        crossMediaGroupId,
+        cardId: crossMediaFixture.alpha.termCardId,
+        state: "review",
+        stability: 2.4,
+        difficulty: 3.1,
+        dueAt: "2000-01-01T00:00:00.000Z",
+        lastReviewedAt: "2026-03-10T08:00:00.000Z",
+        lastInteractionAt: "2026-03-10T08:00:00.000Z",
+        scheduledDays: 2,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 3,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: false,
+        suspended: false,
+        createdAt: "2026-03-10T08:00:00.000Z",
+        updatedAt: "2026-03-10T08:00:00.000Z"
+      })
       .onConflictDoUpdate({
-        target: reviewState.cardId,
+        target: reviewSubjectState.subjectKey,
         set: {
+          cardId: crossMediaFixture.alpha.termCardId,
+          crossMediaGroupId,
           state: "review",
           stability: 2.4,
           difficulty: 3.1,
           dueAt: "2000-01-01T00:00:00.000Z",
           lastReviewedAt: "2026-03-10T08:00:00.000Z",
+          lastInteractionAt: "2026-03-10T08:00:00.000Z",
           scheduledDays: 2,
           learningSteps: 0,
           lapses: 0,
           reps: 3,
           schedulerVersion: "fsrs_v1",
           manualOverride: false,
+          suspended: false,
           createdAt: "2026-03-10T08:00:00.000Z",
           updatedAt: "2026-03-10T08:00:00.000Z"
         }
       });
-
-    const [alphaTermEntry, betaTermEntry] = await Promise.all([
-      database.query.term.findFirst({
-        where: eq(term.sourceId, crossMediaFixture.alpha.termSourceId)
-      }),
-      database.query.term.findFirst({
-        where: eq(term.sourceId, crossMediaFixture.beta.termSourceId)
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "in_progress",
+        completedAt: null
       })
-    ]);
-
-    expect(alphaTermEntry).not.toBeNull();
-    expect(betaTermEntry).not.toBeNull();
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
 
     await database
       .insert(entryStatus)
       .values({
         id: "entry_status_cross_media_alpha_manual",
         entryType: "term",
-        entryId: alphaTermEntry!.id,
+        entryId: alphaTermEntry.id,
         status: "known_manual",
         reason: "Cross-media legacy manual override.",
         setAt: "2026-03-11T08:00:00.000Z"
@@ -2269,14 +2399,18 @@ describe("review system", () => {
         target: entryStatus.id,
         set: {
           entryType: "term",
-          entryId: alphaTermEntry!.id,
+          entryId: alphaTermEntry.id,
           status: "known_manual",
           reason: "Cross-media legacy manual override.",
           setAt: "2026-03-11T08:00:00.000Z"
         }
       });
 
-    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
+    expect(
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, subjectKey)
+      })
+    ).not.toBeNull();
 
     const globalPage = await getGlobalReviewPageData({}, database);
 
@@ -2350,7 +2484,7 @@ describe("review system", () => {
     expect(result.data.selectedCard).toBeNull();
   });
 
-  it("seeds suspended legacy cross-media subjects from the representative sibling state", async () => {
+  it("preserves the representative shared subject state when suspending a cross-media sibling", async () => {
     const contentRoot = path.join(tempDir, "cross-media-legacy-suspend");
 
     await writeCrossMediaContentFixture(contentRoot);
@@ -2361,6 +2495,8 @@ describe("review system", () => {
     });
 
     expect(result.status).toBe("completed");
+    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
+      await loadCrossMediaTermSubjectContext(database);
 
     await database.insert(lessonProgress).values([
       {
@@ -2374,24 +2510,35 @@ describe("review system", () => {
         completedAt: "2026-03-11T08:00:00.000Z"
       }
     ]);
-    await database.insert(reviewState).values({
+    await database.insert(reviewSubjectState).values({
+      subjectKey,
+      subjectType: "group",
+      entryType: "term",
+      entryId: alphaTermEntry.id,
+      crossMediaGroupId,
       cardId: crossMediaFixture.alpha.termCardId,
       state: "review",
       stability: 2.4,
       difficulty: 3.1,
       dueAt: "2000-01-01T00:00:00.000Z",
       lastReviewedAt: "2026-03-10T08:00:00.000Z",
+      lastInteractionAt: "2026-03-10T08:00:00.000Z",
       scheduledDays: 2,
       learningSteps: 0,
       lapses: 1,
       reps: 3,
       schedulerVersion: "fsrs_v1",
       manualOverride: false,
+      suspended: false,
       createdAt: "2026-03-10T08:00:00.000Z",
       updatedAt: "2026-03-10T08:00:00.000Z"
     });
 
-    expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
+    expect(
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, subjectKey)
+      })
+    ).not.toBeNull();
 
     await setReviewCardSuspended({
       cardId: crossMediaFixture.beta.termCardId,
@@ -2400,12 +2547,14 @@ describe("review system", () => {
       suspended: true
     });
 
-    const persistedSubjectStates =
-      await database.query.reviewSubjectState.findMany();
+    const persistedSubjectState =
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, subjectKey)
+      });
 
-    expect(persistedSubjectStates).toHaveLength(1);
+    expect(persistedSubjectState).not.toBeNull();
 
-    expect(persistedSubjectStates[0]).toMatchObject({
+    expect(persistedSubjectState).toMatchObject({
       cardId: crossMediaFixture.alpha.termCardId,
       createdAt: "2026-03-10T08:00:00.000Z",
       difficulty: 3.1,

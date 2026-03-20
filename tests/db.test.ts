@@ -19,7 +19,7 @@ import {
   listMedia,
   listTermEntryReviewSummaries,
   lessonProgress,
-  reviewState,
+  reviewSubjectState,
   runMigrations,
   seedDevelopmentDatabase,
   type DatabaseClient
@@ -146,8 +146,6 @@ describe("database layer", () => {
     );
 
     expect(cards).toHaveLength(2);
-    expect(cards[0]?.reviewState?.state).toBe("learning");
-    expect(cards[1]?.reviewState?.state).toBe("review");
 
     await database
       .update(lessonProgress)
@@ -165,18 +163,22 @@ describe("database layer", () => {
 
     expect(dueCards).toHaveLength(1);
     expect(dueCards[0]?.id).toBe(developmentFixture.primaryCardId);
-    expect(dueCards[0]?.reviewState.state).toBe("learning");
   });
 
   it("excludes known_manual cards from the due queue", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         state: "known_manual",
         dueAt: "2026-03-01T00:00:00.000Z",
         manualOverride: true
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
 
     const dueCards = await listDueCardsByMediaId(
       database,

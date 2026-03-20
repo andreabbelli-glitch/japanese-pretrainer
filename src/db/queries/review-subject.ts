@@ -1,11 +1,13 @@
-import { asc, eq, inArray } from "drizzle-orm";
+import { and, asc, eq, gte, inArray, lt } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import {
+  card,
   reviewSubjectLog,
   reviewSubjectState
 } from "../schema/index.ts";
 import type { EntryType } from "../schema/index.ts";
+import { getUtcDayBounds } from "./review-query-helpers.ts";
 
 export type ReviewSubjectEntryRef = {
   entryId: string;
@@ -120,17 +122,25 @@ export async function countReviewSubjectsIntroducedOnDay(
 ) {
   const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
 
-  const rows = await database.all<{ count: number | string | null }>(`
-    ${buildReviewLogSubjectIdentityCte()}
-    SELECT COUNT(DISTINCT si.subjectKey) AS count
-    FROM review_log rl
-    INNER JOIN subject_identity si ON si.cardId = rl.card_id
-    WHERE rl.previous_state = 'new'
-      AND rl.answered_at >= ${quote(dayStartIso)}
-      AND rl.answered_at < ${quote(dayEndIso)}
-  `);
+  const rows = await database
+    .selectDistinct({
+      subjectKey: reviewSubjectLog.subjectKey
+    })
+    .from(reviewSubjectLog)
+    .where(
+      and(
+        eq(reviewSubjectLog.previousState, "new"),
+        gte(reviewSubjectLog.answeredAt, dayStartIso),
+        lt(reviewSubjectLog.answeredAt, dayEndIso)
+      )
+    );
 
-  return Number(rows[0]?.count ?? 0);
+  return rows.filter(
+    (row) =>
+      row.subjectKey &&
+      row.subjectKey.length > 0 &&
+      row.subjectKey !== "undefined"
+  ).length;
 }
 
 export async function countReviewSubjectsIntroducedOnDayByMediaId(
@@ -157,28 +167,44 @@ export async function countReviewSubjectsIntroducedOnDayByMediaIds(
   }
 
   const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
-  const quotedMediaIds = mediaIds.map((mediaId) => quote(mediaId));
+  const rows = await database
+    .selectDistinct({
+      mediaId: card.mediaId,
+      subjectKey: reviewSubjectLog.subjectKey
+    })
+    .from(reviewSubjectLog)
+    .innerJoin(card, eq(reviewSubjectLog.cardId, card.id))
+    .where(
+      and(
+        inArray(card.mediaId, mediaIds),
+        eq(reviewSubjectLog.previousState, "new"),
+        gte(reviewSubjectLog.answeredAt, dayStartIso),
+        lt(reviewSubjectLog.answeredAt, dayEndIso)
+      )
+    );
 
-  const rows = await database.all<{
-    count: number | string | null;
-    mediaId: string;
-  }>(`
-    ${buildReviewLogSubjectIdentityCte()}
-    SELECT
-      si.mediaId AS mediaId,
-      COUNT(DISTINCT si.subjectKey) AS count
-    FROM review_log rl
-    INNER JOIN subject_identity si ON si.cardId = rl.card_id
-    WHERE rl.previous_state = 'new'
-      AND rl.answered_at >= ${quote(dayStartIso)}
-      AND rl.answered_at < ${quote(dayEndIso)}
-      AND si.mediaId IN (${quotedMediaIds.join(", ")})
-    GROUP BY si.mediaId
-  `);
+  const filteredRows = rows.filter(
+    (row) =>
+      row.subjectKey &&
+      row.subjectKey.length > 0 &&
+      row.subjectKey !== "undefined"
+  );
+  const grouped = new Map<string, Set<string>>();
 
-  return rows.map((row) => ({
-    count: Number(row.count ?? 0),
-    mediaId: row.mediaId
+  for (const row of filteredRows) {
+    const existing = grouped.get(row.mediaId);
+
+    if (existing) {
+      existing.add(row.subjectKey);
+      continue;
+    }
+
+    grouped.set(row.mediaId, new Set([row.subjectKey]));
+  }
+
+  return [...grouped.entries()].map(([mediaId, subjectKeys]) => ({
+    count: subjectKeys.size,
+    mediaId
   }));
 }
 
@@ -210,81 +236,4 @@ function dedupeEntryRefs(entryRefs: ReviewSubjectEntryRef[]) {
   }
 
   return result;
-}
-
-function getUtcDayBounds(asOf: Date) {
-  const dayStart = new Date(
-    Date.UTC(asOf.getUTCFullYear(), asOf.getUTCMonth(), asOf.getUTCDate())
-  );
-  const dayEnd = new Date(dayStart);
-
-  dayEnd.setUTCDate(dayEnd.getUTCDate() + 1);
-
-  return {
-    dayEndIso: dayEnd.toISOString(),
-    dayStartIso: dayStart.toISOString()
-  };
-}
-
-function quote(value: string) {
-  return `'${value.replaceAll("'", "''")}'`;
-}
-
-function buildReviewLogSubjectIdentityCte() {
-  return `
-    WITH primary_presence AS (
-      SELECT
-        c.id AS cardId,
-        EXISTS(
-          SELECT 1
-          FROM card_entry_link cel_primary
-          WHERE cel_primary.card_id = c.id
-            AND cel_primary.relationship_type = 'primary'
-        ) AS hasPrimary
-      FROM card c
-    ),
-    driving_links AS (
-      SELECT
-        c.id AS cardId,
-        c.media_id AS mediaId,
-        cel.entry_type AS entryType,
-        cel.entry_id AS entryId
-      FROM card c
-      INNER JOIN primary_presence pp ON pp.cardId = c.id
-      INNER JOIN card_entry_link cel ON cel.card_id = c.id
-      WHERE cel.relationship_type = 'primary'
-         OR pp.hasPrimary = 0
-    ),
-    driving_link_counts AS (
-      SELECT
-        dl.cardId AS cardId,
-        MIN(dl.mediaId) AS mediaId,
-        COUNT(*) AS linkCount,
-        MIN(dl.entryType) AS entryType,
-        MIN(dl.entryId) AS entryId
-      FROM driving_links dl
-      GROUP BY dl.cardId
-    ),
-    subject_identity AS (
-      SELECT
-        c.id AS cardId,
-        c.media_id AS mediaId,
-        CASE
-          WHEN COALESCE(dlc.linkCount, 0) != 1 THEN 'card:' || c.id
-          WHEN dlc.entryType = 'term' AND t.cross_media_group_id IS NOT NULL
-            THEN 'group:term:' || t.cross_media_group_id
-          WHEN dlc.entryType = 'grammar' AND gp.cross_media_group_id IS NOT NULL
-            THEN 'group:grammar:' || gp.cross_media_group_id
-          ELSE 'entry:' || COALESCE(dlc.entryType, 'card') || ':' || COALESCE(dlc.entryId, c.id)
-        END AS subjectKey
-      FROM card c
-      LEFT JOIN driving_link_counts dlc ON dlc.cardId = c.id
-      LEFT JOIN term t
-        ON dlc.entryType = 'term'
-       AND t.id = dlc.entryId
-      LEFT JOIN grammar_pattern gp
-        ON dlc.entryType = 'grammar'
-       AND gp.id = dlc.entryId
-    )
-  `;
 }

@@ -1,10 +1,10 @@
 import {
+  countReviewSubjectsIntroducedOnDayByMediaIds,
   db,
   getMediaBySlug,
   listLessonsByMediaId,
   listLessonsByMediaIds,
   listReviewLaunchCandidates,
-  countNewCardsIntroducedOnDayByMediaIds,
   type DatabaseClient,
   type MediaListItem
 } from "@/db";
@@ -198,7 +198,7 @@ async function buildMediaShellSnapshots(
       ),
       listReviewLaunchCandidates(database, nowIso),
       getReviewDailyLimit(database),
-      countNewCardsIntroducedOnDayByMediaIds(database, mediaIds)
+      countReviewSubjectsIntroducedOnDayByMediaIds(database, mediaIds)
     ]);
   const lessonsByMedia = groupLessonsByMedia(lessons);
 

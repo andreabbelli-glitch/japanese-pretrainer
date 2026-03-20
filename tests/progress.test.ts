@@ -17,7 +17,7 @@ import {
   lesson,
   lessonProgress,
   media,
-  reviewState,
+  reviewSubjectState,
   runMigrations,
   seedDevelopmentDatabase,
   segment,
@@ -58,11 +58,16 @@ describe("progress, settings, and study controls", () => {
 
   it("builds a live progress page snapshot with real resume, glossary, and review signals", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
 
     const data = await getMediaProgressPageData(
       developmentFixture.mediaSlug,
@@ -85,11 +90,16 @@ describe("progress, settings, and study controls", () => {
 
   it("recommends review when the queue has only new cards", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
 
     await database.insert(card).values({
       id: "card_fixture_progress_new_only",
@@ -131,11 +141,16 @@ describe("progress, settings, and study controls", () => {
 
   it("keeps global review signals separate from the local media queue", async () => {
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
 
     await database.insert(media).values({
       id: "media_progress_global_review",
@@ -184,19 +199,26 @@ describe("progress, settings, and study controls", () => {
       createdAt: "2026-03-09T10:00:00.000Z",
       updatedAt: "2026-03-09T10:00:00.000Z"
     });
-    await database.insert(reviewState).values({
+    await database.insert(reviewSubjectState).values({
+      subjectKey: "card:card_progress_global_due",
+      subjectType: "card",
+      entryType: null,
+      crossMediaGroupId: null,
+      entryId: null,
       cardId: "card_progress_global_due",
       state: "review",
       stability: 3,
       difficulty: 2.5,
       dueAt: "2000-01-01T00:00:00.000Z",
       lastReviewedAt: "2026-03-09T10:00:00.000Z",
+      lastInteractionAt: "2026-03-09T10:00:00.000Z",
       scheduledDays: 3,
       learningSteps: 0,
       lapses: 0,
       reps: 3,
       schedulerVersion: "fsrs_v1",
       manualOverride: false,
+      suspended: false,
       createdAt: "2026-03-09T10:00:00.000Z",
       updatedAt: "2026-03-09T10:00:00.000Z"
     });
@@ -255,11 +277,16 @@ describe("progress, settings, and study controls", () => {
       updatedAt: "2026-03-09T10:00:00.000Z"
     });
     await database
-      .update(reviewState)
+      .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
     await database.insert(card).values({
       id: "card_fixture_new_limit",
       mediaId: developmentFixture.mediaId,
