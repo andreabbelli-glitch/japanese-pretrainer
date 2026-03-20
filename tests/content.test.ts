@@ -17,6 +17,7 @@ import { parseContentRoot, parseMediaDirectory } from "@/lib/content";
 import { parseFrontmatter } from "@/lib/content/parser/frontmatter";
 import { parseInlineFragment } from "@/lib/content/parser/markdown";
 import { extractStructuredBlocks } from "@/lib/content/parser/structured-blocks";
+import { readDuelMastersRealBundleStats } from "./helpers/duel-masters-real-bundle-stats";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -85,6 +86,7 @@ const cardTextPlainScalarMediaDirectory = path.join(
   "media",
   "card-text-plain-scalar"
 );
+const duelMastersRealBundleStats = await readDuelMastersRealBundleStats();
 
 describe("content parser and validator", () => {
   it("parses frontmatter when the file starts with BOM and uses CRLF", () => {
@@ -650,12 +652,18 @@ describe("content parser and validator", () => {
     expect(result.issues).toEqual([]);
     expect(result.data.media?.frontmatter.id).toBe("media-duel-masters-dm25");
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
-    expect(result.data.lessons).toHaveLength(25);
-    expect(result.data.cardFiles).toHaveLength(19);
-    expect(result.data.terms).toHaveLength(186);
-    expect(result.data.grammarPatterns).toHaveLength(41);
-    expect(result.data.cards).toHaveLength(241);
-    expect(result.data.references).toHaveLength(1294);
+    expect(result.data.lessons).toHaveLength(duelMastersRealBundleStats.parser.lessons);
+    expect(result.data.cardFiles).toHaveLength(
+      duelMastersRealBundleStats.parser.cardFiles
+    );
+    expect(result.data.terms).toHaveLength(duelMastersRealBundleStats.parser.terms);
+    expect(result.data.grammarPatterns).toHaveLength(
+      duelMastersRealBundleStats.parser.grammarPatterns
+    );
+    expect(result.data.cards).toHaveLength(duelMastersRealBundleStats.parser.cards);
+    expect(result.data.references).toHaveLength(
+      duelMastersRealBundleStats.parser.references
+    );
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([

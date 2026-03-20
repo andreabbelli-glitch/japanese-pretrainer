@@ -40,6 +40,7 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import { readDuelMastersRealBundleStats } from "./helpers/duel-masters-real-bundle-stats";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -66,6 +67,7 @@ const scopedLessonId = "lesson-dungeon-meshi-ep01-intro";
 const scopedCardId = "card-laios-recognition";
 const scopedTermId = "term-laios";
 const scopedTermDbId = buildScopedEntryId("term", scopedMediaId, scopedTermId);
+const duelMastersRealBundleStats = await readDuelMastersRealBundleStats();
 
 describe("content importer", () => {
   let tempDir = "";
@@ -182,13 +184,27 @@ describe("content importer", () => {
       expect(await countRows(database.query.segment.findMany())).toBe(7);
       expect(await countRows(database.query.lesson.findMany())).toBe(25);
       expect(await countRows(database.query.lessonContent.findMany())).toBe(25);
-      expect(await countRows(database.query.term.findMany())).toBe(186);
-      expect(await countRows(database.query.termAlias.findMany())).toBe(486);
-      expect(await countRows(database.query.grammarPattern.findMany())).toBe(41);
-      expect(await countRows(database.query.grammarAlias.findMany())).toBe(50);
-      expect(await countRows(database.query.entryLink.findMany())).toBe(763);
-      expect(await countRows(database.query.card.findMany())).toBe(241);
-      expect(await countRows(database.query.cardEntryLink.findMany())).toBe(281);
+      expect(await countRows(database.query.term.findMany())).toBe(
+        duelMastersRealBundleStats.importer.term
+      );
+      expect(await countRows(database.query.termAlias.findMany())).toBe(
+        duelMastersRealBundleStats.importer.termAlias
+      );
+      expect(await countRows(database.query.grammarPattern.findMany())).toBe(
+        duelMastersRealBundleStats.importer.grammarPattern
+      );
+      expect(await countRows(database.query.grammarAlias.findMany())).toBe(
+        duelMastersRealBundleStats.importer.grammarAlias
+      );
+      expect(await countRows(database.query.entryLink.findMany())).toBe(
+        duelMastersRealBundleStats.importer.entryLink
+      );
+      expect(await countRows(database.query.card.findMany())).toBe(
+        duelMastersRealBundleStats.importer.card
+      );
+      expect(await countRows(database.query.cardEntryLink.findMany())).toBe(
+        duelMastersRealBundleStats.importer.cardEntryLink
+      );
       expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
       const importedMedia = await database.query.media.findFirst({

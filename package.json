@@ -25,6 +25,7 @@
     "db:seed": "node --experimental-strip-types --experimental-default-type=module ./scripts/db-seed.ts",
     "content:validate": "node --experimental-strip-types --experimental-default-type=module ./scripts/validate-content.ts",
     "content:import": "node --experimental-strip-types --experimental-default-type=module ./scripts/import-content.ts",
+    "content:test-stats": "node --experimental-strip-types --experimental-default-type=module ./scripts/update-real-bundle-test-stats.ts",
     "pronunciations:fetch": "node --experimental-strip-types --experimental-default-type=module ./scripts/fetch-pronunciations.ts",
     "pronunciations:pending": "node --experimental-strip-types --experimental-default-type=module ./scripts/update-pronunciation-pending.ts",
     "pronunciations:reuse": "node --experimental-strip-types --experimental-default-type=module ./scripts/reuse-pronunciations.ts",
