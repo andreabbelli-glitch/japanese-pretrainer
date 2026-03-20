@@ -88,7 +88,6 @@ La policy e volutamente diversa per record content-owned e user-owned.
 - `review_log`
 - `entry_status`
 - `lesson_progress`
-- `media_progress`
 - `user_setting`
 
 ### Garanzie

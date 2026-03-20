@@ -14,7 +14,6 @@ import {
   lessonContent,
   lessonProgress,
   media,
-  mediaProgress,
   reviewLog,
   reviewState,
   segment,
@@ -684,29 +683,6 @@ export async function seedDevelopmentDatabase(
           startedAt: createdAt,
           completedAt: updatedAt,
           lastOpenedAt: updatedAt
-        }
-      });
-
-    await tx
-      .insert(mediaProgress)
-      .values({
-        mediaId: developmentFixture.mediaId,
-        lessonsCompleted: 1,
-        lessonsTotal: 1,
-        entriesKnown: 1,
-        entriesTotal: 2,
-        cardsDue: 1,
-        updatedAt
-      })
-      .onConflictDoUpdate({
-        target: mediaProgress.mediaId,
-        set: {
-          lessonsCompleted: 1,
-          lessonsTotal: 1,
-          entriesKnown: 1,
-          entriesTotal: 2,
-          cardsDue: 1,
-          updatedAt
         }
       });
 

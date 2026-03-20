@@ -14,7 +14,7 @@ import {
   term,
   termAlias
 } from "./glossary.ts";
-import { lessonProgress, mediaProgress } from "./progress.ts";
+import { lessonProgress } from "./progress.ts";
 import {
   card,
   cardEntryLink,
@@ -29,11 +29,7 @@ export const mediaRelations = relations(media, ({ many, one }) => ({
   lessons: many(lesson),
   terms: many(term),
   grammarPatterns: many(grammarPattern),
-  cards: many(card),
-  progress: one(mediaProgress, {
-    fields: [media.id],
-    references: [mediaProgress.mediaId]
-  })
+  cards: many(card)
 }));
 
 export const segmentRelations = relations(segment, ({ many, one }) => ({
@@ -210,12 +206,5 @@ export const lessonProgressRelations = relations(lessonProgress, ({ one }) => ({
   lesson: one(lesson, {
     fields: [lessonProgress.lessonId],
     references: [lesson.id]
-  })
-}));
-
-export const mediaProgressRelations = relations(mediaProgress, ({ one }) => ({
-  media: one(media, {
-    fields: [mediaProgress.mediaId],
-    references: [media.id]
   })
 }));

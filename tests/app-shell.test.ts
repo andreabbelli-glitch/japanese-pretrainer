@@ -13,7 +13,6 @@ import {
   lesson,
   lessonProgress,
   media,
-  mediaProgress,
   reviewState,
   runMigrations,
   seedDevelopmentDatabase,
@@ -58,18 +57,6 @@ describe("app shell live data", () => {
         manualOverride: true
       })
       .where(eq(reviewState.cardId, developmentFixture.primaryCardId));
-
-    await database
-      .update(mediaProgress)
-      .set({
-        lessonsCompleted: 0,
-        lessonsTotal: 99,
-        entriesKnown: 0,
-        entriesTotal: 99,
-        cardsDue: 99,
-        updatedAt: "2026-03-09T10:00:00.000Z"
-      })
-      .where(eq(mediaProgress.mediaId, developmentFixture.mediaId));
 
     const media = await getMediaDetailData(developmentFixture.mediaSlug, database);
 

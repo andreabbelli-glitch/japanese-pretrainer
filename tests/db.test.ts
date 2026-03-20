@@ -45,17 +45,16 @@ describe("database layer", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("creates readable media with aggregated progress", async () => {
+  it("creates readable media entries", async () => {
     const rows = await listMedia(database);
 
     expect(rows).toHaveLength(1);
     expect(rows[0]?.slug).toBe(developmentFixture.mediaSlug);
-    expect(rows[0]?.progress?.cardsDue).toBe(1);
 
     const media = await getMediaBySlug(database, developmentFixture.mediaSlug);
 
     expect(media?.id).toBe(developmentFixture.mediaId);
-    expect(media?.progress?.entriesKnown).toBe(1);
+    expect(media?.slug).toBe(developmentFixture.mediaSlug);
   });
 
   it("returns lesson metadata and full lesson content", async () => {

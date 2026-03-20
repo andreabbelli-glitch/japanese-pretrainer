@@ -453,23 +453,10 @@ Valori consigliati:
 - `in_progress`
 - `completed`
 
-## 3.18 `media_progress`
+## 3.18 Aggregati media
 
-Aggregati per dashboard.
-
-Campi:
-
-- `media_id` TEXT PRIMARY KEY
-- `lessons_completed` INTEGER NOT NULL DEFAULT 0
-- `lessons_total` INTEGER NOT NULL DEFAULT 0
-- `entries_known` INTEGER NOT NULL DEFAULT 0
-- `entries_total` INTEGER NOT NULL DEFAULT 0
-- `cards_due` INTEGER NOT NULL DEFAULT 0
-- `updated_at` TEXT NOT NULL
-
-Nota:
-
-Questa tabella puo anche essere una view materializzata rigenerata.
+Gli aggregati dashboard per media non usano una tabella dedicata: vengono
+calcolati on demand da lesson progress, glossary e review.
 
 ## 3.19 `user_setting`
 
@@ -531,8 +518,8 @@ In aggiunta:
 - `entry_status` e `review_state` hanno ruoli diversi: il primo descrive una
   scelta o sintesi a livello entita, il secondo il comportamento SRS di una
   singola card.
-- `media_progress` puo essere calcolato on demand in sviluppo e materializzato
-  piu avanti.
+- Gli aggregati media vengono calcolati on demand; non esiste una tabella
+  `media_progress` nel modello corrente.
 
 ## 6. Decisioni v1 da mantenere
 

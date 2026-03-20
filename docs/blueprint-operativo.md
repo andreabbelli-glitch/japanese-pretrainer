@@ -111,7 +111,6 @@ model delle entita.
 - `review_log`
 - `user_setting`
 - `lesson_progress`
-- `media_progress`
 - `content_import`
 
 ### 6.3 Distinzione chiave

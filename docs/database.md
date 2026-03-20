@@ -82,7 +82,6 @@ Tabelle incluse nel perimetro del task:
 - `review_subject_state`
 - `review_subject_log`
 - `lesson_progress`
-- `media_progress`
 - `user_setting`
 - `content_import`
 

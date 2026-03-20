@@ -33,7 +33,6 @@ Implementare schema SQLite e layer di accesso dati coerenti con il blueprint.
   - review_state
   - review_log
   - lesson_progress
-  - media_progress
   - user_setting
   - content_import
 - creare helper di query per i casi piu frequenti.
