@@ -1843,3 +1843,112 @@ export type TermEntryReviewSummary = Awaited<
 export type GrammarEntryReviewSummary = Awaited<
   ReturnType<typeof listGrammarEntryReviewSummaries>
 >[number];
+
+// ---------------------------------------------------------------------------
+// Shell counts — lightweight SQL-only progress for home / media pages
+// ---------------------------------------------------------------------------
+
+export type GlossaryShellCounts = {
+  mediaId: string;
+  entriesTotal: number;
+  entriesCovered: number;
+};
+
+export async function listGlossaryShellCounts(
+  database: DatabaseClient,
+  mediaIds: string[]
+): Promise<GlossaryShellCounts[]> {
+  if (mediaIds.length === 0) {
+    return [];
+  }
+
+  const quote = (value: string) => `'${value.replaceAll("'", "''")}'`;
+  const mediaIdList = mediaIds.map(quote).join(", ");
+
+  const rows = await database.all<{
+    mediaId: string;
+    entriesTotal: number | string | null;
+    entriesCovered: number | string | null;
+  }>(`
+    WITH all_entries AS (
+      SELECT
+        t.id AS entry_id,
+        'term' AS entry_type,
+        t.media_id AS media_id,
+        es.status AS entry_status
+      FROM term t
+      LEFT JOIN entry_status es
+        ON es.entry_id = t.id
+       AND es.entry_type = 'term'
+      WHERE t.media_id IN (${mediaIdList})
+      UNION ALL
+      SELECT
+        gp.id AS entry_id,
+        'grammar' AS entry_type,
+        gp.media_id AS media_id,
+        es.status AS entry_status
+      FROM grammar_pattern gp
+      LEFT JOIN entry_status es
+        ON es.entry_id = gp.id
+       AND es.entry_type = 'grammar'
+      WHERE gp.media_id IN (${mediaIdList})
+    ),
+    entry_signals AS (
+      SELECT
+        ae.entry_id,
+        ae.entry_type,
+        ae.media_id,
+        ae.entry_status,
+        CASE
+          -- "known" via entry status
+          WHEN ae.entry_status = 'known_manual' THEN 1
+          -- "known" via card signal
+          WHEN EXISTS (
+            SELECT 1
+            FROM card_entry_link cel
+            JOIN card c ON c.id = cel.card_id
+            JOIN review_state rs ON rs.card_id = c.id
+            WHERE cel.entry_id = ae.entry_id
+              AND cel.entry_type = ae.entry_type
+              AND (rs.state = 'known_manual' OR rs.manual_override = 1)
+          ) THEN 1
+          -- "learning" via card signal
+          WHEN EXISTS (
+            SELECT 1
+            FROM card_entry_link cel
+            JOIN card c ON c.id = cel.card_id
+            JOIN review_state rs ON rs.card_id = c.id
+            WHERE cel.entry_id = ae.entry_id
+              AND cel.entry_type = ae.entry_type
+              AND rs.state = 'learning'
+          ) THEN 1
+          -- "review" via card signal
+          WHEN EXISTS (
+            SELECT 1
+            FROM card_entry_link cel
+            JOIN card c ON c.id = cel.card_id
+            JOIN review_state rs ON rs.card_id = c.id
+            WHERE cel.entry_id = ae.entry_id
+              AND cel.entry_type = ae.entry_type
+              AND rs.state IN ('review', 'relearning')
+          ) THEN 1
+          -- "review/learning" via entry status alone
+          WHEN ae.entry_status IN ('review', 'reviewing', 'relearning', 'learning') THEN 1
+          ELSE 0
+        END AS is_covered
+      FROM all_entries ae
+    )
+    SELECT
+      media_id AS mediaId,
+      COUNT(*) AS entriesTotal,
+      SUM(is_covered) AS entriesCovered
+    FROM entry_signals
+    GROUP BY media_id
+  `);
+
+  return rows.map((row) => ({
+    mediaId: row.mediaId,
+    entriesTotal: Number(row.entriesTotal ?? 0),
+    entriesCovered: Number(row.entriesCovered ?? 0)
+  }));
+}

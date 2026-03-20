@@ -360,6 +360,7 @@ export type ReviewLaunchCandidate = {
   cardsTotal: number;
   dueCount: number;
   mediaId: string;
+  newCount: number;
   slug: string;
   title: string;
 };
@@ -401,6 +402,7 @@ export async function listReviewLaunchCandidates(
     cardsTotal: number | string | null;
     dueCount: number | string | null;
     mediaId: string;
+    newCount: number | string | null;
     slug: string;
     title: string;
   }>(`
@@ -513,7 +515,25 @@ export async function listReviewLaunchCandidates(
           END
         ),
         0
-      ) AS dueCount
+      ) AS dueCount,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN ec.card_id IS NOT NULL
+             AND (
+               ec.has_lesson_linked_driving_entry = 0
+               OR ec.has_completed_driving_lesson = 1
+             )
+             AND ec.review_state IS NULL
+             AND ec.card_status != 'suspended'
+             AND ec.has_ignored_driving_entry = 0
+             AND ec.has_known_manual_driving_entry = 0
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS newCount
     FROM media m
     LEFT JOIN eligible_cards ec
       ON ec.media_id = m.id
@@ -527,6 +547,7 @@ export async function listReviewLaunchCandidates(
     cardsTotal: Number(row.cardsTotal ?? 0),
     dueCount: Number(row.dueCount ?? 0),
     mediaId: row.mediaId,
+    newCount: Number(row.newCount ?? 0),
     slug: row.slug,
     title: row.title
   }));

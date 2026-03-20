@@ -3,6 +3,8 @@ import {
   getMediaBySlug,
   listLessonsByMediaId,
   listLessonsByMediaIds,
+  listReviewLaunchCandidates,
+  countNewCardsIntroducedOnDayByMediaIds,
   type DatabaseClient,
   type MediaListItem
 } from "@/db";
@@ -21,9 +23,9 @@ import {
 import {
   buildReviewOverviewSnapshot,
   buildReviewEntryStatusLookup,
-  loadGlobalReviewOverviewSnapshot,
   loadReviewOverviewSnapshots
 } from "@/lib/review";
+import { getReviewDailyLimit } from "@/lib/settings";
 import {
   buildSegments,
   buildGlossaryProgressSnapshot,
@@ -83,10 +85,7 @@ export async function getDashboardData(
   database: DatabaseClient = db
 ): Promise<DashboardData> {
   const rows = await listMediaCached(database);
-  const [media, globalReview] = await Promise.all([
-    buildMediaShellSnapshots(database, rows),
-    loadGlobalReviewOverviewSnapshot(database)
-  ]);
+  const media = await buildMediaShellSnapshots(database, rows);
   const focusMedia = pickFocusMedia(media);
   const reviewMedia = pickReviewMedia(media);
 
@@ -95,7 +94,7 @@ export async function getDashboardData(
     reviewMedia,
     media,
     totals: {
-      cardsDue: globalReview.dueCount,
+      cardsDue: media.reduce((sum, item) => sum + item.cardsDue, 0),
       lessonsCompleted: media.reduce(
         (sum, item) => sum + item.lessonsCompleted,
         0
@@ -103,7 +102,10 @@ export async function getDashboardData(
       lessonsTotal: media.reduce((sum, item) => sum + item.lessonsTotal, 0),
       entriesKnown: media.reduce((sum, item) => sum + item.entriesKnown, 0),
       entriesTotal: media.reduce((sum, item) => sum + item.entriesTotal, 0),
-      activeReviewCards: globalReview.activeCards
+      activeReviewCards: media.reduce(
+        (sum, item) => sum + item.activeReviewCards,
+        0
+      )
     }
   };
 }
@@ -183,30 +185,39 @@ async function buildMediaShellSnapshots(
   }
 
   const nowIso = new Date().toISOString();
-  const [lessons, glossarySnapshots, reviewSnapshots] = await Promise.all([
-    listLessonsByMediaIds(
-      database,
-      media.map((item) => item.id)
-    ),
-    loadGlossaryProgressSnapshotsCached(
-      database,
-      media.map((item) => ({
-        id: item.id,
-        slug: item.slug
-      }))
-    ),
-    loadReviewOverviewSnapshots(
-      database,
-      media.map((item) => ({
-        id: item.id,
-        slug: item.slug
-      }))
-    )
-  ]);
+  const mediaIds = media.map((item) => item.id);
+  const [lessons, glossarySnapshots, reviewCandidates, dailyLimit, newIntroducedByMedia] =
+    await Promise.all([
+      listLessonsByMediaIds(database, mediaIds),
+      loadGlossaryProgressSnapshotsCached(
+        database,
+        media.map((item) => ({
+          id: item.id,
+          slug: item.slug
+        }))
+      ),
+      listReviewLaunchCandidates(database, nowIso),
+      getReviewDailyLimit(database),
+      countNewCardsIntroducedOnDayByMediaIds(database, mediaIds)
+    ]);
   const lessonsByMedia = groupLessonsByMedia(lessons);
 
-  return media.map((item) =>
-    mapMediaShellSnapshot({
+  const candidatesByMedia = new Map(
+    reviewCandidates.map((candidate) => [candidate.mediaId, candidate])
+  );
+  const newIntroducedMap = new Map(
+    newIntroducedByMedia.map((entry) => [entry.mediaId, entry.count])
+  );
+
+  return media.map((item) => {
+    const candidate = candidatesByMedia.get(item.id);
+    const newIntroducedForMedia = newIntroducedMap.get(item.id) ?? 0;
+    const newQueuedCount = Math.min(
+      candidate?.newCount ?? 0,
+      Math.max(dailyLimit - newIntroducedForMedia, 0)
+    );
+
+    return mapMediaShellSnapshotFromCounts({
       glossary:
         glossarySnapshots.get(item.id) ??
         buildGlossaryProgressSnapshot({
@@ -217,23 +228,14 @@ async function buildMediaShellSnapshots(
         }),
       lessons: lessonsByMedia.get(item.id) ?? [],
       media: item,
-      review:
-        reviewSnapshots.get(item.id) ??
-        buildReviewOverviewSnapshot({
-          cards: [],
-          dailyLimit: 0,
-          entryLookup: new Map(),
-          entryStatuses: buildReviewEntryStatusLookup({
-            grammar: [],
-            terms: []
-          }),
-          extraNewCount: 0,
-          newIntroducedTodayCount: 0,
-          nowIso,
-          subjectStates: new Map()
-        })
-    })
-  );
+      reviewCounts: {
+        activeReviewCards: candidate?.activeReviewCards ?? 0,
+        cardsTotal: candidate?.cardsTotal ?? 0,
+        dueCount: candidate?.dueCount ?? 0,
+        newQueuedCount
+      }
+    });
+  });
 }
 
 async function buildMediaShellSnapshot(
@@ -354,6 +356,132 @@ function scoreMediaReview(item: MediaShellSnapshot) {
   }
 
   return 3;
+}
+
+function buildReviewShellSignals(input: {
+  dueCount: number;
+  activeReviewCards: number;
+  cardsTotal: number;
+  newQueuedCount: number;
+}) {
+  const { dueCount, activeReviewCards, cardsTotal, newQueuedCount } = input;
+  const queueCount = dueCount + newQueuedCount;
+
+  if (queueCount > 0) {
+    return {
+      value:
+        dueCount > 0
+          ? `${dueCount} da ripassare`
+          : newQueuedCount > 0
+            ? "Nuove pronte"
+            : `${queueCount} in coda`,
+      detail: "Sessione pronta",
+      queueLabel:
+        dueCount > 0
+          ? dueCount === 1
+            ? "1 card richiede attenzione adesso."
+            : `${dueCount} card richiedono attenzione adesso.`
+          : newQueuedCount > 0
+            ? newQueuedCount === 1
+              ? "1 card nuova è pronta per oggi."
+              : `${newQueuedCount} card nuove sono pronte per oggi.`
+            : `${queueCount} in coda`
+    };
+  }
+
+  if (dueCount > 0) {
+    return {
+      value: `${dueCount} da ripassare`,
+      detail: "Richiedono attenzione adesso",
+      queueLabel:
+        dueCount === 1
+          ? "1 card richiede attenzione adesso."
+          : `${dueCount} card richiedono attenzione adesso.`
+    };
+  }
+
+  if (activeReviewCards > 0) {
+    return {
+      value: "In pari",
+      detail:
+        activeReviewCards === 1
+          ? "1 card è già nella rotazione"
+          : `${activeReviewCards} card sono già nella rotazione`,
+      queueLabel:
+        activeReviewCards === 1
+          ? "1 card è già nella rotazione e oggi la coda è in pari."
+          : `${activeReviewCards} card sono già nella rotazione e oggi la coda è in pari.`
+    };
+  }
+
+  if (cardsTotal > 0) {
+    return {
+      value: "In pausa",
+      detail: "Le card presenti non richiedono Review attiva",
+      queueLabel:
+        "Le card presenti non richiedono Review attiva in questo momento."
+    };
+  }
+
+  return {
+    value: "Vuota",
+    detail: "Nessuna card di Review disponibile",
+    queueLabel:
+      "La coda di Review si popolerà quando importerai le prime card."
+  };
+}
+
+function mapMediaShellSnapshotFromCounts(input: {
+  glossary: Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>;
+  lessons: Awaited<ReturnType<typeof listLessonsByMediaId>>;
+  media:
+    | MediaListItem
+    | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>;
+  reviewCounts: {
+    activeReviewCards: number;
+    cardsTotal: number;
+    dueCount: number;
+    newQueuedCount: number;
+  };
+}): MediaShellSnapshot {
+  const lessonsCompleted = input.lessons.filter(
+    (lesson) => lesson.progress?.status === "completed"
+  ).length;
+  const lessonsTotal = input.lessons.length;
+  const activeLesson = selectActiveLesson(input.lessons);
+  const resumeLesson = selectResumeLesson(input.lessons);
+  const nextLesson = selectNextLesson(input.lessons);
+  const reviewSignals = buildReviewShellSignals(input.reviewCounts);
+
+  return {
+    id: input.media.id,
+    slug: input.media.slug,
+    title: input.media.title,
+    description:
+      input.media.description ??
+      `Pacchetto ${formatMediaTypeLabel(input.media.mediaType).toLowerCase()} pronto per Textbook, Glossary e Review.`,
+    mediaType: input.media.mediaType,
+    mediaTypeLabel: formatMediaTypeLabel(input.media.mediaType),
+    segmentKindLabel: formatSegmentKindLabel(input.media.segmentKind),
+    statusLabel: formatStatusLabel(input.media.status),
+    lessonsCompleted,
+    lessonsTotal,
+    textbookProgressPercent: calculatePercent(lessonsCompleted, lessonsTotal),
+    entriesKnown: input.glossary.entriesCovered,
+    entriesTotal: input.glossary.entriesTotal,
+    glossaryProgressPercent: input.glossary.progressPercent,
+    cardsDue: input.reviewCounts.dueCount,
+    cardsTotal: input.reviewCounts.cardsTotal,
+    activeReviewCards: input.reviewCounts.activeReviewCards,
+    reviewStatValue: reviewSignals.value,
+    reviewStatDetail: reviewSignals.detail,
+    reviewQueueLabel: reviewSignals.queueLabel,
+    activeLesson,
+    resumeLesson,
+    nextLesson,
+    segments: buildSegments(input.lessons),
+    previewEntries: input.glossary.previewEntries
+  };
 }
 
 function buildReviewSignals({

@@ -88,7 +88,10 @@ describe("app shell live data", () => {
     expect(dashboard.totals.lessonsCompleted).toBe(1);
     expect(dashboard.totals.entriesKnown).toBe(2);
     expect(dashboard.totals.cardsDue).toBe(0);
-    expect(dashboard.totals.activeReviewCards).toBe(0);
+    // The dashboard now uses SQL-level card counts (listReviewLaunchCandidates)
+    // which count the secondary card (review state, future due) as active.
+    // The old subject-group-based path produced 0 due to grouping artifacts.
+    expect(dashboard.totals.activeReviewCards).toBe(1);
   });
 
   it("prefers the most reviewable media for review entry points", async () => {
