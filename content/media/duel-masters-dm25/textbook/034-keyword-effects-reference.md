@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 58
+order: 63
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -128,6 +128,33 @@ reveal_mode: sentence
 
 - In `「G・ストライク」を{{使|つか}}えない`, `使えない` è il blocco da leggere:
   quell'effetto impedisce proprio l'uso della risposta difensiva.
+
+### [キリフダッシュ](term:term-kirifudash)
+
+:::example_sentence
+jp: >-
+  キリフダッシュ{{6|ろく}}：
+  {{自分|じぶん}}の[クリーチャー](term:term-creature)の
+  {{攻撃|こうげき}}の{{終|お}}わりに、その[クリーチャー](term:term-creature)
+  がその{{攻撃|こうげき}}{{中|ちゅう}}にシールドをブレイクしていれば、
+  このクリーチャーを{{6|ろく}}[{{支払|しはら}}って](term:term-harau)
+  [{{召喚|しょうかん}}](term:term-summon)してもよい。
+translation_it: >-
+  Kirifudash 6: alla fine dell'attacco di una tua creatura, se quella creatura
+  ha rotto uno scudo durante quell'attacco, puoi pagare 6 per evocare questa
+  creatura.
+reveal_mode: sentence
+:::
+
+- `{{攻撃|こうげき}}の{{終|お}}わりに` fissa il timing: controlli la keyword
+  solo quando
+  l'attacco è già finito.
+- `その{{攻撃|こうげき}}{{中|ちゅう}}にシールドをブレイクしていれば` tiene
+  insieme causa e
+  condizione nello stesso attacco.
+- `{{召喚|しょうかん}}してもよい` è il payoff facoltativo: il testo non dice che
+  devi evocare
+  per forza, ma che puoi farlo se la condizione è stata soddisfatta.
 
 ### [メテオバーン](term:term-meteorburn)
 
