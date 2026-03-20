@@ -8,12 +8,15 @@ import {
   type PronunciationManifestEntry
 } from "./content/pronunciations-manifest.ts";
 import { buildEntryKey } from "./entry-id.ts";
+import { createFetchThrottle } from "./fetch-throttle.ts";
 import { isSupportedAudioAssetPath } from "./media-assets.ts";
 import type {
   NormalizedGrammarPattern,
   NormalizedMediaBundle,
   NormalizedTerm
 } from "./content/types.ts";
+
+export { parseRetryAfterMs } from "./fetch-throttle.ts";
 
 type EntryKind = "term" | "grammar";
 
@@ -25,11 +28,16 @@ export type PronunciationFetchNetworkOptions = {
 };
 
 const DEFAULT_REQUEST_DELAY_MS = 1200;
-const DEFAULT_REQUEST_TIMEOUT_MS = 15_000;
-const DEFAULT_RETRY_BASE_DELAY_MS = 5000;
-const DEFAULT_MAX_RETRIES = 4;
-
-let nextAllowedNetworkRequestAt = 0;
+const pronunciationFetchThrottle = createFetchThrottle(
+  { requestDelayMs: DEFAULT_REQUEST_DELAY_MS },
+  {
+    onResponseRetry: ({ response, retryDelayMs, url }) => {
+      console.warn(
+        `Retrying ${url} after ${retryDelayMs}ms (${response.status} ${response.statusText})`
+      );
+    }
+  }
+);
 
 export type PronunciationTargetEntry = {
   aliases: string[];
@@ -667,72 +675,18 @@ async function fetchJsonWithCache<T>(input: {
   }
 
   await mkdir(path.dirname(input.cachePath), { recursive: true });
-  const requestDelayMs =
-    input.network?.requestDelayMs ?? DEFAULT_REQUEST_DELAY_MS;
-  const requestTimeoutMs =
-    input.network?.requestTimeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS;
-  const retryBaseDelayMs =
-    input.network?.retryBaseDelayMs ?? DEFAULT_RETRY_BASE_DELAY_MS;
-  const maxRetries = input.network?.maxRetries ?? DEFAULT_MAX_RETRIES;
-
-  for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
-    await waitForNextNetworkSlot(requestDelayMs);
-    const abortController = new AbortController();
-    const timeout = setTimeout(() => {
-      abortController.abort();
-    }, requestTimeoutMs);
-    let response: Response;
-    let body: string;
-
-    try {
-      response = await fetch(input.url, {
-        headers: {
-          "User-Agent": "japanese-custom-study/0.1 local pronunciation fetcher"
-        },
-        signal: abortController.signal
-      });
-      body = await response.text();
-    } catch (error) {
-      clearTimeout(timeout);
-
-      if (attempt < maxRetries) {
-        await sleep(retryBaseDelayMs * 2 ** attempt);
-        continue;
+  const response = await pronunciationFetchThrottle.fetchWithRetry(
+    input.url,
+    {
+      headers: {
+        "User-Agent": "japanese-custom-study/0.1 local pronunciation fetcher"
       }
-
-      throw new Error(
-        `Failed to fetch ${input.url}: ${error instanceof Error ? error.message : String(error)}`
-      );
-    }
-
-    clearTimeout(timeout);
-
-    if (response.ok) {
-      await writeFile(input.cachePath, body);
-      return JSON.parse(body) as T;
-    }
-
-    if (
-      (response.status === 429 || response.status >= 500) &&
-      attempt < maxRetries
-    ) {
-      const retryDelayMs =
-        parseRetryAfterMs(response.headers.get("retry-after")) ??
-        retryBaseDelayMs * 2 ** attempt;
-
-      console.warn(
-        `Retrying ${input.url} after ${retryDelayMs}ms (${response.status} ${response.statusText})`
-      );
-      await sleep(retryDelayMs);
-      continue;
-    }
-
-    throw new Error(
-      `Failed to fetch ${input.url}: ${response.status} ${response.statusText}`
-    );
-  }
-
-  throw new Error(`Failed to fetch ${input.url}: exhausted retries`);
+    },
+    input.network
+  );
+  const body = await response.text();
+  await writeFile(input.cachePath, body);
+  return JSON.parse(body) as T;
 }
 
 function sanitizeCommonsMetadata(value: string | undefined) {
@@ -766,27 +720,6 @@ function hashString(value: string) {
   return createHash("sha1").update(value).digest("hex");
 }
 
-export function parseRetryAfterMs(value: string | null) {
-  if (!value) {
-    return null;
-  }
-
-  const trimmed = value.trim();
-  const asSeconds = Number.parseInt(trimmed, 10);
-
-  if (Number.isFinite(asSeconds) && asSeconds >= 0) {
-    return asSeconds * 1000;
-  }
-
-  const retryAt = Date.parse(trimmed);
-
-  if (Number.isNaN(retryAt)) {
-    return null;
-  }
-
-  return Math.max(0, retryAt - Date.now());
-}
-
 function formatErrorMessage(error: unknown) {
   if (error instanceof Error) {
     return error.message;
@@ -802,23 +735,4 @@ async function fileExists(filePath: string) {
   } catch {
     return false;
   }
-}
-
-async function waitForNextNetworkSlot(requestDelayMs: number) {
-  const now = Date.now();
-  const waitMs = Math.max(0, nextAllowedNetworkRequestAt - now);
-
-  if (waitMs > 0) {
-    await sleep(waitMs);
-  }
-
-  nextAllowedNetworkRequestAt = Date.now() + Math.max(0, requestDelayMs);
-}
-
-async function sleep(durationMs: number) {
-  if (durationMs <= 0) {
-    return;
-  }
-
-  await new Promise((resolve) => setTimeout(resolve, durationMs));
 }

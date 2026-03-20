@@ -13,9 +13,9 @@ import type {
   NormalizedTerm
 } from "./content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
+import { createFetchThrottle } from "./fetch-throttle.ts";
 import {
   normalizePronunciationText,
-  parseRetryAfterMs,
   type PronunciationFetchNetworkOptions
 } from "./pronunciation-fetch.ts";
 
@@ -73,11 +73,9 @@ type WiktionaryTemplate = {
 };
 
 const DEFAULT_REQUEST_DELAY_MS = 400;
-const DEFAULT_REQUEST_TIMEOUT_MS = 15000;
-const DEFAULT_RETRY_BASE_DELAY_MS = 5000;
-const DEFAULT_MAX_RETRIES = 4;
-
-let nextAllowedNetworkRequestAt = 0;
+const pitchAccentFetchThrottle = createFetchThrottle({
+  requestDelayMs: DEFAULT_REQUEST_DELAY_MS
+});
 
 export async function fetchPitchAccentsForBundle(input: {
   bundle: NormalizedMediaBundle;
@@ -635,70 +633,17 @@ async function fetchText(input: {
   network?: PronunciationFetchNetworkOptions;
   url: string;
 }) {
-  const requestDelayMs =
-    input.network?.requestDelayMs ?? DEFAULT_REQUEST_DELAY_MS;
-  const requestTimeoutMs =
-    input.network?.requestTimeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS;
-  const retryBaseDelayMs =
-    input.network?.retryBaseDelayMs ?? DEFAULT_RETRY_BASE_DELAY_MS;
-  const maxRetries = input.network?.maxRetries ?? DEFAULT_MAX_RETRIES;
-
-  for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
-    await waitForNextNetworkSlot(requestDelayMs);
-
-    const abortController = new AbortController();
-    const timeout = setTimeout(() => {
-      abortController.abort();
-    }, requestTimeoutMs);
-    let response: Response;
-    let responseBody: string;
-
-    try {
-      response = await fetch(input.url, {
-        headers: {
-          "User-Agent": "japanese-custom-study/0.1 pitch-accent fetcher"
-        },
-        signal: abortController.signal
-      });
-
-      responseBody = await response.text();
-    } catch (error) {
-      clearTimeout(timeout);
-
-      if (attempt < maxRetries) {
-        await sleep(retryBaseDelayMs * 2 ** attempt);
-        continue;
+  const response = await pitchAccentFetchThrottle.fetchWithRetry(
+    input.url,
+    {
+      headers: {
+        "User-Agent": "japanese-custom-study/0.1 pitch-accent fetcher"
       }
+    },
+    input.network
+  );
 
-      throw new Error(
-        `Failed to fetch ${input.url}: ${error instanceof Error ? error.message : String(error)}`
-      );
-    }
-
-    clearTimeout(timeout);
-
-    if (response.ok) {
-      return responseBody;
-    }
-
-    if (
-      (response.status === 429 || response.status >= 500) &&
-      attempt < maxRetries
-    ) {
-      const retryDelayMs =
-        parseRetryAfterMs(response.headers.get("retry-after")) ??
-        retryBaseDelayMs * 2 ** attempt;
-
-      await sleep(retryDelayMs);
-      continue;
-    }
-
-    throw new Error(
-      `Failed to fetch ${input.url}: ${response.status} ${response.statusText}`
-    );
-  }
-
-  throw new Error(`Failed to fetch ${input.url}: exhausted retries`);
+  return await response.text();
 }
 
 function isNotFoundError(error: unknown) {
@@ -715,23 +660,4 @@ function stripHtml(value: string | undefined) {
     .replace(/\s+/gu, " ")
     .trim();
   return stripped.length > 0 ? stripped : null;
-}
-
-async function waitForNextNetworkSlot(requestDelayMs: number) {
-  const now = Date.now();
-  const waitMs = Math.max(0, nextAllowedNetworkRequestAt - now);
-
-  if (waitMs > 0) {
-    await sleep(waitMs);
-  }
-
-  nextAllowedNetworkRequestAt = Date.now() + Math.max(0, requestDelayMs);
-}
-
-async function sleep(durationMs: number) {
-  if (durationMs <= 0) {
-    return;
-  }
-
-  await new Promise((resolve) => setTimeout(resolve, durationMs));
 }
