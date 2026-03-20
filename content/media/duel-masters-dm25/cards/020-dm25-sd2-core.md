@@ -129,9 +129,14 @@ pos: keyword
 aliases:
   [スーパー・S・トリガー, スーパーSトリガー, super s-trigger, suupaa shiirudo torigaa]
 notes_it: >-
-  Variante più spinta di [S・トリガー](term:term-s-trigger). In risoluzione non è
-  solo "uso dagli scudi": può aprire la sequenza scudo -> mano -> ingresso
-  immediato senza costo, quindi cambia direttamente il ritmo del turno.
+  [S・トリガー](term:term-s-trigger) è già la keyword che ti fa usare una carta
+  dagli scudi. `スーパー` è il rinforzo in katakana: ti segnala che non sei
+  davanti alla forma base, ma a una versione più spinta. In Duel Masters questa
+  intuizione resta valida, però la parte davvero importante è la parentesi che
+  segue la keyword. Su `SMAPON`, per esempio, la parentesi non si limita a dire
+  `senza costo`: specifica il momento esatto in cui la carta viene eseguita e,
+  se in quell'istante i tuoi scudi sono zero, le assegna perfino una seconda
+  abilità `出た時`.
 level_hint: custom
 :::
 
@@ -149,6 +154,73 @@ notes_it: >-
   del giocatore e distinguere informazione pubblica da informazione privata
   durante la risoluzione.
 level_hint: custom
+:::
+
+:::term
+id: term-kaku
+lemma: 各
+reading: かく
+romaji: kaku
+meaning_it: ciascun / ogni singolo
+pos: noun
+aliases: [各, かく, each]
+notes_it: >-
+  In giapponese generale `{{各|かく}}` distribuisce la stessa proprietà a ogni
+  elemento di una serie: ogni giocatore, ogni carta, ogni turno. Nel rules text
+  di Duel Masters il significato non cambia, ma diventa un marcatore di scope.
+  In `{{各|かく}}ターン`, per esempio, l'effetto non vale `una volta in generale`:
+  viene controllato separatamente in ogni turno.
+level_hint: n4
+:::
+
+:::term
+id: term-saisho
+lemma: 最初
+reading: さいしょ
+romaji: saisho
+meaning_it: il primo / l'inizio della sequenza
+pos: noun
+aliases: [最初, さいしょ, first]
+notes_it: >-
+  In giapponese generale `{{最初|さいしょ}}` indica il primo elemento o il punto
+  iniziale di un ordine: la prima persona, il primo passo, il primo attacco.
+  Nel rules text di Duel Masters serve a selezionare quale evento conta davvero.
+  In `このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}`, solo il primo
+  attacco di quella creatura apre la finestra dell'effetto.
+level_hint: n4
+:::
+
+:::term
+id: term-owari
+lemma: 終わり
+reading: おわり
+romaji: owari
+meaning_it: fine / conclusione / ultimo momento
+pos: noun
+aliases: [終わり, 終り, おわり, end]
+notes_it: >-
+  In giapponese generale `{{終|お}}わり` è la parte finale di qualcosa: la fine
+  di un discorso, di una giornata, di un'azione. Nel rules text di Duel Masters
+  questo nucleo resta uguale, ma con timing più rigido. In `{{攻撃|こうげき}}の
+  {{終|お}}わりに`, il testo non guarda il mezzo dell'attacco: aspetta che
+  quell'attacco sia finito e solo allora applica l'effetto.
+level_hint: n4
+:::
+
+:::term
+id: term-ichiban-ue
+lemma: 一番上
+reading: いちばんうえ
+romaji: ichiban ue
+meaning_it: il punto più in alto / la cima
+pos: noun
+aliases: [一番上, いちばんうえ, top]
+notes_it: >-
+  `{{一番|いちばん}}` marca l'estremo e `{{上|うえ}}` indica la parte alta.
+  Insieme formano un chunk di posizione molto utile: `la cima`, `il punto più
+  in alto`. In Duel Masters compare spesso con il mazzo o con una pila di carte
+  per dire qual è esattamente la carta che viene rivelata, spostata o colpita.
+level_hint: n4
 :::
 
 :::term
@@ -306,6 +378,84 @@ tags: [dm25-sd2, keyword, defense]
 :::
 
 :::card
+id: card-kaku-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
+entry_type: term
+entry_id: term-kaku
+card_type: recognition
+front: '{{各|かく}}'
+back: ciascun / ogni singolo
+example_jp: >-
+  {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の
+  {{終|お}}わりに、このクリーチャーをアンタップする。
+example_it: >-
+  A ogni turno, alla fine del primo attacco di questa creatura, STAPpa questa
+  creatura.
+notes_it: >-
+  Qui `{{各|かく}}` distribuisce il controllo a ogni turno separatamente. Non
+  significa `adesso in questo turno e basta`, ma `ogni volta che si arriva a un
+  nuovo turno`.
+tags: [dm25-sd2, timing, structure]
+:::
+
+:::card
+id: card-saisho-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
+entry_type: term
+entry_id: term-saisho
+card_type: recognition
+front: '{{最初|さいしょ}}'
+back: il primo / l'evento iniziale
+example_jp: >-
+  このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、
+  {{能力|のうりょく}}が{{使|つか}}える。
+example_it: >-
+  Alla fine del primo attacco di questa creatura, l'abilità si può usare.
+notes_it: >-
+  `{{最初|さいしょ}}` filtra quale evento conta. Su `レッドゾーンF` non basta
+  che la creatura attacchi: conta solo il primo attacco di quel turno.
+tags: [dm25-sd2, timing, structure]
+:::
+
+:::card
+id: card-owari-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
+entry_type: term
+entry_id: term-owari
+card_type: recognition
+front: '{{終|お}}わり'
+back: fine / momento conclusivo
+example_jp: >-
+  このクリーチャーの{{攻撃|こうげき}}の{{終|お}}わりに、
+  {{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。
+example_it: >-
+  Alla fine dell'attacco di questa creatura, distruggi la carta in cima.
+notes_it: >-
+  `{{終|お}}わり` non indica il mezzo dell'azione, ma il momento successivo alla
+  sua conclusione. In questo chunk il gioco aspetta la fine dell'attacco e poi
+  applica il resto.
+tags: [dm25-sd2, timing, structure]
+:::
+
+:::card
+id: card-ichiban-ue-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
+entry_type: term
+entry_id: term-ichiban-ue
+card_type: recognition
+front: '{{一番上|いちばんうえ}}'
+back: la cima / il punto più in alto
+example_jp: >-
+  {{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。
+example_it: >-
+  Distruggi la carta in cima.
+notes_it: >-
+  Questo chunk di posizione serve a individuare una carta sola e ben precisa:
+  quella che sta proprio in cima al mazzo o alla pila considerata.
+tags: [dm25-sd2, deck, structure]
+:::
+
+:::card
 id: card-ultimate-evolution-recognition
 lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
@@ -376,13 +526,17 @@ card_type: recognition
 front: スーパー・S・トリガー
 back: Super S-Trigger
 example_jp: >-
-  スーパー・S・トリガーで、このクリーチャーをすぐ
-  {{召喚|しょうかん}}してもよい。
+  スーパー・S・トリガー：
+  このカードをシールドゾーンから{{手札|てふだ}}に{{加|くわ}}える{{時|とき}}、
+  コストを{{支払|しはら}}わずにすぐ{{実行|じっこう}}してもよい。
 example_it: >-
-  Con Super S-Trigger puoi evocare subito questa creatura.
+  Super S-Trigger: quando aggiungi questa carta dagli scudi alla mano, puoi
+  eseguirla subito senza pagarne il costo.
 notes_it: >-
-  Distingue la variante super dalla keyword base. In gioco prepara una risposta
-  dagli scudi con ingresso immediato più forte del normale S-Trigger.
+  La keyword da sola ti dice solo che sei oltre la forma base di
+  [S・トリガー](term:term-s-trigger). La lettura davvero utile è la parentesi:
+  è lì che la carta spiega quando la esegui subito e quale bonus extra può
+  ottenere.
 tags: [dm25-sd2, keyword, shield]
 :::
 
@@ -393,21 +547,72 @@ entry_type: term
 entry_id: term-super-s-trigger
 card_type: concept
 front: >-
-  シールドから{{使|つか}}った{{後|あと}}、そのままクリーチャーを{{出|だ}}すか、
-  さらに{{強|つよ}}い{{追加効果|ついかこうか}}まで{{続|つづ}}けて{{使|つか}}える。
+  その{{時|とき}}{{自分|じぶん}}のシールドが{{1|ひと}}つもなければ、
+  このカードに{{能力|のうりょく}}を{{与|あた}}える。
 back: >-
-  Dopo averla usata dallo scudo, puoi far entrare subito una creatura oppure
-  arrivare fino a un effetto aggiuntivo più forte.
+  In quel momento, se non hai nemmeno 1 scudo, questa carta ottiene
+  un'abilità aggiuntiva.
 example_jp: >-
-  スーパー・S・トリガーなら、{{使|つか}}った{{後|あと}}にそのまま
-  クリーチャーを{{出|だ}}すか、さらに{{追加効果|ついかこうか}}まで{{使|つか}}える。
+  その{{時|とき}}{{自分|じぶん}}のシールドが{{1|ひと}}つもなければ、
+  このカードに{{能力|のうりょく}}を{{与|あた}}える。
 example_it: >-
-  Con Super S-Trigger, dopo averla usata puoi far entrare subito una creatura
-  oppure continuare fino all'effetto aggiuntivo.
+  In quel momento, se non hai nemmeno 1 scudo, questa carta ottiene
+  un'abilità aggiuntiva.
 notes_it: >-
-  Questa card allena il branching del rules text: `～た後`, l'alternativa
-  `A か、B` e l'estensione `さらに ... まで`.
+  Questa è la parte che spesso viene saltata troppo in fretta. `その時` punta
+  allo stesso istante del passaggio da scudo a mano, `{{1|ひと}}つもない`
+  controlla se sei davvero a zero scudi, e `{{与|あた}}える` significa
+  `concedere`: l'effetto finale non si risolve ancora, viene prima assegnato
+  come seconda abilità alla carta.
 tags: [dm25-sd2, keyword, shield, chunk]
+:::
+
+:::card
+id: card-smapon-destroy-small-creatures-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
+entry_type: term
+entry_id: term-destroy
+card_type: concept
+front: >-
+  {{相手|あいて}}のパワー{{2000以下|にせんいか}}のクリーチャーを
+  すべて{{破壊|はかい}}する。
+back: >-
+  Distruggi tutte le creature avversarie con potenza 2000 o meno.
+example_jp: >-
+  このクリーチャーが{{出|で}}た{{時|とき}}、
+  {{相手|あいて}}のパワー{{2000以下|にせんいか}}のクリーチャーを
+  すべて{{破壊|はかい}}する。
+example_it: >-
+  Quando questa creatura entra, distruggi tutte le creature avversarie con
+  potenza 2000 o meno.
+notes_it: >-
+  Il chunk allena due cose insieme: `{{2000以下|にせんいか}}` fissa il filtro
+  numerico e `すべて` estende l'effetto a tutto il gruppo che passa quel filtro,
+  non a un solo bersaglio.
+tags: [dm25-sd2, removal, scope, chunk]
+:::
+
+:::card
+id: card-smapon-cannot-lose-turn-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
+entry_type: term
+entry_id: term-super-s-trigger
+card_type: concept
+front: >-
+  そのターン{{中|ちゅう}}、{{自分|じぶん}}はゲームに{{負|ま}}けない。
+back: >-
+  Per quel turno, tu non perdi la partita.
+example_jp: >-
+  このクリーチャーが{{出|で}}た{{時|とき}}、そのターン{{中|ちゅう}}、
+  {{自分|じぶん}}はゲームに{{負|ま}}けない。
+example_it: >-
+  Quando questa creatura entra, per il resto di quel turno tu non perdi la
+  partita.
+notes_it: >-
+  `そのターン{{中|ちゅう}}` fissa la durata e `{{負|ま}}けない` parla solo della
+  condizione di sconfitta. Non vuol dire che il turno si fermi: gli attacchi e
+  gli altri trigger possono continuare, ma tu non perdi in quel turno.
+tags: [dm25-sd2, shield, duration, chunk]
 :::
 
 :::card

@@ -228,19 +228,24 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  [スーパー・S・トリガー](term:term-super-s-trigger)：シールドから
-  {{使|つか}}った{{後|あと}}、そのままクリーチャーを{{出|だ}}すか、
-  さらに{{強|つよ}}い{{追加効果|ついかこうか}}まで{{続|つづ}}けて{{使|つか}}える。
+  [スーパー・S・トリガー](term:term-super-s-trigger)：このカードをシールドゾーンから
+  {{手札|てふだ}}に{{加|くわ}}える{{時|とき}}、コストを{{支払|しはら}}わずに
+  すぐ{{実行|じっこう}}してもよい。その{{後|あと}}の{{括弧|かっこ}}で、
+  {{追加|ついか}}の{{条件|じょうけん}}や{{与|あた}}えられる{{能力|のうりょく}}が{{続|つづ}}く。
 translation_it: >-
-  Super S-Trigger: dopo averla usata dallo scudo, puoi anche far entrare una
-  creatura o arrivare fino a un effetto aggiuntivo più forte.
+  Super S-Trigger: quando aggiungi questa carta dagli scudi alla mano, puoi
+  eseguirla subito senza pagarne il costo. Il resto della parentesi specifica
+  eventuali condizioni extra e l'abilità aggiuntiva concessa dalla carta.
 reveal_mode: sentence
 :::
 
-- `{{使|つか}}った後` significa `dopo averla usata`.
-- `A か、B` introduce l'alternativa.
-- `さらに ... まで` allunga la risoluzione fino a un payoff successivo più
-  forte.
+- `すぐ{{実行|じっこう}}してもよい` dice che la carta si risolve subito, senza
+  aspettare più tardi nel turno.
+- `その{{時|とき}}` o le condizioni che seguono controllano proprio l'istante in
+  cui la carta lascia gli scudi.
+- La seconda metà della parentesi è card-specifica: su carte come `SMAPON` può
+  perfino assegnare un'abilità aggiuntiva invece di fermarsi all'uso base dagli
+  scudi.
 
 ### [T・ブレイカー](term:term-t-breaker)
 

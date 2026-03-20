@@ -112,8 +112,14 @@ Qui conta:
 
 - `{{使|つか}}えない` = divieto di uso, non semplice annullamento.
 - Le virgolette attorno a `G・ストライク` segnalano una keyword tecnica.
-- `{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに` ti obbliga a leggere
-  una finestra di timing molto precisa.
+- [{{各|かく}}](term:term-kaku) distribuisce il controllo a ogni turno preso
+  separatamente.
+- [{{最初|さいしょ}}](term:term-saisho) seleziona solo il primo attacco utile di
+  quella creatura.
+- [{{終|お}}わり](term:term-owari) apre la finestra solo dopo che quell'attacco è
+  finito.
+- [{{一番上|いちばんうえ}}](term:term-ichiban-ue) identifica la carta precisa
+  che viene colpita.
 
 #### 2.2 {{轟|とどろ}}く{{侵略|しんりゃく}} レッドゾーン
 
@@ -230,30 +236,75 @@ Qui confermiamo tre punti:
 src: assets/cards/dm25-sd2/05-smapon.jpg
 alt: "Carta di SMAPON, centrata e leggibile."
 caption: >-
-  Parsing comparativo tra [スーパー・S・トリガー](term:term-super-s-trigger) e
-  [S・トリガー](term:term-s-trigger): la carta mostra il salto operativo.
+  Qui bisogna leggere tutta la parentesi di
+  [スーパー・S・トリガー](term:term-super-s-trigger) e separare bene le due
+  abilità `このクリーチャーが{{出|で}}た{{時|とき}}`.
 :::
 
-Il punto tecnico e distinguere:
-[スーパー・S・トリガー](term:term-super-s-trigger) rispetto a
-[S・トリガー](term:term-s-trigger).
+Il punto tecnico qui non è solo distinguere
+[スーパー・S・トリガー](term:term-super-s-trigger) da
+[S・トリガー](term:term-s-trigger). Bisogna anche vedere:
+
+- dove finisce la keyword e dove comincia la procedura reale tra parentesi;
+- quale condizione controlla `その{{時|とき}}`;
+- quali effetti `このクリーチャーが{{出|で}}た{{時|とき}}` sono sempre presenti e
+  quale invece viene aggiunto solo se la condizione degli scudi è vera.
 
 :::example_sentence
 jp: >-
   [スーパー・S・トリガー](term:term-super-s-trigger)
-  （このクリーチャーをシールドゾーンから{{手札|てふだ}}に{{加|くわ}}える
-  {{時|とき}}、コストを{{支払|しはら}}わずにすぐ
-  [{{召喚|しょうかん}}](term:term-summon)してもよい。）
+  （このカードをシールドゾーンから{{手札|てふだ}}に{{加|くわ}}える
+  {{時|とき}}、コストを{{支払|しはら}}わずにすぐ{{実行|じっこう}}してもよい。
+  その{{時|とき}}{{自分|じぶん}}のシールドが{{1|ひと}}つもなければ、
+  このカードに[{{能力|のうりょく}}](term:term-ability)を
+  [{{与|あた}}える](term:term-ataeru)）
 translation_it: >-
-  Super S-Trigger: quando aggiungi questa creatura dagli scudi alla mano, puoi
-  evocarla subito senza pagarne il costo.
+  Super S-Trigger: quando aggiungi questa carta dagli scudi alla mano, puoi
+  eseguirla subito senza pagarne il costo. In quel momento, se non hai nemmeno
+  1 scudo, questa carta ottiene un'abilità aggiuntiva.
+reveal_mode: sentence
+:::
+
+:::example_sentence
+jp: >-
+  このクリーチャーが{{出|で}}た{{時|とき}}、
+  {{相手|あいて}}のパワー{{2000以下|にせんいか}}のクリーチャーを
+  [すべて](term:term-subete)[{{破壊|はかい}}](term:term-destroy)する。
+translation_it: >-
+  Quando questa creatura entra, distruggi tutte le creature avversarie con
+  potenza 2000 o meno.
+reveal_mode: sentence
+:::
+
+:::example_sentence
+jp: >-
+  このクリーチャーが{{出|で}}た{{時|とき}}、そのターン{{中|ちゅう}}、
+  {{自分|じぶん}}はゲームに{{負|ま}}けない。
+translation_it: >-
+  Quando questa creatura entra, per il resto di quel turno tu non perdi la
+  partita.
+reveal_mode: sentence
 :::
 
 La distinzione sintattica è questa:
 
-- [S・トリガー](term:term-s-trigger) ti fa usare la carta dallo scudo.
-- [スーパー・S・トリガー](term:term-super-s-trigger) qui ti porta da scudo a
-  mano e poi a ingresso immediato senza costo.
+- [S・トリガー](term:term-s-trigger) si ferma alla lettura base: usare la carta
+  dagli scudi senza pagarne il costo.
+- `すぐ{{実行|じっこう}}してもよい` qui non vuol dire `la usi più tardi`: su una
+  creatura vuol dire che la esegui subito, quindi `SMAPON` entra immediatamente
+  nel [バトルゾーン](term:term-battle-zone).
+- `その{{時|とき}}` punta proprio a quell'istante di passaggio da scudo a mano.
+  `{{1|ひと}}つもなければ` controlla se in quel momento i tuoi scudi sono
+  zero, non se lo diventano più avanti nello stesso turno.
+- `このカードに[{{能力|のうりょく}}](term:term-ability)を
+  [{{与|あた}}える](term:term-ataeru)` non applica ancora il testo `ゲームに
+  {{負|ま}}けない`: prima assegna alla carta una seconda abilità separata.
+- Quindi, se `SMAPON` entra con la condizione soddisfatta, ha due abilità
+  `このクリーチャーが{{出|で}}た{{時|とき}}`: la distruzione dei `2000以下` e il
+  blocco `そのターン{{中|ちゅう}}、{{自分|じぶん}}はゲームに{{負|ま}}けない`.
+- `そのターン{{中|ちゅう}}` fissa una durata. `{{自分|じぶん}}はゲームに
+  {{負|ま}}けない` protegge dalla sconfitta per quel turno, ma non ferma gli
+  attacchi né cancella il resto della risoluzione.
 
 #### 2.6 {{未来設計図|みらいせっけいず}}
 
