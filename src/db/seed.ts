@@ -7,7 +7,6 @@ import {
   cardEntryLink,
   contentImport,
   entryLink,
-  entryStatus,
   grammarAlias,
   grammarPattern,
   lesson,
@@ -540,37 +539,6 @@ export async function seedDevelopmentDatabase(
       });
 
     await tx
-      .insert(entryStatus)
-      .values([
-        {
-          id: "entry_status_fixture_iku",
-          entryType: "term",
-          entryId: developmentFixture.termDbId,
-          status: "learning",
-          reason: "Seed fixture manual status.",
-          setAt: updatedAt
-        },
-        {
-          id: "entry_status_fixture_teiru",
-          entryType: "grammar",
-          entryId: developmentFixture.grammarDbId,
-          status: "known_manual",
-          reason: "Simulazione override manuale.",
-          setAt: updatedAt
-        }
-      ])
-      .onConflictDoUpdate({
-        target: entryStatus.id,
-        set: {
-          entryType: sql`excluded.entry_type`,
-          entryId: sql`excluded.entry_id`,
-          status: sql`excluded.status`,
-          reason: sql`excluded.reason`,
-          setAt: sql`excluded.set_at`
-        }
-      });
-
-    await tx
       .insert(reviewSubjectState)
       .values([
         {
@@ -603,7 +571,7 @@ export async function seedDevelopmentDatabase(
           entryId: developmentFixture.grammarDbId,
           crossMediaGroupId: null,
           cardId: developmentFixture.secondaryCardId,
-          state: "review",
+          state: "known_manual",
           stability: 3.5,
           difficulty: 3.1,
           dueAt: dueLaterAt,
@@ -614,7 +582,7 @@ export async function seedDevelopmentDatabase(
           lapses: 0,
           reps: 5,
           schedulerVersion: "fsrs_v1",
-          manualOverride: false,
+          manualOverride: true,
           suspended: false,
           createdAt,
           updatedAt

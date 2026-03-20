@@ -142,7 +142,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
       >
         <div className="hero-actions">
           {data.card.reviewLabel === "Già nota" ||
-          data.card.reviewLabel === "Ignorata" ? (
+          data.card.reviewLabel === "Sospesa" ? (
             <form action={setLinkedEntryLearningAction}>
               <ReviewDetailActionFields
                 cardId={data.card.id}

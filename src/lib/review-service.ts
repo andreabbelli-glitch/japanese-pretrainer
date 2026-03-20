@@ -1,11 +1,10 @@
 import { randomUUID } from "node:crypto";
 
-import { and, eq, inArray, or } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 
 import {
   card,
   db,
-  entryStatus,
   getCrossMediaFamilyByEntryId,
   getGlossaryEntriesByIds,
   getReviewSubjectStateByKey,
@@ -21,8 +20,7 @@ import {
 import {
   getDrivingEntryLinks,
   hasCompletedReviewLesson,
-  resolveEffectiveReviewState,
-  type ReviewEntryStatusValue
+  resolveEffectiveReviewState
 } from "./review-model";
 import {
   buildReviewSubjectEntryLookup,
@@ -48,9 +46,7 @@ type LinkedEntryRef = {
 };
 
 type ReviewMutationCard = ReviewCardListItem & {
-  drivingEntries: Array<
-    LinkedEntryRef & { status: typeof entryStatus.$inferSelect | null }
-  >;
+  drivingEntries: LinkedEntryRef[];
 };
 
 type ReviewSubjectMemberCard = Awaited<
@@ -89,15 +85,11 @@ export async function applyReviewGrade(input: {
 
     const effectiveState = resolveEffectiveReviewState({
       cardStatus: subjectContext.seedCard.status,
-      drivingEntryStatuses: subjectContext.drivingEntries.map(
-        (entry) => entry.status?.status ?? null
-      ),
       reviewState: subjectReviewState
     });
 
     if (
-      effectiveState.state === "known_manual" ||
-      effectiveState.state === "ignored"
+      effectiveState.state === "known_manual"
     ) {
       throw new Error(
         "Manual mastery cards cannot be graded until the entry is reopened."
@@ -180,12 +172,6 @@ export async function resetReviewCardProgress(input: {
       loadedCard,
       nowIso
     );
-    const entryStatusFilters = buildEntryStatusFilters(
-      subjectContext.drivingEntries.map((entry) => ({
-        entryId: entry.entryId,
-        entryType: entry.entryType
-      }))
-    );
 
     await tx
       .update(card)
@@ -221,16 +207,6 @@ export async function resetReviewCardProgress(input: {
       },
       updatedAt: nowIso
     });
-
-    if (entryStatusFilters.length > 0) {
-      await tx
-        .delete(entryStatus)
-        .where(
-          entryStatusFilters.length === 1
-            ? entryStatusFilters[0]!
-            : or(entryStatusFilters[0]!, entryStatusFilters[1]!)
-        );
-    }
 
     return {
       cardId: loadedCard.id,
@@ -360,12 +336,14 @@ export async function setReviewCardSuspended(input: {
   });
 }
 
+type ReviewEntryMutationStatus = "known_manual" | "learning" | "ignored";
+
 export async function setLinkedEntryStatusByCard(input: {
   cardId: string;
   database?: DatabaseClient;
   expectedMediaId?: string;
   now?: Date;
-  status: Exclude<ReviewEntryStatusValue, null>;
+  status: ReviewEntryMutationStatus;
 }) {
   const database = input.database ?? db;
   const nowIso = (input.now ?? new Date()).toISOString();
@@ -389,24 +367,80 @@ export async function setLinkedEntryStatusByCard(input: {
       throw new Error("This card has no canonical entry to update.");
     }
 
+    const isManualOverride = input.status === "known_manual";
+    const isSuspended = input.status === "ignored";
+    const sourceSeedCard = subjectContext.seedCard;
+    const sourceState = subjectContext.subjectState ?? {
+      cardId: sourceSeedCard.id,
+      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
+      createdAt: sourceSeedCard.createdAt,
+      difficulty: null,
+      dueAt: null,
+      entryId: subjectContext.identity.entryId,
+      entryType: subjectContext.identity.entryType,
+      lapses: 0,
+      lastInteractionAt: sourceSeedCard.updatedAt ?? sourceSeedCard.createdAt,
+      lastReviewedAt: null,
+      learningSteps: 0,
+      manualOverride: false,
+      suspended: false,
+      reps: 0,
+      scheduledDays: 0,
+      stability: null,
+      state: (input.status === "learning" ? "learning" : "new") as ReviewState,
+      subjectKey: subjectContext.identity.subjectKey,
+      subjectType: subjectContext.identity.subjectKind,
+      updatedAt: nowIso
+    };
+    const schedulerVersion = "fsrs_v1";
+
     await tx
-      .insert(entryStatus)
-      .values(
-        subjectContext.drivingEntries.map((entry) => ({
-          id: `entry_status_${entry.entryType}_${entry.entryId}`,
-          entryType: entry.entryType,
-          entryId: entry.entryId,
-          status: input.status,
-          reason: `Updated from review card ${loadedCard.id}.`,
-          setAt: nowIso
-        }))
-      )
+      .insert(reviewSubjectState)
+      .values({
+        cardId: sourceState.cardId,
+        crossMediaGroupId: sourceState.crossMediaGroupId,
+        createdAt: sourceState.createdAt,
+        difficulty: sourceState.difficulty,
+        dueAt: sourceState.dueAt,
+        entryId: sourceState.entryId,
+        entryType: sourceState.entryType,
+        lastInteractionAt: nowIso,
+        lastReviewedAt: sourceState.lastReviewedAt,
+        learningSteps: sourceState.learningSteps,
+        lapses: sourceState.lapses,
+        manualOverride: isManualOverride,
+        reps: sourceState.reps,
+        scheduledDays: sourceState.scheduledDays,
+        schedulerVersion,
+        stability: sourceState.stability,
+        state: sourceState.state,
+        subjectKey: sourceState.subjectKey,
+        subjectType: sourceState.subjectType,
+        suspended: isSuspended,
+        updatedAt: nowIso
+      })
       .onConflictDoUpdate({
-        target: [entryStatus.entryType, entryStatus.entryId],
+        target: reviewSubjectState.subjectKey,
         set: {
-          status: input.status,
-          reason: `Updated from review card ${loadedCard.id}.`,
-          setAt: nowIso
+          cardId: sourceState.cardId,
+          crossMediaGroupId: sourceState.crossMediaGroupId,
+          difficulty: sourceState.difficulty,
+          dueAt: sourceState.dueAt,
+          entryId: sourceState.entryId,
+          entryType: sourceState.entryType,
+          lastInteractionAt: nowIso,
+          lastReviewedAt: sourceState.lastReviewedAt,
+          learningSteps: sourceState.learningSteps,
+          lapses: sourceState.lapses,
+          manualOverride: isManualOverride,
+          reps: sourceState.reps,
+          scheduledDays: sourceState.scheduledDays,
+          schedulerVersion,
+          stability: sourceState.stability,
+          state: sourceState.state,
+          subjectType: sourceState.subjectType,
+          suspended: isSuspended,
+          updatedAt: nowIso
         }
       });
 
@@ -441,10 +475,10 @@ async function loadReviewCardForMutation(
   }
 
   const drivingEntryRefs = getDrivingEntryLinks(row.entryLinks);
-  const drivingEntries = await loadEntryStatusRows(
-    transaction,
-    drivingEntryRefs
-  );
+  const drivingEntries = drivingEntryRefs.map((entry) => ({
+    entryId: entry.entryId,
+    entryType: entry.entryType
+  }));
 
   return {
     ...row,
@@ -476,70 +510,6 @@ function isResettableMutationCard(
   );
 }
 
-async function loadEntryStatusRows(
-  transaction: DatabaseTransaction,
-  entryLinks: LinkedEntryRef[]
-) {
-  const filters = buildEntryStatusFilters(entryLinks);
-  const statusRows =
-    filters.length > 0
-      ? await transaction.query.entryStatus.findMany({
-          where:
-            filters.length === 1 ? filters[0]! : or(filters[0]!, filters[1]!)
-        })
-      : [];
-  const statusMap = new Map(
-    statusRows.map((statusRow) => [
-      `${statusRow.entryType}:${statusRow.entryId}`,
-      statusRow
-    ])
-  );
-
-  return entryLinks.map(
-    (
-      entry
-    ): LinkedEntryRef & { status: typeof entryStatus.$inferSelect | null } => ({
-      entryId: entry.entryId,
-      entryType: entry.entryType,
-      status: statusMap.get(`${entry.entryType}:${entry.entryId}`) ?? null
-    })
-  );
-}
-
-function buildEntryStatusFilters(entryLinks: LinkedEntryRef[]) {
-  if (entryLinks.length === 0) {
-    return [];
-  }
-
-  const termEntryIds = entryLinks
-    .filter((entry) => entry.entryType === "term")
-    .map((entry) => entry.entryId);
-  const grammarEntryIds = entryLinks
-    .filter((entry) => entry.entryType === "grammar")
-    .map((entry) => entry.entryId);
-  const filters = [];
-
-  if (termEntryIds.length > 0) {
-    filters.push(
-      and(
-        eq(entryStatus.entryType, "term"),
-        inArray(entryStatus.entryId, termEntryIds)
-      )
-    );
-  }
-
-  if (grammarEntryIds.length > 0) {
-    filters.push(
-      and(
-        eq(entryStatus.entryType, "grammar"),
-        inArray(entryStatus.entryId, grammarEntryIds)
-      )
-    );
-  }
-
-  return filters;
-}
-
 function assertCardBelongsToExpectedMedia(
   mediaId: string,
   expectedMediaId: string | undefined
@@ -565,9 +535,7 @@ type ReviewSubjectScheduledState = {
 };
 
 type ReviewSubjectMutationContext = {
-  drivingEntries: Array<
-    LinkedEntryRef & { status: typeof entryStatus.$inferSelect | null }
-  >;
+  drivingEntries: LinkedEntryRef[];
   identity: ReviewSubjectIdentity;
   memberCards: ReviewSubjectMemberCard[];
   seedCard: ReviewSubjectMemberCard;
@@ -672,13 +640,9 @@ async function loadReviewSubjectMutationContext(
       entryType: entryLink.entryType
     }))
   );
-  const drivingEntries = await loadEntryStatusRows(
-    transaction,
-    drivingEntryRefs
-  );
 
   return {
-    drivingEntries,
+    drivingEntries: drivingEntryRefs,
     identity,
     memberCards: effectiveMemberCards,
     seedCard: effectiveSeedCard,
@@ -761,6 +725,7 @@ function buildSubjectReviewStateForValidation(
   if (subjectState) {
     return {
       manualOverride: subjectState.manualOverride,
+      suspended: subjectState.suspended,
       state: subjectState.state as ReviewState | null
     };
   }

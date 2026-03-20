@@ -77,24 +77,6 @@ export function formatLessonProgressStatusLabel(value: string | null) {
   return labels[value] ?? capitalizeToken(value);
 }
 
-export function formatEntryStatusLabel(value: string | null) {
-  const labels: Record<string, string> = {
-    new: "Nuova",
-    unknown: "Nuova",
-    learning: "In studio",
-    review: "In review",
-    relearning: "In review",
-    known_manual: "Già nota",
-    ignored: "Ignorata"
-  };
-
-  if (!value) {
-    return "Disponibile";
-  }
-
-  return labels[value] ?? capitalizeToken(value);
-}
-
 export function formatReviewStateLabel(
   value: string | null,
   manualOverride = false

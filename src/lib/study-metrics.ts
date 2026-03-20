@@ -65,11 +65,11 @@ type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
 type StudySignalLookup = Map<string, StudySignalRow[]>;
 type TermGlossaryProgressEntry = Pick<
   TermEntryReviewSummary,
-  "id" | "sourceId" | "mediaId" | "lemma" | "meaningIt" | "reading" | "segmentTitle" | "entryStatus"
+  "id" | "sourceId" | "mediaId" | "lemma" | "meaningIt" | "reading" | "segmentTitle"
 >;
 type GrammarGlossaryProgressEntry = Pick<
   GrammarEntryReviewSummary,
-  "id" | "sourceId" | "mediaId" | "pattern" | "meaningIt" | "reading" | "segmentTitle" | "entryStatus"
+  "id" | "sourceId" | "mediaId" | "pattern" | "meaningIt" | "reading" | "segmentTitle"
 >;
 type GlossaryProgressMediaTarget = {
   id: string;
@@ -177,7 +177,6 @@ function buildGlossaryProgressSnapshotWithLookup(input: {
   };
   const previewEntries = entries.map(({ entry, kind }) => {
     const studyState = deriveEntryStudyState(
-      entry.entryStatus ?? null,
       (input.studySignalsByEntry.get(`${kind}:${entry.id}`) ?? []).map((signal) => ({
         manualOverride: signal.manualOverride,
         reviewState: signal.reviewState

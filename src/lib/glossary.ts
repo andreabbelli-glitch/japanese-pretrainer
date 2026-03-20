@@ -106,7 +106,6 @@ type GlossaryBaseEntry = {
     normalized: string;
     type?: string;
   }>;
-  entryStatus: string | null;
   lemmaNorm: string;
   readingNorm?: string;
   romajiNorm?: string;
@@ -901,10 +900,7 @@ async function getGlossaryDetailData(
       aliases: []
     },
     score: 0,
-    studyState: deriveEntryStudyState(
-      entry.status?.status ?? null,
-      entryStudySignals
-    )
+    studyState: deriveEntryStudyState(entryStudySignals)
   };
 
   return buildGlossaryDetailData({
@@ -1084,7 +1080,7 @@ async function loadGrammarRomajiFallbackCandidateRefs(
       const rankedEntry = buildRankedGlossaryEntry(
         baseEntry,
         query,
-        deriveEntryStudyState(baseEntry.entryStatus, [])
+        deriveEntryStudyState([])
       );
 
       return rankedEntry
@@ -1619,7 +1615,6 @@ function mapEntryToBaseModel(
         normalized: alias.aliasNorm,
         type: alias.aliasType
       })),
-      entryStatus: termEntry.status?.status ?? null,
       lemmaNorm: termEntry.searchLemmaNorm,
       readingNorm: termEntry.searchReadingNorm,
       romajiNorm: termEntry.searchRomajiNorm,
@@ -1661,7 +1656,6 @@ function mapEntryToBaseModel(
       text: alias.aliasText,
       normalized: alias.aliasNorm
     })),
-    entryStatus: grammarEntry.status?.status ?? null,
     lemmaNorm: grammarEntry.searchPatternNorm,
     romajiNorm: romanizeKanaForSearch(grammarEntry.searchPatternNorm),
     patternNorm: grammarEntry.searchPatternNorm,
@@ -1698,7 +1692,6 @@ function mapTermSummaryToBaseModel(
     segmentId: entry.segmentId,
     segmentTitle: entry.segmentTitle ?? undefined,
     aliases: [],
-    entryStatus: entry.entryStatus ?? null,
     lemmaNorm: entry.searchLemmaNorm,
     readingNorm: entry.searchReadingNorm,
     romajiNorm: entry.searchRomajiNorm,
@@ -1731,7 +1724,6 @@ function mapGrammarSummaryToBaseModel(
     segmentId: entry.segmentId,
     segmentTitle: entry.segmentTitle ?? undefined,
     aliases: [],
-    entryStatus: entry.entryStatus ?? null,
     lemmaNorm: entry.searchPatternNorm,
     romajiNorm: romanizeKanaForSearch(entry.searchPatternNorm),
     patternNorm: entry.searchPatternNorm,
@@ -2203,7 +2195,7 @@ function buildResolvedEntriesFromMaps(input: {
       manualOverride: signal.manualOverride,
       reviewState: signal.reviewState
     }));
-    const studyState = deriveEntryStudyState(entry.entryStatus, studySignals);
+    const studyState = deriveEntryStudyState(studySignals);
     const rankedEntry =
       buildRankedGlossaryEntry(entry, query, studyState) ??
       ({
@@ -2410,7 +2402,7 @@ function buildGlossaryStats(
       manualOverride: signal.manualOverride,
       reviewState: signal.reviewState
     }));
-    const studyState = deriveEntryStudyState(entry.entryStatus, studySignals);
+    const studyState = deriveEntryStudyState(studySignals);
 
     if (studyState.key === "known") {
       knownCount += 1;

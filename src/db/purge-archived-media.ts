@@ -4,11 +4,8 @@ import type { DatabaseClient } from "./client.ts";
 import {
   card,
   entryLink,
-  entryStatus,
-  grammarPattern,
   lesson,
-  media,
-  term
+  media
 } from "./schema/index.ts";
 
 export async function purgeArchivedMedia(database: DatabaseClient) {
@@ -21,13 +18,7 @@ export async function purgeArchivedMedia(database: DatabaseClient) {
   }
 
   const archivedMediaIds = archivedMedia.map((row) => row.id);
-  const [terms, grammar, lessons, cards] = await Promise.all([
-    database.query.term.findMany({
-      where: inArray(term.mediaId, archivedMediaIds)
-    }),
-    database.query.grammarPattern.findMany({
-      where: inArray(grammarPattern.mediaId, archivedMediaIds)
-    }),
+  const [lessons, cards] = await Promise.all([
     database.query.lesson.findMany({
       where: inArray(lesson.mediaId, archivedMediaIds)
     }),
@@ -36,34 +27,10 @@ export async function purgeArchivedMedia(database: DatabaseClient) {
     })
   ]);
 
-  const termIds = terms.map((row) => row.id);
-  const grammarIds = grammar.map((row) => row.id);
   const lessonIds = lessons.map((row) => row.id);
   const cardIds = cards.map((row) => row.id);
 
   await database.transaction(async (tx) => {
-    if (termIds.length > 0) {
-      await tx
-        .delete(entryStatus)
-        .where(
-          and(
-            eq(entryStatus.entryType, "term"),
-            inArray(entryStatus.entryId, termIds)
-          )
-        );
-    }
-
-    if (grammarIds.length > 0) {
-      await tx
-        .delete(entryStatus)
-        .where(
-          and(
-            eq(entryStatus.entryType, "grammar"),
-            inArray(entryStatus.entryId, grammarIds)
-          )
-        );
-    }
-
     if (lessonIds.length > 0) {
       await tx
         .delete(entryLink)

@@ -4,7 +4,6 @@ import type { DatabaseClient } from "../client.ts";
 import {
   card,
   crossMediaGroup,
-  entryStatus,
   grammarPattern,
   media,
   segment,
@@ -159,17 +158,12 @@ export async function listTermEntryReviewSummariesByIds(
       mediaSlug: media.slug,
       mediaTitle: media.title,
       segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey,
-      entryStatus: entryStatus.status
+      crossMediaGroupKey: crossMediaGroup.groupKey
     })
     .from(term)
     .innerJoin(media, eq(media.id, term.mediaId))
     .leftJoin(segment, eq(segment.id, term.segmentId))
     .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
-    .leftJoin(
-      entryStatus,
-      and(eq(entryStatus.entryId, term.id), eq(entryStatus.entryType, "term"))
-    )
     .where(inArray(term.id, termIds))
     .orderBy(asc(term.lemma), asc(term.reading));
 }
@@ -196,8 +190,7 @@ export async function listGrammarEntryReviewSummariesByIds(
       mediaSlug: media.slug,
       mediaTitle: media.title,
       segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey,
-      entryStatus: entryStatus.status
+      crossMediaGroupKey: crossMediaGroup.groupKey
     })
     .from(grammarPattern)
     .innerJoin(media, eq(media.id, grammarPattern.mediaId))
@@ -205,13 +198,6 @@ export async function listGrammarEntryReviewSummariesByIds(
     .leftJoin(
       crossMediaGroup,
       eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
-    )
-    .leftJoin(
-      entryStatus,
-      and(
-        eq(entryStatus.entryId, grammarPattern.id),
-        eq(entryStatus.entryType, "grammar")
-      )
     )
     .where(inArray(grammarPattern.id, grammarIds))
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
@@ -265,96 +251,6 @@ export async function listReviewLaunchCandidates(
         ) AS hasCompletedLesson,
         MAX(
           CASE
-            WHEN si.entry_type = 'term'
-             AND EXISTS (
-               SELECT 1
-               FROM entry_status es
-               INNER JOIN term t_status
-                 ON t_status.id = es.entry_id
-               WHERE es.entry_type = 'term'
-                 AND (
-                   (
-                     si.cross_media_group_id IS NOT NULL
-                     AND t_status.cross_media_group_id = si.cross_media_group_id
-                   )
-                   OR (
-                     si.cross_media_group_id IS NULL
-                     AND es.entry_id = si.entry_id
-                   )
-                 )
-                 AND es.status = 'ignored'
-             )
-            THEN 1
-            WHEN si.entry_type = 'grammar'
-             AND EXISTS (
-               SELECT 1
-               FROM entry_status es
-               INNER JOIN grammar_pattern gp_status
-                 ON gp_status.id = es.entry_id
-               WHERE es.entry_type = 'grammar'
-                 AND (
-                   (
-                     si.cross_media_group_id IS NOT NULL
-                     AND gp_status.cross_media_group_id = si.cross_media_group_id
-                   )
-                   OR (
-                     si.cross_media_group_id IS NULL
-                     AND es.entry_id = si.entry_id
-                   )
-                 )
-                 AND es.status = 'ignored'
-             )
-            THEN 1
-            ELSE 0
-          END
-        ) AS hasIgnoredDrivingEntry,
-        MAX(
-          CASE
-            WHEN si.entry_type = 'term'
-             AND EXISTS (
-               SELECT 1
-               FROM entry_status es
-               INNER JOIN term t_status
-                 ON t_status.id = es.entry_id
-               WHERE es.entry_type = 'term'
-                 AND (
-                   (
-                     si.cross_media_group_id IS NOT NULL
-                     AND t_status.cross_media_group_id = si.cross_media_group_id
-                   )
-                   OR (
-                     si.cross_media_group_id IS NULL
-                     AND es.entry_id = si.entry_id
-                   )
-                 )
-                 AND es.status = 'known_manual'
-             )
-            THEN 1
-            WHEN si.entry_type = 'grammar'
-             AND EXISTS (
-               SELECT 1
-               FROM entry_status es
-               INNER JOIN grammar_pattern gp_status
-                 ON gp_status.id = es.entry_id
-               WHERE es.entry_type = 'grammar'
-                 AND (
-                   (
-                     si.cross_media_group_id IS NOT NULL
-                     AND gp_status.cross_media_group_id = si.cross_media_group_id
-                   )
-                   OR (
-                     si.cross_media_group_id IS NULL
-                     AND es.entry_id = si.entry_id
-                   )
-                 )
-                 AND es.status = 'known_manual'
-             )
-            THEN 1
-            ELSE 0
-          END
-        ) AS hasKnownManualDrivingEntry,
-        MAX(
-          CASE
             WHEN si.card_status != 'suspended' THEN 1
             ELSE 0
           END
@@ -376,8 +272,6 @@ export async function listReviewLaunchCandidates(
         SUM(
           CASE
             WHEN smc.hasCompletedLesson = 1
-             AND smc.hasIgnoredDrivingEntry = 0
-             AND smc.hasKnownManualDrivingEntry = 0
             THEN 1
             ELSE 0
           END
@@ -389,8 +283,6 @@ export async function listReviewLaunchCandidates(
           CASE
             WHEN smc.hasCompletedLesson = 1
              AND smc.hasActiveCard = 1
-             AND smc.hasIgnoredDrivingEntry = 0
-             AND smc.hasKnownManualDrivingEntry = 0
              AND smc.suspended = 0
              AND smc.manualOverride = 0
              AND smc.reviewState NOT IN ('new', 'known_manual', 'suspended')
@@ -405,8 +297,6 @@ export async function listReviewLaunchCandidates(
           CASE
             WHEN smc.hasCompletedLesson = 1
              AND smc.hasActiveCard = 1
-             AND smc.hasIgnoredDrivingEntry = 0
-             AND smc.hasKnownManualDrivingEntry = 0
              AND smc.suspended = 0
              AND smc.manualOverride = 0
              AND smc.reviewState NOT IN ('new', 'known_manual', 'suspended')
@@ -422,8 +312,6 @@ export async function listReviewLaunchCandidates(
           CASE
             WHEN smc.hasCompletedLesson = 1
              AND smc.hasActiveCard = 1
-             AND smc.hasIgnoredDrivingEntry = 0
-             AND smc.hasKnownManualDrivingEntry = 0
              AND smc.suspended = 0
              AND COALESCE(smc.reviewState, 'new') = 'new'
             THEN 1

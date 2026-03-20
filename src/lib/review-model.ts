@@ -2,13 +2,6 @@ import type { EntryType } from "../db/schema/enums.ts";
 
 import type { ReviewState } from "./review-scheduler.ts";
 
-export type ReviewEntryStatusValue =
-  | "unknown"
-  | "learning"
-  | "known_manual"
-  | "ignored"
-  | null;
-
 export type ReviewEntryLinkLike = {
   entryId: string;
   entryType: EntryType;
@@ -29,12 +22,9 @@ export type EffectiveReviewState = {
   reason:
     | "card_suspended"
     | "card_manual_override"
-    | "entry_ignored"
-    | "entry_known_manual"
     | "review_state"
     | "unscheduled";
   state:
-    | "ignored"
     | "known_manual"
     | "new"
     | "learning"
@@ -51,9 +41,9 @@ export function getDrivingEntryLinks(links: ReviewEntryLinkLike[]) {
 
 export function resolveEffectiveReviewState(input: {
   cardStatus: string;
-  drivingEntryStatuses: ReviewEntryStatusValue[];
   reviewState: {
     manualOverride: boolean;
+    suspended: boolean;
     state: ReviewState | null;
   } | null;
 }): EffectiveReviewState {
@@ -64,10 +54,10 @@ export function resolveEffectiveReviewState(input: {
     };
   }
 
-  if (input.drivingEntryStatuses.includes("ignored")) {
+  if (input.reviewState?.suspended) {
     return {
-      reason: "entry_ignored",
-      state: "ignored"
+      reason: "card_suspended",
+      state: "suspended"
     };
   }
 
@@ -77,13 +67,6 @@ export function resolveEffectiveReviewState(input: {
   ) {
     return {
       reason: "card_manual_override",
-      state: "known_manual"
-    };
-  }
-
-  if (input.drivingEntryStatuses.includes("known_manual")) {
-    return {
-      reason: "entry_known_manual",
       state: "known_manual"
     };
   }

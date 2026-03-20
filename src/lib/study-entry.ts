@@ -1,5 +1,3 @@
-import { formatEntryStatusLabel } from "@/lib/study-format";
-
 export type EntryStudySignal = {
   reviewState: string | null;
   manualOverride: boolean | null;
@@ -20,12 +18,11 @@ export type DerivedStudyState = {
 };
 
 export function deriveEntryStudyState(
-  entryStatus: string | null,
-  studySignals: EntryStudySignal[]
+  studySignals: EntryStudySignal[] | null | undefined
 ): DerivedStudyState {
+  const signals = studySignals ?? [];
   const hasKnownSignal =
-    entryStatus === "known_manual" ||
-    studySignals.some(
+    signals.some(
       (signal) =>
         signal.reviewState === "known_manual" || signal.manualOverride
     );
@@ -39,7 +36,7 @@ export function deriveEntryStudyState(
     };
   }
 
-  const hasLearningCards = studySignals.some(
+  const hasLearningCards = signals.some(
     (signal) => signal.reviewState === "learning"
   );
 
@@ -52,11 +49,11 @@ export function deriveEntryStudyState(
     };
   }
 
-  const hasCardsInReview = studySignals.some((signal) =>
+  const hasCardsInReview = signals.some((signal) =>
     ["review", "relearning"].includes(signal.reviewState ?? "")
   );
 
-  if (hasCardsInReview || ["review", "relearning"].includes(entryStatus ?? "")) {
+  if (hasCardsInReview) {
     return {
       key: "review",
       label: "In review",
@@ -65,20 +62,7 @@ export function deriveEntryStudyState(
     };
   }
 
-  if (entryStatus === "learning") {
-    return {
-      key: "learning",
-      label: "In studio",
-      hasCardsInReview: false,
-      hasKnownSignal: false
-    };
-  }
-
-  if (
-    entryStatus === "new" ||
-    entryStatus === "unknown" ||
-    studySignals.some((signal) => signal.reviewState === "new")
-  ) {
+  if (signals.some((signal) => signal.reviewState === "new")) {
     return {
       key: "new",
       label: "Nuova",
@@ -89,7 +73,7 @@ export function deriveEntryStudyState(
 
   return {
     key: "available",
-    label: formatEntryStatusLabel(entryStatus),
+    label: "Disponibile",
     hasCardsInReview: false,
     hasKnownSignal: false
   };

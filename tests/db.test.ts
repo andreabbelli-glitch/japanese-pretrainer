@@ -76,7 +76,7 @@ describe("database layer", () => {
     expect(lesson?.segment?.slug).toBe("starter-core");
   });
 
-  it("keeps entry_status separate from canonical glossary entries", async () => {
+  it("keeps canonical glossary entries free of legacy status projections", async () => {
     const terms = await listGlossaryEntriesByKind(database, "term", {
       mediaId: developmentFixture.mediaId
     });
@@ -86,11 +86,11 @@ describe("database layer", () => {
 
     expect(terms).toHaveLength(1);
     expect(terms[0]?.aliases).toHaveLength(2);
-    expect(terms[0]?.status?.status).toBe("learning");
+    expect(terms[0]).not.toHaveProperty("status");
 
     expect(grammar).toHaveLength(1);
     expect(grammar[0]?.aliases[0]?.aliasNorm).toBe("てる");
-    expect(grammar[0]?.status?.status).toBe("known_manual");
+    expect(grammar[0]).not.toHaveProperty("status");
   });
 
   it("returns lighter review summaries without glossary-only search or pronunciation metadata", async () => {
@@ -105,7 +105,7 @@ describe("database layer", () => {
 
     expect(terms).toHaveLength(1);
     expect(terms[0]).toHaveProperty("mediaSlug", developmentFixture.mediaSlug);
-    expect(terms[0]).toHaveProperty("entryStatus", "learning");
+    expect(terms[0]).not.toHaveProperty("entryStatus");
     expect(terms[0]).not.toHaveProperty("audioSrc");
     expect(terms[0]).not.toHaveProperty("audioSource");
     expect(terms[0]).not.toHaveProperty("audioSpeaker");
@@ -125,7 +125,7 @@ describe("database layer", () => {
       "mediaSlug",
       developmentFixture.mediaSlug
     );
-    expect(grammar[0]).toHaveProperty("entryStatus", "known_manual");
+    expect(grammar[0]).not.toHaveProperty("entryStatus");
     expect(grammar[0]).not.toHaveProperty("audioSrc");
     expect(grammar[0]).not.toHaveProperty("audioSource");
     expect(grammar[0]).not.toHaveProperty("audioSpeaker");

@@ -9,7 +9,6 @@ import {
 import { media, segment } from "./content.ts";
 import {
   entryLinkRoleValues,
-  entryStatusValues,
   entryTypeValues,
   sourceTypeValues
 } from "./enums.ts";
@@ -195,17 +194,3 @@ export const entryLink = sqliteTable(
   ]
 );
 
-export const entryStatus = sqliteTable(
-  "entry_status",
-  {
-    id: text("id").primaryKey(),
-    entryType: text("entry_type", { enum: entryTypeValues }).notNull(),
-    entryId: text("entry_id").notNull(),
-    status: text("status", { enum: entryStatusValues }).notNull(),
-    reason: text("reason"),
-    setAt: text("set_at").notNull()
-  },
-  (table) => [
-    uniqueIndex("entry_status_entry_unique").on(table.entryType, table.entryId)
-  ]
-);

@@ -22,12 +22,6 @@ export const cardRelationshipTypeValues = [
   "secondary",
   "context"
 ] as const;
-export const entryStatusValues = [
-  "unknown",
-  "learning",
-  "known_manual",
-  "ignored"
-] as const;
 export const reviewStateValues = [
   "new",
   "learning",

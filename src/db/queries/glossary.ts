@@ -7,7 +7,6 @@ import {
   cardEntryLink,
   crossMediaGroup,
   entryLink,
-  entryStatus,
   grammarPattern,
   lesson,
   media,
@@ -79,36 +78,12 @@ export type CrossMediaFamily = {
   siblings: CrossMediaSibling[];
 };
 
-type EntryStatusRecord = typeof entryStatus.$inferSelect;
-type GlossaryEntryWithStatus<T extends { id: string }> = T & {
-  status: EntryStatusRecord | null;
-};
-
 const glossaryEntryRelations = {
   aliases: true,
   crossMediaGroup: true,
   media: true,
   segment: true
 } as const;
-
-async function getEntryStatusMap(
-  database: DatabaseClient,
-  entryType: EntryType,
-  entryIds: string[]
-) {
-  if (entryIds.length === 0) {
-    return new Map<string, typeof entryStatus.$inferSelect>();
-  }
-
-  const rows = await database.query.entryStatus.findMany({
-    where: and(
-      eq(entryStatus.entryType, entryType),
-      inArray(entryStatus.entryId, entryIds)
-    )
-  });
-
-  return new Map(rows.map((row) => [row.entryId, row]));
-}
 
 type ListGlossaryEntriesOptions = {
   mediaId?: string;
@@ -177,121 +152,72 @@ type GrammarGlossaryRow = Awaited<
   ReturnType<typeof loadGrammarGlossaryRows>
 >[number];
 
-function mergeEntryStatuses<T extends { id: string }>(
-  rows: T[],
-  statusMap: Map<string, EntryStatusRecord>
-): GlossaryEntryWithStatus<T>[] {
-  return rows.map((row) => ({
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  }));
-}
-
-async function queryGlossaryEntriesWithStatus(
+async function queryGlossaryEntries(
   database: DatabaseClient,
   kind: "term",
   where?: SQL<unknown>
-): Promise<GlossaryEntryWithStatus<TermGlossaryRow>[]>;
-async function queryGlossaryEntriesWithStatus(
+): Promise<TermGlossaryRow[]>;
+async function queryGlossaryEntries(
   database: DatabaseClient,
   kind: "grammar",
   where?: SQL<unknown>
-): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow>[]>;
-async function queryGlossaryEntriesWithStatus(
+): Promise<GrammarGlossaryRow[]>;
+async function queryGlossaryEntries(
   database: DatabaseClient,
   kind: EntryType,
   where?: SQL<unknown>
-): Promise<
-  | GlossaryEntryWithStatus<TermGlossaryRow>[]
-  | GlossaryEntryWithStatus<GrammarGlossaryRow>[]
-> {
+): Promise<TermGlossaryRow[] | GrammarGlossaryRow[]> {
   if (kind === "term") {
-    const rows = await loadTermGlossaryRows(database, where);
-    const statusMap = await getEntryStatusMap(
-      database,
-      kind,
-      rows.map((row) => row.id)
-    );
-
-    return mergeEntryStatuses(rows, statusMap);
+    return loadTermGlossaryRows(database, where);
   }
 
-  const rows = await loadGrammarGlossaryRows(database, where);
-  const statusMap = await getEntryStatusMap(
-    database,
-    kind,
-    rows.map((row) => row.id)
-  );
-
-  return mergeEntryStatuses(rows, statusMap);
+  return loadGrammarGlossaryRows(database, where);
 }
 
-async function queryGlossaryEntryWithStatus(
+async function queryGlossaryEntry(
   database: DatabaseClient,
   kind: "term",
   where?: SQL<unknown>
-): Promise<GlossaryEntryWithStatus<TermGlossaryRow> | null>;
-async function queryGlossaryEntryWithStatus(
+): Promise<TermGlossaryRow | null>;
+async function queryGlossaryEntry(
   database: DatabaseClient,
   kind: "grammar",
   where?: SQL<unknown>
-): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow> | null>;
-async function queryGlossaryEntryWithStatus(
+): Promise<GrammarGlossaryRow | null>;
+async function queryGlossaryEntry(
   database: DatabaseClient,
   kind: EntryType,
   where?: SQL<unknown>
 ) {
   if (kind === "term") {
-    const row = await loadTermGlossaryRow(database, where);
-
-    if (!row) {
-      return null;
-    }
-
-    const statusMap = await getEntryStatusMap(database, kind, [row.id]);
-
-    return {
-      ...row,
-      status: statusMap.get(row.id) ?? null
-    };
+    return (await loadTermGlossaryRow(database, where)) ?? null;
   }
 
-  const row = await loadGrammarGlossaryRow(database, where);
-
-  if (!row) {
-    return null;
-  }
-
-  const statusMap = await getEntryStatusMap(database, kind, [row.id]);
-
-  return {
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  };
+  return (await loadGrammarGlossaryRow(database, where)) ?? null;
 }
 
 export async function listGlossaryEntriesByKind(
   database: DatabaseClient,
   kind: "term",
   options: ListGlossaryEntriesOptions
-): Promise<GlossaryEntryWithStatus<TermGlossaryRow>[]>;
+): Promise<TermGlossaryRow[]>;
 export async function listGlossaryEntriesByKind(
   database: DatabaseClient,
   kind: "grammar",
   options: ListGlossaryEntriesOptions
-): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow>[]>;
+): Promise<GrammarGlossaryRow[]>;
 export async function listGlossaryEntriesByKind(
   database: DatabaseClient,
   kind: EntryType,
   options: ListGlossaryEntriesOptions = {}
 ) {
   return kind === "term"
-    ? queryGlossaryEntriesWithStatus(
+    ? queryGlossaryEntries(
         database,
         kind,
         buildMediaScopeFilter(term.mediaId, options)
       )
-    : queryGlossaryEntriesWithStatus(
+    : queryGlossaryEntries(
         database,
         kind,
         buildMediaScopeFilter(grammarPattern.mediaId, options)
@@ -455,17 +381,12 @@ export async function listTermEntrySummaries(
       mediaSlug: media.slug,
       mediaTitle: media.title,
       segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey,
-      entryStatus: entryStatus.status
+      crossMediaGroupKey: crossMediaGroup.groupKey
     })
     .from(term)
     .innerJoin(media, eq(media.id, term.mediaId))
     .leftJoin(segment, eq(segment.id, term.segmentId))
     .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
-    .leftJoin(
-      entryStatus,
-      and(eq(entryStatus.entryId, term.id), eq(entryStatus.entryType, "term"))
-    )
     .where(buildMediaScopeFilter(term.mediaId, options))
     .orderBy(asc(term.lemma), asc(term.reading));
 }
@@ -488,17 +409,12 @@ export async function listTermEntryReviewSummaries(
       mediaSlug: media.slug,
       mediaTitle: media.title,
       segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey,
-      entryStatus: entryStatus.status
+      crossMediaGroupKey: crossMediaGroup.groupKey
     })
     .from(term)
     .innerJoin(media, eq(media.id, term.mediaId))
     .leftJoin(segment, eq(segment.id, term.segmentId))
     .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
-    .leftJoin(
-      entryStatus,
-      and(eq(entryStatus.entryId, term.id), eq(entryStatus.entryType, "term"))
-    )
     .where(buildMediaScopeFilter(term.mediaId, options))
     .orderBy(asc(term.lemma), asc(term.reading));
 }
@@ -532,8 +448,7 @@ export async function listGrammarEntrySummaries(
       mediaSlug: media.slug,
       mediaTitle: media.title,
       segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey,
-      entryStatus: entryStatus.status
+      crossMediaGroupKey: crossMediaGroup.groupKey
     })
     .from(grammarPattern)
     .innerJoin(media, eq(media.id, grammarPattern.mediaId))
@@ -541,13 +456,6 @@ export async function listGrammarEntrySummaries(
     .leftJoin(
       crossMediaGroup,
       eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
-    )
-    .leftJoin(
-      entryStatus,
-      and(
-        eq(entryStatus.entryId, grammarPattern.id),
-        eq(entryStatus.entryType, "grammar")
-      )
     )
     .where(buildMediaScopeFilter(grammarPattern.mediaId, options))
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
@@ -571,8 +479,7 @@ export async function listGrammarEntryReviewSummaries(
       mediaSlug: media.slug,
       mediaTitle: media.title,
       segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey,
-      entryStatus: entryStatus.status
+      crossMediaGroupKey: crossMediaGroup.groupKey
     })
     .from(grammarPattern)
     .innerJoin(media, eq(media.id, grammarPattern.mediaId))
@@ -580,13 +487,6 @@ export async function listGrammarEntryReviewSummaries(
     .leftJoin(
       crossMediaGroup,
       eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
-    )
-    .leftJoin(
-      entryStatus,
-      and(
-        eq(entryStatus.entryId, grammarPattern.id),
-        eq(entryStatus.entryType, "grammar")
-      )
     )
     .where(buildMediaScopeFilter(grammarPattern.mediaId, options))
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
@@ -786,7 +686,6 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
           media.title as mediaTitle,
           term.lemma as label,
           coalesce(segment.order_index, 999999) as segmentOrder,
-          entry_status.status as entryStatus,
           cast(count(card.id) as integer) as cardCount,
           max(
             case
@@ -826,9 +725,6 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
         left join segment on segment.id = term.segment_id
         left join cross_media_group
           on cross_media_group.id = term.cross_media_group_id
-        left join entry_status
-          on entry_status.entry_type = 'term'
-          and entry_status.entry_id = term.id
         left join card_entry_link
           on card_entry_link.entry_type = 'term'
           and card_entry_link.entry_id = term.id
@@ -856,8 +752,7 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
           media.slug,
           media.title,
           term.lemma,
-          segment.order_index,
-          entry_status.status
+          segment.order_index
       ),
       grammar_entries as (
         select
@@ -871,7 +766,6 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
           media.title as mediaTitle,
           grammar_pattern.pattern as label,
           coalesce(segment.order_index, 999999) as segmentOrder,
-          entry_status.status as entryStatus,
           cast(count(card.id) as integer) as cardCount,
           max(
             case
@@ -911,9 +805,6 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
         left join segment on segment.id = grammar_pattern.segment_id
         left join cross_media_group
           on cross_media_group.id = grammar_pattern.cross_media_group_id
-        left join entry_status
-          on entry_status.entry_type = 'grammar'
-          and entry_status.entry_id = grammar_pattern.id
         left join card_entry_link
           on card_entry_link.entry_type = 'grammar'
           and card_entry_link.entry_id = grammar_pattern.id
@@ -941,8 +832,7 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
           media.slug,
           media.title,
           grammar_pattern.pattern,
-          segment.order_index,
-          entry_status.status
+          segment.order_index
       ),
       glossary_entries as (
         select * from term_entries
@@ -953,13 +843,10 @@ function buildGlobalGlossaryBrowseScopeQuery(input: {
         select
           *,
           case
-            when entryStatus = 'known_manual' or hasKnownSignal = 1 then 'known'
+            when hasKnownSignal = 1 then 'known'
             when hasLearningSignal = 1 then 'learning'
-            when hasReviewSignal = 1
-              or entryStatus in ('review', 'reviewing', 'relearning')
-            then 'review'
-            when entryStatus = 'learning' then 'learning'
-            when entryStatus in ('new', 'unknown') or hasNewSignal = 1 then 'new'
+            when hasReviewSignal = 1 then 'review'
+            when hasNewSignal = 1 then 'new'
             else 'available'
           end as studyKey,
           case
@@ -1124,19 +1011,19 @@ export async function getGlossaryEntriesByIds(
   database: DatabaseClient,
   kind: "term",
   entryIds: string[]
-): Promise<GlossaryEntryWithStatus<TermGlossaryRow>[]>;
+): Promise<TermGlossaryRow[]>;
 export async function getGlossaryEntriesByIds(
   database: DatabaseClient,
   kind: "grammar",
   entryIds: string[]
-): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow>[]>;
+): Promise<GrammarGlossaryRow[]>;
 export async function getGlossaryEntriesByIds(
   database: DatabaseClient,
   kind: EntryType,
   entryIds: string[]
 ): Promise<
-  | GlossaryEntryWithStatus<TermGlossaryRow>[]
-  | GlossaryEntryWithStatus<GrammarGlossaryRow>[]
+  | TermGlossaryRow[]
+  | GrammarGlossaryRow[]
 >;
 export async function getGlossaryEntriesByIds(
   database: DatabaseClient,
@@ -1148,8 +1035,8 @@ export async function getGlossaryEntriesByIds(
   }
 
   return kind === "term"
-    ? queryGlossaryEntriesWithStatus(database, kind, inArray(term.id, entryIds))
-    : queryGlossaryEntriesWithStatus(
+    ? queryGlossaryEntries(database, kind, inArray(term.id, entryIds))
+    : queryGlossaryEntries(
         database,
         kind,
         inArray(grammarPattern.id, entryIds)
@@ -1160,12 +1047,12 @@ export async function getGlossaryEntriesByCrossMediaGroupIds(
   database: DatabaseClient,
   kind: "term",
   groupIds: string[]
-): Promise<GlossaryEntryWithStatus<TermGlossaryRow>[]>;
+): Promise<TermGlossaryRow[]>;
 export async function getGlossaryEntriesByCrossMediaGroupIds(
   database: DatabaseClient,
   kind: "grammar",
   groupIds: string[]
-): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow>[]>;
+): Promise<GrammarGlossaryRow[]>;
 export async function getGlossaryEntriesByCrossMediaGroupIds(
   database: DatabaseClient,
   kind: EntryType,
@@ -1176,12 +1063,12 @@ export async function getGlossaryEntriesByCrossMediaGroupIds(
   }
 
   return kind === "term"
-    ? queryGlossaryEntriesWithStatus(
+    ? queryGlossaryEntries(
         database,
         kind,
         inArray(term.crossMediaGroupId, groupIds)
       )
-    : queryGlossaryEntriesWithStatus(
+    : queryGlossaryEntries(
         database,
         kind,
         inArray(grammarPattern.crossMediaGroupId, groupIds)
@@ -1268,19 +1155,19 @@ export async function getGlossaryEntryById(
   database: DatabaseClient,
   kind: "term",
   entryId: string
-): Promise<GlossaryEntryWithStatus<TermGlossaryRow> | null>;
+): Promise<TermGlossaryRow | null>;
 export async function getGlossaryEntryById(
   database: DatabaseClient,
   kind: "grammar",
   entryId: string
-): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow> | null>;
+): Promise<GrammarGlossaryRow | null>;
 export async function getGlossaryEntryById(
   database: DatabaseClient,
   kind: EntryType,
   entryId: string
 ): Promise<
-  | GlossaryEntryWithStatus<TermGlossaryRow>
-  | GlossaryEntryWithStatus<GrammarGlossaryRow>
+  | TermGlossaryRow
+  | GrammarGlossaryRow
   | null
 > {
   const [entry] = await getGlossaryEntriesByIds(database, kind, [entryId]);
@@ -1293,13 +1180,13 @@ export async function getGlossaryEntryBySourceId(
   kind: "term",
   mediaId: string,
   sourceId: string
-): Promise<GlossaryEntryWithStatus<TermGlossaryRow> | null>;
+): Promise<TermGlossaryRow | null>;
 export async function getGlossaryEntryBySourceId(
   database: DatabaseClient,
   kind: "grammar",
   mediaId: string,
   sourceId: string
-): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow> | null>;
+): Promise<GrammarGlossaryRow | null>;
 export async function getGlossaryEntryBySourceId(
   database: DatabaseClient,
   kind: EntryType,
@@ -1307,12 +1194,12 @@ export async function getGlossaryEntryBySourceId(
   sourceId: string
 ) {
   return kind === "term"
-    ? queryGlossaryEntryWithStatus(
+    ? queryGlossaryEntry(
         database,
         kind,
         and(eq(term.mediaId, mediaId), eq(term.sourceId, sourceId))
       )
-    : queryGlossaryEntryWithStatus(
+    : queryGlossaryEntry(
         database,
         kind,
         and(
@@ -1773,8 +1660,8 @@ export async function listEntryCardCounts(
 export type GlossarySegment = Awaited<
   ReturnType<typeof listGlossarySegmentsByMediaId>
 >[number];
-export type TermGlossaryEntry = GlossaryEntryWithStatus<TermGlossaryRow>;
-export type GrammarGlossaryEntry = GlossaryEntryWithStatus<GrammarGlossaryRow>;
+export type TermGlossaryEntry = TermGlossaryRow;
+export type GrammarGlossaryEntry = GrammarGlossaryRow;
 export type EntryLessonConnection = Awaited<
   ReturnType<typeof listEntryLessonConnections>
 >[number];
@@ -1827,24 +1714,16 @@ export async function listGlossaryShellCounts(
         t.id AS entry_id,
         'term' AS entry_type,
         t.media_id AS media_id,
-        t.cross_media_group_id AS cross_media_group_id,
-        es.status AS entry_status
+        t.cross_media_group_id AS cross_media_group_id
       FROM term t
-      LEFT JOIN entry_status es
-        ON es.entry_id = t.id
-       AND es.entry_type = 'term'
       WHERE t.media_id IN (${mediaIdList})
       UNION ALL
       SELECT
         gp.id AS entry_id,
         'grammar' AS entry_type,
         gp.media_id AS media_id,
-        gp.cross_media_group_id AS cross_media_group_id,
-        es.status AS entry_status
+        gp.cross_media_group_id AS cross_media_group_id
       FROM grammar_pattern gp
-      LEFT JOIN entry_status es
-        ON es.entry_id = gp.id
-       AND es.entry_type = 'grammar'
       WHERE gp.media_id IN (${mediaIdList})
     ),
     entry_signals AS (
@@ -1853,10 +1732,7 @@ export async function listGlossaryShellCounts(
         ae.entry_type,
         ae.media_id,
         ae.cross_media_group_id,
-        ae.entry_status,
         CASE
-          -- "known" via entry status
-          WHEN ae.entry_status = 'known_manual' THEN 1
           -- "known" via card signal
           WHEN EXISTS (
             SELECT 1
@@ -1908,8 +1784,6 @@ export async function listGlossaryShellCounts(
               )
               AND rss.state IN ('review', 'relearning')
           ) THEN 1
-          -- "review/learning" via entry status alone
-          WHEN ae.entry_status IN ('review', 'reviewing', 'relearning', 'learning') THEN 1
           ELSE 0
         END AS is_covered
       FROM all_entries ae

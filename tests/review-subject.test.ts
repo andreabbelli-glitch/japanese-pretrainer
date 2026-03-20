@@ -6,7 +6,6 @@ import {
   deriveReviewSubjectIdentity,
   selectReviewSubjectRepresentativeCard
 } from "@/lib/review-subject";
-import type { ReviewEntryStatusValue } from "@/lib/review-model";
 
 function buildReviewCard(
   input: Partial<ReviewCardListItem> & Pick<ReviewCardListItem, "id" | "front">
@@ -128,12 +127,7 @@ describe("review subject representative fallback", () => {
     });
   });
 
-  it("does not let manual or suspended legacy siblings mask an active sibling", () => {
-    const manualCard = buildReviewCard({
-      id: "card-manual",
-      front: "manual",
-      orderIndex: 1
-    });
+  it("does not let a suspended sibling mask an active sibling", () => {
     const suspendedCard = buildReviewCard({
       id: "card-suspended",
       front: "suspended",
@@ -145,55 +139,13 @@ describe("review subject representative fallback", () => {
       front: "active",
       orderIndex: 99
     });
-    const drivingEntryStatusesByCardId = new Map<
-      string,
-      ReviewEntryStatusValue[]
-    >([
-      ["card-manual", ["known_manual"]],
-      ["card-suspended", [null]],
-      ["card-active", [null]]
-    ]);
 
     const representative = selectReviewSubjectRepresentativeCard(
-      [manualCard, suspendedCard, activeCard],
+      [suspendedCard, activeCard],
       null,
-      "2026-03-10T08:00:00.000Z",
-      {
-        drivingEntryStatusesByCardId
-      }
+      "2026-03-10T08:00:00.000Z"
     );
 
     expect(representative.id).toBe("card-active");
-  });
-
-  it("prefers an active sibling over a legacy manual override stored in entry_status", () => {
-    const manualCard = buildReviewCard({
-      id: "card-manual-entry-status",
-      front: "manual-entry-status",
-      orderIndex: 1
-    });
-    const activeCard = buildReviewCard({
-      id: "card-active-entry-status",
-      front: "active-entry-status",
-      orderIndex: 99
-    });
-    const drivingEntryStatusesByCardId = new Map<
-      string,
-      ReviewEntryStatusValue[]
-    >([
-      ["card-manual-entry-status", ["known_manual"]],
-      ["card-active-entry-status", [null]]
-    ]);
-
-    const representative = selectReviewSubjectRepresentativeCard(
-      [manualCard, activeCard],
-      null,
-      "2026-03-10T08:00:00.000Z",
-      {
-        drivingEntryStatusesByCardId
-      }
-    );
-
-    expect(representative.id).toBe("card-active-entry-status");
   });
 });

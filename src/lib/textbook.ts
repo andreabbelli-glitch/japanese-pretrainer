@@ -712,7 +712,6 @@ function mapTooltipEntry(input: {
     notes: input.entry.notesIt ?? undefined,
     levelHint: input.entry.levelHint ?? undefined,
     statusLabel: resolveEntryStudyStateLabel(
-      input.entry.status?.status ?? null,
       input.studySignals
     ),
     segmentTitle: input.entry.segment?.title ?? undefined,
@@ -787,10 +786,9 @@ function mapCardTooltipEntry(
 }
 
 function resolveEntryStudyStateLabel(
-  entryStatus: string | null,
   studySignals: StudySignalRow[]
 ) {
-  return deriveEntryStudyState(entryStatus, studySignals).label;
+  return deriveEntryStudyState(studySignals).label;
 }
 
 function normalizeLessonStatus(

@@ -18,7 +18,6 @@ import {
   countReviewSubjectsIntroducedOnDay,
   createDatabaseClient,
   developmentFixture,
-  entryStatus,
   lesson,
   lessonProgress,
   media,
@@ -103,18 +102,11 @@ async function prepareReviewSessionRedirectFixture(database: DatabaseClient) {
     .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
 
   await database
-    .update(entryStatus)
+    .update(reviewSubjectState)
     .set({
-      reason: "Test setup manual override.",
-      setAt: "2026-03-09T15:00:00.000Z",
-      status: "known_manual"
+      manualOverride: true
     })
-    .where(
-      and(
-        eq(entryStatus.entryType, "term"),
-        eq(entryStatus.entryId, developmentFixture.termDbId)
-      )
-    );
+    .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
   return {
     nextCardId: developmentFixture.secondaryCardId,
@@ -138,18 +130,13 @@ async function prepareTwoQueueCardFixture(database: DatabaseClient) {
     .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
 
   await database
-    .update(entryStatus)
+    .update(reviewSubjectState)
     .set({
-      reason: "Test setup queue state.",
-      setAt: "2026-03-09T15:00:00.000Z",
-      status: "learning"
+      dueAt: "2000-01-01T00:05:00.000Z",
+      manualOverride: false,
+      state: "learning"
     })
-    .where(
-      and(
-        eq(entryStatus.entryType, "grammar"),
-        eq(entryStatus.entryId, developmentFixture.grammarDbId)
-      )
-    );
+    .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
 
   return {
     currentCardId: developmentFixture.primaryCardId,
@@ -895,7 +882,7 @@ describe("review system", () => {
     await database
       .update(reviewSubjectState)
       .set({
-        dueAt: "2026-03-20T00:00:00.000Z"
+        dueAt: "2999-01-01T00:00:00.000Z"
       })
       .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
@@ -1832,7 +1819,7 @@ describe("review system", () => {
     expect(markup).not.toContain("Fuori coda");
   });
 
-  it("uses entry_status for manual mastery and restores the queue when reopened", async () => {
+  it("uses review subject manual override for manual mastery and restores the queue when reopened", async () => {
     await database
       .update(reviewSubjectState)
       .set({
@@ -1865,6 +1852,7 @@ describe("review system", () => {
     ).toBe(false);
     expect(manualQueue?.manualCount).toBe(2);
     expect(persistedState?.state).toBe("learning");
+    expect(persistedState?.manualOverride).toBe(true);
     expect(logs).toHaveLength(1);
 
     await setLinkedEntryStatusByCard({
@@ -1885,9 +1873,18 @@ describe("review system", () => {
       )
     ).toBe(true);
     expect(reopenedQueue?.manualCount).toBe(1);
+    expect(
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+      })
+    ).toMatchObject({
+      manualOverride: false,
+      state: "learning",
+      suspended: false
+    });
   });
 
-  it("clears driving entry_status rows when resetting a manually excluded card", async () => {
+  it("clears manual override when resetting a manually excluded card", async () => {
     await setLinkedEntryStatusByCard({
       cardId: developmentFixture.primaryCardId,
       database,
@@ -1895,31 +1892,14 @@ describe("review system", () => {
       status: "known_manual"
     });
 
-    const cardWithLinks = await database.query.card.findFirst({
-      where: eq(card.id, developmentFixture.primaryCardId),
-      with: {
-        entryLinks: true
-      }
-    });
-    const primaryLinks =
-      cardWithLinks?.entryLinks.filter(
-        (link) => link.relationshipType === "primary"
-      ) ?? [];
-    const drivingLinks =
-      primaryLinks.length > 0
-        ? primaryLinks
-        : (cardWithLinks?.entryLinks ?? []);
-    const drivingEntryKeys = new Set(
-      drivingLinks.map((link) => `${link.entryType}:${link.entryId}`)
-    );
-
-    const manualStatuses = await database.query.entryStatus.findMany();
-
     expect(
-      manualStatuses.filter((row) =>
-        drivingEntryKeys.has(`${row.entryType}:${row.entryId}`)
-      )
-    ).not.toHaveLength(0);
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+      })
+    ).toMatchObject({
+      manualOverride: true,
+      state: "learning"
+    });
 
     await resetReviewCardProgress({
       cardId: developmentFixture.primaryCardId,
@@ -1931,13 +1911,16 @@ describe("review system", () => {
       developmentFixture.mediaSlug,
       database
     );
-    const remainingStatuses = await database.query.entryStatus.findMany();
 
     expect(
-      remainingStatuses.filter((row) =>
-        drivingEntryKeys.has(`${row.entryType}:${row.entryId}`)
-      )
-    ).toHaveLength(0);
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+      })
+    ).toMatchObject({
+      manualOverride: false,
+      state: "new",
+      suspended: false
+    });
     expect(
       resetQueue?.cards.some(
         (queuedCard) => queuedCard.id === developmentFixture.primaryCardId
@@ -1945,7 +1928,7 @@ describe("review system", () => {
     ).toBe(true);
   });
 
-  it("shows the reopen action for ignored cards in the review detail page", async () => {
+  it("shows the reopen action for suspended cards in the review detail page", async () => {
     await setLinkedEntryStatusByCard({
       cardId: developmentFixture.primaryCardId,
       database,
@@ -1959,7 +1942,7 @@ describe("review system", () => {
       database
     );
 
-    expect(detailData?.card.reviewLabel).toBe("Ignorata");
+    expect(detailData?.card.reviewLabel).toBe("Sospesa");
 
     const markup = renderToStaticMarkup(
       ReviewCardDetailPage({ data: detailData! })
@@ -2313,112 +2296,6 @@ describe("review system", () => {
     expect(betaPage?.selectedCard?.id).toBe(crossMediaFixture.beta.termCardId);
     expect(betaPage?.selectedCard?.bucket).toBe("due");
     expect(betaPage?.selectedCard?.contexts).toHaveLength(1);
-  });
-
-  it("does not let a manual entry_status mask an active cross-media sibling", async () => {
-    const contentRoot = path.join(tempDir, "cross-media-legacy-entry-status");
-
-    await writeCrossMediaContentFixture(contentRoot);
-
-    const result = await importContentWorkspace({
-      contentRoot,
-      database
-    });
-
-    expect(result.status).toBe("completed");
-    await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
-    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
-      await loadCrossMediaTermSubjectContext(database);
-
-    await database
-      .insert(reviewSubjectState)
-      .values({
-        subjectKey,
-        subjectType: "group",
-        entryType: "term",
-        entryId: alphaTermEntry.id,
-        crossMediaGroupId,
-        cardId: crossMediaFixture.alpha.termCardId,
-        state: "review",
-        stability: 2.4,
-        difficulty: 3.1,
-        dueAt: "2000-01-01T00:00:00.000Z",
-        lastReviewedAt: "2026-03-10T08:00:00.000Z",
-        lastInteractionAt: "2026-03-10T08:00:00.000Z",
-        scheduledDays: 2,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 3,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: false,
-        suspended: false,
-        createdAt: "2026-03-10T08:00:00.000Z",
-        updatedAt: "2026-03-10T08:00:00.000Z"
-      })
-      .onConflictDoUpdate({
-        target: reviewSubjectState.subjectKey,
-        set: {
-          cardId: crossMediaFixture.alpha.termCardId,
-          crossMediaGroupId,
-          state: "review",
-          stability: 2.4,
-          difficulty: 3.1,
-          dueAt: "2000-01-01T00:00:00.000Z",
-          lastReviewedAt: "2026-03-10T08:00:00.000Z",
-          lastInteractionAt: "2026-03-10T08:00:00.000Z",
-          scheduledDays: 2,
-          learningSteps: 0,
-          lapses: 0,
-          reps: 3,
-          schedulerVersion: "fsrs_v1",
-          manualOverride: false,
-          suspended: false,
-          createdAt: "2026-03-10T08:00:00.000Z",
-          updatedAt: "2026-03-10T08:00:00.000Z"
-        }
-      });
-    await database
-      .update(lessonProgress)
-      .set({
-        status: "in_progress",
-        completedAt: null
-      })
-      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
-
-    await database
-      .insert(entryStatus)
-      .values({
-        id: "entry_status_cross_media_alpha_manual",
-        entryType: "term",
-        entryId: alphaTermEntry.id,
-        status: "known_manual",
-        reason: "Cross-media legacy manual override.",
-        setAt: "2026-03-11T08:00:00.000Z"
-      })
-      .onConflictDoUpdate({
-        target: entryStatus.id,
-        set: {
-          entryType: "term",
-          entryId: alphaTermEntry.id,
-          status: "known_manual",
-          reason: "Cross-media legacy manual override.",
-          setAt: "2026-03-11T08:00:00.000Z"
-        }
-      });
-
-    expect(
-      await database.query.reviewSubjectState.findFirst({
-        where: eq(reviewSubjectState.subjectKey, subjectKey)
-      })
-    ).not.toBeNull();
-
-    const globalPage = await getGlobalReviewPageData({}, database);
-
-    expect(globalPage.queue.dueCount).toBe(1);
-    expect(globalPage.queue.cards).toEqual([]);
-    expect(globalPage.queue.queueCount).toBeGreaterThan(0);
-    expect(globalPage.selectedCard?.id).toBe(crossMediaFixture.beta.termCardId);
-    expect(globalPage.selectedCard?.contexts).toHaveLength(2);
   });
 
   it("returns the dedicated global empty state when no media exist", async () => {

@@ -5,8 +5,7 @@ import { stripInlineMarkdown } from "./inline-markdown.ts";
 import {
   getDrivingEntryLinks,
   resolveEffectiveReviewState,
-  type ReviewEntryLinkLike,
-  type ReviewEntryStatusValue
+  type ReviewEntryLinkLike
 } from "./review-model.ts";
 import type { ReviewState } from "./review-scheduler.ts";
 
@@ -286,10 +285,7 @@ export function groupReviewCardsBySubject(input: {
 export function selectReviewSubjectRepresentativeCard(
   cards: ReviewCardListItem[],
   subjectState: ReviewSubjectStateSnapshot | null,
-  nowIso?: string,
-  input?: {
-    drivingEntryStatusesByCardId?: Map<string, ReviewEntryStatusValue[]>;
-  }
+  nowIso?: string
 ) {
   if (cards.length === 0) {
     throw new Error(
@@ -311,14 +307,12 @@ export function selectReviewSubjectRepresentativeCard(
         getReviewCardPriority(
           left,
           subjectState,
-          nowIso,
-          input?.drivingEntryStatusesByCardId?.get(left.id) ?? []
+          nowIso
         ) -
         getReviewCardPriority(
           right,
           subjectState,
-          nowIso,
-          input?.drivingEntryStatusesByCardId?.get(right.id) ?? []
+          nowIso
         );
 
       if (priorityDifference !== 0) {
@@ -464,15 +458,14 @@ function toTime(value: string) {
 function getReviewCardPriority(
   card: ReviewCardListItem,
   subjectState: ReviewSubjectStateSnapshot | null,
-  nowIso?: string,
-  drivingEntryStatuses: ReviewEntryStatusValue[] = []
+  nowIso?: string
 ) {
   const effectiveState = resolveEffectiveReviewState({
     cardStatus: card.status,
-    drivingEntryStatuses,
     reviewState: subjectState
       ? {
           manualOverride: subjectState.manualOverride,
+          suspended: subjectState.suspended,
           state: subjectState.state as ReviewState
         }
       : null
@@ -482,10 +475,7 @@ function getReviewCardPriority(
     return 4;
   }
 
-  if (
-    effectiveState.state === "known_manual" ||
-    effectiveState.state === "ignored"
-  ) {
+  if (effectiveState.state === "known_manual") {
     return 3;
   }
 

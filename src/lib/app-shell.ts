@@ -22,7 +22,6 @@ import {
 } from "@/lib/study-format";
 import {
   buildReviewOverviewSnapshot,
-  buildReviewEntryStatusLookup,
   loadReviewOverviewSnapshots
 } from "@/lib/review";
 import { getReviewDailyLimit } from "@/lib/settings";
@@ -272,10 +271,6 @@ async function buildMediaShellSnapshot(
           cards: [],
           dailyLimit: 0,
           entryLookup: new Map(),
-          entryStatuses: buildReviewEntryStatusLookup({
-            grammar: [],
-            terms: []
-          }),
           extraNewCount: 0,
           newIntroducedTodayCount: 0,
           nowIso,

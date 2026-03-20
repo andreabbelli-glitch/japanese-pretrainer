@@ -46,7 +46,6 @@ import {
 import {
   capitalizeToken,
   formatCardRelationshipLabel,
-  formatEntryStatusLabel,
   formatReviewStateLabel
 } from "@/lib/study-format";
 import { type ReviewProfiler } from "@/lib/review-profiler";
@@ -70,8 +69,7 @@ import {
   isReviewCardNew,
   resolveEffectiveReviewState,
   type EffectiveReviewState,
-  type ReviewEntryLinkLike,
-  type ReviewEntryStatusValue
+  type ReviewEntryLinkLike
 } from "./review-model";
 import {
   buildPronunciationData,
@@ -112,7 +110,6 @@ type ReviewEntryLookupItem = {
   meaning: string;
   pronunciation?: PronunciationData;
   reading?: string;
-  status: ReviewEntryStatusValue;
   subtitle?: string;
 };
 
@@ -205,20 +202,10 @@ type SubjectReviewCard = ReviewCardListItem & {
     schedulerVersion: "fsrs_v1";
     stability: number | null;
     state: ReviewState;
+    suspended: boolean;
     updatedAt: string;
   } | null;
 };
-
-function getReviewEntryStatus(entry: {
-  entryStatus?: ReviewEntryStatusValue;
-  status?: { status: ReviewEntryStatusValue } | null;
-}) {
-  if ("entryStatus" in entry) {
-    return entry.entryStatus ?? null;
-  }
-
-  return entry.status?.status ?? null;
-}
 
 function applySubjectStateToReviewCard(
   card: ReviewCardListItem,
@@ -251,6 +238,7 @@ function applySubjectStateToReviewCard(
       schedulerVersion: "fsrs_v1",
       state: subjectState.state,
       stability: subjectState.stability,
+      suspended: subjectState.suspended,
       updatedAt: subjectState.updatedAt
     }
   };
@@ -487,7 +475,6 @@ type LoadedReviewWorkspaceV2 = {
   cards: ReviewCardListItem[];
   dailyLimit: number;
   entryLookup: Map<string, ReviewEntryLookupItem>;
-  entryStatuses: Map<string, ReviewEntryStatusValue>;
   grammar: ReviewGrammarLookupEntry[];
   newIntroducedTodayCount: number;
   now: Date;
@@ -762,12 +749,10 @@ function mapReviewQueueSubjectCardPreview(input: {
       : undefined,
     effectiveState: input.resolvedState.effectiveState,
     effectiveStateLabel:
-      input.resolvedState.effectiveState === "ignored"
-        ? "Ignorata"
-        : formatReviewStateLabel(
-            input.resolvedState.effectiveState,
-            input.resolvedState.effectiveState === "known_manual"
-          ),
+      formatReviewStateLabel(
+        input.resolvedState.effectiveState,
+        input.resolvedState.effectiveState === "known_manual"
+      ),
     exampleIt: input.card.exampleIt ?? undefined,
     exampleJp: input.card.exampleJp ?? undefined,
     front: input.card.front,
@@ -1101,7 +1086,6 @@ async function loadReviewWorkspaceV2(input: {
       cards,
       dailyLimit,
       entryLookup: new Map(),
-      entryStatuses: new Map(),
       grammar: [],
       newIntroducedTodayCount,
       now,
@@ -1141,10 +1125,6 @@ async function loadReviewWorkspaceV2(input: {
       stableWorkspace.terms,
       stableWorkspace.grammar
     ),
-    entryStatuses: buildReviewEntryStatusLookup({
-      grammar: stableWorkspace.grammar,
-      terms: stableWorkspace.terms
-    }),
     grammar: stableWorkspace.grammar,
     newIntroducedTodayCount,
     now,
@@ -1707,22 +1687,33 @@ export async function getReviewCardDetailData(
     listGlossaryEntriesByKind(database, "grammar", { mediaId: media.id })
   ]);
   const entryLookup = buildEntryLookup(terms, grammar);
-  const selectedCard = cards
-    .map((card) =>
-      mapQueueCard(
-        card,
-        entryLookup,
-        [card],
-        new Map([[media.id, { slug: media.slug, title: media.title }]]),
-        nowIso
-      )
-    )
-    .find((card) => card.id === cardId);
   const selectedRawCard = cards.find((card) => card.id === cardId) ?? null;
 
-  if (!selectedCard || !selectedRawCard) {
+  if (!selectedRawCard) {
     return null;
   }
+
+  const subjectIdentity = deriveReviewSubjectIdentity({
+    cardId: selectedRawCard.id,
+    cardType: selectedRawCard.cardType,
+    front: selectedRawCard.front,
+    entryLinks: selectedRawCard.entryLinks,
+    entryLookup: buildReviewSubjectEntryLookup({
+      grammar,
+      terms
+    })
+  });
+  const subjectState = await getReviewSubjectStateByKey(
+    database,
+    subjectIdentity.subjectKey
+  );
+  const selectedCard = mapQueueCard(
+    applySubjectStateToReviewCard(selectedRawCard, subjectState),
+    entryLookup,
+    [selectedRawCard],
+    new Map([[media.id, { slug: media.slug, title: media.title }]]),
+    nowIso
+  );
 
   const termById = new Map(terms.map((entry) => [entry.id, entry]));
   const grammarById = new Map(grammar.map((entry) => [entry.id, entry]));
@@ -1838,7 +1829,6 @@ export async function loadReviewOverviewSnapshots(
         cards: workspace.cards,
         dailyLimit: workspace.dailyLimit,
         entryLookup: new Map(),
-        entryStatuses: workspace.entryStatuses,
         extraNewCount: 0,
         newIntroducedTodayCount: workspace.newIntroducedTodayCount,
         nowIso: workspace.now.toISOString(),
@@ -1862,7 +1852,6 @@ export async function loadGlobalReviewOverviewSnapshot(
       cards: [],
       dailyLimit: 0,
       entryLookup: new Map(),
-      entryStatuses: new Map(),
       extraNewCount: 0,
       newIntroducedTodayCount: 0,
       nowIso: new Date().toISOString(),
@@ -1881,36 +1870,12 @@ export async function loadGlobalReviewOverviewSnapshot(
     cards: workspace.cards,
     dailyLimit: workspace.dailyLimit,
     entryLookup: new Map(),
-    entryStatuses: workspace.entryStatuses,
     extraNewCount: 0,
     newIntroducedTodayCount: workspace.newIntroducedTodayCount,
     nowIso: workspace.now.toISOString(),
     subjectGroups: workspace.subjectGroups,
     subjectStates: new Map()
   });
-}
-
-export function buildReviewEntryStatusLookup(input: {
-  grammar: Array<{
-    entryStatus: ReviewEntryStatusValue;
-    id: string;
-  }>;
-  terms: Array<{
-    entryStatus: ReviewEntryStatusValue;
-    id: string;
-  }>;
-}) {
-  const statuses = new Map<string, ReviewEntryStatusValue>();
-
-  for (const entry of input.terms) {
-    statuses.set(`term:${entry.id}`, entry.entryStatus);
-  }
-
-  for (const entry of input.grammar) {
-    statuses.set(`grammar:${entry.id}`, entry.entryStatus);
-  }
-
-  return statuses;
 }
 
 function isReviewSubjectVisibleInMedia(
@@ -1945,21 +1910,16 @@ function getReviewBucketPriority(bucket: ReviewQueueCard["bucket"]) {
 
 function resolveReviewQueueState(
   card: SubjectReviewCard,
-  entryLookup: Map<string, ReviewEntryLookupItem>,
+  _entryLookup: Map<string, ReviewEntryLookupItem>,
   nowIso: string
 ): ResolvedReviewQueueState {
   const { reviewState } = card;
-  const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks).map(
-    (entryLink) =>
-      (entryLookup.get(`${entryLink.entryType}:${entryLink.entryId}`)?.status ??
-        null) as ReviewEntryStatusValue
-  );
   const effectiveState = resolveEffectiveReviewState({
     cardStatus: card.status,
-    drivingEntryStatuses,
     reviewState: reviewState
       ? {
           manualOverride: reviewState.manualOverride,
+          suspended: reviewState.suspended,
           state: reviewState.state as ReviewState
         }
       : null
@@ -2136,7 +2096,6 @@ function compareReviewQueueSubjectModelsByOrder(
 
 function selectReviewOverviewSubjectCard(input: {
   cards: ReviewCardListItem[];
-  entryStatuses: Map<string, ReviewEntryStatusValue>;
   nowIso: string;
   subjectState: ReviewSubjectStateSnapshot | null;
 }) {
@@ -2146,7 +2105,6 @@ function selectReviewOverviewSubjectCard(input: {
   for (const candidate of input.cards) {
     const overviewCard = mapReviewOverviewCard(
       applySubjectStateToReviewCard(candidate, input.subjectState),
-      input.entryStatuses,
       input.nowIso
     );
     const priority = getReviewBucketPriority(overviewCard.bucket);
@@ -2172,7 +2130,6 @@ function selectReviewOverviewSubjectCard(input: {
 function buildReviewOverviewSubjectModels(input: {
   cards: ReviewCardListItem[];
   entryLookup: Map<string, ReviewSubjectEntryMeta>;
-  entryStatuses: Map<string, ReviewEntryStatusValue>;
   nowIso: string;
   subjectGroups?: ReviewSubjectGroup[];
   subjectStates: Map<string, ReviewSubjectStateSnapshot>;
@@ -2189,7 +2146,6 @@ function buildReviewOverviewSubjectModels(input: {
   return subjectGroups.map((group) => {
     const card = selectReviewOverviewSubjectCard({
       cards: group.cards,
-      entryStatuses: input.entryStatuses,
       nowIso: input.nowIso,
       subjectState: group.subjectState
     });
@@ -2199,7 +2155,6 @@ function buildReviewOverviewSubjectModels(input: {
       group,
       overviewCard: mapReviewOverviewCard(
         applySubjectStateToReviewCard(card, group.subjectState),
-        input.entryStatuses,
         input.nowIso
       )
     } satisfies ReviewOverviewSubjectModel;
@@ -2246,7 +2201,6 @@ export function buildReviewOverviewSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
   entryLookup: Map<string, ReviewSubjectEntryMeta>;
-  entryStatuses: Map<string, ReviewEntryStatusValue>;
   extraNewCount: number;
   newIntroducedTodayCount: number;
   nowIso: string;
@@ -2257,7 +2211,6 @@ export function buildReviewOverviewSnapshot(input: {
   const models = buildReviewOverviewSubjectModels({
     cards: input.cards,
     entryLookup: input.entryLookup,
-    entryStatuses: input.entryStatuses,
     nowIso: input.nowIso,
     subjectGroups: input.subjectGroups,
     subjectStates: input.subjectStates
@@ -2337,20 +2290,15 @@ type ReviewOverviewCard = Pick<
 
 function mapReviewOverviewCard(
   card: SubjectReviewCard,
-  entryStatuses: Map<string, ReviewEntryStatusValue>,
   nowIso: string
 ): ReviewOverviewCard {
   const { reviewState } = card;
-  const drivingEntryStatuses = getDrivingEntryLinks(card.entryLinks).map(
-    (entryLink) =>
-      entryStatuses.get(`${entryLink.entryType}:${entryLink.entryId}`) ?? null
-  );
   const effectiveState = resolveEffectiveReviewState({
     cardStatus: card.status,
-    drivingEntryStatuses,
     reviewState: reviewState
       ? {
           manualOverride: reviewState.manualOverride,
+          suspended: reviewState.suspended,
           state: reviewState.state as ReviewState
         }
       : null
@@ -2705,7 +2653,6 @@ function buildEntryLookup(
         entry.reading
       ),
       reading: entry.reading,
-      status: getReviewEntryStatus(entry),
       subtitle:
         [entry.reading, entry.romaji].filter(Boolean).join(" / ") || undefined
     });
@@ -2726,7 +2673,6 @@ function buildEntryLookup(
         entry.reading ?? entry.pattern
       ),
       reading: entry.reading ?? deriveKanaReading(entry.pattern),
-      status: getReviewEntryStatus(entry),
       subtitle: entry.title !== entry.pattern ? entry.title : undefined
     });
   }
@@ -2997,7 +2943,7 @@ function mapQueueCard(
           label: entry.label,
           meaning: entry.meaning,
           relationshipLabel: formatCardRelationshipLabel(link.relationshipType),
-          statusLabel: formatEntryStatusLabel(entry.status),
+          statusLabel: "Disponibile",
           subtitle: entry.subtitle
         } satisfies ReviewCardEntrySummary
       ];
@@ -3025,12 +2971,10 @@ function mapQueueCard(
       : undefined,
     effectiveState: resolved.effectiveState,
     effectiveStateLabel:
-      resolved.effectiveState === "ignored"
-        ? "Ignorata"
-        : formatReviewStateLabel(
-            resolved.effectiveState,
-            resolved.effectiveState === "known_manual"
-          ),
+      formatReviewStateLabel(
+        resolved.effectiveState,
+        resolved.effectiveState === "known_manual"
+      ),
     exampleIt: card.exampleIt ?? undefined,
     exampleJp: card.exampleJp ?? undefined,
     entries,
@@ -3143,10 +3087,7 @@ function resolveCardBucket(input: {
     return "suspended";
   }
 
-  if (
-    input.effectiveState === "known_manual" ||
-    input.effectiveState === "ignored"
-  ) {
+  if (input.effectiveState === "known_manual") {
     return "manual";
   }
 
@@ -3235,7 +3176,7 @@ function buildBucketDetail(
   }
 
   if (bucket === "manual") {
-    return "Una voce collegata è stata impostata manualmente come già nota o ignorata.";
+    return "Una voce collegata è stata impostata manualmente come già nota.";
   }
 
   if (bucket === "suspended") {
@@ -3267,7 +3208,7 @@ function formatBucketLabel(
     return "Da ripassare nei prossimi giorni";
   }
 
-  return effectiveState === "ignored" ? "Ignorata" : "Già nota";
+  return "Già nota";
 }
 
 function compareEntryLinks(

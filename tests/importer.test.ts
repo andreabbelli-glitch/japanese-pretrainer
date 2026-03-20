@@ -17,7 +17,6 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  entryStatus,
   lessonProgress,
   listCardsByMediaId,
   reviewSubjectLog,
@@ -180,13 +179,13 @@ describe("content importer", () => {
     expect(await countRows(database.query.segment.findMany())).toBe(7);
     expect(await countRows(database.query.lesson.findMany())).toBe(20);
     expect(await countRows(database.query.lessonContent.findMany())).toBe(20);
-    expect(await countRows(database.query.term.findMany())).toBe(178);
-    expect(await countRows(database.query.termAlias.findMany())).toBe(464);
+    expect(await countRows(database.query.term.findMany())).toBe(182);
+    expect(await countRows(database.query.termAlias.findMany())).toBe(477);
     expect(await countRows(database.query.grammarPattern.findMany())).toBe(36);
     expect(await countRows(database.query.grammarAlias.findMany())).toBe(44);
-    expect(await countRows(database.query.entryLink.findMany())).toBe(672);
-    expect(await countRows(database.query.card.findMany())).toBe(224);
-    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(251);
+    expect(await countRows(database.query.entryLink.findMany())).toBe(687);
+    expect(await countRows(database.query.card.findMany())).toBe(230);
+    expect(await countRows(database.query.cardEntryLink.findMany())).toBe(258);
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedMedia = await database.query.media.findFirst({
@@ -267,17 +266,14 @@ describe("content importer", () => {
     const persistedReviewLog = await database.query.reviewSubjectLog.findMany({
       where: eq(reviewSubjectLog.subjectKey, `entry:term:${termDbId}`)
     });
-    const persistedEntryStatus = await database.query.entryStatus.findFirst({
-      where: eq(entryStatus.entryId, termDbId)
-    });
     const persistedLessonProgress =
       await database.query.lessonProgress.findFirst({
         where: eq(lessonProgress.lessonId, lessonId)
       });
 
     expect(persistedReviewState?.state).toBe("learning");
+    expect(persistedReviewState?.manualOverride).toBe(true);
     expect(persistedReviewLog).toHaveLength(1);
-    expect(persistedEntryStatus?.status).toBe("known_manual");
     expect(persistedLessonProgress?.status).toBe("in_progress");
   });
 
@@ -583,16 +579,13 @@ tags: [grammar, core]
     const persistedReviewLog = await database.query.reviewSubjectLog.findMany({
       where: eq(reviewSubjectLog.subjectKey, `entry:term:${termDbId}`)
     });
-    const persistedEntryStatus = await database.query.entryStatus.findFirst({
-      where: eq(entryStatus.entryId, termDbId)
-    });
     const activeCards = await listCardsByMediaId(database, mediaId);
 
     expect(archivedCard?.status).toBe("archived");
     expect(missingTerm).toBeUndefined();
     expect(persistedReviewState?.state).toBe("learning");
+    expect(persistedReviewState?.manualOverride).toBe(true);
     expect(persistedReviewLog).toHaveLength(1);
-    expect(persistedEntryStatus?.status).toBe("known_manual");
     expect(activeCards.map((entry) => entry.id)).toEqual([grammarCardId]);
   });
 
@@ -938,14 +931,6 @@ tags: [character]
 }
 
 async function seedUserState(database: DatabaseClient) {
-  await database.insert(entryStatus).values({
-    id: "entry_status_term_taberu",
-    entryType: "term",
-    entryId: termDbId,
-    status: "known_manual",
-    reason: "Existing manual override",
-    setAt: "2026-03-09T09:45:00.000Z"
-  });
   await database.insert(reviewSubjectState).values({
     subjectKey: `entry:term:${termDbId}`,
     subjectType: "entry",
@@ -964,7 +949,7 @@ async function seedUserState(database: DatabaseClient) {
     lapses: 1,
     reps: 3,
     schedulerVersion: "fsrs_v1",
-    manualOverride: false,
+    manualOverride: true,
     suspended: false,
     createdAt: "2026-03-09T09:00:00.000Z",
     updatedAt: "2026-03-09T09:30:00.000Z"

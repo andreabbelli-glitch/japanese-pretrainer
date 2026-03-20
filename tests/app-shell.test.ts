@@ -90,7 +90,7 @@ describe("app shell live data", () => {
     await database
       .update(reviewSubjectState)
       .set({
-        dueAt: "2026-03-20T00:00:00.000Z"
+        dueAt: "2999-01-01T00:00:00.000Z"
       })
       .where(
         eq(
