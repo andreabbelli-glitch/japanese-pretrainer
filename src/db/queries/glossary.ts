@@ -207,26 +207,80 @@ function getGlossaryQueryLoader<K extends EntryType>(
 
 async function queryGlossaryEntries(
   database: DatabaseClient,
-  kind: "term",
-  where?: SQL<unknown>
-): Promise<TermGlossaryRow[]>;
-async function queryGlossaryEntries(
-  database: DatabaseClient,
-  kind: "grammar",
-  where?: SQL<unknown>
-): Promise<GrammarGlossaryRow[]>;
-async function queryGlossaryEntries(
-  database: DatabaseClient,
-  kind: EntryType,
-  where?: SQL<unknown>
-): Promise<TermGlossaryRow[] | GrammarGlossaryRow[]>;
-async function queryGlossaryEntries(
-  database: DatabaseClient,
   kind: EntryType,
   where?: SQL<unknown>
 ): Promise<TermGlossaryRow[] | GrammarGlossaryRow[]> {
-  return getGlossaryQueryLoader(database, kind)
-    .findMany(where) as Promise<TermGlossaryRow[] | GrammarGlossaryRow[]>;
+  if (kind === "term") {
+    const rows = await database
+      .select({
+        entry: term,
+        media: media,
+        segment: segment,
+        crossMediaGroup: crossMediaGroup,
+        alias: termAlias
+      })
+      .from(term)
+      .innerJoin(media, eq(media.id, term.mediaId))
+      .leftJoin(segment, eq(segment.id, term.segmentId))
+      .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
+      .leftJoin(termAlias, eq(termAlias.termId, term.id))
+      .where(where)
+      .orderBy(asc(term.lemma), asc(term.reading));
+
+    const grouped = new Map<string, TermGlossaryRow>();
+    for (const row of rows) {
+      let existing = grouped.get(row.entry.id);
+      if (!existing) {
+        existing = {
+          ...row.entry,
+          media: row.media,
+          segment: row.segment,
+          crossMediaGroup: row.crossMediaGroup,
+          aliases: []
+        };
+        grouped.set(row.entry.id, existing);
+      }
+      if (row.alias) {
+        existing.aliases.push(row.alias);
+      }
+    }
+    return Array.from(grouped.values());
+  }
+
+  const rows = await database
+    .select({
+      entry: grammarPattern,
+      media: media,
+      segment: segment,
+      crossMediaGroup: crossMediaGroup,
+      alias: grammarAlias
+    })
+    .from(grammarPattern)
+    .innerJoin(media, eq(media.id, grammarPattern.mediaId))
+    .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
+    .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId))
+    .leftJoin(grammarAlias, eq(grammarAlias.grammarId, grammarPattern.id))
+    .where(where)
+    .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
+
+  const grouped = new Map<string, GrammarGlossaryRow>();
+  for (const row of rows) {
+    let existing = grouped.get(row.entry.id);
+    if (!existing) {
+      existing = {
+        ...row.entry,
+        media: row.media,
+        segment: row.segment,
+        crossMediaGroup: row.crossMediaGroup,
+        aliases: []
+      };
+      grouped.set(row.entry.id, existing);
+    }
+    if (row.alias) {
+      existing.aliases.push(row.alias);
+    }
+  }
+  return Array.from(grouped.values());
 }
 
 async function queryGlossaryEntry(

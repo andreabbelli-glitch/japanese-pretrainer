@@ -10,6 +10,7 @@ import {
 } from "@/db";
 import {
   buildGlossarySummaryTags,
+  buildReviewSummaryTags,
   listMediaCached,
   canUseDataCache,
   runWithTaggedCache
@@ -170,6 +171,43 @@ async function loadGlossaryProgressSnapshotsCached(
   );
 }
 
+async function loadReviewLaunchCandidatesCached(
+  database: DatabaseClient,
+  mediaIds: string[],
+  nowIso: string
+) {
+  if (mediaIds.length === 0) {
+    return [];
+  }
+
+  const orderedIds = [...mediaIds].sort();
+
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["app-shell", "review-candidates", ...orderedIds],
+    loader: () => listReviewLaunchCandidates(database, nowIso),
+    tags: buildReviewSummaryTags(mediaIds)
+  });
+}
+
+async function loadReviewIntroducedOnDayCached(
+  database: DatabaseClient,
+  mediaIds: string[]
+) {
+  if (mediaIds.length === 0) {
+    return [];
+  }
+
+  const orderedIds = [...mediaIds].sort();
+
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["app-shell", "review-introduced", ...orderedIds],
+    loader: () => countReviewSubjectsIntroducedOnDayByMediaIds(database, mediaIds),
+    tags: buildReviewSummaryTags(mediaIds)
+  });
+}
+
 async function buildMediaShellSnapshots(
   database: DatabaseClient,
   media: MediaListItem[]
@@ -190,9 +228,9 @@ async function buildMediaShellSnapshots(
           slug: item.slug
         }))
       ),
-      listReviewLaunchCandidates(database, nowIso),
+      loadReviewLaunchCandidatesCached(database, mediaIds, nowIso),
       getReviewDailyLimit(database),
-      countReviewSubjectsIntroducedOnDayByMediaIds(database, mediaIds)
+      loadReviewIntroducedOnDayCached(database, mediaIds)
     ]);
   const lessonsByMedia = groupLessonsByMedia(lessons);
 
