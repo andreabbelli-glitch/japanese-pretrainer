@@ -7,11 +7,13 @@ import {
   cardEntryLink,
   crossMediaGroup,
   entryLink,
+  grammarAlias,
   grammarPattern,
   lesson,
   media,
   reviewSubjectState,
   segment,
+  termAlias,
   type EntryType,
   term
 } from "../schema/index.ts";
@@ -85,6 +87,30 @@ const glossaryEntryRelations = {
   segment: true
 } as const;
 
+type TermGlossaryRow = typeof term.$inferSelect & {
+  aliases: (typeof termAlias.$inferSelect)[];
+  crossMediaGroup: typeof crossMediaGroup.$inferSelect | null;
+  media: typeof media.$inferSelect;
+  segment: typeof segment.$inferSelect | null;
+};
+
+type GrammarGlossaryRow = typeof grammarPattern.$inferSelect & {
+  aliases: (typeof grammarAlias.$inferSelect)[];
+  crossMediaGroup: typeof crossMediaGroup.$inferSelect | null;
+  media: typeof media.$inferSelect;
+  segment: typeof segment.$inferSelect | null;
+};
+
+type GlossaryRowByKind = {
+  grammar: GrammarGlossaryRow;
+  term: TermGlossaryRow;
+};
+
+type GlossaryQueryLoader<K extends EntryType> = {
+  findFirst: (where?: SQL<unknown>) => Promise<GlossaryRowByKind[K] | undefined>;
+  findMany: (where?: SQL<unknown>) => Promise<GlossaryRowByKind[K][]>;
+};
+
 type ListGlossaryEntriesOptions = {
   mediaId?: string;
   mediaIds?: string[];
@@ -140,52 +166,44 @@ function buildGlossarySourceFilter(
   );
 }
 
-async function loadTermGlossaryRows(
+function getGlossaryQueryLoader<K extends EntryType>(
   database: DatabaseClient,
-  where?: SQL<unknown>
-) {
-  return database.query.term.findMany({
-    where,
-    with: glossaryEntryRelations,
-    orderBy: [asc(term.lemma), asc(term.reading)]
-  });
-}
-
-async function loadGrammarGlossaryRows(
+  kind: K
+): GlossaryQueryLoader<K>;
+function getGlossaryQueryLoader<K extends EntryType>(
   database: DatabaseClient,
-  where?: SQL<unknown>
+  kind: K
 ) {
-  return database.query.grammarPattern.findMany({
-    where,
-    with: glossaryEntryRelations,
-    orderBy: [asc(grammarPattern.pattern), asc(grammarPattern.title)]
-  });
-}
+  if (kind === "term") {
+    return {
+      findFirst: (where?: SQL<unknown>) =>
+        database.query.term.findFirst({
+          where,
+          with: glossaryEntryRelations
+        }),
+      findMany: (where?: SQL<unknown>) =>
+        database.query.term.findMany({
+          where,
+          with: glossaryEntryRelations,
+          orderBy: [asc(term.lemma), asc(term.reading)]
+        })
+    } as unknown as GlossaryQueryLoader<K>;
+  }
 
-async function loadTermGlossaryRow(
-  database: DatabaseClient,
-  where?: SQL<unknown>
-) {
-  return database.query.term.findFirst({
-    where,
-    with: glossaryEntryRelations
-  });
+  return {
+    findFirst: (where?: SQL<unknown>) =>
+      database.query.grammarPattern.findFirst({
+        where,
+        with: glossaryEntryRelations
+      }),
+    findMany: (where?: SQL<unknown>) =>
+      database.query.grammarPattern.findMany({
+        where,
+        with: glossaryEntryRelations,
+        orderBy: [asc(grammarPattern.pattern), asc(grammarPattern.title)]
+      })
+  } as unknown as GlossaryQueryLoader<K>;
 }
-
-async function loadGrammarGlossaryRow(
-  database: DatabaseClient,
-  where?: SQL<unknown>
-) {
-  return database.query.grammarPattern.findFirst({
-    where,
-    with: glossaryEntryRelations
-  });
-}
-
-type TermGlossaryRow = Awaited<ReturnType<typeof loadTermGlossaryRows>>[number];
-type GrammarGlossaryRow = Awaited<
-  ReturnType<typeof loadGrammarGlossaryRows>
->[number];
 
 async function queryGlossaryEntries(
   database: DatabaseClient,
@@ -207,11 +225,8 @@ async function queryGlossaryEntries(
   kind: EntryType,
   where?: SQL<unknown>
 ): Promise<TermGlossaryRow[] | GrammarGlossaryRow[]> {
-  if (kind === "term") {
-    return loadTermGlossaryRows(database, where);
-  }
-
-  return loadGrammarGlossaryRows(database, where);
+  return getGlossaryQueryLoader(database, kind)
+    .findMany(where) as Promise<TermGlossaryRow[] | GrammarGlossaryRow[]>;
 }
 
 async function queryGlossaryEntry(
@@ -234,11 +249,7 @@ async function queryGlossaryEntry(
   kind: EntryType,
   where?: SQL<unknown>
 ) {
-  if (kind === "term") {
-    return (await loadTermGlossaryRow(database, where)) ?? null;
-  }
-
-  return (await loadGrammarGlossaryRow(database, where)) ?? null;
+  return (await getGlossaryQueryLoader(database, kind).findFirst(where)) ?? null;
 }
 
 export async function listGlossaryEntriesByKind(
