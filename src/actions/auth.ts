@@ -4,6 +4,7 @@ import type { Route } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
+import { readRequiredString } from "./form-data.ts";
 import {
   AUTH_SESSION_COOKIE,
   createSessionToken,
@@ -52,15 +53,6 @@ export async function logoutAction() {
   );
 }
 
-function readRequiredString(formData: FormData, key: string) {
-  const value = formData.get(key);
-
-  if (typeof value !== "string" || value.trim().length === 0) {
-    throw new Error(`Missing form field: ${key}`);
-  }
-
-  return value.trim();
-}
 
 function readRequiredPassword(formData: FormData, key: string) {
   const value = formData.get(key);

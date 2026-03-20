@@ -4,6 +4,7 @@ import type { Route } from "next";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { readRequiredString } from "./form-data.ts";
 import { db, getMediaBySlug } from "@/db";
 import {
   revalidateGlossarySummaryCache,
@@ -569,15 +570,6 @@ function revalidateEntryStatusPaths(input: {
   revalidatePath(mediaStudyHref(input.mediaSlug, "glossary"));
 }
 
-function readRequiredString(formData: FormData, key: string) {
-  const value = formData.get(key);
-
-  if (typeof value !== "string" || value.trim().length === 0) {
-    throw new Error(`Missing form field: ${key}`);
-  }
-
-  return value.trim();
-}
 
 function readCount(formData: FormData, key: string) {
   const raw = formData.get(key);

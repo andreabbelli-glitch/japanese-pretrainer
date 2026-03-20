@@ -56,7 +56,7 @@ export function deriveEntryStudyState(
     ["review", "relearning"].includes(signal.reviewState ?? "")
   );
 
-  if (hasCardsInReview || ["review", "reviewing", "relearning"].includes(entryStatus ?? "")) {
+  if (hasCardsInReview || ["review", "relearning"].includes(entryStatus ?? "")) {
     return {
       key: "review",
       label: "In review",

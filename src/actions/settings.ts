@@ -4,6 +4,7 @@ import type { Route } from "next";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { readRequiredString } from "./form-data.ts";
 import { db, listMedia } from "@/db";
 import { revalidateSettingsCache } from "@/lib/data-cache";
 import { buildHrefWithSearch } from "@/lib/site";
@@ -66,15 +67,6 @@ async function revalidateSettingsConsumers() {
   revalidatePath("/glossary");
 }
 
-function readRequiredString(formData: FormData, key: string) {
-  const value = formData.get(key);
-
-  if (typeof value !== "string" || value.trim().length === 0) {
-    throw new Error(`Missing form field: ${key}`);
-  }
-
-  return value.trim();
-}
 
 function readOptionalInternalHref(
   formData: FormData,
