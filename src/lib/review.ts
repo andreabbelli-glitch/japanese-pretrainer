@@ -3192,6 +3192,8 @@ function formatBucketLabel(
   bucket: ReviewQueueCard["bucket"],
   effectiveState: EffectiveReviewState["state"]
 ) {
+  void effectiveState;
+
   if (bucket === "due") {
     return "Dovuta";
   }

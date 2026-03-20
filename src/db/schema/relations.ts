@@ -22,7 +22,7 @@ import {
   reviewSubjectState
 } from "./review.ts";
 
-export const mediaRelations = relations(media, ({ many, one }) => ({
+export const mediaRelations = relations(media, ({ many }) => ({
   segments: many(segment),
   lessons: many(lesson),
   terms: many(term),

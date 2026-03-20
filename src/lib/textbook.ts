@@ -142,7 +142,6 @@ export type TextbookLessonData = TextbookIndexData & {
     statusLabel: string;
     segmentTitle: string;
     ast: MarkdownDocument | null;
-    htmlRendered: string | null;
   };
   entries: TextbookTooltipEntry[];
   previousLesson: TextbookLessonNavItem | null;
@@ -258,10 +257,7 @@ export async function getTextbookLessonTooltipEntries(
   return loadLessonTooltipEntries({
     database,
     lessonEntryLinks,
-    imageCardIds: collectLessonImageCardIds(
-      lesson.content?.astJson ?? null,
-      lesson.content?.htmlRendered ?? null
-    ),
+    imageCardIds: collectLessonImageCardIds(lesson.content?.astJson ?? null),
     mediaSlug
   });
 }
@@ -439,7 +435,6 @@ async function getTextbookLessonBodyData(input: {
       ast: lessonAst,
       difficulty: lesson.difficulty,
       excerpt: lesson.content?.excerpt ?? null,
-      htmlRendered: lessonAst ? null : (lesson.content?.htmlRendered ?? null),
       id: lesson.id,
       segmentTitle: lesson.segment?.title ?? "Percorso principale",
       slug: lesson.slug,
@@ -821,36 +816,9 @@ function collectImageCardIds(document: MarkdownDocument | null) {
   return [...cardIds];
 }
 
-function collectImageCardIdsFromRenderedHtml(htmlRendered: string | null) {
-  if (!htmlRendered) {
-    return [];
-  }
-
-  const cardIds = new Set<string>();
-
-  for (const match of htmlRendered.matchAll(/data-card-id="([^"]+)"/g)) {
-    const cardId = match[1]?.trim();
-
-    if (cardId) {
-      cardIds.add(cardId);
-    }
-  }
-
-  return [...cardIds];
-}
-
-function collectLessonImageCardIds(
-  astJson: string | null,
-  htmlRendered: string | null
-) {
+function collectLessonImageCardIds(astJson: string | null) {
   const lessonAst = parseLessonAst(astJson);
-  const cardIds = collectImageCardIds(lessonAst);
-
-  if (cardIds.length > 0 || lessonAst) {
-    return cardIds;
-  }
-
-  return collectImageCardIdsFromRenderedHtml(htmlRendered);
+  return lessonAst ? collectImageCardIds(lessonAst) : [];
 }
 
 function markDataAsLive() {

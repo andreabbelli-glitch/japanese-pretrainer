@@ -2,7 +2,6 @@ import { Fragment, type ReactNode } from "react";
 
 import type { InlineNode } from "./content/types.ts";
 import {
-  flattenInlineNodes,
   parseInlineText,
   stripInlineMarkdown as stripInlineMarkdownText
 } from "./inline-markdown.ts";

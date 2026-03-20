@@ -113,7 +113,7 @@ describe("textbook data", () => {
     expect(lessonData?.lesson.ast?.blocks[1]).toMatchObject({
       type: "paragraph"
     });
-    expect(lessonData?.lesson.htmlRendered).toBeNull();
+    expect(lessonData?.lesson).not.toHaveProperty("htmlRendered");
   });
 
   it("normalizes legacy lesson AST payloads without crashing the reader", async () => {
@@ -229,7 +229,7 @@ describe("textbook data", () => {
     ]);
   });
 
-  it("keeps rendered HTML only when structured AST is unavailable", async () => {
+  it("returns a lesson without AST when structured content is unavailable", async () => {
     await database
       .update(lessonContent)
       .set({
@@ -245,9 +245,7 @@ describe("textbook data", () => {
     );
 
     expect(lessonData?.lesson.ast).toBeNull();
-    expect(lessonData?.lesson.htmlRendered).toBe(
-      "<p>Fallback <strong>HTML</strong>.</p>"
-    );
+    expect(lessonData?.lesson).not.toHaveProperty("htmlRendered");
   });
 
   it("applies the opened lesson state without reloading the full lesson payload", async () => {
@@ -438,7 +436,6 @@ describe("textbook data", () => {
             }
           ]
         },
-        fallbackHtml: "",
         furiganaMode: "hover",
         isTouchLayout: false,
         mediaSlug: "demo-media",
@@ -455,6 +452,29 @@ describe("textbook data", () => {
     expect(markup).toContain("reader-ref");
     expect(markup).toContain("reader-ref--term");
     expect(markup).toContain("食べる");
+  });
+
+  it("renders an empty state when the lesson AST is unavailable", () => {
+    const markup = renderToStaticMarkup(
+      createElement(LessonArticle, {
+        activeEntryKey: null,
+        document: null,
+        furiganaMode: "hover",
+        isTouchLayout: false,
+        mediaSlug: "demo-media",
+        onImageExpand() {},
+        onReferenceBlur() {},
+        onReferenceClick() {},
+        onReferenceFocus() {},
+        onReferenceHover() {},
+        onReferenceLeave() {}
+      })
+    );
+
+    expect(markup).toContain("Contenuto non disponibile");
+    expect(markup).toContain(
+      "Questa lesson non ha un contenuto strutturato valido da mostrare."
+    );
   });
 
   it("renders example sentences with a collapsed italian translation toggle", () => {
@@ -513,7 +533,6 @@ describe("textbook data", () => {
             }
           ]
         },
-        fallbackHtml: "",
         furiganaMode: "hover",
         isTouchLayout: false,
         mediaSlug: "demo-media",
@@ -563,7 +582,6 @@ describe("textbook data", () => {
             }
           ]
         },
-        fallbackHtml: "",
         furiganaMode: "hover",
         isTouchLayout: false,
         mediaSlug: "demo-media",

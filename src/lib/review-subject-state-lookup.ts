@@ -17,7 +17,7 @@ export type ReviewSubjectStateLookupResult = {
   subjectGroups: ReviewSubjectGroup[];
 };
 
-export async function loadReviewSubjectStateLookup(input: {
+type ResolveReviewSubjectGroupsInput = {
   cards: ReviewCardListItem[];
   database: DatabaseClient;
   grammar: Array<{
@@ -33,7 +33,16 @@ export async function loadReviewSubjectStateLookup(input: {
     lemma: string;
     reading?: string | null;
   }>;
-}): Promise<ReviewSubjectStateLookupResult> {
+};
+
+export type ResolveReviewSubjectGroupsResult = {
+  subjectGroups: ReviewSubjectGroup[];
+  subjectStates: Map<string, ReviewSubjectStateSnapshot>;
+};
+
+export async function resolveReviewSubjectGroups(
+  input: ResolveReviewSubjectGroupsInput
+): Promise<ResolveReviewSubjectGroupsResult> {
   const subjectEntryLookup = buildReviewSubjectEntryLookup({
     grammar: input.grammar,
     terms: input.terms
@@ -70,7 +79,20 @@ export async function loadReviewSubjectStateLookup(input: {
   });
 
   return {
-    subjectGroups: groupedCards.map((group) => {
+    subjectGroups: groupedCards,
+    subjectStates
+  };
+}
+
+export async function loadReviewSubjectStateLookup(
+  input: ResolveReviewSubjectGroupsInput
+): Promise<ReviewSubjectStateLookupResult> {
+  const { subjectGroups, subjectStates } = await resolveReviewSubjectGroups(
+    input
+  );
+
+  return {
+    subjectGroups: subjectGroups.map((group) => {
       const subjectState = subjectStates.get(group.identity.subjectKey) ?? null;
 
       return {

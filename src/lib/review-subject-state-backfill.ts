@@ -5,7 +5,10 @@ import { listReviewCardsByMediaIds } from "../db/queries/review.ts";
 import { reviewSubjectState } from "../db/schema/review.ts";
 
 import type { ReviewSubjectStateSnapshot } from "./review-subject.ts";
-import { loadReviewSubjectStateLookup } from "./review-subject-state-lookup.ts";
+import {
+  resolveReviewSubjectGroups,
+  type ResolveReviewSubjectGroupsResult
+} from "./review-subject-state-lookup.ts";
 
 export type ReviewSubjectStateBackfillResult = {
   cardCount: number;
@@ -18,9 +21,7 @@ type ReviewSubjectCoverageSnapshot = {
   existingStateCount: number;
   missingStateCount: number;
   subjectCount: number;
-  subjectGroups: Awaited<
-    ReturnType<typeof loadReviewSubjectStateLookup>
-  >["subjectGroups"];
+  subjectGroups: ResolveReviewSubjectGroupsResult["subjectGroups"];
 };
 
 export async function syncReviewSubjectState(
@@ -127,16 +128,14 @@ async function loadReviewSubjectCoverageSnapshot(
     };
   }
 
-  const { subjectGroups } = await loadReviewSubjectStateLookup({
+  const { subjectGroups, subjectStates } = await resolveReviewSubjectGroups({
     cards,
     database,
     grammar,
     nowIso: input.now?.toISOString(),
     terms
   });
-  const existingStateCount = subjectGroups.filter(
-    (group) => group.subjectState !== null
-  ).length;
+  const existingStateCount = subjectStates.size;
 
   return {
     cardCount: cards.length,

@@ -81,8 +81,7 @@ export async function getLessonReaderBySlug(
       content: {
         columns: {
           astJson: true,
-          excerpt: true,
-          htmlRendered: true
+          excerpt: true
         }
       }
     }
@@ -106,8 +105,7 @@ export async function getLessonTooltipSourceBySlug(
     with: {
       content: {
         columns: {
-          astJson: true,
-          htmlRendered: true
+          astJson: true
         }
       }
     }

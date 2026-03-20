@@ -82,10 +82,12 @@ export function ReviewPageClient({
     string | null
   >(null);
   const [isPending, startTransition] = useTransition();
-  const [isHydratingFullData, setIsHydratingFullData] = useState(
-    "queueCardIds" in data ? false : searchParams !== undefined
-  );
   const isFullReviewPageData = isReviewPageData(viewData);
+  const isHydratingFullData =
+    !isFullReviewPageData &&
+    searchParams !== undefined &&
+    viewData.scope === "global" &&
+    clientError === null;
   const isGlobalReview = viewData.scope === "global";
   const hasAnyReviewCards =
     viewData.queue.dueCount +
@@ -164,8 +166,6 @@ export function ReviewPageClient({
     }
 
     let cancelled = false;
-    setClientError(null);
-    setIsHydratingFullData(true);
 
     void loadReviewPageDataSessionAction({
       scope: "global",
@@ -191,11 +191,6 @@ export function ReviewPageClient({
         setClientError(
           "Non sono riuscito a completare i dettagli della review. La stage resta disponibile."
         );
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setIsHydratingFullData(false);
-        }
       });
 
     return () => {
