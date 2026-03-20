@@ -14,21 +14,23 @@ import {
   quoteSqlString
 } from "./review-query-helpers.ts";
 
+const cardRelations = {
+  lesson: {
+    with: {
+      progress: true
+    }
+  },
+  segment: true,
+  entryLinks: true
+} as const;
+
 export async function listCardsByMediaId(
   database: DatabaseClient,
   mediaId: string
 ) {
   return database.query.card.findMany({
     where: and(eq(card.mediaId, mediaId), eq(card.status, "active")),
-    with: {
-      lesson: {
-        with: {
-          progress: true
-        }
-      },
-      segment: true,
-      entryLinks: true
-    },
+    with: cardRelations,
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
 }
@@ -36,15 +38,7 @@ export async function listCardsByMediaId(
 export async function getCardById(database: DatabaseClient, cardId: string) {
   return database.query.card.findFirst({
     where: eq(card.id, cardId),
-    with: {
-      lesson: {
-        with: {
-          progress: true
-        }
-      },
-      segment: true,
-      entryLinks: true
-    }
+    with: cardRelations
   });
 }
 
@@ -58,15 +52,7 @@ export async function getCardsByIds(
 
   return database.query.card.findMany({
     where: and(eq(card.status, "active"), inArray(card.id, cardIds)),
-    with: {
-      lesson: {
-        with: {
-          progress: true
-        }
-      },
-      segment: true,
-      entryLinks: true
-    },
+    with: cardRelations,
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
 }
@@ -81,15 +67,7 @@ export async function listReviewCardsByIds(
 
   return database.query.card.findMany({
     where: and(ne(card.status, "archived"), inArray(card.id, cardIds)),
-    with: {
-      lesson: {
-        with: {
-          progress: true
-        }
-      },
-      segment: true,
-      entryLinks: true
-    },
+    with: cardRelations,
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
 }
@@ -100,15 +78,7 @@ export async function listReviewCardsByMediaId(
 ) {
   return database.query.card.findMany({
     where: and(eq(card.mediaId, mediaId), ne(card.status, "archived")),
-    with: {
-      lesson: {
-        with: {
-          progress: true
-        }
-      },
-      segment: true,
-      entryLinks: true
-    },
+    with: cardRelations,
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
 }
@@ -123,15 +93,7 @@ export async function listReviewCardsByMediaIds(
 
   return database.query.card.findMany({
     where: and(inArray(card.mediaId, mediaIds), ne(card.status, "archived")),
-    with: {
-      lesson: {
-        with: {
-          progress: true
-        }
-      },
-      segment: true,
-      entryLinks: true
-    },
+    with: cardRelations,
     orderBy: [asc(card.mediaId), asc(card.orderIndex), asc(card.createdAt)]
   });
 }

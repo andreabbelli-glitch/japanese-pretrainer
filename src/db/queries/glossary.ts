@@ -105,6 +105,41 @@ function buildMediaScopeFilter(
   return undefined;
 }
 
+function buildGlossaryMediaScopeFilter(
+  kind: EntryType,
+  options: ListGlossaryEntriesOptions
+) {
+  return buildMediaScopeFilter(
+    kind === "term" ? term.mediaId : grammarPattern.mediaId,
+    options
+  );
+}
+
+function buildGlossaryIdsFilter(kind: EntryType, entryIds: string[]) {
+  return inArray(kind === "term" ? term.id : grammarPattern.id, entryIds);
+}
+
+function buildGlossaryCrossMediaGroupFilter(
+  kind: EntryType,
+  groupIds: string[]
+) {
+  return inArray(
+    kind === "term" ? term.crossMediaGroupId : grammarPattern.crossMediaGroupId,
+    groupIds
+  );
+}
+
+function buildGlossarySourceFilter(
+  kind: EntryType,
+  mediaId: string,
+  sourceId: string
+) {
+  return and(
+    eq(kind === "term" ? term.mediaId : grammarPattern.mediaId, mediaId),
+    eq(kind === "term" ? term.sourceId : grammarPattern.sourceId, sourceId)
+  );
+}
+
 async function loadTermGlossaryRows(
   database: DatabaseClient,
   where?: SQL<unknown>
@@ -166,6 +201,11 @@ async function queryGlossaryEntries(
   database: DatabaseClient,
   kind: EntryType,
   where?: SQL<unknown>
+): Promise<TermGlossaryRow[] | GrammarGlossaryRow[]>;
+async function queryGlossaryEntries(
+  database: DatabaseClient,
+  kind: EntryType,
+  where?: SQL<unknown>
 ): Promise<TermGlossaryRow[] | GrammarGlossaryRow[]> {
   if (kind === "term") {
     return loadTermGlossaryRows(database, where);
@@ -184,6 +224,11 @@ async function queryGlossaryEntry(
   kind: "grammar",
   where?: SQL<unknown>
 ): Promise<GrammarGlossaryRow | null>;
+async function queryGlossaryEntry(
+  database: DatabaseClient,
+  kind: EntryType,
+  where?: SQL<unknown>
+): Promise<TermGlossaryRow | GrammarGlossaryRow | null>;
 async function queryGlossaryEntry(
   database: DatabaseClient,
   kind: EntryType,
@@ -211,17 +256,11 @@ export async function listGlossaryEntriesByKind(
   kind: EntryType,
   options: ListGlossaryEntriesOptions = {}
 ) {
-  return kind === "term"
-    ? queryGlossaryEntries(
-        database,
-        kind,
-        buildMediaScopeFilter(term.mediaId, options)
-      )
-    : queryGlossaryEntries(
-        database,
-        kind,
-        buildMediaScopeFilter(grammarPattern.mediaId, options)
-      );
+  return queryGlossaryEntries(
+    database,
+    kind,
+    buildGlossaryMediaScopeFilter(kind, options)
+  );
 }
 
 type GlossarySearchCandidateInput = {
@@ -1034,13 +1073,11 @@ export async function getGlossaryEntriesByIds(
     return [];
   }
 
-  return kind === "term"
-    ? queryGlossaryEntries(database, kind, inArray(term.id, entryIds))
-    : queryGlossaryEntries(
-        database,
-        kind,
-        inArray(grammarPattern.id, entryIds)
-      );
+  return queryGlossaryEntries(
+    database,
+    kind,
+    buildGlossaryIdsFilter(kind, entryIds)
+  );
 }
 
 export async function getGlossaryEntriesByCrossMediaGroupIds(
@@ -1062,17 +1099,11 @@ export async function getGlossaryEntriesByCrossMediaGroupIds(
     return [];
   }
 
-  return kind === "term"
-    ? queryGlossaryEntries(
-        database,
-        kind,
-        inArray(term.crossMediaGroupId, groupIds)
-      )
-    : queryGlossaryEntries(
-        database,
-        kind,
-        inArray(grammarPattern.crossMediaGroupId, groupIds)
-      );
+  return queryGlossaryEntries(
+    database,
+    kind,
+    buildGlossaryCrossMediaGroupFilter(kind, groupIds)
+  );
 }
 export async function getGlobalGlossaryAggregateStats(
   database: DatabaseClient
@@ -1193,20 +1224,11 @@ export async function getGlossaryEntryBySourceId(
   mediaId: string,
   sourceId: string
 ) {
-  return kind === "term"
-    ? queryGlossaryEntry(
-        database,
-        kind,
-        and(eq(term.mediaId, mediaId), eq(term.sourceId, sourceId))
-      )
-    : queryGlossaryEntry(
-        database,
-        kind,
-        and(
-          eq(grammarPattern.mediaId, mediaId),
-          eq(grammarPattern.sourceId, sourceId)
-        )
-      );
+  return queryGlossaryEntry(
+    database,
+    kind,
+    buildGlossarySourceFilter(kind, mediaId, sourceId)
+  );
 }
 
 export async function listCrossMediaFamiliesByEntryIds(
