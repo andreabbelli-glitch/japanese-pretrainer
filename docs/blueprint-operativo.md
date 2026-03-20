@@ -107,8 +107,8 @@ model delle entita.
 - `entry_link`
 - `card_entry_link`
 - `entry_status`
-- `review_state`
-- `review_log`
+- `review_subject_state`
+- `review_subject_log`
 - `user_setting`
 - `lesson_progress`
 - `content_import`
@@ -242,19 +242,16 @@ La review deve poter fondere il materiale cross-media quando una stessa entry o
 pattern grammaticale compare in più media, mantenendo visibile il contesto
 locale solo quando serve.
 
-Il subject state canonico è `review_subject_state`, mentre `review_state`
-rimane un layer legacy di compatibilità e mirror. Le migrazioni devono
-preservare lo storico esistente e il conteggio dei nuovi introdotti nel giorno
-non deve azzerarsi sugli upgrade.
+Il subject state canonico e `review_subject_state` e la cronologia canonica e
+`review_subject_log`. Le migrazioni devono preservare lo storico esistente e il
+conteggio dei nuovi introdotti nel giorno non deve azzerarsi sugli upgrade.
 
 La migrazione SQL `0011_global_review_subjects.sql` introduce anche
 `review_subject_log`; il comando `pnpm db:migrate` esegue poi un backfill
-applicativo idempotente di `review_subject_state` sugli upgrade legacy. Il
-runtime mantiene comunque un fallback legacy sicuro basato su `review_state`
-solo come rete di sicurezza, per i casi in cui i subject-level state non
-esistano ancora davvero o il DB sia stato migrato solo parzialmente. In quel
-fallback, una sibling sospesa o manuale non può mai diventare representative
-subject se esiste una sibling attiva.
+applicativo idempotente di `review_subject_state` sugli upgrade legacy. La
+cleanup migration `0014_oval_expediter.sql` rimuove poi le vecchie tabelle
+card-level `review_state` e `review_log`, dopo il consolidamento completo del
+modello subject-level.
 
 Sul fronte prodotto, `/review` resta la review globale reale sui subject,
 mentre `/media/[mediaSlug]/review` è la vista filtrata locale. Dashboard e CTA

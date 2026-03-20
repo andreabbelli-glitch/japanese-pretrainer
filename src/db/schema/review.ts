@@ -77,60 +77,6 @@ export const cardEntryLink = sqliteTable(
   ]
 );
 
-export const reviewState = sqliteTable(
-  "review_state",
-  {
-    cardId: text("card_id")
-      .primaryKey()
-      .references(() => card.id, { onDelete: "cascade" }),
-    state: text("state", { enum: reviewStateValues }).notNull(),
-    stability: real("stability"),
-    difficulty: real("difficulty"),
-    dueAt: text("due_at"),
-    lastReviewedAt: text("last_reviewed_at"),
-    scheduledDays: integer("scheduled_days").notNull().default(0),
-    learningSteps: integer("learning_steps").notNull().default(0),
-    lapses: integer("lapses").notNull().default(0),
-    reps: integer("reps").notNull().default(0),
-    schedulerVersion: text("scheduler_version", {
-      enum: reviewSchedulerVersionValues
-    })
-      .notNull()
-      .default("fsrs_v1"),
-    manualOverride: integer("manual_override", { mode: "boolean" })
-      .notNull()
-      .default(false),
-    createdAt: text("created_at").notNull(),
-    updatedAt: text("updated_at").notNull()
-  },
-  (table) => [index("review_state_due_idx").on(table.dueAt)]
-);
-
-export const reviewLog = sqliteTable(
-  "review_log",
-  {
-    id: text("id").primaryKey(),
-    cardId: text("card_id")
-      .notNull()
-      .references(() => card.id, { onDelete: "cascade" }),
-    answeredAt: text("answered_at").notNull(),
-    rating: text("rating", { enum: reviewRatingValues }).notNull(),
-    previousState: text("previous_state", { enum: reviewStateValues }),
-    newState: text("new_state", { enum: reviewStateValues }),
-    scheduledDueAt: text("scheduled_due_at"),
-    elapsedDays: real("elapsed_days"),
-    responseMs: integer("response_ms"),
-    schedulerVersion: text("scheduler_version", {
-      enum: reviewSchedulerVersionValues
-    })
-      .notNull()
-      .default("fsrs_v1")
-  },
-  (table) => [
-    index("review_log_card_answered_idx").on(table.cardId, table.answeredAt)
-  ]
-);
-
 export const reviewSubjectState = sqliteTable(
   "review_subject_state",
   {

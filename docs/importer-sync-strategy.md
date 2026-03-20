@@ -67,7 +67,8 @@ La policy e volutamente diversa per record content-owned e user-owned.
 
 - `media`, `lesson`, `card`: soft archive.
   Motivazione: hanno tabelle utente collegate tramite FK (`lesson_progress`,
-  `review_state`, `review_log`), quindi un delete sarebbe distruttivo.
+  `review_subject_state`, `review_subject_log`), quindi un delete sarebbe
+  distruttivo.
 - `segment`: prune hard per media sincronizzato.
   Motivazione: e content-owned, deriva solo dai `segment_ref` correnti e tutte
   le FK verso `segment` sono `ON DELETE SET NULL`; quindi un reimport deve
@@ -84,8 +85,8 @@ La policy e volutamente diversa per record content-owned e user-owned.
 
 ### Tabelle protette
 
-- `review_state`
-- `review_log`
+- `review_subject_state`
+- `review_subject_log`
 - `entry_status`
 - `lesson_progress`
 - `user_setting`
@@ -93,8 +94,8 @@ La policy e volutamente diversa per record content-owned e user-owned.
 ### Garanzie
 
 - Nessuna di queste tabelle viene svuotata o ricalcolata dall'importer.
-- Le card rimosse vengono archiviate, non cancellate, quindi `review_state` e
-  `review_log` restano intatti.
+- Le card rimosse vengono archiviate, non cancellate, quindi
+  `review_subject_state` e `review_subject_log` restano intatti.
 - Le lesson rimosse vengono archiviate, non cancellate, quindi
   `lesson_progress` resta intatto.
 - Le entry rimosse (`term`, `grammar_pattern`) vengono prunate dal contenuto

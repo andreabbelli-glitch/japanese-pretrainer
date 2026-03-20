@@ -1,6 +1,7 @@
 import { and, asc, eq, inArray, ne, or, sql, type SQL } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
+import { quoteSqlString } from "./review-query-helpers.ts";
 import {
   card,
   cardEntryLink,
@@ -1133,6 +1134,14 @@ export async function getGlossaryEntriesByIds(
   database: DatabaseClient,
   kind: EntryType,
   entryIds: string[]
+): Promise<
+  | GlossaryEntryWithStatus<TermGlossaryRow>[]
+  | GlossaryEntryWithStatus<GrammarGlossaryRow>[]
+>;
+export async function getGlossaryEntriesByIds(
+  database: DatabaseClient,
+  kind: EntryType,
+  entryIds: string[]
 ) {
   if (entryIds.length === 0) {
     return [];
@@ -1274,12 +1283,6 @@ export async function getGlossaryEntryById(
   | GlossaryEntryWithStatus<GrammarGlossaryRow>
   | null
 > {
-  if (kind === "term") {
-    const [entry] = await getGlossaryEntriesByIds(database, kind, [entryId]);
-
-    return entry ?? null;
-  }
-
   const [entry] = await getGlossaryEntriesByIds(database, kind, [entryId]);
 
   return entry ?? null;
@@ -1812,8 +1815,7 @@ export async function listGlossaryShellCounts(
     return [];
   }
 
-  const quote = (value: string) => `'${value.replaceAll("'", "''")}'`;
-  const mediaIdList = mediaIds.map(quote).join(", ");
+  const mediaIdList = mediaIds.map(quoteSqlString).join(", ");
 
   const rows = await database.all<{
     mediaId: string;

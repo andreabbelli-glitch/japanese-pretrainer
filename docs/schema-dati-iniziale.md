@@ -383,59 +383,11 @@ Indici:
 - `(subject_key, answered_at)`
 - `(card_id, answered_at)`
 
-## 3.15 `review_state` (legacy)
+> Le vecchie tabelle card-level `review_state` e `review_log` non fanno piu
+> parte dello schema corrente: vengono rimosse dalla cleanup migration
+> `0014_oval_expediter.sql` dopo il consolidamento del modello subject-level.
 
-> **Tabella residuale card-level.** Lo stato canonico e ora in
-> `review_subject_state`. Questa tabella viene mantenuta come mirror per
-> compatibilita e upgrade di DB preesistenti. `pnpm db:migrate` esegue un
-> backfill applicativo idempotente verso `review_subject_state`, mentre il
-> runtime legge questa tabella solo quando manca ancora il corrispondente state
-> subject-level (fallback legacy di sicurezza).
-
-Campi:
-
-- `card_id` TEXT PRIMARY KEY
-- `state` TEXT NOT NULL
-- `stability` REAL
-- `difficulty` REAL
-- `due_at` TEXT
-- `last_reviewed_at` TEXT
-- `scheduled_days` INTEGER NOT NULL DEFAULT 0
-- `learning_steps` INTEGER NOT NULL DEFAULT 0
-- `lapses` INTEGER NOT NULL DEFAULT 0
-- `reps` INTEGER NOT NULL DEFAULT 0
-- `scheduler_version` TEXT NOT NULL DEFAULT 'fsrs_v1'
-- `manual_override` INTEGER NOT NULL DEFAULT 0
-- `created_at` TEXT NOT NULL
-- `updated_at` TEXT NOT NULL
-
-Vincoli:
-
-- FK `card_id -> card.id` ON DELETE CASCADE
-
-## 3.16 `review_log` (legacy)
-
-> **Tabella residuale card-level.** La cronologia canonica e ora in
-> `review_subject_log`. Mantenuta per compatibilita.
-
-Campi:
-
-- `id` TEXT PRIMARY KEY
-- `card_id` TEXT NOT NULL
-- `answered_at` TEXT NOT NULL
-- `rating` TEXT NOT NULL
-- `previous_state` TEXT
-- `new_state` TEXT
-- `scheduled_due_at` TEXT
-- `elapsed_days` REAL
-- `response_ms` INTEGER
-- `scheduler_version` TEXT NOT NULL DEFAULT 'fsrs_v1'
-
-Vincoli:
-
-- FK `card_id -> card.id` ON DELETE CASCADE
-
-## 3.17 `lesson_progress`
+## 3.15 `lesson_progress`
 
 Progress dell'utente sulle lesson.
 
@@ -453,12 +405,12 @@ Valori consigliati:
 - `in_progress`
 - `completed`
 
-## 3.18 Aggregati media
+## 3.16 Aggregati media
 
 Gli aggregati dashboard per media non usano una tabella dedicata: vengono
 calcolati on demand da lesson progress, glossary e review.
 
-## 3.19 `user_setting`
+## 3.17 `user_setting`
 
 Preferenze applicative globali.
 
@@ -497,7 +449,7 @@ Campi:
 - indice su `grammar_pattern.search_pattern_norm`
 - indice su `lesson.media_id, lesson.order_index`
 - indice su `card.media_id, card.order_index`
-- indice su `review_state.due_at`
+- indice su `review_subject_state.due_at`
 - indice su `entry_link.entry_type, entry_link.entry_id`
 
 In aggiunta:
@@ -515,9 +467,9 @@ In aggiunta:
   (`media_id`, `source_id`), non piu su `source_id` globale al workspace.
 - `cross_media_group` e opzionale e non rende globale il routing delle entry:
   collega solo sibling secondarie quando il confronto cross-media e dichiarato.
-- `entry_status` e `review_state` hanno ruoli diversi: il primo descrive una
-  scelta o sintesi a livello entita, il secondo il comportamento SRS di una
-  singola card.
+- `entry_status` e `review_subject_state` hanno ruoli diversi: il primo
+  descrive una scelta o sintesi a livello entita, il secondo il comportamento
+  SRS del subject canonico condiviso.
 - Gli aggregati media vengono calcolati on demand; non esiste una tabella
   `media_progress` nel modello corrente.
 

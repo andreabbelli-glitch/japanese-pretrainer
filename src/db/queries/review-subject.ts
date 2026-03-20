@@ -7,7 +7,7 @@ import {
   reviewSubjectState
 } from "../schema/index.ts";
 import type { EntryType } from "../schema/index.ts";
-import { getUtcDayBounds } from "./review-query-helpers.ts";
+import { getUtcDayBounds, quoteSqlString } from "./review-query-helpers.ts";
 
 export type ReviewSubjectEntryRef = {
   entryId: string;
@@ -52,13 +52,12 @@ export async function listReviewCardIdsByEntryRefs(
     return [];
   }
 
-  const quote = (value: string) => `'${value.replaceAll("'", "''")}'`;
   const termEntryIds = refs
     .filter((ref) => ref.entryType === "term")
-    .map((ref) => quote(ref.entryId));
+    .map((ref) => quoteSqlString(ref.entryId));
   const grammarEntryIds = refs
     .filter((ref) => ref.entryType === "grammar")
-    .map((ref) => quote(ref.entryId));
+    .map((ref) => quoteSqlString(ref.entryId));
   const matchClauses = [
     termEntryIds.length > 0
       ? `(cel.entry_type = 'term' AND cel.entry_id IN (${termEntryIds.join(", ")}))`
