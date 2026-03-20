@@ -76,22 +76,25 @@ export function buildReviewSubjectEntryLookup(input: {
 }) {
   const lookup = new Map<string, ReviewSubjectEntryMeta>();
 
-  for (const entry of input.terms) {
-    lookup.set(`term:${entry.id}`, {
-      crossMediaGroupId: entry.crossMediaGroupId,
-      entryId: entry.id,
-      entryType: "term",
-      label: entry.lemma,
-      reading: entry.reading
-    });
-  }
+  const entries = [
+    ...input.terms.map((entry) => ({
+      entry,
+      entryType: "term" as const,
+      label: entry.lemma
+    })),
+    ...input.grammar.map((entry) => ({
+      entry,
+      entryType: "grammar" as const,
+      label: entry.pattern
+    }))
+  ];
 
-  for (const entry of input.grammar) {
-    lookup.set(`grammar:${entry.id}`, {
+  for (const { entry, entryType, label } of entries) {
+    lookup.set(`${entryType}:${entry.id}`, {
       crossMediaGroupId: entry.crossMediaGroupId,
       entryId: entry.id,
-      entryType: "grammar",
-      label: entry.pattern,
+      entryType,
+      label,
       reading: entry.reading
     });
   }
@@ -163,7 +166,9 @@ export function deriveReviewSubjectIdentity(input: {
   };
 }
 
-export function buildReviewSubjectCardIdentity(cardId: string): ReviewSubjectIdentity {
+export function buildReviewSubjectCardIdentity(
+  cardId: string
+): ReviewSubjectIdentity {
   return {
     cardId,
     crossMediaGroupId: null,
@@ -212,9 +217,7 @@ export function matchesReviewSubjectEntrySurface(
 
   return [entry.label, entry.reading ?? null]
     .filter((value): value is string => Boolean(value))
-    .some(
-      (value) => normalizeReviewSubjectSurface(value) === normalizedFront
-    );
+    .some((value) => normalizeReviewSubjectSurface(value) === normalizedFront);
 }
 
 function normalizeReviewSubjectSurface(value: string) {
@@ -247,7 +250,10 @@ export function groupReviewCardsBySubject(input: {
       groups.set(identity.subjectKey, {
         cards: [card],
         identity,
-        lastInteractionAt: resolveReviewSubjectLastInteractionAt(card, subjectState),
+        lastInteractionAt: resolveReviewSubjectLastInteractionAt(
+          card,
+          subjectState
+        ),
         representativeCard: card,
         subjectState
       });
@@ -286,7 +292,9 @@ export function selectReviewSubjectRepresentativeCard(
   }
 ) {
   if (cards.length === 0) {
-    throw new Error("Cannot select a representative review card for an empty subject.");
+    throw new Error(
+      "Cannot select a representative review card for an empty subject."
+    );
   }
 
   if (subjectState?.cardId) {
@@ -297,33 +305,38 @@ export function selectReviewSubjectRepresentativeCard(
     }
   }
 
-  return [...cards].sort((left, right) => {
-    const priorityDifference =
-      getReviewCardPriority(
-        left,
-        nowIso,
-        input?.drivingEntryStatusesByCardId?.get(left.id) ?? []
-      ) -
-      getReviewCardPriority(
-        right,
-        nowIso,
-        input?.drivingEntryStatusesByCardId?.get(right.id) ?? []
-      );
+  return (
+    [...cards].sort((left, right) => {
+      const priorityDifference =
+        getReviewCardPriority(
+          left,
+          nowIso,
+          input?.drivingEntryStatusesByCardId?.get(left.id) ?? []
+        ) -
+        getReviewCardPriority(
+          right,
+          nowIso,
+          input?.drivingEntryStatusesByCardId?.get(right.id) ?? []
+        );
 
-    if (priorityDifference !== 0) {
-      return priorityDifference;
-    }
-
-    if (nowIso) {
-      const recencyDifference = compareReviewCardsBySubjectRecency(left, right);
-
-      if (recencyDifference !== 0) {
-        return recencyDifference;
+      if (priorityDifference !== 0) {
+        return priorityDifference;
       }
-    }
 
-    return compareReviewCardsBySubjectDisplay(left, right);
-  })[0] ?? cards[0]!;
+      if (nowIso) {
+        const recencyDifference = compareReviewCardsBySubjectRecency(
+          left,
+          right
+        );
+
+        if (recencyDifference !== 0) {
+          return recencyDifference;
+        }
+      }
+
+      return compareReviewCardsBySubjectDisplay(left, right);
+    })[0] ?? cards[0]!
+  );
 }
 
 export function resolveReviewSubjectLastInteractionAt(
@@ -334,11 +347,7 @@ export function resolveReviewSubjectLastInteractionAt(
     return subjectState.lastInteractionAt;
   }
 
-  return (
-    card.reviewState?.lastReviewedAt ??
-    card.updatedAt ??
-    card.createdAt
-  );
+  return card.reviewState?.lastReviewedAt ?? card.updatedAt ?? card.createdAt;
 }
 
 export function buildReviewSubjectSeedState(
@@ -405,16 +414,22 @@ function compareReviewCardsBySubjectRecency(
   right: ReviewCardListItem
 ) {
   const interactionDifference =
-    toTime(right.reviewState?.lastReviewedAt ?? right.updatedAt ?? right.createdAt) -
-    toTime(left.reviewState?.lastReviewedAt ?? left.updatedAt ?? left.createdAt);
+    toTime(
+      right.reviewState?.lastReviewedAt ?? right.updatedAt ?? right.createdAt
+    ) -
+    toTime(
+      left.reviewState?.lastReviewedAt ?? left.updatedAt ?? left.createdAt
+    );
 
   if (interactionDifference !== 0) {
     return interactionDifference;
   }
 
   if (left.orderIndex !== right.orderIndex) {
-    return (left.orderIndex ?? Number.MAX_SAFE_INTEGER) -
-      (right.orderIndex ?? Number.MAX_SAFE_INTEGER);
+    return (
+      (left.orderIndex ?? Number.MAX_SAFE_INTEGER) -
+      (right.orderIndex ?? Number.MAX_SAFE_INTEGER)
+    );
   }
 
   return left.id.localeCompare(right.id);
@@ -429,8 +444,10 @@ function compareReviewCardsBySubjectDisplay(
   }
 
   if (left.orderIndex !== right.orderIndex) {
-    return (left.orderIndex ?? Number.MAX_SAFE_INTEGER) -
-      (right.orderIndex ?? Number.MAX_SAFE_INTEGER);
+    return (
+      (left.orderIndex ?? Number.MAX_SAFE_INTEGER) -
+      (right.orderIndex ?? Number.MAX_SAFE_INTEGER)
+    );
   }
 
   if (left.createdAt !== right.createdAt) {

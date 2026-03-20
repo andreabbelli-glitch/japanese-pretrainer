@@ -1,14 +1,12 @@
 import type { DatabaseClient } from "../db/client.ts";
 import {
-  listGrammarCrossMediaFamiliesByEntryIds,
+  listCrossMediaFamiliesByEntryIds,
   listReviewCardIdsByEntryRefs,
   listReviewCardsByIds,
   listReviewSubjectStatesByKeys,
-  listTermCrossMediaFamiliesByEntryIds,
-  type GrammarCrossMediaFamily,
+  type CrossMediaFamily,
   type ReviewCardListItem,
-  type ReviewSubjectEntryRef,
-  type TermCrossMediaFamily
+  type ReviewSubjectEntryRef
 } from "../db/queries/index.ts";
 
 import {
@@ -26,8 +24,8 @@ import {
 } from "./review-subject.ts";
 
 type LegacyReviewSubjectFamilyLookup = {
-  grammarFamilies: Map<string, GrammarCrossMediaFamily>;
-  termFamilies: Map<string, TermCrossMediaFamily>;
+  grammarFamilies: Map<string, CrossMediaFamily>;
+  termFamilies: Map<string, CrossMediaFamily>;
 };
 
 export type ReviewLegacyFallbackCounts = {
@@ -284,8 +282,8 @@ async function preloadLegacyReviewSubjectFamilies(
   }
 
   const [termFamilies, grammarFamilies] = await Promise.all([
-    listTermCrossMediaFamiliesByEntryIds(database, [...termEntryIds]),
-    listGrammarCrossMediaFamiliesByEntryIds(database, [...grammarEntryIds])
+    listCrossMediaFamiliesByEntryIds(database, "term", [...termEntryIds]),
+    listCrossMediaFamiliesByEntryIds(database, "grammar", [...grammarEntryIds])
   ]);
 
   return {

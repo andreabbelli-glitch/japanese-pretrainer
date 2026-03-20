@@ -4,33 +4,25 @@ import { unstable_noStore as noStore } from "next/cache";
 import {
   countGlobalGlossaryBrowseGroups,
   db,
+  getCrossMediaFamilyByEntryId,
   getGlobalGlossaryAggregateStats,
-  getGrammarCrossMediaFamilyByEntryId,
-  getGrammarEntriesByCrossMediaGroupIds,
-  getGrammarEntriesByIds,
-  getGrammarEntryBySourceId,
+  getGlossaryEntriesByCrossMediaGroupIds,
+  getGlossaryEntriesByIds,
+  getGlossaryEntryBySourceId,
   getMediaBySlug,
-  getTermCrossMediaFamilyByEntryId,
-  getTermEntriesByCrossMediaGroupIds,
-  getTermEntriesByIds,
-  getTermEntryBySourceId,
   listEntryCardCounts,
   listEntryCardConnections,
   listEntryLessonConnections,
   listEntryStudySignals,
   listGlobalGlossaryBrowseGroupRefs,
+  listGlossaryEntriesByKind,
   listGlossarySegmentsByMediaId,
   listGlossarySearchCandidateRefs,
   listGrammarEntrySummaries,
-  listGrammarEntries,
-  listGrammarEntriesByMediaId,
   listTermEntrySummaries,
-  listTermEntries,
-  listTermEntriesByMediaId,
+  type CrossMediaSibling,
   type DatabaseClient,
-  type CrossMediaGrammarSibling,
   type CrossMediaGroupRecord,
-  type CrossMediaTermSibling,
   type EntryCardCount,
   type EntryCardConnection,
   type EntryLessonConnection,
@@ -589,10 +581,14 @@ async function loadGlobalGlossaryBrowseEntriesForPageRefs(
 
   const [directTerms, groupedTerms, directGrammar, groupedGrammar] =
     await Promise.all([
-      getTermEntriesByIds(database, [...termIds]),
-      getTermEntriesByCrossMediaGroupIds(database, [...termGroupIds]),
-      getGrammarEntriesByIds(database, [...grammarIds]),
-      getGrammarEntriesByCrossMediaGroupIds(database, [...grammarGroupIds])
+      getGlossaryEntriesByIds(database, "term", [...termIds]),
+      getGlossaryEntriesByCrossMediaGroupIds(database, "term", [
+        ...termGroupIds
+      ]),
+      getGlossaryEntriesByIds(database, "grammar", [...grammarIds]),
+      getGlossaryEntriesByCrossMediaGroupIds(database, "grammar", [
+        ...grammarGroupIds
+      ])
     ]);
 
   return dedupeFullGlossaryEntries([
@@ -853,8 +849,13 @@ async function getGlossaryDetailData(
 
   const entry =
     kind === "term"
-      ? await getTermEntryBySourceId(database, media.id, entryId)
-      : await getGrammarEntryBySourceId(database, media.id, entryId);
+      ? await getGlossaryEntryBySourceId(database, "term", media.id, entryId)
+      : await getGlossaryEntryBySourceId(
+          database,
+          "grammar",
+          media.id,
+          entryId
+        );
 
   if (!entry) {
     return null;
@@ -881,8 +882,8 @@ async function getGlossaryDetailData(
         }
       ]),
       kind === "term"
-        ? getTermCrossMediaFamilyByEntryId(database, entry.id)
-        : getGrammarCrossMediaFamilyByEntryId(database, entry.id)
+        ? getCrossMediaFamilyByEntryId(database, "term", entry.id)
+        : getCrossMediaFamilyByEntryId(database, "grammar", entry.id)
     ]);
   const entryStudySignals = studySignals.map((signal) => ({
     manualOverride: signal.manualOverride,
@@ -931,9 +932,9 @@ async function loadGlossaryBaseEntries(
         ? listTermEntrySummaries(database, {
             mediaId: options.mediaId
           })
-        : options.mediaId
-          ? listTermEntriesByMediaId(database, options.mediaId)
-          : listTermEntries(database);
+        : listGlossaryEntriesByKind(database, "term", {
+            mediaId: options.mediaId
+          });
   const grammarPromise =
     options.entryType === "term"
       ? Promise.resolve([])
@@ -941,9 +942,9 @@ async function loadGlossaryBaseEntries(
         ? listGrammarEntrySummaries(database, {
             mediaId: options.mediaId
           })
-        : options.mediaId
-          ? listGrammarEntriesByMediaId(database, options.mediaId)
-          : listGrammarEntries(database);
+        : listGlossaryEntriesByKind(database, "grammar", {
+            mediaId: options.mediaId
+          });
   const [terms, grammar] = await Promise.all([termPromise, grammarPromise]);
 
   return [
@@ -1032,10 +1033,14 @@ async function loadFullEntriesForCandidateRefs(
 
   const [directTerms, groupedTerms, directGrammar, groupedGrammar] =
     await Promise.all([
-      getTermEntriesByIds(database, [...termIds]),
-      getTermEntriesByCrossMediaGroupIds(database, [...termGroupIds]),
-      getGrammarEntriesByIds(database, [...grammarIds]),
-      getGrammarEntriesByCrossMediaGroupIds(database, [...grammarGroupIds])
+      getGlossaryEntriesByIds(database, "term", [...termIds]),
+      getGlossaryEntriesByCrossMediaGroupIds(database, "term", [
+        ...termGroupIds
+      ]),
+      getGlossaryEntriesByIds(database, "grammar", [...grammarIds]),
+      getGlossaryEntriesByCrossMediaGroupIds(database, "grammar", [
+        ...grammarGroupIds
+      ])
     ]);
 
   return dedupeFullGlossaryEntries([
@@ -1460,7 +1465,7 @@ function buildGlossaryDetailData(input: {
   cardConnections: EntryCardConnection[];
   crossMediaFamily: {
     group: CrossMediaGroupRecord | null;
-    siblings: CrossMediaTermSibling[] | CrossMediaGrammarSibling[];
+    siblings: CrossMediaSibling[];
   };
   entry: RankedGlossaryEntry;
   lessonConnections: EntryLessonConnection[];
@@ -1509,15 +1514,7 @@ function buildGlossaryDetailData(input: {
       input.crossMediaFamily.group && input.crossMediaFamily.siblings.length > 0
         ? {
             groupKey: input.crossMediaFamily.group.groupKey,
-            siblings:
-              input.entry.kind === "term"
-                ? (
-                    input.crossMediaFamily.siblings as CrossMediaTermSibling[]
-                  ).map(mapCrossMediaTermSibling)
-                : (
-                    input.crossMediaFamily
-                      .siblings as CrossMediaGrammarSibling[]
-                  ).map(mapCrossMediaGrammarSibling)
+            siblings: input.crossMediaFamily.siblings.map(mapCrossMediaSibling)
           }
         : null,
     media: input.media,
@@ -1533,40 +1530,29 @@ function buildGlossaryDetailData(input: {
   };
 }
 
-function mapCrossMediaTermSibling(
-  sibling: CrossMediaTermSibling
-): GlossaryCrossMediaSibling {
-  return {
-    href: mediaGlossaryEntryHref(sibling.mediaSlug, "term", sibling.sourceId),
-    kind: "term",
-    label: sibling.lemma,
-    reading: sibling.reading,
-    romaji: sibling.romaji,
-    meaning: sibling.meaningIt,
-    mediaSlug: sibling.mediaSlug,
-    mediaTitle: sibling.mediaTitle,
-    notes: buildCrossMediaNotesPreview(sibling.notesIt),
-    segmentTitle: sibling.segmentTitle ?? undefined
-  };
-}
-
-function mapCrossMediaGrammarSibling(
-  sibling: CrossMediaGrammarSibling
+function mapCrossMediaSibling(
+  sibling: CrossMediaSibling
 ): GlossaryCrossMediaSibling {
   return {
     href: mediaGlossaryEntryHref(
       sibling.mediaSlug,
-      "grammar",
+      sibling.kind,
       sibling.sourceId
     ),
-    kind: "grammar",
-    label: sibling.pattern,
-    title: sibling.title !== sibling.pattern ? sibling.title : undefined,
+    kind: sibling.kind,
+    label: sibling.label,
     reading: sibling.reading ?? undefined,
+    romaji: sibling.kind === "term" ? sibling.romaji : undefined,
     meaning: sibling.meaningIt,
     mediaSlug: sibling.mediaSlug,
     mediaTitle: sibling.mediaTitle,
     notes: buildCrossMediaNotesPreview(sibling.notesIt),
+    title:
+      sibling.kind === "grammar" &&
+      sibling.title &&
+      sibling.title !== sibling.label
+        ? sibling.title
+        : undefined,
     segmentTitle: sibling.segmentTitle ?? undefined
   };
 }

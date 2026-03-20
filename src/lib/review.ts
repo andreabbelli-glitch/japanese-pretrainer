@@ -2,23 +2,19 @@ import {
   countReviewSubjectsIntroducedOnDay,
   db,
   getCardById,
-  getGrammarEntriesByIds,
-  getGrammarCrossMediaFamilyByEntryId,
+  getCrossMediaFamilyByEntryId,
+  getGlossaryEntriesByIds,
   getMediaById,
   listGrammarEntryReviewSummariesByIds,
   listReviewLaunchCandidates,
   getMediaBySlug,
-  getTermEntriesByIds,
-  getTermCrossMediaFamilyByEntryId,
-  listGrammarEntriesByMediaId,
+  listGlossaryEntriesByKind,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
-  listTermEntriesByMediaId,
   listTermEntryReviewSummariesByIds,
   getReviewSubjectStateByKey,
+  type CrossMediaSibling,
   type DatabaseClient,
-  type CrossMediaGrammarSibling,
-  type CrossMediaTermSibling,
   type GrammarEntryReviewSummary,
   type GrammarGlossaryEntry,
   type GrammarGlossaryEntrySummary,
@@ -578,11 +574,11 @@ async function buildReviewPageDataFromWorkspace(input: {
     : null;
   const selectedRawCard = selection.selectedModel
     ? resolveReviewQueueSubjectSelectionCard({
-      entryLookup: input.entryLookup,
-      nowIso,
-      preferredMediaId: input.visibleMediaId,
-      selectedCardId: selection.selectedCardId,
-      subjectGroup: selection.selectedModel.group
+        entryLookup: input.entryLookup,
+        nowIso,
+        preferredMediaId: input.visibleMediaId,
+        selectedCardId: selection.selectedCardId,
+        subjectGroup: selection.selectedModel.group
       })
     : null;
   const selectedCard =
@@ -607,8 +603,8 @@ async function buildReviewPageDataFromWorkspace(input: {
                 database: input.database,
                 entryLookup: input.entryLookup
               }))
-      }
-    : selectedCardBase;
+        }
+      : selectedCardBase;
   const selectedGradePreviews = selectedCard
     ? buildReviewGradePreviews(selectedCard.reviewSeedState, input.now)
     : [];
@@ -1253,7 +1249,9 @@ async function loadGlobalReviewWorkspace(
 ): Promise<Omit<LoadedGlobalReviewPageWorkspace, "reviewFrontFurigana">> {
   const now = new Date();
   const mediaRows = await (options.profiler
-    ? options.profiler.measure("listMediaCached", () => listMediaCached(database))
+    ? options.profiler.measure("listMediaCached", () =>
+        listMediaCached(database)
+      )
     : listMediaCached(database));
   const searchState = normalizeReviewSearchState(searchParams);
   const workspace = await (options.profiler
@@ -1376,11 +1374,7 @@ export async function getGlobalReviewPageLoadResult(
 
   return {
     kind: "ready",
-    data: await buildGlobalReviewPageData(
-      workspace,
-      database,
-      options.profiler
-    )
+    data: await buildGlobalReviewPageData(workspace, database, options.profiler)
   };
 }
 
@@ -1559,15 +1553,15 @@ export async function hydrateReviewCard(input: {
 
   const [terms, grammar] = await Promise.all([
     input.profiler
-      ? input.profiler.measure("getTermEntriesByIds", () =>
-          getTermEntriesByIds(database, [...termIds])
+      ? input.profiler.measure("getGlossaryEntriesByIds.term", () =>
+          getGlossaryEntriesByIds(database, "term", [...termIds])
         )
-      : getTermEntriesByIds(database, [...termIds]),
+      : getGlossaryEntriesByIds(database, "term", [...termIds]),
     input.profiler
-      ? input.profiler.measure("getGrammarEntriesByIds", () =>
-          getGrammarEntriesByIds(database, [...grammarIds])
+      ? input.profiler.measure("getGlossaryEntriesByIds.grammar", () =>
+          getGlossaryEntriesByIds(database, "grammar", [...grammarIds])
         )
-      : getGrammarEntriesByIds(database, [...grammarIds])
+      : getGlossaryEntriesByIds(database, "grammar", [...grammarIds])
   ]);
   const entryLookup = buildEntryLookup(terms, grammar);
   const subjectIdentity = deriveReviewSubjectIdentity({
@@ -1706,8 +1700,8 @@ export async function getReviewCardDetailData(
 
   const [cards, terms, grammar] = await Promise.all([
     getEligibleReviewCardsByMediaId(media.id, database),
-    listTermEntriesByMediaId(database, media.id),
-    listGrammarEntriesByMediaId(database, media.id)
+    listGlossaryEntriesByKind(database, "term", { mediaId: media.id }),
+    listGlossaryEntriesByKind(database, "grammar", { mediaId: media.id })
   ]);
   const entryLookup = buildEntryLookup(terms, grammar);
   const selectedCard = cards
@@ -1742,8 +1736,12 @@ export async function getReviewCardDetailData(
 
       const family =
         link.entryType === "term"
-          ? await getTermCrossMediaFamilyByEntryId(database, link.entryId)
-          : await getGrammarCrossMediaFamilyByEntryId(database, link.entryId);
+          ? await getCrossMediaFamilyByEntryId(database, "term", link.entryId)
+          : await getCrossMediaFamilyByEntryId(
+              database,
+              "grammar",
+              link.entryId
+            );
 
       if (family.siblings.length === 0) {
         return null;
@@ -1758,14 +1756,7 @@ export async function getReviewCardDetailData(
             : (localEntry as GrammarGlossaryEntry).pattern,
         meaning: localEntry.meaningIt,
         relationshipLabel: formatCardRelationshipLabel(link.relationshipType),
-        siblings:
-          link.entryType === "term"
-            ? (family.siblings as CrossMediaTermSibling[]).map(
-                mapReviewCrossMediaTermSibling
-              )
-            : (family.siblings as CrossMediaGrammarSibling[]).map(
-                mapReviewCrossMediaGrammarSibling
-              )
+        siblings: family.siblings.map(mapReviewCrossMediaSibling)
       };
     })
   );
@@ -2458,34 +2449,26 @@ function buildSingleMediaLookup(
   ]);
 }
 
-function mapReviewCrossMediaTermSibling(sibling: CrossMediaTermSibling) {
-  return {
-    href: mediaGlossaryEntryHref(sibling.mediaSlug, "term", sibling.sourceId),
-    label: sibling.lemma,
-    meaning: sibling.meaningIt,
-    mediaSlug: sibling.mediaSlug,
-    mediaTitle: sibling.mediaTitle,
-    notes: buildReviewCrossMediaNotesPreview(sibling.notesIt),
-    reading: sibling.reading,
-    subtitle:
-      [sibling.reading, sibling.romaji].filter(Boolean).join(" / ") || undefined
-  };
-}
-
-function mapReviewCrossMediaGrammarSibling(sibling: CrossMediaGrammarSibling) {
+function mapReviewCrossMediaSibling(sibling: CrossMediaSibling) {
   return {
     href: mediaGlossaryEntryHref(
       sibling.mediaSlug,
-      "grammar",
+      sibling.kind,
       sibling.sourceId
     ),
-    label: sibling.pattern,
+    label: sibling.label,
     meaning: sibling.meaningIt,
     mediaSlug: sibling.mediaSlug,
     mediaTitle: sibling.mediaTitle,
     notes: buildReviewCrossMediaNotesPreview(sibling.notesIt),
     reading: sibling.reading ?? undefined,
-    subtitle: sibling.title !== sibling.pattern ? sibling.title : undefined
+    subtitle:
+      sibling.kind === "term"
+        ? [sibling.reading, sibling.romaji].filter(Boolean).join(" / ") ||
+          undefined
+        : sibling.title && sibling.title !== sibling.label
+          ? sibling.title
+          : undefined
   };
 }
 
@@ -2552,8 +2535,8 @@ async function loadReviewCardPronunciations(input: {
   }
 
   const [terms, grammar] = await Promise.all([
-    getTermEntriesByIds(input.database, [...missingTermIds]),
-    getGrammarEntriesByIds(input.database, [...missingGrammarIds])
+    getGlossaryEntriesByIds(input.database, "term", [...missingTermIds]),
+    getGlossaryEntriesByIds(input.database, "grammar", [...missingGrammarIds])
   ]);
   const resolvedEntryLookup = new Map(input.entryLookup);
 
@@ -3021,10 +3004,7 @@ function mapQueueCard(
       entryLookup,
       nowIso
     );
-  const pronunciations = buildReviewCardPronunciations(
-    card,
-    entryLookup
-  );
+  const pronunciations = buildReviewCardPronunciations(card, entryLookup);
   const reading = resolveReviewCardReading(card, entryLookup);
 
   return {

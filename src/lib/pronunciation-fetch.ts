@@ -1,10 +1,5 @@
 import { createHash } from "node:crypto";
-import {
-  mkdir,
-  readFile,
-  stat,
-  writeFile
-} from "node:fs/promises";
+import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import {
@@ -127,7 +122,10 @@ export async function fetchPronunciationsForBundle(input: {
       return true;
     }
 
-    return !(entry.audioSrc || manifestEntries.get(`${entry.kind}:${entry.id}`)?.audioSrc);
+    return !(
+      entry.audioSrc ||
+      manifestEntries.get(`${entry.kind}:${entry.id}`)?.audioSrc
+    );
   });
   const limitedEntries =
     typeof input.limit === "number" && input.limit >= 0
@@ -151,7 +149,10 @@ export async function fetchPronunciationsForBundle(input: {
       continue;
     }
 
-    const localAsset = buildLocalAudioAssetPath(entry, resolved.candidate.fileTitle);
+    const localAsset = buildLocalAudioAssetPath(
+      entry,
+      resolved.candidate.fileTitle
+    );
     const absoluteAssetPath = path.join(
       entry.mediaDirectory,
       localAsset.replace(/^assets\//, "assets/")
@@ -247,9 +248,11 @@ export async function resolvePronunciationForEntry(input: {
 
 export function collectPronunciationTargets(bundle: NormalizedMediaBundle) {
   return [
-    ...bundle.terms.map((entry) => mapTermToPronunciationTarget(bundle, entry)),
+    ...bundle.terms.map((entry) =>
+      mapToPronunciationTarget(bundle, entry, "term")
+    ),
     ...bundle.grammarPatterns.map((entry) =>
-      mapGrammarToPronunciationTarget(bundle, entry)
+      mapToPronunciationTarget(bundle, entry, "grammar")
     )
   ];
 }
@@ -291,7 +294,10 @@ export function scorePronunciationCandidate(
 
   let score = candidate.source === "lingua_libre" ? 180 : 140;
 
-  if (entry.reading && spokenText === normalizePronunciationText(entry.reading)) {
+  if (
+    entry.reading &&
+    spokenText === normalizePronunciationText(entry.reading)
+  ) {
     score += 40;
   } else if (
     spokenText === normalizePronunciationText(entry.label) ||
@@ -356,7 +362,9 @@ export function extractCommonsFileTitlesFromWiktionaryWikitext(source: string) {
       const fileName = match[1]?.trim();
 
       if (fileName) {
-        matches.add(fileName.startsWith("File:") ? fileName : `File:${fileName}`);
+        matches.add(
+          fileName.startsWith("File:") ? fileName : `File:${fileName}`
+        );
       }
     }
   }
@@ -430,9 +438,12 @@ async function getWiktionaryCommonsFileTitles(input: {
           url: `https://${host}/w/api.php?action=query&format=json&formatversion=2&prop=revisions&rvprop=content&rvslots=main&titles=${encodeURIComponent(title)}`
         });
         const source =
-          response.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content ?? "";
+          response.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content ??
+          "";
 
-        for (const fileTitle of extractCommonsFileTitlesFromWiktionaryWikitext(source)) {
+        for (const fileTitle of extractCommonsFileTitlesFromWiktionaryWikitext(
+          source
+        )) {
           titles.set(fileTitle, title);
         }
       } catch (error) {
@@ -501,7 +512,11 @@ async function fetchCommonsSearch(input: {
   query: string;
 }) {
   const cacheKey = hashString(`commons-search:${input.query}:${input.limit}`);
-  const cachePath = path.join(input.cacheRoot, "commons-search", `${cacheKey}.json`);
+  const cachePath = path.join(
+    input.cacheRoot,
+    "commons-search",
+    `${cacheKey}.json`
+  );
   const response = await fetchJsonWithCache<CommonsSearchResponse>({
     cachePath,
     network: input.network,
@@ -545,7 +560,9 @@ function mapCommonsPageToCandidate(
       sanitizeCommonsMetadata(imageInfo.extmetadata?.Attribution?.value),
     fileTitle: title,
     fileUrl,
-    license: sanitizeCommonsMetadata(imageInfo.extmetadata?.LicenseShortName?.value),
+    license: sanitizeCommonsMetadata(
+      imageInfo.extmetadata?.LicenseShortName?.value
+    ),
     mimeType: imageInfo.mime,
     pageUrl,
     source,
@@ -594,10 +611,10 @@ function buildSearchVariants(entry: PronunciationTargetEntry) {
   return [...buildSearchTargets(entry)]
     .map((value) =>
       [entry.reading, entry.label, ...entry.aliases]
-        .filter((candidate): candidate is string => typeof candidate === "string")
-        .find(
-        (candidate) => normalizePronunciationText(candidate) === value
+        .filter(
+          (candidate): candidate is string => typeof candidate === "string"
         )
+        .find((candidate) => normalizePronunciationText(candidate) === value)
     )
     .filter((value): value is string => typeof value === "string")
     .filter((value) => value.length > 0);
@@ -615,34 +632,23 @@ function buildLocalAudioAssetPath(
   return `assets/audio/${entry.kind}/${entry.id}/${safeBaseName}${extension}`;
 }
 
-function mapTermToPronunciationTarget(
+function mapToPronunciationTarget(
   bundle: NormalizedMediaBundle,
-  entry: NormalizedTerm
+  entry: NormalizedGrammarPattern | NormalizedTerm,
+  kind: "grammar" | "term"
 ): PronunciationTargetEntry {
-  return {
-    aliases: entry.aliases,
-    audioSrc: entry.audio?.audioSrc,
-    crossMediaGroup: entry.crossMediaGroup,
-    id: entry.id,
-    kind: "term",
-    label: entry.lemma,
-    mediaDirectory: bundle.mediaDirectory,
-    mediaSlug: bundle.mediaSlug,
-    reading: entry.reading
-  };
-}
+  const label =
+    kind === "term"
+      ? (entry as NormalizedTerm).lemma
+      : (entry as NormalizedGrammarPattern).pattern;
 
-function mapGrammarToPronunciationTarget(
-  bundle: NormalizedMediaBundle,
-  entry: NormalizedGrammarPattern
-): PronunciationTargetEntry {
   return {
     aliases: entry.aliases,
     audioSrc: entry.audio?.audioSrc,
     crossMediaGroup: entry.crossMediaGroup,
     id: entry.id,
-    kind: "grammar",
-    label: entry.pattern,
+    kind,
+    label,
     mediaDirectory: bundle.mediaDirectory,
     mediaSlug: bundle.mediaSlug,
     reading: entry.reading
@@ -660,7 +666,8 @@ async function fetchJsonWithCache<T>(input: {
   }
 
   await mkdir(path.dirname(input.cachePath), { recursive: true });
-  const requestDelayMs = input.network?.requestDelayMs ?? DEFAULT_REQUEST_DELAY_MS;
+  const requestDelayMs =
+    input.network?.requestDelayMs ?? DEFAULT_REQUEST_DELAY_MS;
   const requestTimeoutMs =
     input.network?.requestTimeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS;
   const retryBaseDelayMs =
@@ -732,7 +739,12 @@ function sanitizeCommonsMetadata(value: string | undefined) {
     return undefined;
   }
 
-  return value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() || undefined;
+  return (
+    value
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim() || undefined
+  );
 }
 
 function parseSpeakerFromLinguaLibreTitle(title: string) {

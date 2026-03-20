@@ -93,7 +93,9 @@ export async function fetchPitchAccentsForBundle(input: {
     typeof input.limit === "number" && input.limit >= 0
       ? targets.slice(0, input.limit)
       : targets;
-  const manifestState = await loadPronunciationManifest(input.bundle.mediaDirectory);
+  const manifestState = await loadPronunciationManifest(
+    input.bundle.mediaDirectory
+  );
 
   if (manifestState.issues.length > 0) {
     throw new Error(
@@ -249,7 +251,10 @@ export async function lookupWiktionaryPitchAccent(input: {
       }
 
       const source = page.revisions?.[0]?.slots?.main?.content ?? "";
-      const values = extractPitchAccentFromWiktionaryWikitext(source, input.entry);
+      const values = extractPitchAccentFromWiktionaryWikitext(
+        source,
+        input.entry
+      );
 
       if (values.length !== 1) {
         continue;
@@ -379,7 +384,9 @@ export function extractPitchAccentCandidatesFromOjadHtml(html: string) {
   }> = [];
 
   for (const row of rows) {
-    const title = stripHtml(row.match(/<p class="midashi_word">([\s\S]*?)<\/p>/iu)?.[1]);
+    const title = stripHtml(
+      row.match(/<p class="midashi_word">([\s\S]*?)<\/p>/iu)?.[1]
+    );
     const accentCell = row.match(
       /<td class="katsuyo katsuyo_jisho_js">[\s\S]*?<\/td>/iu
     )?.[0];
@@ -388,9 +395,11 @@ export function extractPitchAccentCandidatesFromOjadHtml(html: string) {
       continue;
     }
 
-    const spans = [...accentCell.matchAll(
-      /<span class="([^"]+)"><span class="inner"><span class="char">([^<]+)<\/span>/giu
-    )].map((match) => ({
+    const spans = [
+      ...accentCell.matchAll(
+        /<span class="([^"]+)"><span class="inner"><span class="char">([^<]+)<\/span>/giu
+      )
+    ].map((match) => ({
       char: match[2] ?? "",
       classes: match[1]?.trim().split(/\s+/u) ?? []
     }));
@@ -481,48 +490,41 @@ function isMostlyKana(value: string) {
 
 function collectPitchAccentTargets(bundle: NormalizedMediaBundle) {
   return [
-    ...bundle.terms.map((entry) => mapTermToPitchAccentTarget(bundle, entry)),
+    ...bundle.terms.map((entry) =>
+      mapToPitchAccentTarget(bundle, entry, "term")
+    ),
     ...bundle.grammarPatterns.map((entry) =>
-      mapGrammarToPitchAccentTarget(bundle, entry)
+      mapToPitchAccentTarget(bundle, entry, "grammar")
     )
   ];
 }
 
-function mapTermToPitchAccentTarget(
+function mapToPitchAccentTarget(
   bundle: NormalizedMediaBundle,
-  entry: NormalizedTerm
+  entry: NormalizedGrammarPattern | NormalizedTerm,
+  kind: "grammar" | "term"
 ): PitchAccentFetchTarget {
-  return {
-    aliases: entry.aliases,
-    audio: entry.audio,
-    id: entry.id,
-    kind: "term",
-    label: entry.lemma,
-    mediaDirectory: bundle.mediaDirectory,
-    mediaSlug: bundle.mediaSlug,
-    pitchAccent: entry.pitchAccent,
-    pitchAccentPageUrl: entry.pitchAccentPageUrl,
-    pitchAccentSource: entry.pitchAccentSource,
-    reading: entry.reading
-  };
-}
+  const label =
+    kind === "term"
+      ? (entry as NormalizedTerm).lemma
+      : (entry as NormalizedGrammarPattern).pattern;
+  const reading =
+    kind === "term"
+      ? entry.reading
+      : (entry.reading ?? (entry as NormalizedGrammarPattern).pattern);
 
-function mapGrammarToPitchAccentTarget(
-  bundle: NormalizedMediaBundle,
-  entry: NormalizedGrammarPattern
-): PitchAccentFetchTarget {
   return {
     aliases: entry.aliases,
     audio: entry.audio,
     id: entry.id,
-    kind: "grammar",
-    label: entry.pattern,
+    kind,
+    label,
     mediaDirectory: bundle.mediaDirectory,
     mediaSlug: bundle.mediaSlug,
     pitchAccent: entry.pitchAccent,
     pitchAccentPageUrl: entry.pitchAccentPageUrl,
     pitchAccentSource: entry.pitchAccentSource,
-    reading: entry.reading ?? entry.pattern
+    reading
   };
 }
 
@@ -556,9 +558,7 @@ function matchesPitchAccentTarget(
 
   return [entry.label, entry.reading, ...entry.aliases]
     .filter((candidate): candidate is string => typeof candidate === "string")
-    .some(
-      (candidate) => normalizePronunciationText(candidate) === normalized
-    );
+    .some((candidate) => normalizePronunciationText(candidate) === normalized);
 }
 
 function parsePitchAccentValue(value: string | undefined) {
@@ -590,11 +590,17 @@ function scoreOjadCandidate(
     ? normalizePronunciationText(entry.reading)
     : "";
 
-  if (normalizedReading.length > 0 && normalizedReading === normalizedEntryReading) {
+  if (
+    normalizedReading.length > 0 &&
+    normalizedReading === normalizedEntryReading
+  ) {
     score += 220;
   }
 
-  if (normalizedTitle === normalizedLabel || normalizedTitle.includes(normalizedLabel)) {
+  if (
+    normalizedTitle === normalizedLabel ||
+    normalizedTitle.includes(normalizedLabel)
+  ) {
     score += 140;
   }
 
@@ -606,7 +612,10 @@ function scoreOjadCandidate(
     score += 100;
   }
 
-  if (normalizedReading === normalizedQuery || normalizedTitle.includes(normalizedQuery)) {
+  if (
+    normalizedReading === normalizedQuery ||
+    normalizedTitle.includes(normalizedQuery)
+  ) {
     score += 60;
   }
 
@@ -700,7 +709,10 @@ function stripHtml(value: string | undefined) {
     return null;
   }
 
-  const stripped = value.replace(/<[^>]+>/g, " ").replace(/\s+/gu, " ").trim();
+  const stripped = value
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/gu, " ")
+    .trim();
   return stripped.length > 0 ? stripped : null;
 }
 

@@ -1,4 +1,4 @@
-import { and, asc, eq, inArray, ne, or, sql } from "drizzle-orm";
+import { and, asc, eq, inArray, ne, or, sql, type SQL } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import {
@@ -55,7 +55,7 @@ function splitGlossaryEntryRefs(entries: GlossaryEntryRef[]) {
 
 export type CrossMediaGroupRecord = typeof crossMediaGroup.$inferSelect;
 
-export type CrossMediaTermSibling = {
+export type CrossMediaSibling = {
   entryId: string;
   groupId: string;
   groupKey: string;
@@ -63,39 +63,32 @@ export type CrossMediaTermSibling = {
   mediaSlug: string;
   mediaTitle: string;
   sourceId: string;
-  lemma: string;
-  reading: string;
-  romaji: string;
-  meaningIt: string;
-  notesIt: string | null;
-  segmentTitle: string | null;
-};
-
-export type CrossMediaGrammarSibling = {
-  entryId: string;
-  groupId: string;
-  groupKey: string;
-  mediaId: string;
-  mediaSlug: string;
-  mediaTitle: string;
-  sourceId: string;
-  pattern: string;
-  title: string;
+  kind: EntryType;
+  label: string;
   reading: string | null;
   meaningIt: string;
   notesIt: string | null;
   segmentTitle: string | null;
+  romaji?: string;
+  title?: string;
 };
 
-export type TermCrossMediaFamily = {
+export type CrossMediaFamily = {
   group: CrossMediaGroupRecord | null;
-  siblings: CrossMediaTermSibling[];
+  siblings: CrossMediaSibling[];
 };
 
-export type GrammarCrossMediaFamily = {
-  group: CrossMediaGroupRecord | null;
-  siblings: CrossMediaGrammarSibling[];
+type EntryStatusRecord = typeof entryStatus.$inferSelect;
+type GlossaryEntryWithStatus<T extends { id: string }> = T & {
+  status: EntryStatusRecord | null;
 };
+
+const glossaryEntryRelations = {
+  aliases: true,
+  crossMediaGroup: true,
+  media: true,
+  segment: true
+} as const;
 
 async function getEntryStatusMap(
   database: DatabaseClient,
@@ -134,6 +127,174 @@ function buildMediaScopeFilter(
   }
 
   return undefined;
+}
+
+async function loadTermGlossaryRows(
+  database: DatabaseClient,
+  where?: SQL<unknown>
+) {
+  return database.query.term.findMany({
+    where,
+    with: glossaryEntryRelations,
+    orderBy: [asc(term.lemma), asc(term.reading)]
+  });
+}
+
+async function loadGrammarGlossaryRows(
+  database: DatabaseClient,
+  where?: SQL<unknown>
+) {
+  return database.query.grammarPattern.findMany({
+    where,
+    with: glossaryEntryRelations,
+    orderBy: [asc(grammarPattern.pattern), asc(grammarPattern.title)]
+  });
+}
+
+async function loadTermGlossaryRow(
+  database: DatabaseClient,
+  where?: SQL<unknown>
+) {
+  return database.query.term.findFirst({
+    where,
+    with: glossaryEntryRelations
+  });
+}
+
+async function loadGrammarGlossaryRow(
+  database: DatabaseClient,
+  where?: SQL<unknown>
+) {
+  return database.query.grammarPattern.findFirst({
+    where,
+    with: glossaryEntryRelations
+  });
+}
+
+type TermGlossaryRow = Awaited<ReturnType<typeof loadTermGlossaryRows>>[number];
+type GrammarGlossaryRow = Awaited<
+  ReturnType<typeof loadGrammarGlossaryRows>
+>[number];
+
+function mergeEntryStatuses<T extends { id: string }>(
+  rows: T[],
+  statusMap: Map<string, EntryStatusRecord>
+): GlossaryEntryWithStatus<T>[] {
+  return rows.map((row) => ({
+    ...row,
+    status: statusMap.get(row.id) ?? null
+  }));
+}
+
+async function queryGlossaryEntriesWithStatus(
+  database: DatabaseClient,
+  kind: "term",
+  where?: SQL<unknown>
+): Promise<GlossaryEntryWithStatus<TermGlossaryRow>[]>;
+async function queryGlossaryEntriesWithStatus(
+  database: DatabaseClient,
+  kind: "grammar",
+  where?: SQL<unknown>
+): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow>[]>;
+async function queryGlossaryEntriesWithStatus(
+  database: DatabaseClient,
+  kind: EntryType,
+  where?: SQL<unknown>
+): Promise<
+  | GlossaryEntryWithStatus<TermGlossaryRow>[]
+  | GlossaryEntryWithStatus<GrammarGlossaryRow>[]
+> {
+  if (kind === "term") {
+    const rows = await loadTermGlossaryRows(database, where);
+    const statusMap = await getEntryStatusMap(
+      database,
+      kind,
+      rows.map((row) => row.id)
+    );
+
+    return mergeEntryStatuses(rows, statusMap);
+  }
+
+  const rows = await loadGrammarGlossaryRows(database, where);
+  const statusMap = await getEntryStatusMap(
+    database,
+    kind,
+    rows.map((row) => row.id)
+  );
+
+  return mergeEntryStatuses(rows, statusMap);
+}
+
+async function queryGlossaryEntryWithStatus(
+  database: DatabaseClient,
+  kind: "term",
+  where?: SQL<unknown>
+): Promise<GlossaryEntryWithStatus<TermGlossaryRow> | null>;
+async function queryGlossaryEntryWithStatus(
+  database: DatabaseClient,
+  kind: "grammar",
+  where?: SQL<unknown>
+): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow> | null>;
+async function queryGlossaryEntryWithStatus(
+  database: DatabaseClient,
+  kind: EntryType,
+  where?: SQL<unknown>
+) {
+  if (kind === "term") {
+    const row = await loadTermGlossaryRow(database, where);
+
+    if (!row) {
+      return null;
+    }
+
+    const statusMap = await getEntryStatusMap(database, kind, [row.id]);
+
+    return {
+      ...row,
+      status: statusMap.get(row.id) ?? null
+    };
+  }
+
+  const row = await loadGrammarGlossaryRow(database, where);
+
+  if (!row) {
+    return null;
+  }
+
+  const statusMap = await getEntryStatusMap(database, kind, [row.id]);
+
+  return {
+    ...row,
+    status: statusMap.get(row.id) ?? null
+  };
+}
+
+export async function listGlossaryEntriesByKind(
+  database: DatabaseClient,
+  kind: "term",
+  options: ListGlossaryEntriesOptions
+): Promise<GlossaryEntryWithStatus<TermGlossaryRow>[]>;
+export async function listGlossaryEntriesByKind(
+  database: DatabaseClient,
+  kind: "grammar",
+  options: ListGlossaryEntriesOptions
+): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow>[]>;
+export async function listGlossaryEntriesByKind(
+  database: DatabaseClient,
+  kind: EntryType,
+  options: ListGlossaryEntriesOptions = {}
+) {
+  return kind === "term"
+    ? queryGlossaryEntriesWithStatus(
+        database,
+        kind,
+        buildMediaScopeFilter(term.mediaId, options)
+      )
+    : queryGlossaryEntriesWithStatus(
+        database,
+        kind,
+        buildMediaScopeFilter(grammarPattern.mediaId, options)
+      );
 }
 
 type GlossarySearchCandidateInput = {
@@ -252,60 +413,6 @@ function toKatakana(value: string) {
     .join("");
 }
 
-async function listTermGlossaryEntries(
-  database: DatabaseClient,
-  options: ListGlossaryEntriesOptions = {}
-) {
-  const rows = await database.query.term.findMany({
-    where: buildMediaScopeFilter(term.mediaId, options),
-    with: {
-      aliases: true,
-      crossMediaGroup: true,
-      media: true,
-      segment: true
-    },
-    orderBy: [asc(term.lemma), asc(term.reading)]
-  });
-
-  const statusMap = await getEntryStatusMap(
-    database,
-    "term",
-    rows.map((row) => row.id)
-  );
-
-  return rows.map((row) => ({
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  }));
-}
-
-async function listGrammarGlossaryEntries(
-  database: DatabaseClient,
-  options: ListGlossaryEntriesOptions = {}
-) {
-  const rows = await database.query.grammarPattern.findMany({
-    where: buildMediaScopeFilter(grammarPattern.mediaId, options),
-    with: {
-      aliases: true,
-      crossMediaGroup: true,
-      media: true,
-      segment: true
-    },
-    orderBy: [asc(grammarPattern.pattern), asc(grammarPattern.title)]
-  });
-
-  const statusMap = await getEntryStatusMap(
-    database,
-    "grammar",
-    rows.map((row) => row.id)
-  );
-
-  return rows.map((row) => ({
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  }));
-}
-
 export async function listGlossarySegmentsByMediaId(
   database: DatabaseClient,
   mediaId: string
@@ -314,31 +421,6 @@ export async function listGlossarySegmentsByMediaId(
     where: eq(segment.mediaId, mediaId),
     orderBy: [asc(segment.orderIndex), asc(segment.title)]
   });
-}
-
-export async function listTermEntriesByMediaId(
-  database: DatabaseClient,
-  mediaId: string
-) {
-  return listTermGlossaryEntries(database, {
-    mediaId
-  });
-}
-
-export async function listGrammarEntriesByMediaId(
-  database: DatabaseClient,
-  mediaId: string
-) {
-  return listGrammarGlossaryEntries(database, {
-    mediaId
-  });
-}
-
-export async function listTermEntries(
-  database: DatabaseClient,
-  options: ListGlossaryEntriesOptions = {}
-) {
-  return listTermGlossaryEntries(database, options);
 }
 
 export async function listTermEntrySummaries(
@@ -418,13 +500,6 @@ export async function listTermEntryReviewSummaries(
     )
     .where(buildMediaScopeFilter(term.mediaId, options))
     .orderBy(asc(term.lemma), asc(term.reading));
-}
-
-export async function listGrammarEntries(
-  database: DatabaseClient,
-  options: ListGlossaryEntriesOptions = {}
-) {
-  return listGrammarGlossaryEntries(database, options);
 }
 
 export async function listGrammarEntrySummaries(
@@ -1022,130 +1097,65 @@ export async function listGlobalGlossaryBrowseGroupRefs(
   }));
 }
 
-export async function getTermEntriesByIds(
+export async function getGlossaryEntriesByIds(
   database: DatabaseClient,
+  kind: "term",
+  entryIds: string[]
+): Promise<GlossaryEntryWithStatus<TermGlossaryRow>[]>;
+export async function getGlossaryEntriesByIds(
+  database: DatabaseClient,
+  kind: "grammar",
+  entryIds: string[]
+): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow>[]>;
+export async function getGlossaryEntriesByIds(
+  database: DatabaseClient,
+  kind: EntryType,
   entryIds: string[]
 ) {
   if (entryIds.length === 0) {
     return [];
   }
 
-  const rows = await database.query.term.findMany({
-    where: inArray(term.id, entryIds),
-    with: {
-      aliases: true,
-      crossMediaGroup: true,
-      media: true,
-      segment: true
-    },
-    orderBy: [asc(term.lemma), asc(term.reading)]
-  });
-
-  const statusMap = await getEntryStatusMap(
-    database,
-    "term",
-    rows.map((row) => row.id)
-  );
-
-  return rows.map((row) => ({
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  }));
+  return kind === "term"
+    ? queryGlossaryEntriesWithStatus(database, kind, inArray(term.id, entryIds))
+    : queryGlossaryEntriesWithStatus(
+        database,
+        kind,
+        inArray(grammarPattern.id, entryIds)
+      );
 }
 
-export async function getTermEntriesByCrossMediaGroupIds(
+export async function getGlossaryEntriesByCrossMediaGroupIds(
   database: DatabaseClient,
+  kind: "term",
+  groupIds: string[]
+): Promise<GlossaryEntryWithStatus<TermGlossaryRow>[]>;
+export async function getGlossaryEntriesByCrossMediaGroupIds(
+  database: DatabaseClient,
+  kind: "grammar",
+  groupIds: string[]
+): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow>[]>;
+export async function getGlossaryEntriesByCrossMediaGroupIds(
+  database: DatabaseClient,
+  kind: EntryType,
   groupIds: string[]
 ) {
   if (groupIds.length === 0) {
     return [];
   }
 
-  const rows = await database.query.term.findMany({
-    where: inArray(term.crossMediaGroupId, groupIds),
-    with: {
-      aliases: true,
-      crossMediaGroup: true,
-      media: true,
-      segment: true
-    },
-    orderBy: [asc(term.lemma), asc(term.reading)]
-  });
-
-  const statusMap = await getEntryStatusMap(
-    database,
-    "term",
-    rows.map((row) => row.id)
-  );
-
-  return rows.map((row) => ({
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  }));
+  return kind === "term"
+    ? queryGlossaryEntriesWithStatus(
+        database,
+        kind,
+        inArray(term.crossMediaGroupId, groupIds)
+      )
+    : queryGlossaryEntriesWithStatus(
+        database,
+        kind,
+        inArray(grammarPattern.crossMediaGroupId, groupIds)
+      );
 }
-
-export async function getGrammarEntriesByIds(
-  database: DatabaseClient,
-  entryIds: string[]
-) {
-  if (entryIds.length === 0) {
-    return [];
-  }
-
-  const rows = await database.query.grammarPattern.findMany({
-    where: inArray(grammarPattern.id, entryIds),
-    with: {
-      aliases: true,
-      crossMediaGroup: true,
-      media: true,
-      segment: true
-    },
-    orderBy: [asc(grammarPattern.pattern), asc(grammarPattern.title)]
-  });
-
-  const statusMap = await getEntryStatusMap(
-    database,
-    "grammar",
-    rows.map((row) => row.id)
-  );
-
-  return rows.map((row) => ({
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  }));
-}
-
-export async function getGrammarEntriesByCrossMediaGroupIds(
-  database: DatabaseClient,
-  groupIds: string[]
-) {
-  if (groupIds.length === 0) {
-    return [];
-  }
-
-  const rows = await database.query.grammarPattern.findMany({
-    where: inArray(grammarPattern.crossMediaGroupId, groupIds),
-    with: {
-      aliases: true,
-      crossMediaGroup: true,
-      media: true,
-      segment: true
-    },
-    orderBy: [asc(grammarPattern.pattern), asc(grammarPattern.title)]
-  });
-
-  const statusMap = await getEntryStatusMap(
-    database,
-    "grammar",
-    rows.map((row) => row.id)
-  );
-
-  return rows.map((row) => ({
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  }));
-}
-
 export async function getGlobalGlossaryAggregateStats(
   database: DatabaseClient
 ) {
@@ -1223,92 +1233,82 @@ export async function getGlobalGlossaryAggregateStats(
   };
 }
 
-export async function getTermEntryById(
+export async function getGlossaryEntryById(
   database: DatabaseClient,
+  kind: "term",
   entryId: string
-) {
-  const [entry] = await getTermEntriesByIds(database, [entryId]);
+): Promise<GlossaryEntryWithStatus<TermGlossaryRow> | null>;
+export async function getGlossaryEntryById(
+  database: DatabaseClient,
+  kind: "grammar",
+  entryId: string
+): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow> | null>;
+export async function getGlossaryEntryById(
+  database: DatabaseClient,
+  kind: EntryType,
+  entryId: string
+): Promise<
+  | GlossaryEntryWithStatus<TermGlossaryRow>
+  | GlossaryEntryWithStatus<GrammarGlossaryRow>
+  | null
+> {
+  if (kind === "term") {
+    const [entry] = await getGlossaryEntriesByIds(database, kind, [entryId]);
+
+    return entry ?? null;
+  }
+
+  const [entry] = await getGlossaryEntriesByIds(database, kind, [entryId]);
 
   return entry ?? null;
 }
 
-export async function getTermEntryBySourceId(
+export async function getGlossaryEntryBySourceId(
   database: DatabaseClient,
+  kind: "term",
+  mediaId: string,
+  sourceId: string
+): Promise<GlossaryEntryWithStatus<TermGlossaryRow> | null>;
+export async function getGlossaryEntryBySourceId(
+  database: DatabaseClient,
+  kind: "grammar",
+  mediaId: string,
+  sourceId: string
+): Promise<GlossaryEntryWithStatus<GrammarGlossaryRow> | null>;
+export async function getGlossaryEntryBySourceId(
+  database: DatabaseClient,
+  kind: EntryType,
   mediaId: string,
   sourceId: string
 ) {
-  const row = await database.query.term.findFirst({
-    where: and(eq(term.mediaId, mediaId), eq(term.sourceId, sourceId)),
-    with: {
-      aliases: true,
-      crossMediaGroup: true,
-      media: true,
-      segment: true
-    }
-  });
-
-  if (!row) {
-    return null;
-  }
-
-  const statusMap = await getEntryStatusMap(database, "term", [row.id]);
-
-  return {
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  };
+  return kind === "term"
+    ? queryGlossaryEntryWithStatus(
+        database,
+        kind,
+        and(eq(term.mediaId, mediaId), eq(term.sourceId, sourceId))
+      )
+    : queryGlossaryEntryWithStatus(
+        database,
+        kind,
+        and(
+          eq(grammarPattern.mediaId, mediaId),
+          eq(grammarPattern.sourceId, sourceId)
+        )
+      );
 }
 
-export async function getGrammarEntryById(
+export async function listCrossMediaFamiliesByEntryIds(
   database: DatabaseClient,
-  entryId: string
-) {
-  const [entry] = await getGrammarEntriesByIds(database, [entryId]);
-
-  return entry ?? null;
-}
-
-export async function getGrammarEntryBySourceId(
-  database: DatabaseClient,
-  mediaId: string,
-  sourceId: string
-) {
-  const row = await database.query.grammarPattern.findFirst({
-    where: and(
-      eq(grammarPattern.mediaId, mediaId),
-      eq(grammarPattern.sourceId, sourceId)
-    ),
-    with: {
-      aliases: true,
-      crossMediaGroup: true,
-      media: true,
-      segment: true
-    }
-  });
-
-  if (!row) {
-    return null;
-  }
-
-  const statusMap = await getEntryStatusMap(database, "grammar", [row.id]);
-
-  return {
-    ...row,
-    status: statusMap.get(row.id) ?? null
-  };
-}
-
-export async function listTermCrossMediaFamiliesByEntryIds(
-  database: DatabaseClient,
+  kind: EntryType,
   entryIds: string[]
-): Promise<Map<string, TermCrossMediaFamily>> {
+): Promise<Map<string, CrossMediaFamily>> {
   const requestedEntryIds = [...new Set(entryIds)];
 
   if (requestedEntryIds.length === 0) {
     return new Map();
   }
 
-  const families = new Map<string, TermCrossMediaFamily>(
+  const families = new Map<string, CrossMediaFamily>(
     requestedEntryIds.map((entryId) => [
       entryId,
       {
@@ -1317,9 +1317,14 @@ export async function listTermCrossMediaFamiliesByEntryIds(
       }
     ])
   );
-  const rows = await database.query.term.findMany({
-    where: inArray(term.id, requestedEntryIds)
-  });
+  const rows =
+    kind === "term"
+      ? await database.query.term.findMany({
+          where: inArray(term.id, requestedEntryIds)
+        })
+      : await database.query.grammarPattern.findMany({
+          where: inArray(grammarPattern.id, requestedEntryIds)
+        });
   const groupIdByEntryId = new Map<string, string>();
   const groupIds = new Set<string>();
 
@@ -1346,40 +1351,83 @@ export async function listTermCrossMediaFamiliesByEntryIds(
     return families;
   }
 
-  const siblingRows = await database
-    .select({
-      entryId: term.id,
-      groupId: crossMediaGroup.id,
-      groupKey: crossMediaGroup.groupKey,
-      mediaId: media.id,
-      mediaSlug: media.slug,
-      mediaTitle: media.title,
-      sourceId: term.sourceId,
-      lemma: term.lemma,
-      reading: term.reading,
-      romaji: term.romaji,
-      meaningIt: term.meaningIt,
-      notesIt: term.notesIt,
-      segmentTitle: segment.title
-    })
-    .from(term)
-    .innerJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
-    .innerJoin(media, eq(media.id, term.mediaId))
-    .leftJoin(segment, eq(segment.id, term.segmentId))
-    .where(inArray(term.crossMediaGroupId, validGroupIds))
-    .orderBy(asc(media.title), asc(term.lemma), asc(term.reading));
+  const siblings =
+    kind === "term"
+      ? (
+          await database
+            .select({
+              entryId: term.id,
+              groupId: crossMediaGroup.id,
+              groupKey: crossMediaGroup.groupKey,
+              mediaId: media.id,
+              mediaSlug: media.slug,
+              mediaTitle: media.title,
+              sourceId: term.sourceId,
+              label: term.lemma,
+              reading: term.reading,
+              romaji: term.romaji,
+              meaningIt: term.meaningIt,
+              notesIt: term.notesIt,
+              segmentTitle: segment.title
+            })
+            .from(term)
+            .innerJoin(
+              crossMediaGroup,
+              eq(crossMediaGroup.id, term.crossMediaGroupId)
+            )
+            .innerJoin(media, eq(media.id, term.mediaId))
+            .leftJoin(segment, eq(segment.id, term.segmentId))
+            .where(inArray(term.crossMediaGroupId, validGroupIds))
+            .orderBy(asc(media.title), asc(term.lemma), asc(term.reading))
+        ).map((row) => ({
+          ...row,
+          kind: "term" as const
+        }))
+      : (
+          await database
+            .select({
+              entryId: grammarPattern.id,
+              groupId: crossMediaGroup.id,
+              groupKey: crossMediaGroup.groupKey,
+              mediaId: media.id,
+              mediaSlug: media.slug,
+              mediaTitle: media.title,
+              sourceId: grammarPattern.sourceId,
+              label: grammarPattern.pattern,
+              title: grammarPattern.title,
+              reading: grammarPattern.reading,
+              meaningIt: grammarPattern.meaningIt,
+              notesIt: grammarPattern.notesIt,
+              segmentTitle: segment.title
+            })
+            .from(grammarPattern)
+            .innerJoin(
+              crossMediaGroup,
+              eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
+            )
+            .innerJoin(media, eq(media.id, grammarPattern.mediaId))
+            .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
+            .where(inArray(grammarPattern.crossMediaGroupId, validGroupIds))
+            .orderBy(
+              asc(media.title),
+              asc(grammarPattern.pattern),
+              asc(grammarPattern.title)
+            )
+        ).map((row) => ({
+          ...row,
+          kind: "grammar" as const
+        }));
+  const siblingsByGroupId = new Map<string, CrossMediaSibling[]>();
 
-  const siblingsByGroupId = new Map<string, CrossMediaTermSibling[]>();
+  for (const sibling of siblings) {
+    const groupedSiblings = siblingsByGroupId.get(sibling.groupId);
 
-  for (const row of siblingRows) {
-    const siblings = siblingsByGroupId.get(row.groupId);
-
-    if (siblings) {
-      siblings.push(row);
+    if (groupedSiblings) {
+      groupedSiblings.push(sibling);
       continue;
     }
 
-    siblingsByGroupId.set(row.groupId, [row]);
+    siblingsByGroupId.set(sibling.groupId, [sibling]);
   }
 
   for (const [entryId, groupId] of groupIdByEntryId.entries()) {
@@ -1400,12 +1448,13 @@ export async function listTermCrossMediaFamiliesByEntryIds(
   return families;
 }
 
-export async function getTermCrossMediaFamilyByEntryId(
+export async function getCrossMediaFamilyByEntryId(
   database: DatabaseClient,
+  kind: EntryType,
   entryId: string
-): Promise<TermCrossMediaFamily> {
+): Promise<CrossMediaFamily> {
   return (
-    (await listTermCrossMediaFamiliesByEntryIds(database, [entryId])).get(
+    (await listCrossMediaFamiliesByEntryIds(database, kind, [entryId])).get(
       entryId
     ) ?? {
       group: null,
@@ -1414,140 +1463,23 @@ export async function getTermCrossMediaFamilyByEntryId(
   );
 }
 
-export async function listGrammarCrossMediaFamiliesByEntryIds(
+export async function getCrossMediaSiblingCounts(
   database: DatabaseClient,
-  entryIds: string[]
-): Promise<Map<string, GrammarCrossMediaFamily>> {
-  const requestedEntryIds = [...new Set(entryIds)];
-
-  if (requestedEntryIds.length === 0) {
-    return new Map();
-  }
-
-  const families = new Map<string, GrammarCrossMediaFamily>(
-    requestedEntryIds.map((entryId) => [
-      entryId,
-      {
-        group: null,
-        siblings: []
-      }
-    ])
-  );
-  const rows = await database.query.grammarPattern.findMany({
-    where: inArray(grammarPattern.id, requestedEntryIds)
-  });
-  const groupIdByEntryId = new Map<string, string>();
-  const groupIds = new Set<string>();
-
-  for (const row of rows) {
-    if (!row.crossMediaGroupId) {
-      continue;
-    }
-
-    groupIdByEntryId.set(row.id, row.crossMediaGroupId);
-    groupIds.add(row.crossMediaGroupId);
-  }
-
-  if (groupIds.size === 0) {
-    return families;
-  }
-
-  const groups = await database.query.crossMediaGroup.findMany({
-    where: inArray(crossMediaGroup.id, [...groupIds])
-  });
-  const groupsById = new Map(groups.map((group) => [group.id, group]));
-  const validGroupIds = [...groupsById.keys()];
-
-  if (validGroupIds.length === 0) {
-    return families;
-  }
-
-  const siblingRows = await database
-    .select({
-      entryId: grammarPattern.id,
-      groupId: crossMediaGroup.id,
-      groupKey: crossMediaGroup.groupKey,
-      mediaId: media.id,
-      mediaSlug: media.slug,
-      mediaTitle: media.title,
-      sourceId: grammarPattern.sourceId,
-      pattern: grammarPattern.pattern,
-      title: grammarPattern.title,
-      reading: grammarPattern.reading,
-      meaningIt: grammarPattern.meaningIt,
-      notesIt: grammarPattern.notesIt,
-      segmentTitle: segment.title
-    })
-    .from(grammarPattern)
-    .innerJoin(
-      crossMediaGroup,
-      eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
-    )
-    .innerJoin(media, eq(media.id, grammarPattern.mediaId))
-    .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
-    .where(inArray(grammarPattern.crossMediaGroupId, validGroupIds))
-    .orderBy(
-      asc(media.title),
-      asc(grammarPattern.pattern),
-      asc(grammarPattern.title)
-    );
-
-  const siblingsByGroupId = new Map<string, CrossMediaGrammarSibling[]>();
-
-  for (const row of siblingRows) {
-    const siblings = siblingsByGroupId.get(row.groupId);
-
-    if (siblings) {
-      siblings.push(row);
-      continue;
-    }
-
-    siblingsByGroupId.set(row.groupId, [row]);
-  }
-
-  for (const [entryId, groupId] of groupIdByEntryId.entries()) {
-    const group = groupsById.get(groupId);
-
-    if (!group) {
-      continue;
-    }
-
-    families.set(entryId, {
-      group,
-      siblings: (siblingsByGroupId.get(groupId) ?? []).filter(
-        (sibling) => sibling.entryId !== entryId
-      )
-    });
-  }
-
-  return families;
-}
-
-export async function getGrammarCrossMediaFamilyByEntryId(
-  database: DatabaseClient,
-  entryId: string
-): Promise<GrammarCrossMediaFamily> {
-  return (
-    (await listGrammarCrossMediaFamiliesByEntryIds(database, [entryId])).get(
-      entryId
-    ) ?? {
-      group: null,
-      siblings: []
-    }
-  );
-}
-
-export async function getTermCrossMediaSiblingCounts(
-  database: DatabaseClient,
+  kind: EntryType,
   entryIds: string[]
 ) {
   if (entryIds.length === 0) {
     return new Map<string, number>();
   }
 
-  const rows = await database.query.term.findMany({
-    where: inArray(term.id, entryIds)
-  });
+  const rows =
+    kind === "term"
+      ? await database.query.term.findMany({
+          where: inArray(term.id, entryIds)
+        })
+      : await database.query.grammarPattern.findMany({
+          where: inArray(grammarPattern.id, entryIds)
+        });
   const groupIds = [
     ...new Set(
       rows
@@ -1560,58 +1492,14 @@ export async function getTermCrossMediaSiblingCounts(
     return new Map<string, number>();
   }
 
-  const groupedRows = await database.query.term.findMany({
-    where: inArray(term.crossMediaGroupId, groupIds)
-  });
-  const countsByGroup = new Map<string, number>();
-
-  for (const row of groupedRows) {
-    if (!row.crossMediaGroupId) {
-      continue;
-    }
-
-    countsByGroup.set(
-      row.crossMediaGroupId,
-      (countsByGroup.get(row.crossMediaGroupId) ?? 0) + 1
-    );
-  }
-
-  return new Map(
-    rows.map((row) => [
-      row.id,
-      row.crossMediaGroupId
-        ? Math.max((countsByGroup.get(row.crossMediaGroupId) ?? 1) - 1, 0)
-        : 0
-    ])
-  );
-}
-
-export async function getGrammarCrossMediaSiblingCounts(
-  database: DatabaseClient,
-  entryIds: string[]
-) {
-  if (entryIds.length === 0) {
-    return new Map<string, number>();
-  }
-
-  const rows = await database.query.grammarPattern.findMany({
-    where: inArray(grammarPattern.id, entryIds)
-  });
-  const groupIds = [
-    ...new Set(
-      rows
-        .map((row) => row.crossMediaGroupId)
-        .filter((value): value is string => typeof value === "string")
-    )
-  ];
-
-  if (groupIds.length === 0) {
-    return new Map<string, number>();
-  }
-
-  const groupedRows = await database.query.grammarPattern.findMany({
-    where: inArray(grammarPattern.crossMediaGroupId, groupIds)
-  });
+  const groupedRows =
+    kind === "term"
+      ? await database.query.term.findMany({
+          where: inArray(term.crossMediaGroupId, groupIds)
+        })
+      : await database.query.grammarPattern.findMany({
+          where: inArray(grammarPattern.crossMediaGroupId, groupIds)
+        });
   const countsByGroup = new Map<string, number>();
 
   for (const row of groupedRows) {
@@ -1816,12 +1704,8 @@ export async function listEntryCardCounts(
 export type GlossarySegment = Awaited<
   ReturnType<typeof listGlossarySegmentsByMediaId>
 >[number];
-export type TermGlossaryEntry = Awaited<
-  ReturnType<typeof listTermEntriesByMediaId>
->[number];
-export type GrammarGlossaryEntry = Awaited<
-  ReturnType<typeof listGrammarEntriesByMediaId>
->[number];
+export type TermGlossaryEntry = GlossaryEntryWithStatus<TermGlossaryRow>;
+export type GrammarGlossaryEntry = GlossaryEntryWithStatus<GrammarGlossaryRow>;
 export type EntryLessonConnection = Awaited<
   ReturnType<typeof listEntryLessonConnections>
 >[number];

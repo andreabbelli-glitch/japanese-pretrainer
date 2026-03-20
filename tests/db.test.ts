@@ -13,11 +13,10 @@ import {
   getMediaBySlug,
   listCardsByMediaId,
   listDueCardsByMediaId,
-  listGrammarEntriesByMediaId,
+  listGlossaryEntriesByKind,
   listGrammarEntryReviewSummaries,
   listLessonsByMediaId,
   listMedia,
-  listTermEntriesByMediaId,
   listTermEntryReviewSummaries,
   lessonProgress,
   reviewState,
@@ -78,14 +77,12 @@ describe("database layer", () => {
   });
 
   it("keeps entry_status separate from canonical glossary entries", async () => {
-    const terms = await listTermEntriesByMediaId(
-      database,
-      developmentFixture.mediaId
-    );
-    const grammar = await listGrammarEntriesByMediaId(
-      database,
-      developmentFixture.mediaId
-    );
+    const terms = await listGlossaryEntriesByKind(database, "term", {
+      mediaId: developmentFixture.mediaId
+    });
+    const grammar = await listGlossaryEntriesByKind(database, "grammar", {
+      mediaId: developmentFixture.mediaId
+    });
 
     expect(terms).toHaveLength(1);
     expect(terms[0]?.aliases).toHaveLength(2);
@@ -124,7 +121,10 @@ describe("database layer", () => {
     expect(terms[0]).not.toHaveProperty("searchRomajiNorm");
 
     expect(grammar).toHaveLength(1);
-    expect(grammar[0]).toHaveProperty("mediaSlug", developmentFixture.mediaSlug);
+    expect(grammar[0]).toHaveProperty(
+      "mediaSlug",
+      developmentFixture.mediaSlug
+    );
     expect(grammar[0]).toHaveProperty("entryStatus", "known_manual");
     expect(grammar[0]).not.toHaveProperty("audioSrc");
     expect(grammar[0]).not.toHaveProperty("audioSource");
@@ -194,10 +194,9 @@ describe("database layer", () => {
       database,
       developmentFixture.mediaId
     );
-    const terms = await listTermEntriesByMediaId(
-      database,
-      developmentFixture.mediaId
-    );
+    const terms = await listGlossaryEntriesByKind(database, "term", {
+      mediaId: developmentFixture.mediaId
+    });
 
     expect(cards).toHaveLength(2);
     expect(terms).toHaveLength(1);

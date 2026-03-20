@@ -5,13 +5,11 @@ import { eq } from "drizzle-orm";
 import {
   db,
   getCardsByIds,
-  getGrammarCrossMediaSiblingCounts,
-  getGrammarEntriesByIds,
+  getCrossMediaSiblingCounts,
+  getGlossaryEntriesByIds,
   getLessonReaderBySlug,
   getLessonTooltipSourceBySlug,
   getMediaBySlug,
-  getTermCrossMediaSiblingCounts,
-  getTermEntriesByIds,
   lessonProgress,
   listEntryStudySignals,
   listLessonEntryLinks,
@@ -501,8 +499,8 @@ async function loadLessonTooltipEntries(input: {
     .filter((entry) => entry.entryType === "grammar")
     .map((entry) => entry.entryId);
   const [terms, grammar, studySignals, cards] = await Promise.all([
-    getTermEntriesByIds(input.database, termIds),
-    getGrammarEntriesByIds(input.database, grammarIds),
+    getGlossaryEntriesByIds(input.database, "term", termIds),
+    getGlossaryEntriesByIds(input.database, "grammar", grammarIds),
     listEntryStudySignals(
       input.database,
       uniqueLessonEntryLinks.map((entry) => ({
@@ -513,12 +511,14 @@ async function loadLessonTooltipEntries(input: {
     getCardsByIds(input.database, input.imageCardIds)
   ]);
   const [termCrossMediaCounts, grammarCrossMediaCounts] = await Promise.all([
-    getTermCrossMediaSiblingCounts(
+    getCrossMediaSiblingCounts(
       input.database,
+      "term",
       terms.map((entry) => entry.id)
     ),
-    getGrammarCrossMediaSiblingCounts(
+    getCrossMediaSiblingCounts(
       input.database,
+      "grammar",
       grammar.map((entry) => entry.id)
     )
   ]);
@@ -535,12 +535,13 @@ async function loadLessonTooltipEntries(input: {
       }
 
       return [
-        mapTermTooltipEntry(
+        mapTooltipEntry({
+          crossMediaSiblingCount: termCrossMediaCounts.get(entry.id) ?? 0,
           entry,
-          termCrossMediaCounts.get(entry.id) ?? 0,
-          studySignalsByEntry.get(`term:${entry.id}`) ?? [],
-          input.mediaSlug
-        )
+          kind: "term",
+          mediaSlug: input.mediaSlug,
+          studySignals: studySignalsByEntry.get(`term:${entry.id}`) ?? []
+        })
       ];
     }
 
@@ -551,12 +552,13 @@ async function loadLessonTooltipEntries(input: {
     }
 
     return [
-      mapGrammarTooltipEntry(
+      mapTooltipEntry({
+        crossMediaSiblingCount: grammarCrossMediaCounts.get(entry.id) ?? 0,
         entry,
-        grammarCrossMediaCounts.get(entry.id) ?? 0,
-        studySignalsByEntry.get(`grammar:${entry.id}`) ?? [],
-        input.mediaSlug
-      )
+        kind: "grammar",
+        mediaSlug: input.mediaSlug,
+        studySignals: studySignalsByEntry.get(`grammar:${entry.id}`) ?? []
+      })
     ];
   });
 
@@ -671,75 +673,67 @@ function selectResumeLesson(lessons: TextbookLessonNavItem[]) {
   );
 }
 
-function mapTermTooltipEntry(
-  entry: TermGlossaryEntry,
-  crossMediaSiblingCount: number,
-  studySignals: StudySignalRow[],
-  mediaSlug: string
-): TextbookEntryTooltip {
-  return {
-    id: entry.sourceId,
+function mapTooltipEntry(input: {
+  crossMediaSiblingCount: number;
+  entry: GrammarGlossaryEntry | TermGlossaryEntry;
+  kind: "grammar" | "term";
+  mediaSlug: string;
+  studySignals: StudySignalRow[];
+}): TextbookEntryTooltip {
+  const baseEntry = {
+    id: input.entry.sourceId,
     crossMediaHint:
-      crossMediaSiblingCount > 0
+      input.crossMediaSiblingCount > 0
         ? {
-            otherMediaCount: crossMediaSiblingCount
+            otherMediaCount: input.crossMediaSiblingCount
           }
         : undefined,
-    kind: "term",
-    label: entry.lemma,
-    reading: entry.reading,
-    romaji: entry.romaji,
-    meaning: entry.meaningIt,
-    literalMeaning: entry.meaningLiteralIt ?? undefined,
-    notes: entry.notesIt ?? undefined,
-    pos: entry.pos ?? undefined,
-    levelHint: entry.levelHint ?? undefined,
-    pronunciation:
-      buildPronunciationData(mediaSlug, {
-        ...entry,
-        reading: entry.reading
-      }) ?? undefined,
+    kind: input.kind,
+    meaning: input.entry.meaningIt,
+    notes: input.entry.notesIt ?? undefined,
+    levelHint: input.entry.levelHint ?? undefined,
     statusLabel: resolveEntryStudyStateLabel(
-      entry.status?.status ?? null,
-      studySignals
+      input.entry.status?.status ?? null,
+      input.studySignals
     ),
-    segmentTitle: entry.segment?.title ?? undefined,
-    glossaryHref: mediaGlossaryEntryHref(mediaSlug, "term", entry.sourceId)
+    segmentTitle: input.entry.segment?.title ?? undefined,
+    glossaryHref: mediaGlossaryEntryHref(
+      input.mediaSlug,
+      input.kind,
+      input.entry.sourceId
+    )
   };
-}
 
-function mapGrammarTooltipEntry(
-  entry: GrammarGlossaryEntry,
-  crossMediaSiblingCount: number,
-  studySignals: StudySignalRow[],
-  mediaSlug: string
-): TextbookEntryTooltip {
+  if (input.kind === "term") {
+    const entry = input.entry as TermGlossaryEntry;
+
+    return {
+      ...baseEntry,
+      label: entry.lemma,
+      reading: entry.reading,
+      romaji: entry.romaji,
+      literalMeaning: entry.meaningLiteralIt ?? undefined,
+      pos: entry.pos ?? undefined,
+      pronunciation:
+        buildPronunciationData(input.mediaSlug, {
+          ...entry,
+          reading: entry.reading
+        }) ?? undefined
+    };
+  }
+
+  const entry = input.entry as GrammarGlossaryEntry;
+
   return {
-    id: entry.sourceId,
-    crossMediaHint:
-      crossMediaSiblingCount > 0
-        ? {
-            otherMediaCount: crossMediaSiblingCount
-          }
-        : undefined,
-    kind: "grammar",
+    ...baseEntry,
     label: entry.pattern,
     title: entry.title,
     reading: entry.reading ?? undefined,
-    meaning: entry.meaningIt,
-    notes: entry.notesIt ?? undefined,
-    levelHint: entry.levelHint ?? undefined,
     pronunciation:
-      buildPronunciationData(mediaSlug, {
+      buildPronunciationData(input.mediaSlug, {
         ...entry,
         reading: entry.reading ?? entry.pattern
-      }) ?? undefined,
-    statusLabel: resolveEntryStudyStateLabel(
-      entry.status?.status ?? null,
-      studySignals
-    ),
-    segmentTitle: entry.segment?.title ?? undefined,
-    glossaryHref: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.sourceId)
+      }) ?? undefined
   };
 }
 

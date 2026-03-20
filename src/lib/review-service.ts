@@ -6,6 +6,11 @@ import {
   card,
   db,
   entryStatus,
+  getCrossMediaFamilyByEntryId,
+  getGlossaryEntriesByIds,
+  getReviewSubjectStateByKey,
+  listReviewCardIdsByEntryRefs,
+  listReviewCardsByIds,
   reviewLog,
   reviewState,
   reviewSubjectLog,
@@ -13,15 +18,6 @@ import {
   type DatabaseClient,
   type EntryType,
   type ReviewCardListItem
-} from "@/db";
-import {
-  getGrammarEntriesByIds,
-  getGrammarCrossMediaFamilyByEntryId,
-  getTermEntriesByIds,
-  getTermCrossMediaFamilyByEntryId,
-  listReviewCardIdsByEntryRefs,
-  listReviewCardsByIds,
-  getReviewSubjectStateByKey
 } from "@/db";
 
 import {
@@ -516,16 +512,16 @@ async function loadReviewCardForMutation(
 function isActiveReviewableMutationCard(
   card: ReviewMutationCard | null
 ): card is ReviewMutationCard {
-  return Boolean(card && card.status === "active" && hasCompletedReviewLesson(card));
+  return Boolean(
+    card && card.status === "active" && hasCompletedReviewLesson(card)
+  );
 }
 
 function isSuspensionMutationCard(
   card: ReviewMutationCard | null
 ): card is ReviewMutationCard {
   return Boolean(
-    card &&
-      card.status !== "archived" &&
-      hasCompletedReviewLesson(card)
+    card && card.status !== "archived" && hasCompletedReviewLesson(card)
   );
 }
 
@@ -533,9 +529,7 @@ function isResettableMutationCard(
   card: ReviewMutationCard | null
 ): card is ReviewMutationCard {
   return Boolean(
-    card &&
-      card.status !== "archived" &&
-      hasCompletedReviewLesson(card)
+    card && card.status !== "archived" && hasCompletedReviewLesson(card)
   );
 }
 
@@ -659,8 +653,8 @@ async function loadReviewSubjectMutationContext(
     )
   ];
   const [terms, grammar] = await Promise.all([
-    getTermEntriesByIds(txDb, termEntryIds),
-    getGrammarEntriesByIds(txDb, grammarEntryIds)
+    getGlossaryEntriesByIds(txDb, "term", termEntryIds),
+    getGlossaryEntriesByIds(txDb, "grammar", grammarEntryIds)
   ]);
   const entryLookup = buildReviewSubjectEntryLookup({ grammar, terms });
   const identity = deriveReviewSubjectIdentity({
@@ -699,8 +693,8 @@ async function loadReviewSubjectMutationContext(
     )
   ];
   const [memberTerms, memberGrammar, loadedMemberCards] = await Promise.all([
-    getTermEntriesByIds(txDb, memberEntryRefTerms),
-    getGrammarEntriesByIds(txDb, memberEntryRefGrammar),
+    getGlossaryEntriesByIds(txDb, "term", memberEntryRefTerms),
+    getGlossaryEntriesByIds(txDb, "grammar", memberEntryRefGrammar),
     listReviewCardsByIds(txDb, dedupedMemberCardIds)
   ]);
   const memberEntryLookup = buildReviewSubjectEntryLookup({
@@ -782,8 +776,9 @@ async function resolveReviewSubjectEntryRefs(
   }
 
   if (drivingLink.entryType === "term") {
-    const family = await getTermCrossMediaFamilyByEntryId(
+    const family = await getCrossMediaFamilyByEntryId(
       txDb,
+      "term",
       drivingLink.entryId
     );
 
@@ -799,8 +794,9 @@ async function resolveReviewSubjectEntryRefs(
     ]);
   }
 
-  const family = await getGrammarCrossMediaFamilyByEntryId(
+  const family = await getCrossMediaFamilyByEntryId(
     txDb,
+    "grammar",
     drivingLink.entryId
   );
 
