@@ -27,7 +27,7 @@ import {
 import { getReviewDailyLimit } from "@/lib/settings";
 import {
   buildSegments,
-  buildGlossaryProgressSnapshot,
+  buildEmptyGlossaryProgressSnapshot,
   loadGlossaryProgressSnapshots,
   loadGlossaryProgressSnapshot,
   selectActiveLesson,
@@ -159,12 +159,7 @@ async function loadGlossaryProgressSnapshotsCached(
         mediaId: item.id,
         snapshot:
           snapshots.get(item.id) ??
-          buildGlossaryProgressSnapshot({
-            grammar: [],
-            mediaSlug: item.slug,
-            studySignals: [],
-            terms: []
-          })
+          buildEmptyGlossaryProgressSnapshot(item.slug)
       }));
     },
     tags: buildGlossarySummaryTags(media.map((item) => item.id))
@@ -219,12 +214,7 @@ async function buildMediaShellSnapshots(
     return mapMediaShellSnapshotFromCounts({
       glossary:
         glossarySnapshots.get(item.id) ??
-        buildGlossaryProgressSnapshot({
-          grammar: [],
-          mediaSlug: item.slug,
-          studySignals: [],
-          terms: []
-        }),
+        buildEmptyGlossaryProgressSnapshot(item.slug),
       lessons: lessonsByMedia.get(item.id) ?? [],
       media: item,
       reviewCounts: {
@@ -252,12 +242,7 @@ async function buildMediaShellSnapshot(
     ]).then(
       (snapshots) =>
         snapshots.get(media.id) ??
-        buildGlossaryProgressSnapshot({
-          grammar: [],
-          mediaSlug: media.slug,
-          studySignals: [],
-          terms: []
-        })
+        buildEmptyGlossaryProgressSnapshot(media.slug)
     ),
     loadReviewOverviewSnapshots(database, [
       {

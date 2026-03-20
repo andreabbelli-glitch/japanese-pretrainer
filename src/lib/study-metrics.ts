@@ -4,6 +4,8 @@ import {
   listEntryStudySignals,
   listGrammarEntryReviewSummaries,
   listTermEntryReviewSummaries,
+  listGlossaryProgressSummaries,
+  listGlossaryPreviewEntries,
   type DatabaseClient,
   type GrammarEntryReviewSummary,
   type LessonListItem,
@@ -89,6 +91,24 @@ type GlossaryProgressMediaTarget = {
   slug: string;
 };
 
+export function buildEmptyGlossaryProgressSnapshot(
+  mediaSlug: string
+): GlossaryProgressSnapshot {
+  return {
+    entriesCovered: 0,
+    entriesTotal: 0,
+    progressPercent: null,
+    previewEntries: [],
+    breakdown: {
+      available: 0,
+      known: 0,
+      learning: 0,
+      new: 0,
+      review: 0
+    }
+  };
+}
+
 export async function loadGlossaryProgressSnapshot(
   database: DatabaseClient,
   mediaId: string,
@@ -103,14 +123,17 @@ export async function loadGlossaryProgressSnapshot(
 
   return (
     snapshots.get(mediaId) ??
-    buildGlossaryProgressSnapshot({
-      grammar: [],
-      mediaSlug,
-      studySignals: [],
-      terms: []
-    })
+    buildEmptyGlossaryProgressSnapshot(mediaSlug)
   );
 }
+
+const STUDY_STATE_LABELS: Record<string, string> = {
+  known: "Già nota",
+  learning: "In studio",
+  review: "In review",
+  new: "Nuova",
+  available: "Disponibile"
+};
 
 export async function loadGlossaryProgressSnapshots(
   database: DatabaseClient,
@@ -121,127 +144,45 @@ export async function loadGlossaryProgressSnapshots(
   }
 
   const mediaIds = media.map((item) => item.id);
-  const [terms, grammar] = await Promise.all([
-    listTermEntryReviewSummaries(database, {
-      mediaIds
-    }),
-    listGrammarEntryReviewSummaries(database, {
-      mediaIds
-    })
-  ]);
-  const studySignals = await listEntryStudySignals(database, [
-    ...terms.map((entry) => ({
-      entryId: entry.id,
-      entryType: "term" as const
-    })),
-    ...grammar.map((entry) => ({
-      entryId: entry.id,
-      entryType: "grammar" as const
-    }))
+  const [summaries, previews] = await Promise.all([
+    listGlossaryProgressSummaries(database, mediaIds),
+    listGlossaryPreviewEntries(database, mediaIds, 6)
   ]);
 
-  return buildGlossaryProgressSnapshots({
-    grammar,
-    media,
-    studySignals,
-    terms
-  });
-}
-
-export function buildGlossaryProgressSnapshot(input: {
-  grammar: GrammarGlossaryProgressEntry[];
-  mediaSlug: string;
-  studySignals: StudySignalRow[];
-  terms: TermGlossaryProgressEntry[];
-}): GlossaryProgressSnapshot {
-  return buildGlossaryProgressSnapshotWithLookup({
-    grammar: input.grammar,
-    mediaSlug: input.mediaSlug,
-    studySignalsByEntry: groupStudySignals(input.studySignals),
-    terms: input.terms
-  });
-}
-
-function buildGlossaryProgressSnapshotWithLookup(input: {
-  grammar: GrammarGlossaryProgressEntry[];
-  mediaSlug: string;
-  studySignalsByEntry: StudySignalLookup;
-  terms: TermGlossaryProgressEntry[];
-}): GlossaryProgressSnapshot {
-  const entries = [
-    ...input.terms.map((entry) => ({
-      entry,
-      kind: "term" as const
-    })),
-    ...input.grammar.map((entry) => ({
-      entry,
-      kind: "grammar" as const
-    }))
-  ];
-  const breakdown = {
-    available: 0,
-    known: 0,
-    learning: 0,
-    new: 0,
-    review: 0
-  };
-  const previewEntries = entries.map(({ entry, kind }) => {
-    const studyState = deriveEntryStudyState(
-      (input.studySignalsByEntry.get(`${kind}:${entry.id}`) ?? []).map(
-        (signal) => ({
-          manualOverride: signal.manualOverride,
-          reviewState: signal.reviewState
-        })
-      )
-    );
-
-    breakdown[studyState.key] += 1;
-
-    return {
-      href: mediaGlossaryEntryHref(input.mediaSlug, kind, entry.sourceId),
-      id: entry.sourceId,
-      kind,
-      label: kind === "term" ? entry.lemma : entry.pattern,
-      meaning: entry.meaningIt,
-      reading: kind === "term" ? entry.reading : undefined,
-      segmentTitle: entry.segmentTitle ?? undefined,
-      statusLabel: studyState.label
-    };
-  });
-  const entriesCovered =
-    breakdown.known + breakdown.learning + breakdown.review;
-  const entriesTotal = entries.length;
-
-  return {
-    entriesCovered,
-    entriesTotal,
-    progressPercent: calculatePercent(entriesCovered, entriesTotal),
-    previewEntries: previewEntries.slice(0, 6),
-    breakdown
-  };
-}
-
-export function buildGlossaryProgressSnapshots(input: {
-  grammar: GrammarGlossaryProgressEntry[];
-  media: GlossaryProgressMediaTarget[];
-  studySignals: StudySignalRow[];
-  terms: TermGlossaryProgressEntry[];
-}) {
-  const termsByMedia = groupEntriesByMedia(input.terms);
-  const grammarByMedia = groupEntriesByMedia(input.grammar);
-  const studySignalsByEntry = groupStudySignals(input.studySignals);
   const snapshots = new Map<string, GlossaryProgressSnapshot>();
+  const previewsByMedia = new Map<string, StudyEntryPreview[]>();
 
-  for (const item of input.media) {
-    snapshots.set(
-      item.id,
-      buildGlossaryProgressSnapshotWithLookup({
-        grammar: grammarByMedia.get(item.id) ?? [],
-        mediaSlug: item.slug,
-        studySignalsByEntry,
-        terms: termsByMedia.get(item.id) ?? []
-      })
-    );
+  for (const preview of previews) {
+    const existing = previewsByMedia.get(preview.mediaId) ?? [];
+    
+    existing.push({
+      href: mediaGlossaryEntryHref(preview.mediaSlug, preview.kind, preview.sourceId),
+      id: preview.sourceId,
+      kind: preview.kind,
+      label: preview.label,
+      meaning: preview.meaningIt,
+      reading: preview.reading ?? undefined,
+      segmentTitle: preview.segmentTitle ?? undefined,
+      statusLabel: STUDY_STATE_LABELS[preview.state] ?? "Disponibile"
+    });
+    
+    previewsByMedia.set(preview.mediaId, existing);
+  }
+
+  for (const summary of summaries) {
+    snapshots.set(summary.mediaId, {
+      entriesCovered: summary.entriesCovered,
+      entriesTotal: summary.entriesTotal,
+      progressPercent: calculatePercent(summary.entriesCovered, summary.entriesTotal),
+      previewEntries: previewsByMedia.get(summary.mediaId) ?? [],
+      breakdown: {
+        available: summary.available,
+        known: summary.known,
+        learning: summary.learning,
+        new: summary.new,
+        review: summary.review
+      }
+    });
   }
 
   return snapshots;
@@ -342,41 +283,3 @@ export function buildSegments(
   return [...groups.values()];
 }
 
-function groupStudySignals(rows: StudySignalRow[]): StudySignalLookup {
-  const map: StudySignalLookup = new Map();
-
-  for (const row of rows) {
-    const key = buildEntryKey(row.entryType, row.entryId);
-    const existing = map.get(key);
-
-    if (existing) {
-      existing.push(row);
-      continue;
-    }
-
-    map.set(key, [row]);
-  }
-
-  return map;
-}
-
-function groupEntriesByMedia<
-  TEntry extends {
-    mediaId: string;
-  }
->(entries: TEntry[]) {
-  const map = new Map<string, TEntry[]>();
-
-  for (const entry of entries) {
-    const existing = map.get(entry.mediaId);
-
-    if (existing) {
-      existing.push(entry);
-      continue;
-    }
-
-    map.set(entry.mediaId, [entry]);
-  }
-
-  return map;
-}
