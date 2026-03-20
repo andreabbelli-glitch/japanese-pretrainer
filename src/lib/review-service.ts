@@ -114,14 +114,28 @@ export async function applyReviewGrade(input: {
     });
 
     await upsertReviewSubjectState(tx, {
+      cardId: loadedCard.id,
       createdAt:
         subjectContext.subjectState?.createdAt ??
         subjectContext.seedCard.createdAt,
-      currentCardId: loadedCard.id,
-      identity: subjectContext.identity,
+      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
+      difficulty: scheduled.difficulty,
+      dueAt: scheduled.dueAt,
+      entryId: subjectContext.identity.entryId,
+      entryType: subjectContext.identity.entryType,
+      lapses: scheduled.lapses,
+      lastInteractionAt: nowIso,
       lastReviewedAt: nowIso,
-      nowIso,
-      scheduled,
+      learningSteps: scheduled.learningSteps,
+      manualOverride: false,
+      reps: scheduled.reps,
+      scheduledDays: scheduled.scheduledDays,
+      schedulerVersion: scheduled.schedulerVersion,
+      stability: scheduled.stability,
+      state: scheduled.state,
+      subjectKey: subjectContext.identity.subjectKey,
+      subjectType: subjectContext.identity.subjectKind,
+      suspended: false,
       updatedAt: nowIso
     });
 
@@ -187,25 +201,28 @@ export async function resetReviewCardProgress(input: {
       );
 
     await upsertReviewSubjectState(tx, {
+      cardId: loadedCard.id,
       createdAt:
         subjectContext.subjectState?.createdAt ??
         subjectContext.seedCard.createdAt,
-      currentCardId: loadedCard.id,
-      identity: subjectContext.identity,
+      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
+      difficulty: null,
+      dueAt: nowIso,
+      entryId: subjectContext.identity.entryId,
+      entryType: subjectContext.identity.entryType,
+      lapses: 0,
+      lastInteractionAt: nowIso,
       lastReviewedAt: null,
-      nowIso,
-      scheduled: {
-        difficulty: null,
-        dueAt: nowIso,
-        elapsedDays: null,
-        lapses: 0,
-        learningSteps: 0,
-        reps: 0,
-        scheduledDays: 0,
-        schedulerVersion: "fsrs_v1",
-        stability: null,
-        state: "new"
-      },
+      learningSteps: 0,
+      manualOverride: false,
+      reps: 0,
+      scheduledDays: 0,
+      schedulerVersion: "fsrs_v1",
+      stability: null,
+      state: "new",
+      subjectKey: subjectContext.identity.subjectKey,
+      subjectType: subjectContext.identity.subjectKind,
+      suspended: false,
       updatedAt: nowIso
     });
 
@@ -393,57 +410,29 @@ export async function setLinkedEntryStatusByCard(input: {
       subjectType: subjectContext.identity.subjectKind,
       updatedAt: nowIso
     };
-    const schedulerVersion = "fsrs_v1";
-
-    await tx
-      .insert(reviewSubjectState)
-      .values({
-        cardId: sourceState.cardId,
-        crossMediaGroupId: sourceState.crossMediaGroupId,
-        createdAt: sourceState.createdAt,
-        difficulty: sourceState.difficulty,
-        dueAt: sourceState.dueAt,
-        entryId: sourceState.entryId,
-        entryType: sourceState.entryType,
-        lastInteractionAt: nowIso,
-        lastReviewedAt: sourceState.lastReviewedAt,
-        learningSteps: sourceState.learningSteps,
-        lapses: sourceState.lapses,
-        manualOverride: isManualOverride,
-        reps: sourceState.reps,
-        scheduledDays: sourceState.scheduledDays,
-        schedulerVersion,
-        stability: sourceState.stability,
-        state: sourceState.state,
-        subjectKey: sourceState.subjectKey,
-        subjectType: sourceState.subjectType,
-        suspended: isSuspended,
-        updatedAt: nowIso
-      })
-      .onConflictDoUpdate({
-        target: reviewSubjectState.subjectKey,
-        set: {
-          cardId: sourceState.cardId,
-          crossMediaGroupId: sourceState.crossMediaGroupId,
-          difficulty: sourceState.difficulty,
-          dueAt: sourceState.dueAt,
-          entryId: sourceState.entryId,
-          entryType: sourceState.entryType,
-          lastInteractionAt: nowIso,
-          lastReviewedAt: sourceState.lastReviewedAt,
-          learningSteps: sourceState.learningSteps,
-          lapses: sourceState.lapses,
-          manualOverride: isManualOverride,
-          reps: sourceState.reps,
-          scheduledDays: sourceState.scheduledDays,
-          schedulerVersion,
-          stability: sourceState.stability,
-          state: sourceState.state,
-          subjectType: sourceState.subjectType,
-          suspended: isSuspended,
-          updatedAt: nowIso
-        }
-      });
+    await upsertReviewSubjectState(tx, {
+      cardId: sourceState.cardId,
+      createdAt: sourceState.createdAt,
+      crossMediaGroupId: sourceState.crossMediaGroupId,
+      difficulty: sourceState.difficulty,
+      dueAt: sourceState.dueAt,
+      entryId: sourceState.entryId,
+      entryType: sourceState.entryType,
+      lapses: sourceState.lapses,
+      lastInteractionAt: nowIso,
+      lastReviewedAt: sourceState.lastReviewedAt,
+      learningSteps: sourceState.learningSteps,
+      manualOverride: isManualOverride,
+      reps: sourceState.reps,
+      scheduledDays: sourceState.scheduledDays,
+      schedulerVersion: "fsrs_v1",
+      stability: sourceState.stability,
+      state: sourceState.state,
+      subjectKey: sourceState.subjectKey,
+      subjectType: sourceState.subjectType,
+      suspended: isSuspended,
+      updatedAt: nowIso
+    });
 
     return {
       cardId: loadedCard.id,
@@ -521,19 +510,6 @@ function assertCardBelongsToExpectedMedia(
 }
 
 type LoadedReviewCard = ReviewMutationCard;
-
-type ReviewSubjectScheduledState = {
-  difficulty: number | null;
-  dueAt: string;
-  elapsedDays?: number | null;
-  lapses: number;
-  learningSteps: number;
-  reps: number;
-  scheduledDays: number;
-  schedulerVersion: "fsrs_v1";
-  stability: number | null;
-  state: ReviewState;
-};
 
 type ReviewSubjectMutationContext = {
   drivingEntries: LinkedEntryRef[];
@@ -736,65 +712,33 @@ function buildSubjectReviewStateForValidation(
 
 async function upsertReviewSubjectState(
   transaction: DatabaseTransaction,
-  input: {
-    createdAt: string;
-    lastReviewedAt: string | null;
-    currentCardId: string;
-    identity: ReviewSubjectIdentity;
-    nowIso: string;
-    scheduled: ReviewSubjectScheduledState;
-    updatedAt: string;
-  }
+  state: typeof reviewSubjectState.$inferInsert
 ) {
-  const values = {
-    cardId: input.currentCardId,
-    crossMediaGroupId: input.identity.crossMediaGroupId,
-    createdAt: input.createdAt,
-    difficulty: input.scheduled.difficulty,
-    dueAt: input.scheduled.dueAt,
-    entryId: input.identity.entryId,
-    entryType: input.identity.entryType,
-    lastInteractionAt: input.nowIso,
-    lastReviewedAt: input.lastReviewedAt,
-    learningSteps: input.scheduled.learningSteps,
-    lapses: input.scheduled.lapses,
-    manualOverride: false,
-    reps: input.scheduled.reps,
-    scheduledDays: input.scheduled.scheduledDays,
-    schedulerVersion: input.scheduled.schedulerVersion,
-    suspended: false,
-    stability: input.scheduled.stability,
-    state: input.scheduled.state,
-    subjectKey: input.identity.subjectKey,
-    subjectType: input.identity.subjectKind,
-    updatedAt: input.updatedAt
-  };
-
   await transaction
     .insert(reviewSubjectState)
-    .values(values)
+    .values(state)
     .onConflictDoUpdate({
       target: reviewSubjectState.subjectKey,
       set: {
-        cardId: input.currentCardId,
-        crossMediaGroupId: input.identity.crossMediaGroupId,
-        difficulty: input.scheduled.difficulty,
-        dueAt: input.scheduled.dueAt,
-        entryId: input.identity.entryId,
-        entryType: input.identity.entryType,
-        lastInteractionAt: input.nowIso,
-        lastReviewedAt: input.lastReviewedAt,
-        learningSteps: input.scheduled.learningSteps,
-        lapses: input.scheduled.lapses,
-        manualOverride: false,
-        reps: input.scheduled.reps,
-        scheduledDays: input.scheduled.scheduledDays,
-        schedulerVersion: input.scheduled.schedulerVersion,
-        suspended: false,
-        stability: input.scheduled.stability,
-        state: input.scheduled.state,
-        subjectType: input.identity.subjectKind,
-        updatedAt: input.updatedAt
+        cardId: state.cardId,
+        crossMediaGroupId: state.crossMediaGroupId,
+        difficulty: state.difficulty,
+        dueAt: state.dueAt,
+        entryId: state.entryId,
+        entryType: state.entryType,
+        lastInteractionAt: state.lastInteractionAt,
+        lastReviewedAt: state.lastReviewedAt,
+        learningSteps: state.learningSteps,
+        lapses: state.lapses,
+        manualOverride: state.manualOverride,
+        reps: state.reps,
+        scheduledDays: state.scheduledDays,
+        schedulerVersion: state.schedulerVersion,
+        suspended: state.suspended,
+        stability: state.stability,
+        state: state.state,
+        subjectType: state.subjectType,
+        updatedAt: state.updatedAt
       }
     });
 }
