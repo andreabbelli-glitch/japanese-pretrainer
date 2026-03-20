@@ -199,6 +199,11 @@ export async function parseMediaDirectory(
     .flatMap((result) => result.grammarPatterns)
     .concat(cardsResults.flatMap((result) => result.grammarPatterns));
   const cards = cardsResults.flatMap((result) => result.cards);
+  const lessonIdLookup = new Set(
+    lessonResults
+      .map((result) => result.document?.frontmatter.id ?? null)
+      .filter((lessonId): lessonId is string => Boolean(lessonId))
+  );
   const references = [
     ...(mediaState?.references ?? []),
     ...lessonResults.flatMap((result) => result.references),
@@ -216,6 +221,7 @@ export async function parseMediaDirectory(
   });
 
   validateReferences(terms, grammarPatterns, cards, references, issues);
+  validateCardsLessonIds(cards, lessonIdLookup, issues);
 
   const bundle: NormalizedMediaBundle = {
     mediaDirectory,
@@ -636,6 +642,33 @@ async function normalizeCardsDocument(
     cards: resolved.cards,
     references: resolved.references
   };
+}
+
+function validateCardsLessonIds(
+  cards: CardRecord[],
+  lessonIdLookup: Set<string>,
+  issues: ValidationIssue[]
+) {
+  for (const card of cards) {
+    if (lessonIdLookup.has(card.value.lessonId)) {
+      continue;
+    }
+
+    issues.push(
+      createIssue({
+        code: "structured-block.unknown-lesson-id",
+        category: "reference",
+        message: "Card lesson_id does not match any lesson in the media package.",
+        filePath: card.value.source.filePath,
+        path: `${card.sourcePath}.lesson_id`,
+        range: card.position,
+        hint: "Use the id of a lesson in the same media bundle.",
+        details: {
+          lessonId: card.value.lessonId
+        }
+      })
+    );
+  }
 }
 
 function resolveMediaBody(
@@ -1670,6 +1703,7 @@ function normalizeCardBlock(
     rawBlock.data,
     [
       "id",
+      "lesson_id",
       "entry_type",
       "entry_id",
       "card_type",
@@ -1722,6 +1756,14 @@ function normalizeCardBlock(
   const cardType = readRequiredString(
     rawBlock.data,
     "card_type",
+    sourceContext.filePath,
+    sourcePath,
+    issues,
+    rawBlock.position
+  );
+  const lessonId = readRequiredString(
+    rawBlock.data,
+    "lesson_id",
     sourceContext.filePath,
     sourcePath,
     issues,
@@ -1809,7 +1851,15 @@ function normalizeCardBlock(
     );
   }
 
-  if (!id || !entryType || !entryId || !cardType || !front || !back) {
+  if (
+    !id ||
+    !entryType ||
+    !entryId ||
+    !cardType ||
+    !lessonId ||
+    !front ||
+    !back
+  ) {
     return null;
   }
 
@@ -1904,6 +1954,7 @@ function normalizeCardBlock(
     value: {
       kind: "card",
       id,
+      lessonId,
       entryType: entryType as (typeof entryTypeValues)[number],
       entryId,
       cardType,

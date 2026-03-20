@@ -23,6 +23,7 @@ notes_it: >-
 
 :::card
 id: card-pokemon-center-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: term
 entry_id: term-pokemon-center
 card_type: recognition
@@ -50,6 +51,7 @@ notes_it: >-
 
 :::card
 id: card-friendly-shop-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: term
 entry_id: term-friendly-shop
 card_type: recognition
@@ -77,6 +79,7 @@ notes_it: >-
 
 :::card
 id: card-lp-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: term
 entry_id: term-lp
 card_type: recognition
@@ -104,6 +107,7 @@ notes_it: >-
 
 :::card
 id: card-otoshimono-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: term
 entry_id: term-otoshimono
 card_type: recognition
@@ -130,6 +134,7 @@ notes_it: >-
 
 :::card
 id: card-lets-go-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: term
 entry_id: term-lets-go
 card_type: recognition
@@ -157,6 +162,7 @@ notes_it: >-
 
 :::card
 id: card-terastal-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: term
 entry_id: term-terastal
 card_type: recognition
@@ -184,6 +190,7 @@ notes_it: >-
 
 :::card
 id: card-terastal-orb-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: term
 entry_id: term-terastal-orb
 card_type: recognition
@@ -210,6 +217,7 @@ notes_it: >-
 
 :::card
 id: card-tera-type-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: term
 entry_id: term-tera-type
 card_type: recognition
@@ -236,6 +244,7 @@ notes_it: >-
 
 :::card
 id: card-te-morau-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: grammar
 entry_id: grammar-te-morau
 card_type: concept
@@ -261,6 +270,7 @@ notes_it: >-
 
 :::card
 id: card-te-kuru-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 entry_type: grammar
 entry_id: grammar-te-kuru
 card_type: concept
@@ -275,6 +285,7 @@ example_it: >-
 
 :::card
 id: card-kaifuku-prologue-03-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-kaifuku
 card_type: recognition
@@ -293,6 +304,7 @@ notes_it: >-
 
 :::card
 id: card-waza-machine-prologue-03-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: term
 entry_id: term-waza-machine
 card_type: recognition
@@ -310,6 +322,7 @@ notes_it: >-
 
 :::card
 id: card-shoubu-prologue-03-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: term
 entry_id: term-shoubu
 card_type: recognition
@@ -326,6 +339,7 @@ notes_it: >-
 
 :::card
 id: card-te-ageru-prologue-03-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: grammar
 entry_id: grammar-te-ageru
 card_type: concept
@@ -342,6 +356,7 @@ notes_it: >-
 
 :::card
 id: card-tara-prologue-03-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: grammar
 entry_id: grammar-tara
 card_type: concept
@@ -359,6 +374,7 @@ notes_it: >-
 
 :::card
 id: card-te-miru-prologue-03-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-003-pokemon-videogame-core-dialogue-and-tutorial-patterns
 entry_type: grammar
 entry_id: grammar-te-miru
 card_type: concept
@@ -375,6 +391,7 @@ notes_it: >-
 
 :::card
 id: card-koto-ga-dekiru-prologue-03-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: grammar
 entry_id: grammar-koto-ga-dekiru
 card_type: concept

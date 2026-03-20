@@ -210,6 +210,7 @@ level_hint: n4
 
 :::card
 id: card-red-zone-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-red-zone
 card_type: recognition
@@ -227,6 +228,7 @@ tags: [dm25-sd2, attack, proper-name]
 
 :::card
 id: card-apollonus-dragelion-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-apollonus-dragelion
 card_type: recognition
@@ -246,6 +248,7 @@ tags: [dm25-sd2, finisher, proper-name]
 
 :::card
 id: card-shinka-sekkeizu-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-shinka-sekkeizu
 card_type: recognition
@@ -265,6 +268,7 @@ tags: [dm25-sd2, setup, proper-name]
 
 :::card
 id: card-mirai-sekkeizu-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-mirai-sekkeizu
 card_type: recognition
@@ -283,6 +287,7 @@ tags: [dm25-sd2, setup, proper-name]
 
 :::card
 id: card-g-strike-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-g-strike
 card_type: recognition
@@ -302,6 +307,7 @@ tags: [dm25-sd2, keyword, defense]
 
 :::card
 id: card-ultimate-evolution-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-ultimate-evolution
 card_type: recognition
@@ -320,6 +326,7 @@ tags: [dm25-sd2, keyword, evolution]
 
 :::card
 id: card-ultimate-evolution-placement-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-ultimate-evolution
 card_type: concept
@@ -342,6 +349,7 @@ tags: [dm25-sd2, keyword, evolution, chunk]
 
 :::card
 id: card-meteorburn-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-meteorburn
 card_type: recognition
@@ -361,6 +369,7 @@ tags: [dm25-sd2, keyword, evolution]
 
 :::card
 id: card-super-s-trigger-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-super-s-trigger
 card_type: recognition
@@ -379,6 +388,7 @@ tags: [dm25-sd2, keyword, shield]
 
 :::card
 id: card-super-s-trigger-branching-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-super-s-trigger
 card_type: concept
@@ -402,6 +412,7 @@ tags: [dm25-sd2, keyword, shield, chunk]
 
 :::card
 id: card-face-up-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-face-up
 card_type: recognition
@@ -419,6 +430,7 @@ tags: [dm25-sd2, search, visibility]
 
 :::card
 id: card-battle-saseru-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-battle-saseru
 card_type: recognition
@@ -437,6 +449,7 @@ tags: [dm25-sd2, combat, causative]
 
 :::card
 id: card-te-kara-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: grammar
 entry_id: grammar-te-kara
 card_type: concept
@@ -454,6 +467,7 @@ tags: [dm25-sd2, grammar, sequence]
 
 :::card
 id: card-sukina-junjo-de-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: grammar
 entry_id: grammar-sukina-junjo-de
 card_type: concept
@@ -471,6 +485,7 @@ tags: [dm25-sd2, grammar, order]
 
 :::card
 id: card-youni-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: grammar
 entry_id: grammar-youni
 card_type: concept

@@ -1055,6 +1055,7 @@ const grammarUpsertSet = {
 };
 
 const cardUpsertSet = {
+  lessonId: excluded("lesson_id"),
   mediaId: excluded("media_id"),
   segmentId: excluded("segment_id"),
   sourceFile: excluded("source_file"),
@@ -1181,6 +1182,7 @@ const grammarAliasComparisonKeys = ["grammarId", "aliasText", "aliasNorm"];
 
 const cardComparisonKeys = [
   "id",
+  "lessonId",
   "mediaId",
   "segmentId",
   "sourceFile",

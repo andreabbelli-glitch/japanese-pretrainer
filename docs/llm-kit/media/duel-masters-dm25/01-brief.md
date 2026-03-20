@@ -28,6 +28,9 @@ Il bundle deve insegnare:
 - due lesson core nettamente distinte sul testo carta;
 - un mini-percorso app orientato all'azione;
 - due deep dive verticali sui due mazzi di partenza.
+- ogni `:::card` deve dichiarare il `lesson_id` della lesson che lo ancora;
+  se un batch finisce per coprire piu lesson, puo restare nello stesso file
+  solo se ogni card porta il proprio `lesson_id` esplicito.
 
 ## Perche questo contenuto e adatto come primo media
 

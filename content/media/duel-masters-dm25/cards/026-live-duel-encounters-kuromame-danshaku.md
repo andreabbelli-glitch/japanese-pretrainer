@@ -56,6 +56,7 @@ level_hint: n4
 
 :::card
 id: card-kuromame-danshaku-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kuromame-danshaku
 entry_type: term
 entry_id: term-kuromame-danshaku
 card_type: recognition
@@ -76,6 +77,7 @@ tags: [live-duel, proper-name, twinpact]
 
 :::card
 id: card-duel-masters-ability-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kuromame-danshaku
 entry_type: term
 entry_id: term-ability
 card_type: recognition
@@ -95,6 +97,7 @@ tags: [live-duel, term, rules-text]
 
 :::card
 id: card-de-hajimaru-ability-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kuromame-danshaku
 entry_type: grammar
 entry_id: grammar-de-hajimaru
 card_type: concept

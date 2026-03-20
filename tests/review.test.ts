@@ -20,6 +20,7 @@ import {
   developmentFixture,
   entryStatus,
   getUtcDayBounds,
+  lesson,
   lessonProgress,
   media,
   reviewLog,
@@ -243,6 +244,33 @@ describe("review system", () => {
       .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
   }
 
+  async function markAllLessonsCompleted(client: DatabaseClient, completedAt: string) {
+    const lessons = await client.query.lesson.findMany();
+
+    if (lessons.length === 0) {
+      return;
+    }
+
+    await client
+      .insert(lessonProgress)
+      .values(
+        lessons.map((lessonRow) => ({
+          lessonId: lessonRow.id,
+          status: "completed" as const,
+          completedAt,
+          lastOpenedAt: completedAt
+        }))
+      )
+      .onConflictDoUpdate({
+        target: lessonProgress.lessonId,
+        set: {
+          status: "completed",
+          completedAt,
+          lastOpenedAt: completedAt
+        }
+      });
+  }
+
   it("maps FSRS-native review cards into scheduling outputs", () => {
     const fromNew = scheduleReview({
       current: {
@@ -380,10 +408,25 @@ describe("review system", () => {
       createdAt: "2026-03-10T00:00:00.000Z",
       updatedAt: "2026-03-10T00:00:00.000Z"
     });
+    await database.insert(lesson).values({
+      id: "lesson_timezone_fixture",
+      mediaId: "media_timezone_fixture",
+      segmentId: null,
+      slug: "timezone-fixture-intro",
+      title: "Timezone Fixture Intro",
+      orderIndex: 1,
+      difficulty: "beginner",
+      summary: "Lesson fixture for timezone review tests.",
+      status: "active",
+      sourceFile: "tests/fixtures/db/timezone/lesson.md",
+      createdAt: "2026-03-10T00:00:00.000Z",
+      updatedAt: "2026-03-10T00:00:00.000Z"
+    });
     await database.insert(card).values([
       {
         id: "card_timezone_fixture_before",
         mediaId: "media_timezone_fixture",
+        lessonId: "lesson_timezone_fixture",
         segmentId: null,
         sourceFile: "tests/fixtures/db/timezone/before.md",
         cardType: "recognition",
@@ -398,6 +441,7 @@ describe("review system", () => {
       {
         id: "card_timezone_fixture_target",
         mediaId: "media_timezone_fixture",
+        lessonId: "lesson_timezone_fixture",
         segmentId: null,
         sourceFile: "tests/fixtures/db/timezone/target.md",
         cardType: "recognition",
@@ -423,9 +467,24 @@ describe("review system", () => {
       createdAt: "2026-03-10T00:00:00.000Z",
       updatedAt: "2026-03-10T00:00:00.000Z"
     });
+    await database.insert(lesson).values({
+      id: "lesson_timezone_fixture_other",
+      mediaId: "media_timezone_fixture_other",
+      segmentId: null,
+      slug: "timezone-fixture-other-intro",
+      title: "Timezone Fixture Other Intro",
+      orderIndex: 1,
+      difficulty: "beginner",
+      summary: "Second lesson fixture for timezone review tests.",
+      status: "active",
+      sourceFile: "tests/fixtures/db/timezone/other-lesson.md",
+      createdAt: "2026-03-10T00:00:00.000Z",
+      updatedAt: "2026-03-10T00:00:00.000Z"
+    });
     await database.insert(card).values({
       id: "card_timezone_fixture_other",
       mediaId: "media_timezone_fixture_other",
+      lessonId: "lesson_timezone_fixture_other",
       segmentId: null,
       sourceFile: "tests/fixtures/db/timezone/other.md",
       cardType: "recognition",
@@ -543,7 +602,7 @@ describe("review system", () => {
     expect(introducedCount).toBe(1);
   });
 
-  it("hides cards tied to incomplete lessons but keeps orphan cards visible", async () => {
+  it("hides cards tied to incomplete lessons and also excludes orphan cards", async () => {
     await database
       .update(lessonProgress)
       .set({
@@ -574,6 +633,7 @@ describe("review system", () => {
     await database.insert(card).values({
       id: "card_fixture_orphan",
       mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
       segmentId: developmentFixture.segmentId,
       sourceFile: "tests/fixtures/db/fixture-tcg/cards/orphan.md",
       cardType: "recognition",
@@ -598,12 +658,10 @@ describe("review system", () => {
       database
     );
 
-    expect(queue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
-      "card_fixture_orphan"
-    ]);
+    expect(queue?.cards).toHaveLength(0);
     expect(queue?.dueCount).toBe(0);
-    expect(queue?.newAvailableCount).toBe(1);
-    expect(queue?.newQueuedCount).toBe(1);
+    expect(queue?.newAvailableCount).toBe(0);
+    expect(queue?.newQueuedCount).toBe(0);
   });
 
   it("builds a daily queue that separates due, new, manual, and suspended cards", async () => {
@@ -618,6 +676,7 @@ describe("review system", () => {
       {
         id: "card_fixture_new_context",
         mediaId: developmentFixture.mediaId,
+        lessonId: developmentFixture.lessonId,
         segmentId: developmentFixture.segmentId,
         sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-context.md",
         cardType: "production",
@@ -632,6 +691,7 @@ describe("review system", () => {
       {
         id: "card_fixture_suspended",
         mediaId: developmentFixture.mediaId,
+        lessonId: developmentFixture.lessonId,
         segmentId: developmentFixture.segmentId,
         sourceFile: "tests/fixtures/db/fixture-tcg/cards/suspended.md",
         cardType: "recognition",
@@ -703,6 +763,7 @@ describe("review system", () => {
       {
         id: "card_fixture_overview_new",
         mediaId: developmentFixture.mediaId,
+        lessonId: developmentFixture.lessonId,
         segmentId: developmentFixture.segmentId,
         sourceFile: "tests/fixtures/db/fixture-tcg/cards/overview-new.md",
         cardType: "production",
@@ -717,6 +778,7 @@ describe("review system", () => {
       {
         id: "card_fixture_overview_suspended",
         mediaId: developmentFixture.mediaId,
+        lessonId: developmentFixture.lessonId,
         segmentId: developmentFixture.segmentId,
         sourceFile: "tests/fixtures/db/fixture-tcg/cards/overview-suspended.md",
         cardType: "recognition",
@@ -799,6 +861,25 @@ describe("review system", () => {
       createdAt: "2026-03-08T09:00:00.000Z",
       updatedAt: "2026-03-08T09:30:00.000Z"
     });
+    await database.insert(lesson).values({
+      id: "lesson_duel_masters_intro",
+      mediaId: "media_duel_masters",
+      segmentId: null,
+      slug: "tcg-core-overview",
+      title: "TCG Core Overview",
+      orderIndex: 1,
+      difficulty: "beginner",
+      summary: "Lesson Duel Masters.",
+      status: "active",
+      sourceFile: "content/media/duel-masters-dm25/textbook/001-tcg-core-overview.md",
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-08T09:30:00.000Z"
+    });
+    await database.insert(lessonProgress).values({
+      lessonId: "lesson_duel_masters_intro",
+      status: "completed",
+      completedAt: "2026-03-08T09:30:00.000Z"
+    });
     await database.insert(term).values({
       id: "term_duel_masters_review",
       sourceId: "term_duel_masters_review",
@@ -821,6 +902,7 @@ describe("review system", () => {
     await database.insert(card).values({
       id: "card_duel_masters_due",
       mediaId: "media_duel_masters",
+      lessonId: "lesson_duel_masters_intro",
       segmentId: null,
       sourceFile: "content/media/duel-masters-dm25/cards/001-tcg-core.md",
       cardType: "recognition",
@@ -905,6 +987,7 @@ describe("review system", () => {
 
     expect(result.status).toBe("completed");
     expect(await database.query.reviewSubjectState.findMany()).toHaveLength(0);
+    await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
 
     const now = new Date("2026-03-11T09:00:00.000Z");
     const nowIso = now.toISOString();
@@ -996,6 +1079,7 @@ describe("review system", () => {
       {
         id: "card_fixture_new_limit_a",
         mediaId: developmentFixture.mediaId,
+        lessonId: developmentFixture.lessonId,
         segmentId: developmentFixture.segmentId,
         sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-limit-a.md",
         cardType: "recognition",
@@ -1010,6 +1094,7 @@ describe("review system", () => {
       {
         id: "card_fixture_new_limit_b",
         mediaId: developmentFixture.mediaId,
+        lessonId: developmentFixture.lessonId,
         segmentId: developmentFixture.segmentId,
         sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-limit-b.md",
         cardType: "recognition",
@@ -1161,6 +1246,7 @@ describe("review system", () => {
     await database.insert(card).values({
       id: "card_fixture_remaining_count",
       mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
       segmentId: developmentFixture.segmentId,
       sourceFile: "tests/fixtures/db/fixture-tcg/cards/remaining-count.md",
       cardType: "recognition",
@@ -1324,6 +1410,7 @@ describe("review system", () => {
     });
 
     expect(imported.status).toBe("completed");
+    await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
 
     const reviewPage = await getReviewPageData(
       "sample-anime",
@@ -1362,6 +1449,7 @@ describe("review system", () => {
     await database.insert(card).values({
       id: chunkCardId,
       mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
       segmentId: developmentFixture.segmentId,
       sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku-chunk.md",
       cardType: "concept",
@@ -1486,6 +1574,39 @@ describe("review system", () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+
+  it("blocks single-card hydration, prefetch, and grading when the lesson is incomplete", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "in_progress",
+        completedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const { prefetchReviewCardSessionAction } =
+      await loadReviewActionsForDatabase(database);
+
+    await expect(
+      hydrateReviewCard({
+        cardId: developmentFixture.primaryCardId,
+        database
+      })
+    ).resolves.toBeNull();
+    await expect(
+      prefetchReviewCardSessionAction({
+        cardId: developmentFixture.primaryCardId
+      })
+    ).resolves.toBeNull();
+    await expect(
+      applyReviewGrade({
+        cardId: developmentFixture.primaryCardId,
+        database,
+        now: new Date("2026-03-12T10:00:00.000Z"),
+        rating: "good"
+      })
+    ).rejects.toThrow("Review card not available for grading.");
   });
 
   it("renders furigana markup in review card fronts instead of showing raw braces", async () => {
@@ -2115,6 +2236,7 @@ describe("review system", () => {
     });
 
     expect(result.status).toBe("completed");
+    await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
 
     await database
       .insert(reviewState)
@@ -2359,6 +2481,7 @@ describe("review system", () => {
     });
 
     expect(result.status).toBe("completed");
+    await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
 
     const [alphaQueue, betaDetail] = await Promise.all([
       getReviewQueueSnapshotForMedia(

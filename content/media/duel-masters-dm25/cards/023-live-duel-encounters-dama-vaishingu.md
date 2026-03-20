@@ -56,6 +56,7 @@ level_hint: n3
 
 :::card
 id: card-sorega-nara-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-dama-vaishingu
 entry_type: grammar
 entry_id: grammar-sorega-nara
 card_type: concept
@@ -76,6 +77,7 @@ tags: [live-duel, grammar, branching, filter]
 
 :::card
 id: card-dama-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-dama-vaishingu
 entry_type: term
 entry_id: term-dama
 card_type: recognition
@@ -96,6 +98,7 @@ tags: [live-duel, archetype, naming]
 
 :::card
 id: card-soreigai-nara-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-dama-vaishingu
 entry_type: grammar
 entry_id: grammar-soreigai-nara
 card_type: concept

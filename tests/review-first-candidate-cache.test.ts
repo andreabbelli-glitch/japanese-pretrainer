@@ -51,6 +51,8 @@ import {
   card,
   closeDatabaseClient,
   createDatabaseClient,
+  lesson,
+  lessonProgress,
   media,
   runMigrations,
   userSetting,
@@ -101,10 +103,30 @@ describe("global review first-candidate cache", () => {
         updatedAt: "2026-03-10T09:00:00.000Z"
       }
     ]);
+    await database.insert(lesson).values({
+      id: "lesson_a",
+      mediaId: "media_a",
+      segmentId: null,
+      slug: "intro-a",
+      title: "Lesson A",
+      orderIndex: 1,
+      difficulty: "beginner",
+      summary: "Lesson A",
+      status: "active",
+      sourceFile: "tests/review-first-candidate-cache/media-a.md",
+      createdAt: "2026-03-10T09:00:00.000Z",
+      updatedAt: "2026-03-10T09:00:00.000Z"
+    });
+    await database.insert(lessonProgress).values({
+      lessonId: "lesson_a",
+      status: "completed",
+      completedAt: "2026-03-10T09:00:00.000Z"
+    });
     await database.insert(card).values([
       {
         id: "card_a",
         mediaId: "media_a",
+        lessonId: "lesson_a",
         segmentId: null,
         sourceFile: "tests/review-first-candidate-cache/media-a.md",
         cardType: "recognition",

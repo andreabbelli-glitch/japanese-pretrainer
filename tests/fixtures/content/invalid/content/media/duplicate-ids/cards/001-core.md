@@ -17,6 +17,7 @@ meaning_it: invasione keyword
 
 :::card
 id: card-duel-masters-duplicate-invasion-recognition
+lesson_id: lesson-duel-masters-duplicate-ids-overview
 entry_type: term
 entry_id: term-duel-masters-duplicate-invasion
 card_type: recognition

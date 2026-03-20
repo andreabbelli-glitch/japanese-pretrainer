@@ -18,6 +18,7 @@ notes_it: Usa [アビス](term:term-duel-masters-abyss) nel lessico deck.
 
 :::card
 id: card-duel-masters-abyss-recognition
+lesson_id: lesson-duel-masters-unsafe-yaml-overview
 entry_type: term
 entry_id: term-duel-masters-abyss
 card_type: recognition

@@ -22,6 +22,7 @@ notes_it: >-
 
 :::card
 id: card-kagai-jugyou-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
 entry_type: term
 entry_id: term-kagai-jugyou
 card_type: recognition
@@ -49,6 +50,7 @@ notes_it: >-
 
 :::card
 id: card-takara-sagashi-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
 entry_type: term
 entry_id: term-takara-sagashi
 card_type: recognition
@@ -76,6 +78,7 @@ notes_it: >-
 
 :::card
 id: card-champion-rank-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
 entry_type: term
 entry_id: term-champion-rank
 card_type: recognition
@@ -103,6 +106,7 @@ notes_it: >-
 
 :::card
 id: card-gym-badge-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
 entry_type: term
 entry_id: term-gym-badge
 card_type: recognition
@@ -130,6 +134,7 @@ notes_it: >-
 
 :::card
 id: card-tte-no-wa-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
 entry_type: grammar
 entry_id: grammar-tte-no-wa
 card_type: concept
@@ -158,6 +163,7 @@ notes_it: >-
 
 :::card
 id: card-dake-ja-dame-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
 entry_type: grammar
 entry_id: grammar-dake-ja-dame
 card_type: concept
@@ -183,6 +189,7 @@ notes_it: >-
 
 :::card
 id: card-tari-tari-suru-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
 entry_type: grammar
 entry_id: grammar-tari-tari-suru
 card_type: concept
@@ -209,6 +216,7 @@ notes_it: >-
 
 :::card
 id: card-to-wa-itte-mo-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
 entry_type: grammar
 entry_id: grammar-to-wa-itte-mo
 card_type: concept

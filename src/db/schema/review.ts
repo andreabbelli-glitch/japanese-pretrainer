@@ -7,7 +7,7 @@ import {
   uniqueIndex
 } from "drizzle-orm/sqlite-core";
 
-import { media, segment } from "./content.ts";
+import { lesson, media, segment } from "./content.ts";
 import {
   cardRelationshipTypeValues,
   cardStatusValues,
@@ -25,6 +25,9 @@ export const card = sqliteTable(
     mediaId: text("media_id")
       .notNull()
       .references(() => media.id, { onDelete: "cascade" }),
+    lessonId: text("lesson_id").references(() => lesson.id, {
+      onDelete: "set null"
+    }),
     segmentId: text("segment_id").references(() => segment.id, {
       onDelete: "set null"
     }),
@@ -44,6 +47,7 @@ export const card = sqliteTable(
   },
   (table) => [
     index("card_media_order_idx").on(table.mediaId, table.orderIndex),
+    index("card_lesson_idx").on(table.lessonId),
     index("card_segment_order_idx").on(table.segmentId, table.orderIndex)
   ]
 );

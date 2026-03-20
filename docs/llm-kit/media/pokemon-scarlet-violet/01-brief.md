@@ -209,6 +209,9 @@ Dopo il seed iniziale, i batch successivi dovrebbero seguire questa logica:
 - produrre una lesson textbook per quel capitolo;
 - produrre o estendere un file cards coerente con quel capitolo solo con le
   entry davvero utili e ricorrenti.
+- ogni `:::card` deve dichiarare il `lesson_id` della lesson a cui appartiene;
+  se un set copre piu lesson, puo restare nello stesso file solo se ogni card
+  porta il proprio `lesson_id` esplicito.
 
 Esempi di batch sani:
 

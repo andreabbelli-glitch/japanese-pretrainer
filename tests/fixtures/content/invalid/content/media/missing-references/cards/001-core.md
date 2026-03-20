@@ -9,6 +9,7 @@ segment_ref: tcg-core
 
 :::card
 id: card-duel-masters-missing-entry-recognition
+lesson_id: lesson-duel-masters-missing-references-overview
 entry_type: term
 entry_id: term-duel-masters-missing-abyss
 card_type: recognition

@@ -270,6 +270,7 @@ level_hint: custom
 
 :::card
 id: card-mighty-strike-freedom-gundam-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-mighty-strike-freedom-gundam
 card_type: recognition
@@ -289,6 +290,7 @@ tags: [starter-deck, ms, seed-freedom]
 
 :::card
 id: card-immortal-justice-gundam-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-immortal-justice-gundam
 card_type: recognition
@@ -309,6 +311,7 @@ tags: [starter-deck, ms, seed-freedom]
 
 :::card
 id: card-gelgoog-menace-lunamaria-custom-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-gelgoog-menace-lunamaria-custom
 card_type: recognition
@@ -328,6 +331,7 @@ tags: [starter-deck, ms, seed-freedom, pairing]
 
 :::card
 id: card-gquuuuuux-omega-psycommu-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-gquuuuuux-omega-psycommu
 card_type: recognition
@@ -347,6 +351,7 @@ tags: [starter-deck, ms, gquuuuuux, mixed-script]
 
 :::card
 id: card-red-gundam-0085-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-red-gundam-0085
 card_type: recognition
@@ -367,6 +372,7 @@ tags: [starter-deck, ms, gquuuuuux, kanji]
 
 :::card
 id: card-kira-yamato-lacus-clyne-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-kira-yamato-lacus-clyne
 card_type: recognition
@@ -385,6 +391,7 @@ tags: [starter-deck, pl, seed-freedom, pattern]
 
 :::card
 id: card-shinn-asuka-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-shinn-asuka
 card_type: recognition
@@ -404,6 +411,7 @@ tags: [starter-deck, pl, seed-freedom]
 
 :::card
 id: card-lunamaria-hawk-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-lunamaria-hawk
 card_type: recognition
@@ -422,6 +430,7 @@ tags: [starter-deck, pl, seed-freedom, pairing]
 
 :::card
 id: card-amate-yuzuriha-machu-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-amate-yuzuriha-machu
 card_type: recognition
@@ -439,6 +448,7 @@ tags: [starter-deck, pl, gquuuuuux, parenthetical]
 
 :::card
 id: card-shuji-itou-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-shuji-itou
 card_type: recognition
@@ -458,6 +468,7 @@ tags: [starter-deck, pl, gquuuuuux, pairing]
 
 :::card
 id: card-ms-type-near-range-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-ms-type-near-range
 card_type: recognition
@@ -477,6 +488,7 @@ tags: [starter-deck, frame, ms-type]
 
 :::card
 id: card-ms-type-long-range-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-ms-type-long-range
 card_type: recognition
@@ -495,6 +507,7 @@ tags: [starter-deck, frame, ms-type]
 
 :::card
 id: card-ms-type-mobility-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-ms-type-mobility
 card_type: recognition
@@ -514,6 +527,7 @@ tags: [starter-deck, frame, ms-type]
 
 :::card
 id: card-pl-skill-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-pl-skill
 card_type: recognition
@@ -532,6 +546,7 @@ tags: [starter-deck, frame, pilot]
 
 :::card
 id: card-link-ability-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-link-ability
 card_type: recognition
@@ -551,6 +566,7 @@ tags: [starter-deck, frame, pairing]
 
 :::card
 id: card-dedicated-machine-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-dedicated-machine
 card_type: recognition
@@ -569,6 +585,7 @@ tags: [starter-deck, frame, pairing]
 
 :::card
 id: card-a-and-b-concept
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: grammar
 entry_id: grammar-a-and-b
 card_type: concept
@@ -587,6 +604,7 @@ tags: [starter-deck, grammar, names]
 
 :::card
 id: card-senyouki-concept
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: grammar
 entry_id: grammar-senyouki
 card_type: concept
@@ -606,6 +624,7 @@ tags: [starter-deck, grammar, pairing]
 
 :::card
 id: card-parenthetical-label-concept
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: grammar
 entry_id: grammar-parenthetical-label
 card_type: concept

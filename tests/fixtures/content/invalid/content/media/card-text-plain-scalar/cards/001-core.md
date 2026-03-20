@@ -17,6 +17,7 @@ meaning_it: mazzo / deck
 
 :::card
 id: card-duel-masters-card-text-plain-scalar-example
+lesson_id: lesson-duel-masters-card-text-plain-scalar-overview
 entry_type: term
 entry_id: term-duel-masters-card-text-plain-scalar-deck
 card_type: recognition

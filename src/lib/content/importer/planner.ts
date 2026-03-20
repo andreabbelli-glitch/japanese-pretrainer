@@ -581,6 +581,7 @@ function buildCardPlans(input: {
         entryLinks: dedupeById([primaryEntryLink, ...contextualEntryLinks]),
         row: {
           id: card.id,
+          lessonId: card.lessonId,
           mediaId: input.mediaId,
           segmentId,
           sourceFile,

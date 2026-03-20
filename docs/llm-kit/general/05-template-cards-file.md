@@ -38,6 +38,7 @@ level_hint: <n5|n4|n3|custom>
 
 :::card
 id: card-<entry-slug>-recognition
+lesson_id: lesson-<media-slug>-<lesson-slug>
 entry_type: term
 entry_id: term-<entry-slug>
 card_type: recognition
@@ -56,6 +57,7 @@ tags: [<tag-1>, <tag-2>]
 
 :::card
 id: card-<grammar-slug>-concept
+lesson_id: lesson-<media-slug>-<lesson-slug>
 entry_type: grammar
 entry_id: grammar-<grammar-slug>
 card_type: concept
@@ -76,6 +78,7 @@ tags: [<tag-1>, <tag-2>]
 Regole pratiche:
 - definisci qui le entry canoniche preferite per glossary/review;
 - se una entry esiste gia, non ridefinirla: crea solo la :::card che la usa;
+- ogni `:::card` deve dichiarare un `lesson_id` esplicito e stabile;
 - usa `cross_media_group` solo per collegare intenzionalmente la stessa entry
   concettuale tra media diversi; non per omografie dubbie;
 - se lo usi, preferisci uno slug stabile con prefisso del tipo, per esempio

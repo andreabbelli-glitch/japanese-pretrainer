@@ -25,6 +25,7 @@ pitch_accent: 2
 
 :::card
 id: card-taberu-recognition
+lesson_id: lesson-sample-anime-ep01-intro
 entry_type: term
 entry_id: term-taberu
 card_type: recognition
@@ -39,6 +40,7 @@ tags: [verb, core]
 
 :::card
 id: card-teiru-concept
+lesson_id: lesson-sample-anime-ep01-intro
 entry_type: grammar
 entry_id: grammar-teiru
 card_type: concept

@@ -17,6 +17,7 @@ aliases: [たべる, taberu]
 
 :::card
 id: card-missing-image-recognition
+lesson_id: lesson-missing-image-overview
 entry_type: term
 entry_id: term-missing-taberu
 card_type: recognition

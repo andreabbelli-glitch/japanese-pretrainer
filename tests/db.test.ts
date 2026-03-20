@@ -19,6 +19,7 @@ import {
   listMedia,
   listTermEntriesByMediaId,
   listTermEntryReviewSummaries,
+  lessonProgress,
   reviewState,
   runMigrations,
   seedDevelopmentDatabase,
@@ -65,7 +66,7 @@ describe("database layer", () => {
 
     expect(lessons).toHaveLength(1);
     expect(lessons[0]?.content?.excerpt).toContain("voce lessicale");
-    expect(lessons[0]?.progress?.status).toBe("in_progress");
+    expect(lessons[0]?.progress?.status).toBe("completed");
 
     const lesson = await getLessonBySlug(
       database,
@@ -148,6 +149,14 @@ describe("database layer", () => {
     expect(cards).toHaveLength(2);
     expect(cards[0]?.reviewState?.state).toBe("learning");
     expect(cards[1]?.reviewState?.state).toBe("review");
+
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "completed",
+        completedAt: "2026-03-09T10:00:00.000Z"
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
 
     const dueCards = await listDueCardsByMediaId(
       database,

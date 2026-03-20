@@ -21,6 +21,7 @@ notes_it: >-
 
 :::card
 id: card-hokaku-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: term
 entry_id: term-hokaku
 card_type: recognition
@@ -47,6 +48,7 @@ notes_it: >-
 
 :::card
 id: card-monster-ball-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: term
 entry_id: term-monster-ball
 card_type: recognition
@@ -74,6 +76,7 @@ notes_it: >-
 
 :::card
 id: card-yowaraseru-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: term
 entry_id: term-yowaraseru
 card_type: recognition
@@ -99,6 +102,7 @@ notes_it: >-
 
 :::card
 id: card-ki-o-tsukeru-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: term
 entry_id: term-ki-o-tsukeru
 card_type: recognition
@@ -124,6 +128,7 @@ notes_it: >-
 
 :::card
 id: card-seisoku-suru-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: term
 entry_id: term-seisoku-suru
 card_type: recognition
@@ -151,6 +156,7 @@ notes_it: >-
 
 :::card
 id: card-waza-machine-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: term
 entry_id: term-waza-machine
 card_type: recognition
@@ -177,6 +183,7 @@ notes_it: >-
 
 :::card
 id: card-sugata-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: term
 entry_id: term-sugata
 card_type: recognition
@@ -204,6 +211,7 @@ notes_it: >-
 
 :::card
 id: card-seigyo-suru-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: term
 entry_id: term-seigyo-suru
 card_type: recognition
@@ -228,6 +236,7 @@ notes_it: >-
 
 :::card
 id: card-te-ageru-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: grammar
 entry_id: grammar-te-ageru
 card_type: concept
@@ -252,6 +261,7 @@ notes_it: >-
 
 :::card
 id: card-nai-you-ni-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: grammar
 entry_id: grammar-nai-you-ni
 card_type: concept
@@ -276,6 +286,7 @@ notes_it: >-
 
 :::card
 id: card-nagara-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
 entry_type: grammar
 entry_id: grammar-nagara
 card_type: concept
@@ -290,6 +301,7 @@ example_it: >-
 
 :::card
 id: card-yasei-prologue-02-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-yasei
 card_type: recognition
@@ -306,6 +318,7 @@ notes_it: >-
 
 :::card
 id: card-tsukamaeru-prologue-02-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-tsukamaeru
 card_type: recognition
@@ -323,6 +336,7 @@ notes_it: >-
 
 :::card
 id: card-te-miru-prologue-02-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-003-pokemon-videogame-core-dialogue-and-tutorial-patterns
 entry_type: grammar
 entry_id: grammar-te-miru
 card_type: concept
@@ -339,6 +353,7 @@ notes_it: >-
 
 :::card
 id: card-te-shimau-prologue-02-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: grammar
 entry_id: grammar-te-shimau
 card_type: concept

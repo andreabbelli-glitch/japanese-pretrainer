@@ -47,11 +47,12 @@ export const segmentRelations = relations(segment, ({ many, one }) => ({
   cards: many(card)
 }));
 
-export const lessonRelations = relations(lesson, ({ one }) => ({
+export const lessonRelations = relations(lesson, ({ many, one }) => ({
   media: one(media, {
     fields: [lesson.mediaId],
     references: [media.id]
   }),
+  cards: many(card),
   segment: one(segment, {
     fields: [lesson.segmentId],
     references: [segment.id]
@@ -142,6 +143,10 @@ export const cardRelations = relations(card, ({ many, one }) => ({
   media: one(media, {
     fields: [card.mediaId],
     references: [media.id]
+  }),
+  lesson: one(lesson, {
+    fields: [card.lessonId],
+    references: [lesson.id]
   }),
   segment: one(segment, {
     fields: [card.segmentId],

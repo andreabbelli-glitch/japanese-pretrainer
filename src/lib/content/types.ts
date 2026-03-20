@@ -271,6 +271,7 @@ export interface NormalizedCard {
   entryType: EntryType;
   entryId: string;
   cardType: string;
+  lessonId: string;
   front: RichTextFragment;
   back: RichTextFragment;
   exampleJp?: RichTextFragment;

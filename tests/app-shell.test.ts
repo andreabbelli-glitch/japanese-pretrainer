@@ -88,10 +88,10 @@ describe("app shell live data", () => {
     expect(dashboard.totals.lessonsCompleted).toBe(1);
     expect(dashboard.totals.entriesKnown).toBe(2);
     expect(dashboard.totals.cardsDue).toBe(0);
-    // The dashboard now uses SQL-level card counts (listReviewLaunchCandidates)
-    // which count the secondary card (review state, future due) as active.
-    // The old subject-group-based path produced 0 due to grouping artifacts.
-    expect(dashboard.totals.activeReviewCards).toBe(1);
+    // The dashboard now uses lesson-aware SQL counts, so the remaining
+    // lesson-bound review card is filtered out once its driving entry is
+    // manually marked known.
+    expect(dashboard.totals.activeReviewCards).toBe(0);
   });
 
   it("prefers the most reviewable media for review entry points", async () => {
@@ -130,10 +130,16 @@ describe("app shell live data", () => {
       createdAt: "2026-03-08T09:00:00.000Z",
       updatedAt: "2026-03-08T09:30:00.000Z"
     });
+    await database.insert(lessonProgress).values({
+      lessonId: "lesson_duel_masters_intro",
+      status: "completed",
+      completedAt: "2026-03-08T09:30:00.000Z"
+    });
 
     await database.insert(card).values({
       id: "card_duel_masters_due",
       mediaId: "media_duel_masters",
+      lessonId: "lesson_duel_masters_intro",
       segmentId: null,
       sourceFile: "content/media/duel-masters-dm25/cards/001-tcg-core.md",
       cardType: "recognition",
@@ -162,7 +168,7 @@ describe("app shell live data", () => {
     const dashboard = await getDashboardData(database);
     const duelMastersMedia = await getMediaDetailData("duel-masters-dm25", database);
 
-    expect(dashboard.focusMedia?.slug).toBe(developmentFixture.mediaSlug);
+    expect(dashboard.focusMedia?.slug).toBe("duel-masters-dm25");
     expect(dashboard.reviewMedia?.slug).toBe("duel-masters-dm25");
     expect(duelMastersMedia?.reviewStatValue).toBe("1 da ripassare");
   });

@@ -73,7 +73,13 @@ export async function listReviewCardIdsByEntryRefs(
   const rows = await database.all<{ cardId: string }>(`
     SELECT DISTINCT c.id AS cardId
     FROM card c
+    INNER JOIN lesson l
+      ON l.id = c.lesson_id
+    INNER JOIN lesson_progress lp
+      ON lp.lesson_id = l.id
     WHERE c.status != 'archived'
+      AND l.status = 'active'
+      AND lp.status = 'completed'
       AND EXISTS (
         SELECT 1
         FROM card_entry_link cel

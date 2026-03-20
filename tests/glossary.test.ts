@@ -157,6 +157,7 @@ aliases: [共有, きょうゆう, kyouyuu]
 
 :::card
 id: ${input.cardId}
+lesson_id: ${input.lessonId}
 entry_type: term
 entry_id: ${reusedSourceIdFixture.sourceId}
 card_type: recognition
@@ -249,6 +250,7 @@ meaning_it: gelatina
 
 :::card
 id: card-lo-jelly
+lesson_id: lesson-lo-ch1
 entry_type: term
 entry_id: term-lo-jelly
 card_type: recognition
@@ -279,6 +281,7 @@ meaning_it: gelato
 
 :::card
 id: card-lo-ice
+lesson_id: lesson-lo-ch2
 entry_type: term
 entry_id: term-lo-ice
 card_type: recognition
@@ -692,6 +695,7 @@ describe("glossary data", () => {
         card: {
           id: `card-bulk-${index}`,
           mediaId: developmentFixture.mediaId,
+          lessonId: developmentFixture.lessonId,
           segmentId: developmentFixture.segmentId,
           sourceFile: `tests/fixtures/db/fixture-tcg/cards/bulk-${index}.md`,
           cardType: "recognition",
@@ -784,6 +788,7 @@ describe("glossary data", () => {
         card: {
           id: `card-page-${index}`,
           mediaId: developmentFixture.mediaId,
+          lessonId: developmentFixture.lessonId,
           segmentId: developmentFixture.segmentId,
           sourceFile: `tests/fixtures/db/fixture-tcg/cards/page-${index}.md`,
           cardType: "recognition",

@@ -181,6 +181,7 @@ meaning_it: ${input.mixedCardTermMeaning}
 
 :::card
 id: ${input.mixedCardTermCardId}
+lesson_id: ${input.lessonId}
 entry_type: term
 entry_id: ${input.mixedCardTermSourceId}
 card_type: recognition
@@ -222,6 +223,7 @@ meaning_it: ${input.grammarMeaning}
 
 :::card
 id: ${input.termCardId}
+lesson_id: ${input.lessonId}
 entry_type: term
 entry_id: ${input.termSourceId}
 card_type: recognition
@@ -232,6 +234,7 @@ tags: [shared, term]
 
 :::card
 id: ${input.grammarCardId}
+lesson_id: ${input.lessonId}
 entry_type: grammar
 entry_id: ${input.grammarSourceId}
 card_type: concept
@@ -326,6 +329,7 @@ meaning_it: ${input.grammarMeaning}
 
 :::card
 id: ${input.termCardId}
+lesson_id: ${input.lessonId}
 entry_type: term
 entry_id: ${input.termSourceId}
 card_type: recognition
@@ -336,6 +340,7 @@ tags: [shared, term]
 
 :::card
 id: ${input.grammarCardId}
+lesson_id: ${input.lessonId}
 entry_type: grammar
 entry_id: ${input.grammarSourceId}
 card_type: concept

@@ -510,6 +510,10 @@ Campi opzionali:
 
 Ogni file in `cards/` contiene una o piu card dichiarate come blocchi
 strutturati.
+Ogni `:::card` deve dichiarare esplicitamente `lesson_id`, che punta alla
+lesson dello stesso media a cui quella card appartiene. Un file cards puo
+contenere card per lesson diverse, quindi l'associazione va tenuta sul singolo
+blocco.
 
 Esempio:
 
@@ -525,6 +529,7 @@ segment_ref: episode-01
 
 :::card
 id: card-taberu-recognition
+lesson_id: lesson-sample-anime-ep01-intro
 entry_type: term
 entry_id: term-taberu
 card_type: recognition
@@ -539,6 +544,7 @@ tags: [verb, core]
 
 :::card
 id: card-teiru-core
+lesson_id: lesson-sample-anime-ep01-intro
 entry_type: grammar
 entry_id: grammar-teiru
 card_type: concept
@@ -563,6 +569,7 @@ Campi frontmatter obbligatori:
 Ogni blocco `:::card` deve contenere:
 
 - `id`
+- `lesson_id`
 - `entry_type`
 - `entry_id`
 - `card_type`

@@ -705,6 +705,7 @@ level_hint: n4
 
 :::card
 id: card-home-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-home
 card_type: recognition
@@ -722,6 +723,7 @@ tags: [duel-plays, app, navigation]
 
 :::card
 id: card-mission-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-mission
 card_type: recognition
@@ -741,6 +743,7 @@ tags: [duel-plays, app, progression]
 
 :::card
 id: card-login-bonus-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-login-bonus
 card_type: recognition
@@ -758,6 +761,7 @@ tags: [duel-plays, app, reward]
 
 :::card
 id: card-present-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-present
 card_type: recognition
@@ -775,6 +779,7 @@ tags: [duel-plays, app, reward]
 
 :::card
 id: card-news-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-news
 card_type: recognition
@@ -792,6 +797,7 @@ tags: [duel-plays, app, navigation]
 
 :::card
 id: card-shop-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-shop
 card_type: recognition
@@ -809,6 +815,7 @@ tags: [duel-plays, app, shop]
 
 :::card
 id: card-settings-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-settings
 card_type: recognition
@@ -826,6 +833,7 @@ tags: [duel-plays, app, navigation, kanji]
 
 :::card
 id: card-etc-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-etc
 card_type: recognition
@@ -844,6 +852,7 @@ tags: [duel-plays, app, navigation]
 
 :::card
 id: card-confirm-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-confirm
 card_type: recognition
@@ -861,6 +870,7 @@ tags: [duel-plays, app, action, kanji]
 
 :::card
 id: card-open-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-open
 card_type: recognition
@@ -879,6 +889,7 @@ tags: [duel-plays, app, action, kanji]
 
 :::card
 id: card-selection-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-selection
 card_type: recognition
@@ -896,6 +907,7 @@ tags: [duel-plays, app, action, kanji]
 
 :::card
 id: card-save-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-save
 card_type: recognition
@@ -913,6 +925,7 @@ tags: [duel-plays, app, action, kanji]
 
 :::card
 id: card-receive-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-receive
 card_type: recognition
@@ -930,6 +943,7 @@ tags: [duel-plays, app, action, kanji]
 
 :::card
 id: card-constructed-deck-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-constructed-deck
 card_type: recognition
@@ -947,6 +961,7 @@ tags: [duel-plays, app, deck]
 
 :::card
 id: card-hensei-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-hensei
 card_type: recognition
@@ -966,6 +981,7 @@ tags: [duel-plays, app, deck, kanji]
 
 :::card
 id: card-deck-edit-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-deck-edit
 card_type: recognition
@@ -984,6 +1000,7 @@ tags: [duel-plays, app, deck]
 
 :::card
 id: card-rental-deck-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-rental-deck
 card_type: recognition
@@ -1002,6 +1019,7 @@ tags: [duel-plays, app, deck]
 
 :::card
 id: card-purchase-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-purchase
 card_type: recognition
@@ -1019,6 +1037,7 @@ tags: [duel-plays, app, shop, kanji]
 
 :::card
 id: card-card-purchase-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-card-purchase
 card_type: recognition
@@ -1039,6 +1058,7 @@ tags: [duel-plays, app, shop]
 
 :::card
 id: card-exchange-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-exchange
 card_type: recognition
@@ -1057,6 +1077,7 @@ tags: [duel-plays, app, shop, kanji]
 
 :::card
 id: card-card-exchange-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-card-exchange
 card_type: recognition
@@ -1075,6 +1096,7 @@ tags: [duel-plays, app, shop]
 
 :::card
 id: card-craft-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-craft
 card_type: recognition
@@ -1094,6 +1116,7 @@ tags: [duel-plays, app, collection, kanji]
 
 :::card
 id: card-disenchant-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-disenchant
 card_type: recognition
@@ -1112,6 +1135,7 @@ tags: [duel-plays, app, collection, kanji]
 
 :::card
 id: card-owned-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-owned
 card_type: recognition
@@ -1130,6 +1154,7 @@ tags: [duel-plays, app, resource, kanji]
 
 :::card
 id: card-dm-points-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-dm-points
 card_type: recognition
@@ -1147,6 +1172,7 @@ tags: [duel-plays, app, resource]
 
 :::card
 id: card-ticket-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-ticket
 card_type: recognition
@@ -1164,6 +1190,7 @@ tags: [duel-plays, app, resource]
 
 :::card
 id: card-ranked-match-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-modes-and-progression
 entry_type: term
 entry_id: term-ranked-match
 card_type: recognition
@@ -1181,6 +1208,7 @@ tags: [duel-plays, app, mode]
 
 :::card
 id: card-room-match-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-modes-and-progression
 entry_type: term
 entry_id: term-room-match
 card_type: recognition
@@ -1198,6 +1226,7 @@ tags: [duel-plays, app, mode]
 
 :::card
 id: card-quick-pick-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-modes-and-progression
 entry_type: term
 entry_id: term-quick-pick
 card_type: recognition
@@ -1215,6 +1244,7 @@ tags: [duel-plays, app, mode]
 
 :::card
 id: card-solo-play-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-modes-and-progression
 entry_type: term
 entry_id: term-solo-play
 card_type: recognition
@@ -1232,6 +1262,7 @@ tags: [duel-plays, app, mode]
 
 :::card
 id: card-tower-of-trials-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-modes-and-progression
 entry_type: term
 entry_id: term-tower-of-trials
 card_type: recognition
@@ -1249,6 +1280,7 @@ tags: [duel-plays, app, mode, kanji]
 
 :::card
 id: card-achievement-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-modes-and-progression
 entry_type: term
 entry_id: term-achievement
 card_type: recognition
@@ -1266,6 +1298,7 @@ tags: [duel-plays, app, status, kanji]
 
 :::card
 id: card-reward-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-reward
 card_type: recognition
@@ -1284,6 +1317,7 @@ tags: [duel-plays, app, reward, kanji]
 
 :::card
 id: card-ongoing-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-ongoing
 card_type: recognition
@@ -1302,6 +1336,7 @@ tags: [duel-plays, app, status, kanji]
 
 :::card
 id: card-unlock-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-modes-and-progression
 entry_type: term
 entry_id: term-unlock
 card_type: recognition
@@ -1320,6 +1355,7 @@ tags: [duel-plays, app, status, kanji]
 
 :::card
 id: card-match-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-match
 card_type: recognition
@@ -1338,6 +1374,7 @@ tags: [duel-plays, app, action, kanji]
 
 :::card
 id: card-start-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-start
 card_type: recognition
@@ -1356,6 +1393,7 @@ tags: [duel-plays, app, action, kanji]
 
 :::card
 id: card-start-match-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-start-match
 card_type: recognition
@@ -1374,6 +1412,7 @@ tags: [duel-plays, app, action, kanji]
 
 :::card
 id: card-ichiran-concept
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: grammar
 entry_id: grammar-ichiran
 card_type: concept
@@ -1391,6 +1430,7 @@ tags: [duel-plays, app, grammar]
 
 :::card
 id: card-ui-chuu-concept
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: grammar
 entry_id: grammar-ui-chuu
 card_type: concept
@@ -1409,6 +1449,7 @@ tags: [duel-plays, app, grammar]
 
 :::card
 id: card-zumi-concept
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: grammar
 entry_id: grammar-zumi
 card_type: concept
@@ -1427,6 +1468,7 @@ tags: [duel-plays, app, grammar]
 
 :::card
 id: card-mi-prefix-concept
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: grammar
 entry_id: grammar-mi-prefix
 card_type: concept
@@ -1446,6 +1488,7 @@ tags: [duel-plays, app, grammar]
 
 :::card
 id: card-kanou-concept
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: grammar
 entry_id: grammar-kanou
 card_type: concept
@@ -1465,6 +1508,7 @@ tags: [duel-plays, app, grammar]
 
 :::card
 id: card-wo-sentaku-concept
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: grammar
 entry_id: grammar-wo-sentaku
 card_type: concept

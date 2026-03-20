@@ -87,6 +87,7 @@ level_hint: n4
 
 :::card
 id: card-bad-brand-first-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bad-brand-first
 entry_type: term
 entry_id: term-bad-brand-first
 card_type: recognition
@@ -106,6 +107,7 @@ tags: [live-duel, proper-name, beat-jockey]
 
 :::card
 id: card-top-card-of-deck-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kuromame-danshaku
 entry_type: term
 entry_id: term-top-card-of-deck
 card_type: recognition
@@ -124,6 +126,7 @@ tags: [live-duel, deck, position]
 
 :::card
 id: card-face-up-top-card-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kuromame-danshaku
 entry_type: term
 entry_id: term-top-card-of-deck
 card_type: concept
@@ -147,6 +150,7 @@ tags: [live-duel, deck, reveal, chunk]
 
 :::card
 id: card-ichimaime-me-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bad-brand-first
 entry_type: grammar
 entry_id: grammar-me-ordinal
 card_type: concept
@@ -168,6 +172,7 @@ tags: [live-duel, grammar, counters, order]
 
 :::card
 id: card-bottom-of-deck-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bad-brand-first
 entry_type: term
 entry_id: term-bottom-of-deck
 card_type: recognition
@@ -186,6 +191,7 @@ tags: [live-duel, deck, position]
 
 :::card
 id: card-ichiban-shita-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bad-brand-first
 entry_type: term
 entry_id: term-ichiban-shita
 card_type: recognition
@@ -205,6 +211,7 @@ tags: [live-duel, position, chunk]
 
 :::card
 id: card-put-on-bottom-of-deck-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bad-brand-first
 entry_type: term
 entry_id: term-bottom-of-deck
 card_type: concept

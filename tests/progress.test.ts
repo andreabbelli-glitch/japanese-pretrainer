@@ -14,6 +14,7 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
+  lesson,
   lessonProgress,
   media,
   reviewState,
@@ -93,6 +94,7 @@ describe("progress, settings, and study controls", () => {
     await database.insert(card).values({
       id: "card_fixture_progress_new_only",
       mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
       segmentId: developmentFixture.segmentId,
       sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-only.md",
       cardType: "recognition",
@@ -148,9 +150,29 @@ describe("progress, settings, and study controls", () => {
       createdAt: "2026-03-09T10:00:00.000Z",
       updatedAt: "2026-03-09T10:00:00.000Z"
     });
+    await database.insert(lesson).values({
+      id: "lesson_progress_global_review",
+      mediaId: "media_progress_global_review",
+      segmentId: null,
+      slug: "global-review",
+      title: "Global Review Lesson",
+      orderIndex: 1,
+      difficulty: "beginner",
+      summary: "Lesson per la review globale.",
+      status: "active",
+      sourceFile: "tests/fixtures/db/progress/global-review-fixture.md",
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(lessonProgress).values({
+      lessonId: "lesson_progress_global_review",
+      status: "completed",
+      completedAt: "2026-03-09T10:00:00.000Z"
+    });
     await database.insert(card).values({
       id: "card_progress_global_due",
       mediaId: "media_progress_global_review",
+      lessonId: "lesson_progress_global_review",
       segmentId: null,
       sourceFile: "tests/fixtures/db/progress/global-review-fixture.md",
       cardType: "recognition",
@@ -241,6 +263,7 @@ describe("progress, settings, and study controls", () => {
     await database.insert(card).values({
       id: "card_fixture_new_limit",
       mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
       segmentId: developmentFixture.segmentId,
       sourceFile: "tests/fixtures/db/fixture-tcg/cards/new-limit.md",
       cardType: "recognition",

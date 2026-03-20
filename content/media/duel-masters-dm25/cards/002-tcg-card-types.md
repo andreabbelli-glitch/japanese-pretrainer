@@ -197,6 +197,7 @@ level_hint: custom
 
 :::card
 id: card-evolution-creature-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-evolution-creature
 card_type: recognition
@@ -216,6 +217,7 @@ tags: [core, type, evolution]
 
 :::card
 id: card-star-evolution-creature-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-star-evolution-creature
 card_type: recognition
@@ -235,6 +237,7 @@ tags: [core, type, evolution, dm25-sd2]
 
 :::card
 id: card-neo-creature-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-neo-creature
 card_type: recognition
@@ -254,6 +257,7 @@ tags: [core, type, evolution, special]
 
 :::card
 id: card-g-neo-creature-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-g-neo-creature
 card_type: recognition
@@ -274,6 +278,7 @@ tags: [core, type, evolution, special]
 
 :::card
 id: card-tamaseed-creature-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-tamaseed-creature
 card_type: recognition
@@ -293,6 +298,7 @@ tags: [core, type, special, abyss]
 
 :::card
 id: card-twinpact-card-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-twinpact-card
 card_type: recognition
@@ -311,6 +317,7 @@ tags: [core, type, special, split]
 
 :::card
 id: card-psychic-creature-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-psychic-creature
 card_type: recognition
@@ -330,6 +337,7 @@ tags: [core, type, special, alternate-zone]
 
 :::card
 id: card-dragheart-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-dragheart
 card_type: recognition
@@ -348,6 +356,7 @@ tags: [core, type, special, alternate-zone]
 
 :::card
 id: card-crossgear-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-crossgear
 card_type: recognition
@@ -366,6 +375,7 @@ tags: [core, type, equipment]
 
 :::card
 id: card-castle-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-castle
 card_type: recognition
@@ -384,6 +394,7 @@ tags: [core, type, shield]
 
 :::card
 id: card-d2-field-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-card-types
 entry_type: term
 entry_id: term-d2-field
 card_type: recognition

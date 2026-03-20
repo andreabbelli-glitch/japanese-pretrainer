@@ -114,6 +114,7 @@ level_hint: n3
 
 :::card
 id: card-tamatango-panzer-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-tamatango-panzer
 entry_type: term
 entry_id: term-tamatango-panzer
 card_type: recognition
@@ -134,6 +135,7 @@ tags: [live-duel, proper-name, shield-trigger]
 
 :::card
 id: card-gransect-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-tamatango-panzer
 entry_type: term
 entry_id: term-gransect
 card_type: recognition
@@ -152,6 +154,7 @@ tags: [live-duel, race, tribe]
 
 :::card
 id: card-enter-battle-zone-tapped-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-tamatango-panzer
 entry_type: term
 entry_id: term-enter-battle-zone-tapped
 card_type: recognition
@@ -170,6 +173,7 @@ tags: [live-duel, entry, tap, chunk]
 
 :::card
 id: card-baai-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-tamatango-panzer
 entry_type: term
 entry_id: term-baai
 card_type: recognition
@@ -191,6 +195,7 @@ tags: [live-duel, condition, rules-text, general-japanese]
 
 :::card
 id: card-ataeru-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-tamatango-panzer
 entry_type: term
 entry_id: term-ataeru
 card_type: recognition
@@ -210,6 +215,7 @@ tags: [live-duel, verb, keyword, granted-effect, general-japanese]
 
 :::card
 id: card-kanou-nara-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-tamatango-panzer
 entry_type: grammar
 entry_id: grammar-kanou-nara
 card_type: concept

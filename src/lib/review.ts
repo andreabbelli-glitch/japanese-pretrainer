@@ -5,8 +5,6 @@ import {
   getGrammarEntriesByIds,
   getGrammarCrossMediaFamilyByEntryId,
   getMediaById,
-  listLessonLinkedReviewEntriesByMediaId,
-  listLessonLinkedReviewEntriesByMediaIds,
   listGrammarEntryReviewSummariesByIds,
   listReviewLaunchCandidates,
   getMediaBySlug,
@@ -24,7 +22,6 @@ import {
   type GrammarEntryReviewSummary,
   type GrammarGlossaryEntry,
   type GrammarGlossaryEntrySummary,
-  type LessonLinkedReviewEntry,
   type MediaListItem,
   type ReviewCardListItem,
   type TermEntryReviewSummary,
@@ -75,6 +72,7 @@ import {
 
 import {
   getDrivingEntryLinks,
+  hasCompletedReviewLesson,
   isReviewCardDue,
   isReviewCardNew,
   resolveEffectiveReviewState,
@@ -948,32 +946,19 @@ async function loadStableReviewWorkspaceV2(input: {
   mediaIds: string[];
   profiler?: ReviewProfiler | null;
 }): Promise<CachedReviewWorkspaceV2> {
-  const [reviewCards, lessonLinkedEntries] = await Promise.all([
-    input.mediaIds.length > 0
-      ? input.profiler
-        ? input.profiler.measure("listReviewCardsByMediaIds", () =>
-            listReviewCardsByMediaIds(input.database, input.mediaIds)
-          )
-        : listReviewCardsByMediaIds(input.database, input.mediaIds)
-      : Promise.resolve([]),
-    input.mediaIds.length > 0
-      ? input.profiler
-        ? input.profiler.measure("listLessonLinkedReviewEntriesByMediaIds", () =>
-            listLessonLinkedReviewEntriesByMediaIds(
-              input.database,
-              input.mediaIds
-            )
-          )
-        : listLessonLinkedReviewEntriesByMediaIds(input.database, input.mediaIds)
-      : Promise.resolve([])
-  ]);
+  const reviewCards = await (input.mediaIds.length > 0
+    ? input.profiler
+      ? input.profiler.measure("listReviewCardsByMediaIds", () =>
+          listReviewCardsByMediaIds(input.database, input.mediaIds)
+        )
+      : listReviewCardsByMediaIds(input.database, input.mediaIds)
+    : Promise.resolve([]));
   const eligibleCards = input.profiler
     ? await input.profiler.measure(
         "buildEligibleReviewCardsByMedia",
         () =>
           buildEligibleReviewCardsByMedia({
             cards: reviewCards,
-            lessonLinkedEntries,
             mediaIds: input.mediaIds
           }),
         (value) => ({
@@ -982,7 +967,6 @@ async function loadStableReviewWorkspaceV2(input: {
       )
     : buildEligibleReviewCardsByMedia({
         cards: reviewCards,
-        lessonLinkedEntries,
         mediaIds: input.mediaIds
       });
   const cards = [...eligibleCards.values()].flat();
@@ -1557,6 +1541,10 @@ export async function hydrateReviewCard(input: {
     return null;
   }
 
+  if (!hasCompletedReviewLesson(card)) {
+    return null;
+  }
+
   const termIds = new Set<string>();
   const grammarIds = new Set<string>();
 
@@ -1661,14 +1649,10 @@ export async function getEligibleReviewCardsByMediaIds(
     return new Map<string, ReviewCardListItem[]>();
   }
 
-  const [cards, lessonLinkedEntries] = await Promise.all([
-    listReviewCardsByMediaIds(database, mediaIds),
-    listLessonLinkedReviewEntriesByMediaIds(database, mediaIds)
-  ]);
+  const cards = await listReviewCardsByMediaIds(database, mediaIds);
 
   return buildEligibleReviewCardsByMedia({
     cards,
-    lessonLinkedEntries,
     mediaIds
   });
 }
@@ -1828,12 +1812,9 @@ export async function getEligibleReviewCardsByMediaId(
   mediaId: string,
   database: DatabaseClient = db
 ): Promise<ReviewCardListItem[]> {
-  const [cards, lessonLinkedEntries] = await Promise.all([
-    listReviewCardsByMediaId(database, mediaId),
-    listLessonLinkedReviewEntriesByMediaId(database, mediaId)
-  ]);
+  const cards = await listReviewCardsByMediaId(database, mediaId);
 
-  return filterReviewCardsByLessonCompletion(cards, lessonLinkedEntries);
+  return cards.filter((card) => hasCompletedReviewLesson(card));
 }
 
 export async function loadReviewOverviewSnapshots(
@@ -2354,51 +2335,10 @@ export function buildReviewOverviewSnapshot(input: {
   };
 }
 
-function filterReviewCardsByLessonCompletion(
-  cards: ReviewCardListItem[],
-  lessonLinkedEntries: LessonLinkedReviewEntry[]
-) {
-  const linkedEntryKeys = new Set(
-    lessonLinkedEntries.map((row) =>
-      buildReviewEntryKey(row.entryType, row.entryId)
-    )
-  );
-  const completedEntryKeys = new Set(
-    lessonLinkedEntries
-      .filter((row) => row.lessonStatus === "completed")
-      .map((row) => buildReviewEntryKey(row.entryType, row.entryId))
-  );
-
-  return cards.filter((card) => {
-    const drivingLinks = getDrivingEntryLinks(card.entryLinks);
-
-    if (drivingLinks.length === 0) {
-      return true;
-    }
-
-    const drivingEntryKeys = drivingLinks.map((link) =>
-      buildReviewEntryKey(link.entryType, link.entryId)
-    );
-    const hasLessonLinkedPrimary = drivingEntryKeys.some((key) =>
-      linkedEntryKeys.has(key)
-    );
-
-    if (!hasLessonLinkedPrimary) {
-      return true;
-    }
-
-    return drivingEntryKeys.some((key) => completedEntryKeys.has(key));
-  });
-}
-
 type ReviewOverviewCard = Pick<
   ReviewQueueCard,
   "bucket" | "createdAt" | "dueAt" | "front" | "id" | "orderIndex"
 >;
-
-function buildReviewEntryKey(entryType: string, entryId: string) {
-  return `${entryType}:${entryId}`;
-}
 
 function mapReviewOverviewCard(
   card: ReviewCardListItem,
@@ -2475,21 +2415,16 @@ function groupCardsByMedia(cards: ReviewCardListItem[]) {
 
 function buildEligibleReviewCardsByMedia(input: {
   cards: ReviewCardListItem[];
-  lessonLinkedEntries: Array<LessonLinkedReviewEntry & { mediaId: string }>;
   mediaIds: string[];
 }) {
   const cardsByMedia = groupCardsByMedia(input.cards);
-  const lessonLinkedEntriesByMedia = groupLessonLinkedReviewEntriesByMedia(
-    input.lessonLinkedEntries
-  );
   const eligibleCards = new Map<string, ReviewCardListItem[]>();
 
   for (const mediaId of input.mediaIds) {
     eligibleCards.set(
       mediaId,
-      filterReviewCardsByLessonCompletion(
-        cardsByMedia.get(mediaId) ?? [],
-        lessonLinkedEntriesByMedia.get(mediaId) ?? []
+      (cardsByMedia.get(mediaId) ?? []).filter((card) =>
+        hasCompletedReviewLesson(card)
       )
     );
   }
@@ -2521,31 +2456,6 @@ function buildSingleMediaLookup(
       }
     ]
   ]);
-}
-
-function groupLessonLinkedReviewEntriesByMedia(
-  rows: Array<LessonLinkedReviewEntry & { mediaId: string }>
-) {
-  const grouped = new Map<string, LessonLinkedReviewEntry[]>();
-
-  for (const row of rows) {
-    const existing = grouped.get(row.mediaId);
-
-    if (existing) {
-      existing.push(row);
-      continue;
-    }
-
-    grouped.set(row.mediaId, [
-      {
-        entryId: row.entryId,
-        entryType: row.entryType,
-        lessonStatus: row.lessonStatus
-      }
-    ]);
-  }
-
-  return grouped;
 }
 
 function mapReviewCrossMediaTermSibling(sibling: CrossMediaTermSibling) {

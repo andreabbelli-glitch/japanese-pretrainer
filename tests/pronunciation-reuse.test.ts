@@ -58,6 +58,7 @@ aliases: [たべる, taberu]
 
 :::card
 id: card-eat-recognition
+lesson_id: lesson-sample-game
 entry_type: term
 entry_id: term-eat
 card_type: recognition
@@ -153,6 +154,7 @@ aliases: [たべる, taberu]
 
 :::card
 id: card-eat-recognition
+lesson_id: lesson-sample-game
 entry_type: term
 entry_id: term-eat
 card_type: recognition
@@ -189,6 +191,7 @@ audio_page_url: https://example.com/devour
 
 :::card
 id: card-devour-recognition
+lesson_id: lesson-sample-manga
 entry_type: term
 entry_id: term-devour
 card_type: recognition

@@ -910,6 +910,7 @@ level_hint: n4
 
 :::card
 id: card-creature-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-creature
 card_type: recognition
@@ -927,6 +928,7 @@ tags: [core, type]
 
 :::card
 id: card-spell-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-spell
 card_type: recognition
@@ -944,6 +946,7 @@ tags: [core, type]
 
 :::card
 id: card-tamaseed-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-tamaseed
 card_type: recognition
@@ -961,6 +964,7 @@ tags: [core, type, keyword]
 
 :::card
 id: card-blocker-recognition
+lesson_id: lesson-duel-masters-dm25-keyword-effects-reference
 entry_type: term
 entry_id: term-blocker
 card_type: recognition
@@ -978,6 +982,7 @@ tags: [core, keyword]
 
 :::card
 id: card-blocker-operational-concept
+lesson_id: lesson-duel-masters-dm25-keyword-effects-reference
 entry_type: term
 entry_id: term-blocker
 card_type: concept
@@ -1002,6 +1007,7 @@ tags: [core, keyword, defense]
 
 :::card
 id: card-evolution-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-evolution
 card_type: recognition
@@ -1019,6 +1025,7 @@ tags: [core, keyword]
 
 :::card
 id: card-invasion-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-invasion
 card_type: recognition
@@ -1037,6 +1044,7 @@ tags: [core, keyword, dm25-sd2]
 
 :::card
 id: card-shinkarize-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-shinkarize
 card_type: recognition
@@ -1054,6 +1062,7 @@ tags: [core, keyword, dm25-sd2]
 
 :::card
 id: card-shinkarize-connection-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-shinkarize
 card_type: concept
@@ -1077,6 +1086,7 @@ tags: [core, keyword, evolution, dm25-sd2]
 
 :::card
 id: card-abyss-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-abyss
 card_type: recognition
@@ -1094,6 +1104,7 @@ tags: [core, group, dm25-sd1]
 
 :::card
 id: card-command-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: term
 entry_id: term-command
 card_type: recognition
@@ -1112,6 +1123,7 @@ tags: [core, group, dm25-sd2]
 
 :::card
 id: card-civilization-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-civilization
 card_type: recognition
@@ -1130,6 +1142,7 @@ tags: [core, anatomy]
 
 :::card
 id: card-cost-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-cost
 card_type: recognition
@@ -1147,6 +1160,7 @@ tags: [core, anatomy, filter]
 
 :::card
 id: card-harau-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 entry_type: term
 entry_id: term-harau
 card_type: recognition
@@ -1165,6 +1179,7 @@ tags: [core, action, kanji, cost]
 
 :::card
 id: card-power-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-power
 card_type: recognition
@@ -1182,6 +1197,7 @@ tags: [core, anatomy, filter]
 
 :::card
 id: card-goukei-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: term
 entry_id: term-goukei
 card_type: recognition
@@ -1199,6 +1215,7 @@ tags: [core, filter, kanji]
 
 :::card
 id: card-race-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-race
 card_type: recognition
@@ -1216,6 +1233,7 @@ tags: [core, anatomy]
 
 :::card
 id: card-battle-zone-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-battle-zone
 card_type: recognition
@@ -1233,6 +1251,7 @@ tags: [core, zone]
 
 :::card
 id: card-mana-zone-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-mana-zone
 card_type: recognition
@@ -1250,6 +1269,7 @@ tags: [core, zone]
 
 :::card
 id: card-shield-zone-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-shield-zone
 card_type: recognition
@@ -1267,6 +1287,7 @@ tags: [core, zone]
 
 :::card
 id: card-deck-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-deck
 card_type: recognition
@@ -1285,6 +1306,7 @@ tags: [core, zone, kanji]
 
 :::card
 id: card-hand-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-hand
 card_type: recognition
@@ -1302,6 +1324,7 @@ tags: [core, zone, kanji]
 
 :::card
 id: card-graveyard-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-graveyard
 card_type: recognition
@@ -1320,6 +1343,7 @@ tags: [core, zone, kanji, dm25-sd1]
 
 :::card
 id: card-self-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-self
 card_type: recognition
@@ -1337,6 +1361,7 @@ tags: [core, actor]
 
 :::card
 id: card-opponent-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-opponent
 card_type: recognition
@@ -1354,6 +1379,7 @@ tags: [core, actor]
 
 :::card
 id: card-effect-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-effect
 card_type: recognition
@@ -1371,6 +1397,7 @@ tags: [core, rules-text]
 
 :::card
 id: card-summon-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: term
 entry_id: term-summon
 card_type: recognition
@@ -1389,6 +1416,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-attack-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-attack
 card_type: recognition
@@ -1406,6 +1434,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-destroy-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-destroy
 card_type: recognition
@@ -1423,6 +1452,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-break-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-break
 card_type: recognition
@@ -1440,6 +1470,7 @@ tags: [core, action]
 
 :::card
 id: card-tap-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: term
 entry_id: term-tap
 card_type: recognition
@@ -1457,6 +1488,7 @@ tags: [core, action]
 
 :::card
 id: card-untap-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: term
 entry_id: term-untap
 card_type: recognition
@@ -1473,6 +1505,7 @@ tags: [core, action]
 
 :::card
 id: card-kasaneru-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-kasaneru
 card_type: recognition
@@ -1490,6 +1523,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-deru-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-deru
 card_type: recognition
@@ -1507,6 +1541,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-dasu-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-dasu
 card_type: recognition
@@ -1524,6 +1559,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-oku-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-oku
 card_type: recognition
@@ -1541,6 +1577,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-add-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-add
 card_type: recognition
@@ -1558,6 +1595,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-erabu-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-erabu
 card_type: recognition
@@ -1575,6 +1613,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-hiku-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-hiku
 card_type: recognition
@@ -1592,6 +1631,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-suteru-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-suteru
 card_type: recognition
@@ -1609,6 +1649,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-modosu-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: term
 entry_id: term-modosu
 card_type: recognition
@@ -1626,6 +1667,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-hanareru-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: term
 entry_id: term-hanareru
 card_type: recognition
@@ -1643,6 +1685,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-nokoru-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: term
 entry_id: term-nokoru
 card_type: recognition
@@ -1661,6 +1704,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-atsukau-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: term
 entry_id: term-atsukau
 card_type: recognition
@@ -1679,6 +1723,7 @@ tags: [core, action, kanji]
 
 :::card
 id: card-s-trigger-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-s-trigger
 card_type: recognition
@@ -1696,6 +1741,7 @@ tags: [core, keyword]
 
 :::card
 id: card-s-trigger-no-cost-usage-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-s-trigger
 card_type: concept
@@ -1716,6 +1762,7 @@ tags: [core, keyword, cost, option]
 
 :::card
 id: card-w-breaker-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-w-breaker
 card_type: recognition
@@ -1733,6 +1780,7 @@ tags: [core, keyword]
 
 :::card
 id: card-t-breaker-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-t-breaker
 card_type: recognition
@@ -1750,6 +1798,7 @@ tags: [core, keyword]
 
 :::card
 id: card-toki-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: grammar
 entry_id: grammar-toki
 card_type: concept
@@ -1767,6 +1816,7 @@ tags: [core, grammar, timing]
 
 :::card
 id: card-sonoato-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: grammar
 entry_id: grammar-sonoato
 card_type: concept
@@ -1785,6 +1835,7 @@ tags: [core, grammar, sequence]
 
 :::card
 id: card-soushitara-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: grammar
 entry_id: grammar-soushitara
 card_type: concept
@@ -1802,6 +1853,7 @@ tags: [core, grammar, sequence]
 
 :::card
 id: card-temoyoi-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: grammar
 entry_id: grammar-temoyoi
 card_type: concept
@@ -1819,6 +1871,7 @@ tags: [core, grammar, option]
 
 :::card
 id: card-zuni-concept
+lesson_id: lesson-duel-masters-dm25-keyword-effects-reference
 entry_type: grammar
 entry_id: grammar-zuni
 card_type: concept
@@ -1837,6 +1890,7 @@ tags: [core, grammar, negation]
 
 :::card
 id: card-kawarini-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: grammar
 entry_id: grammar-kawarini
 card_type: concept
@@ -1854,6 +1908,7 @@ tags: [core, grammar, replacement]
 
 :::card
 id: card-nakereba-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: grammar
 entry_id: grammar-nakereba
 card_type: concept
@@ -1871,6 +1926,7 @@ tags: [core, grammar, condition]
 
 :::card
 id: card-teireba-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: grammar
 entry_id: grammar-teireba
 card_type: concept
@@ -1888,6 +1944,7 @@ tags: [core, grammar, condition]
 
 :::card
 id: card-tara-condition-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: grammar
 entry_id: grammar-tara
 card_type: concept
@@ -1905,6 +1962,7 @@ tags: [core, grammar, condition]
 
 :::card
 id: card-areba-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-tamatango-panzer
 entry_type: grammar
 entry_id: grammar-areba
 card_type: concept
@@ -1923,6 +1981,7 @@ tags: [core, grammar, condition]
 
 :::card
 id: card-igai-no-houhou-de-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: grammar
 entry_id: grammar-igai-no-houhou-de
 card_type: concept
@@ -1940,6 +1999,7 @@ tags: [core, grammar, restriction]
 
 :::card
 id: card-matawa-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: grammar
 entry_id: grammar-matawa
 card_type: concept
@@ -1957,6 +2017,7 @@ tags: [core, grammar, filter]
 
 :::card
 id: card-ika-ijou-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: grammar
 entry_id: grammar-ika-ijou
 card_type: concept
@@ -1974,6 +2035,7 @@ tags: [core, grammar, filter]
 
 :::card
 id: card-turn-timing-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: grammar
 entry_id: grammar-turn-timing
 card_type: concept
@@ -1991,6 +2053,7 @@ tags: [core, grammar, timing]
 
 :::card
 id: card-tadashi-concept
+lesson_id: lesson-duel-masters-dm25-tcg-core-patterns
 entry_type: grammar
 entry_id: grammar-tadashi
 card_type: concept

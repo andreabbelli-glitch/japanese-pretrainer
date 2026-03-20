@@ -72,6 +72,7 @@ level_hint: custom
 
 :::card
 id: card-abyss-royal-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: term
 entry_id: term-abyss-royal
 card_type: recognition
@@ -90,6 +91,7 @@ tags: [dm25-sd1, abyss, tribe]
 
 :::card
 id: card-abyssbell-jashintei-recognition
+lesson_id: lesson-duel-masters-dm25-tcg-core-overview
 entry_type: term
 entry_id: term-abyssbell-jashintei
 card_type: recognition
@@ -108,6 +110,7 @@ tags: [dm25-sd1, abyss, proper-name]
 
 :::card
 id: card-jashinnyuu-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: term
 entry_id: term-jashinnyuu
 card_type: recognition
@@ -126,6 +129,7 @@ tags: [dm25-sd1, abyss, spell-name]
 
 :::card
 id: card-jablood-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: term
 entry_id: term-jablood
 card_type: recognition
@@ -223,6 +227,7 @@ level_hint: custom
 
 :::card
 id: card-abyss-rush-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: term
 entry_id: term-abyss-rush
 card_type: recognition
@@ -243,6 +248,7 @@ tags: [dm25-sd1, abyss, keyword]
 
 :::card
 id: card-civil-count-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: term
 entry_id: term-civil-count
 card_type: recognition
@@ -264,6 +270,7 @@ tags: [dm25-sd1, keyword, threshold]
 
 :::card
 id: card-attack-target-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: term
 entry_id: term-attack-target
 card_type: recognition
@@ -282,6 +289,7 @@ tags: [dm25-sd1, combat, target]
 
 :::card
 id: card-tobasu-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: term
 entry_id: term-tobasu
 card_type: recognition
@@ -299,6 +307,7 @@ tags: [dm25-sd1, timing, control]
 
 :::card
 id: card-nikai-okonau-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: grammar
 entry_id: grammar-nikai-okonau
 card_type: recognition

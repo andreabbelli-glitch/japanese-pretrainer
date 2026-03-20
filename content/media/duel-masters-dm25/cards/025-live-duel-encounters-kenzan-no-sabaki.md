@@ -61,6 +61,7 @@ level_hint: custom
 
 :::card
 id: card-kenzan-no-sabaki-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kenzan-no-sabaki
 entry_type: term
 entry_id: term-kenzan-no-sabaki
 card_type: recognition
@@ -82,6 +83,7 @@ tags: [live-duel, proper-name, spell, filter]
 
 :::card
 id: card-metallica-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kenzan-no-sabaki
 entry_type: term
 entry_id: term-metallica
 card_type: recognition
@@ -100,6 +102,7 @@ tags: [live-duel, tribe, filter]
 
 :::card
 id: card-judgment-emblem-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kenzan-no-sabaki
 entry_type: term
 entry_id: term-judgment-emblem
 card_type: recognition
@@ -120,6 +123,7 @@ tags: [live-duel, race, sabaki]
 
 :::card
 id: card-show-then-add-spell-or-metallica-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: grammar
 entry_id: grammar-te-kara
 card_type: concept
@@ -145,6 +149,7 @@ tags: [live-duel, grammar, sequence, filter]
 
 :::card
 id: card-face-up-on-shield-concept
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-face-up
 card_type: concept

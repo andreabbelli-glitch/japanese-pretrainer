@@ -178,6 +178,7 @@ level_hint: n3
 
 :::card
 id: card-kingdom-ohkabuto-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: term
 entry_id: term-kingdom-ohkabuto
 card_type: recognition
@@ -198,6 +199,7 @@ tags: [live-duel, proper-name, twinpact, creature]
 
 :::card
 id: card-gouhaten-tsukumogatari-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: term
 entry_id: term-gouhaten-tsukumogatari
 card_type: recognition
@@ -218,6 +220,7 @@ tags: [live-duel, proper-name, twinpact, spell]
 
 :::card
 id: card-mach-fighter-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: term
 entry_id: term-mach-fighter
 card_type: recognition
@@ -237,6 +240,7 @@ tags: [live-duel, keyword, attack, targeting]
 
 :::card
 id: card-suki-na-kazu-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: term
 entry_id: term-suki-na-kazu
 card_type: recognition
@@ -256,6 +260,7 @@ tags: [live-duel, quantity, chunk]
 
 :::card
 id: card-jougen-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: term
 entry_id: term-jougen
 card_type: recognition
@@ -275,6 +280,7 @@ tags: [live-duel, quantity, limit]
 
 :::card
 id: card-mushi-suru-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: term
 entry_id: term-mushi-suru
 card_type: recognition
@@ -293,6 +299,7 @@ tags: [live-duel, verb, ignore, general-japanese]
 
 :::card
 id: card-okoru-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: term
 entry_id: term-okoru
 card_type: recognition
@@ -314,6 +321,7 @@ tags: [live-duel, verb, trigger, cause, general-japanese]
 
 :::card
 id: card-demo-demo-nai-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: grammar
 entry_id: grammar-demo-demo-nai
 card_type: concept
@@ -333,6 +341,7 @@ tags: [live-duel, grammar, filter, exclusion]
 
 :::card
 id: card-korera-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: term
 entry_id: term-kore-ra
 card_type: recognition
@@ -351,6 +360,7 @@ tags: [live-duel, reference, scope]
 
 :::card
 id: card-koto-ni-yotte-trigger-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: grammar
 entry_id: grammar-koto-ni-yotte
 card_type: concept
@@ -371,6 +381,7 @@ tags: [live-duel, grammar, cause, scope]
 
 :::card
 id: card-ignore-enter-effects-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari
 entry_type: term
 entry_id: term-mushi-suru
 card_type: concept

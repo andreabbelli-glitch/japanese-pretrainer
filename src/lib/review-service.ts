@@ -26,6 +26,7 @@ import {
 
 import {
   getDrivingEntryLinks,
+  hasCompletedReviewLesson,
   resolveEffectiveReviewState,
   type ReviewEntryStatusValue
 } from "./review-model";
@@ -77,7 +78,7 @@ export async function applyReviewGrade(input: {
   return database.transaction(async (tx) => {
     const loadedCard = await loadReviewCardForMutation(tx, input.cardId);
 
-    if (!loadedCard || loadedCard.status !== "active") {
+    if (!isActiveReviewableMutationCard(loadedCard)) {
       throw new Error("Review card not available for grading.");
     }
 
@@ -200,7 +201,7 @@ export async function resetReviewCardProgress(input: {
   return database.transaction(async (tx) => {
     const loadedCard = await loadReviewCardForMutation(tx, input.cardId);
 
-    if (!loadedCard || loadedCard.status === "archived") {
+    if (!isResettableMutationCard(loadedCard)) {
       throw new Error("Review card not available for reset.");
     }
 
@@ -306,7 +307,7 @@ export async function setReviewCardSuspended(input: {
   return database.transaction(async (tx) => {
     const loadedCard = await loadReviewCardForMutation(tx, input.cardId);
 
-    if (!loadedCard || loadedCard.status === "archived") {
+    if (!isSuspensionMutationCard(loadedCard)) {
       throw new Error("Review card not available for suspension changes.");
     }
 
@@ -432,7 +433,7 @@ export async function setLinkedEntryStatusByCard(input: {
   return database.transaction(async (tx) => {
     const loadedCard = await loadReviewCardForMutation(tx, input.cardId);
 
-    if (!loadedCard || loadedCard.status === "archived") {
+    if (!isActiveReviewableMutationCard(loadedCard)) {
       throw new Error("Linked entry status cannot be changed for this card.");
     }
 
@@ -485,6 +486,11 @@ async function loadReviewCardForMutation(
   const row = await transaction.query.card.findFirst({
     where: eq(card.id, cardId),
     with: {
+      lesson: {
+        with: {
+          progress: true
+        }
+      },
       segment: true,
       entryLinks: true,
       reviewState: true
@@ -505,6 +511,32 @@ async function loadReviewCardForMutation(
     ...row,
     drivingEntries
   };
+}
+
+function isActiveReviewableMutationCard(
+  card: ReviewMutationCard | null
+): card is ReviewMutationCard {
+  return Boolean(card && card.status === "active" && hasCompletedReviewLesson(card));
+}
+
+function isSuspensionMutationCard(
+  card: ReviewMutationCard | null
+): card is ReviewMutationCard {
+  return Boolean(
+    card &&
+      card.status !== "archived" &&
+      hasCompletedReviewLesson(card)
+  );
+}
+
+function isResettableMutationCard(
+  card: ReviewMutationCard | null
+): card is ReviewMutationCard {
+  return Boolean(
+    card &&
+      card.status !== "archived" &&
+      hasCompletedReviewLesson(card)
+  );
 }
 
 async function loadEntryStatusRows(
@@ -677,6 +709,7 @@ async function loadReviewSubjectMutationContext(
   });
   const memberCards = loadedMemberCards.filter(
     (cardRow) =>
+      hasCompletedReviewLesson(cardRow) &&
       deriveReviewSubjectIdentity({
         cardId: cardRow.id,
         cardType: cardRow.cardType,

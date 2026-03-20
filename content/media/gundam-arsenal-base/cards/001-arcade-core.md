@@ -604,6 +604,7 @@ level_hint: n4
 
 :::card
 id: card-amusement-ic-card-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-amusement-ic-card
 card_type: recognition
@@ -623,6 +624,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-call-up-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-call-up
 card_type: recognition
@@ -642,6 +644,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-card-slot-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-card-slot
 card_type: recognition
@@ -661,6 +664,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-ms-card-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-ms-card
 card_type: recognition
@@ -680,6 +684,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-pl-card-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-pl-card
 card_type: recognition
@@ -698,6 +703,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-unit-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-unit
 card_type: recognition
@@ -717,6 +723,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-mypage-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-mypage
 card_type: recognition
@@ -736,6 +743,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-after-return-home-recognition
+lesson_id: lesson-gundam-arsenal-base-modes-and-progression
 entry_type: term
 entry_id: term-after-return-home
 card_type: recognition
@@ -754,6 +762,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-progress-recognition
+lesson_id: lesson-gundam-arsenal-base-modes-and-progression
 entry_type: term
 entry_id: term-progress
 card_type: recognition
@@ -774,6 +783,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-battle-record-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-battle-record
 card_type: recognition
@@ -793,6 +803,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-commander-level-recognition
+lesson_id: lesson-gundam-arsenal-base-modes-and-progression
 entry_type: term
 entry_id: term-commander-level
 card_type: recognition
@@ -813,6 +824,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-tactics-card-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-tactics-card
 card_type: recognition
@@ -832,6 +844,7 @@ tags: [term, onboarding]
 
 :::card
 id: card-friendly-strength-gauge-recognition
+lesson_id: lesson-gundam-arsenal-base-battle-screen-and-core-actions
 entry_type: term
 entry_id: term-friendly-strength-gauge
 card_type: recognition
@@ -851,6 +864,7 @@ tags: [term, battle]
 
 :::card
 id: card-enemy-strength-gauge-recognition
+lesson_id: lesson-gundam-arsenal-base-battle-screen-and-core-actions
 entry_type: term
 entry_id: term-enemy-strength-gauge
 card_type: recognition
@@ -870,6 +884,7 @@ tags: [term, battle]
 
 :::card
 id: card-sortie-recognition
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: term
 entry_id: term-sortie
 card_type: recognition
@@ -889,6 +904,7 @@ tags: [term, battle]
 
 :::card
 id: card-ability-recognition
+lesson_id: lesson-gundam-arsenal-base-battle-screen-and-core-actions
 entry_type: term
 entry_id: term-ability
 card_type: recognition
@@ -907,6 +923,7 @@ tags: [term, battle]
 
 :::card
 id: card-special-attack-recognition
+lesson_id: lesson-gundam-arsenal-base-battle-screen-and-core-actions
 entry_type: term
 entry_id: term-special-attack
 card_type: recognition
@@ -926,6 +943,7 @@ tags: [term, battle]
 
 :::card
 id: card-role-shoumetsu-recognition
+lesson_id: lesson-gundam-arsenal-base-battle-screen-and-core-actions
 entry_type: term
 entry_id: term-role-shoumetsu
 card_type: recognition
@@ -945,6 +963,7 @@ tags: [term, battle]
 
 :::card
 id: card-role-recognition
+lesson_id: lesson-gundam-arsenal-base-modes-and-progression
 entry_type: term
 entry_id: term-role
 card_type: recognition
@@ -964,6 +983,7 @@ tags: [term, battle]
 
 :::card
 id: card-frontline-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-frontline
 card_type: recognition
@@ -983,6 +1003,7 @@ tags: [term, battle]
 
 :::card
 id: card-combat-recognition
+lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-combat
 card_type: recognition
@@ -1003,6 +1024,7 @@ tags: [term, battle]
 
 :::card
 id: card-role-seiatsu-recognition
+lesson_id: lesson-gundam-arsenal-base-battle-screen-and-core-actions
 entry_type: term
 entry_id: term-role-seiatsu
 card_type: recognition
@@ -1022,6 +1044,7 @@ tags: [term, battle]
 
 :::card
 id: card-role-bouei-recognition
+lesson_id: lesson-gundam-arsenal-base-battle-screen-and-core-actions
 entry_type: term
 entry_id: term-role-bouei
 card_type: recognition
@@ -1042,6 +1065,7 @@ tags: [term, battle]
 
 :::card
 id: card-challenge-mode-recognition
+lesson_id: lesson-gundam-arsenal-base-modes-and-progression
 entry_type: term
 entry_id: term-challenge-mode
 card_type: recognition
@@ -1061,6 +1085,7 @@ tags: [term, progression]
 
 :::card
 id: card-rank-match-recognition
+lesson_id: lesson-gundam-arsenal-base-modes-and-progression
 entry_type: term
 entry_id: term-rank-match
 card_type: recognition
@@ -1080,6 +1105,7 @@ tags: [term, progression]
 
 :::card
 id: card-ex-battle-recognition
+lesson_id: lesson-gundam-arsenal-base-modes-and-progression
 entry_type: term
 entry_id: term-ex-battle
 card_type: recognition
@@ -1101,6 +1127,7 @@ tags: [term, progression]
 
 :::card
 id: card-wo-setto-suru-concept
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: grammar
 entry_id: grammar-wo-setto-suru
 card_type: concept
@@ -1120,6 +1147,7 @@ tags: [grammar, ui]
 
 :::card
 id: card-wo-tacchi-suru-concept
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: grammar
 entry_id: grammar-wo-tacchi-suru
 card_type: concept
@@ -1139,6 +1167,7 @@ tags: [grammar, ui]
 
 :::card
 id: card-suru-koto-de-concept
+lesson_id: lesson-gundam-arsenal-base-arcade-onboarding
 entry_type: grammar
 entry_id: grammar-suru-koto-de
 card_type: concept
@@ -1159,6 +1188,7 @@ tags: [grammar, ui]
 
 :::card
 id: card-ga-hyouji-sareru-concept
+lesson_id: lesson-gundam-arsenal-base-battle-screen-and-core-actions
 entry_type: grammar
 entry_id: grammar-ga-hyouji-sareru
 card_type: concept
@@ -1178,6 +1208,7 @@ tags: [grammar, ui]
 
 :::card
 id: card-ga-kaihou-sareru-concept
+lesson_id: lesson-gundam-arsenal-base-modes-and-progression
 entry_type: grammar
 entry_id: grammar-ga-kaihou-sareru
 card_type: concept

@@ -20,6 +20,7 @@ notes_it: >-
 
 :::card
 id: card-report-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-report
 card_type: recognition
@@ -45,6 +46,7 @@ notes_it: >-
 
 :::card
 id: card-te-mochi-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-te-mochi
 card_type: recognition
@@ -70,6 +72,7 @@ notes_it: >-
 
 :::card
 id: card-box-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-box
 card_type: recognition
@@ -95,6 +98,7 @@ notes_it: >-
 
 :::card
 id: card-bag-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-bag
 card_type: recognition
@@ -120,6 +124,7 @@ notes_it: >-
 
 :::card
 id: card-dougu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-dougu
 card_type: recognition
@@ -145,6 +150,7 @@ notes_it: >-
 
 :::card
 id: card-taisetsu-na-mono-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-taisetsu-na-mono
 card_type: recognition
@@ -170,6 +176,7 @@ notes_it: >-
 
 :::card
 id: card-pokemon-zukan-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-pokemon-zukan
 card_type: recognition
@@ -195,6 +202,7 @@ notes_it: >-
 
 :::card
 id: card-mokutekichi-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-mokutekichi
 card_type: recognition
@@ -220,6 +228,7 @@ notes_it: >-
 
 :::card
 id: card-tsuyosa-o-miru-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-tsuyosa-o-miru
 card_type: recognition
@@ -246,6 +255,7 @@ notes_it: >-
 
 :::card
 id: card-mochimono-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-mochimono
 card_type: recognition
@@ -271,6 +281,7 @@ notes_it: >-
 
 :::card
 id: card-narabikae-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-narabikae
 card_type: recognition
@@ -296,6 +307,7 @@ notes_it: >-
 
 :::card
 id: card-omoidasu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-omoidasu
 card_type: recognition
@@ -320,6 +332,7 @@ notes_it: >-
 
 :::card
 id: card-wasureru-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-wasureru
 card_type: recognition
@@ -345,6 +358,7 @@ notes_it: >-
 
 :::card
 id: card-waza-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-waza
 card_type: recognition
@@ -370,6 +384,7 @@ notes_it: >-
 
 :::card
 id: card-tokusei-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-tokusei
 card_type: recognition
@@ -395,6 +410,7 @@ notes_it: >-
 
 :::card
 id: card-type-aishou-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-type-aishou
 card_type: recognition
@@ -420,6 +436,7 @@ notes_it: >-
 
 :::card
 id: card-joutai-ijou-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-joutai-ijou
 card_type: recognition
@@ -446,6 +463,7 @@ notes_it: >-
 
 :::card
 id: card-kaifuku-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-kaifuku
 card_type: recognition
@@ -471,6 +489,7 @@ notes_it: >-
 
 :::card
 id: card-hinshi-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-hinshi
 card_type: recognition
@@ -496,6 +515,7 @@ notes_it: >-
 
 :::card
 id: card-yasei-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-yasei
 card_type: recognition
@@ -521,6 +541,7 @@ notes_it: >-
 
 :::card
 id: card-tsukamaeru-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-tsukamaeru
 card_type: recognition
@@ -546,6 +567,7 @@ notes_it: >-
 
 :::card
 id: card-keikenchi-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-keikenchi
 card_type: recognition
@@ -572,6 +594,7 @@ notes_it: >-
 
 :::card
 id: card-shinka-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-shinka
 card_type: recognition
@@ -597,6 +620,7 @@ notes_it: >-
 
 :::card
 id: card-kouka-wa-batsugun-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-kouka-wa-batsugun
 card_type: recognition
@@ -623,6 +647,7 @@ notes_it: >-
 
 :::card
 id: card-kyuusho-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: term
 entry_id: term-kyuusho
 card_type: recognition
@@ -649,6 +674,7 @@ notes_it: >-
 
 :::card
 id: card-te-miru-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-003-pokemon-videogame-core-dialogue-and-tutorial-patterns
 entry_type: grammar
 entry_id: grammar-te-miru
 card_type: concept
@@ -674,6 +700,7 @@ notes_it: >-
 
 :::card
 id: card-koto-ga-dekiru-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: grammar
 entry_id: grammar-koto-ga-dekiru
 card_type: concept
@@ -698,6 +725,7 @@ notes_it: >-
 
 :::card
 id: card-you-ni-naru-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: grammar
 entry_id: grammar-you-ni-naru
 card_type: concept
@@ -723,6 +751,7 @@ notes_it: >-
 
 :::card
 id: card-tara-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: grammar
 entry_id: grammar-tara
 card_type: concept
@@ -747,6 +776,7 @@ notes_it: >-
 
 :::card
 id: card-te-kureru-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: grammar
 entry_id: grammar-te-kureru
 card_type: concept
@@ -771,6 +801,7 @@ notes_it: >-
 
 :::card
 id: card-te-ne-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-003-pokemon-videogame-core-dialogue-and-tutorial-patterns
 entry_type: grammar
 entry_id: grammar-te-ne
 card_type: concept
@@ -795,6 +826,7 @@ notes_it: >-
 
 :::card
 id: card-teoku-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: grammar
 entry_id: grammar-teoku
 card_type: concept

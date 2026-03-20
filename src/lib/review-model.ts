@@ -15,6 +15,16 @@ export type ReviewEntryLinkLike = {
   relationshipType: string;
 };
 
+export type ReviewLessonCompletionLike = {
+  lessonId: string | null;
+  lesson?: {
+    status?: string | null;
+    progress?: {
+      status: string | null;
+    } | null;
+  } | null;
+};
+
 export type EffectiveReviewState = {
   reason:
     | "card_suspended"
@@ -114,4 +124,14 @@ export function isReviewCardDue(input: {
 
 export function isReviewCardNew(reviewState: ReviewState | null) {
   return reviewState === null || reviewState === "new";
+}
+
+export function hasCompletedReviewLesson(
+  card: ReviewLessonCompletionLike | null | undefined
+) {
+  return (
+    Boolean(card?.lessonId) &&
+    card?.lesson?.status === "active" &&
+    card?.lesson?.progress?.status === "completed"
+  );
 }

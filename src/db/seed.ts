@@ -460,6 +460,7 @@ export async function seedDevelopmentDatabase(
         {
           id: developmentFixture.primaryCardId,
           mediaId: developmentFixture.mediaId,
+          lessonId: developmentFixture.lessonId,
           segmentId: developmentFixture.segmentId,
           sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku.md",
           cardType: "recognition",
@@ -476,6 +477,7 @@ export async function seedDevelopmentDatabase(
         {
           id: developmentFixture.secondaryCardId,
           mediaId: developmentFixture.mediaId,
+          lessonId: developmentFixture.lessonId,
           segmentId: developmentFixture.segmentId,
           sourceFile: "tests/fixtures/db/fixture-tcg/cards/teiru.md",
           cardType: "grammar",
@@ -494,6 +496,7 @@ export async function seedDevelopmentDatabase(
         target: card.id,
         set: {
           mediaId: sql`excluded.media_id`,
+          lessonId: sql`excluded.lesson_id`,
           segmentId: sql`excluded.segment_id`,
           sourceFile: sql`excluded.source_file`,
           cardType: sql`excluded.card_type`,
@@ -669,17 +672,17 @@ export async function seedDevelopmentDatabase(
       .insert(lessonProgress)
       .values({
         lessonId: developmentFixture.lessonId,
-        status: "in_progress",
+        status: "completed",
         startedAt: createdAt,
-        completedAt: null,
+        completedAt: updatedAt,
         lastOpenedAt: updatedAt
       })
       .onConflictDoUpdate({
         target: lessonProgress.lessonId,
         set: {
-          status: "in_progress",
+          status: "completed",
           startedAt: createdAt,
-          completedAt: null,
+          completedAt: updatedAt,
           lastOpenedAt: updatedAt
         }
       });
@@ -688,7 +691,7 @@ export async function seedDevelopmentDatabase(
       .insert(mediaProgress)
       .values({
         mediaId: developmentFixture.mediaId,
-        lessonsCompleted: 0,
+        lessonsCompleted: 1,
         lessonsTotal: 1,
         entriesKnown: 1,
         entriesTotal: 2,
@@ -698,7 +701,7 @@ export async function seedDevelopmentDatabase(
       .onConflictDoUpdate({
         target: mediaProgress.mediaId,
         set: {
-          lessonsCompleted: 0,
+          lessonsCompleted: 1,
           lessonsTotal: 1,
           entriesKnown: 1,
           entriesTotal: 2,

@@ -514,6 +514,7 @@ segment_ref: episode-01
 
 :::card
 id: card-teiru-concept
+lesson_id: lesson-sample-anime-ep01-intro
 entry_type: grammar
 entry_id: grammar-teiru
 card_type: concept
@@ -921,6 +922,7 @@ aliases: [raiosu]
 
 :::card
 id: ${scopedCardId}
+lesson_id: ${scopedLessonId}
 entry_type: term
 entry_id: ${scopedTermId}
 card_type: recognition

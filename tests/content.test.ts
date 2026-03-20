@@ -1232,6 +1232,7 @@ notes_it: >-
 
 :::card
 id: card-demo
+lesson_id: lesson-demo
 entry_type: term
 entry_id: term-demo
 card_type: recognition
@@ -1327,6 +1328,7 @@ meaning_it: mangiare
 
 :::card
 id: card-demo
+lesson_id: lesson-demo
 entry_type: term
 entry_id: term-demo
 card_type: recognition
@@ -1610,6 +1612,7 @@ meaning_it: mangiare
 
 :::card
 id: ${input.cardId}
+lesson_id: lesson-${input.mediaSlug}
 entry_type: term
 entry_id: ${input.sharedTermId}
 card_type: recognition
@@ -1694,6 +1697,7 @@ meaning_it: mangiare
 
 :::card
 id: card-${input.slugPrefix}
+lesson_id: lesson-${input.slugPrefix}-intro
 entry_type: term
 entry_id: term-${input.slugPrefix}
 card_type: recognition

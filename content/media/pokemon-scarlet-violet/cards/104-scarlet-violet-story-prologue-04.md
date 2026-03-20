@@ -21,6 +21,7 @@ notes_it: >-
 
 :::card
 id: card-gakusei-shokudou-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
 entry_type: term
 entry_id: term-gakusei-shokudou
 card_type: recognition
@@ -47,6 +48,7 @@ notes_it: >-
 
 :::card
 id: card-shokuinshitsu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
 entry_type: term
 entry_id: term-shokuinshitsu
 card_type: recognition
@@ -73,6 +75,7 @@ notes_it: >-
 
 :::card
 id: card-kouchoushitsu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
 entry_type: term
 entry_id: term-kouchoushitsu
 card_type: recognition
@@ -101,6 +104,7 @@ notes_it: >-
 
 :::card
 id: card-gakusei-ryou-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
 entry_type: term
 entry_id: term-gakusei-ryou
 card_type: recognition
@@ -127,6 +131,7 @@ notes_it: >-
 
 :::card
 id: card-tannin-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
 entry_type: term
 entry_id: term-tannin
 card_type: recognition
@@ -153,6 +158,7 @@ notes_it: >-
 
 :::card
 id: card-mezasu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
 entry_type: term
 entry_id: term-mezasu
 card_type: recognition
@@ -179,6 +185,7 @@ notes_it: >-
 
 :::card
 id: card-you-ni-iwareru-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
 entry_type: grammar
 entry_id: grammar-you-ni-iwareru
 card_type: concept

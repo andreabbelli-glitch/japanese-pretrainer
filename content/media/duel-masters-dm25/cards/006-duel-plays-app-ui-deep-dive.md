@@ -434,6 +434,7 @@ level_hint: custom
 
 :::card
 id: card-present-box-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-present-box
 card_type: recognition
@@ -451,6 +452,7 @@ tags: [duel-plays, app, ui, reward]
 
 :::card
 id: card-unclaimed-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-unclaimed
 card_type: recognition
@@ -467,6 +469,7 @@ tags: [duel-plays, app, ui, status]
 
 :::card
 id: card-claim-history-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-claim-history
 card_type: recognition
@@ -484,6 +487,7 @@ tags: [duel-plays, app, ui, history]
 
 :::card
 id: card-bulk-claim-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-bulk-claim
 card_type: recognition
@@ -500,6 +504,7 @@ tags: [duel-plays, app, ui, action]
 
 :::card
 id: card-claim-deadline-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-claim-deadline
 card_type: recognition
@@ -516,6 +521,7 @@ tags: [duel-plays, app, ui, time]
 
 :::card
 id: card-deadline-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-deadline
 card_type: recognition
@@ -533,6 +539,7 @@ tags: [duel-plays, app, ui, time, kanji]
 
 :::card
 id: card-kakutoku-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-kakutoku
 card_type: recognition
@@ -550,6 +557,7 @@ tags: [duel-plays, app, ui, reward]
 
 :::card
 id: card-datetime-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-datetime
 card_type: recognition
@@ -567,6 +575,7 @@ tags: [duel-plays, app, ui, time, kanji]
 
 :::card
 id: card-stage-select-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-stage-select
 card_type: recognition
@@ -583,6 +592,7 @@ tags: [duel-plays, app, ui, stage]
 
 :::card
 id: card-card-pack-purchase-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 entry_type: term
 entry_id: term-card-pack-purchase
 card_type: recognition
@@ -601,6 +611,7 @@ tags: [duel-plays, app, ui, shop]
 
 :::card
 id: card-offer-rate-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 entry_type: term
 entry_id: term-offer-rate
 card_type: recognition
@@ -619,6 +630,7 @@ tags: [duel-plays, app, ui, shop]
 
 :::card
 id: card-use-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 entry_type: term
 entry_id: term-use
 card_type: recognition
@@ -636,6 +648,7 @@ tags: [duel-plays, app, ui, action]
 
 :::card
 id: card-owned-ticket-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 entry_type: term
 entry_id: term-owned-ticket
 card_type: recognition
@@ -653,6 +666,7 @@ tags: [duel-plays, app, ui, resource]
 
 :::card
 id: card-purchase-quantity-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 entry_type: term
 entry_id: term-purchase-quantity
 card_type: recognition
@@ -669,6 +683,7 @@ tags: [duel-plays, app, ui, shop]
 
 :::card
 id: card-exchange-period-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-exchange-decks-and-setup
 entry_type: term
 entry_id: term-exchange-period
 card_type: recognition
@@ -685,6 +700,7 @@ tags: [duel-plays, app, ui, time]
 
 :::card
 id: card-sale-period-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-exchange-decks-and-setup
 entry_type: term
 entry_id: term-sale-period
 card_type: recognition
@@ -701,6 +717,7 @@ tags: [duel-plays, app, ui, time]
 
 :::card
 id: card-prebuilt-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 entry_type: term
 entry_id: term-prebuilt
 card_type: recognition
@@ -718,6 +735,7 @@ tags: [duel-plays, app, ui, deck, kanji]
 
 :::card
 id: card-constructed-deck-purchase-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 entry_type: term
 entry_id: term-constructed-deck-purchase
 card_type: recognition
@@ -736,6 +754,7 @@ tags: [duel-plays, app, ui, deck]
 
 :::card
 id: card-overview-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-exchange-decks-and-setup
 entry_type: term
 entry_id: term-overview
 card_type: recognition
@@ -753,6 +772,7 @@ tags: [duel-plays, app, ui, deck, kanji]
 
 :::card
 id: card-deck-list-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-exchange-decks-and-setup
 entry_type: term
 entry_id: term-deck-list
 card_type: recognition
@@ -770,6 +790,7 @@ tags: [duel-plays, app, ui, deck]
 
 :::card
 id: card-shortage-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-exchange-decks-and-setup
 entry_type: term
 entry_id: term-shortage
 card_type: recognition
@@ -786,6 +807,7 @@ tags: [duel-plays, app, ui, status, kanji]
 
 :::card
 id: card-key-card-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-exchange-decks-and-setup
 entry_type: term
 entry_id: term-key-card
 card_type: recognition
@@ -803,6 +825,7 @@ tags: [duel-plays, app, ui, deck]
 
 :::card
 id: card-legend-skill-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-legend-skill
 card_type: recognition
@@ -820,6 +843,7 @@ tags: [duel-plays, app, ui, setup]
 
 :::card
 id: card-read-already-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-read-already
 card_type: recognition
@@ -836,6 +860,7 @@ tags: [duel-plays, app, ui, status]
 
 :::card
 id: card-skip-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-skip
 card_type: recognition
@@ -852,6 +877,7 @@ tags: [duel-plays, app, ui, action]
 
 :::card
 id: card-beginner-class-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-beginner-class
 card_type: recognition
@@ -868,6 +894,7 @@ tags: [duel-plays, app, ui, stage]
 
 :::card
 id: card-intermediate-class-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-intermediate-class
 card_type: recognition
@@ -884,6 +911,7 @@ tags: [duel-plays, app, ui, stage]
 
 :::card
 id: card-challenge-recognition
+lesson_id: lesson-duel-masters-dm25-duel-plays-app-rewards-and-claim-flow
 entry_type: term
 entry_id: term-challenge
 card_type: recognition

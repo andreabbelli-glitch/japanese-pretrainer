@@ -547,9 +547,17 @@ function normalizeCard(value: unknown): NormalizedCard | null {
     return null;
   }
 
+  const lessonId =
+    typeof value.lessonId === "string" ? value.lessonId : null;
+
+  if (!lessonId) {
+    return null;
+  }
+
   return {
     kind: "card",
     id: value.id,
+    lessonId,
     entryType: value.entryType,
     entryId: value.entryId,
     cardType: value.cardType,

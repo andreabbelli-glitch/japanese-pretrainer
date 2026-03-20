@@ -159,6 +159,7 @@ level_hint: n4
 
 :::card
 id: card-crash-hadou-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-crash-hadou
 card_type: recognition
@@ -179,6 +180,7 @@ tags: [live-duel, proper-name, extra-turn]
 
 :::card
 id: card-b-a-d-two-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-b-a-d-two
 card_type: recognition
@@ -197,6 +199,7 @@ tags: [live-duel, keyword, cost]
 
 :::card
 id: card-b-a-d-two-operational-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-b-a-d-two
 card_type: concept
@@ -223,6 +226,7 @@ tags: [live-duel, keyword, cost, chunk]
 
 :::card
 id: card-speed-attacker-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-speed-attacker
 card_type: recognition
@@ -241,6 +245,7 @@ tags: [live-duel, keyword, attack]
 
 :::card
 id: card-dragonguild-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-dragonguild
 card_type: recognition
@@ -258,6 +263,7 @@ tags: [live-duel, race, tribe]
 
 :::card
 id: card-beat-jockey-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-beat-jockey
 card_type: recognition
@@ -276,6 +282,7 @@ tags: [live-duel, race, aggression]
 
 :::card
 id: card-tap-state-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-tap-state
 card_type: recognition
@@ -293,6 +300,7 @@ tags: [live-duel, state, trigger]
 
 :::card
 id: card-battle-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-battle
 card_type: recognition
@@ -310,6 +318,7 @@ tags: [live-duel, combat, timing]
 
 :::card
 id: card-add-turn-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-add-turn
 card_type: recognition
@@ -327,6 +336,7 @@ tags: [live-duel, turn-order, payoff]
 
 :::card
 id: card-sareta-toki-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: grammar
 entry_id: grammar-sareta-toki
 card_type: concept
@@ -345,6 +355,7 @@ tags: [live-duel, grammar, passive]
 
 :::card
 id: card-no-ato-ni-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: grammar
 entry_id: grammar-no-ato-ni
 card_type: concept
@@ -362,6 +373,7 @@ tags: [live-duel, grammar, timing]
 
 :::card
 id: card-crash-hadou-extra-turn-trigger-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: grammar
 entry_id: grammar-sareta-toki
 card_type: concept

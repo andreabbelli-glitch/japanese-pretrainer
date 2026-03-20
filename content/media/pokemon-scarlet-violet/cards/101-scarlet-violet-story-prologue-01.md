@@ -21,6 +21,7 @@ notes_it: >-
 
 :::card
 id: card-kouchou-sensei-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: term
 entry_id: term-kouchou-sensei
 card_type: recognition
@@ -47,6 +48,7 @@ notes_it: >-
 
 :::card
 id: card-tennyuu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: term
 entry_id: term-tennyuu
 card_type: recognition
@@ -73,6 +75,7 @@ notes_it: >-
 
 :::card
 id: card-smartphone-rotom-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-smartphone-rotom
 card_type: recognition
@@ -99,6 +102,7 @@ notes_it: >-
 
 :::card
 id: card-touroku-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: term
 entry_id: term-touroku
 card_type: recognition
@@ -125,6 +129,7 @@ notes_it: >-
 
 :::card
 id: card-shoubu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: term
 entry_id: term-shoubu
 card_type: recognition
@@ -150,6 +155,7 @@ notes_it: >-
 
 :::card
 id: card-junbi-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: term
 entry_id: term-junbi
 card_type: recognition
@@ -176,6 +182,7 @@ notes_it: >-
 
 :::card
 id: card-jakuten-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: term
 entry_id: term-jakuten
 card_type: recognition
@@ -202,6 +209,7 @@ notes_it: >-
 
 :::card
 id: card-kuridasu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: term
 entry_id: term-kuridasu
 card_type: recognition
@@ -227,6 +235,7 @@ notes_it: >-
 
 :::card
 id: card-te-kudasai-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: grammar
 entry_id: grammar-te-kudasai
 card_type: concept
@@ -252,6 +261,7 @@ notes_it: >-
 
 :::card
 id: card-mitai-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: grammar
 entry_id: grammar-mitai
 card_type: concept
@@ -278,6 +288,7 @@ notes_it: >-
 
 :::card
 id: card-te-shimau-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: grammar
 entry_id: grammar-te-shimau
 card_type: concept
@@ -303,6 +314,7 @@ notes_it: >-
 
 :::card
 id: card-ta-bakari-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 entry_type: grammar
 entry_id: grammar-ta-bakari
 card_type: concept
@@ -316,6 +328,7 @@ example_it: >-
 
 :::card
 id: card-pokemon-zukan-prologue-01-recognition
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
 entry_type: term
 entry_id: term-pokemon-zukan
 card_type: recognition
@@ -334,6 +347,7 @@ notes_it: >-
 
 :::card
 id: card-tara-prologue-01-concept
+lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
 entry_type: grammar
 entry_id: grammar-tara
 card_type: concept

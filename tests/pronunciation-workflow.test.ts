@@ -65,6 +65,7 @@ aliases: [きく, kiku]
 
 :::card
 id: card-miru-recognition
+lesson_id: lesson-sample-anime-ep01-intro
 entry_type: term
 entry_id: term-miru
 card_type: recognition

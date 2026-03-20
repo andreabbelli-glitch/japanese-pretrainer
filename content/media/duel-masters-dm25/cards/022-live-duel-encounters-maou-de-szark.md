@@ -136,6 +136,7 @@ level_hint: n4
 
 :::card
 id: card-maou-de-szark-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 entry_type: term
 entry_id: term-maou-de-szark
 card_type: recognition
@@ -155,6 +156,7 @@ tags: [live-duel, proper-name, boss]
 
 :::card
 id: card-madougu-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 entry_type: term
 entry_id: term-madougu
 card_type: recognition
@@ -174,6 +176,7 @@ tags: [live-duel, tribe, filter]
 
 :::card
 id: card-mugestsu-no-mon-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 entry_type: term
 entry_id: term-mugestsu-no-mon
 card_type: recognition
@@ -194,6 +197,7 @@ tags: [live-duel, keyword, boss]
 
 :::card
 id: card-zutsu-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 entry_type: grammar
 entry_id: grammar-zutsu
 card_type: concept
@@ -215,6 +219,7 @@ tags: [live-duel, grammar, distribution]
 
 :::card
 id: card-sorera-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 entry_type: grammar
 entry_id: grammar-sorera
 card_type: concept
@@ -236,6 +241,7 @@ tags: [live-duel, grammar, reference, procedure]
 
 :::card
 id: card-subete-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 entry_type: term
 entry_id: term-subete
 card_type: recognition
@@ -253,6 +259,7 @@ tags: [live-duel, scope, quantifier, rules-text]
 
 :::card
 id: card-mugestsu-no-mon-operational-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 entry_type: term
 entry_id: term-mugestsu-no-mon
 card_type: concept
