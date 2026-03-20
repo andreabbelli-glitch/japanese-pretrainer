@@ -359,22 +359,25 @@ function buildTermPlan(input: {
   const searchReadingNorm = normalizeSearchText(input.term.reading);
   const searchRomajiNorm = normalizeSearchText(input.term.romaji);
   const termId = buildScopedEntryId("term", input.mediaId, input.term.id);
-  const aliases = dedupeStrings(input.term.aliases).map((aliasText) => {
-    const aliasNorm = normalizeSearchText(aliasText);
-    const aliasType = inferTermAliasType(
-      aliasText,
-      searchReadingNorm,
-      searchRomajiNorm
-    );
+  const aliases = dedupeByKey(
+    dedupeStrings(input.term.aliases).map((aliasText) => {
+      const aliasNorm = normalizeSearchText(aliasText);
+      const aliasType = inferTermAliasType(
+        aliasText,
+        searchReadingNorm,
+        searchRomajiNorm
+      );
 
-    return {
-      id: buildDeterministicId("term_alias", termId, aliasType, aliasNorm),
-      termId,
-      aliasText,
-      aliasNorm,
-      aliasType
-    };
-  });
+      return {
+        id: buildDeterministicId("term_alias", termId, aliasType, aliasNorm),
+        termId,
+        aliasText,
+        aliasNorm,
+        aliasType
+      };
+    }),
+    (alias) => `${alias.aliasType}\u001f${alias.aliasNorm}`
+  );
   const segmentRef = resolveEntrySegmentRef({
     segmentRef: input.term.segmentRef,
     sourceSegmentRef: input.term.source.segmentRef
@@ -822,6 +825,21 @@ function dedupeStrings(values: string[]) {
     }
 
     seen.add(value);
+    return true;
+  });
+}
+
+function dedupeByKey<T>(values: T[], getKey: (value: T) => string) {
+  const seen = new Set<string>();
+
+  return values.filter((value) => {
+    const key = getKey(value);
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
     return true;
   });
 }

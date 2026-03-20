@@ -650,12 +650,12 @@ describe("content parser and validator", () => {
     expect(result.issues).toEqual([]);
     expect(result.data.media?.frontmatter.id).toBe("media-duel-masters-dm25");
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
-    expect(result.data.lessons).toHaveLength(20);
-    expect(result.data.cardFiles).toHaveLength(14);
-    expect(result.data.terms).toHaveLength(182);
-    expect(result.data.grammarPatterns).toHaveLength(36);
-    expect(result.data.cards).toHaveLength(230);
-    expect(result.data.references).toHaveLength(1155);
+    expect(result.data.lessons).toHaveLength(25);
+    expect(result.data.cardFiles).toHaveLength(19);
+    expect(result.data.terms).toHaveLength(186);
+    expect(result.data.grammarPatterns).toHaveLength(41);
+    expect(result.data.cards).toHaveLength(241);
+    expect(result.data.references).toHaveLength(1294);
     expect(
       result.data.lessons.map((lesson) => lesson.frontmatter.slug)
     ).toEqual([
@@ -678,6 +678,11 @@ describe("content parser and validator", () => {
       "live-duel-encounters-kuromame-danshaku",
       "live-duel-encounters-tamatango-panzer",
       "live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari",
+      "live-duel-encounters-king-the-septon",
+      "live-duel-encounters-bolshack-dorago-the-great",
+      "live-duel-encounters-garchainsaw-dragon",
+      "live-duel-encounters-beethoven-zenith-of-horror",
+      "live-duel-encounters-momoking-jonetsu-hero",
       "keyword-effects-reference"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
@@ -694,7 +699,12 @@ describe("content parser and validator", () => {
       "cards-duel-masters-dm25-live-duel-encounters-kenzan-no-sabaki",
       "cards-duel-masters-dm25-live-duel-encounters-kuromame-danshaku",
       "cards-duel-masters-dm25-live-duel-encounters-tamatango-panzer",
-      "cards-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari"
+      "cards-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari",
+      "cards-duel-masters-dm25-live-duel-encounters-king-the-septon",
+      "cards-duel-masters-dm25-live-duel-encounters-bolshack-dorago-the-great",
+      "cards-duel-masters-dm25-live-duel-encounters-garchainsaw-dragon",
+      "cards-duel-masters-dm25-live-duel-encounters-beethoven-zenith-of-horror",
+      "cards-duel-masters-dm25-live-duel-encounters-momoking-jonetsu-hero"
     ]);
     expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
       true

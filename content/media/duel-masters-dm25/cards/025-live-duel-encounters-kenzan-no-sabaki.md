@@ -59,6 +59,24 @@ notes_it: >-
 level_hint: custom
 :::
 
+:::term
+id: term-tonaeru
+lemma: 唱える
+reading: となえる
+romaji: tonaeru
+meaning_it: recitare / pronunciare; nel rules text, lanciare uno spell
+pos: godan-verb
+notes_it: >-
+  In giapponese generale `{{唱|とな}}える` vuol dire recitare, pronunciare o
+  proclamare qualcosa a voce. Nel rules text di Duel Masters il verbo si
+  restringe e diventa il modo standard per dire `lanciare uno
+  [{{呪文|じゅもん}}](term:term-spell)`. Quando leggi
+  `{{手札|てふだ}}から{{唱|とな}}えた{{後|あと}}`, il punto non è solo che hai usato
+  la carta: il testo sta marcando il momento subito successivo al cast dello
+  spell.
+level_hint: n3
+:::
+
 :::card
 id: card-kenzan-no-sabaki-recognition
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kenzan-no-sabaki
@@ -119,6 +137,27 @@ notes_it: >-
   collegate. Riconoscerlo al volo riduce il carico quando rileggi spell e
   supporti luce dello stesso ecosistema.
 tags: [live-duel, race, sabaki]
+:::
+
+:::card
+id: card-tonaeru-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kenzan-no-sabaki
+entry_type: term
+entry_id: term-tonaeru
+card_type: recognition
+front: '{{唱|とな}}える'
+back: recitare / pronunciare; nel rules text, lanciare uno spell
+example_jp: >-
+  この{{呪文|じゅもん}}を{{手札|てふだ}}から{{唱|とな}}えた{{後|あと}}、
+  {{墓地|ぼち}}ではなくシールドの{{上|うえ}}に{{置|お}}く。
+example_it: >-
+  Dopo aver lanciato questo spell dalla mano, lo metti sopra uno scudo invece
+  che nel cimitero.
+notes_it: >-
+  Vale la pena fissarlo perché la lettura `となえる` non è ovvia da `唱`. In
+  Duel Masters questo verbo compare come verbo tecnico di cast per gli spell,
+  ma il passaggio semantico dal giapponese generale resta leggibile.
+tags: [live-duel, verb, spell, cast]
 :::
 
 :::card

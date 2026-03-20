@@ -67,7 +67,8 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   この[{{呪文|じゅもん}}](term:term-spell)を{{自分|じぶん}}の
-  [{{手札|てふだ}}](term:term-hand)から{{唱|とな}}えた{{後|あと}}、
+  [{{手札|てふだ}}](term:term-hand)から
+  [{{唱|とな}}えた](term:term-tonaeru){{後|あと}}、
   [{{墓地|ぼち}}](term:term-graveyard)に[{{置|お}}く](term:term-oku)
   [かわりに](grammar:grammar-kawarini)、
   [{{表|おもて}}{{向|む}}き](term:term-face-up)のまま{{自分|じぶん}}の
@@ -113,6 +114,9 @@ reveal_mode: sentence
 
 - [かわりに](grammar:grammar-kawarini) segnala un rimpiazzo vero: la carta non
   fa due movimenti, ma sostituisce il normale arrivo al cimitero.
+- [{{唱|とな}}える](term:term-tonaeru) vale la pena di essere fissato come verbo:
+  in giapponese generale è `recitare / pronunciare`, mentre nel rules text
+  diventa il verbo tecnico per `lanciare` uno spell.
 - `{{表|おもて}}{{向|む}}きのまま` non vuol dire solo `visibile adesso`:
   indica che la carta resta scoperta anche nella nuova posizione.
 - `シールド{{1|ひと}}つの{{上|うえ}}に[{{置|お}}く](term:term-oku)` descrive
