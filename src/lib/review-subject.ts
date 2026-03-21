@@ -298,11 +298,14 @@ export function selectReviewSubjectRepresentativeCard(
     }
   }
 
+  const cardsWithPriority = cards.map((card) => ({
+    card,
+    priority: getReviewCardPriority(card, subjectState, nowIso)
+  }));
+
   return (
-    [...cards].sort((left, right) => {
-      const priorityDifference =
-        getReviewCardPriority(left, subjectState, nowIso) -
-        getReviewCardPriority(right, subjectState, nowIso);
+    cardsWithPriority.sort((left, right) => {
+      const priorityDifference = left.priority - right.priority;
 
       if (priorityDifference !== 0) {
         return priorityDifference;
@@ -310,8 +313,8 @@ export function selectReviewSubjectRepresentativeCard(
 
       if (nowIso) {
         const recencyDifference = compareReviewCardsBySubjectRecency(
-          left,
-          right
+          left.card,
+          right.card
         );
 
         if (recencyDifference !== 0) {
@@ -319,8 +322,8 @@ export function selectReviewSubjectRepresentativeCard(
         }
       }
 
-      return compareReviewCardsBySubjectDisplay(left, right);
-    })[0] ?? cards[0]!
+      return compareReviewCardsBySubjectDisplay(left.card, right.card);
+    })[0]?.card ?? cards[0]!
   );
 }
 

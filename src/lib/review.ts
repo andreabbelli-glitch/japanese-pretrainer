@@ -1863,37 +1863,6 @@ function resolveReviewQueueState(
   };
 }
 
-function selectReviewSubjectModel(input: {
-  group: ReviewSubjectGroup;
-  nowIso: string;
-  preferredMediaId?: string;
-}) {
-  const preferredCards = input.preferredMediaId
-    ? input.group.cards.filter(
-        (card) => card.mediaId === input.preferredMediaId
-      )
-    : [];
-  const candidatePool =
-    preferredCards.length > 0 ? preferredCards : input.group.cards;
-  const selectedCard =
-    candidatePool === input.group.cards
-      ? input.group.representativeCard
-      : selectReviewSubjectRepresentativeCard(
-          candidatePool,
-          input.group.subjectState,
-          input.nowIso
-        );
-
-  return {
-    card: selectedCard,
-    state: resolveReviewQueueState(
-      selectedCard.status,
-      input.group.subjectState,
-      input.nowIso
-    )
-  };
-}
-
 function buildReviewSubjectModels(input: {
   cards: ReviewCardListItem[];
   entryLookup:
@@ -1914,16 +1883,30 @@ function buildReviewSubjectModels(input: {
     });
 
   return subjectGroups.map((group) => {
-    const { card, state: resolvedState } = selectReviewSubjectModel({
-      group,
-      nowIso: input.nowIso,
-      preferredMediaId: input.preferredMediaId
-    });
+    let selectedCard = group.representativeCard;
+
+    if (input.preferredMediaId) {
+      const preferredCards = group.cards.filter(
+        (card) => card.mediaId === input.preferredMediaId
+      );
+
+      if (preferredCards.length > 0 && preferredCards.length < group.cards.length) {
+        selectedCard = selectReviewSubjectRepresentativeCard(
+          preferredCards,
+          group.subjectState,
+          input.nowIso
+        );
+      }
+    }
 
     return {
-      card,
+      card: selectedCard,
       group,
-      resolvedState
+      resolvedState: resolveReviewQueueState(
+        selectedCard.status,
+        group.subjectState,
+        input.nowIso
+      )
     } satisfies ReviewSubjectModel;
   });
 }
