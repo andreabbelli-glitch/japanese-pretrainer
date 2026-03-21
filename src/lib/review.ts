@@ -1532,8 +1532,7 @@ export async function hydrateReviewCard(input: {
 
   return {
     ...queueCard,
-    gradePreviews: buildReviewGradePreviews(resolvedState.reviewSeedState, now),
-    pronunciations: buildReviewCardPronunciations(card, entryLookup)
+    gradePreviews: buildReviewGradePreviews(resolvedState.reviewSeedState, now)
   };
 }
 
@@ -1677,11 +1676,6 @@ export async function getReviewCardDetailData(
       };
     })
   );
-  const pronunciations = buildReviewCardPronunciations(
-    selectedRawCard,
-    entryLookup
-  );
-
   return {
     card: {
       back: selectedCard.back,
@@ -1705,7 +1699,7 @@ export async function getReviewCardDetailData(
         value !== null
     ),
     entries: selectedCard.entries,
-    pronunciations,
+    pronunciations: selectedCard.pronunciations,
     media: {
       glossaryHref: mediaGlossaryHref(media.slug),
       href: mediaHref(media.slug),
@@ -1753,6 +1747,9 @@ export async function loadReviewOverviewSnapshots(
     subjectGroups: workspace.subjectGroups
   });
 
+  const subjectModelsByDue = subjectModels.slice().sort(compareReviewSubjectModelsByDue);
+  const subjectModelsByOrder = subjectModels.slice().sort(compareReviewSubjectModelsByOrder);
+
   for (const item of media) {
     snapshots.set(
       item.id,
@@ -1765,6 +1762,8 @@ export async function loadReviewOverviewSnapshots(
         nowIso,
         subjectGroups: workspace.subjectGroups,
         subjectModels,
+        subjectModelsByDue,
+        subjectModelsByOrder,
         visibleMediaId: item.id
       })
     );
@@ -1991,6 +1990,8 @@ export function buildReviewOverviewSnapshot(input: {
   nowIso: string;
   subjectGroups?: ReviewSubjectGroup[];
   subjectModels?: ReviewSubjectModel[];
+  subjectModelsByDue?: ReviewSubjectModel[];
+  subjectModelsByOrder?: ReviewSubjectModel[];
   subjectStates?: Map<string, ReviewSubjectStateSnapshot>;
   visibleMediaId?: string;
 }): ReviewOverviewSnapshot {
@@ -2003,8 +2004,11 @@ export function buildReviewOverviewSnapshot(input: {
       subjectGroups: input.subjectGroups,
       subjectStates: input.subjectStates
     });
+  const modelsByDue = input.subjectModelsByDue ?? models.slice().sort(compareReviewSubjectModelsByDue);
+  const modelsByOrder = input.subjectModelsByOrder ?? models.slice().sort(compareReviewSubjectModelsByOrder);
   const classifiedModels = classifyReviewSubjectModels(
-    models,
+    modelsByDue,
+    modelsByOrder,
     input.visibleMediaId
   );
   const toOverviewCard = (model: ReviewSubjectModel): ReviewOverviewCard => ({
@@ -2159,15 +2163,16 @@ function mapReviewCrossMediaSibling(sibling: CrossMediaSibling) {
 
 function buildReviewCardPronunciations(
   card: Pick<ReviewCardListItem, "cardType" | "entryLinks" | "front">,
-  entryLookup: Map<string, ReviewEntryLookupItem>
+  entryLookup: Map<string, ReviewEntryLookupItem>,
+  sortedEntryLinks?: ReviewEntryLinkLike[]
 ): ReviewCardPronunciation[] {
-  if (!canExposeReviewEntryMedia(card, entryLookup)) {
+  const links = sortedEntryLinks ?? card.entryLinks.slice().sort(compareEntryLinks);
+
+  if (!canExposeReviewEntryMedia(card, entryLookup, links)) {
     return [];
   }
 
-  return getDrivingEntryLinks(card.entryLinks)
-    .slice()
-    .sort(compareEntryLinks)
+  return getDrivingEntryLinks(links)
     .flatMap((link) => {
       const entry = entryLookup.get(
         buildEntryKey(link.entryType, link.entryId)
@@ -2253,8 +2258,11 @@ function buildReviewQueueSubjectSnapshot(input: {
     preferredMediaId: input.visibleMediaId,
     subjectGroups: input.subjectGroups
   });
+  const modelsByDue = subjectModels.slice().sort(compareReviewSubjectModelsByDue);
+  const modelsByOrder = subjectModels.slice().sort(compareReviewSubjectModelsByOrder);
   const classifiedModels = classifyReviewSubjectModels(
-    subjectModels,
+    modelsByDue,
+    modelsByOrder,
     input.visibleMediaId
   );
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
@@ -2292,7 +2300,8 @@ function buildReviewQueueSubjectSnapshot(input: {
 }
 
 function classifyReviewSubjectModels(
-  models: ReviewSubjectModel[],
+  modelsByDue: ReviewSubjectModel[],
+  modelsByOrder: ReviewSubjectModel[],
   visibleMediaId?: string
 ) {
   const dueModels: ReviewSubjectModel[] = [];
@@ -2303,19 +2312,28 @@ function classifyReviewSubjectModels(
   const upcomingModels: ReviewSubjectModel[] = [];
   let visibleModelCount = 0;
 
-  for (const model of models) {
+  for (const model of modelsByDue) {
     const visible = isReviewSubjectVisibleInMedia(model.group, visibleMediaId);
 
     if (visible) {
       visibleModelCount += 1;
     }
 
+    if (model.resolvedState.bucket === "due") {
+      if (visible) {
+        dueModels.push(model);
+      }
+    } else if (model.resolvedState.bucket === "upcoming") {
+      if (visible) {
+        upcomingModels.push(model);
+      }
+    }
+  }
+
+  for (const model of modelsByOrder) {
+    const visible = isReviewSubjectVisibleInMedia(model.group, visibleMediaId);
+
     switch (model.resolvedState.bucket) {
-      case "due":
-        if (visible) {
-          dueModels.push(model);
-        }
-        break;
       case "new":
         globalNewModels.push(model);
 
@@ -2333,22 +2351,10 @@ function classifyReviewSubjectModels(
           suspendedModels.push(model);
         }
         break;
-      case "upcoming":
-        if (visible) {
-          upcomingModels.push(model);
-        }
-        break;
       default:
         break;
     }
   }
-
-  dueModels.sort(compareReviewSubjectModelsByDue);
-  globalNewModels.sort(compareReviewSubjectModelsByOrder);
-  visibleNewModels.sort(compareReviewSubjectModelsByOrder);
-  manualModels.sort(compareReviewSubjectModelsByOrder);
-  suspendedModels.sort(compareReviewSubjectModelsByOrder);
-  upcomingModels.sort(compareReviewSubjectModelsByDue);
 
   return {
     dueModels,
@@ -2700,9 +2706,8 @@ function mapQueueCard(
   contexts?: ReviewQueueCard["contexts"]
 ): ReviewQueueCard {
   const cardMedia = resolveReviewCardMedia(card, mediaById);
-  const entries = card.entryLinks
-    .slice()
-    .sort(compareEntryLinks)
+  const sortedEntryLinks = card.entryLinks.slice().sort(compareEntryLinks);
+  const entries = sortedEntryLinks
     .flatMap((link) => {
       const entry = entryLookup.get(
         buildEntryKey(link.entryType, link.entryId)
@@ -2727,8 +2732,8 @@ function mapQueueCard(
     });
   const resolved =
     resolvedState ?? resolveReviewQueueState(card.status, null, nowIso);
-  const pronunciations = buildReviewCardPronunciations(card, entryLookup);
-  const reading = resolveReviewCardReading(card, entryLookup);
+  const pronunciations = buildReviewCardPronunciations(card, entryLookup, sortedEntryLinks);
+  const reading = resolveReviewCardReading(card, entryLookup, sortedEntryLinks);
 
   return {
     back: card.back,
@@ -2768,15 +2773,16 @@ function mapQueueCard(
 
 function resolveReviewCardReading(
   card: ReviewCardListItem,
-  entryLookup: Map<string, ReviewEntryLookupItem>
+  entryLookup: Map<string, ReviewEntryLookupItem>,
+  sortedEntryLinks?: ReviewEntryLinkLike[]
 ) {
-  if (!canExposeReviewEntryMedia(card, entryLookup)) {
+  const links = sortedEntryLinks ?? card.entryLinks.slice().sort(compareEntryLinks);
+
+  if (!canExposeReviewEntryMedia(card, entryLookup, links)) {
     return undefined;
   }
 
-  const drivingLinks = getDrivingEntryLinks(card.entryLinks)
-    .slice()
-    .sort(compareEntryLinks);
+  const drivingLinks = getDrivingEntryLinks(links);
 
   for (const link of drivingLinks) {
     const reading = entryLookup.get(
@@ -2788,7 +2794,7 @@ function resolveReviewCardReading(
     }
   }
 
-  for (const link of card.entryLinks.slice().sort(compareEntryLinks)) {
+  for (const link of links) {
     const reading = entryLookup.get(
       buildEntryKey(link.entryType, link.entryId)
     )?.reading;
@@ -2803,10 +2809,12 @@ function resolveReviewCardReading(
 
 function canExposeReviewEntryMedia(
   card: Pick<ReviewCardListItem, "cardType" | "entryLinks" | "front">,
-  entryLookup: Map<string, ReviewEntryLookupItem>
+  entryLookup: Map<string, ReviewEntryLookupItem>,
+  sortedEntryLinks?: ReviewEntryLinkLike[]
 ) {
-  const drivingLinks = getDrivingEntryLinks(card.entryLinks);
-  const hasPrimaryLink = card.entryLinks.some(
+  const links = sortedEntryLinks ?? card.entryLinks;
+  const drivingLinks = getDrivingEntryLinks(links);
+  const hasPrimaryLink = links.some(
     (link) => link.relationshipType === "primary"
   );
 
