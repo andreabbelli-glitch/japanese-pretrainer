@@ -1763,6 +1763,15 @@ export async function loadReviewOverviewSnapshots(
   });
   const snapshots = new Map<string, ReviewOverviewSnapshot>();
 
+  const nowIso = workspace.now.toISOString();
+  const subjectModels = buildReviewOverviewSubjectModels({
+    cards: workspace.cards,
+    entryLookup: new Map(),
+    nowIso,
+    subjectGroups: workspace.subjectGroups,
+    subjectStates: new Map()
+  });
+
   for (const item of media) {
     snapshots.set(
       item.id,
@@ -1772,8 +1781,9 @@ export async function loadReviewOverviewSnapshots(
         entryLookup: new Map(),
         extraNewCount: 0,
         newIntroducedTodayCount: workspace.newIntroducedTodayCount,
-        nowIso: workspace.now.toISOString(),
+        nowIso,
         subjectGroups: workspace.subjectGroups,
+        subjectModels,
         subjectStates: new Map(),
         visibleMediaId: item.id
       })
@@ -2113,10 +2123,11 @@ export function buildReviewOverviewSnapshot(input: {
   newIntroducedTodayCount: number;
   nowIso: string;
   subjectGroups?: ReviewSubjectGroup[];
+  subjectModels?: ReviewOverviewSubjectModel[];
   subjectStates: Map<string, ReviewSubjectStateSnapshot>;
   visibleMediaId?: string;
 }): ReviewOverviewSnapshot {
-  const models = buildReviewOverviewSubjectModels({
+  const models = input.subjectModels ?? buildReviewOverviewSubjectModels({
     cards: input.cards,
     entryLookup: input.entryLookup,
     nowIso: input.nowIso,

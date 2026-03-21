@@ -87,24 +87,11 @@ export async function resolveReviewSubjectGroups(
 export async function loadReviewSubjectStateLookup(
   input: ResolveReviewSubjectGroupsInput
 ): Promise<ReviewSubjectStateLookupResult> {
-  const { subjectGroups, subjectStates } = await resolveReviewSubjectGroups(
+  const { subjectGroups } = await resolveReviewSubjectGroups(
     input
   );
 
   return {
-    subjectGroups: subjectGroups.map((group) => {
-      const subjectState = subjectStates.get(group.identity.subjectKey) ?? null;
-
-      return {
-        ...group,
-        lastInteractionAt: subjectState?.lastInteractionAt ?? group.lastInteractionAt,
-        representativeCard: selectReviewSubjectRepresentativeCard(
-          group.cards,
-          subjectState,
-          input.nowIso
-        ),
-        subjectState
-      } satisfies ReviewSubjectGroup;
-    })
+    subjectGroups
   };
 }
