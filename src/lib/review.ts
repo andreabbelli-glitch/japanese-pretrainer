@@ -1955,52 +1955,20 @@ function selectReviewQueueSubjectCard(input: {
   const preferredCards = input.preferredMediaId
     ? input.cards.filter((card) => card.mediaId === input.preferredMediaId)
     : [];
-  const candidates = preferredCards.length > 0 ? preferredCards : input.cards;
-  let bestPriority = Number.MAX_SAFE_INTEGER;
-  let bestCards: Array<{ card: ReviewCardListItem; state: ResolvedReviewQueueState }> = [];
-
-  const candidatePool = candidates.length > 0 ? candidates : input.cards;
-
-  for (const candidate of candidatePool) {
-    const resolved = resolveReviewQueueState(
-      applySubjectStateToReviewCard(candidate, input.subjectState),
-      input.nowIso
-    );
-    const priority = getReviewBucketPriority(resolved.bucket);
-
-    if (priority < bestPriority) {
-      bestPriority = priority;
-      bestCards = [{ card: candidate, state: resolved }];
-      continue;
-    }
-
-    if (priority === bestPriority) {
-      bestCards.push({ card: candidate, state: resolved });
-    }
-  }
-
-  if (bestCards.length === 0) {
-    const fallback = selectReviewSubjectRepresentativeCard(
-      candidatePool,
-      input.subjectState,
-      input.nowIso
-    );
-    return {
-      card: fallback,
-      state: resolveReviewQueueState(
-        applySubjectStateToReviewCard(fallback, input.subjectState),
-        input.nowIso
-      )
-    };
-  }
-
-  const selectedCandidate = selectReviewSubjectRepresentativeCard(
-    bestCards.map(b => b.card),
+  const candidatePool = preferredCards.length > 0 ? preferredCards : input.cards;
+  const selectedCard = selectReviewSubjectRepresentativeCard(
+    candidatePool,
     input.subjectState,
     input.nowIso
   );
 
-  return bestCards.find(b => b.card.id === selectedCandidate.id) ?? bestCards[0]!;
+  return {
+    card: selectedCard,
+    state: resolveReviewQueueState(
+      applySubjectStateToReviewCard(selectedCard, input.subjectState),
+      input.nowIso
+    )
+  };
 }
 
 function buildReviewQueueSubjectModels(input: {
@@ -2102,49 +2070,19 @@ function selectReviewOverviewSubjectCard(input: {
   nowIso: string;
   subjectState: ReviewSubjectStateSnapshot | null;
 }) {
-  let bestPriority = Number.MAX_SAFE_INTEGER;
-  let bestCards: Array<{ card: ReviewCardListItem; overview: ReviewOverviewCard }> = [];
-
-  for (const candidate of input.cards) {
-    const overviewCard = mapReviewOverviewCard(
-      applySubjectStateToReviewCard(candidate, input.subjectState),
-      input.nowIso
-    );
-    const priority = getReviewBucketPriority(overviewCard.bucket);
-
-    if (priority < bestPriority) {
-      bestPriority = priority;
-      bestCards = [{ card: candidate, overview: overviewCard }];
-      continue;
-    }
-
-    if (priority === bestPriority) {
-      bestCards.push({ card: candidate, overview: overviewCard });
-    }
-  }
-
-  if (bestCards.length === 0) {
-    const fallback = selectReviewSubjectRepresentativeCard(
-      input.cards,
-      input.subjectState,
-      input.nowIso
-    );
-    return {
-      card: fallback,
-      overview: mapReviewOverviewCard(
-        applySubjectStateToReviewCard(fallback, input.subjectState),
-        input.nowIso
-      )
-    };
-  }
-
-  const selectedCandidate = selectReviewSubjectRepresentativeCard(
-    bestCards.map(b => b.card),
+  const selectedCard = selectReviewSubjectRepresentativeCard(
+    input.cards,
     input.subjectState,
     input.nowIso
   );
 
-  return bestCards.find(b => b.card.id === selectedCandidate.id) ?? bestCards[0]!;
+  return {
+    card: selectedCard,
+    overview: mapReviewOverviewCard(
+      applySubjectStateToReviewCard(selectedCard, input.subjectState),
+      input.nowIso
+    )
+  };
 }
 
 function buildReviewOverviewSubjectModels(input: {
