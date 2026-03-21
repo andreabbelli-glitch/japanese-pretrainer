@@ -1390,10 +1390,21 @@ function buildGlobalGlossaryAutocompleteSuggestions(
   query?: string,
   filters?: Pick<GlossaryQueryState, "cards" | "entryType" | "media" | "study">
 ) {
-  const suggestions: GlobalGlossaryAutocompleteSuggestion[] = [];
+  const suggestions: Array<
+    GlobalGlossaryAutocompleteSuggestion & { score?: number }
+  > = [];
 
   for (const [resultKey, entries] of groups.entries()) {
-    const representative = pickBestBy(entries, (left, right) => {
+    const matchingEntries = query
+      ? entries.filter(
+          (entry) => entry.matchesCurrentFilters && entry.matchesCurrentQuery
+        )
+      : entries.filter((entry) => entry.matchesCurrentFilters);
+    const representative = pickBestBy(matchingEntries, (left, right) => {
+      if (query && left.score !== right.score) {
+        return right.score - left.score;
+      }
+
       if (left.hasCards !== right.hasCards) {
         return left.hasCards ? -1 : 1;
       }
@@ -1429,6 +1440,7 @@ function buildGlobalGlossaryAutocompleteSuggestions(
       reading: representative.reading,
       resultKey,
       romaji: representative.romaji,
+      score: representative.score,
       title: representative.title
     });
   }

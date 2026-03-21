@@ -254,12 +254,13 @@ export async function getTextbookLessonTooltipEntries(
     return null;
   }
 
+  const lessonDocument = parseLessonAst(lesson.content?.astJson ?? null);
   const lessonEntryLinks = await listLessonEntryLinks(database, lesson.id);
 
   return loadLessonTooltipEntries({
     database,
     lessonEntryLinks,
-    imageCardIds: collectLessonImageCardIds(lesson.content?.astJson ?? null),
+    imageCardIds: collectImageCardIds(lessonDocument),
     mediaSlug
   });
 }
@@ -490,22 +491,31 @@ async function loadLessonTooltipEntries(input: {
   mediaSlug: string;
 }) {
   const uniqueLessonEntryLinks = dedupeLessonEntryLinks(input.lessonEntryLinks);
-  const termIds = uniqueLessonEntryLinks
-    .filter((entry) => entry.entryType === "term")
-    .map((entry) => entry.entryId);
-  const grammarIds = uniqueLessonEntryLinks
-    .filter((entry) => entry.entryType === "grammar")
-    .map((entry) => entry.entryId);
+  const termIds: string[] = [];
+  const grammarIds: string[] = [];
+  const studySignalEntries: Array<{
+    entryId: string;
+    entryType: "term" | "grammar";
+  }> = [];
+
+  for (const entry of uniqueLessonEntryLinks) {
+    studySignalEntries.push({
+      entryId: entry.entryId,
+      entryType: entry.entryType
+    });
+
+    if (entry.entryType === "term") {
+      termIds.push(entry.entryId);
+      continue;
+    }
+
+    grammarIds.push(entry.entryId);
+  }
+
   const [terms, grammar, studySignals, cards] = await Promise.all([
     getGlossaryEntriesByIds(input.database, "term", termIds),
     getGlossaryEntriesByIds(input.database, "grammar", grammarIds),
-    listEntryStudySignals(
-      input.database,
-      uniqueLessonEntryLinks.map((entry) => ({
-        entryId: entry.entryId,
-        entryType: entry.entryType
-      }))
-    ),
+    listEntryStudySignals(input.database, studySignalEntries),
     getCardsByIds(input.database, input.imageCardIds)
   ]);
   const [termCrossMediaCounts, grammarCrossMediaCounts] = await Promise.all([
@@ -811,11 +821,6 @@ function collectImageCardIds(document: MarkdownDocument | null) {
   }
 
   return [...cardIds];
-}
-
-function collectLessonImageCardIds(astJson: string | null) {
-  const lessonAst = parseLessonAst(astJson);
-  return lessonAst ? collectImageCardIds(lessonAst) : [];
 }
 
 function markDataAsLive() {

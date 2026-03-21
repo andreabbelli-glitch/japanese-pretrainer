@@ -4,7 +4,6 @@ import {
   getMediaBySlug,
   listLessonsByMediaId,
   listLessonsByMediaIds,
-  listReviewLaunchCandidates,
   type DatabaseClient,
   type MediaListItem
 } from "@/db";
@@ -23,6 +22,7 @@ import {
 } from "@/lib/study-format";
 import {
   buildReviewOverviewSnapshot,
+  loadReviewLaunchCandidatesCached,
   loadReviewOverviewSnapshots
 } from "@/lib/review";
 import { pickBestBy } from "@/lib/collections";
@@ -172,25 +172,6 @@ async function loadGlossaryProgressSnapshotsCached(
   );
 }
 
-async function loadReviewLaunchCandidatesCached(
-  database: DatabaseClient,
-  mediaIds: string[],
-  nowIso: string
-) {
-  if (mediaIds.length === 0) {
-    return [];
-  }
-
-  const orderedIds = [...mediaIds].sort();
-
-  return runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "review-candidates", ...orderedIds],
-    loader: () => listReviewLaunchCandidates(database, nowIso),
-    tags: buildReviewSummaryTags(mediaIds)
-  });
-}
-
 async function loadReviewIntroducedOnDayCached(
   database: DatabaseClient,
   mediaIds: string[]
@@ -235,7 +216,7 @@ async function buildMediaShellSnapshots(
         slug: item.slug
       }))
     ),
-    loadReviewLaunchCandidatesCached(database, mediaIds, nowIso),
+    loadReviewLaunchCandidatesCached(database, nowIso),
     getReviewDailyLimit(database),
     loadReviewIntroducedOnDayCached(database, mediaIds)
   ]);

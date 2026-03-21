@@ -1,12 +1,23 @@
 import path from "node:path";
 
-import { parseContentRoot } from "../src/lib/content/validator.ts";
+import {
+  parseContentRoot,
+  parseMediaDirectory,
+  type NormalizedMediaBundle
+} from "../src/lib/content/index.ts";
 import {
   fetchPronunciationsForBundle,
   type PronunciationFetchNetworkOptions
 } from "../src/lib/pronunciation-fetch.ts";
-import { reuseCrossMediaPronunciationsForBundle } from "../src/lib/pronunciation-reuse.ts";
-import { writeBundlePronunciationPendingSummary } from "../src/lib/pronunciation-workflow.ts";
+import {
+  createPronunciationReuseContext,
+  refreshPronunciationReuseContextBundle,
+  reuseCrossMediaPronunciationsForBundle
+} from "../src/lib/pronunciation-reuse.ts";
+import {
+  loadForvoKnownMissingRegistry,
+  writeBundlePronunciationPendingSummary
+} from "../src/lib/pronunciation-workflow.ts";
 
 type CliOptions = {
   contentRoot: string;
@@ -34,6 +45,14 @@ if (!parseResult.ok) {
   process.exitCode = 1;
 } else {
   let liveBundles = parseResult.data.bundles;
+  const reuseContext = await createPronunciationReuseContext(liveBundles);
+  const knownMissingPath = path.resolve(
+    process.cwd(),
+    "data",
+    "forvo-known-missing.json"
+  );
+  const knownMissingRegistry =
+    await loadForvoKnownMissingRegistry(knownMissingPath);
   const bundles = liveBundles.filter(
     (bundle) =>
       options.mediaSlugs.length === 0 ||
@@ -44,7 +63,8 @@ if (!parseResult.ok) {
     const reuseSummary = await reuseCrossMediaPronunciationsForBundle({
       bundle,
       bundles: liveBundles,
-      dryRun: options.dryRun
+      dryRun: options.dryRun,
+      reuseContext
     });
 
     for (const result of reuseSummary.results) {
@@ -64,35 +84,27 @@ if (!parseResult.ok) {
       }
     }
 
-    let currentBundle = bundle;
-
-    if (!options.dryRun && reuseSummary.reused > 0) {
-      const refreshed = await parseContentRoot(contentRoot);
-
-      if (!refreshed.ok) {
-        throw new Error("Content validation failed after cross-media pronunciation reuse.");
-      }
-
-      liveBundles = refreshed.data.bundles;
-      const refreshedBundle = liveBundles.find(
-        (candidate) => candidate.mediaSlug === bundle.mediaSlug
-      );
-
-      if (!refreshedBundle) {
-        throw new Error(`Bundle '${bundle.mediaSlug}' disappeared after reuse.`);
-      }
-
-      currentBundle = refreshedBundle;
-    }
-
     const summary = await fetchPronunciationsForBundle({
-      bundle: currentBundle,
+      bundle,
       cacheRoot,
       dryRun: options.dryRun,
       limit: options.limit,
       network: options.network,
       refresh: options.refresh
     });
+
+    let currentBundle = bundle;
+
+    if (!options.dryRun && (reuseSummary.reused > 0 || summary.matched > 0)) {
+      const refreshedState = await refreshBundleState({
+        bundle,
+        liveBundles,
+        reuseContext
+      });
+
+      currentBundle = refreshedState.bundle;
+      liveBundles = refreshedState.liveBundles;
+    }
 
     console.info(
       `${bundle.mediaSlug}: ${summary.matched} matched, ${summary.missed} missing`
@@ -111,7 +123,8 @@ if (!parseResult.ok) {
     if (!options.dryRun) {
       const pendingSummary = await writeBundlePronunciationPendingSummary({
         bundle: currentBundle,
-        knownMissingPath: path.resolve(process.cwd(), "data", "forvo-known-missing.json")
+        knownMissingPath,
+        knownMissingRegistry
       });
 
       console.info(
@@ -119,6 +132,35 @@ if (!parseResult.ok) {
       );
     }
   }
+}
+
+async function refreshBundleState(input: {
+  bundle: NormalizedMediaBundle;
+  liveBundles: NormalizedMediaBundle[];
+  reuseContext: Awaited<ReturnType<typeof createPronunciationReuseContext>>;
+}) {
+  const refreshed = await parseMediaDirectory(input.bundle.mediaDirectory);
+
+  if (!refreshed.ok) {
+    throw new Error(
+      `Content validation failed for '${input.bundle.mediaSlug}' after pronunciation updates.`
+    );
+  }
+
+  const refreshedBundle = refreshed.data;
+  await refreshPronunciationReuseContextBundle(
+    input.reuseContext,
+    refreshedBundle
+  );
+
+  return {
+    bundle: refreshedBundle,
+    liveBundles: input.liveBundles.map((candidate) =>
+      candidate.mediaSlug === refreshedBundle.mediaSlug
+        ? refreshedBundle
+        : candidate
+    )
+  };
 }
 
 function parseCliOptions(argv: string[]): CliOptions {

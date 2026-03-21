@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 
-import { db, getMediaBySlug } from "@/db";
 import {
   revalidateReviewSummaryCache,
   revalidateSettingsCache
@@ -43,7 +42,7 @@ export async function setLessonCompletionAction(input: {
   completed: boolean;
 }) {
   await setLessonCompletionState(input.lessonId, input.completed);
-  revalidateReviewSummaryCache(await readMediaId(input.mediaSlug));
+  revalidateReviewSummaryCache();
 
   revalidatePath("/");
   revalidatePath("/media");
@@ -60,10 +59,4 @@ export async function setLessonCompletionAction(input: {
     ok: true as const,
     status: input.completed ? "completed" : "in_progress"
   };
-}
-
-async function readMediaId(mediaSlug: string) {
-  const media = await getMediaBySlug(db, mediaSlug);
-
-  return media?.id;
 }

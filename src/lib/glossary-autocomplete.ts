@@ -11,7 +11,11 @@ import {
 
 type RankedSuggestion = {
   score: number;
-  suggestion: GlobalGlossaryAutocompleteSuggestion;
+  suggestion: AutocompleteSuggestion;
+};
+
+type AutocompleteSuggestion = GlobalGlossaryAutocompleteSuggestion & {
+  score?: number;
 };
 
 type AutocompleteQuery = {
@@ -28,7 +32,7 @@ export function getGlossaryAutocompleteSuggestions(input: {
   >;
   limit?: number;
   query: string;
-  suggestions: GlobalGlossaryAutocompleteSuggestion[];
+  suggestions: AutocompleteSuggestion[];
 }) {
   const trimmedQuery = input.query.trim();
 
@@ -44,7 +48,7 @@ export function getGlossaryAutocompleteSuggestions(input: {
       continue;
     }
 
-    const score = scoreSuggestion(suggestion, query);
+    const score = suggestion.score ?? scoreSuggestion(suggestion, query);
 
     if (score <= 0) {
       continue;
@@ -70,7 +74,20 @@ export function getGlossaryAutocompleteSuggestions(input: {
 
   return rankedSuggestions
     .slice(0, input.limit ?? 6)
-    .map((record) => record.suggestion);
+    .map(({ suggestion }) => ({
+      aliases: suggestion.aliases,
+      hasCards: suggestion.hasCards,
+      hasCardlessVariant: suggestion.hasCardlessVariant,
+      kind: suggestion.kind,
+      label: suggestion.label,
+      localHits: suggestion.localHits,
+      meaning: suggestion.meaning,
+      mediaCount: suggestion.mediaCount,
+      reading: suggestion.reading,
+      resultKey: suggestion.resultKey,
+      romaji: suggestion.romaji,
+      title: suggestion.title
+    }));
 }
 
 function matchesSuggestionFilters(

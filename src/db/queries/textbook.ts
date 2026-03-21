@@ -43,28 +43,34 @@ export async function listEntryStudySignals(
     return [];
   }
 
-  const termIds = entries
-    .filter((entry) => entry.entryType === "term")
-    .map((entry) => entry.entryId);
-  const grammarIds = entries
-    .filter((entry) => entry.entryType === "grammar")
-    .map((entry) => entry.entryId);
+  const termIds = new Set<string>();
+  const grammarIds = new Set<string>();
+
+  for (const entry of entries) {
+    if (entry.entryType === "term") {
+      termIds.add(entry.entryId);
+      continue;
+    }
+
+    grammarIds.add(entry.entryId);
+  }
+
   const filters = [];
 
-  if (termIds.length > 0) {
+  if (termIds.size > 0) {
     filters.push(
       and(
         eq(cardEntryLink.entryType, "term"),
-        inArray(cardEntryLink.entryId, termIds)
+        inArray(cardEntryLink.entryId, [...termIds])
       )
     );
   }
 
-  if (grammarIds.length > 0) {
+  if (grammarIds.size > 0) {
     filters.push(
       and(
         eq(cardEntryLink.entryType, "grammar"),
-        inArray(cardEntryLink.entryId, grammarIds)
+        inArray(cardEntryLink.entryId, [...grammarIds])
       )
     );
   }

@@ -31,6 +31,10 @@ type AudioBackedEntry = {
   reading: string;
 };
 
+export type PronunciationReuseContext = {
+  audioBackedEntries: AudioBackedEntry[];
+};
+
 export type PronunciationReuseResult =
   | {
       entryId: string;
@@ -52,6 +56,7 @@ export async function reusePronunciationsAcrossMedia(input: {
   allBundles: NormalizedMediaBundle[];
   dryRun?: boolean;
   onlyTargets?: PronunciationTargetEntry[];
+  reuseContext?: PronunciationReuseContext;
 }) {
   const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
 
@@ -75,7 +80,9 @@ export async function reusePronunciationsAcrossMedia(input: {
     );
     return !(entry.audioSrc || manifestEntry?.audioSrc);
   });
-  const audioBackedEntries = await collectAudioBackedEntries(input.allBundles);
+  const audioBackedEntries =
+    input.reuseContext?.audioBackedEntries ??
+    (await collectAudioBackedEntries(input.allBundles));
   const results: PronunciationReuseResult[] = [];
 
   for (const target of missingTargets) {
@@ -161,82 +168,116 @@ export async function reuseCrossMediaPronunciationsForBundle(input: {
   bundles: NormalizedMediaBundle[];
   dryRun?: boolean;
   onlyTargets?: PronunciationTargetEntry[];
+  reuseContext?: PronunciationReuseContext;
 }) {
   return reusePronunciationsAcrossMedia({
     allBundles: input.bundles,
     bundle: input.bundle,
     dryRun: input.dryRun,
-    onlyTargets: input.onlyTargets
+    onlyTargets: input.onlyTargets,
+    reuseContext: input.reuseContext
   });
+}
+
+export async function createPronunciationReuseContext(
+  bundles: NormalizedMediaBundle[]
+): Promise<PronunciationReuseContext> {
+  return {
+    audioBackedEntries: await collectAudioBackedEntries(bundles)
+  };
+}
+
+export async function refreshPronunciationReuseContextBundle(
+  context: PronunciationReuseContext,
+  bundle: NormalizedMediaBundle
+) {
+  const nextEntries = await collectAudioBackedEntriesForBundle(bundle);
+  const preservedEntries = context.audioBackedEntries.filter(
+    (entry) => entry.mediaSlug !== bundle.mediaSlug
+  );
+
+  context.audioBackedEntries.splice(
+    0,
+    context.audioBackedEntries.length,
+    ...preservedEntries,
+    ...nextEntries
+  );
 }
 
 async function collectAudioBackedEntries(bundles: NormalizedMediaBundle[]) {
   const entries: AudioBackedEntry[] = [];
 
   for (const bundle of bundles) {
-    const manifest = await loadPronunciationManifest(bundle.mediaDirectory);
-    const manifestEntries = new Map(
-      (manifest.manifest?.entries ?? []).map((entry) => [
-        buildEntryKey(entry.entryType, entry.entryId),
-        entry
-      ])
+    entries.push(...(await collectAudioBackedEntriesForBundle(bundle)));
+  }
+
+  return entries;
+}
+
+async function collectAudioBackedEntriesForBundle(
+  bundle: NormalizedMediaBundle
+) {
+  const manifest = await loadPronunciationManifest(bundle.mediaDirectory);
+  const manifestEntries = new Map(
+    (manifest.manifest?.entries ?? []).map((entry) => [
+      buildEntryKey(entry.entryType, entry.entryId),
+      entry
+    ])
+  );
+  const entries: AudioBackedEntry[] = [];
+
+  for (const target of bundle.terms) {
+    const manifestEntry = manifestEntries.get(buildEntryKey("term", target.id));
+    const audio = target.audio ?? manifestEntry;
+    const audioSrc = target.audio?.audioSrc ?? manifestEntry?.audioSrc;
+
+    if (!audioSrc) {
+      continue;
+    }
+
+    entries.push({
+      audioAttribution: audio?.audioAttribution ?? null,
+      audioLicense: audio?.audioLicense ?? null,
+      audioPageUrl: audio?.audioPageUrl ?? null,
+      audioSource: audio?.audioSource ?? null,
+      audioSpeaker: audio?.audioSpeaker ?? null,
+      audioSrc,
+      crossMediaGroup: target.crossMediaGroup,
+      entryId: target.id,
+      entryType: "term",
+      label: target.lemma,
+      mediaDirectory: bundle.mediaDirectory,
+      mediaSlug: bundle.mediaSlug,
+      reading: target.reading
+    });
+  }
+
+  for (const target of bundle.grammarPatterns) {
+    const manifestEntry = manifestEntries.get(
+      buildEntryKey("grammar", target.id)
     );
+    const audio = target.audio ?? manifestEntry;
+    const audioSrc = target.audio?.audioSrc ?? manifestEntry?.audioSrc;
 
-    for (const target of bundle.terms) {
-      const manifestEntry = manifestEntries.get(
-        buildEntryKey("term", target.id)
-      );
-      const audio = target.audio ?? manifestEntry;
-      const audioSrc = target.audio?.audioSrc ?? manifestEntry?.audioSrc;
-
-      if (!audioSrc) {
-        continue;
-      }
-
-      entries.push({
-        audioAttribution: audio?.audioAttribution ?? null,
-        audioLicense: audio?.audioLicense ?? null,
-        audioPageUrl: audio?.audioPageUrl ?? null,
-        audioSource: audio?.audioSource ?? null,
-        audioSpeaker: audio?.audioSpeaker ?? null,
-        audioSrc,
-        crossMediaGroup: target.crossMediaGroup,
-        entryId: target.id,
-        entryType: "term",
-        label: target.lemma,
-        mediaDirectory: bundle.mediaDirectory,
-        mediaSlug: bundle.mediaSlug,
-        reading: target.reading
-      });
+    if (!audioSrc) {
+      continue;
     }
 
-    for (const target of bundle.grammarPatterns) {
-      const manifestEntry = manifestEntries.get(
-        buildEntryKey("grammar", target.id)
-      );
-      const audio = target.audio ?? manifestEntry;
-      const audioSrc = target.audio?.audioSrc ?? manifestEntry?.audioSrc;
-
-      if (!audioSrc) {
-        continue;
-      }
-
-      entries.push({
-        audioAttribution: audio?.audioAttribution ?? null,
-        audioLicense: audio?.audioLicense ?? null,
-        audioPageUrl: audio?.audioPageUrl ?? null,
-        audioSource: audio?.audioSource ?? null,
-        audioSpeaker: audio?.audioSpeaker ?? null,
-        audioSrc,
-        crossMediaGroup: target.crossMediaGroup,
-        entryId: target.id,
-        entryType: "grammar",
-        label: target.pattern,
-        mediaDirectory: bundle.mediaDirectory,
-        mediaSlug: bundle.mediaSlug,
-        reading: target.reading ?? ""
-      });
-    }
+    entries.push({
+      audioAttribution: audio?.audioAttribution ?? null,
+      audioLicense: audio?.audioLicense ?? null,
+      audioPageUrl: audio?.audioPageUrl ?? null,
+      audioSource: audio?.audioSource ?? null,
+      audioSpeaker: audio?.audioSpeaker ?? null,
+      audioSrc,
+      crossMediaGroup: target.crossMediaGroup,
+      entryId: target.id,
+      entryType: "grammar",
+      label: target.pattern,
+      mediaDirectory: bundle.mediaDirectory,
+      mediaSlug: bundle.mediaSlug,
+      reading: target.reading ?? ""
+    });
   }
 
   return entries;

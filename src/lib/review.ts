@@ -6,9 +6,8 @@ import {
   getGlossaryEntriesByIds,
   getMediaById,
   listGrammarEntryReviewSummariesByIds,
-  listReviewLaunchCandidates,
   getMediaBySlug,
-  listGlossaryEntriesByKind,
+  listReviewLaunchCandidates,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
   listTermEntryReviewSummariesByIds,
@@ -20,6 +19,7 @@ import {
   type GrammarGlossaryEntrySummary,
   type MediaListItem,
   type ReviewCardListItem,
+  type ReviewLaunchCandidate,
   type TermEntryReviewSummary,
   type TermGlossaryEntry,
   type TermGlossaryEntrySummary
@@ -1552,13 +1552,25 @@ export async function getEligibleReviewCardsByMediaIds(
   });
 }
 
+export async function loadReviewLaunchCandidatesCached(
+  database: DatabaseClient = db,
+  nowIso = new Date().toISOString()
+): Promise<ReviewLaunchCandidate[]> {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["review-launch-candidates"],
+    loader: () => listReviewLaunchCandidates(database, nowIso),
+    tags: [...buildReviewSummaryTags(), REVIEW_FIRST_CANDIDATE_TAG]
+  });
+}
+
 export async function getReviewLaunchMedia(
   database: DatabaseClient = db
 ): Promise<{
   slug: string;
   title: string;
 } | null> {
-  const candidates = await listReviewLaunchCandidates(database);
+  const candidates = await loadReviewLaunchCandidatesCached(database);
 
   return pickBestBy(candidates, (left, right) => {
     const scoreDifference =
@@ -1597,17 +1609,34 @@ export async function getReviewCardDetailData(
     return null;
   }
 
-  const [cards, terms, grammar] = await Promise.all([
-    getEligibleReviewCardsByMediaId(media.id, database),
-    listGlossaryEntriesByKind(database, "term", { mediaId: media.id }),
-    listGlossaryEntriesByKind(database, "grammar", { mediaId: media.id })
-  ]);
-  const entryLookup = buildEntryLookup(terms, grammar);
-  const selectedRawCard = cards.find((card) => card.id === cardId) ?? null;
+  const selectedRawCard = await getCardById(database, cardId);
 
-  if (!selectedRawCard) {
+  if (
+    !selectedRawCard ||
+    selectedRawCard.mediaId !== media.id ||
+    selectedRawCard.status === "archived" ||
+    !hasCompletedReviewLesson(selectedRawCard)
+  ) {
     return null;
   }
+
+  const termIds = new Set<string>();
+  const grammarIds = new Set<string>();
+
+  for (const link of selectedRawCard.entryLinks) {
+    if (link.entryType === "term") {
+      termIds.add(link.entryId);
+      continue;
+    }
+
+    grammarIds.add(link.entryId);
+  }
+
+  const [terms, grammar] = await Promise.all([
+    getGlossaryEntriesByIds(database, "term", [...termIds]),
+    getGlossaryEntriesByIds(database, "grammar", [...grammarIds])
+  ]);
+  const entryLookup = buildEntryLookup(terms, grammar);
 
   const subjectIdentity = deriveReviewSubjectIdentity({
     cardId: selectedRawCard.id,

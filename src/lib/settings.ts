@@ -1,6 +1,7 @@
+import { inArray } from "drizzle-orm";
+
 import {
   db,
-  getUserSettingValue,
   userSetting,
   type DatabaseClient
 } from "@/db";
@@ -31,84 +32,77 @@ export const defaultStudySettings: StudySettings = {
   reviewDailyLimit: reviewSchedulerConfig.defaultDailyLimit
 };
 
+const studySettingKeys = [
+  "furigana_mode",
+  "glossary_default_sort",
+  "review_front_furigana",
+  "review_daily_limit"
+] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
+
 export async function getStudySettings(
   database: DatabaseClient = db
 ): Promise<StudySettings> {
-  const [
-    furiganaMode,
-    glossaryDefaultSort,
-    reviewFrontFurigana,
-    reviewDailyLimit
-  ] = await Promise.all([
-    getFuriganaModeSetting(database),
-    getGlossaryDefaultSort(database),
-    getReviewFrontFuriganaSetting(database),
-    getReviewDailyLimit(database)
-  ]);
-
-  return {
-    furiganaMode,
-    glossaryDefaultSort,
-    reviewFrontFurigana,
-    reviewDailyLimit
-  };
+  return loadStudySettingsSnapshot(database);
 }
 
 export async function getFuriganaModeSetting(
   database: DatabaseClient = db
 ): Promise<FuriganaMode> {
-  return runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: ["settings", "furigana-mode"],
-    loader: async () => {
-      const row = await getUserSettingValue(database, "furigana_mode");
-
-      return parseFuriganaMode(row?.valueJson);
-    },
-    tags: [SETTINGS_TAG]
-  });
+  return (await loadStudySettingsSnapshot(database)).furiganaMode;
 }
 
 export async function getReviewDailyLimit(
   database: DatabaseClient = db
 ): Promise<number> {
-  return runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: ["settings", "review-daily-limit"],
-    loader: async () => {
-      const row = await getUserSettingValue(database, "review_daily_limit");
-
-      return parseReviewDailyLimit(row?.valueJson);
-    },
-    tags: [SETTINGS_TAG]
-  });
+  return (await loadStudySettingsSnapshot(database)).reviewDailyLimit;
 }
 
 export async function getReviewFrontFuriganaSetting(
   database: DatabaseClient = db
 ): Promise<boolean> {
-  return runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: ["settings", "review-front-furigana"],
-    loader: async () => {
-      const row = await getUserSettingValue(database, "review_front_furigana");
-
-      return parseReviewFrontFurigana(row?.valueJson);
-    },
-    tags: [SETTINGS_TAG]
-  });
+  return (await loadStudySettingsSnapshot(database)).reviewFrontFurigana;
 }
 
 export async function getGlossaryDefaultSort(
   database: DatabaseClient = db
 ): Promise<GlossaryDefaultSort> {
+  return (await loadStudySettingsSnapshot(database)).glossaryDefaultSort;
+}
+
+async function loadStudySettingsSnapshot(
+  database: DatabaseClient
+): Promise<StudySettings> {
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["settings", "glossary-default-sort"],
+    keyParts: ["settings", "snapshot"],
     loader: async () => {
-      const row = await getUserSettingValue(database, "glossary_default_sort");
+      const rows = await database.query.userSetting.findMany({
+        where: inArray(userSetting.key, studySettingKeys)
+      });
+      const valuesByKey = new Map(rows.map((row) => [row.key, row.valueJson]));
 
-      return parseGlossaryDefaultSort(row?.valueJson);
+      return {
+        furiganaMode: parseSettingValue(
+          valuesByKey.get("furigana_mode"),
+          normalizeFuriganaMode,
+          defaultStudySettings.furiganaMode
+        ),
+        glossaryDefaultSort: parseSettingValue(
+          valuesByKey.get("glossary_default_sort"),
+          normalizeGlossaryDefaultSort,
+          defaultStudySettings.glossaryDefaultSort
+        ),
+        reviewFrontFurigana: parseSettingValue(
+          valuesByKey.get("review_front_furigana"),
+          normalizeReviewFrontFurigana,
+          defaultStudySettings.reviewFrontFurigana
+        ),
+        reviewDailyLimit: parseSettingValue(
+          valuesByKey.get("review_daily_limit"),
+          normalizeReviewDailyLimit,
+          defaultStudySettings.reviewDailyLimit
+        )
+      };
     },
     tags: [SETTINGS_TAG]
   });
@@ -203,51 +197,19 @@ export function normalizeReviewDailyLimit(value: number) {
   return Math.max(1, Math.min(200, Math.round(value)));
 }
 
-function parseFuriganaMode(valueJson?: string) {
+function parseSettingValue<TValue, TResult>(
+  valueJson: string | undefined,
+  normalize: (value: TValue) => TResult,
+  fallback: TResult
+) {
   if (!valueJson) {
-    return defaultStudySettings.furiganaMode;
+    return fallback;
   }
 
   try {
-    return normalizeFuriganaMode(JSON.parse(valueJson));
+    return normalize(JSON.parse(valueJson) as TValue);
   } catch {
-    return defaultStudySettings.furiganaMode;
-  }
-}
-
-function parseGlossaryDefaultSort(valueJson?: string) {
-  if (!valueJson) {
-    return defaultStudySettings.glossaryDefaultSort;
-  }
-
-  try {
-    return normalizeGlossaryDefaultSort(JSON.parse(valueJson));
-  } catch {
-    return defaultStudySettings.glossaryDefaultSort;
-  }
-}
-
-function parseReviewFrontFurigana(valueJson?: string) {
-  if (!valueJson) {
-    return defaultStudySettings.reviewFrontFurigana;
-  }
-
-  try {
-    return normalizeReviewFrontFurigana(JSON.parse(valueJson));
-  } catch {
-    return defaultStudySettings.reviewFrontFurigana;
-  }
-}
-
-function parseReviewDailyLimit(valueJson?: string) {
-  if (!valueJson) {
-    return defaultStudySettings.reviewDailyLimit;
-  }
-
-  try {
-    return normalizeReviewDailyLimit(JSON.parse(valueJson));
-  } catch {
-    return defaultStudySettings.reviewDailyLimit;
+    return fallback;
   }
 }
 

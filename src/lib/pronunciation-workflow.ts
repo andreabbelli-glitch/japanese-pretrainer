@@ -43,6 +43,7 @@ export type MediaPronunciationPendingSummary = {
 export async function summarizeBundlePronunciationPending(input: {
   bundle: NormalizedMediaBundle;
   knownMissingPath?: string;
+  knownMissingRegistry?: ForvoKnownMissingRegistry;
 }): Promise<MediaPronunciationPendingSummary> {
   const workflowFilePath = path.join(
     input.bundle.mediaDirectory,
@@ -62,9 +63,9 @@ export async function summarizeBundlePronunciationPending(input: {
       .filter((entry) => Boolean(entry.audioSrc))
       .map((entry) => buildEntryKey(entry.entryType, entry.entryId))
   );
-  const knownMissingRegistry = await loadForvoKnownMissingRegistry(
-    input.knownMissingPath
-  );
+  const knownMissingRegistry =
+    input.knownMissingRegistry ??
+    (await loadForvoKnownMissingRegistry(input.knownMissingPath));
   const knownMissing = new Set(
     knownMissingRegistry.entries
       .filter(
@@ -115,6 +116,7 @@ export async function summarizeBundlePronunciationPending(input: {
 export async function writeBundlePronunciationPendingSummary(input: {
   bundle: NormalizedMediaBundle;
   knownMissingPath?: string;
+  knownMissingRegistry?: ForvoKnownMissingRegistry;
 }) {
   const summary = await summarizeBundlePronunciationPending(input);
   const workflowDirectory = path.dirname(summary.workflowFilePath);
@@ -159,7 +161,7 @@ function hasAudio(
   );
 }
 
-async function loadForvoKnownMissingRegistry(knownMissingPath?: string) {
+export async function loadForvoKnownMissingRegistry(knownMissingPath?: string) {
   if (!knownMissingPath) {
     return {
       entries: [],
