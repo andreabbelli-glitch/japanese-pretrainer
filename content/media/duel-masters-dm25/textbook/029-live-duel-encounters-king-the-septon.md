@@ -65,10 +65,12 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  その{{後|あと}}、{{残|のこ}}りの{{中|なか}}から、それと{{同|おな}}じ
+  その{{後|あと}}、{{残|のこ}}りの{{中|なか}}から、
+  [それと{{同|おな}}じ](grammar:grammar-to-onaji)
   [コスト](term:term-cost)のカードを
   [{{すべて|すべて}}](term:term-subete)[{{手札|てふだ}}](term:term-hand)に
-  [{{加|くわ}}える](term:term-add)。{{残|のこ}}りをランダムな{{順番|じゅんばん}}で
+  [{{加|くわ}}える](term:term-add)。{{残|のこ}}りをランダムな
+  [{{順番|じゅんばん}}](term:term-junban)で
   [{{山札|やまふだ}}](term:term-deck)の
   [{{一番下|いちばんした}}](term:term-bottom-of-deck)に
   [{{置|お}}く](term:term-oku)。
@@ -108,11 +110,15 @@ reveal_mode: sentence
   risoluzione del primo ramo.
 - `{{残|のこ}}り` non è un nuovo gruppo: sono le carte che sono rimaste dopo
   aver estratto la creatura.
-- `それと{{同|おな}}じ[コスト](term:term-cost)` punta alla creatura appena messa
-  in campo e usa il suo costo come filtro per il recupero.
+- [それと{{同|おな}}じ](grammar:grammar-to-onaji)[コスト](term:term-cost) punta
+  alla creatura appena messa in campo e usa il suo costo come filtro per il
+  recupero.
 - [{{すべて|すべて}}](term:term-subete)[{{手札|てふだ}}](term:term-hand)に
   [{{加|くわ}}える](term:term-add) significa che tutte le carte compatibili
   salgono in mano, non solo una.
+- [{{順番|じゅんばん}}](term:term-junban) non è un dettaglio ornamentale: ti
+  dice che anche l'ordine finale delle carte rimaste fa parte della procedura e
+  qui viene fissato come casuale.
 - [{{一番下|いちばんした}}](term:term-bottom-of-deck)に[{{置|お}}く](term:term-oku)
   chiude il resto della procedura: ciò che non è stato preso sparisce dalla
   cima e va in fondo al mazzo.
@@ -125,8 +131,14 @@ reveal_mode: sentence
 - [{{それら|それら}}](grammar:grammar-sorera) è il dimostrativo che riaggancia le
   tre carte appena rivelate. È il ponte che ti impedisce di perdere il
   referente nel mezzo della procedura.
+- [それと{{同|おな}}じ](grammar:grammar-to-onaji) è un chunk di giapponese molto
+  generale: vuol dire `uguale a quello`, ma qui si specializza e copia proprio
+  il costo della creatura appena messa in campo per filtrare il gruppo rimasto.
 - `その{{中|なか}}から` e `{{残|のこ}}りの{{中|なか}}から` sono i due punti di
   selezione più importanti: prima scegli da un gruppo verificato, poi lavori
   solo su ciò che è rimasto.
+- [{{順番|じゅんばん}}](term:term-junban) in giapponese generale è `ordine /
+  sequenza`; qui ti segnala che il testo non sta solo spostando carte, ma sta
+  anche imponendo in che tipo di ordine devono finire sotto al mazzo.
 - `ジョーカーズ` è la razza che decide il ramo positivo: la carta non cerca
   "qualunque creatura", cerca una creatura del gruppo Jokerz.

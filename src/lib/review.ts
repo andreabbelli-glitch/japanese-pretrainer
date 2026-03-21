@@ -573,11 +573,8 @@ async function buildReviewPageDataFromWorkspace(input: {
     : null;
   const selectedRawCard = selection.selectedModel
     ? resolveReviewQueueSubjectSelectionCard({
-        entryLookup: input.entryLookup,
-        nowIso,
-        preferredMediaId: input.visibleMediaId,
         selectedCardId: selection.selectedCardId,
-        subjectGroup: selection.selectedModel.group
+        subjectModel: selection.selectedModel
       })
     : null;
   const selectedCard =
@@ -823,11 +820,8 @@ async function buildReviewFirstCandidateDataFromWorkspace(input: {
   });
   const selectedRawCard = selection.selectedModel
     ? resolveReviewQueueSubjectSelectionCard({
-        entryLookup: input.entryLookup,
-        nowIso,
-        preferredMediaId: input.visibleMediaId,
         selectedCardId: selection.selectedCardId,
-        subjectGroup: selection.selectedModel.group
+        subjectModel: selection.selectedModel
       })
     : null;
   const selectedCard =
@@ -1565,7 +1559,6 @@ export async function hydrateReviewCard(input: {
   const effectiveCard = applySubjectStateToReviewCard(card, subjectState);
   const resolvedState = resolveReviewQueueState(
     effectiveCard,
-    entryLookup,
     nowIso
   );
   const mediaById = buildSingleMediaLookup({
@@ -1910,7 +1903,6 @@ function getReviewBucketPriority(bucket: ReviewQueueCard["bucket"]) {
 
 function resolveReviewQueueState(
   card: SubjectReviewCard,
-  _entryLookup: Map<string, ReviewEntryLookupItem>,
   nowIso: string
 ): ResolvedReviewQueueState {
   const { reviewState } = card;
@@ -1956,7 +1948,6 @@ function resolveReviewQueueState(
 
 function selectReviewQueueSubjectCard(input: {
   cards: ReviewCardListItem[];
-  entryLookup: Map<string, ReviewEntryLookupItem>;
   nowIso: string;
   preferredMediaId?: string;
   subjectState: ReviewSubjectStateSnapshot | null;
@@ -1966,56 +1957,71 @@ function selectReviewQueueSubjectCard(input: {
     : [];
   const candidates = preferredCards.length > 0 ? preferredCards : input.cards;
   let bestPriority = Number.MAX_SAFE_INTEGER;
-  let bestCards: ReviewCardListItem[] = [];
+  let bestCards: Array<{ card: ReviewCardListItem; state: ResolvedReviewQueueState }> = [];
 
-  for (const candidate of candidates) {
+  const candidatePool = candidates.length > 0 ? candidates : input.cards;
+
+  for (const candidate of candidatePool) {
     const resolved = resolveReviewQueueState(
       applySubjectStateToReviewCard(candidate, input.subjectState),
-      input.entryLookup,
       input.nowIso
     );
     const priority = getReviewBucketPriority(resolved.bucket);
 
     if (priority < bestPriority) {
       bestPriority = priority;
-      bestCards = [candidate];
+      bestCards = [{ card: candidate, state: resolved }];
       continue;
     }
 
     if (priority === bestPriority) {
-      bestCards.push(candidate);
+      bestCards.push({ card: candidate, state: resolved });
     }
   }
 
-  return selectReviewSubjectRepresentativeCard(
-    bestCards.length > 0 ? bestCards : candidates,
+  if (bestCards.length === 0) {
+    const fallback = selectReviewSubjectRepresentativeCard(
+      candidatePool,
+      input.subjectState,
+      input.nowIso
+    );
+    return {
+      card: fallback,
+      state: resolveReviewQueueState(
+        applySubjectStateToReviewCard(fallback, input.subjectState),
+        input.nowIso
+      )
+    };
+  }
+
+  const selectedCandidate = selectReviewSubjectRepresentativeCard(
+    bestCards.map(b => b.card),
     input.subjectState,
     input.nowIso
   );
+
+  return bestCards.find(b => b.card.id === selectedCandidate.id) ?? bestCards[0]!;
 }
 
 function buildReviewQueueSubjectModels(input: {
   cards: ReviewCardListItem[];
   entryLookup: Map<string, ReviewEntryLookupItem>;
   nowIso: string;
+  preferredMediaId?: string;
   subjectGroups: ReviewSubjectGroup[];
 }) {
   return input.subjectGroups.map((group) => {
-    const globalCard = selectReviewQueueSubjectCard({
+    const { card: globalCard, state: resolvedState } = selectReviewQueueSubjectCard({
       cards: group.cards,
-      entryLookup: input.entryLookup,
       nowIso: input.nowIso,
+      preferredMediaId: input.preferredMediaId,
       subjectState: group.subjectState
     });
 
     return {
       globalCard,
       group,
-      resolvedState: resolveReviewQueueState(
-        applySubjectStateToReviewCard(globalCard, group.subjectState),
-        input.entryLookup,
-        input.nowIso
-      )
+      resolvedState
     } satisfies ReviewQueueSubjectModel;
   });
 }
@@ -2036,11 +2042,8 @@ function mapReviewQueueSubjectModel(
   input: ReviewQueueCardMapInput
 ) {
   const selectedCard = resolveReviewQueueSubjectSelectionCard({
-    entryLookup: input.entryLookup,
-    nowIso: input.nowIso,
-    preferredMediaId: input.visibleMediaId,
     selectedCardId: input.selectedCardId,
-    subjectGroup: model.group
+    subjectModel: model
   });
 
   return mapQueueCard(
@@ -2100,7 +2103,7 @@ function selectReviewOverviewSubjectCard(input: {
   subjectState: ReviewSubjectStateSnapshot | null;
 }) {
   let bestPriority = Number.MAX_SAFE_INTEGER;
-  let bestCards: ReviewCardListItem[] = [];
+  let bestCards: Array<{ card: ReviewCardListItem; overview: ReviewOverviewCard }> = [];
 
   for (const candidate of input.cards) {
     const overviewCard = mapReviewOverviewCard(
@@ -2111,20 +2114,37 @@ function selectReviewOverviewSubjectCard(input: {
 
     if (priority < bestPriority) {
       bestPriority = priority;
-      bestCards = [candidate];
+      bestCards = [{ card: candidate, overview: overviewCard }];
       continue;
     }
 
     if (priority === bestPriority) {
-      bestCards.push(candidate);
+      bestCards.push({ card: candidate, overview: overviewCard });
     }
   }
 
-  return selectReviewSubjectRepresentativeCard(
-    bestCards.length > 0 ? bestCards : input.cards,
+  if (bestCards.length === 0) {
+    const fallback = selectReviewSubjectRepresentativeCard(
+      input.cards,
+      input.subjectState,
+      input.nowIso
+    );
+    return {
+      card: fallback,
+      overview: mapReviewOverviewCard(
+        applySubjectStateToReviewCard(fallback, input.subjectState),
+        input.nowIso
+      )
+    };
+  }
+
+  const selectedCandidate = selectReviewSubjectRepresentativeCard(
+    bestCards.map(b => b.card),
     input.subjectState,
     input.nowIso
   );
+
+  return bestCards.find(b => b.card.id === selectedCandidate.id) ?? bestCards[0]!;
 }
 
 function buildReviewOverviewSubjectModels(input: {
@@ -2144,7 +2164,7 @@ function buildReviewOverviewSubjectModels(input: {
     });
 
   return subjectGroups.map((group) => {
-    const card = selectReviewOverviewSubjectCard({
+    const { card, overview: overviewCard } = selectReviewOverviewSubjectCard({
       cards: group.cards,
       nowIso: input.nowIso,
       subjectState: group.subjectState
@@ -2153,10 +2173,7 @@ function buildReviewOverviewSubjectModels(input: {
     return {
       card,
       group,
-      overviewCard: mapReviewOverviewCard(
-        applySubjectStateToReviewCard(card, group.subjectState),
-        input.nowIso
-      )
+      overviewCard
     } satisfies ReviewOverviewSubjectModel;
   });
 }
@@ -2518,6 +2535,7 @@ function buildReviewQueueSubjectSnapshot(input: {
     cards: input.cards,
     entryLookup: input.entryLookup,
     nowIso: input.nowIso,
+    preferredMediaId: input.visibleMediaId,
     subjectGroups: input.subjectGroups
   });
   const relevantModels = filterReviewSubjectModelsByMedia(
@@ -2872,25 +2890,15 @@ function resolveReviewQueueSubjectContexts(
 }
 
 function resolveReviewQueueSubjectSelectionCard(input: {
-  entryLookup: Map<string, ReviewEntryLookupItem>;
-  nowIso: string;
-  preferredMediaId?: string;
   selectedCardId?: string | null;
-  subjectGroup: ReviewSubjectGroup;
+  subjectModel: ReviewQueueSubjectModel;
 }) {
   return (
     (input.selectedCardId
-      ? input.subjectGroup.cards.find(
+      ? input.subjectModel.group.cards.find(
           (card) => card.id === input.selectedCardId
         )
-      : null) ??
-    selectReviewQueueSubjectCard({
-      cards: input.subjectGroup.cards,
-      entryLookup: input.entryLookup,
-      nowIso: input.nowIso,
-      preferredMediaId: input.preferredMediaId,
-      subjectState: input.subjectGroup.subjectState
-    })
+      : null) ?? input.subjectModel.globalCard
   );
 }
 
@@ -2954,7 +2962,6 @@ function mapQueueCard(
     resolvedState ??
     resolveReviewQueueState(
       applySubjectStateToReviewCard(card, null),
-      entryLookup,
       nowIso
     );
   const pronunciations = buildReviewCardPronunciations(card, entryLookup);

@@ -106,7 +106,7 @@ export function scheduleReview(
     dueAt: result.card.due.toISOString(),
     elapsedDays: Number.isFinite(result.log.elapsed_days)
       ? result.log.elapsed_days
-      : calculateElapsedDays(input.current.lastReviewedAt, input.now.toISOString()),
+      : calculateElapsedDays(input.current.lastReviewedAt, input.now),
     lapses: result.card.lapses,
     learningSteps: result.card.learning_steps,
     reps: result.card.reps,
@@ -118,14 +118,16 @@ export function scheduleReview(
 }
 
 export function calculateElapsedDays(
-  lastReviewedAt: string | null,
-  nowIso: string
+  lastReviewedAt: string | Date | null,
+  nowIso: string | Date
 ) {
   if (!lastReviewedAt) {
     return null;
   }
 
-  const elapsedMs = new Date(nowIso).getTime() - new Date(lastReviewedAt).getTime();
+  const startMs = typeof lastReviewedAt === "string" ? new Date(lastReviewedAt).getTime() : lastReviewedAt.getTime();
+  const endMs = typeof nowIso === "string" ? new Date(nowIso).getTime() : nowIso.getTime();
+  const elapsedMs = endMs - startMs;
 
   if (!Number.isFinite(elapsedMs) || elapsedMs <= 0) {
     return 0;
@@ -146,7 +148,7 @@ function buildFsrsCard(
 
   const elapsedDays = calculateElapsedDays(
     current.lastReviewedAt,
-    now.toISOString()
+    now
   );
   const scheduledDays = normalizeCount(current.scheduledDays);
   const learningSteps = normalizeCount(current.learningSteps);
@@ -272,7 +274,7 @@ export function replayReviewHistory(
       answeredAt: log.answeredAt,
       elapsedDays: Number.isFinite(result.log.elapsed_days)
         ? result.log.elapsed_days
-        : calculateElapsedDays(card.last_review?.toISOString() ?? null, reviewAt.toISOString()) ?? 0,
+        : calculateElapsedDays(card.last_review ?? null, reviewAt) ?? 0,
       id: log.id,
       newState: mapFsrsState(result.card.state),
       previousState: mapFsrsState(result.log.state),
