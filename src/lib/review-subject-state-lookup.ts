@@ -8,7 +8,6 @@ import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
   groupReviewCardsBySubject,
-  selectReviewSubjectRepresentativeCard,
   type ReviewSubjectGroup,
   type ReviewSubjectStateSnapshot
 } from "./review-subject.ts";

@@ -1,19 +1,12 @@
 import type { Route } from "next";
 
 import {
-  listEntryStudySignals,
-  listGrammarEntryReviewSummaries,
-  listTermEntryReviewSummaries,
   listGlossaryProgressSummaries,
   listGlossaryPreviewEntries,
   type DatabaseClient,
-  type GrammarEntryReviewSummary,
-  type LessonListItem,
-  type TermEntryReviewSummary
+  type LessonListItem
 } from "@/db";
-import { buildEntryKey } from "@/lib/entry-id";
 import { mediaGlossaryEntryHref } from "@/lib/site";
-import { deriveEntryStudyState } from "@/lib/study-entry";
 import {
   calculatePercent,
   compareIsoDates,
@@ -64,36 +57,12 @@ export type GlossaryProgressSnapshot = {
   };
 };
 
-type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
-type StudySignalLookup = Map<string, StudySignalRow[]>;
-type TermGlossaryProgressEntry = Pick<
-  TermEntryReviewSummary,
-  | "id"
-  | "sourceId"
-  | "mediaId"
-  | "lemma"
-  | "meaningIt"
-  | "reading"
-  | "segmentTitle"
->;
-type GrammarGlossaryProgressEntry = Pick<
-  GrammarEntryReviewSummary,
-  | "id"
-  | "sourceId"
-  | "mediaId"
-  | "pattern"
-  | "meaningIt"
-  | "reading"
-  | "segmentTitle"
->;
 type GlossaryProgressMediaTarget = {
   id: string;
   slug: string;
 };
 
-export function buildEmptyGlossaryProgressSnapshot(
-  mediaSlug: string
-): GlossaryProgressSnapshot {
+export function buildEmptyGlossaryProgressSnapshot(): GlossaryProgressSnapshot {
   return {
     entriesCovered: 0,
     entriesTotal: 0,
@@ -123,7 +92,7 @@ export async function loadGlossaryProgressSnapshot(
 
   return (
     snapshots.get(mediaId) ??
-    buildEmptyGlossaryProgressSnapshot(mediaSlug)
+    buildEmptyGlossaryProgressSnapshot()
   );
 }
 
@@ -282,4 +251,3 @@ export function buildSegments(
 
   return [...groups.values()];
 }
-

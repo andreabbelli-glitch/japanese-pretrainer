@@ -161,7 +161,7 @@ async function loadGlossaryProgressSnapshotsCached(
         mediaId: item.id,
         snapshot:
           snapshots.get(item.id) ??
-          buildEmptyGlossaryProgressSnapshot(item.slug)
+          buildEmptyGlossaryProgressSnapshot()
       }));
     },
     tags: buildGlossarySummaryTags(media.map((item) => item.id))
@@ -240,7 +240,7 @@ async function buildMediaShellSnapshots(
     return mapMediaShellSnapshotFromCounts({
       glossary:
         glossarySnapshots.get(item.id) ??
-        buildEmptyGlossaryProgressSnapshot(item.slug),
+        buildEmptyGlossaryProgressSnapshot(),
       lessons: lessonsByMedia.get(item.id) ?? [],
       media: item,
       reviewCounts: {
@@ -268,7 +268,7 @@ async function buildMediaShellSnapshot(
     ]).then(
       (snapshots) =>
         snapshots.get(media.id) ??
-        buildEmptyGlossaryProgressSnapshot(media.slug)
+        buildEmptyGlossaryProgressSnapshot()
     ),
     loadReviewOverviewSnapshots(database, [
       {
