@@ -1776,8 +1776,7 @@ export async function loadReviewOverviewSnapshots(
     subjectGroups: workspace.subjectGroups
   });
 
-  const subjectModelsByDue = subjectModels.slice().sort(compareReviewSubjectModelsByDue);
-  const subjectModelsByOrder = subjectModels.slice().sort(compareReviewSubjectModelsByOrder);
+  const buckets = bucketAndSortReviewSubjectModels(subjectModels);
 
   for (const item of media) {
     snapshots.set(
@@ -1790,9 +1789,7 @@ export async function loadReviewOverviewSnapshots(
         newIntroducedTodayCount: workspace.newIntroducedTodayCount,
         nowIso,
         subjectGroups: workspace.subjectGroups,
-        subjectModels,
-        subjectModelsByDue,
-        subjectModelsByOrder,
+        buckets,
         visibleMediaId: item.id
       })
     );
@@ -2019,8 +2016,7 @@ export function buildReviewOverviewSnapshot(input: {
   nowIso: string;
   subjectGroups?: ReviewSubjectGroup[];
   subjectModels?: ReviewSubjectModel[];
-  subjectModelsByDue?: ReviewSubjectModel[];
-  subjectModelsByOrder?: ReviewSubjectModel[];
+  buckets?: ReturnType<typeof bucketAndSortReviewSubjectModels>;
   subjectStates?: Map<string, ReviewSubjectStateSnapshot>;
   visibleMediaId?: string;
 }): ReviewOverviewSnapshot {
@@ -2033,11 +2029,9 @@ export function buildReviewOverviewSnapshot(input: {
       subjectGroups: input.subjectGroups,
       subjectStates: input.subjectStates
     });
-  const modelsByDue = input.subjectModelsByDue ?? models.slice().sort(compareReviewSubjectModelsByDue);
-  const modelsByOrder = input.subjectModelsByOrder ?? models.slice().sort(compareReviewSubjectModelsByOrder);
+  const modelBuckets = input.buckets ?? bucketAndSortReviewSubjectModels(models);
   const classifiedModels = classifyReviewSubjectModels(
-    modelsByDue,
-    modelsByOrder,
+    modelBuckets,
     input.visibleMediaId
   );
   const toOverviewCard = (model: ReviewSubjectModel): ReviewOverviewCard => ({
@@ -2287,11 +2281,9 @@ function buildReviewQueueSubjectSnapshot(input: {
     preferredMediaId: input.visibleMediaId,
     subjectGroups: input.subjectGroups
   });
-  const modelsByDue = subjectModels.slice().sort(compareReviewSubjectModelsByDue);
-  const modelsByOrder = subjectModels.slice().sort(compareReviewSubjectModelsByOrder);
+  const buckets = bucketAndSortReviewSubjectModels(subjectModels);
   const classifiedModels = classifyReviewSubjectModels(
-    modelsByDue,
-    modelsByOrder,
+    buckets,
     input.visibleMediaId
   );
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
@@ -2328,70 +2320,93 @@ function buildReviewQueueSubjectSnapshot(input: {
   };
 }
 
-function classifyReviewSubjectModels(
-  modelsByDue: ReviewSubjectModel[],
-  modelsByOrder: ReviewSubjectModel[],
-  visibleMediaId?: string
-) {
+export function bucketAndSortReviewSubjectModels(models: ReviewSubjectModel[]) {
   const dueModels: ReviewSubjectModel[] = [];
-  const globalNewModels: ReviewSubjectModel[] = [];
-  const visibleNewModels: ReviewSubjectModel[] = [];
+  const newModels: ReviewSubjectModel[] = [];
   const manualModels: ReviewSubjectModel[] = [];
   const suspendedModels: ReviewSubjectModel[] = [];
   const upcomingModels: ReviewSubjectModel[] = [];
-  let visibleModelCount = 0;
 
-  for (const model of modelsByDue) {
-    const visible = isReviewSubjectVisibleInMedia(model.group, visibleMediaId);
-
-    if (visible) {
-      visibleModelCount += 1;
-    }
-
-    if (model.resolvedState.bucket === "due") {
-      if (visible) {
-        dueModels.push(model);
-      }
-    } else if (model.resolvedState.bucket === "upcoming") {
-      if (visible) {
-        upcomingModels.push(model);
-      }
-    }
-  }
-
-  for (const model of modelsByOrder) {
-    const visible = isReviewSubjectVisibleInMedia(model.group, visibleMediaId);
-
+  for (const model of models) {
     switch (model.resolvedState.bucket) {
+      case "due":
+        dueModels.push(model);
+        break;
       case "new":
-        globalNewModels.push(model);
-
-        if (visible) {
-          visibleNewModels.push(model);
-        }
+        newModels.push(model);
         break;
       case "manual":
-        if (visible) {
-          manualModels.push(model);
-        }
+        manualModels.push(model);
         break;
       case "suspended":
-        if (visible) {
-          suspendedModels.push(model);
-        }
+        suspendedModels.push(model);
         break;
-      default:
+      case "upcoming":
+        upcomingModels.push(model);
         break;
     }
   }
+
+  // Sort each bucket ONCE
+  dueModels.sort(compareReviewSubjectModelsByDue);
+  upcomingModels.sort(compareReviewSubjectModelsByDue);
+  newModels.sort(compareReviewSubjectModelsByOrder);
+  manualModels.sort(compareReviewSubjectModelsByOrder);
+  suspendedModels.sort(compareReviewSubjectModelsByOrder);
 
   return {
     dueModels,
-    globalNewModels,
+    newModels,
+    manualModels,
+    suspendedModels,
+    upcomingModels
+  };
+}
+
+function classifyReviewSubjectModels(
+  buckets: ReturnType<typeof bucketAndSortReviewSubjectModels>,
+  visibleMediaId?: string
+) {
+  if (!visibleMediaId) {
+    return {
+      dueModels: buckets.dueModels,
+      globalNewModels: buckets.newModels,
+      manualModels: buckets.manualModels,
+      suspendedModels: buckets.suspendedModels,
+      upcomingModels: buckets.upcomingModels,
+      visibleModelCount:
+        buckets.dueModels.length +
+        buckets.newModels.length +
+        buckets.manualModels.length +
+        buckets.suspendedModels.length +
+        buckets.upcomingModels.length,
+      visibleNewModels: buckets.newModels
+    };
+  }
+
+  const filterVisible = (models: ReviewSubjectModel[]) =>
+    models.filter((model) =>
+      isReviewSubjectVisibleInMedia(model.group, visibleMediaId)
+    );
+
+  const dueModels = filterVisible(buckets.dueModels);
+  const visibleNewModels = filterVisible(buckets.newModels);
+  const manualModels = filterVisible(buckets.manualModels);
+  const suspendedModels = filterVisible(buckets.suspendedModels);
+  const upcomingModels = filterVisible(buckets.upcomingModels);
+
+  return {
+    dueModels,
+    globalNewModels: buckets.newModels,
     manualModels,
     suspendedModels,
     upcomingModels,
-    visibleModelCount,
+    visibleModelCount:
+      dueModels.length +
+      visibleNewModels.length +
+      manualModels.length +
+      suspendedModels.length +
+      upcomingModels.length,
     visibleNewModels
   };
 }
