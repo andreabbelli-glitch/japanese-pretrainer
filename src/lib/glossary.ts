@@ -74,6 +74,7 @@ import {
   buildPronunciationData,
   type PronunciationData
 } from "@/lib/pronunciation";
+import { pickBestBy } from "@/lib/collections";
 
 type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
 type StudyState = ReturnType<typeof deriveEntryStudyState>;
@@ -1253,9 +1254,9 @@ function buildGlobalGlossaryResult(
     return null;
   }
 
-  const bestLocal = [...matchingEntries].sort((left, right) =>
+  const bestLocal = pickBestBy(matchingEntries, (left, right) =>
     compareBestLocalEntries(left, right, filters)
-  )[0];
+  );
 
   if (!bestLocal) {
     return null;
@@ -1265,6 +1266,16 @@ function buildGlobalGlossaryResult(
   const resultKey = bestLocal.crossMediaGroupKey
     ? `${bestLocal.kind}:group:${bestLocal.crossMediaGroupKey}`
     : `${bestLocal.kind}:entry:${bestLocal.internalId}`;
+  let cardCount = 0;
+  let hasCards = false;
+  const mediaIds = new Set<string>();
+
+  for (const entry of resultEntries) {
+    cardCount += entry.cardCount;
+    hasCards ||= entry.hasCards;
+    mediaIds.add(entry.mediaId);
+  }
+
   const mediaHits = [...resultEntries]
     .sort((left, right) => compareMediaHits(left, right, bestLocal.internalId))
     .map((entry) => ({
@@ -1287,13 +1298,10 @@ function buildGlobalGlossaryResult(
   return {
     ...bestLocal,
     bestLocalHref: bestLocal.href,
-    cardCount: resultEntries.reduce(
-      (total, entry) => total + entry.cardCount,
-      0
-    ),
-    hasCards: resultEntries.some((entry) => entry.hasCards),
+    cardCount,
+    hasCards,
     href: bestLocal.href,
-    mediaCount: new Set(resultEntries.map((entry) => entry.mediaId)).size,
+    mediaCount: mediaIds.size,
     mediaHits,
     resultKey
   };
@@ -1385,7 +1393,7 @@ function buildGlobalGlossaryAutocompleteSuggestions(
   const suggestions: GlobalGlossaryAutocompleteSuggestion[] = [];
 
   for (const [resultKey, entries] of groups.entries()) {
-    const representative = [...entries].sort((left, right) => {
+    const representative = pickBestBy(entries, (left, right) => {
       if (left.hasCards !== right.hasCards) {
         return left.hasCards ? -1 : 1;
       }
@@ -1395,7 +1403,7 @@ function buildGlobalGlossaryAutocompleteSuggestions(
       }
 
       return left.label.localeCompare(right.label, "ja");
-    })[0];
+    });
 
     if (!representative) {
       continue;
@@ -2354,7 +2362,7 @@ function pickPrimaryLesson(
   rows: AggregatedLessonConnection[],
   mediaSlug: string
 ): GlossaryPageData["results"][number]["primaryLesson"] {
-  const primary = [...rows].sort((left, right) => {
+  const primary = pickBestBy(rows, (left, right) => {
     const leftRank = getEntryLinkRoleRank(left.linkRoles[0]);
     const rightRank = getEntryLinkRoleRank(right.linkRoles[0]);
 
@@ -2367,7 +2375,7 @@ function pickPrimaryLesson(
     }
 
     return left.lessonTitle.localeCompare(right.lessonTitle);
-  })[0];
+  });
 
   if (!primary) {
     return undefined;

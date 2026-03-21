@@ -35,6 +35,7 @@ import {
   buildPronunciationData,
   type PronunciationData
 } from "@/lib/pronunciation";
+import { pickBestBy } from "@/lib/collections";
 import { buildEntryKey } from "@/lib/entry-id";
 import { deriveEntryStudyState } from "@/lib/study-entry";
 import {
@@ -673,13 +674,10 @@ function groupLessons(
 }
 
 function selectActiveLesson(lessons: TextbookLessonNavItem[]) {
-  const inProgress = [...lessons]
-    .filter((lesson) => lesson.status === "in_progress")
-    .sort((left, right) =>
-      compareIsoDates(right.lastOpenedAt, left.lastOpenedAt)
-    );
-
-  return inProgress[0] ?? null;
+  return pickBestBy(
+    lessons.filter((lesson) => lesson.status === "in_progress"),
+    (left, right) => compareIsoDates(right.lastOpenedAt, left.lastOpenedAt)
+  );
 }
 
 function selectResumeLesson(lessons: TextbookLessonNavItem[]) {

@@ -25,6 +25,7 @@ import {
   buildReviewOverviewSnapshot,
   loadReviewOverviewSnapshots
 } from "@/lib/review";
+import { pickBestBy } from "@/lib/collections";
 import { getReviewDailyLimit } from "@/lib/settings";
 import {
   buildSegments,
@@ -203,7 +204,8 @@ async function loadReviewIntroducedOnDayCached(
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["app-shell", "review-introduced", ...orderedIds],
-    loader: () => countReviewSubjectsIntroducedOnDayByMediaIds(database, mediaIds),
+    loader: () =>
+      countReviewSubjectsIntroducedOnDayByMediaIds(database, mediaIds),
     tags: buildReviewSummaryTags(mediaIds)
   });
 }
@@ -218,20 +220,25 @@ async function buildMediaShellSnapshots(
 
   const nowIso = new Date().toISOString();
   const mediaIds = media.map((item) => item.id);
-  const [lessons, glossarySnapshots, reviewCandidates, dailyLimit, newIntroducedByMedia] =
-    await Promise.all([
-      listLessonsByMediaIds(database, mediaIds),
-      loadGlossaryProgressSnapshotsCached(
-        database,
-        media.map((item) => ({
-          id: item.id,
-          slug: item.slug
-        }))
-      ),
-      loadReviewLaunchCandidatesCached(database, mediaIds, nowIso),
-      getReviewDailyLimit(database),
-      loadReviewIntroducedOnDayCached(database, mediaIds)
-    ]);
+  const [
+    lessons,
+    glossarySnapshots,
+    reviewCandidates,
+    dailyLimit,
+    newIntroducedByMedia
+  ] = await Promise.all([
+    listLessonsByMediaIds(database, mediaIds),
+    loadGlossaryProgressSnapshotsCached(
+      database,
+      media.map((item) => ({
+        id: item.id,
+        slug: item.slug
+      }))
+    ),
+    loadReviewLaunchCandidatesCached(database, mediaIds, nowIso),
+    getReviewDailyLimit(database),
+    loadReviewIntroducedOnDayCached(database, mediaIds)
+  ]);
   const lessonsByMedia = groupLessonsByMedia(lessons);
 
   const candidatesByMedia = new Map(
@@ -311,37 +318,33 @@ async function buildMediaShellSnapshot(
 }
 
 function pickFocusMedia(media: MediaShellSnapshot[]) {
-  return (
-    [...media].sort((left, right) => {
-      return scoreMediaFocus(left) - scoreMediaFocus(right);
-    })[0] ?? null
-  );
+  return pickBestBy(media, (left, right) => {
+    return scoreMediaFocus(left) - scoreMediaFocus(right);
+  });
 }
 
 function pickReviewMedia(media: MediaShellSnapshot[]) {
-  return (
-    [...media].sort((left, right) => {
-      const scoreDifference = scoreMediaReview(left) - scoreMediaReview(right);
+  return pickBestBy(media, (left, right) => {
+    const scoreDifference = scoreMediaReview(left) - scoreMediaReview(right);
 
-      if (scoreDifference !== 0) {
-        return scoreDifference;
-      }
+    if (scoreDifference !== 0) {
+      return scoreDifference;
+    }
 
-      if (left.cardsDue !== right.cardsDue) {
-        return right.cardsDue - left.cardsDue;
-      }
+    if (left.cardsDue !== right.cardsDue) {
+      return right.cardsDue - left.cardsDue;
+    }
 
-      if (left.activeReviewCards !== right.activeReviewCards) {
-        return right.activeReviewCards - left.activeReviewCards;
-      }
+    if (left.activeReviewCards !== right.activeReviewCards) {
+      return right.activeReviewCards - left.activeReviewCards;
+    }
 
-      if (left.cardsTotal !== right.cardsTotal) {
-        return right.cardsTotal - left.cardsTotal;
-      }
+    if (left.cardsTotal !== right.cardsTotal) {
+      return right.cardsTotal - left.cardsTotal;
+    }
 
-      return left.title.localeCompare(right.title, "it");
-    })[0] ?? null
-  );
+    return left.title.localeCompare(right.title, "it");
+  });
 }
 
 function scoreMediaFocus(item: MediaShellSnapshot) {
@@ -444,8 +447,7 @@ function buildReviewShellSignals(input: {
   return {
     value: "Vuota",
     detail: "Nessuna card di Review disponibile",
-    queueLabel:
-      "La coda di Review si popolerà quando importerai le prime card."
+    queueLabel: "La coda di Review si popolerà quando importerai le prime card."
   };
 }
 
