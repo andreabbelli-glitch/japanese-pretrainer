@@ -14,6 +14,13 @@ type RankedSuggestion = {
   suggestion: GlobalGlossaryAutocompleteSuggestion;
 };
 
+type AutocompleteQuery = {
+  compact: string;
+  kana: string;
+  literal: string;
+  normalized: string;
+};
+
 export function getGlossaryAutocompleteSuggestions(input: {
   filters: Pick<
     GlossaryQueryState,
@@ -29,6 +36,7 @@ export function getGlossaryAutocompleteSuggestions(input: {
     return [];
   }
 
+  const query = buildAutocompleteQuery(trimmedQuery);
   const rankedSuggestions: RankedSuggestion[] = [];
 
   for (const suggestion of input.suggestions) {
@@ -36,7 +44,7 @@ export function getGlossaryAutocompleteSuggestions(input: {
       continue;
     }
 
-    const score = scoreSuggestion(suggestion, trimmedQuery);
+    const score = scoreSuggestion(suggestion, query);
 
     if (score <= 0) {
       continue;
@@ -96,7 +104,7 @@ function matchesSuggestionFilters(
 
 function scoreSuggestion(
   suggestion: GlobalGlossaryAutocompleteSuggestion,
-  query: string
+  query: AutocompleteQuery
 ) {
   const literalScore = scoreTextLiteral(suggestion.label, query, 140, 120, 90);
 
@@ -104,21 +112,17 @@ function scoreSuggestion(
     return literalScore;
   }
 
-  const normalizedQuery = normalizeSearchText(query);
-  const kanaQuery = foldJapaneseKana(normalizedQuery);
-  const compactQuery = compactLatinSearchText(query);
-
   return Math.max(
-    scoreNormalized(suggestion.label, normalizedQuery, 135, 115, 88),
-    scoreNormalized(suggestion.reading, kanaQuery, 126, 108, 82, "kana"),
-    scoreNormalized(suggestion.romaji, compactQuery, 124, 106, 80, "compact"),
-    scoreNormalized(suggestion.title, normalizedQuery, 108, 92, 72),
-    scoreNormalized(suggestion.meaning, normalizedQuery, 88, 72, 58),
+    scoreNormalized(suggestion.label, query.normalized, 135, 115, 88),
+    scoreNormalized(suggestion.reading, query.kana, 126, 108, 82, "kana"),
+    scoreNormalized(suggestion.romaji, query.compact, 124, 106, 80, "compact"),
+    scoreNormalized(suggestion.title, query.normalized, 108, 92, 72),
+    scoreNormalized(suggestion.meaning, query.normalized, 88, 72, 58),
     ...suggestion.aliases.map((alias) =>
       Math.max(
-        scoreNormalized(alias, normalizedQuery, 104, 86, 68),
-        scoreNormalized(alias, kanaQuery, 101, 84, 66, "kana"),
-        scoreNormalized(alias, compactQuery, 98, 80, 64, "compact")
+        scoreNormalized(alias, query.normalized, 104, 86, 68),
+        scoreNormalized(alias, query.kana, 101, 84, 66, "kana"),
+        scoreNormalized(alias, query.compact, 98, 80, 64, "compact")
       )
     )
   );
@@ -126,7 +130,7 @@ function scoreSuggestion(
 
 function scoreTextLiteral(
   value: string | undefined,
-  query: string,
+  query: Pick<AutocompleteQuery, "literal">,
   exactScore: number,
   prefixScore: number,
   containsScore: number
@@ -136,7 +140,7 @@ function scoreTextLiteral(
   }
 
   const normalizedValue = value.toLowerCase();
-  const normalizedQuery = query.toLowerCase();
+  const normalizedQuery = query.literal;
 
   if (normalizedValue === normalizedQuery) {
     return exactScore;
@@ -151,6 +155,17 @@ function scoreTextLiteral(
   }
 
   return 0;
+}
+
+function buildAutocompleteQuery(query: string): AutocompleteQuery {
+  const normalized = normalizeSearchText(query);
+
+  return {
+    compact: compactLatinSearchText(query),
+    kana: foldJapaneseKana(normalized),
+    literal: query.toLowerCase(),
+    normalized
+  };
 }
 
 function scoreNormalized(

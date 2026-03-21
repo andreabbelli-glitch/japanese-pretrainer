@@ -103,6 +103,8 @@ type GlossaryBaseEntry = {
   segmentId: string | null;
   segmentTitle?: string;
   aliases: Array<{
+    kana: string;
+    romajiCompact?: string;
     text: string;
     normalized: string;
     type?: string;
@@ -113,8 +115,10 @@ type GlossaryBaseEntry = {
   meaningNorm: string;
   literalMeaningNorm?: string;
   notesNorm?: string;
+  patternKana?: string;
   titleNorm?: string;
   patternNorm?: string;
+  romajiCompact?: string;
 };
 
 export type GlossaryMatchMode =
@@ -1612,6 +1616,7 @@ function mapEntryToBaseModel(
       segmentId: termEntry.segmentId,
       segmentTitle: termEntry.segment?.title ?? undefined,
       aliases: termEntry.aliases.map((alias) => ({
+        kana: foldJapaneseKana(alias.aliasNorm),
         text: alias.aliasText,
         normalized: alias.aliasNorm,
         type: alias.aliasType
@@ -1619,6 +1624,9 @@ function mapEntryToBaseModel(
       lemmaNorm: termEntry.searchLemmaNorm,
       readingNorm: termEntry.searchReadingNorm,
       romajiNorm: termEntry.searchRomajiNorm,
+      romajiCompact: termEntry.searchRomajiNorm
+        ? compactLatinSearchText(termEntry.searchRomajiNorm)
+        : undefined,
       meaningNorm: normalizeSearchText(termEntry.meaningIt),
       literalMeaningNorm: termEntry.meaningLiteralIt
         ? normalizeSearchText(termEntry.meaningLiteralIt)
@@ -1630,6 +1638,7 @@ function mapEntryToBaseModel(
   }
 
   const grammarEntry = entry as GrammarGlossaryEntry;
+  const romajiNorm = romanizeKanaForSearch(grammarEntry.searchPatternNorm);
 
   return {
     internalId: grammarEntry.id,
@@ -1654,12 +1663,16 @@ function mapEntryToBaseModel(
     segmentId: grammarEntry.segmentId,
     segmentTitle: grammarEntry.segment?.title ?? undefined,
     aliases: grammarEntry.aliases.map((alias) => ({
+      kana: foldJapaneseKana(normalizeGrammarSearchText(alias.aliasText)),
+      romajiCompact: romanizeKanaForSearch(alias.aliasNorm),
       text: alias.aliasText,
       normalized: alias.aliasNorm
     })),
     lemmaNorm: grammarEntry.searchPatternNorm,
-    romajiNorm: romanizeKanaForSearch(grammarEntry.searchPatternNorm),
+    romajiNorm,
+    romajiCompact: compactLatinSearchText(romajiNorm),
     patternNorm: grammarEntry.searchPatternNorm,
+    patternKana: foldJapaneseKana(grammarEntry.searchPatternNorm),
     meaningNorm: normalizeSearchText(grammarEntry.meaningIt),
     titleNorm: normalizeSearchText(grammarEntry.title),
     notesNorm: grammarEntry.notesIt
@@ -1696,6 +1709,9 @@ function mapTermSummaryToBaseModel(
     lemmaNorm: entry.searchLemmaNorm,
     readingNorm: entry.searchReadingNorm,
     romajiNorm: entry.searchRomajiNorm,
+    romajiCompact: entry.searchRomajiNorm
+      ? compactLatinSearchText(entry.searchRomajiNorm)
+      : undefined,
     meaningNorm: normalizeSearchText(entry.meaningIt)
   };
 }
@@ -1703,6 +1719,8 @@ function mapTermSummaryToBaseModel(
 function mapGrammarSummaryToBaseModel(
   entry: GrammarGlossaryEntrySummary
 ): GlossaryBaseEntry {
+  const romajiNorm = romanizeKanaForSearch(entry.searchPatternNorm);
+
   return {
     internalId: entry.id,
     id: entry.sourceId,
@@ -1726,8 +1744,10 @@ function mapGrammarSummaryToBaseModel(
     segmentTitle: entry.segmentTitle ?? undefined,
     aliases: [],
     lemmaNorm: entry.searchPatternNorm,
-    romajiNorm: romanizeKanaForSearch(entry.searchPatternNorm),
+    romajiNorm,
+    romajiCompact: compactLatinSearchText(romajiNorm),
     patternNorm: entry.searchPatternNorm,
+    patternKana: foldJapaneseKana(entry.searchPatternNorm),
     meaningNorm: normalizeSearchText(entry.meaningIt),
     titleNorm: normalizeSearchText(entry.title)
   };
@@ -1838,9 +1858,7 @@ function entryMatchesGlossaryFilters(
 
 function collectMatches(entry: GlossaryBaseEntry, query: FilteredQuery) {
   const matches: GlossaryCollectedMatch[] = [];
-  const compactRomaji = entry.romajiNorm
-    ? compactLatinSearchText(entry.romajiNorm)
-    : "";
+  const compactRomaji = entry.romajiCompact ?? "";
 
   pushMatch(
     matches,
@@ -1936,13 +1954,13 @@ function collectMatches(entry: GlossaryBaseEntry, query: FilteredQuery) {
     );
   }
 
-  if (entry.patternNorm) {
+  if (entry.patternKana) {
     pushMatch(
       matches,
       "label",
       "pattern",
       "grammarKana",
-      foldJapaneseKana(entry.patternNorm),
+      entry.patternKana,
       query.grammarKana,
       282,
       234,
@@ -1951,11 +1969,6 @@ function collectMatches(entry: GlossaryBaseEntry, query: FilteredQuery) {
   }
 
   for (const alias of entry.aliases) {
-    const foldedAlias = foldJapaneseKana(
-      entry.kind === "grammar"
-        ? normalizeGrammarSearchText(alias.text)
-        : alias.normalized
-    );
     const aliasQuery =
       entry.kind === "grammar" ? query.grammarKana : query.kana;
     const label = alias.type === "romaji" ? "alias romaji" : "alias";
@@ -1965,7 +1978,7 @@ function collectMatches(entry: GlossaryBaseEntry, query: FilteredQuery) {
       "alias",
       label,
       entry.kind === "grammar" ? "grammarKana" : "kana",
-      foldedAlias,
+      alias.kana,
       aliasQuery,
       235,
       195,
@@ -1974,9 +1987,9 @@ function collectMatches(entry: GlossaryBaseEntry, query: FilteredQuery) {
     );
 
     if (entry.kind === "grammar") {
-      const aliasRomaji = romanizeKanaForSearch(alias.normalized);
+      const aliasRomaji = alias.romajiCompact;
 
-      if (aliasRomaji && aliasRomaji !== compactLatinSearchText(foldedAlias)) {
+      if (aliasRomaji && aliasRomaji !== compactLatinSearchText(alias.kana)) {
         pushMatch(
           matches,
           "alias",
