@@ -24,7 +24,9 @@ caption: >-
   {{種族|しゅぞく}}: アーマード・ドラゴン。
   Riga centrale: ingresso con [{{相手|あいて}}](grammar:grammar-aite-hitori-nitsuki){{1人|ひとり}}につき,
   limite [{{各|かく}}ターンに{{一度|いちど}}](grammar:grammar-kaku-turn-ni-ichido) e primo
-  trigger sul break degli scudi.
+  trigger sul break degli scudi con
+  [{{他|ほか}}の{{各|かく}}{{相手|あいて}}](grammar:grammar-hoka-no-kaku-aite)
+  e [{{1|ひと}}つずつ](grammar:grammar-hitotsu-zutsu).
 :::
 
 ## Keyword presenti sulla carta
@@ -33,7 +35,9 @@ caption: >-
 
 `W・ブレイカー` è già nella keyword bank. Qui il valore didattico sta nei
 blocchi procedurali: `[{{相手|あいて}}](grammar:grammar-aite-hitori-nitsuki){{1人|ひとり}}につき`,
-`[{{各|かく}}ターンに{{一度|いちど}}](grammar:grammar-kaku-turn-ni-ichido)` e
+`[{{各|かく}}ターンに{{一度|いちど}}](grammar:grammar-kaku-turn-ni-ichido)`,
+`[{{他|ほか}}の{{各|かく}}{{相手|あいて}}](grammar:grammar-hoka-no-kaku-aite)`
+e `[{{1|ひと}}つずつ](grammar:grammar-hitotsu-zutsu)` dentro
 `はじめて[{{相手|あいて}}](term:term-opponent)のシールドをブレイクした{{時|とき}}`.
 
 ## Effetti da leggere
@@ -69,8 +73,8 @@ reveal_mode: sentence
 jp: >-
   {{各|かく}}ターン、
   はじめて[{{相手|あいて}}](term:term-opponent)のシールドをブレイクした{{時|とき}}、
-  {{他|ほか}}の{{各|かく}}[{{相手|あいて}}](term:term-opponent)のシールドも
-  {{1|ひと}}つずつブレイクする。
+  [{{他|ほか}}の{{各|かく}}{{相手|あいて}}](grammar:grammar-hoka-no-kaku-aite)
+  のシールドも[{{1|ひと}}つずつ](grammar:grammar-hitotsu-zutsu)ブレイクする。
 translation_it: >-
   Ogni turno, quando questa creatura rompe per la prima volta gli scudi di un
   avversario, rompe anche gli altri scudi di ogni altro avversario uno a uno.
@@ -102,9 +106,11 @@ reveal_mode: sentence
   {{時|とき}}` restringe l'effetto al primo break del turno, non a ogni break.
 - `{{時|とき}}` apre un trigger d'evento: il testo si accende nel momento della
   prima rottura.
-- `{{他|ほか}}の{{各|かく}}[{{相手|あいて}}](term:term-opponent)のシールドも` allarga poi il
-  risultato a tutti gli altri avversari rimasti, non solo al bersaglio appena
-  colpito.
+- `[{{他|ほか}}の{{各|かく}}{{相手|あいて}}](grammar:grammar-hoka-no-kaku-aite)`
+  esclude l'avversario già colpito e redistribuisce il risultato sui restanti.
+- `[{{1|ひと}}つずつ](grammar:grammar-hitotsu-zutsu)` chiarisce che il break extra
+  procede uno scudo alla volta per ciascun avversario rimasto, non come una
+  rottura indistinta in blocco.
 
 ## Lessico utile in questa carta
 

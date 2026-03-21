@@ -49,6 +49,34 @@ notes_it: >-
 level_hint: custom
 :::
 
+:::grammar
+id: grammar-hoka-no-kaku-aite
+pattern: 他の各相手
+title: Gli altri avversari
+reading: ほかのかくあいて
+meaning_it: gli altri avversari
+aliases: [他の各相手]
+notes_it: >-
+  `他の` esclude l'avversario già preso come riferimento, mentre `各` distribuisce
+  la stessa azione sui rimanenti uno per uno. In questa carta il chunk si legge
+  dentro `{{他|ほか}}の{{各|かく}}[{{相手|あいて}}](term:term-opponent)のシールドも`.
+level_hint: custom
+:::
+
+:::grammar
+id: grammar-hitotsu-zutsu
+pattern: 1つずつ
+title: Uno a uno
+reading: ひとつずつ
+meaning_it: uno a uno / uno per volta
+aliases: [1つずつ]
+notes_it: >-
+  `1つ` fissa l'unità minima e `ずつ` la distribuzione ripetuta. Qui non sta
+  dicendo soltanto `uno`: sta dicendo `uno per ciascuno`, nel flusso che rompe
+  gli scudi degli altri avversari.
+level_hint: custom
+:::
+
 :::card
 id: card-garchainsaw-per-opponent-concept
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-garchainsaw-dragon
@@ -115,4 +143,45 @@ notes_it: >-
   alla prima occorrenza del turno. Questa è una forma molto utile da
   riconoscere quando un testo vuole limitare un trigger alla prima volta.
 tags: [live-duel, grammar, trigger]
+:::
+
+:::card
+id: card-garchainsaw-other-opponents-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-garchainsaw-dragon
+entry_type: grammar
+entry_id: grammar-hoka-no-kaku-aite
+card_type: concept
+front: '{{他|ほか}}の{{各|かく}}[{{相手|あいて}}](term:term-opponent)'
+back: gli altri avversari, uno per uno
+example_jp: >-
+  {{各|かく}}ターン、このクリーチャーがはじめて[{{相手|あいて}}](term:term-opponent)の
+  シールドをブレイクした{{時|とき}}、{{他|ほか}}の{{各|かく}}
+  [{{相手|あいて}}](term:term-opponent)のシールドも{{1|ひと}}つずつブレイクする。
+example_it: >-
+  Ogni turno, quando questa creatura rompe per la prima volta gli scudi di un
+  avversario, rompe anche gli scudi degli altri avversari uno per uno.
+notes_it: >-
+  `他の` toglie di mezzo il primo avversario già coinvolto nel trigger,
+  mentre `各` distribuisce l'effetto sui rimanenti. È il chunk che impedisce di
+  leggere la frase come un generico `tutti gli avversari` indistinto.
+tags: [live-duel, grammar, distribution]
+:::
+
+:::card
+id: card-garchainsaw-one-by-one-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-garchainsaw-dragon
+entry_type: grammar
+entry_id: grammar-hitotsu-zutsu
+card_type: concept
+front: '{{1|ひと}}つずつ'
+back: uno a uno / uno per volta
+example_jp: >-
+  {{他|ほか}}の{{各|かく}}[{{相手|あいて}}](term:term-opponent)のシールドも
+  {{1|ひと}}つずつブレイクする。
+example_it: >-
+  Gli scudi degli altri avversari vengono rotti uno per uno.
+notes_it: >-
+  Qui `1つ` non è un semplice conteggio: è il modo in cui il testo serializza
+  il risultato, un pezzo alla volta per ciascun avversario restante.
+tags: [live-duel, grammar, distribution]
 :::
