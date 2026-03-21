@@ -267,11 +267,6 @@ export function groupReviewCardsBySubject(input: {
       resolveReviewSubjectLastInteractionAt(card, subjectState)
     );
     existing.subjectState = existing.subjectState ?? subjectState;
-    existing.representativeCard = selectReviewSubjectRepresentativeCard(
-      existing.cards,
-      existing.subjectState,
-      input.nowIso
-    );
   }
 
   return [...groups.values()].map((group) => ({

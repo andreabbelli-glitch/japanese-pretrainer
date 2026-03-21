@@ -1947,25 +1947,27 @@ function resolveReviewQueueState(
 }
 
 function selectReviewQueueSubjectCard(input: {
-  cards: ReviewCardListItem[];
+  group: ReviewSubjectGroup;
   nowIso: string;
   preferredMediaId?: string;
-  subjectState: ReviewSubjectStateSnapshot | null;
 }) {
   const preferredCards = input.preferredMediaId
-    ? input.cards.filter((card) => card.mediaId === input.preferredMediaId)
+    ? input.group.cards.filter((card) => card.mediaId === input.preferredMediaId)
     : [];
-  const candidatePool = preferredCards.length > 0 ? preferredCards : input.cards;
-  const selectedCard = selectReviewSubjectRepresentativeCard(
-    candidatePool,
-    input.subjectState,
-    input.nowIso
-  );
+  const candidatePool = preferredCards.length > 0 ? preferredCards : input.group.cards;
+  const selectedCard =
+    candidatePool === input.group.cards
+      ? input.group.representativeCard
+      : selectReviewSubjectRepresentativeCard(
+          candidatePool,
+          input.group.subjectState,
+          input.nowIso
+        );
 
   return {
     card: selectedCard,
     state: resolveReviewQueueState(
-      applySubjectStateToReviewCard(selectedCard, input.subjectState),
+      applySubjectStateToReviewCard(selectedCard, input.group.subjectState),
       input.nowIso
     )
   };
@@ -1980,10 +1982,9 @@ function buildReviewQueueSubjectModels(input: {
 }) {
   return input.subjectGroups.map((group) => {
     const { card: globalCard, state: resolvedState } = selectReviewQueueSubjectCard({
-      cards: group.cards,
+      group,
       nowIso: input.nowIso,
-      preferredMediaId: input.preferredMediaId,
-      subjectState: group.subjectState
+      preferredMediaId: input.preferredMediaId
     });
 
     return {
@@ -2066,20 +2067,15 @@ function compareReviewQueueSubjectModelsByOrder(
 }
 
 function selectReviewOverviewSubjectCard(input: {
-  cards: ReviewCardListItem[];
+  group: ReviewSubjectGroup;
   nowIso: string;
-  subjectState: ReviewSubjectStateSnapshot | null;
 }) {
-  const selectedCard = selectReviewSubjectRepresentativeCard(
-    input.cards,
-    input.subjectState,
-    input.nowIso
-  );
+  const selectedCard = input.group.representativeCard;
 
   return {
     card: selectedCard,
     overview: mapReviewOverviewCard(
-      applySubjectStateToReviewCard(selectedCard, input.subjectState),
+      applySubjectStateToReviewCard(selectedCard, input.group.subjectState),
       input.nowIso
     )
   };
@@ -2103,9 +2099,8 @@ function buildReviewOverviewSubjectModels(input: {
 
   return subjectGroups.map((group) => {
     const { card, overview: overviewCard } = selectReviewOverviewSubjectCard({
-      cards: group.cards,
-      nowIso: input.nowIso,
-      subjectState: group.subjectState
+      group,
+      nowIso: input.nowIso
     });
 
     return {
