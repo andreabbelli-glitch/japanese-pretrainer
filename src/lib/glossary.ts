@@ -54,11 +54,13 @@ import {
   formatSegmentKindLabel
 } from "@/lib/study-format";
 import {
+  buildSearchQueryVariants,
   compactLatinSearchText,
   foldJapaneseKana,
   normalizeGrammarSearchText,
   normalizeSearchText,
-  romanizeKanaForSearch
+  romanizeKanaForSearch,
+  type SearchQueryVariants
 } from "@/lib/study-search";
 import { buildEntryKey } from "@/lib/entry-id";
 import { getGlossaryAutocompleteSuggestions } from "@/lib/glossary-autocomplete";
@@ -201,12 +203,7 @@ type GlossaryLocalResult = GlossarySearchResult & {
   };
 };
 
-type FilteredQuery = {
-  normalized: string;
-  kana: string;
-  grammarKana: string;
-  romajiCompact: string;
-};
+type FilteredQuery = SearchQueryVariants;
 
 export type GlossaryQueryState = {
   cards: GlossaryCardsFilter;
@@ -978,7 +975,7 @@ async function loadGlobalGlossarySearchEntries(
     grammarKana: query.grammarKana,
     kana: query.kana,
     normalized: query.normalized,
-    romajiCompact: query.romajiCompact
+    romajiCompact: query.compact
   });
   const candidateRefs = dedupeCandidateRefs([
     ...sqlCandidateRefs,
@@ -1062,7 +1059,7 @@ async function loadGrammarRomajiFallbackCandidateRefs(
   if (
     filters.entryType === "term" ||
     !isLikelyLatinRomajiQuery(filters.query) ||
-    query.romajiCompact.length < 3 ||
+    query.compact.length < 3 ||
     existingRefs.some((ref) => ref.entryType === "grammar")
   ) {
     return [];
@@ -1913,7 +1910,7 @@ function collectMatches(entry: GlossaryBaseEntry, query: FilteredQuery) {
       "romaji",
       "romajiCompact",
       compactRomaji,
-      query.romajiCompact,
+      query.compact,
       255,
       215,
       175
@@ -2016,7 +2013,7 @@ function collectMatches(entry: GlossaryBaseEntry, query: FilteredQuery) {
           "alias",
           "romajiCompact",
           aliasRomaji,
-          query.romajiCompact,
+          query.compact,
           228,
           188,
           148,
@@ -2128,18 +2125,13 @@ function buildFilteredQuery(rawQuery: string): FilteredQuery | null {
     return null;
   }
 
-  const normalized = normalizeSearchText(rawQuery);
+  const query = buildSearchQueryVariants(rawQuery);
 
-  if (!normalized) {
+  if (!query.normalized) {
     return null;
   }
 
-  return {
-    normalized,
-    kana: foldJapaneseKana(normalized),
-    grammarKana: foldJapaneseKana(normalizeGrammarSearchText(rawQuery)),
-    romajiCompact: compactLatinSearchText(rawQuery)
-  };
+  return query;
 }
 
 function compareRankedEntries(

@@ -6,6 +6,13 @@ export function normalizeGrammarSearchText(value: string): string {
   return normalizeSearchText(value).replace(/[~〜～]/g, "");
 }
 
+export type SearchQueryVariants = {
+  compact: string;
+  grammarKana: string;
+  kana: string;
+  normalized: string;
+};
+
 const kanaDigraphRomajiMap: Record<string, string> = {
   "うぃ": "wi",
   "うぇ": "we",
@@ -168,6 +175,19 @@ export function foldJapaneseKana(value: string): string {
 
 export function compactLatinSearchText(value: string): string {
   return normalizeSearchText(value).replace(/[^a-z0-9]+/g, "");
+}
+
+export function buildSearchQueryVariants(
+  rawQuery: string
+): SearchQueryVariants {
+  const normalized = normalizeSearchText(rawQuery);
+
+  return {
+    compact: normalized.replace(/[^a-z0-9]+/g, ""),
+    grammarKana: foldJapaneseKana(normalized.replace(/[~〜～]/g, "")),
+    kana: foldJapaneseKana(normalized),
+    normalized
+  };
 }
 
 export function romanizeKanaForSearch(value: string): string {

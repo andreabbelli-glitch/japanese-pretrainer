@@ -1,4 +1,4 @@
-import { and, asc, eq, gte, inArray, lt } from "drizzle-orm";
+import { and, asc, eq, gte, inArray, lt, ne, sql } from "drizzle-orm";
 
 import type { DatabaseClient } from "../client.ts";
 import {
@@ -167,9 +167,9 @@ export async function countReviewSubjectsIntroducedOnDayByMediaIds(
 
   const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
   const rows = await database
-    .selectDistinct({
-      mediaId: card.mediaId,
-      subjectKey: reviewSubjectLog.subjectKey
+    .select({
+      count: sql<number>`cast(count(distinct ${reviewSubjectLog.subjectKey}) as integer)`,
+      mediaId: card.mediaId
     })
     .from(reviewSubjectLog)
     .innerJoin(card, eq(reviewSubjectLog.cardId, card.id))
@@ -177,34 +177,15 @@ export async function countReviewSubjectsIntroducedOnDayByMediaIds(
       and(
         inArray(card.mediaId, mediaIds),
         eq(reviewSubjectLog.previousState, "new"),
+        ne(reviewSubjectLog.subjectKey, ""),
+        ne(reviewSubjectLog.subjectKey, "undefined"),
         gte(reviewSubjectLog.answeredAt, dayStartIso),
         lt(reviewSubjectLog.answeredAt, dayEndIso)
       )
-    );
+    )
+    .groupBy(card.mediaId);
 
-  const filteredRows = rows.filter(
-    (row) =>
-      row.subjectKey &&
-      row.subjectKey.length > 0 &&
-      row.subjectKey !== "undefined"
-  );
-  const grouped = new Map<string, Set<string>>();
-
-  for (const row of filteredRows) {
-    const existing = grouped.get(row.mediaId);
-
-    if (existing) {
-      existing.add(row.subjectKey);
-      continue;
-    }
-
-    grouped.set(row.mediaId, new Set([row.subjectKey]));
-  }
-
-  return [...grouped.entries()].map(([mediaId, subjectKeys]) => ({
-    count: subjectKeys.size,
-    mediaId
-  }));
+  return rows;
 }
 
 export async function listReviewSubjectLogsBySubjectKey(

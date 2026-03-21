@@ -3,6 +3,7 @@ import type {
   GlossaryQueryState
 } from "@/lib/glossary";
 import {
+  buildSearchQueryVariants,
   compactLatinSearchText,
   foldJapaneseKana,
   normalizeSearchText,
@@ -19,11 +20,8 @@ type AutocompleteSuggestion = GlobalGlossaryAutocompleteSuggestion & {
 };
 
 type AutocompleteQuery = {
-  compact: string;
-  kana: string;
   literal: string;
-  normalized: string;
-};
+} & ReturnType<typeof buildSearchQueryVariants>;
 
 export function getGlossaryAutocompleteSuggestions(input: {
   filters: Pick<
@@ -175,13 +173,9 @@ function scoreTextLiteral(
 }
 
 function buildAutocompleteQuery(query: string): AutocompleteQuery {
-  const normalized = normalizeSearchText(query);
-
   return {
-    compact: compactLatinSearchText(query),
-    kana: foldJapaneseKana(normalized),
-    literal: query.toLowerCase(),
-    normalized
+    ...buildSearchQueryVariants(query),
+    literal: query.toLowerCase()
   };
 }
 
