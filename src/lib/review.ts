@@ -188,62 +188,7 @@ export type ReviewFirstCandidatePageData = {
   session: ReviewPageData["session"];
 };
 
-type SubjectReviewCard = ReviewCardListItem & {
-  reviewState: {
-    cardId: string;
-    createdAt: string;
-    difficulty: number | null;
-    dueAt: string | null;
-    lapses: number;
-    lastReviewedAt: string | null;
-    learningSteps: number;
-    manualOverride: boolean;
-    reps: number;
-    scheduledDays: number;
-    schedulerVersion: "fsrs_v1";
-    stability: number | null;
-    state: ReviewState;
-    suspended: boolean;
-    updatedAt: string;
-  } | null;
-};
 
-function applySubjectStateToReviewCard(
-  card: ReviewCardListItem,
-  subjectState: ReviewSubjectStateSnapshot | null
-): SubjectReviewCard {
-  if (!subjectState) {
-    return {
-      ...card,
-      reviewState: null
-    };
-  }
-
-  return {
-    ...card,
-    status:
-      subjectState.suspended || subjectState.state === "suspended"
-        ? "suspended"
-        : card.status,
-    reviewState: {
-      cardId: card.id,
-      createdAt: subjectState.createdAt,
-      difficulty: subjectState.difficulty,
-      dueAt: subjectState.dueAt,
-      lapses: subjectState.lapses,
-      lastReviewedAt: subjectState.lastReviewedAt,
-      learningSteps: subjectState.learningSteps,
-      manualOverride: subjectState.manualOverride,
-      reps: subjectState.reps,
-      scheduledDays: subjectState.scheduledDays,
-      schedulerVersion: "fsrs_v1",
-      state: subjectState.state,
-      stability: subjectState.stability,
-      suspended: subjectState.suspended,
-      updatedAt: subjectState.updatedAt
-    }
-  };
-}
 
 export type ReviewCardEntrySummary = {
   href: ReturnType<typeof mediaGlossaryEntryHref>;
@@ -827,10 +772,7 @@ async function buildReviewFirstCandidateDataFromWorkspace(input: {
   const selectedCard =
     selection.selectedModel && selectedRawCard
       ? mapReviewQueueSubjectCardPreview({
-          card: applySubjectStateToReviewCard(
-            selectedRawCard,
-            selection.selectedModel.group.subjectState
-          ),
+          card: selectedRawCard,
           entryLookup: input.entryLookup,
           mediaById: input.mediaById,
           nowIso,
@@ -1556,9 +1498,9 @@ export async function hydrateReviewCard(input: {
         getReviewSubjectStateByKey(database, subjectIdentity.subjectKey)
       )
     : getReviewSubjectStateByKey(database, subjectIdentity.subjectKey));
-  const effectiveCard = applySubjectStateToReviewCard(card, subjectState);
   const resolvedState = resolveReviewQueueState(
-    effectiveCard,
+    card.status,
+    subjectState,
     nowIso
   );
   const mediaById = buildSingleMediaLookup({
@@ -1584,7 +1526,7 @@ export async function hydrateReviewCard(input: {
         "mapQueueCard",
         () =>
           mapQueueCard(
-            effectiveCard,
+            card,
             entryLookup,
             [card],
             mediaById,
@@ -1596,7 +1538,7 @@ export async function hydrateReviewCard(input: {
         }
       )
     : mapQueueCard(
-        effectiveCard,
+        card,
         entryLookup,
         [card],
         mediaById,
@@ -1700,12 +1642,18 @@ export async function getReviewCardDetailData(
     database,
     subjectIdentity.subjectKey
   );
+  const resolvedState = resolveReviewQueueState(
+    selectedRawCard.status,
+    subjectState,
+    nowIso
+  );
   const selectedCard = mapQueueCard(
-    applySubjectStateToReviewCard(selectedRawCard, subjectState),
+    selectedRawCard,
     entryLookup,
     [selectedRawCard],
     new Map([[media.id, { slug: media.slug, title: media.title }]]),
-    nowIso
+    nowIso,
+    resolvedState
   );
 
   const termById = new Map(terms.map((entry) => [entry.id, entry]));
@@ -1902,12 +1850,12 @@ function getReviewBucketPriority(bucket: ReviewQueueCard["bucket"]) {
 }
 
 function resolveReviewQueueState(
-  card: SubjectReviewCard,
+  cardStatus: string,
+  reviewState: ReviewSubjectStateSnapshot | null,
   nowIso: string
 ): ResolvedReviewQueueState {
-  const { reviewState } = card;
   const effectiveState = resolveEffectiveReviewState({
-    cardStatus: card.status,
+    cardStatus,
     reviewState: reviewState
       ? {
           manualOverride: reviewState.manualOverride,
@@ -1967,7 +1915,8 @@ function selectReviewQueueSubjectCard(input: {
   return {
     card: selectedCard,
     state: resolveReviewQueueState(
-      applySubjectStateToReviewCard(selectedCard, input.group.subjectState),
+      selectedCard.status,
+      input.group.subjectState,
       input.nowIso
     )
   };
@@ -2016,7 +1965,7 @@ function mapReviewQueueSubjectModel(
   });
 
   return mapQueueCard(
-    applySubjectStateToReviewCard(selectedCard, model.group.subjectState),
+    selectedCard,
     input.entryLookup,
     model.group.cards,
     input.mediaById,
@@ -2071,13 +2020,22 @@ function selectReviewOverviewSubjectCard(input: {
   nowIso: string;
 }) {
   const selectedCard = input.group.representativeCard;
+  const state = resolveReviewQueueState(
+    selectedCard.status,
+    input.group.subjectState,
+    input.nowIso
+  );
 
   return {
     card: selectedCard,
-    overview: mapReviewOverviewCard(
-      applySubjectStateToReviewCard(selectedCard, input.group.subjectState),
-      input.nowIso
-    )
+    overview: {
+      bucket: state.bucket,
+      createdAt: selectedCard.createdAt,
+      dueAt: state.dueAt,
+      front: selectedCard.front,
+      id: selectedCard.id,
+      orderIndex: selectedCard.orderIndex
+    } satisfies ReviewOverviewCard
   };
 }
 
@@ -2238,37 +2196,7 @@ type ReviewOverviewCard = Pick<
   "bucket" | "createdAt" | "dueAt" | "front" | "id" | "orderIndex"
 >;
 
-function mapReviewOverviewCard(
-  card: SubjectReviewCard,
-  nowIso: string
-): ReviewOverviewCard {
-  const { reviewState } = card;
-  const effectiveState = resolveEffectiveReviewState({
-    cardStatus: card.status,
-    reviewState: reviewState
-      ? {
-          manualOverride: reviewState.manualOverride,
-          suspended: reviewState.suspended,
-          state: reviewState.state as ReviewState
-        }
-      : null
-  });
-  const dueAt = reviewState?.dueAt ?? null;
 
-  return {
-    bucket: resolveCardBucket({
-      asOfIso: nowIso,
-      dueAt,
-      effectiveState: effectiveState.state,
-      reviewState: (reviewState?.state as ReviewState | null) ?? null
-    }),
-    createdAt: card.createdAt,
-    dueAt,
-    front: card.front,
-    id: card.id,
-    orderIndex: card.orderIndex
-  };
-}
 
 function scoreReviewLaunchCandidate(candidate: {
   activeReviewCards: number;
@@ -2894,7 +2822,8 @@ function mapQueueCard(
   const resolved =
     resolvedState ??
     resolveReviewQueueState(
-      applySubjectStateToReviewCard(card, null),
+      card.status,
+      null,
       nowIso
     );
   const pronunciations = buildReviewCardPronunciations(card, entryLookup);
