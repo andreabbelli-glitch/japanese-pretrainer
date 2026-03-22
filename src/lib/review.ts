@@ -51,7 +51,7 @@ import {
 import { buildEntryKey } from "@/lib/entry-id";
 import { type ReviewProfiler } from "@/lib/review-profiler";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
-import { loadReviewSubjectStateLookup } from "./review-subject-state-lookup.ts";
+import { resolveReviewSubjectGroups } from "./review-subject-state-lookup.ts";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
@@ -538,7 +538,7 @@ async function buildReviewPageDataFromWorkspace(input: {
         }
       : selectedCardBase;
   const selectedGradePreviews = selectedCard
-    ? buildReviewGradePreviews(selectedCard.reviewSeedState, input.now)
+    ? buildSharedReviewGradePreviews(selectedCard.reviewSeedState, input.now)
     : [];
   input.profiler?.addMeta({
     selectedCardId: selectedCard?.id ?? null
@@ -674,7 +674,6 @@ function mapReviewQueueSubjectCardPreview(input: {
     ),
     bucketLabel: formatBucketLabel(
       input.resolvedState.bucket,
-      input.resolvedState.effectiveState
     ),
     createdAt: input.card.createdAt,
     dueAt: input.resolvedState.dueAt,
@@ -1024,9 +1023,9 @@ async function loadReviewWorkspaceV2(input: {
 
   const { subjectGroups } = await (input.profiler
     ? input.profiler.measure(
-        "loadReviewSubjectStateLookup",
+        "resolveReviewSubjectGroups",
         () =>
-          loadReviewSubjectStateLookup({
+          resolveReviewSubjectGroups({
             cards,
             database,
             grammar: stableWorkspace.grammar,
@@ -1037,7 +1036,7 @@ async function loadReviewWorkspaceV2(input: {
           subjectGroups: value.subjectGroups.length
         })
       )
-    : loadReviewSubjectStateLookup({
+    : resolveReviewSubjectGroups({
         cards,
         database,
         grammar: stableWorkspace.grammar,
@@ -1532,7 +1531,7 @@ export async function hydrateReviewCard(input: {
 
   return {
     ...queueCard,
-    gradePreviews: buildReviewGradePreviews(resolvedState.reviewSeedState, now)
+    gradePreviews: buildSharedReviewGradePreviews(resolvedState.reviewSeedState, now)
   };
 }
 
@@ -2769,7 +2768,7 @@ function mapQueueCard(
     back: card.back,
     bucket: resolved.bucket,
     bucketDetail: buildBucketDetail(resolved.bucket, resolved.dueAt),
-    bucketLabel: formatBucketLabel(resolved.bucket, resolved.effectiveState),
+    bucketLabel: formatBucketLabel(resolved.bucket),
     contexts: contexts ?? buildReviewCardContexts(subjectCards, mediaById),
     createdAt: card.createdAt,
     dueAt: resolved.dueAt,
@@ -2998,10 +2997,8 @@ function buildBucketDetail(
 }
 
 function formatBucketLabel(
-  bucket: ReviewQueueCard["bucket"],
-  effectiveState: EffectiveReviewState["state"]
+  bucket: ReviewQueueCard["bucket"]
 ) {
-  void effectiveState;
 
   if (bucket === "due") {
     return "Dovuta";
@@ -3094,12 +3091,6 @@ function formatShortIsoDate(value: string) {
   return value.slice(0, 10);
 }
 
-function buildReviewGradePreviews(
-  reviewSeedState: ReviewQueueCard["reviewSeedState"],
-  now: Date
-): ReviewGradePreview[] {
-  return buildSharedReviewGradePreviews(reviewSeedState, now);
-}
 
 function compareReviewCardsByOrder<
   TCard extends Pick<ReviewQueueCard, "createdAt" | "orderIndex">

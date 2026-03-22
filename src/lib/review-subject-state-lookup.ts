@@ -13,9 +13,6 @@ import {
   type ReviewSubjectStateSnapshot
 } from "./review-subject.ts";
 
-export type ReviewSubjectStateLookupResult = {
-  subjectGroups: ReviewSubjectGroup[];
-};
 
 type ResolveReviewSubjectGroupsInput = {
   cards: ReviewCardListItem[];
@@ -85,17 +82,5 @@ export async function resolveReviewSubjectGroups(
   return {
     subjectGroups: groupedCards,
     subjectStates
-  };
-}
-
-export async function loadReviewSubjectStateLookup(
-  input: ResolveReviewSubjectGroupsInput
-): Promise<ReviewSubjectStateLookupResult> {
-  const { subjectGroups } = await resolveReviewSubjectGroups(
-    input
-  );
-
-  return {
-    subjectGroups
   };
 }

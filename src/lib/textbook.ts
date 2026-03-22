@@ -45,7 +45,7 @@ import {
   formatMediaTypeLabel,
   formatSegmentKindLabel
 } from "@/lib/study-format";
-import { loadReviewSubjectStateLookup } from "@/lib/review-subject-state-lookup";
+import { resolveReviewSubjectGroups } from "@/lib/review-subject-state-lookup";
 import { parseTextbookDocument } from "@/lib/textbook-document";
 
 export type { FuriganaMode } from "@/lib/settings";
@@ -535,7 +535,7 @@ async function loadLessonTooltipEntries(input: {
   const studySignalsByEntry = buildStudySignalMap(studySignals);
   const subjectLookup =
     cards.length > 0
-      ? await loadReviewSubjectStateLookup({
+      ? await resolveReviewSubjectGroups({
           cards,
           database: input.database,
           grammar,
