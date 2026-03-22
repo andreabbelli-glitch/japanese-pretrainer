@@ -1,5 +1,6 @@
 import type { EntryType } from "../../../domain/content.ts";
 import { buildEntryKey, buildScopedEntryId } from "../../entry-id.ts";
+import { romanizeKanaForSearch } from "../../study-search.ts";
 
 import type { NormalizedMediaBundle } from "../types.ts";
 import {
@@ -458,6 +459,9 @@ function buildGrammarPlan(input: {
   const crossMediaGroupId = input.grammarPattern.crossMediaGroup
     ? buildCrossMediaGroupId("grammar", input.grammarPattern.crossMediaGroup)
     : null;
+  const searchPatternNorm = normalizeGrammarSearchText(
+    input.grammarPattern.pattern
+  );
 
   return {
     aliases,
@@ -484,9 +488,8 @@ function buildGrammarPlan(input: {
       pitchAccent: input.grammarPattern.pitchAccent ?? null,
       pitchAccentSource: input.grammarPattern.pitchAccentSource ?? null,
       pitchAccentPageUrl: input.grammarPattern.pitchAccentPageUrl ?? null,
-      searchPatternNorm: normalizeGrammarSearchText(
-        input.grammarPattern.pattern
-      ),
+      searchPatternNorm,
+      searchRomajiNorm: romanizeKanaForSearch(searchPatternNorm),
       createdAt: input.nowIso,
       updatedAt: input.nowIso
     },

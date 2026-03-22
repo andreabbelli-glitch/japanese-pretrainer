@@ -107,7 +107,9 @@ type GlossaryRowByKind = {
 };
 
 type GlossaryQueryLoader<K extends EntryType> = {
-  findFirst: (where?: SQL<unknown>) => Promise<GlossaryRowByKind[K] | undefined>;
+  findFirst: (
+    where?: SQL<unknown>
+  ) => Promise<GlossaryRowByKind[K] | undefined>;
   findMany: (where?: SQL<unknown>) => Promise<GlossaryRowByKind[K][]>;
 };
 
@@ -258,7 +260,10 @@ async function queryGlossaryEntries(
     .from(grammarPattern)
     .innerJoin(media, eq(media.id, grammarPattern.mediaId))
     .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
-    .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId))
+    .leftJoin(
+      crossMediaGroup,
+      eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
+    )
     .leftJoin(grammarAlias, eq(grammarAlias.grammarId, grammarPattern.id))
     .where(where)
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
@@ -303,7 +308,9 @@ async function queryGlossaryEntry(
   kind: EntryType,
   where?: SQL<unknown>
 ) {
-  return (await getGlossaryQueryLoader(database, kind).findFirst(where)) ?? null;
+  return (
+    (await getGlossaryQueryLoader(database, kind).findFirst(where)) ?? null
+  );
 }
 
 export async function listGlossaryEntriesByKind(
@@ -405,6 +412,10 @@ function buildGrammarBaseMatchClauses(input: GlossarySearchCandidateInput) {
     buildTextMatchClause(
       "lower(coalesce(grammar_pattern.reading, ''))",
       input.kana
+    ),
+    buildTextMatchClause(
+      "grammar_pattern.search_romaji_norm",
+      input.romajiCompact
     ),
     buildTextMatchClause("lower(grammar_pattern.title)", input.normalized),
     buildTextMatchClause("lower(grammar_pattern.meaning_it)", input.normalized),
@@ -549,6 +560,7 @@ export async function listGrammarEntrySummaries(
       pitchAccentSource: grammarPattern.pitchAccentSource,
       pitchAccentPageUrl: grammarPattern.pitchAccentPageUrl,
       searchPatternNorm: grammarPattern.searchPatternNorm,
+      searchRomajiNorm: grammarPattern.searchRomajiNorm,
       mediaSlug: media.slug,
       mediaTitle: media.title,
       segmentTitle: segment.title,
@@ -1125,10 +1137,7 @@ export async function getGlossaryEntriesByIds(
   database: DatabaseClient,
   kind: EntryType,
   entryIds: string[]
-): Promise<
-  | TermGlossaryRow[]
-  | GrammarGlossaryRow[]
->;
+): Promise<TermGlossaryRow[] | GrammarGlossaryRow[]>;
 export async function getGlossaryEntriesByIds(
   database: DatabaseClient,
   kind: EntryType,
@@ -1261,11 +1270,7 @@ export async function getGlossaryEntryById(
   database: DatabaseClient,
   kind: EntryType,
   entryId: string
-): Promise<
-  | TermGlossaryRow
-  | GrammarGlossaryRow
-  | null
-> {
+): Promise<TermGlossaryRow | GrammarGlossaryRow | null> {
   const [entry] = await getGlossaryEntriesByIds(database, kind, [entryId]);
 
   return entry ?? null;
@@ -1642,7 +1647,10 @@ export async function listEntryCardConnections(
     .leftJoin(segment, eq(segment.id, card.segmentId))
     .leftJoin(
       term,
-      and(eq(cardEntryLink.entryType, "term"), eq(term.id, cardEntryLink.entryId))
+      and(
+        eq(cardEntryLink.entryType, "term"),
+        eq(term.id, cardEntryLink.entryId)
+      )
     )
     .leftJoin(
       grammarPattern,

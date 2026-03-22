@@ -390,7 +390,6 @@ const studyFilterOptions: GlossaryQueryState["study"][] = [
 ];
 
 const GLOBAL_GLOSSARY_PAGE_SIZE = 24;
-const GLOBAL_GLOSSARY_FALLBACK_LIMIT = 24;
 
 export async function getGlossaryPageData(
   mediaSlug: string,
@@ -419,12 +418,15 @@ export async function getGlossaryPageData(
   ]);
   const { candidates, cardsByEntry, studySignalsByEntry } =
     await buildGlossaryResolvedEntries(database, entries, filters);
+  const segmentOrder = new Map(
+    segments.map((segment, index) => [segment.id, index] as const)
+  );
   const filteredEntries = candidates
     .filter((entry) => entry.matchesCurrentFilters)
     .sort((left, right) =>
       compareRankedEntries(left, right, {
         hasQuery: filters.query.length > 0,
-        segments,
+        segmentOrder,
         sort: filters.sort
       })
     );
@@ -977,15 +979,7 @@ async function loadGlobalGlossarySearchEntries(
     normalized: query.normalized,
     romajiCompact: query.compact
   });
-  const candidateRefs = dedupeCandidateRefs([
-    ...sqlCandidateRefs,
-    ...(await loadGrammarRomajiFallbackCandidateRefs(
-      database,
-      filters,
-      query,
-      sqlCandidateRefs
-    ))
-  ]);
+  const candidateRefs = dedupeCandidateRefs(sqlCandidateRefs);
 
   if (candidateRefs.length === 0) {
     return [];
@@ -1050,63 +1044,6 @@ async function loadFullEntriesForCandidateRefs(
   ]);
 }
 
-async function loadGrammarRomajiFallbackCandidateRefs(
-  database: DatabaseClient,
-  filters: GlossaryQueryState,
-  query: FilteredQuery,
-  existingRefs: GlossarySearchCandidateRef[]
-): Promise<GlossarySearchCandidateRef[]> {
-  if (
-    filters.entryType === "term" ||
-    !isLikelyLatinRomajiQuery(filters.query) ||
-    query.compact.length < 3 ||
-    existingRefs.some((ref) => ref.entryType === "grammar")
-  ) {
-    return [];
-  }
-
-  const scopedMedia =
-    filters.media === "all"
-      ? null
-      : await getMediaBySlug(database, filters.media);
-  const grammarEntries = await listGrammarEntrySummaries(
-    database,
-    scopedMedia
-      ? {
-          mediaId: scopedMedia.id
-        }
-      : {}
-  );
-  const rankedFallbackEntries = grammarEntries
-    .map((entry) => {
-      const baseEntry = mapGrammarSummaryToBaseModel(entry);
-      const rankedEntry = buildRankedGlossaryEntry(
-        baseEntry,
-        query,
-        deriveEntryStudyState([])
-      );
-
-      return rankedEntry
-        ? {
-            crossMediaGroupId: baseEntry.crossMediaGroupId ?? null,
-            entryId: baseEntry.internalId,
-            entryType: "grammar" as const,
-            score: rankedEntry.score
-          }
-        : null;
-    })
-    .filter((entry) => entry !== null);
-
-  return rankedFallbackEntries
-    .sort((left, right) => right.score - left.score)
-    .slice(0, GLOBAL_GLOSSARY_FALLBACK_LIMIT)
-    .map((entry) => ({
-      crossMediaGroupId: entry.crossMediaGroupId ?? null,
-      entryId: entry.entryId,
-      entryType: "grammar" as const
-    }));
-}
-
 function dedupeCandidateRefs(refs: GlossarySearchCandidateRef[]) {
   const unique = new Map<string, GlossarySearchCandidateRef>();
 
@@ -1129,10 +1066,6 @@ function dedupeFullGlossaryEntries(
   }
 
   return [...unique.values()];
-}
-
-function isLikelyLatinRomajiQuery(rawQuery: string) {
-  return /^[a-z0-9 -]+$/i.test(normalizeSearchText(rawQuery));
 }
 
 async function loadStudySignalsByEntry(
@@ -1655,7 +1588,6 @@ function mapEntryToBaseModel(
   }
 
   const grammarEntry = entry as GrammarGlossaryEntry;
-  const romajiNorm = romanizeKanaForSearch(grammarEntry.searchPatternNorm);
 
   return {
     internalId: grammarEntry.id,
@@ -1686,8 +1618,8 @@ function mapEntryToBaseModel(
       normalized: alias.aliasNorm
     })),
     lemmaNorm: grammarEntry.searchPatternNorm,
-    romajiNorm,
-    romajiCompact: compactLatinSearchText(romajiNorm),
+    romajiNorm: grammarEntry.searchRomajiNorm,
+    romajiCompact: grammarEntry.searchRomajiNorm,
     patternNorm: grammarEntry.searchPatternNorm,
     patternKana: foldJapaneseKana(grammarEntry.searchPatternNorm),
     meaningNorm: normalizeSearchText(grammarEntry.meaningIt),
@@ -1736,8 +1668,6 @@ function mapTermSummaryToBaseModel(
 function mapGrammarSummaryToBaseModel(
   entry: GrammarGlossaryEntrySummary
 ): GlossaryBaseEntry {
-  const romajiNorm = romanizeKanaForSearch(entry.searchPatternNorm);
-
   return {
     internalId: entry.id,
     id: entry.sourceId,
@@ -1761,8 +1691,8 @@ function mapGrammarSummaryToBaseModel(
     segmentTitle: entry.segmentTitle ?? undefined,
     aliases: [],
     lemmaNorm: entry.searchPatternNorm,
-    romajiNorm,
-    romajiCompact: compactLatinSearchText(romajiNorm),
+    romajiNorm: entry.searchRomajiNorm,
+    romajiCompact: entry.searchRomajiNorm,
     patternNorm: entry.searchPatternNorm,
     patternKana: foldJapaneseKana(entry.searchPatternNorm),
     meaningNorm: normalizeSearchText(entry.meaningIt),
@@ -2139,7 +2069,7 @@ function compareRankedEntries(
   right: RankedGlossaryEntry,
   input: {
     hasQuery: boolean;
-    segments: Awaited<ReturnType<typeof listGlossarySegmentsByMediaId>>;
+    segmentOrder: Map<string, number>;
     sort: GlossaryDefaultSort;
   }
 ) {
@@ -2159,14 +2089,11 @@ function compareRankedEntries(
     return (left.reading ?? "").localeCompare(right.reading ?? "", "ja");
   }
 
-  const segmentIndex = new Map(
-    input.segments.map((segment, index) => [segment.id, index] as const)
-  );
   const leftSegment = left.segmentId
-    ? (segmentIndex.get(left.segmentId) ?? 999)
+    ? (input.segmentOrder.get(left.segmentId) ?? 999)
     : 999;
   const rightSegment = right.segmentId
-    ? (segmentIndex.get(right.segmentId) ?? 999)
+    ? (input.segmentOrder.get(right.segmentId) ?? 999)
     : 999;
 
   if (leftSegment !== rightSegment) {

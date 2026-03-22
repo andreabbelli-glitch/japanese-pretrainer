@@ -137,6 +137,7 @@ export const grammarPattern = sqliteTable(
     pitchAccentSource: text("pitch_accent_source"),
     pitchAccentPageUrl: text("pitch_accent_page_url"),
     searchPatternNorm: text("search_pattern_norm").notNull(),
+    searchRomajiNorm: text("search_romaji_norm").notNull(),
     createdAt: text("created_at").notNull(),
     updatedAt: text("updated_at").notNull()
   },
@@ -146,6 +147,7 @@ export const grammarPattern = sqliteTable(
     index("grammar_cross_media_group_idx").on(table.crossMediaGroupId),
     index("grammar_segment_idx").on(table.segmentId),
     index("grammar_search_pattern_idx").on(table.searchPatternNorm),
+    index("grammar_search_romaji_idx").on(table.searchRomajiNorm),
     uniqueIndex("grammar_media_source_unique").on(table.mediaId, table.sourceId)
   ]
 );
@@ -193,4 +195,3 @@ export const entryLink = sqliteTable(
     )
   ]
 );
-

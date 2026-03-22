@@ -1055,6 +1055,7 @@ const grammarUpsertSet = {
   pitchAccentSource: excluded("pitch_accent_source"),
   pitchAccentPageUrl: excluded("pitch_accent_page_url"),
   searchPatternNorm: excluded("search_pattern_norm"),
+  searchRomajiNorm: excluded("search_romaji_norm"),
   updatedAt: excluded("updated_at")
 };
 
@@ -1179,7 +1180,8 @@ const grammarComparisonKeys = [
   "pitchAccent",
   "pitchAccentSource",
   "pitchAccentPageUrl",
-  "searchPatternNorm"
+  "searchPatternNorm",
+  "searchRomajiNorm"
 ];
 
 const grammarAliasComparisonKeys = ["grammarId", "aliasText", "aliasNorm"];

@@ -108,6 +108,8 @@ Tabelle incluse nel perimetro del task:
   `cross_media_group` esplicito.
 - Gli indici minimi richiesti da glossary, ordering e review queue sono gia
   inclusi nella migrazione iniziale.
+- Le grammar persistono anche `search_romaji_norm`, cosi le query romaji del
+  Glossary restano SQL-first senza fallback applicativo sul corpus completo.
 - `review_subject_state` e lo stato canonico della review globale a livello
   subject. Tiene il memory state FSRS condiviso tra sibling cross-media, con
   `stability`, `difficulty`, `due_at`, `last_reviewed_at`,

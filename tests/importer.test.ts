@@ -161,6 +161,7 @@ describe("content importer", () => {
       "assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
     );
     expect(importedGrammar?.audioLicense).toBe("CC BY 4.0");
+    expect(importedGrammar?.searchRomajiNorm).toBe("teiru");
   });
 
   it(

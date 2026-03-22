@@ -361,6 +361,7 @@ export async function seedDevelopmentDatabase(
         notesIt: "Pattern base usato molto presto in quasi ogni corso.",
         levelHint: "N5",
         searchPatternNorm: "ている",
+        searchRomajiNorm: "teiru",
         createdAt,
         updatedAt
       })
@@ -376,6 +377,7 @@ export async function seedDevelopmentDatabase(
           notesIt: "Pattern base usato molto presto in quasi ogni corso.",
           levelHint: "N5",
           searchPatternNorm: "ている",
+          searchRomajiNorm: "teiru",
           createdAt,
           updatedAt
         }
