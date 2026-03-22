@@ -590,6 +590,17 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-junban",
+      "audio_src": "assets/audio/term/term-junban/forvo-manual-じゅんばん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%A0%86%E7%95%AA/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%A0%86%E7%95%AA"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kakutoku",
       "audio_src": "assets/audio/term/term-kakutoku/forvo-manual-かくとく.mp3",
       "audio_source": "forvo",
@@ -653,6 +664,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-multicolor",
+      "audio_src": "assets/audio/term/term-multicolor/forvo-manual-たしょく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%A4%9A%E8%89%B2/#ja"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-mushi-suru",
       "audio_src": "assets/audio/term/term-mushi-suru/forvo-manual-むしする.mp3",
       "audio_source": "forvo",
@@ -669,6 +688,14 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ninzuu",
+      "audio_src": "assets/audio/term/term-ninzuu/forvo-manual-にんす-う.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BA%BA%E6%95%B0/#ja"
     },
     {
       "entry_type": "term",
