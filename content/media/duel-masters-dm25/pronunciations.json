@@ -321,6 +321,16 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-dama",
+      "audio_src": "assets/audio/term/term-dama/daama.mp3",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "Musaddam Idriss",
+      "audio_license": "CC BY-SA 4.0",
+      "audio_attribution": "Own work",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Daama.mp3"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-dasu",
       "audio_src": "assets/audio/term/term-dasu/forvo-manual-た-す.mp3",
       "audio_source": "forvo",

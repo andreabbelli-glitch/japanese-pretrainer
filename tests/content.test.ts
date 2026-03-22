@@ -691,7 +691,10 @@ describe("content parser and validator", () => {
       "live-duel-encounters-garchainsaw-dragon",
       "live-duel-encounters-beethoven-zenith-of-horror",
       "live-duel-encounters-momoking-jonetsu-hero",
-      "keyword-effects-reference"
+      "keyword-effects-reference",
+      "live-duel-encounters-balga-raizou-the-super-heavenly-nova",
+      "live-duel-encounters-infelstarge",
+      "live-duel-encounters-bolzard-superhero-super-emperor-time"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
       "cards-duel-masters-dm25-tcg-core-basics",
@@ -712,7 +715,10 @@ describe("content parser and validator", () => {
       "cards-duel-masters-dm25-live-duel-encounters-bolshack-dorago-the-great",
       "cards-duel-masters-dm25-live-duel-encounters-garchainsaw-dragon",
       "cards-duel-masters-dm25-live-duel-encounters-beethoven-zenith-of-horror",
-      "cards-duel-masters-dm25-live-duel-encounters-momoking-jonetsu-hero"
+      "cards-duel-masters-dm25-live-duel-encounters-momoking-jonetsu-hero",
+      "cards-duel-masters-dm25-live-duel-encounters-balga-raizou-the-super-heavenly-nova",
+      "cards-duel-masters-dm25-live-duel-encounters-infelstarge",
+      "cards-duel-masters-dm25-live-duel-encounters-bolzard-superhero-super-emperor-time"
     ]);
     expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
       true
