@@ -872,7 +872,7 @@ describe("glossary data", () => {
     expect(markup).not.toContain(
       '<span class="status-pill">Ha flashcard</span>'
     );
-    expect(markup).toContain("Glossary");
+    expect(markup).toContain("Ricerca globale");
     expect(markup).toContain(
       `returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
     );
