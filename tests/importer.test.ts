@@ -182,8 +182,12 @@ describe("content importer", () => {
 
       expect(await countRows(database.query.media.findMany())).toBe(1);
       expect(await countRows(database.query.segment.findMany())).toBe(7);
-      expect(await countRows(database.query.lesson.findMany())).toBe(28);
-      expect(await countRows(database.query.lessonContent.findMany())).toBe(28);
+      expect(await countRows(database.query.lesson.findMany())).toBe(
+        duelMastersRealBundleStats.parser.lessons
+      );
+      expect(await countRows(database.query.lessonContent.findMany())).toBe(
+        duelMastersRealBundleStats.parser.lessons
+      );
       expect(await countRows(database.query.term.findMany())).toBe(
         duelMastersRealBundleStats.importer.term
       );

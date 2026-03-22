@@ -694,7 +694,8 @@ describe("content parser and validator", () => {
       "keyword-effects-reference",
       "live-duel-encounters-balga-raizou-the-super-heavenly-nova",
       "live-duel-encounters-infelstarge",
-      "live-duel-encounters-bolzard-superhero-super-emperor-time"
+      "live-duel-encounters-bolzard-superhero-super-emperor-time",
+      "live-duel-encounters-dragocalypse-day"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
       "cards-duel-masters-dm25-tcg-core-basics",
@@ -718,7 +719,8 @@ describe("content parser and validator", () => {
       "cards-duel-masters-dm25-live-duel-encounters-momoking-jonetsu-hero",
       "cards-duel-masters-dm25-live-duel-encounters-balga-raizou-the-super-heavenly-nova",
       "cards-duel-masters-dm25-live-duel-encounters-infelstarge",
-      "cards-duel-masters-dm25-live-duel-encounters-bolzard-superhero-super-emperor-time"
+      "cards-duel-masters-dm25-live-duel-encounters-bolzard-superhero-super-emperor-time",
+      "cards-duel-masters-dm25-live-duel-encounters-dragocalypse-day"
     ]);
     expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
       true

@@ -1043,6 +1043,20 @@
       "pitch_accent": 0,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%97%E3%82%88%E3%81%86"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-state",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%8A%B6%E6%85%8B"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-hajimatte-ite",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A7%8B%E3%81%BE%E3%82%8B"
     }
   ]
 }

@@ -99,9 +99,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await page.goto("/review", { waitUntil: "domcontentloaded" });
   await expect(page).toHaveURL(/\/review(?:\?|$)/);
   await expect(page.locator(".review-page")).toBeVisible();
-  await expect(
-    page.getByRole("heading", { name: "Review globale" })
-  ).toBeVisible();
+  await expect(page.locator(".review-stage")).toBeVisible();
   const initialReviewFront = await page
     .locator(".review-stage__front")
     .textContent();

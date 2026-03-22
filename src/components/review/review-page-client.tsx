@@ -22,11 +22,9 @@ import type {
 } from "@/lib/review";
 import {
   appendReturnToParam,
-  buildCanonicalReviewSessionHrefForBase,
-  reviewHref
+  buildCanonicalReviewSessionHrefForBase
 } from "@/lib/site";
 
-import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
 import { PronunciationAudio } from "../ui/pronunciation-audio";
 import { StatBlock } from "../ui/stat-block";
@@ -89,13 +87,6 @@ export function ReviewPageClient({
     viewData.scope === "global" &&
     clientError === null;
   const isGlobalReview = viewData.scope === "global";
-  const hasAnyReviewCards =
-    viewData.queue.dueCount +
-      viewData.queue.newAvailableCount +
-      viewData.queue.manualCount +
-      viewData.queue.suspendedCount +
-      viewData.queue.upcomingCount >
-    0;
 
   const selectedCard = viewData.selectedCard;
   const queueIndex =
@@ -143,7 +134,6 @@ export function ReviewPageClient({
     viewData.media.glossaryHref,
     sessionHref
   );
-  const contextualSettingsHref = appendReturnToParam("/settings", sessionHref);
   const showCompletionState = !hasQueue && selectedCard === null;
   const actionRedirectMode = isQueueCard ? "advance_queue" : "preserve_card";
   const gradePreviewLookup = isFullReviewPageData
@@ -154,11 +144,6 @@ export function ReviewPageClient({
         ])
       )
     : new Map();
-  const reviewSummary = buildReviewSummary(
-    viewData,
-    isGlobalReview,
-    hasAnyReviewCards
-  );
 
   useEffect(() => {
     if (isFullReviewPageData || !searchParams || viewData.scope !== "global") {
@@ -524,44 +509,6 @@ export function ReviewPageClient({
 
   return (
     <div className="review-page">
-      <StickyPageHeader
-        backHref={viewData.media.href}
-        backLabel={
-          isGlobalReview ? "Torna alla Home" : `Torna a ${viewData.media.title}`
-        }
-        eyebrow="Review"
-        summary={reviewSummary}
-        title={viewData.media.title}
-        meta={
-          <>
-            <span>{viewData.queue.queueCount} in coda</span>
-            <span>{viewData.queue.dueCount} due</span>
-            <span>Nuove oggi {viewData.queue.effectiveDailyLimit}</span>
-          </>
-        }
-        actions={
-          <>
-            <Link
-              className="button button--ghost"
-              href={contextualGlossaryHref}
-            >
-              Apri Glossary
-            </Link>
-            <Link
-              className="button button--ghost"
-              href={contextualSettingsHref}
-            >
-              Settings
-            </Link>
-            {!isGlobalReview ? (
-              <Link className="button button--ghost" href={reviewHref()}>
-                Apri review globale
-              </Link>
-            ) : null}
-          </>
-        }
-      />
-
       <section className="hero-grid hero-grid--detail review-workspace">
         <SurfaceCard className="review-stage" variant="hero">
           {selectedCard ? (
@@ -987,18 +934,6 @@ function formatTopUpLabel(count: number) {
   return count === 1
     ? "Aggiungi ancora 1 nuova"
     : `Aggiungi altre ${count} nuove`;
-}
-
-function buildReviewSummary(
-  data: ReviewPageClientData,
-  isGlobalReview: boolean,
-  hasAnyReviewCards: boolean
-) {
-  if (!isGlobalReview || hasAnyReviewCards) {
-    return data.queue.introLabel;
-  }
-
-  return "La review globale non ha ancora card attive da mettere in coda.";
 }
 
 function isReviewPageData(data: ReviewPageClientData): data is ReviewPageData {
