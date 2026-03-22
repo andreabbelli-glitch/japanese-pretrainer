@@ -2034,63 +2034,49 @@ export function buildReviewOverviewSnapshot(input: {
     modelBuckets,
     input.visibleMediaId
   );
-  const toOverviewCard = (model: ReviewSubjectModel): ReviewOverviewCard => ({
-    bucket: model.resolvedState.bucket,
-    createdAt: model.card.createdAt,
-    dueAt: model.resolvedState.dueAt,
-    front: model.card.front,
-    id: model.card.id,
-    orderIndex: model.card.orderIndex
-  });
-  const dueCards = classifiedModels.dueModels.map(toOverviewCard);
-  const newCards = classifiedModels.visibleNewModels.map(toOverviewCard);
-  const manualCards = classifiedModels.manualModels.map(toOverviewCard);
-  const suspendedCards = classifiedModels.suspendedModels.map(toOverviewCard);
-  const upcomingCards = classifiedModels.upcomingModels.map(toOverviewCard);
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
   const newSlots = Math.max(
     effectiveDailyLimit - input.newIntroducedTodayCount,
     0
   );
-  const queuedNewCards = classifiedModels.globalNewModels
+  const queuedNewModels = classifiedModels.globalNewModels
     .slice(0, newSlots)
     .filter((model) =>
       isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
-    )
-    .map(toOverviewCard);
-  const queueCards = [...dueCards, ...queuedNewCards];
+    );
+
+  const dueCount = classifiedModels.dueModels.length;
+  const newQueuedCount = queuedNewModels.length;
+  const manualCount = classifiedModels.manualModels.length;
+  const upcomingCount = classifiedModels.upcomingModels.length;
   const queueLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
-    dueCount: dueCards.length,
-    manualCount: manualCards.length,
-    newQueuedCount: queuedNewCards.length,
-    upcomingCount: upcomingCards.length
+    dueCount,
+    manualCount,
+    newQueuedCount,
+    upcomingCount
   });
-  const activeCards = dueCards.length + upcomingCards.length;
+
+  const firstQueueModel = classifiedModels.dueModels[0] ?? queuedNewModels[0];
 
   return {
-    activeCards,
+    activeCards: dueCount + upcomingCount,
     dailyLimit: input.dailyLimit,
-    dueCount: dueCards.length,
+    dueCount,
     effectiveDailyLimit,
-    manualCount: manualCards.length,
-    newAvailableCount: newCards.length,
-    newQueuedCount: queuedNewCards.length,
-    nextCardFront: queueCards[0]?.front
-      ? stripInlineMarkdown(queueCards[0].front)
+    manualCount,
+    newAvailableCount: classifiedModels.visibleNewModels.length,
+    newQueuedCount,
+    nextCardFront: firstQueueModel?.card.front
+      ? stripInlineMarkdown(firstQueueModel.card.front)
       : undefined,
-    queueCount: queueCards.length,
+    queueCount: dueCount + newQueuedCount,
     queueLabel,
-    suspendedCount: suspendedCards.length,
+    suspendedCount: classifiedModels.suspendedModels.length,
     totalCards: classifiedModels.visibleModelCount,
-    upcomingCount: upcomingCards.length
+    upcomingCount
   };
 }
-
-type ReviewOverviewCard = Pick<
-  ReviewQueueCard,
-  "bucket" | "createdAt" | "dueAt" | "front" | "id" | "orderIndex"
->;
 
 function scoreReviewLaunchCandidate(candidate: {
   activeReviewCards: number;

@@ -28,13 +28,10 @@ import {
 import { pickBestBy } from "@/lib/collections";
 import { getReviewDailyLimit } from "@/lib/settings";
 import {
-  buildSegments,
+  buildLessonMetrics,
   buildEmptyGlossaryProgressSnapshot,
   loadGlossaryProgressSnapshots,
   loadGlossaryProgressSnapshot,
-  selectActiveLesson,
-  selectResumeLesson,
-  selectNextLesson,
   type LessonResumeTarget,
   type SegmentStudyPreview,
   type StudyEntryPreview
@@ -445,13 +442,14 @@ function mapMediaShellSnapshotFromCounts(input: {
     newQueuedCount: number;
   };
 }): MediaShellSnapshot {
-  const lessonsCompleted = input.lessons.filter(
-    (lesson) => lesson.progress?.status === "completed"
-  ).length;
-  const lessonsTotal = input.lessons.length;
-  const activeLesson = selectActiveLesson(input.lessons);
-  const resumeLesson = selectResumeLesson(input.lessons);
-  const nextLesson = selectNextLesson(input.lessons);
+  const {
+    lessonsCompleted,
+    lessonsTotal,
+    activeLesson,
+    resumeLesson,
+    nextLesson,
+    segments
+  } = buildLessonMetrics(input.lessons);
   const reviewSignals = buildReviewShellSignals(input.reviewCounts);
 
   return {
@@ -480,7 +478,7 @@ function mapMediaShellSnapshotFromCounts(input: {
     activeLesson,
     resumeLesson,
     nextLesson,
-    segments: buildSegments(input.lessons),
+    segments,
     previewEntries: input.glossary.previewEntries
   };
 }
@@ -564,13 +562,14 @@ function mapMediaShellSnapshot(input: {
     | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>;
   review: ReturnType<typeof buildReviewOverviewSnapshot>;
 }): MediaShellSnapshot {
-  const lessonsCompleted = input.lessons.filter(
-    (lesson) => lesson.progress?.status === "completed"
-  ).length;
-  const lessonsTotal = input.lessons.length;
-  const activeLesson = selectActiveLesson(input.lessons);
-  const resumeLesson = selectResumeLesson(input.lessons);
-  const nextLesson = selectNextLesson(input.lessons);
+  const {
+    lessonsCompleted,
+    lessonsTotal,
+    activeLesson,
+    resumeLesson,
+    nextLesson,
+    segments
+  } = buildLessonMetrics(input.lessons);
   const reviewSignals = buildReviewSignals({
     activeReviewCards: input.review.activeCards,
     cardsDue: input.review.dueCount,
@@ -604,7 +603,7 @@ function mapMediaShellSnapshot(input: {
     activeLesson,
     resumeLesson,
     nextLesson,
-    segments: buildSegments(input.lessons),
+    segments,
     previewEntries: input.glossary.previewEntries
   };
 }

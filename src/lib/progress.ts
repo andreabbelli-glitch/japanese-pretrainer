@@ -16,18 +16,13 @@ import {
 import { getStudySettings } from "@/lib/settings";
 import {
   calculatePercent,
-  compareIsoDates,
   formatMediaTypeLabel,
   formatSegmentKindLabel,
   formatStatusLabel
 } from "@/lib/study-format";
 import {
-  buildSegments,
-  loadGlossaryProgressSnapshot,
-  mapLessonTarget,
-  selectActiveLesson,
-  selectResumeLesson,
-  selectNextLesson
+  buildLessonMetrics,
+  loadGlossaryProgressSnapshot
 } from "@/lib/study-metrics";
 
 import {
@@ -66,13 +61,13 @@ export type ProgressPageData = {
     title: string;
   };
   resume: {
-    activeLesson: ReturnType<typeof selectActiveLesson>;
+    activeLesson: ReturnType<typeof buildLessonMetrics>["activeLesson"];
     activeLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
-    lastOpenedLesson: ReturnType<typeof mapLessonTarget>;
+    lastOpenedLesson: ReturnType<typeof buildLessonMetrics>["lastOpenedLesson"];
     lastOpenedLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
-    resumeLesson: ReturnType<typeof selectResumeLesson>;
+    resumeLesson: ReturnType<typeof buildLessonMetrics>["resumeLesson"];
     resumeLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
-    nextLesson: ReturnType<typeof selectNextLesson>;
+    nextLesson: ReturnType<typeof buildLessonMetrics>["nextLesson"];
     nextLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
     recommendedArea: "review" | "textbook";
     recommendedBody: string;
@@ -100,13 +95,13 @@ export type ProgressPageData = {
   settings: Awaited<ReturnType<typeof getStudySettings>>;
   textbook: {
     completedLessons: number;
-    activeLesson: ReturnType<typeof selectActiveLesson>;
-    resumeLesson: ReturnType<typeof selectResumeLesson>;
+    activeLesson: ReturnType<typeof buildLessonMetrics>["activeLesson"];
+    resumeLesson: ReturnType<typeof buildLessonMetrics>["resumeLesson"];
     inProgressLessons: number;
-    lastOpenedLesson: ReturnType<typeof mapLessonTarget>;
-    nextLesson: ReturnType<typeof selectNextLesson>;
+    lastOpenedLesson: ReturnType<typeof buildLessonMetrics>["lastOpenedLesson"];
+    nextLesson: ReturnType<typeof buildLessonMetrics>["nextLesson"];
     progressPercent: number | null;
-    segments: ReturnType<typeof buildSegments>;
+    segments: ReturnType<typeof buildLessonMetrics>["segments"];
     totalLessons: number;
   };
 };
@@ -136,16 +131,17 @@ export async function getMediaProgressPageData(
       loadGlobalReviewOverviewSnapshot(database),
       getStudySettings(database)
     ]);
-  const completedLessons = lessons.filter(
-    (lesson) => lesson.progress?.status === "completed"
-  ).length;
+  const {
+    activeLesson,
+    lastOpenedLesson,
+    lessonsCompleted: completedLessons,
+    nextLesson,
+    resumeLesson,
+    segments
+  } = buildLessonMetrics(lessons);
   const inProgressLessons = lessons.filter(
     (lesson) => lesson.progress?.status === "in_progress"
   ).length;
-  const activeLesson = selectActiveLesson(lessons);
-  const resumeLesson = selectResumeLesson(lessons);
-  const nextLesson = selectNextLesson(lessons);
-  const lastOpenedLesson = selectLastOpenedLesson(lessons);
   const review = mapReviewSnapshot(reviewOverview, settings.reviewDailyLimit);
   const globalReview = mapReviewSnapshot(
     globalReviewOverview,
@@ -206,7 +202,7 @@ export async function getMediaProgressPageData(
       lastOpenedLesson,
       nextLesson,
       progressPercent: calculatePercent(completedLessons, lessons.length),
-      segments: buildSegments(lessons),
+      segments,
       totalLessons: lessons.length
     }
   };
@@ -214,9 +210,9 @@ export async function getMediaProgressPageData(
 
 function buildResumeModel(input: {
   globalReview: ProgressPageData["globalReview"];
-  resumeLesson: ReturnType<typeof selectResumeLesson>;
+  resumeLesson: ReturnType<typeof buildLessonMetrics>["resumeLesson"];
   mediaSlug: string;
-  nextLesson: ReturnType<typeof selectNextLesson>;
+  nextLesson: ReturnType<typeof buildLessonMetrics>["nextLesson"];
 }) {
   if (input.globalReview.queueCount > 0) {
     const headlineCount =
@@ -291,20 +287,7 @@ function mapReviewSnapshot(
   };
 }
 
-function selectLastOpenedLesson(
-  lessons: Awaited<ReturnType<typeof listLessonsByMediaId>>
-) {
-  return mapLessonTarget(
-    [...lessons]
-      .filter((lesson) => lesson.progress?.lastOpenedAt)
-      .sort((left, right) =>
-        compareIsoDates(
-          right.progress?.lastOpenedAt ?? null,
-          left.progress?.lastOpenedAt ?? null
-        )
-      )[0] ?? null
-  );
-}
+
 
 function markDataAsLive() {
   try {

@@ -157,41 +157,6 @@ export async function loadGlossaryProgressSnapshots(
   return snapshots;
 }
 
-export function selectActiveLesson(
-  lessons: LessonListItem[]
-): LessonResumeTarget | null {
-  const inProgress = [...lessons]
-    .filter((lesson) => lesson.progress?.status === "in_progress")
-    .sort((left, right) =>
-      compareIsoDates(
-        right.progress?.lastOpenedAt ?? null,
-        left.progress?.lastOpenedAt ?? null
-      )
-    );
-
-  if (inProgress[0]) {
-    return mapLessonTarget(inProgress[0]);
-  }
-
-  return null;
-}
-
-export function selectResumeLesson(
-  lessons: LessonListItem[]
-): LessonResumeTarget | null {
-  return selectNextLesson(lessons);
-}
-
-export function selectNextLesson(
-  lessons: LessonListItem[]
-): LessonResumeTarget | null {
-  const notCompleted = lessons.find(
-    (lesson) => lesson.progress?.status !== "completed"
-  );
-
-  return mapLessonTarget(notCompleted ?? lessons.at(0) ?? null);
-}
-
 export function mapLessonTarget(
   lesson: LessonListItem | null
 ): LessonResumeTarget | null {
@@ -216,38 +181,85 @@ export function mapLessonTarget(
   };
 }
 
-export function buildSegments(
-  lessons: LessonListItem[]
-): SegmentStudyPreview[] {
+export function buildLessonMetrics(lessons: LessonListItem[]) {
+  let lessonsCompleted = 0;
+  let activeLessonRaw: LessonListItem | null = null;
+  let nextLessonRaw: LessonListItem | null = null;
+  let lastOpenedLessonRaw: LessonListItem | null = null;
+
   const groups = new Map<string, SegmentStudyPreview>();
 
-  for (const lesson of lessons) {
+  for (let i = 0; i < lessons.length; i++) {
+    const lesson = lessons[i]!;
+    const status = lesson.progress?.status;
+    const isCompleted = status === "completed";
+    const isInProgress = status === "in_progress";
+
+    if (isCompleted) {
+      lessonsCompleted++;
+    }
+
+    if (isInProgress) {
+      if (
+        !activeLessonRaw ||
+        compareIsoDates(
+          lesson.progress?.lastOpenedAt ?? null,
+          activeLessonRaw.progress?.lastOpenedAt ?? null
+        ) > 0
+      ) {
+        activeLessonRaw = lesson;
+      }
+    }
+
+    if (lesson.progress?.lastOpenedAt) {
+      if (
+        !lastOpenedLessonRaw ||
+        compareIsoDates(
+          lesson.progress?.lastOpenedAt ?? null,
+          lastOpenedLessonRaw.progress?.lastOpenedAt ?? null
+        ) > 0
+      ) {
+        lastOpenedLessonRaw = lesson;
+      }
+    }
+
+    if (!nextLessonRaw && !isCompleted) {
+      nextLessonRaw = lesson;
+    }
+
     const key = lesson.segment?.id ?? "__ungrouped__";
-    const currentLessonTitle =
-      lesson.progress?.status === "in_progress" ? lesson.title : undefined;
+    const currentLessonTitle = isInProgress ? lesson.title : undefined;
     const existing = groups.get(key);
 
     if (existing) {
       existing.lessonCount += 1;
-      existing.completedLessons +=
-        lesson.progress?.status === "completed" ? 1 : 0;
+      existing.completedLessons += isCompleted ? 1 : 0;
 
       if (!existing.currentLessonTitle && currentLessonTitle) {
         existing.currentLessonTitle = currentLessonTitle;
       }
-
-      continue;
+    } else {
+      groups.set(key, {
+        id: key,
+        title: lesson.segment?.title ?? "Percorso principale",
+        note: lesson.segment?.notes ?? null,
+        lessonCount: 1,
+        completedLessons: isCompleted ? 1 : 0,
+        currentLessonTitle
+      });
     }
-
-    groups.set(key, {
-      id: key,
-      title: lesson.segment?.title ?? "Percorso principale",
-      note: lesson.segment?.notes ?? null,
-      lessonCount: 1,
-      completedLessons: lesson.progress?.status === "completed" ? 1 : 0,
-      currentLessonTitle
-    });
   }
 
-  return [...groups.values()];
+  const activeLesson = mapLessonTarget(activeLessonRaw);
+  const nextLesson = mapLessonTarget(nextLessonRaw ?? lessons.at(0) ?? null);
+
+  return {
+    activeLesson,
+    lastOpenedLesson: mapLessonTarget(lastOpenedLessonRaw),
+    lessonsCompleted,
+    lessonsTotal: lessons.length,
+    nextLesson,
+    resumeLesson: nextLesson,
+    segments: [...groups.values()]
+  };
 }
