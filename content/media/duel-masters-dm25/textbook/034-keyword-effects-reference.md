@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 63
+order: 64
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -93,6 +93,27 @@ reveal_mode: sentence
 - `バトルゾーンに{{出|で}}たターン` fissa la finestra immediata dopo l'ingresso.
 - `タップまたはアンタップしているクリーチャー` allarga i bersagli: la keyword
   non si limita alle creature già tappate.
+
+### [マナ進化GV](term:term-mana-evolution-gv)
+
+:::example_sentence
+jp: >-
+  [マナ{{進化|しんか}}GV](term:term-mana-evolution-gv)：ドラゴン{{3体|さんたい}}を
+  {{自分|じぶん}}の[マナゾーン](term:term-mana-zone)から{{選|えら}}び、
+  このクリーチャーをその{{上|うえ}}に
+  [{{重|かさ}}ねつつ](grammar:grammar-tsutsu)
+  [{{出|だ}}す](term:term-dasu)。
+translation_it: >-
+  Mana Evolution GV: scegli 3 Draghi dalla tua mana zone e metti questa
+  creatura in gioco sopra di loro, sovrapponendola.
+reveal_mode: sentence
+:::
+
+- `ドラゴン{{3体|さんたい}}` fissa subito il numero delle basi richieste.
+- `マナゾーンから` ti dice che il materiale dell'evoluzione viene dalla mana
+  zone.
+- `その{{上|うえ}}に{{重|かさ}}ねつつ{{出|だ}}す` comprime sovrapposizione e
+  ingresso in gioco in una sola operazione.
 
 ### [シビルカウント](term:term-civil-count)
 
