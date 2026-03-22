@@ -74,9 +74,11 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   [{{相手|あいて}}](term:term-opponent)は、
-  {{多色|たしょく}}ではない[{{呪文|じゅもん}}](term:term-spell)の
+  [{{多色|たしょく}}](term:term-multicolor)ではない
+  [{{呪文|じゅもん}}](term:term-spell)の
   [{{効果|こうか}}](term:term-effect)、または、
-  {{多色|たしょく}}ではない[クリーチャー](term:term-creature)の
+  [{{多色|たしょく}}](term:term-multicolor)ではない
+  [クリーチャー](term:term-creature)の
   [{{能力|のうりょく}}](term:term-ability)によって、
   この[クリーチャー](term:term-creature)は{{選|えら}}べない。
 translation_it: >-
@@ -110,7 +112,8 @@ reveal_mode: sentence
 
 ### 3. 多色ではない呪文の効果、または、多色ではないクリーチャーの能力
 
-- `{{多色|たしょく}}ではない` è la restrizione di filtro: il testo sta
+- `[{{多色|たしょく}}](term:term-multicolor)ではない` è la restrizione di
+  filtro: il testo sta
   prendendo in considerazione solo effetti o abilità non multicolori.
 - `[{{呪文|じゅもん}}](term:term-spell)の[{{効果|こうか}}](term:term-effect)` e
   `[クリーチャー](term:term-creature)の[{{能力|のうりょく}}](term:term-ability)`
@@ -127,5 +130,6 @@ reveal_mode: sentence
 - `{{各|かく}}ターン` e `はじめて` sono un altro blocco utile: ti dicono che
   l'effetto si resetta ogni turno e si applica solo al primo attacco di quel
   turno.
-- `{{多色|たしょく}}ではない` è il filtro negativo che limita chi può
+- `[{{多色|たしょく}}](term:term-multicolor)ではない` è il filtro negativo
+  che limita chi può
   scegliere questa creatura.

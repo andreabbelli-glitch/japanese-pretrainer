@@ -136,7 +136,7 @@ jp: >-
   キリフダッシュ{{6|ろく}}：
   {{自分|じぶん}}の[クリーチャー](term:term-creature)の
   {{攻撃|こうげき}}の{{終|お}}わりに、その[クリーチャー](term:term-creature)
-  がその{{攻撃|こうげき}}{{中|ちゅう}}にシールドをブレイクしていれば、
+  が[その{{攻撃中|こうげきちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba),
   このクリーチャーを{{6|ろく}}[{{支払|しはら}}って](term:term-harau)
   [{{召喚|しょうかん}}](term:term-summon)してもよい。
 translation_it: >-
@@ -149,9 +149,14 @@ reveal_mode: sentence
 - `{{攻撃|こうげき}}の{{終|お}}わりに` fissa il timing: controlli la keyword
   solo quando
   l'attacco è già finito.
-- `その{{攻撃|こうげき}}{{中|ちゅう}}にシールドをブレイクしていれば` tiene
-  insieme causa e
-  condizione nello stesso attacco.
+- `[その{{攻撃中|こうげきちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba)`
+  tiene insieme finestra e condizione nello stesso attacco.
+- `{{攻撃中|こうげきちゅう}}` non indica semplicemente `mentre si attacca` in
+  senso vago: `{{中|ちゅう}}` chiude il controllo dentro l'interno di quella
+  singola azione di attacco appena nominata da `その`.
+- Per questo la frase funziona bene con `{{攻撃|こうげき}}の{{終|お}}わりに`:
+  alla fine dell'attacco guardi indietro e controlli se, dentro quella stessa
+  finestra, il break dello scudo è davvero successo.
 - `{{召喚|しょうかん}}してもよい` è il payoff facoltativo: il testo non dice che
   devi evocare
   per forza, ma che puoi farlo se la condizione è stata soddisfatta.
