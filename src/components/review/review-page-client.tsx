@@ -136,6 +136,8 @@ export function ReviewPageClient({
   );
   const showCompletionState = !hasQueue && selectedCard === null;
   const actionRedirectMode = isQueueCard ? "advance_queue" : "preserve_card";
+  const isRevealDisabled =
+    isPending && selectedCard?.id !== prefetchedNextCardId;
   const gradePreviewLookup = isFullReviewPageData
     ? new Map(
         viewData.selectedCardContext.gradePreviews.map((preview) => [
@@ -296,14 +298,17 @@ export function ReviewPageClient({
     }
 
     if (isFullReviewPageData) {
+      const fullViewData = viewData as ReviewPageData;
+      const gradePreviews =
+        fullViewData.selectedCardContext.gradePreviews.length > 0
+          ? fullViewData.selectedCardContext.gradePreviews
+          : buildReviewGradePreviews(selectedCard.reviewSeedState, new Date());
+
       setViewData((prev) => ({
         ...prev,
         selectedCardContext: {
           ...prev.selectedCardContext,
-          gradePreviews: buildReviewGradePreviews(
-            selectedCard.reviewSeedState,
-            new Date()
-          ),
+          gradePreviews,
           showAnswer: true
         }
       }));
@@ -401,8 +406,6 @@ export function ReviewPageClient({
                 })
               );
               setQueueCardIds(nextQueueCardIds);
-              setPrefetchedNextCard(null);
-              setPrefetchedNextCardId(null);
 
               return () => {
                 setViewData(previousViewData);
@@ -547,7 +550,7 @@ export function ReviewPageClient({
                   <div className="review-stage__veil">
                     <button
                       className="button button--primary review-stage__reveal"
-                      disabled={isPending}
+                      disabled={isRevealDisabled}
                       type="button"
                       onClick={handleRevealAnswer}
                     >
@@ -954,10 +957,12 @@ function mergeReviewPageData(
       ...nextData.selectedCardContext,
       gradePreviews:
         showAnswer && nextData.selectedCard
-          ? buildReviewGradePreviews(
-              nextData.selectedCard.reviewSeedState,
-              new Date()
-            )
+          ? nextData.selectedCardContext.gradePreviews.length > 0
+            ? nextData.selectedCardContext.gradePreviews
+            : buildReviewGradePreviews(
+                nextData.selectedCard.reviewSeedState,
+                new Date()
+              )
           : nextData.selectedCardContext.gradePreviews,
       showAnswer
     }

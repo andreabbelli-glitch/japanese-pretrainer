@@ -25,6 +25,7 @@ import {
   type TermGlossaryEntrySummary
 } from "@/db";
 import {
+  buildGlossarySummaryTags,
   buildReviewSummaryTags,
   canUseDataCache,
   listMediaCached,
@@ -1288,6 +1289,33 @@ export async function getReviewQueueSnapshotForMedia(
 }
 
 export async function hydrateReviewCard(input: {
+  cardId: string;
+  database?: DatabaseClient;
+  now?: Date;
+  profiler?: ReviewProfiler | null;
+}): Promise<ReviewQueueCard | null> {
+  const database = input.database ?? db;
+  const cacheEligible = canUseDataCache(database);
+
+  return measureWith(
+    input.profiler,
+    "hydrateReviewCard.cached",
+    () =>
+      runWithTaggedCache({
+        enabled: cacheEligible,
+        keyParts: ["review", "hydrated-card", input.cardId],
+        loader: () => hydrateReviewCardUncached(input),
+        tags: [
+          ...buildReviewSummaryTags(),
+          ...buildGlossarySummaryTags(),
+          REVIEW_FIRST_CANDIDATE_TAG
+        ]
+      }),
+    { cacheEligible, cardId: input.cardId }
+  );
+}
+
+async function hydrateReviewCardUncached(input: {
   cardId: string;
   database?: DatabaseClient;
   now?: Date;

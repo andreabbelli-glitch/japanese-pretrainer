@@ -64,7 +64,10 @@ import {
   revalidateSettingsCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
-import { getGlobalReviewFirstCandidateLoadResult } from "@/lib/review";
+import {
+  getGlobalReviewFirstCandidateLoadResult,
+  hydrateReviewCard
+} from "@/lib/review";
 
 describe("global review first-candidate cache", () => {
   let database: DatabaseClient;
@@ -87,7 +90,7 @@ describe("global review first-candidate cache", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("reuses the cached snapshot for repeated first-candidate loads and invalidates on review-related cache busts", async () => {
+  async function seedSingleReviewCardFixture() {
     await database.insert(media).values([
       {
         id: "media_a",
@@ -122,25 +125,27 @@ describe("global review first-candidate cache", () => {
       status: "completed",
       completedAt: "2026-03-10T09:00:00.000Z"
     });
-    await database.insert(card).values([
-      {
-        id: "card_a",
-        mediaId: "media_a",
-        lessonId: "lesson_a",
-        segmentId: null,
-        sourceFile: "tests/review-first-candidate-cache/media-a.md",
-        cardType: "recognition",
-        front: "A",
-        back: "A back",
-        exampleJp: null,
-        exampleIt: null,
-        notesIt: null,
-        status: "active",
-        orderIndex: 1,
-        createdAt: "2026-03-10T10:00:00.000Z",
-        updatedAt: "2026-03-10T10:00:00.000Z"
-      }
-    ]);
+    await database.insert(card).values({
+      id: "card_a",
+      mediaId: "media_a",
+      lessonId: "lesson_a",
+      segmentId: null,
+      sourceFile: "tests/review-first-candidate-cache/media-a.md",
+      cardType: "recognition",
+      front: "A",
+      back: "A back",
+      exampleJp: null,
+      exampleIt: null,
+      notesIt: null,
+      status: "active",
+      orderIndex: 1,
+      createdAt: "2026-03-10T10:00:00.000Z",
+      updatedAt: "2026-03-10T10:00:00.000Z"
+    });
+  }
+
+  it("reuses the cached snapshot for repeated first-candidate loads and invalidates on review-related cache busts", async () => {
+    await seedSingleReviewCardFixture();
     await database.insert(userSetting).values({
       key: "review_daily_limit",
       valueJson: "1",
@@ -185,6 +190,44 @@ describe("global review first-candidate cache", () => {
     revalidateReviewSummaryCache("media_a");
     revalidateGlossarySummaryCache("media_a");
     revalidateSettingsCache();
+
+    expect(revalidateTagMock).toHaveBeenCalledWith(
+      REVIEW_FIRST_CANDIDATE_TAG,
+      "max"
+    );
+  });
+
+  it("reuses the cached hydrated review card for repeated loads", async () => {
+    await seedSingleReviewCardFixture();
+
+    const coldStart = performance.now();
+    const first = await hydrateReviewCard({
+      cardId: "card_a",
+      database
+    });
+    const coldMs = performance.now() - coldStart;
+    const warmStart = performance.now();
+    const second = await hydrateReviewCard({
+      cardId: "card_a",
+      database
+    });
+    const warmMs = performance.now() - warmStart;
+
+    console.info(
+      `[review-card-hydration-cache] cold=${coldMs.toFixed(2)}ms warm=${warmMs.toFixed(2)}ms`
+    );
+
+    expect(first).not.toBeNull();
+    expect(second).toEqual(first);
+    expect(warmMs).toBeLessThanOrEqual(coldMs);
+
+    const cacheKey = JSON.stringify(["review", "hydrated-card", "card_a"]);
+
+    expect(unstableCacheMock).toHaveBeenCalled();
+    expect(cacheStore.has(cacheKey)).toBe(true);
+
+    revalidateReviewSummaryCache("media_a");
+    revalidateGlossarySummaryCache("media_a");
 
     expect(revalidateTagMock).toHaveBeenCalledWith(
       REVIEW_FIRST_CANDIDATE_TAG,
