@@ -9,6 +9,7 @@ import {
   deriveReviewSubjectIdentity,
   groupReviewCardsBySubject,
   type ReviewSubjectGroup,
+  type ReviewSubjectIdentity,
   type ReviewSubjectStateSnapshot
 } from "./review-subject.ts";
 
@@ -46,20 +47,23 @@ export async function resolveReviewSubjectGroups(
     grammar: input.grammar,
     terms: input.terms
   });
-  const subjectKeys = [
-    ...new Set(
-      input.cards.map(
-        (card) =>
-          deriveReviewSubjectIdentity({
-            cardId: card.id,
-            cardType: card.cardType,
-            front: card.front,
-            entryLinks: card.entryLinks,
-            entryLookup: subjectEntryLookup
-          }).subjectKey
-      )
-    )
-  ];
+  const precomputedIdentities = new Map<string, ReviewSubjectIdentity>();
+  const subjectKeysSet = new Set<string>();
+
+  for (const card of input.cards) {
+    const identity = deriveReviewSubjectIdentity({
+      cardId: card.id,
+      cardType: card.cardType,
+      front: card.front,
+      entryLinks: card.entryLinks,
+      entryLookup: subjectEntryLookup
+    });
+
+    precomputedIdentities.set(card.id, identity);
+    subjectKeysSet.add(identity.subjectKey);
+  }
+
+  const subjectKeys = [...subjectKeysSet];
   const subjectStateRows = await listReviewSubjectStatesByKeys(
     input.database,
     subjectKeys
@@ -74,7 +78,8 @@ export async function resolveReviewSubjectGroups(
     cards: input.cards,
     entryLookup: subjectEntryLookup,
     nowIso: input.nowIso,
-    subjectStates
+    subjectStates,
+    precomputedIdentities
   });
 
   return {

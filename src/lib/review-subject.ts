@@ -233,17 +233,20 @@ export function groupReviewCardsBySubject(input: {
   entryLookup: Map<string, ReviewSubjectEntryMeta>;
   nowIso?: string;
   subjectStates: Map<string, ReviewSubjectStateSnapshot>;
+  precomputedIdentities?: Map<string, ReviewSubjectIdentity>;
 }): ReviewSubjectGroup[] {
   const groups = new Map<string, ReviewSubjectGroup>();
 
   for (const card of input.cards) {
-    const identity = deriveReviewSubjectIdentity({
-      cardId: card.id,
-      cardType: card.cardType,
-      front: card.front,
-      entryLinks: card.entryLinks,
-      entryLookup: input.entryLookup
-    });
+    const identity =
+      input.precomputedIdentities?.get(card.id) ??
+      deriveReviewSubjectIdentity({
+        cardId: card.id,
+        cardType: card.cardType,
+        front: card.front,
+        entryLinks: card.entryLinks,
+        entryLookup: input.entryLookup
+      });
     const subjectState = input.subjectStates.get(identity.subjectKey) ?? null;
     const existing = groups.get(identity.subjectKey);
 
