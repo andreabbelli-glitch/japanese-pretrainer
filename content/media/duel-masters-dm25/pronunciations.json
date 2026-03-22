@@ -3,6 +3,13 @@
   "entries": [
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-hajimatte-ite",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A7%8B%E3%81%BE%E3%82%8B"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-ichiran",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
@@ -106,6 +113,13 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-tsutsu",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A4%E3%81%A4"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-ui-chuu",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
@@ -124,7 +138,10 @@
       "audio_src": "assets/audio/term/term-ability/forvo-manual-のうりょく.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%83%BD%E5%8A%9B/#ja"
+      "audio_page_url": "https://forvo.com/word/%E8%83%BD%E5%8A%9B/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AE%E3%81%86%E3%82%8A%E3%82%87%E3%81%8F"
     },
     {
       "entry_type": "term",
@@ -164,7 +181,10 @@
       "audio_src": "assets/audio/term/term-ataeru/forvo-manual-あたえる.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%B8%8E%E3%81%88%E3%82%8B/#ja"
+      "audio_page_url": "https://forvo.com/word/%E4%B8%8E%E3%81%88%E3%82%8B/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%82%E3%81%9F%E3%81%88%E3%82%8B"
     },
     {
       "entry_type": "term",
@@ -191,7 +211,10 @@
       "audio_src": "assets/audio/term/term-baai/forvo-manual-は-あい.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%A0%B4%E5%90%88/#ja"
+      "audio_page_url": "https://forvo.com/word/%E5%A0%B4%E5%90%88/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%B0%E3%81%82%E3%81%84"
     },
     {
       "entry_type": "term",
@@ -611,6 +634,13 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-kaku",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%90%84"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kakutoku",
       "audio_src": "assets/audio/term/term-kakutoku/forvo-manual-かくとく.mp3",
       "audio_source": "forvo",
@@ -637,7 +667,17 @@
       "audio_src": "assets/audio/term/term-kore-ra/forvo-manual-これら.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E3%81%93%E3%82%8C%E3%82%89/#ja"
+      "audio_page_url": "https://forvo.com/word/%E3%81%93%E3%82%8C%E3%82%89/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%93%E3%82%8C%E3%82%89"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-light",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%B2%E3%81%8B%E3%82%8A"
     },
     {
       "entry_type": "term",
@@ -686,7 +726,10 @@
       "audio_src": "assets/audio/term/term-mushi-suru/forvo-manual-むしする.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%84%A1%E8%A6%96%E3%81%99%E3%82%8B/#ja"
+      "audio_page_url": "https://forvo.com/word/%E7%84%A1%E8%A6%96%E3%81%99%E3%82%8B/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%80%E3%81%97%E3%81%99%E3%82%8B"
     },
     {
       "entry_type": "term",
@@ -705,7 +748,10 @@
       "audio_src": "assets/audio/term/term-ninzuu/forvo-manual-にんす-う.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%BA%BA%E6%95%B0/#ja"
+      "audio_page_url": "https://forvo.com/word/%E4%BA%BA%E6%95%B0/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AB%E3%82%93%E3%81%9A%E3%81%86"
     },
     {
       "entry_type": "term",
@@ -724,7 +770,10 @@
       "audio_src": "assets/audio/term/term-okoru/forvo-manual-おこる.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%B5%B7%E3%81%93%E3%82%8B/#ja"
+      "audio_page_url": "https://forvo.com/word/%E8%B5%B7%E3%81%93%E3%82%8B/#ja",
+      "pitch_accent": 2,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8A%E3%81%93%E3%82%8B"
     },
     {
       "entry_type": "term",
@@ -777,6 +826,13 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%A6%82%E8%A6%81"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-owari",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8A%E3%82%8F%E3%82%8A"
     },
     {
       "entry_type": "term",
@@ -865,6 +921,13 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A0%B1%E9%85%AC"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-saisho",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%9C%80%E5%88%9D"
     },
     {
       "entry_type": "term",
@@ -971,11 +1034,21 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-state",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%8A%B6%E6%85%8B"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-subete",
       "audio_src": "assets/audio/term/term-subete/forvo-manual-すへ-て.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E3%81%99%E3%81%B9%E3%81%A6/#ja"
+      "audio_page_url": "https://forvo.com/word/%E3%81%99%E3%81%B9%E3%81%A6/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%99%E3%81%B9%E3%81%A6"
     },
     {
       "entry_type": "term",
@@ -1024,6 +1097,13 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-tonaeru",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E5%94%B1%E3%81%88%E3%82%8B"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-unlock",
       "audio_src": "assets/audio/term/term-unlock/forvo-manual-かいほう.mp3",
       "audio_source": "forvo",
@@ -1043,20 +1123,6 @@
       "pitch_accent": 0,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%97%E3%82%88%E3%81%86"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-state",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%8A%B6%E6%85%8B"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-hajimatte-ite",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A7%8B%E3%81%BE%E3%82%8B"
     }
   ]
 }
