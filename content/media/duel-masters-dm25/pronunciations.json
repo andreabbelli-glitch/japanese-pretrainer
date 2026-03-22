@@ -32,6 +32,13 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-made",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%BE%E3%81%A7"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-matawa",
       "audio_src": "assets/audio/grammar/grammar-matawa/forvo-manual-または.mp3",
       "audio_source": "forvo",
@@ -354,6 +361,13 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-darkness",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%97%87"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-dasu",
       "audio_src": "assets/audio/term/term-dasu/forvo-manual-た-す.mp3",
       "audio_source": "forvo",
@@ -428,6 +442,13 @@
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%88%86%E8%A7%A3"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-dragon",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3"
     },
     {
       "entry_type": "term",
@@ -619,7 +640,10 @@
       "audio_src": "assets/audio/term/term-jougen/forvo-manual-し-ょうけ-ん.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%B8%8A%E9%99%90/#ja"
+      "audio_page_url": "https://forvo.com/word/%E4%B8%8A%E9%99%90/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%8A%E9%99%90"
     },
     {
       "entry_type": "term",
@@ -703,6 +727,13 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-mochinushi",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%8C%81%E3%81%A1%E4%B8%BB"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-modosu",
       "audio_src": "assets/audio/term/term-modosu/forvo-manual-もと-す.mp3",
       "audio_source": "forvo",
@@ -711,6 +742,13 @@
       "pitch_accent": 2,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%88%BB%E3%81%99"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-motsu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%8C%81%E3%81%A4"
     },
     {
       "entry_type": "term",

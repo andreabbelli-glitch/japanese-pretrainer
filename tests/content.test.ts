@@ -695,7 +695,10 @@ describe("content parser and validator", () => {
       "live-duel-encounters-balga-raizou-the-super-heavenly-nova",
       "live-duel-encounters-infelstarge",
       "live-duel-encounters-bolzard-superhero-super-emperor-time",
-      "live-duel-encounters-dragocalypse-day"
+      "live-duel-encounters-dragocalypse-day",
+      "live-duel-encounters-savark-dg",
+      "live-duel-encounters-felix-misery",
+      "live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
       "cards-duel-masters-dm25-tcg-core-basics",
@@ -720,7 +723,10 @@ describe("content parser and validator", () => {
       "cards-duel-masters-dm25-live-duel-encounters-balga-raizou-the-super-heavenly-nova",
       "cards-duel-masters-dm25-live-duel-encounters-infelstarge",
       "cards-duel-masters-dm25-live-duel-encounters-bolzard-superhero-super-emperor-time",
-      "cards-duel-masters-dm25-live-duel-encounters-dragocalypse-day"
+      "cards-duel-masters-dm25-live-duel-encounters-dragocalypse-day",
+      "cards-duel-masters-dm25-live-duel-encounters-savark-dg",
+      "cards-duel-masters-dm25-live-duel-encounters-felix-misery",
+      "cards-duel-masters-dm25-live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade"
     ]);
     expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
       true

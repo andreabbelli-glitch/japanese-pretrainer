@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 69
+order: 70
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -181,6 +181,30 @@ reveal_mode: sentence
 - `{{召喚|しょうかん}}してもよい` è il payoff facoltativo: il testo non dice che
   devi evocare
   per forza, ma che puoi farlo se la condizione è stata soddisfatta.
+
+### [ニンジャ・ストライク](term:term-ninja-strike)
+
+:::example_sentence
+jp: >-
+  [ニンジャ・ストライク](term:term-ninja-strike) {{8|はち}}：
+  {{相手|あいて}}の[クリーチャー](term:term-creature)が
+  {{攻撃|こうげき}}またはブロックした{{時|とき}}、{{自分|じぶん}}の
+  [マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はちまいいじょう}}あり、
+  その{{攻撃中|こうげきちゅう}}に「ニンジャ・ストライク」
+  [{{能力|のうりょく}}](term:term-ability)を{{使|つか}}っていなければ、このシノビを
+  コストを[{{支払|しはら}}わずに](term:term-harau)
+  [{{召喚|しょうかん}}](term:term-summon)してもよい。
+translation_it: >-
+  Ninja Strike 8: quando una creatura avversaria attacca o blocca, se hai 8 o
+  più carte nel mana e durante quell'attacco non hai ancora usato Ninja Strike,
+  puoi evocare questo Shinobi senza pagarne il costo.
+reveal_mode: sentence
+:::
+
+- `{{8枚以上|はちまいいじょう}}あり` apre la prima soglia e `あり` collega
+  subito la frase alla condizione seguente.
+- `使っていなければ` è il secondo cancello: controlla se, dentro quello stesso
+  attacco, hai già usato una abilità `ニンジャ・ストライク` oppure no.
 
 ### [メテオバーン](term:term-meteorburn)
 
