@@ -165,3 +165,16 @@ reveal_mode: sentence
 - `[{{進化|しんか}}](term:term-evolution)[でない](grammar:grammar-de-nai)` è un
   filtro molto utile da memorizzare come chunk, perché ricompare facilmente
   ogni volta che il testo vuole escludere una categoria specifica.
+- `{{少|すく}}なくする` è giapponese generale molto riusabile: non vuol dire
+  `pagare meno` in senso libero, ma `rendere minore una quantità`. Qui l'oggetto
+  è il costo, quindi lo leggi come `ridurre il costo`.
+- `として` è un marcatore di ruolo o qualifica. Fuori dal TCG può voler dire
+  `come insegnante`, `come esempio`, `come problema`; qui restringe il senso a
+  `come NEO evolution creature`.
+- `{{召喚|しょうかん}}する` mostra un pattern molto comune del giapponese:
+  sostantivo sino-giapponese + `する` per formare il verbo. `{{召喚|しょうかん}}`
+  è `l'evocazione`, `{{召喚|しょうかん}}する` è `evocare`.
+- `{{闇|やみ}}` in giapponese generale è `oscurità`, ma nel lessico di Duel
+  Masters funziona spesso come nome compatto della civiltà Darkness. Per questo
+  `{{闇|やみ}}のクリーチャー` va letto come categoria tecnica, non come descrizione
+  poetica.

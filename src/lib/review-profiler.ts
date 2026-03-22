@@ -203,3 +203,15 @@ function isTruthyFlag(value: string | null | undefined) {
 function roundDuration(value: number) {
   return Number(value.toFixed(1));
 }
+
+export async function measureWith<T>(
+  profiler: ReviewProfiler | null | undefined,
+  name: string,
+  fn: () => Promise<T> | T,
+  detail?:
+    | Record<string, unknown>
+    | ((value: T) => Record<string, unknown> | undefined | null)
+): Promise<T> {
+  if (profiler) return profiler.measure(name, fn, detail);
+  return fn();
+}

@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "Next.js dev",
-      "runtimeExecutable": "node",
+      "runtimeExecutable": "/opt/homebrew/bin/node",
       "runtimeArgs": ["/Users/abelli/Codex/Japanese Custom Study/node_modules/next/dist/bin/next", "dev"],
       "port": 3000,
       "autoPort": true

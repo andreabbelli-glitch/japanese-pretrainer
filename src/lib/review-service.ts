@@ -41,6 +41,21 @@ type DatabaseTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
 >[0];
 
+function splitLinkIds(links: Array<{ entryType: string; entryId: string }>) {
+  const termIds = new Set<string>();
+  const grammarIds = new Set<string>();
+
+  for (const link of links) {
+    if (link.entryType === "term") {
+      termIds.add(link.entryId);
+    } else {
+      grammarIds.add(link.entryId);
+    }
+  }
+
+  return { grammarIds: [...grammarIds], termIds: [...termIds] };
+}
+
 type LinkedEntryRef = {
   entryId: string;
   entryType: EntryType;
@@ -526,20 +541,8 @@ async function loadReviewSubjectMutationContext(
 ): Promise<ReviewSubjectMutationContext> {
   const txDb = transaction as unknown as DatabaseClient;
   const drivingLinks = getDrivingEntryLinks(loadedCard.entryLinks);
-  const termEntryIds = [
-    ...new Set(
-      drivingLinks
-        .filter((entryLink) => entryLink.entryType === "term")
-        .map((entryLink) => entryLink.entryId)
-    )
-  ];
-  const grammarEntryIds = [
-    ...new Set(
-      drivingLinks
-        .filter((entryLink) => entryLink.entryType === "grammar")
-        .map((entryLink) => entryLink.entryId)
-    )
-  ];
+  const { termIds: termEntryIds, grammarIds: grammarEntryIds } =
+    splitLinkIds(drivingLinks);
   const [terms, grammar] = await Promise.all([
     getGlossaryEntriesByIds(txDb, "term", termEntryIds),
     getGlossaryEntriesByIds(txDb, "grammar", grammarEntryIds)
@@ -566,20 +569,8 @@ async function loadReviewSubjectMutationContext(
       ? [loadedCard.id]
       : await listReviewCardIdsByEntryRefs(txDb, subjectEntryRefs);
   const dedupedMemberCardIds = [...new Set([loadedCard.id, ...memberCardIds])];
-  const memberEntryRefTerms = [
-    ...new Set(
-      subjectEntryRefs
-        .filter((entry) => entry.entryType === "term")
-        .map((entry) => entry.entryId)
-    )
-  ];
-  const memberEntryRefGrammar = [
-    ...new Set(
-      subjectEntryRefs
-        .filter((entry) => entry.entryType === "grammar")
-        .map((entry) => entry.entryId)
-    )
-  ];
+  const { termIds: memberEntryRefTerms, grammarIds: memberEntryRefGrammar } =
+    splitLinkIds(subjectEntryRefs);
   const [memberTerms, memberGrammar, loadedMemberCards] = await Promise.all([
     getGlossaryEntriesByIds(txDb, "term", memberEntryRefTerms),
     getGlossaryEntriesByIds(txDb, "grammar", memberEntryRefGrammar),

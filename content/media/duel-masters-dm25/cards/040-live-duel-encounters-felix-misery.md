@@ -24,6 +24,39 @@ notes_it: >-
 level_hint: custom
 :::
 
+:::term
+id: term-sukunaku-suru
+lemma: 少なくする
+reading: すくなくする
+romaji: sukunaku suru
+meaning_it: ridurre / diminuire / rendere meno
+pos: verb
+aliases: [少なくする, すくなくする, sukunaku suru]
+notes_it: >-
+  In giapponese generale `少なくする` significa "ridurre", "rendere meno" o
+  "diminuire una quantità". Parte dall'aggettivo `少ない` e con `する` diventa
+  un verbo causativo semplice: fai diventare minore qualcosa. Nel rules text
+  di Duel Masters compare spesso con costi, numeri o conteggi, per esempio
+  `コストを{{2|ふた}}つ{{少|すく}}なくする`.
+level_hint: n3
+:::
+
+:::term
+id: term-darkness
+lemma: 闇
+reading: やみ
+romaji: yami
+meaning_it: oscurità / civiltà Darkness
+pos: noun
+aliases: [闇, やみ, yami, Darkness]
+notes_it: >-
+  In giapponese generale `闇` significa "oscurità". Nel lessico di Duel Masters
+  il significato si specializza spesso nella civiltà Darkness, quindi in chunk
+  come `{{闇|やみ}}のクリーチャー` non descrive un'atmosfera "oscura", ma la
+  famiglia di appartenenza della carta.
+level_hint: n3
+:::
+
 :::grammar
 id: grammar-de-nai
 pattern: ～でない
@@ -38,6 +71,22 @@ notes_it: >-
   `{{進化|しんか}}でない{{闇|やみ}}のクリーチャー`, la carta non sta descrivendo
   un'atmosfera o una mancanza vaga: sta escludendo con precisione le evolution
   creature dal gruppo dei bersagli validi.
+level_hint: n4
+:::
+
+:::grammar
+id: grammar-toshite
+pattern: ～として
+title: Come / in qualità di
+reading: として
+meaning_it: come / in qualità di / nel ruolo di
+aliases: [として]
+notes_it: >-
+  `として` serve a marcare il ruolo, la qualifica o la cornice in cui qualcosa
+  viene trattato. In giapponese generale lo usi in frasi come
+  `{{先生|せんせい}}として{{働|はたら}}く` o `{{例|れい}}として{{出|だ}}す`. Nel
+  rules text di questa carta restringe il modo di ingresso: non "evocare" in
+  generale, ma evocare `NEO{{進化|しんか}}クリーチャーとして`.
 level_hint: n4
 :::
 
@@ -84,6 +133,26 @@ tags: [live-duel, concept, condition, neo-evolution]
 :::
 
 :::card
+id: card-felix-toshite-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-felix-misery
+entry_type: grammar
+entry_id: grammar-toshite
+card_type: concept
+front: として
+back: come / in qualità di / nel ruolo di
+example_jp: >-
+  NEO{{進化|しんか}}クリーチャーとして{{召喚|しょうかん}}する。
+example_it: >-
+  Evocarla come creatura NEO evolution.
+notes_it: >-
+  In giapponese generale `として` non introduce un tempo o una causa: dice in
+  che veste va interpretata un'azione o una persona. Qui è importante proprio
+  perché restringe la lettura a `come NEO evolution`, non a qualunque
+  evocazione.
+tags: [live-duel, grammar, role, general-japanese]
+:::
+
+:::card
 id: card-felix-two-darkness-creatures-areba-concept
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-felix-misery
 entry_type: grammar
@@ -104,6 +173,65 @@ notes_it: >-
   condizionale `あれば`. È una struttura molto riusabile nei testi che aprono
   un effetto solo se il board soddisfa una certa quantità minima.
 tags: [live-duel, grammar, threshold, darkness]
+:::
+
+:::card
+id: card-felix-darkness-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-felix-misery
+entry_type: term
+entry_id: term-darkness
+card_type: recognition
+front: '{{闇|やみ}}'
+back: oscurità / civiltà Darkness
+example_jp: >-
+  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーが{{2体以上|にたいいじょう}}あれば、
+  このクリーチャーを{{召喚|しょうかん}}してもよい。
+example_it: >-
+  Se hai due o più creature Darkness, puoi evocare questa creatura.
+notes_it: >-
+  Fuori dal gioco `{{闇|やみ}}` è la normale parola per "oscurità". Qui però va
+  fissata soprattutto come etichetta di civiltà: in `{{闇|やみ}}のクリーチャー`
+  identifica quali carte contano per la condizione.
+tags: [live-duel, term, civilization, general-japanese]
+:::
+
+:::card
+id: card-felix-shoukan-suru-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-felix-misery
+entry_type: term
+entry_id: term-summon
+card_type: concept
+front: '{{召喚|しょうかん}}する'
+back: evocare / compiere l'evocazione
+example_jp: >-
+  {{墓地|ぼち}}からこのクリーチャーを{{召喚|しょうかん}}してもよい。
+example_it: >-
+  Puoi evocare questa creatura dal cimitero.
+notes_it: >-
+  `{{召喚|しょうかん}}` da solo è il nome dell'azione, mentre `{{召喚|しょうかん}}する`
+  è il verbo completo "evocare". In giapponese questo passaggio è molto comune:
+  un nome sino-giapponese più `する` diventa un verbo operativo del rules text.
+tags: [live-duel, term, verbal-noun, general-japanese]
+:::
+
+:::card
+id: card-felix-sukunaku-suru-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-felix-misery
+entry_type: term
+entry_id: term-sukunaku-suru
+card_type: recognition
+front: '{{少|すく}}なくする'
+back: ridurre / diminuire / rendere meno
+example_jp: >-
+  [コスト](term:term-cost)を{{2|ふた}}つ{{少|すく}}なくする。
+example_it: >-
+  Ridurre il costo di 2.
+notes_it: >-
+  Il blocco viene dal giapponese generale, non da una keyword speciale:
+  `少ない` descrive qualcosa di "scarso / poco", e `少なくする` significa farlo
+  diventare meno grande o meno numeroso. Su una carta, quasi sempre va letto
+  come "ridurre" una quantità.
+tags: [live-duel, term, reduction, general-japanese]
 :::
 
 :::card
