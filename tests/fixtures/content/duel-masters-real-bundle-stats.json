@@ -2,18 +2,18 @@
   "parser": {
     "lessons": 25,
     "cardFiles": 19,
-    "terms": 188,
-    "grammarPatterns": 42,
-    "cards": 244,
-    "references": 1341
+    "terms": 189,
+    "grammarPatterns": 45,
+    "cards": 248,
+    "references": 1359
   },
   "importer": {
-    "term": 188,
-    "termAlias": 493,
-    "grammarPattern": 42,
-    "grammarAlias": 51,
-    "entryLink": 779,
-    "card": 244,
-    "cardEntryLink": 284
+    "term": 189,
+    "termAlias": 497,
+    "grammarPattern": 45,
+    "grammarAlias": 54,
+    "entryLink": 791,
+    "card": 248,
+    "cardEntryLink": 291
   }
 }

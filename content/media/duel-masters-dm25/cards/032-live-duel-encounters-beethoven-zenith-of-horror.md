@@ -40,6 +40,38 @@ notes_it: >-
 level_hint: custom
 :::
 
+:::term
+id: term-colorless-spell
+lemma: 無色呪文
+reading: むしょく じゅもん
+romaji: mushoku jumon
+meaning_it: spell incolore
+pos: noun
+aliases: [無色呪文, むしょくじゅもん, colorless spell, spell incolore]
+notes_it: >-
+  È il composto che unisce `無色` e `呪文` in una categoria precisa del rules
+  text: non una magia qualunque, ma una spell priva di civiltà colorata. Su
+  Beethoven compare come uno dei due gruppi che puoi recuperare insieme ai
+  Draghi, quindi vale la pena fissarlo come blocco unico invece di leggerlo
+  ogni volta pezzo per pezzo.
+level_hint: custom
+:::
+
+:::grammar
+id: grammar-shoukan-ni-yotte
+pattern: 召喚によって
+title: Entrata proprio tramite summon
+reading: しょうかんによって
+meaning_it: tramite evocazione / per il fatto di essere stato evocato
+aliases: [召喚によって]
+notes_it: >-
+  Qui `によって` indica il mezzo preciso con cui avviene l'ingresso. In
+  `このクリーチャーが{{召喚|しょうかん}}によって{{出|で}}た{{時|とき}}`, il trigger
+  non controlla solo se la creatura è entrata: controlla che sia entrata
+  proprio attraverso una `{{召喚|しょうかん}}`.
+level_hint: custom
+:::
+
 :::card
 id: card-beethoven-zenith-of-horror-recognition
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-beethoven-zenith-of-horror
@@ -77,4 +109,47 @@ notes_it: >-
   valore utile è la sostituzione tecnica dell'uscita. Il testo della carta
   chiarisce che non si lascia il campo normalmente: si ritorna in mano.
 tags: [live-duel, keyword, replacement-effect]
+:::
+
+:::card
+id: card-colorless-spell-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-beethoven-zenith-of-horror
+entry_type: term
+entry_id: term-colorless-spell
+card_type: recognition
+front: '{{無色呪文|むしょくじゅもん}}'
+back: spell incolore
+example_jp: >-
+  ドラゴンまたは{{無色呪文|むしょくじゅもん}}を
+  {{合計|ごうけい}}{{3枚|さんまい}}、{{手札|てふだ}}に{{戻|もど}}す。
+example_it: >-
+  Rimetti in mano un totale di 3 Draghi e/o spell incolori.
+notes_it: >-
+  Il valore utile non e` `呪文` da solo, ma il composto completo: nel rules
+  text delimita una categoria di carte recuperabili, letta come blocco unico
+  insieme a `ドラゴンまたは`.
+tags: [live-duel, compound, spell, colorless]
+:::
+
+:::card
+id: card-shoukan-ni-yotte-trigger
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-beethoven-zenith-of-horror
+entry_type: grammar
+entry_id: grammar-shoukan-ni-yotte
+card_type: concept
+front: 'このクリーチャーが[{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte){{出|で}}た{{時|とき}}'
+back: Quando questa creatura entra proprio tramite evocazione.
+example_jp: >-
+  このクリーチャーが[{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte)
+  {{出|で}}た{{時|とき}}、ドラゴンまたは
+  [{{無色呪文|むしょくじゅもん}}](term:term-colorless-spell)を
+  {{合計|ごうけい}}{{3枚|さんまい}}、{{手札|てふだ}}に{{戻|もど}}す。
+example_it: >-
+  Quando questa creatura entra proprio tramite evocazione, rimetti in mano un
+  totale di 3 Draghi e/o spell incolori.
+notes_it: >-
+  Il punto non e` il semplice `{{出|で}}た{{時|とき}}`, ma il filtro aggiunto da
+  `{{召喚|しょうかん}}によって`: l'effetto si accende solo se il mezzo
+  d'ingresso e` una summon vera e propria.
+tags: [live-duel, grammar, trigger, summon]
 :::
