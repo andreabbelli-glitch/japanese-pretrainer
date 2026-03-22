@@ -6,7 +6,6 @@ import { buildGlossaryHref } from "@/lib/site";
 
 import { GlobalGlossaryResultCard } from "./global-glossary-result-card";
 import { GlossaryPortalSearchForm } from "./glossary-portal-search-form";
-import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
 import { Section } from "../ui/section";
 import { StatBlock } from "../ui/stat-block";
@@ -48,11 +47,6 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
   if (data.mediaOptions.length === 0) {
     return (
       <div className="glossary-portal-page">
-        <StickyPageHeader
-          eyebrow="Glossary"
-          summary="Il portale globale si attiva appena esiste almeno un media importato."
-          title="Glossary"
-        />
         <EmptyState
           eyebrow="Nessun media attivo"
           title="Il portale comparirà qui dopo il primo import."
@@ -69,24 +63,6 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
 
   return (
     <div className="glossary-portal-page">
-      <StickyPageHeader
-        eyebrow="Glossary"
-        summary="Ricerca unica cross-media per capire subito che cos’è una voce, dove compare e se hai già una flashcard pronta."
-        title="Glossary"
-        meta={
-          <>
-            <span>{data.stats.mediaCount} media</span>
-            <span>{data.stats.entryCount} entry</span>
-            <span>{data.stats.withCardsCount} con flashcard</span>
-          </>
-        }
-        actions={
-          <Link className="button button--ghost" href="/media">
-            Apri Media
-          </Link>
-        }
-      />
-
       <section className="content-section">
         <SurfaceCard
           className="glossary-hero glossary-portal-search"

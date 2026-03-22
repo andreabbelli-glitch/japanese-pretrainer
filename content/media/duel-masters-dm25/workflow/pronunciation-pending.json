@@ -1,9 +1,100 @@
 {
   "version": 1,
   "media_slug": "duel-masters-dm25",
-  "total_targets": 214,
-  "audio_backed_count": 91,
-  "known_missing_count": 123,
-  "pending_count": 0,
-  "pending": []
+  "total_targets": 236,
+  "audio_backed_count": 94,
+  "known_missing_count": 127,
+  "pending_count": 15,
+  "pending": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-kaku",
+      "label": "各",
+      "reading": "かく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-saisho",
+      "label": "最初",
+      "reading": "さいしょ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-owari",
+      "label": "終わり",
+      "reading": "おわり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ichiban-ue",
+      "label": "一番上",
+      "reading": "いちばんうえ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tonaeru",
+      "label": "唱える",
+      "reading": "となえる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-to-onaji",
+      "label": "～と同じ",
+      "reading": "とおなじ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-to-onaji-maisuu",
+      "label": "～と同じ枚数",
+      "reading": "とおなじまいすう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-aite-hitori-nitsuki",
+      "label": "相手1人につき",
+      "reading": "あいてひとりにつき"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-kaku-turn-ni-ichido",
+      "label": "各ターンに一度",
+      "reading": "かくたーんにいちど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-hajimete-shita-toki",
+      "label": "はじめて～した時",
+      "reading": "はじめて～したとき"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-hoka-no-kaku-aite",
+      "label": "他の各相手",
+      "reading": "ほかのかくあいて"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-hitotsu-zutsu",
+      "label": "1つずつ",
+      "reading": "ひとつずつ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-shoukan-ni-yotte",
+      "label": "召喚によって",
+      "reading": "しょうかんによって"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-kaku-turn-hajimete-attack",
+      "label": "各ターン、このクリーチャーがはじめて攻撃する時",
+      "reading": "かくターン、このクリーチャーがはじめてこうげきするとき"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba",
+      "label": "その攻撃中にシールドをブレイクしていれば",
+      "reading": "そのこうげきちゅうにしーるどをぶれいくしていれば"
+    }
+  ]
 }
