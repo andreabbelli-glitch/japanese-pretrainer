@@ -8,7 +8,6 @@ import { GlobalGlossaryResultCard } from "./global-glossary-result-card";
 import { GlossaryPortalSearchForm } from "./glossary-portal-search-form";
 import { EmptyState } from "../ui/empty-state";
 import { Section } from "../ui/section";
-import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
 
 type GlossaryPortalPageProps = {
@@ -97,43 +96,6 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
           />
         </SurfaceCard>
       </section>
-
-      <Section
-        eyebrow="Sintesi"
-        title={
-          data.resultSummary.queryLabel
-            ? `Risultati per "${data.resultSummary.queryLabel}"`
-            : "Portale di consultazione"
-        }
-        description={
-          data.resultSummary.queryLabel
-            ? `${data.resultSummary.filtered} risultati su ${data.resultSummary.total} voci aggregate.`
-            : "Il Glossary globale resta sfogliabile anche senza query: filtra per media, stato di studio, tipo di voce e presenza di flashcard."
-        }
-      >
-        <div className="stats-grid glossary-portal-summary">
-          <StatBlock
-            detail="Quante voci restano dopo i filtri correnti"
-            label="Risultati"
-            value={String(data.resultSummary.filtered)}
-          />
-          <StatBlock
-            detail="Voci con almeno una flashcard nel corpus"
-            label="Flashcard pronte"
-            value={String(data.stats.withCardsCount)}
-          />
-          <StatBlock
-            detail="Voci che compaiono in più media"
-            label="Compare altrove"
-            value={String(data.stats.crossMediaCount)}
-          />
-          <StatBlock
-            detail="Media inclusi nel portale"
-            label="Media attivi"
-            value={String(data.mediaOptions.length)}
-          />
-        </div>
-      </Section>
 
       <Section
         eyebrow="Risultati"
