@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 70
+order: 71
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -300,6 +300,25 @@ reveal_mode: sentence
 - `{{出|で}}たターンに` fissa il turno d'ingresso.
 - `すぐ攻撃できる` dice che l'attacco è permesso subito, senza aspettare il
   turno successivo.
+
+### [スレイヤー](term:term-slayer)
+
+:::example_sentence
+jp: >-
+  [スレイヤー](term:term-slayer)：このクリーチャーが
+  [バトル](term:term-battle)する{{相手|あいて}}クリーチャーを
+  [{{破壊|はかい}}](term:term-destroy)する。
+translation_it: >-
+  Slayer: la creatura avversaria che combatte con questa creatura viene
+  distrutta.
+reveal_mode: sentence
+:::
+
+- Il punto da fissare non e` il potere, ma il fatto che il battle porta alla
+  distruzione dell'altro lato.
+- Per questo `スレイヤー` rende pericoloso anche lo scontro contro creature
+  piu` grandi: il testo non parla di vincere il confronto numerico, ma di
+  distruggere il partner di battle.
 
 ### [スーパー・S・トリガー](term:term-super-s-trigger)
 

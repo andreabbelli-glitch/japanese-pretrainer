@@ -64,6 +64,13 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-nara",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AA%E3%82%89"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-sonoato",
       "audio_src": "assets/audio/grammar/grammar-sonoato/forvo-manual-その後.mp3",
       "audio_source": "forvo",
@@ -636,6 +643,13 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-jishin",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%87%AA%E8%BA%AB"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-jougen",
       "audio_src": "assets/audio/term/term-jougen/forvo-manual-し-ょうけ-ん.mp3",
       "audio_source": "forvo",
@@ -695,6 +709,13 @@
       "pitch_accent": 2,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%93%E3%82%8C%E3%82%89"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-koukai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%85%AC%E9%96%8B"
     },
     {
       "entry_type": "term",
