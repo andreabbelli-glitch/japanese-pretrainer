@@ -1276,7 +1276,10 @@ export async function getReviewQueueSnapshotForMedia(
 ): Promise<ReviewQueueSnapshot | null> {
   const now = new Date();
 
-  const media = await getMediaBySlug(database, mediaSlug);
+  const [media, dailyLimit] = await Promise.all([
+    getMediaBySlug(database, mediaSlug),
+    getReviewDailyLimit(database)
+  ]);
 
   if (!media) {
     return null;
@@ -1285,7 +1288,8 @@ export async function getReviewQueueSnapshotForMedia(
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds: [media.id],
-    now
+    now,
+    resolvedDailyLimit: dailyLimit
   });
   const snapshot = buildReviewQueueSnapshot({
     cards: workspace.cards,
@@ -1363,12 +1367,15 @@ async function hydrateReviewCardUncached(input: {
   }
 
   const { termIds, grammarIds } = collectReviewLinkedEntryIds([card]);
-  const [terms, grammar] = await Promise.all([
+  const [terms, grammar, cardMedia] = await Promise.all([
     measureWith(input.profiler, "getGlossaryEntriesByIds.term", () =>
       getGlossaryEntriesByIds(database, "term", termIds)
     ),
     measureWith(input.profiler, "getGlossaryEntriesByIds.grammar", () =>
       getGlossaryEntriesByIds(database, "grammar", grammarIds)
+    ),
+    measureWith(input.profiler, "getMediaById", () =>
+      getMediaById(database, card.mediaId)
     )
   ]);
   const entryLookup = buildEntryLookup(terms, grammar);
@@ -1379,19 +1386,19 @@ async function hydrateReviewCardUncached(input: {
     entryLinks: card.entryLinks,
     entryLookup: buildReviewSubjectEntryLookup({ grammar, terms })
   });
-  const [subjectState, resolvedMedia] = await Promise.all([
-    measureWith(input.profiler, "getReviewSubjectStateByKey", () =>
-      getReviewSubjectStateByKey(database, subjectIdentity.subjectKey)
-    ),
-    measureWith(input.profiler, "resolveHydratedReviewCardMedia", () =>
-      resolveHydratedReviewCardMedia({ card, database, grammar, terms })
-    )
-  ]);
+  const subjectState = await measureWith(
+    input.profiler,
+    "getReviewSubjectStateByKey",
+    () => getReviewSubjectStateByKey(database, subjectIdentity.subjectKey)
+  );
   const resolvedState = resolveReviewQueueState(
     card.status,
     subjectState,
     nowIso
   );
+  const resolvedMedia = cardMedia
+    ? { slug: cardMedia.slug, title: cardMedia.title }
+    : { slug: "unknown-media" as const, title: "Media" };
   const mediaById = buildSingleMediaLookup({
     id: card.mediaId,
     ...resolvedMedia
@@ -1476,15 +1483,13 @@ export async function getReviewCardDetailData(
 ): Promise<ReviewCardDetailData | null> {
   const nowIso = new Date().toISOString();
 
-  const media = await getMediaBySlug(database, mediaSlug);
-
-  if (!media) {
-    return null;
-  }
-
-  const selectedRawCard = await getCardById(database, cardId);
+  const [media, selectedRawCard] = await Promise.all([
+    getMediaBySlug(database, mediaSlug),
+    getCardById(database, cardId)
+  ]);
 
   if (
+    !media ||
     !selectedRawCard ||
     selectedRawCard.mediaId !== media.id ||
     selectedRawCard.status === "archived" ||
@@ -1631,10 +1636,12 @@ export async function loadReviewOverviewSnapshots(
 
   const now = new Date();
   const mediaIds = media.map((item) => item.id);
+  const dailyLimit = await getReviewDailyLimit(database);
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds,
-    now
+    now,
+    resolvedDailyLimit: dailyLimit
   });
   const snapshots = new Map<string, ReviewOverviewSnapshot>();
 
@@ -1687,10 +1694,12 @@ export async function loadGlobalReviewOverviewSnapshot(
   }
 
   const now = new Date();
+  const dailyLimit = await getReviewDailyLimit(database);
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds: media.map((item) => item.id),
-    now
+    now,
+    resolvedDailyLimit: dailyLimit
   });
 
   return buildReviewOverviewSnapshot({
@@ -2474,44 +2483,6 @@ function resolveReviewCardMedia(
   );
 }
 
-async function resolveHydratedReviewCardMedia(input: {
-  card: Pick<ReviewCardListItem, "mediaId">;
-  database: DatabaseClient;
-  grammar: GrammarGlossaryEntry[];
-  terms: TermGlossaryEntry[];
-}) {
-  for (const entry of input.terms) {
-    if (entry.mediaId === input.card.mediaId) {
-      return {
-        slug: entry.media.slug,
-        title: entry.media.title
-      };
-    }
-  }
-
-  for (const entry of input.grammar) {
-    if (entry.mediaId === input.card.mediaId) {
-      return {
-        slug: entry.media.slug,
-        title: entry.media.title
-      };
-    }
-  }
-
-  const media = await getMediaById(input.database, input.card.mediaId);
-
-  if (media) {
-    return {
-      slug: media.slug,
-      title: media.title
-    };
-  }
-
-  return {
-    slug: "unknown-media",
-    title: "Media"
-  };
-}
 
 function buildReviewCardContexts(
   cards: ReviewCardListItem[],
