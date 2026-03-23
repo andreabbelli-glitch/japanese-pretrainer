@@ -439,9 +439,12 @@ type LoadedGlobalReviewPageWorkspace = {
   searchState: ReviewSearchState;
 } & LoadedReviewWorkspaceV2;
 
+type ResolvedMedia = Awaited<ReturnType<typeof getMediaBySlug>>;
+
 type ReviewPageLoadOptions = {
   bypassCache?: boolean;
   profiler?: ReviewProfiler | null;
+  resolvedMedia?: NonNullable<ResolvedMedia>;
 };
 
 async function buildReviewPageDataFromWorkspace(input: {
@@ -999,9 +1002,11 @@ export async function getReviewPageData(
 ): Promise<ReviewPageData | null> {
   const now = new Date();
 
-  const media = await measureWith(options.profiler, "getMediaBySlug", () =>
-    getMediaBySlug(database, mediaSlug)
-  );
+  const media =
+    options.resolvedMedia ??
+    (await measureWith(options.profiler, "getMediaBySlug", () =>
+      getMediaBySlug(database, mediaSlug)
+    ));
 
   if (!media) {
     return null;

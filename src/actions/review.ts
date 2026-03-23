@@ -214,23 +214,23 @@ export async function gradeReviewCardSessionAction(
     }
   });
   scheduleReviewProfilerFlush(profiler);
-  const mediaId =
+  const media =
     input.scope === "media" && input.mediaSlug
-      ? await profiler.measure("requireMediaIdForSlug", () =>
-          requireMediaIdForSlug(input.mediaSlug!)
+      ? await profiler.measure("requireMediaForSlug", () =>
+          requireMediaForSlug(input.mediaSlug!)
         )
       : undefined;
 
   await profiler.measure("applyReviewGrade", () =>
     applyReviewGrade({
       cardId: input.cardId,
-      expectedMediaId: mediaId,
+      expectedMediaId: media?.id,
       rating: input.rating
     })
   );
 
   revalidateActiveReviewPaths({
-    mediaId,
+    mediaId: media?.id,
     mediaSlug: input.mediaSlug ?? input.cardMediaSlug
   });
 
@@ -309,7 +309,8 @@ export async function gradeReviewCardSessionAction(
         answeredCount: input.answeredCount + 1,
         extraNewCount: input.extraNewCount
       }),
-      profiler
+      profiler,
+      media
     )
   );
 }
@@ -364,19 +365,19 @@ export async function markLinkedEntryKnownSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
-  const mediaId =
+  const media =
     input.scope === "media" && input.mediaSlug
-      ? await requireMediaIdForSlug(input.mediaSlug)
+      ? await requireMediaForSlug(input.mediaSlug)
       : undefined;
 
   await setLinkedEntryStatusByCard({
     cardId: input.cardId,
-    expectedMediaId: mediaId,
+    expectedMediaId: media?.id,
     status: "known_manual"
   });
 
   revalidateEntryStatusPaths({
-    mediaId,
+    mediaId: media?.id,
     mediaSlug: input.mediaSlug ?? input.cardMediaSlug
   });
 
@@ -388,7 +389,9 @@ export async function markLinkedEntryKnownSessionAction(
       extraNewCount: input.extraNewCount,
       notice: "known",
       redirectMode: input.redirectMode
-    })
+    }),
+    null,
+    media
   );
 }
 
@@ -397,19 +400,19 @@ export async function setLinkedEntryLearningSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
-  const mediaId =
+  const media =
     input.scope === "media" && input.mediaSlug
-      ? await requireMediaIdForSlug(input.mediaSlug)
+      ? await requireMediaForSlug(input.mediaSlug)
       : undefined;
 
   await setLinkedEntryStatusByCard({
     cardId: input.cardId,
-    expectedMediaId: mediaId,
+    expectedMediaId: media?.id,
     status: "learning"
   });
 
   revalidateEntryStatusPaths({
-    mediaId,
+    mediaId: media?.id,
     mediaSlug: input.mediaSlug ?? input.cardMediaSlug
   });
 
@@ -421,7 +424,9 @@ export async function setLinkedEntryLearningSessionAction(
       extraNewCount: input.extraNewCount,
       notice: "learning",
       redirectMode: input.redirectMode
-    })
+    }),
+    null,
+    media
   );
 }
 
@@ -430,18 +435,18 @@ export async function resetReviewCardSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
-  const mediaId =
+  const media =
     input.scope === "media" && input.mediaSlug
-      ? await requireMediaIdForSlug(input.mediaSlug)
+      ? await requireMediaForSlug(input.mediaSlug)
       : undefined;
 
   await resetReviewCardProgress({
     cardId: input.cardId,
-    expectedMediaId: mediaId
+    expectedMediaId: media?.id
   });
 
   revalidateActiveReviewPaths({
-    mediaId,
+    mediaId: media?.id,
     mediaSlug: input.mediaSlug ?? input.cardMediaSlug
   });
 
@@ -453,7 +458,9 @@ export async function resetReviewCardSessionAction(
       extraNewCount: input.extraNewCount,
       notice: "reset",
       redirectMode: input.redirectMode
-    })
+    }),
+    null,
+    media
   );
 }
 
@@ -463,19 +470,19 @@ export async function setReviewCardSuspendedSessionAction(
     suspended: boolean;
   }
 ): Promise<ReviewPageData> {
-  const mediaId =
+  const media =
     input.scope === "media" && input.mediaSlug
-      ? await requireMediaIdForSlug(input.mediaSlug)
+      ? await requireMediaForSlug(input.mediaSlug)
       : undefined;
 
   await setReviewCardSuspended({
     cardId: input.cardId,
-    expectedMediaId: mediaId,
+    expectedMediaId: media?.id,
     suspended: input.suspended
   });
 
   revalidateActiveReviewPaths({
-    mediaId,
+    mediaId: media?.id,
     mediaSlug: input.mediaSlug ?? input.cardMediaSlug
   });
 
@@ -487,7 +494,9 @@ export async function setReviewCardSuspendedSessionAction(
       extraNewCount: input.extraNewCount,
       notice: input.suspended ? "suspended" : "resumed",
       redirectMode: input.redirectMode
-    })
+    }),
+    null,
+    media
   );
 }
 
@@ -640,11 +649,13 @@ function buildReviewSearchParams(input: {
 async function requireReviewPageData(
   mediaSlug: string,
   searchParams: Record<string, string | string[] | undefined>,
-  profiler?: ReviewProfiler | null
+  profiler?: ReviewProfiler | null,
+  resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {}
 ) {
   const data = await getReviewPageData(mediaSlug, searchParams, db, {
     bypassCache: true,
-    profiler
+    profiler,
+    resolvedMedia
   });
 
   if (!data) {
@@ -657,7 +668,8 @@ async function requireReviewPageData(
 async function requireReviewPageDataForScope(
   input: Pick<ReviewSessionInput, "mediaSlug" | "scope">,
   searchParams: Record<string, string | string[] | undefined>,
-  profiler?: ReviewProfiler | null
+  profiler?: ReviewProfiler | null,
+  resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {}
 ) {
   if (input.scope === "global") {
     return getGlobalReviewPageData(searchParams, db, {
@@ -670,15 +682,24 @@ async function requireReviewPageDataForScope(
     throw new Error("Media review scope requires a media slug.");
   }
 
-  return requireReviewPageData(input.mediaSlug, searchParams, profiler);
+  return requireReviewPageData(
+    input.mediaSlug,
+    searchParams,
+    profiler,
+    resolvedMedia
+  );
 }
 
-async function requireMediaIdForSlug(mediaSlug: string) {
+async function requireMediaForSlug(mediaSlug: string) {
   const media = await getMediaBySlug(db, mediaSlug);
 
   if (!media) {
     throw new Error(`Unable to resolve media for slug: ${mediaSlug}`);
   }
 
-  return media.id;
+  return media;
+}
+
+async function requireMediaIdForSlug(mediaSlug: string) {
+  return (await requireMediaForSlug(mediaSlug)).id;
 }
