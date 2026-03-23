@@ -698,7 +698,13 @@ describe("content parser and validator", () => {
       "live-duel-encounters-dragocalypse-day",
       "live-duel-encounters-savark-dg",
       "live-duel-encounters-felix-misery",
-      "live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade"
+      "live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade",
+      "live-duel-encounters-jenny-jane",
+      "live-duel-encounters-hanasaki-gelgranos",
+      "live-duel-encounters-sofa-softysonia",
+      "live-duel-encounters-bauwauja-abyssal-three-roar",
+      "live-duel-encounters-doorknocker-nordocker",
+      "live-duel-encounters-do-sumonma"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
       "cards-duel-masters-dm25-tcg-core-basics",
@@ -726,7 +732,13 @@ describe("content parser and validator", () => {
       "cards-duel-masters-dm25-live-duel-encounters-dragocalypse-day",
       "cards-duel-masters-dm25-live-duel-encounters-savark-dg",
       "cards-duel-masters-dm25-live-duel-encounters-felix-misery",
-      "cards-duel-masters-dm25-live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade"
+      "cards-duel-masters-dm25-live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade",
+      "cards-duel-masters-dm25-live-duel-encounters-jenny-jane",
+      "cards-duel-masters-dm25-live-duel-encounters-hanasaki-gelgranos",
+      "cards-duel-masters-dm25-live-duel-encounters-sofa-softysonia",
+      "cards-duel-masters-dm25-live-duel-encounters-bauwauja-abyssal-three-roar",
+      "cards-duel-masters-dm25-live-duel-encounters-doorknocker-nordocker",
+      "cards-duel-masters-dm25-live-duel-encounters-do-sumonma"
     ]);
     expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
       true

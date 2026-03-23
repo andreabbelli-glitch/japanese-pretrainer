@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 71
+order: 76
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -38,6 +38,29 @@ reveal_mode: sentence
 - `X かわりに Y` significa `invece di X, fai Y`.
 - Qui quindi la carta non lascia il battle zone nel modo normale: il testo
   sostituisce quell'uscita con il recupero di un'altra creatura.
+
+### [アビス・メクレイド](term:term-abyss-mekureido)
+
+:::example_sentence
+jp: >-
+  [アビス・メクレイド](term:term-abyss-mekureido){{8|はち}}：
+  {{自分|じぶん}}の[{{山札|やまふだ}}](term:term-deck)の{{上|うえ}}から
+  {{3枚|さんまい}}{{見|み}}る。その{{中|なか}}から、
+  コスト{{8以下|はちいか}}のアビスを{{1枚|いちまい}}、コストを
+  [{{支払|しはら}}わずに](grammar:grammar-zuni)
+  [{{使|つか}}ってもよい](grammar:grammar-temoyoi)。
+  {{残|のこ}}りを{{好|す}}きな{{順序|じゅんじょ}}で
+  {{山札|やまふだ}}の{{下|した}}に[{{置|お}}く](term:term-oku)。
+translation_it: >-
+  Abyss Mekureido 8: guarda le prime 3 carte del tuo mazzo. Fra quelle, puoi
+  usare senza pagarne il costo 1 Abyss di costo 8 o meno. Rimetti il resto in
+  fondo al mazzo nell'ordine che preferisci.
+reveal_mode: sentence
+:::
+
+- Il numero fissa la soglia massima del costo che puoi usare con la keyword.
+- `その中から` restringe la scelta alle carte appena viste.
+- `コストを支払わずに使ってもよい` segnala che l'uso e` opzionale e gratuito.
 
 ### [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)
 
