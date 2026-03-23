@@ -2,7 +2,7 @@ import {
   countReviewSubjectsIntroducedOnDay,
   db,
   getCardById,
-  getCrossMediaFamilyByEntryId,
+  listCrossMediaFamiliesByEntryIds,
   getGlossaryEntriesByIds,
   getMediaById,
   listGrammarEntryReviewSummariesByIds,
@@ -12,6 +12,7 @@ import {
   listReviewCardsByMediaIds,
   listTermEntryReviewSummariesByIds,
   getReviewSubjectStateByKey,
+  type CrossMediaFamily,
   type CrossMediaSibling,
   type DatabaseClient,
   type GrammarEntryReviewSummary,
@@ -1526,43 +1527,54 @@ export async function getReviewCardDetailData(
 
   const termById = new Map(terms.map((entry) => [entry.id, entry]));
   const grammarById = new Map(grammar.map((entry) => [entry.id, entry]));
-  const crossMedia = await Promise.all(
-    getDrivingEntryLinks(selectedRawCard.entryLinks).map(async (link) => {
-      const localEntry =
+  const drivingLinks = getDrivingEntryLinks(selectedRawCard.entryLinks);
+  const termEntryIds = drivingLinks
+    .filter((link) => link.entryType === "term" && termById.has(link.entryId))
+    .map((link) => link.entryId);
+  const grammarEntryIds = drivingLinks
+    .filter(
+      (link) => link.entryType === "grammar" && grammarById.has(link.entryId)
+    )
+    .map((link) => link.entryId);
+  const [termFamilies, grammarFamilies] = await Promise.all([
+    termEntryIds.length > 0
+      ? listCrossMediaFamiliesByEntryIds(database, "term", termEntryIds)
+      : Promise.resolve(new Map<string, CrossMediaFamily>()),
+    grammarEntryIds.length > 0
+      ? listCrossMediaFamiliesByEntryIds(database, "grammar", grammarEntryIds)
+      : Promise.resolve(new Map<string, CrossMediaFamily>())
+  ]);
+  const crossMedia = drivingLinks.map((link) => {
+    const localEntry =
+      link.entryType === "term"
+        ? termById.get(link.entryId)
+        : grammarById.get(link.entryId);
+
+    if (!localEntry) {
+      return null;
+    }
+
+    const family =
+      link.entryType === "term"
+        ? termFamilies.get(link.entryId)
+        : grammarFamilies.get(link.entryId);
+
+    if (!family || family.siblings.length === 0) {
+      return null;
+    }
+
+    return {
+      entryId: localEntry.sourceId,
+      kind: link.entryType,
+      label:
         link.entryType === "term"
-          ? termById.get(link.entryId)
-          : grammarById.get(link.entryId);
-
-      if (!localEntry) {
-        return null;
-      }
-
-      const family =
-        link.entryType === "term"
-          ? await getCrossMediaFamilyByEntryId(database, "term", link.entryId)
-          : await getCrossMediaFamilyByEntryId(
-              database,
-              "grammar",
-              link.entryId
-            );
-
-      if (family.siblings.length === 0) {
-        return null;
-      }
-
-      return {
-        entryId: localEntry.sourceId,
-        kind: link.entryType,
-        label:
-          link.entryType === "term"
-            ? (localEntry as TermGlossaryEntry).lemma
-            : (localEntry as GrammarGlossaryEntry).pattern,
-        meaning: localEntry.meaningIt,
-        relationshipLabel: formatCardRelationshipLabel(link.relationshipType),
-        siblings: family.siblings.map(mapReviewCrossMediaSibling)
-      };
-    })
-  );
+          ? (localEntry as TermGlossaryEntry).lemma
+          : (localEntry as GrammarGlossaryEntry).pattern,
+      meaning: localEntry.meaningIt,
+      relationshipLabel: formatCardRelationshipLabel(link.relationshipType),
+      siblings: family.siblings.map(mapReviewCrossMediaSibling)
+    };
+  });
   return {
     card: {
       back: selectedCard.back,
