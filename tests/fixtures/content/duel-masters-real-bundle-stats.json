@@ -3,16 +3,16 @@
     "lessons": 32,
     "cardFiles": 26,
     "terms": 209,
-    "grammarPatterns": 53,
+    "grammarPatterns": 54,
     "cards": 288,
-    "references": 1626
+    "references": 1644
   },
   "importer": {
     "term": 209,
     "termAlias": 562,
-    "grammarPattern": 53,
-    "grammarAlias": 62,
-    "entryLink": 969,
+    "grammarPattern": 54,
+    "grammarAlias": 64,
+    "entryLink": 972,
     "card": 288,
     "cardEntryLink": 345
   }

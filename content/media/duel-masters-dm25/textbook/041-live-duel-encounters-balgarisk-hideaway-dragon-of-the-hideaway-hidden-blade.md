@@ -36,10 +36,14 @@ caption: >-
 - [ニンジャ・ストライク](term:term-ninja-strike)
 - [W・ブレイカー](term:term-w-breaker)
 
-`W・ブレイカー` è già nella keyword bank. Qui conviene concentrarsi su quattro
-punti davvero utili per leggere il giapponese: `あり`, la forma stampata
-`使っていなければ`, il `持つ` che modifica `ドラゴン・エレメント` e il
-ramo `そうでなければ`.
+`W・ブレイカー` è già nella keyword bank. Qui conviene dividere la carta in due
+blocchi: prima la finestra di [ニンジャ・ストライク](term:term-ninja-strike),
+che accumula soglia di mana e controllo
+[{{使|つか}}っていなければ](grammar:grammar-te-inakereba); poi l'effetto di
+entrata, che filtra un Dragon Element con costo
+[{{枚数|まいすう}}{{以下|いか}}](grammar:grammar-ika-ijou) tramite
+[{{持|も}}つ](term:term-motsu) e, se il test fallisce, apre
+[そうでなければ](grammar:grammar-soudenakereba).
 
 ## Effetti da leggere
 
@@ -88,63 +92,77 @@ reveal_mode: sentence
 
 ### 1. 8枚以上あり
 
-- `あり` non è un pezzetto separato con un significato misterioso: è la forma
-  che collega di `ある`.
-- In pratica qui `ある` non chiude la frase; si appoggia alla condizione dopo.
-  Per questo `8枚以上あり、その攻撃中に...` si legge come `se ci sono 8 o più
-  carte in mana e, inoltre, ...`.
-- Quindi il `り` non va isolato. Il blocco intero `あり、その〜` serve solo a
-  tenere aperta la catena delle condizioni.
+- `あり` qui è la forma di collegamento di `ある`, non un nuovo effetto.
+- In pratica la carta non dice `ci sono 8 carte. Fine.`: dice `con 8 o più
+  carte nel mana, e inoltre...`.
+- Per questo `8枚以上あり、その攻撃中に...` va letto come una condizione ancora
+  aperta. Il testo sta ancora accumulando requisiti prima di arrivare al
+  `召喚してもよい`.
 
 ### 2. その攻撃中に「ニンジャ・ストライク」能力を使っていなければ
 
-- Qui c'è un punto importante: il testo stampato della carta è
-  `使っていなければ`, non `使っていなかったら`.
-- `使っている` qui non vuol dire `sto usando adesso` in senso fisico. Vuol dire
-  `essere già nel caso in cui l'hai usata in questa finestra`.
-- `いなければ` aggiunge il controllo negativo: `se non è così`, cioè `se non
-  l'hai ancora usata`.
-- Il senso completo è molto semplice: dentro questo stesso attacco puoi fare
-  Ninja Strike solo se non ne hai già fatto un'altra.
+- Il pezzo decisivo qui è
+  [{{使|つか}}っていなければ](grammar:grammar-te-inakereba). Non descrive
+  un'azione in corso, ma controlla uno stato già/non ancora realizzato.
+- `その攻撃中に` chiude lo scope dentro quello stesso attacco. La carta non sta
+  parlando del turno in generale, ma di quella singola finestra appena aperta.
+- `～ている` legge la situazione come `essere già nel caso in cui l'hai usata`;
+  `～なければ` la ribalta in negativo. Il risultato è: `se non sei già nel caso
+  in cui l'hai usata`.
+- Quindi la lettura naturale è: in questo attacco hai ancora disponibile la
+  tua finestra di Ninja Strike solo se non l'hai già consumata prima.
 
 ### 3. 枚数以下のコストを持つドラゴン・エレメントなら
 
-- `持つ` qui vuol dire semplicemente `avere / possedere`.
-- In giapponese, quando un verbo sta prima di un nome, spesso lo modifica
-  direttamente. Quindi `コストを持つドラゴン・エレメント` è
+- [{{枚数|まいすう}}{{以下|いか}}](grammar:grammar-ika-ijou) fissa prima il
+  tetto massimo: il costo della carta rivelata deve stare dentro il numero di
+  carte nel tuo mana.
+- Poi [{{持|も}}つ](term:term-motsu) si attacca al nome finale. In
+  `コストを{{持|も}}つドラゴン・エレメント`, il giapponese va letto da destra:
   `un Dragon Element che ha quel costo`.
-- Non c'è nessuna idea di `tenere in mano` o `portarsi dietro` il costo. È
-  solo un modo normale di costruire un filtro.
-- `枚数以下` confronta il costo con il numero di carte nel tuo mana. Se il
-  costo rientra in quella soglia, allora il `なら` apre il ramo `出す`.
+- Non c'è alcuna idea di `tenere in mano` il costo. `持つ` qui serve solo a
+  trasformare il filtro numerico in una proprietà del nome che segue.
+- Una volta passato quel filtro, `なら` apre il ramo positivo: la carta
+  rivelata [{{出|だ}}す](term:term-dasu) invece di andare nel mana.
 
 ### 4. そうでなければ
 
-- `そう` non vuol dire genericamente `così` nel vuoto: qui punta all'intera
-  verifica appena fatta.
-- In altre parole, `そう` = `che la carta rivelata sia un Dragon Element con
-  costo abbastanza basso`.
-- `でなければ` significa `se non è così`.
-- Per questo `そうでなければ` si legge bene come `altrimenti`. Se la carta
-  rivelata non passa il test del `なら`, non la metti in gioco: la tappi e la
-  mandi nel mana zone.
+- [そうでなければ](grammar:grammar-soudenakereba) non apre un tema nuovo:
+  riassume in blocco la verifica appena fatta e ne prende il ramo negativo.
+- Qui `そう` = `che la carta rivelata sia un Dragon Element con costo
+  abbastanza basso`.
+- Se quella proposizione non è vera, il testo entra nel fallback:
+  [タップ](term:term-tap)して[マナゾーン](term:term-mana-zone)に
+  [{{置|お}}く](term:term-oku)。
+- Quindi `そうでなければ` si può tradurre con `altrimenti`, ma il punto utile è
+  capire a quale controllo precedente si aggancia.
 
 ### 5. そのターンの終わりに、このシノビを山札の下に置く
 
-- Dopo l'evocazione gratuita il testo aggiunge un'uscita differita.
-- `そのターンの終わりに` fissa il momento: non subito, ma alla fine di quel
-  turno.
-- `山札の下に置く` dice anche dove finisce la carta: non in mano, non nel
-  cimitero, ma sotto il mazzo.
+- Dopo l'evocazione gratuita la carta aggiunge una pulizia differita:
+  [そのターンの{{終|お}}わりに](grammar:grammar-turn-timing) chiude la finestra
+  non subito, ma alla fine di quel turno.
+- Questo pezzo appartiene ancora alla clausola di Ninja Strike: non descrive
+  l'effetto di entrata, ma ti dice che la presenza di questo Shinobi è
+  temporanea.
+- `このシノビを[{{山札|やまふだ}}](term:term-deck)の{{下|した}}に
+  [{{置|お}}く](term:term-oku)` specifica la destinazione finale con precisione:
+  non mano, non cimitero, ma fondo del mazzo.
 
 ## Lessico utile in questa carta
 
 - [ニンジャ・ストライク](term:term-ninja-strike) qui non è solo il nome della
   keyword: è anche il posto in cui vedi molto bene una catena di condizioni in
   serie.
+- [{{使|つか}}っていなければ](grammar:grammar-te-inakereba) è un chunk utile da
+  riconoscere in blocco: controlla se uno stato non si è ancora verificato
+  dentro la finestra appena nominata.
 - [{{持|も}}つ](term:term-motsu) è giapponese molto generale e molto riusabile.
   Vale la pena fissarlo bene perché nei rules text compare spesso come verbo
   che modifica un nome.
 - [そうでなければ](grammar:grammar-soudenakereba) è un ottimo chunk da
   riconoscere in blocco: quando appare, sai già che stai entrando nel ramo
   alternativo della frase.
+- [そのターンの{{終|お}}わりに](grammar:grammar-turn-timing) è un marcatore di
+  timing molto pulito: ti dice subito che il testo sta fissando un effetto
+  differito.

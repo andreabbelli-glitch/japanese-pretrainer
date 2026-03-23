@@ -740,6 +740,11 @@ describe("content parser and validator", () => {
       )
     ).toBe(true);
     expect(
+      result.data.grammarPatterns.some(
+        (grammar) => grammar.id === "grammar-te-inakereba"
+      )
+    ).toBe(true);
+    expect(
       result.data.cards.some((card) => card.id === "card-invasion-recognition")
     ).toBe(true);
     expect(
@@ -752,6 +757,21 @@ describe("content parser and validator", () => {
         .filter((card) => !card.exampleJp || !card.exampleIt)
         .map((card) => card.id)
     ).toEqual([]);
+
+    const balgariskLesson = result.data.lessons.find(
+      (lesson) =>
+        lesson.frontmatter.slug ===
+        "live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade"
+    );
+
+    expect(balgariskLesson?.referenceIds).toEqual(
+      expect.arrayContaining([
+        "grammar:grammar-te-inakereba",
+        "grammar:grammar-turn-timing",
+        "grammar:grammar-soudenakereba",
+        "term:term-motsu"
+      ])
+    );
   });
 
   it("aggregates media bundles from the content root", async () => {

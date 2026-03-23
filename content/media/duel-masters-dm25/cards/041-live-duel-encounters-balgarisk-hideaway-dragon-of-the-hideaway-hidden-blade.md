@@ -64,6 +64,21 @@ level_hint: n4
 :::
 
 :::grammar
+id: grammar-te-inakereba
+pattern: ～ていなければ
+title: Se non è ancora in quello stato
+reading: ていなければ
+meaning_it: se non ha ancora / se non è ancora
+aliases: [～ていなければ, 使っていなければ]
+notes_it: >-
+  Unisce `～ている` e `～なければ`. Nel rules text non descrive un'azione in
+  corso, ma controlla se uno stato non si è ancora verificato dentro la
+  finestra appena nominata. In `{{使|つか}}っていなければ` il senso non è `non
+  usarlo adesso`, ma `se non l'hai già usato prima in questa stessa finestra`.
+level_hint: custom
+:::
+
+:::grammar
 id: grammar-soudenakereba
 pattern: そうでなければ
 title: Se non è così / altrimenti
@@ -101,8 +116,8 @@ tags: [live-duel, keyword, response, attack]
 :::card
 id: card-balgarisk-eight-or-more-ari-and-no-ninja-strike-yet-concept
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade
-entry_type: term
-entry_id: term-ninja-strike
+entry_type: grammar
+entry_id: grammar-te-inakereba
 card_type: concept
 front: >-
   {{8枚以上|はちまいいじょう}}あり、その{{攻撃中|こうげきちゅう}}に「ニンジャ・ストライク」
@@ -116,11 +131,11 @@ example_it: >-
   `Ari` è la forma che collega di `aru` e lascia aperta la condizione; poi
   `tsukatte inakereba` aggiunge il secondo cancello.
 notes_it: >-
-  Questo è il punto più importante della keyword. `あり` non è un suffisso
-  strano: è la forma di collegamento di `ある`, quindi equivale a `e inoltre`.
-  Inoltre il testo ufficiale della carta dice `使っていなければ`, non
-  `使っていなかったら`: la carta controlla se, dentro questo stesso attacco, hai
-  già usato `ニンジャ・ストライク` oppure no.
+  Questo è il punto più importante della finestra di Ninja Strike. `あり` tiene
+  aperta la catena delle condizioni; `{{使|つか}}っていなければ` è invece il
+  vero controllo di stato. La carta non chiede `stai usando ora Ninja
+  Strike?`, ma `sei già nel caso in cui l'hai usata in questo stesso attacco?`
+  Se la risposta è no, il ramo resta disponibile.
 tags: [live-duel, concept, condition, ninja-strike]
 :::
 
