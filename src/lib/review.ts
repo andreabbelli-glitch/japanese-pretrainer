@@ -1358,11 +1358,14 @@ async function hydrateReviewCardUncached(input: {
     entryLinks: card.entryLinks,
     entryLookup: buildReviewSubjectEntryLookup({ grammar, terms })
   });
-  const subjectState = await measureWith(
-    input.profiler,
-    "getReviewSubjectStateByKey",
-    () => getReviewSubjectStateByKey(database, subjectIdentity.subjectKey)
-  );
+  const [subjectState, resolvedMedia] = await Promise.all([
+    measureWith(input.profiler, "getReviewSubjectStateByKey", () =>
+      getReviewSubjectStateByKey(database, subjectIdentity.subjectKey)
+    ),
+    measureWith(input.profiler, "resolveHydratedReviewCardMedia", () =>
+      resolveHydratedReviewCardMedia({ card, database, grammar, terms })
+    )
+  ]);
   const resolvedState = resolveReviewQueueState(
     card.status,
     subjectState,
@@ -1370,11 +1373,7 @@ async function hydrateReviewCardUncached(input: {
   );
   const mediaById = buildSingleMediaLookup({
     id: card.mediaId,
-    ...(await measureWith(
-      input.profiler,
-      "resolveHydratedReviewCardMedia",
-      () => resolveHydratedReviewCardMedia({ card, database, grammar, terms })
-    ))
+    ...resolvedMedia
   });
   const queueCard = await measureWith(
     input.profiler,
