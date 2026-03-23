@@ -34,7 +34,7 @@ import {
 } from "@/lib/data-cache";
 import {
   getReviewDailyLimit,
-  getReviewFrontFuriganaSetting
+  getStudySettings
 } from "@/lib/settings";
 import {
   mediaGlossaryEntryHref,
@@ -923,6 +923,7 @@ async function loadReviewWorkspaceV2(input: {
   mediaIds: string[];
   now?: Date;
   profiler?: ReviewProfiler | null;
+  resolvedDailyLimit?: number;
 }): Promise<LoadedReviewWorkspaceV2> {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
@@ -936,9 +937,11 @@ async function loadReviewWorkspaceV2(input: {
           profiler: input.profiler
         })
       ),
-      measureWith(input.profiler, "getReviewDailyLimit", () =>
-        getReviewDailyLimit(database)
-      ),
+      input.resolvedDailyLimit != null
+        ? input.resolvedDailyLimit
+        : measureWith(input.profiler, "getReviewDailyLimit", () =>
+            getReviewDailyLimit(database)
+          ),
       measureWith(input.profiler, "countReviewSubjectsIntroducedOnDay", () =>
         countReviewSubjectsIntroducedOnDay(database, now)
       )
@@ -1013,20 +1016,25 @@ export async function getReviewPageData(
   }
 
   const searchState = normalizeReviewSearchState(searchParams);
-  const [workspace, reviewFrontFurigana] = await Promise.all([
-    measureWith(options.profiler, "loadReviewWorkspaceV2", () =>
+  const settings = await measureWith(
+    options.profiler,
+    "getStudySettings",
+    () => getStudySettings(database)
+  );
+  const workspace = await measureWith(
+    options.profiler,
+    "loadReviewWorkspaceV2",
+    () =>
       loadReviewWorkspaceV2({
         bypassCache: options.bypassCache,
         database,
         mediaIds: [media.id],
         now,
-        profiler: options.profiler
+        profiler: options.profiler,
+        resolvedDailyLimit: settings.reviewDailyLimit
       })
-    ),
-    measureWith(options.profiler, "getReviewFrontFuriganaSetting", () =>
-      getReviewFrontFuriganaSetting(database)
-    )
-  ]);
+  );
+  const reviewFrontFurigana = settings.reviewFrontFurigana;
 
   return measureWith(
     options.profiler,
@@ -1060,7 +1068,8 @@ export async function getReviewPageData(
 async function loadGlobalReviewWorkspace(
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db,
-  options: ReviewPageLoadOptions = {}
+  options: ReviewPageLoadOptions = {},
+  resolvedDailyLimit?: number
 ): Promise<Omit<LoadedGlobalReviewPageWorkspace, "reviewFrontFurigana">> {
   const now = new Date();
   const mediaRows = await measureWith(options.profiler, "listMediaCached", () =>
@@ -1073,7 +1082,8 @@ async function loadGlobalReviewWorkspace(
       database,
       mediaIds: mediaRows.map((item) => item.id),
       now,
-      profiler: options.profiler
+      profiler: options.profiler,
+      resolvedDailyLimit
     })
   );
 
@@ -1089,16 +1099,21 @@ async function loadGlobalReviewPageWorkspace(
   database: DatabaseClient = db,
   options: ReviewPageLoadOptions = {}
 ): Promise<LoadedGlobalReviewPageWorkspace> {
-  const [workspace, reviewFrontFurigana] = await Promise.all([
-    loadGlobalReviewWorkspace(searchParams, database, options),
-    measureWith(options.profiler, "getReviewFrontFuriganaSetting", () =>
-      getReviewFrontFuriganaSetting(database)
-    )
-  ]);
+  const settings = await measureWith(
+    options.profiler,
+    "getStudySettings",
+    () => getStudySettings(database)
+  );
+  const workspace = await loadGlobalReviewWorkspace(
+    searchParams,
+    database,
+    options,
+    settings.reviewDailyLimit
+  );
 
   return {
     ...workspace,
-    reviewFrontFurigana
+    reviewFrontFurigana: settings.reviewFrontFurigana
   };
 }
 
@@ -1175,12 +1190,17 @@ export async function getGlobalReviewFirstCandidateLoadResult(
   ];
 
   const loadSnapshot = async () => {
-    const [workspace, reviewFrontFurigana] = await Promise.all([
-      loadGlobalReviewWorkspace(searchParams, database, options),
-      measureWith(options.profiler, "getReviewFrontFuriganaSetting", () =>
-        getReviewFrontFuriganaSetting(database)
-      )
-    ]);
+    const settings = await measureWith(
+      options.profiler,
+      "getStudySettings",
+      () => getStudySettings(database)
+    );
+    const workspace = await loadGlobalReviewWorkspace(
+      searchParams,
+      database,
+      options,
+      settings.reviewDailyLimit
+    );
 
     if (workspace.mediaRows.length === 0) {
       return {
@@ -1211,7 +1231,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
         newIntroducedTodayCount: workspace.newIntroducedTodayCount,
         now: workspace.now,
         profiler: options.profiler,
-        reviewFrontFurigana,
+        reviewFrontFurigana: settings.reviewFrontFurigana,
         scope: "global",
         searchState: workspace.searchState,
         subjectGroups: workspace.subjectGroups
