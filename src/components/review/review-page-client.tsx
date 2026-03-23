@@ -136,8 +136,7 @@ export function ReviewPageClient({
   );
   const showCompletionState = !hasQueue && selectedCard === null;
   const actionRedirectMode = isQueueCard ? "advance_queue" : "preserve_card";
-  const isRevealDisabled =
-    isPending && selectedCard?.id !== prefetchedNextCardId;
+
   const gradePreviewLookup = isFullReviewPageData
     ? new Map(
         viewData.selectedCardContext.gradePreviews.map((preview) => [
@@ -550,7 +549,7 @@ export function ReviewPageClient({
                   <div className="review-stage__veil">
                     <button
                       className="button button--primary review-stage__reveal"
-                      disabled={isRevealDisabled}
+
                       type="button"
                       onClick={handleRevealAnswer}
                     >
