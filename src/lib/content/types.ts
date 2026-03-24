@@ -219,10 +219,13 @@ export interface EntryAudioMetadata {
   audioPageUrl?: string;
 }
 
+export type PitchAccentCheckStatus = "resolved" | "miss" | "source_error";
+
 export interface EntryPitchAccentMetadata {
   pitchAccent?: number;
   pitchAccentSource?: string;
   pitchAccentPageUrl?: string;
+  pitchAccentStatus?: PitchAccentCheckStatus;
 }
 
 export interface NormalizedTerm {
@@ -243,6 +246,7 @@ export interface NormalizedTerm {
   pitchAccent?: number;
   pitchAccentSource?: string;
   pitchAccentPageUrl?: string;
+  pitchAccentStatus?: PitchAccentCheckStatus;
   source: DefinitionSource;
 }
 
@@ -262,6 +266,7 @@ export interface NormalizedGrammarPattern {
   pitchAccent?: number;
   pitchAccentSource?: string;
   pitchAccentPageUrl?: string;
+  pitchAccentStatus?: PitchAccentCheckStatus;
   source: DefinitionSource;
 }
 

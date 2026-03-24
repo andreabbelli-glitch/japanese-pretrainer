@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import {
+  getPitchAccentCheckStatus,
   loadPronunciationManifest,
   serializePronunciationManifest,
   type PronunciationManifestEntry
@@ -10,7 +11,8 @@ import type {
   EntryAudioMetadata,
   NormalizedGrammarPattern,
   NormalizedMediaBundle,
-  NormalizedTerm
+  NormalizedTerm,
+  PitchAccentCheckStatus
 } from "./content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
 import { createFetchThrottle } from "./fetch-throttle.ts";
@@ -80,18 +82,12 @@ const pitchAccentFetchThrottle = createFetchThrottle({
 export async function fetchPitchAccentsForBundle(input: {
   bundle: NormalizedMediaBundle;
   dryRun?: boolean;
+  entryDelayMs?: number;
   limit?: number;
   network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
 }) {
   const allTargets = collectPitchAccentTargets(input.bundle);
-  const targets = input.refresh
-    ? allTargets
-    : allTargets.filter((entry) => entry.pitchAccent === undefined);
-  const limitedTargets =
-    typeof input.limit === "number" && input.limit >= 0
-      ? targets.slice(0, input.limit)
-      : targets;
   const manifestState = await loadPronunciationManifest(
     input.bundle.mediaDirectory
   );
@@ -108,44 +104,43 @@ export async function fetchPitchAccentsForBundle(input: {
       entry
     ])
   );
+  const targets = input.refresh
+    ? allTargets
+    : allTargets.filter((entry) =>
+        shouldFetchPitchAccentEntry(
+          entry,
+          manifestEntries.get(buildEntryKey(entry.kind, entry.id))
+        )
+      );
+  const limitedTargets =
+    typeof input.limit === "number" && input.limit >= 0
+      ? targets.slice(0, input.limit)
+      : targets;
   const results: PitchAccentResult[] = [];
 
-  for (const entry of limitedTargets) {
+  for (const [index, entry] of limitedTargets.entries()) {
+    if (index > 0 && (input.entryDelayMs ?? 0) > 0) {
+      await sleep(input.entryDelayMs ?? 0);
+    }
+
     const resolved = await resolvePitchAccentForEntry({
       entry,
       network: input.network
     });
     results.push(resolved);
 
-    if (resolved.status !== "resolved") {
-      continue;
-    }
-
     const manifestKey = buildEntryKey(entry.kind, entry.id);
     const manifestEntry =
       manifestEntries.get(manifestKey) ?? buildManifestEntryFromTarget(entry);
-
-    if (!manifestEntry) {
-      continue;
-    }
-
-    manifestEntries.set(manifestKey, {
-      ...manifestEntry,
-      pitchAccent: resolved.pitchAccent,
-      pitchAccentPageUrl: resolved.source.pageUrl,
-      pitchAccentSource: resolved.source.sourceLabel
-    });
-  }
-
-  if (!input.dryRun) {
-    await mkdir(input.bundle.mediaDirectory, { recursive: true });
-    await writeFile(
-      path.join(input.bundle.mediaDirectory, "pronunciations.json"),
-      serializePronunciationManifest({
-        entries: [...manifestEntries.values()],
-        version: 1
-      })
+    const updatedManifestEntry = updateManifestEntryWithPitchAccentResult(
+      manifestEntry,
+      resolved
     );
+    manifestEntries.set(manifestKey, updatedManifestEntry);
+
+    if (!input.dryRun) {
+      await writePitchAccentManifest(input.bundle.mediaDirectory, manifestEntries);
+    }
   }
 
   return {
@@ -541,8 +536,79 @@ function buildManifestEntryFromTarget(
     entryType: entry.kind,
     pitchAccent: entry.pitchAccent,
     pitchAccentPageUrl: entry.pitchAccentPageUrl,
-    pitchAccentSource: entry.pitchAccentSource
+    pitchAccentSource: entry.pitchAccentSource,
+    pitchAccentStatus:
+      entry.pitchAccent !== undefined ? "resolved" : undefined
   };
+}
+
+function shouldFetchPitchAccentEntry(
+  entry: PitchAccentFetchTarget,
+  manifestEntry: PronunciationManifestEntry | undefined
+) {
+  if (entry.pitchAccent !== undefined) {
+    return false;
+  }
+
+  const status = manifestEntry
+    ? getPitchAccentCheckStatus(manifestEntry)
+    : undefined;
+
+  return status === undefined || status === "source_error";
+}
+
+function updateManifestEntryWithPitchAccentResult(
+  manifestEntry: PronunciationManifestEntry,
+  result: PitchAccentResult
+): PronunciationManifestEntry {
+  if (result.status === "resolved") {
+    return {
+      ...manifestEntry,
+      pitchAccent: result.pitchAccent,
+      pitchAccentPageUrl: result.source.pageUrl,
+      pitchAccentSource: result.source.sourceLabel,
+      pitchAccentStatus: "resolved"
+    };
+  }
+
+  if (manifestEntry.pitchAccent !== undefined) {
+    return {
+      ...manifestEntry,
+      pitchAccentStatus: "resolved"
+    };
+  }
+
+  return {
+    ...manifestEntry,
+    pitchAccent: undefined,
+    pitchAccentPageUrl: undefined,
+    pitchAccentSource: undefined,
+    pitchAccentStatus: mapResultStatusToPitchAccentCheckStatus(result.status)
+  };
+}
+
+function mapResultStatusToPitchAccentCheckStatus(
+  status: PitchAccentResult["status"]
+): PitchAccentCheckStatus {
+  if (status === "skipped_existing") {
+    throw new Error("Unexpected skipped_existing status while persisting pitch accent results.");
+  }
+
+  return status;
+}
+
+async function writePitchAccentManifest(
+  mediaDirectory: string,
+  manifestEntries: Map<string, PronunciationManifestEntry>
+) {
+  await mkdir(mediaDirectory, { recursive: true });
+  await writeFile(
+    path.join(mediaDirectory, "pronunciations.json"),
+    serializePronunciationManifest({
+      entries: [...manifestEntries.values()],
+      version: 1
+    })
+  );
 }
 
 function matchesPitchAccentTarget(
@@ -648,6 +714,14 @@ async function fetchText(input: {
 
 function isNotFoundError(error: unknown) {
   return error instanceof Error && /:\s404\b/u.test(error.message);
+}
+
+async function sleep(durationMs: number) {
+  if (durationMs <= 0) {
+    return;
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, durationMs));
 }
 
 function stripHtml(value: string | undefined) {

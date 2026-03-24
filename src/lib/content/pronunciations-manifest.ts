@@ -12,6 +12,7 @@ import type {
   EntryAudioMetadata,
   NormalizedGrammarPattern,
   NormalizedTerm,
+  PitchAccentCheckStatus,
   SourceRange,
   ValidationIssue
 } from "./types.ts";
@@ -27,6 +28,7 @@ export type PronunciationManifestEntry = Partial<EntryAudioMetadata> & {
   pitchAccent?: number;
   pitchAccentPageUrl?: string;
   pitchAccentSource?: string;
+  pitchAccentStatus?: PitchAccentCheckStatus;
 };
 
 export interface PronunciationManifest {
@@ -125,6 +127,9 @@ export function applyPronunciationManifest(input: {
       target.pitchAccentPageUrl =
         target.pitchAccentPageUrl ?? record.pitchAccentPageUrl;
     }
+
+    target.pitchAccentStatus =
+      target.pitchAccentStatus ?? getPitchAccentCheckStatus(record);
   }
 }
 
@@ -154,7 +159,8 @@ export function serializePronunciationManifest(manifest: {
         audio_page_url: entry.audioPageUrl,
         pitch_accent: entry.pitchAccent,
         pitch_accent_source: entry.pitchAccentSource,
-        pitch_accent_page_url: entry.pitchAccentPageUrl
+        pitch_accent_page_url: entry.pitchAccentPageUrl,
+        pitch_accent_status: entry.pitchAccentStatus
       }))
     },
     null,
@@ -332,6 +338,9 @@ async function parseManifestEntry(input: {
   const pitchAccent = readOptionalPitchAccent(input.value.pitch_accent);
   const pitchAccentSource = asTrimmedString(input.value.pitch_accent_source);
   const pitchAccentPageUrl = asTrimmedString(input.value.pitch_accent_page_url);
+  const pitchAccentStatus = asPitchAccentCheckStatus(
+    input.value.pitch_accent_status
+  );
 
   if (!entryType) {
     issues.push(
@@ -371,6 +380,22 @@ async function parseManifestEntry(input: {
     );
   }
 
+  if (
+    input.value.pitch_accent_status !== undefined &&
+    pitchAccentStatus === null
+  ) {
+    issues.push(
+      createIssue({
+        code: "pronunciation-manifest.invalid-pitch-accent-status",
+        category: "schema",
+        filePath: input.sourceFile,
+        message:
+          "Pronunciation manifest pitch_accent_status must be 'resolved', 'miss', or 'source_error'.",
+        path: `${scope}.pitch_accent_status`
+      })
+    );
+  }
+
   if (pitchAccentPageUrl && !isHttpUrl(pitchAccentPageUrl)) {
     issues.push(
       createIssue({
@@ -397,7 +422,32 @@ async function parseManifestEntry(input: {
     );
   }
 
-  if (!entryType || !entryId || (!audio.value && pitchAccent.value === null)) {
+  if (
+    pitchAccentStatus === "resolved" &&
+    pitchAccent.value === null
+  ) {
+    issues.push(
+      createIssue({
+        code: "pronunciation-manifest.resolved-pitch-accent-without-value",
+        category: "schema",
+        filePath: input.sourceFile,
+        message:
+          "Pronunciation manifest pitch_accent_status 'resolved' requires pitch_accent.",
+        path: `${scope}.pitch_accent`
+      })
+    );
+  }
+
+  if (
+    !entryType ||
+    !entryId ||
+    (!audio.value &&
+      pitchAccent.value === null &&
+      getPitchAccentCheckStatus({
+        pitchAccent: undefined,
+        pitchAccentStatus: pitchAccentStatus ?? undefined
+      }) === undefined)
+  ) {
     return {
       issues,
       value: null
@@ -412,9 +462,36 @@ async function parseManifestEntry(input: {
       ...(audio.value ?? {}),
       pitchAccent: pitchAccent.value ?? undefined,
       pitchAccentSource: pitchAccentSource ?? undefined,
-      pitchAccentPageUrl: pitchAccentPageUrl ?? undefined
+      pitchAccentPageUrl: pitchAccentPageUrl ?? undefined,
+      pitchAccentStatus:
+        pitchAccentStatus ??
+        getPitchAccentCheckStatus({
+          pitchAccent: pitchAccent.value ?? undefined
+        })
     }
   };
+}
+
+function asPitchAccentCheckStatus(
+  value: unknown
+): PitchAccentCheckStatus | null {
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  return value === "resolved" || value === "miss" || value === "source_error"
+    ? value
+    : null;
+}
+
+export function getPitchAccentCheckStatus(
+  entry: Pick<PronunciationManifestEntry, "pitchAccent" | "pitchAccentStatus">
+) {
+  if (entry.pitchAccentStatus) {
+    return entry.pitchAccentStatus;
+  }
+
+  return entry.pitchAccent !== undefined ? "resolved" : undefined;
 }
 
 export async function normalizeEntryAudioMetadata(input: {

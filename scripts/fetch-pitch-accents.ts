@@ -9,6 +9,7 @@ import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation-
 type CliOptions = {
   contentRoot: string;
   dryRun: boolean;
+  entryDelayMs?: number;
   limit?: number;
   mediaSlugs: string[];
   network: PronunciationFetchNetworkOptions;
@@ -40,6 +41,7 @@ if (!parseResult.ok) {
     const summary = await fetchPitchAccentsForBundle({
       bundle,
       dryRun: options.dryRun,
+      entryDelayMs: options.entryDelayMs,
       limit: options.limit,
       network: options.network,
       refresh: options.refresh
@@ -97,6 +99,17 @@ function parseCliOptions(argv: string[]): CliOptions {
 
       if (Number.isFinite(parsedLimit) && parsedLimit >= 0) {
         options.limit = parsedLimit;
+      }
+
+      index += 1;
+      continue;
+    }
+
+    if (argument === "--entry-delay-ms") {
+      const parsedDelay = Number.parseInt(argv[index + 1] ?? "", 10);
+
+      if (Number.isFinite(parsedDelay) && parsedDelay >= 0) {
+        options.entryDelayMs = parsedDelay;
       }
 
       index += 1;

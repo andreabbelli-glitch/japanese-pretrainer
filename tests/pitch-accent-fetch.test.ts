@@ -298,7 +298,226 @@ describe("pitch accent fetch helpers", () => {
           pitch_accent: 1,
           pitch_accent_page_url:
             "https://en.wiktionary.org/wiki/%E9%80%B2%E5%8C%96",
-          pitch_accent_source: "Wiktionary"
+          pitch_accent_source: "Wiktionary",
+          pitch_accent_status: "resolved"
+        }
+      ]);
+    } finally {
+      await rm(tempDir, { force: true, recursive: true });
+    }
+  });
+
+  it("persists misses and retries only source errors on later runs", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pitch-status-"));
+    const mediaDirectory = path.join(tempDir, "media", "fixture");
+    const bundle = {
+      cardFiles: [],
+      cards: [],
+      grammarPatterns: [],
+      lessons: [],
+      media: null,
+      mediaDirectory,
+      mediaSlug: "fixture",
+      references: [],
+      terms: [
+        {
+          aliases: [],
+          id: "term-mikai",
+          kind: "term" as const,
+          lemma: "未解決",
+          meaningIt: "irrisolto",
+          pitchAccent: undefined,
+          reading: "みかいけつ",
+          romaji: "mikaiketsu",
+          source: {
+            documentKind: "cards" as const,
+            filePath: "fixture.md",
+            sequence: 0
+          }
+        },
+        {
+          aliases: [],
+          id: "term-shougai",
+          kind: "term" as const,
+          lemma: "障害",
+          meaningIt: "errore",
+          pitchAccent: undefined,
+          reading: "しょうがい",
+          romaji: "shougai",
+          source: {
+            documentKind: "cards" as const,
+            filePath: "fixture.md",
+            sequence: 1
+          }
+        }
+      ]
+    };
+
+    const firstFetchMock = vi.fn(async (url: string) => {
+      if (
+        url.includes("wiktionary") &&
+        url.includes(encodeURIComponent("未解決"))
+      ) {
+        return new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  title: "未解決",
+                  revisions: [
+                    {
+                      slots: {
+                        main: {
+                          content: "==Japanese==\n===Pronunciation===\n"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }),
+          { status: 200 }
+        );
+      }
+
+      if (
+        url.includes("wiktionary") &&
+        url.includes(encodeURIComponent("みかいけつ"))
+      ) {
+        return new Response(
+          JSON.stringify({
+            query: {
+              pages: [
+                {
+                  missing: true,
+                  title: "みかいけつ"
+                }
+              ]
+            }
+          }),
+          { status: 200 }
+        );
+      }
+
+      if (url.includes("ojad") && url.includes(encodeURIComponent("みかいけつ"))) {
+        return new Response("Not Found", {
+          status: 404,
+          statusText: "Not Found"
+        });
+      }
+
+      if (
+        (url.includes("wiktionary") &&
+          url.includes(encodeURIComponent("障害"))) ||
+        (url.includes("wiktionary") &&
+          url.includes(encodeURIComponent("しょうがい"))) ||
+        (url.includes("ojad") && url.includes(encodeURIComponent("しょうがい")))
+      ) {
+        return new Response("Server Error", {
+          status: 500,
+          statusText: "Server Error"
+        });
+      }
+
+      throw new Error(`Unexpected URL: ${url}`);
+    });
+    vi.stubGlobal("fetch", firstFetchMock);
+
+    try {
+      await fetchPitchAccentsForBundle({
+        bundle,
+        network: {
+          maxRetries: 0,
+          requestDelayMs: 0
+        }
+      });
+
+      const firstManifest = JSON.parse(
+        await readFile(path.join(mediaDirectory, "pronunciations.json"), "utf8")
+      );
+
+      expect(firstManifest.entries).toEqual([
+        {
+          entry_id: "term-mikai",
+          entry_type: "term",
+          pitch_accent_status: "miss"
+        },
+        {
+          entry_id: "term-shougai",
+          entry_type: "term",
+          pitch_accent_status: "source_error"
+        }
+      ]);
+
+      const secondFetchMock = vi.fn(async (url: string) => {
+        if (url.includes(encodeURIComponent("障害"))) {
+          return new Response(
+            JSON.stringify({
+              query: {
+                pages: [
+                  {
+                    title: "障害",
+                    revisions: [
+                      {
+                        slots: {
+                          main: {
+                            content:
+                              "==Japanese==\n===Pronunciation===\n* {{ja-pron|しょうがい|acc=2|acc_ref=NHK}}\n"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }),
+            { status: 200 }
+          );
+        }
+
+        throw new Error(`Unexpected URL: ${url}`);
+      });
+      vi.stubGlobal("fetch", secondFetchMock);
+
+      await fetchPitchAccentsForBundle({
+        bundle,
+        network: {
+          maxRetries: 0,
+          requestDelayMs: 0
+        }
+      });
+
+      const requestedUrls = secondFetchMock.mock.calls.map(([url]) =>
+        String(url)
+      );
+
+      expect(
+        requestedUrls.some(
+          (url) =>
+            url.includes(encodeURIComponent("未解決")) ||
+            url.includes(encodeURIComponent("みかいけつ"))
+        )
+      ).toBe(false);
+
+      const secondManifest = JSON.parse(
+        await readFile(path.join(mediaDirectory, "pronunciations.json"), "utf8")
+      );
+
+      expect(secondManifest.entries).toEqual([
+        {
+          entry_id: "term-mikai",
+          entry_type: "term",
+          pitch_accent_status: "miss"
+        },
+        {
+          entry_id: "term-shougai",
+          entry_type: "term",
+          pitch_accent: 2,
+          pitch_accent_page_url:
+            "https://en.wiktionary.org/wiki/%E9%9A%9C%E5%AE%B3",
+          pitch_accent_source: "Wiktionary",
+          pitch_accent_status: "resolved"
         }
       ]);
     } finally {
