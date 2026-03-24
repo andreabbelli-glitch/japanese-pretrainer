@@ -10,6 +10,7 @@ import {
 import path from "node:path";
 import { spawn } from "node:child_process";
 import { createServer } from "node:http";
+import type { Socket } from "node:net";
 
 import { chromium, type Download, type Page } from "@playwright/test";
 
@@ -100,12 +101,14 @@ const skipControlState: {
   port: number | null;
   ready: Promise<string> | null;
   server: ReturnType<typeof createServer> | null;
+  sockets: Set<Socket>;
 } = {
   currentSkipHandler: null,
   pendingSkip: false,
   port: null,
   ready: null,
-  server: null
+  server: null,
+  sockets: new Set()
 };
 
 export async function fetchForvoPronunciationsForBundle(input: {
@@ -1446,6 +1449,7 @@ function ensureSkipControlServer(port: number) {
     if (request.url?.startsWith("/skip")) {
       const mode = triggerSkipResolution();
       response.writeHead(200, {
+        "Connection": "close",
         "Content-Type": "text/html; charset=utf-8"
       });
       response.end(
@@ -1457,11 +1461,19 @@ function ensureSkipControlServer(port: number) {
     }
 
     response.writeHead(200, {
+      "Connection": "close",
       "Content-Type": "text/plain; charset=utf-8"
     });
     response.end(
       "Forvo batch control is running.\nUse /skip to mark the current entry as missing.\n"
     );
+  });
+
+  server.on("connection", (socket) => {
+    skipControlState.sockets.add(socket);
+    socket.on("close", () => {
+      skipControlState.sockets.delete(socket);
+    });
   });
 
   const ready = new Promise<string>((resolve, reject) => {
@@ -1481,18 +1493,24 @@ function ensureSkipControlServer(port: number) {
 
 async function closeSkipControlServer() {
   const server = skipControlState.server;
+  const sockets = [...skipControlState.sockets];
 
   skipControlState.currentSkipHandler = null;
   skipControlState.pendingSkip = false;
   skipControlState.port = null;
   skipControlState.ready = null;
   skipControlState.server = null;
+  skipControlState.sockets = new Set();
 
   if (!server) {
     return;
   }
 
   await new Promise<void>((resolve, reject) => {
+    for (const socket of sockets) {
+      socket.destroy();
+    }
+
     server.close((error) => {
       if (error) {
         reject(error);

@@ -1,0 +1,9 @@
+grammar-de-nai
+grammar-toshite
+grammar-te-inakereba
+grammar-soudenakereba
+grammar-nara
+grammar-yori
+grammar-tsugi-no
+grammar-no-uchi
+grammar-izureka
