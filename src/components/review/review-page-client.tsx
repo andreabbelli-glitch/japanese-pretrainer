@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 
 import Link from "next/link";
 
@@ -70,6 +70,9 @@ export function ReviewPageClient({
   const [queueCardIds, setQueueCardIds] = useState<string[]>(
     "queueCardIds" in data ? data.queueCardIds : []
   );
+  const [revealedCardId, setRevealedCardId] = useState<string | null>(() =>
+    getInitiallyRevealedCardId(data)
+  );
   const [clientError, setClientError] = useState<string | null>(null);
   const [pendingAnsweredCountScroll, setPendingAnsweredCountScroll] = useState<
     number | null
@@ -79,6 +82,8 @@ export function ReviewPageClient({
   const [prefetchedNextCardId, setPrefetchedNextCardId] = useState<
     string | null
   >(null);
+  const lastGlobalHydrationRequestKeyRef = useRef<string | null>(null);
+  const inFlightGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const isFullReviewPageData = isReviewPageData(viewData);
   const isHydratingFullData =
@@ -95,6 +100,10 @@ export function ReviewPageClient({
       : -1;
   const isQueueCard = selectedCard
     ? viewData.selectedCardContext.isQueueCard
+    : false;
+  const isAnswerRevealed = selectedCard
+    ? viewData.selectedCardContext.showAnswer ||
+      revealedCardId === selectedCard.id
     : false;
   const nextQueueCardId = isQueueCard
     ? isFullReviewPageData
@@ -118,8 +127,7 @@ export function ReviewPageClient({
       viewData.queue.upcomingCount >
     0;
   const showFrontFurigana =
-    viewData.settings.reviewFrontFurigana ||
-    viewData.selectedCardContext.showAnswer;
+    viewData.settings.reviewFrontFurigana || isAnswerRevealed;
   const additionalNewCount = showCompletionTopUp(viewData);
   const sessionHref = buildCanonicalReviewSessionHrefForBase({
     answeredCount: viewData.session.answeredCount,
@@ -128,7 +136,7 @@ export function ReviewPageClient({
     extraNewCount: viewData.session.extraNewCount,
     isQueueCard,
     position,
-    showAnswer: viewData.selectedCardContext.showAnswer
+    showAnswer: isAnswerRevealed
   });
   const contextualGlossaryHref = appendReturnToParam(
     viewData.media.glossaryHref,
@@ -145,13 +153,25 @@ export function ReviewPageClient({
         ])
       )
     : new Map();
+  const globalHydrationRequestKey =
+    searchParams && viewData.scope === "global"
+      ? buildReviewHydrationRequestKey(searchParams)
+      : null;
 
   useEffect(() => {
-    if (isFullReviewPageData || !searchParams || viewData.scope !== "global") {
+    if (
+      isFullReviewPageData ||
+      !searchParams ||
+      viewData.scope !== "global" ||
+      globalHydrationRequestKey === null ||
+      lastGlobalHydrationRequestKeyRef.current === globalHydrationRequestKey ||
+      inFlightGlobalHydrationRequestKeyRef.current === globalHydrationRequestKey
+    ) {
       return;
     }
 
     let cancelled = false;
+    inFlightGlobalHydrationRequestKeyRef.current = globalHydrationRequestKey;
 
     void loadReviewPageDataSessionAction({
       scope: "global",
@@ -162,6 +182,8 @@ export function ReviewPageClient({
           return;
         }
 
+        inFlightGlobalHydrationRequestKeyRef.current = null;
+        lastGlobalHydrationRequestKeyRef.current = globalHydrationRequestKey;
         setViewData((currentData) =>
           mergeReviewPageData(currentData, nextData)
         );
@@ -174,6 +196,12 @@ export function ReviewPageClient({
           return;
         }
 
+        if (
+          inFlightGlobalHydrationRequestKeyRef.current ===
+          globalHydrationRequestKey
+        ) {
+          inFlightGlobalHydrationRequestKeyRef.current = null;
+        }
         setClientError(
           "Non sono riuscito a completare i dettagli della review. La stage resta disponibile."
         );
@@ -182,7 +210,12 @@ export function ReviewPageClient({
     return () => {
       cancelled = true;
     };
-  }, [isFullReviewPageData, searchParams, viewData.media.slug, viewData.scope]);
+  }, [
+    globalHydrationRequestKey,
+    isFullReviewPageData,
+    searchParams,
+    viewData.scope
+  ]);
 
   useEffect(() => {
     const currentHref = `${window.location.pathname}${window.location.search}`;
@@ -275,6 +308,7 @@ export function ReviewPageClient({
       void loadNextData()
         .then((nextData) => {
           setViewData(nextData);
+          setRevealedCardId(getInitiallyRevealedCardId(nextData));
           if (options?.shouldSyncQueueCardIds?.(nextData) ?? true) {
             setQueueCardIds(nextData.queueCardIds);
           }
@@ -295,6 +329,8 @@ export function ReviewPageClient({
     if (!selectedCard) {
       return;
     }
+
+    setRevealedCardId(selectedCard.id);
 
     if (isFullReviewPageData) {
       const fullViewData = viewData as ReviewPageData;
@@ -545,7 +581,7 @@ export function ReviewPageClient({
                     ? renderFurigana(selectedCard.front)
                     : stripInlineMarkdown(selectedCard.front)}
                 </h2>
-                {!viewData.selectedCardContext.showAnswer ? (
+                {!isAnswerRevealed ? (
                   <div className="review-stage__veil">
                     <button
                       className="button button--primary review-stage__reveal"
@@ -631,7 +667,7 @@ export function ReviewPageClient({
 
               {isFullReviewPageData &&
               isQueueCard &&
-              viewData.selectedCardContext.showAnswer ? (
+              isAnswerRevealed ? (
                 <div className="review-grade-grid">
                   {ratingCopy.map((rating) => (
                     <button
@@ -966,4 +1002,35 @@ function mergeReviewPageData(
       showAnswer
     }
   };
+}
+
+function getInitiallyRevealedCardId(data: ReviewPageClientData) {
+  return data.selectedCard && data.selectedCardContext.showAnswer
+    ? data.selectedCard.id
+    : null;
+}
+
+function buildReviewHydrationRequestKey(
+  searchParams: Record<string, string | string[] | undefined>
+) {
+  const params = new URLSearchParams();
+
+  for (const [key, rawValue] of Object.entries(searchParams).sort(([a], [b]) =>
+    a.localeCompare(b)
+  )) {
+    if (key === "show" || rawValue === undefined) {
+      continue;
+    }
+
+    if (typeof rawValue === "string") {
+      params.append(key, rawValue);
+      continue;
+    }
+
+    for (const value of [...rawValue].sort()) {
+      params.append(key, value);
+    }
+  }
+
+  return params.toString();
 }
