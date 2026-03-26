@@ -93,7 +93,7 @@ describe("database layer", () => {
     expect(grammar[0]).not.toHaveProperty("status");
   });
 
-  it("returns lighter review summaries without glossary-only search or pronunciation metadata", async () => {
+  it("returns lighter review summaries without glossary-only search metadata", async () => {
     const [terms, grammar] = await Promise.all([
       listTermEntryReviewSummaries(database, {
         mediaId: developmentFixture.mediaId
@@ -105,16 +105,9 @@ describe("database layer", () => {
 
     expect(terms).toHaveLength(1);
     expect(terms[0]).toHaveProperty("mediaSlug", developmentFixture.mediaSlug);
+    expect(terms[0]).toHaveProperty("audioSrc");
+    expect(terms[0]).toHaveProperty("pitchAccent");
     expect(terms[0]).not.toHaveProperty("entryStatus");
-    expect(terms[0]).not.toHaveProperty("audioSrc");
-    expect(terms[0]).not.toHaveProperty("audioSource");
-    expect(terms[0]).not.toHaveProperty("audioSpeaker");
-    expect(terms[0]).not.toHaveProperty("audioLicense");
-    expect(terms[0]).not.toHaveProperty("audioAttribution");
-    expect(terms[0]).not.toHaveProperty("audioPageUrl");
-    expect(terms[0]).not.toHaveProperty("pitchAccent");
-    expect(terms[0]).not.toHaveProperty("pitchAccentSource");
-    expect(terms[0]).not.toHaveProperty("pitchAccentPageUrl");
     expect(terms[0]).not.toHaveProperty("levelHint");
     expect(terms[0]).not.toHaveProperty("searchLemmaNorm");
     expect(terms[0]).not.toHaveProperty("searchReadingNorm");
@@ -125,16 +118,9 @@ describe("database layer", () => {
       "mediaSlug",
       developmentFixture.mediaSlug
     );
+    expect(grammar[0]).toHaveProperty("audioSrc");
+    expect(grammar[0]).toHaveProperty("pitchAccent");
     expect(grammar[0]).not.toHaveProperty("entryStatus");
-    expect(grammar[0]).not.toHaveProperty("audioSrc");
-    expect(grammar[0]).not.toHaveProperty("audioSource");
-    expect(grammar[0]).not.toHaveProperty("audioSpeaker");
-    expect(grammar[0]).not.toHaveProperty("audioLicense");
-    expect(grammar[0]).not.toHaveProperty("audioAttribution");
-    expect(grammar[0]).not.toHaveProperty("audioPageUrl");
-    expect(grammar[0]).not.toHaveProperty("pitchAccent");
-    expect(grammar[0]).not.toHaveProperty("pitchAccentSource");
-    expect(grammar[0]).not.toHaveProperty("pitchAccentPageUrl");
     expect(grammar[0]).not.toHaveProperty("levelHint");
     expect(grammar[0]).not.toHaveProperty("searchPatternNorm");
   });

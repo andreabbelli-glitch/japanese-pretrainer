@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { connection } from "next/server";
 
 import { ReviewPageClient } from "@/components/review/review-page-client";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -14,15 +13,16 @@ type ReviewRouteProps = {
 };
 
 export default async function ReviewRoute({ searchParams }: ReviewRouteProps) {
-  await connection();
-  const profiler = await createRequestReviewProfiler({
-    label: "route:global-review",
-    meta: {
-      scope: "global"
-    }
-  });
+  const [profiler, resolvedSearchParams] = await Promise.all([
+    createRequestReviewProfiler({
+      label: "route:global-review",
+      meta: {
+        scope: "global"
+      }
+    }),
+    searchParams
+  ]);
   scheduleReviewProfilerFlush(profiler);
-  const resolvedSearchParams = await searchParams;
 
   const reviewResult = await profiler.measure(
     "getGlobalReviewFirstCandidateLoadResult",

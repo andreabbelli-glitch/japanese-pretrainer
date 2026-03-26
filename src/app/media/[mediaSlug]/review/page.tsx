@@ -18,16 +18,18 @@ export default async function MediaReviewRoute({
   params,
   searchParams
 }: StudyAreaRouteProps) {
-  const { mediaSlug } = await params;
-  const profiler = await createRequestReviewProfiler({
-    label: "route:media-review",
-    meta: {
-      mediaSlug,
-      scope: "media"
-    }
-  });
+  const [{ mediaSlug }, profiler, resolvedSearchParams] = await Promise.all([
+    params,
+    createRequestReviewProfiler({
+      label: "route:media-review",
+      meta: {
+        scope: "media"
+      }
+    }),
+    searchParams
+  ]);
+  profiler.addMeta({ mediaSlug });
   scheduleReviewProfilerFlush(profiler);
-  const resolvedSearchParams = await searchParams;
   const reviewData = await profiler.measure("getReviewPageData", () =>
     getReviewPageData(mediaSlug, resolvedSearchParams, undefined, {
       profiler

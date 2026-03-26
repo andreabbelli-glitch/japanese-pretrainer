@@ -41,7 +41,7 @@ export async function runWithTaggedCache<T>(input: {
   }
 
   return nextCache.unstable_cache(async () => input.loader(), input.keyParts, {
-    revalidate: 60,
+    revalidate: false,
     tags: dedupeTags(input.tags)
   })();
 }
