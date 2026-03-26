@@ -2057,10 +2057,7 @@ describe("review system", () => {
       scope: "global"
     });
 
-    expect(revalidatePathMock.mock.calls).toEqual([
-      ["/review"],
-      [`/media/${developmentFixture.mediaSlug}/review`]
-    ]);
+    expect(revalidatePathMock).not.toHaveBeenCalled();
     expect(reviewPageCalls).toEqual([
       {
         scope: "global",
@@ -2113,10 +2110,7 @@ describe("review system", () => {
     expect(result.session.answeredCount).toBe(
       (pageData?.session.answeredCount ?? 0) + 1
     );
-    expect(revalidatePathMock.mock.calls).toEqual([
-      ["/review"],
-      [`/media/${developmentFixture.mediaSlug}/review`]
-    ]);
+    expect(revalidatePathMock).not.toHaveBeenCalled();
   });
 
   it("prefetches a queued review card without touching session rebuild paths", async () => {
@@ -2160,7 +2154,7 @@ describe("review system", () => {
     });
   });
 
-  it("revalidates review and glossary paths after marking a linked entry known in global review", async () => {
+  it("revalidates only data caches after marking a linked entry known in global review", async () => {
     const { markLinkedEntryKnownSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
 
@@ -2173,12 +2167,7 @@ describe("review system", () => {
       scope: "global"
     });
 
-    expect(revalidatePathMock.mock.calls).toEqual([
-      ["/review"],
-      [`/media/${developmentFixture.mediaSlug}/review`],
-      ["/glossary"],
-      [`/media/${developmentFixture.mediaSlug}/glossary`]
-    ]);
+    expect(revalidatePathMock).not.toHaveBeenCalled();
     expect(reviewPageCalls).toEqual([
       {
         scope: "global",
