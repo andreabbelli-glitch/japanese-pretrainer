@@ -15,16 +15,17 @@ import {
 } from "@/actions/review";
 import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
-import type {
-  ReviewFirstCandidatePageData,
-  ReviewPageData,
-  ReviewQueueCard
-} from "@/lib/review";
+import type { ReviewPageData, ReviewQueueCard } from "@/lib/review";
 import {
   appendReturnToParam,
   buildCanonicalReviewSessionHrefForBase
 } from "@/lib/site";
 
+import {
+  getInitiallyRevealedCardId,
+  mergeReviewPageData,
+  type ReviewPageClientData
+} from "./review-page-state";
 import { EmptyState } from "../ui/empty-state";
 import { PronunciationAudio } from "../ui/pronunciation-audio";
 import { StatBlock } from "../ui/stat-block";
@@ -57,8 +58,6 @@ const ratingCopy = [
   }
 ] as const;
 
-type ReviewPageClientData = ReviewPageData | ReviewFirstCandidatePageData;
-
 export function ReviewPageClient({
   data,
   searchParams
@@ -82,6 +81,7 @@ export function ReviewPageClient({
   const [prefetchedNextCardId, setPrefetchedNextCardId] = useState<
     string | null
   >(null);
+  const latestViewDataRef = useRef<ReviewPageClientData>(data);
   const lastGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const inFlightGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -157,6 +157,10 @@ export function ReviewPageClient({
     searchParams && viewData.scope === "global"
       ? buildReviewHydrationRequestKey(searchParams)
       : null;
+
+  useEffect(() => {
+    latestViewDataRef.current = viewData;
+  }, [viewData]);
 
   useEffect(() => {
     if (
@@ -307,12 +311,18 @@ export function ReviewPageClient({
     startTransition(() => {
       void loadNextData()
         .then((nextData) => {
-          setViewData(nextData);
-          setRevealedCardId(getInitiallyRevealedCardId(nextData));
+          const mergedData = mergeReviewPageData(
+            latestViewDataRef.current,
+            nextData
+          );
+
+          latestViewDataRef.current = mergedData;
+          setViewData(mergedData);
+          setRevealedCardId(getInitiallyRevealedCardId(mergedData));
           if (options?.shouldSyncQueueCardIds?.(nextData) ?? true) {
             setQueueCardIds(nextData.queueCardIds);
           }
-          options?.onSuccess?.(nextData);
+          options?.onSuccess?.(mergedData);
         })
         .catch((error) => {
           console.error(error);
@@ -976,38 +986,6 @@ function formatTopUpLabel(count: number) {
 
 function isReviewPageData(data: ReviewPageClientData): data is ReviewPageData {
   return "queueCardIds" in data;
-}
-
-function mergeReviewPageData(
-  currentData: ReviewPageClientData,
-  nextData: ReviewPageData
-): ReviewPageData {
-  const showAnswer =
-    currentData.selectedCardContext.showAnswer ||
-    nextData.selectedCardContext.showAnswer;
-
-  return {
-    ...nextData,
-    selectedCardContext: {
-      ...nextData.selectedCardContext,
-      gradePreviews:
-        showAnswer && nextData.selectedCard
-          ? nextData.selectedCardContext.gradePreviews.length > 0
-            ? nextData.selectedCardContext.gradePreviews
-            : buildReviewGradePreviews(
-                nextData.selectedCard.reviewSeedState,
-                new Date()
-              )
-          : nextData.selectedCardContext.gradePreviews,
-      showAnswer
-    }
-  };
-}
-
-function getInitiallyRevealedCardId(data: ReviewPageClientData) {
-  return data.selectedCard && data.selectedCardContext.showAnswer
-    ? data.selectedCard.id
-    : null;
 }
 
 function buildReviewHydrationRequestKey(

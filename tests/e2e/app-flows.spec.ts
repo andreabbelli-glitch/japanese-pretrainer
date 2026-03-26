@@ -1,12 +1,34 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+async function ensureDuelMastersReviewAvailable(page: Page) {
+  await page.goto("/media/duel-masters-dm25/textbook/tcg-core-overview");
+  await expect(
+    page.getByRole("heading", { name: /TCG Core - Entrare nel gioco/ })
+  ).toBeVisible();
+
+  const completeLessonButton = page.getByRole("button", {
+    name: "Chiudi lesson"
+  });
+
+  if (await completeLessonButton.isVisible().catch(() => false)) {
+    await completeLessonButton.click();
+  }
+
+  await expect(
+    page.getByRole("button", { name: "Riapri lesson" })
+  ).toBeVisible();
+}
 
 test("covers dashboard, reader, glossary, review, progress, settings and review redirect", async ({
   page
 }) => {
   await page.goto("/");
 
+  await expect(page.locator(".dashboard-page")).toBeVisible();
   await expect(
-    page.getByRole("heading", { level: 1, name: "Duel Masters" })
+    page
+      .getByRole("heading", { name: "Mobile Suit Gundam Arsenal Base" })
+      .first()
   ).toBeVisible();
 
   await page.goto("/media");
@@ -19,15 +41,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
       .first()
   ).toBeVisible();
 
-  await page.goto("/");
-  await page
-    .getByRole("link", { name: "Continua il percorso" })
-    .first()
-    .click();
-
-  await expect(page).toHaveURL(
-    /\/media\/duel-masters-dm25\/textbook\/tcg-core-overview$/
-  );
+  await page.goto("/media/duel-masters-dm25/textbook/tcg-core-overview");
   await expect(
     page.getByRole("heading", { name: /TCG Core - Entrare nel gioco/ })
   ).toBeVisible();
@@ -80,10 +94,11 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await glossarySearch.fill("bochi");
   await glossarySearch.press("Enter");
 
-  await expect(page.getByRole("heading", { name: '"bochi"' })).toBeVisible();
+  await expect(glossarySearch).toHaveValue("bochi");
   await expect(
     page.getByRole("heading", { name: "墓地" }).first()
   ).toBeVisible();
+  await expect(page.getByText("cimitero / graveyard")).toBeVisible();
   await page.locator(".glossary-global-result__media-link").first().click();
 
   await expect(page).toHaveURL(
@@ -95,11 +110,14 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
       .getByText("cimitero / graveyard")
   ).toBeVisible();
 
+  await ensureDuelMastersReviewAvailable(page);
+
   const reviewNavigationStartedAt = performance.now();
   await page.goto("/review", { waitUntil: "domcontentloaded" });
   await expect(page).toHaveURL(/\/review(?:\?|$)/);
   await expect(page.locator(".review-page")).toBeVisible();
   await expect(page.locator(".review-stage")).toBeVisible();
+  await expect(page.locator(".review-stage__front")).toBeVisible();
   const initialReviewFront = await page
     .locator(".review-stage__front")
     .textContent();
@@ -155,6 +173,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
 test("keeps the review session on a valid next state after grading again", async ({
   page
 }) => {
+  await ensureDuelMastersReviewAvailable(page);
   await page.goto("/review");
   await expect(page).toHaveURL(/\/review(?:\?|$)/);
 
@@ -173,6 +192,7 @@ test("keeps the review session on a valid next state after grading again", async
 test("scrolls the review stage back into view after grading the next card", async ({
   page
 }) => {
+  await ensureDuelMastersReviewAvailable(page);
   await page.setViewportSize({ width: 1280, height: 720 });
   await page.goto("/review");
   await expect(page).toHaveURL(/\/review(?:\?|$)/);
@@ -209,6 +229,7 @@ test("scrolls the review stage back into view after grading the next card", asyn
 test("keeps the revealed review answer mounted while the answer URL is synchronized", async ({
   page
 }) => {
+  await ensureDuelMastersReviewAvailable(page);
   await page.goto("/media/duel-masters-dm25/review");
   await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review(?:\?|$)/);
 

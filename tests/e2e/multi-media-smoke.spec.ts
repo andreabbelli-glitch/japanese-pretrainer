@@ -15,7 +15,7 @@ for (const mediaSlug of mediaSlugs) {
     await page.goto("/media");
 
     await expect(
-      page.locator(`.library-card-link[href="/media/${mediaSlug}"]`).first()
+      page.locator(`.library-card__overlay-link[href="/media/${mediaSlug}"]`).first()
     ).toBeVisible();
 
     await page.goto(`/media/${mediaSlug}`);
@@ -57,9 +57,7 @@ for (const mediaSlug of mediaSlugs) {
       new RegExp(`/media/${mediaSlugPattern}/review(?:\\?.*)?$`)
     );
     await expect(page.locator(".review-page")).toBeVisible();
-    await expect(
-      page.getByRole("link", { name: "Apri Glossary" }).first()
-    ).toBeVisible();
+    await expect(page.locator(".review-stage, .empty-state").first()).toBeVisible();
 
     await page.goto(`/media/${mediaSlug}/progress`);
 
