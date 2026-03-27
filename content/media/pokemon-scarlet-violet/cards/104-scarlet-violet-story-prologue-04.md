@@ -6,7 +6,6 @@ title: Scarlet / Violet Story 104 - Prologo 4
 order: 140
 segment_ref: scarlet-violet-story
 ---
-
 :::term
 id: term-gakusei-shokudou
 lemma: 学生食堂
@@ -18,7 +17,6 @@ notes_it: >-
   il gioco ti manda alla `{{学生食堂|がくせいしょくどう}}`, di solito si attiva un
   dialogo che aggiorna obiettivo corrente o direzione della route.
 :::
-
 :::card
 id: card-gakusei-shokudou-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
@@ -33,7 +31,6 @@ example_jp: >-
 example_it: >-
   Andando alla mensa studentesca, comincia ad avanzare il filone di Pepper.
 :::
-
 :::term
 id: term-shokuinshitsu
 lemma: 職員室
@@ -45,7 +42,6 @@ notes_it: >-
   luogo di spiegazione, autorizzazione o briefing piu formale, non un semplice
   passaggio di sfondo nel campus.
 :::
-
 :::card
 id: card-shokuinshitsu-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
@@ -60,7 +56,6 @@ example_jp: >-
 example_it: >-
   Nella sala insegnanti Nemona ti spiega il prossimo obiettivo.
 :::
-
 :::term
 id: term-kouchoushitsu
 lemma: 校長室
@@ -72,7 +67,6 @@ notes_it: >-
   compare `{{校長室|こうちょうしつ}}`, il gioco sta aprendo una scena formale che
   conferma istruzioni, permessi o passaggi successivi dell'avventura scolastica.
 :::
-
 :::card
 id: card-kouchoushitsu-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
@@ -88,7 +82,6 @@ example_it: >-
   Quando vieni chiamato nell'ufficio del preside, in genere parte una scena che
   aggiorna istruzioni o obiettivo.
 :::
-
 :::term
 id: term-gakusei-ryou
 lemma: 学生寮
@@ -101,7 +94,6 @@ notes_it: >-
   l'apertura della
   [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou).
 :::
-
 :::card
 id: card-gakusei-ryou-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
@@ -116,7 +108,6 @@ example_jp: >-
 example_it: >-
   Se riposi nella stanza del dormitorio, puoi passare al giorno successivo.
 :::
-
 :::term
 id: term-tannin
 lemma: 担任
@@ -128,7 +119,6 @@ notes_it: >-
   `{{担任|たんにん}}`, ti sta dicendo chi gestisce presentazioni, domande,
   istruzioni o report legati alla vita scolastica del protagonista.
 :::
-
 :::card
 id: card-tannin-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
@@ -143,7 +133,6 @@ example_jp: >-
 example_it: >-
   L'insegnante di classe ti fa delle domande in aula.
 :::
-
 :::term
 id: term-mezasu
 lemma: 目指す
@@ -155,7 +144,6 @@ notes_it: >-
   chiede che cosa vuoi `{{目指|めざ}}す`, ti fa esplicitare una direzione
   (ruolo/risultato) che incornicia dialoghi e prossimi step della route.
 :::
-
 :::card
 id: card-mezasu-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
@@ -169,7 +157,6 @@ example_jp: >-
 example_it: >-
   Ti hanno chiesto che tipo di Allenatore vuoi diventare in futuro.
 :::
-
 :::grammar
 id: grammar-you-ni-iwareru
 pattern: ～ように言われる
@@ -182,7 +169,6 @@ notes_it: >-
   `～ように {{言|い}}われた`, non sta improvvisando: sta eseguendo un compito o una
   direttiva precisa.
 :::
-
 :::card
 id: card-you-ni-iwareru-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance

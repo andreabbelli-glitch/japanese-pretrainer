@@ -6,7 +6,6 @@ title: Scarlet / Violet Story 102 - Prologo 2
 order: 120
 segment_ref: scarlet-violet-story
 ---
-
 :::term
 id: term-hokaku
 lemma: 捕獲
@@ -18,7 +17,6 @@ notes_it: >-
   personaggio parla di `ポケモンの {{捕獲|ほかく}}`, il gioco sta valutando come sta
   andando la raccolta di specie nuove, non solo se stai vincendo le lotte.
 :::
-
 :::card
 id: card-hokaku-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -33,7 +31,6 @@ example_jp: >-
 example_it: >-
   Quando ti abitui alla cattura dei Pokemon, l'avventura si amplia molto.
 :::
-
 :::term
 id: term-monster-ball
 lemma: モンスターボール
@@ -45,7 +42,6 @@ notes_it: >-
   viaggio segnala lo strumento concreto con cui puoi passare dalla semplice
   lotta alla cattura di un Pokemon selvatico.
 :::
-
 :::card
 id: card-monster-ball-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -60,7 +56,6 @@ example_jp: >-
 example_it: >-
   Se lanci la Pokeball quando il Pokemon è indebolito, è più facile catturarlo.
 :::
-
 :::term
 id: term-yowaraseru
 lemma: 弱らせる
@@ -73,7 +68,6 @@ notes_it: >-
   Operativamente separa il turno di setup della Ball dal turno di chiusura del
   combattimento.
 :::
-
 :::card
 id: card-yowaraseru-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -87,7 +81,6 @@ example_jp: >-
 example_it: >-
   Prova a lanciare la Ball dopo aver indebolito l'avversario.
 :::
-
 :::term
 id: term-ki-o-tsukeru
 lemma: 気をつける
@@ -99,7 +92,6 @@ notes_it: >-
   dice `{{気|き}}をつけて`, sta segnalando pericolo reale sul percorso, in battaglia
   o in una zona nuova, non una formula di cortesia vuota.
 :::
-
 :::card
 id: card-ki-o-tsukeru-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -113,7 +105,6 @@ example_jp: >-
 example_it: >-
   Vicino al dirupo avanza facendo attenzione a dove metti i piedi.
 :::
-
 :::term
 id: term-seisoku-suru
 lemma: 生息する
@@ -125,7 +116,6 @@ notes_it: >-
   dialoghi o Pokedex, quel luogo e marcato come habitat effettivo: li sono
   previsti incontri, rischi e risorse collegati a quella specie.
 :::
-
 :::card
 id: card-seisoku-suru-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -140,7 +130,6 @@ example_jp: >-
 example_it: >-
   In questa grotta vivono Pokemon dal temperamento aggressivo.
 :::
-
 :::term
 id: term-waza-machine
 lemma: わざマシン
@@ -153,7 +142,6 @@ notes_it: >-
   oggetto decorativo, ma un primo assaggio della personalizzazione del team e
   del fatto che in questo titolo la MT si consuma quando viene usata.
 :::
-
 :::card
 id: card-waza-machine-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -167,7 +155,6 @@ example_jp: >-
 example_it: >-
   Se vuoi insegnare una mossa forte, usa una MT.
 :::
-
 :::term
 id: term-sugata
 lemma: 姿
@@ -180,7 +167,6 @@ notes_it: >-
   prologo Pepper lo usa per distinguere la condizione indebolita di Koraidon /
   Miraidon dalla forma in cui può davvero combattere.
 :::
-
 :::card
 id: card-sugata-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -196,7 +182,6 @@ example_it: >-
   A quanto pare in questa forma non riesce ancora a tirare fuori il suo vero
   potere.
 :::
-
 :::term
 id: term-seigyo-suru
 lemma: 制御する
@@ -208,7 +193,6 @@ notes_it: >-
   Nella scena con Pepper la Ball non registra una presa standard: limita e
   contiene il Pokemon in uno stato speciale.
 :::
-
 :::card
 id: card-seigyo-suru-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -222,7 +206,6 @@ example_jp: >-
 example_it: >-
   Quella Ball serve a tenere sotto controllo quel Pokemon.
 :::
-
 :::grammar
 id: grammar-te-ageru
 pattern: ～てあげる
@@ -233,7 +216,6 @@ notes_it: >-
   `{{教|おし}}えてあげる` o `わけてあげる` indicano supporto concreto: ricezione di
   informazioni o oggetti che sbloccano il passo successivo.
 :::
-
 :::card
 id: card-te-ageru-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -247,7 +229,6 @@ example_jp: >-
 example_it: >-
   Ti do un po' di Monster Ball, così puoi usarle.
 :::
-
 :::grammar
 id: grammar-nai-you-ni
 pattern: ～ないように
@@ -258,7 +239,6 @@ notes_it: >-
   comportamentale ("non fare X") che riduce rischio di KO, perdita di risorse o
   blocchi di avanzamento.
 :::
-
 :::card
 id: card-nai-you-ni-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -272,7 +252,6 @@ example_jp: >-
 example_it: >-
   Mi raccomando, cerca di non avvicinarti troppo alle grotte pericolose.
 :::
-
 :::grammar
 id: grammar-nagara
 pattern: ～ながら
@@ -283,7 +262,6 @@ notes_it: >-
   frase combina movimento, incontri e cattura nello stesso segmento di
   esplorazione.
 :::
-
 :::card
 id: card-nagara-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -298,7 +276,6 @@ example_jp: >-
 example_it: >-
   Andiamo verso il faro mentre cerchiamo Pokemon selvatici.
 :::
-
 :::card
 id: card-yasei-prologue-02-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -315,7 +292,6 @@ notes_it: >-
   `{{野生|やせい}}` marca un incontro non scriptato. Nel flusso di gioco segnala
   che avvicinarsi puo aprire una battaglia e avviare la finestra di cattura.
 :::
-
 :::card
 id: card-tsukamaeru-prologue-02-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -333,7 +309,6 @@ notes_it: >-
   combattimento passa da riduzione HP a lancio Ball per aggiungere la specie al
   team o al Pokedex.
 :::
-
 :::card
 id: card-te-miru-prologue-02-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-003-pokemon-videogame-core-dialogue-and-tutorial-patterns
@@ -350,7 +325,6 @@ notes_it: >-
   Qui `～てみる` funziona come invito a testare subito un'azione. Nel flusso
   tutorial apre un comando pratico immediato, non un'intenzione futura astratta.
 :::
-
 :::card
 id: card-te-shimau-prologue-02-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle

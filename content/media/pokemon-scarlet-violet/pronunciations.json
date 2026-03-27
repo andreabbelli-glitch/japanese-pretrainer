@@ -10,27 +10,15 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-te-ageru",
-      "audio_src": "assets/audio/grammar/grammar-te-ageru/forvo-manual-てあけ-る.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%81%A6%E3%81%82%E3%81%92%E3%82%8B/#ja"
+      "entry_id": "grammar-te-ageru"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-te-kudasai",
-      "audio_src": "assets/audio/grammar/grammar-te-kudasai/forvo-manual-てくた-さい.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84/#ja"
+      "entry_id": "grammar-te-kudasai"
     },
     {
       "entry_type": "term",
       "entry_id": "term-bag",
-      "audio_src": "assets/audio/term/term-bag/forvo-manual-ハ-ック.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E3%83%90%E3%83%83%E3%82%B0/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%90%E3%83%83%E3%82%B0"
@@ -38,10 +26,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-box",
-      "audio_src": "assets/audio/term/term-box/forvo-manual-ホ-ックス.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9"
@@ -55,27 +39,15 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-gakusei-ryou",
-      "audio_src": "assets/audio/term/term-gakusei-ryou/forvo-manual-か-くせいりょう.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%AD%A6%E7%94%9F%E5%AF%AE/#ja"
+      "entry_id": "term-gakusei-ryou"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-gakusei-shokudou",
-      "audio_src": "assets/audio/term/term-gakusei-shokudou/forvo-manual-か-くせいしょくと-う.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%AD%A6%E7%94%9F%E9%A3%9F%E5%A0%82/#ja"
+      "entry_id": "term-gakusei-shokudou"
     },
     {
       "entry_type": "term",
       "entry_id": "term-hokaku",
-      "audio_src": "assets/audio/term/term-hokaku/forvo-manual-ほかく.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%8D%95%E7%8D%B2/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%BB%E3%81%8B%E3%81%8F"
@@ -83,10 +55,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-jakuten",
-      "audio_src": "assets/audio/term/term-jakuten/forvo-manual-し-ゃくてん.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%BC%B1%E7%82%B9/#ja",
       "pitch_accent": 3,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%98%E3%82%83%E3%81%8F%E3%81%A6%E3%82%93"
@@ -94,48 +62,28 @@
     {
       "entry_type": "term",
       "entry_id": "term-junbi",
-      "audio_src": "assets/audio/term/term-junbi/forvo-manual-し-ゅんひ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%BA%96%E5%82%99/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%BA%96%E5%82%99"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-kagai-jugyou",
-      "audio_src": "assets/audio/term/term-kagai-jugyou/forvo-manual-かか-いし-ゅき-ょう.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%AA%B2%E5%A4%96%E6%8E%88%E6%A5%AD/#ja"
+      "entry_id": "term-kagai-jugyou"
     },
     {
       "entry_type": "term",
       "entry_id": "term-kaifuku",
-      "audio_src": "assets/audio/term/term-kaifuku/forvo-manual-かいふく.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%9B%9E%E5%BE%A9/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%9B%9E%E5%BE%A9"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-keikenchi",
-      "audio_src": "assets/audio/term/term-keikenchi/forvo-manual-けいけんち.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%B5%8C%E9%A8%93%E5%80%A4/#ja"
+      "entry_id": "term-keikenchi"
     },
     {
       "entry_type": "term",
       "entry_id": "term-ki-o-tsukeru",
-      "audio_src": "assets/audio/term/term-ki-o-tsukeru/forvo-manual-きをつける.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%B0%97%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B/#ja",
       "pitch_accent": 4,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8D%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B"
@@ -143,48 +91,28 @@
     {
       "entry_type": "term",
       "entry_id": "term-kouchou-sensei",
-      "audio_src": "assets/audio/term/term-kouchou-sensei/forvo-manual-こうちょうせんせい.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%A0%A1%E9%95%B7%E5%85%88%E7%94%9F/#ja",
       "pitch_accent": 7,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%93%E3%81%86%E3%81%A1%E3%82%87%E3%81%86%E3%81%9B%E3%82%93%E3%81%9B%E3%81%84"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-kouchoushitsu",
-      "audio_src": "assets/audio/term/term-kouchoushitsu/forvo-manual-こうちょうしつ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%A0%A1%E9%95%B7%E5%AE%A4/#ja"
+      "entry_id": "term-kouchoushitsu"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-kuridasu",
-      "audio_src": "assets/audio/term/term-kuridasu/forvo-manual-くりた-す.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%B9%B0%E3%82%8A%E5%87%BA%E3%81%99/#ja"
+      "entry_id": "term-kuridasu"
     },
     {
       "entry_type": "term",
       "entry_id": "term-kyuusho",
-      "audio_src": "assets/audio/term/term-kyuusho/forvo-manual-きゅうしょ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%80%A5%E6%89%80/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%80%A5%E6%89%80"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-lets-go",
-      "audio_src": "assets/audio/term/term-lets-go/forvo-manual-レッツコ-ー.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E3%83%AC%E3%83%83%E3%83%84%E3%82%B4%E3%83%BC/#ja"
+      "entry_id": "term-lets-go"
     },
     {
       "entry_type": "term",
@@ -195,10 +123,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-mezasu",
-      "audio_src": "assets/audio/term/term-mezasu/forvo-manual-めさ-す.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%9B%AE%E6%8C%87%E3%81%99/#ja",
       "pitch_accent": 2,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%81%E3%81%96%E3%81%99"
@@ -213,29 +137,17 @@
     {
       "entry_type": "term",
       "entry_id": "term-mokutekichi",
-      "audio_src": "assets/audio/term/term-mokutekichi/forvo-manual-もくてきち.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%9B%AE%E7%9A%84%E5%9C%B0/#ja",
       "pitch_accent": 4,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%9B%AE%E7%9A%84%E5%9C%B0"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-narabikae",
-      "audio_src": "assets/audio/term/term-narabikae/forvo-manual-ならひ-かえ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%B8%A6%E3%81%B3%E6%9B%BF%E3%81%88/#ja"
+      "entry_id": "term-narabikae"
     },
     {
       "entry_type": "term",
       "entry_id": "term-omoidasu",
-      "audio_src": "assets/audio/term/term-omoidasu/forvo-manual-おもいた-す.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%80%9D%E3%81%84%E5%87%BA%E3%81%99/#ja",
       "pitch_accent": 4,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%80%9D%E3%81%84%E5%87%BA%E3%81%99"
@@ -249,19 +161,11 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-pokemon-center",
-      "audio_src": "assets/audio/term/term-pokemon-center/forvo-manual-ホ-ケモンセンター.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC/#ja"
+      "entry_id": "term-pokemon-center"
     },
     {
       "entry_type": "term",
       "entry_id": "term-report",
-      "audio_src": "assets/audio/term/term-report/forvo-manual-レホ-ート.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88/#ja",
       "pitch_accent": 2,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88"
@@ -269,10 +173,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-seigyo-suru",
-      "audio_src": "assets/audio/term/term-seigyo-suru/forvo-manual-せいき-ょする.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B"
@@ -280,10 +180,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-seisoku-suru",
-      "audio_src": "assets/audio/term/term-seisoku-suru/forvo-manual-せいそくする.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%94%9F%E6%81%AF%E3%81%99%E3%82%8B/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%9B%E3%81%84%E3%81%9D%E3%81%8F%E3%81%99%E3%82%8B"
@@ -291,10 +187,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-shinka",
-      "audio_src": "assets/audio/term/term-shinka/forvo-manual-しんか.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E9%80%B2%E5%8C%96/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%97%E3%82%93%E3%81%8B"
@@ -302,10 +194,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-shokuinshitsu",
-      "audio_src": "assets/audio/term/term-shokuinshitsu/forvo-manual-しょくいんしつ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%81%B7%E5%93%A1%E5%AE%A4/#ja",
       "pitch_accent": 3,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%97%E3%82%87%E3%81%8F%E3%81%84%E3%82%93%E3%81%97%E3%81%A4"
@@ -313,10 +201,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-shoubu",
-      "audio_src": "assets/audio/term/term-shoubu/forvo-manual-しょうふ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%8B%9D%E8%B2%A0/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%97%E3%82%87%E3%81%86%E3%81%B6"
@@ -324,29 +208,17 @@
     {
       "entry_type": "term",
       "entry_id": "term-sugata",
-      "audio_src": "assets/audio/term/term-sugata/forvo-manual-すか-た.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%A7%BF/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%99%E3%81%8C%E3%81%9F"
     },
     {
       "entry_type": "term",
-      "entry_id": "term-takara-sagashi",
-      "audio_src": "assets/audio/term/term-takara-sagashi/forvo-manual-たからさか-し.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%AE%9D%E6%8E%A2%E3%81%97/#ja"
+      "entry_id": "term-takara-sagashi"
     },
     {
       "entry_type": "term",
       "entry_id": "term-tannin",
-      "audio_src": "assets/audio/term/term-tannin/forvo-manual-たんにん.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%8B%85%E4%BB%BB/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%9F%E3%82%93%E3%81%AB%E3%82%93"
@@ -354,10 +226,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-te-mochi",
-      "audio_src": "assets/audio/term/term-te-mochi/forvo-manual-てもち.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%89%8B%E6%8C%81%E3%81%A1/#ja",
       "pitch_accent": 4,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E6%89%8B%E6%8C%81%E3%81%A1"
@@ -365,10 +233,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-tennyuu",
-      "audio_src": "assets/audio/term/term-tennyuu/forvo-manual-てんにゅう.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%BB%A2%E5%85%A5/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%BB%A2%E5%85%A5"
@@ -388,10 +252,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-tokusei",
-      "audio_src": "assets/audio/term/term-tokusei/forvo-manual-とくせい.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%89%B9%E6%80%A7/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%89%B9%E6%80%A7"
@@ -399,10 +259,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-touroku",
-      "audio_src": "assets/audio/term/term-touroku/forvo-manual-とうろく.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E7%99%BB%E9%8C%B2/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%99%BB%E9%8C%B2"
@@ -410,10 +266,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-tsukamaeru",
-      "audio_src": "assets/audio/term/term-tsukamaeru/forvo-manual-つかまえる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%8D%95%E3%81%BE%E3%81%88%E3%82%8B/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%8D%95%E3%81%BE%E3%81%88%E3%82%8B"
@@ -421,10 +273,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-wasureru",
-      "audio_src": "assets/audio/term/term-wasureru/forvo-manual-わすれる.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%BF%98%E3%82%8C%E3%82%8B/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BF%98%E3%82%8C%E3%82%8B"
@@ -432,10 +280,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-waza",
-      "audio_src": "assets/audio/term/term-waza/forvo-manual-わさ.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E3%82%8F%E3%81%96/#ja",
       "pitch_accent": 2,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%8F%E3%81%96"
@@ -449,10 +293,6 @@
     {
       "entry_type": "term",
       "entry_id": "term-yasei",
-      "audio_src": "assets/audio/term/term-yasei/forvo-manual-やせい.mp3",
-      "audio_source": "forvo",
-      "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E9%87%8E%E7%94%9F/#ja",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%87%8E%E7%94%9F"

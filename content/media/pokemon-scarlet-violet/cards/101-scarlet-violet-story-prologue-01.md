@@ -6,7 +6,6 @@ title: Scarlet / Violet Story 101 - Prologo 1
 order: 110
 segment_ref: scarlet-violet-story
 ---
-
 :::term
 id: term-kouchou-sensei
 lemma: 校長先生
@@ -18,7 +17,6 @@ notes_it: >-
   `{{校長先生|こうちょうせんせい}}` marca subito un registro scolastico formale:
   il parlante riconosce il ruolo di autorità dell'Accademia.
 :::
-
 :::card
 id: card-kouchou-sensei-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -32,7 +30,6 @@ example_jp: >-
 example_it: >-
   Il preside è venuto fin davanti a casa.
 :::
-
 :::term
 id: term-tennyuu
 lemma: 転入
@@ -45,7 +42,6 @@ notes_it: >-
   Nel flusso narrativo questo stato attiva dialoghi di presentazione, nuova
   scuola e ambientamento.
 :::
-
 :::card
 id: card-tennyuu-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -59,7 +55,6 @@ example_jp: >-
 example_it: >-
   Da oggi sono uno studente che si trasferisce all'Accademia.
 :::
-
 :::term
 id: term-smartphone-rotom
 lemma: スマホロトム
@@ -72,21 +67,6 @@ notes_it: >-
   aprono mappa e [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan).
   Nel gioco segnala quindi funzioni di orientamento, registrazione e stato.
 :::
-
-:::card
-id: card-smartphone-rotom-recognition
-lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
-entry_type: term
-entry_id: term-smartphone-rotom
-card_type: recognition
-front: "スマホロトム"
-back: Rotom Phone / smartphone di gioco
-example_jp: >-
-  スマホロトムで マップと ポケモン{{図鑑|ずかん}}を {{確認|かくにん}}できる。
-example_it: >-
-  Con il Rotom Phone puoi controllare mappa e Pokedex.
-:::
-
 :::term
 id: term-touroku
 lemma: 登録
@@ -99,7 +79,6 @@ notes_it: >-
   i Pokemon catturati vengono aggiunti automaticamente all'app senza inserimento
   manuale.
 :::
-
 :::card
 id: card-touroku-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -113,7 +92,6 @@ example_jp: >-
 example_it: >-
   I Pokemon catturati vengono registrati nel Pokedex.
 :::
-
 :::term
 id: term-shoubu
 lemma: 勝負
@@ -126,7 +104,6 @@ notes_it: >-
   いい？`, non è un riferimento astratto al combattimento:
   la scena entra in un tutorial o in un match concreto.
 :::
-
 :::card
 id: card-shoubu-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -140,7 +117,6 @@ example_jp: >-
 example_it: >-
   Quando sei pronto, facciamo un match sulla spiaggia qui sotto!
 :::
-
 :::term
 id: term-junbi
 lemma: 準備
@@ -152,7 +128,6 @@ notes_it: >-
   Pokemon o confermare l'ingresso in battaglia.
   Nel prologo compare spesso subito prima di un passaggio di stato.
 :::
-
 :::card
 id: card-junbi-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -166,7 +141,6 @@ example_jp: >-
 example_it: >-
   Sei già pronto per la sfida?
 :::
-
 :::term
 id: term-jakuten
 lemma: 弱点
@@ -179,7 +153,6 @@ notes_it: >-
   se colpisci la `{{弱点|じゃくてん}}`, il danno sale
   e compare spesso [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun).
 :::
-
 :::card
 id: card-jakuten-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -193,7 +166,6 @@ example_jp: >-
 example_it: >-
   Se colpisci la debolezza dell'avversario, il danno aumenta.
 :::
-
 :::term
 id: term-kuridasu
 lemma: 繰り出す
@@ -206,7 +178,6 @@ notes_it: >-
   colloquiale `くりだしちゃう`: Nemona segnala che, per abitudine, stava quasi
   mandando in campo un Pokemon troppo forte.
 :::
-
 :::card
 id: card-kuridasu-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -220,7 +191,6 @@ example_jp: >-
 example_it: >-
   Per poco non mandavo in campo il mio solito Pokemon senza pensarci.
 :::
-
 :::grammar
 id: grammar-te-kudasai
 pattern: ～てください
@@ -232,7 +202,6 @@ notes_it: >-
   `もう {{少|すこ}}し {{家|いえ}}で {{待|ま}}っててください`, il gioco applica un
   blocco temporaneo e indica l'azione successiva.
 :::
-
 :::card
 id: card-te-kudasai-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -246,7 +215,6 @@ example_jp: >-
 example_it: >-
   Per favore aspetta ancora un po' a casa.
 :::
-
 :::grammar
 id: grammar-mitai
 pattern: ～みたい
@@ -258,7 +226,6 @@ notes_it: >-
   Pokemon che sembrano aver preso simpatia per il protagonista;
   il valore è di impressione, non di certezza secca.
 :::
-
 :::card
 id: card-mitai-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -272,7 +239,6 @@ example_jp: >-
 example_it: >-
   Sembra proprio che questo Pokemon abbia preso simpatia per te.
 :::
-
 :::grammar
 id: grammar-te-shimau
 pattern: ～てしまう / ～ちゃう
@@ -285,7 +251,6 @@ notes_it: >-
   `{{繰|く}}り{{出|だ}}しちゃう` vuol dire che per poco non mandava in campo il
   team sbagliato.
 :::
-
 :::card
 id: card-te-shimau-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -299,7 +264,6 @@ example_jp: >-
 example_it: >-
   Per poco non usavo senza pensarci la mia solita squadra.
 :::
-
 :::grammar
 id: grammar-ta-bakari
 pattern: ～たばかり / ～たばっかり
@@ -311,7 +275,6 @@ notes_it: >-
   Quando Nemona dice `ポケモンを {{始|はじ}}めたばっかり`, il tutorial viene
   calibrato su un profilo principiante.
 :::
-
 :::card
 id: card-ta-bakari-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -325,7 +288,6 @@ example_jp: >-
 example_it: >-
   Hai appena iniziato con i Pokemon, quindi prima impariamo le basi.
 :::
-
 :::card
 id: card-pokemon-zukan-prologue-01-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -344,7 +306,6 @@ notes_it: >-
   è un'app attiva dello [スマホロトム](term:term-smartphone-rotom) che aggiorna
   automaticamente le catture.
 :::
-
 :::card
 id: card-tara-prologue-01-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression

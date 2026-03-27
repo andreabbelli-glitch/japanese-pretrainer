@@ -6,7 +6,6 @@ title: Scarlet / Violet Story 103 - Prologo 3
 order: 130
 segment_ref: scarlet-violet-story
 ---
-
 :::term
 id: term-pokemon-center
 lemma: ポケモンセンター
@@ -20,7 +19,6 @@ notes_it: >-
   ricarichi il [テラスタルオーブ](term:term-terastal-orb). Quando compare sulla
   mappa o nei dialoghi, indica un checkpoint operativo.
 :::
-
 :::card
 id: card-pokemon-center-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
@@ -35,7 +33,6 @@ example_jp: >-
 example_it: >-
   Quando vedi un Centro Pokemon, puoi sistemare la squadra.
 :::
-
 :::term
 id: term-friendly-shop
 lemma: フレンドリィショップ
@@ -48,21 +45,6 @@ notes_it: >-
   altri oggetti di base. Il termine distingue subito il punto cura dal
   punto acquisti dentro lo stesso hub.
 :::
-
-:::card
-id: card-friendly-shop-recognition
-lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
-entry_type: term
-entry_id: term-friendly-shop
-card_type: recognition
-front: フレンドリィショップ
-back: negozio del Centro Pokemon
-example_jp: >-
-  フレンドリィショップで ボールと キズぐすりを {{買|か}}い{{足|た}}そう。
-example_it: >-
-  Al negozio del Centro Pokemon puoi fare scorta di Ball e medicine.
-:::
-
 :::term
 id: term-lp
 lemma: LP
@@ -76,21 +58,6 @@ notes_it: >-
   il gioco te ne assegna, non stai ricevendo un numero astratto ma risorse da
   usare subito.
 :::
-
-:::card
-id: card-lp-recognition
-lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
-entry_type: term
-entry_id: term-lp
-card_type: recognition
-front: LP（リーグペイ）
-back: LP / punti League Pay
-example_jp: >-
-  この LPは ショップでも わざマシンマシンでも {{使|つか}}える。
-example_it: >-
-  Questi LP si possono usare sia al negozio sia alla TM Machine.
-:::
-
 :::term
 id: term-otoshimono
 lemma: おとしもの
@@ -104,7 +71,6 @@ notes_it: >-
   [わざマシン](term:term-waza-machine): il gioco non parla di quest item ma di
   drop di specie.
 :::
-
 :::card
 id: card-otoshimono-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
@@ -118,7 +84,6 @@ example_jp: >-
 example_it: >-
   Quando accumuli materiali dai Pokemon, diventa piu facile creare nuove MT.
 :::
-
 :::term
 id: term-lets-go
 lemma: レッツゴー
@@ -131,22 +96,6 @@ notes_it: >-
   raccogliere oggetti o affrontare da solo piccoli scontri. Il termine
   compare sia nel tutorial di Nemona sia nelle istruzioni future sul campo.
 :::
-
-:::card
-id: card-lets-go-recognition
-lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
-entry_type: term
-entry_id: term-lets-go
-card_type: recognition
-front: レッツゴー
-back: comando Let's Go / manda avanti il Pokemon
-example_jp: >-
-  レッツゴーで ポケモンを {{前|まえ}}に {{出|だ}}すと {{近|ちか}}くの
-  {{道具|どうぐ}}を {{拾|ひろ}}う ことが ある。
-example_it: >-
-  Se mandi avanti il Pokemon con Let's Go, a volte raccoglie gli oggetti vicini.
-:::
-
 :::term
 id: term-terastal
 lemma: テラスタル
@@ -159,22 +108,6 @@ notes_it: >-
   corrispondente. In questo prologo lo vedi prima come mossa di Nemona e subito
   dopo come sistema che il giocatore sblocca davvero.
 :::
-
-:::card
-id: card-terastal-recognition
-lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
-entry_type: term
-entry_id: term-terastal
-card_type: recognition
-front: テラスタル
-back: Terastal / teracristallizzazione
-example_jp: >-
-  ピンチでも テラスタルすると {{同|おな}}じ タイプの わざが もっと
-  {{強|つよ}}くなる。
-example_it: >-
-  Anche in difficolta, terastalizzando le mosse dello stesso tipo diventano piu forti.
-:::
-
 :::term
 id: term-terastal-orb
 lemma: テラスタルオーブ
@@ -187,21 +120,6 @@ notes_it: >-
   Dopo l'uso si scarica e il gioco ti insegna subito che va ricaricato al
   [ポケモンセンター](term:term-pokemon-center) o vicino a certe fonti di energia.
 :::
-
-:::card
-id: card-terastal-orb-recognition
-lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
-entry_type: term
-entry_id: term-terastal-orb
-card_type: recognition
-front: テラスタルオーブ
-back: Tera Orb / strumento per il Terastal
-example_jp: >-
-  テラスタルオーブが ないと バトルで テラスタルは {{使|つか}}えない。
-example_it: >-
-  Senza il Tera Orb non puoi usare il Terastal in battaglia.
-:::
-
 :::term
 id: term-tera-type
 lemma: テラスタイプ
@@ -214,22 +132,6 @@ notes_it: >-
   diversa dopo il [テラスタル](term:term-terastal), il punto da guardare e
   proprio questo tipo.
 :::
-
-:::card
-id: card-tera-type-recognition
-lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
-entry_type: term
-entry_id: term-tera-type
-card_type: recognition
-front: テラスタイプ
-back: Tera tipo / tipo Terastal
-example_jp: >-
-  この ポケモンの テラスタイプが くさなら くさの わざが もっと
-  {{強|つよ}}くなる。
-example_it: >-
-  Se il Tera tipo di questo Pokemon e Erba, le mosse Erba diventano ancora piu forti.
-:::
-
 :::grammar
 id: grammar-te-morau
 pattern: ～てもらう
@@ -241,7 +143,6 @@ notes_it: >-
   [ポケモンセンター](term:term-pokemon-center) e le procedure che Nemona
   organizza prima del primo [テラスタル](term:term-terastal).
 :::
-
 :::card
 id: card-te-morau-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
@@ -255,7 +156,6 @@ example_jp: >-
 example_it: >-
   Al Centro Pokemon puoi ricevere la cura della squadra.
 :::
-
 :::grammar
 id: grammar-te-kuru
 pattern: ～てくる
@@ -267,7 +167,6 @@ notes_it: >-
   `{{拾|ひろ}}ってきて` o `{{戦|たたか}}ってきて`: il Pokemon parte, compie
   l'azione sul campo e il risultato rientra nel tuo flusso di gioco.
 :::
-
 :::card
 id: card-te-kuru-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
@@ -282,7 +181,6 @@ example_jp: >-
 example_it: >-
   Con Let's Go puo capitare che il Pokemon vada a prenderti degli oggetti.
 :::
-
 :::card
 id: card-kaifuku-prologue-03-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -301,7 +199,6 @@ notes_it: >-
   Il significato operativo pero resta lo stesso: rimettere il team in condizioni
   di continuare subito.
 :::
-
 :::card
 id: card-waza-machine-prologue-03-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -319,7 +216,6 @@ notes_it: >-
   Qui la parola smette di essere solo ricompensa e diventa parte di un loop di
   sistema: raccogli materiali, spendi LP e costruisci la MT necessaria.
 :::
-
 :::card
 id: card-shoubu-prologue-03-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
@@ -336,7 +232,6 @@ notes_it: >-
   In questo capitolo Nemona usa `{{勝負|しょうぶ}}` per misurare la tua crescita
   dopo il tratto di strada, non solo per proporti un'altra lotta qualsiasi.
 :::
-
 :::card
 id: card-te-ageru-prologue-03-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
@@ -353,7 +248,6 @@ notes_it: >-
   Qui il pattern evidenzia un aiuto concreto di Nemona: trasferisce LP al
   giocatore e abilita subito acquisti e crafting.
 :::
-
 :::card
 id: card-tara-prologue-03-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -371,7 +265,6 @@ notes_it: >-
   In questo capitolo [～たら](grammar:grammar-tara) segna i passaggi che
   sbloccano il blocco successivo della progressione.
 :::
-
 :::card
 id: card-te-miru-prologue-03-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-003-pokemon-videogame-core-dialogue-and-tutorial-patterns
@@ -388,7 +281,6 @@ notes_it: >-
   In questo capitolo la forma marca un test pratico: verificare sul campo la
   soglia reale della squadra attuale.
 :::
-
 :::card
 id: card-koto-ga-dekiru-prologue-03-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus

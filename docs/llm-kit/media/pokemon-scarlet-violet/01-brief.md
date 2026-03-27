@@ -170,12 +170,12 @@ Per questo media usare `segment_kind: chapter`.
 Segmenti iniziali consigliati:
 
 - `pokemon-videogame-core`
-- `scarlet-violet-story`
+- `scarlet-violet-prestudy`
 
 Nota operativa:
 
 - il segmento `pokemon-videogame-core` copre le prime lesson generali;
-- il segmento `scarlet-violet-story` ospita il percorso verticale capitolo per
+- il segmento `scarlet-violet-prestudy` ospita il percorso verticale capitolo per
   capitolo;
 - la numerazione e i titoli dei capitoli verticali vanno allineati al
   walkthrough giapponese scelto come riferimento primario.
@@ -244,7 +244,7 @@ Esempi di batch sani:
 
 - media tecnico: `media-pokemon-scarlet-violet` / `pokemon-scarlet-violet`
 - lesson core: `lesson-pokemon-scarlet-violet-pokemon-videogame-core-...`
-- lesson story: `lesson-pokemon-scarlet-violet-scarlet-violet-story-...`
+- lesson verticale live: `lesson-pokemon-scarlet-violet-sv-prestudy-...`
 - term: `term-...`
 - grammar: `grammar-...`
 - card: `card-...`

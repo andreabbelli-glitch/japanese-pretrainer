@@ -6,7 +6,6 @@ title: Scarlet / Violet Story 105 - Prologo 5
 order: 150
 segment_ref: scarlet-violet-story
 ---
-
 :::term
 id: term-kagai-jugyou
 lemma: 課外授業
@@ -19,7 +18,6 @@ notes_it: >-
   segna il passaggio da attivita interne al campus a progressione libera nel
   mondo di Paldea.
 :::
-
 :::card
 id: card-kagai-jugyou-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
@@ -35,7 +33,6 @@ example_it: >-
   Quando comincia la lezione sul campo, puoi imparare liberamente fuori dalla
   scuola.
 :::
-
 :::term
 id: term-takara-sagashi
 lemma: 宝探し
@@ -47,22 +44,6 @@ notes_it: >-
   restringe l'obiettivo a un oggetto: nel gioco copre incontri, prove e rotte
   alternative che avanzano la storia attraverso scelte del giocatore.
 :::
-
-:::card
-id: card-takara-sagashi-recognition
-lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
-entry_type: term
-entry_id: term-takara-sagashi
-card_type: recognition
-front: '{{宝|たから}}{{探|さが}}し'
-back: Treasure Hunt / ricerca del proprio tesoro
-example_jp: >-
-  {{宝|たから}}{{探|さが}}しは {{自分|じぶん}}だけの {{宝|たから}}を {{見|み}}つける
-  ための {{冒険|ぼうけん}}なんだ。
-example_it: >-
-  Il Treasure Hunt e un'avventura pensata per trovare il tuo personale tesoro.
-:::
-
 :::term
 id: term-champion-rank
 lemma: チャンピオンランク
@@ -75,23 +56,6 @@ notes_it: >-
   `{{目指|めざ}}してみない`, la scena sta aprendo un obiettivo di progressione
   preciso, non un incoraggiamento generico.
 :::
-
-:::card
-id: card-champion-rank-recognition
-lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
-entry_type: term
-entry_id: term-champion-rank
-card_type: recognition
-front: 'チャンピオンランク'
-back: Champion Rank / rango Campione
-example_jp: >-
-  チャンピオンランクを {{目指|めざ}}すなら ジムバッジを {{集|あつ}}めて
-  いこう。
-example_it: >-
-  Se vuoi puntare al Champion Rank, cominciamo a raccogliere le Medaglie
-  Palestra.
-:::
-
 :::term
 id: term-gym-badge
 lemma: ジムバッジ
@@ -103,7 +67,6 @@ notes_it: >-
   Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemona e, piu
   avanti, incidono anche su quali Pokemon forti ti obbediscono senza problemi.
 :::
-
 :::card
 id: card-gym-badge-recognition
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
@@ -119,7 +82,6 @@ example_it: >-
   Quando aumentano le Medaglie Palestra, aumenta anche il numero di Pokemon che
   ti obbediscono senza problemi.
 :::
-
 :::grammar
 id: grammar-tte-no-wa
 pattern: ～ってのは
@@ -131,7 +93,6 @@ notes_it: >-
   la regola pratica del termine: rango, obiettivo o condizione che orienta la
   route corrente.
 :::
-
 :::card
 id: card-tte-no-wa-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
@@ -147,7 +108,6 @@ example_it: >-
   Il Champion Rank sarebbe il rango degli Allenatori forti riconosciuti dalla
   Lega Pokemon.
 :::
-
 :::grammar
 id: grammar-dake-ja-dame
 pattern: ～だけじゃ ダメ
@@ -160,7 +120,6 @@ notes_it: >-
   lezioni o volere qualcosa non basta, serve anche uscire nel mondo e superare
   prove concrete.
 :::
-
 :::card
 id: card-dake-ja-dame-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
@@ -175,7 +134,6 @@ example_jp: >-
 example_it: >-
   Non basta frequentare le lezioni: devi anche raccogliere le Medaglie Palestra.
 :::
-
 :::grammar
 id: grammar-tari-tari-suru
 pattern: ～たり ～たりする
@@ -186,7 +144,6 @@ notes_it: >-
   che piu tipi di attivita possono avanzare l'avventura, invece di imporre una
   sequenza unica di missioni.
 :::
-
 :::card
 id: card-tari-tari-suru-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
@@ -202,7 +159,6 @@ example_it: >-
   Nel Treasure Hunt puoi per esempio sfidare i Gym oppure aiutare chi e in
   difficolta.
 :::
-
 :::grammar
 id: grammar-to-wa-itte-mo
 pattern: ～とはいっても
@@ -213,7 +169,6 @@ notes_it: >-
   `{{宝|たから}}{{探|さが}}しとは いっても`, il testo ridefinisce subito il perimetro
   pratico dell'obiettivo e chiarisce cosa conta davvero nella scena.
 :::
-
 :::card
 id: card-to-wa-itte-mo-concept
 lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings

@@ -17,7 +17,6 @@ notes_it: >-
   Quando compare nel menu o in una conferma, il gioco sta per registrare
   posizione, squadra, oggetti e progresso della sessione.
 :::
-
 :::card
 id: card-report-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -31,7 +30,6 @@ example_jp: >-
 example_it: >-
   Salva la partita prima di chiudere l'avventura.
 :::
-
 :::term
 id: term-te-mochi
 lemma: 手持ち
@@ -43,7 +41,6 @@ notes_it: >-
   parla di `{{手|て}}{{持|も}}ち`, sta parlando dei membri subito disponibili in
   battaglia, non del deposito completo.
 :::
-
 :::card
 id: card-te-mochi-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -57,7 +54,6 @@ example_jp: >-
 example_it: >-
   Prima della lotta, cura i Pokemon che hai in squadra.
 :::
-
 :::term
 id: term-box
 lemma: ボックス
@@ -69,7 +65,6 @@ notes_it: >-
   attiva. Il termine separa la gestione del party dall'organizzazione del
   deposito.
 :::
-
 :::card
 id: card-box-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -83,7 +78,6 @@ example_jp: >-
 example_it: >-
   Se la squadra è piena, mandiamolo nel box.
 :::
-
 :::term
 id: term-bag
 lemma: バッグ
@@ -95,7 +89,6 @@ notes_it: >-
   scegliendo tra gli oggetti posseduti; non stai ancora guardando l'oggetto
   tenuto da un singolo Pokemon.
 :::
-
 :::card
 id: card-bag-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -109,7 +102,6 @@ example_jp: >-
 example_it: >-
   Apri la borsa e controlla quante Ball hai.
 :::
-
 :::term
 id: term-dougu
 lemma: どうぐ
@@ -121,7 +113,6 @@ notes_it: >-
   come parola dentro una spiegazione, ti segnala che il testo sta parlando di
   un item operativo e non di una funzione di menu.
 :::
-
 :::card
 id: card-dougu-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -135,7 +126,6 @@ example_jp: >-
 example_it: >-
   Questo oggetto si può usare prima della lotta.
 :::
-
 :::term
 id: term-taisetsu-na-mono
 lemma: たいせつなもの
@@ -147,7 +137,6 @@ notes_it: >-
   alla progressione. Se qualcosa finisce qui, di solito non è un consumabile
   ma un oggetto che sblocca mappe, sistemi o avanzamento della storia.
 :::
-
 :::card
 id: card-taisetsu-na-mono-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -161,7 +150,6 @@ example_jp: >-
 example_it: >-
   Quello è un oggetto chiave, quindi non puoi venderlo né buttarlo via.
 :::
-
 :::term
 id: term-pokemon-zukan
 lemma: ポケモン図鑑
@@ -173,7 +161,6 @@ notes_it: >-
   indica il sistema che registra specie viste o catturate e aggiorna il
   tracciamento dei progressi di scoperta.
 :::
-
 :::card
 id: card-pokemon-zukan-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -187,7 +174,6 @@ example_jp: >-
 example_it: >-
   Quando catturi un Pokemon nuovo, viene registrato nel Pokedex.
 :::
-
 :::term
 id: term-mokutekichi
 lemma: 目的地
@@ -199,7 +185,6 @@ notes_it: >-
   una località detta in astratto: ti dice dove il gioco vuole portarti o che
   punto puoi fissare per orientarti meglio.
 :::
-
 :::card
 id: card-mokutekichi-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -213,7 +198,6 @@ example_jp: >-
 example_it: >-
   Se registri una destinazione sulla mappa, capisci meglio dove andare dopo.
 :::
-
 :::term
 id: term-tsuyosa-o-miru
 lemma: 強さを見る
@@ -225,7 +209,6 @@ notes_it: >-
   il comando che apre la schermata di riepilogo con statistiche, tipo, mosse,
   abilità e oggetto tenuto del Pokemon selezionato.
 :::
-
 :::card
 id: card-tsuyosa-o-miru-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -239,7 +222,6 @@ example_jp: >-
 example_it: >-
   Seleziona il Pokemon e apri "Controlla dati".
 :::
-
 :::term
 id: term-mochimono
 lemma: もちもの
@@ -252,7 +234,6 @@ notes_it: >-
   equipaggiamento, effetti passivi e scambi di oggetti tra squadra e
   inventario.
 :::
-
 :::card
 id: card-mochimono-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -266,7 +247,6 @@ example_jp: >-
 example_it: >-
   Quale oggetto vuoi far tenere a questo Pokemon?
 :::
-
 :::term
 id: term-narabikae
 lemma: 並び替え
@@ -278,7 +258,6 @@ notes_it: >-
   schermata corrente. Non cancella niente: modifica l'ordine con cui gli
   elementi vengono mostrati o usati.
 :::
-
 :::card
 id: card-narabikae-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -292,7 +271,6 @@ example_jp: >-
 example_it: >-
   Riordina le mosse mettendo in alto quelle che usi di più.
 :::
-
 :::term
 id: term-omoidasu
 lemma: 思い出す
@@ -304,7 +282,6 @@ notes_it: >-
   in passato. Quindi una scelta di mosse non è sempre definitiva: il menu può
   riaprire l'accesso a tecniche rimosse dal set attivo.
 :::
-
 :::card
 id: card-omoidasu-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -318,7 +295,6 @@ example_jp: >-
 example_it: >-
   Se ti servirà più avanti, potrai recuperare questa mossa.
 :::
-
 :::term
 id: term-wasureru
 lemma: 忘れる
@@ -329,7 +305,6 @@ notes_it: >-
   Nei prompt di apprendimento mosse indica la rimozione di una mossa dal set
   attivo del Pokemon. Il menu chiede quale slot liberare per la nuova tecnica.
 :::
-
 :::card
 id: card-wasureru-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -343,7 +318,6 @@ example_jp: >-
 example_it: >-
   Per imparare una nuova mossa, il Pokemon dimentica una mossa vecchia.
 :::
-
 :::term
 id: term-waza
 lemma: わざ
@@ -355,7 +329,6 @@ notes_it: >-
   `わざ`, sta parlando di ciò che scegli e lanci nel turno, con tipo, potenza,
   precisione ed effetti propri.
 :::
-
 :::card
 id: card-waza-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -369,7 +342,6 @@ example_jp: >-
 example_it: >-
   Scegli una mossa adatta al tipo dell'avversario.
 :::
-
 :::term
 id: term-tokusei
 lemma: 特性
@@ -381,7 +353,6 @@ notes_it: >-
   manualmente. Se compare, l'effetto nasce dal profilo del Pokemon e non dal
   comando selezionato in quel turno.
 :::
-
 :::card
 id: card-tokusei-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -395,7 +366,6 @@ example_jp: >-
 example_it: >-
   Questa abilità si attiva quando il Pokemon entra in battaglia.
 :::
-
 :::term
 id: term-type-aishou
 lemma: タイプ相性
@@ -407,7 +377,6 @@ notes_it: >-
   Riconoscerlo ti permette di capire perché un danno aumenta, cala o viene
   annullato, e quindi di scegliere meglio la mossa successiva.
 :::
-
 :::card
 id: card-type-aishou-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -421,7 +390,6 @@ example_jp: >-
 example_it: >-
   Guardando il rapporto tra tipi capisci quali mosse ti favoriscono.
 :::
-
 :::term
 id: term-joutai-ijou
 lemma: 状態異常
@@ -433,7 +401,6 @@ notes_it: >-
   compare, il testo ti sta dicendo che il Pokemon non è più in condizioni
   normali e che azioni, danni o velocità possono cambiare.
 :::
-
 :::card
 id: card-joutai-ijou-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -447,7 +414,6 @@ example_jp: >-
 example_it: >-
   Con un'alterazione di stato può capitare di non riuscire ad agire come vuoi.
 :::
-
 :::term
 id: term-kaifuku
 lemma: 回復
@@ -460,7 +426,6 @@ notes_it: >-
   parola ti dice che la funzione o l'oggetto serve a rimettere in sesto
   qualcosa.
 :::
-
 :::card
 id: card-kaifuku-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -474,7 +439,6 @@ example_jp: >-
 example_it: >-
   Al Centro Pokemon fatti curare sia gli HP sia gli stati alterati.
 :::
-
 :::term
 id: term-hinshi
 lemma: ひんし
@@ -486,7 +450,6 @@ notes_it: >-
   devi capire che quel membro della squadra non agirà più finché non viene
   rimesso in condizioni valide.
 :::
-
 :::card
 id: card-hinshi-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -500,7 +463,6 @@ example_jp: >-
 example_it: >-
   Un Pokemon fuori combattimento non può continuare a lottare così com'è.
 :::
-
 :::term
 id: term-yasei
 lemma: 野生
@@ -512,7 +474,6 @@ notes_it: >-
   esemplare selvatico e non con un allenatore. Questa parola cambia subito le
   aspettative: cattura possibile, flusso di lotta diverso, ricompense diverse.
 :::
-
 :::card
 id: card-yasei-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -526,7 +487,6 @@ example_jp: >-
 example_it: >-
   Se è un Pokemon selvatico, puoi lanciargli una Ball e catturarlo.
 :::
-
 :::term
 id: term-tsukamaeru
 lemma: 捕まえる
@@ -538,7 +498,6 @@ notes_it: >-
   spiegazione di lotta, il focus passa dal semplice vincere al riuscire a
   ottenere quel Pokemon per collezione o squadra.
 :::
-
 :::card
 id: card-tsukamaeru-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -552,7 +511,6 @@ example_jp: >-
 example_it: >-
   Se lo catturi dopo avergli abbassato gli HP, riesci più facilmente.
 :::
-
 :::term
 id: term-keikenchi
 lemma: 経験値
@@ -564,7 +522,6 @@ notes_it: >-
   post-battaglia parla di `{{経験値|けいけんち}}`, il gioco sta indicando la risorsa
   che fa salire di livello i Pokemon coinvolti.
 :::
-
 :::card
 id: card-keikenchi-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -578,7 +535,6 @@ example_jp: >-
 example_it: >-
   Ricevendo esperienza, il livello continua a salire.
 :::
-
 :::term
 id: term-shinka
 lemma: 進化
@@ -591,7 +547,6 @@ notes_it: >-
   cambia solo l'aspetto: aggiornano anche statistiche, mosse disponibili e
   prestazione in battaglia.
 :::
-
 :::card
 id: card-shinka-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -605,7 +560,6 @@ example_jp: >-
 example_it: >-
   Questo Pokemon si evolve quando soddisfa la condizione richiesta.
 :::
-
 :::term
 id: term-kouka-wa-batsugun
 lemma: こうかは ばつぐんだ！
@@ -617,7 +571,6 @@ notes_it: >-
   Non descrive un successo generico: ti dice che il rapporto tra tipi ha
   aumentato il danno di quel colpo.
 :::
-
 :::card
 id: card-kouka-wa-batsugun-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -632,7 +585,6 @@ example_it: >-
   Se una mossa Acqua colpisce la debolezza dell'avversario, il colpo è
   superefficace.
 :::
-
 :::term
 id: term-kyuusho
 lemma: 急所
@@ -644,7 +596,6 @@ notes_it: >-
   `{{急所|きゅうしょ}}`, il danno alto dipende dal critico del singolo attacco, non
   dal fatto che il tipo fosse favorevole.
 :::
-
 :::card
 id: card-kyuusho-recognition
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -658,7 +609,6 @@ example_jp: >-
 example_it: >-
   È andato a segno un colpo critico e sono usciti grossi danni.
 :::
-
 :::grammar
 id: grammar-te-miru
 pattern: ～てみる
@@ -671,7 +621,6 @@ notes_it: >-
   [{{目的地|もくてきち}}](term:term-mokutekichi) o aprire
   [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru).
 :::
-
 :::card
 id: card-te-miru-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-003-pokemon-videogame-core-dialogue-and-tutorial-patterns
@@ -685,7 +634,6 @@ example_jp: >-
 example_it: >-
   Che ne dici di provare a registrare una destinazione?
 :::
-
 :::grammar
 id: grammar-koto-ga-dekiru
 pattern: ～ことができる
@@ -697,7 +645,6 @@ notes_it: >-
   teoria: ti sta dicendo quale azione puoi davvero eseguire da quel punto
   dell'interfaccia.
 :::
-
 :::card
 id: card-koto-ga-dekiru-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -711,7 +658,6 @@ example_jp: >-
 example_it: >-
   In questa schermata puoi cambiare l'oggetto tenuto.
 :::
-
 :::grammar
 id: grammar-you-ni-naru
 pattern: ～ようになる
@@ -722,7 +668,6 @@ notes_it: >-
   Pokemon è il pattern tipico degli sblocchi: da quel momento una funzione si
   apre oppure una regola del gioco inizia a valere.
 :::
-
 :::card
 id: card-you-ni-naru-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
@@ -737,7 +682,6 @@ example_it: >-
   Se raccogli le Medaglie Palestra, anche i Pokemon di livello più alto
   iniziano a obbedirti.
 :::
-
 :::grammar
 id: grammar-tara
 pattern: ～たら
@@ -748,7 +692,6 @@ notes_it: >-
   tutorial separa la condizione dall'azione richiesta, per esempio quando ti
   perdi o quando entra in gioco uno stato alterato.
 :::
-
 :::card
 id: card-tara-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -762,7 +705,6 @@ example_jp: >-
 example_it: >-
   Se ti perdi, apri la mappa.
 :::
-
 :::grammar
 id: grammar-te-kureru
 pattern: ～てくれる
@@ -773,7 +715,6 @@ notes_it: >-
   marca il ruolo di NPC, oggetti e servizi: l'effetto viene applicato al
   giocatore o alla squadra come supporto.
 :::
-
 :::card
 id: card-te-kureru-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-videogame-core-battle-and-progression
@@ -787,7 +728,6 @@ example_jp: >-
 example_it: >-
   La persona del Centro Pokemon ti cura la squadra.
 :::
-
 :::grammar
 id: grammar-te-ne
 pattern: ～てね
@@ -798,7 +738,6 @@ notes_it: >-
   personaggi guida. Nei dialoghi Pokemon non è solo colore affettivo: spesso
   nasconde una vera istruzione o raccomandazione operativa.
 :::
-
 :::card
 id: card-te-ne-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-003-pokemon-videogame-core-dialogue-and-tutorial-patterns
@@ -812,7 +751,6 @@ example_jp: >-
 example_it: >-
   Riposa con calma nel letto, mi raccomando.
 :::
-
 :::grammar
 id: grammar-teoku
 pattern: ～ておく
@@ -823,7 +761,6 @@ notes_it: >-
   `レポートしておく`, l'azione viene completata prima dell'evento successivo, così
   stato squadra e progresso restano gia aggiornati.
 :::
-
 :::card
 id: card-teoku-concept
 lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-videogame-core-ui-and-menus
