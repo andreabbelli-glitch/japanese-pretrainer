@@ -3,12 +3,14 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 export const DEFAULT_DATABASE_PATH = "./data/japanese-custom-study.db";
+export const DEFAULT_REPLICA_PATH = "./data/japanese-custom-study-replica.db";
 
 export interface DatabaseLocation {
   configuredPath: string;
   databasePath?: string;
   connectionUrl: string;
   isRemote: boolean;
+  replicaPath?: string;
 }
 
 export function resolveDatabaseLocation(
@@ -40,10 +42,13 @@ export function resolveDatabaseLocation(
   }
 
   if (/^[a-zA-Z][a-zA-Z\d+.-]*:\/\//.test(normalizedUrl)) {
+    const replicaPath = path.resolve(process.cwd(), DEFAULT_REPLICA_PATH);
+
     return {
       configuredPath: normalizedUrl,
       connectionUrl: normalizedUrl,
-      isRemote: true
+      isRemote: true,
+      replicaPath
     };
   }
 

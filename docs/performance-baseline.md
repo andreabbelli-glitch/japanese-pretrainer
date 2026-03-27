@@ -166,6 +166,12 @@ DATABASE_AUTH_TOKEN=your-token \
 
 `LIBSQL_AUTH_TOKEN` resta supportata come fallback.
 
+Nel bootstrap del server applicativo, un `DATABASE_URL=libsql://...` abilita
+automaticamente una embedded replica locale in
+`./data/japanese-custom-study-replica.db`. Il server sincronizza la replica al
+boot e poi legge localmente, quindi i benchmark misurano soprattutto il costo
+del sync iniziale e del render, non round-trip remoti per ogni singola query.
+
 ## Auth opzionale
 
 Se l'app gira senza `AUTH_*`, il benchmark entra direttamente sulle route.
