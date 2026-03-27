@@ -41,7 +41,7 @@ describe("global review queue filtering", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("keeps local review pages and per-media snapshots scoped to the selected media while the global queue stays daily-limited", async () => {
+  async function seedTwoMediaNewQueueFixture() {
     await database.insert(media).values([
       {
         id: "media_a",
@@ -153,6 +153,10 @@ describe("global review queue filtering", () => {
       valueJson: "1",
       updatedAt: "2026-03-10T11:00:00.000Z"
     });
+  }
+
+  it("keeps local review pages and per-media snapshots scoped to the selected media while the global queue stays daily-limited", async () => {
+    await seedTwoMediaNewQueueFixture();
 
     const [
       globalPage,
@@ -203,6 +207,34 @@ describe("global review queue filtering", () => {
     expect(snapshots.get("media_b")?.queueCount).toBe(0);
     expect(snapshots.get("media_b")?.newAvailableCount).toBe(1);
     expect(snapshots.get("media_b")?.newQueuedCount).toBe(0);
+  });
+
+  it("uses top-up batches in global review without changing the base daily limit", async () => {
+    await seedTwoMediaNewQueueFixture();
+
+    const basePage = await getGlobalReviewPageData({}, database);
+    const toppedUpPage = await getGlobalReviewPageData(
+      {
+        extraNew: "10"
+      },
+      database
+    );
+
+    expect(basePage.queue.dailyLimit).toBe(1);
+    expect(basePage.queue.newAvailableCount).toBe(2);
+    expect(basePage.queue.newQueuedCount).toBe(1);
+    expect(basePage.queue.queueCount).toBe(1);
+
+    expect(toppedUpPage.queue.dailyLimit).toBe(1);
+    expect(toppedUpPage.session.extraNewCount).toBe(10);
+    expect(toppedUpPage.queue.newAvailableCount).toBe(2);
+    expect(toppedUpPage.queue.newQueuedCount).toBe(2);
+    expect(toppedUpPage.queue.queueCount).toBe(2);
+    expect(toppedUpPage.queue.queueLabel).toContain(
+      "nella rotazione attuale di questa sessione"
+    );
+    expect(toppedUpPage.queue.queueLabel).not.toContain("limite giornaliero");
+    expect(toppedUpPage.selectedCard?.id).toBe("card_a");
   });
 
   it("returns a minimal first-candidate payload that matches the full global selection", async () => {

@@ -1934,6 +1934,7 @@ export function buildReviewOverviewSnapshot(input: {
     dueCount,
     manualCount,
     newQueuedCount,
+    sessionTopUpNewCount: input.extraNewCount,
     upcomingCount
   });
 
@@ -2164,6 +2165,7 @@ function buildReviewQueueSubjectSnapshot(input: {
     dueCount: classifiedModels.dueModels.length,
     manualCount: classifiedModels.manualModels.length,
     newQueuedCount: queuedNewCards.length,
+    sessionTopUpNewCount: input.extraNewCount,
     upcomingCount: classifiedModels.upcomingModels.length
   });
 
@@ -2765,6 +2767,7 @@ function buildQueueIntroLabel(input: {
   dueCount: number;
   manualCount: number;
   newQueuedCount: number;
+  sessionTopUpNewCount: number;
   upcomingCount: number;
 }) {
   if (input.dueCount > 0 || input.newQueuedCount > 0) {
@@ -2780,9 +2783,13 @@ function buildQueueIntroLabel(input: {
 
     if (input.newQueuedCount > 0) {
       segments.push(
-        input.newQueuedCount === 1
-          ? `1 nuova prevista entro il limite giornaliero di ${input.dailyLimit}`
-          : `${input.newQueuedCount} nuove previste entro il limite giornaliero di ${input.dailyLimit}`
+        input.sessionTopUpNewCount > 0
+          ? input.newQueuedCount === 1
+            ? "1 nuova è nella rotazione attuale di questa sessione"
+            : `${input.newQueuedCount} nuove sono nella rotazione attuale di questa sessione`
+          : input.newQueuedCount === 1
+            ? "1 nuova prevista nella rotazione di oggi"
+            : `${input.newQueuedCount} nuove previste nella rotazione di oggi`
       );
     }
 

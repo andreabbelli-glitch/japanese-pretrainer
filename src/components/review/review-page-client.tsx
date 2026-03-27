@@ -787,8 +787,8 @@ export function ReviewPageClient({
               description={
                 additionalNewCount > 0
                   ? isGlobalReview
-                    ? `La coda di oggi è finita. Puoi chiudere qui oppure aprire subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} disponibili nella review globale.`
-                    : `La coda di oggi è finita. Puoi chiudere qui oppure aprire subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} disponibili per questo media.`
+                    ? `La coda di oggi è finita. Puoi chiudere qui oppure aggiungere subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} alla rotazione attuale della review globale.`
+                    : `La coda di oggi è finita. Puoi chiudere qui oppure aggiungere subito altre ${additionalNewCount} nuove${additionalNewCount === 1 ? "" : " card"} alla rotazione attuale di questo media.`
                   : hasSupportCards
                     ? "La coda di oggi non richiede altre risposte. Se ti serve intervenire su card già note, sospese o fuori finestra, puoi farlo dal Glossary o dalle impostazioni di studio."
                     : isGlobalReview
@@ -962,6 +962,10 @@ function buildOptimisticQueueUpdate(
       gradedCardBucket === "due"
         ? Math.max(0, currentQueue.dueCount - 1)
         : currentQueue.dueCount,
+    newAvailableCount:
+      gradedCardBucket === "new"
+        ? Math.max(0, currentQueue.newAvailableCount - 1)
+        : currentQueue.newAvailableCount,
     newQueuedCount:
       gradedCardBucket === "new"
         ? Math.max(0, currentQueue.newQueuedCount - 1)

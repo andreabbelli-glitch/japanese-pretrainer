@@ -258,6 +258,98 @@ describe("review system", () => {
       });
   }
 
+  async function createIsolatedNewMediaFixture(input: {
+    cardCount: number;
+    mediaId: string;
+    mediaSlug: string;
+    title: string;
+  }) {
+    await database.insert(media).values({
+      id: input.mediaId,
+      slug: input.mediaSlug,
+      title: input.title,
+      mediaType: "game",
+      segmentKind: "chapter",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      description: `${input.title} fixture`,
+      status: "active",
+      createdAt: "2026-03-11T09:00:00.000Z",
+      updatedAt: "2026-03-11T09:00:00.000Z"
+    });
+    await database.insert(lesson).values({
+      id: `${input.mediaId}_lesson`,
+      mediaId: input.mediaId,
+      segmentId: null,
+      slug: `${input.mediaSlug}-intro`,
+      title: `${input.title} Intro`,
+      orderIndex: 1,
+      difficulty: "beginner",
+      summary: `${input.title} Intro`,
+      status: "active",
+      sourceFile: `tests/review/${input.mediaSlug}.md`,
+      createdAt: "2026-03-11T09:00:00.000Z",
+      updatedAt: "2026-03-11T09:00:00.000Z"
+    });
+    await database.insert(lessonProgress).values({
+      lessonId: `${input.mediaId}_lesson`,
+      status: "completed",
+      completedAt: "2026-03-11T09:00:00.000Z"
+    });
+
+    const cards = Array.from({ length: input.cardCount }, (_, index) => ({
+      id: `${input.mediaId}_card_${index + 1}`,
+      mediaId: input.mediaId,
+      lessonId: `${input.mediaId}_lesson`,
+      segmentId: null,
+      sourceFile: `tests/review/${input.mediaSlug}.md`,
+      cardType: "recognition" as const,
+      front: `新規 ${index + 1}`,
+      back: `nuova ${index + 1}`,
+      notesIt: `Card nuova ${index + 1}`,
+      status: "active" as const,
+      orderIndex: index + 1,
+      createdAt: `2026-03-11T09:0${index}:00.000Z`,
+      updatedAt: `2026-03-11T09:0${index}:00.000Z`
+    }));
+    const terms = Array.from({ length: input.cardCount }, (_, index) => ({
+      id: `${input.mediaId}_term_${index + 1}`,
+      sourceId: `${input.mediaSlug}-term-${index + 1}`,
+      mediaId: input.mediaId,
+      segmentId: null,
+      lemma: `新規${index + 1}`,
+      reading: `しんき${index + 1}`,
+      romaji: `shinki-${index + 1}`,
+      pos: "sostantivo",
+      meaningIt: `nuova ${index + 1}`,
+      meaningLiteralIt: null,
+      notesIt: `Termine ${index + 1}`,
+      levelHint: null,
+      searchLemmaNorm: `新規${index + 1}`,
+      searchReadingNorm: `しんき${index + 1}`,
+      searchRomajiNorm: `shinki-${index + 1}`,
+      createdAt: `2026-03-11T09:0${index}:00.000Z`,
+      updatedAt: `2026-03-11T09:0${index}:00.000Z`
+    }));
+    const entryLinks = Array.from({ length: input.cardCount }, (_, index) => ({
+      id: `${input.mediaId}_link_${index + 1}`,
+      cardId: `${input.mediaId}_card_${index + 1}`,
+      entryType: "term" as const,
+      entryId: `${input.mediaId}_term_${index + 1}`,
+      relationshipType: "primary" as const
+    }));
+
+    await database.insert(card).values(cards);
+    await database.insert(term).values(terms);
+    await database.insert(cardEntryLink).values(entryLinks);
+
+    return {
+      cardIds: cards.map((item) => item.id),
+      mediaSlug: input.mediaSlug,
+      termIds: terms.map((item) => item.id)
+    };
+  }
+
   async function loadCrossMediaTermSubjectContext(client: DatabaseClient) {
     const [alphaTermEntry, betaTermEntry] = await Promise.all([
       client.query.term.findFirst({
@@ -1223,6 +1315,117 @@ describe("review system", () => {
     expect(toppedUpPage?.queue.newQueuedCount).toBe(0);
     expect(toppedUpPage?.queue.queueCount).toBe(0);
     expect(toppedUpPage?.selectedCard).toBeNull();
+  });
+
+  it("uses top-up batches to extend the current session without changing the daily limit", async () => {
+    await updateStudySettings(
+      {
+        furiganaMode: "on",
+        glossaryDefaultSort: "lesson_order",
+        reviewDailyLimit: 1
+      },
+      database
+    );
+    const fixture = await createIsolatedNewMediaFixture({
+      cardCount: 3,
+      mediaId: "topup_media",
+      mediaSlug: "topup-media",
+      title: "Top-up Media"
+    });
+    const initialPage = await getReviewPageData(
+      fixture.mediaSlug,
+      {},
+      database
+    );
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    expect(initialPage?.queue.dailyLimit).toBe(1);
+    expect(initialPage?.queue.newAvailableCount).toBe(3);
+    expect(initialPage?.queue.newQueuedCount).toBe(1);
+    expect(initialPage?.queue.queueCount).toBe(1);
+    expect(initialPage?.session.extraNewCount).toBe(0);
+
+    const completionResult = await gradeReviewCardSessionAction({
+      answeredCount: initialPage?.session.answeredCount ?? 0,
+      cardId: fixture.cardIds[0],
+      cardMediaSlug: fixture.mediaSlug,
+      extraNewCount: initialPage?.session.extraNewCount ?? 0,
+      gradedCardBucket: initialPage?.selectedCard?.bucket,
+      mediaSlug: fixture.mediaSlug,
+      rating: "good",
+      scope: "media",
+      sessionMedia: initialPage?.media,
+      sessionQueue: initialPage?.queue,
+      sessionSettings: initialPage?.settings
+    });
+
+    expect(reviewPageCalls).toEqual([]);
+    expect(completionResult.queue.dailyLimit).toBe(1);
+    expect(completionResult.queue.newAvailableCount).toBe(2);
+    expect(completionResult.queue.newQueuedCount).toBe(0);
+    expect(completionResult.queue.queueCount).toBe(0);
+    expect(completionResult.session.extraNewCount).toBe(0);
+
+    const completionMarkup = renderToStaticMarkup(
+      ReviewPage({ data: completionResult })
+    );
+
+    expect(completionMarkup).toContain("Aggiungi altre 2 nuove");
+    expect(completionMarkup).toContain(
+      "alla rotazione attuale di questo media"
+    );
+
+    const toppedUpPage = await getReviewPageData(
+      fixture.mediaSlug,
+      {
+        answered: "1",
+        extraNew: "2"
+      },
+      database
+    );
+
+    expect(toppedUpPage?.queue.dailyLimit).toBe(1);
+    expect(toppedUpPage?.queue.newAvailableCount).toBe(2);
+    expect(toppedUpPage?.queue.newQueuedCount).toBe(2);
+    expect(toppedUpPage?.queue.queueCount).toBe(2);
+    expect(toppedUpPage?.queue.queueLabel).toContain(
+      "nella rotazione attuale di questa sessione"
+    );
+    expect(toppedUpPage?.queue.queueLabel).not.toContain("limite giornaliero");
+    expect(toppedUpPage?.session.extraNewCount).toBe(2);
+
+    const advancedTopUpResult = await gradeReviewCardSessionAction({
+      answeredCount: toppedUpPage?.session.answeredCount ?? 0,
+      cardId: fixture.cardIds[1],
+      cardMediaSlug: fixture.mediaSlug,
+      extraNewCount: toppedUpPage?.session.extraNewCount ?? 0,
+      gradedCardBucket: toppedUpPage?.selectedCard?.bucket,
+      mediaSlug: fixture.mediaSlug,
+      nextCardId: fixture.cardIds[2],
+      rating: "good",
+      scope: "media",
+      sessionMedia: toppedUpPage?.media,
+      sessionQueue: toppedUpPage?.queue,
+      sessionSettings: toppedUpPage?.settings
+    });
+
+    expect(advancedTopUpResult.selectedCard?.id).toBe(fixture.cardIds[2]);
+    expect(advancedTopUpResult.queue.newAvailableCount).toBe(1);
+    expect(advancedTopUpResult.queue.newQueuedCount).toBe(1);
+    expect(advancedTopUpResult.queue.dailyLimit).toBe(1);
+    expect(
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${fixture.termIds[1]}`
+        )
+      })
+    ).toMatchObject({
+      entryId: fixture.termIds[1],
+      reps: 1,
+      state: "learning"
+    });
   });
 
   it("keeps the main stage in a completion state when the queue is empty unless a card is explicitly selected", async () => {

@@ -498,6 +498,10 @@ function buildIncrementalQueueUpdate(
       gradedCardBucket === "due"
         ? Math.max(0, currentQueue.dueCount - 1)
         : currentQueue.dueCount,
+    newAvailableCount:
+      gradedCardBucket === "new"
+        ? Math.max(0, currentQueue.newAvailableCount - 1)
+        : currentQueue.newAvailableCount,
     newQueuedCount:
       gradedCardBucket === "new"
         ? Math.max(0, currentQueue.newQueuedCount - 1)
