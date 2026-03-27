@@ -10,9 +10,14 @@ import {
 import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
+  GLOSSARY_SUMMARY_TAG,
   listMediaCached,
+  MEDIA_LIST_TAG,
   canUseDataCache,
-  runWithTaggedCache
+  REVIEW_FIRST_CANDIDATE_TAG,
+  REVIEW_SUMMARY_TAG,
+  runWithTaggedCache,
+  SETTINGS_TAG
 } from "@/lib/data-cache";
 import {
   calculatePercent,
@@ -82,6 +87,23 @@ export type DashboardData = {
 export async function getDashboardData(
   database: DatabaseClient = db
 ): Promise<DashboardData> {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["app-shell", "dashboard"],
+    loader: () => loadDashboardData(database),
+    tags: [
+      MEDIA_LIST_TAG,
+      GLOSSARY_SUMMARY_TAG,
+      REVIEW_SUMMARY_TAG,
+      REVIEW_FIRST_CANDIDATE_TAG,
+      SETTINGS_TAG
+    ]
+  });
+}
+
+async function loadDashboardData(
+  database: DatabaseClient
+): Promise<DashboardData> {
   const rows = await listMediaCached(database);
   const media = await buildMediaShellSnapshots(database, rows);
   const focusMedia = pickFocusMedia(media);
@@ -109,9 +131,22 @@ export async function getDashboardData(
 }
 
 export async function getMediaLibraryData(database: DatabaseClient = db) {
-  const rows = await listMediaCached(database);
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["app-shell", "media-library"],
+    loader: async () => {
+      const rows = await listMediaCached(database);
 
-  return buildMediaShellSnapshots(database, rows);
+      return buildMediaShellSnapshots(database, rows);
+    },
+    tags: [
+      MEDIA_LIST_TAG,
+      GLOSSARY_SUMMARY_TAG,
+      REVIEW_SUMMARY_TAG,
+      REVIEW_FIRST_CANDIDATE_TAG,
+      SETTINGS_TAG
+    ]
+  });
 }
 
 export async function getMediaDetailData(
