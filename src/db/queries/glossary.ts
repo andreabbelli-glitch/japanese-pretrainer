@@ -1285,12 +1285,17 @@ export async function listCrossMediaFamiliesByEntryIds(
   );
   const rows =
     kind === "term"
-      ? await database.query.term.findMany({
-          where: inArray(term.id, requestedEntryIds)
-        })
-      : await database.query.grammarPattern.findMany({
-          where: inArray(grammarPattern.id, requestedEntryIds)
-        });
+      ? await database
+          .select({ id: term.id, crossMediaGroupId: term.crossMediaGroupId })
+          .from(term)
+          .where(inArray(term.id, requestedEntryIds))
+      : await database
+          .select({
+            id: grammarPattern.id,
+            crossMediaGroupId: grammarPattern.crossMediaGroupId
+          })
+          .from(grammarPattern)
+          .where(inArray(grammarPattern.id, requestedEntryIds));
   const groupIdByEntryId = new Map<string, string>();
   const groupIds = new Set<string>();
 
@@ -1438,17 +1443,17 @@ export async function getCrossMediaSiblingCounts(
     return new Map<string, number>();
   }
 
-  const rows =
-    kind === "term"
-      ? await database.query.term.findMany({
-          where: inArray(term.id, entryIds)
-        })
-      : await database.query.grammarPattern.findMany({
-          where: inArray(grammarPattern.id, entryIds)
-        });
+  const table = kind === "term" ? term : grammarPattern;
+  const entryRows = await database
+    .select({
+      id: table.id,
+      crossMediaGroupId: table.crossMediaGroupId
+    })
+    .from(table)
+    .where(inArray(table.id, entryIds));
   const groupIds = [
     ...new Set(
-      rows
+      entryRows
         .map((row) => row.crossMediaGroupId)
         .filter((value): value is string => typeof value === "string")
     )
@@ -1458,29 +1463,25 @@ export async function getCrossMediaSiblingCounts(
     return new Map<string, number>();
   }
 
-  const groupedRows =
-    kind === "term"
-      ? await database.query.term.findMany({
-          where: inArray(term.crossMediaGroupId, groupIds)
-        })
-      : await database.query.grammarPattern.findMany({
-          where: inArray(grammarPattern.crossMediaGroupId, groupIds)
-        });
-  const countsByGroup = new Map<string, number>();
-
-  for (const row of groupedRows) {
-    if (!row.crossMediaGroupId) {
-      continue;
-    }
-
-    countsByGroup.set(
-      row.crossMediaGroupId,
-      (countsByGroup.get(row.crossMediaGroupId) ?? 0) + 1
-    );
-  }
+  const countRows = await database
+    .select({
+      groupId: table.crossMediaGroupId,
+      count: sql<number>`count(*)`
+    })
+    .from(table)
+    .where(inArray(table.crossMediaGroupId, groupIds))
+    .groupBy(table.crossMediaGroupId);
+  const countsByGroup = new Map(
+    countRows
+      .filter(
+        (row): row is typeof row & { groupId: string } =>
+          row.groupId !== null
+      )
+      .map((row) => [row.groupId, Number(row.count)])
+  );
 
   return new Map(
-    rows.map((row) => [
+    entryRows.map((row) => [
       row.id,
       row.crossMediaGroupId
         ? Math.max((countsByGroup.get(row.crossMediaGroupId) ?? 1) - 1, 0)
