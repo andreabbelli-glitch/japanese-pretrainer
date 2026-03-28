@@ -3,11 +3,663 @@
   "entries": [
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-dake-ja-dame",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g001-spiegazione-enfasi",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g002-mi-chiedo-se",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8B%E3%81%AA",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g003-stato-in-corso-stato-risultante",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g005-senza-fare-non-fare-e",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g006-contrazione-colloquiale-di",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A6%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g009-contrazione-di-dovere",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g010-prima-di",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g011-voler-fare",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%9F%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g014-si-puo-va-bene-fare",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g015-dopo",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g017-pensare-che",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g018-non-si-deve",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g019-dover-fare",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g020-poter-fare",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g021-passato-completamento",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g022-collega-azioni-crea-richieste-e-molte-co",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g023-negazione",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g024-registro-cortese-vs-piano",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g025-da-fino-a",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g027-luogo-dell-azione-mezzo",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g028-con-e-citazione",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A8",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g029-destinazione-tempo-bersaglio-esistenza",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AB",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g030-possesso-collegamento-tra-nomi",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AE",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g031-marca-il-tema",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AF",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g032-verso",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g033-marca-l-oggetto-diretto",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g034-perche",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%8B%E3%82%89",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g035-ma-pero",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g036-siccome-dato-che",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g037-citazione-tema-colloquiale",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g038-piu-di-al-punto-da",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g039-se",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g040-quando-nel-momento-in-cui",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A8%E3%81%8D",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g041-probabilmente-suppongo",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g042-domanda-spiegativa-sorpresa-davvero-e-co",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g043-anche-se-nonostante",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g044-facciamo-andiamo-a",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g045-facciamo-provero-a",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%88%E3%81%86",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g046-sembra-che-sembra",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g047-vero-no",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g048-facile-da-fare",
+      "pitch_accent": 2,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%84%E3%81%99%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g050-voglio-che-mi-piacerebbe-che",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g054-durante-mentre",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g055-mi-chiedo-proprio",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g056-finale-maschile-riflessiva-osservativa",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g057-mi-chiedo-chissa",
+      "pitch_accent": 3,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8B%E3%81%97%E3%82%89",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g058-comera-gia-dovera",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g059-dire-chiamarsi",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g061-troppo",
+      "pitch_accent": 2,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%99%E3%81%8E%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g062-sembra-che",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g063-si-dice-che-pare-che",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g064-contrazione-di",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%8B%E3%82%82",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g065-difficile-da-fare",
+      "pitch_accent": 2,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AB%E3%81%8F%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g067-avere-intenzione-di",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g068-non-vuoi-ti-va-di",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g069-andare-avanti-facendo-cambiare-nel-tempo",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g070-qualcosa-e-stato-fatto-intenzionalmente",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g072-se-e-cosi-se-parli-di",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AA%E3%82%89",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g073-essere-previsto",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g075-si-decide-che-finire-per",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g076-decidere-di-fare",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g077-fare-in-modo-di",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g079-per-favore-non-fare",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g080-sembrare-voler-fare-terza-persona",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g081-e-meglio-fare",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g082-non-e-necessario-fare",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g083-non-fare-ordine-secco",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g084-enfasi-conferma-tono-emotivo",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g085-quando-se-risultato-naturale",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A8",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g086-frase-che-modifica-un-nome",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g087-forma-passiva",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g088-solo-e-nient-altro",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g089-solo",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%A0%E3%81%91",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g090-anche",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g091-tra-gli-altri-eccetera",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g092-e-inoltre-tra-l-altro",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%97",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g093-in-modo-da-affinche",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g094-persino-ma-dai-infatti",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%A0%E3%81%A3%E3%81%A6",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g095-tipo-e-cose-cosi-tra-gli-esempi",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g096-una-cosa-come-che",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%AA%E3%82%93%E3%81%A6",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g097-per-allo-scopo-di",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g098-cosi-com-e-lasciando-come-sta",
+      "pitch_accent": 1,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%BE%E3%81%BE",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g099-vero-che-ma-guarda",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g100-circa-al-punto-da",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g101-a-seconda-di-in-base-a",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g102-pare-che-tipico-di",
+      "pitch_accent": 2,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%82%89%E3%81%97%E3%81%84",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g103-mentre-finche",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g104-vero-no-immagino-che",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g105-finale-ruvida-maschile",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g106-registro-samurai-comico",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g107-riguardo-a-su",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g108-solo-nientaltro-che",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g109-ti-sto-dicendo-che",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g110-non-e-che-non-significa-che",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g111-far-fare-lasciar-fare",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-koto-ga-dekiru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-mitai",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-nagara",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-nai-you-ni",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-ta-bakari",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-tara",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%9F%E3%82%89",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-tari-tari-suru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-ageru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-kudasai",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-kureru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-kuru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-miru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-morau",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-ne",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-shimau",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-teoku",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-to-wa-itte-mo",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-tte-no-wa",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-you-ni-iwareru",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-you-ni-naru",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -24,6 +676,11 @@
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-champion-rank",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -641,6 +1298,11 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-gym-badge",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-hinshi",
       "pitch_accent_status": "miss"
     },
@@ -872,6 +1534,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-taisetsu-na-mono",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-takara-sagashi",
       "pitch_accent_status": "miss"
     },
     {
@@ -1433,7 +2100,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v073-mappu",
-      "pitch_accent_status": "miss"
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%83%9E%E3%83%83%E3%83%97",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",

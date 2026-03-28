@@ -11,16 +11,5 @@ export function ReviewPage({ data }: ReviewPageProps) {
 }
 
 function buildReviewPageClientKey(data: ReviewPageData) {
-  return [
-    data.scope,
-    data.media.slug,
-    data.selectedCard?.id ?? "no-card",
-    data.session.answeredCount,
-    data.session.extraNewCount,
-    data.session.notice ?? "no-notice",
-    data.queue.queueCount,
-    data.settings.reviewFrontFurigana
-      ? "review-furigana-on"
-      : "review-furigana-off"
-  ].join(":");
+  return [data.scope, data.media.slug].join(":");
 }

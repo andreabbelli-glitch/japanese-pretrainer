@@ -84,6 +84,8 @@ export function ReviewPageClient({
   const latestViewDataRef = useRef<ReviewPageClientData>(data);
   const lastGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const inFlightGlobalHydrationRequestKeyRef = useRef<string | null>(null);
+  const gradedCardIdsRef = useRef<Set<string>>(new Set());
+  const lastAcceptedServerDataRef = useRef(data);
   const [isPending, startTransition] = useTransition();
   const isFullReviewPageData = isReviewPageData(viewData);
   const isHydratingFullData =
@@ -161,6 +163,36 @@ export function ReviewPageClient({
   useEffect(() => {
     latestViewDataRef.current = viewData;
   }, [viewData]);
+
+  useEffect(() => {
+    if (data === lastAcceptedServerDataRef.current) {
+      return;
+    }
+    lastAcceptedServerDataRef.current = data;
+
+    if (!isReviewPageData(data)) {
+      return;
+    }
+
+    const currentViewData = latestViewDataRef.current;
+    if (
+      currentViewData.session.answeredCount > data.session.answeredCount ||
+      (currentViewData.session.answeredCount === data.session.answeredCount &&
+        currentViewData.selectedCard?.id === data.selectedCard?.id)
+    ) {
+      return;
+    }
+
+    const merged = mergeReviewPageData(currentViewData, data);
+    latestViewDataRef.current = merged;
+    setViewData(merged);
+    setRevealedCardId(getInitiallyRevealedCardId(merged));
+    const filtered = filterGradedCardIds(
+      data.queueCardIds,
+      gradedCardIdsRef.current
+    );
+    setQueueCardIds(filtered);
+  }, [data]);
 
   useEffect(() => {
     if (
@@ -320,7 +352,12 @@ export function ReviewPageClient({
           setViewData(mergedData);
           setRevealedCardId(getInitiallyRevealedCardId(mergedData));
           if (options?.shouldSyncQueueCardIds?.(nextData) ?? true) {
-            setQueueCardIds(nextData.queueCardIds);
+            setQueueCardIds(
+              filterGradedCardIds(
+                nextData.queueCardIds,
+                gradedCardIdsRef.current
+              )
+            );
           }
           options?.onSuccess?.(mergedData);
         })
@@ -376,6 +413,7 @@ export function ReviewPageClient({
 
     const fullViewData = viewData as ReviewPageData;
 
+    gradedCardIdsRef.current.add(selectedCard.id);
     setPendingAnsweredCountScroll(fullViewData.session.answeredCount);
 
     if (!isQueueCard) {
@@ -990,6 +1028,17 @@ function formatTopUpLabel(count: number) {
 
 function isReviewPageData(data: ReviewPageClientData): data is ReviewPageData {
   return "queueCardIds" in data;
+}
+
+function filterGradedCardIds(
+  cardIds: string[],
+  gradedIds: Set<string>
+): string[] {
+  if (gradedIds.size === 0) {
+    return cardIds;
+  }
+
+  return cardIds.filter((id) => !gradedIds.has(id));
 }
 
 function buildReviewHydrationRequestKey(
