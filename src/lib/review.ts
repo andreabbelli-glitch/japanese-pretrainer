@@ -444,6 +444,7 @@ type ResolvedMedia = Awaited<ReturnType<typeof getMediaBySlug>>;
 
 type ReviewPageLoadOptions = {
   bypassCache?: boolean;
+  excludeCardIds?: string[];
   profiler?: ReviewProfiler | null;
   resolvedMedia?: NonNullable<ResolvedMedia>;
 };
@@ -452,6 +453,7 @@ async function buildReviewPageDataFromWorkspace(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
   database: DatabaseClient;
+  excludeCardIds?: string[];
   entryLookup: Map<string, ReviewEntryLookupItem>;
   media: ReviewPageWorkspace;
   mediaById: ReviewMediaLookup;
@@ -474,6 +476,7 @@ async function buildReviewPageDataFromWorkspace(input: {
         cards: input.cards,
         dailyLimit: input.dailyLimit,
         entryLookup: input.entryLookup,
+        excludeCardIds: input.excludeCardIds,
         extraNewCount: input.searchState.extraNewCount,
         newIntroducedTodayCount: input.newIntroducedTodayCount,
         nowIso,
@@ -1046,6 +1049,7 @@ export async function getReviewPageData(
         dailyLimit: workspace.dailyLimit,
         database,
         entryLookup: workspace.entryLookup,
+        excludeCardIds: options.excludeCardIds,
         media: {
           glossaryHref: mediaGlossaryHref(media.slug),
           href: mediaHref(media.slug),
@@ -1121,7 +1125,8 @@ async function loadGlobalReviewPageWorkspace(
 async function buildGlobalReviewPageData(
   input: LoadedGlobalReviewPageWorkspace,
   database: DatabaseClient = db,
-  profiler?: ReviewProfiler | null
+  profiler?: ReviewProfiler | null,
+  excludeCardIds?: string[]
 ) {
   return measureWith(profiler, "buildReviewPageDataFromWorkspace", () =>
     buildReviewPageDataFromWorkspace({
@@ -1129,6 +1134,7 @@ async function buildGlobalReviewPageData(
       dailyLimit: input.dailyLimit,
       database,
       entryLookup: input.entryLookup,
+      excludeCardIds,
       media: {
         glossaryHref: "/glossary",
         href: "/",
@@ -1173,7 +1179,12 @@ export async function getGlobalReviewPageLoadResult(
 
   return {
     kind: "ready",
-    data: await buildGlobalReviewPageData(workspace, database, options.profiler)
+    data: await buildGlobalReviewPageData(
+      workspace,
+      database,
+      options.profiler,
+      options.excludeCardIds
+    )
   };
 }
 
@@ -1267,7 +1278,12 @@ export async function getGlobalReviewPageData(
     options
   );
 
-  return buildGlobalReviewPageData(workspace, database, options.profiler);
+  return buildGlobalReviewPageData(
+    workspace,
+    database,
+    options.profiler,
+    options.excludeCardIds
+  );
 }
 
 export async function getReviewQueueSnapshotForMedia(
@@ -2135,19 +2151,27 @@ function buildReviewQueueSubjectSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
   entryLookup: Map<string, ReviewEntryLookupItem>;
+  excludeCardIds?: string[];
   extraNewCount: number;
   newIntroducedTodayCount: number;
   nowIso: string;
   subjectGroups: ReviewSubjectGroup[];
   visibleMediaId?: string;
 }): ReviewQueueSubjectSnapshot {
-  const subjectModels = buildReviewSubjectModels({
+  const allSubjectModels = buildReviewSubjectModels({
     cards: input.cards,
     entryLookup: input.entryLookup,
     nowIso: input.nowIso,
     preferredMediaId: input.visibleMediaId,
     subjectGroups: input.subjectGroups
   });
+  const excludeSet =
+    input.excludeCardIds && input.excludeCardIds.length > 0
+      ? new Set(input.excludeCardIds)
+      : null;
+  const subjectModels = excludeSet
+    ? allSubjectModels.filter((model) => !excludeSet.has(model.card.id))
+    : allSubjectModels;
   const buckets = bucketAndSortReviewSubjectModels(subjectModels);
   const classifiedModels = classifyReviewSubjectModels(
     buckets,

@@ -38,6 +38,7 @@ type ReviewSessionInput = {
   cardMediaSlug?: string;
   extraNewCount: number;
   gradedCardBucket?: ReviewQueueCard["bucket"];
+  gradedCardIds?: string[];
   mediaSlug?: string;
   nextCardId?: string;
   sessionMedia?: ReviewPageData["media"];
@@ -644,10 +645,12 @@ async function requireReviewPageData(
   mediaSlug: string,
   searchParams: Record<string, string | string[] | undefined>,
   profiler?: ReviewProfiler | null,
-  resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {}
+  resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {},
+  excludeCardIds?: string[]
 ) {
   const data = await getReviewPageData(mediaSlug, searchParams, db, {
     bypassCache: true,
+    excludeCardIds,
     profiler,
     resolvedMedia
   });
@@ -660,14 +663,17 @@ async function requireReviewPageData(
 }
 
 async function requireReviewPageDataForScope(
-  input: Pick<ReviewSessionInput, "mediaSlug" | "scope">,
+  input: Pick<ReviewSessionInput, "gradedCardIds" | "mediaSlug" | "scope">,
   searchParams: Record<string, string | string[] | undefined>,
   profiler?: ReviewProfiler | null,
   resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {}
 ) {
+  const excludeCardIds = input.gradedCardIds;
+
   if (input.scope === "global") {
     return getGlobalReviewPageData(searchParams, db, {
       bypassCache: true,
+      excludeCardIds,
       profiler
     });
   }
@@ -680,7 +686,8 @@ async function requireReviewPageDataForScope(
     input.mediaSlug,
     searchParams,
     profiler,
-    resolvedMedia
+    resolvedMedia,
+    excludeCardIds
   );
 }
 

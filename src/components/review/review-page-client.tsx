@@ -77,11 +77,7 @@ export function ReviewPageClient({
   const [pendingAnsweredCountScroll, setPendingAnsweredCountScroll] = useState<
     number | null
   >(null);
-  const [prefetchedNextCard, setPrefetchedNextCard] =
-    useState<ReviewQueueCard | null>(null);
-  const [prefetchedNextCardId, setPrefetchedNextCardId] = useState<
-    string | null
-  >(null);
+  const prefetchBufferRef = useRef<Map<string, ReviewQueueCard>>(new Map());
   const latestViewDataRef = useRef<ReviewPageClientData>(data);
   const lastGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const inFlightGlobalHydrationRequestKeyRef = useRef<string | null>(null);
@@ -184,11 +180,7 @@ export function ReviewPageClient({
     latestViewDataRef.current = merged;
     setViewData(merged);
     setRevealedCardId(getInitiallyRevealedCardId(merged));
-    const filtered = filterGradedCardIds(
-      data.queueCardIds,
-      gradedCardIdsRef.current
-    );
-    setQueueCardIds(filtered);
+    setQueueCardIds(data.queueCardIds);
   }, [data]);
 
   useEffect(() => {
@@ -279,51 +271,50 @@ export function ReviewPageClient({
   }, [pendingAnsweredCountScroll, viewData.session.answeredCount]);
 
   useEffect(() => {
-    if (!selectedCard || !isQueueCard || !nextQueueCardId) {
+    if (!selectedCard || !isQueueCard || !isFullReviewPageData) {
       return;
     }
 
-    if (
-      prefetchedNextCardId === nextQueueCardId &&
-      prefetchedNextCard?.id === nextQueueCardId
-    ) {
+    const bufferSize = 3;
+    const startIndex = queueIndex + 1;
+    const endIndex = Math.min(
+      startIndex + bufferSize,
+      queueCardIds.length
+    );
+    const cardIdsToFetch: string[] = [];
+
+    for (let i = startIndex; i < endIndex; i++) {
+      const id = queueCardIds[i];
+
+      if (id && !prefetchBufferRef.current.has(id)) {
+        cardIdsToFetch.push(id);
+      }
+    }
+
+    if (cardIdsToFetch.length === 0) {
       return;
     }
 
     let cancelled = false;
 
-    void prefetchReviewCardSessionAction({
-      cardId: nextQueueCardId
-    })
-      .then((card) => {
-        if (cancelled) {
-          return;
-        }
+    for (const cardId of cardIdsToFetch) {
+      void prefetchReviewCardSessionAction({ cardId })
+        .then((card) => {
+          if (cancelled || !card) {
+            return;
+          }
 
-        setPrefetchedNextCard(card?.id === nextQueueCardId ? card : null);
-        setPrefetchedNextCardId(nextQueueCardId);
-      })
-      .catch((error) => {
-        console.error(error);
-
-        if (cancelled) {
-          return;
-        }
-
-        setPrefetchedNextCard(null);
-        setPrefetchedNextCardId(nextQueueCardId);
-      });
+          prefetchBufferRef.current.set(cardId, card);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
 
     return () => {
       cancelled = true;
     };
-  }, [
-    isQueueCard,
-    nextQueueCardId,
-    prefetchedNextCard?.id,
-    prefetchedNextCardId,
-    selectedCard
-  ]);
+  }, [isQueueCard, isFullReviewPageData, queueIndex, queueCardIds, selectedCard]);
 
   function runSessionUpdate(
     loadNextData: () => Promise<ReviewPageData>,
@@ -349,12 +340,7 @@ export function ReviewPageClient({
           setViewData(mergedData);
           setRevealedCardId(getInitiallyRevealedCardId(mergedData));
           if (options?.shouldSyncQueueCardIds?.(nextData) ?? true) {
-            setQueueCardIds(
-              filterGradedCardIds(
-                nextData.queueCardIds,
-                gradedCardIdsRef.current
-              )
-            );
+            setQueueCardIds(nextData.queueCardIds);
           }
           options?.onSuccess?.(mergedData);
         })
@@ -421,6 +407,7 @@ export function ReviewPageClient({
             cardId: selectedCard.id,
             cardMediaSlug: selectedCard.mediaSlug,
             extraNewCount: fullViewData.session.extraNewCount,
+            gradedCardIds: Array.from(gradedCardIdsRef.current),
             mediaSlug:
               fullViewData.scope === "media"
                 ? fullViewData.media.slug
@@ -441,10 +428,9 @@ export function ReviewPageClient({
     const nextQueueCardIds = queueCardIds.filter(
       (id) => id !== selectedCard.id
     );
-    const optimisticNextCard =
-      nextCardId && prefetchedNextCardId === nextCardId
-        ? prefetchedNextCard
-        : null;
+    const optimisticNextCard = nextCardId
+      ? (prefetchBufferRef.current.get(nextCardId) ?? null)
+      : null;
     const canOptimisticallyAdvance = !nextCardId || optimisticNextCard !== null;
 
     runSessionUpdate(
@@ -455,6 +441,7 @@ export function ReviewPageClient({
           cardMediaSlug: selectedCard.mediaSlug,
           extraNewCount: fullViewData.session.extraNewCount,
           gradedCardBucket: selectedCard.bucket,
+          gradedCardIds: Array.from(gradedCardIdsRef.current),
           mediaSlug:
             fullViewData.scope === "media"
               ? fullViewData.media.slug
@@ -474,8 +461,6 @@ export function ReviewPageClient({
           ? () => {
               const previousViewData = fullViewData;
               const previousQueueCardIds = queueCardIds;
-              const previousPrefetchedNextCard = prefetchedNextCard;
-              const previousPrefetchedNextCardId = prefetchedNextCardId;
 
               setViewData(
                 buildOptimisticGradeResult({
@@ -490,8 +475,6 @@ export function ReviewPageClient({
               return () => {
                 setViewData(previousViewData);
                 setQueueCardIds(previousQueueCardIds);
-                setPrefetchedNextCard(previousPrefetchedNextCard);
-                setPrefetchedNextCardId(previousPrefetchedNextCardId);
               };
             }
           : undefined,
@@ -518,6 +501,7 @@ export function ReviewPageClient({
         cardId: selectedCard.id,
         cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: fullViewData.session.extraNewCount,
+        gradedCardIds: Array.from(gradedCardIdsRef.current),
         mediaSlug:
           fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
@@ -539,6 +523,7 @@ export function ReviewPageClient({
         cardId: selectedCard.id,
         cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: fullViewData.session.extraNewCount,
+        gradedCardIds: Array.from(gradedCardIdsRef.current),
         mediaSlug:
           fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
@@ -560,6 +545,7 @@ export function ReviewPageClient({
         cardId: selectedCard.id,
         cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: fullViewData.session.extraNewCount,
+        gradedCardIds: Array.from(gradedCardIdsRef.current),
         mediaSlug:
           fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
@@ -581,6 +567,7 @@ export function ReviewPageClient({
         cardId: selectedCard.id,
         cardMediaSlug: selectedCard.mediaSlug,
         extraNewCount: fullViewData.session.extraNewCount,
+        gradedCardIds: Array.from(gradedCardIdsRef.current),
         mediaSlug:
           fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
@@ -1027,16 +1014,6 @@ function isReviewPageData(data: ReviewPageClientData): data is ReviewPageData {
   return "queueCardIds" in data;
 }
 
-function filterGradedCardIds(
-  cardIds: string[],
-  gradedIds: Set<string>
-): string[] {
-  if (gradedIds.size === 0) {
-    return cardIds;
-  }
-
-  return cardIds.filter((id) => !gradedIds.has(id));
-}
 
 function buildReviewHydrationRequestKey(
   searchParams: Record<string, string | string[] | undefined>
