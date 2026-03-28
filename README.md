@@ -159,14 +159,10 @@ Comandi principali:
 Di default il DB viene creato in `./data/japanese-custom-study.db`, ma puoi
 sovrascrivere il path con `DATABASE_URL`.
 
-Se `DATABASE_URL` punta a un database remoto `libsql://...`, il bootstrap del
-server Node crea in automatico una embedded replica locale in
-`./data/japanese-custom-study-replica.db` in locale e in una directory
-temporanea writable del runtime in produzione serverless, esegue un sync
-all'avvio dell'app e serve le letture dalla replica locale. Build e script CLI
-continuano invece a usare il client remoto normale, cosi il cold boot paga solo
-la sync iniziale del server senza introdurre lock o deviazioni nei workflow di
-progetto.
+Se `DATABASE_URL` punta a un database remoto `libsql://...`, il runtime usa il
+client remoto standard direttamente. Non usiamo piu embedded replica locali ne
+sync automatiche al bootstrap, cosi il comportamento resta coerente tra locale,
+CLI e deploy serverless e non consuma quota `Syncs` extra su Turso.
 
 `pnpm db:seed` importa il contenuto reale presente in `./content`, riallinea il
 DB ai media correnti e rimuove eventuali residui legacy non piu presenti nel
@@ -215,12 +211,10 @@ Stack minimo consigliato per esporla su internet spendendo zero:
 Questo evita di affidarsi a filesystem effimeri del provider e tiene il setup
 coerente con `@libsql/client` gia presente nel repo.
 
-Con questo setup, durante il bootstrap del server Node la replica embedded
-locale viene attivata anche in produzione: il server sincronizza Turso al boot
-e prova a scaldare subito le cache dati di dashboard e media library per
-ridurre la latenza del primo caricamento. Su Vercel la replica viene scritta in
-`/tmp`, cosi il bootstrap non prova a creare file dentro il bundle read-only
-del deployment.
+Con questo setup, il bootstrap del server usa direttamente Turso come database
+remoto e prova solo a scaldare le cache dati di dashboard e media library per
+ridurre la latenza del primo caricamento, senza introdurre repliche locali o
+sync extra.
 
 ## Backup schedulato del database
 
@@ -257,7 +251,7 @@ sqlite3 ./japanese-custom-study.backup.db 'select count(*) from media;'
 ```
 
 Il workflow usa il secret GitHub `TURSO_PLATFORM_API_TOKEN` per autenticare la
-CLI Turso in modo non interattivo. I secret gia usati dal sync applicativo
+CLI Turso in modo non interattivo. I secret usati dal runtime applicativo
 restano separati.
 
 ## Struttura repo

@@ -7,11 +7,6 @@ export async function register() {
   }
 
   try {
-    const { db, syncDatabaseClient } = await import("@/db");
-
-    // If the runtime opted into an embedded replica, sync it before any reads.
-    await syncDatabaseClient(db);
-
     const { getDashboardData, getMediaLibraryData } = await import(
       "@/lib/app-shell"
     );

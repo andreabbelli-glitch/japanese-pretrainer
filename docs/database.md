@@ -12,14 +12,11 @@
 Il path del DB arriva da `DATABASE_URL`. Se non e impostato, il progetto usa il
 default locale sopra.
 
-Se invece `DATABASE_URL` usa uno schema remoto `libsql://...`, puoi abilitare
-una embedded replica locale impostando `JCS_ENABLE_EMBEDDED_REPLICA=1`. In quel
-caso il bootstrap del server Node crea `./data/japanese-custom-study-replica.db`,
-esegue una sync iniziale da Turso e poi le query di lettura servono il file
-locale, riducendo il costo del primo render non ancora coperto da
-`unstable_cache`. Se il piano o il token remoto bloccano le operazioni di sync,
-lascia la variabile disattivata e il runtime usera il client remoto standard.
-Build e CLI restano sul client remoto standard.
+Se invece `DATABASE_URL` usa uno schema remoto `libsql://...`, il runtime usa
+direttamente il client remoto standard. Il progetto non usa piu embedded
+replica locali ne sync automatiche al bootstrap, per evitare consumi inattesi
+della quota `Syncs` di Turso nei deploy serverless. Build, runtime e CLI
+restano quindi allineati sullo stesso percorso di connessione remota.
 
 ## Comandi
 
@@ -66,7 +63,7 @@ Apri Drizzle Studio:
 - `src/db/migrate.ts`: wrapper applicativo per eseguire le migrazioni versionate
 - `src/db/seed.ts`: fixture tecnica minima usata dai test unitari
 - `src/db/queries/*`: helper tipizzati per media, lessons, glossary e cards/review
-- `src/instrumentation.ts`: sync iniziale della replica embedded e warm-up delle cache dati piu pesanti
+- `src/instrumentation.ts`: warm-up delle cache dati piu pesanti
 - `scripts/db-migrate.ts`: entrypoint CLI per applicare le migrazioni
 - `scripts/db-seed.ts`: entrypoint CLI per importare il contenuto reale nel DB locale
 

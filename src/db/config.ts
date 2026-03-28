@@ -3,15 +3,12 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 export const DEFAULT_DATABASE_PATH = "./data/japanese-custom-study.db";
-export const DEFAULT_REPLICA_PATH = "./data/japanese-custom-study-replica.db";
-const DEFAULT_SERVERLESS_TMP_DIR = "/tmp";
 
 export interface DatabaseLocation {
   configuredPath: string;
   databasePath?: string;
   connectionUrl: string;
   isRemote: boolean;
-  replicaPath?: string;
 }
 
 export function resolveDatabaseLocation(
@@ -43,13 +40,10 @@ export function resolveDatabaseLocation(
   }
 
   if (/^[a-zA-Z][a-zA-Z\d+.-]*:\/\//.test(normalizedUrl)) {
-    const replicaPath = resolveEmbeddedReplicaPath();
-
     return {
       configuredPath: normalizedUrl,
       connectionUrl: normalizedUrl,
-      isRemote: true,
-      replicaPath
+      isRemote: true
     };
   }
 
@@ -72,14 +66,4 @@ export function ensureDatabaseDirectory(databasePath?: string): void {
   }
 
   fs.mkdirSync(path.dirname(databasePath), { recursive: true });
-}
-
-function resolveEmbeddedReplicaPath(): string {
-  const runtimeTempDir = process.env.TMPDIR?.trim() || DEFAULT_SERVERLESS_TMP_DIR;
-
-  if (process.env.VERCEL === "1" || process.env.NODE_ENV === "production") {
-    return path.join(runtimeTempDir, path.basename(DEFAULT_REPLICA_PATH));
-  }
-
-  return path.resolve(process.cwd(), DEFAULT_REPLICA_PATH);
 }

@@ -166,11 +166,10 @@ DATABASE_AUTH_TOKEN=your-token \
 
 `LIBSQL_AUTH_TOKEN` resta supportata come fallback.
 
-Nel bootstrap del server applicativo, un `DATABASE_URL=libsql://...` abilita
-automaticamente una embedded replica locale in
-`./data/japanese-custom-study-replica.db`. Il server sincronizza la replica al
-boot e poi legge localmente, quindi i benchmark misurano soprattutto il costo
-del sync iniziale e del render, non round-trip remoti per ogni singola query.
+Nel bootstrap del server applicativo non usiamo piu embedded replica locali ne
+sync automatiche. Con `DATABASE_URL=libsql://...`, i benchmark remoti misurano
+quindi round-trip reali verso Turso e il costo del render, senza traffico
+aggiuntivo di bootstrap sulla quota `Syncs`.
 
 ## Auth opzionale
 
