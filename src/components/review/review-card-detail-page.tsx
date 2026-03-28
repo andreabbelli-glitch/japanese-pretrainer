@@ -8,7 +8,7 @@ import {
   setLinkedEntryLearningAction,
   setReviewCardSuspendedAction
 } from "@/actions/review";
-import type { ReviewCardDetailData } from "@/lib/review";
+import type { ReviewCardDetailData } from "@/lib/review-types";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";

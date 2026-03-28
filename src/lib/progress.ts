@@ -26,9 +26,9 @@ import {
 } from "@/lib/study-metrics";
 
 import {
-  loadGlobalAndMediaReviewOverviewSnapshots,
-  type ReviewOverviewSnapshot
+  loadGlobalAndMediaReviewOverviewSnapshots
 } from "./review";
+import type { ReviewOverviewSnapshot } from "./review-types";
 
 export type ProgressPageData = {
   globalReview: {

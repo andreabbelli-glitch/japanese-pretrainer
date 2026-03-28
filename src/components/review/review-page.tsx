@@ -1,4 +1,4 @@
-import type { ReviewPageData } from "@/lib/review";
+import type { ReviewPageData } from "@/lib/review-types";
 
 import { ReviewPageClient } from "./review-page-client";
 

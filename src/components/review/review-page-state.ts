@@ -2,7 +2,7 @@ import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
 import type {
   ReviewFirstCandidatePageData,
   ReviewPageData
-} from "@/lib/review";
+} from "@/lib/review-types";
 
 export type ReviewPageClientData =
   | ReviewPageData

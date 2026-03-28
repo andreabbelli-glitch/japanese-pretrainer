@@ -19,10 +19,9 @@ import {
 import {
   getGlobalReviewPageData,
   getReviewPageData,
-  hydrateReviewCard,
-  type ReviewPageData,
-  type ReviewQueueCard
+  hydrateReviewCard
 } from "@/lib/review";
+import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
 import { mediaReviewCardHref, mediaStudyHref, reviewHref } from "@/lib/site";
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";

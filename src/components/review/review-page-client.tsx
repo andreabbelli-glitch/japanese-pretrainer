@@ -15,7 +15,7 @@ import {
 } from "@/actions/review";
 import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review";
+import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
 import {
   appendReturnToParam,
   buildCanonicalReviewSessionHrefForBase
