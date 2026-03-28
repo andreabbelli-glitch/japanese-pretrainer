@@ -1,5 +1,6 @@
 import type { EntryType } from "../../../domain/content.ts";
 import { buildEntryKey, buildScopedEntryId } from "../../entry-id.ts";
+import { normalizeReviewSubjectSurface } from "../../review-subject.ts";
 import { romanizeKanaForSearch } from "../../study-search.ts";
 
 import type { NormalizedMediaBundle } from "../types.ts";
@@ -593,6 +594,7 @@ function buildCardPlans(input: {
           sourceFile,
           cardType: card.cardType,
           front: card.front.raw,
+          normalizedFront: normalizeReviewSubjectSurface(card.front.raw),
           back: card.back.raw,
           exampleJp: card.exampleJp?.raw ?? null,
           exampleIt: card.exampleIt?.raw ?? null,

@@ -32,7 +32,8 @@ import {
 } from "@/db/queries/review-query-helpers";
 import {
   buildReviewSubjectEntryLookup,
-  deriveReviewSubjectIdentity
+  deriveReviewSubjectIdentity,
+  normalizeReviewSubjectSurface
 } from "@/lib/review-subject";
 
 describe("database layer", () => {
@@ -172,6 +173,7 @@ describe("database layer", () => {
       sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku-concept.md",
       cardType: "concept",
       front: "{{行|い}}く",
+      normalizedFront: normalizeReviewSubjectSurface("{{行|い}}く"),
       back: "andare",
       exampleJp: null,
       exampleIt: null,
@@ -215,7 +217,7 @@ describe("database layer", () => {
     });
 
     const [sqlIdentity] = await database.all<{ subjectKey: string }>(`
-      WITH RECURSIVE ${buildReviewSubjectIdentityCteSql()}
+      WITH ${buildReviewSubjectIdentityCteSql()}
       SELECT subject_key AS subjectKey
       FROM subject_identity
       WHERE card_id = ${quoteSqlString(canonicalCardId)}
@@ -240,6 +242,7 @@ describe("database layer", () => {
       sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku-chunk.md",
       cardType: "concept",
       front: chunkFront,
+      normalizedFront: normalizeReviewSubjectSurface(chunkFront),
       back: "restare senza andare",
       exampleJp: "{{駅|えき}}へ{{行|い}}かずに{{家|いえ}}に{{残|のこ}}る。",
       exampleIt: "Resto a casa senza andare alla stazione.",
@@ -308,7 +311,7 @@ describe("database layer", () => {
     expect(tsIdentity.subjectKey).toBe(chunkSubjectKey);
 
     const [sqlIdentity] = await database.all<{ subjectKey: string }>(`
-      WITH RECURSIVE ${buildReviewSubjectIdentityCteSql()}
+      WITH ${buildReviewSubjectIdentityCteSql()}
       SELECT subject_key AS subjectKey
       FROM subject_identity
       WHERE card_id = ${quoteSqlString(chunkCardId)}

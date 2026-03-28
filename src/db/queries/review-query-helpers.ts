@@ -28,40 +28,6 @@ export function buildReviewSubjectIdentityCteSql(options?: {
     : "";
 
   return `
-    normalized_front_parts AS (
-      SELECT
-        c.id AS card_id,
-        c.front AS remaining_front,
-        '' AS normalized_front
-      FROM card c
-      WHERE c.status != 'archived'
-        AND c.card_type = 'concept'${mediaClause}
-      UNION ALL
-      SELECT
-        card_id,
-        CASE
-          WHEN instr(remaining_front, '{{') = 0 THEN ''
-          ELSE substr(remaining_front, instr(remaining_front, '}}') + 2)
-        END AS remaining_front,
-        normalized_front || CASE
-          WHEN instr(remaining_front, '{{') = 0 THEN remaining_front
-          ELSE substr(remaining_front, 1, instr(remaining_front, '{{') - 1)
-            || substr(
-              substr(remaining_front, instr(remaining_front, '{{') + 2),
-              1,
-              instr(substr(remaining_front, instr(remaining_front, '{{') + 2), '|') - 1
-            )
-        END AS normalized_front
-      FROM normalized_front_parts
-      WHERE remaining_front != ''
-    ),
-    normalized_front AS (
-      SELECT
-        card_id,
-        ${normalizeReviewSubjectSurfaceSql("normalized_front")} AS normalized_front
-      FROM normalized_front_parts
-      WHERE remaining_front = ''
-    ),
     driving_links AS (
       SELECT
         c.id AS card_id,
@@ -126,24 +92,24 @@ export function buildReviewSubjectIdentityCteSql(options?: {
               WHERE cel_primary.card_id = c.id
                 AND cel_primary.relationship_type = 'primary'
             )
-            AND nf.normalized_front IS NOT NULL
+            AND c.normalized_front IS NOT NULL
             AND NOT (
               CASE
                 WHEN dlc.entry_type = 'term' THEN
-                  nf.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
+                  c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
                   OR (
                     t.reading IS NOT NULL
-                    AND nf.normalized_front = ${normalizeReviewSubjectSurfaceSql(
+                    AND c.normalized_front = ${normalizeReviewSubjectSurfaceSql(
                       "t.reading"
                     )}
                   )
                 WHEN dlc.entry_type = 'grammar' THEN
-                  nf.normalized_front = ${normalizeReviewSubjectSurfaceSql(
+                  c.normalized_front = ${normalizeReviewSubjectSurfaceSql(
                     "gp.pattern"
                   )}
                   OR (
                     gp.reading IS NOT NULL
-                    AND nf.normalized_front = ${normalizeReviewSubjectSurfaceSql(
+                    AND c.normalized_front = ${normalizeReviewSubjectSurfaceSql(
                       "gp.reading"
                     )}
                   )
@@ -160,8 +126,6 @@ export function buildReviewSubjectIdentityCteSql(options?: {
       FROM card c
       LEFT JOIN driving_link_counts dlc
         ON dlc.card_id = c.id
-      LEFT JOIN normalized_front nf
-        ON nf.card_id = c.id
       LEFT JOIN term t
         ON dlc.entry_type = 'term'
        AND t.id = dlc.entry_id

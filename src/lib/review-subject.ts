@@ -221,7 +221,7 @@ export function matchesReviewSubjectEntrySurface(
     .some((value) => normalizeReviewSubjectSurface(value) === normalizedFront);
 }
 
-function normalizeReviewSubjectSurface(value: string) {
+export function normalizeReviewSubjectSurface(value: string) {
   return stripInlineMarkdown(value)
     .replace(/[～〜]/g, "〜")
     .replace(/\s+/g, " ")

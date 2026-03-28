@@ -1066,6 +1066,7 @@ const cardUpsertSet = {
   sourceFile: excluded("source_file"),
   cardType: excluded("card_type"),
   front: excluded("front"),
+  normalizedFront: excluded("normalized_front"),
   back: excluded("back"),
   exampleJp: excluded("example_jp"),
   exampleIt: excluded("example_it"),

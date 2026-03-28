@@ -34,6 +34,7 @@ export const card = sqliteTable(
     sourceFile: text("source_file").notNull(),
     cardType: text("card_type").notNull(),
     front: text("front").notNull(),
+    normalizedFront: text("normalized_front"),
     back: text("back").notNull(),
     exampleJp: text("example_jp"),
     exampleIt: text("example_it"),

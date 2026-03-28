@@ -127,6 +127,13 @@
       "when": 1774710714191,
       "tag": "0017_steep_leech",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "6",
+      "when": 1774715275957,
+      "tag": "0018_normalized_front",
+      "breakpoints": true
     }
   ]
 }

@@ -1722,6 +1722,7 @@ describe("review system", () => {
       sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku-chunk.md",
       cardType: "concept",
       front: "{{行|い}}かずに{{残|のこ}}る",
+      normalizedFront: "行かずに残る",
       back: "restare senza andare",
       exampleJp: "{{駅|えき}}へ{{行|い}}かずに{{家|いえ}}に{{残|のこ}}る。",
       exampleIt: "Resto a casa senza andare alla stazione.",
