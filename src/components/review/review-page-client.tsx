@@ -168,6 +168,11 @@ export function ReviewPageClient({
     lastAcceptedServerDataRef.current = data;
 
     if (!isReviewPageData(data)) {
+      // Server sent FirstCandidate data (e.g. after "add more new" navigation).
+      // Reset viewData so the hydration effect can fire and load full data.
+      latestViewDataRef.current = data;
+      setViewData(data);
+      setRevealedCardId(getInitiallyRevealedCardId(data));
       return;
     }
 
