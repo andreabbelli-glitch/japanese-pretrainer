@@ -47,7 +47,10 @@ import {
   setReviewCardSuspended
 } from "@/lib/review-service";
 import { scheduleReview } from "@/lib/review-scheduler";
-import { buildCanonicalReviewSessionHref } from "@/lib/site";
+import {
+  buildCanonicalReviewSessionHref,
+  mediaReviewCardHref
+} from "@/lib/site";
 import { updateStudySettings } from "@/lib/settings";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
@@ -76,7 +79,10 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({
     replace: () => undefined
   }),
-  useSearchParams: () => new URLSearchParams()
+  useSearchParams: () => new URLSearchParams(),
+  redirect: (href: string) => {
+    throw new Error(`redirect:${href}`);
+  }
 }));
 
 vi.mock("next/cache", () => ({
@@ -2410,6 +2416,34 @@ describe("review system", () => {
         }
       }
     ]);
+  });
+
+  it("revalidates the detail review path when a stay_detail action keeps the card open", async () => {
+    const { markLinkedEntryKnownAction } =
+      await loadReviewActionsForDatabase(database);
+    const formData = new FormData();
+    formData.set("mediaSlug", developmentFixture.mediaSlug);
+    formData.set("cardId", developmentFixture.primaryCardId);
+    formData.set("answered", "0");
+    formData.set("redirectMode", "stay_detail");
+
+    await expect(markLinkedEntryKnownAction(formData)).rejects.toThrow(
+      `redirect:${mediaReviewCardHref(
+        developmentFixture.mediaSlug,
+        developmentFixture.primaryCardId
+      )}`
+    );
+
+    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}/review`
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      mediaReviewCardHref(
+        developmentFixture.mediaSlug,
+        developmentFixture.primaryCardId
+      )
+    );
   });
 
   it("advances to the next queue card after reopening a manual card when redirectMode advances queue", async () => {

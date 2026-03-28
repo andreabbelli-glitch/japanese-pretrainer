@@ -96,7 +96,8 @@ export async function markLinkedEntryKnownAction(formData: FormData) {
 
   revalidateEntryStatusPaths({
     mediaId,
-    mediaSlug
+    mediaSlug,
+    cardId
   });
   redirect(
     buildReviewRedirectUrl({
@@ -126,7 +127,8 @@ export async function setLinkedEntryLearningAction(formData: FormData) {
 
   revalidateEntryStatusPaths({
     mediaId,
-    mediaSlug
+    mediaSlug,
+    cardId
   });
   redirect(
     buildReviewRedirectUrl({
@@ -155,7 +157,8 @@ export async function resetReviewCardAction(formData: FormData) {
 
   revalidateActiveReviewPaths({
     mediaId,
-    mediaSlug
+    mediaSlug,
+    cardId
   });
   redirect(
     buildReviewRedirectUrl({
@@ -186,7 +189,8 @@ export async function setReviewCardSuspendedAction(formData: FormData) {
 
   revalidateActiveReviewPaths({
     mediaId,
-    mediaSlug
+    mediaSlug,
+    cardId
   });
   redirect(
     buildReviewRedirectUrl({
@@ -585,6 +589,7 @@ function revalidateActiveReviewCaches(mediaId?: string) {
 function revalidateActiveReviewPaths(input: {
   mediaId?: string;
   mediaSlug: string | undefined;
+  cardId?: string;
 }) {
   revalidateGlossarySummaryCache(input.mediaId);
   revalidateReviewSummaryCache(input.mediaId);
@@ -595,11 +600,16 @@ function revalidateActiveReviewPaths(input: {
   }
 
   revalidatePath(mediaStudyHref(input.mediaSlug, "review"));
+
+  if (input.cardId) {
+    revalidatePath(mediaReviewCardHref(input.mediaSlug, input.cardId));
+  }
 }
 
 function revalidateEntryStatusPaths(input: {
   mediaId?: string;
   mediaSlug: string | undefined;
+  cardId?: string;
 }) {
   revalidateActiveReviewPaths(input);
   revalidatePath("/glossary");

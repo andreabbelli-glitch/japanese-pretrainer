@@ -41,7 +41,15 @@ export function shouldAcceptServerReviewData(
   currentData: ReviewPageClientData,
   nextData: ReviewPageData
 ) {
-  return currentData.session.answeredCount <= nextData.session.answeredCount;
+  if (currentData.session.answeredCount < nextData.session.answeredCount) {
+    return true;
+  }
+
+  if (currentData.session.answeredCount > nextData.session.answeredCount) {
+    return false;
+  }
+
+  return currentData.selectedCard?.id === nextData.selectedCard?.id;
 }
 
 export function shouldKeepRevealedReviewAnswer(input: {

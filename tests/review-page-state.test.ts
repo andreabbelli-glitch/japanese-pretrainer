@@ -87,6 +87,28 @@ describe("review page state", () => {
     expect(shouldAcceptServerReviewData(currentData, nextData)).toBe(true);
   });
 
+  it("rejects same-progress server data when the selected card changed", () => {
+    const currentData = {
+      selectedCard: {
+        id: "card-b"
+      },
+      session: {
+        answeredCount: 2
+      }
+    } as ReviewPageClientData;
+
+    const nextData = {
+      selectedCard: {
+        id: "card-a"
+      },
+      session: {
+        answeredCount: 2
+      }
+    } as unknown as ReviewPageData;
+
+    expect(shouldAcceptServerReviewData(currentData, nextData)).toBe(false);
+  });
+
   it("rejects stale server data from an older review step", () => {
     const currentData = {
       selectedCard: {
