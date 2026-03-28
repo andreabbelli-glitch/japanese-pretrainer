@@ -49,7 +49,7 @@ pos: noun
 aliases: [山札の一番下, 一番下, bottom of deck]
 notes_it: >-
   Segna una posizione precisa del mazzo. Quando una carta viene messa
-  `{{山札|やまふだ}}の{{一番下|いちばんした}}`, non resta disponibile subito:
+  `{{山札|やまふだ}}の{{一番下|いち.ばん.した}}`, non resta disponibile subito:
   esce dalla cima e viene spinta nella zona meno immediata della pescata.
 level_hint: custom
 :::
@@ -176,15 +176,15 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bad-brand-first
 entry_type: term
 entry_id: term-bottom-of-deck
 card_type: recognition
-front: '{{山札|やまふだ}}の{{一番下|いちばんした}}'
+front: '{{山札|やまふだ}}の{{一番下|いち.ばん.した}}'
 back: il fondo del mazzo
 example_jp: >-
-  {{山札|やまふだ}}の{{一番下|いちばんした}}にあるカードは、すぐには
+  {{山札|やまふだ}}の{{一番下|いち.ばん.した}}にあるカードは、すぐには
   {{引|ひ}}きにくい。
 example_it: >-
   Una carta che sta sul fondo del mazzo difficilmente verrà pescata subito.
 notes_it: >-
-  `{{一番下|いちばんした}}` è una posizione molto concreta: nel rules text
+  `{{一番下|いち.ばん.した}}` è una posizione molto concreta: nel rules text
   cambia davvero il ritmo con cui quella carta potrà tornare disponibile.
 tags: [live-duel, deck, position]
 :::
@@ -195,15 +195,15 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bad-brand-first
 entry_type: term
 entry_id: term-ichiban-shita
 card_type: recognition
-front: '{{一番下|いちばんした}}'
+front: '{{一番下|いち.ばん.した}}'
 back: il punto piu in basso; il fondo
 example_jp: >-
-  {{山札|やまふだ}}の{{一番下|いちばんした}}に{{置|お}}くと、すぐには
+  {{山札|やまふだ}}の{{一番下|いち.ばん.した}}に{{置|お}}くと、すぐには
   {{見|み}}えなくなる。
 example_it: >-
   Se la metti sul fondo del mazzo, non la rivedi subito.
 notes_it: >-
-  Qui il valore utile e posizionale: `{{一番下|いちばんした}}` non significa una
+  Qui il valore utile e posizionale: `{{一番下|いち.ばん.した}}` non significa una
   carta specifica, ma il punto finale della pila. Quando lo incontri, pensa a
   `fondo` o `parte piu bassa`.
 tags: [live-duel, position, chunk]
@@ -216,11 +216,11 @@ entry_type: term
 entry_id: term-bottom-of-deck
 card_type: concept
 front: >-
-  {{自分|じぶん}}の{{山札|やまふだ}}の{{一番下|いちばんした}}に{{置|お}}く
+  {{自分|じぶん}}の{{山札|やまふだ}}の{{一番下|いち.ばん.した}}に{{置|お}}く
 back: metti sul fondo del tuo mazzo
 example_jp: >-
   {{条件|じょうけん}}に{{合|あ}}わないなら、
-  {{山札|やまふだ}}の{{一番下|いちばんした}}に{{置|お}}いて
+  {{山札|やまふだ}}の{{一番下|いち.ばん.した}}に{{置|お}}いて
   {{次|つぎ}}へ{{進|すす}}む。
 example_it: >-
   Se non soddisfa la condizione, la metti sul fondo del mazzo e vai avanti.

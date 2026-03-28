@@ -26,7 +26,7 @@ alt: "Dama Vaishingu card."
 caption: >-
   [{{堕魔|だーま}}](term:term-dama) ヴァイシング。 Razze:
   [マフィ・ギャング](term:term-mafi-gang) /
-  [{{魔導具|まどうぐ}}](term:term-madougu)。 Riga centrale: scegli una creatura nel tuo
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu)。 Riga centrale: scegli una creatura nel tuo
   cimitero e decidi se torna sul campo o in mano in base al filtro costo `4`
   sui Magic Tool.
 :::
@@ -39,7 +39,7 @@ jp: >-
   [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の
   [{{墓地|ぼち}}](term:term-graveyard)からクリーチャー{{1枚|いちまい}}を
   [{{選|えら}}ぶ](term:term-erabu)。それが[コスト](term:term-cost)
-  {{4以下|よんいか}}の[{{魔導具|まどうぐ}}](term:term-madougu)なら
+  {{4以下|よんいか}}の[{{魔導具|ま.どう.ぐ}}](term:term-madougu)なら
   [バトルゾーン](term:term-battle-zone)に[{{出|だ}}し](term:term-dasu)、
   [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara)
   [{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}える](term:term-add)。
@@ -57,7 +57,7 @@ reveal_mode: sentence
 - Il primo verbo importante è [{{選|えら}}ぶ](term:term-erabu): qui la carta
   non recupera a caso, ma ti fa scegliere in modo mirato.
 - Il bersaglio iniziale è largo: `クリーチャー{{1枚|いちまい}}`, non ancora
-  `{{魔導具|まどうぐ}}{{1枚|いちまい}}`.
+  `{{魔導具|ま.どう.ぐ}}{{1枚|いちまい}}`.
 - Quindi la restrizione vera arriva solo nella frase successiva.
 
 ### 2. それがコスト{{4以下|よんいか}}の魔導具なら
@@ -92,8 +92,8 @@ reveal_mode: sentence
 ## Lessico utile in questa carta
 
 - [{{堕魔|だーま}}](term:term-dama) compare in molti nomi del pacchetto
-  `{{魔導具|まどうぐ}}`: è un prefisso d'archetipo, non un kanji ornamentale.
-- [{{魔導具|まどうぐ}}](term:term-madougu) qui decide il risultato pratico dell'effetto:
+  `{{魔導具|ま.どう.ぐ}}`: è un prefisso d'archetipo, non un kanji ornamentale.
+- [{{魔導具|ま.どう.ぐ}}](term:term-madougu) qui decide il risultato pratico dell'effetto:
   campo se il filtro passa, mano se non passa.
 - [マフィ・ギャング](term:term-mafi-gang) resta nella riga `{{種族|しゅぞく}}` come seconda
   etichetta tribale della carta.

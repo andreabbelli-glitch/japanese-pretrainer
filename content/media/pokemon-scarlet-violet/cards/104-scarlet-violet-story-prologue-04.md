@@ -14,7 +14,7 @@ romaji: gakusei shokudou
 meaning_it: mensa studentesca
 notes_it: >-
   Nomina la mensa della scuola. Nel prologo funziona come punto-evento: quando
-  il gioco ti manda alla `{{学生食堂|がくせいしょくどう}}`, di solito si attiva un
+  il gioco ti manda alla `{{学生食堂|がく.せい.しょく.どう}}`, di solito si attiva un
   dialogo che aggiorna obiettivo corrente o direzione della route.
 :::
 :::card
@@ -23,10 +23,10 @@ lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet
 entry_type: term
 entry_id: term-gakusei-shokudou
 card_type: recognition
-front: '{{学生食堂|がくせいしょくどう}}'
+front: '{{学生食堂|がく.せい.しょく.どう}}'
 back: mensa studentesca
 example_jp: >-
-  {{学生食堂|がくせいしょくどう}}に {{行|い}}くと ペパーの {{話|はなし}}が
+  {{学生食堂|がく.せい.しょく.どう}}に {{行|い}}くと ペパーの {{話|はなし}}が
   {{進|すす}}みはじめる。
 example_it: >-
   Andando alla mensa studentesca, comincia ad avanzare il filone di Pepper.
@@ -48,10 +48,10 @@ lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet
 entry_type: term
 entry_id: term-shokuinshitsu
 card_type: recognition
-front: '{{職員室|しょくいんしつ}}'
+front: '{{職員室|しょく.いん.しつ}}'
 back: sala insegnanti / ufficio docenti
 example_jp: >-
-  {{職員室|しょくいんしつ}}では ネモが {{次|つぎ}}の {{目標|もくひょう}}を
+  {{職員室|しょく.いん.しつ}}では ネモが {{次|つぎ}}の {{目標|もくひょう}}を
   {{説明|せつめい}}してくれる。
 example_it: >-
   Nella sala insegnanti Nemona ti spiega il prossimo obiettivo.
@@ -64,7 +64,7 @@ romaji: kouchoushitsu
 meaning_it: ufficio del preside
 notes_it: >-
   Non indica una stanza qualsiasi del campus ma l'ufficio del preside. Quando
-  compare `{{校長室|こうちょうしつ}}`, il gioco sta aprendo una scena formale che
+  compare `{{校長室|こう.ちょう.しつ}}`, il gioco sta aprendo una scena formale che
   conferma istruzioni, permessi o passaggi successivi dell'avventura scolastica.
 :::
 :::card
@@ -73,10 +73,10 @@ lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet
 entry_type: term
 entry_id: term-kouchoushitsu
 card_type: recognition
-front: '{{校長室|こうちょうしつ}}'
+front: '{{校長室|こう.ちょう.しつ}}'
 back: ufficio del preside
 example_jp: >-
-  {{校長室|こうちょうしつ}}に {{呼|よ}}ばれると {{大事|だいじ}}な
+  {{校長室|こう.ちょう.しつ}}に {{呼|よ}}ばれると {{大事|だいじ}}な
   {{話|はなし}}が {{始|はじ}}まる ことが {{多|おお}}い。
 example_it: >-
   Quando vieni chiamato nell'ufficio del preside, in genere parte una scena che
@@ -90,9 +90,9 @@ romaji: gakusei ryou
 meaning_it: dormitorio studentesco
 notes_it: >-
   E la zona abitativa degli studenti. Nel prologo non e solo ambientazione:
-  riposare nella `{{学生寮|がくせいりょう}}` avanza il tempo di gioco e prepara
+  riposare nella `{{学生寮|がく.せい.りょう}}` avanza il tempo di gioco e prepara
   l'apertura della
-  [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou).
+  [{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou).
 :::
 :::card
 id: card-gakusei-ryou-recognition
@@ -100,10 +100,10 @@ lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet
 entry_type: term
 entry_id: term-gakusei-ryou
 card_type: recognition
-front: '{{学生寮|がくせいりょう}}'
+front: '{{学生寮|がく.せい.りょう}}'
 back: dormitorio studentesco
 example_jp: >-
-  {{学生寮|がくせいりょう}}の {{部屋|へや}}で {{休|やす}}むと {{翌日|よくじつ}}に
+  {{学生寮|がく.せい.りょう}}の {{部屋|へや}}で {{休|やす}}むと {{翌日|よくじつ}}に
   {{進|すす}}める。
 example_it: >-
   Se riposi nella stanza del dormitorio, puoi passare al giorno successivo.

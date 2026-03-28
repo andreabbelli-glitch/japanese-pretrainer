@@ -77,7 +77,7 @@ alt: >-
   scadenza claim e bottone di riscossione.
 caption: >-
   Ogni riga del `プレゼントボックス` combina nome reward,
-  `{{獲得日時|かくとくにちじ}}`, `{{受|う}}け{{取|と}}り{{期限|きげん}}` e bottone
+  `{{獲得日時|かく.とく.にち.じ}}`, `{{受|う}}け{{取|と}}り{{期限|きげん}}` e bottone
   `{{受|う}}け{{取|と}}る`: è una schermata di claim, non un semplice deposito
   di premi.
 :::
@@ -135,7 +135,7 @@ caption: >-
   In [ステージ{{選択|せんたく}}](term:term-stage-select) scegli lo stage a
   sinistra e, a destra, controlli avversario, reward, opzioni di skip e
   pulsanti come `{{報酬|ほうしゅう}}{{確認|かくにん}}` e
-  [{{対戦開始|たいせんかいし}}](term:term-start-match).
+  [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
 :::
 
 In [ステージ{{選択|せんたく}}](term:term-stage-select) la UI concentra molte
@@ -167,7 +167,7 @@ Anche i pulsanti in basso fanno lavori diversi:
 
 - `ステージ詳細` ti spiega meglio lo stage;
 - `報酬確認` ti fa controllare le reward;
-- [{{対戦開始|たいせんかいし}}](term:term-start-match) avvia davvero la sfida.
+- [{{対戦開始|たい.せん.かい.し}}](term:term-start-match) avvia davvero la sfida.
 
 ### 4. Il popup finale conferma che il claim è già avvenuto
 

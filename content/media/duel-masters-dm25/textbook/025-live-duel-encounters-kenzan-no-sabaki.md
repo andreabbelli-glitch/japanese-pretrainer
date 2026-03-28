@@ -55,7 +55,7 @@ jp: >-
   [てから](grammar:grammar-te-kara)[{{手札|てふだ}}](term:term-hand)に
   [{{加|くわ}}えて](term:term-add)もよい。{{残|のこ}}りを
   [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de)
-  [{{山札|やまふだ}}](term:term-deck)の{{一番下|いちばんした}}に
+  [{{山札|やまふだ}}](term:term-deck)の{{一番下|いち.ばん.した}}に
   [{{置|お}}く](term:term-oku)。
 translation_it: >-
   Guarda le prime tre carte del tuo mazzo. Tra quelle, puoi mostrare
@@ -106,7 +106,7 @@ reveal_mode: sentence
   preso.
 - [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de) ti dà
   controllo reale sull'ordine in cui rientrano nel mazzo.
-- `{{山札|やまふだ}}の{{一番下|いちばんした}}に[{{置|お}}く](term:term-oku)`
+- `{{山札|やまふだ}}の{{一番下|いち.ばん.した}}に[{{置|お}}く](term:term-oku)`
   completa quindi una procedura di filtro: scegli una carta utile e spingi il
   resto lontano dalla cima.
 

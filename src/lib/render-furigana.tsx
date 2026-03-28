@@ -38,13 +38,29 @@ function renderInlineNode(
   switch (node.type) {
     case "text":
       return <Fragment key={key}>{node.value}</Fragment>;
-    case "furigana":
+    case "furigana": {
+      const segments = splitMonoRuby(node.base, node.reading);
+
+      if (segments.length === 1) {
+        return (
+          <ruby className="app-ruby" key={key}>
+            <rb>{node.base}</rb>
+            <rt>{node.reading}</rt>
+          </ruby>
+        );
+      }
+
       return (
-        <ruby className="app-ruby" key={key}>
-          <rb>{node.base}</rb>
-          <rt>{node.reading}</rt>
-        </ruby>
+        <span key={key}>
+          {segments.map(([base, reading], i) => (
+            <ruby className="app-ruby" key={`${key}-${i}`}>
+              <rb>{base}</rb>
+              <rt>{reading}</rt>
+            </ruby>
+          ))}
+        </span>
       );
+    }
     case "reference":
       return (
         <strong key={key} className="inline-ref">
@@ -78,4 +94,27 @@ function renderInlineNode(
     case "break":
       return <br key={key} />;
   }
+}
+
+/**
+ * Split a furigana annotation into per-character (mono ruby) segments
+ * when the reading uses dot separators.
+ *
+ * "目的地" + "もく.てき.ち" → [["目","もく"], ["的","てき"], ["地","ち"]]
+ *
+ * Falls back to a single segment when dots are absent or the count
+ * doesn't match the base character count.
+ */
+export function splitMonoRuby(
+  base: string,
+  reading: string
+): [string, string][] {
+  if (!reading.includes(".")) return [[base, reading]];
+
+  const readingParts = reading.split(".");
+  const baseChars = [...base];
+
+  if (readingParts.length !== baseChars.length) return [[base, reading]];
+
+  return baseChars.map((ch, i) => [ch, readingParts[i]]);
 }

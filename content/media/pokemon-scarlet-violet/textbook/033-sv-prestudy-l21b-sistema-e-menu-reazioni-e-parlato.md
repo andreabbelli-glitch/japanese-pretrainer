@@ -90,7 +90,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  きっと {{大丈夫|だいじょうぶ}}。
+  きっと {{大丈夫|だい.じょう.ぶ}}。
 translation_it: >-
   Andrà bene di sicuro.
 :::

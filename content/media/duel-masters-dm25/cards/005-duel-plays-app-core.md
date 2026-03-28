@@ -340,7 +340,7 @@ notes_it: >-
   Nel lessico operativo dell'app segnala che ottieni qualcosa passando da una
   risorsa o da una finestra di scambio, non da un acquisto diretto. Per questo
   torna spesso in composti come [カード{{交換|こうかん}}](term:term-card-exchange) o
-  [{{交換期間|こうかんきかん}}](term:term-exchange-period).
+  [{{交換期間|こう.かん.き.かん}}](term:term-exchange-period).
 level_hint: n4
 :::
 
@@ -536,7 +536,7 @@ notes_it: >-
   Indica che un obiettivo è stato raggiunto o che una condizione conta come
   completata. Nelle schermate missione ti aiuta a leggere lo stato reale dei
   task, non solo il loro titolo. Molto spesso lo incontri in composti come
-  `{{達成済|たっせいず}}み`.
+  `{{達成済|たっ.せい.ず}}み`.
 level_hint: n4
 :::
 
@@ -596,7 +596,7 @@ pos: verbal-noun
 aliases: [開始, kaishi]
 notes_it: >-
   È il modo formale da UI per dire che qualcosa parte davvero. In composti come
-  [{{対戦開始|たいせんかいし}}](term:term-start-match) non comunica
+  [{{対戦開始|たい.せん.かい.し}}](term:term-start-match) non comunica
   preparazione o selezione, ma l'avvio effettivo dell'azione successiva.
 level_hint: n4
 :::
@@ -640,7 +640,7 @@ meaning_it: in corso / durante / attualmente attivo
 aliases: [中]
 notes_it: >-
   Nelle UI è spesso un indicatore di stato. In etichette come
-  [{{開催中|かいさいちゅう}}](term:term-ongoing), ti dice che qualcosa è attivo
+  [{{開催中|かい.さい.ちゅう}}](term:term-ongoing), ti dice che qualcosa è attivo
   proprio ora.
 level_hint: n4
 :::
@@ -654,7 +654,7 @@ meaning_it: già fatto / già elaborato
 aliases: [済み]
 notes_it: >-
   Ti segnala che un'azione è già stata completata, per esempio in label come
-  `{{受取済|うけとりず}}み` o `{{達成済|たっせいず}}み`. La label condensa
+  `{{受取済|うけ.とり.ず}}み` o `{{達成済|たっ.せい.ず}}み`. La label condensa
   subito il risultato operativo: quella ricompensa o quell'obiettivo sono già
   stati gestiti e non richiedono un nuovo claim immediato.
 level_hint: n4
@@ -668,8 +668,8 @@ reading: み
 meaning_it: non ancora / non ancora sbloccato o completato
 aliases: [未]
 notes_it: >-
-  È il prefisso dei label negativi compatti, come `{{未解放|みかいほう}}` o
-  `{{未達成|みたっせい}}`. Se lo vedi, il messaggio pratico dell'app è semplice:
+  È il prefisso dei label negativi compatti, come `{{未解放|み.かい.ほう}}` o
+  `{{未達成|み.たっ.せい}}`. Se lo vedi, il messaggio pratico dell'app è semplice:
   per ora quella cosa non è ancora disponibile o non conta ancora come
   completata.
 level_hint: n4
@@ -683,8 +683,8 @@ reading: かのう
 meaning_it: possibile / disponibile / puoi farlo
 aliases: [可能]
 notes_it: >-
-  Compare spesso in messaggi operativi come `{{交換可能|こうかんかのう}}` o
-  `{{生成可能|せいせいかのう}}`. Ti dice che una certa azione è davvero
+  Compare spesso in messaggi operativi come `{{交換可能|こう.かん.か.のう}}` o
+  `{{生成可能|せい.せい.か.のう}}`. Ti dice che una certa azione è davvero
   eseguibile con le risorse o le condizioni attuali.
 level_hint: n4
 :::
@@ -1070,7 +1070,7 @@ example_it: >-
   Scambia una carta nello shop.
 notes_it: >-
   Va letto come azione autonoma, così i composti più lunghi come
-  `カード{{交換|こうかん}}` o `{{交換期間|こうかんきかん}}` smettono di sembrare
+  `カード{{交換|こうかん}}` o `{{交換期間|こう.かん.き.かん}}` smettono di sembrare
   blocchi opachi.
 tags: [duel-plays, app, shop, kanji]
 :::
@@ -1269,7 +1269,7 @@ card_type: recognition
 front: '{{試練|しれん}}の{{塔|とう}}'
 back: torre delle prove / Tower of Trials
 example_jp: >-
-  {{試練|しれん}}の{{塔|とう}}で{{段階的|だんかいてき}}に{{難易度|なんいど}}が{{上|あ}}がる。
+  {{試練|しれん}}の{{塔|とう}}で{{段階的|だん.かい.てき}}に{{難易度|なん.い.ど}}が{{上|あ}}がる。
 example_it: >-
   Nella Tower of Trials la difficoltà sale gradualmente.
 notes_it: >-
@@ -1287,12 +1287,12 @@ card_type: recognition
 front: '{{達成|たっせい}}'
 back: completamento / raggiungimento
 example_jp: >-
-  {{達成済|たっせいず}}みのミッションを{{確認|かくにん}}する。
+  {{達成済|たっ.せい.ず}}みのミッションを{{確認|かくにん}}する。
 example_it: >-
   Controlla una missione già completata.
 notes_it: >-
   È il label che ti dice che una condizione è stata soddisfatta. In UI lo
-  incontri molto spesso in composti come `{{達成済|たっせいず}}み`.
+  incontri molto spesso in composti come `{{達成済|たっ.せい.ず}}み`.
 tags: [duel-plays, app, status, kanji]
 :::
 
@@ -1321,10 +1321,10 @@ lesson_id: lesson-duel-masters-dm25-duel-plays-app-overview
 entry_type: term
 entry_id: term-ongoing
 card_type: recognition
-front: '{{開催中|かいさいちゅう}}'
+front: '{{開催中|かい.さい.ちゅう}}'
 back: in corso / attivo ora
 example_jp: >-
-  このイベントは{{開催中|かいさいちゅう}}だ。
+  このイベントは{{開催中|かい.さい.ちゅう}}だ。
 example_it: >-
   Questo evento è attualmente in corso.
 notes_it: >-
@@ -1368,7 +1368,7 @@ example_it: >-
 notes_it: >-
   Quando leggi `{{対戦|たいせん}}`, la UI sta parlando del confronto vero e
   proprio contro un avversario. È il nucleo che poi ritrovi in
-  [{{対戦開始|たいせんかいし}}](term:term-start-match).
+  [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
 tags: [duel-plays, app, action, kanji]
 :::
 
@@ -1386,7 +1386,7 @@ example_it: >-
   Controlla la data e l'ora di inizio dell'evento.
 notes_it: >-
   `{{開始|かいし}}` è una parola da interfaccia molto compatta: segnala il
-  punto in cui qualcosa parte davvero. Dentro `{{対戦開始|たいせんかいし}}` è il pezzo che trasforma
+  punto in cui qualcosa parte davvero. Dentro `{{対戦開始|たい.せん.かい.し}}` è il pezzo che trasforma
   il match da opzione selezionata ad azione avviata.
 tags: [duel-plays, app, action, kanji]
 :::
@@ -1397,10 +1397,10 @@ lesson_id: lesson-duel-masters-dm25-duel-plays-app-decks-and-shop
 entry_type: term
 entry_id: term-start-match
 card_type: recognition
-front: '{{対戦開始|たいせんかいし}}'
+front: '{{対戦開始|たい.せん.かい.し}}'
 back: avvia la partita / start battle
 example_jp: >-
-  デッキを{{選択|せんたく}}して{{対戦開始|たいせんかいし}}を{{押|お}}す。
+  デッキを{{選択|せんたく}}して{{対戦開始|たい.せん.かい.し}}を{{押|お}}す。
 example_it: >-
   Seleziona il deck e premi Avvia partita.
 notes_it: >-
@@ -1456,7 +1456,7 @@ card_type: concept
 front: '～{{済|ず}}み'
 back: già fatto / già riscosso
 example_jp: >-
-  この{{報酬|ほうしゅう}}は{{受取済|うけとりず}}みだ。
+  この{{報酬|ほうしゅう}}は{{受取済|うけ.とり.ず}}みだ。
 example_it: >-
   Questa ricompensa è già stata riscossa.
 notes_it: >-
@@ -1475,7 +1475,7 @@ card_type: concept
 front: '{{未|み}}～'
 back: non ancora / ancora non disponibile
 example_jp: >-
-  このモードは{{未解放|みかいほう}}だ。
+  このモードは{{未解放|み.かい.ほう}}だ。
 example_it: >-
   Questa modalità non è ancora sbloccata.
 notes_it: >-
@@ -1495,13 +1495,13 @@ card_type: concept
 front: '～{{可能|かのう}}'
 back: possibile / disponibile
 example_jp: >-
-  このカードは{{交換可能|こうかんかのう}}だ。
+  このカードは{{交換可能|こう.かん.か.のう}}だ。
 example_it: >-
   Questa carta è scambiabile.
 notes_it: >-
   `～{{可能|かのう}}` segnala che l'operazione di quella schermata è
-  attualmente eseguibile. In composti come `{{交換可能|こうかんかのう}}` o
-  `{{生成可能|せいせいかのう}}` il punto è che il bottone non è bloccato da costi
+  attualmente eseguibile. In composti come `{{交換可能|こう.かん.か.のう}}` o
+  `{{生成可能|せい.せい.か.のう}}` il punto è che il bottone non è bloccato da costi
   o condizioni mancanti.
 tags: [duel-plays, app, grammar]
 :::

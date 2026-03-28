@@ -19,13 +19,13 @@ summary: >-
   che impedisce di lasciare il campo se non per distruzione nel tuo turno.
 ---
 
-# [{{深淵|しんえん}}の{{三咆哮|さんほうこう}} バウワウジャ](term:term-bauwauja)
+# [{{深淵|しんえん}}の{{三咆哮|さん.ほう.こう}} バウワウジャ](term:term-bauwauja)
 
 :::image
 src: assets/cards/live-duel/bauwauja-abyssal-three-roar.jpg
 alt: "Bauwauja, Abyssal Three Roar card."
 caption: >-
-  [{{深淵|しんえん}}の{{三咆哮|さんほうこう}} バウワウジャ](term:term-bauwauja)。
+  [{{深淵|しんえん}}の{{三咆哮|さん.ほう.こう}} バウワウジャ](term:term-bauwauja)。
   Tipo: [タマシード](term:term-tamaseed) / クリーチャー. Razze:
   [アビスロイヤル](term:term-abyss-royal) / ACE. Riga centrale:
   [ブロッカー](term:term-blocker), [T・ブレイカー](term:term-t-breaker),
@@ -106,7 +106,7 @@ reveal_mode: sentence
 
 ## Lessico utile in questa carta
 
-- [{{深淵|しんえん}}の{{三咆哮|さんほうこう}} バウワウジャ](term:term-bauwauja)
+- [{{深淵|しんえん}}の{{三咆哮|さん.ほう.こう}} バウワウジャ](term:term-bauwauja)
   va associata subito a una protezione molto specifica: non `invincibile`, ma
   `non lascia il campo per vie diverse dalla distruzione`.
 - [{{破壊|はかい}}](term:term-destroy) e

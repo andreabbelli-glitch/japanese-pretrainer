@@ -330,7 +330,7 @@ card_type: recognition
 front: 'きっと'
 back: sicuramente
 example_jp: >-
-  きっと {{大丈夫|だいじょうぶ}} です。
+  きっと {{大丈夫|だい.じょう.ぶ}} です。
 example_it: >-
   Andrà bene di sicuro.
 :::

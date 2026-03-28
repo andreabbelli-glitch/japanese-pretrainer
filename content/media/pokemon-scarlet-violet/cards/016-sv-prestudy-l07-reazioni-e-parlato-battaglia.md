@@ -63,7 +63,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-016-sv-prestudy-l07-reazion
 entry_type: grammar
 entry_id: grammar-g020-poter-fare
 card_type: concept
-front: '{{可能形|かのうけい}}'
+front: '{{可能形|か.のう.けい}}'
 back: poter fare
 example_jp: >-
   ここから {{上|うえ}}へ {{行|い}}ける。

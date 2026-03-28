@@ -20,7 +20,7 @@ notes_it: >-
   leggi `デ・スザーク`, non stai guardando un mostro qualsiasi: stai guardando
   il payoff che entra sfruttando
   [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon) e quattro
-  [{{魔導具|まどうぐ}}](term:term-madougu).
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu).
 level_hint: custom
 :::
 
@@ -35,7 +35,7 @@ aliases: [魔導具, madougu, Magic Tool]
 notes_it: >-
   Nel rules text non significa un generico "oggetto magico". È il nome di un
   gruppo preciso di carte che viene usato come filtro, per esempio in
-  `コスト{{4以下|よんいか}}の{{魔導具|まどうぐ}}` o nei trigger di
+  `コスト{{4以下|よんいか}}の{{魔導具|ま.どう.ぐ}}` o nei trigger di
   [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon).
 level_hint: custom
 :::
@@ -52,7 +52,7 @@ notes_it: >-
   Compare nella riga `{{種族|しゅぞく}}` delle carte De Szark. È una razza molto
   verticale, ma utile da riconoscere perché segnala subito che la carta
   appartiene al gruppo dei boss costruiti sopra i
-  [{{魔導具|まどうぐ}}](term:term-madougu).
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu).
 level_hint: custom
 :::
 
@@ -66,7 +66,7 @@ pos: noun
 aliases: [マフィ・ギャング, mafi gyangu, Mafi Gang]
 notes_it: >-
   È una razza ricorrente nell'area oscura del corpus. Quando compare insieme a
-  [{{魔導具|まどうぐ}}](term:term-madougu), spesso segnala carte che ruotano intorno a
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu), spesso segnala carte che ruotano intorno a
   vantaggio sporco, cimitero e giocata obliqua.
 level_hint: custom
 :::
@@ -81,7 +81,7 @@ pos: keyword
 aliases: [無月の門, mugetsu no mon, Gate of Moonless Night]
 notes_it: >-
   È la keyword che fa partire l'ingresso dei De Szark quando un tuo
-  [{{魔導具|まどうぐ}}](term:term-madougu) entra nel battle zone. Il blocco
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu) entra nel battle zone. Il blocco
   importante da leggere insieme è
   `{{2|ふた}}つずつ{{選|えら}}び` +
   `それら{{4枚|よんまい}}の{{上|うえ}}に` +
@@ -144,7 +144,7 @@ front: '{{魔凰|まおう}} デ・スザーク'
 back: De Szark / boss che entra con Gate of Moonless Night
 example_jp: >-
   {{魔凰|まおう}} デ・スザークは、{{4枚|よんまい}}の
-  {{魔導具|まどうぐ}}の{{上|うえ}}に{{重|かさ}}なる。
+  {{魔導具|ま.どう.ぐ}}の{{上|うえ}}に{{重|かさ}}なる。
 example_it: >-
   De Szark si sovrappone sopra quattro Magic Tool.
 notes_it: >-
@@ -160,17 +160,17 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-maou-de-szark
 entry_type: term
 entry_id: term-madougu
 card_type: recognition
-front: '{{魔導具|まどうぐ}}'
+front: '{{魔導具|ま.どう.ぐ}}'
 back: Magic Tool / famiglia di carte oscure
 example_jp: >-
-  {{魔導具|まどうぐ}}が{{出|で}}た{{時|とき}}、{{無月|むげつ}}の{{門|もん}}が
+  {{魔導具|ま.どう.ぐ}}が{{出|で}}た{{時|とき}}、{{無月|むげつ}}の{{門|もん}}が
   {{動|うご}}く。
 example_it: >-
   Quando entra un Magic Tool, Gate of Moonless Night si mette in moto.
 notes_it: >-
-  `{{魔導具|まどうぐ}}` è un filtro ricorrente, non un termine ornamentale.
+  `{{魔導具|ま.どう.ぐ}}` è un filtro ricorrente, non un termine ornamentale.
   Riconoscerlo bene sblocca sia i trigger di De Szark sia frasi come
-  `コスト{{4以下|よんいか}}の{{魔導具|まどうぐ}}`.
+  `コスト{{4以下|よんいか}}の{{魔導具|ま.どう.ぐ}}`.
 tags: [live-duel, tribe, filter]
 :::
 
@@ -183,7 +183,7 @@ card_type: recognition
 front: '{{無月|むげつ}}の{{門|もん}}'
 back: keyword che evoca gratis De Szark sopra 4 Magic Tool
 example_jp: >-
-  {{無月|むげつ}}の{{門|もん}}で、{{墓地|ぼち}}の{{魔導具|まどうぐ}}まで
+  {{無月|むげつ}}の{{門|もん}}で、{{墓地|ぼち}}の{{魔導具|ま.どう.ぐ}}まで
   {{素材|そざい}}にできる。
 example_it: >-
   Con Gate of Moonless Night puoi usare come materiale perfino Magic Tool dal
@@ -264,15 +264,15 @@ entry_type: term
 entry_id: term-mugestsu-no-mon
 card_type: concept
 front: >-
-  {{自分|じぶん}}の{{魔導具|まどうぐ}}が{{出|で}}た{{時|とき}}、
-  {{4枚|よんまい}}の{{魔導具|まどうぐ}}の{{上|うえ}}にコストを{{払|はら}}わずに
+  {{自分|じぶん}}の{{魔導具|ま.どう.ぐ}}が{{出|で}}た{{時|とき}}、
+  {{4枚|よんまい}}の{{魔導具|ま.どう.ぐ}}の{{上|うえ}}にコストを{{払|はら}}わずに
   {{召喚|しょうかん}}してもよい
 back: >-
   Quando entra un tuo Magic Tool, puoi evocare questa carta senza pagare il
   costo sopra quattro Magic Tool scelti.
 example_jp: >-
   {{無月|むげつ}}の{{門|もん}}は、{{出|で}}た{{時|とき}}の
-  {{魔導具|まどうぐ}}をきっかけにして{{大型|おおがた}}を{{呼|よ}}ぶ。
+  {{魔導具|ま.どう.ぐ}}をきっかけにして{{大型|おおがた}}を{{呼|よ}}ぶ。
 example_it: >-
   Gate of Moonless Night usa l'ingresso di un Magic Tool come innesco per
   chiamare il boss.

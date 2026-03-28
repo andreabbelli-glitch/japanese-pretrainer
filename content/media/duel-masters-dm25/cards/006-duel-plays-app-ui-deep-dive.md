@@ -156,7 +156,7 @@ aliases: [カードパック購入, card pack purchase]
 notes_it: >-
   Qui l'oggetto non è una carta singola ma un pack. Il label intero ti porta nel
   flusso di acquisto delle buste, con relative valute, ticket, `カード一覧` e
-  [{{提供割合|ていきょうわりあい}}](term:term-offer-rate).
+  [{{提供割合|てい.きょう.わり.あい}}](term:term-offer-rate).
 level_hint: custom
 :::
 
@@ -308,7 +308,7 @@ notes_it: >-
   In UI indica una schermata riassuntiva che ti fa ispezionare un contenuto in
   modo rapido. Va distinta sia da [{{確認|かくにん}}](term:term-confirm), che
   sottolinea il controllo puntuale, sia da un bottone di avvio come
-  [{{対戦開始|たいせんかいし}}](term:term-start-match).
+  [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
 level_hint: n4
 :::
 
@@ -582,7 +582,7 @@ card_type: recognition
 front: 'ステージ{{選択|せんたく}}'
 back: selezione stage / stage select
 example_jp: >-
-  ステージ{{選択|せんたく}}で{{難易度|なんいど}}を{{選|えら}}ぶ。
+  ステージ{{選択|せんたく}}で{{難易度|なん.い.ど}}を{{選|えら}}ぶ。
 example_it: >-
   Scegli la difficoltà nella schermata stage select.
 notes_it: >-
@@ -615,14 +615,14 @@ lesson_id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 entry_type: term
 entry_id: term-offer-rate
 card_type: recognition
-front: '{{提供割合|ていきょうわりあい}}'
+front: '{{提供割合|てい.きょう.わり.あい}}'
 back: percentuali di apparizione / rates
 example_jp: >-
-  {{提供割合|ていきょうわりあい}}で{{内容|ないよう}}を{{確認|かくにん}}する。
+  {{提供割合|てい.きょう.わり.あい}}で{{内容|ないよう}}を{{確認|かくにん}}する。
 example_it: >-
   Controlla i rates e il contenuto.
 notes_it: >-
-  `{{提供割合|ていきょうわりあい}}` è la schermata dei drop rate: non ti dice
+  `{{提供割合|てい.きょう.わり.あい}}` è la schermata dei drop rate: non ti dice
   che cosa fa il pack, ma con quale probabilità può contenere certe carte o
   rarità.
 tags: [duel-plays, app, ui, shop]
@@ -670,10 +670,10 @@ lesson_id: lesson-duel-masters-dm25-duel-plays-app-shop-packs-and-results
 entry_type: term
 entry_id: term-purchase-quantity
 card_type: recognition
-front: '{{購入個数|こうにゅうこすう}}'
+front: '{{購入個数|こう.にゅう.こ.すう}}'
 back: quantità da acquistare / purchase quantity
 example_jp: >-
-  {{購入個数|こうにゅうこすう}}を{{4個|よんこ}}にする。
+  {{購入個数|こう.にゅう.こ.すう}}を{{4個|よんこ}}にする。
 example_it: >-
   Imposta la quantità da acquistare su 4.
 notes_it: >-
@@ -687,10 +687,10 @@ lesson_id: lesson-duel-masters-dm25-duel-plays-app-exchange-decks-and-setup
 entry_type: term
 entry_id: term-exchange-period
 card_type: recognition
-front: '{{交換期間|こうかんきかん}}'
+front: '{{交換期間|こう.かん.き.かん}}'
 back: periodo di scambio / exchange period
 example_jp: >-
-  {{交換期間|こうかんきかん}}は{{3月26日|さんがつにじゅうろくにち}}までだ。
+  {{交換期間|こう.かん.き.かん}}は{{3月26日|さんがつにじゅうろくにち}}までだ。
 example_it: >-
   Il periodo di scambio dura fino al 26 marzo.
 notes_it: >-
@@ -704,10 +704,10 @@ lesson_id: lesson-duel-masters-dm25-duel-plays-app-exchange-decks-and-setup
 entry_type: term
 entry_id: term-sale-period
 card_type: recognition
-front: '{{販売期間|はんばいきかん}}'
+front: '{{販売期間|はん.ばい.き.かん}}'
 back: periodo di vendita / sale period
 example_jp: >-
-  {{販売期間|はんばいきかん}}を{{見|み}}てからデッキを{{買|か}}う。
+  {{販売期間|はん.ばい.き.かん}}を{{見|み}}てからデッキを{{買|か}}う。
 example_it: >-
   Controlla il periodo di vendita prima di comprare il deck.
 notes_it: >-

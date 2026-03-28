@@ -673,7 +673,7 @@ front: >-
 back: >-
   carta Mobile Suit
 example_jp: >-
-  このMSカードは{{近距離|きんきょり}}[{{戦闘|せんとう}}](term:term-combat)が{{強|つよ}}いので、[{{前線|ぜんせん}}](term:term-frontline)に{{出|だ}}す{{役|やく}}に{{向|む}}いています。
+  このMSカードは{{近距離|きん.きょ.り}}[{{戦闘|せんとう}}](term:term-combat)が{{強|つよ}}いので、[{{前線|ぜんせん}}](term:term-frontline)に{{出|だ}}す{{役|やく}}に{{向|む}}いています。
 example_it: >-
   Questa MS card è forte nel combattimento a distanza ravvicinata, quindi si
   presta a essere mandata in prima linea.
@@ -732,7 +732,7 @@ front: >-
 back: >-
   servizio web dei dati giocatore
 example_jp: >-
-  [{{帰宅後|きたくご}}](term:term-after-return-home)にMY PAGEを{{開|ひら}}くと、{{今日|きょう}}のミッション[{{進行|しんこう}}](term:term-progress)と[{{戦績|せんせき}}](term:term-battle-record)をまとめて{{確認|かくにん}}できます。
+  [{{帰宅後|き.たく.ご}}](term:term-after-return-home)にMY PAGEを{{開|ひら}}くと、{{今日|きょう}}のミッション[{{進行|しんこう}}](term:term-progress)と[{{戦績|せんせき}}](term:term-battle-record)をまとめて{{確認|かくにん}}できます。
 example_it: >-
   Se apri MY PAGE una volta tornato a casa, puoi controllare insieme i
   progressi missione e i risultati di oggi.
@@ -748,11 +748,11 @@ entry_type: term
 entry_id: term-after-return-home
 card_type: recognition
 front: >-
-  {{帰宅後|きたくご}}
+  {{帰宅後|き.たく.ご}}
 back: >-
   dopo essere tornato a casa
 example_jp: >-
-  {{帰宅後|きたくご}}にMY PAGEを{{開|ひら}}く。
+  {{帰宅後|き.たく.ご}}にMY PAGEを{{開|ひら}}く。
 example_it: >-
   Apri MY PAGE dopo essere tornato a casa.
 notes_it: >-
@@ -808,11 +808,11 @@ entry_type: term
 entry_id: term-commander-level
 card_type: recognition
 front: >-
-  {{指揮官|しきかん}}レベル
+  {{指揮官|し.き.かん}}レベル
 back: >-
   livello del profilo comandante
 example_jp: >-
-  {{指揮官|しきかん}}レベルが{{5|ご}}に{{上|あ}}がると、{{作戦|さくせん}}カードの{{装備|そうび}}が{{解放|かいほう}}されます。
+  {{指揮官|し.き.かん}}レベルが{{5|ご}}に{{上|あ}}がると、{{作戦|さくせん}}カードの{{装備|そうび}}が{{解放|かいほう}}されます。
 example_it: >-
   Quando il livello comandante arriva a 5, si sblocca l'equipaggiamento delle
   carte tattiche.
@@ -928,11 +928,11 @@ entry_type: term
 entry_id: term-special-attack
 card_type: recognition
 front: >-
-  {{戦術技|せんじゅつぎ}}
+  {{戦術技|せん.じゅつ.ぎ}}
 back: >-
   tecnica speciale dell'unità
 example_jp: >-
-  SPゲージが{{満|まん}}タンでも、{{守|まも}}られた{{拠点|きょてん}}には{{戦術技|せんじゅつぎ}}を{{撃|う}}たないほうがいいです。
+  SPゲージが{{満|まん}}タンでも、{{守|まも}}られた{{拠点|きょてん}}には{{戦術技|せん.じゅつ.ぎ}}を{{撃|う}}たないほうがいいです。
 example_it: >-
   Anche con la barra SP piena, non usare la tecnica speciale su una
   base che è ancora protetta.
@@ -1012,7 +1012,7 @@ front: >-
 back: >-
   combattimento / combat
 example_jp: >-
-  {{近距離|きんきょり}}{{戦闘|せんとう}}が{{強|つよ}}いMSを{{前線|ぜんせん}}に{{出|だ}}す。
+  {{近距離|きん.きょ.り}}{{戦闘|せんとう}}が{{強|つよ}}いMSを{{前線|ぜんせん}}に{{出|だ}}す。
 example_it: >-
   Manda in prima linea una MS forte nel combattimento ravvicinato.
 notes_it: >-
@@ -1197,7 +1197,7 @@ front: >-
 back: >-
   X viene mostrato
 example_jp: >-
-  {{条件|じょうけん}}を{{満|み}}たすと、{{画面|がめん}}{{右側|みぎがわ}}に{{戦術技|せんじゅつぎ}}の{{案内|あんない}}が{{表示|ひょうじ}}されます。
+  {{条件|じょうけん}}を{{満|み}}たすと、{{画面|がめん}}{{右側|みぎがわ}}に{{戦術技|せん.じゅつ.ぎ}}の{{案内|あんない}}が{{表示|ひょうじ}}されます。
 example_it: >-
   Quando soddisfi la condizione, sul lato destro dello schermo compare
   l'indicazione della tecnica speciale.
@@ -1217,7 +1217,7 @@ front: >-
 back: >-
   X diventa utilizzabile
 example_jp: >-
-  {{指揮官|しきかん}}レベルを{{上|あ}}げると、{{新|あたら}}しいミッションや{{作戦|さくせん}}カード{{枠|わく}}が{{解放|かいほう}}されます。
+  {{指揮官|し.き.かん}}レベルを{{上|あ}}げると、{{新|あたら}}しいミッションや{{作戦|さくせん}}カード{{枠|わく}}が{{解放|かいほう}}されます。
 example_it: >-
   Alzando il livello comandante si sbloccano nuove missioni e nuovi slot per le
   carte tattiche.

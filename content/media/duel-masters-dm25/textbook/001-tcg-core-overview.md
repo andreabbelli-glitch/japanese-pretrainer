@@ -229,7 +229,7 @@ Questa distinzione separa due assi lessicali:
 :::example_sentence
 jp: >-
   クリーチャー / コスト{{5|ご}} / パワー{{5000|ごせん}} /
-  {{火文明|ひぶんめい}}
+  {{火文明|ひ.ぶん.めい}}
 translation_it: >-
   Creatura / costo 5 / potenza 5000 / civiltà del fuoco.
 :::

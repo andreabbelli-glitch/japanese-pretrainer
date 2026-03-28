@@ -31,7 +31,7 @@ missioni, ricompense e crescita del profilo.
 
 - [デッキ](term:term-deck)
 - [スターターデッキ](term:term-starter-deck)
-- [{{指揮官|しきかん}}レベル](term:term-commander-level)
+- [{{指揮官|し.き.かん}}レベル](term:term-commander-level)
 - [ランクマッチ](term:term-rank-match)
 - [VEレイドバトル](term:term-ve-raid-battle)
 - [チャレンジモード](term:term-challenge-mode)
@@ -93,16 +93,16 @@ affrontarla conviene avere ben chiari i tre ruoli base:
 [{{防衛|ぼうえい}}](term:term-role-bouei) in una partita standard.
 
 La progressione fuori dalla partita passa molto da
-[{{指揮官|しきかん}}レベル](term:term-commander-level),
+[{{指揮官|し.き.かん}}レベル](term:term-commander-level),
 [ミッション](term:term-mission) e [MY PAGE](term:term-mypage). Il livello del
 comandante misura l'avanzamento del profilo e sblocca sistemi nuovi. La soglia
 iniziale da ricordare è semplice: quando il
-[{{指揮官|しきかん}}レベル](term:term-commander-level) arriva a 5, le
+[{{指揮官|し.き.かん}}レベル](term:term-commander-level) arriva a 5, le
 [{{作戦|さくせん}}カード](term:term-tactics-card) diventano disponibili e puoi
 equipaggiarne una nel [メイン{{枠|わく}}](term:term-main-slot) e una nel
 [サブ{{枠|わく}}](term:term-sub-slot).
 
-[MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di controllare l'[{{進行|しんこう}}](term:term-progress) delle [ミッション](term:term-mission), i livelli di MS e PL, gli ultimi [{{戦績|せんせき}}](term:term-battle-record) e alcuni dati cumulativi. Questa rilettura è particolarmente utile [{{帰宅後|きたくご}}](term:term-after-return-home), perché ti fa rivedere con calma le categorie che in sala giochi scorrono troppo in fretta.
+[MY PAGE](term:term-mypage) non serve solo a guardare il profilo. Ti permette di controllare l'[{{進行|しんこう}}](term:term-progress) delle [ミッション](term:term-mission), i livelli di MS e PL, gli ultimi [{{戦績|せんせき}}](term:term-battle-record) e alcuni dati cumulativi. Questa rilettura è particolarmente utile [{{帰宅後|き.たく.ご}}](term:term-after-return-home), perché ti fa rivedere con calma le categorie che in sala giochi scorrono troppo in fretta.
 
 :::image
 src: assets/ui/missions-progress-screen.webp
@@ -154,7 +154,7 @@ corrente.
 
 :::example_sentence
 jp: >-
-  {{指揮官|しきかん}}レベルが{{上|あ}}がると、{{使|つか}}える{{機能|きのう}}が{{増|ふ}}えていきます。
+  {{指揮官|し.き.かん}}レベルが{{上|あ}}がると、{{使|つか}}える{{機能|きのう}}が{{増|ふ}}えていきます。
 translation_it: >-
   Quando sale il livello comandante, aumentano anche le funzioni che puoi usare.
 :::

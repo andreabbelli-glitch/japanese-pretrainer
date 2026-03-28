@@ -21,7 +21,7 @@ dalle animazioni. L'obiettivo operativo è identificare rapidamente cosa guardar
 per primo, cosa comunicano gauge e minimappa, e quali condizioni attivano
 in modo pratico [{{出撃|しゅつげき}}](term:term-sortie),
 [アビリティ](term:term-ability) e
-[{{戦術技|せんじゅつぎ}}](term:term-special-attack).
+[{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack).
 
 ## Contesto
 
@@ -40,7 +40,7 @@ decisioni della partita.
 - [{{作戦|さくせん}}カード](term:term-tactics-card)
 - [{{出撃|しゅつげき}}](term:term-sortie)
 - [アビリティ](term:term-ability)
-- [{{戦術技|せんじゅつぎ}}](term:term-special-attack)
+- [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack)
 - [コスト](term:term-cost)
 - [SPゲージ](term:term-sp-gauge)
 - [{{殲滅|せんめつ}}](term:term-role-shoumetsu)
@@ -106,7 +106,7 @@ Le tre azioni base funzionano così.
 - [アビリティ](term:term-ability): attivi l'effetto speciale del MS pagando
   ancora [コスト](term:term-cost). Alcune abilità chiedono anche una posizione
   precisa sulla mappa, quindi qui la lettura dello spazio conta davvero.
-- [{{戦術技|せんじゅつぎ}}](term:term-special-attack): la attivi con uno
+- [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack): la attivi con uno
   slide verso il basso e consumi [SPゲージ](term:term-sp-gauge). Durante
   l'animazione compare un minigioco col bottone che può aumentare il danno o
   ridurre quello subito.
@@ -138,7 +138,7 @@ dell'interfaccia.
 Le risorse che scandiscono il ritmo sono [コスト](term:term-cost) e
 [SPゲージ](term:term-sp-gauge). La prima cresce nel tempo e permette di far
 uscire unità o usare abilità. La seconda cresce nel tempo e alimenta
-[{{戦術技|せんじゅつぎ}}](term:term-special-attack). In base allo stato della
+[{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack). In base allo stato della
 mappa, la spesa di risorse si orienta in base a una domanda operativa: cambia
 l'orientamento della pressione immediata di un corridoio obiettivo?
 In finale di partita, il
@@ -169,7 +169,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  SPゲージが{{溜|た}}まっても、{{守|まも}}られている{{拠点|きょてん}}に{{戦術技|せんじゅつぎ}}を{{切|き}}るより、{{開|あ}}いた{{場所|ばしょ}}に{{合|あ}}わせたほうが{{強|つよ}}いです。
+  SPゲージが{{溜|た}}まっても、{{守|まも}}られている{{拠点|きょてん}}に{{戦術技|せん.じゅつ.ぎ}}を{{切|き}}るより、{{開|あ}}いた{{場所|ばしょ}}に{{合|あ}}わせたほうが{{強|つよ}}いです。
 translation_it: >-
   Anche con la barra SP piena, usare la tecnica speciale su una base protetta è
   spesso peggio che usarla nel punto davvero aperto.

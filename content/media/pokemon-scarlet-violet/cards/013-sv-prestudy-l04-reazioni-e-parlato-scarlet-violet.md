@@ -116,10 +116,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-013-sv-prestudy-l04-reazion
 entry_type: term
 entry_id: term-v039-daijoubu
 card_type: recognition
-front: '{{大丈夫|だいじょうぶ}}'
+front: '{{大丈夫|だい.じょう.ぶ}}'
 back: va bene / non c'è problema
 example_jp: >-
-  もう {{大丈夫|だいじょうぶ}} です。
+  もう {{大丈夫|だい.じょう.ぶ}} です。
 example_it: >-
   Adesso va bene.
 :::

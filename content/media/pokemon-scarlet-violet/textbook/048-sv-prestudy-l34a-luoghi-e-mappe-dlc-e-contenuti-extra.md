@@ -63,7 +63,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{可能性|かのうせい}}です。
+  {{可能性|か.のう.せい}}です。
 translation_it: >-
   Possibilità.
 :::

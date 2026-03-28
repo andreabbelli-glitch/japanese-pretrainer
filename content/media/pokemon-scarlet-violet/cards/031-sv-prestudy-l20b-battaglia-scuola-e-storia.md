@@ -510,10 +510,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-031-sv-prestudy-l20b-battag
 entry_type: term
 entry_id: term-v311-meichuuritsu
 card_type: recognition
-front: "{{命中率|めいちゅうりつ}}"
+front: "{{命中率|めい.ちゅう.りつ}}"
 back: precisione
 example_jp: >-
-  バトルで {{命中率|めいちゅうりつ}}を {{使|つか}}います。
+  バトルで {{命中率|めい.ちゅう.りつ}}を {{使|つか}}います。
 example_it: >-
   Uso il precisione in battaglia.
 :::

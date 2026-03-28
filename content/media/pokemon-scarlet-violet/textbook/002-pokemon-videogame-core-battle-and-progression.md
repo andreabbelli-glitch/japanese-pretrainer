@@ -34,12 +34,12 @@ resistenza, stato, cattura, esperienza, evoluzione.
 - [わざ](term:term-waza)
 - [{{特性|とくせい}}](term:term-tokusei)
 - [タイプ{{相性|あいしょう}}](term:term-type-aishou)
-- [{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou)
+- [{{状態異常|じょう.たい.い.じょう}}](term:term-joutai-ijou)
 - [{{回復|かいふく}}](term:term-kaifuku)
 - [ひんし](term:term-hinshi)
 - [{{野生|やせい}}](term:term-yasei)
 - [{{捕|つか}}まえる](term:term-tsukamaeru)
-- [{{経験値|けいけんち}}](term:term-keikenchi)
+- [{{経験値|けい.けん.ち}}](term:term-keikenchi)
 - [{{進化|しんか}}](term:term-shinka)
 - [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun)
 - [{{急所|きゅうしょ}}](term:term-kyuusho)
@@ -79,7 +79,7 @@ caption: >-
   Schermata ufficiale di battaglia: la [タイプ{{相性|あいしょう}}](term:term-type-aishou) non e teoria, ma un messaggio che appare in lotta insieme agli HP e ti dice subito quanto il colpo ha funzionato.
 :::
 
-[{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou) raccoglie problemi
+[{{状態異常|じょう.たい.い.じょう}}](term:term-joutai-ijou) raccoglie problemi
 come sonno, paralisi, veleno e bruciatura. Quando compare questa espressione,
 il punto pratico è capire se il Pokemon può ancora agire normalmente o se perde
 HP / turni. [{{回復|かいふく}}](term:term-kaifuku) va letto in modo largo:
@@ -103,7 +103,7 @@ caption: >-
   Qui [{{野生|やせい}}](term:term-yasei) e [{{捕|つか}}まえる](term:term-tsukamaeru) si leggono come pratica di battaglia: prima controlli il ritmo dello scontro, poi prepari la cattura.
 :::
 
-Dopo la lotta entrano in scena [{{経験値|けいけんち}}](term:term-keikenchi) e
+Dopo la lotta entrano in scena [{{経験値|けい.けん.ち}}](term:term-keikenchi) e
 [{{進化|しんか}}](term:term-shinka). La prima spiega perché il livello sale; la
 seconda segnala che il Pokemon cambia forma e spesso anche statistiche, tipi o
 possibilità future. Qui il pattern [～ようになる](grammar:grammar-you-ni-naru)
@@ -133,7 +133,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{状態異常|じょうたいいじょう}}に なったら まず {{回復|かいふく}}の
+  {{状態異常|じょう.たい.い.じょう}}に なったら まず {{回復|かいふく}}の
   どうぐを {{使|つか}}おう。
 translation_it: >-
   Se entri in uno stato alterato, per prima cosa usa un oggetto di cura.
@@ -158,7 +158,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{経験値|けいけんち}}が たまると レベルが {{上|あ}}がり
+  {{経験値|けい.けん.ち}}が たまると レベルが {{上|あ}}がり
   {{進化|しんか}}する ことも ある。
 translation_it: >-
   Quando accumuli esperienza, il livello sale e a volte può scattare
@@ -171,8 +171,8 @@ Nel testo di battaglia Pokemon quasi tutto ruota attorno a tre domande: quale
 [わざ](term:term-waza) hai usato, che effetto ha avuto davvero e che cosa cambia
 dopo il turno o dopo lo scontro. Se sai leggere bene
 [タイプ{{相性|あいしょう}}](term:term-type-aishou),
-[{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou),
-[{{経験値|けいけんち}}](term:term-keikenchi) e
+[{{状態異常|じょう.たい.い.じょう}}](term:term-joutai-ijou),
+[{{経験値|けい.けん.ち}}](term:term-keikenchi) e
 [{{進化|しんか}}](term:term-shinka), il flusso di lotta diventa molto più
 trasparente.
 

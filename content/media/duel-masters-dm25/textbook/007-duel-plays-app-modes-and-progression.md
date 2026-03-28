@@ -24,11 +24,11 @@ Usa questo percorso operativo per:
 
 - distinguere a colpo d'occhio le modalità principali;
 - capire che cosa ti dicono label come
-  [{{開催中|かいさいちゅう}}](term:term-ongoing),
+  [{{開催中|かい.さい.ちゅう}}](term:term-ongoing),
   [{{解放|かいほう}}](term:term-unlock) o
   [{{達成|たっせい}}](term:term-achievement);
 - leggere i piccoli stati compatti senza perdere il senso del messaggio;
-- arrivare a [{{対戦開始|たいせんかいし}}](term:term-start-match) solo quando la
+- arrivare a [{{対戦開始|たい.せん.かい.し}}](term:term-start-match) solo quando la
   condizione tecnica è corretta (modalità valida + stato coerente + reward
   disponibile).
 
@@ -51,9 +51,9 @@ parole, ma tantissima informazione pratica.
 - [{{試練|しれん}}の{{塔|とう}}](term:term-tower-of-trials)
 - [{{報酬|ほうしゅう}}](term:term-reward)
 - [{{達成|たっせい}}](term:term-achievement)
-- [{{開催中|かいさいちゅう}}](term:term-ongoing)
+- [{{開催中|かい.さい.ちゅう}}](term:term-ongoing)
 - [{{解放|かいほう}}](term:term-unlock)
-- [{{対戦開始|たいせんかいし}}](term:term-start-match)
+- [{{対戦開始|たい.せん.かい.し}}](term:term-start-match)
 
 ## Pattern grammaticali chiave
 
@@ -100,18 +100,18 @@ label come [ソロプレイ](term:term-solo-play),
 [レジェンドバトル](term:term-legend-battle), non stai leggendo "decorazioni":
 stai leggendo la porta d'ingresso a un flusso preciso.
 
-### 2. `{{開催中|かいさいちゅう}}`, `{{未|み}}〜`, `〜{{済|ず}}み`: tre stati che cambiano la tua decisione
+### 2. `{{開催中|かい.さい.ちゅう}}`, `{{未|み}}〜`, `〜{{済|ず}}み`: tre stati che cambiano la tua decisione
 
 Nelle UI di gioco le parole di stato contano tantissimo:
 
-- [{{開催中|かいさいちゅう}}](term:term-ongoing) ti dice che qualcosa è attivo adesso;
+- [{{開催中|かい.さい.ちゅう}}](term:term-ongoing) ti dice che qualcosa è attivo adesso;
 - [{{未|み}}～](grammar:grammar-mi-prefix) ti dice che qualcosa non è ancora pronto o
   sbloccato;
 - [～{{済|ず}}み](grammar:grammar-zumi) ti dice che una parte è già stata completata o
   riscossa.
 
 Qui il valore pratico è diretto: questi pattern comprimono in pochissimi
-caratteri lo stato reale della schermata. Lo stato `{{開催中|かいさいちゅう}}`,
+caratteri lo stato reale della schermata. Lo stato `{{開催中|かい.さい.ちゅう}}`,
 `{{未|み}}〜`, `〜{{済|ず}}み` dicono subito se entrare, attendere o riscuotere.
 
 ### 3. `{{達成|たっせい}}` e `{{報酬|ほうしゅう}}` vanno lette insieme
@@ -133,27 +133,27 @@ diventare accessibile. Nelle app giapponesi questo conta perché una parte del
 messaggio resta spesso implicita: il label non ti ripete tutta la frase, ma ti
 fa capire che la funzione esiste già e che manca ancora una soglia da superare.
 
-Se leggi `{{未解放|みかいほう}}`, il senso pratico è già completo:
+Se leggi `{{未解放|み.かい.ほう}}`, il senso pratico è già completo:
 
 - quella modalità o funzione esiste;
 - ma per ora non ci puoi entrare;
 - ti manca ancora una condizione.
 
-### 5. `{{対戦開始|たいせんかいし}}` è il punto finale della lettura
+### 5. `{{対戦開始|たい.せん.かい.し}}` è il punto finale della lettura
 
-[{{対戦開始|たいせんかいし}}](term:term-start-match) è il bottone che traduce
+[{{対戦開始|たい.せん.かい.し}}](term:term-start-match) è il bottone che traduce
 tutte le letture precedenti in azione vera.
 
 Flusso pratico prima del click:
 
 1. riconosci la modalità;
-2. controlla lo stato (`{{開催中|かいさいちゅう}}`, `{{未|み}}〜`, `〜{{済|ず}}み`);
+2. controlla lo stato (`{{開催中|かい.さい.ちゅう}}`, `{{未|み}}〜`, `〜{{済|ず}}み`);
 3. verifica se la reward o il progresso ti interessano;
-4. solo alla fine premi [{{対戦開始|たいせんかいし}}](term:term-start-match).
+4. solo alla fine premi [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
 
 Su alcune schermate questo bottone arriva subito. Su altre compare solo dopo
 deck selection, room setup o scelta dello stage. Ma il principio resta uguale:
-`{{対戦開始|たいせんかいし}}` è il punto in cui la lettura smette di essere orientamento e diventa
+`{{対戦開始|たい.せん.かい.し}}` è il punto in cui la lettura smette di essere orientamento e diventa
 partita.
 
 ## Esempi guidati
@@ -162,19 +162,19 @@ partita.
 
 :::example_sentence
 jp: >-
-  ランクマッチ {{開催中|かいさいちゅう}}
+  ランクマッチ {{開催中|かい.さい.ちゅう}}
 translation_it: >-
   Ranked match attualmente attivo.
 :::
 
 - [ランクマッチ](term:term-ranked-match) ti dice il tipo di contenuto.
-- [{{開催中|かいさいちゅう}}](term:term-ongoing) ti dice che puoi entrarci ora.
+- [{{開催中|かい.さい.ちゅう}}](term:term-ongoing) ti dice che puoi entrarci ora.
 
 **Esempio 2**
 
 :::example_sentence
 jp: >-
-  {{未解放|みかいほう}}
+  {{未解放|み.かい.ほう}}
 translation_it: >-
   Non ancora sbloccato.
 :::
@@ -187,7 +187,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{達成済|たっせいず}}み
+  {{達成済|たっ.せい.ず}}み
 translation_it: >-
   Già completato.
 :::
@@ -200,7 +200,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{対戦開始|たいせんかいし}}
+  {{対戦開始|たい.せん.かい.し}}
 translation_it: >-
   Inizia la partita.
 :::

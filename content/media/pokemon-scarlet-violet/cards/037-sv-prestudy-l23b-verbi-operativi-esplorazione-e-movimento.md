@@ -107,7 +107,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-037-sv-prestudy-l23b-verbi-
 entry_type: grammar
 entry_id: grammar-g083-non-fare-ordine-secco
 card_type: concept
-front: "{{辞書形|じしょけい}} + な"
+front: "{{辞書形|じ.しょ.けい}} + な"
 back: non fare! (ordine secco)
 example_jp: >-
   ここで {{入|い}}るな。

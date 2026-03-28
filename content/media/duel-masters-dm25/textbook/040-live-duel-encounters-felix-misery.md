@@ -33,7 +33,7 @@ caption: >-
   sconto in [{{召喚|しょうかん}}](term:term-summon) nel
   [{{場合|ばあい}}](term:term-baai) NEO, chiamata dal
   [{{墓地|ぼち}}](term:term-graveyard) con soglia di
-  `{{2体以上|にたいいじょう}}` e attacco che manda `{{2枚|にまい}}` al cimitero
+  `{{2体以上|に.たい.い.じょう}}` e attacco che manda `{{2枚|にまい}}` al cimitero
   per poi rianimare un Darkness non evolution di costo `{{6以下|ろくいか}}`.
 :::
 
@@ -45,7 +45,7 @@ caption: >-
 
 Le etichette di base sono già coperte altrove. Qui il valore didattico sta
 soprattutto in tre punti: come `{{場合|ばあい}}` delimita il caso della NEO
-evolution, come `{{2体以上|にたいいじょう}}あれば` apre la soglia per evocare
+evolution, come `{{2体以上|に.たい.い.じょう}}あれば` apre la soglia per evocare
 dal cimitero e come `{{進化|しんか}}でない` filtra con precisione che cosa puoi
 mettere nel [バトルゾーン](term:term-battle-zone).
 
@@ -66,7 +66,7 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   {{自分|じぶん}}の{{闇|やみ}}の[クリーチャー](term:term-creature)が
-  {{2体以上|にたいいじょう}}[あれば](grammar:grammar-areba)、
+  {{2体以上|に.たい.い.じょう}}[あれば](grammar:grammar-areba)、
   {{自分|じぶん}}の[{{墓地|ぼち}}](term:term-graveyard)からこの
   [クリーチャー](term:term-creature)を
   [{{召喚|しょうかん}}](term:term-summon)してもよい。
@@ -115,7 +115,7 @@ reveal_mode: sentence
   ricorrente da TCG: `gruppo filtrato + soglia numerica + あれば`.
 - `{{自分|じぶん}}の{{闇|やみ}}のクリーチャー` restringe subito il gruppo:
   non tutte le creature che controlli, ma solo quelle di Darkness.
-- `{{2体以上|にたいいじょう}}` non è un numero decorativo. `体` è il contatore
+- `{{2体以上|に.たい.い.じょう}}` non è un numero decorativo. `体` è il contatore
   per i corpi creatura, mentre `以上` chiude la soglia minima: due o più.
 - [あれば](grammar:grammar-areba) funziona come cancello condizionale. Se la
   soglia esiste, si apre la frase successiva; se non c'è, il ramo non parte.
@@ -160,7 +160,7 @@ reveal_mode: sentence
 - [{{場合|ばあい}}](term:term-baai) qui è molto leggibile perché non introduce un
   effetto astratto: ti dice esattamente `in quale caso` vale la riduzione di
   costo.
-- `{{2体以上|にたいいじょう}}あれば` è un pattern altamente trasferibile per i
+- `{{2体以上|に.たい.い.じょう}}あれば` è un pattern altamente trasferibile per i
   testi che controllano soglie di board.
 - `[{{進化|しんか}}](term:term-evolution)[でない](grammar:grammar-de-nai)` è un
   filtro molto utile da memorizzare come chunk, perché ricompare facilmente

@@ -54,10 +54,10 @@ se non capisci che il cimitero è una risorsa, leggi male metà delle frasi.
 - [{{戻|もど}}す](term:term-modosu)
 - [{{破壊|はかい}}](term:term-destroy)
 - [シビルカウント](term:term-civil-count)
-- [{{攻撃先|こうげきさき}}](term:term-attack-target)
+- [{{攻撃先|こう.げき.さき}}](term:term-attack-target)
 - [とばす](term:term-tobasu)
 - [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei)
-- [{{邪侵入|じゃしんにゅう}}](term:term-jashinnyuu)
+- [{{邪侵入|じゃ.しん.にゅう}}](term:term-jashinnyuu)
 - [ジャブラッド](term:term-jablood)
 
 ## Pattern grammaticali chiave
@@ -191,7 +191,7 @@ src: assets/cards/dm25-sd1/07-cobra-snake-ninja-holy-chaos.webp
 alt: Carta 7 del mazzo DM25-SD1, creatura serpente Cobra.
 caption: >-
   `DM25-SD1 7/13`: **Cobra, Snake Ninja Holy Chaos**.
-  Qui compare [{{攻撃先|こうげきさき}}](term:term-attack-target) e
+  Qui compare [{{攻撃先|こう.げき.さき}}](term:term-attack-target) e
   `{{変更|へんこう}}する` nel contesto di attacco dopo un recupero.
 :::
 
@@ -203,14 +203,14 @@ jp: >-
   このクリーチャーが{{攻撃|こうげき}}する{{時|とき}}、コスト{{5以下|ごいか}}の
   {{進化|しんか}}ではないクリーチャーを{{1体|いったい}}、
   {{自分|じぶん}}の{{墓地|ぼち}}から{{出|だ}}してもよい。そうしたら、その
-  クリーチャーに[{{攻撃先|こうげきさき}}](term:term-attack-target)を{{変更|へんこう}}する。
+  クリーチャーに[{{攻撃先|こう.げき.さき}}](term:term-attack-target)を{{変更|へんこう}}する。
 translation_it: >-
   Quando questa creatura attacca, puoi mettere in gioco dal tuo cimitero 1
   creatura non evoluzione di costo 5 o inferiore. Se lo fai, cambi il bersaglio
   dell'attacco a quella creatura.
 :::
 
-- [{{攻撃先|こうげきさき}}](term:term-attack-target) è il bersaglio concreto dell'attacco.
+- [{{攻撃先|こう.げき.さき}}](term:term-attack-target) è il bersaglio concreto dell'attacco.
 - `{{進化|しんか}}ではない` esclude una categoria precisa.
 - `そうしたら` ti dice che il cambio del bersaglio dipende davvero
   dall'azione appena fatta.
@@ -249,7 +249,7 @@ caption: >-
 
 Queste carte applicano la stessa architettura di testo in varianti più specifiche:
 
-- **Madan = Low, Abyssal Furnace** e [{{邪侵入|じゃしんにゅう}}](term:term-jashinnyuu) chiudono
+- **Madan = Low, Abyssal Furnace** e [{{邪侵入|じゃ.しん.にゅう}}](term:term-jashinnyuu) chiudono
   il ciclo:
   `{{墓地|ぼち}}に{{置|お}}く -> その{{後|あと}} -> {{出|だ}}す`.
 - ブルーム=プルーフ, フォーク=フォック e ルピア{{炎鬼|えんき}} regolano

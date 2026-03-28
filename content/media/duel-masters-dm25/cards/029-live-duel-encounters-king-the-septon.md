@@ -112,7 +112,7 @@ front: '{{順番|じゅんばん}}'
 back: ordine / sequenza
 example_jp: >-
   {{残|のこ}}りをランダムな{{順番|じゅんばん}}で
-  {{山札|やまふだ}}の{{一番下|いちばんした}}に{{置|お}}く。
+  {{山札|やまふだ}}の{{一番下|いち.ばん.した}}に{{置|お}}く。
 example_it: >-
   Mette il resto in fondo al mazzo in ordine casuale.
 notes_it: >-

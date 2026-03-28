@@ -20,13 +20,13 @@ summary: >-
   ignora gli effetti d'ingresso.
 ---
 
-# [キングダム・オウ{{禍武斗|かぶと}}](term:term-kingdom-ohkabuto) / [{{轟破天九十九語|ごうはてんつくもがたり}}](term:term-gouhaten-tsukumogatari)
+# [キングダム・オウ{{禍武斗|か.ぶ.と}}](term:term-kingdom-ohkabuto) / [{{轟破天九十九語|ごうはてんつくもがたり}}](term:term-gouhaten-tsukumogatari)
 
 :::image
 src: assets/cards/live-duel/kingdom-ohkabuto-gouhaten-tsukumogatari.png
 alt: "Kingdom Ohkabuto / Gouhaten Tsukumogatari twinpact card."
 caption: >-
-  [キングダム・オウ{{禍武斗|かぶと}}](term:term-kingdom-ohkabuto) /
+  [キングダム・オウ{{禍武斗|か.ぶ.と}}](term:term-kingdom-ohkabuto) /
   [{{轟破天九十九語|ごうはてんつくもがたり}}](term:term-gouhaten-tsukumogatari)。
   Una sola [ツインパクトカード](term:term-twinpact-card): lato creatura
   naturale, razza グランセクト, con linea difensiva sui piccoli attaccanti;
@@ -59,7 +59,7 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  {{破天九語|はてんきゅうご}}：このクリーチャーが[バトル](term:term-battle)に{{勝|か}}った
+  {{破天九語|は.てん.きゅう.ご}}：このクリーチャーが[バトル](term:term-battle)に{{勝|か}}った
   [{{時|とき}}](grammar:grammar-toki)、{{相手|あいて}}のシールドを
   {{9|ここの}}つブレイクする。
 translation_it: >-

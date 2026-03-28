@@ -1067,13 +1067,13 @@ entry_type: term
 entry_id: term-shinkarize
 card_type: concept
 front: >-
-  {{進化元|しんかもと}}にも{{進化先|しんかさき}}にもなれるように{{扱|あつか}}って、
+  {{進化元|しん.か.もと}}にも{{進化先|しん.か.さき}}にもなれるように{{扱|あつか}}って、
   {{進化|しんか}}のつながりを{{作|つく}}る。
 back: >-
   La tratta in modo che possa funzionare sia come base sia come estensione di
   un'evoluzione, creando il collegamento evolutivo.
 example_jp: >-
-  このタマシードを{{進化元|しんかもと}}にも{{進化先|しんかさき}}にもなれるように
+  このタマシードを{{進化元|しん.か.もと}}にも{{進化先|しん.か.さき}}にもなれるように
   {{扱|あつか}}う。
 example_it: >-
   Tratta questo Tamaseed in modo che possa funzionare sia come base sia come

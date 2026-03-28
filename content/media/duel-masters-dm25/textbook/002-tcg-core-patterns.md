@@ -302,7 +302,7 @@ Poi ci sono frasi come questa:
 
 :::example_sentence
 jp: >-
-  {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。
+  {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いち.ばん.うえ}}のカードを{{破壊|はかい}}する。
 translation_it: >-
   A ogni turno, alla fine del primo attacco di questa creatura, STAPpa questa
   creatura e distruggi la carta in cima.
@@ -314,7 +314,7 @@ esplicito il flusso:
 - [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing) = quando succede;
 - [アンタップ](term:term-untap) = prima azione;
 - [{{破壊|はかい}}](term:term-destroy) = seconda azione;
-- `{{一番上|いちばんうえ}}` = quale carta viene colpita.
+- `{{一番上|いち.ばん.うえ}}` = quale carta viene colpita.
 
 Regola operativa: timing, poi azione, poi bersaglio.
 
@@ -410,7 +410,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。
+  {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の{{終|お}}わりに、このクリーチャーをアンタップし、{{一番上|いち.ばん.うえ}}のカードを{{破壊|はかい}}する。
 translation_it: >-
   A ogni turno, alla fine del primo attacco di questa creatura, STAPpa questa
   creatura e distruggi la carta in cima.

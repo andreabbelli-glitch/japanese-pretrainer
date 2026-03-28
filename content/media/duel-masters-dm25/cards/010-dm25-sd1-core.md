@@ -114,10 +114,10 @@ lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: term
 entry_id: term-jashinnyuu
 card_type: recognition
-front: '{{邪侵入|じゃしんにゅう}}'
+front: '{{邪侵入|じゃ.しん.にゅう}}'
 back: Jashinnyuu
 example_jp: >-
-  {{邪侵入|じゃしんにゅう}}で{{墓地|ぼち}}からアビスを{{出|だ}}す。
+  {{邪侵入|じゃ.しん.にゅう}}で{{墓地|ぼち}}からアビスを{{出|だ}}す。
 example_it: >-
   Usa Jashinnyuu per mettere in gioco un Abyss dal cimitero.
 notes_it: >-
@@ -189,7 +189,7 @@ pos: noun
 aliases: [攻撃先, こうげきさき, kougekisaki]
 notes_it: >-
   È la destinazione concreta di un attacco. Compare in frasi come
-  `{{攻撃先|こうげきさき}}を{{変更|へんこう}}する`, dove il testo non sta
+  `{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する`, dove il testo non sta
   aggiungendo un effetto vago: sta davvero riassegnando dove va l'attacco.
 level_hint: custom
 :::
@@ -274,14 +274,14 @@ lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
 entry_type: term
 entry_id: term-attack-target
 card_type: recognition
-front: '{{攻撃先|こうげきさき}}'
+front: '{{攻撃先|こう.げき.さき}}'
 back: bersaglio dell'attacco
 example_jp: >-
-  そのクリーチャーに{{攻撃先|こうげきさき}}を{{変更|へんこう}}する。
+  そのクリーチャーに{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する。
 example_it: >-
   Cambia il bersaglio dell'attacco a quella creatura.
 notes_it: >-
-  `{{攻撃先|こうげきさき}}を{{変更|へんこう}}する` riassegna un attacco già
+  `{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する` riassegna un attacco già
   dichiarato a un nuovo bersaglio. In combattimento cambia direttamente quale
   lato subisce l'esito dell'attacco.
 tags: [dm25-sd1, combat, target]

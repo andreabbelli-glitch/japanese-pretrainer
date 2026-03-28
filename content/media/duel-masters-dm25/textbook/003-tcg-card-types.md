@@ -174,7 +174,7 @@ vocabolario dell'aggancio, non quello della presenza autonoma.
 [{{城|しろ}}](term:term-castle) è molto utile anche linguisticamente: il kanji è
 facile da ricordare, ma in Duel Masters non indica "un edificio" in senso
 vago. Ti manda direttamente alla zona scudi e alla logica di
-`{{要塞化|ようさいか}}`.
+`{{要塞化|よう.さい.か}}`.
 
 [D{{2|でぃーつー}}フィールド](term:term-d2-field) ti insegna a leggere `フィールド` come pezzo
 di board state e `D2` come regola di famiglia. Se resti solo sulla traduzione

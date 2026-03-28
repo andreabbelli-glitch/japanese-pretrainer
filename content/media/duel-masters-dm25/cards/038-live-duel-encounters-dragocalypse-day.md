@@ -18,7 +18,7 @@ aliases: [ドラゴカリプス・デイ, Dragocalypse Day, doragokaripusu dei]
 notes_it: >-
   È il nome proprio della magia. In questa lezione la lettura utile da fissare
   non è solo la rimozione totale finale, ma soprattutto la lunga condizione
-  `このゲームが{{2人以上|ふたりいじょう}}の{{相手|あいて}}がいる
+  `このゲームが{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる
   {{状態|じょうたい}}で{{始|はじ}}まっていて`, che decide se la carta può
   ricevere `S・トリガー` mentre si trova nello shield zone.
 level_hint: custom
@@ -37,7 +37,7 @@ notes_it: >-
   situazione in cui qualcosa si trova. Nel rules text di Duel Masters questo
   valore resta intatto, ma diventa molto utile come strumento sintattico:
   permette di prendere una scena piuttosto lunga, come
-  `{{2人以上|ふたりいじょう}}の{{相手|あいて}}がいる`, e trasformarla in una
+  `{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる`, e trasformarla in una
   cornice nominale unica. In `{{状態|じょうたい}}で{{始|はじ}}まっていて`, la
   carta non controlla un'azione, ma il fatto che la partita sia cominciata
   dentro quella configurazione.
@@ -71,7 +71,7 @@ card_type: recognition
 front: ドラゴカリプス・デイ
 back: Dragocalypse Day / magia drago che in multiplayer può ottenere S-Trigger
 example_jp: >-
-  ドラゴカリプス・デイは、{{2人以上|ふたりいじょう}}の
+  ドラゴカリプス・デイは、{{2人以上|ふたり.い.じょう}}の
   {{相手|あいて}}がいる{{状態|じょうたい}}で{{始|はじ}}まったゲームだと
   シールドから{{使|つか}}いやすい。
 example_it: >-
@@ -93,7 +93,7 @@ card_type: recognition
 front: '{{状態|じょうたい}}'
 back: stato / condizione / situazione definita
 example_jp: >-
-  `{{2人以上|ふたりいじょう}}の{{相手|あいて}}がいる{{状態|じょうたい}}`は、
+  `{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる{{状態|じょうたい}}`は、
   その{{場面|ばめん}}を{{1|ひと}}まとまりにしている。
 example_it: >-
   `Lo stato in cui ci sono due o più avversari` compatta quella scena in un
@@ -133,12 +133,12 @@ entry_type: grammar
 entry_id: grammar-hajimatte-ite
 card_type: concept
 front: >-
-  このゲームが{{2人以上|ふたりいじょう}}の{{相手|あいて}}がいる
+  このゲームが{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる
   {{状態|じょうたい}}で{{始|はじ}}まっていて
 back: se la partita è iniziata con due o più avversari presenti
 example_jp: >-
   この{{条件|じょうけん}}は、いまの{{人数|にんずう}}より
-  {{開始時|かいしじ}}の{{設定|せってい}}を{{見|み}}る。
+  {{開始時|かい.し.じ}}の{{設定|せってい}}を{{見|み}}る。
 example_it: >-
   Questa condizione guarda il setup iniziale della partita più che il numero di
   persone osservato genericamente adesso.

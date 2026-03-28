@@ -272,10 +272,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v723-honkakuteki
 card_type: recognition
-front: "{{本格的|ほんかくてき}}"
+front: "{{本格的|ほん.かく.てき}}"
 back: serio / a tutti gli effetti
 example_jp: >-
-  この{{先|さき}}に {{本格的|ほんかくてき}}が あります。
+  この{{先|さき}}に {{本格的|ほん.かく.てき}}が あります。
 example_it: >-
   Più avanti c'è il serio.
 :::
@@ -294,10 +294,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v724-yuusendo
 card_type: recognition
-front: "{{優先度|ゆうせんど}}"
+front: "{{優先度|ゆう.せん.ど}}"
 back: priorità
 example_jp: >-
-  メニューで {{優先度|ゆうせんど}}を {{見|み}}ます。
+  メニューで {{優先度|ゆう.せん.ど}}を {{見|み}}ます。
 example_it: >-
   Guardo la priorità in menu.
 :::
@@ -338,7 +338,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v726-koutokuten
 card_type: recognition
-front: "{{高得点|こうとくてん}}"
+front: "{{高得点|こう.とく.てん}}"
 back: punteggio alto
 example_jp: >-
   この {{山|やま}}は {{高|たか}}い です。
@@ -382,10 +382,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v728-shugosha
 card_type: recognition
-front: "{{守護者|しゅごしゃ}}"
+front: "{{守護者|しゅ.ご.しゃ}}"
 back: guardiano
 example_jp: >-
-  これは {{守護者|しゅごしゃ}} です。
+  これは {{守護者|しゅ.ご.しゃ}} です。
 example_it: >-
   Questo è guardiano.
 :::
@@ -479,7 +479,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v733-koukankanryou
 card_type: recognition
-front: "{{交換完了|こうかんかんりょう}}"
+front: "{{交換完了|こう.かん.かん.りょう}}"
 back: scambio completato
 example_jp: >-
   ポケモンを {{交換|こうかん}}します。

@@ -14,13 +14,13 @@ summary: >-
   di un turno subito dopo quello attuale.
 ---
 
-# [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
+# [{{勝利龍装|しょう.り.りゅう.そう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)
 
 :::image
 src: assets/cards/crash-hadou.png
 alt: "Crash Hadou card."
 caption: >-
-  [{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)。
+  [{{勝利龍装|しょう.り.りゅう.そう}} クラッシュ{{覇道|はどう}}](term:term-crash-hadou)。
   Razze: [ドラゴンギルド](term:term-dragonguild) /
   [ビートジョッキー](term:term-beat-jockey)。 Riga centrale: turno extra se
   viene distrutta da tappata.

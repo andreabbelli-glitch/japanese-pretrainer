@@ -11,7 +11,7 @@ assets:
       destinazione evidenziata al centro.
     caption_it: >-
       Schermata mappa di [スマホロトム](term:term-smartphone-rotom): qui
-      [{{目的地|もくてきち}}](term:term-mokutekichi) diventa un marker concreto e
+      [{{目的地|もく.てき.ち}}](term:term-mokutekichi) diventa un marker concreto e
       si vede che mappa, app e navigazione convivono nello stesso dispositivo.
     notes: >-
       Ricavata da fonte ufficiale https://www.pokemon.co.jp/ex/sv/ja/features/220803_02/
@@ -346,7 +346,7 @@ assets:
     alt_it: >-
       Mappa dello Smart Rotom con destinazione registrata prima dell'uscita nel mondo aperto.
     caption_it: >-
-      Registrare una [{{目的地|もくてきち}}](term:term-mokutekichi) sullo
+      Registrare una [{{目的地|もく.てき.ち}}](term:term-mokutekichi) sullo
       [スマホロトム](term:term-smartphone-rotom) trasforma il briefing scolastico in
       una direzione concreta: il gioco non ti lascia solo libero, ti insegna
       anche come non perderti.
@@ -359,7 +359,7 @@ assets:
     width: 1024
     height: 576
     lesson_slug: 104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
-    anchor: "alla fine, stanza personale nella [{{学生寮|がくせいりょう}}](term:term-gakusei-ryou)."
+    anchor: "alla fine, stanza personale nella [{{学生寮|がく.せい.りょう}}](term:term-gakusei-ryou)."
     alt_it: >-
       Edificio principale dell'accademia di Paldea visto dall'esterno.
     caption_it: >-

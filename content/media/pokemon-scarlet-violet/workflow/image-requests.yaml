@@ -6,7 +6,7 @@ requests:
     priority: high
     placement_rationale: >-
       Va subito dopo il paragrafo che introduce mappa, Pokedex e
-      [{{目的地|もくてきち}}](term:term-mokutekichi), cosi il lettore vede davvero
+      [{{目的地|もく.てき.ち}}](term:term-mokutekichi), cosi il lettore vede davvero
       come appare la schermata con le icone laterali e il punto da raggiungere.
     visual_goal: >-
       Rendere leggibili la schermata mappa di [スマホロトム](term:term-smartphone-rotom),
@@ -17,7 +17,7 @@ requests:
       [スマホロトム](term:term-smartphone-rotom).
     search_hint: >-
       Usa la pagina ufficiale `features/220803_02` su スマホロトム e scegli la
-      schermata mappa con [{{目的地|もくてきち}}](term:term-mokutekichi) visibile.
+      schermata mappa con [{{目的地|もく.てき.ち}}](term:term-mokutekichi) visibile.
     capture_instructions: >-
       Preferisci una schermata completa del menu mappa, senza crop aggressivi,
       con i pulsanti laterali e il marker centrale ancora leggibili.
@@ -32,7 +32,7 @@ requests:
       destinazione evidenziata al centro.
     caption_it: >-
       Schermata mappa di [スマホロトム](term:term-smartphone-rotom): qui
-      [{{目的地|もくてきち}}](term:term-mokutekichi) diventa un marker concreto e
+      [{{目的地|もく.てき.ち}}](term:term-mokutekichi) diventa un marker concreto e
       si vede che mappa, app e navigazione convivono nello stesso dispositivo.
     notes: >-
       Fonte prevista: https://www.pokemon.co.jp/ex/sv/ja/features/220803_02/
@@ -710,7 +710,7 @@ requests:
       con screenshot di auto-battle / drop.
   - id: academy-campus-exterior
     lesson_slug: 104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
-    anchor: "alla fine, stanza personale nella [{{学生寮|がくせいりょう}}](term:term-gakusei-ryou)."
+    anchor: "alla fine, stanza personale nella [{{学生寮|がく.せい.りょう}}](term:term-gakusei-ryou)."
     kind: other
     priority: high
     placement_rationale: >-
@@ -784,7 +784,7 @@ requests:
     priority: high
     placement_rationale: >-
       Va subito dopo i paragrafi che spiegano
-      [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou) e
+      [{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou) e
       [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi), cosi il lettore vede il
       momento in cui la scuola consegna davvero il briefing che apre il mondo.
     visual_goal: >-
@@ -855,7 +855,7 @@ requests:
     priority: high
     placement_rationale: >-
       Va subito dopo il paragrafo sulla registrazione della
-      [{{目的地|もくてきち}}](term:term-mokutekichi), cosi il briefing astratto sul
+      [{{目的地|もく.てき.ち}}](term:term-mokutekichi), cosi il briefing astratto sul
       viaggio si traduce in una procedura visibile sulla mappa.
     visual_goal: >-
       Mostrare la schermata mappa dello [スマホロトム](term:term-smartphone-rotom) con
@@ -866,7 +866,7 @@ requests:
       dedicata allo [スマホロトム](term:term-smartphone-rotom).
     search_hint: >-
       Riusa lo screenshot ufficiale gia registrato della mappa con
-      [{{目的地|もくてきち}}](term:term-mokutekichi) visibile; in alternativa
+      [{{目的地|もく.てき.ち}}](term:term-mokutekichi) visibile; in alternativa
       recupera `features/220803_02` asset `features_img_03.jpg`.
     capture_instructions: >-
       Preferisci una schermata completa della mappa con colonna app laterale,
@@ -879,7 +879,7 @@ requests:
     alt_it: >-
       Mappa dello Smart Rotom con destinazione registrata prima dell'uscita nel mondo aperto.
     caption_it: >-
-      Registrare una [{{目的地|もくてきち}}](term:term-mokutekichi) sullo
+      Registrare una [{{目的地|もく.てき.ち}}](term:term-mokutekichi) sullo
       [スマホロトム](term:term-smartphone-rotom) trasforma il briefing scolastico in
       una direzione concreta: il gioco non ti lascia solo libero, ti insegna
       anche come non perderti.

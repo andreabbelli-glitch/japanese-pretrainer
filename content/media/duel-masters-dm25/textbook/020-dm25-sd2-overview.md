@@ -22,7 +22,7 @@ Alla fine dovresti riconoscere:
 
 - quali card cambiano la lettura operativa del deck;
 - come leggere keyword compatte come [G・ストライク](term:term-g-strike),
-  [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
+  [{{究極進化|きゅう.きょく.しん.か}}](term:term-ultimate-evolution) e
   [メテオバーン](term:term-meteorburn);
 - come funzionano frasi di supporto molto tipiche del deck, per esempio
   [{{表|おもて}}{{向|む}}き](term:term-face-up),
@@ -40,13 +40,13 @@ riunisce payoff aggressivi e setup, quindi la lettura si basa sempre sul flusso:
 - [レッドゾーン](term:term-red-zone)
 - [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion)
 - [G・ストライク](term:term-g-strike)
-- [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution)
+- [{{究極進化|きゅう.きょく.しん.か}}](term:term-ultimate-evolution)
 - [メテオバーン](term:term-meteorburn)
 - [スーパー・S・トリガー](term:term-super-s-trigger)
 - [{{表|おもて}}{{向|む}}き](term:term-face-up)
 - [バトルさせる](term:term-battle-saseru)
-- [{{進化設計図|しんかせっけいず}}](term:term-shinka-sekkeizu)
-- [{{未来設計図|みらいせっけいず}}](term:term-mirai-sekkeizu)
+- [{{進化設計図|しん.か.せっ.けい.ず}}](term:term-shinka-sekkeizu)
+- [{{未来設計図|み.らい.せっ.けい.ず}}](term:term-mirai-sekkeizu)
 
 ## Pattern grammaticali chiave
 
@@ -65,7 +65,7 @@ riunisce payoff aggressivi e setup, quindi la lettura si basa sempre sul flusso:
 
 - payoff aggressivo di [{{侵略|しんりゃく}}](term:term-invasion),
   [{{攻撃|こうげき}}](term:term-attack) e breaker;
-- setup delle due `{{設計図|せっけいず}}`, dove ordini, mostri, aggiungi alla
+- setup delle due `{{設計図|せっ.けい.ず}}`, dove ordini, mostri, aggiungi alla
   mano e rimetti il resto in basso.
 
 Mentre scorri la gallery, chiediti sempre:
@@ -92,7 +92,7 @@ Il parsing utile qui è: `vincolo di uso + timing di fine attacco`.
 
 :::example_sentence
 jp: >-
-  このクリーチャーの{{攻撃中|こうげきちゅう}}、{{相手|あいて}}は
+  このクリーチャーの{{攻撃中|こう.げき.ちゅう}}、{{相手|あいて}}は
   「[G・ストライク](term:term-g-strike)」を{{使|つか}}えない。
 translation_it: >-
   Durante l'attacco di questa creatura, l'avversario non può usare G-Strike.
@@ -102,7 +102,7 @@ translation_it: >-
 jp: >-
   {{各|かく}}ターン、このクリーチャーの{{最初|さいしょ}}の{{攻撃|こうげき}}の
   {{終|お}}わりに、このクリーチャーを[アンタップ](term:term-untap)し、
-  {{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。
+  {{一番上|いち.ばん.うえ}}のカードを{{破壊|はかい}}する。
 translation_it: >-
   Ogni turno, alla fine del primo attacco di questa creatura, stappa questa
   creatura e distruggi la carta in cima.
@@ -118,7 +118,7 @@ Qui conta:
   quella creatura.
 - [{{終|お}}わり](term:term-owari) apre la finestra solo dopo che quell'attacco è
   finito.
-- [{{一番上|いちばんうえ}}](term:term-ichiban-ue) identifica la carta precisa
+- [{{一番上|いち.ばん.うえ}}](term:term-ichiban-ue) identifica la carta precisa
   che viene colpita.
 
 #### 2.2 {{轟|とどろ}}く{{侵略|しんりゃく}} レッドゾーン
@@ -138,27 +138,27 @@ caption: >-
 Registra il pattern:
 `{{相手|あいて}}のパワーが{{一番|いちばん}}{{大|おお}}きい`.
 
-#### 2.3 {{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン
+#### 2.3 {{超神羅星|ちょう.しん.ら.せい}}アポロヌス・ドラゲリオン
 
 :::image
 src: assets/cards/apollonus-dragelion.webp
 alt: "Carta di ちょうしんらせいアポロヌス・ドラゲリオン centrata e leggibile."
 card_id: card-apollonus-dragelion-recognition
 caption: >-
-  Immagine ufficiale di {{超神羅星|ちょうしんらせい}}
+  Immagine ufficiale di {{超神羅星|ちょう.しん.ら.せい}}
   [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion), finisher simbolo
   del deck `DM25-SD2`. Questa carta introduce
-  [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
+  [{{究極進化|きゅう.きょく.しん.か}}](term:term-ultimate-evolution) e
   [メテオバーン](term:term-meteorburn).
 :::
 
 Qui entrano due keyword di impatto sul parsing del turno:
-[{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
+[{{究極進化|きゅう.きょく.しん.か}}](term:term-ultimate-evolution) e
 [メテオバーン](term:term-meteorburn).
 
 :::example_sentence
 jp: >-
-  [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution)：
+  [{{究極進化|きゅう.きょく.しん.か}}](term:term-ultimate-evolution)：
   [{{進化|しんか}}クリーチャー](term:term-evolution-creature)
   {{1体|いったい}}の{{上|うえ}}に{{置|お}}く。
 translation_it: >-
@@ -183,7 +183,7 @@ Qui separa subito i due piani:
 - [メテオバーン](term:term-meteorburn) consuma materiale sotto la creatura.
 - `そうしたら` apre il payoff solo se il costo materiale è stato davvero pagato.
 
-#### 2.4 {{進化設計図|しんかせっけいず}}
+#### 2.4 {{進化設計図|しん.か.せっ.けい.ず}}
 
 :::image
 src: assets/cards/dm25-sd2/04-evolution-blueprint.jpg
@@ -294,7 +294,7 @@ La distinzione sintattica è questa:
   {{負|ま}}けない` protegge dalla sconfitta per quel turno, ma non ferma gli
   attacchi né cancella il resto della risoluzione.
 
-#### 2.6 {{未来設計図|みらいせっけいず}}
+#### 2.6 {{未来設計図|み.らい.せっ.けい.ず}}
 
 :::image
 src: assets/cards/dm25-sd2/06-future-blueprint.jpg
@@ -394,7 +394,7 @@ caption: >-
 
 Qui la verifica passa da: trigger -> effetto -> verifica categoria.
 
-#### 2.10 {{冒険妖精|ぼうけんようせい}}ポレコ
+#### 2.10 {{冒険妖精|ぼう.けん.よう.せい}}ポレコ
 
 :::image
 src: assets/cards/dm25-sd2/10-pollico-adventure-faerie.jpg
@@ -418,8 +418,8 @@ caption: >-
 :::
 
 Fa da ponte tra
-[{{進化設計図|しんかせっけいず}}](term:term-shinka-sekkeizu) e
-[{{未来設計図|みらいせっけいず}}](term:term-mirai-sekkeizu).
+[{{進化設計図|しん.か.せっ.けい.ず}}](term:term-shinka-sekkeizu) e
+[{{未来設計図|み.らい.せっ.けい.ず}}](term:term-mirai-sekkeizu).
 
 ### 3. Piano del deck
 
@@ -432,15 +432,15 @@ Sequenza di lettura del piano testuale:
     confronto di potenza `{{相手|あいて}}のパワーが{{一番|いちばん}}{{大|おお}}きい`
     e rottura totale.
 - Fase di setup:
-  - {{進化設計図|しんかせっけいず}} per [{{表|おもて}}{{向|む}}き](term:term-face-up),
+  - {{進化設計図|しん.か.せっ.けい.ず}} per [{{表|おもて}}{{向|む}}き](term:term-face-up),
     [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de).
-  - {{未来設計図|みらいせっけいず}} per [{{合計|ごうけい}}](term:term-goukei),
+  - {{未来設計図|み.らい.せっ.けい.ず}} per [{{合計|ごうけい}}](term:term-goukei),
     [～てから](grammar:grammar-te-kara).
   - ヘルコプ{{太|た}}の{{心絵|めもりー}} come passaggio tecnico tra
     ricerca e riordino del mazzo.
 - Fase payoff:
-  - {{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン per
-    [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution) e
+  - {{超神羅星|ちょう.しん.ら.せい}}アポロヌス・ドラゲリオン per
+    [{{究極進化|きゅう.きょく.しん.か}}](term:term-ultimate-evolution) e
     [メテオバーン](term:term-meteorburn).
   - SMAPON per differenza funzionale tra
     [スーパー・S・トリガー](term:term-super-s-trigger) e
@@ -451,5 +451,5 @@ Sequenza di lettura del piano testuale:
   - オンクン{{童子|どうじ}} ＜ターボ.{{鬼|おーが}}＞ per
     [～てもよい](grammar:grammar-temoyoi) e [{{捨|す}}てる](term:term-suteru).
   - ストリエ{{雷鬼|らいき}}の{{巻|まき}} per [シンカライズ](term:term-shinkarize).
-  - {{冒険妖精|ぼうけんようせい}}ポレコ per
+  - {{冒険妖精|ぼう.けん.よう.せい}}ポレコ per
     [～のはじめに / ～の{{終|お}}わりに](grammar:grammar-turn-timing).

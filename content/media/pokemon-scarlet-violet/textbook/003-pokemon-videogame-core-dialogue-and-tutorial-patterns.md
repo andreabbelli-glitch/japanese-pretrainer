@@ -31,13 +31,13 @@ quando non capisci ogni parola del dialogo.
 
 ## Termini chiave
 
-- [{{目的地|もくてきち}}](term:term-mokutekichi)
+- [{{目的地|もく.てき.ち}}](term:term-mokutekichi)
 - [{{手|て}}{{持|も}}ち](term:term-te-mochi)
 - [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru)
 - [レポート](term:term-report)
 - [どうぐ](term:term-dougu)
 - [{{回復|かいふく}}](term:term-kaifuku)
-- [{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou)
+- [{{状態異常|じょう.たい.い.じょう}}](term:term-joutai-ijou)
 - [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan)
 
 ## Pattern grammaticali chiave
@@ -55,7 +55,7 @@ quando non capisci ogni parola del dialogo.
 Il pattern [～てみる](grammar:grammar-te-miru) è uno dei più utili da
 riconoscere subito. Nei tutorial Pokemon spesso non è una proposta astratta ma
 un invito operativo travestito da suggerimento gentile. Se un personaggio dice
-`{{目的地|もくてきち}}に {{登録|とうろく}}してみたら？`, il senso pratico non
+`{{目的地|もく.てき.ち}}に {{登録|とうろく}}してみたら？`, il senso pratico non
 è "un giorno potresti provare", ma "questa è la prossima azione che il gioco
 vuole farti fare per continuare senza perderti".
 
@@ -68,7 +68,7 @@ caption: >-
 
 [～たら](grammar:grammar-tara) segna la condizione che fa scattare una risposta.
 Quando leggi frasi del tipo `{{道|みち}}に {{迷|まよ}}ったら` o
-`{{状態異常|じょうたいいじょう}}に なったら`, il gioco ti sta dicendo in
+`{{状態異常|じょう.たい.い.じょう}}に なったら`, il gioco ti sta dicendo in
 quale situazione usare una procedura. È un pattern prezioso perché ti permette
 di separare il problema dalla soluzione: prima riconosci l'evento, poi leggi
 l'azione da fare.
@@ -91,14 +91,14 @@ una funzione si apre oppure una regola cambia da quel momento in poi.
 tuo favore. Nei Pokemon può essere un NPC che
 [{{手|て}}{{持|も}}ち](term:term-te-mochi) ti
 [{{回復|かいふく}}](term:term-kaifuku)してくれる, oppure un oggetto che ti
-toglie uno [{{状態異常|じょうたいいじょう}}](term:term-joutai-ijou). Il
+toglie uno [{{状態異常|じょう.たい.い.じょう}}](term:term-joutai-ijou). Il
 punto non è solo "succede un effetto", ma "succede per aiutarti". Questa nuance
 ti aiuta a capire il ruolo benevolo di sistemi, alleati e servizi.
 
 [～ておく](grammar:grammar-teoku) è il pattern della preparazione. Nei tutorial e
 nei consigli strategici vale quasi sempre "fai questa cosa adesso e lasciala
 pronta". Curare la squadra, fare [レポート](term:term-report) o segnare una
-[{{目的地|もくてきち}}](term:term-mokutekichi) `しておく` significa mettere in
+[{{目的地|もく.てき.ち}}](term:term-mokutekichi) `しておく` significa mettere in
 sicurezza il prossimo blocco di gioco prima che inizi davvero.
 
 Oltre ai pattern grammaticali, conviene riconoscere anche alcune formule fisse
@@ -119,7 +119,7 @@ caption: >-
 
 :::example_sentence
 jp: >-
-  {{目的地|もくてきち}}に {{登録|とうろく}}してみたら？ {{次|つぎ}}に
+  {{目的地|もく.てき.ち}}に {{登録|とうろく}}してみたら？ {{次|つぎ}}に
   {{向|む}}かう {{場所|ばしょ}}が すぐ わかるよ。
 translation_it: >-
   Che ne dici di provare a registrare una destinazione? Capisci subito dove
@@ -128,7 +128,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{道|みち}}に {{迷|まよ}}ったら マップを {{開|ひら}}いて {{現在地|げんざいち}}を
+  {{道|みち}}に {{迷|まよ}}ったら マップを {{開|ひら}}いて {{現在地|げん.ざい.ち}}を
   {{確認|かくにん}}しよう。
 translation_it: >-
   Se ti perdi, apri la mappa e controlla la tua posizione attuale.

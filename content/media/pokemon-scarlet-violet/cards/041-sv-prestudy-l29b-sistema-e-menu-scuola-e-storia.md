@@ -211,10 +211,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-041-sv-prestudy-l29b-sistem
 entry_type: term
 entry_id: term-v519-seitokaichou
 card_type: recognition
-front: "{{生徒会長|せいとかいちょう}}"
+front: "{{生徒会長|せい.と.かい.ちょう}}"
 back: presidente del consiglio studentesco
 example_jp: >-
-  {{生徒会長|せいとかいちょう}}と {{話|はな}}します。
+  {{生徒会長|せい.と.かい.ちょう}}と {{話|はな}}します。
 example_it: >-
   Parlo con presidente del consiglio studentesco.
 :::

@@ -26,7 +26,7 @@ notes_it: >-
   nel trigger di entrata, ma nel collegarlo subito a tre blocchi di lingua:
   `{{最|もっと}}もコストの{{大|おお}}きい / {{小|ちい}}さい`,
   `{{自身|じしん}}の{{手札|てふだ}}` e
-  `{{終了時|しゅうりょうじ}} ... {{13枚以下|じゅうさんまいいか}}なら`.
+  `{{終了時|しゅう.りょう.じ}} ... {{13枚以下|じゅうさん.まい.い.か}}なら`.
 level_hint: custom
 :::
 
@@ -155,8 +155,8 @@ meaning_it: se / nel caso in cui / se e` cosi`
 aliases: [なら]
 notes_it: >-
   `なら` prende uno stato, una categoria o una soglia gia` nominata e apre il
-  ramo che vale solo in quel caso. In `{{5枚以下|ごまいいか}}なら` e
-  `{{13枚以下|じゅうさんまいいか}}なら`, la carta non descrive un fatto generale:
+  ramo che vale solo in quel caso. In `{{5枚以下|ご.まい.い.か}}なら` e
+  `{{13枚以下|じゅうさん.まい.い.か}}なら`, la carta non descrive un fatto generale:
   controlla se il totale attuale rientra in quella soglia e solo allora lascia
   proseguire l'effetto.
 level_hint: n4
@@ -168,20 +168,20 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-jenny-jane
 entry_type: term
 entry_id: term-jenny-jane
 card_type: recognition
-front: '{{刻解人形|こくかいにんぎょう}} ジェニー・ジェーン'
+front: '{{刻解人形|こく.かい.にん.ぎょう}} ジェニー・ジェーン'
 back: Jenny Jane / hand disruption con draw reattivo e check finale sul mazzo avversario
 example_jp: >-
-  {{刻解人形|こくかいにんぎょう}} ジェニー・ジェーンは、
+  {{刻解人形|こく.かい.にん.ぎょう}} ジェニー・ジェーンは、
   {{最|もっと}}もコストの{{大|おお}}きいカードと
   {{小|ちい}}さいカードを{{公開|こうかい}}させ、
-  {{終了時|しゅうりょうじ}}にはシールドまで{{削|けず}}れる。
+  {{終了時|しゅう.りょう.じ}}にはシールドまで{{削|けず}}れる。
 example_it: >-
   Jenny Jane fa rivelare la carta di costo piu` alto e quella di costo piu`
   basso, e a fine turno puo` persino mangiare uno scudo.
 notes_it: >-
   Il nome va fissato come blocco unico. In questa lezione richiama subito il
   doppio superlativo sui costi, il riflessivo `{{自身|じしん}}` e la soglia
-  finale `{{13枚以下|じゅうさんまいいか}}なら`.
+  finale `{{13枚以下|じゅうさん.まい.い.か}}なら`.
 tags: [live-duel, proper-name, hand-disruption, darkness]
 :::
 
@@ -312,10 +312,10 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-jenny-jane
 entry_type: grammar
 entry_id: grammar-nara
 card_type: concept
-front: '{{5枚以下|ごまいいか}}なら'
+front: '{{5枚以下|ご.まい.い.か}}なら'
 back: se sono 5 carte o meno
 example_jp: >-
-  {{手札|てふだ}}が{{5枚以下|ごまいいか}}なら、
+  {{手札|てふだ}}が{{5枚以下|ご.まい.い.か}}なら、
   {{同|おな}}じ{{枚数|まいすう}}のカードを{{引|ひ}}く。
 example_it: >-
   Se la mano e` di 5 carte o meno, peschi lo stesso numero di carte.

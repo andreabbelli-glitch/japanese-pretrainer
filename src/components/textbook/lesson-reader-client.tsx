@@ -20,7 +20,7 @@ import {
   setLessonCompletionAction
 } from "@/actions/textbook";
 import { cx } from "@/lib/classnames";
-import { renderFurigana } from "@/lib/render-furigana";
+import { renderFurigana, splitMonoRuby } from "@/lib/render-furigana";
 import type {
   ContentBlock,
   InlineNode,
@@ -1311,22 +1311,37 @@ function FuriganaRuby({
   reading
 }: FuriganaRubyProps) {
   const [revealed, setRevealed] = useState(false);
+  const segments = splitMonoRuby(base, reading);
+
+  const sharedProps = {
+    "data-revealed": furiganaMode === "hover" && revealed,
+    onClick: () => {
+      if (furiganaMode === "hover" && isTouchLayout) {
+        setRevealed((current) => !current);
+      }
+    },
+    onBlur: () => setRevealed(false),
+    tabIndex: furiganaMode === "hover" ? 0 : -1
+  } as const;
+
+  if (segments.length === 1) {
+    return (
+      <ruby className="app-ruby reader-ruby" {...sharedProps}>
+        <rb>{base}</rb>
+        <rt>{reading}</rt>
+      </ruby>
+    );
+  }
 
   return (
-    <ruby
-      className="app-ruby reader-ruby"
-      data-revealed={furiganaMode === "hover" && revealed}
-      onClick={() => {
-        if (furiganaMode === "hover" && isTouchLayout) {
-          setRevealed((current) => !current);
-        }
-      }}
-      onBlur={() => setRevealed(false)}
-      tabIndex={furiganaMode === "hover" ? 0 : -1}
-    >
-      <rb>{base}</rb>
-      <rt>{reading}</rt>
-    </ruby>
+    <span {...sharedProps}>
+      {segments.map(([segBase, segReading], i) => (
+        <ruby className="app-ruby reader-ruby" key={i}>
+          <rb>{segBase}</rb>
+          <rt>{segReading}</rt>
+        </ruby>
+      ))}
+    </span>
   );
 }
 

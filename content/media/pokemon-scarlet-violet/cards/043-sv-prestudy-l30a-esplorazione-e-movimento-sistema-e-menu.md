@@ -180,7 +180,7 @@ card_type: concept
 front: "～ために"
 back: per / allo scopo di
 example_jp: >-
-  {{日本語|にほんご}}を {{学|まな}}ぶために {{読|よ}}む。
+  {{日本語|に.ほん.ご}}を {{学|まな}}ぶために {{読|よ}}む。
 example_it: >-
   Leggo per studiare il giapponese.
 :::
@@ -472,10 +472,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-043-sv-prestudy-l30a-esplor
 entry_type: term
 entry_id: term-v582-tokubetsukoushi
 card_type: recognition
-front: "{{特別講師|とくべつこうし}}"
+front: "{{特別講師|とく.べつ.こう.し}}"
 back: docente speciale
 example_jp: >-
-  {{学校|がっこう}}で {{特別講師|とくべつこうし}}が だいじ です。
+  {{学校|がっこう}}で {{特別講師|とく.べつ.こう.し}}が だいじ です。
 example_it: >-
   In scuola docente speciale è importante.
 :::

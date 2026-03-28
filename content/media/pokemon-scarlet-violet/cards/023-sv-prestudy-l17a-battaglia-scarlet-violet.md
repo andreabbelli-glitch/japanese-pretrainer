@@ -175,10 +175,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-023-sv-prestudy-l17a-battag
 entry_type: term
 entry_id: term-v161-fushigi
 card_type: recognition
-front: '{{不思議|ふしぎ}}'
+front: '{{不思議|ふ.し.ぎ}}'
 back: misterioso / strano
 example_jp: >-
-  {{不思議|ふしぎ}} ですね。
+  {{不思議|ふ.し.ぎ}} ですね。
 example_it: >-
   È strano, vero?
 :::

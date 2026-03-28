@@ -17,7 +17,7 @@ pos: noun
 aliases: [堕魔, daama]
 notes_it: >-
   Compare all'inizio di molti nomi del pacchetto
-  [{{魔導具|まどうぐ}}](term:term-madougu). Va letto come prefisso d'archetipo:
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu). Va letto come prefisso d'archetipo:
   quando vedi `{{堕魔|だーま}}`, è probabile che la carta entri nello stesso
   ecosistema di cimitero, filtro e De Szark.
 level_hint: custom
@@ -33,7 +33,7 @@ aliases: [それが～なら]
 notes_it: >-
   `それが` riprende il bersaglio appena scelto e `なら` apre il controllo sullo
   stesso oggetto. In
-  `それがコスト{{4以下|よんいか}}の{{魔導具|まどうぐ}}なら`, il testo non cambia
+  `それがコスト{{4以下|よんいか}}の{{魔導具|ま.どう.ぐ}}なら`, il testo non cambia
   bersaglio: verifica se la carta scelta passa il filtro che porta al ramo
   positivo.
 level_hint: n4
@@ -48,7 +48,7 @@ meaning_it: altrimenti / se non è così
 aliases: [それ以外]
 notes_it: >-
   Apre il ramo "else" dopo un controllo precedente. In
-  `それがコスト{{4以下|よんいか}}の{{魔導具|まどうぐ}}なら ...
+  `それがコスト{{4以下|よんいか}}の{{魔導具|ま.どう.ぐ}}なら ...
   それ{{以外|いがい}}なら ...`, il testo non introduce un nuovo bersaglio:
   decide solo l'uscita diversa dello stesso bersaglio già scelto.
 level_hint: n3
@@ -61,11 +61,11 @@ entry_type: grammar
 entry_id: grammar-sorega-nara
 card_type: concept
 front: >-
-  それがコスト{{4以下|よんいか}}の{{魔導具|まどうぐ}}なら
+  それがコスト{{4以下|よんいか}}の{{魔導具|ま.どう.ぐ}}なら
 back: se quella carta è un Magic Tool di costo 4 o meno
 example_jp: >-
   {{選|えら}}んだクリーチャーを{{見|み}}て、それがコスト{{4以下|よんいか}}の
-  {{魔導具|まどうぐ}}なら{{場|ば}}に{{出|だ}}す。
+  {{魔導具|ま.どう.ぐ}}なら{{場|ば}}に{{出|だ}}す。
 example_it: >-
   Guardi la creatura scelta e, se è un Magic Tool di costo 4 o meno, la metti
   in campo.
@@ -84,7 +84,7 @@ card_type: recognition
 front: '{{堕魔|だーま}}'
 back: prefisso delle creature Magic Tool oscure
 example_jp: >-
-  {{堕魔|だーま}}の{{名前|なまえ}}が{{見|み}}えたら、{{魔導具|まどうぐ}}の
+  {{堕魔|だーま}}の{{名前|なまえ}}が{{見|み}}えたら、{{魔導具|ま.どう.ぐ}}の
   {{仲間|なかま}}だと{{考|かんが}}えやすい。
 example_it: >-
   Quando vedi il prefisso `{{堕魔|だーま}}`, è facile pensare a una carta del

@@ -53,8 +53,8 @@ jp: >-
   [{{相手|あいて}}](term:term-opponent)の[クリーチャー](term:term-creature)が
   [{{攻撃|こうげき}}](term:term-attack)またはブロックした
   [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の
-  [マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はちまいいじょう}}あり、
-  その{{攻撃中|こうげきちゅう}}に「[ニンジャ・ストライク](term:term-ninja-strike)」
+  [マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はち.まい.い.じょう}}あり、
+  その{{攻撃中|こう.げき.ちゅう}}に「[ニンジャ・ストライク](term:term-ninja-strike)」
   [{{能力|のうりょく}}](term:term-ability)を{{使|つか}}っていなければ、このシノビを
   コストを[{{支払|しはら}}わずに](term:term-harau)
   [{{召喚|しょうかん}}](term:term-summon)してもよい。そのターンの

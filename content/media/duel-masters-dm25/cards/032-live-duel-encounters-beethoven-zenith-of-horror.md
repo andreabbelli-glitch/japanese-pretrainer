@@ -117,10 +117,10 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-beethoven-zenith-of-hor
 entry_type: term
 entry_id: term-colorless-spell
 card_type: recognition
-front: '{{無色呪文|むしょくじゅもん}}'
+front: '{{無色呪文|む.しょく.じゅ.もん}}'
 back: spell incolore
 example_jp: >-
-  ドラゴンまたは{{無色呪文|むしょくじゅもん}}を
+  ドラゴンまたは{{無色呪文|む.しょく.じゅ.もん}}を
   {{合計|ごうけい}}{{3枚|さんまい}}、{{手札|てふだ}}に{{戻|もど}}す。
 example_it: >-
   Rimetti in mano un totale di 3 Draghi e/o spell incolori.
@@ -142,7 +142,7 @@ back: Quando questa creatura entra proprio tramite evocazione.
 example_jp: >-
   このクリーチャーが[{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte)
   {{出|で}}た{{時|とき}}、ドラゴンまたは
-  [{{無色呪文|むしょくじゅもん}}](term:term-colorless-spell)を
+  [{{無色呪文|む.しょく.じゅ.もん}}](term:term-colorless-spell)を
   {{合計|ごうけい}}{{3枚|さんまい}}、{{手札|てふだ}}に{{戻|もど}}す。
 example_it: >-
   Quando questa creatura entra proprio tramite evocazione, rimetti in mano un

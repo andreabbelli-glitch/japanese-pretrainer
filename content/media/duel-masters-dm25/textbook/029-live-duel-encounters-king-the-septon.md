@@ -72,7 +72,7 @@ jp: >-
   [{{加|くわ}}える](term:term-add)。{{残|のこ}}りをランダムな
   [{{順番|じゅんばん}}](term:term-junban)で
   [{{山札|やまふだ}}](term:term-deck)の
-  [{{一番下|いちばんした}}](term:term-bottom-of-deck)に
+  [{{一番下|いち.ばん.した}}](term:term-bottom-of-deck)に
   [{{置|お}}く](term:term-oku)。
 translation_it: >-
   Poi aggiunge in mano tutte le carte dello stesso costo e mette il resto in
@@ -119,7 +119,7 @@ reveal_mode: sentence
 - [{{順番|じゅんばん}}](term:term-junban) non è un dettaglio ornamentale: ti
   dice che anche l'ordine finale delle carte rimaste fa parte della procedura e
   qui viene fissato come casuale.
-- [{{一番下|いちばんした}}](term:term-bottom-of-deck)に[{{置|お}}く](term:term-oku)
+- [{{一番下|いち.ばん.した}}](term:term-bottom-of-deck)に[{{置|お}}く](term:term-oku)
   chiude il resto della procedura: ciò che non è stato preso sparisce dalla
   cima e va in fondo al mazzo.
 

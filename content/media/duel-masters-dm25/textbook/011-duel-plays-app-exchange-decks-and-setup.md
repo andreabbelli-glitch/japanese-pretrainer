@@ -38,15 +38,15 @@ Qui devi controllare se sono soddisfatti questi punti operativi:
 Leggere correttamente label e indicatori evita:
 
 - entrare in un flusso giusto con la risorsa sbagliata;
-- arrivare troppo tardi al bottone [{{対戦開始|たいせんかいし}}](term:term-start-match)
+- arrivare troppo tardi al bottone [{{対戦開始|たい.せん.かい.し}}](term:term-start-match)
   senza aver letto davvero il contesto.
 
 ## Termini chiave
 
 - [カード{{交換|こうかん}}](term:term-card-exchange)
 - [{{交換|こうかん}}](term:term-exchange)
-- [{{交換期間|こうかんきかん}}](term:term-exchange-period)
-- [{{販売期間|はんばいきかん}}](term:term-sale-period)
+- [{{交換期間|こう.かん.き.かん}}](term:term-exchange-period)
+- [{{販売期間|はん.ばい.き.かん}}](term:term-sale-period)
 - [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
 - [{{不足|ふそく}}](term:term-shortage)
 - [デッキ{{一覧|いちらん}}](term:term-deck-list)
@@ -57,7 +57,7 @@ Leggere correttamente label e indicatori evita:
 - [{{確認|かくにん}}](term:term-confirm)
 - [{{分解|ぶんかい}}](term:term-disenchant)
 - [DMポイント](term:term-dm-points)
-- [{{対戦開始|たいせんかいし}}](term:term-start-match)
+- [{{対戦開始|たい.せん.かい.し}}](term:term-start-match)
 
 ## Pattern grammaticali chiave
 
@@ -77,8 +77,8 @@ alt: >-
 caption: >-
   In [カード{{交換|こうかん}}](term:term-card-exchange) prima leggi tab, filtri
   e valuta; poi la singola riga carta con
-  [{{交換期間|こうかんきかん}}](term:term-exchange-period),
-  [{{所持|しょじ}}](term:term-owned) e `あと{{4回交換可能|よんかいこうかんかのう}}！`.
+  [{{交換期間|こう.かん.き.かん}}](term:term-exchange-period),
+  [{{所持|しょじ}}](term:term-owned) e `あと{{4回交換可能|よん.かい.こう.かん.か.のう}}！`.
 :::
 
 In [カード{{交換|こうかん}}](term:term-card-exchange) la carta in evidenza non è
@@ -92,10 +92,10 @@ della schermata:
 
 I label decisivi sono intorno:
 
-- [{{交換期間|こうかんきかん}}](term:term-exchange-period) = fino a quando questa
+- [{{交換期間|こう.かん.き.かん}}](term:term-exchange-period) = fino a quando questa
   finestra di scambio resta valida;
 - `{{所持|しょじ}}: 0` = quante copie o risorse rilevanti possiedi;
-- `あと4回{{交換可能|こうかんかのう}}!` = quante volte puoi ancora completare
+- `あと4回{{交換可能|こう.かん.か.のう}}!` = quante volte puoi ancora completare
   l'operazione.
 
 La schermata comunica insieme *tempo*, *stock* e *possibilità residua*. Se ne
@@ -137,7 +137,7 @@ alt: >-
   vendita e bonus playmat/protector.
 caption: >-
   [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
-  mostra deck-prodotto, [{{販売期間|はんばいきかん}}](term:term-sale-period),
+  mostra deck-prodotto, [{{販売期間|はん.ばい.き.かん}}](term:term-sale-period),
   prezzo e bonus `{{特典|とくてん}}プレイマット/プロテクト`: qui non stai
   ancora editando una lista.
 :::
@@ -152,7 +152,7 @@ caption: >-
 
 La schermata aggiunge due elementi molto tipici della UI shop:
 
-- [{{販売期間|はんばいきかん}}](term:term-sale-period) = finestra di vendita;
+- [{{販売期間|はん.ばい.き.かん}}](term:term-sale-period) = finestra di vendita;
 - `{{特典|とくてん}}プレイマット/プロテクト` = bonus inclusi.
 
 La lettura include anche *fino a quando* il prodotto è disponibile e *quali extra*
@@ -180,7 +180,7 @@ livelli di lettura:
 - pannello [キーカード](term:term-key-card) per capire l'identità del mazzo;
 - pulsanti finali come `デッキ[{{概要|がいよう}}](term:term-overview)`,
   `レジェンドスキル{{確認|かくにん}}`
-  e [{{対戦開始|たいせんかいし}}](term:term-start-match).
+  e [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
 
 Qui [レンタルデッキ](term:term-rental-deck) cambia il senso pratico della
 schermata: non stai solo editando una lista tua, stai scegliendo un mazzo già
@@ -195,7 +195,7 @@ Classifica i pulsanti per funzione:
 - `デッキ[{{概要|がいよう}}](term:term-overview)` e
   `デッキ{{確認|かくにん}}` = ispezioni;
 - `デッキ{{編成|へんせい}}` = modifichi;
-- [{{対戦開始|たいせんかいし}}](term:term-start-match) = parti davvero.
+- [{{対戦開始|たい.せん.かい.し}}](term:term-start-match) = parti davvero.
 
 Così eviti di trattare pulsanti diversi come varianti dello stesso flusso.
 
@@ -205,12 +205,12 @@ Così eviti di trattare pulsanti diversi come varianti dello stesso flusso.
 
 :::example_sentence
 jp: >-
-  {{交換期間|こうかんきかん}}は{{3月26日|さんがつにじゅうろくにち}}までだ。
+  {{交換期間|こう.かん.き.かん}}は{{3月26日|さんがつにじゅうろくにち}}までだ。
 translation_it: >-
   Il periodo di scambio dura fino al 26 marzo.
 :::
 
-- [{{交換期間|こうかんきかん}}](term:term-exchange-period) non è il prezzo, ma la
+- [{{交換期間|こう.かん.き.かん}}](term:term-exchange-period) non è il prezzo, ma la
   finestra temporale dell'operazione.
 - Se lo leggi male, rischi di pensare che il contenuto sia ancora attivo quando
   non lo è più.
@@ -232,13 +232,13 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{販売期間|はんばいきかん}}を{{見|み}}てから{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}を{{決|き}}める。
+  {{販売期間|はん.ばい.き.かん}}を{{見|み}}てから{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}を{{決|き}}める。
 translation_it: >-
   Controlla il periodo di vendita prima di decidere se comprare il deck
   prebuilt.
 :::
 
-- [{{販売期間|はんばいきかん}}](term:term-sale-period) ti orienta sul tempo.
+- [{{販売期間|はん.ばい.き.かん}}](term:term-sale-period) ti orienta sul tempo.
 - [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
   ti dice il tipo di prodotto che stai guardando.
 
@@ -246,7 +246,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  デッキ{{一覧|いちらん}}でキーカードを{{確認|かくにん}}してから{{対戦開始|たいせんかいし}}を{{押|お}}す。
+  デッキ{{一覧|いちらん}}でキーカードを{{確認|かくにん}}してから{{対戦開始|たい.せん.かい.し}}を{{押|お}}す。
 translation_it: >-
   Controlla la key card nella deck list prima di premere Avvia partita.
 :::

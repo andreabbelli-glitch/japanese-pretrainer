@@ -191,10 +191,10 @@ lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-001-pokemon-vide
 entry_type: term
 entry_id: term-mokutekichi
 card_type: recognition
-front: '{{目的地|もくてきち}}'
+front: '{{目的地|もく.てき.ち}}'
 back: destinazione / obiettivo segnato
 example_jp: >-
-  マップで {{目的地|もくてきち}}を {{登録|とうろく}}すると {{次|つぎ}}の {{行|い}}き{{先|さき}}が わかりやすい。
+  マップで {{目的地|もく.てき.ち}}を {{登録|とうろく}}すると {{次|つぎ}}の {{行|い}}き{{先|さき}}が わかりやすい。
 example_it: >-
   Se registri una destinazione sulla mappa, capisci meglio dove andare dopo.
 :::
@@ -407,10 +407,10 @@ lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-vide
 entry_type: term
 entry_id: term-joutai-ijou
 card_type: recognition
-front: '{{状態異常|じょうたいいじょう}}'
+front: '{{状態異常|じょう.たい.い.じょう}}'
 back: alterazione di stato
 example_jp: >-
-  {{状態異常|じょうたいいじょう}}に なると {{思|おも}}うように {{動|うご}}けない ことが ある。
+  {{状態異常|じょう.たい.い.じょう}}に なると {{思|おも}}うように {{動|うご}}けない ことが ある。
 example_it: >-
   Con un'alterazione di stato può capitare di non riuscire ad agire come vuoi.
 :::
@@ -435,7 +435,7 @@ card_type: recognition
 front: '{{回復|かいふく}}'
 back: recupero / cura
 example_jp: >-
-  ポケモンセンターで HPと {{状態異常|じょうたいいじょう}}を {{回復|かいふく}}してもらおう。
+  ポケモンセンターで HPと {{状態異常|じょう.たい.い.じょう}}を {{回復|かいふく}}してもらおう。
 example_it: >-
   Al Centro Pokemon fatti curare sia gli HP sia gli stati alterati.
 :::
@@ -519,7 +519,7 @@ romaji: keikenchi
 meaning_it: punti esperienza
 notes_it: >-
   Spiega la crescita numerica dopo le lotte. Quando la schermata
-  post-battaglia parla di `{{経験値|けいけんち}}`, il gioco sta indicando la risorsa
+  post-battaglia parla di `{{経験値|けい.けん.ち}}`, il gioco sta indicando la risorsa
   che fa salire di livello i Pokemon coinvolti.
 :::
 :::card
@@ -528,10 +528,10 @@ lesson_id: lesson-pokemon-scarlet-violet-pokemon-videogame-core-002-pokemon-vide
 entry_type: term
 entry_id: term-keikenchi
 card_type: recognition
-front: '{{経験値|けいけんち}}'
+front: '{{経験値|けい.けん.ち}}'
 back: punti esperienza
 example_jp: >-
-  {{経験値|けいけんち}}を もらうと レベルが {{上|あ}}がっていく。
+  {{経験値|けい.けん.ち}}を もらうと レベルが {{上|あ}}がっていく。
 example_it: >-
   Ricevendo esperienza, il livello continua a salire.
 :::
@@ -618,7 +618,7 @@ aliases: [～てみよう, ～てみたら]
 notes_it: >-
   Nei tutorial Pokemon introduce un test operativo immediato. Dopo `～てみる`,
   il gioco richiede di eseguire l'azione nella UI, per esempio registrare una
-  [{{目的地|もくてきち}}](term:term-mokutekichi) o aprire
+  [{{目的地|もく.てき.ち}}](term:term-mokutekichi) o aprire
   [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru).
 :::
 :::card
@@ -630,7 +630,7 @@ card_type: concept
 front: '～てみる'
 back: provare a fare
 example_jp: >-
-  {{目的地|もくてきち}}に {{登録|とうろく}}してみたら？
+  {{目的地|もく.てき.ち}}に {{登録|とうろく}}してみたら？
 example_it: >-
   Che ne dici di provare a registrare una destinazione?
 :::

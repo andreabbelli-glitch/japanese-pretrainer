@@ -108,12 +108,12 @@ assets:
     height: 908
     card_id: card-apollonus-dragelion-recognition
     lesson_slug: dm25-sd2-overview
-    anchor: "#### 2.3 {{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン"
+    anchor: "#### 2.3 {{超神羅星|ちょう.しん.ら.せい}}アポロヌス・ドラゲリオン"
     alt_it: >-
       Carta di ちょうしんらせいアポロヌス・ドラゲリオン centrata e leggibile.
     caption_it: >-
       Immagine ufficiale di
-      {{超神羅星|ちょうしんらせい}}
+      {{超神羅星|ちょう.しん.ら.せい}}
       [アポロヌス・ドラゲリオン](term:term-apollonus-dragelion), finisher
       simbolo del deck `DM25-SD2`.
     notes: >-
@@ -147,7 +147,7 @@ assets:
       ottenimento, scadenza claim e bottone di riscossione.
     caption_it: >-
       Ogni riga del `プレゼントボックス` combina nome reward,
-      `{{獲得日時|かくとくにちじ}}`, `{{受|う}}け{{取|と}}り{{期限|きげん}}` e bottone
+      `{{獲得日時|かく.とく.にち.じ}}`, `{{受|う}}け{{取|と}}り{{期限|きげん}}` e bottone
       `{{受|う}}け{{取|と}}る`: è una schermata di claim, non un semplice
       deposito di premi.
     notes: >-
@@ -167,7 +167,7 @@ assets:
       In [ステージ{{選択|せんたく}}](term:term-stage-select) scegli lo stage a
       sinistra e, a destra, controlli avversario, reward, opzioni di skip e
       pulsanti come `{{報酬|ほうしゅう}}{{確認|かくにん}}` e
-      [{{対戦開始|たいせんかいし}}](term:term-start-match).
+      [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
     notes: >-
       Screenshot fornito dall'utente e copiato da Downloads.
   - id: duel-plays-reward-claim-popup
@@ -215,7 +215,7 @@ assets:
     caption_it: >-
       [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) va letto
       come menu di risorse e controlli: bottoni di acquisto, stock ticket,
-      `カード{{一覧|いちらん}}` e `{{提供割合|ていきょうわりあい}}`.
+      `カード{{一覧|いちらん}}` e `{{提供割合|てい.きょう.わり.あい}}`.
     notes: >-
       Screenshot fornito dall'utente e copiato da Downloads.
   - id: duel-plays-pack-purchase-count
@@ -293,9 +293,9 @@ assets:
     caption_it: >-
       In [カード{{交換|こうかん}}](term:term-card-exchange) prima leggi tab,
       filtri e valuta; poi la singola riga carta con
-      [{{交換期間|こうかんきかん}}](term:term-exchange-period),
+      [{{交換期間|こう.かん.き.かん}}](term:term-exchange-period),
       [{{所持|しょじ}}](term:term-owned) e
-      `あと{{4回交換可能|よんかいこうかんかのう}}！`.
+      `あと{{4回交換可能|よん.かい.こう.かん.か.のう}}！`.
     notes: >-
       Screenshot fornito dall'utente e copiato da Downloads.
   - id: duel-plays-card-exchange-shortage-popup
@@ -325,7 +325,7 @@ assets:
       vendita e bonus playmat/protector.
     caption_it: >-
       [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
-      mostra deck-prodotto, [{{販売期間|はんばいきかん}}](term:term-sale-period),
+      mostra deck-prodotto, [{{販売期間|はん.ばい.き.かん}}](term:term-sale-period),
       prezzo e bonus `{{特典|とくてん}}プレイマット/プロテクト`: qui non
       stai ancora editando una lista.
     notes: >-

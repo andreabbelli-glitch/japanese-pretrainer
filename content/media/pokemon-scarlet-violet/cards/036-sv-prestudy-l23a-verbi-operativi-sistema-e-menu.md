@@ -265,7 +265,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-036-sv-prestudy-l23a-verbi-
 entry_type: term
 entry_id: term-v400-tsuushinkoukan
 card_type: recognition
-front: "{{通信交換|つうしんこうかん}}"
+front: "{{通信交換|つう.しん.こう.かん}}"
 back: scambio in link / trade
 example_jp: >-
   ポケモンを {{交換|こうかん}}します。
@@ -371,10 +371,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-036-sv-prestudy-l23a-verbi-
 entry_type: term
 entry_id: term-v406-tekagen
 card_type: recognition
-front: "{{手加減|てかげん}}"
+front: "{{手加減|て.か.げん}}"
 back: trattenersi / non andare al massimo
 example_jp: >-
-  バトルで {{手加減|てかげん}}を {{使|つか}}います。
+  バトルで {{手加減|て.か.げん}}を {{使|つか}}います。
 example_it: >-
   Uso il trattenersi in battaglia.
 :::
@@ -503,10 +503,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-036-sv-prestudy-l23a-verbi-
 entry_type: term
 entry_id: term-v412-zukan-kansei
 card_type: recognition
-front: "{{図鑑完成|ずかんかんせい}}"
+front: "{{図鑑完成|ず.かん.かん.せい}}"
 back: completamento del Pokédex
 example_jp: >-
-  メニューで {{図鑑完成|ずかんかんせい}}を {{見|み}}ます。
+  メニューで {{図鑑完成|ず.かん.かん.せい}}を {{見|み}}ます。
 example_it: >-
   Guardo il completamento del Pokédex in menu.
 :::

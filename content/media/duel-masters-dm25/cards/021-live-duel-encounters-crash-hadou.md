@@ -48,7 +48,7 @@ meaning_it: può attaccare subito nel turno in cui entra
 pos: keyword
 aliases: [スピードアタッカー, speed attacker, supiido atakkaa]
 notes_it: >-
-  Il testo tecnico `{{召喚酔|しょうかんよ}}いしない` dice che la creatura può
+  Il testo tecnico `{{召喚酔|しょう.かん.よ}}いしない` dice che la creatura può
   attaccare nello stesso turno in cui entra. Su una carta aggressiva questo
   trasforma subito il corpo in pressione.
 level_hint: custom
@@ -163,10 +163,10 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-crash-hadou
 entry_type: term
 entry_id: term-crash-hadou
 card_type: recognition
-front: '{{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}'
+front: '{{勝利龍装|しょう.り.りゅう.そう}} クラッシュ{{覇道|はどう}}'
 back: Crash Hadou / finisher con turno extra
 example_jp: >-
-  {{勝利龍装|しょうりりゅうそう}} クラッシュ{{覇道|はどう}}が
+  {{勝利龍装|しょう.り.りゅう.そう}} クラッシュ{{覇道|はどう}}が
   タップ{{状態|じょうたい}}で{{破壊|はかい}}されると、
   {{追加|ついか}}ターンが{{入|はい}}る。
 example_it: >-
@@ -205,14 +205,14 @@ entry_id: term-b-a-d-two
 card_type: concept
 front: >-
   このクリーチャーの{{召喚|しょうかん}}コストを{{2|ふた}}つ{{少|すく}}なくしてもよい。
-  そうした{{場合|ばあい}}、このターン{{終了時|しゅうりょうじ}}にこの
+  そうした{{場合|ばあい}}、このターン{{終了時|しゅう.りょう.じ}}にこの
   クリーチャーを{{破壊|はかい}}する。
 back: >-
   Puoi ridurre di 2 il costo di evocazione di questa creatura; se lo fai, alla
   fine di questo turno la distruggi.
 example_jp: >-
   {{B・A・D 2|びーえーでぃーつー}}を{{使|つか}}うと、{{召喚|しょうかん}}コストを{{2|ふた}}つ
-  {{少|すく}}なくできるが、{{終了時|しゅうりょうじ}}にこのクリーチャーを
+  {{少|すく}}なくできるが、{{終了時|しゅう.りょう.じ}}にこのクリーチャーを
   {{破壊|はかい}}する。
 example_it: >-
   Se usi B.A.D 2 puoi ridurre di 2 il costo di evocazione, ma alla fine del
