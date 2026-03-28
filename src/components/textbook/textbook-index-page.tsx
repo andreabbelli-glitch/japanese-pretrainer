@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 import type { TextbookIndexData } from "@/lib/textbook";
 import { mediaHref, mediaTextbookLessonHref } from "@/lib/site";
@@ -12,6 +15,24 @@ type TextbookIndexPageProps = {
 };
 
 export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
+  // Collapse completed groups by default
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {};
+    for (const group of data.groups) {
+      if (
+        group.totalLessons > 0 &&
+        group.completedLessons === group.totalLessons
+      ) {
+        initial[group.id] = true;
+      }
+    }
+    return initial;
+  });
+
+  function toggleGroup(id: string) {
+    setCollapsed((prev) => ({ ...prev, [id]: !prev[id] }));
+  }
+
   const resumeHref = data.resumeLesson
     ? mediaTextbookLessonHref(data.media.slug, data.resumeLesson.slug)
     : null;
@@ -54,52 +75,79 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
 
       {data.groups.length > 0 ? (
         <div className="textbook-group-list">
-          {data.groups.map((group) => (
-            <section key={group.id} className="textbook-group">
-              <div className="textbook-group__heading">
-                <div>
-                  <p className="eyebrow">{group.title}</p>
-                  <h3 className="textbook-group__title">
-                    {group.completedLessons}/{group.totalLessons} lette
-                  </h3>
-                </div>
-                {group.note ? (
-                  <p className="textbook-group__note">{group.note}</p>
-                ) : null}
-              </div>
+          {data.groups.map((group) => {
+            const isCollapsed = !!collapsed[group.id];
 
-              <div className="textbook-lesson-grid">
-                {group.lessons.map((lesson) => (
-                  <Link
-                    key={lesson.id}
-                    className="textbook-lesson-link"
-                    href={mediaTextbookLessonHref(data.media.slug, lesson.slug)}
+            return (
+              <section key={group.id} className="textbook-group">
+                <button
+                  type="button"
+                  className="textbook-group__heading textbook-group__toggle"
+                  onClick={() => toggleGroup(group.id)}
+                  aria-expanded={!isCollapsed}
+                >
+                  <div>
+                    <p className="eyebrow">{group.title}</p>
+                    <h3 className="textbook-group__title">
+                      {group.completedLessons}/{group.totalLessons} lette
+                    </h3>
+                  </div>
+                  {group.note && !isCollapsed ? (
+                    <p className="textbook-group__note">{group.note}</p>
+                  ) : null}
+                  <span
+                    className="textbook-group__chevron"
+                    aria-hidden="true"
                   >
-                    <SurfaceCard className="textbook-lesson-card" variant="quiet">
-                      <div className="textbook-lesson-card__top">
-                        <span className={`meta-pill meta-pill--${lesson.status}`}>
-                          {lesson.statusLabel}
-                        </span>
-                        {lesson.difficulty ? (
-                          <span className="chip">{lesson.difficulty}</span>
-                        ) : null}
-                      </div>
-                      <h4 className="textbook-lesson-card__title">{lesson.title}</h4>
-                      <p className="textbook-lesson-card__body">
-                        {lesson.summary ??
-                          lesson.excerpt ??
-                          "Apri la lesson nel reader con tooltip e controllo furigana."}
-                      </p>
-                      <div className="textbook-lesson-card__footer">
-                        <span>{lesson.segmentTitle}</span>
-                        <span>Apri</span>
-                      </div>
-                    </SurfaceCard>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ))}
+                    {isCollapsed ? "▸" : "▾"}
+                  </span>
+                </button>
+
+                {!isCollapsed && (
+                  <div className="textbook-lesson-grid">
+                    {group.lessons.map((lesson) => (
+                      <Link
+                        key={lesson.id}
+                        className="textbook-lesson-link"
+                        href={mediaTextbookLessonHref(
+                          data.media.slug,
+                          lesson.slug,
+                        )}
+                      >
+                        <SurfaceCard
+                          className="textbook-lesson-card"
+                          variant="quiet"
+                        >
+                          <div className="textbook-lesson-card__top">
+                            <span
+                              className={`meta-pill meta-pill--${lesson.status}`}
+                            >
+                              {lesson.statusLabel}
+                            </span>
+                            {lesson.difficulty ? (
+                              <span className="chip">{lesson.difficulty}</span>
+                            ) : null}
+                          </div>
+                          <h4 className="textbook-lesson-card__title">
+                            {lesson.title}
+                          </h4>
+                          <p className="textbook-lesson-card__body">
+                            {lesson.summary ??
+                              lesson.excerpt ??
+                              "Apri la lesson nel reader con tooltip e controllo furigana."}
+                          </p>
+                          <div className="textbook-lesson-card__footer">
+                            <span>{lesson.segmentTitle}</span>
+                            <span>Apri</span>
+                          </div>
+                        </SurfaceCard>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </section>
+            );
+          })}
         </div>
       ) : (
         <EmptyState

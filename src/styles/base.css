@@ -988,6 +988,27 @@ rt {
   gap: var(--space-3);
 }
 
+.textbook-group__toggle {
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  padding-inline-end: var(--space-5);
+  border-radius: var(--radius-2);
+}
+
+.textbook-group__toggle:hover {
+  background: var(--color-surface-hover, rgba(0, 0, 0, 0.03));
+}
+
+.textbook-group__chevron {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: var(--text-base);
+  color: var(--color-ink-muted);
+  line-height: 1;
+}
+
 .textbook-lesson-grid {
   display: grid;
   gap: var(--space-4);
