@@ -23,11 +23,6 @@ import {
   type ReviewPageData,
   type ReviewQueueCard
 } from "@/lib/review";
-import {
-  createRequestReviewProfiler,
-  scheduleReviewProfilerFlush,
-  type ReviewProfiler
-} from "@/lib/review-profiler";
 import { mediaReviewCardHref, mediaStudyHref, reviewHref } from "@/lib/site";
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
@@ -209,30 +204,16 @@ export async function gradeReviewCardSessionAction(
     rating: "again" | "hard" | "good" | "easy";
   }
 ): Promise<ReviewPageData> {
-  const profiler = await createRequestReviewProfiler({
-    label: "action:gradeReviewCardSession",
-    meta: {
-      cardId: input.cardId,
-      nextCardId: input.nextCardId ?? null,
-      rating: input.rating,
-      scope: input.scope ?? "media"
-    }
-  });
-  scheduleReviewProfilerFlush(profiler);
   const media =
     input.scope === "media" && input.mediaSlug
-      ? await profiler.measure("requireMediaForSlug", () =>
-          requireMediaForSlug(input.mediaSlug!)
-        )
+      ? await requireMediaForSlug(input.mediaSlug!)
       : undefined;
 
-  await profiler.measure("applyReviewGrade", () =>
-    applyReviewGrade({
-      cardId: input.cardId,
-      expectedMediaId: media?.id,
-      rating: input.rating
-    })
-  );
+  await applyReviewGrade({
+    cardId: input.cardId,
+    expectedMediaId: media?.id,
+    rating: input.rating
+  });
 
   revalidateActiveReviewCaches(media?.id);
 
@@ -295,27 +276,21 @@ export async function gradeReviewCardSessionAction(
         } satisfies ReviewPageData;
       }
 
-      return profiler.measure("requireReviewPageDataForScope", () =>
-        requireReviewPageDataForScope(
-          input,
-          buildReviewSearchParams({
-            answeredCount: input.answeredCount + 1,
-            extraNewCount: input.extraNewCount
-          }),
-          profiler,
-          media
-        )
+      return requireReviewPageDataForScope(
+        input,
+        buildReviewSearchParams({
+          answeredCount: input.answeredCount + 1,
+          extraNewCount: input.extraNewCount
+        }),
+        media
       );
     }
 
     const now = new Date();
-    const hydratedCard = await profiler.measure("hydrateReviewCard.next", () =>
-      hydrateReviewCard({
-        cardId: nextCardId,
-        now,
-        profiler
-      })
-    );
+    const hydratedCard = await hydrateReviewCard({
+      cardId: nextCardId,
+      now
+    });
 
     if (hydratedCard) {
       return {
@@ -341,36 +316,22 @@ export async function gradeReviewCardSessionAction(
     }
   }
 
-  return profiler.measure("requireReviewPageDataForScope", () =>
-    requireReviewPageDataForScope(
-      input,
-      buildReviewSearchParams({
-        answeredCount: input.answeredCount + 1,
-        extraNewCount: input.extraNewCount
-      }),
-      profiler,
-      media
-    )
+  return requireReviewPageDataForScope(
+    input,
+    buildReviewSearchParams({
+      answeredCount: input.answeredCount + 1,
+      extraNewCount: input.extraNewCount
+    }),
+    media
   );
 }
 
 export async function prefetchReviewCardSessionAction(input: {
   cardId: string;
 }): Promise<ReviewQueueCard | null> {
-  const profiler = await createRequestReviewProfiler({
-    label: "action:prefetchReviewCardSession",
-    meta: {
-      cardId: input.cardId
-    }
+  return hydrateReviewCard({
+    cardId: input.cardId
   });
-  scheduleReviewProfilerFlush(profiler);
-
-  return profiler.measure("hydrateReviewCard", () =>
-    hydrateReviewCard({
-      cardId: input.cardId,
-      profiler
-    })
-  );
 }
 
 export async function loadReviewPageDataSessionAction(input: {
@@ -378,24 +339,12 @@ export async function loadReviewPageDataSessionAction(input: {
   scope: "global" | "media";
   searchParams: Record<string, string | string[] | undefined>;
 }): Promise<ReviewPageData> {
-  const profiler = await createRequestReviewProfiler({
-    label: "action:loadReviewPageDataSession",
-    meta: {
-      mediaSlug: input.mediaSlug ?? null,
+  return requireReviewPageDataForScope(
+    {
+      mediaSlug: input.mediaSlug,
       scope: input.scope
-    }
-  });
-  scheduleReviewProfilerFlush(profiler);
-
-  return profiler.measure("requireReviewPageDataForScope", () =>
-    requireReviewPageDataForScope(
-      {
-        mediaSlug: input.mediaSlug,
-        scope: input.scope
-      },
-      input.searchParams,
-      profiler
-    )
+    },
+    input.searchParams
   );
 }
 
@@ -426,7 +375,6 @@ export async function markLinkedEntryKnownSessionAction(
       notice: "known",
       redirectMode: input.redirectMode
     }),
-    null,
     media
   );
 }
@@ -458,7 +406,6 @@ export async function setLinkedEntryLearningSessionAction(
       notice: "learning",
       redirectMode: input.redirectMode
     }),
-    null,
     media
   );
 }
@@ -489,7 +436,6 @@ export async function resetReviewCardSessionAction(
       notice: "reset",
       redirectMode: input.redirectMode
     }),
-    null,
     media
   );
 }
@@ -522,7 +468,6 @@ export async function setReviewCardSuspendedSessionAction(
       notice: input.suspended ? "suspended" : "resumed",
       redirectMode: input.redirectMode
     }),
-    null,
     media
   );
 }
@@ -691,14 +636,12 @@ function buildReviewSearchParams(input: {
 async function requireReviewPageData(
   mediaSlug: string,
   searchParams: Record<string, string | string[] | undefined>,
-  profiler?: ReviewProfiler | null,
   resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {},
   excludeCardIds?: string[]
 ) {
   const data = await getReviewPageData(mediaSlug, searchParams, db, {
     bypassCache: true,
     excludeCardIds,
-    profiler,
     resolvedMedia
   });
 
@@ -712,7 +655,6 @@ async function requireReviewPageData(
 async function requireReviewPageDataForScope(
   input: Pick<ReviewSessionInput, "gradedCardIds" | "mediaSlug" | "scope">,
   searchParams: Record<string, string | string[] | undefined>,
-  profiler?: ReviewProfiler | null,
   resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {}
 ) {
   const excludeCardIds = input.gradedCardIds;
@@ -720,8 +662,7 @@ async function requireReviewPageDataForScope(
   if (input.scope === "global") {
     return getGlobalReviewPageData(searchParams, db, {
       bypassCache: true,
-      excludeCardIds,
-      profiler
+      excludeCardIds
     });
   }
 
@@ -732,7 +673,6 @@ async function requireReviewPageDataForScope(
   return requireReviewPageData(
     input.mediaSlug,
     searchParams,
-    profiler,
     resolvedMedia,
     excludeCardIds
   );

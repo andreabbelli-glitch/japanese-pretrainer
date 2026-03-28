@@ -209,10 +209,27 @@ function getGlossaryQueryLoader<K extends EntryType>(
 
 async function queryGlossaryEntries(
   database: DatabaseClient,
+  kind: "term",
+  where?: SQL<unknown>
+): Promise<TermGlossaryRow[]>;
+async function queryGlossaryEntries(
+  database: DatabaseClient,
+  kind: "grammar",
+  where?: SQL<unknown>
+): Promise<GrammarGlossaryRow[]>;
+async function queryGlossaryEntries(
+  database: DatabaseClient,
   kind: EntryType,
   where?: SQL<unknown>
-): Promise<TermGlossaryRow[] | GrammarGlossaryRow[]> {
-  return getGlossaryQueryLoader(database, kind).findMany(where);
+): Promise<TermGlossaryRow[] | GrammarGlossaryRow[]>;
+async function queryGlossaryEntries(
+  database: DatabaseClient,
+  kind: EntryType,
+  where?: SQL<unknown>
+) {
+  return getGlossaryQueryLoader(database, kind).findMany(where) as Promise<
+    TermGlossaryRow[] | GrammarGlossaryRow[]
+  >;
 }
 
 async function queryGlossaryEntry(

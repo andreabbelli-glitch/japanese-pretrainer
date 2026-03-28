@@ -4,6 +4,7 @@ import type { ReviewCardListItem } from "@/db";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
+  normalizeReviewSubjectSurface,
   selectReviewSubjectRepresentativeCard
 } from "@/lib/review-subject";
 
@@ -18,6 +19,8 @@ function buildReviewCard(
     sourceFile: input.sourceFile ?? `tests/${input.id}.md`,
     cardType: input.cardType ?? "recognition",
     front: input.front,
+    normalizedFront:
+      input.normalizedFront ?? normalizeReviewSubjectSurface(input.front),
     back: input.back ?? `${input.front} back`,
     exampleJp: input.exampleJp ?? null,
     exampleIt: input.exampleIt ?? null,
