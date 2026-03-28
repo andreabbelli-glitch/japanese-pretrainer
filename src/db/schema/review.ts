@@ -48,7 +48,8 @@ export const card = sqliteTable(
   (table) => [
     index("card_media_order_idx").on(table.mediaId, table.orderIndex),
     index("card_lesson_idx").on(table.lessonId),
-    index("card_segment_order_idx").on(table.segmentId, table.orderIndex)
+    index("card_segment_order_idx").on(table.segmentId, table.orderIndex),
+    index("card_status_type_idx").on(table.status, table.cardType)
   ]
 );
 
@@ -66,7 +67,10 @@ export const cardEntryLink = sqliteTable(
     }).notNull()
   },
   (table) => [
-    index("card_entry_link_card_idx").on(table.cardId),
+    index("card_entry_link_card_rel_idx").on(
+      table.cardId,
+      table.relationshipType
+    ),
     index("card_entry_link_entry_idx").on(table.entryType, table.entryId),
     uniqueIndex("card_entry_link_unique").on(
       table.cardId,

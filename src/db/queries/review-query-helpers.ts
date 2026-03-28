@@ -20,7 +20,13 @@ function normalizeReviewSubjectSurfaceSql(expression: string) {
   return `replace(replace(replace(replace(trim(${expression}), '～', '〜'), char(10), ' '), char(13), ' '), char(9), ' ')`;
 }
 
-export function buildReviewSubjectIdentityCteSql() {
+export function buildReviewSubjectIdentityCteSql(options?: {
+  mediaFilter?: string;
+}) {
+  const mediaClause = options?.mediaFilter
+    ? `\n        AND c.media_id IN (${options.mediaFilter})`
+    : "";
+
   return `
     normalized_front_parts AS (
       SELECT
@@ -29,7 +35,7 @@ export function buildReviewSubjectIdentityCteSql() {
         '' AS normalized_front
       FROM card c
       WHERE c.status != 'archived'
-        AND c.card_type = 'concept'
+        AND c.card_type = 'concept'${mediaClause}
       UNION ALL
       SELECT
         card_id,
@@ -56,18 +62,6 @@ export function buildReviewSubjectIdentityCteSql() {
       FROM normalized_front_parts
       WHERE remaining_front = ''
     ),
-    primary_presence AS (
-      SELECT
-        c.id AS card_id,
-        EXISTS(
-          SELECT 1
-          FROM card_entry_link cel_primary
-          WHERE cel_primary.card_id = c.id
-            AND cel_primary.relationship_type = 'primary'
-        ) AS has_primary
-      FROM card c
-      WHERE c.status != 'archived'
-    ),
     driving_links AS (
       SELECT
         c.id AS card_id,
@@ -79,14 +73,17 @@ export function buildReviewSubjectIdentityCteSql() {
         cel.entry_type AS entry_type,
         cel.entry_id AS entry_id
       FROM card c
-      INNER JOIN primary_presence pp
-        ON pp.card_id = c.id
       INNER JOIN card_entry_link cel
         ON cel.card_id = c.id
-      WHERE c.status != 'archived'
+      WHERE c.status != 'archived'${mediaClause}
         AND (
           cel.relationship_type = 'primary'
-          OR pp.has_primary = 0
+          OR NOT EXISTS(
+            SELECT 1
+            FROM card_entry_link cel_primary
+            WHERE cel_primary.card_id = c.id
+              AND cel_primary.relationship_type = 'primary'
+          )
         )
     ),
     driving_link_counts AS (
@@ -107,7 +104,12 @@ export function buildReviewSubjectIdentityCteSql() {
         c.lesson_id AS lesson_id,
         c.order_index AS order_index,
         c.created_at AS created_at,
-        pp.has_primary AS has_primary,
+        EXISTS(
+          SELECT 1
+          FROM card_entry_link cel_primary
+          WHERE cel_primary.card_id = c.id
+            AND cel_primary.relationship_type = 'primary'
+        ) AS has_primary,
         dlc.entry_type AS entry_type,
         dlc.entry_id AS entry_id,
         CASE
@@ -118,7 +120,12 @@ export function buildReviewSubjectIdentityCteSql() {
         CASE
           WHEN COALESCE(dlc.link_count, 0) != 1 THEN 'card:' || c.id
           WHEN c.card_type = 'concept'
-            AND pp.has_primary = 1
+            AND EXISTS(
+              SELECT 1
+              FROM card_entry_link cel_primary
+              WHERE cel_primary.card_id = c.id
+                AND cel_primary.relationship_type = 'primary'
+            )
             AND nf.normalized_front IS NOT NULL
             AND NOT (
               CASE
@@ -151,8 +158,6 @@ export function buildReviewSubjectIdentityCteSql() {
           ELSE 'entry:' || COALESCE(dlc.entry_type, 'card') || ':' || COALESCE(dlc.entry_id, c.id)
         END AS subject_key
       FROM card c
-      INNER JOIN primary_presence pp
-        ON pp.card_id = c.id
       LEFT JOIN driving_link_counts dlc
         ON dlc.card_id = c.id
       LEFT JOIN normalized_front nf
@@ -163,7 +168,7 @@ export function buildReviewSubjectIdentityCteSql() {
       LEFT JOIN grammar_pattern gp
         ON dlc.entry_type = 'grammar'
        AND gp.id = dlc.entry_id
-      WHERE c.status != 'archived'
+      WHERE c.status != 'archived'${mediaClause}
     )
   `;
 }
