@@ -6,6 +6,8 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
+  card,
+  cardEntryLink,
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
@@ -24,6 +26,14 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import {
+  buildReviewSubjectIdentityCteSql,
+  quoteSqlString
+} from "@/db/queries/review-query-helpers";
+import {
+  buildReviewSubjectEntryLookup,
+  deriveReviewSubjectIdentity
+} from "@/lib/review-subject";
 
 describe("database layer", () => {
   let tempDir = "";
@@ -149,6 +159,173 @@ describe("database layer", () => {
 
     expect(dueCards).toHaveLength(1);
     expect(dueCards[0]?.id).toBe(developmentFixture.primaryCardId);
+  });
+
+  it("keeps canonical concept cards aligned between TS and SQL", async () => {
+    const canonicalCardId = "card_fixture_iku_concept";
+
+    await database.insert(card).values({
+      id: canonicalCardId,
+      mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku-concept.md",
+      cardType: "concept",
+      front: "{{行|い}}く",
+      back: "andare",
+      exampleJp: null,
+      exampleIt: null,
+      notesIt: null,
+      status: "active",
+      orderIndex: 3,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card_entry_link_fixture_iku_concept_primary",
+      cardId: canonicalCardId,
+      entryType: "term",
+      entryId: developmentFixture.termDbId,
+      relationshipType: "primary"
+    });
+
+    const entryLookup = buildReviewSubjectEntryLookup({
+      grammar: [],
+      terms: [
+        {
+          crossMediaGroupId: null,
+          id: developmentFixture.termDbId,
+          lemma: "行く",
+          reading: "いく"
+        }
+      ]
+    });
+    const tsIdentity = deriveReviewSubjectIdentity({
+      cardId: canonicalCardId,
+      cardType: "concept",
+      front: "{{行|い}}く",
+      entryLinks: [
+        {
+          entryId: developmentFixture.termDbId,
+          entryType: "term",
+          relationshipType: "primary"
+        }
+      ],
+      entryLookup
+    });
+
+    const [sqlIdentity] = await database.all<{ subjectKey: string }>(`
+      WITH RECURSIVE ${buildReviewSubjectIdentityCteSql()}
+      SELECT subject_key AS subjectKey
+      FROM subject_identity
+      WHERE card_id = ${quoteSqlString(canonicalCardId)}
+    `);
+
+    expect(tsIdentity.subjectKey).toBe(
+      `entry:term:${developmentFixture.termDbId}`
+    );
+    expect(sqlIdentity?.subjectKey).toBe(tsIdentity.subjectKey);
+  });
+
+  it("keeps concept cards with noncanonical primary fronts on card subjects in TS and SQL", async () => {
+    const chunkCardId = "card_fixture_iku_chunk";
+    const chunkFront = "{{行|い}}かずに{{残|のこ}}る";
+    const chunkSubjectKey = `card:${chunkCardId}`;
+
+    await database.insert(card).values({
+      id: chunkCardId,
+      mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku-chunk.md",
+      cardType: "concept",
+      front: chunkFront,
+      back: "restare senza andare",
+      exampleJp: "{{駅|えき}}へ{{行|い}}かずに{{家|いえ}}に{{残|のこ}}る。",
+      exampleIt: "Resto a casa senza andare alla stazione.",
+      notesIt: "Chunk card legata allo stesso termine ma con fronte non canonico.",
+      status: "active",
+      orderIndex: 4,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card_entry_link_fixture_iku_chunk_primary",
+      cardId: chunkCardId,
+      entryType: "term",
+      entryId: developmentFixture.termDbId,
+      relationshipType: "primary"
+    });
+    await database.insert(reviewSubjectState).values({
+      subjectKey: chunkSubjectKey,
+      subjectType: "card",
+      entryType: null,
+      entryId: null,
+      crossMediaGroupId: null,
+      cardId: chunkCardId,
+      state: "review",
+      stability: 2.2,
+      difficulty: 3.8,
+      dueAt: "2026-03-09T12:00:00.000Z",
+      lastReviewedAt: "2026-03-09T09:00:00.000Z",
+      lastInteractionAt: "2026-03-09T09:00:00.000Z",
+      scheduledDays: 1,
+      learningSteps: 0,
+      lapses: 0,
+      reps: 2,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      suspended: false,
+      createdAt: "2026-03-09T09:00:00.000Z",
+      updatedAt: "2026-03-09T09:00:00.000Z"
+    });
+
+    const entryLookup = buildReviewSubjectEntryLookup({
+      grammar: [],
+      terms: [
+        {
+          crossMediaGroupId: null,
+          id: developmentFixture.termDbId,
+          lemma: "行く",
+          reading: "いく"
+        }
+      ]
+    });
+    const tsIdentity = deriveReviewSubjectIdentity({
+      cardId: chunkCardId,
+      cardType: "concept",
+      front: chunkFront,
+      entryLinks: [
+        {
+          entryId: developmentFixture.termDbId,
+          entryType: "term",
+          relationshipType: "primary"
+        }
+      ],
+      entryLookup
+    });
+
+    expect(tsIdentity.subjectKey).toBe(chunkSubjectKey);
+
+    const [sqlIdentity] = await database.all<{ subjectKey: string }>(`
+      WITH RECURSIVE ${buildReviewSubjectIdentityCteSql()}
+      SELECT subject_key AS subjectKey
+      FROM subject_identity
+      WHERE card_id = ${quoteSqlString(chunkCardId)}
+    `);
+
+    expect(sqlIdentity?.subjectKey).toBe(chunkSubjectKey);
+
+    const dueCards = await listDueCardsByMediaId(
+      database,
+      developmentFixture.mediaId,
+      "2026-03-10T00:00:00.000Z"
+    );
+
+    expect(dueCards.map((currentCard) => currentCard.id)).toEqual([
+      developmentFixture.primaryCardId,
+      chunkCardId
+    ]);
   });
 
   it("excludes known_manual cards from the due queue", async () => {

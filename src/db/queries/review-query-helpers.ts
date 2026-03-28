@@ -16,8 +16,46 @@ export function quoteSqlString(value: string) {
   return `'${value.replaceAll("'", "''")}'`;
 }
 
+function normalizeReviewSubjectSurfaceSql(expression: string) {
+  return `replace(replace(replace(replace(trim(${expression}), '～', '〜'), char(10), ' '), char(13), ' '), char(9), ' ')`;
+}
+
 export function buildReviewSubjectIdentityCteSql() {
   return `
+    normalized_front_parts AS (
+      SELECT
+        c.id AS card_id,
+        c.front AS remaining_front,
+        '' AS normalized_front
+      FROM card c
+      WHERE c.status != 'archived'
+        AND c.card_type = 'concept'
+      UNION ALL
+      SELECT
+        card_id,
+        CASE
+          WHEN instr(remaining_front, '{{') = 0 THEN ''
+          ELSE substr(remaining_front, instr(remaining_front, '}}') + 2)
+        END AS remaining_front,
+        normalized_front || CASE
+          WHEN instr(remaining_front, '{{') = 0 THEN remaining_front
+          ELSE substr(remaining_front, 1, instr(remaining_front, '{{') - 1)
+            || substr(
+              substr(remaining_front, instr(remaining_front, '{{') + 2),
+              1,
+              instr(substr(remaining_front, instr(remaining_front, '{{') + 2), '|') - 1
+            )
+        END AS normalized_front
+      FROM normalized_front_parts
+      WHERE remaining_front != ''
+    ),
+    normalized_front AS (
+      SELECT
+        card_id,
+        ${normalizeReviewSubjectSurfaceSql("normalized_front")} AS normalized_front
+      FROM normalized_front_parts
+      WHERE remaining_front = ''
+    ),
     primary_presence AS (
       SELECT
         c.id AS card_id,
@@ -65,9 +103,11 @@ export function buildReviewSubjectIdentityCteSql() {
         c.id AS card_id,
         c.media_id AS media_id,
         c.status AS card_status,
+        c.card_type AS card_type,
         c.lesson_id AS lesson_id,
         c.order_index AS order_index,
         c.created_at AS created_at,
+        pp.has_primary AS has_primary,
         dlc.entry_type AS entry_type,
         dlc.entry_id AS entry_id,
         CASE
@@ -77,6 +117,33 @@ export function buildReviewSubjectIdentityCteSql() {
         END AS cross_media_group_id,
         CASE
           WHEN COALESCE(dlc.link_count, 0) != 1 THEN 'card:' || c.id
+          WHEN c.card_type = 'concept'
+            AND pp.has_primary = 1
+            AND nf.normalized_front IS NOT NULL
+            AND NOT (
+              CASE
+                WHEN dlc.entry_type = 'term' THEN
+                  nf.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
+                  OR (
+                    t.reading IS NOT NULL
+                    AND nf.normalized_front = ${normalizeReviewSubjectSurfaceSql(
+                      "t.reading"
+                    )}
+                  )
+                WHEN dlc.entry_type = 'grammar' THEN
+                  nf.normalized_front = ${normalizeReviewSubjectSurfaceSql(
+                    "gp.pattern"
+                  )}
+                  OR (
+                    gp.reading IS NOT NULL
+                    AND nf.normalized_front = ${normalizeReviewSubjectSurfaceSql(
+                      "gp.reading"
+                    )}
+                  )
+                ELSE 0
+              END
+            )
+            THEN 'card:' || c.id
           WHEN dlc.entry_type = 'term' AND t.cross_media_group_id IS NOT NULL
             THEN 'group:term:' || t.cross_media_group_id
           WHEN dlc.entry_type = 'grammar' AND gp.cross_media_group_id IS NOT NULL
@@ -84,8 +151,12 @@ export function buildReviewSubjectIdentityCteSql() {
           ELSE 'entry:' || COALESCE(dlc.entry_type, 'card') || ':' || COALESCE(dlc.entry_id, c.id)
         END AS subject_key
       FROM card c
+      INNER JOIN primary_presence pp
+        ON pp.card_id = c.id
       LEFT JOIN driving_link_counts dlc
         ON dlc.card_id = c.id
+      LEFT JOIN normalized_front nf
+        ON nf.card_id = c.id
       LEFT JOIN term t
         ON dlc.entry_type = 'term'
        AND t.id = dlc.entry_id

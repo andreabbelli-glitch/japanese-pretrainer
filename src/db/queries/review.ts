@@ -208,7 +208,7 @@ export async function listReviewLaunchCandidates(
     slug: string;
     title: string;
   }>(`
-    WITH ${buildReviewSubjectIdentityCteSql()},
+    WITH RECURSIVE ${buildReviewSubjectIdentityCteSql()},
     subject_media_candidates AS (
       SELECT
         si.media_id AS mediaId,
@@ -325,7 +325,7 @@ export async function listDueCardsByMediaId(
   asOf = new Date().toISOString()
 ) {
   const dueRows = await database.all<{ cardId: string }>(`
-    WITH ${buildReviewSubjectIdentityCteSql()},
+    WITH RECURSIVE ${buildReviewSubjectIdentityCteSql()},
     eligible_due_cards AS (
       SELECT
         si.card_id AS cardId,
