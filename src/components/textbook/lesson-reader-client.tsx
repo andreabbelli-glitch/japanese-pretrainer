@@ -305,6 +305,32 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     await request;
   }, [data.lesson.slug, data.media.slug, entriesByKey, tooltipLoadState]);
 
+  // Prefetch tooltip entries during idle time so they're ready before the
+  // user's first hover/tap.
+  useEffect(() => {
+    if (tooltipLoadState !== "idle") {
+      return;
+    }
+
+    const schedule =
+      typeof window.requestIdleCallback === "function"
+        ? window.requestIdleCallback
+        : (cb: () => void) => window.setTimeout(cb, 150);
+
+    const cancel =
+      typeof window.cancelIdleCallback === "function"
+        ? window.cancelIdleCallback
+        : window.clearTimeout;
+
+    const id = schedule(() => {
+      ensureTooltipEntries();
+    });
+
+    return () => {
+      cancel(id);
+    };
+  }, [tooltipLoadState, ensureTooltipEntries]);
+
   const recomputeTooltipPosition = () => {
     if (!anchorRef.current) {
       return;

@@ -254,13 +254,15 @@ export async function getTextbookLessonTooltipEntries(
     return null;
   }
 
+  // Parse AST synchronously while the entry-link query runs in parallel.
   const lessonDocument = parseLessonAst(lesson.content?.astJson ?? null);
+  const imageCardIds = collectImageCardIds(lessonDocument);
   const lessonEntryLinks = await listLessonEntryLinks(database, lesson.id);
 
   return loadLessonTooltipEntries({
     database,
     lessonEntryLinks,
-    imageCardIds: collectImageCardIds(lessonDocument),
+    imageCardIds,
     mediaSlug
   });
 }
@@ -512,23 +514,16 @@ async function loadLessonTooltipEntries(input: {
     grammarIds.push(entry.entryId);
   }
 
-  const [terms, grammar, studySignals, cards] = await Promise.all([
+  // Launch cross-media counts in parallel with glossary/study queries.
+  // They only need the IDs we already have — no need to wait for the
+  // full glossary rows first.
+  const [terms, grammar, studySignals, cards, termCrossMediaCounts, grammarCrossMediaCounts] = await Promise.all([
     getGlossaryEntriesByIds(input.database, "term", termIds),
     getGlossaryEntriesByIds(input.database, "grammar", grammarIds),
     listEntryStudySignals(input.database, studySignalEntries),
-    getCardsByIds(input.database, input.imageCardIds)
-  ]);
-  const [termCrossMediaCounts, grammarCrossMediaCounts] = await Promise.all([
-    getCrossMediaSiblingCounts(
-      input.database,
-      "term",
-      terms.map((entry) => entry.id)
-    ),
-    getCrossMediaSiblingCounts(
-      input.database,
-      "grammar",
-      grammar.map((entry) => entry.id)
-    )
+    getCardsByIds(input.database, input.imageCardIds),
+    getCrossMediaSiblingCounts(input.database, "term", termIds),
+    getCrossMediaSiblingCounts(input.database, "grammar", grammarIds)
   ]);
   const termMap = new Map(terms.map((entry) => [entry.id, entry]));
   const grammarMap = new Map(grammar.map((entry) => [entry.id, entry]));
