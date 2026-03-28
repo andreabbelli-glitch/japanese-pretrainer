@@ -168,11 +168,16 @@ export function ReviewPageClient({
     lastAcceptedServerDataRef.current = data;
 
     if (!isReviewPageData(data)) {
-      // Server sent FirstCandidate data (e.g. after "add more new" navigation).
-      // Reset viewData so the hydration effect can fire and load full data.
-      latestViewDataRef.current = data;
-      setViewData(data);
-      setRevealedCardId(getInitiallyRevealedCardId(data));
+      // Server sent FirstCandidate data.  Only reset viewData when the
+      // session moved forward (e.g. "add more new" bumped extraNewCount).
+      // After a server-action re-render the counts stay the same, so we
+      // keep the full data the action just returned.
+      const current = latestViewDataRef.current;
+      if (data.session.extraNewCount > current.session.extraNewCount) {
+        latestViewDataRef.current = data;
+        setViewData(data);
+        setRevealedCardId(getInitiallyRevealedCardId(data));
+      }
       return;
     }
 
