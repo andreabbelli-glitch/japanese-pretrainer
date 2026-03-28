@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 
 import {
+  revalidateMediaListCache,
   revalidateReviewSummaryCache,
   revalidateSettingsCache
 } from "@/lib/data-cache";
@@ -42,6 +43,7 @@ export async function setLessonCompletionAction(input: {
   completed: boolean;
 }) {
   await setLessonCompletionState(input.lessonId, input.completed);
+  revalidateMediaListCache();
   revalidateReviewSummaryCache();
 
   revalidatePath("/");

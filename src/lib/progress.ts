@@ -1,11 +1,7 @@
 import { unstable_noStore as noStore } from "next/cache";
 
-import {
-  db,
-  getMediaBySlug,
-  listLessonsByMediaId,
-  type DatabaseClient
-} from "@/db";
+import { db, type DatabaseClient } from "@/db";
+import { getMediaDetailData } from "@/lib/app-shell";
 import {
   mediaGlossaryHref,
   mediaHref,
@@ -14,15 +10,11 @@ import {
   mediaTextbookLessonHref
 } from "@/lib/site";
 import { getStudySettings } from "@/lib/settings";
+import { calculatePercent } from "@/lib/study-format";
 import {
-  calculatePercent,
-  formatMediaTypeLabel,
-  formatSegmentKindLabel,
-  formatStatusLabel
-} from "@/lib/study-format";
-import {
-  buildLessonMetrics,
-  loadGlossaryProgressSnapshot
+  type GlossaryProgressSnapshot,
+  type LessonResumeTarget,
+  type SegmentStudyPreview
 } from "@/lib/study-metrics";
 
 import {
@@ -45,7 +37,7 @@ export type ProgressPageData = {
     totalCards: number;
     upcomingCount: number;
   };
-  glossary: Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>;
+  glossary: GlossaryProgressSnapshot;
   media: {
     description: string;
     glossaryHref: ReturnType<typeof mediaGlossaryHref>;
@@ -61,13 +53,13 @@ export type ProgressPageData = {
     title: string;
   };
   resume: {
-    activeLesson: ReturnType<typeof buildLessonMetrics>["activeLesson"];
+    activeLesson: LessonResumeTarget | null;
     activeLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
-    lastOpenedLesson: ReturnType<typeof buildLessonMetrics>["lastOpenedLesson"];
+    lastOpenedLesson: LessonResumeTarget | null;
     lastOpenedLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
-    resumeLesson: ReturnType<typeof buildLessonMetrics>["resumeLesson"];
+    resumeLesson: LessonResumeTarget | null;
     resumeLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
-    nextLesson: ReturnType<typeof buildLessonMetrics>["nextLesson"];
+    nextLesson: LessonResumeTarget | null;
     nextLessonHref?: ReturnType<typeof mediaTextbookLessonHref>;
     recommendedArea: "review" | "textbook";
     recommendedBody: string;
@@ -95,13 +87,13 @@ export type ProgressPageData = {
   settings: Awaited<ReturnType<typeof getStudySettings>>;
   textbook: {
     completedLessons: number;
-    activeLesson: ReturnType<typeof buildLessonMetrics>["activeLesson"];
-    resumeLesson: ReturnType<typeof buildLessonMetrics>["resumeLesson"];
+    activeLesson: LessonResumeTarget | null;
+    resumeLesson: LessonResumeTarget | null;
     inProgressLessons: number;
-    lastOpenedLesson: ReturnType<typeof buildLessonMetrics>["lastOpenedLesson"];
-    nextLesson: ReturnType<typeof buildLessonMetrics>["nextLesson"];
+    lastOpenedLesson: LessonResumeTarget | null;
+    nextLesson: LessonResumeTarget | null;
     progressPercent: number | null;
-    segments: ReturnType<typeof buildLessonMetrics>["segments"];
+    segments: SegmentStudyPreview[];
     totalLessons: number;
   };
 };
@@ -112,32 +104,18 @@ export async function getMediaProgressPageData(
 ): Promise<ProgressPageData | null> {
   markDataAsLive();
 
-  const media = await getMediaBySlug(database, mediaSlug);
+  const sharedMedia = await getMediaDetailData(mediaSlug, database);
 
-  if (!media) {
+  if (!sharedMedia) {
     return null;
   }
 
-  const [lessons, glossary, reviewSnapshots, settings] =
-    await Promise.all([
-      listLessonsByMediaId(database, media.id),
-      loadGlossaryProgressSnapshot(database, media.id, media.slug),
-      loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id]),
-      getStudySettings(database)
-    ]);
-  const reviewOverview = reviewSnapshots.byMedia.get(media.id);
+  const [reviewSnapshots, settings] = await Promise.all([
+    loadGlobalAndMediaReviewOverviewSnapshots(database, [sharedMedia.id]),
+    getStudySettings(database)
+  ]);
+  const reviewOverview = reviewSnapshots.byMedia.get(sharedMedia.id);
   const globalReviewOverview = reviewSnapshots.global;
-  const {
-    activeLesson,
-    lastOpenedLesson,
-    lessonsCompleted: completedLessons,
-    nextLesson,
-    resumeLesson,
-    segments
-  } = buildLessonMetrics(lessons);
-  const inProgressLessons = lessons.filter(
-    (lesson) => lesson.progress?.status === "in_progress"
-  ).length;
   const review = mapReviewSnapshot(reviewOverview, settings.reviewDailyLimit);
   const globalReview = mapReviewSnapshot(
     globalReviewOverview,
@@ -145,70 +123,71 @@ export async function getMediaProgressPageData(
   );
   const resume = buildResumeModel({
     globalReview,
-    resumeLesson,
-    mediaSlug: media.slug,
-    nextLesson
+    resumeLesson: sharedMedia.resumeLesson,
+    mediaSlug: sharedMedia.slug,
+    nextLesson: sharedMedia.nextLesson
   });
 
   return {
     globalReview,
-    glossary,
+    glossary: sharedMedia.glossary,
     media: {
-      description:
-        media.description ??
-        `${media.title} tiene insieme textbook, glossary e review in un percorso unico.`,
-      glossaryHref: mediaGlossaryHref(media.slug),
-      href: mediaHref(media.slug),
-      mediaTypeLabel: formatMediaTypeLabel(media.mediaType),
-      progressHref: mediaStudyHref(media.slug, "progress"),
-      reviewHref: mediaStudyHref(media.slug, "review"),
-      segmentKindLabel: formatSegmentKindLabel(media.segmentKind),
+      description: sharedMedia.description,
+      glossaryHref: mediaGlossaryHref(sharedMedia.slug),
+      href: mediaHref(sharedMedia.slug),
+      mediaTypeLabel: sharedMedia.mediaTypeLabel,
+      progressHref: mediaStudyHref(sharedMedia.slug, "progress"),
+      reviewHref: mediaStudyHref(sharedMedia.slug, "review"),
+      segmentKindLabel: sharedMedia.segmentKindLabel,
       settingsHref: "/settings",
-      slug: media.slug,
-      statusLabel: formatStatusLabel(media.status),
-      textbookHref: mediaStudyHref(media.slug, "textbook"),
-      title: media.title
+      slug: sharedMedia.slug,
+      statusLabel: sharedMedia.statusLabel,
+      textbookHref: mediaStudyHref(sharedMedia.slug, "textbook"),
+      title: sharedMedia.title
     },
     resume: {
       ...resume,
-      activeLesson,
-      activeLessonHref: activeLesson
-        ? mediaTextbookLessonHref(media.slug, activeLesson.slug)
+      activeLesson: sharedMedia.activeLesson,
+      activeLessonHref: sharedMedia.activeLesson
+        ? mediaTextbookLessonHref(sharedMedia.slug, sharedMedia.activeLesson.slug)
         : undefined,
-      lastOpenedLesson,
-      lastOpenedLessonHref: lastOpenedLesson
-        ? mediaTextbookLessonHref(media.slug, lastOpenedLesson.slug)
+      lastOpenedLesson: sharedMedia.lastOpenedLesson,
+      lastOpenedLessonHref: sharedMedia.lastOpenedLesson
+        ? mediaTextbookLessonHref(
+            sharedMedia.slug,
+            sharedMedia.lastOpenedLesson.slug
+          )
         : undefined,
-      resumeLesson,
-      resumeLessonHref: resumeLesson
-        ? mediaTextbookLessonHref(media.slug, resumeLesson.slug)
+      resumeLesson: sharedMedia.resumeLesson,
+      resumeLessonHref: sharedMedia.resumeLesson
+        ? mediaTextbookLessonHref(sharedMedia.slug, sharedMedia.resumeLesson.slug)
         : undefined,
-      nextLesson,
-      nextLessonHref: nextLesson
-        ? mediaTextbookLessonHref(media.slug, nextLesson.slug)
+      nextLesson: sharedMedia.nextLesson,
+      nextLessonHref: sharedMedia.nextLesson
+        ? mediaTextbookLessonHref(sharedMedia.slug, sharedMedia.nextLesson.slug)
         : undefined
     },
     review,
     settings,
     textbook: {
-      completedLessons,
-      activeLesson,
-      resumeLesson,
-      inProgressLessons,
-      lastOpenedLesson,
-      nextLesson,
-      progressPercent: calculatePercent(completedLessons, lessons.length),
-      segments,
-      totalLessons: lessons.length
+      completedLessons: sharedMedia.lessonsCompleted,
+      activeLesson: sharedMedia.activeLesson,
+      resumeLesson: sharedMedia.resumeLesson,
+      inProgressLessons: sharedMedia.inProgressLessons,
+      lastOpenedLesson: sharedMedia.lastOpenedLesson,
+      nextLesson: sharedMedia.nextLesson,
+      progressPercent: sharedMedia.textbookProgressPercent,
+      segments: sharedMedia.segments,
+      totalLessons: sharedMedia.lessonsTotal
     }
   };
 }
 
 function buildResumeModel(input: {
   globalReview: ProgressPageData["globalReview"];
-  resumeLesson: ReturnType<typeof buildLessonMetrics>["resumeLesson"];
+  resumeLesson: LessonResumeTarget | null;
   mediaSlug: string;
-  nextLesson: ReturnType<typeof buildLessonMetrics>["nextLesson"];
+  nextLesson: LessonResumeTarget | null;
 }) {
   if (input.globalReview.queueCount > 0) {
     const headlineCount =

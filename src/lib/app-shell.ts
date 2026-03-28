@@ -35,6 +35,7 @@ import {
   buildEmptyGlossaryProgressSnapshot,
   loadGlossaryProgressSnapshots,
   loadGlossaryProgressSnapshot,
+  type GlossaryProgressSnapshot,
   type LessonResumeTarget,
   type SegmentStudyPreview,
   type StudyEntryPreview
@@ -61,11 +62,14 @@ export type MediaShellSnapshot = {
   reviewStatValue: string;
   reviewStatDetail: string;
   reviewQueueLabel: string;
+  inProgressLessons: number;
   activeLesson: LessonResumeTarget | null;
+  lastOpenedLesson: LessonResumeTarget | null;
   resumeLesson: LessonResumeTarget | null;
   nextLesson: LessonResumeTarget | null;
   segments: SegmentStudyPreview[];
   previewEntries: StudyEntryPreview[];
+  glossary: GlossaryProgressSnapshot;
 };
 
 export type DashboardData = {
@@ -151,13 +155,26 @@ export async function getMediaDetailData(
   mediaSlug: string,
   database: DatabaseClient = db
 ) {
-  const media = await getMediaBySlug(database, mediaSlug);
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["app-shell", "media-detail", mediaSlug],
+    loader: async () => {
+      const media = await getMediaBySlug(database, mediaSlug);
 
-  if (!media) {
-    return null;
-  }
+      if (!media) {
+        return null;
+      }
 
-  return buildMediaShellSnapshot(database, media);
+      return buildMediaShellSnapshot(database, media);
+    },
+    tags: [
+      MEDIA_LIST_TAG,
+      GLOSSARY_SUMMARY_TAG,
+      REVIEW_SUMMARY_TAG,
+      REVIEW_FIRST_CANDIDATE_TAG,
+      SETTINGS_TAG
+    ]
+  });
 }
 
 async function loadGlossaryProgressSnapshotsCached(
@@ -478,10 +495,14 @@ function mapMediaShellSnapshotFromCounts(input: {
     lessonsCompleted,
     lessonsTotal,
     activeLesson,
+    lastOpenedLesson,
     resumeLesson,
     nextLesson,
     segments
   } = buildLessonMetrics(input.lessons);
+  const inProgressLessons = input.lessons.filter(
+    (lesson) => lesson.progress?.status === "in_progress"
+  ).length;
   const reviewSignals = buildReviewShellSignals(input.reviewCounts);
 
   return {
@@ -507,11 +528,14 @@ function mapMediaShellSnapshotFromCounts(input: {
     reviewStatValue: reviewSignals.value,
     reviewStatDetail: reviewSignals.detail,
     reviewQueueLabel: reviewSignals.queueLabel,
+    inProgressLessons,
     activeLesson,
+    lastOpenedLesson,
     resumeLesson,
     nextLesson,
     segments,
-    previewEntries: input.glossary.previewEntries
+    previewEntries: input.glossary.previewEntries,
+    glossary: input.glossary
   };
 }
 
