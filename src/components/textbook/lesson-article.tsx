@@ -442,7 +442,7 @@ export function LessonArticle({
   );
 }
 
-function formatCrossMediaHintLabel(otherMediaCount: number) {
+export function formatCrossMediaHintLabel(otherMediaCount: number) {
   return otherMediaCount === 1
     ? "Compare anche in 1 altro media."
     : `Compare anche in altri ${otherMediaCount} media.`;

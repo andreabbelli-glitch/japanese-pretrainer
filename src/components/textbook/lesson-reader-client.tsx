@@ -26,7 +26,6 @@ import type {
   TextbookTooltipEntry
 } from "@/lib/textbook";
 import {
-  mediaAssetHref,
   mediaStudyHref,
   mediaTextbookLessonHref,
   mediaTextbookLessonTooltipsHref
@@ -38,6 +37,10 @@ import {
   getTooltipEntryKey,
   LessonArticle,
   type TooltipTarget
+} from "./lesson-article";
+export {
+  LessonArticle,
+  formatCrossMediaHintLabel
 } from "./lesson-article";
 
 type LessonReaderClientProps = {
