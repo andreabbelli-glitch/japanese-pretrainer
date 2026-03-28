@@ -317,6 +317,22 @@ export async function recordLessonOpened(
   };
 }
 
+export async function settleLessonOpenedStateForRender(
+  data: TextbookLessonData,
+  openedState: Promise<LessonOpenState>,
+  onError: (error: unknown) => void = defaultLessonOpenRenderErrorHandler
+) {
+  return Promise.race([
+    openedState
+      .then((state) => applyLessonOpenedState(data, state))
+      .catch((error) => {
+        onError(error);
+        return data;
+      }),
+    new Promise<TextbookLessonData>((resolve) => setTimeout(() => resolve(data), 0))
+  ]);
+}
+
 export async function setLessonCompletionState(
   lessonId: string,
   completed: boolean,
@@ -400,6 +416,10 @@ export function applyLessonOpenedState(
     },
     lessons
   };
+}
+
+function defaultLessonOpenRenderErrorHandler(error: unknown) {
+  console.error("Unable to record textbook lesson open.", error);
 }
 
 async function getTextbookIndexDataForMedia(

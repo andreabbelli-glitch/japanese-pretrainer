@@ -30,6 +30,7 @@ import {
   getTextbookLessonData,
   getTextbookLessonTooltipEntries,
   recordLessonOpened,
+  settleLessonOpenedStateForRender,
   setFuriganaMode,
   setLessonCompletionState
 } from "@/lib/textbook";
@@ -279,6 +280,35 @@ describe("textbook data", () => {
         (lesson) => lesson.id === developmentFixture.lessonId
       )?.status
     ).toBe("in_progress");
+  });
+
+  it("keeps rendering textbook data when recording the opened lesson fails", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "not_started",
+        startedAt: null,
+        completedAt: null,
+        lastOpenedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+    const onError = vi.fn();
+    const failure = new Error("write blocked");
+
+    const settled = await settleLessonOpenedStateForRender(
+      lessonData!,
+      Promise.reject(failure),
+      onError
+    );
+
+    expect(settled).toBe(lessonData);
+    expect(onError).toHaveBeenCalledWith(failure);
   });
 
   it("preserves grammar reading when lesson AST JSON is reloaded", () => {
