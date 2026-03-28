@@ -9,6 +9,7 @@ import { resolveReturnToContext, resolveReturnToLabel } from "@/lib/site";
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { Section } from "../ui/section";
 import { SurfaceCard } from "../ui/surface-card";
+import { SaveSettingsButton } from "./save-settings-button";
 
 type SettingsPageProps = {
   returnTo?: Route | null;
@@ -227,9 +228,7 @@ export function SettingsPage({ returnTo, saved, settings }: SettingsPageProps) {
           </SurfaceCard>
 
           <div className="settings-form__footer">
-            <button className="button button--primary" type="submit">
-              Salva preferenze
-            </button>
+            <SaveSettingsButton />
           </div>
         </form>
       </Section>

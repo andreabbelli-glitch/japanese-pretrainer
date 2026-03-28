@@ -1,14 +1,11 @@
 "use server";
 
 import type { Route } from "next";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { readRequiredString } from "./form-data.ts";
-import { db, listMedia } from "@/db";
 import { revalidateSettingsCache } from "@/lib/data-cache";
 import { buildHrefWithSearch } from "@/lib/site";
-import { mediaHref, mediaStudyHref } from "@/lib/site";
 import {
   normalizeFuriganaMode,
   normalizeGlossaryDefaultSort,
@@ -35,7 +32,7 @@ export async function saveStudySettingsAction(formData: FormData) {
     )
   });
 
-  await revalidateSettingsConsumers();
+  revalidateSettingsCache();
 
   redirect(
     buildHrefWithSearch("/settings", (params) => {
@@ -47,26 +44,6 @@ export async function saveStudySettingsAction(formData: FormData) {
     })
   );
 }
-
-async function revalidateSettingsConsumers() {
-  revalidateSettingsCache();
-  revalidatePath("/");
-  revalidatePath("/media");
-  revalidatePath("/review");
-  revalidatePath("/settings");
-
-  const media = await listMedia(db);
-
-  for (const item of media) {
-    revalidatePath(mediaHref(item.slug));
-    revalidatePath(mediaStudyHref(item.slug, "textbook"), "layout");
-    revalidatePath(mediaStudyHref(item.slug, "review"));
-    revalidatePath(mediaStudyHref(item.slug, "progress"));
-  }
-
-  revalidatePath("/glossary");
-}
-
 
 function readOptionalInternalHref(
   formData: FormData,
