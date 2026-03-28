@@ -571,20 +571,26 @@ async function loadReviewSubjectMutationContext(
   const dedupedMemberCardIds = [...new Set([loadedCard.id, ...memberCardIds])];
   const { termIds: memberEntryRefTerms, grammarIds: memberEntryRefGrammar } =
     splitLinkIds(subjectEntryRefs);
-  const allTermIds = [
-    ...new Set([...termEntryIds, ...memberEntryRefTerms])
-  ];
-  const allGrammarIds = [
-    ...new Set([...grammarEntryIds, ...memberEntryRefGrammar])
-  ];
-  const [allTerms, allGrammar, loadedMemberCards] = await Promise.all([
-    getGlossaryEntriesByIds(txDb, "term", allTermIds),
-    getGlossaryEntriesByIds(txDb, "grammar", allGrammarIds),
+  const termIdsAlreadyLoaded = new Set(termEntryIds);
+  const grammarIdsAlreadyLoaded = new Set(grammarEntryIds);
+  const extraTermIds = memberEntryRefTerms.filter(
+    (id) => !termIdsAlreadyLoaded.has(id)
+  );
+  const extraGrammarIds = memberEntryRefGrammar.filter(
+    (id) => !grammarIdsAlreadyLoaded.has(id)
+  );
+  const [extraTerms, extraGrammar, loadedMemberCards] = await Promise.all([
+    extraTermIds.length > 0
+      ? getGlossaryEntriesByIds(txDb, "term", extraTermIds)
+      : Promise.resolve([]),
+    extraGrammarIds.length > 0
+      ? getGlossaryEntriesByIds(txDb, "grammar", extraGrammarIds)
+      : Promise.resolve([]),
     listReviewCardsByIds(txDb, dedupedMemberCardIds)
   ]);
   const memberEntryLookup = buildReviewSubjectEntryLookup({
-    grammar: allGrammar,
-    terms: allTerms
+    grammar: [...grammar, ...extraGrammar],
+    terms: [...terms, ...extraTerms]
   });
   const memberCards = loadedMemberCards.filter(
     (cardRow) =>

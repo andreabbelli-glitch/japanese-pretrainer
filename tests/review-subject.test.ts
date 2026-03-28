@@ -18,6 +18,7 @@ function buildReviewCard(
     sourceFile: input.sourceFile ?? `tests/${input.id}.md`,
     cardType: input.cardType ?? "recognition",
     front: input.front,
+    normalizedFront: input.normalizedFront ?? null,
     back: input.back ?? `${input.front} back`,
     exampleJp: input.exampleJp ?? null,
     exampleIt: input.exampleIt ?? null,
