@@ -26,8 +26,8 @@ import {
 } from "@/lib/study-metrics";
 
 import {
-  loadGlobalReviewOverviewSnapshot,
-  loadReviewOverviewSnapshots
+  loadGlobalAndMediaReviewOverviewSnapshots,
+  type ReviewOverviewSnapshot
 } from "./review";
 
 export type ProgressPageData = {
@@ -118,19 +118,15 @@ export async function getMediaProgressPageData(
     return null;
   }
 
-  const [lessons, glossary, reviewOverview, globalReviewOverview, settings] =
+  const [lessons, glossary, reviewSnapshots, settings] =
     await Promise.all([
       listLessonsByMediaId(database, media.id),
       loadGlossaryProgressSnapshot(database, media.id, media.slug),
-      loadReviewOverviewSnapshots(database, [
-        {
-          id: media.id,
-          slug: media.slug
-        }
-      ]).then((snapshots) => snapshots.get(media.id)),
-      loadGlobalReviewOverviewSnapshot(database),
+      loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id]),
       getStudySettings(database)
     ]);
+  const reviewOverview = reviewSnapshots.byMedia.get(media.id);
+  const globalReviewOverview = reviewSnapshots.global;
   const {
     activeLesson,
     lastOpenedLesson,
@@ -261,7 +257,7 @@ function buildResumeModel(input: {
 
 function mapReviewSnapshot(
   reviewOverview:
-    | Awaited<ReturnType<typeof loadGlobalReviewOverviewSnapshot>>
+    | ReviewOverviewSnapshot
     | ProgressPageData["review"]
     | undefined,
   dailyLimit: number

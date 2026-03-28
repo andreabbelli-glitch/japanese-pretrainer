@@ -26,9 +26,7 @@ import {
   formatStatusLabel
 } from "@/lib/study-format";
 import {
-  buildReviewOverviewSnapshot,
-  loadReviewLaunchCandidatesCached,
-  loadReviewOverviewSnapshots
+  loadReviewLaunchCandidatesCached
 } from "@/lib/review";
 import { pickBestBy } from "@/lib/collections";
 import { getReviewDailyLimit } from "@/lib/settings";
@@ -290,43 +288,42 @@ async function buildMediaShellSnapshot(
   media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
 ): Promise<MediaShellSnapshot> {
   const nowIso = new Date().toISOString();
-  const [lessons, glossary, review] = await Promise.all([
-    listLessonsByMediaId(database, media.id),
-    loadGlossaryProgressSnapshotsCached(database, [
-      {
-        id: media.id,
-        slug: media.slug
-      }
-    ]).then(
-      (snapshots) =>
-        snapshots.get(media.id) ??
-        buildEmptyGlossaryProgressSnapshot()
-    ),
-    loadReviewOverviewSnapshots(database, [
-      {
-        id: media.id,
-        slug: media.slug
-      }
-    ]).then(
-      (snapshots) =>
-        snapshots.get(media.id) ??
-        buildReviewOverviewSnapshot({
-          cards: [],
-          dailyLimit: 0,
-          entryLookup: new Map(),
-          extraNewCount: 0,
-          newIntroducedTodayCount: 0,
-          nowIso,
-          subjectStates: new Map()
-        })
-    )
-  ]);
+  const [lessons, glossary, reviewCandidates, dailyLimit, newIntroducedByMedia] =
+    await Promise.all([
+      listLessonsByMediaId(database, media.id),
+      loadGlossaryProgressSnapshotsCached(database, [
+        {
+          id: media.id,
+          slug: media.slug
+        }
+      ]).then(
+        (snapshots) =>
+          snapshots.get(media.id) ??
+          buildEmptyGlossaryProgressSnapshot()
+      ),
+      loadReviewLaunchCandidatesCached(database, nowIso),
+      getReviewDailyLimit(database),
+      loadReviewIntroducedOnDayCached(database, [media.id])
+    ]);
 
-  return mapMediaShellSnapshot({
+  const candidate = reviewCandidates.find((c) => c.mediaId === media.id);
+  const newIntroducedForMedia =
+    newIntroducedByMedia.find((e) => e.mediaId === media.id)?.count ?? 0;
+  const newQueuedCount = Math.min(
+    candidate?.newCount ?? 0,
+    Math.max(dailyLimit - newIntroducedForMedia, 0)
+  );
+
+  return mapMediaShellSnapshotFromCounts({
     glossary,
     lessons,
     media,
-    review
+    reviewCounts: {
+      activeReviewCards: candidate?.activeReviewCards ?? 0,
+      cardsTotal: candidate?.cardsTotal ?? 0,
+      dueCount: candidate?.dueCount ?? 0,
+      newQueuedCount
+    }
   });
 }
 
@@ -507,131 +504,6 @@ function mapMediaShellSnapshotFromCounts(input: {
     cardsDue: input.reviewCounts.dueCount,
     cardsTotal: input.reviewCounts.cardsTotal,
     activeReviewCards: input.reviewCounts.activeReviewCards,
-    reviewStatValue: reviewSignals.value,
-    reviewStatDetail: reviewSignals.detail,
-    reviewQueueLabel: reviewSignals.queueLabel,
-    activeLesson,
-    resumeLesson,
-    nextLesson,
-    segments,
-    previewEntries: input.glossary.previewEntries
-  };
-}
-
-function buildReviewSignals({
-  cardsDue,
-  activeReviewCards,
-  cardsTotal,
-  review
-}: {
-  cardsDue: number;
-  activeReviewCards: number;
-  cardsTotal: number;
-  review: ReturnType<typeof buildReviewOverviewSnapshot>;
-}) {
-  const nextCardFront = review.nextCardFront;
-
-  if (review.queueCount > 0) {
-    return {
-      value:
-        review.dueCount > 0
-          ? `${review.dueCount} da ripassare`
-          : review.newQueuedCount > 0
-            ? "Nuove pronte"
-            : `${review.queueCount} in coda`,
-      detail: nextCardFront
-        ? `Prossima card: ${nextCardFront}`
-        : "Sessione pronta",
-      queueLabel: review.queueLabel
-    };
-  }
-
-  if (cardsDue > 0) {
-    return {
-      value: `${cardsDue} da ripassare`,
-      detail: nextCardFront
-        ? `Prossima card: ${nextCardFront}`
-        : "Richiedono attenzione adesso",
-      queueLabel:
-        cardsDue === 1
-          ? "1 card richiede attenzione adesso."
-          : `${cardsDue} card richiedono attenzione adesso.`
-    };
-  }
-
-  if (activeReviewCards > 0) {
-    return {
-      value: "In pari",
-      detail:
-        activeReviewCards === 1
-          ? "1 card è già nella rotazione"
-          : `${activeReviewCards} card sono già nella rotazione`,
-      queueLabel:
-        activeReviewCards === 1
-          ? "1 card è già nella rotazione e oggi la coda è in pari."
-          : `${activeReviewCards} card sono già nella rotazione e oggi la coda è in pari.`
-    };
-  }
-
-  if (cardsTotal > 0) {
-    return {
-      value: "In pausa",
-      detail: "Le card presenti non richiedono Review attiva",
-      queueLabel:
-        "Le card presenti non richiedono Review attiva in questo momento."
-    };
-  }
-
-  return {
-    value: "Vuota",
-    detail: "Nessuna card di Review disponibile",
-    queueLabel: "La coda di Review si popolerà quando importerai le prime card."
-  };
-}
-
-function mapMediaShellSnapshot(input: {
-  glossary: Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>;
-  lessons: Awaited<ReturnType<typeof listLessonsByMediaId>>;
-  media:
-    | MediaListItem
-    | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>;
-  review: ReturnType<typeof buildReviewOverviewSnapshot>;
-}): MediaShellSnapshot {
-  const {
-    lessonsCompleted,
-    lessonsTotal,
-    activeLesson,
-    resumeLesson,
-    nextLesson,
-    segments
-  } = buildLessonMetrics(input.lessons);
-  const reviewSignals = buildReviewSignals({
-    activeReviewCards: input.review.activeCards,
-    cardsDue: input.review.dueCount,
-    cardsTotal: input.review.totalCards,
-    review: input.review
-  });
-
-  return {
-    id: input.media.id,
-    slug: input.media.slug,
-    title: input.media.title,
-    description:
-      input.media.description ??
-      `Pacchetto ${formatMediaTypeLabel(input.media.mediaType).toLowerCase()} pronto per Textbook, Glossary e Review.`,
-    mediaType: input.media.mediaType,
-    mediaTypeLabel: formatMediaTypeLabel(input.media.mediaType),
-    segmentKindLabel: formatSegmentKindLabel(input.media.segmentKind),
-    statusLabel: formatStatusLabel(input.media.status),
-    lessonsCompleted,
-    lessonsTotal,
-    textbookProgressPercent: calculatePercent(lessonsCompleted, lessonsTotal),
-    entriesKnown: input.glossary.entriesCovered,
-    entriesTotal: input.glossary.entriesTotal,
-    glossaryProgressPercent: input.glossary.progressPercent,
-    cardsDue: input.review.dueCount,
-    cardsTotal: input.review.totalCards,
-    activeReviewCards: input.review.activeCards,
     reviewStatValue: reviewSignals.value,
     reviewStatDetail: reviewSignals.detail,
     reviewQueueLabel: reviewSignals.queueLabel,

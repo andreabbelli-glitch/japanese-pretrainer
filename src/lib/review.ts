@@ -1752,6 +1752,82 @@ export async function loadGlobalReviewOverviewSnapshot(
   });
 }
 
+export async function loadGlobalAndMediaReviewOverviewSnapshots(
+  database: DatabaseClient,
+  visibleMediaIds: string[]
+) {
+  const media = await listMediaCached(database);
+
+  if (media.length === 0) {
+    const emptySnapshot = buildReviewOverviewSnapshot({
+      cards: [],
+      dailyLimit: 0,
+      entryLookup: EMPTY_ENTRY_LOOKUP,
+      extraNewCount: 0,
+      newIntroducedTodayCount: 0,
+      nowIso: new Date().toISOString(),
+      subjectStates: new Map()
+    });
+
+    return {
+      global: emptySnapshot,
+      byMedia: new Map<string, ReviewOverviewSnapshot>()
+    };
+  }
+
+  const now = new Date();
+  const dailyLimit = await getReviewDailyLimit(database);
+  const workspace = await loadReviewWorkspaceV2({
+    database,
+    mediaIds: media.map((item) => item.id),
+    now,
+    resolvedDailyLimit: dailyLimit
+  });
+
+  const nowIso = workspace.now.toISOString();
+  const subjectModels = buildReviewSubjectModels({
+    cards: workspace.cards,
+    entryLookup: EMPTY_ENTRY_LOOKUP,
+    nowIso,
+    subjectGroups: workspace.subjectGroups
+  });
+  const buckets = bucketAndSortReviewSubjectModels(subjectModels);
+
+  const globalSnapshot = buildReviewOverviewSnapshot({
+    cards: workspace.cards,
+    dailyLimit: workspace.dailyLimit,
+    entryLookup: EMPTY_ENTRY_LOOKUP,
+    extraNewCount: 0,
+    newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+    nowIso,
+    subjectGroups: workspace.subjectGroups,
+    subjectModels,
+    buckets
+  });
+
+  const byMedia = new Map<string, ReviewOverviewSnapshot>();
+
+  for (const mediaId of visibleMediaIds) {
+    byMedia.set(
+      mediaId,
+      buildReviewOverviewSnapshot({
+        cards: workspace.cards,
+        dailyLimit: workspace.dailyLimit,
+        entryLookup: EMPTY_ENTRY_LOOKUP,
+        extraNewCount: 0,
+        newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+        nowIso,
+        subjectGroups: workspace.subjectGroups,
+        subjectModels,
+        buckets,
+        visibleMediaId: mediaId
+      })
+    );
+  }
+
+  return { global: globalSnapshot, byMedia };
+}
+
 function isReviewSubjectVisibleInMedia(
   group: ReviewSubjectGroup,
   visibleMediaId?: string

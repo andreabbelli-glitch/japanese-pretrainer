@@ -372,7 +372,10 @@ export async function listDueCardsByMediaId(
     return [];
   }
 
-  const cards = await getCardsByIds(database, orderedCardIds);
+  const cards = await database.query.card.findMany({
+    where: inArray(card.id, orderedCardIds),
+    with: cardRelations
+  });
   const cardsById = new Map(cards.map((dueCard) => [dueCard.id, dueCard]));
 
   return orderedCardIds.flatMap((cardId) => {

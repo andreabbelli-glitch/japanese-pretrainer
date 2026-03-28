@@ -37,7 +37,8 @@ export function buildReviewSubjectIdentityCteSql(options?: {
         c.order_index AS order_index,
         c.created_at AS created_at,
         cel.entry_type AS entry_type,
-        cel.entry_id AS entry_id
+        cel.entry_id AS entry_id,
+        cel.relationship_type AS relationship_type
       FROM card c
       INNER JOIN card_entry_link cel
         ON cel.card_id = c.id
@@ -57,7 +58,8 @@ export function buildReviewSubjectIdentityCteSql(options?: {
         dl.card_id AS card_id,
         COUNT(*) AS link_count,
         MIN(dl.entry_type) AS entry_type,
-        MIN(dl.entry_id) AS entry_id
+        MIN(dl.entry_id) AS entry_id,
+        MAX(CASE WHEN dl.relationship_type = 'primary' THEN 1 ELSE 0 END) AS has_primary
       FROM driving_links dl
       GROUP BY dl.card_id
     ),
@@ -70,12 +72,7 @@ export function buildReviewSubjectIdentityCteSql(options?: {
         c.lesson_id AS lesson_id,
         c.order_index AS order_index,
         c.created_at AS created_at,
-        EXISTS(
-          SELECT 1
-          FROM card_entry_link cel_primary
-          WHERE cel_primary.card_id = c.id
-            AND cel_primary.relationship_type = 'primary'
-        ) AS has_primary,
+        COALESCE(dlc.has_primary, 0) AS has_primary,
         dlc.entry_type AS entry_type,
         dlc.entry_id AS entry_id,
         CASE
@@ -86,12 +83,7 @@ export function buildReviewSubjectIdentityCteSql(options?: {
         CASE
           WHEN COALESCE(dlc.link_count, 0) != 1 THEN 'card:' || c.id
           WHEN c.card_type = 'concept'
-            AND EXISTS(
-              SELECT 1
-              FROM card_entry_link cel_primary
-              WHERE cel_primary.card_id = c.id
-                AND cel_primary.relationship_type = 'primary'
-            )
+            AND COALESCE(dlc.has_primary, 0) = 1
             AND c.normalized_front IS NOT NULL
             AND NOT (
               CASE
