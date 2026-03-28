@@ -7,11 +7,9 @@ export async function register() {
   }
 
   try {
-    process.env.JCS_ENABLE_EMBEDDED_REPLICA = "1";
-
     const { db, syncDatabaseClient } = await import("@/db");
 
-    // Sync embedded replica from remote Turso before any reads.
+    // If the runtime opted into an embedded replica, sync it before any reads.
     await syncDatabaseClient(db);
 
     const { getDashboardData, getMediaLibraryData } = await import(

@@ -12,12 +12,14 @@
 Il path del DB arriva da `DATABASE_URL`. Se non e impostato, il progetto usa il
 default locale sopra.
 
-Se invece `DATABASE_URL` usa uno schema remoto `libsql://...`, il bootstrap del
-server Node crea automaticamente una embedded replica locale in
-`./data/japanese-custom-study-replica.db`. All'avvio dell'app esegue una sync
-iniziale da Turso e poi le query di lettura servono il file locale, riducendo
-il costo del primo render non ancora coperto da `unstable_cache`. Build e CLI
-restano sul client remoto standard.
+Se invece `DATABASE_URL` usa uno schema remoto `libsql://...`, puoi abilitare
+una embedded replica locale impostando `JCS_ENABLE_EMBEDDED_REPLICA=1`. In quel
+caso il bootstrap del server Node crea `./data/japanese-custom-study-replica.db`,
+esegue una sync iniziale da Turso e poi le query di lettura servono il file
+locale, riducendo il costo del primo render non ancora coperto da
+`unstable_cache`. Se il piano o il token remoto bloccano le operazioni di sync,
+lascia la variabile disattivata e il runtime usera il client remoto standard.
+Build e CLI restano sul client remoto standard.
 
 ## Comandi
 
