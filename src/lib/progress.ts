@@ -1,7 +1,13 @@
-import { unstable_noStore as noStore } from "next/cache";
-
 import { db, type DatabaseClient } from "@/db";
 import { getMediaDetailData } from "@/lib/app-shell";
+import {
+  buildGlossarySummaryTags,
+  buildReviewSummaryTags,
+  canUseDataCache,
+  MEDIA_LIST_TAG,
+  runWithTaggedCache,
+  SETTINGS_TAG
+} from "@/lib/data-cache";
 import {
   mediaGlossaryHref,
   mediaHref,
@@ -102,13 +108,29 @@ export async function getMediaProgressPageData(
   mediaSlug: string,
   database: DatabaseClient = db
 ): Promise<ProgressPageData | null> {
-  markDataAsLive();
-
   const sharedMedia = await getMediaDetailData(mediaSlug, database);
 
   if (!sharedMedia) {
     return null;
   }
+
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["progress", "media-page", sharedMedia.id],
+    loader: () => loadMediaProgressPageData(sharedMedia, database),
+    tags: [
+      MEDIA_LIST_TAG,
+      SETTINGS_TAG,
+      ...buildGlossarySummaryTags([sharedMedia.id]),
+      ...buildReviewSummaryTags([sharedMedia.id])
+    ]
+  });
+}
+
+async function loadMediaProgressPageData(
+  sharedMedia: NonNullable<Awaited<ReturnType<typeof getMediaDetailData>>>,
+  database: DatabaseClient
+): Promise<ProgressPageData> {
 
   const [reviewSnapshots, settings] = await Promise.all([
     loadGlobalAndMediaReviewOverviewSnapshots(database, [sharedMedia.id]),
@@ -260,14 +282,4 @@ function mapReviewSnapshot(
     totalCards: reviewOverview?.totalCards ?? 0,
     upcomingCount: reviewOverview?.upcomingCount ?? 0
   };
-}
-
-
-
-function markDataAsLive() {
-  try {
-    noStore();
-  } catch {
-    // Rendering hint only.
-  }
 }
