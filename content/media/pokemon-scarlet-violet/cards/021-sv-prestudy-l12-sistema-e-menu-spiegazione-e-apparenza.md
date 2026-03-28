@@ -128,10 +128,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-021-sv-prestudy-l12-sistema
 entry_type: term
 entry_id: term-v138-seisokuchi
 card_type: recognition
-front: '{{生息地|せいそくち}}'
+front: '{{生息地|せい.そく.ち}}'
 back: habitat
 example_jp: >-
-  この ポケモンの {{生息地|せいそくち}}を {{見|み}}ます。
+  この ポケモンの {{生息地|せい.そく.ち}}を {{見|み}}ます。
 example_it: >-
   Guardo il habitat di questo Pokémon.
 :::
@@ -263,7 +263,7 @@ card_type: recognition
 front: 'たぶん'
 back: forse / probabilmente
 example_jp: >-
-  たぶん {{大丈夫|だいじょうぶ}} です。
+  たぶん {{大丈夫|だい.じょう.ぶ}} です。
 example_it: >-
   Probabilmente va bene.
 :::

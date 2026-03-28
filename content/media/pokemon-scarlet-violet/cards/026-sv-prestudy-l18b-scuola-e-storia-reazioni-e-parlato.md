@@ -110,7 +110,7 @@ card_type: concept
 front: '～だろう / でしょう'
 back: probabilmente / suppongo
 example_jp: >-
-  たぶん {{大丈夫|だいじょうぶ}}だろう。
+  たぶん {{大丈夫|だい.じょう.ぶ}}だろう。
 example_it: >-
   Probabilmente andrà bene.
 :::
@@ -152,10 +152,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-026-sv-prestudy-l18b-scuola
 entry_type: term
 entry_id: term-v210-tenyuusei
 card_type: recognition
-front: '{{転入生|てんにゅうせい}}'
+front: '{{転入生|てん.にゅう.せい}}'
 back: studente trasferito
 example_jp: >-
-  {{転入生|てんにゅうせい}}が {{来|き}}ます。
+  {{転入生|てん.にゅう.せい}}が {{来|き}}ます。
 example_it: >-
   Arriva il studente trasferito.
 :::

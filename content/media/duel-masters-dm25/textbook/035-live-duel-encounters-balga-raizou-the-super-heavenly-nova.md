@@ -19,13 +19,13 @@ summary: >-
   i top 3 e mette in campo i Draghi non evoluzione.
 ---
 
-# [{{超天星|ちょうてんせい}}バルガライゾウ](term:term-balga-raizou-super-heavenly-nova)
+# [{{超天星|ちょう.てん.せい}}バルガライゾウ](term:term-balga-raizou-super-heavenly-nova)
 
 :::image
 src: assets/cards/live-duel/balga-raizou-the-super-heavenly-nova.jpg
 alt: "Balga Raizou, the Super-Heavenly Nova card."
 caption: >-
-  [{{超天星|ちょうてんせい}}バルガライゾウ](term:term-balga-raizou-super-heavenly-nova)。
+  [{{超天星|ちょう.てん.せい}}バルガライゾウ](term:term-balga-raizou-super-heavenly-nova)。
   Razze: アース・ドラゴン / フェニックス / サムライ. Riga centrale:
   [マナ{{進化|しんか}}GV](term:term-mana-evolution-gv), [T・ブレイカー](term:term-t-breaker),
   e [メテオバーン](term:term-meteorburn) che trasforma le carte sotto la
@@ -121,7 +121,7 @@ reveal_mode: sentence
 
 ## Lessico utile in questa carta
 
-- [{{超天星|ちょうてんせい}}バルガライゾウ](term:term-balga-raizou-super-heavenly-nova)
+- [{{超天星|ちょう.てん.せい}}バルガライゾウ](term:term-balga-raizou-super-heavenly-nova)
   vale come nome proprio da riconoscere in blocco, non come somma di pezzi
   sparsi.
 - [マナ進化GV](term:term-mana-evolution-gv) e` una keyword operativa: ti dice

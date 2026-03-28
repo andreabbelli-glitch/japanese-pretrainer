@@ -286,10 +286,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-046-sv-prestudy-l30d-sistem
 entry_type: term
 entry_id: term-v644-kaisaichuu
 card_type: recognition
-front: "{{開催中|かいさいちゅう}}"
+front: "{{開催中|かい.さい.ちゅう}}"
 back: in corso
 example_jp: >-
-  これは {{開催中|かいさいちゅう}} です。
+  これは {{開催中|かい.さい.ちゅう}} です。
 example_it: >-
   Questo è in corso.
 :::
@@ -396,7 +396,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-046-sv-prestudy-l30d-sistem
 entry_type: term
 entry_id: term-v649-koukanaite
 card_type: recognition
-front: "{{交換相手|こうかんあいて}}"
+front: "{{交換相手|こう.かん.あい.て}}"
 back: partner di scambio
 example_jp: >-
   ポケモンを {{交換|こうかん}}します。
@@ -462,10 +462,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-046-sv-prestudy-l30d-sistem
 entry_type: term
 entry_id: term-v652-hihyouji
 card_type: recognition
-front: "{{非表示|ひひょうじ}}"
+front: "{{非表示|ひ.ひょう.じ}}"
 back: nascondi / non visualizzare
 example_jp: >-
-  メニューで {{非表示|ひひょうじ}}を {{見|み}}ます。
+  メニューで {{非表示|ひ.ひょう.じ}}を {{見|み}}ます。
 example_it: >-
   Guardo il nascondi in menu.
 :::
@@ -572,10 +572,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-046-sv-prestudy-l30d-sistem
 entry_type: term
 entry_id: term-v657-zensokuryoku
 card_type: recognition
-front: "{{全速力|ぜんそくりょく}}"
+front: "{{全速力|ぜん.そく.りょく}}"
 back: massima velocità
 example_jp: >-
-  この{{先|さき}}に {{全速力|ぜんそくりょく}}が あります。
+  この{{先|さき}}に {{全速力|ぜん.そく.りょく}}が あります。
 example_it: >-
   Più avanti c'è la massima velocità.
 :::
@@ -594,10 +594,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-046-sv-prestudy-l30d-sistem
 entry_type: term
 entry_id: term-v658-kinkyuujitai
 card_type: recognition
-front: "{{緊急事態|きんきゅうじたい}}"
+front: "{{緊急事態|きん.きゅう.じ.たい}}"
 back: emergenza
 example_jp: >-
-  これは {{緊急事態|きんきゅうじたい}} です。
+  これは {{緊急事態|きん.きゅう.じ.たい}} です。
 example_it: >-
   Questo è emergenza.
 :::

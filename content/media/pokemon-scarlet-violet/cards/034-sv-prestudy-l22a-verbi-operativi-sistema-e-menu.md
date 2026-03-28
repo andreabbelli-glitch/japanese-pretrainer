@@ -367,10 +367,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-034-sv-prestudy-l22a-verbi-
 entry_type: term
 entry_id: term-v366-seigenjikan
 card_type: recognition
-front: "{{制限時間|せいげんじかん}}"
+front: "{{制限時間|せい.げん.じ.かん}}"
 back: tempo limite
 example_jp: >-
-  バトルで {{制限時間|せいげんじかん}}を {{使|つか}}います。
+  バトルで {{制限時間|せい.げん.じ.かん}}を {{使|つか}}います。
 example_it: >-
   Uso il tempo limite in battaglia.
 :::

@@ -18,7 +18,7 @@ aliases: [フェリックス・ミザリィ, Felix Misery, ferikkusu mizarii]
 notes_it: >-
   È il nome proprio della carta. La lettura utile da fissare insieme a questo
   nome non è solo il corpo da `{{6000|ろくせん}}`, ma soprattutto il blocco
-  `{{2体以上|にたいいじょう}}あれば{{墓地|ぼち}}から{{召喚|しょうかん}}してもよい`
+  `{{2体以上|に.たい.い.じょう}}あれば{{墓地|ぼち}}から{{召喚|しょうかん}}してもよい`
   e il filtro `コスト{{6以下|ろくいか}}の、{{進化|しんか}}でない{{闇|やみ}}の
   クリーチャー{{1枚|いちまい}}`.
 level_hint: custom
@@ -100,7 +100,7 @@ front: フェリックス・ミザリィ
 back: Felix Misery / NEO creature Darkness che si evoca dal cimitero e rianima
 example_jp: >-
   フェリックス・ミザリィは、{{自分|じぶん}}の{{闇|やみ}}のクリーチャーが
-  {{2体以上|にたいいじょう}}あれば{{墓地|ぼち}}から{{召喚|しょうかん}}できる。
+  {{2体以上|に.たい.い.じょう}}あれば{{墓地|ぼち}}から{{召喚|しょうかん}}できる。
 example_it: >-
   Se hai due o più creature Darkness, puoi evocare Felix Misery dal cimitero.
 notes_it: >-
@@ -159,7 +159,7 @@ entry_type: grammar
 entry_id: grammar-areba
 card_type: concept
 front: >-
-  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーが{{2体以上|にたいいじょう}}あれば
+  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーが{{2体以上|に.たい.い.じょう}}あれば
 back: se hai due o più creature Darkness
 example_jp: >-
   `あれば`だから、まず{{場|ば}}の{{数|かず}}を{{見|み}}て、
@@ -169,7 +169,7 @@ example_it: >-
   conseguenza.
 notes_it: >-
   Questo chunk vale la pena di essere memorizzato intero: gruppo filtrato
-  `{{闇|やみ}}のクリーチャー`, soglia `{{2体以上|にたいいじょう}}` e
+  `{{闇|やみ}}のクリーチャー`, soglia `{{2体以上|に.たい.い.じょう}}` e
   condizionale `あれば`. È una struttura molto riusabile nei testi che aprono
   un effetto solo se il board soddisfa una certa quantità minima.
 tags: [live-duel, grammar, threshold, darkness]
@@ -184,7 +184,7 @@ card_type: recognition
 front: '{{闇|やみ}}'
 back: oscurità / civiltà Darkness
 example_jp: >-
-  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーが{{2体以上|にたいいじょう}}あれば、
+  {{自分|じぶん}}の{{闇|やみ}}のクリーチャーが{{2体以上|に.たい.い.じょう}}あれば、
   このクリーチャーを{{召喚|しょうかん}}してもよい。
 example_it: >-
   Se hai due o più creature Darkness, puoi evocare questa creatura.

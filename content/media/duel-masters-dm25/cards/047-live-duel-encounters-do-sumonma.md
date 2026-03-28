@@ -117,7 +117,7 @@ card_type: concept
 front: '{{次|つぎ}}のうち'
 back: fra le seguenti opzioni / tra quanto segue
 example_jp: >-
-  `{{次|つぎ}}のうち`があるから、すぐ{{下|した}}の{{選択肢|せんたくし}}が
+  `{{次|つぎ}}のうち`があるから、すぐ{{下|した}}の{{選択肢|せん.たく.し}}が
   {{選|えら}}ぶ{{対象|たいしょう}}になる。
 example_it: >-
   Se leggi `fra le seguenti opzioni`, le righe subito sotto diventano il set da

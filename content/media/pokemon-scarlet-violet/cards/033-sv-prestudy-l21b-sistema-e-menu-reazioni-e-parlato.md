@@ -87,10 +87,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-033-sv-prestudy-l21b-sistem
 entry_type: term
 entry_id: term-e068-kitto-daijoubu
 card_type: recognition
-front: "きっと{{大丈夫|だいじょうぶ}}"
+front: "きっと{{大丈夫|だい.じょう.ぶ}}"
 back: andrà bene di sicuro
 example_jp: >-
-  きっと {{大丈夫|だいじょうぶ}}。
+  きっと {{大丈夫|だい.じょう.ぶ}}。
 example_it: >-
   Andrà bene di sicuro.
 :::
@@ -284,10 +284,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-033-sv-prestudy-l21b-sistem
 entry_type: term
 entry_id: term-v338-kaihiritsu
 card_type: recognition
-front: "{{回避率|かいひりつ}}"
+front: "{{回避率|かい.ひ.りつ}}"
 back: evasione
 example_jp: >-
-  バトルで {{回避率|かいひりつ}}を {{使|つか}}います。
+  バトルで {{回避率|かい.ひ.りつ}}を {{使|つか}}います。
 example_it: >-
   Uso l'evasione in battaglia.
 :::

@@ -28,7 +28,7 @@ caption: >-
   [マスター・ドルスザク](term:term-master-dolszak) /
   [マフィ・ギャング](term:term-mafi-gang)。 Riga centrale:
   [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon) e ingresso gratis sopra quattro
-  [{{魔導具|まどうぐ}}](term:term-madougu).
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu).
 :::
 
 ## Keyword presenti sulla carta
@@ -44,9 +44,9 @@ lungo di `{{無月|むげつ}}の{{門|もん}}` e sul secondo effetto di ingres
 :::example_sentence
 jp: >-
   [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon)：
-  [{{自分|じぶん}}](term:term-self)の[{{魔導具|まどうぐ}}](term:term-madougu)が
+  [{{自分|じぶん}}](term:term-self)の[{{魔導具|ま.どう.ぐ}}](term:term-madougu)が
   [バトルゾーン](term:term-battle-zone)に[{{出|で}}た](term:term-deru)
-  [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の[{{魔導具|まどうぐ}}](term:term-madougu)を
+  [{{時|とき}}](grammar:grammar-toki)、{{自分|じぶん}}の[{{魔導具|ま.どう.ぐ}}](term:term-madougu)を
   [バトルゾーン](term:term-battle-zone)と[{{墓地|ぼち}}](term:term-graveyard)から
   {{2|ふた}}つ[ずつ](grammar:grammar-zutsu)[{{選|えら}}び](term:term-erabu)、この
   クリーチャーを{{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
@@ -83,7 +83,7 @@ reveal_mode: sentence
   il classico trigger di ingresso: la keyword si accende quando un tuo Magic
   Tool arriva sul campo.
 - Questo conta anche se la carta che entra non è De Szark: l'effetto guarda la
-  famiglia `{{魔導具|まどうぐ}}`, non il nome proprio.
+  famiglia `{{魔導具|ま.どう.ぐ}}`, non il nome proprio.
 
 ### 2. バトルゾーンと墓地から{{2|ふた}}つずつ選び
 
@@ -123,8 +123,8 @@ reveal_mode: sentence
 
 ## Lessico utile in questa carta
 
-- [{{魔導具|まどうぐ}}](term:term-madougu) è il filtro davvero importante: se un effetto
-  parla di `{{魔導具|まどうぐ}}`, De Szark e i suoi pezzi di supporto entrano nello stesso
+- [{{魔導具|ま.どう.ぐ}}](term:term-madougu) è il filtro davvero importante: se un effetto
+  parla di `{{魔導具|ま.どう.ぐ}}`, De Szark e i suoi pezzi di supporto entrano nello stesso
   gruppo operativo.
 - [それら](grammar:grammar-sorera) è piccolo ma utile: nei testi di carta
   riaggancia spesso un gruppo appena costruito e ti evita di perdere il

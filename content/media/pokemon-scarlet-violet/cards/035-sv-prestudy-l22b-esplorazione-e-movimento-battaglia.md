@@ -21,10 +21,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-035-sv-prestudy-l22b-esplor
 entry_type: term
 entry_id: term-e071-tekagen-shinaiyo
 card_type: recognition
-front: "{{手加減|てかげん}}しないよ"
+front: "{{手加減|て.か.げん}}しないよ"
 back: non mi tratterrò
 example_jp: >-
-  {{手加減|てかげん}}しないよ。
+  {{手加減|て.か.げん}}しないよ。
 example_it: >-
   Non mi tratterrò.
 :::
@@ -476,10 +476,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-035-sv-prestudy-l22b-esplor
 entry_type: term
 entry_id: term-v390-kesshouka
 card_type: recognition
-front: "{{結晶化|けっしょうか}}"
+front: "{{結晶化|けっ.しょう.か}}"
 back: cristallizzazione
 example_jp: >-
-  これは {{結晶化|けっしょうか}} です。
+  これは {{結晶化|けっ.しょう.か}} です。
 example_it: >-
   Questo è cristallizzazione.
 :::

@@ -181,7 +181,7 @@ Se leggi `デッキを{{選択|せんたく}}`, il messaggio dell'app è diretto
 1. non puoi ancora partire;
 2. devi prima scegliere l'oggetto giusto;
 3. solo dopo arriverà un bottone come
-   [{{対戦開始|たいせんかいし}}](term:term-start-match).
+   [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
 
 ## Esempi guidati
 
@@ -217,7 +217,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  DMポイントで{{生成可能|せいせいかのう}}
+  DMポイントで{{生成可能|せい.せい.か.のう}}
 translation_it: >-
   Puoi creare questa carta usando punti DM.
 :::

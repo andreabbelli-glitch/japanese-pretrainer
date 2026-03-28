@@ -72,7 +72,7 @@ jp: >-
   [{{自分|じぶん}}](term:term-self)の
   [マナゾーン](term:term-mana-zone)に
   [パワー](term:term-power){{12000以上|いちまんにせんいじょう}}の
-  [クリーチャー](term:term-creature)が{{5体以上|ごたいいじょう}}あれば、
+  [クリーチャー](term:term-creature)が{{5体以上|ご.たい.い.じょう}}あれば、
   [シールドゾーン](term:term-shield-zone)にあるこの
   [クリーチャー](term:term-creature)に
   「[S・トリガー](term:term-s-trigger)」を[{{与|あた}}える](term:term-ataeru)。
@@ -118,7 +118,7 @@ reveal_mode: sentence
 - Il gruppo contato non e `qualsiasi carta nel mana`: sono solo le carte che
   soddisfano insieme due filtri, cioe `クリーチャー` e
   `パワー{{12000以上|いちまんにせんいじょう}}`.
-- La stampa usa proprio `{{5体以上|ごたいいじょう}}`, non `5枚以上`: il testo
+- La stampa usa proprio `{{5体以上|ご.たい.い.じょう}}`, non `5枚以上`: il testo
   continua a contare `クリーチャー` come categoria di carta rilevante, anche se
   in quel momento si trovano nella mana zone.
 

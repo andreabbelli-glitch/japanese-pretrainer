@@ -281,7 +281,7 @@ card_type: recognition
 front: '{{全然|ぜんぜん}}'
 back: per niente / completamente
 example_jp: >-
-  {{全然|ぜんぜん}} {{大丈夫|だいじょうぶ}} です。
+  {{全然|ぜんぜん}} {{大丈夫|だい.じょう.ぶ}} です。
 example_it: >-
   Va benissimo.
 :::

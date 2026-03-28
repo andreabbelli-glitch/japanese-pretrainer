@@ -15,7 +15,7 @@ romaji: maity strike freedom gundam
 meaning_it: Mighty Strike Freedom Gundam
 pos: proper-noun
 notes_it: >-
-  È l'unica MS [{{遠距離|えんきょり}}](term:term-ms-type-long-range) a
+  È l'unica MS [{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range) a
   [コスト](term:term-cost) `7` del set. Se lo spezzetti in
   `マイティー / ストライク / フリーダム`, riconosci subito il finisher del lato
   `SEED FREEDOM` senza dover rileggere tutto il nome.
@@ -74,7 +74,7 @@ meaning_it: Red Gundam (0085)
 pos: proper-noun
 notes_it: >-
   Qui il lavoro è doppio: `{{赤|あか}}い` ti costringe a leggere il kanji nel nome
-  carta, mentre `{{(0085)|ぜろぜろはちご}}` funziona da marcatore di versione o
+  carta, mentre `{{(0085)|ぜろ.ぜろ.はち.ご}}` funziona da marcatore di versione o
   contesto. Le parentesi,
   ancora una volta, non sono decorative.
 level_hint: custom
@@ -117,8 +117,8 @@ meaning_it: Lunamaria Hawke
 pos: proper-noun
 notes_it: >-
   Va letta insieme a
-  [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom),
-  perché il pattern nome-pilota + `{{専用機|せんようき}}` identifica subito la coppia naturale
+  [ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})](term:term-gelgoog-menace-lunamaria-custom),
+  perché il pattern nome-pilota + `{{専用機|せん.よう.き}}` identifica subito la coppia naturale
   da cercare nel pairing.
 level_hint: custom
 :::
@@ -187,8 +187,8 @@ meaning_it: tipo MS orientato alla mobilità
 notes_it: >-
   Non indica solo velocità in astratto. Sul frame di Arsenal Base ti segnala una
   categoria MS da distinguere a colpo d'occhio da
-  [{{近距離|きんきょり}}](term:term-ms-type-near-range) e
-  [{{遠距離|えんきょり}}](term:term-ms-type-long-range).
+  [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range) e
+  [{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range).
 level_hint: custom
 :::
 
@@ -315,15 +315,15 @@ lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-gelgoog-menace-lunamaria-custom
 card_type: recognition
-front: 'ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})'
+front: 'ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})'
 back: MS dedicata a Lunamaria Hawk
 example_jp: >-
-  ルナマリア・ホーク{{専用機|せんようき}}と{{見|み}}えたら、まず[ルナマリア・ホーク](term:term-lunamaria-hawk)との{{組|く}}み{{合|あ}}わせを{{考|かんが}}えます。
+  ルナマリア・ホーク{{専用機|せん.よう.き}}と{{見|み}}えたら、まず[ルナマリア・ホーク](term:term-lunamaria-hawk)との{{組|く}}み{{合|あ}}わせを{{考|かんが}}えます。
 example_it: >-
   Se vedi "macchina dedicata a Lunamaria Hawk", la prima cosa da fare è pensare
   all'abbinamento con Lunamaria Hawk.
 notes_it: >-
-  Qui `～{{専用機|せんようき}}` ti dice quale pilot card cercare per il
+  Qui `～{{専用機|せん.よう.き}}` ti dice quale pilot card cercare per il
   pairing: la parentesi non aggiunge lore, ma dichiara a chi è assegnata quella
   variante.
 tags: [starter-deck, ms, seed-freedom, pairing]
@@ -363,7 +363,7 @@ example_it: >-
   Red Gundam (0085) è il tipo di nome che ti costringe a leggere un kanji di
   colore già nel primo blocco del titolo.
 notes_it: >-
-  `{{赤|あか}}い` + `{{(0085)|ぜろぜろはちご}}` separano subito due informazioni
+  `{{赤|あか}}い` + `{{(0085)|ぜろ.ぜろ.はち.ご}}` separano subito due informazioni
   operative: identita nominale in kanji e variante/versione del modello.
   Questa combinazione evita errori di riconoscimento quando il board contiene
   nomi simili.
@@ -398,7 +398,7 @@ card_type: recognition
 front: シン・アスカ
 back: PL Shinn Asuka
 example_jp: >-
-  シン・アスカは{{短|みじか}}い{{名前|なまえ}}なので、{{長|なが}}いカード{{名|めい}}の{{中|なか}}で{{基準点|きじゅんてん}}にしやすいです。
+  シン・アスカは{{短|みじか}}い{{名前|なまえ}}なので、{{長|なが}}いカード{{名|めい}}の{{中|なか}}で{{基準点|き.じゅん.てん}}にしやすいです。
 example_it: >-
   Shinn Asuka ha un nome corto, quindi funziona bene come punto di riferimento
   in mezzo a carte dai titoli più lunghi.
@@ -418,13 +418,13 @@ card_type: recognition
 front: ルナマリア・ホーク
 back: PL Lunamaria Hawk
 example_jp: >-
-  [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom)と{{並|なら}}べて{{覚|おぼ}}えると、{{対応|たいおう}}がとても{{見|み}}えやすいです。
+  [ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})](term:term-gelgoog-menace-lunamaria-custom)と{{並|なら}}べて{{覚|おぼ}}えると、{{対応|たいおう}}がとても{{見|み}}えやすいです。
 example_it: >-
   Se la memorizzi accanto al Gelgoog Menace dedicato a lei, l'abbinamento
   naturale diventa molto chiaro.
 notes_it: >-
   Va letta insieme alla sua MS dedicata perché il set rende esplicito il
-  pairing già nel nome della variante [{{専用機|せんようき}}](term:term-dedicated-machine).
+  pairing già nel nome della variante [{{専用機|せん.よう.き}}](term:term-dedicated-machine).
 tags: [starter-deck, pl, seed-freedom, pairing]
 :::
 
@@ -472,15 +472,15 @@ lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-ms-type-near-range
 card_type: recognition
-front: '{{近距離|きんきょり}}'
+front: '{{近距離|きん.きょ.り}}'
 back: tipo MS ravvicinato
 example_jp: >-
-  {{近距離|きんきょり}}と{{見|み}}えたら、まず{{前線|ぜんせん}}での{{戦闘|せんとう}}を{{想像|そうぞう}}します。
+  {{近距離|きん.きょ.り}}と{{見|み}}えたら、まず{{前線|ぜんせん}}での{{戦闘|せんとう}}を{{想像|そうぞう}}します。
 example_it: >-
   Quando leggi "ravvicinato", la prima immagine mentale deve essere il
   combattimento più avanti sulla linea.
 notes_it: >-
-  [{{近距離|きんきょり}}](term:term-ms-type-near-range) ti dice che la MS vuole
+  [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range) ti dice che la MS vuole
   stare sulla linea di scontro: leggerla come pezzo di pressione da lontano
   sarebbe già un errore di ruolo.
 tags: [starter-deck, frame, ms-type]
@@ -492,10 +492,10 @@ lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-ms-type-long-range
 card_type: recognition
-front: '{{遠距離|えんきょり}}'
+front: '{{遠距離|えん.きょ.り}}'
 back: tipo MS a distanza
 example_jp: >-
-  {{遠距離|えんきょり}}の{{表示|ひょうじ}}があれば、{{位置|いち}}どりと{{射程|しゃてい}}をまず{{意識|いしき}}します。
+  {{遠距離|えん.きょ.り}}の{{表示|ひょうじ}}があれば、{{位置|いち}}どりと{{射程|しゃてい}}をまず{{意識|いしき}}します。
 example_it: >-
   Se compare il tipo "a distanza", la prima cosa da considerare sono posizione e
   gittata.
@@ -570,15 +570,15 @@ lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: term
 entry_id: term-dedicated-machine
 card_type: recognition
-front: '{{専用機|せんようき}}'
+front: '{{専用機|せん.よう.き}}'
 back: macchina dedicata a un pilota specifico
 example_jp: >-
-  {{専用機|せんようき}}と{{書|か}}かれていれば、その{{名前|なまえ}}のパイロットと{{組|く}}む{{前提|ぜんてい}}で{{読|よ}}みやすいです。
+  {{専用機|せん.よう.き}}と{{書|か}}かれていれば、その{{名前|なまえ}}のパイロットと{{組|く}}む{{前提|ぜんてい}}で{{読|よ}}みやすいです。
 example_it: >-
   Se c'è scritto "macchina dedicata", leggerla pensando a quel pilota come
   partner naturale diventa molto più facile.
 notes_it: >-
-  [{{専用機|せんようき}}](term:term-dedicated-machine) segnala che il nome della
+  [{{専用機|せん.よう.き}}](term:term-dedicated-machine) segnala che il nome della
   MS incorpora già il partner naturale da cercare tra le pilot card.
 tags: [starter-deck, frame, pairing]
 :::
@@ -608,15 +608,15 @@ lesson_id: lesson-gundam-arsenal-base-special-starter-seed-freedom-gq
 entry_type: grammar
 entry_id: grammar-senyouki
 card_type: concept
-front: '～{{専用機|せんようき}}'
+front: '～{{専用機|せん.よう.き}}'
 back: variante dedicata a quel personaggio
 example_jp: >-
-  ルナマリア・ホーク{{専用機|せんようき}}とあれば、{{対応|たいおう}}するPLを{{探|さが}}す{{方向|ほうこう}}で{{読|よ}}みます。
+  ルナマリア・ホーク{{専用機|せん.よう.き}}とあれば、{{対応|たいおう}}するPLを{{探|さが}}す{{方向|ほうこう}}で{{読|よ}}みます。
 example_it: >-
   Se trovi "dedicata a Lunamaria Hawk", devi leggere la carta pensando a quale
   PL corrispondente cercare.
 notes_it: >-
-  Nel set `～{{専用機|せんようき}}` marca una variante MS assegnata a quel
+  Nel set `～{{専用機|せん.よう.き}}` marca una variante MS assegnata a quel
   pilota. Se lo leggi bene, il passo successivo naturale è cercare la PL
   corrispondente.
 tags: [starter-deck, grammar, pairing]

@@ -40,7 +40,7 @@ caption: >-
 
 Qui non c'e` una keyword lunga da banca effetti: il valore didattico sta nella
 procedura del top `{{3枚|さんまい}}`, nel timing
-[{{終了時|しゅうりょうじ}}](term:term-shuuryouji) e soprattutto nel chunk
+[{{終了時|しゅう.りょう.じ}}](term:term-shuuryouji) e soprattutto nel chunk
 compatto `すべてのシールドゾーンにある表向きのカードの合計`.
 
 ## Effetti da leggere
@@ -55,7 +55,7 @@ jp: >-
   [{{手札|てふだ}}](term:term-hand)に[{{加|くわ}}え](term:term-add)、
   [{{残|のこ}}り](term:term-nokoru)を
   [{{好|す}}きな{{順序|じゅんじょ}}で](grammar:grammar-sukina-junjo-de)
-  [{{山札|やまふだ}}](term:term-deck)の{{一番下|いちばんした}}に
+  [{{山札|やまふだ}}](term:term-deck)の{{一番下|いち.ばん.した}}に
   [{{置|お}}く](term:term-oku)。
 translation_it: >-
   Quando entra nel battle zone, rivela a faccia in su le prime 3 carte del tuo
@@ -66,7 +66,7 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  {{自分|じぶん}}のターン[{{終了時|しゅうりょうじ}}](term:term-shuuryouji)、
+  {{自分|じぶん}}のターン[{{終了時|しゅう.りょう.じ}}](term:term-shuuryouji)、
   {{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)から
   [{{裁|さば}}きの{{紋章|もんしょう}}](term:term-judgment-emblem)を
   {{1枚|いちまい}}、コストを[{{支払|しはら}}わずに](term:term-harau)
@@ -79,10 +79,10 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  {{自分|じぶん}}のターンの[{{終了時|しゅうりょうじ}}](term:term-shuuryouji)、
+  {{自分|じぶん}}のターンの[{{終了時|しゅう.りょう.じ}}](term:term-shuuryouji)、
   すべての[シールドゾーン](term:term-shield-zone)にある
   [{{表向|おもてむ}}き](term:term-face-up)のカードの
-  [{{合計|ごうけい}}](term:term-goukei)が{{3枚以上|さんまいいじょう}}なら、
+  [{{合計|ごうけい}}](term:term-goukei)が{{3枚以上|さん.まい.い.じょう}}なら、
   このクリーチャーを[{{破壊|はかい}}](term:term-destroy)してもよい。
   [そうしたら](grammar:grammar-soushitara)、{{自分|じぶん}}の
   [{{手札|てふだ}}](term:term-hand)から[{{光|ひかり}}](term:term-light)の
@@ -112,7 +112,7 @@ reveal_mode: sentence
 
 ### 2. 自分のターン終了時、自分の手札から裁きの紋章を1枚、コストを支払わずに唱えてもよい
 
-- [{{終了時|しゅうりょうじ}}](term:term-shuuryouji) e` un timing rigido: non
+- [{{終了時|しゅう.りょう.じ}}](term:term-shuuryouji) e` un timing rigido: non
   `verso la fine` del turno, ma `nel punto in cui il turno si chiude`.
 - `{{手札|てふだ}}から{{裁|さば}}きの{{紋章|もんしょう}}を{{1枚|いちまい}}`
   costruisce un oggetto molto preciso: dalla tua mano, una sola carta di quel
@@ -133,7 +133,7 @@ reveal_mode: sentence
   scoperte, non tutte le carte negli scudi.
 - [{{合計|ごうけい}}](term:term-goukei) ti dice come leggere il numero: non fai
   conteggi separati per ogni zona, ma sommi tutto in un totale unico.
-- `{{3枚以上|さんまいいじょう}}なら` chiude la soglia: se quel totale arriva a
+- `{{3枚以上|さん.まい.い.じょう}}なら` chiude la soglia: se quel totale arriva a
   tre o piu`, si apre il ramo successivo.
 - Il valore da fissare e` l'intero chunk
   `すべてのシールドゾーンにある表向きのカードの合計`: una catena di `の`
@@ -161,7 +161,7 @@ reveal_mode: sentence
 - [サッヴァークDG](term:term-savark-dg) va associato subito al doppio piano
   `Sabaki a fine turno` + `trasformazione in Drago di Luce` quando il totale
   face-up degli scudi arriva a `{{3枚|さんまい}}`.
-- [{{終了時|しゅうりょうじ}}](term:term-shuuryouji) e` un timing molto
+- [{{終了時|しゅう.りょう.じ}}](term:term-shuuryouji) e` un timing molto
   trasferibile: ricompare spesso nelle carte che rinviano un costo o un payoff
   alla chiusura del turno.
 - [{{裁|さば}}きの{{紋章|もんしょう}}](term:term-judgment-emblem) qui non e`

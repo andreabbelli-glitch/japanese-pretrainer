@@ -202,10 +202,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-042-sv-prestudy-l29c-scarle
 entry_type: term
 entry_id: term-v549-kenkyuujo
 card_type: recognition
-front: "{{研究所|けんきゅうじょ}}"
+front: "{{研究所|けん.きゅう.じょ}}"
 back: istituto di ricerca
 example_jp: >-
-  {{研究所|けんきゅうじょ}}を します。
+  {{研究所|けん.きゅう.じょ}}を します。
 example_it: >-
   Faccio l'istituto di ricerca.
 :::
@@ -453,10 +453,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-042-sv-prestudy-l29c-scarle
 entry_type: term
 entry_id: term-v561-koubaibu
 card_type: recognition
-front: "{{購買部|こうばいぶ}}"
+front: "{{購買部|こう.ばい.ぶ}}"
 back: spaccio scolastico
 example_jp: >-
-  {{学校|がっこう}}で {{購買部|こうばいぶ}}が だいじ です。
+  {{学校|がっこう}}で {{購買部|こう.ばい.ぶ}}が だいじ です。
 example_it: >-
   In scuola spaccio scolastico è importante.
 :::
@@ -541,10 +541,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-042-sv-prestudy-l29c-scarle
 entry_type: term
 entry_id: term-v565-nouryokuhenka
 card_type: recognition
-front: "{{能力変化|のうりょくへんか}}"
+front: "{{能力変化|のう.りょく.へん.か}}"
 back: variazione delle statistiche
 example_jp: >-
-  バトルで {{能力変化|のうりょくへんか}}を {{使|つか}}います。
+  バトルで {{能力変化|のう.りょく.へん.か}}を {{使|つか}}います。
 example_it: >-
   Uso il variazione delle statistiche in battaglia.
 :::
@@ -563,10 +563,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-042-sv-prestudy-l29c-scarle
 entry_type: term
 entry_id: term-v566-shinyuusha
 card_type: recognition
-front: "{{侵入者|しんにゅうしゃ}}"
+front: "{{侵入者|しん.にゅう.しゃ}}"
 back: intruso
 example_jp: >-
-  これは {{侵入者|しんにゅうしゃ}} です。
+  これは {{侵入者|しん.にゅう.しゃ}} です。
 example_it: >-
   Questo è intruso.
 :::

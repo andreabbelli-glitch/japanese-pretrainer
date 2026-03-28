@@ -19,7 +19,7 @@ aliases:
 notes_it: >-
   È il nome proprio del lato creatura di una singola
   [ツインパクトカード](term:term-twinpact-card). Quando compare
-  `キングダム・オウ{{禍武斗|かぶと}}`, il blocco utile da associare è doppio:
+  `キングダム・オウ{{禍武斗|か.ぶ.と}}`, il blocco utile da associare è doppio:
   restrizione sugli attaccanti sotto `{{9000|きゅうせん}}` potere e trigger di
   vittoria in battle che rompe `{{9|ここの}}つ` scudi.
 level_hint: custom
@@ -182,10 +182,10 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhat
 entry_type: term
 entry_id: term-kingdom-ohkabuto
 card_type: recognition
-front: 'キングダム・オウ{{禍武斗|かぶと}}'
+front: 'キングダム・オウ{{禍武斗|か.ぶ.と}}'
 back: Kingdom Ohkabuto / lato creatura della twinpact
 example_jp: >-
-  キングダム・オウ{{禍武斗|かぶと}}がいれば、パワーが{{9000|きゅうせん}}より
+  キングダム・オウ{{禍武斗|か.ぶ.と}}がいれば、パワーが{{9000|きゅうせん}}より
   {{小|ちい}}さいクリーチャーは{{自分|じぶん}}を{{攻撃|こうげき}}できない。
 example_it: >-
   Se hai Kingdom Ohkabuto, le creature con potere sotto 9000 non possono

@@ -32,10 +32,10 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bauwauja-abyssal-three-
 entry_type: term
 entry_id: term-bauwauja
 card_type: recognition
-front: '{{深淵|しんえん}}の{{三咆哮|さんほうこう}} バウワウジャ'
+front: '{{深淵|しんえん}}の{{三咆哮|さん.ほう.こう}} バウワウジャ'
 back: Bauwauja / Tamaseed-creature Abyss Royal con protezione dalle uscite non-distruttive
 example_jp: >-
-  {{深淵|しんえん}}の{{三咆哮|さんほうこう}} バウワウジャは、
+  {{深淵|しんえん}}の{{三咆哮|さん.ほう.こう}} バウワウジャは、
   {{自分|じぶん}}のターン{{中|ちゅう}}
   {{破壊|はかい}}{{以外|いがい}}の{{方法|ほうほう}}で{{離|はな}}れない。
 example_it: >-

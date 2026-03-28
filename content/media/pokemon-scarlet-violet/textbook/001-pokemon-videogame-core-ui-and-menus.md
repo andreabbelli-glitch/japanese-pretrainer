@@ -45,7 +45,7 @@ chiudono, confermano o cambiano una schermata.
 - [どうぐ](term:term-dougu)
 - [たいせつなもの](term:term-taisetsu-na-mono)
 - [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan)
-- [{{目的地|もくてきち}}](term:term-mokutekichi)
+- [{{目的地|もく.てき.ち}}](term:term-mokutekichi)
 - [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru)
 - [もちもの](term:term-mochimono)
 - [{{並|なら}}び{{替|か}}え](term:term-narabikae)
@@ -89,7 +89,7 @@ di consumarsi come una cura o una Pokeball.
 completare: è la schermata che registra ciò che hai visto o catturato, quindi
 ti aiuta a capire se stai avanzando nella raccolta e se una specie è già stata
 documentata. In Scarlet / Violet la navigazione aggiunge anche
-[{{目的地|もくてきち}}](term:term-mokutekichi): quando lo vedi in mappa o in un
+[{{目的地|もく.てき.ち}}](term:term-mokutekichi): quando lo vedi in mappa o in un
 tutorial, la parola non indica una località generica ma il punto che il gioco
 vuole farti raggiungere o segnare per non perdere la direzione.
 
@@ -97,7 +97,7 @@ vuole farti raggiungere o segnare per non perdere la direzione.
 src: assets/ui/smart-rotom-map-destination.webp
 alt: "Schermata mappa dello Smart Rotom con icone laterali delle app e destinazione evidenziata al centro."
 caption: >-
-  Schermata mappa di [スマホロトム](term:term-smartphone-rotom): qui [{{目的地|もくてきち}}](term:term-mokutekichi) diventa un marker concreto e si vede che mappa, app e navigazione convivono nello stesso dispositivo.
+  Schermata mappa di [スマホロトム](term:term-smartphone-rotom): qui [{{目的地|もく.てき.ち}}](term:term-mokutekichi) diventa un marker concreto e si vede che mappa, app e navigazione convivono nello stesso dispositivo.
 :::
 
 [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru) va capito come label di
@@ -125,7 +125,7 @@ per esempio che da una certa schermata puoi cambiare un oggetto o consultare un
 dato. Il secondo segnala uno sblocco stabile: dopo un evento o un progresso, da
 quel momento una certa azione diventa possibile. Il pattern
 [～ておく](grammar:grammar-teoku), invece, compare bene nelle frasi di consiglio:
-salvare, curare o registrare una [{{目的地|もくてきち}}](term:term-mokutekichi)
+salvare, curare o registrare una [{{目的地|もく.てき.ち}}](term:term-mokutekichi)
 prima del prossimo blocco di gioco significa prepararsi in anticipo.
 
 ## Esempi guidati
@@ -156,7 +156,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  マップで {{目的地|もくてきち}}を {{登録|とうろく}}しておくと {{次|つぎ}}に
+  マップで {{目的地|もく.てき.ち}}を {{登録|とうろく}}しておくと {{次|つぎ}}に
   {{向|む}}かう {{場所|ばしょ}}が わかりやすい。
 translation_it: >-
   Se registri una destinazione sulla mappa, diventa più chiaro dove andare dopo.

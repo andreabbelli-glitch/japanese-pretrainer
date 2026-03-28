@@ -19,19 +19,19 @@ summary: >-
   soglia con nara e chiusura del turno che brucia uno scudo casuale.
 ---
 
-# [{{刻解人形|こくかいにんぎょう}} ジェニー・ジェーン](term:term-jenny-jane)
+# [{{刻解人形|こく.かい.にん.ぎょう}} ジェニー・ジェーン](term:term-jenny-jane)
 
 :::image
 src: assets/cards/live-duel/jenny-jane.png
 alt: "Jenny Jane card."
 caption: >-
-  [{{刻解人形|こくかいにんぎょう}} ジェニー・ジェーン](term:term-jenny-jane)。
+  [{{刻解人形|こく.かい.にん.ぎょう}} ジェニー・ジェーン](term:term-jenny-jane)。
   Razze: [デスパペット](term:term-death-puppet) /
   [マフィ・ギャング](term:term-mafi-gang). Riga centrale:
   [ブロッカー](term:term-blocker) /
   [スレイヤー](term:term-slayer), reveal degli estremi di costo dalla mano
   avversaria, draw se l'avversario scarta e controllo finale sulle
-  `{{13枚以下|じゅうさんまいいか}}` del mazzo avversario.
+  `{{13枚以下|じゅうさん.まい.い.か}}` del mazzo avversario.
 :::
 
 ## Keyword presenti sulla carta
@@ -44,8 +44,8 @@ keyword bank. Qui il valore didattico della carta sta soprattutto in quattro
 punti: il doppio superlativo `{{最|もっと}}も`, il causativo di
 `{{公開|こうかい}}させる`, il riflessivo formale
 `{{自身|じしん}}` e la soglia letta con
-[なら](grammar:grammar-nara) dentro `{{5枚以下|ごまいいか}}なら` e
-`{{13枚以下|じゅうさんまいいか}}なら`.
+[なら](grammar:grammar-nara) dentro `{{5枚以下|ご.まい.い.か}}なら` e
+`{{13枚以下|じゅうさん.まい.い.か}}なら`.
 
 ## Effetti da leggere
 
@@ -71,7 +71,7 @@ jp: >-
   [{{自身|じしん}}](term:term-jishin)の[{{手札|てふだ}}](term:term-hand)を
   [{{捨|す}}てた](term:term-suteru)[{{時|とき}}](grammar:grammar-toki)、
   {{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)が
-  {{5枚以下|ごまいいか}}[なら](grammar:grammar-nara)、{{自分|じぶん}}は
+  {{5枚以下|ご.まい.い.か}}[なら](grammar:grammar-nara)、{{自分|じぶん}}は
   [{{同|おな}}じ{{枚数|まいすう}}](term:term-onaji-maisuu)のカードを
   [{{引|ひ}}く](term:term-hiku)。
 translation_it: >-
@@ -82,9 +82,9 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  {{自分|じぶん}}のターン[{{終了時|しゅうりょうじ}}](term:term-shuuryouji)、
+  {{自分|じぶん}}のターン[{{終了時|しゅう.りょう.じ}}](term:term-shuuryouji)、
   [{{相手|あいて}}](term:term-opponent)の[{{山札|やまふだ}}](term:term-deck)が
-  {{13枚以下|じゅうさんまいいか}}[なら](grammar:grammar-nara)、
+  {{13枚以下|じゅうさん.まい.い.か}}[なら](grammar:grammar-nara)、
   [{{相手|あいて}}](term:term-opponent)のランダムなシールド
   {{1|ひと}}つを[{{墓地|ぼち}}](term:term-graveyard)に
   [{{置|お}}く](term:term-oku)。
@@ -133,7 +133,7 @@ reveal_mode: sentence
   l'avversario ha scartato la propria mano / dalla propria mano`, non `la tua`.
 - [なら](grammar:grammar-nara) apre il controllo successivo sul tuo stato
   attuale: la carta non pesca sempre, pesca solo se in quel momento la tua mano
-  e` `{{5枚以下|ごまいいか}}`.
+  e` `{{5枚以下|ご.まい.い.か}}`.
 - Il payoff finale usa
   [{{同|おな}}じ{{枚数|まいすう}}](term:term-onaji-maisuu): il numero di carte
   pescate deve uguagliare il numero davvero scartato dall'avversario. Non e` un
@@ -141,10 +141,10 @@ reveal_mode: sentence
 
 ### 4. 自分のターン終了時、相手の山札が13枚以下なら
 
-- [{{終了時|しゅうりょうじ}}](term:term-shuuryouji) e` un timing tecnico molto
+- [{{終了時|しゅう.りょう.じ}}](term:term-shuuryouji) e` un timing tecnico molto
   rigido: il controllo non avviene "verso la fine", ma proprio nel punto in cui
   il tuo turno si chiude.
-- `{{13枚以下|じゅうさんまいいか}}なら` combina soglia numerica e condizionale.
+- `{{13枚以下|じゅうさん.まい.い.か}}なら` combina soglia numerica e condizionale.
   Prima conti il mazzo dell'avversario, poi solo se il totale e` entro quel
   limite si apre il resto della frase.
 - `ランダムなシールド{{1|ひと}}つ` ti dice che lo scudo viene scelto
@@ -156,10 +156,10 @@ reveal_mode: sentence
 
 ## Lessico utile in questa carta
 
-- [{{刻解人形|こくかいにんぎょう}}ジェニー・ジェーン](term:term-jenny-jane) va
+- [{{刻解人形|こく.かい.にん.ぎょう}}ジェニー・ジェーン](term:term-jenny-jane) va
   associata subito a tre assi di lingua: doppio superlativo sui costi, riflessivo
   [{{自身|じしん}}](term:term-jishin) e controllo finale con
-  [{{終了時|しゅうりょうじ}}](term:term-shuuryouji).
+  [{{終了時|しゅう.りょう.じ}}](term:term-shuuryouji).
 - [{{最|もっと}}もコストの{{大|おお}}きい](term:term-mottomo-ookii) /
   [{{最|もっと}}もコストの{{小|ちい}}さい](term:term-mottomo-chiisai) sono
   giapponese generale utile anche fuori dal TCG: il contesto qui insegna solo

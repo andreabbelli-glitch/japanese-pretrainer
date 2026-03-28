@@ -14,7 +14,7 @@ romaji: kagai jugyou
 meaning_it: lezione sul campo / attivita scolastica fuori dal campus
 notes_it: >-
   In Scarlet / Violet indica il programma ufficiale dell'accademia per
-  l'esplorazione esterna. Quando compare `{{課外授業|かがいじゅぎょう}}`, la scena
+  l'esplorazione esterna. Quando compare `{{課外授業|か.がい.じゅ.ぎょう}}`, la scena
   segna il passaggio da attivita interne al campus a progressione libera nel
   mondo di Paldea.
 :::
@@ -24,10 +24,10 @@ lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet
 entry_type: term
 entry_id: term-kagai-jugyou
 card_type: recognition
-front: '{{課外授業|かがいじゅぎょう}}'
+front: '{{課外授業|か.がい.じゅ.ぎょう}}'
 back: lezione sul campo / attivita fuori dal campus
 example_jp: >-
-  {{課外授業|かがいじゅぎょう}}が {{始|はじ}}まると {{学校|がっこう}}の
+  {{課外授業|か.がい.じゅ.ぎょう}}が {{始|はじ}}まると {{学校|がっこう}}の
   {{外|そと}}で {{自由|じゆう}}に {{学|まな}}べるようになる。
 example_it: >-
   Quando comincia la lezione sul campo, puoi imparare liberamente fuori dalla

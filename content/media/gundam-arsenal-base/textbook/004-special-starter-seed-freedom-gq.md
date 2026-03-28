@@ -33,8 +33,8 @@ Il prodotto ufficiale è `SPECIAL STARTER DECK SET [SEED FREEDOM & GQ]`. Il set 
 
 Il set copre due aspetti fondamentali: prima, la lettura di nomi lunghi in katakana e
 label operative come
-[{{近距離|きんきょり}}](term:term-ms-type-near-range),
-[{{遠距離|えんきょり}}](term:term-ms-type-long-range),
+[{{近距離|きん.きょ.り}}](term:term-ms-type-near-range),
+[{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range),
 [{{機動|きどう}}](term:term-ms-type-mobility),
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
 [{{制圧|せいあつ}}](term:term-role-seiatsu) e
@@ -46,7 +46,7 @@ anche la lettura di nomi misti, parentesi e titoli ibridi.
 
 - [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam)
 - [イモータルジャスティスガンダム](term:term-immortal-justice-gundam)
-- [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom)
+- [ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})](term:term-gelgoog-menace-lunamaria-custom)
 - [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu)
 - [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085)
 - [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne)
@@ -54,17 +54,17 @@ anche la lettura di nomi misti, parentesi e titoli ibridi.
 - [ルナマリア・ホーク](term:term-lunamaria-hawk)
 - [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu)
 - [シュウジ・イトウ](term:term-shuji-itou)
-- [{{近距離|きんきょり}}](term:term-ms-type-near-range)
-- [{{遠距離|えんきょり}}](term:term-ms-type-long-range)
+- [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range)
+- [{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range)
 - [{{機動|きどう}}](term:term-ms-type-mobility)
 - [PLスキル](term:term-pl-skill)
 - [リンクアビリティ](term:term-link-ability)
-- [{{専用機|せんようき}}](term:term-dedicated-machine)
+- [{{専用機|せん.よう.き}}](term:term-dedicated-machine)
 
 ## Pattern grammaticali chiave
 
 - [A＆B](grammar:grammar-a-and-b)
-- [～{{専用機|せんようき}}](grammar:grammar-senyouki)
+- [～{{専用機|せん.よう.き}}](grammar:grammar-senyouki)
 - [～(～)](grammar:grammar-parenthetical-label)
 
 ## Spiegazione
@@ -75,7 +75,7 @@ Le 5 MS del deck sono:
 
 - [マイティーストライクフリーダムガンダム](term:term-mighty-strike-freedom-gundam)
 - [イモータルジャスティスガンダム](term:term-immortal-justice-gundam)
-- [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom)
+- [ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})](term:term-gelgoog-menace-lunamaria-custom)
 - [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu)
 - [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085)
 
@@ -106,8 +106,8 @@ caption: >-
 Per leggere il frame in modo stabile usa sempre questo ordine.
 
 - Sulle MS, in alto a sinistra leggi prima il tipo:
-  [{{近距離|きんきょり}}](term:term-ms-type-near-range),
-  [{{遠距離|えんきょり}}](term:term-ms-type-long-range) o
+  [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range),
+  [{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range) o
   [{{機動|きどう}}](term:term-ms-type-mobility).
 - Sulle PL, nello stesso angolo leggi prima il ruolo:
   [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
@@ -130,7 +130,7 @@ Nel retro MS riconosci questi pannelli:
 - `WEAPON`: armi e gittata del Mobile Suit.
 - [リンクアビリティ](term:term-link-ability): bonus che lega MS e PL.
 - [アビリティ](term:term-ability): effetto proprio del MS.
-- [{{戦術技|せんじゅつぎ}}](term:term-special-attack): attacco speciale.
+- [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack): attacco speciale.
 
 Nel retro PL, i due blocchi prioritari sono:
 
@@ -153,9 +153,9 @@ Per le prime partite usa le coppie più lineari del set:
   [シン・アスカ](term:term-shinn-asuka): coppia mobile e lineare, ottima per
   leggere [{{機動|きどう}}](term:term-ms-type-mobility) +
   [{{制圧|せいあつ}}](term:term-role-seiatsu).
-- [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom)
+- [ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})](term:term-gelgoog-menace-lunamaria-custom)
   + [ルナマリア・ホーク](term:term-lunamaria-hawk): unità molto leggibile per
-  capire la logica di [～{{専用機|せんようき}}](grammar:grammar-senyouki) e
+  capire la logica di [～{{専用機|せん.よう.き}}](grammar:grammar-senyouki) e
   avere una base difensiva economica.
 - [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu) +
   [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu): coppia ideale per
@@ -227,15 +227,15 @@ caption: >-
 
 - Giapponese da leggere: il nome è lungo, ma puoi spezzarlo in
   `マイティー / ストライク / フリーダム / ガンダム`. In alto a sinistra leggi
-  prima [{{遠距離|えんきょり}}](term:term-ms-type-long-range) e poi
+  prima [{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range) e poi
   [コスト](term:term-cost) `7`.
 - Frame: nel blocco dati tecnici compaiono
-  `{{頭頂高|とうちょうこう}} / {{本体重量|ほんたいじゅうりょう}} / {{所属|しょぞく}} / パイロット`.
+  `{{頭頂高|とう.ちょう.こう}} / {{本体重量|ほん.たい.じゅう.りょう}} / {{所属|しょぞく}} / パイロット`.
   Sono etichette da scheda MS: altezza, peso, appartenenza e pilota associato.
 - Sezione effetto: sul retro devi trovare subito `WEAPON`,
   [リンクアビリティ](term:term-link-ability),
   [アビリティ](term:term-ability) e
-  [{{戦術技|せんじゅつぎ}}](term:term-special-attack). Anche se non leggi ogni
+  [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack). Anche se non leggi ogni
   riga, sapere dove sono ti orienta.
 - Ruolo in campo: non aprire con questa carta. La funzione è da finisher o
   come pezzo di pressione tardiva insieme a
@@ -261,7 +261,7 @@ caption: >-
 - Sezione effetto: anche qui cerca
   [リンクアビリティ](term:term-link-ability),
   [アビリティ](term:term-ability) e
-  [{{戦術技|せんじゅつぎ}}](term:term-special-attack). Il retro MS usa una grammatica visiva stabile.
+  [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack). Il retro MS usa una grammatica visiva stabile.
 - Ruolo in campo: con
   [シン・アスカ](term:term-shinn-asuka) è una delle coppie più lineari del deck.
   La lettura è: corsia aperta -> MS di
@@ -273,16 +273,16 @@ caption: >-
 src: assets/cards/starter-seed-freedom-gq/03-gelgoog-menace-lunamaria-custom.webp
 alt: "Carta fronte e retro di ゲルググメナース(ルナマリア・ホークせんようき) nello starter deck SEED FREEDOM & GQ."
 caption: >-
-  [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom):
+  [ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})](term:term-gelgoog-menace-lunamaria-custom):
   immagine completa fronte + retro.
 :::
 
 - Giapponese da leggere: questa è la carta di riferimento per il pattern
-  [～{{専用機|せんようき}}](grammar:grammar-senyouki). La parentesi non è lore:
+  [～{{専用機|せん.よう.き}}](grammar:grammar-senyouki). La parentesi non è lore:
   ti segnala una variante dedicata a
   [ルナマリア・ホーク](term:term-lunamaria-hawk).
 - Frame: in alto a sinistra leggi
-  [{{遠距離|えんきょり}}](term:term-ms-type-long-range) e
+  [{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range) e
   [コスト](term:term-cost) `2`. Questo ti dice che è una MS economica.
 - Sezione effetto: nel retro ritornano i pannelli standard MS. La lettura rapida qui
   deve restare uguale anche su una carta poco impattante in valore nominale.
@@ -305,13 +305,13 @@ caption: >-
   alfabeto latino, la parentesi in katakana. Devi leggerla come unità unica, non
   come due pezzi separati.
 - Frame: in alto a sinistra leggi
-  [{{近距離|きんきょり}}](term:term-ms-type-near-range) e
+  [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range) e
   [コスト](term:term-cost) `6`. Quindi il suo profilo è aggressivo e più vicino
   agli scontri che alla pressione da lontano.
 - Sezione effetto: anche su una carta dal nome "strano", il retro resta stabile:
   `WEAPON`, [リンクアビリティ](term:term-link-ability),
   [アビリティ](term:term-ability),
-  [{{戦術技|せんじゅつぎ}}](term:term-special-attack).
+  [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack).
 - Ruolo in campo: con
   [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu) è una coppia ottima
   per il profilo [{{殲滅|せんめつ}}](term:term-role-shoumetsu). Serve a togliere
@@ -331,7 +331,7 @@ caption: >-
   leggere un kanji dentro il nome carta; `(0085)` va letto come etichetta di
   variante o contesto, non come numero buttato lì.
 - Frame: in alto a sinistra trovi
-  [{{近距離|きんきょり}}](term:term-ms-type-near-range) e
+  [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range) e
   [コスト](term:term-cost) `5`. Quindi è un pezzo intermedio, meno pesante del
   GQuuuuuuX ma ancora adatto a stare vicino al conflitto.
 - Sezione effetto: il retro ti fa vedere che anche una carta con nome in parte
@@ -358,7 +358,7 @@ caption: >-
   [コスト](term:term-cost) `4`. Quindi il suo ruolo-base è prima togliere unità
   nemiche, poi aprire la strada.
 - Dati PL: il blocco in alto mostra
-  `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とうじょうきたい}}`.
+  `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とう.じょう.き.たい}}`.
   Nelle PL questo è il pannello biografico minimo da leggere per primo.
 - Sezione effetto: nel retro PL devi trovare subito
   [PLスキル](term:term-pl-skill) e
@@ -385,7 +385,7 @@ caption: >-
   [コスト](term:term-cost) `2`. Questo ti dice che il suo lavoro base è spingere
   sugli obiettivi, non fare da puro duellante.
 - Dati PL: ritornano
-  `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とうじょうきたい}}`,
+  `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とう.じょう.き.たい}}`,
   quindi anche qui puoi riusare la stessa griglia di lettura delle altre PL.
 - Ruolo in campo: con
   [イモータルジャスティスガンダム](term:term-immortal-justice-gundam) è una
@@ -405,8 +405,8 @@ caption: >-
 
 - Giapponese da leggere:
   [ルナマリア・ホーク](term:term-lunamaria-hawk) va letta insieme a
-  [ゲルググメナース(ルナマリア・ホーク{{専用機|せんようき}})](term:term-gelgoog-menace-lunamaria-custom).
-  Il nome della pilota compare per intero nella variante `{{専用機|せんようき}}`,
+  [ゲルググメナース(ルナマリア・ホーク{{専用機|せん.よう.き}})](term:term-gelgoog-menace-lunamaria-custom).
+  Il nome della pilota compare per intero nella variante `{{専用機|せん.よう.き}}`,
   quindi il pairing è già visibile sul front della carta.
 - Frame: in alto a sinistra trovi
   [{{防衛|ぼうえい}}](term:term-role-bouei) e
@@ -435,7 +435,7 @@ caption: >-
   [{{殲滅|せんめつ}}](term:term-role-shoumetsu) e
   [コスト](term:term-cost) `4`. Quindi la carta porta un ruolo aggressivo, non
   di mera pressione agli obiettivi.
-- Dati PL: i pannelli `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とうじょうきたい}}`
+- Dati PL: i pannelli `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とう.じょう.き.たい}}`
   qui sono utili anche per distinguere il personaggio dal suo soprannome.
 - Ruolo in campo: abbinala a
   [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu). Ti aiuta
@@ -475,7 +475,7 @@ caption: >-
 
 :::example_sentence
 jp: >-
-  {{近距離|きんきょり}}MSに{{殲滅|せんめつ}}PLを{{組|く}}み{{合|あ}}わせると、[{{前線|ぜんせん}}](term:term-frontline)で{{敵|てき}}ユニットをどかす{{役|やく}}が{{見|み}}えやすいです。
+  {{近距離|きん.きょ.り}}MSに{{殲滅|せんめつ}}PLを{{組|く}}み{{合|あ}}わせると、[{{前線|ぜんせん}}](term:term-frontline)で{{敵|てき}}ユニットをどかす{{役|やく}}が{{見|み}}えやすいです。
 translation_it: >-
   Se abbini una MS ravvicinata a una PL di annientamento, diventa più leggibile
   il ruolo di apripista contro le unità nemiche.
@@ -483,7 +483,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  ルナマリア・ホーク{{専用機|せんようき}}と{{書|か}}いてあるので、{{対応|たいおう}}するパイロットを{{探|さが}}しやすいです。
+  ルナマリア・ホーク{{専用機|せん.よう.き}}と{{書|か}}いてあるので、{{対応|たいおう}}するパイロットを{{探|さが}}しやすいです。
 translation_it: >-
   Siccome c'è scritto "macchina dedicata a Lunamaria Hawk", è più facile capire
   quale pilota cercare come abbinamento naturale.

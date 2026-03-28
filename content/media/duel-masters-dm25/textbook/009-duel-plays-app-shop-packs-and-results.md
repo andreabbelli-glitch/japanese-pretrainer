@@ -49,10 +49,10 @@ molti label sembrano decorativi, ma in realtà sono istruzioni molto precise.
 - [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
 - [{{構築|こうちく}}{{済|ず}}み](term:term-prebuilt)
 - [{{所持|しょじ}}チケット](term:term-owned-ticket)
-- [{{購入個数|こうにゅうこすう}}](term:term-purchase-quantity)
+- [{{購入個数|こう.にゅう.こ.すう}}](term:term-purchase-quantity)
 - [{{使用|しよう}}](term:term-use)
 - [{{獲得|かくとく}}](term:term-kakutoku)
-- [{{提供割合|ていきょうわりあい}}](term:term-offer-rate)
+- [{{提供割合|てい.きょう.わり.あい}}](term:term-offer-rate)
 - [{{確認|かくにん}}](term:term-confirm)
 - [チケット](term:term-ticket)
 - [{{所持|しょじ}}](term:term-owned)
@@ -110,7 +110,7 @@ caption: >-
   [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase) va letto come
   menu di risorse e controlli: bottoni di acquisto, stock ticket,
   `カード{{一覧|いちらん}}` e
-  [{{提供割合|ていきょうわりあい}}](term:term-offer-rate).
+  [{{提供割合|てい.きょう.わり.あい}}](term:term-offer-rate).
 :::
 
 Quando entri in [カードパック{{購入|こうにゅう}}](term:term-card-pack-purchase),
@@ -120,7 +120,7 @@ come tabella di accesso:
 - quali valute esistono;
 - quale pacchetto o bundle è in evidenza;
 - quanti [{{所持|しょじ}}チケット](term:term-owned-ticket) hai;
-- dove puoi aprire `カード{{一覧|いちらん}}` o `{{提供割合|ていきょうわりあい}}`.
+- dove puoi aprire `カード{{一覧|いちらん}}` o `{{提供割合|てい.きょう.わり.あい}}`.
 
 In altre parole, il layout ti dice se stai usando gemme, oro o ticket e ti evita
 errori di acquisto.
@@ -130,7 +130,7 @@ Qui è utile separare anche i bottoni per funzione:
 - `ジェムで{{購入|こうにゅう}}`, `ゴールドで{{購入|こうにゅう}}`,
   `チケットで{{購入|こうにゅう}}` consumano una risorsa;
 - `カード{{一覧|いちらん}}` e
-  [{{提供割合|ていきょうわりあい}}](term:term-offer-rate) ti fanno
+  [{{提供割合|てい.きょう.わり.あい}}](term:term-offer-rate) ti fanno
   controllare contenuto e rates prima di spendere.
 
 ### 3. Il popup quantità mette al centro stock e numero di pack
@@ -149,7 +149,7 @@ Nel popup quantità, il testo davvero utile non è il logo del pack. È questo:
 
 - [{{所持|しょじ}}チケット](term:term-owned-ticket) = quanti ingressi
   spendibili hai davvero in quel momento;
-- [{{購入個数|こうにゅうこすう}}](term:term-purchase-quantity) = quante unità
+- [{{購入個数|こう.にゅう.こ.すう}}](term:term-purchase-quantity) = quante unità
   stai per comprare;
 - `MAX` = scorciatoia che porta il numero al limite consentito dalla risorsa
   attuale.

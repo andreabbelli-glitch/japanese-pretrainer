@@ -162,10 +162,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistem
 entry_type: term
 entry_id: term-v615-doukyuusei
 card_type: recognition
-front: "{{同級生|どうきゅうせい}}"
+front: "{{同級生|どう.きゅう.せい}}"
 back: compagno di classe
 example_jp: >-
-  {{学校|がっこう}}で {{同級生|どうきゅうせい}}が だいじ です。
+  {{学校|がっこう}}で {{同級生|どう.きゅう.せい}}が だいじ です。
 example_it: >-
   In scuola compagno di classe è importante.
 :::
@@ -369,10 +369,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistem
 entry_type: term
 entry_id: term-v625-mensetsukan
 card_type: recognition
-front: "{{面接官|めんせつかん}}"
+front: "{{面接官|めん.せつ.かん}}"
 back: intervistatore
 example_jp: >-
-  これは {{面接官|めんせつかん}} です。
+  これは {{面接官|めん.せつ.かん}} です。
 example_it: >-
   Questo è intervistatore.
 :::
@@ -523,10 +523,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistem
 entry_type: term
 entry_id: term-v632-shougaibutsu
 card_type: recognition
-front: "{{障害物|しょうがいぶつ}}"
+front: "{{障害物|しょう.がい.ぶつ}}"
 back: ostacolo
 example_jp: >-
-  この{{先|さき}}に {{障害物|しょうがいぶつ}}が あります。
+  この{{先|さき}}に {{障害物|しょう.がい.ぶつ}}が あります。
 example_it: >-
   Più avanti c'è l'ostacolo.
 :::
@@ -589,10 +589,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistem
 entry_type: term
 entry_id: term-v635-atamamoji
 card_type: recognition
-front: "{{頭文字|あたまもじ}}"
+front: "{{頭文字|あたま.も.じ}}"
 back: iniziale
 example_jp: >-
-  メニューで {{頭文字|あたまもじ}}を {{見|み}}ます。
+  メニューで {{頭文字|あたま.も.じ}}を {{見|み}}ます。
 example_it: >-
   Guardo l'iniziale in menu.
 :::
@@ -633,10 +633,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistem
 entry_type: term
 entry_id: term-v637-taikinaka
 card_type: recognition
-front: "{{待機中|たいきなか}}"
+front: "{{待機中|たい.き.なか}}"
 back: in attesa
 example_jp: >-
-  メニューで {{待機中|たいきなか}}を {{見|み}}ます。
+  メニューで {{待機中|たい.き.なか}}を {{見|み}}ます。
 example_it: >-
   Guardo l'in attesa in menu.
 :::

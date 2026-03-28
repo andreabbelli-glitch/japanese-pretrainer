@@ -323,10 +323,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-040-sv-prestudy-l29a-dlc-e-
 entry_type: term
 entry_id: term-v493-daisakusen
 card_type: recognition
-front: "{{大作戦|だいさくせん}}"
+front: "{{大作戦|だい.さく.せん}}"
 back: grande operazione
 example_jp: >-
-  これは {{大作戦|だいさくせん}} です。
+  これは {{大作戦|だい.さく.せん}} です。
 example_it: >-
   Questo è grande operazione.
 :::
@@ -367,10 +367,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-040-sv-prestudy-l29a-dlc-e-
 entry_type: term
 entry_id: term-v495-chousensha
 card_type: recognition
-front: "{{挑戦者|ちょうせんしゃ}}"
+front: "{{挑戦者|ちょう.せん.しゃ}}"
 back: sfidante
 example_jp: >-
-  バトルで {{挑戦者|ちょうせんしゃ}}を {{使|つか}}います。
+  バトルで {{挑戦者|ちょう.せん.しゃ}}を {{使|つか}}います。
 example_it: >-
   Uso il sfidante in battaglia.
 :::

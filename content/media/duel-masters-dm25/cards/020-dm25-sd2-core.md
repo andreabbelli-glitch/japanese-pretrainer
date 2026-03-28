@@ -150,7 +150,7 @@ pos: noun
 aliases: [表向き, おもてむき, omotemuki]
 notes_it: >-
   Nel TCG non vuol dire solo "visibile": segnala che ricerca o rivelazione
-  avvengono apertamente. In carte come `{{進化設計図|しんかせっけいず}}` o `{{未来設計図|みらいせっけいず}}`, il controllo
+  avvengono apertamente. In carte come `{{進化設計図|しん.か.せっ.けい.ず}}` o `{{未来設計図|み.らい.せっ.けい.ず}}`, il controllo
   del giocatore e distinguere informazione pubblica da informazione privata
   durante la risoluzione.
 level_hint: custom
@@ -324,10 +324,10 @@ lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-shinka-sekkeizu
 card_type: recognition
-front: '{{進化設計図|しんかせっけいず}}'
+front: '{{進化設計図|しん.か.せっ.けい.ず}}'
 back: schema di evoluzione
 example_jp: >-
-  {{進化設計図|しんかせっけいず}}で
+  {{進化設計図|しん.か.せっ.けい.ず}}で
   {{進化|しんか}}クリーチャーを{{手札|てふだ}}に{{加|くわ}}える。
 example_it: >-
   Con Shinka Sekkeizu aggiungi una creatura evoluzione alla mano.
@@ -344,14 +344,14 @@ lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-mirai-sekkeizu
 card_type: recognition
-front: '{{未来設計図|みらいせっけいず}}'
+front: '{{未来設計図|み.らい.せっ.けい.ず}}'
 back: schema del futuro
 example_jp: >-
-  {{未来設計図|みらいせっけいず}}で{{次|つぎ}}のターンの{{準備|じゅんび}}をする。
+  {{未来設計図|み.らい.せっ.けい.ず}}で{{次|つぎ}}のターンの{{準備|じゅんび}}をする。
 example_it: >-
   Con Mirai Sekkeizu prepari il turno successivo.
 notes_it: >-
-  Condivide `設計図` con [{{進化設計図|しんかせっけいず}}](term:term-shinka-sekkeizu):
+  Condivide `設計図` con [{{進化設計図|しん.か.せっ.けい.ず}}](term:term-shinka-sekkeizu):
   entrambe marcano preparazione. In partita segnala che il turno sta ordinando
   risorse e sequenza, prima della finestra offensiva finale.
 tags: [dm25-sd2, setup, proper-name]
@@ -366,7 +366,7 @@ card_type: recognition
 front: G・ストライク
 back: G-Strike / keyword difensiva da risposta
 example_jp: >-
-  このクリーチャーの{{攻撃中|こうげきちゅう}}、{{相手|あいて}}は
+  このクリーチャーの{{攻撃中|こう.げき.ちゅう}}、{{相手|あいて}}は
   「G・ストライク」を{{使|つか}}えない。
 example_it: >-
   Durante l'attacco di questa creatura, l'avversario non può usare G-Strike.
@@ -427,7 +427,7 @@ front: '{{終|お}}わり'
 back: fine / momento conclusivo
 example_jp: >-
   このクリーチャーの{{攻撃|こうげき}}の{{終|お}}わりに、
-  {{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。
+  {{一番上|いち.ばん.うえ}}のカードを{{破壊|はかい}}する。
 example_it: >-
   Alla fine dell'attacco di questa creatura, distruggi la carta in cima.
 notes_it: >-
@@ -443,10 +443,10 @@ lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-ichiban-ue
 card_type: recognition
-front: '{{一番上|いちばんうえ}}'
+front: '{{一番上|いち.ばん.うえ}}'
 back: la cima / il punto più in alto
 example_jp: >-
-  {{一番上|いちばんうえ}}のカードを{{破壊|はかい}}する。
+  {{一番上|いち.ばん.うえ}}のカードを{{破壊|はかい}}する。
 example_it: >-
   Distruggi la carta in cima.
 notes_it: >-
@@ -461,10 +461,10 @@ lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-ultimate-evolution
 card_type: recognition
-front: '{{究極進化|きゅうきょくしんか}}'
+front: '{{究極進化|きゅう.きょく.しん.か}}'
 back: Ultimate Evolution
 example_jp: >-
-  {{究極進化|きゅうきょくしんか}}：
+  {{究極進化|きゅう.きょく.しん.か}}：
   {{進化|しんか}}クリーチャー{{1体|いったい}}の{{上|うえ}}に{{置|お}}く。
 example_it: >-
   Ultimate Evolution: mettila sopra 1 creatura evoluzione.
@@ -486,7 +486,7 @@ back: >-
   La metti sopra una creatura che è già evoluzione, aggiungendo un altro
   livello di evoluzione.
 example_jp: >-
-  {{究極進化|きゅうきょくしんか}}では、{{進化|しんか}}しているクリーチャーの
+  {{究極進化|きゅう.きょく.しん.か}}では、{{進化|しんか}}しているクリーチャーの
   {{上|うえ}}にさらに{{重|かさ}}ねて{{出|だ}}す。
 example_it: >-
   Con Ultimate Evolution la metti sopra una creatura già evoluzione,

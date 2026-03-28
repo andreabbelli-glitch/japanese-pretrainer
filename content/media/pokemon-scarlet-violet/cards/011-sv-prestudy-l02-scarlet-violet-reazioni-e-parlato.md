@@ -356,10 +356,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-011-sv-prestudy-l02-scarlet
 entry_type: term
 entry_id: term-v025-shitenou
 card_type: recognition
-front: '{{四天王|してんのう}}'
+front: '{{四天王|し.てん.のう}}'
 back: Superquattro
 example_jp: >-
-  {{四天王|してんのう}}は つよい です。
+  {{四天王|し.てん.のう}}は つよい です。
 example_it: >-
   Superquattro è forte.
 :::

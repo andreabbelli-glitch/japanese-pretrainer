@@ -173,7 +173,7 @@ aliases: [城, しろ, shiro]
 notes_it: >-
   Il kanji vuol dire letteralmente "castello", ma in Duel Masters indica un
   tipo di carta che si mette sui tuoi scudi. Quando leggi [{{城|しろ}}](term:term-castle),
-  devi pensare subito a `{{要塞化|ようさいか}}`, quindi a una carta che modifica
+  devi pensare subito a `{{要塞化|よう.さい.か}}`, quindi a una carta che modifica
   la zona scudi invece del campo normale.
 level_hint: custom
 :::
@@ -324,7 +324,7 @@ card_type: recognition
 front: サイキック・クリーチャー
 back: creatura Psychic
 example_jp: >-
-  サイキック・クリーチャーを{{超次元|ちょうじげん}}ゾーンから{{1体|いったい}}{{出|だ}}す。
+  サイキック・クリーチャーを{{超次元|ちょう.じ.げん}}ゾーンから{{1体|いったい}}{{出|だ}}す。
 example_it: >-
   Metti in gioco 1 creatura Psychic dalla zona superdimensionale.
 notes_it: >-
@@ -382,7 +382,7 @@ card_type: recognition
 front: '{{城|しろ}}'
 back: Castle / carta fortezza sugli scudi
 example_jp: >-
-  {{城|しろ}}はシールドに{{付|つ}}けて{{要塞化|ようさいか}}する。
+  {{城|しろ}}はシールドに{{付|つ}}けて{{要塞化|よう.さい.か}}する。
 example_it: >-
   Una Castle si mette su uno scudo e lo fortifica.
 notes_it: >-

@@ -59,7 +59,7 @@ jp: >-
   [ビートジョッキー](term:term-beat-jockey)なら
   [バトルゾーン](term:term-battle-zone)に[{{出|だ}}し](term:term-dasu)、
   [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara){{自分|じぶん}}の
-  [{{山札|やまふだ}}](term:term-deck)の{{一番下|いちばんした}}に
+  [{{山札|やまふだ}}](term:term-deck)の{{一番下|いち.ばん.した}}に
   [{{置|お}}く](term:term-oku)。
 translation_it: >-
   Se quella carta è un Beat Jockey non evoluzione, la metti nel battle zone;
@@ -102,7 +102,7 @@ reveal_mode: sentence
 
 - [それ{{以外|いがい}}なら](grammar:grammar-soreigai-nara) apre il ramo alternativo sullo
   stesso referente appena controllato.
-- `{{一番下|いちばんした}}に[{{置|お}}く](term:term-oku)` non lascia la carta
+- `{{一番下|いち.ばん.した}}に[{{置|お}}く](term:term-oku)` non lascia la carta
   dov'è: la sposta in fondo al mazzo, quindi fuori dalla pescata immediata.
 - Il testo chiude così un bivio completo: `passa il filtro -> battle zone`,
   `non passa -> fondo del mazzo`.
@@ -114,6 +114,6 @@ reveal_mode: sentence
   rivelata.
 - [{{表|おもて}}{{向|む}}き](term:term-face-up) segnala informazione pubblica durante
   la risoluzione, non movimento di zona.
-- `{{上|うえ}}から{{1枚目|いちまいめ}}` e `{{一番下|いちばんした}}` sono due
+- `{{上|うえ}}から{{1枚目|いちまいめ}}` e `{{一番下|いち.ばん.した}}` sono due
   chunk molto utili perché descrivono posizioni precise del mazzo, non carte
   generiche.

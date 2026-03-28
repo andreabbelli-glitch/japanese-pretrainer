@@ -237,10 +237,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-044-sv-prestudy-l30b-sistem
 entry_type: term
 entry_id: term-v594-tsuushintaisen
 card_type: recognition
-front: "{{通信対戦|つうしんたいせん}}"
+front: "{{通信対戦|つう.しん.たい.せん}}"
 back: lotta online
 example_jp: >-
-  {{通信対戦|つうしんたいせん}}タイプの ポケモンです。
+  {{通信対戦|つう.しん.たい.せん}}タイプの ポケモンです。
 example_it: >-
   È un Pokémon di tipo lotta online.
 :::
@@ -347,10 +347,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-044-sv-prestudy-l30b-sistem
 entry_type: term
 entry_id: term-v599-kenkyuushitsu
 card_type: recognition
-front: "{{研究室|けんきゅうしつ}}"
+front: "{{研究室|けん.きゅう.しつ}}"
 back: laboratorio
 example_jp: >-
-  {{学校|がっこう}}で {{研究室|けんきゅうしつ}}が だいじ です。
+  {{学校|がっこう}}で {{研究室|けん.きゅう.しつ}}が だいじ です。
 example_it: >-
   In scuola laboratorio è importante.
 :::
@@ -590,10 +590,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-044-sv-prestudy-l30b-sistem
 entry_type: term
 entry_id: term-v613-tairyouhassei
 card_type: recognition
-front: "{{大量発生|たいりょうはっせい}}"
+front: "{{大量発生|たい.りょう.はっ.せい}}"
 back: mass outbreak
 example_jp: >-
-  この{{先|さき}}に {{大量発生|たいりょうはっせい}}が あります。
+  この{{先|さき}}に {{大量発生|たい.りょう.はっ.せい}}が あります。
 example_it: >-
   Più avanti c'è il mass outbreak.
 :::

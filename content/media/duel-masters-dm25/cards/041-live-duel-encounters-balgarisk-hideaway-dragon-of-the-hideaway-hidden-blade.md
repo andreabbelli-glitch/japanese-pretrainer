@@ -120,7 +120,7 @@ entry_type: grammar
 entry_id: grammar-te-inakereba
 card_type: concept
 front: >-
-  {{8枚以上|はちまいいじょう}}あり、その{{攻撃中|こうげきちゅう}}に「ニンジャ・ストライク」
+  {{8枚以上|はち.まい.い.じょう}}あり、その{{攻撃中|こう.げき.ちゅう}}に「ニンジャ・ストライク」
   {{能力|のうりょく}}を{{使|つか}}っていなければ
 back: se hai almeno 8 carte in mana e durante quell'attacco non hai ancora usato Ninja Strike
 example_jp: >-

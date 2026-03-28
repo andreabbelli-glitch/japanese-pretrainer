@@ -46,7 +46,7 @@ attuale della carta, e solo dopo concede `S・トリガー`.
 
 :::example_sentence
 jp: >-
-  このゲームが{{2人以上|ふたりいじょう}}の
+  このゲームが{{2人以上|ふたり.い.じょう}}の
   [{{相手|あいて}}](term:term-opponent)がいる
   [{{状態|じょうたい}}](term:term-state)で
   [{{始|はじ}}まっていて](grammar:grammar-hajimatte-ite)、この
@@ -77,7 +77,7 @@ reveal_mode: sentence
 
 - [{{状態|じょうたい}}](term:term-state) è un nome: `stato`, `condizione`,
   `situazione`.
-- Il pezzo davanti, `{{2人以上|ふたりいじょう}}の{{相手|あいて}}がいる`, modifica
+- Il pezzo davanti, `{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる`, modifica
   proprio `状態`: non sono due frasi separate, ma un unico gruppo nominale,
   `lo stato in cui ci sono due o più avversari`.
 - Qui `状態` è molto utile perché impacchetta una configurazione del tavolo come

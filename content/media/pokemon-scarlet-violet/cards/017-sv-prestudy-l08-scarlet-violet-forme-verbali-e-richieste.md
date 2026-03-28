@@ -106,7 +106,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-017-sv-prestudy-l08-scarlet
 entry_type: grammar
 entry_id: grammar-g024-registro-cortese-vs-piano
 card_type: concept
-front: 'ます / {{辞書形|じしょけい}}'
+front: 'ます / {{辞書形|じ.しょ.けい}}'
 back: registro cortese vs piano
 example_jp: >-
   {{店|みせ}}へ {{行|い}}きます。 / {{店|みせ}}へ {{行|い}}く。

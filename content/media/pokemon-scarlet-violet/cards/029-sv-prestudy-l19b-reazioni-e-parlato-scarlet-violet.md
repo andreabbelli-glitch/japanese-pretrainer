@@ -285,7 +285,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-029-sv-prestudy-l19b-reazio
 entry_type: term
 entry_id: term-v263-kateika
 card_type: recognition
-front: '{{家庭科|かていか}}'
+front: '{{家庭科|か.てい.か}}'
 back: economia domestica
 example_jp: >-
   {{東|ひがし}}へ {{行|い}}きます。

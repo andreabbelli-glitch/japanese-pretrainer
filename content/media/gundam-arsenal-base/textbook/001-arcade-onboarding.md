@@ -135,7 +135,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{作戦|さくせん}}カードが{{未解放|みかいほう}}なら、この{{手順|てじゅん}}は{{飛|と}}ばします。
+  {{作戦|さくせん}}カードが{{未解放|み.かい.ほう}}なら、この{{手順|てじゅん}}は{{飛|と}}ばします。
 translation_it: >-
   Se le carte tattiche non sono ancora sbloccate, questo passaggio si salta.
 :::

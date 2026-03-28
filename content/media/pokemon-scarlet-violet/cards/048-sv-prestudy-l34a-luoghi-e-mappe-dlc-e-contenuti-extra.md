@@ -115,10 +115,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-048-sv-prestudy-l34a-luoghi
 entry_type: term
 entry_id: term-v693-kanousei
 card_type: recognition
-front: "{{可能性|かのうせい}}"
+front: "{{可能性|か.のう.せい}}"
 back: possibilità
 example_jp: >-
-  {{可能性|かのうせい}} です。
+  {{可能性|か.のう.せい}} です。
 example_it: >-
   Possibilità.
 :::
@@ -341,10 +341,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-048-sv-prestudy-l34a-luoghi
 entry_type: term
 entry_id: term-v708-funiki
 card_type: recognition
-front: "{{雰囲気|ふんいき}}"
+front: "{{雰囲気|ふん.い.き}}"
 back: atmosfera
 example_jp: >-
-  メニューで {{雰囲気|ふんいき}}を {{見|み}}ます。
+  メニューで {{雰囲気|ふん.い.き}}を {{見|み}}ます。
 example_it: >-
   Guardo l'atmosfera in menu.
 :::

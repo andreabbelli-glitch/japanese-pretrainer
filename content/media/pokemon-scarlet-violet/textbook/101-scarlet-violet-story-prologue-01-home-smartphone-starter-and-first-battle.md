@@ -17,7 +17,7 @@ summary: >-
 # Obiettivo
 
 Capire il giapponese del primo tratto giocabile di `Pokemon Scarlet / Violet`:
-le battute di casa, l'arrivo di [{{校長先生|こうちょうせんせい}}](term:term-kouchou-sensei), la
+le battute di casa, l'arrivo di [{{校長先生|こう.ちょう.せん.せい}}](term:term-kouchou-sensei), la
 preparazione per la scuola, la consegna dello [スマホロトム](term:term-smartphone-rotom), la
 scelta dello starter, il primo [{{勝負|しょうぶ}}](term:term-shoubu) con Nemona e la
 spiegazione iniziale della [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan).
@@ -37,7 +37,7 @@ spiega il tutorial subito dopo il match.
 
 ## Termini chiave
 
-- [{{校長先生|こうちょうせんせい}}](term:term-kouchou-sensei)
+- [{{校長先生|こう.ちょう.せん.せい}}](term:term-kouchou-sensei)
 - [{{転入|てんにゅう}}](term:term-tennyuu)
 - [スマホロトム](term:term-smartphone-rotom)
 - [{{登録|とうろく}}](term:term-touroku)
@@ -61,7 +61,7 @@ spiega il tutorial subito dopo il match.
 
 Nel primo scambio a casa il lessico più importante non è quello super-polite di
 Clavell, ma i nuclei che reggono la scena:
-[{{校長先生|こうちょうせんせい}}](term:term-kouchou-sensei),
+[{{校長先生|こう.ちょう.せん.せい}}](term:term-kouchou-sensei),
 [{{転入|てんにゅう}}](term:term-tennyuu), `{{学校|がっこう}}の {{準備|じゅんび}}`,
 `{{外|そと}}へ {{出|で}}る`.
 Anche se non afferri bene formule come `{{申|もう}}し{{訳|わけ}}ありません` o
@@ -165,7 +165,7 @@ caption: >-
 
 :::example_sentence
 jp: >-
-  {{校長先生|こうちょうせんせい}}が {{入学案内|にゅうがくあんない}}を
+  {{校長先生|こう.ちょう.せん.せい}}が {{入学案内|にゅう.がく.あん.ない}}を
   {{届|とど}}けに {{来|き}}たから、 {{学校|がっこう}}の {{準備|じゅんび}}を
   しよう。
 translation_it: >-

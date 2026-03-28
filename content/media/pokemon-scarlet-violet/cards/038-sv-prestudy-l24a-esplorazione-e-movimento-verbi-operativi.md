@@ -129,7 +129,7 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-038-sv-prestudy-l24a-esplor
 entry_type: grammar
 entry_id: grammar-g086-frase-che-modifica-un-nome
 card_type: concept
-front: "frase relativa ({{連体修飾|れんたいしゅうしょく}})"
+front: "frase relativa ({{連体修飾|れん.たい.しゅう.しょく}})"
 back: frase che modifica un nome
 example_jp: >-
   ここで {{買|か}}った {{本|ほん}}です。
@@ -413,10 +413,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-038-sv-prestudy-l24a-esplor
 entry_type: term
 entry_id: term-v442-shujinkou
 card_type: recognition
-front: "{{主人公|しゅじんこう}}"
+front: "{{主人公|しゅ.じん.こう}}"
 back: protagonista
 example_jp: >-
-  {{学校|がっこう}}で {{主人公|しゅじんこう}}が だいじ です。
+  {{学校|がっこう}}で {{主人公|しゅ.じん.こう}}が だいじ です。
 example_it: >-
   In scuola protagonista è importante.
 :::

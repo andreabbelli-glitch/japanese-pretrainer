@@ -113,7 +113,7 @@ requests:
       ricorrente del deck `DM25-SD1`.
   - id: dm25-sd2-apollonus-dragelion-card
     lesson_slug: dm25-sd2-overview
-    anchor: "#### 2.3 {{超神羅星|ちょうしんらせい}}アポロヌス・ドラゲリオン"
+    anchor: "#### 2.3 {{超神羅星|ちょう.しん.ら.せい}}アポロヌス・ドラゲリオン"
     kind: card-art
     priority: high
     search_hint: >-
@@ -301,7 +301,7 @@ requests:
       categorie a sinistra e ribbon periodo scambio sulle carte.
     caption_it: >-
       In [カード{{交換|こうかん}}](term:term-card-exchange) i label cruciali sono
-      [{{交換期間|こうかんきかん}}](term:term-exchange-period), stock posseduto e
+      [{{交換期間|こう.かん.き.かん}}](term:term-exchange-period), stock posseduto e
       numero di scambi ancora disponibili.
     notes: >-
       Screenshot fornito dall'utente. Nessuna ricerca esterna richiesta.

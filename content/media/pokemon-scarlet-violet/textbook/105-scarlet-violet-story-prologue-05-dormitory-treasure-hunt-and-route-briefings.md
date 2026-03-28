@@ -18,17 +18,17 @@ summary: >-
 
 Capire il giapponese con cui Scarlet / Violet trasforma la scuola in avventura
 vera e propria: riposo al dormitorio, spiegazione di
-[{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou), definizione di
+[{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou), definizione di
 [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi), presentazione del
 [チャンピオンランク](term:term-champion-rank) e prime istruzioni su mappa e
-[{{目的地|もくてきち}}](term:term-mokutekichi).
+[{{目的地|もく.てき.ち}}](term:term-mokutekichi).
 
 ## Contesto
 
 Questo capitolo copre il passaggio tra la fine del primo giorno in accademia e
 l'inizio reale della struttura open world. Dopo avere riposato nella
-[{{学生寮|がくせいりょう}}](term:term-gakusei-ryou), il gioco raduna gli studenti,
-annuncia la [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou) e spiega che
+[{{学生寮|がく.せい.りょう}}](term:term-gakusei-ryou), il gioco raduna gli studenti,
+annuncia la [{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou) e spiega che
 [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi) non e una missione unica ma un
 ombrello sotto cui rientrano strade, sfide e obiettivi molto diversi.
 
@@ -37,12 +37,12 @@ nel campus e inizia a definire il modo in cui giocherai il resto dell'opera.
 
 ## Termini chiave
 
-- [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou)
+- [{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou)
 - [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi)
 - [チャンピオンランク](term:term-champion-rank)
 - [ジムバッジ](term:term-gym-badge)
 - [{{目指|めざ}}す](term:term-mezasu)
-- [{{目的地|もくてきち}}](term:term-mokutekichi)
+- [{{目的地|もく.てき.ち}}](term:term-mokutekichi)
 
 ## Pattern grammaticali chiave
 
@@ -56,11 +56,11 @@ nel campus e inizia a definire il modo in cui giocherai il resto dell'opera.
 ## Spiegazione
 
 Il punto di partenza e capire bene
-[{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou). In questo blocco non
+[{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou). In questo blocco non
 vuol dire attivita parascolastica nel senso generico di club o lezione extra.
 E il dispositivo ufficiale con cui l'accademia ti manda fuori nel mondo. Quando
 il campus ti dice che da ora comincia la
-[{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou), il significato pratico e
+[{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou), il significato pratico e
 che la struttura del gioco si apre e non sarai piu trascinato solo da un corridoio
 narrativo unico.
 
@@ -113,9 +113,9 @@ possibilita e non imponendo un solo ordine corretto.
 Infine, il briefing scolastico si aggancia allo
 [スマホロトム](term:term-smartphone-rotom) e alla mappa. Il gioco non si limita a
 dirti che l'esplorazione e libera: ti da anche una procedura concreta per non
-perderti, cioe registrare una [{{目的地|もくてきち}}](term:term-mokutekichi). Qui
+perderti, cioe registrare una [{{目的地|もく.てき.ち}}](term:term-mokutekichi). Qui
 [～てみる](grammar:grammar-te-miru) e [～ておく](grammar:grammar-teoku) lavorano
-insieme molto bene. `{{目的地|もくてきち}}に {{登録|とうろく}}してみる` ti chiede di
+insieme molto bene. `{{目的地|もく.てき.ち}}に {{登録|とうろく}}してみる` ti chiede di
 provare il sistema; `{{場所|ばしょ}}を {{決|き}}めておく` ti spinge a lasciare
 pronta una direzione prima di uscire davvero nel mondo aperto.
 
@@ -123,7 +123,7 @@ pronta una direzione prima di uscire davvero nel mondo aperto.
 src: assets/ui/smart-rotom-map-destination.webp
 alt: "Mappa dello Smart Rotom con destinazione registrata prima dell'uscita nel mondo aperto."
 caption: >-
-  Registrare una [{{目的地|もくてきち}}](term:term-mokutekichi) sullo [スマホロトム](term:term-smartphone-rotom) trasforma il briefing scolastico in una direzione concreta: il gioco non ti lascia solo libero, ti insegna anche come non perderti.
+  Registrare una [{{目的地|もく.てき.ち}}](term:term-mokutekichi) sullo [スマホロトム](term:term-smartphone-rotom) trasforma il briefing scolastico in una direzione concreta: il gioco non ti lascia solo libero, ti insegna anche come non perderti.
 :::
 
 In pratica, questo capitolo ti insegna la grammatica del passaggio alla liberta.
@@ -135,7 +135,7 @@ diversi senza smettere di progredire.
 
 :::example_sentence
 jp: >-
-  {{課外授業|かがいじゅぎょう}}が {{始|はじ}}まると {{学校|がっこう}}の
+  {{課外授業|か.がい.じゅ.ぎょう}}が {{始|はじ}}まると {{学校|がっこう}}の
   {{外|そと}}で {{自由|じゆう}}に {{学|まな}}べるようになる。
 translation_it: >-
   Quando comincia la lezione sul campo, puoi imparare liberamente fuori dalla
@@ -179,7 +179,7 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  スマホロトムの マップで {{目的地|もくてきち}}を {{登録|とうろく}}してみよう。
+  スマホロトムの マップで {{目的地|もく.てき.ち}}を {{登録|とうろく}}してみよう。
 translation_it: >-
   Prova a registrare una destinazione sulla mappa del Rotom Phone.
 :::
@@ -196,7 +196,7 @@ translation_it: >-
 
 Questo blocco non va studiato come semplice cerimonia scolastica. E il punto in
 cui Scarlet / Violet ti spiega, in linguaggio naturale, come leggere la sua
-struttura aperta. Se stabilizzi [{{課外授業|かがいじゅぎょう}}](term:term-kagai-jugyou),
+struttura aperta. Se stabilizzi [{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou),
 [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi),
 [チャンピオンランク](term:term-champion-rank),
 [ジムバッジ](term:term-gym-badge) e i pattern

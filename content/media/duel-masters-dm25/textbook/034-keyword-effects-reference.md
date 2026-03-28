@@ -69,7 +69,7 @@ jp: >-
   [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two)：このクリーチャーの
   [{{召喚|しょうかん}}](term:term-summon)コストを{{2|ふた}}つ
   {{少|すく}}なくしてもよい。そうした{{場合|ばあい}}、このターン
-  {{終了時|しゅうりょうじ}}にこのクリーチャーを
+  {{終了時|しゅう.りょう.じ}}にこのクリーチャーを
   [{{破壊|はかい}}](term:term-destroy)する。
 translation_it: >-
   B.A.D 2: puoi ridurre di 2 il costo di evocazione di questa creatura. Se lo
@@ -180,7 +180,7 @@ jp: >-
   キリフダッシュ{{6|ろく}}：
   {{自分|じぶん}}の[クリーチャー](term:term-creature)の
   {{攻撃|こうげき}}の{{終|お}}わりに、その[クリーチャー](term:term-creature)
-  が[その{{攻撃中|こうげきちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba),
+  が[その{{攻撃中|こう.げき.ちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba),
   このクリーチャーを{{6|ろく}}[{{支払|しはら}}って](term:term-harau)
   [{{召喚|しょうかん}}](term:term-summon)してもよい。
 translation_it: >-
@@ -193,9 +193,9 @@ reveal_mode: sentence
 - `{{攻撃|こうげき}}の{{終|お}}わりに` fissa il timing: controlli la keyword
   solo quando
   l'attacco è già finito.
-- `[その{{攻撃中|こうげきちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba)`
+- `[その{{攻撃中|こう.げき.ちゅう}}にシールドをブレイクしていれば](grammar:grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba)`
   tiene insieme finestra e condizione nello stesso attacco.
-- `{{攻撃中|こうげきちゅう}}` non indica semplicemente `mentre si attacca` in
+- `{{攻撃中|こう.げき.ちゅう}}` non indica semplicemente `mentre si attacca` in
   senso vago: `{{中|ちゅう}}` chiude il controllo dentro l'interno di quella
   singola azione di attacco appena nominata da `その`.
 - Per questo la frase funziona bene con `{{攻撃|こうげき}}の{{終|お}}わりに`:
@@ -212,8 +212,8 @@ jp: >-
   [ニンジャ・ストライク](term:term-ninja-strike) {{8|はち}}：
   {{相手|あいて}}の[クリーチャー](term:term-creature)が
   {{攻撃|こうげき}}またはブロックした{{時|とき}}、{{自分|じぶん}}の
-  [マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はちまいいじょう}}あり、
-  その{{攻撃中|こうげきちゅう}}に「ニンジャ・ストライク」
+  [マナゾーン](term:term-mana-zone)にカードが{{8枚以上|はち.まい.い.じょう}}あり、
+  その{{攻撃中|こう.げき.ちゅう}}に「ニンジャ・ストライク」
   [{{能力|のうりょく}}](term:term-ability)を{{使|つか}}っていなければ、このシノビを
   コストを[{{支払|しはら}}わずに](term:term-harau)
   [{{召喚|しょうかん}}](term:term-summon)してもよい。
@@ -224,7 +224,7 @@ translation_it: >-
 reveal_mode: sentence
 :::
 
-- `{{8枚以上|はちまいいじょう}}あり` apre la prima soglia e `あり` collega
+- `{{8枚以上|はち.まい.い.じょう}}あり` apre la prima soglia e `あり` collega
   subito la frase alla condizione seguente.
 - `使っていなければ` è il secondo cancello: controlla se, dentro quello stesso
   attacco, hai già usato una abilità `ニンジャ・ストライク` oppure no.
@@ -236,7 +236,7 @@ jp: >-
   [メテオバーン](term:term-meteorburn)：このクリーチャーの
   {{下|した}}にあるカードを{{指定|してい}}された{{枚数|まいすう}}
   [{{墓地|ぼち}}](term:term-graveyard)に{{置|お}}いて、{{書|か}}かれた
-  {{追加効果|ついかこうか}}を{{使|つか}}う。
+  {{追加効果|つい.か.こう.か}}を{{使|つか}}う。
 translation_it: >-
   Meteorburn: metti nel cimitero il numero richiesto di carte sotto questa
   creatura e usi l'effetto aggiuntivo scritto dopo.
@@ -252,9 +252,9 @@ reveal_mode: sentence
 :::example_sentence
 jp: >-
   [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon)：{{自分|じぶん}}の
-  [{{魔導具|まどうぐ}}](term:term-madougu)が[バトルゾーン](term:term-battle-zone)に
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu)が[バトルゾーン](term:term-battle-zone)に
   {{出|で}}た{{時|とき}}、{{自分|じぶん}}の
-  [{{魔導具|まどうぐ}}](term:term-madougu)を[バトルゾーン](term:term-battle-zone)と
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu)を[バトルゾーン](term:term-battle-zone)と
   [{{墓地|ぼち}}](term:term-graveyard)から{{2|ふた}}つ[ずつ](grammar:grammar-zutsu)
   {{選|えら}}び、このクリーチャーを{{自分|じぶん}}の
   [{{手札|てふだ}}](term:term-hand)または[{{墓地|ぼち}}](term:term-graveyard)から
@@ -296,8 +296,8 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  [シンカライズ](term:term-shinkarize)：{{進化元|しんかもと}}にも
-  {{進化先|しんかさき}}にもなれるように{{扱|あつか}}って、
+  [シンカライズ](term:term-shinkarize)：{{進化元|しん.か.もと}}にも
+  {{進化先|しん.か.さき}}にもなれるように{{扱|あつか}}って、
   [{{進化|しんか}}](term:term-evolution)のつながりを{{作|つく}}る。
 translation_it: >-
   Shinkarize: tratta la carta in modo da poter fare da base o da estensione di
@@ -380,11 +380,11 @@ reveal_mode: sentence
 - `T` codifica il numero `3`: questa keyword significa che la creatura rompe
   tre scudi.
 
-### [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution)
+### [{{究極進化|きゅう.きょく.しん.か}}](term:term-ultimate-evolution)
 
 :::example_sentence
 jp: >-
-  [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution)：すでに
+  [{{究極進化|きゅう.きょく.しん.か}}](term:term-ultimate-evolution)：すでに
   [{{進化|しんか}}](term:term-evolution)しているクリーチャーの{{上|うえ}}に、
   さらに{{重|かさ}}ねて{{出|だ}}す。
 translation_it: >-

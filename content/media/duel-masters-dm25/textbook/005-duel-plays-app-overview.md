@@ -190,12 +190,12 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{開催中|かいさいちゅう}}のイベント
+  {{開催中|かい.さい.ちゅう}}のイベント
 translation_it: >-
   Evento attualmente in corso.
 :::
 
-- [{{開催中|かいさいちゅう}}](term:term-ongoing) segnala uno stato attivo.
+- [{{開催中|かい.さい.ちゅう}}](term:term-ongoing) segnala uno stato attivo.
 - [～{{中|ちゅう}}](grammar:grammar-ui-chuu) ti dice che l'elemento vale ora.
 
 **Esempio 3**
@@ -216,13 +216,13 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{未達成|みたっせい}}
+  {{未達成|み.たっ.せい}}
 translation_it: >-
   Non ancora completato.
 :::
 
 - [{{未|み}}～](grammar:grammar-mi-prefix) indica stato non ancora raggiunto.
-- `{{未達成|みたっせい}}` conferma che la missione non
+- `{{未達成|み.たっ.せい}}` conferma che la missione non
   è ancora chiusa.
 
 ## Nota finale

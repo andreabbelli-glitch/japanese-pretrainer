@@ -47,7 +47,7 @@ Draghi e Command.
 :::example_sentence
 jp: >-
   このクリーチャーが[{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte){{出|で}}た{{時|とき}}、
-  ドラゴンまたは[{{無色呪文|むしょくじゅもん}}](term:term-colorless-spell)を{{合計|ごうけい}}{{3枚|さんまい}},
+  ドラゴンまたは[{{無色呪文|む.しょく.じゅ.もん}}](term:term-colorless-spell)を{{合計|ごうけい}}{{3枚|さんまい}},
   {{自分|じぶん}}の{{墓地|ぼち}}またはマナゾーンから
   {{手札|てふだ}}に{{戻|もど}}す。
   {{自分|じぶん}}の{{山札|やまふだ}}の{{上|うえ}}から{{3枚|さんまい}}を
@@ -134,7 +134,7 @@ reveal_mode: sentence
 - [{{戦慄|せんりつ}}の{{頂|いただき}} ベートーベン](term:term-beethoven-zenith-of-horror)
   è un buon promemoria per leggere i titoli lunghi: quote, titolo e nome
   proprio vanno tenuti insieme.
-- [{{無色呪文|むしょくじゅもん}}](term:term-colorless-spell) vale come composto
+- [{{無色呪文|む.しょく.じゅ.もん}}](term:term-colorless-spell) vale come composto
   operativo: nella riga principale non leggi `無色` e `呪文` separatamente, ma
   una categoria unica di carte che Beethoven può recuperare.
 - [エターナル・Ω](term:term-eternal-omega) è il chunk più verticale ma anche il

@@ -18,8 +18,8 @@ aliases: [サッヴァークDG, サッヴァーク DG, Savark DG]
 notes_it: >-
   E` il nome proprio della carta. La lettura utile da collegare al nome non e`
   solo il top `{{3枚|さんまい}}`, ma soprattutto il blocco
-  `{{終了時|しゅうりょうじ}}` +
-  `{{表向|おもてむ}}きのカードの{{合計|ごうけい}}が{{3枚以上|さんまいいじょう}}なら`
+  `{{終了時|しゅう.りょう.じ}}` +
+  `{{表向|おもてむ}}きのカードの{{合計|ごうけい}}が{{3枚以上|さん.まい.い.じょう}}なら`
   + `そうしたら{{光|ひかり}}のドラゴン{{1枚|いちまい}}をバトルゾーンに
   {{出|だ}}す`.
 level_hint: custom
@@ -38,7 +38,7 @@ notes_it: >-
   formale di qualcosa; `{{時|じ}}` lo trasforma nel momento in cui quella
   chiusura avviene. Nel rules text di Duel Masters il significato resta
   trasparente ma diventa una finestra tecnica molto precisa. In
-  `{{自分|じぶん}}のターン{{終了時|しゅうりょうじ}}`, la carta non parla di una
+  `{{自分|じぶん}}のターン{{終了時|しゅう.りょう.じ}}`, la carta non parla di una
   parte vaga del turno finale: indica proprio il punto in cui il tuo turno si
   sta chiudendo e il gioco controlla gli effetti legati a quel timing.
 level_hint: n3
@@ -87,7 +87,7 @@ card_type: recognition
 front: サッヴァークDG
 back: Savark DG / top 3 face-up, Sabaki gratis e soglia di 3 carte face-up negli scudi
 example_jp: >-
-  サッヴァークDGは、{{終了時|しゅうりょうじ}}に
+  サッヴァークDGは、{{終了時|しゅう.りょう.じ}}に
   {{裁|さば}}きの{{紋章|もんしょう}}を{{唱|とな}}えたり、
   シールドの{{表向|おもてむ}}き{{枚数|まいすう}}を{{増|ふ}}やしたりできる。
 example_it: >-
@@ -95,7 +95,7 @@ example_it: >-
   numero di carte face-up negli scudi.
 notes_it: >-
   Il nome va fissato come blocco unico. In questa lezione il nome richiama
-  subito il timing `{{終了時|しゅうりょうじ}}` e il conto globale delle carte
+  subito il timing `{{終了時|しゅう.りょう.じ}}` e il conto globale delle carte
   face-up negli scudi.
 tags: [live-duel, proper-name, sabaki, metallica]
 :::
@@ -106,17 +106,17 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-savark-dg
 entry_type: term
 entry_id: term-shuuryouji
 card_type: recognition
-front: '{{終了時|しゅうりょうじ}}'
+front: '{{終了時|しゅう.りょう.じ}}'
 back: alla fine / al momento in cui il turno o la fase si chiude
 example_jp: >-
-  {{自分|じぶん}}のターン{{終了時|しゅうりょうじ}}なら、
+  {{自分|じぶん}}のターン{{終了時|しゅう.りょう.じ}}なら、
   そのターンのしめくくりで{{効果|こうか}}を{{見|み}}る。
 example_it: >-
   Se c'è `fine del tuo turno`, l'effetto viene controllato al momento in cui
   quel turno si chiude.
 notes_it: >-
   Vale la pena fissarlo perche` `{{終|お}}わり` da solo puo` sembrare vago,
-  mentre `{{終了時|しゅうりょうじ}}` nel rules text e` un timing preciso e
+  mentre `{{終了時|しゅう.りょう.じ}}` nel rules text e` un timing preciso e
   ricorrente.
 tags: [live-duel, term, timing, rules-text]
 :::
@@ -203,7 +203,7 @@ example_it: >-
 notes_it: >-
   Qui `てもよい` si appoggia a un chunk molto concreto: dalla tua mano, una
   sola `{{裁|さば}}きの{{紋章|もんしょう}}`, senza pagare il costo. Il punto
-  utile da fissare e` che la finestra esiste a `{{終了時|しゅうりょうじ}}`, ma la
+  utile da fissare e` che la finestra esiste a `{{終了時|しゅう.りょう.じ}}`, ma la
   scelta resta facoltativa.
 tags: [live-duel, grammar, optional, sabaki]
 :::
@@ -216,7 +216,7 @@ entry_id: term-goukei
 card_type: concept
 front: >-
   すべてのシールドゾーンにある{{表向|おもてむ}}きのカードの
-  {{合計|ごうけい}}が{{3枚以上|さんまいいじょう}}なら
+  {{合計|ごうけい}}が{{3枚以上|さん.まい.い.じょう}}なら
 back: se il totale delle carte face-up presenti in tutte le shield zone è 3 o più
 example_jp: >-
   `{{合計|ごうけい}}`だから、シールドごとに{{別々|べつべつ}}ではなく、

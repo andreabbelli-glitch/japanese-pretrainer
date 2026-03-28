@@ -64,10 +64,10 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-balga-raizou-the-super-
 entry_type: term
 entry_id: term-balga-raizou-super-heavenly-nova
 card_type: recognition
-front: '{{超天星|ちょうてんせい}}バルガライゾウ'
+front: '{{超天星|ちょう.てん.せい}}バルガライゾウ'
 back: Balga Raizou, the Super-Heavenly Nova
 example_jp: >-
-  {{超天星|ちょうてんせい}}バルガライゾウを
+  {{超天星|ちょう.てん.せい}}バルガライゾウを
   [マナ{{進化|しんか}}GV](term:term-mana-evolution-gv)で{{出|だ}}す。
 example_it: >-
   Metto in gioco Balga Raizou con Mana Evolution GV.

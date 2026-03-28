@@ -174,10 +174,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-047-sv-prestudy-l30e-sistem
 entry_type: term
 entry_id: term-v662-dentougyouji
 card_type: recognition
-front: "{{伝統行事|でんとうぎょうじ}}"
+front: "{{伝統行事|でん.とう.ぎょう.じ}}"
 back: evento / tradizione della scuola
 example_jp: >-
-  ここは {{伝統行事|でんとうぎょうじ}} です。
+  ここは {{伝統行事|でん.とう.ぎょう.じ}} です。
 example_it: >-
   Qui è evento.
 :::
@@ -196,10 +196,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-047-sv-prestudy-l30e-sistem
 entry_type: term
 entry_id: term-v663-kagaikatsudou
 card_type: recognition
-front: "{{課外活動|かがいかつどう}}"
+front: "{{課外活動|か.がい.かつ.どう}}"
 back: attività extrascolastica
 example_jp: >-
-  {{学校|がっこう}}で {{課外活動|かがいかつどう}}が だいじ です。
+  {{学校|がっこう}}で {{課外活動|か.がい.かつ.どう}}が だいじ です。
 example_it: >-
   In scuola attività extrascolastica è importante.
 :::
@@ -240,10 +240,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-047-sv-prestudy-l30e-sistem
 entry_type: term
 entry_id: term-v665-zensentaku
 card_type: recognition
-front: "{{全選択|ぜんせんたく}}"
+front: "{{全選択|ぜん.せん.たく}}"
 back: seleziona tutto
 example_jp: >-
-  メニューで {{全選択|ぜんせんたく}}を {{見|み}}ます。
+  メニューで {{全選択|ぜん.せん.たく}}を {{見|み}}ます。
 example_it: >-
   Guardo il seleziona tutto in menu.
 :::
@@ -548,10 +548,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-047-sv-prestudy-l30e-sistem
 entry_type: term
 entry_id: term-v679-saitekikai
 card_type: recognition
-front: "{{最適解|さいてきかい}}"
+front: "{{最適解|さい.てき.かい}}"
 back: soluzione ottimale
 example_jp: >-
-  バトルで {{最適解|さいてきかい}}を {{使|つか}}います。
+  バトルで {{最適解|さい.てき.かい}}を {{使|つか}}います。
 example_it: >-
   Uso il soluzione ottimale in battaglia.
 :::
@@ -592,10 +592,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-047-sv-prestudy-l30e-sistem
 entry_type: term
 entry_id: term-v681-hitokurou
 card_type: recognition
-front: "{{一苦労|ひとくろう}}"
+front: "{{一苦労|ひと.く.ろう}}"
 back: una bella fatica
 example_jp: >-
-  この{{先|さき}}に {{一苦労|ひとくろう}}が あります。
+  この{{先|さき}}に {{一苦労|ひと.く.ろう}}が あります。
 example_it: >-
   Più avanti c'è una bella fatica.
 :::
@@ -614,10 +614,10 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-047-sv-prestudy-l30e-sistem
 entry_type: term
 entry_id: term-v682-juuoumujin
 card_type: recognition
-front: "{{縦横無尽|じゅうおうむじん}}"
+front: "{{縦横無尽|じゅう.おう.む.じん}}"
 back: in lungo e in largo / liberamente
 example_jp: >-
-  この{{先|さき}}に {{縦横無尽|じゅうおうむじん}}が あります。
+  この{{先|さき}}に {{縦横無尽|じゅう.おう.む.じん}}が あります。
 example_it: >-
   Più avanti c'è l'in lungo e in largo.
 :::

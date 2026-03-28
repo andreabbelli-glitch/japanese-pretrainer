@@ -14,7 +14,7 @@ romaji: kouchou sensei
 meaning_it: preside / il preside
 notes_it: >-
   Nel prologo è la forma con cui la madre presenta Clavell.
-  `{{校長先生|こうちょうせんせい}}` marca subito un registro scolastico formale:
+  `{{校長先生|こう.ちょう.せん.せい}}` marca subito un registro scolastico formale:
   il parlante riconosce il ruolo di autorità dell'Accademia.
 :::
 :::card
@@ -23,10 +23,10 @@ lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet
 entry_type: term
 entry_id: term-kouchou-sensei
 card_type: recognition
-front: "{{校長先生|こうちょうせんせい}}"
+front: "{{校長先生|こう.ちょう.せん.せい}}"
 back: preside / il preside
 example_jp: >-
-  {{校長先生|こうちょうせんせい}}が {{家|いえ}}まで {{来|き}}てくれた。
+  {{校長先生|こう.ちょう.せん.せい}}が {{家|いえ}}まで {{来|き}}てくれた。
 example_it: >-
   Il preside è venuto fin davanti a casa.
 :::
