@@ -21,6 +21,12 @@ import {
   type TermGlossaryEntry
 } from "@/db";
 import {
+  canUseDataCache,
+  MEDIA_LIST_TAG,
+  runWithTaggedCache,
+  SETTINGS_TAG
+} from "@/lib/data-cache";
+import {
   mediaGlossaryEntryHref,
   mediaGlossaryHref,
   mediaReviewCardHref
@@ -168,23 +174,19 @@ export async function getTextbookIndexData(
   mediaSlug: string,
   database: DatabaseClient = db
 ): Promise<TextbookIndexData | null> {
-  markDataAsLive();
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["textbook", "index", mediaSlug],
+    loader: async () => {
+      const media = await getMediaBySlug(database, mediaSlug);
 
-  const media = await getMediaBySlug(database, mediaSlug);
+      if (!media) {
+        return null;
+      }
 
-  if (!media) {
-    return null;
-  }
-
-  const [lessons, furiganaMode] = await Promise.all([
-    listLessonsByMediaId(database, media.id),
-    getFuriganaMode(database)
-  ]);
-
-  return buildTextbookIndexModel({
-    furiganaMode,
-    lessons,
-    media
+      return getTextbookIndexDataForMedia(media, database);
+    },
+    tags: [MEDIA_LIST_TAG, SETTINGS_TAG]
   });
 }
 
