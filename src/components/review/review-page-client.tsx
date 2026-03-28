@@ -239,6 +239,12 @@ export function ReviewPageClient({
 
     return () => {
       cancelled = true;
+      if (
+        inFlightGlobalHydrationRequestKeyRef.current ===
+        globalHydrationRequestKey
+      ) {
+        inFlightGlobalHydrationRequestKeyRef.current = null;
+      }
     };
   }, [
     globalHydrationRequestKey,
