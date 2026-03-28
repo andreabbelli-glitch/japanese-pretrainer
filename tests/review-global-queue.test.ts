@@ -378,6 +378,9 @@ describe("global review queue filtering", () => {
     expect(firstCandidate.data.queue.queueCount).toBe(
       fullPage.queue.queueCount
     );
+    expect(firstCandidate.data.nextCardId).toBe(
+      fullPage.queueCardIds[1] ?? null
+    );
     expect("entries" in firstCandidate.data.selectedCard!).toBe(false);
     expect("pronunciations" in firstCandidate.data.selectedCard!).toBe(false);
     expect("contexts" in firstCandidate.data.selectedCard!).toBe(false);

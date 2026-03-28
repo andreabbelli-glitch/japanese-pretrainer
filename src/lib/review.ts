@@ -186,6 +186,7 @@ type ReviewFirstCandidateSelectedCardContext = Omit<
 
 export type ReviewFirstCandidatePageData = {
   media: ReviewPageData["media"];
+  nextCardId?: string | null;
   queue: ReviewFirstCandidateQueueSnapshot;
   scope: ReviewScope;
   selectedCard: ReviewFirstCandidateCard | null;
@@ -761,6 +762,10 @@ async function buildReviewFirstCandidateDataFromWorkspace(input: {
     queueSnapshot,
     searchState: input.searchState
   });
+  const nextCardId =
+    selectedCardContext.isQueueCard && selection.queueIndex >= 0
+      ? (queueSnapshot.queueModels[selection.queueIndex + 1]?.card.id ?? null)
+      : undefined;
 
   input.profiler?.addMeta({
     selectedCardId: selectedCard?.id ?? null
@@ -768,6 +773,7 @@ async function buildReviewFirstCandidateDataFromWorkspace(input: {
 
   return {
     media: input.media,
+    nextCardId,
     queue: {
       dailyLimit: queueSnapshot.dailyLimit,
       dueCount: queueSnapshot.dueCount,

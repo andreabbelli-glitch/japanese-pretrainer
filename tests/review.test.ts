@@ -2316,6 +2316,37 @@ describe("review system", () => {
     expect(revalidatePathMock).not.toHaveBeenCalled();
   });
 
+  it("falls back to a full rebuild instead of forcing completion when the session plan has no nextCardId", async () => {
+    const { currentCardId } = await prepareTwoQueueCardFixture(database);
+    const pageData = await getGlobalReviewPageData({}, database);
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    const result = await gradeReviewCardSessionAction({
+      answeredCount: pageData.session.answeredCount,
+      cardId: currentCardId,
+      cardMediaSlug: pageData.selectedCard?.mediaSlug,
+      extraNewCount: pageData.session.extraNewCount,
+      gradedCardBucket: pageData.selectedCard?.bucket,
+      rating: "good",
+      scope: "global",
+      sessionMedia: pageData.media,
+      sessionQueue: pageData.queue,
+      sessionSettings: pageData.settings
+    });
+
+    expect(result).toEqual({});
+    expect(reviewPageCalls).toEqual([
+      {
+        scope: "global",
+        searchParams: {
+          answered: "1"
+        }
+      }
+    ]);
+    expect(revalidatePathMock).not.toHaveBeenCalled();
+  });
+
   it("prefetches a queued review card without touching session rebuild paths", async () => {
     const { nextCardId } = await prepareTwoQueueCardFixture(database);
     const { prefetchReviewCardSessionAction, reviewPageCalls } =

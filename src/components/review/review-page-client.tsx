@@ -104,11 +104,12 @@ export function ReviewPageClient({
     ? viewData.selectedCardContext.showAnswer ||
       revealedCardId === selectedCard.id
     : false;
-  const nextQueueCardId = isQueueCard
-    ? isFullReviewPageData
-      ? (queueCardIds[queueIndex + 1] ?? null)
-      : null
-    : null;
+  const nextQueueCardId = resolveNextQueueCardId({
+    data: viewData,
+    isQueueCard,
+    queueCardIds,
+    selectedCardId: selectedCard?.id ?? null
+  });
   const position = selectedCard ? viewData.selectedCardContext.position : null;
   const remainingCount = selectedCard
     ? viewData.selectedCardContext.remainingCount
@@ -175,6 +176,7 @@ export function ReviewPageClient({
       const current = latestViewDataRef.current;
       if (data.session.extraNewCount > current.session.extraNewCount) {
         latestViewDataRef.current = data;
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve full client state until session counters move forward.
         setViewData(data);
         setRevealedCardId(getInitiallyRevealedCardId(data));
       }
@@ -410,26 +412,29 @@ export function ReviewPageClient({
       return;
     }
 
-    const fullViewData = viewData as ReviewPageData;
+    const sessionViewData = viewData;
+    const fullViewData = isReviewPageData(sessionViewData)
+      ? sessionViewData
+      : null;
 
     gradedCardIdsRef.current.add(selectedCard.id);
-    setPendingAnsweredCountScroll(fullViewData.session.answeredCount);
+    setPendingAnsweredCountScroll(sessionViewData.session.answeredCount);
 
     if (!isQueueCard) {
       runSessionUpdate(
         () =>
           gradeReviewCardSessionAction({
-            answeredCount: fullViewData.session.answeredCount,
+            answeredCount: sessionViewData.session.answeredCount,
             cardId: selectedCard.id,
             cardMediaSlug: selectedCard.mediaSlug,
-            extraNewCount: fullViewData.session.extraNewCount,
+            extraNewCount: sessionViewData.session.extraNewCount,
             gradedCardIds: Array.from(gradedCardIdsRef.current),
             mediaSlug:
-              fullViewData.scope === "media"
-                ? fullViewData.media.slug
+              sessionViewData.scope === "media"
+                ? sessionViewData.media.slug
                 : undefined,
             rating,
-            scope: fullViewData.scope
+            scope: sessionViewData.scope
           }),
         {
           onError: () => {
@@ -440,40 +445,41 @@ export function ReviewPageClient({
       return;
     }
 
-    const nextCardId = nextQueueCardId ?? undefined;
+    const nextCardId = nextQueueCardId;
     const nextQueueCardIds = queueCardIds.filter(
       (id) => id !== selectedCard.id
     );
     const optimisticNextCard = nextCardId
       ? (prefetchBufferRef.current.get(nextCardId) ?? null)
       : null;
-    const canOptimisticallyAdvance = !nextCardId || optimisticNextCard !== null;
+    const canOptimisticallyAdvance =
+      fullViewData !== null && (!nextCardId || optimisticNextCard !== null);
 
     runSessionUpdate(
       () =>
         gradeReviewCardSessionAction({
-          answeredCount: fullViewData.session.answeredCount,
+          answeredCount: sessionViewData.session.answeredCount,
           cardId: selectedCard.id,
           cardMediaSlug: selectedCard.mediaSlug,
-          extraNewCount: fullViewData.session.extraNewCount,
+          extraNewCount: sessionViewData.session.extraNewCount,
           gradedCardBucket: selectedCard.bucket,
           gradedCardIds: Array.from(gradedCardIdsRef.current),
           mediaSlug:
-            fullViewData.scope === "media"
-              ? fullViewData.media.slug
+            sessionViewData.scope === "media"
+              ? sessionViewData.media.slug
               : undefined,
           nextCardId,
           rating,
-          scope: fullViewData.scope,
-          sessionMedia: fullViewData.media,
-          sessionQueue: fullViewData.queue,
-          sessionSettings: fullViewData.settings
+          scope: sessionViewData.scope,
+          sessionMedia: sessionViewData.media,
+          sessionQueue: fullViewData?.queue,
+          sessionSettings: fullViewData?.settings
         }),
       {
         onError: () => {
           setPendingAnsweredCountScroll(null);
         },
-        optimisticUpdate: canOptimisticallyAdvance
+        optimisticUpdate: fullViewData !== null && canOptimisticallyAdvance
           ? () => {
               const previousViewData = fullViewData;
               const previousQueueCardIds = queueCardIds;
@@ -948,6 +954,28 @@ export function ReviewPageClient({
 
 function formatRemainingCardsLabel(count: number) {
   return count === 1 ? "1 flashcard rimanente" : `${count} flashcard rimanenti`;
+}
+
+function resolveNextQueueCardId(input: {
+  data: ReviewPageClientData;
+  isQueueCard: boolean;
+  queueCardIds: string[];
+  selectedCardId: string | null;
+}) {
+  if (!input.isQueueCard || input.selectedCardId === null) {
+    return null;
+  }
+
+  if (isReviewPageData(input.data)) {
+    const queueSource = input.queueCardIds.includes(input.selectedCardId)
+      ? input.queueCardIds
+      : input.data.queueCardIds;
+    const queueIndex = queueSource.indexOf(input.selectedCardId);
+
+    return queueIndex >= 0 ? (queueSource[queueIndex + 1] ?? null) : undefined;
+  }
+
+  return input.data.nextCardId;
 }
 
 function buildOptimisticGradeResult(input: {

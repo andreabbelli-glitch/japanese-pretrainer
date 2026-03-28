@@ -40,7 +40,7 @@ type ReviewSessionInput = {
   gradedCardBucket?: ReviewQueueCard["bucket"];
   gradedCardIds?: string[];
   mediaSlug?: string;
-  nextCardId?: string;
+  nextCardId?: string | null;
   sessionMedia?: ReviewPageData["media"];
   sessionQueue?: ReviewPageData["queue"];
   sessionSettings?: ReviewPageData["settings"];
@@ -243,7 +243,7 @@ export async function gradeReviewCardSessionAction(
       input.gradedCardBucket
     );
 
-    if (!input.nextCardId) {
+    if (input.nextCardId === null) {
       return {
         scope: input.scope === "global" ? "global" : "media",
         media: input.sessionMedia,
@@ -267,6 +267,43 @@ export async function gradeReviewCardSessionAction(
     }
 
     const nextCardId = input.nextCardId;
+    if (nextCardId === undefined) {
+      if (updatedQueue.queueCount <= 0) {
+        return {
+          scope: input.scope === "global" ? "global" : "media",
+          media: input.sessionMedia,
+          settings: input.sessionSettings,
+          queue: updatedQueue,
+          queueCardIds: [],
+          selectedCard: null,
+          selectedCardContext: {
+            bucket: null,
+            gradePreviews: [],
+            isQueueCard: false,
+            position: null,
+            remainingCount: 0,
+            showAnswer: false
+          },
+          session: {
+            answeredCount: input.answeredCount + 1,
+            extraNewCount: input.extraNewCount
+          }
+        } satisfies ReviewPageData;
+      }
+
+      return profiler.measure("requireReviewPageDataForScope", () =>
+        requireReviewPageDataForScope(
+          input,
+          buildReviewSearchParams({
+            answeredCount: input.answeredCount + 1,
+            extraNewCount: input.extraNewCount
+          }),
+          profiler,
+          media
+        )
+      );
+    }
+
     const now = new Date();
     const hydratedCard = await profiler.measure("hydrateReviewCard.next", () =>
       hydrateReviewCard({
