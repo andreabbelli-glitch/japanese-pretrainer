@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   card,
@@ -11,6 +11,8 @@ import {
   lesson,
   lessonProgress,
   media,
+  reviewSubjectLog,
+  reviewSubjectState,
   runMigrations,
   userSetting,
   type DatabaseClient
@@ -207,6 +209,79 @@ describe("global review queue filtering", () => {
     expect(snapshots.get("media_b")?.queueCount).toBe(0);
     expect(snapshots.get("media_b")?.newAvailableCount).toBe(1);
     expect(snapshots.get("media_b")?.newQueuedCount).toBe(0);
+  });
+
+  it("does not let a new review introduced in media A consume media B's per-media daily limit", async () => {
+    await seedTwoMediaNewQueueFixture();
+
+    const now = new Date("2026-03-10T13:00:00.000Z");
+    const tomorrow = new Date("2026-03-11T13:00:00.000Z");
+
+    vi.useFakeTimers();
+    vi.setSystemTime(now);
+
+    try {
+      await database.insert(reviewSubjectState).values({
+        subjectKey: "card:card_a",
+        subjectType: "card",
+        entryType: null,
+        crossMediaGroupId: null,
+        entryId: null,
+        cardId: "card_a",
+        state: "review",
+        stability: 3,
+        difficulty: 2.5,
+        dueAt: tomorrow.toISOString(),
+        lastReviewedAt: now.toISOString(),
+        lastInteractionAt: now.toISOString(),
+        scheduledDays: 1,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 1,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: false,
+        suspended: false,
+        createdAt: now.toISOString(),
+        updatedAt: now.toISOString()
+      });
+      await database.insert(reviewSubjectLog).values({
+        id: "review_subject_log_card_a_introduced_today",
+        subjectKey: "card:card_a",
+        cardId: "card_a",
+        answeredAt: now.toISOString(),
+        rating: "good",
+        previousState: "new",
+        newState: "review",
+        scheduledDueAt: tomorrow.toISOString(),
+        elapsedDays: 0,
+        responseMs: null
+      });
+
+      const [globalPage, mediaAPage, mediaBPage, mediaBQueue] =
+        await Promise.all([
+          getGlobalReviewPageData({}, database),
+          getReviewPageData("media-a", {}, database),
+          getReviewPageData("media-b", {}, database),
+          getReviewQueueSnapshotForMedia("media-b", database)
+        ]);
+
+      expect(globalPage.queue.newQueuedCount).toBe(0);
+      expect(globalPage.queue.queueCount).toBe(0);
+
+      expect(mediaAPage?.queue.newQueuedCount).toBe(0);
+      expect(mediaAPage?.queue.queueCount).toBe(0);
+
+      expect(mediaBPage?.queue.newAvailableCount).toBe(1);
+      expect(mediaBPage?.queue.newQueuedCount).toBe(1);
+      expect(mediaBPage?.queue.queueCount).toBe(1);
+      expect(mediaBPage?.selectedCard?.id).toBe("card_b");
+
+      expect(mediaBQueue?.newAvailableCount).toBe(1);
+      expect(mediaBQueue?.newQueuedCount).toBe(1);
+      expect(mediaBQueue?.queueCount).toBe(1);
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("uses top-up batches in global review without changing the base daily limit", async () => {

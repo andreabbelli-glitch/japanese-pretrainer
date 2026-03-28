@@ -1,5 +1,6 @@
 import {
   countReviewSubjectsIntroducedOnDay,
+  countReviewSubjectsIntroducedOnDayByMediaId,
   db,
   getCardById,
   listCrossMediaFamiliesByEntryIds,
@@ -934,6 +935,7 @@ async function loadReviewWorkspaceV2(input: {
   now?: Date;
   profiler?: ReviewProfiler | null;
   resolvedDailyLimit?: number;
+  resolvedNewIntroducedTodayCount?: number;
 }): Promise<LoadedReviewWorkspaceV2> {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
@@ -952,9 +954,11 @@ async function loadReviewWorkspaceV2(input: {
         : measureWith(input.profiler, "getReviewDailyLimit", () =>
             getReviewDailyLimit(database)
           ),
-      measureWith(input.profiler, "countReviewSubjectsIntroducedOnDay", () =>
-        countReviewSubjectsIntroducedOnDay(database, now)
-      )
+      input.resolvedNewIntroducedTodayCount != null
+        ? input.resolvedNewIntroducedTodayCount
+        : measureWith(input.profiler, "countReviewSubjectsIntroducedOnDay", () =>
+            countReviewSubjectsIntroducedOnDay(database, now)
+          )
     ]);
   const cards = stableWorkspace.cards;
   input.profiler?.addMeta({
@@ -1031,6 +1035,11 @@ export async function getReviewPageData(
     "getStudySettings",
     () => getStudySettings(database)
   );
+  const newIntroducedTodayCount = await measureWith(
+    options.profiler,
+    "countReviewSubjectsIntroducedOnDayByMediaId",
+    () => countReviewSubjectsIntroducedOnDayByMediaId(database, media.id, now)
+  );
   const workspace = await measureWith(
     options.profiler,
     "loadReviewWorkspaceV2",
@@ -1041,7 +1050,8 @@ export async function getReviewPageData(
         mediaIds: [media.id],
         now,
         profiler: options.profiler,
-        resolvedDailyLimit: settings.reviewDailyLimit
+        resolvedDailyLimit: settings.reviewDailyLimit,
+        resolvedNewIntroducedTodayCount: newIntroducedTodayCount
       })
   );
   const reviewFrontFurigana = settings.reviewFrontFurigana;
@@ -1307,11 +1317,18 @@ export async function getReviewQueueSnapshotForMedia(
     return null;
   }
 
+  const newIntroducedTodayCount = await countReviewSubjectsIntroducedOnDayByMediaId(
+    database,
+    media.id,
+    now
+  );
+
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds: [media.id],
     now,
-    resolvedDailyLimit: dailyLimit
+    resolvedDailyLimit: dailyLimit,
+    resolvedNewIntroducedTodayCount: newIntroducedTodayCount
   });
   const snapshot = buildReviewQueueSnapshot({
     cards: workspace.cards,
