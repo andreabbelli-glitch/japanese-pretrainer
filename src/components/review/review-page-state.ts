@@ -37,6 +37,13 @@ export function mergeReviewPageData(
   };
 }
 
+export function shouldAcceptServerReviewData(
+  currentData: ReviewPageClientData,
+  nextData: ReviewPageData
+) {
+  return currentData.session.answeredCount <= nextData.session.answeredCount;
+}
+
 export function shouldKeepRevealedReviewAnswer(input: {
   currentCardId: string | null;
   currentShowAnswer: boolean;

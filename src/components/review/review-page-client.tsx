@@ -24,6 +24,7 @@ import {
 import {
   getInitiallyRevealedCardId,
   mergeReviewPageData,
+  shouldAcceptServerReviewData,
   type ReviewPageClientData
 } from "./review-page-state";
 import { EmptyState } from "../ui/empty-state";
@@ -175,11 +176,7 @@ export function ReviewPageClient({
     }
 
     const currentViewData = latestViewDataRef.current;
-    if (
-      currentViewData.session.answeredCount > data.session.answeredCount ||
-      (currentViewData.session.answeredCount === data.session.answeredCount &&
-        currentViewData.selectedCard?.id === data.selectedCard?.id)
-    ) {
+    if (!shouldAcceptServerReviewData(currentViewData, data)) {
       return;
     }
 

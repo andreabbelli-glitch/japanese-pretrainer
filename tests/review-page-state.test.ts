@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   mergeReviewPageData,
+  shouldAcceptServerReviewData,
   shouldKeepRevealedReviewAnswer,
   type ReviewPageClientData
 } from "@/components/review/review-page-state";
@@ -62,5 +63,49 @@ describe("review page state", () => {
     expect(mergeReviewPageData(currentData, nextData).selectedCardContext.showAnswer).toBe(
       false
     );
+  });
+
+  it("accepts same-progress server data so settings and notices can refresh", () => {
+    const currentData = {
+      selectedCard: {
+        id: "card-a"
+      },
+      session: {
+        answeredCount: 2
+      }
+    } as ReviewPageClientData;
+
+    const nextData = {
+      selectedCard: {
+        id: "card-a"
+      },
+      session: {
+        answeredCount: 2
+      }
+    } as unknown as ReviewPageData;
+
+    expect(shouldAcceptServerReviewData(currentData, nextData)).toBe(true);
+  });
+
+  it("rejects stale server data from an older review step", () => {
+    const currentData = {
+      selectedCard: {
+        id: "card-b"
+      },
+      session: {
+        answeredCount: 3
+      }
+    } as ReviewPageClientData;
+
+    const nextData = {
+      selectedCard: {
+        id: "card-a"
+      },
+      session: {
+        answeredCount: 2
+      }
+    } as unknown as ReviewPageData;
+
+    expect(shouldAcceptServerReviewData(currentData, nextData)).toBe(false);
   });
 });
