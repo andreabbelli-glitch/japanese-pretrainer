@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per battaglia, sistema e menu: 8 carte lessical
 ---
 # Obiettivo
 
-Capire il giapponese che compare in battaglia, sistema e menu. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che ti fa orientare subito in battaglia e nei menu: chi hai davanti, quale scelta ti viene chiesta e quando il gioco ti sta bloccando con un messaggio di sistema.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In questo blocco tornano parole piccole ma decisive. [相手](term:term-v001-aite) ti dice che la frase parla dell'avversario; [どう](term:term-v004-dou) e [いつ](term:term-v010-itsu) aprono domande operative; [できません](term:term-e001-dekimasen) e [足りない / 足りません](term:term-e002-tarinai-tarimasen) sono tipici messaggi di blocco del sistema. Se li riconosci al volo, la schermata smette di sembrare una lista di label e diventa molto più leggibile.
 
 ## Termini chiave
 
@@ -50,11 +50,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [相手](term:term-v001-aite) e [ジム](term:term-v003-jimu) e [どう](term:term-v004-dou) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Tra i termini, [相手](term:term-v001-aite) è molto più specifico di un generico "altra persona": in battaglia è la parte avversaria, quindi ti aiuta subito a capire da che lato arriva l'azione. [タイプ](term:term-v006-taipu) in Pokémon non è un "tipo" astratto, ma il tipo elementale del Pokémon o della mossa; quando lo vedi in una frase o in un menu, il contesto è quasi sempre quello dei match-up di battaglia. [ジム](term:term-v003-jimu), [チャンピオン](term:term-v007-chanpion) e [先生](term:term-v008-sensei) sono invece parole che ti fanno riconoscere al volo il dominio della scena: progressione palestra, obiettivo alto di carriera, oppure scuola e dialoghi accademici.
 
-Le espressioni come [できません](term:term-e001-dekimasen) e [足りない / 足りません](term:term-e002-tarinai-tarimasen) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+[どう](term:term-v004-dou) e [いつ](term:term-v010-itsu) sono utili perché cambiano subito il tipo di frase che stai leggendo. `どうしますか` non sta chiedendo una teoria astratta sul "come", ma di solito "che cosa vuoi fare?"; `いつ` invece ti segnala domande su tempi, appuntamenti o progressione. Sono parole brevi, ma se ti sfuggono rischi di leggere una domanda come se fosse una semplice affermazione.
 
-Sul piano grammaticale, pattern come [〜のだ / 〜んだ](grammar:grammar-g001-spiegazione-enfasi) e [〜かな](grammar:grammar-g002-mi-chiedo-se) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+[できません](term:term-e001-dekimasen) e [足りない / 足りません](term:term-e002-tarinai-tarimasen) sono due messaggi da UI molto comuni, ma non dicono la stessa cosa. `できません` vuol dire che l'azione non si può fare in quel punto o in quello stato; spesso l'oggetto è sottinteso e devi recuperarlo dal pulsante o dal menu appena selezionato. `足りません` vuol dire invece che qualcosa non basta, e quel qualcosa spesso è espresso con `Xが`: in `お金が 足りません` il problema non è generico, ma è proprio che non hai abbastanza soldi.
+
+Sul piano grammaticale, [～のだ / ～んだ](grammar:grammar-g001-spiegazione-enfasi) aggiunge un tono di spiegazione o messa a fuoco: non solo "è importante", ma "il punto è che è importante". [～かな](grammar:grammar-g002-mi-chiedo-se) è il tono del pensiero ad alta voce o del dubbio leggero tra sé e sé. [～ている](grammar:grammar-g003-stato-in-corso-stato-risultante) ti fa leggere se qualcosa sta succedendo adesso oppure se uno stato è già in corso ed è visibile sulla scena.
 
 ## Esempi guidati
 
@@ -69,23 +71,23 @@ translation_it: >-
 jp: >-
   ここでは できません。
 translation_it: >-
-  Non si può.
+  Qui non si può fare.
 :::
 
 :::example_sentence
 jp: >-
   これは {{大事|だいじ}}なんだ。
 translation_it: >-
-  È che questa cosa è importante.
+  Il punto è che questa cosa è importante.
 :::
 
 :::example_sentence
 jp: >-
   お{{金|かね}}が {{足|た}}りません。
 translation_it: >-
-  Non basta.
+  Non hai abbastanza soldi.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando incontri una schermata nuova, prova a cercare per prime tre cose: chi è il referente della frase, se il gioco ti sta facendo una domanda e se il messaggio è un blocco di impossibilità o di mancanza. Questo capitolo serve soprattutto a rendere immediati quei segnali.

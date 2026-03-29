@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Route } from "next";
 import type { ReactNode } from "react";
 
 import { cx } from "@/lib/classnames";
@@ -122,6 +123,7 @@ type LessonReaderFooterProps = {
   nextLesson: TextbookLessonNavItem | null;
   onToggleLessonCompletion: () => void;
   previousLesson: TextbookLessonNavItem | null;
+  reviewHref: Route;
 };
 
 export function LessonReaderFooter({
@@ -130,7 +132,8 @@ export function LessonReaderFooter({
   mediaSlug,
   nextLesson,
   onToggleLessonCompletion,
-  previousLesson
+  previousLesson,
+  reviewHref
 }: LessonReaderFooterProps) {
   return (
     <footer className="reader-footer">
@@ -154,6 +157,12 @@ export function LessonReaderFooter({
           <div className="reader-footer__placeholder" />
         )}
       </div>
+
+      {lessonStatus === "completed" ? (
+        <Link className="button button--primary" href={reviewHref}>
+          Vai alla review del capitolo
+        </Link>
+      ) : null}
 
       <button
         className={cx(

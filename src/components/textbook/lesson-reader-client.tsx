@@ -21,7 +21,7 @@ import type {
   TextbookLessonData,
   TextbookTooltipEntry
 } from "@/lib/textbook";
-import { mediaTextbookLessonTooltipsHref } from "@/lib/site";
+import { buildReviewSessionHref, mediaTextbookLessonTooltipsHref } from "@/lib/site";
 
 import {
   EntryTooltipCard,
@@ -540,6 +540,12 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
             nextLesson={data.nextLesson}
             onToggleLessonCompletion={toggleLessonCompletion}
             previousLesson={data.previousLesson}
+            reviewHref={buildReviewSessionHref({
+              mediaSlug: data.media.slug,
+              segmentId:
+                data.lessons.find((lesson) => lesson.id === data.lesson.id)
+                  ?.segmentId ?? null
+            })}
           />
         </main>
       </div>

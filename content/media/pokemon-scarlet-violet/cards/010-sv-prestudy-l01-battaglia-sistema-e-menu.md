@@ -48,7 +48,7 @@ back: non si può / impossibile
 example_jp: >-
   ここでは できません。
 example_it: >-
-  Non si può.
+  Qui non si può fare.
 :::
 :::grammar
 id: grammar-g001-spiegazione-enfasi
@@ -69,7 +69,7 @@ back: spiegazione / enfasi
 example_jp: >-
   これは {{大事|だいじ}}なんだ。
 example_it: >-
-  È che questa cosa è importante.
+  Il punto è che questa cosa è importante.
 :::
 :::term
 id: term-e002-tarinai-tarimasen
@@ -91,7 +91,7 @@ back: non basta / insufficiente
 example_jp: >-
   お{{金|かね}}が {{足|た}}りません。
 example_it: >-
-  Non basta.
+  Non hai abbastanza soldi.
 :::
 :::grammar
 id: grammar-g002-mi-chiedo-se
@@ -134,7 +134,7 @@ back: palestra Pokémon
 example_jp: >-
   あそこが ジム です。
 example_it: >-
-  Là è palestra Pokémon.
+  Quella là è la palestra Pokémon.
 :::
 :::grammar
 id: grammar-g003-stato-in-corso-stato-risultante
@@ -177,7 +177,7 @@ back: come
 example_jp: >-
   どう しますか。
 example_it: >-
-  Che cosa fai?
+  Che cosa vuoi fare?
 :::
 :::term
 id: term-v006-taipu
@@ -243,7 +243,7 @@ back: insegnante
 example_jp: >-
   {{先生|せんせい}}と {{話|はな}}します。
 example_it: >-
-  Parlo con insegnante.
+  Parlo con l'insegnante.
 :::
 :::term
 id: term-v010-itsu

@@ -12,11 +12,26 @@ async function ensureDuelMastersReviewAvailable(page: Page) {
 
   if (await completeLessonButton.isVisible().catch(() => false)) {
     await completeLessonButton.click();
+    await expect(
+      page.getByRole("button", { name: "Riapri lesson" })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Vai alla review del capitolo" })
+    ).toHaveAttribute(
+      "href",
+      /\/media\/duel-masters-dm25\/review\?segment=[^&]+$/
+    );
   }
 
   await expect(
     page.getByRole("button", { name: "Riapri lesson" })
   ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Vai alla review del capitolo" })
+  ).toHaveAttribute(
+    "href",
+    /\/media\/duel-masters-dm25\/review\?segment=[^&]+$/
+  );
 }
 
 test("covers dashboard, reader, glossary, review, progress, settings and review redirect", async ({
@@ -111,6 +126,12 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   ).toBeVisible();
 
   await ensureDuelMastersReviewAvailable(page);
+  await page
+    .getByRole("link", { name: "Vai alla review del capitolo" })
+    .click();
+  await expect(page).toHaveURL(/\/media\/duel-masters-dm25\/review\?segment=[^&]+$/);
+  await expect(page.locator(".review-page")).toBeVisible();
+  await expect(page.locator(".review-stage")).toBeVisible();
 
   const reviewNavigationStartedAt = performance.now();
   await page.goto("/review", { waitUntil: "domcontentloaded" });
@@ -176,6 +197,8 @@ test("keeps the review session on a valid next state after grading again", async
   await ensureDuelMastersReviewAvailable(page);
   await page.goto("/review");
   await expect(page).toHaveURL(/\/review(?:\?|$)/);
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator(".review-stage")).toBeVisible();
 
   await page.getByRole("button", { name: "Mostra risposta" }).click();
   await page.getByRole("button", { name: /^Again/ }).click();
@@ -196,6 +219,8 @@ test("scrolls the review stage back into view after grading the next card", asyn
   await page.setViewportSize({ width: 1280, height: 720 });
   await page.goto("/review");
   await expect(page).toHaveURL(/\/review(?:\?|$)/);
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator(".review-stage")).toBeVisible();
 
   await page.getByRole("button", { name: "Mostra risposta" }).click();
 
