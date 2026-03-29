@@ -24,7 +24,7 @@ Capire il giapponese che compare in Scarlet/Violet, battaglia. Qui il focus è s
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet queste parole ricorrono in dialoghi e schermate legate alla battaglia. Alcune descrivono probabilità, stato, autenticità o fastidio; altre nominano preparazione, identità, presentazione o luoghi di trama da riconoscere al volo.
 
 ## Termini chiave
 
@@ -46,40 +46,40 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [確率](term:term-v540-kakuritsu) e [本物](term:term-v541-honmono) e [様子](term:term-v542-yousu) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [確率](term:term-v540-kakuritsu), [本物](term:term-v541-honmono) e [様子](term:term-v542-yousu) dicono subito se qualcosa è probabile, vero o in una certa situazione. In battaglia e nei dialoghi questi segnali ti fanno leggere lo stato della scena prima ancora del resto della frase.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ポケモンウォッシュ](term:term-v543-pokemonwosshu)、 [秘密のメニュー](term:term-v548-himitsunomenyuu)、 [鬼退治フェス](term:term-v558-onitaijifesu)、 [授業を思い出す](term:term-e100-jugyou-wo-omoidasu). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ポケモンウォッシュ](term:term-v543-pokemonwosshu)、 [秘密のメニュー](term:term-v548-himitsunomenyuu)、 [鬼退治フェス](term:term-v558-onitaijifesu)、 [授業を思い出す](term:term-e100-jugyou-wo-omoidasu). Quando compaiono, ti orientano subito tra funzione, contenuto extra e riferimento scolastico.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  バトルで {{確率|かくりつ}}を {{使|つか}}います。
+  バトルで {{確率|かくりつ}}を {{見|み}}ます。
 translation_it: >-
-  Uso la probabilità in battaglia.
+  In battaglia guardo la probabilità.
 :::
 
 :::example_sentence
 jp: >-
   {{本物|ほんもの}}ですか。
 translation_it: >-
-  Vero.
+  È vero?
 :::
 
 :::example_sentence
 jp: >-
   {{様子|ようす}}です。
 translation_it: >-
-  Aspetto.
+  La situazione è questa.
 :::
 
 :::example_sentence
 jp: >-
   これは {{迷惑|めいわく}}です。
 translation_it: >-
-  Questo è disturbo.
+  Questo è un disturbo.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco conta soprattutto capire che cosa segnano davvero le parole: probabilità, autenticità, stato, fastidio e riferimento narrativo. Le etichette contestuali servono a orientarti nel gioco quando compaiono.

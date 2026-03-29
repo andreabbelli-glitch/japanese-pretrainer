@@ -24,7 +24,7 @@ Capire il giapponese che compare in sistema e menu, esplorazione e movimento. Qu
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet questa lezione raccoglie parole che segnalano azione, stato, conferma e scelta nelle schermate di gioco. I nomi propri e le etichette molto specifiche servono soprattutto a orientarti quando compaiono nei menu o nei dialoghi.
 
 ## Termini chiave
 
@@ -51,11 +51,11 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [落下](term:term-v638-rakka) e [支援ボード](term:term-v639-shienboodo) e [借りる](term:term-v640-kariru) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [落下](term:term-v638-rakka), [支援ボード](term:term-v639-shienboodo) e [借りる](term:term-v640-kariru) indicano subito una caduta, una schermata di supporto o un'azione di prestito. Nei menu e nei dialoghi questi termini non sono astratti: ti dicono che cosa sta succedendo, quale voce stai leggendo e quale operazione è possibile.
 
-Le espressioni come [本気で？](term:term-e103-honki-de) e [また来てくださいね](term:term-e104-matakitekudasaine) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [本気で？](term:term-e103-honki-de) e [また来てくださいね](term:term-e104-matakitekudasaine) servono a reagire o a chiudere un'interazione: la prima esprime sorpresa o dubbio, la seconda è una chiusura cordiale da negozio o NPC.
 
-Sul piano grammaticale, pattern come [〜でござる](grammar:grammar-g106-registro-samurai-comico) e [〜について](grammar:grammar-g107-riguardo-a-su) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, pattern come [〜でござる](grammar:grammar-g106-registro-samurai-comico), [〜について](grammar:grammar-g107-riguardo-a-su) e [〜ばっかり](grammar:grammar-g108-solo-nientaltro-che) mostrano un registro particolare, un argomento di cui si parla o un'idea di eccesso e ripetizione. Aiutano a leggere il tono e il punto di vista della frase, non solo la sua struttura.
 
 ## Esempi guidati
 
@@ -89,4 +89,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco contano soprattutto le parole che segnalano stato, scelta e reazione. Sono quelle che ti dicono subito se il gioco sta confermando, interrompendo, chiedendo qualcosa o chiudendo un'interazione.

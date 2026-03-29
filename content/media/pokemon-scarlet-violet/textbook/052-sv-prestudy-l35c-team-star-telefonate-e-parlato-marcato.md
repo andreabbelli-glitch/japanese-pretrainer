@@ -19,17 +19,14 @@ summary: 'Lessico ed espressioni per Team Star, telefonate e parlato marcato: 8 
 # Obiettivo
 
 Capire il giapponese che compare in Team Star, telefonate e parlato marcato.
-Qui il focus e su chiamate misteriose, tono ruvido, professor call e modi di
-parlare che cambiano l'impressione del personaggio piu del contenuto letterale.
+Qui il focus e su chiamate misteriose, tono ruvido, registro professorale e
+modi di parlare che cambiano l'impressione del personaggio piu del contenuto
+letterale.
 
 ## Contesto
 
-Nel secondo episodio entrano in scena alcune voci molto caratterizzate:
-telefonate hackerate, identita nascoste, modo brusco di rivolgersi al
-protagonista e registro professorale nelle chiamate successive. Questo blocco
-serve a non appiattire tutto come "dialogo generico".
-
-L'idea non e studiare slang a caso, ma riconoscere che il tono fa parte del
+Qui entrano in scena telefonate hackerate, identita nascoste, modo brusco di
+rivolgersi al protagonista e registro professorale. Il tono fa parte del
 significato. [オマエ](term:term-v765-omae) non e uguale a un neutro `キミ`;
 [おやおや](term:term-e113-oyaoya) e
 [やるっきゃない](term:term-e114-yarukkyanai) cambiano subito il colore della
@@ -65,16 +62,16 @@ ipotesi e impressioni in modo molto piu vivo.
 [{{監視|かんし}}カメラ](term:term-v763-kanshikamera) e
 [カシオペア](term:term-v764-kashiopea) sono il lessico che rende leggibili le
 telefonate misteriose e il filone Team Star. Appena entrano, il gioco smette di
-sembrare solo scolastico: c'e sorveglianza, intrusione e qualcuno che si
-presenta con un'identita scelta.
+sembrare solo una storia scolastica: c'e sorveglianza, intrusione e qualcuno che
+si presenta con un'identita scelta.
 
 [オマエ](term:term-v765-omae),
 [おやおや](term:term-e113-oyaoya) e
 [やるっきゃない](term:term-e114-yarukkyanai) lavorano invece sul tono.
-[オマエ](term:term-v765-omae) non aggiunge informazione fattuale, ma marca
-subito un parlato rude o dominante. [おやおや](term:term-e113-oyaoya) costruisce
-un'osservazione calma e un po' ironica. [やるっきゃない](term:term-e114-yarukkyanai)
-trasmette la sensazione di "ormai si va fino in fondo", con energia colloquiale.
+[オマエ](term:term-v765-omae) marca subito un parlato rude o dominante.
+[おやおや](term:term-e113-oyaoya) costruisce un'osservazione calma e un po'
+ironica. [やるっきゃない](term:term-e114-yarukkyanai) trasmette la sensazione
+di "ormai si va fino in fondo", con energia colloquiale.
 
 Il lessico professorale gira attorno a
 [{{管理|かんり}}](term:term-v766-kanri),
@@ -139,10 +136,11 @@ translation_it: >-
 
 ## Nota finale
 
-Questo blocco ti fa leggere il tono come parte del contenuto. Se stabilizzi
+In questo blocco il tono conta quanto il contenuto. Se stabilizzi
 [オマエ](term:term-v765-omae),
 [{{管理|かんり}}](term:term-v766-kanri),
 [{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki),
 [～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di) e
 [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che), le chiamate e i
-dialoghi marcati dell'episodio 2 diventano molto piu facili da decodificare.
+dialoghi marcati di questa parte della storia diventano molto piu facili da
+leggere.

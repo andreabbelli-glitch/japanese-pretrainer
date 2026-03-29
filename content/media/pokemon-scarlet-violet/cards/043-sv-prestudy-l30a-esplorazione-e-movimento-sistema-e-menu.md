@@ -204,7 +204,7 @@ back: passare attraverso / uscire da
 example_jp: >-
   この {{道|みち}}を {{抜|ぬ}}ける。
 example_it: >-
-  Passare attraverso.
+  Passo attraverso questa strada.
 :::
 :::term
 id: term-v503-nukemichi
@@ -226,7 +226,7 @@ back: scorciatoia / passaggio alternativo
 example_jp: >-
   ここが {{抜|ぬ}}け{{道|みち}} です。
 example_it: >-
-  Qui è scorciatoia.
+  Qui c'è una scorciatoia.
 :::
 :::term
 id: term-v571-shiharai
@@ -248,7 +248,7 @@ back: pagamento
 example_jp: >-
   メニューで {{支払|しはら}}いを {{見|み}}ます。
 example_it: >-
-  Guardo il pagamento in menu.
+  Controllo il pagamento nel menu.
 :::
 :::term
 id: term-v572-kumi
@@ -270,7 +270,7 @@ back: squadra / gruppo
 example_jp: >-
   これは {{組|くみ}} です。
 example_it: >-
-  Questo è squadra.
+  Questa è una squadra.
 :::
 :::term
 id: term-v573-deribaadopoochi
@@ -301,7 +301,7 @@ back: profilo
 example_jp: >-
   メニューで プロフィールを {{見|み}}ます。
 example_it: >-
-  Guardo il profilo in menu.
+  Controllo il profilo nel menu.
 :::
 :::term
 id: term-v575-betsuni
@@ -345,7 +345,7 @@ back: combinazione
 example_jp: >-
   これは {{組|ぐ}}み{{合|みあ}}わせ です。
 example_it: >-
-  Questo è combinazione.
+  Questa è una combinazione.
 :::
 :::term
 id: term-v577-taiou
@@ -367,7 +367,7 @@ back: compatibilità / corrispondenza
 example_jp: >-
   メニューで {{対応|たいおう}}を {{見|み}}ます。
 example_it: >-
-  Guardo la compatibilità in menu.
+  Controllo la compatibilità nel menu.
 :::
 :::term
 id: term-v578-sakamichi
@@ -387,9 +387,9 @@ card_type: recognition
 front: "{{坂道|さかみち}}"
 back: strada in salita
 example_jp: >-
-  この {{道|みち}}を {{行|い}}きます。
+  この {{坂道|さかみち}} を {{行|い}}きます。
 example_it: >-
-  Strada in salita.
+  Vado su questa strada in salita.
 :::
 :::term
 id: term-v579-souchi
@@ -411,7 +411,7 @@ back: dispositivo
 example_jp: >-
   メニューで {{装置|そうち}}を {{見|み}}ます。
 example_it: >-
-  Guardo il dispositivo in menu.
+  Controllo il dispositivo nel menu.
 :::
 :::term
 id: term-v580-jidori
@@ -431,9 +431,9 @@ card_type: recognition
 front: "{{自撮|じど}}り"
 back: selfie
 example_jp: >-
-  この{{先|さき}}に {{自撮|じど}}りが あります。
+  {{自撮|じど}}りを します。
 example_it: >-
-  Più avanti c'è il selfie.
+  Faccio un selfie.
 :::
 :::term
 id: term-v581-touchaku
@@ -453,9 +453,9 @@ card_type: recognition
 front: "{{到着|とうちゃく}}"
 back: arrivo
 example_jp: >-
-  この{{先|さき}}に {{到着|とうちゃく}}が あります。
+  まもなく {{到着|とうちゃく}} します。
 example_it: >-
-  Più avanti c'è l'arrivo.
+  Arrivo tra poco.
 :::
 :::term
 id: term-v582-tokubetsukoushi
@@ -475,9 +475,9 @@ card_type: recognition
 front: "{{特別講師|とく.べつ.こう.し}}"
 back: docente speciale
 example_jp: >-
-  {{学校|がっこう}}で {{特別講師|とく.べつ.こう.し}}が だいじ です。
+  {{学校|がっこう}}に {{特別講師|とく.べつ.こう.し}}が います。
 example_it: >-
-  In scuola docente speciale è importante.
+  A scuola c'è un docente speciale.
 :::
 :::term
 id: term-v583-naiyou
@@ -499,7 +499,7 @@ back: contenuto
 example_jp: >-
   メニューで {{内容|ないよう}}を {{見|み}}ます。
 example_it: >-
-  Guardo il contenuto in menu.
+  Controllo il contenuto nel menu.
 :::
 :::term
 id: term-v584-shiyou
@@ -521,7 +521,7 @@ back: uso
 example_jp: >-
   メニューで {{使用|しよう}}を {{見|み}}ます。
 example_it: >-
-  Guardo l'uso in menu.
+  Controllo l'uso nel menu.
 :::
 :::term
 id: term-v585-ikitomari
@@ -587,7 +587,7 @@ back: dintorni / area intorno
 example_jp: >-
   ここは {{周囲|しゅうい}} です。
 example_it: >-
-  Qui è dintorni.
+  Qui ci sono i dintorni.
 :::
 :::term
 id: term-v588-firutaa
@@ -607,9 +607,9 @@ card_type: recognition
 front: "フィルター"
 back: filtro
 example_jp: >-
-  この{{先|さき}}に フィルターが あります。
+  {{フィルター|ふぃるたあ}}を {{使|つか}}います。
 example_it: >-
-  Più avanti c'è il filtro.
+  Uso il filtro.
 :::
 :::term
 id: term-v589-shinkuromashin

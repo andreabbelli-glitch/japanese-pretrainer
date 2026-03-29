@@ -159,7 +159,7 @@ back: caduta
 example_jp: >-
   この{{先|さき}}に {{落下|らっか}}が あります。
 example_it: >-
-  Più avanti c'è la caduta.
+  Più avanti c'è una caduta.
 :::
 :::term
 id: term-v639-shienboodo
@@ -179,9 +179,9 @@ card_type: recognition
 front: "{{支援|しえん}}ボード"
 back: bacheca dei supporti
 example_jp: >-
-  {{学校|がっこう}}で {{支援|しえん}}ボードが だいじ です。
+  これは {{支援|しえん}}ボードです。
 example_it: >-
-  In scuola bacheca dei supporti è importante.
+  Questa è la bacheca dei supporti.
 :::
 :::term
 id: term-v640-kariru
@@ -201,9 +201,9 @@ card_type: recognition
 front: "{{借|か}}りる"
 back: prendere in prestito
 example_jp: >-
-  {{東|ひがし}}へ {{行|い}}きます。
+  これを {{借|か}}りる。
 example_it: >-
-  Vado a est.
+  Prendo in prestito questo.
 :::
 :::term
 id: term-v641-kirikaeru
@@ -225,7 +225,7 @@ back: cambiare modalità / switchare
 example_jp: >-
   ここで {{切|き}}りかえる。
 example_it: >-
-  Cambiare modalità.
+  Cambio modalità.
 :::
 :::term
 id: term-v642-purofiiruapuri
@@ -245,9 +245,9 @@ card_type: recognition
 front: "プロフィールアプリ"
 back: app del profilo
 example_jp: >-
-  メニューで プロフィールアプリを {{見|み}}ます。
+  これは プロフィールアプリです。
 example_it: >-
-  Guardo l'app del profilo in menu.
+  Questa è l'app del profilo.
 :::
 :::term
 id: term-v643-tokuni
@@ -267,9 +267,9 @@ card_type: recognition
 front: "とくに"
 back: soprattutto
 example_jp: >-
-  とくに です。
+  とくに ここが だいじです。
 example_it: >-
-  Soprattutto.
+  Qui è particolarmente importante.
 :::
 :::term
 id: term-v644-kaisaichuu
@@ -289,9 +289,9 @@ card_type: recognition
 front: "{{開催中|かい.さい.ちゅう}}"
 back: in corso
 example_jp: >-
-  これは {{開催中|かい.さい.ちゅう}} です。
+  {{今|いま}}は {{開催中|かい.さい.ちゅう}} です。
 example_it: >-
-  Questo è in corso.
+  Adesso è in corso.
 :::
 :::term
 id: term-v645-chuushi
@@ -311,9 +311,9 @@ card_type: recognition
 front: "{{中止|ちゅうし}}"
 back: interruzione / annullamento
 example_jp: >-
-  メニューで {{中止|ちゅうし}}を {{見|み}}ます。
+  {{中止|ちゅうし}}です。
 example_it: >-
-  Guardo l'interruzione in menu.
+  È annullato.
 :::
 :::term
 id: term-v646-kanyuu
@@ -357,7 +357,7 @@ back: insegnante / corpo docente
 example_jp: >-
   {{教員|きょういん}}と {{話|はな}}します。
 example_it: >-
-  Parlo con insegnante.
+  Parlo con un insegnante.
 :::
 :::term
 id: term-v648-tsuuchi
@@ -377,9 +377,9 @@ card_type: recognition
 front: "{{通知|つうち}}"
 back: notifica
 example_jp: >-
-  メニューで {{通知|つうち}}を {{見|み}}ます。
+  {{通知|つうち}}が あります。
 example_it: >-
-  Guardo la notifica in menu.
+  C'è una notifica.
 :::
 :::term
 id: term-v649-koukanaite
@@ -399,9 +399,9 @@ card_type: recognition
 front: "{{交換相手|こう.かん.あい.て}}"
 back: partner di scambio
 example_jp: >-
-  ポケモンを {{交換|こうかん}}します。
+  {{交換相手|こう.かん.あい.て}}です。
 example_it: >-
-  Scambio un Pokémon.
+  È il partner di scambio.
 :::
 :::term
 id: term-v650-kakou
@@ -421,9 +421,9 @@ card_type: recognition
 front: "{{下降|かこう}}"
 back: discesa
 example_jp: >-
-  この{{先|さき}}に {{下降|かこう}}が あります。
+  ここは {{下降|かこう}}です。
 example_it: >-
-  Più avanti c'è la discesa.
+  Qui c'è una discesa.
 :::
 :::term
 id: term-v651-shirizoke-ru
@@ -443,9 +443,9 @@ card_type: recognition
 front: "{{退|しりぞ}}ける"
 back: respingere / sconfiggere
 example_jp: >-
-  ここで {{退|しりぞ}}ける。
+  {{相手|あいて}}を {{退|しりぞ}}ける。
 example_it: >-
-  Respingere.
+  Respingo l'avversario.
 :::
 :::term
 id: term-v652-hihyouji
@@ -465,9 +465,9 @@ card_type: recognition
 front: "{{非表示|ひ.ひょう.じ}}"
 back: nascondi / non visualizzare
 example_jp: >-
-  メニューで {{非表示|ひ.ひょう.じ}}を {{見|み}}ます。
+  {{非表示|ひ.ひょう.じ}}です。
 example_it: >-
-  Guardo il nascondi in menu.
+  È nascosto.
 :::
 :::term
 id: term-v653-ichiran
@@ -487,9 +487,9 @@ card_type: recognition
 front: "{{一覧|いちらん}}"
 back: elenco
 example_jp: >-
-  メニューで {{一覧|いちらん}}を {{見|み}}ます。
+  {{一覧|いちらん}}です。
 example_it: >-
-  Guardo l'elenco in menu.
+  È l'elenco.
 :::
 :::term
 id: term-v654-kachimake
@@ -509,9 +509,9 @@ card_type: recognition
 front: "{{勝|か}}ち{{負|ま}}け"
 back: esito vittoria / sconfitta
 example_jp: >-
-  バトルで {{勝|か}}ち{{負|ま}}けを {{使|つか}}います。
+  {{勝|か}}ち{{負|ま}}けです。
 example_it: >-
-  Uso l'esito vittoria in battaglia.
+  È vittoria o sconfitta.
 :::
 :::term
 id: term-v655-matomekai
@@ -531,9 +531,9 @@ card_type: recognition
 front: "まとめ{{買|か}}い"
 back: acquisto in blocco
 example_jp: >-
-  メニューで まとめ{{買|か}}いを {{見|み}}ます。
+  まとめ{{買|か}}いです。
 example_it: >-
-  Guardo l'acquisto in blocco in menu.
+  È un acquisto in blocco.
 :::
 :::term
 id: term-v656-rainnappu
@@ -553,9 +553,9 @@ card_type: recognition
 front: "ラインナップ"
 back: lista disponibile
 example_jp: >-
-  メニューで ラインナップを {{見|み}}ます。
+  {{ラインナップ|らいんなっぷ}}です。
 example_it: >-
-  Guardo il lista disponibile in menu.
+  È la lista disponibile.
 :::
 :::term
 id: term-v657-zensokuryoku
@@ -575,9 +575,9 @@ card_type: recognition
 front: "{{全速力|ぜん.そく.りょく}}"
 back: massima velocità
 example_jp: >-
-  この{{先|さき}}に {{全速力|ぜん.そく.りょく}}が あります。
+  {{全速力|ぜん.そく.りょく}}で {{進|すす}}む。
 example_it: >-
-  Più avanti c'è la massima velocità.
+  Procedo a tutta velocità.
 :::
 :::term
 id: term-v658-kinkyuujitai
@@ -599,7 +599,7 @@ back: emergenza
 example_jp: >-
   これは {{緊急事態|きん.きゅう.じ.たい}} です。
 example_it: >-
-  Questo è emergenza.
+  È un'emergenza.
 :::
 :::term
 id: term-v659-taijou
@@ -619,9 +619,9 @@ card_type: recognition
 front: "{{退場|たいじょう}}"
 back: uscita di scena
 example_jp: >-
-  バトルで {{退場|たいじょう}}を {{使|つか}}います。
+  {{退場|たいじょう}}します。
 example_it: >-
-  Uso l'uscita di scena in battaglia.
+  Esco di scena.
 :::
 :::term
 id: term-v660-akogare
@@ -643,5 +643,5 @@ back: ammirazione / aspirazione
 example_jp: >-
   {{憧|あこが}}れ です。
 example_it: >-
-  Ammirazione.
+  È un'aspirazione.
 :::

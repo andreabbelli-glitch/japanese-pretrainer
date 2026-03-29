@@ -57,7 +57,7 @@ back: si può anche…
 example_jp: >-
   ここで {{休|やす}}んでも いいし、 {{先|さき}}に {{行|い}}っても いい。
 example_it: >-
-  Si può anche….
+  Si può anche riposare qui, oppure andare avanti.
 :::
 :::grammar
 id: grammar-g102-pare-che-tipico-di
@@ -187,9 +187,9 @@ card_type: recognition
 front: "リタイア"
 back: ritirarsi / mollare
 example_jp: >-
-  これは リタイア です。
+  リタイアします。
 example_it: >-
-  Questo è ritirarsi.
+  Mi ritiro.
 :::
 :::term
 id: term-v617-shagamu
@@ -211,7 +211,7 @@ back: accovacciarsi
 example_jp: >-
   ここで しゃがむ。
 example_it: >-
-  Accovacciarsi.
+  Mi accovaccio qui.
 :::
 :::term
 id: term-v618-seibetsu
@@ -231,9 +231,9 @@ card_type: recognition
 front: "{{性別|せいべつ}}"
 back: sesso
 example_jp: >-
-  バトルで {{性別|せいべつ}}を {{使|つか}}います。
+  {{性別|せいべつ}}を {{確認|かくにん}}します。
 example_it: >-
-  Uso il sesso in battaglia.
+  Controllo il sesso.
 :::
 :::term
 id: term-v619-hozon
@@ -253,9 +253,9 @@ card_type: recognition
 front: "{{保存|ほぞん}}"
 back: salvare / conservare
 example_jp: >-
-  メニューで {{保存|ほぞん}}を {{見|み}}ます。
+  {{保存|ほぞん}}します。
 example_it: >-
-  Guardo il salvare in menu.
+  Salvo.
 :::
 :::term
 id: term-v620-iwayama
@@ -277,7 +277,7 @@ back: montagna rocciosa
 example_jp: >-
   {{岩山|いわやま}}へ {{行|い}}きます。
 example_it: >-
-  Vado a montagna rocciosa.
+  Vado alla montagna rocciosa.
 :::
 :::term
 id: term-v621-renkei
@@ -297,9 +297,9 @@ card_type: recognition
 front: "{{連携|れんけい}}"
 back: coordinazione
 example_jp: >-
-  バトルで {{連携|れんけい}}を {{使|つか}}います。
+  {{連携|れんけい}}が だいじです。
 example_it: >-
-  Uso la coordinazione in battaglia.
+  La coordinazione è importante.
 :::
 :::term
 id: term-v622-kuuchuu
@@ -319,9 +319,9 @@ card_type: recognition
 front: "{{空中|くうちゅう}}"
 back: aria / in aria
 example_jp: >-
-  この{{先|さき}}に {{空中|くうちゅう}}が あります。
+  {{空中|くうちゅう}}に います。
 example_it: >-
-  Più avanti c'è l'aria.
+  È in aria.
 :::
 :::term
 id: term-v623-rentaruchiimu
@@ -350,9 +350,9 @@ card_type: recognition
 front: "{{不在|ふざい}}"
 back: assenza / non presente
 example_jp: >-
-  これは {{不在|ふざい}} です。
+  {{今|いま}}は {{不在|ふざい}} です。
 example_it: >-
-  Questo è assenza.
+  Ora è assente.
 :::
 :::term
 id: term-v625-mensetsukan
@@ -372,9 +372,9 @@ card_type: recognition
 front: "{{面接官|めん.せつ.かん}}"
 back: intervistatore
 example_jp: >-
-  これは {{面接官|めん.せつ.かん}} です。
+  {{面接官|めん.せつ.かん}}が います。
 example_it: >-
-  Questo è intervistatore.
+  C'è un intervistatore.
 :::
 :::term
 id: term-v626-haigo
@@ -394,9 +394,9 @@ card_type: recognition
 front: "{{背後|はいご}}"
 back: retro / alle spalle
 example_jp: >-
-  この{{先|さき}}に {{背後|はいご}}が あります。
+  {{背後|はいご}}に います。
 example_it: >-
-  Più avanti c'è il retro.
+  È alle spalle.
 :::
 :::term
 id: term-v627-rankingu
@@ -416,9 +416,9 @@ card_type: recognition
 front: "ランキング"
 back: classifica
 example_jp: >-
-  これは ランキング です。
+  ランキングが あります。
 example_it: >-
-  Questo è classifica.
+  C'è una classifica.
 :::
 :::term
 id: term-v628-yuuri
@@ -438,9 +438,9 @@ card_type: recognition
 front: "{{有利|ゆうり}}"
 back: vantaggioso
 example_jp: >-
-  バトルで {{有利|ゆうり}}を {{使|つか}}います。
+  こちらが {{有利|ゆうり}}です。
 example_it: >-
-  Uso il vantaggioso in battaglia.
+  Qui siamo avvantaggiati.
 :::
 :::term
 id: term-v629-koudai
@@ -460,9 +460,9 @@ card_type: recognition
 front: "{{広大|こうだい}}"
 back: vastissimo
 example_jp: >-
-  この{{先|さき}}に {{広大|こうだい}}が あります。
+  ここは {{広大|こうだい}}です。
 example_it: >-
-  Più avanti c'è il vastissimo.
+  Qui è vastissimo.
 :::
 :::term
 id: term-v630-risetto
@@ -482,9 +482,9 @@ card_type: recognition
 front: "リセット"
 back: reset
 example_jp: >-
-  メニューで リセットを {{見|み}}ます。
+  {{リセット|りせっと}}します。
 example_it: >-
-  Guardo il reset in menu.
+  Faccio un reset.
 :::
 :::term
 id: term-v631-juni
@@ -504,9 +504,9 @@ card_type: recognition
 front: "{{順位|じゅんい}}"
 back: posizione in classifica
 example_jp: >-
-  これは {{順位|じゅんい}} です。
+  {{順位|じゅんい}}は {{三|さん}} です。
 example_it: >-
-  Questo è posizione in classifica.
+  La posizione in classifica è 3.
 :::
 :::term
 id: term-v632-shougaibutsu
@@ -526,9 +526,9 @@ card_type: recognition
 front: "{{障害物|しょう.がい.ぶつ}}"
 back: ostacolo
 example_jp: >-
-  この{{先|さき}}に {{障害物|しょう.がい.ぶつ}}が あります。
+  {{障害物|しょう.がい.ぶつ}}が あります。
 example_it: >-
-  Più avanti c'è l'ostacolo.
+  C'è un ostacolo.
 :::
 :::term
 id: term-v633-kotei
@@ -548,9 +548,9 @@ card_type: recognition
 front: "{{固定|こてい}}"
 back: fissaggio / lock
 example_jp: >-
-  メニューで {{固定|こてい}}を {{見|み}}ます。
+  {{固定|こてい}}します。
 example_it: >-
-  Guardo il fissaggio in menu.
+  Fisso.
 :::
 :::term
 id: term-v634-herupu
@@ -570,9 +570,9 @@ card_type: recognition
 front: "ヘルプ"
 back: aiuto
 example_jp: >-
-  メニューで ヘルプを {{見|み}}ます。
+  ヘルプを {{見|み}}ます。
 example_it: >-
-  Guardo l'aiuto in menu.
+  Guardo l'aiuto.
 :::
 :::term
 id: term-v635-atamamoji
@@ -592,9 +592,9 @@ card_type: recognition
 front: "{{頭文字|あたま.も.じ}}"
 back: iniziale
 example_jp: >-
-  メニューで {{頭文字|あたま.も.じ}}を {{見|み}}ます。
+  {{頭文字|あたま.も.じ}}を {{確認|かくにん}}します。
 example_it: >-
-  Guardo l'iniziale in menu.
+  Controllo l'iniziale.
 :::
 :::term
 id: term-v636-honkou
@@ -614,9 +614,9 @@ card_type: recognition
 front: "{{本校|ほんこう}}"
 back: sede principale
 example_jp: >-
-  {{学校|がっこう}}で {{本校|ほんこう}}が だいじ です。
+  {{本校|ほんこう}}へ {{行|い}}きます。
 example_it: >-
-  In scuola sede principale è importante.
+  Vado alla sede principale.
 :::
 :::term
 id: term-v637-taikinaka
@@ -636,7 +636,7 @@ card_type: recognition
 front: "{{待機中|たい.き.なか}}"
 back: in attesa
 example_jp: >-
-  メニューで {{待機中|たい.き.なか}}を {{見|み}}ます。
+  {{今|いま}}は {{待機中|たい.き.なか}}です。
 example_it: >-
-  Guardo l'in attesa in menu.
+  Ora è in attesa.
 :::

@@ -13,9 +13,9 @@ reading: ぶつり
 romaji: butsuri
 meaning_it: fisico / Physical
 notes_it: >-
-  Nella battle class distingue le mosse che usano l'Attacco come statistica di
-  riferimento. Se leggi `{{物理|ぶつり}}` insieme a `{{特殊|とくしゅ}}`, capisci
-  subito come il gioco sta classificando una tecnica.
+  Nella classe di lotta distingue le mosse che usano l'Attacco come statistica
+  di riferimento. Se leggi `{{物理|ぶつり}}` insieme a `{{特殊|とくしゅ}}`,
+  capisci subito come il gioco sta classificando una tecnica.
 :::
 :::card
 id: card-v730-butsuri-recognition
@@ -63,7 +63,7 @@ reading: かいだん
 romaji: kaidan
 meaning_it: scala / scalinata
 notes_it: >-
-  Nell'episodio 2 nomina un ostacolo molto concreto del campus. Non e lessico
+  Nella scena del campus nomina un ostacolo molto concreto. Non e lessico
   decorativo: segnala orientamento, fatica dello spostamento e cambio di scena.
 :::
 :::card
@@ -101,7 +101,7 @@ back: responsabile / docente di materia
 example_jp: >-
   バトル{{学|がく}}{{担当|たんとう}}は キハダ{{先生|せんせい}}だ。
 example_it: >-
-  La docente responsabile di battle class e la professoressa Dendra.
+  La docente responsabile della classe di lotta e la professoressa Dendra.
 :::
 :::term
 id: term-v734-gakusekibangou
@@ -157,8 +157,8 @@ reading: けいご
 romaji: keigo
 meaning_it: linguaggio cortese / honorific speech
 notes_it: >-
-  Non e grammatica astratta da manuale: nel video fa notare il cambio di tono
-  che scatta in classe o davanti agli adulti dell'accademia.
+  Non e grammatica astratta da manuale: fa notare il cambio di tono che scatta
+  in classe o davanti agli adulti dell'accademia.
 :::
 :::card
 id: card-v736-keigo-recognition
@@ -242,7 +242,7 @@ example_jp: >-
   パルデアの {{大穴|おおあな}}への {{立|た}}ち{{入|い}}りは
   {{危|あぶ}}ないので やめてくださいね。
 example_it: >-
-  Non bisogna entrare nel Great Crater, perche e pericoloso.
+  Non bisogna entrare nel Grande Cratere di Paldea, perche e pericoloso.
 :::
 :::term
 id: term-v741-kousoku
@@ -291,5 +291,6 @@ example_jp: >-
   {{立|た}}ち{{入|い}}りは {{危|あぶ}}ないので
   {{校則|こうそく}}{{違反|いはん}}ですからねー。
 example_it: >-
-  Entrare li e pericoloso e costituisce una violazione del regolamento scolastico.
+  Entrare li e pericoloso e costituisce una violazione del regolamento
+  scolastico.
 :::

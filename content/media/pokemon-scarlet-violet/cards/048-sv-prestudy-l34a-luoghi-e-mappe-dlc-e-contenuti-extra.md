@@ -98,7 +98,7 @@ back: motivo / pattern
 example_jp: >-
   これは {{模様|もよう}} です。
 example_it: >-
-  Questo è motivo.
+  Questo è un motivo.
 :::
 :::term
 id: term-v693-kanousei
@@ -120,7 +120,7 @@ back: possibilità
 example_jp: >-
   {{可能性|か.のう.せい}} です。
 example_it: >-
-  Possibilità.
+  C'è una possibilità.
 :::
 :::term
 id: term-v694-serukurutaun
@@ -169,7 +169,7 @@ back: cover dello smartphone
 example_jp: >-
   メニューで スマホカバーを {{見|み}}ます。
 example_it: >-
-  Guardo il cover dello smartphone in menu.
+  Nel menu vedo la cover dello smartphone.
 :::
 :::term
 id: term-v698-oojanomizuumi
@@ -200,7 +200,7 @@ back: missione di gruppo
 example_jp: >-
   メニューで サークルミッションを {{見|み}}ます。
 example_it: >-
-  Guardo il missione di gruppo in menu.
+  Nel menu vedo la missione di gruppo.
 :::
 :::term
 id: term-v700-haitatsu
@@ -222,7 +222,7 @@ back: consegna
 example_jp: >-
   この{{先|さき}}に {{配達|はいたつ}}が あります。
 example_it: >-
-  Più avanti c'è la consegna.
+  Più avanti c'è una consegna.
 :::
 :::term
 id: term-v701-tsuujou
@@ -275,7 +275,7 @@ back: trasformazione
 example_jp: >-
   これは {{変身|へんしん}} です。
 example_it: >-
-  Questo è trasformazione.
+  Questa è una trasformazione.
 :::
 :::term
 id: term-v704-kyoten
@@ -297,7 +297,7 @@ back: base / punto chiave
 example_jp: >-
   あそこが {{拠点|きょてん}} です。
 example_it: >-
-  Là è base.
+  Là c'è la base.
 :::
 :::term
 id: term-v705-atonoseefekuto
@@ -346,7 +346,7 @@ back: atmosfera
 example_jp: >-
   メニューで {{雰囲気|ふん.い.き}}を {{見|み}}ます。
 example_it: >-
-  Guardo l'atmosfera in menu.
+  Nel menu vedo l'atmosfera.
 :::
 :::term
 id: term-v709-kinomidai

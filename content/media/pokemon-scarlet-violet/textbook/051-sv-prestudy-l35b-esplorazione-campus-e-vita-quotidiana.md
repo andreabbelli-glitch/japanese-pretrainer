@@ -19,20 +19,18 @@ summary: 'Lessico ed espressioni per esplorazione, campus e vita quotidiana: 19 
 # Obiettivo
 
 Capire il giapponese che compare in esplorazione, campus e vita quotidiana. Qui
-il focus e su route setup, piccoli NPC, sandwich, bonding con i Pokemon e
-messaggi che trasformano l'accademia in avventura pratica.
+contano i consigli su dove andare, i piccoli NPC, i sandwich, il rapporto con i
+Pokemon e i messaggi che rendono piu leggibili le attività quotidiane.
 
 ## Contesto
 
-Nel secondo episodio il lessico utile non arriva solo dalle scene principali.
-Molto giapponese importante compare in battute brevi: consigli su dove andare,
+Molto del giapponese utile compare in battute brevi: consigli su dove andare,
 inviti a provare un posto, commenti su picnic, sandwich, mappe e rapporto con i
 Pokemon.
 
-Questo blocco raccoglie proprio quel materiale. Sono parole ed espressioni che
-non suonano "epiche", ma fanno capire il tono del mondo aperto: dove conviene
-andare adesso, che cosa puoi aspettarti da un posto, come si parla di
-orientamento, amicizia e piccoli benefici concreti del viaggio.
+Sono parole ed espressioni quotidiane che ti dicono dove conviene andare
+adesso, che cosa puoi aspettarti da un posto e come il gioco parla di
+orientamento, amicizia e piccoli vantaggi concreti del viaggio.
 
 ## Termini chiave
 
@@ -67,7 +65,8 @@ orientamento, amicizia e piccoli benefici concreti del viaggio.
 
 [とりあえず](term:term-e109-toriaezu),
 [オススメ](term:term-e110-osusume) e
-[{{旅立|たびだ}}つ](term:term-v756-tabidatsu) sono il lessico del route setup.
+[{{旅立|たびだ}}つ](term:term-v756-tabidatsu) sono il lessico delle
+indicazioni pratiche di partenza.
 Quando Nemona o altri NPC parlano in questo modo, non stanno solo commentando:
 stanno suggerendo una direzione concreta, una priorita pratica o una prossima
 meta plausibile.
@@ -85,15 +84,14 @@ Il blocco sandwich/picnic introduce un giapponese quotidiano ma molto utile.
 [{{調味料|ちょう.み.りょう}}](term:term-v748-choumiryou),
 [おすそわけ](term:term-v758-osusowake) e
 [{{休息|きゅうそく}}](term:term-v759-kyuusoku) rendono leggibili scene che nel
-video sembrano leggere, ma che in realta presentano crafting, ristoro e piccoli
-vantaggi del viaggio.
+gioco presentano crafting, ristoro e piccoli vantaggi del viaggio.
 
 Per il rapporto con i Pokemon contano soprattutto
 [{{相棒|あいぼう}}](term:term-v752-aibou),
 [{{知|し}}れる](term:term-v753-shireru) e
 [なかよし](term:term-v754-nakayoshi). Qui il gioco non parla di statistica o di
-combattimento: ti insegna il linguaggio dell'intimita con il team, cioe come si
-parla di affezione, conoscenza reciproca e piccoli segnali di compatibilita.
+combattimento: ti fa leggere il linguaggio dell'intimita con il team, cioe come
+si parla di affezione, conoscenza reciproca e piccoli segnali di compatibilita.
 
 Infine, [{{人助|ひとだす}}け](term:term-v743-hitodasuke),
 [プレゼント](term:term-v744-purezento),
@@ -154,13 +152,12 @@ translation_it: >-
 
 ## Nota finale
 
-Questo blocco rende leggibile il giapponese "medio" dell'episodio 2: non solo
-la trama principale, ma anche consigli, deviazioni, picnic, mappe e piccole
-interazioni. Se stabilizzi
+In questo blocco contano soprattutto consigli, deviazioni, picnic, mappe e
+piccole interazioni quotidiane. Se riconosci
 [とりあえず](term:term-e109-toriaezu),
 [{{戻|もど}}れる](term:term-v746-modoreru),
 [{{知|し}}れる](term:term-v753-shireru),
 [なかよし](term:term-v754-nakayoshi),
 [おすそわけ](term:term-v758-osusowake) e
-[{{自称|じしょう}}](term:term-v760-jishou), il video smette di sembrare una serie
-di intermezzi e diventa molto piu leggibile come vita quotidiana di Paldea.
+[{{自称|じしょう}}](term:term-v760-jishou), il blocco diventa molto piu
+leggibile come vita quotidiana di Paldea.

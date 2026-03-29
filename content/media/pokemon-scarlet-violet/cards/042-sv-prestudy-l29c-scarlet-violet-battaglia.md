@@ -33,9 +33,9 @@ card_type: recognition
 front: "{{確率|かくりつ}}"
 back: probabilità
 example_jp: >-
-  バトルで {{確率|かくりつ}}を {{使|つか}}います。
+  バトルで {{確率|かくりつ}}を {{見|み}}ます。
 example_it: >-
-  Uso la probabilità in battaglia.
+  In battaglia guardo la probabilità.
 :::
 :::term
 id: term-v541-honmono
@@ -57,7 +57,7 @@ back: vero / autentico
 example_jp: >-
   {{本物|ほんもの}} ですか。
 example_it: >-
-  Vero.
+  È vero?
 :::
 :::term
 id: term-v542-yousu
@@ -79,7 +79,7 @@ back: aspetto / situazione
 example_jp: >-
   {{様子|ようす}} です。
 example_it: >-
-  Aspetto.
+  La situazione è questa.
 :::
 :::term
 id: term-v543-pokemonwosshu
@@ -110,7 +110,7 @@ back: disturbo / fastidio
 example_jp: >-
   これは {{迷惑|めいわく}} です。
 example_it: >-
-  Questo è disturbo.
+  Questo è un disturbo.
 :::
 :::term
 id: term-v545-youi
@@ -132,7 +132,7 @@ back: preparazione
 example_jp: >-
   {{準備|じゅんび}}を します。
 example_it: >-
-  Faccio la preparazione.
+  Mi preparo.
 :::
 :::term
 id: term-v546-shoutai
@@ -154,7 +154,7 @@ back: vera identità
 example_jp: >-
   これは {{正体|しょうたい}} です。
 example_it: >-
-  Questo è vera identità.
+  È la vera identità.
 :::
 :::term
 id: term-v547-shoukai
@@ -176,7 +176,7 @@ back: presentazione / introduzione
 example_jp: >-
   {{紹介|しょうかい}} です。
 example_it: >-
-  Presentazione.
+  È una presentazione.
 :::
 :::term
 id: term-v548-himitsunomenyuu
@@ -205,9 +205,9 @@ card_type: recognition
 front: "{{研究所|けん.きゅう.じょ}}"
 back: istituto di ricerca
 example_jp: >-
-  {{研究所|けん.きゅう.じょ}}を します。
+  {{研究所|けん.きゅう.じょ}} です。
 example_it: >-
-  Faccio l'istituto di ricerca.
+  È un istituto di ricerca.
 :::
 :::term
 id: term-v550-tokushu
@@ -251,7 +251,7 @@ back: errore / fallimento
 example_jp: >-
   {{失敗|しっぱい}} です。
 example_it: >-
-  Errore.
+  È un errore.
 :::
 :::term
 id: term-v552-ouen
@@ -271,9 +271,9 @@ card_type: recognition
 front: "おうえん"
 back: incitamento / cheer
 example_jp: >-
-  バトルで おうえんを {{使|つか}}います。
+  バトルで おうえんします。
 example_it: >-
-  Uso l'incitamento in battaglia.
+  Faccio il tifo in battaglia.
 :::
 :::term
 id: term-v553-houshuu
@@ -293,9 +293,9 @@ card_type: recognition
 front: "{{報酬|ほうしゅう}}"
 back: ricompensa
 example_jp: >-
-  バトルで {{報酬|ほうしゅう}}を {{使|つか}}います。
+  バトルで {{報酬|ほうしゅう}}を もらいます。
 example_it: >-
-  Uso la ricompensa in battaglia.
+  Ricevo una ricompensa in battaglia.
 :::
 :::term
 id: term-v554-tansaku
@@ -315,9 +315,9 @@ card_type: recognition
 front: "{{探索|たんさく}}"
 back: esplorazione
 example_jp: >-
-  この{{先|さき}}に {{探索|たんさく}}が あります。
+  ここを {{探索|たんさく}}します。
 example_it: >-
-  Più avanti c'è l'esplorazione.
+  Esploro qui.
 :::
 :::term
 id: term-v555-shiea
@@ -339,7 +339,7 @@ back: condivisione
 example_jp: >-
   メニューで シェアを {{見|み}}ます。
 example_it: >-
-  Guardo il condivisione in menu.
+  Nel menu vedo la condivisione.
 :::
 :::term
 id: term-v556-genshou
@@ -359,9 +359,9 @@ card_type: recognition
 front: "{{現象|げんしょう}}"
 back: fenomeno
 example_jp: >-
-  {{名前|なまえ}}を {{書|か}}きます。
+  これは {{現象|げんしょう}}です。
 example_it: >-
-  Scrivo il nome.
+  Questo è un fenomeno.
 :::
 :::term
 id: term-v557-ongaku
@@ -381,9 +381,9 @@ card_type: recognition
 front: "{{音楽|おんがく}}"
 back: musica
 example_jp: >-
-  この{{先|さき}}に {{音楽|おんがく}}が あります。
+  ここに {{音楽|おんがく}}が あります。
 example_it: >-
-  Più avanti c'è la musica.
+  Qui c'è musica.
 :::
 :::term
 id: term-v558-onitaijifesu
@@ -414,7 +414,7 @@ back: svolgimento / organizzazione
 example_jp: >-
   これは {{開催|かいさい}} です。
 example_it: >-
-  Questo è svolgimento.
+  L'evento si svolge.
 :::
 :::term
 id: term-v560-shoutai
@@ -436,7 +436,7 @@ back: invito
 example_jp: >-
   {{学校|がっこう}}で {{招待|しょうたい}}が だいじ です。
 example_it: >-
-  In scuola invito è importante.
+  Questo è un invito.
 :::
 :::term
 id: term-v561-koubaibu
@@ -458,7 +458,7 @@ back: spaccio scolastico
 example_jp: >-
   {{学校|がっこう}}で {{購買部|こう.ばい.ぶ}}が だいじ です。
 example_it: >-
-  In scuola spaccio scolastico è importante.
+  C'è lo spaccio scolastico.
 :::
 :::term
 id: term-v562-kanari
@@ -480,7 +480,7 @@ back: parecchio
 example_jp: >-
   {{誰|だれ}}が {{来|き}}ますか。
 example_it: >-
-  Chi arriva?
+  È parecchio buono.
 :::
 :::term
 id: term-v563-kouryuu
@@ -502,7 +502,7 @@ back: scambio / interazione
 example_jp: >-
   ポケモンを {{交換|こうかん}}します。
 example_it: >-
-  Scambio un Pokémon.
+  C'è interazione.
 :::
 :::term
 id: term-v564-konran
@@ -524,7 +524,7 @@ back: confusione
 example_jp: >-
   バトルで {{混乱|こんらん}}を {{使|つか}}います。
 example_it: >-
-  Uso il confusione in battaglia.
+  Il Pokémon va in confusione.
 :::
 :::term
 id: term-v565-nouryokuhenka
@@ -546,7 +546,7 @@ back: variazione delle statistiche
 example_jp: >-
   バトルで {{能力変化|のう.りょく.へん.か}}を {{使|つか}}います。
 example_it: >-
-  Uso il variazione delle statistiche in battaglia.
+  Ci sono variazioni delle statistiche.
 :::
 :::term
 id: term-v566-shinyuusha
@@ -568,7 +568,7 @@ back: intruso
 example_jp: >-
   これは {{侵入者|しん.にゅう.しゃ}} です。
 example_it: >-
-  Questo è intruso.
+  Questo è un intruso.
 :::
 :::term
 id: term-v567-majikarukoukan
@@ -590,7 +590,7 @@ back: scambio magico / surprise trade
 example_jp: >-
   ポケモンを {{交換|こうかん}}します。
 example_it: >-
-  Scambio un Pokémon.
+  Faccio uno scambio di Pokémon.
 :::
 :::term
 id: term-v568-tanken
@@ -612,7 +612,7 @@ back: esplorazione
 example_jp: >-
   これは {{探検|たんけん}} です。
 example_it: >-
-  Questo è esplorazione.
+  Questa è un'esplorazione.
 :::
 :::term
 id: term-v569-joushou
@@ -634,7 +634,7 @@ back: salita / aumento
 example_jp: >-
   この{{先|さき}}に {{上昇|じょうしょう}}が あります。
 example_it: >-
-  Più avanti c'è la salita.
+  Più avanti c'è una salita.
 :::
 :::term
 id: term-v570-maigo
@@ -656,5 +656,5 @@ back: essere smarrito
 example_jp: >-
   この{{先|さき}}に {{迷子|まいご}}が あります。
 example_it: >-
-  Più avanti c'è l'essere smarrito.
+  Qui c'è qualcuno smarrito.
 :::

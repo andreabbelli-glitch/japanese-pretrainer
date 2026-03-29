@@ -146,7 +146,7 @@ back: tu, in tono brusco
 example_jp: >-
   そこで！ ぜひとも オマエの {{力|ちから}}を {{貸|か}}してほしいんだ！
 example_it: >-
-  Per questo voglio proprio che tu mi presti la tua forza!
+  Per questo voglio proprio il tuo aiuto!
 :::
 :::term
 id: term-v766-kanri

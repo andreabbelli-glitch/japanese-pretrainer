@@ -24,7 +24,7 @@ Capire il giapponese che compare in sistema e menu, verbi operativi. Qui il focu
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet queste parole ricorrono in menu, istruzioni e dialoghi brevi. Qui trovi sia lessico operativo sia espressioni che segnalano tono, conferma o istruzione nella schermata.
 
 ## Termini chiave
 
@@ -51,11 +51,11 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [引き返す](term:term-v661-hikikaesu) e [伝統行事](term:term-v662-dentougyouji) e [課外活動](term:term-v663-kagaikatsudou) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [引き返す](term:term-v661-hikikaesu), [伝統行事](term:term-v662-dentougyouji) e [課外活動](term:term-v663-kagaikatsudou) ti dicono subito se la schermata parla di tornare indietro, di un'attività scolastica o di un evento della scuola. Nei menu e nei dialoghi chiariscono quale azione, attività o risultato è in gioco.
 
-Le espressioni come [どの 技を 回復する？](term:term-e106-dono-wazao-kaifukusuru) e [〜してもいいからね](term:term-e107-shitemoiikarane) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [どの 技を 回復する？](term:term-e106-dono-wazao-kaifukusuru) e [〜してもいいからね](term:term-e107-shitemoiikarane) regolano il tono del parlato: domanda pratica, permesso, incoraggiamento o piccola rassicurazione.
 
-Sul piano grammaticale, pattern come [〜ってば](grammar:grammar-g109-ti-sto-dicendo-che) e [〜わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, pattern come [〜ってば](grammar:grammar-g109-ti-sto-dicendo-che) e [〜わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che) chiariscono insistenza, correzione e sfumatura esplicativa. Ti fanno sentire se la frase sta spingendo, negando un'interpretazione troppo forte o spiegando meglio che cosa intende davvero.
 
 ## Esempi guidati
 
@@ -70,7 +70,7 @@ translation_it: >-
 jp: >-
   {{休|やす}}んでも いいからね。
 translation_it: >-
-  Va bene anche se….
+  Puoi riposarti, va bene.
 :::
 
 :::example_sentence
@@ -89,4 +89,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco conta il giapponese che dice che cosa puoi fare, cosa è già disponibile e come suona la frase. Le voci più specifiche completano la lettura della schermata senza diventare teoria astratta.

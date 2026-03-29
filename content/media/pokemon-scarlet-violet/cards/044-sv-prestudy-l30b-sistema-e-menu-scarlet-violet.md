@@ -26,7 +26,7 @@ back: lascia che ti aiuti / farò io per te
 example_jp: >-
   こちらで {{回復|かいふく}}してあげましょう。
 example_it: >-
-  Lascia che ti aiuti.
+  Lascia che ti dia una mano.
 :::
 :::term
 id: term-e095-o-kakuninshitemimashou
@@ -48,7 +48,7 @@ back: proviamo a controllare …!
 example_jp: >-
   {{持|も}}ちものを {{確認|かくにん}}してみましょう！
 example_it: >-
-  Proviamo a controllare …!
+  Proviamo a controllare gli oggetti!
 :::
 :::term
 id: term-e097-nakunatteshimaimasuga-yoroshiidesuka
@@ -92,7 +92,7 @@ back: dai, proviamo a…
 example_jp: >-
   いっしょに {{行|い}}ってみようよ。
 example_it: >-
-  Dai, proviamo a….
+  Dai, proviamo ad andarci.
 :::
 :::grammar
 id: grammar-g098-cosi-com-e-lasciando-come-sta
@@ -198,7 +198,7 @@ back: connessione
 example_jp: >-
   メニューで {{接続|せつぞく}}を {{見|み}}ます。
 example_it: >-
-  Guardo il connessione in menu.
+  Controllo la connessione nel menu.
 :::
 :::term
 id: term-v593-douji
@@ -218,9 +218,9 @@ card_type: recognition
 front: "{{同時|どうじ}}"
 back: simultaneamente
 example_jp: >-
-  バトルで {{同時|どうじ}}を {{使|つか}}います。
+  ふたつを {{同時|どうじ}}に します。
 example_it: >-
-  Uso il simultaneamente in battaglia.
+  Faccio due cose contemporaneamente.
 :::
 :::term
 id: term-v594-tsuushintaisen
@@ -242,7 +242,7 @@ back: lotta online
 example_jp: >-
   {{通信対戦|つう.しん.たい.せん}}タイプの ポケモンです。
 example_it: >-
-  È un Pokémon di tipo lotta online.
+  È un Pokémon per le lotte online.
 :::
 :::term
 id: term-v595-koushiki
@@ -264,7 +264,7 @@ back: ufficiale
 example_jp: >-
   これは {{公式|こうしき}} です。
 example_it: >-
-  Questo è ufficiale.
+  Questa è la versione ufficiale.
 :::
 :::term
 id: term-v596-shiizun
@@ -284,9 +284,9 @@ card_type: recognition
 front: "シーズン"
 back: stagione
 example_jp: >-
-  これは シーズン です。
+  シーズンが はじまります。
 example_it: >-
-  Questo è stagione.
+  Sta per cominciare la stagione.
 :::
 :::term
 id: term-v597-koukai
@@ -306,9 +306,9 @@ card_type: recognition
 front: "{{公開|こうかい}}"
 back: pubblicazione / rendere pubblico
 example_jp: >-
-  メニューで {{公開|こうかい}}を {{見|み}}ます。
+  これは {{公開|こうかい}}です。
 example_it: >-
-  Guardo la pubblicazione in menu.
+  Questa informazione è pubblica.
 :::
 :::term
 id: term-v598-kabe
@@ -330,7 +330,7 @@ back: parete
 example_jp: >-
   この{{先|さき}}に {{壁|かべ}}が あります。
 example_it: >-
-  Più avanti c'è il parete.
+  Più avanti c'è una parete.
 :::
 :::term
 id: term-v599-kenkyuushitsu
@@ -350,9 +350,9 @@ card_type: recognition
 front: "{{研究室|けん.きゅう.しつ}}"
 back: laboratorio
 example_jp: >-
-  {{学校|がっこう}}で {{研究室|けん.きゅう.しつ}}が だいじ です。
+  {{研究室|けん.きゅう.しつ}}に います。
 example_it: >-
-  In scuola laboratorio è importante.
+  Sono nel laboratorio.
 :::
 :::term
 id: term-v600-chibichibipawaa
@@ -399,9 +399,9 @@ card_type: recognition
 front: "{{表情|ひょうじょう}}"
 back: espressione facciale
 example_jp: >-
-  この {{表情|ひょうじょう}}を {{覚|おぼ}}えます。
+  この {{表情|ひょうじょう}}です。
 example_it: >-
-  Espressione facciale.
+  Questa è un'espressione facciale.
 :::
 :::term
 id: term-v604-fui
@@ -421,9 +421,9 @@ card_type: recognition
 front: "{{不意|ふい}}"
 back: sorpresa / impreparazione
 example_jp: >-
-  {{準備|じゅんび}}を します。
+  {{不意|ふい}}に びっくりする。
 example_it: >-
-  Faccio la preparazione.
+  Mi sorprendo all'improvviso.
 :::
 :::term
 id: term-v605-dokujoutai
@@ -443,9 +443,9 @@ card_type: recognition
 front: "どく{{状態|じょうたい}}"
 back: stato veleno
 example_jp: >-
-  どく{{状態|じょうたい}}タイプの ポケモンです。
+  ポケモンが どく{{状態|じょうたい}}です。
 example_it: >-
-  È un Pokémon di tipo stato veleno.
+  Il Pokémon è in stato di veleno.
 :::
 :::term
 id: term-v606-kyori
@@ -465,9 +465,9 @@ card_type: recognition
 front: "{{距離|きょり}}"
 back: distanza
 example_jp: >-
-  この{{先|さき}}に {{距離|きょり}}が あります。
+  {{距離|きょり}}を {{測|はか}}ります。
 example_it: >-
-  Più avanti c'è la distanza.
+  Misuro la distanza.
 :::
 :::term
 id: term-v607-sanchou
@@ -518,9 +518,9 @@ card_type: recognition
 front: "{{売|う}}り{{切|き}}れ"
 back: esaurito
 example_jp: >-
-  メニューで {{売|う}}り{{切|き}}れを {{見|み}}ます。
+  これは {{売|う}}り{{切|き}}れです。
 example_it: >-
-  Guardo l'esaurito in menu.
+  Questo è esaurito.
 :::
 :::term
 id: term-v610-kitae-ta
@@ -540,9 +540,9 @@ card_type: recognition
 front: "{{鍛|きた}}えた"
 back: allenato / ben preparato
 example_jp: >-
-  バトルで {{鍛|きた}}えたを {{使|つか}}います。
+  よく {{鍛|きた}}えた ポケモンです。
 example_it: >-
-  Uso l'allenato in battaglia.
+  È un Pokémon ben allenato.
 :::
 :::term
 id: term-v611-pokepootaru
@@ -571,9 +571,9 @@ card_type: recognition
 front: "{{合計|ごうけい}}"
 back: totale
 example_jp: >-
-  メニューで {{合計|ごうけい}}を {{見|み}}ます。
+  {{合計|ごうけい}}を {{確認|かくにん}}します。
 example_it: >-
-  Guardo il totale in menu.
+  Controllo il totale.
 :::
 :::term
 id: term-v613-tairyouhassei
@@ -593,9 +593,9 @@ card_type: recognition
 front: "{{大量発生|たい.りょう.はっ.せい}}"
 back: mass outbreak
 example_jp: >-
-  この{{先|さき}}に {{大量発生|たい.りょう.はっ.せい}}が あります。
+  {{大量発生|たい.りょう.はっ.せい}}が {{起|お}}きています。
 example_it: >-
-  Più avanti c'è il mass outbreak.
+  C'è una mass outbreak.
 :::
 :::term
 id: term-v614-nyuuryoku
@@ -615,7 +615,7 @@ card_type: recognition
 front: "{{入力|にゅうりょく}}"
 back: inserimento / input
 example_jp: >-
-  メニューで {{入力|にゅうりょく}}を {{見|み}}ます。
+  {{名前|なまえ}}を {{入力|にゅうりょく}}します。
 example_it: >-
-  Guardo l'inserimento in menu.
+  Inserisco il nome.
 :::

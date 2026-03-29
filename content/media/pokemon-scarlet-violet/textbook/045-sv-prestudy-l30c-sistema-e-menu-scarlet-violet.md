@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per sistema e menu, Scarlet/Violet: 22 carte le
 ---
 # Obiettivo
 
-Capire il giapponese che compare in sistema e menu, Scarlet/Violet. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in sistema e menu, Scarlet/Violet. Qui contano parole operative, formule di dialogo e strutture che dicono subito che cosa sta facendo il gioco o che tipo di scena stai leggendo.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet qui compaiono parole che parlano di personaggi, azioni, salvataggi, coordinazione e movimento. Le etichette più specifiche nominano invece team o istruzioni precise del sistema.
 
 ## Termini chiave
 
@@ -56,13 +56,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [同級生](term:term-v615-doukyuusei) e [リタイア](term:term-v616-ritaia) e [しゃがむ](term:term-v617-shagamu) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [同級生](term:term-v615-doukyuusei), [リタイア](term:term-v616-ritaia) e [しゃがむ](term:term-v617-shagamu) dicono subito chi compare, quale azione è in gioco e che tipo di scena stai leggendo. Nei menu e nei dialoghi sono segnali pratici, non semplici etichette da glossario.
 
-Le espressioni come [気が変わったら よろしくね](term:term-e099-kigakawattara-yoroshikune) e [〜しても いいし](term:term-e102-shitemo-iishi) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [気が変わったら よろしくね](term:term-e099-kigakawattara-yoroshikune) e [〜しても いいし](term:term-e102-shitemo-iishi) regolano invece il tono del parlato: una lascia aperta una possibilità, l'altra aggiunge opzioni alternative.
 
-Sul piano grammaticale, pattern come [〜らしい](grammar:grammar-g102-pare-che-tipico-di) e [〜うちに](grammar:grammar-g103-mentre-finche) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, pattern come [〜らしい](grammar:grammar-g102-pare-che-tipico-di) e [〜うちに](grammar:grammar-g103-mentre-finche) chiariscono stato, deduzione e sequenza. Sono utili perché fanno capire se la frase suona come supposizione, azione da fare in tempo o passaggio da chiudere prima che cambi la situazione.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [レンタルチーム](term:term-v623-rentaruchiimu)、 [指定の教室へ 向かってください](term:term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [レンタルチーム](term:term-v623-rentaruchiimu)、 [指定の教室へ 向かってください](term:term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai). Quando compaiono, ti orientano subito: indicano un team, una consegna o una destinazione precisa.
 
 ## Esempi guidati
 
@@ -77,7 +77,7 @@ translation_it: >-
 jp: >-
   ここで {{休|やす}}んでも いいし、 {{先|さき}}に {{行|い}}っても いい。
 translation_it: >-
-  Si può anche….
+  Si può anche riposare qui, oppure andare avanti.
 :::
 
 :::example_sentence
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco conta soprattutto distinguere chi compare, quale azione è possibile e se la frase lascia aperta una scelta oppure dà un'indicazione precisa. Questo basta già a leggere molto più in fretta menu e dialoghi.

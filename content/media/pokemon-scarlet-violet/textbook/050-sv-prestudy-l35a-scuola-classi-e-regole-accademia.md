@@ -19,22 +19,18 @@ summary: 'Lessico ed espressioni per scuola, classi e regole d''accademia: 12 ca
 # Obiettivo
 
 Capire il giapponese che compare in scuola, classi e regole d'accademia. Qui il
-focus e su lessico di aula, battle class, briefing scolastici e regole del
-campus che nell'episodio 2 diventano davvero leggibili.
+focus e su lessico di aula, classe di lotta, avvisi scolastici e regole del
+campus.
 
 ## Contesto
 
-Nel secondo video di Scarlet / Violet l'accademia non e piu solo una tappa di
-transizione: diventa un posto pieno di messaggi pratici. Ci sono lezione,
-assembly, chiamate per nome, indicazioni su dove andare e avvisi su quello che
-non si puo fare.
-
-Questo blocco serve a leggere bene il contrasto tra lessico istituzionale e
-lessico operativo. Parole come [{{学籍番号|がく.せき.ばん.ごう}}](term:term-v734-gakusekibangou)
-o [{{始業|し.ぎょう}}](term:term-v738-shigyou) segnano il lato formale della
+In Scarlet / Violet l'accademia e piena di messaggi pratici: lezioni, chiamate
+per nome, indicazioni su dove andare e avvisi su quello che non si puo fare.
+Parole come [{{学籍番号|がく.せき.ばん.ごう}}](term:term-v734-gakusekibangou) o
+[{{始業|し.ぎょう}}](term:term-v738-shigyou) segnano il lato formale della
 scuola; parole come [{{階段|かいだん}}](term:term-v732-kaidan) o
-[{{急|いそ}}ぐ](term:term-v739-isogu) ti dicono invece come si muove davvero il
-giocatore nel campus.
+[{{急|いそ}}ぐ](term:term-v739-isogu) ti dicono invece come ci si muove davvero
+nel campus.
 
 ## Termini chiave
 
@@ -54,35 +50,28 @@ giocatore nel campus.
 ## Spiegazione
 
 [{{物理|ぶつり}}](term:term-v730-butsuri) e
-[{{分類|ぶんるい}}](term:term-v731-bunrui) entrano quando il gioco passa dalla
-chiacchiera alla didattica vera. Nella battle class non stai solo ascoltando un
-NPC: il testo ti sta spiegando come leggere il sistema delle mosse. Se capisci
-che una tecnica ha una certa [{{分類|ぶんるい}}](term:term-v731-bunrui) e che
-questa puo essere [{{物理|ぶつり}}](term:term-v730-butsuri), riesci a collegare
-subito il lessico della lezione alle statistiche del Pokemon.
+[{{分類|ぶんるい}}](term:term-v731-bunrui) compaiono quando il gioco spiega come
+leggere le mosse. Ti dicono subito che una tecnica appartiene a una categoria
+precisa e che usa un certo tipo di statistica.
 
 [{{担当|たんとう}}](term:term-v733-tantou),
 [{{学籍番号|がく.せき.ばん.ごう}}](term:term-v734-gakusekibangou) e
 [{{敬語|けいご}}](term:term-v736-keigo) sono invece il lato piu istituzionale
-dell'accademia. Ti fanno leggere meglio il modo in cui i professori si
-presentano, il tono con cui gli studenti parlano in aula e il fatto che la
-scena stia assumendo una forma scolastica riconoscibile, non piu solo narrativa.
+dell'accademia. Ti fanno capire chi ha un certo ruolo, quando la scena diventa
+piu formale e come cambia il tono in aula.
 
 Le parole di movimento hanno un peso pratico immediato.
 [{{階段|かいだん}}](term:term-v732-kaidan) e
 [グラウンド](term:term-v735-guraundo) ti orientano nello spazio reale del
 campus; [{{始業|し.ぎょう}}](term:term-v738-shigyou) e
 [{{急|いそ}}ぐ](term:term-v739-isogu) trasformano un semplice cambio scena in un
-segnale di ritmo: e ora di rientrare, sbrigarsi, presentarsi nel posto giusto.
+segnale di ritmo: e ora di rientrare, sbrigarsi o presentarsi nel posto giusto.
 
 Infine, [{{立|た}}ち{{入|い}}り](term:term-v740-tachiiri),
 [{{校則|こうそく}}](term:term-v741-kousoku) e
-[{{違反|いはん}}](term:term-v742-ihan) sono il lessico che rende leggibili i
-divieti del gioco. Quando un NPC ti dice che una zona e
-[{{立|た}}ち{{入|い}}り](term:term-v740-tachiiri) proibita o che un'azione e
-[{{校則|こうそく}}](term:term-v741-kousoku){{違反|いはん}}, non e solo colore
-scolastico: e un vero gate di comportamento che spiega cosa puoi fare e cosa
-no.
+[{{違反|いはん}}](term:term-v742-ihan) rendono leggibili i divieti del gioco.
+Quando una zona e proibita o un'azione e una violazione del regolamento, il
+testo ti sta dicendo in modo diretto che cosa puoi fare e che cosa no.
 
 ## Esempi guidati
 
@@ -98,7 +87,7 @@ translation_it: >-
 jp: >-
   バトル{{学|がく}}{{担当|たんとう}}は キハダ{{先生|せんせい}}だ。
 translation_it: >-
-  La docente responsabile di battle class e la professoressa Dendra.
+  La docente responsabile della classe di lotta e la professoressa Dendra.
 :::
 
 :::example_sentence
@@ -129,17 +118,19 @@ jp: >-
   パルデアの {{大穴|おおあな}}への {{立|た}}ち{{入|い}}りは
   {{危|あぶ}}ないので {{校則|こうそく}}{{違反|いはん}}です。
 translation_it: >-
-  Entrare nel Great Crater e pericoloso, quindi viola il regolamento scolastico.
+  Entrare nel Grande Cratere di Paldea e pericoloso, quindi viola il
+  regolamento scolastico.
 :::
 
 ## Nota finale
 
-Questo blocco serve a leggere l'accademia come sistema pratico. Se stabilizzi
+In questo blocco contano soprattutto ruoli, orari, spostamenti e divieti. Se
+riconosci
 [{{担当|たんとう}}](term:term-v733-tantou),
 [{{学籍番号|がく.せき.ばん.ごう}}](term:term-v734-gakusekibangou),
 [{{階段|かいだん}}](term:term-v732-kaidan),
 [グラウンド](term:term-v735-guraundo) e il trio
 [{{立|た}}ち{{入|い}}り](term:term-v740-tachiiri) /
 [{{校則|こうそく}}](term:term-v741-kousoku) /
-[{{違反|いはん}}](term:term-v742-ihan), le scene scolastiche del video smettono
-di sembrare rumore di fondo e diventano istruzioni leggibili.
+[{{違反|いはん}}](term:term-v742-ihan), la parte scolastica diventa molto piu
+chiara da leggere.

@@ -13,7 +13,7 @@ reading: ロトりぼう
 romaji: rotoribou
 meaning_it: asta / selfie stick Rotom
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine utile per capire il tono narrativo e le schermate del DLC.
 :::
 :::term
 id: term-v712-kaimei
@@ -33,9 +33,9 @@ card_type: recognition
 front: "{{解明|かいめい}}"
 back: chiarimento / risoluzione scientifica
 example_jp: >-
-  {{誰|だれ}}が {{来|き}}ますか。
+  ナゾの {{解明|かいめい}}が {{進|すす}}む。
 example_it: >-
-  Chi arriva?
+  La soluzione del mistero va avanti.
 :::
 :::term
 id: term-v713-furyou
@@ -57,7 +57,7 @@ back: teppista / delinquente
 example_jp: >-
   これは {{不良|ふりょう}} です。
 example_it: >-
-  Questo è teppista.
+  Questo è un teppista.
 :::
 :::term
 id: term-v714-kyouyuu
@@ -66,7 +66,7 @@ reading: きょうゆう
 romaji: kyouyuu
 meaning_it: condividere / condivisione
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine utile per capire il tono narrativo e le schermate del DLC.
 :::
 :::card
 id: card-v714-kyouyuu-recognition
@@ -77,9 +77,9 @@ card_type: recognition
 front: "{{共有|きょうゆう}}"
 back: condividere / condivisione
 example_jp: >-
-  これは {{共有|きょうゆう}} です。
+  じょうほうを {{共有|きょうゆう}}する。
 example_it: >-
-  Questo è condividere.
+  Condivido le informazioni.
 :::
 :::term
 id: term-v715-irekawaru
@@ -99,9 +99,9 @@ card_type: recognition
 front: "{{入|い}}れ{{替|か}}わる"
 back: venire sostituito
 example_jp: >-
-  ここに {{入|い}}れ{{替|か}}わる。
+  さっきの メンバーと {{入|い}}れ{{替|か}}わる。
 example_it: >-
-  Venire sostituito.
+  Prende il posto del gruppo di prima.
 :::
 :::term
 id: term-v716-kimeraretakazu
@@ -123,7 +123,7 @@ back: numero stabilito
 example_jp: >-
   これは {{決|き}}められた{{数|かず}} です。
 example_it: >-
-  Questo è numero stabilito.
+  Questo è il numero stabilito.
 :::
 :::term
 id: term-v717-tani
@@ -145,7 +145,7 @@ back: crediti scolastici
 example_jp: >-
   {{学校|がっこう}}で {{単位|たんい}}が だいじ です。
 example_it: >-
-  In scuola crediti scolastici è importante.
+  A scuola i crediti scolastici sono importanti.
 :::
 :::term
 id: term-v718-higai
@@ -167,7 +167,7 @@ back: danno / vittima
 example_jp: >-
   ダメージが {{大|おお}}きいです。
 example_it: >-
-  Danno.
+  È un danno.
 :::
 :::term
 id: term-v719-sashie
@@ -189,7 +189,7 @@ back: illustrazione inserita
 example_jp: >-
   これは {{挿絵|さしえ}} です。
 example_it: >-
-  Questo è illustrazione inserita.
+  Questa è un'illustrazione inserita.
 :::
 :::term
 id: term-v720-okotowaririsuto
@@ -211,7 +211,7 @@ back: lista blocco
 example_jp: >-
   メニューで おことわりリストを {{見|み}}ます。
 example_it: >-
-  Guardo il lista blocco in menu.
+  Nel menu guardo la lista blocco.
 :::
 :::term
 id: term-v721-zaiseki
@@ -233,7 +233,7 @@ back: essere iscritto / registrato
 example_jp: >-
   {{学校|がっこう}}で {{在籍|ざいせき}}が だいじ です。
 example_it: >-
-  In scuola essere iscritto è importante.
+  A scuola l'iscrizione è importante.
 :::
 :::term
 id: term-v722-boonasumisshon
@@ -255,7 +255,7 @@ back: missione bonus
 example_jp: >-
   メニューで ボーナスミッションを {{見|み}}ます。
 example_it: >-
-  Guardo il missione bonus in menu.
+  Nel menu vedo la missione bonus.
 :::
 :::term
 id: term-v723-honkakuteki
@@ -275,9 +275,9 @@ card_type: recognition
 front: "{{本格的|ほん.かく.てき}}"
 back: serio / a tutti gli effetti
 example_jp: >-
-  この{{先|さき}}に {{本格的|ほん.かく.てき}}が あります。
+  ここから {{本格的|ほん.かく.てき}}に {{始|はじ}}まる。
 example_it: >-
-  Più avanti c'è il serio.
+  Da qui inizia sul serio.
 :::
 :::term
 id: term-v724-yuusendo
@@ -319,9 +319,9 @@ card_type: recognition
 front: "{{動|うご}}き{{方|かた}}"
 back: modo di muoversi
 example_jp: >-
-  この{{先|さき}}に {{動|うご}}き{{方|かた}}が あります。
+  ポケモンの {{動|うご}}き{{方|かた}}を {{覚|おぼ}}える。
 example_it: >-
-  Più avanti c'è il modo di muoversi.
+  Imparo come si muove il Pokemon.
 :::
 :::term
 id: term-v726-koutokuten
@@ -341,9 +341,9 @@ card_type: recognition
 front: "{{高得点|こう.とく.てん}}"
 back: punteggio alto
 example_jp: >-
-  この {{山|やま}}は {{高|たか}}い です。
+  {{高得点|こう.とく.てん}}を ねらう。
 example_it: >-
-  Questa montagna è alto.
+  Punto a un punteggio alto.
 :::
 :::term
 id: term-v727-shouritsu
@@ -365,7 +365,7 @@ back: percentuale di vittoria
 example_jp: >-
   これは {{勝率|しょうりつ}} です。
 example_it: >-
-  Questo è percentuale di vittoria.
+  Questa è la percentuale di vittoria.
 :::
 :::term
 id: term-v728-shugosha
@@ -387,7 +387,7 @@ back: guardiano
 example_jp: >-
   これは {{守護者|しゅ.ご.しゃ}} です。
 example_it: >-
-  Questo è guardiano.
+  Questo è il guardiano.
 :::
 :::term
 id: term-v729-chiimuid
@@ -418,7 +418,7 @@ back: membri attivi
 example_jp: >-
   メニューで {{活動|かつどう}}メンバーを {{見|み}}ます。
 example_it: >-
-  Guardo il membri attivi in menu.
+  Nel menu vedo i membri attivi.
 :::
 :::term
 id: term-v731-kaidame
@@ -506,7 +506,7 @@ back: tutta la zona
 example_jp: >-
   これは {{一帯|いったい}} です。
 example_it: >-
-  Questo è tutta la zona.
+  Questa è tutta la zona.
 :::
 :::term
 id: term-v735-senkyo
@@ -528,7 +528,7 @@ back: occupazione / controllo dell'area
 example_jp: >-
   ここは {{占拠|せんきょ}} です。
 example_it: >-
-  Qui è occupazione.
+  Qui c'è un'occupazione.
 :::
 :::term
 id: term-v736-odorokaseru
@@ -550,5 +550,5 @@ back: spaventare / sorprendere
 example_jp: >-
   ここで {{驚|おどろ}}かせる。
 example_it: >-
-  Spaventare.
+  Spaventare / sorprendere.
 :::

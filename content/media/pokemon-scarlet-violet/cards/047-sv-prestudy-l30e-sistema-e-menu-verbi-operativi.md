@@ -48,7 +48,7 @@ back: va bene anche se…
 example_jp: >-
   ここで {{休|やす}}んでも いいからね。
 example_it: >-
-  Va bene anche se….
+  Puoi riposarti, va bene.
 :::
 :::term
 id: term-e108-otsukaresama
@@ -157,7 +157,7 @@ back: tornare indietro
 example_jp: >-
   ここで {{引|ひ}}き{{返|かえ}}す。
 example_it: >-
-  Tornare indietro.
+  Torno indietro qui.
 :::
 :::term
 id: term-v662-dentougyouji
@@ -179,7 +179,7 @@ back: evento / tradizione della scuola
 example_jp: >-
   ここは {{伝統行事|でん.とう.ぎょう.じ}} です。
 example_it: >-
-  Qui è evento.
+  Qui c'è una tradizione scolastica.
 :::
 :::term
 id: term-v663-kagaikatsudou
@@ -201,7 +201,7 @@ back: attività extrascolastica
 example_jp: >-
   {{学校|がっこう}}で {{課外活動|か.がい.かつ.どう}}が だいじ です。
 example_it: >-
-  In scuola attività extrascolastica è importante.
+  Le attività extrascolastiche sono importanti a scuola.
 :::
 :::term
 id: term-v664-matomeuri
@@ -223,7 +223,7 @@ back: vendita in blocco
 example_jp: >-
   メニューで まとめ{{売|う}}りを {{見|み}}ます。
 example_it: >-
-  Guardo il vendita in blocco in menu.
+  Nel menu c'è la vendita in blocco.
 :::
 :::term
 id: term-v665-zensentaku
@@ -245,7 +245,7 @@ back: seleziona tutto
 example_jp: >-
   メニューで {{全選択|ぜん.せん.たく}}を {{見|み}}ます。
 example_it: >-
-  Guardo il seleziona tutto in menu.
+  Nel menu c'è "seleziona tutto".
 :::
 :::term
 id: term-v666-shouhai
@@ -267,7 +267,7 @@ back: esito della sfida
 example_jp: >-
   バトルで {{勝敗|しょうはい}}を {{使|つか}}います。
 example_it: >-
-  Uso l'esito della sfida in battaglia.
+  In battaglia conta l'esito della sfida.
 :::
 :::term
 id: term-v667-fuuki
@@ -289,7 +289,7 @@ back: disciplina scolastica
 example_jp: >-
   これは {{風紀|ふうき}} です。
 example_it: >-
-  Questo è disciplina scolastica.
+  Questa è disciplina scolastica.
 :::
 :::term
 id: term-v668-uketorikanou
@@ -311,7 +311,7 @@ back: riscattabile
 example_jp: >-
   メニューで {{受|う}}けとり{{可能|かのう}}を {{見|み}}ます。
 example_it: >-
-  Guardo il riscattabile in menu.
+  Nel menu c'è la voce riscattabile.
 :::
 :::term
 id: term-v669-uketorizumi
@@ -333,7 +333,7 @@ back: già riscattato
 example_jp: >-
   メニューで {{受|う}}けとり{{済|ず}}みを {{見|み}}ます。
 example_it: >-
-  Guardo il già riscattato in menu.
+  Nel menu c'è già riscattato.
 :::
 :::term
 id: term-v670-koumoku
@@ -355,7 +355,7 @@ back: voce / elemento
 example_jp: >-
   この {{項目|こうもく}}を {{見|み}}ます。
 example_it: >-
-  Voce.
+  Questa è una voce.
 :::
 :::term
 id: term-v671-kyoutou
@@ -377,7 +377,7 @@ back: combattere insieme
 example_jp: >-
   バトルで {{共闘|きょうとう}}を {{使|つか}}います。
 example_it: >-
-  Uso il combattere insieme in battaglia.
+  In battaglia si combatte insieme.
 :::
 :::term
 id: term-v672-konnan
@@ -399,7 +399,7 @@ back: difficile / complesso
 example_jp: >-
   この{{先|さき}}に {{困難|こんなん}}が あります。
 example_it: >-
-  Più avanti c'è il difficile.
+  Più avanti c'è qualcosa di difficile.
 :::
 :::term
 id: term-v673-kakkuu-suru
@@ -421,7 +421,7 @@ back: planare
 example_jp: >-
   ここで {{滑空|かっくう}}する。
 example_it: >-
-  Planare.
+  Qui si plana.
 :::
 :::term
 id: term-v674-oiharau
@@ -443,7 +443,7 @@ back: scacciare
 example_jp: >-
   ここで {{追|お}}いはらう。
 example_it: >-
-  Scacciare.
+  Qui si scaccia.
 :::
 :::term
 id: term-v675-kirikaeru
@@ -465,7 +465,7 @@ back: commutare / cambiare
 example_jp: >-
   ここで {{切|き}}り{{替|か}}える。
 example_it: >-
-  Commutare.
+  Qui si cambia.
 :::
 :::term
 id: term-v676-furu-mau
@@ -487,7 +487,7 @@ back: offrire / servire
 example_jp: >-
   ここで {{振|ふ}}る{{舞|ま}}う。
 example_it: >-
-  Offrire.
+  Qui si offre.
 :::
 :::term
 id: term-v677-jousetsu
@@ -509,7 +509,7 @@ back: installato stabilmente
 example_jp: >-
   メニューで {{常設|じょうせつ}}を {{見|み}}ます。
 example_it: >-
-  Guardo l'installato stabilmente in menu.
+  Nel menu c'è l'installato stabilmente.
 :::
 :::term
 id: term-v678-kaitori
@@ -531,7 +531,7 @@ back: acquisto da parte del negozio
 example_jp: >-
   メニューで {{買|か}}い{{取|と}}りを {{見|み}}ます。
 example_it: >-
-  Guardo l'acquisto da parte del negozio in menu.
+  Nel menu c'è l'acquisto da parte del negozio.
 :::
 :::term
 id: term-v679-saitekikai
@@ -553,7 +553,7 @@ back: soluzione ottimale
 example_jp: >-
   バトルで {{最適解|さい.てき.かい}}を {{使|つか}}います。
 example_it: >-
-  Uso il soluzione ottimale in battaglia.
+  In battaglia c'è la soluzione ottimale.
 :::
 :::term
 id: term-v680-ude-wo-migaku
@@ -575,7 +575,7 @@ back: affinare le proprie capacità
 example_jp: >-
   バトルで {{腕|うで}}を{{磨|みが}}くを {{使|つか}}います。
 example_it: >-
-  Uso l'affinare le proprie capacità in battaglia.
+  In battaglia si affinano le proprie capacità.
 :::
 :::term
 id: term-v681-hitokurou
@@ -619,7 +619,7 @@ back: in lungo e in largo / liberamente
 example_jp: >-
   この{{先|さき}}に {{縦横無尽|じゅう.おう.む.じん}}が あります。
 example_it: >-
-  Più avanti c'è l'in lungo e in largo.
+  Più avanti puoi muoverti liberamente.
 :::
 :::term
 id: term-v683-yokan
@@ -641,5 +641,5 @@ back: presentimento
 example_jp: >-
   {{予感|よかん}} です。
 example_it: >-
-  Presentimento.
+  È un presentimento.
 :::

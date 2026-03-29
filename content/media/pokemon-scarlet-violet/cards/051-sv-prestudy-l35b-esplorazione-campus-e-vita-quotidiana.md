@@ -14,7 +14,7 @@ romaji: toriaezu
 meaning_it: per ora / intanto
 notes_it: >-
   Espressione ricorrente di orientamento pratico. Quando compare, il
-  personaggio sta fissando una priorita provvisoria senza pretendere che sia la
+  personaggio sta fissando una priorita provvisoria senza presentarla come
   decisione finale.
 :::
 :::card
@@ -38,8 +38,8 @@ reading: オススメ
 romaji: osusume
 meaning_it: consiglio / raccomandazione
 notes_it: >-
-  Nei dialoghi leggeri di campus e citta segnala il posto, il negozio o la
-  route che un personaggio ti suggerisce davvero di provare.
+  Nei dialoghi leggeri di campus e citta segnala il posto, il negozio o il
+  percorso che un personaggio ti suggerisce di provare.
 :::
 :::card
 id: card-e110-osusume-recognition
@@ -85,8 +85,8 @@ reading: なんということでしょう
 romaji: nantoiukotodeshou
 meaning_it: ma guarda! / incredibile
 notes_it: >-
-  Formula enfatica che innesca stupore teatrale. Nell'episodio 2 funziona bene
-  per leggere il tono giocoso o esagerato di certi commenti.
+  Formula enfatica che innesca stupore teatrale. Funziona bene per leggere il
+  tono giocoso o esagerato di certi commenti.
 :::
 :::card
 id: card-e112-nantoiukotodeshou-recognition
@@ -108,8 +108,8 @@ reading: ひとだすけ
 romaji: hitodasuke
 meaning_it: aiutare qualcuno / gesto di aiuto
 notes_it: >-
-  Nomina un aiuto concreto dato a una persona. Nel video non suona astratto:
-  serve a commentare un'azione del protagonista e a valutarne il tono.
+  Nomina un aiuto concreto dato a una persona. Serve a commentare un'azione del
+  protagonista e a valutarne il tono.
 :::
 :::card
 id: card-v743-hitodasuke-recognition
@@ -296,7 +296,7 @@ romaji: mayou
 meaning_it: perdersi / esitare sulla strada
 notes_it: >-
   Nel mondo aperto puo voler dire sia "perdersi" in senso letterale sia
-  "esitare" su dove andare. Nell'episodio 2 vale soprattutto il primo.
+  "esitare" su dove andare. Qui vale soprattutto il primo.
 :::
 :::card
 id: card-v751-mayou-recognition
@@ -341,8 +341,8 @@ reading: しれる
 romaji: shireru
 meaning_it: riuscire a conoscere / scoprire
 notes_it: >-
-  Potenziale di `知る`. Nell'episodio 2 compare soprattutto quando il gioco
-  promette di farti capire meglio i tuoi Pokemon.
+  Potenziale di `知る`. Compare soprattutto quando il gioco parla di capire
+  meglio i tuoi Pokemon.
 :::
 :::card
 id: card-v753-shireru-recognition
@@ -435,8 +435,8 @@ reading: いどめる
 romaji: idomeru
 meaning_it: poter sfidare
 notes_it: >-
-  Potenziale di `挑む`. Nei consigli di route ti dice che una prova e ormai alla
-  tua portata.
+  Potenziale di `挑む`. Nei consigli di percorso ti dice che una prova e ormai
+  alla tua portata.
 :::
 :::card
 id: card-v757-idomeru-recognition

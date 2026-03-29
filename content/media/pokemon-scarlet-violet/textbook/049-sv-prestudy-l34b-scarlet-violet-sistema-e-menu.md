@@ -24,7 +24,7 @@ Capire il giapponese che compare in Scarlet/Violet, sistema e menu. Qui il focus
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet questa lezione raccoglie parole che compaiono in schermate, dialoghi e menu quando il gioco parla di identità, condivisione, sostituzione, priorità e stato della scena. Le etichette più specifiche nominano invece funzioni, gruppi o elementi molto locali del titolo.
 
 ## Termini chiave
 
@@ -44,40 +44,40 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [解明](term:term-v712-kaimei) e [不良](term:term-v713-furyou) e [共有](term:term-v714-kyouyuu) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [解明](term:term-v712-kaimei), [不良](term:term-v713-furyou) e [共有](term:term-v714-kyouyuu) ti dicono subito se la schermata parla di chiarire qualcosa, di un teppista o di condivisione. Nei menu e nei dialoghi chiariscono che tipo di informazione sta entrando in gioco.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ロトりぼう](term:term-v711-rotoribou)、 [チームＩＤ](term:term-v729-chiimuid). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ロトりぼう](term:term-v711-rotoribou) e [チームＩＤ](term:term-v729-chiimuid). Quando compaiono, ti orientano su una funzione o su un'etichetta molto specifica del titolo.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  {{誰|だれ}}が {{来|き}}ますか。
+  ナゾの {{解明|かいめい}}が {{進|すす}}む。
 translation_it: >-
-  Chi arriva?
+  La soluzione del mistero va avanti.
 :::
 
 :::example_sentence
 jp: >-
-  これは {{不良|ふりょう}}です。
+  かれは {{不良|ふりょう}}で {{有名|ゆうめい}}だ。
 translation_it: >-
-  Questo è teppista.
+  Lui e famoso per essere un teppista.
 :::
 
 :::example_sentence
 jp: >-
-  これは {{共有|きょうゆう}}です。
+  じょうほうを {{共有|きょうゆう}}する。
 translation_it: >-
-  Questo è condividere.
+  Condivido le informazioni.
 :::
 
 :::example_sentence
 jp: >-
-  ここに {{入|い}}れ{{替|か}}わる。
+  さっきの メンバーと {{入|い}}れ{{替|か}}わる。
 translation_it: >-
-  Venire sostituito.
+  Prende il posto del gruppo di prima.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco conta soprattutto riconoscere che cosa sta dicendo la schermata: chiarimento, condivisione, sostituzione o numero stabilito. Le etichette specifiche aiutano a orientarti quando il gioco mostra una funzione precisa.
