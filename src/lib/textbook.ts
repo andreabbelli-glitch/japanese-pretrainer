@@ -5,15 +5,19 @@ import {
   db,
   getLessonReaderBySlug,
   getLessonTooltipSourceBySlug,
-  getMediaBySlug,
   listLessonEntryLinks,
   listLessonsByMediaId,
   type DatabaseClient,
   type LessonListItem
 } from "@/db";
 import {
+  buildGlossarySummaryTags,
+  buildReviewSummaryTags,
   canUseDataCache,
+  getMediaBySlugCached,
+  GLOSSARY_SUMMARY_TAG,
   MEDIA_LIST_TAG,
+  REVIEW_SUMMARY_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
 } from "@/lib/data-cache";
@@ -158,7 +162,7 @@ export async function getTextbookIndexData(
     enabled: canUseDataCache(database),
     keyParts: ["textbook", "index", mediaSlug],
     loader: async () => {
-      const media = await getMediaBySlug(database, mediaSlug);
+      const media = await getMediaBySlugCached(database, mediaSlug);
 
       if (!media) {
         return null;
@@ -177,14 +181,14 @@ export async function getTextbookLessonData(
 ): Promise<TextbookLessonData | null> {
   markDataAsLive();
 
-  const media = await getMediaBySlug(database, mediaSlug);
+  const media = await getMediaBySlugCached(database, mediaSlug);
 
   if (!media) {
     return null;
   }
 
   const [indexModel, lesson] = await Promise.all([
-    getTextbookIndexDataForMedia(media, database),
+    getTextbookIndexData(mediaSlug, database),
     getTextbookLessonBodyData({
       database,
       lessonSlug,
@@ -218,9 +222,26 @@ export async function getTextbookLessonTooltipEntries(
   lessonSlug: string,
   database: DatabaseClient = db
 ): Promise<TextbookTooltipEntry[] | null> {
-  markDataAsLive();
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["textbook", "tooltips", mediaSlug, lessonSlug],
+    loader: () =>
+      loadTextbookLessonTooltipEntries(mediaSlug, lessonSlug, database),
+    tags: [
+      GLOSSARY_SUMMARY_TAG,
+      REVIEW_SUMMARY_TAG,
+      ...buildGlossarySummaryTags([mediaSlug]),
+      ...buildReviewSummaryTags([mediaSlug])
+    ]
+  });
+}
 
-  const media = await getMediaBySlug(database, mediaSlug);
+async function loadTextbookLessonTooltipEntries(
+  mediaSlug: string,
+  lessonSlug: string,
+  database: DatabaseClient
+): Promise<TextbookTooltipEntry[] | null> {
+  const media = await getMediaBySlugCached(database, mediaSlug);
 
   if (!media) {
     return null;
@@ -250,7 +271,7 @@ export async function getTextbookLessonTooltipEntries(
 }
 
 async function getTextbookIndexDataForMedia(
-  media: NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>,
+  media: NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>,
   database: DatabaseClient
 ) {
   const [lessons, furiganaMode] = await Promise.all([
@@ -301,7 +322,7 @@ async function getTextbookLessonBodyData(input: {
 }
 
 function buildTextbookIndexModel(input: {
-  media: NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>;
+  media: NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>;
   lessons: LessonListItem[];
   furiganaMode: FuriganaMode;
 }): TextbookIndexData {

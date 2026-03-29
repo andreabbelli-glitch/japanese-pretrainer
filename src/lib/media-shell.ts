@@ -1,7 +1,6 @@
 import {
   countReviewSubjectsIntroducedOnDayByMediaIds,
   db,
-  getMediaBySlug,
   listGlossaryPreviewEntries,
   listGlossaryProgressSummaries,
   listLessonsByMediaId,
@@ -13,6 +12,7 @@ import { pickBestBy } from "@/lib/collections";
 import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
+  getMediaBySlugCached,
   GLOSSARY_SUMMARY_TAG,
   listMediaCached,
   MEDIA_LIST_TAG,
@@ -108,7 +108,7 @@ export async function getMediaDetailData(
     enabled: canUseDataCache(database),
     keyParts: ["app-shell", "media-detail", mediaSlug],
     loader: async () => {
-      const media = await getMediaBySlug(database, mediaSlug);
+      const media = await getMediaBySlugCached(database, mediaSlug);
 
       if (!media) {
         return null;
@@ -359,7 +359,7 @@ async function loadReviewIntroducedOnDayCached(
 
 async function buildMediaShellSnapshot(
   database: DatabaseClient,
-  media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
+  media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>
 ): Promise<MediaShellSnapshot> {
   const nowIso = new Date().toISOString();
   const [
@@ -514,7 +514,7 @@ function mapMediaShellSnapshotFromCounts(input: {
   lessons: Awaited<ReturnType<typeof listLessonsByMediaId>>;
   media:
     | MediaListItem
-    | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>;
+    | NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>;
   reviewCounts: {
     activeReviewCards: number;
     cardsTotal: number;

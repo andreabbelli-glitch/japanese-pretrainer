@@ -7,7 +7,6 @@ import {
   getGlossaryEntriesByIds,
   getMediaById,
   listGrammarEntryReviewSummariesByIds,
-  getMediaBySlug,
   listReviewLaunchCandidates,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
@@ -30,6 +29,7 @@ import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
   canUseDataCache,
+  getMediaBySlugCached,
   listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
@@ -218,7 +218,7 @@ type LoadedGlobalReviewPageWorkspace = {
   searchState: ReviewSearchState;
 } & LoadedReviewWorkspaceV2;
 
-type ResolvedMedia = Awaited<ReturnType<typeof getMediaBySlug>>;
+type ResolvedMedia = Awaited<ReturnType<typeof getMediaBySlugCached>>;
 
 type ReviewPageLoadOptions = {
   bypassCache?: boolean;
@@ -805,7 +805,7 @@ export async function getReviewPageData(
   const media =
     options.resolvedMedia ??
     (await measureWith(options.profiler, "getMediaBySlug", () =>
-      getMediaBySlug(database, mediaSlug)
+      getMediaBySlugCached(database, mediaSlug)
     ));
 
   if (!media) {
@@ -1092,7 +1092,7 @@ export async function getReviewQueueSnapshotForMedia(
   const now = new Date();
 
   const [media, dailyLimit] = await Promise.all([
-    getMediaBySlug(database, mediaSlug),
+    getMediaBySlugCached(database, mediaSlug),
     getReviewDailyLimit(database)
   ]);
 
@@ -1306,7 +1306,7 @@ export async function getReviewCardDetailData(
   const nowIso = new Date().toISOString();
 
   const [media, selectedRawCard] = await Promise.all([
-    getMediaBySlug(database, mediaSlug),
+    getMediaBySlugCached(database, mediaSlug),
     getCardById(database, cardId)
   ]);
 

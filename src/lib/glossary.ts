@@ -9,7 +9,6 @@ import {
   getGlossaryEntriesByCrossMediaGroupIds,
   getGlossaryEntriesByIds,
   getGlossaryEntryBySourceId,
-  getMediaBySlug,
   listEntryCardCounts,
   listEntryCardConnections,
   listEntryLessonConnections,
@@ -68,6 +67,7 @@ import {
   GLOSSARY_SUMMARY_TAG,
   buildGlossarySummaryTags,
   canUseDataCache,
+  getMediaBySlugCached,
   listMediaCached,
   runWithTaggedCache
 } from "@/lib/data-cache";
@@ -398,7 +398,7 @@ export async function getGlossaryPageData(
 ): Promise<GlossaryPageData | null> {
   markDataAsLive();
 
-  const media = await getMediaBySlug(database, mediaSlug);
+  const media = await getMediaBySlugCached(database, mediaSlug);
 
   if (!media) {
     return null;
@@ -845,7 +845,7 @@ async function getGlossaryDetailData(
 ): Promise<GlossaryDetailData | null> {
   markDataAsLive();
 
-  const media = await getMediaBySlug(database, mediaSlug);
+  const media = await getMediaBySlugCached(database, mediaSlug);
 
   if (!media) {
     return null;
@@ -1396,7 +1396,7 @@ function buildGlobalGlossaryAutocompleteSuggestions(
 }
 
 function buildGlossaryMediaSummary(
-  media: NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
+  media: NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>
 ): GlossaryMediaSummary {
   return {
     id: media.id,

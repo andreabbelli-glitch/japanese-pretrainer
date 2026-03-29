@@ -1,6 +1,7 @@
 import * as nextCache from "next/cache";
+import { cache } from "react";
 
-import { db, listMedia, type DatabaseClient } from "@/db";
+import { db, getMediaBySlug, listMedia, type DatabaseClient } from "@/db";
 
 export const MEDIA_LIST_TAG = "media-list";
 export const SETTINGS_TAG = "settings";
@@ -45,6 +46,10 @@ export async function runWithTaggedCache<T>(input: {
     tags: dedupeTags(input.tags)
   })();
 }
+
+export const getMediaBySlugCached = cache(
+  (database: DatabaseClient, slug: string) => getMediaBySlug(database, slug)
+);
 
 export async function listMediaCached(database: DatabaseClient = db) {
   return runWithTaggedCache({

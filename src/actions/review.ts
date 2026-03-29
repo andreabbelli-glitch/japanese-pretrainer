@@ -7,6 +7,9 @@ import { redirect } from "next/navigation";
 import { readRequiredString } from "./form-data.ts";
 import { db, getMediaBySlug } from "@/db";
 import {
+  revalidateReviewSummaryCache
+} from "@/lib/data-cache";
+import {
   applyReviewGrade,
   resetReviewCardProgress,
   setLinkedEntryStatusByCard,
@@ -532,6 +535,7 @@ function revalidateActiveReviewPaths(input: {
   mediaSlug: string | undefined;
   cardId?: string;
 }) {
+  revalidateReviewSummaryCache(input.mediaId);
   revalidateDeferredShellPaths(input.mediaSlug);
   revalidatePath(reviewHref());
 
