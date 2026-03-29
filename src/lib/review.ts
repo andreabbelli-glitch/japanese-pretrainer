@@ -80,6 +80,11 @@ import {
 } from "./pronunciation";
 import { pickBestBy } from "@/lib/collections";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
+import {
+  buildReviewSearchStateCacheKeyParts,
+  normalizeReviewSearchState,
+  type ReviewSearchState
+} from "./review-search-state";
 import type {
   GlobalReviewFirstCandidateLoadResult,
   GlobalReviewPageLoadResult,
@@ -101,25 +106,6 @@ import { type ReviewState } from "./review-scheduler";
 // Shared empty lookup used as a no-op placeholder when entryLookup is unused.
 const EMPTY_ENTRY_LOOKUP = new Map<string, ReviewSubjectEntryMeta>();
 
-type ReviewSearchState = {
-  answeredCount: number;
-  extraNewCount: number;
-  noticeCode: string | null;
-  segmentId: string | null;
-  selectedCardId: string | null;
-  showAnswer: boolean;
-};
-
-function buildReviewSearchStateCacheKeyParts(input: ReviewSearchState) {
-  return [
-    `answered:${input.answeredCount}`,
-    `extra-new:${input.extraNewCount}`,
-    `notice:${input.noticeCode ?? ""}`,
-    `segment:${input.segmentId ?? ""}`,
-    `selected:${input.selectedCardId ?? ""}`,
-    `show:${input.showAnswer ? "1" : "0"}`
-  ];
-}
 
 type ReviewEntryLookupItem = {
   href: ReturnType<typeof mediaGlossaryEntryHref>;
@@ -2807,30 +2793,6 @@ function compareEntryLinks(
   return left.entryId.localeCompare(right.entryId);
 }
 
-function normalizeReviewSearchState(
-  searchParams: Record<string, string | string[] | undefined>
-): ReviewSearchState {
-  const answeredCount = Number.parseInt(
-    readSearchParam(searchParams, "answered"),
-    10
-  );
-  const extraNewCount = Number.parseInt(
-    readSearchParam(searchParams, "extraNew"),
-    10
-  );
-
-  return {
-    answeredCount:
-      Number.isFinite(answeredCount) && answeredCount > 0 ? answeredCount : 0,
-    extraNewCount:
-      Number.isFinite(extraNewCount) && extraNewCount > 0 ? extraNewCount : 0,
-    noticeCode: readSearchParam(searchParams, "notice") || null,
-    segmentId: readSearchParam(searchParams, "segment") || null,
-    selectedCardId: readSearchParam(searchParams, "card") || null,
-    showAnswer: readSearchParam(searchParams, "show") === "answer"
-  };
-}
-
 function resolveReviewNotice(value: string | null) {
   const notices: Record<string, string> = {
     known: "Le voci principali della card sono state segnate come già note.",
@@ -2877,16 +2839,4 @@ function compareReviewCardsByOrder<
   }
 
   return left.createdAt.localeCompare(right.createdAt);
-}
-function readSearchParam(
-  searchParams: Record<string, string | string[] | undefined>,
-  key: string
-) {
-  const value = searchParams[key];
-
-  if (Array.isArray(value)) {
-    return value[0]?.trim() ?? "";
-  }
-
-  return value?.trim() ?? "";
 }
