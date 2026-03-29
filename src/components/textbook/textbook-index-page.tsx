@@ -79,28 +79,53 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
             const isCollapsed = !!collapsed[group.id];
 
             return (
-              <section key={group.id} className="textbook-group">
+              <section
+                key={group.id}
+                className={`textbook-group${isCollapsed ? "" : " textbook-group--open"}`}
+              >
                 <button
                   type="button"
-                  className="textbook-group__heading textbook-group__toggle"
+                  className={`textbook-group__toggle${isCollapsed ? " textbook-group__toggle--collapsed" : ""}`}
                   onClick={() => toggleGroup(group.id)}
                   aria-expanded={!isCollapsed}
                 >
-                  <div>
-                    <p className="eyebrow">{group.title}</p>
-                    <h3 className="textbook-group__title">
-                      {group.completedLessons}/{group.totalLessons} lette
-                    </h3>
+                  <div className="textbook-group__toggle-row">
+                    <div className="textbook-group__toggle-text">
+                      <p className="eyebrow">{group.title}</p>
+                      <h3 className="textbook-group__title">
+                        {group.completedLessons}/{group.totalLessons} lette
+                      </h3>
+                    </div>
+                    <svg
+                      className="textbook-group__chevron"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M6 8l4 4 4-4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </div>
+                  {group.totalLessons > 0 && (
+                    <div className="textbook-group__progress-track">
+                      <div
+                        className="textbook-group__progress-fill"
+                        style={{
+                          width: `${(group.completedLessons / group.totalLessons) * 100}%`,
+                        }}
+                      />
+                    </div>
+                  )}
                   {group.note && !isCollapsed ? (
                     <p className="textbook-group__note">{group.note}</p>
                   ) : null}
-                  <span
-                    className="textbook-group__chevron"
-                    aria-hidden="true"
-                  >
-                    {isCollapsed ? "▸" : "▾"}
-                  </span>
                 </button>
 
                 {!isCollapsed && (

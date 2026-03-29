@@ -981,6 +981,14 @@ rt {
 
 .textbook-group {
   gap: var(--space-5);
+  border-radius: var(--radius-xl);
+}
+
+.textbook-group--open {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-4);
+  gap: var(--space-4);
 }
 
 .textbook-group__heading {
@@ -988,25 +996,88 @@ rt {
   gap: var(--space-3);
 }
 
+/* ── Collapsible group toggle ── */
+
 .textbook-group__toggle {
   all: unset;
+  box-sizing: border-box;
   cursor: pointer;
-  position: relative;
-  padding-inline-end: var(--space-5);
-  border-radius: var(--radius-2);
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-panel);
+  border: 1px solid var(--color-border-subtle);
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
-.textbook-group__toggle:hover {
-  background: var(--color-surface-hover, rgba(0, 0, 0, 0.03));
+.textbook-group__toggle--collapsed {
+  background: transparent;
+  border-color: var(--color-border-subtle);
+}
+
+.textbook-group__toggle--collapsed:hover {
+  background: var(--color-panel);
+}
+
+/* When open, toggle blends into the group container */
+.textbook-group--open > .textbook-group__toggle {
+  background: transparent;
+  border-color: transparent;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  border-radius: 0;
+}
+
+.textbook-group--open > .textbook-group__toggle:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.textbook-group__toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.textbook-group__toggle-text {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.textbook-group__toggle-text .eyebrow {
+  margin: 0;
+}
+
+.textbook-group__toggle-text .textbook-group__title {
+  font-size: var(--text-body);
 }
 
 .textbook-group__chevron {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: var(--text-base);
-  color: var(--color-ink-muted);
-  line-height: 1;
+  flex-shrink: 0;
+  color: var(--color-ink-soft);
+  transition: transform 0.2s ease;
+}
+
+.textbook-group__toggle--collapsed .textbook-group__chevron {
+  transform: rotate(-90deg);
+}
+
+/* Progress bar */
+
+.textbook-group__progress-track {
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border-subtle);
+  overflow: hidden;
+}
+
+.textbook-group__progress-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  transition: width 0.3s ease;
 }
 
 .textbook-lesson-grid {
