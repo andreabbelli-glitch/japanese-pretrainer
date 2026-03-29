@@ -180,6 +180,7 @@ type ReviewQueueSubjectSnapshot = {
   subjectModels: ReviewSubjectModel[];
   suspendedCount: number;
   suspendedModels: ReviewSubjectModel[];
+  tomorrowCount: number;
   upcomingCount: number;
   upcomingModels: ReviewSubjectModel[];
 };
@@ -343,6 +344,7 @@ async function buildReviewPageDataFromWorkspace(input: {
       queueLabel: queueSnapshot.introLabel,
       suspendedCards: [],
       suspendedCount: queueSnapshot.suspendedCount,
+      tomorrowCount: queueSnapshot.tomorrowCount,
       upcomingCards: [],
       upcomingCount: queueSnapshot.upcomingCount
     },
@@ -568,6 +570,7 @@ async function buildReviewFirstCandidateDataFromWorkspace(input: {
       queueCount: queueSnapshot.queueCount,
       queueLabel: queueSnapshot.introLabel,
       suspendedCount: queueSnapshot.suspendedCount,
+      tomorrowCount: queueSnapshot.tomorrowCount,
       upcomingCount: queueSnapshot.upcomingCount
     },
     scope: input.scope,
@@ -1136,6 +1139,7 @@ export async function getReviewQueueSnapshotForMedia(
     queueLabel: snapshot.introLabel,
     queueCount: snapshot.queueCount,
     suspendedCount: snapshot.suspendedCount,
+    tomorrowCount: snapshot.tomorrowCount,
     upcomingCount: snapshot.upcomingCount
   };
 }
@@ -1852,6 +1856,10 @@ export function buildReviewOverviewSnapshot(input: {
     queueCount: dueCount + newQueuedCount,
     queueLabel,
     suspendedCount: classifiedModels.suspendedModels.length,
+    tomorrowCount: countUpcomingDueTomorrow(
+      classifiedModels.upcomingModels,
+      input.nowIso
+    ),
     totalCards: classifiedModels.visibleModelCount,
     upcomingCount
   };
@@ -2089,6 +2097,10 @@ function buildReviewQueueSubjectSnapshot(input: {
     subjectModels,
     suspendedCount: classifiedModels.suspendedModels.length,
     suspendedModels: classifiedModels.suspendedModels,
+    tomorrowCount: countUpcomingDueTomorrow(
+      classifiedModels.upcomingModels,
+      input.nowIso
+    ),
     upcomingCount: classifiedModels.upcomingModels.length,
     upcomingModels: classifiedModels.upcomingModels
   };
@@ -2234,6 +2246,7 @@ function buildReviewQueueSnapshot(input: {
       mapReviewQueueSubjectModel(model, mapInput)
     ),
     suspendedCount: snapshot.suspendedCount,
+    tomorrowCount: snapshot.tomorrowCount,
     upcomingCards: snapshot.upcomingModels.map((model) =>
       mapReviewQueueSubjectModel(model, mapInput)
     ),
@@ -2634,6 +2647,30 @@ function deriveKanaReading(value: string) {
   }
 
   return undefined;
+}
+
+function countUpcomingDueTomorrow(
+  upcomingModels: ReviewSubjectModel[],
+  nowIso: string
+): number {
+  const now = new Date(nowIso);
+  const tomorrowStart = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1
+  );
+  const tomorrowEnd = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 2
+  );
+  const tomorrowStartIso = tomorrowStart.toISOString();
+  const tomorrowEndIso = tomorrowEnd.toISOString();
+
+  return upcomingModels.filter((model) => {
+    const dueAt = model.resolvedState.dueAt;
+    return dueAt != null && dueAt >= tomorrowStartIso && dueAt < tomorrowEndIso;
+  }).length;
 }
 
 function resolveCardBucket(input: {

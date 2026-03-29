@@ -86,6 +86,7 @@ export type ReviewQueueSnapshot = {
   queueLabel: string;
   queueCount: number;
   suspendedCount: number;
+  tomorrowCount: number;
   upcomingCount: number;
 };
 
@@ -101,6 +102,7 @@ export type ReviewOverviewSnapshot = {
   queueCount: number;
   queueLabel: string;
   suspendedCount: number;
+  tomorrowCount: number;
   totalCards: number;
   upcomingCount: number;
 };
@@ -177,6 +179,7 @@ export type ReviewFirstCandidateQueueSnapshot = Pick<
   | "newQueuedCount"
   | "queueCount"
   | "suspendedCount"
+  | "tomorrowCount"
   | "upcomingCount"
 > & {
   introLabel: string;

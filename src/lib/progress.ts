@@ -40,6 +40,7 @@ export type ProgressPageData = {
     queueLabel: string;
     queuePercent: number | null;
     suspendedCount: number;
+    tomorrowCount: number;
     totalCards: number;
     upcomingCount: number;
   };
@@ -87,6 +88,7 @@ export type ProgressPageData = {
     queueLabel: string;
     queuePercent: number | null;
     suspendedCount: number;
+    tomorrowCount: number;
     totalCards: number;
     upcomingCount: number;
   };
@@ -279,6 +281,7 @@ function mapReviewSnapshot(
       reviewOverview?.totalCards ?? 0
     ),
     suspendedCount: reviewOverview?.suspendedCount ?? 0,
+    tomorrowCount: reviewOverview?.tomorrowCount ?? 0,
     totalCards: reviewOverview?.totalCards ?? 0,
     upcomingCount: reviewOverview?.upcomingCount ?? 0
   };

@@ -50,8 +50,14 @@ export function ReviewPageSidebar({
           <strong>{viewData.queue.suspendedCount}</strong>
         </div>
         <div className="summary-row">
+          <span>Da ripassare domani</span>
+          <strong>{viewData.queue.tomorrowCount}</strong>
+        </div>
+        <div className="summary-row">
           <span>Da ripassare nei prossimi giorni</span>
-          <strong>{viewData.queue.upcomingCount}</strong>
+          <strong>
+            {viewData.queue.upcomingCount - viewData.queue.tomorrowCount}
+          </strong>
         </div>
       </div>
 
