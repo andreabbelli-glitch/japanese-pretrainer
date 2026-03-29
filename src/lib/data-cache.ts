@@ -48,7 +48,13 @@ export async function runWithTaggedCache<T>(input: {
 }
 
 export const getMediaBySlugCached = cache(
-  (database: DatabaseClient, slug: string) => getMediaBySlug(database, slug)
+  (database: DatabaseClient, slug: string) =>
+    runWithTaggedCache({
+      enabled: canUseDataCache(database),
+      keyParts: ["media", "by-slug", slug],
+      loader: () => getMediaBySlug(database, slug),
+      tags: [MEDIA_LIST_TAG]
+    })
 );
 
 export async function listMediaCached(database: DatabaseClient = db) {

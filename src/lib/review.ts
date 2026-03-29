@@ -813,16 +813,16 @@ export async function getReviewPageData(
   }
 
   const searchState = normalizeReviewSearchState(searchParams);
-  const settings = await measureWith(
-    options.profiler,
-    "getStudySettings",
-    () => getStudySettings(database)
-  );
-  const newIntroducedTodayCount = await measureWith(
-    options.profiler,
-    "countReviewSubjectsIntroducedOnDayByMediaId",
-    () => countReviewSubjectsIntroducedOnDayByMediaId(database, media.id, now)
-  );
+  const [settings, newIntroducedTodayCount] = await Promise.all([
+    measureWith(options.profiler, "getStudySettings", () =>
+      getStudySettings(database)
+    ),
+    measureWith(
+      options.profiler,
+      "countReviewSubjectsIntroducedOnDayByMediaId",
+      () => countReviewSubjectsIntroducedOnDayByMediaId(database, media.id, now)
+    )
+  ]);
   const workspace = await measureWith(
     options.profiler,
     "loadReviewWorkspaceV2",

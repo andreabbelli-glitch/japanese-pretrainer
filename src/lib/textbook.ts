@@ -15,9 +15,7 @@ import {
   buildReviewSummaryTags,
   canUseDataCache,
   getMediaBySlugCached,
-  GLOSSARY_SUMMARY_TAG,
   MEDIA_LIST_TAG,
-  REVIEW_SUMMARY_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
 } from "@/lib/data-cache";
@@ -222,16 +220,20 @@ export async function getTextbookLessonTooltipEntries(
   lessonSlug: string,
   database: DatabaseClient = db
 ): Promise<TextbookTooltipEntry[] | null> {
+  const media = await getMediaBySlugCached(database, mediaSlug);
+
+  if (!media) {
+    return null;
+  }
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["textbook", "tooltips", mediaSlug, lessonSlug],
     loader: () =>
       loadTextbookLessonTooltipEntries(mediaSlug, lessonSlug, database),
     tags: [
-      GLOSSARY_SUMMARY_TAG,
-      REVIEW_SUMMARY_TAG,
-      ...buildGlossarySummaryTags([mediaSlug]),
-      ...buildReviewSummaryTags([mediaSlug])
+      ...buildGlossarySummaryTags([media.id]),
+      ...buildReviewSummaryTags([media.id])
     ]
   });
 }
