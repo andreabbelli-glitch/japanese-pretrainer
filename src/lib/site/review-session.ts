@@ -1,6 +1,6 @@
 import type { Route } from "next";
 
-import { buildHrefWithSearch, mediaReviewHref, reviewHref } from "./hrefs";
+import { buildHrefWithSearch, mediaReviewHref, reviewHref } from "./hrefs.ts";
 
 export function buildReviewSessionHref(input: {
   answeredCount?: number;
