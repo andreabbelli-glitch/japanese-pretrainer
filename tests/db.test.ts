@@ -9,6 +9,7 @@ import {
   card,
   cardEntryLink,
   closeDatabaseClient,
+  crossMediaGroup,
   createDatabaseClient,
   developmentFixture,
   getLessonBySlug,
@@ -16,14 +17,18 @@ import {
   listCardsByMediaId,
   listDueCardsByMediaId,
   listGlossaryEntriesByKind,
+  listGlossaryPreviewEntries,
+  listGlossaryProgressSummaries,
   listGrammarEntryReviewSummaries,
   listLessonsByMediaId,
   listMedia,
   listTermEntryReviewSummaries,
   lessonProgress,
+  media,
   reviewSubjectState,
   runMigrations,
   seedDevelopmentDatabase,
+  term,
   type DatabaseClient
 } from "@/db";
 import {
@@ -160,6 +165,167 @@ describe("database layer", () => {
 
     expect(dueCards).toHaveLength(1);
     expect(dueCards[0]?.id).toBe(developmentFixture.primaryCardId);
+  });
+
+  it("keeps glossary progress summaries and previews aligned for direct and grouped entry states", async () => {
+    const groupedMediaId = "media_fixture_grouped";
+    const groupedMediaSlug = "fixture-grouped";
+    const groupedCrossMediaGroupId = "cross_media_group_fixture_shared_term";
+    const groupedTermId = "term_media_fixture_grouped_shared";
+
+    await database.insert(media).values({
+      id: groupedMediaId,
+      slug: groupedMediaSlug,
+      title: "Fixture Grouped",
+      mediaType: "game",
+      segmentKind: "chapter",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      description: "Fixture tecnica per verificare entry raggruppate.",
+      status: "active",
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(crossMediaGroup).values({
+      id: groupedCrossMediaGroupId,
+      entryType: "term",
+      groupKey: "fixture-shared-term",
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(term).values({
+      id: groupedTermId,
+      sourceId: "term_fixture_shared_grouped",
+      crossMediaGroupId: groupedCrossMediaGroupId,
+      mediaId: groupedMediaId,
+      segmentId: null,
+      lemma: "共有語",
+      reading: "きょうゆうご",
+      romaji: "kyouyugo",
+      pos: "noun",
+      meaningIt: "termine condiviso",
+      meaningLiteralIt: null,
+      notesIt: null,
+      levelHint: null,
+      audioSrc: null,
+      audioSource: null,
+      audioSpeaker: null,
+      audioLicense: null,
+      audioAttribution: null,
+      audioPageUrl: null,
+      pitchAccent: null,
+      pitchAccentSource: null,
+      pitchAccentPageUrl: null,
+      searchLemmaNorm: "共有語",
+      searchReadingNorm: "きょうゆうご",
+      searchRomajiNorm: "kyouyugo",
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+    await database.insert(reviewSubjectState).values({
+      subjectKey: `group:term:${groupedCrossMediaGroupId}`,
+      subjectType: "group",
+      entryType: "term",
+      crossMediaGroupId: groupedCrossMediaGroupId,
+      entryId: null,
+      cardId: null,
+      state: "review",
+      stability: 3,
+      difficulty: 2.2,
+      dueAt: "2026-03-09T10:00:00.000Z",
+      lastReviewedAt: "2026-03-09T10:00:00.000Z",
+      lastInteractionAt: "2026-03-09T10:00:00.000Z",
+      scheduledDays: 2,
+      learningSteps: 0,
+      lapses: 0,
+      reps: 2,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      suspended: false,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+
+    const [summaries, previews] = await Promise.all([
+      listGlossaryProgressSummaries(database, [
+        developmentFixture.mediaId,
+        groupedMediaId
+      ]),
+      listGlossaryPreviewEntries(database, [
+        developmentFixture.mediaId,
+        groupedMediaId
+      ])
+    ]);
+
+    expect(
+      [...summaries].sort((left, right) => left.mediaId.localeCompare(right.mediaId))
+    ).toEqual([
+      {
+        available: 0,
+        entriesCovered: 1,
+        entriesTotal: 1,
+        known: 0,
+        learning: 0,
+        mediaId: groupedMediaId,
+        new: 0,
+        review: 1
+      },
+      {
+        available: 0,
+        entriesCovered: 2,
+        entriesTotal: 2,
+        known: 1,
+        learning: 1,
+        mediaId: developmentFixture.mediaId,
+        new: 0,
+        review: 0
+      }
+    ]);
+    expect(
+      [...previews].sort((left, right) => {
+        const mediaOrder = left.mediaId.localeCompare(right.mediaId);
+
+        if (mediaOrder !== 0) {
+          return mediaOrder;
+        }
+
+        return left.sourceId.localeCompare(right.sourceId, "it");
+      })
+    ).toEqual([
+      {
+        kind: "term",
+        label: "共有語",
+        meaningIt: "termine condiviso",
+        mediaId: groupedMediaId,
+        mediaSlug: groupedMediaSlug,
+        reading: "きょうゆうご",
+        segmentTitle: null,
+        sourceId: "term_fixture_shared_grouped",
+        state: "review"
+      },
+      {
+        kind: "grammar",
+        label: "〜ている",
+        meaningIt: "azione in corso o stato risultante",
+        mediaId: developmentFixture.mediaId,
+        mediaSlug: developmentFixture.mediaSlug,
+        reading: null,
+        segmentTitle: "Starter Core",
+        sourceId: developmentFixture.grammarId,
+        state: "known"
+      },
+      {
+        kind: "term",
+        label: "行く",
+        meaningIt: "andare",
+        mediaId: developmentFixture.mediaId,
+        mediaSlug: developmentFixture.mediaSlug,
+        reading: "いく",
+        segmentTitle: "Starter Core",
+        sourceId: developmentFixture.termId,
+        state: "learning"
+      }
+    ]);
   });
 
   it("keeps canonical concept cards aligned between TS and SQL", async () => {

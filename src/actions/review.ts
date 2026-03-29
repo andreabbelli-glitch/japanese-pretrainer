@@ -7,10 +7,6 @@ import { redirect } from "next/navigation";
 import { readRequiredString } from "./form-data.ts";
 import { db, getMediaBySlug } from "@/db";
 import {
-  revalidateGlossarySummaryCache,
-  revalidateReviewSummaryCache
-} from "@/lib/data-cache";
-import {
   applyReviewGrade,
   resetReviewCardProgress,
   setLinkedEntryStatusByCard,
@@ -22,7 +18,12 @@ import {
   hydrateReviewCard
 } from "@/lib/review";
 import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
-import { mediaReviewCardHref, mediaStudyHref, reviewHref } from "@/lib/site";
+import {
+  mediaHref,
+  mediaReviewCardHref,
+  mediaStudyHref,
+  reviewHref
+} from "@/lib/site";
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
 type ReviewSessionRedirectMode = Exclude<ReviewRedirectMode, "stay_detail">;
@@ -215,8 +216,6 @@ export async function gradeReviewCardSessionAction(
     rating: input.rating
   });
 
-  revalidateActiveReviewCaches(media?.id);
-
   if (
     (input.gradedCardBucket === "due" || input.gradedCardBucket === "new") &&
     input.sessionMedia &&
@@ -368,8 +367,6 @@ export async function markLinkedEntryKnownSessionAction(
     status: "known_manual"
   });
 
-  revalidateActiveReviewCaches(media?.id);
-
   return requireReviewPageDataForScope(
     input,
     buildRedirectSearchParams({
@@ -400,8 +397,6 @@ export async function setLinkedEntryLearningSessionAction(
     status: "learning"
   });
 
-  revalidateActiveReviewCaches(media?.id);
-
   return requireReviewPageDataForScope(
     input,
     buildRedirectSearchParams({
@@ -430,8 +425,6 @@ export async function resetReviewCardSessionAction(
     cardId: input.cardId,
     expectedMediaId: media?.id
   });
-
-  revalidateActiveReviewCaches(media?.id);
 
   return requireReviewPageDataForScope(
     input,
@@ -463,8 +456,6 @@ export async function setReviewCardSuspendedSessionAction(
     expectedMediaId: media?.id,
     suspended: input.suspended
   });
-
-  revalidateActiveReviewCaches(media?.id);
 
   return requireReviewPageDataForScope(
     input,
@@ -536,18 +527,12 @@ function buildReviewRedirectUrl(input: {
   ) as Route;
 }
 
-function revalidateActiveReviewCaches(mediaId?: string) {
-  revalidateGlossarySummaryCache(mediaId);
-  revalidateReviewSummaryCache(mediaId);
-}
-
 function revalidateActiveReviewPaths(input: {
   mediaId?: string;
   mediaSlug: string | undefined;
   cardId?: string;
 }) {
-  revalidateGlossarySummaryCache(input.mediaId);
-  revalidateReviewSummaryCache(input.mediaId);
+  revalidateDeferredShellPaths(input.mediaSlug);
   revalidatePath(reviewHref());
 
   if (!input.mediaSlug) {
@@ -574,6 +559,17 @@ function revalidateEntryStatusPaths(input: {
   }
 
   revalidatePath(mediaStudyHref(input.mediaSlug, "glossary"));
+}
+
+function revalidateDeferredShellPaths(mediaSlug?: string) {
+  revalidatePath("/");
+  revalidatePath("/media");
+
+  if (!mediaSlug) {
+    return;
+  }
+
+  revalidatePath(mediaHref(mediaSlug));
 }
 
 

@@ -1548,50 +1548,76 @@ export async function listGlossaryProgressSummaries(
       FROM grammar_pattern gp
       WHERE gp.media_id IN (${mediaIdList})
     ),
-    entry_signals AS (
+    grouped_entry_state_matches AS (
       SELECT
         ae.entry_id,
         ae.entry_type,
         ae.media_id,
         ae.cross_media_group_id,
+        COALESCE(rss.manual_override, 0) AS manual_override,
+        rss.state AS state
+      FROM all_entries ae
+      LEFT JOIN review_subject_state rss
+        ON rss.entry_type = ae.entry_type
+        AND rss.cross_media_group_id = ae.cross_media_group_id
+      WHERE ae.cross_media_group_id IS NOT NULL
+    ),
+    direct_entry_state_matches AS (
+      SELECT
+        ae.entry_id,
+        ae.entry_type,
+        ae.media_id,
+        ae.cross_media_group_id,
+        COALESCE(rss.manual_override, 0) AS manual_override,
+        rss.state AS state
+      FROM all_entries ae
+      LEFT JOIN review_subject_state rss
+        ON rss.entry_type = ae.entry_type
+        AND rss.cross_media_group_id IS NULL
+        AND rss.entry_id = ae.entry_id
+      WHERE ae.cross_media_group_id IS NULL
+    ),
+    entry_state_matches AS (
+      SELECT * FROM grouped_entry_state_matches
+      UNION ALL
+      SELECT * FROM direct_entry_state_matches
+    ),
+    entry_signals AS (
+      SELECT
+        esm.entry_id,
+        esm.entry_type,
+        esm.media_id,
+        esm.cross_media_group_id,
         MAX(
           CASE
-            WHEN rss.state = 'known_manual' OR COALESCE(rss.manual_override, 0) = 1 THEN 1
+            WHEN esm.state = 'known_manual' OR esm.manual_override = 1 THEN 1
             ELSE 0
           END
         ) AS is_known,
         MAX(
           CASE
-            WHEN rss.state = 'learning' THEN 1
+            WHEN esm.state = 'learning' THEN 1
             ELSE 0
           END
         ) AS is_learning,
         MAX(
           CASE
-            WHEN rss.state IN ('review', 'relearning') THEN 1
+            WHEN esm.state IN ('review', 'relearning') THEN 1
             ELSE 0
           END
         ) AS is_review,
         MAX(
           CASE
-            WHEN rss.state = 'new' THEN 1
+            WHEN esm.state = 'new' THEN 1
             ELSE 0
           END
         ) AS is_new
-      FROM all_entries ae
-      LEFT JOIN review_subject_state rss
-        ON rss.entry_type = ae.entry_type
-        AND (
-          (
-            ae.cross_media_group_id IS NOT NULL
-            AND rss.cross_media_group_id = ae.cross_media_group_id
-          )
-          OR (
-            ae.cross_media_group_id IS NULL
-            AND rss.entry_id = ae.entry_id
-          )
-        )
-      GROUP BY ae.entry_id, ae.entry_type, ae.media_id, ae.cross_media_group_id
+      FROM entry_state_matches esm
+      GROUP BY
+        esm.entry_id,
+        esm.entry_type,
+        esm.media_id,
+        esm.cross_media_group_id
     ),
     entry_states AS (
       SELECT
@@ -1693,7 +1719,7 @@ export async function listGlossaryPreviewEntries(
       LEFT JOIN segment s ON s.id = gp.segment_id
       WHERE gp.media_id IN (${mediaIdList})
     ),
-    entry_signals AS (
+    grouped_entry_state_matches AS (
       SELECT
         ae.entry_id,
         ae.entry_type,
@@ -1703,44 +1729,82 @@ export async function listGlossaryPreviewEntries(
         ae.meaning_it,
         ae.reading,
         ae.segment_title,
+        COALESCE(rss.manual_override, 0) AS manual_override,
+        rss.state AS state
+      FROM all_entries ae
+      LEFT JOIN review_subject_state rss
+        ON rss.entry_type = ae.entry_type
+        AND rss.cross_media_group_id = ae.cross_media_group_id
+      WHERE ae.cross_media_group_id IS NOT NULL
+    ),
+    direct_entry_state_matches AS (
+      SELECT
+        ae.entry_id,
+        ae.entry_type,
+        ae.media_id,
+        ae.source_id,
+        ae.label,
+        ae.meaning_it,
+        ae.reading,
+        ae.segment_title,
+        COALESCE(rss.manual_override, 0) AS manual_override,
+        rss.state AS state
+      FROM all_entries ae
+      LEFT JOIN review_subject_state rss
+        ON rss.entry_type = ae.entry_type
+        AND rss.cross_media_group_id IS NULL
+        AND rss.entry_id = ae.entry_id
+      WHERE ae.cross_media_group_id IS NULL
+    ),
+    entry_state_matches AS (
+      SELECT * FROM grouped_entry_state_matches
+      UNION ALL
+      SELECT * FROM direct_entry_state_matches
+    ),
+    entry_signals AS (
+      SELECT
+        esm.entry_id,
+        esm.entry_type,
+        esm.media_id,
+        esm.source_id,
+        esm.label,
+        esm.meaning_it,
+        esm.reading,
+        esm.segment_title,
         MAX(
           CASE
-            WHEN rss.state = 'known_manual' OR COALESCE(rss.manual_override, 0) = 1 THEN 1
+            WHEN esm.state = 'known_manual' OR esm.manual_override = 1 THEN 1
             ELSE 0
           END
         ) AS is_known,
         MAX(
           CASE
-            WHEN rss.state = 'learning' THEN 1
+            WHEN esm.state = 'learning' THEN 1
             ELSE 0
           END
         ) AS is_learning,
         MAX(
           CASE
-            WHEN rss.state IN ('review', 'relearning') THEN 1
+            WHEN esm.state IN ('review', 'relearning') THEN 1
             ELSE 0
           END
         ) AS is_review,
         MAX(
           CASE
-            WHEN rss.state = 'new' THEN 1
+            WHEN esm.state = 'new' THEN 1
             ELSE 0
           END
         ) AS is_new
-      FROM all_entries ae
-      LEFT JOIN review_subject_state rss
-        ON rss.entry_type = ae.entry_type
-        AND (
-          (
-            ae.cross_media_group_id IS NOT NULL
-            AND rss.cross_media_group_id = ae.cross_media_group_id
-          )
-          OR (
-            ae.cross_media_group_id IS NULL
-            AND rss.entry_id = ae.entry_id
-          )
-        )
-      GROUP BY ae.entry_id, ae.entry_type, ae.media_id, ae.source_id, ae.label, ae.meaning_it, ae.reading, ae.segment_title
+      FROM entry_state_matches esm
+      GROUP BY
+        esm.entry_id,
+        esm.entry_type,
+        esm.media_id,
+        esm.source_id,
+        esm.label,
+        esm.meaning_it,
+        esm.reading,
+        esm.segment_title
     ),
     entry_states AS (
       SELECT

@@ -21,6 +21,10 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import {
+  countGlobalGlossaryBrowseGroups,
+  listGlobalGlossaryBrowseGroupRefs
+} from "@/db/queries/glossary";
 import { buildScopedEntryId } from "@/lib/entry-id";
 import {
   card,
@@ -588,6 +592,57 @@ describe("glossary data", () => {
     expect(learningData.results[0]?.studyState.key).toBe("learning");
     expect(learningData.results[0]?.matchBadges).toContain("romaji");
     expect(grammarData.results).toHaveLength(0);
+  });
+
+  it("keeps global browse counts and representative rows stable for grouped term browse entries", async () => {
+    const contentRoot = path.join(tempDir, "mixed-browse-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const [filteredTotal, pageRefs, pageData] = await Promise.all([
+      countGlobalGlossaryBrowseGroups(database, {
+        cards: "all",
+        entryType: "term"
+      }),
+      listGlobalGlossaryBrowseGroupRefs(database, {
+        cards: "all",
+        entryType: "term",
+        page: 1,
+        pageSize: 10,
+        sort: "alphabetical"
+      }),
+      getGlobalGlossaryPageData(
+        {
+          sort: "alphabetical",
+          type: "term"
+        },
+        database
+      )
+    ]);
+
+    expect(filteredTotal).toBe(2);
+    expect(pageRefs).toHaveLength(2);
+    expect(pageRefs.map((ref) => ref.resultKey)).toEqual([
+      `term:group:${crossMediaFixture.termGroup}`,
+      `term:group:${crossMediaFixture.mixedCardsGroup}`
+    ]);
+    expect(pageRefs.every((ref) => ref.crossMediaGroupId !== null)).toBe(true);
+    expect(pageData.results.map((entry) => entry.label)).toEqual([
+      "コスト",
+      "余白"
+    ]);
+    expect(pageData.results.map((entry) => entry.mediaCount)).toEqual([2, 2]);
+    expect(pageData.results.map((entry) => entry.bestLocalHref)).toEqual([
+      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`,
+      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.mixedCardTermSourceId}`
+    ]);
   });
 
   it("keeps global grammar romaji queries working after SQL candidate prefiltering", async () => {

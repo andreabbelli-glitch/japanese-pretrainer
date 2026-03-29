@@ -2,11 +2,14 @@ import {
   countReviewSubjectsIntroducedOnDayByMediaIds,
   db,
   getMediaBySlug,
+  listGlossaryPreviewEntries,
+  listGlossaryProgressSummaries,
   listLessonsByMediaId,
   listLessonsByMediaIds,
   type DatabaseClient,
   type MediaListItem
 } from "@/db";
+import { pickBestBy } from "@/lib/collections";
 import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
@@ -25,13 +28,12 @@ import {
   formatSegmentKindLabel,
   formatStatusLabel
 } from "@/lib/study-format";
+import { mediaGlossaryEntryHref } from "@/lib/site";
 import { loadReviewLaunchCandidatesCached } from "@/lib/review";
 import { getReviewDailyLimit } from "@/lib/settings";
 import {
   buildLessonMetrics,
   buildEmptyGlossaryProgressSnapshot,
-  loadGlossaryProgressSnapshots,
-  loadGlossaryProgressSnapshot,
   type GlossaryProgressSnapshot,
   type LessonResumeTarget,
   type SegmentStudyPreview,
@@ -69,6 +71,14 @@ export type MediaShellSnapshot = {
   glossary: GlossaryProgressSnapshot;
 };
 
+const STUDY_STATE_LABELS: Record<string, string> = {
+  known: "Già nota",
+  learning: "In studio",
+  review: "In review",
+  new: "Nuova",
+  available: "Disponibile"
+};
+
 export async function getMediaLibraryData(database: DatabaseClient = db) {
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
@@ -76,7 +86,9 @@ export async function getMediaLibraryData(database: DatabaseClient = db) {
     loader: async () => {
       const rows = await listMediaCached(database);
 
-      return loadMediaShellSnapshots(database, rows);
+      return loadMediaShellSnapshots(database, rows, {
+        includePreviewEntries: false
+      });
     },
     tags: [
       MEDIA_LIST_TAG,
@@ -116,7 +128,10 @@ export async function getMediaDetailData(
 
 export async function loadMediaShellSnapshots(
   database: DatabaseClient,
-  media: MediaListItem[]
+  media: MediaListItem[],
+  options: {
+    includePreviewEntries?: boolean;
+  } = {}
 ) {
   if (media.length === 0) {
     return [];
@@ -132,7 +147,7 @@ export async function loadMediaShellSnapshots(
     newIntroducedByMedia
   ] = await Promise.all([
     listLessonsByMediaIds(database, mediaIds),
-    loadGlossaryProgressSnapshotsCached(
+    loadGlossaryProgressSummarySnapshotsCached(
       database,
       media.map((item) => ({
         id: item.id,
@@ -152,7 +167,7 @@ export async function loadMediaShellSnapshots(
     newIntroducedByMedia.map((entry) => [entry.mediaId, entry.count])
   );
 
-  return media.map((item) => {
+  const snapshots = media.map((item) => {
     const candidate = candidatesByMedia.get(item.id);
     const newIntroducedForMedia = newIntroducedMap.get(item.id) ?? 0;
     const newQueuedCount = Math.min(
@@ -174,9 +189,42 @@ export async function loadMediaShellSnapshots(
       }
     });
   });
+
+  if (options.includePreviewEntries === false) {
+    return snapshots;
+  }
+
+  const focusMedia = pickFocusMedia(snapshots);
+
+  if (!focusMedia) {
+    return snapshots;
+  }
+
+  const focusPreviewEntries = await loadGlossaryPreviewEntriesCached(
+    database,
+    [
+      {
+        id: focusMedia.id,
+        slug: focusMedia.slug
+      }
+    ]
+  ).then((entriesByMedia) => entriesByMedia.get(focusMedia.id) ?? []);
+
+  return snapshots.map((snapshot) =>
+    snapshot.id === focusMedia.id
+      ? {
+          ...snapshot,
+          glossary: {
+            ...snapshot.glossary,
+            previewEntries: focusPreviewEntries
+          },
+          previewEntries: focusPreviewEntries
+        }
+      : snapshot
+  );
 }
 
-async function loadGlossaryProgressSnapshotsCached(
+async function loadGlossaryProgressSummarySnapshotsCached(
   database: DatabaseClient,
   media: Array<{
     id: string;
@@ -184,10 +232,7 @@ async function loadGlossaryProgressSnapshotsCached(
   }>
 ) {
   if (media.length === 0) {
-    return new Map<
-      string,
-      Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>
-    >();
+    return new Map<string, GlossaryProgressSnapshot>();
   }
 
   const orderedMedia = [...media].sort((left, right) =>
@@ -197,21 +242,100 @@ async function loadGlossaryProgressSnapshotsCached(
     enabled: canUseDataCache(database),
     keyParts: [
       "app-shell",
-      "glossary-progress",
+      "glossary-progress-summary",
       ...orderedMedia.map((item) => `media:${item.id}:${item.slug}`)
     ],
     loader: async () => {
-      const snapshots = await loadGlossaryProgressSnapshots(database, media);
+      const summaries = await listGlossaryProgressSummaries(
+        database,
+        media.map((item) => item.id)
+      );
 
-      return media.map((item) => ({
-        mediaId: item.id,
-        snapshot: snapshots.get(item.id) ?? buildEmptyGlossaryProgressSnapshot()
+      return summaries.map((summary) => ({
+        mediaId: summary.mediaId,
+        snapshot: {
+          breakdown: {
+            available: summary.available,
+            known: summary.known,
+            learning: summary.learning,
+            new: summary.new,
+            review: summary.review
+          },
+          entriesCovered: summary.entriesCovered,
+          entriesTotal: summary.entriesTotal,
+          previewEntries: [],
+          progressPercent: calculatePercent(
+            summary.entriesCovered,
+            summary.entriesTotal
+          )
+        }
       }));
     },
     tags: buildGlossarySummaryTags(media.map((item) => item.id))
   });
 
   return new Map(snapshotRows.map((row) => [row.mediaId, row.snapshot] as const));
+}
+
+async function loadGlossaryPreviewEntriesCached(
+  database: DatabaseClient,
+  media: Array<{
+    id: string;
+    slug: string;
+  }>
+) {
+  if (media.length === 0) {
+    return new Map<string, StudyEntryPreview[]>();
+  }
+
+  const orderedMedia = [...media].sort((left, right) =>
+    left.id.localeCompare(right.id, "it")
+  );
+  const previewRows = await runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: [
+      "app-shell",
+      "glossary-progress-preview",
+      ...orderedMedia.map((item) => `media:${item.id}:${item.slug}`)
+    ],
+    loader: async () => {
+      const previews = await listGlossaryPreviewEntries(
+        database,
+        media.map((item) => item.id),
+        6
+      );
+      const previewsByMedia = new Map<string, StudyEntryPreview[]>();
+
+      for (const preview of previews) {
+        const existing = previewsByMedia.get(preview.mediaId) ?? [];
+
+        existing.push({
+          href: mediaGlossaryEntryHref(
+            preview.mediaSlug,
+            preview.kind,
+            preview.sourceId
+          ),
+          id: preview.sourceId,
+          kind: preview.kind,
+          label: preview.label,
+          meaning: preview.meaningIt,
+          reading: preview.reading ?? undefined,
+          segmentTitle: preview.segmentTitle ?? undefined,
+          statusLabel: STUDY_STATE_LABELS[preview.state] ?? "Disponibile"
+        });
+
+        previewsByMedia.set(preview.mediaId, existing);
+      }
+
+      return media.map((item) => ({
+        mediaId: item.id,
+        previews: previewsByMedia.get(item.id) ?? []
+      }));
+    },
+    tags: buildGlossarySummaryTags(media.map((item) => item.id))
+  });
+
+  return new Map(previewRows.map((row) => [row.mediaId, row.previews] as const));
 }
 
 async function loadReviewIntroducedOnDayCached(
@@ -238,22 +362,31 @@ async function buildMediaShellSnapshot(
   media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
 ): Promise<MediaShellSnapshot> {
   const nowIso = new Date().toISOString();
-  const [lessons, glossary, reviewCandidates, dailyLimit, newIntroducedByMedia] =
-    await Promise.all([
-      listLessonsByMediaId(database, media.id),
-      loadGlossaryProgressSnapshotsCached(database, [
-        {
-          id: media.id,
-          slug: media.slug
-        }
-      ]).then(
-        (snapshots) =>
-          snapshots.get(media.id) ?? buildEmptyGlossaryProgressSnapshot()
-      ),
-      loadReviewLaunchCandidatesCached(database, nowIso),
-      getReviewDailyLimit(database),
-      loadReviewIntroducedOnDayCached(database, [media.id])
-    ]);
+  const [
+    lessons,
+    glossarySnapshots,
+    previewEntriesByMedia,
+    reviewCandidates,
+    dailyLimit,
+    newIntroducedByMedia
+  ] = await Promise.all([
+    listLessonsByMediaId(database, media.id),
+    loadGlossaryProgressSummarySnapshotsCached(database, [
+      {
+        id: media.id,
+        slug: media.slug
+      }
+    ]),
+    loadGlossaryPreviewEntriesCached(database, [
+      {
+        id: media.id,
+        slug: media.slug
+      }
+    ]),
+    loadReviewLaunchCandidatesCached(database, nowIso),
+    getReviewDailyLimit(database),
+    loadReviewIntroducedOnDayCached(database, [media.id])
+  ]);
 
   const candidate = reviewCandidates.find((c) => c.mediaId === media.id);
   const newIntroducedForMedia =
@@ -262,9 +395,15 @@ async function buildMediaShellSnapshot(
     candidate?.newCount ?? 0,
     Math.max(dailyLimit - newIntroducedForMedia, 0)
   );
+  const glossary =
+    glossarySnapshots.get(media.id) ?? buildEmptyGlossaryProgressSnapshot();
+  const previewEntries = previewEntriesByMedia.get(media.id) ?? [];
 
   return mapMediaShellSnapshotFromCounts({
-    glossary,
+    glossary: {
+      ...glossary,
+      previewEntries
+    },
     lessons,
     media,
     reviewCounts: {
@@ -348,8 +487,30 @@ function buildReviewShellSignals(input: {
   };
 }
 
+function pickFocusMedia(media: MediaShellSnapshot[]) {
+  return pickBestBy(media, (left, right) => {
+    return scoreMediaFocus(left) - scoreMediaFocus(right);
+  });
+}
+
+function scoreMediaFocus(item: MediaShellSnapshot) {
+  if (item.activeLesson) {
+    return 0;
+  }
+
+  if (item.cardsDue > 0) {
+    return 1;
+  }
+
+  if ((item.textbookProgressPercent ?? 0) < 100) {
+    return 2;
+  }
+
+  return 3;
+}
+
 function mapMediaShellSnapshotFromCounts(input: {
-  glossary: Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>;
+  glossary: GlossaryProgressSnapshot;
   lessons: Awaited<ReturnType<typeof listLessonsByMediaId>>;
   media:
     | MediaListItem

@@ -7,18 +7,13 @@ export async function register() {
   }
 
   try {
-    const [{ getDashboardData }, { getMediaLibraryData }] = await Promise.all([
-      import("@/lib/dashboard"),
-      import("@/lib/media-shell")
-    ]);
     const { getGlobalReviewFirstCandidateLoadResult } = await import(
       "@/lib/review"
     );
 
-    // Warm the heaviest caches so the first user request is instant.
+    // Warm the review entry point without forcing the glossary shell snapshots
+    // on every cold boot.
     await Promise.all([
-      getDashboardData(),
-      getMediaLibraryData(),
       getGlobalReviewFirstCandidateLoadResult({})
     ]);
   } catch {

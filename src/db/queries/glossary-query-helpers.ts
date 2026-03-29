@@ -184,7 +184,7 @@ export function buildGlobalGlossaryBrowseScopeQuery(
   return {
     args: filters.args,
     sql: `
-      with term_entries as (
+      with term_grouped_entries as (
         select
           'term' as kind,
           term.id as internalId,
@@ -243,16 +243,11 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           and card.status != 'archived'
         left join review_subject_state
           on review_subject_state.entry_type = 'term'
-          and (
-            (
-              term.cross_media_group_id is not null
-              and review_subject_state.cross_media_group_id = term.cross_media_group_id
-            )
-            or (
-              term.cross_media_group_id is null
-              and review_subject_state.entry_id = term.id
-            )
+          and review_subject_state.cross_media_group_id in (
+            term.cross_media_group_id,
+            cross_media_group.group_key
           )
+        where term.cross_media_group_id is not null
         group by
           term.id,
           term.source_id,
@@ -264,7 +259,85 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           term.lemma,
           segment.order_index
       ),
-      grammar_entries as (
+      term_direct_entries as (
+        select
+          'term' as kind,
+          term.id as internalId,
+          term.source_id as sourceId,
+          term.cross_media_group_id as crossMediaGroupId,
+          cross_media_group.group_key as crossMediaGroupKey,
+          media.id as mediaId,
+          media.slug as mediaSlug,
+          media.title as mediaTitle,
+          term.lemma as label,
+          coalesce(segment.order_index, 999999) as segmentOrder,
+          cast(count(card.id) as integer) as cardCount,
+          max(
+            case
+              when card.status = 'active'
+                and (
+                  coalesce(review_subject_state.manual_override, 0) = 1
+                  or review_subject_state.state = 'known_manual'
+                )
+              then 1
+              else 0
+            end
+          ) as hasKnownSignal,
+          max(
+            case
+              when card.status = 'active' and review_subject_state.state = 'learning'
+              then 1
+              else 0
+            end
+          ) as hasLearningSignal,
+          max(
+            case
+              when card.status = 'active'
+                and review_subject_state.state in ('review', 'relearning')
+              then 1
+              else 0
+            end
+          ) as hasReviewSignal,
+          max(
+            case
+              when card.status = 'active' and review_subject_state.state = 'new'
+              then 1
+              else 0
+            end
+          ) as hasNewSignal
+        from term
+        inner join media on media.id = term.media_id
+        left join segment on segment.id = term.segment_id
+        left join cross_media_group
+          on cross_media_group.id = term.cross_media_group_id
+        left join card_entry_link
+          on card_entry_link.entry_type = 'term'
+          and card_entry_link.entry_id = term.id
+        left join card
+          on card.id = card_entry_link.card_id
+          and card.status != 'archived'
+        left join review_subject_state
+          on review_subject_state.entry_type = 'term'
+          and review_subject_state.cross_media_group_id is null
+          and review_subject_state.entry_id = term.id
+        where term.cross_media_group_id is null
+        group by
+          term.id,
+          term.source_id,
+          term.cross_media_group_id,
+          cross_media_group.group_key,
+          media.id,
+          media.slug,
+          media.title,
+          term.lemma,
+          segment.order_index
+      ),
+      term_entries as (
+        select * from term_grouped_entries
+        union all
+        select * from term_direct_entries
+      ),
+      grammar_grouped_entries as (
         select
           'grammar' as kind,
           grammar_pattern.id as internalId,
@@ -323,16 +396,11 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           and card.status != 'archived'
         left join review_subject_state
           on review_subject_state.entry_type = 'grammar'
-          and (
-            (
-              grammar_pattern.cross_media_group_id is not null
-              and review_subject_state.cross_media_group_id = grammar_pattern.cross_media_group_id
-            )
-            or (
-              grammar_pattern.cross_media_group_id is null
-              and review_subject_state.entry_id = grammar_pattern.id
-            )
+          and review_subject_state.cross_media_group_id in (
+            grammar_pattern.cross_media_group_id,
+            cross_media_group.group_key
           )
+        where grammar_pattern.cross_media_group_id is not null
         group by
           grammar_pattern.id,
           grammar_pattern.source_id,
@@ -343,6 +411,84 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           media.title,
           grammar_pattern.pattern,
           segment.order_index
+      ),
+      grammar_direct_entries as (
+        select
+          'grammar' as kind,
+          grammar_pattern.id as internalId,
+          grammar_pattern.source_id as sourceId,
+          grammar_pattern.cross_media_group_id as crossMediaGroupId,
+          cross_media_group.group_key as crossMediaGroupKey,
+          media.id as mediaId,
+          media.slug as mediaSlug,
+          media.title as mediaTitle,
+          grammar_pattern.pattern as label,
+          coalesce(segment.order_index, 999999) as segmentOrder,
+          cast(count(card.id) as integer) as cardCount,
+          max(
+            case
+              when card.status = 'active'
+                and (
+                  coalesce(review_subject_state.manual_override, 0) = 1
+                  or review_subject_state.state = 'known_manual'
+                )
+              then 1
+              else 0
+            end
+          ) as hasKnownSignal,
+          max(
+            case
+              when card.status = 'active' and review_subject_state.state = 'learning'
+              then 1
+              else 0
+            end
+          ) as hasLearningSignal,
+          max(
+            case
+              when card.status = 'active'
+                and review_subject_state.state in ('review', 'relearning')
+              then 1
+              else 0
+            end
+          ) as hasReviewSignal,
+          max(
+            case
+              when card.status = 'active' and review_subject_state.state = 'new'
+              then 1
+              else 0
+            end
+          ) as hasNewSignal
+        from grammar_pattern
+        inner join media on media.id = grammar_pattern.media_id
+        left join segment on segment.id = grammar_pattern.segment_id
+        left join cross_media_group
+          on cross_media_group.id = grammar_pattern.cross_media_group_id
+        left join card_entry_link
+          on card_entry_link.entry_type = 'grammar'
+          and card_entry_link.entry_id = grammar_pattern.id
+        left join card
+          on card.id = card_entry_link.card_id
+          and card.status != 'archived'
+        left join review_subject_state
+          on review_subject_state.entry_type = 'grammar'
+          and review_subject_state.cross_media_group_id is null
+          and review_subject_state.entry_id = grammar_pattern.id
+        where grammar_pattern.cross_media_group_id is null
+        group by
+          grammar_pattern.id,
+          grammar_pattern.source_id,
+          grammar_pattern.cross_media_group_id,
+          cross_media_group.group_key,
+          media.id,
+          media.slug,
+          media.title,
+          grammar_pattern.pattern,
+          segment.order_index
+      ),
+      grammar_entries as (
+        select * from grammar_grouped_entries
+        union all
+        select * from grammar_direct_entries
       ),
       glossary_entries as (
         select * from term_entries

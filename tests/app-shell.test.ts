@@ -67,6 +67,7 @@ describe("app shell live data", () => {
     const media = await getMediaDetailData(developmentFixture.mediaSlug, database);
 
     expect(media).not.toBeNull();
+    expect(media?.previewEntries[0]?.label).toBe("行く");
     expect(media?.lessonsCompleted).toBe(1);
     expect(media?.lessonsTotal).toBe(1);
     expect(media?.entriesKnown).toBe(2);
@@ -178,6 +179,10 @@ describe("app shell live data", () => {
 
     expect(dashboard.focusMedia?.slug).toBe("duel-masters-dm25");
     expect(dashboard.reviewMedia?.slug).toBe("duel-masters-dm25");
+    expect(
+      dashboard.media.find((item) => item.slug === developmentFixture.mediaSlug)
+        ?.previewEntries
+    ).toHaveLength(0);
     expect(duelMastersMedia?.reviewStatValue).toBe("1 da ripassare");
   });
 });
