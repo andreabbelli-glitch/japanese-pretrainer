@@ -25,10 +25,7 @@ import {
   formatSegmentKindLabel,
   formatStatusLabel
 } from "@/lib/study-format";
-import {
-  loadReviewLaunchCandidatesCached
-} from "@/lib/review";
-import { pickBestBy } from "@/lib/collections";
+import { loadReviewLaunchCandidatesCached } from "@/lib/review";
 import { getReviewDailyLimit } from "@/lib/settings";
 import {
   buildLessonMetrics,
@@ -72,66 +69,6 @@ export type MediaShellSnapshot = {
   glossary: GlossaryProgressSnapshot;
 };
 
-export type DashboardData = {
-  focusMedia: MediaShellSnapshot | null;
-  reviewMedia: MediaShellSnapshot | null;
-  media: MediaShellSnapshot[];
-  totals: {
-    cardsDue: number;
-    lessonsCompleted: number;
-    lessonsTotal: number;
-    entriesKnown: number;
-    entriesTotal: number;
-    activeReviewCards: number;
-  };
-};
-
-export async function getDashboardData(
-  database: DatabaseClient = db
-): Promise<DashboardData> {
-  return runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "dashboard"],
-    loader: () => loadDashboardData(database),
-    tags: [
-      MEDIA_LIST_TAG,
-      GLOSSARY_SUMMARY_TAG,
-      REVIEW_SUMMARY_TAG,
-      REVIEW_FIRST_CANDIDATE_TAG,
-      SETTINGS_TAG
-    ]
-  });
-}
-
-async function loadDashboardData(
-  database: DatabaseClient
-): Promise<DashboardData> {
-  const rows = await listMediaCached(database);
-  const media = await buildMediaShellSnapshots(database, rows);
-  const focusMedia = pickFocusMedia(media);
-  const reviewMedia = pickReviewMedia(media);
-
-  return {
-    focusMedia,
-    reviewMedia,
-    media,
-    totals: {
-      cardsDue: media.reduce((sum, item) => sum + item.cardsDue, 0),
-      lessonsCompleted: media.reduce(
-        (sum, item) => sum + item.lessonsCompleted,
-        0
-      ),
-      lessonsTotal: media.reduce((sum, item) => sum + item.lessonsTotal, 0),
-      entriesKnown: media.reduce((sum, item) => sum + item.entriesKnown, 0),
-      entriesTotal: media.reduce((sum, item) => sum + item.entriesTotal, 0),
-      activeReviewCards: media.reduce(
-        (sum, item) => sum + item.activeReviewCards,
-        0
-      )
-    }
-  };
-}
-
 export async function getMediaLibraryData(database: DatabaseClient = db) {
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
@@ -139,7 +76,7 @@ export async function getMediaLibraryData(database: DatabaseClient = db) {
     loader: async () => {
       const rows = await listMediaCached(database);
 
-      return buildMediaShellSnapshots(database, rows);
+      return loadMediaShellSnapshots(database, rows);
     },
     tags: [
       MEDIA_LIST_TAG,
@@ -177,68 +114,7 @@ export async function getMediaDetailData(
   });
 }
 
-async function loadGlossaryProgressSnapshotsCached(
-  database: DatabaseClient,
-  media: Array<{
-    id: string;
-    slug: string;
-  }>
-) {
-  if (media.length === 0) {
-    return new Map<
-      string,
-      Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>
-    >();
-  }
-
-  const orderedMedia = [...media].sort((left, right) =>
-    left.id.localeCompare(right.id, "it")
-  );
-  const snapshotRows = await runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: [
-      "app-shell",
-      "glossary-progress",
-      ...orderedMedia.map((item) => `media:${item.id}:${item.slug}`)
-    ],
-    loader: async () => {
-      const snapshots = await loadGlossaryProgressSnapshots(database, media);
-
-      return media.map((item) => ({
-        mediaId: item.id,
-        snapshot:
-          snapshots.get(item.id) ??
-          buildEmptyGlossaryProgressSnapshot()
-      }));
-    },
-    tags: buildGlossarySummaryTags(media.map((item) => item.id))
-  });
-
-  return new Map(
-    snapshotRows.map((row) => [row.mediaId, row.snapshot] as const)
-  );
-}
-
-async function loadReviewIntroducedOnDayCached(
-  database: DatabaseClient,
-  mediaIds: string[]
-) {
-  if (mediaIds.length === 0) {
-    return [];
-  }
-
-  const orderedIds = [...mediaIds].sort();
-
-  return runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "review-introduced", ...orderedIds],
-    loader: () =>
-      countReviewSubjectsIntroducedOnDayByMediaIds(database, mediaIds),
-    tags: buildReviewSummaryTags(mediaIds)
-  });
-}
-
-async function buildMediaShellSnapshots(
+export async function loadMediaShellSnapshots(
   database: DatabaseClient,
   media: MediaListItem[]
 ) {
@@ -300,6 +176,63 @@ async function buildMediaShellSnapshots(
   });
 }
 
+async function loadGlossaryProgressSnapshotsCached(
+  database: DatabaseClient,
+  media: Array<{
+    id: string;
+    slug: string;
+  }>
+) {
+  if (media.length === 0) {
+    return new Map<
+      string,
+      Awaited<ReturnType<typeof loadGlossaryProgressSnapshot>>
+    >();
+  }
+
+  const orderedMedia = [...media].sort((left, right) =>
+    left.id.localeCompare(right.id, "it")
+  );
+  const snapshotRows = await runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: [
+      "app-shell",
+      "glossary-progress",
+      ...orderedMedia.map((item) => `media:${item.id}:${item.slug}`)
+    ],
+    loader: async () => {
+      const snapshots = await loadGlossaryProgressSnapshots(database, media);
+
+      return media.map((item) => ({
+        mediaId: item.id,
+        snapshot: snapshots.get(item.id) ?? buildEmptyGlossaryProgressSnapshot()
+      }));
+    },
+    tags: buildGlossarySummaryTags(media.map((item) => item.id))
+  });
+
+  return new Map(snapshotRows.map((row) => [row.mediaId, row.snapshot] as const));
+}
+
+async function loadReviewIntroducedOnDayCached(
+  database: DatabaseClient,
+  mediaIds: string[]
+) {
+  if (mediaIds.length === 0) {
+    return [];
+  }
+
+  const orderedIds = [...mediaIds].sort();
+
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["app-shell", "review-introduced", ...orderedIds],
+    loader: () =>
+      countReviewSubjectsIntroducedOnDayByMediaIds(database, mediaIds),
+    tags: buildReviewSummaryTags(mediaIds)
+  });
+}
+
 async function buildMediaShellSnapshot(
   database: DatabaseClient,
   media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlug>>>
@@ -315,8 +248,7 @@ async function buildMediaShellSnapshot(
         }
       ]).then(
         (snapshots) =>
-          snapshots.get(media.id) ??
-          buildEmptyGlossaryProgressSnapshot()
+          snapshots.get(media.id) ?? buildEmptyGlossaryProgressSnapshot()
       ),
       loadReviewLaunchCandidatesCached(database, nowIso),
       getReviewDailyLimit(database),
@@ -342,68 +274,6 @@ async function buildMediaShellSnapshot(
       newQueuedCount
     }
   });
-}
-
-function pickFocusMedia(media: MediaShellSnapshot[]) {
-  return pickBestBy(media, (left, right) => {
-    return scoreMediaFocus(left) - scoreMediaFocus(right);
-  });
-}
-
-function pickReviewMedia(media: MediaShellSnapshot[]) {
-  return pickBestBy(media, (left, right) => {
-    const scoreDifference = scoreMediaReview(left) - scoreMediaReview(right);
-
-    if (scoreDifference !== 0) {
-      return scoreDifference;
-    }
-
-    if (left.cardsDue !== right.cardsDue) {
-      return right.cardsDue - left.cardsDue;
-    }
-
-    if (left.activeReviewCards !== right.activeReviewCards) {
-      return right.activeReviewCards - left.activeReviewCards;
-    }
-
-    if (left.cardsTotal !== right.cardsTotal) {
-      return right.cardsTotal - left.cardsTotal;
-    }
-
-    return left.title.localeCompare(right.title, "it");
-  });
-}
-
-function scoreMediaFocus(item: MediaShellSnapshot) {
-  if (item.activeLesson) {
-    return 0;
-  }
-
-  if (item.cardsDue > 0) {
-    return 1;
-  }
-
-  if ((item.textbookProgressPercent ?? 0) < 100) {
-    return 2;
-  }
-
-  return 3;
-}
-
-function scoreMediaReview(item: MediaShellSnapshot) {
-  if (item.cardsDue > 0) {
-    return 0;
-  }
-
-  if (item.activeReviewCards > 0) {
-    return 1;
-  }
-
-  if (item.cardsTotal > 0) {
-    return 2;
-  }
-
-  return 3;
 }
 
 function buildReviewShellSignals(input: {

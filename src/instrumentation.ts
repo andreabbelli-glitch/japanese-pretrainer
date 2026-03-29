@@ -7,9 +7,10 @@ export async function register() {
   }
 
   try {
-    const { getDashboardData, getMediaLibraryData } = await import(
-      "@/lib/app-shell"
-    );
+    const [{ getDashboardData }, { getMediaLibraryData }] = await Promise.all([
+      import("@/lib/dashboard"),
+      import("@/lib/media-shell")
+    ]);
     const { getGlobalReviewFirstCandidateLoadResult } = await import(
       "@/lib/review"
     );

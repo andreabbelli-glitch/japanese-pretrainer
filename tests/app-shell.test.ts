@@ -18,7 +18,8 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
-import { getDashboardData, getMediaDetailData } from "@/lib/app-shell";
+import { getDashboardData } from "@/lib/dashboard";
+import { getMediaDetailData } from "@/lib/media-shell";
 
 describe("app shell live data", () => {
   let tempDir = "";

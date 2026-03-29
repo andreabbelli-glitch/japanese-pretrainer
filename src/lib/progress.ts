@@ -1,5 +1,5 @@
 import { db, type DatabaseClient } from "@/db";
-import { getMediaDetailData } from "@/lib/app-shell";
+import { getMediaDetailData } from "@/lib/media-shell";
 import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,

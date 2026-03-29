@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getDashboardData } from "@/lib/app-shell";
+import { getDashboardData } from "@/lib/dashboard";
 import { renderFurigana } from "@/lib/render-furigana";
 import {
   mediaGlossaryHref,
