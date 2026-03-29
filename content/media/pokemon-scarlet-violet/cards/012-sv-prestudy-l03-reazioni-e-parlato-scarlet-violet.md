@@ -32,7 +32,7 @@ example_it: >-
 id: term-e007-matsu-te
 lemma: 待って
 reading: まって
-romaji: matsu te
+romaji: matte
 meaning_it: aspetta
 notes_it: >-
   Espressione ricorrente della lezione L03 nell'area Azione / proposta. Interruzione rapida.

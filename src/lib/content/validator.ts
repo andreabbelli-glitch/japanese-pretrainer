@@ -19,6 +19,7 @@ import {
   isWithinMediaAssetRoot,
   resolveMediaAssetAbsolutePath
 } from "../media-assets.ts";
+import { romanizeKanaForSearch } from "../study-search.ts";
 import type {
   ParsedDocumentDraft,
   RawStructuredBlock
@@ -1440,6 +1441,19 @@ async function normalizeTermBlock(
     return null;
   }
 
+  const romajiSokuonIssue = validateCompactKanaTermRomaji({
+    filePath: sourceContext.filePath,
+    lemma,
+    reading,
+    romaji,
+    range: rawBlock.fieldRanges?.romaji ?? rawBlock.position,
+    sourcePath: `${sourcePath}.romaji`
+  });
+
+  if (romajiSokuonIssue) {
+    issues.push(romajiSokuonIssue);
+  }
+
   const notesRange = rawBlock.fieldRanges?.notes_it ?? rawBlock.position;
   const notesFragment = notesIt
     ? parseInlineFragment({
@@ -1485,6 +1499,42 @@ async function normalizeTermBlock(
     position: rawBlock.position,
     references: notesFragment?.references ?? []
   };
+}
+
+function validateCompactKanaTermRomaji(input: {
+  filePath: string;
+  lemma: string;
+  reading: string;
+  romaji: string;
+  range?: SourceRange;
+  sourcePath: string;
+}) {
+  if (
+    !/[っッ]/u.test(input.reading) ||
+    /\s/.test(input.reading) ||
+    /[A-Za-z0-9]/.test(input.lemma) ||
+    !/^[\p{Script=Hiragana}\p{Script=Katakana}ー]+$/u.test(input.reading)
+  ) {
+    return null;
+  }
+
+  const expectedRomaji = romanizeKanaForSearch(input.reading);
+  const actualRomaji = romanizeKanaForSearch(input.romaji);
+
+  if (expectedRomaji === actualRomaji) {
+    return null;
+  }
+
+  return createIssue({
+    code: "structured-block.term-romaji-sokuon-mismatch",
+    category: "schema",
+    message:
+      "Field 'romaji' must preserve the doubled consonant implied by a small tsu in compact kana readings.",
+    filePath: input.filePath,
+    path: input.sourcePath,
+    range: input.range,
+    hint: `Use the expected romaji for the reading, for example '${expectedRomaji}'.`
+  });
 }
 
 async function normalizeGrammarBlock(

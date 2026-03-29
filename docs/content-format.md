@@ -673,6 +673,12 @@ Campi obbligatori:
 - `romaji`
 - `meaning_it`
 
+Vincolo editoriale:
+
+- `romaji` deve restare coerente con `reading`; nei termini compatti con
+  piccolo `っ/ッ` preserva la consonante doppia, per esempio `まって -> matte`
+  e `ひっこめる -> hikkomeru`.
+
 Campi opzionali:
 
 - `pos`

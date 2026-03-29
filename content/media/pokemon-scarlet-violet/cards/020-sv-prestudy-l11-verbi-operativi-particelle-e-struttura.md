@@ -10,7 +10,7 @@ segment_ref: scarlet-violet-prestudy
 id: term-e023-chotto-matsu-te
 lemma: ちょっと待って
 reading: ちょっとまって
-romaji: chotto matsu te
+romaji: chotto matte
 meaning_it: aspetta un attimo
 notes_it: >-
   Espressione ricorrente della lezione L11 nell'area Azione / proposta. Versione più morbida di {{待|ま}}って.

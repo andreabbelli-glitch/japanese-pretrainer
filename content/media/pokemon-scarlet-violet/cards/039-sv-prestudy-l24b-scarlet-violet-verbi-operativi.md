@@ -583,7 +583,7 @@ example_it: >-
 id: term-v475-hitsu-kome-ru
 lemma: 引っ込める
 reading: ひっこめる
-romaji: hitsu kome ru
+romaji: hikkomeru
 meaning_it: ritirare (un Pokémon)
 notes_it: >-
   Voce della lezione L24 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.

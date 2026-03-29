@@ -1449,6 +1449,139 @@ base_explanation_language: it
     }
   });
 
+  it("flags compact term romaji that expands a small tsu incorrectly", async () => {
+    const mediaRoot = await mkdtemp(path.join(tmpdir(), "jcs-content-romaji-"));
+    const mediaDirectory = path.join(mediaRoot, "demo");
+    const cardsDirectory = path.join(mediaDirectory, "cards");
+    const textbookDirectory = path.join(mediaDirectory, "textbook");
+    const cardsPath = path.join(cardsDirectory, "001-romaji.md");
+    const cardsSource = `---
+id: cards-demo
+media_id: media-demo
+slug: demo-cards
+title: Demo cards
+order: 1
+---
+
+:::term
+id: term-demo
+lemma: 待って
+reading: まって
+romaji: matsu te
+meaning_it: aspetta
+:::
+
+:::card
+id: card-demo
+lesson_id: lesson-demo
+entry_type: term
+entry_id: term-demo
+card_type: recognition
+front: '{{待|ま}}って'
+back: aspetta
+:::
+`;
+
+    try {
+      await mkdir(cardsDirectory, { recursive: true });
+      await mkdir(textbookDirectory, { recursive: true });
+      await writeFile(
+        path.join(mediaDirectory, "media.md"),
+        `---
+id: media-demo
+slug: demo
+title: Demo
+media_type: anime
+segment_kind: episode
+language: ja
+base_explanation_language: it
+---
+`
+      );
+      await writeFile(cardsPath, cardsSource);
+
+      const result = await parseMediaDirectory(mediaDirectory);
+      const romajiIssue = result.issues.find(
+        (issue) => issue.code === "structured-block.term-romaji-sokuon-mismatch"
+      );
+
+      expect(result.ok).toBe(false);
+      expect(romajiIssue?.location.filePath).toBe(cardsPath);
+      expect(romajiIssue?.location.range?.start.line).toBe(
+        lineNumberOf(cardsSource, "romaji: matsu te")
+      );
+      expect(romajiIssue?.message).toContain("small tsu");
+    } finally {
+      await rm(mediaRoot, { recursive: true, force: true });
+    }
+  });
+
+  it("does not flag spaced readings that use an editorial particle rendering", async () => {
+    const mediaRoot = await mkdtemp(
+      path.join(tmpdir(), "jcs-content-romaji-spaced-")
+    );
+    const mediaDirectory = path.join(mediaRoot, "demo");
+    const cardsDirectory = path.join(mediaDirectory, "cards");
+    const textbookDirectory = path.join(mediaDirectory, "textbook");
+    const cardsPath = path.join(cardsDirectory, "001-romaji-spaced.md");
+    const cardsSource = `---
+id: cards-demo
+media_id: media-demo
+slug: demo-cards
+title: Demo cards
+order: 1
+---
+
+:::term
+id: term-demo
+lemma: 指定の教室へ 向かってください
+reading: していの きょうしつへ むかってください
+romaji: shitei no kyoushitsu e mukatte kudasai
+meaning_it: dirigiti verso l'aula indicata
+:::
+
+:::card
+id: card-demo
+lesson_id: lesson-demo
+entry_type: term
+entry_id: term-demo
+card_type: recognition
+front: '{{指定|してい}}の {{教室|きょうしつ}}へ {{向|む}}かってください'
+back: dirigiti verso l'aula indicata
+:::
+`;
+
+    try {
+      await mkdir(cardsDirectory, { recursive: true });
+      await mkdir(textbookDirectory, { recursive: true });
+      await writeFile(
+        path.join(mediaDirectory, "media.md"),
+        `---
+id: media-demo
+slug: demo
+title: Demo
+media_type: anime
+segment_kind: episode
+language: ja
+base_explanation_language: it
+---
+`
+      );
+      await writeFile(cardsPath, cardsSource);
+
+      const result = await parseMediaDirectory(mediaDirectory);
+
+      expect(
+        result.issues.some(
+          (issue) =>
+            issue.code === "structured-block.term-romaji-sokuon-mismatch"
+        )
+      ).toBe(false);
+    } finally {
+      await rm(mediaRoot, { recursive: true, force: true });
+    }
+  });
+
   it("returns a structured issue when media.md is missing", async () => {
     const mediaRoot = await mkdtemp(
       path.join(tmpdir(), "jcs-content-missing-media-")
