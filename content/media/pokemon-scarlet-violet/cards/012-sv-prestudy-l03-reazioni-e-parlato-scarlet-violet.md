@@ -53,12 +53,12 @@ example_it: >-
 :::grammar
 id: grammar-g009-contrazione-di-dovere
 pattern: ～なきゃ / ～なくちゃ
-title: Contrazione di dovere
-meaning_it: contrazione di dovere
+title: Obbligo colloquiale
+meaning_it: devo... / bisogna... (colloquiale)
 aliases:
 - 〜なければならない / 〜ないといけない
 notes_it: >-
-  Pattern della lezione L03 nella famiglia Colloquiale da dialogo. Formazione: V-なきゃ. Nei giochi è frequentissimo al posto della forma completa.
+  Forma colloquiale di 〜なければならない / 〜なくてはいけない. Vuol dire "devo..." o "bisogna...". Si forma dalla base in ない del verbo: 行かない→行かなきゃ, しない→しなきゃ. Nei dialoghi e nei giochi è molto comune al posto della forma completa.
 :::
 :::card
 id: card-g009-contrazione-di-dovere-concept
@@ -67,7 +67,7 @@ entry_type: grammar
 entry_id: grammar-g009-contrazione-di-dovere
 card_type: concept
 front: '～なきゃ / ～なくちゃ'
-back: contrazione di dovere
+back: devo... / bisogna... (colloquiale)
 example_jp: >-
   もう {{行|い}}かなきゃ。
 example_it: >-

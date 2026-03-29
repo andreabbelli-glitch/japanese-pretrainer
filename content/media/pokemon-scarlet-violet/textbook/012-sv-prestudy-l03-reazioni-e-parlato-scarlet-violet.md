@@ -44,7 +44,7 @@ In Scarlet / Violet tornano parole corte che segnalano tempo, luogo, stato e ruo
 
 ## Pattern grammaticali chiave
 
-- [～なきゃ / ～なくちゃ](grammar:grammar-g009-contrazione-di-dovere) — contrazione di dovere
+- [～なきゃ / ～なくちゃ](grammar:grammar-g009-contrazione-di-dovere) — devo... / bisogna... (colloquiale)
 
 ## Spiegazione
 

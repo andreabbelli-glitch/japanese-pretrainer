@@ -339,7 +339,7 @@ back: studente
 example_jp: >-
   {{生徒|せいと}}が います。
 example_it: >-
-  C'è il studente.
+  C'è uno studente.
 :::
 :::term
 id: term-v025-shitenou
