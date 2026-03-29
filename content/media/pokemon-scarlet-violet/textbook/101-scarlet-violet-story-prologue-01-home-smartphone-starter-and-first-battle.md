@@ -39,13 +39,23 @@ spiega il tutorial subito dopo il match.
 
 - [{{校長先生|こう.ちょう.せん.せい}}](term:term-kouchou-sensei)
 - [{{転入|てんにゅう}}](term:term-tennyuu)
+- [ごめんください](term:term-gomen-kudasai)
+- [{{申|もう}}し{{訳|わけ}}ありません](term:term-moushiwake-arimasen)
+- [{{不手際|ふてぎわ}}](term:term-futegiwa)
+- [お{{言葉|ことば}}に {{甘|あま}}えて](term:term-okotoba-ni-amaete)
 - [スマホロトム](term:term-smartphone-rotom)
 - [{{登録|とうろく}}](term:term-touroku)
 - [{{勝負|しょうぶ}}](term:term-shoubu)
 - [{{準備|じゅんび}}](term:term-junbi)
+- [ご{{近所|きんじょ}}](term:term-gokinjo)
+- [デビュー{{戦|せん}}](term:term-debyuu-sen)
+- [{{素質|そしつ}}アリ](term:term-soshitsu-ari)
 - [{{弱点|じゃくてん}}](term:term-jakuten)
 - [{{繰|く}}り{{出|だ}}す](term:term-kuridasu)
 - [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan)
+- [{{要|よう}}チェック](term:term-you-check)
+- [{{手書|てが}}き](term:term-tegaki)
+- [お{{弁当|べんとう}}](term:term-obentou)
 - [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun)
 
 ## Pattern grammaticali chiave
@@ -56,6 +66,7 @@ spiega il tutorial subito dopo il match.
 - [～みたい](grammar:grammar-mitai)
 - [～てしまう](grammar:grammar-te-shimau)
 - [～たばかり](grammar:grammar-ta-bakari)
+- [～づくし](grammar:grammar-zukushi)
 
 ## Spiegazione
 
@@ -69,6 +80,15 @@ Anche se non afferri bene formule come `{{申|もう}}し{{訳|わけ}}ありま
 preside porta i documenti della scuola e che il gioco ti rimanda in camera per
 prepararti. Qui [～てください](grammar:grammar-te-kudasai) è una richiesta
 cortese solo in superficie: in pratica ti segnala il prossimo step obbligatorio.
+
+Vale però la pena promuovere anche queste formule a lessico attivo. Clavell apre
+con [ごめんください](term:term-gomen-kudasai), poi passa alla scusa formale
+[{{申|もう}}し{{訳|わけ}}ありません](term:term-moushiwake-arimasen) e si assume la
+responsabilità del ritardo come
+[{{不手際|ふてぎわ}}](term:term-futegiwa) dell'Accademia. Quando infine accetta il
+tè con [お{{言葉|ことば}}に {{甘|あま}}えて](term:term-okotoba-ni-amaete), il
+registro resta elegante ma il senso pratico è chiaro: sta entrando davvero in
+un rituale di cortesia domestica, non solo recitando formule vuote.
 
 Quando esci, il blocco cambia da dialogo domestico a tutorial leggero. La madre
 ti consegna lo [スマホロトム](term:term-smartphone-rotom) e la frase
@@ -110,6 +130,16 @@ Qui [～みたい](grammar:grammar-mitai) non vuol dire solo "sembra" in astratt
 fa leggere la reazione del Pokemon come impressione condivisa dai personaggi. In
 pratica, ti aiuta a capire che la scena di scelta è stata accettata dal gioco e
 che quel Pokemon è ormai il tuo partner iniziale.
+
+In questa stessa sezione entrano bene anche alcune parole di relazione e
+valutazione. Nemona ti legge subito come
+[ご{{近所|きんじょ}}](term:term-gokinjo), anzi `ご{{近所|きんじょ}}{{同士|どうし}}`,
+per trasformare l'incontro in familiarità immediata. Poco dopo chiama il primo
+match del nuovo partner una
+[デビュー{{戦|せん}}](term:term-debyuu-sen): non un semplice tutorial, ma una
+prima prova che merita attenzione. Quando poi commenta che il protagonista ha
+`{{素質|そしつ}}アリ`, il gioco sta già costruendo l'idea che la crescita del
+personaggio non è casuale ma leggibile dentro il dialogo di Nemona.
 
 :::image
 src: assets/story/starter-choice-three-pokemon.webp
@@ -154,6 +184,19 @@ registrazione ufficiale nel Pokedex senza passaggi manuali. Anche il pattern
 Nemona ti tratta come qualcuno che ha appena iniziato e per questo calibra
 spiegazioni e complimenti sul livello zero del protagonista.
 
+Qui entrano bene anche i commenti meta sul Pokedex e il piccolo lessico di
+partenza da casa. Quando Nemona dice che l'app è
+[{{要|よう}}チェック](term:term-you-check), il tono è colloquiale ma il valore è
+quello di un tutorial vero: questa funzione va guardata subito. Clavell e Nemona
+contrappongono poi il vecchio Pokedex compilato a
+[{{手書|てが}}き](term:term-tegaki) alla registrazione automatica dello
+[スマホロトム](term:term-smartphone-rotom), così la scena evidenzia davvero il
+salto di sistema. E sul lato domestico la madre ti mette in mano anche
+[お{{弁当|べんとう}}](term:term-obentou), mentre definisce i primi giorni fuori
+casa come [～づくし](grammar:grammar-zukushi) in
+`{{初|はじ}}めてづくし`: un periodo pieno di novità, non un singolo evento
+isolato.
+
 :::image
 src: assets/ui/pokedex-auto-registration-scene.webp
 alt: "Scena o schermata in cui il Pokedex viene introdotto sullo Smart Rotom."
@@ -182,6 +225,15 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
+  ごめんください と {{言|い}}ってから {{申|もう}}し{{訳|わけ}}ありません と
+  {{頭|あたま}}を {{下|さ}}げると、 かなり {{丁寧|ていねい}}な {{印象|いんしょう}}になる。
+translation_it: >-
+  Se prima dici "permesso?" e poi "mi dispiace molto" abbassando il capo, dai
+  un'impressione molto formale e rispettosa.
+:::
+
+:::example_sentence
+jp: >-
   {{勝負|しょうぶ}}の {{準備|じゅんび}}が できたら {{下|した}}の ビーチへ
   {{来|き}}てね。
 translation_it: >-
@@ -201,6 +253,15 @@ jp: >-
   うっかり いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところだった。
 translation_it: >-
   Per poco non mandavo in campo il mio solito Pokemon senza pensarci.
+:::
+
+:::example_sentence
+jp: >-
+  {{初|はじ}}めてづくしの {{学校|がっこう}}でも お{{弁当|べんとう}}が あると
+  ちょっと {{安心|あんしん}}できる。
+translation_it: >-
+  Anche in una scuola piena di prime volte, avere un bento dà un po' di
+  tranquillità.
 :::
 
 :::example_sentence
@@ -228,4 +289,3 @@ reali di Scarlet / Violet. Se stabilizzi
 [{{登録|とうろく}}](term:term-touroku) e i pattern
 [～みたい](grammar:grammar-mitai) / [～てしまう](grammar:grammar-te-shimau),
 entri nel tutorial di cattura del blocco successivo con molto meno attrito.
-

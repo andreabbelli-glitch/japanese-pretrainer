@@ -132,6 +132,54 @@ notes_it: >-
   diversa dopo il [テラスタル](term:term-terastal), il punto da guardare e
   proprio questo tipo.
 :::
+:::term
+id: term-kashikomarimashita
+lemma: かしこまりました
+reading: かしこまりました
+romaji: kashikomarimashita
+meaning_it: certamente / ricevuto
+notes_it: >-
+  Formula di servizio molto cortese. Al Pokemon Center segnala che il personale
+  ha preso in carico la tua richiesta e sta eseguendo la procedura, non che sta
+  solo rispondendo in modo generico.
+:::
+:::card
+id: card-kashikomarimashita-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+entry_type: term
+entry_id: term-kashikomarimashita
+card_type: recognition
+front: かしこまりました
+back: certamente / ricevuto
+example_jp: >-
+  はい かしこまりました。 すぐに {{手|て}}{{持|も}}ちを {{回復|かいふく}}します。
+example_it: >-
+  Certamente. Provvedo subito a curare la squadra.
+:::
+:::term
+id: term-otsukaresama-desu
+lemma: お疲れさまです
+reading: おつかれさまです
+romaji: otsukaresama desu
+meaning_it: ben fatto / vi vedo stanchi
+notes_it: >-
+  Formula di contatto molto comune nei servizi e sul lavoro. Al Pokemon Center
+  la senti anche allungata colloquialmente come `お{{疲|つか}}れさまでーす`, ma la
+  forma canonica resta `お{{疲|つか}}れさまです`.
+:::
+:::card
+id: card-otsukaresama-desu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
+entry_type: term
+entry_id: term-otsukaresama-desu
+card_type: recognition
+front: "お{{疲|つか}}れさまです"
+back: ben fatto / vi vedo stanchi
+example_jp: >-
+  お{{疲|つか}}れさまです。 {{今日|きょう}} がんばった ポケモンを {{休|やす}}ませましょうか。
+example_it: >-
+  Ben fatto. Vogliamo far riposare i Pokemon che oggi hanno dato tutto?
+:::
 :::grammar
 id: grammar-te-morau
 pattern: ～てもらう

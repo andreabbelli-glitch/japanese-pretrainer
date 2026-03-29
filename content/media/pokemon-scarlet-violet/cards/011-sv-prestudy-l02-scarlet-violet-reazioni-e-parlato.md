@@ -89,9 +89,9 @@ card_type: concept
 front: '～ないで'
 back: senza fare / non fare e...
 example_jp: >-
-  ここで {{走|はし}}らないで。
+  ここで バトルしないで。
 example_it: >-
-  Non correre qui.
+  Non combattere qui.
 :::
 :::grammar
 id: grammar-g006-contrazione-colloquiale-di

@@ -53,6 +53,9 @@ caption: >-
 - [{{職員室|しょく.いん.しつ}}](term:term-shokuinshitsu)
 - [{{校長室|こう.ちょう.しつ}}](term:term-kouchoushitsu)
 - [{{学生寮|がく.せい.りょう}}](term:term-gakusei-ryou)
+- [{{施設|しせつ}}](term:term-shisetsu)
+- [{{寮|りょう}}{{生活|せいかつ}}](term:term-ryouseikatsu)
+- [{{通学|つうがく}}](term:term-tsuugaku)
 - [{{担任|たんにん}}](term:term-tannin)
 - [{{目指|めざ}}す](term:term-mezasu)
 
@@ -62,6 +65,7 @@ caption: >-
 - [～てください](grammar:grammar-te-kudasai)
 - [～てね](grammar:grammar-te-ne)
 - [～てみる](grammar:grammar-te-miru)
+- [～{{放題|ほうだい}}](grammar:grammar-houdai)
 
 ## Spiegazione
 
@@ -93,6 +97,21 @@ puo permettersi di spiegare gerarchie, ranghi e obiettivi con un tono piu
 serio. La [{{校長室|こう.ちょう.しつ}}](term:term-kouchoushitsu), infine, funziona
 come stanza di autorizzazione narrativa: quando entri li, spesso qualcosa viene
 ufficializzato o rimesso nelle mani del protagonista.
+
+Qui diventa utile anche il lessico logistico del campus.
+[{{施設|しせつ}}](term:term-shisetsu) ti fa leggere mensa, uffici e servizi come
+spazi funzionali; [{{寮|りょう}}{{生活|せいかつ}}](term:term-ryouseikatsu) nomina la
+routine di chi vive nel campus; [{{通学|つうがく}}](term:term-tsuugaku) copre invece
+gli studenti che raggiungono la scuola da casa. Questo contrasto aiuta a capire
+che l'accademia non è solo scenario, ma un sistema di vita pratica.
+
+Nello stesso blocco entra bene anche il pattern
+[～{{放題|ほうだい}}](grammar:grammar-houdai). In frasi come
+`{{使|つか}}い{{放題|ほうだい}}`, il campus viene presentato come un luogo pieno di
+risorse disponibili in modo ampio; e il pattern richiama bene anche il più
+emotivo `やり{{放題|ほうだい}}` usato prima da Nemona. Qui però il suo valore è più
+organizzativo: mette in rilievo la ricchezza di servizi e possibilità dentro la
+vita scolastica.
 
 :::image
 src: assets/story/clavell-academy-briefing.webp
@@ -153,6 +172,15 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
+  {{役立|やくだ}}つ {{施設|しせつ}}が {{使|つか}}い{{放題|ほうだい}} なら
+  {{寮|りょう}}{{生活|せいかつ}}も かなり {{助|たす}}かる。
+translation_it: >-
+  Se le strutture utili si possono usare liberamente, anche la vita in
+  dormitorio diventa molto più comoda.
+:::
+
+:::example_sentence
+jp: >-
   {{職員室|しょく.いん.しつ}}では ネモが {{次|つぎ}}の {{目標|もくひょう}}を
   {{説明|せつめい}}してくれる。
 translation_it: >-
@@ -166,6 +194,15 @@ jp: >-
 translation_it: >-
   Anche se vieni chiamato nell'ufficio del preside, non significa per forza che
   sarai rimproverato.
+:::
+
+:::example_sentence
+jp: >-
+  {{近|ちか}}くに {{住|す}}んでいる {{生徒|せいと}}は {{寮|りょう}}じゃなくて
+  {{家|いえ}}から {{通学|つうがく}}することも ある。
+translation_it: >-
+  Gli studenti che vivono vicino alla scuola a volte non stanno in dormitorio,
+  ma fanno i pendolari da casa.
 :::
 
 :::example_sentence
@@ -189,5 +226,4 @@ anche il valore delle stanze. Se stabilizzi
 [{{目指|めざ}}す](term:term-mezasu), la parte scolastica smette di sembrare un
 blocco di dialoghi generici e diventa una sequenza leggibile di scelte e
 briefing.
-
 

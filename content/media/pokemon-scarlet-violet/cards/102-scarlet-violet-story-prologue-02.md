@@ -131,6 +131,30 @@ example_it: >-
   In questa grotta vivono Pokemon dal temperamento aggressivo.
 :::
 :::term
+id: term-nakigoe
+lemma: 鳴き声
+reading: なきごえ
+romaji: nakigoe
+meaning_it: verso / richiamo di un animale o Pokemon
+notes_it: >-
+  In questo capitolo segnala un suono non ancora identificato che spinge il
+  giocatore a investigare. Non è puro colore sonoro: funziona come indizio di
+  presenza e direzione di un Pokemon misterioso.
+:::
+:::card
+id: card-nakigoe-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+entry_type: term
+entry_id: term-nakigoe
+card_type: recognition
+front: "{{鳴|な}}き{{声|ごえ}}"
+back: verso / richiamo
+example_jp: >-
+  {{知|し}}らない {{鳴|な}}き{{声|ごえ}}が {{崖|がけ}}の {{下|した}}から {{聞|き}}こえた。
+example_it: >-
+  Dal fondo del dirupo si è sentito un verso sconosciuto.
+:::
+:::term
 id: term-waza-machine
 lemma: わざマシン
 reading: わざマシン
@@ -183,6 +207,54 @@ example_it: >-
   potere.
 :::
 :::term
+id: term-chikara-o-tsukai-hatasu
+lemma: 力を使い果たす
+reading: ちからをつかいはたす
+romaji: chikara o tsukaihatasu
+meaning_it: esaurire tutte le proprie forze
+notes_it: >-
+  Espressione narrativa molto importante nella scena del leggendario. Non dice
+  solo che è stanco: segnala che ha consumato il suo potere fino al limite e
+  per questo è bloccato in una forma indebolita.
+:::
+:::card
+id: card-chikara-o-tsukai-hatasu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+entry_type: term
+entry_id: term-chikara-o-tsukai-hatasu
+card_type: recognition
+front: "{{力|ちから}}を {{使|つか}}い{{果|は}}たす"
+back: esaurire tutte le proprie forze
+example_jp: >-
+  あの ポケモンは {{力|ちから}}を {{使|つか}}い{{果|は}}たして {{倒|たお}}れていた。
+example_it: >-
+  Quel Pokemon era crollato dopo aver esaurito completamente le sue forze.
+:::
+:::term
+id: term-hetarikomu
+lemma: へたりこむ
+reading: へたりこむ
+romaji: hetarikomu
+meaning_it: accasciarsi / crollare a terra
+notes_it: >-
+  Verbo colloquiale che descrive il cedere delle gambe o delle forze fino a
+  sedersi o afflosciarsi sul posto. Qui rende visibile il dopo-sforzo del
+  leggendario appena ha aiutato il protagonista.
+:::
+:::card
+id: card-hetarikomu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+entry_type: term
+entry_id: term-hetarikomu
+card_type: recognition
+front: へたりこむ
+back: accasciarsi / crollare a terra
+example_jp: >-
+  {{助|たす}}けた あとで そのまま へたりこんじゃった みたいだ。
+example_it: >-
+  Sembra che dopo averti aiutato sia crollato lì sul posto.
+:::
+:::term
 id: term-seigyo-suru
 lemma: 制御する
 reading: せいぎょする
@@ -205,6 +277,54 @@ example_jp: >-
   その ボールは あの ポケモンを {{制御|せいぎょ}}するための ものなんだ。
 example_it: >-
   Quella Ball serve a tenere sotto controllo quel Pokemon.
+:::
+:::term
+id: term-sainan
+lemma: 災難
+reading: さいなん
+romaji: sainan
+meaning_it: guaio / brutta sorte
+notes_it: >-
+  Parola usata per commentare una situazione sfortunata che ti è capitata
+  addosso. Pepper la usa con tono secco e poco empatico, coerente con il suo
+  ingresso brusco nella scena.
+:::
+:::card
+id: card-sainan-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+entry_type: term
+entry_id: term-sainan
+card_type: recognition
+front: "{{災難|さいなん}}"
+back: guaio / brutta sorte
+example_jp: >-
+  いきなり そんな {{場面|ばめん}}に {{巻|ま}}き{{込|こ}}まれるなんて {{災難|さいなん}}だな。
+example_it: >-
+  Finire coinvolti all'improvviso in una scena del genere è proprio una sfortuna.
+:::
+:::term
+id: term-omoiyarareru
+lemma: 思いやられる
+reading: おもいやられる
+romaji: omoiyarareru
+meaning_it: lascia presagire male / fa pensare che andrà dura
+notes_it: >-
+  Espressione valutativa che proietta un'impressione negativa sul futuro. Nel
+  parlato di Pepper non è una riflessione neutra: è un giudizio brusco su ciò
+  che ti aspetta se già ora sei in difficoltà.
+:::
+:::card
+id: card-omoiyarareru-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+entry_type: term
+entry_id: term-omoiyarareru
+card_type: recognition
+front: "{{思|おも}}いやられる"
+back: lascia presagire male / fa pensare che andrà dura
+example_jp: >-
+  {{最初|さいしょ}}から これでは {{先|さき}}が {{思|おも}}いやられるぜ。
+example_it: >-
+  Se si parte così, viene da pensare che quello che ci aspetta sarà duro.
 :::
 :::grammar
 id: grammar-te-ageru
@@ -275,6 +395,30 @@ example_jp: >-
   {{向|む}}かおう。
 example_it: >-
   Andiamo verso il faro mentre cerchiamo Pokemon selvatici.
+:::
+:::grammar
+id: grammar-ba-hodo
+pattern: ～ば ～ほど
+title: Più..., più...
+meaning_it: più succede X, più aumenta Y
+notes_it: >-
+  Collega due movimenti che crescono insieme. In questo arco è perfetto per
+  leggere osservazioni come `{{見|み}}れば {{見|み}}るほど`:
+  più Pepper osserva il Pokemon misterioso, più lo trova strano o degno di
+  attenzione.
+:::
+:::card
+id: card-ba-hodo-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-102-scarlet-violet-story-prologue-02-catching-cave-koraidon-and-pepper
+entry_type: grammar
+entry_id: grammar-ba-hodo
+card_type: concept
+front: ～ば ～ほど
+back: più..., più...
+example_jp: >-
+  {{見|み}}れば {{見|み}}るほど {{不思議|ふしぎ}}な ポケモンだ。
+example_it: >-
+  Più lo guardi, più sembra un Pokemon misterioso.
 :::
 :::card
 id: card-yasei-prologue-02-recognition

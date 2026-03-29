@@ -45,9 +45,14 @@ morbido e dialogo caratteriale.
 - [{{野生|やせい}}](term:term-yasei)
 - [{{気|き}}をつける](term:term-ki-o-tsukeru)
 - [{{生息|せいそく}}する](term:term-seisoku-suru)
+- [{{鳴|な}}き{{声|ごえ}}](term:term-nakigoe)
 - [わざマシン](term:term-waza-machine)
 - [{{姿|すがた}}](term:term-sugata)
+- [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu)
+- [へたりこむ](term:term-hetarikomu)
 - [{{制御|せいぎょ}}する](term:term-seigyo-suru)
+- [{{災難|さいなん}}](term:term-sainan)
+- [{{思|おも}}いやられる](term:term-omoiyarareru)
 
 ## Pattern grammaticali chiave
 
@@ -56,6 +61,7 @@ morbido e dialogo caratteriale.
 - [～ながら](grammar:grammar-nagara)
 - [～てみる](grammar:grammar-te-miru)
 - [～てしまう](grammar:grammar-te-shimau)
+- [～ば ～ほど](grammar:grammar-ba-hodo)
 
 ## Spiegazione
 
@@ -113,6 +119,12 @@ quindi puoi aspettarti incontri, pericoli o materiali collegati a quella specie.
 Non è solo una descrizione naturalistica; ti prepara a leggere il territorio
 come spazio di gameplay.
 
+Nello stesso blocco il suono conta quasi quanto l'immagine. Una
+[{{鳴|な}}き{{声|ごえ}}](term:term-nakigoe) sconosciuta non serve solo a creare
+atmosfera: nel prologo è l'indizio che ti spinge a investigare un punto preciso
+del percorso e ad associare un verso a una presenza reale. Questo dettaglio
+aiuta a leggere meglio la transizione tra esplorazione libera e scena scriptata.
+
 :::image
 src: assets/story/inlet-cave-houndour-warning.webp
 alt: "Area della grotta iniziale vicino al faro con ambiente roccioso e Pokemon selvatici del luogo."
@@ -136,6 +148,13 @@ forza. Per questo la frase `この {{姿|すがた}}じゃ {{戦|たたか}}え�
 "in questo stato non può ancora combattere", non come un commento estetico.
 Capire [{{姿|すがた}}](term:term-sugata) ti aiuterà più avanti ogni volta che
 incontrerai forme, cambiamenti o condizioni speciali.
+
+Per leggere fino in fondo questa scena conviene agganciare anche due espressioni
+molto concrete: [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu)
+e [へたりこむ](term:term-hetarikomu). La prima spiega perché il leggendario è
+arrivato al limite; la seconda rende visibile il crollo subito dopo averti
+aiutato. Insieme a [{{姿|すがた}}](term:term-sugata), queste forme ti fanno leggere
+la scena come esaurimento reale di risorse, non come semplice posa drammatica.
 
 :::image
 src: assets/story/weakened-legendary-cave-scene.webp
@@ -176,6 +195,15 @@ significato di base resta quello standard: il personaggio non è più difficile
 perché usa contenuti più astratti, ma perché li esprime con una voce più aspra
 ed emotiva.
 
+Dentro questo stesso registro entrano bene
+[{{災難|さいなん}}](term:term-sainan) e
+[{{思|おも}}いやられる](term:term-omoiyarareru). La prima etichetta la tua
+situazione come un guaio capitato addosso; la seconda proietta subito un
+presagio negativo sul futuro. E quando Pepper osserva il Pokemon misterioso con
+forme del tipo `{{見|み}}れば {{見|み}}るほど`, il pattern
+[～ば ～ほど](grammar:grammar-ba-hodo) ti aiuta a capire che la sua impressione
+cresce man mano che continua a guardarlo.
+
 Infine [わざマシン](term:term-waza-machine) è la ricompensa di sistema che il
 capitolo mette in mano al giocatore prima di arrivare al Centro Pokemon del
 blocco successivo. In Scarlet / Violet una `わざマシン` insegna una mossa e si
@@ -212,6 +240,14 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
+  {{鳴|な}}き{{声|ごえ}}を {{追|お}}っていくと {{崖|がけ}}の {{下|した}}で
+  {{弱|よわ}}った ポケモンを {{見|み}}つけた。
+translation_it: >-
+  Seguendo il verso, abbiamo trovato in fondo al dirupo un Pokemon indebolito.
+:::
+
+:::example_sentence
+jp: >-
   {{洞窟|どうくつ}}には デルビルが {{生息|せいそく}}しているから {{奥|おく}}へ
   {{行|い}}きすぎないように。
 translation_it: >-
@@ -229,6 +265,15 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
+  {{助|たす}}けた あとで へたりこんだ {{姿|すがた}}を {{見|み}}ると {{先|さき}}が
+  {{思|おも}}いやられる。
+translation_it: >-
+  Quando lo vedi accasciarsi dopo averti aiutato, viene da pensare che quello
+  che ci aspetta non sarà semplice.
+:::
+
+:::example_sentence
+jp: >-
   それは あの ポケモンを {{制御|せいぎょ}}するための モンスターボールらしい。
 translation_it: >-
   Pare che quella sia la Monster Ball usata per controllare quel Pokemon.
@@ -242,6 +287,14 @@ translation_it: >-
   Le MT spariscono dopo un uso, quindi conviene scegliere bene quando usarle.
 :::
 
+:::example_sentence
+jp: >-
+  {{見|み}}れば {{見|み}}るほど {{不思議|ふしぎ}}で {{災難|さいなん}}な {{出会|であ}}い
+  だったと わかる。
+translation_it: >-
+  Più la guardi, più capisci che è stato un incontro misterioso e pieno di guai.
+:::
+
 ## Nota finale
 
 Questo prologo va studiato come primo vero manuale narrativo di Scarlet /
@@ -252,4 +305,3 @@ Violet. Se stabilizzi [{{捕獲|ほかく}}](term:term-hokaku),
 [{{制御|せいぎょ}}する](term:term-seigyo-suru), entri nel capitolo successivo con
 una lettura molto più chiara di tutorial, premi di sistema e primi dialoghi
 seri del gioco.
-

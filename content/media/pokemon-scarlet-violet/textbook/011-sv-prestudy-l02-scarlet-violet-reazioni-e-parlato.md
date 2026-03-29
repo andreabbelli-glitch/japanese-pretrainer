@@ -60,7 +60,7 @@ Tra i termini, [もう](term:term-v013-mou) è importante perché spesso non vuo
 
 [持ちきれない / 持ちきれません](term:term-e003-mochikirenai-mochikiremasen) è un messaggio da sistema: non dice genericamente che qualcosa "non va", ma che non puoi più portare altro perché hai raggiunto il limite. [がんばって](term:term-e004-ganbatte) invece è l'opposto come tono: è un incoraggiamento, quindi in una scena prima di una sfida equivale a "dai, impegnati" o "buona fortuna". [よろしく](term:term-e005-yoroshiku) non corrisponde bene a un solo italiano fisso: a seconda del contesto può voler dire "piacere", ma anche "conto su di te" o "affidiamoci l'uno all'altro". In `これから よろしく` il punto non è la presentazione neutra, ma il rapporto che inizia da questo momento in poi.
 
-[～ないで](grammar:grammar-g005-senza-fare-non-fare-e) appare spesso in richieste e divieti: `走らないで` è "non correre", quindi il focus non è una negazione astratta ma l'istruzione di non fare quell'azione. [～てる](grammar:grammar-g006-contrazione-colloquiale-di) è semplicemente il parlato contratto di `～ている`: quando senti o leggi `待ってる`, il significato resta "sta aspettando", ma il tono è più naturale e colloquiale. Riconoscerlo è utile perché nei dialoghi dei personaggi il giapponese parlato taglia spesso forme che in un manuale comparirebbero complete.
+[～ないで](grammar:grammar-g005-senza-fare-non-fare-e) appare spesso in richieste e divieti: `バトルしないで` è "non combattere", quindi il focus non è una negazione astratta ma l'istruzione di non fare quell'azione. [～てる](grammar:grammar-g006-contrazione-colloquiale-di) è semplicemente il parlato contratto di `～ている`: quando senti o leggi `待ってる`, il significato resta "sta aspettando", ma il tono è più naturale e colloquiale. Riconoscerlo è utile perché nei dialoghi dei personaggi il giapponese parlato taglia spesso forme che in un manuale comparirebbero complete.
 
 Accanto a questo nucleo ci sono etichette contestuali come [スター団](term:term-v017-sutaa-dan), [ボタン](term:term-v018-botan) e [エリアゼロ](term:term-v022-eriazero). Qui la cosa utile non è analizzarle grammaticalmente, ma riconoscerle subito come riferimenti narrativi o geografici tipici di Scarlet/Violet.
 
@@ -89,9 +89,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  ここで {{走|はし}}らないで。
+  ここで バトルしないで。
 translation_it: >-
-  Non correre qui.
+  Non combattere qui.
 :::
 
 ## Nota finale

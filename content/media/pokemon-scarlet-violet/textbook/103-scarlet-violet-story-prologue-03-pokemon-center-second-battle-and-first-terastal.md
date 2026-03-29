@@ -45,6 +45,8 @@ sistema.
 
 - [ポケモンセンター](term:term-pokemon-center)
 - [フレンドリィショップ](term:term-friendly-shop)
+- [かしこまりました](term:term-kashikomarimashita)
+- [お{{疲|つか}}れさまです](term:term-otsukaresama-desu)
 - [LP（リーグペイ）](term:term-lp)
 - [おとしもの](term:term-otoshimono)
 - [わざマシン](term:term-waza-machine)
@@ -77,6 +79,14 @@ il prossimo tratto della strada. Per la lettura, la coppia piu importante e
 [ポケモンセンター](term:term-pokemon-center) /
 [フレンドリィショップ](term:term-friendly-shop): il primo nomina l'hub intero,
 il secondo il banco dove compri oggetti.
+
+Qui conviene fissare anche due formule di service register:
+[お{{疲|つか}}れさまです](term:term-otsukaresama-desu) e
+[かしこまりました](term:term-kashikomarimashita). La prima apre il contatto con
+un tono professionale ma cordiale; la seconda segnala che la richiesta è stata
+presa in carico davvero. Anche quando il banco allunga il saluto in
+`お{{疲|つか}}れさまでーす`, la forma da memorizzare resta quella canonica
+`お{{疲|つか}}れさまです`.
 
 :::image
 src: assets/story/pokemon-center-service-counter.webp
@@ -196,6 +206,15 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
+  お{{疲|つか}}れさまです と {{声|こえ}}を かけられて かしこまりました と
+  {{返|かえ}}ってくると、 {{受付|うけつけ}}の {{流|なが}}れが {{始|はじ}}まる。
+translation_it: >-
+  Quando ti salutano con "ben fatto" e ti rispondono con "certamente", capisci
+  che la procedura del banco è davvero partita.
+:::
+
+:::example_sentence
+jp: >-
   フレンドリィショップでは モンスターボールや キズぐすりを LPで
   {{買|か}}える。
 translation_it: >-
@@ -261,4 +280,3 @@ Se stabilizzi [ポケモンセンター](term:term-pokemon-center),
 [テラスタルオーブ](term:term-terastal-orb) e
 [テラスタイプ](term:term-tera-type), il blocco successivo all'accademia sara
 molto piu leggibile sia nei menu sia nei dialoghi guidati.
-

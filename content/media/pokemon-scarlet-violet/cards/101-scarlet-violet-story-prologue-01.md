@@ -56,6 +56,101 @@ example_it: >-
   Da oggi sono uno studente che si trasferisce all'Accademia.
 :::
 :::term
+id: term-gomen-kudasai
+lemma: ごめんください
+reading: ごめんください
+romaji: gomen kudasai
+meaning_it: permesso? / posso entrare?
+notes_it: >-
+  Formula fissa usata quando si chiama da fuori casa o da un ingresso. Nel
+  prologo Clavell la usa come apertura molto educata, prima ancora di entrare
+  nella sfera privata della famiglia del protagonista.
+:::
+:::card
+id: card-gomen-kudasai-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-gomen-kudasai
+card_type: recognition
+front: ごめんください
+back: permesso? / posso entrare?
+example_jp: >-
+  {{玄関|げんかん}}の {{外|そと}}から ごめんください と {{声|こえ}}が した。
+example_it: >-
+  Dall'esterno dell'ingresso si è sentito un "permesso?".
+:::
+:::term
+id: term-moushiwake-arimasen
+lemma: 申し訳ありません
+reading: もうしわけありません
+romaji: moushiwake arimasen
+meaning_it: mi dispiace molto / non ho scuse
+notes_it: >-
+  È una scusa formale e pesante, più forte di un semplice `すみません`. Clavell la
+  usa quando si assume la responsabilità del ritardo dei documenti scolastici.
+:::
+:::card
+id: card-moushiwake-arimasen-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-moushiwake-arimasen
+card_type: recognition
+front: "{{申|もう}}し{{訳|わけ}}ありません"
+back: mi dispiace molto / non ho scuse
+example_jp: >-
+  {{案内|あんない}}が {{遅|おく}}れてしまい {{申|もう}}し{{訳|わけ}}ありません。
+example_it: >-
+  Mi dispiace molto che i documenti siano arrivati in ritardo.
+:::
+:::term
+id: term-futegiwa
+lemma: 不手際
+reading: ふてぎわ
+romaji: futegiwa
+meaning_it: errore di gestione / disguido
+notes_it: >-
+  Descrive un problema imputabile a chi gestisce la situazione, non una
+  sfortuna neutra. Nel prologo Clavell parla del ritardo come `アカデミーの
+  {{不手際|ふてぎわ}}`.
+:::
+:::card
+id: card-futegiwa-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-futegiwa
+card_type: recognition
+front: "{{不手際|ふてぎわ}}"
+back: errore di gestione / disguido
+example_jp: >-
+  それは {{学校|がっこう}}が {{起|お}}こした {{不手際|ふてぎわ}}だった。
+example_it: >-
+  Quello è stato un disguido causato dalla scuola.
+:::
+:::term
+id: term-okotoba-ni-amaete
+lemma: お言葉に甘えて
+reading: おことばにあまえて
+romaji: okotoba ni amaete
+meaning_it: accetto volentieri la sua offerta
+notes_it: >-
+  Espressione fissa di cortesia: il parlante accetta l'invito dell'altro
+  appoggiandosi alla sua gentilezza. Clavell la usa quando decide di fermarsi a
+  prendere il tè.
+:::
+:::card
+id: card-okotoba-ni-amaete-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-okotoba-ni-amaete
+card_type: recognition
+front: "お{{言葉|ことば}}に {{甘|あま}}えて"
+back: accetto volentieri la sua offerta
+example_jp: >-
+  それでは お{{言葉|ことば}}に {{甘|あま}}えて お{{茶|ちゃ}}を いただきます。
+example_it: >-
+  Allora accetto volentieri il suo invito e prendo un tè.
+:::
+:::term
 id: term-smartphone-rotom
 lemma: スマホロトム
 reading: スマホロトム
@@ -191,6 +286,78 @@ example_jp: >-
 example_it: >-
   Per poco non mandavo in campo il mio solito Pokemon senza pensarci.
 :::
+:::term
+id: term-gokinjo
+lemma: ご近所
+reading: ごきんじょ
+romaji: gokinjo
+meaning_it: vicinato / persona del quartiere
+notes_it: >-
+  Nel prologo Nemona lo usa per trasformare un rapporto geografico in un legame
+  sociale immediato. La variante `ご{{近所|きんじょ}}{{同士|どうし}}` sottolinea
+  che i due personaggi sono "del quartiere" allo stesso modo.
+:::
+:::card
+id: card-gokinjo-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-gokinjo
+card_type: recognition
+front: "ご{{近所|きんじょ}}"
+back: vicinato / persona del quartiere
+example_jp: >-
+  {{向|む}}こうの お{{家|うち}}の ご{{近所|きんじょ}}さん だったんだね。
+example_it: >-
+  Quindi eri il vicino della casa qui davanti.
+:::
+:::term
+id: term-debyuu-sen
+lemma: デビュー戦
+reading: デビューせん
+romaji: debyuu sen
+meaning_it: match di debutto / prima sfida ufficiale
+notes_it: >-
+  Combina il prestito `デビュー` con `{{戦|せん}}` per marcare la prima vera prova
+  di un Pokemon o di un allenatore. Nemona lo usa per caricare il primo match di
+  valore inaugurale.
+:::
+:::card
+id: card-debyuu-sen-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-debyuu-sen
+card_type: recognition
+front: "デビュー{{戦|せん}}"
+back: match di debutto / prima sfida ufficiale
+example_jp: >-
+  さっきの {{子|こ}}の デビュー{{戦|せん}}だから {{見守|みまも}}ってあげよう。
+example_it: >-
+  È la partita di debutto di quel Pokemon, quindi guardiamola con attenzione.
+:::
+:::term
+id: term-soshitsu-ari
+lemma: 素質アリ
+reading: そしつあり
+romaji: soshitsu ari
+meaning_it: ha stoffa / ha talento
+notes_it: >-
+  Formula breve e colloquiale per dire che qualcuno mostra predisposizione
+  naturale. In Scarlet / Violet Nemona la usa per valutare il protagonista dopo
+  il primo match.
+:::
+:::card
+id: card-soshitsu-ari-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-soshitsu-ari
+card_type: recognition
+front: "{{素質|そしつ}}アリ"
+back: ha stoffa / ha talento
+example_jp: >-
+  {{初|はじ}}めてで そこまで {{戦|たたか}}えるなら {{素質|そしつ}}アリ だね。
+example_it: >-
+  Se riesci già a combattere così alla prima volta, vuol dire che hai talento.
+:::
 :::grammar
 id: grammar-te-kudasai
 pattern: ～てください
@@ -287,6 +454,100 @@ example_jp: >-
   ポケモンを {{始|はじ}}めたばかり だから まずは {{基本|きほん}}を {{覚|おぼ}}えよう。
 example_it: >-
   Hai appena iniziato con i Pokemon, quindi prima impariamo le basi.
+:::
+:::term
+id: term-you-check
+lemma: 要チェック
+reading: ようチェック
+romaji: you chekku
+meaning_it: da controllare assolutamente / da non perdere
+notes_it: >-
+  È un'etichetta colloquiale da tutorial o commento pratico. Quando Nemona dice
+  `ポケモントレーナーなら {{要|よう}}チェック`, sta segnalando che quell'app o
+  funzione merita attenzione immediata.
+:::
+:::card
+id: card-you-check-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-you-check
+card_type: recognition
+front: "{{要|よう}}チェック"
+back: da controllare assolutamente / da non perdere
+example_jp: >-
+  ポケモントレーナーなら {{要|よう}}チェックの アプリだよ。
+example_it: >-
+  Se fai l'Allenatore, è un'app da controllare assolutamente.
+:::
+:::term
+id: term-tegaki
+lemma: 手書き
+reading: てがき
+romaji: tegaki
+meaning_it: scritto a mano / compilato a mano
+notes_it: >-
+  In questo prologo serve a far percepire il contrasto tra il vecchio Pokedex
+  compilato a mano e l'app automatica dello [スマホロトム](term:term-smartphone-rotom).
+:::
+:::card
+id: card-tegaki-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-tegaki
+card_type: recognition
+front: "{{手書|てが}}き"
+back: scritto a mano / compilato a mano
+example_jp: >-
+  {{昔|むかし}}の {{図鑑|ずかん}}は ノートに {{手書|てが}}き だったらしい。
+example_it: >-
+  Pare che una volta il Pokedex venisse compilato a mano su un quaderno.
+:::
+:::term
+id: term-obentou
+lemma: お弁当
+reading: おべんとう
+romaji: obentou
+meaning_it: pranzo al sacco / bento
+notes_it: >-
+  Nel prologo la madre lo consegna insieme ai soldi prima dell'uscita per la
+  scuola. È lessico domestico pratico che lega la partenza all'idea di vita
+  fuori casa.
+:::
+:::card
+id: card-obentou-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: term
+entry_id: term-obentou
+card_type: recognition
+front: "お{{弁当|べんとう}}"
+back: pranzo al sacco / bento
+example_jp: >-
+  お{{弁当|べんとう}}を {{持|も}}っていけば {{学校|がっこう}}でも {{安心|あんしん}}だ。
+example_it: >-
+  Se porti il bento, anche a scuola sei tranquillo per il pranzo.
+:::
+:::grammar
+id: grammar-zukushi
+pattern: ～づくし
+title: Pieno di... / tutto all'insegna di...
+meaning_it: tutto pieno di / una sequenza continua di
+notes_it: >-
+  Aggiunto a un nome, `～づくし` dice che una fase o un periodo è dominato da
+  quel tipo di esperienza. In `{{初|はじ}}めてづくし` la madre descrive i primi
+  giorni lontano da casa come una serie continua di novità.
+:::
+:::card
+id: card-zukushi-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
+entry_type: grammar
+entry_id: grammar-zukushi
+card_type: concept
+front: ～づくし
+back: pieno di... / tutto all'insegna di...
+example_jp: >-
+  {{初|はじ}}めてづくしの {{毎日|まいにち}}でも だんだん {{慣|な}}れていけるよ。
+example_it: >-
+  Anche se sono giornate piene di prime volte, piano piano ci si abitua.
 :::
 :::card
 id: card-pokemon-zukan-prologue-01-recognition

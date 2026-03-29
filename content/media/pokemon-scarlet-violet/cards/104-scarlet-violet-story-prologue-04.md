@@ -109,6 +109,77 @@ example_it: >-
   Se riposi nella stanza del dormitorio, puoi passare al giorno successivo.
 :::
 :::term
+id: term-shisetsu
+lemma: 施設
+reading: しせつ
+romaji: shisetsu
+meaning_it: struttura / struttura utile / facility
+notes_it: >-
+  In questo arco indica servizi e ambienti funzionali del campus, non edifici
+  descritti in astratto. Quando il gioco parla di `{{役立|やくだ}}つ {{施設|しせつ}}`,
+  sta segnalando luoghi che sbloccano uso pratico o avanzamento.
+:::
+:::card
+id: card-shisetsu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
+entry_type: term
+entry_id: term-shisetsu
+card_type: recognition
+front: "{{施設|しせつ}}"
+back: struttura / facility
+example_jp: >-
+  {{学校|がっこう}}には {{役立|やくだ}}つ {{施設|しせつ}}が いろいろ そろっている。
+example_it: >-
+  Nella scuola ci sono varie strutture utili già pronte all'uso.
+:::
+:::term
+id: term-ryouseikatsu
+lemma: 寮生活
+reading: りょうせいかつ
+romaji: ryou seikatsu
+meaning_it: vita in dormitorio
+notes_it: >-
+  Unisce `{{寮|りょう}}` e `{{生活|せいかつ}}` per parlare della routine di chi vive
+  stabilmente nel campus. Nel prologo segna il passaggio dalla casa del
+  protagonista a una quotidianità scolastica autonoma.
+:::
+:::card
+id: card-ryouseikatsu-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
+entry_type: term
+entry_id: term-ryouseikatsu
+card_type: recognition
+front: "{{寮|りょう}}{{生活|せいかつ}}"
+back: vita in dormitorio
+example_jp: >-
+  {{今日|きょう}}から {{学校|がっこう}}で {{寮|りょう}}{{生活|せいかつ}}が {{始|はじ}}まる。
+example_it: >-
+  Da oggi comincia la vita in dormitorio all'accademia.
+:::
+:::term
+id: term-tsuugaku
+lemma: 通学
+reading: つうがく
+romaji: tsuugaku
+meaning_it: andare a scuola da casa / pendolarismo scolastico
+notes_it: >-
+  Contrasta con la vita nel dormitorio. In Scarlet / Violet serve a distinguere
+  gli studenti che abitano vicino al campus e raggiungono la scuola da casa.
+:::
+:::card
+id: card-tsuugaku-recognition
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
+entry_type: term
+entry_id: term-tsuugaku
+card_type: recognition
+front: "{{通学|つうがく}}"
+back: andare a scuola da casa / pendolarismo scolastico
+example_jp: >-
+  {{家|いえ}}から {{通学|つうがく}}する {{生徒|せいと}}も いる らしい。
+example_it: >-
+  Pare che ci siano anche studenti che vanno a scuola da casa.
+:::
+:::term
 id: term-tannin
 lemma: 担任
 reading: たんにん
@@ -182,4 +253,28 @@ example_jp: >-
   ように {{言|い}}われたの。
 example_it: >-
   La docente mi ha detto di accompagnarti alla tua stanza del dormitorio.
+:::
+:::grammar
+id: grammar-houdai
+pattern: ～放題
+title: A volontà / illimitato / quanto vuoi
+meaning_it: fare o usare liberamente e in grande quantità
+notes_it: >-
+  Attaccato alla radice in `ます`, `～{{放題|ほうだい}}` comunica disponibilità
+  ampia o assenza pratica di limite. In questo arco si sente in frasi come
+  `{{使|つか}}い{{放題|ほうだい}}` per le facility del campus e richiama anche il
+  più colloquiale `やり{{放題|ほうだい}}` di Nemona.
+:::
+:::card
+id: card-houdai-concept
+lesson_id: lesson-pokemon-scarlet-violet-scarlet-violet-story-104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance
+entry_type: grammar
+entry_id: grammar-houdai
+card_type: concept
+front: "～{{放題|ほうだい}}"
+back: a volontà / illimitato / quanto vuoi
+example_jp: >-
+  {{役立|やくだ}}つ {{施設|しせつ}}も {{使|つか}}い{{放題|ほうだい}} だって！
+example_it: >-
+  Dicono che le strutture utili si possano usare liberamente!
 :::
