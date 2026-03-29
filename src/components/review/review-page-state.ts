@@ -49,6 +49,15 @@ export function shouldAcceptServerReviewData(
     return false;
   }
 
+  if (
+    currentData.scope !== nextData.scope ||
+    currentData.media.slug !== nextData.media.slug ||
+    currentData.session.extraNewCount !== nextData.session.extraNewCount ||
+    (currentData.session.segmentId ?? null) !== (nextData.session.segmentId ?? null)
+  ) {
+    return true;
+  }
+
   return currentData.selectedCard?.id === nextData.selectedCard?.id;
 }
 

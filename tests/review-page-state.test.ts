@@ -67,20 +67,32 @@ describe("review page state", () => {
 
   it("accepts same-progress server data so settings and notices can refresh", () => {
     const currentData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
       selectedCard: {
         id: "card-a"
       },
       session: {
-        answeredCount: 2
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
       }
     } as ReviewPageClientData;
 
     const nextData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
       selectedCard: {
         id: "card-a"
       },
       session: {
-        answeredCount: 2
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
       }
     } as unknown as ReviewPageData;
 
@@ -89,42 +101,100 @@ describe("review page state", () => {
 
   it("rejects same-progress server data when the selected card changed", () => {
     const currentData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
       selectedCard: {
         id: "card-b"
       },
       session: {
-        answeredCount: 2
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
       }
     } as ReviewPageClientData;
 
     const nextData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
       selectedCard: {
         id: "card-a"
       },
       session: {
-        answeredCount: 2
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
       }
     } as unknown as ReviewPageData;
 
     expect(shouldAcceptServerReviewData(currentData, nextData)).toBe(false);
   });
 
-  it("rejects stale server data from an older review step", () => {
+  it("accepts same-progress server data when the segment filter changed", () => {
     const currentData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
       selectedCard: {
         id: "card-b"
       },
       session: {
-        answeredCount: 3
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
       }
     } as ReviewPageClientData;
 
     const nextData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
       selectedCard: {
         id: "card-a"
       },
       session: {
-        answeredCount: 2
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: "segment_fixture_starter_core"
+      }
+    } as unknown as ReviewPageData;
+
+    expect(shouldAcceptServerReviewData(currentData, nextData)).toBe(true);
+  });
+
+  it("rejects stale server data from an older review step", () => {
+    const currentData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
+      selectedCard: {
+        id: "card-b"
+      },
+      session: {
+        answeredCount: 3,
+        extraNewCount: 0,
+        segmentId: null
+      }
+    } as ReviewPageClientData;
+
+    const nextData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
+      selectedCard: {
+        id: "card-a"
+      },
+      session: {
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
       }
     } as unknown as ReviewPageData;
 
