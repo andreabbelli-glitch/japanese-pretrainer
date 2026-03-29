@@ -61,7 +61,9 @@ src/
     migrate.ts      Runner migrazioni
   domain/           Logica di dominio pura, zero dipendenze framework
   lib/              Utility e helper condivisi tra app/ e scripts/
-    content/        Parser, validator e sync pipeline dei bundle Markdown
+    content/        Utility per parser, validazione e sync dei bundle Markdown
+      importer/     Pipeline di import e rendering dei bundle nel modello applicativo
+      parser/       Parsing Markdown/frontmatter e normalizzazione blocchi strutturati
     site/           Navigazione, href e utility di stato per il routing UI
   types/            Tipi TypeScript globali e interfacce condivise
   styles/           CSS globale e variabili
@@ -110,6 +112,7 @@ docs/
   legacy/                 Materiale storico e template del workflow editoriale precedente
     content-briefs/       Brief editoriali legacy per bundle specifici
     prompts/              Prompt legacy usati nel workflow editoriale
+    templates/            Template legacy per media, lesson, card e workflow immagini
   llm-kit/                Guide per integrazione LLM esterna
     general/              Template e regole riusabili cross-media
     media/                Brief e prompt specifici per singolo media
