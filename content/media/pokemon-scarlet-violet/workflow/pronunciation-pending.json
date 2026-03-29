@@ -1,9 +1,4514 @@
 {
   "version": 1,
   "media_slug": "pokemon-scarlet-violet",
-  "total_targets": 48,
-  "audio_backed_count": 0,
-  "known_missing_count": 48,
-  "pending_count": 0,
-  "pending": []
+  "total_targets": 986,
+  "audio_backed_count": 152,
+  "known_missing_count": 67,
+  "pending_count": 767,
+  "pending": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-v136-naze",
+      "label": "なぜ",
+      "reading": "なぜ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v137-tabi",
+      "label": "旅",
+      "reading": "たび"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e025-dekiruyouninatta",
+      "label": "〜できるようになった",
+      "reading": "〜できるようになった"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e026-makase-te",
+      "label": "任せて",
+      "reading": "まかせて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v138-seisokuchi",
+      "label": "生息地",
+      "reading": "せいそくち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v139-nannin",
+      "label": "何人",
+      "reading": "なんにん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v140-uru",
+      "label": "売る",
+      "reading": "うる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v141-ikkai",
+      "label": "一回",
+      "reading": "いっかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v142-kawa",
+      "label": "川",
+      "reading": "かわ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v143-machi",
+      "label": "街",
+      "reading": "まち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v144-tabun",
+      "label": "たぶん",
+      "reading": "たぶん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v145-nanbiki",
+      "label": "何匹",
+      "reading": "なんびき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v146-ikisaki",
+      "label": "行先",
+      "reading": "いきさき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v147-sutaadasutosutoriito",
+      "label": "スターダスト★ストリート",
+      "reading": "すたーだすと★すとりーと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v148-chanpionroodo",
+      "label": "チャンピオンロード",
+      "reading": "ちゃんぴおんろーど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v149-rejiendoruuto",
+      "label": "レジェンドルート",
+      "reading": "れじぇんどるーと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v150-waka-ru",
+      "label": "分かる",
+      "reading": "わかる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e027-sasete",
+      "label": "〜させて",
+      "reading": "〜させて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e028-omedetou",
+      "label": "おめでとう",
+      "reading": "おめでとう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e029-youkoso",
+      "label": "ようこそ",
+      "reading": "ようこそ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v153-tada",
+      "label": "ただ",
+      "reading": "ただ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v154-iwa",
+      "label": "いわ",
+      "reading": "いわ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v155-hontou",
+      "label": "本当",
+      "reading": "ほんとう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v156-jugyou",
+      "label": "授業",
+      "reading": "じゅぎょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e030-sate",
+      "label": "さて",
+      "reading": "さて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e031-douzo",
+      "label": "どうぞ",
+      "reading": "どうぞ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e032-onegaishimasu",
+      "label": "お願いします",
+      "reading": "おねがいします"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v157-chiimu",
+      "label": "チーム",
+      "reading": "ちーむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v158-gakuen",
+      "label": "学園",
+      "reading": "がくえん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v159-bosu",
+      "label": "ボス",
+      "reading": "ぼす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v160-kusa",
+      "label": "くさ",
+      "reading": "くさ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v161-fushigi",
+      "label": "不思議",
+      "reading": "ふしぎ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v162-dameeji",
+      "label": "ダメージ",
+      "reading": "だめーじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v163-supaisu",
+      "label": "スパイス",
+      "reading": "スパイス"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v165-ajito",
+      "label": "アジト",
+      "reading": "あじと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v166-ryouri",
+      "label": "料理",
+      "reading": "りょうり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v167-nushi",
+      "label": "ヌシ",
+      "reading": "ヌシ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v168-kouchou",
+      "label": "校長",
+      "reading": "こうちょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v169-atarashii",
+      "label": "新しい",
+      "reading": "あたらしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v170-honoo",
+      "label": "ほのお",
+      "reading": "ほのお"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v171-ranku",
+      "label": "ランク",
+      "reading": "ランク"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v173-mizu",
+      "label": "みず",
+      "reading": "みず"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v174-benkyou",
+      "label": "勉強",
+      "reading": "べんきょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v175-ijou",
+      "label": "以上",
+      "reading": "いじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v176-chikara",
+      "label": "力",
+      "reading": "ちから"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e033-naruhodo",
+      "label": "なるほど",
+      "reading": "なるほど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e034-sumimasen",
+      "label": "すみません",
+      "reading": "すみません"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e035-ga-arimasu",
+      "label": "〜が あります",
+      "reading": "〜が あります"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v177-kenkyuu",
+      "label": "研究",
+      "reading": "けんきゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v178-doragon",
+      "label": "ドラゴン",
+      "reading": "ドラゴン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v179-iryoku",
+      "label": "威力",
+      "reading": "いりょく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v181-kesshou",
+      "label": "結晶",
+      "reading": "けっしょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v182-doku",
+      "label": "どく",
+      "reading": "どく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v183-daiji",
+      "label": "大事",
+      "reading": "だいじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v185-namae",
+      "label": "名前",
+      "reading": "なまえ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v186-rekishi",
+      "label": "歴史",
+      "reading": "れきし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v187-pokemonriigu",
+      "label": "ポケモンリーグ",
+      "reading": "ぽけもんりーぐ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v189-kanou",
+      "label": "可能",
+      "reading": "かのう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v190-chousa",
+      "label": "調査",
+      "reading": "ちょうさ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v191-moshikashite",
+      "label": "もしかして",
+      "reading": "もしかして"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v192-konkai",
+      "label": "今回",
+      "reading": "こんかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v193-seichou",
+      "label": "成長",
+      "reading": "せいちょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v194-saikou",
+      "label": "最高",
+      "reading": "さいこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v195-sanka",
+      "label": "参加",
+      "reading": "さんか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e036-souka",
+      "label": "そうか",
+      "reading": "そうか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e037-otsukaresamadesutaa",
+      "label": "お疲れさまでスター",
+      "reading": "おつかれさまでスター"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e038-masaka",
+      "label": "まさか",
+      "reading": "まさか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v196-taikai",
+      "label": "大会",
+      "reading": "たいかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v197-zutto",
+      "label": "ずっと",
+      "reading": "ずっと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v198-kotoba",
+      "label": "言葉",
+      "reading": "ことば"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v199-ichiban",
+      "label": "一番",
+      "reading": "いちばん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v200-mushi",
+      "label": "むし",
+      "reading": "むし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v201-terapiisu",
+      "label": "テラピース",
+      "reading": "テラピース"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v202-mota-seru",
+      "label": "持たせる",
+      "reading": "もたせる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v203-zenzen",
+      "label": "全然",
+      "reading": "ぜんぜん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v204-koori",
+      "label": "こおり",
+      "reading": "こおり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v206-tashikani",
+      "label": "たしかに",
+      "reading": "たしかに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v207-taihen",
+      "label": "大変",
+      "reading": "たいへん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v208-kansha",
+      "label": "感謝",
+      "reading": "かんしゃ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e039-itterasshai",
+      "label": "いってらっしゃい",
+      "reading": "いってらっしゃい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e040-tokorode",
+      "label": "ところで",
+      "reading": "ところで"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e041-ittai",
+      "label": "いったい",
+      "reading": "いったい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v210-tenyuusei",
+      "label": "転入生",
+      "reading": "てんにゅうせい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v211-takai",
+      "label": "高い",
+      "reading": "たかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v212-saikin",
+      "label": "最近",
+      "reading": "さいきん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v213-zettai",
+      "label": "絶対",
+      "reading": "ぜったい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v214-seibutsu",
+      "label": "生物",
+      "reading": "せいぶつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v215-setsumei",
+      "label": "説明",
+      "reading": "せつめい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v216-goukaku",
+      "label": "合格",
+      "reading": "ごうかく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v217-mondai",
+      "label": "問題",
+      "reading": "もんだい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v218-mirai",
+      "label": "未来",
+      "reading": "みらい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v219-honki",
+      "label": "本気",
+      "reading": "ほんき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v220-ichido",
+      "label": "一度",
+      "reading": "いちど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v221-kizu-gusuri",
+      "label": "キズぐすり",
+      "reading": "きずぐすり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v223-bougyo",
+      "label": "防御",
+      "reading": "ぼうぎょ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e042-shiteageru",
+      "label": "〜してあげる",
+      "reading": "〜してあげる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e062-mukou",
+      "label": "向こう",
+      "reading": "むこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e063-docchi",
+      "label": "どっち？",
+      "reading": "どっち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v224-shurui",
+      "label": "種類",
+      "reading": "しゅるい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v225-shokuji",
+      "label": "食事",
+      "reading": "しょくじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v226-raidowaza",
+      "label": "ライド技",
+      "reading": "ライドわざ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v227-menyuu",
+      "label": "メニュー",
+      "reading": "めにゅー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v228-kondo",
+      "label": "今度",
+      "reading": "こんど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v229-irochigai",
+      "label": "色違い",
+      "reading": "いろちがい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v230-imi",
+      "label": "意味",
+      "reading": "いみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v231-denki",
+      "label": "でんき",
+      "reading": "でんき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v232-zannen",
+      "label": "残念",
+      "reading": "ざんねん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v233-jiyuu",
+      "label": "自由",
+      "reading": "じゆう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v234-shouri",
+      "label": "勝利",
+      "reading": "しょうり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v342-chuukan-tesuto",
+      "label": "中間テスト",
+      "reading": "ちゅうかんてすと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v343-kimatsu-tesuto",
+      "label": "期末テスト",
+      "reading": "きまつてすと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e043-soudane",
+      "label": "そうだね",
+      "reading": "そうだね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e044-tonikaku",
+      "label": "とにかく",
+      "reading": "とにかく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e045-shimatta",
+      "label": "しまった！",
+      "reading": "しまった！"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v235-sassoku",
+      "label": "さっそく",
+      "reading": "さっそく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v236-zerorabo",
+      "label": "ゼロラボ",
+      "reading": "ゼロラボ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v238-zehi",
+      "label": "ぜひ",
+      "reading": "ぜひ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v239-raidopokemon",
+      "label": "ライドポケモン",
+      "reading": "ライドポケモン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v240-kawa-ru",
+      "label": "変わる",
+      "reading": "かわる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v241-goosuto",
+      "label": "ゴースト",
+      "reading": "ゴースト"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v242-igai",
+      "label": "意外",
+      "reading": "いがい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v244-sekai",
+      "label": "世界",
+      "reading": "せかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v245-tokubetsu",
+      "label": "特別",
+      "reading": "とくべつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v246-kiroku",
+      "label": "記録",
+      "reading": "きろく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v247-pointo",
+      "label": "ポイント",
+      "reading": "ぽいんと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v248-sonzai",
+      "label": "存在",
+      "reading": "そんざい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v249-noomaru",
+      "label": "ノーマル",
+      "reading": "ノーマル"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v250-jouhou",
+      "label": "情報",
+      "reading": "じょうほう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v251-kankei",
+      "label": "関係",
+      "reading": "かんけい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v252-sudeni",
+      "label": "すでに",
+      "reading": "すでに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v253-shinpai",
+      "label": "心配",
+      "reading": "しんぱい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v254-yuumei",
+      "label": "有名",
+      "reading": "ゆうめい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e046-o-uketorimashita",
+      "label": "〜を 受けとりました！",
+      "reading": "〜を うけとりました！"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e047-o-erandekudasai",
+      "label": "〜を 選んでください",
+      "reading": "〜を えらんでください"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e053-shitemite",
+      "label": "〜してみて",
+      "reading": "〜してみて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v255-kodai",
+      "label": "古代",
+      "reading": "こだい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v256-fearii",
+      "label": "フェアリー",
+      "reading": "フェアリー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v257-hagane",
+      "label": "はがね",
+      "reading": "はがね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v258-mikata",
+      "label": "味方",
+      "reading": "みかた"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v260-naminori",
+      "label": "なみのり",
+      "reading": "なみのり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v261-chuui",
+      "label": "注意",
+      "reading": "ちゅうい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v262-ukeru",
+      "label": "受ける",
+      "reading": "うける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v263-kateika",
+      "label": "家庭科",
+      "reading": "かていか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v264-reshipi",
+      "label": "レシピ",
+      "reading": "レシピ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v265-hikou",
+      "label": "ひこう",
+      "reading": "ひこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v266-zenbu",
+      "label": "全部",
+      "reading": "ぜんぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v267-tsuushin",
+      "label": "通信",
+      "reading": "つうしん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v268-futsuu",
+      "label": "普通",
+      "reading": "ふつう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v269-kekka",
+      "label": "結果",
+      "reading": "けっか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v270-sekkaku",
+      "label": "せっかく",
+      "reading": "せっかく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v271-yakusoku",
+      "label": "約束",
+      "reading": "やくそく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v272-teeburushitei",
+      "label": "テーブルシティ",
+      "reading": "てーぶるしてぃ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v273-kakutou",
+      "label": "かくとう",
+      "reading": "かくとう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e054-sorette",
+      "label": "それって",
+      "reading": "それって"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e055-matane",
+      "label": "またね",
+      "reading": "またね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e056-ttekotoha",
+      "label": "ってことは",
+      "reading": "ってことは"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v274-yakedo",
+      "label": "やけど",
+      "reading": "やけど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v275-shuuryou",
+      "label": "終了",
+      "reading": "しゅうりょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v276-kaijo",
+      "label": "解除",
+      "reading": "かいじょ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v277-kibun",
+      "label": "気分",
+      "reading": "きぶん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v278-shitsurei",
+      "label": "失礼",
+      "reading": "しつれい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v279-hiden",
+      "label": "秘伝",
+      "reading": "ひでん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v280-kakkuu",
+      "label": "かっくう",
+      "reading": "かっくう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v281-taisetsu",
+      "label": "大切",
+      "reading": "たいせつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v282-takara",
+      "label": "宝",
+      "reading": "たから"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v283-sougen",
+      "label": "草原",
+      "reading": "そうげん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v284-koudou",
+      "label": "行動",
+      "reading": "こうどう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v285-riyuu",
+      "label": "理由",
+      "reading": "りゆう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v286-takaramono",
+      "label": "宝物",
+      "reading": "たからもの"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v287-jitsuryoku",
+      "label": "実力",
+      "reading": "じつりょく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v288-mappuapuri",
+      "label": "マップアプリ",
+      "reading": "マップアプリ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v290-renraku",
+      "label": "連絡",
+      "reading": "れんらく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v291-nigate",
+      "label": "苦手",
+      "reading": "にがて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v292-kiken",
+      "label": "危険",
+      "reading": "きけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v293-anshin",
+      "label": "安心",
+      "reading": "あんしん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e057-ittemiyou",
+      "label": "行ってみよう",
+      "reading": "いってみよう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e058-sorenara",
+      "label": "それなら",
+      "reading": "それなら"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e059-shiteokou",
+      "label": "〜しておこう",
+      "reading": "〜しておこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v294-dasshu",
+      "label": "ダッシュ",
+      "reading": "ダッシュ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v295-kinou",
+      "label": "機能",
+      "reading": "きのう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v296-aku",
+      "label": "あく",
+      "reading": "あく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v299-esupaa",
+      "label": "エスパー",
+      "reading": "エスパー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v300-iru",
+      "label": "入る",
+      "reading": "いる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v301-koukan-suru",
+      "label": "交換する",
+      "reading": "こうかんする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v302-deai",
+      "label": "出会い",
+      "reading": "であい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v303-choushi",
+      "label": "調子",
+      "reading": "ちょうし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v304-himitsu",
+      "label": "秘密",
+      "reading": "ひみつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v306-waza-mashinmashin",
+      "label": "わざマシンマシン",
+      "reading": "わざましんましん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v307-suugaku",
+      "label": "数学",
+      "reading": "すうがく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v309-keiken",
+      "label": "経験",
+      "reading": "けいけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v310-kitai",
+      "label": "期待",
+      "reading": "きたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v311-meichuuritsu",
+      "label": "命中率",
+      "reading": "めいちゅうりつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v312-jimen",
+      "label": "じめん",
+      "reading": "じめん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e048-matomete",
+      "label": "まとめて",
+      "reading": "まとめて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e049-tsukureru",
+      "label": "作れる",
+      "reading": "つくれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e060-chinamini",
+      "label": "ちなみに",
+      "reading": "ちなみに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e061-doukana",
+      "label": "どうかな",
+      "reading": "どうかな"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e064-nohinto",
+      "label": "〜のヒント",
+      "reading": "〜のヒント"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v314-fue-ru",
+      "label": "増える",
+      "reading": "ふえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v315-modoru",
+      "label": "戻る",
+      "reading": "もどる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v316-mahi",
+      "label": "まひ",
+      "reading": "まひ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v317-tokui",
+      "label": "得意",
+      "reading": "とくい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v318-gakenobori",
+      "label": "がけのぼり",
+      "reading": "がけのぼり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v319-chaaji",
+      "label": "チャージ",
+      "reading": "ちゃーじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v320-annai",
+      "label": "案内",
+      "reading": "あんない"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v321-mitame",
+      "label": "見た目",
+      "reading": "みため"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v323-honki-de",
+      "label": "本気で",
+      "reading": "ほんきで"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v324-mamoru",
+      "label": "守る",
+      "reading": "まもる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v325-furui",
+      "label": "古い",
+      "reading": "ふるい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v326-aishou",
+      "label": "相性",
+      "reading": "あいしょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v327-sabaku",
+      "label": "砂漠",
+      "reading": "さばく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v328-mokuhyou",
+      "label": "目標",
+      "reading": "もくひょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v329-keshiki",
+      "label": "景色",
+      "reading": "けしき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v330-houhou",
+      "label": "方法",
+      "reading": "ほうほう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v331-henkou",
+      "label": "変更",
+      "reading": "へんこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v332-sanka-suru",
+      "label": "参加する",
+      "reading": "さんかする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e065-nande",
+      "label": "なんで？",
+      "reading": "なんで？"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e066-shibaraku-omachikudasai",
+      "label": "しばらく お待ちください",
+      "reading": "しばらく おまちください"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e067-doushite",
+      "label": "どうして？",
+      "reading": "どうして？"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e068-kitto-daijoubu",
+      "label": "きっと大丈夫",
+      "reading": "きっとだいじょうぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v333-muri",
+      "label": "無理",
+      "reading": "むり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v334-raibaru",
+      "label": "ライバル",
+      "reading": "らいばる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v335-sora",
+      "label": "空",
+      "reading": "そら"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v336-aikotoba",
+      "label": "あいことば",
+      "reading": "あいことば"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v337-ikinari",
+      "label": "いきなり",
+      "reading": "いきなり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v338-kaihiritsu",
+      "label": "回避率",
+      "reading": "かいひりつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v339-zairyou",
+      "label": "材料",
+      "reading": "ざいりょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v340-kameraapuri",
+      "label": "カメラアプリ",
+      "reading": "カメラアプリ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v341-chanpiontesuto",
+      "label": "チャンピオンテスト",
+      "reading": "ちゃんぴおんてすと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v344-jibun-dake",
+      "label": "自分だけ",
+      "reading": "じぶんだけ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v345-kyouryoku",
+      "label": "協力",
+      "reading": "きょうりょく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v346-koukabatsugun",
+      "label": "効果バツグン",
+      "reading": "こうかバツグン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v347-tooku",
+      "label": "遠く",
+      "reading": "とおく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v348-intaanetto",
+      "label": "インターネット",
+      "reading": "インターネット"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v349-mensetsu",
+      "label": "面接",
+      "reading": "めんせつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v351-tsuzuke-ru",
+      "label": "続ける",
+      "reading": "つづける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v352-yunionsaakuru",
+      "label": "ユニオンサークル",
+      "reading": "ユニオンサークル"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v353-jouken",
+      "label": "条件",
+      "reading": "じょうけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e050-kakunin-suru",
+      "label": "確認する",
+      "reading": "かくにんする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e051-modoru",
+      "label": "もどる",
+      "reading": "もどる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e052-kuria-suru",
+      "label": "クリアする",
+      "reading": "くりあする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e069-ha-douda",
+      "label": "〜は どうだ？",
+      "reading": "〜は どうだ？"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e070-yattemiyou",
+      "label": "やってみよう",
+      "reading": "やってみよう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v354-atsume-ru",
+      "label": "集める",
+      "reading": "あつめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v355-terasutaruenerugii",
+      "label": "テラスタルエネルギー",
+      "reading": "てらすたるえねるぎー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v356-tanomu",
+      "label": "頼む",
+      "reading": "たのむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v358-muka-u",
+      "label": "向かう",
+      "reading": "むかう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v359-oshie-ru",
+      "label": "教える",
+      "reading": "おしえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v360-aruku",
+      "label": "歩く",
+      "reading": "あるく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v361-chuuou",
+      "label": "中央",
+      "reading": "ちゅうおう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v362-okiniiri",
+      "label": "お気に入り",
+      "reading": "おきにいり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v363-densetsunopokemon",
+      "label": "伝説のポケモン",
+      "reading": "でんせつのポケモン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v364-tochuu",
+      "label": "途中",
+      "reading": "とちゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v366-seigenjikan",
+      "label": "制限時間",
+      "reading": "せいげんじかん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v367-hashiru",
+      "label": "走る",
+      "reading": "はしる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v369-rokkuon",
+      "label": "ロックオン",
+      "reading": "ロックオン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v370-shiru",
+      "label": "知る",
+      "reading": "しる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v371-kyanseru",
+      "label": "キャンセル",
+      "reading": "キャンセル"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v372-zenryoku",
+      "label": "全力",
+      "reading": "ぜんりょく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v373-hitobito",
+      "label": "人々",
+      "reading": "ひとびと"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e071-tekagen-shinaiyo",
+      "label": "手加減しないよ",
+      "reading": "てかげんしないよ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e072-shitekurenai",
+      "label": "〜してくれない？",
+      "reading": "〜してくれない？"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e073-noyarikata",
+      "label": "〜のやり方",
+      "reading": "〜のやりかた"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e074-hontouni-yoroshiidesuka",
+      "label": "本当に よろしいですか？",
+      "reading": "ほんとうに よろしいですか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v374-hokakupawaa",
+      "label": "ほかくパワー",
+      "reading": "ほかくパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v376-nazo",
+      "label": "謎",
+      "reading": "なぞ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v377-adobaisu",
+      "label": "アドバイス",
+      "reading": "あどばいす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v378-nemuri",
+      "label": "ねむり",
+      "reading": "ねむり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v379-mawari",
+      "label": "周り",
+      "reading": "まわり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v380-chikazu-ku",
+      "label": "近づく",
+      "reading": "ちかづく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v381-isshun",
+      "label": "一瞬",
+      "reading": "いっしゅん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v382-zerogeeto",
+      "label": "ゼロゲート",
+      "reading": "ゼロゲート"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v383-hiroi",
+      "label": "広い",
+      "reading": "ひろい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v384-suijou",
+      "label": "水上",
+      "reading": "すいじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v385-ikki-ni",
+      "label": "一気に",
+      "reading": "いっきに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v386-kyouryoku",
+      "label": "強力",
+      "reading": "きょうりょく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v387-oojanpu",
+      "label": "大ジャンプ",
+      "reading": "おおジャンプ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v388-tsuku",
+      "label": "着く",
+      "reading": "つく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v389-abunai",
+      "label": "危ない",
+      "reading": "あぶない"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v390-kesshouka",
+      "label": "結晶化",
+      "reading": "けっしょうか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v391-sodate-ru",
+      "label": "育てる",
+      "reading": "そだてる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v392-danrasshu",
+      "label": "団ラッシュ",
+      "reading": "だんラッシュ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e075-mitemiyou",
+      "label": "見てみよう",
+      "reading": "みてみよう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e076-atoha-makase-te",
+      "label": "あとは任せて",
+      "reading": "あとはまかせて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e077-mazuhakokokara",
+      "label": "まずはここから",
+      "reading": "まずはここから"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v393-seiri",
+      "label": "整理",
+      "reading": "せいり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v394-susumu",
+      "label": "進む",
+      "reading": "すすむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v395-kagayakipawaa",
+      "label": "かがやきパワー",
+      "reading": "かがやきパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v396-tobu",
+      "label": "飛ぶ",
+      "reading": "とぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v397-kaeru",
+      "label": "帰る",
+      "reading": "かえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v398-paradokkusupokemon",
+      "label": "パラドックスポケモン",
+      "reading": "パラドックスポケモン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v399-souguupawaa",
+      "label": "そうぐうパワー",
+      "reading": "そうぐうパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v400-tsuushinkoukan",
+      "label": "通信交換",
+      "reading": "つうしんこうかん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v401-senryaku",
+      "label": "戦略",
+      "reading": "せんりゃく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v402-riigupei",
+      "label": "リーグペイ",
+      "reading": "りーぐぺい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v403-shirabe-ru",
+      "label": "調べる",
+      "reading": "しらべる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v404-douyara",
+      "label": "どうやら",
+      "reading": "どうやら"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v405-otoshimonopawaa",
+      "label": "おとしものパワー",
+      "reading": "おとしものパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v406-tekagen",
+      "label": "手加減",
+      "reading": "てかげん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v408-hikui",
+      "label": "低い",
+      "reading": "ひくい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v409-massugu",
+      "label": "まっすぐ",
+      "reading": "まっすぐ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v410-deau",
+      "label": "出会う",
+      "reading": "であう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v411-sentou",
+      "label": "先頭",
+      "reading": "せんとう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v412-zukan-kansei",
+      "label": "図鑑完成",
+      "reading": "ずかんかんせい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e078-hayaku",
+      "label": "早く！",
+      "reading": "はやく！"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e079-tsugi-hadare",
+      "label": "次はだれ？",
+      "reading": "つぎはだれ？"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e080-muri-shinaide",
+      "label": "無理しないで",
+      "reading": "むりしないで"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v413-keikenchipawaa",
+      "label": "けいけんちパワー",
+      "reading": "けいけんちパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v414-reidopawaa",
+      "label": "レイドパワー",
+      "reading": "レイドパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v415-oku",
+      "label": "奥",
+      "reading": "おく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v416-nige-ru",
+      "label": "逃げる",
+      "reading": "にげる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v417-tasuke-ru",
+      "label": "助ける",
+      "reading": "たすける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v418-owa-ru",
+      "label": "終わる",
+      "reading": "おわる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v419-tamagopawaa",
+      "label": "タマゴパワー",
+      "reading": "タマゴパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v420-mitome-ru",
+      "label": "認める",
+      "reading": "みとめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v421-attoiu-mani",
+      "label": "あっという間に",
+      "reading": "あっというまに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v422-uketoru",
+      "label": "受けとる",
+      "reading": "うけとる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v423-susume-ru",
+      "label": "進める",
+      "reading": "すすめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v424-youyaku",
+      "label": "ようやく",
+      "reading": "ようやく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v425-tachi-muka-u",
+      "label": "立ち向かう",
+      "reading": "たちむかう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v426-fureru",
+      "label": "触れる",
+      "reading": "ふれる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v427-nando-demo",
+      "label": "何度でも",
+      "reading": "なんどでも"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v428-noru",
+      "label": "乗る",
+      "reading": "のる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v429-omakasekaifuku",
+      "label": "おまかせ回復",
+      "reading": "おまかせかいふく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v430-mizuumi",
+      "label": "湖",
+      "reading": "みずうみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v431-hatsudou",
+      "label": "発動",
+      "reading": "はつどう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e081-kimi-shidai",
+      "label": "きみ次第",
+      "reading": "きみしだい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e082-kokomade-kita-ra",
+      "label": "ここまで来たら",
+      "reading": "ここまできたら"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e083-zenryoku-deikou",
+      "label": "全力でいこう",
+      "reading": "ぜんりょくでいこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e084-mada-owari-janai",
+      "label": "まだ終わりじゃない",
+      "reading": "まだおわりじゃない"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v432-oboe-ru",
+      "label": "覚える",
+      "reading": "おぼえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v433-kitae-ru",
+      "label": "鍛える",
+      "reading": "きたえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v434-ori-ru",
+      "label": "降りる",
+      "reading": "おりる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v435-ureshii",
+      "label": "嬉しい",
+      "reading": "うれしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v436-onrain",
+      "label": "オンライン",
+      "reading": "オンライン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v437-fukkatsu",
+      "label": "復活",
+      "reading": "ふっかつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v438-osoi",
+      "label": "遅い",
+      "reading": "おそい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v439-mon",
+      "label": "門",
+      "reading": "もん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v440-ofurain",
+      "label": "オフライン",
+      "reading": "オフライン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v441-oboe-saseru",
+      "label": "覚えさせる",
+      "reading": "おぼえさせる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v442-shujinkou",
+      "label": "主人公",
+      "reading": "しゅじんこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v443-kensaku",
+      "label": "検索",
+      "reading": "けんさく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v444-gake",
+      "label": "崖",
+      "reading": "がけ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v445-tojiru",
+      "label": "閉じる",
+      "reading": "とじる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v446-narau",
+      "label": "習う",
+      "reading": "ならう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v447-toshi",
+      "label": "都市",
+      "reading": "とし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v448-hougaku",
+      "label": "方角",
+      "reading": "ほうがく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v449-kita",
+      "label": "北",
+      "reading": "きた"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v450-minami",
+      "label": "南",
+      "reading": "みなみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v451-nishi",
+      "label": "西",
+      "reading": "にし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v452-higashi",
+      "label": "東",
+      "reading": "ひがし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v453-mezurashii",
+      "label": "珍しい",
+      "reading": "めずらしい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e085-himitsu-dayo",
+      "label": "秘密だよ",
+      "reading": "ひみつだよ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e086-shitemoraeru",
+      "label": "〜してもらえる？",
+      "reading": "〜してもらえる？"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e087-itte-kimasu",
+      "label": "行ってきます",
+      "reading": "いってきます"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v454-hiroge-ru",
+      "label": "広げる",
+      "reading": "ひろげる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v455-shinken",
+      "label": "真剣",
+      "reading": "しんけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v456-mejirushi",
+      "label": "目印",
+      "reading": "めじるし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v457-hayai",
+      "label": "速い",
+      "reading": "はやい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v458-noboru",
+      "label": "登る",
+      "reading": "のぼる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v459-hashigo",
+      "label": "はしご",
+      "reading": "はしご"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v460-kyouryoku-suru",
+      "label": "協力する",
+      "reading": "きょうりょくする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v461-tachi-yoru",
+      "label": "立ち寄る",
+      "reading": "たちよる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v462-kaifuku-saseru",
+      "label": "回復させる",
+      "reading": "かいふくさせる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v463-tegowai",
+      "label": "手ごわい",
+      "reading": "てごわい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v464-pokemon-nootoshimono",
+      "label": "ポケモンのおとしもの",
+      "reading": "ぽけもんのおとしもの"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v465-azuke-ru",
+      "label": "預ける",
+      "reading": "あずける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v466-kakkuukeitai",
+      "label": "かっくうけいたい",
+      "reading": "かっくうけいたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v467-shissoukeitai",
+      "label": "しっそうけいたい",
+      "reading": "しっそうけいたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v468-yuueikeitai",
+      "label": "ゆうえいけいたい",
+      "reading": "ゆうえいけいたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v469-guraidomoodo",
+      "label": "グライドモード",
+      "reading": "ぐらいどもーど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v470-doraibumoodo",
+      "label": "ドライブモード",
+      "reading": "どらいぶもーど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v471-furootomoodo",
+      "label": "フロートモード",
+      "reading": "ふろーともーど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v472-meguru",
+      "label": "巡る",
+      "reading": "めぐる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v473-narabekae",
+      "label": "並べかえ",
+      "reading": "ならべかえ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v474-nyuushu",
+      "label": "入手",
+      "reading": "にゅうしゅ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v475-hitsu-kome-ru",
+      "label": "引っ込める",
+      "reading": "ひっこめる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e088-arigatougozaimashita",
+      "label": "ありがとうございました",
+      "reading": "ありがとうございました"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e089-iiyone",
+      "label": "いいよね",
+      "reading": "いいよね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v476-kitakami",
+      "label": "キタカミ",
+      "reading": "キタカミ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v477-buruuberiigakuen",
+      "label": "ブルーベリー学園",
+      "reading": "ブルーベリーがくえん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v478-oogapon",
+      "label": "オーガポン",
+      "reading": "オーガポン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v479-kuria",
+      "label": "クリア",
+      "reading": "クリア"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v480-ruuru",
+      "label": "ルール",
+      "reading": "ルール"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v481-biipii",
+      "label": "ＢＰ",
+      "reading": "びーぴー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v483-omake",
+      "label": "おまけ",
+      "reading": "おまけ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v484-doukutsu",
+      "label": "洞くつ",
+      "reading": "どうくつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v486-terariumudoomu",
+      "label": "テラリウムドーム",
+      "reading": "テラリウムドーム"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v487-shokudou",
+      "label": "食堂",
+      "reading": "しょくどう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v488-koosutoeria",
+      "label": "コーストエリア",
+      "reading": "コーストエリア"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v489-seikai",
+      "label": "正解",
+      "reading": "せいかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v490-omodaka",
+      "label": "オモダカ",
+      "reading": "おもだか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v491-sabanaeria",
+      "label": "サバンナエリア",
+      "reading": "サバンナエリア"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v492-pooraeria",
+      "label": "ポーラエリア",
+      "reading": "ポーラエリア"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v493-daisakusen",
+      "label": "大作戦",
+      "reading": "だいさくせん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v494-pikku",
+      "label": "ピック",
+      "reading": "ピック"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v495-chousensha",
+      "label": "挑戦者",
+      "reading": "ちょうせんしゃ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v496-burureku",
+      "label": "ブルレク",
+      "reading": "ブルレク"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v497-sakusen",
+      "label": "作戦",
+      "reading": "さくせん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v498-kyanioneria",
+      "label": "キャニオンエリア",
+      "reading": "キャニオンエリア"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v499-misshon",
+      "label": "ミッション",
+      "reading": "ミッション"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v500-hinto",
+      "label": "ヒント",
+      "reading": "ヒント"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v501-daisuki",
+      "label": "大好き",
+      "reading": "だいすき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v502-kanban",
+      "label": "看板",
+      "reading": "かんばん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v504-uketsuke",
+      "label": "受付",
+      "reading": "うけつけ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v505-kansoku",
+      "label": "観測",
+      "reading": "かんそく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v507-chishiki",
+      "label": "知識",
+      "reading": "ちしき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v508-satsuei",
+      "label": "撮影",
+      "reading": "さつえい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e096-korede-okee",
+      "label": "これでＯＫ",
+      "reading": "これでおーけー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v509-takarashokudou",
+      "label": "宝食堂",
+      "reading": "たからしょくどう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v511-reidobatoru",
+      "label": "レイドバトル",
+      "reading": "レイドバトル"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v512-shouhin",
+      "label": "商品",
+      "reading": "しょうひん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v513-gureepuakademii",
+      "label": "グレープアカデミー",
+      "reading": "ぐれーぷあかでみー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v514-shizen",
+      "label": "自然",
+      "reading": "しぜん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v515-batoruchiimu",
+      "label": "バトルチーム",
+      "reading": "バトルチーム"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v516-shuuchuu",
+      "label": "集中",
+      "reading": "しゅうちゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v517-tsuika",
+      "label": "追加",
+      "reading": "ついか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v518-joshu",
+      "label": "助手",
+      "reading": "じょしゅ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v519-seitokaichou",
+      "label": "生徒会長",
+      "reading": "せいとかいちょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v520-bushitsu",
+      "label": "部室",
+      "reading": "ぶしつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v521-kyoushitsu",
+      "label": "教室",
+      "reading": "きょうしつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v522-suteki",
+      "label": "素敵",
+      "reading": "すてき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v523-shien",
+      "label": "支援",
+      "reading": "しえん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v524-toudai",
+      "label": "灯台",
+      "reading": "とうだい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v525-kinen",
+      "label": "記念",
+      "reading": "きねん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v526-benri",
+      "label": "便利",
+      "reading": "べんり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v527-seikaku",
+      "label": "性格",
+      "reading": "せいかく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v528-nyuugaku",
+      "label": "入学",
+      "reading": "にゅうがく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v529-chuumon",
+      "label": "注文",
+      "reading": "ちゅうもん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v530-shitappa",
+      "label": "したっぱ",
+      "reading": "したっぱ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v531-senpai",
+      "label": "先輩",
+      "reading": "せんぱい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v532-uketori",
+      "label": "受けとり",
+      "reading": "うけとり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v533-okozukai",
+      "label": "おこづかい",
+      "reading": "おこづかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v534-seifuku",
+      "label": "制服",
+      "reading": "せいふく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v535-bukatsu",
+      "label": "部活",
+      "reading": "ぶかつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v536-entorii",
+      "label": "エントリー",
+      "reading": "エントリー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v537-henji",
+      "label": "返事",
+      "reading": "へんじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v538-jidou",
+      "label": "自動",
+      "reading": "じどう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v539-ouen",
+      "label": "応援",
+      "reading": "おうえん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e100-jugyou-wo-omoidasu",
+      "label": "授業を思い出す",
+      "reading": "じゅぎょうを おもいだす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v540-kakuritsu",
+      "label": "確率",
+      "reading": "かくりつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v541-honmono",
+      "label": "本物",
+      "reading": "ほんもの"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v542-yousu",
+      "label": "様子",
+      "reading": "ようす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v543-pokemonwosshu",
+      "label": "ポケモンウォッシュ",
+      "reading": "ポケモンウォッシュ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v544-meiwaku",
+      "label": "迷惑",
+      "reading": "めいわく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v545-youi",
+      "label": "用意",
+      "reading": "ようい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v546-shoutai",
+      "label": "正体",
+      "reading": "しょうたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v547-shoukai",
+      "label": "紹介",
+      "reading": "しょうかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v548-himitsunomenyuu",
+      "label": "秘密のメニュー",
+      "reading": "ひみつのメニュー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v549-kenkyuujo",
+      "label": "研究所",
+      "reading": "けんきゅうじょ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v550-tokushu",
+      "label": "特殊",
+      "reading": "とくしゅ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v551-shippai",
+      "label": "失敗",
+      "reading": "しっぱい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v552-ouen",
+      "label": "おうえん",
+      "reading": "おうえん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v554-tansaku",
+      "label": "探索",
+      "reading": "たんさく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v555-shiea",
+      "label": "シェア",
+      "reading": "シェア"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v556-genshou",
+      "label": "現象",
+      "reading": "げんしょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v557-ongaku",
+      "label": "音楽",
+      "reading": "おんがく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v558-onitaijifesu",
+      "label": "鬼退治フェス",
+      "reading": "おにたいじフェス"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v559-kaisai",
+      "label": "開催",
+      "reading": "かいさい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v560-shoutai",
+      "label": "招待",
+      "reading": "しょうたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v561-koubaibu",
+      "label": "購買部",
+      "reading": "こうばいぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v562-kanari",
+      "label": "かなり",
+      "reading": "かなり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v563-kouryuu",
+      "label": "交流",
+      "reading": "こうりゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v564-konran",
+      "label": "混乱",
+      "reading": "こんらん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v565-nouryokuhenka",
+      "label": "能力変化",
+      "reading": "のうりょくへんか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v566-shinyuusha",
+      "label": "侵入者",
+      "reading": "しんにゅうしゃ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v567-majikarukoukan",
+      "label": "マジカル交換",
+      "reading": "マジカルこうかん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v568-tanken",
+      "label": "探検",
+      "reading": "たんけん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v569-joushou",
+      "label": "上昇",
+      "reading": "じょうしょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v570-maigo",
+      "label": "迷子",
+      "reading": "まいご"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e090-kuyashiikedo",
+      "label": "くやしいけど",
+      "reading": "くやしいけど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e091-shitemimashou",
+      "label": "〜してみましょう",
+      "reading": "〜してみましょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e092-okaeri",
+      "label": "おかえり",
+      "reading": "おかえり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e093-tadaima",
+      "label": "ただいま",
+      "reading": "ただいま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v485-nukeru",
+      "label": "抜ける",
+      "reading": "ぬける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v503-nukemichi",
+      "label": "抜け道",
+      "reading": "ぬけみち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v571-shiharai",
+      "label": "支払い",
+      "reading": "しはらい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v572-kumi",
+      "label": "組",
+      "reading": "くみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v573-deribaadopoochi",
+      "label": "デリバードポーチ",
+      "reading": "デリバードポーチ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v574-purofiiru",
+      "label": "プロフィール",
+      "reading": "プロフィール"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v575-betsuni",
+      "label": "別に",
+      "reading": "べつに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v576-gumimiawase",
+      "label": "組み合わせ",
+      "reading": "ぐみみあわせ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v577-taiou",
+      "label": "対応",
+      "reading": "たいおう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v578-sakamichi",
+      "label": "坂道",
+      "reading": "さかみち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v579-souchi",
+      "label": "装置",
+      "reading": "そうち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v580-jidori",
+      "label": "自撮り",
+      "reading": "じどり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v581-touchaku",
+      "label": "到着",
+      "reading": "とうちゃく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v582-tokubetsukoushi",
+      "label": "特別講師",
+      "reading": "とくべつこうし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v583-naiyou",
+      "label": "内容",
+      "reading": "ないよう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v585-ikitomari",
+      "label": "行き止まり",
+      "reading": "いきとまり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v586-hyouji",
+      "label": "表示",
+      "reading": "ひょうじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v587-shuui",
+      "label": "周囲",
+      "reading": "しゅうい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v588-firutaa",
+      "label": "フィルター",
+      "reading": "フィルター"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v589-shinkuromashin",
+      "label": "シンクロマシン",
+      "reading": "シンクロマシン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e094-shiteagemashou",
+      "label": "〜してあげましょう",
+      "reading": "〜してあげましょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e095-o-kakuninshitemimashou",
+      "label": "〜を 確認してみましょう！",
+      "reading": "〜を かくにんしてみましょう！"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e097-nakunatteshimaimasuga-yoroshiidesuka",
+      "label": "なくなってしまいますが よろしいですか？",
+      "reading": "なくなってしまいますが よろしいですか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e098-shitemiyouyo",
+      "label": "〜してみようよ",
+      "reading": "〜してみようよ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v592-setsuzoku",
+      "label": "接続",
+      "reading": "せつぞく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v593-douji",
+      "label": "同時",
+      "reading": "どうじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v594-tsuushintaisen",
+      "label": "通信対戦",
+      "reading": "つうしんたいせん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v595-koushiki",
+      "label": "公式",
+      "reading": "こうしき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v596-shiizun",
+      "label": "シーズン",
+      "reading": "シーズン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v598-kabe",
+      "label": "壁",
+      "reading": "かべ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v599-kenkyuushitsu",
+      "label": "研究室",
+      "reading": "けんきゅうしつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v600-chibichibipawaa",
+      "label": "ちびちびパワー",
+      "reading": "ちびちびパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v601-dekadekapawaa",
+      "label": "でかでかパワー",
+      "reading": "でかでかパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v602-nitsunapawaa",
+      "label": "二つ名パワー",
+      "reading": "につなパワー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v603-hyoujou",
+      "label": "表情",
+      "reading": "ひょうじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v604-fui",
+      "label": "不意",
+      "reading": "ふい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v605-dokujoutai",
+      "label": "どく状態",
+      "reading": "どくじょうたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v606-kyori",
+      "label": "距離",
+      "reading": "きょり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v607-sanchou",
+      "label": "山頂",
+      "reading": "さんちょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v608-dougupurintaa",
+      "label": "どうぐプリンター",
+      "reading": "どうぐプリンター"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v609-urikire",
+      "label": "売り切れ",
+      "reading": "うりきれ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v610-kitae-ta",
+      "label": "鍛えた",
+      "reading": "きたえた"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v611-pokepootaru",
+      "label": "ポケポータル",
+      "reading": "ポケポータル"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v613-tairyouhassei",
+      "label": "大量発生",
+      "reading": "たいりょうはっせい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v614-nyuuryoku",
+      "label": "入力",
+      "reading": "にゅうりょく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e099-kigakawattara-yoroshikune",
+      "label": "気が変わったら よろしくね",
+      "reading": "きがかわったら よろしくね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai",
+      "label": "指定の教室へ 向かってください",
+      "reading": "していの きょうしつへ むかってください"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e102-shitemo-iishi",
+      "label": "〜しても いいし",
+      "reading": "〜しても いいし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v615-doukyuusei",
+      "label": "同級生",
+      "reading": "どうきゅうせい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v616-ritaia",
+      "label": "リタイア",
+      "reading": "リタイア"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v617-shagamu",
+      "label": "しゃがむ",
+      "reading": "しゃがむ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v618-seibetsu",
+      "label": "性別",
+      "reading": "せいべつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v620-iwayama",
+      "label": "岩山",
+      "reading": "いわやま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v621-renkei",
+      "label": "連携",
+      "reading": "れんけい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v622-kuuchuu",
+      "label": "空中",
+      "reading": "くうちゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v623-rentaruchiimu",
+      "label": "レンタルチーム",
+      "reading": "レンタルチーム"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v624-fuzai",
+      "label": "不在",
+      "reading": "ふざい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v625-mensetsukan",
+      "label": "面接官",
+      "reading": "めんせつかん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v626-haigo",
+      "label": "背後",
+      "reading": "はいご"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v627-rankingu",
+      "label": "ランキング",
+      "reading": "ランキング"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v628-yuuri",
+      "label": "有利",
+      "reading": "ゆうり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v629-koudai",
+      "label": "広大",
+      "reading": "こうだい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v630-risetto",
+      "label": "リセット",
+      "reading": "リセット"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v631-juni",
+      "label": "順位",
+      "reading": "じゅんい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v632-shougaibutsu",
+      "label": "障害物",
+      "reading": "しょうがいぶつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v633-kotei",
+      "label": "固定",
+      "reading": "こてい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v634-herupu",
+      "label": "ヘルプ",
+      "reading": "ヘルプ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v635-atamamoji",
+      "label": "頭文字",
+      "reading": "あたまもじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v636-honkou",
+      "label": "本校",
+      "reading": "ほんこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v637-taikinaka",
+      "label": "待機中",
+      "reading": "たいきなか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e103-honki-de",
+      "label": "本気で？",
+      "reading": "ほんきで？"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e104-matakitekudasaine",
+      "label": "また来てくださいね",
+      "reading": "またきてくださいね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e105-dono-narabini-kaemasuka",
+      "label": "どの ならびに かえますか？",
+      "reading": "どの ならびに かえますか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v638-rakka",
+      "label": "落下",
+      "reading": "らっか"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v639-shienboodo",
+      "label": "支援ボード",
+      "reading": "しえんボード"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v640-kariru",
+      "label": "借りる",
+      "reading": "かりる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v641-kirikaeru",
+      "label": "切りかえる",
+      "reading": "きりかえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v642-purofiiruapuri",
+      "label": "プロフィールアプリ",
+      "reading": "プロフィールアプリ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v643-tokuni",
+      "label": "とくに",
+      "reading": "とくに"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v645-chuushi",
+      "label": "中止",
+      "reading": "ちゅうし"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v646-kanyuu",
+      "label": "勧誘",
+      "reading": "かんゆう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v647-kyouin",
+      "label": "教員",
+      "reading": "きょういん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v648-tsuuchi",
+      "label": "通知",
+      "reading": "つうち"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v649-koukanaite",
+      "label": "交換相手",
+      "reading": "こうかんあいて"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v650-kakou",
+      "label": "下降",
+      "reading": "かこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v651-shirizoke-ru",
+      "label": "退ける",
+      "reading": "しりぞける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v652-hihyouji",
+      "label": "非表示",
+      "reading": "ひひょうじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v653-ichiran",
+      "label": "一覧",
+      "reading": "いちらん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v654-kachimake",
+      "label": "勝ち負け",
+      "reading": "かちまけ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v655-matomekai",
+      "label": "まとめ買い",
+      "reading": "まとめかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v656-rainnappu",
+      "label": "ラインナップ",
+      "reading": "らいんなっぷ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v657-zensokuryoku",
+      "label": "全速力",
+      "reading": "ぜんそくりょく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v658-kinkyuujitai",
+      "label": "緊急事態",
+      "reading": "きんきゅうじたい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v659-taijou",
+      "label": "退場",
+      "reading": "たいじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v660-akogare",
+      "label": "憧れ",
+      "reading": "あこがれ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e106-dono-wazao-kaifukusuru",
+      "label": "どの 技を 回復する？",
+      "reading": "どの わざを かいふくする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e107-shitemoiikarane",
+      "label": "〜してもいいからね",
+      "reading": "〜してもいいからね"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-e108-otsukaresama",
+      "label": "おつかれさま",
+      "reading": "おつかれさま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v661-hikikaesu",
+      "label": "引き返す",
+      "reading": "ひきかえす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v662-dentougyouji",
+      "label": "伝統行事",
+      "reading": "でんとうぎょうじ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v663-kagaikatsudou",
+      "label": "課外活動",
+      "reading": "かがいかつどう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v664-matomeuri",
+      "label": "まとめ売り",
+      "reading": "まとめうり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v665-zensentaku",
+      "label": "全選択",
+      "reading": "ぜんせんたく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v666-shouhai",
+      "label": "勝敗",
+      "reading": "しょうはい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v667-fuuki",
+      "label": "風紀",
+      "reading": "ふうき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v668-uketorikanou",
+      "label": "受けとり可能",
+      "reading": "うけとりかのう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v669-uketorizumi",
+      "label": "受けとり済み",
+      "reading": "うけとりずみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v670-koumoku",
+      "label": "項目",
+      "reading": "こうもく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v671-kyoutou",
+      "label": "共闘",
+      "reading": "きょうとう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v672-konnan",
+      "label": "困難",
+      "reading": "こんなん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v673-kakkuu-suru",
+      "label": "滑空する",
+      "reading": "かっくうする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v674-oiharau",
+      "label": "追いはらう",
+      "reading": "おいはらう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v675-kirikaeru",
+      "label": "切り替える",
+      "reading": "きりかえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v676-furu-mau",
+      "label": "振る舞う",
+      "reading": "ふるまう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v677-jousetsu",
+      "label": "常設",
+      "reading": "じょうせつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v678-kaitori",
+      "label": "買い取り",
+      "reading": "かいとり"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v679-saitekikai",
+      "label": "最適解",
+      "reading": "さいてきかい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v680-ude-wo-migaku",
+      "label": "腕を磨く",
+      "reading": "うでをみがく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v681-hitokurou",
+      "label": "一苦労",
+      "reading": "ひとくろう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v682-juuoumujin",
+      "label": "縦横無尽",
+      "reading": "じゅうおうむじん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v683-yokan",
+      "label": "予感",
+      "reading": "よかん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v684-bourutaun",
+      "label": "ボウルタウン",
+      "reading": "ボウルタウン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v685-nappeyama",
+      "label": "ナッペ山",
+      "reading": "ナッペやま"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v686-kimenshuu",
+      "label": "鬼面衆",
+      "reading": "きめんしゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v687-chanpurutaun",
+      "label": "チャンプルタウン",
+      "reading": "チャンプルタウン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v688-suiryokutaun",
+      "label": "スイリョクタウン",
+      "reading": "スイリョクタウン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v689-hakkoushiti",
+      "label": "ハッコウシティ",
+      "reading": "ハッコウシティ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v690-beikutaun",
+      "label": "ベイクタウン",
+      "reading": "ベイクタウン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v691-karafushiti",
+      "label": "カラフシティ",
+      "reading": "カラフシティ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v692-moyou",
+      "label": "模様",
+      "reading": "もよう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v693-kanousei",
+      "label": "可能性",
+      "reading": "かのうせい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v694-serukurutaun",
+      "label": "セルクルタウン",
+      "reading": "セルクルタウン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v695-furijjitaun",
+      "label": "フリッジタウン",
+      "reading": "フリッジタウン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v696-kosajitaun",
+      "label": "コサジタウン",
+      "reading": "コサジタウン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v697-sumahokabaa",
+      "label": "スマホカバー",
+      "reading": "スマホカバー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v698-oojanomizuumi",
+      "label": "オージャの湖",
+      "reading": "オージャのみずうみ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v699-saakurumisshon",
+      "label": "サークルミッション",
+      "reading": "サークルミッション"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v700-haitatsu",
+      "label": "配達",
+      "reading": "はいたつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v701-tsuujou",
+      "label": "通常",
+      "reading": "つうじょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v702-puratotaun",
+      "label": "プラトタウン",
+      "reading": "プラトタウン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v703-henshin",
+      "label": "変身",
+      "reading": "へんしん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v705-atonoseefekuto",
+      "label": "あとのせエフェクト",
+      "reading": "あとのせエフェクト"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v706-dekofureemu",
+      "label": "デコフレーム",
+      "reading": "デコフレーム"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v707-sentaasukuea",
+      "label": "センタースクエア",
+      "reading": "センタースクエア"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v708-funiki",
+      "label": "雰囲気",
+      "reading": "ふんいき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v709-kinomidai",
+      "label": "きのみ台",
+      "reading": "きのみだい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v710-piketaun",
+      "label": "ピケタウン",
+      "reading": "ピケタウン"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v711-rotoribou",
+      "label": "ロトりぼう",
+      "reading": "ロトりぼう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v712-kaimei",
+      "label": "解明",
+      "reading": "かいめい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v713-furyou",
+      "label": "不良",
+      "reading": "ふりょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v714-kyouyuu",
+      "label": "共有",
+      "reading": "きょうゆう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v715-irekawaru",
+      "label": "入れ替わる",
+      "reading": "いれかわる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v716-kimeraretakazu",
+      "label": "決められた数",
+      "reading": "きめられたかず"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v717-tani",
+      "label": "単位",
+      "reading": "たんい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v718-higai",
+      "label": "被害",
+      "reading": "ひがい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v719-sashie",
+      "label": "挿絵",
+      "reading": "さしえ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v720-okotowaririsuto",
+      "label": "おことわりリスト",
+      "reading": "おことわりリスト"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v721-zaiseki",
+      "label": "在籍",
+      "reading": "ざいせき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v722-boonasumisshon",
+      "label": "ボーナスミッション",
+      "reading": "ボーナスミッション"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v723-honkakuteki",
+      "label": "本格的",
+      "reading": "ほんかくてき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v724-yuusendo",
+      "label": "優先度",
+      "reading": "ゆうせんど"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v725-ugokikata",
+      "label": "動き方",
+      "reading": "うごきかた"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v726-koutokuten",
+      "label": "高得点",
+      "reading": "こうとくてん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v727-shouritsu",
+      "label": "勝率",
+      "reading": "しょうりつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v728-shugosha",
+      "label": "守護者",
+      "reading": "しゅごしゃ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v729-chiimuid",
+      "label": "チームＩＤ",
+      "reading": "チームＩＤ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v730-katsudoumenbaa",
+      "label": "活動メンバー",
+      "reading": "かつどうメンバー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v731-kaidame",
+      "label": "買いだめ",
+      "reading": "かいだめ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v732-seiau",
+      "label": "競い合う",
+      "reading": "せいあう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v733-koukankanryou",
+      "label": "交換完了",
+      "reading": "こうかんかんりょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v734-ittai",
+      "label": "一帯",
+      "reading": "いったい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v735-senkyo",
+      "label": "占拠",
+      "reading": "せんきょ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-v736-odorokaseru",
+      "label": "驚かせる",
+      "reading": "おどろかせる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kouchou-sensei",
+      "label": "校長先生",
+      "reading": "こうちょうせんせい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tennyuu",
+      "label": "転入",
+      "reading": "てんにゅう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-touroku",
+      "label": "登録",
+      "reading": "とうろく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shoubu",
+      "label": "勝負",
+      "reading": "しょうぶ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-junbi",
+      "label": "準備",
+      "reading": "じゅんび"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-jakuten",
+      "label": "弱点",
+      "reading": "じゃくてん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kuridasu",
+      "label": "繰り出す",
+      "reading": "くりだす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-hokaku",
+      "label": "捕獲",
+      "reading": "ほかく"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ki-o-tsukeru",
+      "label": "気をつける",
+      "reading": "きをつける"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-seisoku-suru",
+      "label": "生息する",
+      "reading": "せいそくする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-sugata",
+      "label": "姿",
+      "reading": "すがた"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-seigyo-suru",
+      "label": "制御する",
+      "reading": "せいぎょする"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-pokemon-center",
+      "label": "ポケモンセンター",
+      "reading": "ポケモンセンター"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-lets-go",
+      "label": "レッツゴー",
+      "reading": "レッツゴー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-gakusei-shokudou",
+      "label": "学生食堂",
+      "reading": "がくせいしょくどう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shokuinshitsu",
+      "label": "職員室",
+      "reading": "しょくいんしつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kouchoushitsu",
+      "label": "校長室",
+      "reading": "こうちょうしつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-gakusei-ryou",
+      "label": "学生寮",
+      "reading": "がくせいりょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tannin",
+      "label": "担任",
+      "reading": "たんにん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mezasu",
+      "label": "目指す",
+      "reading": "めざす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kagai-jugyou",
+      "label": "課外授業",
+      "reading": "かがいじゅぎょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-takara-sagashi",
+      "label": "宝探し",
+      "reading": "たからさがし"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g001-spiegazione-enfasi",
+      "label": "～のだ / ～んだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g002-mi-chiedo-se",
+      "label": "～かな"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g003-stato-in-corso-stato-risultante",
+      "label": "～ている"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g005-senza-fare-non-fare-e",
+      "label": "～ないで"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g006-contrazione-colloquiale-di",
+      "label": "～てる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g009-contrazione-di-dovere",
+      "label": "～なきゃ / ～なくちゃ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g010-prima-di",
+      "label": "～前に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g011-voler-fare",
+      "label": "～たい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g014-si-puo-va-bene-fare",
+      "label": "～てもいい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g015-dopo",
+      "label": "～後で / ～あとで"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g017-pensare-che",
+      "label": "～と思う"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g018-non-si-deve",
+      "label": "～てはいけない / ～ちゃいけない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g019-dover-fare",
+      "label": "～なければならない / ～ないといけない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g020-poter-fare",
+      "label": "可能形"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g021-passato-completamento",
+      "label": "た形"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g022-collega-azioni-crea-richieste-e-molte-co",
+      "label": "て形"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g023-negazione",
+      "label": "ない形"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g024-registro-cortese-vs-piano",
+      "label": "ます / 辞書形"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g025-da-fino-a",
+      "label": "から / まで"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo",
+      "label": "が"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g027-luogo-dell-azione-mezzo",
+      "label": "で"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g028-con-e-citazione",
+      "label": "と"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g029-destinazione-tempo-bersaglio-esistenza",
+      "label": "に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g030-possesso-collegamento-tra-nomi",
+      "label": "の"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g031-marca-il-tema",
+      "label": "は"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g032-verso",
+      "label": "へ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g033-marca-l-oggetto-diretto",
+      "label": "を"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g034-perche",
+      "label": "から"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g035-ma-pero",
+      "label": "けど / けれど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g036-siccome-dato-che",
+      "label": "ので"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g037-citazione-tema-colloquiale",
+      "label": "～って"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g038-piu-di-al-punto-da",
+      "label": "～より / ～ほど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g039-se",
+      "label": "～ば"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g040-quando-nel-momento-in-cui",
+      "label": "～とき"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g041-probabilmente-suppongo",
+      "label": "～だろう / でしょう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g042-domanda-spiegativa-sorpresa-davvero-e-co",
+      "label": "～のか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g043-anche-se-nonostante",
+      "label": "～のに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g044-facciamo-andiamo-a",
+      "label": "～ましょう / ～ましょ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g045-facciamo-provero-a",
+      "label": "～よう"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g046-sembra-che-sembra",
+      "label": "～ようだ / ～ように見える"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g047-vero-no",
+      "label": "～よね"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g048-facile-da-fare",
+      "label": "～やすい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g050-voglio-che-mi-piacerebbe-che",
+      "label": "～てほしい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g056-finale-maschile-riflessiva-osservativa",
+      "label": "～だな"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g054-durante-mentre",
+      "label": "～間 / ～間に"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g055-mi-chiedo-proprio",
+      "label": "～かなあ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g057-mi-chiedo-chissa",
+      "label": "～かしら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g058-comera-gia-dovera",
+      "label": "～だっけ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g059-dire-chiamarsi",
+      "label": "～{{言|い}}う / ～って{{言|い}}う"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g061-troppo",
+      "label": "～すぎる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g062-sembra-che",
+      "label": "～そうだ (sembra)"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g063-si-dice-che-pare-che",
+      "label": "～そうだ (si dice)"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g064-contrazione-di",
+      "label": "～かも"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g065-difficile-da-fare",
+      "label": "～にくい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g067-avere-intenzione-di",
+      "label": "～つもりだ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g068-non-vuoi-ti-va-di",
+      "label": "～ませんか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g069-andare-avanti-facendo-cambiare-nel-tempo",
+      "label": "～ていく"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g070-qualcosa-e-stato-fatto-intenzionalmente",
+      "label": "～てある"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g072-se-e-cosi-se-parli-di",
+      "label": "～なら"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g073-essere-previsto",
+      "label": "～予定だ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g075-si-decide-che-finire-per",
+      "label": "～ことになる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g076-decidere-di-fare",
+      "label": "～ことにする"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g077-fare-in-modo-di",
+      "label": "～ようにする"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g079-per-favore-non-fare",
+      "label": "～ないでください"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g080-sembrare-voler-fare-terza-persona",
+      "label": "～たがる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g081-e-meglio-fare",
+      "label": "～ほうがいい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g082-non-e-necessario-fare",
+      "label": "～なくてもいい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g083-non-fare-ordine-secco",
+      "label": "辞書形 + な"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g084-enfasi-conferma-tono-emotivo",
+      "label": "finali di frase よ / ね / な"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g085-quando-se-risultato-naturale",
+      "label": "～と"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g086-frase-che-modifica-un-nome",
+      "label": "frase relativa (連体修飾)"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g087-forma-passiva",
+      "label": "受け身"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g088-solo-e-nient-altro",
+      "label": "しか～ない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g089-solo",
+      "label": "だけ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g090-anche",
+      "label": "も"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g091-tra-gli-altri-eccetera",
+      "label": "や / など"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g092-e-inoltre-tra-l-altro",
+      "label": "し"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g095-tipo-e-cose-cosi-tra-gli-esempi",
+      "label": "～とか"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g093-in-modo-da-affinche",
+      "label": "～ように (scopo / risultato)"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g094-persino-ma-dai-infatti",
+      "label": "～だって"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g096-una-cosa-come-che",
+      "label": "～なんて"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g097-per-allo-scopo-di",
+      "label": "～ために"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g098-cosi-com-e-lasciando-come-sta",
+      "label": "～まま"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g099-vero-che-ma-guarda",
+      "label": "～じゃん"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g100-circa-al-punto-da",
+      "label": "～くらい / ～ぐらい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g101-a-seconda-di-in-base-a",
+      "label": "～によって"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g102-pare-che-tipico-di",
+      "label": "～らしい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g103-mentre-finche",
+      "label": "～うちに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g104-vero-no-immagino-che",
+      "label": "～っしょ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g105-finale-ruvida-maschile",
+      "label": "～だぜ"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g106-registro-samurai-comico",
+      "label": "～でござる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g107-riguardo-a-su",
+      "label": "～について"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g108-solo-nientaltro-che",
+      "label": "～ばっかり"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g109-ti-sto-dicendo-che",
+      "label": "～ってば"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g110-non-e-che-non-significa-che",
+      "label": "～わけじゃない"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-g111-far-fare-lasciar-fare",
+      "label": "使役"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-kudasai",
+      "label": "～てください"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-te-ageru",
+      "label": "～てあげる"
+    }
+  ]
 }

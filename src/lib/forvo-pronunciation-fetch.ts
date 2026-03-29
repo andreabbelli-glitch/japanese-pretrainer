@@ -1546,10 +1546,7 @@ async function waitForFileToStabilize(filePath: string) {
 function buildForvoWordUrls(entry: PronunciationTargetEntry) {
   return [
     ...new Set(
-      [entry.label, entry.reading, ...entry.aliases].filter(
-        (value): value is string =>
-          typeof value === "string" && value.length > 0
-      )
+      expandForvoSearchVariants([entry.label, entry.reading, ...entry.aliases])
     )
   ].map((query) => `https://forvo.com/word/${encodeURIComponent(query)}/#ja`);
 }
@@ -1604,8 +1601,7 @@ function doesManualDownloadMatchEntry(
       .trim()
   );
   const acceptableTargets = new Set(
-    [entry.label, entry.reading, ...entry.aliases]
-      .filter((value): value is string => typeof value === "string")
+    expandForvoSearchVariants([entry.label, entry.reading, ...entry.aliases])
       .map(normalizePronunciationText)
       .filter(Boolean)
   );
@@ -1616,6 +1612,18 @@ function doesManualDownloadMatchEntry(
       normalizedFilename.endsWith(candidate) ||
       normalizedFilename.includes(candidate)
   );
+}
+
+function expandForvoSearchVariants(values: Array<string | undefined>) {
+  return values
+    .filter((value): value is string => typeof value === "string")
+    .flatMap((value) => [
+      value,
+      ...value
+        .split(/\s*[\/|]\s*/u)
+        .map((segment) => segment.trim())
+        .filter(Boolean)
+    ]);
 }
 
 function slugifyForvoSegment(value: string) {
