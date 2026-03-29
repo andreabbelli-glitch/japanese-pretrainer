@@ -1,11 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   type CSSProperties,
-  type ReactNode,
   startTransition,
   useCallback,
   useEffect,
@@ -22,14 +19,9 @@ import { cx } from "@/lib/classnames";
 import type {
   FuriganaMode,
   TextbookLessonData,
-  TextbookLessonNavItem,
   TextbookTooltipEntry
 } from "@/lib/textbook";
-import {
-  mediaStudyHref,
-  mediaTextbookLessonHref,
-  mediaTextbookLessonTooltipsHref
-} from "@/lib/site";
+import { mediaTextbookLessonTooltipsHref } from "@/lib/site";
 
 import {
   EntryTooltipCard,
@@ -38,6 +30,14 @@ import {
   LessonArticle,
   type TooltipTarget
 } from "./lesson-article";
+import {
+  LessonRail,
+  LessonReaderFooter,
+  LessonReaderHeader,
+  LessonReaderMobileStrip,
+  MobileSheet,
+  ReaderImageLightbox
+} from "./lesson-reader-ui";
 export {
   LessonArticle,
   formatCrossMediaHintLabel
@@ -479,70 +479,25 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
 
   return (
     <div className="reader-page" data-furigana-mode={furiganaMode}>
-      <header className="reader-study-header">
-        <div className="reader-study-header__left">
-          <Link
-            className="reader-study-header__back"
-            href={mediaStudyHref(data.media.slug, "textbook")}
-          >
-            {data.media.title} / Textbook
-          </Link>
-          <div className="reader-study-header__copy">
-            <p className="eyebrow">{data.lesson.segmentTitle}</p>
-            <h1 className="reader-study-header__title">{data.lesson.title}</h1>
-            <div className="reader-study-header__meta">
-              <span>
-                {data.completedLessons}/{data.totalLessons} lette
-              </span>
-              <span>
-                {lessonStatus === "completed"
-                  ? "Completata"
-                  : data.lesson.statusLabel}
-              </span>
-              {data.lesson.difficulty ? (
-                <span>{data.lesson.difficulty}</span>
-              ) : null}
-            </div>
-          </div>
-        </div>
+      <LessonReaderHeader
+        completedLessons={data.completedLessons}
+        furiganaMode={furiganaMode}
+        isSavingFurigana={isSavingFurigana}
+        isSavingLesson={isSavingLesson}
+        lesson={data.lesson}
+        lessonStatus={lessonStatus}
+        media={data.media}
+        onFuriganaModeChange={handleFuriganaModeChange}
+        onToggleLessonCompletion={toggleLessonCompletion}
+        totalLessons={data.totalLessons}
+      />
 
-        <div className="reader-study-header__actions">
-          <FuriganaModeControl
-            currentMode={furiganaMode}
-            disabled={isSavingFurigana}
-            onChange={handleFuriganaModeChange}
-          />
-          <button
-            className={cx(
-              "button",
-              lessonStatus === "completed" ? "button--ghost" : "button--primary"
-            )}
-            disabled={isSavingLesson}
-            onClick={toggleLessonCompletion}
-            type="button"
-          >
-            {lessonStatus === "completed"
-              ? "Segna in corso"
-              : "Segna completata"}
-          </button>
-        </div>
-      </header>
-
-      <div className="reader-mobile-strip">
-        <button
-          className="button button--ghost reader-mobile-strip__button"
-          onClick={() => setMobileSheet({ type: "lessons" })}
-          type="button"
-        >
-          Lezioni
-        </button>
-        <div className="reader-mobile-strip__status">
-          <span>
-            {data.completedLessons}/{data.totalLessons} lette
-          </span>
-          <span>Furigana: {furiganaMode}</span>
-        </div>
-      </div>
+      <LessonReaderMobileStrip
+        completedLessons={data.completedLessons}
+        furiganaMode={furiganaMode}
+        onOpenLessons={() => setMobileSheet({ type: "lessons" })}
+        totalLessons={data.totalLessons}
+      />
 
       <div className="reader-layout">
         <aside className="reader-rail">
@@ -578,42 +533,14 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
             />
           </section>
 
-          <footer className="reader-footer">
-            <div className="reader-footer__nav">
-              {data.previousLesson ? (
-                <LessonNavLink
-                  direction="prev"
-                  lesson={data.previousLesson}
-                  mediaSlug={data.media.slug}
-                />
-              ) : (
-                <div className="reader-footer__placeholder" />
-              )}
-              {data.nextLesson ? (
-                <LessonNavLink
-                  direction="next"
-                  lesson={data.nextLesson}
-                  mediaSlug={data.media.slug}
-                />
-              ) : (
-                <div className="reader-footer__placeholder" />
-              )}
-            </div>
-
-            <button
-              className={cx(
-                "button",
-                lessonStatus === "completed"
-                  ? "button--ghost"
-                  : "button--primary"
-              )}
-              disabled={isSavingLesson}
-              onClick={toggleLessonCompletion}
-              type="button"
-            >
-              {lessonStatus === "completed" ? "Riapri lesson" : "Chiudi lesson"}
-            </button>
-          </footer>
+          <LessonReaderFooter
+            isSavingLesson={isSavingLesson}
+            lessonStatus={lessonStatus}
+            mediaSlug={data.media.slug}
+            nextLesson={data.nextLesson}
+            onToggleLessonCompletion={toggleLessonCompletion}
+            previousLesson={data.previousLesson}
+          />
         </main>
       </div>
 
@@ -692,208 +619,6 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
           onClose={() => setExpandedImage(null)}
         />
       ) : null}
-    </div>
-  );
-}
-
-type FuriganaModeControlProps = {
-  currentMode: FuriganaMode;
-  disabled: boolean;
-  onChange: (mode: FuriganaMode) => void;
-};
-
-function FuriganaModeControl({
-  currentMode,
-  disabled,
-  onChange
-}: FuriganaModeControlProps) {
-  const options: Array<{ mode: FuriganaMode; label: string }> = [
-    { mode: "off", label: "Nascoste" },
-    { mode: "hover", label: "Al passaggio" },
-    { mode: "on", label: "Sempre" }
-  ];
-
-  return (
-    <div
-      aria-label="Controllo furigana"
-      className="reader-furigana-control"
-      role="group"
-    >
-      {options.map((option) => (
-        <button
-          key={option.mode}
-          aria-pressed={currentMode === option.mode}
-          className={cx(
-            "reader-furigana-control__button",
-            currentMode === option.mode &&
-              "reader-furigana-control__button--active"
-          )}
-          disabled={disabled}
-          onClick={() => onChange(option.mode)}
-          type="button"
-        >
-          {option.label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-type LessonRailProps = {
-  activeLessonId: string;
-  compact?: boolean;
-  groups: TextbookLessonData["groups"];
-  mediaSlug: string;
-  onNavigate?: () => void;
-};
-
-function LessonRail({
-  activeLessonId,
-  compact = false,
-  groups,
-  mediaSlug,
-  onNavigate
-}: LessonRailProps) {
-  return (
-    <div
-      className={cx(
-        "reader-rail__card",
-        compact && "reader-rail__card--compact"
-      )}
-    >
-      {groups.map((group) => (
-        <section key={group.id} className="reader-rail__group">
-          <div className="reader-rail__group-heading">
-            <p className="eyebrow">{group.title}</p>
-            <span className="meta-pill">
-              {group.completedLessons}/{group.totalLessons}
-            </span>
-          </div>
-          <div className="reader-rail__list">
-            {group.lessons.map((lesson) => (
-              <Link
-                key={lesson.id}
-                className={cx(
-                  "reader-rail__item",
-                  lesson.id === activeLessonId && "reader-rail__item--active"
-                )}
-                href={mediaTextbookLessonHref(mediaSlug, lesson.slug)}
-                onClick={onNavigate}
-              >
-                <div className="reader-rail__item-top">
-                  <strong>{lesson.title}</strong>
-                  <span className={`meta-pill meta-pill--${lesson.status}`}>
-                    {lesson.statusLabel}
-                  </span>
-                </div>
-                <p className="reader-rail__item-copy">
-                  {lesson.summary ?? lesson.excerpt ?? lesson.segmentTitle}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
-  );
-}
-
-type LessonNavLinkProps = {
-  direction: "prev" | "next";
-  lesson: TextbookLessonNavItem;
-  mediaSlug: string;
-};
-
-function LessonNavLink({ direction, lesson, mediaSlug }: LessonNavLinkProps) {
-  return (
-    <Link
-      className={cx(
-        "reader-footer__link",
-        direction === "next" && "reader-footer__link--next"
-      )}
-      href={mediaTextbookLessonHref(mediaSlug, lesson.slug)}
-    >
-      <span className="reader-footer__label">
-        {direction === "prev" ? "Lesson precedente" : "Lesson successiva"}
-      </span>
-      <strong>{lesson.title}</strong>
-    </Link>
-  );
-}
-
-type MobileSheetProps = {
-  children: ReactNode;
-  onClose: () => void;
-};
-
-function MobileSheet({ children, onClose }: MobileSheetProps) {
-  return (
-    <div className="reader-sheet" role="dialog" aria-modal="true">
-      <button
-        aria-label="Chiudi pannello"
-        className="reader-sheet__backdrop"
-        onClick={onClose}
-        type="button"
-      />
-      <div className="reader-sheet__surface">
-        <div className="reader-sheet__handle" />
-        <button className="reader-sheet__close" onClick={onClose} type="button">
-          Chiudi
-        </button>
-        {children}
-      </div>
-    </div>
-  );
-}
-
-type ReaderImageLightboxProps = {
-  image: ExpandedImageState;
-  onClose: () => void;
-};
-
-function ReaderImageLightbox({ image, onClose }: ReaderImageLightboxProps) {
-  const caption = image.captionText ?? image.alt;
-
-  return (
-    <div
-      aria-label="Immagine ingrandita"
-      aria-modal="true"
-      className="reader-image-lightbox"
-      role="dialog"
-    >
-      <button
-        aria-label="Chiudi immagine"
-        className="reader-image-lightbox__backdrop"
-        onClick={onClose}
-        type="button"
-      />
-      <div className="reader-image-lightbox__surface">
-        <div className="reader-image-lightbox__top">
-          <p className="eyebrow">Immagine</p>
-          <button
-            autoFocus
-            className="button button--ghost button--small"
-            onClick={onClose}
-            type="button"
-          >
-            Chiudi
-          </button>
-        </div>
-        <div className="reader-image-lightbox__frame">
-          <Image
-            alt={image.alt}
-            className="reader-image-lightbox__asset"
-            decoding="async"
-            height={image.presentation.height}
-            loading="eager"
-            sizes="100vw"
-            src={image.src}
-            unoptimized
-            width={image.presentation.width}
-          />
-        </div>
-        <p className="reader-image-lightbox__caption">{caption}</p>
-      </div>
     </div>
   );
 }
