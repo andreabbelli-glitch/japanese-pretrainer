@@ -35,6 +35,7 @@ type ReviewSessionInput = {
   gradedCardIds?: string[];
   mediaSlug?: string;
   nextCardId?: string | null;
+  segmentId?: string | null;
   sessionMedia?: ReviewPageData["media"];
   sessionQueue?: ReviewPageData["queue"];
   sessionSettings?: ReviewPageData["settings"];
@@ -245,7 +246,8 @@ export async function gradeReviewCardSessionAction(
         },
         session: {
           answeredCount: input.answeredCount + 1,
-          extraNewCount: input.extraNewCount
+          extraNewCount: input.extraNewCount,
+          segmentId: input.segmentId
         }
       } satisfies ReviewPageData;
     }
@@ -270,7 +272,8 @@ export async function gradeReviewCardSessionAction(
           },
           session: {
             answeredCount: input.answeredCount + 1,
-            extraNewCount: input.extraNewCount
+            extraNewCount: input.extraNewCount,
+            segmentId: input.segmentId
           }
         } satisfies ReviewPageData;
       }
@@ -309,7 +312,8 @@ export async function gradeReviewCardSessionAction(
         },
         session: {
           answeredCount: input.answeredCount + 1,
-          extraNewCount: input.extraNewCount
+          extraNewCount: input.extraNewCount,
+          segmentId: input.segmentId
         }
       } satisfies ReviewPageData;
     }
@@ -319,7 +323,8 @@ export async function gradeReviewCardSessionAction(
     input,
     buildReviewSearchParams({
       answeredCount: input.answeredCount + 1,
-      extraNewCount: input.extraNewCount
+      extraNewCount: input.extraNewCount,
+      segmentId: input.segmentId
     }),
     media
   );
@@ -372,7 +377,8 @@ export async function markLinkedEntryKnownSessionAction(
       cardId: input.cardId,
       extraNewCount: input.extraNewCount,
       notice: "known",
-      redirectMode: input.redirectMode
+      redirectMode: input.redirectMode,
+      segmentId: input.segmentId
     }),
     media
   );
@@ -403,7 +409,8 @@ export async function setLinkedEntryLearningSessionAction(
       cardId: input.cardId,
       extraNewCount: input.extraNewCount,
       notice: "learning",
-      redirectMode: input.redirectMode
+      redirectMode: input.redirectMode,
+      segmentId: input.segmentId
     }),
     media
   );
@@ -433,7 +440,8 @@ export async function resetReviewCardSessionAction(
       cardId: input.cardId,
       extraNewCount: input.extraNewCount,
       notice: "reset",
-      redirectMode: input.redirectMode
+      redirectMode: input.redirectMode,
+      segmentId: input.segmentId
     }),
     media
   );
@@ -465,7 +473,8 @@ export async function setReviewCardSuspendedSessionAction(
       cardId: input.cardId,
       extraNewCount: input.extraNewCount,
       notice: input.suspended ? "suspended" : "resumed",
-      redirectMode: input.redirectMode
+      redirectMode: input.redirectMode,
+      segmentId: input.segmentId
     }),
     media
   );
@@ -503,6 +512,7 @@ function buildReviewRedirectUrl(input: {
   mediaSlug: string;
   redirectMode?: ReviewRedirectMode;
   notice?: string;
+  segmentId?: string | null;
 }): Route {
   if (input.redirectMode === "stay_detail" && input.cardId) {
     return mediaReviewCardHref(input.mediaSlug, input.cardId);
@@ -514,7 +524,8 @@ function buildReviewRedirectUrl(input: {
       cardId: input.cardId,
       extraNewCount: input.extraNewCount,
       notice: input.notice,
-      redirectMode: input.redirectMode
+      redirectMode: input.redirectMode,
+      segmentId: input.segmentId
     })
   );
 
@@ -588,6 +599,7 @@ function buildRedirectSearchParams(input: {
   extraNewCount?: number;
   notice?: string;
   redirectMode?: ReviewRedirectMode;
+  segmentId?: string | null;
 }) {
   return buildReviewSearchParams({
     answeredCount: input.answeredCount,
@@ -596,7 +608,8 @@ function buildRedirectSearchParams(input: {
         ? input.cardId
         : undefined,
     extraNewCount: input.extraNewCount,
-    notice: input.notice
+    notice: input.notice,
+    segmentId: input.segmentId
   });
 }
 
@@ -605,6 +618,7 @@ function buildReviewSearchParams(input: {
   cardId?: string;
   extraNewCount?: number;
   notice?: string;
+  segmentId?: string | null;
   showAnswer?: boolean;
 }) {
   const params: Record<string, string> = {};
@@ -619,6 +633,10 @@ function buildReviewSearchParams(input: {
 
   if (input.extraNewCount && input.extraNewCount > 0) {
     params.extraNew = String(input.extraNewCount);
+  }
+
+  if (input.segmentId) {
+    params.segment = input.segmentId;
   }
 
   if (input.notice) {

@@ -174,6 +174,7 @@ describe("global review first-candidate cache", () => {
       "answered:0",
       "extra-new:0",
       "notice:",
+      "segment:",
       "selected:",
       "show:0"
     ]);

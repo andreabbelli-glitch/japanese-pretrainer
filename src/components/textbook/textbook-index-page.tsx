@@ -4,7 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 
 import type { TextbookIndexData } from "@/lib/textbook";
-import { mediaHref, mediaTextbookLessonHref } from "@/lib/site";
+import {
+  buildReviewSessionHref,
+  mediaHref,
+  mediaTextbookLessonHref
+} from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
@@ -131,14 +135,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
                 {!isCollapsed && (
                   <div className="textbook-lesson-grid">
                     {group.lessons.map((lesson) => (
-                      <Link
-                        key={lesson.id}
-                        className="textbook-lesson-link"
-                        href={mediaTextbookLessonHref(
-                          data.media.slug,
-                          lesson.slug,
-                        )}
-                      >
+                      <div key={lesson.id} className="textbook-lesson-link">
                         <SurfaceCard
                           className="textbook-lesson-card"
                           variant="quiet"
@@ -163,10 +160,29 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
                           </p>
                           <div className="textbook-lesson-card__footer">
                             <span>{lesson.segmentTitle}</span>
-                            <span>Apri</span>
+                            <div className="hero-actions">
+                              <Link
+                                className="button button--ghost button--small"
+                                href={buildReviewSessionHref({
+                                  mediaSlug: data.media.slug,
+                                  segmentId: lesson.segmentId
+                                })}
+                              >
+                                Ripassa vocaboli
+                              </Link>
+                              <Link
+                                className="button button--primary button--small"
+                                href={mediaTextbookLessonHref(
+                                  data.media.slug,
+                                  lesson.slug
+                                )}
+                              >
+                                Apri
+                              </Link>
+                            </div>
                           </div>
                         </SurfaceCard>
-                      </Link>
+                      </div>
                     ))}
                   </div>
                 )}

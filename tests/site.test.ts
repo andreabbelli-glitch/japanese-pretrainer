@@ -4,8 +4,10 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
+import { TextbookIndexPage } from "@/components/textbook/textbook-index-page";
 import {
   buildGlossaryHref,
+  buildReviewSessionHref,
   mediaAssetHref,
   mediaGlossaryEntryHref,
   mediaGlossaryGrammarHref,
@@ -77,6 +79,18 @@ describe("site helpers", () => {
     );
     expect(mediaReviewCardHref("fixture-tcg", "card-iku-review")).toBe(
       "/media/fixture-tcg/review/card/card-iku-review"
+    );
+    expect(
+      buildReviewSessionHref({
+        answeredCount: 3,
+        cardId: "card-iku-review",
+        extraNewCount: 2,
+        mediaSlug: "fixture-tcg",
+        segmentId: "segment_fixture_starter_core",
+        showAnswer: true
+      })
+    ).toBe(
+      "/media/fixture-tcg/review?answered=3&card=card-iku-review&extraNew=2&segment=segment_fixture_starter_core&show=answer"
     );
     expect(areas.map((area) => mediaStudyHref("fixture-tcg", area))).toEqual([
       "/media/fixture-tcg/textbook",
@@ -242,6 +256,81 @@ describe("site helpers", () => {
     );
     expect(localMarkup).not.toContain(
       '<a aria-current="page" class="site-nav__link site-nav__link--active" href="/review">'
+    );
+  });
+
+  it("renders a textbook index CTA that jumps directly into segment review", () => {
+    const markup = renderToStaticMarkup(
+      createElement(TextbookIndexPage, {
+        data: {
+          media: {
+            id: "media_fixture_tcg",
+            slug: "fixture-tcg",
+            title: "Fixture TCG",
+            description: "Fixture",
+            mediaTypeLabel: "TCG",
+            segmentKindLabel: "Archi"
+          },
+          furiganaMode: "hover",
+          lessons: [
+            {
+              id: "lesson_fixture_core_1",
+              slug: "core-vocab",
+              title: "Core vocab",
+              orderIndex: 1,
+              difficulty: "N5",
+              summary: "Prime carte",
+              excerpt: null,
+              status: "not_started",
+              statusLabel: "Da iniziare",
+              segmentId: "segment_fixture_starter_core",
+              segmentTitle: "Starter Core",
+              lastOpenedAt: null,
+              completedAt: null
+            }
+          ],
+          groups: [
+            {
+              id: "segment_fixture_starter_core",
+              title: "Starter Core",
+              note: null,
+              completedLessons: 0,
+              totalLessons: 1,
+              lessons: [
+                {
+                  id: "lesson_fixture_core_1",
+                  slug: "core-vocab",
+                  title: "Core vocab",
+                  orderIndex: 1,
+                  difficulty: "N5",
+                  summary: "Prime carte",
+                  excerpt: null,
+                  status: "not_started",
+                  statusLabel: "Da iniziare",
+                  segmentId: "segment_fixture_starter_core",
+                  segmentTitle: "Starter Core",
+                  lastOpenedAt: null,
+                  completedAt: null
+                }
+              ]
+            }
+          ],
+          activeLesson: null,
+          resumeLesson: null,
+          completedLessons: 0,
+          totalLessons: 1,
+          textbookProgressPercent: 0,
+          glossaryHref: "/glossary?media=fixture-tcg"
+        }
+      })
+    );
+
+    expect(markup).toContain("Ripassa vocaboli");
+    expect(markup).toContain(
+      'href="/media/fixture-tcg/review?segment=segment_fixture_starter_core"'
+    );
+    expect(markup).toContain(
+      'href="/media/fixture-tcg/textbook/core-vocab"'
     );
   });
 });

@@ -105,6 +105,7 @@ type ReviewSearchState = {
   answeredCount: number;
   extraNewCount: number;
   noticeCode: string | null;
+  segmentId: string | null;
   selectedCardId: string | null;
   showAnswer: boolean;
 };
@@ -114,6 +115,7 @@ function buildReviewSearchStateCacheKeyParts(input: ReviewSearchState) {
     `answered:${input.answeredCount}`,
     `extra-new:${input.extraNewCount}`,
     `notice:${input.noticeCode ?? ""}`,
+    `segment:${input.segmentId ?? ""}`,
     `selected:${input.selectedCardId ?? ""}`,
     `show:${input.showAnswer ? "1" : "0"}`
   ];
@@ -258,12 +260,17 @@ async function buildReviewPageDataFromWorkspace(input: {
 }) {
   const nowIso = input.now.toISOString();
   const mediaById = input.mediaById;
+  const segmentFilteredCards = input.searchState.segmentId
+    ? input.cards.filter(
+        (card) => card.segmentId === input.searchState.segmentId
+      )
+    : input.cards;
   const queueSnapshot = await measureWith(
     input.profiler,
     "buildReviewQueueSubjectSnapshot",
     () =>
       buildReviewQueueSubjectSnapshot({
-        cards: input.cards,
+        cards: segmentFilteredCards,
         dailyLimit: input.dailyLimit,
         entryLookup: input.entryLookup,
         excludeCardIds: input.excludeCardIds,
@@ -369,7 +376,8 @@ async function buildReviewPageDataFromWorkspace(input: {
     session: {
       answeredCount: input.searchState.answeredCount,
       extraNewCount: input.searchState.extraNewCount,
-      notice: resolveReviewNotice(input.searchState.noticeCode)
+      notice: resolveReviewNotice(input.searchState.noticeCode),
+      segmentId: input.searchState.segmentId
     }
   } satisfies ReviewPageData;
 }
@@ -585,7 +593,8 @@ async function buildReviewFirstCandidateDataFromWorkspace(input: {
     session: {
       answeredCount: input.searchState.answeredCount,
       extraNewCount: input.searchState.extraNewCount,
-      notice: resolveReviewNotice(input.searchState.noticeCode)
+      notice: resolveReviewNotice(input.searchState.noticeCode),
+      segmentId: input.searchState.segmentId
     }
   };
 }
@@ -2816,6 +2825,7 @@ function normalizeReviewSearchState(
     extraNewCount:
       Number.isFinite(extraNewCount) && extraNewCount > 0 ? extraNewCount : 0,
     noticeCode: readSearchParam(searchParams, "notice") || null,
+    segmentId: readSearchParam(searchParams, "segment") || null,
     selectedCardId: readSearchParam(searchParams, "card") || null,
     showAnswer: readSearchParam(searchParams, "show") === "answer"
   };

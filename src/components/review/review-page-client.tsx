@@ -136,6 +136,7 @@ export function ReviewPageClient({
     extraNewCount: viewData.session.extraNewCount,
     isQueueCard,
     position,
+    segmentId: viewData.session.segmentId,
     showAnswer: isAnswerRevealed
   });
   const contextualGlossaryHref = appendReturnToParam(
@@ -434,6 +435,7 @@ export function ReviewPageClient({
                 ? sessionViewData.media.slug
                 : undefined,
             rating,
+            segmentId: sessionViewData.session.segmentId,
             scope: sessionViewData.scope
           }),
         {
@@ -470,6 +472,7 @@ export function ReviewPageClient({
               : undefined,
           nextCardId,
           rating,
+          segmentId: sessionViewData.session.segmentId,
           scope: sessionViewData.scope,
           sessionMedia: sessionViewData.media,
           sessionQueue: fullViewData?.queue,
@@ -527,6 +530,7 @@ export function ReviewPageClient({
         mediaSlug:
           fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
+        segmentId: fullViewData.session.segmentId,
         scope: fullViewData.scope
       })
     );
@@ -549,6 +553,7 @@ export function ReviewPageClient({
         mediaSlug:
           fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
+        segmentId: fullViewData.session.segmentId,
         scope: fullViewData.scope
       })
     );
@@ -571,6 +576,7 @@ export function ReviewPageClient({
         mediaSlug:
           fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
+        segmentId: fullViewData.session.segmentId,
         scope: fullViewData.scope
       })
     );
@@ -593,6 +599,7 @@ export function ReviewPageClient({
         mediaSlug:
           fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
         redirectMode: actionRedirectMode,
+        segmentId: fullViewData.session.segmentId,
         scope: fullViewData.scope,
         suspended: selectedCard.bucket !== "suspended"
       })
@@ -850,7 +857,8 @@ export function ReviewPageClient({
                         extraNewCount:
                           viewData.session.extraNewCount + additionalNewCount,
                         isQueueCard: true,
-                        position: 1
+                        position: 1,
+                        segmentId: viewData.session.segmentId
                       })}
                     >
                       {formatTopUpLabel(additionalNewCount)}
@@ -1010,7 +1018,8 @@ function buildOptimisticGradeResult(input: {
         },
     session: {
       answeredCount: input.currentData.session.answeredCount + 1,
-      extraNewCount: input.currentData.session.extraNewCount
+      extraNewCount: input.currentData.session.extraNewCount,
+      segmentId: input.currentData.session.segmentId
     }
   };
 }

@@ -137,6 +137,7 @@ export type ReviewPageData = {
     answeredCount: number;
     extraNewCount: number;
     notice?: string;
+    segmentId?: string | null;
   };
 };
 

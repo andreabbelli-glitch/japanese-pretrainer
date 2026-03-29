@@ -200,6 +200,7 @@ export function buildReviewSessionHref(input: {
   cardId?: string | null;
   extraNewCount?: number;
   mediaSlug: string;
+  segmentId?: string | null;
   showAnswer?: boolean;
 }): Route {
   return buildReviewSessionHrefForBase(mediaReviewHref(input.mediaSlug), input);
@@ -209,6 +210,7 @@ export function buildGlobalReviewSessionHref(input: {
   answeredCount?: number;
   cardId?: string | null;
   extraNewCount?: number;
+  segmentId?: string | null;
   showAnswer?: boolean;
 }): Route {
   return buildReviewSessionHrefForBase(reviewHref(), input);
@@ -237,6 +239,7 @@ export function buildCanonicalReviewSessionHref(input: {
   isQueueCard: boolean;
   mediaSlug: string;
   position: number | null;
+  segmentId?: string | null;
   showAnswer?: boolean;
 }): Route {
   return buildReviewSessionHref({
@@ -244,6 +247,7 @@ export function buildCanonicalReviewSessionHref(input: {
     cardId: shouldPersistReviewSessionCard(input) ? input.cardId : null,
     extraNewCount: input.extraNewCount,
     mediaSlug: input.mediaSlug,
+    segmentId: input.segmentId,
     showAnswer: input.showAnswer
   });
 }
@@ -255,12 +259,14 @@ export function buildCanonicalReviewSessionHrefForBase(input: {
   extraNewCount?: number;
   isQueueCard: boolean;
   position: number | null;
+  segmentId?: string | null;
   showAnswer?: boolean;
 }): Route {
   return buildReviewSessionHrefForBase(input.baseHref, {
     answeredCount: input.answeredCount,
     cardId: shouldPersistReviewSessionCard(input) ? input.cardId : null,
     extraNewCount: input.extraNewCount,
+    segmentId: input.segmentId,
     showAnswer: input.showAnswer
   });
 }
@@ -271,6 +277,7 @@ function buildReviewSessionHrefForBase(
     answeredCount?: number;
     cardId?: string | null;
     extraNewCount?: number;
+    segmentId?: string | null;
     showAnswer?: boolean;
   }
 ) {
@@ -285,6 +292,10 @@ function buildReviewSessionHrefForBase(
 
     if (input.extraNewCount && input.extraNewCount > 0) {
       params.set("extraNew", String(input.extraNewCount));
+    }
+
+    if (input.segmentId) {
+      params.set("segment", input.segmentId);
     }
 
     if (input.showAnswer) {
