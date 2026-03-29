@@ -48,7 +48,7 @@ back: forza / buona fortuna
 example_jp: >-
   ジムバトル、 がんばって！
 example_it: >-
-  Forza.
+  Buona fortuna per la lotta in palestra!
 :::
 :::term
 id: term-e005-yoroshiku
@@ -70,7 +70,7 @@ back: piacere / conto su di te
 example_jp: >-
   これから よろしく。
 example_it: >-
-  Piacere.
+  Da adesso in poi conto su di te.
 :::
 :::grammar
 id: grammar-g005-senza-fare-non-fare-e
@@ -136,7 +136,7 @@ back: già / ormai
 example_jp: >-
   もう {{行|い}}きます。
 example_it: >-
-  Già.
+  Ormai vado.
 :::
 :::term
 id: term-v014-raido
@@ -158,7 +158,7 @@ back: ride / cavalcata
 example_jp: >-
   ライドで {{行|い}}きます。
 example_it: >-
-  Ci vado con ride.
+  Ci vado in ride.
 :::
 :::term
 id: term-v015-jibun
@@ -264,7 +264,7 @@ back: accademia
 example_jp: >-
   アカデミーへ {{行|い}}きます。
 example_it: >-
-  Vado a accademia.
+  Vado all'accademia.
 :::
 :::term
 id: term-v021-tsuyoi

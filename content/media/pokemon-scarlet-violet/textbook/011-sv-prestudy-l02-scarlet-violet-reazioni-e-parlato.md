@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per Scarlet/Violet, reazioni e parlato: 10 cart
 ---
 # Obiettivo
 
-Capire il giapponese che compare in Scarlet/Violet, reazioni e parlato. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare nelle reazioni e nel parlato di Scarlet/Violet: incoraggiamenti, richieste, divieti leggeri e frasi colloquiali che nei dialoghi suonano più naturali del giapponese da manuale.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+Questo blocco mescola parole discorsive, formule sociali e parlato contratto. [もう](term:term-v013-mou) cambia spesso la sfumatura temporale di una frase; [がんばって](term:term-e004-ganbatte) e [よろしく](term:term-e005-yoroshiku) sono formule che nei dialoghi fanno subito capire il tono relazionale; [～ないで](grammar:grammar-g005-senza-fare-non-fare-e) e [～てる](grammar:grammar-g006-contrazione-colloquiale-di) sono pattern molto frequenti nel parlato vivo. Se li riconosci, i dialoghi di Scarlet/Violet suonano molto meno artificiali.
 
 ## Termini chiave
 
@@ -56,13 +56,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [もう](term:term-v013-mou) e [ライド](term:term-v014-raido) e [自分](term:term-v015-jibun) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Tra i termini, [もう](term:term-v013-mou) è importante perché spesso non vuol dire solo "già" in senso meccanico: può dare l'idea di "ormai", "a questo punto" o "subito". Se in una frase lo traduci sempre in modo piatto, perdi il tono. [自分](term:term-v015-jibun) non è sempre un semplice "io": segnala il soggetto stesso, quindi in frasi come `自分で やる` il senso è "farlo da soli, personalmente". [強い](term:term-v021-tsuyoi) e [すごい](term:term-v016-sugoi) sono invece vicine ma non uguali: [強い](term:term-v021-tsuyoi) descrive forza o potenza, mentre [すごい](term:term-v016-sugoi) è una reazione più larga di ammirazione o sorpresa.
 
-Le espressioni come [持ちきれない / 持ちきれません](term:term-e003-mochikirenai-mochikiremasen) e [がんばって](term:term-e004-ganbatte) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+[持ちきれない / 持ちきれません](term:term-e003-mochikirenai-mochikiremasen) è un messaggio da sistema: non dice genericamente che qualcosa "non va", ma che non puoi più portare altro perché hai raggiunto il limite. [がんばって](term:term-e004-ganbatte) invece è l'opposto come tono: è un incoraggiamento, quindi in una scena prima di una sfida equivale a "dai, impegnati" o "buona fortuna". [よろしく](term:term-e005-yoroshiku) non corrisponde bene a un solo italiano fisso: a seconda del contesto può voler dire "piacere", ma anche "conto su di te" o "affidiamoci l'uno all'altro". In `これから よろしく` il punto non è la presentazione neutra, ma il rapporto che inizia da questo momento in poi.
 
-Sul piano grammaticale, pattern come [〜ないで](grammar:grammar-g005-senza-fare-non-fare-e) e [〜てる](grammar:grammar-g006-contrazione-colloquiale-di) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+[～ないで](grammar:grammar-g005-senza-fare-non-fare-e) appare spesso in richieste e divieti: `走らないで` è "non correre", quindi il focus non è una negazione astratta ma l'istruzione di non fare quell'azione. [～てる](grammar:grammar-g006-contrazione-colloquiale-di) è semplicemente il parlato contratto di `～ている`: quando senti o leggi `待ってる`, il significato resta "sta aspettando", ma il tono è più naturale e colloquiale. Riconoscerlo è utile perché nei dialoghi dei personaggi il giapponese parlato taglia spesso forme che in un manuale comparirebbero complete.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [スター団](term:term-v017-sutaa-dan)、 [ボタン](term:term-v018-botan)、 [エリアゼロ](term:term-v022-eriazero). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo ci sono etichette contestuali come [スター団](term:term-v017-sutaa-dan), [ボタン](term:term-v018-botan) e [エリアゼロ](term:term-v022-eriazero). Qui la cosa utile non è analizzarle grammaticalmente, ma riconoscerle subito come riferimenti narrativi o geografici tipici di Scarlet/Violet.
 
 ## Esempi guidati
 
@@ -77,14 +77,14 @@ translation_it: >-
 jp: >-
   ジムバトル、 がんばって！
 translation_it: >-
-  Forza.
+  Buona fortuna per la lotta in palestra!
 :::
 
 :::example_sentence
 jp: >-
   これから よろしく。
 translation_it: >-
-  Piacere.
+  Da adesso in poi conto su di te.
 :::
 
 :::example_sentence
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando un dialogo ti sembra semplice ma sfuggente, controlla subito se c'è una formula sociale, una negazione richiesta o una contrazione colloquiale. In questa lesson il salto di comprensione viene soprattutto da quei dettagli.
