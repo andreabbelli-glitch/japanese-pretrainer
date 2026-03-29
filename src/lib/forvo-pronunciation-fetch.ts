@@ -121,80 +121,23 @@ export async function fetchForvoPronunciationsForBundle(input: {
   words?: string[];
   entryIds?: string[];
 }) {
-  const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
-
-  if (manifest.issues.length > 0) {
-    throw new Error(
-      `Cannot update pronunciations for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
-    );
-  }
-
-  const manifestEntries = new Map<string, PronunciationManifestEntry>(
-    (manifest.manifest?.entries ?? []).map((entry) => [
-      buildEntryKey(entry.entryType, entry.entryId),
-      entry
-    ])
-  );
-  const allTargets = collectPronunciationTargets(input.bundle);
-  const isStillMissing = (entry: PronunciationTargetEntry) =>
-    input.refresh ||
-    !(
-      entry.audioSrc ||
-      manifestEntries.get(buildEntryKey(entry.kind, entry.id))?.audioSrc
-    );
-  const filteredTargets = allTargets.filter(isStillMissing);
-  const hasExplicitRequests =
-    (input.entryIds?.length ?? 0) > 0 ||
-    (input.words?.length ?? 0) > 0 ||
-    typeof input.wordListSource === "string";
-  const requestedTargets = resolveRequestedTargets({
+  const preparedRun = await prepareForvoPronunciationRun({
     bundle: input.bundle,
+    dryRun: input.dryRun,
     entryIds: input.entryIds,
+    knownMissingPath: input.browser.knownMissingPath,
+    limit: input.limit,
     refresh: input.refresh,
+    retryKnownMissing: input.browser.retryKnownMissing,
     wordListSource: input.wordListSource,
     words: input.words
   });
-  const selectedTargets = (
-    hasExplicitRequests ? requestedTargets.targets : filteredTargets
-  ).filter(isStillMissing);
-  const limitedTargets =
-    typeof input.limit === "number" && input.limit >= 0
-      ? selectedTargets.slice(0, input.limit)
-      : selectedTargets;
-  const knownMissingRegistry = await loadForvoKnownMissingRegistry(
-    input.browser.knownMissingPath
-  );
-  const knownMissingPruned = pruneKnownMissingRegistry(
-    knownMissingRegistry,
-    allTargets,
-    input.bundle.mediaSlug
-  );
-  if (knownMissingPruned && !input.dryRun) {
-    await persistForvoKnownMissingRegistry(
-      input.browser.knownMissingPath,
-      knownMissingRegistry
-    );
-  }
-  const knownMissingSkipped = input.browser.retryKnownMissing
-    ? []
-    : limitedTargets.filter((entry) =>
-        hasKnownMissingForEntry(
-          knownMissingRegistry,
-          input.bundle.mediaSlug,
-          entry
-        )
-      );
-  const runnableTargets =
-    knownMissingSkipped.length > 0
-      ? limitedTargets.filter(
-          (entry) =>
-            !hasKnownMissingForEntry(
-              knownMissingRegistry,
-              input.bundle.mediaSlug,
-              entry
-            )
-        )
-      : limitedTargets;
+  const {
+    manifestEntries,
+    knownMissingSkipped,
+    requestedUnresolved,
+    runnableTargets
+  } = preparedRun;
 
   if (runnableTargets.length === 0) {
     return {
@@ -205,7 +148,7 @@ export async function fetchForvoPronunciationsForBundle(input: {
         kind: entry.kind,
         status: "skipped_known_missing"
       })),
-      requestedUnresolved: requestedTargets.unresolved,
+      requestedUnresolved,
       results: []
     };
   }
@@ -283,7 +226,7 @@ export async function fetchForvoPronunciationsForBundle(input: {
       kind: entry.kind,
       status: "skipped_known_missing"
     })),
-    requestedUnresolved: requestedTargets.unresolved,
+    requestedUnresolved,
     results
   };
 }
@@ -298,80 +241,24 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
   wordListSource?: string;
   words?: string[];
 }) {
-  const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
-
-  if (manifest.issues.length > 0) {
-    throw new Error(
-      `Cannot update pronunciations for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
-    );
-  }
-
-  const manifestEntries = new Map<string, PronunciationManifestEntry>(
-    (manifest.manifest?.entries ?? []).map((entry) => [
-      buildEntryKey(entry.entryType, entry.entryId),
-      entry
-    ])
-  );
-  const allTargets = collectPronunciationTargets(input.bundle);
-  const isStillMissing = (entry: PronunciationTargetEntry) =>
-    input.refresh ||
-    !(
-      entry.audioSrc ||
-      manifestEntries.get(buildEntryKey(entry.kind, entry.id))?.audioSrc
-    );
-  const filteredTargets = allTargets.filter(isStillMissing);
-  const hasExplicitRequests =
-    (input.entryIds?.length ?? 0) > 0 ||
-    (input.words?.length ?? 0) > 0 ||
-    typeof input.wordListSource === "string";
-  const requestedTargets = resolveRequestedTargets({
+  const preparedRun = await prepareForvoPronunciationRun({
     bundle: input.bundle,
+    dryRun: input.dryRun,
     entryIds: input.entryIds,
+    knownMissingPath: input.manual.knownMissingPath,
+    limit: input.limit,
     refresh: input.refresh,
+    retryKnownMissing: input.manual.retryKnownMissing,
     wordListSource: input.wordListSource,
     words: input.words
   });
-  const selectedTargets = (
-    hasExplicitRequests ? requestedTargets.targets : filteredTargets
-  ).filter(isStillMissing);
-  const limitedTargets =
-    typeof input.limit === "number" && input.limit >= 0
-      ? selectedTargets.slice(0, input.limit)
-      : selectedTargets;
-  const knownMissingRegistry = await loadForvoKnownMissingRegistry(
-    input.manual.knownMissingPath
-  );
-  const knownMissingPruned = pruneKnownMissingRegistry(
+  const {
+    manifestEntries,
     knownMissingRegistry,
-    allTargets,
-    input.bundle.mediaSlug
-  );
-  if (knownMissingPruned && !input.dryRun) {
-    await persistForvoKnownMissingRegistry(
-      input.manual.knownMissingPath,
-      knownMissingRegistry
-    );
-  }
-  const knownMissingSkipped = input.manual.retryKnownMissing
-    ? []
-    : limitedTargets.filter((entry) =>
-        hasKnownMissingForEntry(
-          knownMissingRegistry,
-          input.bundle.mediaSlug,
-          entry
-        )
-      );
-  const runnableTargets =
-    knownMissingSkipped.length > 0
-      ? limitedTargets.filter(
-          (entry) =>
-            !hasKnownMissingForEntry(
-              knownMissingRegistry,
-              input.bundle.mediaSlug,
-              entry
-            )
-        )
-      : limitedTargets;
+    knownMissingSkipped,
+    requestedUnresolved,
+    runnableTargets
+  } = preparedRun;
 
   if (runnableTargets.length === 0) {
     return {
@@ -382,7 +269,7 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
         kind: entry.kind,
         status: "skipped_known_missing"
       })),
-      requestedUnresolved: requestedTargets.unresolved,
+      requestedUnresolved,
       results: []
     };
   }
@@ -472,12 +359,107 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
         })),
         ...results.filter((result) => result.status === "skipped_known_missing")
       ],
-      requestedUnresolved: requestedTargets.unresolved,
+      requestedUnresolved,
       results
     };
   } finally {
     await closeSkipControlServer();
   }
+}
+
+async function prepareForvoPronunciationRun(input: {
+  bundle: NormalizedMediaBundle;
+  dryRun?: boolean;
+  entryIds?: string[];
+  knownMissingPath?: string;
+  limit?: number;
+  refresh?: boolean;
+  retryKnownMissing?: boolean;
+  wordListSource?: string;
+  words?: string[];
+}) {
+  const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
+
+  if (manifest.issues.length > 0) {
+    throw new Error(
+      `Cannot update pronunciations for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
+    );
+  }
+
+  const manifestEntries = new Map<string, PronunciationManifestEntry>(
+    (manifest.manifest?.entries ?? []).map((entry) => [
+      buildEntryKey(entry.entryType, entry.entryId),
+      entry
+    ])
+  );
+  const allTargets = collectPronunciationTargets(input.bundle);
+  const isStillMissing = (entry: PronunciationTargetEntry) =>
+    input.refresh ||
+    !(
+      entry.audioSrc ||
+      manifestEntries.get(buildEntryKey(entry.kind, entry.id))?.audioSrc
+    );
+  const filteredTargets = allTargets.filter(isStillMissing);
+  const hasExplicitRequests =
+    (input.entryIds?.length ?? 0) > 0 ||
+    (input.words?.length ?? 0) > 0 ||
+    typeof input.wordListSource === "string";
+  const requestedTargets = resolveRequestedTargets({
+    bundle: input.bundle,
+    entryIds: input.entryIds,
+    refresh: input.refresh,
+    wordListSource: input.wordListSource,
+    words: input.words
+  });
+  const selectedTargets = (
+    hasExplicitRequests ? requestedTargets.targets : filteredTargets
+  ).filter(isStillMissing);
+  const limitedTargets =
+    typeof input.limit === "number" && input.limit >= 0
+      ? selectedTargets.slice(0, input.limit)
+      : selectedTargets;
+  const knownMissingRegistry = await loadForvoKnownMissingRegistry(
+    input.knownMissingPath
+  );
+  const knownMissingPruned = pruneKnownMissingRegistry(
+    knownMissingRegistry,
+    allTargets,
+    input.bundle.mediaSlug
+  );
+  if (knownMissingPruned && !input.dryRun) {
+    await persistForvoKnownMissingRegistry(
+      input.knownMissingPath,
+      knownMissingRegistry
+    );
+  }
+  const knownMissingSkipped = input.retryKnownMissing
+    ? []
+    : limitedTargets.filter((entry) =>
+        hasKnownMissingForEntry(
+          knownMissingRegistry,
+          input.bundle.mediaSlug,
+          entry
+        )
+      );
+  const runnableTargets =
+    knownMissingSkipped.length > 0
+      ? limitedTargets.filter(
+          (entry) =>
+            !hasKnownMissingForEntry(
+              knownMissingRegistry,
+              input.bundle.mediaSlug,
+              entry
+            )
+        )
+      : limitedTargets;
+
+  return {
+    knownMissingRegistry,
+    knownMissingSkipped,
+    manifestEntries,
+    requestedUnresolved: requestedTargets.unresolved,
+    runnableTargets
+  };
 }
 
 export function parseForvoWordList(source: string) {
