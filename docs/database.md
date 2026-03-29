@@ -64,6 +64,9 @@ Apri Drizzle Studio:
 - `src/db/seed.ts`: fixture tecnica minima usata dai test unitari
 - `src/db/queries/*`: helper tipizzati per media, lessons, glossary e cards/review
 - `src/instrumentation.ts`: warm-up delle cache dati piu pesanti
+- Per confrontare cold vs warm in pratica, avvia `pnpm start`, misura la
+  prima navigazione dopo un riavvio e confrontala con la stessa rotta a cache
+  calda.
 - `scripts/db-migrate.ts`: entrypoint CLI per applicare le migrazioni
 - `scripts/db-seed.ts`: entrypoint CLI per importare il contenuto reale nel DB locale
 

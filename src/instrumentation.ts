@@ -10,9 +10,16 @@ export async function register() {
     const { getDashboardData, getMediaLibraryData } = await import(
       "@/lib/app-shell"
     );
+    const { getGlobalReviewFirstCandidateLoadResult } = await import(
+      "@/lib/review"
+    );
 
     // Warm the heaviest caches so the first user request is instant.
-    await Promise.all([getDashboardData(), getMediaLibraryData()]);
+    await Promise.all([
+      getDashboardData(),
+      getMediaLibraryData(),
+      getGlobalReviewFirstCandidateLoadResult({})
+    ]);
   } catch {
     // Warm-up failure is non-fatal — first user request will populate the cache.
   }
