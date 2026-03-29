@@ -24,9 +24,9 @@ card_type: recognition
 front: 'この{{先|さき}}'
 back: più avanti / da qui in poi
 example_jp: >-
-  この{{先|さき}}に {{町|まち}}が あります。
+  この{{先|さき}}に {{大穴|おおあな}}が あります。
 example_it: >-
-  Più avanti c'è la città.
+  Più avanti c'è la grande voragine.
 :::
 :::term
 id: term-e011-kocchi
@@ -48,16 +48,16 @@ back: da questa parte / qui
 example_jp: >-
   こっちへ {{行|い}}こう。
 example_it: >-
-  Da questa parte.
+  Andiamo da questa parte.
 :::
 :::term
 id: term-e014-yoroshikune
 lemma: よろしくね
 reading: よろしくね
 romaji: yoroshikune
-meaning_it: mi raccomando / contiamo l'uno sull'altro
+meaning_it: contiamo l'uno sull'altro / conto su di te
 notes_it: >-
-  Espressione ricorrente della lezione L06 nell'area Saluti / gestione dialogo. Versione più colloquiale e amichevole di よろしく.
+  Espressione ricorrente della lezione L06 nell'area Saluti / gestione dialogo. Versione colloquiale e amichevole di よろしく, usata quando si inizia un rapporto, una collaborazione o una sfida.
 :::
 :::card
 id: card-e014-yoroshikune-recognition
@@ -70,16 +70,16 @@ back: mi raccomando / contiamo l'uno sull'altro
 example_jp: >-
   これから よろしくね。
 example_it: >-
-  Mi raccomando.
+  D'ora in poi, contiamo l'uno sull'altro.
 :::
 :::term
 id: term-e015-yoroshikuo-negai-shimasu
 lemma: よろしくお願いします
 reading: よろしくおねがいします
 romaji: yoroshikuo negai shimasu
-meaning_it: piacere / ti affido la cosa
+meaning_it: conto sulla tua / sua collaborazione / le chiedo di occuparsene
 notes_it: >-
-  Espressione ricorrente della lezione L06 nell'area Saluti / gestione dialogo. Versione più formale, utile con professori o adulti.
+  Espressione ricorrente della lezione L06 nell'area Saluti / gestione dialogo. Versione più formale di よろしく, utile con professori o adulti quando si chiede collaborazione o si affida qualcosa.
 :::
 :::card
 id: card-e015-yoroshikuo-negai-shimasu-recognition
@@ -92,7 +92,7 @@ back: piacere / ti affido la cosa
 example_jp: >-
   よろしく お{{願|ねが}}いします。
 example_it: >-
-  Piacere.
+  Conto sulla sua collaborazione.
 :::
 :::grammar
 id: grammar-g017-pensare-che
@@ -187,7 +187,7 @@ back: strumento / oggetto
 example_jp: >-
   {{道具|どうぐ}}を {{使|つか}}います。
 example_it: >-
-  Uso il strumento.
+  Uso lo strumento.
 :::
 :::term
 id: term-v066-tsukau
@@ -231,7 +231,7 @@ back: mossa / tecnica
 example_jp: >-
   この {{技|わざ}}を {{使|つか}}います。
 example_it: >-
-  Mossa.
+  Uso questa mossa.
 :::
 :::term
 id: term-v068-ooana

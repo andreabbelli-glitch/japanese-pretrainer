@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per battaglia, saluti e dialogo: 6 carte lessic
 ---
 # Obiettivo
 
-Capire il giapponese che compare in battaglia, saluti e dialogo. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in battaglia, saluti e dialogo: parole che nominano azioni, stati e formule brevi usate nelle schermate e nelle battute del gioco.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+Qui compaiono parole che dicono subito che cosa sta succedendo: uno scambio, un attacco, un saluto, un permesso o una risposta breve. I nomi propri e le etichette di gioco servono a riconoscere la scena, non a cambiare il senso della frase.
 
 ## Termini chiave
 
@@ -43,31 +43,31 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [交換](term:term-v151-koukan) e [攻撃](term:term-v152-kougeki) e [ただ](term:term-v153-tada) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+[交換](term:term-v151-koukan) vuol dire scambio: quando compare, il testo sta parlando di cambiare o scambiare qualcosa. [攻撃](term:term-v152-kougeki) è l'attacco, quindi segnala l'azione offensiva o la statistica legata all'attacco. [ただ](term:term-v153-tada) spesso introduce una limitazione o una correzione, con il senso di "solo" o "però".
 
-Le espressioni come [〜させて](term:term-e027-sasete) e [おめでとう](term:term-e028-omedetou) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+[いわ](term:term-v154-iwa) è la roccia, [本当](term:term-v155-hontou) significa "vero" o "davvero", e [授業](term:term-v156-jugyou) è la lezione scolastica. [〜させて](term:term-e027-sasete) chiede il permesso di fare un'azione, mentre [おめでとう](term:term-e028-omedetou) e [ようこそ](term:term-e029-youkoso) servono rispettivamente per congratularsi e per accogliere qualcuno.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  {{先|さき}}に {{行|い}}かせて。
+  {{攻|こう}}{{撃|げき}}させて。
 translation_it: >-
-  Lascia che io...
+  Lasciami attaccare.
 :::
 
 :::example_sentence
 jp: >-
   ジムクリア、 おめでとう。
 translation_it: >-
-  Congratulazioni.
+  Complimenti per aver superato la palestra.
 :::
 
 :::example_sentence
 jp: >-
   ようこそ、 アカデミーへ。
 translation_it: >-
-  Benvenuto.
+  Benvenuto all'Accademia.
 :::
 
 :::example_sentence
@@ -79,4 +79,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando incontri questo blocco, leggi prima che cosa il testo sta facendo: scambiare, attaccare, salutare, ringraziare o chiedere permesso. La differenza tra queste mosse rende subito più chiara la scena.

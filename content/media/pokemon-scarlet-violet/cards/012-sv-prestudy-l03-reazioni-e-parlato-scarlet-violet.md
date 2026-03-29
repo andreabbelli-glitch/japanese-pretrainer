@@ -26,7 +26,7 @@ back: allora, in quel caso
 example_jp: >-
   それじゃ、 {{行|い}}こう。
 example_it: >-
-  Allora, in quel caso.
+  Allora, andiamo.
 :::
 :::term
 id: term-e007-matsu-te
@@ -48,7 +48,7 @@ back: aspetta
 example_jp: >-
   {{待|ま}}って、 まだです。
 example_it: >-
-  Aspetta.
+  Aspetta, non ancora.
 :::
 :::grammar
 id: grammar-g009-contrazione-di-dovere
@@ -71,7 +71,7 @@ back: contrazione di dovere
 example_jp: >-
   もう {{行|い}}かなきゃ。
 example_it: >-
-  Devo andare.
+  Devo già andare.
 :::
 :::term
 id: term-v026-mada
@@ -225,7 +225,7 @@ back: sfida
 example_jp: >-
   ジムに {{挑戦|ちょうせん}} します。
 example_it: >-
-  Affronto il palestra Pokémon.
+  Sfido la palestra.
 :::
 :::term
 id: term-v033-issho
@@ -269,7 +269,7 @@ back: luogo
 example_jp: >-
   ここが {{場所|ばしょ}} です。
 example_it: >-
-  Qui è posto.
+  Questo è il posto.
 :::
 :::term
 id: term-v035-joutai
@@ -313,7 +313,7 @@ back: regione
 example_jp: >-
   パルデア{{地方|ちほう}}へ {{行|い}}きます。
 example_it: >-
-  Vado a regione di Paldea.
+  Vado nella regione di Paldea.
 :::
 :::term
 id: term-v037-genki
@@ -335,5 +335,5 @@ back: in forma / energico
 example_jp: >-
   ポケモンは {{元気|げんき}} です。
 example_it: >-
-  Pokémon è in forma.
+  Il Pokémon è in forma.
 :::

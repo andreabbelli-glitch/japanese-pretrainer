@@ -26,7 +26,7 @@ back: te lo faccio io
 example_jp: >-
   あとで {{教|おし}}えてあげる。
 example_it: >-
-  Te lo faccio io.
+  Te lo spiego dopo.
 :::
 :::grammar
 id: grammar-g043-anche-se-nonostante
@@ -49,7 +49,7 @@ back: anche se / nonostante
 example_jp: >-
   {{近|ちか}}いのに {{行|い}}けない。
 example_it: >-
-  Anche se è vicino, non posso andarci.
+  È vicino, ma non ci posso andare.
 :::
 :::grammar
 id: grammar-g044-facciamo-andiamo-a
@@ -95,7 +95,7 @@ back: facciamo… / proverò a…
 example_jp: >-
   もう {{帰|かえ}}ろう。
 example_it: >-
-  Torniamo / tornerò ormai.
+  Torniamo, dai.
 :::
 :::term
 id: term-e062-mukou
@@ -115,9 +115,9 @@ card_type: recognition
 front: '{{向|む}}こう'
 back: laggiù / di là / dall’altra parte
 example_jp: >-
-  {{向|む}}こうに {{店|みせ}}が あります。
+  {{向|む}}こうです。
 example_it: >-
-  Laggiù.
+  È laggiù.
 :::
 :::term
 id: term-e063-docchi
@@ -139,7 +139,7 @@ back: quale direzione? / da che parte?
 example_jp: >-
   どっち？
 example_it: >-
-  Quale direzione?
+  Da che parte?
 :::
 :::term
 id: term-v224-shurui
@@ -159,9 +159,9 @@ card_type: recognition
 front: '{{種類|しゅるい}}'
 back: tipo / categoria
 example_jp: >-
-  メニューで {{種類|しゅるい}}を {{見|み}}ます。
+  {{種類|しゅるい}}が あります。
 example_it: >-
-  Guardo il tipo in menu.
+  Ci sono categorie.
 :::
 :::term
 id: term-v225-shokuji
@@ -203,9 +203,9 @@ card_type: recognition
 front: 'ライド{{技|わざ}}'
 back: abilità di ride
 example_jp: >-
-  この{{先|さき}}に ライド{{技|わざ}}が あります。
+  ライド{{技|わざ}}が あります。
 example_it: >-
-  Più avanti c'è il tecnica del ride.
+  C'è una tecnica di ride.
 :::
 :::term
 id: term-v227-menyuu
@@ -247,9 +247,9 @@ card_type: recognition
 front: '{{今度|こんど}}'
 back: questa volta / la prossima
 example_jp: >-
-  {{東|ひがし}}へ {{行|い}}きます。
+  {{今度|こんど}}、{{行|い}}きます。
 example_it: >-
-  Vado a est.
+  Ci vado la prossima volta.
 :::
 :::term
 id: term-v229-irochigai
@@ -269,9 +269,9 @@ card_type: recognition
 front: '{{色違|いろちが}}い'
 back: shiny / colore diverso
 example_jp: >-
-  バトルで {{色違|いろちが}}いを {{使|つか}}います。
+  この ポケモンは {{色違|いろちが}}いです。
 example_it: >-
-  Uso il shiny in battaglia.
+  Questo Pokémon è shiny.
 :::
 :::term
 id: term-v230-imi
@@ -291,9 +291,9 @@ card_type: recognition
 front: '{{意味|いみ}}'
 back: significato
 example_jp: >-
-  {{意味|いみ}} です。
+  その {{意味|いみ}}は これです。
 example_it: >-
-  È il significato.
+  Questo è il significato.
 :::
 :::term
 id: term-v231-denki
@@ -335,7 +335,7 @@ card_type: recognition
 front: '{{残念|ざんねん}}'
 back: peccato / spiacevole
 example_jp: >-
-  {{残念|ざんねん}} です。
+  それは {{残念|ざんねん}} です。
 example_it: >-
   Che peccato.
 :::
@@ -359,7 +359,7 @@ back: libertà / libero
 example_jp: >-
   {{学校|がっこう}}で {{自由|じゆう}}が だいじ です。
 example_it: >-
-  In scuola libertà è importante.
+  A scuola la libertà è importante.
 :::
 :::term
 id: term-v234-shouri
@@ -379,9 +379,9 @@ card_type: recognition
 front: '{{勝利|しょうり}}'
 back: vittoria
 example_jp: >-
-  これは {{勝利|しょうり}} です。
+  {{勝利|しょうり}}しました。
 example_it: >-
-  Questa è una vittoria.
+  Abbiamo vinto.
 :::
 :::term
 id: term-v342-chuukan-tesuto
@@ -403,7 +403,7 @@ back: esame di metà corso / midterm
 example_jp: >-
   {{中間|ちゅうかん}}テストを {{受|う}}けます。
 example_it: >-
-  Seguo l'esame di metà corso.
+  Faccio l'esame di metà corso.
 :::
 :::term
 id: term-v343-kimatsu-tesuto
@@ -425,5 +425,5 @@ back: esame finale / test di fine corso
 example_jp: >-
   {{期末|きまつ}}テストを {{受|う}}けます。
 example_it: >-
-  Seguo l'esame finale.
+  Faccio l'esame finale.
 :::

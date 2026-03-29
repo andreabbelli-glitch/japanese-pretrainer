@@ -13,7 +13,7 @@ reading: なるほど
 romaji: naruhodo
 meaning_it: capisco / ah, ecco
 notes_it: >-
-  Espressione ricorrente della lezione L17 nell'area Reazioni. Comprensione improvvisa.
+  Espressione ricorrente della lezione L17 nell'area Reazioni. Presa d'atto: segnala che hai capito o che una spiegazione ti torna.
 :::
 :::card
 id: card-e033-naruhodo-recognition
@@ -26,7 +26,7 @@ back: capisco / ah, ecco
 example_jp: >-
   なるほど、 そういうことか。
 example_it: >-
-  Capisco.
+  Ah, capisco. Quindi è così.
 :::
 :::term
 id: term-e034-sumimasen
@@ -35,7 +35,7 @@ reading: すみません
 romaji: sumimasen
 meaning_it: scusi / mi scusi
 notes_it: >-
-  Espressione ricorrente della lezione L17 nell'area Richieste. Per attirare attenzione o scusarsi
+  Espressione ricorrente della lezione L17 nell'area Richieste. Per attirare attenzione o scusarsi.
 :::
 :::card
 id: card-e034-sumimasen-recognition
@@ -48,7 +48,7 @@ back: scusi / mi scusi
 example_jp: >-
   すみません。
 example_it: >-
-  Scusi.
+  Mi scusi.
 :::
 :::term
 id: term-e035-ga-arimasu
@@ -57,7 +57,7 @@ reading: 〜が あります
 romaji: ga arimasu
 meaning_it: c’è / ci sono …
 notes_it: >-
-  Espressione ricorrente della lezione L17 nell'area Sistema/UI. Messaggi oggettivi e spiegazioni
+  Espressione ricorrente della lezione L17 nell'area Sistema/UI. Indica che qualcosa c'è o si trova in un punto preciso.
 :::
 :::card
 id: card-e035-ga-arimasu-recognition
@@ -92,7 +92,7 @@ back: ricerca
 example_jp: >-
   {{研究|けんきゅう}}を します。
 example_it: >-
-  Faccio la ricerca.
+  Faccio ricerca.
 :::
 :::term
 id: term-v178-doragon
@@ -136,7 +136,7 @@ back: potenza
 example_jp: >-
   この わざは {{威力|いりょく}}が {{高|たか}}いです。
 example_it: >-
-  Potenza.
+  La potenza di questa mossa è alta.
 :::
 :::term
 id: term-v181-kesshou
@@ -224,7 +224,7 @@ back: statistica / capacità
 example_jp: >-
   {{能力|のうりょく}}を {{見|み}}ます。
 example_it: >-
-  Guardo la statistica.
+  Controllo la statistica.
 :::
 :::term
 id: term-v185-namae
@@ -277,7 +277,7 @@ reading: ぽけもんりーぐ
 romaji: pokemonriigu
 meaning_it: Lega Pokémon
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Voce della lezione L17 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Nome proprio della Lega Pokémon, da riconoscere come riferimento del gioco quando la scena parla della Lega.
 :::
 :::term
 id: term-v189-kanou
@@ -308,7 +308,7 @@ reading: ちょうさ
 romaji: chousa
 meaning_it: indagine / ricerca sul campo
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Voce della lezione L17 nell''area SV specifico. Parte del discorso: sostantivo. Indica un'indagine o una ricerca sul campo: quando compare, il testo parla di studio o verifica concreta.
 :::
 :::card
 id: card-v190-chousa-recognition
@@ -321,7 +321,7 @@ back: indagine / ricerca sul campo
 example_jp: >-
   {{調査|ちょうさ}}を します。
 example_it: >-
-  Faccio l'indagine.
+  Faccio un'indagine.
 :::
 :::term
 id: term-v191-moshikashite
@@ -343,7 +343,7 @@ back: forse per caso
 example_jp: >-
   もしかして そうですか。
 example_it: >-
-  Forse è così?
+  Forse è proprio così?
 :::
 :::term
 id: term-v192-konkai
@@ -365,7 +365,7 @@ back: questa volta
 example_jp: >-
   {{今回|こんかい}}は ジムへ {{行|い}}きます。
 example_it: >-
-  Questa volta.
+  Questa volta vado in palestra.
 :::
 :::term
 id: term-v193-seichou

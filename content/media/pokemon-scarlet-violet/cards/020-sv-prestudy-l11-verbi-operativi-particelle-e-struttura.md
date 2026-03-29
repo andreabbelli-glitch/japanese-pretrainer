@@ -35,7 +35,7 @@ reading: どの ポケモンに つかいますか
 romaji: dono pokemoni tsukaimasuka
 meaning_it: su quale Pokémon vuoi usarlo?
 notes_it: >-
-  Espressione ricorrente della lezione L11 nell'area Sistema/UI. Messaggio ricorrente della borsa
+  Espressione ricorrente della lezione L11 nell'area Sistema/UI. Messaggio ricorrente della borsa quando devi scegliere su quale Pokémon usare l'oggetto.
 :::
 :::card
 id: card-e024-dono-pokemoni-tsukaimasuka-recognition
@@ -67,9 +67,9 @@ card_type: concept
 front: 'は'
 back: marca il tema
 example_jp: >-
-  ネモは {{強|つよ}}い。
+  {{地図|ちず}}は {{簡単|かんたん}}です。
 example_it: >-
-  Nemona è forte.
+  La mappa è semplice.
 :::
 :::grammar
 id: grammar-g032-verso
@@ -88,9 +88,9 @@ card_type: concept
 front: 'へ'
 back: verso
 example_jp: >-
-  {{北|きた}}へ {{行|い}}く。
+  アカデミーへ {{行|い}}く。
 example_it: >-
-  Vado verso nord.
+  Vado all'accademia.
 :::
 :::grammar
 id: grammar-g033-marca-l-oggetto-diretto
@@ -109,9 +109,9 @@ card_type: concept
 front: 'を'
 back: marca l'oggetto diretto
 example_jp: >-
-  マップを {{見|み}}る。
+  ポケモンを {{探|さが}}す。
 example_it: >-
-  Guardo la mappa.
+  Cerco un Pokémon.
 :::
 :::term
 id: term-v126-au
@@ -177,7 +177,7 @@ back: difficile
 example_jp: >-
   この ジムは {{難|むずか}}しい です。
 example_it: >-
-  Questo palestra Pokémon è difficile.
+  Questa palestra Pokémon è difficile.
 :::
 :::term
 id: term-v129-sagasu
@@ -252,7 +252,7 @@ back: sfidare / affrontare
 example_jp: >-
   ジムに {{挑|いど}}む。
 example_it: >-
-  Affronto il palestra Pokémon.
+  Sfido la palestra Pokémon.
 :::
 :::term
 id: term-v133-douyatte

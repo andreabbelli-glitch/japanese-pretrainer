@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per battaglia, Scarlet/Violet: 18 carte lessica
 ---
 # Obiettivo
 
-Capire il giapponese che compare in battaglia, Scarlet/Violet. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in battaglia in Scarlet/Violet: parole operative, formule di dialogo e segnali che ti fanno leggere subito cosa succede sullo schermo.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In questo blocco compaiono parole che segnalano subito ruolo, gruppo, danno e tono della battaglia. Accanto a queste ci sono anche alcune etichette molto specifiche del mondo di gioco che basta riconoscere quando appaiono.
 
 ## Termini chiave
 
@@ -49,24 +49,24 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [チーム](term:term-v157-chiimu) e [学園](term:term-v158-gakuen) e [ボス](term:term-v159-bosu) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [チーム](term:term-v157-chiimu), [学園](term:term-v158-gakuen) e [ボス](term:term-v159-bosu) ti fanno capire chi o che cosa è al centro della scena: una squadra, l'accademia o il capo avversario. Nei menu e nei dialoghi questi segnali trasformano le schermate in istruzioni leggibili.
 
-Le espressioni come [さて](term:term-e030-sate) e [どうぞ](term:term-e031-douzo) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [さて](term:term-e030-sate) e [どうぞ](term:term-e031-douzo) regolano il parlato: [さて](term:term-e030-sate) apre o cambia argomento, [どうぞ](term:term-e031-douzo) invita, concede il turno o offre qualcosa. In un gioco molto dialogato bastano spesso a capire il tono della scena.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ヌシ](term:term-v167-nushi). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ヌシ](term:term-v167-nushi). Riconoscile quando compaiono, ma non trattarle come lessico generale: qui funzionano soprattutto come nome di gioco per un boss dominante.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  さて、 {{始|はじ}}めよう。
+  さて、 どうぞ。
 translation_it: >-
-  Bene allora.
+  Bene allora, prego.
 :::
 
 :::example_sentence
 jp: >-
-  どうぞ、 こちらへ。
+  はい、 どうぞ。
 translation_it: >-
   Prego.
 :::
@@ -80,11 +80,11 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  チームを {{作|つく}}ります。
+  チームです。
 translation_it: >-
-  Preparo la squadra.
+  È la squadra.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questa lesson guarda prima se il testo sta nominando un gruppo, un capo, un danno o una formula di turno come `さて` e `どうぞ`. Sono questi segnali a rendere subito leggibile la scena di battaglia.

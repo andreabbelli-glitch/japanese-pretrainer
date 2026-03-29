@@ -15,16 +15,16 @@ tags:
 - lesson-07
 prerequisites: []
 summary: 'Lessico ed espressioni per reazioni e parlato, battaglia: 8 carte lessicali
-  attive, 1 formule ricorrenti, 3 pattern grammaticali e 0 etichette contestuali da
+  attive, 1 formula ricorrente, 3 pattern grammaticali e 0 etichette contestuali da
   riconoscere.'
 ---
 # Obiettivo
 
-Capire il giapponese che compare in reazioni e parlato, battaglia. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese breve che in battaglia segnala reazione, obbligo, possibilità e stato del team.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In questo blocco tornano avverbi, reazioni e nomi di statistiche che cambiano subito la lettura della schermata. [しっかり](term:term-v077-shikkari) dice che qualcosa va fatto bene; [どうして](term:term-v079-doushite) apre una richiesta di motivo; [まず](term:term-v084-mazu), [特攻](term:term-v083-tokukou) e [ＨＰ](term:term-v085-eichipii) ti dicono invece ordine dell'azione, statistica coinvolta e salute del Pokémon.
 
 ## Termini chiave
 
@@ -49,11 +49,11 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [しっかり](term:term-v077-shikkari) e [戦う](term:term-v078-tatakau) e [どうして](term:term-v079-doushite) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [しっかり](term:term-v077-shikkari), [戦う](term:term-v078-tatakau) e [どうして](term:term-v079-doushite) dicono subito come leggere la scena: [しっかり](term:term-v077-shikkari) segnala che un'azione va fatta bene, con cura; [戦う](term:term-v078-tatakau) è il combattere in corso; [どうして](term:term-v079-doushite) chiede il motivo, quindi apre una spiegazione concreta.
 
-Le espressioni come [やった！](term:term-e016-yatta) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [やった！](term:term-e016-yatta) servono a esultare dopo un successo: qui vale come "evviva!" o "ce l'ho fatta!". [まず](term:term-v084-mazu) vuol dire "prima di tutto" e introduce il primo passo. [仲間](term:term-v080-nakama) è il compagno o alleato che sta dalla tua parte. [もちろん](term:term-v081-mochiron) vuol dire "ovviamente", con conferma naturale. [特攻](term:term-v083-tokukou) è la statistica di Attacco Speciale, mentre [ＨＰ](term:term-v085-eichipii) è la salute del Pokémon.
 
-Sul piano grammaticale, pattern come [〜なければならない / 〜ないといけない](grammar:grammar-g019-dover-fare) e [可能形](grammar:grammar-g020-poter-fare) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [〜なければならない / 〜ないといけない](grammar:grammar-g019-dover-fare) esprime obbligo reale: quando compare, il gioco ti sta dicendo che qualcosa va fatto. [可能形](grammar:grammar-g020-poter-fare) marca ciò che è possibile fare. [た形](grammar:grammar-g021-passato-completamento) indica un'azione già avvenuta o completata.
 
 ## Esempi guidati
 
@@ -61,7 +61,7 @@ Sul piano grammaticale, pattern come [〜なければならない / 〜ないと
 jp: >-
   やった！ できた！
 translation_it: >-
-  Evviva!
+  Evviva! Ce l'ho fatta!
 :::
 
 :::example_sentence
@@ -80,11 +80,11 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  もう {{見|み}}た。
+  もう {{戦|たたか}}った。
 translation_it: >-
-  L'ho già visto.
+  Ho già combattuto.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In battaglia guarda subito se la frase ti sta dando una priorità, un obbligo, una possibilità o una reazione di successo. In questo capitolo il salto di comprensione viene soprattutto da quei segnali.

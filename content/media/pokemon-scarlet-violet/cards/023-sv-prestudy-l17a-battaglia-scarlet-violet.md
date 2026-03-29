@@ -24,9 +24,9 @@ card_type: recognition
 front: 'さて'
 back: bene allora / dunque
 example_jp: >-
-  さて、 {{始|はじ}}めよう。
+  さて、 どうぞ。
 example_it: >-
-  Bene allora.
+  Bene allora, prego.
 :::
 :::term
 id: term-e031-douzo
@@ -46,7 +46,7 @@ card_type: recognition
 front: 'どうぞ'
 back: prego / ecco
 example_jp: >-
-  どうぞ、 こちらへ。
+  はい、 どうぞ。
 example_it: >-
   Prego.
 :::
@@ -90,9 +90,9 @@ card_type: recognition
 front: 'チーム'
 back: squadra
 example_jp: >-
-  チームを {{作|つく}}ります。
+  チームです。
 example_it: >-
-  Preparo la squadra.
+  È la squadra.
 :::
 :::term
 id: term-v158-gakuen

@@ -13,7 +13,7 @@ reading: じゃあ
 romaji: jaa
 meaning_it: allora
 notes_it: >-
-  Espressione ricorrente della lezione L04 nell'area Connettori. Fa avanzare il dialogo o cambia azione.
+  Espressione ricorrente della lezione L04 nell'area Connettori. Introduce il passo successivo nel dialogo o il cambio di azione.
 :::
 :::card
 id: card-e008-jaa-recognition
@@ -24,9 +24,9 @@ card_type: recognition
 front: 'じゃあ'
 back: allora
 example_jp: >-
-  じゃあ、 ここへ {{行|い}}こう。
+  じゃあ、 {{行|い}}こう。
 example_it: >-
-  Allora.
+  Allora, andiamo.
 :::
 :::term
 id: term-e009-iko-u
@@ -35,7 +35,7 @@ reading: いこう
 romaji: iko u
 meaning_it: andiamo
 notes_it: >-
-  Espressione ricorrente della lezione L04 nell'area Azione / proposta. Invito molto comune.
+  Espressione ricorrente della lezione L04 nell'area Azione / proposta. Invito a partire o a continuare insieme.
 :::
 :::card
 id: card-e009-iko-u-recognition
@@ -56,7 +56,7 @@ pattern: ～前に
 title: Prima di
 meaning_it: prima di
 notes_it: >-
-  Pattern della lezione L04 nella famiglia Condizioni, tempo, sequenza. Formazione: V-dizionario + {{前|まえ}}に / Nの{{前|まえ}}に. Molto comune per preparazione e sequenze.
+  Pattern della lezione L04 nella famiglia Condizioni, tempo, sequenza. Formazione: V-dizionario + {{前|まえ}}に / Nの{{前|まえ}}に. Si usa quando una cosa deve venire prima di un'altra.
 :::
 :::card
 id: card-g010-prima-di-concept
@@ -67,9 +67,9 @@ card_type: concept
 front: '～{{前|まえ}}に'
 back: prima di
 example_jp: >-
-  バトルの {{前|まえ}}に {{回復|かいふく}}する。
+  {{行|い}}く {{前|まえ}}に、 {{大丈夫|だいじょうぶ}}ですか。
 example_it: >-
-  Prima della lotta mi curo.
+  Prima di andare, va bene?
 :::
 :::grammar
 id: grammar-g011-voler-fare
@@ -77,7 +77,7 @@ pattern: ～たい
 title: Voler fare
 meaning_it: voler fare
 notes_it: >-
-  Pattern della lezione L04 nella famiglia Desiderio, intenzione, possibilità. Formazione: V-stem + たい. I personaggi esprimono spesso obiettivi e desideri.
+  Pattern della lezione L04 nella famiglia Desiderio, intenzione, possibilità. Formazione: V-stem + たい. Si usa per dire che un personaggio vuole fare qualcosa.
 :::
 :::card
 id: card-g011-voler-fare-concept
@@ -88,9 +88,9 @@ card_type: concept
 front: '～たい'
 back: voler fare
 example_jp: >-
-  ジムへ {{行|い}}きたい。
+  {{先|さき}}へ {{行|い}}きたい。
 example_it: >-
-  Voglio andare alla palestra.
+  Voglio andare avanti.
 :::
 :::term
 id: term-v038-jimutesuto
@@ -108,7 +108,7 @@ reading: だいじょうぶ
 romaji: daijoubu
 meaning_it: va bene / non c'è problema
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Indica che la situazione va bene o che non c'è problema.
 :::
 :::card
 id: card-v039-daijoubu-recognition
@@ -121,7 +121,7 @@ back: va bene / non c'è problema
 example_jp: >-
   もう {{大丈夫|だい.じょう.ぶ}} です。
 example_it: >-
-  Adesso va bene.
+  Adesso va tutto bene.
 :::
 :::term
 id: term-v041-jikan
@@ -130,7 +130,7 @@ reading: じかん
 romaji: jikan
 meaning_it: tempo
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Indica il tempo disponibile o il momento giusto per muoversi.
 :::
 :::card
 id: card-v041-jikan-recognition
@@ -143,7 +143,7 @@ back: tempo
 example_jp: >-
   {{時間|じかん}}が あります。
 example_it: >-
-  C'è il tempo.
+  Abbiamo tempo.
 :::
 :::term
 id: term-v042-kimochi
@@ -152,7 +152,7 @@ reading: きもち
 romaji: kimochi
 meaning_it: sensazione / sentimento
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Indica ciò che un personaggio sente o prova.
 :::
 :::card
 id: card-v042-kimochi-recognition
@@ -165,7 +165,7 @@ back: sensazione / sentimento
 example_jp: >-
   その {{気|き}}{{持|も}}ちが わかります。
 example_it: >-
-  Capisco quel sentimento.
+  Capisco come ti senti.
 :::
 :::term
 id: term-v043-shashin
@@ -174,7 +174,7 @@ reading: しゃしん
 romaji: shashin
 meaning_it: foto
 notes_it: >-
-  Voce della lezione L04 nell''area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Voce della lezione L04 nell''area Esplorazione. Parte del discorso: sostantivo. Utile quando il gioco parla di scatti, foto o obiettivi legati alle immagini.
 :::
 :::card
 id: card-v043-shashin-recognition
@@ -205,7 +205,7 @@ reading: ともだち
 romaji: tomodachi
 meaning_it: amico
 notes_it: >-
-  Voce della lezione L04 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Voce della lezione L04 nell''area Storia/Scuola. Parte del discorso: sostantivo. Parola comune per amici, compagni e scene sociali.
 :::
 :::card
 id: card-v046-tomodachi-recognition
@@ -218,7 +218,7 @@ back: amico
 example_jp: >-
   {{友達|ともだち}}と {{行|い}}きます。
 example_it: >-
-  Vado con amico.
+  Vado con un amico.
 :::
 :::term
 id: term-v047-yappari
@@ -227,7 +227,7 @@ reading: やっぱり
 romaji: yappari
 meaning_it: come pensavo / dopotutto
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Si usa quando una scelta o un'impressione conferma quello che pensavi.
 :::
 :::card
 id: card-v047-yappari-recognition
@@ -240,7 +240,7 @@ back: come pensavo / dopotutto
 example_jp: >-
   やっぱり これが いいです。
 example_it: >-
-  Alla fine questo è meglio.
+  Come pensavo, questo va bene.
 :::
 :::term
 id: term-v048-pepaa
@@ -258,7 +258,7 @@ reading: さき
 romaji: saki
 meaning_it: davanti / più avanti / destinazione
 notes_it: >-
-  Voce della lezione L04 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Voce della lezione L04 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Indica ciò che sta davanti a te o il punto più avanti lungo il percorso.
 :::
 :::card
 id: card-v049-saki-recognition
@@ -271,7 +271,7 @@ back: davanti / più avanti / destinazione
 example_jp: >-
   この{{先|さき}}に {{行|い}}きます。
 example_it: >-
-  Vado a più avanti.
+  Vado più avanti.
 :::
 :::term
 id: term-v050-tanoshii
@@ -280,7 +280,7 @@ reading: たのしい
 romaji: tanoshii
 meaning_it: divertente
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Si usa per dire che qualcosa è divertente o piacevole.
 :::
 :::card
 id: card-v050-tanoshii-recognition

@@ -13,7 +13,7 @@ reading: 〜を うけとりました！
 romaji: o uketorimashita！
 meaning_it: hai ricevuto …!
 notes_it: >-
-  Espressione ricorrente della lezione L19 nell'area Sistema/UI. Messaggio standard di ricezione
+  Espressione ricorrente della lezione L19 nell'area Sistema/UI. Messaggio standard di ricezione.
 :::
 :::card
 id: card-e046-o-uketorimashita-recognition
@@ -24,9 +24,9 @@ card_type: recognition
 front: '〜を {{受|う}}けとりました！'
 back: hai ricevuto …!
 example_jp: >-
-  きのみを {{受|う}}けとりました！
+  レシピを {{受|う}}けとりました！
 example_it: >-
-  Hai ricevuto …!
+  Hai ricevuto la ricetta!
 :::
 :::term
 id: term-e047-o-erandekudasai
@@ -48,7 +48,7 @@ back: seleziona …
 example_jp: >-
   ポケモンを {{選|えら}}んでください。
 example_it: >-
-  Seleziona ….
+  Seleziona un Pokémon.
 :::
 :::grammar
 id: grammar-g050-voglio-che-mi-piacerebbe-che
@@ -67,9 +67,9 @@ card_type: concept
 front: '～てほしい'
 back: voglio che… / mi piacerebbe che…
 example_jp: >-
-  {{早|はや}}く {{来|く}}てほしい。
+  これを {{使|つか}}ってほしい。
 example_it: >-
-  Vorrei che venissi presto.
+  Vorrei che usassi questo.
 :::
 :::term
 id: term-e053-shitemite
@@ -91,7 +91,7 @@ back: prova a...
 example_jp: >-
   これも {{使|つか}}ってみて。
 example_it: >-
-  Prova a...
+  Prova anche a usarlo.
 :::
 :::grammar
 id: grammar-g056-finale-maschile-riflessiva-osservativa
@@ -101,7 +101,7 @@ meaning_it: finale maschile riflessiva / osservativa
 aliases:
 - finali di frase よ / ね / な
 notes_it: >-
-  Pattern della lezione L19 nella famiglia Colloquiale da dialogo. Formazione: frase piana + だな. Ti fa sentire subito il tono di tanti NPC maschili che altrimenti sembrano più opachi del necessario.
+  Pattern della lezione L19 nella famiglia Colloquiale da dialogo. Formazione: frase piana + だな. Chiude la frase con una constatazione o un commento colloquiale.
 :::
 :::card
 id: card-g056-finale-maschile-riflessiva-osservativa-concept
@@ -134,9 +134,9 @@ card_type: recognition
 front: '{{古代|こだい}}'
 back: antichità / passato remoto
 example_jp: >-
-  {{誰|だれ}}が {{来|き}}ますか。
+  {{古代|こだい}}の ポケモンです。
 example_it: >-
-  Chi arriva?
+  È un Pokémon antico.
 :::
 :::term
 id: term-v256-fearii
@@ -200,9 +200,9 @@ card_type: recognition
 front: '{{味方|みかた}}'
 back: alleato
 example_jp: >-
-  バトルで {{味方|みかた}}を {{使|つか}}います。
+  {{味方|みかた}}が います。
 example_it: >-
-  Uso l'alleato in battaglia.
+  C'è un alleato.
 :::
 :::term
 id: term-v260-naminori
@@ -222,9 +222,9 @@ card_type: recognition
 front: 'なみのり'
 back: nuoto / surf sull'acqua
 example_jp: >-
-  なみのりタイプの ポケモンです。
+  なみのりを します。
 example_it: >-
-  È un Pokémon di tipo nuoto.
+  Faccio surf sull'acqua.
 :::
 :::term
 id: term-v261-chuui
@@ -246,7 +246,7 @@ back: attenzione / cautela
 example_jp: >-
   {{注意|ちゅうい}} です。
 example_it: >-
-  Fai attenzione.
+  Attenzione.
 :::
 :::term
 id: term-v262-ukeru
@@ -266,9 +266,9 @@ card_type: recognition
 front: '{{受|う}}ける'
 back: ricevere / sostenere
 example_jp: >-
-  ここで {{受|う}}ける。
+  {{注意|ちゅうい}}を {{受|う}}ける。
 example_it: >-
-  Ricevere.
+  Ricevere un avvertimento.
 :::
 :::term
 id: term-v263-kateika
@@ -288,9 +288,9 @@ card_type: recognition
 front: '{{家庭科|か.てい.か}}'
 back: economia domestica
 example_jp: >-
-  {{東|ひがし}}へ {{行|い}}きます。
+  {{家庭科|かていか}}を {{受|う}}けます。
 example_it: >-
-  Vado a est.
+  Seguo economia domestica.
 :::
 :::term
 id: term-v264-reshipi
@@ -312,7 +312,7 @@ back: ricetta
 example_jp: >-
   これは レシピ です。
 example_it: >-
-  Questo è ricetta.
+  Questa è una ricetta.
 :::
 :::term
 id: term-v265-hikou
@@ -332,9 +332,9 @@ card_type: recognition
 front: 'ひこう'
 back: volo
 example_jp: >-
-  この{{先|さき}}に ひこうが あります。
+  ひこうタイプの ポケモンです。
 example_it: >-
-  Più avanti c'è il volo.
+  È un Pokémon di tipo volante.
 :::
 :::term
 id: term-v266-zenbu
@@ -356,7 +356,7 @@ back: tutto
 example_jp: >-
   {{全部|ぜんぶ}} です。
 example_it: >-
-  Tutto.
+  È tutto.
 :::
 :::term
 id: term-v267-tsuushin
@@ -376,9 +376,9 @@ card_type: recognition
 front: '{{通信|つうしん}}'
 back: connessione / comunicazione
 example_jp: >-
-  メニューで {{通信|つうしん}}を {{見|み}}ます。
+  {{通信|つうしん}}の メニューです。
 example_it: >-
-  Guardo il connessione in menu.
+  È il menu di comunicazione.
 :::
 :::term
 id: term-v268-futsuu
@@ -422,7 +422,7 @@ back: risultato
 example_jp: >-
   {{結果|けっか}} です。
 example_it: >-
-  Risultato.
+  È il risultato.
 :::
 :::term
 id: term-v270-sekkaku
@@ -442,9 +442,9 @@ card_type: recognition
 front: 'せっかく'
 back: visto che / già che
 example_jp: >-
-  もう {{行|い}}きます。
+  せっかく なので、 {{使|つか}}ってみて。
 example_it: >-
-  Visto che.
+  Già che ci siamo, prova a usarlo.
 :::
 :::term
 id: term-v271-yakusoku
@@ -464,9 +464,9 @@ card_type: recognition
 front: '{{約束|やくそく}}'
 back: promessa / appuntamento
 example_jp: >-
-  {{学校|がっこう}}で {{約束|やくそく}}が だいじ です。
+  {{約束|やくそく}}を します。
 example_it: >-
-  In scuola promessa è importante.
+  Faccio una promessa.
 :::
 :::term
 id: term-v272-teeburushitei

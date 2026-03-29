@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per reazioni e parlato, battaglia: 12 carte les
 ---
 # Obiettivo
 
-Capire il giapponese che compare in reazioni e parlato, battaglia. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Leggere il giapponese che compare in reazioni, dialoghi brevi e messaggi di battaglia: parole che indicano torneo, durata o quantità, espressioni di assenso e sorpresa, e strutture che confrontano o collegano le frasi.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+Questo blocco mette insieme parole ricorrenti nei dialoghi e alcuni nomi fissi del gioco. Le prime aiutano a leggere subito di che cosa si parla; i secondi servono a riconoscere riferimenti specifici di Scarlet/Violet.
 
 ## Termini chiave
 
@@ -55,13 +55,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [大会](term:term-v196-taikai) e [ずっと](term:term-v197-zutto) e [言葉](term:term-v198-kotoba) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [大会](term:term-v196-taikai), [ずっと](term:term-v197-zutto) e [言葉](term:term-v198-kotoba) dicono subito se la frase parla di un torneo, di una durata o di una parola/espressione citata da un personaggio. Quando compaiono, il messaggio non è astratto: ti sta dicendo su cosa si sta concentrando la scena.
 
-Le espressioni come [そうか](term:term-e036-souka) e [まさか](term:term-e038-masaka) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [そうか](term:term-e036-souka) e [まさか](term:term-e038-masaka) sono reazioni in miniatura. [そうか](term:term-e036-souka) segnala comprensione o presa d'atto; [まさか](term:term-e038-masaka) segnala sorpresa, incredulità o rifiuto dell'ipotesi.
 
-Sul piano grammaticale, pattern come [〜って](grammar:grammar-g037-citazione-tema-colloquiale) e [〜より / 〜ほど](grammar:grammar-g038-piu-di-al-punto-da) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [〜って](grammar:grammar-g037-citazione-tema-colloquiale) introduce ciò che qualcuno ha detto o sposta il discorso su un tema; [〜より / 〜ほど](grammar:grammar-g038-piu-di-al-punto-da) confronta due elementi o misura l'intensità; [〜ば](grammar:grammar-g039-se) introduce una condizione. Se li riconosci, capisci subito se la frase sta citando, confrontando o impostando un "se...".
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [テラピース](term:term-v201-terapiisu)、 [お疲れさまでスター](term:term-e037-otsukaresamadesutaa). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [テラピース](term:term-v201-terapiisu) e [お疲れさまでスター](term:term-e037-otsukaresamadesutaa). [テラピース](term:term-v201-terapiisu) è il nome di una risorsa del gioco; [お疲れさまでスター](term:term-e037-otsukaresamadesutaa) è una formula fissa legata a Team Star.
 
 ## Esempi guidati
 
@@ -69,21 +69,21 @@ Accanto a questo nucleo restano alcune etichette contestuali, per esempio [テ�
 jp: >-
   そうか、 わかった。
 translation_it: >-
-  Ah, capisco.
+  Ah, ho capito.
 :::
 
 :::example_sentence
 jp: >-
-  ネモって {{強|つよ}}いよね。
+  ネモって {{一番|いちばん}}だよね。
 translation_it: >-
-  Nemona, cioè, è forte, vero?
+  Nemona, dici? È la numero uno, vero?
 :::
 
 :::example_sentence
 jp: >-
   まさか！
 translation_it: >-
-  Non ci credo.
+  Ma dai!
 :::
 
 :::example_sentence
@@ -95,4 +95,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco guarda subito se la frase sta reagendo, citando qualcosa, mettendo a confronto due elementi o aprendo una condizione. Sono questi segnali a rendere leggibile la scena di battaglia.

@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per battaglia, esplorazione e movimento: 10 car
 ---
 # Obiettivo
 
-Capire il giapponese che compare in battaglia, esplorazione e movimento. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare quando scegli come muoverti, leggi i messaggi di battaglia e segui le richieste dei dialoghi.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+Qui le parole utili sono quelle che ti dicono subito cosa sta succedendo: [そらとぶタクシー](term:term-v113-soratobutakushii) per il trasporto, [倒す](term:term-v115-taosu) e [勝つ](term:term-v119-katsu) per l'esito dello scontro, [次](term:term-v116-tsugi) per il passo successivo, [買う](term:term-v121-kau) e [いくら](term:term-v123-ikura) per gli scambi e i menu. Nomi propri ed etichette restano come riferimento quando compaiono in scena.
 
 ## Termini chiave
 
@@ -50,11 +50,11 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [そらとぶタクシー](term:term-v113-soratobutakushii) e [倒す](term:term-v115-taosu) e [次](term:term-v116-tsugi) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [そらとぶタクシー](term:term-v113-soratobutakushii) e [倒す](term:term-v115-taosu) ti dicono subito se la scena sta parlando di trasporto o di scontro; [勝つ](term:term-v119-katsu) indica il risultato positivo della lotta, [次](term:term-v116-tsugi) il passo che viene dopo. Quando questi segnali sono chiari, menu e dialoghi si leggono al volo.
 
-Le espressioni come [〜してみたら？](term:term-e021-shitemitara) e [〜してくれる？](term:term-e022-shitekureru) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [〜してみたら？](term:term-e021-shitemitara) e [〜してくれる？](term:term-e022-shitekureru) servono a fare una proposta o una richiesta morbida: la prima invita a provare, la seconda chiede a qualcuno di fare qualcosa per te.
 
-Sul piano grammaticale, pattern come [と](grammar:grammar-g028-con-e-citazione) e [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [と](grammar:grammar-g028-con-e-citazione) lega ciò che fai a chi o a cosa lo accompagna, oppure introduce una citazione; [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) marca direzione, momento o bersaglio; [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega due nomi e dice di chi o di che cosa stai parlando. Sono segnali piccoli, ma cambiano subito il rapporto tra le parole nella frase.
 
 ## Esempi guidati
 
@@ -62,14 +62,14 @@ Sul piano grammaticale, pattern come [と](grammar:grammar-g028-con-e-citazione)
 jp: >-
   {{地図|ちず}}を {{見|み}}てみたら？
 translation_it: >-
-  Perché non provi a…?
+  Perché non provi a guardare la mappa?
 :::
 
 :::example_sentence
 jp: >-
   {{少|すこ}}し {{待|ま}}ってくれる？
 translation_it: >-
-  Me lo fai?
+  Mi aspetti un attimo?
 :::
 
 :::example_sentence
@@ -88,4 +88,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando leggi questo blocco, chiediti subito se la frase parla di trasporto, scontro, richiesta o passo successivo. I segnali utili sono quelli che ti fanno capire al volo come si muove la scena.

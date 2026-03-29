@@ -111,7 +111,7 @@ back: con attenzione / bene
 example_jp: >-
   しっかり {{見|み}}ます。
 example_it: >-
-  Guardo bene.
+  Guardo con attenzione.
 :::
 :::term
 id: term-v078-tatakau
@@ -155,7 +155,7 @@ back: perché / come mai
 example_jp: >-
   どうして ですか。
 example_it: >-
-  Perché.
+  Perché?
 :::
 :::term
 id: term-v080-nakama
@@ -177,7 +177,7 @@ back: compagno / alleato
 example_jp: >-
   {{仲間|なかま}}と {{行|い}}きます。
 example_it: >-
-  Vado con compagno.
+  Vado con un compagno.
 :::
 :::term
 id: term-v081-mochiron
@@ -221,7 +221,7 @@ back: Attacco Speciale
 example_jp: >-
   {{特攻|とくこう}}が {{高|たか}}い ポケモンです。
 example_it: >-
-  È un Pokémon con Attacco Speciale alta.
+  È un Pokémon con Attacco Speciale alto.
 :::
 :::term
 id: term-v084-mazu
@@ -265,5 +265,5 @@ back: HP
 example_jp: >-
   ＨＰを {{回復|かいふく}} します。
 example_it: >-
-  HP.
+  Recupero HP.
 :::

@@ -26,7 +26,7 @@ back: perché non provi a…?
 example_jp: >-
   {{地図|ちず}}を {{見|み}}てみたら？
 example_it: >-
-  Perché non provi a…?
+  Perché non provi a guardare la mappa?
 :::
 :::term
 id: term-e022-shitekureru
@@ -48,7 +48,7 @@ back: me lo fai?
 example_jp: >-
   {{少|すこ}}し {{待|ま}}ってくれる？
 example_it: >-
-  Me lo fai?
+  Mi aspetti un attimo?
 :::
 :::grammar
 id: grammar-g028-con-e-citazione
@@ -133,7 +133,7 @@ back: taxi volante
 example_jp: >-
   そらとぶタクシーで {{行|い}}きます。
 example_it: >-
-  Ci vado con taxi volante.
+  Ci vado col taxi volante.
 :::
 :::term
 id: term-v115-taosu
@@ -221,7 +221,7 @@ back: vincere
 example_jp: >-
   この バトルに {{勝|か}}つ。
 example_it: >-
-  Vincere.
+  Vincere questa battaglia.
 :::
 :::term
 id: term-v120-yowai
@@ -287,7 +287,7 @@ back: chi
 example_jp: >-
   {{誰|だれ}}が {{来|き}}ますか。
 example_it: >-
-  Chi arriva?
+  Chi viene?
 :::
 :::term
 id: term-v123-ikura

@@ -13,7 +13,7 @@ reading: 〜させて
 romaji: ~ sasete
 meaning_it: lascia che io...
 notes_it: >-
-  Espressione ricorrente della lezione L16 nell'area Richieste. Chiedere permesso di agire.
+  Espressione ricorrente della lezione L16 nell'area Richieste. Chiedere permesso di fare un'azione.
 :::
 :::card
 id: card-e027-sasete-recognition
@@ -24,9 +24,9 @@ card_type: recognition
 front: '〜させて'
 back: lascia che io...
 example_jp: >-
-  {{先|さき}}に {{行|い}}かせて。
+  {{攻|こう}}{{撃|げき}}させて。
 example_it: >-
-  Lascia che io...
+  Lasciami attaccare.
 :::
 :::term
 id: term-e028-omedetou
@@ -48,7 +48,7 @@ back: congratulazioni
 example_jp: >-
   ジムクリア、 おめでとう。
 example_it: >-
-  Congratulazioni.
+  Complimenti per aver superato la palestra.
 :::
 :::term
 id: term-e029-youkoso
@@ -70,7 +70,7 @@ back: benvenuto / ben arrivato
 example_jp: >-
   ようこそ、 アカデミーへ。
 example_it: >-
-  Benvenuto.
+  Benvenuto all'Accademia.
 :::
 :::term
 id: term-v151-koukan
@@ -114,7 +114,7 @@ back: attacco
 example_jp: >-
   {{攻撃|こうげき}}が {{高|たか}}いです。
 example_it: >-
-  L'attacco è alta.
+  L'attacco è alto.
 :::
 :::term
 id: term-v153-tada
@@ -202,5 +202,5 @@ back: lezione
 example_jp: >-
   {{授業|じゅぎょう}}を {{受|う}}けます。
 example_it: >-
-  Seguo la lezione.
+  Frequento la lezione.
 :::

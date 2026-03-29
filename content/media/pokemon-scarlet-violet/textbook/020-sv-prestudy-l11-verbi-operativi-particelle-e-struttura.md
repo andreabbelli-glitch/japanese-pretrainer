@@ -15,16 +15,16 @@ tags:
 - lesson-11
 prerequisites: []
 summary: 'Lessico ed espressioni per verbi operativi, particelle e struttura: 11 carte
-  lessicali attive, 2 formule ricorrenti, 3 pattern grammaticali e 1 etichette contestuali
+  lessicali attive, 2 formule ricorrenti, 3 pattern grammaticali e 1 etichetta contestuale
   da riconoscere.'
 ---
 # Obiettivo
 
-Capire il giapponese che compare in verbi operativi, particelle e struttura. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in verbi operativi, particelle e struttura: qui contano le azioni concrete, il bersaglio della frase e la direzione che il testo ti sta indicando.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+Questa lezione ruota attorno ad azioni operative e al modo in cui la frase le collega: [会う](term:term-v126-au), [決める](term:term-v127-kime-ru), [探す](term:term-v129-sagasu) e [挑む](term:term-v132-idomu) dicono che cosa fai; [どうやって](term:term-v133-douyatte) chiede il modo; [地図](term:term-v134-chizu) segnala l'orientamento.
 
 ## Termini chiave
 
@@ -54,13 +54,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [会う](term:term-v126-au) e [決める](term:term-v127-kime-ru) e [難しい](term:term-v128-muzukashii) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [会う](term:term-v126-au), [決める](term:term-v127-kime-ru), [探す](term:term-v129-sagasu) e [挑む](term:term-v132-idomu) descrivono azioni concrete: incontrare, decidere, cercare, sfidare o affrontare. [難しい](term:term-v128-muzukashii) dice che qualcosa è impegnativo o difficile, mentre [簡単](term:term-v131-kantan) dice che è semplice. [どうやって](term:term-v133-douyatte) chiede il modo concreto, quindi equivale a "come si fa?" o "in che modo?".
 
-Le espressioni come [ちょっと待って](term:term-e023-chotto-matsu-te) e [どの ポケモンに 使いますか？](term:term-e024-dono-pokemoni-tsukaimasuka) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [ちょっと待って](term:term-e023-chotto-matsu-te) e [どの ポケモンに 使いますか？](term:term-e024-dono-pokemoni-tsukaimasuka) servono a fermare la scena o a chiedere il bersaglio dell'azione: "aspetta un attimo" e "su quale Pokémon vuoi usarlo?".
 
-Sul piano grammaticale, pattern come [は](grammar:grammar-g031-marca-il-tema) e [へ](grammar:grammar-g032-verso) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [は](grammar:grammar-g031-marca-il-tema) marca il tema della frase, [へ](grammar:grammar-g032-verso) marca la direzione verso cui vai, e [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene usato o toccato dall'azione. In pratica: `Aは...` dice di che cosa stai parlando, `Bへ行く` dice dove vai, `Xを使う` dice che cosa usi.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ヌシポケモン](term:term-v130-nushipokemon). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo resta [ヌシポケモン](term:term-v130-nushipokemon), una label specifica del mondo di gioco: riconoscila al volo come riferimento al Pokémon dominante, non come lessico generico.
 
 ## Esempi guidati
 
@@ -80,18 +80,25 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  ネモは {{強|つよ}}い。
+  {{地図|ちず}}は {{簡単|かんたん}}です。
 translation_it: >-
-  Nemona è forte.
+  La mappa è semplice.
 :::
 
 :::example_sentence
 jp: >-
-  {{北|きた}}へ {{行|い}}く。
+  アカデミーへ {{行|い}}く。
 translation_it: >-
-  Vado verso nord.
+  Vado all'accademia.
+:::
+
+:::example_sentence
+jp: >-
+  ポケモンを {{探|さが}}す。
+translation_it: >-
+  Cerco un Pokémon.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando incontri queste frasi, controlla prima il tema della frase, poi che cosa viene usato o sfidato e infine verso dove va l'azione. È lì che il blocco diventa leggibile.

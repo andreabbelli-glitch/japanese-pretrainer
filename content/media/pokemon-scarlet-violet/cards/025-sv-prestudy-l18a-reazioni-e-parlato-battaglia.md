@@ -26,7 +26,7 @@ back: ah, capisco
 example_jp: >-
   そうか、 わかった。
 example_it: >-
-  Ah, capisco.
+  Ah, ho capito.
 :::
 :::term
 id: term-e037-otsukaresamadesutaa
@@ -54,9 +54,9 @@ card_type: concept
 front: '～って'
 back: citazione / tema colloquiale
 example_jp: >-
-  ネモって {{強|つよ}}いよね。
+  ネモって {{一番|いちばん}}だよね。
 example_it: >-
-  Nemona, cioè, è forte, vero?
+  Nemona, dici? È la numero uno, vero?
 :::
 :::term
 id: term-e038-masaka
@@ -78,7 +78,7 @@ back: non ci credo / ma dai
 example_jp: >-
   まさか！
 example_it: >-
-  Non ci credo.
+  Ma dai!
 :::
 :::grammar
 id: grammar-g038-piu-di-al-punto-da
@@ -164,7 +164,7 @@ back: per tutto il tempo / di gran lunga
 example_jp: >-
   ずっと {{待|ま}}っています。
 example_it: >-
-  Sto aspettando da un po’.
+  Sto aspettando da un bel po'.
 :::
 :::term
 id: term-v198-kotoba
@@ -186,7 +186,7 @@ back: parola / espressione
 example_jp: >-
   この {{言葉|ことば}}を {{覚|おぼ}}えます。
 example_it: >-
-  Parola.
+  Memorizzo questa parola.
 :::
 :::term
 id: term-v199-ichiban
@@ -261,7 +261,7 @@ back: far tenere (un oggetto)
 example_jp: >-
   ポケモンに {{道具|どうぐ}}を {{持|も}}たせる。
 example_it: >-
-  Faccio tenere uno strumento a Pokémon.
+  Faccio tenere uno strumento al Pokémon.
 :::
 :::term
 id: term-v203-zenzen
@@ -283,7 +283,7 @@ back: per niente / completamente
 example_jp: >-
   {{全然|ぜんぜん}} {{大丈夫|だい.じょう.ぶ}} です。
 example_it: >-
-  Va benissimo.
+  Nessun problema.
 :::
 :::term
 id: term-v204-koori
@@ -371,7 +371,7 @@ back: duro / impegnativo
 example_jp: >-
   この テストは {{大変|たいへん}} です。
 example_it: >-
-  Questo test è duro.
+  Questo test è impegnativo.
 :::
 :::term
 id: term-v208-kansha

@@ -26,7 +26,7 @@ back: già / è vero
 example_jp: >-
   そうだね。
 example_it: >-
-  Già.
+  Sì, è così.
 :::
 :::term
 id: term-e044-tonikaku
@@ -48,7 +48,7 @@ back: comunque
 example_jp: >-
   とにかく {{行|い}}こう。
 example_it: >-
-  Comunque.
+  In ogni caso, andiamo.
 :::
 :::term
 id: term-e045-shimatta

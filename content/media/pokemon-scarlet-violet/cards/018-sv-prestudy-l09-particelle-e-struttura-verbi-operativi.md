@@ -133,7 +133,7 @@ back: HP / energia
 example_jp: >-
   {{体力|たいりょく}}が {{少|すこ}}ないです。
 example_it: >-
-  HP è poca.
+  Gli HP sono pochi.
 :::
 :::term
 id: term-v104-soto
@@ -155,7 +155,7 @@ back: fuori / esterno
 example_jp: >-
   {{外|そと}}へ {{行|い}}きます。
 example_it: >-
-  Vado a fuori.
+  Vado fuori.
 :::
 :::term
 id: term-v105-ikutsu
@@ -199,7 +199,7 @@ back: quale / quale dei due / dove (forma più gentile)
 example_jp: >-
   どちらへ {{行|い}}きますか。
 example_it: >-
-  Da quale parte vai?
+  Dove vai?
 :::
 :::term
 id: term-v107-orenjiakademii
@@ -208,7 +208,7 @@ reading: おれんじあかでみー
 romaji: orenjiakademii
 meaning_it: Accademia Orange
 notes_it: >-
-  Voce della lezione L09 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Voce della lezione L09 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Nome dell'Accademia Orange, riferimento di luogo e trama.
 :::
 :::term
 id: term-v108-make-ru
@@ -217,7 +217,7 @@ reading: まける
 romaji: make ru
 meaning_it: perdere
 notes_it: >-
-  Voce della lezione L09 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Voce della lezione L09 nell''area Battaglia. Parte del discorso: verbo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
 :::
 :::card
 id: card-v108-make-ru-recognition
@@ -230,7 +230,7 @@ back: perdere
 example_jp: >-
   この バトルに {{負|ま}}ける。
 example_it: >-
-  Perdere.
+  Perdere questa battaglia.
 :::
 :::term
 id: term-v109-yama
@@ -252,7 +252,7 @@ back: montagna
 example_jp: >-
   {{山|やま}}へ {{行|い}}きます。
 example_it: >-
-  Vado a montagna.
+  Vado in montagna.
 :::
 :::term
 id: term-v110-terareidobatoru
@@ -261,7 +261,7 @@ reading: てられいどばとる
 romaji: terareidobatoru
 meaning_it: Raid Teracristal
 notes_it: >-
-  Voce della lezione L09 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Voce della lezione L09 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Nome della modalità Raid Teracristal, da riconoscere come etichetta di sistema.
 :::
 :::term
 id: term-v111-michi
@@ -270,7 +270,7 @@ reading: みち
 romaji: michi
 meaning_it: strada
 notes_it: >-
-  Voce della lezione L09 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Voce della lezione L09 nell''area Storia/Scuola. Parte del discorso: sostantivo. Termine usato per indicare una strada o un percorso da seguire.
 :::
 :::card
 id: card-v111-michi-recognition
@@ -283,7 +283,7 @@ back: strada
 example_jp: >-
   この {{道|みち}}を {{行|い}}きます。
 example_it: >-
-  Strada.
+  Prendo questa strada.
 :::
 :::term
 id: term-v112-kuru

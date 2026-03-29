@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per reazioni e parlato, Scarlet/Violet: 8 carte
 ---
 # Obiettivo
 
-Capire il giapponese che compare in reazioni e parlato, Scarlet/Violet. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese usato in reazioni, proposte e piccoli passaggi di dialogo in Scarlet/Violet.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In questa lezione compaiono sia parole di reazione e proposta sia etichette specifiche del gioco. Le prime ti fanno leggere subito tono e intenzione; le seconde ti aiutano a riconoscere chi o cosa viene nominato nella scena.
 
 ## Termini chiave
 
@@ -55,21 +55,21 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [大丈夫](term:term-v039-daijoubu) e [時間](term:term-v041-jikan) e [気持ち](term:term-v042-kimochi) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+[大丈夫](term:term-v039-daijoubu) non vuol dire solo "bene" in astratto: nei dialoghi segnala che la situazione è a posto, che non c'è problema oppure che si può andare avanti senza rischi. [時間](term:term-v041-jikan) indica il tempo disponibile o il momento giusto per fare qualcosa; [気持ち](term:term-v042-kimochi) è la sensazione o il sentimento che un personaggio sta mostrando.
 
-Le espressioni come [じゃあ](term:term-e008-jaa) e [行こう](term:term-e009-iko-u) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+[じゃあ](term:term-e008-jaa) introduce il passaggio successivo: "allora", "in tal caso". [行こう](term:term-e009-iko-u) è un invito a partire o continuare: "andiamo". In una scena parlata queste due forme bastano spesso a far capire che si sta cambiando azione.
 
-Sul piano grammaticale, pattern come [〜前に](grammar:grammar-g010-prima-di) e [〜たい](grammar:grammar-g011-voler-fare) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [〜前に](grammar:grammar-g010-prima-di) marca ciò che viene prima di un'altra azione. [〜たい](grammar:grammar-g011-voler-fare) esprime desiderio o intenzione: "voglio fare...". Qui servono a leggere l'ordine degli eventi e la volontà del personaggio, non solo il nome della regola.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ジムテスト](term:term-v038-jimutesuto)、 [ネモ](term:term-v044-nemo)、 [ペパー](term:term-v048-pepaa). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ジムテスト](term:term-v038-jimutesuto)、 [ネモ](term:term-v044-nemo)、 [ペパー](term:term-v048-pepaa). Basta riconoscerle quando compaiono: sono nomi propri o riferimenti di gioco, non forme da analizzare.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  じゃあ、 ここへ {{行|い}}こう。
+  じゃあ、 {{行|い}}こう。
 translation_it: >-
-  Allora.
+  Allora, andiamo.
 :::
 
 :::example_sentence
@@ -81,18 +81,18 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  バトルの {{前|まえ}}に {{回復|かいふく}}する。
+  {{行|い}}く {{前|まえ}}に、 {{大丈夫|だいじょうぶ}}ですか。
 translation_it: >-
-  Prima della lotta mi curo.
+  Prima di andare, va bene?
 :::
 
 :::example_sentence
 jp: >-
-  ジムへ {{行|い}}きたい。
+  {{先|さき}}へ {{行|い}}きたい。
 translation_it: >-
-  Voglio andare alla palestra.
+  Voglio andare avanti.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando studi questo blocco, guarda prima il tono della battuta e poi il passaggio logico: conferma, proposta, desiderio o sequenza. Le etichette del gioco servono solo a riconoscere chi o cosa viene nominato.

@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per reazioni e parlato, Scarlet/Violet: 16 cart
 ---
 # Obiettivo
 
-Capire il giapponese che compare in reazioni e parlato, Scarlet/Violet. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in reazioni e parlato, Scarlet/Violet. Qui guardi formule che confermano, invitano, riprendono il filo o descrivono cambiamenti.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In questo blocco compaiono parole che segnalano subito avvio, invito, cambiamento, conferma e facilità. Accanto a queste ci sono anche alcuni nomi propri o riferimenti di funzione che basta riconoscere quando appaiono.
 
 ## Termini chiave
 
@@ -56,13 +56,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [さっそく](term:term-v235-sassoku) e [ぜひ](term:term-v238-zehi) e [変わる](term:term-v240-kawa-ru) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [さっそく](term:term-v235-sassoku), [ぜひ](term:term-v238-zehi) e [変わる](term:term-v240-kawa-ru) non sono solo riempitivi: segnalano subito se il gioco sta avviando un'azione, invitando il giocatore a farla o mostrando che qualcosa è cambiato. Quando compaiono, ti dicono quale pezzo della scena è già pronto, richiesto o diverso da prima.
 
-Le espressioni come [そうだね](term:term-e043-soudane) e [とにかく](term:term-e044-tonikaku) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [そうだね](term:term-e043-soudane) e [とにかく](term:term-e044-tonikaku) servono invece a confermare o a riportare il discorso al punto. [そうだね] approva o fa eco a ciò che è stato detto; [とにかく] taglia la deviazione e fa ripartire l'azione. In un gioco molto dialogato sono utili perché spesso bastano da sole a far capire se chi parla sta assentendo o sta spingendo avanti la scena.
 
-Sul piano grammaticale, pattern come [〜ようだ / 〜ように見える](grammar:grammar-g046-sembra-che-sembra) e [〜よね](grammar:grammar-g047-vero-no) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, pattern come [〜ようだ / 〜ように見える](grammar:grammar-g046-sembra-che-sembra), [〜よね](grammar:grammar-g047-vero-no) e [〜やすい](grammar:grammar-g048-facile-da-fare) chiariscono inferenza, conferma o facilità concreta. [〜ようだ] segnala che il parlante deduce o osserva, [〜よね] cerca accordo, [〜やすい] dice che qualcosa è facile da fare o tende a riuscire con facilità. Non servono solo a “capire la regola”: aiutano a leggere il tono della frase e il grado di certezza.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ゼロラボ](term:term-v236-zerorabo)、 [ライドポケモン](term:term-v239-raidopokemon). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ゼロラボ](term:term-v236-zerorabo) e [ライドポケモン](term:term-v239-raidopokemon). Qui la cosa utile non è analizzarle, ma riconoscerle subito come riferimenti al mondo di gioco o a una funzione specifica.
 
 ## Esempi guidati
 
@@ -70,14 +70,14 @@ Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ゼ�
 jp: >-
   そうだね。
 translation_it: >-
-  Già.
+  Sì, è così.
 :::
 
 :::example_sentence
 jp: >-
   とにかく {{行|い}}こう。
 translation_it: >-
-  Comunque.
+  In ogni caso, andiamo.
 :::
 
 :::example_sentence
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando incontri queste battute, guarda subito se la frase sta confermando, invitando, segnalando un cambiamento o suggerendo che qualcosa è facile. In questo blocco la comprensione passa soprattutto da quelle sfumature.

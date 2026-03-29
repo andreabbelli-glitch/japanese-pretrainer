@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per scuola e storia, reazioni e parlato: 13 car
 ---
 # Obiettivo
 
-Capire il giapponese che compare in scuola e storia, reazioni e parlato. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in scuola, storia, reazioni e parlato. Qui le parole ti dicono subito se la frase parla di una materia, di un risultato, di una reazione o di un dubbio.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet [転入生](term:term-v210-tenyuusei), [生物](term:term-v214-seibutsu), [説明](term:term-v215-setsumei), [合格](term:term-v216-goukaku) e [問題](term:term-v217-mondai) fanno subito capire se la scena è scolastica, se sta spiegando qualcosa o se sta parlando di un esito. [最近](term:term-v212-saikin), [絶対](term:term-v213-zettai), [一度](term:term-v220-ichido) e [本気](term:term-v219-honki) sono invece segnali di parlato: cambiano il peso, la frequenza o la serietà della frase.
 
 ## Termini chiave
 
@@ -51,11 +51,11 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [転入生](term:term-v210-tenyuusei) e [高い](term:term-v211-takai) e [最近](term:term-v212-saikin) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Tra i termini, [転入生](term:term-v210-tenyuusei) indica lo studente trasferito che entra nella scuola come nuovo arrivato: non è un'etichetta astratta, ma un ruolo preciso nella scena. [生物](term:term-v214-seibutsu) è la materia di biologia, mentre [説明](term:term-v215-setsumei), [合格](term:term-v216-goukaku) e [問題](term:term-v217-mondai) ti dicono se il testo sta spiegando, annunciando un esito o segnalando un problema.
 
-Le espressioni come [いってらっしゃい](term:term-e039-itterasshai) e [ところで](term:term-e040-tokorode) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le parole di tono come [高い](term:term-v211-takai), [最近](term:term-v212-saikin), [絶対](term:term-v213-zettai), [一度](term:term-v220-ichido) e [本気](term:term-v219-honki) non servono a fare scena in astratto: [高い](term:term-v211-takai) resta "alto", [最近](term:term-v212-saikin) vuol dire "ultimamente", [絶対](term:term-v213-zettai) rafforza la frase, [一度](term:term-v220-ichido) indica "una volta" e [本気](term:term-v219-honki) alza il livello di serietà o intensità.
 
-Sul piano grammaticale, pattern come [〜とき](grammar:grammar-g040-quando-nel-momento-in-cui) e [〜だろう / でしょう](grammar:grammar-g041-probabilmente-suppongo) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+[いってらっしゃい](term:term-e039-itterasshai) è la formula con cui mandi qualcuno via dicendogli di andare e tornare; [ところで](term:term-e040-tokorode) apre un cambio di argomento; [いったい](term:term-e041-ittai) aggiunge sorpresa o insistenza alla domanda. Sul piano grammaticale, [～とき](grammar:grammar-g040-quando-nel-momento-in-cui) introduce il momento in cui succede qualcosa, [～だろう / でしょう](grammar:grammar-g041-probabilmente-suppongo) esprime una supposizione e [～のか](grammar:grammar-g042-domanda-spiegativa-sorpresa-davvero-e-co) suona come domanda esplicativa o sorpresa.
 
 ## Esempi guidati
 
@@ -63,14 +63,14 @@ Sul piano grammaticale, pattern come [〜とき](grammar:grammar-g040-quando-nel
 jp: >-
   いってらっしゃい。
 translation_it: >-
-  Buon viaggio.
+  Vai e torna.
 :::
 
 :::example_sentence
 jp: >-
-  ところで、 {{次|つぎ}}は どこ？
+  ところで、 {{問題|もんだい}}は？
 translation_it: >-
-  A proposito.
+  A proposito, ci sono problemi?
 :::
 
 :::example_sentence
@@ -84,9 +84,9 @@ translation_it: >-
 jp: >-
   いったい どうしたの？
 translation_it: >-
-  Ma che...
+  Ma che succede, di preciso?
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Se una frase ti sembra corta ma sfuggente, guarda prima se sta indicando una materia, un esito, un cambio di argomento o una supposizione. In questo blocco sono questi i segnali che chiariscono la scena più in fretta.

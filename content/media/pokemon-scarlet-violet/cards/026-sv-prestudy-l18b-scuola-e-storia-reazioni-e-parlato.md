@@ -26,7 +26,7 @@ back: buon viaggio / vai e torna
 example_jp: >-
   いってらっしゃい。
 example_it: >-
-  Buon viaggio.
+  Vai e torna.
 :::
 :::term
 id: term-e040-tokorode
@@ -46,9 +46,9 @@ card_type: recognition
 front: 'ところで'
 back: a proposito
 example_jp: >-
-  ところで、 {{次|つぎ}}は どこ？
+  ところで、 {{問題|もんだい}}は？
 example_it: >-
-  A proposito.
+  A proposito, ci sono problemi?
 :::
 :::grammar
 id: grammar-g040-quando-nel-momento-in-cui
@@ -91,7 +91,7 @@ back: ma che... / in fondo chi / cosa...?
 example_jp: >-
   いったい どうしたの？
 example_it: >-
-  Ma che...
+  Ma che succede, di preciso?
 :::
 :::grammar
 id: grammar-g041-probabilmente-suppongo
@@ -157,7 +157,7 @@ back: studente trasferito
 example_jp: >-
   {{転入生|てん.にゅう.せい}}が {{来|き}}ます。
 example_it: >-
-  Arriva il studente trasferito.
+  Arriva uno studente trasferito.
 :::
 :::term
 id: term-v211-takai
@@ -179,7 +179,7 @@ back: alto
 example_jp: >-
   この {{山|やま}}は {{高|たか}}い です。
 example_it: >-
-  Questa montagna è alto.
+  Questa montagna è alta.
 :::
 :::term
 id: term-v212-saikin
@@ -267,7 +267,7 @@ back: spiegazione
 example_jp: >-
   {{説明|せつめい}}を {{見|み}}ます。
 example_it: >-
-  Guardo la spiegazione.
+  Controllo la spiegazione.
 :::
 :::term
 id: term-v216-goukaku
@@ -311,7 +311,7 @@ back: problema
 example_jp: >-
   この {{問題|もんだい}}は むずかしいです。
 example_it: >-
-  Problema.
+  Questo problema è difficile.
 :::
 :::term
 id: term-v218-mirai
@@ -355,7 +355,7 @@ back: serietà / al massimo
 example_jp: >-
   バトルで {{本気|ほんき}}を {{使|つか}}います。
 example_it: >-
-  Uso la serietà in battaglia.
+  In battaglia do il massimo.
 :::
 :::term
 id: term-v220-ichido
@@ -399,7 +399,7 @@ back: pozione
 example_jp: >-
   メニューで キズぐすりを {{見|み}}ます。
 example_it: >-
-  Guardo la pozione in menu.
+  Controllo la pozione nel menu.
 :::
 :::term
 id: term-v223-bougyo
@@ -421,5 +421,5 @@ back: difesa
 example_jp: >-
   バトルで {{防御|ぼうぎょ}}が だいじ です。
 example_it: >-
-  In battaglia difesa è importante.
+  In battaglia la difesa è importante.
 :::

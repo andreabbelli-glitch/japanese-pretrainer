@@ -26,7 +26,7 @@ back: stai attento
 example_jp: >-
   {{気|き}}をつけて {{行|い}}ってね。
 example_it: >-
-  Stai attento.
+  Fai attenzione mentre vai.
 :::
 :::term
 id: term-e013-sugoi
@@ -35,7 +35,7 @@ reading: すごい！
 romaji: sugoi !
 meaning_it: forte! / incredibile!
 notes_it: >-
-  Espressione ricorrente della lezione L05 nell'area Reazioni. Reazione entusiasma o ammirata.
+  Espressione ricorrente della lezione L05 nell'area Reazioni. Reazione entusiasta o ammirata.
 :::
 :::card
 id: card-e013-sugoi-recognition
@@ -48,7 +48,7 @@ back: forte! / incredibile!
 example_jp: >-
   すごい！ つよいね。
 example_it: >-
-  Forte!
+  Incredibile, sei forte.
 :::
 :::grammar
 id: grammar-g014-si-puo-va-bene-fare
@@ -112,7 +112,7 @@ back: effetto
 example_jp: >-
   この わざの {{効果|こうか}}を {{見|み}}ます。
 example_it: >-
-  Guardo l'effetto di questa mossa.
+  Controllo l'effetto di questa mossa.
 :::
 :::term
 id: term-v052-shokuzai
@@ -134,7 +134,7 @@ back: ingrediente
 example_jp: >-
   {{食材|しょくざい}}を {{買|か}}います。
 example_it: >-
-  Compro l'ingrediente.
+  Compro un ingrediente.
 :::
 :::term
 id: term-v053-hakase
@@ -156,7 +156,7 @@ back: professore / ricercatore
 example_jp: >-
   {{博士|はかせ}}と {{話|はな}}します。
 example_it: >-
-  Parlo con professore.
+  Parlo con il professore.
 :::
 :::term
 id: term-v054-zukan
@@ -178,7 +178,7 @@ back: Pokédex / enciclopedia
 example_jp: >-
   {{図鑑|ずかん}}を {{見|み}}ます。
 example_it: >-
-  Guardo Pokédex.
+  Controllo il Pokédex.
 :::
 :::term
 id: term-v055-donna

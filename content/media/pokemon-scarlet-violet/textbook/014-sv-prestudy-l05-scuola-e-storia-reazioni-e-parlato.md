@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per scuola e storia, reazioni e parlato: 11 car
 ---
 # Obiettivo
 
-Capire il giapponese che compare in scuola e storia, reazioni e parlato. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che segnala scuola, storia, reazioni e parlato: chi parla, che ruolo ha nella scena e quale azione o risposta sta chiedendo il gioco.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+Qui il lessico gira attorno a scuola, ricerca e progressione: le parole più concrete ti dicono subito quale oggetto, ruolo o sistema è in primo piano, mentre i nomi più verticali restano utili come riferimento quando compaiono nei dialoghi.
 
 ## Termini chiave
 
@@ -49,11 +49,9 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [効果](term:term-v051-kouka) e [食材](term:term-v052-shokuzai) e [博士](term:term-v053-hakase) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [効果](term:term-v051-kouka), [食材](term:term-v052-shokuzai), [博士](term:term-v053-hakase) e [図鑑](term:term-v054-zukan) ti dicono subito quale oggetto o interlocutore è in scena: l'effetto di una mossa, un ingrediente, il professore o ricercatore con cui interagisci, il Pokédex che stai consultando. [どんな](term:term-v055-donna) chiede il tipo preciso di qualcosa, [ちゃんと](term:term-v056-chanto) segnala che va fatto bene, [中](term:term-v057-naka) localizza qualcosa dentro o in mezzo, e [作る](term:term-v058-tsukuru) è il verbo concreto del creare o preparare.
 
-Le espressioni come [気をつけて](term:term-e012-kiwo-tsukete) e [すごい！](term:term-e013-sugoi) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
-
-Sul piano grammaticale, pattern come [〜てもいい](grammar:grammar-g014-si-puo-va-bene-fare) e [〜後で / 〜あとで](grammar:grammar-g015-dopo) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Le espressioni come [気をつけて](term:term-e012-kiwo-tsukete) e [すごい！](term:term-e013-sugoi) regolano il parlato: possono essere un avviso, un incoraggiamento o una reazione breve. [〜てもいい](grammar:grammar-g014-si-puo-va-bene-fare) e [〜後で / 〜あとで](grammar:grammar-g015-dopo) servono invece a leggere permesso e sequenza: cosa è consentito fare e cosa viene dopo.
 
 ## Esempi guidati
 
@@ -61,14 +59,14 @@ Sul piano grammaticale, pattern come [〜てもいい](grammar:grammar-g014-si-p
 jp: >-
   {{気|き}}をつけて {{行|い}}ってね。
 translation_it: >-
-  Stai attento.
+  Fai attenzione mentre vai.
 :::
 
 :::example_sentence
 jp: >-
   すごい！ つよいね。
 translation_it: >-
-  Forte!
+  Incredibile, sei forte.
 :::
 
 :::example_sentence
@@ -87,4 +85,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando incontri questo blocco, leggi prima che cosa il testo sta nominando, poi se sta dando un permesso, un avviso o una sequenza temporale. È lì che la scena diventa immediata.

@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per reazioni e parlato, scuola e storia: 13 car
 ---
 # Obiettivo
 
-Capire il giapponese che compare in reazioni e parlato, scuola e storia. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese breve che in scuola e storia segnala aiuto, contrasto, proposta, direzione e reazione.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In questo blocco compaiono parole che dicono subito se qualcuno ti offre aiuto, indica una direzione, parla di una categoria o commenta un risultato. Accanto a queste ci sono anche riferimenti più specifici di scuola o storia che basta riconoscere quando appaiono.
 
 ## Termini chiave
 
@@ -51,11 +51,11 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [種類](term:term-v224-shurui) e [食事](term:term-v225-shokuji) e [ライド技](term:term-v226-raidowaza) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [種類](term:term-v224-shurui), [食事](term:term-v225-shokuji), [ライド技](term:term-v226-raidowaza) e [メニュー](term:term-v227-menyuu) ti dicono che tipo di schermata stai leggendo: scelta di categoria, indicazione sui pasti, abilità di ride o menu di sistema. Quando compaiono, non stanno solo etichettando qualcosa: restringono subito l'informazione utile.
 
-Le espressioni come [〜してあげる](term:term-e042-shiteageru) e [向こう](term:term-e062-mukou) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [〜してあげる](term:term-e042-shiteageru), [向こう](term:term-e062-mukou) e [どっち？](term:term-e063-docchi) orientano il parlato e lo spazio: un aiuto offerto, qualcosa che sta dall'altra parte, oppure una domanda rapidissima su direzione o scelta.
 
-Sul piano grammaticale, pattern come [〜のに](grammar:grammar-g043-anche-se-nonostante) e [〜ましょう / 〜ましょ](grammar:grammar-g044-facciamo-andiamo-a) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [〜のに](grammar:grammar-g043-anche-se-nonostante) segnala un contrasto inatteso, [〜ましょう / 〜ましょ](grammar:grammar-g044-facciamo-andiamo-a) è un invito cortese e [〜よう](grammar:grammar-g045-facciamo-provero-a) è la forma volitiva che suona come proposta, intenzione o auto-incoraggiamento.
 
 ## Esempi guidati
 
@@ -63,14 +63,14 @@ Sul piano grammaticale, pattern come [〜のに](grammar:grammar-g043-anche-se-n
 jp: >-
   あとで {{教|おし}}えてあげる。
 translation_it: >-
-  Te lo faccio io.
+  Te lo spiego dopo.
 :::
 
 :::example_sentence
 jp: >-
   {{近|ちか}}いのに {{行|い}}けない。
 translation_it: >-
-  Anche se è vicino, non posso andarci.
+  È vicino, ma non ci posso andare.
 :::
 
 :::example_sentence
@@ -84,9 +84,9 @@ translation_it: >-
 jp: >-
   もう {{帰|かえ}}ろう。
 translation_it: >-
-  Torniamo / tornerò ormai.
+  Torniamo, dai.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando incontri queste battute, controlla subito se la frase sta offrendo aiuto, aprendo un contrasto, proponendo un'azione o indicando una direzione. In questo capitolo la comprensione passa soprattutto da quei segnali.

@@ -11,7 +11,7 @@ id: term-e017-doushiyou
 lemma: どうしよう
 reading: どうしよう
 romaji: doushiyou
-meaning_it: che faccio?
+meaning_it: che faccio adesso?
 notes_it: >-
   Espressione ricorrente della lezione L08 nell'area Domande rapide. Esprime incertezza o piccolo panico.
 :::
@@ -22,11 +22,11 @@ entry_type: term
 entry_id: term-e017-doushiyou
 card_type: recognition
 front: 'どうしよう'
-back: che faccio?
+back: che faccio adesso?
 example_jp: >-
   どうしよう、 まだ {{決|き}}めてない。
 example_it: >-
-  Che faccio?
+  Che faccio? Non ho ancora deciso.
 :::
 :::term
 id: term-e018-doushitano
@@ -67,9 +67,9 @@ card_type: concept
 front: 'て{{形|けい}}'
 back: collega azioni, crea richieste e molte costruzioni
 example_jp: >-
-  {{見|み}}て {{覚|おぼ}}える。
+  ここから {{始|はじ}}めて。
 example_it: >-
-  Guardo e imparo.
+  Inizia da qui.
 :::
 :::grammar
 id: grammar-g023-negazione
@@ -88,9 +88,9 @@ card_type: concept
 front: 'ない{{形|けい}}'
 back: negazione
 example_jp: >-
-  まだ {{行|い}}かない。
+  まだ {{始|はじ}}めない。
 example_it: >-
-  Non vado ancora.
+  Non inizio ancora.
 :::
 :::grammar
 id: grammar-g024-registro-cortese-vs-piano

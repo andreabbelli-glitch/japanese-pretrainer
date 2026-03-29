@@ -15,16 +15,16 @@ tags:
 - lesson-19
 prerequisites: []
 summary: 'Lessico ed espressioni per reazioni e parlato, Scarlet/Violet: 17 carte
-  lessicali attive, 3 formule ricorrenti, 2 pattern grammaticali e 1 etichette contestuali
+  lessicali attive, 3 formule ricorrenti, 2 pattern grammaticali e 1 etichetta contestuale
   da riconoscere.'
 ---
 # Obiettivo
 
-Capire il giapponese che compare in reazioni e parlato, Scarlet/Violet. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in reazioni e parlato in Scarlet/Violet: parole operative, formule di dialogo e strutture che ti fanno leggere subito cosa sta succedendo sullo schermo.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In questo blocco compaiono parole che segnalano subito tipo, avvertimento, ricezione, scelta e richiesta personale. Accanto a queste ci sono anche riferimenti di città o di sistema che basta riconoscere quando appaiono.
 
 ## Termini chiave
 
@@ -54,44 +54,44 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [古代](term:term-v255-kodai) e [フェアリー](term:term-v256-fearii) e [はがね](term:term-v257-hagane) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [古代](term:term-v255-kodai), [フェアリー](term:term-v256-fearii) e [はがね](term:term-v257-hagane) ti dicono subito se il testo sta parlando di passato remoto, tipo folletto o tipo acciaio. Nei menu e nei dialoghi questi segnali bastano a capire quale voce o quale tipo stai guardando.
 
-Le espressioni come [〜を 受けとりました！](term:term-e046-o-uketorimashita) e [〜を 選んでください](term:term-e047-o-erandekudasai) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [〜を 受けとりました！](term:term-e046-o-uketorimashita), [〜を 選んでください](term:term-e047-o-erandekudasai) e [〜してみて](term:term-e053-shitemite) indicano rispettivamente una ricezione, una selezione obbligata e una prova da fare. Qui non servono come formule astratte: ti dicono se la schermata ti sta consegnando qualcosa, ti sta chiedendo una scelta o ti sta invitando a tentare un'azione.
 
-Sul piano grammaticale, pattern come [〜てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) e [〜だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [〜てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) esprime che il parlante vuole che qualcuno faccia qualcosa; [〜だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) chiude la frase con una constatazione o un commento colloquiale. Quando compaiono, il punto non è la regola in astratto ma il tono della frase: richiesta personale da una parte, riflessione o nota finale dall'altra.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [テーブルシティ](term:term-v272-teeburushitei). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [テーブルシティ](term:term-v272-teeburushitei). Qui la cosa utile non è analizzarle come lessico generale, ma riconoscerle subito come riferimenti di luogo o di funzione.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  きのみを {{受|う}}けとりました！
+  レシピを {{受|う}}けとりました！
 translation_it: >-
-  Hai ricevuto …!
+  Hai ricevuto la ricetta!
 :::
 
 :::example_sentence
 jp: >-
   ポケモンを {{選|えら}}んでください。
 translation_it: >-
-  Seleziona ….
+  Seleziona un Pokémon.
 :::
 
 :::example_sentence
 jp: >-
-  {{早|はや}}く {{来|き}}てほしい。
+  これを {{使|つか}}ってほしい。
 translation_it: >-
-  Vorrei che venissi presto.
+  Vorrei che usassi questo.
 :::
 
 :::example_sentence
 jp: >-
   これも {{使|つか}}ってみて。
 translation_it: >-
-  Prova a...
+  Prova anche a usarlo.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando incontri queste schermate o battute, controlla subito se il testo ti sta consegnando qualcosa, chiedendo una scelta, invitandoti a provare o formulando una richiesta personale. In questo blocco la comprensione passa soprattutto da quei segnali.

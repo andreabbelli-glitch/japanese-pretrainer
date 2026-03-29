@@ -11,9 +11,9 @@ id: term-e025-dekiruyouninatta
 lemma: 〜できるようになった
 reading: 〜できるようになった
 romaji: dekiruyouninatta
-meaning_it: sei diventato in grado di…
+meaning_it: ora puoi farlo
 notes_it: >-
-  Espressione ricorrente della lezione L12 nell'area Sistema/UI. Compare in tutorial e sblocchi di funzioni
+  Espressione ricorrente della lezione L12 nell'area Sistema/UI. Indica che una funzione è diventata disponibile.
 :::
 :::card
 id: card-e025-dekiruyouninatta-recognition
@@ -22,11 +22,11 @@ entry_type: term
 entry_id: term-e025-dekiruyouninatta
 card_type: recognition
 front: '〜できるようになった'
-back: sei diventato in grado di…
+back: ora puoi farlo
 example_jp: >-
   ライド できるようになった。
 example_it: >-
-  Sei diventato in grado di….
+  Ora puoi usare la cavalcata.
 :::
 :::term
 id: term-e026-makase-te
@@ -35,7 +35,7 @@ reading: まかせて
 romaji: makase te
 meaning_it: lascia fare a me
 notes_it: >-
-  Espressione ricorrente della lezione L12 nell'area Supporto / incoraggiamento. Risposta positiva quando ti chiedono aiuto o collaborazione.
+  Espressione ricorrente della lezione L12 nell'area Supporto / incoraggiamento. Risposta breve e rassicurante quando ti chiedono aiuto.
 :::
 :::card
 id: card-e026-makase-te-recognition
@@ -120,7 +120,7 @@ reading: せいそくち
 romaji: seisokuchi
 meaning_it: habitat
 notes_it: >-
-  Voce della lezione L12 nell''area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Voce della lezione L12 nell''area Esplorazione. Parte del discorso: sostantivo. Indica l'habitat di un Pokémon, cioè dove vive o si trova.
 :::
 :::card
 id: card-v138-seisokuchi-recognition
@@ -133,7 +133,7 @@ back: habitat
 example_jp: >-
   この ポケモンの {{生息地|せい.そく.ち}}を {{見|み}}ます。
 example_it: >-
-  Guardo il habitat di questo Pokémon.
+  Controllo l'habitat di questo Pokémon.
 :::
 :::term
 id: term-v139-nannin
@@ -164,7 +164,7 @@ reading: うる
 romaji: uru
 meaning_it: vendere
 notes_it: >-
-  Voce della lezione L12 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Voce della lezione L12 nell''area Sistema/UI. Parte del discorso: verbo. Parola utile per la funzione di vendita nei menu.
 :::
 :::card
 id: card-v140-uru-recognition
@@ -186,7 +186,7 @@ reading: いっかい
 romaji: ikkai
 meaning_it: una volta
 notes_it: >-
-  Voce della lezione L12 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Voce della lezione L12 nell''area Sistema/UI. Parte del discorso: sostantivo. Indicatore di quantità: una sola volta.
 :::
 :::card
 id: card-v141-ikkai-recognition
@@ -199,7 +199,7 @@ back: una volta
 example_jp: >-
   {{一回|いっかい}} やります。
 example_it: >-
-  Una volta.
+  Lo faccio una volta.
 :::
 :::term
 id: term-v142-kawa
@@ -221,7 +221,7 @@ back: fiume
 example_jp: >-
   {{川|かわ}}が あります。
 example_it: >-
-  C'è il fiume.
+  C'è un fiume.
 :::
 :::term
 id: term-v143-machi
@@ -243,7 +243,7 @@ back: città / paese
 example_jp: >-
   この {{街|まち}}へ {{行|い}}きます。
 example_it: >-
-  Città.
+  Vado in questa città.
 :::
 :::term
 id: term-v144-tabun
