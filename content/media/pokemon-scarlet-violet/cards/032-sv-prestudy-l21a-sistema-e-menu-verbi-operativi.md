@@ -26,7 +26,7 @@ back: tutto insieme / in totale
 example_jp: >-
   まとめて {{買|か}}います。
 example_it: >-
-  Tutto insieme.
+  Compro tutto insieme.
 :::
 :::term
 id: term-e049-tsukureru
@@ -48,7 +48,7 @@ back: si può creare / craftare
 example_jp: >-
   ここで わざマシンが {{作|つく}}れる。
 example_it: >-
-  Si può creare.
+  Qui puoi creare una MT.
 :::
 :::term
 id: term-e060-chinamini
@@ -70,7 +70,7 @@ back: tra l'altro
 example_jp: >-
   ちなみに、 これは {{新|あたら}}しいよ。
 example_it: >-
-  Tra l'altro.
+  Tra l'altro, questo è nuovo.
 :::
 :::term
 id: term-e061-doukana
@@ -92,7 +92,7 @@ back: chissà / come sarà?
 example_jp: >-
   これで どうかな。
 example_it: >-
-  Chissà.
+  Che ne dici di così?
 :::
 :::term
 id: term-e064-nohinto
@@ -243,9 +243,9 @@ card_type: recognition
 front: "まひ"
 back: paralisi
 example_jp: >-
-  バトルで まひを {{使|つか}}います。
+  バトルで まひに なります。
 example_it: >-
-  Uso il paralisi in battaglia.
+  In battaglia si resta paralizzati.
 :::
 :::term
 id: term-v317-tokui
@@ -267,7 +267,7 @@ back: essere bravo in
 example_jp: >-
   {{得意|とくい}} です。
 example_it: >-
-  Essere bravo in.
+  È bravo in questo.
 :::
 :::term
 id: term-v318-gakenobori
@@ -311,7 +311,7 @@ back: ricarica
 example_jp: >-
   メニューで チャージを {{見|み}}ます。
 example_it: >-
-  Guardo la ricarica in menu.
+  Controllo la ricarica nel menu.
 :::
 :::term
 id: term-v320-annai
@@ -333,7 +333,7 @@ back: guida / accompagnamento
 example_jp: >-
   {{学校|がっこう}}で {{案内|あんない}}が だいじ です。
 example_it: >-
-  In scuola guida è importante.
+  A scuola, la guida è importante.
 :::
 :::term
 id: term-v321-mitame
@@ -355,7 +355,7 @@ back: aspetto
 example_jp: >-
   {{見|み}}た{{目|め}}を {{変|か}}えます。
 example_it: >-
-  Aspetto.
+  Cambio l'aspetto.
 :::
 :::term
 id: term-v322-erabu
@@ -397,9 +397,9 @@ card_type: recognition
 front: "{{本気|ほんき}}で"
 back: sul serio
 example_jp: >-
-  {{本気|ほんき}}で です。
+  {{本気|ほんき}}で やります。
 example_it: >-
-  Sul serio.
+  Faccio sul serio.
 :::
 :::term
 id: term-v324-mamoru
@@ -441,9 +441,9 @@ card_type: recognition
 front: "{{古|ふる}}い"
 back: vecchio
 example_jp: >-
-  {{誰|だれ}}が {{来|き}}ますか。
+  これは {{古|ふる}}い。
 example_it: >-
-  Chi arriva?
+  Questo è vecchio.
 :::
 :::term
 id: term-v326-aishou
@@ -465,7 +465,7 @@ back: compatibilità / matchup
 example_jp: >-
   バトルで {{相性|あいしょう}}を {{使|つか}}います。
 example_it: >-
-  Uso la compatibilità in battaglia.
+  In battaglia conta la compatibilità.
 :::
 :::term
 id: term-v327-sabaku
@@ -529,9 +529,9 @@ card_type: recognition
 front: "{{景色|けしき}}"
 back: paesaggio
 example_jp: >-
-  {{学校|がっこう}}で {{景色|けしき}}が だいじ です。
+  {{景色|けしき}} が いい です。
 example_it: >-
-  In scuola paesaggio è importante.
+  Il paesaggio è bello.
 :::
 :::term
 id: term-v330-houhou
@@ -575,7 +575,7 @@ back: modifica
 example_jp: >-
   メニューで {{変更|へんこう}}を {{見|み}}ます。
 example_it: >-
-  Guardo la modifica in menu.
+  Controllo la modifica nel menu.
 :::
 :::term
 id: term-v332-sanka-suru

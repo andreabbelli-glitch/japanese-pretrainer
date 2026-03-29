@@ -26,7 +26,7 @@ back: proviamo a vedere
 example_jp: >-
   マップを {{見|み}}てみよう。
 example_it: >-
-  Proviamo a vedere.
+  Proviamo a dare un'occhiata alla mappa.
 :::
 :::term
 id: term-e076-atoha-makase-te
@@ -68,9 +68,9 @@ card_type: recognition
 front: "まずはここから"
 back: prima partiamo da qui
 example_jp: >-
-  まずは ここから {{始|はじ}}めよう。
+  まずは ここから です。
 example_it: >-
-  Prima partiamo da qui.
+  Per prima cosa, da qui.
 :::
 :::grammar
 id: grammar-g079-per-favore-non-fare
@@ -89,9 +89,9 @@ card_type: concept
 front: "～ないでください"
 back: per favore non fare...
 example_jp: >-
-  ここで {{走|はし}}らないでください。
+  ここで {{進|すす}}まないでください。
 example_it: >-
-  Per favore non correre qui.
+  Per favore non andare avanti qui.
 :::
 :::grammar
 id: grammar-g080-sembrare-voler-fare-terza-persona
@@ -268,9 +268,9 @@ card_type: recognition
 front: "{{通信交換|つう.しん.こう.かん}}"
 back: scambio in link / trade
 example_jp: >-
-  ポケモンを {{交換|こうかん}}します。
+  {{通信交換|つう.しん.こう.かん}}を します。
 example_it: >-
-  Scambio un Pokémon.
+  Faccio uno scambio in link.
 :::
 :::term
 id: term-v401-senryaku
@@ -321,9 +321,9 @@ card_type: recognition
 front: "{{調|しら}}べる"
 back: controllare / investigare
 example_jp: >-
-  {{東|ひがし}}へ {{行|い}}きます。
+  ここを {{調|しら}}べます。
 example_it: >-
-  Vado a est.
+  Controllo qui.
 :::
 :::term
 id: term-v404-douyara
@@ -343,9 +343,9 @@ card_type: recognition
 front: "どうやら"
 back: a quanto pare
 example_jp: >-
-  どうやら です。
+  どうやら {{今日|きょう}}は だめです。
 example_it: >-
-  A quanto pare.
+  A quanto pare oggi non va.
 :::
 :::term
 id: term-v405-otoshimonopawaa
@@ -418,9 +418,9 @@ card_type: recognition
 front: "{{低|ひく}}い"
 back: basso
 example_jp: >-
-  この{{先|さき}}に {{低|ひく}}いが あります。
+  ここは {{低|ひく}}いです。
 example_it: >-
-  Più avanti c'è il basso.
+  Qui è basso.
 :::
 :::term
 id: term-v409-massugu
@@ -484,9 +484,9 @@ card_type: recognition
 front: "{{先頭|せんとう}}"
 back: posizione di testa / primo
 example_jp: >-
-  {{東|ひがし}}へ {{行|い}}きます。
+  ポケモンを {{先頭|せんとう}}に します。
 example_it: >-
-  Vado a est.
+  Metto il Pokémon in prima posizione.
 :::
 :::term
 id: term-v412-zukan-kansei
@@ -506,7 +506,7 @@ card_type: recognition
 front: "{{図鑑完成|ず.かん.かん.せい}}"
 back: completamento del Pokédex
 example_jp: >-
-  メニューで {{図鑑完成|ず.かん.かん.せい}}を {{見|み}}ます。
+  {{図鑑完成|ず.かん.かん.せい}}です。
 example_it: >-
-  Guardo il completamento del Pokédex in menu.
+  Pokédex completato.
 :::

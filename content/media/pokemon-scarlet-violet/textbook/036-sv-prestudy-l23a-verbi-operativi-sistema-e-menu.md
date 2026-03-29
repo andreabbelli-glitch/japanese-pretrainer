@@ -24,7 +24,7 @@ Capire il giapponese che compare in verbi operativi, sistema e menu. Qui il focu
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet queste parole ricorrono in menu, istruzioni e dialoghi rapidi. I termini più generali dicono quale azione puoi fare o quale passaggio sta avanzando; le etichette più specifiche nominano poteri, categorie e funzioni precise del sistema.
 
 ## Termini chiave
 
@@ -59,13 +59,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [整理](term:term-v393-seiri) e [進む](term:term-v394-susumu) e [飛ぶ](term:term-v396-tobu) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [整理](term:term-v393-seiri), [進む](term:term-v394-susumu), [飛ぶ](term:term-v396-tobu) e [帰る](term:term-v397-kaeru) dicono subito se stai riordinando, avanzando, muovendoti o tornando indietro. Nei menu e nei tutorial sono segnali operativi molto concreti: ti fanno capire che tipo di azione sta chiedendo la schermata.
 
-Le espressioni come [見てみよう](term:term-e075-mitemiyou) e [あとは任せて](term:term-e076-atoha-makase-te) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [見てみよう](term:term-e075-mitemiyou), [あとは任せて](term:term-e076-atoha-makase-te) e [まずはここから](term:term-e077-mazuhakokokara) servono a guidare l'azione: invitano a guardare qualcosa, prendono in carico il resto o fissano il punto da cui partire.
 
-Sul piano grammaticale, pattern come [〜ないでください](grammar:grammar-g079-per-favore-non-fare) e [〜たがる](grammar:grammar-g080-sembrare-voler-fare-terza-persona) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [〜ないでください](grammar:grammar-g079-per-favore-non-fare) è un divieto gentile, [〜たがる](grammar:grammar-g080-sembrare-voler-fare-terza-persona) segnala che un altro personaggio mostra di voler fare qualcosa e [〜ほうがいい](grammar:grammar-g081-e-meglio-fare) introduce un consiglio pratico.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [かがやきパワー](term:term-v395-kagayakipawaa)、 [パラドックスポケモン](term:term-v398-paradokkusupokemon)、 [そうぐうパワー](term:term-v399-souguupawaa)、 [リーグペイ](term:term-v402-riigupei). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [かがやきパワー](term:term-v395-kagayakipawaa)、 [パラドックスポケモン](term:term-v398-paradokkusupokemon)、 [そうぐうパワー](term:term-v399-souguupawaa)、 [リーグペイ](term:term-v402-riigupei) e [おとしものパワー](term:term-v405-otoshimonopawaa). Sono nomi di funzione o di categoria: quando compaiono, ti dicono subito quale bonus, gruppo o risorsa sta entrando in gioco.
 
 ## Esempi guidati
 
@@ -73,7 +73,7 @@ Accanto a questo nucleo restano alcune etichette contestuali, per esempio [か�
 jp: >-
   マップを {{見|み}}てみよう。
 translation_it: >-
-  Proviamo a vedere.
+  Proviamo a dare un'occhiata alla mappa.
 :::
 
 :::example_sentence
@@ -85,18 +85,18 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  まずは ここから {{始|はじ}}めよう。
+  まずは ここから です。
 translation_it: >-
-  Prima partiamo da qui.
+  Per prima cosa, da qui.
 :::
 
 :::example_sentence
 jp: >-
-  ここで {{走|はし}}らないでください。
+  ここで {{進|すす}}まないでください。
 translation_it: >-
-  Per favore non correre qui.
+  Per favore non andare avanti qui.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco il giapponese utile è quello che segnala azione, consiglio o divieto. Le etichette più specifiche completano la schermata dicendoti quale potere, categoria o risorsa è coinvolta.

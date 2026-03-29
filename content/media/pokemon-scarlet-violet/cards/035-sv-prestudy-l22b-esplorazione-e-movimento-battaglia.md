@@ -11,7 +11,7 @@ id: term-e071-tekagen-shinaiyo
 lemma: 手加減しないよ
 reading: てかげんしないよ
 romaji: tekagen shinaiyo
-meaning_it: non mi tratterrò
+meaning_it: non avrò pietà
 notes_it: >-
   Espressione ricorrente della lezione L22 nell'area Battaglia. Linea tipica da sfida seria.
 :::
@@ -22,11 +22,11 @@ entry_type: term
 entry_id: term-e071-tekagen-shinaiyo
 card_type: recognition
 front: "{{手加減|て.か.げん}}しないよ"
-back: non mi tratterrò
+back: non avrò pietà
 example_jp: >-
   {{手加減|て.か.げん}}しないよ。
 example_it: >-
-  Non mi tratterrò.
+  Non avrò pietà.
 :::
 :::term
 id: term-e072-shitekurenai
@@ -46,9 +46,9 @@ card_type: recognition
 front: "〜してくれない？"
 back: non è che potresti farlo?
 example_jp: >-
-  {{少|すこ}}し {{手伝|てつだ}}ってくれない？
+  {{少|すこ}}し {{近|ちか}}づいてくれない？
 example_it: >-
-  Non è che potresti farlo?
+  Puoi avvicinarti un po'?
 :::
 :::term
 id: term-e073-noyarikata
@@ -66,11 +66,11 @@ entry_type: term
 entry_id: term-e073-noyarikata
 card_type: recognition
 front: "〜のやり{{方|かた}}"
-back: come si fa…
+back: come si fa
 example_jp: >-
   {{回復|かいふく}}の やり{{方|かた}}を {{見|み}}る。
 example_it: >-
-  Come si fa….
+  Guardo come si fa il recupero.
 :::
 :::term
 id: term-e074-hontouni-yoroshiidesuka
@@ -88,11 +88,11 @@ entry_type: term
 entry_id: term-e074-hontouni-yoroshiidesuka
 card_type: recognition
 front: "{{本当|ほんとう}}に よろしいですか？"
-back: sei sicuro?
+back: sei davvero sicuro?
 example_jp: >-
   {{本当|ほんとう}}に よろしいですか？
 example_it: >-
-  Sei sicuro?
+  Sei davvero sicuro?
 :::
 :::grammar
 id: grammar-g075-si-decide-che-finire-per
@@ -113,7 +113,7 @@ back: si decide che / finire per
 example_jp: >-
   {{来週|らいしゅう}} テストを {{受|う}}けることになる。
 example_it: >-
-  Finirà che la prossima settimana dovrò fare il test.
+  Finirà che la prossima settimana dovrò sostenere il test.
 :::
 :::grammar
 id: grammar-g076-decidere-di-fare
@@ -134,7 +134,7 @@ back: decidere di fare
 example_jp: >-
   {{今日|きょう}}は ここで {{休|やす}}むことにする。
 example_it: >-
-  Decido di riposare qui oggi.
+  Oggi decido di riposare qui.
 :::
 :::grammar
 id: grammar-g077-fare-in-modo-di
@@ -184,9 +184,9 @@ card_type: recognition
 front: "{{謎|なぞ}}"
 back: mistero
 example_jp: >-
-  {{学校|がっこう}}で {{謎|なぞ}}が だいじ です。
+  {{学校|がっこう}}で {{謎|なぞ}}が あります。
 example_it: >-
-  In scuola mistero è importante.
+  A scuola c'è un mistero.
 :::
 :::term
 id: term-v377-adobaisu
@@ -208,7 +208,7 @@ back: consiglio
 example_jp: >-
   メニューで アドバイスを {{見|み}}ます。
 example_it: >-
-  Guardo il consiglio in menu.
+  Guardo i consigli nel menu.
 :::
 :::term
 id: term-v378-nemuri
@@ -230,7 +230,7 @@ back: sonno
 example_jp: >-
   バトルで ねむりを {{使|つか}}います。
 example_it: >-
-  Uso il sonno in battaglia.
+  In battaglia compare la condizione di sonno.
 :::
 :::term
 id: term-v379-mawari
@@ -250,9 +250,9 @@ card_type: recognition
 front: "{{周|まわ}}り"
 back: intorno
 example_jp: >-
-  この{{先|さき}}に {{周|まわ}}りが あります。
+  {{周|まわ}}りに ポケモンが います。
 example_it: >-
-  Più avanti c'è l'intorno.
+  Ci sono Pokémon intorno.
 :::
 :::term
 id: term-v380-chikazu-ku
@@ -272,9 +272,9 @@ card_type: recognition
 front: "{{近|ちか}}づく"
 back: avvicinarsi
 example_jp: >-
-  ここで {{近|ちか}}づく。
+  ポケモンに {{近|ちか}}づく。
 example_it: >-
-  Qui mi avvicino.
+  Mi avvicino al Pokémon.
 :::
 :::term
 id: term-v381-isshun
@@ -294,9 +294,9 @@ card_type: recognition
 front: "{{一瞬|いっしゅん}}"
 back: un istante
 example_jp: >-
-  この{{先|さき}}に {{一瞬|いっしゅん}}が あります。
+  {{一瞬|いっしゅん}}で {{近|ちか}}づく。
 example_it: >-
-  Più avanti c'è un istante.
+  Mi avvicino in un istante.
 :::
 :::term
 id: term-v382-zerogeeto
@@ -325,9 +325,9 @@ card_type: recognition
 front: "{{広|ひろ}}い"
 back: ampio / largo
 example_jp: >-
-  この{{先|さき}}に {{広|ひろ}}いが あります。
+  ここは {{広|ひろ}}い。
 example_it: >-
-  Più avanti c'è l'ampio.
+  Qui è spazioso.
 :::
 :::term
 id: term-v384-suijou
@@ -347,9 +347,9 @@ card_type: recognition
 front: "{{水上|すいじょう}}"
 back: sull'acqua
 example_jp: >-
-  {{水上|すいじょう}}タイプの ポケモンです。
+  {{水上|すいじょう}}に います。
 example_it: >-
-  È un Pokémon di tipo sull'acqua.
+  Si trova sull'acqua.
 :::
 :::term
 id: term-v385-ikki-ni
@@ -369,9 +369,9 @@ card_type: recognition
 front: "{{一気|いっき}}に"
 back: tutto d'un colpo
 example_jp: >-
-  この{{先|さき}}に {{一気|いっき}}にが あります。
+  {{一気|いっき}}に {{近|ちか}}づく。
 example_it: >-
-  Più avanti c'è il tutto d'un colpo.
+  Mi avvicino tutto d'un colpo.
 :::
 :::term
 id: term-v386-kyouryoku
@@ -391,9 +391,9 @@ card_type: recognition
 front: "{{強力|きょうりょく}}"
 back: potente
 example_jp: >-
-  バトルで {{強力|きょうりょく}}を {{使|つか}}います。
+  この わざは {{強力|きょうりょく}}です。
 example_it: >-
-  Uso il potente in battaglia.
+  Questa mossa è potente.
 :::
 :::term
 id: term-v387-oojanpu
@@ -413,9 +413,9 @@ card_type: recognition
 front: "{{大|おお}}ジャンプ"
 back: super salto
 example_jp: >-
-  この {{山|やま}}は {{高|たか}}い です。
+  {{大|おお}}ジャンプします。
 example_it: >-
-  Questa montagna è alto.
+  Faccio un super salto.
 :::
 :::term
 id: term-v388-tsuku
@@ -435,9 +435,9 @@ card_type: recognition
 front: "{{着|つ}}く"
 back: arrivare
 example_jp: >-
-  ここで {{着|つ}}く。
+  ここに {{着|つ}}く。
 example_it: >-
-  Qui arrivo.
+  Arrivo qui.
 :::
 :::term
 id: term-v389-abunai
@@ -459,7 +459,7 @@ back: pericoloso
 example_jp: >-
   {{危|あぶ}}ない です。
 example_it: >-
-  Pericoloso.
+  È pericoloso.
 :::
 :::term
 id: term-v390-kesshouka
@@ -481,7 +481,7 @@ back: cristallizzazione
 example_jp: >-
   これは {{結晶化|けっ.しょう.か}} です。
 example_it: >-
-  Questo è cristallizzazione.
+  Questa è la cristallizzazione.
 :::
 :::term
 id: term-v391-sodate-ru
@@ -501,9 +501,9 @@ card_type: recognition
 front: "{{育|そだ}}てる"
 back: allenare / crescere
 example_jp: >-
-  バトルで {{育|そだ}}てるを {{使|つか}}います。
+  ポケモンを {{育|そだ}}てる。
 example_it: >-
-  Uso l'allenare in battaglia.
+  Alleno un Pokémon.
 :::
 :::term
 id: term-v392-danrasshu

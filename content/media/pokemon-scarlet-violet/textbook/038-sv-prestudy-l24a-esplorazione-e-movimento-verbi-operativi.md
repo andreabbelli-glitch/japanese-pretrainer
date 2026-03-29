@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per esplorazione e movimento, verbi operativi: 
 ---
 # Obiettivo
 
-Capire il giapponese che compare in esplorazione e movimento, verbi operativi. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in esplorazione e movimento, verbi operativi. Qui contano parole operative, formule di dialogo e strutture che ti dicono subito cosa sta succedendo sullo schermo.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet questi termini ricorrono in menu, messaggi di sistema e dialoghi brevi. Qui trovi soprattutto parole che segnalano azione, stato, scelta e conseguenza nelle scene di esplorazione e movimento.
 
 ## Termini chiave
 
@@ -53,11 +53,11 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [覚える](term:term-v432-oboe-ru) e [鍛える](term:term-v433-kitae-ru) e [降りる](term:term-v434-ori-ru) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Verbi come [覚える](term:term-v432-oboe-ru), [鍛える](term:term-v433-kitae-ru) e [降りる](term:term-v434-ori-ru) indicano azioni molto concrete: memorizzare o imparare, allenare e scendere. Quando compaiono, ti dicono subito quale operazione è possibile o richiesta.
 
-Le espressioni come [きみ次第](term:term-e081-kimi-shidai) e [ここまで来たら](term:term-e082-kokomade-kita-ra) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [きみ次第](term:term-e081-kimi-shidai), [ここまで来たら](term:term-e082-kokomade-kita-ra), [全力でいこう](term:term-e083-zenryoku-deikou) e [まだ終わりじゃない](term:term-e084-mada-owari-janai) dicono chi prende la decisione, quando si passa alla mossa successiva e se la scena spinge a insistere o a chiudere.
 
-Sul piano grammaticale, pattern come [〜と](grammar:grammar-g085-quando-se-risultato-naturale) e [frase relativa (連体修飾)](grammar:grammar-g086-frase-che-modifica-un-nome) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [〜と](grammar:grammar-g085-quando-se-risultato-naturale) segnala un risultato naturale: fai X e segue Y. La [frase relativa (連体修飾)](grammar:grammar-g086-frase-che-modifica-un-nome) specifica un nome con una frase prima del sostantivo. [受け身](grammar:grammar-g087-forma-passiva) sposta il fuoco su chi subisce l'azione, mentre [しか～ない](grammar:grammar-g088-solo-e-nient-altro) restringe il campo a una sola possibilità.
 
 ## Esempi guidati
 
@@ -70,9 +70,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  ここまで {{来|き}}たら もう {{行|い}}こう。
+  ここまで {{来|き}}たら もう {{全力|ぜんりょく}}で いこう。
 translation_it: >-
-  Ormai che siamo arrivati fin qui.
+  Ormai che siamo arrivati fin qui, andiamo al massimo.
 :::
 
 :::example_sentence
@@ -91,4 +91,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco conviene leggere prima il verbo o la struttura che muove la scena: scelta, conseguenza, limite o stato. Sono loro che chiariscono subito come interpretare la schermata.

@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per sistema e menu, verbi operativi: 19 carte l
 ---
 # Obiettivo
 
-Capire il giapponese che compare in sistema e menu, verbi operativi. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che in sistema e menu segnala azione, stato, scelta e possibilità.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet queste parole ricorrono in menu, schermate di sistema e dialoghi brevi: servono a capire subito che cosa cambia, che cosa puoi fare e che tono ha la risposta del gioco.
 
 ## Termini chiave
 
@@ -53,11 +53,11 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [増える](term:term-v314-fue-ru) e [戻る](term:term-v315-modoru) e [まひ](term:term-v316-mahi) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [増える](term:term-v314-fue-ru), [戻る](term:term-v315-modoru) e [まひ](term:term-v316-mahi) ti dicono subito che cosa sta cambiando: un valore aumenta, torni indietro oppure compare uno stato di paralisi. In menu e messaggi di battaglia queste forme servono a leggere al volo il comando o l'effetto senza dover ricostruire tutta la frase.
 
-Le espressioni come [まとめて](term:term-e048-matomete) e [作れる](term:term-e049-tsukureru) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [まとめて](term:term-e048-matomete) e [作れる](term:term-e049-tsukureru) indicano un'azione fatta in blocco o qualcosa che si può creare; [ちなみに](term:term-e060-chinamini) e [どうかな](term:term-e061-doukana) aggiungono una nota laterale, oppure chiedono un parere in modo morbido. Nei dialoghi aiutano a capire subito se il testo sta informando, suggerendo o lasciando aperta una risposta.
 
-Sul piano grammaticale, pattern come [〜かも](grammar:grammar-g064-contrazione-di) e [〜にくい](grammar:grammar-g065-difficile-da-fare) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, pattern come [〜かも](grammar:grammar-g064-contrazione-di), [〜にくい](grammar:grammar-g065-difficile-da-fare) e [〜つもりだ](grammar:grammar-g067-avere-intenzione-di) danno sfumature molto concrete: ipotesi, difficoltà e intenzione. In gioco cambiano il tono della frase e ti fanno leggere più in fretta una previsione, un limite pratico o un piano dichiarato.
 
 ## Esempi guidati
 
@@ -65,30 +65,30 @@ Sul piano grammaticale, pattern come [〜かも](grammar:grammar-g064-contrazion
 jp: >-
   まとめて {{買|か}}います。
 translation_it: >-
-  Tutto insieme.
+  Compro tutto insieme.
 :::
 
 :::example_sentence
 jp: >-
   ここで わざマシンが {{作|つく}}れる。
 translation_it: >-
-  Si può creare.
+  Qui puoi creare una MT.
 :::
 
 :::example_sentence
 jp: >-
   ちなみに、 これは {{新|あたら}}しいよ。
 translation_it: >-
-  Tra l'altro.
+  Tra l'altro, questo è nuovo.
 :::
 
 :::example_sentence
 jp: >-
   これで どうかな。
 translation_it: >-
-  Chissà.
+  Che ne dici di così?
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando incontri questi menu o questi dialoghi brevi, controlla subito se il testo ti sta dicendo che cosa puoi fare, che cosa cambia e quale opzione stai scegliendo. In questo blocco la comprensione passa soprattutto da quei segnali.

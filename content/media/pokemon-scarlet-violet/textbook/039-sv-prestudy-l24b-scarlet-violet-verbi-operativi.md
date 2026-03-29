@@ -24,7 +24,7 @@ Capire il giapponese che compare in Scarlet/Violet, verbi operativi. Qui il focu
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+Qui compaiono verbi operativi, formule di dialogo e nomi di modalità. Sono le parole che ti dicono subito che cosa puoi fare, che cosa sta succedendo e se stai leggendo una modalità di movimento precisa.
 
 ## Termini chiave
 
@@ -40,8 +40,8 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 ## Espressioni ricorrenti
 
 - [秘密だよ](term:term-e085-himitsu-dayo) — è un segreto
-- [〜してもらえる？](term:term-e086-shitemoraeru) — potresti farmelo?
-- [行ってきます](term:term-e087-itte-kimasu) — io vado e torno
+- [〜してもらえる？](term:term-e086-shitemoraeru) — potresti dare un'occhiata un attimo?
+- [行ってきます](term:term-e087-itte-kimasu) — vado e torno
 
 ## Pattern grammaticali chiave
 
@@ -58,13 +58,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [広げる](term:term-v454-hiroge-ru) e [真剣](term:term-v455-shinken) e [目印](term:term-v456-mejirushi) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [広げる](term:term-v454-hiroge-ru), [真剣](term:term-v455-shinken) e [目印](term:term-v456-mejirushi) segnalano un'azione o uno stato concreto: qualcosa si allarga, una reazione è seria, oppure serve un segno per orientarsi. Quando compaiono, ti dicono che cosa sta succedendo davvero nella schermata.
 
-Le espressioni come [秘密だよ](term:term-e085-himitsu-dayo) e [〜してもらえる？](term:term-e086-shitemoraeru) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [秘密だよ](term:term-e085-himitsu-dayo) e [〜してもらえる？](term:term-e086-shitemoraeru) cambiano il tono della scena: la prima trattiene l'informazione, la seconda formula una richiesta cortese e colloquiale, spesso con l'idea di guardare o controllare qualcosa per chi parla.
 
-Sul piano grammaticale, pattern come [だけ](grammar:grammar-g089-solo) e [も](grammar:grammar-g090-anche) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, [だけ](grammar:grammar-g089-solo) limita a "solo", [も](grammar:grammar-g090-anche) aggiunge un altro elemento, [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) elenca senza chiudere la lista e [し](grammar:grammar-g092-e-inoltre-tra-l-altro) aggiunge un motivo o un secondo argomento. Sono le particelle che fanno leggere meglio quantità, inclusione e spiegazione.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [グライドモード](term:term-v469-guraidomoodo)、 [ドライブモード](term:term-v470-doraibumoodo)、 [フロートモード](term:term-v471-furootomoodo). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [グライドモード](term:term-v469-guraidomoodo)、 [ドライブモード](term:term-v470-doraibumoodo)、 [フロートモード](term:term-v471-furootomoodo). Sono nomi di modalità: quando compaiono, ti dicono subito se stai planando, correndo o galleggiando.
 
 ## Esempi guidati
 
@@ -79,23 +79,23 @@ translation_it: >-
 jp: >-
   {{少|すこ}}し {{見|み}}てもらえる？
 translation_it: >-
-  Potresti farmelo?
+  Potresti dare un'occhiata un attimo?
 :::
 
 :::example_sentence
 jp: >-
   {{行|い}}ってきます。
 translation_it: >-
-  Io vado e torno.
+  Vado e torno.
 :::
 
 :::example_sentence
 jp: >-
   {{今日|きょう}}は これだけ。
 translation_it: >-
-  Per oggi solo questo.
+  Solo questo per oggi.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco il giapponese più utile è quello che segnala azione, richiesta, limite o aggiunta. I nomi di modalità completano subito la lettura della schermata dicendoti come ti stai muovendo.

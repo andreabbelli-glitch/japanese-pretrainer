@@ -46,9 +46,9 @@ card_type: recognition
 front: "ここまで{{来|き}}たら"
 back: ormai che siamo arrivati fin qui
 example_jp: >-
-  ここまで {{来|き}}たら もう {{行|い}}こう。
+  ここまで {{来|き}}たら もう {{全力|ぜんりょく}}で いこう。
 example_it: >-
-  Ormai che siamo arrivati fin qui.
+  Ormai che siamo arrivati fin qui, andiamo al massimo.
 :::
 :::term
 id: term-e083-zenryoku-deikou
@@ -132,9 +132,9 @@ card_type: concept
 front: "frase relativa ({{連体修飾|れん.たい.しゅう.しょく}})"
 back: frase che modifica un nome
 example_jp: >-
-  ここで {{買|か}}った {{本|ほん}}です。
+  ここで {{使|つか}}う {{技|わざ}}です。
 example_it: >-
-  È il libro che ho comprato qui.
+  È la mossa da usare qui.
 :::
 :::grammar
 id: grammar-g087-forma-passiva
@@ -153,9 +153,9 @@ card_type: concept
 front: "{{受|う}}け{{身|み}}"
 back: forma passiva
 example_jp: >-
-  {{先生|せんせい}}に ほめられた。
+  {{ポケモン|ぽけもん}}が ほめられた。
 example_it: >-
-  Sono stato lodato dall'insegnante.
+  Il Pokémon è stato lodato.
 :::
 :::grammar
 id: grammar-g088-solo-e-nient-altro
@@ -198,7 +198,7 @@ back: memorizzare / imparare
 example_jp: >-
   ここで {{覚|おぼ}}える。
 example_it: >-
-  Memorizzare.
+  Imparo qui.
 :::
 :::term
 id: term-v433-kitae-ru
@@ -220,7 +220,7 @@ back: allenare / temprare
 example_jp: >-
   ここで {{鍛|きた}}える。
 example_it: >-
-  Allenare.
+  Mi alleno qui.
 :::
 :::term
 id: term-v434-ori-ru
@@ -242,7 +242,7 @@ back: scendere
 example_jp: >-
   ここで {{降|お}}りる。
 example_it: >-
-  Scendere.
+  Scendo qui.
 :::
 :::term
 id: term-v435-ureshii
@@ -264,7 +264,7 @@ back: contento / felice
 example_jp: >-
   {{嬉|うれ}}しい です。
 example_it: >-
-  Contento.
+  Sono contento.
 :::
 :::term
 id: term-v436-onrain
@@ -284,9 +284,9 @@ card_type: recognition
 front: "オンライン"
 back: online
 example_jp: >-
-  メニューで オンラインを {{見|み}}ます。
+  オンラインです。
 example_it: >-
-  Guardo l'online in menu.
+  È online.
 :::
 :::term
 id: term-v437-fukkatsu
@@ -306,9 +306,9 @@ card_type: recognition
 front: "{{復活|ふっかつ}}"
 back: resurrezione / ritorno in campo
 example_jp: >-
-  バトルで {{復活|ふっかつ}}を {{使|つか}}います。
+  {{ポケモン|ぽけもん}}が {{復活|ふっかつ}}する。
 example_it: >-
-  Uso la resurrezione in battaglia.
+  Il Pokémon si rianima.
 :::
 :::term
 id: term-v438-osoi
@@ -328,9 +328,9 @@ card_type: recognition
 front: "{{遅|おそ}}い"
 back: lento / tardi
 example_jp: >-
-  この{{先|さき}}に {{遅|おそ}}いが あります。
+  ちょっと {{遅|おそ}}いです。
 example_it: >-
-  Più avanti c'è il lento.
+  È un po' lento.
 :::
 :::term
 id: term-v439-mon
@@ -350,9 +350,9 @@ card_type: recognition
 front: "{{門|もん}}"
 back: porta / cancello
 example_jp: >-
-  {{学校|がっこう}}で {{門|もん}}が だいじ です。
+  ここに {{門|もん}}が あります。
 example_it: >-
-  In scuola porta è importante.
+  Qui c'è un cancello.
 :::
 :::term
 id: term-v440-ofurain
@@ -372,9 +372,9 @@ card_type: recognition
 front: "オフライン"
 back: offline
 example_jp: >-
-  メニューで オフラインを {{見|み}}ます。
+  オフラインです。
 example_it: >-
-  Guardo l'offline in menu.
+  È offline.
 :::
 :::term
 id: term-v441-oboe-saseru
@@ -394,9 +394,9 @@ card_type: recognition
 front: "{{覚|おぼ}}えさせる"
 back: insegnare una mossa
 example_jp: >-
-  メニューで {{覚|おぼ}}えさせるを {{見|み}}ます。
+  この {{ポケモン|ぽけもん}}に {{覚|おぼ}}えさせる。
 example_it: >-
-  Guardo l'insegnare una mossa in menu.
+  Faccio imparare una mossa a questo Pokémon.
 :::
 :::term
 id: term-v442-shujinkou
@@ -416,9 +416,9 @@ card_type: recognition
 front: "{{主人公|しゅ.じん.こう}}"
 back: protagonista
 example_jp: >-
-  {{学校|がっこう}}で {{主人公|しゅ.じん.こう}}が だいじ です。
+  {{主人公|しゅ.じん.こう}}です。
 example_it: >-
-  In scuola protagonista è importante.
+  È il protagonista.
 :::
 :::term
 id: term-v443-kensaku
@@ -482,9 +482,9 @@ card_type: recognition
 front: "{{閉|と}}じる"
 back: chiudere
 example_jp: >-
-  {{誰|だれ}}が {{来|き}}ますか。
+  {{門|もん}}を {{閉|と}}じる。
 example_it: >-
-  Chi arriva?
+  Chiudere il cancello.
 :::
 :::term
 id: term-v446-narau
@@ -506,7 +506,7 @@ back: imparare (da qualcuno)
 example_jp: >-
   ここで {{習|なら}}う。
 example_it: >-
-  Imparare (da qualcuno).
+  Imparo qui.
 :::
 :::term
 id: term-v447-toshi
@@ -528,7 +528,7 @@ back: città (grande)
 example_jp: >-
   この {{都市|とし}}へ {{行|い}}きます。
 example_it: >-
-  Città (grande).
+  Vado in questa città.
 :::
 :::term
 id: term-v448-hougaku
@@ -548,9 +548,9 @@ card_type: recognition
 front: "{{方角|ほうがく}}"
 back: direzione
 example_jp: >-
-  メニューで {{方角|ほうがく}}を {{見|み}}ます。
+  {{方角|ほうがく}}を {{確認|かくにん}}する。
 example_it: >-
-  Guardo la direzione in menu.
+  Controllo la direzione.
 :::
 :::term
 id: term-v449-kita
@@ -660,5 +660,5 @@ back: raro
 example_jp: >-
   {{珍|めずら}}しい です。
 example_it: >-
-  Raro.
+  È raro.
 :::

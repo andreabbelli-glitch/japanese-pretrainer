@@ -11,7 +11,7 @@ id: term-e065-nande
 lemma: なんで？
 reading: なんで？
 romaji: nande？
-meaning_it: perché?
+meaning_it: perché mai?
 notes_it: >-
   Espressione ricorrente della lezione L21 nell'area Domande rapide. Forma colloquiale di 'perché'.
 :::
@@ -22,18 +22,18 @@ entry_type: term
 entry_id: term-e065-nande
 card_type: recognition
 front: "なんで？"
-back: perché?
+back: perché mai?
 example_jp: >-
   なんで？
 example_it: >-
-  Perché?
+  Perché mai?
 :::
 :::term
 id: term-e066-shibaraku-omachikudasai
 lemma: しばらく お待ちください
 reading: しばらく おまちください
 romaji: shibaraku omachikudasai
-meaning_it: attendi un momento
+meaning_it: attenda un momento
 notes_it: >-
   Espressione ricorrente della lezione L21 nell'area Sistema/UI. Messaggi di attesa / connessione
 :::
@@ -44,11 +44,11 @@ entry_type: term
 entry_id: term-e066-shibaraku-omachikudasai
 card_type: recognition
 front: "しばらく お{{待|ま}}ちください"
-back: attendi un momento
+back: attenda un momento
 example_jp: >-
   しばらく お{{待|ま}}ちください。
 example_it: >-
-  Attendi un momento.
+  Attenda un momento.
 :::
 :::term
 id: term-e067-doushite
@@ -77,7 +77,7 @@ id: term-e068-kitto-daijoubu
 lemma: きっと大丈夫
 reading: きっとだいじょうぶ
 romaji: kitto daijoubu
-meaning_it: andrà bene di sicuro
+meaning_it: sicuramente andrà tutto bene
 notes_it: >-
   Espressione ricorrente della lezione L21 nell'area Reazioni. Incoraggiamento rassicurante.
 :::
@@ -88,11 +88,11 @@ entry_type: term
 entry_id: term-e068-kitto-daijoubu
 card_type: recognition
 front: "きっと{{大丈夫|だい.じょう.ぶ}}"
-back: andrà bene di sicuro
+back: sicuramente andrà tutto bene
 example_jp: >-
   きっと {{大丈夫|だい.じょう.ぶ}}。
 example_it: >-
-  Andrà bene di sicuro.
+  Sicuramente andrà tutto bene.
 :::
 :::grammar
 id: grammar-g068-non-vuoi-ti-va-di
@@ -201,7 +201,7 @@ back: rivale
 example_jp: >-
   ライバルと {{話|はな}}します。
 example_it: >-
-  Parlo con rivale.
+  Parlo con il rivale.
 :::
 :::term
 id: term-v335-sora
@@ -221,9 +221,9 @@ card_type: recognition
 front: "{{空|そら}}"
 back: cielo
 example_jp: >-
-  この{{先|さき}}に {{空|そら}}が あります。
+  {{空|そら}}を {{見|み}}ます。
 example_it: >-
-  Più avanti c'è il cielo.
+  Guardo il cielo.
 :::
 :::term
 id: term-v336-aikotoba
@@ -245,7 +245,7 @@ back: codice link / password condivisa
 example_jp: >-
   メニューで あいことばを {{見|み}}ます。
 example_it: >-
-  Guardo il codice link in menu.
+  Controllo il codice link nel menu.
 :::
 :::term
 id: term-v337-ikinari
@@ -287,9 +287,9 @@ card_type: recognition
 front: "{{回避率|かい.ひ.りつ}}"
 back: evasione
 example_jp: >-
-  バトルで {{回避率|かい.ひ.りつ}}を {{使|つか}}います。
+  バトルで {{回避率|かい.ひ.りつ}}が {{上|あ}}がります。
 example_it: >-
-  Uso l'evasione in battaglia.
+  In battaglia l'evasione aumenta.
 :::
 :::term
 id: term-v339-zairyou
@@ -311,7 +311,7 @@ back: materiale
 example_jp: >-
   メニューで {{材料|ざいりょう}}を {{見|み}}ます。
 example_it: >-
-  Guardo il materiale in menu.
+  Controllo i materiali nel menu.
 :::
 :::term
 id: term-v340-kameraapuri
@@ -331,9 +331,9 @@ card_type: recognition
 front: "カメラアプリ"
 back: app fotocamera
 example_jp: >-
-  カメラアプリを {{見|み}}ます。
+  カメラアプリを {{使|つか}}います。
 example_it: >-
-  Guardo l'app fotocamera.
+  Uso l'app fotocamera.
 :::
 :::term
 id: term-v341-chanpiontesuto
@@ -384,9 +384,9 @@ card_type: recognition
 front: "{{協力|きょうりょく}}"
 back: cooperazione
 example_jp: >-
-  バトルで {{協力|きょうりょく}}を {{使|つか}}います。
+  {{協力|きょうりょく}}します。
 example_it: >-
-  Uso la cooperazione in battaglia.
+  Collaboro.
 :::
 :::term
 id: term-v346-koukabatsugun
@@ -406,9 +406,9 @@ card_type: recognition
 front: "{{効果|こうか}}バツグン"
 back: super efficace
 example_jp: >-
-  バトルで {{効果|こうか}}バツグンを {{使|つか}}います。
+  {{効果|こうか}}バツグンです。
 example_it: >-
-  Uso il super efficace in battaglia.
+  È super efficace.
 :::
 :::term
 id: term-v347-tooku
@@ -428,9 +428,9 @@ card_type: recognition
 front: "{{遠|とお}}く"
 back: lontano
 example_jp: >-
-  この{{先|さき}}に {{遠|とお}}くが あります。
+  ここから {{遠|とお}}くです。
 example_it: >-
-  Più avanti c'è il lontano.
+  È lontano da qui.
 :::
 :::term
 id: term-v348-intaanetto
@@ -450,9 +450,9 @@ card_type: recognition
 front: "インターネット"
 back: internet
 example_jp: >-
-  メニューで インターネットを {{見|み}}ます。
+  インターネットを {{使|つか}}います。
 example_it: >-
-  Guardo l'internet in menu.
+  Uso internet.
 :::
 :::term
 id: term-v349-mensetsu
@@ -474,7 +474,7 @@ back: colloquio / intervista
 example_jp: >-
   これは {{面接|めんせつ}} です。
 example_it: >-
-  Questo è colloquio.
+  Questo è un colloquio.
 :::
 :::term
 id: term-v350-baai
@@ -494,9 +494,9 @@ card_type: recognition
 front: "{{場合|ばあい}}"
 back: caso / situazione
 example_jp: >-
-  {{場合|ばあい}} です。
+  その {{場合|ばあい}} です。
 example_it: >-
-  Caso.
+  In quel caso.
 :::
 :::term
 id: term-v351-tsuzuke-ru
@@ -518,7 +518,7 @@ back: continuare
 example_jp: >-
   ここで {{続|つづ}}ける。
 example_it: >-
-  Qui continuo.
+  Continuo qui.
 :::
 :::term
 id: term-v352-yunionsaakuru
@@ -549,5 +549,5 @@ back: condizione
 example_jp: >-
   メニューで {{条件|じょうけん}}を {{見|み}}ます。
 example_it: >-
-  Guardo la condizione in menu.
+  Controllo le condizioni nel menu.
 :::

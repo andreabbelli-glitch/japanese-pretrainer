@@ -13,7 +13,7 @@ reading: いってみよう
 romaji: ittemiyou
 meaning_it: andiamo a vedere / proviamo ad andarci
 notes_it: >-
-  Espressione ricorrente della lezione L20 nell'area Azione / proposta. Spinge ad avanzare o provare una direzione
+  Espressione ricorrente della lezione L20 nell'area Azione / proposta. Invita a provare ad avanzare verso una meta.
 :::
 :::card
 id: card-e057-ittemiyou-recognition
@@ -24,9 +24,9 @@ card_type: recognition
 front: "{{行|い}}ってみよう"
 back: andiamo a vedere / proviamo ad andarci
 example_jp: >-
-  あの{{町|まち}}へ {{行|い}}ってみよう。
+  ここへ {{行|い}}ってみよう。
 example_it: >-
-  Andiamo a vedere.
+  Proviamo ad andare qui.
 :::
 :::term
 id: term-e058-sorenara
@@ -48,7 +48,7 @@ back: in quel caso / allora
 example_jp: >-
   それなら {{行|い}}こう。
 example_it: >-
-  In quel caso.
+  Allora andiamo.
 :::
 :::term
 id: term-e059-shiteokou
@@ -70,7 +70,7 @@ back: facciamolo in anticipo
 example_jp: >-
   あとで {{使|つか}}うから {{買|か}}っておこう。
 example_it: >-
-  Facciamolo in anticipo.
+  Meglio comprarlo prima, così poi lo usiamo.
 :::
 :::grammar
 id: grammar-g059-dire-chiamarsi
@@ -174,9 +174,9 @@ card_type: recognition
 front: "ダッシュ"
 back: scatto
 example_jp: >-
-  この{{先|さき}}に ダッシュが あります。
+  ダッシュを します。
 example_it: >-
-  Più avanti c'è il scatto.
+  Faccio uno scatto.
 :::
 :::term
 id: term-v295-kinou
@@ -196,9 +196,9 @@ card_type: recognition
 front: "{{機能|きのう}}"
 back: funzione
 example_jp: >-
-  メニューで {{機能|きのう}}を {{見|み}}ます。
+  メニューに {{機能|きのう}}が あります。
 example_it: >-
-  Guardo la funzione in menu.
+  Nel menu c'è una funzione.
 :::
 :::term
 id: term-v296-aku
@@ -240,9 +240,9 @@ card_type: recognition
 front: "{{対戦|たいせん}}"
 back: lotta / match
 example_jp: >-
-  {{対戦|たいせん}}タイプの ポケモンです。
+  {{対戦|たいせん}}で つよい ポケモンです。
 example_it: >-
-  È un Pokémon di tipo lotta.
+  È un Pokémon adatto alle lotte.
 :::
 :::term
 id: term-v298-deru
@@ -264,7 +264,7 @@ back: uscire / comparire
 example_jp: >-
   ここで {{出|で}}る。
 example_it: >-
-  Qui esce.
+  Qui compare.
 :::
 :::term
 id: term-v299-esupaa
@@ -308,7 +308,7 @@ back: entrare
 example_jp: >-
   ここで {{入|い}}る。
 example_it: >-
-  Qui entra.
+  Si entra qui.
 :::
 :::term
 id: term-v301-koukan-suru
@@ -352,7 +352,7 @@ back: incontri
 example_jp: >-
   {{学校|がっこう}}で {{出会|であ}}いが だいじ です。
 example_it: >-
-  In scuola incontri è importante.
+  A scuola gli incontri sono importanti.
 :::
 :::term
 id: term-v303-choushi
@@ -372,9 +372,9 @@ card_type: recognition
 front: "{{調子|ちょうし}}"
 back: condizione / forma
 example_jp: >-
-  {{調子|ちょうし}} です。
+  {{今日|きょう}}は {{調子|ちょうし}}が いいです。
 example_it: >-
-  Condizione.
+  Oggi sono in forma.
 :::
 :::term
 id: term-v304-himitsu
@@ -394,9 +394,9 @@ card_type: recognition
 front: "{{秘密|ひみつ}}"
 back: segreto
 example_jp: >-
-  {{学校|がっこう}}で {{秘密|ひみつ}}が だいじ です。
+  {{秘密|ひみつ}}です。
 example_it: >-
-  In scuola segreto è importante.
+  È un segreto.
 :::
 :::term
 id: term-v305-settei
@@ -416,9 +416,9 @@ card_type: recognition
 front: "{{設定|せってい}}"
 back: impostazioni
 example_jp: >-
-  メニューで {{設定|せってい}}を {{見|み}}ます。
+  メニューに {{設定|せってい}}が あります。
 example_it: >-
-  Guardo l'impostazioni in menu.
+  Nel menu ci sono le impostazioni.
 :::
 :::term
 id: term-v306-waza-mashinmashin
@@ -449,7 +449,7 @@ back: matematica
 example_jp: >-
   {{学校|がっこう}}で {{数学|すうがく}}が だいじ です。
 example_it: >-
-  In scuola matematica è importante.
+  A scuola la matematica è importante.
 :::
 :::term
 id: term-v309-keiken
@@ -471,7 +471,7 @@ back: esperienza
 example_jp: >-
   {{学校|がっこう}}で {{経験|けいけん}}が だいじ です。
 example_it: >-
-  In scuola esperienza è importante.
+  A scuola l'esperienza è importante.
 :::
 :::term
 id: term-v310-kitai
@@ -491,9 +491,9 @@ card_type: recognition
 front: "{{期待|きたい}}"
 back: attesa / aspettativa
 example_jp: >-
-  {{期待|きたい}} です。
+  {{期待|きたい}}が あります。
 example_it: >-
-  Attesa.
+  Ho aspettative.
 :::
 :::term
 id: term-v311-meichuuritsu
@@ -513,9 +513,9 @@ card_type: recognition
 front: "{{命中率|めい.ちゅう.りつ}}"
 back: precisione
 example_jp: >-
-  バトルで {{命中率|めい.ちゅう.りつ}}を {{使|つか}}います。
+  この わざは {{命中率|めい.ちゅう.りつ}}が たかいです。
 example_it: >-
-  Uso il precisione in battaglia.
+  Questa mossa ha un'alta precisione.
 :::
 :::term
 id: term-v312-jimen

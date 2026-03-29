@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per verbi operativi, esplorazione e movimento: 
 ---
 # Obiettivo
 
-Capire il giapponese che compare in verbi operativi, esplorazione e movimento. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in verbi operativi, esplorazione e movimento: parole che indicano posizione, azione e tono del dialogo.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet queste parole compaiono in schermate, dialoghi e menu quando il gioco parla di posizione, fuga, aiuto o progressione. Le etichette più specifiche nominano poteri precisi legati a funzioni particolari.
 
 ## Termini chiave
 
@@ -57,13 +57,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [奥](term:term-v415-oku) e [逃げる](term:term-v416-nige-ru) e [助ける](term:term-v417-tasuke-ru) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [奥](term:term-v415-oku), [逃げる](term:term-v416-nige-ru) e [助ける](term:term-v417-tasuke-ru) ti dicono dove si trova qualcosa, chi sta agendo e quale azione è disponibile. Nei menu e nei dialoghi sono segnali pratici per capire subito che cosa sta succedendo.
 
-Le espressioni come [早く！](term:term-e078-hayaku) e [次はだれ？](term:term-e079-tsugi-hadare) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [早く！](term:term-e078-hayaku), [次はだれ？](term:term-e079-tsugi-hadare) e [無理しないで](term:term-e080-muri-shinaide) regolano il tono del parlato: spingono ad agire subito, chiamano in causa il prossimo oppure invitano a non esagerare.
 
-Sul piano grammaticale, pattern come [〜なくてもいい](grammar:grammar-g082-non-e-necessario-fare) e [辞書形 + な](grammar:grammar-g083-non-fare-ordine-secco) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, pattern come [〜なくてもいい](grammar:grammar-g082-non-e-necessario-fare) e [辞書形 + な](grammar:grammar-g083-non-fare-ordine-secco) dicono se qualcosa non è necessario o se arriva un divieto secco. I finali di frase come [よ / ね / な](grammar:grammar-g084-enfasi-conferma-tono-emotivo) cambiano poi il tono: spinta, conferma o sfumatura emotiva.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [けいけんちパワー](term:term-v413-keikenchipawaa)、 [レイドパワー](term:term-v414-reidopawaa)、 [タマゴパワー](term:term-v419-tamagopawaa). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [けいけんちパワー](term:term-v413-keikenchipawaa)、 [レイドパワー](term:term-v414-reidopawaa)、 [タマゴパワー](term:term-v419-tamagopawaa). Riconoscile quando compaiono: sono nomi legati a funzioni molto specifiche del gioco.
 
 ## Esempi guidati
 
@@ -97,4 +97,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco tornano soprattutto parole che indicano posizione, azione e tono della scena. Capirle bene ti fa leggere più in fretta schermate, scelte e dialoghi.

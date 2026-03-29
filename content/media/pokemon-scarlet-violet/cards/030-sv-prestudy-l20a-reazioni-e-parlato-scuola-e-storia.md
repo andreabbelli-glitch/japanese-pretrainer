@@ -13,7 +13,7 @@ reading: それって
 romaji: sorette
 meaning_it: e quello allora...?
 notes_it: >-
-  Espressione ricorrente della lezione L20 nell'area Connettori. Ripresa colloquiale di qualcosa appena detto.
+  Espressione ricorrente della lezione L20 nell'area Connettori. Riprende colloquialmente qualcosa appena detto.
 :::
 :::card
 id: card-e054-sorette-recognition
@@ -34,7 +34,7 @@ pattern: ～間 / ～間に
 title: Durante / mentre
 meaning_it: durante / mentre
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Condizioni, tempo, sequenza. Formazione: Vている + 間(に). Utile in narrazione e azioni simultanee.
+  Pattern della lezione L20 nella famiglia Condizioni, tempo, sequenza. Formazione: Vている + 間(に). Utile per leggere durata e azioni simultanee.
 :::
 :::card
 id: card-g054-durante-mentre-concept
@@ -69,7 +69,7 @@ back: a dopo / ci si vede
 example_jp: >-
   またね。
 example_it: >-
-  A dopo.
+  Ci vediamo.
 :::
 :::grammar
 id: grammar-g055-mi-chiedo-proprio
@@ -77,7 +77,7 @@ pattern: ～かなあ
 title: Mi chiedo proprio...
 meaning_it: mi chiedo proprio...
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Colloquiale da dialogo. Formazione: phrase + かなあ. Versione più pensierosa di かな.
+  Pattern della lezione L20 nella famiglia Colloquiale da dialogo. Formazione: frase + かなあ. Suona come pensiero ad alta voce o dubbio leggero.
 :::
 :::card
 id: card-g055-mi-chiedo-proprio-concept
@@ -99,7 +99,7 @@ reading: ってことは
 romaji: ttekotoha
 meaning_it: quindi vuol dire che
 notes_it: >-
-  Espressione ricorrente della lezione L20 nell'area Connettori. Inferenza colloquiale molto utile.
+  Espressione ricorrente della lezione L20 nell'area Connettori. Da quello che è stato detto si tira una conclusione.
 :::
 :::card
 id: card-e056-ttekotoha-recognition
@@ -112,7 +112,7 @@ back: quindi vuol dire che
 example_jp: >-
   ってことは、 もう {{終|お}}わり？
 example_it: >-
-  Quindi vuol dire che.
+  Quindi vuol dire che è già finita?
 :::
 :::grammar
 id: grammar-g057-mi-chiedo-chissa
@@ -122,7 +122,7 @@ meaning_it: mi chiedo… / chissà…
 aliases:
 - 〜かな
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Colloquiale da dialogo. Formazione: frase + かしら. Molto utile per capire il tono di varie NPC e di alcuni personaggi femminili.
+  Pattern della lezione L20 nella famiglia Colloquiale da dialogo. Formazione: frase + かしら. Suona come dubbio leggero o pensiero ad alta voce.
 :::
 :::card
 id: card-g057-mi-chiedo-chissa-concept
@@ -135,7 +135,7 @@ back: mi chiedo… / chissà…
 example_jp: >-
   どこへ {{行|い}}くのかしら。
 example_it: >-
-  Mi chiedo dove andare.
+  Chissà dove andrà.
 :::
 :::grammar
 id: grammar-g058-comera-gia-dovera
@@ -145,7 +145,7 @@ meaning_it: com’era già…? / dov’era…?
 aliases:
 - 〜かな
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Colloquiale da dialogo. Formazione: plain + だっけ / っけ. Torna spesso nel self-talk, quando i personaggi cercano di ricordare luoghi o dettagli.
+  Pattern della lezione L20 nella famiglia Colloquiale da dialogo. Formazione: plain + だっけ / っけ. Si usa per ricordare a metà un'informazione o controllare un dettaglio.
 :::
 :::card
 id: card-g058-comera-gia-dovera-concept
@@ -158,7 +158,7 @@ back: com’era già…? / dov’era…?
 example_jp: >-
   {{次|つぎ}}は どこだっけ。
 example_it: >-
-  Dov'era già la prossima meta?
+  Qual era già la prossima meta?
 :::
 :::term
 id: term-v274-yakedo
@@ -178,9 +178,9 @@ card_type: recognition
 front: "やけど"
 back: scottatura
 example_jp: >-
-  バトルで やけどを {{使|つか}}います。
+  バトルで やけどに なります。
 example_it: >-
-  Uso la scottatura in battaglia.
+  In battaglia ci si scotta.
 :::
 :::term
 id: term-v275-shuuryou
@@ -200,9 +200,9 @@ card_type: recognition
 front: "{{終了|しゅうりょう}}"
 back: fine / chiusura
 example_jp: >-
-  {{誰|だれ}}が {{来|き}}ますか。
+  バトルは {{終了|しゅうりょう}}です。
 example_it: >-
-  Chi arriva?
+  La battaglia è finita.
 :::
 :::term
 id: term-v276-kaijo
@@ -211,7 +211,7 @@ reading: かいじょ
 romaji: kaijo
 meaning_it: annullamento / rimozione
 notes_it: >-
-  Voce della lezione L20 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Voce della lezione L20 nell'area SV specifico. Parte del discorso: sostantivo. Indica la rimozione o lo sblocco di qualcosa in menu, progressione o tutorial.
 :::
 :::card
 id: card-v276-kaijo-recognition
@@ -222,9 +222,9 @@ card_type: recognition
 front: "{{解除|かいじょ}}"
 back: annullamento / rimozione
 example_jp: >-
-  これは {{解除|かいじょ}} です。
+  ロックを {{解除|かいじょ}}します。
 example_it: >-
-  Questo è annullamento.
+  Tolgo il blocco.
 :::
 :::term
 id: term-v277-kibun
@@ -233,7 +233,7 @@ reading: きぶん
 romaji: kibun
 meaning_it: umore / sensazione
 notes_it: >-
-  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Compare spesso nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v277-kibun-recognition
@@ -244,9 +244,9 @@ card_type: recognition
 front: "{{気分|きぶん}}"
 back: umore / sensazione
 example_jp: >-
-  {{気分|きぶん}} です。
+  {{気分|きぶん}} が いいです。
 example_it: >-
-  Umore.
+  Mi sento bene.
 :::
 :::term
 id: term-v278-shitsurei
@@ -266,9 +266,9 @@ card_type: recognition
 front: "{{失礼|しつれい}}"
 back: scortesia / con permesso
 example_jp: >-
-  {{失礼|しつれい}} です。
+  {{失礼|しつれい}} します。
 example_it: >-
-  Scortesia.
+  Con permesso.
 :::
 :::term
 id: term-v279-hiden
@@ -297,9 +297,9 @@ card_type: recognition
 front: "かっくう"
 back: planata
 example_jp: >-
-  この{{先|さき}}に かっくうが あります。
+  かっくうを {{使|つか}}います。
 example_it: >-
-  Più avanti c'è la planata.
+  Uso la planata.
 :::
 :::term
 id: term-v281-taisetsu
@@ -343,7 +343,7 @@ back: tesoro
 example_jp: >-
   {{学校|がっこう}}で {{宝|たから}}が だいじ です。
 example_it: >-
-  In scuola tesoro è importante.
+  Questo è un tesoro.
 :::
 :::term
 id: term-v283-sougen
@@ -385,9 +385,9 @@ card_type: recognition
 front: "{{行動|こうどう}}"
 back: azione
 example_jp: >-
-  バトルで {{行動|こうどう}}を {{使|つか}}います。
+  {{行動|こうどう}}が {{大切|たいせつ}}です。
 example_it: >-
-  Uso l'azione in battaglia.
+  L'azione è importante.
 :::
 :::term
 id: term-v285-riyuu
@@ -407,9 +407,9 @@ card_type: recognition
 front: "{{理由|りゆう}}"
 back: motivo
 example_jp: >-
-  {{学校|がっこう}}で {{理由|りゆう}}が だいじ です。
+  {{理由|りゆう}}は {{何|なに}}ですか。
 example_it: >-
-  In scuola motivo è importante.
+  Qual è il motivo?
 :::
 :::term
 id: term-v286-takaramono
@@ -429,9 +429,9 @@ card_type: recognition
 front: "{{宝物|たからもの}}"
 back: tesoro personale
 example_jp: >-
-  {{学校|がっこう}}で {{宝物|たからもの}}が だいじ です。
+  これは {{宝物|たからもの}}です。
 example_it: >-
-  In scuola tesoro personale è importante.
+  Questo è un tesoro prezioso.
 :::
 :::term
 id: term-v287-jitsuryoku
@@ -451,9 +451,9 @@ card_type: recognition
 front: "{{実力|じつりょく}}"
 back: vera capacità / livello reale
 example_jp: >-
-  {{実力|じつりょく}} です。
+  {{実力|じつりょく}} が あります。
 example_it: >-
-  Vera capacità.
+  Ha capacità reali.
 :::
 :::term
 id: term-v288-mappuapuri
@@ -495,9 +495,9 @@ card_type: recognition
 front: "{{持|も}}つ"
 back: avere / tenere
 example_jp: >-
-  ここで {{持|も}}つ。
+  これを {{持|も}}つ。
 example_it: >-
-  Qui tengo l’oggetto.
+  Tengo questo.
 :::
 :::term
 id: term-v290-renraku
@@ -517,9 +517,9 @@ card_type: recognition
 front: "{{連絡|れんらく}}"
 back: contatto / chiamata / messaggio
 example_jp: >-
-  {{誰|だれ}}が {{来|き}}ますか。
+  {{連絡|れんらく}}を します。
 example_it: >-
-  Chi arriva?
+  Mando un messaggio.
 :::
 :::term
 id: term-v291-nigate
@@ -539,9 +539,9 @@ card_type: recognition
 front: "{{苦手|にがて}}"
 back: non essere bravo / non piacere
 example_jp: >-
-  {{苦手|にがて}} です。
+  {{私|わたし}}は これが {{苦手|にがて}}です。
 example_it: >-
-  Non essere bravo.
+  Non sono bravo con questo.
 :::
 :::term
 id: term-v292-kiken
@@ -561,9 +561,9 @@ card_type: recognition
 front: "{{危険|きけん}}"
 back: pericolo
 example_jp: >-
-  これは {{危険|きけん}} です。
+  ここは {{危険|きけん}}です。
 example_it: >-
-  Questo è pericolo.
+  Qui è pericoloso.
 :::
 :::term
 id: term-v293-anshin
@@ -583,7 +583,7 @@ card_type: recognition
 front: "{{安心|あんしん}}"
 back: sollievo / tranquillità
 example_jp: >-
-  {{安心|あんしん}} です。
+  {{安心|あんしん}} しました。
 example_it: >-
-  Sollievo.
+  Mi sono tranquillizzato.
 :::

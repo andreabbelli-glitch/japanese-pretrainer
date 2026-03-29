@@ -33,9 +33,9 @@ id: term-e089-iiyone
 lemma: いいよね
 reading: いいよね
 romaji: iiyone
-meaning_it: vero? / ci sta, no?
+meaning_it: va bene così, no? / ci sta, no?
 notes_it: >-
-  Espressione ricorrente della lezione L29 nell'area Reazioni. Conferma colloquiale
+  Espressione ricorrente della lezione L29 nell'area Reazioni. Conferma colloquiale di assenso
 :::
 :::card
 id: card-e089-iiyone-recognition
@@ -44,11 +44,11 @@ entry_type: term
 entry_id: term-e089-iiyone
 card_type: recognition
 front: "いいよね"
-back: vero? / ci sta, no?
+back: va bene così, no? / ci sta, no?
 example_jp: >-
   これで いいよね。
 example_it: >-
-  Vero?
+  Così va bene, no?
 :::
 :::grammar
 id: grammar-g095-tipo-e-cose-cosi-tra-gli-esempi
@@ -71,7 +71,7 @@ back: tipo…, e cose così / tra gli esempi
 example_jp: >-
   ジムとか {{学校|がっこう}}とか。
 example_it: >-
-  Cose come la palestra o la scuola.
+  Tipo la palestra, la scuola e cose così.
 :::
 :::term
 id: term-v476-kitakami
@@ -105,7 +105,7 @@ id: term-v479-kuria
 lemma: クリア
 reading: クリア
 romaji: kuria
-meaning_it: completare / clear
+meaning_it: completato / clear
 notes_it: >-
   Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
 :::
@@ -116,11 +116,11 @@ entry_type: term
 entry_id: term-v479-kuria
 card_type: recognition
 front: "クリア"
-back: completare / clear
+back: completato / clear
 example_jp: >-
   メニューで クリアを {{見|み}}ます。
 example_it: >-
-  Guardo il completare in menu.
+  Nel menu vedo la voce "completato".
 :::
 :::term
 id: term-v480-ruuru

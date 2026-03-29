@@ -26,7 +26,7 @@ back: così va bene / conferma finale
 example_jp: >-
   これで ＯＫです。
 example_it: >-
-  Così va bene.
+  Va bene così.
 :::
 :::term
 id: term-v509-takarashokudou
@@ -55,9 +55,9 @@ card_type: recognition
 front: "{{与|あた}}える"
 back: concedere / dare
 example_jp: >-
-  ここで {{与|あた}}える。
+  {{与|あた}}える。
 example_it: >-
-  Concedere.
+  Dare / concedere.
 :::
 :::term
 id: term-v511-reidobatoru
@@ -88,7 +88,7 @@ back: prodotto
 example_jp: >-
   メニューで {{商品|しょうひん}}を {{見|み}}ます。
 example_it: >-
-  Guardo il prodotto in menu.
+  Nel menu vedo il prodotto.
 :::
 :::term
 id: term-v513-gureepuakademii
@@ -119,7 +119,7 @@ back: natura
 example_jp: >-
   この{{先|さき}}に {{自然|しぜん}}が あります。
 example_it: >-
-  Più avanti c'è la natura.
+  Più avanti c'è un'area naturale.
 :::
 :::term
 id: term-v515-batoruchiimu

@@ -15,16 +15,16 @@ tags:
 - lesson-20
 prerequisites: []
 summary: 'Lessico ed espressioni per battaglia, scuola e storia: 17 carte lessicali
-  attive, 3 formule ricorrenti, 4 pattern grammaticali e 1 etichette contestuali da
+  attive, 3 formule ricorrenti, 4 pattern grammaticali e 1 etichetta contestuale da
   riconoscere.'
 ---
 # Obiettivo
 
-Capire il giapponese che compare in battaglia, scuola e storia. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Leggere il giapponese che compare in battaglia, scuola e storia: parole operative, formule di dialogo e pattern che dicono subito cosa sta succedendo sullo schermo.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In questo blocco compaiono parole che segnalano subito funzione, movimento, incontro, stato e aspettativa della scena. Accanto a queste ci sono anche riferimenti più specifici di scuola o battaglia che basta riconoscere quando appaiono.
 
 ## Termini chiave
 
@@ -56,35 +56,35 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [ダッシュ](term:term-v294-dasshu) e [機能](term:term-v295-kinou) e [あく](term:term-v296-aku) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [ダッシュ](term:term-v294-dasshu), [機能](term:term-v295-kinou) e [あく](term:term-v296-aku) ti dicono se la schermata parla di uno scatto, di una funzione di menu o del tipo buio. Quando le leggi, capisci subito che voce stai guardando e che cosa cambia davvero nel gioco.
 
-Le espressioni come [行ってみよう](term:term-e057-ittemiyou) e [それなら](term:term-e058-sorenara) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [行ってみよう](term:term-e057-ittemiyou) e [それなら](term:term-e058-sorenara) servono a spingere avanti una scelta, confermare una proposta o rispondere a una condizione. In dialogo orientano il passo successivo della scena, non solo il tono generale.
 
-Sul piano grammaticale, pattern come [〜と言う / 〜って言う](grammar:grammar-g059-dire-chiamarsi) e [〜すぎる](grammar:grammar-g061-troppo) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, pattern come [〜と言う / 〜って言う](grammar:grammar-g059-dire-chiamarsi) e [〜すぎる](grammar:grammar-g061-troppo) chiariscono se la frase sta nominando qualcosa o sta marcando un eccesso. [〜そうだ (sembra)](grammar:grammar-g062-sembra-che) aggiunge invece un'impressione immediata; [〜そうだ (si dice)](grammar:grammar-g063-si-dice-che-pare-che) riporta una voce o una lettura riferita.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [わざマシンマシン](term:term-v306-waza-mashinmashin). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo resta [わざマシンマシン](term:term-v306-waza-mashinmashin), che è un'etichetta contestuale: conviene saperla leggere al volo, ma non serve trattarla come lessico da ripassare a parte.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  あの{{町|まち}}へ {{行|い}}ってみよう。
+  ここへ {{行|い}}ってみよう。
 translation_it: >-
-  Andiamo a vedere.
+  Proviamo ad andare qui.
 :::
 
 :::example_sentence
 jp: >-
   それなら {{行|い}}こう。
 translation_it: >-
-  In quel caso.
+  Allora andiamo.
 :::
 
 :::example_sentence
 jp: >-
   あとで {{使|つか}}うから {{買|か}}っておこう。
 translation_it: >-
-  Facciamolo in anticipo.
+  Meglio comprarlo prima, così poi lo usiamo.
 :::
 
 :::example_sentence
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco conta soprattutto il giapponese che ritorna nelle schermate, nelle scelte e nei dialoghi. Le etichette contestuali servono a non inciampare quando compaiono, ma il lavoro vero resta sulle forme che puoi riconoscere e riusare più volte.

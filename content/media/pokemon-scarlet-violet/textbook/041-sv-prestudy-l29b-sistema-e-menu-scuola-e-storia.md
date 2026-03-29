@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per sistema e menu, scuola e storia: 27 carte l
 ---
 # Obiettivo
 
-Capire il giapponese che compare in sistema e menu, scuola e storia. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in sistema e menu, scuola e storia: parole che ti dicono che cosa stai selezionando, che cosa stai confermando e quale elemento della scena stai leggendo.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet queste parole ricorrono in schermate, tutorial e dialoghi brevi. Alcune indicano azioni o conferme del sistema, altre nominano ruoli, luoghi e elementi della parte scolastica e narrativa.
 
 ## Termini chiave
 
@@ -50,11 +50,11 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [与える](term:term-v510-atae-ru) e [商品](term:term-v512-shouhin) e [自然](term:term-v514-shizen) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [与える](term:term-v510-atae-ru), [商品](term:term-v512-shouhin) e [自然](term:term-v514-shizen) ti dicono subito chi riceve qualcosa, quale voce del menu stai guardando e che tipo di ambiente o tema sta entrando in scena. Nel gioco non sono etichette astratte: servono a leggere l'informazione pratica prima del resto della frase.
 
-Le espressioni come [これでＯＫ](term:term-e096-korede-okee) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+L'espressione [これでＯＫ](term:term-e096-korede-okee) è una conferma netta: significa che la scelta, la risposta o la configurazione va bene così. In una schermata di conferma ti segnala che puoi andare avanti senza cambiare nulla.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [宝食堂](term:term-v509-takarashokudou)、 [レイドバトル](term:term-v511-reidobatoru)、 [グレープアカデミー](term:term-v513-gureepuakademii)、 [バトルチーム](term:term-v515-batoruchiimu). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [宝食堂](term:term-v509-takarashokudou)、 [レイドバトル](term:term-v511-reidobatoru)、 [グレープアカデミー](term:term-v513-gureepuakademii)、 [バトルチーム](term:term-v515-batoruchiimu). Quando compaiono, ti orientano subito tra luogo, attività scolastica e modalità di gioco.
 
 ## Esempi guidati
 
@@ -62,30 +62,30 @@ Accanto a questo nucleo restano alcune etichette contestuali, per esempio [宝�
 jp: >-
   これで ＯＫです。
 translation_it: >-
-  Così va bene.
+  Va bene così.
 :::
 
 :::example_sentence
 jp: >-
   {{与|あた}}える。
 translation_it: >-
-  Concedere.
+  Dare / concedere.
 :::
 
 :::example_sentence
 jp: >-
   メニューで {{商品|しょうひん}}を {{見|み}}ます。
 translation_it: >-
-  Guardo il prodotto in menu.
+  Nel menu vedo il prodotto.
 :::
 
 :::example_sentence
 jp: >-
   この{{先|さき}}に {{自然|しぜん}}が あります。
 translation_it: >-
-  Più avanti c'è la natura.
+  Più avanti c'è un'area naturale.
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco conviene distinguere subito tra conferma, voce di menu, ruolo scolastico e nome di luogo. È questa differenza che chiarisce in fretta come leggere la schermata o il dialogo.

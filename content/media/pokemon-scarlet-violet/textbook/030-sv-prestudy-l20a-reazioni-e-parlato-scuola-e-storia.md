@@ -15,16 +15,16 @@ tags:
 - lesson-20
 prerequisites: []
 summary: 'Lessico ed espressioni per reazioni e parlato, scuola e storia: 19 carte
-  lessicali attive, 3 formule ricorrenti, 4 pattern grammaticali e 1 etichette contestuali
+  lessicali attive, 3 formule ricorrenti, 4 pattern grammaticali e 1 etichetta contestuale
   da riconoscere.'
 ---
 # Obiettivo
 
-Capire il giapponese che compare in reazioni e parlato, scuola e storia. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Leggere il giapponese che compare in reazioni, parlato, scuola e storia. Qui le parole segnalano subito stato, tono e istruzioni della scena.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet queste voci servono a leggere menu, dialoghi e briefing senza dover tradurre tutto parola per parola. I nomi propri e le etichette molto specifiche restano nel testo come contesto; le parole riusabili entrano nelle flashcard attive.
 
 ## Termini chiave
 
@@ -56,13 +56,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [やけど](term:term-v274-yakedo) e [終了](term:term-v275-shuuryou) e [解除](term:term-v276-kaijo) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [やけど](term:term-v274-yakedo), [終了](term:term-v275-shuuryou) e [解除](term:term-v276-kaijo) ti dicono subito che cosa sta succedendo nella schermata: una condizione del personaggio, la chiusura di un menu o la rimozione di un effetto.
 
-Le espressioni come [それって](term:term-e054-sorette) e [またね](term:term-e055-matane) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [それって](term:term-e054-sorette) e [またね](term:term-e055-matane) servono nel parlato quotidiano: riprendono quello che è stato detto, chiudono una battuta o segnalano una piccola reazione. In un gioco molto dialogato bastano spesso da sole a far capire il tono.
 
-Sul piano grammaticale, pattern come [〜間 / 〜間に](grammar:grammar-g054-durante-mentre) e [〜かなあ](grammar:grammar-g055-mi-chiedo-proprio) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, pattern come [〜間 / 〜間に](grammar:grammar-g054-durante-mentre), [〜かなあ](grammar:grammar-g055-mi-chiedo-proprio), [〜かしら](grammar:grammar-g057-mi-chiedo-chissa) e [〜だっけ](grammar:grammar-g058-comera-gia-dovera) aiutano a leggere durata, dubbio leggero o ricordo incerto. Non servono solo a “sapere la regola”: dicono se il personaggio sta descrivendo una situazione, pensando ad alta voce o cercando un dettaglio.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [秘伝](term:term-v279-hiden). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [秘伝](term:term-v279-hiden). Qui la cosa utile non è analizzarle come lessico generale, ma riconoscerle subito come riferimenti molto specifici del mondo di gioco.
 
 ## Esempi guidati
 
@@ -70,7 +70,7 @@ Accanto a questo nucleo restano alcune etichette contestuali, per esempio [秘�
 jp: >-
   それって {{本当|ほんとう}}？
 translation_it: >-
-  E quello allora...?
+  Quindi è vero?
 :::
 
 :::example_sentence
@@ -84,7 +84,7 @@ translation_it: >-
 jp: >-
   またね。
 translation_it: >-
-  A dopo.
+  Ci vediamo.
 :::
 
 :::example_sentence
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+Quando incontri queste schermate o battute, controlla subito se il testo ti sta segnalando uno stato, una chiusura, una rimozione di effetto o una reazione breve. In questo blocco la comprensione passa soprattutto da quei segnali.

@@ -26,7 +26,7 @@ back: confermare / controllare
 example_jp: >-
   もう{{一度|いちど}} {{確認|かくにん}}する。
 example_it: >-
-  Confermare.
+  Controllare di nuovo.
 :::
 :::term
 id: term-e051-modoru
@@ -48,7 +48,7 @@ back: indietro / tornare
 example_jp: >-
   {{前|まえ}}の メニューに もどる。
 example_it: >-
-  Indietro.
+  Torna al menu precedente.
 :::
 :::term
 id: term-e052-kuria-suru
@@ -70,7 +70,7 @@ back: completare / superare
 example_jp: >-
   ジムテストを クリアする。
 example_it: >-
-  Completare.
+  Supera la prova palestra.
 :::
 :::term
 id: term-e069-ha-douda
@@ -92,7 +92,7 @@ back: che ne dici di…?
 example_jp: >-
   この ポケモンは どうだ？
 example_it: >-
-  Che ne dici di…?
+  Che ne dici di questo Pokémon?
 :::
 :::term
 id: term-e070-yattemiyou
@@ -114,7 +114,7 @@ back: proviamo a farlo
 example_jp: >-
   {{一回|いっかい}} やってみよう。
 example_it: >-
-  Proviamo a farlo.
+  Proviamo a farlo una volta.
 :::
 :::grammar
 id: grammar-g072-se-e-cosi-se-parli-di
@@ -135,7 +135,7 @@ back: se è così / se parli di
 example_jp: >-
   ジムなら あっちだ。
 example_it: >-
-  Se parli della palestra, è di là.
+  Se intendi la palestra, è di là.
 :::
 :::grammar
 id: grammar-g073-essere-previsto
@@ -156,7 +156,7 @@ back: essere previsto
 example_jp: >-
   {{明日|あした}}は ジムへ {{行|い}}く{{予定|よてい}}だ。
 example_it: >-
-  Domani ho in programma di andare alla palestra.
+  Domani ho in programma di andare in palestra.
 :::
 :::term
 id: term-v354-atsume-ru
@@ -178,7 +178,7 @@ back: raccogliere
 example_jp: >-
   ここで {{集|あつ}}める。
 example_it: >-
-  Qui raccolgo.
+  Raccolgo qui.
 :::
 :::term
 id: term-v355-terasutaruenerugii
@@ -207,9 +207,9 @@ card_type: recognition
 front: "{{頼|たの}}む"
 back: chiedere / affidare
 example_jp: >-
-  {{誰|だれ}}が {{来|き}}ますか。
+  これを {{頼|たの}}むよ。
 example_it: >-
-  Chi arriva?
+  Ti affido questo.
 :::
 :::term
 id: term-v358-muka-u
@@ -229,9 +229,9 @@ card_type: recognition
 front: "{{向|む}}かう"
 back: dirigersi verso
 example_jp: >-
-  ここで {{向|む}}かう。
+  {{中央|ちゅうおう}}へ {{向|む}}かう。
 example_it: >-
-  Da qui mi dirigo avanti.
+  Mi dirigo verso il centro.
 :::
 :::term
 id: term-v359-oshie-ru
@@ -251,9 +251,9 @@ card_type: recognition
 front: "{{教|おし}}える"
 back: insegnare / dire
 example_jp: >-
-  ここで {{教|おし}}える。
+  これを {{教|おし}}える。
 example_it: >-
-  Qui insegno.
+  Lo spiego.
 :::
 :::term
 id: term-v360-aruku
@@ -273,9 +273,9 @@ card_type: recognition
 front: "{{歩|ある}}く"
 back: camminare
 example_jp: >-
-  ここで {{歩|ある}}く。
+  {{中央|ちゅうおう}}へ {{歩|ある}}く。
 example_it: >-
-  Qui cammino.
+  Cammino verso il centro.
 :::
 :::term
 id: term-v361-chuuou
@@ -297,7 +297,7 @@ back: centro
 example_jp: >-
   ここは {{中央|ちゅうおう}} です。
 example_it: >-
-  Qui è centro.
+  Qui è il centro.
 :::
 :::term
 id: term-v362-okiniiri
@@ -319,7 +319,7 @@ back: preferito / favorito
 example_jp: >-
   メニューで お{{気|き}}に{{入|い}}りを {{見|み}}ます。
 example_it: >-
-  Guardo il preferito in menu.
+  Nel menu vedo i preferiti.
 :::
 :::term
 id: term-v363-densetsunopokemon
@@ -348,9 +348,9 @@ card_type: recognition
 front: "{{途中|とちゅう}}"
 back: durante il percorso / a metà
 example_jp: >-
-  この{{先|さき}}に {{途中|とちゅう}}が あります。
+  バトルの {{途中|とちゅう}}です。
 example_it: >-
-  Più avanti c'è il durante il percorso.
+  Siamo a metà della battaglia.
 :::
 :::term
 id: term-v366-seigenjikan
@@ -370,9 +370,9 @@ card_type: recognition
 front: "{{制限時間|せい.げん.じ.かん}}"
 back: tempo limite
 example_jp: >-
-  バトルで {{制限時間|せい.げん.じ.かん}}を {{使|つか}}います。
+  この {{バトル|ばとる}}は {{制限時間|せい.げん.じ.かん}}が あります。
 example_it: >-
-  Uso il tempo limite in battaglia.
+  Questa battaglia ha un tempo limite.
 :::
 :::term
 id: term-v367-hashiru
@@ -392,9 +392,9 @@ card_type: recognition
 front: "{{走|はし}}る"
 back: correre
 example_jp: >-
-  ここで {{走|はし}}る。
+  {{中央|ちゅうおう}}へ {{走|はし}}る。
 example_it: >-
-  Correre.
+  Corro verso il centro.
 :::
 :::term
 id: term-v368-sentaku
@@ -414,9 +414,9 @@ card_type: recognition
 front: "{{選択|せんたく}}"
 back: selezione
 example_jp: >-
-  メニューで {{選択|せんたく}}を {{見|み}}ます。
+  メニューの {{選択|せんたく}}です。
 example_it: >-
-  Guardo la selezione in menu.
+  È una selezione del menu.
 :::
 :::term
 id: term-v369-rokkuon
@@ -436,9 +436,9 @@ card_type: recognition
 front: "ロックオン"
 back: lock-on
 example_jp: >-
-  この{{先|さき}}に ロックオンが あります。
+  ロックオンを {{使|つか}}う。
 example_it: >-
-  Più avanti c'è il lock-on.
+  Uso il lock-on.
 :::
 :::term
 id: term-v370-shiru
@@ -458,7 +458,7 @@ card_type: recognition
 front: "{{知|し}}る"
 back: sapere / venire a sapere
 example_jp: >-
-  ここに {{知|し}}る。
+  ここで {{知|し}}る。
 example_it: >-
   Qui lo scopro.
 :::
@@ -480,9 +480,9 @@ card_type: recognition
 front: "キャンセル"
 back: annulla
 example_jp: >-
-  メニューで キャンセルを {{見|み}}ます。
+  キャンセルします。
 example_it: >-
-  Guardo l'annulla in menu.
+  Annullo.
 :::
 :::term
 id: term-v372-zenryoku
@@ -504,7 +504,7 @@ back: massimo impegno
 example_jp: >-
   バトルで {{全力|ぜんりょく}}を {{使|つか}}います。
 example_it: >-
-  Uso il massimo impegno in battaglia.
+  Do il massimo in battaglia.
 :::
 :::term
 id: term-v373-hitobito
@@ -524,7 +524,7 @@ card_type: recognition
 front: "{{人々|ひとびと}}"
 back: la gente / le persone
 example_jp: >-
-  {{学校|がっこう}}で {{人々|ひとびと}}が だいじ です。
+  ここに {{人々|ひとびと}}が います。
 example_it: >-
-  In scuola la gente è importante.
+  Qui ci sono persone.
 :::

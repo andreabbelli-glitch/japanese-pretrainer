@@ -110,9 +110,9 @@ card_type: concept
 front: "{{辞書形|じ.しょ.けい}} + な"
 back: non fare! (ordine secco)
 example_jp: >-
-  ここで {{入|い}}るな。
+  ここで {{逃|に}}げるな。
 example_it: >-
-  Non entrare qui.
+  Non fuggire qui.
 :::
 :::grammar
 id: grammar-g084-enfasi-conferma-tono-emotivo
@@ -131,9 +131,9 @@ card_type: concept
 front: "finali di frase よ / ね / な"
 back: enfasi / conferma / tono emotivo
 example_jp: >-
-  {{強|つよ}}いよ。 / {{強|つよ}}いね。 / {{強|つよ}}いな。
+  ようやくだよ。 / ようやくだね。 / ようやくだな。
 example_it: >-
-  Forte! / Forte, vero? / Forte, eh.
+  Finalmente! / Finalmente, vero? / Finalmente, eh.
 :::
 :::term
 id: term-v413-keikenchipawaa
@@ -193,9 +193,9 @@ card_type: recognition
 front: "{{逃|に}}げる"
 back: fuggire
 example_jp: >-
-  バトルで {{逃|に}}げるを {{使|つか}}います。
+  バトルで {{逃|に}}げる。
 example_it: >-
-  Uso il fuggire in battaglia.
+  In battaglia fuggo.
 :::
 :::term
 id: term-v417-tasuke-ru
@@ -268,9 +268,9 @@ card_type: recognition
 front: "{{認|みと}}める"
 back: riconoscere
 example_jp: >-
-  ここで {{認|みと}}める。
+  それを {{認|みと}}める。
 example_it: >-
-  Qui riconosco.
+  Lo riconosco.
 :::
 :::term
 id: term-v421-attoiu-mani
@@ -290,9 +290,9 @@ card_type: recognition
 front: "あっという{{間|ま}}に"
 back: in un attimo
 example_jp: >-
-  この{{先|さき}}に あっという{{間|ま}}にが あります。
+  あっという{{間|ま}}に {{終|お}}わる。
 example_it: >-
-  Più avanti c'è l'in un attimo.
+  Finisce in un attimo.
 :::
 :::term
 id: term-v422-uketoru
@@ -422,9 +422,9 @@ card_type: recognition
 front: "{{何度|なんど}}でも"
 back: quante volte vuoi
 example_jp: >-
-  メニューで {{何度|なんど}}でもを {{見|み}}ます。
+  {{何度|なんど}}でも できます。
 example_it: >-
-  Guardo il quante volte vuoi in menu.
+  Si può fare quante volte vuoi.
 :::
 :::term
 id: term-v428-noru
@@ -466,9 +466,9 @@ card_type: recognition
 front: "おまかせ{{回復|かいふく}}"
 back: cura automatica
 example_jp: >-
-  この{{先|さき}}に おまかせ{{回復|かいふく}}が あります。
+  おまかせ{{回復|かいふく}}が あります。
 example_it: >-
-  Più avanti c'è la cura automatica.
+  C'è la cura automatica.
 :::
 :::term
 id: term-v430-mizuumi
@@ -488,9 +488,9 @@ card_type: recognition
 front: "{{湖|みずうみ}}"
 back: lago
 example_jp: >-
-  ここは {{湖|みずうみ}} です。
+  ここに {{湖|みずうみ}} が あります。
 example_it: >-
-  Qui è lago.
+  Qui c'è un lago.
 :::
 :::term
 id: term-v431-hatsudou

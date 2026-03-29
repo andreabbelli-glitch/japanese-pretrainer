@@ -33,7 +33,7 @@ id: term-e086-shitemoraeru
 lemma: 〜してもらえる？
 reading: 〜してもらえる？
 romaji: ~ shitemoraeru？
-meaning_it: potresti farmelo?
+meaning_it: potresti dare un'occhiata un attimo?
 notes_it: >-
   Espressione ricorrente della lezione L24 nell'area Richieste. Richiesta comune nei dialoghi amichevoli.
 :::
@@ -44,18 +44,18 @@ entry_type: term
 entry_id: term-e086-shitemoraeru
 card_type: recognition
 front: "〜してもらえる？"
-back: potresti farmelo?
+back: potresti dare un'occhiata un attimo?
 example_jp: >-
   {{少|すこ}}し {{見|み}}てもらえる？
 example_it: >-
-  Potresti farmelo?
+  Potresti dare un'occhiata un attimo?
 :::
 :::term
 id: term-e087-itte-kimasu
 lemma: 行ってきます
 reading: いってきます
 romaji: itte kimasu
-meaning_it: io vado e torno
+meaning_it: vado e torno
 notes_it: >-
   Espressione ricorrente della lezione L24 nell'area Saluti / gestione dialogo. Formula di partenza.
 :::
@@ -66,11 +66,11 @@ entry_type: term
 entry_id: term-e087-itte-kimasu
 card_type: recognition
 front: "{{行|い}}ってきます"
-back: io vado e torno
+back: vado e torno
 example_jp: >-
   {{行|い}}ってきます。
 example_it: >-
-  Io vado e torno.
+  Vado e torno.
 :::
 :::grammar
 id: grammar-g089-solo
@@ -91,7 +91,7 @@ back: solo
 example_jp: >-
   {{今日|きょう}}は これだけ。
 example_it: >-
-  Per oggi solo questo.
+  Solo questo per oggi.
 :::
 :::grammar
 id: grammar-g090-anche
@@ -176,7 +176,7 @@ back: allargare / espandere
 example_jp: >-
   ここで {{広|ひろ}}げる。
 example_it: >-
-  Allargare.
+  Allargo qui.
 :::
 :::term
 id: term-v455-shinken
@@ -198,7 +198,7 @@ back: serio
 example_jp: >-
   {{真剣|しんけん}} です。
 example_it: >-
-  Serio.
+  È serio.
 :::
 :::term
 id: term-v456-mejirushi
@@ -218,9 +218,9 @@ card_type: recognition
 front: "{{目印|めじるし}}"
 back: punto di riferimento
 example_jp: >-
-  {{風車|ふうしゃ}}が {{目印|めじるし}} です。
+  ここが {{目印|めじるし}} です。
 example_it: >-
-  Punto di riferimento.
+  Questo è il punto di riferimento.
 :::
 :::term
 id: term-v457-hayai
@@ -240,9 +240,9 @@ card_type: recognition
 front: "{{速|はや}}い"
 back: veloce
 example_jp: >-
-  この{{先|さき}}に {{速|はや}}いが あります。
+  この ポケモンは {{速|はや}}い。
 example_it: >-
-  Più avanti c'è il veloce.
+  Questo Pokémon è veloce.
 :::
 :::term
 id: term-v458-noboru
@@ -262,9 +262,9 @@ card_type: recognition
 front: "{{登|のぼ}}る"
 back: salire / arrampicarsi
 example_jp: >-
-  ここで {{登|のぼ}}る。
+  ここで {{登|のぼ}}ります。
 example_it: >-
-  Salire.
+  Salgo qui.
 :::
 :::term
 id: term-v459-hashigo
@@ -286,7 +286,7 @@ back: scala a pioli / ladder
 example_jp: >-
   はしごを のぼります。
 example_it: >-
-  Scala a pioli.
+  Sali la scala a pioli.
 :::
 :::term
 id: term-v460-kyouryoku-suru
@@ -306,9 +306,9 @@ card_type: recognition
 front: "{{協力|きょうりょく}}する"
 back: cooperare
 example_jp: >-
-  ここで {{協力|きょうりょく}}する。
+  みんなで {{協力|きょうりょく}}する。
 example_it: >-
-  Cooperare.
+  Collaboriamo tutti insieme.
 :::
 :::term
 id: term-v461-tachi-yoru
@@ -328,9 +328,9 @@ card_type: recognition
 front: "{{立|た}}ち{{寄|よ}}る"
 back: fermarsi di passaggio
 example_jp: >-
-  ここで {{立|た}}ち{{寄|よ}}る。
+  ここに {{立|た}}ち{{寄|よ}}る。
 example_it: >-
-  Fermarsi di passaggio.
+  Faccio tappa qui.
 :::
 :::term
 id: term-v462-kaifuku-saseru
@@ -350,9 +350,9 @@ card_type: recognition
 front: "{{回復|かいふく}}させる"
 back: curare / far recuperare
 example_jp: >-
-  メニューで {{回復|かいふく}}させるを {{見|み}}ます。
+  ポケモンを {{回復|かいふく}}させる。
 example_it: >-
-  Guardo il curare in menu.
+  Faccio recuperare il Pokémon.
 :::
 :::term
 id: term-v463-tegowai
@@ -372,9 +372,9 @@ card_type: recognition
 front: "{{手|て}}ごわい"
 back: ostico / tosto
 example_jp: >-
-  バトルで {{手|て}}ごわいを {{使|つか}}います。
+  これは {{手|て}}ごわい。
 example_it: >-
-  Uso l'ostico in battaglia.
+  Questo è ostico.
 :::
 :::term
 id: term-v464-pokemon-nootoshimono
@@ -394,9 +394,9 @@ card_type: recognition
 front: "ポケモンのおとしもの"
 back: materiali lasciati dai Pokémon
 example_jp: >-
-  メニューで ポケモンのおとしものを {{見|み}}ます。
+  これは ポケモンのおとしものです。
 example_it: >-
-  Guardo il materiali lasciati dai Pokémon in menu.
+  Questo è il materiale lasciato dai Pokémon.
 :::
 :::term
 id: term-v465-azuke-ru
@@ -416,9 +416,9 @@ card_type: recognition
 front: "{{預|あず}}ける"
 back: depositare
 example_jp: >-
-  メニューで {{預|あず}}けるを {{見|み}}ます。
+  ポケモンを {{預|あず}}ける。
 example_it: >-
-  Guardo il depositare in menu.
+  Lascio il Pokémon in deposito.
 :::
 :::term
 id: term-v466-kakkuukeitai
@@ -440,7 +440,7 @@ back: forma planata
 example_jp: >-
   これは かっくうけいたい です。
 example_it: >-
-  Questo è forma planata.
+  Questa è la forma planata.
 :::
 :::term
 id: term-v467-shissoukeitai
@@ -462,7 +462,7 @@ back: forma corsa
 example_jp: >-
   これは しっそうけいたい です。
 example_it: >-
-  Questo è forma corsa.
+  Questa è la forma corsa.
 :::
 :::term
 id: term-v468-yuueikeitai
@@ -484,7 +484,7 @@ back: forma nuoto
 example_jp: >-
   これは ゆうえいけいたい です。
 example_it: >-
-  Questo è forma nuoto.
+  Questa è la forma nuoto.
 :::
 :::term
 id: term-v469-guraidomoodo
@@ -531,9 +531,9 @@ card_type: recognition
 front: "{{巡|めぐ}}る"
 back: girare / visitare
 example_jp: >-
-  ここで {{巡|めぐ}}る。
+  この{{町|まち}}を {{巡|めぐ}}る。
 example_it: >-
-  Girare.
+  Visitare la città.
 :::
 :::term
 id: term-v473-narabekae
@@ -553,9 +553,9 @@ card_type: recognition
 front: "{{並|なら}}べかえ"
 back: riordinare / sorting
 example_jp: >-
-  メニューで {{並|なら}}べかえを {{見|み}}ます。
+  ポケモンを {{並|なら}}べかえます。
 example_it: >-
-  Guardo il riordinare in menu.
+  Riordino i Pokémon.
 :::
 :::term
 id: term-v474-nyuushu
@@ -575,9 +575,9 @@ card_type: recognition
 front: "{{入手|にゅうしゅ}}"
 back: ottenimento
 example_jp: >-
-  メニューで {{入手|にゅうしゅ}}を {{見|み}}ます。
+  アイテムを {{入手|にゅうしゅ}}する。
 example_it: >-
-  Guardo l'ottenimento in menu.
+  Ottengo un oggetto.
 :::
 :::term
 id: term-v475-hitsu-kome-ru
@@ -597,7 +597,7 @@ card_type: recognition
 front: "{{引|ひ}}っ{{込|こ}}める"
 back: ritirare (un Pokémon)
 example_jp: >-
-  バトルで {{引|ひ}}っ{{込|こ}}めるを {{使|つか}}います。
+  ポケモンを {{引|ひ}}っ{{込|こ}}める。
 example_it: >-
-  Uso il ritirare (un Pokémon) in battaglia.
+  Ritiro il Pokémon.
 :::

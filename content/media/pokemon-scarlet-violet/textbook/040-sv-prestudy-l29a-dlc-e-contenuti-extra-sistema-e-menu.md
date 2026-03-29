@@ -20,15 +20,15 @@ summary: 'Lessico ed espressioni per DLC e contenuti extra, sistema e menu: 20 c
 ---
 # Obiettivo
 
-Capire il giapponese che compare in DLC e contenuti extra, sistema e menu. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in DLC e contenuti extra, sistema e menu: voci che segnano completamento, regole, conferme e istruzioni brevi sullo schermo.
 
 ## Contesto
 
-In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da riconoscere. Le parole più riusabili entrano nelle flashcard attive; i nomi propri e le etichette troppo verticali restano nel textbook come contesto, così puoi leggerli quando compaiono senza appesantire la memoria a lungo termine.
+In Scarlet / Violet alcuni termini sono voci operative dell'interfaccia, altri sono nomi propri o etichette molto locali del DLC. I primi ti dicono se qualcosa è completato, da confermare o regolato; i secondi nominano aree, personaggi e risorse del contenuto extra.
 
 ## Termini chiave
 
-- [クリア](term:term-v479-kuria) — completare / clear
+- [クリア](term:term-v479-kuria) — completato / clear
 - [ルール](term:term-v480-ruuru) — regola
 - [確認](term:term-v482-kakunin) — conferma / controllo
 - [おまけ](term:term-v483-omake) — bonus / omaggio
@@ -40,7 +40,7 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 ## Espressioni ricorrenti
 
 - [ありがとうございました](term:term-e088-arigatougozaimashita) — grazie mille
-- [いいよね](term:term-e089-iiyone) — vero? / ci sta, no?
+- [いいよね](term:term-e089-iiyone) — va bene così, no? / ci sta, no?
 
 ## Pattern grammaticali chiave
 
@@ -57,13 +57,13 @@ In Scarlet / Violet conviene distinguere tra lessico da memorizzare e label da r
 
 ## Spiegazione
 
-Parole come [クリア](term:term-v479-kuria) e [ルール](term:term-v480-ruuru) e [確認](term:term-v482-kakunin) ti danno subito il frame della scena: chi agisce, quale azione è disponibile e che cosa conviene controllare. Quando questi segnali sono stabili, menu e dialoghi smettono di sembrare una sequenza opaca di label e diventano una serie di istruzioni leggibili.
+Parole come [クリア](term:term-v479-kuria), [ルール](term:term-v480-ruuru) e [確認](term:term-v482-kakunin) non spiegano una teoria astratta: nei menu e nei messaggi indicano se qualcosa è completato, quale regola vale o che cosa va controllato.
 
-Le espressioni come [ありがとうございました](term:term-e088-arigatougozaimashita) e [いいよね](term:term-e089-iiyone) regolano invece il tono del parlato: permesso, blocco, incoraggiamento, proposta o piccola reazione. In un gioco molto dialogato sono utili perché spesso bastano da sole a orientare la risposta emotiva della scena.
+Le espressioni come [ありがとうございました](term:term-e088-arigatougozaimashita) e [いいよね](term:term-e089-iiyone) orientano il dialogo: la prima chiude con gratitudine dopo un aiuto o un servizio, la seconda chiede assenso su una scelta già quasi fissata.
 
-Sul piano grammaticale, pattern come [〜とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) chiariscono stato, intenzione, spiegazione o sequenza. Non servono solo a “capire la regola”: aiutano a capire perché una frase suona come consiglio, constatazione, avvertimento o pensiero ad alta voce.
+Sul piano grammaticale, pattern come [〜とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) introducono esempi aperti, tipo "palestra, scuola e cose così", senza dire che la lista sia finita.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [キタカミ](term:term-v476-kitakami)、 [ブルーベリー学園](term:term-v477-buruuberiigakuen)、 [オーガポン](term:term-v478-oogapon)、 [ＢＰ](term:term-v481-biipii). Conviene riconoscerle quando appaiono, ma non trattarle come memoria attiva: sono nomi o label legati in modo stretto al titolo, al suo mondo o a una funzione molto specifica.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio [キタカミ](term:term-v476-kitakami)、 [ブルーベリー学園](term:term-v477-buruuberiigakuen)、 [オーガポン](term:term-v478-oogapon)、 [ＢＰ](term:term-v481-biipii). Quando compaiono, ti orientano nel DLC indicando subito luogo, personaggio o risorsa specifica.
 
 ## Esempi guidati
 
@@ -78,23 +78,23 @@ translation_it: >-
 jp: >-
   これで いいよね。
 translation_it: >-
-  Vero?
+  Così va bene, no?
 :::
 
 :::example_sentence
 jp: >-
   ジムとか {{学校|がっこう}}とか。
 translation_it: >-
-  Cose come la palestra o la scuola.
+  Tipo la palestra, la scuola e cose così.
 :::
 
 :::example_sentence
 jp: >-
   メニューで クリアを {{見|み}}ます。
 translation_it: >-
-  Guardo il completare in menu.
+  Nel menu vedo la voce "completato".
 :::
 
 ## Nota finale
 
-Quando studi questo blocco, dai priorità alle parole che tornano in schermate, scelte e dialoghi riusabili. Le etichette contestuali servono a leggere meglio il gioco quando compaiono, ma il cuore del lavoro resta sul giapponese che puoi riconoscere e riusare più volte.
+In questo blocco contano soprattutto le voci che dicono se qualcosa è completato, confermato o regolato. I nomi di area e personaggio completano invece l'orientamento nel DLC.
