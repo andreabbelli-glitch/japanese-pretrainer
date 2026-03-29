@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 
 import { LessonReaderClient } from "@/components/textbook/lesson-reader-client";
+import { getTextbookLessonData } from "@/lib/textbook";
 import {
-  getTextbookLessonData,
   recordLessonOpened,
   settleLessonOpenedStateForRender
-} from "@/lib/textbook";
+} from "@/lib/textbook-progress";
 
 type LessonReaderRouteProps = {
   params: Promise<{
