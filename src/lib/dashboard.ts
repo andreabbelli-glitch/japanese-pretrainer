@@ -12,6 +12,7 @@ import {
 import { pickBestBy } from "@/lib/collections";
 import {
   loadMediaShellSnapshots,
+  pickFocusMedia,
   type MediaShellSnapshot
 } from "@/lib/media-shell";
 
@@ -77,12 +78,6 @@ async function loadDashboardData(
   };
 }
 
-function pickFocusMedia(media: MediaShellSnapshot[]) {
-  return pickBestBy(media, (left, right) => {
-    return scoreMediaFocus(left) - scoreMediaFocus(right);
-  });
-}
-
 function pickReviewMedia(media: MediaShellSnapshot[]) {
   return pickBestBy(media, (left, right) => {
     const scoreDifference = scoreMediaReview(left) - scoreMediaReview(right);
@@ -105,22 +100,6 @@ function pickReviewMedia(media: MediaShellSnapshot[]) {
 
     return left.title.localeCompare(right.title, "it");
   });
-}
-
-function scoreMediaFocus(item: MediaShellSnapshot) {
-  if (item.activeLesson) {
-    return 0;
-  }
-
-  if (item.cardsDue > 0) {
-    return 1;
-  }
-
-  if ((item.textbookProgressPercent ?? 0) < 100) {
-    return 2;
-  }
-
-  return 3;
 }
 
 function scoreMediaReview(item: MediaShellSnapshot) {

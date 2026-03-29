@@ -487,7 +487,7 @@ function buildReviewShellSignals(input: {
   };
 }
 
-function pickFocusMedia(media: MediaShellSnapshot[]) {
+export function pickFocusMedia(media: MediaShellSnapshot[]) {
   return pickBestBy(media, (left, right) => {
     return scoreMediaFocus(left) - scoreMediaFocus(right);
   });
