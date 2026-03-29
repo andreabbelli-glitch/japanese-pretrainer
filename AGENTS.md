@@ -35,6 +35,7 @@ valido (`pnpm check` verde, commit su `main`).
 src/
   app/              Route Next.js (App Router): pagine, layout globali e route handlers
     api/            Endpoint server-side per feature trasversali
+      glossary/     API per ricerca e autocomplete del glossary
     glossary/       Portal glossary globale e stati di caricamento
     login/          Pagina di accesso locale
     media/          Route dinamiche per media, glossary locale, textbook, review e progress
@@ -61,6 +62,7 @@ src/
   domain/           Logica di dominio pura, zero dipendenze framework
   lib/              Utility e helper condivisi tra app/ e scripts/
     content/        Parser, validator e sync pipeline dei bundle Markdown
+    site/           Navigazione, href e utility di stato per il routing UI
   types/            Tipi TypeScript globali e interfacce condivise
   styles/           CSS globale e variabili
 
@@ -106,6 +108,8 @@ docs/
   content-format.md       Specifica del formato Markdown (30KB)
   design/                 Token di design e UX
   legacy/                 Materiale storico e template del workflow editoriale precedente
+    content-briefs/       Brief editoriali legacy per bundle specifici
+    prompts/              Prompt legacy usati nel workflow editoriale
   llm-kit/                Guide per integrazione LLM esterna
     general/              Template e regole riusabili cross-media
     media/                Brief e prompt specifici per singolo media
