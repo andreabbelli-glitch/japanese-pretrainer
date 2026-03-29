@@ -34,7 +34,9 @@ pattern: ～間 / ～間に
 title: Durante / mentre
 meaning_it: durante / mentre
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Condizioni, tempo, sequenza. Formazione: Vている + 間(に). Utile per leggere durata e azioni simultanee.
+  〜{{間|あいだ}} indica "durante tutto il tempo in cui..."; 〜{{間|あいだ}}に
+  indica "mentre..., nel frattempo...". Con 〜{{間|あいだ}} l'azione dura per
+  tutto quel periodo; con 〜{{間|あいだ}}に succede qualcosa dentro quel periodo.
 :::
 :::card
 id: card-g054-durante-mentre-concept
@@ -74,10 +76,11 @@ example_it: >-
 :::grammar
 id: grammar-g055-mi-chiedo-proprio
 pattern: ～かなあ
-title: Mi chiedo proprio...
-meaning_it: mi chiedo proprio...
+title: Mi chiedo... / chissà...
+meaning_it: mi chiedo... / chissà...
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Colloquiale da dialogo. Formazione: frase + かなあ. Suona come pensiero ad alta voce o dubbio leggero.
+  Forma colloquiale usata per un dubbio detto ad alta voce o un pensiero
+  leggero. La ーa finale allunga il tono e lo rende piu pensieroso o emotivo.
 :::
 :::card
 id: card-g055-mi-chiedo-proprio-concept
@@ -86,7 +89,7 @@ entry_type: grammar
 entry_id: grammar-g055-mi-chiedo-proprio
 card_type: concept
 front: "～かなあ"
-back: mi chiedo proprio...
+back: mi chiedo... / chissà...
 example_jp: >-
   どこへ {{行|い}}こうかなあ。
 example_it: >-
@@ -122,7 +125,8 @@ meaning_it: mi chiedo… / chissà…
 aliases:
 - 〜かな
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Colloquiale da dialogo. Formazione: frase + かしら. Suona come dubbio leggero o pensiero ad alta voce.
+  Esprime un dubbio leggero o un pensiero ad alta voce. Rispetto a かな, puo
+  suonare piu morbido, femminile o un po' ricercato a seconda del personaggio.
 :::
 :::card
 id: card-g057-mi-chiedo-chissa-concept
@@ -145,7 +149,9 @@ meaning_it: com’era già…? / dov’era…?
 aliases:
 - 〜かな
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Colloquiale da dialogo. Formazione: plain + だっけ / っけ. Si usa per ricordare a metà un'informazione o controllare un dettaglio.
+  Si usa per recuperare a meta un'informazione dimenticata o per controllare un
+  dettaglio: "com'era gia...?", "dov'era gia...?". Suona colloquiale e molto
+  naturale nel parlato.
 :::
 :::card
 id: card-g058-comera-gia-dovera-concept

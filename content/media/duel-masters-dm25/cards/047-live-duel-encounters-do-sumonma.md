@@ -45,7 +45,7 @@ id: grammar-no-uchi
 pattern: ～のうち
 title: Fra / tra / all'interno di questo gruppo
 reading: のうち
-meaning_it: fra; tra; fra quelli indicati
+meaning_it: fra / tra / dentro il gruppo indicato
 aliases: [のうち, 次のうち]
 notes_it: >-
   `のうち` seleziona un sottoinsieme o un elemento da un gruppo gia`
@@ -59,7 +59,7 @@ id: grammar-izureka
 pattern: いずれか
 title: Uno qualsiasi tra le alternative
 reading: いずれか
-meaning_it: uno dei; uno qualsiasi fra le opzioni
+meaning_it: uno dei / uno qualsiasi fra le opzioni
 aliases: [いずれか]
 notes_it: >-
   `いずれか` e` una parola di scelta formale. In giapponese da rules text non

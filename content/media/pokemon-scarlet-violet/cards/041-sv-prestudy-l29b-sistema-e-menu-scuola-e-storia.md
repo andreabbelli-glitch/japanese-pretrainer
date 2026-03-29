@@ -150,7 +150,7 @@ back: concentrazione
 example_jp: >-
   これは {{集中|しゅうちゅう}} です。
 example_it: >-
-  Questo è concentrazione.
+  Si tratta di concentrazione.
 :::
 :::term
 id: term-v517-tsuika
@@ -194,7 +194,7 @@ back: assistente
 example_jp: >-
   これは {{助手|じょしゅ}} です。
 example_it: >-
-  Questo è assistente.
+  Questo è un assistente.
 :::
 :::term
 id: term-v519-seitokaichou
@@ -216,7 +216,7 @@ back: presidente del consiglio studentesco
 example_jp: >-
   {{生徒会長|せい.と.かい.ちょう}}と {{話|はな}}します。
 example_it: >-
-  Parlo con presidente del consiglio studentesco.
+  Parlo con il presidente del consiglio studentesco.
 :::
 :::term
 id: term-v520-bushitsu
@@ -238,7 +238,7 @@ back: stanza del club
 example_jp: >-
   {{学校|がっこう}}で {{部室|ぶしつ}}が だいじ です。
 example_it: >-
-  In scuola stanza del club è importante.
+  A scuola la stanza del club è importante.
 :::
 :::term
 id: term-v521-kyoushitsu
@@ -260,7 +260,7 @@ back: aula
 example_jp: >-
   {{学校|がっこう}}で {{教室|きょうしつ}}が だいじ です。
 example_it: >-
-  In scuola aula è importante.
+  A scuola l'aula è importante.
 :::
 :::term
 id: term-v522-suteki
@@ -304,7 +304,7 @@ back: supporto / sostegno
 example_jp: >-
   {{学校|がっこう}}で {{支援|しえん}}が だいじ です。
 example_it: >-
-  In scuola supporto è importante.
+  A scuola il supporto è importante.
 :::
 :::term
 id: term-v524-toudai
@@ -326,7 +326,7 @@ back: faro
 example_jp: >-
   {{学校|がっこう}}で {{灯台|とうだい}}が だいじ です。
 example_it: >-
-  In scuola faro è importante.
+  A scuola il faro è importante.
 :::
 :::term
 id: term-v525-kinen
@@ -348,7 +348,7 @@ back: ricordo / commemorazione
 example_jp: >-
   これは {{記念|きねん}} です。
 example_it: >-
-  Questo è ricordo.
+  Questo è un ricordo.
 :::
 :::term
 id: term-v526-benri
@@ -414,7 +414,7 @@ back: iscrizione / ingresso a scuola
 example_jp: >-
   ここは {{入学|にゅうがく}} です。
 example_it: >-
-  Qui è iscrizione.
+  Questa è l'iscrizione.
 :::
 :::term
 id: term-v529-chuumon
@@ -458,7 +458,7 @@ back: gregario / sottoposto
 example_jp: >-
   これは したっぱ です。
 example_it: >-
-  Questo è gregario.
+  Questo è un gregario.
 :::
 :::term
 id: term-v531-senpai
@@ -502,7 +502,7 @@ back: riscossione / ritiro
 example_jp: >-
   メニューで {{受|う}}けとりを {{見|み}}ます。
 example_it: >-
-  Guardo il riscossione in menu.
+  Nel menu guardo la riscossione.
 :::
 :::term
 id: term-v533-okozukai
@@ -546,7 +546,7 @@ back: uniforme
 example_jp: >-
   {{学校|がっこう}}で {{制服|せいふく}}が だいじ です。
 example_it: >-
-  In scuola uniforme è importante.
+  A scuola l'uniforme è importante.
 :::
 :::term
 id: term-v535-bukatsu
@@ -568,7 +568,7 @@ back: club scolastico / attività extracurricolare
 example_jp: >-
   {{学校|がっこう}}で {{部活|ぶかつ}}が だいじ です。
 example_it: >-
-  In scuola club scolastico è importante.
+  A scuola il club scolastico è importante.
 :::
 :::term
 id: term-v536-entorii
@@ -590,7 +590,7 @@ back: iscrizione / entry
 example_jp: >-
   これは エントリー です。
 example_it: >-
-  Questo è iscrizione.
+  Questa è un'iscrizione.
 :::
 :::term
 id: term-v537-henji

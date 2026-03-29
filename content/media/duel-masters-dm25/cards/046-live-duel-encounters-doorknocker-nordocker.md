@@ -45,7 +45,7 @@ id: grammar-tsugi-no
 pattern: 次の～
 title: Il/la seguente / il/la prossimo/a
 reading: つぎの
-meaning_it: il/la seguente; il/la prossimo/a
+meaning_it: il/la seguente / quello che viene subito dopo
 aliases: [次の, 次の能力]
 notes_it: >-
   `{{次|つぎ}}の` punta in avanti nel testo. Nel rules text non e` solo un
@@ -100,7 +100,7 @@ entry_type: grammar
 entry_id: grammar-tsugi-no
 card_type: concept
 front: '{{次|つぎ}}の{{能力|のうりょく}}'
-back: l'abilita seguente / la following ability
+back: l'abilita seguente
 example_jp: >-
   `{{次|つぎ}}の{{能力|のうりょく}}`と{{書|か}}いてあれば、すぐ{{下|した}}に
   {{書|か}}かれた{{能力|のうりょく}}を{{指|さ}}している。

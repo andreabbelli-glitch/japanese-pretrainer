@@ -40,10 +40,12 @@ notes_it: >-
 :::grammar
 id: grammar-g037-citazione-tema-colloquiale
 pattern: ～って
-title: Citazione / tema colloquiale
-meaning_it: citazione / tema colloquiale
+title: Citazione o tema colloquiale
+meaning_it: '"..." / quanto a... / a proposito di...'
 notes_it: >-
-  Pattern della lezione L18 nella famiglia Spiegazione, opinione, apparenza. Formazione: frase + って. Molto comune nel parlato giovanile e nei giochi.
+  Nel parlato って puo introdurre una citazione in modo informale oppure
+  riprendere un tema: "quanto a X", "X invece". E molto comune nei dialoghi
+  giovanili e nei giochi.
 :::
 :::card
 id: card-g037-citazione-tema-colloquiale-concept
@@ -52,7 +54,7 @@ entry_type: grammar
 entry_id: grammar-g037-citazione-tema-colloquiale
 card_type: concept
 front: '～って'
-back: citazione / tema colloquiale
+back: '"..." / quanto a... / a proposito di...'
 example_jp: >-
   ネモって {{一番|いちばん}}だよね。
 example_it: >-
@@ -83,10 +85,11 @@ example_it: >-
 :::grammar
 id: grammar-g038-piu-di-al-punto-da
 pattern: ～より / ～ほど
-title: Più di / al punto da
-meaning_it: più di / al punto da
+title: Più... di / non così... come
+meaning_it: confronto tra due cose
 notes_it: >-
-  Pattern della lezione L18 nella famiglia Confronto e struttura. Formazione: A より B / B ほど. Utile in confronti tra percorsi, avversari, statistiche.
+  Con A より B, B e piu di A. Con A ほど B ない, B non e cosi come A. Molto
+  comune per confrontare persone, mosse, percorsi o statistiche.
 :::
 :::card
 id: card-g038-piu-di-al-punto-da-concept
@@ -95,7 +98,7 @@ entry_type: grammar
 entry_id: grammar-g038-piu-di-al-punto-da
 card_type: concept
 front: '～より / ～ほど'
-back: più di / al punto da
+back: più... di / non così... come
 example_jp: >-
   {{学校|がっこう}}より ジムのほうが {{近|ちか}}い。
 example_it: >-

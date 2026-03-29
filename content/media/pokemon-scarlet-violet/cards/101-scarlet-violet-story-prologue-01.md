@@ -53,7 +53,7 @@ back: trasferimento / arrivo come studente trasferito
 example_jp: >-
   {{今日|きょう}}から アカデミーに {{転入|てんにゅう}}する {{生徒|せいと}}なんだ。
 example_it: >-
-  Da oggi sono uno studente che si trasferisce all'Accademia.
+  Da oggi sono uno studente trasferito all'Accademia.
 :::
 :::term
 id: term-gomen-kudasai

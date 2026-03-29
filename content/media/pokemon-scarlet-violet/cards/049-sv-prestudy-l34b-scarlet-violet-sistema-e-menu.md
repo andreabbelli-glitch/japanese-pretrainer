@@ -167,7 +167,7 @@ back: danno / vittima
 example_jp: >-
   ダメージが {{大|おお}}きいです。
 example_it: >-
-  È un danno.
+  Il danno è grave.
 :::
 :::term
 id: term-v719-sashie
@@ -196,7 +196,7 @@ id: term-v720-okotowaririsuto
 lemma: おことわりリスト
 reading: おことわりリスト
 romaji: okotowaririsuto
-meaning_it: lista blocco
+meaning_it: lista di blocco
 notes_it: >-
   Voce della lezione L34 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
 :::
@@ -207,11 +207,11 @@ entry_type: term
 entry_id: term-v720-okotowaririsuto
 card_type: recognition
 front: "おことわりリスト"
-back: lista blocco
+back: lista di blocco
 example_jp: >-
   メニューで おことわりリストを {{見|み}}ます。
 example_it: >-
-  Nel menu guardo la lista blocco.
+  Nel menu guardo la lista di blocco.
 :::
 :::term
 id: term-v721-zaiseki

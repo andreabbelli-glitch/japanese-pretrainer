@@ -202,7 +202,7 @@ back: ricevere un favore o un servizio
 example_jp: >-
   ポケモンセンターで {{手|て}}{{持|も}}ちを {{回復|かいふく}}してもらおう。
 example_it: >-
-  Al Centro Pokemon puoi ricevere la cura della squadra.
+  Al Centro Pokemon puoi far curare la squadra.
 :::
 :::grammar
 id: grammar-te-kuru

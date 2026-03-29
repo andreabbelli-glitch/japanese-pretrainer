@@ -67,7 +67,7 @@ level_hint: custom
 :::grammar
 id: grammar-dewanai
 pattern: ～ではない
-title: Filtro negativo / non-X
+title: Non essere X / non di quel tipo
 reading: ではない
 meaning_it: non e` / che non e` / non-X
 aliases: [ではない]
@@ -170,7 +170,7 @@ entry_type: grammar
 entry_id: grammar-dewanai
 card_type: concept
 front: ドラゴンではないエレメント
-back: un element che non e` un Drago
+back: un element che non e` un drago
 example_jp: >-
   コスト{{6以下|ろくいか}}のドラゴンではないエレメントを{{1|ひと}}つ
   {{選|えら}}び、{{破壊|はかい}}してもよい。

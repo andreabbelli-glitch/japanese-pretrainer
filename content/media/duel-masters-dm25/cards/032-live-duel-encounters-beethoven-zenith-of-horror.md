@@ -60,7 +60,7 @@ level_hint: custom
 :::grammar
 id: grammar-shoukan-ni-yotte
 pattern: 召喚によって
-title: Entrata proprio tramite summon
+title: Entrata proprio tramite evocazione
 reading: しょうかんによって
 meaning_it: tramite evocazione / per il fatto di essere stato evocato
 aliases: [召喚によって]
@@ -138,7 +138,7 @@ entry_type: grammar
 entry_id: grammar-shoukan-ni-yotte
 card_type: concept
 front: 'このクリーチャーが[{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte){{出|で}}た{{時|とき}}'
-back: Quando questa creatura entra proprio tramite evocazione.
+back: quando questa creatura entra proprio tramite evocazione
 example_jp: >-
   このクリーチャーが[{{召喚|しょうかん}}によって](grammar:grammar-shoukan-ni-yotte)
   {{出|で}}た{{時|とき}}、ドラゴンまたは

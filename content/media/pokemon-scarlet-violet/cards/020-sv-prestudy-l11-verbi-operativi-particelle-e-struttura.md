@@ -53,10 +53,11 @@ example_it: >-
 :::grammar
 id: grammar-g031-marca-il-tema
 pattern: は
-title: Marca il tema
-meaning_it: marca il tema
+title: Particella は
+meaning_it: quanto a... / parlando di...
 notes_it: >-
-  Pattern della lezione L11 nella famiglia Particelle e struttura. Formazione: N + は + frase. Senza questo perdi il focus della frase.
+  は marca il tema della frase, cioe cio di cui si sta parlando. Non sempre
+  coincide con il soggetto grammaticale.
 :::
 :::card
 id: card-g031-marca-il-tema-concept
@@ -65,7 +66,7 @@ entry_type: grammar
 entry_id: grammar-g031-marca-il-tema
 card_type: concept
 front: 'は'
-back: marca il tema
+back: quanto a... / parlando di...
 example_jp: >-
   {{地図|ちず}}は {{簡単|かんたん}}です。
 example_it: >-
@@ -75,9 +76,10 @@ example_it: >-
 id: grammar-g032-verso
 pattern: へ
 title: Verso
-meaning_it: verso
+meaning_it: verso...
 notes_it: >-
-  Pattern della lezione L11 nella famiglia Particelle e struttura. Formazione: N + へ + {{行|い}}く/{{向|む}}かう. Comune con inviti, destinazioni e obiettivi di viaggio.
+  へ indica direzione. Si usa soprattutto con verbi di movimento come
+  {{行|い}}く, {{来|く}}る, {{向|む}}かう.
 :::
 :::card
 id: card-g032-verso-concept
@@ -86,7 +88,7 @@ entry_type: grammar
 entry_id: grammar-g032-verso
 card_type: concept
 front: 'へ'
-back: verso
+back: verso...
 example_jp: >-
   アカデミーへ {{行|い}}く。
 example_it: >-
@@ -95,10 +97,11 @@ example_it: >-
 :::grammar
 id: grammar-g033-marca-l-oggetto-diretto
 pattern: を
-title: Marca l'oggetto diretto
-meaning_it: marca l'oggetto diretto
+title: Particella を
+meaning_it: marca ciò che subisce direttamente l'azione
 notes_it: >-
-  Pattern della lezione L11 nella famiglia Particelle e struttura. Formazione: N + を + V. Essenziale per capire cosa viene fatto a cosa.
+  を indica l'oggetto diretto del verbo: la cosa che mangi, apri, scegli,
+  guardi o usi. E una delle particelle base per leggere le azioni.
 :::
 :::card
 id: card-g033-marca-l-oggetto-diretto-concept
@@ -107,7 +110,7 @@ entry_type: grammar
 entry_id: grammar-g033-marca-l-oggetto-diretto
 card_type: concept
 front: 'を'
-back: marca l'oggetto diretto
+back: marca ciò che subisce direttamente l'azione
 example_jp: >-
   ポケモンを {{探|さが}}す。
 example_it: >-

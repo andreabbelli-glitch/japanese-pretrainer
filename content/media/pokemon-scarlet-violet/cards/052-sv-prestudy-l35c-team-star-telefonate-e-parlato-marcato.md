@@ -247,9 +247,9 @@ pattern: ～っぽい
 title: Sembra / ha l'aria di
 meaning_it: sembra / ha l'aria di / da...
 notes_it: >-
-  Pattern colloquiale che trasforma un'impressione in etichetta rapida. E utile
-  quando i personaggi giudicano aspetto, stile o natura di qualcosa senza
-  voler essere troppo precisi.
+  Pattern colloquiale usato per dare un'impressione rapida: "sembra...",
+  "ha l'aria di...", "sa di...". Si usa quando il parlante giudica aspetto,
+  stile o natura di qualcosa senza voler essere troppo preciso.
 :::
 :::card
 id: card-g112-sembra-ha-l-aria-di-concept
@@ -267,11 +267,12 @@ example_it: >-
 :::grammar
 id: grammar-g113-non-e-che-non-sara-che
 pattern: ～んじゃない？
-title: Non e che...? / non sara che...?
-meaning_it: non e che...? / non sara che...?
+title: Non sarà che...? / forse...?
+meaning_it: ipotesi colloquiale o constatazione morbida
 notes_it: >-
-  Forma colloquiale molto comune per fare un'ipotesi o una mezza constatazione.
-  In dialogo suona piu naturale e piu diretta di una domanda neutra.
+  Forma molto comune nel parlato per avanzare un'ipotesi senza dirla in modo
+  secco. A seconda del tono puo voler dire "non sara che...?", "forse...?",
+  oppure una constatazione morbida.
 :::
 :::card
 id: card-g113-non-e-che-non-sara-che-concept
@@ -280,7 +281,7 @@ entry_type: grammar
 entry_id: grammar-g113-non-e-che-non-sara-che
 card_type: concept
 front: "～んじゃない？"
-back: non e che...? / non sara che...?
+back: non sarà che...? / forse...?
 example_jp: >-
   {{坂道|さかみち}}の トレーナーたちと {{戦|たたか}}って ポケモン
   {{成長|せいちょう}}したんじゃない？

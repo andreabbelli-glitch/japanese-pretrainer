@@ -54,9 +54,10 @@ example_it: >-
 id: grammar-g010-prima-di
 pattern: ～前に
 title: Prima di
-meaning_it: prima di
+meaning_it: prima di fare... / prima di...
 notes_it: >-
-  Pattern della lezione L04 nella famiglia Condizioni, tempo, sequenza. Formazione: V-dizionario + {{前|まえ}}に / Nの{{前|まえ}}に. Si usa quando una cosa deve venire prima di un'altra.
+  Si usa per l'azione o il momento che viene prima di un altro. Con i verbi:
+  forma del dizionario + {{前|まえ}}に. Con i nomi: Nの{{前|まえ}}に.
 :::
 :::card
 id: card-g010-prima-di-concept
@@ -65,7 +66,7 @@ entry_type: grammar
 entry_id: grammar-g010-prima-di
 card_type: concept
 front: '～{{前|まえ}}に'
-back: prima di
+back: prima di fare... / prima di...
 example_jp: >-
   {{行|い}}く {{前|まえ}}に、 {{大丈夫|だいじょうぶ}}ですか。
 example_it: >-
@@ -75,9 +76,11 @@ example_it: >-
 id: grammar-g011-voler-fare
 pattern: ～たい
 title: Voler fare
-meaning_it: voler fare
+meaning_it: volere fare...
 notes_it: >-
-  Pattern della lezione L04 nella famiglia Desiderio, intenzione, possibilità. Formazione: V-stem + たい. Si usa per dire che un personaggio vuole fare qualcosa.
+  Esprime il desiderio di fare qualcosa da parte di chi parla o di qualcuno
+  vicino al suo punto di vista. Si forma con la base in ます + たい:
+  行きたい, 食べたい.
 :::
 :::card
 id: card-g011-voler-fare-concept
@@ -86,7 +89,7 @@ entry_type: grammar
 entry_id: grammar-g011-voler-fare
 card_type: concept
 front: '～たい'
-back: voler fare
+back: volere fare...
 example_jp: >-
   {{先|さき}}へ {{行|い}}きたい。
 example_it: >-

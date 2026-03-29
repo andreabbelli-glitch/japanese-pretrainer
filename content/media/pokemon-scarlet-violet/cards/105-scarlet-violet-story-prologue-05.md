@@ -85,13 +85,12 @@ example_it: >-
 :::grammar
 id: grammar-tte-no-wa
 pattern: ～ってのは
-title: Definizione colloquiale di un concetto
+title: Definizione colloquiale
 meaning_it: X sarebbe... / quanto a X...
 aliases: [～っていうのは]
 notes_it: >-
-  Introduce una definizione in registro parlato. Dopo `Xってのは` arriva di norma
-  la regola pratica del termine: rango, obiettivo o condizione che orienta la
-  route corrente.
+  Introduce una definizione in registro parlato. Dopo `Xってのは` arriva spesso la
+  spiegazione pratica del termine: che cos'e, come funziona o che ruolo ha.
 :::
 :::card
 id: card-tte-no-wa-concept
@@ -115,10 +114,9 @@ title: Non basta solo...
 meaning_it: non e sufficiente limitarsi a...
 aliases: [～だけではダメ]
 notes_it: >-
-  Questo pattern segnala che una condizione da sola non e sufficiente. Nei
-  dialoghi dell'accademia chiarisce bene i gate di progressione: frequentare le
-  lezioni o volere qualcosa non basta, serve anche uscire nel mondo e superare
-  prove concrete.
+  Questo pattern segnala che una condizione da sola non basta. Nei dialoghi
+  chiarisce bene i gate di progressione: fare una sola cosa non e sufficiente,
+  serve anche qualcos'altro.
 :::
 :::card
 id: card-dake-ja-dame-concept
@@ -140,9 +138,8 @@ pattern: ～たり ～たりする
 title: Fare cose come...
 meaning_it: fare azioni del tipo A, B, ecc.
 notes_it: >-
-  Elenca esempi senza chiudere la lista. Nel briefing del Treasure Hunt segnala
-  che piu tipi di attivita possono avanzare l'avventura, invece di imporre una
-  sequenza unica di missioni.
+  Elenca esempi senza chiudere la lista. Vuol dire "fare cose come A e B",
+  lasciando intendere che ce ne possano essere altre. Non e una lista completa.
 :::
 :::card
 id: card-tari-tari-suru-concept
@@ -165,9 +162,9 @@ pattern: ～とはいっても
 title: Anche se si chiama / anche se si dice
 meaning_it: anche se si dice X, in realta...
 notes_it: >-
-  Corregge una lettura troppo letterale del termine precedente. In frasi come
-  `{{宝|たから}}{{探|さが}}しとは いっても`, il testo ridefinisce subito il perimetro
-  pratico dell'obiettivo e chiarisce cosa conta davvero nella scena.
+  Corregge una lettura troppo letterale di quello che e stato appena detto:
+  "anche se si dice X, in realta...". Serve a precisare o ridimensionare un
+  termine precedente.
 :::
 :::card
 id: card-to-wa-itte-mo-concept

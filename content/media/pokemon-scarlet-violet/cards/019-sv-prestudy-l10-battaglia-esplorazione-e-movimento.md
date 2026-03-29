@@ -53,10 +53,12 @@ example_it: >-
 :::grammar
 id: grammar-g028-con-e-citazione
 pattern: と
-title: Con / e / citazione
-meaning_it: con / e / citazione
+title: Particella と
+meaning_it: con / e / "...\" / se...
 notes_it: >-
-  Pattern della lezione L10 nella famiglia Particelle e struttura. Formazione: N + と + V / frase + と言う. Molto utile nei dialoghi e nelle frasi citate.
+  と ha piu usi distinti: "con" qualcuno, elenco completo tra nomi, citazione
+  di parole o pensieri, e in alcuni casi condizione automatica. Va letto dal
+  contesto.
 :::
 :::card
 id: card-g028-con-e-citazione-concept
@@ -65,7 +67,7 @@ entry_type: grammar
 entry_id: grammar-g028-con-e-citazione
 card_type: concept
 front: 'と'
-back: con / e / citazione
+back: con / e / "...\" / se...
 example_jp: >-
   {{友達|ともだち}}と {{行|い}}く。
 example_it: >-
@@ -75,9 +77,11 @@ example_it: >-
 id: grammar-g029-destinazione-tempo-bersaglio-esistenza
 pattern: に
 title: Destinazione, tempo, bersaglio, esistenza
-meaning_it: destinazione, tempo, bersaglio, esistenza
+meaning_it: a / in / per / nel momento di
 notes_it: >-
-  Pattern della lezione L10 nella famiglia Particelle e struttura. Formazione: N + に + V. Molte frasi di movimento, incontro, obiettivo e tempo usano に.
+  に puo indicare destinazione, tempo preciso, persona o cosa bersaglio,
+  oppure il luogo di esistenza con いる / ある. E una particella molto frequente
+  con piu funzioni.
 :::
 :::card
 id: card-g029-destinazione-tempo-bersaglio-esistenza-concept
@@ -86,7 +90,7 @@ entry_type: grammar
 entry_id: grammar-g029-destinazione-tempo-bersaglio-esistenza
 card_type: concept
 front: 'に'
-back: destinazione, tempo, bersaglio, esistenza
+back: a / in / per / nel momento di
 example_jp: >-
   ジムに {{行|い}}く。
 example_it: >-
@@ -96,9 +100,10 @@ example_it: >-
 id: grammar-g030-possesso-collegamento-tra-nomi
 pattern: の
 title: Possesso / collegamento tra nomi
-meaning_it: possesso / collegamento tra nomi
+meaning_it: di / collegamento tra due nomi
 notes_it: >-
-  Pattern della lezione L10 nella famiglia Particelle e struttura. Formazione: N1 の N2. Compare in praticamente ogni schermata e dialogo descrittivo.
+  の unisce due nomi. Spesso indica possesso o appartenenza, ma puo anche
+  descrivere categoria, tipo, origine o relazione tra i due nomi.
 :::
 :::card
 id: card-g030-possesso-collegamento-tra-nomi-concept
@@ -107,7 +112,7 @@ entry_type: grammar
 entry_id: grammar-g030-possesso-collegamento-tra-nomi
 card_type: concept
 front: 'の'
-back: possesso / collegamento tra nomi
+back: di / collegamento tra due nomi
 example_jp: >-
   {{先生|せんせい}}の {{本|ほん}}です。
 example_it: >-

@@ -123,7 +123,7 @@ example_jp: >-
   {{人助|ひとだす}}けは いいことだけど {{入学|にゅうがく}}{{早々|そうそう}}
   ワイルドは ほどほどに。
 example_it: >-
-  Aiutare qualcuno e una buona cosa, ma all'inizio della scuola senza esagerare.
+  Aiutare qualcuno è una buona cosa, ma a inizio scuola non fare troppo il selvaggio.
 :::
 :::term
 id: term-v744-purezento
@@ -473,7 +473,7 @@ example_jp: >-
   バッグに {{食材|しょくざい}}を つめすぎちゃった！ おすそわけして
   あげるね。
 example_it: >-
-  Ho messo troppi ingredienti nella borsa: te ne condivido un po'.
+  Ho messo troppi ingredienti nella borsa: te ne do un po'.
 :::
 :::term
 id: term-v759-kyuusoku

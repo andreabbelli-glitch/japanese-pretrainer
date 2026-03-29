@@ -53,12 +53,14 @@ example_it: >-
 :::grammar
 id: grammar-g095-tipo-e-cose-cosi-tra-gli-esempi
 pattern: ～とか
-title: Tipo…, e cose così / tra gli esempi
-meaning_it: tipo…, e cose così / tra gli esempi
+title: Tipo... / per esempio...
+meaning_it: esempi non esaustivi, in tono colloquiale
 aliases:
 - や / など
 notes_it: >-
-  Pattern della lezione L29 nella famiglia Particelle e struttura. Formazione: N / frase + とか. Frequentissimo negli elenchi vaghi e nel parlato rilassato degli NPC.
+  Elenca esempi in modo non completo: "tipo...", "per esempio...", "e cose
+  cosi". Puo comparire sia con nomi sia con frasi, soprattutto nel parlato
+  rilassato.
 :::
 :::card
 id: card-g095-tipo-e-cose-cosi-tra-gli-esempi-concept
@@ -67,7 +69,7 @@ entry_type: grammar
 entry_id: grammar-g095-tipo-e-cose-cosi-tra-gli-esempi
 card_type: concept
 front: "～とか"
-back: tipo…, e cose così / tra gli esempi
+back: tipo... / per esempio...
 example_jp: >-
   ジムとか {{学校|がっこう}}とか。
 example_it: >-
@@ -248,7 +250,7 @@ back: mensa / tavola calda
 example_jp: >-
   {{学校|がっこう}}で {{食堂|しょくどう}}が だいじ です。
 example_it: >-
-  In scuola mensa è importante.
+  A scuola la mensa è importante.
 :::
 :::term
 id: term-v488-koosutoeria
@@ -328,7 +330,7 @@ back: grande operazione
 example_jp: >-
   これは {{大作戦|だい.さく.せん}} です。
 example_it: >-
-  Questo è grande operazione.
+  Questa è una grande operazione.
 :::
 :::term
 id: term-v494-pikku
@@ -350,7 +352,7 @@ back: stuzzicadente / pick
 example_jp: >-
   これは ピック です。
 example_it: >-
-  Questo è stuzzicadente.
+  Questo è uno stuzzicadenti.
 :::
 :::term
 id: term-v495-chousensha
@@ -403,7 +405,7 @@ back: strategia / operazione
 example_jp: >-
   これは {{作戦|さくせん}} です。
 example_it: >-
-  Questo è strategia.
+  Questa è una strategia.
 :::
 :::term
 id: term-v498-kyanioneria
@@ -434,7 +436,7 @@ back: missione
 example_jp: >-
   メニューで ミッションを {{見|み}}ます。
 example_it: >-
-  Guardo il missione in menu.
+  Nel menu guardo la missione.
 :::
 :::term
 id: term-v500-hinto
@@ -522,7 +524,7 @@ back: reception / sportello
 example_jp: >-
   これは {{受付|うけつけ}} です。
 example_it: >-
-  Questo è reception.
+  Questo è lo sportello.
 :::
 :::term
 id: term-v505-kansoku
@@ -544,7 +546,7 @@ back: osservazione
 example_jp: >-
   これは {{観測|かんそく}} です。
 example_it: >-
-  Questo è osservazione.
+  Questa è un'osservazione.
 :::
 :::term
 id: term-v506-kaishi

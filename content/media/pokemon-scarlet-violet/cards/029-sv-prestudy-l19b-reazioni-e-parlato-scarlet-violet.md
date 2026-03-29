@@ -96,12 +96,14 @@ example_it: >-
 :::grammar
 id: grammar-g056-finale-maschile-riflessiva-osservativa
 pattern: ～だな
-title: Finale maschile riflessiva / osservativa
-meaning_it: finale maschile riflessiva / osservativa
+title: Eh / vedo che... / proprio...
+meaning_it: commento o constatazione colloquiale
 aliases:
 - finali di frase よ / ね / な
 notes_it: >-
-  Pattern della lezione L19 nella famiglia Colloquiale da dialogo. Formazione: frase piana + だな. Chiude la frase con una constatazione o un commento colloquiale.
+  Finale di frase colloquiale, spesso maschile. Serve per commentare cio che si
+  vede o si pensa in quel momento: "eh", "vedo che...", "proprio...". Non e una
+  domanda vera.
 :::
 :::card
 id: card-g056-finale-maschile-riflessiva-osservativa-concept
@@ -110,7 +112,7 @@ entry_type: grammar
 entry_id: grammar-g056-finale-maschile-riflessiva-osservativa
 card_type: concept
 front: '～だな'
-back: finale maschile riflessiva / osservativa
+back: commento o constatazione colloquiale
 example_jp: >-
   このジムは むずかしいな。
 example_it: >-

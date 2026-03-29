@@ -205,7 +205,7 @@ back: abilità di ride
 example_jp: >-
   ライド{{技|わざ}}が あります。
 example_it: >-
-  C'è una tecnica di ride.
+  C'è un'abilità di cavalcata.
 :::
 :::term
 id: term-v227-menyuu
@@ -293,7 +293,7 @@ back: significato
 example_jp: >-
   その {{意味|いみ}}は これです。
 example_it: >-
-  Questo è il significato.
+  Il significato è questo.
 :::
 :::term
 id: term-v231-denki

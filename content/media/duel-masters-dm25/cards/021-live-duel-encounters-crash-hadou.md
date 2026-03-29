@@ -132,14 +132,14 @@ level_hint: custom
 :::grammar
 id: grammar-sareta-toki
 pattern: ～された時
-title: Trigger passivo su ciò che subisce la carta
+title: Quando viene X / quando subisce X
 reading: されたとき
 meaning_it: quando viene X / quando subisce X
 aliases: [された時]
 notes_it: >-
-  Nel rules text questa forma passiva sposta il focus sull'evento subito dalla
-  carta. In `破壊された時`, il punto non è chi distrugge, ma il fatto che questa
-  creatura venga distrutta e che da lì parta il trigger.
+  E la forma passiva + 時. Il focus non e su chi compie l'azione, ma su cio che
+  succede a questa carta. Esempio:
+  `破壊された時` = quando viene distrutta.
 level_hint: custom
 :::
 

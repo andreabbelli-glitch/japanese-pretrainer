@@ -75,10 +75,12 @@ example_it: >-
 :::grammar
 id: grammar-g005-senza-fare-non-fare-e
 pattern: ～ないで
-title: Senza fare / non fare e...
-meaning_it: senza fare / non fare e...
+title: Senza fare / non fare
+meaning_it: senza fare... / non fare e...
 notes_it: >-
-  Pattern della lezione L02 nella famiglia Forme verbali e richieste. Formazione: V-ないで. Negazione pratica molto comune nei dialoghi.
+  Si usa per dire "senza fare X" oppure per collegare una negazione a cio che
+  segue. E comune in istruzioni e richieste: みないで = senza guardare / non
+  guardare.
 :::
 :::card
 id: card-g005-senza-fare-non-fare-e-concept
@@ -96,12 +98,13 @@ example_it: >-
 :::grammar
 id: grammar-g006-contrazione-colloquiale-di
 pattern: ～てる
-title: Contrazione colloquiale di 〜ている
-meaning_it: contrazione colloquiale di 〜ている
+title: ～ている colloquiale
+meaning_it: forma colloquiale di ～ている
 aliases:
 - 〜ている
 notes_it: >-
-  Pattern della lezione L02 nella famiglia Colloquiale da dialogo. Formazione: V-てる. Nei dialoghi veloci spesso i personaggi non dicono ている completo.
+  Nel parlato 〜ている diventa spesso 〜てる. Il significato non cambia: cambia
+  solo il registro, piu naturale e informale nei dialoghi veloci.
 :::
 :::card
 id: card-g006-contrazione-colloquiale-di-concept
@@ -110,7 +113,7 @@ entry_type: grammar
 entry_id: grammar-g006-contrazione-colloquiale-di
 card_type: concept
 front: '～てる'
-back: contrazione colloquiale di 〜ている
+back: forma colloquiale di ～ている
 example_jp: >-
   ネモが {{待|ま}}ってる。
 example_it: >-
@@ -158,7 +161,7 @@ back: ride / cavalcata
 example_jp: >-
   ライドで {{行|い}}きます。
 example_it: >-
-  Ci vado in ride.
+  Ci vado in sella.
 :::
 :::term
 id: term-v015-jibun

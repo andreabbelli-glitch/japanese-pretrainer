@@ -75,12 +75,14 @@ example_it: >-
 :::grammar
 id: grammar-g106-registro-samurai-comico
 pattern: ～でござる
-title: Registro samurai / comico
-meaning_it: registro samurai / comico
+title: Copula stilizzata da personaggio
+meaning_it: modo di parlare teatrale, samurai o comico
 aliases:
 - registro personaggio
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Colloquiale da dialogo. Formazione: copula / frase + でござる. Utile per non sentirti “alieno” davanti al parlato particolare di シュウメイ.
+  E una variante marcata di です, usata per dare un tono teatrale, antiquato o
+  da samurai. Il significato di base resta quello della frase: cambia soprattutto
+  il personaggio che senti parlare.
 :::
 :::card
 id: card-g106-registro-samurai-comico-concept
@@ -89,7 +91,7 @@ entry_type: grammar
 entry_id: grammar-g106-registro-samurai-comico
 card_type: concept
 front: "～でござる"
-back: registro samurai / comico
+back: modo di parlare teatrale, samurai o comico
 example_jp: >-
   {{拙者|せっしゃ}}は {{元気|げんき}}でござる。
 example_it: >-
@@ -101,7 +103,8 @@ pattern: ～について
 title: Riguardo a / su
 meaning_it: riguardo a / su
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Spiegazione, opinione, apparenza. Formazione: nome + について. Pattern molto utile per capire spiegazioni e lezioni.
+  Introduce l'argomento di una spiegazione, ricerca o discussione: "riguardo a
+  X", "su X". E molto comune in lezioni, tutorial e testi informativi.
 :::
 :::card
 id: card-g107-riguardo-a-su-concept
@@ -120,11 +123,13 @@ example_it: >-
 id: grammar-g108-solo-nientaltro-che
 pattern: ～ばっかり
 title: Solo… / nient’altro che…
-meaning_it: solo… / nient’altro che…
+meaning_it: sempre e solo... / nient'altro che...
 aliases:
 - 〜ばかり
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Colloquiale da dialogo. Formazione: nome / verbo + ばっかり. Molto naturale nel parlato colloquiale di NPC e ragazzi.
+  Nel parlato colloquiale indica ripetizione o sbilanciamento: "sempre e solo
+  X", "nient'altro che X". Spesso porta anche una sfumatura di lamentela o
+  critica.
 :::
 :::card
 id: card-g108-solo-nientaltro-che-concept
@@ -133,7 +138,7 @@ entry_type: grammar
 entry_id: grammar-g108-solo-nientaltro-che
 card_type: concept
 front: "～ばっかり"
-back: solo… / nient’altro che…
+back: sempre e solo... / nient'altro che...
 example_jp: >-
   {{遊|あそ}}んでばっかり いる。
 example_it: >-
@@ -335,7 +340,7 @@ back: reclutamento
 example_jp: >-
   これは {{勧誘|かんゆう}} です。
 example_it: >-
-  Questo è reclutamento.
+  Questo è un reclutamento.
 :::
 :::term
 id: term-v647-kyouin

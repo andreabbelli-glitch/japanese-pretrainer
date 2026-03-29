@@ -53,10 +53,12 @@ example_it: >-
 :::grammar
 id: grammar-g022-collega-azioni-crea-richieste-e-molte-co
 pattern: て形
-title: Collega azioni, crea richieste e molte costruzioni
-meaning_it: collega azioni, crea richieste e molte costruzioni
+title: Te-forma
+meaning_it: forma che collega azioni e costruisce molte espressioni
 notes_it: >-
-  Pattern della lezione L08 nella famiglia Forme verbali e richieste. Formazione: V-て. È la forma più importante per leggere dialoghi e spiegazioni.
+  La て{{形|けい}} serve per unire azioni, fare richieste, dare permessi,
+  esprimere stati e costruire molte forme importanti. Non ha un solo significato
+  fisso: e una base grammaticale.
 :::
 :::card
 id: card-g022-collega-azioni-crea-richieste-e-molte-co-concept
@@ -65,7 +67,7 @@ entry_type: grammar
 entry_id: grammar-g022-collega-azioni-crea-richieste-e-molte-co
 card_type: concept
 front: 'て{{形|けい}}'
-back: collega azioni, crea richieste e molte costruzioni
+back: forma che collega azioni e costruisce molte espressioni
 example_jp: >-
   ここから {{始|はじ}}めて。
 example_it: >-
@@ -75,9 +77,11 @@ example_it: >-
 id: grammar-g023-negazione
 pattern: ない形
 title: Negazione
-meaning_it: negazione
+meaning_it: 'forma negativa: non fare / non essere'
 notes_it: >-
-  Pattern della lezione L08 nella famiglia Forme verbali e richieste. Formazione: V-ない. Necessaria per divieti, mancanza, impossibilità.
+  La ない{{形|けい}} e la base della negazione. Serve per dire che qualcosa non
+  accade, non esiste o non si fa, e per costruire forme come 〜ないで e
+  〜なければならない.
 :::
 :::card
 id: card-g023-negazione-concept
@@ -86,7 +90,7 @@ entry_type: grammar
 entry_id: grammar-g023-negazione
 card_type: concept
 front: 'ない{{形|けい}}'
-back: negazione
+back: 'forma negativa: non fare / non essere'
 example_jp: >-
   まだ {{始|はじ}}めない。
 example_it: >-
@@ -96,9 +100,10 @@ example_it: >-
 id: grammar-g024-registro-cortese-vs-piano
 pattern: ます / 辞書形
 title: Registro cortese vs piano
-meaning_it: registro cortese vs piano
+meaning_it: forma cortese in ～ます vs forma piana del dizionario
 notes_it: >-
-  Pattern della lezione L08 nella famiglia Forme verbali e richieste. Formazione: V-ます / V-dizionario. Nei dialoghi sentirai entrambi a seconda del personaggio.
+  La forma in ます e piu cortese e neutra. La forma del dizionario e piu piana e
+  appare spesso in dialoghi casuali, spiegazioni interne o stile piu diretto.
 :::
 :::card
 id: card-g024-registro-cortese-vs-piano-concept
@@ -107,7 +112,7 @@ entry_type: grammar
 entry_id: grammar-g024-registro-cortese-vs-piano
 card_type: concept
 front: 'ます / {{辞書形|じ.しょ.けい}}'
-back: registro cortese vs piano
+back: forma cortese in ～ます vs forma piana del dizionario
 example_jp: >-
   {{店|みせ}}へ {{行|い}}きます。 / {{店|みせ}}へ {{行|い}}く。
 example_it: >-
@@ -199,7 +204,7 @@ back: domanda
 example_jp: >-
   {{質問|しつもん}}が あります。
 example_it: >-
-  C'è la domanda.
+  C'è una domanda.
 :::
 :::term
 id: term-v094-shokujipawaa

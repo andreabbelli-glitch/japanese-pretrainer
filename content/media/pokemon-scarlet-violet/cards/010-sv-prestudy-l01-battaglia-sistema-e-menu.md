@@ -54,9 +54,12 @@ example_it: >-
 id: grammar-g001-spiegazione-enfasi
 pattern: ～のだ / ～んだ
 title: Spiegazione / enfasi
-meaning_it: spiegazione / enfasi
+meaning_it: spiega, giustifica o mette enfasi su qualcosa
 notes_it: >-
-  Pattern della lezione L01 nella famiglia Spiegazione, opinione, apparenza. Formazione: plain + のだ / んだ. Nei giochi serve tantissimo per cogliere il ''perché'' implicito.
+  Si usa quando il parlante sta spiegando il motivo, chiarendo un fatto o
+  insistendo su un punto: "e che...", "il fatto e che...". Forma: frase piana
+  + のだ / んだ. Nei dialoghi fa sentire che dietro la frase c'e una spiegazione
+  o una presa di posizione.
 :::
 :::card
 id: card-g001-spiegazione-enfasi-concept
@@ -65,7 +68,7 @@ entry_type: grammar
 entry_id: grammar-g001-spiegazione-enfasi
 card_type: concept
 front: '～のだ / ～んだ'
-back: spiegazione / enfasi
+back: spiega, giustifica o mette enfasi su qualcosa
 example_jp: >-
   これは {{大事|だいじ}}なんだ。
 example_it: >-
@@ -140,9 +143,11 @@ example_it: >-
 id: grammar-g003-stato-in-corso-stato-risultante
 pattern: ～ている
 title: Stato in corso / stato risultante
-meaning_it: stato in corso / stato risultante
+meaning_it: stare facendo / essere in uno stato risultante
 notes_it: >-
-  Pattern della lezione L01 nella famiglia Forme verbali e richieste. Formazione: V-ている. Appare in descrizioni, spiegazioni e dialoghi continui.
+  Con un verbo d'azione puo voler dire che l'azione e in corso. Con molti
+  verbi indica invece lo stato risultante: すわっている = essere seduto,
+  しっている = sapere. Va letto dal tipo di verbo e dal contesto.
 :::
 :::card
 id: card-g003-stato-in-corso-stato-risultante-concept
@@ -151,7 +156,7 @@ entry_type: grammar
 entry_id: grammar-g003-stato-in-corso-stato-risultante
 card_type: concept
 front: '～ている'
-back: stato in corso / stato risultante
+back: stare facendo / essere in uno stato risultante
 example_jp: >-
   {{先生|せんせい}}が {{話|はな}}している。
 example_it: >-
@@ -287,5 +292,5 @@ back: battaglia
 example_jp: >-
   ここで バトルを します。
 example_it: >-
-  Qui faccio una battaglia.
+  Qui combatto.
 :::

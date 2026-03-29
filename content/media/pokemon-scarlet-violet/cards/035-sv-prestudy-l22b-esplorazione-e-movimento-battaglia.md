@@ -97,10 +97,12 @@ example_it: >-
 :::grammar
 id: grammar-g075-si-decide-che-finire-per
 pattern: ～ことになる
-title: Si decide che / finire per
-meaning_it: si decide che / finire per
+title: Si decide che / viene stabilito che
+meaning_it: si finisce per... / viene deciso che...
 notes_it: >-
-  Pattern della lezione L22 nella famiglia Desiderio, intenzione, possibilità. Formazione: V-dizionario + ことになる. Molto utile in narrazione e decisioni imposte dall'esterno.
+  Indica un risultato deciso da circostanze esterne, regole o decisioni altrui:
+  "si finisce per...", "viene stabilito che...". Non e la decisione volontaria
+  del parlante.
 :::
 :::card
 id: card-g075-si-decide-che-finire-per-concept
@@ -109,7 +111,7 @@ entry_type: grammar
 entry_id: grammar-g075-si-decide-che-finire-per
 card_type: concept
 front: "～ことになる"
-back: si decide che / finire per
+back: si finisce per... / viene deciso che...
 example_jp: >-
   {{来週|らいしゅう}} テストを {{受|う}}けることになる。
 example_it: >-
@@ -119,9 +121,10 @@ example_it: >-
 id: grammar-g076-decidere-di-fare
 pattern: ～ことにする
 title: Decidere di fare
-meaning_it: decidere di fare
+meaning_it: decidere di fare... / scegliere di...
 notes_it: >-
-  Pattern della lezione L22 nella famiglia Desiderio, intenzione, possibilità. Formazione: V-dizionario/ない + ことにする. Non è da N5/N4 puro, ma nei giochi compare spesso in testi narrativi.
+  Indica una decisione presa dal parlante: "decido di...", "scelgo di...". Si
+  usa anche per fissare una regola personale o una scelta pratica.
 :::
 :::card
 id: card-g076-decidere-di-fare-concept
@@ -130,7 +133,7 @@ entry_type: grammar
 entry_id: grammar-g076-decidere-di-fare
 card_type: concept
 front: "～ことにする"
-back: decidere di fare
+back: decidere di fare... / scegliere di...
 example_jp: >-
   {{今日|きょう}}は ここで {{休|やす}}むことにする。
 example_it: >-
@@ -140,9 +143,10 @@ example_it: >-
 id: grammar-g077-fare-in-modo-di
 pattern: ～ようにする
 title: Fare in modo di
-meaning_it: fare in modo di
+meaning_it: cercare di... / fare in modo di...
 notes_it: >-
-  Pattern della lezione L22 nella famiglia Desiderio, intenzione, possibilità. Formazione: V-dizionario/ない + ようにする. Consigli e abitudini.
+  Indica uno sforzo abituale o intenzionale: "cercare di fare", "fare in modo
+  di". E comune in consigli, promemoria e abitudini che si vuole mantenere.
 :::
 :::card
 id: card-g077-fare-in-modo-di-concept
@@ -151,7 +155,7 @@ entry_type: grammar
 entry_id: grammar-g077-fare-in-modo-di
 card_type: concept
 front: "～ようにする"
-back: fare in modo di
+back: cercare di... / fare in modo di...
 example_jp: >-
   {{毎日|まいにち}} {{少|すこ}}しずつ {{読|よ}}むようにする。
 example_it: >-

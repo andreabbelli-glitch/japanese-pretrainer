@@ -32,9 +32,10 @@ example_it: >-
 id: grammar-g019-dover-fare
 pattern: ～なければならない / ～ないといけない
 title: Dover fare
-meaning_it: dover fare
+meaning_it: dover fare...
 notes_it: >-
-  Pattern della lezione L07 nella famiglia Forme verbali e richieste. Formazione: V-ない + なければならない. Quest, obblighi, obiettivi.
+  Esprime obbligo o necessita: "devo fare X". Le due forme hanno quasi lo
+  stesso senso; 〜ないといけない e spesso piu colloquiale.
 :::
 :::card
 id: card-g019-dover-fare-concept
@@ -43,7 +44,7 @@ entry_type: grammar
 entry_id: grammar-g019-dover-fare
 card_type: concept
 front: '～なければならない / ～ないといけない'
-back: dover fare
+back: dover fare...
 example_jp: >-
   {{明日|あした}}までに {{行|い}}かないといけない。
 example_it: >-
@@ -52,10 +53,12 @@ example_it: >-
 :::grammar
 id: grammar-g020-poter-fare
 pattern: 可能形
-title: Poter fare
-meaning_it: poter fare
+title: Forma potenziale
+meaning_it: potere fare... / essere in grado di fare...
 notes_it: >-
-  Pattern della lezione L07 nella famiglia Dare/ricevere e diatesi. Formazione: godan: eる / ichidan: られる etc.. Molto frequente in spiegazioni su cosa puoi fare nel gioco.
+  E la forma del verbo che dice che un'azione e possibile. Esempi:
+  行ける = posso andare, 食べられる = posso mangiare. Nei giochi indica cosa puoi
+  fare in quel momento.
 :::
 :::card
 id: card-g020-poter-fare-concept
@@ -64,7 +67,7 @@ entry_type: grammar
 entry_id: grammar-g020-poter-fare
 card_type: concept
 front: '{{可能形|か.のう.けい}}'
-back: poter fare
+back: potere fare... / essere in grado di fare...
 example_jp: >-
   ここから {{上|うえ}}へ {{行|い}}ける。
 example_it: >-
@@ -74,9 +77,11 @@ example_it: >-
 id: grammar-g021-passato-completamento
 pattern: た形
 title: Passato / completamento
-meaning_it: passato / completamento
+meaning_it: ha fatto... / aver fatto...
 notes_it: >-
-  Pattern della lezione L07 nella famiglia Forme verbali e richieste. Formazione: V-た. Base per narrazione e per molte strutture successive.
+  La forma in た indica spesso passato compiuto, ma entra anche in molte
+  costruzioni grammaticali come ～たら e ～た{{後|あと}}で. Non vuol dire solo
+  "passato": dipende dalla struttura.
 :::
 :::card
 id: card-g021-passato-completamento-concept
@@ -85,7 +90,7 @@ entry_type: grammar
 entry_id: grammar-g021-passato-completamento
 card_type: concept
 front: 'た{{形|けい}}'
-back: passato / completamento
+back: ha fatto... / aver fatto...
 example_jp: >-
   もう {{見|み}}た。
 example_it: >-

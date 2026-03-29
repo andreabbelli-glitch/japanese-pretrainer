@@ -114,7 +114,7 @@ back: accademia / campus
 example_jp: >-
   ここは {{学園|がくえん}} です。
 example_it: >-
-  Qui è accademia.
+  Questa è l'accademia.
 :::
 :::term
 id: term-v159-bosu
@@ -202,7 +202,7 @@ back: danno
 example_jp: >-
   ダメージが {{大|おお}}きいです。
 example_it: >-
-  Danno.
+  Il danno è alto.
 :::
 :::term
 id: term-v163-supaisu
@@ -299,7 +299,7 @@ back: preside
 example_jp: >-
   {{校長|こうちょう}}と {{話|はな}}します。
 example_it: >-
-  Parlo con preside.
+  Parlo con il preside.
 :::
 :::term
 id: term-v169-atarashii

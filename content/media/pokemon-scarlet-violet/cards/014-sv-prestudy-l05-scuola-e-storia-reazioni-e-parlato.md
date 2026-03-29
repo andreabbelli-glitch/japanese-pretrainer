@@ -54,9 +54,10 @@ example_it: >-
 id: grammar-g014-si-puo-va-bene-fare
 pattern: ～てもいい
 title: Si può / va bene fare
-meaning_it: si può / va bene fare
+meaning_it: si può fare... / va bene fare...
 notes_it: >-
-  Pattern della lezione L05 nella famiglia Forme verbali e richieste. Formazione: V-てもいい. Permesso e proposte.
+  Indica permesso o accettazione: "puoi fare X", "va bene fare X". Si forma
+  con la te-forma + もいい.
 :::
 :::card
 id: card-g014-si-puo-va-bene-fare-concept
@@ -65,7 +66,7 @@ entry_type: grammar
 entry_id: grammar-g014-si-puo-va-bene-fare
 card_type: concept
 front: '～てもいい'
-back: si può / va bene fare
+back: si può fare... / va bene fare...
 example_jp: >-
   ここで {{休|やす}}んでも いい。
 example_it: >-
@@ -75,9 +76,10 @@ example_it: >-
 id: grammar-g015-dopo
 pattern: ～後で / ～あとで
 title: Dopo
-meaning_it: dopo
+meaning_it: dopo aver fatto... / dopo...
 notes_it: >-
-  Pattern della lezione L05 nella famiglia Condizioni, tempo, sequenza. Formazione: V-た + {{後|あと}}で. Sequenza narrativa e obiettivi.
+  Indica cosa succede dopo un'azione o un momento. Con i verbi di solito usa la
+  forma in た + {{後|あと}}で. Con i nomi: Nの{{後|あと}}で.
 :::
 :::card
 id: card-g015-dopo-concept
@@ -86,7 +88,7 @@ entry_type: grammar
 entry_id: grammar-g015-dopo
 card_type: concept
 front: '～{{後|あと}}で / ～あとで'
-back: dopo
+back: dopo aver fatto... / dopo...
 example_jp: >-
   あとで {{行|い}}く。
 example_it: >-

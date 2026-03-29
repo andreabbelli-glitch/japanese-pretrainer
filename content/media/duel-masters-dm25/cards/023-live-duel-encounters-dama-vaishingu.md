@@ -26,16 +26,14 @@ level_hint: custom
 :::grammar
 id: grammar-sorega-nara
 pattern: それが～なら
-title: Se proprio quella carta passa il filtro
+title: Se quella carta soddisfa la condizione
 reading: それがなら
-meaning_it: se quella carta è / se proprio quello passa la condizione
+meaning_it: se quella carta e / se quella carta soddisfa il filtro
 aliases: [それが～なら]
 notes_it: >-
-  `それが` riprende il bersaglio appena scelto e `なら` apre il controllo sullo
-  stesso oggetto. In
-  `それがコスト{{4以下|よんいか}}の{{魔導具|ま.どう.ぐ}}なら`, il testo non cambia
-  bersaglio: verifica se la carta scelta passa il filtro che porta al ramo
-  positivo.
+  `それが` riprende la carta appena scelta; `なら` controlla se proprio quella
+  carta passa il filtro indicato dopo. Non cambia bersaglio: verifica lo stesso
+  oggetto gia nominato.
 level_hint: n4
 :::
 

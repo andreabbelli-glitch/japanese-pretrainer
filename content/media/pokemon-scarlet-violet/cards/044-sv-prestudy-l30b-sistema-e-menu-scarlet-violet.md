@@ -595,7 +595,7 @@ back: mass outbreak
 example_jp: >-
   {{大量発生|たい.りょう.はっ.せい}}が {{起|お}}きています。
 example_it: >-
-  C'è una mass outbreak.
+  È in corso una mass outbreak.
 :::
 :::term
 id: term-v614-nyuuryoku

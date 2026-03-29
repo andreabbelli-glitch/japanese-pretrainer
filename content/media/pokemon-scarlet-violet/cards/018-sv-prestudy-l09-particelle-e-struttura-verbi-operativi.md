@@ -56,7 +56,8 @@ pattern: から / まで
 title: Da / fino a
 meaning_it: da / fino a
 notes_it: >-
-  Pattern della lezione L09 nella famiglia Particelle e struttura. Formazione: N + から / まで. Direzioni, orari, percorsi.
+  から indica il punto di partenza, まで il punto di arrivo. Possono riferirsi a
+  luogo, tempo o intervallo.
 :::
 :::card
 id: card-g025-da-fino-a-concept
@@ -74,10 +75,12 @@ example_it: >-
 :::grammar
 id: grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo
 pattern: が
-title: Marca il soggetto / evidenzia ciò che importa
-meaning_it: marca il soggetto / evidenzia ciò che importa
+title: Particella が
+meaning_it: marca il soggetto o mette a fuoco ciò che conta
 notes_it: >-
-  Pattern della lezione L09 nella famiglia Particelle e struttura. Formazione: N + が + frase. Molto frequente quando si introduce ciò che appare, accade o interessa.
+  が introduce spesso il soggetto della frase, soprattutto quando si presenta
+  qualcosa di nuovo o si evidenzia proprio quell'elemento. Non coincide sempre
+  con il tema della frase.
 :::
 :::card
 id: card-g026-marca-il-soggetto-evidenzia-cio-che-impo-concept
@@ -86,7 +89,7 @@ entry_type: grammar
 entry_id: grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo
 card_type: concept
 front: 'が'
-back: marca il soggetto / evidenzia ciò che importa
+back: marca il soggetto o mette a fuoco ciò che conta
 example_jp: >-
   ポケモンが いる。
 example_it: >-
@@ -95,10 +98,11 @@ example_it: >-
 :::grammar
 id: grammar-g027-luogo-dell-azione-mezzo
 pattern: で
-title: Luogo dell'azione / mezzo
-meaning_it: luogo dell'azione / mezzo
+title: Particella で
+meaning_it: in / con / tramite
 notes_it: >-
-  Pattern della lezione L09 nella famiglia Particelle e struttura. Formazione: N + で + V. Serve per capire dove avviene un''azione.
+  で indica spesso il luogo in cui si svolge un'azione oppure il mezzo o
+  strumento con cui la fai: scuola, menu, bus, mano, ecc.
 :::
 :::card
 id: card-g027-luogo-dell-azione-mezzo-concept
@@ -107,7 +111,7 @@ entry_type: grammar
 entry_id: grammar-g027-luogo-dell-azione-mezzo
 card_type: concept
 front: 'で'
-back: luogo dell'azione / mezzo
+back: in / con / tramite
 example_jp: >-
   {{学校|がっこう}}で {{勉強|べんきょう}}する。
 example_it: >-

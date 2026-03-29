@@ -97,12 +97,14 @@ example_it: >-
 :::grammar
 id: grammar-g093-in-modo-da-affinche
 pattern: ～ように (scopo / risultato)
-title: In modo da / affinché
-meaning_it: in modo da / affinché
+title: In modo che... / per riuscire a...
+meaning_it: indica scopo o risultato atteso
 aliases:
 - 〜ようになる / 〜ようにする
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Desiderio, intenzione, possibilità. Formazione: verbo / negativa + ように. Appare in istruzioni, obiettivi e consigli pratici.
+  Si usa spesso con verbi come "poter", "capire", "sentire", oppure con forme
+  negative: l'idea e ottenere un risultato o evitare un effetto. Rispetto a
+  ～ために, qui il focus e piu sul risultato che si vuole far accadere.
 :::
 :::card
 id: card-g093-in-modo-da-affinche-concept
@@ -111,7 +113,7 @@ entry_type: grammar
 entry_id: grammar-g093-in-modo-da-affinche
 card_type: concept
 front: "～ように (scopo / risultato)"
-back: in modo da / affinché
+back: in modo che... / per riuscire a...
 example_jp: >-
   {{忘|わす}}れないように {{書|か}}く。
 example_it: >-
@@ -120,12 +122,14 @@ example_it: >-
 :::grammar
 id: grammar-g094-persino-ma-dai-infatti
 pattern: ～だって
-title: Persino… / ma dai… / infatti…
-meaning_it: persino… / ma dai… / infatti…
+title: Perfino... / perché... / sai...
+meaning_it: forma colloquiale con usi diversi
 aliases:
 - 〜って
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Colloquiale da dialogo. Formazione: nome / frase + だって. Molto comune nel parlato giovanile e nei toni lamentosi o giustificativi.
+  Dopo un nome puo voler dire "perfino / anche". In risposta o spiegazione puo
+  suonare come "perche...", "ma dai, e che...". Va letto nel contesto, non con
+  una sola traduzione fissa.
 :::
 :::card
 id: card-g094-persino-ma-dai-infatti-concept
@@ -134,7 +138,7 @@ entry_type: grammar
 entry_id: grammar-g094-persino-ma-dai-infatti
 card_type: concept
 front: "～だって"
-back: persino… / ma dai… / infatti…
+back: perfino / anche; oppure "perché..." colloquiale
 example_jp: >-
   {{先生|せんせい}}だって {{間違|まちが}}える。
 example_it: >-
@@ -587,7 +591,7 @@ back: dintorni / area intorno
 example_jp: >-
   ここは {{周囲|しゅうい}} です。
 example_it: >-
-  Qui ci sono i dintorni.
+  Questi sono i dintorni.
 :::
 :::term
 id: term-v588-firutaa

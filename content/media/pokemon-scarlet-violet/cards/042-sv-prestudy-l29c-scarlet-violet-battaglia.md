@@ -502,7 +502,7 @@ back: scambio / interazione
 example_jp: >-
   ポケモンを {{交換|こうかん}}します。
 example_it: >-
-  C'è interazione.
+  Faccio uno scambio di Pokémon.
 :::
 :::term
 id: term-v564-konran

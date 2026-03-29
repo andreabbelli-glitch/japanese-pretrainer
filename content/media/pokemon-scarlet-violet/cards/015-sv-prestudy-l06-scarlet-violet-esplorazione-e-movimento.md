@@ -98,9 +98,10 @@ example_it: >-
 id: grammar-g017-pensare-che
 pattern: ～と思う
 title: Pensare che
-meaning_it: pensare che
+meaning_it: pensare che...
 notes_it: >-
-  Pattern della lezione L06 nella famiglia Spiegazione, opinione, apparenza. Formazione: frase + と{{思|おも}}う. Ogni volta che un personaggio dà un''opinione o una supposizione.
+  Si usa per opinioni, impressioni o supposizioni: "penso che...". Dopo una
+  frase intera, と marca il contenuto pensato e {{思|おも}}う il verbo "pensare".
 :::
 :::card
 id: card-g017-pensare-che-concept
@@ -109,7 +110,7 @@ entry_type: grammar
 entry_id: grammar-g017-pensare-che
 card_type: concept
 front: '～と{{思|おも}}う'
-back: pensare che
+back: pensare che...
 example_jp: >-
   これは {{便利|べんり}}だと {{思|おも}}う。
 example_it: >-
@@ -119,9 +120,10 @@ example_it: >-
 id: grammar-g018-non-si-deve
 pattern: ～てはいけない / ～ちゃいけない
 title: Non si deve
-meaning_it: non si deve
+meaning_it: non bisogna fare... / non si deve fare...
 notes_it: >-
-  Pattern della lezione L06 nella famiglia Forme verbali e richieste. Formazione: V-てはいけない. Regole, prove, divieti.
+  Esprime divieto o regola. La forma colloquiale 〜ちゃいけない ha lo stesso
+  significato ma suona piu parlata.
 :::
 :::card
 id: card-g018-non-si-deve-concept
@@ -130,7 +132,7 @@ entry_type: grammar
 entry_id: grammar-g018-non-si-deve
 card_type: concept
 front: '～てはいけない / ～ちゃいけない'
-back: non si deve
+back: non bisogna fare... / non si deve fare...
 example_jp: >-
   ここで {{入|い}}ってはいけない。
 example_it: >-
@@ -359,5 +361,5 @@ back: Velocità
 example_jp: >-
   この ポケモンは {{素早|すばや}}さが {{高|たか}}いです。
 example_it: >-
-  Questo Pokémon ha Velocità alta.
+  Questo Pokémon ha una Velocità alta.
 :::

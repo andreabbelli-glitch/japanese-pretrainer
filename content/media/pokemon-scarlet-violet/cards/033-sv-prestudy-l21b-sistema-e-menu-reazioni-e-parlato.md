@@ -120,10 +120,12 @@ example_it: >-
 :::grammar
 id: grammar-g069-andare-avanti-facendo-cambiare-nel-tempo
 pattern: ～ていく
-title: Andare avanti facendo / cambiare nel tempo
-meaning_it: andare avanti facendo / cambiare nel tempo
+title: Continuare / andare verso il futuro
+meaning_it: continuare a... / andare avanti
 notes_it: >-
-  Pattern della lezione L21 nella famiglia Forme verbali e richieste. Formazione: V-ていく. Utile nei dialoghi di viaggio e crescita.
+  V-ていく indica che qualcosa continua da ora in poi, procede in avanti o si
+  allontana dal punto di vista del parlante. A seconda del verbo puo voler dire
+  "continuare a fare" o "andare facendo".
 :::
 :::card
 id: card-g069-andare-avanti-facendo-cambiare-nel-tempo-concept
@@ -132,7 +134,7 @@ entry_type: grammar
 entry_id: grammar-g069-andare-avanti-facendo-cambiare-nel-tempo
 card_type: concept
 front: "～ていく"
-back: andare avanti facendo / cambiare nel tempo
+back: continuare a... / andare avanti
 example_jp: >-
   これから {{学校|がっこう}}へ {{行|い}}っていく。
 example_it: >-

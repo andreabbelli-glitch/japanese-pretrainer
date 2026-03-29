@@ -283,7 +283,7 @@ back: mondo
 example_jp: >-
   {{学校|がっこう}}で {{世界|せかい}}が だいじ です。
 example_it: >-
-  In scuola mondo è importante.
+  A scuola il mondo è importante.
 :::
 :::term
 id: term-v245-tokubetsu

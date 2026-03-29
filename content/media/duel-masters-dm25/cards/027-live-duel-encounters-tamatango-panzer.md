@@ -100,15 +100,14 @@ level_hint: n3
 :::grammar
 id: grammar-kanou-nara
 pattern: 可能なら
-title: Se puo farlo, deve seguire quel vincolo
+title: Se e possibile secondo le regole
 reading: かのうなら
-meaning_it: se possibile / se puo farlo
+meaning_it: se possibile / se le regole lo permettono
 aliases: [可能なら]
 notes_it: >-
-  Nel rules text restringe un obbligo ai casi in cui il gioco rende davvero
-  legale quella scelta. In `{{可能|かのう}}ならこのクリーチャーを{{攻撃|こうげき}}する`,
-  l'attaccante non sceglie liberamente un altro bersaglio: se puo colpire
-  questa creatura, deve farlo.
+  Limita un obbligo ai casi in cui quella scelta e davvero legale nel gioco. Se
+  l'azione e possibile, devi seguirla; se non e possibile, il vincolo non si
+  applica.
 level_hint: n3
 :::
 
@@ -220,7 +219,7 @@ entry_type: grammar
 entry_id: grammar-kanou-nara
 card_type: concept
 front: '{{可能|かのう}}なら、このクリーチャーを{{攻撃|こうげき}}する'
-back: se puo farlo, deve attaccare questa creatura
+back: se possibile, deve attaccare questa creatura
 example_jp: >-
   {{相手|あいて}}のクリーチャーが{{攻撃|こうげき}}する[{{場合|ばあい}}](term:term-baai)、
   {{可能|かのう}}ならこのクリーチャーを{{攻撃|こうげき}}する。

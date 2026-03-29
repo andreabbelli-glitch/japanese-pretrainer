@@ -167,7 +167,7 @@ back: compagno di classe
 example_jp: >-
   {{学校|がっこう}}で {{同級生|どう.きゅう.せい}}が だいじ です。
 example_it: >-
-  In scuola compagno di classe è importante.
+  A scuola il compagno di classe è importante.
 :::
 :::term
 id: term-v616-ritaia

@@ -235,7 +235,7 @@ level_hint: custom
 id: grammar-a-and-b
 pattern: A＆B
 title: Due nomi in una sola carta
-meaning_it: A e B compaiono come coppia dentro la stessa entry
+meaning_it: due nomi letti come una coppia dentro una sola carta
 notes_it: >-
   Nelle PL come [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne)
   il simbolo `＆` non divide due slot. Va letto come una label di coppia dentro
@@ -247,7 +247,7 @@ level_hint: custom
 id: grammar-senyouki
 pattern: ～専用機
 title: Macchina dedicata
-meaning_it: variante assegnata a quel personaggio
+meaning_it: macchina o variante dedicata a quel pilota
 notes_it: >-
   Quando compare alla fine di un nome MS, ti sta dicendo che quella versione è
   associata a un pilota specifico. In lettura operativa e un vincolo di pairing
@@ -590,7 +590,7 @@ entry_type: grammar
 entry_id: grammar-a-and-b
 card_type: concept
 front: A＆B
-back: due nomi dentro una sola carta
+back: due nomi letti come una coppia in una sola carta
 example_jp: >-
   キラ・ヤマト＆ラクス・クラインの`＆`は、{{二枚|にまい}}のカードではなく{{一枚|いちまい}}のPLカード{{内|ない}}の{{結合|けつごう}}です。
 example_it: >-
@@ -609,7 +609,7 @@ entry_type: grammar
 entry_id: grammar-senyouki
 card_type: concept
 front: '～{{専用機|せん.よう.き}}'
-back: variante dedicata a quel personaggio
+back: macchina o variante dedicata a quel pilota
 example_jp: >-
   ルナマリア・ホーク{{専用機|せん.よう.き}}とあれば、{{対応|たいおう}}するPLを{{探|さが}}す{{方向|ほうこう}}で{{読|よ}}みます。
 example_it: >-

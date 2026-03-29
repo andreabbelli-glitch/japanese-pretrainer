@@ -743,12 +743,12 @@ level_hint: n4
 :::grammar
 id: grammar-soushitara
 pattern: そうしたら
-title: Conseguenza se lo fai
-meaning_it: se lo fai, allora / in quel caso
+title: E allora / a quel punto
+meaning_it: allora / a quel punto / fatto ciò
 aliases: [そうしたなら]
 notes_it: >-
-  Introduce una conseguenza che dipende davvero dal passo precedente. In
-  pratica: se il primo pezzo si realizza, allora si apre il secondo.
+  Collega il passo appena risolto alla conseguenza successiva. Nel rules text
+  spesso significa: fatto il primo passaggio, si applica il secondo.
 level_hint: n4
 :::
 
@@ -1840,7 +1840,7 @@ entry_type: grammar
 entry_id: grammar-soushitara
 card_type: concept
 front: そうしたら
-back: se lo fai, allora / in quel caso
+back: allora / a quel punto / fatto ciò
 example_jp: >-
   カードを{{1枚|いちまい}} {{捨|す}}てる。そうしたら、{{1枚|いちまい}} {{引|ひ}}く。
 example_it: >-
