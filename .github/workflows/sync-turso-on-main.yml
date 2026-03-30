@@ -19,6 +19,8 @@ jobs:
     env:
       DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
       DATABASE_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+      CONTENT_CACHE_REVALIDATE_URL: ${{ secrets.CONTENT_CACHE_REVALIDATE_URL }}
+      CONTENT_CACHE_REVALIDATE_SECRET: ${{ secrets.CONTENT_CACHE_REVALIDATE_SECRET }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

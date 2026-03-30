@@ -50,6 +50,10 @@ import riuscito chiamando un endpoint protetto del deploy. Configura le
 variabili `CONTENT_CACHE_REVALIDATE_URL` e `CONTENT_CACHE_REVALIDATE_SECRET`
 sia dove lanci il comando sia nel runtime dell'app deployata.
 
+Se usi anche il workflow GitHub [`Sync Turso On Main`](../.github/workflows/sync-turso-on-main.yml),
+esponi le stesse due variabili anche come GitHub Actions secrets, altrimenti
+il DB remoto si aggiorna ma le cache server-side del deploy restano stale.
+
 Setup completo del DB locale:
 
 ```sh
