@@ -2,13 +2,12 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import {
-  loadPronunciationManifest,
-  serializePronunciationManifest,
-  type PronunciationManifestEntry
-} from "./content/pronunciations-manifest.ts";
 import { buildEntryKey } from "./entry-id.ts";
 import { createFetchThrottle } from "./fetch-throttle.ts";
+import {
+  loadValidatedManifest,
+  persistManifestEntries
+} from "./manifest-helpers.ts";
 import { isSupportedAudioAssetPath } from "./media-assets.ts";
 import type {
   NormalizedGrammarPattern,
@@ -112,19 +111,9 @@ export async function fetchPronunciationsForBundle(input: {
   network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
 }) {
-  const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
-
-  if (manifest.issues.length > 0) {
-    throw new Error(
-      `Cannot update pronunciations for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
-    );
-  }
-
-  const manifestEntries = new Map<string, PronunciationManifestEntry>(
-    (manifest.manifest?.entries ?? []).map((entry) => [
-      buildEntryKey(entry.entryType, entry.entryId),
-      entry
-    ])
+  const { entries: manifestEntries } = await loadValidatedManifest(
+    input.bundle.mediaDirectory,
+    input.bundle.mediaSlug
   );
   const entries = collectPronunciationTargets(input.bundle).filter((entry) => {
     if (input.refresh) {
@@ -203,17 +192,7 @@ export async function fetchPronunciationsForBundle(input: {
   }
 
   if (!input.dryRun) {
-    const manifestPath = path.join(
-      input.bundle.mediaDirectory,
-      "pronunciations.json"
-    );
-    await writeFile(
-      manifestPath,
-      serializePronunciationManifest({
-        entries: [...manifestEntries.values()],
-        version: 1
-      })
-    );
+    await persistManifestEntries(input.bundle.mediaDirectory, manifestEntries);
   }
 
   return {

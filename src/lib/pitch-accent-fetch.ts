@@ -1,10 +1,5 @@
-import { mkdir, writeFile } from "node:fs/promises";
-import path from "node:path";
-
 import {
   getPitchAccentCheckStatus,
-  loadPronunciationManifest,
-  serializePronunciationManifest,
   type PronunciationManifestEntry
 } from "./content/pronunciations-manifest.ts";
 import type {
@@ -15,7 +10,11 @@ import type {
   PitchAccentCheckStatus
 } from "./content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
-import { createFetchThrottle } from "./fetch-throttle.ts";
+import { createFetchThrottle, sleep } from "./fetch-throttle.ts";
+import {
+  loadValidatedManifest,
+  persistManifestEntries
+} from "./manifest-helpers.ts";
 import {
   normalizePronunciationText,
   type PronunciationFetchNetworkOptions
@@ -88,21 +87,9 @@ export async function fetchPitchAccentsForBundle(input: {
   refresh?: boolean;
 }) {
   const allTargets = collectPitchAccentTargets(input.bundle);
-  const manifestState = await loadPronunciationManifest(
-    input.bundle.mediaDirectory
-  );
-
-  if (manifestState.issues.length > 0) {
-    throw new Error(
-      `Cannot update pitch accents for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
-    );
-  }
-
-  const manifestEntries = new Map<string, PronunciationManifestEntry>(
-    (manifestState.manifest?.entries ?? []).map((entry) => [
-      buildEntryKey(entry.entryType, entry.entryId),
-      entry
-    ])
+  const { entries: manifestEntries } = await loadValidatedManifest(
+    input.bundle.mediaDirectory,
+    input.bundle.mediaSlug
   );
   const targets = input.refresh
     ? allTargets
@@ -139,7 +126,7 @@ export async function fetchPitchAccentsForBundle(input: {
     manifestEntries.set(manifestKey, updatedManifestEntry);
 
     if (!input.dryRun) {
-      await writePitchAccentManifest(input.bundle.mediaDirectory, manifestEntries);
+      await persistManifestEntries(input.bundle.mediaDirectory, manifestEntries);
     }
   }
 
@@ -597,20 +584,6 @@ function mapResultStatusToPitchAccentCheckStatus(
   return status;
 }
 
-async function writePitchAccentManifest(
-  mediaDirectory: string,
-  manifestEntries: Map<string, PronunciationManifestEntry>
-) {
-  await mkdir(mediaDirectory, { recursive: true });
-  await writeFile(
-    path.join(mediaDirectory, "pronunciations.json"),
-    serializePronunciationManifest({
-      entries: [...manifestEntries.values()],
-      version: 1
-    })
-  );
-}
-
 function matchesPitchAccentTarget(
   entry: Pick<PitchAccentFetchTarget, "aliases" | "label" | "reading">,
   value: string
@@ -714,14 +687,6 @@ async function fetchText(input: {
 
 function isNotFoundError(error: unknown) {
   return error instanceof Error && /:\s404\b/u.test(error.message);
-}
-
-async function sleep(durationMs: number) {
-  if (durationMs <= 0) {
-    return;
-  }
-
-  await new Promise((resolve) => setTimeout(resolve, durationMs));
 }
 
 function stripHtml(value: string | undefined) {

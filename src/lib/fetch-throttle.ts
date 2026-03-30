@@ -143,7 +143,7 @@ function resolveConfig(
   };
 }
 
-async function sleep(durationMs: number) {
+export async function sleep(durationMs: number) {
   if (durationMs <= 0) {
     return;
   }

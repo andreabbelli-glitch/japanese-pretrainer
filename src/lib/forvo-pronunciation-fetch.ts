@@ -14,13 +14,13 @@ import type { Socket } from "node:net";
 
 import { chromium, type Download, type Page } from "@playwright/test";
 
-import {
-  loadPronunciationManifest,
-  serializePronunciationManifest,
-  type PronunciationManifestEntry
-} from "./content/pronunciations-manifest.ts";
 import type { NormalizedMediaBundle } from "./content/types.ts";
 import { buildEntryKey } from "./entry-id.ts";
+import { sleep } from "./fetch-throttle.ts";
+import {
+  loadValidatedManifest,
+  persistManifestEntries
+} from "./manifest-helpers.ts";
 import {
   collectPronunciationTargets,
   normalizePronunciationText,
@@ -194,7 +194,7 @@ export async function fetchForvoPronunciationsForBundle(input: {
       });
 
       if (!input.dryRun) {
-        await persistPronunciationManifest(
+        await persistManifestEntries(
           input.bundle.mediaDirectory,
           manifestEntries
         );
@@ -330,7 +330,7 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
       });
 
       if (!input.dryRun) {
-        await persistPronunciationManifest(
+        await persistManifestEntries(
           input.bundle.mediaDirectory,
           manifestEntries
         );
@@ -378,19 +378,9 @@ async function prepareForvoPronunciationRun(input: {
   wordListSource?: string;
   words?: string[];
 }) {
-  const manifest = await loadPronunciationManifest(input.bundle.mediaDirectory);
-
-  if (manifest.issues.length > 0) {
-    throw new Error(
-      `Cannot update pronunciations for '${input.bundle.mediaSlug}' because pronunciations.json is invalid.`
-    );
-  }
-
-  const manifestEntries = new Map<string, PronunciationManifestEntry>(
-    (manifest.manifest?.entries ?? []).map((entry) => [
-      buildEntryKey(entry.entryType, entry.entryId),
-      entry
-    ])
+  const { entries: manifestEntries } = await loadValidatedManifest(
+    input.bundle.mediaDirectory,
+    input.bundle.mediaSlug
   );
   const allTargets = collectPronunciationTargets(input.bundle);
   const isStillMissing = (entry: PronunciationTargetEntry) =>
@@ -1230,21 +1220,6 @@ function closeInteractiveReadline(
   }
 }
 
-async function persistPronunciationManifest(
-  mediaDirectory: string,
-  manifestEntries: Map<string, PronunciationManifestEntry>
-) {
-  const manifestPath = path.join(mediaDirectory, "pronunciations.json");
-
-  await writeFile(
-    manifestPath,
-    serializePronunciationManifest({
-      entries: [...manifestEntries.values()],
-      version: 1
-    })
-  );
-}
-
 async function loadForvoKnownMissingRegistry(filePath?: string) {
   if (!filePath) {
     return {
@@ -1408,14 +1383,6 @@ async function findNewestCompletedAudioFile(input: {
 
 function isCompletedDownload(filePath: string) {
   return !/\.crdownload$|\.download$|\.part$/iu.test(filePath);
-}
-
-async function sleep(durationMs: number) {
-  if (durationMs <= 0) {
-    return;
-  }
-
-  await new Promise((resolve) => setTimeout(resolve, durationMs));
 }
 
 function ensureSkipControlServer(port: number) {
