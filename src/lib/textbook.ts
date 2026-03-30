@@ -220,8 +220,6 @@ export async function getTextbookLessonTooltipEntries(
   lessonSlug: string,
   database: DatabaseClient = db
 ): Promise<TextbookTooltipEntry[] | null> {
-  markDataAsLive();
-
   const media = await getMediaBySlugCached(database, mediaSlug);
 
   if (!media) {
