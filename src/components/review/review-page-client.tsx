@@ -35,6 +35,10 @@ import {
 import { ReviewPageSidebar } from "./review-page-sidebar";
 import { ReviewPageStage } from "./review-page-stage";
 
+type ReviewSessionActionInput = Parameters<
+  typeof markLinkedEntryKnownSessionAction
+>[0];
+
 export function ReviewPageClient({
   data,
   searchParams
@@ -492,21 +496,14 @@ export function ReviewPageClient({
     }
 
     const fullViewData = viewData as ReviewPageData;
-
-    runSessionUpdate(() =>
-      markLinkedEntryKnownSessionAction({
-        answeredCount: fullViewData.session.answeredCount,
-        cardId: selectedCard.id,
-        cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: fullViewData.session.extraNewCount,
-        gradedCardIds: Array.from(gradedCardIdsRef.current),
-        mediaSlug:
-          fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
-        redirectMode: actionRedirectMode,
-        segmentId: fullViewData.session.segmentId,
-        scope: fullViewData.scope
-      })
+    const actionInput = buildReviewSessionActionInput(
+      fullViewData,
+      selectedCard,
+      Array.from(gradedCardIdsRef.current),
+      actionRedirectMode
     );
+
+    runSessionUpdate(() => markLinkedEntryKnownSessionAction(actionInput));
   }
 
   function handleSetLearning() {
@@ -515,21 +512,14 @@ export function ReviewPageClient({
     }
 
     const fullViewData = viewData as ReviewPageData;
-
-    runSessionUpdate(() =>
-      setLinkedEntryLearningSessionAction({
-        answeredCount: fullViewData.session.answeredCount,
-        cardId: selectedCard.id,
-        cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: fullViewData.session.extraNewCount,
-        gradedCardIds: Array.from(gradedCardIdsRef.current),
-        mediaSlug:
-          fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
-        redirectMode: actionRedirectMode,
-        segmentId: fullViewData.session.segmentId,
-        scope: fullViewData.scope
-      })
+    const actionInput = buildReviewSessionActionInput(
+      fullViewData,
+      selectedCard,
+      Array.from(gradedCardIdsRef.current),
+      actionRedirectMode
     );
+
+    runSessionUpdate(() => setLinkedEntryLearningSessionAction(actionInput));
   }
 
   function handleResetCard() {
@@ -538,21 +528,14 @@ export function ReviewPageClient({
     }
 
     const fullViewData = viewData as ReviewPageData;
-
-    runSessionUpdate(() =>
-      resetReviewCardSessionAction({
-        answeredCount: fullViewData.session.answeredCount,
-        cardId: selectedCard.id,
-        cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: fullViewData.session.extraNewCount,
-        gradedCardIds: Array.from(gradedCardIdsRef.current),
-        mediaSlug:
-          fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
-        redirectMode: actionRedirectMode,
-        segmentId: fullViewData.session.segmentId,
-        scope: fullViewData.scope
-      })
+    const actionInput = buildReviewSessionActionInput(
+      fullViewData,
+      selectedCard,
+      Array.from(gradedCardIdsRef.current),
+      actionRedirectMode
     );
+
+    runSessionUpdate(() => resetReviewCardSessionAction(actionInput));
   }
 
   function handleToggleSuspended() {
@@ -561,19 +544,16 @@ export function ReviewPageClient({
     }
 
     const fullViewData = viewData as ReviewPageData;
+    const actionInput = buildReviewSessionActionInput(
+      fullViewData,
+      selectedCard,
+      Array.from(gradedCardIdsRef.current),
+      actionRedirectMode
+    );
 
     runSessionUpdate(() =>
       setReviewCardSuspendedSessionAction({
-        answeredCount: fullViewData.session.answeredCount,
-        cardId: selectedCard.id,
-        cardMediaSlug: selectedCard.mediaSlug,
-        extraNewCount: fullViewData.session.extraNewCount,
-        gradedCardIds: Array.from(gradedCardIdsRef.current),
-        mediaSlug:
-          fullViewData.scope === "media" ? fullViewData.media.slug : undefined,
-        redirectMode: actionRedirectMode,
-        segmentId: fullViewData.session.segmentId,
-        scope: fullViewData.scope,
+        ...actionInput,
         suspended: selectedCard.bucket !== "suspended"
       })
     );
@@ -614,4 +594,23 @@ export function ReviewPageClient({
       </section>
     </div>
   );
+}
+
+function buildReviewSessionActionInput(
+  viewData: ReviewPageData,
+  selectedCard: NonNullable<ReviewPageClientData["selectedCard"]>,
+  gradedCardIds: string[],
+  redirectMode: ReviewSessionActionInput["redirectMode"]
+): ReviewSessionActionInput {
+  return {
+    answeredCount: viewData.session.answeredCount,
+    cardId: selectedCard.id,
+    cardMediaSlug: selectedCard.mediaSlug,
+    extraNewCount: viewData.session.extraNewCount,
+    gradedCardIds,
+    mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
+    redirectMode,
+    segmentId: viewData.session.segmentId,
+    scope: viewData.scope
+  };
 }

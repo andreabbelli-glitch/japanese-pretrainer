@@ -125,6 +125,18 @@ type ListGlossaryEntriesOptions = {
   mediaId?: string;
   mediaIds?: string[];
 };
+type GlossarySearchMatchClause = ReturnType<
+  typeof buildTermBaseMatchClauses
+>[number];
+type GlossarySearchCandidateQueryConfig = {
+  aliasJoinSql: string;
+  aliasMatchClauses: GlossarySearchMatchClause[];
+  baseMatchClauses: GlossarySearchMatchClause[];
+  crossMediaGroupIdColumn: string;
+  entryIdColumn: string;
+  entryType: EntryType;
+  tableName: string;
+};
 
 function buildMediaScopeFilter(
   column: typeof term.mediaId | typeof grammarPattern.mediaId,
@@ -297,39 +309,118 @@ export async function listGlossarySegmentsByMediaId(
   });
 }
 
+function buildTermSummaryBaseSelection() {
+  return {
+    id: term.id,
+    sourceId: term.sourceId,
+    crossMediaGroupId: term.crossMediaGroupId,
+    mediaId: term.mediaId,
+    segmentId: term.segmentId,
+    lemma: term.lemma,
+    reading: term.reading,
+    romaji: term.romaji,
+    meaningIt: term.meaningIt,
+    audioSrc: term.audioSrc,
+    audioSource: term.audioSource,
+    audioSpeaker: term.audioSpeaker,
+    audioLicense: term.audioLicense,
+    audioAttribution: term.audioAttribution,
+    audioPageUrl: term.audioPageUrl,
+    pitchAccent: term.pitchAccent,
+    pitchAccentSource: term.pitchAccentSource,
+    pitchAccentPageUrl: term.pitchAccentPageUrl,
+    mediaSlug: media.slug,
+    mediaTitle: media.title,
+    segmentTitle: segment.title,
+    crossMediaGroupKey: crossMediaGroup.groupKey
+  };
+}
+
+function buildTermSummarySelection(includeExtendedFields: true): ReturnType<
+  typeof buildTermSummaryBaseSelection
+> & {
+  levelHint: typeof term.levelHint;
+  searchLemmaNorm: typeof term.searchLemmaNorm;
+  searchReadingNorm: typeof term.searchReadingNorm;
+  searchRomajiNorm: typeof term.searchRomajiNorm;
+};
+function buildTermSummarySelection(includeExtendedFields: false): ReturnType<
+  typeof buildTermSummaryBaseSelection
+>;
+function buildTermSummarySelection(includeExtendedFields: boolean) {
+  const selection = buildTermSummaryBaseSelection();
+
+  if (includeExtendedFields) {
+    return {
+      ...selection,
+      levelHint: term.levelHint,
+      searchLemmaNorm: term.searchLemmaNorm,
+      searchReadingNorm: term.searchReadingNorm,
+      searchRomajiNorm: term.searchRomajiNorm
+    };
+  }
+
+  return selection;
+}
+
+function buildGrammarSummaryBaseSelection() {
+  return {
+    id: grammarPattern.id,
+    sourceId: grammarPattern.sourceId,
+    crossMediaGroupId: grammarPattern.crossMediaGroupId,
+    mediaId: grammarPattern.mediaId,
+    segmentId: grammarPattern.segmentId,
+    pattern: grammarPattern.pattern,
+    title: grammarPattern.title,
+    reading: grammarPattern.reading,
+    meaningIt: grammarPattern.meaningIt,
+    audioSrc: grammarPattern.audioSrc,
+    audioSource: grammarPattern.audioSource,
+    audioSpeaker: grammarPattern.audioSpeaker,
+    audioLicense: grammarPattern.audioLicense,
+    audioAttribution: grammarPattern.audioAttribution,
+    audioPageUrl: grammarPattern.audioPageUrl,
+    pitchAccent: grammarPattern.pitchAccent,
+    pitchAccentSource: grammarPattern.pitchAccentSource,
+    pitchAccentPageUrl: grammarPattern.pitchAccentPageUrl,
+    mediaSlug: media.slug,
+    mediaTitle: media.title,
+    segmentTitle: segment.title,
+    crossMediaGroupKey: crossMediaGroup.groupKey
+  };
+}
+
+function buildGrammarSummarySelection(includeExtendedFields: true): ReturnType<
+  typeof buildGrammarSummaryBaseSelection
+> & {
+  levelHint: typeof grammarPattern.levelHint;
+  searchPatternNorm: typeof grammarPattern.searchPatternNorm;
+  searchRomajiNorm: typeof grammarPattern.searchRomajiNorm;
+};
+function buildGrammarSummarySelection(includeExtendedFields: false): ReturnType<
+  typeof buildGrammarSummaryBaseSelection
+>;
+function buildGrammarSummarySelection(includeExtendedFields: boolean) {
+  const selection = buildGrammarSummaryBaseSelection();
+
+  if (includeExtendedFields) {
+    return {
+      ...selection,
+      levelHint: grammarPattern.levelHint,
+      searchPatternNorm: grammarPattern.searchPatternNorm,
+      searchRomajiNorm: grammarPattern.searchRomajiNorm
+    };
+  }
+
+  return selection;
+}
+
 export async function listTermEntrySummaries(
   database: DatabaseClient,
   options: ListGlossaryEntriesOptions = {}
 ) {
   return database
-    .select({
-      id: term.id,
-      sourceId: term.sourceId,
-      crossMediaGroupId: term.crossMediaGroupId,
-      mediaId: term.mediaId,
-      segmentId: term.segmentId,
-      lemma: term.lemma,
-      reading: term.reading,
-      romaji: term.romaji,
-      meaningIt: term.meaningIt,
-      levelHint: term.levelHint,
-      audioSrc: term.audioSrc,
-      audioSource: term.audioSource,
-      audioSpeaker: term.audioSpeaker,
-      audioLicense: term.audioLicense,
-      audioAttribution: term.audioAttribution,
-      audioPageUrl: term.audioPageUrl,
-      pitchAccent: term.pitchAccent,
-      pitchAccentSource: term.pitchAccentSource,
-      pitchAccentPageUrl: term.pitchAccentPageUrl,
-      searchLemmaNorm: term.searchLemmaNorm,
-      searchReadingNorm: term.searchReadingNorm,
-      searchRomajiNorm: term.searchRomajiNorm,
-      mediaSlug: media.slug,
-      mediaTitle: media.title,
-      segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey
-    })
+    .select(buildTermSummarySelection(true))
     .from(term)
     .innerJoin(media, eq(media.id, term.mediaId))
     .leftJoin(segment, eq(segment.id, term.segmentId))
@@ -343,30 +434,7 @@ export async function listTermEntryReviewSummaries(
   options: ListGlossaryEntriesOptions = {}
 ) {
   return database
-    .select({
-      id: term.id,
-      sourceId: term.sourceId,
-      crossMediaGroupId: term.crossMediaGroupId,
-      mediaId: term.mediaId,
-      segmentId: term.segmentId,
-      lemma: term.lemma,
-      reading: term.reading,
-      romaji: term.romaji,
-      meaningIt: term.meaningIt,
-      audioSrc: term.audioSrc,
-      audioSource: term.audioSource,
-      audioSpeaker: term.audioSpeaker,
-      audioLicense: term.audioLicense,
-      audioAttribution: term.audioAttribution,
-      audioPageUrl: term.audioPageUrl,
-      pitchAccent: term.pitchAccent,
-      pitchAccentSource: term.pitchAccentSource,
-      pitchAccentPageUrl: term.pitchAccentPageUrl,
-      mediaSlug: media.slug,
-      mediaTitle: media.title,
-      segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey
-    })
+    .select(buildTermSummarySelection(false))
     .from(term)
     .innerJoin(media, eq(media.id, term.mediaId))
     .leftJoin(segment, eq(segment.id, term.segmentId))
@@ -380,33 +448,7 @@ export async function listGrammarEntrySummaries(
   options: ListGlossaryEntriesOptions = {}
 ) {
   return database
-    .select({
-      id: grammarPattern.id,
-      sourceId: grammarPattern.sourceId,
-      crossMediaGroupId: grammarPattern.crossMediaGroupId,
-      mediaId: grammarPattern.mediaId,
-      segmentId: grammarPattern.segmentId,
-      pattern: grammarPattern.pattern,
-      title: grammarPattern.title,
-      reading: grammarPattern.reading,
-      meaningIt: grammarPattern.meaningIt,
-      levelHint: grammarPattern.levelHint,
-      audioSrc: grammarPattern.audioSrc,
-      audioSource: grammarPattern.audioSource,
-      audioSpeaker: grammarPattern.audioSpeaker,
-      audioLicense: grammarPattern.audioLicense,
-      audioAttribution: grammarPattern.audioAttribution,
-      audioPageUrl: grammarPattern.audioPageUrl,
-      pitchAccent: grammarPattern.pitchAccent,
-      pitchAccentSource: grammarPattern.pitchAccentSource,
-      pitchAccentPageUrl: grammarPattern.pitchAccentPageUrl,
-      searchPatternNorm: grammarPattern.searchPatternNorm,
-      searchRomajiNorm: grammarPattern.searchRomajiNorm,
-      mediaSlug: media.slug,
-      mediaTitle: media.title,
-      segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey
-    })
+    .select(buildGrammarSummarySelection(true))
     .from(grammarPattern)
     .innerJoin(media, eq(media.id, grammarPattern.mediaId))
     .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
@@ -423,30 +465,7 @@ export async function listGrammarEntryReviewSummaries(
   options: ListGlossaryEntriesOptions = {}
 ) {
   return database
-    .select({
-      id: grammarPattern.id,
-      sourceId: grammarPattern.sourceId,
-      crossMediaGroupId: grammarPattern.crossMediaGroupId,
-      mediaId: grammarPattern.mediaId,
-      segmentId: grammarPattern.segmentId,
-      pattern: grammarPattern.pattern,
-      title: grammarPattern.title,
-      reading: grammarPattern.reading,
-      meaningIt: grammarPattern.meaningIt,
-      audioSrc: grammarPattern.audioSrc,
-      audioSource: grammarPattern.audioSource,
-      audioSpeaker: grammarPattern.audioSpeaker,
-      audioLicense: grammarPattern.audioLicense,
-      audioAttribution: grammarPattern.audioAttribution,
-      audioPageUrl: grammarPattern.audioPageUrl,
-      pitchAccent: grammarPattern.pitchAccent,
-      pitchAccentSource: grammarPattern.pitchAccentSource,
-      pitchAccentPageUrl: grammarPattern.pitchAccentPageUrl,
-      mediaSlug: media.slug,
-      mediaTitle: media.title,
-      segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey
-    })
+    .select(buildGrammarSummarySelection(false))
     .from(grammarPattern)
     .innerJoin(media, eq(media.id, grammarPattern.mediaId))
     .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
@@ -458,137 +477,110 @@ export async function listGrammarEntryReviewSummaries(
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
 }
 
+function buildGlossarySearchCandidateSubquery(
+  selectFromTableSql: string,
+  entryIdColumn: string,
+  crossMediaGroupIdColumn: string,
+  clauses: GlossarySearchMatchClause[]
+) {
+  if (clauses.length === 0) {
+    return null;
+  }
+
+  return {
+    args: clauses.flatMap((clause) => clause.args),
+    sql: `
+      select
+        ${entryIdColumn} as entryId,
+        ${crossMediaGroupIdColumn} as crossMediaGroupId
+      ${selectFromTableSql}
+      where ${clauses.map((clause) => clause.sql).join(" or ")}
+    `
+  };
+}
+
+async function executeGlossarySearchCandidateQuery(
+  database: DatabaseClient,
+  config: GlossarySearchCandidateQueryConfig
+) {
+  const subqueries = [
+    buildGlossarySearchCandidateSubquery(
+      `from ${config.tableName}`,
+      config.entryIdColumn,
+      config.crossMediaGroupIdColumn,
+      config.baseMatchClauses
+    ),
+    buildGlossarySearchCandidateSubquery(
+      `from ${config.tableName}\n        ${config.aliasJoinSql}`,
+      config.entryIdColumn,
+      config.crossMediaGroupIdColumn,
+      config.aliasMatchClauses
+    )
+  ].filter(
+    (
+      query
+    ): query is {
+      args: string[];
+      sql: string;
+    } => query !== null
+  );
+
+  if (subqueries.length === 0) {
+    return [];
+  }
+
+  const result = await database.$client.execute({
+    sql: `
+      select distinct
+        entryId,
+        ${quoteSqlString(config.entryType)} as entryType,
+        crossMediaGroupId
+      from (
+        ${subqueries.map((query) => query.sql).join("\n        union\n")}
+      )
+    `,
+    args: subqueries.flatMap((query) => query.args)
+  });
+
+  return result.rows.map((row) => ({
+    crossMediaGroupId:
+      typeof row.crossMediaGroupId === "string" ? row.crossMediaGroupId : null,
+    entryId: String(row.entryId),
+    entryType: config.entryType
+  }));
+}
+
 export async function listGlossarySearchCandidateRefs(
   database: DatabaseClient,
   input: GlossarySearchCandidateInput
 ): Promise<GlossarySearchCandidateRef[]> {
-  const termBaseClauses =
-    input.entryType === "grammar" ? [] : buildTermBaseMatchClauses(input);
-  const termAliasClauses =
-    input.entryType === "grammar" ? [] : buildTermAliasMatchClauses(input);
-  const grammarBaseClauses =
-    input.entryType === "term" ? [] : buildGrammarBaseMatchClauses(input);
-  const grammarAliasClauses =
-    input.entryType === "term" ? [] : buildGrammarAliasMatchClauses(input);
-  const queries: Array<Promise<GlossarySearchCandidateRef[]>> = [];
-
-  if (termBaseClauses.length > 0 || termAliasClauses.length > 0) {
-    const termSubqueries: string[] = [];
-    const termArgs: string[] = [];
-
-    if (termBaseClauses.length > 0) {
-      termSubqueries.push(`
-        select
-          term.id as entryId,
-          term.cross_media_group_id as crossMediaGroupId
-        from term
-        where ${termBaseClauses.map((clause) => clause.sql).join(" or ")}
-      `);
-      termArgs.push(...termBaseClauses.flatMap((clause) => clause.args));
-    }
-
-    if (termAliasClauses.length > 0) {
-      termSubqueries.push(`
-        select
-          term.id as entryId,
-          term.cross_media_group_id as crossMediaGroupId
-        from term
-        inner join term_alias on term_alias.term_id = term.id
-        where ${termAliasClauses.map((clause) => clause.sql).join(" or ")}
-      `);
-      termArgs.push(...termAliasClauses.flatMap((clause) => clause.args));
-    }
-
-    const termSql = `
-      select distinct
-        entryId,
-        'term' as entryType,
-        crossMediaGroupId
-      from (
-        ${termSubqueries.join("\n        union\n")}
-      )
-    `;
-
-    queries.push(
-      database.$client
-        .execute({
-          sql: termSql,
-          args: termArgs
+  const [termRefs, grammarRefs] = await Promise.all([
+    input.entryType === "grammar"
+      ? Promise.resolve<GlossarySearchCandidateRef[]>([])
+      : executeGlossarySearchCandidateQuery(database, {
+          aliasJoinSql: "inner join term_alias on term_alias.term_id = term.id",
+          aliasMatchClauses: buildTermAliasMatchClauses(input),
+          baseMatchClauses: buildTermBaseMatchClauses(input),
+          crossMediaGroupIdColumn: "term.cross_media_group_id",
+          entryIdColumn: "term.id",
+          entryType: "term",
+          tableName: "term"
+        }),
+    input.entryType === "term"
+      ? Promise.resolve<GlossarySearchCandidateRef[]>([])
+      : executeGlossarySearchCandidateQuery(database, {
+          aliasJoinSql:
+            "inner join grammar_alias on grammar_alias.grammar_id = grammar_pattern.id",
+          aliasMatchClauses: buildGrammarAliasMatchClauses(input),
+          baseMatchClauses: buildGrammarBaseMatchClauses(input),
+          crossMediaGroupIdColumn: "grammar_pattern.cross_media_group_id",
+          entryIdColumn: "grammar_pattern.id",
+          entryType: "grammar",
+          tableName: "grammar_pattern"
         })
-        .then((result) =>
-          result.rows.map((row) => ({
-            crossMediaGroupId:
-              typeof row.crossMediaGroupId === "string"
-                ? row.crossMediaGroupId
-                : null,
-            entryId: String(row.entryId),
-            entryType: "term" as const
-          }))
-        )
-    );
-  }
+  ]);
 
-  if (grammarBaseClauses.length > 0 || grammarAliasClauses.length > 0) {
-    const grammarSubqueries: string[] = [];
-    const grammarArgs: string[] = [];
-
-    if (grammarBaseClauses.length > 0) {
-      grammarSubqueries.push(`
-        select
-          grammar_pattern.id as entryId,
-          grammar_pattern.cross_media_group_id as crossMediaGroupId
-        from grammar_pattern
-        where ${grammarBaseClauses.map((clause) => clause.sql).join(" or ")}
-      `);
-      grammarArgs.push(...grammarBaseClauses.flatMap((clause) => clause.args));
-    }
-
-    if (grammarAliasClauses.length > 0) {
-      grammarSubqueries.push(`
-        select
-          grammar_pattern.id as entryId,
-          grammar_pattern.cross_media_group_id as crossMediaGroupId
-        from grammar_pattern
-        inner join grammar_alias on grammar_alias.grammar_id = grammar_pattern.id
-        where ${grammarAliasClauses.map((clause) => clause.sql).join(" or ")}
-      `);
-      grammarArgs.push(...grammarAliasClauses.flatMap((clause) => clause.args));
-    }
-
-    const grammarSql = `
-      select distinct
-        entryId,
-        'grammar' as entryType,
-        crossMediaGroupId
-      from (
-        ${grammarSubqueries.join("\n        union\n")}
-      )
-    `;
-
-    queries.push(
-      database.$client
-        .execute({
-          sql: grammarSql,
-          args: grammarArgs
-        })
-        .then((result) =>
-          result.rows.map((row) => ({
-            crossMediaGroupId:
-              typeof row.crossMediaGroupId === "string"
-                ? row.crossMediaGroupId
-                : null,
-            entryId: String(row.entryId),
-            entryType: "grammar" as const
-          }))
-        )
-    );
-  }
-
-  if (queries.length === 0) {
-    return [];
-  }
-
-  return (await Promise.all(queries)).flat();
+  return [...termRefs, ...grammarRefs];
 }
 
 export async function countGlobalGlossaryBrowseGroups(

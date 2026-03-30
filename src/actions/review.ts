@@ -30,6 +30,7 @@ import {
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
 type ReviewSessionRedirectMode = Exclude<ReviewRedirectMode, "stay_detail">;
+type ReviewMutationKind = "known" | "learning" | "reset" | "suspended";
 type ReviewSessionInput = {
   answeredCount: number;
   cardId: string;
@@ -44,6 +45,25 @@ type ReviewSessionInput = {
   sessionQueue?: ReviewPageData["queue"];
   sessionSettings?: ReviewPageData["settings"];
   scope?: "global" | "media";
+};
+type ReviewMutationInput = {
+  cardId: string;
+  expectedMediaId?: string;
+  kind: ReviewMutationKind;
+  suspended?: boolean;
+};
+type ReviewFormMutationInput = {
+  answeredCount: number;
+  cardId: string;
+  extraNewCount: number;
+  mediaSlug: string;
+  redirectMode: ReviewRedirectMode;
+  suspended?: boolean;
+};
+type ReviewSessionMutationInput = ReviewSessionInput & {
+  kind: ReviewMutationKind;
+  redirectMode: ReviewSessionRedirectMode;
+  suspended?: boolean;
 };
 
 export async function gradeReviewCardAction(formData: FormData) {
@@ -80,127 +100,33 @@ export async function gradeReviewCardAction(formData: FormData) {
 }
 
 export async function markLinkedEntryKnownAction(formData: FormData) {
-  const mediaSlug = readRequiredString(formData, "mediaSlug");
-  const cardId = readRequiredString(formData, "cardId");
-  const answeredCount = readCount(formData, "answered");
-  const extraNewCount = readCount(formData, "extraNew");
-  const redirectMode = readRedirectMode(formData);
-  const mediaId = await requireMediaIdForSlug(mediaSlug);
-
-  await setLinkedEntryStatusByCard({
-    cardId,
-    expectedMediaId: mediaId,
-    status: "known_manual"
+  await runReviewFormMutationAction({
+    ...readReviewFormMutationInput(formData),
+    kind: "known"
   });
-
-  revalidateEntryStatusPaths({
-    mediaId,
-    mediaSlug,
-    cardId
-  });
-  redirect(
-    buildReviewRedirectUrl({
-      answeredCount,
-      cardId,
-      extraNewCount,
-      mediaSlug,
-      redirectMode,
-      notice: "known"
-    })
-  );
 }
 
 export async function setLinkedEntryLearningAction(formData: FormData) {
-  const mediaSlug = readRequiredString(formData, "mediaSlug");
-  const cardId = readRequiredString(formData, "cardId");
-  const answeredCount = readCount(formData, "answered");
-  const extraNewCount = readCount(formData, "extraNew");
-  const redirectMode = readRedirectMode(formData);
-  const mediaId = await requireMediaIdForSlug(mediaSlug);
-
-  await setLinkedEntryStatusByCard({
-    cardId,
-    expectedMediaId: mediaId,
-    status: "learning"
+  await runReviewFormMutationAction({
+    ...readReviewFormMutationInput(formData),
+    kind: "learning"
   });
-
-  revalidateEntryStatusPaths({
-    mediaId,
-    mediaSlug,
-    cardId
-  });
-  redirect(
-    buildReviewRedirectUrl({
-      answeredCount,
-      cardId,
-      extraNewCount,
-      mediaSlug,
-      redirectMode,
-      notice: "learning"
-    })
-  );
 }
 
 export async function resetReviewCardAction(formData: FormData) {
-  const mediaSlug = readRequiredString(formData, "mediaSlug");
-  const cardId = readRequiredString(formData, "cardId");
-  const answeredCount = readCount(formData, "answered");
-  const extraNewCount = readCount(formData, "extraNew");
-  const redirectMode = readRedirectMode(formData);
-  const mediaId = await requireMediaIdForSlug(mediaSlug);
-
-  await resetReviewCardProgress({
-    cardId,
-    expectedMediaId: mediaId
+  await runReviewFormMutationAction({
+    ...readReviewFormMutationInput(formData),
+    kind: "reset"
   });
-
-  revalidateActiveReviewPaths({
-    mediaId,
-    mediaSlug,
-    cardId
-  });
-  redirect(
-    buildReviewRedirectUrl({
-      answeredCount,
-      cardId,
-      extraNewCount,
-      mediaSlug,
-      redirectMode,
-      notice: "reset"
-    })
-  );
 }
 
 export async function setReviewCardSuspendedAction(formData: FormData) {
-  const mediaSlug = readRequiredString(formData, "mediaSlug");
-  const cardId = readRequiredString(formData, "cardId");
-  const answeredCount = readCount(formData, "answered");
-  const extraNewCount = readCount(formData, "extraNew");
-  const redirectMode = readRedirectMode(formData);
-  const suspended = formData.get("suspended") === "true";
-  const mediaId = await requireMediaIdForSlug(mediaSlug);
-
-  await setReviewCardSuspended({
-    cardId,
-    expectedMediaId: mediaId,
-    suspended
+  await runReviewFormMutationAction({
+    ...readReviewFormMutationInput(formData, {
+      includeSuspended: true
+    }),
+    kind: "suspended"
   });
-
-  revalidateActiveReviewPaths({
-    mediaId,
-    mediaSlug,
-    cardId
-  });
-  redirect(
-    buildReviewRedirectUrl({
-      answeredCount,
-      cardId,
-      extraNewCount,
-      mediaSlug,
-      redirectMode,
-      notice: suspended ? "suspended" : "resumed"
-    })
-  );
 }
 
 export async function gradeReviewCardSessionAction(
@@ -359,29 +285,10 @@ export async function markLinkedEntryKnownSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
-  const media =
-    input.scope === "media" && input.mediaSlug
-      ? await requireMediaForSlug(input.mediaSlug)
-      : undefined;
-
-  await setLinkedEntryStatusByCard({
-    cardId: input.cardId,
-    expectedMediaId: media?.id,
-    status: "known_manual"
+  return runReviewSessionMutationAction({
+    ...input,
+    kind: "known"
   });
-
-  return requireReviewPageDataForScope(
-    input,
-    buildRedirectSearchParams({
-      answeredCount: input.answeredCount,
-      cardId: input.cardId,
-      extraNewCount: input.extraNewCount,
-      notice: "known",
-      redirectMode: input.redirectMode,
-      segmentId: input.segmentId
-    }),
-    media
-  );
 }
 
 export async function setLinkedEntryLearningSessionAction(
@@ -389,29 +296,10 @@ export async function setLinkedEntryLearningSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
-  const media =
-    input.scope === "media" && input.mediaSlug
-      ? await requireMediaForSlug(input.mediaSlug)
-      : undefined;
-
-  await setLinkedEntryStatusByCard({
-    cardId: input.cardId,
-    expectedMediaId: media?.id,
-    status: "learning"
+  return runReviewSessionMutationAction({
+    ...input,
+    kind: "learning"
   });
-
-  return requireReviewPageDataForScope(
-    input,
-    buildRedirectSearchParams({
-      answeredCount: input.answeredCount,
-      cardId: input.cardId,
-      extraNewCount: input.extraNewCount,
-      notice: "learning",
-      redirectMode: input.redirectMode,
-      segmentId: input.segmentId
-    }),
-    media
-  );
 }
 
 export async function resetReviewCardSessionAction(
@@ -419,28 +307,10 @@ export async function resetReviewCardSessionAction(
     redirectMode: ReviewSessionRedirectMode;
   }
 ): Promise<ReviewPageData> {
-  const media =
-    input.scope === "media" && input.mediaSlug
-      ? await requireMediaForSlug(input.mediaSlug)
-      : undefined;
-
-  await resetReviewCardProgress({
-    cardId: input.cardId,
-    expectedMediaId: media?.id
+  return runReviewSessionMutationAction({
+    ...input,
+    kind: "reset"
   });
-
-  return requireReviewPageDataForScope(
-    input,
-    buildRedirectSearchParams({
-      answeredCount: input.answeredCount,
-      cardId: input.cardId,
-      extraNewCount: input.extraNewCount,
-      notice: "reset",
-      redirectMode: input.redirectMode,
-      segmentId: input.segmentId
-    }),
-    media
-  );
 }
 
 export async function setReviewCardSuspendedSessionAction(
@@ -449,29 +319,10 @@ export async function setReviewCardSuspendedSessionAction(
     suspended: boolean;
   }
 ): Promise<ReviewPageData> {
-  const media =
-    input.scope === "media" && input.mediaSlug
-      ? await requireMediaForSlug(input.mediaSlug)
-      : undefined;
-
-  await setReviewCardSuspended({
-    cardId: input.cardId,
-    expectedMediaId: media?.id,
-    suspended: input.suspended
+  return runReviewSessionMutationAction({
+    ...input,
+    kind: "suspended"
   });
-
-  return requireReviewPageDataForScope(
-    input,
-    buildRedirectSearchParams({
-      answeredCount: input.answeredCount,
-      cardId: input.cardId,
-      extraNewCount: input.extraNewCount,
-      notice: input.suspended ? "suspended" : "resumed",
-      redirectMode: input.redirectMode,
-      segmentId: input.segmentId
-    }),
-    media
-  );
 }
 
 function buildIncrementalQueueUpdate(
@@ -574,6 +425,136 @@ function revalidateDeferredShellPaths(mediaSlug?: string) {
   }
 
   revalidatePath(mediaHref(mediaSlug));
+}
+
+function readReviewFormMutationInput(
+  formData: FormData,
+  options?: { includeSuspended?: boolean }
+): ReviewFormMutationInput {
+  return {
+    answeredCount: readCount(formData, "answered"),
+    cardId: readRequiredString(formData, "cardId"),
+    extraNewCount: readCount(formData, "extraNew"),
+    mediaSlug: readRequiredString(formData, "mediaSlug"),
+    redirectMode: readRedirectMode(formData),
+    suspended: options?.includeSuspended
+      ? formData.get("suspended") === "true"
+      : undefined
+  };
+}
+
+async function runReviewFormMutationAction(
+  input: ReviewFormMutationInput & { kind: ReviewMutationKind }
+) {
+  const mediaId = await requireMediaIdForSlug(input.mediaSlug);
+
+  await runReviewMutation({
+    cardId: input.cardId,
+    expectedMediaId: mediaId,
+    kind: input.kind,
+    suspended: input.suspended
+  });
+
+  const revalidateInput = {
+    cardId: input.cardId,
+    mediaId,
+    mediaSlug: input.mediaSlug
+  };
+
+  if (usesEntryStatusRevalidation(input.kind)) {
+    revalidateEntryStatusPaths(revalidateInput);
+  } else {
+    revalidateActiveReviewPaths(revalidateInput);
+  }
+
+  redirect(
+    buildReviewRedirectUrl({
+      answeredCount: input.answeredCount,
+      cardId: input.cardId,
+      extraNewCount: input.extraNewCount,
+      mediaSlug: input.mediaSlug,
+      notice: getReviewMutationNotice(input.kind, input.suspended),
+      redirectMode: input.redirectMode
+    })
+  );
+}
+
+async function runReviewSessionMutationAction(
+  input: ReviewSessionMutationInput
+): Promise<ReviewPageData> {
+  const media = await resolveReviewSessionMedia(input);
+
+  await runReviewMutation({
+    cardId: input.cardId,
+    expectedMediaId: media?.id,
+    kind: input.kind,
+    suspended: input.suspended
+  });
+
+  return requireReviewPageDataForScope(
+    input,
+    buildRedirectSearchParams({
+      answeredCount: input.answeredCount,
+      cardId: input.cardId,
+      extraNewCount: input.extraNewCount,
+      notice: getReviewMutationNotice(input.kind, input.suspended),
+      redirectMode: input.redirectMode,
+      segmentId: input.segmentId
+    }),
+    media
+  );
+}
+
+async function runReviewMutation(input: ReviewMutationInput) {
+  switch (input.kind) {
+    case "known":
+      await setLinkedEntryStatusByCard({
+        cardId: input.cardId,
+        expectedMediaId: input.expectedMediaId,
+        status: "known_manual"
+      });
+      return;
+    case "learning":
+      await setLinkedEntryStatusByCard({
+        cardId: input.cardId,
+        expectedMediaId: input.expectedMediaId,
+        status: "learning"
+      });
+      return;
+    case "reset":
+      await resetReviewCardProgress({
+        cardId: input.cardId,
+        expectedMediaId: input.expectedMediaId
+      });
+      return;
+    case "suspended":
+      await setReviewCardSuspended({
+        cardId: input.cardId,
+        expectedMediaId: input.expectedMediaId,
+        suspended: input.suspended === true
+      });
+      return;
+  }
+}
+
+function usesEntryStatusRevalidation(kind: ReviewMutationKind) {
+  return kind === "known" || kind === "learning";
+}
+
+function getReviewMutationNotice(
+  kind: ReviewMutationKind,
+  suspended?: boolean
+) {
+  switch (kind) {
+    case "known":
+      return "known";
+    case "learning":
+      return "learning";
+    case "reset":
+      return "reset";
+    case "suspended":
+      return suspended ? "suspended" : "resumed";
+  }
 }
 
 
@@ -693,6 +674,14 @@ async function requireReviewPageDataForScope(
     resolvedMedia,
     excludeCardIds
   );
+}
+
+async function resolveReviewSessionMedia(
+  input: Pick<ReviewSessionInput, "mediaSlug" | "scope">
+) {
+  return input.scope === "media" && input.mediaSlug
+    ? requireMediaForSlug(input.mediaSlug)
+    : undefined;
 }
 
 async function requireMediaForSlug(mediaSlug: string) {
