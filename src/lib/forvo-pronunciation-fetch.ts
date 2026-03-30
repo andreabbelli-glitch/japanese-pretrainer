@@ -24,8 +24,9 @@ import {
 import {
   collectPronunciationTargets,
   normalizePronunciationText,
+  slugifySegment,
   type PronunciationTargetEntry
-} from "./pronunciation-fetch.ts";
+} from "./pronunciation-shared.ts";
 
 type WordListRequest = {
   entryId?: string;
@@ -1594,12 +1595,5 @@ function expandForvoSearchVariants(values: Array<string | undefined>) {
 }
 
 function slugifyForvoSegment(value: string) {
-  const normalized = value
-    .normalize("NFKD")
-    .replace(/[^\p{Letter}\p{Number}._-]+/gu, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "")
-    .toLowerCase();
-
-  return normalized.length > 0 ? normalized : "audio";
+  return slugifySegment(value, "audio");
 }

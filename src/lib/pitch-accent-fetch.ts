@@ -17,10 +17,10 @@ import {
 } from "./manifest-helpers.ts";
 import {
   normalizePronunciationText,
+  type EntryKind,
   type PronunciationFetchNetworkOptions
-} from "./pronunciation-fetch.ts";
+} from "./pronunciation-shared.ts";
 
-type EntryKind = "term" | "grammar";
 type PitchAccentSourceKey = "wiktionary" | "ojad";
 
 type PitchAccentFetchTarget = {

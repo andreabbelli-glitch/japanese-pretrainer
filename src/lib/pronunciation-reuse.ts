@@ -13,7 +13,7 @@ import {
   collectPronunciationTargets,
   normalizePronunciationText,
   type PronunciationTargetEntry
-} from "./pronunciation-fetch.ts";
+} from "./pronunciation-shared.ts";
 
 type AudioBackedEntry = {
   audioAttribution?: string | null;

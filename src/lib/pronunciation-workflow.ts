@@ -7,7 +7,7 @@ import { buildEntryKey } from "./entry-id.ts";
 import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
-} from "./pronunciation-fetch.ts";
+} from "./pronunciation-shared.ts";
 
 export const pronunciationWorkflowDirectoryName = "workflow";
 export const pronunciationPendingFileName = "pronunciation-pending.json";
