@@ -13,6 +13,7 @@ import {
 import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
+  buildTextbookTooltipTags,
   canUseDataCache,
   getMediaBySlugCached,
   MEDIA_LIST_TAG,
@@ -232,6 +233,7 @@ export async function getTextbookLessonTooltipEntries(
     loader: () =>
       loadTextbookLessonTooltipEntries(mediaSlug, lessonSlug, database),
     tags: [
+      ...buildTextbookTooltipTags({ mediaSlug, lessonSlug }),
       ...buildGlossarySummaryTags([media.id]),
       ...buildReviewSummaryTags([media.id])
     ]

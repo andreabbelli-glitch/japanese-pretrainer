@@ -8,6 +8,7 @@ export const SETTINGS_TAG = "settings";
 export const GLOSSARY_SUMMARY_TAG = "glossary-summary";
 export const REVIEW_SUMMARY_TAG = "review-summary";
 export const REVIEW_FIRST_CANDIDATE_TAG = "review-first-candidate";
+export const TEXTBOOK_TOOLTIP_TAG = "textbook-tooltips";
 
 export function buildGlossarySummaryTags(mediaIds: string[] = []) {
   return dedupeTags([
@@ -21,6 +22,22 @@ export function buildReviewSummaryTags(mediaIds: string[] = []) {
     REVIEW_SUMMARY_TAG,
     ...mediaIds.map((mediaId) => `${REVIEW_SUMMARY_TAG}:${mediaId}`)
   ]);
+}
+
+export function buildTextbookTooltipTags(input?: {
+  lessonSlug?: string | null;
+  mediaSlug?: string | null;
+}) {
+  const mediaSlug = input?.mediaSlug?.trim();
+  const lessonSlug = input?.lessonSlug?.trim();
+
+  return dedupeTags([
+    TEXTBOOK_TOOLTIP_TAG,
+    mediaSlug ? `${TEXTBOOK_TOOLTIP_TAG}:${mediaSlug}` : null,
+    mediaSlug && lessonSlug
+      ? `${TEXTBOOK_TOOLTIP_TAG}:${mediaSlug}:${lessonSlug}`
+      : null
+  ].filter((tag): tag is string => Boolean(tag)));
 }
 
 export function canUseDataCache(database: DatabaseClient) {
@@ -91,6 +108,15 @@ export function revalidateReviewSummaryCache(mediaId?: string | null) {
 
   if (mediaId) {
     safeRevalidateTag(`${REVIEW_SUMMARY_TAG}:${mediaId}`);
+  }
+}
+
+export function revalidateTextbookTooltipCache(input?: {
+  lessonSlug?: string | null;
+  mediaSlug?: string | null;
+}) {
+  for (const tag of buildTextbookTooltipTags(input)) {
+    safeRevalidateTag(tag);
   }
 }
 

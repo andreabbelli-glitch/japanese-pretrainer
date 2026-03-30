@@ -6,7 +6,8 @@ import { NextResponse } from "next/server";
 import {
   revalidateGlossarySummaryCache,
   revalidateMediaListCache,
-  revalidateReviewSummaryCache
+  revalidateReviewSummaryCache,
+  revalidateTextbookTooltipCache
 } from "@/lib/data-cache";
 import {
   mediaGlossaryHref,
@@ -73,6 +74,7 @@ export async function POST(request: Request) {
   }
 
   for (const lesson of lessons) {
+    revalidateTextbookTooltipCache(lesson);
     revalidatePath(mediaTextbookLessonHref(lesson.mediaSlug, lesson.lessonSlug));
     revalidatePath(
       mediaTextbookLessonTooltipsHref(lesson.mediaSlug, lesson.lessonSlug)
