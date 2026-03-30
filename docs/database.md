@@ -44,6 +44,12 @@ Importa il contenuto reale disponibile in `./content`:
 ./scripts/with-node.sh pnpm db:seed
 ```
 
+Se l'app gira dietro cache server-side su Vercel/Next, `pnpm content:import`
+può invalidare automaticamente le cache dei tooltip/glossary/review dopo un
+import riuscito chiamando un endpoint protetto del deploy. Configura le
+variabili `CONTENT_CACHE_REVALIDATE_URL` e `CONTENT_CACHE_REVALIDATE_SECRET`
+sia dove lanci il comando sia nel runtime dell'app deployata.
+
 Setup completo del DB locale:
 
 ```sh
