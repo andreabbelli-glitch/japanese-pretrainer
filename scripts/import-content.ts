@@ -1,4 +1,4 @@
-import "dotenv/config";
+import dotenv from "dotenv";
 
 import path from "node:path";
 
@@ -7,6 +7,9 @@ import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
 
 const CONTENT_CACHE_REVALIDATE_TIMEOUT_MS = 15_000;
+
+dotenv.config({ path: path.resolve(process.cwd(), ".env") });
+dotenv.config({ path: path.resolve(process.cwd(), ".env.local"), override: true });
 
 try {
   const cliOptions = resolveCliOptions(process.argv.slice(2));
