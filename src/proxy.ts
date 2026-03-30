@@ -10,6 +10,9 @@ import {
   isLoginPath
 } from "@/lib/auth";
 
+const INTERNAL_CONTENT_CACHE_REVALIDATE_PATH =
+  "/api/internal/content-cache/revalidate";
+
 export function proxy(request: NextRequest) {
   const config = getAuthConfig();
   const pathname = request.nextUrl.pathname;
@@ -24,6 +27,8 @@ export function proxy(request: NextRequest) {
   }
 
   const isLoginPage = isLoginPath(pathname);
+  const isInternalContentCacheRevalidate =
+    pathname === INTERNAL_CONTENT_CACHE_REVALIDATE_PATH;
   const sessionToken = request.cookies.get(AUTH_SESSION_COOKIE)?.value;
   const isAuthenticated = hasValidSessionToken(sessionToken);
 
@@ -31,7 +36,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  if (isLoginPage || isAuthenticated) {
+  if (isLoginPage || isAuthenticated || isInternalContentCacheRevalidate) {
     return continueRequest(requestHeaders);
   }
 

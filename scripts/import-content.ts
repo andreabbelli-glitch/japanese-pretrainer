@@ -237,14 +237,32 @@ async function revalidateContentCache(input: {
         lessons: dedupeLessons(input.lessons),
         mediaSlugs: [...new Set(input.mediaSlugs)]
       }),
+      redirect: "manual",
       signal: AbortSignal.timeout(CONTENT_CACHE_REVALIDATE_TIMEOUT_MS)
     });
+
+    if (response.status >= 300 && response.status < 400) {
+      return {
+        message: `Import completed, but cache revalidation was redirected (${response.status}) to ${response.headers.get("location") ?? "an unknown location"}.`,
+        status: "failed" as const
+      };
+    }
 
     if (!response.ok) {
       const details = await readRevalidationError(response);
 
       return {
         message: `Import completed, but cache revalidation failed (${response.status}). ${details}`,
+        status: "failed" as const
+      };
+    }
+
+    const payload = await readRevalidationPayload(response);
+
+    if (!payload?.ok) {
+      return {
+        message:
+          "Import completed, but cache revalidation returned an unexpected response body.",
         status: "failed" as const
       };
     }
@@ -288,6 +306,14 @@ async function readRevalidationError(response: Response) {
   const text = await response.text().catch(() => "");
 
   return text.trim() || "No error details returned.";
+}
+
+async function readRevalidationPayload(response: Response) {
+  try {
+    return (await response.json()) as { ok?: boolean };
+  } catch {
+    return null;
+  }
 }
 
 function formatRevalidationError(error: unknown) {
