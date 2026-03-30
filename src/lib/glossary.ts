@@ -34,6 +34,14 @@ import {
   type TermGlossaryEntry
 } from "@/db";
 import {
+  aggregateGlossaryLessonConnections,
+  formatGlossaryEntryLinkRole,
+  formatGlossaryShortDate,
+  groupAliasesForGlossaryDetail,
+  mapGlossaryCrossMediaSibling,
+  pickPrimaryGlossaryLesson
+} from "@/lib/glossary-detail-helpers";
+import {
   mediaGlossaryEntryHref,
   mediaGlossaryHref,
   mediaReviewCardHref,
@@ -363,17 +371,6 @@ export type GlossaryDetailData = {
   };
 };
 
-type AggregatedLessonConnection = {
-  lessonId: string;
-  lessonOrderIndex: number;
-  lessonSlug: string;
-  lessonSummary: string | null;
-  lessonTitle: string;
-  linkRoles: EntryLessonConnection["linkRole"][];
-  segmentTitle: string | null;
-  sortOrder: number | null;
-};
-
 const cardsFilterOptions: GlossaryCardsFilter[] = [
   "all",
   "with_cards",
@@ -447,8 +444,8 @@ export async function getGlossaryPageData(
       lessonsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? [];
     const cardRows =
       cardsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? [];
-    const uniqueLessons = aggregateLessonConnections(lessonRows);
-    const primaryLesson = pickPrimaryLesson(uniqueLessons, media.slug);
+    const uniqueLessons = aggregateGlossaryLessonConnections(lessonRows);
+    const primaryLesson = pickPrimaryGlossaryLesson(uniqueLessons, media.slug);
     const firstCard = cardRows[0];
 
     return {
@@ -1422,19 +1419,21 @@ function buildGlossaryDetailData(input: {
   lessonConnections: EntryLessonConnection[];
   media: GlossaryMediaSummary;
 }): GlossaryDetailData {
-  const lessons = aggregateLessonConnections(input.lessonConnections);
-  const primaryLesson = pickPrimaryLesson(lessons, input.media.slug);
+  const lessons = aggregateGlossaryLessonConnections(input.lessonConnections);
+  const primaryLesson = pickPrimaryGlossaryLesson(lessons, input.media.slug);
   const forceKnownReviewLabel = input.entry.studyState.hasKnownSignal;
 
   return {
     entry: {
       ...input.entry,
-      aliasGroups: groupAliasesForDetail(input.entry.aliases)
+      aliasGroups: groupAliasesForGlossaryDetail(input.entry.aliases)
     },
     lessons: lessons.map((lesson) => ({
       href: mediaTextbookLessonHref(input.media.slug, lesson.lessonSlug),
       id: lesson.lessonId,
-      roleLabels: lesson.linkRoles.map((role) => formatEntryLinkRole(role)),
+      roleLabels: lesson.linkRoles.map((role) =>
+        formatGlossaryEntryLinkRole(role)
+      ),
       segmentTitle: lesson.segmentTitle ?? undefined,
       summary: lesson.lessonSummary ?? undefined,
       title: lesson.lessonTitle
@@ -1442,7 +1441,7 @@ function buildGlossaryDetailData(input: {
     cards: input.cardConnections.map((row) => ({
       back: row.cardBack,
       dueLabel: row.dueAt
-        ? `Scadenza ${formatShortIsoDate(row.dueAt)}`
+        ? `Scadenza ${formatGlossaryShortDate(row.dueAt)}`
         : undefined,
       front: row.cardFront,
       href: mediaReviewCardHref(input.media.slug, row.cardId),
@@ -1465,7 +1464,9 @@ function buildGlossaryDetailData(input: {
       input.crossMediaFamily.group && input.crossMediaFamily.siblings.length > 0
         ? {
             groupKey: input.crossMediaFamily.group.groupKey,
-            siblings: input.crossMediaFamily.siblings.map(mapCrossMediaSibling)
+            siblings: input.crossMediaFamily.siblings.map(
+              mapGlossaryCrossMediaSibling
+            )
           }
         : null,
     media: input.media,
@@ -1479,51 +1480,6 @@ function buildGlossaryDetailData(input: {
         : "Nessuna lesson collegata"
     }
   };
-}
-
-function mapCrossMediaSibling(
-  sibling: CrossMediaSibling
-): GlossaryCrossMediaSibling {
-  return {
-    href: mediaGlossaryEntryHref(
-      sibling.mediaSlug,
-      sibling.kind,
-      sibling.sourceId
-    ),
-    kind: sibling.kind,
-    label: sibling.label,
-    reading: sibling.reading ?? undefined,
-    romaji: sibling.kind === "term" ? sibling.romaji : undefined,
-    meaning: sibling.meaningIt,
-    mediaSlug: sibling.mediaSlug,
-    mediaTitle: sibling.mediaTitle,
-    notes: buildCrossMediaNotesPreview(sibling.notesIt),
-    title:
-      sibling.kind === "grammar" &&
-      sibling.title &&
-      sibling.title !== sibling.label
-        ? sibling.title
-        : undefined,
-    segmentTitle: sibling.segmentTitle ?? undefined
-  };
-}
-
-function buildCrossMediaNotesPreview(notes?: string | null) {
-  if (!notes) {
-    return undefined;
-  }
-
-  const plainText = stripInlineMarkdown(notes).replace(/\s+/g, " ").trim();
-
-  if (plainText.length === 0) {
-    return undefined;
-  }
-
-  if (plainText.length <= 180) {
-    return plainText;
-  }
-
-  return `${plainText.slice(0, 177).trimEnd()}...`;
 }
 
 function mapEntryToBaseModel(
@@ -2229,121 +2185,6 @@ function resolvePreviewEntry(
   return results[0];
 }
 
-function aggregateLessonConnections(rows: EntryLessonConnection[]) {
-  const lessons = new Map<string, AggregatedLessonConnection>();
-
-  for (const row of rows) {
-    const existing = lessons.get(row.lessonId);
-
-    if (existing) {
-      if (!existing.linkRoles.includes(row.linkRole)) {
-        existing.linkRoles.push(row.linkRole);
-        existing.linkRoles.sort(
-          (left, right) =>
-            getEntryLinkRoleRank(left) - getEntryLinkRoleRank(right)
-        );
-      }
-
-      existing.sortOrder = Math.min(
-        existing.sortOrder ?? Number.MAX_SAFE_INTEGER,
-        row.sortOrder ?? Number.MAX_SAFE_INTEGER
-      );
-      continue;
-    }
-
-    lessons.set(row.lessonId, {
-      lessonId: row.lessonId,
-      lessonOrderIndex: row.lessonOrderIndex,
-      lessonSlug: row.lessonSlug,
-      lessonSummary: row.lessonSummary,
-      lessonTitle: row.lessonTitle,
-      linkRoles: [row.linkRole],
-      segmentTitle: row.segmentTitle,
-      sortOrder: row.sortOrder
-    });
-  }
-
-  return [...lessons.values()].sort((left, right) => {
-    const leftRank = getEntryLinkRoleRank(left.linkRoles[0]);
-    const rightRank = getEntryLinkRoleRank(right.linkRoles[0]);
-
-    if (left.lessonOrderIndex !== right.lessonOrderIndex) {
-      return left.lessonOrderIndex - right.lessonOrderIndex;
-    }
-
-    if (leftRank !== rightRank) {
-      return leftRank - rightRank;
-    }
-
-    if (
-      (left.sortOrder ?? Number.MAX_SAFE_INTEGER) !==
-      (right.sortOrder ?? Number.MAX_SAFE_INTEGER)
-    ) {
-      return (
-        (left.sortOrder ?? Number.MAX_SAFE_INTEGER) -
-        (right.sortOrder ?? Number.MAX_SAFE_INTEGER)
-      );
-    }
-
-    return left.lessonTitle.localeCompare(right.lessonTitle);
-  });
-}
-
-function pickPrimaryLesson(
-  rows: AggregatedLessonConnection[],
-  mediaSlug: string
-): GlossaryPageData["results"][number]["primaryLesson"] {
-  const primary = pickBestBy(rows, (left, right) => {
-    const leftRank = getEntryLinkRoleRank(left.linkRoles[0]);
-    const rightRank = getEntryLinkRoleRank(right.linkRoles[0]);
-
-    if (leftRank !== rightRank) {
-      return leftRank - rightRank;
-    }
-
-    if (left.lessonOrderIndex !== right.lessonOrderIndex) {
-      return left.lessonOrderIndex - right.lessonOrderIndex;
-    }
-
-    return left.lessonTitle.localeCompare(right.lessonTitle);
-  });
-
-  if (!primary) {
-    return undefined;
-  }
-
-  return {
-    href: mediaTextbookLessonHref(mediaSlug, primary.lessonSlug),
-    roleLabel: formatEntryLinkRole(primary.linkRoles[0]),
-    title: primary.lessonTitle
-  };
-}
-
-function getEntryLinkRoleRank(role: EntryLessonConnection["linkRole"]) {
-  const ranks: Record<EntryLessonConnection["linkRole"], number> = {
-    introduced: 0,
-    explained: 1,
-    mentioned: 2,
-    reviewed: 3
-  };
-
-  return ranks[role];
-}
-
-function formatEntryLinkRole(role: string) {
-  const labels: Record<string, string> = {
-    introduced: "Introdotta",
-    explained: "Spiegata",
-    mentioned: "Citata",
-    reviewed: "Ripassata"
-  };
-
-  return labels[role] ?? capitalizeToken(role);
-}
-
-function formatShortIsoDate(value: string) {
-  return value.slice(0, 10);
-}
 
 function buildGlossaryStats(
   entries: GlossaryBaseEntry[],
@@ -2376,34 +2217,6 @@ function buildGlossaryStats(
     reviewCount,
     termCount: entries.filter((entry) => entry.kind === "term").length
   };
-}
-
-function groupAliasesForDetail(aliases: GlossaryBaseEntry["aliases"]) {
-  const groups = new Map<string, string[]>();
-
-  for (const alias of aliases) {
-    const key =
-      alias.type === "reading"
-        ? "Letture"
-        : alias.type === "romaji"
-          ? "Romaji"
-          : "Alias";
-    const existing = groups.get(key);
-
-    if (existing) {
-      if (!existing.includes(alias.text)) {
-        existing.push(alias.text);
-      }
-      continue;
-    }
-
-    groups.set(key, [alias.text]);
-  }
-
-  return [...groups.entries()].map(([label, values]) => ({
-    label,
-    values
-  }));
 }
 
 function buildMatchedFields(matches: GlossaryCollectedMatch[]) {
