@@ -36,9 +36,11 @@ src/
   app/              Route Next.js (App Router): pagine, layout globali e route handlers
     api/            Endpoint server-side per feature trasversali
       glossary/     API per ricerca e autocomplete del glossary
+        autocomplete/ API JSON per suggerimenti autocomplete del glossary globale
     glossary/       Portal glossary globale e stati di caricamento
     login/          Pagina di accesso locale
     media/          Route dinamiche per media, glossary locale, textbook, review e progress
+      [mediaSlug]/assets/ Asset route catch-all per file statici del media bundle
     review/         Coda review cross-media
     settings/       Pagina impostazioni utente
   components/       Componenti React organizzati per feature area
