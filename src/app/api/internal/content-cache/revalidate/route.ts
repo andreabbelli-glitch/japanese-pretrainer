@@ -3,6 +3,7 @@ import { timingSafeEqual } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
+import { db, getMediaBySlug } from "@/db";
 import {
   revalidateGlossarySummaryCache,
   revalidateMediaListCache,
@@ -54,10 +55,19 @@ export async function POST(request: Request) {
 
   const mediaSlugs = normalizeMediaSlugs(body.mediaSlugs ?? []);
   const lessons = normalizeLessons(body.lessons ?? []);
+  const mediaIds = await resolveMediaIds([
+    ...mediaSlugs,
+    ...lessons.map((lesson) => lesson.mediaSlug)
+  ]);
 
   revalidateMediaListCache();
   revalidateGlossarySummaryCache();
   revalidateReviewSummaryCache();
+
+  for (const mediaId of mediaIds) {
+    revalidateGlossarySummaryCache(mediaId);
+    revalidateReviewSummaryCache(mediaId);
+  }
 
   revalidatePath("/");
   revalidatePath("/glossary");
@@ -99,6 +109,14 @@ async function parseRequestBody(request: Request) {
 
 function normalizeMediaSlugs(mediaSlugs: string[]) {
   return [...new Set(mediaSlugs.map((slug) => slug.trim()).filter(Boolean))];
+}
+
+async function resolveMediaIds(mediaSlugs: string[]) {
+  const media = await Promise.all(
+    normalizeMediaSlugs(mediaSlugs).map((mediaSlug) => getMediaBySlug(db, mediaSlug))
+  );
+
+  return [...new Set(media.map((entry) => entry?.id).filter(Boolean))];
 }
 
 function normalizeLessons(

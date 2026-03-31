@@ -40,6 +40,7 @@ import {
   loadReviewOverviewSnapshots,
   type ReviewPageData
 } from "@/lib/review";
+import { resolveReviewCardReading } from "@/lib/review-card-hydration";
 import {
   applyReviewGrade,
   resetReviewCardProgress,
@@ -225,6 +226,39 @@ describe("review system", () => {
   afterEach(async () => {
     closeDatabaseClient(database);
     await rm(tempDir, { recursive: true, force: true });
+  });
+
+  it("derives grammar card reading from annotated fronts when the glossary reading is missing", () => {
+    const reading = resolveReviewCardReading(
+      {
+        cardType: "concept",
+        entryLinks: [
+          {
+            id: "link-grammar-takei",
+            entryType: "grammar",
+            entryId: "grammar-takei",
+            cardId: "card-grammar-takei-concept",
+            relationshipType: "primary"
+          }
+        ],
+        front: "た{{形|けい}}"
+      } as Parameters<typeof resolveReviewCardReading>[0],
+      new Map([
+        [
+          "grammar:grammar-takei",
+          {
+            href: "/media/demo/glossary/grammar/grammar-takei",
+            id: "grammar-takei",
+            kind: "grammar",
+            label: "た形",
+            meaning: "passato",
+            reading: undefined
+          }
+        ]
+      ]) as unknown as Parameters<typeof resolveReviewCardReading>[1]
+    );
+
+    expect(reading).toBe("たけい");
   });
 
   async function markFixtureLessonCompleted(client: DatabaseClient) {

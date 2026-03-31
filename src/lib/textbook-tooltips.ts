@@ -2,7 +2,9 @@ import {
   getCardsByIds,
   getCrossMediaSiblingCounts,
   getGlossaryEntriesByIds,
+  listEntryCardConnections,
   listEntryStudySignals,
+  type EntryCardConnection,
   type CardListItem,
   type DatabaseClient,
   type GrammarGlossaryEntry,
@@ -12,6 +14,7 @@ import { mediaGlossaryEntryHref, mediaReviewCardHref } from "@/lib/site";
 import { resolveReviewSubjectGroups } from "@/lib/review-subject-state-lookup";
 import { buildPronunciationData } from "@/lib/pronunciation";
 import { buildEntryKey } from "@/lib/entry-id";
+import { deriveInlineReading, stripInlineMarkdown } from "@/lib/inline-markdown";
 import { deriveEntryStudyState } from "@/lib/study-entry";
 import type {
   TextbookCardTooltip,
@@ -58,6 +61,7 @@ export async function loadLessonTooltipEntries(input: {
     terms,
     grammar,
     studySignals,
+    cardConnections,
     cards,
     termCrossMediaCounts,
     grammarCrossMediaCounts
@@ -65,12 +69,14 @@ export async function loadLessonTooltipEntries(input: {
     getGlossaryEntriesByIds(input.database, "term", termIds),
     getGlossaryEntriesByIds(input.database, "grammar", grammarIds),
     listEntryStudySignals(input.database, studySignalEntries),
+    listEntryCardConnections(input.database, studySignalEntries),
     getCardsByIds(input.database, input.imageCardIds),
     getCrossMediaSiblingCounts(input.database, "term", termIds),
     getCrossMediaSiblingCounts(input.database, "grammar", grammarIds)
   ]);
   const termMap = new Map(terms.map((entry) => [entry.id, entry]));
   const grammarMap = new Map(grammar.map((entry) => [entry.id, entry]));
+  const grammarCardFrontByEntryId = buildGrammarCardFrontMap(cardConnections);
   const studySignalsByEntry = buildStudySignalMap(studySignals);
   const subjectLookup =
     cards.length > 0
@@ -117,6 +123,7 @@ export async function loadLessonTooltipEntries(input: {
       mapTooltipEntry({
         crossMediaSiblingCount: grammarCrossMediaCounts.get(entry.id) ?? 0,
         entry,
+        grammarCardFront: grammarCardFrontByEntryId.get(entry.id),
         kind: "grammar",
         mediaSlug: input.mediaSlug,
         studySignals:
@@ -174,6 +181,7 @@ function buildStudySignalMap(rows: StudySignalRow[]) {
 function mapTooltipEntry(input: {
   crossMediaSiblingCount: number;
   entry: GrammarGlossaryEntry | TermGlossaryEntry;
+  grammarCardFront?: string;
   kind: "grammar" | "term";
   mediaSlug: string;
   studySignals: StudySignalRow[];
@@ -218,18 +226,46 @@ function mapTooltipEntry(input: {
   }
 
   const entry = input.entry as GrammarGlossaryEntry;
+  const useGrammarCardFront =
+    typeof input.grammarCardFront === "string" &&
+    stripInlineMarkdown(input.grammarCardFront) === entry.pattern;
+  const label = useGrammarCardFront ? input.grammarCardFront! : entry.pattern;
+  const reading =
+    entry.reading ??
+    (useGrammarCardFront
+      ? deriveInlineReading(input.grammarCardFront!)
+      : undefined);
 
   return {
     ...baseEntry,
-    label: entry.pattern,
+    label,
     title: entry.title,
-    reading: entry.reading ?? undefined,
+    reading,
     pronunciation:
       buildPronunciationData(input.mediaSlug, {
         ...entry,
-        reading: entry.reading ?? entry.pattern
+        reading: reading ?? entry.pattern
       }) ?? undefined
   };
+}
+
+function buildGrammarCardFrontMap(cardConnections: EntryCardConnection[]) {
+  const map = new Map<string, string>();
+
+  for (const card of cardConnections) {
+    if (
+      card.entryType !== "grammar" ||
+      card.cardType !== "concept" ||
+      card.relationshipType !== "primary" ||
+      map.has(card.entryId)
+    ) {
+      continue;
+    }
+
+    map.set(card.entryId, card.cardFront);
+  }
+
+  return map;
 }
 
 function mapCardTooltipEntry(

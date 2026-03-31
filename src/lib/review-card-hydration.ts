@@ -45,6 +45,7 @@ import {
   deriveReviewSubjectIdentity,
   matchesReviewSubjectEntrySurface
 } from "./review-subject";
+import { deriveInlineReading } from "./inline-markdown.ts";
 import {
   getDrivingEntryLinks,
   hasCompletedReviewLesson,
@@ -634,7 +635,7 @@ export function resolveReviewCardReading(
     }
   }
 
-  return deriveKanaReading(card.front);
+  return deriveInlineReading(card.front) ?? deriveKanaReading(card.front);
 }
 
 export function canExposeReviewEntryMedia(

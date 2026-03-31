@@ -1,4 +1,4 @@
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -56,6 +56,103 @@ const validContentRoot = path.join(
   "valid",
   "content"
 );
+
+async function writeGrammarReadingFallbackFixture(contentRoot: string) {
+  const mediaSlug = "grammar-reading-fallback";
+  const mediaId = "media-grammar-reading-fallback";
+  const lessonId = "lesson-grammar-reading-fallback-intro";
+  const mediaRoot = path.join(contentRoot, "media", mediaSlug);
+  const textbookRoot = path.join(mediaRoot, "textbook");
+  const cardsRoot = path.join(mediaRoot, "cards");
+
+  await mkdir(textbookRoot, { recursive: true });
+  await mkdir(cardsRoot, { recursive: true });
+
+  await writeFile(
+    path.join(mediaRoot, "media.md"),
+    `---
+id: ${mediaId}
+slug: ${mediaSlug}
+title: Grammar reading fallback
+media_type: game
+segment_kind: chapter
+language: ja
+base_explanation_language: it
+status: active
+---
+
+# Grammar reading fallback
+
+Bundle per testare il recupero della lettura dalle concept card.
+`
+  );
+
+  await writeFile(
+    path.join(textbookRoot, "001-intro.md"),
+    `---
+id: ${lessonId}
+media_id: ${mediaId}
+slug: intro
+title: Intro
+order: 1
+segment_ref: chapter-01
+status: active
+---
+
+# Intro
+
+- [可能形](grammar:grammar-kanoukei)
+- [た形](grammar:grammar-takei)
+`
+  );
+
+  await writeFile(
+    path.join(cardsRoot, "001-core.md"),
+    `---
+id: cards-${mediaSlug}-core
+media_id: ${mediaId}
+slug: ${mediaSlug}-core
+title: Grammar reading fallback core
+order: 1
+segment_ref: chapter-01
+---
+
+:::grammar
+id: grammar-kanoukei
+pattern: 可能形
+title: Forma potenziale
+meaning_it: potere fare
+:::
+
+:::card
+id: card-grammar-kanoukei-concept
+lesson_id: ${lessonId}
+entry_type: grammar
+entry_id: grammar-kanoukei
+card_type: concept
+front: '{{可能形|か.のう.けい}}'
+back: potere fare
+:::
+
+:::grammar
+id: grammar-takei
+pattern: た形
+title: Passato / completamento
+meaning_it: passato
+:::
+
+:::card
+id: card-grammar-takei-concept
+lesson_id: ${lessonId}
+entry_type: grammar
+entry_id: grammar-takei
+card_type: concept
+front: 'た{{形|けい}}'
+back: passato
+:::
+`
+  );
+}
 
 describe("textbook data", () => {
   let tempDir = "";
@@ -722,6 +819,39 @@ describe("textbook data", () => {
           )
       )
     ).toBe(true);
+  });
+
+  it("falls back to annotated grammar concept card fronts for tooltip furigana and reading", async () => {
+    const contentRoot = path.join(tempDir, "grammar-reading-fallback-content");
+
+    await writeGrammarReadingFallbackFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      mediaSlugs: ["grammar-reading-fallback"],
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const tooltipEntries = await getTextbookLessonTooltipEntries(
+      "grammar-reading-fallback",
+      "intro",
+      database
+    );
+
+    expect(
+      tooltipEntries?.filter((entry) => entry.kind === "grammar")
+    ).toMatchObject([
+      {
+        label: "{{可能形|か.のう.けい}}",
+        reading: "かのうけい"
+      },
+      {
+        label: "た{{形|けい}}",
+        reading: "たけい"
+      }
+    ]);
   });
 
   it("resolves textbook tooltip entries inside the current media when source ids are reused across media", async () => {
