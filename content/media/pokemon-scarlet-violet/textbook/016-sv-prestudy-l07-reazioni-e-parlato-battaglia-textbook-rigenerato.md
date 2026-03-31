@@ -1,3 +1,4 @@
+---
 id: lesson-pokemon-scarlet-violet-sv-prestudy-016-sv-prestudy-l07-reazioni-e-parlato-battaglia
 media_id: media-pokemon-scarlet-violet
 slug: 016-sv-prestudy-l07-reazioni-e-parlato-battaglia
