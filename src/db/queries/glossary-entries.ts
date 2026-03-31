@@ -480,77 +480,67 @@ export async function getGlossaryEntriesByCrossMediaGroupIds(
 export async function getGlobalGlossaryAggregateStats(
   database: DatabaseClient
 ) {
-  const [
-    termEntryCountResult,
-    grammarEntryCountResult,
-    termCrossMediaCountResult,
-    grammarCrossMediaCountResult,
-    termWithCardsCountResult,
-    grammarWithCardsCountResult
-  ] = await Promise.all([
-    database.$client.execute(
-      "select cast(count(distinct coalesce(cross_media_group_id, id)) as integer) as count from term"
-    ),
-    database.$client.execute(
-      "select cast(count(distinct coalesce(cross_media_group_id, id)) as integer) as count from grammar_pattern"
-    ),
-    database.$client.execute(`
-      select cast(count(*) as integer) as count
-      from (
-        select cross_media_group_id
-        from term
-        where cross_media_group_id is not null
-        group by cross_media_group_id
-        having count(*) > 1
-      ) grouped
-    `),
-    database.$client.execute(`
-      select cast(count(*) as integer) as count
-      from (
-        select cross_media_group_id
-        from grammar_pattern
-        where cross_media_group_id is not null
-        group by cross_media_group_id
-        having count(*) > 1
-      ) grouped
-    `),
-    database.$client.execute(`
-      select cast(count(distinct coalesce(term.cross_media_group_id, term.id)) as integer) as count
-      from term
-      inner join card_entry_link
-        on card_entry_link.entry_type = 'term'
-        and card_entry_link.entry_id = term.id
-      inner join card
-        on card.id = card_entry_link.card_id
-      where card.status != 'archived'
-    `),
-    database.$client.execute(`
-      select cast(count(distinct coalesce(grammar_pattern.cross_media_group_id, grammar_pattern.id)) as integer) as count
-      from grammar_pattern
-      inner join card_entry_link
-        on card_entry_link.entry_type = 'grammar'
-        and card_entry_link.entry_id = grammar_pattern.id
-      inner join card
-        on card.id = card_entry_link.card_id
-      where card.status != 'archived'
-    `)
-  ]);
-  const readCount = (
-    result:
-      | Awaited<ReturnType<DatabaseClient["$client"]["execute"]>>
-      | null
-      | undefined
-  ) => Number(result?.rows[0]?.count ?? 0);
+  const result = await database.$client.execute(`
+    select
+      cast(
+        (
+          select count(distinct coalesce(cross_media_group_id, id))
+          from term
+        ) + (
+          select count(distinct coalesce(cross_media_group_id, id))
+          from grammar_pattern
+        ) as integer
+      ) as entry_count,
+      cast(
+        (
+          select count(*)
+          from (
+            select cross_media_group_id
+            from term
+            where cross_media_group_id is not null
+            group by cross_media_group_id
+            having count(*) > 1
+          ) grouped
+        ) + (
+          select count(*)
+          from (
+            select cross_media_group_id
+            from grammar_pattern
+            where cross_media_group_id is not null
+            group by cross_media_group_id
+            having count(*) > 1
+          ) grouped
+        ) as integer
+      ) as cross_media_count,
+      cast(
+        (
+          select count(distinct coalesce(term.cross_media_group_id, term.id))
+          from term
+          inner join card_entry_link
+            on card_entry_link.entry_type = 'term'
+            and card_entry_link.entry_id = term.id
+          inner join card
+            on card.id = card_entry_link.card_id
+          where card.status != 'archived'
+        ) + (
+          select count(distinct coalesce(grammar_pattern.cross_media_group_id, grammar_pattern.id))
+          from grammar_pattern
+          inner join card_entry_link
+            on card_entry_link.entry_type = 'grammar'
+            and card_entry_link.entry_id = grammar_pattern.id
+          inner join card
+            on card.id = card_entry_link.card_id
+          where card.status != 'archived'
+        ) as integer
+      ) as with_cards_count
+  `);
+  const row = result.rows[0];
+  const readCount = (value: unknown) => Number(value ?? 0);
 
   return {
-    crossMediaCount:
-      readCount(termCrossMediaCountResult) +
-      readCount(grammarCrossMediaCountResult),
-    entryCount:
-      readCount(termEntryCountResult) + readCount(grammarEntryCountResult),
-    withCardsCount:
-      readCount(termWithCardsCountResult) +
-      readCount(grammarWithCardsCountResult)
+    crossMediaCount: readCount(row?.cross_media_count),
+    entryCount: readCount(row?.entry_count),
+    withCardsCount: readCount(row?.with_cards_count)
   };
 }
 

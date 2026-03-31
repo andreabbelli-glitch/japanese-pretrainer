@@ -33,6 +33,7 @@ import {
 } from "@/lib/glossary-detail-helpers";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import {
+  defaultStudySettings,
   getGlossaryDefaultSort,
   type GlossaryDefaultSort
 } from "@/lib/settings";
@@ -544,8 +545,10 @@ export async function getGlobalGlossaryAutocompleteData(
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db
 ): Promise<GlobalGlossaryAutocompleteSuggestion[]> {
-  const defaultSort = await getGlossaryDefaultSort(database);
-  const filters = normalizeGlossaryQuery(searchParams, defaultSort);
+  const filters = normalizeGlossaryQuery(
+    searchParams,
+    defaultStudySettings.glossaryDefaultSort
+  );
 
   if (filters.query.length === 0) {
     return [];

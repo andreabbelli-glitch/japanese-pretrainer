@@ -11,10 +11,13 @@ export const REVIEW_FIRST_CANDIDATE_TAG = "review-first-candidate";
 export const TEXTBOOK_TOOLTIP_TAG = "textbook-tooltips";
 
 export function buildGlossarySummaryTags(mediaIds: string[] = []) {
-  return dedupeTags([
-    GLOSSARY_SUMMARY_TAG,
-    ...mediaIds.map((mediaId) => `${GLOSSARY_SUMMARY_TAG}:${mediaId}`)
-  ]);
+  if (mediaIds.length === 0) {
+    return [GLOSSARY_SUMMARY_TAG];
+  }
+
+  return dedupeTags(
+    mediaIds.map((mediaId) => `${GLOSSARY_SUMMARY_TAG}:${mediaId}`)
+  );
 }
 
 export function buildReviewSummaryTags(mediaIds: string[] = []) {
@@ -94,12 +97,14 @@ export function revalidateSettingsCache() {
 }
 
 export function revalidateGlossarySummaryCache(mediaId?: string | null) {
-  safeRevalidateTag(GLOSSARY_SUMMARY_TAG);
   safeRevalidateTag(REVIEW_FIRST_CANDIDATE_TAG);
 
   if (mediaId) {
     safeRevalidateTag(`${GLOSSARY_SUMMARY_TAG}:${mediaId}`);
+    return;
   }
+
+  safeRevalidateTag(GLOSSARY_SUMMARY_TAG);
 }
 
 export function revalidateReviewSummaryCache(mediaId?: string | null) {

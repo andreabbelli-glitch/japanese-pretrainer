@@ -69,22 +69,20 @@ export async function getMediaDetailData(
   mediaSlug: string,
   database: DatabaseClient = db
 ) {
+  const media = await getMediaBySlugCached(database, mediaSlug);
+
+  if (!media) {
+    return null;
+  }
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["app-shell", "media-detail", mediaSlug],
-    loader: async () => {
-      const media = await getMediaBySlugCached(database, mediaSlug);
-
-      if (!media) {
-        return null;
-      }
-
-      return buildMediaShellSnapshot(database, media);
-    },
+    loader: () => buildMediaShellSnapshot(database, media),
     tags: [
       MEDIA_LIST_TAG,
-      GLOSSARY_SUMMARY_TAG,
-      REVIEW_SUMMARY_TAG,
+      ...buildGlossarySummaryTags([media.id]),
+      ...buildReviewSummaryTags([media.id]),
       REVIEW_FIRST_CANDIDATE_TAG,
       SETTINGS_TAG
     ]

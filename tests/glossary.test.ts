@@ -6,7 +6,7 @@ import type { Route } from "next";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { eq } from "drizzle-orm";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
 import { GlossaryPage } from "@/components/glossary/glossary-page";
@@ -16,6 +16,7 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
+  getGlobalGlossaryAggregateStats,
   lessonProgress,
   runMigrations,
   seedDevelopmentDatabase,
@@ -44,6 +45,7 @@ import {
 import { buildPitchAccentData } from "@/lib/pitch-accent";
 import { getReviewCardDetailData } from "@/lib/review";
 import { setReviewCardSuspended } from "@/lib/review-service";
+import * as settings from "@/lib/settings";
 import { buildReviewSessionHref } from "@/lib/site";
 import {
   crossMediaOverflowFixture,
@@ -544,6 +546,7 @@ describe("glossary data", () => {
 
   it("loads global autocomplete suggestions on demand with active filters", async () => {
     const contentRoot = path.join(tempDir, "cross-media-content");
+    const defaultSortSpy = vi.spyOn(settings, "getGlossaryDefaultSort");
 
     await writeCrossMediaContentFixture(contentRoot);
 
@@ -565,6 +568,32 @@ describe("glossary data", () => {
     expect(suggestions.map((entry) => entry.label)).toEqual(["余白"]);
     expect(suggestions[0]?.hasCards).toBe(true);
     expect(suggestions[0]?.hasCardlessVariant).toBe(true);
+    expect(defaultSortSpy).not.toHaveBeenCalled();
+    defaultSortSpy.mockRestore();
+  });
+
+  it("loads global aggregate stats with a single raw query", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const executeSpy = vi.spyOn(database.$client, "execute");
+    const aggregateStats = await getGlobalGlossaryAggregateStats(database);
+
+    expect(aggregateStats).toEqual({
+      crossMediaCount: 3,
+      entryCount: 3,
+      withCardsCount: 3
+    });
+    expect(executeSpy).toHaveBeenCalledTimes(1);
+    executeSpy.mockRestore();
   });
 
   it("supports global study and entry type filters without regressing ranking", async () => {
