@@ -7,7 +7,10 @@ Anki-like.
 
 Lo sviluppo è **100% AI-driven**: l'utente non legge mai il codice manualmente.
 Ogni sessione deve essere completamente autonoma e lasciare il repo in stato
-valido (`pnpm check` verde, commit su `main`).
+valido. Per i comandi Node/pnpm, per gli agenti il percorso canonico è
+`./scripts/with-node.sh pnpm ...`: come minimo `pnpm check` deve essere verde;
+per modifiche a routing, DB, importer, auth, workflow contenuti o flussi utente
+serve anche il gate completo `./scripts/with-node.sh pnpm release:check`.
 
 ---
 
@@ -102,10 +105,12 @@ tests/
 content/
   media/<slug>/     Bundle media: Markdown + asset
     assets/         Asset statici associati al bundle del media
+    pronunciations.json Manifest opzionale audio/pitch accent del media
     cards/          Sorgenti editoriali per card e dati derivati del media
     textbook/       Lesson Markdown e contenuti del textbook del media
-    workflow/       File operativi del workflow editoriale e di produzione
-                    SOURCE OF TRUTH editoriale – non modificare mai questi file
+    workflow/       File operativi e sidecar del workflow editoriale/produzione
+                    Area protetta: modificarli solo tramite workflow/script
+                    canonici o task editoriale esplicito
 
 drizzle/
   *.sql             Migration SQL auto-generate – non modificare mai questi file
@@ -139,51 +144,89 @@ docs/
 
 ---
 
+## Invarianti di prodotto
+
+- `/review` è la review globale reale: dedup cross-media e daily limit globale.
+- `/media/[mediaSlug]/review` è un filtro verticale locale sullo stesso sistema,
+  non un launcher verso un altro media.
+- Dashboard e CTA globali devono mostrare numeri globali reali; le superfici del
+  media possono mostrare numeri locali solo se etichettati chiaramente come tali.
+- Le CTA di resume textbook (`Continua il percorso` o equivalenti) puntano al
+  primo step non completato del percorso, non semplicemente all'ultima lesson
+  visitata o `in_progress`.
+
+---
+
 ## Comandi canonici
 
 ```bash
-pnpm dev             # avvia Next.js in sviluppo
-pnpm build           # build di produzione Next.js
-pnpm start           # avvia il build di produzione
-pnpm start:e2e       # avvia il server app per Playwright
-pnpm check           # lint + typecheck + test (gate veloce, sempre eseguire dopo modifiche)
-pnpm release:check   # gate completo definito in scripts/release-check.sh
-pnpm lint            # ESLint (zero warning tollerati)
-pnpm format          # Prettier (auto-fix)
-pnpm format:check    # verifica formattazione Prettier
-pnpm typecheck       # tsc --noEmit
-pnpm test            # solo Vitest
-pnpm test:watch      # Vitest in watch mode
-pnpm test:e2e:runner # esegue Playwright senza build preliminare
-pnpm test:e2e        # solo Playwright (richiede build)
-pnpm db:generate     # genera migration Drizzle da schema aggiornato
-pnpm db:migrate      # applica migrazioni DB
-pnpm db:backfill-review-subject-state # backfill stati review normalizzati
-pnpm db:seed         # esegue seed DB
-pnpm db:setup        # migra e popola il DB locale
-pnpm db:studio       # apre Drizzle Studio
-pnpm auth:hash-password # genera hash password per auth locale
-pnpm content:test-stats # aggiorna fixture statistiche per bundle reali
-pnpm content:import  # importa bundle media nel DB
-pnpm content:validate # valida formato Markdown
-pnpm pronunciations:fetch # scarica pronunce dai provider configurati
-pnpm pronunciations:pending # aggiorna il backlog pronunce mancanti
-pnpm pronunciations:reuse # riusa pronunce già presenti
-pnpm pronunciations:forvo # esegue il fallback Forvo autenticato
-pnpm pitch-accents:fetch # scarica dati di pitch accent
-pnpm image:status    # mostra stato workflow immagini
-pnpm image:apply     # applica blocchi immagine ai contenuti derivati
+./scripts/with-node.sh pnpm dev             # avvia Next.js in sviluppo
+./scripts/with-node.sh pnpm build           # build di produzione Next.js
+./scripts/with-node.sh pnpm start           # avvia il build di produzione
+./scripts/with-node.sh pnpm start:e2e       # avvia il server app per Playwright
+./scripts/with-node.sh pnpm check           # lint + typecheck + test (gate veloce minimo)
+./scripts/with-node.sh pnpm release:check   # gate completo definito in scripts/release-check.sh
+./scripts/with-node.sh pnpm lint            # ESLint (zero warning tollerati)
+./scripts/with-node.sh pnpm format          # Prettier (auto-fix)
+./scripts/with-node.sh pnpm format:check    # verifica formattazione Prettier
+./scripts/with-node.sh pnpm typecheck       # tsc --noEmit
+./scripts/with-node.sh pnpm test            # solo Vitest
+./scripts/with-node.sh pnpm test:watch      # Vitest in watch mode
+./scripts/with-node.sh pnpm test:e2e:runner # esegue Playwright senza build preliminare
+./scripts/with-node.sh pnpm test:e2e        # solo Playwright (richiede build)
+./scripts/with-node.sh pnpm db:generate     # genera migration Drizzle da schema aggiornato
+./scripts/with-node.sh pnpm db:migrate      # applica migrazioni DB
+./scripts/with-node.sh pnpm db:backfill-review-subject-state # backfill stati review normalizzati
+./scripts/with-node.sh pnpm db:seed         # esegue seed DB
+./scripts/with-node.sh pnpm db:setup        # migra e popola il DB locale
+./scripts/with-node.sh pnpm db:studio       # apre Drizzle Studio
+./scripts/with-node.sh pnpm auth:hash-password # genera hash password per auth locale
+./scripts/with-node.sh pnpm content:test-stats # aggiorna fixture statistiche per bundle reali
+./scripts/with-node.sh pnpm content:import  # importa bundle media nel DB
+./scripts/with-node.sh pnpm content:validate # valida formato Markdown
+./scripts/with-node.sh pnpm pronunciations:fetch # scarica pronunce dai provider configurati
+./scripts/with-node.sh pnpm pronunciations:pending # aggiorna il backlog pronunce mancanti
+./scripts/with-node.sh pnpm pronunciations:reuse # riusa pronunce già presenti
+./scripts/with-node.sh pnpm pronunciations:forvo # esegue il fallback Forvo autenticato
+./scripts/with-node.sh pnpm pitch-accents:fetch # scarica dati di pitch accent
+./scripts/with-node.sh pnpm image:status    # mostra stato workflow immagini
+./scripts/with-node.sh pnpm image:apply     # applica blocchi immagine ai contenuti derivati
 ```
+
+---
+
+## Verifiche richieste
+
+- Sempre: eseguire almeno `./scripts/with-node.sh pnpm check` dopo modifiche al
+  codice o alla logica.
+- Eseguire anche `./scripts/with-node.sh pnpm release:check` quando la modifica
+  tocca routing, DB, importer/sync contenuti, auth, cache revalidation,
+  workflow contenuti o superfici utente coperte da E2E.
+- Se una verifica non è eseguibile, dichiararlo esplicitamente nel riepilogo
+  finale e spiegare il motivo.
 
 ---
 
 ## Invarianti da non violare mai
 
-1. `content/` è sola lettura – contiene i Markdown dei media. Non modificare.
-2. `drizzle/` è gestito da `pnpm db:generate` – non editare SQL a mano.
-3. Gli ID (`mediaSlug`, `lessonSlug`, `termId`, ecc.) sono stabili per design.
+1. `content/` va trattato come read-only per task applicativi, bugfix e
+   refactor. Fanno eccezione solo task editoriali/asset/pronunce esplicitamente
+   richiesti e i workflow canonici del repo (`image:apply`,
+   `pronunciations:*`), limitatamente ai file previsti dal workflow.
+2. `content/media/**/workflow/**` è area protetta: niente edit manuali
+   arbitrari. Modificarla solo se il task lo richiede esplicitamente o tramite
+   script/workflow canonici che la aggiornano.
+3. `drizzle/` è gestito da `pnpm db:generate` – non editare SQL a mano.
+4. Gli ID (`mediaSlug`, `lessonSlug`, `termId`, ecc.) sono stabili per design.
    Non rinominarli senza una migrazione DB.
-4. `pnpm check` deve passare al termine di ogni sessione.
-5. I test in `tests/` sono la rete di sicurezza – non eliminarli.
-6. Il deploy è single-user locale-first: non aggiungere multi-tenancy o auth
+5. `./scripts/with-node.sh pnpm check` deve passare al termine di ogni sessione;
+   per le aree a maggior impatto vale anche il gate `release:check`.
+6. I test in `tests/` sono la rete di sicurezza – non eliminarli.
+7. Il deploy è single-user locale-first: non aggiungere multi-tenancy o auth
    complessa senza una milestone dedicata.
+8. Se cambi comportamento, setup locale, variabili ambiente, flussi QA o
+   workflow contenuti, aggiorna nella stessa modifica la documentazione
+   pertinente: almeno `README.md`, `docs/local-verification-notes.md`,
+   `docs/qa-manual-checklist.md`, `docs/dev-tooling.md`,
+   `docs/pronunciation-workflow.md`, `docs/forvo-pronunciation-fetch.md` e
+   `.env.example` secondo impatto reale.
