@@ -37,6 +37,7 @@ src/
     api/            Endpoint server-side per feature trasversali
       glossary/     API per ricerca e autocomplete del glossary
         autocomplete/ API JSON per suggerimenti autocomplete del glossary globale
+      internal/     Endpoint interni per manutenzione e invalidazione cache contenuti
     glossary/       Portal glossary globale e stati di caricamento
     login/          Pagina di accesso locale
     media/          Route dinamiche per media, glossary locale, textbook, review e progress
@@ -100,6 +101,10 @@ tests/
 
 content/
   media/<slug>/     Bundle media: Markdown + asset
+    assets/         Asset statici associati al bundle del media
+    cards/          Sorgenti editoriali per card e dati derivati del media
+    textbook/       Lesson Markdown e contenuti del textbook del media
+    workflow/       File operativi del workflow editoriale e di produzione
                     SOURCE OF TRUTH editoriale – non modificare mai questi file
 
 drizzle/
@@ -118,6 +123,7 @@ docs/
   llm-kit/                Guide per integrazione LLM esterna
     general/              Template e regole riusabili cross-media
     media/                Brief e prompt specifici per singolo media
+      <slug>/             Cartelle per-media con brief e prompt batchizzati
   tasks/                  Task definition per sessioni agente
 ```
 
