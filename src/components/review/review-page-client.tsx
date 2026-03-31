@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 
 import {
   gradeReviewCardSessionAction,
@@ -73,15 +73,16 @@ export function ReviewPageClient({
   const isGlobalReview = viewData.scope === "global";
 
   const selectedCard = viewData.selectedCard;
+  const selectedCardContext = viewData.selectedCardContext;
   const queueIndex =
     isFullReviewPageData && selectedCard
       ? queueCardIds.indexOf(selectedCard.id)
       : -1;
   const isQueueCard = selectedCard
-    ? viewData.selectedCardContext.isQueueCard
+    ? selectedCardContext.isQueueCard
     : false;
   const isAnswerRevealed = selectedCard
-    ? viewData.selectedCardContext.showAnswer ||
+    ? selectedCardContext.showAnswer ||
       revealedCardId === selectedCard.id
     : false;
   const nextQueueCardId = resolveNextQueueCardId({
@@ -90,10 +91,13 @@ export function ReviewPageClient({
     queueCardIds,
     selectedCardId: selectedCard?.id ?? null
   });
-  const position = selectedCard ? viewData.selectedCardContext.position : null;
+  const position = selectedCard ? selectedCardContext.position : null;
   const remainingCount = selectedCard
-    ? viewData.selectedCardContext.remainingCount
+    ? selectedCardContext.remainingCount
     : 0;
+  const fullSelectedCardContext = isFullReviewPageData
+    ? viewData.selectedCardContext
+    : null;
   const fullSelectedCard = isFullReviewPageData
     ? (selectedCard as ReviewQueueCard | null)
     : null;
@@ -123,14 +127,18 @@ export function ReviewPageClient({
   const showCompletionState = !hasQueue && selectedCard === null;
   const actionRedirectMode = isQueueCard ? "advance_queue" : "preserve_card";
 
-  const gradePreviewLookup = isFullReviewPageData
-    ? new Map<string, string>(
-        viewData.selectedCardContext.gradePreviews.map((preview) => [
-          preview.rating,
-          preview.nextReviewLabel
-        ])
-      )
-    : new Map<string, string>();
+  const gradePreviewLookup = useMemo(
+    () =>
+      fullSelectedCardContext
+        ? new Map<string, string>(
+            fullSelectedCardContext.gradePreviews.map((preview) => [
+              preview.rating,
+              preview.nextReviewLabel
+            ])
+          )
+        : new Map<string, string>(),
+    [fullSelectedCardContext]
+  );
   const globalHydrationRequestKey =
     searchParams && viewData.scope === "global"
       ? buildReviewHydrationRequestKey(searchParams)
