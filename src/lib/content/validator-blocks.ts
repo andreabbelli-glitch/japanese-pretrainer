@@ -13,11 +13,14 @@ import { parseInlineFragment } from "./parser/markdown.ts";
 import { createIssue, isUrlSafeSlug } from "./parser/utils.ts";
 import type {
   CollectedReference,
+  CardDefinitionBlock,
   ExampleSentenceBlock,
+  GrammarDefinitionBlock,
   ImageBlock,
   NormalizedCard,
   NormalizedGrammarPattern,
   NormalizedTerm,
+  TermDefinitionBlock,
   SourceRange,
   ValidationIssue
 } from "./types.ts";
@@ -61,6 +64,153 @@ export interface CardRecord {
   value: NormalizedCard;
   sourcePath: string;
   position?: SourceRange;
+}
+
+type StructuredBlockResolution =
+  | {
+      kind: "term";
+      block: TermDefinitionBlock;
+      references: CollectedReference[];
+      term: TermRecord;
+    }
+  | {
+      kind: "grammar";
+      block: GrammarDefinitionBlock;
+      references: CollectedReference[];
+      grammar: GrammarRecord;
+    }
+  | {
+      kind: "card";
+      block: CardDefinitionBlock;
+      references: CollectedReference[];
+      card: CardRecord;
+    }
+  | {
+      kind: "example_sentence";
+      block: ExampleSentenceBlock;
+      references: CollectedReference[];
+    }
+  | {
+      kind: "image";
+      block: ImageBlock;
+      references: CollectedReference[];
+    };
+
+type StructuredBlockResolver = (
+  rawBlock: RawStructuredBlock,
+  sourceContext: DocumentSourceContext,
+  sourcePath: string,
+  issues: ValidationIssue[]
+) => Promise<StructuredBlockResolution | null>;
+
+const structuredBlockResolvers: Record<string, StructuredBlockResolver> = {
+  term: async (rawBlock, sourceContext, sourcePath, issues) => {
+    const term = await normalizeTermBlock(
+      rawBlock,
+      sourceContext,
+      sourcePath,
+      issues
+    );
+
+    if (!term) {
+      return null;
+    }
+
+    return {
+      kind: "term",
+      block: {
+        type: "termDefinition",
+        position: rawBlock.position,
+        entry: term.value
+      },
+      references: term.references,
+      term
+    };
+  },
+  grammar: async (rawBlock, sourceContext, sourcePath, issues) => {
+    const grammar = await normalizeGrammarBlock(
+      rawBlock,
+      sourceContext,
+      sourcePath,
+      issues
+    );
+
+    if (!grammar) {
+      return null;
+    }
+
+    return {
+      kind: "grammar",
+      block: {
+        type: "grammarDefinition",
+        position: rawBlock.position,
+        entry: grammar.value
+      },
+      references: grammar.references,
+      grammar
+    };
+  },
+  card: async (rawBlock, sourceContext, sourcePath, issues) => {
+    const card = normalizeCardBlock(rawBlock, sourceContext, sourcePath, issues);
+
+    if (!card) {
+      return null;
+    }
+
+    return {
+      kind: "card",
+      block: {
+        type: "cardDefinition",
+        position: rawBlock.position,
+        card: card.value
+      },
+      references: card.references,
+      card
+    };
+  },
+  example_sentence: async (rawBlock, sourceContext, sourcePath, issues) => {
+    const exampleSentence = normalizeExampleSentenceBlock(
+      rawBlock,
+      sourceContext,
+      sourcePath,
+      issues
+    );
+
+    if (!exampleSentence) {
+      return null;
+    }
+
+    return {
+      kind: "example_sentence",
+      block: exampleSentence.block,
+      references: exampleSentence.references
+    };
+  },
+  image: async (rawBlock, sourceContext, sourcePath, issues) => {
+    const image = await normalizeImageBlock(
+      rawBlock,
+      sourceContext,
+      sourcePath,
+      issues
+    );
+
+    if (!image) {
+      return null;
+    }
+
+    return {
+      kind: "image",
+      block: image.block,
+      references: image.references
+    };
+  }
+};
+
+export function getStructuredBlockResolver(blockType: string) {
+  return (
+    structuredBlockResolvers[blockType as keyof typeof structuredBlockResolvers] ??
+    null
+  );
 }
 
 export async function normalizeTermBlock(

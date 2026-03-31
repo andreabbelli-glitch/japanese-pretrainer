@@ -14,8 +14,8 @@ import { parseMarkdownDocument } from "./parser/markdown.ts";
 import { extractStructuredBlocks } from "./parser/structured-blocks.ts";
 import { createIssue } from "./parser/utils.ts";
 import {
-  validateDuplicateIds,
-  validateReferences,
+  mediaBundleValidationRules,
+  runValidationRules,
   validateWorkspaceDuplicateIds
 } from "./validator-rules.ts";
 import {
@@ -23,25 +23,10 @@ import {
   normalizeLessonFrontmatter,
   normalizeCardsFrontmatter
 } from "./validator-frontmatter.ts";
-import {
-  normalizeTermBlock,
-  normalizeGrammarBlock,
-  normalizeCardBlock,
-  normalizeExampleSentenceBlock,
-  normalizeImageBlock
-} from "./validator-blocks.ts";
 import type {
-  DocumentSourceContext,
-  TermRecord,
-  GrammarRecord,
-  CardRecord
-} from "./validator-blocks.ts";
-import type {
-  CardDefinitionBlock,
   CollectedReference,
-  ContentBlock,
   ContentParseResult,
-  GrammarDefinitionBlock,
+  ContentBlock,
   MarkdownDocument,
   NormalizedCardsDocument,
   NormalizedContentWorkspace,
@@ -49,9 +34,16 @@ import type {
   NormalizedMediaBundle,
   NormalizedMediaDocument,
   SourceRange,
-  TermDefinitionBlock,
   ValidationIssue
 } from "./types.ts";
+import {
+  getStructuredBlockResolver,
+  type DocumentSourceContext,
+  type TermRecord,
+  type GrammarRecord,
+  type CardRecord
+} from "./validator-blocks.ts";
+import type { MediaBundleValidationInput } from "./validator-rules.ts";
 
 interface ParsedDocumentState {
   draft: ParsedDocumentDraft;
@@ -152,15 +144,6 @@ export async function parseMediaDirectory(
     )
   );
 
-  validateDuplicateIds(
-    {
-      media: mediaState ? [mediaState] : [],
-      lessons: lessonStates,
-      cardFiles: cardsStates
-    },
-    issues
-  );
-
   const terms = lessonResults
     .flatMap((result) => result.terms)
     .concat(cardsResults.flatMap((result) => result.terms));
@@ -189,8 +172,29 @@ export async function parseMediaDirectory(
     terms: terms.map((record) => record.value)
   });
 
-  validateReferences(terms, grammarPatterns, cards, references, issues);
-  validateCardsLessonIds(cards, lessonIdLookup, issues);
+  const validationInput: MediaBundleValidationInput = {
+    duplicateIds: {
+      media: mediaState ? [mediaState] : [],
+      lessons: lessonStates,
+      cardFiles: cardsStates
+    },
+    lessonIds: {
+      cards,
+      lessonIdLookup
+    },
+    references: {
+      cards,
+      grammarPatterns,
+      references,
+      terms
+    }
+  };
+
+  await runValidationRules(
+    validationInput,
+    mediaBundleValidationRules,
+    issues
+  );
 
   const bundle: NormalizedMediaBundle = {
     mediaDirectory,
@@ -613,34 +617,6 @@ async function normalizeCardsDocument(
   };
 }
 
-function validateCardsLessonIds(
-  cards: CardRecord[],
-  lessonIdLookup: Set<string>,
-  issues: ValidationIssue[]
-) {
-  for (const card of cards) {
-    if (lessonIdLookup.has(card.value.lessonId)) {
-      continue;
-    }
-
-    issues.push(
-      createIssue({
-        code: "structured-block.unknown-lesson-id",
-        category: "reference",
-        message:
-          "Card lesson_id does not match any lesson in the media package.",
-        filePath: card.value.source.filePath,
-        path: `${card.sourcePath}.lesson_id`,
-        range: card.position,
-        hint: "Use the id of a lesson in the same media bundle.",
-        details: {
-          lessonId: card.value.lessonId
-        }
-      })
-    );
-  }
-}
-
 function resolveMediaBody(
   state: ParsedDocumentState & {
     draft: ParsedDocumentDraft & { kind: "media" };
@@ -732,118 +708,45 @@ async function resolveStructuredBody(
       continue;
     }
 
-    if (rawBlock.blockType === "term") {
-      const term = await normalizeTermBlock(
-        rawBlock,
-        sourceContext,
-        sourcePath,
-        issues
+    const resolver = getStructuredBlockResolver(rawBlock.blockType);
+
+    if (!resolver) {
+      issues.push(
+        createIssue({
+          code: "structured-block.unknown-type",
+          category: "schema",
+          message: `Unsupported structured block '${rawBlock.blockType}'.`,
+          filePath: state.draft.sourceFile,
+          path: sourcePath,
+          range: rawBlock.position,
+          hint: "Use supported structured blocks such as :::term, :::grammar, :::card, :::example_sentence, or :::image."
+        })
       );
-
-      if (term) {
-        const node: TermDefinitionBlock = {
-          type: "termDefinition",
-          position: rawBlock.position,
-          entry: term.value
-        };
-
-        blocks.push(node);
-        terms.push(term);
-        references.push(...term.references);
-      }
-
       continue;
     }
 
-    if (rawBlock.blockType === "grammar") {
-      const grammar = await normalizeGrammarBlock(
-        rawBlock,
-        sourceContext,
-        sourcePath,
-        issues
-      );
+    const result = await resolver(rawBlock, sourceContext, sourcePath, issues);
 
-      if (grammar) {
-        const node: GrammarDefinitionBlock = {
-          type: "grammarDefinition",
-          position: rawBlock.position,
-          entry: grammar.value
-        };
-
-        blocks.push(node);
-        grammarPatterns.push(grammar);
-        references.push(...grammar.references);
-      }
-
+    if (!result) {
       continue;
     }
 
-    if (rawBlock.blockType === "card") {
-      const card = normalizeCardBlock(
-        rawBlock,
-        sourceContext,
-        sourcePath,
-        issues
-      );
+    blocks.push(result.block);
+    references.push(...result.references);
 
-      if (card) {
-        const node: CardDefinitionBlock = {
-          type: "cardDefinition",
-          position: rawBlock.position,
-          card: card.value
-        };
-
-        blocks.push(node);
-        cards.push(card);
-        references.push(...card.references);
-      }
-
+    if (result.kind === "term") {
+      terms.push(result.term);
       continue;
     }
 
-    if (rawBlock.blockType === "example_sentence") {
-      const exampleSentence = normalizeExampleSentenceBlock(
-        rawBlock,
-        sourceContext,
-        sourcePath,
-        issues
-      );
-
-      if (exampleSentence) {
-        blocks.push(exampleSentence.block);
-        references.push(...exampleSentence.references);
-      }
-
+    if (result.kind === "grammar") {
+      grammarPatterns.push(result.grammar);
       continue;
     }
 
-    if (rawBlock.blockType === "image") {
-      const image = await normalizeImageBlock(
-        rawBlock,
-        sourceContext,
-        sourcePath,
-        issues
-      );
-
-      if (image) {
-        blocks.push(image.block);
-        references.push(...image.references);
-      }
-
-      continue;
+    if (result.kind === "card") {
+      cards.push(result.card);
     }
-
-    issues.push(
-      createIssue({
-        code: "structured-block.unknown-type",
-        category: "schema",
-        message: `Unsupported structured block '${rawBlock.blockType}'.`,
-        filePath: state.draft.sourceFile,
-        path: sourcePath,
-        range: rawBlock.position,
-        hint: "Use supported structured blocks such as :::term, :::grammar, :::card, :::example_sentence, or :::image."
-      })
-    );
   }
 
   return {

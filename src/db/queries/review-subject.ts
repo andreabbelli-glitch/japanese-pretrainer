@@ -1,6 +1,6 @@
 import { and, asc, eq, gte, inArray, lt, ne, sql } from "drizzle-orm";
 
-import type { DatabaseClient } from "../client.ts";
+import type { DatabaseClient, DatabaseQueryClient } from "../client.ts";
 import {
   card,
   reviewSubjectLog,
@@ -17,7 +17,7 @@ export type ReviewSubjectEntryRef = {
 export type ReviewSubjectStateRecord = typeof reviewSubjectState.$inferSelect;
 
 export async function getReviewSubjectStateByKey(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   subjectKey: string
 ): Promise<ReviewSubjectStateRecord | null> {
   return (
@@ -28,7 +28,7 @@ export async function getReviewSubjectStateByKey(
 }
 
 export async function listReviewSubjectStatesByKeys(
-  database: DatabaseClient,
+  database: Pick<DatabaseClient, "query">,
   subjectKeys: string[]
 ): Promise<Map<string, ReviewSubjectStateRecord>> {
   if (subjectKeys.length === 0) {
@@ -43,7 +43,7 @@ export async function listReviewSubjectStatesByKeys(
 }
 
 export async function listReviewCardIdsByEntryRefs(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   entryRefs: ReviewSubjectEntryRef[]
 ): Promise<string[]> {
   const refs = dedupeEntryRefs(entryRefs);
@@ -116,7 +116,7 @@ export async function listReviewCardIdsByEntryRefs(
 }
 
 export async function countReviewSubjectsIntroducedOnDay(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   asOf = new Date()
 ) {
   const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
@@ -143,7 +143,7 @@ export async function countReviewSubjectsIntroducedOnDay(
 }
 
 export async function countReviewSubjectsIntroducedOnDayByMediaId(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   mediaId: string,
   asOf = new Date()
 ) {
@@ -157,7 +157,7 @@ export async function countReviewSubjectsIntroducedOnDayByMediaId(
 }
 
 export async function countReviewSubjectsIntroducedOnDayByMediaIds(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   mediaIds: string[],
   asOf = new Date()
 ) {
@@ -189,7 +189,7 @@ export async function countReviewSubjectsIntroducedOnDayByMediaIds(
 }
 
 export async function listReviewSubjectLogsBySubjectKey(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   subjectKey: string,
   limit = 50
 ) {

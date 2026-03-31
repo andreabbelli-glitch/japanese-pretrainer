@@ -22,6 +22,7 @@ type CardRecordLike = {
     entryId: string;
     entryType: "grammar" | "term";
     id: string;
+    lessonId: string;
     source: {
       filePath: string;
     };
@@ -39,6 +40,64 @@ type TermRecordLike = {
     id: string;
   };
 };
+
+export type ValidationRule<Input> = (
+  input: Input,
+  issues: ValidationIssue[]
+) => void | Promise<void>;
+
+export async function runValidationRules<Input>(
+  input: Input,
+  rules: readonly ValidationRule<Input>[],
+  issues: ValidationIssue[]
+) {
+  for (const rule of rules) {
+    await rule(input, issues);
+  }
+}
+
+export interface MediaBundleValidationInput {
+  duplicateIds: {
+    cardFiles: ParsedDocumentStateLite[];
+    lessons: ParsedDocumentStateLite[];
+    media: ParsedDocumentStateLite[];
+  };
+  lessonIds: {
+    cards: CardRecordLike[];
+    lessonIdLookup: Set<string>;
+  };
+  references: {
+    cards: CardRecordLike[];
+    grammarPatterns: GrammarRecordLike[];
+    references: Array<{
+      location?: SourceRange;
+      referenceType: "grammar" | "term";
+      sourceFile: string;
+      sourcePath: string;
+      targetId: string;
+    }>;
+    terms: TermRecordLike[];
+  };
+}
+
+export const mediaBundleValidationRules: readonly ValidationRule<MediaBundleValidationInput>[] =
+  [
+    (input, issues) => validateDuplicateIds(input.duplicateIds, issues),
+    (input, issues) =>
+      validateReferences(
+        input.references.terms,
+        input.references.grammarPatterns,
+        input.references.cards,
+        input.references.references,
+        issues
+      ),
+    (input, issues) =>
+      validateCardsLessonIds(
+        input.lessonIds.cards,
+        input.lessonIds.lessonIdLookup,
+        issues
+      )
+  ];
 
 export function validateDuplicateIds(
   input: {
@@ -292,6 +351,34 @@ export function validateWorkspaceDuplicateIds(
   }
 
   validateCrossMediaGroupUsage(bundles, issues);
+}
+
+function validateCardsLessonIds(
+  cards: CardRecordLike[],
+  lessonIdLookup: Set<string>,
+  issues: ValidationIssue[]
+) {
+  for (const card of cards) {
+    if (lessonIdLookup.has(card.value.lessonId)) {
+      continue;
+    }
+
+    issues.push(
+      createIssue({
+        code: "structured-block.unknown-lesson-id",
+        category: "reference",
+        message:
+          "Card lesson_id does not match any lesson in the media package.",
+        filePath: card.value.source.filePath,
+        path: `${card.sourcePath}.lesson_id`,
+        range: card.position,
+        hint: "Use the id of a lesson in the same media bundle.",
+        details: {
+          lessonId: card.value.lessonId
+        }
+      })
+    );
+  }
 }
 
 export function validateCrossMediaGroupUsage(

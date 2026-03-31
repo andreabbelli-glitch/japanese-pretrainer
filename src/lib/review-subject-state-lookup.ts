@@ -16,7 +16,7 @@ import {
 
 type ResolveReviewSubjectGroupsInput = {
   cards: ReviewCardListItem[];
-  database: DatabaseClient;
+  database: Pick<DatabaseClient, "query">;
   grammar: Array<{
     crossMediaGroupId: string | null;
     id: string;

@@ -16,6 +16,8 @@ export type ReviewSubjectStateBackfillResult = {
   subjectCount: number;
 };
 
+type ReviewSubjectStateDatabase = Pick<DatabaseClient, "insert" | "query">;
+
 type ReviewSubjectCoverageSnapshot = {
   cardCount: number;
   existingStateCount: number;
@@ -25,7 +27,7 @@ type ReviewSubjectCoverageSnapshot = {
 };
 
 export async function syncReviewSubjectState(
-  database: DatabaseClient,
+  database: ReviewSubjectStateDatabase,
   input: {
     now?: Date;
   } = {}
@@ -67,7 +69,7 @@ export async function syncReviewSubjectState(
 }
 
 export async function backfillReviewSubjectState(
-  database: DatabaseClient,
+  database: ReviewSubjectStateDatabase,
   input: {
     now?: Date;
   } = {}
@@ -76,7 +78,7 @@ export async function backfillReviewSubjectState(
 }
 
 async function loadReviewSubjectCoverageSnapshot(
-  database: DatabaseClient,
+  database: ReviewSubjectStateDatabase,
   input: {
     now?: Date;
   }

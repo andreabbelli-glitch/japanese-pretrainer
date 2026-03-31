@@ -1,8 +1,10 @@
 import path from "node:path";
 
 import { parseContentRoot } from "../src/lib/content/validator.ts";
-import { reusePronunciationsAcrossMedia } from "../src/lib/pronunciation-reuse.ts";
-import { writeBundlePronunciationPendingSummary } from "../src/lib/pronunciation-workflow.ts";
+import {
+  reusePronunciationsAcrossMedia,
+  writeBundlePronunciationPendingSummary
+} from "../src/lib/pronunciation.ts";
 
 type CliOptions = {
   contentRoot: string;

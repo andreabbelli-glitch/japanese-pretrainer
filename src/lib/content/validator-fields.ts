@@ -6,6 +6,38 @@ const japaneseScriptPattern =
   /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u;
 const bareNumeralPattern = /[+-]?\d[\d,]*(?:\.\d+)?/u;
 
+function readStringField(input: {
+  raw: Record<string, unknown>;
+  key: string;
+  filePath: string;
+  pathPrefix: string;
+  issues: ValidationIssue[];
+  range?: SourceRange;
+  required: boolean;
+}) {
+  const value = input.raw[input.key];
+
+  if (typeof value !== "string" || value.trim().length === 0) {
+    input.issues.push(
+      createIssue({
+        code: input.required
+          ? "schema.required-string"
+          : "schema.invalid-string",
+        category: "schema",
+        message: `Field '${input.key}' must be a non-empty string${
+          input.required ? "." : " when provided."
+        }`,
+        filePath: input.filePath,
+        path: `${input.pathPrefix}.${input.key}`,
+        range: input.range
+      })
+    );
+    return undefined;
+  }
+
+  return value;
+}
+
 export function readRequiredString(
   raw: Record<string, unknown>,
   key: string,
@@ -14,23 +46,15 @@ export function readRequiredString(
   issues: ValidationIssue[],
   range?: SourceRange
 ) {
-  const value = raw[key];
-
-  if (typeof value !== "string" || value.trim().length === 0) {
-    issues.push(
-      createIssue({
-        code: "schema.required-string",
-        category: "schema",
-        message: `Field '${key}' must be a non-empty string.`,
-        filePath,
-        path: `${pathPrefix}.${key}`,
-        range
-      })
-    );
-    return undefined;
-  }
-
-  return value;
+  return readStringField({
+    raw,
+    key,
+    filePath,
+    pathPrefix,
+    issues,
+    range,
+    required: true
+  });
 }
 
 export function readOptionalString(
@@ -47,21 +71,15 @@ export function readOptionalString(
     return undefined;
   }
 
-  if (typeof value !== "string" || value.trim().length === 0) {
-    issues.push(
-      createIssue({
-        code: "schema.invalid-string",
-        category: "schema",
-        message: `Field '${key}' must be a non-empty string when provided.`,
-        filePath,
-        path: `${pathPrefix}.${key}`,
-        range
-      })
-    );
-    return undefined;
-  }
-
-  return value;
+  return readStringField({
+    raw,
+    key,
+    filePath,
+    pathPrefix,
+    issues,
+    range,
+    required: false
+  });
 }
 
 export function readOptionalStringArray(

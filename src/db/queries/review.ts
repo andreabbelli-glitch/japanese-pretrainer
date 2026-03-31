@@ -1,6 +1,6 @@
 import { and, asc, eq, inArray, ne } from "drizzle-orm";
 
-import type { DatabaseClient } from "../client.ts";
+import type { DatabaseQueryClient } from "../client.ts";
 import {
   card,
   crossMediaGroup,
@@ -25,7 +25,7 @@ const cardRelations = {
 } as const;
 
 export async function listCardsByMediaId(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   mediaId: string
 ) {
   return database.query.card.findMany({
@@ -35,7 +35,7 @@ export async function listCardsByMediaId(
   });
 }
 
-export async function getCardById(database: DatabaseClient, cardId: string) {
+export async function getCardById(database: DatabaseQueryClient, cardId: string) {
   return database.query.card.findFirst({
     where: eq(card.id, cardId),
     with: cardRelations
@@ -43,7 +43,7 @@ export async function getCardById(database: DatabaseClient, cardId: string) {
 }
 
 export async function getCardsByIds(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   cardIds: string[]
 ) {
   if (cardIds.length === 0) {
@@ -58,7 +58,7 @@ export async function getCardsByIds(
 }
 
 export async function listReviewCardsByIds(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   cardIds: string[]
 ) {
   if (cardIds.length === 0) {
@@ -73,7 +73,7 @@ export async function listReviewCardsByIds(
 }
 
 export async function listReviewCardsByMediaId(
-  database: DatabaseClient,
+  database: Pick<DatabaseQueryClient, "query">,
   mediaId: string
 ) {
   return database.query.card.findMany({
@@ -84,7 +84,7 @@ export async function listReviewCardsByMediaId(
 }
 
 export async function listReviewCardsByMediaIds(
-  database: DatabaseClient,
+  database: Pick<DatabaseQueryClient, "query">,
   mediaIds: string[]
 ) {
   if (mediaIds.length === 0) {
@@ -99,7 +99,7 @@ export async function listReviewCardsByMediaIds(
 }
 
 export async function listTermEntryReviewSummariesByIds(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   termIds: string[]
 ) {
   if (termIds.length === 0) {
@@ -140,7 +140,7 @@ export async function listTermEntryReviewSummariesByIds(
 }
 
 export async function listGrammarEntryReviewSummariesByIds(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   grammarIds: string[]
 ) {
   if (grammarIds.length === 0) {
@@ -194,7 +194,7 @@ export type ReviewLaunchCandidate = {
 };
 
 export async function listReviewLaunchCandidates(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   asOfIso = new Date().toISOString()
 ): Promise<ReviewLaunchCandidate[]> {
   const asOfSql = quoteSqlString(asOfIso);
@@ -320,7 +320,7 @@ export async function listReviewLaunchCandidates(
 }
 
 export async function listDueCardsByMediaId(
-  database: DatabaseClient,
+  database: DatabaseQueryClient,
   mediaId: string,
   asOf = new Date().toISOString()
 ) {

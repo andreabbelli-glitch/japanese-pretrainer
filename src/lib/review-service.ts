@@ -13,6 +13,7 @@ import {
   reviewSubjectLog,
   reviewSubjectState,
   type DatabaseClient,
+  type DatabaseQueryClient,
   type EntryType,
   type ReviewCardListItem
 } from "@/db";
@@ -95,13 +96,13 @@ export async function applyReviewGrade(input: {
       loadedCard,
       nowIso
     );
-    const subjectReviewState = buildSubjectReviewStateForValidation(
+    const resolvedSubjectState = resolveSubjectReviewStateForValidation(
       subjectContext.subjectState
     );
 
     const effectiveState = resolveEffectiveReviewState({
       cardStatus: subjectContext.seedCard.status,
-      reviewState: subjectReviewState
+      reviewState: resolvedSubjectState
     });
 
     if (effectiveState.state === "known_manual") {
@@ -121,7 +122,7 @@ export async function applyReviewGrade(input: {
         : null,
       nowIso
     );
-    const previousState = (subjectReviewState?.state ?? "new") as ReviewState;
+    const previousState = (resolvedSubjectState?.state ?? "new") as ReviewState;
     const scheduled = scheduleReview({
       current: seedState.current,
       now,
@@ -539,7 +540,7 @@ async function loadReviewSubjectMutationContext(
   loadedCard: LoadedReviewCard,
   nowIso?: string
 ): Promise<ReviewSubjectMutationContext> {
-  const txDb = transaction as unknown as DatabaseClient;
+  const txDb: DatabaseQueryClient = transaction;
   const drivingLinks = getDrivingEntryLinks(loadedCard.entryLinks);
   const { termIds: termEntryIds, grammarIds: grammarEntryIds } =
     splitLinkIds(drivingLinks);
@@ -637,7 +638,7 @@ async function resolveReviewSubjectEntryRefs(
   loadedCard: LoadedReviewCard,
   identity: ReviewSubjectIdentity
 ) {
-  const txDb = transaction as unknown as DatabaseClient;
+  const txDb: DatabaseQueryClient = transaction;
   const drivingLinks = getDrivingEntryLinks(loadedCard.entryLinks);
 
   if (identity.subjectKind === "card") {
@@ -699,7 +700,7 @@ async function resolveReviewSubjectEntryRefs(
   ]);
 }
 
-function buildSubjectReviewStateForValidation(
+function resolveSubjectReviewStateForValidation(
   subjectState: ReviewSubjectStateSnapshot | null
 ) {
   if (subjectState) {

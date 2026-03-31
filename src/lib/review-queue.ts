@@ -16,9 +16,14 @@ import {
   type ReviewSubjectGroup,
   type ReviewSubjectStateSnapshot
 } from "./review-subject";
-import type { ReviewOverviewSnapshot, ReviewQueueCard } from "./review-types";
+import type {
+  ReviewFirstCandidateSelectedCardContext,
+  ReviewOverviewSnapshot,
+  ReviewQueueCard
+} from "./review-types";
+import type { ReviewSearchState } from "./review-search-state";
 
-export type ResolvedReviewQueueState = {
+export type ReviewQueueStateSnapshot = {
   bucket: ReviewQueueCard["bucket"];
   dueAt: string | null;
   effectiveState: EffectiveReviewState["state"];
@@ -29,7 +34,7 @@ export type ResolvedReviewQueueState = {
 export type ReviewSubjectModel = {
   card: ReviewCardListItem;
   group: ReviewSubjectGroup;
-  resolvedState: ResolvedReviewQueueState;
+  queueStateSnapshot: ReviewQueueStateSnapshot;
 };
 
 export type ReviewQueueSubjectSnapshot = {
@@ -65,7 +70,7 @@ export function resolveReviewQueueState(
   cardStatus: string,
   reviewState: ReviewSubjectStateSnapshot | null,
   nowIso: string
-): ResolvedReviewQueueState {
+): ReviewQueueStateSnapshot {
   const effectiveState = resolveEffectiveReviewState({
     cardStatus,
     reviewState: reviewState
@@ -143,7 +148,7 @@ export function buildReviewSubjectModels(input: {
     return {
       card: selectedCard,
       group,
-      resolvedState: resolveReviewQueueState(
+      queueStateSnapshot: resolveReviewQueueState(
         selectedCard.status,
         group.subjectState,
         input.nowIso
@@ -163,13 +168,84 @@ export function findReviewQueueSubjectModelByCardId(
   );
 }
 
+export function resolveReviewPageSelection(input: {
+  queueSnapshot: ReviewQueueSubjectSnapshot;
+  searchState: ReviewSearchState;
+}) {
+  const visibleSelectionModels = [
+    ...input.queueSnapshot.queueModels,
+    ...input.queueSnapshot.manualModels,
+    ...input.queueSnapshot.suspendedModels,
+    ...input.queueSnapshot.upcomingModels
+  ];
+  const explicitSelectionModel = input.searchState.selectedCardId
+    ? findReviewQueueSubjectModelByCardId(
+        visibleSelectionModels,
+        input.searchState.selectedCardId
+      )
+    : null;
+  const fallbackSelectionModel =
+    input.searchState.selectedCardId && explicitSelectionModel === null
+      ? findReviewQueueSubjectModelByCardId(
+          input.queueSnapshot.subjectModels,
+          input.searchState.selectedCardId
+        )
+      : null;
+  const selectedModel =
+    explicitSelectionModel ??
+    fallbackSelectionModel ??
+    input.queueSnapshot.queueModels[0] ??
+    null;
+  const selectedCardId =
+    explicitSelectionModel || fallbackSelectionModel
+      ? input.searchState.selectedCardId
+      : null;
+  const selectedQueueModel = selectedModel
+    ? findReviewQueueSubjectModelByCardId(
+        input.queueSnapshot.queueModels,
+        selectedModel.card.id
+      )
+    : null;
+  const queueIndex = selectedQueueModel
+    ? input.queueSnapshot.queueModels.indexOf(selectedQueueModel)
+    : -1;
+
+  return {
+    queueIndex,
+    selectedCardId,
+    selectedModel,
+    selectedQueueModel
+  };
+}
+
+export function buildReviewFirstCandidateSelectedCardContext(input: {
+  bucket: ReviewQueueCard["bucket"] | null;
+  queueIndex: number;
+  queueSnapshot: ReviewQueueSubjectSnapshot;
+  searchState: ReviewSearchState;
+}): ReviewFirstCandidateSelectedCardContext {
+  return {
+    bucket: input.bucket,
+    isQueueCard: input.queueIndex >= 0,
+    position: input.queueIndex >= 0 ? input.queueIndex + 1 : null,
+    remainingCount:
+      input.queueIndex >= 0
+        ? input.queueSnapshot.queueCount - input.queueIndex - 1
+        : 0,
+    showAnswer: input.searchState.showAnswer || input.queueIndex < 0
+  };
+}
+
 function compareReviewSubjectModelsByDue(
   left: ReviewSubjectModel,
   right: ReviewSubjectModel
 ) {
-  if ((left.resolvedState.dueAt ?? "") !== (right.resolvedState.dueAt ?? "")) {
-    return (left.resolvedState.dueAt ?? "9999").localeCompare(
-      right.resolvedState.dueAt ?? "9999"
+  if (
+    (left.queueStateSnapshot.dueAt ?? "") !==
+    (right.queueStateSnapshot.dueAt ?? "")
+  ) {
+    return (left.queueStateSnapshot.dueAt ?? "9999").localeCompare(
+      right.queueStateSnapshot.dueAt ?? "9999"
     );
   }
 
@@ -352,7 +428,7 @@ export function bucketAndSortReviewSubjectModels(models: ReviewSubjectModel[]) {
   const upcomingModels: ReviewSubjectModel[] = [];
 
   for (const model of models) {
-    switch (model.resolvedState.bucket) {
+    switch (model.queueStateSnapshot.bucket) {
       case "due":
         dueModels.push(model);
         break;
@@ -453,7 +529,7 @@ function countUpcomingDueTomorrow(
   const tomorrowEndIso = tomorrowEnd.toISOString();
 
   return upcomingModels.filter((model) => {
-    const dueAt = model.resolvedState.dueAt;
+    const dueAt = model.queueStateSnapshot.dueAt;
     return dueAt != null && dueAt >= tomorrowStartIso && dueAt < tomorrowEndIso;
   }).length;
 }

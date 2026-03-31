@@ -28,6 +28,14 @@ type DatabaseTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
 >[0];
 
+export interface ContentWorkspaceSyncPlan {
+  filesChanged: number;
+  mediaPlans: Array<{
+    existingState: ExistingMediaState;
+    plan: MediaImportPlan;
+  }>;
+}
+
 export async function syncContentWorkspace(
   transaction: DatabaseTransaction,
   input: {
@@ -40,13 +48,61 @@ export async function syncContentWorkspace(
     };
   }
 ): Promise<{ filesChanged: number; summary: ImportSyncSummary }> {
-  const plans = input.workspace.bundles.map((bundle) =>
-    buildMediaImportPlan({
+  const plan = await buildContentWorkspaceSyncPlan(transaction, input);
+  return executeContentWorkspaceSyncPlan(transaction, {
+    importId: input.importId,
+    nowIso: input.nowIso,
+    plan,
+    syncMode: input.syncMode
+  });
+}
+
+export async function buildContentWorkspaceSyncPlan(
+  transaction: DatabaseTransaction,
+  input: {
+    contentRoot: string;
+    nowIso: string;
+    workspace: {
+      bundles: Parameters<typeof buildMediaImportPlan>[0]["bundle"][];
+    };
+  }
+): Promise<ContentWorkspaceSyncPlan> {
+  const mediaPlans: ContentWorkspaceSyncPlan["mediaPlans"] = [];
+
+  for (const bundle of input.workspace.bundles) {
+    const plan = buildMediaImportPlan({
       bundle,
       contentRoot: input.contentRoot,
       nowIso: input.nowIso
-    })
-  );
+    });
+    const existingState = await loadExistingMediaState(
+      transaction,
+      plan.media.row.id
+    );
+
+    mediaPlans.push({
+      existingState,
+      plan
+    });
+  }
+
+  return {
+    filesChanged: mediaPlans.reduce((total, entry) => {
+      return total + countChangedSourceDocuments(entry.plan, entry.existingState);
+    }, 0),
+    mediaPlans
+  };
+}
+
+export async function executeContentWorkspaceSyncPlan(
+  transaction: DatabaseTransaction,
+  input: {
+    importId: string;
+    nowIso: string;
+    plan: ContentWorkspaceSyncPlan;
+    syncMode: "full" | "incremental";
+  }
+): Promise<{ filesChanged: number; summary: ImportSyncSummary }> {
   const summary: ImportSyncSummary = {
     archivedCardIds: [],
     archivedLessonIds: [],
@@ -54,21 +110,14 @@ export async function syncContentWorkspace(
     prunedGrammarIds: [],
     prunedTermIds: []
   };
-  let filesChanged = 0;
+  let filesChanged = input.plan.filesChanged;
 
-  for (const plan of plans) {
-    const existingState = await loadExistingMediaState(
-      transaction,
-      plan.media.row.id
-    );
-
-    filesChanged += countChangedSourceDocuments(plan, existingState);
-
-    const planSummary = await syncMediaPlan(transaction, {
-      existingState,
+  for (const mediaPlan of input.plan.mediaPlans) {
+    const planSummary = await applyMediaImportPlan(transaction, {
+      existingState: mediaPlan.existingState,
       importId: input.importId,
       nowIso: input.nowIso,
-      plan
+      plan: mediaPlan.plan
     });
 
     summary.archivedCardIds.push(...planSummary.archivedCardIds);
@@ -79,7 +128,7 @@ export async function syncContentWorkspace(
 
   if (input.syncMode === "full") {
     const removedMediaSummary = await archiveRemovedMedia(transaction, {
-      currentMediaIds: plans.map((plan) => plan.media.row.id),
+      currentMediaIds: input.plan.mediaPlans.map((entry) => entry.plan.media.row.id),
       nowIso: input.nowIso
     });
 
@@ -100,7 +149,7 @@ export async function syncContentWorkspace(
   }
 
   await pruneOrphanedCrossMediaGroups(transaction);
-  await syncReviewSubjectState(transaction as unknown as DatabaseClient, {
+  await syncReviewSubjectState(transaction, {
     now: new Date(input.nowIso)
   });
 
@@ -176,7 +225,7 @@ async function loadExistingMediaState(
   };
 }
 
-async function syncMediaPlan(
+async function applyMediaImportPlan(
   transaction: DatabaseTransaction,
   input: {
     existingState: ExistingMediaState;

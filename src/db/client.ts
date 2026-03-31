@@ -8,6 +8,8 @@ export type DatabaseClient = LibSQLDatabase<typeof schema> & {
   $client: Client;
 };
 
+export type DatabaseQueryClient = Omit<DatabaseClient, "$client" | "batch">;
+
 export interface DatabaseClientOptions {
   databaseUrl?: string;
   logger?: boolean;

@@ -61,7 +61,7 @@ import {
   formatBucketLabel,
   formatShortIsoDate,
   resolveReviewQueueState,
-  type ResolvedReviewQueueState
+  type ReviewQueueStateSnapshot
 } from "./review-queue";
 import type {
   ReviewCardDetailData,
@@ -198,7 +198,7 @@ export async function hydrateReviewCardUncached(input: {
     "getReviewSubjectStateByKey",
     () => getReviewSubjectStateByKey(database, subjectIdentity.subjectKey)
   );
-  const resolvedState = resolveReviewQueueState(
+  const queueStateSnapshot = resolveReviewQueueState(
     card.status,
     subjectState,
     nowIso
@@ -213,13 +213,24 @@ export async function hydrateReviewCardUncached(input: {
   const queueCard = await measureWith(
     input.profiler,
     "mapQueueCard",
-    () => mapQueueCard(card, entryLookup, [card], mediaById, nowIso, resolvedState),
+    () =>
+      mapQueueCard(
+        card,
+        entryLookup,
+        [card],
+        mediaById,
+        nowIso,
+        queueStateSnapshot
+      ),
     { cardId: card.id }
   );
 
   return {
     ...queueCard,
-    gradePreviews: buildSharedReviewGradePreviews(resolvedState.reviewSeedState, now)
+    gradePreviews: buildSharedReviewGradePreviews(
+      queueStateSnapshot.reviewSeedState,
+      now
+    )
   };
 }
 
@@ -263,7 +274,7 @@ export async function getReviewCardDetailData(
     database,
     subjectIdentity.subjectKey
   );
-  const resolvedState = resolveReviewQueueState(
+  const queueStateSnapshot = resolveReviewQueueState(
     selectedRawCard.status,
     subjectState,
     nowIso
@@ -274,7 +285,7 @@ export async function getReviewCardDetailData(
     [selectedRawCard],
     new Map([[media.id, { slug: media.slug, title: media.title }]]),
     nowIso,
-    resolvedState
+    queueStateSnapshot
   );
 
   const termById = new Map(terms.map((entry) => [entry.id, entry]));
@@ -533,7 +544,7 @@ export function mapQueueCard(
   subjectCards: ReviewCardListItem[],
   mediaById: ReviewMediaLookup,
   nowIso: string,
-  resolvedState?: ResolvedReviewQueueState,
+  queueStateSnapshot?: ReviewQueueStateSnapshot,
   contexts?: ReviewQueueCard["contexts"]
 ): ReviewQueueCard {
   const cardMedia = resolveReviewCardMedia(card, mediaById);
@@ -562,7 +573,7 @@ export function mapQueueCard(
       ];
     });
   const resolved =
-    resolvedState ?? resolveReviewQueueState(card.status, null, nowIso);
+    queueStateSnapshot ?? resolveReviewQueueState(card.status, null, nowIso);
   const pronunciations = buildReviewCardPronunciations(card, entryLookup, sortedEntryLinks);
   const reading = resolveReviewCardReading(card, entryLookup, sortedEntryLinks);
 

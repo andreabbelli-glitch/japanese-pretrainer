@@ -33,11 +33,11 @@ import {
 import {
   buildBucketDetail,
   buildReviewQueueSubjectSnapshot,
-  findReviewQueueSubjectModelByCardId,
+  buildReviewFirstCandidateSelectedCardContext,
   formatBucketLabel,
   formatShortIsoDate,
-  type ResolvedReviewQueueState,
-  type ReviewQueueSubjectSnapshot,
+  resolveReviewPageSelection,
+  type ReviewQueueStateSnapshot,
   type ReviewSubjectModel
 } from "./review-queue";
 import type { ReviewSubjectGroup } from "./review-subject";
@@ -63,7 +63,6 @@ import type {
   GlobalReviewPageLoadResult,
   ReviewFirstCandidateCard,
   ReviewFirstCandidatePageData,
-  ReviewFirstCandidateSelectedCardContext,
   ReviewPageData,
   ReviewQueueCard,
   ReviewQueueSnapshot,
@@ -418,7 +417,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
           entryLookup: input.entryLookup,
           mediaById: input.mediaById,
           nowIso,
-          resolvedState: selection.selectedModel.resolvedState
+          queueStateSnapshot: selection.selectedModel.queueStateSnapshot
         })
       : null;
   const selectedCardContext = buildReviewFirstCandidateSelectedCardContext({
@@ -625,102 +624,34 @@ export async function getReviewQueueSnapshotForMedia(
   };
 }
 
-export function resolveReviewPageSelection(input: {
-  queueSnapshot: ReviewQueueSubjectSnapshot;
-  searchState: ReviewSearchState;
-}) {
-  const visibleSelectionModels = [
-    ...input.queueSnapshot.queueModels,
-    ...input.queueSnapshot.manualModels,
-    ...input.queueSnapshot.suspendedModels,
-    ...input.queueSnapshot.upcomingModels
-  ];
-  const explicitSelectionModel = input.searchState.selectedCardId
-    ? findReviewQueueSubjectModelByCardId(
-        visibleSelectionModels,
-        input.searchState.selectedCardId
-      )
-    : null;
-  const fallbackSelectionModel =
-    input.searchState.selectedCardId && explicitSelectionModel === null
-      ? findReviewQueueSubjectModelByCardId(
-          input.queueSnapshot.subjectModels,
-          input.searchState.selectedCardId
-        )
-      : null;
-  const selectedModel =
-    explicitSelectionModel ??
-    fallbackSelectionModel ??
-    input.queueSnapshot.queueModels[0] ??
-    null;
-  const selectedCardId =
-    explicitSelectionModel || fallbackSelectionModel
-      ? input.searchState.selectedCardId
-      : null;
-  const selectedQueueModel = selectedModel
-    ? findReviewQueueSubjectModelByCardId(
-        input.queueSnapshot.queueModels,
-        selectedModel.card.id
-      )
-    : null;
-  const queueIndex = selectedQueueModel
-    ? input.queueSnapshot.queueModels.indexOf(selectedQueueModel)
-    : -1;
-
-  return {
-    queueIndex,
-    selectedCardId,
-    selectedModel,
-    selectedQueueModel
-  };
-}
-
-export function buildReviewFirstCandidateSelectedCardContext(input: {
-  bucket: ReviewFirstCandidateCard["bucket"] | null;
-  queueIndex: number;
-  queueSnapshot: ReviewQueueSubjectSnapshot;
-  searchState: ReviewSearchState;
-}): ReviewFirstCandidateSelectedCardContext {
-  return {
-    bucket: input.bucket,
-    isQueueCard: input.queueIndex >= 0,
-    position: input.queueIndex >= 0 ? input.queueIndex + 1 : null,
-    remainingCount:
-      input.queueIndex >= 0
-        ? input.queueSnapshot.queueCount - input.queueIndex - 1
-        : 0,
-    showAnswer: input.searchState.showAnswer || input.queueIndex < 0
-  };
-}
-
 export function mapReviewQueueSubjectCardPreview(input: {
   card: ReviewCardListItem;
   entryLookup: Map<string, ReviewEntryLookupItem>;
   mediaById: ReviewMediaLookup;
   nowIso: string;
-  resolvedState: ResolvedReviewQueueState;
+  queueStateSnapshot: ReviewQueueStateSnapshot;
 }) {
   const cardMedia = resolveReviewCardMedia(input.card, input.mediaById);
 
   return {
     back: input.card.back,
-    bucket: input.resolvedState.bucket,
+    bucket: input.queueStateSnapshot.bucket,
     bucketDetail: buildBucketDetail(
-      input.resolvedState.bucket,
-      input.resolvedState.dueAt
+      input.queueStateSnapshot.bucket,
+      input.queueStateSnapshot.dueAt
     ),
     bucketLabel: formatBucketLabel(
-      input.resolvedState.bucket
+      input.queueStateSnapshot.bucket
     ),
     createdAt: input.card.createdAt,
-    dueAt: input.resolvedState.dueAt,
-    dueLabel: input.resolvedState.dueAt
-      ? `Scadenza ${formatShortIsoDate(input.resolvedState.dueAt)}`
+    dueAt: input.queueStateSnapshot.dueAt,
+    dueLabel: input.queueStateSnapshot.dueAt
+      ? `Scadenza ${formatShortIsoDate(input.queueStateSnapshot.dueAt)}`
       : undefined,
-    effectiveState: input.resolvedState.effectiveState,
+    effectiveState: input.queueStateSnapshot.effectiveState,
     effectiveStateLabel: formatReviewStateLabel(
-      input.resolvedState.effectiveState,
-      input.resolvedState.effectiveState === "known_manual"
+      input.queueStateSnapshot.effectiveState,
+      input.queueStateSnapshot.effectiveState === "known_manual"
     ),
     exampleIt: input.card.exampleIt ?? undefined,
     exampleJp: input.card.exampleJp ?? undefined,
@@ -731,9 +662,9 @@ export function mapReviewQueueSubjectCardPreview(input: {
     mediaTitle: cardMedia.title,
     notes: input.card.notesIt ?? undefined,
     orderIndex: input.card.orderIndex,
-    rawReviewLabel: input.resolvedState.rawReviewLabel,
+    rawReviewLabel: input.queueStateSnapshot.rawReviewLabel,
     reading: resolveReviewCardReading(input.card, input.entryLookup),
-    reviewSeedState: input.resolvedState.reviewSeedState,
+    reviewSeedState: input.queueStateSnapshot.reviewSeedState,
     segmentTitle: input.card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(input.card.cardType)
   } satisfies ReviewFirstCandidateCard;
@@ -811,7 +742,7 @@ export function mapReviewQueueSubjectModel(
     model.group.cards,
     input.mediaById,
     input.nowIso,
-    model.resolvedState,
+    model.queueStateSnapshot,
     resolveReviewQueueSubjectContexts(
       model.group,
       input.mediaById,

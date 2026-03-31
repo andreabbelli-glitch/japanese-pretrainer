@@ -6,10 +6,10 @@ import { parseContentRoot } from "../src/lib/content/validator.ts";
 import {
   fetchForvoPronunciationsForBundle,
   fetchForvoPronunciationsForBundleManual,
-  resolveRequestedTargets
-} from "../src/lib/forvo-pronunciation-fetch.ts";
-import { reuseCrossMediaPronunciationsForBundle } from "../src/lib/pronunciation-reuse.ts";
-import { writeBundlePronunciationPendingSummary } from "../src/lib/pronunciation-workflow.ts";
+  resolveRequestedTargets,
+  reuseCrossMediaPronunciationsForBundle,
+  writeBundlePronunciationPendingSummary
+} from "../src/lib/pronunciation.ts";
 
 type CliOptions = {
   browserTimeoutMs?: number;

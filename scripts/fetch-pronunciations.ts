@@ -6,18 +6,14 @@ import {
   type NormalizedMediaBundle
 } from "../src/lib/content/index.ts";
 import {
-  fetchPronunciationsForBundle,
-  type PronunciationFetchNetworkOptions
-} from "../src/lib/pronunciation-fetch.ts";
-import {
   createPronunciationReuseContext,
-  refreshPronunciationReuseContextBundle,
-  reuseCrossMediaPronunciationsForBundle
-} from "../src/lib/pronunciation-reuse.ts";
-import {
+  fetchPronunciationsForBundle,
   loadForvoKnownMissingRegistry,
-  writeBundlePronunciationPendingSummary
-} from "../src/lib/pronunciation-workflow.ts";
+  refreshPronunciationReuseContextBundle,
+  reuseCrossMediaPronunciationsForBundle,
+  writeBundlePronunciationPendingSummary,
+  type PronunciationFetchNetworkOptions
+} from "../src/lib/pronunciation.ts";
 
 type CliOptions = {
   contentRoot: string;
