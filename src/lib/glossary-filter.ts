@@ -278,35 +278,39 @@ export function buildGlobalGlossaryResults(
 }
 
 export function buildGlossaryStats(
-  entries: GlossaryBaseEntry[],
-  studySignalsByEntry: Map<string, StudySignalRow[]>
+  entries: Array<
+    Pick<GlossaryBaseEntry, "kind"> &
+      Pick<RankedGlossaryEntry, "studyState">
+  >
 ) {
+  let grammarCount = 0;
   let knownCount = 0;
   let reviewCount = 0;
+  let termCount = 0;
 
   for (const entry of entries) {
-    const studySignals = (
-      studySignalsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? []
-    ).map((signal) => ({
-      manualOverride: signal.manualOverride,
-      reviewState: signal.reviewState
-    }));
-    const studyState = deriveEntryStudyState(studySignals);
+    if (entry.kind === "grammar") {
+      grammarCount += 1;
+    }
 
-    if (studyState.key === "known") {
+    if (entry.kind === "term") {
+      termCount += 1;
+    }
+
+    if (entry.studyState.key === "known") {
       knownCount += 1;
     }
 
-    if (studyState.key === "review") {
+    if (entry.studyState.key === "review") {
       reviewCount += 1;
     }
   }
 
   return {
-    grammarCount: entries.filter((entry) => entry.kind === "grammar").length,
+    grammarCount,
     knownCount,
     reviewCount,
-    termCount: entries.filter((entry) => entry.kind === "term").length
+    termCount
   };
 }
 

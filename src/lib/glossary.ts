@@ -383,8 +383,11 @@ export async function getGlossaryPageData(
       mediaId: media.id
     })
   ]);
-  const { candidates, cardsByEntry, studySignalsByEntry } =
-    await buildGlossaryResolvedEntries(database, entries, filters);
+  const { candidates, cardsByEntry } = await buildGlossaryResolvedEntries(
+    database,
+    entries,
+    filters
+  );
   const segmentOrder = new Map(
     segments.map((segment, index) => [segment.id, index] as const)
   );
@@ -492,7 +495,7 @@ export async function getGlossaryPageData(
         label: segment.title
       }))
     ],
-    stats: buildGlossaryStats(entries, studySignalsByEntry)
+    stats: buildGlossaryStats(candidates)
   };
 }
 
@@ -859,8 +862,7 @@ async function buildGlossaryResolvedEntries(
 
   return {
     candidates,
-    cardsByEntry,
-    studySignalsByEntry
+    cardsByEntry
   };
 }
 
