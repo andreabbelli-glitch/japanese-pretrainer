@@ -135,7 +135,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
                 {!isCollapsed && (
                   <div className="textbook-lesson-grid">
                     {group.lessons.map((lesson) => (
-                      <div key={lesson.id} className="textbook-lesson-link">
+                      <div key={lesson.id}>
                         <SurfaceCard
                           className="textbook-lesson-card"
                           variant="quiet"
@@ -171,7 +171,7 @@ export function TextbookIndexPage({ data }: TextbookIndexPageProps) {
                                 Ripassa vocaboli
                               </Link>
                               <Link
-                                className="button button--primary button--small"
+                                className="button button--primary button--small textbook-lesson-link"
                                 href={mediaTextbookLessonHref(
                                   data.media.slug,
                                   lesson.slug
