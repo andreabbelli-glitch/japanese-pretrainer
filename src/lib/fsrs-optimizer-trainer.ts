@@ -187,31 +187,31 @@ export async function runFsrsOptimizer(
       presetResults.concept.status = "trained";
     }
 
-    await database.transaction(async (tx) => {
-      for (const parameters of trainedParameters) {
-        await writeFsrsOptimizedParameters(parameters, tx, nowIso);
-      }
-    });
-
     const liveEligibleReviews = await countEligibleFsrsOptimizerReviews(database);
     const newEligibleReviewsSinceLastTraining = Math.max(
       liveEligibleReviews - trainingSnapshotEligibleReviewCount,
       0
     );
 
-    await writeFsrsOptimizerState(
-      {
-        bindingVersion: getBindingPackageVersion(),
-        lastAttemptAt: nowIso,
-        lastCheckAt: nowIso,
-        lastSuccessfulTrainingAt: nowIso,
-        lastTrainingError: null,
-        newEligibleReviewsSinceLastTraining,
-        totalEligibleReviewsAtLastTraining: trainingSnapshotEligibleReviewCount
-      },
-      database,
-      nowIso
-    );
+    await database.transaction(async (tx) => {
+      for (const parameters of trainedParameters) {
+        await writeFsrsOptimizedParameters(parameters, tx, nowIso);
+      }
+
+      await writeFsrsOptimizerState(
+        {
+          bindingVersion: getBindingPackageVersion(),
+          lastAttemptAt: nowIso,
+          lastCheckAt: nowIso,
+          lastSuccessfulTrainingAt: nowIso,
+          lastTrainingError: null,
+          newEligibleReviewsSinceLastTraining,
+          totalEligibleReviewsAtLastTraining: trainingSnapshotEligibleReviewCount
+        },
+        tx,
+        nowIso
+      );
+    });
 
     return {
       lastCheckAt: nowIso,

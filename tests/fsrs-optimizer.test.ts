@@ -199,6 +199,85 @@ describe("fsrs optimizer", () => {
     expect(snapshot.state.newEligibleReviewsSinceLastTraining).toBe(400);
   });
 
+  it(
+    "preserves the training baseline after a no-trainable-data run",
+    async () => {
+      await seedFsrsFixture(database, {
+        conceptLogCount: 1,
+        recognitionLogCount: 1
+      });
+      await database.insert(reviewSubjectState).values([
+        ...buildSingleReviewSubjectStates({
+          cardId: "recognition-card",
+          count: 250,
+          subjectKeyPrefix: "single:recognition"
+        }),
+        ...buildSingleReviewSubjectStates({
+          cardId: "concept-card",
+          count: 250,
+          subjectKeyPrefix: "single:concept"
+        })
+      ]);
+      await database.insert(reviewSubjectLog).values([
+        ...buildSingleReviewLogs({
+          cardId: "recognition-card",
+          count: 250,
+          idPrefix: "recognition-single",
+          subjectKeyPrefix: "single:recognition"
+        }),
+        ...buildSingleReviewLogs({
+          cardId: "concept-card",
+          count: 250,
+          idPrefix: "concept-single",
+          subjectKeyPrefix: "single:concept"
+        })
+      ]);
+
+      const firstResult = await runFsrsOptimizer({
+        database,
+        now: new Date("2026-04-01T09:00:00.000Z")
+      });
+      const snapshotAfterFirstRun = await getFsrsOptimizerSnapshot(database);
+
+      expect(firstResult).toMatchObject({
+        newEligibleReviews: 502,
+        reason: "no-trainable-data",
+        status: "skipped",
+        totalEligibleReviews: 502
+      });
+      expect(snapshotAfterFirstRun.state.totalEligibleReviewsAtLastTraining).toBe(
+        0
+      );
+      expect(snapshotAfterFirstRun.state.newEligibleReviewsSinceLastTraining).toBe(
+        502
+      );
+
+      await database.insert(reviewSubjectLog).values(
+        buildReviewLogs({
+          cardId: "recognition-card",
+          count: 9,
+          startIndex: 1,
+          subjectKey: "card:recognition-card"
+        })
+      );
+
+      const secondResult = await runFsrsOptimizer({
+        database,
+        now: new Date("2026-04-02T09:00:00.000Z")
+      });
+      const snapshotAfterSecondRun = await getFsrsOptimizerSnapshot(database);
+
+      expect(secondResult.status).toBe("trained");
+      expect(snapshotAfterSecondRun.state.lastSuccessfulTrainingAt).toBe(
+        "2026-04-02T09:00:00.000Z"
+      );
+      expect(snapshotAfterSecondRun.state.totalEligibleReviewsAtLastTraining).toBe(
+        511
+      );
+    },
+    20_000
+  );
+
   it("does not rewrite the optimizer config on skipped runs when it is unchanged", async () => {
     await seedFsrsFixture(database, {
       conceptLogCount: 300,
@@ -414,6 +493,57 @@ describe("fsrs optimizer", () => {
           now: new Date("2026-04-10T09:00:00.000Z")
         })
       ).rejects.toThrow(/fsrs_params_concept/i);
+
+      const snapshot = await getFsrsOptimizerSnapshot(database);
+
+      expect(snapshot.presets.recognition).toEqual(baselineRecognition);
+      expect(snapshot.presets.concept).toEqual(baselineConcept);
+      expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
+        baselineSuccessfulTrainingAt
+      );
+    },
+    40_000
+  );
+
+  it(
+    "rolls back preset writes when the optimizer state write fails",
+    async () => {
+      await seedFsrsFixture(database, {
+        conceptLogCount: 12,
+        recognitionLogCount: 12
+      });
+
+      const baseline = await runFsrsOptimizer({
+        database,
+        force: true,
+        now: new Date("2026-04-01T09:00:00.000Z")
+      });
+      expect(baseline.status).toBe("trained");
+
+      const baselineSnapshot = await getFsrsOptimizerSnapshot(database);
+      const baselineRecognition = baselineSnapshot.presets.recognition;
+      const baselineConcept = baselineSnapshot.presets.concept;
+      const baselineSuccessfulTrainingAt =
+        baselineSnapshot.state.lastSuccessfulTrainingAt;
+
+      await database.insert(reviewSubjectLog).values(
+        buildReviewLogs({
+          cardId: "recognition-card",
+          count: 1,
+          subjectKey: "card:recognition-card",
+          startIndex: 12
+        })[0]!
+      );
+
+      await installOptimizerStateWriteAbortTrigger(database);
+
+      await expect(
+        runFsrsOptimizer({
+          database,
+          force: true,
+          now: new Date("2026-04-10T09:00:00.000Z")
+        })
+      ).rejects.toThrow(/fsrs_optimizer_state|optimizer state write blocked/i);
 
       const snapshot = await getFsrsOptimizerSnapshot(database);
 
@@ -961,6 +1091,29 @@ async function installConceptWriteAbortTrigger(database: DatabaseClient) {
   });
 }
 
+async function installOptimizerStateWriteAbortTrigger(database: DatabaseClient) {
+  await database.$client.execute({
+    sql: `
+      create trigger if not exists fsrs_optimizer_state_insert_block
+      before insert on user_setting
+      when new.key = 'fsrs_optimizer_state'
+      begin
+        select raise(abort, 'optimizer state write blocked');
+      end;
+    `
+  });
+  await database.$client.execute({
+    sql: `
+      create trigger if not exists fsrs_optimizer_state_update_block
+      before update on user_setting
+      when new.key = 'fsrs_optimizer_state'
+      begin
+        select raise(abort, 'optimizer state write blocked');
+      end;
+    `
+  });
+}
+
 function buildReviewLogs(input: {
   cardId: string;
   count: number;
@@ -1011,4 +1164,59 @@ function buildLogRow(input: {
     rating: input.rating,
     subjectKey: input.subjectKey
   };
+}
+
+function buildSingleReviewLogs(input: {
+  cardId: string;
+  count: number;
+  idPrefix: string;
+  subjectKeyPrefix: string;
+}) {
+  return Array.from({ length: input.count }, (_, index) => ({
+    answeredAt: new Date(
+      Date.UTC(2026, 2, 1 + Math.floor(index / 20), 9, index % 60, 0, 0)
+    ).toISOString(),
+    cardId: input.cardId,
+    elapsedDays: 0,
+    id: `${input.idPrefix}-${index + 1}`,
+    newState: "learning" as const,
+    previousState: "new" as const,
+    rating: "good" as const,
+    responseMs: 900,
+    scheduledDueAt: new Date(
+      Date.UTC(2026, 2, 2 + Math.floor(index / 20), 9, index % 60, 0, 0)
+    ).toISOString(),
+    schedulerVersion: "fsrs_v1" as const,
+    subjectKey: `${input.subjectKeyPrefix}-${index + 1}`
+  }));
+}
+
+function buildSingleReviewSubjectStates(input: {
+  cardId: string;
+  count: number;
+  subjectKeyPrefix: string;
+}) {
+  return Array.from({ length: input.count }, (_, index) => ({
+    cardId: input.cardId,
+    createdAt: "2026-03-01T09:00:00.000Z",
+    crossMediaGroupId: null,
+    difficulty: null,
+    dueAt: null,
+    entryId: null,
+    entryType: null,
+    lapses: 0,
+    lastInteractionAt: "2026-03-01T09:00:00.000Z",
+    lastReviewedAt: null,
+    learningSteps: 0,
+    manualOverride: false,
+    reps: 0,
+    scheduledDays: 0,
+    schedulerVersion: "fsrs_v1" as const,
+    stability: null,
+    state: "new" as const,
+    subjectKey: `${input.subjectKeyPrefix}-${index + 1}`,
+    subjectType: "card" as const,
+    suspended: false,
+    updatedAt: "2026-03-01T09:00:00.000Z"
+  }));
 }
