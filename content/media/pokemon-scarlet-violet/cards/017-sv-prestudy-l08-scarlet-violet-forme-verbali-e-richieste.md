@@ -11,12 +11,15 @@ id: term-e017-doushiyou
 lemma: どうしよう
 reading: どうしよう
 romaji: doushiyou
-meaning_it: che faccio adesso?
+meaning_it: che faccio? / come faccio? / e adesso?
 notes_it: >-
   Espressione ricorrente della lezione L08 nell'area Domande rapide. Viene da どう
   ("come?") + しよう, forma volitiva di する ("fare"): letteralmente e qualcosa
   come "come faccio? / che faccio?". Per questo suona come esitazione,
-  incertezza o piccolo panico davanti a una decisione.
+  incertezza o piccolo panico davanti a una decisione. In review pensa a queste
+  sfumature: "che faccio?" quando devi scegliere il prossimo passo, "come
+  faccio?" quando non vedi una soluzione, "e adesso?" quando la situazione ti
+  mette pressione o ti coglie impreparato.
 :::
 :::card
 id: card-e017-doushiyou-recognition
@@ -25,11 +28,11 @@ entry_type: term
 entry_id: term-e017-doushiyou
 card_type: recognition
 front: 'どうしよう'
-back: che faccio adesso?
+back: che faccio? / come faccio? / e adesso?
 example_jp: >-
-  どうしよう、 まだ {{決|き}}めてない。
+  どうしよう、 もう {{時間|じかん}}が ない。
 example_it: >-
-  Che faccio? Non ho ancora deciso.
+  Oddio, e adesso? Non c'e piu tempo.
 :::
 :::term
 id: term-e018-doushitano
