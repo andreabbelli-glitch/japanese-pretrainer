@@ -10,6 +10,7 @@ import { resolveReturnToContext, resolveReturnToLabel } from "@/lib/site";
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { Section } from "../ui/section";
 import { SurfaceCard } from "../ui/surface-card";
+import { FsrsOptimizerStatusPanel } from "./fsrs-optimizer-status-panel";
 import { SaveSettingsButton } from "./save-settings-button";
 
 type SettingsPageProps = {
@@ -234,83 +235,7 @@ export function SettingsPage({
             </div>
           </SurfaceCard>
 
-          <SurfaceCard className="settings-panel" variant="quiet">
-            <div className="settings-panel__header">
-              <div>
-                <p className="eyebrow">Review</p>
-                <h3 className="settings-panel__title">FSRS optimizer</h3>
-              </div>
-              <p className="settings-panel__body">
-                Stato read-only del training automatico esterno usato per
-                adattare la review ai tuoi log reali.
-              </p>
-            </div>
-            <div className="stack-list stack-list--tight">
-              <p className="settings-panel__body">
-                Stato optimizer:{" "}
-                <strong>
-                  {fsrsOptimizerStatus.config.enabled
-                    ? "Attivo"
-                    : "Disattivato"}
-                </strong>
-              </p>
-              <p className="settings-panel__body">
-                {fsrsOptimizerStatus.config.enabled
-                  ? "Strategia attiva: preset per tipo card (`recognition`, `concept`)."
-                  : "Optimizer automatico disattivato: il job schedulato non parte, ma `pnpm fsrs:optimize` puo comunque forzare un retrain."}
-              </p>
-              <p className="settings-panel__body">
-                Desired retention:{" "}
-                <strong>
-                  {formatRetention(fsrsOptimizerStatus.config.desiredRetention)}
-                </strong>
-              </p>
-              <p className="settings-panel__body">
-                Ultimo training riuscito:{" "}
-                <strong>
-                  {formatDateTime(
-                    fsrsOptimizerStatus.state.lastSuccessfulTrainingAt
-                  )}
-                </strong>
-              </p>
-              <p className="settings-panel__body">
-                Review nuove accumulate:{" "}
-                <strong>{fsrsOptimizerStatus.newEligibleReviews}</strong>
-                {` / ${fsrsOptimizerStatus.config.minNewReviews} minime`}
-              </p>
-              <p className="settings-panel__body">
-                Ultimo check:{" "}
-                <strong>
-                  {formatDateTime(fsrsOptimizerStatus.state.lastCheckAt)}
-                </strong>
-              </p>
-            </div>
-            <div className="settings-choice-grid settings-choice-grid--compact">
-              {(["recognition", "concept"] as const).map((presetKey) => {
-                const preset = fsrsOptimizerStatus.presets[presetKey];
-
-                return (
-                  <div key={presetKey} className="settings-choice-card">
-                    <span className="settings-choice-card__title">
-                      {presetKey === "recognition"
-                        ? "Preset recognition"
-                        : "Preset concept"}
-                    </span>
-                    <span className="settings-choice-card__body">
-                      {preset.usesOptimizedParameters
-                        ? `Parametri ottimizzati attivi. Training su ${preset.trainingReviewCount} review. Ultimo aggiornamento ${formatDateTime(preset.trainedAt)}.`
-                        : "Nessun training valido salvato: la review usa il fallback di default."}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-            {fsrsOptimizerStatus.state.lastTrainingError ? (
-              <p className="settings-notice" role="status">
-                Ultimo errore training: {fsrsOptimizerStatus.state.lastTrainingError}
-              </p>
-            ) : null}
-          </SurfaceCard>
+          <FsrsOptimizerStatusPanel status={fsrsOptimizerStatus} />
 
           <div className="settings-form__footer">
             <SaveSettingsButton />
@@ -352,25 +277,4 @@ export function SettingsPage({
       ) : null}
     </div>
   );
-}
-
-const dateTimeFormatter = new Intl.DateTimeFormat("it-IT", {
-  dateStyle: "medium",
-  timeStyle: "short"
-});
-
-function formatDateTime(value: string | null) {
-  if (!value) {
-    return "Mai";
-  }
-
-  const parsed = new Date(value);
-
-  return Number.isNaN(parsed.getTime())
-    ? "Mai"
-    : dateTimeFormatter.format(parsed);
-}
-
-function formatRetention(value: number) {
-  return `${Math.round(value * 100)}%`;
 }

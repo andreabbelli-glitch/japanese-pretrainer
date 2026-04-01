@@ -13,7 +13,10 @@ reading: どうしよう
 romaji: doushiyou
 meaning_it: che faccio adesso?
 notes_it: >-
-  Espressione ricorrente della lezione L08 nell'area Domande rapide. Esprime incertezza o piccolo panico.
+  Espressione ricorrente della lezione L08 nell'area Domande rapide. Viene da どう
+  ("come?") + しよう, forma volitiva di する ("fare"): letteralmente e qualcosa
+  come "come faccio? / che faccio?". Per questo suona come esitazione,
+  incertezza o piccolo panico davanti a una decisione.
 :::
 :::card
 id: card-e017-doushiyou-recognition
@@ -35,7 +38,11 @@ reading: どうしたの？
 romaji: doushitano？
 meaning_it: che succede?
 notes_it: >-
-  Espressione ricorrente della lezione L08 nell'area Domande rapide. Domanda frequentissima quando qualcuno sembra strano o preoccupato.
+  Espressione ricorrente della lezione L08 nell'area Domande rapide. Si appoggia
+  a どうした, cioe il passato di どうする ("che fare / come comportarsi"), usato
+  in pratica con il senso di "che e successo? / che hai?". Il の finale rende la
+  domanda piu esplicativa e colloquiale: per questo どうしたの？ si usa spesso
+  quando qualcuno sembra strano, fermo o preoccupato.
 :::
 :::card
 id: card-e018-doushitano-recognition
@@ -304,7 +311,7 @@ id: term-v100-hiden-supaisu
 lemma: 秘伝スパイス
 reading: ひでんすぱいす
 romaji: hiden supaisu
-meaning_it: Herba Mystica
+meaning_it: Herba Mystica / spezia segreta
 notes_it: >-
-  Voce della lezione L08 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Voce della lezione L08 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Qui 秘伝 (hiden) non e solo "segreto" in senso generico: richiama qualcosa di custodito o tramandato come una ricetta speciale. Per questo la label si puo leggere anche come "spezia segreta", oltre al nome localizzato Herba Mystica. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::

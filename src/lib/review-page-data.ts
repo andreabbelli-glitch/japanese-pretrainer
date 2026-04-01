@@ -27,8 +27,8 @@ import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
   buildReviewSeedStateWithFsrsPreset,
-  getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerSnapshot,
+  getFsrsOptimizerRuntimeContext,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
 import {
@@ -377,6 +377,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   database?: DatabaseClient;
   dailyLimit: number;
   entryLookup: Map<string, ReviewEntryLookupItem>;
+  fsrsOptimizerSnapshot?: FsrsOptimizerSnapshot;
   media: ReviewPageWorkspace;
   mediaById: ReviewMediaLookup;
   newIntroducedTodayCount: number;
@@ -389,9 +390,9 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   profiler?: ReviewProfiler | null;
 }): Promise<ReviewFirstCandidatePageData> {
   const nowIso = input.now.toISOString();
-  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(
-    input.database ?? db
-  );
+  const fsrsOptimizerSnapshot =
+    input.fsrsOptimizerSnapshot ??
+    (await getFsrsOptimizerSnapshot(input.database ?? db));
   const queueSnapshot = await measureWith(
     input.profiler,
     "buildReviewQueueSubjectSnapshot",
@@ -488,12 +489,12 @@ export async function getGlobalReviewFirstCandidateLoadResult(
 ): Promise<GlobalReviewFirstCandidateLoadResult> {
   const cacheEligible = !options.bypassCache && canUseDataCache(database);
   const searchState = normalizeReviewSearchState(searchParams);
-  const fsrsCacheKey = await getFsrsOptimizerCacheKeyPart(database);
+  const fsrsRuntimeContext = await getFsrsOptimizerRuntimeContext(database);
   const cacheKeyParts = [
     "review",
     "global-first-candidate",
     ...buildReviewSearchStateCacheKeyParts(searchState),
-    `fsrs:${fsrsCacheKey}`
+    `fsrs:${fsrsRuntimeContext.cacheKeyPart}`
   ];
 
   const loadSnapshot = async () => {
@@ -528,6 +529,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
         database,
         dailyLimit: workspace.dailyLimit,
         entryLookup: workspace.entryLookup,
+        fsrsOptimizerSnapshot: fsrsRuntimeContext.snapshot,
         media: {
           glossaryHref: "/glossary",
           href: "/",

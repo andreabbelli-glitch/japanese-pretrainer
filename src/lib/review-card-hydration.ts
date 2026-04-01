@@ -59,8 +59,8 @@ import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./re
 import {
   buildDefaultFsrsOptimizerSnapshot,
   buildReviewSeedStateWithFsrsPreset,
-  getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerSnapshot,
+  getFsrsOptimizerRuntimeContext,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
 import {
@@ -140,7 +140,7 @@ export async function hydrateReviewCard(input: {
 }): Promise<ReviewQueueCard | null> {
   const database = input.database ?? db;
   const cacheEligible = canUseDataCache(database);
-  const fsrsCacheKey = await getFsrsOptimizerCacheKeyPart(database);
+  const fsrsRuntimeContext = await getFsrsOptimizerRuntimeContext(database);
 
   return measureWith(
     input.profiler,
@@ -148,8 +148,17 @@ export async function hydrateReviewCard(input: {
     () =>
       runWithTaggedCache({
         enabled: cacheEligible,
-        keyParts: ["review", "hydrated-card", input.cardId, fsrsCacheKey],
-        loader: () => hydrateReviewCardUncached(input),
+        keyParts: [
+          "review",
+          "hydrated-card",
+          input.cardId,
+          fsrsRuntimeContext.cacheKeyPart
+        ],
+        loader: () =>
+          hydrateReviewCardUncached({
+            ...input,
+            fsrsOptimizerSnapshot: fsrsRuntimeContext.snapshot
+          }),
         tags: [
           ...buildReviewSummaryTags(),
           ...buildGlossarySummaryTags(),
@@ -163,13 +172,15 @@ export async function hydrateReviewCard(input: {
 export async function hydrateReviewCardUncached(input: {
   cardId: string;
   database?: DatabaseClient;
+  fsrsOptimizerSnapshot?: FsrsOptimizerSnapshot;
   now?: Date;
   profiler?: ReviewProfiler | null;
 }): Promise<ReviewQueueCard | null> {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
-  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(database);
+  const fsrsOptimizerSnapshot =
+    input.fsrsOptimizerSnapshot ?? (await getFsrsOptimizerSnapshot(database));
   const card = await measureWith(input.profiler, "getCardById", () =>
     getCardById(database, input.cardId)
   );

@@ -1,11 +1,13 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { inArray } from "drizzle-orm";
+import { eq, inArray, sql } from "drizzle-orm";
 import { generatorParameters } from "ts-fsrs";
 
 import {
+  card,
   db,
+  reviewSubjectLog,
   userSetting,
   type DatabaseClient
 } from "../db/index.ts";
@@ -83,7 +85,7 @@ export type FsrsOptimizationRunResult =
     }
   | {
       lastCheckAt: string;
-      newEligibleReviews: 0;
+      newEligibleReviews: number;
       presetResults: Record<FsrsPresetKey, FsrsOptimizationPresetResult>;
       status: "trained";
       totalEligibleReviews: number;
@@ -111,6 +113,11 @@ type FsrsTrainingDataset = {
   subjectCount: number;
 };
 
+type FsrsOptimizerSettingRow = Pick<
+  (typeof userSetting.$inferSelect),
+  "key" | "updatedAt" | "valueJson"
+>;
+
 const fsrsWeightCount = generatorParameters({}).w.length;
 
 export const FSRS_OPTIMIZER_CONFIG_KEY = "fsrs_optimizer_config";
@@ -125,6 +132,12 @@ const fsrsOptimizerSettingKeys = [
   FSRS_PARAMS_CONCEPT_KEY
 ] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
 
+const fsrsOptimizerRuntimeCacheKeySettingKeys = [
+  FSRS_OPTIMIZER_CONFIG_KEY,
+  FSRS_PARAMS_RECOGNITION_KEY,
+  FSRS_PARAMS_CONCEPT_KEY
+] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
+
 const defaultFsrsOptimizerConfig: FsrsOptimizerConfig = {
   desiredRetention: 0.9,
   enabled: true,
@@ -133,8 +146,9 @@ const defaultFsrsOptimizerConfig: FsrsOptimizerConfig = {
   presetStrategy: "card_type_v1"
 };
 
-type FsrsSettingsReader = Pick<DatabaseClient, "query">;
+type FsrsSettingsReader = Pick<DatabaseClient, "query" | "select">;
 type FsrsSettingsWriter = Pick<DatabaseClient, "insert" | "query">;
+type FsrsSettingsCounter = Pick<DatabaseClient, "select">;
 
 function defaultFsrsOptimizerState(): FsrsOptimizerState {
   return {
@@ -167,7 +181,6 @@ export function buildReviewSeedStateWithFsrsPreset(
   return {
     ...reviewSeedState,
     fsrsDesiredRetention: snapshot.config.desiredRetention,
-    fsrsPresetKey: presetKey ?? undefined,
     fsrsWeights: preset?.weights ?? null
   };
 }
@@ -190,24 +203,22 @@ export function buildDefaultFsrsOptimizerSnapshot(): FsrsOptimizerSnapshot {
 export async function getFsrsOptimizerSnapshot(
   database: FsrsSettingsReader = db
 ): Promise<FsrsOptimizerSnapshot> {
-  const rows = await database.query.userSetting.findMany({
-    where: inArray(userSetting.key, [...fsrsOptimizerSettingKeys])
-  });
-  const valueByKey = new Map(rows.map((row) => [row.key, row.valueJson]));
+  return buildFsrsOptimizerSnapshotFromRows(
+    await loadFsrsOptimizerRows(database, fsrsOptimizerSettingKeys)
+  );
+}
+
+export async function getFsrsOptimizerRuntimeContext(
+  database: DatabaseClient = db
+): Promise<{
+  cacheKeyPart: string;
+  snapshot: FsrsOptimizerSnapshot;
+}> {
+  const rows = await loadFsrsOptimizerRows(database, fsrsOptimizerSettingKeys);
 
   return {
-    config: parseConfigValue(valueByKey.get(FSRS_OPTIMIZER_CONFIG_KEY)),
-    presets: {
-      concept: parseParamsValue(
-        valueByKey.get(FSRS_PARAMS_CONCEPT_KEY),
-        "concept"
-      ),
-      recognition: parseParamsValue(
-        valueByKey.get(FSRS_PARAMS_RECOGNITION_KEY),
-        "recognition"
-      )
-    },
-    state: parseStateValue(valueByKey.get(FSRS_OPTIMIZER_STATE_KEY))
+    cacheKeyPart: buildFsrsOptimizerCacheKeyPartFromRows(rows),
+    snapshot: buildFsrsOptimizerSnapshotFromRows(rows)
   };
 }
 
@@ -249,20 +260,9 @@ export async function getFsrsOptimizerStatus(
 export async function getFsrsOptimizerCacheKeyPart(
   database: DatabaseClient = db
 ): Promise<string> {
-  const rows = await database.query.userSetting.findMany({
-    where: inArray(userSetting.key, [
-      FSRS_OPTIMIZER_CONFIG_KEY,
-      FSRS_PARAMS_RECOGNITION_KEY,
-      FSRS_PARAMS_CONCEPT_KEY
-    ])
-  });
-  const byKey = new Map(rows.map((row) => [row.key, row.updatedAt]));
-
-  return [
-    byKey.get(FSRS_OPTIMIZER_CONFIG_KEY) ?? "none",
-    byKey.get(FSRS_PARAMS_RECOGNITION_KEY) ?? "none",
-    byKey.get(FSRS_PARAMS_CONCEPT_KEY) ?? "none"
-  ].join("|");
+  return buildFsrsOptimizerCacheKeyPartFromRows(
+    await loadFsrsOptimizerRows(database, fsrsOptimizerRuntimeCacheKeySettingKeys)
+  );
 }
 
 export async function writeFsrsOptimizerConfig(
@@ -385,18 +385,17 @@ export function buildFsrsTrainingDataset(
 }
 
 export async function countEligibleFsrsOptimizerReviews(
-  database: DatabaseClient = db
+  database: FsrsSettingsCounter = db
 ) {
-  const result = await database.$client.execute({
-    sql: `
-      select cast(count(*) as integer) as count
-      from review_subject_log rsl
-      inner join card c on c.id = rsl.card_id
-      where c.card_type in ('recognition', 'concept')
-    `
-  });
+  const result = await database
+    .select({
+      count: sql<number>`cast(count(*) as integer)`
+    })
+    .from(reviewSubjectLog)
+    .innerJoin(card, eq(card.id, reviewSubjectLog.cardId))
+    .where(inArray(card.cardType, ["recognition", "concept"]));
 
-  return Number(result.rows[0]?.count ?? 0);
+  return Number(result[0]?.count ?? 0);
 }
 
 function buildPresetStatus(
@@ -434,6 +433,46 @@ function normalizeElapsedDays(value: number | null) {
   }
 
   return Math.max(0, Math.round(value));
+}
+
+async function loadFsrsOptimizerRows(
+  database: FsrsSettingsReader,
+  keys: readonly (typeof userSetting.$inferSelect)["key"][]
+) {
+  return database.query.userSetting.findMany({
+    where: inArray(userSetting.key, [...keys])
+  }) as Promise<FsrsOptimizerSettingRow[]>;
+}
+
+function buildFsrsOptimizerSnapshotFromRows(
+  rows: FsrsOptimizerSettingRow[]
+): FsrsOptimizerSnapshot {
+  const valueByKey = new Map(rows.map((row) => [row.key, row.valueJson]));
+
+  return {
+    config: parseConfigValue(valueByKey.get(FSRS_OPTIMIZER_CONFIG_KEY)),
+    presets: {
+      concept: parseParamsValue(
+        valueByKey.get(FSRS_PARAMS_CONCEPT_KEY),
+        "concept"
+      ),
+      recognition: parseParamsValue(
+        valueByKey.get(FSRS_PARAMS_RECOGNITION_KEY),
+        "recognition"
+      )
+    },
+    state: parseStateValue(valueByKey.get(FSRS_OPTIMIZER_STATE_KEY))
+  };
+}
+
+function buildFsrsOptimizerCacheKeyPartFromRows(rows: FsrsOptimizerSettingRow[]) {
+  const byKey = new Map(rows.map((row) => [row.key, row.updatedAt]));
+
+  return [
+    byKey.get(FSRS_OPTIMIZER_CONFIG_KEY) ?? "none",
+    byKey.get(FSRS_PARAMS_RECOGNITION_KEY) ?? "none",
+    byKey.get(FSRS_PARAMS_CONCEPT_KEY) ?? "none"
+  ].join("|");
 }
 
 function parseConfigValue(valueJson: string | undefined): FsrsOptimizerConfig {

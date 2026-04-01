@@ -52,17 +52,17 @@ Qui trovi parole che ricorrono in richieste, scelta e avvio: [特防](term:term-
 - [食事パワー](term:term-v094-shokujipawaa) — Meal Power
 - [コライドン](term:term-v096-koraidon) — Koraidon
 - [ミライドン](term:term-v097-miraidon) — Miraidon
-- [秘伝スパイス](term:term-v100-hiden-supaisu) — Herba Mystica
+- [秘伝スパイス](term:term-v100-hiden-supaisu) — Herba Mystica / spezia segreta
 
 ## Spiegazione
 
 Parole come [特防](term:term-v088-tokubou) e [答え](term:term-v099-kotae) ti dicono subito di che tipo di informazione parla la frase: una statistica, una domanda o una risposta. [どれ](term:term-v091-dore) segnala una scelta fra più opzioni; [自由に](term:term-v092-jiyuu-ni) indica libertà di movimento o di azione; [近く](term:term-v098-chikaku) aggiunge il riferimento alla vicinanza. [始める](term:term-v095-hajime-ru) è il verbo che ti porta sull'avvio di un'azione, quindi in dialoghi e menu ti fa leggere subito quando il gioco sta chiedendo di partire o di iniziare qualcosa.
 
-Le espressioni come [どうしよう](term:term-e017-doushiyou) e [どうしたの？](term:term-e018-doushitano) servono a capire il tono della scena. `どうしよう` è "che faccio adesso?" o "che devo fare?", quindi segnala incertezza o piccolo panico. `どうしたの？` è la domanda rivolta a qualcuno che sembra strano, preoccupato o fermo: "che succede?".
+Le espressioni come [どうしよう](term:term-e017-doushiyou) e [どうしたの？](term:term-e018-doushitano) servono a capire il tono della scena. `どうしよう` nasce da `どう` ("come?") + `しよう`, la forma volitiva di `する`: letteralmente e qualcosa come "come faccio? / che faccio?", quindi segnala incertezza o piccolo panico davanti alla scelta successiva. `どうしたの？` parte invece da `どうした`, forma passata di `どうする`, che in uso reale vale come "che e successo? / che hai?", e il `の` finale rende la domanda piu esplicativa e colloquiale. Per questo la frase si usa quando qualcuno sembra strano, preoccupato o fermo.
 
 Sul piano grammaticale, [て形](grammar:grammar-g022-collega-azioni-crea-richieste-e-molte-co) collega azioni e apre richieste o istruzioni, come in `始めて`; [ない形](grammar:grammar-g023-negazione) marca il divieto o la negazione secca; [ます / 辞書形](grammar:grammar-g024-registro-cortese-vs-piano) ti fa leggere il contrasto tra parlato cortese e parlato piano nei dialoghi.
 
-Le etichette contestuali come [食事パワー](term:term-v094-shokujipawaa), [コライドン](term:term-v096-koraidon), [ミライドン](term:term-v097-miraidon) e [秘伝スパイス](term:term-v100-hiden-supaisu) non richiedono analisi grammaticale: sono nomi o label di sistema da riconoscere subito come riferimenti al mondo di Scarlet/Violet.
+Le etichette contestuali come [食事パワー](term:term-v094-shokujipawaa), [コライドン](term:term-v096-koraidon), [ミライドン](term:term-v097-miraidon) e [秘伝スパイス](term:term-v100-hiden-supaisu) non richiedono analisi grammaticale: sono nomi o label di sistema da riconoscere subito come riferimenti al mondo di Scarlet/Violet. Nel caso di `秘伝スパイス`, `秘伝` (`hiden`) suggerisce anche l'idea di qualcosa di segreto o custodito come una ricetta speciale, quindi "spezia segreta" e una buona resa di supporto accanto a Herba Mystica.
 
 ## Esempi guidati
 

@@ -26,6 +26,7 @@ import {
   getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerConfigDefaults,
   getFsrsOptimizerSnapshot,
+  getFsrsOptimizerStatus,
   writeFsrsOptimizerConfig,
   writeFsrsOptimizerState
 } from "@/lib/fsrs-optimizer";
@@ -250,6 +251,19 @@ describe("fsrs optimizer", () => {
     expect(snapshot.config).toEqual(getFsrsOptimizerConfigDefaults());
   });
 
+  it("reports the full eligible review count before the first successful training", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 300,
+      recognitionLogCount: 300
+    });
+
+    const status = await getFsrsOptimizerStatus(database);
+
+    expect(status.newEligibleReviews).toBe(600);
+    expect(status.state.newEligibleReviewsSinceLastTraining).toBe(600);
+    expect(status.totalEligibleReviews).toBe(600);
+  });
+
   it(
     "persists optimized parameters for both card-type presets on a forced run",
     async () => {
@@ -283,6 +297,80 @@ describe("fsrs optimizer", () => {
         "2026-04-01T09:00:00.000Z"
       );
       expect(snapshot.state.totalEligibleReviewsAtLastTraining).toBe(24);
+    },
+    20_000
+  );
+
+  it(
+    "keeps reviews that arrive during training in the post-training baseline",
+    async () => {
+      await seedFsrsFixture(database, {
+        conceptLogCount: 12,
+        recognitionLogCount: 12
+      });
+
+      const concurrentDatabase = createDatabaseClient({
+        databaseUrl: databasePath
+      });
+      let injected = false;
+      const originalExecute = database.$client.execute.bind(database.$client);
+      const executeSpy = vi
+        .spyOn(database.$client, "execute")
+        .mockImplementation(async (...args) => {
+          const statement = args[0] as unknown;
+          const sql =
+            typeof statement === "string"
+              ? statement
+              : typeof statement === "object" &&
+                  statement !== null &&
+                  "sql" in statement
+                ? String((statement as { sql: string }).sql)
+                : "";
+
+          const result = await originalExecute(args[0]!);
+
+          if (!injected && sql.includes("from review_subject_log rsl")) {
+            injected = true;
+            await concurrentDatabase.insert(reviewSubjectLog).values(
+              {
+                answeredAt: "2026-04-01T09:05:00.000Z",
+                cardId: "recognition-card",
+                elapsedDays: 4,
+                id: "review_subject_log_recognition_during_training",
+                newState: "review",
+                previousState: "review",
+                rating: "good",
+                responseMs: 940,
+                scheduledDueAt: "2026-04-08T09:05:00.000Z",
+                schedulerVersion: "fsrs_v1",
+                subjectKey: "card:recognition-card"
+              }
+            );
+          }
+
+          return result;
+        });
+
+      try {
+        const result = await runFsrsOptimizer({
+          database,
+          force: true,
+          now: new Date("2026-04-01T09:00:00.000Z")
+        });
+
+        expect(result.status).toBe("trained");
+
+        const snapshot = await getFsrsOptimizerSnapshot(database);
+        const status = await getFsrsOptimizerStatus(database);
+
+        expect(snapshot.state.totalEligibleReviewsAtLastTraining).toBe(24);
+        expect(snapshot.state.newEligibleReviewsSinceLastTraining).toBe(1);
+        expect(status.newEligibleReviews).toBe(1);
+        expect(status.totalEligibleReviews).toBe(25);
+      } finally {
+        executeSpy.mockRestore();
+        closeDatabaseClient(concurrentDatabase);
+      }
     },
     20_000
   );
@@ -429,7 +517,6 @@ describe("fsrs optimizer", () => {
       );
 
       expect(productionSeedState.fsrsDesiredRetention).toBe(0.9);
-      expect(productionSeedState.fsrsPresetKey).toBeUndefined();
       expect(productionSeedState.fsrsWeights).toBeNull();
     },
     20_000
@@ -493,7 +580,6 @@ describe("fsrs optimizer", () => {
       });
       const previews = buildReviewGradePreviews(optimizedSeedState, now);
 
-      expect(optimizedSeedState.fsrsPresetKey).toBe("recognition");
       expect(optimizedSeedState.fsrsWeights).toEqual(
         snapshot.presets.recognition?.weights ?? null
       );
@@ -513,6 +599,70 @@ describe("fsrs optimizer", () => {
 
       expect(result.dueAt).toBe(expected.dueAt);
       expect(latestLog?.scheduledDueAt).toBe(expected.dueAt);
+    },
+    20_000
+  );
+
+  it(
+    "stores the training baseline from the same log snapshot used to fit the presets",
+    async () => {
+      await seedFsrsFixture(database, {
+        conceptLogCount: 12,
+        recognitionLogCount: 12
+      });
+
+      const originalExecute = database.$client.execute.bind(database.$client);
+      let injectedLog = false;
+      const executeSpy = vi
+        .spyOn(database.$client, "execute")
+        .mockImplementation(async (...args) => {
+          const statement = args[0] as unknown;
+          const sql =
+            typeof statement === "string"
+              ? statement
+              : typeof statement === "object" &&
+                  statement !== null &&
+                  "sql" in statement
+                ? String((statement as { sql: string }).sql)
+                : "";
+
+          if (!injectedLog && sql.includes("rsl.id as id")) {
+            injectedLog = true;
+            await database.insert(reviewSubjectLog).values({
+              answeredAt: "2026-04-01T08:59:59.000Z",
+              cardId: "recognition-card",
+              elapsedDays: 4,
+              id: "review_subject_log_recognition_snapshot_race",
+              newState: "review",
+              previousState: "review",
+              rating: "good",
+              responseMs: 900,
+              scheduledDueAt: "2026-04-08T00:00:00.000Z",
+              schedulerVersion: "fsrs_v1",
+              subjectKey: "card:recognition-card"
+            });
+          }
+
+          return originalExecute(args[0]!);
+        });
+
+      try {
+        await runFsrsOptimizer({
+          database,
+          force: true,
+          now: new Date("2026-04-01T09:00:00.000Z")
+        });
+      } finally {
+        executeSpy.mockRestore();
+      }
+
+      const status = await getFsrsOptimizerStatus(database);
+      const snapshot = await getFsrsOptimizerSnapshot(database);
+
+      expect(snapshot.state.totalEligibleReviewsAtLastTraining).toBe(25);
+      expect(snapshot.state.newEligibleReviewsSinceLastTraining).toBe(0);
+      expect(status.newEligibleReviews).toBe(0);
+      expect(status.totalEligibleReviews).toBe(25);
     },
     20_000
   );

@@ -4,13 +4,11 @@ import {
   type ReviewSchedulerRuntimeConfig,
   type ReviewState
 } from "./review-scheduler";
-import type { FsrsPresetKey } from "./fsrs-optimizer";
 
 export type ReviewSeedState = {
   difficulty: number | null;
   dueAt: string | null;
   fsrsDesiredRetention?: number | null;
-  fsrsPresetKey?: FsrsPresetKey;
   fsrsWeights?: number[] | null;
   lapses: number;
   lastReviewedAt: string | null;

@@ -48,16 +48,12 @@ export async function runFsrsOptimizer(
   await writeFsrsOptimizerConfig(snapshot.config, database, nowIso);
 
   if (!input.force && !snapshot.config.enabled) {
-    await writeFsrsOptimizerState(
-      {
-        ...snapshot.state,
-        bindingVersion: getBindingPackageVersion(),
-        lastCheckAt: nowIso,
-        newEligibleReviewsSinceLastTraining: newEligibleReviews
-      },
+    await writeSkippedFsrsOptimizerState({
       database,
-      nowIso
-    );
+      nowIso,
+      newEligibleReviews,
+      state: snapshot.state
+    });
 
     return {
       lastCheckAt: nowIso,
@@ -74,16 +70,12 @@ export async function runFsrsOptimizer(
     now.getTime() - new Date(snapshot.state.lastSuccessfulTrainingAt).getTime() <
       snapshot.config.minDaysBetweenRuns * DAY
   ) {
-    await writeFsrsOptimizerState(
-      {
-        ...snapshot.state,
-        bindingVersion: getBindingPackageVersion(),
-        lastCheckAt: nowIso,
-        newEligibleReviewsSinceLastTraining: newEligibleReviews
-      },
+    await writeSkippedFsrsOptimizerState({
       database,
-      nowIso
-    );
+      nowIso,
+      newEligibleReviews,
+      state: snapshot.state
+    });
 
     return {
       lastCheckAt: nowIso,
@@ -95,16 +87,12 @@ export async function runFsrsOptimizer(
   }
 
   if (!input.force && newEligibleReviews < snapshot.config.minNewReviews) {
-    await writeFsrsOptimizerState(
-      {
-        ...snapshot.state,
-        bindingVersion: getBindingPackageVersion(),
-        lastCheckAt: nowIso,
-        newEligibleReviewsSinceLastTraining: newEligibleReviews
-      },
+    await writeSkippedFsrsOptimizerState({
       database,
-      nowIso
-    );
+      nowIso,
+      newEligibleReviews,
+      state: snapshot.state
+    });
 
     return {
       lastCheckAt: nowIso,
@@ -116,8 +104,16 @@ export async function runFsrsOptimizer(
   }
 
   const rows = await loadFsrsOptimizerLogRows(database);
-  const recognitionDataset = buildFsrsTrainingDataset(rows, "recognition");
-  const conceptDataset = buildFsrsTrainingDataset(rows, "concept");
+  const trainingSnapshotRows = rows.filter((row) => row.answeredAt < nowIso);
+  const trainingSnapshotEligibleReviewCount = trainingSnapshotRows.length;
+  const recognitionDataset = buildFsrsTrainingDataset(
+    trainingSnapshotRows,
+    "recognition"
+  );
+  const conceptDataset = buildFsrsTrainingDataset(
+    trainingSnapshotRows,
+    "concept"
+  );
   const recognitionTrainable =
     recognitionDataset.itemCount >= MIN_TRAINING_ITEM_COUNT &&
     recognitionDataset.reviewCount >= MIN_TRAINING_REVIEW_COUNT;
@@ -159,52 +155,35 @@ export async function runFsrsOptimizer(
         trainingReviewCount: recognitionDataset.reviewCount
       }
     };
-    const trainedParameters: FsrsOptimizedParameters[] = [];
+    const [recognitionParameters, conceptParameters] = await Promise.all([
+      recognitionTrainable
+        ? trainFsrsPreset(
+            "recognition",
+            recognitionDataset.items,
+            recognitionDataset.reviewCount,
+            snapshot.config.desiredRetention,
+            nowIso
+          )
+        : null,
+      conceptTrainable
+        ? trainFsrsPreset(
+            "concept",
+            conceptDataset.items,
+            conceptDataset.reviewCount,
+            snapshot.config.desiredRetention,
+            nowIso
+          )
+        : null
+    ]);
+    const trainedParameters = [recognitionParameters, conceptParameters].filter(
+      (parameters): parameters is FsrsOptimizedParameters => parameters !== null
+    );
 
-    if (recognitionTrainable) {
-      const weights = await computeParameters(
-        buildBindingItems(recognitionDataset.items),
-        {
-          enableShortTerm: true,
-          numRelearningSteps: 1,
-          timeout: 5_000
-        }
-      );
-      const normalizedWeights = normalizeFsrsWeights(weights);
-
-      if (!normalizedWeights) {
-        throw new Error("Recognition training produced invalid FSRS weights.");
-      }
-
-      trainedParameters.push({
-        desiredRetention: snapshot.config.desiredRetention,
-        presetKey: "recognition" as const,
-        trainedAt: nowIso,
-        trainingReviewCount: recognitionDataset.reviewCount,
-        weights: normalizedWeights
-      });
+    if (recognitionParameters) {
       presetResults.recognition.status = "trained";
     }
 
-    if (conceptTrainable) {
-      const weights = await computeParameters(buildBindingItems(conceptDataset.items), {
-        enableShortTerm: true,
-        numRelearningSteps: 1,
-        timeout: 5_000
-      });
-      const normalizedWeights = normalizeFsrsWeights(weights);
-
-      if (!normalizedWeights) {
-        throw new Error("Concept training produced invalid FSRS weights.");
-      }
-
-      trainedParameters.push({
-        desiredRetention: snapshot.config.desiredRetention,
-        presetKey: "concept" as const,
-        trainedAt: nowIso,
-        trainingReviewCount: conceptDataset.reviewCount,
-        weights: normalizedWeights
-      });
+    if (conceptParameters) {
       presetResults.concept.status = "trained";
     }
 
@@ -212,28 +191,34 @@ export async function runFsrsOptimizer(
       for (const parameters of trainedParameters) {
         await writeFsrsOptimizedParameters(parameters, tx, nowIso);
       }
-
-      await writeFsrsOptimizerState(
-        {
-          bindingVersion: getBindingPackageVersion(),
-          lastAttemptAt: nowIso,
-          lastCheckAt: nowIso,
-          lastSuccessfulTrainingAt: nowIso,
-          lastTrainingError: null,
-          newEligibleReviewsSinceLastTraining: 0,
-          totalEligibleReviewsAtLastTraining: totalEligibleReviews
-        },
-        tx,
-        nowIso
-      );
     });
+
+    const liveEligibleReviews = await countEligibleFsrsOptimizerReviews(database);
+    const newEligibleReviewsSinceLastTraining = Math.max(
+      liveEligibleReviews - trainingSnapshotEligibleReviewCount,
+      0
+    );
+
+    await writeFsrsOptimizerState(
+      {
+        bindingVersion: getBindingPackageVersion(),
+        lastAttemptAt: nowIso,
+        lastCheckAt: nowIso,
+        lastSuccessfulTrainingAt: nowIso,
+        lastTrainingError: null,
+        newEligibleReviewsSinceLastTraining,
+        totalEligibleReviewsAtLastTraining: trainingSnapshotEligibleReviewCount
+      },
+      database,
+      nowIso
+    );
 
     return {
       lastCheckAt: nowIso,
-      newEligibleReviews: 0,
+      newEligibleReviews: newEligibleReviewsSinceLastTraining,
       presetResults,
       status: "trained",
-      totalEligibleReviews,
+      totalEligibleReviews: trainingSnapshotEligibleReviewCount,
       trainedAt: nowIso
     };
   } catch (error) {
@@ -264,5 +249,56 @@ function buildBindingItems(
       new FSRSBindingItem(
         reviews.map((review) => new FSRSBindingReview(review.rating, review.deltaT))
       )
+  );
+}
+
+async function trainFsrsPreset(
+  presetKey: FsrsPresetKey,
+  items: Array<Array<{ deltaT: number; rating: 1 | 2 | 3 | 4 }>>,
+  trainingReviewCount: number,
+  desiredRetention: number,
+  nowIso: string
+): Promise<FsrsOptimizedParameters> {
+  const weights = await computeParameters(buildBindingItems(items), {
+    enableShortTerm: true,
+    numRelearningSteps: 1,
+    timeout: 5_000
+  });
+  const normalizedWeights = normalizeFsrsWeights(weights);
+
+  if (!normalizedWeights) {
+    throw new Error(
+      `${capitalizePresetKey(presetKey)} training produced invalid FSRS weights.`
+    );
+  }
+
+  return {
+    desiredRetention,
+    presetKey,
+    trainedAt: nowIso,
+    trainingReviewCount,
+    weights: normalizedWeights
+  };
+}
+
+function capitalizePresetKey(presetKey: FsrsPresetKey) {
+  return presetKey === "recognition" ? "Recognition" : "Concept";
+}
+
+async function writeSkippedFsrsOptimizerState(input: {
+  database: DatabaseClient;
+  nowIso: string;
+  newEligibleReviews: number;
+  state: Awaited<ReturnType<typeof getFsrsOptimizerSnapshot>>["state"];
+}) {
+  await writeFsrsOptimizerState(
+    {
+      ...input.state,
+      bindingVersion: getBindingPackageVersion(),
+      lastCheckAt: input.nowIso,
+      newEligibleReviewsSinceLastTraining: input.newEligibleReviews
+    },
+    input.database,
+    input.nowIso
   );
 }
