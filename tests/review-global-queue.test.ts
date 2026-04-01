@@ -17,6 +17,8 @@ import {
   userSetting,
   type DatabaseClient
 } from "@/db";
+import { getDashboardData } from "@/lib/dashboard";
+import { getMediaDetailData } from "@/lib/media-shell";
 import {
   getGlobalReviewFirstCandidateLoadResult,
   getGlobalReviewPageData,
@@ -256,12 +258,14 @@ describe("global review queue filtering", () => {
         responseMs: null
       });
 
-      const [globalPage, mediaAPage, mediaBPage, mediaBQueue] =
+      const [globalPage, mediaAPage, mediaBPage, mediaBQueue, dashboard, mediaBDetail] =
         await Promise.all([
           getGlobalReviewPageData({}, database),
           getReviewPageData("media-a", {}, database),
           getReviewPageData("media-b", {}, database),
-          getReviewQueueSnapshotForMedia("media-b", database)
+          getReviewQueueSnapshotForMedia("media-b", database),
+          getDashboardData(database),
+          getMediaDetailData("media-b", database)
         ]);
 
       expect(globalPage.queue.newQueuedCount).toBe(0);
@@ -278,6 +282,18 @@ describe("global review queue filtering", () => {
       expect(mediaBQueue?.newAvailableCount).toBe(1);
       expect(mediaBQueue?.newQueuedCount).toBe(0);
       expect(mediaBQueue?.queueCount).toBe(0);
+
+      expect(
+        dashboard.media.find((item) => item.slug === "media-b")?.reviewStatValue
+      ).toBe("In pausa");
+      expect(
+        dashboard.media.find((item) => item.slug === "media-b")?.reviewQueueLabel
+      ).toBe("Le card presenti non richiedono Review attiva in questo momento.");
+
+      expect(mediaBDetail?.reviewStatValue).toBe("In pausa");
+      expect(mediaBDetail?.reviewQueueLabel).toBe(
+        "Le card presenti non richiedono Review attiva in questo momento."
+      );
     } finally {
       vi.useRealTimers();
     }

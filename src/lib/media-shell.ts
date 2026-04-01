@@ -1,5 +1,5 @@
 import {
-  countReviewSubjectsIntroducedOnDayByMediaIds,
+  countReviewSubjectsIntroducedOnDay,
   db,
   listGlossaryPreviewEntries,
   listGlossaryProgressSummaries,
@@ -107,7 +107,7 @@ export async function loadMediaShellSnapshots(
     glossarySnapshots,
     reviewCandidates,
     dailyLimit,
-    newIntroducedByMedia
+    newIntroducedTodayCount
   ] = await Promise.all([
     listLessonsByMediaIds(database, mediaIds),
     loadGlossaryProgressSummarySnapshotsCached(
@@ -119,24 +119,18 @@ export async function loadMediaShellSnapshots(
     ),
     loadReviewLaunchCandidatesCached(database, nowIso),
     getReviewDailyLimit(database),
-    loadReviewIntroducedOnDayCached(database, mediaIds)
+    loadReviewIntroducedTodayCountCached(database, new Date(nowIso))
   ]);
   const lessonsByMedia = groupLessonsByMedia(lessons);
 
   const candidatesByMedia = new Map(
     reviewCandidates.map((candidate) => [candidate.mediaId, candidate])
   );
-  const newIntroducedMap = new Map(
-    newIntroducedByMedia.map((entry) => [entry.mediaId, entry.count])
-  );
+  const remainingNewSlots = Math.max(dailyLimit - newIntroducedTodayCount, 0);
 
   const snapshots = media.map((item) => {
     const candidate = candidatesByMedia.get(item.id);
-    const newIntroducedForMedia = newIntroducedMap.get(item.id) ?? 0;
-    const newQueuedCount = Math.min(
-      candidate?.newCount ?? 0,
-      Math.max(dailyLimit - newIntroducedForMedia, 0)
-    );
+    const newQueuedCount = Math.min(candidate?.newCount ?? 0, remainingNewSlots);
 
     return mapMediaShellSnapshotFromCounts({
       glossary:
@@ -301,22 +295,15 @@ async function loadGlossaryPreviewEntriesCached(
   return new Map(previewRows.map((row) => [row.mediaId, row.previews] as const));
 }
 
-async function loadReviewIntroducedOnDayCached(
+async function loadReviewIntroducedTodayCountCached(
   database: DatabaseClient,
-  mediaIds: string[]
+  asOf: Date
 ) {
-  if (mediaIds.length === 0) {
-    return [];
-  }
-
-  const orderedIds = [...mediaIds].sort();
-
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "review-introduced", ...orderedIds],
-    loader: () =>
-      countReviewSubjectsIntroducedOnDayByMediaIds(database, mediaIds),
-    tags: buildReviewSummaryTags(mediaIds)
+    keyParts: ["app-shell", "review-introduced-global", asOf.toISOString().slice(0, 10)],
+    loader: () => countReviewSubjectsIntroducedOnDay(database, asOf),
+    tags: buildReviewSummaryTags()
   });
 }
 
@@ -331,7 +318,7 @@ async function buildMediaShellSnapshot(
     previewEntriesByMedia,
     reviewCandidates,
     dailyLimit,
-    newIntroducedByMedia
+    newIntroducedTodayCount
   ] = await Promise.all([
     listLessonsByMediaId(database, media.id),
     loadGlossaryProgressSummarySnapshotsCached(database, [
@@ -348,15 +335,13 @@ async function buildMediaShellSnapshot(
     ]),
     loadReviewLaunchCandidatesCached(database, nowIso),
     getReviewDailyLimit(database),
-    loadReviewIntroducedOnDayCached(database, [media.id])
+    loadReviewIntroducedTodayCountCached(database, new Date(nowIso))
   ]);
 
   const candidate = reviewCandidates.find((c) => c.mediaId === media.id);
-  const newIntroducedForMedia =
-    newIntroducedByMedia.find((e) => e.mediaId === media.id)?.count ?? 0;
   const newQueuedCount = Math.min(
     candidate?.newCount ?? 0,
-    Math.max(dailyLimit - newIntroducedForMedia, 0)
+    Math.max(dailyLimit - newIntroducedTodayCount, 0)
   );
   const glossary =
     glossarySnapshots.get(media.id) ?? buildEmptyGlossaryProgressSnapshot();

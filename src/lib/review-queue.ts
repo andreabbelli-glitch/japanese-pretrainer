@@ -312,6 +312,33 @@ function compareReviewSubjectModelsByOrder(
   return compareReviewCardsByOrder(left.card, right.card);
 }
 
+function buildQueuedNewReviewSubjectModels(input: {
+  classifiedModels: ReturnType<typeof classifyReviewSubjectModels>;
+  newSlots: number;
+  nowIso: string;
+  visibleMediaId?: string;
+}) {
+  const queuedNewModels = input.classifiedModels.globalNewModels
+    .slice(0, input.newSlots)
+    .filter((model) =>
+      isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
+    );
+
+  if (!input.visibleMediaId) {
+    return queuedNewModels;
+  }
+
+  return queuedNewModels
+    .map((model) =>
+      preferReviewSubjectModelCardForMedia(
+        model,
+        input.visibleMediaId,
+        input.nowIso
+      )
+    )
+    .sort(compareReviewSubjectModelsByOrder);
+}
+
 export function buildReviewOverviewSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
@@ -344,11 +371,12 @@ export function buildReviewOverviewSnapshot(input: {
     effectiveDailyLimit - input.newIntroducedTodayCount,
     0
   );
-  const queuedNewModels = classifiedModels.globalNewModels
-    .slice(0, newSlots)
-    .filter((model) =>
-      isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
-    );
+  const queuedNewModels = buildQueuedNewReviewSubjectModels({
+    classifiedModels,
+    newSlots,
+    nowIso: input.nowIso,
+    visibleMediaId: input.visibleMediaId
+  });
 
   const dueCount = classifiedModels.dueModels.length;
   const newQueuedCount = queuedNewModels.length;
@@ -422,11 +450,6 @@ export function buildReviewQueueSubjectSnapshot(input: {
     effectiveDailyLimit - input.newIntroducedTodayCount,
     0
   );
-  const queuedNewCards = classifiedModels.globalNewModels
-    .slice(0, newSlots)
-    .filter((model) =>
-      isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
-    );
   const mapModelsForDisplay = (models: ReviewSubjectModel[]) =>
     models.map((model) =>
       preferReviewSubjectModelCardForMedia(
@@ -435,15 +458,21 @@ export function buildReviewQueueSubjectSnapshot(input: {
         input.nowIso
       )
     );
+  const queuedNewModels = buildQueuedNewReviewSubjectModels({
+    classifiedModels,
+    newSlots,
+    nowIso: input.nowIso,
+    visibleMediaId: input.visibleMediaId
+  });
   const queueModels = mapModelsForDisplay([
     ...classifiedModels.dueModels,
-    ...queuedNewCards
+    ...queuedNewModels
   ]);
   const introLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
     dueCount: classifiedModels.dueModels.length,
     manualCount: classifiedModels.manualModels.length,
-    newQueuedCount: queuedNewCards.length,
+    newQueuedCount: queuedNewModels.length,
     sessionTopUpNewCount: input.extraNewCount,
     upcomingCount: classifiedModels.upcomingModels.length
   });
@@ -456,7 +485,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
     manualCount: classifiedModels.manualModels.length,
     manualModels: mapModelsForDisplay(classifiedModels.manualModels),
     newAvailableCount: classifiedModels.visibleNewModels.length,
-    newQueuedCount: queuedNewCards.length,
+    newQueuedCount: queuedNewModels.length,
     queueCount: queueModels.length,
     queueModels,
     subjectModels: mapModelsForDisplay(subjectModels),
