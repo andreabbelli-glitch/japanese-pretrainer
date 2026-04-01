@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import path from "node:path";
 import { spawn } from "node:child_process";
-import { and, asc, eq, ne } from "drizzle-orm";
+import { and, asc, eq, ne, sql } from "drizzle-orm";
 
 import {
   card,
@@ -12,7 +12,8 @@ import {
   lesson,
   lessonProgress,
   media,
-  runMigrations
+  runMigrations,
+  userSetting
 } from "../src/db/index.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
@@ -46,6 +47,7 @@ try {
 
   await purgeArchivedMedia(database);
   await seedE2ELessonProgress(database);
+  await seedE2EUserSettings(database);
   await backfillReviewSubjectState(database);
 } finally {
   closeDatabaseClient(database);
@@ -132,6 +134,42 @@ async function seedE2ELessonProgress(database: DatabaseClient) {
         startedAt: nowIso,
         completedAt: nowIso,
         lastOpenedAt: nowIso
+      }
+    });
+}
+
+async function seedE2EUserSettings(database: DatabaseClient) {
+  const nowIso = new Date().toISOString();
+
+  await database
+    .insert(userSetting)
+    .values([
+      {
+        key: "furigana_mode",
+        updatedAt: nowIso,
+        valueJson: JSON.stringify("hover")
+      },
+      {
+        key: "glossary_default_sort",
+        updatedAt: nowIso,
+        valueJson: JSON.stringify("lesson_order")
+      },
+      {
+        key: "review_daily_limit",
+        updatedAt: nowIso,
+        valueJson: JSON.stringify(20)
+      },
+      {
+        key: "review_front_furigana",
+        updatedAt: nowIso,
+        valueJson: JSON.stringify(true)
+      }
+    ])
+    .onConflictDoUpdate({
+      target: userSetting.key,
+      set: {
+        updatedAt: nowIso,
+        valueJson: sql`excluded.value_json`
       }
     });
 }

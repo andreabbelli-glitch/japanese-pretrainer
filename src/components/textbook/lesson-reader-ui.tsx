@@ -198,6 +198,7 @@ function FuriganaModeControl({
 
   return (
     <div
+      aria-busy={disabled}
       aria-label="Controllo furigana"
       className="reader-furigana-control"
       role="group"
@@ -211,7 +212,7 @@ function FuriganaModeControl({
             currentMode === option.mode &&
               "reader-furigana-control__button--active"
           )}
-          disabled={disabled}
+          disabled={disabled && currentMode === option.mode}
           onClick={() => onChange(option.mode)}
           type="button"
         >

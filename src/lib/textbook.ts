@@ -157,9 +157,11 @@ export async function getTextbookIndexData(
   mediaSlug: string,
   database: DatabaseClient = db
 ): Promise<TextbookIndexData | null> {
+  const furiganaMode = await getFuriganaMode(database);
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["textbook", "index", mediaSlug],
+    keyParts: ["textbook", "index", mediaSlug, `furigana:${furiganaMode}`],
     loader: async () => {
       const media = await getMediaBySlugCached(database, mediaSlug);
 
@@ -167,7 +169,7 @@ export async function getTextbookIndexData(
         return null;
       }
 
-      return getTextbookIndexDataForMedia(media, database);
+      return getTextbookIndexDataForMedia(media, furiganaMode, database);
     },
     tags: [MEDIA_LIST_TAG, SETTINGS_TAG]
   });
@@ -276,12 +278,10 @@ async function loadTextbookLessonTooltipEntries(
 
 async function getTextbookIndexDataForMedia(
   media: NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>,
+  furiganaMode: FuriganaMode,
   database: DatabaseClient
 ) {
-  const [lessons, furiganaMode] = await Promise.all([
-    listLessonsByMediaId(database, media.id),
-    getFuriganaMode(database)
-  ]);
+  const lessons = await listLessonsByMediaId(database, media.id);
 
   return buildTextbookIndexModel({
     furiganaMode,

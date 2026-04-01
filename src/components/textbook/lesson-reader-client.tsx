@@ -95,7 +95,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const [audioPreloadEntryKey, setAudioPreloadEntryKey] = useState<string | null>(
     null
   );
-  const [isSavingFurigana, startSavingFurigana] = useTransition();
+  const [isSavingFurigana, setIsSavingFurigana] = useState(false);
   const [isSavingLesson, startSavingLesson] = useTransition();
   const tooltipRef = useRef<HTMLDivElement | null>(null);
   const anchorRef = useRef<HTMLElement | null>(null);
@@ -103,6 +103,8 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const tooltipRequestRef = useRef<Promise<void> | null>(null);
   const tooltipAbortRef = useRef<AbortController | null>(null);
   const currentLessonIdRef = useRef(data.lesson.id);
+  const persistedFuriganaModeRef = useRef(data.furiganaMode);
+  const queuedFuriganaModeRef = useRef<FuriganaMode | null>(null);
 
   useEffect(() => {
     if (currentLessonIdRef.current === data.lesson.id) {
@@ -110,6 +112,10 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     }
 
     currentLessonIdRef.current = data.lesson.id;
+    persistedFuriganaModeRef.current = data.furiganaMode;
+    queuedFuriganaModeRef.current = null;
+    setFuriganaModeState(data.furiganaMode);
+    setIsSavingFurigana(false);
     tooltipAbortRef.current?.abort();
     tooltipAbortRef.current = null;
     tooltipRequestRef.current = null;
@@ -118,7 +124,11 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     setTooltip(null);
     setMobileSheet(null);
     anchorRef.current = null;
-  }, [data.entries, data.lesson.id]);
+  }, [data.entries, data.furiganaMode, data.lesson.id]);
+
+  useEffect(() => {
+    persistedFuriganaModeRef.current = data.furiganaMode;
+  }, [data.furiganaMode]);
 
   useEffect(() => {
     return () => {
@@ -426,21 +436,54 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     });
   };
 
+  const flushFuriganaModeChange = useCallback(
+    async (nextMode: FuriganaMode) => {
+      let targetMode = nextMode;
+
+      setIsSavingFurigana(true);
+
+      while (true) {
+        try {
+          await setFuriganaModeAction({
+            mediaSlug: data.media.slug,
+            lessonSlug: data.lesson.slug,
+            mode: targetMode
+          });
+          persistedFuriganaModeRef.current = targetMode;
+        } catch {
+          queuedFuriganaModeRef.current = null;
+          setFuriganaModeState(persistedFuriganaModeRef.current);
+          setIsSavingFurigana(false);
+          return;
+        }
+
+        const queuedMode = queuedFuriganaModeRef.current;
+
+        if (!queuedMode || queuedMode === targetMode) {
+          queuedFuriganaModeRef.current = null;
+          setIsSavingFurigana(false);
+          return;
+        }
+
+        targetMode = queuedMode;
+      }
+    },
+    [data.lesson.slug, data.media.slug]
+  );
+
   const handleFuriganaModeChange = (nextMode: FuriganaMode) => {
-    const previousMode = furiganaMode;
+    if (nextMode === furiganaMode) {
+      return;
+    }
+
     setFuriganaModeState(nextMode);
 
-    startSavingFurigana(async () => {
-      try {
-        await setFuriganaModeAction({
-          mediaSlug: data.media.slug,
-          lessonSlug: data.lesson.slug,
-          mode: nextMode
-        });
-      } catch {
-        setFuriganaModeState(previousMode);
-      }
-    });
+    if (isSavingFurigana) {
+      queuedFuriganaModeRef.current = nextMode;
+      return;
+    }
+
+    void flushFuriganaModeChange(nextMode);
   };
 
   const toggleLessonCompletion = () => {

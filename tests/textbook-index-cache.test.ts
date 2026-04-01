@@ -98,7 +98,8 @@ describe("textbook index cache", () => {
     const cacheKey = JSON.stringify([
       "textbook",
       "index",
-      developmentFixture.mediaSlug
+      developmentFixture.mediaSlug,
+      "furigana:hover"
     ]);
 
     const coldStart = performance.now();

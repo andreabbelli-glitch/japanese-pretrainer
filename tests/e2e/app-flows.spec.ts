@@ -62,20 +62,29 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   ).toBeVisible();
 
   const rubyReading = page.locator("ruby rt").first();
-  await expect(rubyReading).toBeHidden();
 
   const furiganaControl = page.getByRole("group", {
     name: "Controllo furigana"
   });
+  const hoverFuriganaButton = furiganaControl.getByRole("button", {
+    name: "Al passaggio",
+    exact: true
+  });
+  const alwaysFuriganaButton = furiganaControl.getByRole("button", {
+    name: "Sempre",
+    exact: true
+  });
 
-  await furiganaControl
-    .getByRole("button", { name: "Sempre", exact: true })
-    .click();
+  if ((await hoverFuriganaButton.getAttribute("aria-pressed")) !== "true") {
+    await hoverFuriganaButton.click();
+  }
+
+  await expect(rubyReading).toBeHidden();
+
+  await alwaysFuriganaButton.click();
   await expect(rubyReading).toBeVisible();
 
-  await furiganaControl
-    .getByRole("button", { name: "Al passaggio", exact: true })
-    .click();
+  await hoverFuriganaButton.click();
   await expect(rubyReading).toBeHidden();
 
   await page.getByRole("button", { name: "クリーチャー" }).first().click();
