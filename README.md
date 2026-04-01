@@ -68,6 +68,15 @@ su `Again/Hard/Good/Easy`, avanza in modo ottimistico mentre il server conferma
 la mutazione in background. Se il submit fallisce, il client ripristina la card
 precedente e mostra l'errore senza perdere il contesto della sessione.
 
+Lo scheduler FSRS supporta anche parametri ottimizzati sui log reali. Il
+training e volutamente esterno al runtime Next.js: il comando canonico e
+`pnpm fsrs:optimize:if-needed`, pensato per essere eseguito da `cron`,
+`launchd`, `systemd` o da un'automazione Codex. Il gate interno allena al
+massimo una volta ogni `30` giorni e solo dopo almeno `500` review eleggibili
+nuove, segmentando i parametri in due preset per `cardType`:
+`recognition` e `concept`. La pagina `/settings` mostra in sola lettura lo
+stato corrente dell'optimizer e dei preset salvati in `user_setting`.
+
 ## Bootstrap locale
 
 Runtime previsto:
@@ -140,6 +149,8 @@ pnpm content:import
 pnpm db:setup
 pnpm db:studio
 pnpm auth:hash-password
+pnpm fsrs:optimize
+pnpm fsrs:optimize:if-needed
 ```
 
 ## Database locale

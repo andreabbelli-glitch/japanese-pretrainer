@@ -47,6 +47,8 @@
   `/review`; i numeri del media restano chiaramente etichettati come locali.
 - Progress: mostra textbook, coverage, review e setting persistiti.
 - Settings: salvare furigana reader, furigana review e ordine glossary aggiorna le viste collegate.
+- Settings: la sezione `FSRS optimizer` mostra stato read-only coerente con i
+  dati salvati in `user_setting`, senza esporre pulsanti manuali di retrain.
 - Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook, glossary e progress risultano navigabili senza errori o stati vuoti incoerenti.
 
 ## Stati e resilienza

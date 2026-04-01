@@ -32,6 +32,10 @@ import {
   type ReviewSubjectStateSnapshot
 } from "./review-subject";
 import {
+  getFsrsOptimizerSnapshot,
+  resolveFsrsPresetKey
+} from "./fsrs-optimizer";
+import {
   scheduleReview,
   type ReviewRating,
   type ReviewState
@@ -122,11 +126,20 @@ export async function applyReviewGrade(input: {
         : null,
       nowIso
     );
+    const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(tx);
+    const presetKey = resolveFsrsPresetKey(loadedCard.cardType);
+    const optimizedParameters = presetKey
+      ? fsrsOptimizerSnapshot.presets[presetKey]
+      : null;
     const previousState = (resolvedSubjectState?.state ?? "new") as ReviewState;
     const scheduled = scheduleReview({
       current: seedState.current,
       now,
-      rating: input.rating
+      rating: input.rating,
+      scheduler: {
+        desiredRetention: fsrsOptimizerSnapshot.config.desiredRetention,
+        weights: optimizedParameters?.weights ?? undefined
+      }
     });
 
     await upsertReviewSubjectState(tx, {

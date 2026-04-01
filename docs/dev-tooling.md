@@ -62,6 +62,24 @@ Workflow immagini:
 `image:apply` aggiorna i markdown, ma il reader usa il contenuto importato nel
 DB locale. Dopo un apply reale serve quindi un nuovo `content:import`.
 
+Workflow optimizer FSRS:
+
+```sh
+./scripts/with-node.sh pnpm fsrs:optimize
+./scripts/with-node.sh pnpm fsrs:optimize:if-needed
+```
+
+`fsrs:optimize` forza un training immediato dei preset `recognition` e
+`concept` usando i log di `review_subject_log`, poi salva config, stato e pesi
+ottimizzati in `user_setting`. Il run forzato ignora il flag `enabled`: quel
+flag blocca solo il job automatico schedulato.
+
+`fsrs:optimize:if-needed` e il comando da schedulare esternamente una volta al
+giorno. Il comando fa no-op finche non sono passati almeno `30` giorni
+dall'ultimo training riuscito oppure non ci sono almeno `500` review nuove
+eleggibili. La schedulazione vera resta fuori dal repo: usare `cron`,
+`launchd`, `systemd` o automazioni Codex.
+
 ## Tool da avere pronti
 
 - browser Playwright per test E2E;

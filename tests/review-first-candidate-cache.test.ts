@@ -176,7 +176,8 @@ describe("global review first-candidate cache", () => {
       "notice:",
       "segment:",
       "selected:",
-      "show:0"
+      "show:0",
+      "fsrs:none|none|none"
     ]);
 
     expect(unstableCacheMock).toHaveBeenCalled();
@@ -222,7 +223,12 @@ describe("global review first-candidate cache", () => {
     expect(second).toEqual(first);
     expect(warmMs).toBeLessThanOrEqual(coldMs);
 
-    const cacheKey = JSON.stringify(["review", "hydrated-card", "card_a"]);
+    const cacheKey = JSON.stringify([
+      "review",
+      "hydrated-card",
+      "card_a",
+      "none|none|none"
+    ]);
 
     expect(unstableCacheMock).toHaveBeenCalled();
     expect(cacheStore.has(cacheKey)).toBe(true);

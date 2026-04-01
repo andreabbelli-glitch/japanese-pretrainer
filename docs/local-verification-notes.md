@@ -38,6 +38,9 @@ non sostituisce un audit completo e aggiornato del codice.
   `Review del media` o equivalente, senza presentarli come globali.
 - Le schermate di studio secondarie non ereditano più il loading generico “Caricamento media”, ma comunicano cosa si sta preparando.
 - `content:import` non esplode più con stacktrace SQL opaco quando manca lo schema: ora indica di eseguire `db:migrate`.
+- Settings mostra anche lo stato read-only dell'optimizer FSRS, inclusi ultimo
+  training riuscito, review nuove accumulate e stato dei preset `recognition` /
+  `concept`.
 
 ## Comando E2E
 
@@ -69,3 +72,6 @@ Il gate canonico copre nell'ordine:
   verificare che l'empty state dedicato non sembri una review locale vuota.
 - Le performance sono verificate solo a livello locale/percepito, non con budget automatizzati.
 - Il prodotto resta single-user e locale-first; non include hardening per esposizione remota.
+- Il training automatico FSRS dipende da una schedulazione esterna del comando
+  `./scripts/with-node.sh pnpm fsrs:optimize:if-needed`; il repo non avvia job
+  periodici in autonomia.

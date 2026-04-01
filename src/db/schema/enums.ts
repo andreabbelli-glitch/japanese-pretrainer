@@ -47,5 +47,9 @@ export const userSettingKeys = [
   "furigana_mode",
   "review_front_furigana",
   "review_daily_limit",
-  "glossary_default_sort"
+  "glossary_default_sort",
+  "fsrs_optimizer_config",
+  "fsrs_optimizer_state",
+  "fsrs_params_recognition",
+  "fsrs_params_concept"
 ] as const;

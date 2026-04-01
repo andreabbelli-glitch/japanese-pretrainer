@@ -15,6 +15,10 @@ import type {
 export type ReviewRating = (typeof reviewRatingValues)[number];
 export type ReviewState = (typeof reviewStateValues)[number];
 export type ReviewSchedulerVersion = "fsrs_v1";
+export type ReviewSchedulerRuntimeConfig = {
+  desiredRetention?: number | null;
+  weights?: number[] | null;
+};
 
 const DAY = 24 * 60 * 60_000;
 const MINIMUM_STABILITY = 0.1;
@@ -32,8 +36,6 @@ export const reviewSchedulerConfig = {
   })
 } as const;
 
-const reviewScheduler = fsrs(reviewSchedulerConfig.fsrs);
-
 type ScheduleReviewInput = {
   current: {
     difficulty: number | null;
@@ -48,6 +50,7 @@ type ScheduleReviewInput = {
   };
   now: Date;
   rating: ReviewRating;
+  scheduler?: ReviewSchedulerRuntimeConfig;
 };
 
 type SchedulableReviewState = Exclude<ReviewState, "known_manual" | "suspended">;
@@ -97,7 +100,11 @@ export function scheduleReview(
   input: ScheduleReviewInput
 ): ScheduleReviewResult {
   const card = buildFsrsCard(input.current, input.now);
-  const result = reviewScheduler.next(card, input.now, mapReviewRating(input.rating));
+  const result = getReviewScheduler(input.scheduler).next(
+    card,
+    input.now,
+    mapReviewRating(input.rating)
+  );
 
   clampInternalCardDueDate(result.card);
 
@@ -266,7 +273,11 @@ export function replayReviewHistory(
       card = createEmptyCard(reviewAt);
     }
 
-    const result = reviewScheduler.next(card, reviewAt, mapReviewRating(log.rating));
+    const result = getReviewScheduler().next(
+      card,
+      reviewAt,
+      mapReviewRating(log.rating)
+    );
     
     clampInternalCardDueDate(result.card);
 
@@ -332,4 +343,52 @@ function clampInternalCardDueDate(card: Pick<Card, "due" | "scheduled_days">) {
       )
     );
   }
+}
+
+const reviewSchedulerCache = new Map<string, ReturnType<typeof fsrs>>();
+
+function getReviewScheduler(config?: ReviewSchedulerRuntimeConfig) {
+  const normalizedConfig = normalizeReviewSchedulerRuntimeConfig(config);
+  const cacheKey = JSON.stringify(normalizedConfig);
+  const cached = reviewSchedulerCache.get(cacheKey);
+
+  if (cached) {
+    return cached;
+  }
+
+  const scheduler = fsrs(
+    generatorParameters({
+      ...reviewSchedulerConfig.fsrs,
+      request_retention: normalizedConfig.desiredRetention,
+      ...(normalizedConfig.weights ? { w: normalizedConfig.weights } : {})
+    })
+  );
+  reviewSchedulerCache.set(cacheKey, scheduler);
+
+  return scheduler;
+}
+
+function normalizeReviewSchedulerRuntimeConfig(
+  config?: ReviewSchedulerRuntimeConfig
+) {
+  return {
+    desiredRetention: normalizeDesiredRetention(config?.desiredRetention),
+    weights: normalizeWeights(config?.weights)
+  };
+}
+
+function normalizeDesiredRetention(value: number | null | undefined) {
+  if (!Number.isFinite(value)) {
+    return reviewSchedulerConfig.fsrs.request_retention;
+  }
+
+  return Math.min(0.99, Math.max(0.7, roundTo(value!, 3)));
+}
+
+function normalizeWeights(value: number[] | readonly number[] | null | undefined) {
+  if (!Array.isArray(value) || value.length !== reviewSchedulerConfig.fsrs.w.length) {
+    return null;
+  }
+
+  return value.every((item) => Number.isFinite(item)) ? [...value] : null;
 }

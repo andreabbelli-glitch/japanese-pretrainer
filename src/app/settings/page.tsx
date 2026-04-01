@@ -1,4 +1,5 @@
 import { SettingsPage } from "@/components/settings/settings-page";
+import { getFsrsOptimizerStatus } from "@/lib/fsrs-optimizer";
 import { readInternalHref } from "@/lib/site";
 import { getStudySettings } from "@/lib/settings";
 
@@ -9,12 +10,20 @@ type SettingsRouteProps = {
 export default async function SettingsRoute({
   searchParams
 }: SettingsRouteProps) {
-  const [settings, resolvedSearchParams] = await Promise.all([
+  const [fsrsOptimizerStatus, settings, resolvedSearchParams] = await Promise.all([
+    getFsrsOptimizerStatus(),
     getStudySettings(),
     searchParams
   ]);
   const saved = resolvedSearchParams.saved === "1";
   const returnTo = readInternalHref(resolvedSearchParams.returnTo);
 
-  return <SettingsPage returnTo={returnTo} saved={saved} settings={settings} />;
+  return (
+    <SettingsPage
+      fsrsOptimizerStatus={fsrsOptimizerStatus}
+      returnTo={returnTo}
+      saved={saved}
+      settings={settings}
+    />
+  );
 }

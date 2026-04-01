@@ -57,6 +57,13 @@ import {
 } from "./pronunciation";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
+  buildDefaultFsrsOptimizerSnapshot,
+  buildReviewSeedStateWithFsrsPreset,
+  getFsrsOptimizerCacheKeyPart,
+  getFsrsOptimizerSnapshot,
+  type FsrsOptimizerSnapshot
+} from "./fsrs-optimizer";
+import {
   buildBucketDetail,
   formatBucketLabel,
   formatShortIsoDate,
@@ -133,6 +140,7 @@ export async function hydrateReviewCard(input: {
 }): Promise<ReviewQueueCard | null> {
   const database = input.database ?? db;
   const cacheEligible = canUseDataCache(database);
+  const fsrsCacheKey = await getFsrsOptimizerCacheKeyPart(database);
 
   return measureWith(
     input.profiler,
@@ -140,7 +148,7 @@ export async function hydrateReviewCard(input: {
     () =>
       runWithTaggedCache({
         enabled: cacheEligible,
-        keyParts: ["review", "hydrated-card", input.cardId],
+        keyParts: ["review", "hydrated-card", input.cardId, fsrsCacheKey],
         loader: () => hydrateReviewCardUncached(input),
         tags: [
           ...buildReviewSummaryTags(),
@@ -161,6 +169,7 @@ export async function hydrateReviewCardUncached(input: {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
+  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(database);
   const card = await measureWith(input.profiler, "getCardById", () =>
     getCardById(database, input.cardId)
   );
@@ -220,6 +229,7 @@ export async function hydrateReviewCardUncached(input: {
         [card],
         mediaById,
         nowIso,
+        fsrsOptimizerSnapshot,
         queueStateSnapshot
       ),
     { cardId: card.id }
@@ -228,7 +238,7 @@ export async function hydrateReviewCardUncached(input: {
   return {
     ...queueCard,
     gradePreviews: buildSharedReviewGradePreviews(
-      queueStateSnapshot.reviewSeedState,
+      queueCard.reviewSeedState,
       now
     )
   };
@@ -240,6 +250,7 @@ export async function getReviewCardDetailData(
   database: DatabaseClient = db
 ): Promise<ReviewCardDetailData | null> {
   const nowIso = new Date().toISOString();
+  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(database);
 
   const [media, selectedRawCard] = await Promise.all([
     getMediaBySlugCached(database, mediaSlug),
@@ -285,6 +296,7 @@ export async function getReviewCardDetailData(
     [selectedRawCard],
     new Map([[media.id, { slug: media.slug, title: media.title }]]),
     nowIso,
+    fsrsOptimizerSnapshot,
     queueStateSnapshot
   );
 
@@ -544,6 +556,7 @@ export function mapQueueCard(
   subjectCards: ReviewCardListItem[],
   mediaById: ReviewMediaLookup,
   nowIso: string,
+  fsrsOptimizerSnapshot?: FsrsOptimizerSnapshot,
   queueStateSnapshot?: ReviewQueueStateSnapshot,
   contexts?: ReviewQueueCard["contexts"]
 ): ReviewQueueCard {
@@ -607,7 +620,11 @@ export function mapQueueCard(
     pronunciations,
     rawReviewLabel: resolved.rawReviewLabel,
     reading,
-    reviewSeedState: resolved.reviewSeedState,
+    reviewSeedState: buildReviewSeedStateWithFsrsPreset(
+      resolved.reviewSeedState,
+      card.cardType,
+      fsrsOptimizerSnapshot ?? buildDefaultFsrsOptimizerSnapshot()
+    ),
     segmentTitle: card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(card.cardType)
   };

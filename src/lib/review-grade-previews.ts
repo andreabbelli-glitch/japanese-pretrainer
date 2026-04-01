@@ -1,12 +1,17 @@
 import {
   scheduleReview,
   type ReviewRating,
+  type ReviewSchedulerRuntimeConfig,
   type ReviewState
 } from "./review-scheduler";
+import type { FsrsPresetKey } from "./fsrs-optimizer";
 
 export type ReviewSeedState = {
   difficulty: number | null;
   dueAt: string | null;
+  fsrsDesiredRetention?: number | null;
+  fsrsPresetKey?: FsrsPresetKey;
+  fsrsWeights?: number[] | null;
   lapses: number;
   lastReviewedAt: string | null;
   learningSteps: number;
@@ -41,7 +46,8 @@ export function buildReviewGradePreviews(
         state: reviewSeedState.state
       },
       now,
-      rating
+      rating,
+      scheduler: buildReviewSchedulerRuntimeConfig(reviewSeedState)
     });
 
     return {
@@ -82,6 +88,15 @@ function formatScheduledReviewPreview(dueAt: string, now: Date) {
   }
 
   return `Il ${dueAt.slice(0, 10)}`;
+}
+
+function buildReviewSchedulerRuntimeConfig(
+  reviewSeedState: ReviewSeedState
+): ReviewSchedulerRuntimeConfig {
+  return {
+    desiredRetention: reviewSeedState.fsrsDesiredRetention ?? undefined,
+    weights: reviewSeedState.fsrsWeights ?? undefined
+  };
 }
 
 const shortTimeFormatter = new Intl.DateTimeFormat("it-IT", {

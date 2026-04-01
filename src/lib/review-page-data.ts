@@ -26,6 +26,12 @@ import {
 import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
+  buildReviewSeedStateWithFsrsPreset,
+  getFsrsOptimizerCacheKeyPart,
+  getFsrsOptimizerSnapshot,
+  type FsrsOptimizerSnapshot
+} from "./fsrs-optimizer";
+import {
   buildReviewSearchStateCacheKeyParts,
   normalizeReviewSearchState,
   type ReviewSearchState
@@ -75,6 +81,7 @@ type ReviewPageWorkspace = ReviewPageData["media"];
 type ReviewQueueCardMapInput = {
   contextCache?: Map<string, ReviewQueueCard["contexts"]>;
   entryLookup: Map<string, ReviewEntryLookupItem>;
+  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
   mediaById: ReviewMediaLookup;
   nowIso: string;
   selectedCardId?: string | null;
@@ -99,6 +106,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
   profiler?: ReviewProfiler | null;
 }) {
   const nowIso = input.now.toISOString();
+  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(input.database);
   const segmentFilteredCards = input.searchState.segmentId
     ? input.cards.filter(
         (card) => card.segmentId === input.searchState.segmentId
@@ -133,6 +141,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
   const queueCardMapInput: ReviewQueueCardMapInput = {
     contextCache: new Map(),
     entryLookup: input.entryLookup,
+    fsrsOptimizerSnapshot,
     mediaById: input.mediaById,
     nowIso,
     visibleMediaId: input.visibleMediaId
@@ -365,6 +374,7 @@ export async function getGlobalReviewPageLoadResult(
 
 export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   cards: ReviewCardListItem[];
+  database?: DatabaseClient;
   dailyLimit: number;
   entryLookup: Map<string, ReviewEntryLookupItem>;
   media: ReviewPageWorkspace;
@@ -379,6 +389,9 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   profiler?: ReviewProfiler | null;
 }): Promise<ReviewFirstCandidatePageData> {
   const nowIso = input.now.toISOString();
+  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(
+    input.database ?? db
+  );
   const queueSnapshot = await measureWith(
     input.profiler,
     "buildReviewQueueSubjectSnapshot",
@@ -415,6 +428,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
       ? mapReviewQueueSubjectCardPreview({
           card: selectedRawCard,
           entryLookup: input.entryLookup,
+          fsrsOptimizerSnapshot,
           mediaById: input.mediaById,
           nowIso,
           queueStateSnapshot: selection.selectedModel.queueStateSnapshot
@@ -474,10 +488,12 @@ export async function getGlobalReviewFirstCandidateLoadResult(
 ): Promise<GlobalReviewFirstCandidateLoadResult> {
   const cacheEligible = !options.bypassCache && canUseDataCache(database);
   const searchState = normalizeReviewSearchState(searchParams);
+  const fsrsCacheKey = await getFsrsOptimizerCacheKeyPart(database);
   const cacheKeyParts = [
     "review",
     "global-first-candidate",
-    ...buildReviewSearchStateCacheKeyParts(searchState)
+    ...buildReviewSearchStateCacheKeyParts(searchState),
+    `fsrs:${fsrsCacheKey}`
   ];
 
   const loadSnapshot = async () => {
@@ -509,6 +525,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
       kind: "ready" as const,
       data: await buildReviewFirstCandidateDataFromWorkspace({
         cards: workspace.cards,
+        database,
         dailyLimit: workspace.dailyLimit,
         entryLookup: workspace.entryLookup,
         media: {
@@ -571,6 +588,7 @@ export async function getReviewQueueSnapshotForMedia(
   database: DatabaseClient = db
 ): Promise<ReviewQueueSnapshot | null> {
   const now = new Date();
+  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(database);
 
   const [media, dailyLimit] = await Promise.all([
     getMediaBySlugCached(database, mediaSlug),
@@ -601,6 +619,7 @@ export async function getReviewQueueSnapshotForMedia(
     dailyLimit: workspace.dailyLimit,
     entryLookup: workspace.entryLookup,
     extraNewCount: 0,
+    fsrsOptimizerSnapshot,
     mediaById: buildSingleMediaLookup(media),
     newIntroducedTodayCount: workspace.newIntroducedTodayCount,
     nowIso: workspace.now.toISOString(),
@@ -627,6 +646,7 @@ export async function getReviewQueueSnapshotForMedia(
 export function mapReviewQueueSubjectCardPreview(input: {
   card: ReviewCardListItem;
   entryLookup: Map<string, ReviewEntryLookupItem>;
+  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
   mediaById: ReviewMediaLookup;
   nowIso: string;
   queueStateSnapshot: ReviewQueueStateSnapshot;
@@ -664,7 +684,11 @@ export function mapReviewQueueSubjectCardPreview(input: {
     orderIndex: input.card.orderIndex,
     rawReviewLabel: input.queueStateSnapshot.rawReviewLabel,
     reading: resolveReviewCardReading(input.card, input.entryLookup),
-    reviewSeedState: input.queueStateSnapshot.reviewSeedState,
+    reviewSeedState: buildReviewSeedStateWithFsrsPreset(
+      input.queueStateSnapshot.reviewSeedState,
+      input.card.cardType,
+      input.fsrsOptimizerSnapshot
+    ),
     segmentTitle: input.card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(input.card.cardType)
   } satisfies ReviewFirstCandidateCard;
@@ -675,6 +699,7 @@ export function buildReviewQueueSnapshot(input: {
   dailyLimit: number;
   entryLookup: Map<string, ReviewEntryLookupItem>;
   extraNewCount: number;
+  fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
   mediaById: ReviewMediaLookup;
   newIntroducedTodayCount: number;
   nowIso: string;
@@ -694,6 +719,7 @@ export function buildReviewQueueSnapshot(input: {
   const mapInput: ReviewQueueCardMapInput = {
     contextCache: new Map(),
     entryLookup: input.entryLookup,
+    fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
     mediaById: input.mediaById,
     nowIso: input.nowIso,
     visibleMediaId: input.visibleMediaId
@@ -742,6 +768,7 @@ export function mapReviewQueueSubjectModel(
     model.group.cards,
     input.mediaById,
     input.nowIso,
+    input.fsrsOptimizerSnapshot,
     model.queueStateSnapshot,
     resolveReviewQueueSubjectContexts(
       model.group,
