@@ -408,6 +408,55 @@ describe("textbook data", () => {
     expect(onError).toHaveBeenCalledWith(failure);
   });
 
+  it("waits for the opened lesson state before rendering when the write resolves asynchronously", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "not_started",
+        startedAt: null,
+        completedAt: null,
+        lastOpenedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(lessonData?.lesson.status).toBe("not_started");
+
+    vi.useFakeTimers();
+
+    try {
+      const settledPromise = settleLessonOpenedStateForRender(
+        lessonData!,
+        new Promise((resolve) => {
+          setTimeout(() => {
+            resolve({
+              lastOpenedAt: "2026-03-10T10:00:00.000Z",
+              startedAt: "2026-03-10T10:00:00.000Z",
+              status: "in_progress" as const
+            });
+          }, 5);
+        })
+      );
+
+      await vi.advanceTimersByTimeAsync(5);
+
+      const settled = await settledPromise;
+
+      expect(settled.lesson.status).toBe("in_progress");
+      expect(
+        settled.lessons.find((lesson) => lesson.id === developmentFixture.lessonId)
+          ?.status
+      ).toBe("in_progress");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("preserves grammar reading when lesson AST JSON is reloaded", () => {
     const document = parseTextbookDocument(
       JSON.stringify({

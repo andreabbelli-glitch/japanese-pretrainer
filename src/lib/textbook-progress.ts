@@ -72,15 +72,13 @@ export async function settleLessonOpenedStateForRender(
   openedState: Promise<LessonOpenState>,
   onError: (error: unknown) => void = defaultLessonOpenRenderErrorHandler
 ) {
-  return Promise.race([
-    openedState
-      .then((state) => applyLessonOpenedState(data, state))
-      .catch((error) => {
-        onError(error);
-        return data;
-      }),
-    new Promise<TextbookLessonData>((resolve) => setTimeout(() => resolve(data), 0))
-  ]);
+  try {
+    const state = await openedState;
+    return applyLessonOpenedState(data, state);
+  } catch (error) {
+    onError(error);
+    return data;
+  }
 }
 
 export async function setLessonCompletionState(

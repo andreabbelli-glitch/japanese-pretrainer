@@ -15,6 +15,7 @@ import {
   pickFocusMedia,
   type MediaShellSnapshot
 } from "@/lib/media-shell";
+import { loadGlobalReviewOverviewSnapshot } from "@/lib/review";
 
 export type DashboardData = {
   focusMedia: MediaShellSnapshot | null;
@@ -50,10 +51,11 @@ export async function getDashboardData(
 async function loadDashboardData(
   database: DatabaseClient
 ): Promise<DashboardData> {
-  const media = await loadMediaShellSnapshots(
-    database,
-    await listMediaCached(database)
-  );
+  const mediaRows = await listMediaCached(database);
+  const [media, globalReviewOverview] = await Promise.all([
+    loadMediaShellSnapshots(database, mediaRows),
+    loadGlobalReviewOverviewSnapshot(database)
+  ]);
   const focusMedia = pickFocusMedia(media);
   const reviewMedia = pickReviewMedia(media);
 
@@ -62,7 +64,7 @@ async function loadDashboardData(
     reviewMedia,
     media,
     totals: {
-      cardsDue: media.reduce((sum, item) => sum + item.cardsDue, 0),
+      cardsDue: globalReviewOverview.dueCount,
       lessonsCompleted: media.reduce(
         (sum, item) => sum + item.lessonsCompleted,
         0
@@ -70,10 +72,7 @@ async function loadDashboardData(
       lessonsTotal: media.reduce((sum, item) => sum + item.lessonsTotal, 0),
       entriesKnown: media.reduce((sum, item) => sum + item.entriesKnown, 0),
       entriesTotal: media.reduce((sum, item) => sum + item.entriesTotal, 0),
-      activeReviewCards: media.reduce(
-        (sum, item) => sum + item.activeReviewCards,
-        0
-      )
+      activeReviewCards: globalReviewOverview.activeCards
     }
   };
 }

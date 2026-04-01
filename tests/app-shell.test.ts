@@ -18,8 +18,14 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { importContentWorkspace } from "@/lib/content/importer";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";
+import { loadGlobalReviewOverviewSnapshot } from "@/lib/review";
+import {
+  crossMediaFixture,
+  writeCrossMediaContentFixture
+} from "./helpers/cross-media-fixture";
 
 describe("app shell live data", () => {
   let tempDir = "";
@@ -184,5 +190,73 @@ describe("app shell live data", () => {
         ?.previewEntries
     ).toHaveLength(0);
     expect(duelMastersMedia?.reviewStatValue).toBe("1 da ripassare");
+  });
+
+  it("uses the deduplicated global review snapshot for dashboard review totals", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const importResult = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(importResult.status).toBe("completed");
+
+    await database.insert(lessonProgress).values([
+      {
+        lessonId: crossMediaFixture.alpha.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      },
+      {
+        lessonId: crossMediaFixture.beta.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      }
+    ]);
+
+    const sharedSubjectState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.cardId, crossMediaFixture.alpha.termCardId)
+    });
+
+    expect(sharedSubjectState).not.toBeNull();
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        state: "review",
+        stability: 2.4,
+        difficulty: 3.1,
+        dueAt: "2000-01-01T00:00:00.000Z",
+        lastReviewedAt: "2026-03-10T08:00:00.000Z",
+        lastInteractionAt: "2026-03-10T08:00:00.000Z",
+        scheduledDays: 2,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 3,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: false,
+        suspended: false
+      })
+      .where(eq(reviewSubjectState.subjectKey, sharedSubjectState!.subjectKey));
+
+    const [dashboard, globalReviewOverview] = await Promise.all([
+      getDashboardData(database),
+      loadGlobalReviewOverviewSnapshot(database)
+    ]);
+
+    expect(globalReviewOverview.dueCount).toBeGreaterThan(0);
+    expect(dashboard.totals.cardsDue).toBe(globalReviewOverview.dueCount);
+    expect(dashboard.totals.activeReviewCards).toBe(
+      globalReviewOverview.activeCards
+    );
+    expect(
+      dashboard.media.reduce((sum, item) => sum + item.cardsDue, 0)
+    ).toBeGreaterThan(dashboard.totals.cardsDue);
+    expect(
+      dashboard.media.reduce((sum, item) => sum + item.activeReviewCards, 0)
+    ).toBeGreaterThan(dashboard.totals.activeReviewCards);
   });
 });

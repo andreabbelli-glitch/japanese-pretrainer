@@ -157,6 +157,43 @@ export function buildReviewSubjectModels(input: {
   });
 }
 
+function preferReviewSubjectModelCardForMedia(
+  model: ReviewSubjectModel,
+  preferredMediaId: string | undefined,
+  nowIso: string
+) {
+  if (!preferredMediaId) {
+    return model;
+  }
+
+  const preferredCards = model.group.cards.filter(
+    (card) => card.mediaId === preferredMediaId
+  );
+
+  if (
+    preferredCards.length === 0 ||
+    preferredCards.length === model.group.cards.length
+  ) {
+    return model;
+  }
+
+  const selectedCard = selectReviewSubjectRepresentativeCard(
+    preferredCards,
+    model.group.subjectState,
+    nowIso
+  );
+
+  return {
+    card: selectedCard,
+    group: model.group,
+    queueStateSnapshot: resolveReviewQueueState(
+      selectedCard.status,
+      model.group.subjectState,
+      nowIso
+    )
+  } satisfies ReviewSubjectModel;
+}
+
 export function findReviewQueueSubjectModelByCardId(
   models: ReviewSubjectModel[],
   cardId: string
@@ -366,7 +403,6 @@ export function buildReviewQueueSubjectSnapshot(input: {
     cards: input.cards,
     entryLookup: input.entryLookup,
     nowIso: input.nowIso,
-    preferredMediaId: input.visibleMediaId,
     subjectGroups: input.subjectGroups
   });
   const excludeSet =
@@ -386,8 +422,23 @@ export function buildReviewQueueSubjectSnapshot(input: {
     effectiveDailyLimit - input.newIntroducedTodayCount,
     0
   );
-  const queuedNewCards = classifiedModels.visibleNewModels.slice(0, newSlots);
-  const queueModels = [...classifiedModels.dueModels, ...queuedNewCards];
+  const queuedNewCards = classifiedModels.globalNewModels
+    .slice(0, newSlots)
+    .filter((model) =>
+      isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
+    );
+  const mapModelsForDisplay = (models: ReviewSubjectModel[]) =>
+    models.map((model) =>
+      preferReviewSubjectModelCardForMedia(
+        model,
+        input.visibleMediaId,
+        input.nowIso
+      )
+    );
+  const queueModels = mapModelsForDisplay([
+    ...classifiedModels.dueModels,
+    ...queuedNewCards
+  ]);
   const introLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
     dueCount: classifiedModels.dueModels.length,
@@ -403,20 +454,20 @@ export function buildReviewQueueSubjectSnapshot(input: {
     effectiveDailyLimit,
     introLabel,
     manualCount: classifiedModels.manualModels.length,
-    manualModels: classifiedModels.manualModels,
+    manualModels: mapModelsForDisplay(classifiedModels.manualModels),
     newAvailableCount: classifiedModels.visibleNewModels.length,
     newQueuedCount: queuedNewCards.length,
     queueCount: queueModels.length,
     queueModels,
-    subjectModels,
+    subjectModels: mapModelsForDisplay(subjectModels),
     suspendedCount: classifiedModels.suspendedModels.length,
-    suspendedModels: classifiedModels.suspendedModels,
+    suspendedModels: mapModelsForDisplay(classifiedModels.suspendedModels),
     tomorrowCount: countUpcomingDueTomorrow(
       classifiedModels.upcomingModels,
       input.nowIso
     ),
     upcomingCount: classifiedModels.upcomingModels.length,
-    upcomingModels: classifiedModels.upcomingModels
+    upcomingModels: mapModelsForDisplay(classifiedModels.upcomingModels)
   };
 }
 

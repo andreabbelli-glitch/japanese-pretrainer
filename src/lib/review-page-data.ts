@@ -1,5 +1,4 @@
 import {
-  countReviewSubjectsIntroducedOnDayByMediaId,
   db,
   type DatabaseClient,
   type ReviewCardListItem
@@ -7,6 +6,7 @@ import {
 import {
   canUseDataCache,
   getMediaBySlugCached,
+  listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
@@ -49,7 +49,6 @@ import {
 import type { ReviewSubjectGroup } from "./review-subject";
 import {
   buildReviewMediaLookup,
-  buildSingleMediaLookup,
   loadReviewCardPronunciations,
   mapQueueCard,
   resolveReviewCardMedia,
@@ -58,8 +57,8 @@ import {
   type ReviewMediaLookup
 } from "./review-card-hydration";
 import {
-  loadGlobalReviewPageWorkspace,
   loadGlobalReviewWorkspace,
+  loadGlobalReviewPageWorkspace,
   loadReviewWorkspaceV2,
   type LoadedGlobalReviewPageWorkspace,
   type ReviewPageLoadOptions
@@ -250,29 +249,19 @@ export async function getReviewPageData(
   }
 
   const searchState = normalizeReviewSearchState(searchParams);
-  const [settings, newIntroducedTodayCount] = await Promise.all([
-    measureWith(options.profiler, "getStudySettings", () =>
-      getStudySettings(database)
-    ),
-    measureWith(
-      options.profiler,
-      "countReviewSubjectsIntroducedOnDayByMediaId",
-      () => countReviewSubjectsIntroducedOnDayByMediaId(database, media.id, now)
-    )
-  ]);
+  const settings = await measureWith(options.profiler, "getStudySettings", () =>
+    getStudySettings(database)
+  );
   const workspace = await measureWith(
     options.profiler,
-    "loadReviewWorkspaceV2",
+    "loadGlobalReviewWorkspace",
     () =>
-      loadReviewWorkspaceV2({
-        bypassCache: options.bypassCache,
+      loadGlobalReviewWorkspace(
+        searchState,
         database,
-        mediaIds: [media.id],
-        now,
-        profiler: options.profiler,
-        resolvedDailyLimit: settings.reviewDailyLimit,
-        resolvedNewIntroducedTodayCount: newIntroducedTodayCount
-      })
+        options,
+        settings.reviewDailyLimit
+      )
   );
 
   return measureWith(
@@ -292,7 +281,7 @@ export async function getReviewPageData(
           slug: media.slug,
           title: media.title
         },
-        mediaById: buildSingleMediaLookup(media),
+        mediaById: buildReviewMediaLookup(workspace.mediaRows),
         newIntroducedTodayCount: workspace.newIntroducedTodayCount,
         now,
         profiler: options.profiler,
@@ -592,29 +581,23 @@ export async function getReviewQueueSnapshotForMedia(
   const now = new Date();
   const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(database);
 
-  const [media, dailyLimit] = await Promise.all([
+  const [media, dailyLimit, mediaRows] = await Promise.all([
     getMediaBySlugCached(database, mediaSlug),
     import("@/lib/settings").then(({ getReviewDailyLimit }) =>
       getReviewDailyLimit(database)
-    )
+    ),
+    listMediaCached(database)
   ]);
 
   if (!media) {
     return null;
   }
 
-  const newIntroducedTodayCount = await countReviewSubjectsIntroducedOnDayByMediaId(
-    database,
-    media.id,
-    now
-  );
-
   const workspace = await loadReviewWorkspaceV2({
     database,
-    mediaIds: [media.id],
+    mediaIds: mediaRows.map((item) => item.id),
     now,
-    resolvedDailyLimit: dailyLimit,
-    resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+    resolvedDailyLimit: dailyLimit
   });
   const snapshot = buildReviewQueueSnapshot({
     cards: workspace.cards,
@@ -622,7 +605,7 @@ export async function getReviewQueueSnapshotForMedia(
     entryLookup: workspace.entryLookup,
     extraNewCount: 0,
     fsrsOptimizerSnapshot,
-    mediaById: buildSingleMediaLookup(media),
+    mediaById: buildReviewMediaLookup(mediaRows),
     newIntroducedTodayCount: workspace.newIntroducedTodayCount,
     nowIso: workspace.now.toISOString(),
     subjectGroups: workspace.subjectGroups,
@@ -775,7 +758,8 @@ export function mapReviewQueueSubjectModel(
     resolveReviewQueueSubjectContexts(
       model.group,
       input.mediaById,
-      input.contextCache
+      input.contextCache,
+      input.visibleMediaId
     )
   );
 }
@@ -815,17 +799,24 @@ function buildReviewCardContexts(
 function resolveReviewQueueSubjectContexts(
   group: ReviewSubjectGroup,
   mediaById: ReviewMediaLookup,
-  contextCache?: Map<string, ReviewQueueCard["contexts"]>
+  contextCache?: Map<string, ReviewQueueCard["contexts"]>,
+  visibleMediaId?: string
 ) {
-  const cached = contextCache?.get(group.identity.subjectKey);
+  const cacheKey = `${group.identity.subjectKey}:${visibleMediaId ?? "all"}`;
+  const cached = contextCache?.get(cacheKey);
 
   if (cached) {
     return cached;
   }
 
-  const contexts = buildReviewCardContexts(group.cards, mediaById);
+  const contexts = buildReviewCardContexts(
+    visibleMediaId
+      ? group.cards.filter((card) => card.mediaId === visibleMediaId)
+      : group.cards,
+    mediaById
+  );
 
-  contextCache?.set(group.identity.subjectKey, contexts);
+  contextCache?.set(cacheKey, contexts);
 
   return contexts;
 }

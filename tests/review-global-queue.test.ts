@@ -157,7 +157,7 @@ describe("global review queue filtering", () => {
     });
   }
 
-  it("keeps local review pages and per-media snapshots scoped to the selected media while the global queue stays daily-limited", async () => {
+  it("keeps local review pages aligned with the global daily limit while preserving media scoping", async () => {
     await seedTwoMediaNewQueueFixture();
 
     const [
@@ -190,19 +190,18 @@ describe("global review queue filtering", () => {
 
     expect(mediaBPage?.queue.cards).toEqual([]);
     expect(mediaBPage?.queue.newAvailableCount).toBe(1);
-    expect(mediaBPage?.queue.newQueuedCount).toBe(1);
-    expect(mediaBPage?.queue.queueCount).toBe(1);
-    expect(mediaBPage?.selectedCard?.id).toBe("card_b");
+    expect(mediaBPage?.queue.newQueuedCount).toBe(0);
+    expect(mediaBPage?.queue.queueCount).toBe(0);
+    expect(mediaBPage?.selectedCard).toBeNull();
 
     expect(mediaAQueue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
       "card_a"
     ]);
     expect(mediaAQueue?.newQueuedCount).toBe(1);
-    expect(mediaBQueue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
-      "card_b"
-    ]);
+    expect(mediaBQueue?.cards).toEqual([]);
     expect(mediaBQueue?.newAvailableCount).toBe(1);
-    expect(mediaBQueue?.newQueuedCount).toBe(1);
+    expect(mediaBQueue?.newQueuedCount).toBe(0);
+    expect(mediaBQueue?.queueCount).toBe(0);
 
     expect(snapshots.get("media_a")?.queueCount).toBe(1);
     expect(snapshots.get("media_a")?.newQueuedCount).toBe(1);
@@ -211,7 +210,7 @@ describe("global review queue filtering", () => {
     expect(snapshots.get("media_b")?.newQueuedCount).toBe(0);
   });
 
-  it("does not let a new review introduced in media A consume media B's per-media daily limit", async () => {
+  it("applies the same global daily limit on local review pages after another media introduces a new subject", async () => {
     await seedTwoMediaNewQueueFixture();
 
     const now = new Date("2026-03-10T13:00:00.000Z");
@@ -272,13 +271,13 @@ describe("global review queue filtering", () => {
       expect(mediaAPage?.queue.queueCount).toBe(0);
 
       expect(mediaBPage?.queue.newAvailableCount).toBe(1);
-      expect(mediaBPage?.queue.newQueuedCount).toBe(1);
-      expect(mediaBPage?.queue.queueCount).toBe(1);
-      expect(mediaBPage?.selectedCard?.id).toBe("card_b");
+      expect(mediaBPage?.queue.newQueuedCount).toBe(0);
+      expect(mediaBPage?.queue.queueCount).toBe(0);
+      expect(mediaBPage?.selectedCard).toBeNull();
 
       expect(mediaBQueue?.newAvailableCount).toBe(1);
-      expect(mediaBQueue?.newQueuedCount).toBe(1);
-      expect(mediaBQueue?.queueCount).toBe(1);
+      expect(mediaBQueue?.newQueuedCount).toBe(0);
+      expect(mediaBQueue?.queueCount).toBe(0);
     } finally {
       vi.useRealTimers();
     }
