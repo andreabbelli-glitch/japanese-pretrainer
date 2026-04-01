@@ -39,7 +39,7 @@ Qui trovi parole che ricorrono in richieste, scelta e avvio: [特防](term:term-
 ## Espressioni ricorrenti
 
 - [どうしよう](term:term-e017-doushiyou) — che faccio adesso?
-- [どうしたの？](term:term-e018-doushitano) — che succede?
+- [どうしたの？](term:term-e018-doushitano) — che c'è? / che hai? / cos'è successo?
 
 ## Pattern grammaticali chiave
 
@@ -58,7 +58,7 @@ Qui trovi parole che ricorrono in richieste, scelta e avvio: [特防](term:term-
 
 Parole come [特防](term:term-v088-tokubou) e [答え](term:term-v099-kotae) ti dicono subito di che tipo di informazione parla la frase: una statistica, una domanda o una risposta. [どれ](term:term-v091-dore) segnala una scelta fra più opzioni; [自由に](term:term-v092-jiyuu-ni) indica libertà di movimento o di azione; [近く](term:term-v098-chikaku) aggiunge il riferimento alla vicinanza. [始める](term:term-v095-hajime-ru) è il verbo che ti porta sull'avvio di un'azione, quindi in dialoghi e menu ti fa leggere subito quando il gioco sta chiedendo di partire o di iniziare qualcosa.
 
-Le espressioni come [どうしよう](term:term-e017-doushiyou) e [どうしたの？](term:term-e018-doushitano) servono a capire il tono della scena. `どうしよう` nasce da `どう` ("come?") + `しよう`, la forma volitiva di `する`: letteralmente e qualcosa come "come faccio? / che faccio?", quindi segnala incertezza o piccolo panico davanti alla scelta successiva. `どうしたの？` parte invece da `どうした`, forma passata di `どうする`, che in uso reale vale come "che e successo? / che hai?", e il `の` finale rende la domanda piu esplicativa e colloquiale. Per questo la frase si usa quando qualcuno sembra strano, preoccupato o fermo.
+Le espressioni come [どうしよう](term:term-e017-doushiyou) e [どうしたの？](term:term-e018-doushitano) servono a capire il tono della scena. `どうしよう` nasce da `どう` ("come?") + `しよう`, la forma volitiva di `する`: letteralmente e qualcosa come "come faccio? / che faccio?", quindi segnala incertezza o piccolo panico davanti alla scelta successiva. `どうしたの？` parte invece da `どうした`, forma passata di `どうする`, che in uso reale vale come "che c'e? / che hai? / cos'e successo?", e il `の` finale rende la domanda piu esplicativa e colloquiale. Per questo la frase si usa quando qualcuno sembra strano, preoccupato o fermo. In pratica puoi leggerla cosi: "che c'e?" se noti qualcosa di insolito, "che hai?" se l'altra persona sembra giu o agitata, "cos'e successo?" se pensi che sia appena capitato qualcosa.
 
 Sul piano grammaticale, [て形](grammar:grammar-g022-collega-azioni-crea-richieste-e-molte-co) collega azioni e apre richieste o istruzioni, come in `始めて`; [ない形](grammar:grammar-g023-negazione) marca il divieto o la negazione secca; [ます / 辞書形](grammar:grammar-g024-registro-cortese-vs-piano) ti fa leggere il contrasto tra parlato cortese e parlato piano nei dialoghi.
 
@@ -75,9 +75,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  どうしたの？
+  どうしたの？ {{何|なに}}か あった？
 translation_it: >-
-  Che succede?
+  Che c'e? E successo qualcosa?
 :::
 
 :::example_sentence

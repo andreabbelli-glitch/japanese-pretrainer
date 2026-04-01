@@ -36,13 +36,16 @@ id: term-e018-doushitano
 lemma: どうしたの？
 reading: どうしたの？
 romaji: doushitano？
-meaning_it: che succede?
+meaning_it: che c'e? / che hai? / cos'e successo?
 notes_it: >-
   Espressione ricorrente della lezione L08 nell'area Domande rapide. Si appoggia
   a どうした, cioe il passato di どうする ("che fare / come comportarsi"), usato
-  in pratica con il senso di "che e successo? / che hai?". Il の finale rende la
-  domanda piu esplicativa e colloquiale: per questo どうしたの？ si usa spesso
-  quando qualcuno sembra strano, fermo o preoccupato.
+  in pratica con il senso di "che c'e? / che hai? / cos'e successo?". Il の
+  finale rende la domanda piu esplicativa e colloquiale: per questo どうしたの？
+  si usa spesso quando qualcuno sembra strano, fermo o preoccupato. In review
+  pensa a queste sfumature: "che c'e?" se noti qualcosa di insolito, "che hai?"
+  se l'altra persona sembra giu o agitata, "cos'e successo?" se immagini un
+  fatto appena avvenuto.
 :::
 :::card
 id: card-e018-doushitano-recognition
@@ -51,11 +54,11 @@ entry_type: term
 entry_id: term-e018-doushitano
 card_type: recognition
 front: 'どうしたの？'
-back: che succede?
+back: che c'e? / che hai? / cos'e successo?
 example_jp: >-
-  どうしたの？
+  どうしたの？ {{何|なに}}か あった？
 example_it: >-
-  Che succede?
+  Che c'e? E successo qualcosa?
 :::
 :::grammar
 id: grammar-g022-collega-azioni-crea-richieste-e-molte-co
