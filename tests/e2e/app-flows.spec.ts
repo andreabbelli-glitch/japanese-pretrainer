@@ -221,6 +221,54 @@ test("keeps the review session on a valid next state after grading again", async
   await expect(page.getByRole("button", { name: /^Again/ })).toHaveCount(0);
 });
 
+test("updates the global review stage on same-route query-only navigation", async ({
+  page
+}) => {
+  await ensureDuelMastersReviewAvailable(page);
+  await page.goto("/review");
+  await expect(page).toHaveURL(/\/review(?:\?|$)/);
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator(".review-stage")).toBeVisible();
+
+  const initialFront = (await page.locator(".review-stage__front").textContent())?.trim();
+  expect(initialFront?.length).toBeGreaterThan(0);
+  const targetCard =
+    initialFront?.includes("墓地")
+      ? {
+          id: "card-effect-recognition",
+          front: "効果"
+        }
+      : {
+          id: "card-graveyard-recognition",
+          front: "墓地"
+        };
+
+  await page.evaluate(() => {
+    (window as Window & { __reviewClientNavMarker?: number }).__reviewClientNavMarker = 1;
+  });
+
+  await page.evaluate((cardId) => {
+    const link = document.createElement("a");
+
+    link.href = `/review?card=${cardId}`;
+    link.textContent = "Vai alla card successiva";
+    document.body.append(link);
+  }, targetCard.id);
+
+  await page.getByRole("link", { name: "Vai alla card successiva" }).click();
+
+  await expect(page).toHaveURL(new RegExp(`/review\\?card=${targetCard.id}$`));
+  await expect(page.locator(".review-stage__front")).toContainText(targetCard.front);
+  await expect(page.getByRole("button", { name: "Mostra risposta" })).toBeVisible();
+
+  const navigationMarker = await page.evaluate(() => {
+    return (window as Window & { __reviewClientNavMarker?: number })
+      .__reviewClientNavMarker;
+  });
+
+  expect(navigationMarker).toBe(1);
+});
+
 test("scrolls the review stage back into view after grading the next card", async ({
   page
 }) => {
