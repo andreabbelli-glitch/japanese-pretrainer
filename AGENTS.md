@@ -41,6 +41,7 @@ src/
       glossary/     API per ricerca e autocomplete del glossary
         autocomplete/ API JSON per suggerimenti autocomplete del glossary globale
       internal/     Endpoint interni per manutenzione e invalidazione cache contenuti
+        content-cache/ API di invalidazione e refresh della cache contenuti
     glossary/       Portal glossary globale e stati di caricamento
     login/          Pagina di accesso locale
     media/          Route dinamiche per media, glossary locale, textbook, review e progress
@@ -123,7 +124,6 @@ docs/
   design/                 Token di design e UX
   legacy/                 Materiale storico e template del workflow editoriale precedente
     content-briefs/       Brief editoriali legacy per bundle specifici
-    prompts/              Prompt legacy usati nel workflow editoriale
     templates/            Template legacy per media, lesson, card e workflow immagini
   llm-kit/                Guide per integrazione LLM esterna
     general/              Template e regole riusabili cross-media
@@ -180,6 +180,8 @@ docs/
 ./scripts/with-node.sh pnpm db:seed         # esegue seed DB
 ./scripts/with-node.sh pnpm db:setup        # migra e popola il DB locale
 ./scripts/with-node.sh pnpm db:studio       # apre Drizzle Studio
+./scripts/with-node.sh pnpm fsrs:optimize   # ottimizza i parametri FSRS sui log review
+./scripts/with-node.sh pnpm fsrs:optimize:if-needed # esegue l'ottimizzazione FSRS solo se necessaria
 ./scripts/with-node.sh pnpm auth:hash-password # genera hash password per auth locale
 ./scripts/with-node.sh pnpm content:test-stats # aggiorna fixture statistiche per bundle reali
 ./scripts/with-node.sh pnpm content:import  # importa bundle media nel DB
