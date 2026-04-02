@@ -8,6 +8,30 @@ export type ReviewPageClientData =
   | ReviewPageData
   | ReviewFirstCandidatePageData;
 
+export function resolveReviewGradePreviews(input: {
+  selectedCard: ReviewPageClientData["selectedCard"];
+  selectedCardContext: ReviewPageClientData["selectedCardContext"];
+  now?: Date;
+}) {
+  const gradePreviews =
+    "gradePreviews" in input.selectedCardContext
+      ? input.selectedCardContext.gradePreviews
+      : [];
+
+  if (gradePreviews.length > 0) {
+    return gradePreviews;
+  }
+
+  if (!input.selectedCard || !input.selectedCardContext.isQueueCard) {
+    return [];
+  }
+
+  return buildReviewGradePreviews(
+    input.selectedCard.reviewSeedState,
+    input.now ?? new Date()
+  );
+}
+
 export function mergeReviewPageData(
   currentData: ReviewPageClientData,
   nextData: ReviewPageData
@@ -23,15 +47,12 @@ export function mergeReviewPageData(
     ...nextData,
     selectedCardContext: {
       ...nextData.selectedCardContext,
-      gradePreviews:
-        showAnswer && nextData.selectedCard
-          ? nextData.selectedCardContext.gradePreviews.length > 0
-            ? nextData.selectedCardContext.gradePreviews
-            : buildReviewGradePreviews(
-                nextData.selectedCard.reviewSeedState,
-                new Date()
-              )
-          : nextData.selectedCardContext.gradePreviews,
+      gradePreviews: showAnswer
+        ? resolveReviewGradePreviews({
+            selectedCard: nextData.selectedCard,
+            selectedCardContext: nextData.selectedCardContext
+          })
+        : nextData.selectedCardContext.gradePreviews,
       showAnswer
     }
   };

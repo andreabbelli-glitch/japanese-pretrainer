@@ -12,7 +12,6 @@ import {
   setLinkedEntryLearningSessionAction,
   setReviewCardSuspendedSessionAction
 } from "@/actions/review";
-import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
 import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
 import {
   appendReturnToParam,
@@ -22,6 +21,7 @@ import {
 import {
   getInitiallyRevealedCardId,
   mergeReviewPageData,
+  resolveReviewGradePreviews,
   shouldAdoptServerFirstCandidateData,
   shouldAcceptServerReviewData,
   shouldKeepRevealedReviewAnswer,
@@ -416,10 +416,10 @@ export function ReviewPageClient({
 
     if (isFullReviewPageData) {
       const fullViewData = viewData as ReviewPageData;
-      const gradePreviews =
-        fullViewData.selectedCardContext.gradePreviews.length > 0
-          ? fullViewData.selectedCardContext.gradePreviews
-          : buildReviewGradePreviews(selectedCard.reviewSeedState, new Date());
+      const gradePreviews = resolveReviewGradePreviews({
+        selectedCard,
+        selectedCardContext: fullViewData.selectedCardContext
+      });
 
       setViewData((prev) => ({
         ...prev,
@@ -676,25 +676,20 @@ export function buildReviewGradePreviewLookup(input: {
   fullSelectedCardContext: ReviewPageData["selectedCardContext"] | null;
   now?: Date;
 }) {
-  if (input.fullSelectedCardContext?.gradePreviews.length) {
+  const gradePreviews = resolveReviewGradePreviews({
+    selectedCard: input.data.selectedCard,
+    selectedCardContext:
+      input.fullSelectedCardContext ?? input.data.selectedCardContext,
+    now: input.now
+  });
+
+  if (gradePreviews.length > 0) {
     return new Map<string, string>(
-      input.fullSelectedCardContext.gradePreviews.map((preview) => [
-        preview.rating,
-        preview.nextReviewLabel
-      ])
+      gradePreviews.map((preview) => [preview.rating, preview.nextReviewLabel])
     );
   }
 
-  if (!input.data.selectedCard || !input.data.selectedCardContext.isQueueCard) {
-    return new Map<string, string>();
-  }
-
-  return new Map<string, string>(
-    buildReviewGradePreviews(
-      input.data.selectedCard.reviewSeedState,
-      input.now ?? new Date()
-    ).map((preview) => [preview.rating, preview.nextReviewLabel])
-  );
+  return new Map<string, string>();
 }
 
 export function buildSuccessfulHydrationResult(
