@@ -26,9 +26,14 @@ import {
 } from "@/db";
 import { buildScopedEntryId } from "@/lib/entry-id";
 import { getGlossaryPageData } from "@/lib/glossary";
+import { importContentWorkspace } from "@/lib/content/importer";
 import { getMediaProgressPageData } from "@/lib/progress";
 import { getReviewPageData } from "@/lib/review";
 import { getStudySettings, updateStudySettings } from "@/lib/settings";
+import {
+  crossMediaFixture,
+  writeCrossMediaContentFixture
+} from "./helpers/cross-media-fixture";
 
 describe("progress, settings, and study controls", () => {
   let tempDir = "";
@@ -241,6 +246,74 @@ describe("progress, settings, and study controls", () => {
     expect(markup).toContain("Review globale");
     expect(markup).toContain("Review del media");
     expect(markup).toContain("Coda locale e carico quotidiano");
+  });
+
+  it("keeps the local next review card front aligned with the visible media in cross-media groups", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-progress-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const importResult = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(importResult.status).toBe("completed");
+
+    await database.insert(lessonProgress).values([
+      {
+        lessonId: crossMediaFixture.alpha.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      },
+      {
+        lessonId: crossMediaFixture.beta.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      }
+    ]);
+
+    await database
+      .update(card)
+      .set({
+        front: "コストB"
+      })
+      .where(eq(card.id, crossMediaFixture.beta.termCardId));
+
+    const sharedSubjectState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.cardId, crossMediaFixture.alpha.termCardId)
+    });
+
+    expect(sharedSubjectState).not.toBeNull();
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        state: "review",
+        stability: 2.4,
+        difficulty: 3.1,
+        dueAt: "2000-01-01T00:00:00.000Z",
+        lastReviewedAt: "2026-03-10T08:00:00.000Z",
+        lastInteractionAt: "2026-03-10T08:00:00.000Z",
+        scheduledDays: 2,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 3,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: false,
+        suspended: false
+      })
+      .where(eq(reviewSubjectState.subjectKey, sharedSubjectState!.subjectKey));
+
+    const data = await getMediaProgressPageData(
+      crossMediaFixture.beta.mediaSlug,
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(data?.review.dueCount).toBe(1);
+    expect(data?.review.nextCardFront).toBe("コストB");
+    expect(data?.globalReview.nextCardFront).toBe("コスト");
   });
 
   it("persists settings and applies them to glossary ordering and review queue limits", async () => {

@@ -339,6 +339,18 @@ function buildQueuedNewReviewSubjectModels(input: {
     .sort(compareReviewSubjectModelsByOrder);
 }
 
+function mapReviewSubjectModelsForVisibleMedia(
+  models: ReviewSubjectModel[],
+  visibleMediaId: string | undefined,
+  nowIso: string
+) {
+  return visibleMediaId
+    ? models.map((model) =>
+        preferReviewSubjectModelCardForMedia(model, visibleMediaId, nowIso)
+      )
+    : models;
+}
+
 export function buildReviewOverviewSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
@@ -377,6 +389,11 @@ export function buildReviewOverviewSnapshot(input: {
     nowIso: input.nowIso,
     visibleMediaId: input.visibleMediaId
   });
+  const dueModelsForDisplay = mapReviewSubjectModelsForVisibleMedia(
+    classifiedModels.dueModels,
+    input.visibleMediaId,
+    input.nowIso
+  );
 
   const dueCount = classifiedModels.dueModels.length;
   const newQueuedCount = queuedNewModels.length;
@@ -391,7 +408,7 @@ export function buildReviewOverviewSnapshot(input: {
     upcomingCount
   });
 
-  const firstQueueModel = classifiedModels.dueModels[0] ?? queuedNewModels[0];
+  const firstQueueModel = dueModelsForDisplay[0] ?? queuedNewModels[0];
 
   return {
     activeCards: dueCount + upcomingCount,
@@ -451,12 +468,10 @@ export function buildReviewQueueSubjectSnapshot(input: {
     0
   );
   const mapModelsForDisplay = (models: ReviewSubjectModel[]) =>
-    models.map((model) =>
-      preferReviewSubjectModelCardForMedia(
-        model,
-        input.visibleMediaId,
-        input.nowIso
-      )
+    mapReviewSubjectModelsForVisibleMedia(
+      models,
+      input.visibleMediaId,
+      input.nowIso
     );
   const queuedNewModels = buildQueuedNewReviewSubjectModels({
     classifiedModels,
