@@ -2350,6 +2350,10 @@ describe("review system", () => {
     );
     expect(result.queueCardIds).toEqual([]);
     expect(result.selectedCardContext.isQueueCard).toBe(true);
+    expect(result.selectedCardContext.position).toBe(1);
+    expect(result.selectedCardContext.remainingCount).toBe(
+      Math.max(0, result.queue.queueCount - 1)
+    );
     expect(result.selectedCardContext.showAnswer).toBe(false);
     expect(result.session.answeredCount).toBe(
       (pageData?.session.answeredCount ?? 0) + 1

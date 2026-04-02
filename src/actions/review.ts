@@ -234,8 +234,8 @@ export async function gradeReviewCardSessionAction(
           bucket: hydratedCard.bucket,
           gradePreviews: hydratedCard.gradePreviews,
           isQueueCard: true,
-          position: null,
-          remainingCount: 0,
+          position: 1,
+          remainingCount: Math.max(0, updatedQueue.queueCount - 1),
           showAnswer: false
         },
         session: {
