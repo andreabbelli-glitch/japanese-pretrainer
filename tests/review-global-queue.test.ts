@@ -14,6 +14,7 @@ import {
   reviewSubjectLog,
   reviewSubjectState,
   runMigrations,
+  segment,
   userSetting,
   type DatabaseClient
 } from "@/db";
@@ -475,5 +476,170 @@ describe("global review queue filtering", () => {
     expect("pronunciations" in firstCandidate.data.selectedCard!).toBe(false);
     expect("contexts" in firstCandidate.data.selectedCard!).toBe(false);
     expect("gradePreviews" in firstCandidate.data.selectedCard!).toBe(false);
+  });
+
+  it("applies the segment filter to the global first-candidate payload", async () => {
+    await database.insert(media).values([
+      {
+        id: "media_a",
+        slug: "media-a",
+        title: "Media A",
+        mediaType: "game",
+        segmentKind: "chapter",
+        language: "ja",
+        baseExplanationLanguage: "it",
+        description: "Fixture A",
+        status: "active",
+        createdAt: "2026-03-10T09:00:00.000Z",
+        updatedAt: "2026-03-10T09:00:00.000Z"
+      },
+      {
+        id: "media_b",
+        slug: "media-b",
+        title: "Media B",
+        mediaType: "game",
+        segmentKind: "chapter",
+        language: "ja",
+        baseExplanationLanguage: "it",
+        description: "Fixture B",
+        status: "active",
+        createdAt: "2026-03-10T09:00:00.000Z",
+        updatedAt: "2026-03-10T09:00:00.000Z"
+      }
+    ]);
+    await database.insert(segment).values([
+      {
+        id: "segment_a",
+        mediaId: "media_a",
+        slug: "segment-a",
+        title: "Segment A",
+        orderIndex: 1,
+        segmentType: "chapter",
+        notes: null
+      },
+      {
+        id: "segment_b",
+        mediaId: "media_b",
+        slug: "segment-b",
+        title: "Segment B",
+        orderIndex: 1,
+        segmentType: "chapter",
+        notes: null
+      }
+    ]);
+    await database.insert(lesson).values([
+      {
+        id: "lesson_a",
+        mediaId: "media_a",
+        segmentId: "segment_a",
+        slug: "intro-a",
+        title: "Lesson A",
+        orderIndex: 1,
+        difficulty: "beginner",
+        summary: "Lesson A",
+        status: "active",
+        sourceFile: "tests/review-global-queue/media-a.md",
+        createdAt: "2026-03-10T09:00:00.000Z",
+        updatedAt: "2026-03-10T09:00:00.000Z"
+      },
+      {
+        id: "lesson_b",
+        mediaId: "media_b",
+        segmentId: "segment_b",
+        slug: "intro-b",
+        title: "Lesson B",
+        orderIndex: 1,
+        difficulty: "beginner",
+        summary: "Lesson B",
+        status: "active",
+        sourceFile: "tests/review-global-queue/media-b.md",
+        createdAt: "2026-03-10T09:00:00.000Z",
+        updatedAt: "2026-03-10T09:00:00.000Z"
+      }
+    ]);
+    await database.insert(lessonProgress).values([
+      {
+        lessonId: "lesson_a",
+        status: "completed",
+        completedAt: "2026-03-10T09:00:00.000Z"
+      },
+      {
+        lessonId: "lesson_b",
+        status: "completed",
+        completedAt: "2026-03-10T09:00:00.000Z"
+      }
+    ]);
+    await database.insert(card).values([
+      {
+        id: "card_a",
+        mediaId: "media_a",
+        lessonId: "lesson_a",
+        segmentId: "segment_a",
+        sourceFile: "tests/review-global-queue/media-a.md",
+        cardType: "recognition",
+        front: "A",
+        back: "A back",
+        exampleJp: null,
+        exampleIt: null,
+        notesIt: null,
+        status: "active",
+        orderIndex: 1,
+        createdAt: "2026-03-10T10:00:00.000Z",
+        updatedAt: "2026-03-10T10:00:00.000Z"
+      },
+      {
+        id: "card_b",
+        mediaId: "media_b",
+        lessonId: "lesson_b",
+        segmentId: "segment_b",
+        sourceFile: "tests/review-global-queue/media-b.md",
+        cardType: "recognition",
+        front: "B",
+        back: "B back",
+        exampleJp: null,
+        exampleIt: null,
+        notesIt: null,
+        status: "active",
+        orderIndex: 1,
+        createdAt: "2026-03-10T09:00:00.000Z",
+        updatedAt: "2026-03-10T09:00:00.000Z"
+      }
+    ]);
+    await database.insert(userSetting).values({
+      key: "review_daily_limit",
+      valueJson: "1",
+      updatedAt: "2026-03-10T11:00:00.000Z"
+    });
+
+    const [firstCandidate, fullPage] = await Promise.all([
+      getGlobalReviewFirstCandidateLoadResult(
+        {
+          segment: "segment_b"
+        },
+        database
+      ),
+      getGlobalReviewPageData(
+        {
+          segment: "segment_b"
+        },
+        database
+      )
+    ]);
+
+    expect(firstCandidate.kind).toBe("ready");
+    expect(fullPage.selectedCard?.id).toBe("card_b");
+
+    if (firstCandidate.kind !== "ready") {
+      return;
+    }
+
+    expect(firstCandidate.data.selectedCard?.id).toBe("card_b");
+    expect(firstCandidate.data.selectedCard?.id).toBe(
+      fullPage.selectedCard?.id
+    );
+    expect(firstCandidate.data.session.segmentId).toBe("segment_b");
+    expect(firstCandidate.data.queue.queueCount).toBe(
+      fullPage.queue.queueCount
+    );
   });
 });

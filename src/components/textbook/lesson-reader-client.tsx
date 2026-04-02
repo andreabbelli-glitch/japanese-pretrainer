@@ -115,6 +115,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     persistedFuriganaModeRef.current = data.furiganaMode;
     queuedFuriganaModeRef.current = null;
     setFuriganaModeState(data.furiganaMode);
+    setLessonStatus(data.lesson.status);
     setIsSavingFurigana(false);
     tooltipAbortRef.current?.abort();
     tooltipAbortRef.current = null;
@@ -124,7 +125,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     setTooltip(null);
     setMobileSheet(null);
     anchorRef.current = null;
-  }, [data.entries, data.furiganaMode, data.lesson.id]);
+  }, [data.entries, data.furiganaMode, data.lesson.id, data.lesson.status]);
 
   useEffect(() => {
     persistedFuriganaModeRef.current = data.furiganaMode;

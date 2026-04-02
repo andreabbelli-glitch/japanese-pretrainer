@@ -28,6 +28,7 @@ export default async function MediaGlossaryRoute({
     media: mediaSlug,
     query: readSearchParam(resolvedSearchParams.q) ?? undefined,
     returnTo: readInternalHref(resolvedSearchParams.returnTo) ?? undefined,
+    segmentId: readSearchParam(resolvedSearchParams.segment) ?? undefined,
     sort: readGlossarySort(resolvedSearchParams.sort),
     study: readStudyFilter(resolvedSearchParams.study)
   });

@@ -87,6 +87,31 @@ type ReviewQueueCardMapInput = {
   visibleMediaId?: string;
 };
 
+function filterReviewSubjectGroupsByCards(
+  subjectGroups: ReviewSubjectGroup[],
+  cards: ReviewCardListItem[]
+) {
+  const visibleCardIds = new Set(cards.map((card) => card.id));
+
+  return subjectGroups.flatMap((group) => {
+    const filteredCards = group.cards.filter((card) => visibleCardIds.has(card.id));
+
+    if (filteredCards.length === 0) {
+      return [];
+    }
+
+    return [
+      {
+        ...group,
+        cards: filteredCards,
+        representativeCard: filteredCards.find(
+          (card) => card.id === group.representativeCard.id
+        ) ?? filteredCards[0]!
+      }
+    ];
+  });
+}
+
 export async function buildReviewPageDataFromWorkspace(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
@@ -111,6 +136,13 @@ export async function buildReviewPageDataFromWorkspace(input: {
         (card) => card.segmentId === input.searchState.segmentId
       )
     : input.cards;
+  const segmentFilteredSubjectGroups =
+    segmentFilteredCards === input.cards
+      ? input.subjectGroups
+      : filterReviewSubjectGroupsByCards(
+          input.subjectGroups,
+          segmentFilteredCards
+        );
   const queueSnapshot = await measureWith(
     input.profiler,
     "buildReviewQueueSubjectSnapshot",
@@ -123,7 +155,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
         extraNewCount: input.searchState.extraNewCount,
         newIntroducedTodayCount: input.newIntroducedTodayCount,
         nowIso,
-        subjectGroups: input.subjectGroups,
+        subjectGroups: segmentFilteredSubjectGroups,
         visibleMediaId: input.visibleMediaId
       }),
     (value) => ({
@@ -382,18 +414,30 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   const fsrsOptimizerSnapshot =
     input.fsrsOptimizerSnapshot ??
     (await getFsrsOptimizerSnapshot(input.database ?? db));
+  const segmentFilteredCards = input.searchState.segmentId
+    ? input.cards.filter(
+        (card) => card.segmentId === input.searchState.segmentId
+      )
+    : input.cards;
+  const segmentFilteredSubjectGroups =
+    segmentFilteredCards === input.cards
+      ? input.subjectGroups
+      : filterReviewSubjectGroupsByCards(
+          input.subjectGroups,
+          segmentFilteredCards
+        );
   const queueSnapshot = await measureWith(
     input.profiler,
     "buildReviewQueueSubjectSnapshot",
     () =>
       buildReviewQueueSubjectSnapshot({
-        cards: input.cards,
+        cards: segmentFilteredCards,
         dailyLimit: input.dailyLimit,
         entryLookup: input.entryLookup,
         extraNewCount: input.searchState.extraNewCount,
         newIntroducedTodayCount: input.newIntroducedTodayCount,
         nowIso,
-        subjectGroups: input.subjectGroups,
+        subjectGroups: segmentFilteredSubjectGroups,
         visibleMediaId: input.visibleMediaId
       }),
     (value) => ({
