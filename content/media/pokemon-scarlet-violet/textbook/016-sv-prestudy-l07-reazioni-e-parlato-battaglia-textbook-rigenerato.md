@@ -73,11 +73,12 @@ Quindi qui non va studiato come semplice passato di un verbo, ma come **esclamaz
 [しっかり](term:term-v077-shikkari) è molto comune e utile. Non significa semplicemente "bene" in modo vago. A seconda del contesto vuol dire:
 
 - in modo attento;
-- in modo corretto;
+- con fermezza;
 - in modo saldo / stabile;
+- seriamente, con sostanza;
 - senza distrarsi.
 
-Per esempio, in un'istruzione può significare "guarda bene", "tieni bene a mente", "preparati come si deve". È una parola che aggiunge l'idea di **solidità e affidabilità** all'azione.
+Per esempio, in un'istruzione può significare "guarda bene", "tieni bene a mente", "preparati sul serio". È una parola che aggiunge l'idea di **solidità e affidabilità** all'azione. A differenza di [ちゃんと](term:term-v056-chanto), che richiama il fare qualcosa come previsto o come si deve, [しっかり](term:term-v077-shikkari) richiama soprattutto fermezza, tenuta e impegno.
 
 ### 3) Domande: どうして non è solo una traduzione di "perché"
 

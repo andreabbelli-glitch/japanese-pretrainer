@@ -119,14 +119,17 @@ id: term-v077-shikkari
 lemma: しっかり
 reading: しっかり
 romaji: shikkari
-meaning_it: bene / per bene / con attenzione
+meaning_it: con fermezza / bene / con attenzione
 notes_it: >-
-  È un avverbio molto frequente. L'idea di base è “in modo saldo e corretto”,
-  quindi a seconda del contesto può voler dire “bene”, “per bene”, “con
-  attenzione”, “seriamente”, “senza distrarsi”. Non descrive tanto l'azione in
-  sé, quanto il modo giusto di farla. Nei dialoghi di Pokémon compare bene in
-  frasi come しっかり{{見|み}}る, しっかり{{覚|おぼ}}える, しっかり{{戦|たたか}}う:
-  osservare bene, ricordare bene, combattere come si deve.
+  È un avverbio molto frequente. L'idea di base è “in modo saldo, fermo,
+  affidabile”: non basta che qualcosa sia fatto correttamente, conta che sia
+  fatto con tenuta, energia e sostanza. Per questo può voler dire “bene”, “con
+  attenzione”, “seriamente”, “con fermezza”, “senza cedere” o “in modo
+  robusto”, a seconda del contesto. A differenza di ちゃんと, che mette al
+  centro lo standard da rispettare, しっかり mette al centro la solidità del
+  processo o della persona. Nei dialoghi di Pokémon compare bene in frasi come
+  しっかり{{見|み}}る, しっかり{{覚|おぼ}}える, しっかり{{戦|たたか}}う:
+  osservare con attenzione, ricordare bene, combattere con fermezza.
 :::
 :::card
 id: card-v077-shikkari-recognition
@@ -135,11 +138,11 @@ entry_type: term
 entry_id: term-v077-shikkari
 card_type: recognition
 front: 'しっかり'
-back: bene / per bene / con attenzione
+back: con fermezza / bene / con attenzione
 example_jp: >-
   しっかり {{相手|あいて}}を {{見|み}}ます。
 example_it: >-
-  Osservo bene l'avversario.
+  Osservo con attenzione l'avversario.
 :::
 :::term
 id: term-v078-tatakau

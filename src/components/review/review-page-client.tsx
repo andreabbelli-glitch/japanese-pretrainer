@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 
 import {
@@ -40,6 +41,24 @@ type ReviewSessionActionInput = Parameters<
   typeof markLinkedEntryKnownSessionAction
 >[0];
 
+function buildSearchParamsRecord(
+  searchParams: ReturnType<typeof useSearchParams>,
+  fallback?: Record<string, string | string[] | undefined>
+) {
+  if (searchParams.size === 0) {
+    return fallback;
+  }
+
+  const record: Record<string, string | string[] | undefined> = {};
+
+  for (const key of new Set(searchParams.keys())) {
+    const values = searchParams.getAll(key);
+    record[key] = values.length <= 1 ? values[0] : values;
+  }
+
+  return record;
+}
+
 export function ReviewPageClient({
   data,
   searchParams
@@ -51,6 +70,7 @@ export function ReviewPageClient({
   const [queueCardIds, setQueueCardIds] = useState<string[]>(
     "queueCardIds" in data ? data.queueCardIds : []
   );
+  const liveSearchParams = useSearchParams();
   const [revealedCardId, setRevealedCardId] = useState<string | null>(() =>
     getInitiallyRevealedCardId(data)
   );
@@ -65,18 +85,22 @@ export function ReviewPageClient({
   const gradedCardIdsRef = useRef<Set<string>>(new Set());
   const lastAcceptedServerDataRef = useRef(data);
   const [isPending, startTransition] = useTransition();
+  const currentSearchParams = useMemo(
+    () => buildSearchParamsRecord(liveSearchParams, searchParams),
+    [liveSearchParams, searchParams]
+  );
   const isFullReviewPageData = isReviewPageData(viewData);
   const isHydratingFullData =
     !isFullReviewPageData &&
-    searchParams !== undefined &&
+    currentSearchParams !== undefined &&
     viewData.scope === "global" &&
     clientError === null;
   const isGlobalReview = viewData.scope === "global";
   const requestedSelectedCardId =
-    searchParams && typeof searchParams.card === "string"
-      ? searchParams.card
-      : Array.isArray(searchParams?.card)
-        ? searchParams.card[0] ?? null
+    currentSearchParams && typeof currentSearchParams.card === "string"
+      ? currentSearchParams.card
+      : Array.isArray(currentSearchParams?.card)
+        ? currentSearchParams.card[0] ?? null
         : null;
 
   const selectedCard = viewData.selectedCard;
@@ -147,8 +171,8 @@ export function ReviewPageClient({
     [fullSelectedCardContext]
   );
   const globalHydrationRequestKey =
-    searchParams && viewData.scope === "global"
-      ? buildReviewHydrationRequestKey(searchParams)
+    currentSearchParams && viewData.scope === "global"
+      ? buildReviewHydrationRequestKey(currentSearchParams)
       : null;
 
   useEffect(() => {
@@ -200,8 +224,7 @@ export function ReviewPageClient({
 
   useEffect(() => {
     if (
-      isFullReviewPageData ||
-      !searchParams ||
+      !currentSearchParams ||
       viewData.scope !== "global" ||
       globalHydrationRequestKey === null ||
       lastGlobalHydrationRequestKeyRef.current === globalHydrationRequestKey ||
@@ -215,7 +238,7 @@ export function ReviewPageClient({
 
     void loadReviewPageDataSessionAction({
       scope: "global",
-      searchParams
+      searchParams: currentSearchParams
     })
       .then((nextData) => {
         if (cancelled) {
@@ -257,9 +280,8 @@ export function ReviewPageClient({
       }
     };
   }, [
+    currentSearchParams,
     globalHydrationRequestKey,
-    isFullReviewPageData,
-    searchParams,
     viewData.scope
   ]);
 

@@ -33,7 +33,7 @@ Qui il lessico gira attorno a scuola, ricerca e progressione: le parole più con
 - [博士](term:term-v053-hakase) — professore / ricercatore
 - [図鑑](term:term-v054-zukan) — Pokédex / enciclopedia
 - [どんな](term:term-v055-donna) — che tipo di
-- [ちゃんと](term:term-v056-chanto) — bene / per bene
+- [ちゃんと](term:term-v056-chanto) — come si deve / per bene
 - [中](term:term-v057-naka) — dentro / interno / in mezzo
 - [作る](term:term-v058-tsukuru) — creare
 
@@ -49,7 +49,7 @@ Qui il lessico gira attorno a scuola, ricerca e progressione: le parole più con
 
 ## Spiegazione
 
-Parole come [効果](term:term-v051-kouka), [食材](term:term-v052-shokuzai), [博士](term:term-v053-hakase) e [図鑑](term:term-v054-zukan) ti dicono subito quale oggetto o interlocutore è in scena: l'effetto di una mossa, un ingrediente, il professore o ricercatore con cui interagisci, il Pokédex che stai consultando. [どんな](term:term-v055-donna) chiede il tipo preciso di qualcosa, [ちゃんと](term:term-v056-chanto) segnala che va fatto bene, [中](term:term-v057-naka) localizza qualcosa dentro o in mezzo, e [作る](term:term-v058-tsukuru) è il verbo concreto del creare o preparare.
+Parole come [効果](term:term-v051-kouka), [食材](term:term-v052-shokuzai), [博士](term:term-v053-hakase) e [図鑑](term:term-v054-zukan) ti dicono subito quale oggetto o interlocutore è in scena: l'effetto di una mossa, un ingrediente, il professore o ricercatore con cui interagisci, il Pokédex che stai consultando. [どんな](term:term-v055-donna) chiede il tipo preciso di qualcosa, [ちゃんと](term:term-v056-chanto) segnala che qualcosa va fatto come si deve, secondo lo standard atteso, [中](term:term-v057-naka) localizza qualcosa dentro o in mezzo, e [作る](term:term-v058-tsukuru) è il verbo concreto del creare o preparare.
 
 Le espressioni come [気をつけて](term:term-e012-kiwo-tsukete) e [すごい！](term:term-e013-sugoi) regolano il parlato: possono essere un avviso, un incoraggiamento o una reazione breve. [〜てもいい](grammar:grammar-g014-si-puo-va-bene-fare) e [〜後で / 〜あとで](grammar:grammar-g015-dopo) servono invece a leggere permesso e sequenza: cosa è consentito fare e cosa viene dopo.
 

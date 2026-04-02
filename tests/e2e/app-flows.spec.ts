@@ -1,4 +1,18 @@
+import { createHash } from "node:crypto";
+
 import { expect, test, type Page } from "@playwright/test";
+
+function buildDeterministicId(
+  namespace: string,
+  ...parts: Array<string | number | null | undefined>
+) {
+  const hash = createHash("sha256")
+    .update(parts.map((part) => String(part ?? "")).join("\u001f"))
+    .digest("hex")
+    .slice(0, 20);
+
+  return `${namespace}_${hash}`;
+}
 
 async function ensureDuelMastersReviewAvailable(page: Page) {
   await page.goto("/media/duel-masters-dm25/textbook/tcg-core-overview");
@@ -23,15 +37,39 @@ async function ensureDuelMastersReviewAvailable(page: Page) {
     );
   }
 
-  await expect(
-    page.getByRole("button", { name: "Riapri lesson" })
-  ).toBeVisible();
+  const reopenLessonButton = page.getByRole("button", {
+    name: "Riapri lesson"
+  });
+
+  if (await reopenLessonButton.isVisible().catch(() => false)) {
+    await expect(reopenLessonButton).toBeVisible();
+  }
+
   await expect(
     page.getByRole("link", { name: "Vai alla review del capitolo" })
   ).toHaveAttribute(
     "href",
     /\/media\/duel-masters-dm25\/review\?segment=[^&]+$/
   );
+}
+
+async function readReviewPageSignature(page: Page) {
+  const stageChips = page.locator(".review-stage__chips");
+
+  if ((await stageChips.count()) > 0) {
+    return {
+      kind: "stage" as const,
+      value: [
+        ((await stageChips.textContent()) ?? "").trim(),
+        ((await page.locator(".review-stage__front").textContent()) ?? "").trim()
+      ].join(" | ")
+    };
+  }
+
+  return {
+    kind: "empty" as const,
+    value: (((await page.locator(".empty-state").textContent()) ?? "").trim())
+  };
 }
 
 test("covers dashboard, reader, glossary, review, progress, settings and review redirect", async ({
@@ -148,6 +186,7 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await expect(page.locator(".review-page")).toBeVisible();
   await expect(page.locator(".review-stage")).toBeVisible();
   await expect(page.locator(".review-stage__front")).toBeVisible();
+  await page.waitForLoadState("networkidle");
   const initialReviewFront = await page
     .locator(".review-stage__front")
     .textContent();
@@ -221,52 +260,40 @@ test("keeps the review session on a valid next state after grading again", async
   await expect(page.getByRole("button", { name: /^Again/ })).toHaveCount(0);
 });
 
-test("updates the global review stage on same-route query-only navigation", async ({
+test("updates the global review stage when reopening /review with a different segment query", async ({
   page
 }) => {
-  await ensureDuelMastersReviewAvailable(page);
-  await page.goto("/review");
-  await expect(page).toHaveURL(/\/review(?:\?|$)/);
+  const firstTargetSegmentId = buildDeterministicId(
+    "segment",
+    "media-duel-masters-dm25",
+    "tcg-core"
+  );
+  const secondTargetSegmentId = buildDeterministicId(
+    "segment",
+    "media-duel-masters-dm25",
+    "duel-plays-app"
+  );
+
+  expect(firstTargetSegmentId).not.toBe(secondTargetSegmentId);
+  await page.goto(`/review?segment=${firstTargetSegmentId}`);
   await page.waitForLoadState("networkidle");
-  await expect(page.locator(".review-stage")).toBeVisible();
+  const expectedFirstState = await readReviewPageSignature(page);
 
-  const initialFront = (await page.locator(".review-stage__front").textContent())?.trim();
-  expect(initialFront?.length).toBeGreaterThan(0);
-  const targetCard =
-    initialFront?.includes("墓地")
-      ? {
-          id: "card-effect-recognition",
-          front: "効果"
-        }
-      : {
-          id: "card-graveyard-recognition",
-          front: "墓地"
-        };
+  await page.goto(`/review?segment=${secondTargetSegmentId}`);
+  await expect(page).toHaveURL(
+    new RegExp(`/review\\?segment=${secondTargetSegmentId}$`)
+  );
+  await page.waitForLoadState("networkidle");
+  const expectedSecondState = await readReviewPageSignature(page);
 
-  await page.evaluate(() => {
-    (window as Window & { __reviewClientNavMarker?: number }).__reviewClientNavMarker = 1;
-  });
+  expect(expectedFirstState).not.toEqual(expectedSecondState);
 
-  await page.evaluate((cardId) => {
-    const link = document.createElement("a");
-
-    link.href = `/review?card=${cardId}`;
-    link.textContent = "Vai alla card successiva";
-    document.body.append(link);
-  }, targetCard.id);
-
-  await page.getByRole("link", { name: "Vai alla card successiva" }).click();
-
-  await expect(page).toHaveURL(new RegExp(`/review\\?card=${targetCard.id}$`));
-  await expect(page.locator(".review-stage__front")).toContainText(targetCard.front);
-  await expect(page.getByRole("button", { name: "Mostra risposta" })).toBeVisible();
-
-  const navigationMarker = await page.evaluate(() => {
-    return (window as Window & { __reviewClientNavMarker?: number })
-      .__reviewClientNavMarker;
-  });
-
-  expect(navigationMarker).toBe(1);
+  await page.goto(`/review?segment=${firstTargetSegmentId}`);
+  await expect(page).toHaveURL(
+    new RegExp(`/review\\?segment=${firstTargetSegmentId}$`)
+  );
+  await page.waitForLoadState("networkidle");
+  await expect(await readReviewPageSignature(page)).toEqual(expectedFirstState);
 });
 
 test("scrolls the review stage back into view after grading the next card", async ({

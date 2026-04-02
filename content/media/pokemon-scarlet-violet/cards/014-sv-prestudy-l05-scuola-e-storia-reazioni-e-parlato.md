@@ -209,9 +209,17 @@ id: term-v056-chanto
 lemma: ちゃんと
 reading: ちゃんと
 romaji: chanto
-meaning_it: bene / per bene
+meaning_it: come si deve / per bene
 notes_it: >-
-  Voce della lezione L05 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Voce della lezione L05 nell''area Emozioni/Discorsivi. Parte del discorso:
+  aggettivo/avverbio/sostantivo. Qui l'idea centrale non è la forza, ma il
+  fatto di fare qualcosa come previsto, in ordine e senza trascuratezza. ちゃんと
+  si usa quando conta rispettare uno standard, una regola o un'aspettativa:
+  mangiare come si deve, fare i compiti per bene, guardare davvero con
+  attenzione perché è quello che ci si aspetta. Per questo in italiano rende
+  bene “come si deve”, “per bene”, “correttamente”. Se invece il punto è la
+  solidità, la fermezza o il metterci sostanza, la parola che spesso entra in
+  gioco è しっかり.
 :::
 :::card
 id: card-v056-chanto-recognition
@@ -220,7 +228,7 @@ entry_type: term
 entry_id: term-v056-chanto
 card_type: recognition
 front: 'ちゃんと'
-back: bene / per bene
+back: come si deve / per bene
 example_jp: >-
   ちゃんと {{見|み}}てください。
 example_it: >-
