@@ -18,12 +18,13 @@ import {
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
 import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
+import { buildStartE2ERuntimeEnv, resolveStartE2EDatabaseUrl } from "./start-e2e-config.ts";
 
 const database = createDatabaseClient({
-  databaseUrl: process.env.DATABASE_URL
+  databaseUrl: resolveStartE2EDatabaseUrl(process.env)
 });
 const contentRoot = path.resolve(process.cwd(), "content");
-const runtimeEnv = createE2ERuntimeEnv(process.env);
+const runtimeEnv = buildStartE2ERuntimeEnv(process.env);
 
 try {
   await runMigrations(database);
@@ -76,16 +77,6 @@ for (const eventName of ["SIGINT", "SIGTERM"] as const) {
   process.on(eventName, () => {
     nextStart.kill(eventName);
   });
-}
-
-function createE2ERuntimeEnv(sourceEnv: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
-  return {
-    ...sourceEnv,
-    AUTH_PASSWORD: "",
-    AUTH_PASSWORD_HASH: "",
-    AUTH_SESSION_SECRET: "",
-    AUTH_USERNAME: ""
-  };
 }
 
 async function seedE2ELessonProgress(database: DatabaseClient) {
