@@ -133,6 +133,42 @@ describe("review page state", () => {
     expect(shouldAcceptServerReviewData(currentData, nextData)).toBe(false);
   });
 
+  it("accepts same-progress server data when the requested card changed", () => {
+    const currentData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "global",
+      selectedCard: {
+        id: "card-b"
+      },
+      session: {
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
+      }
+    } as ReviewPageClientData;
+
+    const nextData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "global",
+      selectedCard: {
+        id: "card-a"
+      },
+      session: {
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
+      }
+    } as unknown as ReviewPageData;
+
+    expect(
+      shouldAcceptServerReviewData(currentData, nextData, "card-a")
+    ).toBe(true);
+  });
+
   it("accepts same-progress server data when the segment filter changed", () => {
     const currentData = {
       media: {

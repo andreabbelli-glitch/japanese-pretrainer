@@ -24,5 +24,5 @@ export default async function MediaReviewRoute({
     notFound();
   }
 
-  return <ReviewPage data={reviewData} />;
+  return <ReviewPage data={reviewData} searchParams={resolvedSearchParams} />;
 }

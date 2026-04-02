@@ -39,7 +39,8 @@ export function mergeReviewPageData(
 
 export function shouldAcceptServerReviewData(
   currentData: ReviewPageClientData,
-  nextData: ReviewPageData
+  nextData: ReviewPageData,
+  requestedSelectedCardId?: string | null
 ) {
   if (currentData.session.answeredCount < nextData.session.answeredCount) {
     return true;
@@ -54,6 +55,13 @@ export function shouldAcceptServerReviewData(
     currentData.media.slug !== nextData.media.slug ||
     currentData.session.extraNewCount !== nextData.session.extraNewCount ||
     (currentData.session.segmentId ?? null) !== (nextData.session.segmentId ?? null)
+  ) {
+    return true;
+  }
+
+  if (
+    requestedSelectedCardId &&
+    nextData.selectedCard?.id === requestedSelectedCardId
   ) {
     return true;
   }

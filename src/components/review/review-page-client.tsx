@@ -71,6 +71,12 @@ export function ReviewPageClient({
     viewData.scope === "global" &&
     clientError === null;
   const isGlobalReview = viewData.scope === "global";
+  const requestedSelectedCardId =
+    searchParams && typeof searchParams.card === "string"
+      ? searchParams.card
+      : Array.isArray(searchParams?.card)
+        ? searchParams.card[0] ?? null
+        : null;
 
   const selectedCard = viewData.selectedCard;
   const selectedCardContext = viewData.selectedCardContext;
@@ -170,7 +176,13 @@ export function ReviewPageClient({
     }
 
     const currentViewData = latestViewDataRef.current;
-    if (!shouldAcceptServerReviewData(currentViewData, data)) {
+    if (
+      !shouldAcceptServerReviewData(
+        currentViewData,
+        data,
+        requestedSelectedCardId
+      )
+    ) {
       return;
     }
 
@@ -179,7 +191,7 @@ export function ReviewPageClient({
     setViewData(merged);
     setRevealedCardId(getInitiallyRevealedCardId(merged));
     setQueueCardIds(data.queueCardIds);
-  }, [data]);
+  }, [data, requestedSelectedCardId]);
 
   useEffect(() => {
     if (
