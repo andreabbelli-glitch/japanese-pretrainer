@@ -1,7 +1,12 @@
 import Link from "next/link";
+import type { Route } from "next";
 
 import { renderFurigana } from "@/lib/render-furigana";
-import { buildReviewSessionHref } from "@/lib/site";
+import {
+  buildReviewSessionHref,
+  replaceReviewCardInHref,
+  resolveReturnToContext
+} from "@/lib/site";
 import {
   markLinkedEntryKnownAction,
   resetReviewCardAction,
@@ -18,18 +23,29 @@ import { SurfaceCard } from "../ui/surface-card";
 
 type ReviewCardDetailPageProps = {
   data: ReviewCardDetailData;
+  returnTo?: Route | null;
 };
 
-export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
-  const sessionHref = buildReviewSessionHref({
+export function ReviewCardDetailPage({
+  data,
+  returnTo
+}: ReviewCardDetailPageProps) {
+  const localSessionHref = buildReviewSessionHref({
     cardId: data.card.id,
     mediaSlug: data.media.slug
   });
+  const returnContext = resolveReturnToContext(returnTo);
+  const reviewSessionHref =
+    returnContext?.kind === "review" && returnContext.href
+      ? replaceReviewCardInHref(returnContext.href, data.card.id)
+      : localSessionHref;
+  const backHref =
+    returnContext?.kind === "review" ? returnContext.href : data.media.reviewHref;
 
   return (
     <div className="glossary-page">
       <StickyPageHeader
-        backHref={data.media.reviewHref}
+        backHref={backHref}
         backLabel="Torna alla Review"
         eyebrow="Card"
         title={renderFurigana(data.card.front)}
@@ -45,7 +61,7 @@ export function ReviewCardDetailPage({ data }: ReviewCardDetailPageProps) {
         }
         actions={
           <>
-            <Link className="button button--primary" href={sessionHref}>
+            <Link className="button button--primary" href={reviewSessionHref}>
               Apri nella sessione
             </Link>
             <Link

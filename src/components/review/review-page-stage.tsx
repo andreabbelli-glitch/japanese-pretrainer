@@ -176,7 +176,7 @@ export function ReviewPageStage({
             )}
           </div>
 
-          {isFullReviewPageData && isQueueCard && isAnswerRevealed ? (
+          {isQueueCard && isAnswerRevealed ? (
             <div className="review-grade-grid">
               {reviewGradeRatingCopy.map((rating) => (
                 <button

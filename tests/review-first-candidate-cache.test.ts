@@ -152,51 +152,64 @@ describe("global review first-candidate cache", () => {
       updatedAt: "2026-03-10T11:00:00.000Z"
     });
 
-    const coldStart = performance.now();
-    const first = await getGlobalReviewFirstCandidateLoadResult({}, database);
-    const coldMs = performance.now() - coldStart;
-    const warmStart = performance.now();
-    const second = await getGlobalReviewFirstCandidateLoadResult({}, database);
-    const warmMs = performance.now() - warmStart;
+    vi.useFakeTimers();
+    try {
+      vi.setSystemTime(new Date("2026-03-10T23:30:00.000Z"));
+      const first = await getGlobalReviewFirstCandidateLoadResult({}, database);
 
-    console.info(
-      `[review-first-candidate-cache] cold=${coldMs.toFixed(2)}ms warm=${warmMs.toFixed(2)}ms`
-    );
+      vi.setSystemTime(new Date("2026-03-11T00:15:00.000Z"));
+      const second = await getGlobalReviewFirstCandidateLoadResult({}, database);
 
-    expect(first.kind).toBe("ready");
-    expect(second.kind).toBe("ready");
-    expect(second).toEqual(first);
-    expect(warmMs).toBeLessThanOrEqual(coldMs);
+      expect(first.kind).toBe("ready");
+      expect(second.kind).toBe("ready");
+      expect(second).toEqual(first);
 
-    const cacheKey = JSON.stringify([
-      "review",
-      "global-first-candidate",
-      "answered:0",
-      "extra-new:0",
-      "notice:",
-      "segment:",
-      "selected:",
-      "show:0",
-      "fsrs:none|none|none"
-    ]);
+      const firstCacheKey = JSON.stringify([
+        "review",
+        "global-first-candidate",
+        "day:2026-03-10",
+        "answered:0",
+        "extra-new:0",
+        "notice:",
+        "segment:",
+        "selected:",
+        "show:0",
+        "fsrs:none|none|none"
+      ]);
+      const secondCacheKey = JSON.stringify([
+        "review",
+        "global-first-candidate",
+        "day:2026-03-11",
+        "answered:0",
+        "extra-new:0",
+        "notice:",
+        "segment:",
+        "selected:",
+        "show:0",
+        "fsrs:none|none|none"
+      ]);
 
-    expect(unstableCacheMock).toHaveBeenCalled();
-    expect(cacheStore.has(cacheKey)).toBe(true);
-    expect(cacheStore.size).toBeGreaterThan(0);
+      expect(unstableCacheMock).toHaveBeenCalled();
+      expect(cacheStore.has(firstCacheKey)).toBe(true);
+      expect(cacheStore.has(secondCacheKey)).toBe(true);
 
-    const cacheHits = unstableCacheMock.mock.calls.filter(
-      ([, keyParts]) => JSON.stringify(keyParts) === cacheKey
-    );
-    expect(cacheHits).toHaveLength(2);
+      const cacheHits = unstableCacheMock.mock.calls.filter(([, keyParts]) =>
+        JSON.stringify(keyParts) === firstCacheKey ||
+        JSON.stringify(keyParts) === secondCacheKey
+      );
+      expect(cacheHits).toHaveLength(2);
 
-    revalidateReviewSummaryCache("media_a");
-    revalidateGlossarySummaryCache("media_a");
-    revalidateSettingsCache();
+      revalidateReviewSummaryCache("media_a");
+      revalidateGlossarySummaryCache("media_a");
+      revalidateSettingsCache();
 
-    expect(revalidateTagMock).toHaveBeenCalledWith(
-      REVIEW_FIRST_CANDIDATE_TAG,
-      "max"
-    );
+      expect(revalidateTagMock).toHaveBeenCalledWith(
+        REVIEW_FIRST_CANDIDATE_TAG,
+        "max"
+      );
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("reuses the cached hydrated review card for repeated loads", async () => {

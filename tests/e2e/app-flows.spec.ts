@@ -15,6 +15,15 @@ function buildDeterministicId(
 }
 
 async function ensureDuelMastersReviewAvailable(page: Page) {
+  await page.goto("/media/duel-masters-dm25/review/card/card-deck-recognition");
+  await expect(
+    page.getByRole("button", { name: "Reset card" })
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Reset card" }).click();
+  await expect(page).toHaveURL(
+    /\/media\/duel-masters-dm25\/review\/card\/card-deck-recognition(?:\?|$)/
+  );
+
   await page.goto("/media/duel-masters-dm25/textbook/tcg-core-overview");
   await expect(
     page.getByRole("heading", { name: /TCG Core - Entrare nel gioco/ })
@@ -263,6 +272,8 @@ test("keeps the review session on a valid next state after grading again", async
 test("updates the global review stage when reopening /review with a different segment query", async ({
   page
 }) => {
+  await ensureDuelMastersReviewAvailable(page);
+
   const firstTargetSegmentId = buildDeterministicId(
     "segment",
     "media-duel-masters-dm25",

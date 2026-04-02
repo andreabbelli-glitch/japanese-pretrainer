@@ -24,6 +24,7 @@ import {
   mergeReviewPageData,
   shouldAdoptServerFirstCandidateData,
   shouldAcceptServerReviewData,
+  shouldKeepRevealedReviewAnswer,
   type ReviewPageClientData
 } from "./review-page-state";
 import {
@@ -160,15 +161,11 @@ export function ReviewPageClient({
 
   const gradePreviewLookup = useMemo(
     () =>
-      fullSelectedCardContext
-        ? new Map<string, string>(
-            fullSelectedCardContext.gradePreviews.map((preview) => [
-              preview.rating,
-              preview.nextReviewLabel
-            ])
-          )
-        : new Map<string, string>(),
-    [fullSelectedCardContext]
+      buildReviewGradePreviewLookup({
+        data: viewData,
+        fullSelectedCardContext
+      }),
+    [fullSelectedCardContext, viewData]
   );
   const globalHydrationRequestKey =
     currentSearchParams && viewData.scope === "global"
@@ -194,10 +191,14 @@ export function ReviewPageClient({
           lastGlobalHydrationRequestKey: lastGlobalHydrationRequestKeyRef.current
         })
       ) {
+        const revealedCardId = resolveHydratedFirstCandidateRevealedCardId({
+          currentData: latestViewDataRef.current,
+          nextData: data
+        });
         latestViewDataRef.current = data;
         // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve full client state until session counters move forward.
         setViewData(data);
-        setRevealedCardId(getInitiallyRevealedCardId(data));
+        setRevealedCardId(revealedCardId);
         setQueueCardIds([]);
         setClientError(null);
       }
@@ -660,4 +661,51 @@ function buildReviewSessionActionInput(
     segmentId: viewData.session.segmentId,
     scope: viewData.scope
   };
+}
+
+export function buildReviewGradePreviewLookup(input: {
+  data: ReviewPageClientData;
+  fullSelectedCardContext: ReviewPageData["selectedCardContext"] | null;
+  now?: Date;
+}) {
+  if (input.fullSelectedCardContext?.gradePreviews.length) {
+    return new Map<string, string>(
+      input.fullSelectedCardContext.gradePreviews.map((preview) => [
+        preview.rating,
+        preview.nextReviewLabel
+      ])
+    );
+  }
+
+  if (!input.data.selectedCard || !input.data.selectedCardContext.isQueueCard) {
+    return new Map<string, string>();
+  }
+
+  return new Map<string, string>(
+    buildReviewGradePreviews(
+      input.data.selectedCard.reviewSeedState,
+      input.now ?? new Date()
+    ).map((preview) => [preview.rating, preview.nextReviewLabel])
+  );
+}
+
+export function resolveHydratedFirstCandidateRevealedCardId(input: {
+  currentData: ReviewPageClientData;
+  nextData: Parameters<typeof shouldAdoptServerFirstCandidateData>[0]["nextData"];
+}) {
+  const preserveRevealedAnswer = shouldKeepRevealedReviewAnswer({
+    currentCardId: input.currentData.selectedCard?.id ?? null,
+    currentShowAnswer: input.currentData.selectedCardContext.showAnswer,
+    nextCardId: input.nextData.selectedCard?.id ?? null,
+    nextShowAnswer: input.nextData.selectedCardContext.showAnswer
+  });
+
+  if (
+    preserveRevealedAnswer &&
+    input.currentData.selectedCard?.id === input.nextData.selectedCard?.id
+  ) {
+    return input.currentData.selectedCard?.id ?? null;
+  }
+
+  return getInitiallyRevealedCardId(input.nextData);
 }

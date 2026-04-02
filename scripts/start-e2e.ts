@@ -64,6 +64,14 @@ const nextStart = spawn(
   }
 );
 
+function stopNextStart(signal: NodeJS.Signals = "SIGTERM") {
+  if (nextStart.exitCode !== null || nextStart.signalCode !== null) {
+    return;
+  }
+
+  nextStart.kill(signal);
+}
+
 nextStart.on("exit", (code, signal) => {
   if (signal) {
     process.kill(process.pid, signal);
@@ -73,9 +81,14 @@ nextStart.on("exit", (code, signal) => {
   process.exit(code ?? 0);
 });
 
+process.once("exit", () => {
+  stopNextStart("SIGTERM");
+});
+
 for (const eventName of ["SIGINT", "SIGTERM"] as const) {
-  process.on(eventName, () => {
-    nextStart.kill(eventName);
+  process.once(eventName, () => {
+    stopNextStart(eventName);
+    process.exit(eventName === "SIGINT" ? 130 : 143);
   });
 }
 

@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { eq } from "drizzle-orm";
+import type { Route } from "next";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -71,9 +72,12 @@ const validContentRoot = path.join(
 );
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
 const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
-const { revalidatePathMock } = vi.hoisted(() => ({
-  revalidatePathMock: vi.fn()
-}));
+const { revalidatePathMock, revalidateReviewSummaryCacheMock } = vi.hoisted(
+  () => ({
+    revalidatePathMock: vi.fn(),
+    revalidateReviewSummaryCacheMock: vi.fn()
+  })
+);
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/media/test/review",
@@ -166,6 +170,17 @@ async function loadReviewActionsForDatabase(database: DatabaseClient) {
 
   try {
     vi.resetModules();
+    vi.doMock("@/lib/data-cache", async () => {
+      const actual =
+        await vi.importActual<typeof import("@/lib/data-cache")>(
+          "@/lib/data-cache"
+        );
+
+      return {
+        ...actual,
+        revalidateReviewSummaryCache: revalidateReviewSummaryCacheMock
+      };
+    });
     vi.doMock("@/lib/review", async () => {
       const actual =
         await vi.importActual<typeof import("@/lib/review")>("@/lib/review");
@@ -203,6 +218,7 @@ async function loadReviewActionsForDatabase(database: DatabaseClient) {
     };
   } finally {
     globalDatabase.__japaneseCustomStudyDb__ = previousDatabase;
+    vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/review");
   }
 }
@@ -213,6 +229,7 @@ describe("review system", () => {
 
   beforeEach(async () => {
     revalidatePathMock.mockReset();
+    revalidateReviewSummaryCacheMock.mockReset();
     tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-"));
     database = createDatabaseClient({
       databaseUrl: path.join(tempDir, "test.sqlite")
@@ -1955,6 +1972,27 @@ describe("review system", () => {
     expect(detailMarkup).not.toContain("{{語彙|ごい}}");
   });
 
+  it("preserves a review return target on the detail page when provided", async () => {
+    const detail = await getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.primaryCardId,
+      database
+    );
+
+    expect(detail).not.toBeNull();
+
+    const markup = renderToStaticMarkup(
+      ReviewCardDetailPage({
+        data: detail!,
+        returnTo: "/review?answered=3&card=card-iku" as Route
+      })
+    );
+
+    expect(markup).toContain('href="/review?answered=3&amp;card=card-iku"');
+    expect(markup).toContain("Apri nella sessione");
+    expect(markup).toContain("Torna alla Review");
+  });
+
   it("can hide furigana on the review front until the answer is revealed", async () => {
     await database
       .update(card)
@@ -2288,7 +2326,7 @@ describe("review system", () => {
     });
   });
 
-  it("revalidates only the active review paths after grading a card in global review", async () => {
+  it("revalidates active review paths after grading a card in global review", async () => {
     const { gradeReviewCardSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
 
@@ -2301,7 +2339,18 @@ describe("review system", () => {
       scope: "global"
     });
 
-    expect(revalidatePathMock).not.toHaveBeenCalled();
+    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+      developmentFixture.mediaId
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith("/");
+    expect(revalidatePathMock).toHaveBeenCalledWith("/media");
+    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}`
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}/review`
+    );
     expect(reviewPageCalls).toEqual([
       {
         scope: "global",
@@ -2358,7 +2407,18 @@ describe("review system", () => {
     expect(result.session.answeredCount).toBe(
       (pageData?.session.answeredCount ?? 0) + 1
     );
-    expect(revalidatePathMock).not.toHaveBeenCalled();
+    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+      developmentFixture.mediaId
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith("/");
+    expect(revalidatePathMock).toHaveBeenCalledWith("/media");
+    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}`
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}/review`
+    );
   });
 
   it("falls back to a full rebuild instead of forcing completion when the session plan has no nextCardId", async () => {
@@ -2389,7 +2449,18 @@ describe("review system", () => {
         }
       }
     ]);
-    expect(revalidatePathMock).not.toHaveBeenCalled();
+    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+      developmentFixture.mediaId
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith("/");
+    expect(revalidatePathMock).toHaveBeenCalledWith("/media");
+    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}`
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}/review`
+    );
   });
 
   it("prefetches a queued review card without touching session rebuild paths", async () => {
@@ -2433,7 +2504,7 @@ describe("review system", () => {
     });
   });
 
-  it("revalidates only data caches after marking a linked entry known in global review", async () => {
+  it("revalidates review and glossary paths after marking a linked entry known in global review", async () => {
     const { markLinkedEntryKnownSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
 
@@ -2446,7 +2517,22 @@ describe("review system", () => {
       scope: "global"
     });
 
-    expect(revalidatePathMock).not.toHaveBeenCalled();
+    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+      developmentFixture.mediaId
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith("/");
+    expect(revalidatePathMock).toHaveBeenCalledWith("/media");
+    expect(revalidatePathMock).toHaveBeenCalledWith("/glossary");
+    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}`
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}/review`
+    );
+    expect(revalidatePathMock).toHaveBeenCalledWith(
+      `/media/${developmentFixture.mediaSlug}/glossary`
+    );
     expect(reviewPageCalls).toEqual([
       {
         scope: "global",

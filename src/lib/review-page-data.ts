@@ -522,10 +522,12 @@ export async function getGlobalReviewFirstCandidateLoadResult(
 ): Promise<GlobalReviewFirstCandidateLoadResult> {
   const cacheEligible = !options.bypassCache && canUseDataCache(database);
   const searchState = normalizeReviewSearchState(searchParams);
+  const cacheDayKey = new Date().toISOString().slice(0, 10);
   const fsrsRuntimeContext = await getFsrsOptimizerRuntimeContext(database);
   const cacheKeyParts = [
     "review",
     "global-first-candidate",
+    `day:${cacheDayKey}`,
     ...buildReviewSearchStateCacheKeyParts(searchState),
     `fsrs:${fsrsRuntimeContext.cacheKeyPart}`
   ];

@@ -144,6 +144,15 @@ export async function gradeReviewCardSessionAction(
     expectedMediaId: media?.id,
     rating: input.rating
   });
+  revalidateActiveReviewPaths(
+    await resolveSessionReviewRevalidationInput({
+      cardId: input.cardId,
+      cardMediaSlug: input.cardMediaSlug,
+      mediaSlug: input.mediaSlug,
+      resolvedMedia: media,
+      scope: input.scope
+    })
+  );
 
   if (
     (input.gradedCardBucket === "due" || input.gradedCardBucket === "new") &&
@@ -490,6 +499,19 @@ async function runReviewSessionMutationAction(
     kind: input.kind,
     suspended: input.suspended
   });
+  const revalidateInput = await resolveSessionReviewRevalidationInput({
+    cardId: input.cardId,
+    cardMediaSlug: input.cardMediaSlug,
+    mediaSlug: input.mediaSlug,
+    resolvedMedia: media,
+    scope: input.scope
+  });
+
+  if (usesEntryStatusRevalidation(input.kind)) {
+    revalidateEntryStatusPaths(revalidateInput);
+  } else {
+    revalidateActiveReviewPaths(revalidateInput);
+  }
 
   return requireReviewPageDataForScope(
     input,
@@ -682,6 +704,30 @@ async function resolveReviewSessionMedia(
   return input.scope === "media" && input.mediaSlug
     ? requireMediaForSlug(input.mediaSlug)
     : undefined;
+}
+
+async function resolveSessionReviewRevalidationInput(
+  input: Pick<
+    ReviewSessionInput,
+    "cardId" | "cardMediaSlug" | "mediaSlug" | "scope"
+  > & {
+    resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {};
+  }
+) {
+  const media =
+    input.scope === "media" && input.resolvedMedia
+      ? input.resolvedMedia
+      : input.mediaSlug
+        ? await getMediaBySlug(db, input.mediaSlug)
+        : input.cardMediaSlug
+          ? await getMediaBySlug(db, input.cardMediaSlug)
+          : null;
+
+  return {
+    cardId: input.cardId,
+    mediaId: media?.id,
+    mediaSlug: media?.slug
+  };
 }
 
 async function requireMediaForSlug(mediaSlug: string) {
