@@ -98,9 +98,11 @@ export function ReviewPageClient({
     clientError === null;
   const isGlobalReview = viewData.scope === "global";
   const requestedSelectedCardId =
-    currentSearchParams && typeof currentSearchParams.card === "string"
+    isGlobalReview &&
+    currentSearchParams &&
+    typeof currentSearchParams.card === "string"
       ? currentSearchParams.card
-      : Array.isArray(currentSearchParams?.card)
+      : isGlobalReview && Array.isArray(currentSearchParams?.card)
         ? currentSearchParams.card[0] ?? null
         : null;
 
@@ -210,7 +212,8 @@ export function ReviewPageClient({
       !shouldAcceptServerReviewData(
         currentViewData,
         data,
-        requestedSelectedCardId
+        requestedSelectedCardId,
+        isGlobalReview
       )
     ) {
       return;
@@ -221,7 +224,7 @@ export function ReviewPageClient({
     setViewData(merged);
     setRevealedCardId(getInitiallyRevealedCardId(merged));
     setQueueCardIds(data.queueCardIds);
-  }, [data, globalHydrationRequestKey, requestedSelectedCardId]);
+  }, [data, globalHydrationRequestKey, isGlobalReview, requestedSelectedCardId]);
 
   useEffect(() => {
     if (
@@ -248,10 +251,15 @@ export function ReviewPageClient({
 
         inFlightGlobalHydrationRequestKeyRef.current = null;
         lastGlobalHydrationRequestKeyRef.current = globalHydrationRequestKey;
-        setViewData((currentData) =>
-          mergeReviewPageData(currentData, nextData)
+        const hydrationResult = buildSuccessfulHydrationResult(
+          latestViewDataRef.current,
+          nextData
         );
-        setQueueCardIds(nextData.queueCardIds);
+
+        latestViewDataRef.current = hydrationResult.viewData;
+        setViewData(hydrationResult.viewData);
+        setQueueCardIds(hydrationResult.queueCardIds);
+        setClientError(hydrationResult.clientError);
       })
       .catch((error) => {
         console.error(error);
@@ -687,6 +695,17 @@ export function buildReviewGradePreviewLookup(input: {
       input.now ?? new Date()
     ).map((preview) => [preview.rating, preview.nextReviewLabel])
   );
+}
+
+export function buildSuccessfulHydrationResult(
+  currentData: ReviewPageClientData,
+  nextData: ReviewPageData
+) {
+  return {
+    clientError: null as string | null,
+    queueCardIds: nextData.queueCardIds,
+    viewData: mergeReviewPageData(currentData, nextData)
+  };
 }
 
 export function resolveHydratedFirstCandidateRevealedCardId(input: {

@@ -4,10 +4,12 @@ import { describe, expect, it } from "vitest";
 
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import {
+  buildSuccessfulHydrationResult,
   buildReviewGradePreviewLookup,
   resolveHydratedFirstCandidateRevealedCardId
 } from "@/components/review/review-page-client";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
+import type { ReviewPageData } from "@/lib/review-types";
 
 describe("review page client hydration", () => {
   it("keeps an early reveal open when the first-candidate hydration catches up on the same card", () => {
@@ -41,6 +43,26 @@ describe("review page client hydration", () => {
     expect(lookup.size).toBe(4);
     expect(lookup.get("again")).toBeDefined();
     expect(lookup.get("good")).toBeDefined();
+  });
+
+  it("clears stale hydration errors after a successful full-data refresh", () => {
+    const currentData = buildCurrentReviewPageClientData({
+      cardId: "card-a",
+      showAnswer: false
+    });
+    const nextData = buildFullReviewPageData({
+      cardId: "card-b"
+    });
+
+    expect(buildSuccessfulHydrationResult(currentData, nextData)).toEqual({
+      clientError: null,
+      queueCardIds: ["card-b", "card-c"],
+      viewData: expect.objectContaining({
+        selectedCard: expect.objectContaining({
+          id: "card-b"
+        })
+      })
+    });
   });
 
   it("renders grading controls even when the stage is still hydrating the full payload", () => {
@@ -250,4 +272,87 @@ function buildFirstCandidateReviewPageData(input: {
       segmentId: null
     }
   } as unknown as ReviewPageClientData;
+}
+
+function buildFullReviewPageData(input: {
+  cardId: string;
+  showAnswer?: boolean;
+}): ReviewPageData {
+  return {
+    media: {
+      glossaryHref: "/glossary",
+      href: "/",
+      reviewHref: "/review",
+      slug: "global-review",
+      title: "Review globale"
+    },
+    queue: {
+      dailyLimit: 20,
+      dueCount: 2,
+      effectiveDailyLimit: 20,
+      introLabel: "2 card da ripassare adesso.",
+      manualCards: [],
+      manualCount: 0,
+      newAvailableCount: 0,
+      newQueuedCount: 0,
+      queueCount: 2,
+      queueLabel: "2 card da ripassare adesso.",
+      suspendedCards: [],
+      suspendedCount: 0,
+      tomorrowCount: 0,
+      upcomingCards: [],
+      upcomingCount: 0
+    },
+    queueCardIds: [input.cardId, "card-c"],
+    scope: "global",
+    selectedCard: {
+      back: "costo / cost",
+      bucket: "due",
+      bucketDetail: "Richiede attenzione oggi.",
+      bucketLabel: "Da ripassare",
+      contexts: [],
+      createdAt: "2026-04-02T00:00:00.000Z",
+      dueAt: "2026-04-02T12:00:00.000Z",
+      effectiveState: "review",
+      effectiveStateLabel: "Review",
+      entries: [],
+      front: "コスト",
+      gradePreviews: [],
+      href: `/media/duel-masters-dm25/review/card/${input.cardId}` as Route,
+      id: input.cardId,
+      mediaSlug: "duel-masters-dm25",
+      mediaTitle: "Duel Masters",
+      pronunciations: [],
+      rawReviewLabel: "In review",
+      reviewSeedState: {
+        difficulty: 2.5,
+        dueAt: "2026-04-02T12:00:00.000Z",
+        lapses: 0,
+        lastReviewedAt: "2026-04-01T12:00:00.000Z",
+        learningSteps: 0,
+        reps: 1,
+        scheduledDays: 1,
+        stability: 2,
+        state: "review"
+      },
+      segmentTitle: "Tcg Core",
+      typeLabel: "Recognition"
+    },
+    selectedCardContext: {
+      bucket: "due",
+      gradePreviews: [],
+      isQueueCard: true,
+      position: 1,
+      remainingCount: 1,
+      showAnswer: input.showAnswer ?? false
+    },
+    settings: {
+      reviewFrontFurigana: true
+    },
+    session: {
+      answeredCount: 0,
+      extraNewCount: 0,
+      segmentId: null
+    }
+  } as unknown as ReviewPageData;
 }

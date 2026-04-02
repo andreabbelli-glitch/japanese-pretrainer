@@ -60,7 +60,8 @@ export function shouldAdoptServerFirstCandidateData(input: {
 export function shouldAcceptServerReviewData(
   currentData: ReviewPageClientData,
   nextData: ReviewPageData,
-  requestedSelectedCardId?: string | null
+  requestedSelectedCardId?: string | null,
+  allowRequestedSelectedCardId = false
 ) {
   if (currentData.session.answeredCount < nextData.session.answeredCount) {
     return true;
@@ -80,6 +81,7 @@ export function shouldAcceptServerReviewData(
   }
 
   if (
+    allowRequestedSelectedCardId &&
     requestedSelectedCardId &&
     nextData.selectedCard?.id === requestedSelectedCardId
   ) {

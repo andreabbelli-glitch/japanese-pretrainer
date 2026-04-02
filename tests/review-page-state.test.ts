@@ -166,8 +166,44 @@ describe("review page state", () => {
     } as unknown as ReviewPageData;
 
     expect(
-      shouldAcceptServerReviewData(currentData, nextData, "card-a")
+      shouldAcceptServerReviewData(currentData, nextData, "card-a", true)
     ).toBe(true);
+  });
+
+  it("does not accept requested-card rewinds on media review pages", () => {
+    const currentData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
+      selectedCard: {
+        id: "card-b"
+      },
+      session: {
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
+      }
+    } as ReviewPageClientData;
+
+    const nextData = {
+      media: {
+        slug: "fixture-tcg"
+      },
+      scope: "media",
+      selectedCard: {
+        id: "card-a"
+      },
+      session: {
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
+      }
+    } as unknown as ReviewPageData;
+
+    expect(
+      shouldAcceptServerReviewData(currentData, nextData, "card-a", false)
+    ).toBe(false);
   });
 
   it("accepts same-progress server data when the segment filter changed", () => {

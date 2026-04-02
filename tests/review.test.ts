@@ -2685,6 +2685,86 @@ describe("review system", () => {
     expect(betaPage?.selectedCard?.contexts).toHaveLength(1);
   });
 
+  it("excludes a graded cross-media sibling from local review rebuilds", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-local-exclude");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
+      await loadCrossMediaTermSubjectContext(database);
+
+    await database.insert(lessonProgress).values([
+      {
+        lessonId: crossMediaFixture.alpha.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      },
+      {
+        lessonId: crossMediaFixture.beta.lessonId,
+        status: "completed",
+        completedAt: "2026-03-11T08:00:00.000Z"
+      }
+    ]);
+    await database
+      .delete(reviewSubjectState)
+      .where(eq(reviewSubjectState.subjectKey, subjectKey));
+    await database.insert(reviewSubjectState).values({
+      subjectKey,
+      subjectType: "group",
+      entryType: "term",
+      entryId: alphaTermEntry.id,
+      crossMediaGroupId,
+      cardId: crossMediaFixture.alpha.termCardId,
+      state: "review",
+      stability: 2.4,
+      difficulty: 3.1,
+      dueAt: "2000-01-01T00:00:00.000Z",
+      lastReviewedAt: "2026-03-10T08:00:00.000Z",
+      lastInteractionAt: "2026-03-10T08:00:00.000Z",
+      scheduledDays: 2,
+      learningSteps: 0,
+      lapses: 0,
+      reps: 3,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      suspended: false,
+      createdAt: "2026-03-10T08:00:00.000Z",
+      updatedAt: "2026-03-10T08:00:00.000Z"
+    });
+
+    const [betaPage, excludedBetaPage] = await Promise.all([
+      getReviewPageData(crossMediaFixture.beta.mediaSlug, {}, database),
+      getReviewPageData(
+        crossMediaFixture.beta.mediaSlug,
+        {},
+        database,
+        {
+          excludeCardIds: [crossMediaFixture.beta.termCardId]
+        }
+      )
+    ]);
+
+    expect(betaPage).not.toBeNull();
+    expect(betaPage?.selectedCard?.id).toBe(crossMediaFixture.beta.termCardId);
+
+    expect(excludedBetaPage).not.toBeNull();
+    expect(excludedBetaPage?.queue.queueCount).toBe(
+      (betaPage?.queue.queueCount ?? 0) - 1
+    );
+    expect(excludedBetaPage?.queue.dueCount).toBe(
+      (betaPage?.queue.dueCount ?? 0) - 1
+    );
+    expect(excludedBetaPage?.selectedCard?.id).not.toBe(
+      crossMediaFixture.beta.termCardId
+    );
+  });
+
   it("returns the dedicated global empty state when no media exist", async () => {
     closeDatabaseClient(database);
     await rm(tempDir, { recursive: true, force: true });

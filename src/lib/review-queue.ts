@@ -116,7 +116,6 @@ export function buildReviewSubjectModels(input: {
   cards: ReviewCardListItem[];
   entryLookup: Map<string, unknown>;
   nowIso: string;
-  preferredMediaId?: string;
   subjectGroups?: ReviewSubjectGroup[];
   subjectStates?: Map<string, ReviewSubjectStateSnapshot>;
 }) {
@@ -130,21 +129,7 @@ export function buildReviewSubjectModels(input: {
     });
 
   return subjectGroups.map((group) => {
-    let selectedCard = group.representativeCard;
-
-    if (input.preferredMediaId) {
-      const preferredCards = group.cards.filter(
-        (card) => card.mediaId === input.preferredMediaId
-      );
-
-      if (preferredCards.length > 0 && preferredCards.length < group.cards.length) {
-        selectedCard = selectReviewSubjectRepresentativeCard(
-          preferredCards,
-          group.subjectState,
-          input.nowIso
-        );
-      }
-    }
+    const selectedCard = group.representativeCard;
 
     return {
       card: selectedCard,
@@ -465,7 +450,10 @@ export function buildReviewQueueSubjectSnapshot(input: {
       ? new Set(input.excludeCardIds)
       : null;
   const subjectModels = excludeSet
-    ? allSubjectModels.filter((model) => !excludeSet.has(model.card.id))
+    ? allSubjectModels.filter(
+        (model) =>
+          !model.group.cards.some((card) => excludeSet.has(card.id))
+      )
     : allSubjectModels;
   const visibleSubjectModels = input.visibleMediaId
     ? subjectModels.filter((model) =>
