@@ -213,6 +213,21 @@ describe("global review queue filtering", () => {
     expect(snapshots.get("media_b")?.newQueuedCount).toBe(0);
   });
 
+  it("ignores cross-media card deep links on local review pages", async () => {
+    await seedTwoMediaNewQueueFixture();
+
+    const mediaAPage = await getReviewPageData(
+      "media-a",
+      { card: "card_b" },
+      database
+    );
+
+    expect(mediaAPage?.media.slug).toBe("media-a");
+    expect(mediaAPage?.selectedCard?.id).toBe("card_a");
+    expect(mediaAPage?.selectedCard?.mediaSlug).toBe("media-a");
+    expect(mediaAPage?.selectedCardContext.isQueueCard).toBe(true);
+  });
+
   it("applies the same global daily limit on local review pages after another media introduces a new subject", async () => {
     await seedTwoMediaNewQueueFixture();
 

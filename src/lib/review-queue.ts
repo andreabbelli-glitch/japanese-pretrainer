@@ -54,6 +54,7 @@ export type ReviewQueueSubjectSnapshot = {
   tomorrowCount: number;
   upcomingCount: number;
   upcomingModels: ReviewSubjectModel[];
+  visibleMediaId?: string;
 };
 
 function isReviewSubjectVisibleInMedia(
@@ -196,12 +197,19 @@ function preferReviewSubjectModelCardForMedia(
 
 export function findReviewQueueSubjectModelByCardId(
   models: ReviewSubjectModel[],
-  cardId: string
+  cardId: string,
+  visibleMediaId?: string
 ) {
   return (
-    models.find((model) =>
-      model.group.cards.some((card) => card.id === cardId)
-    ) ?? null
+    models.find((model) => {
+      const selectedCard =
+        model.group.cards.find((card) => card.id === cardId) ?? null;
+
+      return (
+        selectedCard !== null &&
+        (!visibleMediaId || selectedCard.mediaId === visibleMediaId)
+      );
+    }) ?? null
   );
 }
 
@@ -218,14 +226,16 @@ export function resolveReviewPageSelection(input: {
   const explicitSelectionModel = input.searchState.selectedCardId
     ? findReviewQueueSubjectModelByCardId(
         visibleSelectionModels,
-        input.searchState.selectedCardId
+        input.searchState.selectedCardId,
+        input.queueSnapshot.visibleMediaId
       )
     : null;
   const fallbackSelectionModel =
     input.searchState.selectedCardId && explicitSelectionModel === null
       ? findReviewQueueSubjectModelByCardId(
           input.queueSnapshot.subjectModels,
-          input.searchState.selectedCardId
+          input.searchState.selectedCardId,
+          input.queueSnapshot.visibleMediaId
         )
       : null;
   const selectedModel =
@@ -457,6 +467,11 @@ export function buildReviewQueueSubjectSnapshot(input: {
   const subjectModels = excludeSet
     ? allSubjectModels.filter((model) => !excludeSet.has(model.card.id))
     : allSubjectModels;
+  const visibleSubjectModels = input.visibleMediaId
+    ? subjectModels.filter((model) =>
+        isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
+      )
+    : subjectModels;
   const buckets = bucketAndSortReviewSubjectModels(subjectModels);
   const classifiedModels = classifyReviewSubjectModels(
     buckets,
@@ -503,7 +518,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
     newQueuedCount: queuedNewModels.length,
     queueCount: queueModels.length,
     queueModels,
-    subjectModels: mapModelsForDisplay(subjectModels),
+    subjectModels: mapModelsForDisplay(visibleSubjectModels),
     suspendedCount: classifiedModels.suspendedModels.length,
     suspendedModels: mapModelsForDisplay(classifiedModels.suspendedModels),
     tomorrowCount: countUpcomingDueTomorrow(
@@ -511,7 +526,8 @@ export function buildReviewQueueSubjectSnapshot(input: {
       input.nowIso
     ),
     upcomingCount: classifiedModels.upcomingModels.length,
-    upcomingModels: mapModelsForDisplay(classifiedModels.upcomingModels)
+    upcomingModels: mapModelsForDisplay(classifiedModels.upcomingModels),
+    visibleMediaId: input.visibleMediaId
   };
 }
 

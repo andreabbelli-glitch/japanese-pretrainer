@@ -21,6 +21,7 @@ import {
 import {
   getInitiallyRevealedCardId,
   mergeReviewPageData,
+  shouldAdoptServerFirstCandidateData,
   shouldAcceptServerReviewData,
   type ReviewPageClientData
 } from "./review-page-state";
@@ -161,16 +162,20 @@ export function ReviewPageClient({
     lastAcceptedServerDataRef.current = data;
 
     if (!isReviewPageData(data)) {
-      // Server sent FirstCandidate data.  Only reset viewData when the
-      // session moved forward (e.g. "add more new" bumped extraNewCount).
-      // After a server-action re-render the counts stay the same, so we
-      // keep the full data the action just returned.
-      const current = latestViewDataRef.current;
-      if (data.session.extraNewCount > current.session.extraNewCount) {
+      if (
+        shouldAdoptServerFirstCandidateData({
+          currentData: latestViewDataRef.current,
+          nextData: data,
+          globalHydrationRequestKey,
+          lastGlobalHydrationRequestKey: lastGlobalHydrationRequestKeyRef.current
+        })
+      ) {
         latestViewDataRef.current = data;
         // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve full client state until session counters move forward.
         setViewData(data);
         setRevealedCardId(getInitiallyRevealedCardId(data));
+        setQueueCardIds([]);
+        setClientError(null);
       }
       return;
     }
@@ -191,7 +196,7 @@ export function ReviewPageClient({
     setViewData(merged);
     setRevealedCardId(getInitiallyRevealedCardId(merged));
     setQueueCardIds(data.queueCardIds);
-  }, [data, requestedSelectedCardId]);
+  }, [data, globalHydrationRequestKey, requestedSelectedCardId]);
 
   useEffect(() => {
     if (

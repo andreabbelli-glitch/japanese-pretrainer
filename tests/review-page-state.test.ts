@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   mergeReviewPageData,
+  shouldAdoptServerFirstCandidateData,
   shouldAcceptServerReviewData,
   shouldKeepRevealedReviewAnswer,
   type ReviewPageClientData
@@ -201,6 +202,94 @@ describe("review page state", () => {
     } as unknown as ReviewPageData;
 
     expect(shouldAcceptServerReviewData(currentData, nextData)).toBe(true);
+  });
+
+  it("adopts first-candidate data when the global review query changes", () => {
+    const currentData = {
+      media: {
+        slug: "global-review"
+      },
+      scope: "global",
+      selectedCard: {
+        id: "card-a"
+      },
+      session: {
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
+      }
+    } as ReviewPageClientData;
+
+    const nextData = {
+      media: {
+        slug: "global-review"
+      },
+      scope: "global",
+      selectedCard: {
+        id: "card-b"
+      },
+      selectedCardContext: {
+        showAnswer: false
+      },
+      session: {
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
+      }
+    } as unknown as Parameters<typeof shouldAdoptServerFirstCandidateData>[0]["nextData"];
+
+    expect(
+      shouldAdoptServerFirstCandidateData({
+        currentData,
+        nextData,
+        globalHydrationRequestKey: "answered:2&card=card-b",
+        lastGlobalHydrationRequestKey: "answered:2"
+      })
+    ).toBe(true);
+  });
+
+  it("does not adopt first-candidate data when the global review query stayed the same", () => {
+    const currentData = {
+      media: {
+        slug: "global-review"
+      },
+      scope: "global",
+      selectedCard: {
+        id: "card-a"
+      },
+      session: {
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
+      }
+    } as ReviewPageClientData;
+
+    const nextData = {
+      media: {
+        slug: "global-review"
+      },
+      scope: "global",
+      selectedCard: {
+        id: "card-a"
+      },
+      selectedCardContext: {
+        showAnswer: false
+      },
+      session: {
+        answeredCount: 2,
+        extraNewCount: 0,
+        segmentId: null
+      }
+    } as unknown as Parameters<typeof shouldAdoptServerFirstCandidateData>[0]["nextData"];
+
+    expect(
+      shouldAdoptServerFirstCandidateData({
+        currentData,
+        nextData,
+        globalHydrationRequestKey: "answered:2",
+        lastGlobalHydrationRequestKey: "answered:2"
+      })
+    ).toBe(false);
   });
 
   it("rejects stale server data from an older review step", () => {

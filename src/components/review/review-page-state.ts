@@ -37,6 +37,26 @@ export function mergeReviewPageData(
   };
 }
 
+export function shouldAdoptServerFirstCandidateData(input: {
+  currentData: ReviewPageClientData;
+  nextData: ReviewFirstCandidatePageData;
+  globalHydrationRequestKey: string | null;
+  lastGlobalHydrationRequestKey: string | null;
+}) {
+  if (
+    input.nextData.session.extraNewCount >
+    input.currentData.session.extraNewCount
+  ) {
+    return true;
+  }
+
+  return (
+    input.nextData.scope === "global" &&
+    input.globalHydrationRequestKey !== null &&
+    input.globalHydrationRequestKey !== input.lastGlobalHydrationRequestKey
+  );
+}
+
 export function shouldAcceptServerReviewData(
   currentData: ReviewPageClientData,
   nextData: ReviewPageData,
