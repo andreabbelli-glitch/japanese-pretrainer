@@ -346,6 +346,19 @@ function mapReviewSubjectModelsForVisibleMedia(
     : models;
 }
 
+function resolveQueuedNewSlots(input: {
+  dailyLimit: number;
+  extraNewCount: number;
+  newIntroducedTodayCount: number;
+}) {
+  const baseNewSlots = Math.max(
+    input.dailyLimit - input.newIntroducedTodayCount,
+    0
+  );
+
+  return baseNewSlots + input.extraNewCount;
+}
+
 export function buildReviewOverviewSnapshot(input: {
   cards: ReviewCardListItem[];
   dailyLimit: number;
@@ -374,10 +387,11 @@ export function buildReviewOverviewSnapshot(input: {
     input.visibleMediaId
   );
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
-  const newSlots = Math.max(
-    effectiveDailyLimit - input.newIntroducedTodayCount,
-    0
-  );
+  const newSlots = resolveQueuedNewSlots({
+    dailyLimit: input.dailyLimit,
+    extraNewCount: input.extraNewCount,
+    newIntroducedTodayCount: input.newIntroducedTodayCount
+  });
   const queuedNewModels = buildQueuedNewReviewSubjectModels({
     classifiedModels,
     newSlots,
@@ -466,10 +480,11 @@ export function buildReviewQueueSubjectSnapshot(input: {
     input.visibleMediaId
   );
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
-  const newSlots = Math.max(
-    effectiveDailyLimit - input.newIntroducedTodayCount,
-    0
-  );
+  const newSlots = resolveQueuedNewSlots({
+    dailyLimit: input.dailyLimit,
+    extraNewCount: input.extraNewCount,
+    newIntroducedTodayCount: input.newIntroducedTodayCount
+  });
   const mapModelsForDisplay = (models: ReviewSubjectModel[]) =>
     mapReviewSubjectModelsForVisibleMedia(
       models,

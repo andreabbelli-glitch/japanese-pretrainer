@@ -1485,6 +1485,82 @@ describe("review system", () => {
     });
   });
 
+  it("still queues a new card when a top-up is requested after other new subjects were already introduced today", async () => {
+    await updateStudySettings(
+      {
+        furiganaMode: "on",
+        glossaryDefaultSort: "lesson_order",
+        reviewDailyLimit: 1
+      },
+      database
+    );
+    const fixture = await createIsolatedNewMediaFixture({
+      cardCount: 3,
+      mediaId: "topup_followup_media",
+      mediaSlug: "topup-followup-media",
+      title: "Top-up Follow-up Media"
+    });
+
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-03-11T13:00:00.000Z"));
+
+    try {
+      await applyReviewGrade({
+        cardId: fixture.cardIds[0],
+        database,
+        rating: "good"
+      });
+
+      const firstTopUpPage = await getReviewPageData(
+        fixture.mediaSlug,
+        {
+          extraNew: "1"
+        },
+        database
+      );
+
+      const firstTopUpCardId = firstTopUpPage?.selectedCard?.id ?? null;
+
+      expect(firstTopUpCardId).not.toBeNull();
+      expect(fixture.cardIds.slice(1)).toContain(firstTopUpCardId);
+      expect(firstTopUpPage?.queue.newQueuedCount).toBe(1);
+
+      await applyReviewGrade({
+        cardId: firstTopUpCardId!,
+        database,
+        rating: "good"
+      });
+
+      const completionPage = await getReviewPageData(
+        fixture.mediaSlug,
+        {},
+        database
+      );
+
+      expect(completionPage?.queue.newAvailableCount).toBe(1);
+      expect(completionPage?.queue.newQueuedCount).toBe(0);
+      expect(completionPage?.queue.queueCount).toBe(0);
+      expect(completionPage?.selectedCard).toBeNull();
+
+      const toppedUpPage = await getReviewPageData(
+        fixture.mediaSlug,
+        {
+          extraNew: "1"
+        },
+        database
+      );
+
+      expect(toppedUpPage?.queue.newAvailableCount).toBe(1);
+      expect(toppedUpPage?.queue.newQueuedCount).toBe(1);
+      expect(toppedUpPage?.queue.queueCount).toBe(1);
+      expect(toppedUpPage?.selectedCard?.id).toBe(
+        fixture.cardIds.slice(1).find((cardId) => cardId !== firstTopUpCardId)
+      );
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("keeps the main stage in a completion state when the queue is empty unless a card is explicitly selected", async () => {
     await database
       .update(reviewSubjectState)
