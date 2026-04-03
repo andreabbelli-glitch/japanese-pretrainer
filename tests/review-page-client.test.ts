@@ -2,12 +2,12 @@ import { renderToStaticMarkup } from "react-dom/server";
 import type { Route } from "next";
 import { describe, expect, it } from "vitest";
 
-import { ReviewPageStage } from "@/components/review/review-page-stage";
 import {
   buildSuccessfulHydrationResult,
   buildReviewGradePreviewLookup,
   resolveHydratedFirstCandidateRevealedCardId
-} from "@/components/review/review-page-client";
+} from "@/components/review/review-page-client-utils";
+import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
 import type { ReviewPageData } from "@/lib/review-types";
 
