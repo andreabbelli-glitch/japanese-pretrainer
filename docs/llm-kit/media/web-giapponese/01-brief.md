@@ -97,3 +97,8 @@ Per una singola pagina:
 - eventuali asset sotto `content/media/web-giapponese/assets/...`
 - aggiornamento di `workflow/image-requests.yaml`
 - aggiornamento di `workflow/image-assets.yaml`
+- validazione del repo con i comandi canonici
+- fetch dei pitch accent del media con
+  `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese`
+- import incrementale nel DB target con
+  `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`

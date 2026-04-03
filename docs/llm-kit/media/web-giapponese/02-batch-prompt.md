@@ -53,6 +53,13 @@ File da produrre di norma:
   - `content/media/web-giapponese/workflow/image-requests.yaml`
   - `content/media/web-giapponese/workflow/image-assets.yaml`
 
+Comandi operativi obbligatori dopo la scrittura:
+- esegui i controlli canonici del repo;
+- esegui `./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese`;
+- esegui `./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese`;
+- considera il lavoro incompleto se pitch accent fetch, import o cache
+  revalidation falliscono.
+
 Regole di formato obbligatorie:
 - Non cambiare il formato.
 - Non inventare nuovi campi.
