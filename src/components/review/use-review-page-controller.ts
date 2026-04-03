@@ -228,6 +228,7 @@ export function useReviewPageController(input: {
     setViewData(merged);
     setRevealedCardId(getInitiallyRevealedCardId(merged));
     setQueueCardIds(data.queueCardIds);
+    setClientError(null);
   }, [data, globalHydrationRequestKey, isGlobalReview, requestedSelectedCardId]);
 
   useEffect(() => {
