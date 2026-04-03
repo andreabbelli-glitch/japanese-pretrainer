@@ -85,6 +85,8 @@ scripts/            CLI standalone (non fanno parte del server Next.js)
   reuse-pronunciations.ts Riusa audio già presenti tra bundle compatibili
   update-pronunciation-pending.ts Aggiorna il manifest dei pronunciations mancanti
   update-real-bundle-test-stats.ts Aggiorna fixture statistiche per test real bundle
+  fsrs-optimize.ts        Ottimizza i parametri FSRS sui log review
+  fsrs-optimize-if-needed.ts Esegue l'ottimizzazione FSRS solo se necessaria
   image-workflow-status.ts Riassume stato richieste e asset immagine
   apply-image-blocks.ts    Applica blocchi immagine generati ai contenuti derivati
   db-migrate.ts           Esegue migrazioni DB
@@ -124,6 +126,7 @@ docs/
   design/                 Token di design e UX
   legacy/                 Materiale storico e template del workflow editoriale precedente
     content-briefs/       Brief editoriali legacy per bundle specifici
+    prompts/              Prompt legacy del workflow editoriale precedente
     templates/            Template legacy per media, lesson, card e workflow immagini
   llm-kit/                Guide per integrazione LLM esterna
     general/              Template e regole riusabili cross-media
