@@ -50,6 +50,8 @@
 - Settings: la sezione `FSRS optimizer` mostra stato read-only coerente con i
   dati salvati in `user_setting`, senza esporre pulsanti manuali di retrain.
 - Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook, glossary e progress risultano navigabili senza errori o stati vuoti incoerenti.
+- Media `Web giapponese`: detail, textbook, glossary e review aprono senza
+  errori; il textbook espone le lesson reali generate dal workflow web.
 
 ## Stati e resilienza
 

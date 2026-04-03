@@ -2,8 +2,8 @@
 id: media-<media-slug>
 slug: <media-slug>
 title: <titolo-media>
-media_type: <anime|videogame|tcg|visual-novel|custom>
-segment_kind: <episode|chapter|deck|set|route|custom>
+media_type: <anime|videogame|tcg|visual-novel|web|custom>
+segment_kind: <episode|chapter|deck|set|route|site|custom>
 language: ja
 base_explanation_language: it
 status: active

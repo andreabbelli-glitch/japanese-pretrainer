@@ -426,6 +426,10 @@ Campi opzionali:
 Note:
 - `description` viene mostrato direttamente nell'UI del media; se contiene
   giapponese learner-facing, puo usare furigana `{{base|reading}}`.
+- Valori tipici di `media_type`: `anime`, `videogame`, `tcg`,
+  `visual-novel`, `web`, `custom`.
+- Valori tipici di `segment_kind`: `episode`, `chapter`, `deck`, `set`,
+  `route`, `site`, `custom`.
 
 ## 6. File textbook
 

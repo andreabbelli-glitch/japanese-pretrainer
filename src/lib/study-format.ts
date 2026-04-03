@@ -29,6 +29,7 @@ export function formatMediaTypeLabel(value: string) {
     novel: "Novel",
     visual_novel: "Visual novel",
     videogame: "Videogioco",
+    web: "Web",
     tcg: "TCG",
     movie: "Film",
     drama: "Drama",
@@ -44,6 +45,7 @@ export function formatSegmentKindLabel(value: string) {
     chapter: "capitoli",
     area: "aree",
     route: "route",
+    site: "siti",
     deck: "deck",
     arc: "archi",
     segment: "segmenti"

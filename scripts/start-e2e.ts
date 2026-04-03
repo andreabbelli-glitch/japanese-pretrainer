@@ -2,6 +2,7 @@ import "dotenv/config";
 
 import path from "node:path";
 import { spawn } from "node:child_process";
+import { rm } from "node:fs/promises";
 import { and, asc, eq, ne, sql } from "drizzle-orm";
 
 import {
@@ -24,6 +25,7 @@ const database = createDatabaseClient({
   databaseUrl: resolveStartE2EDatabaseUrl(process.env)
 });
 const contentRoot = path.resolve(process.cwd(), "content");
+const nextCachePath = path.resolve(process.cwd(), ".next", "cache");
 const runtimeEnv = buildStartE2ERuntimeEnv(process.env);
 
 try {
@@ -53,6 +55,8 @@ try {
 } finally {
   closeDatabaseClient(database);
 }
+
+await rm(nextCachePath, { force: true, recursive: true });
 
 const nextStart = spawn(
   process.execPath,

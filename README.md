@@ -1,7 +1,7 @@
 # Japanese Custom Study
 
 Webapp privata single-user per studiare giapponese a partire da media specifici
-(anime, videogiochi, TCG, visual novel, ecc.) prima di consumarli davvero.
+(anime, videogiochi, TCG, visual novel, siti web, ecc.) prima di consumarli davvero.
 
 ## Obiettivo
 

@@ -1,0 +1,49 @@
+assets:
+  - id: starsavior-79520369-overview
+    src: assets/starsavior-79520369-overview.png
+    source_type: screenshot
+    width: 1440
+    height: 2200
+    lesson_slug: 010-appmedia-starsavior-party-composition
+    anchor: "quando il titolo mostra due blocchi nominali coordinati"
+    alt_it: >-
+      Pagina AppMedia di Star Savior con titolo, immagine iniziale e apertura
+      dell'articolo visibili.
+    caption_it: >-
+      Qui si vede subito che [{{最強|さいきょう}}](term:term-saikyo)
+      [{{パーティー編成|ぱーてぃーへんせい}}](term:term-party-composition) と
+      [{{おすすめ|おすすめ}}](term:term-osusume)
+      [{{編成|へんせい}}](term:term-hensei) sono due blocchi nominali paralleli.
+    notes: >-
+      Screenshot reale preso dalla pagina pubblica con Playwright.
+  - id: starsavior-79520369-toc
+    src: assets/starsavior-79520369-toc.png
+    source_type: screenshot
+    width: 523
+    height: 312
+    lesson_slug: 010-appmedia-starsavior-party-composition
+    anchor: "L’indice è utile perché ti dice subito come AppMedia sta spezzando il tema"
+    alt_it: >-
+      Sommario dell'articolo con le sezioni PVE, PVP, attributi e consigli per
+      principianti.
+    caption_it: >-
+      Il [{{目次|もくじ}}](term:term-mokuji) divide la guida in blocchi pratici:
+      PVE, PVP, attributi e [{{初心者|しょしんしゃ}}](term:term-shoshinsha).
+    notes: >-
+      Element screenshot del blocco `nav.post_index` nella pagina pubblica.
+  - id: starsavior-79520369-front-back
+    src: assets/starsavior-79520369-front-back.png
+    source_type: screenshot
+    width: 1440
+    height: 2200
+    lesson_slug: 010-appmedia-starsavior-party-composition
+    anchor: "Il front line non è solo una posizione estetica"
+    alt_it: >-
+      Sezione della guida che spiega il rapporto tra prima linea e retroguardia.
+    caption_it: >-
+      Qui il testo chiarisce che [{{前衛|ぜんえい}}](term:term-frontline) e
+      [{{後衛|こうえい}}](term:term-backline) cambiano davvero il modo in cui la
+      squadra regge lo scontro.
+    notes: >-
+      Screenshot reale dalla pagina pubblica con Playwright, centrato sul
+      blocco di spiegazione dei ruoli.

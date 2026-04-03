@@ -68,6 +68,8 @@ Disponibile ora:
 - `media/gundam-arsenal-base/02-batch-1-prompt.md`
 - `media/pokemon-scarlet-violet/01-brief.md`
 - `media/pokemon-scarlet-violet/02-batch-1-prompt.md`
+- `media/web-giapponese/01-brief.md`
+- `media/web-giapponese/02-batch-prompt.md`
 
 Nota pratica:
 
