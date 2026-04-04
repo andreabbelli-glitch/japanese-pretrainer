@@ -76,6 +76,7 @@ src/
   styles/           CSS globale e variabili
 
 scripts/            CLI standalone (non fanno parte del server Next.js)
+  start-e2e-config.ts     Helper condiviso per configurare DB/env sicuri dei test E2E
   start-e2e.ts            Avvia il server per i test E2E
   import-content.ts       Importa bundle media nel DB
   validate-content.ts     Valida formato Markdown prima dell'import
