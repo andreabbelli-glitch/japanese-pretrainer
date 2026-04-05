@@ -343,6 +343,40 @@ tags: [navigation]
 :::
 
 :::term
+id: term-matome
+lemma: まとめ
+reading: まとめ
+romaji: matome
+meaning_it: riassunto; riepilogo; raccolta ordinata
+notes_it: >-
+  È una parola molto generale del giapponese scritto: porta l'idea di “mettere
+  insieme e ordinare”. In una pagina web o in una guida segnala spesso il
+  blocco che raccoglie i punti principali, il recap finale o una sezione che
+  compatta informazioni sparse in forma facile da consultare.
+level_hint: n4
+:::
+
+:::card
+id: card-matome-recognition
+lesson_id: lesson-web-giapponese-appmedia-starsavior-party-composition
+entry_type: term
+entry_id: term-matome
+card_type: recognition
+front: 'まとめ'
+back: 'riassunto; riepilogo; raccolta ordinata'
+example_jp: >-
+  ページのまとめをよむ。
+example_it: >-
+  Leggo il riepilogo della pagina.
+notes_it: >-
+  Qui il punto importante non è un “riassunto scolastico” in senso stretto:
+  [まとめ](term:term-matome) è una parola ampia che in siti, guide e articoli
+  indica la parte dove il contenuto viene raccolto in modo sintetico e
+  consultabile.
+tags: [navigation, summary, web]
+:::
+
+:::term
 id: term-frontline
 lemma: 前衛
 reading: ぜんえい
