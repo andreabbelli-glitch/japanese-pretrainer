@@ -87,11 +87,11 @@ describe("app shell live data", () => {
 
     expect(dashboard.totals.lessonsCompleted).toBe(1);
     expect(dashboard.totals.entriesKnown).toBe(2);
-    expect(dashboard.totals.cardsDue).toBe(0);
+    expect(dashboard.review.cardsDue).toBe(0);
     // The dashboard now uses lesson-aware SQL counts, so the remaining
     // lesson-bound review card is filtered out once its driving entry is
     // manually marked known.
-    expect(dashboard.totals.activeReviewCards).toBe(0);
+    expect(dashboard.review.activeReviewCards).toBe(0);
   });
 
   it("prefers the most reviewable media for review entry points", async () => {
@@ -248,15 +248,58 @@ describe("app shell live data", () => {
     ]);
 
     expect(globalReviewOverview.dueCount).toBeGreaterThan(0);
-    expect(dashboard.totals.cardsDue).toBe(globalReviewOverview.dueCount);
-    expect(dashboard.totals.activeReviewCards).toBe(
+    expect(dashboard.review.cardsDue).toBe(globalReviewOverview.dueCount);
+    expect(dashboard.review.activeReviewCards).toBe(
       globalReviewOverview.activeCards
     );
+    expect(dashboard.review.queueCount).toBe(globalReviewOverview.queueCount);
+    expect(dashboard.review.newQueuedCount).toBe(
+      globalReviewOverview.newQueuedCount
+    );
+    expect(dashboard.review.queueLabel).toBe(globalReviewOverview.queueLabel);
     expect(
       dashboard.media.reduce((sum, item) => sum + item.cardsDue, 0)
-    ).toBeGreaterThan(dashboard.totals.cardsDue);
+    ).toBeGreaterThan(dashboard.review.cardsDue);
     expect(
       dashboard.media.reduce((sum, item) => sum + item.activeReviewCards, 0)
-    ).toBeGreaterThan(dashboard.totals.activeReviewCards);
+    ).toBeGreaterThan(dashboard.review.activeReviewCards);
+  });
+
+  it("keeps queued new cards visible in the global dashboard totals", async () => {
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
+
+    await database.insert(card).values({
+      id: "card_dashboard_new_queue",
+      mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/dashboard-new-queue.md",
+      cardType: "recognition",
+      front: "ダッシュボード",
+      back: "dashboard",
+      notesIt: "Serve per verificare le nuove card in coda sulla dashboard.",
+      status: "active",
+      orderIndex: 99,
+      createdAt: "2026-03-09T10:00:00.000Z",
+      updatedAt: "2026-03-09T10:00:00.000Z"
+    });
+
+    const dashboard = await getDashboardData(database);
+
+    expect(dashboard.review.cardsDue).toBe(0);
+    expect(dashboard.review.activeReviewCards).toBe(1);
+    expect(dashboard.review.newQueuedCount).toBe(1);
+    expect(dashboard.review.queueCount).toBe(1);
+    expect(dashboard.review.queueLabel).toContain("1 nuova");
   });
 });

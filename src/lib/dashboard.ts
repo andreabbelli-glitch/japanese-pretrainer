@@ -21,13 +21,18 @@ export type DashboardData = {
   focusMedia: MediaShellSnapshot | null;
   reviewMedia: MediaShellSnapshot | null;
   media: MediaShellSnapshot[];
-  totals: {
+  review: {
+    activeReviewCards: number;
     cardsDue: number;
+    queueCount: number;
+    newQueuedCount: number;
+    queueLabel: string;
+  };
+  totals: {
     lessonsCompleted: number;
     lessonsTotal: number;
     entriesKnown: number;
     entriesTotal: number;
-    activeReviewCards: number;
   };
 };
 
@@ -63,16 +68,21 @@ async function loadDashboardData(
     focusMedia,
     reviewMedia,
     media,
-    totals: {
+    review: {
+      activeReviewCards: globalReviewOverview.activeCards,
       cardsDue: globalReviewOverview.dueCount,
+      queueCount: globalReviewOverview.queueCount,
+      newQueuedCount: globalReviewOverview.newQueuedCount,
+      queueLabel: globalReviewOverview.queueLabel
+    },
+    totals: {
       lessonsCompleted: media.reduce(
         (sum, item) => sum + item.lessonsCompleted,
         0
       ),
       lessonsTotal: media.reduce((sum, item) => sum + item.lessonsTotal, 0),
       entriesKnown: media.reduce((sum, item) => sum + item.entriesKnown, 0),
-      entriesTotal: media.reduce((sum, item) => sum + item.entriesTotal, 0),
-      activeReviewCards: globalReviewOverview.activeCards
+      entriesTotal: media.reduce((sum, item) => sum + item.entriesTotal, 0)
     }
   };
 }

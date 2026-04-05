@@ -16,7 +16,7 @@ import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
 
 export async function DashboardHome() {
-  const { focusMedia, media, reviewMedia, totals } = await getDashboardData();
+  const { focusMedia, media, review, reviewMedia } = await getDashboardData();
 
   if (!focusMedia) {
     return (
@@ -109,20 +109,21 @@ export async function DashboardHome() {
           <h2 className="dashboard-focus__title">La tua Review di oggi</h2>
           <div className="dashboard-focus__stats">
             <StatBlock
-              detail={buildAggregateDueDetail(totals.cardsDue)}
-              label="Da ripassare oggi"
-              tone={totals.cardsDue > 0 ? "warning" : "default"}
-              value={totals.cardsDue > 0 ? `${totals.cardsDue}` : "0"}
+              detail={buildAggregateQueueDetail(
+                review.cardsDue,
+                review.newQueuedCount
+              )}
+              label="In coda oggi"
+              tone={review.queueCount > 0 ? "warning" : "default"}
+              value={review.queueCount > 0 ? `${review.queueCount}` : "0"}
             />
             <StatBlock
-              detail={buildAggregateActiveDetail(totals.activeReviewCards)}
+              detail={buildAggregateActiveDetail(review.activeReviewCards)}
               label="Card attive"
-              value={`${totals.activeReviewCards}`}
+              value={`${review.activeReviewCards}`}
             />
           </div>
-          <p className="dashboard-focus__note">
-            {buildAggregateQueueNote(totals.cardsDue, totals.activeReviewCards)}
-          </p>
+          <p className="dashboard-focus__note">{review.queueLabel}</p>
           <Link className="button button--ghost" href={reviewHref()}>
             Apri review globale
           </Link>
@@ -197,7 +198,10 @@ export async function DashboardHome() {
             <div className="cue-card__content">
               <h3 className="cue-card__title">Review globale</h3>
               <p className="cue-card__meta">
-                {buildAggregateDueDetail(totals.cardsDue)}
+                {buildAggregateQueueDetail(
+                  review.cardsDue,
+                  review.newQueuedCount
+                )}
               </p>
               <p className="cue-card__body">{reviewPriorityNote}</p>
             </div>
@@ -234,14 +238,20 @@ export async function DashboardHome() {
   );
 }
 
-function buildAggregateDueDetail(cardsDue: number) {
-  if (cardsDue === 0) {
-    return "Nessuna card da ripassare";
+function buildAggregateQueueDetail(cardsDue: number, newQueuedCount: number) {
+  if (cardsDue > 0) {
+    return cardsDue === 1
+      ? "Hai 1 card da ripassare"
+      : `Hai ${cardsDue} card da ripassare`;
   }
 
-  return cardsDue === 1
-    ? "Hai 1 card da ripassare"
-    : `Hai ${cardsDue} card da ripassare`;
+  if (newQueuedCount > 0) {
+    return newQueuedCount === 1
+      ? "Hai 1 nuova card pronta"
+      : `Hai ${newQueuedCount} nuove card pronte`;
+  }
+
+  return "Nessuna card in coda";
 }
 
 function buildAggregateActiveDetail(activeReviewCards: number) {
@@ -252,22 +262,6 @@ function buildAggregateActiveDetail(activeReviewCards: number) {
   return activeReviewCards === 1
     ? "1 card attiva"
     : `${activeReviewCards} card attive`;
-}
-
-function buildAggregateQueueNote(cardsDue: number, activeReviewCards: number) {
-  if (cardsDue > 0) {
-    return activeReviewCards > 0
-      ? `Hai ${cardsDue} card da ripassare; ${activeReviewCards} card sono attive.`
-      : `Hai ${cardsDue} card da ripassare.`;
-  }
-
-  if (activeReviewCards > 0) {
-    return activeReviewCards === 1
-      ? "Oggi non hai card da ripassare; 1 card è ancora attiva."
-      : `Oggi non hai card da ripassare; ${activeReviewCards} card sono ancora attive.`;
-  }
-
-  return "La coda Review globale si popolerà quando le prime card entreranno in studio.";
 }
 
 function buildTextbookProgressLabel(media: {
