@@ -365,7 +365,7 @@ card_type: recognition
 front: 'まとめ'
 back: 'riassunto; riepilogo; raccolta ordinata'
 example_jp: >-
-  ページのまとめをよむ。
+  ページのまとめを{{読|よ}}む。
 example_it: >-
   Leggo il riepilogo della pagina.
 notes_it: >-
@@ -698,14 +698,14 @@ lesson_id: lesson-web-giapponese-appmedia-starsavior-party-composition
 entry_type: term
 entry_id: term-kangaekata
 card_type: recognition
-front: 'かんがえかた'
+front: '{{考|かんが}}え{{方|かた}}'
 back: 'modo di pensare; approccio'
 example_jp: >-
-  かんがえかたをかえる。
+  {{考|かんが}}え{{方|かた}}をかえる。
 example_it: >-
   Cambio approccio.
 notes_it: >-
-  [考え方](term:term-kangaekata) è la parola che la pagina usa per passare dalle
-  singole squadre al criterio generale di costruzione.
+  [{{考|かんが}}え{{方|かた}}](term:term-kangaekata) è la parola che la pagina
+  usa per passare dalle singole squadre al criterio generale di costruzione.
 tags: [approach]
 :::
