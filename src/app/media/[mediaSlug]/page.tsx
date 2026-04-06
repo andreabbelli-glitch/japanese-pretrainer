@@ -3,8 +3,6 @@ import { notFound } from "next/navigation";
 import { MediaDetailPage } from "@/components/media/media-detail-page";
 import { getMediaProgressPageData } from "@/lib/progress";
 
-export const dynamic = "force-dynamic";
-
 type MediaDetailRouteProps = {
   params: Promise<{
     mediaSlug: string;

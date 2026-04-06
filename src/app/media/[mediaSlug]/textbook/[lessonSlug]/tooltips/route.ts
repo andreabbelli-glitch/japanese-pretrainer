@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 
 import { getTextbookLessonTooltipEntries } from "@/lib/textbook";
 
-export const dynamic = "force-dynamic";
-
 type RouteContext = {
   params: Promise<{
     lessonSlug: string;
