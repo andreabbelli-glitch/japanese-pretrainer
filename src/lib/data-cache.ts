@@ -91,9 +91,19 @@ export function revalidateMediaListCache() {
   safeRevalidateTag(REVIEW_FIRST_CANDIDATE_TAG);
 }
 
+export function updateMediaListCache() {
+  safeUpdateTag(MEDIA_LIST_TAG);
+  safeUpdateTag(REVIEW_FIRST_CANDIDATE_TAG);
+}
+
 export function revalidateSettingsCache() {
   safeRevalidateTag(SETTINGS_TAG);
   safeRevalidateTag(REVIEW_FIRST_CANDIDATE_TAG);
+}
+
+export function updateSettingsCache() {
+  safeUpdateTag(SETTINGS_TAG);
+  safeUpdateTag(REVIEW_FIRST_CANDIDATE_TAG);
 }
 
 export function revalidateGlossarySummaryCache(mediaId?: string | null) {
@@ -107,12 +117,32 @@ export function revalidateGlossarySummaryCache(mediaId?: string | null) {
   safeRevalidateTag(GLOSSARY_SUMMARY_TAG);
 }
 
+export function updateGlossarySummaryCache(mediaId?: string | null) {
+  safeUpdateTag(REVIEW_FIRST_CANDIDATE_TAG);
+
+  if (mediaId) {
+    safeUpdateTag(`${GLOSSARY_SUMMARY_TAG}:${mediaId}`);
+    return;
+  }
+
+  safeUpdateTag(GLOSSARY_SUMMARY_TAG);
+}
+
 export function revalidateReviewSummaryCache(mediaId?: string | null) {
   safeRevalidateTag(REVIEW_SUMMARY_TAG);
   safeRevalidateTag(REVIEW_FIRST_CANDIDATE_TAG);
 
   if (mediaId) {
     safeRevalidateTag(`${REVIEW_SUMMARY_TAG}:${mediaId}`);
+  }
+}
+
+export function updateReviewSummaryCache(mediaId?: string | null) {
+  safeUpdateTag(REVIEW_SUMMARY_TAG);
+  safeUpdateTag(REVIEW_FIRST_CANDIDATE_TAG);
+
+  if (mediaId) {
+    safeUpdateTag(`${REVIEW_SUMMARY_TAG}:${mediaId}`);
   }
 }
 
@@ -136,4 +166,13 @@ function safeRevalidateTag(tag: string) {
   ) {
     nextCache.revalidateTag(tag, "max");
   }
+}
+
+function safeUpdateTag(tag: string) {
+  if ("updateTag" in nextCache && typeof nextCache.updateTag === "function") {
+    nextCache.updateTag(tag);
+    return;
+  }
+
+  safeRevalidateTag(tag);
 }

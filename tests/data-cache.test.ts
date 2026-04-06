@@ -1,12 +1,14 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const { revalidateTagMock } = vi.hoisted(() => ({
-  revalidateTagMock: vi.fn()
+const { revalidateTagMock, updateTagMock } = vi.hoisted(() => ({
+  revalidateTagMock: vi.fn(),
+  updateTagMock: vi.fn()
 }));
 
 vi.mock("next/cache", () => ({
   revalidatePath: vi.fn(),
   revalidateTag: revalidateTagMock,
+  updateTag: updateTagMock,
   unstable_cache: vi.fn()
 }));
 
@@ -14,12 +16,14 @@ import {
   buildGlossarySummaryTags,
   GLOSSARY_SUMMARY_TAG,
   revalidateGlossarySummaryCache,
-  REVIEW_FIRST_CANDIDATE_TAG
+  REVIEW_FIRST_CANDIDATE_TAG,
+  updateGlossarySummaryCache
 } from "@/lib/data-cache";
 
 describe("glossary summary cache tags", () => {
   beforeEach(() => {
     revalidateTagMock.mockReset();
+    updateTagMock.mockReset();
   });
 
   it("keeps global tags only for truly global glossary caches", () => {
@@ -55,5 +59,16 @@ describe("glossary summary cache tags", () => {
       REVIEW_FIRST_CANDIDATE_TAG,
       "max"
     );
+  });
+
+  it("updates the scoped glossary tag immediately for server actions", () => {
+    updateGlossarySummaryCache("media_a");
+
+    expect(updateTagMock).toHaveBeenCalledWith(
+      `${GLOSSARY_SUMMARY_TAG}:media_a`
+    );
+    expect(updateTagMock).toHaveBeenCalledWith(REVIEW_FIRST_CANDIDATE_TAG);
+    expect(updateTagMock).not.toHaveBeenCalledWith(GLOSSARY_SUMMARY_TAG);
+    expect(revalidateTagMock).not.toHaveBeenCalled();
   });
 });

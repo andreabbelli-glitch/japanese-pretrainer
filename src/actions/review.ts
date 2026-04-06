@@ -6,8 +6,8 @@ import { redirect } from "next/navigation";
 import { readRequiredString } from "./form-data.ts";
 import { db, getMediaBySlug } from "@/db";
 import {
-  revalidateGlossarySummaryCache,
-  revalidateReviewSummaryCache
+  updateGlossarySummaryCache,
+  updateReviewSummaryCache
 } from "@/lib/data-cache";
 import {
   applyReviewGrade,
@@ -391,7 +391,7 @@ function revalidateActiveReviewCaches(input: {
   mediaId?: string;
   mediaSlug: string | undefined;
 }) {
-  revalidateReviewSummaryCache(input.mediaId);
+  updateReviewSummaryCache(input.mediaId);
 }
 
 function revalidateEntryStatusCaches(input: {
@@ -399,10 +399,10 @@ function revalidateEntryStatusCaches(input: {
   mediaSlug: string | undefined;
 }) {
   revalidateActiveReviewCaches(input);
-  revalidateGlossarySummaryCache();
+  updateGlossarySummaryCache();
 
   if (input.mediaId) {
-    revalidateGlossarySummaryCache(input.mediaId);
+    updateGlossarySummaryCache(input.mediaId);
   }
 }
 

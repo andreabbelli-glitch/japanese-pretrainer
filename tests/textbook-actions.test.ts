@@ -1,23 +1,23 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const {
-  revalidateMediaListCacheMock,
-  revalidateReviewSummaryCacheMock,
-  revalidateSettingsCacheMock,
+  updateMediaListCacheMock,
+  updateReviewSummaryCacheMock,
+  updateSettingsCacheMock,
   setFuriganaModeMock,
   setLessonCompletionStateMock
 } = vi.hoisted(() => ({
-  revalidateMediaListCacheMock: vi.fn(),
-  revalidateReviewSummaryCacheMock: vi.fn(),
-  revalidateSettingsCacheMock: vi.fn(),
+  updateMediaListCacheMock: vi.fn(),
+  updateReviewSummaryCacheMock: vi.fn(),
+  updateSettingsCacheMock: vi.fn(),
   setFuriganaModeMock: vi.fn(),
   setLessonCompletionStateMock: vi.fn()
 }));
 
 vi.mock("@/lib/data-cache", () => ({
-  revalidateMediaListCache: revalidateMediaListCacheMock,
-  revalidateReviewSummaryCache: revalidateReviewSummaryCacheMock,
-  revalidateSettingsCache: revalidateSettingsCacheMock
+  updateMediaListCache: updateMediaListCacheMock,
+  updateReviewSummaryCache: updateReviewSummaryCacheMock,
+  updateSettingsCache: updateSettingsCacheMock
 }));
 
 vi.mock("@/lib/textbook", () => ({
@@ -32,9 +32,9 @@ import {
 
 describe("textbook actions", () => {
   beforeEach(() => {
-    revalidateMediaListCacheMock.mockReset();
-    revalidateReviewSummaryCacheMock.mockReset();
-    revalidateSettingsCacheMock.mockReset();
+    updateMediaListCacheMock.mockReset();
+    updateReviewSummaryCacheMock.mockReset();
+    updateSettingsCacheMock.mockReset();
     setFuriganaModeMock.mockReset();
     setLessonCompletionStateMock.mockReset();
   });
@@ -47,9 +47,9 @@ describe("textbook actions", () => {
     });
 
     expect(setFuriganaModeMock).toHaveBeenCalledWith("off");
-    expect(revalidateSettingsCacheMock).toHaveBeenCalledTimes(1);
-    expect(revalidateMediaListCacheMock).not.toHaveBeenCalled();
-    expect(revalidateReviewSummaryCacheMock).not.toHaveBeenCalled();
+    expect(updateSettingsCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateMediaListCacheMock).not.toHaveBeenCalled();
+    expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();
   });
 
   it("revalidates media and review caches after lesson completion changes", async () => {
@@ -61,8 +61,8 @@ describe("textbook actions", () => {
     });
 
     expect(setLessonCompletionStateMock).toHaveBeenCalledWith("lesson_001", true);
-    expect(revalidateMediaListCacheMock).toHaveBeenCalledTimes(1);
-    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledTimes(1);
-    expect(revalidateSettingsCacheMock).not.toHaveBeenCalled();
+    expect(updateMediaListCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateReviewSummaryCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateSettingsCacheMock).not.toHaveBeenCalled();
   });
 });

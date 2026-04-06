@@ -73,13 +73,13 @@ const validContentRoot = path.join(
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
 const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
 const {
-  revalidateGlossarySummaryCacheMock,
+  updateGlossarySummaryCacheMock,
   revalidatePathMock,
-  revalidateReviewSummaryCacheMock
+  updateReviewSummaryCacheMock
 } = vi.hoisted(() => ({
-  revalidateGlossarySummaryCacheMock: vi.fn(),
+  updateGlossarySummaryCacheMock: vi.fn(),
   revalidatePathMock: vi.fn(),
-  revalidateReviewSummaryCacheMock: vi.fn()
+  updateReviewSummaryCacheMock: vi.fn()
 }));
 
 vi.mock("next/navigation", () => ({
@@ -181,8 +181,8 @@ async function loadReviewActionsForDatabase(database: DatabaseClient) {
 
       return {
         ...actual,
-        revalidateGlossarySummaryCache: revalidateGlossarySummaryCacheMock,
-        revalidateReviewSummaryCache: revalidateReviewSummaryCacheMock
+        updateGlossarySummaryCache: updateGlossarySummaryCacheMock,
+        updateReviewSummaryCache: updateReviewSummaryCacheMock
       };
     });
     vi.doMock("@/lib/review", async () => {
@@ -233,8 +233,8 @@ describe("review system", () => {
 
   beforeEach(async () => {
     revalidatePathMock.mockReset();
-    revalidateGlossarySummaryCacheMock.mockReset();
-    revalidateReviewSummaryCacheMock.mockReset();
+    updateGlossarySummaryCacheMock.mockReset();
+    updateReviewSummaryCacheMock.mockReset();
     tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-"));
     database = createDatabaseClient({
       databaseUrl: path.join(tempDir, "test.sqlite")
@@ -2420,7 +2420,7 @@ describe("review system", () => {
       scope: "global"
     });
 
-    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
     expect(revalidatePathMock).not.toHaveBeenCalled();
@@ -2480,7 +2480,7 @@ describe("review system", () => {
     expect(result.session.answeredCount).toBe(
       (pageData?.session.answeredCount ?? 0) + 1
     );
-    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
     expect(revalidatePathMock).not.toHaveBeenCalled();
@@ -2514,7 +2514,7 @@ describe("review system", () => {
         }
       }
     ]);
-    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
     expect(revalidatePathMock).not.toHaveBeenCalled();
@@ -2574,12 +2574,12 @@ describe("review system", () => {
       scope: "global"
     });
 
-    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
-    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledTimes(2);
-    expect(revalidateGlossarySummaryCacheMock).toHaveBeenNthCalledWith(1);
-    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledWith(
+    expect(updateGlossarySummaryCacheMock).toHaveBeenCalledTimes(2);
+    expect(updateGlossarySummaryCacheMock).toHaveBeenNthCalledWith(1);
+    expect(updateGlossarySummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
     expect(revalidatePathMock).not.toHaveBeenCalled();
@@ -2609,12 +2609,12 @@ describe("review system", () => {
       )}`
     );
 
-    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
-    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledTimes(2);
-    expect(revalidateGlossarySummaryCacheMock).toHaveBeenNthCalledWith(1);
-    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledWith(
+    expect(updateGlossarySummaryCacheMock).toHaveBeenCalledTimes(2);
+    expect(updateGlossarySummaryCacheMock).toHaveBeenNthCalledWith(1);
+    expect(updateGlossarySummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
     expect(revalidatePathMock).not.toHaveBeenCalled();

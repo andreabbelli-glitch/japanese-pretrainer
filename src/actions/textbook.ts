@@ -1,9 +1,9 @@
 "use server";
 
 import {
-  revalidateMediaListCache,
-  revalidateReviewSummaryCache,
-  revalidateSettingsCache
+  updateMediaListCache,
+  updateReviewSummaryCache,
+  updateSettingsCache
 } from "@/lib/data-cache";
 import { setFuriganaMode, setLessonCompletionState } from "@/lib/textbook";
 import type { FuriganaMode } from "@/lib/settings";
@@ -15,7 +15,7 @@ export async function setFuriganaModeAction(input: {
 }) {
   await setFuriganaMode(input.mode);
 
-  revalidateSettingsCache();
+  updateSettingsCache();
 
   return {
     ok: true as const,
@@ -30,8 +30,8 @@ export async function setLessonCompletionAction(input: {
   completed: boolean;
 }) {
   await setLessonCompletionState(input.lessonId, input.completed);
-  revalidateMediaListCache();
-  revalidateReviewSummaryCache();
+  updateMediaListCache();
+  updateReviewSummaryCache();
 
   return {
     ok: true as const,
