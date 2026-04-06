@@ -1,17 +1,23 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const {
-  revalidatePathMock,
+  revalidateMediaListCacheMock,
+  revalidateReviewSummaryCacheMock,
+  revalidateSettingsCacheMock,
   setFuriganaModeMock,
   setLessonCompletionStateMock
 } = vi.hoisted(() => ({
-  revalidatePathMock: vi.fn(),
+  revalidateMediaListCacheMock: vi.fn(),
+  revalidateReviewSummaryCacheMock: vi.fn(),
+  revalidateSettingsCacheMock: vi.fn(),
   setFuriganaModeMock: vi.fn(),
   setLessonCompletionStateMock: vi.fn()
 }));
 
-vi.mock("next/cache", () => ({
-  revalidatePath: revalidatePathMock
+vi.mock("@/lib/data-cache", () => ({
+  revalidateMediaListCache: revalidateMediaListCacheMock,
+  revalidateReviewSummaryCache: revalidateReviewSummaryCacheMock,
+  revalidateSettingsCache: revalidateSettingsCacheMock
 }));
 
 vi.mock("@/lib/textbook", () => ({
@@ -19,16 +25,34 @@ vi.mock("@/lib/textbook", () => ({
   setLessonCompletionState: setLessonCompletionStateMock
 }));
 
-import { setLessonCompletionAction } from "@/actions/textbook";
+import {
+  setFuriganaModeAction,
+  setLessonCompletionAction
+} from "@/actions/textbook";
 
 describe("textbook actions", () => {
   beforeEach(() => {
-    revalidatePathMock.mockReset();
+    revalidateMediaListCacheMock.mockReset();
+    revalidateReviewSummaryCacheMock.mockReset();
+    revalidateSettingsCacheMock.mockReset();
     setFuriganaModeMock.mockReset();
     setLessonCompletionStateMock.mockReset();
   });
 
-  it("revalidates review surfaces after lesson completion changes", async () => {
+  it("revalidates settings cache after furigana mode changes", async () => {
+    await setFuriganaModeAction({
+      lessonSlug: "core-vocab",
+      mediaSlug: "fixture-media",
+      mode: "off"
+    });
+
+    expect(setFuriganaModeMock).toHaveBeenCalledWith("off");
+    expect(revalidateSettingsCacheMock).toHaveBeenCalledTimes(1);
+    expect(revalidateMediaListCacheMock).not.toHaveBeenCalled();
+    expect(revalidateReviewSummaryCacheMock).not.toHaveBeenCalled();
+  });
+
+  it("revalidates media and review caches after lesson completion changes", async () => {
     await setLessonCompletionAction({
       completed: true,
       lessonId: "lesson_001",
@@ -37,18 +61,8 @@ describe("textbook actions", () => {
     });
 
     expect(setLessonCompletionStateMock).toHaveBeenCalledWith("lesson_001", true);
-    expect(revalidatePathMock).toHaveBeenCalledWith("/");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/media/fixture-media");
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      "/media/fixture-media/progress"
-    );
-    expect(revalidatePathMock).toHaveBeenCalledWith("/media/fixture-media/review");
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      "/media/fixture-media/textbook"
-    );
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      "/media/fixture-media/textbook/core-vocab"
-    );
+    expect(revalidateMediaListCacheMock).toHaveBeenCalledTimes(1);
+    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledTimes(1);
+    expect(revalidateSettingsCacheMock).not.toHaveBeenCalled();
   });
 });

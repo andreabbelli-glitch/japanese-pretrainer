@@ -1,12 +1,12 @@
 "use server";
 
 import type { Route } from "next";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { readRequiredString } from "./form-data.ts";
 import { db, getMediaBySlug } from "@/db";
 import {
+  revalidateGlossarySummaryCache,
   revalidateReviewSummaryCache
 } from "@/lib/data-cache";
 import {
@@ -22,10 +22,8 @@ import {
 } from "@/lib/review";
 import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
 import {
-  mediaHref,
   mediaReviewCardHref,
-  mediaStudyHref,
-  reviewHref
+  mediaStudyHref
 } from "@/lib/site";
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
@@ -86,7 +84,7 @@ export async function gradeReviewCardAction(formData: FormData) {
         : "good"
   });
 
-  revalidateActiveReviewPaths({
+  revalidateActiveReviewCaches({
     mediaId,
     mediaSlug
   });
@@ -144,9 +142,8 @@ export async function gradeReviewCardSessionAction(
     expectedMediaId: media?.id,
     rating: input.rating
   });
-  revalidateActiveReviewPaths(
+  revalidateActiveReviewCaches(
     await resolveSessionReviewRevalidationInput({
-      cardId: input.cardId,
       cardMediaSlug: input.cardMediaSlug,
       mediaSlug: input.mediaSlug,
       resolvedMedia: media,
@@ -390,50 +387,23 @@ function buildReviewRedirectUrl(input: {
   ) as Route;
 }
 
-function revalidateActiveReviewPaths(input: {
+function revalidateActiveReviewCaches(input: {
   mediaId?: string;
   mediaSlug: string | undefined;
-  cardId?: string;
 }) {
   revalidateReviewSummaryCache(input.mediaId);
-  revalidateDeferredShellPaths(input.mediaSlug);
-  revalidatePath(reviewHref());
-
-  if (!input.mediaSlug) {
-    return;
-  }
-
-  revalidatePath(mediaStudyHref(input.mediaSlug, "review"));
-
-  if (input.cardId) {
-    revalidatePath(mediaReviewCardHref(input.mediaSlug, input.cardId));
-  }
 }
 
-function revalidateEntryStatusPaths(input: {
+function revalidateEntryStatusCaches(input: {
   mediaId?: string;
   mediaSlug: string | undefined;
-  cardId?: string;
 }) {
-  revalidateActiveReviewPaths(input);
-  revalidatePath("/glossary");
+  revalidateActiveReviewCaches(input);
+  revalidateGlossarySummaryCache();
 
-  if (!input.mediaSlug) {
-    return;
+  if (input.mediaId) {
+    revalidateGlossarySummaryCache(input.mediaId);
   }
-
-  revalidatePath(mediaStudyHref(input.mediaSlug, "glossary"));
-}
-
-function revalidateDeferredShellPaths(mediaSlug?: string) {
-  revalidatePath("/");
-  revalidatePath("/media");
-
-  if (!mediaSlug) {
-    return;
-  }
-
-  revalidatePath(mediaHref(mediaSlug));
 }
 
 function readReviewFormMutationInput(
@@ -465,15 +435,14 @@ async function runReviewFormMutationAction(
   });
 
   const revalidateInput = {
-    cardId: input.cardId,
     mediaId,
     mediaSlug: input.mediaSlug
   };
 
   if (usesEntryStatusRevalidation(input.kind)) {
-    revalidateEntryStatusPaths(revalidateInput);
+    revalidateEntryStatusCaches(revalidateInput);
   } else {
-    revalidateActiveReviewPaths(revalidateInput);
+    revalidateActiveReviewCaches(revalidateInput);
   }
 
   redirect(
@@ -500,7 +469,6 @@ async function runReviewSessionMutationAction(
     suspended: input.suspended
   });
   const revalidateInput = await resolveSessionReviewRevalidationInput({
-    cardId: input.cardId,
     cardMediaSlug: input.cardMediaSlug,
     mediaSlug: input.mediaSlug,
     resolvedMedia: media,
@@ -508,9 +476,9 @@ async function runReviewSessionMutationAction(
   });
 
   if (usesEntryStatusRevalidation(input.kind)) {
-    revalidateEntryStatusPaths(revalidateInput);
+    revalidateEntryStatusCaches(revalidateInput);
   } else {
-    revalidateActiveReviewPaths(revalidateInput);
+    revalidateActiveReviewCaches(revalidateInput);
   }
 
   return requireReviewPageDataForScope(
@@ -709,7 +677,7 @@ async function resolveReviewSessionMedia(
 async function resolveSessionReviewRevalidationInput(
   input: Pick<
     ReviewSessionInput,
-    "cardId" | "cardMediaSlug" | "mediaSlug" | "scope"
+    "cardMediaSlug" | "mediaSlug" | "scope"
   > & {
     resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {};
   }
@@ -724,7 +692,6 @@ async function resolveSessionReviewRevalidationInput(
           : null;
 
   return {
-    cardId: input.cardId,
     mediaId: media?.id,
     mediaSlug: media?.slug
   };

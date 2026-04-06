@@ -1,7 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-
 import {
   revalidateMediaListCache,
   revalidateReviewSummaryCache,
@@ -9,7 +7,6 @@ import {
 } from "@/lib/data-cache";
 import { setFuriganaMode, setLessonCompletionState } from "@/lib/textbook";
 import type { FuriganaMode } from "@/lib/settings";
-import { mediaHref, mediaStudyHref } from "@/lib/site";
 
 export async function setFuriganaModeAction(input: {
   mediaSlug: string;
@@ -19,16 +16,6 @@ export async function setFuriganaModeAction(input: {
   await setFuriganaMode(input.mode);
 
   revalidateSettingsCache();
-  revalidatePath("/");
-  revalidatePath("/settings");
-  revalidatePath(mediaHref(input.mediaSlug));
-  revalidatePath(mediaStudyHref(input.mediaSlug, "textbook"));
-
-  if (input.lessonSlug) {
-    revalidatePath(
-      `${mediaStudyHref(input.mediaSlug, "textbook")}/${input.lessonSlug}`
-    );
-  }
 
   return {
     ok: true as const,
@@ -45,17 +32,6 @@ export async function setLessonCompletionAction(input: {
   await setLessonCompletionState(input.lessonId, input.completed);
   revalidateMediaListCache();
   revalidateReviewSummaryCache();
-
-  revalidatePath("/");
-  revalidatePath("/media");
-  revalidatePath("/review");
-  revalidatePath(mediaHref(input.mediaSlug));
-  revalidatePath(mediaStudyHref(input.mediaSlug, "progress"));
-  revalidatePath(mediaStudyHref(input.mediaSlug, "review"));
-  revalidatePath(mediaStudyHref(input.mediaSlug, "textbook"));
-  revalidatePath(
-    `${mediaStudyHref(input.mediaSlug, "textbook")}/${input.lessonSlug}`
-  );
 
   return {
     ok: true as const,

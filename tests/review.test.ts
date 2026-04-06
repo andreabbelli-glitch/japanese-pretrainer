@@ -72,12 +72,15 @@ const validContentRoot = path.join(
 );
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
 const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
-const { revalidatePathMock, revalidateReviewSummaryCacheMock } = vi.hoisted(
-  () => ({
-    revalidatePathMock: vi.fn(),
-    revalidateReviewSummaryCacheMock: vi.fn()
-  })
-);
+const {
+  revalidateGlossarySummaryCacheMock,
+  revalidatePathMock,
+  revalidateReviewSummaryCacheMock
+} = vi.hoisted(() => ({
+  revalidateGlossarySummaryCacheMock: vi.fn(),
+  revalidatePathMock: vi.fn(),
+  revalidateReviewSummaryCacheMock: vi.fn()
+}));
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/media/test/review",
@@ -178,6 +181,7 @@ async function loadReviewActionsForDatabase(database: DatabaseClient) {
 
       return {
         ...actual,
+        revalidateGlossarySummaryCache: revalidateGlossarySummaryCacheMock,
         revalidateReviewSummaryCache: revalidateReviewSummaryCacheMock
       };
     });
@@ -229,6 +233,7 @@ describe("review system", () => {
 
   beforeEach(async () => {
     revalidatePathMock.mockReset();
+    revalidateGlossarySummaryCacheMock.mockReset();
     revalidateReviewSummaryCacheMock.mockReset();
     tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-"));
     database = createDatabaseClient({
@@ -2418,15 +2423,7 @@ describe("review system", () => {
     expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
-    expect(revalidatePathMock).toHaveBeenCalledWith("/");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/media");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}`
-    );
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}/review`
-    );
+    expect(revalidatePathMock).not.toHaveBeenCalled();
     expect(reviewPageCalls).toEqual([
       {
         scope: "global",
@@ -2486,15 +2483,7 @@ describe("review system", () => {
     expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
-    expect(revalidatePathMock).toHaveBeenCalledWith("/");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/media");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}`
-    );
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}/review`
-    );
+    expect(revalidatePathMock).not.toHaveBeenCalled();
   });
 
   it("falls back to a full rebuild instead of forcing completion when the session plan has no nextCardId", async () => {
@@ -2528,15 +2517,7 @@ describe("review system", () => {
     expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
-    expect(revalidatePathMock).toHaveBeenCalledWith("/");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/media");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}`
-    );
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}/review`
-    );
+    expect(revalidatePathMock).not.toHaveBeenCalled();
   });
 
   it("prefetches a queued review card without touching session rebuild paths", async () => {
@@ -2596,19 +2577,12 @@ describe("review system", () => {
     expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );
-    expect(revalidatePathMock).toHaveBeenCalledWith("/");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/media");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/glossary");
-    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}`
+    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledTimes(2);
+    expect(revalidateGlossarySummaryCacheMock).toHaveBeenNthCalledWith(1);
+    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledWith(
+      developmentFixture.mediaId
     );
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}/review`
-    );
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}/glossary`
-    );
+    expect(revalidatePathMock).not.toHaveBeenCalled();
     expect(reviewPageCalls).toEqual([
       {
         scope: "global",
@@ -2619,7 +2593,7 @@ describe("review system", () => {
     ]);
   });
 
-  it("revalidates the detail review path when a stay_detail action keeps the card open", async () => {
+  it("keeps stay_detail mutations on tag invalidation only", async () => {
     const { markLinkedEntryKnownAction } =
       await loadReviewActionsForDatabase(database);
     const formData = new FormData();
@@ -2635,16 +2609,15 @@ describe("review system", () => {
       )}`
     );
 
-    expect(revalidatePathMock).toHaveBeenCalledWith("/review");
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      `/media/${developmentFixture.mediaSlug}/review`
+    expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith(
+      developmentFixture.mediaId
     );
-    expect(revalidatePathMock).toHaveBeenCalledWith(
-      mediaReviewCardHref(
-        developmentFixture.mediaSlug,
-        developmentFixture.primaryCardId
-      )
+    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledTimes(2);
+    expect(revalidateGlossarySummaryCacheMock).toHaveBeenNthCalledWith(1);
+    expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledWith(
+      developmentFixture.mediaId
     );
+    expect(revalidatePathMock).not.toHaveBeenCalled();
   });
 
   it("advances to the next queue card after reopening a manual card when redirectMode advances queue", async () => {
