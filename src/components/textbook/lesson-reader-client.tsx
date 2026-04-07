@@ -38,6 +38,11 @@ import {
   MobileSheet,
   ReaderImageLightbox
 } from "./lesson-reader-ui";
+import {
+  computeReaderTooltipPosition,
+  READER_TOOLTIP_MAX_WIDTH_PX,
+  READER_TOOLTIP_VIEWPORT_MARGIN_PX
+} from "./tooltip-position";
 export {
   LessonArticle,
   formatCrossMediaHintLabel
@@ -52,6 +57,7 @@ type TooltipState = {
   locked: boolean;
   left: number;
   top: number;
+  maxHeight: number;
   placement: "top" | "bottom";
 };
 
@@ -270,53 +276,77 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     };
   }, [tooltipLoadState, ensureTooltipEntries]);
 
-  const recomputeTooltipPosition = () => {
+  const recomputeTooltipPosition = useCallback(() => {
     if (!anchorRef.current) {
       return;
     }
 
-    const rect = anchorRef.current.getBoundingClientRect();
-    const width = 320;
-    const margin = 18;
-    const left = Math.max(
-      margin,
-      Math.min(
-        rect.left + rect.width / 2 - width / 2,
-        window.innerWidth - width - margin
-      )
-    );
-    const preferTop = rect.bottom > window.innerHeight * 0.62;
-    const top = preferTop ? rect.top - 14 : rect.bottom + 14;
+    const anchorRect = anchorRef.current.getBoundingClientRect();
+    const tooltipRect = tooltipRef.current?.getBoundingClientRect();
+    const nextPosition = computeReaderTooltipPosition({
+      anchorRect,
+      tooltipSize: {
+        width:
+          tooltipRect?.width ??
+          Math.min(
+            READER_TOOLTIP_MAX_WIDTH_PX,
+            Math.max(
+              0,
+              window.innerWidth - READER_TOOLTIP_VIEWPORT_MARGIN_PX * 2
+            )
+          ),
+        height: tooltipRect?.height ?? 0
+      },
+      viewport: {
+        width: window.innerWidth,
+        height: window.innerHeight
+      }
+    });
 
     setTooltip((current) =>
       current
-        ? {
-            ...current,
-            left,
-            top,
-            placement: preferTop ? "top" : "bottom"
-          }
+        ? current.left === nextPosition.left &&
+          current.top === nextPosition.top &&
+          current.placement === nextPosition.placement &&
+          current.maxHeight === nextPosition.maxHeight
+          ? current
+          : {
+              ...current,
+              ...nextPosition
+            }
         : current
     );
-  };
+  }, []);
 
   useEffect(() => {
     if (!tooltip) {
       return;
     }
 
+    const tooltipElement = tooltipRef.current;
     const handleViewportChange = () => {
       recomputeTooltipPosition();
     };
 
     window.addEventListener("scroll", handleViewportChange, true);
     window.addEventListener("resize", handleViewportChange);
+    const resizeObserver =
+      typeof ResizeObserver === "undefined" || !tooltipElement
+        ? null
+        : new ResizeObserver(() => {
+            handleViewportChange();
+          });
+    if (tooltipElement) {
+      resizeObserver?.observe(tooltipElement);
+    }
+    handleViewportChange();
 
     return () => {
       window.removeEventListener("scroll", handleViewportChange, true);
       window.removeEventListener("resize", handleViewportChange);
+      resizeObserver?.disconnect();
     };
-  }, [tooltip]);
+  }, [recomputeTooltipPosition, tooltip]);
 
   useEffect(() => {
     if (!tooltip?.locked) {
@@ -404,18 +434,20 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     }
 
     anchorRef.current = element;
-    const rect = element.getBoundingClientRect();
-    const width = 320;
-    const margin = 18;
-    const left = Math.max(
-      margin,
-      Math.min(
-        rect.left + rect.width / 2 - width / 2,
-        window.innerWidth - width - margin
-      )
-    );
-    const preferTop = rect.bottom > window.innerHeight * 0.62;
-    const top = preferTop ? rect.top - 14 : rect.bottom + 14;
+    const nextPosition = computeReaderTooltipPosition({
+      anchorRect: element.getBoundingClientRect(),
+      tooltipSize: {
+        width: Math.min(
+          READER_TOOLTIP_MAX_WIDTH_PX,
+          Math.max(0, window.innerWidth - READER_TOOLTIP_VIEWPORT_MARGIN_PX * 2)
+        ),
+        height: 0
+      },
+      viewport: {
+        width: window.innerWidth,
+        height: window.innerHeight
+      }
+    });
 
     setTooltip((current) => {
       if (
@@ -430,9 +462,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
       return {
         entryKey,
         locked: intent === "click",
-        left,
-        top,
-        placement: preferTop ? "top" : "bottom"
+        ...nextPosition
       };
     });
   };
@@ -520,6 +550,13 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     mobileSheet?.type === "entry"
       ? (entriesByKey.get(mobileSheet.entryKey) ?? null)
       : null;
+  const tooltipStyle = tooltip
+    ? ({
+        left: `${tooltip.left}px`,
+        top: `${tooltip.top}px`,
+        "--reader-tooltip-max-height": `${tooltip.maxHeight}px`
+      } satisfies CSSProperties & Record<"--reader-tooltip-max-height", string>)
+    : undefined;
 
   return (
     <div className="reader-page" data-furigana-mode={furiganaMode}>
@@ -603,12 +640,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
           onMouseEnter={clearCloseTimer}
           onMouseLeave={closeTooltipSoon}
           ref={tooltipRef}
-          style={
-            {
-              left: `${tooltip.left}px`,
-              top: `${tooltip.top}px`
-            } satisfies CSSProperties
-          }
+          style={tooltipStyle}
         >
           <EntryTooltipCard
             entry={tooltipEntry}

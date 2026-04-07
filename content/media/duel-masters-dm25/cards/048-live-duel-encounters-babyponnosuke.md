@@ -115,8 +115,8 @@ entry_id: grammar-toki
 card_type: concept
 front: >-
   {{相手|あいて}}のターン{{中|ちゅう}}に、
-  {{枚数|まいすう}}よりコストが{{大|おお}}きい{{相手|あいて}}のクリーチャーが
-  {{出|で}}る{{時|とき}}
+  {{相手|あいて}}のマナゾーンにあるカードの{{枚数|まいすう}}よりコストが
+  {{大|おお}}きい{{相手|あいて}}のクリーチャーが{{出|で}}る{{時|とき}}
 back: quando, nel turno avversario, sta per entrare una creatura avversaria che supera quella soglia
 example_jp: >-
   `{{出|で}}る{{時|とき}}`だから、
@@ -127,8 +127,9 @@ example_it: >-
   non dopo che la creatura è già rimasta sul campo.
 notes_it: >-
   Questa è la card-sintesi del blocco completo. `{{相手|あいて}}のターン{{中|ちゅう}}に`
-  chiude la finestra temporale, `{{枚数|まいすう}}よりコストが{{大|おお}}きい`
-  definisce la soglia e `{{出|で}}る{{時|とき}}` marca il punto in cui la
-  sostituzione può agganciarsi.
+  chiude la finestra temporale,
+  `{{相手|あいて}}のマナゾーンにあるカードの{{枚数|まいすう}}よりコストが{{大|おお}}きい`
+  definisce la soglia completa e `{{出|で}}る{{時|とき}}` marca il punto in cui
+  la sostituzione può agganciarsi.
 tags: [live-duel, grammar, timing, replacement]
 :::

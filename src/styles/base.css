@@ -1770,10 +1770,17 @@ rt {
   position: fixed;
   z-index: var(--z-popover);
   width: min(20rem, calc(100vw - 2rem));
+  max-height: var(--reader-tooltip-max-height, calc(100vh - 2rem));
 }
 
 .reader-tooltip--top {
-  transform: translateY(-100%);
+  transform: none;
+}
+
+.reader-tooltip > .entry-tooltip-card {
+  max-height: var(--reader-tooltip-max-height, calc(100vh - 2rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .entry-tooltip-card {
