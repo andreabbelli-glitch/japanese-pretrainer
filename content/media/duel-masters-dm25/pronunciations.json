@@ -514,6 +514,11 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-babyponnosuke",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-bad-brand-first",
       "pitch_accent_status": "miss"
     },
@@ -1608,6 +1613,14 @@
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E9%96%8B%E5%82%AC%E4%B8%AD/#ja",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ookii",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A4%A7%E3%81%8D%E3%81%84",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",

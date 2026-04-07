@@ -704,7 +704,8 @@ describe("content parser and validator", () => {
       "live-duel-encounters-sofa-softysonia",
       "live-duel-encounters-bauwauja-abyssal-three-roar",
       "live-duel-encounters-doorknocker-nordocker",
-      "live-duel-encounters-do-sumonma"
+      "live-duel-encounters-do-sumonma",
+      "live-duel-encounters-babyponnosuke"
     ]);
     expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
       "cards-duel-masters-dm25-tcg-core-basics",
@@ -738,7 +739,8 @@ describe("content parser and validator", () => {
       "cards-duel-masters-dm25-live-duel-encounters-sofa-softysonia",
       "cards-duel-masters-dm25-live-duel-encounters-bauwauja-abyssal-three-roar",
       "cards-duel-masters-dm25-live-duel-encounters-doorknocker-nordocker",
-      "cards-duel-masters-dm25-live-duel-encounters-do-sumonma"
+      "cards-duel-masters-dm25-live-duel-encounters-do-sumonma",
+      "cards-duel-masters-dm25-live-duel-encounters-babyponnosuke"
     ]);
     expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
       true
