@@ -289,9 +289,6 @@ export function LessonArticle({
                 onFocus={(event) => {
                   onReferenceFocus(imageTarget, event.currentTarget, "focus");
                 }}
-                onMouseEnter={(event) => {
-                  onReferenceHover(imageTarget, event.currentTarget, "hover");
-                }}
                 onMouseLeave={onReferenceLeave}
                 type="button"
               >

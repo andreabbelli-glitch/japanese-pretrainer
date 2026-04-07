@@ -189,8 +189,25 @@ pos: noun
 aliases: [攻撃先, こうげきさき, kougekisaki]
 notes_it: >-
   È la destinazione concreta di un attacco. Compare in frasi come
-  `{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する`, dove il testo non sta
+  `{{攻撃先|こう.げき.さき}}を[{{変更|へんこう}}](term:term-henkou)する`, dove il testo non sta
   aggiungendo un effetto vago: sta davvero riassegnando dove va l'attacco.
+level_hint: custom
+:::
+
+:::term
+id: term-henkou
+lemma: 変更
+reading: へんこう
+romaji: henkou
+meaning_it: modifica / cambiamento
+pos: verbal-noun
+aliases: [変更, へんこう, henkou]
+notes_it: >-
+  In giapponese generale `{{変更|へんこう}}` indica un cambiamento o una
+  modifica. Nel rules text di Duel Masters compare spesso in formule operative
+  come `{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する`, dove non suggerisce un
+  aggiustamento astratto ma una vera riassegnazione del bersaglio, del piano o
+  dello stato appena citato dal testo.
 level_hint: custom
 :::
 
@@ -285,6 +302,26 @@ notes_it: >-
   dichiarato a un nuovo bersaglio. In combattimento cambia direttamente quale
   lato subisce l'esito dell'attacco.
 tags: [dm25-sd1, combat, target]
+:::
+
+:::card
+id: card-henkou-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview
+entry_type: term
+entry_id: term-henkou
+card_type: recognition
+front: '{{変更|へんこう}}'
+back: modifica / cambiamento
+example_jp: >-
+  そのクリーチャーに{{攻撃先|こう.げき.さき}}を{{変更|へんこう}}する。
+example_it: >-
+  Cambia il bersaglio dell'attacco a quella creatura.
+notes_it: >-
+  In questa lezione `{{変更|へんこう}}する` non vuol dire "ritoccare" qualcosa in
+  modo vago: ordina un cambio concreto di stato. Con
+  [{{攻撃先|こう.げき.さき}}](term:term-attack-target) indica che l'attacco viene
+  riassegnato a un nuovo bersaglio.
+tags: [dm25-sd1, combat, action]
 :::
 
 :::card
