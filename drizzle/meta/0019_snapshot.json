@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "63dcd5ba-c4c7-43f3-be84-c20fc854ac07",
+  "id": "253e1c84-200b-4673-ae00-2e4b788ccaa9",
   "prevId": "cfa4e5d9-bcc4-47ed-bb9a-946db1dc0f00",
   "tables": {
     "content_import": {
@@ -620,10 +620,17 @@
           ],
           "isUnique": false
         },
+<<<<<<< HEAD
         "kanji_clash_pair_log_target_answered_idx": {
           "name": "kanji_clash_pair_log_target_answered_idx",
           "columns": [
             "target_subject_key",
+=======
+        "kanji_clash_pair_log_mode_answered_idx": {
+          "name": "kanji_clash_pair_log_mode_answered_idx",
+          "columns": [
+            "mode",
+>>>>>>> d1c3a38 (Add Kanji Clash pair persistence)
             "answered_at"
           ],
           "isUnique": false
@@ -640,7 +647,11 @@
           "columnsTo": [
             "pair_key"
           ],
+<<<<<<< HEAD
           "onDelete": "cascade",
+=======
+          "onDelete": "no action",
+>>>>>>> d1c3a38 (Add Kanji Clash pair persistence)
           "onUpdate": "no action"
         }
       },
@@ -783,6 +794,7 @@
             "last_interaction_at"
           ],
           "isUnique": false
+<<<<<<< HEAD
         },
         "kanji_clash_pair_state_state_idx": {
           "name": "kanji_clash_pair_state_state_idx",
@@ -790,6 +802,8 @@
             "state"
           ],
           "isUnique": false
+=======
+>>>>>>> d1c3a38 (Add Kanji Clash pair persistence)
         }
       },
       "foreignKeys": {},
