@@ -141,6 +141,29 @@ export type KanjiClashQueueSnapshot = {
   totalCount: number;
 };
 
+export type KanjiClashPageMediaOption = {
+  id: string;
+  slug: string;
+  title: string;
+};
+
+export type KanjiClashPageSettings = {
+  dailyNewLimit: number;
+  defaultScope: "global" | "media";
+  manualDefaultSize: number;
+  manualSizeOptions: readonly number[];
+};
+
+export type KanjiClashPageData = {
+  availableMedia: KanjiClashPageMediaOption[];
+  currentRound: KanjiClashSessionRound | null;
+  mode: KanjiClashSessionMode;
+  queue: KanjiClashQueueSnapshot;
+  scope: KanjiClashScope;
+  selectedMedia: KanjiClashPageMediaOption | null;
+  settings: KanjiClashPageSettings;
+};
+
 export type KanjiClashSessionActionResult = {
   answeredRound: KanjiClashSessionRound;
   isCorrect: boolean;

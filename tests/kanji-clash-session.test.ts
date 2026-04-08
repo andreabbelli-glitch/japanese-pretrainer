@@ -7,17 +7,9 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  card,
-  cardEntryLink,
   kanjiClashPairLog,
   kanjiClashPairState,
-  lesson,
-  lessonProgress,
-  media,
-  reviewSubjectState,
   runMigrations,
-  segment,
-  term,
   type DatabaseClient
 } from "@/db";
 import {
@@ -25,6 +17,7 @@ import {
   buildKanjiClashPairKey,
   loadKanjiClashQueueSnapshot
 } from "@/lib/kanji-clash";
+import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 
 describe("kanji clash session service", () => {
   let tempDir = "";
@@ -37,7 +30,7 @@ describe("kanji clash session service", () => {
     });
 
     await runMigrations(database);
-    await seedKanjiClashSessionFixture(database);
+    await seedKanjiClashFixture(database);
   });
 
   afterEach(async () => {
@@ -180,242 +173,3 @@ describe("kanji clash session service", () => {
     expect(reviewStateAfter).toEqual(reviewStateBefore);
   });
 });
-
-async function seedKanjiClashSessionFixture(database: DatabaseClient) {
-  const now = "2026-04-08T12:00:00.000Z";
-
-  await database.insert(media).values({
-    baseExplanationLanguage: "it",
-    createdAt: now,
-    description: "Alpha media",
-    id: "media-alpha",
-    language: "ja",
-    mediaType: "game",
-    segmentKind: "chapter",
-    slug: "alpha",
-    status: "active",
-    title: "Alpha",
-    updatedAt: now
-  });
-  await database.insert(segment).values({
-    id: "segment-alpha",
-    mediaId: "media-alpha",
-    notes: null,
-    orderIndex: 1,
-    segmentType: "chapter",
-    slug: "segment-alpha",
-    title: "Segment alpha"
-  });
-  await database.insert(lesson).values({
-    createdAt: now,
-    difficulty: "beginner",
-    id: "lesson-alpha",
-    mediaId: "media-alpha",
-    orderIndex: 1,
-    segmentId: "segment-alpha",
-    slug: "lesson-alpha",
-    sourceFile: "tests/lesson-alpha.md",
-    status: "active",
-    summary: "Lesson alpha",
-    title: "Lesson alpha",
-    updatedAt: now
-  });
-  await database.insert(lessonProgress).values({
-    completedAt: now,
-    lastOpenedAt: now,
-    lessonId: "lesson-alpha",
-    startedAt: now,
-    status: "completed"
-  });
-  await database.insert(term).values([
-    buildTermRow(
-      {
-        id: "term-alpha-shokuhi",
-        lemma: "食費",
-        meaningIt: "spese per il cibo",
-        reading: "しょくひ",
-        sourceId: "term-alpha-shokuhi"
-      },
-      now
-    ),
-    buildTermRow(
-      {
-        id: "term-alpha-shokuhin",
-        lemma: "食品",
-        meaningIt: "alimento",
-        reading: "しょくひん",
-        sourceId: "term-alpha-shokuhin"
-      },
-      now
-    ),
-    buildTermRow(
-      {
-        id: "term-alpha-shokutaku",
-        lemma: "食卓",
-        meaningIt: "tavolo da pranzo",
-        reading: "しょくたく",
-        sourceId: "term-alpha-shokutaku"
-      },
-      now
-    ),
-    buildTermRow(
-      {
-        id: "term-alpha-inshoku",
-        lemma: "飲食",
-        meaningIt: "cibo e bevande",
-        reading: "いんしょく",
-        sourceId: "term-alpha-inshoku"
-      },
-      now
-    )
-  ]);
-  await database
-    .insert(card)
-    .values([
-      buildCardRow("card-alpha-shokuhi", "食費", now),
-      buildCardRow("card-alpha-shokuhin", "食品", now),
-      buildCardRow("card-alpha-shokutaku", "食卓", now),
-      buildCardRow("card-alpha-inshoku", "飲食", now)
-    ]);
-  await database
-    .insert(cardEntryLink)
-    .values([
-      buildCardEntryLinkRow("card-alpha-shokuhi", "term-alpha-shokuhi"),
-      buildCardEntryLinkRow("card-alpha-shokuhin", "term-alpha-shokuhin"),
-      buildCardEntryLinkRow("card-alpha-shokutaku", "term-alpha-shokutaku"),
-      buildCardEntryLinkRow("card-alpha-inshoku", "term-alpha-inshoku")
-    ]);
-  await database
-    .insert(reviewSubjectState)
-    .values([
-      buildReviewSubjectStateRow(
-        "card-alpha-shokuhi",
-        "term-alpha-shokuhi",
-        "entry:term:term-alpha-shokuhi",
-        now,
-        8.2,
-        3,
-        "review"
-      ),
-      buildReviewSubjectStateRow(
-        "card-alpha-shokuhin",
-        "term-alpha-shokuhin",
-        "entry:term:term-alpha-shokuhin",
-        now,
-        9.1,
-        4,
-        "review"
-      ),
-      buildReviewSubjectStateRow(
-        "card-alpha-shokutaku",
-        "term-alpha-shokutaku",
-        "entry:term:term-alpha-shokutaku",
-        now,
-        8.7,
-        3,
-        "review"
-      ),
-      buildReviewSubjectStateRow(
-        "card-alpha-inshoku",
-        "term-alpha-inshoku",
-        "entry:term:term-alpha-inshoku",
-        now,
-        10.2,
-        5,
-        "relearning"
-      )
-    ]);
-}
-
-function buildTermRow(
-  input: {
-    id: string;
-    lemma: string;
-    meaningIt: string;
-    reading: string;
-    sourceId: string;
-  },
-  now: string
-) {
-  return {
-    createdAt: now,
-    crossMediaGroupId: null,
-    id: input.id,
-    lemma: input.lemma,
-    meaningIt: input.meaningIt,
-    mediaId: "media-alpha",
-    reading: input.reading,
-    romaji: input.reading,
-    searchLemmaNorm: input.lemma,
-    searchReadingNorm: input.reading,
-    searchRomajiNorm: input.reading,
-    segmentId: "segment-alpha",
-    sourceId: input.sourceId,
-    updatedAt: now
-  };
-}
-
-function buildCardRow(
-  id: string,
-  front: string,
-  now: string
-): typeof card.$inferInsert {
-  return {
-    back: `${front} meaning`,
-    cardType: "recognition",
-    createdAt: now,
-    front,
-    id,
-    lessonId: "lesson-alpha",
-    mediaId: "media-alpha",
-    normalizedFront: front,
-    orderIndex: 1,
-    segmentId: "segment-alpha",
-    sourceFile: `tests/${id}.md`,
-    status: "active",
-    updatedAt: now
-  };
-}
-
-function buildCardEntryLinkRow(cardId: string, entryId: string) {
-  return {
-    cardId,
-    entryId,
-    entryType: "term" as const,
-    id: `${cardId}-${entryId}`,
-    relationshipType: "primary" as const
-  };
-}
-
-function buildReviewSubjectStateRow(
-  cardId: string,
-  entryId: string,
-  subjectKey: string,
-  now: string,
-  stability: number,
-  reps: number,
-  state: "review" | "relearning"
-) {
-  return {
-    cardId,
-    createdAt: now,
-    crossMediaGroupId: null,
-    difficulty: 2.5,
-    dueAt: now,
-    entryId,
-    entryType: "term" as const,
-    lapses: 0,
-    lastInteractionAt: now,
-    lastReviewedAt: now,
-    learningSteps: 0,
-    manualOverride: false,
-    reps,
-    scheduledDays: 3,
-    stability,
-    state,
-    subjectKey,
-    subjectType: "entry" as const,
-    suspended: false,
-    updatedAt: now
-  };
-}
