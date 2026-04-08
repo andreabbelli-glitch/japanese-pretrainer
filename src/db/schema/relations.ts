@@ -16,6 +16,10 @@ import {
 } from "./glossary.ts";
 import { lessonProgress } from "./progress.ts";
 import {
+  kanjiClashPairLog,
+  kanjiClashPairState
+} from "./kanji-clash.ts";
+import {
   card,
   cardEntryLink,
   reviewSubjectLog,
@@ -187,3 +191,20 @@ export const lessonProgressRelations = relations(lessonProgress, ({ one }) => ({
     references: [lesson.id]
   })
 }));
+
+export const kanjiClashPairStateRelations = relations(
+  kanjiClashPairState,
+  ({ many }) => ({
+    logs: many(kanjiClashPairLog)
+  })
+);
+
+export const kanjiClashPairLogRelations = relations(
+  kanjiClashPairLog,
+  ({ one }) => ({
+    pairState: one(kanjiClashPairState, {
+      fields: [kanjiClashPairLog.pairKey],
+      references: [kanjiClashPairState.pairKey]
+    })
+  })
+);
