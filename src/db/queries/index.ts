@@ -1,4 +1,5 @@
 export * from "./glossary.ts";
+export * from "./kanji-clash.ts";
 export * from "./lessons.ts";
 export * from "./media.ts";
 export * from "./review.ts";
