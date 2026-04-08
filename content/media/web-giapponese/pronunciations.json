@@ -20,6 +20,16 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-bunny-charles-hyoka-seino",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-bunny-charles-tsuyosa-tsukaimichi",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-collab",
       "pitch_accent_status": "miss"
     },
@@ -54,6 +64,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-hyoka",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A9%95%E4%BE%A1",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kangaekata",
       "audio_src": "assets/audio/term/term-kangaekata/forvo-manual-かんか-えかた.mp3",
       "audio_source": "forvo",
@@ -72,6 +90,11 @@
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A8%98%E4%BA%8B",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kougekishu",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
@@ -143,6 +166,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-seino",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%80%A7%E8%83%BD",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-shoban",
       "audio_src": "assets/audio/term/term-shoban/forvo-manual-し-ょは-ん.mp3",
       "audio_source": "forvo",
@@ -196,6 +227,22 @@
       "entry_type": "term",
       "entry_id": "term-sun-attribute",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tsukaimichi",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%A4%E3%81%8B%E3%81%84%E3%81%BF%E3%81%A1",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-tsuyosa",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BC%B7%E3%81%95",
+      "pitch_accent_status": "resolved"
     }
   ]
 }

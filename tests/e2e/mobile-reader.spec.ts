@@ -64,3 +64,28 @@ test("opens textbook screenshots in a lightbox on mobile", async ({ page }) => {
   await page.keyboard.press("Escape");
   await expect(lightbox).toBeHidden();
 });
+
+test("opens card images in a lightbox on mobile too", async ({ page }) => {
+  await page.goto("/media/duel-masters-dm25/textbook/tcg-core-overview");
+
+  await page
+    .getByRole("button", {
+      name: /Apri immagine ingrandita: Carta di アビスベル=ジャシンてい/
+    })
+    .first()
+    .click();
+
+  const lightbox = page.getByRole("dialog", {
+    name: "Immagine ingrandita"
+  });
+
+  await expect(lightbox).toBeVisible();
+  await expect(
+    lightbox.getByRole("img", {
+      name: /Carta di アビスベル=ジャシンてい/
+    })
+  ).toBeVisible();
+
+  await page.keyboard.press("Escape");
+  await expect(lightbox).toBeHidden();
+});

@@ -99,3 +99,139 @@ requests:
     notes: >-
       Screenshot reale dalla pagina pubblica con Playwright, centrato sul
       blocco di spiegazione dei ruoli.
+  - id: starsavior-79717421-overview
+    lesson_slug: 020-appmedia-starsavior-bunny-charles-evaluation-and-usage
+    anchor: "Questa pagina di AppMedia è una scheda personaggio completa per Star Savior."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il contesto iniziale, così il lettore vede il titolo della
+      guida e riconosce che i blocchi su valutazione, performance e use case
+      appartengono alla stessa scheda personaggio.
+    visual_goal: >-
+      Mostrare l'apertura della pagina con breadcrumb, titolo, data e hero
+      image, in modo che la guida sia memorizzabile come schermata reale.
+    source_preference: >-
+      Pagina pubblica renderizzata di
+      https://appmedia.jp/starsavior/79717421.
+    capture_instructions: >-
+      Usa il viewport reale della pagina nella parte alta dell'articolo,
+      mantenendo ben leggibili titolo e immagine iniziale.
+    must_show: >-
+      Breadcrumb della guida, titolo dell'articolo, data di aggiornamento e
+      immagine principale del personaggio.
+    avoid: >-
+      Crop troppo bassi che perdono il titolo o schermate già scese sulle
+      tabelle interne.
+    alt_it: >-
+      Pagina AppMedia di Star Savior dedicata a Bunny Charles con titolo e
+      immagine iniziale.
+    caption_it: >-
+      Qui si riconosce subito la struttura della scheda:
+      [{{評価|ひょうか}}](term:term-hyoka),
+      [{{性能|せいのう}}](term:term-seino),
+      [{{強|つよ}}さ](term:term-tsuyosa) e
+      [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi) sono sezioni interne di
+      una pagina più ampia.
+    notes: >-
+      Screenshot reale preso dalla pagina pubblica con Playwright.
+  - id: starsavior-79717421-toc
+    lesson_slug: 020-appmedia-starsavior-bunny-charles-evaluation-and-usage
+    anchor: "Il sommario mostra subito che la pagina non tratta tutto come un unico voto."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va dopo il paragrafo che spiega la logica del sommario, perché rende
+      visibile la separazione tra i blocchi di lettura della scheda.
+    visual_goal: >-
+      Rendere leggibili le prime voci del sommario, in particolare
+      `評価と性能`, `バニーシャルルは強い？` e `バニーシャルルの強さと使い道`.
+    source_preference: >-
+      Element screenshot del blocco `nav.post_index` nella pagina pubblica
+      https://appmedia.jp/starsavior/79717421.
+    capture_instructions: >-
+      Cattura il solo blocco del sommario dell'articolo, non la navigazione
+      globale del sito.
+    must_show: >-
+      `目次`, `評価と性能`, `バニーシャルルは強い？【レビュー】`,
+      `バニーシャルルの強さと使い道` e le voci successive della scheda.
+    avoid: >-
+      Header globale di AppMedia, sidebar o porzioni dell'articolo che non fanno
+      parte del sommario.
+    alt_it: >-
+      Sommario dell'articolo con le principali sezioni della scheda personaggio.
+    caption_it: >-
+      Il [{{目次|もくじ}}](term:term-mokuji) separa subito
+      [{{評価|ひょうか}}](term:term-hyoka) e
+      [{{性能|せいのう}}](term:term-seino) dalla parte su
+      [{{強|つよ}}さ](term:term-tsuyosa) e
+      [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi).
+    notes: >-
+      Element screenshot del sommario reale preso con Playwright.
+  - id: starsavior-79717421-evaluation
+    lesson_slug: 020-appmedia-starsavior-bunny-charles-evaluation-and-usage
+    anchor: "La sezione iniziale unisce tabella dati e giudizio sintetico nello stesso colpo d'occhio."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va nel punto in cui la lesson spiega la differenza tra giudizio del sito e
+      dati tecnici, perché mostra entrambe le cose nella stessa schermata.
+    visual_goal: >-
+      Rendere leggibili il titolo `バニーシャルルの評価と性能`, la tabella con
+      attributo, classe e `攻撃種`, e il box di valutazione con i rank.
+    source_preference: >-
+      Pagina pubblica renderizzata di
+      https://appmedia.jp/starsavior/79717421#evaluation.
+    capture_instructions: >-
+      Usa il viewport reale centrato sulla sezione `評価と性能`, mantenendo
+      visibili heading, tabella dati e box rank.
+    must_show: >-
+      Heading `バニーシャルルの評価と性能`, riga `攻撃種`, rank e riquadro di
+      valutazione.
+    avoid: >-
+      Scroll troppo alti che mostrano ancora il titolo della pagina o crop
+      troppo bassi che perdono `攻撃種`.
+    alt_it: >-
+      Sezione centrale con titolo valutazione e performance, tabella dati e
+      rank.
+    caption_it: >-
+      Nel blocco
+      [バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}](term:term-bunny-charles-hyoka-seino),
+      [{{攻撃種|こうげきしゅ}}](term:term-kougekishu) sta nella tabella dati,
+      mentre il rank sintetizza il giudizio del sito.
+    notes: >-
+      Screenshot reale preso dalla pagina pubblica con Playwright.
+  - id: starsavior-79717421-strength-usage
+    lesson_slug: 020-appmedia-starsavior-bunny-charles-evaluation-and-usage
+    anchor: "La sezione successiva cambia prospettiva e passa dai dati agli scenari."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va nel punto in cui la lesson spiega la differenza tra `性能` e
+      `使い道`, perché il crop mostra il passaggio dalla scheda tecnica alla
+      spiegazione pratica.
+    visual_goal: >-
+      Mostrare il heading `バニーシャルルの強さと使い道` e l'inizio dei paragrafi
+      che argomentano la forza del personaggio.
+    source_preference: >-
+      Pagina pubblica renderizzata di
+      https://appmedia.jp/starsavior/79717421#hyoka.
+    capture_instructions: >-
+      Usa il viewport reale centrato sull'inizio della sezione `強さと使い道`,
+      mantenendo leggibili heading e primi paragrafi.
+    must_show: >-
+      Heading `バニーシャルルの強さと使い道`, primo sottotitolo e testo iniziale
+      della spiegazione.
+    avoid: >-
+      Scroll che tagliano il titolo della sezione o schermate troppo basse già
+      spostate sui blocchi successivi.
+    alt_it: >-
+      Sezione della guida che spiega punti di forza e contesti d'uso di Bunny
+      Charles.
+    caption_it: >-
+      Nel blocco
+      [バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}](term:term-bunny-charles-tsuyosa-tsukaimichi)
+      la guida non elenca solo valori: spiega perché il personaggio rende bene
+      e dove conviene usarlo.
+    notes: >-
+      Screenshot reale preso dalla pagina pubblica con Playwright.

@@ -32,7 +32,7 @@ example_it: >-
 id: term-e009-iko-u
 lemma: 行こう
 reading: いこう
-romaji: iko u
+romaji: ikou
 meaning_it: andiamo
 notes_it: >-
   Espressione ricorrente della lezione L04 nell'area Azione / proposta. Invito a partire o a continuare insieme.

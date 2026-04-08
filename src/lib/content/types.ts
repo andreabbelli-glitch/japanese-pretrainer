@@ -150,7 +150,6 @@ export interface ImageBlock {
   position?: SourceRange;
   src: string;
   alt: string;
-  cardId?: string;
   caption?: RichTextFragment;
 }
 

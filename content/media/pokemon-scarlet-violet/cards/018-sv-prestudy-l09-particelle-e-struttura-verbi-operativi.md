@@ -11,9 +11,9 @@ id: term-e019-irasshaimase
 lemma: いらっしゃいませ
 reading: いらっしゃいませ
 romaji: irasshaimase
-meaning_it: benvenuto / a
+meaning_it: benvenuto / benvenuta
 notes_it: >-
-  Espressione ricorrente della lezione L09 nell'area Saluti / gestione dialogo. Accoglienza da negozio o servizio
+  Espressione ricorrente della lezione L09 nell'area Saluti / gestione dialogo. Accoglienza da negozio o servizio.
 :::
 :::card
 id: card-e019-irasshaimase-recognition
@@ -22,11 +22,11 @@ entry_type: term
 entry_id: term-e019-irasshaimase
 card_type: recognition
 front: 'いらっしゃいませ'
-back: benvenuto / a
+back: benvenuto / benvenuta
 example_jp: >-
   いらっしゃいませ。
 example_it: >-
-  Benvenuto.
+  Benvenuto / benvenuta.
 :::
 :::term
 id: term-e020-daijoubu

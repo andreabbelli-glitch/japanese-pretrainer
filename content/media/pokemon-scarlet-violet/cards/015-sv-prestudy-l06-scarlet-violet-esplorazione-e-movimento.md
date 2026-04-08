@@ -76,7 +76,7 @@ example_it: >-
 id: term-e015-yoroshikuo-negai-shimasu
 lemma: よろしくお願いします
 reading: よろしくおねがいします
-romaji: yoroshikuo negai shimasu
+romaji: yoroshiku onegai shimasu
 meaning_it: conto sulla tua / sua collaborazione / le chiedo di occuparsene
 notes_it: >-
   Espressione ricorrente della lezione L06 nell'area Saluti / gestione dialogo. Versione più formale di よろしく, utile con professori o adulti quando si chiede collaborazione o si affida qualcosa.

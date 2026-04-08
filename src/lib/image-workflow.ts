@@ -184,7 +184,6 @@ export async function applyMediaImageBlocks(
       buildImageBlock({
         alt: altIt,
         caption: captionIt,
-        cardId: asset.cardId,
         src: asset.src
       })
     );
@@ -214,7 +213,6 @@ export async function applyMediaImageBlocks(
 export function buildImageBlock(input: {
   alt: string;
   caption?: string;
-  cardId?: string;
   src: string;
 }) {
   const lines = [
@@ -222,10 +220,6 @@ export function buildImageBlock(input: {
     `src: ${input.src}`,
     `alt: ${JSON.stringify(input.alt)}`
   ];
-
-  if (typeof input.cardId === "string" && input.cardId.trim().length > 0) {
-    lines.push(`card_id: ${input.cardId}`);
-  }
 
   if (typeof input.caption === "string" && input.caption.trim().length > 0) {
     lines.push("caption: >-");

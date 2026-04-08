@@ -1,26 +1,19 @@
 import {
-  getCardsByIds,
   getCrossMediaSiblingCounts,
   getGlossaryEntriesByIds,
   listEntryCardConnections,
   listEntryStudySignals,
   type EntryCardConnection,
-  type CardListItem,
   type DatabaseClient,
   type GrammarGlossaryEntry,
   type TermGlossaryEntry
 } from "@/db";
-import { mediaGlossaryEntryHref, mediaReviewCardHref } from "@/lib/site";
-import { resolveReviewSubjectGroups } from "@/lib/review-subject-state-lookup";
+import { mediaGlossaryEntryHref } from "@/lib/site";
 import { buildPronunciationData } from "@/lib/pronunciation";
 import { buildEntryKey } from "@/lib/entry-id";
 import { deriveInlineReading, stripInlineMarkdown } from "@/lib/inline-markdown";
 import { deriveEntryStudyState } from "@/lib/study-entry";
-import type {
-  TextbookCardTooltip,
-  TextbookEntryTooltip,
-  TextbookTooltipEntry
-} from "@/lib/textbook";
+import type { TextbookEntryTooltip, TextbookTooltipEntry } from "@/lib/textbook";
 
 type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
 
@@ -29,7 +22,6 @@ export async function loadLessonTooltipEntries(input: {
   lessonEntryLinks: Awaited<
     ReturnType<typeof import("@/db").listLessonEntryLinks>
   >;
-  imageCardIds: string[];
   mediaSlug: string;
 }): Promise<TextbookTooltipEntry[]> {
   const uniqueLessonEntryLinks = dedupeLessonEntryLinks(input.lessonEntryLinks);
@@ -62,7 +54,6 @@ export async function loadLessonTooltipEntries(input: {
     grammar,
     studySignals,
     cardConnections,
-    cards,
     termCrossMediaCounts,
     grammarCrossMediaCounts
   ] = await Promise.all([
@@ -70,7 +61,6 @@ export async function loadLessonTooltipEntries(input: {
     getGlossaryEntriesByIds(input.database, "grammar", grammarIds),
     listEntryStudySignals(input.database, studySignalEntries),
     listEntryCardConnections(input.database, studySignalEntries),
-    getCardsByIds(input.database, input.imageCardIds),
     getCrossMediaSiblingCounts(input.database, "term", termIds),
     getCrossMediaSiblingCounts(input.database, "grammar", grammarIds)
   ]);
@@ -78,20 +68,6 @@ export async function loadLessonTooltipEntries(input: {
   const grammarMap = new Map(grammar.map((entry) => [entry.id, entry]));
   const grammarCardFrontByEntryId = buildGrammarCardFrontMap(cardConnections);
   const studySignalsByEntry = buildStudySignalMap(studySignals);
-  const subjectLookup =
-    cards.length > 0
-      ? await resolveReviewSubjectGroups({
-          cards,
-          database: input.database,
-          grammar,
-          terms
-        })
-      : { subjectGroups: [] };
-  const subjectStateByCardId = new Map(
-    subjectLookup.subjectGroups.flatMap((group) =>
-      group.cards.map((card) => [card.id, group.subjectState] as const)
-    )
-  );
 
   const baseEntries = uniqueLessonEntryLinks.flatMap((link) => {
     if (link.entryType === "term") {
@@ -132,15 +108,7 @@ export async function loadLessonTooltipEntries(input: {
     ];
   });
 
-  const cardEntries = cards.map((card) =>
-    mapCardTooltipEntry(
-      card,
-      input.mediaSlug,
-      subjectStateByCardId.get(card.id) ?? null
-    )
-  );
-
-  return [...baseEntries, ...cardEntries];
+  return baseEntries;
 }
 
 function dedupeLessonEntryLinks(
@@ -266,36 +234,6 @@ function buildGrammarCardFrontMap(cardConnections: EntryCardConnection[]) {
   }
 
   return map;
-}
-
-function mapCardTooltipEntry(
-  card: CardListItem,
-  mediaSlug: string,
-  subjectState: {
-    manualOverride: boolean;
-    state: string;
-    suspended: boolean;
-  } | null
-): TextbookCardTooltip {
-  return {
-    id: card.id,
-    kind: "card",
-    label: card.front,
-    reading: undefined,
-    meaning: card.back,
-    notes: card.notesIt ?? undefined,
-    typeLabel: card.cardType,
-    statusLabel:
-      card.status === "suspended" || subjectState?.suspended
-        ? "Sospesa"
-        : subjectState?.state === "known_manual" || subjectState?.manualOverride
-          ? "Nota"
-          : subjectState?.state
-            ? "In review"
-            : "Disponibile",
-    segmentTitle: card.segment?.title ?? undefined,
-    reviewHref: mediaReviewCardHref(mediaSlug, card.id)
-  };
 }
 
 function resolveEntryStudyStateLabel(studySignals: StudySignalRow[]) {

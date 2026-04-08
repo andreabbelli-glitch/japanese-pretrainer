@@ -12,14 +12,14 @@ import type {
 } from "@/lib/content/types";
 import { renderFurigana, splitMonoRuby } from "@/lib/render-furigana";
 import { mediaAssetHref } from "@/lib/site";
-import type { FuriganaMode, TextbookTooltipEntry } from "@/lib/textbook";
+import type { FuriganaMode, TextbookEntryTooltip } from "@/lib/textbook";
 
 import { EmptyState } from "../ui/empty-state";
 import { PronunciationAudio } from "../ui/pronunciation-audio";
 
 export type TooltipTarget = {
   id: string;
-  kind: TextbookTooltipEntry["kind"];
+  kind: TextbookEntryTooltip["kind"];
 };
 
 type ImagePresentation = {
@@ -250,12 +250,6 @@ export function LessonArticle({
         return <hr className="reader-divider" key={index} />;
       case "image":
         const imagePresentation = resolveImagePresentation(block.src);
-        const imageTarget = block.cardId
-          ? ({
-              id: block.cardId,
-              kind: "card"
-            } satisfies TooltipTarget)
-          : null;
         const expandedImage = {
           alt: block.alt,
           captionText: block.caption
@@ -270,61 +264,28 @@ export function LessonArticle({
             className={cx(
               "reader-image",
               imagePresentation.variantClassName,
-              !imageTarget && "reader-image--zoomable",
-              imageTarget && "reader-image--interactive",
-              imageTarget &&
-                activeEntryKey === getTooltipEntryKey(imageTarget) &&
-                "reader-image--active"
+              "reader-image--zoomable"
             )}
-            data-card-id={block.cardId ?? undefined}
             key={index}
           >
-            {imageTarget ? (
-              <button
-                className="reader-image__button"
-                onBlur={onReferenceBlur}
-                onClick={(event) => {
-                  onReferenceClick(imageTarget, event.currentTarget, "click");
-                }}
-                onFocus={(event) => {
-                  onReferenceFocus(imageTarget, event.currentTarget, "focus");
-                }}
-                onMouseLeave={onReferenceLeave}
-                type="button"
-              >
-                <span className="reader-image__hint">Card</span>
-                <Image
-                  alt={block.alt}
-                  className="reader-image__asset"
-                  decoding="async"
-                  height={imagePresentation.height}
-                  loading="lazy"
-                  sizes={imagePresentation.sizes}
-                  src={mediaAssetHref(mediaSlug, block.src)}
-                  unoptimized
-                  width={imagePresentation.width}
-                />
-              </button>
-            ) : (
-              <button
-                aria-label={`Apri immagine ingrandita: ${block.alt}`}
-                className="reader-image__button reader-image__button--zoom"
-                onClick={() => onImageExpand(expandedImage)}
-                type="button"
-              >
-                <Image
-                  alt={block.alt}
-                  className="reader-image__asset"
-                  decoding="async"
-                  height={imagePresentation.height}
-                  loading="lazy"
-                  sizes={imagePresentation.sizes}
-                  src={mediaAssetHref(mediaSlug, block.src)}
-                  unoptimized
-                  width={imagePresentation.width}
-                />
-              </button>
-            )}
+            <button
+              aria-label={`Apri immagine ingrandita: ${block.alt}`}
+              className="reader-image__button reader-image__button--zoom"
+              onClick={() => onImageExpand(expandedImage)}
+              type="button"
+            >
+              <Image
+                alt={block.alt}
+                className="reader-image__asset"
+                decoding="async"
+                height={imagePresentation.height}
+                loading="lazy"
+                sizes={imagePresentation.sizes}
+                src={mediaAssetHref(mediaSlug, block.src)}
+                unoptimized
+                width={imagePresentation.width}
+              />
+            </button>
             {block.caption ? (
               <figcaption className="reader-image__caption">
                 {renderInlineNodes(block.caption.nodes)}
@@ -564,7 +525,7 @@ function FuriganaRuby({
 
 type EntryTooltipCardProps = {
   audioPreload?: "auto" | "metadata" | "none";
-  entry: TextbookTooltipEntry | null;
+  entry: TextbookEntryTooltip | null;
   isLoading?: boolean;
   mobile?: boolean;
   onRetry?: () => void;
@@ -613,17 +574,9 @@ export function EntryTooltipCard({
     >
       <div className="entry-tooltip-card__top">
         <span
-          className={cx(
-            "chip",
-            (entry.kind === "grammar" || entry.kind === "card") &&
-              "chip--grammar"
-          )}
+          className={cx("chip", entry.kind === "grammar" && "chip--grammar")}
         >
-          {entry.kind === "term"
-            ? "Termine"
-            : entry.kind === "grammar"
-              ? "Grammatica"
-              : "Card"}
+          {entry.kind === "term" ? "Termine" : "Grammatica"}
         </span>
         <span className="meta-pill">{entry.statusLabel}</span>
       </div>
@@ -656,11 +609,6 @@ export function EntryTooltipCard({
       {"pos" in entry && entry.pos ? (
         <p className="entry-tooltip-card__detail">Categoria: {entry.pos}</p>
       ) : null}
-      {"typeLabel" in entry ? (
-        <p className="entry-tooltip-card__detail">
-          Tipo card: {entry.typeLabel}
-        </p>
-      ) : null}
       {entry.notes ? (
         <p className="entry-tooltip-card__notes">
           {renderFurigana(entry.notes)}
@@ -671,11 +619,8 @@ export function EntryTooltipCard({
           {formatCrossMediaHintLabel(entry.crossMediaHint.otherMediaCount)}
         </p>
       ) : null}
-      <Link
-        className="text-link"
-        href={"glossaryHref" in entry ? entry.glossaryHref : entry.reviewHref}
-      >
-        {"glossaryHref" in entry ? "Apri voce" : "Apri card"}
+      <Link className="text-link" href={entry.glossaryHref}>
+        Apri voce
       </Link>
     </div>
   );

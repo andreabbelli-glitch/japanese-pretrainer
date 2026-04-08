@@ -104,12 +104,7 @@ function normalizeBlock(value: unknown): ContentBlock | null {
         src,
         alt
       };
-      const cardId = typeof value.cardId === "string" ? value.cardId : null;
       const caption = normalizeRichTextFragment(value.caption);
-
-      if (cardId) {
-        block.cardId = cardId;
-      }
 
       if (caption) {
         block.caption = caption;

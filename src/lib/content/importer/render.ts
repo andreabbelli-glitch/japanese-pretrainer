@@ -219,36 +219,24 @@ function renderList(
 function renderImage(block: ImageBlock, mediaSlug: string) {
   const imageSrc = mediaAssetHref(mediaSlug, block.src);
   const variantClassName = block.src.startsWith("assets/cards/")
-    ? "reader-image reader-image--card"
+    ? "reader-image reader-image--card reader-image--zoomable"
     : block.src.startsWith("assets/ui/")
-      ? "reader-image reader-image--ui"
-      : "reader-image reader-image--default";
-  const cardDataAttribute = block.cardId
-    ? ` data-card-id="${escapeAttribute(block.cardId)}"`
-    : "";
-  const zoomDataAttributes = block.cardId
-    ? ""
-    : [
-        ` data-image-src="${escapeAttribute(imageSrc)}"`,
-        ` data-image-alt="${escapeAttribute(block.alt)}"`,
-        block.caption
-          ? ` data-image-caption="${escapeAttribute(extractInlineNodesText(block.caption.nodes))}"`
-          : ""
-      ].join("");
-  const media = block.cardId
-    ? [
-        `<button class="reader-image__button" type="button"${cardDataAttribute}>`,
-        '<span class="reader-image__hint">Card</span>',
-        `<img class="reader-image__asset" src="${escapeAttribute(imageSrc)}" alt="${escapeAttribute(block.alt)}" loading="lazy" decoding="async" />`,
-        "</button>"
-      ].join("")
-    : `<img class="reader-image__asset" src="${escapeAttribute(imageSrc)}" alt="${escapeAttribute(block.alt)}" loading="lazy" decoding="async" />`;
+      ? "reader-image reader-image--ui reader-image--zoomable"
+      : "reader-image reader-image--default reader-image--zoomable";
+  const zoomDataAttributes = [
+    ` data-image-src="${escapeAttribute(imageSrc)}"`,
+    ` data-image-alt="${escapeAttribute(block.alt)}"`,
+    block.caption
+      ? ` data-image-caption="${escapeAttribute(extractInlineNodesText(block.caption.nodes))}"`
+      : ""
+  ].join("");
+  const media = `<img class="reader-image__asset" src="${escapeAttribute(imageSrc)}" alt="${escapeAttribute(block.alt)}" loading="lazy" decoding="async" />`;
   const caption = block.caption
     ? `<figcaption class="reader-image__caption">${renderInlineNodes(block.caption.nodes)}</figcaption>`
     : "";
 
   return [
-    `<figure class="${variantClassName}"${cardDataAttribute}${zoomDataAttributes}>`,
+    `<figure class="${variantClassName}"${zoomDataAttributes}>`,
     media,
     caption,
     "</figure>"

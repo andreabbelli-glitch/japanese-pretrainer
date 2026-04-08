@@ -201,10 +201,7 @@ describe("textbook data", () => {
     ]);
     expect(
       tooltipEntries?.every(
-        (entry) =>
-          entry.kind === "card" ||
-          !("crossMediaHint" in entry) ||
-          entry.crossMediaHint === undefined
+        (entry) => entry.crossMediaHint === undefined
       )
     ).toBe(true);
     expect(lessonData?.lesson.ast?.blocks).toHaveLength(3);

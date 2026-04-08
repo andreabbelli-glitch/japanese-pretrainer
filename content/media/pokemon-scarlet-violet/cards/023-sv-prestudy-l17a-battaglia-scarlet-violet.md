@@ -475,5 +475,5 @@ back: forza / potere
 example_jp: >-
   この ポケモンは {{力|ちから}}が あります。
 example_it: >-
-  Forza.
+  Questo Pokémon è potente.
 :::

@@ -30,7 +30,10 @@
   completato del percorso, anche se esiste una lesson diversa gia `in_progress`.
 - Reader lesson: il toggle furigana aggiorna davvero il rendering.
 - Reader lesson desktop: clic su un termine apre tooltip con `Apri entry`.
+- Reader lesson desktop: clic su un'immagine del textbook apre sempre il
+  lightbox, anche se il contenuto legacy aveva `card_id`.
 - Reader lesson mobile: tap su un termine apre sheet; `Lezioni` apre la rail mobile.
+- Reader lesson mobile: tap su un'immagine del textbook apre il lightbox.
 - Glossary: ricerca per kanji, kana e romaji (`bochi`, `yamafuda`, `侵略`) restituisce risultati sensati.
 - Glossary detail: lesson e card collegate sono navigabili.
 - Review: il toggle `Furigana sul fronte` rispetta sia la modalita immediata sia quella solo dopo risposta.

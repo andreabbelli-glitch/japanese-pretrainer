@@ -134,6 +134,26 @@ test("covers dashboard, reader, glossary, review, progress, settings and review 
   await hoverFuriganaButton.click();
   await expect(rubyReading).toBeHidden();
 
+  await page
+    .getByRole("button", {
+      name: /Apri immagine ingrandita: Carta di アビスベル=ジャシンてい/
+    })
+    .first()
+    .click();
+
+  const imageLightbox = page.getByRole("dialog", {
+    name: "Immagine ingrandita"
+  });
+
+  await expect(imageLightbox).toBeVisible();
+  await expect(
+    imageLightbox.getByRole("img", {
+      name: /Carta di アビスベル=ジャシンてい/
+    })
+  ).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(imageLightbox).toBeHidden();
+
   await page.getByRole("button", { name: "クリーチャー" }).first().click();
   const entryTooltip = page.locator(".entry-tooltip-card");
 

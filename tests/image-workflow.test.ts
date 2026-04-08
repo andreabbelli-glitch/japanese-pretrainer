@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
   applyMediaImageBlocks,
+  buildImageBlock,
   summarizeMediaImageWorkflow
 } from "@/lib/image-workflow";
 
@@ -86,6 +87,18 @@ describe("image workflow", () => {
 
     expect(secondResult.applied).toEqual([]);
     expect(secondResult.skippedExisting).toHaveLength(1);
+  });
+
+  it("does not emit legacy card_id metadata into textbook image blocks", () => {
+    const block = buildImageBlock({
+      alt: "Carta di test",
+      caption: "Caption di test",
+      src: "assets/cards/test-card.webp"
+    });
+
+    expect(block).toContain(":::image");
+    expect(block).toContain("src: assets/cards/test-card.webp");
+    expect(block).not.toContain("card_id:");
   });
 
   async function writeWorkflowFiles() {

@@ -1171,7 +1171,9 @@ export async function normalizeImageBlock(
     issues,
     rawBlock.position
   );
-  const cardId = readOptionalString(
+  // Legacy compatibility: accept card_id in older textbook image blocks, but
+  // ignore it. Textbook images are rendered as plain zoomable media.
+  readOptionalString(
     rawBlock.data,
     "card_id",
     sourceContext.filePath,
@@ -1296,7 +1298,6 @@ export async function normalizeImageBlock(
       position: rawBlock.position,
       src,
       alt,
-      cardId: cardId ?? undefined,
       caption: captionFragment?.fragment
     },
     references: [...(captionFragment?.references ?? [])]

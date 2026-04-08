@@ -189,7 +189,7 @@ reading: じゅぎょう
 romaji: jugyou
 meaning_it: lezione
 notes_it: >-
-  Voce della lezione L16 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Voce della lezione L16 nell'area Battaglia / saluti e dialogo. Parte del discorso: sostantivo. Lessico della scuola che compare nei dialoghi e nel contesto accademico iniziale.
 :::
 :::card
 id: card-v156-jugyou-recognition

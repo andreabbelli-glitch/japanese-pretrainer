@@ -7,9 +7,11 @@ non sostituisce un audit completo e aggiornato del codice.
 ## Copertura Attuale Dei Controlli
 
 - Suite E2E minima con Playwright su DB dedicato e import reale dell'intero workspace `content/`.
-- Copertura dei flussi chiave: dashboard, media detail, textbook reader, tooltip, glossary, review, progress, settings.
+- Copertura dei flussi chiave: dashboard, media detail, textbook reader, tooltip, lightbox immagini, glossary, review, progress, settings.
 - Smoke parametrica sulle route chiave di ogni media attivo presente in `content/media`.
 - Verifica mobile del reader con sheet touch per termini e rail lesson.
+- Le immagini del textbook restano plain media: click/tap apre il lightbox
+  anche in presenza di `card_id` legacy nei bundle storici.
 - `/review` come workspace globale; `/media/[mediaSlug]/review` come filtro
   verticale sullo stesso sistema.
 - Root `/review` deve avere uno stato vuoto dedicato per il primo avvio, non un

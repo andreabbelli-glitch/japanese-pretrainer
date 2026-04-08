@@ -93,21 +93,7 @@ export type TextbookEntryTooltip = {
   glossaryHref: Route;
 };
 
-export type TextbookCardTooltip = {
-  id: string;
-  kind: "card";
-  label: string;
-  reading?: string;
-  meaning: string;
-  notes?: string;
-  pronunciation?: PronunciationData;
-  typeLabel: string;
-  statusLabel: string;
-  segmentTitle?: string;
-  reviewHref: Route;
-};
-
-export type TextbookTooltipEntry = TextbookEntryTooltip | TextbookCardTooltip;
+export type TextbookTooltipEntry = TextbookEntryTooltip;
 
 export type TextbookIndexData = {
   media: {
@@ -263,15 +249,11 @@ async function loadTextbookLessonTooltipEntries(
     return null;
   }
 
-  // Parse AST synchronously while the entry-link query runs in parallel.
-  const lessonDocument = parseLessonAst(lesson.content?.astJson ?? null);
-  const imageCardIds = collectImageCardIds(lessonDocument);
   const lessonEntryLinks = await listLessonEntryLinks(database, lesson.id);
 
   return loadLessonTooltipEntries({
     database,
     lessonEntryLinks,
-    imageCardIds,
     mediaSlug
   });
 }
@@ -436,22 +418,6 @@ function normalizeLessonStatus(
 
 function parseLessonAst(astJson: string | null) {
   return parseTextbookDocument(astJson);
-}
-
-function collectImageCardIds(document: MarkdownDocument | null) {
-  if (!document) {
-    return [];
-  }
-
-  const cardIds = new Set<string>();
-
-  for (const block of document.blocks) {
-    if (block.type === "image" && block.cardId) {
-      cardIds.add(block.cardId);
-    }
-  }
-
-  return [...cardIds];
 }
 
 function markDataAsLive() {
