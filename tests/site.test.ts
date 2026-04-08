@@ -7,7 +7,9 @@ import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
 import { TextbookIndexPage } from "@/components/textbook/textbook-index-page";
 import {
   buildGlossaryHref,
+  kanjiClashHref,
   buildReviewSessionHref,
+  mediaKanjiClashHref,
   mediaAssetHref,
   mediaGlossaryEntryHref,
   mediaGlossaryGrammarHref,
@@ -46,8 +48,22 @@ describe("site helpers", () => {
 
     expect(new Set(labels).size).toBe(labels.length);
     expect(hrefs.every((href) => href.startsWith("/"))).toBe(true);
-    expect(labels).toEqual(["Home", "Media", "Glossary", "Review", "Settings"]);
-    expect(hrefs).toEqual(["/", "/media", "/glossary", "/review", "/settings"]);
+    expect(labels).toEqual([
+      "Home",
+      "Media",
+      "Glossary",
+      "Review",
+      "Kanji Clash",
+      "Settings"
+    ]);
+    expect(hrefs).toEqual([
+      "/",
+      "/media",
+      "/glossary",
+      "/review",
+      "/kanji-clash",
+      "/settings"
+    ]);
   });
 
   it("builds stable routes for media detail and study areas", () => {
@@ -79,6 +95,17 @@ describe("site helpers", () => {
     );
     expect(mediaReviewCardHref("fixture-tcg", "card-iku-review")).toBe(
       "/media/fixture-tcg/review/card/card-iku-review"
+    );
+    expect(kanjiClashHref()).toBe("/kanji-clash");
+    expect(
+      kanjiClashHref({
+        media: "fixture-tcg",
+        mode: "manual",
+        size: 20
+      })
+    ).toBe("/kanji-clash?mode=manual&media=fixture-tcg&size=20");
+    expect(mediaKanjiClashHref("fixture-tcg")).toBe(
+      "/kanji-clash?media=fixture-tcg"
     );
     expect(
       buildReviewSessionHref({
@@ -118,6 +145,10 @@ describe("site helpers", () => {
     expect(
       resolveActivePrimaryNavHref("/media/fixture-tcg/review/card/card-fixture-iku")
     ).toBe("/review");
+    expect(resolveActivePrimaryNavHref("/kanji-clash")).toBe("/kanji-clash");
+    expect(resolveActivePrimaryNavHref("/kanji-clash/manual")).toBe(
+      "/kanji-clash"
+    );
     expect(resolveActivePrimaryNavHref("/settings")).toBe("/settings");
   });
 

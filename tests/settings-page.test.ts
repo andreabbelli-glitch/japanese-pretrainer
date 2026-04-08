@@ -43,6 +43,9 @@ describe("settings page", () => {
         settings: {
           furiganaMode: "hover",
           glossaryDefaultSort: "lesson_order",
+          kanjiClashDailyNewLimit: 5,
+          kanjiClashDefaultScope: "global",
+          kanjiClashManualDefaultSize: 20,
           reviewFrontFurigana: true,
           reviewDailyLimit: 20
         }
@@ -53,6 +56,9 @@ describe("settings page", () => {
     expect(markup).toContain("Salva preferenze");
     expect(markup).toContain("Furigana sul fronte");
     expect(markup).toContain("Solo dopo risposta");
+    expect(markup).toContain("Kanji Clash");
+    expect(markup).toContain("Nuove coppie al giorno");
+    expect(markup).toContain("Dimensione predefinita drill manuale");
     expect(markup).toContain("FSRS optimizer");
     expect(markup).toContain("Desired retention");
     expect(markup).toContain("Esci dall&#x27;account");
@@ -72,6 +78,9 @@ describe("settings page", () => {
         settings: {
           furiganaMode: "hover",
           glossaryDefaultSort: "lesson_order",
+          kanjiClashDailyNewLimit: 5,
+          kanjiClashDefaultScope: "global",
+          kanjiClashManualDefaultSize: 20,
           reviewFrontFurigana: true,
           reviewDailyLimit: 20
         }
@@ -94,6 +103,9 @@ describe("settings page", () => {
         settings: {
           furiganaMode: "hover",
           glossaryDefaultSort: "lesson_order",
+          kanjiClashDailyNewLimit: 5,
+          kanjiClashDefaultScope: "global",
+          kanjiClashManualDefaultSize: 20,
           reviewFrontFurigana: true,
           reviewDailyLimit: 20
         }

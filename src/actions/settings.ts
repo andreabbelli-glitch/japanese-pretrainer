@@ -9,6 +9,9 @@ import { buildHrefWithSearch } from "@/lib/site";
 import {
   normalizeFuriganaMode,
   normalizeGlossaryDefaultSort,
+  normalizeKanjiClashDailyNewLimit,
+  normalizeKanjiClashDefaultScope,
+  normalizeKanjiClashManualDefaultSize,
   normalizeReviewFrontFurigana,
   normalizeReviewDailyLimit,
   updateStudySettings
@@ -23,6 +26,18 @@ export async function saveStudySettingsAction(formData: FormData) {
     ),
     glossaryDefaultSort: normalizeGlossaryDefaultSort(
       readRequiredString(formData, "glossaryDefaultSort")
+    ),
+    kanjiClashDailyNewLimit: normalizeKanjiClashDailyNewLimit(
+      Number.parseInt(readRequiredString(formData, "kanjiClashDailyNewLimit"), 10)
+    ),
+    kanjiClashDefaultScope: normalizeKanjiClashDefaultScope(
+      readRequiredString(formData, "kanjiClashDefaultScope")
+    ),
+    kanjiClashManualDefaultSize: normalizeKanjiClashManualDefaultSize(
+      Number.parseInt(
+        readRequiredString(formData, "kanjiClashManualDefaultSize"),
+        10
+      )
     ),
     reviewFrontFurigana: normalizeReviewFrontFurigana(
       readRequiredString(formData, "reviewFrontFurigana")

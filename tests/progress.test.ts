@@ -405,7 +405,7 @@ describe("progress, settings, and study controls", () => {
       getReviewPageData(developmentFixture.mediaSlug, {}, database)
     ]);
 
-    expect(settings).toEqual({
+    expect(settings).toMatchObject({
       furiganaMode: "on",
       glossaryDefaultSort: "alphabetical",
       reviewFrontFurigana: false,

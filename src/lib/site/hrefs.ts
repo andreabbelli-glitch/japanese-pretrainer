@@ -11,6 +11,7 @@ export type GlossaryStudyFilter =
   | "learning"
   | "new"
   | "available";
+export type KanjiClashMode = "automatic" | "manual";
 
 export type GlossaryHrefInput = {
   baseHref: Route;
@@ -23,6 +24,12 @@ export type GlossaryHrefInput = {
   segmentId?: string;
   sort?: GlossarySort;
   study?: GlossaryStudyFilter;
+};
+
+export type KanjiClashHrefInput = {
+  media?: string;
+  mode?: KanjiClashMode;
+  size?: number;
 };
 
 export function mediaHref(mediaSlug: string): Route {
@@ -42,6 +49,30 @@ export function mediaStudyHref(mediaSlug: string, area: StudyAreaKey): Route {
 
 export function reviewHref(): Route {
   return "/review" as Route;
+}
+
+export function kanjiClashHref(input: KanjiClashHrefInput = {}): Route {
+  return buildHrefWithSearch("/kanji-clash", (params) => {
+    setOptionalSearchParam(params, "mode", input.mode);
+    setOptionalSearchParam(params, "media", input.media);
+    setOptionalSearchParam(
+      params,
+      "size",
+      typeof input.size === "number" && Number.isFinite(input.size) && input.size > 0
+        ? String(Math.round(input.size))
+        : undefined
+    );
+  });
+}
+
+export function mediaKanjiClashHref(
+  mediaSlug: string,
+  input: Omit<KanjiClashHrefInput, "media"> = {}
+): Route {
+  return kanjiClashHref({
+    ...input,
+    media: mediaSlug
+  });
 }
 
 export function mediaReviewHref(mediaSlug: string): Route {

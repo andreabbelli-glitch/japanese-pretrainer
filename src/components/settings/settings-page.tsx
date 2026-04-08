@@ -11,6 +11,7 @@ import { StickyPageHeader } from "../layout/sticky-page-header";
 import { Section } from "../ui/section";
 import { SurfaceCard } from "../ui/surface-card";
 import { FsrsOptimizerStatusPanel } from "./fsrs-optimizer-status-panel";
+import { KanjiClashSettingsPanel } from "./kanji-clash-settings-panel";
 import { SaveSettingsButton } from "./save-settings-button";
 
 type SettingsPageProps = {
@@ -201,6 +202,8 @@ export function SettingsPage({
               </select>
             </label>
           </SurfaceCard>
+
+          <KanjiClashSettingsPanel settings={settings} />
 
           <SurfaceCard className="settings-panel">
             <div className="settings-panel__header">

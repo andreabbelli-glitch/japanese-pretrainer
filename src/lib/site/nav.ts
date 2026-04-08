@@ -1,5 +1,5 @@
 export type NavItem = {
-  href: "/" | "/media" | "/glossary" | "/review" | "/settings";
+  href: "/" | "/media" | "/glossary" | "/review" | "/kanji-clash" | "/settings";
   label: string;
   description: string;
 };
@@ -26,6 +26,11 @@ export const primaryNav: NavItem[] = [
     description: "Ripasso di oggi"
   },
   {
+    href: "/kanji-clash",
+    label: "Kanji Clash",
+    description: "Confronta kanji simili"
+  },
+  {
     href: "/settings",
     label: "Settings",
     description: "Preferenze"
@@ -43,6 +48,10 @@ export function resolveActivePrimaryNavHref(pathname: string): NavItem["href"] {
     /^\/media\/[^/]+\/review(?:\/|$)/.test(pathname)
   ) {
     return "/review";
+  }
+
+  if (pathname === "/kanji-clash" || pathname.startsWith("/kanji-clash/")) {
+    return "/kanji-clash";
   }
 
   if (

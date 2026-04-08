@@ -15,19 +15,28 @@ import { reviewSchedulerConfig } from "./review-scheduler";
 
 export type FuriganaMode = "on" | "off" | "hover";
 export type GlossaryDefaultSort = "lesson_order" | "alphabetical";
+export type KanjiClashDefaultScope = "global" | "media";
 
 export type StudySettings = {
   furiganaMode: FuriganaMode;
   glossaryDefaultSort: GlossaryDefaultSort;
+  kanjiClashDailyNewLimit: number;
+  kanjiClashDefaultScope: KanjiClashDefaultScope;
+  kanjiClashManualDefaultSize: number;
   reviewFrontFurigana: boolean;
   reviewDailyLimit: number;
 };
 
 export type StudySettingsInput = Partial<StudySettings>;
 
+export const kanjiClashManualDefaultSizeOptions = [10, 20, 40] as const;
+
 export const defaultStudySettings: StudySettings = {
   furiganaMode: "hover",
   glossaryDefaultSort: "lesson_order",
+  kanjiClashDailyNewLimit: 5,
+  kanjiClashDefaultScope: "global",
+  kanjiClashManualDefaultSize: 20,
   reviewFrontFurigana: true,
   reviewDailyLimit: reviewSchedulerConfig.defaultDailyLimit
 };
@@ -35,6 +44,9 @@ export const defaultStudySettings: StudySettings = {
 const studySettingKeys = [
   "furigana_mode",
   "glossary_default_sort",
+  "kanji_clash_daily_new_limit",
+  "kanji_clash_default_scope",
+  "kanji_clash_manual_default_size",
   "review_front_furigana",
   "review_daily_limit"
 ] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
@@ -92,6 +104,21 @@ async function loadStudySettingsSnapshot(
           normalizeGlossaryDefaultSort,
           defaultStudySettings.glossaryDefaultSort
         ),
+        kanjiClashDailyNewLimit: parseSettingValue(
+          valuesByKey.get("kanji_clash_daily_new_limit"),
+          normalizeKanjiClashDailyNewLimit,
+          defaultStudySettings.kanjiClashDailyNewLimit
+        ),
+        kanjiClashDefaultScope: parseSettingValue(
+          valuesByKey.get("kanji_clash_default_scope"),
+          normalizeKanjiClashDefaultScope,
+          defaultStudySettings.kanjiClashDefaultScope
+        ),
+        kanjiClashManualDefaultSize: parseSettingValue(
+          valuesByKey.get("kanji_clash_manual_default_size"),
+          normalizeKanjiClashManualDefaultSize,
+          defaultStudySettings.kanjiClashManualDefaultSize
+        ),
         reviewFrontFurigana: parseSettingValue(
           valuesByKey.get("review_front_furigana"),
           normalizeReviewFrontFurigana,
@@ -122,6 +149,18 @@ export async function updateStudySettings(
       input.glossaryDefaultSort === undefined
         ? current.glossaryDefaultSort
         : normalizeGlossaryDefaultSort(input.glossaryDefaultSort),
+    kanjiClashDailyNewLimit:
+      input.kanjiClashDailyNewLimit === undefined
+        ? current.kanjiClashDailyNewLimit
+        : normalizeKanjiClashDailyNewLimit(input.kanjiClashDailyNewLimit),
+    kanjiClashDefaultScope:
+      input.kanjiClashDefaultScope === undefined
+        ? current.kanjiClashDefaultScope
+        : normalizeKanjiClashDefaultScope(input.kanjiClashDefaultScope),
+    kanjiClashManualDefaultSize:
+      input.kanjiClashManualDefaultSize === undefined
+        ? current.kanjiClashManualDefaultSize
+        : normalizeKanjiClashManualDefaultSize(input.kanjiClashManualDefaultSize),
     reviewFrontFurigana:
       input.reviewFrontFurigana === undefined
         ? current.reviewFrontFurigana
@@ -145,6 +184,24 @@ export async function updateStudySettings(
       key: "glossary_default_sort",
       nowIso,
       valueJson: JSON.stringify(next.glossaryDefaultSort)
+    }),
+    upsertUserSetting({
+      database,
+      key: "kanji_clash_daily_new_limit",
+      nowIso,
+      valueJson: JSON.stringify(next.kanjiClashDailyNewLimit)
+    }),
+    upsertUserSetting({
+      database,
+      key: "kanji_clash_default_scope",
+      nowIso,
+      valueJson: JSON.stringify(next.kanjiClashDefaultScope)
+    }),
+    upsertUserSetting({
+      database,
+      key: "kanji_clash_manual_default_size",
+      nowIso,
+      valueJson: JSON.stringify(next.kanjiClashManualDefaultSize)
     }),
     upsertUserSetting({
       database,
@@ -177,6 +234,34 @@ export function normalizeGlossaryDefaultSort(
     : defaultStudySettings.glossaryDefaultSort;
 }
 
+export function normalizeKanjiClashDailyNewLimit(value: number) {
+  if (!Number.isFinite(value)) {
+    return defaultStudySettings.kanjiClashDailyNewLimit;
+  }
+
+  return Math.max(0, Math.min(20, Math.round(value)));
+}
+
+export function normalizeKanjiClashDefaultScope(
+  value: string
+): KanjiClashDefaultScope {
+  return value === "media" ? "media" : defaultStudySettings.kanjiClashDefaultScope;
+}
+
+export function normalizeKanjiClashManualDefaultSize(value: number) {
+  if (!Number.isFinite(value)) {
+    return defaultStudySettings.kanjiClashManualDefaultSize;
+  }
+
+  const normalizedValue = Math.round(value);
+
+  return kanjiClashManualDefaultSizeOptions.includes(
+    normalizedValue as (typeof kanjiClashManualDefaultSizeOptions)[number]
+  )
+    ? normalizedValue
+    : defaultStudySettings.kanjiClashManualDefaultSize;
+}
+
 export function normalizeReviewFrontFurigana(value: boolean | string) {
   if (typeof value === "boolean") {
     return value;
@@ -195,6 +280,17 @@ export function normalizeReviewDailyLimit(value: number) {
   }
 
   return Math.max(1, Math.min(200, Math.round(value)));
+}
+
+export function resolveKanjiClashDefaultScope(
+  scope: KanjiClashDefaultScope,
+  mediaSlug?: string | null
+): KanjiClashDefaultScope {
+  if (scope === "media" && !mediaSlug) {
+    return "global";
+  }
+
+  return scope;
 }
 
 function parseSettingValue<TValue, TResult>(
