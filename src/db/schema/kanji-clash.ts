@@ -3,8 +3,8 @@ import { index, integer, real, sqliteTable, text } from "drizzle-orm/sqlite-core
 import {
   kanjiClashPairModeValues,
   kanjiClashPairResultValues,
-  kanjiClashSchedulerVersionValues,
-  reviewStateValues
+  kanjiClashPairStateValues,
+  kanjiClashSchedulerVersionValues
 } from "./enums.ts";
 
 export const kanjiClashPairState = sqliteTable(
@@ -13,7 +13,7 @@ export const kanjiClashPairState = sqliteTable(
     pairKey: text("pair_key").primaryKey(),
     leftSubjectKey: text("left_subject_key").notNull(),
     rightSubjectKey: text("right_subject_key").notNull(),
-    state: text("state", { enum: reviewStateValues }).notNull(),
+    state: text("state", { enum: kanjiClashPairStateValues }).notNull(),
     stability: real("stability"),
     difficulty: real("difficulty"),
     dueAt: text("due_at"),
@@ -33,7 +33,8 @@ export const kanjiClashPairState = sqliteTable(
   },
   (table) => [
     index("kanji_clash_pair_state_due_idx").on(table.dueAt),
-    index("kanji_clash_pair_state_interaction_idx").on(table.lastInteractionAt)
+    index("kanji_clash_pair_state_interaction_idx").on(table.lastInteractionAt),
+    index("kanji_clash_pair_state_state_idx").on(table.state)
   ]
 );
 
@@ -43,7 +44,7 @@ export const kanjiClashPairLog = sqliteTable(
     id: text("id").primaryKey(),
     pairKey: text("pair_key")
       .notNull()
-      .references(() => kanjiClashPairState.pairKey),
+      .references(() => kanjiClashPairState.pairKey, { onDelete: "cascade" }),
     mode: text("mode", { enum: kanjiClashPairModeValues }).notNull(),
     answeredAt: text("answered_at").notNull(),
     targetSubjectKey: text("target_subject_key").notNull(),
@@ -52,8 +53,8 @@ export const kanjiClashPairLog = sqliteTable(
     leftSubjectKey: text("left_subject_key").notNull(),
     rightSubjectKey: text("right_subject_key").notNull(),
     result: text("result", { enum: kanjiClashPairResultValues }).notNull(),
-    previousState: text("previous_state", { enum: reviewStateValues }),
-    newState: text("new_state", { enum: reviewStateValues }),
+    previousState: text("previous_state", { enum: kanjiClashPairStateValues }),
+    newState: text("new_state", { enum: kanjiClashPairStateValues }),
     scheduledDueAt: text("scheduled_due_at"),
     elapsedDays: real("elapsed_days"),
     responseMs: integer("response_ms"),
@@ -68,8 +69,8 @@ export const kanjiClashPairLog = sqliteTable(
       table.pairKey,
       table.answeredAt
     ),
-    index("kanji_clash_pair_log_mode_answered_idx").on(
-      table.mode,
+    index("kanji_clash_pair_log_target_answered_idx").on(
+      table.targetSubjectKey,
       table.answeredAt
     )
   ]
