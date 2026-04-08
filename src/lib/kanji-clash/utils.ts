@@ -22,13 +22,18 @@ export function extractKanjiFromText(value: string) {
 }
 
 export function collectKanjiFromSurfaces(surfaces: string[]) {
-  return dedupeStable(surfaces.flatMap((surface) => extractKanjiFromText(surface)));
+  return dedupeStable(
+    surfaces.flatMap((surface) => extractKanjiFromText(surface))
+  );
 }
 
-export function buildKanjiClashPairKey(leftSubjectKey: string, rightSubjectKey: string) {
-  return [leftSubjectKey, rightSubjectKey].sort((left, right) =>
-    left.localeCompare(right)
-  ).join("::");
+export function buildKanjiClashPairKey(
+  leftSubjectKey: string,
+  rightSubjectKey: string
+) {
+  return [leftSubjectKey, rightSubjectKey]
+    .sort((left, right) => left.localeCompare(right))
+    .join("::");
 }
 
 export function getSharedKanji(
@@ -44,7 +49,11 @@ export function hasSharedNormalizedSurface(
   left: Pick<KanjiClashEligibleSubject, "surfaceForms">,
   right: Pick<KanjiClashEligibleSubject, "surfaceForms">
 ) {
-  return hasIntersection(left.surfaceForms, right.surfaceForms, normalizeKanjiClashSurface);
+  return hasIntersection(
+    left.surfaceForms,
+    right.surfaceForms,
+    normalizeKanjiClashSurface
+  );
 }
 
 export function hasSharedComparisonSurface(
@@ -62,7 +71,11 @@ export function hasSharedReading(
   left: Pick<KanjiClashEligibleSubject, "readingForms">,
   right: Pick<KanjiClashEligibleSubject, "readingForms">
 ) {
-  return hasIntersection(left.readingForms, right.readingForms, normalizeKanjiClashSurface);
+  return hasIntersection(
+    left.readingForms,
+    right.readingForms,
+    normalizeKanjiClashSurface
+  );
 }
 
 export function orderKanjiClashSubjects<T extends { subjectKey: string }>(
@@ -72,6 +85,16 @@ export function orderKanjiClashSubjects<T extends { subjectKey: string }>(
   return left.subjectKey.localeCompare(right.subjectKey) <= 0
     ? [left, right]
     : [right, left];
+}
+
+export function hashKanjiClashString(value: string) {
+  let hash = 5381;
+
+  for (let index = 0; index < value.length; index += 1) {
+    hash = ((hash << 5) + hash) ^ value.charCodeAt(index);
+  }
+
+  return hash >>> 0;
 }
 
 function hasIntersection(

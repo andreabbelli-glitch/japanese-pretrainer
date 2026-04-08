@@ -45,12 +45,19 @@ export type KanjiClashCandidate = {
   sharedKanji: string[];
 };
 
+export type KanjiClashSessionMode = "automatic" | "manual";
+export type KanjiClashScope = "global" | "media";
+export type KanjiClashRoundSide = "left" | "right";
+export type KanjiClashRoundSource = "due" | "new" | "reserve";
+
 export type KanjiClashPairResult = "again" | "good";
 export type KanjiClashPairStateStatus =
   | "new"
   | "learning"
   | "review"
-  | "relearning";
+  | "relearning"
+  | "suspended"
+  | "known_manual";
 export type KanjiClashSchedulerVersion = "kanji_clash_fsrs_v1";
 export type KanjiClashSchedulerRuntimeConfig = {
   desiredRetention?: number | null;
@@ -98,4 +105,51 @@ export type KanjiClashPairTransition = {
   next: KanjiClashPairState;
   previous: KanjiClashPairStateSnapshot;
   scheduled: ScheduleKanjiClashPairResult;
+};
+
+export type KanjiClashSessionRound = {
+  candidate: KanjiClashCandidate;
+  correctSubjectKey: string;
+  left: KanjiClashEligibleSubject;
+  leftSubjectKey: string;
+  pairKey: string;
+  pairState: KanjiClashPairState | null;
+  right: KanjiClashEligibleSubject;
+  rightSubjectKey: string;
+  source: KanjiClashRoundSource;
+  target: KanjiClashEligibleSubject;
+  targetPlacement: KanjiClashRoundSide;
+  targetSubjectKey: string;
+};
+
+export type KanjiClashQueueSnapshot = {
+  awaitingConfirmation: boolean;
+  currentRoundIndex: number;
+  dailyNewLimit: number | null;
+  dueCount: number;
+  finished: boolean;
+  introducedTodayCount: number;
+  mode: KanjiClashSessionMode;
+  newAvailableCount: number;
+  newQueuedCount: number;
+  remainingCount: number;
+  requestedSize: number | null;
+  reserveCount: number;
+  rounds: KanjiClashSessionRound[];
+  scope: KanjiClashScope;
+  seenPairKeys: string[];
+  totalCount: number;
+};
+
+export type KanjiClashSessionActionResult = {
+  answeredRound: KanjiClashSessionRound;
+  isCorrect: boolean;
+  logId: string;
+  nextQueue: KanjiClashQueueSnapshot;
+  nextRound: KanjiClashSessionRound | null;
+  pairState: KanjiClashPairState;
+  previousPairState: KanjiClashPairStateSnapshot;
+  result: KanjiClashPairResult;
+  scheduled: ScheduleKanjiClashPairResult;
+  selectedSubjectKey: string;
 };
