@@ -54,6 +54,10 @@ Il comando costruisce l'app, prepara un DB E2E temporaneo, importa tutti i
 bundle reali presenti in `content/` e avvia un server locale su porta `3100`
 per la suite.
 
+Quando il comando gira da un worktree Codex locale in sandbox, il setup del
+worktree deve avere gia eseguito `.codex/scripts/setup-worktree.sh` e il profilo
+di sandbox deve poter usare `nvm` e la cache browser Playwright fuori dal repo.
+
 ## Gate Canonico Di Verifica
 
 Per eseguire il controllo locale piu completo:

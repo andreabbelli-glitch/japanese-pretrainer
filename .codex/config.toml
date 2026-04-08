@@ -1,0 +1,10 @@
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+network_access = true
+writable_roots = [
+  "/Users/abelli/.nvm",
+  "/opt/homebrew/opt/nvm",
+  "/Users/abelli/Library/Caches/ms-playwright",
+]

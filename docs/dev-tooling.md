@@ -50,6 +50,48 @@ Verifica completa del setup:
 ./scripts/tooling-doctor.sh
 ```
 
+## Codex locale in sandbox
+
+Per worktree e automazioni Codex locali, il repo include una configurazione
+condivisa in `.codex/`.
+
+Bootstrap consigliato per ogni nuovo worktree:
+
+```sh
+.codex/scripts/setup-worktree.sh
+```
+
+Il setup installa le dipendenze del worktree, verifica `Node`, `pnpm`,
+`sqlite3`, `python3`, `git`, `rg` e controlla che la cache locale dei browser
+Playwright sia disponibile. Se mancano i browser, esegue in automatico:
+
+```sh
+./scripts/with-node.sh pnpm exec playwright install chromium firefox webkit
+```
+
+Il file `.codex/config.toml` imposta il default di progetto su sandbox
+`workspace-write` con rete attiva e aggiunge come writable roots extra-repo:
+
+- `~/.nvm`
+- `/opt/homebrew/opt/nvm`
+- `~/Library/Caches/ms-playwright`
+
+Questi path servono per due motivi pratici:
+
+- `./scripts/with-node.sh` risolve Node `22.x` via `nvm`;
+- i test E2E Playwright usano i browser installati nella cache utente macOS.
+
+Action repo-shared consigliate nell'app Codex:
+
+```sh
+.codex/scripts/dev.sh
+.codex/scripts/check.sh
+.codex/scripts/release-check.sh
+.codex/scripts/test-e2e.sh
+.codex/scripts/db-setup.sh
+.codex/scripts/content-import.sh
+```
+
 Workflow immagini:
 
 ```sh
@@ -84,6 +126,8 @@ eleggibili. La schedulazione vera resta fuori dal repo: usare `cron`,
 
 - browser Playwright per test E2E;
 - dipendenze progetto installate localmente dopo l'inizializzazione app.
+- writable roots sandbox per `nvm` e cache Playwright quando il lavoro gira in
+  un worktree Codex locale.
 
 ## Nota
 

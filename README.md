@@ -110,6 +110,41 @@ Lo script `./scripts/with-node.sh` prova a usare `nvm` da `$NVM_DIR`,
 corretta di Node e gia attiva, esegue direttamente il comando senza dipendere
 da `nvm`.
 
+## Codex Locale In Sandbox
+
+Il repository include una configurazione di progetto in `.codex/` pensata per
+agenti Codex locali che lavorano in sandbox `workspace-write`.
+
+Passo iniziale consigliato per ogni nuovo worktree Codex:
+
+```sh
+.codex/scripts/setup-worktree.sh
+```
+
+Il bootstrap:
+
+- installa le dipendenze del worktree con `./scripts/with-node.sh pnpm install --frozen-lockfile`;
+- verifica la toolchain locale con `./scripts/tooling-doctor.sh`;
+- installa i browser Playwright solo se la cache locale `~/Library/Caches/ms-playwright`
+  non contiene ancora `chromium`, `firefox` e `webkit`.
+
+La configurazione di progetto in `.codex/config.toml` assume che il sandbox
+locale possa usare:
+
+- `~/.nvm` oppure `/opt/homebrew/opt/nvm` per risolvere Node `22.x`;
+- `~/Library/Caches/ms-playwright` per i browser Playwright;
+- rete in sandbox, cosi un nuovo worktree puo eseguire `pnpm install` e,
+  quando necessario, installare i browser Playwright mancanti.
+
+Le action repo-shared consigliate per l'app Codex sono:
+
+- `.codex/scripts/dev.sh`
+- `.codex/scripts/check.sh`
+- `.codex/scripts/release-check.sh`
+- `.codex/scripts/test-e2e.sh`
+- `.codex/scripts/db-setup.sh`
+- `.codex/scripts/content-import.sh`
+
 ## Gate Di Verifica Locale
 
 Per verificare il repository in modo completo, esegui il gate canonico:

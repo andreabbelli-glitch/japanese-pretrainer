@@ -2,6 +2,8 @@
 
 ## Setup locale
 
+- Se la verifica parte da un worktree Codex locale in sandbox, eseguire prima
+  `.codex/scripts/setup-worktree.sh`
 - Eseguire `./scripts/with-node.sh pnpm db:migrate`
 - Eseguire `./scripts/with-node.sh pnpm content:validate`
 - Eseguire `./scripts/with-node.sh pnpm content:import -- --content-root ./content`
