@@ -280,6 +280,46 @@ describe("kanji clash session service", () => {
     expect(queue.introducedTodayCount).toBe(1);
   });
 
+  it("ignores persisted pair states that are not part of the automatic candidate set", async () => {
+    const now = new Date("2026-04-09T12:00:00.000Z");
+    const unrelatedPairKey = buildKanjiClashPairKey(
+      "entry:term:term-alpha-shokuhi",
+      "entry:term:term-beta-kaigan"
+    );
+
+    await database.insert(kanjiClashPairState).values({
+      createdAt: "2026-04-08T08:00:00.000Z",
+      difficulty: 2.4,
+      dueAt: "2026-04-08T09:00:00.000Z",
+      lapses: 0,
+      lastInteractionAt: "2026-04-08T08:00:00.000Z",
+      lastReviewedAt: "2026-04-08T08:00:00.000Z",
+      learningSteps: 0,
+      leftSubjectKey: "entry:term:term-alpha-shokuhi",
+      pairKey: unrelatedPairKey,
+      reps: 3,
+      rightSubjectKey: "entry:term:term-beta-kaigan",
+      scheduledDays: 2,
+      stability: 8.4,
+      state: "review",
+      updatedAt: "2026-04-08T08:00:00.000Z"
+    });
+
+    const queue = await loadKanjiClashQueueSnapshot({
+      dailyNewLimit: 5,
+      database,
+      mode: "automatic",
+      now,
+      scope: "global"
+    });
+
+    expect(queue.dueCount).toBe(0);
+    expect(queue.newQueuedCount).toBeGreaterThan(0);
+    expect(queue.rounds.some((round) => round.pairKey === unrelatedPairKey)).toBe(
+      false
+    );
+  });
+
   it("builds a compact manual session on the default fixture", async () => {
     const queue = await loadKanjiClashQueueSnapshot({
       database,

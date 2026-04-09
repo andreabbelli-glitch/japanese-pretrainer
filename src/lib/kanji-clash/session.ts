@@ -12,7 +12,6 @@ import {
   countKanjiClashAutomaticNewPairIntroductions,
   listKanjiClashDuePairStates,
   listEligibleKanjiClashSubjects,
-  listKanjiClashPairStatesBySubjectKeys,
   listKanjiClashPairStatesByPairKeys
 } from "@/db/queries";
 
@@ -86,18 +85,13 @@ export async function loadKanjiClashQueueSnapshot(
   }
 
   const candidates = generateKanjiClashCandidates(eligibleSubjects);
-  const candidatePairKeySet = new Set(
-    candidates.map((candidate) => candidate.pairKey)
-  );
-  const candidatePairStates = await listKanjiClashPairStatesBySubjectKeys(
-    database,
-    eligibleSubjects.map((subject) => subject.subjectKey)
-  );
-  const pairStates = new Map(
-    [...candidatePairStates].filter(([pairKey]) =>
-      candidatePairKeySet.has(pairKey)
-    )
-  );
+  const pairStates =
+    candidates.length > 0
+      ? await listKanjiClashPairStatesByPairKeys(
+          database,
+          candidates.map((candidate) => candidate.pairKey)
+        )
+      : new Map<string, KanjiClashPairState>();
   const introducedTodayCount =
     await countKanjiClashAutomaticNewPairIntroductions({
       database,
