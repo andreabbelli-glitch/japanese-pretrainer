@@ -37,12 +37,13 @@ export function buildKanjiClashQueueSnapshot(
   const now = toDate(input.now);
   const pairStates = input.pairStates ?? new Map<string, KanjiClashPairState>();
   const seenPairKeys = dedupeStable(input.seenPairKeys ?? []);
+  const seenPairKeySet = new Set(seenPairKeys);
   const currentRoundIndex = normalizePositiveInteger(
     input.currentRoundIndex,
     0
   );
   const queuedCandidates = input.candidates
-    .filter((candidate) => !seenPairKeys.includes(candidate.pairKey))
+    .filter((candidate) => !seenPairKeySet.has(candidate.pairKey))
     .map((candidate) => {
       const pairState = pairStates.get(candidate.pairKey) ?? null;
 

@@ -139,6 +139,25 @@ describe("kanji clash pairing helpers", () => {
     }
   );
 
+  it.each([["山札の上から1枚目", "山札の一番下"]])(
+    "excludes phrase-level contextual prefixes for %s vs %s",
+    (leftLabel, rightLabel) => {
+      const left = buildSubject({
+        label: leftLabel,
+        subjectKey: `entry:term:${leftLabel}`
+      });
+      const right = buildSubject({
+        label: rightLabel,
+        subjectKey: `entry:term:${rightLabel}`
+      });
+
+      expect(getKanjiClashPairExclusionReason(left, right)).toBe(
+        "shared-contextual-prefix"
+      );
+      expect(buildKanjiClashCandidate(left, right)).toBeNull();
+    }
+  );
+
   it.each([["道", "道具"]])(
     "keeps distinct pairs when the extra material is not a short qualifying edge for %s vs %s",
     (leftLabel, rightLabel) => {

@@ -173,6 +173,7 @@ export type KanjiClashAnswerSubmissionPayload = {
   expectedPairStateUpdatedAt: string | null;
   mediaIds: string[];
   mode: KanjiClashSessionMode;
+  queue: KanjiClashQueueSnapshot;
   requestedSize: number | null;
   scope: KanjiClashScope;
   seenPairKeys: string[];

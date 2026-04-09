@@ -318,6 +318,7 @@ function buildKanjiClashAnswerSubmissionPayload(input: {
     expectedPairStateUpdatedAt: input.currentRound.pairState?.updatedAt ?? null,
     mediaIds: input.selectedMediaId ? [input.selectedMediaId] : [],
     mode: input.queue.mode,
+    queue: input.queue,
     requestedSize: input.queue.requestedSize,
     responseMs: input.responseMs,
     scope: input.queue.scope,

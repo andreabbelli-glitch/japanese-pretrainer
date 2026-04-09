@@ -97,6 +97,7 @@ Una coppia viene scartata se ricade in uno di questi casi:
 - `editorial-clone`
 - `qualified-contained-clone`
 - `shared-lexical-core`
+- `shared-contextual-prefix`
 
 La normalizzazione usa `NFKC`, strip inline markdown e confronto su superfici
 pulite. Questo evita di introdurre doppioni cosmetici o quasi-cloni editoriali
@@ -116,6 +117,11 @@ cambiano solo per modificatori brevi. Esempi da scartare: `おすすめ編成` v
 
 Il filtro non deve mangiare coppie contrastive reali che condividono solo una
 cornice strutturale iniziale. Esempio da mantenere: `一番上` vs `一番下`.
+
+`shared-contextual-prefix` copre invece i casi in cui due surface condividono
+lo stesso contesto frasale iniziale, tipicamente un blocco come `山札の`, ma
+poi divergono in due code sostanziali che non hanno senso come clash lessicale.
+Esempio da scartare: `山札の上から1枚目` vs `山札の一番下`.
 
 Lo scoring privilegia:
 

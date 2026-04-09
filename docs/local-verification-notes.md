@@ -30,6 +30,9 @@ non sostituisce un audit completo e aggiornato del codice.
   riusano la stessa testa lessicale o la stessa derivazione mista kanji+kana
   con modificatori brevi, ma non elimina contrasti reali come `一番上` vs
   `一番下`.
+- `Kanji Clash` esclude anche i `shared-contextual-prefix`, dove due forme
+  condividono lo stesso contesto frasale iniziale ma confrontano poi due code
+  sostanziali incompatibili come `山札の上から1枚目` vs `山札の一番下`.
 - Messaggio di errore comprensibile in `content:import` quando il DB target non è migrato.
 
 ## Comportamenti Da Verificare

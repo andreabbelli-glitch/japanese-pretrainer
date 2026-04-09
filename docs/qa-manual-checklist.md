@@ -51,6 +51,9 @@
   `受け取る` vs `受け取り期限` o `未受け取り` vs `一括受け取り`.
 - `Kanji Clash`: coppie contrastive reali che condividono solo una cornice
   iniziale, come `一番上` vs `一番下`, devono restare valide.
+- `Kanji Clash`: il pool scarta anche i `shared-contextual-prefix`, cioe`
+  superfici frasali che condividono lo stesso contesto iniziale ma divergono
+  poi in due code sostanziali, come `山札の上から1枚目` vs `山札の一番下`.
 - `/media/[mediaSlug]/review`: resta il filtro verticale locale sul singolo
   media e non deve diventare un launcher verso un altro media.
 - Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.

@@ -89,6 +89,17 @@ export function hasSharedLexicalCoreSurface(
   );
 }
 
+export function hasSharedContextualPrefixSurface(
+  left: Pick<KanjiClashEligibleSubject, "surfaceForms">,
+  right: Pick<KanjiClashEligibleSubject, "surfaceForms">
+) {
+  return left.surfaceForms.some((leftSurface) =>
+    right.surfaceForms.some((rightSurface) =>
+      isSharedContextualPrefixSurface(leftSurface, rightSurface)
+    )
+  );
+}
+
 export function hasSharedReading(
   left: Pick<KanjiClashEligibleSubject, "readingForms">,
   right: Pick<KanjiClashEligibleSubject, "readingForms">
@@ -181,6 +192,30 @@ function isSharedLexicalCoreSurface(leftValue: string, rightValue: string) {
   );
 }
 
+function isSharedContextualPrefixSurface(leftValue: string, rightValue: string) {
+  const left = normalizeKanjiClashSurface(leftValue);
+  const right = normalizeKanjiClashSurface(rightValue);
+
+  if (left.length === 0 || right.length === 0 || left === right) {
+    return false;
+  }
+
+  const prefix = getLongestCommonPrefix(left, right);
+
+  if (
+    countCodePoints(prefix) < 3 ||
+    extractKanjiFromText(prefix).length < 2 ||
+    !endsWithKana(prefix)
+  ) {
+    return false;
+  }
+
+  const leftTail = left.slice(prefix.length);
+  const rightTail = right.slice(prefix.length);
+
+  return isSubstantialPhraseTail(leftTail) && isSubstantialPhraseTail(rightTail);
+}
+
 function hasQualifiedSharedSuffixHead(left: string, right: string) {
   const suffix = getLongestCommonSuffix(left, right);
 
@@ -268,6 +303,15 @@ function isSmallLexicalModifier(value: string) {
   );
 }
 
+function isSubstantialPhraseTail(value: string) {
+  const tail = normalizeKanjiClashSurface(value);
+
+  return (
+    countCodePoints(tail) >= 2 &&
+    /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]/u.test(tail)
+  );
+}
+
 function getLongestCommonPrefix(left: string, right: string) {
   const leftCodePoints = [...left];
   const rightCodePoints = [...right];
@@ -303,6 +347,14 @@ function getLongestCommonSuffix(left: string, right: string) {
 
 function containsKana(value: string) {
   return /[\p{Script=Hiragana}\p{Script=Katakana}ー]/u.test(value);
+}
+
+function endsWithKana(value: string) {
+  const lastCodePoint = [...value].at(-1);
+
+  return lastCodePoint
+    ? /[\p{Script=Hiragana}\p{Script=Katakana}ー]/u.test(lastCodePoint)
+    : false;
 }
 
 function countCodePoints(value: string) {
