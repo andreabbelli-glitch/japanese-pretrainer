@@ -7,7 +7,7 @@ test("covers Kanji Clash filter, click, keyboard, stop-on-error, and pair dedupe
 }) => {
   await page.goto("/kanji-clash?mode=manual&size=10");
 
-  await expect(page.getByRole("link", { name: "Kanji Clash" })).toBeVisible();
+  await expect(page.locator('.site-nav__link[href="/kanji-clash"]')).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Workspace di confronto" })
   ).toBeVisible();
@@ -16,8 +16,12 @@ test("covers Kanji Clash filter, click, keyboard, stop-on-error, and pair dedupe
 
   await page.getByRole("link", { name: "ZZ Kanji Clash E2E" }).click();
 
-  await expect(page).toHaveURL(
-    /\/kanji-clash\?media=zz-kanji-clash-e2e&mode=manual&size=10$/
+  await page.waitForURL(
+    (url) =>
+      url.pathname === "/kanji-clash" &&
+      url.searchParams.get("media") === "zz-kanji-clash-e2e" &&
+      url.searchParams.get("mode") === "manual" &&
+      url.searchParams.get("size") === "10"
   );
   await expect(
     page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
@@ -41,7 +45,9 @@ test("covers Kanji Clash filter, click, keyboard, stop-on-error, and pair dedupe
   seenPairKeys.add(secondRound.pairKey);
 
   await answerRoundWithClick(page, secondRound.wrongSide);
-  await expect(page.getByRole("alert")).toContainText("Risposta errata");
+  await expect(page.locator(".kanji-clash-feedback[role='alert']")).toContainText(
+    "Risposta errata"
+  );
   await page.waitForTimeout(500);
   await expect(page.locator(".kanji-clash-stage")).toHaveAttribute(
     "data-pair-key",
@@ -57,25 +63,32 @@ test("covers Kanji Clash filter, click, keyboard, stop-on-error, and pair dedupe
   await answerRoundWithKeyboard(page, currentRound.correctSide);
   await expect(page.getByRole("status")).toContainText("Risposta corretta");
 
-  currentRound = await waitForNextRound(page, currentRound.pairKey);
+  const nextStateAfterThirdRound = await waitForNextRoundOrCompletion(
+    page,
+    currentRound.pairKey
+  );
 
-  while (true) {
-    expect(seenPairKeys.has(currentRound.pairKey)).toBe(false);
-    seenPairKeys.add(currentRound.pairKey);
+  if (nextStateAfterThirdRound !== "done") {
+    currentRound = nextStateAfterThirdRound;
 
-    await answerRoundWithKeyboard(page, currentRound.correctSide);
-    await expect(page.getByRole("status")).toContainText("Risposta corretta");
+    while (true) {
+      expect(seenPairKeys.has(currentRound.pairKey)).toBe(false);
+      seenPairKeys.add(currentRound.pairKey);
 
-    const nextState = await waitForNextRoundOrCompletion(
-      page,
-      currentRound.pairKey
-    );
+      await answerRoundWithKeyboard(page, currentRound.correctSide);
+      await expect(page.getByRole("status")).toContainText("Risposta corretta");
 
-    if (nextState === "done") {
-      break;
+      const nextState = await waitForNextRoundOrCompletion(
+        page,
+        currentRound.pairKey
+      );
+
+      if (nextState === "done") {
+        break;
+      }
+
+      currentRound = nextState;
     }
-
-    currentRound = nextState;
   }
 
   await expect(page.locator(".empty-state")).toContainText("Sessione completata");

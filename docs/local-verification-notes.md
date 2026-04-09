@@ -21,6 +21,8 @@ non sostituisce un audit completo e aggiornato del codice.
 - Loading state contestuali per glossary, textbook, lesson, review, progress e settings.
 - `Kanji Clash` resta un workspace separato da `/review`, con pair state e log
   dedicati e senza mutazioni laterali sulla review standard.
+- `Kanji Clash` esclude correttamente same-entry, same-group, same-surface ed
+  editorial-clone dal pool eligibile.
 - Messaggio di errore comprensibile in `content:import` quando il DB target non è migrato.
 
 ## Comportamenti Da Verificare
@@ -32,10 +34,15 @@ non sostituisce un audit completo e aggiornato del codice.
 - `Kanji Clash` in scope media deve attivarsi solo con `media=<slug>` valido;
   se manca uno slug esplicito, il runtime deve restare su scope globale anche
   quando il default setting e` `media`.
+- Il pool `Kanji Clash` deve includere solo `term` gia consolidati nella review
+  reale (`review` o `relearning`, `stability >= 7`, `reps >= 2`), escludendo
+  `grammar`, `new`, `learning`, `known_manual` e `suspended`.
 - La sessione `Kanji Clash` non deve ripresentare la stessa pair key nella
   stessa run, anche con lati invertiti o target invertito.
 - In caso di errore in `Kanji Clash`, la UI deve mostrare la soluzione corretta
   e fermarsi finche l'utente non conferma `Continua`.
+- Una sessione `Kanji Clash` non deve cambiare queue, log o contatori
+  giornalieri della review standard.
 - Il daily limit della review è globale e la coda mostra fusioni cross-media
   quando la stessa entry o pattern è condivisa tra più media.
 - Su DB già esistenti, il comportamento della review deve restare compatibile
@@ -91,6 +98,8 @@ Il gate canonico copre nell'ordine:
   conviene coprire sia il workspace globale sia il filtro verticale sul media.
 - `Kanji Clash` ha una suite E2E mirata, ma resta focalizzata sul round flow
   principale: filtro media, click, tastiera, swipe, errore con stop e dedupe.
+- La doc di `Kanji Clash` deve restare allineata ai guardrail editoriali: niente
+  duplicati creati solo per aumentare le coppie candidabili.
 - Il primo avvio di `/review` va controllato anche senza media importati, per
   verificare che l'empty state dedicato non sembri una review locale vuota.
 - Le performance sono verificate solo a livello locale/percepito, non con budget automatizzati.

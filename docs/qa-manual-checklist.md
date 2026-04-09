@@ -33,6 +33,11 @@
   settings e` `media`.
 - `Kanji Clash`: il drill manuale accetta solo size `10`, `20`, `40` e il
   fallback usa il default persistito in `Settings`.
+- `Kanji Clash`: il pool mostra solo pair di `term` gia consolidati nella
+  review standard; non devono comparire `grammar`, card troppo nuove o
+  superfici duplicate/quasi-clone.
+- `Kanji Clash`: il pool scarta same-entry, same-group, same-surface ed
+  editorial-clone prima di costruire una sessione.
 - `/media/[mediaSlug]/review`: resta il filtro verticale locale sul singolo
   media e non deve diventare un launcher verso un altro media.
 - Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.
@@ -60,6 +65,10 @@
   swipe a destra seleziona l'opzione destra.
 - Kanji Clash: la stessa pair non ricompare nella stessa sessione ne nello
   stesso ordine ne invertita.
+- Kanji Clash: le voci simili restano separate solo quando la differenza e`
+  reale e documentata, non come quasi-cloni creati artificialmente.
+- Kanji Clash: una sessione completata o parziale non deve alterare numeri,
+  log o coda di `/review`; il workspace resta separato.
 - Review: le card già introdotte restano contabilizzate anche dopo l'upgrade
   da DB esistenti; la migrazione non deve azzerare il conteggio giornaliero.
 - Review import/sync: dopo `pnpm content:import` i subject necessari esistono

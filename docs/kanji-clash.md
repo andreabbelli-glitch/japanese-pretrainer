@@ -15,6 +15,7 @@ Non sostituisce la review standard. In v1:
 
 La surface pubblica e:
 
+- item primario separato in navbar: `Kanji Clash`;
 - route top-level `/kanji-clash`;
 - CTA dalla review globale;
 - CTA dalle pagine media verso `/kanji-clash?media=<slug>`.
@@ -68,6 +69,10 @@ Un subject entra nel pool solo se:
 - `reps >= 2`;
 - ha almeno un kanji nella superficie normalizzata.
 
+La soglia e volutamente conservativa: Kanji Clash deve partire da materiale gia
+stabile nella review standard, non da ricordi ancora fragili o appena
+introdotti.
+
 Il loader aggrega sia subject `entry` sia subject `group`, preservando:
 
 - `subjectKey`;
@@ -103,6 +108,20 @@ Lo scoring privilegia:
 
 Penalizza invece reading condivisi troppo simili, per evitare bivi didattici
 deboli.
+
+## Guardrail Editoriali
+
+Kanji Clash deve consumare materiale canonico, non creare duplicati studiati
+apposta per aumentare il numero di coppie possibili.
+
+- Reuse prima di duplicare: se una surface o un reading task e` gia coperto da
+  una voce o card esistente, non creare un doppione solo per farlo entrare nel
+  pool.
+- Distinzione esplicita: quando due voci simili sono davvero separate, tenere
+  entrambe distinte e documentare la differenza nella sorgente editoriale,
+  invece di trasformarle in quasi-cloni confusi.
+- Eligibility pulita: la superficie canonica deve restare stabile, leggibile e
+  priva di varianti cosmetiche che non cambiano il task di lettura.
 
 ## Data Model
 
@@ -205,6 +224,9 @@ La mutazione:
 - scrive una riga di log;
 - avanza la queue locale;
 - imposta `awaitingConfirmation` dopo un errore.
+
+Non aggiorna mai `review_subject_state`, `review_subject_log` o il daily limit
+dei nuovi della review standard.
 
 ## QA E Casi Edge
 

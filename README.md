@@ -77,6 +77,23 @@ nuove, segmentando i parametri in due preset per `cardType`:
 `recognition` e `concept`. La pagina `/settings` mostra in sola lettura lo
 stato corrente dell'optimizer e dei preset salvati in `user_setting`.
 
+## Kanji Clash
+
+`Kanji Clash` e un workspace separato dedicato alla discriminazione rapida tra
+vocaboli che condividono almeno un kanji.
+
+- route top-level `/kanji-clash` con item primario dedicato in navbar;
+- scope globale di default, con filtro media solo quando `media=<slug>` e
+  esplicito e valido;
+- modalita `Automatico` e `Drill manuale` nello stesso workspace;
+- memoria separata dalla review standard tramite `kanji_clash_pair_state` e
+  `kanji_clash_pair_log`.
+
+In v1 non cambia scheduling o log di `/review`, non include `grammar` nel pool
+eleggibile e non usa doppioni editoriali o quasi-cloni per forzare nuove pair.
+La source of truth tecnica e
+[`docs/kanji-clash.md`](./docs/kanji-clash.md).
+
 ## Bootstrap locale
 
 Runtime previsto:
@@ -335,7 +352,7 @@ vanno usati per istruzioni operative correnti.
 - [Specifica contenuti Markdown](./docs/content-format.md)
 - [Content parser e validator](./docs/content-parser.md)
 - [Importer sync strategy](./docs/importer-sync-strategy.md)
-- [Kanji Clash](./docs/kanji-clash.md)
+- [Kanji Clash](./docs/kanji-clash.md) - contratto tecnico e guardrail editoriali della feature
 - [Checklist QA manuale](./docs/qa-manual-checklist.md)
 - [Note di verifica locale](./docs/local-verification-notes.md)
 - [Performance baseline](./docs/performance-baseline.md)

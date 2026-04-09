@@ -20,8 +20,6 @@ Regola operativa:
 
 ## Remaining
 
-- `07` Docs And Skill Updates
-
 ## Fallback
 
 Se la sezione `Remaining` e' vuota:
