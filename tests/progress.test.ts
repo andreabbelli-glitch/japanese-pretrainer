@@ -246,13 +246,9 @@ describe("progress, settings, and study controls", () => {
 
     expect(markup).toContain("Review globale");
     expect(markup).toContain("Review del media");
-<<<<<<< HEAD
-    expect(markup).toContain('href="/kanji-clash?media=fixture-tcg"');
-=======
     expect(markup).toContain(
       `href="${mediaKanjiClashHref(developmentFixture.mediaSlug)}"`
     );
->>>>>>> 3017ee4 (Add Kanji Clash secondary CTAs)
     expect(markup).toContain("Coda locale e carico quotidiano");
   });
 
