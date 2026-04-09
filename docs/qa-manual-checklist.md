@@ -61,6 +61,11 @@
   dove lo stesso stem misto kanji+kana cade all'inizio di una forma e alla
   fine dell'altra, come `受け取る` vs `一括受け取り` o `未受け取り` vs
   `受け取り期限`.
+- `Kanji Clash`: il pool scarta anche i `same-kanji-core-reading`, cioe` pair
+  che riusano lo stesso blocco kanji sullo stesso bordo con soli kana diversi
+  intorno e senza cambiare la lettura del blocco, come `ランク戦` vs
+  `ストラテジー戦` o `行く` vs `行こう`, ma mantiene casi come `行う` vs `行く`
+  e `出す` vs `出る`.
 - `/media/[mediaSlug]/review`: resta il filtro verticale locale sul singolo
   media e non deve diventare un launcher verso un altro media.
 - Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.

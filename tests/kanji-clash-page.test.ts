@@ -146,6 +146,7 @@ function buildPageData(
     currentRound: currentRound as KanjiClashPageData["currentRound"],
     mode,
     queue,
+    queueToken: "test-kanji-clash-queue-token",
     scope,
     selectedMedia,
     settings,

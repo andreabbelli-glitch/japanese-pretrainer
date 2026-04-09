@@ -160,6 +160,7 @@ export type KanjiClashPageData = {
   currentRound: KanjiClashSessionRound | null;
   mode: KanjiClashSessionMode;
   queue: KanjiClashQueueSnapshot;
+  queueToken: string;
   scope: KanjiClashScope;
   selectedMedia: KanjiClashPageMediaOption | null;
   settings: KanjiClashPageSettings;
@@ -167,17 +168,10 @@ export type KanjiClashPageData = {
 };
 
 export type KanjiClashAnswerSubmissionPayload = {
-  chosenSubjectKey: string;
-  dailyNewLimit: number | null;
   expectedPairKey: string;
   expectedPairStateUpdatedAt: string | null;
-  mediaIds: string[];
-  mode: KanjiClashSessionMode;
-  queue: KanjiClashQueueSnapshot;
-  requestedSize: number | null;
-  scope: KanjiClashScope;
-  seenPairKeys: string[];
-  snapshotAtIso: string;
+  queueToken: string;
+  selectedSide: KanjiClashRoundSide;
 };
 
 export type KanjiClashSessionActionResult = {
@@ -185,6 +179,7 @@ export type KanjiClashSessionActionResult = {
   isCorrect: boolean;
   logId: string;
   nextQueue: KanjiClashQueueSnapshot;
+  nextQueueToken: string;
   nextRound: KanjiClashSessionRound | null;
   pairState: KanjiClashPairState;
   previousPairState: KanjiClashPairStateSnapshot;

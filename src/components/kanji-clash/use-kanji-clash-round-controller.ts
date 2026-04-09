@@ -29,6 +29,7 @@ const SWIPE_CLICK_SUPPRESSION_MS = 350;
 
 type ControllerState = {
   committedQueue: KanjiClashQueueSnapshot;
+  committedQueueToken: string;
   feedback: KanjiClashRoundFeedback | null;
   isSelectionLocked: boolean;
   pendingSelectionSide: KanjiClashRoundSide | null;
@@ -64,10 +65,12 @@ type TouchPoint = {
 };
 
 function createInitialControllerState(
-  queue: KanjiClashQueueSnapshot
+  queue: KanjiClashQueueSnapshot,
+  queueToken: string
 ): ControllerState {
   return {
     committedQueue: queue,
+    committedQueueToken: queueToken,
     feedback: null,
     isSelectionLocked: false,
     pendingSelectionSide: null,
@@ -79,14 +82,13 @@ export function useKanjiClashRoundController(
   data: KanjiClashPageData
 ): KanjiClashRoundControllerResult {
   const [controllerState, setControllerState] = useState<ControllerState>(() =>
-    createInitialControllerState(data.queue)
+    createInitialControllerState(data.queue, data.queueToken)
   );
   const [clientError, setClientError] = useState<string | null>(null);
   const [liveMessage, setLiveMessage] = useState<string | null>(null);
   const controllerStateRef = useRef(controllerState);
   const suppressNextClickRef = useRef(false);
   const touchStartRef = useRef<TouchPoint | null>(null);
-  const selectedMediaId = data.selectedMedia?.id ?? null;
 
   const commitControllerState = useCallback((nextState: ControllerState) => {
     controllerStateRef.current = nextState;
@@ -123,11 +125,6 @@ export function useKanjiClashRoundController(
         return;
       }
 
-      const chosenSubjectKey =
-        side === "left"
-          ? currentRound.leftSubjectKey
-          : currentRound.rightSubjectKey;
-
       commitControllerState({
         ...currentState,
         isSelectionLocked: true,
@@ -141,17 +138,17 @@ export function useKanjiClashRoundController(
       try {
         const result = await submitKanjiClashAnswerAction(
           buildKanjiClashAnswerSubmissionPayload({
-            chosenSubjectKey,
             currentRound,
-            queue: currentState.committedQueue,
+            queueToken: currentState.committedQueueToken,
             responseMs: performance.now() - startedAt,
-            selectedMediaId
+            selectedSide: side
           })
         );
 
         if (result.isCorrect) {
           commitControllerState({
             committedQueue: result.nextQueue,
+            committedQueueToken: result.nextQueueToken,
             feedback: null,
             isSelectionLocked: false,
             pendingSelectionSide: null,
@@ -183,7 +180,7 @@ export function useKanjiClashRoundController(
         setLiveMessage("Errore durante il salvataggio della risposta.");
       }
     },
-    [commitControllerState, selectedMediaId]
+    [commitControllerState]
   );
 
   const handleChooseSide = useCallback(
@@ -305,25 +302,17 @@ export function useKanjiClashRoundController(
 }
 
 function buildKanjiClashAnswerSubmissionPayload(input: {
-  chosenSubjectKey: string;
   currentRound: KanjiClashSessionRound;
-  queue: KanjiClashQueueSnapshot;
+  queueToken: string;
   responseMs: number;
-  selectedMediaId: string | null;
+  selectedSide: KanjiClashRoundSide;
 }): KanjiClashAnswerSubmissionPayload & { responseMs: number } {
   return {
-    chosenSubjectKey: input.chosenSubjectKey,
-    dailyNewLimit: input.queue.dailyNewLimit,
     expectedPairKey: input.currentRound.pairKey,
     expectedPairStateUpdatedAt: input.currentRound.pairState?.updatedAt ?? null,
-    mediaIds: input.selectedMediaId ? [input.selectedMediaId] : [],
-    mode: input.queue.mode,
-    queue: input.queue,
-    requestedSize: input.queue.requestedSize,
+    queueToken: input.queueToken,
     responseMs: input.responseMs,
-    scope: input.queue.scope,
-    seenPairKeys: input.queue.seenPairKeys,
-    snapshotAtIso: input.queue.snapshotAtIso
+    selectedSide: input.selectedSide
   };
 }
 
@@ -334,6 +323,7 @@ function createIncorrectAnswerControllerState(
 ): ControllerState {
   return {
     committedQueue: result.nextQueue,
+    committedQueueToken: result.nextQueueToken,
     feedback: {
       answeredRound: result.answeredRound,
       correctSubjectKey: result.answeredRound.correctSubjectKey,

@@ -10,7 +10,10 @@ import {
   runMigrations,
   type DatabaseClient
 } from "@/db";
-import { getKanjiClashPageData } from "@/lib/kanji-clash";
+import {
+  getKanjiClashPageData,
+  verifyKanjiClashQueueToken
+} from "@/lib/kanji-clash";
 import { updateStudySettings } from "@/lib/settings";
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 
@@ -61,6 +64,7 @@ describe("kanji clash page data", () => {
     expect(data.selectedMedia).toBeNull();
     expect(data.queue.scope).toBe("global");
     expect(data.queue.snapshotAtIso).toBe(snapshotAt.toISOString());
+    expect(verifyKanjiClashQueueToken(data.queueToken)).toEqual(data.queue);
     expect(data.currentRound?.pairKey).toBe(data.queue.rounds[0]?.pairKey ?? null);
     expect(data.snapshotAtIso).toBe(snapshotAt.toISOString());
   });

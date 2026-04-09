@@ -122,6 +122,26 @@ export function hasCrossEdgeMixedStemSurface(
   );
 }
 
+export function hasSameKanjiCoreReadingSurface(
+  left: Pick<KanjiClashEligibleSubject, "surfaceForms" | "readingForms">,
+  right: Pick<KanjiClashEligibleSubject, "surfaceForms" | "readingForms">
+) {
+  return left.surfaceForms.some((leftSurface) =>
+    right.surfaceForms.some((rightSurface) =>
+      left.readingForms.some((leftReading) =>
+        right.readingForms.some((rightReading) =>
+          isSameKanjiCoreReadingSurface(
+            leftSurface,
+            rightSurface,
+            leftReading,
+            rightReading
+          )
+        )
+      )
+    )
+  );
+}
+
 export function hasSharedReading(
   left: Pick<KanjiClashEligibleSubject, "readingForms">,
   right: Pick<KanjiClashEligibleSubject, "readingForms">
@@ -263,6 +283,49 @@ function isCrossEdgeMixedStemSurface(leftValue: string, rightValue: string) {
   return (
     matchesCrossEdgeMixedStem(left, right) ||
     matchesCrossEdgeMixedStem(right, left)
+  );
+}
+
+function isSameKanjiCoreReadingSurface(
+  leftValue: string,
+  rightValue: string,
+  leftReadingValue: string,
+  rightReadingValue: string
+) {
+  const left = normalizeKanjiClashSurface(leftValue);
+  const right = normalizeKanjiClashSurface(rightValue);
+
+  if (left.length === 0 || right.length === 0 || left === right) {
+    return false;
+  }
+
+  const leftVariants = buildKanaVariantKanjiCoreMatches(left);
+  const rightVariants = buildKanaVariantKanjiCoreMatches(right);
+
+  return leftVariants.some((leftVariant) =>
+    rightVariants.some((rightVariant) => {
+      if (
+        leftVariant.position !== rightVariant.position ||
+        leftVariant.kanjiCore !== rightVariant.kanjiCore ||
+        leftVariant.modifier === rightVariant.modifier
+      ) {
+        return false;
+      }
+
+      const leftCoreReading = extractKanjiCoreReading(
+        leftVariant,
+        leftReadingValue
+      );
+      const rightCoreReading = extractKanjiCoreReading(
+        rightVariant,
+        rightReadingValue
+      );
+
+      return (
+        leftCoreReading.length > 0 &&
+        leftCoreReading === rightCoreReading
+      );
+    })
   );
 }
 
@@ -435,6 +498,62 @@ function isTinyContrastiveTail(value: string) {
   );
 }
 
+function buildKanaVariantKanjiCoreMatches(surface: string) {
+  const prefixMatch = surface.match(
+    /^([\p{Script=Han}々〆ヵヶ]+)([\p{Script=Hiragana}\p{Script=Katakana}ー]+)$/u
+  );
+  const suffixMatch = surface.match(
+    /^([\p{Script=Hiragana}\p{Script=Katakana}ー]+)([\p{Script=Han}々〆ヵヶ]+)$/u
+  );
+  const matches: Array<{
+    kanjiCore: string;
+    modifier: string;
+    position: "prefix" | "suffix";
+  }> = [];
+
+  if (prefixMatch) {
+    matches.push({
+      kanjiCore: prefixMatch[1],
+      modifier: normalizeKanaReading(prefixMatch[2]),
+      position: "prefix"
+    });
+  }
+
+  if (suffixMatch) {
+    matches.push({
+      kanjiCore: suffixMatch[2],
+      modifier: normalizeKanaReading(suffixMatch[1]),
+      position: "suffix"
+    });
+  }
+
+  return matches;
+}
+
+function extractKanjiCoreReading(
+  match: {
+    modifier: string;
+    position: "prefix" | "suffix";
+  },
+  readingValue: string
+) {
+  const reading = normalizeKanaReading(readingValue);
+
+  if (reading.length === 0) {
+    return "";
+  }
+
+  if (match.position === "prefix") {
+    return reading.endsWith(match.modifier)
+      ? reading.slice(0, reading.length - match.modifier.length)
+      : "";
+  }
+
+  return reading.startsWith(match.modifier)
+    ? reading.slice(match.modifier.length)
+    : "";
+}
+
 function getLongestCommonPrefix(left: string, right: string) {
   const leftCodePoints = [...left];
   const rightCodePoints = [...right];
@@ -511,6 +630,13 @@ function endsWithKana(value: string) {
 
 function countCodePoints(value: string) {
   return [...value].length;
+}
+
+function normalizeKanaReading(value: string) {
+  return normalizeKanjiClashSurface(value).replace(
+    /[\u30a1-\u30f6]/g,
+    (character) => String.fromCharCode(character.charCodeAt(0) - 0x60)
+  );
 }
 
 function dedupeStable(values: string[]) {

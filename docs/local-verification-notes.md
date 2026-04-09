@@ -39,6 +39,10 @@ non sostituisce un audit completo e aggiornato del codice.
 - `Kanji Clash` esclude anche i `cross-edge-mixed-stem`, dove uno stesso stem
   misto kanji+kana compare all'inizio di una forma e alla fine dell'altra con
   solo piccoli modificatori ai bordi, come `受け取る` vs `一括受け取り`.
+- `Kanji Clash` esclude anche i `same-kanji-core-reading`, dove due forme
+  tengono fermo lo stesso blocco kanji sullo stesso bordo, cambiano solo per
+  kana circostanti e non cambiano la lettura del blocco stesso, come
+  `ランク戦` vs `ストラテジー戦` o `行く` vs `行こう`.
 - Messaggio di errore comprensibile in `content:import` quando il DB target non è migrato.
 
 ## Comportamenti Da Verificare

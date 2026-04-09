@@ -12,7 +12,7 @@ import {
   sql
 } from "drizzle-orm";
 
-import type { DatabaseQueryClient } from "../client.ts";
+import type { DatabaseClient, DatabaseQueryClient } from "../client.ts";
 import {
   kanjiClashPairLog,
   kanjiClashPairState
@@ -21,6 +21,9 @@ import type { KanjiClashPairState } from "../../lib/kanji-clash/types.ts";
 import { quoteSqlString } from "./review-query-helpers.ts";
 
 const KANJI_CLASH_PAIR_STATE_QUERY_CHUNK_SIZE = 400;
+export type KanjiClashPairStateMutationClient = Parameters<
+  Parameters<DatabaseClient["transaction"]>[0]
+>[0];
 
 export async function getKanjiClashPairStateByPairKey(
   database: DatabaseQueryClient,
@@ -141,6 +144,76 @@ export async function listKanjiClashDuePairStates(
   return rows.map(mapKanjiClashPairStateRow);
 }
 
+export async function getKanjiClashPairStateByPairKeyAndUpdatedAt(
+  database: DatabaseQueryClient,
+  input: {
+    pairKey: string;
+    updatedAt: string;
+  }
+): Promise<KanjiClashPairState | null> {
+  const row = await database.query.kanjiClashPairState.findFirst({
+    where: and(
+      eq(kanjiClashPairState.pairKey, input.pairKey),
+      eq(kanjiClashPairState.updatedAt, input.updatedAt)
+    )
+  });
+
+  return row ? mapKanjiClashPairStateRow(row) : null;
+}
+
+export async function updateKanjiClashPairStateIfCurrent(
+  database: KanjiClashPairStateMutationClient,
+  input: {
+    expectedUpdatedAt: string;
+    nextState: KanjiClashPairState;
+  }
+) {
+  const [updatedRow] = await database
+    .update(kanjiClashPairState)
+    .set(getKanjiClashPairStateUpdateValues(input.nextState))
+    .where(
+      and(
+        eq(kanjiClashPairState.pairKey, input.nextState.pairKey),
+        eq(kanjiClashPairState.updatedAt, input.expectedUpdatedAt)
+      )
+    )
+    .returning({
+      pairKey: kanjiClashPairState.pairKey
+    });
+
+  return Boolean(updatedRow);
+}
+
+export async function insertKanjiClashPairStateIfAbsent(
+  database: KanjiClashPairStateMutationClient,
+  input: {
+    createdAt: string;
+    nextState: KanjiClashPairState;
+  }
+) {
+  const [insertedRow] = await database
+    .insert(kanjiClashPairState)
+    .values({
+      ...input.nextState,
+      createdAt: input.createdAt
+    })
+    .onConflictDoNothing({
+      target: kanjiClashPairState.pairKey
+    })
+    .returning({
+      pairKey: kanjiClashPairState.pairKey
+    });
+
+  return Boolean(insertedRow);
+}
+
+export async function createKanjiClashPairLog(
+  database: KanjiClashPairStateMutationClient,
+  input: typeof kanjiClashPairLog.$inferInsert
+) {
+  await database.insert(kanjiClashPairLog).values(input);
+}
+
 export async function countKanjiClashAutomaticNewPairIntroductions(input: {
   database: DatabaseQueryClient;
   endAt: string;
@@ -183,6 +256,25 @@ function mapKanjiClashPairStateRow(
     stability: row.stability ?? null,
     state: row.state,
     updatedAt: row.updatedAt
+  };
+}
+
+function getKanjiClashPairStateUpdateValues(nextState: KanjiClashPairState) {
+  return {
+    difficulty: nextState.difficulty,
+    dueAt: nextState.dueAt,
+    lapses: nextState.lapses,
+    lastInteractionAt: nextState.lastInteractionAt,
+    lastReviewedAt: nextState.lastReviewedAt,
+    learningSteps: nextState.learningSteps,
+    leftSubjectKey: nextState.leftSubjectKey,
+    reps: nextState.reps,
+    rightSubjectKey: nextState.rightSubjectKey,
+    scheduledDays: nextState.scheduledDays,
+    schedulerVersion: nextState.schedulerVersion,
+    stability: nextState.stability,
+    state: nextState.state,
+    updatedAt: nextState.updatedAt
   };
 }
 

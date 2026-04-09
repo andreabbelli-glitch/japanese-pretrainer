@@ -100,6 +100,7 @@ Una coppia viene scartata se ricade in uno di questi casi:
 - `shared-contextual-prefix`
 - `contextualized-head-family`
 - `cross-edge-mixed-stem`
+- `same-kanji-core-reading`
 
 La normalizzazione usa `NFKC`, strip inline markdown e confronto su superfici
 pulite. Questo evita di introdurre doppioni cosmetici o quasi-cloni editoriali
@@ -135,6 +136,12 @@ appare all'inizio di una forma e alla fine dell'altra, con solo un modificatore
 breve e una piccola derivazione ai lati. Esempi da scartare: `受け取る` vs
 `一括受け取り`, `一括受け取り` vs `受け取り履歴`, `未受け取り` vs
 `受け取り期限`.
+
+`same-kanji-core-reading` copre invece i casi in cui due surface condividono
+lo stesso blocco kanji sullo stesso bordo, cambiano solo nei kana attorno e la
+lettura di quel blocco kanji resta la stessa. Esempi da scartare: `ランク戦` vs
+`ストラテジー戦`, `行く` vs `行こう`. Esempi da mantenere: `行う` vs `行く`,
+`出す` vs `出る`.
 
 Lo scoring privilegia:
 

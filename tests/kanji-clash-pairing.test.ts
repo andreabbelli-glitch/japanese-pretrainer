@@ -202,6 +202,30 @@ describe("kanji clash pairing helpers", () => {
     }
   );
 
+  it.each([
+    ["ランク戦", "らんくせん", "ストラテジー戦", "すとらてじーせん"],
+    ["行く", "いく", "行こう", "いこう"]
+  ])(
+    "excludes same kanji-core readings for %s vs %s",
+    (leftLabel, leftReading, rightLabel, rightReading) => {
+      const left = buildSubject({
+        label: leftLabel,
+        reading: leftReading,
+        subjectKey: `entry:term:${leftLabel}`
+      });
+      const right = buildSubject({
+        label: rightLabel,
+        reading: rightReading,
+        subjectKey: `entry:term:${rightLabel}`
+      });
+
+      expect(getKanjiClashPairExclusionReason(left, right)).toBe(
+        "same-kanji-core-reading"
+      );
+      expect(buildKanjiClashCandidate(left, right)).toBeNull();
+    }
+  );
+
   it.each([["道", "道具"]])(
     "keeps distinct pairs when the extra material is not a short qualifying edge for %s vs %s",
     (leftLabel, rightLabel) => {
@@ -211,6 +235,29 @@ describe("kanji clash pairing helpers", () => {
       });
       const right = buildSubject({
         label: rightLabel,
+        subjectKey: `entry:term:${rightLabel}`
+      });
+
+      expect(getKanjiClashPairExclusionReason(left, right)).toBeNull();
+      expect(buildKanjiClashCandidate(left, right)).not.toBeNull();
+    }
+  );
+
+  it.each([
+    ["行う", "おこなう", "行く", "いく"],
+    ["出す", "だす", "出る", "でる"],
+    ["ランク戦", "らんくせん", "戦う", "たたかう"]
+  ])(
+    "keeps distinct pairs when the shared kanji core changes reading or edge role for %s vs %s",
+    (leftLabel, leftReading, rightLabel, rightReading) => {
+      const left = buildSubject({
+        label: leftLabel,
+        reading: leftReading,
+        subjectKey: `entry:term:${leftLabel}`
+      });
+      const right = buildSubject({
+        label: rightLabel,
+        reading: rightReading,
         subjectKey: `entry:term:${rightLabel}`
       });
 

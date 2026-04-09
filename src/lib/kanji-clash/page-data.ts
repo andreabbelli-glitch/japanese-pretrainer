@@ -11,6 +11,7 @@ import {
 } from "@/lib/settings";
 
 import { getKanjiClashCurrentRound } from "./queue.ts";
+import { createKanjiClashQueueToken } from "./queue-token.ts";
 import { loadKanjiClashQueueSnapshot } from "./session.ts";
 import type {
   KanjiClashPageData,
@@ -64,6 +65,7 @@ export async function getKanjiClashPageData(
     currentRound: getKanjiClashCurrentRound(queue),
     mode,
     queue,
+    queueToken: createKanjiClashQueueToken(queue),
     scope,
     selectedMedia: scope === "media" ? selectedMedia : null,
     settings: {

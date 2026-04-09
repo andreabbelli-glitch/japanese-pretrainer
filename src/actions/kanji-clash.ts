@@ -9,7 +9,8 @@ import {
   getKanjiClashCurrentRound,
   type KanjiClashAnswerSubmissionPayload,
   type KanjiClashSessionActionResult,
-  type KanjiClashSessionRound
+  type KanjiClashSessionRound,
+  verifyKanjiClashQueueToken
 } from "@/lib/kanji-clash";
 
 type SubmitKanjiClashAnswerActionInput = KanjiClashAnswerSubmissionPayload & {
@@ -20,15 +21,14 @@ type SubmitKanjiClashAnswerActionInput = KanjiClashAnswerSubmissionPayload & {
 export async function submitKanjiClashAnswerAction(
   input: SubmitKanjiClashAnswerActionInput
 ): Promise<KanjiClashSessionActionResult> {
-  const chosenSubjectKey = input.chosenSubjectKey.trim();
   const expectedPairKey = input.expectedPairKey.trim();
   const expectedPairStateUpdatedAt = normalizeOptionalString(
     input.expectedPairStateUpdatedAt
   );
   const database = input.database ?? db;
-  const queue = validateSubmittedQueueSnapshot(input);
+  const queue = validateSubmittedQueueToken(input.queueToken);
 
-  if (!chosenSubjectKey) {
+  if (!isRoundSide(input.selectedSide)) {
     throw new Error("Missing Kanji Clash selection.");
   }
 
@@ -52,12 +52,10 @@ export async function submitKanjiClashAnswerAction(
 
   assertRoundCoherence(currentRound);
 
-  if (
-    chosenSubjectKey !== currentRound.leftSubjectKey &&
-    chosenSubjectKey !== currentRound.rightSubjectKey
-  ) {
-    throw new Error("Selected option is not part of the current Kanji Clash round.");
-  }
+  const chosenSubjectKey =
+    input.selectedSide === "left"
+      ? currentRound.leftSubjectKey
+      : currentRound.rightSubjectKey;
 
   return applyKanjiClashSessionAction({
     chosenSubjectKey,
@@ -107,48 +105,16 @@ function normalizeOptionalString(value?: string | null) {
   return normalized ? normalized : null;
 }
 
-function validateSubmittedQueueSnapshot(
-  input: SubmitKanjiClashAnswerActionInput
-) {
-  parseKanjiClashSnapshotAtIso(input.snapshotAtIso);
-
-  if (input.queue.snapshotAtIso !== input.snapshotAtIso) {
-    throw new Error("Kanji Clash snapshot time is invalid.");
-  }
-
-  if (input.queue.mode !== input.mode || input.queue.scope !== input.scope) {
-    throw new Error("Kanji Clash queue payload is inconsistent.");
-  }
-
-  if (input.queue.requestedSize !== input.requestedSize) {
-    throw new Error("Kanji Clash queue payload is inconsistent.");
-  }
-
-  if (input.queue.dailyNewLimit !== input.dailyNewLimit) {
-    throw new Error("Kanji Clash queue payload is inconsistent.");
-  }
-
-  if (!sameStringList(input.queue.seenPairKeys, input.seenPairKeys)) {
-    throw new Error("Kanji Clash queue payload is inconsistent.");
-  }
-
-  return input.queue;
+function isRoundSide(value: string): value is "left" | "right" {
+  return value === "left" || value === "right";
 }
 
-function sameStringList(left: string[], right: string[]) {
-  if (left.length !== right.length) {
-    return false;
+function validateSubmittedQueueToken(queueToken: string) {
+  const queue = verifyKanjiClashQueueToken(queueToken.trim());
+
+  if (!queue) {
+    throw new Error("Kanji Clash queue token is invalid.");
   }
 
-  return left.every((value, index) => value === right[index]);
-}
-
-function parseKanjiClashSnapshotAtIso(snapshotAtIso: string) {
-  const snapshotAt = new Date(snapshotAtIso.trim());
-
-  if (Number.isNaN(snapshotAt.getTime())) {
-    throw new Error("Kanji Clash snapshot time is invalid.");
-  }
-
-  return snapshotAt;
+  return queue;
 }

@@ -9,6 +9,7 @@ import {
   hasSharedContextualPrefixSurface,
   getSharedKanji,
   hasQualifiedContainedCloneSurface,
+  hasSameKanjiCoreReadingSurface,
   hasSharedLexicalCoreSurface,
   hasSharedComparisonSurface,
   hasSharedNormalizedSurface,
@@ -87,6 +88,10 @@ export function getKanjiClashPairExclusionReason(
 
   if (hasCrossEdgeMixedStemSurface(left, right)) {
     return "cross-edge-mixed-stem";
+  }
+
+  if (hasSameKanjiCoreReadingSurface(left, right)) {
+    return "same-kanji-core-reading";
   }
 
   return null;

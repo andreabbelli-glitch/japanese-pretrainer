@@ -11,11 +11,16 @@ import {
   type DatabaseClient
 } from "@/db";
 import { submitKanjiClashAnswerAction } from "@/actions/kanji-clash";
-import { loadKanjiClashQueueSnapshot } from "@/lib/kanji-clash";
+import {
+  createKanjiClashQueueToken,
+  loadKanjiClashQueueSnapshot,
+  type KanjiClashRoundSide,
+  type KanjiClashSessionRound,
+  verifyKanjiClashQueueToken
+} from "@/lib/kanji-clash";
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
 
 const SESSION_NOW = new Date("2026-04-09T12:00:00.000Z");
-const SESSION_SNAPSHOT_AT_ISO = SESSION_NOW.toISOString();
 
 describe("submitKanjiClashAnswerAction", () => {
   let tempDir = "";
@@ -51,19 +56,12 @@ describe("submitKanjiClashAnswerAction", () => {
     }
 
     const result = await submitKanjiClashAnswerAction({
-      chosenSubjectKey: currentRound.correctSubjectKey,
       database,
-      dailyNewLimit: queue.dailyNewLimit,
       expectedPairKey: currentRound.pairKey,
       expectedPairStateUpdatedAt: currentRound.pairState?.updatedAt ?? null,
-      mediaIds: [],
-      mode: queue.mode,
-      queue,
-      requestedSize: queue.requestedSize,
+      queueToken: createKanjiClashQueueToken(queue),
       responseMs: 182.4,
-      scope: queue.scope,
-      seenPairKeys: queue.seenPairKeys,
-      snapshotAtIso: SESSION_SNAPSHOT_AT_ISO
+      selectedSide: resolveCorrectSide(currentRound)
     });
     const storedPairState = await database.query.kanjiClashPairState.findFirst({
       where: (table, { eq }) => eq(table.pairKey, currentRound.pairKey)
@@ -75,6 +73,9 @@ describe("submitKanjiClashAnswerAction", () => {
     expect(result.isCorrect).toBe(true);
     expect(result.selectedSubjectKey).toBe(currentRound.correctSubjectKey);
     expect(result.nextQueue.seenPairKeys).toContain(currentRound.pairKey);
+    expect(verifyKanjiClashQueueToken(result.nextQueueToken)).toEqual(
+      result.nextQueue
+    );
     expect(storedPairState?.pairKey).toBe(currentRound.pairKey);
     expect(storedLog?.responseMs).toBe(182);
   });
@@ -95,18 +96,11 @@ describe("submitKanjiClashAnswerAction", () => {
 
     await expect(
       submitKanjiClashAnswerAction({
-        chosenSubjectKey: currentRound.correctSubjectKey,
         database,
-        dailyNewLimit: queue.dailyNewLimit,
         expectedPairKey: `${currentRound.pairKey}:stale`,
         expectedPairStateUpdatedAt: currentRound.pairState?.updatedAt ?? null,
-        mediaIds: [],
-        mode: queue.mode,
-        queue,
-        requestedSize: queue.requestedSize,
-        scope: queue.scope,
-        seenPairKeys: queue.seenPairKeys,
-        snapshotAtIso: SESSION_SNAPSHOT_AT_ISO
+        queueToken: createKanjiClashQueueToken(queue),
+        selectedSide: resolveCorrectSide(currentRound)
       })
     ).rejects.toThrow("Kanji Clash round is out of date.");
 
@@ -134,19 +128,12 @@ describe("submitKanjiClashAnswerAction", () => {
     expect(currentRound.pairState).toBeNull();
 
     const firstResult = await submitKanjiClashAnswerAction({
-      chosenSubjectKey: currentRound.correctSubjectKey,
       database,
-      dailyNewLimit: queue.dailyNewLimit,
       expectedPairKey: currentRound.pairKey,
       expectedPairStateUpdatedAt: currentRound.pairState?.updatedAt ?? null,
-      mediaIds: [],
-      mode: queue.mode,
-      queue,
-      requestedSize: queue.requestedSize,
+      queueToken: createKanjiClashQueueToken(queue),
       responseMs: 182.4,
-      scope: queue.scope,
-      seenPairKeys: queue.seenPairKeys,
-      snapshotAtIso: SESSION_SNAPSHOT_AT_ISO
+      selectedSide: resolveCorrectSide(currentRound)
     });
     const stateAfterFirst = await database.query.kanjiClashPairState.findFirst({
       where: (table, { eq }) => eq(table.pairKey, currentRound.pairKey)
@@ -157,19 +144,12 @@ describe("submitKanjiClashAnswerAction", () => {
 
     await expect(
       submitKanjiClashAnswerAction({
-        chosenSubjectKey: currentRound.correctSubjectKey,
         database,
-        dailyNewLimit: queue.dailyNewLimit,
         expectedPairKey: currentRound.pairKey,
         expectedPairStateUpdatedAt: currentRound.pairState?.updatedAt ?? null,
-        mediaIds: [],
-        mode: queue.mode,
-        queue,
-        requestedSize: queue.requestedSize,
+        queueToken: createKanjiClashQueueToken(queue),
         responseMs: 182.4,
-        scope: queue.scope,
-        seenPairKeys: queue.seenPairKeys,
-        snapshotAtIso: SESSION_SNAPSHOT_AT_ISO
+        selectedSide: resolveCorrectSide(currentRound)
       })
     ).rejects.toThrow("Kanji Clash round is out of date.");
 
@@ -186,4 +166,41 @@ describe("submitKanjiClashAnswerAction", () => {
     expect(logsAfterFirst).toHaveLength(1);
     expect(logsAfterSecond).toHaveLength(1);
   });
+
+  it("rejects tampered queue tokens before writing state", async () => {
+    const queue = await loadKanjiClashQueueSnapshot({
+      database,
+      mode: "manual",
+      now: SESSION_NOW,
+      requestedSize: 2,
+      scope: "global"
+    });
+    const currentRound = queue.rounds[0];
+
+    if (!currentRound) {
+      throw new Error("Expected a Kanji Clash round in the action fixture.");
+    }
+
+    const queueToken = createKanjiClashQueueToken(queue);
+    const tamperedToken = `${queueToken}tampered`;
+
+    await expect(
+      submitKanjiClashAnswerAction({
+        database,
+        expectedPairKey: currentRound.pairKey,
+        expectedPairStateUpdatedAt: currentRound.pairState?.updatedAt ?? null,
+        queueToken: tamperedToken,
+        selectedSide: resolveCorrectSide(currentRound)
+      })
+    ).rejects.toThrow("Kanji Clash queue token is invalid.");
+
+    expect(await database.query.kanjiClashPairState.findMany()).toHaveLength(0);
+    expect(await database.query.kanjiClashPairLog.findMany()).toHaveLength(0);
+  });
 });
+
+function resolveCorrectSide(
+  round: KanjiClashSessionRound
+): KanjiClashRoundSide {
+  return round.leftSubjectKey === round.correctSubjectKey ? "left" : "right";
+}
