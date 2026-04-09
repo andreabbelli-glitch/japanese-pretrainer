@@ -23,6 +23,9 @@ non sostituisce un audit completo e aggiornato del codice.
   dedicati e senza mutazioni laterali sulla review standard.
 - `Kanji Clash` esclude correttamente same-entry, same-group, same-surface ed
   editorial-clone dal pool eligibile.
+- `Kanji Clash` esclude anche i `qualified-contained-clone`, dove una forma
+  breve e` gia il nucleo visivo dell'altra e la parte extra e` solo un
+  qualificatore corto.
 - Messaggio di errore comprensibile in `content:import` quando il DB target non è migrato.
 
 ## Comportamenti Da Verificare
@@ -73,6 +76,11 @@ non sostituisce un audit completo e aggiornato del codice.
 Il comando costruisce l'app, prepara un DB E2E temporaneo, importa tutti i
 bundle reali presenti in `content/` e avvia un server locale su porta `3100`
 per la suite.
+
+Se ti serve invocare direttamente `./scripts/with-node.sh pnpm test:e2e:runner`
+su una subset, assicurati prima di avere una build fresca. `start:e2e` rifiuta
+di partire se `.next/BUILD_ID` e piu vecchio dei file applicativi rilevanti, in
+modo da evitare falsi failure Playwright contro una build production stale.
 
 Quando il comando gira da un worktree Codex locale in sandbox, il setup del
 worktree deve avere gia eseguito `.codex/scripts/setup-worktree.sh` e il profilo

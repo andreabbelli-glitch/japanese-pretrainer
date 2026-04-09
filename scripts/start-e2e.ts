@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import path from "node:path";
 import { spawn } from "node:child_process";
-import { rm } from "node:fs/promises";
+import { readdir, rm, stat } from "node:fs/promises";
 import { and, asc, eq, ne, sql } from "drizzle-orm";
 
 import {
@@ -29,10 +29,12 @@ const database = createDatabaseClient({
   databaseUrl: resolveStartE2EDatabaseUrl(process.env)
 });
 const contentRoot = path.resolve(process.cwd(), "content");
+const nextBuildIdPath = path.resolve(process.cwd(), ".next", "BUILD_ID");
 const nextCachePath = path.resolve(process.cwd(), ".next", "cache");
 const runtimeEnv = buildStartE2ERuntimeEnv(process.env);
 
 try {
+  await assertFreshProductionBuild();
   await runMigrations(database);
 
   const importResult = await importContentWorkspace({
@@ -99,6 +101,118 @@ for (const eventName of ["SIGINT", "SIGTERM"] as const) {
     stopNextStart(eventName);
     process.exit(eventName === "SIGINT" ? 130 : 143);
   });
+}
+
+async function assertFreshProductionBuild() {
+  const buildMarker = await statOrNull(nextBuildIdPath);
+
+  if (!buildMarker) {
+    throw new Error(
+      [
+        "Missing Next.js production build for E2E.",
+        "Run ./scripts/with-node.sh pnpm build or ./scripts/with-node.sh pnpm test:e2e before starting the runner."
+      ].join("\n")
+    );
+  }
+
+  const newestSourceEntry = await findNewestSourceEntry([
+    path.resolve(process.cwd(), "src"),
+    path.resolve(process.cwd(), "package.json"),
+    path.resolve(process.cwd(), "next.config.ts"),
+    path.resolve(process.cwd(), "tsconfig.json")
+  ]);
+
+  if (!newestSourceEntry || newestSourceEntry.mtimeMs <= buildMarker.mtimeMs) {
+    return;
+  }
+
+  throw new Error(
+    [
+      "Stale Next.js production build detected for E2E.",
+      `Last build: ${formatFreshnessTimestamp(buildMarker.mtimeMs)} (.next/BUILD_ID)`,
+      `Newest source: ${formatFreshnessTimestamp(newestSourceEntry.mtimeMs)} (${path.relative(process.cwd(), newestSourceEntry.filePath)})`,
+      "Run ./scripts/with-node.sh pnpm build or ./scripts/with-node.sh pnpm test:e2e before retrying."
+    ].join("\n")
+  );
+}
+
+async function findNewestSourceEntry(entryPaths: string[]) {
+  let newestEntry: FreshnessEntry | null = null;
+
+  for (const entryPath of entryPaths) {
+    const currentEntry = await findNewestEntryWithin(entryPath);
+
+    if (!currentEntry) {
+      continue;
+    }
+
+    if (!newestEntry || currentEntry.mtimeMs > newestEntry.mtimeMs) {
+      newestEntry = currentEntry;
+    }
+  }
+
+  return newestEntry;
+}
+
+type FreshnessEntry = {
+  filePath: string;
+  mtimeMs: number;
+};
+
+async function findNewestEntryWithin(
+  entryPath: string
+): Promise<FreshnessEntry | null> {
+  const entryStat = await statOrNull(entryPath);
+
+  if (!entryStat) {
+    return null;
+  }
+
+  if (entryStat.isFile()) {
+    return {
+      filePath: entryPath,
+      mtimeMs: entryStat.mtimeMs
+    };
+  }
+
+  if (!entryStat.isDirectory()) {
+    return null;
+  }
+
+  let newestEntry: FreshnessEntry | null = null;
+  const directoryEntries = await readdir(entryPath, { withFileTypes: true });
+
+  for (const directoryEntry of directoryEntries) {
+    const childEntryPath = path.join(entryPath, directoryEntry.name);
+    const currentEntry: FreshnessEntry | null =
+      await findNewestEntryWithin(childEntryPath);
+
+    if (!currentEntry) {
+      continue;
+    }
+
+    if (!newestEntry || currentEntry.mtimeMs > newestEntry.mtimeMs) {
+      newestEntry = currentEntry;
+    }
+  }
+
+  return newestEntry;
+}
+
+async function statOrNull(filePath: string) {
+  try {
+    return await stat(filePath);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return null;
+    }
+
+    throw error;
+  }
+}
+
+function formatFreshnessTimestamp(value: number) {
+  return new Date(value).toISOString();
 }
 
 async function seedE2ELessonProgress(database: DatabaseClient) {

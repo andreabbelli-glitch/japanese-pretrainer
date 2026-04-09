@@ -5,6 +5,7 @@ import {
   buildKanjiClashPairKey,
   extractKanjiFromText,
   generateKanjiClashCandidates,
+  getKanjiClashPairExclusionReason,
   type KanjiClashEligibleSubject
 } from "@/lib/kanji-clash";
 
@@ -77,6 +78,56 @@ describe("kanji clash pairing helpers", () => {
 
     expect(buildKanjiClashCandidate(first, clone)).toBeNull();
   });
+
+  it.each([
+    ["一番下", "山札の一番下"],
+    ["購入", "カード購入"],
+    ["状態", "タップ状態"],
+    ["選択", "ステージ選択"],
+    ["図鑑", "ポケモン図鑑"],
+    ["待って", "ちょっと待って"],
+    ["呪文", "無色呪文"],
+    ["対戦", "対戦開始"],
+    ["開始", "対戦開始"],
+    ["期限", "受け取り期限"],
+    ["大きい", "最も大きい"],
+    ["中", "開催中"],
+    ["出す", "思い出す"]
+  ])(
+    "excludes qualified contained clones for %s vs %s",
+    (shorterLabel, longerLabel) => {
+      const shorter = buildSubject({
+        label: shorterLabel,
+        subjectKey: `entry:term:${shorterLabel}`
+      });
+      const longer = buildSubject({
+        label: longerLabel,
+        subjectKey: `entry:term:${longerLabel}`
+      });
+
+      expect(getKanjiClashPairExclusionReason(shorter, longer)).toBe(
+        "qualified-contained-clone"
+      );
+      expect(buildKanjiClashCandidate(shorter, longer)).toBeNull();
+    }
+  );
+
+  it.each([["道", "道具"]])(
+    "keeps distinct pairs when the extra material is not a short qualifying edge for %s vs %s",
+    (leftLabel, rightLabel) => {
+      const left = buildSubject({
+        label: leftLabel,
+        subjectKey: `entry:term:${leftLabel}`
+      });
+      const right = buildSubject({
+        label: rightLabel,
+        subjectKey: `entry:term:${rightLabel}`
+      });
+
+      expect(getKanjiClashPairExclusionReason(left, right)).toBeNull();
+      expect(buildKanjiClashCandidate(left, right)).not.toBeNull();
+    }
+  );
 
   it("deduplicates repeated pair generation across multiple shared kanji buckets", () => {
     const first = buildSubject({

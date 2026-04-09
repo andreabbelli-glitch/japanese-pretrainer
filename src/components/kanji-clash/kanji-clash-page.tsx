@@ -66,14 +66,14 @@ function KanjiClashPageClient({ data }: KanjiClashPageProps) {
               className={buttonClassName(data.mode === "automatic")}
               href={buildModeHref(data, "automatic")}
             >
-              Automatico
+              FSRS
             </Link>
             <Link
               aria-current={data.mode === "manual" ? "page" : undefined}
               className={buttonClassName(data.mode === "manual")}
               href={buildModeHref(data, "manual")}
             >
-              Drill manuale
+              Drill
             </Link>
           </div>
         }
@@ -127,13 +127,6 @@ function KanjiClashRoundWorkspace({
   round: KanjiClashSessionRound;
 }) {
   const feedbackCopy = feedback ? buildFeedbackCopy(feedback) : null;
-  const targetNote = feedback
-    ? feedback.status === "correct"
-      ? queue.currentRoundIndex + 1 >= queue.totalCount
-        ? "Hai chiuso la coda corrente. La schermata finale arriva tra un attimo."
-        : "Hai trovato la risposta giusta. Il prossimo round parte tra poco."
-      : "La risposta corretta è già rivelata. Premi Continua per passare al round successivo."
-    : "Scegli quale forma giapponese corrisponde al target.";
 
   return (
     <article
@@ -190,7 +183,6 @@ function KanjiClashRoundWorkspace({
         <KanjiClashOptionCard
           disabled={isSelectionLocked}
           feedback={feedback}
-          label="Opzione sinistra"
           onSelect={() => onChooseSide("left")}
           side="left"
           subject={round.left}
@@ -213,13 +205,11 @@ function KanjiClashRoundWorkspace({
               ))}
             </div>
           ) : null}
-          <p className="kanji-clash-target__note">{targetNote}</p>
         </SurfaceCard>
 
         <KanjiClashOptionCard
           disabled={isSelectionLocked}
           feedback={feedback}
-          label="Opzione destra"
           onSelect={() => onChooseSide("right")}
           side="right"
           subject={round.right}
@@ -267,14 +257,12 @@ function KanjiClashRoundWorkspace({
 function KanjiClashOptionCard({
   disabled,
   feedback,
-  label,
   onSelect,
   side,
   subject
 }: {
   disabled: boolean;
   feedback: KanjiClashRoundFeedback | null;
-  label: string;
   onSelect: () => void;
   side: "left" | "right";
   subject: KanjiClashEligibleSubject;
@@ -318,13 +306,9 @@ function KanjiClashOptionCard({
       onClick={onSelect}
       type="button"
     >
-      <p className="eyebrow">{label}</p>
       <h3 className="kanji-clash-option__surface jp-inline">
         {subject.surfaceForms[0] ?? subject.label}
       </h3>
-      <p className="kanji-clash-option__caption">
-        Forma giapponese da confrontare visivamente con il target centrale.
-      </p>
       {badgeLabel ? (
         <span className="kanji-clash-option__badge meta-pill">
           {badgeLabel}
@@ -376,8 +360,8 @@ function KanjiClashEmptyWorkspace({
             {data.selectedMedia
               ? "Torna al globale"
               : data.mode === "automatic"
-                ? "Apri drill manuale"
-                : "Apri automatico"}
+                ? "Apri Drill"
+                : "Apri FSRS"}
           </Link>
           {data.selectedMedia ? (
             <Link
@@ -521,7 +505,7 @@ function buildHeaderSummary(
 
   return data.mode === "automatic"
     ? `Scope ${scopeLabel}. Target centrale, due opzioni laterali e coda dedicata separata dalla review classica.`
-    : `Scope ${scopeLabel}. Drill manuale con target centrale e confronto laterale estratti da una frontiera deterministica.`;
+    : `Scope ${scopeLabel}. Drill con target centrale e confronto laterale estratti da una frontiera deterministica.`;
 }
 
 function buildModeHref(data: KanjiClashPageData, mode: "automatic" | "manual") {

@@ -44,16 +44,18 @@ describe("kanji clash page", () => {
     );
 
     expect(markup).toContain("Workspace di confronto");
-    expect(markup).toContain("Automatico");
-    expect(markup).toContain("Drill manuale");
+    expect(markup).toContain("FSRS");
+    expect(markup).toContain("Drill");
     expect(markup).toContain("Target");
-    expect(markup).toContain("Opzione sinistra");
-    expect(markup).toContain("Opzione destra");
     expect(markup).toContain("食費");
     expect(markup).toContain("食品");
     expect(markup).toContain("spese per il cibo");
     expect(markup).not.toContain("alimento");
     expect(markup).not.toContain("しょくひん");
+    expect(markup).not.toContain("Scegli quale forma giapponese corrisponde al target.");
+    expect(markup).not.toContain(
+      "Forma giapponese da confrontare visivamente con il target centrale."
+    );
     expect(markup).toContain(
       'href="/kanji-clash?mode=automatic&amp;media=alpha"'
     );
@@ -84,7 +86,7 @@ describe("kanji clash page", () => {
     );
 
     expect(markup).toContain("Sessione completata");
-    expect(markup).toContain("Apri drill manuale");
+    expect(markup).toContain("Apri Drill");
   });
 });
 

@@ -6,7 +6,7 @@ import type {
 } from "@/lib/kanji-clash/types";
 
 export function formatKanjiClashModeLabel(mode: KanjiClashSessionMode) {
-  return mode === "automatic" ? "Automatico" : "Drill manuale";
+  return mode === "automatic" ? "FSRS" : "Drill";
 }
 
 export function formatKanjiClashRoundPosition(

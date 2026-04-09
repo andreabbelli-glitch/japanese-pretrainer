@@ -138,6 +138,12 @@ eleggibili. La schedulazione vera resta fuori dal repo: usare `cron`,
 Kanji Clash non richiede comandi dedicati oltre ai gate canonici del repo, ma
 tocca un flusso sensibile a regressioni di input, sessione e conferma errore.
 
+Per debug rapido puoi rilanciare solo `pnpm test:e2e:runner` o un file
+Playwright specifico, ma ora `start:e2e` verifica anche che la build production
+sia fresca. Se `.next/BUILD_ID` e piu vecchio di `src/`, `package.json`,
+`next.config.ts` o `tsconfig.json`, il bootstrap termina con un errore
+esplicito invece di servire una UI stale.
+
 Quando modifichi route, query, queue builder, pairing, round controller o
 server action di Kanji Clash:
 

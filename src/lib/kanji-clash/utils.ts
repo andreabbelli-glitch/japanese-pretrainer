@@ -67,6 +67,17 @@ export function hasSharedComparisonSurface(
   );
 }
 
+export function hasQualifiedContainedCloneSurface(
+  left: Pick<KanjiClashEligibleSubject, "surfaceForms">,
+  right: Pick<KanjiClashEligibleSubject, "surfaceForms">
+) {
+  return left.surfaceForms.some((leftSurface) =>
+    right.surfaceForms.some((rightSurface) =>
+      isQualifiedContainedCloneSurface(leftSurface, rightSurface)
+    )
+  );
+}
+
 export function hasSharedReading(
   left: Pick<KanjiClashEligibleSubject, "readingForms">,
   right: Pick<KanjiClashEligibleSubject, "readingForms">
@@ -113,6 +124,64 @@ function hasIntersection(
 
     return normalized.length > 0 && normalizedRight.has(normalized);
   });
+}
+
+function isQualifiedContainedCloneSurface(leftValue: string, rightValue: string) {
+  const left = normalizeKanjiClashSurface(leftValue);
+  const right = normalizeKanjiClashSurface(rightValue);
+
+  if (left.length === 0 || right.length === 0 || left === right) {
+    return false;
+  }
+
+  const shorter = left.length < right.length ? left : right;
+  const longer = shorter === left ? right : left;
+  const shorterKanji = extractKanjiFromText(shorter);
+
+  if (shorterKanji.length === 0) {
+    return false;
+  }
+
+  const longerKanji = new Set(extractKanjiFromText(longer));
+
+  if (!shorterKanji.every((kanji) => longerKanji.has(kanji))) {
+    return false;
+  }
+
+  return (
+    (longer.startsWith(shorter) &&
+      isSmallEdgeQualifier(longer.slice(shorter.length))) ||
+    (longer.endsWith(shorter) &&
+      isSmallEdgeQualifier(longer.slice(0, longer.length - shorter.length)))
+  );
+}
+
+function isSmallEdgeQualifier(value: string) {
+  const qualifier = normalizeKanjiClashSurface(value);
+
+  if (qualifier.length === 0) {
+    return false;
+  }
+
+  if (
+    /^[\p{Script=Hiragana}\p{Script=Katakana}ー]+$/u.test(qualifier) &&
+    countCodePoints(qualifier) <= 4
+  ) {
+    return true;
+  }
+
+  return (
+    /^[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+$/u.test(
+      qualifier
+    ) &&
+    countCodePoints(qualifier) >= 2 &&
+    countCodePoints(qualifier) <= 5 &&
+    extractKanjiFromText(qualifier).length <= 2
+  );
+}
+
+function countCodePoints(value: string) {
+  return [...value].length;
 }
 
 function dedupeStable(values: string[]) {

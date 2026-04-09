@@ -30,7 +30,7 @@ test("smokes automatic mode and invalid manual size fallback from persisted sett
   await page.goto("/kanji-clash?mode=manual&size=999");
 
   await expect(page.getByRole("heading", { name: "Workspace di confronto" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Drill manuale", exact: true })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Drill", exact: true })).toHaveAttribute(
     "aria-current",
     "page"
   );
@@ -40,7 +40,7 @@ test("smokes automatic mode and invalid manual size fallback from persisted sett
   );
   await expect(page.getByText("Sessione finita con taglia 40")).toBeVisible();
 
-  await page.getByRole("link", { name: "Automatico", exact: true }).click();
+  await page.getByRole("link", { name: "FSRS", exact: true }).click();
   await page.waitForURL(
     (url) =>
       url.pathname === "/kanji-clash" &&
@@ -50,7 +50,7 @@ test("smokes automatic mode and invalid manual size fallback from persisted sett
   );
 
   await expect(
-    page.getByRole("link", { name: "Automatico", exact: true })
+    page.getByRole("link", { name: "FSRS", exact: true })
   ).toHaveAttribute(
     "aria-current",
     "page"
@@ -61,7 +61,7 @@ test("smokes automatic mode and invalid manual size fallback from persisted sett
     )
   ).toBeVisible();
 
-  await page.getByRole("link", { name: "Drill manuale", exact: true }).click();
+  await page.getByRole("link", { name: "Drill", exact: true }).click();
   await page.waitForURL(
     (url) =>
       url.pathname === "/kanji-clash" &&
@@ -71,7 +71,7 @@ test("smokes automatic mode and invalid manual size fallback from persisted sett
   );
 
   await expect(
-    page.getByRole("link", { name: "Drill manuale", exact: true })
+    page.getByRole("link", { name: "Drill", exact: true })
   ).toHaveAttribute("aria-current", "page");
   await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
     "aria-current",
@@ -94,7 +94,7 @@ test("switches Kanji Clash mode from the UI while preserving media context and n
     "aria-current",
     "page"
   );
-  await expect(page.getByRole("link", { name: "Drill manuale", exact: true })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Drill", exact: true })).toHaveAttribute(
     "aria-current",
     "page"
   );
@@ -104,7 +104,7 @@ test("switches Kanji Clash mode from the UI while preserving media context and n
   );
   await expect(page.getByText("Sessione finita con taglia 40")).toBeVisible();
 
-  await page.getByRole("link", { name: "Automatico", exact: true }).click();
+  await page.getByRole("link", { name: "FSRS", exact: true }).click();
   await page.waitForURL(
     (url) =>
       url.pathname === "/kanji-clash" &&
@@ -118,7 +118,7 @@ test("switches Kanji Clash mode from the UI while preserving media context and n
     "page"
   );
   await expect(
-    page.getByRole("link", { name: "Automatico", exact: true })
+    page.getByRole("link", { name: "FSRS", exact: true })
   ).toHaveAttribute(
     "aria-current",
     "page"
@@ -129,7 +129,7 @@ test("switches Kanji Clash mode from the UI while preserving media context and n
     )
   ).toBeVisible();
 
-  await page.getByRole("link", { name: "Drill manuale", exact: true }).click();
+  await page.getByRole("link", { name: "Drill", exact: true }).click();
   await page.waitForURL(
     (url) =>
       url.pathname === "/kanji-clash" &&
@@ -143,7 +143,7 @@ test("switches Kanji Clash mode from the UI while preserving media context and n
     "page"
   );
   await expect(
-    page.getByRole("link", { name: "Drill manuale", exact: true })
+    page.getByRole("link", { name: "Drill", exact: true })
   ).toHaveAttribute("aria-current", "page");
   await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
     "aria-current",
@@ -187,7 +187,7 @@ test("opens Kanji Clash from global review and leaves review counts unchanged", 
     )
   ).toBeVisible();
 
-  await page.getByRole("link", { name: "Drill manuale", exact: true }).click();
+  await page.getByRole("link", { name: "Drill", exact: true }).click();
   await page.waitForURL(
     (url) =>
       url.pathname === "/kanji-clash" &&
@@ -240,7 +240,7 @@ test("opens Kanji Clash from media detail and leaves local review counts unchang
     "page"
   );
 
-  await page.getByRole("link", { name: "Drill manuale", exact: true }).click();
+  await page.getByRole("link", { name: "Drill", exact: true }).click();
   await page.waitForURL(
     (url) =>
       url.pathname === "/kanji-clash" &&
@@ -284,9 +284,7 @@ test("asserts visible Kanji Clash reveal state on wrong answers", async ({
   expect(currentVisibleRound.left).not.toBe(currentVisibleRound.right);
   expect(currentVisibleRound.reading).not.toBe("");
   expect(currentVisibleRound.meaning).not.toBe("");
-  await expect(page.locator(".kanji-clash-target__note")).toHaveText(
-    "Scegli quale forma giapponese corrisponde al target."
-  );
+  await expect(page.locator(".kanji-clash-target__note")).toHaveCount(0);
   await expect(page.locator(".kanji-clash-option--left")).toHaveAttribute(
     "aria-pressed",
     "false"
@@ -317,9 +315,7 @@ test("asserts visible Kanji Clash reveal state on wrong answers", async ({
   await expect(
     page.locator(`.kanji-clash-option--${currentRound.correctSide}`)
   ).toContainText("Corretto");
-  await expect(page.locator(".kanji-clash-target__note")).toHaveText(
-    "La risposta corretta è già rivelata. Premi Continua per passare al round successivo."
-  );
+  await expect(page.locator(".kanji-clash-target__note")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Continua" })).toBeVisible();
   await expect(page.locator(".kanji-clash-stage__title")).toHaveText(
     currentVisibleRound.title
@@ -374,9 +370,7 @@ test("filters Kanji Clash by media and exposes a playable manual round", async (
   expect(currentVisibleRound.left).not.toBe(currentVisibleRound.right);
   expect(currentVisibleRound.reading).not.toBe("");
   expect(currentVisibleRound.meaning).not.toBe("");
-  await expect(page.locator(".kanji-clash-target__note")).toHaveText(
-    "Scegli quale forma giapponese corrisponde al target."
-  );
+  await expect(page.locator(".kanji-clash-target__note")).toHaveCount(0);
   await expect(page.locator(".kanji-clash-option--left")).toHaveAttribute(
     "aria-pressed",
     "false"

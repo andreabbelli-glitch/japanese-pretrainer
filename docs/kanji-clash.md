@@ -95,10 +95,17 @@ Una coppia viene scartata se ricade in uno di questi casi:
 - `no-shared-kanji`
 - `same-surface`
 - `editorial-clone`
+- `qualified-contained-clone`
 
 La normalizzazione usa `NFKC`, strip inline markdown e confronto su superfici
 pulite. Questo evita di introdurre doppioni cosmetici o quasi-cloni editoriali
 nel workspace.
+
+`qualified-contained-clone` copre i casi in cui una surface corta e` gia il
+nucleo visivo dell'altra e il materiale extra, davanti o dietro, e` solo un
+qualificatore breve: kana/katakana leggeri oppure un frammento misto molto
+corto. Esempi da scartare: `一番下` vs `山札の一番下`, `購入` vs `カード購入`,
+`期限` vs `受け取り期限`, `対戦` vs `対戦開始`, `状態` vs `タップ状態`.
 
 Lo scoring privilegia:
 
@@ -179,7 +186,7 @@ Default v1:
 
 - daily new limit `5`
 
-### Modalita manuale
+### Modalita Drill
 
 - usa lo stesso pool eleggibile come base, ma lo esplora tramite una frontiera
   deterministica e bounded;

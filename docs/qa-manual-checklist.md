@@ -26,7 +26,7 @@
   non esistono ancora media o card disponibili, mostra un empty state dedicato
   al primo avvio.
 - `Kanji Clash` `/kanji-clash`: apre un workspace separato dalla review, con
-  modalita `Automatico` e `Drill manuale`, e senza confondere la UI con la
+  modalita `FSRS` e `Drill`, e senza confondere la UI con la
   coda FSRS standard.
 - `Kanji Clash`: con `media=<slug>` valido il workspace filtra il pool al media
   scelto; senza slug esplicito il runtime resta globale anche se il default in
@@ -41,6 +41,10 @@
   superfici duplicate/quasi-clone.
 - `Kanji Clash`: il pool scarta same-entry, same-group, same-surface ed
   editorial-clone prima di costruire una sessione.
+- `Kanji Clash`: il pool scarta anche i `qualified-contained-clone`, cioe`
+  pair in cui una surface corta e` gia il nucleo dell'altra e la parte extra,
+  davanti o dietro, e` solo un qualificatore breve come `山札の`, `カード`,
+  `タップ`, `無色`, `開始` o `受け取り`.
 - `/media/[mediaSlug]/review`: resta il filtro verticale locale sul singolo
   media e non deve diventare un launcher verso un altro media.
 - Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.

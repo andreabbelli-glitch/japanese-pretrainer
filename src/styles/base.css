@@ -930,6 +930,7 @@ rt {
 .kanji-clash-option {
   width: 100%;
   min-width: 0;
+  align-content: center;
   justify-content: center;
   justify-items: center;
   appearance: none;
@@ -1000,6 +1001,7 @@ rt {
 }
 
 .kanji-clash-target {
+  align-content: center;
   text-align: center;
 }
 
@@ -3181,12 +3183,30 @@ rt {
   }
 
   .kanji-clash-workspace {
-    grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .kanji-clash-round-grid {
     grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.9fr) minmax(0, 1fr);
     align-items: stretch;
+  }
+
+  .kanji-clash-sidebar {
+    grid-template-columns: minmax(16rem, 20rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .kanji-clash-sidebar__copy {
+    grid-column: 1;
+  }
+
+  .kanji-clash-sidebar > .stats-grid {
+    grid-column: 1 / -1;
+  }
+
+  .kanji-clash-sidebar__controls {
+    grid-column: 2;
+    grid-row: 1;
   }
 }
 

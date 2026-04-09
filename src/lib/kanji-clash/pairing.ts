@@ -5,6 +5,7 @@ import type {
 import {
   buildKanjiClashPairKey,
   getSharedKanji,
+  hasQualifiedContainedCloneSurface,
   hasSharedComparisonSurface,
   hasSharedNormalizedSurface,
   hasSharedReading,
@@ -62,6 +63,10 @@ export function getKanjiClashPairExclusionReason(
 
   if (hasSharedComparisonSurface(left, right)) {
     return "editorial-clone";
+  }
+
+  if (hasQualifiedContainedCloneSurface(left, right)) {
+    return "qualified-contained-clone";
   }
 
   return null;

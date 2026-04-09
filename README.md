@@ -211,6 +211,11 @@ pnpm fsrs:optimize
 pnpm fsrs:optimize:if-needed
 ```
 
+Se lanci direttamente `pnpm test:e2e:runner`, serve prima una build fresca:
+il bootstrap E2E ora blocca l'avvio quando `.next` e piu vecchio dei file
+applicativi per evitare falsi failure contro asset stale. Il percorso canonico
+resta `./scripts/with-node.sh pnpm test:e2e`.
+
 ## Database locale
 
 Il layer persistence iniziale usa `Drizzle ORM` su `SQLite` locale-first.
