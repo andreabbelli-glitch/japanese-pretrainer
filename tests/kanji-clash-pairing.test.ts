@@ -112,8 +112,52 @@ describe("kanji clash pairing helpers", () => {
     }
   );
 
+  it.each([
+    ["おすすめ編成", "パーティー編成"],
+    ["おすすめ編成", "デッキ編成"],
+    ["パーティー編成", "デッキ編成"],
+    ["受け取る", "受け取り期限"],
+    ["受け取る", "受け取り履歴"],
+    ["受け取り履歴", "受け取り期限"],
+    ["未受け取り", "一括受け取り"]
+  ])(
+    "excludes shared lexical cores for %s vs %s",
+    (leftLabel, rightLabel) => {
+      const left = buildSubject({
+        label: leftLabel,
+        subjectKey: `entry:term:${leftLabel}`
+      });
+      const right = buildSubject({
+        label: rightLabel,
+        subjectKey: `entry:term:${rightLabel}`
+      });
+
+      expect(getKanjiClashPairExclusionReason(left, right)).toBe(
+        "shared-lexical-core"
+      );
+      expect(buildKanjiClashCandidate(left, right)).toBeNull();
+    }
+  );
+
   it.each([["道", "道具"]])(
     "keeps distinct pairs when the extra material is not a short qualifying edge for %s vs %s",
+    (leftLabel, rightLabel) => {
+      const left = buildSubject({
+        label: leftLabel,
+        subjectKey: `entry:term:${leftLabel}`
+      });
+      const right = buildSubject({
+        label: rightLabel,
+        subjectKey: `entry:term:${rightLabel}`
+      });
+
+      expect(getKanjiClashPairExclusionReason(left, right)).toBeNull();
+      expect(buildKanjiClashCandidate(left, right)).not.toBeNull();
+    }
+  );
+
+  it.each([["一番上", "一番下"]])(
+    "keeps contrastive compounds that only share a structural prefix for %s vs %s",
     (leftLabel, rightLabel) => {
       const left = buildSubject({
         label: leftLabel,

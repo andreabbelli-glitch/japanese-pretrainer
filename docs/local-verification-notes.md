@@ -26,6 +26,10 @@ non sostituisce un audit completo e aggiornato del codice.
 - `Kanji Clash` esclude anche i `qualified-contained-clone`, dove una forma
   breve e` gia il nucleo visivo dell'altra e la parte extra e` solo un
   qualificatore corto.
+- `Kanji Clash` esclude anche i `shared-lexical-core`, dove due forme
+  riusano la stessa testa lessicale o la stessa derivazione mista kanji+kana
+  con modificatori brevi, ma non elimina contrasti reali come `一番上` vs
+  `一番下`.
 - Messaggio di errore comprensibile in `content:import` quando il DB target non è migrato.
 
 ## Comportamenti Da Verificare

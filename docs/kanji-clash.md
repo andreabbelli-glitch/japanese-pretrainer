@@ -96,6 +96,7 @@ Una coppia viene scartata se ricade in uno di questi casi:
 - `same-surface`
 - `editorial-clone`
 - `qualified-contained-clone`
+- `shared-lexical-core`
 
 La normalizzazione usa `NFKC`, strip inline markdown e confronto su superfici
 pulite. Questo evita di introdurre doppioni cosmetici o quasi-cloni editoriali
@@ -106,6 +107,15 @@ nucleo visivo dell'altra e il materiale extra, davanti o dietro, e` solo un
 qualificatore breve: kana/katakana leggeri oppure un frammento misto molto
 corto. Esempi da scartare: `一番下` vs `山札の一番下`, `購入` vs `カード購入`,
 `期限` vs `受け取り期限`, `対戦` vs `対戦開始`, `状態` vs `タップ状態`.
+
+`shared-lexical-core` copre invece i casi in cui due surface riusano lo stesso
+nucleo lessicale finale, oppure la stessa derivazione mista kanji+kana, e
+cambiano solo per modificatori brevi. Esempi da scartare: `おすすめ編成` vs
+`パーティー編成`, `おすすめ編成` vs `デッキ編成`, `受け取る` vs `受け取り期限`,
+`受け取り履歴` vs `受け取り期限`, `未受け取り` vs `一括受け取り`.
+
+Il filtro non deve mangiare coppie contrastive reali che condividono solo una
+cornice strutturale iniziale. Esempio da mantenere: `一番上` vs `一番下`.
 
 Lo scoring privilegia:
 

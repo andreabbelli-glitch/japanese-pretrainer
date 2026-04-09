@@ -78,6 +78,17 @@ export function hasQualifiedContainedCloneSurface(
   );
 }
 
+export function hasSharedLexicalCoreSurface(
+  left: Pick<KanjiClashEligibleSubject, "surfaceForms">,
+  right: Pick<KanjiClashEligibleSubject, "surfaceForms">
+) {
+  return left.surfaceForms.some((leftSurface) =>
+    right.surfaceForms.some((rightSurface) =>
+      isSharedLexicalCoreSurface(leftSurface, rightSurface)
+    )
+  );
+}
+
 export function hasSharedReading(
   left: Pick<KanjiClashEligibleSubject, "readingForms">,
   right: Pick<KanjiClashEligibleSubject, "readingForms">
@@ -156,6 +167,59 @@ function isQualifiedContainedCloneSurface(leftValue: string, rightValue: string)
   );
 }
 
+function isSharedLexicalCoreSurface(leftValue: string, rightValue: string) {
+  const left = normalizeKanjiClashSurface(leftValue);
+  const right = normalizeKanjiClashSurface(rightValue);
+
+  if (left.length === 0 || right.length === 0 || left === right) {
+    return false;
+  }
+
+  return (
+    hasQualifiedSharedSuffixHead(left, right) ||
+    hasQualifiedSharedMixedStem(left, right)
+  );
+}
+
+function hasQualifiedSharedSuffixHead(left: string, right: string) {
+  const suffix = getLongestCommonSuffix(left, right);
+
+  if (extractKanjiFromText(suffix).length < 2) {
+    return false;
+  }
+
+  const leftPrefix = left.slice(0, left.length - suffix.length);
+  const rightPrefix = right.slice(0, right.length - suffix.length);
+
+  return (
+    leftPrefix.length > 0 &&
+    rightPrefix.length > 0 &&
+    isSmallLexicalModifier(leftPrefix) &&
+    isSmallLexicalModifier(rightPrefix)
+  );
+}
+
+function hasQualifiedSharedMixedStem(left: string, right: string) {
+  const prefix = getLongestCommonPrefix(left, right);
+
+  if (
+    extractKanjiFromText(prefix).length < 2 ||
+    !containsKana(prefix)
+  ) {
+    return false;
+  }
+
+  const leftTail = left.slice(prefix.length);
+  const rightTail = right.slice(prefix.length);
+
+  return (
+    leftTail.length > 0 &&
+    rightTail.length > 0 &&
+    isSmallDerivativeTail(leftTail) &&
+    isSmallDerivativeTail(rightTail)
+  );
+}
+
 function isSmallEdgeQualifier(value: string) {
   const qualifier = normalizeKanjiClashSurface(value);
 
@@ -178,6 +242,67 @@ function isSmallEdgeQualifier(value: string) {
     countCodePoints(qualifier) <= 5 &&
     extractKanjiFromText(qualifier).length <= 2
   );
+}
+
+function isSmallDerivativeTail(value: string) {
+  const tail = normalizeKanjiClashSurface(value);
+
+  return (
+    tail.length > 0 &&
+    /^[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+$/u.test(tail) &&
+    countCodePoints(tail) <= 4 &&
+    extractKanjiFromText(tail).length <= 2
+  );
+}
+
+function isSmallLexicalModifier(value: string) {
+  const modifier = normalizeKanjiClashSurface(value);
+
+  return (
+    modifier.length > 0 &&
+    /^[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+$/u.test(
+      modifier
+    ) &&
+    countCodePoints(modifier) <= 6 &&
+    extractKanjiFromText(modifier).length <= 2
+  );
+}
+
+function getLongestCommonPrefix(left: string, right: string) {
+  const leftCodePoints = [...left];
+  const rightCodePoints = [...right];
+  let sharedLength = 0;
+
+  while (
+    sharedLength < leftCodePoints.length &&
+    sharedLength < rightCodePoints.length &&
+    leftCodePoints[sharedLength] === rightCodePoints[sharedLength]
+  ) {
+    sharedLength += 1;
+  }
+
+  return leftCodePoints.slice(0, sharedLength).join("");
+}
+
+function getLongestCommonSuffix(left: string, right: string) {
+  const leftCodePoints = [...left];
+  const rightCodePoints = [...right];
+  let sharedLength = 0;
+
+  while (
+    sharedLength < leftCodePoints.length &&
+    sharedLength < rightCodePoints.length &&
+    leftCodePoints[leftCodePoints.length - 1 - sharedLength] ===
+      rightCodePoints[rightCodePoints.length - 1 - sharedLength]
+  ) {
+    sharedLength += 1;
+  }
+
+  return leftCodePoints.slice(leftCodePoints.length - sharedLength).join("");
+}
+
+function containsKana(value: string) {
+  return /[\p{Script=Hiragana}\p{Script=Katakana}ー]/u.test(value);
 }
 
 function countCodePoints(value: string) {

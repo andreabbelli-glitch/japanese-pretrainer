@@ -45,6 +45,12 @@
   pair in cui una surface corta e` gia il nucleo dell'altra e la parte extra,
   davanti o dietro, e` solo un qualificatore breve come `山札の`, `カード`,
   `タップ`, `無色`, `開始` o `受け取り`.
+- `Kanji Clash`: il pool scarta anche i `shared-lexical-core`, cioe` pair che
+  riusano la stessa testa lessicale o la stessa derivazione mista kanji+kana
+  con soli modificatori brevi, come `おすすめ編成` vs `パーティー編成`,
+  `受け取る` vs `受け取り期限` o `未受け取り` vs `一括受け取り`.
+- `Kanji Clash`: coppie contrastive reali che condividono solo una cornice
+  iniziale, come `一番上` vs `一番下`, devono restare valide.
 - `/media/[mediaSlug]/review`: resta il filtro verticale locale sul singolo
   media e non deve diventare un launcher verso un altro media.
 - Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.
