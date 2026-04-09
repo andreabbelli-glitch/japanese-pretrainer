@@ -137,6 +137,8 @@ function KanjiClashRoundWorkspace({
   return (
     <article
       className="surface-card surface-card--hero kanji-clash-stage"
+      data-pair-key={round.pairKey}
+      data-target-subject-key={round.targetSubjectKey}
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
     >
@@ -305,6 +307,8 @@ function KanjiClashOptionCard({
         isWrong && "kanji-clash-option--wrong",
         isCorrectReveal && "kanji-clash-option--revealed"
       )}
+      data-side={side}
+      data-subject-key={subject.subjectKey}
       disabled={disabled}
       onClick={onSelect}
       type="button"

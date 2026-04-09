@@ -7,13 +7,17 @@ import { and, asc, eq, ne, sql } from "drizzle-orm";
 
 import {
   card,
+  cardEntryLink,
   closeDatabaseClient,
   createDatabaseClient,
   type DatabaseClient,
   lesson,
   lessonProgress,
   media,
+  reviewSubjectState,
   runMigrations,
+  segment,
+  term,
   userSetting
 } from "../src/db/index.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
@@ -52,6 +56,7 @@ try {
   await seedE2ELessonProgress(database);
   await seedE2EUserSettings(database);
   await backfillReviewSubjectState(database);
+  await seedKanjiClashE2EFixture(database);
 } finally {
   closeDatabaseClient(database);
 }
@@ -180,4 +185,248 @@ async function seedE2EUserSettings(database: DatabaseClient) {
         valueJson: sql`excluded.value_json`
       }
     });
+}
+
+async function seedKanjiClashE2EFixture(database: DatabaseClient) {
+  const existingMedia = await database.query.media.findFirst({
+    where: eq(media.slug, "zz-kanji-clash-e2e")
+  });
+
+  if (existingMedia) {
+    return;
+  }
+
+  const nowIso = new Date().toISOString();
+
+  await database
+    .insert(media)
+    .values({
+      baseExplanationLanguage: "it",
+      createdAt: nowIso,
+      description: "Fixture Kanji Clash per E2E.",
+      id: "media-kanji-clash-e2e",
+      language: "ja",
+      mediaType: "game",
+      segmentKind: "chapter",
+      slug: "zz-kanji-clash-e2e",
+      status: "active",
+      title: "ZZ Kanji Clash E2E",
+      updatedAt: nowIso
+    })
+    .onConflictDoNothing();
+
+  await database
+    .insert(segment)
+    .values({
+      id: "segment-kanji-clash-e2e",
+      mediaId: "media-kanji-clash-e2e",
+      notes: null,
+      orderIndex: 1,
+      segmentType: "chapter",
+      slug: "segment-kanji-clash-e2e",
+      title: "Segment Kanji Clash E2E"
+    })
+    .onConflictDoNothing();
+
+  await database
+    .insert(lesson)
+    .values({
+      createdAt: nowIso,
+      difficulty: "beginner",
+      id: "lesson-kanji-clash-e2e",
+      mediaId: "media-kanji-clash-e2e",
+      orderIndex: 1,
+      segmentId: "segment-kanji-clash-e2e",
+      slug: "lesson-kanji-clash-e2e",
+      sourceFile: "tests/e2e/kanji-clash-fixture.md",
+      status: "active",
+      summary: "Fixture Kanji Clash E2E",
+      title: "Fixture Kanji Clash E2E",
+      updatedAt: nowIso
+    })
+    .onConflictDoNothing();
+
+  await database
+    .insert(lessonProgress)
+    .values({
+      completedAt: nowIso,
+      lastOpenedAt: nowIso,
+      lessonId: "lesson-kanji-clash-e2e",
+      startedAt: nowIso,
+      status: "completed"
+    })
+    .onConflictDoNothing();
+
+  const fixtureTerms = [
+    {
+      cardId: "card-kanji-clash-e2e-shokuhi",
+      id: "term-kanji-clash-e2e-shokuhi",
+      lemma: "食費",
+      meaningIt: "spese per il cibo",
+      reading: "しょくひ",
+      reps: 3,
+      stability: 8.2
+    },
+    {
+      cardId: "card-kanji-clash-e2e-shokuhin",
+      id: "term-kanji-clash-e2e-shokuhin",
+      lemma: "食品",
+      meaningIt: "alimento",
+      reading: "しょくひん",
+      reps: 4,
+      stability: 9.1
+    },
+    {
+      cardId: "card-kanji-clash-e2e-shokutaku",
+      id: "term-kanji-clash-e2e-shokutaku",
+      lemma: "食卓",
+      meaningIt: "tavolo da pranzo",
+      reading: "しょくたく",
+      reps: 3,
+      stability: 8.7
+    },
+    {
+      cardId: "card-kanji-clash-e2e-inshoku",
+      id: "term-kanji-clash-e2e-inshoku",
+      lemma: "飲食",
+      meaningIt: "cibo e bevande",
+      reading: "いんしょく",
+      reps: 5,
+      stability: 10.2
+    }
+  ] as const;
+
+  await database
+    .insert(term)
+    .values(
+      fixtureTerms.map((fixtureTerm) =>
+        buildKanjiClashE2ETermRow(fixtureTerm, nowIso)
+      )
+    )
+    .onConflictDoNothing();
+
+  await database
+    .insert(card)
+    .values(
+      fixtureTerms.map((fixtureTerm) =>
+        buildKanjiClashE2ECardRow(fixtureTerm, nowIso)
+      )
+    )
+    .onConflictDoNothing();
+
+  await database
+    .insert(cardEntryLink)
+    .values(
+      fixtureTerms.map((fixtureTerm) =>
+        buildKanjiClashE2ECardEntryLinkRow(fixtureTerm)
+      )
+    )
+    .onConflictDoNothing();
+
+  await database
+    .insert(reviewSubjectState)
+    .values(
+      fixtureTerms.map((fixtureTerm) =>
+        buildKanjiClashE2EReviewSubjectStateRow(fixtureTerm, nowIso)
+      )
+    )
+    .onConflictDoNothing();
+}
+
+function buildKanjiClashE2ETermRow(
+  fixtureTerm: {
+    id: string;
+    lemma: string;
+    meaningIt: string;
+    reading: string;
+  },
+  nowIso: string
+): typeof term.$inferInsert {
+  return {
+    createdAt: nowIso,
+    crossMediaGroupId: null,
+    id: fixtureTerm.id,
+    lemma: fixtureTerm.lemma,
+    meaningIt: fixtureTerm.meaningIt,
+    mediaId: "media-kanji-clash-e2e",
+    reading: fixtureTerm.reading,
+    romaji: fixtureTerm.reading,
+    searchLemmaNorm: fixtureTerm.lemma,
+    searchReadingNorm: fixtureTerm.reading,
+    searchRomajiNorm: fixtureTerm.reading,
+    segmentId: "segment-kanji-clash-e2e",
+    sourceId: fixtureTerm.id,
+    updatedAt: nowIso
+  };
+}
+
+function buildKanjiClashE2ECardRow(
+  fixtureTerm: {
+    cardId: string;
+    lemma: string;
+  },
+  nowIso: string
+): typeof card.$inferInsert {
+  return {
+    back: `${fixtureTerm.lemma} meaning`,
+    cardType: "recognition",
+    createdAt: nowIso,
+    front: fixtureTerm.lemma,
+    id: fixtureTerm.cardId,
+    lessonId: "lesson-kanji-clash-e2e",
+    mediaId: "media-kanji-clash-e2e",
+    normalizedFront: fixtureTerm.lemma,
+    orderIndex: 1,
+    segmentId: "segment-kanji-clash-e2e",
+    sourceFile: `tests/${fixtureTerm.cardId}.md`,
+    status: "active",
+    updatedAt: nowIso
+  };
+}
+
+function buildKanjiClashE2ECardEntryLinkRow(fixtureTerm: {
+  cardId: string;
+  id: string;
+}): typeof cardEntryLink.$inferInsert {
+  return {
+    cardId: fixtureTerm.cardId,
+    entryId: fixtureTerm.id,
+    entryType: "term",
+    id: `${fixtureTerm.cardId}-${fixtureTerm.id}`,
+    relationshipType: "primary"
+  };
+}
+
+function buildKanjiClashE2EReviewSubjectStateRow(
+  fixtureTerm: {
+    cardId: string;
+    id: string;
+    reps: number;
+    stability: number;
+  },
+  nowIso: string
+): typeof reviewSubjectState.$inferInsert {
+  return {
+    cardId: fixtureTerm.cardId,
+    createdAt: nowIso,
+    crossMediaGroupId: null,
+    difficulty: 2.5,
+    dueAt: nowIso,
+    entryId: fixtureTerm.id,
+    entryType: "term",
+    lapses: 0,
+    lastInteractionAt: nowIso,
+    lastReviewedAt: nowIso,
+    learningSteps: 0,
+    manualOverride: false,
+    reps: fixtureTerm.reps,
+    scheduledDays: 3,
+    schedulerVersion: "fsrs_v1",
+    stability: fixtureTerm.stability,
+    state: "review",
+    subjectKey: `entry:term:${fixtureTerm.id}`,
+    subjectType: "entry",
+    suspended: false,
+    updatedAt: nowIso
+  };
 }

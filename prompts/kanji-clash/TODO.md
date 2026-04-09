@@ -20,7 +20,6 @@ Regola operativa:
 
 ## Remaining
 
-- `06` QA And Regression Coverage
 - `07` Docs And Skill Updates
 
 ## Fallback
