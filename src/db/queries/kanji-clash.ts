@@ -65,8 +65,8 @@ export async function listEligibleKanjiClashSubjects(
         AND rss.stability >= 7
         AND rss.reps >= 2
     ),
-    eligible_member_rows AS (
-      SELECT DISTINCT
+    candidate_members AS (
+      SELECT
         es.subjectKey,
         es.subjectType,
         es.canonicalEntryId,
@@ -88,55 +88,8 @@ export async function listEligibleKanjiClashSubjects(
       INNER JOIN media m
         ON m.id = t.media_id
        AND ${mediaFilterClause}
-      INNER JOIN card_entry_link cel
-        ON cel.entry_type = 'term'
-       AND cel.entry_id = t.id
-      INNER JOIN card c
-        ON c.id = cel.card_id
-      INNER JOIN lesson l
-        ON l.id = c.lesson_id
-      INNER JOIN lesson_progress lp
-        ON lp.lesson_id = l.id
-      WHERE c.status = 'active'
-        AND l.status = 'active'
-        AND lp.status = 'completed'
-        AND (
-          cel.relationship_type = 'primary'
-          OR NOT EXISTS(
-            SELECT 1
-            FROM card_entry_link cel_primary
-            WHERE cel_primary.card_id = c.id
-              AND cel_primary.relationship_type = 'primary'
-          )
-        )
-        AND NOT EXISTS(
-          SELECT 1
-          FROM card_entry_link cel_other
-          WHERE cel_other.card_id = c.id
-            AND (
-              cel_other.relationship_type = 'primary'
-              OR NOT EXISTS(
-                SELECT 1
-                FROM card_entry_link cel_primary
-                WHERE cel_primary.card_id = c.id
-                  AND cel_primary.relationship_type = 'primary'
-              )
-            )
-            AND NOT (
-              cel_other.entry_type = cel.entry_type
-              AND cel_other.entry_id = cel.entry_id
-              AND cel_other.relationship_type = cel.relationship_type
-            )
-        )
-        AND (
-          c.card_type != 'concept'
-          OR cel.relationship_type != 'primary'
-          OR c.normalized_front IS NULL
-          OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
-          OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.reading")}
-        )
       UNION ALL
-      SELECT DISTINCT
+      SELECT
         es.subjectKey,
         es.subjectType,
         es.canonicalEntryId,
@@ -159,11 +112,28 @@ export async function listEligibleKanjiClashSubjects(
       INNER JOIN media m
         ON m.id = t.media_id
        AND ${mediaFilterClause}
+    ),
+    candidate_entry_ids AS (
+      SELECT DISTINCT
+        cm.entryId
+      FROM candidate_members cm
+    ),
+    candidate_cards AS (
+      SELECT DISTINCT
+        cel.card_id AS cardId
+      FROM candidate_entry_ids cei
       INNER JOIN card_entry_link cel
         ON cel.entry_type = 'term'
-       AND cel.entry_id = t.id
+       AND cel.entry_id = cei.entryId
+    ),
+    visible_candidate_cards AS (
+      SELECT
+        cc.cardId,
+        c.card_type AS cardType,
+        c.normalized_front AS normalizedFront
+      FROM candidate_cards cc
       INNER JOIN card c
-        ON c.id = cel.card_id
+        ON c.id = cc.cardId
       INNER JOIN lesson l
         ON l.id = c.lesson_id
       INNER JOIN lesson_progress lp
@@ -171,59 +141,79 @@ export async function listEligibleKanjiClashSubjects(
       WHERE c.status = 'active'
         AND l.status = 'active'
         AND lp.status = 'completed'
+    ),
+    visible_card_link_stats AS (
+      SELECT
+        vcc.cardId,
+        SUM(
+          CASE
+            WHEN cel.relationship_type = 'primary' THEN 1
+            ELSE 0
+          END
+        ) AS primaryLinkCount,
+        COUNT(*) AS totalLinkCount
+      FROM visible_candidate_cards vcc
+      INNER JOIN card_entry_link cel
+        ON cel.card_id = vcc.cardId
+      GROUP BY vcc.cardId
+    ),
+    singleton_canonical_term_links AS (
+      SELECT
+        cel.card_id AS cardId,
+        cel.entry_id AS entryId,
+        cel.relationship_type AS relationshipType
+      FROM visible_candidate_cards vcc
+      INNER JOIN visible_card_link_stats vcls
+        ON vcls.cardId = vcc.cardId
+      INNER JOIN card_entry_link cel
+        ON cel.card_id = vcc.cardId
+      WHERE cel.entry_type = 'term'
         AND (
-          cel.relationship_type = 'primary'
-          OR NOT EXISTS(
-            SELECT 1
-            FROM card_entry_link cel_primary
-            WHERE cel_primary.card_id = c.id
-              AND cel_primary.relationship_type = 'primary'
+          (
+            vcls.primaryLinkCount = 1
+            AND cel.relationship_type = 'primary'
+          )
+          OR (
+            vcls.primaryLinkCount = 0
+            AND vcls.totalLinkCount = 1
           )
         )
-        AND NOT EXISTS(
-          SELECT 1
-          FROM card_entry_link cel_other
-          WHERE cel_other.card_id = c.id
-            AND (
-              cel_other.relationship_type = 'primary'
-              OR NOT EXISTS(
-                SELECT 1
-                FROM card_entry_link cel_primary
-                WHERE cel_primary.card_id = c.id
-                  AND cel_primary.relationship_type = 'primary'
-              )
-            )
-            AND NOT (
-              cel_other.entry_type = cel.entry_type
-              AND cel_other.entry_id = cel.entry_id
-              AND cel_other.relationship_type = cel.relationship_type
-            )
-        )
-        AND (
-          c.card_type != 'concept'
-          OR cel.relationship_type != 'primary'
-          OR c.normalized_front IS NULL
-          OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
-          OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.reading")}
-        )
+    ),
+    eligible_term_entries AS (
+      SELECT DISTINCT
+        t.id AS entryId
+      FROM singleton_canonical_term_links sctl
+      INNER JOIN visible_candidate_cards vcc
+        ON vcc.cardId = sctl.cardId
+      INNER JOIN term t
+        ON t.id = sctl.entryId
+      WHERE (
+        vcc.cardType != 'concept'
+        OR sctl.relationshipType != 'primary'
+        OR vcc.normalizedFront IS NULL
+        OR vcc.normalizedFront = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
+        OR vcc.normalizedFront = ${normalizeReviewSubjectSurfaceSql("t.reading")}
+      )
     )
-    SELECT DISTINCT
-      subjectKey,
-      subjectType,
-      canonicalEntryId,
-      crossMediaGroupId,
-      reviewState,
-      stability,
-      reps,
-      entryId,
-      lemma,
-      reading,
-      meaningIt,
-      mediaId,
-      mediaSlug,
-      mediaTitle
-    FROM eligible_member_rows
-    ORDER BY subjectKey ASC, mediaSlug ASC, entryId ASC
+    SELECT
+      cm.subjectKey,
+      cm.subjectType,
+      cm.canonicalEntryId,
+      cm.crossMediaGroupId,
+      cm.reviewState,
+      cm.stability,
+      cm.reps,
+      cm.entryId,
+      cm.lemma,
+      cm.reading,
+      cm.meaningIt,
+      cm.mediaId,
+      cm.mediaSlug,
+      cm.mediaTitle
+    FROM candidate_members cm
+    INNER JOIN eligible_term_entries ete
+      ON ete.entryId = cm.entryId
+    ORDER BY cm.subjectKey ASC, cm.mediaSlug ASC, cm.entryId ASC
   `);
 
   return aggregateEligibleKanjiClashSubjects(rows);

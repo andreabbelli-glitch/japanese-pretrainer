@@ -4,6 +4,8 @@ import type {
 } from "./types.ts";
 import {
   buildKanjiClashPairKey,
+  hasContextualizedHeadFamilySurface,
+  hasCrossEdgeMixedStemSurface,
   hasSharedContextualPrefixSurface,
   getSharedKanji,
   hasQualifiedContainedCloneSurface,
@@ -77,6 +79,14 @@ export function getKanjiClashPairExclusionReason(
 
   if (hasSharedContextualPrefixSurface(left, right)) {
     return "shared-contextual-prefix";
+  }
+
+  if (hasContextualizedHeadFamilySurface(left, right)) {
+    return "contextualized-head-family";
+  }
+
+  if (hasCrossEdgeMixedStemSurface(left, right)) {
+    return "cross-edge-mixed-stem";
   }
 
   return null;

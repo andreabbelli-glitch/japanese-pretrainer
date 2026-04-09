@@ -100,6 +100,28 @@ export function hasSharedContextualPrefixSurface(
   );
 }
 
+export function hasContextualizedHeadFamilySurface(
+  left: Pick<KanjiClashEligibleSubject, "surfaceForms">,
+  right: Pick<KanjiClashEligibleSubject, "surfaceForms">
+) {
+  return left.surfaceForms.some((leftSurface) =>
+    right.surfaceForms.some((rightSurface) =>
+      isContextualizedHeadFamilySurface(leftSurface, rightSurface)
+    )
+  );
+}
+
+export function hasCrossEdgeMixedStemSurface(
+  left: Pick<KanjiClashEligibleSubject, "surfaceForms">,
+  right: Pick<KanjiClashEligibleSubject, "surfaceForms">
+) {
+  return left.surfaceForms.some((leftSurface) =>
+    right.surfaceForms.some((rightSurface) =>
+      isCrossEdgeMixedStemSurface(leftSurface, rightSurface)
+    )
+  );
+}
+
 export function hasSharedReading(
   left: Pick<KanjiClashEligibleSubject, "readingForms">,
   right: Pick<KanjiClashEligibleSubject, "readingForms">
@@ -216,6 +238,83 @@ function isSharedContextualPrefixSurface(leftValue: string, rightValue: string) 
   return isSubstantialPhraseTail(leftTail) && isSubstantialPhraseTail(rightTail);
 }
 
+function isContextualizedHeadFamilySurface(leftValue: string, rightValue: string) {
+  const left = normalizeKanjiClashSurface(leftValue);
+  const right = normalizeKanjiClashSurface(rightValue);
+
+  if (left.length === 0 || right.length === 0 || left === right) {
+    return false;
+  }
+
+  return (
+    matchesContextualizedHeadFamily(left, right) ||
+    matchesContextualizedHeadFamily(right, left)
+  );
+}
+
+function isCrossEdgeMixedStemSurface(leftValue: string, rightValue: string) {
+  const left = normalizeKanjiClashSurface(leftValue);
+  const right = normalizeKanjiClashSurface(rightValue);
+
+  if (left.length === 0 || right.length === 0 || left === right) {
+    return false;
+  }
+
+  return (
+    matchesCrossEdgeMixedStem(left, right) ||
+    matchesCrossEdgeMixedStem(right, left)
+  );
+}
+
+function matchesCrossEdgeMixedStem(prefixed: string, suffixed: string) {
+  const stem = getLongestPrefixAgainstSuffix(prefixed, suffixed);
+
+  if (
+    countCodePoints(stem) < 3 ||
+    extractKanjiFromText(stem).length < 2 ||
+    !containsKana(stem)
+  ) {
+    return false;
+  }
+
+  const prefixedTail = prefixed.slice(stem.length);
+  const suffixedHead = suffixed.slice(0, suffixed.length - stem.length);
+
+  return (
+    isSmallDerivativeTail(prefixedTail) &&
+    isSmallLexicalModifier(suffixedHead)
+  );
+}
+
+function matchesContextualizedHeadFamily(contextual: string, bare: string) {
+  const splitIndex = contextual.lastIndexOf("の");
+
+  if (splitIndex <= 0) {
+    return false;
+  }
+
+  const prefix = contextual.slice(0, splitIndex + 1);
+  const tail = contextual.slice(splitIndex + 1);
+  const common = getLongestCommonPrefix(tail, bare);
+
+  if (
+    countCodePoints(prefix) < 2 ||
+    extractKanjiFromText(prefix).length < 2 ||
+    !endsWithKana(prefix) ||
+    countCodePoints(common) < 2
+  ) {
+    return false;
+  }
+
+  const tailRest = tail.slice(common.length);
+  const bareRest = bare.slice(common.length);
+
+  return (
+    isTinyContrastiveTail(tailRest) &&
+    isTinyContrastiveTail(bareRest)
+  );
+}
+
 function hasQualifiedSharedSuffixHead(left: string, right: string) {
   const suffix = getLongestCommonSuffix(left, right);
 
@@ -312,6 +411,16 @@ function isSubstantialPhraseTail(value: string) {
   );
 }
 
+function isTinyContrastiveTail(value: string) {
+  const tail = normalizeKanjiClashSurface(value);
+
+  return (
+    tail.length > 0 &&
+    countCodePoints(tail) <= 2 &&
+    extractKanjiFromText(tail).length <= 1
+  );
+}
+
 function getLongestCommonPrefix(left: string, right: string) {
   const leftCodePoints = [...left];
   const rightCodePoints = [...right];
@@ -343,6 +452,28 @@ function getLongestCommonSuffix(left: string, right: string) {
   }
 
   return leftCodePoints.slice(leftCodePoints.length - sharedLength).join("");
+}
+
+function getLongestPrefixAgainstSuffix(prefixSource: string, suffixSource: string) {
+  const prefixCodePoints = [...prefixSource];
+  const suffixCodePoints = [...suffixSource];
+
+  for (
+    let sharedLength = Math.min(prefixCodePoints.length, suffixCodePoints.length);
+    sharedLength >= 1;
+    sharedLength -= 1
+  ) {
+    const prefix = prefixCodePoints.slice(0, sharedLength).join("");
+    const suffix = suffixCodePoints
+      .slice(suffixCodePoints.length - sharedLength)
+      .join("");
+
+    if (prefix === suffix) {
+      return prefix;
+    }
+  }
+
+  return "";
 }
 
 function containsKana(value: string) {

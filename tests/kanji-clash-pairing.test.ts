@@ -158,6 +158,50 @@ describe("kanji clash pairing helpers", () => {
     }
   );
 
+  it.each([["山札の一番下", "一番上"]])(
+    "excludes contextualized head families for %s vs %s",
+    (leftLabel, rightLabel) => {
+      const left = buildSubject({
+        label: leftLabel,
+        subjectKey: `entry:term:${leftLabel}`
+      });
+      const right = buildSubject({
+        label: rightLabel,
+        subjectKey: `entry:term:${rightLabel}`
+      });
+
+      expect(getKanjiClashPairExclusionReason(left, right)).toBe(
+        "contextualized-head-family"
+      );
+      expect(buildKanjiClashCandidate(left, right)).toBeNull();
+    }
+  );
+
+  it.each([
+    ["受け取る", "一括受け取り"],
+    ["一括受け取り", "受け取り履歴"],
+    ["一括受け取り", "受け取り期限"],
+    ["未受け取り", "受け取り履歴"],
+    ["未受け取り", "受け取り期限"]
+  ])(
+    "excludes cross-edge mixed stems for %s vs %s",
+    (leftLabel, rightLabel) => {
+      const left = buildSubject({
+        label: leftLabel,
+        subjectKey: `entry:term:${leftLabel}`
+      });
+      const right = buildSubject({
+        label: rightLabel,
+        subjectKey: `entry:term:${rightLabel}`
+      });
+
+      expect(getKanjiClashPairExclusionReason(left, right)).toBe(
+        "cross-edge-mixed-stem"
+      );
+      expect(buildKanjiClashCandidate(left, right)).toBeNull();
+    }
+  );
+
   it.each([["道", "道具"]])(
     "keeps distinct pairs when the extra material is not a short qualifying edge for %s vs %s",
     (leftLabel, rightLabel) => {

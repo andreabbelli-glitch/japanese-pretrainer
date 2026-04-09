@@ -54,6 +54,13 @@
 - `Kanji Clash`: il pool scarta anche i `shared-contextual-prefix`, cioe`
   superfici frasali che condividono lo stesso contesto iniziale ma divergono
   poi in due code sostanziali, come `山札の上から1枚目` vs `山札の一番下`.
+- `Kanji Clash`: il pool scarta anche i `contextualized-head-family`, cioe`
+  pair che confrontano una forma contestualizzata `XのY` con una forma piu`
+  nuda della stessa famiglia come `山札の一番下` vs `一番上`.
+- `Kanji Clash`: il pool scarta anche i `cross-edge-mixed-stem`, cioe` pair
+  dove lo stesso stem misto kanji+kana cade all'inizio di una forma e alla
+  fine dell'altra, come `受け取る` vs `一括受け取り` o `未受け取り` vs
+  `受け取り期限`.
 - `/media/[mediaSlug]/review`: resta il filtro verticale locale sul singolo
   media e non deve diventare un launcher verso un altro media.
 - Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.

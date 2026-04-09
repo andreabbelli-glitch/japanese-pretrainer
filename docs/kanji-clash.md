@@ -98,6 +98,8 @@ Una coppia viene scartata se ricade in uno di questi casi:
 - `qualified-contained-clone`
 - `shared-lexical-core`
 - `shared-contextual-prefix`
+- `contextualized-head-family`
+- `cross-edge-mixed-stem`
 
 La normalizzazione usa `NFKC`, strip inline markdown e confronto su superfici
 pulite. Questo evita di introdurre doppioni cosmetici o quasi-cloni editoriali
@@ -122,6 +124,17 @@ cornice strutturale iniziale. Esempio da mantenere: `一番上` vs `一番下`.
 lo stesso contesto frasale iniziale, tipicamente un blocco come `山札の`, ma
 poi divergono in due code sostanziali che non hanno senso come clash lessicale.
 Esempio da scartare: `山札の上から1枚目` vs `山札の一番下`.
+
+`contextualized-head-family` copre i casi in cui una surface contestualizzata
+come `XのY` viene confrontata con una forma piu` nuda della stessa famiglia
+lessicale, ad esempio `山札の一番下` vs `一番上`. Anche qui il confronto e`
+didatticamente rumoroso perche` mescola livelli di granularita` diversi.
+
+`cross-edge-mixed-stem` copre i casi in cui uno stesso stem misto kanji+kana
+appare all'inizio di una forma e alla fine dell'altra, con solo un modificatore
+breve e una piccola derivazione ai lati. Esempi da scartare: `受け取る` vs
+`一括受け取り`, `一括受け取り` vs `受け取り履歴`, `未受け取り` vs
+`受け取り期限`.
 
 Lo scoring privilegia:
 

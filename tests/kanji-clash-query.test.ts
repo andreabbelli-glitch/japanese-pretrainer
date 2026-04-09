@@ -10,6 +10,7 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   crossMediaGroup,
+  grammarPattern,
   lesson,
   lessonProgress,
   listEligibleKanjiClashSubjects,
@@ -126,6 +127,173 @@ describe("kanji clash eligibility query", () => {
       },
       subjectKey: "entry:term:term-gamma-keiken"
     });
+  });
+
+  it("preserves singleton-card semantics across primary, fallback, and non-primary concept links", async () => {
+    const now = "2026-04-08T13:00:00.000Z";
+
+    await database.insert(grammarPattern).values(
+      buildGrammarPatternRow(
+        {
+          id: "grammar-alpha-extra-link",
+          meaningIt: "grammatica extra",
+          mediaId: "media-alpha",
+          pattern: "〜追加",
+          reading: "ついか",
+          segmentId: "segment-alpha",
+          sourceId: "grammar-alpha-extra-link",
+          title: "Grammar extra"
+        },
+        now
+      )
+    );
+
+    await database.insert(term).values([
+      buildTermRow(
+        {
+          id: "term-alpha-ambiguous-primary",
+          lemma: "主語",
+          mediaId: "media-alpha",
+          meaningIt: "soggetto",
+          reading: "しゅご",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-ambiguous-primary"
+        },
+        now
+      ),
+      buildTermRow(
+        {
+          id: "term-alpha-ambiguous-fallback",
+          lemma: "図形",
+          mediaId: "media-alpha",
+          meaningIt: "figura",
+          reading: "ずけい",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-ambiguous-fallback"
+        },
+        now
+      ),
+      buildTermRow(
+        {
+          id: "term-alpha-secondary-concept",
+          lemma: "余白",
+          mediaId: "media-alpha",
+          meaningIt: "margine",
+          reading: "よはく",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-secondary-concept"
+        },
+        now
+      )
+    ]);
+
+    await database.insert(card).values([
+      buildCardRow(
+        {
+          id: "card-alpha-ambiguous-primary",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "主語",
+          segmentId: "segment-alpha"
+        },
+        now
+      ),
+      buildCardRow(
+        {
+          id: "card-alpha-ambiguous-fallback",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "図形",
+          segmentId: "segment-alpha"
+        },
+        now
+      ),
+      buildCardRow(
+        {
+          cardType: "concept",
+          id: "card-alpha-secondary-concept",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "非正規な表面",
+          normalizedFront: "非正規な表面",
+          segmentId: "segment-alpha"
+        },
+        now
+      )
+    ]);
+
+    await database.insert(cardEntryLink).values([
+      buildCardEntryLinkRow("card-alpha-ambiguous-primary", "term-alpha-ambiguous-primary"),
+      buildCardEntryLinkRow("card-alpha-ambiguous-primary", "grammar-alpha-extra-link", {
+        entryType: "grammar",
+        id: "card-alpha-ambiguous-primary-grammar-alpha-extra-link"
+      }),
+      buildCardEntryLinkRow("card-alpha-ambiguous-fallback", "term-alpha-ambiguous-fallback", {
+        id: "card-alpha-ambiguous-fallback-term-alpha-ambiguous-fallback",
+        relationshipType: "secondary"
+      }),
+      buildCardEntryLinkRow("card-alpha-ambiguous-fallback", "grammar-alpha-extra-link", {
+        entryType: "grammar",
+        id: "card-alpha-ambiguous-fallback-grammar-alpha-extra-link",
+        relationshipType: "secondary"
+      }),
+      buildCardEntryLinkRow("card-alpha-secondary-concept", "term-alpha-secondary-concept", {
+        id: "card-alpha-secondary-concept-term-alpha-secondary-concept",
+        relationshipType: "secondary"
+      })
+    ]);
+
+    await database.insert(reviewSubjectState).values([
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-ambiguous-primary",
+          entryId: "term-alpha-ambiguous-primary",
+          reps: 3,
+          stability: 8.1,
+          subjectKey: "entry:term:term-alpha-ambiguous-primary",
+          subjectType: "entry"
+        },
+        now
+      ),
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-ambiguous-fallback",
+          entryId: "term-alpha-ambiguous-fallback",
+          reps: 3,
+          stability: 8.3,
+          subjectKey: "entry:term:term-alpha-ambiguous-fallback",
+          subjectType: "entry"
+        },
+        now
+      ),
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-secondary-concept",
+          entryId: "term-alpha-secondary-concept",
+          reps: 4,
+          stability: 9.2,
+          subjectKey: "entry:term:term-alpha-secondary-concept",
+          subjectType: "entry"
+        },
+        now
+      )
+    ]);
+
+    const subjectKeys = new Set(
+      (await listEligibleKanjiClashSubjects(database)).map(
+        (subject) => subject.subjectKey
+      )
+    );
+
+    expect(subjectKeys.has("entry:term:term-alpha-ambiguous-primary")).toBe(
+      false
+    );
+    expect(subjectKeys.has("entry:term:term-alpha-ambiguous-fallback")).toBe(
+      false
+    );
+    expect(subjectKeys.has("entry:term:term-alpha-secondary-concept")).toBe(
+      true
+    );
   });
 });
 
@@ -804,6 +972,36 @@ function buildTermRow(
   };
 }
 
+function buildGrammarPatternRow(
+  input: {
+    id: string;
+    meaningIt: string;
+    mediaId: string;
+    pattern: string;
+    reading?: string;
+    segmentId: string;
+    sourceId: string;
+    title: string;
+  },
+  now: string
+): typeof grammarPattern.$inferInsert {
+  return {
+    createdAt: now,
+    id: input.id,
+    meaningIt: input.meaningIt,
+    mediaId: input.mediaId,
+    notesIt: null,
+    pattern: input.pattern,
+    reading: input.reading ?? null,
+    searchPatternNorm: input.pattern,
+    searchRomajiNorm: input.reading ?? input.pattern,
+    segmentId: input.segmentId,
+    sourceId: input.sourceId,
+    title: input.title,
+    updatedAt: now
+  };
+}
+
 function buildCardRow(
   input: {
     cardType?: string;
@@ -833,12 +1031,56 @@ function buildCardRow(
   };
 }
 
-function buildCardEntryLinkRow(cardId: string, entryId: string) {
+function buildCardEntryLinkRow(
+  cardId: string,
+  entryId: string,
+  options?: {
+    entryType?: "grammar" | "term";
+    id?: string;
+    relationshipType?: "primary" | "secondary";
+  }
+) {
   return {
     cardId,
     entryId,
-    entryType: "term" as const,
-    id: `${cardId}-${entryId}`,
-    relationshipType: "primary" as const
+    entryType: options?.entryType ?? ("term" as const),
+    id: options?.id ?? `${cardId}-${entryId}`,
+    relationshipType: options?.relationshipType ?? ("primary" as const)
+  };
+}
+
+function buildReviewSubjectStateRow(
+  input: {
+    cardId: string;
+    crossMediaGroupId?: string;
+    entryId: string;
+    reps: number;
+    stability: number;
+    subjectKey: string;
+    subjectType: "entry" | "group";
+  },
+  now: string
+): typeof reviewSubjectState.$inferInsert {
+  return {
+    cardId: input.cardId,
+    createdAt: now,
+    crossMediaGroupId: input.crossMediaGroupId ?? null,
+    difficulty: 2.5,
+    dueAt: now,
+    entryId: input.entryId,
+    entryType: "term",
+    lapses: 0,
+    lastInteractionAt: now,
+    lastReviewedAt: now,
+    learningSteps: 0,
+    manualOverride: false,
+    reps: input.reps,
+    scheduledDays: 4,
+    stability: input.stability,
+    state: "review",
+    subjectKey: input.subjectKey,
+    subjectType: input.subjectType,
+    suspended: false,
+    updatedAt: now
   };
 }

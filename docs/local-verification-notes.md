@@ -33,6 +33,12 @@ non sostituisce un audit completo e aggiornato del codice.
 - `Kanji Clash` esclude anche i `shared-contextual-prefix`, dove due forme
   condividono lo stesso contesto frasale iniziale ma confrontano poi due code
   sostanziali incompatibili come `山札の上から1枚目` vs `山札の一番下`.
+- `Kanji Clash` esclude anche i `contextualized-head-family`, dove una forma
+  contestualizzata `XのY` viene confrontata con una forma piu` nuda della
+  stessa famiglia, come `山札の一番下` vs `一番上`.
+- `Kanji Clash` esclude anche i `cross-edge-mixed-stem`, dove uno stesso stem
+  misto kanji+kana compare all'inizio di una forma e alla fine dell'altra con
+  solo piccoli modificatori ai bordi, come `受け取る` vs `一括受け取り`.
 - Messaggio di errore comprensibile in `content:import` quando il DB target non è migrato.
 
 ## Comportamenti Da Verificare
