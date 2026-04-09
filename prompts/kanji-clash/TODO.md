@@ -16,10 +16,10 @@ Regola operativa:
 - `04a` Types And Pair Scheduler
 - `04b` Queue Builder And Session Mutations
 - `05b` Round Interaction Controller
+- `05c` Secondary CTA Integration
 
 ## Remaining
 
-- `05c` Secondary CTA Integration
 - `06` QA And Regression Coverage
 - `07` Docs And Skill Updates
 

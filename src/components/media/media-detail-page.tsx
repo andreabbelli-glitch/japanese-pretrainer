@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import type { ProgressPageData } from "@/lib/progress";
 import { renderFurigana } from "@/lib/render-furigana";
+import { mediaKanjiClashHref } from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
@@ -15,7 +16,7 @@ type MediaDetailPageProps = {
 };
 
 type StudyAreaCard = {
-  key: "textbook" | "glossary" | "review";
+  key: "textbook" | "glossary" | "review" | "kanjiClash";
   title: string;
   body: string;
   detail: string;
@@ -96,6 +97,14 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
             ? `${data.review.queueCount} in coda oggi`
             : "Nessuna urgenza adesso",
       href: data.media.reviewHref,
+      actionLabel: "Apri"
+    },
+    {
+      key: "kanjiClash",
+      title: "Kanji Clash",
+      body: "Allena le differenze visive tra vocaboli che condividono kanji.",
+      detail: "Un workspace dedicato, separato dalla review standard.",
+      href: mediaKanjiClashHref(data.media.slug),
       actionLabel: "Apri"
     }
   ];

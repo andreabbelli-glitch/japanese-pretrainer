@@ -29,6 +29,7 @@ import { getGlossaryPageData } from "@/lib/glossary";
 import { importContentWorkspace } from "@/lib/content/importer";
 import { getMediaProgressPageData } from "@/lib/progress";
 import { getReviewPageData } from "@/lib/review";
+import { mediaKanjiClashHref } from "@/lib/site";
 import { getStudySettings, updateStudySettings } from "@/lib/settings";
 import {
   crossMediaFixture,
@@ -245,6 +246,13 @@ describe("progress, settings, and study controls", () => {
 
     expect(markup).toContain("Review globale");
     expect(markup).toContain("Review del media");
+<<<<<<< HEAD
+    expect(markup).toContain('href="/kanji-clash?media=fixture-tcg"');
+=======
+    expect(markup).toContain(
+      `href="${mediaKanjiClashHref(developmentFixture.mediaSlug)}"`
+    );
+>>>>>>> 3017ee4 (Add Kanji Clash secondary CTAs)
     expect(markup).toContain("Coda locale e carico quotidiano");
   });
 

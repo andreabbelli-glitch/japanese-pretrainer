@@ -1,3 +1,7 @@
+import Link from "next/link";
+
+import { kanjiClashHref } from "@/lib/site";
+
 import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
 
@@ -39,6 +43,15 @@ export function ReviewPageSidebar({
           value={String(viewData.queue.newQueuedCount)}
         />
       </div>
+
+      {isGlobalReview ? (
+        <div className="review-sidebar__notice">
+          <p>Allenati con coppie di kanji simili senza uscire dalla review.</p>
+          <Link className="button button--ghost" href={kanjiClashHref()}>
+            Apri Kanji Clash
+          </Link>
+        </div>
+      ) : null}
 
       <div className="stack-list stack-list--tight">
         <div className="summary-row">

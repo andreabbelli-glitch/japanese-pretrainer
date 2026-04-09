@@ -7,6 +7,7 @@ import {
   buildReviewGradePreviewLookup,
   resolveHydratedFirstCandidateRevealedCardId
 } from "@/components/review/review-page-client-utils";
+import { ReviewPageSidebar } from "@/components/review/review-page-sidebar";
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
 import type { ReviewPageData } from "@/lib/review-types";
@@ -107,6 +108,39 @@ describe("review page client hydration", () => {
     expect(markup).toContain("Good");
     expect(markup).toContain("Hard");
     expect(markup).toContain("Easy");
+  });
+
+  it("renders the global Kanji Clash CTA only on the global review sidebar", () => {
+    const globalMarkup = renderToStaticMarkup(
+      ReviewPageSidebar({
+        clientError: null,
+        isGlobalReview: true,
+        isPending: false,
+        viewData: buildCurrentReviewPageClientData({
+          cardId: "card-a",
+          showAnswer: false
+        })
+      })
+    );
+    const mediaMarkup = renderToStaticMarkup(
+      ReviewPageSidebar({
+        clientError: null,
+        isGlobalReview: false,
+        isPending: false,
+        viewData: {
+          ...buildCurrentReviewPageClientData({
+            cardId: "card-a",
+            showAnswer: false
+          }),
+          scope: "media"
+        }
+      })
+    );
+
+    expect(globalMarkup).toContain('href="/kanji-clash"');
+    expect(globalMarkup).toContain("Apri Kanji Clash");
+    expect(mediaMarkup).not.toContain("Apri Kanji Clash");
+    expect(mediaMarkup).not.toContain('href="/kanji-clash"');
   });
 });
 
