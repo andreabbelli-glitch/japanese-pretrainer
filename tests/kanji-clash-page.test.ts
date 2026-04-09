@@ -101,6 +101,13 @@ function buildPageData(
   const selectedMedia = overrides.selectedMedia ?? null;
   const mode = overrides.mode ?? "automatic";
   const scope = selectedMedia ? "media" : "global";
+  const currentRound = Object.prototype.hasOwnProperty.call(
+    overrides,
+    "currentRound"
+  )
+    ? overrides.currentRound
+    : buildRound({});
+  const rounds = currentRound ? [currentRound] : [];
   const queue = {
     awaitingConfirmation: false,
     currentRoundIndex: 0,
@@ -114,7 +121,7 @@ function buildPageData(
     remainingCount: 3,
     requestedSize: null,
     reserveCount: 0,
-    rounds: [],
+    rounds,
     scope,
     seenPairKeys: [],
     totalCount: 1,
@@ -127,12 +134,6 @@ function buildPageData(
     manualSizeOptions: [10, 20, 40],
     ...(overrides.settings ?? {})
   } satisfies KanjiClashPageData["settings"];
-  const currentRound = Object.prototype.hasOwnProperty.call(
-    overrides,
-    "currentRound"
-  )
-    ? overrides.currentRound
-    : buildRound({});
 
   return {
     availableMedia: overrides.availableMedia ?? [
