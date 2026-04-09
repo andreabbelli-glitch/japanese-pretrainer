@@ -3200,7 +3200,10 @@ rt {
   }
 
   .kanji-clash-round-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.9fr) minmax(0, 1fr);
+    grid-template-columns:
+      minmax(0, 0.78fr)
+      minmax(20rem, 1.34fr)
+      minmax(0, 0.78fr);
     align-items: stretch;
   }
 
