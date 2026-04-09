@@ -190,6 +190,17 @@ describe("site helpers", () => {
     ).toBe("Torna alla Review");
   });
 
+  it("treats trailing-slash media library return targets as media library links", () => {
+    expect(resolveReturnToContext("/media/")).toMatchObject({
+      href: "/media/",
+      kind: "mediaLibrary",
+      pathname: "/media"
+    });
+    expect(resolveReturnToLabel(resolveReturnToContext("/media/"))).toBe(
+      "Torna ai Media"
+    );
+  });
+
   it("derives glossary back navigation from explicit return context with safe fallbacks", () => {
     expect(
       resolveGlossaryBackNavigation({

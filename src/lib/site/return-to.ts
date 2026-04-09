@@ -61,7 +61,9 @@ export function resolveReturnToContext(
     return null;
   }
 
-  const pathname = new URL(href, "https://jcs.local").pathname;
+  const pathname = normalizeInternalPathname(
+    new URL(href, "https://jcs.local").pathname
+  );
 
   if (
     pathname === "/review" ||
@@ -112,6 +114,14 @@ export function resolveReturnToContext(
     kind: "other",
     pathname
   };
+}
+
+function normalizeInternalPathname(pathname: string) {
+  if (pathname === "/") {
+    return pathname;
+  }
+
+  return pathname.replace(/\/+$/, "");
 }
 
 export function resolveReturnToLabel(
