@@ -25,6 +25,14 @@
 - Root review `/review`: apre la queue globale reale su tutti i subject e, se
   non esistono ancora media o card disponibili, mostra un empty state dedicato
   al primo avvio.
+- `Kanji Clash` `/kanji-clash`: apre un workspace separato dalla review, con
+  modalita `Automatico` e `Drill manuale`, e senza confondere la UI con la
+  coda FSRS standard.
+- `Kanji Clash`: con `media=<slug>` valido il workspace filtra il pool al media
+  scelto; senza slug esplicito il runtime resta globale anche se il default in
+  settings e` `media`.
+- `Kanji Clash`: il drill manuale accetta solo size `10`, `20`, `40` e il
+  fallback usa il default persistito in `Settings`.
 - `/media/[mediaSlug]/review`: resta il filtro verticale locale sul singolo
   media e non deve diventare un launcher verso un altro media.
 - Textbook index: mostra tutte le lesson del bundle attivo con stato coerente.
@@ -42,6 +50,16 @@
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione subito, senza flash di pagina completa, e in caso di errore ripristina la card precedente con messaggio chiaro.
 - Review: il daily limit dei nuovi è globale e la coda mostra contenuti fusi
   quando la stessa entry o pattern compare in più media.
+- Kanji Clash: una risposta corretta auto-avanza rapidamente senza mostrare
+  attrito extra.
+- Kanji Clash: una risposta errata mostra feedback esplicito, non avanza da
+  sola e richiede il pulsante `Continua`.
+- Kanji Clash: click/tap diretto sulle opzioni e tasti `ArrowLeft` /
+  `ArrowRight` selezionano il lato corretto.
+- Kanji Clash mobile: lo swipe a sinistra seleziona l'opzione sinistra e lo
+  swipe a destra seleziona l'opzione destra.
+- Kanji Clash: la stessa pair non ricompare nella stessa sessione ne nello
+  stesso ordine ne invertita.
 - Review: le card già introdotte restano contabilizzate anche dopo l'upgrade
   da DB esistenti; la migrazione non deve azzerare il conteggio giornaliero.
 - Review import/sync: dopo `pnpm content:import` i subject necessari esistono

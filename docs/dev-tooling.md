@@ -122,6 +122,18 @@ dall'ultimo training riuscito oppure non ci sono almeno `500` review nuove
 eleggibili. La schedulazione vera resta fuori dal repo: usare `cron`,
 `launchd`, `systemd` o automazioni Codex.
 
+## Kanji Clash
+
+Kanji Clash non richiede comandi dedicati oltre ai gate canonici del repo, ma
+tocca un flusso sensibile a regressioni di input, sessione e conferma errore.
+
+Quando modifichi route, query, queue builder, pairing, round controller o
+server action di Kanji Clash:
+
+- esegui almeno `./scripts/with-node.sh pnpm check`;
+- esegui anche `./scripts/with-node.sh pnpm release:check` se il cambiamento e
+  user-facing oppure tocca routing, sessione o logica di queue.
+
 ## Tool da avere pronti
 
 - browser Playwright per test E2E;

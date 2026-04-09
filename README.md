@@ -335,6 +335,7 @@ vanno usati per istruzioni operative correnti.
 - [Specifica contenuti Markdown](./docs/content-format.md)
 - [Content parser e validator](./docs/content-parser.md)
 - [Importer sync strategy](./docs/importer-sync-strategy.md)
+- [Kanji Clash](./docs/kanji-clash.md)
 - [Checklist QA manuale](./docs/qa-manual-checklist.md)
 - [Note di verifica locale](./docs/local-verification-notes.md)
 - [Performance baseline](./docs/performance-baseline.md)

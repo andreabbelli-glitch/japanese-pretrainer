@@ -8,6 +8,8 @@ non sostituisce un audit completo e aggiornato del codice.
 
 - Suite E2E minima con Playwright su DB dedicato e import reale dell'intero workspace `content/`.
 - Copertura dei flussi chiave: dashboard, media detail, textbook reader, tooltip, lightbox immagini, glossary, review, progress, settings.
+- Copertura dedicata di `Kanji Clash` su `/kanji-clash` con filtro media,
+  sessione manuale e interazioni click/tastiera/touch.
 - Smoke parametrica sulle route chiave di ogni media attivo presente in `content/media`.
 - Verifica mobile del reader con sheet touch per termini e rail lesson.
 - Le immagini del textbook restano plain media: click/tap apre il lightbox
@@ -17,12 +19,23 @@ non sostituisce un audit completo e aggiornato del codice.
 - Root `/review` deve avere uno stato vuoto dedicato per il primo avvio, non un
   redirect verso una review locale o un copy che parli di un singolo media.
 - Loading state contestuali per glossary, textbook, lesson, review, progress e settings.
+- `Kanji Clash` resta un workspace separato da `/review`, con pair state e log
+  dedicati e senza mutazioni laterali sulla review standard.
 - Messaggio di errore comprensibile in `content:import` quando il DB target non è migrato.
 
 ## Comportamenti Da Verificare
 
 - La nav review globale e la CTA review della dashboard portano al workspace
   review globale, mentre dal media detail resta disponibile il filtro verticale.
+- `Kanji Clash` apre da navbar e CTA dedicate, ma non rimpiazza la queue di
+  `/review`; gli ingressi devono restare espliciti e distinti.
+- `Kanji Clash` in scope media deve attivarsi solo con `media=<slug>` valido;
+  se manca uno slug esplicito, il runtime deve restare su scope globale anche
+  quando il default setting e` `media`.
+- La sessione `Kanji Clash` non deve ripresentare la stessa pair key nella
+  stessa run, anche con lati invertiti o target invertito.
+- In caso di errore in `Kanji Clash`, la UI deve mostrare la soluzione corretta
+  e fermarsi finche l'utente non conferma `Continua`.
 - Il daily limit della review è globale e la coda mostra fusioni cross-media
   quando la stessa entry o pattern è condivisa tra più media.
 - Su DB già esistenti, il comportamento della review deve restare compatibile
@@ -76,6 +89,8 @@ Il gate canonico copre nell'ordine:
 - La suite E2E è intenzionalmente piccola: copre i flussi ad alto valore, non ogni variante di filtro o ogni card.
 - I flussi E2E restano concentrati sul media di focus per textbook; per review
   conviene coprire sia il workspace globale sia il filtro verticale sul media.
+- `Kanji Clash` ha una suite E2E mirata, ma resta focalizzata sul round flow
+  principale: filtro media, click, tastiera, swipe, errore con stop e dedupe.
 - Il primo avvio di `/review` va controllato anche senza media importati, per
   verificare che l'empty state dedicato non sembri una review locale vuota.
 - Le performance sono verificate solo a livello locale/percepito, non con budget automatizzati.
