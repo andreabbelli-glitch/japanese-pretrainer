@@ -797,7 +797,9 @@ rt {
 }
 
 .library-card--navigable:hover {
-  box-shadow: var(--shadow-card), 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    var(--shadow-card),
+    0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .entry-point-grid {
@@ -853,6 +855,113 @@ rt {
 
 .empty-state {
   max-width: 48rem;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.kanji-clash-page {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.kanji-clash-workspace,
+.kanji-clash-stage,
+.kanji-clash-sidebar,
+.kanji-clash-option,
+.kanji-clash-target {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.kanji-clash-stage__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.kanji-clash-stage__copy,
+.kanji-clash-sidebar__copy {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.kanji-clash-stage__title,
+.kanji-clash-sidebar__title {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-display);
+  font-size: var(--text-display);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.05;
+}
+
+.kanji-clash-stage__summary,
+.kanji-clash-sidebar__summary,
+.kanji-clash-sidebar__note,
+.kanji-clash-option__caption,
+.kanji-clash-target__note {
+  margin: 0;
+  color: var(--color-ink-muted);
+}
+
+.kanji-clash-stage__chips,
+.kanji-clash-target__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.kanji-clash-stage__chips {
+  justify-content: flex-start;
+}
+
+.kanji-clash-round-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.kanji-clash-option {
+  justify-items: center;
+  text-align: center;
+}
+
+.kanji-clash-option__surface,
+.kanji-clash-target__reading {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.04;
+}
+
+.kanji-clash-option__surface {
+  font-size: clamp(2rem, 1.6rem + 1vw, 2.8rem);
+}
+
+.kanji-clash-target {
+  text-align: center;
+}
+
+.kanji-clash-target__reading {
+  font-size: clamp(2rem, 1.7rem + 1.2vw, 3.2rem);
+}
+
+.kanji-clash-target__meaning {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-size: var(--text-subtitle);
+  font-weight: var(--font-weight-medium);
+}
+
+.kanji-clash-target__chips {
+  justify-content: center;
+}
+
+.kanji-clash-sidebar__controls {
   display: grid;
   gap: var(--space-4);
 }
@@ -1009,7 +1118,9 @@ rt {
   border-radius: var(--radius-lg);
   background: var(--color-panel);
   border: 1px solid var(--color-border-subtle);
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .textbook-group__toggle--collapsed {
@@ -2961,6 +3072,15 @@ rt {
 
   .sticky-page-header {
     top: calc(var(--app-header-height-desktop) + var(--space-3));
+  }
+
+  .kanji-clash-workspace {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
+  }
+
+  .kanji-clash-round-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.9fr) minmax(0, 1fr);
+    align-items: stretch;
   }
 }
 

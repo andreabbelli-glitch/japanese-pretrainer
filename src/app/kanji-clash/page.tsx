@@ -1,18 +1,15 @@
-export default function KanjiClashPage() {
-  return (
-    <main className="app-page">
-      <section className="app-section">
-        <header className="app-section__header">
-          <div className="app-section__copy">
-            <p className="eyebrow">Kanji Clash</p>
-            <h1 className="app-section__title">Workspace in arrivo</h1>
-            <p className="app-section__description">
-              La surface è già raggiungibile dalla navbar. Il flusso completo
-              verrà completato nei task successivi.
-            </p>
-          </div>
-        </header>
-      </section>
-    </main>
-  );
+import { KanjiClashPage } from "@/components/kanji-clash/kanji-clash-page";
+import { getKanjiClashPageData } from "@/lib/kanji-clash";
+
+type KanjiClashRouteProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function KanjiClashRoute({
+  searchParams
+}: KanjiClashRouteProps) {
+  const resolvedSearchParams = await searchParams;
+  const data = await getKanjiClashPageData(resolvedSearchParams);
+
+  return <KanjiClashPage data={data} />;
 }
