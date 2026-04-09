@@ -267,23 +267,37 @@ function isCrossEdgeMixedStemSurface(leftValue: string, rightValue: string) {
 }
 
 function matchesCrossEdgeMixedStem(prefixed: string, suffixed: string) {
-  const stem = getLongestPrefixAgainstSuffix(prefixed, suffixed);
+  const prefixedTrimmed = trimTrailingKanaRun(prefixed);
+  const suffixedTrimmed = trimTrailingKanaRun(suffixed);
+  const candidateStems = dedupeStable([
+    getLongestPrefixAgainstSuffix(prefixed, suffixed),
+    getLongestPrefixAgainstSuffix(prefixedTrimmed, suffixedTrimmed)
+  ]);
 
-  if (
-    countCodePoints(stem) < 3 ||
-    extractKanjiFromText(stem).length < 2 ||
-    !containsKana(stem)
-  ) {
-    return false;
-  }
+  return candidateStems.some((stem) => {
+    if (
+      countCodePoints(stem) < 3 ||
+      extractKanjiFromText(stem).length < 2 ||
+      !containsKana(stem)
+    ) {
+      return false;
+    }
 
-  const prefixedTail = prefixed.slice(stem.length);
-  const suffixedHead = suffixed.slice(0, suffixed.length - stem.length);
+    const prefixedTail = prefixed.slice(stem.length);
+    const suffixedHead = suffixedTrimmed.slice(
+      0,
+      suffixedTrimmed.length - stem.length
+    );
+    const suffixedTail = suffixed.slice(suffixedHead.length + stem.length);
 
-  return (
-    isSmallDerivativeTail(prefixedTail) &&
-    isSmallLexicalModifier(suffixedHead)
-  );
+    return (
+      prefixedTrimmed.startsWith(stem) &&
+      suffixedTrimmed.endsWith(stem) &&
+      isSmallDerivativeTail(prefixedTail) &&
+      isSmallLexicalModifier(suffixedHead) &&
+      isSmallDerivativeTail(suffixedTail)
+    );
+  });
 }
 
 function matchesContextualizedHeadFamily(contextual: string, bare: string) {
@@ -474,6 +488,13 @@ function getLongestPrefixAgainstSuffix(prefixSource: string, suffixSource: strin
   }
 
   return "";
+}
+
+function trimTrailingKanaRun(value: string) {
+  return normalizeKanjiClashSurface(value).replace(
+    /[\p{Script=Hiragana}\p{Script=Katakana}ー]+$/u,
+    ""
+  );
 }
 
 function containsKana(value: string) {
