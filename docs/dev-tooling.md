@@ -36,6 +36,11 @@ Oppure, in modo piu robusto e ripetibile per gli agenti:
 ./scripts/with-node.sh <comando>
 ```
 
+Questo e il percorso canonico anche quando `pnpm` sembra funzionare con una
+versione Node diversa: il repo supporta ufficialmente `Node 22.x`, mentre la
+compatibilita con release successive come `Node 25` resta solo best effort per
+gli script CLI TypeScript.
+
 Verifica minima:
 
 ```sh
@@ -110,6 +115,12 @@ Workflow optimizer FSRS:
 ./scripts/with-node.sh pnpm fsrs:optimize
 ./scripts/with-node.sh pnpm fsrs:optimize:if-needed
 ```
+
+Gli script CLI TypeScript non richiedono piu
+`--experimental-default-type=module`, cosi un avvio accidentale sotto `Node 25`
+non fallisce per quel flag obsoleto. Questo non estende la matrice supportata:
+per check, release gate e automazioni repo-shared resta obbligatorio `Node 22.x`
+via `./scripts/with-node.sh`.
 
 `fsrs:optimize` forza un training immediato dei preset `recognition` e
 `concept` usando i log di `review_subject_log`, poi salva config, stato e pesi

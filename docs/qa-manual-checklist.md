@@ -33,6 +33,9 @@
   settings e` `media`.
 - `Kanji Clash`: il drill manuale accetta solo size `10`, `20`, `40` e il
   fallback usa il default persistito in `Settings`.
+- `Kanji Clash`: il drill manuale costruisce una frontiera deterministica
+  legata alla size richiesta, preserva le coppie `due` gia tracciate e non
+  promette una scansione esaustiva del corpus.
 - `Kanji Clash`: il pool mostra solo pair di `term` gia consolidati nella
   review standard; non devono comparire `grammar`, card troppo nuove o
   superfici duplicate/quasi-clone.

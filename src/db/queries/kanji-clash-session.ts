@@ -1,4 +1,16 @@
-import { and, eq, gte, inArray, lt, sql } from "drizzle-orm";
+import {
+  and,
+  asc,
+  eq,
+  gte,
+  inArray,
+  isNull,
+  lt,
+  lte,
+  ne,
+  or,
+  sql
+} from "drizzle-orm";
 
 import type { DatabaseQueryClient } from "../client.ts";
 import {
@@ -6,6 +18,8 @@ import {
   kanjiClashPairState
 } from "../schema/kanji-clash.ts";
 import type { KanjiClashPairState } from "../../lib/kanji-clash/types.ts";
+
+const KANJI_CLASH_PAIR_STATE_QUERY_CHUNK_SIZE = 400;
 
 export async function getKanjiClashPairStateByPairKey(
   database: DatabaseQueryClient,
@@ -21,7 +35,7 @@ export async function getKanjiClashPairStateByPairKey(
 export async function listKanjiClashPairStatesByPairKeys(
   database: DatabaseQueryClient,
   pairKeys: string[]
-) {
+): Promise<Map<string, KanjiClashPairState>> {
   const normalizedPairKeys = dedupeStable(
     pairKeys.filter((pairKey) => pairKey.length > 0)
   );
@@ -30,29 +44,58 @@ export async function listKanjiClashPairStatesByPairKeys(
     return new Map<string, KanjiClashPairState>();
   }
 
+  const pairStates = new Map<string, KanjiClashPairState>();
+
+  for (
+    let start = 0;
+    start < normalizedPairKeys.length;
+    start += KANJI_CLASH_PAIR_STATE_QUERY_CHUNK_SIZE
+  ) {
+    const chunk = normalizedPairKeys.slice(
+      start,
+      start + KANJI_CLASH_PAIR_STATE_QUERY_CHUNK_SIZE
+    );
+    const rows = await database.query.kanjiClashPairState.findMany({
+      where: inArray(kanjiClashPairState.pairKey, chunk)
+    });
+
+    for (const row of rows) {
+      pairStates.set(row.pairKey, mapKanjiClashPairStateRow(row));
+    }
+  }
+
+  return pairStates;
+}
+
+export async function listKanjiClashDuePairStates(
+  database: DatabaseQueryClient,
+  input: {
+    limit?: number;
+    now: string;
+    offset?: number;
+  }
+): Promise<KanjiClashPairState[]> {
   const rows = await database.query.kanjiClashPairState.findMany({
-    where: inArray(kanjiClashPairState.pairKey, normalizedPairKeys)
+    where: and(
+      ne(kanjiClashPairState.state, "new"),
+      or(
+        isNull(kanjiClashPairState.dueAt),
+        lte(kanjiClashPairState.dueAt, input.now)
+      )
+    ),
+    orderBy: [asc(kanjiClashPairState.dueAt), asc(kanjiClashPairState.pairKey)],
+    limit: input.limit,
+    offset: input.offset
   });
 
-  return new Map(
-    rows.map((row) => [row.pairKey, mapKanjiClashPairStateRow(row)] as const)
-  );
+  return rows.map(mapKanjiClashPairStateRow);
 }
 
 export async function countKanjiClashAutomaticNewPairIntroductions(input: {
   database: DatabaseQueryClient;
   endAt: string;
-  pairKeys: string[];
   startAt: string;
 }) {
-  const normalizedPairKeys = dedupeStable(
-    input.pairKeys.filter((pairKey) => pairKey.length > 0)
-  );
-
-  if (normalizedPairKeys.length === 0) {
-    return 0;
-  }
-
   const [row] = await input.database
     .select({
       count: sql<number>`count(distinct ${kanjiClashPairLog.pairKey})`
@@ -63,8 +106,7 @@ export async function countKanjiClashAutomaticNewPairIntroductions(input: {
         eq(kanjiClashPairLog.mode, "automatic"),
         eq(kanjiClashPairLog.previousState, "new"),
         gte(kanjiClashPairLog.answeredAt, input.startAt),
-        lt(kanjiClashPairLog.answeredAt, input.endAt),
-        inArray(kanjiClashPairLog.pairKey, normalizedPairKeys)
+        lt(kanjiClashPairLog.answeredAt, input.endAt)
       )
     );
 

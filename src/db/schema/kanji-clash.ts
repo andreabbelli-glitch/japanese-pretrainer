@@ -69,6 +69,12 @@ export const kanjiClashPairLog = sqliteTable(
       table.pairKey,
       table.answeredAt
     ),
+    index("kanji_clash_pair_log_mode_previous_answered_pair_idx").on(
+      table.mode,
+      table.previousState,
+      table.answeredAt,
+      table.pairKey
+    ),
     index("kanji_clash_pair_log_target_answered_idx").on(
       table.targetSubjectKey,
       table.answeredAt

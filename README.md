@@ -127,6 +127,12 @@ Lo script `./scripts/with-node.sh` prova a usare `nvm` da `$NVM_DIR`,
 corretta di Node e gia attiva, esegue direttamente il comando senza dipendere
 da `nvm`.
 
+Il runtime ufficialmente supportato resta `Node 22.x`. Gli script TypeScript
+CLI del repo evitano dipendenze da flag rimossi in `Node 25`, quindi un lancio
+accidentale fuori matrice non si rompe piu per `--experimental-default-type=module`,
+ma la verifica canonica e il supporto restano ancorati a
+`./scripts/with-node.sh pnpm ...`.
+
 ## Codex Locale In Sandbox
 
 Il repository include una configurazione di progetto in `.codex/` pensata per

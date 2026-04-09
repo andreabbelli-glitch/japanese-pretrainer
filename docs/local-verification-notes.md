@@ -91,6 +91,12 @@ Il gate canonico copre nell'ordine:
 - `pnpm content:validate`;
 - runner E2E Playwright sul setup locale dedicato.
 
+Il sign-off locale resta valido solo sul runtime supportato del repo, cioe
+`Node 22.x` risolto tramite `./scripts/with-node.sh`. Gli script CLI
+TypeScript evitano ormai il flag obsoleto `--experimental-default-type=module`,
+quindi un'esecuzione sotto `Node 25` non dovrebbe piu rompersi per quel motivo
+specifico, ma non conta come matrice ufficiale di verifica.
+
 ## Limiti Residui
 
 - La suite E2E è intenzionalmente piccola: copre i flussi ad alto valore, non ogni variante di filtro o ogni card.

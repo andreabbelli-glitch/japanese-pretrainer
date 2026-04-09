@@ -36,6 +36,8 @@ describe("kanji clash page data", () => {
   });
 
   it("loads global page data from persisted settings with explicit media catalog", async () => {
+    const snapshotAt = new Date("2026-04-09T12:00:00.000Z");
+
     await updateStudySettings(
       {
         kanjiClashDailyNewLimit: 7,
@@ -45,7 +47,7 @@ describe("kanji clash page data", () => {
       database
     );
 
-    const data = await getKanjiClashPageData({}, database, new Date("2026-04-09T12:00:00.000Z"));
+    const data = await getKanjiClashPageData({}, database, snapshotAt);
 
     expect(data.mode).toBe("automatic");
     expect(data.scope).toBe("global");
@@ -58,7 +60,9 @@ describe("kanji clash page data", () => {
     expect(data.availableMedia.map((item) => item.slug)).toEqual(["alpha", "beta"]);
     expect(data.selectedMedia).toBeNull();
     expect(data.queue.scope).toBe("global");
+    expect(data.queue.snapshotAtIso).toBe(snapshotAt.toISOString());
     expect(data.currentRound?.pairKey).toBe(data.queue.rounds[0]?.pairKey ?? null);
+    expect(data.snapshotAtIso).toBe(snapshotAt.toISOString());
   });
 
   it("applies explicit manual params, validates size server-side, and filters by media", async () => {

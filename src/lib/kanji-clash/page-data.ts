@@ -26,6 +26,7 @@ export async function getKanjiClashPageData(
   database: DatabaseClient = db,
   now?: Date
 ): Promise<KanjiClashPageData> {
+  const snapshotAt = now ?? new Date();
   const [settings, mediaRows] = await Promise.all([
     getStudySettings(database),
     listMediaCached(database)
@@ -53,7 +54,7 @@ export async function getKanjiClashPageData(
     database,
     mediaIds: selectedMedia ? [selectedMedia.id] : undefined,
     mode,
-    now,
+    now: snapshotAt,
     requestedSize,
     scope
   });
@@ -70,7 +71,8 @@ export async function getKanjiClashPageData(
       defaultScope: settings.kanjiClashDefaultScope,
       manualDefaultSize: settings.kanjiClashManualDefaultSize,
       manualSizeOptions: kanjiClashManualDefaultSizeOptions
-    }
+    },
+    snapshotAtIso: snapshotAt.toISOString()
   };
 }
 

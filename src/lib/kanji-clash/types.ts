@@ -136,6 +136,7 @@ export type KanjiClashQueueSnapshot = {
   requestedSize: number | null;
   reserveCount: number;
   rounds: KanjiClashSessionRound[];
+  snapshotAtIso: string;
   scope: KanjiClashScope;
   seenPairKeys: string[];
   totalCount: number;
@@ -162,6 +163,20 @@ export type KanjiClashPageData = {
   scope: KanjiClashScope;
   selectedMedia: KanjiClashPageMediaOption | null;
   settings: KanjiClashPageSettings;
+  snapshotAtIso: string;
+};
+
+export type KanjiClashAnswerSubmissionPayload = {
+  chosenSubjectKey: string;
+  dailyNewLimit: number | null;
+  expectedPairKey: string;
+  expectedPairStateUpdatedAt: string | null;
+  mediaIds: string[];
+  mode: KanjiClashSessionMode;
+  requestedSize: number | null;
+  scope: KanjiClashScope;
+  seenPairKeys: string[];
+  snapshotAtIso: string;
 };
 
 export type KanjiClashSessionActionResult = {

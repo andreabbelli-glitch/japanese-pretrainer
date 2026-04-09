@@ -39,7 +39,8 @@ export function KanjiClashPage({ data }: KanjiClashPageProps) {
     data.selectedMedia?.slug ?? "global",
     data.queue.requestedSize ?? "auto",
     data.queue.totalCount,
-    data.currentRound?.pairKey ?? "empty"
+    data.currentRound?.pairKey ?? "empty",
+    data.snapshotAtIso
   ].join(":");
 
   return <KanjiClashPageClient key={controllerKey} data={data} />;
@@ -157,7 +158,9 @@ function KanjiClashRoundWorkspace({
           </p>
         </div>
         <div className="kanji-clash-stage__chips">
-          <span className="chip">{formatKanjiClashRoundSource(round.source)}</span>
+          <span className="chip">
+            {formatKanjiClashRoundSource(round.source)}
+          </span>
           <span className="meta-pill">{formatScopeLabel(data)}</span>
           {round.pairState ? (
             <span className="meta-pill">
@@ -173,7 +176,9 @@ function KanjiClashRoundWorkspace({
                   : "kanji-clash-feedback-pill--incorrect"
               )}
             >
-              {feedback.status === "correct" ? "Corretto" : "Conferma richiesta"}
+              {feedback.status === "correct"
+                ? "Corretto"
+                : "Conferma richiesta"}
             </span>
           ) : isSelectionLocked ? (
             <span className="meta-pill">Controllo risposta...</span>
@@ -321,7 +326,9 @@ function KanjiClashOptionCard({
         Forma giapponese da confrontare visivamente con il target centrale.
       </p>
       {badgeLabel ? (
-        <span className="kanji-clash-option__badge meta-pill">{badgeLabel}</span>
+        <span className="kanji-clash-option__badge meta-pill">
+          {badgeLabel}
+        </span>
       ) : null}
     </button>
   );
@@ -348,7 +355,7 @@ function KanjiClashEmptyWorkspace({
       }
       description={
         completedSession
-          ? "Hai chiuso la coda corrente. Puoi cambiare modalità, allargare lo scope o aprire un drill manuale diverso."
+          ? "Hai chiuso la coda corrente. Puoi cambiare modalità, allargare lo scope o aprire un drill manuale su una frontiera diversa."
           : data.selectedMedia
             ? "Questo filtro media non produce ancora coppie eleggibili. Torna al globale oppure prova l'altra modalità."
             : "Non ci sono ancora coppie eleggibili per questo scope. Cambia modalità o restringi a un media specifico."
@@ -408,7 +415,7 @@ function KanjiClashSidebar({
         <p className="kanji-clash-sidebar__summary">
           {data.mode === "automatic"
             ? `Prima le coppie dovute, poi nuove coppie fino al cap giornaliero di ${data.settings.dailyNewLimit}.`
-            : `Sessione finita con taglia ${manualSize}, costruita sullo stesso pool eleggibile.`}
+            : `Sessione finita con taglia ${manualSize}, costruita da una frontiera deterministica del pool eleggibile.`}
         </p>
       </div>
 
@@ -437,7 +444,7 @@ function KanjiClashSidebar({
           detail={
             data.mode === "automatic"
               ? `${queue.introducedTodayCount}/${data.settings.dailyNewLimit} introdotte oggi.`
-              : `${manualSize} round richiesti nel drill.`
+              : `${manualSize} round richiesti nella frontiera manuale.`
           }
           label="Nuove"
           value={String(queue.newQueuedCount)}
@@ -514,7 +521,7 @@ function buildHeaderSummary(
 
   return data.mode === "automatic"
     ? `Scope ${scopeLabel}. Target centrale, due opzioni laterali e coda dedicata separata dalla review classica.`
-    : `Scope ${scopeLabel}. Drill manuale con target centrale e confronto laterale già materializzati dal loader.`;
+    : `Scope ${scopeLabel}. Drill manuale con target centrale e confronto laterale estratti da una frontiera deterministica.`;
 }
 
 function buildModeHref(data: KanjiClashPageData, mode: "automatic" | "manual") {

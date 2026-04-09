@@ -905,7 +905,6 @@ describe("fsrs optimizer", () => {
       process.execPath,
       [
         "--experimental-strip-types",
-        "--experimental-default-type=module",
         path.join(process.cwd(), scriptRelativePath)
       ],
       {

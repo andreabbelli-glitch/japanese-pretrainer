@@ -111,6 +111,7 @@ export function buildKanjiClashQueueSnapshot(
     requestedSize,
     reserveCount: rounds.filter((round) => round.source === "reserve").length,
     rounds,
+    snapshotAtIso: now.toISOString(),
     scope: input.scope,
     seenPairKeys,
     totalCount: rounds.length

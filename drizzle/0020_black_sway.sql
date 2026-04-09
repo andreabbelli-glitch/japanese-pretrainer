@@ -1,0 +1,1 @@
+CREATE INDEX `kanji_clash_pair_log_mode_previous_answered_pair_idx` ON `kanji_clash_pair_log` (`mode`,`previous_state`,`answered_at`,`pair_key`);

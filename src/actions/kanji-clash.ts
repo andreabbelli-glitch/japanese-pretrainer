@@ -3,17 +3,15 @@
 import type { DatabaseClient } from "@/db";
 import {
   applyKanjiClashSessionAction,
+  loadKanjiClashQueueSnapshot,
   getKanjiClashCurrentRound,
-  type KanjiClashQueueSnapshot,
+  type KanjiClashAnswerSubmissionPayload,
   type KanjiClashSessionActionResult,
   type KanjiClashSessionRound
 } from "@/lib/kanji-clash";
 
-type SubmitKanjiClashAnswerActionInput = {
-  chosenSubjectKey: string;
+type SubmitKanjiClashAnswerActionInput = KanjiClashAnswerSubmissionPayload & {
   database?: DatabaseClient;
-  expectedPairKey: string;
-  queue: KanjiClashQueueSnapshot;
   responseMs?: number | null;
 };
 
@@ -22,6 +20,10 @@ export async function submitKanjiClashAnswerAction(
 ): Promise<KanjiClashSessionActionResult> {
   const chosenSubjectKey = input.chosenSubjectKey.trim();
   const expectedPairKey = input.expectedPairKey.trim();
+  const expectedPairStateUpdatedAt = normalizeOptionalString(
+    input.expectedPairStateUpdatedAt
+  );
+  const snapshotAt = parseKanjiClashSnapshotAtIso(input.snapshotAtIso);
 
   if (!chosenSubjectKey) {
     throw new Error("Missing Kanji Clash selection.");
@@ -31,7 +33,18 @@ export async function submitKanjiClashAnswerAction(
     throw new Error("Missing Kanji Clash pair key.");
   }
 
-  const currentRound = getKanjiClashCurrentRound(input.queue);
+  const queue = await loadKanjiClashQueueSnapshot({
+    dailyNewLimit: input.dailyNewLimit,
+    database: input.database,
+    mediaIds: input.mediaIds.length > 0 ? input.mediaIds : undefined,
+    mode: input.mode,
+    now: snapshotAt,
+    requestedSize: input.requestedSize,
+    scope: input.scope,
+    seenPairKeys: input.seenPairKeys
+  });
+
+  const currentRound = getKanjiClashCurrentRound(queue);
 
   if (!currentRound) {
     throw new Error("Kanji Clash session is already complete.");
@@ -40,6 +53,12 @@ export async function submitKanjiClashAnswerAction(
   assertRoundCoherence(currentRound);
 
   if (currentRound.pairKey !== expectedPairKey) {
+    throw new Error("Kanji Clash round is out of date.");
+  }
+
+  if (
+    (currentRound.pairState?.updatedAt ?? null) !== expectedPairStateUpdatedAt
+  ) {
     throw new Error("Kanji Clash round is out of date.");
   }
 
@@ -53,7 +72,7 @@ export async function submitKanjiClashAnswerAction(
   return applyKanjiClashSessionAction({
     chosenSubjectKey,
     database: input.database,
-    queue: input.queue,
+    queue,
     responseMs: normalizeResponseMs(input.responseMs)
   });
 }
@@ -89,4 +108,20 @@ function normalizeResponseMs(value?: number | null) {
   }
 
   return Math.max(0, Math.round(value ?? 0));
+}
+
+function normalizeOptionalString(value?: string | null) {
+  const normalized = value?.trim();
+
+  return normalized ? normalized : null;
+}
+
+function parseKanjiClashSnapshotAtIso(snapshotAtIso: string) {
+  const snapshotAt = new Date(snapshotAtIso.trim());
+
+  if (Number.isNaN(snapshotAt.getTime())) {
+    throw new Error("Kanji Clash snapshot time is invalid.");
+  }
+
+  return snapshotAt;
 }

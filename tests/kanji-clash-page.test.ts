@@ -122,6 +122,7 @@ function buildPageData(
     requestedSize: null,
     reserveCount: 0,
     rounds,
+    snapshotAtIso: "2026-04-09T12:00:00.000Z",
     scope,
     seenPairKeys: [],
     totalCount: 1,
@@ -145,7 +146,8 @@ function buildPageData(
     queue,
     scope,
     selectedMedia,
-    settings
+    settings,
+    snapshotAtIso: "2026-04-09T12:00:00.000Z"
   };
 }
 

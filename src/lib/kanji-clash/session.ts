@@ -1,5 +1,7 @@
 import { randomUUID } from "node:crypto";
 
+import { and, eq } from "drizzle-orm";
+
 import {
   db,
   kanjiClashPairLog,
@@ -8,7 +10,7 @@ import {
 } from "@/db";
 import {
   countKanjiClashAutomaticNewPairIntroductions,
-  getKanjiClashPairStateByPairKey,
+  listKanjiClashDuePairStates,
   listEligibleKanjiClashSubjects,
   listKanjiClashPairStatesByPairKeys
 } from "@/db/queries";
@@ -18,12 +20,17 @@ import {
   buildKanjiClashQueueSnapshot,
   getKanjiClashCurrentRound
 } from "./queue.ts";
-import { generateKanjiClashCandidates } from "./pairing.ts";
+import {
+  buildKanjiClashCandidate,
+  generateKanjiClashCandidates
+} from "./pairing.ts";
 import {
   createInitialKanjiClashPairState,
   transitionKanjiClashPairState
 } from "./scheduler.ts";
 import type {
+  KanjiClashCandidate,
+  KanjiClashEligibleSubject,
   KanjiClashPairState,
   KanjiClashQueueSnapshot,
   KanjiClashSessionActionResult,
@@ -34,6 +41,11 @@ import type {
 type DatabaseTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
 >[0];
+
+const MANUAL_DUE_PAGE_SIZE_MULTIPLIER = 4;
+const MANUAL_FRONTIER_EXPANSION_MULTIPLIER = 4;
+const MANUAL_FRONTIER_MULTIPLIER = 6;
+const MANUAL_FRONTIER_MIN_SIZE = 16;
 
 type LoadKanjiClashQueueSnapshotInput = {
   dailyNewLimit?: number | null;
@@ -62,6 +74,14 @@ export async function loadKanjiClashQueueSnapshot(
   const eligibleSubjects = await listEligibleKanjiClashSubjects(database, {
     mediaIds: input.mediaIds
   });
+  if (input.mode === "manual") {
+    return loadManualKanjiClashQueueSnapshot({
+      eligibleSubjects,
+      input,
+      now
+    });
+  }
+
   const candidates = generateKanjiClashCandidates(eligibleSubjects);
   const pairKeys = candidates.map((candidate) => candidate.pairKey);
   const pairStates = await listKanjiClashPairStatesByPairKeys(
@@ -69,14 +89,11 @@ export async function loadKanjiClashQueueSnapshot(
     pairKeys
   );
   const introducedTodayCount =
-    input.mode === "automatic"
-      ? await countKanjiClashAutomaticNewPairIntroductions({
-          database,
-          endAt: startOfNextLocalDay(now).toISOString(),
-          pairKeys,
-          startAt: startOfLocalDay(now).toISOString()
-        })
-      : 0;
+    await countKanjiClashAutomaticNewPairIntroductions({
+      database,
+      endAt: startOfNextLocalDay(now).toISOString(),
+      startAt: startOfLocalDay(now).toISOString()
+    });
 
   return buildKanjiClashQueueSnapshot({
     candidates,
@@ -89,6 +106,197 @@ export async function loadKanjiClashQueueSnapshot(
     scope: input.scope,
     seenPairKeys: input.seenPairKeys
   });
+}
+
+async function loadManualKanjiClashQueueSnapshot(input: {
+  eligibleSubjects: KanjiClashEligibleSubject[];
+  input: LoadKanjiClashQueueSnapshotInput;
+  now: Date;
+}): Promise<KanjiClashQueueSnapshot> {
+  const database = input.input.database ?? db;
+  const requestedSize = normalizePositiveInteger(input.input.requestedSize, 20);
+  const seenPairKeys = dedupeStable(input.input.seenPairKeys ?? []);
+
+  if (requestedSize <= 0) {
+    return buildKanjiClashQueueSnapshot({
+      candidates: [],
+      mode: "manual",
+      newIntroducedTodayCount: 0,
+      now: input.now,
+      pairStates: new Map<string, KanjiClashPairState>(),
+      requestedSize,
+      scope: input.input.scope,
+      seenPairKeys
+    });
+  }
+
+  const eligibleSubjectsByKey = new Map(
+    input.eligibleSubjects.map((subject) => [subject.subjectKey, subject])
+  );
+  // Manual mode keeps due pairs exact, then fills the rest from a deterministic frontier.
+  const dueSeed = await collectManualDueCandidates({
+    database,
+    eligibleSubjectsByKey,
+    now: input.now,
+    requestedSize,
+    seenPairKeys
+  });
+  const combinedCandidates: KanjiClashCandidate[] = [...dueSeed.candidates];
+  const combinedPairStates = new Map(dueSeed.pairStates);
+  const combinedPairKeySet = new Set([
+    ...seenPairKeys,
+    ...dueSeed.candidates.map((candidate) => candidate.pairKey)
+  ]);
+  let frontierSize = Math.min(
+    input.eligibleSubjects.length,
+    Math.max(
+      requestedSize * MANUAL_FRONTIER_MULTIPLIER,
+      MANUAL_FRONTIER_MIN_SIZE
+    )
+  );
+
+  if (combinedCandidates.length < requestedSize) {
+    while (true) {
+      // The frontier grows only as far as needed to satisfy the requested session size.
+      const frontierSubjects = input.eligibleSubjects.slice(0, frontierSize);
+      const frontierCandidates = generateKanjiClashCandidates(
+        frontierSubjects
+      ).filter((candidate) => !combinedPairKeySet.has(candidate.pairKey));
+
+      if (frontierCandidates.length > 0) {
+        const frontierPairStates = await listKanjiClashPairStatesByPairKeys(
+          database,
+          frontierCandidates.map((candidate) => candidate.pairKey)
+        );
+
+        for (const [pairKey, pairState] of frontierPairStates) {
+          combinedPairStates.set(pairKey, pairState);
+        }
+
+        for (const candidate of frontierCandidates) {
+          combinedCandidates.push(candidate);
+          combinedPairKeySet.add(candidate.pairKey);
+        }
+      }
+
+      const queue = buildKanjiClashQueueSnapshot({
+        candidates: combinedCandidates,
+        mode: "manual",
+        newIntroducedTodayCount: 0,
+        now: input.now,
+        pairStates: combinedPairStates,
+        requestedSize,
+        scope: input.input.scope,
+        seenPairKeys
+      });
+
+      if (
+        queue.totalCount >= requestedSize ||
+        frontierSize >= input.eligibleSubjects.length
+      ) {
+        return queue;
+      }
+
+      const nextFrontierSize = Math.min(
+        input.eligibleSubjects.length,
+        frontierSize +
+          Math.max(
+            requestedSize * MANUAL_FRONTIER_EXPANSION_MULTIPLIER,
+            MANUAL_FRONTIER_MIN_SIZE
+          )
+      );
+
+      if (nextFrontierSize <= frontierSize) {
+        return queue;
+      }
+
+      frontierSize = nextFrontierSize;
+    }
+  }
+
+  return buildKanjiClashQueueSnapshot({
+    candidates: combinedCandidates,
+    mode: "manual",
+    newIntroducedTodayCount: 0,
+    now: input.now,
+    pairStates: combinedPairStates,
+    requestedSize,
+    scope: input.input.scope,
+    seenPairKeys
+  });
+}
+
+async function collectManualDueCandidates(input: {
+  database: DatabaseClient;
+  eligibleSubjectsByKey: Map<string, KanjiClashEligibleSubject>;
+  now: Date;
+  requestedSize: number;
+  seenPairKeys: string[];
+}): Promise<{
+  candidates: KanjiClashCandidate[];
+  pairStates: Map<string, KanjiClashPairState>;
+}> {
+  const candidates: KanjiClashCandidate[] = [];
+  const pairStates = new Map<string, KanjiClashPairState>();
+  const seenPairKeySet = new Set(
+    input.seenPairKeys.filter((pairKey) => pairKey.length > 0)
+  );
+  const pageSize = Math.max(
+    MANUAL_FRONTIER_MIN_SIZE,
+    input.requestedSize * MANUAL_DUE_PAGE_SIZE_MULTIPLIER
+  );
+
+  for (
+    let offset = 0;
+    candidates.length < input.requestedSize;
+    offset += pageSize
+  ) {
+    const duePairStates = await listKanjiClashDuePairStates(input.database, {
+      limit: pageSize,
+      now: input.now.toISOString(),
+      offset
+    });
+
+    if (duePairStates.length === 0) {
+      break;
+    }
+
+    for (const pairState of duePairStates) {
+      if (seenPairKeySet.has(pairState.pairKey)) {
+        continue;
+      }
+
+      const left = input.eligibleSubjectsByKey.get(pairState.leftSubjectKey);
+      const right = input.eligibleSubjectsByKey.get(pairState.rightSubjectKey);
+
+      if (!left || !right) {
+        continue;
+      }
+
+      const candidate = buildKanjiClashCandidate(left, right);
+
+      if (!candidate || seenPairKeySet.has(candidate.pairKey)) {
+        continue;
+      }
+
+      seenPairKeySet.add(candidate.pairKey);
+      candidates.push(candidate);
+      pairStates.set(candidate.pairKey, pairState);
+
+      if (candidates.length >= input.requestedSize) {
+        break;
+      }
+    }
+
+    if (duePairStates.length < pageSize) {
+      break;
+    }
+  }
+
+  return {
+    candidates,
+    pairStates
+  };
 }
 
 export async function applyKanjiClashSessionAction(
@@ -113,24 +321,33 @@ export async function applyKanjiClashSessionAction(
   const result = isCorrect ? "good" : "again";
 
   return database.transaction(async (tx) => {
-    const currentState =
-      (await getKanjiClashPairStateByPairKey(tx, currentRound.pairKey)) ??
-      createInitialKanjiClashPairState({
-        leftSubjectKey: currentRound.candidate.leftSubjectKey,
-        now,
-        pairKey: currentRound.pairKey,
-        rightSubjectKey: currentRound.candidate.rightSubjectKey
-      });
+    const currentState = currentRound.pairState
+      ? currentRound.pairState
+      : createInitialKanjiClashPairState({
+          leftSubjectKey: currentRound.candidate.leftSubjectKey,
+          now,
+          pairKey: currentRound.pairKey,
+          rightSubjectKey: currentRound.candidate.rightSubjectKey
+        });
     const transition = transitionKanjiClashPairState({
       current: currentState,
       now,
       result
     });
 
-    await upsertKanjiClashPairState(tx, {
-      createdAt: currentState.createdAt,
-      nextState: transition.next
-    });
+    const persisted = currentRound.pairState
+      ? await updateKanjiClashPairStateIfCurrent(tx, {
+          expectedUpdatedAt: currentRound.pairState.updatedAt,
+          nextState: transition.next
+        })
+      : await insertKanjiClashPairStateIfAbsent(tx, {
+          createdAt: currentState.createdAt,
+          nextState: transition.next
+        });
+
+    if (!persisted) {
+      throw new Error("Kanji Clash round is out of date.");
+    }
 
     const logId = `kanji_clash_pair_log_${randomUUID()}`;
 
@@ -176,38 +393,69 @@ export async function applyKanjiClashSessionAction(
   });
 }
 
-async function upsertKanjiClashPairState(
+async function updateKanjiClashPairStateIfCurrent(
+  tx: DatabaseTransaction,
+  input: {
+    expectedUpdatedAt: string;
+    nextState: KanjiClashPairState;
+  }
+) {
+  const [updatedRow] = await tx
+    .update(kanjiClashPairState)
+    .set(getKanjiClashPairStateUpdateValues(input.nextState))
+    .where(
+      and(
+        eq(kanjiClashPairState.pairKey, input.nextState.pairKey),
+        eq(kanjiClashPairState.updatedAt, input.expectedUpdatedAt)
+      )
+    )
+    .returning({
+      pairKey: kanjiClashPairState.pairKey
+    });
+
+  return Boolean(updatedRow);
+}
+
+async function insertKanjiClashPairStateIfAbsent(
   tx: DatabaseTransaction,
   input: {
     createdAt: string;
     nextState: KanjiClashPairState;
   }
 ) {
-  await tx
+  const [insertedRow] = await tx
     .insert(kanjiClashPairState)
     .values({
       ...input.nextState,
       createdAt: input.createdAt
     })
-    .onConflictDoUpdate({
-      target: kanjiClashPairState.pairKey,
-      set: {
-        difficulty: input.nextState.difficulty,
-        dueAt: input.nextState.dueAt,
-        lapses: input.nextState.lapses,
-        lastInteractionAt: input.nextState.lastInteractionAt,
-        lastReviewedAt: input.nextState.lastReviewedAt,
-        learningSteps: input.nextState.learningSteps,
-        leftSubjectKey: input.nextState.leftSubjectKey,
-        reps: input.nextState.reps,
-        rightSubjectKey: input.nextState.rightSubjectKey,
-        scheduledDays: input.nextState.scheduledDays,
-        schedulerVersion: input.nextState.schedulerVersion,
-        stability: input.nextState.stability,
-        state: input.nextState.state,
-        updatedAt: input.nextState.updatedAt
-      }
+    .onConflictDoNothing({
+      target: kanjiClashPairState.pairKey
+    })
+    .returning({
+      pairKey: kanjiClashPairState.pairKey
     });
+
+  return Boolean(insertedRow);
+}
+
+function getKanjiClashPairStateUpdateValues(nextState: KanjiClashPairState) {
+  return {
+    difficulty: nextState.difficulty,
+    dueAt: nextState.dueAt,
+    lapses: nextState.lapses,
+    lastInteractionAt: nextState.lastInteractionAt,
+    lastReviewedAt: nextState.lastReviewedAt,
+    learningSteps: nextState.learningSteps,
+    leftSubjectKey: nextState.leftSubjectKey,
+    reps: nextState.reps,
+    rightSubjectKey: nextState.rightSubjectKey,
+    scheduledDays: nextState.scheduledDays,
+    schedulerVersion: nextState.schedulerVersion,
+    stability: nextState.stability,
+    state: nextState.state,
+    updatedAt: nextState.updatedAt
+  };
 }
 
 function startOfLocalDay(value: Date) {
@@ -216,4 +464,31 @@ function startOfLocalDay(value: Date) {
 
 function startOfNextLocalDay(value: Date) {
   return new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
+}
+
+function normalizePositiveInteger(
+  value: number | null | undefined,
+  fallback: number
+) {
+  if (!Number.isFinite(value)) {
+    return Math.max(0, Math.trunc(fallback));
+  }
+
+  return Math.max(0, Math.trunc(value ?? fallback));
+}
+
+function dedupeStable(values: string[]) {
+  const seen = new Set<string>();
+  const result: string[] = [];
+
+  for (const value of values) {
+    if (seen.has(value)) {
+      continue;
+    }
+
+    seen.add(value);
+    result.push(value);
+  }
+
+  return result;
 }

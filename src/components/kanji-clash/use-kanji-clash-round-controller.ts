@@ -11,6 +11,7 @@ import {
 import { submitKanjiClashAnswerAction } from "@/actions/kanji-clash";
 import { getKanjiClashCurrentRound } from "@/lib/kanji-clash/queue";
 import type {
+  KanjiClashAnswerSubmissionPayload,
   KanjiClashPageData,
   KanjiClashQueueSnapshot,
   KanjiClashRoundSide,
@@ -82,6 +83,7 @@ export function useKanjiClashRoundController(
   const autoAdvanceTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const touchStartRef = useRef<TouchPoint | null>(null);
+  const selectedMediaId = data.selectedMedia?.id ?? null;
 
   const commitControllerState = useCallback((nextState: ControllerState) => {
     controllerStateRef.current = nextState;
@@ -147,12 +149,15 @@ export function useKanjiClashRoundController(
       const startedAt = performance.now();
 
       try {
-        const result = await submitKanjiClashAnswerAction({
-          chosenSubjectKey,
-          expectedPairKey: currentRound.pairKey,
-          queue: currentState.committedQueue,
-          responseMs: performance.now() - startedAt
-        });
+        const result = await submitKanjiClashAnswerAction(
+          buildKanjiClashAnswerSubmissionPayload({
+            chosenSubjectKey,
+            currentRound,
+            queue: currentState.committedQueue,
+            responseMs: performance.now() - startedAt,
+            selectedMediaId
+          })
+        );
 
         commitControllerState(
           createAnsweredControllerState(currentState, result, side)
@@ -177,7 +182,12 @@ export function useKanjiClashRoundController(
         );
       }
     },
-    [advanceVisibleQueue, clearAutoAdvanceTimer, commitControllerState]
+    [
+      advanceVisibleQueue,
+      clearAutoAdvanceTimer,
+      commitControllerState,
+      selectedMediaId
+    ]
   );
 
   const handleChooseSide = useCallback(
@@ -293,6 +303,28 @@ export function useKanjiClashRoundController(
     handleTouchStart,
     isSelectionLocked: controllerState.isSelectionLocked,
     queue: controllerState.visibleQueue
+  };
+}
+
+function buildKanjiClashAnswerSubmissionPayload(input: {
+  chosenSubjectKey: string;
+  currentRound: KanjiClashSessionRound;
+  queue: KanjiClashQueueSnapshot;
+  responseMs: number;
+  selectedMediaId: string | null;
+}): KanjiClashAnswerSubmissionPayload & { responseMs: number } {
+  return {
+    chosenSubjectKey: input.chosenSubjectKey,
+    dailyNewLimit: input.queue.dailyNewLimit,
+    expectedPairKey: input.currentRound.pairKey,
+    expectedPairStateUpdatedAt: input.currentRound.pairState?.updatedAt ?? null,
+    mediaIds: input.selectedMediaId ? [input.selectedMediaId] : [],
+    mode: input.queue.mode,
+    requestedSize: input.queue.requestedSize,
+    responseMs: input.responseMs,
+    scope: input.queue.scope,
+    seenPairKeys: input.queue.seenPairKeys,
+    snapshotAtIso: input.queue.snapshotAtIso
   };
 }
 

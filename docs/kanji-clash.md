@@ -181,9 +181,13 @@ Default v1:
 
 ### Modalita manuale
 
-- usa lo stesso pool eleggibile;
-- puo pescare `due`, `new` e `reserve`;
-- tronca la sessione alla size richiesta.
+- usa lo stesso pool eleggibile come base, ma lo esplora tramite una frontiera
+  deterministica e bounded;
+- preserva le coppie `due` gia tracciate prima di riempire il resto della
+  sessione;
+- pesca `new` e `reserve` dalla stessa frontiera, dimensionata in funzione
+  della `size` richiesta;
+- non promette piu una scansione esaustiva dell'intero corpus eleggibile.
 
 Preset v1:
 
