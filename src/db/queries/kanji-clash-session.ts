@@ -18,6 +18,7 @@ import {
   kanjiClashPairState
 } from "../schema/kanji-clash.ts";
 import type { KanjiClashPairState } from "../../lib/kanji-clash/types.ts";
+import { quoteSqlString } from "./review-query-helpers.ts";
 
 const KANJI_CLASH_PAIR_STATE_QUERY_CHUNK_SIZE = 400;
 
@@ -65,6 +66,55 @@ export async function listKanjiClashPairStatesByPairKeys(
   }
 
   return pairStates;
+}
+
+export async function listKanjiClashPairStatesBySubjectKeys(
+  database: DatabaseQueryClient,
+  subjectKeys: string[]
+): Promise<Map<string, KanjiClashPairState>> {
+  const normalizedSubjectKeys = dedupeStable(
+    subjectKeys.filter((subjectKey) => subjectKey.length > 0)
+  );
+
+  if (normalizedSubjectKeys.length === 0) {
+    return new Map<string, KanjiClashPairState>();
+  }
+
+  const subjectKeyValuesSql = normalizedSubjectKeys
+    .map((subjectKey) => `(${quoteSqlString(subjectKey)})`)
+    .join(", ");
+  const rows = await database.all<typeof kanjiClashPairState.$inferSelect>(`
+    WITH eligible_subject_keys(subject_key) AS (
+      VALUES ${subjectKeyValuesSql}
+    )
+    SELECT
+      ps.pair_key AS pairKey,
+      ps.left_subject_key AS leftSubjectKey,
+      ps.right_subject_key AS rightSubjectKey,
+      ps.state AS state,
+      ps.stability AS stability,
+      ps.difficulty AS difficulty,
+      ps.due_at AS dueAt,
+      ps.last_reviewed_at AS lastReviewedAt,
+      ps.last_interaction_at AS lastInteractionAt,
+      ps.scheduled_days AS scheduledDays,
+      ps.learning_steps AS learningSteps,
+      ps.lapses AS lapses,
+      ps.reps AS reps,
+      ps.scheduler_version AS schedulerVersion,
+      ps.created_at AS createdAt,
+      ps.updated_at AS updatedAt
+    FROM kanji_clash_pair_state ps
+    INNER JOIN eligible_subject_keys left_keys
+      ON left_keys.subject_key = ps.left_subject_key
+    INNER JOIN eligible_subject_keys right_keys
+      ON right_keys.subject_key = ps.right_subject_key
+    ORDER BY ps.pair_key ASC
+  `);
+
+  return new Map(
+    rows.map((row) => [row.pairKey, mapKanjiClashPairStateRow(row)])
+  );
 }
 
 export async function listKanjiClashDuePairStates(

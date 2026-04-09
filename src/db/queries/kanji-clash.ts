@@ -47,7 +47,7 @@ export async function listEligibleKanjiClashSubjects(
 
   const rows = await database.all<EligibleKanjiClashSubjectRow>(`
     WITH eligible_subjects AS (
-      SELECT DISTINCT
+      SELECT
         rss.subject_key AS subjectKey,
         rss.subject_type AS subjectType,
         rss.entry_id AS canonicalEntryId,
@@ -59,8 +59,8 @@ export async function listEligibleKanjiClashSubjects(
       WHERE rss.entry_type = 'term'
         AND rss.subject_type IN ('entry', 'group')
         AND rss.state IN ('review', 'relearning')
-        AND COALESCE(rss.manual_override, 0) = 0
-        AND COALESCE(rss.suspended, 0) = 0
+        AND rss.manual_override = 0
+        AND rss.suspended = 0
         AND rss.stability IS NOT NULL
         AND rss.stability >= 7
         AND rss.reps >= 2
@@ -133,10 +133,7 @@ export async function listEligibleKanjiClashSubjects(
           OR cel.relationship_type != 'primary'
           OR c.normalized_front IS NULL
           OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
-          OR (
-            t.reading IS NOT NULL
-            AND c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.reading")}
-          )
+          OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.reading")}
         )
       UNION ALL
       SELECT DISTINCT
@@ -207,10 +204,7 @@ export async function listEligibleKanjiClashSubjects(
           OR cel.relationship_type != 'primary'
           OR c.normalized_front IS NULL
           OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
-          OR (
-            t.reading IS NOT NULL
-            AND c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.reading")}
-          )
+          OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.reading")}
         )
     )
     SELECT DISTINCT

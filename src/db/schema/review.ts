@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import {
   index,
   integer,
@@ -123,6 +124,22 @@ export const reviewSubjectState = sqliteTable(
       table.entryType,
       table.crossMediaGroupId,
       table.entryId
+    ),
+    index("review_subject_state_kanji_clash_idx")
+      .on(
+        table.subjectType,
+        table.state,
+        table.entryId,
+        table.crossMediaGroupId
+      )
+      .where(
+        sql`${table.entryType} = 'term'
+          and ${table.subjectType} in ('entry', 'group')
+          and ${table.state} in ('review', 'relearning')
+          and ${table.manualOverride} = 0
+          and ${table.suspended} = 0
+          and ${table.stability} >= 7
+          and ${table.reps} >= 2`
     )
   ]
 );

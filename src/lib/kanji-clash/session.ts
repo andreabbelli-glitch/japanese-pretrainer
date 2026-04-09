@@ -12,6 +12,7 @@ import {
   countKanjiClashAutomaticNewPairIntroductions,
   listKanjiClashDuePairStates,
   listEligibleKanjiClashSubjects,
+  listKanjiClashPairStatesBySubjectKeys,
   listKanjiClashPairStatesByPairKeys
 } from "@/db/queries";
 
@@ -35,6 +36,7 @@ import type {
   KanjiClashQueueSnapshot,
   KanjiClashSessionActionResult,
   KanjiClashSessionMode,
+  KanjiClashSessionRound,
   KanjiClashScope
 } from "./types.ts";
 
@@ -61,6 +63,7 @@ type LoadKanjiClashQueueSnapshotInput = {
 type ApplyKanjiClashSessionActionInput = {
   chosenSubjectKey: string;
   database?: DatabaseClient;
+  expectedPairStateUpdatedAt?: string | null;
   now?: Date;
   queue: KanjiClashQueueSnapshot;
   responseMs?: number | null;
@@ -83,10 +86,17 @@ export async function loadKanjiClashQueueSnapshot(
   }
 
   const candidates = generateKanjiClashCandidates(eligibleSubjects);
-  const pairKeys = candidates.map((candidate) => candidate.pairKey);
-  const pairStates = await listKanjiClashPairStatesByPairKeys(
+  const candidatePairKeySet = new Set(
+    candidates.map((candidate) => candidate.pairKey)
+  );
+  const candidatePairStates = await listKanjiClashPairStatesBySubjectKeys(
     database,
-    pairKeys
+    eligibleSubjects.map((subject) => subject.subjectKey)
+  );
+  const pairStates = new Map(
+    [...candidatePairStates].filter(([pairKey]) =>
+      candidatePairKeySet.has(pairKey)
+    )
   );
   const introducedTodayCount =
     await countKanjiClashAutomaticNewPairIntroductions({
@@ -319,25 +329,35 @@ export async function applyKanjiClashSessionAction(
 
   const isCorrect = input.chosenSubjectKey === currentRound.correctSubjectKey;
   const result = isCorrect ? "good" : "again";
+  const expectedPairStateUpdatedAt =
+    input.expectedPairStateUpdatedAt ?? currentRound.pairState?.updatedAt ?? null;
 
   return database.transaction(async (tx) => {
-    const currentState = currentRound.pairState
-      ? currentRound.pairState
-      : createInitialKanjiClashPairState({
-          leftSubjectKey: currentRound.candidate.leftSubjectKey,
-          now,
-          pairKey: currentRound.pairKey,
-          rightSubjectKey: currentRound.candidate.rightSubjectKey
-        });
+    const persistedPairState = await resolveCurrentKanjiClashPairState(tx, {
+      currentRound,
+      expectedPairStateUpdatedAt
+    });
+    const currentState =
+      persistedPairState ??
+      createInitialKanjiClashPairState({
+        leftSubjectKey: currentRound.candidate.leftSubjectKey,
+        now,
+        pairKey: currentRound.pairKey,
+        rightSubjectKey: currentRound.candidate.rightSubjectKey
+      });
+    const canonicalRound = {
+      ...currentRound,
+      pairState: persistedPairState
+    };
     const transition = transitionKanjiClashPairState({
       current: currentState,
       now,
       result
     });
 
-    const persisted = currentRound.pairState
+    const persisted = persistedPairState
       ? await updateKanjiClashPairStateIfCurrent(tx, {
-          expectedUpdatedAt: currentRound.pairState.updatedAt,
+          expectedUpdatedAt: currentState.updatedAt,
           nextState: transition.next
         })
       : await insertKanjiClashPairStateIfAbsent(tx, {
@@ -379,7 +399,7 @@ export async function applyKanjiClashSessionAction(
     );
 
     return {
-      answeredRound: currentRound,
+      answeredRound: canonicalRound,
       isCorrect,
       logId,
       nextQueue,
@@ -391,6 +411,55 @@ export async function applyKanjiClashSessionAction(
       selectedSubjectKey: input.chosenSubjectKey
     };
   });
+}
+
+async function resolveCurrentKanjiClashPairState(
+  tx: DatabaseTransaction,
+  input: {
+    currentRound: KanjiClashSessionRound;
+    expectedPairStateUpdatedAt: string | null;
+  }
+) {
+  if (!input.expectedPairStateUpdatedAt) {
+    return null;
+  }
+
+  const row = await tx.query.kanjiClashPairState.findFirst({
+    where: and(
+      eq(kanjiClashPairState.pairKey, input.currentRound.pairKey),
+      eq(kanjiClashPairState.updatedAt, input.expectedPairStateUpdatedAt)
+    )
+  });
+
+  if (!row) {
+    throw new Error("Kanji Clash round is out of date.");
+  }
+
+  if (
+    row.leftSubjectKey !== input.currentRound.candidate.leftSubjectKey ||
+    row.rightSubjectKey !== input.currentRound.candidate.rightSubjectKey
+  ) {
+    throw new Error("Kanji Clash round is out of date.");
+  }
+
+  return {
+    createdAt: row.createdAt,
+    difficulty: row.difficulty ?? null,
+    dueAt: row.dueAt ?? null,
+    lapses: row.lapses,
+    lastInteractionAt: row.lastInteractionAt,
+    lastReviewedAt: row.lastReviewedAt ?? null,
+    learningSteps: row.learningSteps,
+    leftSubjectKey: row.leftSubjectKey,
+    pairKey: row.pairKey,
+    reps: row.reps,
+    rightSubjectKey: row.rightSubjectKey,
+    scheduledDays: row.scheduledDays,
+    schedulerVersion: row.schedulerVersion,
+    stability: row.stability ?? null,
+    state: row.state,
+    updatedAt: row.updatedAt
+  } satisfies KanjiClashPairState;
 }
 
 async function updateKanjiClashPairStateIfCurrent(

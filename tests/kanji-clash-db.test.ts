@@ -15,6 +15,7 @@ import {
 } from "@/db";
 import {
   countKanjiClashAutomaticNewPairIntroductions,
+  listKanjiClashPairStatesBySubjectKeys,
   listKanjiClashPairStatesByPairKeys
 } from "@/db/queries/kanji-clash-session";
 
@@ -175,6 +176,60 @@ describe("kanji clash pair persistence", () => {
       "entry:term:left:1199"
     );
     expect(pairStates.has("")).toBe(false);
+  });
+
+  it("loads pair states for eligible subject keys without requiring candidate pair keys", async () => {
+    const inScopePairKey = "entry:term:alpha::entry:term:beta";
+    const outOfScopePairKey = "entry:term:alpha::entry:term:gamma";
+    const storedAt = "2026-04-02T09:00:00.000Z";
+
+    await database.insert(kanjiClashPairState).values([
+      {
+        createdAt: storedAt,
+        difficulty: 2.5,
+        dueAt: storedAt,
+        lapses: 0,
+        lastInteractionAt: storedAt,
+        lastReviewedAt: storedAt,
+        learningSteps: 0,
+        leftSubjectKey: "entry:term:alpha",
+        pairKey: inScopePairKey,
+        reps: 3,
+        rightSubjectKey: "entry:term:beta",
+        scheduledDays: 2,
+        stability: 8,
+        state: "review",
+        updatedAt: storedAt
+      },
+      {
+        createdAt: storedAt,
+        difficulty: 2.5,
+        dueAt: storedAt,
+        lapses: 0,
+        lastInteractionAt: storedAt,
+        lastReviewedAt: storedAt,
+        learningSteps: 0,
+        leftSubjectKey: "entry:term:alpha",
+        pairKey: outOfScopePairKey,
+        reps: 3,
+        rightSubjectKey: "entry:term:gamma",
+        scheduledDays: 2,
+        stability: 8,
+        state: "review",
+        updatedAt: storedAt
+      }
+    ]);
+
+    const pairStates = await listKanjiClashPairStatesBySubjectKeys(database, [
+      "",
+      "entry:term:alpha",
+      "entry:term:beta",
+      "entry:term:alpha"
+    ]);
+
+    expect(pairStates.size).toBe(1);
+    expect(pairStates.get(inScopePairKey)?.pairKey).toBe(inScopePairKey);
+    expect(pairStates.has(outOfScopePairKey)).toBe(false);
   });
 
   it("counts only automatic new-introduction logs in the requested window", async () => {

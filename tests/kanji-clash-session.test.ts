@@ -486,6 +486,70 @@ describe("kanji clash session service", () => {
     expect(reviewStateAfter).toEqual(reviewStateBefore);
   });
 
+  it("uses the canonical persisted pair state inside the transaction", async () => {
+    const now = new Date("2026-04-09T12:00:00.000Z");
+    const pairKey = buildKanjiClashPairKey(
+      "entry:term:term-alpha-shokuhi",
+      "entry:term:term-alpha-shokuhin"
+    );
+    const updatedAt = "2026-04-08T08:00:00.000Z";
+
+    await database.insert(kanjiClashPairState).values({
+      createdAt: updatedAt,
+      difficulty: 2.4,
+      dueAt: "2026-04-09T09:00:00.000Z",
+      lapses: 0,
+      lastInteractionAt: updatedAt,
+      lastReviewedAt: updatedAt,
+      learningSteps: 0,
+      leftSubjectKey: "entry:term:term-alpha-shokuhi",
+      pairKey,
+      reps: 3,
+      rightSubjectKey: "entry:term:term-alpha-shokuhin",
+      scheduledDays: 2,
+      stability: 8.4,
+      state: "review",
+      updatedAt
+    });
+
+    const queue = await loadKanjiClashQueueSnapshot({
+      database,
+      mode: "manual",
+      now,
+      requestedSize: 2,
+      scope: "global"
+    });
+    const tamperedQueue = structuredClone(queue);
+    const currentRound = tamperedQueue.rounds[tamperedQueue.currentRoundIndex];
+
+    if (!currentRound?.pairState) {
+      throw new Error("Expected a persisted Kanji Clash pair state.");
+    }
+
+    currentRound.pairState = {
+      ...currentRound.pairState,
+      reps: 999,
+      scheduledDays: 99,
+      state: "learning"
+    };
+
+    const result = await applyKanjiClashSessionAction({
+      chosenSubjectKey: currentRound.correctSubjectKey,
+      database,
+      expectedPairStateUpdatedAt: updatedAt,
+      now,
+      queue: tamperedQueue,
+      responseMs: 180
+    });
+    const storedLog = await database.query.kanjiClashPairLog.findFirst({
+      where: (table, { eq }) => eq(table.id, result.logId)
+    });
+
+    expect(result.answeredRound.pairState?.state).toBe("review");
+    expect(result.previousPairState.reps).toBe(3);
+    expect(storedLog?.previousState).toBe("review");
+  });
+
   it("allows only one winner when the same round is submitted concurrently", async () => {
     const now = new Date("2026-04-09T12:00:00.000Z");
     const competingDatabase = createDatabaseClient({

@@ -4,15 +4,10 @@ import {
   db,
   type DatabaseClient
 } from "@/db";
-import { getKanjiClashPairStateByPairKey } from "@/db/queries";
 import {
   applyKanjiClashSessionAction,
-  buildKanjiClashPairKey,
   getKanjiClashCurrentRound,
-  materializeKanjiClashSessionRound,
   type KanjiClashAnswerSubmissionPayload,
-  type KanjiClashPairState,
-  type KanjiClashQueueSnapshot,
   type KanjiClashSessionActionResult,
   type KanjiClashSessionRound
 } from "@/lib/kanji-clash";
@@ -51,30 +46,15 @@ export async function submitKanjiClashAnswerAction(
     throw new Error("Kanji Clash round is out of date.");
   }
 
-  const persistedPairState = await getKanjiClashPairStateByPairKey(
-    database,
-    expectedPairKey
-  );
-
-  if ((persistedPairState?.updatedAt ?? null) !== expectedPairStateUpdatedAt) {
-    throw new Error("Kanji Clash round is out of date.");
+  if ((currentRound.pairState?.updatedAt ?? null) !== expectedPairStateUpdatedAt) {
+    throw new Error("Kanji Clash queue payload is inconsistent.");
   }
 
-  const canonicalQueue = replaceCurrentRound(
-    queue,
-    rebuildCurrentRound(queue, currentRound, persistedPairState)
-  );
-  const canonicalCurrentRound = getKanjiClashCurrentRound(canonicalQueue);
-
-  if (!canonicalCurrentRound) {
-    throw new Error("Kanji Clash session is already complete.");
-  }
-
-  assertRoundCoherence(canonicalCurrentRound);
+  assertRoundCoherence(currentRound);
 
   if (
-    chosenSubjectKey !== canonicalCurrentRound.leftSubjectKey &&
-    chosenSubjectKey !== canonicalCurrentRound.rightSubjectKey
+    chosenSubjectKey !== currentRound.leftSubjectKey &&
+    chosenSubjectKey !== currentRound.rightSubjectKey
   ) {
     throw new Error("Selected option is not part of the current Kanji Clash round.");
   }
@@ -82,7 +62,8 @@ export async function submitKanjiClashAnswerAction(
   return applyKanjiClashSessionAction({
     chosenSubjectKey,
     database,
-    queue: canonicalQueue,
+    expectedPairStateUpdatedAt,
+    queue,
     responseMs: normalizeResponseMs(input.responseMs)
   });
 }
@@ -152,50 +133,6 @@ function validateSubmittedQueueSnapshot(
   }
 
   return input.queue;
-}
-
-function rebuildCurrentRound(
-  queue: KanjiClashQueueSnapshot,
-  round: KanjiClashSessionRound,
-  pairState: KanjiClashPairState | null
-) {
-  if (
-    round.candidate.left.subjectKey !== round.candidate.leftSubjectKey ||
-    round.candidate.right.subjectKey !== round.candidate.rightSubjectKey
-  ) {
-    throw new Error("Kanji Clash round payload is inconsistent.");
-  }
-
-  if (
-    buildKanjiClashPairKey(
-      round.candidate.leftSubjectKey,
-      round.candidate.rightSubjectKey
-    ) !== round.candidate.pairKey
-  ) {
-    throw new Error("Kanji Clash round payload is inconsistent.");
-  }
-
-  return materializeKanjiClashSessionRound(
-    {
-      candidate: round.candidate,
-      pairState,
-      source: round.source
-    },
-    queue.currentRoundIndex
-  );
-}
-
-function replaceCurrentRound(
-  queue: KanjiClashQueueSnapshot,
-  currentRound: KanjiClashSessionRound
-) {
-  const rounds = [...queue.rounds];
-  rounds[queue.currentRoundIndex] = currentRound;
-
-  return {
-    ...queue,
-    rounds
-  };
 }
 
 function sameStringList(left: string[], right: string[]) {
