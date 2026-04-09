@@ -62,8 +62,8 @@
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione subito, senza flash di pagina completa, e in caso di errore ripristina la card precedente con messaggio chiaro.
 - Review: il daily limit dei nuovi è globale e la coda mostra contenuti fusi
   quando la stessa entry o pattern compare in più media.
-- Kanji Clash: una risposta corretta auto-avanza rapidamente senza mostrare
-  attrito extra.
+- Kanji Clash: una risposta corretta auto-avanza rapidamente senza pannello
+  feedback inline, senza timer artificiale e senza micro-scroll del viewport.
 - Kanji Clash: una risposta errata mostra feedback esplicito, non avanza da
   sola e richiede il pulsante `Continua`.
 - Kanji Clash: click/tap diretto sulle opzioni e tasti `ArrowLeft` /

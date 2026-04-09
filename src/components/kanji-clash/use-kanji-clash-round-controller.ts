@@ -25,13 +25,13 @@ import {
   shouldIgnoreKanjiClashKeyboardTarget
 } from "./kanji-clash-interactions";
 
-const CORRECT_REVEAL_MS = 360;
 const SWIPE_CLICK_SUPPRESSION_MS = 350;
 
 type ControllerState = {
   committedQueue: KanjiClashQueueSnapshot;
   feedback: KanjiClashRoundFeedback | null;
   isSelectionLocked: boolean;
+  pendingSelectionSide: KanjiClashRoundSide | null;
   visibleQueue: KanjiClashQueueSnapshot;
 };
 
@@ -53,6 +53,8 @@ export type KanjiClashRoundControllerResult = {
   handleTouchEnd: TouchEventHandler<HTMLElement>;
   handleTouchStart: TouchEventHandler<HTMLElement>;
   isSelectionLocked: boolean;
+  liveMessage: string | null;
+  pendingSelectionSide: KanjiClashRoundSide | null;
   queue: KanjiClashQueueSnapshot;
 };
 
@@ -68,6 +70,7 @@ function createInitialControllerState(
     committedQueue: queue,
     feedback: null,
     isSelectionLocked: false,
+    pendingSelectionSide: null,
     visibleQueue: queue
   };
 }
@@ -79,8 +82,8 @@ export function useKanjiClashRoundController(
     createInitialControllerState(data.queue)
   );
   const [clientError, setClientError] = useState<string | null>(null);
+  const [liveMessage, setLiveMessage] = useState<string | null>(null);
   const controllerStateRef = useRef(controllerState);
-  const autoAdvanceTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const touchStartRef = useRef<TouchPoint | null>(null);
   const selectedMediaId = data.selectedMedia?.id ?? null;
@@ -90,24 +93,9 @@ export function useKanjiClashRoundController(
     setControllerState(nextState);
   }, []);
 
-  const clearAutoAdvanceTimer = useCallback(() => {
-    if (autoAdvanceTimerRef.current === null) {
-      return;
-    }
-
-    window.clearTimeout(autoAdvanceTimerRef.current);
-    autoAdvanceTimerRef.current = null;
-  }, []);
-
   useEffect(() => {
     controllerStateRef.current = controllerState;
   }, [controllerState]);
-
-  useEffect(() => {
-    return () => {
-      clearAutoAdvanceTimer();
-    };
-  }, [clearAutoAdvanceTimer]);
 
   const advanceVisibleQueue = useCallback(() => {
     const currentState = controllerStateRef.current;
@@ -116,6 +104,7 @@ export function useKanjiClashRoundController(
       ...currentState,
       feedback: null,
       isSelectionLocked: false,
+      pendingSelectionSide: null,
       visibleQueue: currentState.committedQueue
     });
   }, [commitControllerState]);
@@ -139,12 +128,13 @@ export function useKanjiClashRoundController(
           ? currentRound.leftSubjectKey
           : currentRound.rightSubjectKey;
 
-      clearAutoAdvanceTimer();
       commitControllerState({
         ...currentState,
-        isSelectionLocked: true
+        isSelectionLocked: true,
+        pendingSelectionSide: side
       });
       setClientError(null);
+      setLiveMessage(null);
 
       const startedAt = performance.now();
 
@@ -159,35 +149,41 @@ export function useKanjiClashRoundController(
           })
         );
 
-        commitControllerState(
-          createAnsweredControllerState(currentState, result, side)
-        );
-
         if (result.isCorrect) {
-          autoAdvanceTimerRef.current = window.setTimeout(() => {
-            autoAdvanceTimerRef.current = null;
-            advanceVisibleQueue();
-          }, CORRECT_REVEAL_MS);
+          commitControllerState({
+            committedQueue: result.nextQueue,
+            feedback: null,
+            isSelectionLocked: false,
+            pendingSelectionSide: null,
+            visibleQueue: result.nextQueue
+          });
+          setLiveMessage(
+            result.nextRound
+              ? "Risposta corretta. Round successivo caricato."
+              : "Risposta corretta. Sessione completata."
+          );
+          return;
         }
+
+        commitControllerState(
+          createIncorrectAnswerControllerState(currentState, result, side)
+        );
       } catch (error) {
         commitControllerState({
           ...controllerStateRef.current,
           feedback: null,
-          isSelectionLocked: false
+          isSelectionLocked: false,
+          pendingSelectionSide: null
         });
         setClientError(
           error instanceof Error
             ? error.message
             : "Impossibile salvare la risposta."
         );
+        setLiveMessage("Errore durante il salvataggio della risposta.");
       }
     },
-    [
-      advanceVisibleQueue,
-      clearAutoAdvanceTimer,
-      commitControllerState,
-      selectedMediaId
-    ]
+    [commitControllerState, selectedMediaId]
   );
 
   const handleChooseSide = useCallback(
@@ -207,10 +203,10 @@ export function useKanjiClashRoundController(
       return;
     }
 
-    clearAutoAdvanceTimer();
     setClientError(null);
+    setLiveMessage(null);
     advanceVisibleQueue();
-  }, [advanceVisibleQueue, clearAutoAdvanceTimer]);
+  }, [advanceVisibleQueue]);
 
   const handleTouchStart = useCallback<TouchEventHandler<HTMLElement>>(
     (event) => {
@@ -302,6 +298,8 @@ export function useKanjiClashRoundController(
     handleTouchEnd,
     handleTouchStart,
     isSelectionLocked: controllerState.isSelectionLocked,
+    liveMessage,
+    pendingSelectionSide: controllerState.pendingSelectionSide,
     queue: controllerState.visibleQueue
   };
 }
@@ -328,7 +326,7 @@ function buildKanjiClashAnswerSubmissionPayload(input: {
   };
 }
 
-function createAnsweredControllerState(
+function createIncorrectAnswerControllerState(
   currentState: ControllerState,
   result: KanjiClashSessionActionResult,
   selectedSide: KanjiClashRoundSide
@@ -341,9 +339,10 @@ function createAnsweredControllerState(
       nextRound: result.nextRound,
       selectedSubjectKey: result.selectedSubjectKey,
       selectedSide,
-      status: result.isCorrect ? "correct" : "incorrect"
+      status: "incorrect"
     },
     isSelectionLocked: true,
+    pendingSelectionSide: null,
     visibleQueue: currentState.visibleQueue
   };
 }

@@ -42,6 +42,9 @@ non sostituisce un audit completo e aggiornato del codice.
   `grammar`, `new`, `learning`, `known_manual` e `suspended`.
 - La sessione `Kanji Clash` non deve ripresentare la stessa pair key nella
   stessa run, anche con lati invertiti o target invertito.
+- Una risposta corretta in `Kanji Clash` deve avanzare al round successivo
+  senza pannello verde inline, senza timer artificiale e senza micro-scroll del
+  viewport.
 - In caso di errore in `Kanji Clash`, la UI deve mostrare la soluzione corretta
   e fermarsi finche l'utente non conferma `Continua`.
 - Una sessione `Kanji Clash` non deve cambiare queue, log o contatori

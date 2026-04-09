@@ -198,7 +198,8 @@ test("opens Kanji Clash from global review and leaves review counts unchanged", 
 
   const firstRound = await readCurrentRound(page);
   await answerRoundWithClick(page, firstRound.correctSide);
-  await expect(page.getByRole("status")).toContainText("Risposta corretta");
+  await expect(page.locator(".kanji-clash-feedback[role='status']")).toHaveCount(0);
+  await waitForNextRound(page, firstRound.pairKey);
 
   await page.goto("/review");
 
@@ -251,7 +252,8 @@ test("opens Kanji Clash from media detail and leaves local review counts unchang
 
   const firstRound = await readCurrentRound(page);
   await answerRoundWithClick(page, firstRound.correctSide);
-  await expect(page.getByRole("status")).toContainText("Risposta corretta");
+  await expect(page.locator(".kanji-clash-feedback[role='status']")).toHaveCount(0);
+  await waitForNextRound(page, firstRound.pairKey);
 
   await page.goto("/media/zz-kanji-clash-e2e");
 
@@ -331,6 +333,26 @@ test("asserts visible Kanji Clash reveal state on wrong answers", async ({
   );
 });
 
+test("advances a correct round without feedback panel or viewport jump", async ({
+  page
+}) => {
+  await page.goto(fixtureRoute);
+  await page.evaluate(() => {
+    window.scrollTo(0, 260);
+  });
+
+  const initialScrollY = await page.evaluate(() => window.scrollY);
+  const currentRound = await readCurrentRound(page);
+
+  await answerRoundWithClick(page, currentRound.correctSide);
+  await expect(page.locator(".kanji-clash-feedback[role='status']")).toHaveCount(0);
+  await waitForNextRound(page, currentRound.pairKey);
+
+  const finalScrollY = await page.evaluate(() => window.scrollY);
+
+  expect(Math.abs(finalScrollY - initialScrollY)).toBeLessThanOrEqual(2);
+});
+
 test("filters Kanji Clash by media and exposes a playable manual round", async ({
   page
 }) => {
@@ -398,7 +420,7 @@ test.describe("Kanji Clash mobile tap-only coverage", () => {
     const currentRound = await readCurrentRound(page);
 
     await answerRoundWithTap(page, currentRound.correctSide);
-    await expect(page.getByRole("status")).toContainText("Risposta corretta");
+    await expect(page.locator(".kanji-clash-feedback[role='status']")).toHaveCount(0);
     await waitForNextRound(page, currentRound.pairKey);
   });
 });

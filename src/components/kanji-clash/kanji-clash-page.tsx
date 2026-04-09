@@ -86,10 +86,12 @@ function KanjiClashPageClient({ data }: KanjiClashPageProps) {
             data={data}
             feedback={controller.feedback}
             isSelectionLocked={controller.isSelectionLocked}
+            liveMessage={controller.liveMessage}
             onChooseSide={controller.handleChooseSide}
             onContinue={controller.handleContinue}
             onTouchEnd={controller.handleTouchEnd}
             onTouchStart={controller.handleTouchStart}
+            pendingSelectionSide={controller.pendingSelectionSide}
             queue={controller.queue}
             round={controller.currentRound}
           />
@@ -108,10 +110,12 @@ function KanjiClashRoundWorkspace({
   data,
   feedback,
   isSelectionLocked,
+  liveMessage,
   onChooseSide,
   onContinue,
   onTouchEnd,
   onTouchStart,
+  pendingSelectionSide,
   queue,
   round
 }: {
@@ -119,14 +123,17 @@ function KanjiClashRoundWorkspace({
   data: KanjiClashPageData;
   feedback: KanjiClashRoundFeedback | null;
   isSelectionLocked: boolean;
+  liveMessage: string | null;
   onChooseSide: (side: "left" | "right") => void;
   onContinue: () => void;
   onTouchEnd: TouchEventHandler<HTMLElement>;
   onTouchStart: TouchEventHandler<HTMLElement>;
+  pendingSelectionSide: "left" | "right" | null;
   queue: KanjiClashQueueSnapshot;
   round: KanjiClashSessionRound;
 }) {
-  const feedbackCopy = feedback ? buildFeedbackCopy(feedback) : null;
+  const feedbackCopy =
+    feedback?.status === "incorrect" ? buildIncorrectFeedbackCopy(feedback) : null;
 
   return (
     <article
@@ -160,30 +167,31 @@ function KanjiClashRoundWorkspace({
               {formatKanjiClashPairStateLabel(round.pairState.state)}
             </span>
           ) : null}
-          {feedback ? (
+          {feedback?.status === "incorrect" ? (
             <span
               className={cx(
                 "meta-pill",
-                feedback.status === "correct"
-                  ? "kanji-clash-feedback-pill--correct"
-                  : "kanji-clash-feedback-pill--incorrect"
+                "kanji-clash-feedback-pill--incorrect"
               )}
             >
-              {feedback.status === "correct"
-                ? "Corretto"
-                : "Conferma richiesta"}
+              Conferma richiesta
             </span>
-          ) : isSelectionLocked ? (
-            <span className="meta-pill">Controllo risposta...</span>
           ) : null}
         </div>
       </div>
+
+      {liveMessage ? (
+        <p aria-live="polite" className="sr-only" role="status">
+          {liveMessage}
+        </p>
+      ) : null}
 
       <div className="kanji-clash-round-grid">
         <KanjiClashOptionCard
           disabled={isSelectionLocked}
           feedback={feedback}
           onSelect={() => onChooseSide("left")}
+          pendingSelectionSide={pendingSelectionSide}
           side="left"
           subject={round.left}
         />
@@ -211,6 +219,7 @@ function KanjiClashRoundWorkspace({
           disabled={isSelectionLocked}
           feedback={feedback}
           onSelect={() => onChooseSide("right")}
+          pendingSelectionSide={pendingSelectionSide}
           side="right"
           subject={round.right}
         />
@@ -218,30 +227,24 @@ function KanjiClashRoundWorkspace({
 
       {feedbackCopy ? (
         <div
-          aria-live={feedback?.status === "incorrect" ? "assertive" : "polite"}
+          aria-live="assertive"
           className={cx(
             "kanji-clash-feedback",
-            feedback?.status === "correct"
-              ? "kanji-clash-feedback--correct"
-              : "kanji-clash-feedback--incorrect"
+            "kanji-clash-feedback--incorrect"
           )}
-          role={feedback?.status === "incorrect" ? "alert" : "status"}
+          role="alert"
         >
           <p className="kanji-clash-feedback__title">{feedbackCopy.title}</p>
           <p className="kanji-clash-feedback__summary">
             {feedbackCopy.description}
           </p>
-          {feedback?.status === "incorrect" ? (
-            <button
-              className="button button--primary button--small"
-              onClick={onContinue}
-              type="button"
-            >
-              {feedback.nextRound ? "Continua" : "Chiudi sessione"}
-            </button>
-          ) : (
-            <span className="meta-pill">Avanzo automatico</span>
-          )}
+          <button
+            className="button button--primary button--small"
+            onClick={onContinue}
+            type="button"
+          >
+            {feedback?.nextRound ? "Continua" : "Chiudi sessione"}
+          </button>
         </div>
       ) : null}
 
@@ -258,16 +261,19 @@ function KanjiClashOptionCard({
   disabled,
   feedback,
   onSelect,
+  pendingSelectionSide,
   side,
   subject
 }: {
   disabled: boolean;
   feedback: KanjiClashRoundFeedback | null;
   onSelect: () => void;
+  pendingSelectionSide: "left" | "right" | null;
   side: "left" | "right";
   subject: KanjiClashEligibleSubject;
 }) {
-  const isSelected = feedback?.selectedSide === side;
+  const isSelected =
+    feedback?.selectedSide === side || pendingSelectionSide === side;
   const isCorrectReveal =
     feedback?.status === "incorrect" &&
     feedback.correctSubjectKey === subject.subjectKey;
@@ -542,7 +548,7 @@ function formatScopeLabel(data: KanjiClashPageData) {
   return data.selectedMedia ? data.selectedMedia.title : "Globale";
 }
 
-function buildFeedbackCopy(feedback: KanjiClashRoundFeedback) {
+function buildIncorrectFeedbackCopy(feedback: KanjiClashRoundFeedback) {
   const correctSubject = resolveRoundSubject(
     feedback.answeredRound,
     feedback.correctSubjectKey
@@ -553,15 +559,6 @@ function buildFeedbackCopy(feedback: KanjiClashRoundFeedback) {
   );
   const correctLabel = formatRevealLabel(correctSubject);
   const selectedLabel = formatRevealLabel(selectedSubject);
-
-  if (feedback.status === "correct") {
-    return {
-      description: feedback.nextRound
-        ? `Hai selezionato ${correctLabel}. Il prossimo round parte tra poco.`
-        : `Hai selezionato ${correctLabel}. Hai chiuso la coda corrente.`,
-      title: "Risposta corretta"
-    };
-  }
 
   return {
     description: `Hai selezionato ${selectedLabel}. Risposta giusta: ${correctLabel}.`,
