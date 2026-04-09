@@ -334,6 +334,28 @@ describe("kanji clash session service", () => {
     expect(new Set(queue.rounds.map((round) => round.pairKey)).size).toBe(2);
   });
 
+  it("adds only incremental manual frontier candidates without duplicating multi-kanji pairs", async () => {
+    await seedManualIncrementalExpansionFixture(database);
+
+    const queue = await loadKanjiClashQueueSnapshot({
+      database,
+      mediaIds: ["media-manual-delta"],
+      mode: "manual",
+      now: new Date("2026-04-09T12:00:00.000Z"),
+      requestedSize: 2,
+      scope: "global"
+    });
+
+    expect(queue.totalCount).toBe(1);
+    expect(queue.rounds.map((round) => round.pairKey)).toEqual([
+      buildKanjiClashPairKey(
+        "entry:term:term-manual-delta-16",
+        "entry:term:term-manual-delta-17"
+      )
+    ]);
+    expect(new Set(queue.rounds.map((round) => round.pairKey)).size).toBe(1);
+  });
+
   it("keeps a distant due pair ahead of the bounded manual frontier", async () => {
     const now = new Date("2026-04-09T12:00:00.000Z");
     const distantPairKey = buildKanjiClashPairKey(
@@ -778,6 +800,151 @@ async function seedManualFrontierFixture(database: DatabaseClient) {
       reps: 3 + (index % 2),
       scheduledDays: 3,
       stability: 8 + index * 0.1,
+      state: "review" as const,
+      subjectKey: `entry:term:${row.id}`,
+      subjectType: "entry" as const,
+      suspended: false,
+      updatedAt: now
+    }))
+  );
+}
+
+async function seedManualIncrementalExpansionFixture(database: DatabaseClient) {
+  const now = "2026-04-08T12:00:00.000Z";
+  const mediaId = "media-manual-delta";
+  const segmentId = "segment-manual-delta";
+  const lessonId = "lesson-manual-delta";
+  const baseTerms = [
+    "食",
+    "海",
+    "山",
+    "川",
+    "空",
+    "雨",
+    "雪",
+    "花",
+    "犬",
+    "猫",
+    "鳥",
+    "魚",
+    "石",
+    "火",
+    "木",
+    "金",
+    "電気",
+    "気電"
+  ];
+
+  await database.insert(media).values({
+    baseExplanationLanguage: "it",
+    createdAt: now,
+    description: "Manual delta media",
+    id: mediaId,
+    language: "ja",
+    mediaType: "anime",
+    segmentKind: "episode",
+    slug: "manual-delta",
+    status: "active",
+    title: "Manual delta",
+    updatedAt: now
+  });
+  await database.insert(segment).values({
+    id: segmentId,
+    mediaId,
+    notes: null,
+    orderIndex: 1,
+    segmentType: "episode",
+    slug: "segment-manual-delta",
+    title: "Segment manual delta"
+  });
+  await database.insert(lesson).values({
+    createdAt: now,
+    difficulty: "beginner",
+    id: lessonId,
+    mediaId,
+    orderIndex: 1,
+    segmentId,
+    slug: "lesson-manual-delta",
+    sourceFile: "tests/lesson-manual-delta.md",
+    status: "active",
+    summary: "Lesson manual delta",
+    title: "Lesson manual delta",
+    updatedAt: now
+  });
+  await database.insert(lessonProgress).values({
+    completedAt: now,
+    lastOpenedAt: now,
+    lessonId,
+    startedAt: now,
+    status: "completed"
+  });
+
+  const termRows = baseTerms.map((lemma, index) => {
+    const suffix = String(index).padStart(2, "0");
+    const id = `term-manual-delta-${suffix}`;
+
+    return {
+      createdAt: now,
+      crossMediaGroupId: null,
+      id,
+      lemma,
+      meaningIt: `significato manual delta ${suffix}`,
+      mediaId,
+      reading: `reading-manual-delta-${suffix}`,
+      romaji: `romaji-manual-delta-${suffix}`,
+      searchLemmaNorm: lemma,
+      searchReadingNorm: `reading-manual-delta-${suffix}`,
+      searchRomajiNorm: `romaji-manual-delta-${suffix}`,
+      segmentId,
+      sourceId: id,
+      updatedAt: now
+    };
+  });
+
+  await database.insert(term).values(termRows);
+  await database.insert(card).values(
+    termRows.map((row, index) => ({
+      back: `${row.lemma} meaning`,
+      cardType: "recognition" as const,
+      createdAt: now,
+      front: row.lemma,
+      id: `card-${row.id}`,
+      lessonId,
+      mediaId,
+      normalizedFront: row.lemma,
+      orderIndex: index + 1,
+      segmentId,
+      sourceFile: `tests/card-${row.id}.md`,
+      status: "active" as const,
+      updatedAt: now
+    }))
+  );
+  await database.insert(cardEntryLink).values(
+    termRows.map((row) => ({
+      cardId: `card-${row.id}`,
+      entryId: row.id,
+      entryType: "term" as const,
+      id: `card-${row.id}-${row.id}`,
+      relationshipType: "primary" as const
+    }))
+  );
+  await database.insert(reviewSubjectState).values(
+    termRows.map((row) => ({
+      cardId: `card-${row.id}`,
+      createdAt: now,
+      crossMediaGroupId: null,
+      difficulty: 2.5,
+      dueAt: now,
+      entryId: row.id,
+      entryType: "term" as const,
+      lapses: 0,
+      lastInteractionAt: now,
+      lastReviewedAt: now,
+      learningSteps: 0,
+      manualOverride: false,
+      reps: 3,
+      scheduledDays: 3,
+      stability: 8,
       state: "review" as const,
       subjectKey: `entry:term:${row.id}`,
       subjectType: "entry" as const,

@@ -3,7 +3,6 @@ import type {
   KanjiClashEligibleSubject
 } from "./types.ts";
 import {
-  buildKanjiClashPairKey,
   hasContextualizedHeadFamilySurface,
   hasCrossEdgeMixedStemSurface,
   hasSharedContextualPrefixSurface,
@@ -40,6 +39,18 @@ export function getKanjiClashPairExclusionReason(
   left: KanjiClashEligibleSubject,
   right: KanjiClashEligibleSubject
 ) {
+  return getKanjiClashPairExclusionReasonFromSharedKanji(
+    left,
+    right,
+    getSharedKanji(left, right)
+  );
+}
+
+function getKanjiClashPairExclusionReasonFromSharedKanji(
+  left: KanjiClashEligibleSubject,
+  right: KanjiClashEligibleSubject,
+  sharedKanji: string[]
+) {
   if (left.subjectKey === right.subjectKey) {
     return "same-subject";
   }
@@ -55,8 +66,6 @@ export function getKanjiClashPairExclusionReason(
       return "same-group";
     }
   }
-
-  const sharedKanji = getSharedKanji(left, right);
 
   if (sharedKanji.length === 0) {
     return "no-shared-kanji";
@@ -99,16 +108,16 @@ export function getKanjiClashPairExclusionReason(
 
 export function scoreKanjiClashCandidate(
   left: KanjiClashEligibleSubject,
-  right: KanjiClashEligibleSubject
+  right: KanjiClashEligibleSubject,
+  sharedKanji = getSharedKanji(left, right)
 ) {
-  const sharedKanji = getSharedKanji(left, right);
-
   if (sharedKanji.length === 0) {
     return Number.NEGATIVE_INFINITY;
   }
 
-  const leftLeadBonus = hasLeadKanjiMatch(left, sharedKanji) ? 14 : 0;
-  const rightLeadBonus = hasLeadKanjiMatch(right, sharedKanji) ? 14 : 0;
+  const sharedKanjiSet = new Set(sharedKanji);
+  const leftLeadBonus = hasLeadKanjiMatch(left, sharedKanjiSet) ? 14 : 0;
+  const rightLeadBonus = hasLeadKanjiMatch(right, sharedKanjiSet) ? 14 : 0;
   const surfaceDelta = Math.abs(left.label.length - right.label.length);
   const shapeBonus = Math.max(0, 12 - surfaceDelta * 3);
   const readingPenalty = hasSharedReading(left, right) ? 18 : 0;
@@ -120,22 +129,29 @@ export function buildKanjiClashCandidate(
   left: KanjiClashEligibleSubject,
   right: KanjiClashEligibleSubject
 ): KanjiClashCandidate | null {
-  const exclusionReason = getKanjiClashPairExclusionReason(left, right);
+  const [orderedLeft, orderedRight] = orderKanjiClashSubjects(left, right);
+  const sharedKanji = getSharedKanji(orderedLeft, orderedRight);
+  const exclusionReason = getKanjiClashPairExclusionReasonFromSharedKanji(
+    orderedLeft,
+    orderedRight,
+    sharedKanji
+  );
 
   if (exclusionReason) {
     return null;
   }
 
-  const [orderedLeft, orderedRight] = orderKanjiClashSubjects(left, right);
-
   return {
     left: orderedLeft,
     leftSubjectKey: orderedLeft.subjectKey,
-    pairKey: buildKanjiClashPairKey(orderedLeft.subjectKey, orderedRight.subjectKey),
+    pairKey: buildKanjiClashOrderedPairKey(
+      orderedLeft.subjectKey,
+      orderedRight.subjectKey
+    ),
     right: orderedRight,
     rightSubjectKey: orderedRight.subjectKey,
-    score: scoreKanjiClashCandidate(orderedLeft, orderedRight),
-    sharedKanji: getSharedKanji(orderedLeft, orderedRight)
+    score: scoreKanjiClashCandidate(orderedLeft, orderedRight, sharedKanji),
+    sharedKanji
   };
 }
 
@@ -198,13 +214,18 @@ export function generateKanjiClashCandidates(subjects: KanjiClashEligibleSubject
 
 function hasLeadKanjiMatch(
   subject: KanjiClashEligibleSubject,
-  sharedKanji: string[]
+  sharedKanji: ReadonlySet<string>
 ) {
-  const sharedSet = new Set(sharedKanji);
-
   return subject.surfaceForms.some((surface) => {
     const leadKanji = subject.kanji.find((kanji) => surface.includes(kanji));
 
-    return leadKanji ? sharedSet.has(leadKanji) : false;
+    return leadKanji ? sharedKanji.has(leadKanji) : false;
   });
+}
+
+function buildKanjiClashOrderedPairKey(
+  leftSubjectKey: string,
+  rightSubjectKey: string
+) {
+  return `${leftSubjectKey}::${rightSubjectKey}`;
 }

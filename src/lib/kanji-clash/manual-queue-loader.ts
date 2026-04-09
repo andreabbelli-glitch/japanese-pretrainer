@@ -6,8 +6,7 @@ import {
 
 import { buildKanjiClashQueueSnapshot } from "./queue.ts";
 import {
-  buildKanjiClashCandidate,
-  generateKanjiClashCandidates
+  buildKanjiClashCandidate
 } from "./pairing.ts";
 import type {
   KanjiClashCandidate,
@@ -69,13 +68,21 @@ export async function loadManualKanjiClashQueueSnapshot(input: {
       MANUAL_FRONTIER_MIN_SIZE
     )
   );
+  let indexedFrontierSize = 0;
+  const frontierIndex = new Map<string, KanjiClashEligibleSubject[]>();
 
   if (combinedCandidates.length < requestedSize) {
     while (true) {
-      const frontierSubjects = input.eligibleSubjects.slice(0, frontierSize);
-      const frontierCandidates = generateKanjiClashCandidates(
-        frontierSubjects
-      ).filter((candidate) => !combinedPairKeySet.has(candidate.pairKey));
+      const frontierSubjects = input.eligibleSubjects.slice(
+        indexedFrontierSize,
+        frontierSize
+      );
+      const frontierCandidates = collectManualFrontierExpansionCandidates({
+        frontierIndex,
+        pairKeysToSkip: combinedPairKeySet,
+        subjects: frontierSubjects
+      });
+      indexedFrontierSize = frontierSize;
 
       if (frontierCandidates.length > 0) {
         const frontierPairStates = await listKanjiClashPairStatesByPairKeys(
@@ -211,6 +218,70 @@ async function collectManualDueCandidates(input: {
     candidates,
     pairStates
   };
+}
+
+function collectManualFrontierExpansionCandidates(input: {
+  frontierIndex: Map<string, KanjiClashEligibleSubject[]>;
+  pairKeysToSkip: Set<string>;
+  subjects: KanjiClashEligibleSubject[];
+}) {
+  const candidatesByPairKey = new Map<string, KanjiClashCandidate>();
+
+  for (const subject of input.subjects) {
+    const relatedSubjects = new Map<string, KanjiClashEligibleSubject>();
+
+    for (const kanji of subject.kanji) {
+      const bucket = input.frontierIndex.get(kanji);
+
+      if (!bucket) {
+        continue;
+      }
+
+      for (const relatedSubject of bucket) {
+        relatedSubjects.set(relatedSubject.subjectKey, relatedSubject);
+      }
+    }
+
+    for (const relatedSubject of relatedSubjects.values()) {
+      const candidate = buildKanjiClashCandidate(subject, relatedSubject);
+
+      if (!candidate || input.pairKeysToSkip.has(candidate.pairKey)) {
+        continue;
+      }
+
+      const existing = candidatesByPairKey.get(candidate.pairKey);
+
+      if (
+        !existing ||
+        candidate.score > existing.score ||
+        (candidate.score === existing.score &&
+          candidate.pairKey.localeCompare(existing.pairKey) < 0)
+      ) {
+        candidatesByPairKey.set(candidate.pairKey, candidate);
+      }
+    }
+
+    for (const kanji of subject.kanji) {
+      const bucket = input.frontierIndex.get(kanji);
+
+      if (bucket) {
+        bucket.push(subject);
+        continue;
+      }
+
+      input.frontierIndex.set(kanji, [subject]);
+    }
+  }
+
+  return [...candidatesByPairKey.values()].sort((left, right) => {
+    const scoreDifference = right.score - left.score;
+
+    if (scoreDifference !== 0) {
+      return scoreDifference;
+    }
+
+    return left.pairKey.localeCompare(right.pairKey);
+  });
 }
 
 function normalizePositiveInteger(

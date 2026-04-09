@@ -42,28 +42,24 @@ export function buildKanjiClashQueueSnapshot(
     input.currentRoundIndex,
     0
   );
-  const queuedCandidates = input.candidates
-    .filter((candidate) => !seenPairKeySet.has(candidate.pairKey))
-    .map((candidate) => {
-      const pairState = pairStates.get(candidate.pairKey) ?? null;
+  const queuedCandidates: KanjiClashQueuedCandidate[] = [];
 
-      return {
-        candidate,
-        pairState,
-        source: resolveKanjiClashRoundSource(pairState, now)
-      } satisfies KanjiClashQueuedCandidate;
-    })
-    .sort(compareQueuedCandidates);
+  for (const candidate of input.candidates) {
+    if (seenPairKeySet.has(candidate.pairKey)) {
+      continue;
+    }
 
-  const dueCandidates = queuedCandidates.filter(
-    (candidate) => candidate.source === "due"
-  );
-  const newCandidates = queuedCandidates.filter(
-    (candidate) => candidate.source === "new"
-  );
-  const reserveCandidates = queuedCandidates.filter(
-    (candidate) => candidate.source === "reserve"
-  );
+    const pairState = pairStates.get(candidate.pairKey) ?? null;
+
+    queuedCandidates.push({
+      candidate,
+      pairState,
+      source: resolveKanjiClashRoundSource(pairState, now)
+    });
+  }
+
+  queuedCandidates.sort(compareQueuedCandidates);
+
   const dailyNewLimit =
     input.mode === "automatic"
       ? normalizePositiveInteger(
@@ -86,31 +82,77 @@ export function buildKanjiClashQueueSnapshot(
     input.mode === "automatic"
       ? Math.max(0, (dailyNewLimit ?? 0) - introducedTodayCount)
       : null;
-  const selectedCandidates =
-    input.mode === "automatic"
-      ? [...dueCandidates, ...newCandidates.slice(0, remainingNewSlots ?? 0)]
-      : [...dueCandidates, ...newCandidates, ...reserveCandidates].slice(
-          0,
-          requestedSize ?? DEFAULT_KANJI_CLASH_MANUAL_SIZE
-        );
-  const rounds = selectedCandidates.map((candidate, index) =>
-    materializeKanjiClashSessionRound(candidate, index)
-  );
+  const selectedCandidates: KanjiClashQueuedCandidate[] = [];
+  let newAvailableCount = 0;
+  let selectedDueCount = 0;
+  const manualSelectionLimit = requestedSize ?? DEFAULT_KANJI_CLASH_MANUAL_SIZE;
+
+  for (const queuedCandidate of queuedCandidates) {
+    if (queuedCandidate.source === "new") {
+      newAvailableCount += 1;
+    }
+
+    if (input.mode === "automatic") {
+      if (queuedCandidate.source === "reserve") {
+        continue;
+      }
+
+      if (
+        queuedCandidate.source === "new" &&
+        selectedCandidates.length - selectedDueCount >= (remainingNewSlots ?? 0)
+      ) {
+        continue;
+      }
+
+      selectedCandidates.push(queuedCandidate);
+
+      if (queuedCandidate.source === "due") {
+        selectedDueCount += 1;
+      }
+
+      continue;
+    }
+
+    if (selectedCandidates.length >= manualSelectionLimit) {
+      break;
+    }
+
+    selectedCandidates.push(queuedCandidate);
+  }
+
+  let dueCount = 0;
+  let newQueuedCount = 0;
+  let reserveCount = 0;
+  const rounds = selectedCandidates.map((candidate, index) => {
+    switch (candidate.source) {
+      case "due":
+        dueCount += 1;
+        break;
+      case "new":
+        newQueuedCount += 1;
+        break;
+      case "reserve":
+        reserveCount += 1;
+        break;
+    }
+
+    return materializeKanjiClashSessionRound(candidate, index);
+  });
   const clampedRoundIndex = Math.min(currentRoundIndex, rounds.length);
 
   return {
     awaitingConfirmation: false,
     currentRoundIndex: clampedRoundIndex,
     dailyNewLimit,
-    dueCount: rounds.filter((round) => round.source === "due").length,
+    dueCount,
     finished: rounds.length === 0 || clampedRoundIndex >= rounds.length,
     introducedTodayCount,
     mode: input.mode,
-    newAvailableCount: newCandidates.length,
-    newQueuedCount: rounds.filter((round) => round.source === "new").length,
+    newAvailableCount,
+    newQueuedCount,
     remainingCount: Math.max(0, rounds.length - clampedRoundIndex),
     requestedSize,
-    reserveCount: rounds.filter((round) => round.source === "reserve").length,
+    reserveCount,
     rounds,
     snapshotAtIso: now.toISOString(),
     scope: input.scope,
