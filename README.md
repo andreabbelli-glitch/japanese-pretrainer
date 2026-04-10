@@ -138,6 +138,9 @@ ma la verifica canonica e il supporto restano ancorati a
 Il repository include una configurazione di progetto in `.codex/` pensata per
 agenti Codex locali che lavorano in sandbox `workspace-write`.
 
+I prompt locali non committati per automazioni o workflow manuali vivono in
+`prompts/` e sono ignorati da git.
+
 Passo iniziale consigliato per ogni nuovo worktree Codex:
 
 ```sh
@@ -348,6 +351,7 @@ content/
 tests/
 scripts/
 docs/
+prompts/
 ```
 
 ## Documenti

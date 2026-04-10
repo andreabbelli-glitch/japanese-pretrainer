@@ -128,15 +128,14 @@ docs/
   database.md             Design del DB e strategia di persistenza
   content-format.md       Specifica del formato Markdown (30KB)
   design/                 Token di design e UX
-  legacy/                 Materiale storico e template del workflow editoriale precedente
-    content-briefs/       Brief editoriali legacy per bundle specifici
-    prompts/              Prompt legacy del workflow editoriale precedente
-    templates/            Template legacy per media, lesson, card e workflow immagini
   llm-kit/                Guide per integrazione LLM esterna
     general/              Template e regole riusabili cross-media
     media/                Brief e prompt specifici per singolo media
       <slug>/             Cartelle per-media con brief e prompt batchizzati
-  tasks/                  Task definition per sessioni agente
+  drift-report.md         Report periodico di drift tra codice e docs strategiche
+
+prompts/                  Prompt locali ignorati da git
+  automations/            Prompt per automazioni Codex locali
 ```
 
 ---
