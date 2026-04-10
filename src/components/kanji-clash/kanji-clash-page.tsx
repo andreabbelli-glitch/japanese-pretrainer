@@ -166,9 +166,7 @@ function KanjiClashRoundWorkspace({
               queue.totalCount
             )}
           </h2>
-          <p className="kanji-clash-stage__summary">
-            {roundSummary}
-          </p>
+          <p className="kanji-clash-stage__summary">{roundSummary}</p>
         </div>
         <div className="kanji-clash-stage__chips">
           <span className="chip">
@@ -353,8 +351,20 @@ function KanjiClashEmptyWorkspace({
       description={content.description}
       action={
         <div className="empty-state__action">
+          {content.topUpAction ? (
+            <Link
+              className="button button--primary"
+              href={content.topUpAction.href}
+            >
+              {content.topUpAction.label}
+            </Link>
+          ) : null}
           <Link
-            className="button button--primary"
+            className={
+              content.topUpAction
+                ? "button button--ghost"
+                : "button button--primary"
+            }
             href={content.primaryAction.href}
           >
             {content.primaryAction.label}

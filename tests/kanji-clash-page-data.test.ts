@@ -60,12 +60,17 @@ describe("kanji clash page data", () => {
       manualDefaultSize: 40
     });
     expect(data.settings.manualSizeOptions).toEqual([10, 20, 40]);
-    expect(data.availableMedia.map((item) => item.slug)).toEqual(["alpha", "beta"]);
+    expect(data.availableMedia.map((item) => item.slug)).toEqual([
+      "alpha",
+      "beta"
+    ]);
     expect(data.selectedMedia).toBeNull();
     expect(data.queue.scope).toBe("global");
     expect(data.queue.snapshotAtIso).toBe(snapshotAt.toISOString());
     expect(verifyKanjiClashQueueToken(data.queueToken)).toEqual(data.queue);
-    expect(data.currentRound?.pairKey).toBe(data.queue.rounds[0]?.pairKey ?? null);
+    expect(data.currentRound?.pairKey).toBe(
+      data.queue.rounds[0]?.pairKey ?? null
+    );
     expect(data.snapshotAtIso).toBe(snapshotAt.toISOString());
   });
 
@@ -103,6 +108,26 @@ describe("kanji clash page data", () => {
     expect(filtered.queue.scope).toBe("media");
     expect(filtered.queue.totalCount).toBe(1);
     expect(global.queue.totalCount).toBeGreaterThan(filtered.queue.totalCount);
+  });
+
+  it("accepts custom manual size top-ups in steps of 10 from the query string", async () => {
+    await updateStudySettings(
+      {
+        kanjiClashManualDefaultSize: 20
+      },
+      database
+    );
+
+    const data = await getKanjiClashPageData(
+      {
+        mode: "manual",
+        size: "30"
+      },
+      database,
+      new Date("2026-04-09T12:00:00.000Z")
+    );
+
+    expect(data.queue.requestedSize).toBe(30);
   });
 
   it("rejects malformed manual size params instead of partially parsing them", async () => {

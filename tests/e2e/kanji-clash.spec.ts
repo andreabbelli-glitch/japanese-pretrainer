@@ -380,6 +380,39 @@ test("supports keyboard arrow interaction for the current round", async ({
   await waitForNextRound(page, currentRound.pairKey);
 });
 
+test("offers a +10 top-up after completing a manual Kanji Clash session", async ({
+  page
+}) => {
+  await page.goto(fixtureRoute);
+
+  await finishManualSession(page, 12);
+
+  await expect(
+    page.getByRole("heading", { name: "Sessione completata" })
+  ).toBeVisible();
+
+  const topUpLink = page.getByRole("link", {
+    name: "Aggiungi altri 10 round"
+  });
+
+  await expect(topUpLink).toHaveAttribute(
+    "href",
+    "/kanji-clash?mode=manual&media=zz-kanji-clash-e2e&size=20"
+  );
+  await topUpLink.click();
+  await page.waitForURL(
+    (url) =>
+      url.pathname === "/kanji-clash" &&
+      url.searchParams.get("media") === "zz-kanji-clash-e2e" &&
+      url.searchParams.get("mode") === "manual" &&
+      url.searchParams.get("size") === "20"
+  );
+  await expect(page.getByRole("link", { name: "20" })).toHaveAttribute(
+    "aria-current",
+    "page"
+  );
+});
+
 test("filters Kanji Clash by media and exposes a playable manual round", async ({
   page
 }) => {
@@ -508,6 +541,27 @@ async function waitForNextRoundOrCompletion(
   const state = await getRoundState(page);
 
   return state === "done" ? "done" : readCurrentRound(page);
+}
+
+async function finishManualSession(page: Page, maxRounds: number) {
+  for (let index = 0; index < maxRounds; index += 1) {
+    const currentRound = await readCurrentRound(page);
+
+    await answerRoundWithClick(page, currentRound.correctSide);
+
+    const nextState = await waitForNextRoundOrCompletion(
+      page,
+      currentRound.pairKey
+    );
+
+    if (nextState === "done") {
+      return;
+    }
+  }
+
+  throw new Error(
+    "Manual Kanji Clash session did not complete within the expected rounds."
+  );
 }
 
 async function getRoundState(page: Page) {

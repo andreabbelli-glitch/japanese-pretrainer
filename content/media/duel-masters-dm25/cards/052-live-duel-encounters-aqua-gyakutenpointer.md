@@ -44,9 +44,9 @@ level_hint: n3
 :::grammar
 id: grammar-erabareta-player
 pattern: 自身のクリーチャーが選ばれたプレイヤーは
-title: Il giocatore di cui è stata scelta una creatura
+title: Il giocatore di cui è stata scelta una propria creatura
 reading: じしんのクリーチャーがえらばれたプレイヤーは
-meaning_it: quanto al giocatore di cui è stata scelta una creatura
+meaning_it: quanto al giocatore di cui è stata scelta una propria creatura
 aliases: [選ばれたプレイヤー, 自身のクリーチャーが選ばれたプレイヤーは]
 notes_it: >-
   Il blocco decisivo è `{{選|えら}}ばれた`, passivo di
@@ -143,7 +143,7 @@ entry_type: grammar
 entry_id: grammar-erabareta-player
 card_type: concept
 front: '{{自身|じしん}}のクリーチャーが{{選|えら}}ばれたプレイヤーは'
-back: quanto al giocatore di cui è stata scelta una creatura
+back: quanto al giocatore di cui è stata scelta una propria creatura
 example_jp: >-
   `{{選|えら}}ばれた`は{{受身|うけみ}}で、プレイヤー{{本人|ほんにん}}ではなく
   そのプレイヤーの[クリーチャー](term:term-creature)に

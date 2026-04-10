@@ -44,6 +44,10 @@ export type KanjiClashEmptyStateContent = {
     href: Route;
     label: string;
   } | null;
+  topUpAction: {
+    href: Route;
+    label: string;
+  } | null;
   title: string;
 };
 
@@ -94,8 +98,7 @@ const ROUND_SUMMARY_COPY =
 const AUTO_WORKSPACE_SUMMARY =
   "Prima le coppie dovute, poi nuove coppie fino al cap giornaliero di ";
 
-const MANUAL_WORKSPACE_SUMMARY =
-  "Sessione finita con taglia ";
+const MANUAL_WORKSPACE_SUMMARY = "Sessione finita con taglia ";
 
 const AUTO_EMPTY_STATE_DESCRIPTION =
   "Questo filtro media non produce ancora coppie eleggibili. Torna al globale oppure prova l'altra modalità.";
@@ -106,8 +109,13 @@ const GLOBAL_EMPTY_STATE_DESCRIPTION =
 const COMPLETED_SESSION_DESCRIPTION =
   "Hai chiuso la coda corrente. Puoi cambiare modalità, allargare lo scope o aprire un drill manuale su una frontiera diversa.";
 
+const COMPLETED_MANUAL_SESSION_DESCRIPTION =
+  "Hai chiuso la coda corrente. Puoi aggiungere subito altri 10 round alla frontiera attuale, cambiare modalità o allargare lo scope.";
+
 const AUTOMATIC_NOTE =
   "Le nuove coppie restano separate dalla review standard e contano solo nel workspace Kanji Clash.";
+
+const KANJI_CLASH_MANUAL_TOP_UP_SIZE = 10;
 
 export function buildKanjiClashPageContent(
   input: KanjiClashPageContentInput
@@ -146,13 +154,7 @@ export function buildKanjiClashPageContent(
       note: input.data.mode === "automatic" ? AUTOMATIC_NOTE : null,
       sizeFilters:
         input.data.mode === "manual"
-          ? input.data.settings.manualSizeOptions.map((size) => ({
-              active:
-                (input.queue.requestedSize ?? input.data.settings.manualDefaultSize) ===
-                size,
-              href: buildSizeHref(input.data, size),
-              label: String(size)
-            }))
+          ? buildManualSizeFilters(input.data, input.queue)
           : null,
       stats: buildSidebarStats(input.data, input.queue),
       summary: buildSidebarSummary(input.data, input.queue)
@@ -189,10 +191,14 @@ function buildEmptyStateContent(
         label: "Cambia modalità"
       }
     : null;
+  const topUpAction = buildTopUpAction(input.data, input.queue);
 
   return completedSession
     ? {
-        description: COMPLETED_SESSION_DESCRIPTION,
+        description:
+          input.data.mode === "manual" && topUpAction
+            ? COMPLETED_MANUAL_SESSION_DESCRIPTION
+            : COMPLETED_SESSION_DESCRIPTION,
         primaryAction:
           input.data.selectedMedia && input.data.mode === "manual"
             ? {
@@ -201,20 +207,21 @@ function buildEmptyStateContent(
               }
             : primaryAction,
         secondaryAction,
+        topUpAction,
         title: "Sessione completata"
       }
     : {
         description: input.data.selectedMedia
           ? AUTO_EMPTY_STATE_DESCRIPTION
           : GLOBAL_EMPTY_STATE_DESCRIPTION,
-        primaryAction:
-          input.data.selectedMedia
-            ? {
-                href: buildMediaHref(input.data, null),
-                label: "Torna al globale"
-              }
-            : primaryAction,
+        primaryAction: input.data.selectedMedia
+          ? {
+              href: buildMediaHref(input.data, null),
+              label: "Torna al globale"
+            }
+          : primaryAction,
         secondaryAction,
+        topUpAction: null,
         title: input.data.selectedMedia
           ? `Nessun confronto pronto in ${input.data.selectedMedia.title}`
           : "Nessun confronto disponibile"
@@ -248,7 +255,7 @@ function buildModeHref(
     mode,
     size:
       mode === "manual"
-        ? data.queue.requestedSize ?? data.settings.manualDefaultSize
+        ? (data.queue.requestedSize ?? data.settings.manualDefaultSize)
         : undefined
   }) as Route;
 }
@@ -262,7 +269,7 @@ function buildMediaHref(
     mode: data.mode,
     size:
       data.mode === "manual"
-        ? data.queue.requestedSize ?? data.settings.manualDefaultSize
+        ? (data.queue.requestedSize ?? data.settings.manualDefaultSize)
         : undefined
   }) as Route;
 }
@@ -275,11 +282,54 @@ function buildSizeHref(data: KanjiClashPageData, size: number): Route {
   }) as Route;
 }
 
+function buildManualSizeFilters(
+  data: KanjiClashPageData,
+  queue: KanjiClashQueueSnapshot
+) {
+  const activeSize = resolveManualSize(data, queue);
+  const sizeValues = data.settings.manualSizeOptions.some(
+    (size) => size === activeSize
+  )
+    ? [...data.settings.manualSizeOptions]
+    : [...data.settings.manualSizeOptions, activeSize].sort(
+        (left: number, right: number) => {
+          return left - right;
+        }
+      );
+
+  return sizeValues.map((size: number) => ({
+    active: activeSize === size,
+    href: buildSizeHref(data, size),
+    label: String(size)
+  }));
+}
+
+function buildTopUpAction(
+  data: KanjiClashPageData,
+  queue: KanjiClashQueueSnapshot
+): KanjiClashEmptyStateContent["topUpAction"] {
+  if (data.mode !== "manual") {
+    return null;
+  }
+
+  if (queue.totalCount <= 0) {
+    return null;
+  }
+
+  return {
+    href: buildSizeHref(
+      data,
+      resolveManualSize(data, queue) + KANJI_CLASH_MANUAL_TOP_UP_SIZE
+    ),
+    label: "Aggiungi altri 10 round"
+  };
+}
+
 function buildSidebarSummary(
   data: KanjiClashPageData,
   queue: KanjiClashQueueSnapshot
 ) {
-  const manualSize = queue.requestedSize ?? data.settings.manualDefaultSize;
+  const manualSize = resolveManualSize(data, queue);
 
   return data.mode === "automatic"
     ? `${AUTO_WORKSPACE_SUMMARY}${data.settings.dailyNewLimit}.`
@@ -290,7 +340,7 @@ function buildSidebarStats(
   data: KanjiClashPageData,
   queue: KanjiClashQueueSnapshot
 ): KanjiClashSidebarContent["stats"] {
-  const manualSize = queue.requestedSize ?? data.settings.manualDefaultSize;
+  const manualSize = resolveManualSize(data, queue);
 
   return {
     newDetail:
@@ -305,6 +355,13 @@ function buildSidebarStats(
       : "Tutto il catalogo disponibile",
     scopeValue: data.selectedMedia ? "Media" : "Globale"
   };
+}
+
+function resolveManualSize(
+  data: KanjiClashPageData,
+  queue: KanjiClashQueueSnapshot
+) {
+  return queue.requestedSize ?? data.settings.manualDefaultSize;
 }
 
 function formatScopeLabel(data: KanjiClashPageData) {

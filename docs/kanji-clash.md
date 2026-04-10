@@ -38,14 +38,15 @@ La pagina legge solo query params semplici:
 
 - `mode=automatic|manual`
 - `media=<slug>`
-- `size=10|20|40` solo per `manual`
+- `size=<multiplo-di-10>` solo per `manual`
 
 Regole applicate in `src/lib/kanji-clash/page-data.ts`:
 
 - `mode` diverso da `manual` viene normalizzato a `automatic`;
 - `media` entra in vigore solo se corrisponde a un media attivo noto;
-- `size` accetta solo i preset `10`, `20`, `40`, altrimenti usa il default da
-  `Settings`;
+- `size` accetta multipli positivi di `10`; i preset visibili restano `10`,
+  `20`, `40`, ma una sessione manuale completata puo` rilanciare lo stesso
+  scope con top-up di `+10`; valori non validi usano il default da `Settings`;
 - i setting user-facing vivono in `user_setting` con chiavi
   `kanji_clash_daily_new_limit`, `kanji_clash_default_scope`,
   `kanji_clash_manual_default_size`.

@@ -17,8 +17,8 @@ prerequisites:
 summary: >-
   Aqua Gyakutenpointer: saidai e zutsu distribuiscono un massimo per giocatore,
   erabareta introduce una relativa passiva sui giocatori di cui e' stata
-  scelta una creatura, e omotemuki ni shi concatena la rivelazione fino
-  all'uscita di una creatura.
+  scelta una propria creatura, e omotemuki ni shi concatena la rivelazione
+  fino all'uscita di una creatura.
 ---
 
 # アクア・ギャクテンポインター
@@ -43,7 +43,7 @@ caption: >-
 
 Qui però il vero valore della carta non è nelle keyword: è nella sintassi del
 testo effetto. Le due difficoltà reali sono `{{選|えら}}ばれた`, che è una
-passiva riferita ai giocatori di cui è stata scelta una creatura, e
+passiva riferita ai giocatori di cui è stata scelta una propria creatura, e
 `{{表向|おもてむ}}きにし`, dove `し` non è un finale sospeso vago ma una forma
 connettiva che prepara il passo successivo `そのクリーチャーを{{出|だ}}す`.
 
@@ -75,9 +75,9 @@ jp: >-
   [{{表向|おもてむ}}きにし](grammar:grammar-deru-made-omotemuki-ni-shi)、その
   [クリーチャー](term:term-creature)を[{{出|だ}}す](term:term-dasu)。
 translation_it: >-
-  In questo modo, ogni giocatore di cui è stata scelta una creatura gira carte
-  a faccia in su dalla cima del proprio mazzo finché non esce una creatura,
-  poi mette in campo quella creatura.
+  In questo modo, ogni giocatore di cui è stata scelta una propria creatura
+  gira carte a faccia in su dalla cima del proprio mazzo finché non esce una
+  creatura, poi mette in campo quella creatura.
 reveal_mode: sentence
 :::
 

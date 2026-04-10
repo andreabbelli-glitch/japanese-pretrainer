@@ -31,8 +31,10 @@
 - `Kanji Clash`: con `media=<slug>` valido il workspace filtra il pool al media
   scelto; senza slug esplicito il runtime resta globale anche se il default in
   settings e` `media`.
-- `Kanji Clash`: il drill manuale accetta solo size `10`, `20`, `40` e il
-  fallback usa il default persistito in `Settings`.
+- `Kanji Clash`: il drill manuale parte dai preset `10`, `20`, `40`; a
+  sessione finita puo` estendere la frontiera corrente di `+10` per volta e il
+  fallback usa comunque il default persistito in `Settings` quando `size` non e`
+  valido.
 - `Kanji Clash`: il drill manuale costruisce una frontiera deterministica
   legata alla size richiesta, preserva le coppie `due` gia tracciate e non
   promette una scansione esaustiva del corpus.

@@ -96,17 +96,20 @@ describe("kanji clash page content", () => {
     const content = buildKanjiClashPageContent({
       currentRound: null,
       data: buildKanjiClashPageData({
+        mode: "manual",
         currentRound: null,
         queue: {
           finished: true,
-          totalCount: 0
+          requestedSize: 20,
+          totalCount: 2
         }
       }),
       feedback: null,
       queue: buildKanjiClashQueue(0, {
         finished: true,
+        requestedSize: 20,
         remainingCount: 0,
-        totalCount: 0
+        totalCount: 2
       })
     });
 
@@ -115,16 +118,84 @@ describe("kanji clash page content", () => {
     );
     expect(content.emptyState).toEqual({
       description:
-        "Hai chiuso la coda corrente. Puoi cambiare modalità, allargare lo scope o aprire un drill manuale su una frontiera diversa.",
+        "Hai chiuso la coda corrente. Puoi aggiungere subito altri 10 round alla frontiera attuale, cambiare modalità o allargare lo scope.",
       primaryAction: {
-        href: "/kanji-clash?mode=manual&size=20",
-        label: "Apri Drill"
+        href: "/kanji-clash?mode=automatic",
+        label: "Apri FSRS"
       },
       secondaryAction: null,
+      topUpAction: {
+        href: "/kanji-clash?mode=manual&size=30",
+        label: "Aggiungi altri 10 round"
+      },
       title: "Sessione completata"
     });
-    expect(content.sidebar.note).toBe(
-      "Le nuove coppie restano separate dalla review standard e contano solo nel workspace Kanji Clash."
+    expect(content.sidebar.note).toBeNull();
+  });
+
+  it("keeps a custom manual size active in the sidebar filters", () => {
+    const content = buildKanjiClashPageContent({
+      currentRound: null,
+      data: buildKanjiClashPageData({
+        mode: "manual",
+        currentRound: null,
+        queue: {
+          requestedSize: 30
+        }
+      }),
+      feedback: null,
+      queue: buildKanjiClashQueue(0, {
+        requestedSize: 30
+      })
+    });
+
+    expect(content.sidebar.sizeFilters).toEqual([
+      {
+        active: false,
+        href: "/kanji-clash?mode=manual&size=10",
+        label: "10"
+      },
+      {
+        active: false,
+        href: "/kanji-clash?mode=manual&size=20",
+        label: "20"
+      },
+      {
+        active: true,
+        href: "/kanji-clash?mode=manual&size=30",
+        label: "30"
+      },
+      {
+        active: false,
+        href: "/kanji-clash?mode=manual&size=40",
+        label: "40"
+      }
+    ]);
+  });
+
+  it("does not render a manual top-up when the pool is simply empty", () => {
+    const content = buildKanjiClashPageContent({
+      currentRound: null,
+      data: buildKanjiClashPageData({
+        mode: "manual",
+        currentRound: null,
+        queue: {
+          finished: true,
+          requestedSize: 20,
+          totalCount: 0
+        }
+      }),
+      feedback: null,
+      queue: buildKanjiClashQueue(0, {
+        finished: true,
+        requestedSize: 20,
+        totalCount: 0
+      })
+    });
+
+    expect(content.emptyState?.topUpAction).toBeNull();
+    expect(content.emptyState?.description).toBe(
+      "Hai chiuso la coda corrente. Puoi cambiare modalità, allargare lo scope o aprire un drill manuale su una frontiera diversa."
     );
   });
 });

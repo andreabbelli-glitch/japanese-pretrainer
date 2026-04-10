@@ -1,12 +1,8 @@
-import {
-  db,
-  type DatabaseClient
-} from "@/db";
+import { db, type DatabaseClient } from "@/db";
 import { listMediaCached } from "@/lib/data-cache";
 import {
   getStudySettings,
   kanjiClashManualDefaultSizeOptions,
-  normalizeKanjiClashManualDefaultSize,
   resolveKanjiClashDefaultScope
 } from "@/lib/settings";
 
@@ -21,6 +17,8 @@ import type {
 } from "./types.ts";
 
 type KanjiClashSearchParams = Record<string, string | string[] | undefined>;
+
+const KANJI_CLASH_MANUAL_QUERY_SIZE_STEP = 10;
 
 export async function getKanjiClashPageData(
   searchParams: KanjiClashSearchParams,
@@ -42,7 +40,10 @@ export async function getKanjiClashPageData(
     availableMedia,
     readFirstSearchParam(searchParams.media)
   );
-  const scope = resolvePageScope(settings.kanjiClashDefaultScope, selectedMedia);
+  const scope = resolvePageScope(
+    settings.kanjiClashDefaultScope,
+    selectedMedia
+  );
   const requestedSize =
     mode === "manual"
       ? resolveManualSessionSize(
@@ -102,11 +103,14 @@ function resolveManualSessionSize(
 
   const normalized = Math.round(parsed);
 
-  return kanjiClashManualDefaultSizeOptions.includes(
-    normalized as (typeof kanjiClashManualDefaultSizeOptions)[number]
-  )
-    ? normalizeKanjiClashManualDefaultSize(normalized)
-    : fallback;
+  if (
+    normalized <= 0 ||
+    normalized % KANJI_CLASH_MANUAL_QUERY_SIZE_STEP !== 0
+  ) {
+    return fallback;
+  }
+
+  return normalized;
 }
 
 function resolveSelectedMediaOption(

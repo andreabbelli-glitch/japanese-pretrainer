@@ -54,6 +54,8 @@ non sostituisce un audit completo e aggiornato del codice.
 - `Kanji Clash` in scope media deve attivarsi solo con `media=<slug>` valido;
   se manca uno slug esplicito, il runtime deve restare su scope globale anche
   quando il default setting e` `media`.
+- Una sessione manuale `Kanji Clash` completata deve offrire un top-up di `+10`
+  round nello stesso scope, senza perdere il filtro media corrente.
 - Il pool `Kanji Clash` deve includere solo `term` gia consolidati nella review
   reale (`review` o `relearning`, `stability >= 7`, `reps >= 2`), escludendo
   `grammar`, `new`, `learning`, `known_manual` e `suspended`.

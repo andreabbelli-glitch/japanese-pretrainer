@@ -55,7 +55,9 @@ describe("kanji clash page", () => {
     expect(markup).toContain("spese per il cibo");
     expect(markup).not.toContain("alimento");
     expect(markup).not.toContain("しょくひん");
-    expect(markup).not.toContain("Scegli quale forma giapponese corrisponde al target.");
+    expect(markup).not.toContain(
+      "Scegli quale forma giapponese corrisponde al target."
+    );
     expect(markup).not.toContain(
       "Forma giapponese da confrontare visivamente con il target centrale."
     );
@@ -78,17 +80,21 @@ describe("kanji clash page", () => {
     const markup = renderToStaticMarkup(
       createElement(KanjiClashPage, {
         data: buildKanjiClashPageData({
+          mode: "manual",
           currentRound: null,
           queue: {
             currentRoundIndex: 0,
             finished: true,
-            totalCount: 0
+            requestedSize: 20,
+            totalCount: 2
           }
         })
       })
     );
 
     expect(markup).toContain("Sessione completata");
-    expect(markup).toContain("Apri Drill");
+    expect(markup).toContain("Aggiungi altri 10 round");
+    expect(markup).toContain('href="/kanji-clash?mode=manual&amp;size=30"');
+    expect(markup).toContain("Apri FSRS");
   });
 });
