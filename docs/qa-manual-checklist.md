@@ -39,6 +39,9 @@
 - `Kanji Clash`: il pool mostra solo pair di `term` gia consolidati nella
   review standard; non devono comparire `grammar`, card troppo nuove o
   superfici duplicate/quasi-clone.
+- `Kanji Clash`: il pool non deve promuovere front non lessicali come
+  katakana/hiragana puri, frammenti frasali con particelle o punteggiatura e
+  compound con prefisso leggero in kana/katakana o coda katakana.
 - `Kanji Clash`: il pool scarta same-entry, same-group, same-surface ed
   editorial-clone prima di costruire una sessione.
 - `Kanji Clash`: il pool scarta anche i `qualified-contained-clone`, cioe`

@@ -100,6 +100,7 @@ function buildCandidateCardScopeCtesSql() {
       SELECT
         cc.cardId,
         c.card_type AS cardType,
+        c.front AS front,
         c.normalized_front AS normalizedFront
       FROM candidate_cards cc
       INNER JOIN card c
@@ -121,6 +122,7 @@ function buildCanonicalCandidateTermLinksCtesSql() {
       SELECT
         vcc.cardId,
         vcc.cardType,
+        vcc.front,
         vcc.normalizedFront,
         cel.entry_id AS entryId,
         cel.entry_type AS entryType,
@@ -147,6 +149,7 @@ function buildCanonicalCandidateTermLinksCtesSql() {
       SELECT
         dcl.cardId,
         dcl.cardType,
+        dcl.front,
         dcl.normalizedFront,
         dcl.entryId,
         dcl.relationshipType
@@ -159,10 +162,12 @@ function buildCanonicalCandidateTermLinksCtesSql() {
   `;
 }
 
-function buildEligibleTermEntriesCteSql() {
+function buildEligibleCanonicalTermLinksCteSql() {
   return `
-    eligible_term_entries AS (
+    eligible_canonical_term_links AS (
       SELECT DISTINCT
+        cctl.cardId,
+        cctl.front,
         t.id AS entryId
       FROM canonical_candidate_term_links cctl
       INNER JOIN term t
@@ -197,8 +202,9 @@ export function buildListEligibleKanjiClashSubjectsSql(options?: {
     ${buildCandidateMembersCteSql(mediaFilterClause)},
     ${buildCandidateCardScopeCtesSql()},
     ${buildCanonicalCandidateTermLinksCtesSql()},
-    ${buildEligibleTermEntriesCteSql()}
+    ${buildEligibleCanonicalTermLinksCteSql()}
     SELECT
+      ectl.front AS cardFront,
       cm.subjectKey,
       cm.subjectType,
       cm.canonicalEntryId,
@@ -214,8 +220,8 @@ export function buildListEligibleKanjiClashSubjectsSql(options?: {
       cm.mediaSlug,
       cm.mediaTitle
     FROM candidate_members cm
-    INNER JOIN eligible_term_entries ete
-      ON ete.entryId = cm.entryId
-    ORDER BY cm.subjectKey ASC, cm.mediaSlug ASC, cm.entryId ASC
+    INNER JOIN eligible_canonical_term_links ectl
+      ON ectl.entryId = cm.entryId
+    ORDER BY cm.subjectKey ASC, cm.mediaSlug ASC, cm.entryId ASC, ectl.cardId ASC
   `;
 }

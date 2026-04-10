@@ -2,6 +2,14 @@ import type { KanjiClashEligibleSubject } from "./types.ts";
 import { stripInlineMarkdown } from "../inline-markdown.ts";
 
 const kanjiPattern = /[\p{Script=Han}々〆ヵヶ]/gu;
+const kanaOnlyPattern = /^[\p{Script=Hiragana}\p{Script=Katakana}ー〜]+$/u;
+const phrasePunctuationPattern = /[!?！？。]/u;
+const phraseParticlePattern =
+  /[\p{Script=Han}々〆ヵヶ\p{Script=Hiragana}\p{Script=Katakana}ー](から|まで|より|によって|により|について|として|を|に|へ|で|と|が|は|も|の)[\p{Script=Han}々〆ヵヶ\p{Script=Hiragana}\p{Script=Katakana}ー]/u;
+const leadingLightQualifierPattern =
+  /^[\p{Script=Hiragana}\p{Script=Katakana}ー]{2,}[\p{Script=Han}々〆ヵヶ]/u;
+const trailingKatakanaQualifierPattern =
+  /[\p{Script=Han}々〆ヵヶ][\p{Script=Katakana}ー]{2,}$/u;
 
 export function normalizeKanjiClashSurface(value: string) {
   return stripInlineMarkdown(value)
@@ -25,6 +33,40 @@ export function collectKanjiFromSurfaces(surfaces: string[]) {
   return dedupeStable(
     surfaces.flatMap((surface) => extractKanjiFromText(surface))
   );
+}
+
+export function isEligibleKanjiClashCardFront(value: string) {
+  const normalized = normalizeKanjiClashSurface(value);
+
+  if (normalized.length === 0) {
+    return false;
+  }
+
+  if (normalized.includes(" ")) {
+    return false;
+  }
+
+  if (phrasePunctuationPattern.test(normalized)) {
+    return false;
+  }
+
+  if (kanaOnlyPattern.test(normalized)) {
+    return false;
+  }
+
+  if (phraseParticlePattern.test(normalized)) {
+    return false;
+  }
+
+  if (leadingLightQualifierPattern.test(normalized)) {
+    return false;
+  }
+
+  if (trailingKatakanaQualifierPattern.test(normalized)) {
+    return false;
+  }
+
+  return extractKanjiFromText(normalized).length > 0;
 }
 
 export function buildKanjiClashPairKey(

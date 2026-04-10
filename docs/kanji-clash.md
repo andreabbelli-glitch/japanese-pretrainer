@@ -68,6 +68,11 @@ Un subject entra nel pool solo se:
 - `stability >= 7`;
 - `reps >= 2`;
 - ha almeno un kanji nella superficie normalizzata.
+- la card driver e` un target lessicale compatto: niente front solo
+  hiragana/katakana, niente frammenti frasali con particelle o punteggiatura,
+  niente compound con prefisso leggero in kana/katakana del tipo `カード交換`,
+  `おすすめ編成`, `ストラテジー戦`, e niente compound misti con coda
+  katakana del tipo `進化クリーチャー`, `タップ状態`.
 
 La soglia e volutamente conservativa: Kanji Clash deve partire da materiale gia
 stabile nella review standard, non da ricordi ancora fragili o appena

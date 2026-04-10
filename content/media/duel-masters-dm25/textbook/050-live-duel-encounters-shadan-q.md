@@ -15,7 +15,7 @@ prerequisites:
     lesson-duel-masters-dm25-live-duel-encounters-duck-ahicchi
   ]
 summary: >-
-  Shadan Q: G Zero richiede un Jokers di costo 5 o più, e chuushi shite mostra
+  Shadan Q: G Zero richiede un Jokers di costo 5 o più, e chuushi suru mostra
   come il testo ferma un attacco già dichiarato.
 ---
 

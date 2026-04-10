@@ -44,16 +44,16 @@ level_hint: n3
 :::grammar
 id: grammar-erabareta-player
 pattern: 自身のクリーチャーが選ばれたプレイヤーは
-title: Il giocatore la cui creatura è stata scelta
+title: Il giocatore di cui è stata scelta una creatura
 reading: じしんのクリーチャーがえらばれたプレイヤーは
-meaning_it: quanto al giocatore la cui creatura è stata scelta
+meaning_it: quanto al giocatore di cui è stata scelta una creatura
 aliases: [選ばれたプレイヤー, 自身のクリーチャーが選ばれたプレイヤーは]
 notes_it: >-
   Il blocco decisivo è `{{選|えら}}ばれた`, passivo di
-  [{{選|えら}}ぶ](term:term-erabu). Qui non stai leggendo `il giocatore scelto`,
-  ma una relativa più lunga: `il giocatore la cui propria creatura è stata
-  scelta`. `{{自身|じしん}}` resta ancorato a quel giocatore e ti impedisce di
-  scivolare su un referente esterno.
+  [{{選|えら}}ぶ](term:term-erabu). Qui non stai leggendo `il giocatore scelto`
+  o `il giocatore che ha scelto`, ma una relativa più lunga: `il giocatore di
+  cui è stata scelta una propria creatura`. `{{自身|じしん}}` resta ancorato a
+  quel giocatore e ti impedisce di scivolare su un referente esterno.
 level_hint: n3
 :::
 
@@ -143,7 +143,7 @@ entry_type: grammar
 entry_id: grammar-erabareta-player
 card_type: concept
 front: '{{自身|じしん}}のクリーチャーが{{選|えら}}ばれたプレイヤーは'
-back: quanto al giocatore la cui creatura è stata scelta
+back: quanto al giocatore di cui è stata scelta una creatura
 example_jp: >-
   `{{選|えら}}ばれた`は{{受身|うけみ}}で、プレイヤー{{本人|ほんにん}}ではなく
   そのプレイヤーの[クリーチャー](term:term-creature)に
@@ -154,7 +154,7 @@ example_it: >-
 notes_it: >-
   Questo è il chunk giusto da fissare se `選ばれた` ti confonde. La forma
   passiva serve da etichetta relativa e costruisce `il giocatore per cui è
-  stata scelta una propria creatura`.
+  stata scelta una propria creatura`, non `chi ha fatto la scelta`.
 tags: [live-duel, grammar, passive, relative-clause]
 :::
 

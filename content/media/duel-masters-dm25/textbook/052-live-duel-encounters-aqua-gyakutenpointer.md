@@ -16,8 +16,9 @@ prerequisites:
   ]
 summary: >-
   Aqua Gyakutenpointer: saidai e zutsu distribuiscono un massimo per giocatore,
-  erabareta introduce una passiva relativa, e omotemuki ni shi concatena la
-  rivelazione fino all'uscita di una creatura.
+  erabareta introduce una relativa passiva sui giocatori di cui e' stata
+  scelta una creatura, e omotemuki ni shi concatena la rivelazione fino
+  all'uscita di una creatura.
 ---
 
 # アクア・ギャクテンポインター
@@ -42,7 +43,7 @@ caption: >-
 
 Qui però il vero valore della carta non è nelle keyword: è nella sintassi del
 testo effetto. Le due difficoltà reali sono `{{選|えら}}ばれた`, che è una
-passiva riferita al giocatore la cui creatura è stata scelta, e
+passiva riferita ai giocatori di cui è stata scelta una creatura, e
 `{{表向|おもてむ}}きにし`, dove `し` non è un finale sospeso vago ma una forma
 connettiva che prepara il passo successivo `そのクリーチャーを{{出|だ}}す`.
 
@@ -74,9 +75,9 @@ jp: >-
   [{{表向|おもてむ}}きにし](grammar:grammar-deru-made-omotemuki-ni-shi)、その
   [クリーチャー](term:term-creature)を[{{出|だ}}す](term:term-dasu)。
 translation_it: >-
-  In questo modo, il giocatore la cui creatura è stata scelta gira carte a
-  faccia in su dalla cima del proprio mazzo finché non esce una creatura, poi
-  mette in campo quella creatura.
+  In questo modo, ogni giocatore di cui è stata scelta una creatura gira carte
+  a faccia in su dalla cima del proprio mazzo finché non esce una creatura,
+  poi mette in campo quella creatura.
 reveal_mode: sentence
 :::
 
@@ -115,11 +116,12 @@ reveal_mode: sentence
 - Il pezzo difficile qui è `{{選|えら}}ばれた`: è il passivo di
   [{{選|えら}}ぶ](term:term-erabu), quindi `che è stata scelta`.
 - `{{選|えら}}ばれた` modifica `プレイヤー` passando attraverso l'intero blocco
-  `{{自身|じしん}}のクリーチャーが...`: il senso non è `il giocatore scelto`,
-  ma `il giocatore la cui creatura è stata scelta`.
+  `{{自身|じしん}}のクリーチャーが...`: il senso non è `il giocatore che ha
+  scelto` o `il giocatore scelto`, ma `il giocatore di cui è stata scelta una
+  creatura`.
 - [{{自身|じしん}}](term:term-jishin) resta ancorato a quel giocatore. Quindi
   la frase intera va letta come un'etichetta relativa molto compatta:
-  `quanto ai giocatori per cui è stata scelta una propria creatura...`.
+  `quanto ai giocatori di cui è stata scelta una propria creatura...`.
 
 ### 4. クリーチャーが出るまで表向きにし
 

@@ -6,10 +6,12 @@ import type {
 import { dedupeStable } from "./shared-utils.ts";
 import {
   collectKanjiFromSurfaces,
+  isEligibleKanjiClashCardFront,
   normalizeKanjiClashSurface
 } from "./utils.ts";
 
 export type EligibleKanjiClashSubjectRow = {
+  cardFront: string;
   canonicalEntryId: string | null;
   crossMediaGroupId: string | null;
   entryId: string;
@@ -31,7 +33,9 @@ export function mapEligibleKanjiClashSubjectRows(
 ): KanjiClashEligibleSubject[] {
   const subjects = new Map<string, KanjiClashEligibleSubject>();
 
-  for (const row of rows) {
+  for (const row of rows.filter((currentRow) =>
+    isEligibleKanjiClashCardFront(currentRow.cardFront)
+  )) {
     const member: KanjiClashEligibleSubjectMember = {
       entryId: row.entryId,
       lemma: row.lemma,

@@ -57,6 +57,11 @@ non sostituisce un audit completo e aggiornato del codice.
 - Il pool `Kanji Clash` deve includere solo `term` gia consolidati nella review
   reale (`review` o `relearning`, `stability >= 7`, `reps >= 2`), escludendo
   `grammar`, `new`, `learning`, `known_manual` e `suspended`.
+- Il pool `Kanji Clash` deve scartare anche card driver non lessicali: front
+  solo kana, frammenti con particelle o punteggiatura (`山札の一番下`,
+  `ターンを追加する`, `どの ポケモンに 使いますか？`) e compound con prefisso
+  leggero in kana/katakana (`カード交換`, `おすすめ編成`) o coda katakana
+  (`進化クリーチャー`, `タップ状態`).
 - La sessione `Kanji Clash` non deve ripresentare la stessa pair key nella
   stessa run, anche con lati invertiti o target invertito.
 - Una risposta corretta in `Kanji Clash` deve avanzare al round successivo

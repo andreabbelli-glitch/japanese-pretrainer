@@ -295,6 +295,288 @@ describe("kanji clash eligibility query", () => {
       true
     );
   });
+
+  it("excludes kana-only fronts, phrase fragments, and light qualifier compounds from the pool", async () => {
+    const now = "2026-04-08T14:00:00.000Z";
+
+    await database.insert(term).values([
+      buildTermRow(
+        {
+          id: "term-alpha-abyss-rush",
+          lemma: "深淵疾走",
+          mediaId: "media-alpha",
+          meaningIt: "abyss rush",
+          reading: "しんえんしっそう",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-abyss-rush"
+        },
+        now
+      ),
+      buildTermRow(
+        {
+          id: "term-alpha-card-exchange",
+          lemma: "交換",
+          mediaId: "media-alpha",
+          meaningIt: "scambio",
+          reading: "こうかん",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-card-exchange"
+        },
+        now
+      ),
+      buildTermRow(
+        {
+          id: "term-alpha-bottom-fragment",
+          lemma: "一番下",
+          mediaId: "media-alpha",
+          meaningIt: "fondo",
+          reading: "いちばんした",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-bottom-fragment"
+        },
+        now
+      ),
+      buildTermRow(
+        {
+          id: "term-alpha-use-question",
+          lemma: "使う",
+          mediaId: "media-alpha",
+          meaningIt: "usare",
+          reading: "つかう",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-use-question"
+        },
+        now
+      ),
+      buildTermRow(
+        {
+          id: "term-alpha-pokemon-zukan",
+          lemma: "図鑑",
+          mediaId: "media-alpha",
+          meaningIt: "pokedex",
+          reading: "ずかん",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-pokemon-zukan"
+        },
+        now
+      ),
+      buildTermRow(
+        {
+          id: "term-alpha-evolution-creature",
+          lemma: "進化クリーチャー",
+          mediaId: "media-alpha",
+          meaningIt: "creatura evoluzione",
+          reading: "しんかクリーチャー",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-evolution-creature"
+        },
+        now
+      ),
+      buildTermRow(
+        {
+          id: "term-alpha-tap-state",
+          lemma: "状態",
+          mediaId: "media-alpha",
+          meaningIt: "stato",
+          reading: "じょうたい",
+          segmentId: "segment-alpha",
+          sourceId: "term-alpha-tap-state"
+        },
+        now
+      )
+    ]);
+
+    await database.insert(card).values([
+      buildCardRow(
+        {
+          id: "card-alpha-abyss-rush",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "アビスラッシュ",
+          segmentId: "segment-alpha"
+        },
+        now
+      ),
+      buildCardRow(
+        {
+          id: "card-alpha-card-exchange",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "カード交換",
+          segmentId: "segment-alpha"
+        },
+        now
+      ),
+      buildCardRow(
+        {
+          id: "card-alpha-bottom-fragment",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "山札の一番下",
+          segmentId: "segment-alpha"
+        },
+        now
+      ),
+      buildCardRow(
+        {
+          id: "card-alpha-use-question",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "どの ポケモンに 使いますか？",
+          segmentId: "segment-alpha"
+        },
+        now
+      ),
+      buildCardRow(
+        {
+          id: "card-alpha-pokemon-zukan",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "ポケモン図鑑",
+          segmentId: "segment-alpha"
+        },
+        now
+      ),
+      buildCardRow(
+        {
+          id: "card-alpha-evolution-creature",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "進化クリーチャー",
+          segmentId: "segment-alpha"
+        },
+        now
+      ),
+      buildCardRow(
+        {
+          id: "card-alpha-tap-state",
+          lessonId: "lesson-alpha",
+          mediaId: "media-alpha",
+          front: "タップ状態",
+          segmentId: "segment-alpha"
+        },
+        now
+      )
+    ]);
+
+    await database.insert(cardEntryLink).values([
+      buildCardEntryLinkRow("card-alpha-abyss-rush", "term-alpha-abyss-rush"),
+      buildCardEntryLinkRow(
+        "card-alpha-card-exchange",
+        "term-alpha-card-exchange"
+      ),
+      buildCardEntryLinkRow(
+        "card-alpha-bottom-fragment",
+        "term-alpha-bottom-fragment"
+      ),
+      buildCardEntryLinkRow("card-alpha-use-question", "term-alpha-use-question"),
+      buildCardEntryLinkRow(
+        "card-alpha-pokemon-zukan",
+        "term-alpha-pokemon-zukan"
+      ),
+      buildCardEntryLinkRow(
+        "card-alpha-evolution-creature",
+        "term-alpha-evolution-creature"
+      ),
+      buildCardEntryLinkRow("card-alpha-tap-state", "term-alpha-tap-state")
+    ]);
+
+    await database.insert(reviewSubjectState).values([
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-abyss-rush",
+          entryId: "term-alpha-abyss-rush",
+          reps: 3,
+          stability: 8.6,
+          subjectKey: "entry:term:term-alpha-abyss-rush",
+          subjectType: "entry"
+        },
+        now
+      ),
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-card-exchange",
+          entryId: "term-alpha-card-exchange",
+          reps: 3,
+          stability: 8.8,
+          subjectKey: "entry:term:term-alpha-card-exchange",
+          subjectType: "entry"
+        },
+        now
+      ),
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-bottom-fragment",
+          entryId: "term-alpha-bottom-fragment",
+          reps: 3,
+          stability: 8.9,
+          subjectKey: "entry:term:term-alpha-bottom-fragment",
+          subjectType: "entry"
+        },
+        now
+      ),
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-use-question",
+          entryId: "term-alpha-use-question",
+          reps: 3,
+          stability: 9.1,
+          subjectKey: "entry:term:term-alpha-use-question",
+          subjectType: "entry"
+        },
+        now
+      ),
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-pokemon-zukan",
+          entryId: "term-alpha-pokemon-zukan",
+          reps: 3,
+          stability: 9.2,
+          subjectKey: "entry:term:term-alpha-pokemon-zukan",
+          subjectType: "entry"
+        },
+        now
+      ),
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-evolution-creature",
+          entryId: "term-alpha-evolution-creature",
+          reps: 3,
+          stability: 9.3,
+          subjectKey: "entry:term:term-alpha-evolution-creature",
+          subjectType: "entry"
+        },
+        now
+      ),
+      buildReviewSubjectStateRow(
+        {
+          cardId: "card-alpha-tap-state",
+          entryId: "term-alpha-tap-state",
+          reps: 3,
+          stability: 9.4,
+          subjectKey: "entry:term:term-alpha-tap-state",
+          subjectType: "entry"
+        },
+        now
+      )
+    ]);
+
+    const subjectKeys = new Set(
+      (await listEligibleKanjiClashSubjects(database)).map(
+        (subject) => subject.subjectKey
+      )
+    );
+
+    expect(subjectKeys.has("entry:term:term-alpha-abyss-rush")).toBe(false);
+    expect(subjectKeys.has("entry:term:term-alpha-card-exchange")).toBe(false);
+    expect(subjectKeys.has("entry:term:term-alpha-bottom-fragment")).toBe(false);
+    expect(subjectKeys.has("entry:term:term-alpha-use-question")).toBe(false);
+    expect(subjectKeys.has("entry:term:term-alpha-pokemon-zukan")).toBe(false);
+    expect(subjectKeys.has("entry:term:term-alpha-evolution-creature")).toBe(
+      false
+    );
+    expect(subjectKeys.has("entry:term:term-alpha-tap-state")).toBe(false);
+  });
 });
 
 async function seedKanjiClashEligibilityFixture(database: DatabaseClient) {

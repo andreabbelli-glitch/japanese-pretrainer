@@ -2,7 +2,7 @@
 id: cards-duel-masters-dm25-live-duel-encounters-shadan-q
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-shadan-q
-title: Carte incontrate in partita 29 - Shadan Q, G・ゼロ e 中止して
+title: Carte incontrate in partita 29 - Shadan Q, G・ゼロ e 中止する
 order: 78
 segment_ref: live-duel-encounters
 ---
@@ -71,8 +71,8 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-shadan-q
 entry_type: term
 entry_id: term-chuushi-suru
 card_type: recognition
-front: '{{中止|ちゅうし}}して'
-back: interrompendo / fermando; in carta = fermare quell'attacco
+front: '{{中止|ちゅうし}}する'
+back: interrompere / sospendere / annullare; in carta = fermare quell'attacco
 example_jp: >-
   クリーチャーが[{{自分|じぶん}}](term:term-self)を
   [{{攻撃|こうげき}}](term:term-attack)する[{{時|とき}}](grammar:grammar-toki)、このクリーチャーを
@@ -82,11 +82,11 @@ example_it: >-
   Quando una creatura attacca te, puoi tappare questa creatura e fermare
   quell'attacco.
 notes_it: >-
-  In forma di dizionario è `{{中止|ちゅうし}}する`, cioè `interrompere` o
-  `annullare`. In questa carta compare in `て`-form perché si aggancia a
-  `してもよい`: prima compi l'azione di fermare l'attacco, poi il testo ti dice
-  che quel gesto è facoltativo. Il valore utile da fissare è che
-  `{{中止|ちゅうし}}して` qui non sospende la partita in generale, ma blocca
-  proprio l'attacco appena nominato da `その{{攻撃|こうげき}}`.
+  Il lemma da fissare è `{{中止|ちゅうし}}する`: `interrompere`, `sospendere`,
+  `annullare`. Nella frase della carta compare come `{{中止|ちゅうし}}してもよい`
+  perché il verbo va in forma in `て` davanti a `もよい`. Il punto utile da
+  memorizzare resta il verbo base: qui `{{中止|ちゅうし}}する` non sospende la
+  partita in generale, ma blocca proprio l'attacco appena richiamato da
+  `その{{攻撃|こうげき}}`.
 tags: [live-duel, term, attack, interruption]
 :::
