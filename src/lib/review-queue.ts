@@ -22,6 +22,7 @@ import type {
   ReviewQueueCard
 } from "./review-types";
 import type { ReviewSearchState } from "./review-search-state";
+import { formatLocalIsoDate } from "./local-date";
 
 export type ReviewQueueStateSnapshot = {
   bucket: ReviewQueueCard["bucket"];
@@ -785,7 +786,7 @@ export function formatBucketLabel(bucket: ReviewQueueCard["bucket"]) {
 }
 
 export function formatShortIsoDate(value: string) {
-  return value.slice(0, 10);
+  return formatLocalIsoDate(value);
 }
 
 function compareReviewCardsByOrder<

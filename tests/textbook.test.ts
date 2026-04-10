@@ -376,6 +376,36 @@ describe("textbook data", () => {
     ).toBe("in_progress");
   });
 
+  it("updates opened timestamps even when the lesson status stays the same", async () => {
+    await recordLessonOpened(developmentFixture.lessonId, database);
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(lessonData).not.toBeNull();
+
+    const patched = applyLessonOpenedState(lessonData!, {
+      lastOpenedAt: "2026-03-10T10:00:00.000Z",
+      startedAt: "2026-03-09T10:00:00.000Z",
+      status: "in_progress"
+    });
+
+    expect(
+      patched.lessons.find(
+        (lesson) => lesson.id === developmentFixture.lessonId
+      )?.lastOpenedAt
+    ).toBe("2026-03-10T10:00:00.000Z");
+    expect(patched.activeLesson?.lastOpenedAt).toBe(
+      "2026-03-10T10:00:00.000Z"
+    );
+    expect(patched.resumeLesson?.lastOpenedAt).toBe(
+      "2026-03-10T10:00:00.000Z"
+    );
+  });
+
   it("keeps rendering textbook data when recording the opened lesson fails", async () => {
     await database
       .update(lessonProgress)

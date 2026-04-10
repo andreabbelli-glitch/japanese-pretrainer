@@ -5,6 +5,7 @@ import {
   getMediaAssetContentType,
   isSupportedMediaAssetPath,
   isValidMediaAssetPath,
+  isValidMediaSlugSegment,
   isWithinMediaAssetRoot,
   normalizeMediaAssetPath,
   resolveMediaAssetAbsolutePath
@@ -19,6 +20,13 @@ type RouteContext = {
 
 export async function GET(_request: Request, context: RouteContext) {
   const { assetPath, mediaSlug } = await context.params;
+
+  if (!isValidMediaSlugSegment(mediaSlug)) {
+    return new Response("Invalid media slug.", {
+      status: 400
+    });
+  }
+
   const joinedAssetPath = normalizeMediaAssetPath(assetPath.join("/"));
 
   if (!isValidMediaAssetPath(joinedAssetPath)) {

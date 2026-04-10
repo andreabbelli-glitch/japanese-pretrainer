@@ -36,6 +36,7 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
     data.hasActiveFilters || returnTo
       ? buildGlossaryHref({
           baseHref: data.media.glossaryHref,
+          cards: data.filters.cards,
           entryType: data.filters.entryType,
           query: data.filters.query,
           returnTo,
@@ -81,6 +82,9 @@ export function GlossaryPage({ data, returnTo }: GlossaryPageProps) {
           <form className="glossary-search-form" method="get">
             {returnTo ? (
               <input name="returnTo" type="hidden" value={returnTo} />
+            ) : null}
+            {data.filters.cards !== "all" ? (
+              <input name="cards" type="hidden" value={data.filters.cards} />
             ) : null}
             <label className="glossary-search-form__field">
               <span className="glossary-search-form__label">Cerca</span>
@@ -447,6 +451,10 @@ function buildPreviewHref({
 
   if (filters.segmentId !== "all") {
     params.set("segment", filters.segmentId);
+  }
+
+  if (filters.cards !== "all") {
+    params.set("cards", filters.cards);
   }
 
   if (filters.sort !== "lesson_order") {

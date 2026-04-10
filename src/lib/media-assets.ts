@@ -22,6 +22,18 @@ export function normalizeMediaAssetPath(assetPath: string) {
   return assetPath.replaceAll("\\", "/").trim();
 }
 
+export function isValidMediaSlugSegment(mediaSlug: string) {
+  const normalized = mediaSlug.trim();
+
+  return (
+    normalized.length > 0 &&
+    !normalized.includes("/") &&
+    !normalized.includes("\\") &&
+    normalized !== "." &&
+    normalized !== ".."
+  );
+}
+
 export function isValidMediaAssetPath(assetPath: string) {
   const normalized = normalizeMediaAssetPath(assetPath);
 

@@ -90,7 +90,7 @@ function resolveManualSessionSize(
 ) {
   const raw = readFirstSearchParam(value);
 
-  if (!raw) {
+  if (!raw || !/^\d+$/u.test(raw)) {
     return fallback;
   }
 

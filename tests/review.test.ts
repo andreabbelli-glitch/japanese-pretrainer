@@ -2074,6 +2074,34 @@ describe("review system", () => {
     expect(markup).toContain("Torna alla Review");
   });
 
+  it("keeps review return targets on glossary links and detail actions", async () => {
+    const detail = await getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.primaryCardId,
+      database
+    );
+
+    expect(detail).not.toBeNull();
+
+    const returnTo = "/review?answered=3&card=card-iku" as Route;
+    const markup = renderToStaticMarkup(
+      ReviewCardDetailPage({
+        data: detail!,
+        returnTo
+      })
+    );
+
+    expect(markup).toContain(
+      `href="/glossary?media=${developmentFixture.mediaSlug}&amp;returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"`
+    );
+    expect(markup).toContain(
+      `href="/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"`
+    );
+    expect(markup).toContain(
+      'name="returnTo" value="/review?answered=3&amp;card=card-iku"'
+    );
+  });
+
   it("can hide furigana on the review front until the answer is revealed", async () => {
     await database
       .update(card)
@@ -2601,12 +2629,13 @@ describe("review system", () => {
     formData.set("cardId", developmentFixture.primaryCardId);
     formData.set("answered", "0");
     formData.set("redirectMode", "stay_detail");
+    formData.set("returnTo", "/review?answered=3&card=card-iku");
 
     await expect(markLinkedEntryKnownAction(formData)).rejects.toThrow(
       `redirect:${mediaReviewCardHref(
         developmentFixture.mediaSlug,
         developmentFixture.primaryCardId
-      )}`
+      )}?returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku`
     );
 
     expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(

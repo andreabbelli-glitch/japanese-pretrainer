@@ -130,7 +130,13 @@ export function applyLessonOpenedState(
   data: TextbookLessonData,
   openedState: LessonOpenState
 ): TextbookLessonData {
-  if (data.lesson.status === openedState.status) {
+  const currentLessonItem =
+    data.lessons.find((lesson) => lesson.id === data.lesson.id) ?? null;
+  const hasStatusChange = data.lesson.status !== openedState.status;
+  const hasLastOpenedAtChange =
+    currentLessonItem?.lastOpenedAt !== openedState.lastOpenedAt;
+
+  if (!hasStatusChange && !hasLastOpenedAtChange) {
     return data;
   }
 
@@ -146,6 +152,11 @@ export function applyLessonOpenedState(
         }
       : lesson;
   const lessons = data.lessons.map(updateLessonNavItem);
+  const activeLesson =
+    lessons.find((lesson) => lesson.id === data.lesson.id) ?? data.activeLesson;
+  const resumeLesson = data.resumeLesson
+    ? updateLessonNavItem(data.resumeLesson)
+    : null;
   const groups = data.groups.map((group) => ({
     ...group,
     lessons: group.lessons.map(updateLessonNavItem)
@@ -153,16 +164,15 @@ export function applyLessonOpenedState(
 
   return {
     ...data,
-    activeLesson:
-      lessons.find((lesson) => lesson.id === data.lesson.id) ??
-      data.activeLesson,
+    activeLesson,
     groups,
     lesson: {
       ...data.lesson,
       status: nextStatus,
       statusLabel: nextStatusLabel
     },
-    lessons
+    lessons,
+    resumeLesson
   };
 }
 

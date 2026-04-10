@@ -41,7 +41,7 @@ export function computeReaderTooltipPosition(
 ): TooltipPosition {
   const { anchorRect, tooltipSize, viewport } = input;
   const maxHeight = Math.max(
-    160,
+    0,
     viewport.height - READER_TOOLTIP_VIEWPORT_MARGIN_PX * 2
   );
   const maxWidth = Math.max(

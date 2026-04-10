@@ -998,6 +998,7 @@ describe("glossary data", () => {
     const data = await getGlossaryPageData(
       developmentFixture.mediaSlug,
       {
+        cards: "with_cards",
         q: "iku",
         segment: developmentFixture.segmentId,
         sort: "alphabetical",
@@ -1017,7 +1018,31 @@ describe("glossary data", () => {
     );
 
     expect(markup).toContain(
-      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Fglossary%3Fq%3Diku%26segment%3D${developmentFixture.segmentId}%26study%3Dlearning%26sort%3Dalphabetical%26returnTo%3D%252Fglossary%253Fq%253Diku%2526media%253D${developmentFixture.mediaSlug}`
+      `?q=iku&amp;segment=${developmentFixture.segmentId}&amp;cards=with_cards&amp;sort=alphabetical&amp;study=learning&amp;preview=${developmentFixture.termId}&amp;previewKind=term&amp;returnTo=%2Fglossary%3Fq%3Diku%26media%3D${developmentFixture.mediaSlug}`
+    );
+    expect(markup).toContain(
+      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Fglossary%3Fq%3Diku%26segment%3D${developmentFixture.segmentId}%26study%3Dlearning%26cards%3Dwith_cards%26sort%3Dalphabetical%26returnTo%3D%252Fglossary%253Fq%253Diku%2526media%253D${developmentFixture.mediaSlug}`
+    );
+  });
+
+  it("keeps the active local cards filter when submitting a new glossary search", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const data = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        cards: "without_cards",
+        q: "iku"
+      },
+      database
+    );
+
+    expect(data).not.toBeNull();
+
+    const markup = renderToStaticMarkup(GlossaryPage({ data: data! }));
+
+    expect(markup).toContain(
+      '<input type="hidden" name="cards" value="without_cards"/>'
     );
   });
 

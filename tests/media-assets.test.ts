@@ -93,6 +93,17 @@ describe("media asset serving", () => {
     expect(traversal.status).toBe(400);
   });
 
+  it("rejects traversal through the media slug parameter", async () => {
+    const response = await GET(new Request("https://example.test"), {
+      params: Promise.resolve({
+        assetPath: ["audio", "sample.mp3"],
+        mediaSlug: ".."
+      })
+    });
+
+    expect(response.status).toBe(400);
+  });
+
   it("serves .oga audio assets with the correct MIME type", async () => {
     const response = await GET(new Request("https://example.test"), {
       params: Promise.resolve({

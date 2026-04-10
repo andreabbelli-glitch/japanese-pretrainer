@@ -79,4 +79,28 @@ describe("computeReaderTooltipPosition", () => {
       640 - READER_TOOLTIP_VIEWPORT_MARGIN_PX * 2
     );
   });
+
+  it("never reports a max height larger than the available viewport space", () => {
+    const position = computeReaderTooltipPosition({
+      anchorRect: {
+        top: 90,
+        left: 40,
+        bottom: 122,
+        width: 64
+      },
+      tooltipSize: {
+        width: 260,
+        height: 220
+      },
+      viewport: {
+        width: 360,
+        height: 180
+      }
+    });
+
+    expect(position.maxHeight).toBe(
+      180 - READER_TOOLTIP_VIEWPORT_MARGIN_PX * 2
+    );
+    expect(position.top).toBe(READER_TOOLTIP_VIEWPORT_MARGIN_PX);
+  });
 });

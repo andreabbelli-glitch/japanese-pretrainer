@@ -51,7 +51,7 @@ export function normalizeGlossaryQuery(
   const rawSegment = readSearchParam(searchParams, "segment");
   const rawSort = readSearchParam(searchParams, "sort");
   const rawStudy = readSearchParam(searchParams, "study");
-  const parsedPage = Number.parseInt(rawPage, 10);
+  const parsedPage = readPositiveIntegerSearchParam(rawPage);
 
   return {
     cards: cardsFilterOptions.includes(rawCards as GlossaryCardsFilter)
@@ -325,6 +325,16 @@ export function readSearchParam(
   }
 
   return value?.trim() ?? "";
+}
+
+function readPositiveIntegerSearchParam(value: string) {
+  if (!/^\d+$/u.test(value)) {
+    return 0;
+  }
+
+  const parsed = Number.parseInt(value, 10);
+
+  return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : 0;
 }
 
 export function groupRowsByEntry<

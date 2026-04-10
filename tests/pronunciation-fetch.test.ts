@@ -172,6 +172,7 @@ describe("pronunciation fetch helpers", () => {
 
   it("returns null for invalid Retry-After values", () => {
     expect(parseRetryAfterMs("not-a-date")).toBeNull();
+    expect(parseRetryAfterMs("7seconds")).toBeNull();
     expect(parseRetryAfterMs(null)).toBeNull();
   });
 

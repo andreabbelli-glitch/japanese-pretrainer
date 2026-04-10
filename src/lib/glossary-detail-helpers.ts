@@ -5,6 +5,7 @@ import { mediaGlossaryEntryHref, mediaTextbookLessonHref } from "@/lib/site";
 import { capitalizeToken } from "@/lib/study-format";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 import { pickBestBy } from "@/lib/collections";
+import { formatLocalIsoDate } from "@/lib/local-date";
 
 type GlossaryAlias = {
   text: string;
@@ -127,7 +128,7 @@ export function formatGlossaryEntryLinkRole(role: string) {
 }
 
 export function formatGlossaryShortDate(value: string) {
-  return value.slice(0, 10);
+  return formatLocalIsoDate(value);
 }
 
 export function groupAliasesForGlossaryDetail(aliases: GlossaryAlias[]) {

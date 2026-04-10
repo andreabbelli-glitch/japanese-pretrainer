@@ -98,10 +98,11 @@ export function mediaTextbookLessonTooltipsHref(
 }
 
 export function mediaAssetHref(mediaSlug: string, assetPath: string): Route {
-  const normalizedAssetPath = assetPath.startsWith("assets/")
-    ? assetPath.slice("assets/".length)
-    : assetPath;
-  const normalizedPath = normalizedAssetPath
+  const normalizedAssetPath = normalizeAssetPath(assetPath);
+  const relativeAssetPath = normalizedAssetPath.startsWith("assets/")
+    ? normalizedAssetPath.slice("assets/".length)
+    : normalizedAssetPath;
+  const normalizedPath = relativeAssetPath
     .split("/")
     .map((segment) => encodeURIComponent(segment))
     .join("/");
@@ -191,4 +192,8 @@ function setOptionalSearchParam(
   }
 
   params.set(key, value);
+}
+
+function normalizeAssetPath(assetPath: string) {
+  return assetPath.replaceAll("\\", "/").trim().replace(/^\/+/u, "");
 }

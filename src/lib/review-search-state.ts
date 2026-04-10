@@ -23,17 +23,32 @@ export function buildReviewSearchStateCacheKeyParts(input: ReviewSearchState) {
 export function normalizeReviewSearchState(
   searchParams: Record<string, string | string[] | undefined>
 ): ReviewSearchState {
-  const answeredCount = Number.parseInt(readSearchParam(searchParams, "answered"), 10);
-  const extraNewCount = Number.parseInt(readSearchParam(searchParams, "extraNew"), 10);
+  const answeredCount = readPositiveIntegerSearchParam(searchParams, "answered");
+  const extraNewCount = readPositiveIntegerSearchParam(searchParams, "extraNew");
 
   return {
-    answeredCount: Number.isFinite(answeredCount) && answeredCount > 0 ? answeredCount : 0,
-    extraNewCount: Number.isFinite(extraNewCount) && extraNewCount > 0 ? extraNewCount : 0,
+    answeredCount,
+    extraNewCount,
     noticeCode: readSearchParam(searchParams, "notice") || null,
     segmentId: readSearchParam(searchParams, "segment") || null,
     selectedCardId: readSearchParam(searchParams, "card") || null,
     showAnswer: readSearchParam(searchParams, "show") === "answer"
   };
+}
+
+function readPositiveIntegerSearchParam(
+  searchParams: Record<string, string | string[] | undefined>,
+  key: string
+) {
+  const value = readSearchParam(searchParams, key);
+
+  if (!/^\d+$/u.test(value)) {
+    return 0;
+  }
+
+  const parsed = Number.parseInt(value, 10);
+
+  return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : 0;
 }
 
 function readSearchParam(

@@ -3,6 +3,7 @@ import type { Route } from "next";
 
 import { renderFurigana } from "@/lib/render-furigana";
 import {
+  appendReturnToParam,
   buildReviewSessionHref,
   replaceReviewCardInHref,
   resolveReturnToContext
@@ -66,7 +67,7 @@ export function ReviewCardDetailPage({
             </Link>
             <Link
               className="button button--ghost"
-              href={data.media.glossaryHref}
+              href={appendReturnToParam(data.media.glossaryHref, returnTo)}
             >
               Apri Glossary
             </Link>
@@ -163,6 +164,7 @@ export function ReviewCardDetailPage({
               <ReviewDetailActionFields
                 cardId={data.card.id}
                 mediaSlug={data.media.slug}
+                returnTo={returnTo}
               />
               <button className="button button--primary" type="submit">
                 Rimetti in studio
@@ -173,6 +175,7 @@ export function ReviewCardDetailPage({
               <ReviewDetailActionFields
                 cardId={data.card.id}
                 mediaSlug={data.media.slug}
+                returnTo={returnTo}
               />
               <button className="button button--ghost" type="submit">
                 Segna già nota
@@ -184,6 +187,7 @@ export function ReviewCardDetailPage({
             <ReviewDetailActionFields
               cardId={data.card.id}
               mediaSlug={data.media.slug}
+              returnTo={returnTo}
             />
             <button className="button button--ghost" type="submit">
               Reset card
@@ -194,6 +198,7 @@ export function ReviewCardDetailPage({
             <ReviewDetailActionFields
               cardId={data.card.id}
               mediaSlug={data.media.slug}
+              returnTo={returnTo}
             />
             <input
               name="suspended"
@@ -218,7 +223,7 @@ export function ReviewCardDetailPage({
               <Link
                 key={entry.id}
                 className="glossary-detail-link"
-                href={entry.href}
+                href={appendReturnToParam(entry.href, returnTo)}
               >
                 <SurfaceCard className="glossary-detail-card" variant="quiet">
                   <div className="glossary-detail-card__top">
@@ -276,7 +281,7 @@ export function ReviewCardDetailPage({
                     <Link
                       key={`${entry.entryId}:${sibling.mediaSlug}:${sibling.href}`}
                       className="glossary-detail-link"
-                      href={sibling.href}
+                      href={appendReturnToParam(sibling.href, returnTo)}
                     >
                       <SurfaceCard
                         className="glossary-detail-card"
@@ -326,10 +331,12 @@ export function ReviewCardDetailPage({
 
 function ReviewDetailActionFields({
   cardId,
-  mediaSlug
+  mediaSlug,
+  returnTo
 }: {
   cardId: string;
   mediaSlug: string;
+  returnTo?: Route | null;
 }) {
   return (
     <>
@@ -337,6 +344,9 @@ function ReviewDetailActionFields({
       <input name="cardId" type="hidden" value={cardId} />
       <input name="answered" type="hidden" value="0" />
       <input name="redirectMode" type="hidden" value="stay_detail" />
+      {returnTo ? (
+        <input name="returnTo" type="hidden" value={returnTo} />
+      ) : null}
     </>
   );
 }

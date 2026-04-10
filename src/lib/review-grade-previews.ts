@@ -58,14 +58,13 @@ export function buildReviewGradePreviews(
 function formatScheduledReviewPreview(dueAt: string, now: Date) {
   const dueDate = new Date(dueAt);
   const diffMs = dueDate.getTime() - now.getTime();
-  const diffMinutes = Math.round(diffMs / 60_000);
 
-  if (!Number.isFinite(diffMs) || diffMinutes <= 5) {
+  if (!Number.isFinite(diffMs) || diffMs <= 5 * 60_000) {
     return "Subito";
   }
 
-  if (diffMinutes < 60) {
-    return `Tra ${diffMinutes} min`;
+  if (diffMs < 60 * 60_000) {
+    return `Tra ${Math.ceil(diffMs / 60_000)} min`;
   }
 
   if (isSameLocalDate(dueDate, now)) {
@@ -85,7 +84,7 @@ function formatScheduledReviewPreview(dueAt: string, now: Date) {
     return `Tra ${dayDiff} giorni`;
   }
 
-  return `Il ${dueAt.slice(0, 10)}`;
+  return `Il ${formatLocalDate(dueDate)}`;
 }
 
 function buildReviewSchedulerRuntimeConfig(
@@ -102,8 +101,18 @@ const shortTimeFormatter = new Intl.DateTimeFormat("it-IT", {
   minute: "2-digit"
 });
 
+const localDateFormatter = new Intl.DateTimeFormat("sv-SE", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit"
+});
+
 function formatShortTime(value: Date) {
   return shortTimeFormatter.format(value);
+}
+
+function formatLocalDate(value: Date) {
+  return localDateFormatter.format(value);
 }
 
 function isSameLocalDate(left: Date, right: Date) {

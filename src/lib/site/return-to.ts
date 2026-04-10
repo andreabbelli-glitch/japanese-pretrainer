@@ -152,8 +152,15 @@ export function resolveGlossaryReviewReturnTo(
   let currentHref = readInternalHref(
     Array.isArray(value) ? value : value === null ? undefined : value
   );
+  const visitedHrefs = new Set<Route>();
 
   while (currentHref) {
+    if (visitedHrefs.has(currentHref)) {
+      return null;
+    }
+
+    visitedHrefs.add(currentHref);
+
     const currentContext = resolveReturnToContext(currentHref);
 
     if (currentContext?.kind === "review") {

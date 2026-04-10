@@ -104,4 +104,24 @@ describe("kanji clash page data", () => {
     expect(filtered.queue.totalCount).toBe(1);
     expect(global.queue.totalCount).toBeGreaterThan(filtered.queue.totalCount);
   });
+
+  it("rejects malformed manual size params instead of partially parsing them", async () => {
+    await updateStudySettings(
+      {
+        kanjiClashManualDefaultSize: 40
+      },
+      database
+    );
+
+    const data = await getKanjiClashPageData(
+      {
+        mode: "manual",
+        size: "20abc"
+      },
+      database,
+      new Date("2026-04-09T12:00:00.000Z")
+    );
+
+    expect(data.queue.requestedSize).toBe(40);
+  });
 });

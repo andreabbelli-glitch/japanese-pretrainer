@@ -81,6 +81,15 @@ describe("site helpers", () => {
     expect(mediaAssetHref("fixture-tcg", "assets/ui/deck-edit.webp")).toBe(
       "/media/fixture-tcg/assets/ui/deck-edit.webp"
     );
+    expect(mediaAssetHref("fixture-tcg", "assets\\ui\\deck-edit.webp")).toBe(
+      "/media/fixture-tcg/assets/ui/deck-edit.webp"
+    );
+    expect(mediaAssetHref("fixture-tcg", "/assets/ui/deck-edit.webp")).toBe(
+      "/media/fixture-tcg/assets/ui/deck-edit.webp"
+    );
+    expect(mediaAssetHref("fixture-tcg", "/ui/deck-edit.webp")).toBe(
+      "/media/fixture-tcg/assets/ui/deck-edit.webp"
+    );
     expect(mediaGlossaryTermHref("fixture-tcg", "term-iku")).toBe(
       "/media/fixture-tcg/glossary/term/term-iku"
     );

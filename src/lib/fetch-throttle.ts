@@ -114,7 +114,8 @@ export function parseRetryAfterMs(value: string | null) {
   }
 
   const trimmed = value.trim();
-  const asSeconds = Number.parseInt(trimmed, 10);
+  const asSeconds =
+    /^[0-9]+$/.test(trimmed) ? Number.parseInt(trimmed, 10) : Number.NaN;
 
   if (Number.isFinite(asSeconds) && asSeconds >= 0) {
     return asSeconds * 1000;

@@ -22,8 +22,10 @@ import {
 } from "@/lib/review";
 import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
 import {
+  appendReturnToParam,
   mediaReviewCardHref,
-  mediaStudyHref
+  mediaStudyHref,
+  readInternalHref
 } from "@/lib/site";
 
 type ReviewRedirectMode = "advance_queue" | "preserve_card" | "stay_detail";
@@ -56,6 +58,7 @@ type ReviewFormMutationInput = {
   extraNewCount: number;
   mediaSlug: string;
   redirectMode: ReviewRedirectMode;
+  returnTo?: Route | null;
   suspended?: boolean;
 };
 type ReviewSessionMutationInput = ReviewSessionInput & {
@@ -364,9 +367,13 @@ function buildReviewRedirectUrl(input: {
   redirectMode?: ReviewRedirectMode;
   notice?: string;
   segmentId?: string | null;
+  returnTo?: Route | null;
 }): Route {
   if (input.redirectMode === "stay_detail" && input.cardId) {
-    return mediaReviewCardHref(input.mediaSlug, input.cardId);
+    return appendReturnToParam(
+      mediaReviewCardHref(input.mediaSlug, input.cardId),
+      input.returnTo
+    );
   }
 
   const params = new URLSearchParams(
@@ -416,6 +423,7 @@ function readReviewFormMutationInput(
     extraNewCount: readCount(formData, "extraNew"),
     mediaSlug: readRequiredString(formData, "mediaSlug"),
     redirectMode: readRedirectMode(formData),
+    returnTo: readInternalHref(formData.get("returnTo")?.toString()),
     suspended: options?.includeSuspended
       ? formData.get("suspended") === "true"
       : undefined
@@ -452,7 +460,8 @@ async function runReviewFormMutationAction(
       extraNewCount: input.extraNewCount,
       mediaSlug: input.mediaSlug,
       notice: getReviewMutationNotice(input.kind, input.suspended),
-      redirectMode: input.redirectMode
+      redirectMode: input.redirectMode,
+      returnTo: input.returnTo
     })
   );
 }
