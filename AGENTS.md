@@ -43,6 +43,7 @@ src/
       internal/     Endpoint interni per manutenzione e invalidazione cache contenuti
         content-cache/ API di invalidazione e refresh della cache contenuti
     glossary/       Portal glossary globale e stati di caricamento
+    kanji-clash/    Modalita' allenamento kanji con sessioni dedicate
     login/          Pagina di accesso locale
     media/          Route dinamiche per media, glossary locale, textbook, review e progress
       [mediaSlug]/assets/ Asset route catch-all per file statici del media bundle
@@ -54,6 +55,7 @@ src/
     layout/         Shell globale (header, nav, sidebar)
     media/          Pagine dettaglio media
     glossary/       Indice e ricerca glossary
+    kanji-clash/    UI e interazioni della modalita' kanji clash
     review/         Sessione di review (card, grading, coda)
     textbook/       Reader delle lesson
     settings/       Pagina impostazioni utente
@@ -71,6 +73,7 @@ src/
     content/        Utility per parser, validazione e sync dei bundle Markdown
       importer/     Pipeline di import e rendering dei bundle nel modello applicativo
       parser/       Parsing Markdown/frontmatter e normalizzazione blocchi strutturati
+    kanji-clash/    Loader, scheduler e logica di sessione della modalita' kanji clash
     site/           Navigazione, href e utility di stato per il routing UI
   types/            Tipi TypeScript globali e interfacce condivise
   styles/           CSS globale e variabili
