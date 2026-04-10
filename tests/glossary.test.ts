@@ -53,6 +53,10 @@ import {
   writeCrossMediaOverflowContentFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import {
+  expectMarkupHref,
+  expectNoMarkupHref
+} from "./helpers/glossary-href-assertions";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -928,7 +932,11 @@ describe("glossary data", () => {
 
     expect(data.filters.page).toBe(2);
     expect(markup).toContain("Pagina 2 di");
-    expect(markup).toContain("returnTo=%2Fglossary%3Fpage%3D2");
+    expect(data.results[0]?.bestLocalHref).toBeDefined();
+    expectMarkupHref(markup, {
+      pathname: data.results[0]!.bestLocalHref!,
+      returnTo: "/glossary?page=2"
+    });
   });
 
   it("renders the global glossary portal with explicit flashcard signals and return links", async () => {
@@ -957,17 +965,16 @@ describe("glossary data", () => {
       '<span class="status-pill">Ha flashcard</span>'
     );
     expect(markup).toContain("Ricerca globale");
-    expect(markup).toContain(
-      `returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
-    );
     expect(markup).not.toContain("Apri voce");
     expect(markup).toContain("Aprila in");
-    expect(markup).toContain(
-      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}?returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
-    );
-    expect(markup).toContain(
-      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}?returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
-    );
+    expectMarkupHref(markup, {
+      pathname: `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`,
+      returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}`
+    });
+    expectMarkupHref(markup, {
+      pathname: `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`,
+      returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}`
+    });
   });
 
   it("preserves all active global filters inside returnTo links to local detail pages", async () => {
@@ -987,9 +994,10 @@ describe("glossary data", () => {
 
     const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
 
-    expect(markup).toContain(
-      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Fglossary%3Fq%3Diku%26type%3Dterm%26media%3D${developmentFixture.mediaSlug}%26study%3Dlearning%26cards%3Dwith_cards%26sort%3Dalphabetical`
-    );
+    expectMarkupHref(markup, {
+      pathname: `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}`,
+      returnTo: `/glossary?q=iku&type=term&media=${developmentFixture.mediaSlug}&study=learning&cards=with_cards&sort=alphabetical`
+    });
   });
 
   it("preserves the filtered local glossary workspace when opening a detail page", async () => {
@@ -1020,9 +1028,10 @@ describe("glossary data", () => {
     expect(markup).toContain(
       `?q=iku&amp;segment=${developmentFixture.segmentId}&amp;cards=with_cards&amp;sort=alphabetical&amp;study=learning&amp;preview=${developmentFixture.termId}&amp;previewKind=term&amp;returnTo=%2Fglossary%3Fq%3Diku%26media%3D${developmentFixture.mediaSlug}`
     );
-    expect(markup).toContain(
-      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Fglossary%3Fq%3Diku%26segment%3D${developmentFixture.segmentId}%26study%3Dlearning%26cards%3Dwith_cards%26sort%3Dalphabetical%26returnTo%3D%252Fglossary%253Fq%253Diku%2526media%253D${developmentFixture.mediaSlug}`
-    );
+    expectMarkupHref(markup, {
+      pathname: `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}`,
+      returnTo: `/glossary?q=iku&segment=${developmentFixture.segmentId}&study=learning&cards=with_cards&sort=alphabetical&returnTo=/glossary?q=iku&media=${developmentFixture.mediaSlug}`
+    });
   });
 
   it("keeps the active local cards filter when submitting a new glossary search", async () => {
@@ -1075,12 +1084,22 @@ describe("glossary data", () => {
     expect(markup).toContain("Torna al Glossary");
     expect(markup).not.toContain("Torna alla Review");
     expect(markup).toContain("Apri in Review");
-    expect(markup).toContain(
-      `/media/${developmentFixture.mediaSlug}/review?answered=3&amp;card=${developmentFixture.primaryCardId}&amp;extraNew=2`
-    );
-    expect(markup).not.toContain(
-      `/media/${developmentFixture.mediaSlug}/review?answered=3&amp;card=${developmentFixture.primaryCardId}&amp;show=answer`
-    );
+    expectMarkupHref(markup, {
+      pathname: `/media/${developmentFixture.mediaSlug}/review`,
+      searchParams: {
+        answered: "3",
+        card: developmentFixture.primaryCardId,
+        extraNew: "2"
+      }
+    });
+    expectNoMarkupHref(markup, {
+      pathname: `/media/${developmentFixture.mediaSlug}/review`,
+      searchParams: {
+        answered: "3",
+        card: developmentFixture.primaryCardId,
+        show: "answer"
+      }
+    });
   });
 
   it("keeps the recommended media visible when a cross-media group overflows the first three chips", async () => {
@@ -1737,9 +1756,10 @@ describe("glossary data", () => {
       `/media/${crossMediaFixture.beta.mediaSlug}/review/card/${crossMediaFixture.beta.termCardId}`
     );
     expect(markup).not.toContain("Apri in Review");
-    expect(markup).toContain(
-      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}?returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
-    );
+    expectMarkupHref(markup, {
+      pathname: `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`,
+      returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}`
+    });
   });
 
   it("keeps back navigation anchored to the filtered global portal after opening a local detail", async () => {
@@ -1771,12 +1791,18 @@ describe("glossary data", () => {
     );
 
     expect(markup).toContain("Torna al Glossary");
-    expect(markup).toContain(
-      `/glossary?q=kosuto&amp;media=${crossMediaFixture.beta.mediaSlug}&amp;cards=with_cards`
-    );
-    expect(markup).toContain(
-      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}?returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}%26cards%3Dwith_cards`
-    );
+    expectMarkupHref(markup, {
+      pathname: "/glossary",
+      searchParams: {
+        cards: "with_cards",
+        media: crossMediaFixture.beta.mediaSlug,
+        q: "kosuto"
+      }
+    });
+    expectMarkupHref(markup, {
+      pathname: `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`,
+      returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}&cards=with_cards`
+    });
   });
 
   it("uses glossary returnTo on the local glossary index without relabeling it as review", async () => {
@@ -1811,12 +1837,13 @@ describe("glossary data", () => {
 
     expect(markup).toContain("Torna al Glossary");
     expect(markup).not.toContain("Torna alla Review");
-    expect(markup).toContain(
-      `/glossary?q=kosuto&amp;media=${crossMediaFixture.beta.mediaSlug}`
-    );
-    expect(markup).toContain(
-      `returnTo=%2Fglossary%3Fq%3Dkosuto%26media%3D${crossMediaFixture.beta.mediaSlug}`
-    );
+    expectMarkupHref(markup, {
+      pathname: "/glossary",
+      searchParams: {
+        media: crossMediaFixture.beta.mediaSlug,
+        q: "kosuto"
+      }
+    });
   });
 
   it("keeps review-specific card deep links only when returnTo is an actual review session", async () => {
@@ -1846,12 +1873,22 @@ describe("glossary data", () => {
 
     expect(markup).toContain("Torna alla Review");
     expect(markup).toContain("Apri in Review");
-    expect(markup).toContain(
-      `/media/${developmentFixture.mediaSlug}/review?answered=3&amp;card=${developmentFixture.primaryCardId}&amp;extraNew=2`
-    );
-    expect(markup).not.toContain(
-      `/media/${developmentFixture.mediaSlug}/review?answered=3&amp;card=${developmentFixture.primaryCardId}&amp;show=answer`
-    );
+    expectMarkupHref(markup, {
+      pathname: `/media/${developmentFixture.mediaSlug}/review`,
+      searchParams: {
+        answered: "3",
+        card: developmentFixture.primaryCardId,
+        extraNew: "2"
+      }
+    });
+    expectNoMarkupHref(markup, {
+      pathname: `/media/${developmentFixture.mediaSlug}/review`,
+      searchParams: {
+        answered: "3",
+        card: developmentFixture.primaryCardId,
+        show: "answer"
+      }
+    });
   });
 
   it("orders global browse results by segment position when sort is lesson_order", async () => {

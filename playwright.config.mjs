@@ -11,6 +11,15 @@ const e2eDatabasePath = path.join(
   "e2e",
   "japanese-custom-study-e2e.sqlite"
 );
+const e2eContentCacheRevalidateSecret = "e2e-content-cache-secret";
+
+if (!process.env.E2E_DATABASE_URL?.trim()) {
+  process.env.E2E_DATABASE_URL = e2eDatabasePath;
+}
+
+if (!process.env.CONTENT_CACHE_REVALIDATE_SECRET?.trim()) {
+  process.env.CONTENT_CACHE_REVALIDATE_SECRET = e2eContentCacheRevalidateSecret;
+}
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -28,6 +37,9 @@ export default defineConfig({
     cwd: __dirname,
     env: {
       ...process.env,
+      CONTENT_CACHE_REVALIDATE_SECRET:
+        process.env.CONTENT_CACHE_REVALIDATE_SECRET,
+      E2E_DATABASE_URL: process.env.E2E_DATABASE_URL,
       DATABASE_URL: e2eDatabasePath
     },
     reuseExistingServer: false,

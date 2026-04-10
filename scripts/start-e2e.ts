@@ -15,49 +15,41 @@ import {
   lessonProgress,
   media,
   reviewSubjectState,
-  runMigrations,
   segment,
   term,
   userSetting
 } from "../src/db/index.ts";
-import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
-import { importContentWorkspace } from "../src/lib/content/importer.ts";
-import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
+import { seedDuelMastersReviewBaseline } from "../src/lib/e2e/review-baseline.ts";
 import { buildStartE2ERuntimeEnv, resolveStartE2EDatabaseUrl } from "./start-e2e-config.ts";
+import { ensureStartE2EDatabaseSnapshot } from "./start-e2e-snapshot.ts";
+import { resolveDatabaseLocation } from "../src/db/config.ts";
 
-const database = createDatabaseClient({
-  databaseUrl: resolveStartE2EDatabaseUrl(process.env)
-});
 const contentRoot = path.resolve(process.cwd(), "content");
 const nextBuildIdPath = path.resolve(process.cwd(), ".next", "BUILD_ID");
 const nextCachePath = path.resolve(process.cwd(), ".next", "cache");
 const runtimeEnv = buildStartE2ERuntimeEnv(process.env);
+const runtimeDatabaseLocation = resolveDatabaseLocation(
+  resolveStartE2EDatabaseUrl(process.env)
+);
+
+if (!runtimeDatabaseLocation.databasePath) {
+  throw new Error("start:e2e requires a local SQLite database path.");
+}
+
+await assertFreshProductionBuild();
+await ensureStartE2EDatabaseSnapshot({
+  contentRoot,
+  databasePath: runtimeDatabaseLocation.databasePath
+});
+
+const database = createDatabaseClient({
+  databaseUrl: runtimeDatabaseLocation.databasePath
+});
 
 try {
-  await assertFreshProductionBuild();
-  await runMigrations(database);
-
-  const importResult = await importContentWorkspace({
-    contentRoot,
-    database
-  });
-
-  if (importResult.status === "failed") {
-    console.error(importResult.message);
-
-    for (const issue of importResult.issues) {
-      console.error(
-        `[${issue.category}] ${issue.code} - ${issue.location.filePath} - ${issue.message}`
-      );
-    }
-
-    process.exit(1);
-  }
-
-  await purgeArchivedMedia(database);
   await seedE2ELessonProgress(database);
   await seedE2EUserSettings(database);
-  await backfillReviewSubjectState(database);
+  await seedDuelMastersReviewBaseline(database);
   await seedKanjiClashE2EFixture(database);
 } finally {
   closeDatabaseClient(database);

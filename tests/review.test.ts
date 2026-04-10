@@ -227,603 +227,660 @@ async function loadReviewActionsForDatabase(database: DatabaseClient) {
   }
 }
 
-describe("review system", () => {
-  let tempDir = "";
-  let database: DatabaseClient;
+type ReviewDatabaseFixture = {
+  database: DatabaseClient;
+  tempDir: string;
+};
 
-  beforeEach(async () => {
-    revalidatePathMock.mockReset();
-    updateGlossarySummaryCacheMock.mockReset();
-    updateReviewSummaryCacheMock.mockReset();
-    tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-"));
-    database = createDatabaseClient({
-      databaseUrl: path.join(tempDir, "test.sqlite")
-    });
+async function setupReviewDatabase(options: {
+  prefix: string;
+  seedDevelopmentFixture?: boolean;
+}): Promise<ReviewDatabaseFixture> {
+  const tempDir = await mkdtemp(path.join(tmpdir(), options.prefix));
+  const database = createDatabaseClient({
+    databaseUrl: path.join(tempDir, "test.sqlite")
+  });
 
-    await runMigrations(database);
+  await runMigrations(database);
+
+  if (options.seedDevelopmentFixture) {
     await seedDevelopmentDatabase(database);
     await markFixtureLessonCompleted(database);
-  });
+  }
 
-  afterEach(async () => {
-    closeDatabaseClient(database);
-    await rm(tempDir, { recursive: true, force: true });
-  });
+  return {
+    database,
+    tempDir
+  };
+}
 
-  it("derives grammar card reading from annotated fronts when the glossary reading is missing", () => {
-    const reading = resolveReviewCardReading(
-      {
-        cardType: "concept",
-        entryLinks: [
-          {
-            id: "link-grammar-takei",
-            entryType: "grammar",
-            entryId: "grammar-takei",
-            cardId: "card-grammar-takei-concept",
-            relationshipType: "primary"
-          }
-        ],
-        front: "た{{形|けい}}"
-      } as Parameters<typeof resolveReviewCardReading>[0],
-      new Map([
-        [
-          "grammar:grammar-takei",
-          {
-            href: "/media/demo/glossary/grammar/grammar-takei",
-            id: "grammar-takei",
-            kind: "grammar",
-            label: "た形",
-            meaning: "passato",
-            reading: undefined
-          }
-        ]
-      ]) as unknown as Parameters<typeof resolveReviewCardReading>[1]
-    );
+async function cleanupReviewDatabase({
+  database,
+  tempDir
+}: ReviewDatabaseFixture) {
+  closeDatabaseClient(database);
+  await rm(tempDir, { recursive: true, force: true });
+}
 
-    expect(reading).toBe("たけい");
-  });
+async function markFixtureLessonCompleted(client: DatabaseClient) {
+  await client
+    .update(lessonProgress)
+    .set({
+      status: "completed",
+      completedAt: "2026-03-09T10:00:00.000Z"
+    })
+    .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+}
 
-  async function markFixtureLessonCompleted(client: DatabaseClient) {
-    await client
-      .update(lessonProgress)
-      .set({
+async function markAllLessonsCompleted(
+  client: DatabaseClient,
+  completedAt: string
+) {
+  const lessons = await client.query.lesson.findMany();
+
+  if (lessons.length === 0) {
+    return;
+  }
+
+  await client
+    .insert(lessonProgress)
+    .values(
+      lessons.map((lessonRow) => ({
+        lessonId: lessonRow.id,
+        status: "completed" as const,
+        completedAt,
+        lastOpenedAt: completedAt
+      }))
+    )
+    .onConflictDoUpdate({
+      target: lessonProgress.lessonId,
+      set: {
         status: "completed",
-        completedAt: "2026-03-09T10:00:00.000Z"
-      })
-      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
-  }
+        completedAt,
+        lastOpenedAt: completedAt
+      }
+    });
+}
 
-  async function markAllLessonsCompleted(client: DatabaseClient, completedAt: string) {
-    const lessons = await client.query.lesson.findMany();
-
-    if (lessons.length === 0) {
-      return;
-    }
-
-    await client
-      .insert(lessonProgress)
-      .values(
-        lessons.map((lessonRow) => ({
-          lessonId: lessonRow.id,
-          status: "completed" as const,
-          completedAt,
-          lastOpenedAt: completedAt
-        }))
-      )
-      .onConflictDoUpdate({
-        target: lessonProgress.lessonId,
-        set: {
-          status: "completed",
-          completedAt,
-          lastOpenedAt: completedAt
-        }
-      });
-  }
-
-  async function createIsolatedNewMediaFixture(input: {
+async function createIsolatedNewMediaFixture(
+  client: DatabaseClient,
+  input: {
     cardCount: number;
     mediaId: string;
     mediaSlug: string;
     title: string;
-  }) {
-    await database.insert(media).values({
-      id: input.mediaId,
-      slug: input.mediaSlug,
-      title: input.title,
-      mediaType: "game",
-      segmentKind: "chapter",
-      language: "ja",
-      baseExplanationLanguage: "it",
-      description: `${input.title} fixture`,
-      status: "active",
-      createdAt: "2026-03-11T09:00:00.000Z",
-      updatedAt: "2026-03-11T09:00:00.000Z"
-    });
-    await database.insert(lesson).values({
-      id: `${input.mediaId}_lesson`,
-      mediaId: input.mediaId,
-      segmentId: null,
-      slug: `${input.mediaSlug}-intro`,
-      title: `${input.title} Intro`,
-      orderIndex: 1,
-      difficulty: "beginner",
-      summary: `${input.title} Intro`,
-      status: "active",
-      sourceFile: `tests/review/${input.mediaSlug}.md`,
-      createdAt: "2026-03-11T09:00:00.000Z",
-      updatedAt: "2026-03-11T09:00:00.000Z"
-    });
-    await database.insert(lessonProgress).values({
-      lessonId: `${input.mediaId}_lesson`,
-      status: "completed",
-      completedAt: "2026-03-11T09:00:00.000Z"
-    });
+  }
+) {
+  await client.insert(media).values({
+    id: input.mediaId,
+    slug: input.mediaSlug,
+    title: input.title,
+    mediaType: "game",
+    segmentKind: "chapter",
+    language: "ja",
+    baseExplanationLanguage: "it",
+    description: `${input.title} fixture`,
+    status: "active",
+    createdAt: "2026-03-11T09:00:00.000Z",
+    updatedAt: "2026-03-11T09:00:00.000Z"
+  });
+  await client.insert(lesson).values({
+    id: `${input.mediaId}_lesson`,
+    mediaId: input.mediaId,
+    segmentId: null,
+    slug: `${input.mediaSlug}-intro`,
+    title: `${input.title} Intro`,
+    orderIndex: 1,
+    difficulty: "beginner",
+    summary: `${input.title} Intro`,
+    status: "active",
+    sourceFile: `tests/review/${input.mediaSlug}.md`,
+    createdAt: "2026-03-11T09:00:00.000Z",
+    updatedAt: "2026-03-11T09:00:00.000Z"
+  });
+  await client.insert(lessonProgress).values({
+    lessonId: `${input.mediaId}_lesson`,
+    status: "completed",
+    completedAt: "2026-03-11T09:00:00.000Z"
+  });
 
-    const cards = Array.from({ length: input.cardCount }, (_, index) => ({
-      id: `${input.mediaId}_card_${index + 1}`,
-      mediaId: input.mediaId,
-      lessonId: `${input.mediaId}_lesson`,
-      segmentId: null,
-      sourceFile: `tests/review/${input.mediaSlug}.md`,
-      cardType: "recognition" as const,
-      front: `新規 ${index + 1}`,
-      back: `nuova ${index + 1}`,
-      notesIt: `Card nuova ${index + 1}`,
-      status: "active" as const,
-      orderIndex: index + 1,
-      createdAt: `2026-03-11T09:0${index}:00.000Z`,
-      updatedAt: `2026-03-11T09:0${index}:00.000Z`
-    }));
-    const terms = Array.from({ length: input.cardCount }, (_, index) => ({
-      id: `${input.mediaId}_term_${index + 1}`,
-      sourceId: `${input.mediaSlug}-term-${index + 1}`,
-      mediaId: input.mediaId,
-      segmentId: null,
-      lemma: `新規${index + 1}`,
-      reading: `しんき${index + 1}`,
-      romaji: `shinki-${index + 1}`,
-      pos: "sostantivo",
-      meaningIt: `nuova ${index + 1}`,
-      meaningLiteralIt: null,
-      notesIt: `Termine ${index + 1}`,
-      levelHint: null,
-      searchLemmaNorm: `新規${index + 1}`,
-      searchReadingNorm: `しんき${index + 1}`,
-      searchRomajiNorm: `shinki-${index + 1}`,
-      createdAt: `2026-03-11T09:0${index}:00.000Z`,
-      updatedAt: `2026-03-11T09:0${index}:00.000Z`
-    }));
-    const entryLinks = Array.from({ length: input.cardCount }, (_, index) => ({
-      id: `${input.mediaId}_link_${index + 1}`,
-      cardId: `${input.mediaId}_card_${index + 1}`,
-      entryType: "term" as const,
-      entryId: `${input.mediaId}_term_${index + 1}`,
-      relationshipType: "primary" as const
-    }));
+  const cards = Array.from({ length: input.cardCount }, (_, index) => ({
+    id: `${input.mediaId}_card_${index + 1}`,
+    mediaId: input.mediaId,
+    lessonId: `${input.mediaId}_lesson`,
+    segmentId: null,
+    sourceFile: `tests/review/${input.mediaSlug}.md`,
+    cardType: "recognition" as const,
+    front: `新規 ${index + 1}`,
+    back: `nuova ${index + 1}`,
+    notesIt: `Card nuova ${index + 1}`,
+    status: "active" as const,
+    orderIndex: index + 1,
+    createdAt: `2026-03-11T09:0${index}:00.000Z`,
+    updatedAt: `2026-03-11T09:0${index}:00.000Z`
+  }));
+  const terms = Array.from({ length: input.cardCount }, (_, index) => ({
+    id: `${input.mediaId}_term_${index + 1}`,
+    sourceId: `${input.mediaSlug}-term-${index + 1}`,
+    mediaId: input.mediaId,
+    segmentId: null,
+    lemma: `新規${index + 1}`,
+    reading: `しんき${index + 1}`,
+    romaji: `shinki-${index + 1}`,
+    pos: "sostantivo",
+    meaningIt: `nuova ${index + 1}`,
+    meaningLiteralIt: null,
+    notesIt: `Termine ${index + 1}`,
+    levelHint: null,
+    searchLemmaNorm: `新規${index + 1}`,
+    searchReadingNorm: `しんき${index + 1}`,
+    searchRomajiNorm: `shinki-${index + 1}`,
+    createdAt: `2026-03-11T09:0${index}:00.000Z`,
+    updatedAt: `2026-03-11T09:0${index}:00.000Z`
+  }));
+  const entryLinks = Array.from({ length: input.cardCount }, (_, index) => ({
+    id: `${input.mediaId}_link_${index + 1}`,
+    cardId: `${input.mediaId}_card_${index + 1}`,
+    entryType: "term" as const,
+    entryId: `${input.mediaId}_term_${index + 1}`,
+    relationshipType: "primary" as const
+  }));
 
-    await database.insert(card).values(cards);
-    await database.insert(term).values(terms);
-    await database.insert(cardEntryLink).values(entryLinks);
+  await client.insert(card).values(cards);
+  await client.insert(term).values(terms);
+  await client.insert(cardEntryLink).values(entryLinks);
 
-    return {
-      cardIds: cards.map((item) => item.id),
-      mediaSlug: input.mediaSlug,
-      termIds: terms.map((item) => item.id)
-    };
+  return {
+    cardIds: cards.map((item) => item.id),
+    mediaSlug: input.mediaSlug,
+    termIds: terms.map((item) => item.id)
+  };
+}
+
+async function loadCrossMediaTermSubjectContext(client: DatabaseClient) {
+  const [alphaTermEntry, betaTermEntry] = await Promise.all([
+    client.query.term.findFirst({
+      where: eq(term.sourceId, crossMediaFixture.alpha.termSourceId)
+    }),
+    client.query.term.findFirst({
+      where: eq(term.sourceId, crossMediaFixture.beta.termSourceId)
+    })
+  ]);
+
+  if (
+    !alphaTermEntry ||
+    !betaTermEntry ||
+    !alphaTermEntry.crossMediaGroupId ||
+    !betaTermEntry.crossMediaGroupId
+  ) {
+    throw new Error("Cross-media term fixture is missing its canonical group.");
   }
 
-  async function loadCrossMediaTermSubjectContext(client: DatabaseClient) {
-    const [alphaTermEntry, betaTermEntry] = await Promise.all([
-      client.query.term.findFirst({
-        where: eq(term.sourceId, crossMediaFixture.alpha.termSourceId)
-      }),
-      client.query.term.findFirst({
-        where: eq(term.sourceId, crossMediaFixture.beta.termSourceId)
-      })
-    ]);
+  return {
+    alphaTermEntry,
+    betaTermEntry,
+    crossMediaGroupId: alphaTermEntry.crossMediaGroupId,
+    subjectKey: `group:term:${alphaTermEntry.crossMediaGroupId}`
+  };
+}
 
-    if (
-      !alphaTermEntry ||
-      !betaTermEntry ||
-      !alphaTermEntry.crossMediaGroupId ||
-      !betaTermEntry.crossMediaGroupId
-    ) {
-      throw new Error("Cross-media term fixture is missing its canonical group.");
-    }
+describe("review system", () => {
+  describe("pure review logic", () => {
+    it("derives grammar card reading from annotated fronts when the glossary reading is missing", () => {
+      const reading = resolveReviewCardReading(
+        {
+          cardType: "concept",
+          entryLinks: [
+            {
+              id: "link-grammar-takei",
+              entryType: "grammar",
+              entryId: "grammar-takei",
+              cardId: "card-grammar-takei-concept",
+              relationshipType: "primary"
+            }
+          ],
+          front: "た{{形|けい}}"
+        } as Parameters<typeof resolveReviewCardReading>[0],
+        new Map([
+          [
+            "grammar:grammar-takei",
+            {
+              href: "/media/demo/glossary/grammar/grammar-takei",
+              id: "grammar-takei",
+              kind: "grammar",
+              label: "た形",
+              meaning: "passato",
+              reading: undefined
+            }
+          ]
+        ]) as unknown as Parameters<typeof resolveReviewCardReading>[1]
+      );
 
-    return {
-      alphaTermEntry,
-      betaTermEntry,
-      crossMediaGroupId: alphaTermEntry.crossMediaGroupId,
-      subjectKey: `group:term:${alphaTermEntry.crossMediaGroupId}`
-    };
-  }
+      expect(reading).toBe("たけい");
+    });
 
-  it("maps FSRS-native review cards into scheduling outputs", () => {
-    const fromNew = scheduleReview({
-      current: {
-        difficulty: null,
-        dueAt: null,
+    it("maps FSRS-native review cards into scheduling outputs", () => {
+      const fromNew = scheduleReview({
+        current: {
+          difficulty: null,
+          dueAt: null,
+          lapses: 0,
+          lastReviewedAt: null,
+          reps: 0,
+          stability: null,
+          state: null
+        },
+        now: new Date("2026-03-09T10:00:00.000Z"),
+        rating: "good"
+      });
+      const now = new Date("2026-03-12T10:00:00.000Z");
+      const scheduled = (["again", "hard", "good", "easy"] as const).map(
+        (rating) =>
+          scheduleReview({
+            current: {
+              difficulty: 3.2,
+              dueAt: "2026-03-12T10:00:00.000Z",
+              lapses: 1,
+              lastReviewedAt: "2026-03-09T10:00:00.000Z",
+              reps: 5,
+              stability: 3,
+              state: "review"
+            },
+            now,
+            rating
+          })
+      );
+      const dueTimes = scheduled.map((item) => new Date(item.dueAt).getTime());
+
+      expect(fromNew).toEqual({
+        difficulty: 2.118,
+        dueAt: "2026-03-09T10:10:00.000Z",
+        elapsedDays: 0,
         lapses: 0,
-        lastReviewedAt: null,
-        reps: 0,
-        stability: null,
-        state: null
-      },
-      now: new Date("2026-03-09T10:00:00.000Z"),
-      rating: "good"
+        learningSteps: 1,
+        reps: 1,
+        scheduledDays: 0,
+        schedulerVersion: "fsrs_v1",
+        stability: 2.307,
+        state: "learning"
+      });
+      expect(dueTimes.every((value) => Number.isFinite(value))).toBe(true);
+      expect(dueTimes[0]).toBeLessThanOrEqual(dueTimes[1]);
+      expect(dueTimes[1]).toBeLessThanOrEqual(dueTimes[2]);
+      expect(dueTimes[2]).toBeLessThanOrEqual(dueTimes[3]);
+      expect(scheduled[0]).toMatchObject({
+        dueAt: "2026-03-12T10:10:00.000Z",
+        elapsedDays: 3,
+        lapses: 2,
+        learningSteps: 0,
+        reps: 6,
+        scheduledDays: 0,
+        schedulerVersion: "fsrs_v1",
+        stability: 0.716,
+        state: "relearning"
+      });
+      expect(scheduled.map((item) => item.reps)).toEqual([6, 6, 6, 6]);
+      expect(scheduled[0]?.lapses).toBe(2);
+      expect(scheduled[1]?.lapses).toBe(1);
+      expect(scheduled[2]?.lapses).toBe(1);
+      expect(scheduled[3]?.lapses).toBe(1);
     });
-    const now = new Date("2026-03-12T10:00:00.000Z");
-    const scheduled = (["again", "hard", "good", "easy"] as const).map(
-      (rating) =>
-        scheduleReview({
-          current: {
-            difficulty: 3.2,
-            dueAt: "2026-03-12T10:00:00.000Z",
-            lapses: 1,
-            lastReviewedAt: "2026-03-09T10:00:00.000Z",
-            reps: 5,
-            stability: 3,
-            state: "review"
-          },
-          now,
-          rating
-        })
-    );
-    const dueTimes = scheduled.map((item) => new Date(item.dueAt).getTime());
 
-    expect(fromNew).toEqual({
-      difficulty: 2.118,
-      dueAt: "2026-03-09T10:10:00.000Z",
-      elapsedDays: 0,
-      lapses: 0,
-      learningSteps: 1,
-      reps: 1,
-      scheduledDays: 0,
-      schedulerVersion: "fsrs_v1",
-      stability: 2.307,
-      state: "learning"
-    });
-    expect(dueTimes.every((value) => Number.isFinite(value))).toBe(true);
-    expect(dueTimes[0]).toBeLessThanOrEqual(dueTimes[1]);
-    expect(dueTimes[1]).toBeLessThanOrEqual(dueTimes[2]);
-    expect(dueTimes[2]).toBeLessThanOrEqual(dueTimes[3]);
-    expect(scheduled[0]).toMatchObject({
-      dueAt: "2026-03-12T10:10:00.000Z",
-      elapsedDays: 3,
-      lapses: 2,
-      learningSteps: 0,
-      reps: 6,
-      scheduledDays: 0,
-      schedulerVersion: "fsrs_v1",
-      stability: 0.716,
-      state: "relearning"
-    });
-    expect(scheduled.map((item) => item.reps)).toEqual([6, 6, 6, 6]);
-    expect(scheduled[0]?.lapses).toBe(2);
-    expect(scheduled[1]?.lapses).toBe(1);
-    expect(scheduled[2]?.lapses).toBe(1);
-    expect(scheduled[3]?.lapses).toBe(1);
-  });
-
-  it("derives study-day boundaries in UTC regardless of runtime timezone", () => {
-    expect(getUtcDayBounds(new Date("2026-03-10T23:30:00.000-05:00"))).toEqual({
-      dayEndIso: "2026-03-12T00:00:00.000Z",
-      dayStartIso: "2026-03-11T00:00:00.000Z"
+    it("derives study-day boundaries in UTC regardless of runtime timezone", () => {
+      expect(getUtcDayBounds(new Date("2026-03-10T23:30:00.000-05:00"))).toEqual({
+        dayEndIso: "2026-03-12T00:00:00.000Z",
+        dayStartIso: "2026-03-11T00:00:00.000Z"
+      });
     });
   });
 
-  it("counts newly introduced cards against a stable UTC study day", async () => {
-    await database.insert(media).values({
-      id: "media_timezone_fixture",
-      slug: "timezone-fixture",
-      title: "Timezone Fixture",
-      mediaType: "game",
-      segmentKind: "chapter",
-      language: "ja",
-      baseExplanationLanguage: "it",
-      description: "Fixture per il boundary UTC della review.",
-      status: "active",
-      createdAt: "2026-03-10T00:00:00.000Z",
-      updatedAt: "2026-03-10T00:00:00.000Z"
+  describe("review counters and imported fixtures", () => {
+    let tempDir = "";
+    let database: DatabaseClient;
+
+    beforeEach(async () => {
+      revalidatePathMock.mockReset();
+      updateGlossarySummaryCacheMock.mockReset();
+      updateReviewSummaryCacheMock.mockReset();
+      ({ database, tempDir } = await setupReviewDatabase({
+        prefix: "jcs-review-minimal-"
+      }));
     });
-    await database.insert(lesson).values({
-      id: "lesson_timezone_fixture",
-      mediaId: "media_timezone_fixture",
-      segmentId: null,
-      slug: "timezone-fixture-intro",
-      title: "Timezone Fixture Intro",
-      orderIndex: 1,
-      difficulty: "beginner",
-      summary: "Lesson fixture for timezone review tests.",
-      status: "active",
-      sourceFile: "tests/fixtures/db/timezone/lesson.md",
-      createdAt: "2026-03-10T00:00:00.000Z",
-      updatedAt: "2026-03-10T00:00:00.000Z"
+
+    afterEach(async () => {
+      await cleanupReviewDatabase({ database, tempDir });
     });
-    await database.insert(card).values([
-      {
-        id: "card_timezone_fixture_before",
+
+    it("counts newly introduced cards against a stable UTC study day", async () => {
+      await database.insert(media).values({
+        id: "media_timezone_fixture",
+        slug: "timezone-fixture",
+        title: "Timezone Fixture",
+        mediaType: "game",
+        segmentKind: "chapter",
+        language: "ja",
+        baseExplanationLanguage: "it",
+        description: "Fixture per il boundary UTC della review.",
+        status: "active",
+        createdAt: "2026-03-10T00:00:00.000Z",
+        updatedAt: "2026-03-10T00:00:00.000Z"
+      });
+      await database.insert(lesson).values({
+        id: "lesson_timezone_fixture",
         mediaId: "media_timezone_fixture",
-        lessonId: "lesson_timezone_fixture",
         segmentId: null,
-        sourceFile: "tests/fixtures/db/timezone/before.md",
+        slug: "timezone-fixture-intro",
+        title: "Timezone Fixture Intro",
+        orderIndex: 1,
+        difficulty: "beginner",
+        summary: "Lesson fixture for timezone review tests.",
+        status: "active",
+        sourceFile: "tests/fixtures/db/timezone/lesson.md",
+        createdAt: "2026-03-10T00:00:00.000Z",
+        updatedAt: "2026-03-10T00:00:00.000Z"
+      });
+      await database.insert(card).values([
+        {
+          id: "card_timezone_fixture_before",
+          mediaId: "media_timezone_fixture",
+          lessonId: "lesson_timezone_fixture",
+          segmentId: null,
+          sourceFile: "tests/fixtures/db/timezone/before.md",
+          cardType: "recognition",
+          front: "前日",
+          back: "giorno precedente",
+          notesIt: null,
+          status: "active",
+          orderIndex: 1,
+          createdAt: "2026-03-10T00:00:00.000Z",
+          updatedAt: "2026-03-10T00:00:00.000Z"
+        },
+        {
+          id: "card_timezone_fixture_target",
+          mediaId: "media_timezone_fixture",
+          lessonId: "lesson_timezone_fixture",
+          segmentId: null,
+          sourceFile: "tests/fixtures/db/timezone/target.md",
+          cardType: "recognition",
+          front: "当日",
+          back: "giorno target",
+          notesIt: null,
+          status: "active",
+          orderIndex: 2,
+          createdAt: "2026-03-10T00:00:00.000Z",
+          updatedAt: "2026-03-10T00:00:00.000Z"
+        }
+      ]);
+      await database.insert(media).values({
+        id: "media_timezone_fixture_other",
+        slug: "timezone-fixture-other",
+        title: "Timezone Fixture Other",
+        mediaType: "game",
+        segmentKind: "chapter",
+        language: "ja",
+        baseExplanationLanguage: "it",
+        description: "Secondo media per verificare il limite globale dei nuovi.",
+        status: "active",
+        createdAt: "2026-03-10T00:00:00.000Z",
+        updatedAt: "2026-03-10T00:00:00.000Z"
+      });
+      await database.insert(lesson).values({
+        id: "lesson_timezone_fixture_other",
+        mediaId: "media_timezone_fixture_other",
+        segmentId: null,
+        slug: "timezone-fixture-other-intro",
+        title: "Timezone Fixture Other Intro",
+        orderIndex: 1,
+        difficulty: "beginner",
+        summary: "Second lesson fixture for timezone review tests.",
+        status: "active",
+        sourceFile: "tests/fixtures/db/timezone/other-lesson.md",
+        createdAt: "2026-03-10T00:00:00.000Z",
+        updatedAt: "2026-03-10T00:00:00.000Z"
+      });
+      await database.insert(card).values({
+        id: "card_timezone_fixture_other",
+        mediaId: "media_timezone_fixture_other",
+        lessonId: "lesson_timezone_fixture_other",
+        segmentId: null,
+        sourceFile: "tests/fixtures/db/timezone/other.md",
         cardType: "recognition",
-        front: "前日",
-        back: "giorno precedente",
+        front: "翌日",
+        back: "giorno successivo",
         notesIt: null,
         status: "active",
         orderIndex: 1,
         createdAt: "2026-03-10T00:00:00.000Z",
         updatedAt: "2026-03-10T00:00:00.000Z"
-      },
-      {
-        id: "card_timezone_fixture_target",
-        mediaId: "media_timezone_fixture",
-        lessonId: "lesson_timezone_fixture",
-        segmentId: null,
-        sourceFile: "tests/fixtures/db/timezone/target.md",
-        cardType: "recognition",
-        front: "当日",
-        back: "giorno target",
-        notesIt: null,
-        status: "active",
-        orderIndex: 2,
-        createdAt: "2026-03-10T00:00:00.000Z",
-        updatedAt: "2026-03-10T00:00:00.000Z"
-      }
-    ]);
-    await database.insert(media).values({
-      id: "media_timezone_fixture_other",
-      slug: "timezone-fixture-other",
-      title: "Timezone Fixture Other",
-      mediaType: "game",
-      segmentKind: "chapter",
-      language: "ja",
-      baseExplanationLanguage: "it",
-      description: "Secondo media per verificare il limite globale dei nuovi.",
-      status: "active",
-      createdAt: "2026-03-10T00:00:00.000Z",
-      updatedAt: "2026-03-10T00:00:00.000Z"
-    });
-    await database.insert(lesson).values({
-      id: "lesson_timezone_fixture_other",
-      mediaId: "media_timezone_fixture_other",
-      segmentId: null,
-      slug: "timezone-fixture-other-intro",
-      title: "Timezone Fixture Other Intro",
-      orderIndex: 1,
-      difficulty: "beginner",
-      summary: "Second lesson fixture for timezone review tests.",
-      status: "active",
-      sourceFile: "tests/fixtures/db/timezone/other-lesson.md",
-      createdAt: "2026-03-10T00:00:00.000Z",
-      updatedAt: "2026-03-10T00:00:00.000Z"
-    });
-    await database.insert(card).values({
-      id: "card_timezone_fixture_other",
-      mediaId: "media_timezone_fixture_other",
-      lessonId: "lesson_timezone_fixture_other",
-      segmentId: null,
-      sourceFile: "tests/fixtures/db/timezone/other.md",
-      cardType: "recognition",
-      front: "翌日",
-      back: "giorno successivo",
-      notesIt: null,
-      status: "active",
-      orderIndex: 1,
-      createdAt: "2026-03-10T00:00:00.000Z",
-      updatedAt: "2026-03-10T00:00:00.000Z"
-    });
-    await database.insert(reviewSubjectState).values([
-      {
-        subjectKey: "entry:term:term_timezone_fixture_before",
-        subjectType: "entry",
-        entryType: "term",
-        entryId: "term_timezone_fixture_before",
-        crossMediaGroupId: null,
-        cardId: "card_timezone_fixture_before",
-        state: "review",
-        stability: 2,
-        difficulty: 3,
-        dueAt: "2026-03-11T23:59:59.000Z",
-        lastReviewedAt: "2026-03-10T23:59:59.000Z",
-        lastInteractionAt: "2026-03-10T23:59:59.000Z",
-        scheduledDays: 1,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 1,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: false,
-        suspended: false,
-        createdAt: "2026-03-10T00:00:00.000Z",
-        updatedAt: "2026-03-10T23:59:59.000Z"
-      },
-      {
-        subjectKey: "entry:term:term_timezone_fixture_target",
-        subjectType: "entry",
-        entryType: "term",
-        entryId: "term_timezone_fixture_target",
-        crossMediaGroupId: null,
-        cardId: "card_timezone_fixture_target",
-        state: "review",
-        stability: 2,
-        difficulty: 3,
-        dueAt: "2026-03-12T00:00:00.000Z",
-        lastReviewedAt: "2026-03-11T00:00:00.000Z",
-        lastInteractionAt: "2026-03-11T00:00:00.000Z",
-        scheduledDays: 1,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 1,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: false,
-        suspended: false,
-        createdAt: "2026-03-10T00:00:00.000Z",
-        updatedAt: "2026-03-11T00:00:00.000Z"
-      },
-      {
-        subjectKey: "entry:term:term_timezone_fixture_other",
-        subjectType: "entry",
-        entryType: "term",
-        entryId: "term_timezone_fixture_other",
-        crossMediaGroupId: null,
-        cardId: "card_timezone_fixture_other",
-        state: "review",
-        stability: 2,
-        difficulty: 3,
-        dueAt: "2026-03-12T02:15:00.000Z",
-        lastReviewedAt: "2026-03-11T02:15:00.000Z",
-        lastInteractionAt: "2026-03-11T02:15:00.000Z",
-        scheduledDays: 1,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 1,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: false,
-        suspended: false,
-        createdAt: "2026-03-10T00:00:00.000Z",
-        updatedAt: "2026-03-11T02:15:00.000Z"
-      }
-    ]);
-    await database.insert(reviewSubjectLog).values([
-      {
-        id: "review_subject_log_timezone_before",
-        subjectKey: "entry:term:term_timezone_fixture_before",
-        cardId: "card_timezone_fixture_before",
-        answeredAt: "2026-03-10T23:59:59.000Z",
-        rating: "good",
-        previousState: "new",
-        newState: "review",
-        scheduledDueAt: "2026-03-11T23:59:59.000Z",
-        elapsedDays: 0,
-        responseMs: null
-      },
-      {
-        id: "review_subject_log_timezone_target",
-        subjectKey: "entry:term:term_timezone_fixture_target",
-        cardId: "card_timezone_fixture_target",
-        answeredAt: "2026-03-11T00:00:00.000Z",
-        rating: "good",
-        previousState: "new",
-        newState: "review",
-        scheduledDueAt: "2026-03-12T00:00:00.000Z",
-        elapsedDays: 0,
-        responseMs: null
-      },
-      {
-        id: "review_subject_log_timezone_other",
-        subjectKey: "entry:term:term_timezone_fixture_other",
-        cardId: "card_timezone_fixture_other",
-        answeredAt: "2026-03-11T02:15:00.000Z",
-        rating: "good",
-        previousState: "new",
-        newState: "review",
-        scheduledDueAt: "2026-03-12T02:15:00.000Z",
-        elapsedDays: 0,
-        responseMs: null
-      }
-    ]);
+      });
+      await database.insert(reviewSubjectState).values([
+        {
+          subjectKey: "entry:term:term_timezone_fixture_before",
+          subjectType: "entry",
+          entryType: "term",
+          entryId: "term_timezone_fixture_before",
+          crossMediaGroupId: null,
+          cardId: "card_timezone_fixture_before",
+          state: "review",
+          stability: 2,
+          difficulty: 3,
+          dueAt: "2026-03-11T23:59:59.000Z",
+          lastReviewedAt: "2026-03-10T23:59:59.000Z",
+          lastInteractionAt: "2026-03-10T23:59:59.000Z",
+          scheduledDays: 1,
+          learningSteps: 0,
+          lapses: 0,
+          reps: 1,
+          schedulerVersion: "fsrs_v1",
+          manualOverride: false,
+          suspended: false,
+          createdAt: "2026-03-10T00:00:00.000Z",
+          updatedAt: "2026-03-10T23:59:59.000Z"
+        },
+        {
+          subjectKey: "entry:term:term_timezone_fixture_target",
+          subjectType: "entry",
+          entryType: "term",
+          entryId: "term_timezone_fixture_target",
+          crossMediaGroupId: null,
+          cardId: "card_timezone_fixture_target",
+          state: "review",
+          stability: 2,
+          difficulty: 3,
+          dueAt: "2026-03-12T00:00:00.000Z",
+          lastReviewedAt: "2026-03-11T00:00:00.000Z",
+          lastInteractionAt: "2026-03-11T00:00:00.000Z",
+          scheduledDays: 1,
+          learningSteps: 0,
+          lapses: 0,
+          reps: 1,
+          schedulerVersion: "fsrs_v1",
+          manualOverride: false,
+          suspended: false,
+          createdAt: "2026-03-10T00:00:00.000Z",
+          updatedAt: "2026-03-11T00:00:00.000Z"
+        },
+        {
+          subjectKey: "entry:term:term_timezone_fixture_other",
+          subjectType: "entry",
+          entryType: "term",
+          entryId: "term_timezone_fixture_other",
+          crossMediaGroupId: null,
+          cardId: "card_timezone_fixture_other",
+          state: "review",
+          stability: 2,
+          difficulty: 3,
+          dueAt: "2026-03-12T02:15:00.000Z",
+          lastReviewedAt: "2026-03-11T02:15:00.000Z",
+          lastInteractionAt: "2026-03-11T02:15:00.000Z",
+          scheduledDays: 1,
+          learningSteps: 0,
+          lapses: 0,
+          reps: 1,
+          schedulerVersion: "fsrs_v1",
+          manualOverride: false,
+          suspended: false,
+          createdAt: "2026-03-10T00:00:00.000Z",
+          updatedAt: "2026-03-11T02:15:00.000Z"
+        }
+      ]);
+      await database.insert(reviewSubjectLog).values([
+        {
+          id: "review_subject_log_timezone_before",
+          subjectKey: "entry:term:term_timezone_fixture_before",
+          cardId: "card_timezone_fixture_before",
+          answeredAt: "2026-03-10T23:59:59.000Z",
+          rating: "good",
+          previousState: "new",
+          newState: "review",
+          scheduledDueAt: "2026-03-11T23:59:59.000Z",
+          elapsedDays: 0,
+          responseMs: null
+        },
+        {
+          id: "review_subject_log_timezone_target",
+          subjectKey: "entry:term:term_timezone_fixture_target",
+          cardId: "card_timezone_fixture_target",
+          answeredAt: "2026-03-11T00:00:00.000Z",
+          rating: "good",
+          previousState: "new",
+          newState: "review",
+          scheduledDueAt: "2026-03-12T00:00:00.000Z",
+          elapsedDays: 0,
+          responseMs: null
+        },
+        {
+          id: "review_subject_log_timezone_other",
+          subjectKey: "entry:term:term_timezone_fixture_other",
+          cardId: "card_timezone_fixture_other",
+          answeredAt: "2026-03-11T02:15:00.000Z",
+          rating: "good",
+          previousState: "new",
+          newState: "review",
+          scheduledDueAt: "2026-03-12T02:15:00.000Z",
+          elapsedDays: 0,
+          responseMs: null
+        }
+      ]);
 
-    const asOf = new Date("2026-03-10T23:30:00.000-05:00");
-    const [singleMediaCount, groupedCounts] = await Promise.all([
-      countReviewSubjectsIntroducedOnDayByMediaId(
-        database,
-        "media_timezone_fixture",
-        asOf
-      ),
-      countReviewSubjectsIntroducedOnDayByMediaIds(
-        database,
-        ["media_timezone_fixture", "media_timezone_fixture_other"],
-        asOf
-      )
-    ]);
-    const groupedCountsByMedia = new Map(
-      groupedCounts.map((row) => [row.mediaId, row.count])
-    );
+      const asOf = new Date("2026-03-10T23:30:00.000-05:00");
+      const [singleMediaCount, groupedCounts] = await Promise.all([
+        countReviewSubjectsIntroducedOnDayByMediaId(
+          database,
+          "media_timezone_fixture",
+          asOf
+        ),
+        countReviewSubjectsIntroducedOnDayByMediaIds(
+          database,
+          ["media_timezone_fixture", "media_timezone_fixture_other"],
+          asOf
+        )
+      ]);
+      const groupedCountsByMedia = new Map(
+        groupedCounts.map((row) => [row.mediaId, row.count])
+      );
 
-    expect(singleMediaCount).toBe(1);
-    expect(groupedCountsByMedia.get("media_timezone_fixture")).toBe(1);
-    expect(groupedCountsByMedia.get("media_timezone_fixture_other")).toBe(1);
-    expect(
-      [...groupedCountsByMedia.values()].reduce((sum, count) => sum + count, 0)
-    ).toBe(2);
-  });
-
-  it("counts introduced subjects from canonical review subject logs without double-counting shared cross-media cards", async () => {
-    const contentRoot = path.join(tempDir, "cross-media-legacy-count");
-
-    await writeCrossMediaContentFixture(contentRoot);
-
-    const result = await importContentWorkspace({
-      contentRoot,
-      database
+      expect(singleMediaCount).toBe(1);
+      expect(groupedCountsByMedia.get("media_timezone_fixture")).toBe(1);
+      expect(groupedCountsByMedia.get("media_timezone_fixture_other")).toBe(1);
+      expect(
+        [...groupedCountsByMedia.values()].reduce((sum, count) => sum + count, 0)
+      ).toBe(2);
     });
 
-    expect(result.status).toBe("completed");
-    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
-      await loadCrossMediaTermSubjectContext(database);
-    await database
-      .delete(reviewSubjectState)
-      .where(eq(reviewSubjectState.subjectKey, subjectKey));
-    await database.insert(reviewSubjectState).values({
-      subjectKey,
-      subjectType: "group",
-      entryType: "term",
-      entryId: alphaTermEntry.id,
-      crossMediaGroupId,
-      cardId: crossMediaFixture.alpha.termCardId,
-      state: "review",
-      stability: 2.4,
-      difficulty: 3.1,
-      dueAt: "2026-03-12T08:00:00.000Z",
-      lastReviewedAt: "2026-03-11T08:00:00.000Z",
-      lastInteractionAt: "2026-03-11T08:00:00.000Z",
-      scheduledDays: 1,
-      learningSteps: 0,
-      lapses: 0,
-      reps: 1,
-      schedulerVersion: "fsrs_v1",
-      manualOverride: false,
-      suspended: false,
-      createdAt: "2026-03-11T08:00:00.000Z",
-      updatedAt: "2026-03-11T08:00:00.000Z"
-    });
+    it("counts introduced subjects from canonical review subject logs without double-counting shared cross-media cards", async () => {
+      const contentRoot = path.join(tempDir, "cross-media-legacy-count");
 
-    await database.insert(reviewSubjectLog).values([
-      {
-        id: "review_subject_log_cross_media_alpha",
+      await writeCrossMediaContentFixture(contentRoot);
+
+      const result = await importContentWorkspace({
+        contentRoot,
+        database
+      });
+
+      expect(result.status).toBe("completed");
+      const { alphaTermEntry, crossMediaGroupId, subjectKey } =
+        await loadCrossMediaTermSubjectContext(database);
+      await database
+        .delete(reviewSubjectState)
+        .where(eq(reviewSubjectState.subjectKey, subjectKey));
+      await database.insert(reviewSubjectState).values({
         subjectKey,
+        subjectType: "group",
+        entryType: "term",
+        entryId: alphaTermEntry.id,
+        crossMediaGroupId,
         cardId: crossMediaFixture.alpha.termCardId,
-        answeredAt: "2026-03-11T08:00:00.000Z",
-        rating: "good",
-        previousState: "new",
-        newState: "review",
-        scheduledDueAt: "2026-03-12T08:00:00.000Z",
-        elapsedDays: 0,
-        responseMs: null
-      },
-      {
-        id: "review_subject_log_cross_media_beta",
-        subjectKey,
-        cardId: crossMediaFixture.beta.termCardId,
-        answeredAt: "2026-03-11T09:00:00.000Z",
-        rating: "good",
-        previousState: "new",
-        newState: "review",
-        scheduledDueAt: "2026-03-12T09:00:00.000Z",
-        elapsedDays: 0,
-        responseMs: null
-      }
-    ]);
+        state: "review",
+        stability: 2.4,
+        difficulty: 3.1,
+        dueAt: "2026-03-12T08:00:00.000Z",
+        lastReviewedAt: "2026-03-11T08:00:00.000Z",
+        lastInteractionAt: "2026-03-11T08:00:00.000Z",
+        scheduledDays: 1,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 1,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: false,
+        suspended: false,
+        createdAt: "2026-03-11T08:00:00.000Z",
+        updatedAt: "2026-03-11T08:00:00.000Z"
+      });
 
-    const introducedCount = await countReviewSubjectsIntroducedOnDay(
-      database,
-      new Date("2026-03-11T12:00:00.000Z")
-    );
+      await database.insert(reviewSubjectLog).values([
+        {
+          id: "review_subject_log_cross_media_alpha",
+          subjectKey,
+          cardId: crossMediaFixture.alpha.termCardId,
+          answeredAt: "2026-03-11T08:00:00.000Z",
+          rating: "good",
+          previousState: "new",
+          newState: "review",
+          scheduledDueAt: "2026-03-12T08:00:00.000Z",
+          elapsedDays: 0,
+          responseMs: null
+        },
+        {
+          id: "review_subject_log_cross_media_beta",
+          subjectKey,
+          cardId: crossMediaFixture.beta.termCardId,
+          answeredAt: "2026-03-11T09:00:00.000Z",
+          rating: "good",
+          previousState: "new",
+          newState: "review",
+          scheduledDueAt: "2026-03-12T09:00:00.000Z",
+          elapsedDays: 0,
+          responseMs: null
+        }
+      ]);
 
-    expect(introducedCount).toBe(1);
+      const introducedCount = await countReviewSubjectsIntroducedOnDay(
+        database,
+        new Date("2026-03-11T12:00:00.000Z")
+      );
+
+      expect(introducedCount).toBe(1);
+    });
   });
+
+  describe("review system with seeded development fixture", () => {
+    let tempDir = "";
+    let database: DatabaseClient;
+
+    beforeEach(async () => {
+      revalidatePathMock.mockReset();
+      updateGlossarySummaryCacheMock.mockReset();
+      updateReviewSummaryCacheMock.mockReset();
+      ({ database, tempDir } = await setupReviewDatabase({
+        prefix: "jcs-review-",
+        seedDevelopmentFixture: true
+      }));
+    });
+
+    afterEach(async () => {
+      await cleanupReviewDatabase({ database, tempDir });
+    });
 
   it("hides cards tied to incomplete lessons and also excludes orphan cards", async () => {
     await database
@@ -1388,7 +1445,7 @@ describe("review system", () => {
       },
       database
     );
-    const fixture = await createIsolatedNewMediaFixture({
+    const fixture = await createIsolatedNewMediaFixture(database, {
       cardCount: 3,
       mediaId: "topup_media",
       mediaSlug: "topup-media",
@@ -1499,7 +1556,7 @@ describe("review system", () => {
       },
       database
     );
-    const fixture = await createIsolatedNewMediaFixture({
+    const fixture = await createIsolatedNewMediaFixture(database, {
       cardCount: 3,
       mediaId: "topup_followup_media",
       mediaSlug: "topup-followup-media",
@@ -3043,4 +3100,5 @@ describe("review system", () => {
     expect(markup).toContain("Altri media in cui compare");
     expect(markup).toContain(crossMediaFixture.alpha.termMeaning);
   });
+});
 });

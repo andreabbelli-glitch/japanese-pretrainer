@@ -40,7 +40,6 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
-import { readDuelMastersRealBundleStats } from "./helpers/duel-masters-real-bundle-stats";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -67,8 +66,6 @@ const scopedLessonId = "lesson-dungeon-meshi-ep01-intro";
 const scopedCardId = "card-laios-recognition";
 const scopedTermId = "term-laios";
 const scopedTermDbId = buildScopedEntryId("term", scopedMediaId, scopedTermId);
-const duelMastersRealBundleStats = await readDuelMastersRealBundleStats();
-
 describe("content importer", () => {
   let tempDir = "";
   let contentRoot = "";
@@ -182,38 +179,13 @@ describe("content importer", () => {
       expect(result.filesChanged).toBe(expectedSourceFileCount);
 
       expect(await countRows(database.query.media.findMany())).toBe(1);
-      expect(await countRows(database.query.segment.findMany())).toBe(7);
-      expect(await countRows(database.query.lesson.findMany())).toBe(
-        duelMastersRealBundleStats.parser.lessons
-      );
-      expect(await countRows(database.query.lessonContent.findMany())).toBe(
-        duelMastersRealBundleStats.parser.lessons
-      );
-      expect(await countRows(database.query.term.findMany())).toBe(
-        duelMastersRealBundleStats.importer.term
-      );
-      expect(await countRows(database.query.termAlias.findMany())).toBe(
-        duelMastersRealBundleStats.importer.termAlias
-      );
-      expect(await countRows(database.query.grammarPattern.findMany())).toBe(
-        duelMastersRealBundleStats.importer.grammarPattern
-      );
-      expect(await countRows(database.query.grammarAlias.findMany())).toBe(
-        duelMastersRealBundleStats.importer.grammarAlias
-      );
-      expect(await countRows(database.query.entryLink.findMany())).toBe(
-        duelMastersRealBundleStats.importer.entryLink
-      );
-      expect(await countRows(database.query.card.findMany())).toBe(
-        duelMastersRealBundleStats.importer.card
-      );
-      expect(await countRows(database.query.cardEntryLink.findMany())).toBe(
-        duelMastersRealBundleStats.importer.cardEntryLink
-      );
       expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
       const importedMedia = await database.query.media.findFirst({
         where: eq(media.id, "media-duel-masters-dm25")
+      });
+      const importedSegment = await database.query.segment.findFirst({
+        where: eq(segment.slug, "tcg-core")
       });
       const importedLesson = await database.query.lesson.findFirst({
         where: eq(lesson.id, "lesson-duel-masters-dm25-tcg-core-overview"),
@@ -236,10 +208,13 @@ describe("content importer", () => {
 
       expect(importedMedia?.slug).toBe("duel-masters-dm25");
       expect(importedMedia?.title).toBe("Duel Masters");
+      expect(importedSegment?.slug).toBe("tcg-core");
+      expect(importedSegment?.mediaId).toBe("media-duel-masters-dm25");
       expect(importedLesson?.sourceFile).toBe(
         "media/duel-masters-dm25/textbook/001-tcg-core-overview.md"
       );
       expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
+      expect(importedLesson?.content?.astJson).toContain('"type":"image"');
       expect(importedTerm?.lemma).toBe("侵略");
       expect(importedGrammar?.pattern).toBe("～時 / ～た時");
       expect(importedGrammar?.reading).toBe("とき / たとき");

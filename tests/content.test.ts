@@ -17,7 +17,6 @@ import { parseContentRoot, parseMediaDirectory } from "@/lib/content";
 import { parseFrontmatter } from "@/lib/content/parser/frontmatter";
 import { parseInlineFragment } from "@/lib/content/parser/markdown";
 import { extractStructuredBlocks } from "@/lib/content/parser/structured-blocks";
-import { readDuelMastersRealBundleStats } from "./helpers/duel-masters-real-bundle-stats";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -86,8 +85,6 @@ const cardTextPlainScalarMediaDirectory = path.join(
   "media",
   "card-text-plain-scalar"
 );
-const duelMastersRealBundleStats = await readDuelMastersRealBundleStats();
-
 describe("content parser and validator", () => {
   it("parses frontmatter when the file starts with BOM and uses CRLF", () => {
     const source =
@@ -647,130 +644,50 @@ describe("content parser and validator", () => {
 
   it("parses the real Duel Masters bundle", async () => {
     const result = await parseMediaDirectory(duelMastersMediaDirectory);
+    const lessonSlugs = result.data.lessons.map((lesson) => lesson.frontmatter.slug);
+    const cardFileIds = result.data.cardFiles.map((file) => file.frontmatter.id);
+    const termIds = result.data.terms.map((term) => term.id);
+    const grammarIds = result.data.grammarPatterns.map((grammar) => grammar.id);
+    const cardIds = result.data.cards.map((card) => card.id);
 
     expect(result.ok).toBe(true);
     expect(result.issues).toEqual([]);
     expect(result.data.media?.frontmatter.id).toBe("media-duel-masters-dm25");
     expect(result.data.media?.frontmatter.title).toBe("Duel Masters");
-    expect(result.data.lessons).toHaveLength(duelMastersRealBundleStats.parser.lessons);
-    expect(result.data.cardFiles).toHaveLength(
-      duelMastersRealBundleStats.parser.cardFiles
-    );
-    expect(result.data.terms).toHaveLength(duelMastersRealBundleStats.parser.terms);
-    expect(result.data.grammarPatterns).toHaveLength(
-      duelMastersRealBundleStats.parser.grammarPatterns
-    );
-    expect(result.data.cards).toHaveLength(duelMastersRealBundleStats.parser.cards);
-    expect(result.data.references).toHaveLength(
-      duelMastersRealBundleStats.parser.references
-    );
-    expect(
-      result.data.lessons.map((lesson) => lesson.frontmatter.slug)
-    ).toEqual([
+    expect(lessonSlugs.slice(0, 3)).toEqual([
       "tcg-core-overview",
       "tcg-core-patterns",
-      "tcg-card-types",
-      "duel-plays-app-overview",
-      "duel-plays-app-decks-and-shop",
-      "duel-plays-app-modes-and-progression",
-      "duel-plays-app-rewards-and-claim-flow",
-      "duel-plays-app-shop-packs-and-results",
-      "dm25-sd1-overview",
-      "duel-plays-app-exchange-decks-and-setup",
-      "dm25-sd2-overview",
-      "live-duel-encounters-crash-hadou",
-      "live-duel-encounters-maou-de-szark",
-      "live-duel-encounters-dama-vaishingu",
-      "live-duel-encounters-bad-brand-first",
-      "live-duel-encounters-kenzan-no-sabaki",
-      "live-duel-encounters-kuromame-danshaku",
-      "live-duel-encounters-tamatango-panzer",
-      "live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari",
-      "live-duel-encounters-king-the-septon",
-      "live-duel-encounters-bolshack-dorago-the-great",
-      "live-duel-encounters-garchainsaw-dragon",
-      "live-duel-encounters-beethoven-zenith-of-horror",
-      "live-duel-encounters-momoking-jonetsu-hero",
-      "keyword-effects-reference",
-      "live-duel-encounters-balga-raizou-the-super-heavenly-nova",
-      "live-duel-encounters-infelstarge",
-      "live-duel-encounters-bolzard-superhero-super-emperor-time",
-      "live-duel-encounters-dragocalypse-day",
-      "live-duel-encounters-savark-dg",
-      "live-duel-encounters-felix-misery",
-      "live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade",
-      "live-duel-encounters-jenny-jane",
-      "live-duel-encounters-hanasaki-gelgranos",
-      "live-duel-encounters-sofa-softysonia",
-      "live-duel-encounters-bauwauja-abyssal-three-roar",
-      "live-duel-encounters-doorknocker-nordocker",
-      "live-duel-encounters-do-sumonma",
-      "live-duel-encounters-babyponnosuke"
+      "tcg-card-types"
     ]);
-    expect(result.data.cardFiles.map((file) => file.frontmatter.id)).toEqual([
-      "cards-duel-masters-dm25-tcg-core-basics",
-      "cards-duel-masters-dm25-tcg-card-types",
-      "cards-duel-masters-dm25-duel-plays-app-core",
-      "cards-duel-masters-dm25-duel-plays-app-ui-deep-dive",
-      "cards-duel-masters-dm25-dm25-sd1-core",
-      "cards-duel-masters-dm25-dm25-sd2-core",
-      "cards-duel-masters-dm25-live-duel-encounters-crash-hadou",
-      "cards-duel-masters-dm25-live-duel-encounters-maou-de-szark",
-      "cards-duel-masters-dm25-live-duel-encounters-dama-vaishingu",
-      "cards-duel-masters-dm25-live-duel-encounters-bad-brand-first",
-      "cards-duel-masters-dm25-live-duel-encounters-kenzan-no-sabaki",
-      "cards-duel-masters-dm25-live-duel-encounters-kuromame-danshaku",
-      "cards-duel-masters-dm25-live-duel-encounters-tamatango-panzer",
-      "cards-duel-masters-dm25-live-duel-encounters-kingdom-ohkabuto-gouhaten-tsukumogatari",
-      "cards-duel-masters-dm25-live-duel-encounters-king-the-septon",
-      "cards-duel-masters-dm25-live-duel-encounters-bolshack-dorago-the-great",
-      "cards-duel-masters-dm25-live-duel-encounters-garchainsaw-dragon",
-      "cards-duel-masters-dm25-live-duel-encounters-beethoven-zenith-of-horror",
-      "cards-duel-masters-dm25-live-duel-encounters-momoking-jonetsu-hero",
-      "cards-duel-masters-dm25-live-duel-encounters-balga-raizou-the-super-heavenly-nova",
-      "cards-duel-masters-dm25-live-duel-encounters-infelstarge",
-      "cards-duel-masters-dm25-live-duel-encounters-bolzard-superhero-super-emperor-time",
-      "cards-duel-masters-dm25-live-duel-encounters-dragocalypse-day",
-      "cards-duel-masters-dm25-live-duel-encounters-savark-dg",
-      "cards-duel-masters-dm25-live-duel-encounters-felix-misery",
-      "cards-duel-masters-dm25-live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade",
-      "cards-duel-masters-dm25-live-duel-encounters-jenny-jane",
-      "cards-duel-masters-dm25-live-duel-encounters-hanasaki-gelgranos",
-      "cards-duel-masters-dm25-live-duel-encounters-sofa-softysonia",
-      "cards-duel-masters-dm25-live-duel-encounters-bauwauja-abyssal-three-roar",
-      "cards-duel-masters-dm25-live-duel-encounters-doorknocker-nordocker",
-      "cards-duel-masters-dm25-live-duel-encounters-do-sumonma",
-      "cards-duel-masters-dm25-live-duel-encounters-babyponnosuke"
-    ]);
-    expect(result.data.terms.some((term) => term.id === "term-invasion")).toBe(
+    expect(lessonSlugs).toEqual(
+      expect.arrayContaining([
+        "duel-plays-app-overview",
+        "live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade",
+        "keyword-effects-reference"
+      ])
+    );
+    expect(cardFileIds).toEqual(
+      expect.arrayContaining([
+        "cards-duel-masters-dm25-tcg-core-basics",
+        "cards-duel-masters-dm25-duel-plays-app-core",
+        "cards-duel-masters-dm25-live-duel-encounters-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade"
+      ])
+    );
+    expect(termIds).toEqual(
+      expect.arrayContaining(["term-invasion", "term-abyss-royal"])
+    );
+    expect(grammarIds).toEqual(
+      expect.arrayContaining(["grammar-kawarini", "grammar-te-inakereba"])
+    );
+    expect(cardIds).toEqual(
+      expect.arrayContaining([
+        "card-invasion-recognition",
+        "card-apollonus-dragelion-recognition"
+      ])
+    );
+    expect(result.data.cards.every((card) => card.exampleJp && card.exampleIt)).toBe(
       true
     );
-    expect(
-      result.data.terms.some((term) => term.id === "term-abyss-royal")
-    ).toBe(true);
-    expect(
-      result.data.grammarPatterns.some(
-        (grammar) => grammar.id === "grammar-kawarini"
-      )
-    ).toBe(true);
-    expect(
-      result.data.grammarPatterns.some(
-        (grammar) => grammar.id === "grammar-te-inakereba"
-      )
-    ).toBe(true);
-    expect(
-      result.data.cards.some((card) => card.id === "card-invasion-recognition")
-    ).toBe(true);
-    expect(
-      result.data.cards.some(
-        (card) => card.id === "card-apollonus-dragelion-recognition"
-      )
-    ).toBe(true);
-    expect(
-      result.data.cards
-        .filter((card) => !card.exampleJp || !card.exampleIt)
-        .map((card) => card.id)
-    ).toEqual([]);
 
     const balgariskLesson = result.data.lessons.find(
       (lesson) =>

@@ -27,6 +27,12 @@ import {
   getReviewQueueSnapshotForMedia,
   loadReviewOverviewSnapshots
 } from "@/lib/review";
+import {
+  buildReviewDailyLimitSetting,
+  buildReviewSubjectLogRow,
+  buildReviewSubjectStateRow,
+  seedTwoMediaGlobalQueueFixture
+} from "./helpers/review-fixture";
 
 describe("global review queue filtering", () => {
   let database: DatabaseClient;
@@ -46,122 +52,8 @@ describe("global review queue filtering", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  async function seedTwoMediaNewQueueFixture() {
-    await database.insert(media).values([
-      {
-        id: "media_a",
-        slug: "media-a",
-        title: "Media A",
-        mediaType: "game",
-        segmentKind: "chapter",
-        language: "ja",
-        baseExplanationLanguage: "it",
-        description: "Fixture A",
-        status: "active",
-        createdAt: "2026-03-10T09:00:00.000Z",
-        updatedAt: "2026-03-10T09:00:00.000Z"
-      },
-      {
-        id: "media_b",
-        slug: "media-b",
-        title: "Media B",
-        mediaType: "game",
-        segmentKind: "chapter",
-        language: "ja",
-        baseExplanationLanguage: "it",
-        description: "Fixture B",
-        status: "active",
-        createdAt: "2026-03-10T09:00:00.000Z",
-        updatedAt: "2026-03-10T09:00:00.000Z"
-      }
-    ]);
-    await database.insert(lesson).values([
-      {
-        id: "lesson_a",
-        mediaId: "media_a",
-        segmentId: null,
-        slug: "intro-a",
-        title: "Lesson A",
-        orderIndex: 1,
-        difficulty: "beginner",
-        summary: "Lesson A",
-        status: "active",
-        sourceFile: "tests/review-global-queue/media-a.md",
-        createdAt: "2026-03-10T09:00:00.000Z",
-        updatedAt: "2026-03-10T09:00:00.000Z"
-      },
-      {
-        id: "lesson_b",
-        mediaId: "media_b",
-        segmentId: null,
-        slug: "intro-b",
-        title: "Lesson B",
-        orderIndex: 1,
-        difficulty: "beginner",
-        summary: "Lesson B",
-        status: "active",
-        sourceFile: "tests/review-global-queue/media-b.md",
-        createdAt: "2026-03-10T09:00:00.000Z",
-        updatedAt: "2026-03-10T09:00:00.000Z"
-      }
-    ]);
-    await database.insert(lessonProgress).values([
-      {
-        lessonId: "lesson_a",
-        status: "completed",
-        completedAt: "2026-03-10T09:00:00.000Z"
-      },
-      {
-        lessonId: "lesson_b",
-        status: "completed",
-        completedAt: "2026-03-10T09:00:00.000Z"
-      }
-    ]);
-    await database.insert(card).values([
-      {
-        id: "card_a",
-        mediaId: "media_a",
-        lessonId: "lesson_a",
-        segmentId: null,
-        sourceFile: "tests/review-global-queue/media-a.md",
-        cardType: "recognition",
-        front: "A",
-        back: "A back",
-        exampleJp: null,
-        exampleIt: null,
-        notesIt: null,
-        status: "active",
-        orderIndex: 1,
-        createdAt: "2026-03-10T10:00:00.000Z",
-        updatedAt: "2026-03-10T10:00:00.000Z"
-      },
-      {
-        id: "card_b",
-        mediaId: "media_b",
-        lessonId: "lesson_b",
-        segmentId: null,
-        sourceFile: "tests/review-global-queue/media-b.md",
-        cardType: "recognition",
-        front: "B",
-        back: "B back",
-        exampleJp: null,
-        exampleIt: null,
-        notesIt: null,
-        status: "active",
-        orderIndex: 1,
-        createdAt: "2026-03-10T09:00:00.000Z",
-        updatedAt: "2026-03-10T09:00:00.000Z"
-      }
-    ]);
-    await database.insert(userSetting).values({
-      key: "review_daily_limit",
-      valueJson: "1",
-      updatedAt: "2026-03-10T11:00:00.000Z"
-    });
-  }
-
   it("keeps local review pages aligned with the global daily limit while preserving media scoping", async () => {
-    await seedTwoMediaNewQueueFixture();
+    await seedTwoMediaGlobalQueueFixture(database);
 
     const [
       globalPage,
@@ -214,7 +106,7 @@ describe("global review queue filtering", () => {
   });
 
   it("ignores cross-media card deep links on local review pages", async () => {
-    await seedTwoMediaNewQueueFixture();
+    await seedTwoMediaGlobalQueueFixture(database);
 
     const mediaAPage = await getReviewPageData(
       "media-a",
@@ -229,50 +121,50 @@ describe("global review queue filtering", () => {
   });
 
   it("applies the same global daily limit on local review pages after another media introduces a new subject", async () => {
-    await seedTwoMediaNewQueueFixture();
+    await seedTwoMediaGlobalQueueFixture(database);
 
     const now = new Date("2026-03-10T13:00:00.000Z");
     const tomorrow = new Date("2026-03-11T13:00:00.000Z");
+    const nowIso = now.toISOString();
+    const tomorrowIso = tomorrow.toISOString();
 
     vi.useFakeTimers();
     vi.setSystemTime(now);
 
     try {
-      await database.insert(reviewSubjectState).values({
-        subjectKey: "card:card_a",
-        subjectType: "card",
-        entryType: null,
-        crossMediaGroupId: null,
-        entryId: null,
-        cardId: "card_a",
-        state: "review",
-        stability: 3,
-        difficulty: 2.5,
-        dueAt: tomorrow.toISOString(),
-        lastReviewedAt: now.toISOString(),
-        lastInteractionAt: now.toISOString(),
-        scheduledDays: 1,
-        learningSteps: 0,
-        lapses: 0,
-        reps: 1,
-        schedulerVersion: "fsrs_v1",
-        manualOverride: false,
-        suspended: false,
-        createdAt: now.toISOString(),
-        updatedAt: now.toISOString()
-      });
-      await database.insert(reviewSubjectLog).values({
-        id: "review_subject_log_card_a_introduced_today",
-        subjectKey: "card:card_a",
-        cardId: "card_a",
-        answeredAt: now.toISOString(),
-        rating: "good",
-        previousState: "new",
-        newState: "review",
-        scheduledDueAt: tomorrow.toISOString(),
-        elapsedDays: 0,
-        responseMs: null
-      });
+      await database.insert(reviewSubjectState).values(
+        buildReviewSubjectStateRow(
+          {
+            cardId: "card_a",
+            difficulty: 2.5,
+            dueAt: tomorrowIso,
+            lapses: 0,
+            learningSteps: 0,
+            lastInteractionAt: nowIso,
+            lastReviewedAt: nowIso,
+            reps: 1,
+            scheduledDays: 1,
+            state: "review",
+            stability: 3,
+            subjectKey: "card:card_a"
+          },
+          nowIso
+        )
+      );
+      await database.insert(reviewSubjectLog).values(
+        buildReviewSubjectLogRow({
+          answeredAt: nowIso,
+          cardId: "card_a",
+          elapsedDays: 0,
+          id: "review_subject_log_card_a_introduced_today",
+          newState: "review",
+          previousState: "new",
+          rating: "good",
+          responseMs: null,
+          scheduledDueAt: tomorrowIso,
+          subjectKey: "card:card_a"
+        })
+      );
 
       const [globalPage, mediaAPage, mediaBPage, mediaBQueue, dashboard, mediaBDetail] =
         await Promise.all([
@@ -316,7 +208,7 @@ describe("global review queue filtering", () => {
   });
 
   it("uses top-up batches in global review without changing the base daily limit", async () => {
-    await seedTwoMediaNewQueueFixture();
+    await seedTwoMediaGlobalQueueFixture(database);
 
     const basePage = await getGlobalReviewPageData({}, database);
     const toppedUpPage = await getGlobalReviewPageData(
@@ -450,11 +342,9 @@ describe("global review queue filtering", () => {
         updatedAt: "2026-03-10T09:00:00.000Z"
       }
     ]);
-    await database.insert(userSetting).values({
-      key: "review_daily_limit",
-      valueJson: "1",
-      updatedAt: "2026-03-10T11:00:00.000Z"
-    });
+    await database.insert(userSetting).values(
+      buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z")
+    );
 
     const [firstCandidate, fullPage] = await Promise.all([
       getGlobalReviewFirstCandidateLoadResult({}, database),
@@ -620,11 +510,9 @@ describe("global review queue filtering", () => {
         updatedAt: "2026-03-10T09:00:00.000Z"
       }
     ]);
-    await database.insert(userSetting).values({
-      key: "review_daily_limit",
-      valueJson: "1",
-      updatedAt: "2026-03-10T11:00:00.000Z"
-    });
+    await database.insert(userSetting).values(
+      buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z")
+    );
 
     const [firstCandidate, fullPage] = await Promise.all([
       getGlobalReviewFirstCandidateLoadResult(
