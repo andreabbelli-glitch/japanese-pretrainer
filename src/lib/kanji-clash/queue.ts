@@ -7,10 +7,14 @@ import type {
   KanjiClashSessionRound,
   KanjiClashScope
 } from "./types.ts";
+import {
+  DEFAULT_KANJI_CLASH_MANUAL_SIZE,
+  dedupeStable,
+  normalizePositiveInteger
+} from "./shared-utils.ts";
 import { hashKanjiClashString } from "./utils.ts";
 
 const DEFAULT_KANJI_CLASH_DAILY_NEW_LIMIT = 5;
-const DEFAULT_KANJI_CLASH_MANUAL_SIZE = 20;
 
 type BuildKanjiClashQueueSnapshotInput = {
   candidates: KanjiClashCandidate[];
@@ -34,129 +38,43 @@ type KanjiClashQueuedCandidate = {
 export function buildKanjiClashQueueSnapshot(
   input: BuildKanjiClashQueueSnapshotInput
 ): KanjiClashQueueSnapshot {
-  const now = toDate(input.now);
-  const pairStates = input.pairStates ?? new Map<string, KanjiClashPairState>();
-  const seenPairKeys = dedupeStable(input.seenPairKeys ?? []);
-  const seenPairKeySet = new Set(seenPairKeys);
-  const currentRoundIndex = normalizePositiveInteger(
-    input.currentRoundIndex,
-    0
-  );
-  const queuedCandidates: KanjiClashQueuedCandidate[] = [];
-
-  for (const candidate of input.candidates) {
-    if (seenPairKeySet.has(candidate.pairKey)) {
-      continue;
-    }
-
-    const pairState = pairStates.get(candidate.pairKey) ?? null;
-
-    queuedCandidates.push({
-      candidate,
-      pairState,
-      source: resolveKanjiClashRoundSource(pairState, now)
-    });
-  }
-
-  queuedCandidates.sort(compareQueuedCandidates);
-
-  const dailyNewLimit =
-    input.mode === "automatic"
-      ? normalizePositiveInteger(
-          input.dailyNewLimit,
-          DEFAULT_KANJI_CLASH_DAILY_NEW_LIMIT
-        )
-      : null;
-  const requestedSize =
-    input.mode === "manual"
-      ? normalizePositiveInteger(
-          input.requestedSize,
-          DEFAULT_KANJI_CLASH_MANUAL_SIZE
-        )
-      : null;
-  const introducedTodayCount = normalizePositiveInteger(
-    input.newIntroducedTodayCount,
-    0
-  );
-  const remainingNewSlots =
-    input.mode === "automatic"
-      ? Math.max(0, (dailyNewLimit ?? 0) - introducedTodayCount)
-      : null;
-  const selectedCandidates: KanjiClashQueuedCandidate[] = [];
-  let newAvailableCount = 0;
-  let selectedDueCount = 0;
-  const manualSelectionLimit = requestedSize ?? DEFAULT_KANJI_CLASH_MANUAL_SIZE;
-
-  for (const queuedCandidate of queuedCandidates) {
-    if (queuedCandidate.source === "new") {
-      newAvailableCount += 1;
-    }
-
-    if (input.mode === "automatic") {
-      if (queuedCandidate.source === "reserve") {
-        continue;
-      }
-
-      if (
-        queuedCandidate.source === "new" &&
-        selectedCandidates.length - selectedDueCount >= (remainingNewSlots ?? 0)
-      ) {
-        continue;
-      }
-
-      selectedCandidates.push(queuedCandidate);
-
-      if (queuedCandidate.source === "due") {
-        selectedDueCount += 1;
-      }
-
-      continue;
-    }
-
-    if (selectedCandidates.length >= manualSelectionLimit) {
-      break;
-    }
-
-    selectedCandidates.push(queuedCandidate);
-  }
-
-  let dueCount = 0;
-  let newQueuedCount = 0;
-  let reserveCount = 0;
-  const rounds = selectedCandidates.map((candidate, index) => {
-    switch (candidate.source) {
-      case "due":
-        dueCount += 1;
-        break;
-      case "new":
-        newQueuedCount += 1;
-        break;
-      case "reserve":
-        reserveCount += 1;
-        break;
-    }
-
-    return materializeKanjiClashSessionRound(candidate, index);
+  const normalizedInput = normalizeBuildKanjiClashQueueSnapshotInput(input);
+  const { queuedCandidates, newAvailableCount } = buildQueuedCandidates({
+    candidates: normalizedInput.candidates,
+    now: normalizedInput.now,
+    pairStates: normalizedInput.pairStates,
+    seenPairKeys: normalizedInput.seenPairKeys
   });
-  const clampedRoundIndex = Math.min(currentRoundIndex, rounds.length);
+  const selectedCandidates = selectQueuedCandidates({
+    manualSelectionLimit: normalizedInput.manualSelectionLimit,
+    mode: normalizedInput.mode,
+    queuedCandidates,
+    remainingNewSlots: normalizedInput.remainingNewSlots
+  });
+  const { dueCount, newQueuedCount, reserveCount, rounds } =
+    summarizeSelectedCandidates(selectedCandidates);
+  const clampedRoundIndex = Math.min(
+    normalizedInput.currentRoundIndex,
+    rounds.length
+  );
 
   return {
     awaitingConfirmation: false,
     currentRoundIndex: clampedRoundIndex,
-    dailyNewLimit,
+    dailyNewLimit: normalizedInput.dailyNewLimit,
     dueCount,
     finished: rounds.length === 0 || clampedRoundIndex >= rounds.length,
-    introducedTodayCount,
-    mode: input.mode,
+    introducedTodayCount: normalizedInput.introducedTodayCount,
+    mode: normalizedInput.mode,
     newAvailableCount,
     newQueuedCount,
     remainingCount: Math.max(0, rounds.length - clampedRoundIndex),
-    requestedSize,
+    requestedSize: normalizedInput.requestedSize,
     reserveCount,
     rounds,
-    snapshotAtIso: now.toISOString(),
-    scope: input.scope,
-    seenPairKeys,
+    snapshotAtIso: normalizedInput.now.toISOString(),
+    scope: normalizedInput.scope,
+    seenPairKeys: normalizedInput.seenPairKeys,
     totalCount: rounds.length
   };
 }
@@ -219,6 +137,182 @@ export function materializeKanjiClashSessionRound(
     target,
     targetPlacement,
     targetSubjectKey: target.subjectKey
+  };
+}
+
+function normalizeBuildKanjiClashQueueSnapshotInput(
+  input: BuildKanjiClashQueueSnapshotInput
+) {
+  const now = toDate(input.now);
+  const pairStates = input.pairStates ?? new Map<string, KanjiClashPairState>();
+  const seenPairKeys = dedupeStable(input.seenPairKeys ?? []);
+  const mode = input.mode;
+  const dailyNewLimit =
+    mode === "automatic"
+      ? normalizePositiveInteger(
+          input.dailyNewLimit,
+          DEFAULT_KANJI_CLASH_DAILY_NEW_LIMIT
+        )
+      : null;
+  const requestedSize =
+    mode === "manual"
+      ? normalizePositiveInteger(
+          input.requestedSize,
+          DEFAULT_KANJI_CLASH_MANUAL_SIZE
+        )
+      : null;
+  const introducedTodayCount = normalizePositiveInteger(
+    input.newIntroducedTodayCount,
+    0
+  );
+  const remainingNewSlots =
+    mode === "automatic"
+      ? Math.max(0, (dailyNewLimit ?? 0) - introducedTodayCount)
+      : null;
+
+  return {
+    candidates: input.candidates,
+    currentRoundIndex: normalizePositiveInteger(input.currentRoundIndex, 0),
+    dailyNewLimit,
+    introducedTodayCount,
+    manualSelectionLimit: requestedSize ?? DEFAULT_KANJI_CLASH_MANUAL_SIZE,
+    mode,
+    now,
+    pairStates,
+    remainingNewSlots,
+    requestedSize,
+    scope: input.scope,
+    seenPairKeys
+  };
+}
+
+function buildQueuedCandidates(input: {
+  candidates: KanjiClashCandidate[];
+  now: Date;
+  pairStates: Map<string, KanjiClashPairState>;
+  seenPairKeys: string[];
+}) {
+  const seenPairKeySet = new Set(input.seenPairKeys);
+  const queuedCandidates: KanjiClashQueuedCandidate[] = [];
+  let newAvailableCount = 0;
+
+  for (const candidate of input.candidates) {
+    if (seenPairKeySet.has(candidate.pairKey)) {
+      continue;
+    }
+
+    const pairState = input.pairStates.get(candidate.pairKey) ?? null;
+    const source = resolveKanjiClashRoundSource(pairState, input.now);
+
+    if (source === "new") {
+      newAvailableCount += 1;
+    }
+
+    queuedCandidates.push({
+      candidate,
+      pairState,
+      source
+    });
+  }
+
+  queuedCandidates.sort(compareQueuedCandidates);
+
+  return {
+    newAvailableCount,
+    queuedCandidates
+  };
+}
+
+function selectQueuedCandidates(input: {
+  manualSelectionLimit: number;
+  mode: KanjiClashSessionMode;
+  queuedCandidates: KanjiClashQueuedCandidate[];
+  remainingNewSlots: number | null;
+}) {
+  return input.mode === "automatic"
+    ? selectAutomaticQueuedCandidates(
+        input.queuedCandidates,
+        input.remainingNewSlots ?? 0
+      )
+    : selectManualQueuedCandidates(
+        input.queuedCandidates,
+        input.manualSelectionLimit
+      );
+}
+
+function selectAutomaticQueuedCandidates(
+  queuedCandidates: KanjiClashQueuedCandidate[],
+  remainingNewSlots: number
+) {
+  const selectedCandidates: KanjiClashQueuedCandidate[] = [];
+  let selectedDueCount = 0;
+
+  for (const queuedCandidate of queuedCandidates) {
+    if (queuedCandidate.source === "reserve") {
+      continue;
+    }
+
+    if (
+      queuedCandidate.source === "new" &&
+      selectedCandidates.length - selectedDueCount >= remainingNewSlots
+    ) {
+      continue;
+    }
+
+    selectedCandidates.push(queuedCandidate);
+
+    if (queuedCandidate.source === "due") {
+      selectedDueCount += 1;
+    }
+  }
+
+  return selectedCandidates;
+}
+
+function selectManualQueuedCandidates(
+  queuedCandidates: KanjiClashQueuedCandidate[],
+  manualSelectionLimit: number
+) {
+  const selectedCandidates: KanjiClashQueuedCandidate[] = [];
+
+  for (const queuedCandidate of queuedCandidates) {
+    if (selectedCandidates.length >= manualSelectionLimit) {
+      break;
+    }
+
+    selectedCandidates.push(queuedCandidate);
+  }
+
+  return selectedCandidates;
+}
+
+function summarizeSelectedCandidates(
+  selectedCandidates: KanjiClashQueuedCandidate[]
+) {
+  let dueCount = 0;
+  let newQueuedCount = 0;
+  let reserveCount = 0;
+  const rounds = selectedCandidates.map((candidate, index) => {
+    switch (candidate.source) {
+      case "due":
+        dueCount += 1;
+        break;
+      case "new":
+        newQueuedCount += 1;
+        break;
+      case "reserve":
+        reserveCount += 1;
+        break;
+    }
+
+    return materializeKanjiClashSessionRound(candidate, index);
+  });
+
+  return {
+    dueCount,
+    newQueuedCount,
+    reserveCount,
+    rounds
   };
 }
 
@@ -289,33 +383,6 @@ function roundSourceRank(source: KanjiClashRoundSource) {
     case "reserve":
       return 2;
   }
-}
-
-function normalizePositiveInteger(
-  value: number | null | undefined,
-  fallback: number
-) {
-  if (!Number.isFinite(value)) {
-    return Math.max(0, Math.trunc(fallback));
-  }
-
-  return Math.max(0, Math.trunc(value ?? fallback));
-}
-
-function dedupeStable(values: string[]) {
-  const seen = new Set<string>();
-  const result: string[] = [];
-
-  for (const value of values) {
-    if (seen.has(value)) {
-      continue;
-    }
-
-    seen.add(value);
-    result.push(value);
-  }
-
-  return result;
 }
 
 function toDate(value: string | Date) {

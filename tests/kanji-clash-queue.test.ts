@@ -156,6 +156,42 @@ describe("kanji clash queue builder", () => {
     ).toBe(false);
   });
 
+  it("dedupes seen pair keys and normalizes queue inputs before selection", () => {
+    const alpha = makeSubject({
+      kanji: ["食"],
+      label: "食",
+      reading: "しょく",
+      subjectKey: "entry:term:alpha"
+    });
+    const beta = makeSubject({
+      kanji: ["食"],
+      label: "食品",
+      reading: "しょくひん",
+      subjectKey: "entry:term:beta"
+    });
+    const candidate = buildKanjiClashCandidate(alpha, beta);
+
+    if (!candidate) {
+      throw new Error("Missing queue normalization candidate fixture.");
+    }
+
+    const queue = buildKanjiClashQueueSnapshot({
+      candidates: [candidate],
+      currentRoundIndex: 3.9,
+      mode: "manual",
+      now: "2026-04-09T10:00:00.000Z",
+      requestedSize: 1.9,
+      scope: "global",
+      seenPairKeys: ["skip", "skip", "other", "other"]
+    });
+
+    expect(queue.currentRoundIndex).toBe(1);
+    expect(queue.requestedSize).toBe(1);
+    expect(queue.remainingCount).toBe(0);
+    expect(queue.seenPairKeys).toEqual(["skip", "other"]);
+    expect(queue.totalCount).toBe(1);
+  });
+
   it("builds a finite manual session and includes reserve pairs after due and new ones", () => {
     const alpha = makeSubject({
       kanji: ["食", "費"],

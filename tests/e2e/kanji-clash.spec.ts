@@ -1,6 +1,7 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 
-const fixtureRoute = "/kanji-clash?media=zz-kanji-clash-e2e&mode=manual&size=10";
+const fixtureRoute =
+  "/kanji-clash?media=zz-kanji-clash-e2e&mode=manual&size=10";
 type KanjiClashSettingsPreset = {
   defaultScope: "global" | "media";
   manualDefaultSize: number;
@@ -29,11 +30,12 @@ test("smokes automatic mode and invalid manual size fallback from persisted sett
 
   await page.goto("/kanji-clash?mode=manual&size=999");
 
-  await expect(page.getByRole("heading", { name: "Workspace di confronto" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Drill", exact: true })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  await expect(
+    page.getByRole("heading", { name: "Workspace di confronto" })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Drill", exact: true })
+  ).toHaveAttribute("aria-current", "page");
   await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
     "aria-current",
     "page"
@@ -51,10 +53,7 @@ test("smokes automatic mode and invalid manual size fallback from persisted sett
 
   await expect(
     page.getByRole("link", { name: "FSRS", exact: true })
-  ).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  ).toHaveAttribute("aria-current", "page");
   await expect(
     page.getByText(
       "Le nuove coppie restano separate dalla review standard e contano solo nel workspace Kanji Clash."
@@ -89,15 +88,15 @@ test("switches Kanji Clash mode from the UI while preserving media context and n
 
   await page.goto("/kanji-clash?media=zz-kanji-clash-e2e&mode=manual&size=999");
 
-  await expect(page.getByRole("heading", { name: "Workspace di confronto" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "ZZ Kanji Clash E2E" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
-  await expect(page.getByRole("link", { name: "Drill", exact: true })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  await expect(
+    page.getByRole("heading", { name: "Workspace di confronto" })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
+  ).toHaveAttribute("aria-current", "page");
+  await expect(
+    page.getByRole("link", { name: "Drill", exact: true })
+  ).toHaveAttribute("aria-current", "page");
   await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
     "aria-current",
     "page"
@@ -113,16 +112,12 @@ test("switches Kanji Clash mode from the UI while preserving media context and n
       !url.searchParams.has("size")
   );
 
-  await expect(page.getByRole("link", { name: "ZZ Kanji Clash E2E" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  await expect(
+    page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
+  ).toHaveAttribute("aria-current", "page");
   await expect(
     page.getByRole("link", { name: "FSRS", exact: true })
-  ).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  ).toHaveAttribute("aria-current", "page");
   await expect(
     page.getByText(
       "Le nuove coppie restano separate dalla review standard e contano solo nel workspace Kanji Clash."
@@ -138,10 +133,9 @@ test("switches Kanji Clash mode from the UI while preserving media context and n
       url.searchParams.get("size") === "40"
   );
 
-  await expect(page.getByRole("link", { name: "ZZ Kanji Clash E2E" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  await expect(
+    page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
+  ).toHaveAttribute("aria-current", "page");
   await expect(
     page.getByRole("link", { name: "Drill", exact: true })
   ).toHaveAttribute("aria-current", "page");
@@ -176,11 +170,12 @@ test("opens Kanji Clash from global review and leaves review counts unchanged", 
       !url.searchParams.has("size")
   );
 
-  await expect(page.getByRole("heading", { name: "Workspace di confronto" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Globale", exact: true })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  await expect(
+    page.getByRole("heading", { name: "Workspace di confronto" })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Globale", exact: true })
+  ).toHaveAttribute("aria-current", "page");
   await expect(
     page.getByText(
       "Le nuove coppie restano separate dalla review standard e contano solo nel workspace Kanji Clash."
@@ -198,15 +193,23 @@ test("opens Kanji Clash from global review and leaves review counts unchanged", 
 
   const firstRound = await readCurrentRound(page);
   await answerRoundWithClick(page, firstRound.correctSide);
-  await expect(page.locator(".kanji-clash-feedback[role='status']")).toHaveCount(0);
+  await expect(
+    page.locator(".kanji-clash-feedback[role='status']")
+  ).toHaveCount(0);
   await waitForNextRound(page, firstRound.pairKey);
 
   await page.goto("/review");
 
   await expect(page.locator(".review-page")).toBeVisible();
-  await expect(reviewSidebar.getByRole("link", { name: "Apri Kanji Clash" })).toBeVisible();
   await expect(
-    await readStatBlockValuesWithin(reviewSidebar, ["In coda", "Da ripassare", "Nuove"])
+    reviewSidebar.getByRole("link", { name: "Apri Kanji Clash" })
+  ).toBeVisible();
+  await expect(
+    await readStatBlockValuesWithin(reviewSidebar, [
+      "In coda",
+      "Da ripassare",
+      "Nuove"
+    ])
   ).toEqual(baselineCounts);
 });
 
@@ -235,11 +238,12 @@ test("opens Kanji Clash from media detail and leaves local review counts unchang
       !url.searchParams.has("size")
   );
 
-  await expect(page.getByRole("heading", { name: "Workspace di confronto" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "ZZ Kanji Clash E2E" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  await expect(
+    page.getByRole("heading", { name: "Workspace di confronto" })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
+  ).toHaveAttribute("aria-current", "page");
 
   await page.getByRole("link", { name: "Drill", exact: true }).click();
   await page.waitForURL(
@@ -252,12 +256,16 @@ test("opens Kanji Clash from media detail and leaves local review counts unchang
 
   const firstRound = await readCurrentRound(page);
   await answerRoundWithClick(page, firstRound.correctSide);
-  await expect(page.locator(".kanji-clash-feedback[role='status']")).toHaveCount(0);
+  await expect(
+    page.locator(".kanji-clash-feedback[role='status']")
+  ).toHaveCount(0);
   await waitForNextRound(page, firstRound.pairKey);
 
   await page.goto("/media/zz-kanji-clash-e2e");
 
-  await expect(page.getByRole("heading", { name: "ZZ Kanji Clash E2E" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "ZZ Kanji Clash E2E" })
+  ).toBeVisible();
   await expect(
     await readStatBlockValuesWithin(reviewOverview, [
       "In coda",
@@ -272,11 +280,12 @@ test("asserts visible Kanji Clash reveal state on wrong answers", async ({
 }) => {
   await page.goto("/kanji-clash?media=zz-kanji-clash-e2e&mode=manual&size=10");
 
-  await expect(page.getByRole("heading", { name: "Workspace di confronto" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "ZZ Kanji Clash E2E" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+  await expect(
+    page.getByRole("heading", { name: "Workspace di confronto" })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
+  ).toHaveAttribute("aria-current", "page");
 
   const currentRound = await readCurrentRound(page);
   const currentVisibleRound = await readVisibleRound(page);
@@ -345,7 +354,9 @@ test("advances a correct round without feedback panel or viewport jump", async (
   const currentRound = await readCurrentRound(page);
 
   await answerRoundWithClick(page, currentRound.correctSide);
-  await expect(page.locator(".kanji-clash-feedback[role='status']")).toHaveCount(0);
+  await expect(
+    page.locator(".kanji-clash-feedback[role='status']")
+  ).toHaveCount(0);
   await waitForNextRound(page, currentRound.pairKey);
 
   const finalScrollY = await page.evaluate(() => window.scrollY);
@@ -353,12 +364,30 @@ test("advances a correct round without feedback panel or viewport jump", async (
   expect(Math.abs(finalScrollY - initialScrollY)).toBeLessThanOrEqual(2);
 });
 
+test("supports keyboard arrow interaction for the current round", async ({
+  page
+}) => {
+  await page.goto(fixtureRoute);
+
+  const currentRound = await readCurrentRound(page);
+
+  await page.keyboard.press(
+    currentRound.correctSide === "left" ? "ArrowLeft" : "ArrowRight"
+  );
+  await expect(
+    page.locator(".kanji-clash-feedback[role='status']")
+  ).toHaveCount(0);
+  await waitForNextRound(page, currentRound.pairKey);
+});
+
 test("filters Kanji Clash by media and exposes a playable manual round", async ({
   page
 }) => {
   await page.goto("/kanji-clash?mode=manual&size=10");
 
-  await expect(page.locator('.site-nav__link[href="/kanji-clash"]')).toBeVisible();
+  await expect(
+    page.locator('.site-nav__link[href="/kanji-clash"]')
+  ).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Workspace di confronto" })
   ).toBeVisible();
@@ -420,7 +449,9 @@ test.describe("Kanji Clash mobile tap-only coverage", () => {
     const currentRound = await readCurrentRound(page);
 
     await answerRoundWithTap(page, currentRound.correctSide);
-    await expect(page.locator(".kanji-clash-feedback[role='status']")).toHaveCount(0);
+    await expect(
+      page.locator(".kanji-clash-feedback[role='status']")
+    ).toHaveCount(0);
     await waitForNextRound(page, currentRound.pairKey);
   });
 });
@@ -456,13 +487,18 @@ async function waitForNextRound(page: Page, previousPairKey: string) {
   const nextState = await waitForNextRoundOrCompletion(page, previousPairKey);
 
   if (nextState === "done") {
-    throw new Error("Expected another Kanji Clash round, but the session ended.");
+    throw new Error(
+      "Expected another Kanji Clash round, but the session ended."
+    );
   }
 
   return nextState;
 }
 
-async function waitForNextRoundOrCompletion(page: Page, previousPairKey: string) {
+async function waitForNextRoundOrCompletion(
+  page: Page,
+  previousPairKey: string
+) {
   await expect
     .poll(async () => getRoundState(page), {
       timeout: 5_000
@@ -481,7 +517,12 @@ async function getRoundState(page: Page) {
     return (await stage.getAttribute("data-pair-key")) ?? "missing";
   }
 
-  if (await page.locator(".empty-state").isVisible().catch(() => false)) {
+  if (
+    await page
+      .locator(".empty-state")
+      .isVisible()
+      .catch(() => false)
+  ) {
     return "done";
   }
 
@@ -498,12 +539,26 @@ async function answerRoundWithTap(page: Page, side: "left" | "right") {
 
 async function readVisibleRound(page: Page) {
   return {
-    left: ((await page.locator(".kanji-clash-option--left .kanji-clash-option__surface").textContent()) ?? "").trim(),
-    meaning: ((await page.locator(".kanji-clash-target__meaning").textContent()) ?? "").trim(),
-    reading: ((await page.locator(".kanji-clash-target__reading").textContent()) ?? "").trim(),
+    left: (
+      (await page
+        .locator(".kanji-clash-option--left .kanji-clash-option__surface")
+        .textContent()) ?? ""
+    ).trim(),
+    meaning: (
+      (await page.locator(".kanji-clash-target__meaning").textContent()) ?? ""
+    ).trim(),
+    reading: (
+      (await page.locator(".kanji-clash-target__reading").textContent()) ?? ""
+    ).trim(),
     remaining: await readStatBlockValue(page, "Rimanenti"),
-    right: ((await page.locator(".kanji-clash-option--right .kanji-clash-option__surface").textContent()) ?? "").trim(),
-    title: ((await page.locator(".kanji-clash-stage__title").textContent()) ?? "").trim()
+    right: (
+      (await page
+        .locator(".kanji-clash-option--right .kanji-clash-option__surface")
+        .textContent()) ?? ""
+    ).trim(),
+    title: (
+      (await page.locator(".kanji-clash-stage__title").textContent()) ?? ""
+    ).trim()
   } as const;
 }
 
@@ -523,7 +578,10 @@ async function readStatBlockValueWithin(root: Locator, label: string) {
 async function readStatBlockValuesWithin(root: Locator, labels: string[]) {
   return Object.fromEntries(
     await Promise.all(
-      labels.map(async (label) => [label, await readStatBlockValueWithin(root, label)])
+      labels.map(async (label) => [
+        label,
+        await readStatBlockValueWithin(root, label)
+      ])
     )
   );
 }
@@ -535,13 +593,17 @@ async function applyKanjiClashSettings(
   const defaultScopeRadio = page.locator(
     `input[name="kanjiClashDefaultScope"][value="${settings.defaultScope}"]`
   );
-  const manualSizeSelect = page.locator('select[name="kanjiClashManualDefaultSize"]');
+  const manualSizeSelect = page.locator(
+    'select[name="kanjiClashManualDefaultSize"]'
+  );
 
   await page.goto("/settings");
   await defaultScopeRadio.check();
   await expect(defaultScopeRadio).toBeChecked();
   await manualSizeSelect.selectOption(String(settings.manualDefaultSize));
-  await expect(manualSizeSelect).toHaveValue(String(settings.manualDefaultSize));
+  await expect(manualSizeSelect).toHaveValue(
+    String(settings.manualDefaultSize)
+  );
 
   await page.getByRole("button", { name: "Salva preferenze" }).click();
   await expect(page).toHaveURL(/\/settings\?saved=1(?:&.*)?$/);

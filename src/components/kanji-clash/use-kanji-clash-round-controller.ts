@@ -3,6 +3,7 @@
 import {
   useCallback,
   useEffect,
+  useReducer,
   useRef,
   useState,
   type TouchEventHandler
@@ -15,35 +16,18 @@ import type {
   KanjiClashPageData,
   KanjiClashQueueSnapshot,
   KanjiClashRoundSide,
-  KanjiClashSessionActionResult,
   KanjiClashSessionRound
 } from "@/lib/kanji-clash/types";
 
 import {
-  resolveKanjiClashRoundSideFromKey,
-  resolveKanjiClashRoundSideFromSwipe,
-  shouldIgnoreKanjiClashKeyboardTarget
-} from "./kanji-clash-interactions";
+  createInitialKanjiClashRoundControllerState,
+  reduceKanjiClashRoundControllerState,
+  type KanjiClashRoundFeedback
+} from "./kanji-clash-round-controller-state";
+import { resolveKanjiClashSubmitLiveMessage } from "./kanji-clash-round-live-message";
+import { useKanjiClashRoundInputs } from "./kanji-clash-round-inputs";
 
-const SWIPE_CLICK_SUPPRESSION_MS = 350;
-
-type ControllerState = {
-  committedQueue: KanjiClashQueueSnapshot;
-  committedQueueToken: string;
-  feedback: KanjiClashRoundFeedback | null;
-  isSelectionLocked: boolean;
-  pendingSelectionSide: KanjiClashRoundSide | null;
-  visibleQueue: KanjiClashQueueSnapshot;
-};
-
-export type KanjiClashRoundFeedback = {
-  answeredRound: KanjiClashSessionRound;
-  correctSubjectKey: string;
-  nextRound: KanjiClashSessionRound | null;
-  selectedSubjectKey: string;
-  selectedSide: KanjiClashRoundSide;
-  status: "correct" | "incorrect";
-};
+export type { KanjiClashRoundFeedback } from "./kanji-clash-round-controller-state";
 
 export type KanjiClashRoundControllerResult = {
   clientError: string | null;
@@ -59,244 +43,111 @@ export type KanjiClashRoundControllerResult = {
   queue: KanjiClashQueueSnapshot;
 };
 
-type TouchPoint = {
-  x: number;
-  y: number;
-};
-
-function createInitialControllerState(
-  queue: KanjiClashQueueSnapshot,
-  queueToken: string
-): ControllerState {
-  return {
-    committedQueue: queue,
-    committedQueueToken: queueToken,
-    feedback: null,
-    isSelectionLocked: false,
-    pendingSelectionSide: null,
-    visibleQueue: queue
-  };
-}
-
 export function useKanjiClashRoundController(
   data: KanjiClashPageData
 ): KanjiClashRoundControllerResult {
-  const [controllerState, setControllerState] = useState<ControllerState>(() =>
-    createInitialControllerState(data.queue, data.queueToken)
+  const [controllerState, dispatch] = useReducer(
+    reduceKanjiClashRoundControllerState,
+    createInitialKanjiClashRoundControllerState(data.queue, data.queueToken)
   );
   const [clientError, setClientError] = useState<string | null>(null);
   const [liveMessage, setLiveMessage] = useState<string | null>(null);
   const controllerStateRef = useRef(controllerState);
-  const suppressNextClickRef = useRef(false);
-  const touchStartRef = useRef<TouchPoint | null>(null);
-
-  const commitControllerState = useCallback((nextState: ControllerState) => {
-    controllerStateRef.current = nextState;
-    setControllerState(nextState);
-  }, []);
 
   useEffect(() => {
     controllerStateRef.current = controllerState;
   }, [controllerState]);
 
-  const advanceVisibleQueue = useCallback(() => {
+  const submitSide = useCallback(async (side: KanjiClashRoundSide) => {
     const currentState = controllerStateRef.current;
 
-    commitControllerState({
-      ...currentState,
-      feedback: null,
-      isSelectionLocked: false,
-      pendingSelectionSide: null,
-      visibleQueue: currentState.committedQueue
+    if (currentState.phase.kind !== "idle") {
+      return;
+    }
+
+    const currentRound = getKanjiClashCurrentRound(currentState.visibleQueue);
+
+    if (!currentRound) {
+      return;
+    }
+
+    dispatch({
+      side,
+      type: "choose-side"
     });
-  }, [commitControllerState]);
+    setClientError(null);
+    setLiveMessage(null);
 
-  const submitSide = useCallback(
-    async (side: KanjiClashRoundSide) => {
-      const currentState = controllerStateRef.current;
+    const startedAt = performance.now();
 
-      if (currentState.isSelectionLocked) {
-        return;
-      }
+    try {
+      const result = await submitKanjiClashAnswerAction(
+        buildKanjiClashAnswerSubmissionPayload({
+          currentRound,
+          queueToken: currentState.committedQueueToken,
+          responseMs: performance.now() - startedAt,
+          selectedSide: side
+        })
+      );
 
-      const currentRound = getKanjiClashCurrentRound(currentState.visibleQueue);
-
-      if (!currentRound) {
-        return;
-      }
-
-      commitControllerState({
-        ...currentState,
-        isSelectionLocked: true,
-        pendingSelectionSide: side
+      dispatch({
+        result,
+        selectedSide: side,
+        type: "submit-succeeded"
       });
-      setClientError(null);
-      setLiveMessage(null);
+      const liveMessage = resolveKanjiClashSubmitLiveMessage(result);
 
-      const startedAt = performance.now();
-
-      try {
-        const result = await submitKanjiClashAnswerAction(
-          buildKanjiClashAnswerSubmissionPayload({
-            currentRound,
-            queueToken: currentState.committedQueueToken,
-            responseMs: performance.now() - startedAt,
-            selectedSide: side
-          })
-        );
-
-        if (result.isCorrect) {
-          commitControllerState({
-            committedQueue: result.nextQueue,
-            committedQueueToken: result.nextQueueToken,
-            feedback: null,
-            isSelectionLocked: false,
-            pendingSelectionSide: null,
-            visibleQueue: result.nextQueue
-          });
-          setLiveMessage(
-            result.nextRound
-              ? "Risposta corretta. Round successivo caricato."
-              : "Risposta corretta. Sessione completata."
-          );
-          return;
-        }
-
-        commitControllerState(
-          createIncorrectAnswerControllerState(currentState, result, side)
-        );
-      } catch (error) {
-        commitControllerState({
-          ...controllerStateRef.current,
-          feedback: null,
-          isSelectionLocked: false,
-          pendingSelectionSide: null
-        });
-        setClientError(
-          error instanceof Error
-            ? error.message
-            : "Impossibile salvare la risposta."
-        );
-        setLiveMessage("Errore durante il salvataggio della risposta.");
+      if (liveMessage) {
+        setLiveMessage(liveMessage);
       }
-    },
-    [commitControllerState]
-  );
-
-  const handleChooseSide = useCallback(
-    (side: KanjiClashRoundSide) => {
-      if (suppressNextClickRef.current) {
-        suppressNextClickRef.current = false;
-        return;
-      }
-
-      void submitSide(side);
-    },
-    [submitSide]
-  );
+    } catch (error) {
+      dispatch({
+        type: "submit-failed"
+      });
+      setClientError(
+        error instanceof Error
+          ? error.message
+          : "Impossibile salvare la risposta."
+      );
+      setLiveMessage("Errore durante il salvataggio della risposta.");
+    }
+  }, []);
 
   const handleContinue = useCallback(() => {
-    if (controllerStateRef.current.feedback?.status !== "incorrect") {
+    if (controllerStateRef.current.phase.kind !== "incorrect-review") {
       return;
     }
 
     setClientError(null);
     setLiveMessage(null);
-    advanceVisibleQueue();
-  }, [advanceVisibleQueue]);
+    dispatch({
+      type: "continue-after-incorrect"
+    });
+  }, []);
 
-  const handleTouchStart = useCallback<TouchEventHandler<HTMLElement>>(
-    (event) => {
-      if (controllerStateRef.current.isSelectionLocked) {
-        return;
-      }
-
-      const touch = event.touches[0];
-
-      if (!touch) {
-        return;
-      }
-
-      touchStartRef.current = {
-        x: touch.clientX,
-        y: touch.clientY
-      };
-    },
-    []
-  );
-
-  const handleTouchEnd = useCallback<TouchEventHandler<HTMLElement>>(
-    (event) => {
-      const start = touchStartRef.current;
-
-      touchStartRef.current = null;
-
-      if (!start || controllerStateRef.current.isSelectionLocked) {
-        return;
-      }
-
-      const touch = event.changedTouches[0];
-
-      if (!touch) {
-        return;
-      }
-
-      const side = resolveKanjiClashRoundSideFromSwipe(
-        touch.clientX - start.x,
-        touch.clientY - start.y
-      );
-
-      if (!side) {
-        return;
-      }
-
-      event.preventDefault();
-      suppressNextClickRef.current = true;
-      window.setTimeout(() => {
-        suppressNextClickRef.current = false;
-      }, SWIPE_CLICK_SUPPRESSION_MS);
-      void submitSide(side);
-    },
-    [submitSide]
-  );
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        controllerStateRef.current.isSelectionLocked ||
-        shouldIgnoreKanjiClashKeyboardTarget(event.target)
-      ) {
-        return;
-      }
-
-      const side = resolveKanjiClashRoundSideFromKey(event.key);
-
-      if (!side) {
-        return;
-      }
-
-      event.preventDefault();
-      void submitSide(side);
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [submitSide]);
+  const { handleChooseSide, handleTouchEnd, handleTouchStart } =
+    useKanjiClashRoundInputs({
+      isSelectionLocked: controllerState.phase.kind !== "idle",
+      onChooseSide: submitSide
+    });
 
   return {
     clientError,
     currentRound: getKanjiClashCurrentRound(controllerState.visibleQueue),
-    feedback: controllerState.feedback,
+    feedback:
+      controllerState.phase.kind === "incorrect-review"
+        ? controllerState.phase.feedback
+        : null,
     handleChooseSide,
     handleContinue,
     handleTouchEnd,
     handleTouchStart,
-    isSelectionLocked: controllerState.isSelectionLocked,
+    isSelectionLocked: controllerState.phase.kind !== "idle",
     liveMessage,
-    pendingSelectionSide: controllerState.pendingSelectionSide,
+    pendingSelectionSide:
+      controllerState.phase.kind === "submitting"
+        ? controllerState.phase.selectedSide
+        : null,
     queue: controllerState.visibleQueue
   };
 }
@@ -313,27 +164,5 @@ function buildKanjiClashAnswerSubmissionPayload(input: {
     queueToken: input.queueToken,
     responseMs: input.responseMs,
     selectedSide: input.selectedSide
-  };
-}
-
-function createIncorrectAnswerControllerState(
-  currentState: ControllerState,
-  result: KanjiClashSessionActionResult,
-  selectedSide: KanjiClashRoundSide
-): ControllerState {
-  return {
-    committedQueue: result.nextQueue,
-    committedQueueToken: result.nextQueueToken,
-    feedback: {
-      answeredRound: result.answeredRound,
-      correctSubjectKey: result.answeredRound.correctSubjectKey,
-      nextRound: result.nextRound,
-      selectedSubjectKey: result.selectedSubjectKey,
-      selectedSide,
-      status: "incorrect"
-    },
-    isSelectionLocked: true,
-    pendingSelectionSide: null,
-    visibleQueue: currentState.visibleQueue
   };
 }

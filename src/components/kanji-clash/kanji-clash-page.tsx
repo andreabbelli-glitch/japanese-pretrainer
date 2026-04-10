@@ -10,20 +10,22 @@ import type {
   KanjiClashSessionRound
 } from "@/lib/kanji-clash/types";
 import { cx } from "@/lib/classnames";
-import { kanjiClashHref } from "@/lib/site";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { EmptyState } from "../ui/empty-state";
 import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
 import {
-  formatKanjiClashModeLabel,
   formatKanjiClashPairStateLabel,
   formatKanjiClashRoundPosition,
   formatKanjiClashRoundSource,
   getKanjiClashSubjectMeaning,
   getKanjiClashSubjectReading
 } from "./kanji-clash-format";
+import {
+  buildKanjiClashPageContent,
+  type KanjiClashPageContent
+} from "./kanji-clash-page-content";
 import {
   useKanjiClashRoundController,
   type KanjiClashRoundFeedback
@@ -48,30 +50,32 @@ export function KanjiClashPage({ data }: KanjiClashPageProps) {
 
 function KanjiClashPageClient({ data }: KanjiClashPageProps) {
   const controller = useKanjiClashRoundController(data);
+  const content: KanjiClashPageContent = buildKanjiClashPageContent({
+    currentRound: controller.currentRound,
+    data,
+    feedback: controller.feedback,
+    queue: controller.queue
+  });
 
   return (
     <div className="kanji-clash-page">
       <StickyPageHeader
         eyebrow="Kanji Clash"
         title="Workspace di confronto"
-        summary={buildHeaderSummary(
-          data,
-          controller.queue,
-          controller.currentRound
-        )}
+        summary={content.header.summary}
         actions={
           <div className="hero-actions">
             <Link
               aria-current={data.mode === "automatic" ? "page" : undefined}
               className={buttonClassName(data.mode === "automatic")}
-              href={buildModeHref(data, "automatic")}
+              href={content.header.modeLinks.automatic}
             >
               FSRS
             </Link>
             <Link
               aria-current={data.mode === "manual" ? "page" : undefined}
               className={buttonClassName(data.mode === "manual")}
-              href={buildModeHref(data, "manual")}
+              href={content.header.modeLinks.manual}
             >
               Drill
             </Link>
@@ -83,8 +87,12 @@ function KanjiClashPageClient({ data }: KanjiClashPageProps) {
         {controller.currentRound ? (
           <KanjiClashRoundWorkspace
             clientError={controller.clientError}
-            data={data}
             feedback={controller.feedback}
+            feedbackCopy={
+              controller.feedback?.status === "incorrect"
+                ? content.round.feedbackCopy
+                : null
+            }
             isSelectionLocked={controller.isSelectionLocked}
             liveMessage={controller.liveMessage}
             onChooseSide={controller.handleChooseSide}
@@ -94,12 +102,14 @@ function KanjiClashPageClient({ data }: KanjiClashPageProps) {
             pendingSelectionSide={controller.pendingSelectionSide}
             queue={controller.queue}
             round={controller.currentRound}
+            roundSummary={content.round.summary}
+            scopeLabel={content.round.scopeLabel}
           />
         ) : (
-          <KanjiClashEmptyWorkspace data={data} queue={controller.queue} />
+          <KanjiClashEmptyWorkspace content={content.emptyState} />
         )}
 
-        <KanjiClashSidebar data={data} queue={controller.queue} />
+        <KanjiClashSidebar content={content.sidebar} queue={controller.queue} />
       </section>
     </div>
   );
@@ -107,8 +117,8 @@ function KanjiClashPageClient({ data }: KanjiClashPageProps) {
 
 function KanjiClashRoundWorkspace({
   clientError,
-  data,
   feedback,
+  feedbackCopy,
   isSelectionLocked,
   liveMessage,
   onChooseSide,
@@ -117,11 +127,16 @@ function KanjiClashRoundWorkspace({
   onTouchStart,
   pendingSelectionSide,
   queue,
-  round
+  round,
+  roundSummary,
+  scopeLabel
 }: {
   clientError: string | null;
-  data: KanjiClashPageData;
   feedback: KanjiClashRoundFeedback | null;
+  feedbackCopy: {
+    description: string;
+    title: string;
+  } | null;
   isSelectionLocked: boolean;
   liveMessage: string | null;
   onChooseSide: (side: "left" | "right") => void;
@@ -131,10 +146,9 @@ function KanjiClashRoundWorkspace({
   pendingSelectionSide: "left" | "right" | null;
   queue: KanjiClashQueueSnapshot;
   round: KanjiClashSessionRound;
+  roundSummary: string;
+  scopeLabel: string;
 }) {
-  const feedbackCopy =
-    feedback?.status === "incorrect" ? buildIncorrectFeedbackCopy(feedback) : null;
-
   return (
     <article
       className="surface-card surface-card--hero kanji-clash-stage"
@@ -153,15 +167,14 @@ function KanjiClashRoundWorkspace({
             )}
           </h2>
           <p className="kanji-clash-stage__summary">
-            Il target centrale mostra lettura e significato. Le due opzioni ai
-            lati restano superfici giapponesi pure da distinguere al volo.
+            {roundSummary}
           </p>
         </div>
         <div className="kanji-clash-stage__chips">
           <span className="chip">
             {formatKanjiClashRoundSource(round.source)}
           </span>
-          <span className="meta-pill">{formatScopeLabel(data)}</span>
+          <span className="meta-pill">{scopeLabel}</span>
           {round.pairState ? (
             <span className="meta-pill">
               {formatKanjiClashPairStateLabel(round.pairState.state)}
@@ -325,59 +338,33 @@ function KanjiClashOptionCard({
 }
 
 function KanjiClashEmptyWorkspace({
-  data,
-  queue
+  content
 }: {
-  data: KanjiClashPageData;
-  queue: KanjiClashQueueSnapshot;
+  content: KanjiClashPageContent["emptyState"];
 }) {
-  const completedSession = queue.finished || queue.totalCount > 0;
+  if (!content) {
+    return null;
+  }
 
   return (
     <EmptyState
       eyebrow="Kanji Clash"
-      title={
-        completedSession
-          ? "Sessione completata"
-          : data.selectedMedia
-            ? `Nessun confronto pronto in ${data.selectedMedia.title}`
-            : "Nessun confronto disponibile"
-      }
-      description={
-        completedSession
-          ? "Hai chiuso la coda corrente. Puoi cambiare modalità, allargare lo scope o aprire un drill manuale su una frontiera diversa."
-          : data.selectedMedia
-            ? "Questo filtro media non produce ancora coppie eleggibili. Torna al globale oppure prova l'altra modalità."
-            : "Non ci sono ancora coppie eleggibili per questo scope. Cambia modalità o restringi a un media specifico."
-      }
+      title={content.title}
+      description={content.description}
       action={
         <div className="empty-state__action">
           <Link
             className="button button--primary"
-            href={
-              data.selectedMedia
-                ? buildMediaHref(data, null)
-                : buildModeHref(
-                    data,
-                    data.mode === "automatic" ? "manual" : "automatic"
-                  )
-            }
+            href={content.primaryAction.href}
           >
-            {data.selectedMedia
-              ? "Torna al globale"
-              : data.mode === "automatic"
-                ? "Apri Drill"
-                : "Apri FSRS"}
+            {content.primaryAction.label}
           </Link>
-          {data.selectedMedia ? (
+          {content.secondaryAction ? (
             <Link
               className="button button--ghost"
-              href={buildModeHref(
-                data,
-                data.mode === "automatic" ? "manual" : "automatic"
-              )}
+              href={content.secondaryAction.href}
             >
-              Cambia modalità
+              {content.secondaryAction.label}
             </Link>
           ) : null}
         </div>
@@ -387,55 +374,39 @@ function KanjiClashEmptyWorkspace({
 }
 
 function KanjiClashSidebar({
-  data,
-  queue
+  queue,
+  content
 }: {
-  data: KanjiClashPageData;
   queue: KanjiClashQueueSnapshot;
+  content: KanjiClashPageContent["sidebar"];
 }) {
-  const manualSize = queue.requestedSize ?? data.settings.manualDefaultSize;
-
   return (
     <SurfaceCard className="kanji-clash-sidebar" variant="quiet">
       <div className="kanji-clash-sidebar__copy">
         <p className="eyebrow">Contesto</p>
-        <h2 className="kanji-clash-sidebar__title">
-          {formatKanjiClashModeLabel(data.mode)}
-        </h2>
-        <p className="kanji-clash-sidebar__summary">
-          {data.mode === "automatic"
-            ? `Prima le coppie dovute, poi nuove coppie fino al cap giornaliero di ${data.settings.dailyNewLimit}.`
-            : `Sessione finita con taglia ${manualSize}, costruita da una frontiera deterministica del pool eleggibile.`}
-        </p>
+        <h2 className="kanji-clash-sidebar__title">{content.modeLabel}</h2>
+        <p className="kanji-clash-sidebar__summary">{content.summary}</p>
       </div>
 
       <div className="stats-grid stats-grid--compact">
         <StatBlock
-          detail={
-            data.selectedMedia
-              ? data.selectedMedia.title
-              : "Tutto il catalogo disponibile"
-          }
+          detail={content.stats.scopeDetail}
           label="Ambito"
-          value={data.selectedMedia ? "Media" : "Globale"}
+          value={content.stats.scopeValue}
         />
         <StatBlock
-          detail="Round costruiti nella sessione corrente."
+          detail={content.stats.queueDetail}
           label="In coda"
           value={String(queue.totalCount)}
         />
         <StatBlock
-          detail="Round ancora da giocare da qui in avanti."
+          detail={content.stats.remainingDetail}
           label="Rimanenti"
-          tone={queue.remainingCount > 0 ? "warning" : "default"}
+          tone={content.stats.remainingTone}
           value={String(queue.remainingCount)}
         />
         <StatBlock
-          detail={
-            data.mode === "automatic"
-              ? `${queue.introducedTodayCount}/${data.settings.dailyNewLimit} introdotte oggi.`
-              : `${manualSize} round richiesti nella frontiera manuale.`
-          }
+          detail={content.stats.newDetail}
           label="Nuove"
           value={String(queue.newQueuedCount)}
         />
@@ -445,160 +416,41 @@ function KanjiClashSidebar({
         <div>
           <p className="eyebrow">Filtro media</p>
           <div className="hero-actions">
-            <Link
-              aria-current={data.selectedMedia === null ? "page" : undefined}
-              className={buttonClassName(data.selectedMedia === null)}
-              href={buildMediaHref(data, null)}
-            >
-              Globale
-            </Link>
-            {data.availableMedia.map((media) => (
+            {content.mediaFilters.map((media) => (
               <Link
-                key={media.id}
-                aria-current={
-                  data.selectedMedia?.slug === media.slug ? "page" : undefined
-                }
-                className={buttonClassName(
-                  data.selectedMedia?.slug === media.slug
-                )}
-                href={buildMediaHref(data, media.slug)}
+                key={media.href}
+                aria-current={media.active ? "page" : undefined}
+                className={buttonClassName(media.active)}
+                href={media.href}
               >
-                {media.title}
+                {media.label}
               </Link>
             ))}
           </div>
         </div>
 
-        {data.mode === "manual" ? (
+        {content.sizeFilters ? (
           <div>
             <p className="eyebrow">Dimensione sessione</p>
             <div className="hero-actions">
-              {data.settings.manualSizeOptions.map((size) => (
+              {content.sizeFilters.map((size) => (
                 <Link
-                  key={size}
-                  aria-current={manualSize === size ? "page" : undefined}
-                  className={buttonClassName(manualSize === size)}
-                  href={buildSizeHref(data, size)}
+                  key={size.href}
+                  aria-current={size.active ? "page" : undefined}
+                  className={buttonClassName(size.active)}
+                  href={size.href}
                 >
-                  {size}
+                  {size.label}
                 </Link>
               ))}
             </div>
           </div>
         ) : (
-          <p className="kanji-clash-sidebar__note">
-            Le nuove coppie restano separate dalla review standard e contano
-            solo nel workspace Kanji Clash.
-          </p>
+          <p className="kanji-clash-sidebar__note">{content.note}</p>
         )}
       </div>
     </SurfaceCard>
   );
-}
-
-function buildHeaderSummary(
-  data: KanjiClashPageData,
-  queue: KanjiClashQueueSnapshot,
-  currentRound: KanjiClashSessionRound | null
-) {
-  const scopeLabel = formatScopeLabel(data);
-
-  if (!currentRound) {
-    return queue.finished || queue.totalCount > 0
-      ? "La coda corrente è completa. Cambia filtro o modalità per aprire il prossimo workspace."
-      : `Scope ${scopeLabel}. Nessuna coppia pronta al momento.`;
-  }
-
-  return data.mode === "automatic"
-    ? `Scope ${scopeLabel}. Target centrale, due opzioni laterali e coda dedicata separata dalla review classica.`
-    : `Scope ${scopeLabel}. Drill con target centrale e confronto laterale estratti da una frontiera deterministica.`;
-}
-
-function buildModeHref(data: KanjiClashPageData, mode: "automatic" | "manual") {
-  return kanjiClashHref({
-    media: data.selectedMedia?.slug,
-    mode,
-    size:
-      mode === "manual"
-        ? (data.queue.requestedSize ?? data.settings.manualDefaultSize)
-        : undefined
-  });
-}
-
-function buildMediaHref(data: KanjiClashPageData, mediaSlug: string | null) {
-  return kanjiClashHref({
-    media: mediaSlug ?? undefined,
-    mode: data.mode,
-    size:
-      data.mode === "manual"
-        ? (data.queue.requestedSize ?? data.settings.manualDefaultSize)
-        : undefined
-  });
-}
-
-function buildSizeHref(data: KanjiClashPageData, size: number) {
-  return kanjiClashHref({
-    media: data.selectedMedia?.slug,
-    mode: "manual",
-    size
-  });
-}
-
-function formatScopeLabel(data: KanjiClashPageData) {
-  return data.selectedMedia ? data.selectedMedia.title : "Globale";
-}
-
-function buildIncorrectFeedbackCopy(feedback: KanjiClashRoundFeedback) {
-  const correctSubject = resolveRoundSubject(
-    feedback.answeredRound,
-    feedback.correctSubjectKey
-  );
-  const selectedSubject = resolveRoundSubject(
-    feedback.answeredRound,
-    feedback.selectedSubjectKey
-  );
-  const correctLabel = formatRevealLabel(correctSubject);
-  const selectedLabel = formatRevealLabel(selectedSubject);
-
-  return {
-    description: `Hai selezionato ${selectedLabel}. Risposta giusta: ${correctLabel}.`,
-    title: "Risposta errata"
-  };
-}
-
-function resolveRoundSubject(
-  round: KanjiClashSessionRound,
-  subjectKey: string
-): KanjiClashEligibleSubject | null {
-  if (round.leftSubjectKey === subjectKey) {
-    return round.left;
-  }
-
-  if (round.rightSubjectKey === subjectKey) {
-    return round.right;
-  }
-
-  if (round.targetSubjectKey === subjectKey) {
-    return round.target;
-  }
-
-  return null;
-}
-
-function formatRevealLabel(subject: KanjiClashEligibleSubject | null) {
-  if (!subject) {
-    return "Risposta non disponibile";
-  }
-
-  const surface = subject.surfaceForms[0] ?? subject.label;
-  const reading = getKanjiClashSubjectReading(subject);
-  const meaning = getKanjiClashSubjectMeaning(subject);
-
-  if (reading === surface) {
-    return `${surface} (${meaning})`;
-  }
-
-  return `${surface} · ${reading} (${meaning})`;
 }
 
 function buttonClassName(active: boolean) {

@@ -3,6 +3,7 @@ import type {
   KanjiClashEligibleSubject,
   KanjiClashEligibleSubjectMember
 } from "./types.ts";
+import { dedupeStable } from "./shared-utils.ts";
 import {
   collectKanjiFromSurfaces,
   normalizeKanjiClashSurface
@@ -120,20 +121,4 @@ function finalizeEligibleKanjiClashSubject(
     readingForms,
     surfaceForms
   };
-}
-
-function dedupeStable(values: string[]) {
-  const seen = new Set<string>();
-  const result: string[] = [];
-
-  for (const value of values) {
-    if (seen.has(value)) {
-      continue;
-    }
-
-    seen.add(value);
-    result.push(value);
-  }
-
-  return result;
 }

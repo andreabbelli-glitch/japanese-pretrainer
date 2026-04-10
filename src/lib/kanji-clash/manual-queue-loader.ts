@@ -5,9 +5,12 @@ import {
 } from "@/db/queries";
 
 import { buildKanjiClashQueueSnapshot } from "./queue.ts";
+import { buildKanjiClashCandidate } from "./pairing.ts";
 import {
-  buildKanjiClashCandidate
-} from "./pairing.ts";
+  DEFAULT_KANJI_CLASH_MANUAL_SIZE,
+  dedupeStable,
+  normalizePositiveInteger
+} from "./shared-utils.ts";
 import type {
   KanjiClashCandidate,
   KanjiClashEligibleSubject,
@@ -29,7 +32,10 @@ export async function loadManualKanjiClashQueueSnapshot(input: {
   scope: KanjiClashScope;
   seenPairKeys?: string[];
 }): Promise<KanjiClashQueueSnapshot> {
-  const requestedSize = normalizePositiveInteger(input.requestedSize, 20);
+  const requestedSize = normalizePositiveInteger(
+    input.requestedSize,
+    DEFAULT_KANJI_CLASH_MANUAL_SIZE
+  );
   const seenPairKeys = dedupeStable(input.seenPairKeys ?? []);
 
   if (requestedSize <= 0) {
@@ -282,31 +288,4 @@ function collectManualFrontierExpansionCandidates(input: {
 
     return left.pairKey.localeCompare(right.pairKey);
   });
-}
-
-function normalizePositiveInteger(
-  value: number | null | undefined,
-  fallback: number
-) {
-  if (!Number.isFinite(value)) {
-    return Math.max(0, Math.trunc(fallback));
-  }
-
-  return Math.max(0, Math.trunc(value ?? fallback));
-}
-
-function dedupeStable(values: string[]) {
-  const seen = new Set<string>();
-  const result: string[] = [];
-
-  for (const value of values) {
-    if (seen.has(value)) {
-      continue;
-    }
-
-    seen.add(value);
-    result.push(value);
-  }
-
-  return result;
 }
