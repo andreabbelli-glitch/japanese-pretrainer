@@ -68,7 +68,11 @@
       "audio_src": "assets/audio/term/term-hyoka/forvo-manual-ひょうか.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E8%A9%95%E4%BE%A1/#ja"
+      "audio_page_url": "https://forvo.com/word/%E8%A9%95%E4%BE%A1/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E8%A9%95%E4%BE%A1",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -170,7 +174,11 @@
       "audio_src": "assets/audio/term/term-seino/forvo-manual-せいのう.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E6%80%A7%E8%83%BD/#ja"
+      "audio_page_url": "https://forvo.com/word/%E6%80%A7%E8%83%BD/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%80%A7%E8%83%BD",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -234,7 +242,11 @@
       "audio_src": "assets/audio/term/term-tsukaimichi/forvo-manual-つかいみち.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E4%BD%BF%E3%81%84%E9%81%93/#ja"
+      "audio_page_url": "https://forvo.com/word/%E4%BD%BF%E3%81%84%E9%81%93/#ja",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%A4%E3%81%8B%E3%81%84%E3%81%BF%E3%81%A1",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -242,7 +254,11 @@
       "audio_src": "assets/audio/term/term-tsuyosa/forvo-manual-つよさ.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%BC%B7%E3%81%95/#ja"
+      "audio_page_url": "https://forvo.com/word/%E5%BC%B7%E3%81%95/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%BC%B7%E3%81%95",
+      "pitch_accent_status": "resolved"
     }
   ]
 }

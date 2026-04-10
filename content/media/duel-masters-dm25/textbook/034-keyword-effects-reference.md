@@ -173,6 +173,25 @@ reveal_mode: sentence
 - In `「G・ストライク」を{{使|つか}}えない`, `使えない` è il blocco da leggere:
   quell'effetto impedisce proprio l'uso della risposta difensiva.
 
+### [G・ゼロ](term:term-g-zero)
+
+:::example_sentence
+jp: >-
+  [G・ゼロ](term:term-g-zero)：[{{自分|じぶん}}](term:term-self)の
+  [コスト](term:term-cost){{5以上|ごいじょう}}のジョーカーズがあれば、このクリーチャーを
+  コストを[{{支払|しはら}}わずに](grammar:grammar-zuni)
+  [{{召喚|しょうかん}}](term:term-summon)してもよい。
+translation_it: >-
+  G-Zero: se hai un tuo Jokers di costo 5 o più, puoi evocare questa creatura
+  senza pagarne il costo.
+reveal_mode: sentence
+:::
+
+- `{{自分|じぶん}}のコスト{{5以上|ごいじょう}}のジョーカーズがあれば` è la
+  soglia che decide se la keyword si accende davvero.
+- `コストを{{支払|しはら}}わずに{{召喚|しょうかん}}してもよい` è il payoff:
+  l'evocazione è gratuita ma resta facoltativa.
+
 ### [キリフダッシュ](term:term-kirifudash)
 
 :::example_sentence

@@ -28,7 +28,17 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-deru-made-omotemuki-ni-shi",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-dewanai",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-erabareta-player",
       "pitch_accent_status": "miss"
     },
     {
@@ -115,6 +125,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-konoyounishite",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-koto-ni-yotte",
       "pitch_accent_status": "miss"
     },
@@ -189,6 +204,14 @@
       "entry_type": "grammar",
       "entry_id": "grammar-sareta-toki",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-shika",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%97%E3%81%8B",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "grammar",
@@ -651,6 +674,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-chuushi-suru",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E4%B8%AD%E6%AD%A2%E3%81%99%E3%82%8B",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-civil-count",
       "pitch_accent_status": "miss"
     },
@@ -1043,6 +1074,11 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-g-zero",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-gouhaten-tsukumogatari",
       "pitch_accent_status": "miss"
     },
@@ -1118,6 +1154,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-henkou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A4%89%E6%9B%B4",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-hensei",
       "audio_src": "assets/audio/term/term-hensei/forvo-manual-へんせい.mp3",
       "audio_source": "forvo",
@@ -1169,6 +1213,14 @@
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E4%B8%80%E7%95%AA%E4%B8%8A/#ja",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-ichido",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%80%E5%BA%A6",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -1321,6 +1373,14 @@
       "pitch_accent": 2,
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%93%E3%82%8C%E3%82%89",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kotonaru",
+      "pitch_accent": 3,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%95%B0%E3%81%AA%E3%82%8B",
       "pitch_accent_status": "resolved"
     },
     {
@@ -1820,6 +1880,14 @@
       "entry_type": "term",
       "entry_id": "term-s-trigger",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-saidai",
+      "pitch_accent": 0,
+      "pitch_accent_source": "OJAD",
+      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%95%E3%81%84%E3%81%A0%E3%81%84",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
