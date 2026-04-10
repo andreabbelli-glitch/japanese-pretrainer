@@ -353,27 +353,21 @@ docs/
 ## Documenti
 
 Per workflow con LLM esterni, il punto di partenza operativo e
-[`docs/llm-kit/README.md`](./docs/llm-kit/README.md). I file in
-[`docs/legacy/`](./docs/legacy/README.md) sono solo archivio storico e non
-vanno usati per istruzioni operative correnti.
+[`docs/llm-kit/README.md`](./docs/llm-kit/README.md).
 
 - [Blueprint operativo](./docs/blueprint-operativo.md)
 - [Persistence layer](./docs/database.md)
-- [Schema dati iniziale](./docs/schema-dati-iniziale.md)
 - [Specifica contenuti Markdown](./docs/content-format.md)
 - [Content parser e validator](./docs/content-parser.md)
 - [Importer sync strategy](./docs/importer-sync-strategy.md)
 - [Kanji Clash](./docs/kanji-clash.md) - contratto tecnico e guardrail editoriali della feature
 - [Checklist QA manuale](./docs/qa-manual-checklist.md)
 - [Note di verifica locale](./docs/local-verification-notes.md)
-- [Performance baseline](./docs/performance-baseline.md)
 - [Kit operativo LLM esterni (source of truth)](./docs/llm-kit/README.md)
-- [Archivio legacy LLM (non operativo)](./docs/legacy/README.md)
 - [Tooling locale](./docs/dev-tooling.md)
 - [Direzione UX/UI](./docs/design/ux-ui-direction.md)
 - [Design tokens](./docs/design/design-tokens.css)
 - [Wireframes](./docs/design/wireframes.md)
-- [Task index per agenti implementatori](./docs/tasks/README.md)
 
 ## Convenzioni UI
 
