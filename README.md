@@ -80,7 +80,8 @@ stato corrente dell'optimizer e dei preset salvati in `user_setting`.
 ## Kanji Clash
 
 `Kanji Clash` e un workspace separato dedicato alla discriminazione rapida tra
-vocaboli che condividono almeno un kanji.
+vocaboli che condividono almeno un kanji oppure differiscono per un singolo
+kanji visivamente confondibile.
 
 - route top-level `/kanji-clash` con item primario dedicato in navbar;
 - scope globale di default, con filtro media solo quando `media=<slug>` e
@@ -212,6 +213,7 @@ pnpm db:studio
 pnpm auth:hash-password
 pnpm fsrs:optimize
 pnpm fsrs:optimize:if-needed
+pnpm kanji-clash:generate-similar-kanji
 ```
 
 Se lanci direttamente `pnpm test:e2e:runner`, serve prima una build fresca:

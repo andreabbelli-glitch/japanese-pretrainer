@@ -3,8 +3,9 @@
 ## Obiettivo
 
 `Kanji Clash` e un workspace separato da `/review` pensato per discriminare
-velocemente vocaboli che condividono almeno un kanji e che quindi rischiano di
-essere riconosciuti male al volo.
+velocemente vocaboli che condividono almeno un kanji oppure differiscono per un
+solo kanji visivamente confondibile e che quindi rischiano di essere
+riconosciuti male al volo.
 
 Non sostituisce la review standard. In v1:
 
@@ -85,7 +86,7 @@ Il loader aggrega sia subject `entry` sia subject `group`, preservando:
 - `source` (`entry` o `group`);
 - members cross-media;
 - surface forms e reading forms deduplicate;
-- kanji condivisi usati per pairing e scoring.
+- kanji condivisi e swap di kanji simili usati per pairing e scoring.
 
 ## Pairing
 
@@ -93,12 +94,31 @@ Il pairing canonico vive in `src/lib/kanji-clash/pairing.ts` e usa una pair key
 unordered costruita con `leftSubjectKey::rightSubjectKey` in ordine
 lessicografico stabile.
 
+Una coppia viene costruita se passa almeno una delle due route:
+
+- `shared-kanji`: la surface condivide almeno un kanji reale;
+- `similar-kanji`: le due surface hanno stessa lunghezza, differiscono in un
+  solo slot e quel cambio `A <-> B` esiste nel dataset versionato dei kanji
+  simili.
+
+Il dataset degli swap si rigenera con
+`./scripts/with-node.sh pnpm kanji-clash:generate-similar-kanji`, fondendo:
+
+- tutti i pair White Rabbit;
+- i pair `strokeEditDistance >= 0.75`;
+- i pair `yehAndLiRadical >= 0.75`;
+- override manuali include/exclude.
+
+La pair key resta unica anche quando una coppia passa entrambe le route: il
+candidate conserva motivi multipli (`shared-kanji`, `similar-kanji`) ma non
+duplica la pair nella queue.
+
 Una coppia viene scartata se ricade in uno di questi casi:
 
 - `same-subject`
 - `same-entry`
 - `same-group`
-- `no-shared-kanji`
+- `no-pairing-signal`
 - `same-surface`
 - `editorial-clone`
 - `qualified-contained-clone`
@@ -153,7 +173,8 @@ Lo scoring privilegia:
 
 - piu kanji condivisi;
 - kanji condiviso in posizione iniziale saliente;
-- forme visivamente vicine ma non identiche.
+- forme visivamente vicine ma non identiche;
+- swap `similar-kanji` con confidenza piu alta e posizione strutturale saliente.
 
 Penalizza invece reading condivisi troppo simili, per evitare bivi didattici
 deboli.
@@ -254,6 +275,8 @@ Ogni round include:
 
 - target centrale: reading + significato;
 - opzione sinistra e destra;
+- metadata compatto sul motivo del confronto (`chip` shared oppure `Kanji simili:
+  A / B`);
 - `pairKey` e `targetSubjectKey` usati anche per verifica E2E;
 - source `due`, `new` o `reserve`.
 

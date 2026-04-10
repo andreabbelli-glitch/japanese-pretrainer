@@ -5,7 +5,10 @@ import {
 } from "@/db/queries";
 
 import { buildKanjiClashQueueSnapshot } from "./queue.ts";
-import { buildKanjiClashCandidate } from "./pairing.ts";
+import {
+  buildKanjiClashCandidate,
+  collectKanjiClashRelatedSubjects
+} from "./pairing.ts";
 import {
   DEFAULT_KANJI_CLASH_MANUAL_SIZE,
   dedupeStable,
@@ -234,21 +237,10 @@ function collectManualFrontierExpansionCandidates(input: {
   const candidatesByPairKey = new Map<string, KanjiClashCandidate>();
 
   for (const subject of input.subjects) {
-    const relatedSubjects = new Map<string, KanjiClashEligibleSubject>();
-
-    for (const kanji of subject.kanji) {
-      const bucket = input.frontierIndex.get(kanji);
-
-      if (!bucket) {
-        continue;
-      }
-
-      for (const relatedSubject of bucket) {
-        relatedSubjects.set(relatedSubject.subjectKey, relatedSubject);
-      }
-    }
-
-    for (const relatedSubject of relatedSubjects.values()) {
+    for (const relatedSubject of collectKanjiClashRelatedSubjects(
+      subject,
+      input.frontierIndex
+    )) {
       const candidate = buildKanjiClashCandidate(subject, relatedSubject);
 
       if (!candidate || input.pairKeysToSkip.has(candidate.pairKey)) {

@@ -100,10 +100,12 @@ export function buildKanjiClashRound(
       left,
       leftSubjectKey: left.subjectKey,
       pairKey,
+      pairReasons: ["shared-kanji"],
       right,
       rightSubjectKey: right.subjectKey,
       score: 120,
-      sharedKanji: ["食"]
+      sharedKanji: ["食"],
+      similarKanjiSwaps: []
     },
     correctSubjectKey: target.subjectKey,
     left,
@@ -124,38 +126,36 @@ export function buildKanjiClashQueue(
   currentRoundIndex = 0,
   overrides: Partial<KanjiClashQueueSnapshot> = {}
 ): KanjiClashQueueSnapshot {
-  const rounds =
-    overrides.rounds ??
-    [
-      buildKanjiClashRound({
-        left: buildKanjiClashSubject({
-          label: "左",
-          reading: "ひだり-reading",
-          subjectKey: "subject-1"
-        }),
-        pairKey: "pair-1",
-        right: buildKanjiClashSubject({
-          label: "右",
-          reading: "みぎ-reading",
-          subjectKey: "subject-2"
-        }),
-        targetPlacement: "left"
+  const rounds = overrides.rounds ?? [
+    buildKanjiClashRound({
+      left: buildKanjiClashSubject({
+        label: "左",
+        reading: "ひだり-reading",
+        subjectKey: "subject-1"
       }),
-      buildKanjiClashRound({
-        left: buildKanjiClashSubject({
-          label: "前",
-          reading: "まえ-reading",
-          subjectKey: "subject-3"
-        }),
-        pairKey: "pair-2",
-        right: buildKanjiClashSubject({
-          label: "後",
-          reading: "あと-reading",
-          subjectKey: "subject-4"
-        }),
-        targetPlacement: "left"
-      })
-    ];
+      pairKey: "pair-1",
+      right: buildKanjiClashSubject({
+        label: "右",
+        reading: "みぎ-reading",
+        subjectKey: "subject-2"
+      }),
+      targetPlacement: "left"
+    }),
+    buildKanjiClashRound({
+      left: buildKanjiClashSubject({
+        label: "前",
+        reading: "まえ-reading",
+        subjectKey: "subject-3"
+      }),
+      pairKey: "pair-2",
+      right: buildKanjiClashSubject({
+        label: "後",
+        reading: "あと-reading",
+        subjectKey: "subject-4"
+      }),
+      targetPlacement: "left"
+    })
+  ];
 
   return {
     awaitingConfirmation: false,
@@ -230,11 +230,13 @@ export function buildKanjiClashPageData(
   };
 }
 
-export function buildKanjiClashSessionActionResult(input: {
-  isCorrect?: boolean;
-  nextQueue?: KanjiClashQueueSnapshot;
-  nextRound?: KanjiClashSessionRound | null;
-} = {}): KanjiClashSessionActionResult {
+export function buildKanjiClashSessionActionResult(
+  input: {
+    isCorrect?: boolean;
+    nextQueue?: KanjiClashQueueSnapshot;
+    nextRound?: KanjiClashSessionRound | null;
+  } = {}
+): KanjiClashSessionActionResult {
   const isCorrect = input.isCorrect ?? true;
   const answeredRound = buildKanjiClashRound({
     left: buildKanjiClashSubject({

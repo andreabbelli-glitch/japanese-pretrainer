@@ -41,6 +41,9 @@
 - `Kanji Clash`: il pool mostra solo pair di `term` gia consolidati nella
   review standard; non devono comparire `grammar`, card troppo nuove o
   superfici duplicate/quasi-clone.
+- `Kanji Clash`: il pool puo` includere sia pair con kanji condivisi sia pair
+  con un solo swap di kanji simili; il workspace deve mostrare il motivo in
+  modo compatto (`chip` kanji condivisi oppure `Kanji simili: A / B`).
 - `Kanji Clash`: il pool non deve promuovere front non lessicali come
   katakana/hiragana puri, frammenti frasali con particelle o punteggiatura e
   compound con prefisso leggero in kana/katakana o coda katakana.
@@ -98,6 +101,8 @@
   swipe a destra seleziona l'opzione destra.
 - Kanji Clash: la stessa pair non ricompare nella stessa sessione ne nello
   stesso ordine ne invertita.
+- Kanji Clash: una pair che passa sia la route `shared-kanji` sia la route
+  `similar-kanji` compare una sola volta nella sessione.
 - Kanji Clash: le voci simili restano separate solo quando la differenza e`
   reale e documentata, non come quasi-cloni creati artificialmente.
 - Kanji Clash: una sessione completata o parziale non deve alterare numeri,

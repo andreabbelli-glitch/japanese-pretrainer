@@ -35,14 +35,25 @@ export type KanjiClashEligibleSubject = {
   surfaceForms: string[];
 };
 
+export type KanjiClashPairReason = "shared-kanji" | "similar-kanji";
+
+export type KanjiClashSimilarKanjiSwap = {
+  confidence: number;
+  leftKanji: string;
+  position: number;
+  rightKanji: string;
+};
+
 export type KanjiClashCandidate = {
   left: KanjiClashEligibleSubject;
   leftSubjectKey: string;
   pairKey: string;
+  pairReasons: KanjiClashPairReason[];
   right: KanjiClashEligibleSubject;
   rightSubjectKey: string;
   score: number;
   sharedKanji: string[];
+  similarKanjiSwaps: KanjiClashSimilarKanjiSwap[];
 };
 
 export type KanjiClashSessionMode = "automatic" | "manual";

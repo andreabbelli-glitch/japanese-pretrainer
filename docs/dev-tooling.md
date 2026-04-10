@@ -133,6 +133,16 @@ dall'ultimo training riuscito oppure non ci sono almeno `500` review nuove
 eleggibili. La schedulazione vera resta fuori dal repo: usare `cron`,
 `launchd`, `systemd` o automazioni Codex.
 
+Workflow dataset `Kanji Clash` per kanji simili:
+
+```sh
+./scripts/with-node.sh pnpm kanji-clash:generate-similar-kanji
+```
+
+Il comando rigenera il dataset versionato degli swap `A <-> B` combinando
+White Rabbit, `strokeEditDistance >= 0.75`, `yehAndLiRadical >= 0.75` e gli
+override manuali in `src/lib/kanji-clash/similar-kanji-overrides.ts`.
+
 ## Kanji Clash
 
 Kanji Clash non richiede comandi dedicati oltre ai gate canonici del repo, ma

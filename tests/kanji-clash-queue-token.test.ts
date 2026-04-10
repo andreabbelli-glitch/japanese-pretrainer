@@ -7,6 +7,7 @@ import {
   buildKanjiClashCandidate,
   buildKanjiClashQueueSnapshot,
   createKanjiClashQueueToken,
+  type KanjiClashCandidate,
   type KanjiClashEligibleSubject,
   type KanjiClashPairState,
   type KanjiClashQueueSnapshot,
@@ -168,19 +169,38 @@ function buildFixtureQueue() {
 }
 
 function createLegacyQueueToken(queue: KanjiClashQueueSnapshot) {
+  const legacyQueue = toLegacyQueueSnapshot(queue);
   const payload = JSON.stringify({
-    queue,
+    queue: legacyQueue,
     version: 1
   });
   const encodedPayload = Buffer.from(payload, "utf8").toString("base64url");
-  const signature = createHmac(
-    "sha256",
-    process.env.AUTH_SESSION_SECRET ?? ""
-  )
+  const signature = createHmac("sha256", process.env.AUTH_SESSION_SECRET ?? "")
     .update(encodedPayload)
     .digest("base64url");
 
   return `${encodedPayload}.${signature}`;
+}
+
+function toLegacyQueueSnapshot(queue: KanjiClashQueueSnapshot) {
+  return {
+    ...queue,
+    rounds: queue.rounds.map((round) => ({
+      ...round,
+      candidate: stripLegacyCandidateFields(round.candidate)
+    }))
+  };
+}
+
+function stripLegacyCandidateFields(candidate: KanjiClashCandidate) {
+  const legacyCandidate = {
+    ...candidate
+  } as Partial<KanjiClashCandidate>;
+
+  delete legacyCandidate.pairReasons;
+  delete legacyCandidate.similarKanjiSwaps;
+
+  return legacyCandidate;
 }
 
 describe("kanji clash queue token", () => {
@@ -206,11 +226,23 @@ describe("kanji clash queue token", () => {
     expect(verifyKanjiClashQueueToken(token)).toEqual(queue);
   });
 
-  it("keeps backward compatibility with legacy v1 tokens", () => {
+  it("normalizes legacy v1 tokens and reserializes them successfully", () => {
     const queue = buildFixtureQueue();
     const legacyToken = createLegacyQueueToken(queue);
+    const verifiedQueue = verifyKanjiClashQueueToken(legacyToken);
 
-    expect(verifyKanjiClashQueueToken(legacyToken)).toEqual(queue);
+    expect(verifiedQueue).not.toBeNull();
+    expect(verifiedQueue?.rounds[0]?.candidate.pairReasons).toEqual([
+      "shared-kanji"
+    ]);
+    expect(verifiedQueue?.rounds[0]?.candidate.similarKanjiSwaps).toEqual([]);
+
+    if (!verifiedQueue) {
+      throw new Error("Missing normalized Kanji Clash queue token.");
+    }
+
+    expect(verifyKanjiClashQueueToken(createKanjiClashQueueToken(verifiedQueue)))
+      .toEqual(verifiedQueue);
   });
 
   it("emits a smaller payload than the legacy full snapshot token", () => {
@@ -219,5 +251,37 @@ describe("kanji clash queue token", () => {
     const legacyToken = createLegacyQueueToken(queue);
 
     expect(v2Token.length).toBeLessThan(legacyToken.length);
+  });
+
+  it("round-trips similar-kanji metadata through the compact token", () => {
+    const wait = makeSubject({
+      kanji: ["待"],
+      label: "待つ",
+      reading: "まつ",
+      subjectKey: "entry:term:wait"
+    });
+    const hold = makeSubject({
+      kanji: ["持"],
+      label: "持つ",
+      reading: "もつ",
+      subjectKey: "entry:term:hold"
+    });
+    const candidate = buildKanjiClashCandidate(wait, hold);
+
+    if (!candidate) {
+      throw new Error("Missing similar-kanji candidate fixture.");
+    }
+
+    const queue = buildKanjiClashQueueSnapshot({
+      candidates: [candidate],
+      mode: "manual",
+      now: "2026-04-09T12:00:00.000Z",
+      requestedSize: 1,
+      scope: "global"
+    });
+
+    expect(
+      verifyKanjiClashQueueToken(createKanjiClashQueueToken(queue))
+    ).toEqual(queue);
   });
 });

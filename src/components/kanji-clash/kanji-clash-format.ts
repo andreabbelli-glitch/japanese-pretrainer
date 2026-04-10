@@ -1,6 +1,7 @@
 import type {
   KanjiClashEligibleSubject,
   KanjiClashPairStateStatus,
+  KanjiClashSimilarKanjiSwap,
   KanjiClashRoundSource,
   KanjiClashSessionMode
 } from "@/lib/kanji-clash/types";
@@ -48,10 +49,28 @@ export function formatKanjiClashPairStateLabel(
   }
 }
 
-export function getKanjiClashSubjectReading(subject: KanjiClashEligibleSubject) {
+export function getKanjiClashSubjectReading(
+  subject: KanjiClashEligibleSubject
+) {
   return subject.reading ?? subject.readingForms[0] ?? subject.label;
 }
 
-export function getKanjiClashSubjectMeaning(subject: KanjiClashEligibleSubject) {
+export function getKanjiClashSubjectMeaning(
+  subject: KanjiClashEligibleSubject
+) {
   return subject.members[0]?.meaningIt ?? "Significato non disponibile";
+}
+
+export function formatKanjiClashSimilarKanjiSwaps(
+  swaps: KanjiClashSimilarKanjiSwap[]
+) {
+  const uniquePairs = new Set(
+    swaps.map((swap) =>
+      [swap.leftKanji, swap.rightKanji]
+        .sort((left, right) => left.localeCompare(right))
+        .join(" / ")
+    )
+  );
+
+  return `Kanji simili: ${[...uniquePairs].join(", ")}`;
 }

@@ -17,6 +17,7 @@ import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
 import {
   formatKanjiClashPairStateLabel,
+  formatKanjiClashSimilarKanjiSwaps,
   formatKanjiClashRoundPosition,
   formatKanjiClashRoundSource,
   getKanjiClashSubjectMeaning,
@@ -215,13 +216,21 @@ function KanjiClashRoundWorkspace({
           <p className="kanji-clash-target__meaning">
             {getKanjiClashSubjectMeaning(round.target)}
           </p>
-          {round.candidate.sharedKanji.length > 0 ? (
+          {round.candidate.sharedKanji.length > 0 ||
+          round.candidate.similarKanjiSwaps.length > 0 ? (
             <div className="kanji-clash-target__chips">
               {round.candidate.sharedKanji.map((kanji) => (
                 <span key={kanji} className="chip">
                   {kanji}
                 </span>
               ))}
+              {round.candidate.similarKanjiSwaps.length > 0 ? (
+                <span className="meta-pill">
+                  {formatKanjiClashSimilarKanjiSwaps(
+                    round.candidate.similarKanjiSwaps
+                  )}
+                </span>
+              ) : null}
             </div>
           ) : null}
         </SurfaceCard>

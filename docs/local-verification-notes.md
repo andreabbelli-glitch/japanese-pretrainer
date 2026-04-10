@@ -21,6 +21,9 @@ non sostituisce un audit completo e aggiornato del codice.
 - Loading state contestuali per glossary, textbook, lesson, review, progress e settings.
 - `Kanji Clash` resta un workspace separato da `/review`, con pair state e log
   dedicati e senza mutazioni laterali sulla review standard.
+- `Kanji Clash` puo` ammettere coppie sia per `shared-kanji` sia per
+  `similar-kanji`, mantenendo la pair key unica quando una coppia passa
+  entrambe le route.
 - `Kanji Clash` esclude correttamente same-entry, same-group, same-surface ed
   editorial-clone dal pool eligibile.
 - `Kanji Clash` esclude anche i `qualified-contained-clone`, dove una forma
@@ -64,6 +67,8 @@ non sostituisce un audit completo e aggiornato del codice.
   `ターンを追加する`, `どの ポケモンに 使いますか？`) e compound con prefisso
   leggero in kana/katakana (`カード交換`, `おすすめ編成`) o coda katakana
   (`進化クリーチャー`, `タップ状態`).
+- Le coppie `similar-kanji` devono usare solo uno swap singolo ammesso dal
+  dataset versionato, con stessa lunghezza e resto della superficie identico.
 - La sessione `Kanji Clash` non deve ripresentare la stessa pair key nella
   stessa run, anche con lati invertiti o target invertito.
 - Una risposta corretta in `Kanji Clash` deve avanzare al round successivo

@@ -1,13 +1,12 @@
-import {
-  createHmac,
-  timingSafeEqual
-} from "node:crypto";
+import { createHmac, timingSafeEqual } from "node:crypto";
 
 import { materializeKanjiClashSessionRound } from "./queue.ts";
 import { buildKanjiClashPairKey } from "./utils.ts";
 import type {
   KanjiClashEligibleSubject,
+  KanjiClashPairReason,
   KanjiClashPairState,
+  KanjiClashSimilarKanjiSwap,
   KanjiClashQueueSnapshot,
   KanjiClashRoundSource,
   KanjiClashSessionRound
@@ -15,6 +14,7 @@ import type {
 
 const KANJI_CLASH_QUEUE_TOKEN_VERSION_V1 = 1;
 const KANJI_CLASH_QUEUE_TOKEN_VERSION_V2 = 2;
+const KANJI_CLASH_QUEUE_TOKEN_VERSION_V3 = 3;
 const KANJI_CLASH_ROUND_SOURCE_CODES = {
   due: 0,
   new: 1,
@@ -39,6 +39,13 @@ type CompactKanjiClashRoundPayload = {
   src: (typeof KANJI_CLASH_ROUND_SOURCE_CODES)[keyof typeof KANJI_CLASH_ROUND_SOURCE_CODES];
 };
 
+type CompactKanjiClashSimilarSwapPayload = readonly [
+  string,
+  string,
+  number,
+  number
+];
+
 type CompactKanjiClashQueueTokenPayload = {
   queue: {
     a: boolean;
@@ -57,9 +64,39 @@ type CompactKanjiClashQueueTokenPayload = {
   version: typeof KANJI_CLASH_QUEUE_TOKEN_VERSION_V2;
 };
 
+type CompactKanjiClashRoundPayloadV3 = {
+  k: string[];
+  p: CompactKanjiClashPairState | null;
+  pr: KanjiClashPairReason[];
+  s: readonly [number, number];
+  score: number;
+  sk: CompactKanjiClashSimilarSwapPayload[];
+  src: (typeof KANJI_CLASH_ROUND_SOURCE_CODES)[keyof typeof KANJI_CLASH_ROUND_SOURCE_CODES];
+};
+
+type CompactKanjiClashQueueTokenPayloadV3 = {
+  queue: {
+    a: boolean;
+    c: number;
+    d: number | null;
+    i: number;
+    m: KanjiClashQueueSnapshot["mode"];
+    n: number;
+    q: CompactKanjiClashRoundPayloadV3[];
+    r: number | null;
+    s: string[];
+    scope: KanjiClashQueueSnapshot["scope"];
+    t: string;
+    u: KanjiClashEligibleSubject[];
+  };
+  version: typeof KANJI_CLASH_QUEUE_TOKEN_VERSION_V3;
+};
+
 export function createKanjiClashQueueToken(queue: KanjiClashQueueSnapshot) {
   const payload = JSON.stringify(
-    serializeKanjiClashQueueTokenPayloadV2(queue) satisfies CompactKanjiClashQueueTokenPayload
+    serializeKanjiClashQueueTokenPayloadV3(
+      queue
+    ) satisfies CompactKanjiClashQueueTokenPayloadV3
   );
   const encodedPayload = toBase64Url(payload);
   const signature = signKanjiClashQueueTokenPayload(
@@ -88,8 +125,14 @@ export function verifyKanjiClashQueueToken(token: string) {
 
   try {
     const payload = JSON.parse(fromBase64Url(encodedPayload)) as Partial<
-      CompactKanjiClashQueueTokenPayload | KanjiClashLegacyQueueTokenPayload
+      | CompactKanjiClashQueueTokenPayloadV3
+      | CompactKanjiClashQueueTokenPayload
+      | KanjiClashLegacyQueueTokenPayload
     >;
+
+    if (payload.version === KANJI_CLASH_QUEUE_TOKEN_VERSION_V3) {
+      return inflateKanjiClashQueueTokenPayloadV3(payload);
+    }
 
     if (payload.version === KANJI_CLASH_QUEUE_TOKEN_VERSION_V2) {
       return inflateKanjiClashQueueTokenPayloadV2(payload);
@@ -99,7 +142,7 @@ export function verifyKanjiClashQueueToken(token: string) {
       payload.version === KANJI_CLASH_QUEUE_TOKEN_VERSION_V1 &&
       isKanjiClashQueueSnapshot(payload.queue)
     ) {
-      return payload.queue;
+      return normalizeLegacyKanjiClashQueueSnapshot(payload.queue);
     }
 
     return null;
@@ -145,9 +188,9 @@ function safeEqual(left: string, right: string) {
   return timingSafeEqual(leftBuffer, rightBuffer);
 }
 
-function serializeKanjiClashQueueTokenPayloadV2(
+function serializeKanjiClashQueueTokenPayloadV3(
   queue: KanjiClashQueueSnapshot
-): CompactKanjiClashQueueTokenPayload {
+): CompactKanjiClashQueueTokenPayloadV3 {
   const { subjects, subjectIndexByKey } = buildSubjectRegistry(queue.rounds);
 
   return {
@@ -161,11 +204,24 @@ function serializeKanjiClashQueueTokenPayloadV2(
       q: queue.rounds.map((round) => ({
         k: round.candidate.sharedKanji,
         p: round.pairState ? compactKanjiClashPairState(round.pairState) : null,
+        pr: round.candidate.pairReasons,
         s: [
-          requireSubjectIndex(subjectIndexByKey, round.candidate.leftSubjectKey),
-          requireSubjectIndex(subjectIndexByKey, round.candidate.rightSubjectKey)
+          requireSubjectIndex(
+            subjectIndexByKey,
+            round.candidate.leftSubjectKey
+          ),
+          requireSubjectIndex(
+            subjectIndexByKey,
+            round.candidate.rightSubjectKey
+          )
         ],
         score: round.candidate.score,
+        sk: round.candidate.similarKanjiSwaps.map((swap) => [
+          swap.leftKanji,
+          swap.rightKanji,
+          swap.position,
+          swap.confidence
+        ]),
         src: KANJI_CLASH_ROUND_SOURCE_CODES[round.source]
       })),
       r: queue.requestedSize,
@@ -174,8 +230,56 @@ function serializeKanjiClashQueueTokenPayloadV2(
       t: queue.snapshotAtIso,
       u: subjects
     },
-    version: KANJI_CLASH_QUEUE_TOKEN_VERSION_V2
+    version: KANJI_CLASH_QUEUE_TOKEN_VERSION_V3
   };
+}
+
+function inflateKanjiClashQueueTokenPayloadV3(
+  payload: Partial<CompactKanjiClashQueueTokenPayloadV3>
+) {
+  if (!isCompactKanjiClashQueueTokenPayloadV3(payload)) {
+    return null;
+  }
+
+  const subjects = payload.queue.u;
+  const rounds = payload.queue.q.map((round, index) => {
+    const left = subjects[round.s[0]];
+    const right = subjects[round.s[1]];
+
+    if (!left || !right) {
+      throw new Error("Kanji Clash queue token references a missing subject.");
+    }
+
+    const pairKey = buildKanjiClashPairKey(left.subjectKey, right.subjectKey);
+    const pairState = round.p
+      ? inflateKanjiClashPairState(round.p, {
+          leftSubjectKey: left.subjectKey,
+          pairKey,
+          rightSubjectKey: right.subjectKey
+        })
+      : null;
+
+    return materializeKanjiClashSessionRound(
+      {
+        candidate: {
+          left,
+          leftSubjectKey: left.subjectKey,
+          pairKey,
+          pairReasons: round.pr,
+          right,
+          rightSubjectKey: right.subjectKey,
+          score: round.score,
+          sharedKanji: round.k,
+          similarKanjiSwaps: round.sk.map(inflateKanjiClashSimilarSwap)
+        },
+        pairState,
+        source: inflateKanjiClashRoundSource(round.src)
+      },
+      index
+    );
+  });
+
+  return buildQueueSnapshotFromInflatedRounds(payload.queue, rounds);
 }
 
 function inflateKanjiClashQueueTokenPayloadV2(
@@ -209,10 +313,12 @@ function inflateKanjiClashQueueTokenPayloadV2(
           left,
           leftSubjectKey: left.subjectKey,
           pairKey,
+          pairReasons: round.k.length > 0 ? ["shared-kanji"] : [],
           right,
           rightSubjectKey: right.subjectKey,
           score: round.score,
-          sharedKanji: round.k
+          sharedKanji: round.k,
+          similarKanjiSwaps: []
         },
         pairState,
         source: inflateKanjiClashRoundSource(round.src)
@@ -221,26 +327,35 @@ function inflateKanjiClashQueueTokenPayloadV2(
     );
   });
 
+  return buildQueueSnapshotFromInflatedRounds(payload.queue, rounds);
+}
+
+function buildQueueSnapshotFromInflatedRounds(
+  queuePayload:
+    | CompactKanjiClashQueueTokenPayload["queue"]
+    | CompactKanjiClashQueueTokenPayloadV3["queue"],
+  rounds: KanjiClashSessionRound[]
+) {
   const counts = countRoundSources(rounds);
-  const currentRoundIndex = payload.queue.c;
+  const currentRoundIndex = queuePayload.c;
 
   const queue = {
-    awaitingConfirmation: payload.queue.a,
+    awaitingConfirmation: queuePayload.a,
     currentRoundIndex,
-    dailyNewLimit: payload.queue.d,
+    dailyNewLimit: queuePayload.d,
     dueCount: counts.due,
     finished: rounds.length === 0 || currentRoundIndex >= rounds.length,
-    introducedTodayCount: payload.queue.i,
-    mode: payload.queue.m,
-    newAvailableCount: payload.queue.n,
+    introducedTodayCount: queuePayload.i,
+    mode: queuePayload.m,
+    newAvailableCount: queuePayload.n,
     newQueuedCount: counts.new,
     remainingCount: Math.max(0, rounds.length - currentRoundIndex),
-    requestedSize: payload.queue.r,
+    requestedSize: queuePayload.r,
     reserveCount: counts.reserve,
     rounds,
-    scope: payload.queue.scope,
-    seenPairKeys: payload.queue.s,
-    snapshotAtIso: payload.queue.t,
+    scope: queuePayload.scope,
+    seenPairKeys: queuePayload.s,
+    snapshotAtIso: queuePayload.t,
     totalCount: rounds.length
   } satisfies KanjiClashQueueSnapshot;
 
@@ -332,7 +447,9 @@ function inflateKanjiClashRoundSource(
     case KANJI_CLASH_ROUND_SOURCE_CODES.reserve:
       return "reserve";
     default:
-      throw new Error("Kanji Clash queue token contains an invalid round source.");
+      throw new Error(
+        "Kanji Clash queue token contains an invalid round source."
+      );
   }
 }
 
@@ -367,15 +484,32 @@ function isCompactKanjiClashQueueTokenPayload(
 ): value is CompactKanjiClashQueueTokenPayload {
   return Boolean(
     value &&
-      value.version === KANJI_CLASH_QUEUE_TOKEN_VERSION_V2 &&
-      value.queue &&
-      typeof value.queue === "object" &&
-      Array.isArray(value.queue.q) &&
-      Array.isArray(value.queue.s) &&
-      Array.isArray(value.queue.u) &&
-      typeof value.queue.m === "string" &&
-      typeof value.queue.scope === "string" &&
-      typeof value.queue.t === "string"
+    value.version === KANJI_CLASH_QUEUE_TOKEN_VERSION_V2 &&
+    value.queue &&
+    typeof value.queue === "object" &&
+    Array.isArray(value.queue.q) &&
+    Array.isArray(value.queue.s) &&
+    Array.isArray(value.queue.u) &&
+    typeof value.queue.m === "string" &&
+    typeof value.queue.scope === "string" &&
+    typeof value.queue.t === "string"
+  );
+}
+
+function isCompactKanjiClashQueueTokenPayloadV3(
+  value: Partial<CompactKanjiClashQueueTokenPayloadV3>
+): value is CompactKanjiClashQueueTokenPayloadV3 {
+  return Boolean(
+    value &&
+    value.version === KANJI_CLASH_QUEUE_TOKEN_VERSION_V3 &&
+    value.queue &&
+    typeof value.queue === "object" &&
+    Array.isArray(value.queue.q) &&
+    Array.isArray(value.queue.s) &&
+    Array.isArray(value.queue.u) &&
+    typeof value.queue.m === "string" &&
+    typeof value.queue.scope === "string" &&
+    typeof value.queue.t === "string"
   );
 }
 
@@ -384,11 +518,44 @@ function isKanjiClashQueueSnapshot(
 ): value is KanjiClashQueueSnapshot {
   return Boolean(
     value &&
-      typeof value === "object" &&
-      Array.isArray((value as KanjiClashQueueSnapshot).rounds) &&
-      Array.isArray((value as KanjiClashQueueSnapshot).seenPairKeys) &&
-      typeof (value as KanjiClashQueueSnapshot).mode === "string" &&
-      typeof (value as KanjiClashQueueSnapshot).scope === "string" &&
-      typeof (value as KanjiClashQueueSnapshot).snapshotAtIso === "string"
+    typeof value === "object" &&
+    Array.isArray((value as KanjiClashQueueSnapshot).rounds) &&
+    Array.isArray((value as KanjiClashQueueSnapshot).seenPairKeys) &&
+    typeof (value as KanjiClashQueueSnapshot).mode === "string" &&
+    typeof (value as KanjiClashQueueSnapshot).scope === "string" &&
+    typeof (value as KanjiClashQueueSnapshot).snapshotAtIso === "string"
   );
+}
+
+function inflateKanjiClashSimilarSwap(
+  swap: CompactKanjiClashSimilarSwapPayload
+): KanjiClashSimilarKanjiSwap {
+  return {
+    confidence: swap[3],
+    leftKanji: swap[0],
+    position: swap[2],
+    rightKanji: swap[1]
+  };
+}
+
+function normalizeLegacyKanjiClashQueueSnapshot(
+  queue: KanjiClashQueueSnapshot
+): KanjiClashQueueSnapshot {
+  return {
+    ...queue,
+    rounds: queue.rounds.map((round) => ({
+      ...round,
+      candidate: {
+        ...round.candidate,
+        pairReasons: Array.isArray(round.candidate.pairReasons)
+          ? round.candidate.pairReasons
+          : round.candidate.sharedKanji.length > 0
+            ? ["shared-kanji"]
+            : [],
+        similarKanjiSwaps: Array.isArray(round.candidate.similarKanjiSwaps)
+          ? round.candidate.similarKanjiSwaps
+          : []
+      }
+    }))
+  };
 }

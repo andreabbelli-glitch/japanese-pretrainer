@@ -34,6 +34,7 @@
     "pronunciations:forvo": "node --experimental-strip-types ./scripts/fetch-forvo-pronunciations.ts",
     "image:status": "node --experimental-strip-types ./scripts/image-workflow-status.ts",
     "image:apply": "node --experimental-strip-types ./scripts/apply-image-blocks.ts",
+    "kanji-clash:generate-similar-kanji": "node --experimental-strip-types ./scripts/generate-kanji-clash-similar-kanji-dataset.ts",
     "db:setup": "pnpm db:migrate && pnpm db:seed",
     "db:studio": "drizzle-kit studio --config=drizzle.config.ts",
     "auth:hash-password": "node --experimental-strip-types ./scripts/hash-auth-password.ts",

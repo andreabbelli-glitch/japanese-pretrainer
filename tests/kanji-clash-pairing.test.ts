@@ -10,7 +10,8 @@ import {
 } from "@/lib/kanji-clash";
 
 function buildSubject(
-  input: Partial<KanjiClashEligibleSubject> & Pick<KanjiClashEligibleSubject, "label" | "subjectKey">
+  input: Partial<KanjiClashEligibleSubject> &
+    Pick<KanjiClashEligibleSubject, "label" | "subjectKey">
 ): KanjiClashEligibleSubject {
   const label = input.label;
   const reading = input.reading ?? null;
@@ -19,34 +20,28 @@ function buildSubject(
     entryType: "term",
     kanji: input.kanji ?? extractKanjiFromText(label),
     label,
-    members:
-      input.members ??
-      [
-        {
-          entryId:
-            input.source?.type === "entry"
-              ? input.source.entryId
-              : `${input.subjectKey}-member`,
-          lemma: label,
-          meaningIt: `${label} meaning`,
-          mediaId: "media-fixture",
-          mediaSlug: "fixture",
-          mediaTitle: "Fixture",
-          reading: reading ?? ""
-        }
-      ],
+    members: input.members ?? [
+      {
+        entryId:
+          input.source?.type === "entry"
+            ? input.source.entryId
+            : `${input.subjectKey}-member`,
+        lemma: label,
+        meaningIt: `${label} meaning`,
+        mediaId: "media-fixture",
+        mediaSlug: "fixture",
+        mediaTitle: "Fixture",
+        reading: reading ?? ""
+      }
+    ],
     reading,
-    readingForms:
-      input.readingForms ??
-      (reading ? [reading] : []),
+    readingForms: input.readingForms ?? (reading ? [reading] : []),
     reps: input.reps ?? 3,
     reviewState: input.reviewState ?? "review",
-    source:
-      input.source ??
-      {
-        entryId: input.subjectKey.replaceAll(":", "-"),
-        type: "entry"
-      },
+    source: input.source ?? {
+      entryId: input.subjectKey.replaceAll(":", "-"),
+      type: "entry"
+    },
     stability: input.stability ?? 8,
     subjectKey: input.subjectKey,
     surfaceForms: input.surfaceForms ?? [label]
@@ -120,24 +115,21 @@ describe("kanji clash pairing helpers", () => {
     ["受け取る", "受け取り履歴"],
     ["受け取り履歴", "受け取り期限"],
     ["未受け取り", "一括受け取り"]
-  ])(
-    "excludes shared lexical cores for %s vs %s",
-    (leftLabel, rightLabel) => {
-      const left = buildSubject({
-        label: leftLabel,
-        subjectKey: `entry:term:${leftLabel}`
-      });
-      const right = buildSubject({
-        label: rightLabel,
-        subjectKey: `entry:term:${rightLabel}`
-      });
+  ])("excludes shared lexical cores for %s vs %s", (leftLabel, rightLabel) => {
+    const left = buildSubject({
+      label: leftLabel,
+      subjectKey: `entry:term:${leftLabel}`
+    });
+    const right = buildSubject({
+      label: rightLabel,
+      subjectKey: `entry:term:${rightLabel}`
+    });
 
-      expect(getKanjiClashPairExclusionReason(left, right)).toBe(
-        "shared-lexical-core"
-      );
-      expect(buildKanjiClashCandidate(left, right)).toBeNull();
-    }
-  );
+    expect(getKanjiClashPairExclusionReason(left, right)).toBe(
+      "shared-lexical-core"
+    );
+    expect(buildKanjiClashCandidate(left, right)).toBeNull();
+  });
 
   it.each([["山札の上から1枚目", "山札の一番下"]])(
     "excludes phrase-level contextual prefixes for %s vs %s",
@@ -265,6 +257,126 @@ describe("kanji clash pairing helpers", () => {
       expect(buildKanjiClashCandidate(left, right)).not.toBeNull();
     }
   );
+
+  it("builds a similar-kanji candidate when two compact surfaces differ by one allowed kanji swap", () => {
+    const wait = buildSubject({
+      kanji: ["待"],
+      label: "待つ",
+      reading: "まつ",
+      subjectKey: "entry:term:wait"
+    });
+    const hold = buildSubject({
+      kanji: ["持"],
+      label: "持つ",
+      reading: "もつ",
+      subjectKey: "entry:term:hold"
+    });
+    const candidate = buildKanjiClashCandidate(wait, hold);
+
+    expect(candidate).not.toBeNull();
+    expect(candidate?.pairReasons).toEqual(["similar-kanji"]);
+    expect(candidate?.sharedKanji).toEqual([]);
+    expect(candidate?.similarKanjiSwaps).toEqual([
+      {
+        confidence: 0.5,
+        leftKanji: "持",
+        position: 0,
+        rightKanji: "待"
+      }
+    ]);
+  });
+
+  it("normalizes inline-marked surfaces before checking similar-kanji swaps", () => {
+    const wait = buildSubject({
+      kanji: ["待"],
+      label: "待つ",
+      reading: "まつ",
+      subjectKey: "entry:term:wait-inline",
+      surfaceForms: ["{{待|ま}}つ"]
+    });
+    const hold = buildSubject({
+      kanji: ["持"],
+      label: "持つ",
+      reading: "もつ",
+      subjectKey: "entry:term:hold-inline",
+      surfaceForms: ["{{持|も}}つ"]
+    });
+    const candidate = buildKanjiClashCandidate(wait, hold);
+
+    expect(candidate).not.toBeNull();
+    expect(candidate?.pairReasons).toEqual(["similar-kanji"]);
+    expect(candidate?.sharedKanji).toEqual([]);
+    expect(candidate?.similarKanjiSwaps).toEqual([
+      {
+        confidence: 0.5,
+        leftKanji: "持",
+        position: 0,
+        rightKanji: "待"
+      }
+    ]);
+  });
+
+  it("keeps both reasons when a pair shares one kanji and swaps another confusable kanji", () => {
+    const left = buildSubject({
+      kanji: ["待", "機"],
+      label: "待機",
+      reading: "たいき",
+      subjectKey: "entry:term:left"
+    });
+    const right = buildSubject({
+      kanji: ["持", "機"],
+      label: "持機",
+      reading: "じき",
+      subjectKey: "entry:term:right"
+    });
+    const candidate = buildKanjiClashCandidate(left, right);
+
+    expect(candidate).not.toBeNull();
+    expect(candidate?.pairReasons).toEqual(["shared-kanji", "similar-kanji"]);
+    expect(candidate?.sharedKanji).toEqual(["機"]);
+    expect(candidate?.similarKanjiSwaps).toEqual([
+      {
+        confidence: 0.5,
+        leftKanji: "待",
+        position: 0,
+        rightKanji: "持"
+      }
+    ]);
+  });
+
+  it("rejects similar-kanji candidates when more than one position changes", () => {
+    const left = buildSubject({
+      kanji: ["待", "機"],
+      label: "待機",
+      reading: "たいき",
+      subjectKey: "entry:term:left"
+    });
+    const right = buildSubject({
+      kanji: ["持", "器"],
+      label: "持器",
+      reading: "じき",
+      subjectKey: "entry:term:right"
+    });
+
+    expect(buildKanjiClashCandidate(left, right)).toBeNull();
+  });
+
+  it("rejects similar-kanji candidates when the okurigana schema changes", () => {
+    const left = buildSubject({
+      kanji: ["待"],
+      label: "待つ",
+      reading: "まつ",
+      subjectKey: "entry:term:left"
+    });
+    const right = buildSubject({
+      kanji: ["持"],
+      label: "持た",
+      reading: "もた",
+      subjectKey: "entry:term:right"
+    });
+
+    expect(buildKanjiClashCandidate(left, right)).toBeNull();
+  });
 
   it.each([["一番上", "一番下"]])(
     "keeps contrastive compounds that only share a structural prefix for %s vs %s",

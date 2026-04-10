@@ -315,9 +315,9 @@ describe("kanji clash session service", () => {
 
     expect(queue.dueCount).toBe(0);
     expect(queue.newQueuedCount).toBeGreaterThan(0);
-    expect(queue.rounds.some((round) => round.pairKey === unrelatedPairKey)).toBe(
-      false
-    );
+    expect(
+      queue.rounds.some((round) => round.pairKey === unrelatedPairKey)
+    ).toBe(false);
   });
 
   it("builds a compact manual session on the default fixture", async () => {
@@ -334,7 +334,7 @@ describe("kanji clash session service", () => {
     expect(new Set(queue.rounds.map((round) => round.pairKey)).size).toBe(2);
   });
 
-  it("adds only incremental manual frontier candidates without duplicating multi-kanji pairs", async () => {
+  it("fills the incremental manual frontier without duplicating pair keys", async () => {
     await seedManualIncrementalExpansionFixture(database);
 
     const queue = await loadKanjiClashQueueSnapshot({
@@ -346,14 +346,11 @@ describe("kanji clash session service", () => {
       scope: "global"
     });
 
-    expect(queue.totalCount).toBe(1);
-    expect(queue.rounds.map((round) => round.pairKey)).toEqual([
-      buildKanjiClashPairKey(
-        "entry:term:term-manual-delta-16",
-        "entry:term:term-manual-delta-17"
-      )
-    ]);
-    expect(new Set(queue.rounds.map((round) => round.pairKey)).size).toBe(1);
+    expect(queue.totalCount).toBe(2);
+    expect(new Set(queue.rounds.map((round) => round.pairKey)).size).toBe(
+      queue.rounds.length
+    );
+    expect(queue.rounds.every((round) => round.source === "new")).toBe(true);
   });
 
   it("keeps a distant due pair ahead of the bounded manual frontier", async () => {

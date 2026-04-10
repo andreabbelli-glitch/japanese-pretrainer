@@ -97,4 +97,123 @@ describe("kanji clash page", () => {
     expect(markup).toContain('href="/kanji-clash?mode=manual&amp;size=30"');
     expect(markup).toContain("Apri FSRS");
   });
+
+  it("renders compact similar-kanji copy for a similar-only round", () => {
+    const markup = renderToStaticMarkup(
+      createElement(KanjiClashPage, {
+        data: buildKanjiClashPageData({
+          currentRound: buildKanjiClashRound({
+            candidate: {
+              left: buildKanjiClashSubject({
+                kanji: ["待"],
+                label: "待つ",
+                meaningIt: "aspettare",
+                reading: "まつ",
+                subjectKey: "entry:term:wait"
+              }),
+              leftSubjectKey: "entry:term:wait",
+              pairKey: "entry:term:hold::entry:term:wait",
+              pairReasons: ["similar-kanji"],
+              right: buildKanjiClashSubject({
+                kanji: ["持"],
+                label: "持つ",
+                meaningIt: "tenere in mano",
+                reading: "もつ",
+                subjectKey: "entry:term:hold"
+              }),
+              rightSubjectKey: "entry:term:hold",
+              score: 118,
+              sharedKanji: [],
+              similarKanjiSwaps: [
+                {
+                  confidence: 1,
+                  leftKanji: "待",
+                  position: 0,
+                  rightKanji: "持"
+                }
+              ]
+            },
+            left: buildKanjiClashSubject({
+              kanji: ["待"],
+              label: "待つ",
+              meaningIt: "aspettare",
+              reading: "まつ",
+              subjectKey: "entry:term:wait"
+            }),
+            pairKey: "entry:term:hold::entry:term:wait",
+            right: buildKanjiClashSubject({
+              kanji: ["持"],
+              label: "持つ",
+              meaningIt: "tenere in mano",
+              reading: "もつ",
+              subjectKey: "entry:term:hold"
+            }),
+            targetPlacement: "left"
+          })
+        })
+      })
+    );
+
+    expect(markup).toContain("Kanji simili: 待 / 持");
+  });
+
+  it("renders both shared and similar indicators when a round carries both reasons", () => {
+    const markup = renderToStaticMarkup(
+      createElement(KanjiClashPage, {
+        data: buildKanjiClashPageData({
+          currentRound: buildKanjiClashRound({
+            candidate: {
+              left: buildKanjiClashSubject({
+                kanji: ["待", "機"],
+                label: "待機",
+                meaningIt: "attesa",
+                reading: "たいき",
+                subjectKey: "entry:term:left"
+              }),
+              leftSubjectKey: "entry:term:left",
+              pairKey: "entry:term:left::entry:term:right",
+              pairReasons: ["shared-kanji", "similar-kanji"],
+              right: buildKanjiClashSubject({
+                kanji: ["持", "機"],
+                label: "持機",
+                meaningIt: "fixture",
+                reading: "じき",
+                subjectKey: "entry:term:right"
+              }),
+              rightSubjectKey: "entry:term:right",
+              score: 128,
+              sharedKanji: ["機"],
+              similarKanjiSwaps: [
+                {
+                  confidence: 1,
+                  leftKanji: "待",
+                  position: 0,
+                  rightKanji: "持"
+                }
+              ]
+            },
+            left: buildKanjiClashSubject({
+              kanji: ["待", "機"],
+              label: "待機",
+              meaningIt: "attesa",
+              reading: "たいき",
+              subjectKey: "entry:term:left"
+            }),
+            pairKey: "entry:term:left::entry:term:right",
+            right: buildKanjiClashSubject({
+              kanji: ["持", "機"],
+              label: "持機",
+              meaningIt: "fixture",
+              reading: "じき",
+              subjectKey: "entry:term:right"
+            }),
+            targetPlacement: "left"
+          })
+        })
+      })
+    );
+
+    expect(markup).toContain("機");
+    expect(markup).toContain("Kanji simili: 待 / 持");
+  });
 });

@@ -4,5 +4,7 @@ export * from "./queue.ts";
 export * from "./queue-token.ts";
 export * from "./scheduler.ts";
 export * from "./session.ts";
+export * from "./similar-kanji.ts";
+export * from "./similar-kanji-dataset-builder.ts";
 export * from "./types.ts";
 export * from "./utils.ts";
