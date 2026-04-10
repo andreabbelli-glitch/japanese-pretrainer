@@ -188,6 +188,7 @@ export function buildLessonMetrics(lessons: LessonListItem[]) {
   let lastOpenedLessonRaw: LessonListItem | null = null;
 
   const groups = new Map<string, SegmentStudyPreview>();
+  const segmentCurrentLessonOpenedAt = new Map<string, string | null>();
 
   for (let i = 0; i < lessons.length; i++) {
     const lesson = lessons[i]!;
@@ -235,8 +236,15 @@ export function buildLessonMetrics(lessons: LessonListItem[]) {
       existing.lessonCount += 1;
       existing.completedLessons += isCompleted ? 1 : 0;
 
-      if (!existing.currentLessonTitle && currentLessonTitle) {
+      if (
+        currentLessonTitle &&
+        compareIsoDates(
+          lesson.progress?.lastOpenedAt ?? null,
+          segmentCurrentLessonOpenedAt.get(key) ?? null
+        ) > 0
+      ) {
         existing.currentLessonTitle = currentLessonTitle;
+        segmentCurrentLessonOpenedAt.set(key, lesson.progress?.lastOpenedAt ?? null);
       }
     } else {
       groups.set(key, {
@@ -247,6 +255,10 @@ export function buildLessonMetrics(lessons: LessonListItem[]) {
         completedLessons: isCompleted ? 1 : 0,
         currentLessonTitle
       });
+
+      if (currentLessonTitle) {
+        segmentCurrentLessonOpenedAt.set(key, lesson.progress?.lastOpenedAt ?? null);
+      }
     }
   }
 

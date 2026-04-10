@@ -17,7 +17,10 @@ export type ReturnToContext = {
 export function readInternalHref(
   value: string | string[] | undefined
 ): Route | null {
-  const candidate = Array.isArray(value) ? value[0] : value;
+  const candidates = Array.isArray(value) ? value : [value];
+  const candidate = candidates.find(
+    (entry) => typeof entry === "string" && entry.trim().length > 0
+  );
 
   if (typeof candidate !== "string") {
     return null;

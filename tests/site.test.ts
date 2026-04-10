@@ -20,6 +20,7 @@ import {
   mediaStudyHref,
   mediaTextbookLessonHref,
   primaryNav,
+  readInternalHref,
   resolveGlossaryBackNavigation,
   resolveActivePrimaryNavHref,
   resolveGlossaryReviewReturnTo,
@@ -207,6 +208,15 @@ describe("site helpers", () => {
     });
     expect(resolveReturnToLabel(resolveReturnToContext("/media/"))).toBe(
       "Torna ai Media"
+    );
+  });
+
+  it("keeps the first non-empty internal href when duplicated params start empty", () => {
+    expect(readInternalHref(["", " /review?answered=3 "])).toBe(
+      "/review?answered=3"
+    );
+    expect(readInternalHref(["   ", "/glossary?q=iku"])).toBe(
+      "/glossary?q=iku"
     );
   });
 
