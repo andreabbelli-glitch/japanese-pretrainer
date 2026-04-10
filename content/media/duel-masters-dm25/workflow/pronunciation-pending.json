@@ -2,81 +2,8 @@
   "version": 1,
   "media_slug": "duel-masters-dm25",
   "total_targets": 295,
-  "audio_backed_count": 114,
-  "known_missing_count": 169,
-  "pending_count": 12,
-  "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-henkou",
-      "label": "変更",
-      "reading": "へんこう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-babyponnosuke",
-      "label": "ベイビーポンの助",
-      "reading": "べいびーぽんのすけ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ookii",
-      "label": "大きい",
-      "reading": "おおきい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kotonaru",
-      "label": "異なる",
-      "reading": "ことなる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-g-zero",
-      "label": "G・ゼロ",
-      "reading": "じーぜろ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-chuushi-suru",
-      "label": "中止する",
-      "reading": "ちゅうしする"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-ichido",
-      "label": "一度",
-      "reading": "いちど"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-saidai",
-      "label": "最大",
-      "reading": "さいだい"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-shika",
-      "label": "～しか ... ない",
-      "reading": "しか"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-konoyounishite",
-      "label": "このようにして",
-      "reading": "このようにして"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-erabareta-player",
-      "label": "自身のクリーチャーが選ばれたプレイヤーは",
-      "reading": "じしんのクリーチャーがえらばれたプレイヤーは"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-deru-made-omotemuki-ni-shi",
-      "label": "クリーチャーが出るまで表向きにし",
-      "reading": "くりーちゃーがでるまでおもてむきにし"
-    }
-  ]
+  "audio_backed_count": 121,
+  "known_missing_count": 174,
+  "pending_count": 0,
+  "pending": []
 }
