@@ -83,13 +83,14 @@ export async function loadGlossaryPageData(
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db
 ): Promise<GlossaryPageData | null> {
-  const media = await getMediaBySlugCached(database, mediaSlug);
+  const [media, defaultSort] = await Promise.all([
+    getMediaBySlugCached(database, mediaSlug),
+    getGlossaryDefaultSort(database)
+  ]);
 
   if (!media) {
     return null;
   }
-
-  const defaultSort = await getGlossaryDefaultSort(database);
   const filters = normalizeGlossaryQuery(searchParams, defaultSort, {
     forcedMediaSlug: media.slug,
     supportsSegmentFilter: true

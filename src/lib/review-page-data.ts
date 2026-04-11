@@ -617,13 +617,9 @@ export async function getReviewQueueSnapshotForMedia(
   database: DatabaseClient = db
 ): Promise<ReviewQueueSnapshot | null> {
   const now = new Date();
-  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(database);
-
-  const [media, dailyLimit, mediaRows] = await Promise.all([
+  const [fsrsOptimizerSnapshot, media, mediaRows] = await Promise.all([
+    getFsrsOptimizerSnapshot(database),
     getMediaBySlugCached(database, mediaSlug),
-    import("@/lib/settings").then(({ getReviewDailyLimit }) =>
-      getReviewDailyLimit(database)
-    ),
     listMediaCached(database)
   ]);
 
@@ -634,8 +630,7 @@ export async function getReviewQueueSnapshotForMedia(
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds: mediaRows.map((item) => item.id),
-    now,
-    resolvedDailyLimit: dailyLimit
+    now
   });
   const snapshot = buildReviewQueueSnapshot({
     cards: workspace.cards,

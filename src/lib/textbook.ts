@@ -220,7 +220,12 @@ export async function getTextbookLessonTooltipEntries(
     enabled: canUseDataCache(database),
     keyParts: ["textbook", "tooltips", mediaSlug, lessonSlug],
     loader: () =>
-      loadTextbookLessonTooltipEntries(mediaSlug, lessonSlug, database),
+      loadTextbookLessonTooltipEntries(
+        media.id,
+        mediaSlug,
+        lessonSlug,
+        database
+      ),
     tags: [
       ...buildTextbookTooltipTags({ mediaSlug, lessonSlug }),
       ...buildGlossarySummaryTags([media.id]),
@@ -230,19 +235,14 @@ export async function getTextbookLessonTooltipEntries(
 }
 
 async function loadTextbookLessonTooltipEntries(
+  mediaId: string,
   mediaSlug: string,
   lessonSlug: string,
   database: DatabaseClient
 ): Promise<TextbookTooltipEntry[] | null> {
-  const media = await getMediaBySlugCached(database, mediaSlug);
-
-  if (!media) {
-    return null;
-  }
-
   const lesson = await getLessonTooltipSourceBySlug(
     database,
-    media.id,
+    mediaId,
     lessonSlug
   );
 
