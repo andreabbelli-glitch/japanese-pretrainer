@@ -47,6 +47,10 @@ src/
     login/          Pagina di accesso locale
     media/          Route dinamiche per media, glossary locale, textbook, review e progress
       [mediaSlug]/assets/ Asset route catch-all per file statici del media bundle
+      [mediaSlug]/glossary/ Glossary locale del media e filtri dedicati
+      [mediaSlug]/progress/ Stato di avanzamento e metriche del media
+      [mediaSlug]/review/ Vista review verticale sul sistema review globale
+      [mediaSlug]/textbook/ Route del textbook del media e lesson reader
     review/         Coda review cross-media
     settings/       Pagina impostazioni utente
   components/       Componenti React organizzati per feature area
@@ -73,6 +77,7 @@ src/
     content/        Utility per parser, validazione e sync dei bundle Markdown
       importer/     Pipeline di import e rendering dei bundle nel modello applicativo
       parser/       Parsing Markdown/frontmatter e normalizzazione blocchi strutturati
+    e2e/            Helper condivisi per bootstrap e utility dei test end-to-end
     kanji-clash/    Loader, scheduler e logica di sessione della modalita' kanji clash
     site/           Navigazione, href e utility di stato per il routing UI
   types/            Tipi TypeScript globali e interfacce condivise
@@ -91,12 +96,14 @@ scripts/            CLI standalone (non fanno parte del server Next.js)
   update-real-bundle-test-stats.ts Aggiorna fixture statistiche per test real bundle
   fsrs-optimize.ts        Ottimizza i parametri FSRS sui log review
   fsrs-optimize-if-needed.ts Esegue l'ottimizzazione FSRS solo se necessaria
+  generate-kanji-clash-similar-kanji-dataset.ts Genera il dataset di kanji simili per kanji clash
   image-workflow-status.ts Riassume stato richieste e asset immagine
   apply-image-blocks.ts    Applica blocchi immagine generati ai contenuti derivati
   db-migrate.ts           Esegue migrazioni DB
   db-backfill-review-subject-state.ts Normalizza stati review legacy
   db-seed.ts              Esegue seed DB
   hash-auth-password.ts   Genera hash password per auth locale
+  start-e2e-snapshot.ts   Avvia il server E2E con snapshot del database di test
   release-check.sh        Esegue il gate completo di release
   tooling-doctor.sh       Diagnostica rapida dell'ambiente locale
   with-node.sh            Wrapper shell per eseguire comandi con la versione Node del repo
@@ -132,6 +139,7 @@ docs/
     general/              Template e regole riusabili cross-media
     media/                Brief e prompt specifici per singolo media
       <slug>/             Cartelle per-media con brief e prompt batchizzati
+  tasks/                  Task operative e note di lavoro per manutenzione e backlog
   drift-report.md         Report periodico di drift tra codice e docs strategiche
 
 prompts/                  Prompt locali ignorati da git
@@ -199,6 +207,7 @@ prompts/                  Prompt locali ignorati da git
 ./scripts/with-node.sh pnpm pitch-accents:fetch # scarica dati di pitch accent
 ./scripts/with-node.sh pnpm image:status    # mostra stato workflow immagini
 ./scripts/with-node.sh pnpm image:apply     # applica blocchi immagine ai contenuti derivati
+./scripts/with-node.sh pnpm kanji-clash:generate-similar-kanji # genera il dataset di kanji simili per kanji clash
 ```
 
 ---
