@@ -1,5 +1,4 @@
 import {
-  countReviewSubjectsIntroducedOnDay,
   db,
   listGlossaryPreviewEntries,
   listGlossaryProgressSummaries,
@@ -21,10 +20,12 @@ import {
   runWithTaggedCache,
   SETTINGS_TAG
 } from "@/lib/data-cache";
-import { getLocalIsoDateKey } from "@/lib/local-date";
 import { calculatePercent } from "@/lib/study-format";
 import { mediaGlossaryEntryHref } from "@/lib/site";
-import { loadReviewLaunchCandidatesCached } from "@/lib/review";
+import {
+  loadReviewIntroducedTodayCountCached,
+  loadReviewLaunchCandidatesCached
+} from "@/lib/review";
 import { getReviewDailyLimit } from "@/lib/settings";
 import {
   buildEmptyGlossaryProgressSnapshot,
@@ -297,22 +298,6 @@ async function loadGlossaryPreviewEntriesCached(
   return new Map(
     previewRows.map((row) => [row.mediaId, row.previews] as const)
   );
-}
-
-async function loadReviewIntroducedTodayCountCached(
-  database: DatabaseClient,
-  asOf: Date
-) {
-  return runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: [
-      "app-shell",
-      "review-introduced-global",
-      getLocalIsoDateKey(asOf)
-    ],
-    loader: () => countReviewSubjectsIntroducedOnDay(database, asOf),
-    tags: buildReviewSummaryTags()
-  });
 }
 
 async function buildMediaShellSnapshot(

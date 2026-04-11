@@ -18,6 +18,7 @@ import {
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
 import { pickBestBy } from "@/lib/collections";
+import { getLocalIsoDateKey } from "@/lib/local-date";
 import {
   getReviewDailyLimit,
   getStudySettings
@@ -209,7 +210,7 @@ export async function loadReviewWorkspaceV2(input: {
       input.resolvedNewIntroducedTodayCount != null
         ? input.resolvedNewIntroducedTodayCount
         : measureWith(input.profiler, "countReviewSubjectsIntroducedOnDay", () =>
-            countReviewSubjectsIntroducedOnDay(database, now)
+            loadReviewIntroducedTodayCountCached(database, now)
           )
     ]);
   const cards = stableWorkspace.cards;
@@ -342,6 +343,18 @@ export async function loadReviewLaunchCandidatesCached(
   });
 }
 
+export async function loadReviewIntroducedTodayCountCached(
+  database: DatabaseClient = db,
+  asOf: Date = new Date()
+) {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["review-introduced-global", getLocalIsoDateKey(asOf)],
+    loader: () => countReviewSubjectsIntroducedOnDay(database, asOf),
+    tags: buildReviewSummaryTags()
+  });
+}
+
 export async function getReviewLaunchMedia(
   database: DatabaseClient = db
 ): Promise<{
@@ -396,12 +409,10 @@ export async function loadReviewOverviewSnapshots(
 
   const now = new Date();
   const mediaIds = media.map((item) => item.id);
-  const dailyLimit = await getReviewDailyLimit(database);
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds,
-    now,
-    resolvedDailyLimit: dailyLimit
+    now
   });
   const snapshots = new Map<string, ReviewOverviewSnapshot>();
 
@@ -454,12 +465,10 @@ export async function loadGlobalReviewOverviewSnapshot(
   }
 
   const now = new Date();
-  const dailyLimit = await getReviewDailyLimit(database);
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds: media.map((item) => item.id),
-    now,
-    resolvedDailyLimit: dailyLimit
+    now
   });
 
   return buildReviewOverviewSnapshot({
@@ -497,12 +506,10 @@ export async function loadGlobalAndMediaReviewOverviewSnapshots(
   }
 
   const now = new Date();
-  const dailyLimit = await getReviewDailyLimit(database);
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds: media.map((item) => item.id),
-    now,
-    resolvedDailyLimit: dailyLimit
+    now
   });
 
   const nowIso = workspace.now.toISOString();

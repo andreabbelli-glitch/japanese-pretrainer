@@ -32,6 +32,7 @@ export {
 
 export {
   getEligibleReviewCardsByMediaIds,
+  loadReviewIntroducedTodayCountCached,
   loadReviewLaunchCandidatesCached,
   getReviewLaunchMedia,
   getEligibleReviewCardsByMediaId,
