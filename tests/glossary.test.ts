@@ -1672,6 +1672,29 @@ describe("glossary data", () => {
     ]);
   });
 
+  it("skips duplicated invalid preview params until it finds a valid glossary preview", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["sample-anime"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlossaryPageData(
+      "sample-anime",
+      {
+        preview: ["missing-entry", "grammar-teiru"],
+        previewKind: ["bad", "grammar"]
+      },
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(data?.preview?.entry.id).toBe("grammar-teiru");
+    expect(data?.preview?.entry.kind).toBe("grammar");
+  });
+
   it("keeps glossary detail local to the current media when source ids are reused across media", async () => {
     const contentRoot = path.join(tempDir, "cross-media-content");
 

@@ -21,6 +21,7 @@ import {
   runWithTaggedCache,
   SETTINGS_TAG
 } from "@/lib/data-cache";
+import { getLocalIsoDateKey } from "@/lib/local-date";
 import { calculatePercent } from "@/lib/study-format";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import { loadReviewLaunchCandidatesCached } from "@/lib/review";
@@ -130,12 +131,14 @@ export async function loadMediaShellSnapshots(
 
   const snapshots = media.map((item) => {
     const candidate = candidatesByMedia.get(item.id);
-    const newQueuedCount = Math.min(candidate?.newCount ?? 0, remainingNewSlots);
+    const newQueuedCount = Math.min(
+      candidate?.newCount ?? 0,
+      remainingNewSlots
+    );
 
     return mapMediaShellSnapshotFromCounts({
       glossary:
-        glossarySnapshots.get(item.id) ??
-        buildEmptyGlossaryProgressSnapshot(),
+        glossarySnapshots.get(item.id) ?? buildEmptyGlossaryProgressSnapshot(),
       lessons: lessonsByMedia.get(item.id) ?? [],
       media: item,
       reviewCounts: {
@@ -157,15 +160,12 @@ export async function loadMediaShellSnapshots(
     return snapshots;
   }
 
-  const focusPreviewEntries = await loadGlossaryPreviewEntriesCached(
-    database,
-    [
-      {
-        id: focusMedia.id,
-        slug: focusMedia.slug
-      }
-    ]
-  ).then((entriesByMedia) => entriesByMedia.get(focusMedia.id) ?? []);
+  const focusPreviewEntries = await loadGlossaryPreviewEntriesCached(database, [
+    {
+      id: focusMedia.id,
+      slug: focusMedia.slug
+    }
+  ]).then((entriesByMedia) => entriesByMedia.get(focusMedia.id) ?? []);
 
   return snapshots.map((snapshot) =>
     snapshot.id === focusMedia.id
@@ -231,7 +231,9 @@ async function loadGlossaryProgressSummarySnapshotsCached(
     tags: buildGlossarySummaryTags(media.map((item) => item.id))
   });
 
-  return new Map(snapshotRows.map((row) => [row.mediaId, row.snapshot] as const));
+  return new Map(
+    snapshotRows.map((row) => [row.mediaId, row.snapshot] as const)
+  );
 }
 
 async function loadGlossaryPreviewEntriesCached(
@@ -292,7 +294,9 @@ async function loadGlossaryPreviewEntriesCached(
     tags: buildGlossarySummaryTags(media.map((item) => item.id))
   });
 
-  return new Map(previewRows.map((row) => [row.mediaId, row.previews] as const));
+  return new Map(
+    previewRows.map((row) => [row.mediaId, row.previews] as const)
+  );
 }
 
 async function loadReviewIntroducedTodayCountCached(
@@ -301,7 +305,11 @@ async function loadReviewIntroducedTodayCountCached(
 ) {
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "review-introduced-global", asOf.toISOString().slice(0, 10)],
+    keyParts: [
+      "app-shell",
+      "review-introduced-global",
+      getLocalIsoDateKey(asOf)
+    ],
     loader: () => countReviewSubjectsIntroducedOnDay(database, asOf),
     tags: buildReviewSummaryTags()
   });
@@ -309,7 +317,9 @@ async function loadReviewIntroducedTodayCountCached(
 
 async function buildMediaShellSnapshot(
   database: DatabaseClient,
-  media: MediaListItem | NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>
+  media:
+    | MediaListItem
+    | NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>
 ): Promise<MediaShellSnapshot> {
   const nowIso = new Date().toISOString();
   const [

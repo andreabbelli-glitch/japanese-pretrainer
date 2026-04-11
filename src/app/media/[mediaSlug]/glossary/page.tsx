@@ -39,7 +39,8 @@ export default async function MediaGlossaryRoute({
 function readSearchParam(value: string | string[] | undefined) {
   if (Array.isArray(value)) {
     return (
-      value.find((entry) => typeof entry === "string" && entry.trim().length > 0)
+      value
+        .find((entry) => typeof entry === "string" && entry.trim().length > 0)
         ?.trim() ?? undefined
     );
   }
@@ -52,48 +53,67 @@ function readSearchParam(value: string | string[] | undefined) {
 function readCardsFilter(
   value: string | string[] | undefined
 ): GlossaryCardsFilter | undefined {
-  const candidate = readSearchParam(value);
-
-  return candidate === "all" ||
-    candidate === "with_cards" ||
-    candidate === "without_cards"
-    ? candidate
-    : undefined;
+  return readMatchingSearchParam(
+    value,
+    (candidate): candidate is GlossaryCardsFilter =>
+      candidate === "all" ||
+      candidate === "with_cards" ||
+      candidate === "without_cards"
+  );
 }
 
 function readEntryType(
   value: string | string[] | undefined
 ): "all" | GlossaryEntryKind | undefined {
-  const candidate = readSearchParam(value);
-
-  return candidate === "all" ||
-    candidate === "term" ||
-    candidate === "grammar"
-    ? candidate
-    : undefined;
+  return readMatchingSearchParam(
+    value,
+    (candidate): candidate is "all" | GlossaryEntryKind =>
+      candidate === "all" || candidate === "term" || candidate === "grammar"
+  );
 }
 
 function readGlossarySort(
   value: string | string[] | undefined
 ): GlossarySort | undefined {
-  const candidate = readSearchParam(value);
-
-  return candidate === "lesson_order" || candidate === "alphabetical"
-    ? candidate
-    : undefined;
+  return readMatchingSearchParam(
+    value,
+    (candidate): candidate is GlossarySort =>
+      candidate === "lesson_order" || candidate === "alphabetical"
+  );
 }
 
 function readStudyFilter(
   value: string | string[] | undefined
 ): GlossaryStudyFilter | undefined {
-  const candidate = readSearchParam(value);
+  return readMatchingSearchParam(
+    value,
+    (candidate): candidate is GlossaryStudyFilter =>
+      candidate === "all" ||
+      candidate === "known" ||
+      candidate === "review" ||
+      candidate === "learning" ||
+      candidate === "new" ||
+      candidate === "available"
+  );
+}
 
-  return candidate === "all" ||
-    candidate === "known" ||
-    candidate === "review" ||
-    candidate === "learning" ||
-    candidate === "new" ||
-    candidate === "available"
-    ? candidate
-    : undefined;
+function readMatchingSearchParam<T extends string>(
+  value: string | string[] | undefined,
+  matcher: (candidate: string) => candidate is T
+): T | undefined {
+  const candidates = Array.isArray(value) ? value : [value];
+
+  for (const entry of candidates) {
+    const trimmed = entry?.trim();
+
+    if (!trimmed) {
+      continue;
+    }
+
+    if (matcher(trimmed)) {
+      return trimmed;
+    }
+  }
+
+  return undefined;
 }

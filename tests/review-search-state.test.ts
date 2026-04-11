@@ -46,4 +46,18 @@ describe("review search state", () => {
       showAnswer: true
     });
   });
+
+  it("skips invalid duplicated counters and reveal flags until it finds a valid review value", () => {
+    expect(
+      normalizeReviewSearchState({
+        answered: ["oops", "12"],
+        extraNew: ["1e2", "3"],
+        show: ["question", "answer"]
+      })
+    ).toMatchObject({
+      answeredCount: 12,
+      extraNewCount: 3,
+      showAnswer: true
+    });
+  });
 });

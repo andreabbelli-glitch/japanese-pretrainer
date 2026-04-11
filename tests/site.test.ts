@@ -147,13 +147,17 @@ describe("site helpers", () => {
       "/glossary"
     );
     expect(
-      resolveActivePrimaryNavHref("/media/fixture-tcg/glossary/term/term-fixture-iku")
+      resolveActivePrimaryNavHref(
+        "/media/fixture-tcg/glossary/term/term-fixture-iku"
+      )
     ).toBe("/glossary");
     expect(resolveActivePrimaryNavHref("/media/fixture-tcg/review")).toBe(
       "/review"
     );
     expect(
-      resolveActivePrimaryNavHref("/media/fixture-tcg/review/card/card-fixture-iku")
+      resolveActivePrimaryNavHref(
+        "/media/fixture-tcg/review/card/card-fixture-iku"
+      )
     ).toBe("/review");
     expect(resolveActivePrimaryNavHref("/kanji-clash")).toBe("/kanji-clash");
     expect(resolveActivePrimaryNavHref("/kanji-clash/manual")).toBe(
@@ -163,26 +167,27 @@ describe("site helpers", () => {
   });
 
   it("classifies internal return targets without conflating glossary and review", () => {
-    expect(resolveReturnToContext("/review?answered=3&card=card-iku")).toMatchObject(
-      {
-        href: "/review?answered=3&card=card-iku",
-        kind: "review",
-        pathname: "/review"
-      }
-    );
-    expect(resolveReturnToContext("/media/fixture-tcg/review?card=card-iku"))
-      .toMatchObject({
-        href: "/media/fixture-tcg/review?card=card-iku",
-        kind: "review",
-        pathname: "/media/fixture-tcg/review"
-      });
-    expect(resolveReturnToContext("/glossary?q=iku&media=sample-anime")).toMatchObject(
-      {
-        href: "/glossary?q=iku&media=sample-anime",
-        kind: "globalGlossary",
-        pathname: "/glossary"
-      }
-    );
+    expect(
+      resolveReturnToContext("/review?answered=3&card=card-iku")
+    ).toMatchObject({
+      href: "/review?answered=3&card=card-iku",
+      kind: "review",
+      pathname: "/review"
+    });
+    expect(
+      resolveReturnToContext("/media/fixture-tcg/review?card=card-iku")
+    ).toMatchObject({
+      href: "/media/fixture-tcg/review?card=card-iku",
+      kind: "review",
+      pathname: "/media/fixture-tcg/review"
+    });
+    expect(
+      resolveReturnToContext("/glossary?q=iku&media=sample-anime")
+    ).toMatchObject({
+      href: "/glossary?q=iku&media=sample-anime",
+      kind: "globalGlossary",
+      pathname: "/glossary"
+    });
     expect(
       resolveReturnToContext("/media/fixture-tcg/glossary?q=iku")
     ).toMatchObject({
@@ -190,9 +195,9 @@ describe("site helpers", () => {
       kind: "localGlossary",
       pathname: "/media/fixture-tcg/glossary"
     });
-    expect(resolveReturnToLabel(resolveReturnToContext("/glossary?q=iku"))).toBe(
-      "Torna al Glossary"
-    );
+    expect(
+      resolveReturnToLabel(resolveReturnToContext("/glossary?q=iku"))
+    ).toBe("Torna al Glossary");
     expect(
       resolveReturnToLabel(
         resolveReturnToContext("/media/fixture-tcg/review?card=card-iku")
@@ -216,6 +221,15 @@ describe("site helpers", () => {
       "/review?answered=3"
     );
     expect(readInternalHref(["   ", "/glossary?q=iku"])).toBe(
+      "/glossary?q=iku"
+    );
+  });
+
+  it("skips invalid duplicated href values until it finds an internal target", () => {
+    expect(readInternalHref(["https://example.com/review", "/review"])).toBe(
+      "/review"
+    );
+    expect(readInternalHref(["//evil.test/path", " /glossary?q=iku "])).toBe(
       "/glossary?q=iku"
     );
   });
@@ -403,8 +417,6 @@ describe("site helpers", () => {
     expect(markup).toContain(
       'href="/media/fixture-tcg/review?segment=segment_fixture_starter_core"'
     );
-    expect(markup).toContain(
-      'href="/media/fixture-tcg/textbook/core-vocab"'
-    );
+    expect(markup).toContain('href="/media/fixture-tcg/textbook/core-vocab"');
   });
 });

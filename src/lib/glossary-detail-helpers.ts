@@ -41,10 +41,12 @@ export function aggregateGlossaryLessonConnections(
         );
       }
 
-      existing.sortOrder = Math.min(
-        existing.sortOrder ?? Number.MAX_SAFE_INTEGER,
-        row.sortOrder ?? Number.MAX_SAFE_INTEGER
-      );
+      existing.sortOrder =
+        existing.sortOrder === null
+          ? row.sortOrder
+          : row.sortOrder === null
+            ? existing.sortOrder
+            : Math.min(existing.sortOrder, row.sortOrder);
       continue;
     }
 
@@ -135,6 +137,12 @@ export function groupAliasesForGlossaryDetail(aliases: GlossaryAlias[]) {
   const groups = new Map<string, string[]>();
 
   for (const alias of aliases) {
+    const normalizedText = alias.text.trim();
+
+    if (!normalizedText) {
+      continue;
+    }
+
     const key =
       alias.type === "reading"
         ? "Letture"
@@ -144,13 +152,13 @@ export function groupAliasesForGlossaryDetail(aliases: GlossaryAlias[]) {
     const existing = groups.get(key);
 
     if (existing) {
-      if (!existing.includes(alias.text)) {
-        existing.push(alias.text);
+      if (!existing.includes(normalizedText)) {
+        existing.push(normalizedText);
       }
       continue;
     }
 
-    groups.set(key, [alias.text]);
+    groups.set(key, [normalizedText]);
   }
 
   return [...groups.entries()].map(([label, values]) => ({

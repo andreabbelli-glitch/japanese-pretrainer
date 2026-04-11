@@ -1,15 +1,9 @@
 import { eq } from "drizzle-orm";
 
 import { db, lessonProgress, type DatabaseClient } from "@/db";
-import {
-  updateStudySettings,
-  type FuriganaMode
-} from "@/lib/settings";
+import { updateStudySettings, type FuriganaMode } from "@/lib/settings";
 import { formatLessonProgressStatusLabel } from "@/lib/study-format";
-import type {
-  TextbookLessonData,
-  TextbookLessonNavItem
-} from "@/lib/textbook";
+import type { TextbookLessonData, TextbookLessonNavItem } from "@/lib/textbook";
 
 type LessonOpenState = {
   lastOpenedAt: string;
@@ -92,14 +86,22 @@ export async function setLessonCompletionState(
   });
 
   if (!existing) {
+    if (!completed) {
+      return;
+    }
+
     await database.insert(lessonProgress).values({
       lessonId,
-      status: completed ? "completed" : "in_progress",
+      status: "completed",
       startedAt: nowIso,
-      completedAt: completed ? nowIso : null,
+      completedAt: nowIso,
       lastOpenedAt: nowIso
     });
 
+    return;
+  }
+
+  if (!completed && existing.status === "not_started") {
     return;
   }
 
@@ -107,7 +109,10 @@ export async function setLessonCompletionState(
     .update(lessonProgress)
     .set({
       status: completed ? "completed" : "in_progress",
-      startedAt: existing.startedAt ?? nowIso,
+      startedAt:
+        completed || existing.status !== "not_started"
+          ? (existing.startedAt ?? nowIso)
+          : null,
       completedAt: completed ? nowIso : null,
       lastOpenedAt: nowIso
     })

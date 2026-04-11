@@ -1,8 +1,4 @@
-import {
-  db,
-  type DatabaseClient,
-  type ReviewCardListItem
-} from "@/db";
+import { db, type DatabaseClient, type ReviewCardListItem } from "@/db";
 import {
   canUseDataCache,
   getMediaBySlugCached,
@@ -10,19 +6,15 @@ import {
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
-import {
-  getStudySettings
-} from "@/lib/settings";
+import { getStudySettings } from "@/lib/settings";
 import {
   mediaGlossaryHref,
   mediaHref,
   mediaReviewCardHref,
   mediaStudyHref
 } from "@/lib/site";
-import {
-  capitalizeToken,
-  formatReviewStateLabel
-} from "@/lib/study-format";
+import { capitalizeToken, formatReviewStateLabel } from "@/lib/study-format";
+import { getLocalIsoDateKey } from "@/lib/local-date";
 import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
@@ -94,7 +86,9 @@ function filterReviewSubjectGroupsByCards(
   const visibleCardIds = new Set(cards.map((card) => card.id));
 
   return subjectGroups.flatMap((group) => {
-    const filteredCards = group.cards.filter((card) => visibleCardIds.has(card.id));
+    const filteredCards = group.cards.filter((card) =>
+      visibleCardIds.has(card.id)
+    );
 
     if (filteredCards.length === 0) {
       return [];
@@ -104,9 +98,10 @@ function filterReviewSubjectGroupsByCards(
       {
         ...group,
         cards: filteredCards,
-        representativeCard: filteredCards.find(
-          (card) => card.id === group.representativeCard.id
-        ) ?? filteredCards[0]!
+        representativeCard:
+          filteredCards.find(
+            (card) => card.id === group.representativeCard.id
+          ) ?? filteredCards[0]!
       }
     ];
   });
@@ -296,33 +291,30 @@ export async function getReviewPageData(
       )
   );
 
-  return measureWith(
-    options.profiler,
-    "buildReviewPageDataFromWorkspace",
-    () =>
-      buildReviewPageDataFromWorkspace({
-        cards: workspace.cards,
-        dailyLimit: workspace.dailyLimit,
-        database,
-        entryLookup: workspace.entryLookup,
-        excludeCardIds: options.excludeCardIds,
-        media: {
-          glossaryHref: mediaGlossaryHref(media.slug),
-          href: mediaHref(media.slug),
-          reviewHref: mediaStudyHref(media.slug, "review"),
-          slug: media.slug,
-          title: media.title
-        },
-        mediaById: buildReviewMediaLookup(workspace.mediaRows),
-        newIntroducedTodayCount: workspace.newIntroducedTodayCount,
-        now,
-        profiler: options.profiler,
-        reviewFrontFurigana: settings.reviewFrontFurigana,
-        scope: "media",
-        searchState,
-        subjectGroups: workspace.subjectGroups,
-        visibleMediaId: media.id
-      })
+  return measureWith(options.profiler, "buildReviewPageDataFromWorkspace", () =>
+    buildReviewPageDataFromWorkspace({
+      cards: workspace.cards,
+      dailyLimit: workspace.dailyLimit,
+      database,
+      entryLookup: workspace.entryLookup,
+      excludeCardIds: options.excludeCardIds,
+      media: {
+        glossaryHref: mediaGlossaryHref(media.slug),
+        href: mediaHref(media.slug),
+        reviewHref: mediaStudyHref(media.slug, "review"),
+        slug: media.slug,
+        title: media.title
+      },
+      mediaById: buildReviewMediaLookup(workspace.mediaRows),
+      newIntroducedTodayCount: workspace.newIntroducedTodayCount,
+      now,
+      profiler: options.profiler,
+      reviewFrontFurigana: settings.reviewFrontFurigana,
+      scope: "media",
+      searchState,
+      subjectGroups: workspace.subjectGroups,
+      visibleMediaId: media.id
+    })
   );
 }
 
@@ -522,7 +514,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
 ): Promise<GlobalReviewFirstCandidateLoadResult> {
   const cacheEligible = !options.bypassCache && canUseDataCache(database);
   const searchState = normalizeReviewSearchState(searchParams);
-  const cacheDayKey = new Date().toISOString().slice(0, 10);
+  const cacheDayKey = getLocalIsoDateKey(new Date());
   const fsrsRuntimeContext = await getFsrsOptimizerRuntimeContext(database);
   const cacheKeyParts = [
     "review",
@@ -691,9 +683,7 @@ export function mapReviewQueueSubjectCardPreview(input: {
       input.queueStateSnapshot.bucket,
       input.queueStateSnapshot.dueAt
     ),
-    bucketLabel: formatBucketLabel(
-      input.queueStateSnapshot.bucket
-    ),
+    bucketLabel: formatBucketLabel(input.queueStateSnapshot.bucket),
     createdAt: input.card.createdAt,
     dueAt: input.queueStateSnapshot.dueAt,
     dueLabel: input.queueStateSnapshot.dueAt

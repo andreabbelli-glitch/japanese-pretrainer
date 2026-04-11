@@ -1,13 +1,9 @@
 import { and, asc, eq, gte, inArray, lt, ne, sql } from "drizzle-orm";
 
 import type { DatabaseClient, DatabaseQueryClient } from "../client.ts";
-import {
-  card,
-  reviewSubjectLog,
-  reviewSubjectState
-} from "../schema/index.ts";
+import { card, reviewSubjectLog, reviewSubjectState } from "../schema/index.ts";
 import type { EntryType } from "../schema/index.ts";
-import { getUtcDayBounds, quoteSqlString } from "./review-query-helpers.ts";
+import { getLocalDayBounds, quoteSqlString } from "./review-query-helpers.ts";
 
 export type ReviewSubjectEntryRef = {
   entryId: string;
@@ -119,7 +115,7 @@ export async function countReviewSubjectsIntroducedOnDay(
   database: DatabaseQueryClient,
   asOf = new Date()
 ) {
-  const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
+  const { dayEndIso, dayStartIso } = getLocalDayBounds(asOf);
 
   const rows = await database
     .selectDistinct({
@@ -165,7 +161,7 @@ export async function countReviewSubjectsIntroducedOnDayByMediaIds(
     return [];
   }
 
-  const { dayEndIso, dayStartIso } = getUtcDayBounds(asOf);
+  const { dayEndIso, dayStartIso } = getLocalDayBounds(asOf);
   const rows = await database
     .select({
       count: sql<number>`cast(count(distinct ${reviewSubjectLog.subjectKey}) as integer)`,

@@ -4,10 +4,7 @@ import {
   compareIsoDates,
   formatLessonProgressStatusLabel
 } from "@/lib/study-format";
-import type {
-  TextbookLessonData,
-  TextbookLessonNavItem
-} from "@/lib/textbook";
+import type { TextbookLessonData, TextbookLessonNavItem } from "@/lib/textbook";
 
 export function applyLessonCompletionState(
   data: TextbookLessonData,
@@ -16,6 +13,11 @@ export function applyLessonCompletionState(
   const currentLessonItem =
     data.lessons.find((lesson) => lesson.id === data.lesson.id) ?? null;
   const previousStatus = currentLessonItem?.status ?? data.lesson.status;
+
+  if (!completed && previousStatus === "not_started") {
+    return data;
+  }
+
   const nextStatus: TextbookLessonNavItem["status"] = completed
     ? "completed"
     : "in_progress";
@@ -24,12 +26,12 @@ export function applyLessonCompletionState(
     return data;
   }
 
+  const completionDelta =
+    Number(nextStatus === "completed") - Number(previousStatus === "completed");
   const nextStatusLabel = formatLessonProgressStatusLabel(nextStatus);
-  const nextCompletedLessons =
-    data.completedLessons +
-    (completed ? (previousStatus === "completed" ? 0 : 1) : -1);
+  const nextCompletedLessons = data.completedLessons + completionDelta;
   const nextCompletedAt = completed
-    ? currentLessonItem?.completedAt ?? data.lesson.completedAt ?? null
+    ? (currentLessonItem?.completedAt ?? data.lesson.completedAt ?? null)
     : null;
   const updateLessonNavItem = (lesson: TextbookLessonNavItem) =>
     lesson.id === data.lesson.id
@@ -49,7 +51,7 @@ export function applyLessonCompletionState(
     return hasCurrentLesson
       ? {
           ...group,
-          completedLessons: group.completedLessons + (completed ? 1 : -1),
+          completedLessons: group.completedLessons + completionDelta,
           lessons: group.lessons.map(updateLessonNavItem)
         }
       : group;

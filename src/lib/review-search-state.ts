@@ -23,8 +23,14 @@ export function buildReviewSearchStateCacheKeyParts(input: ReviewSearchState) {
 export function normalizeReviewSearchState(
   searchParams: Record<string, string | string[] | undefined>
 ): ReviewSearchState {
-  const answeredCount = readPositiveIntegerSearchParam(searchParams, "answered");
-  const extraNewCount = readPositiveIntegerSearchParam(searchParams, "extraNew");
+  const answeredCount = readPositiveIntegerSearchParam(
+    searchParams,
+    "answered"
+  );
+  const extraNewCount = readPositiveIntegerSearchParam(
+    searchParams,
+    "extraNew"
+  );
 
   return {
     answeredCount,
@@ -32,7 +38,12 @@ export function normalizeReviewSearchState(
     noticeCode: readSearchParam(searchParams, "notice") || null,
     segmentId: readSearchParam(searchParams, "segment") || null,
     selectedCardId: readSearchParam(searchParams, "card") || null,
-    showAnswer: readSearchParam(searchParams, "show") === "answer"
+    showAnswer:
+      readMatchingSearchParam(
+        searchParams,
+        "show",
+        (value): value is "answer" => value === "answer"
+      ) === "answer"
   };
 }
 
@@ -40,15 +51,17 @@ function readPositiveIntegerSearchParam(
   searchParams: Record<string, string | string[] | undefined>,
   key: string
 ) {
-  const value = readSearchParam(searchParams, key);
+  const value = readMatchingSearchParam(searchParams, key, (candidate) => {
+    if (!/^\d+$/u.test(candidate)) {
+      return false;
+    }
 
-  if (!/^\d+$/u.test(value)) {
-    return 0;
-  }
+    const parsed = Number.parseInt(candidate, 10);
 
-  const parsed = Number.parseInt(value, 10);
+    return Number.isSafeInteger(parsed) && parsed > 0;
+  });
 
-  return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : 0;
+  return value ? Number.parseInt(value, 10) : 0;
 }
 
 function readSearchParam(
@@ -59,10 +72,34 @@ function readSearchParam(
 
   if (Array.isArray(value)) {
     return (
-      value.find((entry) => typeof entry === "string" && entry.trim().length > 0)
+      value
+        .find((entry) => typeof entry === "string" && entry.trim().length > 0)
         ?.trim() ?? ""
     );
   }
 
   return value?.trim() ?? "";
+}
+
+function readMatchingSearchParam(
+  searchParams: Record<string, string | string[] | undefined>,
+  key: string,
+  matcher: (value: string) => boolean
+) {
+  const value = searchParams[key];
+  const candidates = Array.isArray(value) ? value : [value];
+
+  for (const entry of candidates) {
+    const trimmed = entry?.trim();
+
+    if (!trimmed) {
+      continue;
+    }
+
+    if (matcher(trimmed)) {
+      return trimmed;
+    }
+  }
+
+  return undefined;
 }

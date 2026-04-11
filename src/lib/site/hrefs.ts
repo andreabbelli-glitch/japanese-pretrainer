@@ -58,7 +58,9 @@ export function kanjiClashHref(input: KanjiClashHrefInput = {}): Route {
     setOptionalSearchParam(
       params,
       "size",
-      typeof input.size === "number" && Number.isFinite(input.size) && input.size > 0
+      typeof input.size === "number" &&
+        Number.isFinite(input.size) &&
+        input.size > 0
         ? String(Math.round(input.size))
         : undefined
     );
@@ -195,5 +197,25 @@ function setOptionalSearchParam(
 }
 
 function normalizeAssetPath(assetPath: string) {
-  return assetPath.replaceAll("\\", "/").trim().replace(/^\/+/u, "");
+  const normalizedSegments = assetPath
+    .replaceAll("\\", "/")
+    .trim()
+    .replace(/^\/+/u, "")
+    .split("/")
+    .filter(Boolean)
+    .reduce<string[]>((segments, segment) => {
+      if (segment === ".") {
+        return segments;
+      }
+
+      if (segment === "..") {
+        segments.pop();
+        return segments;
+      }
+
+      segments.push(segment);
+      return segments;
+    }, []);
+
+  return normalizedSegments.join("/");
 }

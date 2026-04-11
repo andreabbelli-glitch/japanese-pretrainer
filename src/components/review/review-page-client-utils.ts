@@ -43,7 +43,9 @@ export function buildSuccessfulHydrationResult(
 
 export function resolveHydratedFirstCandidateRevealedCardId(input: {
   currentData: ReviewPageClientData;
-  nextData: Parameters<typeof shouldAdoptServerFirstCandidateData>[0]["nextData"];
+  nextData: Parameters<
+    typeof shouldAdoptServerFirstCandidateData
+  >[0]["nextData"];
 }) {
   const preserveRevealedAnswer = shouldKeepRevealedReviewAnswer({
     currentCardId: input.currentData.selectedCard?.id ?? null,
@@ -106,9 +108,17 @@ export function buildSearchParamsRecord(
   const record: Record<string, string | string[] | undefined> = {};
 
   for (const key of new Set(searchParams.keys())) {
-    const values = searchParams.getAll(key);
+    const values = searchParams
+      .getAll(key)
+      .map((value) => value.trim())
+      .filter((value) => value.length > 0);
+
+    if (values.length === 0) {
+      continue;
+    }
+
     record[key] = values.length <= 1 ? values[0] : values;
   }
 
-  return record;
+  return Object.keys(record).length > 0 ? record : fallback;
 }

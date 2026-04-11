@@ -1,10 +1,12 @@
-export function getUtcDayBounds(asOf: Date) {
+export function getLocalDayBounds(asOf: Date) {
   const dayStart = new Date(
-    Date.UTC(asOf.getUTCFullYear(), asOf.getUTCMonth(), asOf.getUTCDate())
+    asOf.getFullYear(),
+    asOf.getMonth(),
+    asOf.getDate()
   );
   const dayEnd = new Date(dayStart);
 
-  dayEnd.setUTCDate(dayEnd.getUTCDate() + 1);
+  dayEnd.setDate(dayEnd.getDate() + 1);
 
   return {
     dayEndIso: dayEnd.toISOString(),

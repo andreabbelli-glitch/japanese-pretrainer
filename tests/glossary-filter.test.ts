@@ -56,4 +56,25 @@ describe("normalizeGlossaryQuery", () => {
       study: "learning"
     });
   });
+
+  it("skips invalid duplicated filters until it finds a valid glossary value", () => {
+    expect(
+      normalizeGlossaryQuery(
+        {
+          cards: ["invalid", "with_cards"],
+          page: ["oops", "12"],
+          sort: ["newest", "alphabetical"],
+          study: ["bad", "learning"],
+          type: ["wrong", "term"]
+        },
+        "lesson_order"
+      )
+    ).toMatchObject({
+      cards: "with_cards",
+      entryType: "term",
+      page: 12,
+      sort: "alphabetical",
+      study: "learning"
+    });
+  });
 });

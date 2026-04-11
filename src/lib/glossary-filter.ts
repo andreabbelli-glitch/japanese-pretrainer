@@ -43,32 +43,44 @@ export function normalizeGlossaryQuery(
     supportsSegmentFilter?: boolean;
   } = {}
 ): GlossaryQueryState {
-  const rawCards = readSearchParam(searchParams, "cards");
+  const rawCards = readMatchingSearchParam(
+    searchParams,
+    "cards",
+    (value): value is GlossaryCardsFilter =>
+      cardsFilterOptions.includes(value as GlossaryCardsFilter)
+  );
   const rawMedia = readSearchParam(searchParams, "media");
-  const rawPage = readSearchParam(searchParams, "page");
+  const parsedPage = readPositiveIntegerSearchParam(searchParams, "page");
   const rawQuery = readSearchParam(searchParams, "q");
-  const rawType = readSearchParam(searchParams, "type");
+  const rawType = readMatchingSearchParam(
+    searchParams,
+    "type",
+    (value): value is GlossaryQueryState["entryType"] =>
+      value === "term" || value === "grammar"
+  );
   const rawSegment = readSearchParam(searchParams, "segment");
-  const rawSort = readSearchParam(searchParams, "sort");
-  const rawStudy = readSearchParam(searchParams, "study");
-  const parsedPage = readPositiveIntegerSearchParam(rawPage);
+  const rawSort = readMatchingSearchParam(
+    searchParams,
+    "sort",
+    (value): value is GlossaryQueryState["sort"] =>
+      value === "alphabetical" || value === "lesson_order"
+  );
+  const rawStudy = readMatchingSearchParam(
+    searchParams,
+    "study",
+    (value): value is GlossaryQueryState["study"] =>
+      studyFilterOptions.includes(value as GlossaryQueryState["study"])
+  );
 
   return {
-    cards: cardsFilterOptions.includes(rawCards as GlossaryCardsFilter)
-      ? (rawCards as GlossaryCardsFilter)
-      : "all",
-    entryType: rawType === "term" || rawType === "grammar" ? rawType : "all",
+    cards: rawCards ?? "all",
+    entryType: rawType ?? "all",
     media: (options.forcedMediaSlug ?? rawMedia) || "all",
     page: Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1,
     query: rawQuery,
     segmentId: options.supportsSegmentFilter ? rawSegment || "all" : "all",
-    sort:
-      rawSort === "alphabetical" || rawSort === "lesson_order"
-        ? rawSort
-        : defaultSort,
-    study: studyFilterOptions.includes(rawStudy as GlossaryQueryState["study"])
-      ? (rawStudy as GlossaryQueryState["study"])
-      : "all"
+    sort: rawSort ?? defaultSort,
+    study: rawStudy ?? "all"
   };
 }
 
@@ -279,8 +291,7 @@ export function buildGlobalGlossaryResults(
 
 export function buildGlossaryStats(
   entries: Array<
-    Pick<GlossaryBaseEntry, "kind"> &
-      Pick<RankedGlossaryEntry, "studyState">
+    Pick<GlossaryBaseEntry, "kind"> & Pick<RankedGlossaryEntry, "studyState">
   >
 ) {
   let grammarCount = 0;
@@ -322,7 +333,8 @@ export function readSearchParam(
 
   if (Array.isArray(value)) {
     return (
-      value.find((entry) => typeof entry === "string" && entry.trim().length > 0)
+      value
+        .find((entry) => typeof entry === "string" && entry.trim().length > 0)
         ?.trim() ?? ""
     );
   }
@@ -330,14 +342,51 @@ export function readSearchParam(
   return value?.trim() ?? "";
 }
 
-function readPositiveIntegerSearchParam(value: string) {
-  if (!/^\d+$/u.test(value)) {
-    return 0;
+function readMatchingSearchParam<T extends string>(
+  searchParams: Record<string, string | string[] | undefined>,
+  key: string,
+  matcher: (value: string) => value is T
+) {
+  const value = searchParams[key];
+  const candidates = Array.isArray(value) ? value : [value];
+
+  for (const entry of candidates) {
+    const trimmed = entry?.trim();
+
+    if (!trimmed) {
+      continue;
+    }
+
+    if (matcher(trimmed)) {
+      return trimmed;
+    }
   }
 
-  const parsed = Number.parseInt(value, 10);
+  return undefined;
+}
 
-  return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : 0;
+function readPositiveIntegerSearchParam(
+  searchParams: Record<string, string | string[] | undefined>,
+  key: string
+) {
+  const value = searchParams[key];
+  const candidates = Array.isArray(value) ? value : [value];
+
+  for (const entry of candidates) {
+    const trimmed = entry?.trim();
+
+    if (!trimmed || !/^\d+$/u.test(trimmed)) {
+      continue;
+    }
+
+    const parsed = Number.parseInt(trimmed, 10);
+
+    if (Number.isSafeInteger(parsed) && parsed > 0) {
+      return parsed;
+    }
+  }
+
+  return 0;
 }
 
 export function groupRowsByEntry<

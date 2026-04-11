@@ -38,7 +38,7 @@ export async function getKanjiClashPageData(
   const mode = normalizeKanjiClashMode(searchParams.mode);
   const selectedMedia = resolveSelectedMediaOption(
     availableMedia,
-    readFirstSearchParam(searchParams.media)
+    searchParams.media
   );
   const scope = resolvePageScope(
     settings.kanjiClashDefaultScope,
@@ -82,46 +82,58 @@ export async function getKanjiClashPageData(
 function normalizeKanjiClashMode(
   value: string | string[] | undefined
 ): KanjiClashSessionMode {
-  return readFirstSearchParam(value) === "manual" ? "manual" : "automatic";
+  return readMatchingSearchParam(
+    value,
+    (candidate): candidate is KanjiClashSessionMode =>
+      candidate === "automatic" || candidate === "manual"
+  ) === "manual"
+    ? "manual"
+    : "automatic";
 }
 
 function resolveManualSessionSize(
   value: string | string[] | undefined,
   fallback: number
 ) {
-  const raw = readFirstSearchParam(value);
+  const parsed = readMatchingSearchParam(value, (candidate) => {
+    if (!/^\d+$/u.test(candidate)) {
+      return false;
+    }
 
-  if (!raw || !/^\d+$/u.test(raw)) {
-    return fallback;
-  }
+    const normalized = Number.parseInt(candidate, 10);
 
-  const parsed = Number.parseInt(raw, 10);
+    return (
+      Number.isSafeInteger(normalized) &&
+      normalized > 0 &&
+      normalized % KANJI_CLASH_MANUAL_QUERY_SIZE_STEP === 0
+    );
+  });
 
-  if (!Number.isFinite(parsed)) {
-    return fallback;
-  }
-
-  const normalized = Math.round(parsed);
-
-  if (
-    normalized <= 0 ||
-    normalized % KANJI_CLASH_MANUAL_QUERY_SIZE_STEP !== 0
-  ) {
-    return fallback;
-  }
-
-  return normalized;
+  return parsed ? Number.parseInt(parsed, 10) : fallback;
 }
 
 function resolveSelectedMediaOption(
   mediaOptions: KanjiClashPageMediaOption[],
-  mediaSlug: string | null
+  mediaSlug: string | string[] | undefined
 ) {
-  if (!mediaSlug) {
-    return null;
+  const candidates = Array.isArray(mediaSlug) ? mediaSlug : [mediaSlug];
+
+  for (const candidate of candidates) {
+    const trimmed = candidate?.trim();
+
+    if (!trimmed) {
+      continue;
+    }
+
+    const matchingOption =
+      mediaOptions.find((option) => option.slug === trimmed) ?? null;
+
+    if (matchingOption) {
+      return matchingOption;
+    }
   }
 
-  return mediaOptions.find((option) => option.slug === mediaSlug) ?? null;
+  return null;
 }
 
 function resolvePageScope(
@@ -137,10 +149,23 @@ function resolvePageScope(
     : "global";
 }
 
-function readFirstSearchParam(value: string | string[] | undefined) {
-  if (Array.isArray(value)) {
-    return value[0]?.trim() || null;
+function readMatchingSearchParam(
+  value: string | string[] | undefined,
+  matcher: (candidate: string) => boolean
+) {
+  const candidates = Array.isArray(value) ? value : [value];
+
+  for (const candidate of candidates) {
+    const trimmed = candidate?.trim();
+
+    if (!trimmed) {
+      continue;
+    }
+
+    if (matcher(trimmed)) {
+      return trimmed;
+    }
   }
 
-  return value?.trim() || null;
+  return null;
 }

@@ -176,7 +176,13 @@ export function verifySessionToken(token: string, now = Date.now()) {
     return true;
   }
 
-  const [encodedPayload, signature] = token.split(".");
+  const tokenSegments = token.split(".");
+
+  if (tokenSegments.length !== 2) {
+    return false;
+  }
+
+  const [encodedPayload, signature] = tokenSegments;
 
   if (!encodedPayload || !signature) {
     return false;

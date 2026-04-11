@@ -104,7 +104,10 @@ describe("auth helpers", () => {
     expect(verifySessionToken(token, issuedAt + 1000 * 60 * 60 * 24 * 31)).toBe(
       false
     );
-    expect(verifySessionToken(`${token}tampered`, issuedAt + 1_000)).toBe(false);
+    expect(verifySessionToken(`${token}tampered`, issuedAt + 1_000)).toBe(
+      false
+    );
+    expect(verifySessionToken(`${token}.extra`, issuedAt + 1_000)).toBe(false);
   });
 
   it("uses the same timestamp base for session cookie expiry", () => {

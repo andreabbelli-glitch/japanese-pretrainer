@@ -51,8 +51,7 @@ import {
   groupResolvedEntriesByResult,
   groupRowsByEntry,
   hasActiveGlossaryFilters,
-  normalizeGlossaryQuery,
-  readSearchParam
+  normalizeGlossaryQuery
 } from "@/lib/glossary-filter";
 import {
   buildGlossaryDetailData,
@@ -61,10 +60,7 @@ import {
   mapGrammarSummaryToBaseModel,
   mapTermSummaryToBaseModel
 } from "@/lib/glossary-format";
-import {
-  defaultStudySettings,
-  getGlossaryDefaultSort
-} from "@/lib/settings";
+import { defaultStudySettings, getGlossaryDefaultSort } from "@/lib/settings";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import { deriveEntryStudyState } from "@/lib/study-entry";
 import type {
@@ -295,7 +291,12 @@ export async function loadGlossaryDetailData(
   const entry =
     kind === "term"
       ? await getGlossaryEntryBySourceId(database, "term", media.id, entryId)
-      : await getGlossaryEntryBySourceId(database, "grammar", media.id, entryId);
+      : await getGlossaryEntryBySourceId(
+          database,
+          "grammar",
+          media.id,
+          entryId
+        );
 
   if (!entry) {
     return null;
@@ -696,9 +697,7 @@ async function loadPaginatedGlobalGlossarySearchResults(
   };
 }
 
-async function getGlobalGlossaryAggregateStatsCached(
-  database: DatabaseClient
-) {
+async function getGlobalGlossaryAggregateStatsCached(database: DatabaseClient) {
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["glossary", "aggregate-stats"],
@@ -795,18 +794,48 @@ function resolvePreviewEntry(
   searchParams: Record<string, string | string[] | undefined>,
   results: GlossaryPageData["results"]
 ) {
-  const previewId = readSearchParam(searchParams, "preview");
-  const previewKind = readSearchParam(searchParams, "previewKind");
+  const previewKind = readMatchingSearchParam(
+    searchParams,
+    "previewKind",
+    (value) => value === "term" || value === "grammar"
+  ) as "term" | "grammar" | undefined;
 
-  if (previewId && (previewKind === "term" || previewKind === "grammar")) {
-    const selected = results.find(
-      (result) => result.id === previewId && result.kind === previewKind
+  if (!previewKind) {
+    return results[0];
+  }
+
+  const selected = readMatchingSearchParam(searchParams, "preview", (value) =>
+    results.some((result) => result.id === value && result.kind === previewKind)
+  );
+
+  if (selected) {
+    return results.find(
+      (result) => result.id === selected && result.kind === previewKind
     );
-
-    if (selected) {
-      return selected;
-    }
   }
 
   return results[0];
+}
+
+function readMatchingSearchParam(
+  searchParams: Record<string, string | string[] | undefined>,
+  key: string,
+  matcher: (value: string) => boolean
+) {
+  const value = searchParams[key];
+  const candidates = Array.isArray(value) ? value : [value];
+
+  for (const entry of candidates) {
+    const trimmed = entry?.trim();
+
+    if (!trimmed) {
+      continue;
+    }
+
+    if (matcher(trimmed)) {
+      return trimmed;
+    }
+  }
+
+  return undefined;
 }

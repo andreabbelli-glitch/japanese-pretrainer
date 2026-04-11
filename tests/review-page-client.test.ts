@@ -3,6 +3,7 @@ import type { Route } from "next";
 import { describe, expect, it } from "vitest";
 
 import {
+  buildSearchParamsRecord,
   buildSuccessfulHydrationResult,
   buildReviewGradePreviewLookup,
   resolveHydratedFirstCandidateRevealedCardId
@@ -63,6 +64,29 @@ describe("review page client hydration", () => {
           id: "card-b"
         })
       })
+    });
+  });
+
+  it("ignores blank live search params instead of overriding the server fallback", () => {
+    const fallback = {
+      answered: "2",
+      card: "card-a"
+    };
+    const liveSearchParams = new URLSearchParams("card=&answered=   ");
+
+    expect(buildSearchParamsRecord(liveSearchParams, fallback)).toEqual(
+      fallback
+    );
+  });
+
+  it("trims duplicated live search params and drops empty entries", () => {
+    const liveSearchParams = new URLSearchParams(
+      "card=&card= card-b &segment= &segment= segment-1 "
+    );
+
+    expect(buildSearchParamsRecord(liveSearchParams)).toEqual({
+      card: "card-b",
+      segment: "segment-1"
     });
   });
 
@@ -177,7 +201,8 @@ function buildCurrentReviewPageClientData(input: {
     selectedCard: {
       back: "mazzo / deck",
       bucket: "new",
-      bucketDetail: "Pronta per entrare nella coda giornaliera senza perdere il legame con il Glossary.",
+      bucketDetail:
+        "Pronta per entrare nella coda giornaliera senza perdere il legame con il Glossary.",
       bucketLabel: "Nuova",
       contexts: [],
       createdAt: "2026-04-02T00:00:00.000Z",
@@ -257,7 +282,8 @@ function buildFirstCandidateReviewPageData(input: {
     selectedCard: {
       back: "mazzo / deck",
       bucket: "new",
-      bucketDetail: "Pronta per entrare nella coda giornaliera senza perdere il legame con il Glossary.",
+      bucketDetail:
+        "Pronta per entrare nella coda giornaliera senza perdere il legame con il Glossary.",
       bucketLabel: "Nuova",
       createdAt: "2026-04-02T00:00:00.000Z",
       dueAt: null,

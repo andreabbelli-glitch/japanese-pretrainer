@@ -201,9 +201,7 @@ describe("textbook data", () => {
       "〜ている"
     ]);
     expect(
-      tooltipEntries?.every(
-        (entry) => entry.crossMediaHint === undefined
-      )
+      tooltipEntries?.every((entry) => entry.crossMediaHint === undefined)
     ).toBe(true);
     expect(lessonData?.lesson.ast?.blocks).toHaveLength(3);
     expect(lessonData?.lesson.ast?.blocks[1]).toMatchObject({
@@ -410,6 +408,33 @@ describe("textbook data", () => {
     expect(patched.groups[0]?.completedLessons).toBe(1);
   });
 
+  it("keeps a not started lesson untouched when clearing completion locally", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "not_started",
+        startedAt: null,
+        completedAt: null,
+        lastOpenedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(lessonData?.lesson.status).toBe("not_started");
+
+    const patched = applyLessonCompletionState(lessonData!, false);
+
+    expect(patched).toBe(lessonData);
+    expect(patched.lesson.status).toBe("not_started");
+    expect(patched.completedLessons).toBe(0);
+    expect(patched.groups[0]?.completedLessons).toBe(0);
+  });
+
   it("updates opened timestamps even when the lesson status stays the same", async () => {
     await recordLessonOpened(developmentFixture.lessonId, database);
 
@@ -432,12 +457,8 @@ describe("textbook data", () => {
         (lesson) => lesson.id === developmentFixture.lessonId
       )?.lastOpenedAt
     ).toBe("2026-03-10T10:00:00.000Z");
-    expect(patched.activeLesson?.lastOpenedAt).toBe(
-      "2026-03-10T10:00:00.000Z"
-    );
-    expect(patched.resumeLesson?.lastOpenedAt).toBe(
-      "2026-03-10T10:00:00.000Z"
-    );
+    expect(patched.activeLesson?.lastOpenedAt).toBe("2026-03-10T10:00:00.000Z");
+    expect(patched.resumeLesson?.lastOpenedAt).toBe("2026-03-10T10:00:00.000Z");
   });
 
   it("keeps rendering textbook data when recording the opened lesson fails", async () => {
@@ -510,8 +531,9 @@ describe("textbook data", () => {
 
       expect(settled.lesson.status).toBe("in_progress");
       expect(
-        settled.lessons.find((lesson) => lesson.id === developmentFixture.lessonId)
-          ?.status
+        settled.lessons.find(
+          (lesson) => lesson.id === developmentFixture.lessonId
+        )?.status
       ).toBe("in_progress");
     } finally {
       vi.useRealTimers();
@@ -643,7 +665,7 @@ describe("textbook data", () => {
     );
 
     expect(markup).toContain("<strong>enfasi</strong>");
-    expect(markup).toContain("<ruby class=\"app-ruby\">");
+    expect(markup).toContain('<ruby class="app-ruby">');
     expect(markup).toContain("<code");
     expect(markup).toContain("inline-ref");
     expect(markup).not.toContain("**enfasi**");
@@ -862,6 +884,34 @@ describe("textbook data", () => {
     expect(furiganaMode).toBe("on");
     expect(lessonData?.lesson.status).toBe("completed");
     expect(lessonData?.lesson.statusLabel).toBe("Completata");
+  });
+
+  it("does not start a not started lesson when clearing completion in storage", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "not_started",
+        startedAt: null,
+        completedAt: null,
+        lastOpenedAt: null
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    await setLessonCompletionState(
+      developmentFixture.lessonId,
+      false,
+      database
+    );
+
+    const progress = await database.query.lessonProgress.findFirst({
+      where: eq(lessonProgress.lessonId, developmentFixture.lessonId)
+    });
+
+    expect(progress).not.toBeNull();
+    expect(progress?.status).toBe("not_started");
+    expect(progress?.startedAt).toBeNull();
+    expect(progress?.completedAt).toBeNull();
+    expect(progress?.lastOpenedAt).toBeNull();
   });
 
   it("loads textbook reader data from content imported through the real pipeline", async () => {

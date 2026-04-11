@@ -18,21 +18,21 @@ export function readInternalHref(
   value: string | string[] | undefined
 ): Route | null {
   const candidates = Array.isArray(value) ? value : [value];
-  const candidate = candidates.find(
-    (entry) => typeof entry === "string" && entry.trim().length > 0
-  );
+  for (const entry of candidates) {
+    if (typeof entry !== "string") {
+      continue;
+    }
 
-  if (typeof candidate !== "string") {
-    return null;
+    const trimmed = entry.trim();
+
+    if (!trimmed || !trimmed.startsWith("/") || trimmed.startsWith("//")) {
+      continue;
+    }
+
+    return trimmed as Route;
   }
 
-  const trimmed = candidate.trim();
-
-  if (!trimmed.startsWith("/") || trimmed.startsWith("//")) {
-    return null;
-  }
-
-  return trimmed as Route;
+  return null;
 }
 
 export function readNestedReturnTo(

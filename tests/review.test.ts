@@ -59,7 +59,7 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
-import { getUtcDayBounds } from "@/db/queries/review-query-helpers";
+import { getLocalDayBounds } from "@/db/queries/review-query-helpers";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -526,11 +526,19 @@ describe("review system", () => {
       expect(scheduled[3]?.lapses).toBe(1);
     });
 
-    it("derives study-day boundaries in UTC regardless of runtime timezone", () => {
-      expect(getUtcDayBounds(new Date("2026-03-10T23:30:00.000-05:00"))).toEqual({
-        dayEndIso: "2026-03-12T00:00:00.000Z",
-        dayStartIso: "2026-03-11T00:00:00.000Z"
-      });
+    it("derives study-day boundaries from the runtime local timezone", () => {
+      const originalTimezone = process.env.TZ;
+
+      try {
+        process.env.TZ = "America/Los_Angeles";
+
+        expect(getLocalDayBounds(new Date("2026-03-11T00:15:00.000Z"))).toEqual({
+          dayEndIso: "2026-03-11T07:00:00.000Z",
+          dayStartIso: "2026-03-10T07:00:00.000Z"
+        });
+      } finally {
+        process.env.TZ = originalTimezone;
+      }
     });
   });
 
@@ -551,7 +559,7 @@ describe("review system", () => {
       await cleanupReviewDatabase({ database, tempDir });
     });
 
-    it("counts newly introduced cards against a stable UTC study day", async () => {
+    it("counts newly introduced cards against the local study day", async () => {
       await database.insert(media).values({
         id: "media_timezone_fixture",
         slug: "timezone-fixture",
@@ -560,7 +568,7 @@ describe("review system", () => {
         segmentKind: "chapter",
         language: "ja",
         baseExplanationLanguage: "it",
-        description: "Fixture per il boundary UTC della review.",
+        description: "Fixture per il boundary locale della review.",
         status: "active",
         createdAt: "2026-03-10T00:00:00.000Z",
         updatedAt: "2026-03-10T00:00:00.000Z"
@@ -763,29 +771,43 @@ describe("review system", () => {
         }
       ]);
 
-      const asOf = new Date("2026-03-10T23:30:00.000-05:00");
-      const [singleMediaCount, groupedCounts] = await Promise.all([
-        countReviewSubjectsIntroducedOnDayByMediaId(
-          database,
-          "media_timezone_fixture",
-          asOf
-        ),
-        countReviewSubjectsIntroducedOnDayByMediaIds(
-          database,
-          ["media_timezone_fixture", "media_timezone_fixture_other"],
-          asOf
-        )
-      ]);
-      const groupedCountsByMedia = new Map(
-        groupedCounts.map((row) => [row.mediaId, row.count])
-      );
+      const originalTimezone = process.env.TZ;
 
-      expect(singleMediaCount).toBe(1);
-      expect(groupedCountsByMedia.get("media_timezone_fixture")).toBe(1);
-      expect(groupedCountsByMedia.get("media_timezone_fixture_other")).toBe(1);
-      expect(
-        [...groupedCountsByMedia.values()].reduce((sum, count) => sum + count, 0)
-      ).toBe(2);
+      try {
+        process.env.TZ = "America/Los_Angeles";
+
+        const asOf = new Date("2026-03-11T00:30:00.000Z");
+        const [introducedCount, singleMediaCount, groupedCounts] =
+          await Promise.all([
+            countReviewSubjectsIntroducedOnDay(database, asOf),
+            countReviewSubjectsIntroducedOnDayByMediaId(
+              database,
+              "media_timezone_fixture",
+              asOf
+            ),
+            countReviewSubjectsIntroducedOnDayByMediaIds(
+              database,
+              ["media_timezone_fixture", "media_timezone_fixture_other"],
+              asOf
+            )
+          ]);
+        const groupedCountsByMedia = new Map(
+          groupedCounts.map((row) => [row.mediaId, row.count])
+        );
+
+        expect(introducedCount).toBe(3);
+        expect(singleMediaCount).toBe(2);
+        expect(groupedCountsByMedia.get("media_timezone_fixture")).toBe(2);
+        expect(groupedCountsByMedia.get("media_timezone_fixture_other")).toBe(1);
+        expect(
+          [...groupedCountsByMedia.values()].reduce(
+            (sum, count) => sum + count,
+            0
+          )
+        ).toBe(3);
+      } finally {
+        process.env.TZ = originalTimezone;
+      }
     });
 
     it("counts introduced subjects from canonical review subject logs without double-counting shared cross-media cards", async () => {

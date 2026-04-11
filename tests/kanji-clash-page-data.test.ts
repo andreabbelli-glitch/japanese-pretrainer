@@ -149,4 +149,28 @@ describe("kanji clash page data", () => {
 
     expect(data.queue.requestedSize).toBe(40);
   });
+
+  it("skips duplicated empty or invalid query params until a valid manual selection is found", async () => {
+    await updateStudySettings(
+      {
+        kanjiClashManualDefaultSize: 40
+      },
+      database
+    );
+
+    const data = await getKanjiClashPageData(
+      {
+        media: ["", "missing", "beta"],
+        mode: ["", "manual"],
+        size: ["999", "20"]
+      },
+      database,
+      new Date("2026-04-09T12:00:00.000Z")
+    );
+
+    expect(data.mode).toBe("manual");
+    expect(data.scope).toBe("media");
+    expect(data.selectedMedia?.slug).toBe("beta");
+    expect(data.queue.requestedSize).toBe(20);
+  });
 });

@@ -4,31 +4,29 @@ import path from "node:path";
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-const { cacheStore, revalidateTagMock, unstableCacheMock } = vi.hoisted(
-  () => {
-    const cacheStore = new Map<string, Promise<unknown>>();
-    const revalidateTagMock = vi.fn();
-    const unstableCacheMock = vi.fn(
-      (loader: () => Promise<unknown>, keyParts: string[]) => {
-        const cacheKey = JSON.stringify(keyParts);
+const { cacheStore, revalidateTagMock, unstableCacheMock } = vi.hoisted(() => {
+  const cacheStore = new Map<string, Promise<unknown>>();
+  const revalidateTagMock = vi.fn();
+  const unstableCacheMock = vi.fn(
+    (loader: () => Promise<unknown>, keyParts: string[]) => {
+      const cacheKey = JSON.stringify(keyParts);
 
-        return async () => {
-          if (!cacheStore.has(cacheKey)) {
-            cacheStore.set(cacheKey, loader());
-          }
+      return async () => {
+        if (!cacheStore.has(cacheKey)) {
+          cacheStore.set(cacheKey, loader());
+        }
 
-          return cacheStore.get(cacheKey);
-        };
-      }
-    );
+        return cacheStore.get(cacheKey);
+      };
+    }
+  );
 
-    return {
-      cacheStore,
-      revalidateTagMock,
-      unstableCacheMock
-    };
-  }
-);
+  return {
+    cacheStore,
+    revalidateTagMock,
+    unstableCacheMock
+  };
+});
 
 vi.mock("next/cache", () => ({
   revalidatePath: vi.fn(),
@@ -37,9 +35,10 @@ vi.mock("next/cache", () => ({
 }));
 
 vi.mock("@/lib/data-cache", async () => {
-  const actual = await vi.importActual<typeof import("@/lib/data-cache")>(
-    "@/lib/data-cache"
-  );
+  const actual =
+    await vi.importActual<typeof import("@/lib/data-cache")>(
+      "@/lib/data-cache"
+    );
 
   return {
     ...actual,
@@ -86,7 +85,7 @@ describe("global review first-candidate cache", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("reuses the cached snapshot for repeated first-candidate loads and invalidates on review-related cache busts", async () => {
+  it("reuses the cached snapshot across UTC midnight when the local day has not changed", async () => {
     await seedSingleReviewCardFixture(database);
 
     vi.useFakeTimers();
@@ -95,25 +94,16 @@ describe("global review first-candidate cache", () => {
       const first = await getGlobalReviewFirstCandidateLoadResult({}, database);
 
       vi.setSystemTime(new Date("2026-03-11T00:15:00.000Z"));
-      const second = await getGlobalReviewFirstCandidateLoadResult({}, database);
+      const second = await getGlobalReviewFirstCandidateLoadResult(
+        {},
+        database
+      );
 
       expect(first.kind).toBe("ready");
       expect(second.kind).toBe("ready");
       expect(second).toEqual(first);
 
-      const firstCacheKey = JSON.stringify([
-        "review",
-        "global-first-candidate",
-        "day:2026-03-10",
-        "answered:0",
-        "extra-new:0",
-        "notice:",
-        "segment:",
-        "selected:",
-        "show:0",
-        "fsrs:none|none|none"
-      ]);
-      const secondCacheKey = JSON.stringify([
+      const sharedCacheKey = JSON.stringify([
         "review",
         "global-first-candidate",
         "day:2026-03-11",
@@ -127,12 +117,10 @@ describe("global review first-candidate cache", () => {
       ]);
 
       expect(unstableCacheMock).toHaveBeenCalled();
-      expect(cacheStore.has(firstCacheKey)).toBe(true);
-      expect(cacheStore.has(secondCacheKey)).toBe(true);
+      expect(cacheStore.has(sharedCacheKey)).toBe(true);
 
-      const cacheHits = unstableCacheMock.mock.calls.filter(([, keyParts]) =>
-        JSON.stringify(keyParts) === firstCacheKey ||
-        JSON.stringify(keyParts) === secondCacheKey
+      const cacheHits = unstableCacheMock.mock.calls.filter(
+        ([, keyParts]) => JSON.stringify(keyParts) === sharedCacheKey
       );
       expect(cacheHits).toHaveLength(2);
 
