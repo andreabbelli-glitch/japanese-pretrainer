@@ -39,4 +39,21 @@ describe("normalizeGlossaryQuery", () => {
       page: 1
     });
   });
+
+  it("keeps the first non-empty duplicated search param when arrays start empty", () => {
+    expect(
+      normalizeGlossaryQuery(
+        {
+          page: ["", "12"],
+          q: ["   ", "iku"],
+          study: ["", "learning"]
+        },
+        "lesson_order"
+      )
+    ).toMatchObject({
+      page: 12,
+      query: "iku",
+      study: "learning"
+    });
+  });
 });

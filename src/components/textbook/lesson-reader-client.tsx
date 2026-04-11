@@ -1,9 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import {
   type CSSProperties,
-  startTransition,
   useCallback,
   useEffect,
   useRef,
@@ -16,12 +14,16 @@ import {
   setLessonCompletionAction
 } from "@/actions/textbook";
 import { cx } from "@/lib/classnames";
+import { applyLessonCompletionState } from "@/lib/textbook-reader-state";
 import type {
   FuriganaMode,
   TextbookLessonData,
   TextbookTooltipEntry
 } from "@/lib/textbook";
-import { buildReviewSessionHref, mediaTextbookLessonTooltipsHref } from "@/lib/site";
+import {
+  buildReviewSessionHref,
+  mediaTextbookLessonTooltipsHref
+} from "@/lib/site";
 
 import {
   EntryTooltipCard,
@@ -81,11 +83,10 @@ function buildTooltipEntryMap(entries: TextbookTooltipEntry[]) {
 }
 
 export function LessonReaderClient({ data }: LessonReaderClientProps) {
-  const router = useRouter();
+  const [readerData, setReaderData] = useState(data);
   const [furiganaMode, setFuriganaModeState] = useState<FuriganaMode>(
     data.furiganaMode
   );
-  const [lessonStatus, setLessonStatus] = useState(data.lesson.status);
   const [isTouchLayout, setIsTouchLayout] = useState(false);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [mobileSheet, setMobileSheet] = useState<MobileSheetState | null>(null);
@@ -111,6 +112,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const currentLessonIdRef = useRef(data.lesson.id);
   const persistedFuriganaModeRef = useRef(data.furiganaMode);
   const queuedFuriganaModeRef = useRef<FuriganaMode | null>(null);
+  const lessonStatus = readerData.lesson.status;
 
   useEffect(() => {
     if (currentLessonIdRef.current === data.lesson.id) {
@@ -118,10 +120,10 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     }
 
     currentLessonIdRef.current = data.lesson.id;
+    setReaderData(data);
     persistedFuriganaModeRef.current = data.furiganaMode;
     queuedFuriganaModeRef.current = null;
     setFuriganaModeState(data.furiganaMode);
-    setLessonStatus(data.lesson.status);
     setIsSavingFurigana(false);
     tooltipAbortRef.current?.abort();
     tooltipAbortRef.current = null;
@@ -131,7 +133,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     setTooltip(null);
     setMobileSheet(null);
     anchorRef.current = null;
-  }, [data.entries, data.furiganaMode, data.lesson.id, data.lesson.status]);
+  }, [data]);
 
   useEffect(() => {
     persistedFuriganaModeRef.current = data.furiganaMode;
@@ -209,7 +211,10 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     const request = (async () => {
       try {
         const response = await fetch(
-          mediaTextbookLessonTooltipsHref(data.media.slug, data.lesson.slug),
+          mediaTextbookLessonTooltipsHref(
+            readerData.media.slug,
+            readerData.lesson.slug
+          ),
           {
             cache: "no-store",
             signal: controller.signal
@@ -248,7 +253,12 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
 
     tooltipRequestRef.current = request;
     await request;
-  }, [data.lesson.slug, data.media.slug, entriesByKey, tooltipLoadState]);
+  }, [
+    entriesByKey,
+    readerData.lesson.slug,
+    readerData.media.slug,
+    tooltipLoadState
+  ]);
 
   // Prefetch tooltip entries during idle time so they're ready before the
   // user's first hover/tap.
@@ -476,8 +486,8 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
       while (true) {
         try {
           await setFuriganaModeAction({
-            mediaSlug: data.media.slug,
-            lessonSlug: data.lesson.slug,
+            mediaSlug: readerData.media.slug,
+            lessonSlug: readerData.lesson.slug,
             mode: targetMode
           });
           persistedFuriganaModeRef.current = targetMode;
@@ -499,7 +509,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
         targetMode = queuedMode;
       }
     },
-    [data.lesson.slug, data.media.slug]
+    [readerData.lesson.slug, readerData.media.slug]
   );
 
   const handleFuriganaModeChange = (nextMode: FuriganaMode) => {
@@ -518,22 +528,24 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   };
 
   const toggleLessonCompletion = () => {
-    const markAsCompleted = lessonStatus !== "completed";
-    setLessonStatus(markAsCompleted ? "completed" : "in_progress");
+    const wasCompleted = lessonStatus === "completed";
+    const markAsCompleted = !wasCompleted;
+    setReaderData((current) =>
+      applyLessonCompletionState(current, markAsCompleted)
+    );
 
     startSavingLesson(async () => {
       try {
         await setLessonCompletionAction({
-          lessonId: data.lesson.id,
-          mediaSlug: data.media.slug,
-          lessonSlug: data.lesson.slug,
+          lessonId: readerData.lesson.id,
+          mediaSlug: readerData.media.slug,
+          lessonSlug: readerData.lesson.slug,
           completed: markAsCompleted
         });
-        startTransition(() => {
-          router.refresh();
-        });
       } catch {
-        setLessonStatus(data.lesson.status);
+        setReaderData((current) =>
+          applyLessonCompletionState(current, wasCompleted)
+        );
       }
     });
   };
@@ -561,31 +573,31 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   return (
     <div className="reader-page" data-furigana-mode={furiganaMode}>
       <LessonReaderHeader
-        completedLessons={data.completedLessons}
+        completedLessons={readerData.completedLessons}
         furiganaMode={furiganaMode}
         isSavingFurigana={isSavingFurigana}
         isSavingLesson={isSavingLesson}
-        lesson={data.lesson}
+        lesson={readerData.lesson}
         lessonStatus={lessonStatus}
-        media={data.media}
+        media={readerData.media}
         onFuriganaModeChange={handleFuriganaModeChange}
         onToggleLessonCompletion={toggleLessonCompletion}
-        totalLessons={data.totalLessons}
+        totalLessons={readerData.totalLessons}
       />
 
       <LessonReaderMobileStrip
-        completedLessons={data.completedLessons}
+        completedLessons={readerData.completedLessons}
         furiganaMode={furiganaMode}
         onOpenLessons={() => setMobileSheet({ type: "lessons" })}
-        totalLessons={data.totalLessons}
+        totalLessons={readerData.totalLessons}
       />
 
       <div className="reader-layout">
         <aside className="reader-rail">
           <LessonRail
-            activeLessonId={data.lesson.id}
-            groups={data.groups}
-            mediaSlug={data.media.slug}
+            activeLessonId={readerData.lesson.id}
+            groups={readerData.groups}
+            mediaSlug={readerData.media.slug}
           />
         </aside>
 
@@ -593,18 +605,18 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
           <section className="reader-article-card">
             <div className="reader-article-intro">
               <p className="reader-article-intro__summary">
-                {data.lesson.summary ??
-                  data.lesson.excerpt ??
+                {readerData.lesson.summary ??
+                  readerData.lesson.excerpt ??
                   "La lettura resta al centro: chiarimenti contestuali e progressi minimi ma reali."}
               </p>
             </div>
 
             <LessonArticle
               activeEntryKey={tooltip?.entryKey ?? null}
-              document={data.lesson.ast}
+              document={readerData.lesson.ast}
               furiganaMode={furiganaMode}
               isTouchLayout={isTouchLayout}
-              mediaSlug={data.media.slug}
+              mediaSlug={readerData.media.slug}
               onReferenceBlur={closeTooltipSoon}
               onReferenceClick={openReference}
               onReferenceFocus={openReference}
@@ -617,14 +629,16 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
           <LessonReaderFooter
             isSavingLesson={isSavingLesson}
             lessonStatus={lessonStatus}
-            mediaSlug={data.media.slug}
-            nextLesson={data.nextLesson}
+            mediaSlug={readerData.media.slug}
+            nextLesson={readerData.nextLesson}
             onToggleLessonCompletion={toggleLessonCompletion}
-            previousLesson={data.previousLesson}
+            previousLesson={readerData.previousLesson}
             reviewHref={buildReviewSessionHref({
-              mediaSlug: data.media.slug,
+              mediaSlug: readerData.media.slug,
               segmentId:
-                data.lessons.find((lesson) => lesson.id === data.lesson.id)
+                readerData.lessons.find(
+                  (lesson) => lesson.id === readerData.lesson.id
+                )
                   ?.segmentId ?? null
             })}
           />
@@ -668,10 +682,10 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
                 <h2 className="reader-sheet__title">Percorso del media</h2>
               </div>
               <LessonRail
-                activeLessonId={data.lesson.id}
+                activeLessonId={readerData.lesson.id}
                 compact
-                groups={data.groups}
-                mediaSlug={data.media.slug}
+                groups={readerData.groups}
+                mediaSlug={readerData.media.slug}
                 onNavigate={() => setMobileSheet(null)}
               />
             </div>

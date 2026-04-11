@@ -58,7 +58,10 @@ function readSearchParam(
   const value = searchParams[key];
 
   if (Array.isArray(value)) {
-    return value[0]?.trim() ?? "";
+    return (
+      value.find((entry) => typeof entry === "string" && entry.trim().length > 0)
+        ?.trim() ?? ""
+    );
   }
 
   return value?.trim() ?? "";

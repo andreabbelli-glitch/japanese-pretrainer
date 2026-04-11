@@ -34,6 +34,7 @@ import {
   setFuriganaMode,
   setLessonCompletionState
 } from "@/lib/textbook";
+import { applyLessonCompletionState } from "@/lib/textbook-reader-state";
 import { parseTextbookDocument } from "@/lib/textbook-document";
 import { renderFurigana } from "@/lib/render-furigana";
 import {
@@ -374,6 +375,39 @@ describe("textbook data", () => {
         (lesson) => lesson.id === developmentFixture.lessonId
       )?.status
     ).toBe("in_progress");
+  });
+
+  it("applies lesson completion locally without reloading the full lesson payload", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "in_progress",
+        startedAt: "2026-03-09T10:00:00.000Z",
+        completedAt: null,
+        lastOpenedAt: "2026-03-10T10:00:00.000Z"
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(lessonData?.lesson.status).toBe("in_progress");
+    expect(lessonData?.completedLessons).toBe(0);
+
+    const patched = applyLessonCompletionState(lessonData!, true);
+
+    expect(patched.lesson.status).toBe("completed");
+    expect(patched.lesson.statusLabel).toBe("Completata");
+    expect(patched.completedLessons).toBe(1);
+    expect(
+      patched.lessons.find(
+        (lesson) => lesson.id === developmentFixture.lessonId
+      )?.status
+    ).toBe("completed");
+    expect(patched.groups[0]?.completedLessons).toBe(1);
   });
 
   it("updates opened timestamps even when the lesson status stays the same", async () => {

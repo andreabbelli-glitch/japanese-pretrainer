@@ -37,7 +37,16 @@ export default async function MediaGlossaryRoute({
 }
 
 function readSearchParam(value: string | string[] | undefined) {
-  return Array.isArray(value) ? value[0] : value;
+  if (Array.isArray(value)) {
+    return (
+      value.find((entry) => typeof entry === "string" && entry.trim().length > 0)
+        ?.trim() ?? undefined
+    );
+  }
+
+  const trimmed = value?.trim();
+
+  return trimmed ? trimmed : undefined;
 }
 
 function readCardsFilter(

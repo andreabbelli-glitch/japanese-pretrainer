@@ -34,4 +34,25 @@ describe("media glossary route", () => {
       "/glossary?q=iku&media=fixture-tcg&segment=segment_fixture_starter_core&study=learning&returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"
     );
   });
+
+  it("keeps the first non-empty duplicated params when the local glossary url starts with empty values", async () => {
+    await expect(
+      MediaGlossaryRoute({
+        params: Promise.resolve({
+          mediaSlug: "fixture-tcg"
+        }),
+        searchParams: Promise.resolve({
+          q: ["", " iku "],
+          segment: ["", "segment_fixture_starter_core"],
+          study: ["", "learning"]
+        })
+      })
+    ).rejects.toThrow(
+      "redirect:/glossary?q=iku&media=fixture-tcg&segment=segment_fixture_starter_core&study=learning"
+    );
+
+    expect(redirectMock).toHaveBeenCalledWith(
+      "/glossary?q=iku&media=fixture-tcg&segment=segment_fixture_starter_core&study=learning"
+    );
+  });
 });

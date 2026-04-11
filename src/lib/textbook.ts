@@ -123,6 +123,7 @@ export type TextbookLessonData = TextbookIndexData & {
     difficulty: string | null;
     summary: string | null;
     excerpt: string | null;
+    completedAt: string | null;
     status: "not_started" | "in_progress" | "completed";
     statusLabel: string;
     segmentTitle: string;
@@ -292,6 +293,7 @@ async function getTextbookLessonBodyData(input: {
   return {
     lesson: {
       ast: lessonAst,
+      completedAt: lesson.progress?.completedAt ?? null,
       difficulty: lesson.difficulty,
       excerpt: lesson.content?.excerpt ?? null,
       id: lesson.id,

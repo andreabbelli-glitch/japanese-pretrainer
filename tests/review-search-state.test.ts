@@ -26,4 +26,24 @@ describe("review search state", () => {
       extraNewCount: 0
     });
   });
+
+  it("keeps the first non-empty duplicated search param when arrays start empty", () => {
+    expect(
+      normalizeReviewSearchState({
+        answered: ["", "12"],
+        card: [" ", "card-fixture-iku"],
+        extraNew: ["", "3"],
+        notice: ["", "session-top-up"],
+        segment: [" ", "segment_fixture_starter_core"],
+        show: ["", "answer"]
+      })
+    ).toMatchObject({
+      answeredCount: 12,
+      extraNewCount: 3,
+      noticeCode: "session-top-up",
+      segmentId: "segment_fixture_starter_core",
+      selectedCardId: "card-fixture-iku",
+      showAnswer: true
+    });
+  });
 });
