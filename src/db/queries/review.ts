@@ -229,45 +229,75 @@ export async function getGlobalReviewOverviewCounts(
     totalCards: number | string | null;
   }>(`
     WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: "SELECT id FROM media WHERE status = 'active'" })},
-    global_subject_candidates AS (
+    global_subject_card_candidates AS (
       SELECT
         si.subject_key AS subjectKey,
-        MAX(
-          CASE
-            WHEN si.lesson_id IS NOT NULL
-             AND EXISTS (
-               SELECT 1
-               FROM lesson l
-               INNER JOIN lesson_progress lp
-                 ON lp.lesson_id = l.id
-               WHERE l.id = si.lesson_id
-                 AND l.status = 'active'
-                 AND lp.status = 'completed'
-             )
-            THEN 1
-            ELSE 0
-          END
-        ) AS hasCompletedLesson,
-        MAX(
-          CASE
-            WHEN si.card_status != 'suspended' THEN 1
-            ELSE 0
-          END
-        ) AS hasActiveCard,
-        MAX(COALESCE(rss.manual_override, 0)) AS manualOverride,
-        MAX(COALESCE(rss.suspended, 0)) AS suspended,
-        MAX(rss.state) AS reviewState,
-        MAX(rss.due_at) AS dueAt
+        si.card_id AS cardId,
+        si.card_status AS cardStatus,
+        si.created_at AS createdAt,
+        si.order_index AS orderIndex,
+        COALESCE(rss.manual_override, 0) AS manualOverride,
+        COALESCE(rss.suspended, 0) AS suspended,
+        COALESCE(rss.state, 'new') AS reviewState,
+        rss.due_at AS dueAt,
+        ROW_NUMBER() OVER (
+          PARTITION BY si.subject_key
+          ORDER BY
+            CASE
+              WHEN rss.card_id IS NOT NULL
+               AND rss.card_id = si.card_id THEN 0
+              ELSE 1
+            END ASC,
+            CASE
+              WHEN si.card_status = 'suspended'
+               OR COALESCE(rss.suspended, 0) = 1
+               OR COALESCE(rss.state, 'new') = 'suspended' THEN 4
+              WHEN COALESCE(rss.manual_override, 0) = 1
+               OR COALESCE(rss.state, 'new') = 'known_manual' THEN 3
+              WHEN COALESCE(rss.state, 'new') = 'new' THEN 2
+              WHEN rss.due_at IS NULL
+               OR rss.due_at <= ${quoteSqlString(asOfIso)} THEN 0
+              ELSE 1
+            END ASC,
+            COALESCE(si.created_at, '') DESC,
+            COALESCE(si.order_index, 2147483647) ASC,
+            si.card_id ASC
+        ) AS rowNumber
       FROM subject_identity si
       LEFT JOIN review_subject_state rss
         ON rss.subject_key = si.subject_key
-      GROUP BY si.subject_key
+      WHERE si.lesson_id IS NOT NULL
+       AND EXISTS (
+         SELECT 1
+         FROM lesson l
+         INNER JOIN lesson_progress lp
+           ON lp.lesson_id = l.id
+         WHERE l.id = si.lesson_id
+           AND l.status = 'active'
+           AND lp.status = 'completed'
+       )
+    ),
+    global_subject_candidates AS (
+      SELECT
+        dueAt,
+        CASE
+          WHEN cardStatus = 'suspended'
+           OR suspended = 1
+           OR reviewState = 'suspended' THEN 'suspended'
+          WHEN manualOverride = 1
+           OR reviewState = 'known_manual' THEN 'known_manual'
+          ELSE reviewState
+        END AS effectiveState,
+        manualOverride,
+        subjectKey
+      FROM global_subject_card_candidates
+      WHERE rowNumber = 1
     )
     SELECT
       COALESCE(
         SUM(
           CASE
-            WHEN gsc.hasCompletedLesson = 1 THEN 1
+            WHEN gsc.subjectKey IS NOT NULL THEN 1
             ELSE 0
           END
         ),
@@ -276,11 +306,8 @@ export async function getGlobalReviewOverviewCounts(
       COALESCE(
         SUM(
           CASE
-            WHEN gsc.hasCompletedLesson = 1
-             AND gsc.hasActiveCard = 1
-             AND gsc.suspended = 0
-             AND gsc.manualOverride = 0
-             AND COALESCE(gsc.reviewState, 'new') NOT IN ('new', 'known_manual', 'suspended')
+            WHEN gsc.manualOverride = 0
+             AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended')
             THEN 1
             ELSE 0
           END
@@ -290,11 +317,8 @@ export async function getGlobalReviewOverviewCounts(
       COALESCE(
         SUM(
           CASE
-            WHEN gsc.hasCompletedLesson = 1
-             AND gsc.hasActiveCard = 1
-             AND gsc.suspended = 0
-             AND gsc.manualOverride = 0
-             AND COALESCE(gsc.reviewState, 'new') NOT IN ('new', 'known_manual', 'suspended')
+            WHEN gsc.manualOverride = 0
+             AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended')
              AND (gsc.dueAt IS NULL OR gsc.dueAt <= ${quoteSqlString(asOfIso)})
             THEN 1
             ELSE 0
@@ -305,10 +329,8 @@ export async function getGlobalReviewOverviewCounts(
       COALESCE(
         SUM(
           CASE
-            WHEN gsc.hasCompletedLesson = 1
-             AND gsc.hasActiveCard = 1
-             AND gsc.suspended = 0
-             AND COALESCE(gsc.reviewState, 'new') = 'new'
+            WHEN gsc.manualOverride = 0
+             AND gsc.effectiveState = 'new'
             THEN 1
             ELSE 0
           END
@@ -318,13 +340,7 @@ export async function getGlobalReviewOverviewCounts(
       COALESCE(
         SUM(
           CASE
-            WHEN gsc.hasCompletedLesson = 1
-             AND gsc.hasActiveCard = 1
-             AND gsc.suspended = 0
-             AND (
-               gsc.manualOverride = 1
-               OR COALESCE(gsc.reviewState, 'new') = 'known_manual'
-             )
+            WHEN gsc.effectiveState = 'known_manual'
             THEN 1
             ELSE 0
           END
@@ -334,12 +350,7 @@ export async function getGlobalReviewOverviewCounts(
       COALESCE(
         SUM(
           CASE
-            WHEN gsc.hasCompletedLesson = 1
-             AND (
-               gsc.hasActiveCard = 0
-               OR gsc.suspended = 1
-               OR COALESCE(gsc.reviewState, 'new') = 'suspended'
-             )
+            WHEN gsc.effectiveState = 'suspended'
             THEN 1
             ELSE 0
           END
@@ -349,11 +360,8 @@ export async function getGlobalReviewOverviewCounts(
       COALESCE(
         SUM(
           CASE
-            WHEN gsc.hasCompletedLesson = 1
-             AND gsc.hasActiveCard = 1
-             AND gsc.suspended = 0
-             AND gsc.manualOverride = 0
-             AND COALESCE(gsc.reviewState, 'new') NOT IN ('new', 'known_manual', 'suspended')
+            WHEN gsc.manualOverride = 0
+             AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended')
              AND gsc.dueAt IS NOT NULL
              AND gsc.dueAt > ${quoteSqlString(asOfIso)}
              AND gsc.dueAt >= ${quoteSqlString(tomorrowStart.toISOString())}
@@ -406,6 +414,9 @@ async function loadReviewLaunchCandidates(
   mediaId?: string
 ): Promise<ReviewLaunchCandidate[]> {
   const asOfSql = quoteSqlString(asOfIso);
+  const subjectIdentityMediaFilter = mediaId
+    ? quoteSqlString(mediaId)
+    : "SELECT id FROM media WHERE status = 'active'";
   const mediaFilterSql = mediaId
     ? ` AND m.id = ${quoteSqlString(mediaId)}`
     : "";
@@ -420,7 +431,9 @@ async function loadReviewLaunchCandidates(
     slug: string;
     title: string;
   }>(`
-    WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: "SELECT id FROM media WHERE status = 'active'" })},
+    WITH ${buildReviewSubjectIdentityCteSql({
+      mediaFilter: subjectIdentityMediaFilter
+    })},
     subject_media_candidates AS (
       SELECT
         si.media_id AS mediaId,

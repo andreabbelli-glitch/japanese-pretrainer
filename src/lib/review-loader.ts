@@ -213,7 +213,11 @@ export async function loadReviewWorkspaceV2(input: {
       input.resolvedNewIntroducedTodayCount != null
         ? input.resolvedNewIntroducedTodayCount
         : measureWith(input.profiler, "countReviewSubjectsIntroducedOnDay", () =>
-            loadReviewIntroducedTodayCountCached(database, now)
+            loadReviewIntroducedTodayCountCached(
+              database,
+              now,
+              input.bypassCache
+            )
           )
     ]);
   const cards = stableWorkspace.cards;
@@ -361,10 +365,11 @@ export async function loadReviewLaunchCandidateByMediaIdCached(
 
 export async function loadReviewIntroducedTodayCountCached(
   database: DatabaseClient = db,
-  asOf: Date = new Date()
+  asOf: Date = new Date(),
+  bypassCache?: boolean
 ) {
   return runWithTaggedCache({
-    enabled: canUseDataCache(database),
+    enabled: !bypassCache && canUseDataCache(database),
     keyParts: ["review-introduced-global", getLocalIsoDateKey(asOf)],
     loader: () => countReviewSubjectsIntroducedOnDay(database, asOf),
     tags: buildReviewSummaryTags()

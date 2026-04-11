@@ -59,6 +59,7 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import { seedSingleReviewCardFixture } from "./helpers/review-fixture";
 import { getLocalDayBounds } from "@/db/queries/review-query-helpers";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -2354,6 +2355,143 @@ describe("review system", () => {
       state: "learning",
       suspended: false
     });
+  });
+
+  it("does not count manually excluded new cards as available new work in the global overview", async () => {
+    const tempDir = await mkdtemp(
+      path.join(tmpdir(), "jcs-manual-override-global-overview-")
+    );
+    const localDatabase = createDatabaseClient({
+      databaseUrl: path.join(tempDir, "test.sqlite")
+    });
+
+    try {
+      await runMigrations(localDatabase);
+      await seedSingleReviewCardFixture(localDatabase);
+      await localDatabase.insert(term).values({
+        id: "term_manual_override_new",
+        sourceId: "term-manual-override-new",
+        mediaId: "media_a",
+        segmentId: null,
+        lemma: "手動",
+        reading: "しゅどう",
+        romaji: "shudou",
+        pos: "sostantivo",
+        meaningIt: "manuale",
+        meaningLiteralIt: null,
+        notesIt: null,
+        levelHint: null,
+        searchLemmaNorm: "手動",
+        searchReadingNorm: "しゅどう",
+        searchRomajiNorm: "shudou",
+        createdAt: "2026-03-09T12:00:00.000Z",
+        updatedAt: "2026-03-09T12:00:00.000Z"
+      });
+      await localDatabase.insert(cardEntryLink).values({
+        id: "card_entry_link_manual_override_new_primary",
+        cardId: "card_a",
+        entryType: "term",
+        entryId: "term_manual_override_new",
+        relationshipType: "primary"
+      });
+
+      await setLinkedEntryStatusByCard({
+        cardId: "card_a",
+        database: localDatabase,
+        now: new Date("2026-03-09T13:00:00.000Z"),
+        status: "known_manual"
+      });
+
+      const [globalOverview, queue] = await Promise.all([
+        loadGlobalReviewOverviewSnapshot(localDatabase),
+        getReviewQueueSnapshotForMedia("media-a", localDatabase)
+      ]);
+
+      expect(globalOverview.newAvailableCount).toBe(0);
+      expect(globalOverview.manualCount).toBe(1);
+      expect(globalOverview.queueCount).toBe(0);
+      expect(queue?.newAvailableCount).toBe(0);
+      expect(queue?.manualCount).toBe(1);
+      expect(queue?.queueCount).toBe(0);
+      expect(queue?.cards).toHaveLength(0);
+    } finally {
+      closeDatabaseClient(localDatabase);
+      await rm(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it("counts only the completed representative card when a subject mixes suspended and incomplete siblings", async () => {
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+
+    await database
+      .update(card)
+      .set({
+        status: "suspended"
+      })
+      .where(eq(card.id, developmentFixture.primaryCardId));
+
+    await database.insert(lesson).values({
+      createdAt: "2026-03-10T09:00:00.000Z",
+      difficulty: "beginner",
+      id: "lesson_fixture_mixed_sibling",
+      mediaId: developmentFixture.mediaId,
+      orderIndex: 99,
+      segmentId: developmentFixture.segmentId,
+      slug: "mixed-sibling",
+      sourceFile: "tests/fixtures/db/fixture-tcg/lessons/mixed-sibling.md",
+      status: "active",
+      summary: "Sibling lesson used for the mixed-review regression.",
+      title: "Mixed Sibling",
+      updatedAt: "2026-03-10T09:00:00.000Z"
+    });
+    await database.insert(lessonProgress).values({
+      completedAt: null,
+      lastOpenedAt: "2026-03-10T09:00:00.000Z",
+      lessonId: "lesson_fixture_mixed_sibling",
+      startedAt: "2026-03-10T09:00:00.000Z",
+      status: "in_progress"
+    });
+    await database.insert(card).values({
+      back: "andare (sibling incompleto)",
+      cardType: "recognition",
+      createdAt: "2026-03-10T09:00:00.000Z",
+      exampleIt: null,
+      exampleJp: null,
+      front: "行く sibling",
+      id: "card_fixture_mixed_sibling",
+      lessonId: "lesson_fixture_mixed_sibling",
+      mediaId: developmentFixture.mediaId,
+      notesIt: null,
+      orderIndex: 99,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/mixed-sibling.md",
+      status: "active",
+      updatedAt: "2026-03-10T09:00:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      cardId: "card_fixture_mixed_sibling",
+      entryId: developmentFixture.termDbId,
+      entryType: "term",
+      id: "card_entry_link_fixture_mixed_sibling_primary",
+      relationshipType: "primary"
+    });
+
+    const [overview, queue] = await Promise.all([
+      loadGlobalReviewOverviewSnapshot(database),
+      getReviewQueueSnapshotForMedia(developmentFixture.mediaSlug, database)
+    ]);
+
+    expect(overview.activeCards).toBe(0);
+    expect(overview.suspendedCount).toBe(1);
+    expect(overview.queueCount).toBe(0);
+    expect(queue?.cards).toHaveLength(0);
+    expect(queue?.suspendedCount).toBe(1);
+    expect(queue?.queueCount).toBe(0);
   });
 
   it("clears manual override when resetting a manually excluded card", async () => {

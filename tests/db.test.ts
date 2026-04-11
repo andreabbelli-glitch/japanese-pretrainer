@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { eq } from "drizzle-orm";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   card,
@@ -14,6 +14,7 @@ import {
   developmentFixture,
   getLessonBySlug,
   getMediaBySlug,
+  getReviewLaunchCandidateByMediaId,
   listCardsByMediaId,
   listDueCardsByMediaId,
   listGlossaryEntriesByKind,
@@ -495,6 +496,46 @@ describe("database layer", () => {
       developmentFixture.primaryCardId,
       chunkCardId
     ]);
+  });
+
+  it("scopes the per-media review launch candidate query to the target media", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-launch-sql-"));
+    const localDatabase = createDatabaseClient({
+      databaseUrl: path.join(tempDir, "test.sqlite"),
+      logger: true
+    });
+    const logs: string[] = [];
+    const logSpy = vi.spyOn(console, "log").mockImplementation((...args) => {
+      logs.push(args.map((value) => String(value)).join(" "));
+    });
+
+    try {
+      await runMigrations(localDatabase);
+      await seedDevelopmentDatabase(localDatabase);
+      logs.length = 0;
+
+      const candidate = await getReviewLaunchCandidateByMediaId(
+        localDatabase,
+        developmentFixture.mediaId,
+        "2026-03-10T00:00:00.000Z"
+      );
+
+      const queryLog = logs.find((entry) => entry.includes("subject_identity"));
+
+      expect(candidate?.mediaId).toBe(developmentFixture.mediaId);
+      expect(queryLog).toBeDefined();
+      expect(queryLog).toContain(
+        `AND c.media_id IN ('${developmentFixture.mediaId}')`
+      );
+      expect(queryLog).not.toContain(
+        "SELECT id FROM media WHERE status = 'active'"
+      );
+      expect(queryLog).toContain(`AND m.id = '${developmentFixture.mediaId}'`);
+    } finally {
+      logSpy.mockRestore();
+      closeDatabaseClient(localDatabase);
+      await rm(tempDir, { recursive: true, force: true });
+    }
   });
 
   it("excludes known_manual cards from the due queue", async () => {

@@ -58,10 +58,12 @@ import {
   revalidateSettingsCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
+import { loadReviewWorkspaceV2 } from "@/lib/review-loader";
 import {
   getGlobalReviewFirstCandidateLoadResult,
   hydrateReviewCard
 } from "@/lib/review";
+import { applyReviewGrade } from "@/lib/review-service";
 import { seedSingleReviewCardFixture } from "./helpers/review-fixture";
 
 describe("global review first-candidate cache", () => {
@@ -178,5 +180,40 @@ describe("global review first-candidate cache", () => {
       REVIEW_FIRST_CANDIDATE_TAG,
       "max"
     );
+  });
+
+  it("refreshes the introduced-today count when review workspace bypasses cache", async () => {
+    await seedSingleReviewCardFixture(database);
+
+    const asOf = new Date("2026-03-10T12:00:00.000Z");
+
+    const initial = await loadReviewWorkspaceV2({
+      database,
+      mediaIds: ["media_a"],
+      now: asOf
+    });
+
+    await applyReviewGrade({
+      cardId: "card_a",
+      database,
+      now: asOf,
+      rating: "good"
+    });
+
+    const stale = await loadReviewWorkspaceV2({
+      database,
+      mediaIds: ["media_a"],
+      now: asOf
+    });
+    const refreshed = await loadReviewWorkspaceV2({
+      bypassCache: true,
+      database,
+      mediaIds: ["media_a"],
+      now: asOf
+    });
+
+    expect(initial.newIntroducedTodayCount).toBe(0);
+    expect(stale.newIntroducedTodayCount).toBe(0);
+    expect(refreshed.newIntroducedTodayCount).toBe(1);
   });
 });
