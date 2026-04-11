@@ -124,6 +124,7 @@ export {
   buildForvoWordAddUrl,
   hasForvoWordAddRequestForEntry,
   loadForvoWordAddRequestRegistry,
+  normalizeForvoWordAddLabel,
   persistForvoWordAddRequestRegistry
 } from "./forvo-word-add.ts";
 export type {

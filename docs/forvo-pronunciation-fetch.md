@@ -34,7 +34,10 @@ source of truth del processo completo e
   `word-add/...` nel browser normale per chiedere la pronuncia e registra la
   richiesta in `data/forvo-requested-word-add.json`;
 - gli URL `word-add` includono anche hint di prefill (`jcs_lang`, `jcs_phrase`,
-  `jcs_person_name`) per lo userscript Tampermonkey locale;
+  `jcs_person_name`, `jcs_autosubmit`) per lo userscript Tampermonkey locale;
+- quando il label contiene varianti separate da slash ASCII (`/`), l'URL
+  `word-add` lo normalizza in `・` per evitare che Forvo prenda solo la prima
+  meta' della stringa;
 - il profilo browser dedicato in `data/forvo-profile/` resta disponibile per il
   percorso Playwright di debug o manutenzione del fetcher;
 - se Cloudflare o il login richiedono intervento, ti lascia completare la
@@ -75,6 +78,10 @@ Per i batch reali usa sempre `--manual`:
   `scripts/forvo-word-add-helper.user.js`, la pagina `word-add` seleziona in
   automatico `Japanese`, decide `phrase yes/no` dagli hint del repo e lascia
   `personal name = no`;
+- con `jcs_autosubmit=1` prova anche a premere `Add` in automatico senza che tu
+  debba portare in primo piano la tab;
+- se Forvo mostra che la voce e' gia definita in `Japanese [ja]`, lo script non
+  forza il submit e segnala `Already in Japanese`.
 - mentre aspetta espone anche un URL locale, di default
   `http://127.0.0.1:3210/skip`, che puoi richiamare da browser per saltare senza
   tornare al terminale.
@@ -108,7 +115,8 @@ Comportamento:
 
 - aggiunge due pulsanti vicino all'`Add` normale: `Fill Forvo` e `Fill + Add`;
 - se l'URL contiene i parametri del repo (`jcs_lang=ja`, `jcs_phrase=0/1`,
-  `jcs_person_name=0/1`), prova anche un auto-fill iniziale;
+  `jcs_person_name=0/1`, `jcs_autosubmit=0/1`), prova anche un auto-fill
+  iniziale;
 - usa una regola esplicita del workflow per `phrase yes/no`:
   grammatica => frase, pattern con `〜`, spazi o punteggiatura => frase,
   termini semplici => parola.
@@ -172,4 +180,6 @@ Opzioni utili:
 - `--limit N`: quante tab aprire;
 - `--no-open`: stampa/registra senza aprire il browser;
 - `--retry-requested`: include anche le voci gia richieste in passato;
-- `--request-delay-ms 750`: pausa tra le tab aperte.
+- `--request-delay-ms 3000`: pausa tra le tab aperte. Questo e' ora il default
+  prudente consigliato per non aprire troppe richieste in sequenza troppo
+  aggressiva.

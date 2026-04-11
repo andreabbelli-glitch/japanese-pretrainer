@@ -116,7 +116,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     knownMissingPath: path.join("data", "forvo-known-missing.json"),
     mediaSlugs: [],
     openUrls: true,
-    requestDelayMs: 750,
+    requestDelayMs: 3000,
     requestRegistryPath: path.join("data", "forvo-requested-word-add.json"),
     retryRequested: false
   };

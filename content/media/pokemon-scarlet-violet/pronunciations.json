@@ -674,6 +674,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-tte-no-wa",
+      "audio_src": "assets/audio/grammar/grammar-tte-no-wa/forvo-manual-～ってのは.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%81%A3%E3%81%A6%E3%81%AE%E3%81%AF/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -967,6 +971,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-e029-youkoso",
+      "audio_src": "assets/audio/term/term-e029-youkoso/forvo-manual-ようこそ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%88%E3%81%86%E3%81%93%E3%81%9D/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%82%88%E3%81%86%E3%81%93%E3%81%9D",
@@ -1469,6 +1477,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-gym-badge",
+      "audio_src": "assets/audio/term/term-gym-badge/forvo-manual-ジムバッジ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B8%E3%83%A0%E3%83%90%E3%83%83%E3%82%B8/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -1633,6 +1645,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-monster-ball",
+      "audio_src": "assets/audio/term/term-monster-ball/forvo-manual-モンスターボール.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%AB/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -2031,6 +2047,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v014-raido",
+      "audio_src": "assets/audio/term/term-v014-raido/forvo-manual-ライド.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%A9%E3%82%A4%E3%83%89/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -3229,6 +3249,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v145-nanbiki",
+      "audio_src": "assets/audio/term/term-v145-nanbiki/forvo-manual-なんびき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BD%95%E5%8C%B9/#ja",
       "pitch_accent_status": "miss"
     },
     {

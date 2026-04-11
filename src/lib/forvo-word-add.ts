@@ -5,6 +5,7 @@ const forvoWordAddLanguageCode = "ja";
 const phraseMarkerPattern = /[〜～~]/u;
 const phrasePunctuationPattern = /[!?！？。]/u;
 const phraseWhitespacePattern = /\s/u;
+const forvoWordAddSlashPattern = /\s*\/\s*/gu;
 
 export type ForvoWordAddRequestEntry = {
   entryId: string;
@@ -22,6 +23,7 @@ export type ForvoWordAddRequestRegistry = {
 };
 
 export type ForvoWordAddPrefill = {
+  autoSubmit: boolean;
   isPersonalName: boolean;
   isPhrase: boolean;
   languageCode: "ja";
@@ -38,6 +40,7 @@ export function buildForvoWordAddPrefill(
   input: ForvoWordAddEntryLike
 ): ForvoWordAddPrefill {
   return {
+    autoSubmit: true,
     isPersonalName: false,
     isPhrase: inferForvoWordAddPhrase(input),
     languageCode: forvoWordAddLanguageCode
@@ -47,18 +50,23 @@ export function buildForvoWordAddPrefill(
 export function buildForvoWordAddUrl(input: ForvoWordAddEntryLike) {
   const prefill = buildForvoWordAddPrefill(input);
   const url = new URL(
-    `/word-add/${encodeURIComponent(input.label)}/`,
+    `/word-add/${encodeURIComponent(normalizeForvoWordAddLabel(input.label))}/`,
     "https://forvo.com"
   );
 
   url.searchParams.set("jcs_lang", prefill.languageCode);
   url.searchParams.set("jcs_phrase", prefill.isPhrase ? "1" : "0");
+  url.searchParams.set("jcs_autosubmit", prefill.autoSubmit ? "1" : "0");
   url.searchParams.set(
     "jcs_person_name",
     prefill.isPersonalName ? "1" : "0"
   );
 
   return url.toString();
+}
+
+export function normalizeForvoWordAddLabel(label: string) {
+  return label.replace(forvoWordAddSlashPattern, "・").trim();
 }
 
 export async function loadForvoWordAddRequestRegistry(filePath?: string) {

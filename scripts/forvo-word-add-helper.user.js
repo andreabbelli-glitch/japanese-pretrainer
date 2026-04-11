@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Forvo Word Add Helper
 // @namespace    https://forvo.com/
-// @version      0.7
-// @description  Fill the Forvo word-add form from Japanese Custom Study URL hints.
+// @version      0.9
+// @description  Fill and optionally submit the Forvo word-add form from Japanese Custom Study URL hints.
 // @match        https://forvo.com/word-add/*
 // @match        https://*.forvo.com/word-add/*
 // @grant        none
@@ -16,6 +16,9 @@
   };
 
   const params = new URLSearchParams(window.location.search);
+  const requestedAutoSubmit = parseBooleanParam(
+    params.get("jcs_autosubmit")
+  );
   const requestedLanguage = params.get("jcs_lang") || "ja";
   const requestedPhrase = parseBooleanParam(params.get("jcs_phrase"));
   const requestedPersonName = parseBooleanParam(
@@ -54,6 +57,26 @@
           : "#4b5563";
   }
 
+  function buildButton(label, onClick) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = label;
+    button.style.border = "1px solid #1d4ed8";
+    button.style.background = "#2563eb";
+    button.style.color = "#ffffff";
+    button.style.borderRadius = "8px";
+    button.style.padding = "10px 16px";
+    button.style.fontSize = "15px";
+    button.style.fontWeight = "600";
+    button.style.cursor = "pointer";
+
+    button.addEventListener("click", () => {
+      void onClick();
+    });
+
+    return button;
+  }
+
   function ensureHelperBar() {
     if (helperBar && helperBar.isConnected) {
       return helperBar;
@@ -74,33 +97,11 @@
     helperBar.style.marginTop = "14px";
 
     const fillButton = buildButton("Fill Forvo", async () => {
-      const filled = await fillForvoForm();
-
-      if (filled) {
-        setStatus("Form filled", "success");
-        return;
-      }
-
-      setStatus("Add still disabled", "error");
+      await fillAndMaybeSubmit(false);
     });
 
     const fillAndAddButton = buildButton("Fill + Add", async () => {
-      const filled = await fillForvoForm();
-
-      if (!filled) {
-        setStatus("Add still disabled", "error");
-        return;
-      }
-
-      const addButton = document.querySelector("#addBtn");
-
-      if (!(addButton instanceof HTMLButtonElement) || addButton.disabled) {
-        setStatus("Add still disabled", "error");
-        return;
-      }
-
-      addButton.click();
-      setStatus("Submitting...", "neutral");
+      await fillAndMaybeSubmit(true);
     });
 
     statusNode = document.createElement("span");
@@ -112,26 +113,6 @@
     actions.append(helperBar);
 
     return helperBar;
-  }
-
-  function buildButton(label, onClick) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = label;
-    button.style.border = "1px solid #1d4ed8";
-    button.style.background = "#2563eb";
-    button.style.color = "#ffffff";
-    button.style.borderRadius = "8px";
-    button.style.padding = "10px 16px";
-    button.style.fontSize = "15px";
-    button.style.fontWeight = "600";
-    button.style.cursor = "pointer";
-
-    button.addEventListener("click", () => {
-      void onClick();
-    });
-
-    return button;
   }
 
   function triggerInputEvents(element) {
@@ -158,6 +139,36 @@
     }
   }
 
+  function triggerSelectmenuChange(select, desiredValue) {
+    if (!window.jQuery) {
+      return;
+    }
+
+    try {
+      const $select = window.jQuery(select);
+      const instance = $select.data("ui-selectmenu");
+      const option = select.querySelector(`option[value="${desiredValue}"]`);
+
+      if (!instance || !(option instanceof HTMLOptionElement)) {
+        return;
+      }
+
+      instance._trigger(
+        "change",
+        window.jQuery.Event("selectmenuchange"),
+        {
+          item: {
+            value: desiredValue,
+            label: option.textContent?.trim() || "",
+            element: option
+          }
+        }
+      );
+    } catch (error) {
+      void error;
+    }
+  }
+
   function selectLanguage() {
     const select = document.querySelector("#id_lang");
     const desiredValue = LANGUAGE_VALUES[requestedLanguage];
@@ -170,6 +181,7 @@
       select.value = desiredValue;
       triggerInputEvents(select);
       refreshSelectmenu(select);
+      triggerSelectmenuChange(select, desiredValue);
     }
 
     return select.value === desiredValue;
@@ -185,23 +197,25 @@
     return style.display !== "none" && style.visibility !== "hidden";
   }
 
+  function isPhraseQuestionVisible() {
+    return isVisible(document.querySelector("#question_phrase"));
+  }
+
+  function isPersonQuestionVisible() {
+    return isVisible(document.querySelector("#question_person_name"));
+  }
+
   function answerPhraseQuestion(isPhrase) {
-    const hidden = document.querySelector("#isPhraseHidden");
     const button = document.querySelector(
       isPhrase ? "#btnPhraseYes" : "#btnPhraseNo"
     );
 
-    if (hidden instanceof HTMLInputElement && hidden.value !== (isPhrase ? "1" : "0")) {
-      hidden.value = isPhrase ? "1" : "0";
-      triggerInputEvents(hidden);
-    }
-
     if (isVisible(button)) {
       button.click();
-      return true;
+      return isAddReady() || !isPhraseQuestionVisible();
     }
 
-    return hidden instanceof HTMLInputElement && hidden.value === (isPhrase ? "1" : "0");
+    return false;
   }
 
   function answerPersonNameQuestion(isPersonName) {
@@ -210,14 +224,17 @@
       isPersonName ? "#btnPersonNameYes" : "#btnPersonNameNo"
     );
 
-    if (checkbox instanceof HTMLInputElement && checkbox.checked !== isPersonName) {
+    if (
+      checkbox instanceof HTMLInputElement &&
+      checkbox.checked !== isPersonName
+    ) {
       checkbox.checked = isPersonName;
       triggerInputEvents(checkbox);
     }
 
     if (isVisible(button)) {
       button.click();
-      return true;
+      return isAddReady() || !isPersonQuestionVisible();
     }
 
     return (
@@ -225,14 +242,21 @@
     );
   }
 
-  function tickWordField() {
+  function primeWordField() {
     const wordInput = document.querySelector("#word");
 
     if (!(wordInput instanceof HTMLInputElement)) {
       return;
     }
 
-    triggerInputEvents(wordInput);
+    wordInput.focus();
+    wordInput.dispatchEvent(
+      new KeyboardEvent("keyup", {
+        bubbles: true,
+        cancelable: true,
+        key: wordInput.value.slice(-1) || "a"
+      })
+    );
     wordInput.dispatchEvent(new FocusEvent("blur", { bubbles: true }));
   }
 
@@ -241,36 +265,153 @@
     return addButton instanceof HTMLButtonElement && !addButton.disabled;
   }
 
+  function isAlreadyDefinedInJapanese() {
+    const currentLangsList = document.querySelector("#currentLangsList");
+    const bodyText = document.body?.innerText || "";
+
+    if (
+      currentLangsList instanceof HTMLElement &&
+      /Japanese/iu.test(currentLangsList.innerText || "")
+    ) {
+      return true;
+    }
+
+    return /already in Japanese \[ja\]/iu.test(bodyText);
+  }
+
   function wait(ms) {
     return new Promise((resolve) => window.setTimeout(resolve, ms));
   }
 
-  async function fillForvoForm() {
-    tickWordField();
+  async function waitFor(condition, timeoutMs, intervalMs) {
+    const timeout = timeoutMs ?? 3000;
+    const interval = intervalMs ?? 100;
+    const startedAt = Date.now();
 
-    for (let attempt = 0; attempt < 4; attempt += 1) {
-      selectLanguage();
-      await wait(200);
-
-      if (requestedPhrase !== null) {
-        answerPhraseQuestion(requestedPhrase);
-        await wait(200);
-      }
-
-      if (requestedPersonName !== null) {
-        answerPersonNameQuestion(requestedPersonName);
-        await wait(150);
-      }
-
-      tickWordField();
-      await wait(250);
-
-      if (isAddReady()) {
+    while (Date.now() - startedAt < timeout) {
+      if (condition()) {
         return true;
       }
+
+      await wait(interval);
     }
 
-    return isAddReady();
+    return condition();
+  }
+
+  async function selectLanguageReliably() {
+    if (!selectLanguage()) {
+      return false;
+    }
+
+    await wait(150);
+
+    const select = document.querySelector("#id_lang");
+    const desiredValue = LANGUAGE_VALUES[requestedLanguage];
+
+    if (!(select instanceof HTMLSelectElement) || !desiredValue) {
+      return false;
+    }
+
+    triggerSelectmenuChange(select, desiredValue);
+    await wait(150);
+
+    return select.value === desiredValue;
+  }
+
+  async function fillForvoForm() {
+    if (isAlreadyDefinedInJapanese()) {
+      setStatus("Already in Japanese", "neutral");
+      return false;
+    }
+
+    primeWordField();
+
+    await waitFor(
+      () => isAlreadyDefinedInJapanese() || selectLanguage(),
+      2000,
+      100
+    );
+
+    await selectLanguageReliably();
+
+    await waitFor(
+      () =>
+        isAlreadyDefinedInJapanese() ||
+        isAddReady() ||
+        isPhraseQuestionVisible() ||
+        isPersonQuestionVisible(),
+      3000,
+      100
+    );
+
+    if (requestedPhrase !== null && isPhraseQuestionVisible()) {
+      answerPhraseQuestion(requestedPhrase);
+      await waitFor(
+        () =>
+          isAlreadyDefinedInJapanese() ||
+          isAddReady() ||
+          !isPhraseQuestionVisible(),
+        1500,
+        100
+      );
+    }
+
+    if (requestedPersonName !== null && isPersonQuestionVisible()) {
+      answerPersonNameQuestion(requestedPersonName);
+      await waitFor(
+        () =>
+          isAlreadyDefinedInJapanese() ||
+          isAddReady() ||
+          !isPersonQuestionVisible(),
+        1500,
+        100
+      );
+    }
+
+    if (isAddReady()) {
+      return true;
+    }
+
+    if (isAlreadyDefinedInJapanese()) {
+      setStatus("Already in Japanese", "neutral");
+      return false;
+    }
+
+    return waitFor(
+      () => isAlreadyDefinedInJapanese() || isAddReady(),
+      1000,
+      100
+    );
+  }
+
+  async function fillAndMaybeSubmit(autoSubmit) {
+    const filled = await fillForvoForm();
+
+    if (isAlreadyDefinedInJapanese()) {
+      setStatus("Already in Japanese", "neutral");
+      return;
+    }
+
+    if (!filled) {
+      setStatus("Add still disabled", "error");
+      return;
+    }
+
+    if (!autoSubmit) {
+      setStatus("Form filled", "success");
+      return;
+    }
+
+    const addButton = document.querySelector("#addBtn");
+
+    if (!(addButton instanceof HTMLButtonElement) || addButton.disabled) {
+      setStatus("Add still disabled", "error");
+      return;
+    }
+
+    addButton.click();
+    setStatus("Submitting...", "success");
   }
 
   const observer = new MutationObserver(() => {
@@ -287,17 +428,11 @@
   if (
     requestedLanguage in LANGUAGE_VALUES &&
     requestedPhrase !== null &&
-    requestedPersonName !== null
+    requestedPersonName !== null &&
+    requestedAutoSubmit !== null
   ) {
     window.setTimeout(() => {
-      void fillForvoForm().then((filled) => {
-        if (filled) {
-          setStatus("Auto-filled from URL", "success");
-          return;
-        }
-
-        setStatus("Add still disabled", "error");
-      });
+      void fillAndMaybeSubmit(requestedAutoSubmit);
     }, 300);
   } else {
     setStatus("Ready", "neutral");

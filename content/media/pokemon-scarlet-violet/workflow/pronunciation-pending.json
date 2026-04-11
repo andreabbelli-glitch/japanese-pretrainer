@@ -2,16 +2,10 @@
   "version": 1,
   "media_slug": "pokemon-scarlet-violet",
   "total_targets": 1057,
-  "audio_backed_count": 164,
-  "known_missing_count": 68,
-  "pending_count": 825,
+  "audio_backed_count": 170,
+  "known_missing_count": 64,
+  "pending_count": 823,
   "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-v145-nanbiki",
-      "label": "何匹",
-      "reading": "なんびき"
-    },
     {
       "entry_type": "term",
       "entry_id": "term-v146-ikisaki",
@@ -53,12 +47,6 @@
       "entry_id": "term-e028-omedetou",
       "label": "おめでとう",
       "reading": "おめでとう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e029-youkoso",
-      "label": "ようこそ",
-      "reading": "ようこそ"
     },
     {
       "entry_type": "term",
