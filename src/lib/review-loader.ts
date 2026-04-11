@@ -1,6 +1,7 @@
 import {
   countReviewSubjectsIntroducedOnDay,
   db,
+  getReviewLaunchCandidateByMediaId,
   getGlobalReviewOverviewCounts,
   listReviewLaunchCandidates,
   listReviewCardsByMediaId,
@@ -342,6 +343,19 @@ export async function loadReviewLaunchCandidatesCached(
     keyParts: ["review-launch-candidates"],
     loader: () => listReviewLaunchCandidates(database, nowIso),
     tags: [...buildReviewSummaryTags(), REVIEW_FIRST_CANDIDATE_TAG]
+  });
+}
+
+export async function loadReviewLaunchCandidateByMediaIdCached(
+  database: DatabaseClient = db,
+  mediaId: string,
+  nowIso = new Date().toISOString()
+): Promise<ReviewLaunchCandidate | null> {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["review-launch-candidate", mediaId],
+    loader: () => getReviewLaunchCandidateByMediaId(database, mediaId, nowIso),
+    tags: [...buildReviewSummaryTags([mediaId]), REVIEW_FIRST_CANDIDATE_TAG]
   });
 }
 

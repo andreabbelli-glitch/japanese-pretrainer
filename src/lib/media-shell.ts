@@ -23,9 +23,10 @@ import {
 import { calculatePercent } from "@/lib/study-format";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import {
+  loadReviewLaunchCandidateByMediaIdCached,
   loadReviewIntroducedTodayCountCached,
   loadReviewLaunchCandidatesCached
-} from "@/lib/review";
+} from "@/lib/review-loader";
 import { getReviewDailyLimit } from "@/lib/settings";
 import {
   buildEmptyGlossaryProgressSnapshot,
@@ -311,7 +312,7 @@ async function buildMediaShellSnapshot(
     lessons,
     glossarySnapshots,
     previewEntriesByMedia,
-    reviewCandidates,
+    reviewCandidate,
     dailyLimit,
     newIntroducedTodayCount
   ] = await Promise.all([
@@ -328,14 +329,13 @@ async function buildMediaShellSnapshot(
         slug: media.slug
       }
     ]),
-    loadReviewLaunchCandidatesCached(database, nowIso),
+    loadReviewLaunchCandidateByMediaIdCached(database, media.id, nowIso),
     getReviewDailyLimit(database),
     loadReviewIntroducedTodayCountCached(database, new Date(nowIso))
   ]);
 
-  const candidate = reviewCandidates.find((c) => c.mediaId === media.id);
   const newQueuedCount = Math.min(
-    candidate?.newCount ?? 0,
+    reviewCandidate?.newCount ?? 0,
     Math.max(dailyLimit - newIntroducedTodayCount, 0)
   );
   const glossary =
@@ -350,9 +350,9 @@ async function buildMediaShellSnapshot(
     lessons,
     media,
     reviewCounts: {
-      activeReviewCards: candidate?.activeReviewCards ?? 0,
-      cardsTotal: candidate?.cardsTotal ?? 0,
-      dueCount: candidate?.dueCount ?? 0,
+      activeReviewCards: reviewCandidate?.activeReviewCards ?? 0,
+      cardsTotal: reviewCandidate?.cardsTotal ?? 0,
+      dueCount: reviewCandidate?.dueCount ?? 0,
       newQueuedCount
     }
   });

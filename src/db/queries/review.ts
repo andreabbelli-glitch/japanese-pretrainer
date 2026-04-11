@@ -383,7 +383,33 @@ export async function listReviewLaunchCandidates(
   database: DatabaseQueryClient,
   asOfIso = new Date().toISOString()
 ): Promise<ReviewLaunchCandidate[]> {
+  return loadReviewLaunchCandidates(database, asOfIso);
+}
+
+export async function getReviewLaunchCandidateByMediaId(
+  database: DatabaseQueryClient,
+  mediaId: string,
+  asOfIso = new Date().toISOString()
+): Promise<ReviewLaunchCandidate | null> {
+  const [candidate] = await loadReviewLaunchCandidates(
+    database,
+    asOfIso,
+    mediaId
+  );
+
+  return candidate ?? null;
+}
+
+async function loadReviewLaunchCandidates(
+  database: DatabaseQueryClient,
+  asOfIso: string,
+  mediaId?: string
+): Promise<ReviewLaunchCandidate[]> {
   const asOfSql = quoteSqlString(asOfIso);
+  const mediaFilterSql = mediaId
+    ? ` AND m.id = ${quoteSqlString(mediaId)}`
+    : "";
+  const orderBySql = mediaId ? "" : "ORDER BY m.title ASC, m.slug ASC";
 
   const rows = await database.all<{
     activeReviewCards: number | string | null;
@@ -490,8 +516,9 @@ export async function listReviewLaunchCandidates(
     LEFT JOIN subject_media_candidates smc
       ON smc.mediaId = m.id
     WHERE m.status = 'active'
+      ${mediaFilterSql}
     GROUP BY m.id, m.slug, m.title
-    ORDER BY m.title ASC, m.slug ASC
+    ${orderBySql}
   `);
 
   return rows.map((row) => ({
