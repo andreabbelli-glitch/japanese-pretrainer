@@ -14,7 +14,7 @@ export function SiteShellPrimaryNav() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const returnContext = resolveReturnToContext(
-    searchParams.get("returnTo") ?? undefined
+    searchParams.getAll("returnTo")
   );
   const activePrimaryHref = resolveActivePrimaryNavHref(pathname);
 

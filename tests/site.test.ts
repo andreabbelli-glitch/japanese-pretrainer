@@ -320,6 +320,19 @@ describe("site helpers", () => {
     );
   });
 
+  it("keeps the first non-empty duplicated review returnTo in primary nav links", () => {
+    pathname = "/media/fixture-tcg/glossary";
+    searchParams = new URLSearchParams(
+      "returnTo=&returnTo=%2Fmedia%2Ffixture-tcg%2Freview%3Fanswered%3D3%26card%3Dcard-iku"
+    );
+
+    const markup = renderToStaticMarkup(createElement(SiteShellPrimaryNav));
+
+    expect(markup).toContain(
+      'href="/media/fixture-tcg/review?answered=3&amp;card=card-iku"'
+    );
+  });
+
   it("renders a textbook index CTA that jumps directly into segment review", () => {
     const markup = renderToStaticMarkup(
       createElement(TextbookIndexPage, {
