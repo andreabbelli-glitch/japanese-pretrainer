@@ -193,6 +193,192 @@ export type ReviewLaunchCandidate = {
   title: string;
 };
 
+export type GlobalReviewOverviewCounts = {
+  activeReviewCards: number;
+  dueCount: number;
+  manualCount: number;
+  newAvailableCount: number;
+  suspendedCount: number;
+  tomorrowCount: number;
+  totalCards: number;
+};
+
+export async function getGlobalReviewOverviewCounts(
+  database: DatabaseQueryClient,
+  asOf = new Date()
+): Promise<GlobalReviewOverviewCounts> {
+  const asOfIso = asOf.toISOString();
+  const tomorrowStart = new Date(
+    asOf.getFullYear(),
+    asOf.getMonth(),
+    asOf.getDate() + 1
+  );
+  const tomorrowEnd = new Date(
+    asOf.getFullYear(),
+    asOf.getMonth(),
+    asOf.getDate() + 2
+  );
+
+  const rows = await database.all<{
+    activeReviewCards: number | string | null;
+    dueCount: number | string | null;
+    manualCount: number | string | null;
+    newAvailableCount: number | string | null;
+    suspendedCount: number | string | null;
+    tomorrowCount: number | string | null;
+    totalCards: number | string | null;
+  }>(`
+    WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: "SELECT id FROM media WHERE status = 'active'" })},
+    global_subject_candidates AS (
+      SELECT
+        si.subject_key AS subjectKey,
+        MAX(
+          CASE
+            WHEN si.lesson_id IS NOT NULL
+             AND EXISTS (
+               SELECT 1
+               FROM lesson l
+               INNER JOIN lesson_progress lp
+                 ON lp.lesson_id = l.id
+               WHERE l.id = si.lesson_id
+                 AND l.status = 'active'
+                 AND lp.status = 'completed'
+             )
+            THEN 1
+            ELSE 0
+          END
+        ) AS hasCompletedLesson,
+        MAX(
+          CASE
+            WHEN si.card_status != 'suspended' THEN 1
+            ELSE 0
+          END
+        ) AS hasActiveCard,
+        MAX(COALESCE(rss.manual_override, 0)) AS manualOverride,
+        MAX(COALESCE(rss.suspended, 0)) AS suspended,
+        MAX(rss.state) AS reviewState,
+        MAX(rss.due_at) AS dueAt
+      FROM subject_identity si
+      LEFT JOIN review_subject_state rss
+        ON rss.subject_key = si.subject_key
+      GROUP BY si.subject_key
+    )
+    SELECT
+      COALESCE(
+        SUM(
+          CASE
+            WHEN gsc.hasCompletedLesson = 1 THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS totalCards,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN gsc.hasCompletedLesson = 1
+             AND gsc.hasActiveCard = 1
+             AND gsc.suspended = 0
+             AND gsc.manualOverride = 0
+             AND COALESCE(gsc.reviewState, 'new') NOT IN ('new', 'known_manual', 'suspended')
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS activeReviewCards,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN gsc.hasCompletedLesson = 1
+             AND gsc.hasActiveCard = 1
+             AND gsc.suspended = 0
+             AND gsc.manualOverride = 0
+             AND COALESCE(gsc.reviewState, 'new') NOT IN ('new', 'known_manual', 'suspended')
+             AND (gsc.dueAt IS NULL OR gsc.dueAt <= ${quoteSqlString(asOfIso)})
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS dueCount,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN gsc.hasCompletedLesson = 1
+             AND gsc.hasActiveCard = 1
+             AND gsc.suspended = 0
+             AND COALESCE(gsc.reviewState, 'new') = 'new'
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS newAvailableCount,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN gsc.hasCompletedLesson = 1
+             AND gsc.hasActiveCard = 1
+             AND gsc.suspended = 0
+             AND (
+               gsc.manualOverride = 1
+               OR COALESCE(gsc.reviewState, 'new') = 'known_manual'
+             )
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS manualCount,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN gsc.hasCompletedLesson = 1
+             AND (
+               gsc.hasActiveCard = 0
+               OR gsc.suspended = 1
+               OR COALESCE(gsc.reviewState, 'new') = 'suspended'
+             )
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS suspendedCount,
+      COALESCE(
+        SUM(
+          CASE
+            WHEN gsc.hasCompletedLesson = 1
+             AND gsc.hasActiveCard = 1
+             AND gsc.suspended = 0
+             AND gsc.manualOverride = 0
+             AND COALESCE(gsc.reviewState, 'new') NOT IN ('new', 'known_manual', 'suspended')
+             AND gsc.dueAt IS NOT NULL
+             AND gsc.dueAt > ${quoteSqlString(asOfIso)}
+             AND gsc.dueAt >= ${quoteSqlString(tomorrowStart.toISOString())}
+             AND gsc.dueAt < ${quoteSqlString(tomorrowEnd.toISOString())}
+            THEN 1
+            ELSE 0
+          END
+        ),
+        0
+      ) AS tomorrowCount
+    FROM global_subject_candidates gsc
+  `);
+  const row = rows[0];
+
+  return {
+    activeReviewCards: Number(row?.activeReviewCards ?? 0),
+    dueCount: Number(row?.dueCount ?? 0),
+    manualCount: Number(row?.manualCount ?? 0),
+    newAvailableCount: Number(row?.newAvailableCount ?? 0),
+    suspendedCount: Number(row?.suspendedCount ?? 0),
+    tomorrowCount: Number(row?.tomorrowCount ?? 0),
+    totalCards: Number(row?.totalCards ?? 0)
+  };
+}
+
 export async function listReviewLaunchCandidates(
   database: DatabaseQueryClient,
   asOfIso = new Date().toISOString()

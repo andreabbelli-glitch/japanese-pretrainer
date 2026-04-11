@@ -681,7 +681,7 @@ function resolveCardBucket(input: {
   return "upcoming";
 }
 
-function buildQueueIntroLabel(input: {
+export function buildQueueIntroLabel(input: {
   dailyLimit: number;
   dueCount: number;
   manualCount: number;

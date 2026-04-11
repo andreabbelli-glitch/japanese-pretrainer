@@ -92,6 +92,7 @@ describe("app shell live data", () => {
     // lesson-bound review card is filtered out once its driving entry is
     // manually marked known.
     expect(dashboard.review.activeReviewCards).toBe(0);
+    expect(dashboard.review.queueLabel).toMatch(/esclus[ae] manualmente/);
   });
 
   it("prefers the most reviewable media for review entry points", async () => {

@@ -1,6 +1,7 @@
 import {
   countReviewSubjectsIntroducedOnDay,
   db,
+  getGlobalReviewOverviewCounts,
   listReviewLaunchCandidates,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
@@ -27,6 +28,7 @@ import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { resolveReviewSubjectGroups } from "./review-subject-state-lookup";
 import { hasCompletedReviewLesson } from "./review-model";
 import {
+  buildQueueIntroLabel,
   buildReviewOverviewSnapshot,
   buildReviewSubjectModels,
   bucketAndSortReviewSubjectModels
@@ -450,36 +452,43 @@ export async function loadReviewOverviewSnapshots(
 export async function loadGlobalReviewOverviewSnapshot(
   database: DatabaseClient = db
 ) {
-  const media = await listMediaCached(database);
-
-  if (media.length === 0) {
-    return buildReviewOverviewSnapshot({
-      cards: [],
-      dailyLimit: 0,
-      entryLookup: EMPTY_ENTRY_LOOKUP,
-      extraNewCount: 0,
-      newIntroducedTodayCount: 0,
-      nowIso: new Date().toISOString(),
-      subjectStates: new Map()
-    });
-  }
-
   const now = new Date();
-  const workspace = await loadReviewWorkspaceV2({
-    database,
-    mediaIds: media.map((item) => item.id),
-    now
-  });
+  const [counts, dailyLimit, newIntroducedTodayCount] = await Promise.all([
+    getGlobalReviewOverviewCounts(database, now),
+    getReviewDailyLimit(database),
+    loadReviewIntroducedTodayCountCached(database, now)
+  ]);
+  const newQueuedCount = Math.min(
+    counts.newAvailableCount,
+    Math.max(dailyLimit - newIntroducedTodayCount, 0)
+  );
+  const upcomingCount = Math.max(
+    counts.activeReviewCards - counts.dueCount,
+    0
+  );
 
-  return buildReviewOverviewSnapshot({
-    cards: workspace.cards,
-    dailyLimit: workspace.dailyLimit,
-    entryLookup: EMPTY_ENTRY_LOOKUP,
-    extraNewCount: 0,
-    newIntroducedTodayCount: workspace.newIntroducedTodayCount,
-    nowIso: workspace.now.toISOString(),
-    subjectGroups: workspace.subjectGroups
-  });
+  return {
+    activeCards: counts.activeReviewCards,
+    dailyLimit,
+    dueCount: counts.dueCount,
+    effectiveDailyLimit: dailyLimit,
+    manualCount: counts.manualCount,
+    newAvailableCount: counts.newAvailableCount,
+    newQueuedCount,
+    queueCount: counts.dueCount + newQueuedCount,
+    queueLabel: buildQueueIntroLabel({
+      dailyLimit,
+      dueCount: counts.dueCount,
+      manualCount: counts.manualCount,
+      newQueuedCount,
+      sessionTopUpNewCount: 0,
+      upcomingCount
+    }),
+    suspendedCount: counts.suspendedCount,
+    tomorrowCount: counts.tomorrowCount,
+    totalCards: counts.totalCards,
+    upcomingCount
+  };
 }
 
 export async function loadGlobalAndMediaReviewOverviewSnapshots(
