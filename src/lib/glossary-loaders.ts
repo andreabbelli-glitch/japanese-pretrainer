@@ -445,19 +445,19 @@ async function loadFullEntriesForCandidateRefs(
 
   for (const ref of refs) {
     if (ref.entryType === "term") {
-      termIds.add(ref.entryId);
-
       if (ref.crossMediaGroupId) {
         termGroupIds.add(ref.crossMediaGroupId);
+      } else {
+        termIds.add(ref.entryId);
       }
 
       continue;
     }
 
-    grammarIds.add(ref.entryId);
-
     if (ref.crossMediaGroupId) {
       grammarGroupIds.add(ref.crossMediaGroupId);
+    } else {
+      grammarIds.add(ref.entryId);
     }
   }
 
