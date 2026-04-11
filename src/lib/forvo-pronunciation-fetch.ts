@@ -34,6 +34,13 @@ import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
 } from "./pronunciation-shared.ts";
+import {
+  addForvoWordAddRequestEntry,
+  buildForvoWordAddUrl,
+  loadForvoWordAddRequestRegistry,
+  persistForvoWordAddRequestRegistry,
+  type ForvoWordAddRequestRegistry
+} from "./forvo-word-add.ts";
 
 export type { ForvoCandidate } from "./forvo-pronunciation-helpers.ts";
 
@@ -61,6 +68,8 @@ export type ForvoManualOptions = {
   entryDelayMs?: number;
   knownMissingPath?: string;
   openUrls?: boolean;
+  openWordAddOnSkip?: boolean;
+  requestRegistryPath?: string;
   retryKnownMissing?: boolean;
 };
 
@@ -247,6 +256,7 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
     knownMissingPath: input.manual.knownMissingPath,
     limit: input.limit,
     refresh: input.refresh,
+    requestRegistryPath: input.manual.requestRegistryPath,
     retryKnownMissing: input.manual.retryKnownMissing,
     wordListSource: input.wordListSource,
     words: input.words
@@ -254,6 +264,7 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
   const {
     manifestEntries,
     knownMissingRegistry,
+    requestRegistry,
     knownMissingSkipped,
     requestedUnresolved,
     runnableTargets
@@ -307,6 +318,14 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
             input.manual.knownMissingPath,
             knownMissingRegistry
           );
+
+          await handleWordAddRequestAfterSkip({
+            entry,
+            mediaSlug: input.bundle.mediaSlug,
+            openWordAddOnSkip: input.manual.openWordAddOnSkip ?? true,
+            requestRegistry,
+            requestRegistryPath: input.manual.requestRegistryPath
+          });
         }
 
         results.push({
@@ -373,6 +392,7 @@ async function prepareForvoPronunciationRun(input: {
   knownMissingPath?: string;
   limit?: number;
   refresh?: boolean;
+  requestRegistryPath?: string;
   retryKnownMissing?: boolean;
   wordListSource?: string;
   words?: string[];
@@ -410,6 +430,9 @@ async function prepareForvoPronunciationRun(input: {
   const knownMissingRegistry = await loadForvoKnownMissingRegistry(
     input.knownMissingPath
   );
+  const requestRegistry = await loadForvoWordAddRequestRegistry(
+    input.requestRegistryPath
+  );
   const knownMissingPruned = pruneKnownMissingRegistry(
     knownMissingRegistry,
     allTargets,
@@ -444,6 +467,7 @@ async function prepareForvoPronunciationRun(input: {
 
   return {
     knownMissingRegistry,
+    requestRegistry,
     knownMissingSkipped,
     manifestEntries,
     requestedUnresolved: requestedTargets.unresolved,
@@ -606,6 +630,45 @@ async function captureManualForvoPronunciation(input: {
     audioSpeaker: undefined,
     audioSrc: localAssetPath
   };
+}
+
+async function handleWordAddRequestAfterSkip(input: {
+  entry: PronunciationTargetEntry;
+  mediaSlug: string;
+  openWordAddOnSkip: boolean;
+  requestRegistry: ForvoWordAddRequestRegistry;
+  requestRegistryPath?: string;
+}) {
+  const requestAdded = addForvoWordAddRequestEntry(input.requestRegistry, {
+    entryId: input.entry.id,
+    entryKind: input.entry.kind,
+    label: input.entry.label,
+    mediaSlug: input.mediaSlug,
+    reading: input.entry.reading
+  });
+  const requestUrl = buildForvoWordAddUrl({
+    entryId: input.entry.id,
+    entryKind: input.entry.kind,
+    label: input.entry.label,
+    reading: input.entry.reading
+  });
+
+  if (requestAdded) {
+    await persistForvoWordAddRequestRegistry(
+      input.requestRegistryPath,
+      input.requestRegistry
+    );
+  }
+
+  if (input.openWordAddOnSkip) {
+    await openUrlInDefaultBrowser(requestUrl);
+    console.info(`  opened word-add request URL -> ${requestUrl}`);
+    return;
+  }
+
+  if (requestAdded) {
+    console.info(`  request URL recorded -> ${requestUrl}`);
+  }
 }
 
 async function loadForvoCandidatesForEntry(input: {

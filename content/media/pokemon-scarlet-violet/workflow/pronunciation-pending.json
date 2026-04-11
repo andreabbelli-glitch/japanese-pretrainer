@@ -2,76 +2,10 @@
   "version": 1,
   "media_slug": "pokemon-scarlet-violet",
   "total_targets": 1057,
-  "audio_backed_count": 152,
-  "known_missing_count": 67,
-  "pending_count": 838,
+  "audio_backed_count": 164,
+  "known_missing_count": 68,
+  "pending_count": 825,
   "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-v136-naze",
-      "label": "なぜ",
-      "reading": "なぜ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v137-tabi",
-      "label": "旅",
-      "reading": "たび"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e025-dekiruyouninatta",
-      "label": "〜できるようになった",
-      "reading": "〜できるようになった"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e026-makase-te",
-      "label": "任せて",
-      "reading": "まかせて"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v138-seisokuchi",
-      "label": "生息地",
-      "reading": "せいそくち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v139-nannin",
-      "label": "何人",
-      "reading": "なんにん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v140-uru",
-      "label": "売る",
-      "reading": "うる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v141-ikkai",
-      "label": "一回",
-      "reading": "いっかい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v142-kawa",
-      "label": "川",
-      "reading": "かわ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v143-machi",
-      "label": "街",
-      "reading": "まち"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v144-tabun",
-      "label": "たぶん",
-      "reading": "たぶん"
-    },
     {
       "entry_type": "term",
       "entry_id": "term-v145-nanbiki",
@@ -557,12 +491,6 @@
       "entry_id": "term-v219-honki",
       "label": "本気",
       "reading": "ほんき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v220-ichido",
-      "label": "一度",
-      "reading": "いちど"
     },
     {
       "entry_type": "term",
@@ -1289,12 +1217,6 @@
       "entry_id": "term-v330-houhou",
       "label": "方法",
       "reading": "ほうほう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-v331-henkou",
-      "label": "変更",
-      "reading": "へんこう"
     },
     {
       "entry_type": "term",

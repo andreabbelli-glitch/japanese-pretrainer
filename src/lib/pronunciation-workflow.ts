@@ -12,13 +12,17 @@ import {
 export const pronunciationWorkflowDirectoryName = "workflow";
 export const pronunciationPendingFileName = "pronunciation-pending.json";
 
-type ForvoKnownMissingEntry = {
+export type ForvoKnownMissingEntry = {
   entryId: string;
   entryKind: "term" | "grammar";
+  label?: string;
   mediaSlug: string;
+  reading?: string;
+  reason?: "not_found_on_forvo";
+  updatedAt?: string;
 };
 
-type ForvoKnownMissingRegistry = {
+export type ForvoKnownMissingRegistry = {
   version: 1;
   entries: ForvoKnownMissingEntry[];
 };
@@ -161,7 +165,9 @@ function hasAudio(
   );
 }
 
-export async function loadForvoKnownMissingRegistry(knownMissingPath?: string) {
+export async function loadForvoKnownMissingRegistry(
+  knownMissingPath?: string
+): Promise<ForvoKnownMissingRegistry> {
   if (!knownMissingPath) {
     return {
       entries: [],

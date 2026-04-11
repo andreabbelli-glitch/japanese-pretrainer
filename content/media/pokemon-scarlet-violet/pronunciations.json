@@ -946,7 +946,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-e026-makase-te",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-e026-makase-te/forvo-manual-まかせて.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BB%BB%E3%81%9B%E3%81%A6/#ja"
     },
     {
       "entry_type": "term",
@@ -3150,6 +3153,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v136-naze",
+      "audio_src": "assets/audio/term/term-v136-naze/forvo-manual-なせ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AA%E3%81%9C/#ja",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%AA%E3%81%9C",
@@ -3158,63 +3165,66 @@
     {
       "entry_type": "term",
       "entry_id": "term-v137-tabi",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%97%85",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v137-tabi/forvo-manual-たひ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%97%85/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-v138-seisokuchi",
-      "pitch_accent": 3,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%9B%E3%81%84%E3%81%9D%E3%81%8F%E3%81%A1",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v138-seisokuchi/forvo-manual-せいそくち.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%94%9F%E6%81%AF%E5%9C%B0/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-v139-nannin",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%BD%95%E4%BA%BA",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v139-nannin/forvo-manual-なんにん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BD%95%E4%BA%BA/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-v140-uru",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A3%B2%E3%82%8B",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v140-uru/forvo-manual-うる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%A3%B2%E3%82%8B/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-v141-ikkai",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%80%E5%9B%9E",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v141-ikkai/forvo-manual-いっかい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%B8%80%E5%9B%9E/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-v142-kawa",
-      "pitch_accent": 2,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%B7%9D",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v142-kawa/forvo-manual-かわ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%B7%9D/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-v143-machi",
-      "pitch_accent": 2,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%BE%E3%81%A1",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v143-machi/forvo-manual-まち.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A1%97/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-v144-tabun",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-v144-tabun/forvo-manual-たふ-ん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9F%E3%81%B6%E3%82%93/#ja"
     },
     {
       "entry_type": "term",
@@ -3768,10 +3778,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v220-ichido",
-      "pitch_accent": 3,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%80%E5%BA%A6",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v220-ichido/forvo-manual-いちと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%B8%80%E5%BA%A6/#ja"
     },
     {
       "entry_type": "term",
@@ -4561,10 +4571,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-v331-henkou",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A4%89%E6%9B%B4",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v331-henkou/forvo-manual-へんこう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%A4%89%E6%9B%B4/#ja"
     },
     {
       "entry_type": "term",

@@ -25,8 +25,10 @@ type CliOptions = {
   manualOpenUrls: boolean;
   mediaSlugs: string[];
   knownMissingPath: string;
+  openWordAddOnSkip: boolean;
   profileDir: string;
   refresh: boolean;
+  requestRegistryPath: string;
   retryKnownMissing: boolean;
   wordListPath?: string;
   words: string[];
@@ -131,6 +133,8 @@ if (!parseResult.ok) {
               downloadsDir: path.resolve(options.manualDownloadsDir),
               knownMissingPath: path.resolve(options.knownMissingPath),
               openUrls: options.manualOpenUrls,
+              openWordAddOnSkip: options.openWordAddOnSkip,
+              requestRegistryPath: path.resolve(options.requestRegistryPath),
               retryKnownMissing: options.retryKnownMissing
             },
             refresh: options.refresh,
@@ -211,7 +215,9 @@ function parseCliOptions(argv: string[]): CliOptions {
     manualOpenUrls: true,
     mediaSlugs: [],
     profileDir: path.join("data", "forvo-profile"),
+    openWordAddOnSkip: true,
     refresh: false,
+    requestRegistryPath: path.join("data", "forvo-requested-word-add.json"),
     retryKnownMissing: false,
     words: []
   };
@@ -305,8 +311,20 @@ function parseCliOptions(argv: string[]): CliOptions {
       continue;
     }
 
+    if (argument === "--request-registry-file") {
+      options.requestRegistryPath =
+        argv[index + 1] ?? options.requestRegistryPath;
+      index += 1;
+      continue;
+    }
+
     if (argument === "--no-open") {
       options.manualOpenUrls = false;
+      continue;
+    }
+
+    if (argument === "--no-open-word-add-on-skip") {
+      options.openWordAddOnSkip = false;
       continue;
     }
 

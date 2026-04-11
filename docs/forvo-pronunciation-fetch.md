@@ -30,6 +30,11 @@ source of truth del processo completo e
   altri media con stessa entry type, stesso label e stessa reading;
 - nel flusso operativo standard apre l'URL Forvo nel browser normale e osserva
   il download locale del file scelto;
+- quando marchi una entry come missing (`s` o `/skip`), apre anche l'URL
+  `word-add/...` nel browser normale per chiedere la pronuncia e registra la
+  richiesta in `data/forvo-requested-word-add.json`;
+- gli URL `word-add` includono anche hint di prefill (`jcs_lang`, `jcs_phrase`,
+  `jcs_person_name`) per lo userscript Tampermonkey locale;
 - il profilo browser dedicato in `data/forvo-profile/` resta disponibile per il
   percorso Playwright di debug o manutenzione del fetcher;
 - se Cloudflare o il login richiedono intervento, ti lascia completare la
@@ -50,6 +55,8 @@ source of truth del processo completo e
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media gundam-arsenal-base --word 専用機 --word 戦艦
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
+./scripts/with-node.sh pnpm pronunciations:forvo:request -- --limit 10
+./scripts/with-node.sh pnpm pronunciations:forvo:request -- --media duel-masters-dm25 --limit 25
 ```
 
 ## Modalita manuale consigliata
@@ -61,7 +68,13 @@ Per i batch reali usa sempre `--manual`:
 - il comando osserva `~/Downloads`, prende l'ultimo audio nuovo e lo importa nel
   bundle corretto;
 - se la parola non esiste su Forvo, puoi digitare `s` e premere Enter per
-  marcarla come missing e saltarla nelle run future.
+  marcarla come missing e saltarla nelle run future;
+- subito dopo lo skip apre anche la pagina `word-add/...` della stessa entry,
+  cosi puoi chiedere la pronuncia dal browser normale senza cercarla a mano;
+- se hai installato lo userscript locale
+  `scripts/forvo-word-add-helper.user.js`, la pagina `word-add` seleziona in
+  automatico `Japanese`, decide `phrase yes/no` dagli hint del repo e lascia
+  `personal name = no`;
 - mentre aspetta espone anche un URL locale, di default
   `http://127.0.0.1:3210/skip`, che puoi richiamare da browser per saltare senza
   tornare al terminale.
@@ -72,7 +85,33 @@ Opzioni utili:
 - `--control-port 3210`: porta del comando locale `/skip`;
 - `--no-open`: non apre automaticamente l'URL nel browser;
 - `--known-missing-file /path`: file JSON dove salvare gli skip persistenti;
+- `--request-registry-file /path`: file JSON dove salvare le richieste
+  `word-add` gia aperte;
 - `--retry-known-missing`: riprova anche le voci gia marcate come missing.
+- `--no-open-word-add-on-skip`: registra la richiesta ma non apre la tab
+  `word-add` quando salti una entry.
+
+## Userscript Tampermonkey
+
+Lo userscript locale da usare e':
+
+`scripts/forvo-word-add-helper.user.js`
+
+Installazione pratica:
+
+- apri Tampermonkey;
+- crea un nuovo script;
+- incolla il contenuto di `scripts/forvo-word-add-helper.user.js`;
+- salva e lascia lo script attivo per `forvo.com`.
+
+Comportamento:
+
+- aggiunge due pulsanti vicino all'`Add` normale: `Fill Forvo` e `Fill + Add`;
+- se l'URL contiene i parametri del repo (`jcs_lang=ja`, `jcs_phrase=0/1`,
+  `jcs_person_name=0/1`), prova anche un auto-fill iniziale;
+- usa una regola esplicita del workflow per `phrase yes/no`:
+  grammatica => frase, pattern con `〜`, spazi o punteggiatura => frase,
+  termini semplici => parola.
 
 ## Formato lista parole
 
@@ -101,8 +140,36 @@ term-taberu
   collegarla e non proportela su Forvo;
 - batch operativo consigliato: `10` entry alla volta;
 - gli skip persistenti finiscono di default in `data/forvo-known-missing.json`;
+- le richieste `word-add` gia aperte finiscono di default in
+  `data/forvo-requested-word-add.json`;
 - il residuo operativo corrente vive in
   `content/media/<slug>/workflow/pronunciation-pending.json`;
 - `--refresh` forza il rimpiazzo anche se l'entry ha gia audio locale;
 - `--profile-dir` permette di isolare un profilo browser diverso;
 - `--keep-browser-open` lascia Chrome aperto a fine batch per debug.
+
+## Batch one-shot per il backlog known missing
+
+Quando vuoi coprire in blocco il backlog gia segnato come `not_found_on_forvo`,
+usa:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:forvo:request -- --limit 10
+```
+
+Questo comando:
+
+- legge `data/forvo-known-missing.json`;
+- esclude di default le voci gia richieste e registrate in
+  `data/forvo-requested-word-add.json`;
+- apre gli URL `https://forvo.com/word-add/...` nel browser normale;
+- salva subito nel registry quali richieste sono gia state lanciate.
+
+Opzioni utili:
+
+- `--media <slug>`: limita il batch a un media;
+- `--entry <entry-id>`: limita il batch a una entry precisa;
+- `--limit N`: quante tab aprire;
+- `--no-open`: stampa/registra senza aprire il browser;
+- `--retry-requested`: include anche le voci gia richieste in passato;
+- `--request-delay-ms 750`: pausa tra le tab aperte.

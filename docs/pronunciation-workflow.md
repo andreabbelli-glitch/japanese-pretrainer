@@ -36,6 +36,11 @@ Forvo solo come fallback manuale sulle entry rimaste scoperte.
    dell'utente.
 9. Mantieni aggiornata la lista residua in
    `content/media/<slug>/workflow/pronunciation-pending.json`.
+10. Quando una entry viene saltata come `missing on Forvo`, apri anche il suo
+    URL `word-add/...` nel browser normale e registra la richiesta in
+    `data/forvo-requested-word-add.json`.
+11. Passa nell'URL anche gli hint di prefill per Tampermonkey:
+    lingua giapponese, `phrase yes/no`, `personal name = no`.
 
 ## Fase 1: fetch offline primario
 
@@ -92,6 +97,10 @@ Per Forvo:
   esplicita di retry;
 - usa batch da `10` come default;
 - usa sempre il flusso `--manual` nel browser normale.
+- quando salti una entry con `s` o `/skip`, lascia che il comando apra anche la
+  tab `word-add/...` per chiedere la pronuncia e registri la richiesta fatta;
+- se usi il helper Tampermonkey locale, lascia che legga gli hint `jcs_*`
+  presenti nell'URL invece di selezionare a mano lingua e tipo entry;
 - al termine aggiorna `content/media/<slug>/workflow/pronunciation-pending.json`
   per riflettere il residuo ancora aperto.
 

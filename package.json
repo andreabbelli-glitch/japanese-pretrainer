@@ -32,6 +32,7 @@
     "pronunciations:reuse": "node --experimental-strip-types ./scripts/reuse-pronunciations.ts",
     "pitch-accents:fetch": "node --experimental-strip-types ./scripts/fetch-pitch-accents.ts",
     "pronunciations:forvo": "node --experimental-strip-types ./scripts/fetch-forvo-pronunciations.ts",
+    "pronunciations:forvo:request": "node --experimental-strip-types ./scripts/request-forvo-word-add.ts",
     "image:status": "node --experimental-strip-types ./scripts/image-workflow-status.ts",
     "image:apply": "node --experimental-strip-types ./scripts/apply-image-blocks.ts",
     "kanji-clash:generate-similar-kanji": "node --experimental-strip-types ./scripts/generate-kanji-clash-similar-kanji-dataset.ts",

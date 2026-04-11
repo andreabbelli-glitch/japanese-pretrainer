@@ -98,6 +98,8 @@ export {
   pronunciationWorkflowDirectoryName
 } from "./pronunciation-workflow.ts";
 export type {
+  ForvoKnownMissingEntry,
+  ForvoKnownMissingRegistry,
   MediaPronunciationPendingSummary,
   PronunciationPendingEntry
 } from "./pronunciation-workflow.ts";
@@ -115,3 +117,17 @@ export type {
   ForvoCandidate,
   ForvoManualOptions
 } from "./forvo-pronunciation-fetch.ts";
+
+export {
+  addForvoWordAddRequestEntry,
+  buildForvoWordAddPrefill,
+  buildForvoWordAddUrl,
+  hasForvoWordAddRequestForEntry,
+  loadForvoWordAddRequestRegistry,
+  persistForvoWordAddRequestRegistry
+} from "./forvo-word-add.ts";
+export type {
+  ForvoWordAddPrefill,
+  ForvoWordAddRequestEntry,
+  ForvoWordAddRequestRegistry
+} from "./forvo-word-add.ts";
