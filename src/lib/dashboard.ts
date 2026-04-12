@@ -63,8 +63,8 @@ export async function getDashboardData(
 async function loadDashboardData(
   database: DatabaseClient
 ): Promise<DashboardData> {
-  const mediaRows = await listMediaCached(database);
-  const [dailyLimit, newIntroducedTodayCount] = await Promise.all([
+  const [mediaRows, dailyLimit, newIntroducedTodayCount] = await Promise.all([
+    listMediaCached(database),
     getReviewDailyLimit(database),
     loadReviewIntroducedTodayCountCached(database)
   ]);

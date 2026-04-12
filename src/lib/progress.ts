@@ -5,6 +5,7 @@ import {
   buildReviewSummaryTags,
   canUseDataCache,
   getMediaBySlugCached,
+  listMediaCached,
   MEDIA_LIST_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
@@ -125,9 +126,14 @@ export async function getMediaProgressPageData(
     keyParts: ["progress", "media-page", media.id, `day:${cacheDayKey}`],
     loader: async () => {
       const settingsPromise = getStudySettings(database);
-      const reviewSnapshotsPromise = settingsPromise.then((settings) =>
+      const mediaRowsPromise = listMediaCached(database);
+      const reviewSnapshotsPromise = Promise.all([
+        settingsPromise,
+        mediaRowsPromise
+      ]).then(([settings, mediaRows]) =>
         loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id], {
-          resolvedDailyLimit: settings.reviewDailyLimit
+          resolvedDailyLimit: settings.reviewDailyLimit,
+          resolvedMediaRows: mediaRows
         })
       );
       const [sharedMedia, reviewSnapshots, settings] = await Promise.all([

@@ -532,16 +532,10 @@ export async function getGlobalReviewFirstCandidateLoadResult(
   ];
 
   const loadSnapshot = async () => {
-    const settings = await measureWith(
-      options.profiler,
-      "getStudySettings",
-      () => getStudySettings(database)
-    );
-    const workspace = await loadGlobalReviewWorkspace(
+    const workspace = await loadGlobalReviewPageWorkspace(
       searchState,
       database,
-      options,
-      settings.reviewDailyLimit
+      options
     );
 
     if (workspace.mediaRows.length === 0) {
@@ -575,7 +569,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
         newIntroducedTodayCount: workspace.newIntroducedTodayCount,
         now: workspace.now,
         profiler: options.profiler,
-        reviewFrontFurigana: settings.reviewFrontFurigana,
+        reviewFrontFurigana: workspace.reviewFrontFurigana,
         scope: "global",
         searchState: workspace.searchState,
         subjectGroups: workspace.subjectGroups

@@ -312,13 +312,25 @@ export async function loadGlobalReviewPageWorkspace(
   database: DatabaseClient = db,
   options: ReviewPageLoadOptions = {}
 ): Promise<LoadedGlobalReviewPageWorkspace> {
-  const settings = await measureWith(options.profiler, "getStudySettings", () =>
+  const mediaRowsPromise = options.resolvedMediaRows
+    ? Promise.resolve(options.resolvedMediaRows)
+    : measureWith(options.profiler, "listMediaCached", () =>
+        listMediaCached(database)
+      );
+  const settingsPromise = measureWith(options.profiler, "getStudySettings", () =>
     getStudySettings(database)
   );
+  const [mediaRows, settings] = await Promise.all([
+    mediaRowsPromise,
+    settingsPromise
+  ]);
   const workspace = await loadGlobalReviewWorkspace(
     searchState,
     database,
-    options,
+    {
+      ...options,
+      resolvedMediaRows: mediaRows
+    },
     settings.reviewDailyLimit
   );
 
@@ -526,11 +538,12 @@ export async function loadGlobalAndMediaReviewOverviewSnapshots(
   database: DatabaseClient,
   visibleMediaIds: string[],
   options: {
+    resolvedMediaRows?: MediaListItem[];
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
   } = {}
 ) {
-  const media = await listMediaCached(database);
+  const media = options.resolvedMediaRows ?? (await listMediaCached(database));
 
   if (media.length === 0) {
     const emptySnapshot = buildReviewOverviewSnapshot({
