@@ -122,7 +122,9 @@ export async function getMediaProgressPageData(
     keyParts: ["progress", "media-page", media.id],
     loader: async () => {
       const [sharedMedia, reviewSnapshots, settings] = await Promise.all([
-        getMediaDetailData(mediaSlug, database),
+        getMediaDetailData(mediaSlug, database, {
+          includeReviewCounts: false
+        }),
         loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id]),
         getStudySettings(database)
       ]);

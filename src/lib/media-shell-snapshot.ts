@@ -154,7 +154,7 @@ export function mapMediaShellSnapshotFromCounts(input: {
   glossary: GlossaryProgressSnapshot;
   lessons: Awaited<ReturnType<typeof listLessonsByMediaId>>;
   media: MediaShellMedia;
-  reviewCounts: {
+  reviewCounts?: {
     activeReviewCards: number;
     cardsTotal: number;
     dueCount: number;
@@ -173,7 +173,13 @@ export function mapMediaShellSnapshotFromCounts(input: {
   const inProgressLessons = input.lessons.filter(
     (lesson) => lesson.progress?.status === "in_progress"
   ).length;
-  const reviewSignals = buildReviewShellSignals(input.reviewCounts);
+  const reviewCounts = input.reviewCounts ?? {
+    activeReviewCards: 0,
+    cardsTotal: 0,
+    dueCount: 0,
+    newQueuedCount: 0
+  };
+  const reviewSignals = buildReviewShellSignals(reviewCounts);
 
   return {
     id: input.media.id,
@@ -192,9 +198,9 @@ export function mapMediaShellSnapshotFromCounts(input: {
     entriesKnown: input.glossary.entriesCovered,
     entriesTotal: input.glossary.entriesTotal,
     glossaryProgressPercent: input.glossary.progressPercent,
-    cardsDue: input.reviewCounts.dueCount,
-    cardsTotal: input.reviewCounts.cardsTotal,
-    activeReviewCards: input.reviewCounts.activeReviewCards,
+    cardsDue: reviewCounts.dueCount,
+    cardsTotal: reviewCounts.cardsTotal,
+    activeReviewCards: reviewCounts.activeReviewCards,
     reviewStatValue: reviewSignals.value,
     reviewStatDetail: reviewSignals.detail,
     reviewQueueLabel: reviewSignals.queueLabel,

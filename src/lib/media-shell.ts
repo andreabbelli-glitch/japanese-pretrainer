@@ -70,7 +70,10 @@ export async function getMediaLibraryData(database: DatabaseClient = db) {
 
 export async function getMediaDetailData(
   mediaSlug: string,
-  database: DatabaseClient = db
+  database: DatabaseClient = db,
+  options: {
+    includeReviewCounts?: boolean;
+  } = {}
 ) {
   const media = await getMediaBySlugCached(database, mediaSlug);
 
@@ -80,15 +83,26 @@ export async function getMediaDetailData(
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "media-detail", mediaSlug],
-    loader: () => buildMediaShellSnapshot(database, media),
-    tags: [
-      MEDIA_LIST_TAG,
-      ...buildGlossarySummaryTags([media.id]),
-      ...buildReviewSummaryTags([media.id]),
-      REVIEW_FIRST_CANDIDATE_TAG,
-      SETTINGS_TAG
-    ]
+    keyParts: [
+      "app-shell",
+      "media-detail",
+      mediaSlug,
+      options.includeReviewCounts === false ? "study-only" : "full"
+    ],
+    loader: () =>
+      buildMediaShellSnapshot(database, media, {
+        includeReviewCounts: options.includeReviewCounts
+      }),
+    tags:
+      options.includeReviewCounts === false
+        ? [MEDIA_LIST_TAG, ...buildGlossarySummaryTags([media.id])]
+        : [
+            MEDIA_LIST_TAG,
+            ...buildGlossarySummaryTags([media.id]),
+            ...buildReviewSummaryTags([media.id]),
+            REVIEW_FIRST_CANDIDATE_TAG,
+            SETTINGS_TAG
+          ]
   });
 }
 
@@ -308,39 +322,32 @@ async function buildMediaShellSnapshot(
   database: DatabaseClient,
   media:
     | MediaListItem
-    | NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>
+    | NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>,
+  options: {
+    includeReviewCounts?: boolean;
+  } = {}
 ): Promise<MediaShellSnapshot> {
-  const nowIso = new Date().toISOString();
-  const [
-    lessons,
-    glossarySnapshots,
-    previewEntriesByMedia,
-    reviewCandidate,
-    dailyLimit,
-    newIntroducedTodayCount
-  ] = await Promise.all([
-    listLessonsByMediaId(database, media.id),
-    loadGlossaryProgressSummarySnapshotsCached(database, [
-      {
-        id: media.id,
-        slug: media.slug
-      }
-    ]),
-    loadGlossaryPreviewEntriesCached(database, [
-      {
-        id: media.id,
-        slug: media.slug
-      }
-    ]),
-    loadReviewLaunchCandidateByMediaIdCached(database, media.id, nowIso),
-    getReviewDailyLimit(database),
-    loadReviewIntroducedTodayCountCached(database, new Date(nowIso))
-  ]);
-
-  const newQueuedCount = Math.min(
-    reviewCandidate?.newCount ?? 0,
-    Math.max(dailyLimit - newIntroducedTodayCount, 0)
-  );
+  const reviewCountsPromise =
+    options.includeReviewCounts === false
+      ? Promise.resolve(undefined)
+      : loadMediaReviewCounts(database, media.id);
+  const [lessons, glossarySnapshots, previewEntriesByMedia, reviewCounts] =
+    await Promise.all([
+      listLessonsByMediaId(database, media.id),
+      loadGlossaryProgressSummarySnapshotsCached(database, [
+        {
+          id: media.id,
+          slug: media.slug
+        }
+      ]),
+      loadGlossaryPreviewEntriesCached(database, [
+        {
+          id: media.id,
+          slug: media.slug
+        }
+      ]),
+      reviewCountsPromise
+    ]);
   const glossary =
     glossarySnapshots.get(media.id) ?? buildEmptyGlossaryProgressSnapshot();
   const previewEntries = previewEntriesByMedia.get(media.id) ?? [];
@@ -352,13 +359,31 @@ async function buildMediaShellSnapshot(
     },
     lessons,
     media,
-    reviewCounts: {
-      activeReviewCards: reviewCandidate?.activeReviewCards ?? 0,
-      cardsTotal: reviewCandidate?.cardsTotal ?? 0,
-      dueCount: reviewCandidate?.dueCount ?? 0,
-      newQueuedCount
-    }
+    reviewCounts
   });
+}
+
+async function loadMediaReviewCounts(
+  database: DatabaseClient,
+  mediaId: string
+) {
+  const nowIso = new Date().toISOString();
+  const [reviewCandidate, dailyLimit, newIntroducedTodayCount] =
+    await Promise.all([
+      loadReviewLaunchCandidateByMediaIdCached(database, mediaId, nowIso),
+      getReviewDailyLimit(database),
+      loadReviewIntroducedTodayCountCached(database, new Date(nowIso))
+    ]);
+
+  return {
+    activeReviewCards: reviewCandidate?.activeReviewCards ?? 0,
+    cardsTotal: reviewCandidate?.cardsTotal ?? 0,
+    dueCount: reviewCandidate?.dueCount ?? 0,
+    newQueuedCount: Math.min(
+      reviewCandidate?.newCount ?? 0,
+      Math.max(dailyLimit - newIntroducedTodayCount, 0)
+    )
+  };
 }
 
 export { pickFocusMedia };
