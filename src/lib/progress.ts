@@ -4,6 +4,7 @@ import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
   canUseDataCache,
+  getMediaBySlugCached,
   MEDIA_LIST_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
@@ -110,34 +111,44 @@ export async function getMediaProgressPageData(
   mediaSlug: string,
   database: DatabaseClient = db
 ): Promise<ProgressPageData | null> {
-  const sharedMedia = await getMediaDetailData(mediaSlug, database);
+  const media = await getMediaBySlugCached(database, mediaSlug);
 
-  if (!sharedMedia) {
+  if (!media) {
     return null;
   }
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["progress", "media-page", sharedMedia.id],
-    loader: () => loadMediaProgressPageData(sharedMedia, database),
+    keyParts: ["progress", "media-page", media.id],
+    loader: async () => {
+      const [sharedMedia, reviewSnapshots, settings] = await Promise.all([
+        getMediaDetailData(mediaSlug, database),
+        loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id]),
+        getStudySettings(database)
+      ]);
+
+      if (!sharedMedia) {
+        return null;
+      }
+
+      return buildMediaProgressPageData(sharedMedia, reviewSnapshots, settings);
+    },
     tags: [
       MEDIA_LIST_TAG,
       SETTINGS_TAG,
-      ...buildGlossarySummaryTags([sharedMedia.id]),
-      ...buildReviewSummaryTags([sharedMedia.id])
+      ...buildGlossarySummaryTags([media.id]),
+      ...buildReviewSummaryTags([media.id])
     ]
   });
 }
 
-async function loadMediaProgressPageData(
+function buildMediaProgressPageData(
   sharedMedia: NonNullable<Awaited<ReturnType<typeof getMediaDetailData>>>,
-  database: DatabaseClient
-): Promise<ProgressPageData> {
-
-  const [reviewSnapshots, settings] = await Promise.all([
-    loadGlobalAndMediaReviewOverviewSnapshots(database, [sharedMedia.id]),
-    getStudySettings(database)
-  ]);
+  reviewSnapshots: Awaited<
+    ReturnType<typeof loadGlobalAndMediaReviewOverviewSnapshots>
+  >,
+  settings: Awaited<ReturnType<typeof getStudySettings>>
+): ProgressPageData {
   const reviewOverview = reviewSnapshots.byMedia.get(sharedMedia.id);
   const globalReviewOverview = reviewSnapshots.global;
   const review = mapReviewSnapshot(reviewOverview, settings.reviewDailyLimit);
