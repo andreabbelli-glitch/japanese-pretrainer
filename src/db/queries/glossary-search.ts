@@ -21,6 +21,7 @@ export type GlobalGlossaryBrowseGroupRef = {
   entryType: EntryType;
   internalId: string;
   resultKey: string;
+  totalCount: number;
 };
 
 type GlossarySearchMatchClause = {
@@ -260,7 +261,8 @@ export async function listGlobalGlossaryBrowseGroupRefs(
         resultKey,
         entryType,
         internalId,
-        crossMediaGroupId
+        crossMediaGroupId,
+        cast(count(*) over () as integer) as totalCount
       from ordered_groups
       ${orderByClause}
       limit ? offset ?
@@ -273,6 +275,7 @@ export async function listGlobalGlossaryBrowseGroupRefs(
       typeof row.crossMediaGroupId === "string" ? row.crossMediaGroupId : null,
     entryType: row.entryType === "grammar" ? "grammar" : "term",
     internalId: String(row.internalId),
-    resultKey: String(row.resultKey)
+    resultKey: String(row.resultKey),
+    totalCount: Number(row.totalCount ?? 0)
   }));
 }

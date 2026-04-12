@@ -668,6 +668,7 @@ describe("glossary data", () => {
 
     expect(filteredTotal).toBe(2);
     expect(pageRefs).toHaveLength(2);
+    expect(pageRefs.every((ref) => ref.totalCount === filteredTotal)).toBe(true);
     expect(pageRefs.map((ref) => ref.resultKey)).toEqual([
       `term:group:${crossMediaFixture.termGroup}`,
       `term:group:${crossMediaFixture.mixedCardsGroup}`
@@ -682,6 +683,27 @@ describe("glossary data", () => {
       `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`,
       `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.mixedCardTermSourceId}`
     ]);
+  });
+
+  it("loads the first global browse page without issuing a separate count query", async () => {
+    const executeSpy = vi.spyOn(database.$client, "execute");
+
+    await getGlobalGlossaryPageData({}, database);
+
+    const browseCountQueries = executeSpy.mock.calls.filter(([input]) => {
+      const sql =
+        typeof input === "string"
+          ? input
+          : (input as { sql?: unknown }).sql;
+
+      return (
+        typeof sql === "string" &&
+        sql.includes("select cast(count(*) as integer) as count") &&
+        sql.includes("from matching_groups")
+      );
+    });
+
+    expect(browseCountQueries).toHaveLength(0);
   });
 
   it("keeps global grammar romaji queries working after SQL candidate prefiltering", async () => {

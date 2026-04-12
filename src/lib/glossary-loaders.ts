@@ -654,12 +654,28 @@ async function loadPaginatedGlobalGlossaryBrowseResults(
   database: DatabaseClient,
   filters: GlossaryQueryState
 ) {
-  const filteredTotal = await countGlobalGlossaryBrowseGroups(database, {
+  const browseQuery = {
     cards: filters.cards,
     entryType: filters.entryType === "all" ? undefined : filters.entryType,
     mediaSlug: filters.media === "all" ? undefined : filters.media,
+    pageSize: GLOBAL_GLOSSARY_PAGE_SIZE,
+    sort: filters.sort,
     study: filters.study === "all" ? undefined : filters.study
+  } as const;
+  let pageRefs = await listGlobalGlossaryBrowseGroupRefs(database, {
+    ...browseQuery,
+    page: filters.page
   });
+  const filteredTotal =
+    pageRefs[0]?.totalCount ??
+    (filters.page > 1
+      ? await countGlobalGlossaryBrowseGroups(database, {
+          cards: browseQuery.cards,
+          entryType: browseQuery.entryType,
+          mediaSlug: browseQuery.mediaSlug,
+          study: browseQuery.study
+        })
+      : 0);
   const pagination = buildGlobalGlossaryPagination(filters.page, filteredTotal);
   const resolvedFilters = {
     ...filters,
@@ -675,15 +691,13 @@ async function loadPaginatedGlobalGlossaryBrowseResults(
     };
   }
 
-  const pageRefs = await listGlobalGlossaryBrowseGroupRefs(database, {
-    cards: filters.cards,
-    entryType: filters.entryType === "all" ? undefined : filters.entryType,
-    mediaSlug: filters.media === "all" ? undefined : filters.media,
-    page: pagination.page,
-    pageSize: pagination.pageSize,
-    sort: filters.sort,
-    study: filters.study === "all" ? undefined : filters.study
-  });
+  if (pagination.page !== filters.page) {
+    pageRefs = await listGlobalGlossaryBrowseGroupRefs(database, {
+      ...browseQuery,
+      page: pagination.page
+    });
+  }
+
   const entries = await loadGlobalGlossaryBrowseEntriesForPageRefs(
     database,
     pageRefs
