@@ -518,7 +518,11 @@ export async function loadGlobalReviewOverviewSnapshot(
 
 export async function loadGlobalAndMediaReviewOverviewSnapshots(
   database: DatabaseClient,
-  visibleMediaIds: string[]
+  visibleMediaIds: string[],
+  options: {
+    resolvedDailyLimit?: number;
+    resolvedNewIntroducedTodayCount?: number;
+  } = {}
 ) {
   const media = await listMediaCached(database);
 
@@ -543,7 +547,9 @@ export async function loadGlobalAndMediaReviewOverviewSnapshots(
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds: media.map((item) => item.id),
-    now
+    now,
+    resolvedDailyLimit: options.resolvedDailyLimit,
+    resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount
   });
 
   const nowIso = workspace.now.toISOString();

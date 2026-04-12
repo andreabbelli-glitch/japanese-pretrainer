@@ -121,12 +121,18 @@ export async function getMediaProgressPageData(
     enabled: canUseDataCache(database),
     keyParts: ["progress", "media-page", media.id],
     loader: async () => {
+      const settingsPromise = getStudySettings(database);
+      const reviewSnapshotsPromise = settingsPromise.then((settings) =>
+        loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id], {
+          resolvedDailyLimit: settings.reviewDailyLimit
+        })
+      );
       const [sharedMedia, reviewSnapshots, settings] = await Promise.all([
         getMediaDetailData(mediaSlug, database, {
           includeReviewCounts: false
         }),
-        loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id]),
-        getStudySettings(database)
+        reviewSnapshotsPromise,
+        settingsPromise
       ]);
 
       if (!sharedMedia) {

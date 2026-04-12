@@ -5,7 +5,7 @@ import path from "node:path";
 import { eq } from "drizzle-orm";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MediaDetailPage } from "@/components/media/media-detail-page";
 import {
@@ -92,6 +92,19 @@ describe("progress, settings, and study controls", () => {
     expect(data?.resume.recommendedHref).toBe(
       "/review"
     );
+  });
+
+  it("reuses the resolved settings snapshot while building the media page", async () => {
+    const settingsQuerySpy = vi.spyOn(database.query.userSetting, "findMany");
+
+    const data = await getMediaProgressPageData(
+      developmentFixture.mediaSlug,
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(settingsQuerySpy).toHaveBeenCalledTimes(1);
+    settingsQuerySpy.mockRestore();
   });
 
   it("recommends review when the queue has only new cards", async () => {
