@@ -4,7 +4,6 @@ import Link from "next/link";
 import Form from "next/form";
 import {
   startTransition,
-  useDeferredValue,
   useEffect,
   useId,
   useRef,
@@ -21,6 +20,8 @@ type GlossaryPortalSearchFormProps = {
   hasActiveFilters: boolean;
   mediaOptions: GlobalGlossaryPageData["mediaOptions"];
 };
+
+const AUTOCOMPLETE_DEBOUNCE_MS = 140;
 
 export function GlossaryPortalSearchForm({
   filters,
@@ -42,10 +43,20 @@ export function GlossaryPortalSearchForm({
     GlobalGlossaryAutocompleteSuggestion[]
   >([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const deferredQuery = useDeferredValue(query);
+  const [debouncedQuery, setDebouncedQuery] = useState(filters.query);
 
   useEffect(() => {
-    const trimmedQuery = deferredQuery.trim();
+    const timeoutId = window.setTimeout(() => {
+      setDebouncedQuery(query);
+    }, AUTOCOMPLETE_DEBOUNCE_MS);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [query]);
+
+  useEffect(() => {
+    const trimmedQuery = debouncedQuery.trim();
 
     if (trimmedQuery.length === 0) {
       startTransition(() => {
@@ -85,9 +96,6 @@ export function GlossaryPortalSearchForm({
     }
 
     const controller = new AbortController();
-    startTransition(() => {
-      setSuggestions([]);
-    });
 
     fetch(`/api/glossary/autocomplete?${cacheKey}`, {
       cache: "no-store",
@@ -119,12 +127,10 @@ export function GlossaryPortalSearchForm({
     return () => {
       controller.abort();
     };
-  }, [cards, deferredQuery, entryType, media, study]);
+  }, [cards, debouncedQuery, entryType, media, study]);
 
   const shouldShowSuggestions =
-    showSuggestions &&
-    deferredQuery.trim().length > 0 &&
-    suggestions.length > 0;
+    showSuggestions && query.trim().length > 0 && suggestions.length > 0;
 
   const handleSuggestionSelect = (
     suggestion: GlobalGlossaryAutocompleteSuggestion
