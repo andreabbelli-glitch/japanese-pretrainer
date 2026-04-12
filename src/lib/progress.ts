@@ -28,6 +28,7 @@ import {
   loadGlobalAndMediaReviewOverviewSnapshots
 } from "./review";
 import type { ReviewOverviewSnapshot } from "./review-types";
+import { getLocalIsoDateKey } from "./local-date";
 
 export type ProgressPageData = {
   globalReview: {
@@ -117,9 +118,11 @@ export async function getMediaProgressPageData(
     return null;
   }
 
+  const cacheDayKey = getLocalIsoDateKey(new Date());
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["progress", "media-page", media.id],
+    keyParts: ["progress", "media-page", media.id, `day:${cacheDayKey}`],
     loader: async () => {
       const settingsPromise = getStudySettings(database);
       const reviewSnapshotsPromise = settingsPromise.then((settings) =>

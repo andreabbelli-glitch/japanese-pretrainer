@@ -181,73 +181,84 @@ function preferReviewSubjectModelCardForMedia(
   } satisfies ReviewSubjectModel;
 }
 
-export function findReviewQueueSubjectModelByCardId(
+function buildReviewQueueLookup(
   models: ReviewSubjectModel[],
-  cardId: string,
   visibleMediaId?: string
 ) {
-  return (
-    models.find((model) => {
-      const selectedCard =
-        model.group.cards.find((card) => card.id === cardId) ?? null;
+  const modelByCardId = new Map<string, ReviewSubjectModel>();
+  const queueIndexByCardId = new Map<string, number>();
 
-      return (
-        selectedCard !== null &&
-        (!visibleMediaId || selectedCard.mediaId === visibleMediaId)
-      );
-    }) ?? null
-  );
+  for (const [index, model] of models.entries()) {
+    for (const card of model.group.cards) {
+      if (visibleMediaId && card.mediaId !== visibleMediaId) {
+        continue;
+      }
+
+      modelByCardId.set(card.id, model);
+      queueIndexByCardId.set(card.id, index);
+    }
+  }
+
+  return {
+    modelByCardId,
+    queueIndexByCardId
+  };
 }
 
 export function resolveReviewPageSelection(input: {
   queueSnapshot: ReviewQueueSubjectSnapshot;
   searchState: ReviewSearchState;
 }) {
-  const visibleSelectionModels = [
-    ...input.queueSnapshot.queueModels,
-    ...input.queueSnapshot.manualModels,
-    ...input.queueSnapshot.suspendedModels,
-    ...input.queueSnapshot.upcomingModels
-  ];
-  const explicitSelectionModel = input.searchState.selectedCardId
-    ? findReviewQueueSubjectModelByCardId(
-        visibleSelectionModels,
-        input.searchState.selectedCardId,
-        input.queueSnapshot.visibleMediaId
-      )
-    : null;
+  const { selectedCardId } = input.searchState;
+  const { visibleMediaId } = input.queueSnapshot;
+  const queueLookup =
+    selectedCardId === null
+      ? null
+      : buildReviewQueueLookup(input.queueSnapshot.queueModels, visibleMediaId);
+  const supportSelectionLookup =
+    selectedCardId === null || queueLookup?.modelByCardId.has(selectedCardId)
+      ? null
+      : buildReviewQueueLookup(
+          [
+            ...input.queueSnapshot.manualModels,
+            ...input.queueSnapshot.suspendedModels,
+            ...input.queueSnapshot.upcomingModels
+          ],
+          visibleMediaId
+        );
+  const explicitSelectionModel =
+    selectedCardId === null
+      ? null
+      : queueLookup?.modelByCardId.get(selectedCardId) ??
+        supportSelectionLookup?.modelByCardId.get(selectedCardId) ??
+        null;
   const fallbackSelectionModel =
-    input.searchState.selectedCardId && explicitSelectionModel === null
-      ? findReviewQueueSubjectModelByCardId(
+    selectedCardId && explicitSelectionModel === null
+      ? buildReviewQueueLookup(
           input.queueSnapshot.subjectModels,
-          input.searchState.selectedCardId,
-          input.queueSnapshot.visibleMediaId
-        )
+          visibleMediaId
+        ).modelByCardId.get(selectedCardId) ?? null
       : null;
   const selectedModel =
     explicitSelectionModel ??
     fallbackSelectionModel ??
     input.queueSnapshot.queueModels[0] ??
     null;
-  const selectedCardId =
-    explicitSelectionModel || fallbackSelectionModel
-      ? input.searchState.selectedCardId
-      : null;
-  const selectedQueueModel = selectedModel
-    ? findReviewQueueSubjectModelByCardId(
-        input.queueSnapshot.queueModels,
-        selectedModel.card.id
-      )
-    : null;
-  const queueIndex = selectedQueueModel
-    ? input.queueSnapshot.queueModels.indexOf(selectedQueueModel)
-    : -1;
+  const resolvedSelectedCardId =
+    explicitSelectionModel || fallbackSelectionModel ? selectedCardId : null;
+  const queueIndex =
+    selectedModel === null
+      ? -1
+      : resolvedSelectedCardId === null
+        ? 0
+        : queueLookup?.queueIndexByCardId.get(resolvedSelectedCardId) ?? -1;
 
   return {
     queueIndex,
-    selectedCardId,
+    selectedCardId: resolvedSelectedCardId,
     selectedModel,
-    selectedQueueModel
+    selectedQueueModel:
+      queueIndex >= 0 ? input.queueSnapshot.queueModels[queueIndex] ?? null : null
   };
 }
 

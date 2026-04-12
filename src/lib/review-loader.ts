@@ -346,9 +346,11 @@ export async function loadReviewLaunchCandidatesCached(
   database: DatabaseClient = db,
   nowIso = new Date().toISOString()
 ): Promise<ReviewLaunchCandidate[]> {
+  const cacheDayKey = getLocalIsoDateKey(nowIso);
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["review-launch-candidates"],
+    keyParts: ["review-launch-candidates", `day:${cacheDayKey}`],
     loader: () => listReviewLaunchCandidates(database, nowIso),
     tags: [...buildReviewSummaryTags(), REVIEW_FIRST_CANDIDATE_TAG]
   });
@@ -359,9 +361,11 @@ export async function loadReviewLaunchCandidateByMediaIdCached(
   mediaId: string,
   nowIso = new Date().toISOString()
 ): Promise<ReviewLaunchCandidate | null> {
+  const cacheDayKey = getLocalIsoDateKey(nowIso);
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["review-launch-candidate", mediaId],
+    keyParts: ["review-launch-candidate", mediaId, `day:${cacheDayKey}`],
     loader: () => getReviewLaunchCandidateByMediaId(database, mediaId, nowIso),
     tags: [...buildReviewSummaryTags([mediaId]), REVIEW_FIRST_CANDIDATE_TAG]
   });

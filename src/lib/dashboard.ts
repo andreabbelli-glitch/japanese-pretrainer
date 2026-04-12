@@ -19,6 +19,7 @@ import {
   loadGlobalReviewOverviewSnapshot,
   loadReviewIntroducedTodayCountCached
 } from "@/lib/review";
+import { getLocalIsoDateKey } from "@/lib/local-date";
 import { getReviewDailyLimit } from "@/lib/settings";
 
 export type DashboardData = {
@@ -43,9 +44,11 @@ export type DashboardData = {
 export async function getDashboardData(
   database: DatabaseClient = db
 ): Promise<DashboardData> {
+  const cacheDayKey = getLocalIsoDateKey(new Date());
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "dashboard"],
+    keyParts: ["app-shell", "dashboard", `day:${cacheDayKey}`],
     loader: () => loadDashboardData(database),
     tags: [
       MEDIA_LIST_TAG,

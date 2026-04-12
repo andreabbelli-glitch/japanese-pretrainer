@@ -38,6 +38,7 @@ import {
   pickFocusMedia,
   type MediaShellSnapshot
 } from "@/lib/media-shell-snapshot";
+import { getLocalIsoDateKey } from "@/lib/local-date";
 
 const STUDY_STATE_LABELS: Record<string, string> = {
   known: "Già nota",
@@ -48,9 +49,11 @@ const STUDY_STATE_LABELS: Record<string, string> = {
 };
 
 export async function getMediaLibraryData(database: DatabaseClient = db) {
+  const cacheDayKey = getLocalIsoDateKey(new Date());
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "media-library"],
+    keyParts: ["app-shell", "media-library", `day:${cacheDayKey}`],
     loader: async () => {
       const rows = await listMediaCached(database);
 
@@ -81,13 +84,16 @@ export async function getMediaDetailData(
     return null;
   }
 
+  const cacheDayKey = getLocalIsoDateKey(new Date());
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: [
       "app-shell",
       "media-detail",
       mediaSlug,
-      options.includeReviewCounts === false ? "study-only" : "full"
+      options.includeReviewCounts === false ? "study-only" : "full",
+      `day:${cacheDayKey}`
     ],
     loader: () =>
       buildMediaShellSnapshot(database, media, {
