@@ -69,6 +69,7 @@ import type {
   GlossaryKind,
   GlossaryPageData,
   GlossaryQueryState,
+  RankedGlossaryEntry,
   GlossarySearchResult,
   GlobalGlossaryAutocompleteSuggestion,
   GlobalGlossaryPageData,
@@ -95,11 +96,14 @@ export async function loadGlossaryPageData(
     forcedMediaSlug: media.slug,
     supportsSegmentFilter: true
   });
+  const loadMode: GlossaryLoadMode =
+    filters.query.length > 0 ? "search" : "list";
   const [segments, entries] = await Promise.all([
     listGlossarySegmentsByMediaId(database, media.id),
     loadGlossaryBaseEntries(database, {
       entryType: filters.entryType,
-      mediaId: media.id
+      mediaId: media.id,
+      mode: loadMode
     })
   ]);
   const { candidates } = await buildGlossaryResolvedEntries(
@@ -163,21 +167,29 @@ export async function loadGlossaryPageData(
     };
   });
   const selectedPreviewEntry = resolvePreviewEntry(searchParams, results);
-  const selectedPreviewCardConnections = selectedPreviewEntry
+  const previewEntry = selectedPreviewEntry
+    ? await hydrateLocalGlossaryPreviewEntry(
+        database,
+        media.id,
+        selectedPreviewEntry,
+        loadMode
+      )
+    : null;
+  const selectedPreviewCardConnections = previewEntry
     ? await listEntryCardConnections(database, [
         {
-          entryId: selectedPreviewEntry.internalId,
-          entryType: selectedPreviewEntry.kind
+          entryId: previewEntry.internalId,
+          entryType: previewEntry.kind
         }
       ])
     : [];
-  const preview = selectedPreviewEntry
+  const preview = previewEntry
     ? buildGlossaryDetailData({
         cardConnections: selectedPreviewCardConnections,
-        entry: selectedPreviewEntry,
+        entry: previewEntry,
         lessonConnections:
           lessonsByEntry.get(
-            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.internalId}`
+            `${previewEntry.kind}:${previewEntry.internalId}`
           ) ?? [],
         crossMediaFamily: {
           group: null,
@@ -352,6 +364,41 @@ export async function loadGlossaryDetailData(
     lessonConnections,
     media: buildGlossaryMediaSummary(media)
   });
+}
+
+async function hydrateLocalGlossaryPreviewEntry(
+  database: DatabaseClient,
+  mediaId: string,
+  entry: GlossaryPageData["results"][number],
+  mode: GlossaryLoadMode
+): Promise<RankedGlossaryEntry> {
+  if (mode === "search") {
+    return entry;
+  }
+
+  const previewSource =
+    entry.kind === "term"
+      ? await getGlossaryEntryBySourceId(database, "term", mediaId, entry.id)
+      : await getGlossaryEntryBySourceId(database, "grammar", mediaId, entry.id);
+
+  if (!previewSource) {
+    return entry;
+  }
+
+  const baseEntry =
+    entry.kind === "term"
+      ? mapEntryToBaseModel(previewSource as TermGlossaryEntry, "term")
+      : mapEntryToBaseModel(previewSource as GrammarGlossaryEntry, "grammar");
+
+  return {
+    ...baseEntry,
+    href: entry.href,
+    matchBadges: entry.matchBadges,
+    matchPreview: entry.matchPreview,
+    matchedFields: entry.matchedFields,
+    score: entry.score,
+    studyState: entry.studyState
+  };
 }
 
 async function loadGlossaryBaseEntries(

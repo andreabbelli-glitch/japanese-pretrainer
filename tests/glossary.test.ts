@@ -1673,6 +1673,29 @@ describe("glossary data", () => {
     ]);
   });
 
+  it("keeps preview detail fields populated when browsing the local glossary without a query", async () => {
+    await seedDevelopmentDatabase(database);
+
+    const data = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        preview: developmentFixture.termId,
+        previewKind: "term"
+      },
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(data?.preview?.entry.id).toBe(developmentFixture.termId);
+    expect(data?.preview?.entry.literalMeaning).toBe(
+      "muoversi verso una destinazione"
+    );
+    expect(data?.preview?.entry.notes).toBe("Verbo base molto frequente.");
+    expect(
+      data?.preview?.entry.aliasGroups.flatMap((group) => group.values)
+    ).toEqual(expect.arrayContaining(["いきます", "iku"]));
+  });
+
   it("skips duplicated invalid preview params until it finds a valid glossary preview", async () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
