@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import Form from "next/form";
 import {
   startTransition,
   useDeferredValue,
@@ -139,22 +141,11 @@ export function GlossaryPortalSearchForm({
     });
   };
 
-  const handleReset = () => {
-    setQuery("");
-    setEntryType("all");
-    setMedia("all");
-    setStudy("all");
-    setCards("all");
-    setShowSuggestions(false);
-    inputRef.current?.blur();
-    window.location.assign("/glossary");
-  };
-
   return (
-    <form
+    <Form
       ref={formRef}
+      action="/glossary"
       className="glossary-search-form glossary-search-form--portal"
-      method="get"
     >
       {filters.sort !== "lesson_order" ? (
         <input name="sort" type="hidden" value={filters.sort} />
@@ -257,13 +248,9 @@ export function GlossaryPortalSearchForm({
             Cerca
           </button>
           {hasActiveFilters ? (
-            <button
-              className="button button--ghost"
-              onClick={handleReset}
-              type="button"
-            >
+            <Link className="button button--ghost" href="/glossary">
               Azzera i filtri
-            </button>
+            </Link>
           ) : null}
         </div>
       </div>
@@ -339,6 +326,6 @@ export function GlossaryPortalSearchForm({
           </select>
         </label>
       </div>
-    </form>
+    </Form>
   );
 }
