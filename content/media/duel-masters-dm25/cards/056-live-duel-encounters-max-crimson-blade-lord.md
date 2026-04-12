@@ -7,6 +7,43 @@ order: 84
 segment_ref: live-duel-encounters
 ---
 
+:::term
+id: term-sanzen
+lemma: "3000"
+reading: さんぜん
+romaji: sanzen
+meaning_it: tremila
+pos: number
+aliases: ["3000", さんぜん, sanzen]
+notes_it: >-
+  Questa lettura vale la pena di essere fissata da sola perché spesso ci si
+  aspetta qualcosa come `さんせん`, ma `{{3000|さんぜん}}` usa la forma sonora di
+  `{{千|せん}}` che dopo `{{三|さん}}` diventa `ぜん`. Nel rules text di Duel
+  Masters ricompare spesso dentro filtri come `パワー{{3000以下|さんぜんいか}}`.
+level_hint: n4
+:::
+
+:::card
+id: card-sanzen-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-max-crimson-blade-lord
+entry_type: term
+entry_id: term-sanzen
+card_type: recognition
+front: '{{3000|さんぜん}}'
+back: tremila
+example_jp: >-
+  {{相手|あいて}}のタップされているパワー{{3000以下|さんぜんいか}}のクリーチャーを
+  {{1体|いったい}}、{{破壊|はかい}}する。
+example_it: >-
+  Distruggi 1 creatura dell'avversario già tappata con potere 3000 o inferiore.
+notes_it: >-
+  Il punto utile qui è proprio la lettura del numero. `{{三|さん}}` + `{{千|せん}}`
+  non resta `さんせん`: in questa combinazione diventa `{{3000|さんぜん}}`. Su
+  questa carta la ritrovi dentro `{{3000以下|さんぜんいか}}`, quindi conviene
+  fissarla come blocco numerico ricorrente.
+tags: [live-duel, term, number, reading]
+:::
+
 :::grammar
 id: grammar-sarenakatta
 pattern: ～されなかった

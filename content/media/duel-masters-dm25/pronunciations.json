@@ -1998,11 +1998,17 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-sanzen",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-sarani",
       "audio_src": "assets/audio/term/term-sarani/forvo-manual-さらに.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E3%81%95%E3%82%89%E3%81%AB/#ja"
+      "audio_page_url": "https://forvo.com/word/%E3%81%95%E3%82%89%E3%81%AB/#ja",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "term",
