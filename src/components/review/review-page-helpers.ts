@@ -35,26 +35,31 @@ export function formatRemainingCardsLabel(count: number) {
   return count === 1 ? "1 flashcard rimanente" : `${count} flashcard rimanenti`;
 }
 
-export function resolveNextQueueCardId(input: {
+export function resolveReviewQueuePosition(input: {
   data: ReviewPageClientData;
-  isQueueCard: boolean;
   queueCardIds: string[];
   selectedCardId: string | null;
 }) {
-  if (!input.isQueueCard || input.selectedCardId === null) {
-    return null;
+  if (!isReviewPageData(input.data) || input.selectedCardId === null) {
+    return {
+      queueCardIds: input.queueCardIds,
+      queueIndex: -1
+    };
   }
 
-  if (isReviewPageData(input.data)) {
-    const queueSource = input.queueCardIds.includes(input.selectedCardId)
-      ? input.queueCardIds
-      : input.data.queueCardIds;
-    const queueIndex = queueSource.indexOf(input.selectedCardId);
+  const optimisticQueueIndex = input.queueCardIds.indexOf(input.selectedCardId);
 
-    return queueIndex >= 0 ? (queueSource[queueIndex + 1] ?? null) : undefined;
+  if (optimisticQueueIndex >= 0) {
+    return {
+      queueCardIds: input.queueCardIds,
+      queueIndex: optimisticQueueIndex
+    };
   }
 
-  return input.data.nextCardId;
+  return {
+    queueCardIds: input.data.queueCardIds,
+    queueIndex: input.data.queueCardIds.indexOf(input.selectedCardId)
+  };
 }
 
 export function buildOptimisticGradeResult(input: {

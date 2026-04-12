@@ -31,7 +31,7 @@ import {
   buildOptimisticGradeResult,
   buildReviewHydrationRequestKey,
   isReviewPageData,
-  resolveNextQueueCardId,
+  resolveReviewQueuePosition,
   showCompletionTopUp,
   type ReviewGradeValue
 } from "./review-page-helpers";
@@ -117,21 +117,30 @@ export function useReviewPageController(input: {
         : null;
 
   const selectedCard = viewData.selectedCard;
+  const selectedCardId = selectedCard?.id ?? null;
   const selectedCardContext = viewData.selectedCardContext;
-  const queueIndex =
-    isFullReviewPageData && selectedCard
-      ? queueCardIds.indexOf(selectedCard.id)
-      : -1;
+  const resolvedQueuePosition = useMemo(
+    () =>
+      resolveReviewQueuePosition({
+        data: viewData,
+        queueCardIds,
+        selectedCardId
+      }),
+    [queueCardIds, selectedCardId, viewData]
+  );
+  const queueIndex = selectedCard ? resolvedQueuePosition.queueIndex : -1;
   const isQueueCard = selectedCard ? selectedCardContext.isQueueCard : false;
   const isAnswerRevealed = selectedCard
-    ? selectedCardContext.showAnswer || revealedCardId === selectedCard.id
+    ? selectedCardContext.showAnswer || revealedCardId === selectedCardId
     : false;
-  const nextQueueCardId = resolveNextQueueCardId({
-    data: viewData,
-    isQueueCard,
-    queueCardIds,
-    selectedCardId: selectedCard?.id ?? null
-  });
+  const nextQueueCardId =
+    !isQueueCard || selectedCardId === null
+      ? null
+      : isReviewPageData(viewData)
+        ? queueIndex >= 0
+          ? (resolvedQueuePosition.queueCardIds[queueIndex + 1] ?? null)
+          : undefined
+        : viewData.nextCardId;
   const position = selectedCard ? selectedCardContext.position : null;
   const remainingCount = selectedCard ? selectedCardContext.remainingCount : 0;
   const fullSelectedCardContext = isFullReviewPageData
@@ -152,7 +161,7 @@ export function useReviewPageController(input: {
   const sessionHref = buildCanonicalReviewSessionHrefForBase({
     answeredCount: viewData.session.answeredCount,
     baseHref: viewData.media.reviewHref,
-    cardId: selectedCard?.id ?? null,
+    cardId: selectedCardId,
     extraNewCount: viewData.session.extraNewCount,
     isQueueCard,
     position,
