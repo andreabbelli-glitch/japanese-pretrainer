@@ -97,6 +97,8 @@ export async function loadMediaShellSnapshots(
   media: MediaListItem[],
   options: {
     includePreviewEntries?: boolean;
+    resolvedDailyLimit?: number;
+    resolvedNewIntroducedTodayCount?: number;
   } = {}
 ) {
   if (media.length === 0) {
@@ -121,8 +123,9 @@ export async function loadMediaShellSnapshots(
       }))
     ),
     loadReviewLaunchCandidatesCached(database, nowIso),
-    getReviewDailyLimit(database),
-    loadReviewIntroducedTodayCountCached(database, new Date(nowIso))
+    options.resolvedDailyLimit ?? getReviewDailyLimit(database),
+    options.resolvedNewIntroducedTodayCount ??
+      loadReviewIntroducedTodayCountCached(database, new Date(nowIso))
   ]);
   const lessonsByMedia = groupLessonsByMedia(lessons);
 

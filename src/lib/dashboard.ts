@@ -15,7 +15,11 @@ import {
   pickFocusMedia,
   type MediaShellSnapshot
 } from "@/lib/media-shell";
-import { loadGlobalReviewOverviewSnapshot } from "@/lib/review";
+import {
+  loadGlobalReviewOverviewSnapshot,
+  loadReviewIntroducedTodayCountCached
+} from "@/lib/review";
+import { getReviewDailyLimit } from "@/lib/settings";
 
 export type DashboardData = {
   focusMedia: MediaShellSnapshot | null;
@@ -57,9 +61,19 @@ async function loadDashboardData(
   database: DatabaseClient
 ): Promise<DashboardData> {
   const mediaRows = await listMediaCached(database);
+  const [dailyLimit, newIntroducedTodayCount] = await Promise.all([
+    getReviewDailyLimit(database),
+    loadReviewIntroducedTodayCountCached(database)
+  ]);
   const [media, globalReviewOverview] = await Promise.all([
-    loadMediaShellSnapshots(database, mediaRows),
-    loadGlobalReviewOverviewSnapshot(database)
+    loadMediaShellSnapshots(database, mediaRows, {
+      resolvedDailyLimit: dailyLimit,
+      resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+    }),
+    loadGlobalReviewOverviewSnapshot(database, {
+      resolvedDailyLimit: dailyLimit,
+      resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+    })
   ]);
   const focusMedia = pickFocusMedia(media);
   const reviewMedia = pickReviewMedia(media);

@@ -21,10 +21,7 @@ import {
 } from "@/lib/data-cache";
 import { pickBestBy } from "@/lib/collections";
 import { getLocalIsoDateKey } from "@/lib/local-date";
-import {
-  getReviewDailyLimit,
-  getStudySettings
-} from "@/lib/settings";
+import { getReviewDailyLimit, getStudySettings } from "@/lib/settings";
 import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { resolveReviewSubjectGroups } from "./review-subject-state-lookup";
 import { hasCompletedReviewLesson } from "./review-model";
@@ -50,6 +47,7 @@ export type ReviewPageLoadOptions = {
   excludeCardIds?: string[];
   profiler?: ReviewProfiler | null;
   resolvedMedia?: NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>;
+  resolvedMediaRows?: MediaListItem[];
 };
 
 export type LoadedReviewWorkspaceV2 = {
@@ -212,12 +210,15 @@ export async function loadReviewWorkspaceV2(input: {
           ),
       input.resolvedNewIntroducedTodayCount != null
         ? input.resolvedNewIntroducedTodayCount
-        : measureWith(input.profiler, "countReviewSubjectsIntroducedOnDay", () =>
-            loadReviewIntroducedTodayCountCached(
-              database,
-              now,
-              input.bypassCache
-            )
+        : measureWith(
+            input.profiler,
+            "countReviewSubjectsIntroducedOnDay",
+            () =>
+              loadReviewIntroducedTodayCountCached(
+                database,
+                now,
+                input.bypassCache
+              )
           )
     ]);
   const cards = stableWorkspace.cards;
@@ -278,18 +279,23 @@ export async function loadGlobalReviewWorkspace(
   resolvedDailyLimit?: number
 ): Promise<Omit<LoadedGlobalReviewPageWorkspace, "reviewFrontFurigana">> {
   const now = new Date();
-  const mediaRows = await measureWith(options.profiler, "listMediaCached", () =>
-    listMediaCached(database)
-  );
-  const workspace = await measureWith(options.profiler, "loadReviewWorkspaceV2", () =>
-    loadReviewWorkspaceV2({
-      bypassCache: options.bypassCache,
-      database,
-      mediaIds: mediaRows.map((item) => item.id),
-      now,
-      profiler: options.profiler,
-      resolvedDailyLimit
-    })
+  const mediaRows =
+    options.resolvedMediaRows ??
+    (await measureWith(options.profiler, "listMediaCached", () =>
+      listMediaCached(database)
+    ));
+  const workspace = await measureWith(
+    options.profiler,
+    "loadReviewWorkspaceV2",
+    () =>
+      loadReviewWorkspaceV2({
+        bypassCache: options.bypassCache,
+        database,
+        mediaIds: mediaRows.map((item) => item.id),
+        now,
+        profiler: options.profiler,
+        resolvedDailyLimit
+      })
   );
 
   return {
@@ -304,10 +310,8 @@ export async function loadGlobalReviewPageWorkspace(
   database: DatabaseClient = db,
   options: ReviewPageLoadOptions = {}
 ): Promise<LoadedGlobalReviewPageWorkspace> {
-  const settings = await measureWith(
-    options.profiler,
-    "getStudySettings",
-    () => getStudySettings(database)
+  const settings = await measureWith(options.profiler, "getStudySettings", () =>
+    getStudySettings(database)
   );
   const workspace = await loadGlobalReviewWorkspace(
     searchState,
@@ -469,22 +473,24 @@ export async function loadReviewOverviewSnapshots(
 }
 
 export async function loadGlobalReviewOverviewSnapshot(
-  database: DatabaseClient = db
+  database: DatabaseClient = db,
+  options: {
+    resolvedDailyLimit?: number;
+    resolvedNewIntroducedTodayCount?: number;
+  } = {}
 ) {
   const now = new Date();
   const [counts, dailyLimit, newIntroducedTodayCount] = await Promise.all([
     getGlobalReviewOverviewCounts(database, now),
-    getReviewDailyLimit(database),
-    loadReviewIntroducedTodayCountCached(database, now)
+    options.resolvedDailyLimit ?? getReviewDailyLimit(database),
+    options.resolvedNewIntroducedTodayCount ??
+      loadReviewIntroducedTodayCountCached(database, now)
   ]);
   const newQueuedCount = Math.min(
     counts.newAvailableCount,
     Math.max(dailyLimit - newIntroducedTodayCount, 0)
   );
-  const upcomingCount = Math.max(
-    counts.activeReviewCards - counts.dueCount,
-    0
-  );
+  const upcomingCount = Math.max(counts.activeReviewCards - counts.dueCount, 0);
 
   return {
     activeCards: counts.activeReviewCards,
