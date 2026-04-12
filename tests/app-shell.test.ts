@@ -74,6 +74,7 @@ describe("app shell live data", () => {
 
     expect(media).not.toBeNull();
     expect(media?.previewEntries[0]?.label).toBe("行く");
+    expect(media?.previewEntries[0]?.statusLabel).toBe("Già nota");
     expect(media?.lessonsCompleted).toBe(1);
     expect(media?.lessonsTotal).toBe(1);
     expect(media?.entriesKnown).toBe(2);

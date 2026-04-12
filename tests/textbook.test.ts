@@ -34,6 +34,7 @@ import {
   setFuriganaMode,
   setLessonCompletionState
 } from "@/lib/textbook";
+import * as settings from "@/lib/settings";
 import { applyLessonCompletionState } from "@/lib/textbook-reader-state";
 import { parseTextbookDocument } from "@/lib/textbook-document";
 import { renderFurigana } from "@/lib/render-furigana";
@@ -208,6 +209,24 @@ describe("textbook data", () => {
       type: "paragraph"
     });
     expect(lessonData?.lesson).not.toHaveProperty("htmlRendered");
+  });
+
+  it("returns null for a missing media slug before reading furigana settings", async () => {
+    const settingsQuerySpy = vi
+      .spyOn(settings, "getFuriganaModeSetting")
+      .mockImplementation(async () => {
+        throw new Error("furigana settings should not be read for missing media");
+      });
+
+    try {
+      await expect(
+        getTextbookIndexData("missing-media-slug", database)
+      ).resolves.toBeNull();
+
+      expect(settingsQuerySpy).not.toHaveBeenCalled();
+    } finally {
+      settingsQuerySpy.mockRestore();
+    }
   });
 
   it("normalizes legacy lesson AST payloads without crashing the reader", async () => {

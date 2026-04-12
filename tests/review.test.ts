@@ -53,6 +53,7 @@ import {
   buildCanonicalReviewSessionHref,
   mediaReviewCardHref
 } from "@/lib/site";
+import * as settings from "@/lib/settings";
 import { updateStudySettings } from "@/lib/settings";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
@@ -3058,6 +3059,24 @@ describe("review system", () => {
     expect(excludedBetaPage?.selectedCard?.id).not.toBe(
       crossMediaFixture.beta.termCardId
     );
+  });
+
+  it("returns null for a missing media slug before reading study settings", async () => {
+    const settingsQuerySpy = vi
+      .spyOn(settings, "getStudySettings")
+      .mockImplementation(async () => {
+        throw new Error("study settings should not be read for missing media");
+      });
+
+    try {
+      await expect(
+        getReviewPageData("missing-media-slug", {}, database)
+      ).resolves.toBeNull();
+
+      expect(settingsQuerySpy).not.toHaveBeenCalled();
+    } finally {
+      settingsQuerySpy.mockRestore();
+    }
   });
 
   it("returns the dedicated global empty state when no media exist", async () => {

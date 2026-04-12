@@ -760,7 +760,7 @@ async function loadCachedPaginatedGlobalGlossarySearchResults(
   database: DatabaseClient,
   filters: GlossaryQueryState
 ) {
-  return runWithTaggedCache({
+  const cachedResults = await runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: [
       "glossary",
@@ -776,6 +776,14 @@ async function loadCachedPaginatedGlobalGlossarySearchResults(
     loader: () => loadPaginatedGlobalGlossarySearchResults(database, filters),
     tags: [GLOSSARY_SUMMARY_TAG]
   });
+
+  return {
+    ...cachedResults,
+    filters: {
+      ...cachedResults.filters,
+      query: filters.query
+    }
+  };
 }
 
 async function loadCachedPaginatedGlobalGlossaryBrowseResults(

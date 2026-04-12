@@ -48,6 +48,13 @@ const STUDY_STATE_LABELS: Record<string, string> = {
   available: "Disponibile"
 };
 
+function buildGlossaryReviewTags(mediaIds: string[] = []) {
+  return [
+    ...buildGlossarySummaryTags(mediaIds),
+    ...buildReviewSummaryTags(mediaIds)
+  ];
+}
+
 type ResolvedMedia = NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>;
 
 export async function getMediaLibraryData(database: DatabaseClient = db) {
@@ -106,11 +113,10 @@ export async function getMediaDetailData(
       }),
     tags:
       options.includeReviewCounts === false
-        ? [MEDIA_LIST_TAG, ...buildGlossarySummaryTags([media.id])]
+        ? [MEDIA_LIST_TAG, ...buildGlossaryReviewTags([media.id])]
         : [
             MEDIA_LIST_TAG,
-            ...buildGlossarySummaryTags([media.id]),
-            ...buildReviewSummaryTags([media.id]),
+            ...buildGlossaryReviewTags([media.id]),
             REVIEW_FIRST_CANDIDATE_TAG,
             SETTINGS_TAG
           ]
@@ -258,7 +264,7 @@ async function loadGlossaryProgressSummarySnapshotsCached(
         }
       }));
     },
-    tags: buildGlossarySummaryTags(media.map((item) => item.id))
+    tags: buildGlossaryReviewTags(media.map((item) => item.id))
   });
 
   return new Map(
@@ -321,7 +327,7 @@ async function loadGlossaryPreviewEntriesCached(
         previews: previewsByMedia.get(item.id) ?? []
       }));
     },
-    tags: buildGlossarySummaryTags(media.map((item) => item.id))
+    tags: buildGlossaryReviewTags(media.map((item) => item.id))
   });
 
   return new Map(

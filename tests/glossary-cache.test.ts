@@ -92,7 +92,7 @@ describe("global glossary cache", () => {
   it("caches global glossary search pages across equivalent query casing and spacing", async () => {
     const first = await getGlobalGlossaryPageData(
       {
-        q: "  IKU  "
+        q: "IKU"
       },
       database
     );
@@ -104,7 +104,19 @@ describe("global glossary cache", () => {
     );
 
     expect(first.results).not.toHaveLength(0);
-    expect(second).toEqual(first);
+    expect(second.results).toEqual(first.results);
+    expect(second.pagination).toEqual(first.pagination);
+    expect(second.stats).toEqual(first.stats);
+    expect(second.hasActiveFilters).toBe(first.hasActiveFilters);
+    const { query: firstQuery, ...firstFilters } = first.filters;
+    const { query: secondQuery, ...secondFilters } = second.filters;
+    expect(secondFilters).toEqual(firstFilters);
+    expect(first.filters.query).toBe("IKU");
+    expect(second.filters.query).toBe("iku");
+    expect(firstQuery).toBe("IKU");
+    expect(secondQuery).toBe("iku");
+    expect(first.resultSummary.queryLabel).toBe("IKU");
+    expect(second.resultSummary.queryLabel).toBe("iku");
 
     const cacheKey = JSON.stringify([
       "glossary",

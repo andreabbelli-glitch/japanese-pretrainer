@@ -264,16 +264,11 @@ export async function getReviewPageData(
   options: ReviewPageLoadOptions = {}
 ): Promise<ReviewPageData | null> {
   const now = new Date();
-  const [mediaRows, settings] = await Promise.all([
-    options.resolvedMediaRows
-      ? Promise.resolve(options.resolvedMediaRows)
-      : measureWith(options.profiler, "listMediaCached", () =>
-          listMediaCached(database)
-        ),
-    measureWith(options.profiler, "getStudySettings", () =>
-      getStudySettings(database)
-    )
-  ]);
+  const mediaRows = options.resolvedMediaRows
+    ? options.resolvedMediaRows
+    : await measureWith(options.profiler, "listMediaCached", () =>
+        listMediaCached(database)
+      );
   const media =
     options.resolvedMedia ??
     mediaRows.find((candidate) => candidate.slug === mediaSlug) ??
@@ -282,6 +277,10 @@ export async function getReviewPageData(
   if (!media) {
     return null;
   }
+
+  const settings = await measureWith(options.profiler, "getStudySettings", () =>
+    getStudySettings(database)
+  );
 
   const searchState = normalizeReviewSearchState(searchParams);
   const workspace = await measureWith(

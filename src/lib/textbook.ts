@@ -69,14 +69,13 @@ export async function getTextbookIndexData(
   mediaSlug: string,
   database: DatabaseClient = db
 ): Promise<TextbookIndexData | null> {
-  const [media, furiganaMode] = await Promise.all([
-    getMediaBySlugCached(database, mediaSlug),
-    getFuriganaMode(database)
-  ]);
+  const media = await getMediaBySlugCached(database, mediaSlug);
 
   if (!media) {
     return null;
   }
+
+  const furiganaMode = await getFuriganaMode(database);
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),

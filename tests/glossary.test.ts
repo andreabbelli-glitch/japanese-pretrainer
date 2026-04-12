@@ -8,6 +8,12 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({
+    replace() {}
+  })
+}));
+
 import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
 import { GlossaryPage } from "@/components/glossary/glossary-page";
 import { GlossaryPortalPage } from "@/components/glossary/glossary-portal-page";

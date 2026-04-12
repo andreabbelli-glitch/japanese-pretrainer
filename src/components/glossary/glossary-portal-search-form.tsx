@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import Form from "next/form";
+import { useRouter } from "next/navigation";
 import {
   startTransition,
   useEffect,
@@ -23,11 +23,42 @@ type GlossaryPortalSearchFormProps = {
 
 const AUTOCOMPLETE_DEBOUNCE_MS = 140;
 
+function buildAutocompleteKey(input: {
+  cards: string;
+  entryType: string;
+  media: string;
+  query: string;
+  study: string;
+}) {
+  const params = new URLSearchParams({
+    q: input.query.trim()
+  });
+
+  if (input.entryType !== "all") {
+    params.set("type", input.entryType);
+  }
+
+  if (input.media !== "all") {
+    params.set("media", input.media);
+  }
+
+  if (input.study !== "all") {
+    params.set("study", input.study);
+  }
+
+  if (input.cards !== "all") {
+    params.set("cards", input.cards);
+  }
+
+  return params.toString();
+}
+
 export function GlossaryPortalSearchForm({
   filters,
   hasActiveFilters,
   mediaOptions
 }: GlossaryPortalSearchFormProps) {
+  const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const suggestionCacheRef = useRef(
@@ -42,6 +73,7 @@ export function GlossaryPortalSearchForm({
   const [suggestions, setSuggestions] = useState<
     GlobalGlossaryAutocompleteSuggestion[]
   >([]);
+  const [suggestionsKey, setSuggestionsKey] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [debouncedQuery, setDebouncedQuery] = useState(filters.query);
 
@@ -61,36 +93,24 @@ export function GlossaryPortalSearchForm({
     if (trimmedQuery.length === 0) {
       startTransition(() => {
         setSuggestions([]);
+        setSuggestionsKey("");
       });
       return;
     }
 
-    const params = new URLSearchParams({
-      q: trimmedQuery
+    const cacheKey = buildAutocompleteKey({
+      cards,
+      entryType,
+      media,
+      query: trimmedQuery,
+      study
     });
-
-    if (entryType !== "all") {
-      params.set("type", entryType);
-    }
-
-    if (media !== "all") {
-      params.set("media", media);
-    }
-
-    if (study !== "all") {
-      params.set("study", study);
-    }
-
-    if (cards !== "all") {
-      params.set("cards", cards);
-    }
-
-    const cacheKey = params.toString();
     const cachedSuggestions = suggestionCacheRef.current.get(cacheKey);
 
     if (cachedSuggestions) {
       startTransition(() => {
         setSuggestions(cachedSuggestions);
+        setSuggestionsKey(cacheKey);
       });
       return;
     }
@@ -112,6 +132,7 @@ export function GlossaryPortalSearchForm({
         suggestionCacheRef.current.set(cacheKey, payload);
         startTransition(() => {
           setSuggestions(payload);
+          setSuggestionsKey(cacheKey);
         });
       })
       .catch(() => {
@@ -121,6 +142,7 @@ export function GlossaryPortalSearchForm({
 
         startTransition(() => {
           setSuggestions([]);
+          setSuggestionsKey("");
         });
       });
 
@@ -129,8 +151,18 @@ export function GlossaryPortalSearchForm({
     };
   }, [cards, debouncedQuery, entryType, media, study]);
 
+  const autocompleteKey = buildAutocompleteKey({
+    cards,
+    entryType,
+    media,
+    query,
+    study
+  });
   const shouldShowSuggestions =
-    showSuggestions && query.trim().length > 0 && suggestions.length > 0;
+    showSuggestions &&
+    query.trim().length > 0 &&
+    suggestions.length > 0 &&
+    suggestionsKey === autocompleteKey;
 
   const handleSuggestionSelect = (
     suggestion: GlobalGlossaryAutocompleteSuggestion
@@ -254,9 +286,15 @@ export function GlossaryPortalSearchForm({
             Cerca
           </button>
           {hasActiveFilters ? (
-            <Link className="button button--ghost" href="/glossary">
+            <button
+              className="button button--ghost"
+              type="button"
+              onClick={() => {
+                router.replace("/glossary");
+              }}
+            >
               Azzera i filtri
-            </Link>
+            </button>
           ) : null}
         </div>
       </div>

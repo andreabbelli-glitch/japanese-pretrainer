@@ -20,6 +20,38 @@ test("shows autocomplete suggestions and navigates when a suggestion is selected
   await expect(searchbox).toHaveValue("コスト");
 });
 
+test("hides stale autocomplete suggestions while a new query or filter set is pending", async ({
+  page
+}) => {
+  await page.route("**/api/glossary/autocomplete**", async (route) => {
+    if (route.request().url().includes("cards=with_cards")) {
+      await new Promise((resolve) => {
+        setTimeout(resolve, 200);
+      });
+    }
+
+    await route.continue();
+  });
+
+  await page.goto("/glossary");
+
+  const searchbox = page.getByRole("searchbox", { name: "Cerca" });
+  const flashcardFilter = page.getByRole("combobox", { name: "Flashcard" });
+  const suggestion = page.getByRole("option", { name: /コスト/i }).first();
+
+  await searchbox.fill("kosu");
+  await expect(suggestion).toBeVisible();
+
+  await searchbox.fill("kosuto");
+  await expect(suggestion).toBeHidden();
+
+  await searchbox.fill("kosu");
+  await expect(suggestion).toBeVisible();
+
+  await flashcardFilter.selectOption("with_cards");
+  await expect(suggestion).toBeHidden();
+});
+
 test("keeps the glossary portal state while moving from global search to local detail and back", async ({
   page
 }) => {

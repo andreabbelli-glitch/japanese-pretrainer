@@ -135,6 +135,7 @@ export function useReviewPageController(input: {
       }),
     [queueCardIds, queueCardIndexLookup, selectedCardId, viewData]
   );
+  const activeQueueCardIds = resolvedQueuePosition.queueCardIds;
   const queueIndex = selectedCard ? resolvedQueuePosition.queueIndex : -1;
   const isQueueCard = selectedCard ? selectedCardContext.isQueueCard : false;
   const isAnswerRevealed = selectedCard
@@ -145,7 +146,7 @@ export function useReviewPageController(input: {
       ? null
       : isReviewPageData(viewData)
         ? queueIndex >= 0
-          ? (resolvedQueuePosition.queueCardIds[queueIndex + 1] ?? null)
+          ? (activeQueueCardIds[queueIndex + 1] ?? null)
           : undefined
         : viewData.nextCardId;
   const position = selectedCard ? selectedCardContext.position : null;
@@ -354,7 +355,7 @@ export function useReviewPageController(input: {
       bufferSize: 3,
       prefetchedCardIds: new Set(prefetchBufferRef.current.keys()),
       prefetchingCardIds: prefetchInFlightRef.current,
-      queueCardIds,
+      queueCardIds: activeQueueCardIds,
       queueIndex
     });
 
@@ -389,8 +390,8 @@ export function useReviewPageController(input: {
   }, [
     isQueueCard,
     isFullReviewPageData,
+    activeQueueCardIds,
     queueIndex,
-    queueCardIds,
     selectedCard
   ]);
 
@@ -507,7 +508,7 @@ export function useReviewPageController(input: {
     }
 
     const nextCardId = nextQueueCardId;
-    const nextQueueCardIds = queueCardIds.filter(
+    const nextQueueCardIds = activeQueueCardIds.filter(
       (id) => id !== selectedCard.id
     );
     const optimisticNextCard = nextCardId

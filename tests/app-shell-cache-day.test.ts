@@ -7,7 +7,12 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 const { cacheStore, unstableCacheMock } = vi.hoisted(() => {
   const cacheStore = new Map<string, Promise<unknown>>();
   const unstableCacheMock = vi.fn(
-    (loader: () => Promise<unknown>, keyParts: string[]) => {
+    (
+      loader: () => Promise<unknown>,
+      keyParts: string[],
+      options?: { tags?: string[] }
+    ) => {
+      void options;
       const cacheKey = JSON.stringify(keyParts);
 
       return async () => {
@@ -51,6 +56,10 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import {
+  GLOSSARY_SUMMARY_TAG,
+  REVIEW_SUMMARY_TAG
+} from "@/lib/data-cache";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";
 import { getMediaProgressPageData } from "@/lib/progress";
@@ -84,6 +93,9 @@ describe("app shell day-scoped cache keys", () => {
     vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));
     await getDashboardData(database);
     await getMediaDetailData(developmentFixture.mediaSlug, database);
+    await getMediaDetailData(developmentFixture.mediaSlug, database, {
+      includeReviewCounts: false
+    });
     await getMediaProgressPageData(developmentFixture.mediaSlug, database);
 
     vi.setSystemTime(new Date("2026-03-10T23:15:00.000Z"));
@@ -143,5 +155,58 @@ describe("app shell day-scoped cache keys", () => {
         ])
       )
     ).toBe(true);
+
+    const studyOnlyKey = JSON.stringify([
+      "app-shell",
+      "media-detail",
+      developmentFixture.mediaSlug,
+      "study-only",
+      "day:2026-03-10"
+    ]);
+    const progressSummaryKey = JSON.stringify([
+      "app-shell",
+      "glossary-progress-summary",
+      `media:${developmentFixture.mediaId}:${developmentFixture.mediaSlug}`
+    ]);
+    const progressPreviewKey = JSON.stringify([
+      "app-shell",
+      "glossary-progress-preview",
+      `media:${developmentFixture.mediaId}:${developmentFixture.mediaSlug}`
+    ]);
+
+    const studyOnlyCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === studyOnlyKey
+    );
+    const summaryCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === progressSummaryKey
+    );
+    const previewCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === progressPreviewKey
+    );
+
+    expect(studyOnlyCalls.length).toBeGreaterThan(0);
+    expect(studyOnlyCalls[0]?.[2]?.tags).toEqual(
+      expect.arrayContaining([
+        `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,
+        REVIEW_SUMMARY_TAG,
+        `${REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
+      ])
+    );
+    expect(summaryCalls.length).toBeGreaterThan(0);
+    expect(summaryCalls[0]?.[2]?.tags).toEqual(
+      expect.arrayContaining([
+        `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,
+        REVIEW_SUMMARY_TAG,
+        `${REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
+      ])
+    );
+    expect(previewCalls.length).toBeGreaterThan(0);
+    expect(previewCalls[0]?.[2]?.tags).toEqual(
+      expect.arrayContaining([
+        `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,
+        REVIEW_SUMMARY_TAG,
+        `${REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
+      ])
+    );
   });
 });
