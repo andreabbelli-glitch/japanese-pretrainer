@@ -227,7 +227,7 @@ export async function loadGlobalGlossaryPageData(
   const normalizedFilters = normalizeGlossaryQuery(searchParams, defaultSort);
   const { filteredTotal, filters, pagination, results } =
     normalizedFilters.query
-      ? await loadPaginatedGlobalGlossarySearchResults(
+      ? await loadCachedPaginatedGlobalGlossarySearchResults(
           database,
           normalizedFilters
         )
@@ -698,6 +698,39 @@ async function getGlobalGlossaryAggregateStatsCached(database: DatabaseClient) {
   });
 }
 
+function buildGlossaryQueryCacheKeyParts(query: string) {
+  const filteredQuery = buildFilteredQuery(query);
+
+  return [
+    `query:${filteredQuery?.normalized ?? ""}`,
+    `kana:${filteredQuery?.kana ?? ""}`,
+    `grammar-kana:${filteredQuery?.grammarKana ?? ""}`,
+    `compact:${filteredQuery?.compact ?? ""}`
+  ];
+}
+
+async function loadCachedPaginatedGlobalGlossarySearchResults(
+  database: DatabaseClient,
+  filters: GlossaryQueryState
+) {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: [
+      "glossary",
+      "search-page",
+      `cards:${filters.cards}`,
+      `media:${filters.media}`,
+      `page:${filters.page}`,
+      ...buildGlossaryQueryCacheKeyParts(filters.query),
+      `sort:${filters.sort}`,
+      `study:${filters.study}`,
+      `type:${filters.entryType}`
+    ],
+    loader: () => loadPaginatedGlobalGlossarySearchResults(database, filters),
+    tags: [GLOSSARY_SUMMARY_TAG]
+  });
+}
+
 async function loadCachedPaginatedGlobalGlossaryBrowseResults(
   database: DatabaseClient,
   filters: GlossaryQueryState
@@ -730,7 +763,7 @@ async function loadCachedGlobalGlossaryAutocompleteData(
       "autocomplete",
       `cards:${filters.cards}`,
       `media:${filters.media}`,
-      `query:${filters.query}`,
+      ...buildGlossaryQueryCacheKeyParts(filters.query),
       `study:${filters.study}`,
       `type:${filters.entryType}`
     ],
