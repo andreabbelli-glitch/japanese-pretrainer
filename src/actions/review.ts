@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { readRequiredString } from "./form-data.ts";
 import { db, getMediaBySlug } from "@/db";
 import {
+  getMediaBySlugCached,
   updateGlossarySummaryCache,
   updateReviewSummaryCache
 } from "@/lib/data-cache";
@@ -285,7 +286,9 @@ export async function loadReviewPageDataSessionAction(input: {
       mediaSlug: input.mediaSlug,
       scope: input.scope
     },
-    input.searchParams
+    input.searchParams,
+    undefined,
+    false
   );
 }
 
@@ -634,10 +637,11 @@ async function requireReviewPageData(
   mediaSlug: string,
   searchParams: Record<string, string | string[] | undefined>,
   resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {},
-  excludeCardIds?: string[]
+  excludeCardIds?: string[],
+  bypassCache = true
 ) {
   const data = await getReviewPageData(mediaSlug, searchParams, db, {
-    bypassCache: true,
+    bypassCache,
     excludeCardIds,
     resolvedMedia
   });
@@ -652,13 +656,14 @@ async function requireReviewPageData(
 async function requireReviewPageDataForScope(
   input: Pick<ReviewSessionInput, "gradedCardIds" | "mediaSlug" | "scope">,
   searchParams: Record<string, string | string[] | undefined>,
-  resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {}
+  resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {},
+  bypassCache = true
 ) {
   const excludeCardIds = input.gradedCardIds;
 
   if (input.scope === "global") {
     return getGlobalReviewPageData(searchParams, db, {
-      bypassCache: true,
+      bypassCache,
       excludeCardIds
     });
   }
@@ -671,7 +676,8 @@ async function requireReviewPageDataForScope(
     input.mediaSlug,
     searchParams,
     resolvedMedia,
-    excludeCardIds
+    excludeCardIds,
+    bypassCache
   );
 }
 
@@ -695,9 +701,9 @@ async function resolveSessionReviewRevalidationInput(
     input.scope === "media" && input.resolvedMedia
       ? input.resolvedMedia
       : input.mediaSlug
-        ? await getMediaBySlug(db, input.mediaSlug)
+        ? await getMediaBySlugCached(db, input.mediaSlug)
         : input.cardMediaSlug
-          ? await getMediaBySlug(db, input.cardMediaSlug)
+          ? await getMediaBySlugCached(db, input.cardMediaSlug)
           : null;
 
   return {
@@ -707,7 +713,7 @@ async function resolveSessionReviewRevalidationInput(
 }
 
 async function requireMediaForSlug(mediaSlug: string) {
-  const media = await getMediaBySlug(db, mediaSlug);
+  const media = await getMediaBySlugCached(db, mediaSlug);
 
   if (!media) {
     throw new Error(`Unable to resolve media for slug: ${mediaSlug}`);

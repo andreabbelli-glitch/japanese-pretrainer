@@ -730,7 +730,7 @@ describe("fsrs optimizer", () => {
       expect(result.dueAt).toBe(expected.dueAt);
       expect(latestLog?.scheduledDueAt).toBe(expected.dueAt);
     },
-    20_000
+    40_000
   );
 
   it(

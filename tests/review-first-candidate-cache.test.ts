@@ -52,6 +52,7 @@ import {
   runMigrations,
   type DatabaseClient
 } from "@/db";
+import { loadReviewPageDataSessionAction } from "@/actions/review";
 import {
   revalidateGlossarySummaryCache,
   revalidateReviewSummaryCache,
@@ -215,5 +216,28 @@ describe("global review first-candidate cache", () => {
     expect(initial.newIntroducedTodayCount).toBe(0);
     expect(stale.newIntroducedTodayCount).toBe(0);
     expect(refreshed.newIntroducedTodayCount).toBe(1);
+  });
+
+  it("reuses the stable workspace cache for read-only session hydration", async () => {
+    await seedSingleReviewCardFixture(database);
+
+    const first = await loadReviewPageDataSessionAction({
+      scope: "global",
+      searchParams: {}
+    });
+    const second = await loadReviewPageDataSessionAction({
+      scope: "global",
+      searchParams: {}
+    });
+
+    expect(first.selectedCard).not.toBeNull();
+    expect(second).toEqual(first);
+
+    expect(unstableCacheMock).toHaveBeenCalled();
+    expect(
+      [...cacheStore.keys()].some((cacheKey) =>
+        cacheKey.includes('"review","stable-workspace"')
+      )
+    ).toBe(true);
   });
 });
