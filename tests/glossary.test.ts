@@ -1665,6 +1665,7 @@ describe("glossary data", () => {
     expect(data).not.toBeNull();
     expect(selectedResult?.lessonCount).toBe(1);
     expect(data?.preview?.entry.id).toBe("grammar-teiru");
+    expect(data?.preview?.cards).toHaveLength(1);
     expect(data?.preview?.lessons).toHaveLength(1);
     expect(data?.preview?.lessons[0]?.roleLabels).toEqual([
       "Spiegata",

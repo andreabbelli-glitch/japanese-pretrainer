@@ -134,7 +134,6 @@ export type GlossarySearchResult = RankedGlossaryEntry & {
 };
 
 type GlossaryLocalResult = GlossarySearchResult & {
-  cardPreview?: string;
   lessonCount: number;
   primaryLesson?: {
     href: Route;

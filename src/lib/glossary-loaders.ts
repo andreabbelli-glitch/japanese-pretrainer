@@ -102,7 +102,7 @@ export async function loadGlossaryPageData(
       mediaId: media.id
     })
   ]);
-  const { candidates, cardsByEntry } = await buildGlossaryResolvedEntries(
+  const { candidates } = await buildGlossaryResolvedEntries(
     database,
     entries,
     filters
@@ -132,18 +132,12 @@ export async function loadGlossaryPageData(
   const results = filteredEntries.map((entry) => {
     const lessonRows =
       lessonsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? [];
-    const cardRows =
-      cardsByEntry.get(`${entry.kind}:${entry.internalId}`) ?? [];
     const uniqueLessons = aggregateGlossaryLessonConnections(lessonRows);
     const primaryLesson = pickPrimaryGlossaryLesson(uniqueLessons, media.slug);
-    const firstCard = cardRows[0];
 
     return {
       ...entry,
       bestLocalHref: entry.href,
-      cardPreview: firstCard
-        ? `${firstCard.cardFront} -> ${firstCard.cardBack}`
-        : undefined,
       lessonCount: uniqueLessons.length,
       mediaCount: 1,
       mediaHits: [
@@ -169,12 +163,17 @@ export async function loadGlossaryPageData(
     };
   });
   const selectedPreviewEntry = resolvePreviewEntry(searchParams, results);
+  const selectedPreviewCardConnections = selectedPreviewEntry
+    ? await listEntryCardConnections(database, [
+        {
+          entryId: selectedPreviewEntry.internalId,
+          entryType: selectedPreviewEntry.kind
+        }
+      ])
+    : [];
   const preview = selectedPreviewEntry
     ? buildGlossaryDetailData({
-        cardConnections:
-          cardsByEntry.get(
-            `${selectedPreviewEntry.kind}:${selectedPreviewEntry.internalId}`
-          ) ?? [],
+        cardConnections: selectedPreviewCardConnections,
         entry: selectedPreviewEntry,
         lessonConnections:
           lessonsByEntry.get(
@@ -541,25 +540,17 @@ async function buildGlossaryResolvedEntries(
     entryId: entry.internalId,
     entryType: entry.kind
   }));
-  const [studySignalsByEntry, cardConnections] = await Promise.all([
+  const [studySignalsByEntry, cardCounts] = await Promise.all([
     loadStudySignalsByEntry(database, entryRefs),
-    listEntryCardConnections(database, entryRefs)
+    listEntryCardCounts(database, entryRefs)
   ]);
-  const cardsByEntry = groupRowsByEntry(cardConnections);
-  const candidates = buildResolvedEntriesFromMaps({
-    cardCountByEntry: new Map(
-      [...cardsByEntry.entries()].map(
-        ([key, rows]) => [key, rows.length] as const
-      )
-    ),
-    entries,
-    filters,
-    studySignalsByEntry
-  });
-
   return {
-    candidates,
-    cardsByEntry
+    candidates: buildResolvedEntriesFromMaps({
+      cardCountByEntry: buildEntryCardCountMap(cardCounts),
+      entries,
+      filters,
+      studySignalsByEntry
+    })
   };
 }
 
