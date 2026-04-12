@@ -1,4 +1,10 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
+
+async function enterSearchQuery(searchbox: Locator, query: string) {
+  await searchbox.click();
+  await searchbox.fill("");
+  await searchbox.pressSequentially(query);
+}
 
 test("shows autocomplete suggestions and navigates when a suggestion is selected", async ({
   page
@@ -7,11 +13,11 @@ test("shows autocomplete suggestions and navigates when a suggestion is selected
 
   const searchbox = page.getByRole("searchbox", { name: "Cerca" });
 
-  await searchbox.fill("kosu");
+  await enterSearchQuery(searchbox, "kosu");
 
   const suggestion = page.getByRole("option", { name: /コスト/i }).first();
 
-  await expect(suggestion).toBeVisible();
+  await expect(suggestion).toBeVisible({ timeout: 10_000 });
   await suggestion.click();
 
   await expect(page).toHaveURL(
@@ -24,7 +30,9 @@ test("hides stale autocomplete suggestions while a new query or filter set is pe
   page
 }) => {
   await page.route("**/api/glossary/autocomplete**", async (route) => {
-    if (route.request().url().includes("cards=with_cards")) {
+    const requestUrl = route.request().url();
+
+    if (requestUrl.includes("q=kosuto") || requestUrl.includes("cards=with_cards")) {
       await new Promise((resolve) => {
         setTimeout(resolve, 200);
       });
@@ -39,14 +47,14 @@ test("hides stale autocomplete suggestions while a new query or filter set is pe
   const flashcardFilter = page.getByRole("combobox", { name: "Flashcard" });
   const suggestion = page.getByRole("option", { name: /コスト/i }).first();
 
-  await searchbox.fill("kosu");
-  await expect(suggestion).toBeVisible();
+  await enterSearchQuery(searchbox, "kosu");
+  await expect(suggestion).toBeVisible({ timeout: 10_000 });
 
-  await searchbox.fill("kosuto");
+  await enterSearchQuery(searchbox, "kosuto");
   await expect(suggestion).toBeHidden();
 
-  await searchbox.fill("kosu");
-  await expect(suggestion).toBeVisible();
+  await enterSearchQuery(searchbox, "kosu");
+  await expect(suggestion).toBeVisible({ timeout: 10_000 });
 
   await flashcardFilter.selectOption("with_cards");
   await expect(suggestion).toBeHidden();

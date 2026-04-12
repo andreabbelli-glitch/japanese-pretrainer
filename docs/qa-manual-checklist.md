@@ -13,6 +13,10 @@
 
 - Eseguire `./scripts/with-node.sh pnpm release:check`
 - Il comando canonico copre lint, typecheck, test unit/integration, build, validazione contenuti sul bundle reale ed E2E
+- Se una automazione Codex in sandbox `workspace-write` non riesce a lanciare
+  Chromium, usare come fallback `./scripts/with-node.sh pnpm test:e2e:webkit`
+  e segnalarlo esplicitamente nel riepilogo finale come verifica alternativa,
+  non come sostituzione del gate canonico
 
 ## Flussi principali
 

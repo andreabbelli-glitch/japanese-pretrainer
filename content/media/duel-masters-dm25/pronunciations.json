@@ -23,6 +23,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-deck-empty-demo-makenai",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-demo-demo-nai",
       "pitch_accent_status": "miss"
     },
@@ -208,6 +213,11 @@
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AE%E3%81%86%E3%81%A1",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-nokori-no-game-chuu",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
@@ -1363,6 +1373,14 @@
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E9%87%8D%E3%81%AD%E3%82%8B",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kasu",
+      "audio_src": "assets/audio/term/term-kasu/forvo-manual-かす.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8C%96%E3%81%99/#ja"
     },
     {
       "entry_type": "term",
