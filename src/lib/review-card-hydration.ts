@@ -179,8 +179,9 @@ export async function hydrateReviewCardUncached(input: {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
-  const fsrsOptimizerSnapshot =
-    input.fsrsOptimizerSnapshot ?? (await getFsrsOptimizerSnapshot(database));
+  const fsrsOptimizerSnapshotPromise = input.fsrsOptimizerSnapshot
+    ? Promise.resolve(input.fsrsOptimizerSnapshot)
+    : getFsrsOptimizerSnapshot(database);
   const card = await measureWith(input.profiler, "getCardById", () =>
     getCardById(database, input.cardId)
   );
@@ -194,7 +195,8 @@ export async function hydrateReviewCardUncached(input: {
   }
 
   const { termIds, grammarIds } = collectReviewLinkedEntryIds([card]);
-  const [terms, grammar, cardMedia] = await Promise.all([
+  const [fsrsOptimizerSnapshot, terms, grammar, cardMedia] = await Promise.all([
+    fsrsOptimizerSnapshotPromise,
     measureWith(input.profiler, "getGlossaryEntriesByIds.term", () =>
       getGlossaryEntriesByIds(database, "term", termIds)
     ),
@@ -261,7 +263,7 @@ export async function getReviewCardDetailData(
   database: DatabaseClient = db
 ): Promise<ReviewCardDetailData | null> {
   const nowIso = new Date().toISOString();
-  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(database);
+  const fsrsOptimizerSnapshotPromise = getFsrsOptimizerSnapshot(database);
 
   const [media, selectedRawCard] = await Promise.all([
     getMediaBySlugCached(database, mediaSlug),
@@ -279,7 +281,8 @@ export async function getReviewCardDetailData(
   }
 
   const { termIds, grammarIds } = collectReviewLinkedEntryIds([selectedRawCard]);
-  const [terms, grammar] = await Promise.all([
+  const [fsrsOptimizerSnapshot, terms, grammar] = await Promise.all([
+    fsrsOptimizerSnapshotPromise,
     getGlossaryEntriesByIds(database, "term", termIds),
     getGlossaryEntriesByIds(database, "grammar", grammarIds)
   ]);
