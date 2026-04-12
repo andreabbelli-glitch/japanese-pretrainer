@@ -90,6 +90,7 @@ scripts/            CLI standalone (non fanno parte del server Next.js)
   validate-content.ts     Valida formato Markdown prima dell'import
   fetch-pronunciations.ts Scarica audio pronuncia (Forvo)
   fetch-forvo-pronunciations.ts Fallback Forvo da sessione browser autenticata
+  request-forvo-word-add.ts Richiede l'aggiunta di lemmi mancanti su Forvo
   fetch-pitch-accents.ts  Scarica dati accento tonale
   reuse-pronunciations.ts Riusa audio già presenti tra bundle compatibili
   update-pronunciation-pending.ts Aggiorna il manifest dei pronunciations mancanti
@@ -104,6 +105,7 @@ scripts/            CLI standalone (non fanno parte del server Next.js)
   db-seed.ts              Esegue seed DB
   hash-auth-password.ts   Genera hash password per auth locale
   start-e2e-snapshot.ts   Avvia il server E2E con snapshot del database di test
+  forvo-word-add-helper.user.js User script di supporto per il workflow richieste Forvo
   release-check.sh        Esegue il gate completo di release
   tooling-doctor.sh       Diagnostica rapida dell'ambiente locale
   with-node.sh            Wrapper shell per eseguire comandi con la versione Node del repo
@@ -204,6 +206,7 @@ prompts/                  Prompt locali ignorati da git
 ./scripts/with-node.sh pnpm pronunciations:pending # aggiorna il backlog pronunce mancanti
 ./scripts/with-node.sh pnpm pronunciations:reuse # riusa pronunce già presenti
 ./scripts/with-node.sh pnpm pronunciations:forvo # esegue il fallback Forvo autenticato
+./scripts/with-node.sh pnpm pronunciations:forvo:request # prepara richieste di nuovi lemmi per Forvo
 ./scripts/with-node.sh pnpm pitch-accents:fetch # scarica dati di pitch accent
 ./scripts/with-node.sh pnpm image:status    # mostra stato workflow immagini
 ./scripts/with-node.sh pnpm image:apply     # applica blocchi immagine ai contenuti derivati
