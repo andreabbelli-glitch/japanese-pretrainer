@@ -3,7 +3,10 @@ import { eq } from "drizzle-orm";
 import { db, lessonProgress, type DatabaseClient } from "@/db";
 import { updateStudySettings, type FuriganaMode } from "@/lib/settings";
 import { formatLessonProgressStatusLabel } from "@/lib/study-format";
-import type { TextbookLessonData, TextbookLessonNavItem } from "@/lib/textbook";
+import type {
+  TextbookLessonData,
+  TextbookLessonNavItem
+} from "@/lib/textbook-types";
 
 type LessonOpenState = {
   lastOpenedAt: string;

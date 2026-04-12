@@ -13,7 +13,10 @@ import { buildPronunciationData } from "@/lib/pronunciation";
 import { buildEntryKey } from "@/lib/entry-id";
 import { deriveInlineReading, stripInlineMarkdown } from "@/lib/inline-markdown";
 import { deriveEntryStudyState } from "@/lib/study-entry";
-import type { TextbookEntryTooltip, TextbookTooltipEntry } from "@/lib/textbook";
+import type {
+  TextbookEntryTooltip,
+  TextbookTooltipEntry
+} from "@/lib/textbook-types";
 
 type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
 

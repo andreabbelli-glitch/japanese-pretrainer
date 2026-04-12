@@ -4,7 +4,10 @@ import {
   compareIsoDates,
   formatLessonProgressStatusLabel
 } from "@/lib/study-format";
-import type { TextbookLessonData, TextbookLessonNavItem } from "@/lib/textbook";
+import type {
+  TextbookLessonData,
+  TextbookLessonNavItem
+} from "@/lib/textbook-types";
 
 export function applyLessonCompletionState(
   data: TextbookLessonData,

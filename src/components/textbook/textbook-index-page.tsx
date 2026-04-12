@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import type { TextbookIndexData } from "@/lib/textbook";
+import type { TextbookIndexData } from "@/lib/textbook-types";
 import {
   buildReviewSessionHref,
   mediaHref,

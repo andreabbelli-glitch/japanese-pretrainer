@@ -8,7 +8,7 @@ import type {
   FuriganaMode,
   TextbookLessonData,
   TextbookLessonNavItem
-} from "@/lib/textbook";
+} from "@/lib/textbook-types";
 import { mediaStudyHref, mediaTextbookLessonHref } from "@/lib/site";
 
 import type { ExpandedImageState } from "./lesson-article";

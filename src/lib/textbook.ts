@@ -1,4 +1,3 @@
-import type { Route } from "next";
 import { unstable_noStore as noStore } from "next/cache";
 
 import {
@@ -21,12 +20,10 @@ import {
   SETTINGS_TAG
 } from "@/lib/data-cache";
 import { mediaGlossaryHref } from "@/lib/site";
-import type { MarkdownDocument } from "@/lib/content/types";
 import {
   getFuriganaModeSetting,
   type FuriganaMode
 } from "@/lib/settings";
-import type { PronunciationData } from "@/lib/pronunciation";
 import { pickBestBy } from "@/lib/collections";
 import {
   calculatePercent,
@@ -37,8 +34,23 @@ import {
 } from "@/lib/study-format";
 import { parseTextbookDocument } from "@/lib/textbook-document";
 import { loadLessonTooltipEntries } from "@/lib/textbook-tooltips";
+import type {
+  TextbookIndexData,
+  TextbookLessonData,
+  TextbookLessonGroup,
+  TextbookLessonNavItem,
+  TextbookTooltipEntry
+} from "@/lib/textbook-types";
 
 export type { FuriganaMode } from "@/lib/settings";
+export type {
+  TextbookEntryTooltip,
+  TextbookIndexData,
+  TextbookLessonData,
+  TextbookLessonGroup,
+  TextbookLessonNavItem,
+  TextbookTooltipEntry
+} from "@/lib/textbook-types";
 export {
   applyLessonOpenedState,
   recordLessonOpened,
@@ -46,93 +58,6 @@ export {
   setLessonCompletionState,
   settleLessonOpenedStateForRender
 } from "@/lib/textbook-progress";
-
-export type TextbookLessonNavItem = {
-  id: string;
-  slug: string;
-  title: string;
-  orderIndex: number;
-  difficulty: string | null;
-  summary: string | null;
-  excerpt: string | null;
-  status: "not_started" | "in_progress" | "completed";
-  statusLabel: string;
-  segmentId: string | null;
-  segmentTitle: string;
-  lastOpenedAt: string | null;
-  completedAt: string | null;
-};
-
-export type TextbookLessonGroup = {
-  id: string;
-  title: string;
-  note: string | null;
-  completedLessons: number;
-  totalLessons: number;
-  lessons: TextbookLessonNavItem[];
-};
-
-export type TextbookEntryTooltip = {
-  id: string;
-  crossMediaHint?: {
-    otherMediaCount: number;
-  };
-  kind: "term" | "grammar";
-  label: string;
-  title?: string;
-  reading?: string;
-  romaji?: string;
-  meaning: string;
-  literalMeaning?: string;
-  notes?: string;
-  pos?: string;
-  levelHint?: string;
-  pronunciation?: PronunciationData;
-  statusLabel: string;
-  segmentTitle?: string;
-  glossaryHref: Route;
-};
-
-export type TextbookTooltipEntry = TextbookEntryTooltip;
-
-export type TextbookIndexData = {
-  media: {
-    id: string;
-    slug: string;
-    title: string;
-    description: string;
-    mediaTypeLabel: string;
-    segmentKindLabel: string;
-  };
-  furiganaMode: FuriganaMode;
-  lessons: TextbookLessonNavItem[];
-  groups: TextbookLessonGroup[];
-  activeLesson: TextbookLessonNavItem | null;
-  resumeLesson: TextbookLessonNavItem | null;
-  completedLessons: number;
-  totalLessons: number;
-  textbookProgressPercent: number | null;
-  glossaryHref: Route;
-};
-
-export type TextbookLessonData = TextbookIndexData & {
-  lesson: {
-    id: string;
-    slug: string;
-    title: string;
-    difficulty: string | null;
-    summary: string | null;
-    excerpt: string | null;
-    completedAt: string | null;
-    status: "not_started" | "in_progress" | "completed";
-    statusLabel: string;
-    segmentTitle: string;
-    ast: MarkdownDocument | null;
-  };
-  entries: TextbookTooltipEntry[];
-  previousLesson: TextbookLessonNavItem | null;
-  nextLesson: TextbookLessonNavItem | null;
-};
 
 export async function getFuriganaMode(
   database: DatabaseClient = db

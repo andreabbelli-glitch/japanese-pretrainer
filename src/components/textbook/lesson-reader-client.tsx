@@ -19,7 +19,7 @@ import type {
   FuriganaMode,
   TextbookLessonData,
   TextbookTooltipEntry
-} from "@/lib/textbook";
+} from "@/lib/textbook-types";
 import {
   buildReviewSessionHref,
   mediaTextbookLessonTooltipsHref

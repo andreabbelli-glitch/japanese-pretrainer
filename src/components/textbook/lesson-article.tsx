@@ -12,7 +12,10 @@ import type {
 } from "@/lib/content/types";
 import { renderFurigana, splitMonoRuby } from "@/lib/render-furigana";
 import { mediaAssetHref } from "@/lib/site";
-import type { FuriganaMode, TextbookEntryTooltip } from "@/lib/textbook";
+import type {
+  FuriganaMode,
+  TextbookEntryTooltip
+} from "@/lib/textbook-types";
 
 import { EmptyState } from "../ui/empty-state";
 import { PronunciationAudio } from "../ui/pronunciation-audio";
