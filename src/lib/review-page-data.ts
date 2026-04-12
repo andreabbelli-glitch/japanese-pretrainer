@@ -1,7 +1,6 @@
 import { db, type DatabaseClient, type ReviewCardListItem } from "@/db";
 import {
   canUseDataCache,
-  getMediaBySlugCached,
   listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
@@ -269,12 +268,11 @@ export async function getReviewPageData(
     : measureWith(options.profiler, "listMediaCached", () =>
         listMediaCached(database)
       );
-  const media = options.resolvedMedia
-    ? options.resolvedMedia
-    : options.resolvedMediaRows
-      ? options.resolvedMediaRows.find((candidate) => candidate.slug === mediaSlug) ??
-        null
-      : await getMediaBySlugCached(database, mediaSlug);
+  const mediaRows = await mediaRowsPromise;
+  const media =
+    options.resolvedMedia ??
+    mediaRows.find((candidate) => candidate.slug === mediaSlug) ??
+    null;
 
   if (!media) {
     return null;
@@ -283,10 +281,7 @@ export async function getReviewPageData(
   const settingsPromise = measureWith(options.profiler, "getStudySettings", () =>
     getStudySettings(database)
   );
-  const [mediaRows, settings] = await Promise.all([
-    mediaRowsPromise,
-    settingsPromise
-  ]);
+  const settings = await settingsPromise;
 
   const searchState = normalizeReviewSearchState(searchParams);
   const workspace = await measureWith(
@@ -655,11 +650,12 @@ export async function getReviewQueueSnapshotForMedia(
   database: DatabaseClient = db
 ): Promise<ReviewQueueSnapshot | null> {
   const now = new Date();
-  const [fsrsOptimizerSnapshot, media, mediaRows] = await Promise.all([
+  const [fsrsOptimizerSnapshot, mediaRows] = await Promise.all([
     getFsrsOptimizerSnapshot(database),
-    getMediaBySlugCached(database, mediaSlug),
     listMediaCached(database)
   ]);
+  const media =
+    mediaRows.find((candidate) => candidate.slug === mediaSlug) ?? null;
 
   if (!media) {
     return null;
