@@ -29,6 +29,7 @@ import {
 } from "./review-page-state";
 import {
   buildOptimisticGradeResult,
+  collectQueuedPrefetchCardIds,
   buildReviewHydrationRequestKey,
   isReviewPageData,
   resolveReviewQueuePosition,
@@ -90,6 +91,7 @@ export function useReviewPageController(input: {
     number | null
   >(null);
   const prefetchBufferRef = useRef<Map<string, ReviewQueueCard>>(new Map());
+  const prefetchInFlightRef = useRef<Set<string>>(new Set());
   const latestViewDataRef = useRef<ReviewPageClientData>(data);
   const lastGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const inFlightGlobalHydrationRequestKeyRef = useRef<string | null>(null);
@@ -113,7 +115,7 @@ export function useReviewPageController(input: {
     typeof currentSearchParams.card === "string"
       ? currentSearchParams.card
       : isGlobalReview && Array.isArray(currentSearchParams?.card)
-        ? currentSearchParams.card[0] ?? null
+        ? (currentSearchParams.card[0] ?? null)
         : null;
 
   const selectedCard = viewData.selectedCard;
@@ -203,7 +205,8 @@ export function useReviewPageController(input: {
           currentData: latestViewDataRef.current,
           nextData: data,
           globalHydrationRequestKey,
-          lastGlobalHydrationRequestKey: lastGlobalHydrationRequestKeyRef.current
+          lastGlobalHydrationRequestKey:
+            lastGlobalHydrationRequestKeyRef.current
         })
       ) {
         const nextRevealedCardId = resolveHydratedFirstCandidateRevealedCardId({
@@ -238,7 +241,12 @@ export function useReviewPageController(input: {
     setRevealedCardId(getInitiallyRevealedCardId(merged));
     setQueueCardIds(data.queueCardIds);
     setClientError(null);
-  }, [data, globalHydrationRequestKey, isGlobalReview, requestedSelectedCardId]);
+  }, [
+    data,
+    globalHydrationRequestKey,
+    isGlobalReview,
+    requestedSelectedCardId
+  ]);
 
   useEffect(() => {
     if (
@@ -337,18 +345,13 @@ export function useReviewPageController(input: {
       return;
     }
 
-    const bufferSize = 3;
-    const startIndex = queueIndex + 1;
-    const endIndex = Math.min(startIndex + bufferSize, queueCardIds.length);
-    const cardIdsToFetch: string[] = [];
-
-    for (let i = startIndex; i < endIndex; i++) {
-      const id = queueCardIds[i];
-
-      if (id && !prefetchBufferRef.current.has(id)) {
-        cardIdsToFetch.push(id);
-      }
-    }
+    const cardIdsToFetch = collectQueuedPrefetchCardIds({
+      bufferSize: 3,
+      prefetchedCardIds: new Set(prefetchBufferRef.current.keys()),
+      prefetchingCardIds: prefetchInFlightRef.current,
+      queueCardIds,
+      queueIndex
+    });
 
     if (cardIdsToFetch.length === 0) {
       return;
@@ -357,6 +360,8 @@ export function useReviewPageController(input: {
     let cancelled = false;
 
     for (const cardId of cardIdsToFetch) {
+      prefetchInFlightRef.current.add(cardId);
+
       void prefetchReviewCardSessionAction({ cardId })
         .then((card) => {
           if (cancelled || !card) {
@@ -367,13 +372,22 @@ export function useReviewPageController(input: {
         })
         .catch((error) => {
           console.error(error);
+        })
+        .finally(() => {
+          prefetchInFlightRef.current.delete(cardId);
         });
     }
 
     return () => {
       cancelled = true;
     };
-  }, [isQueueCard, isFullReviewPageData, queueIndex, queueCardIds, selectedCard]);
+  }, [
+    isQueueCard,
+    isFullReviewPageData,
+    queueIndex,
+    queueCardIds,
+    selectedCard
+  ]);
 
   function runSessionUpdate(
     loadNextData: () => Promise<ReviewPageData>,
@@ -488,7 +502,9 @@ export function useReviewPageController(input: {
     }
 
     const nextCardId = nextQueueCardId;
-    const nextQueueCardIds = queueCardIds.filter((id) => id !== selectedCard.id);
+    const nextQueueCardIds = queueCardIds.filter(
+      (id) => id !== selectedCard.id
+    );
     const optimisticNextCard = nextCardId
       ? (prefetchBufferRef.current.get(nextCardId) ?? null)
       : null;

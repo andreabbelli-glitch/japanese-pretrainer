@@ -8,6 +8,7 @@ import {
   buildReviewGradePreviewLookup,
   resolveHydratedFirstCandidateRevealedCardId
 } from "@/components/review/review-page-client-utils";
+import { collectQueuedPrefetchCardIds } from "@/components/review/review-page-helpers";
 import { ReviewPageSidebar } from "@/components/review/review-page-sidebar";
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
@@ -88,6 +89,18 @@ describe("review page client hydration", () => {
       card: "card-b",
       segment: "segment-1"
     });
+  });
+
+  it("skips queued card prefetches that are already buffered or already in flight", () => {
+    expect(
+      collectQueuedPrefetchCardIds({
+        bufferSize: 3,
+        prefetchedCardIds: new Set(["card-b"]),
+        prefetchingCardIds: new Set(["card-c"]),
+        queueCardIds: ["card-a", "card-b", "card-c", "card-d", "card-e"],
+        queueIndex: 0
+      })
+    ).toEqual(["card-d"]);
   });
 
   it("renders grading controls even when the stage is still hydrating the full payload", () => {

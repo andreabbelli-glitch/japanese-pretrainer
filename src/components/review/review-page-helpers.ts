@@ -35,6 +35,37 @@ export function formatRemainingCardsLabel(count: number) {
   return count === 1 ? "1 flashcard rimanente" : `${count} flashcard rimanenti`;
 }
 
+export function collectQueuedPrefetchCardIds(input: {
+  bufferSize: number;
+  prefetchedCardIds: Set<string>;
+  prefetchingCardIds: Set<string>;
+  queueCardIds: string[];
+  queueIndex: number;
+}) {
+  const startIndex = input.queueIndex + 1;
+  const endIndex = Math.min(
+    startIndex + input.bufferSize,
+    input.queueCardIds.length
+  );
+  const cardIdsToFetch: string[] = [];
+
+  for (let index = startIndex; index < endIndex; index += 1) {
+    const cardId = input.queueCardIds[index];
+
+    if (
+      !cardId ||
+      input.prefetchedCardIds.has(cardId) ||
+      input.prefetchingCardIds.has(cardId)
+    ) {
+      continue;
+    }
+
+    cardIdsToFetch.push(cardId);
+  }
+
+  return cardIdsToFetch;
+}
+
 export function resolveReviewQueuePosition(input: {
   data: ReviewPageClientData;
   queueCardIds: string[];
@@ -139,7 +170,9 @@ export function formatTopUpLabel(count: number) {
     : `Aggiungi altre ${count} nuove`;
 }
 
-export function isReviewPageData(data: ReviewPageClientData): data is ReviewPageData {
+export function isReviewPageData(
+  data: ReviewPageClientData
+): data is ReviewPageData {
   return "queueCardIds" in data;
 }
 
