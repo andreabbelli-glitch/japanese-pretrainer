@@ -3,9 +3,11 @@ import {
   db,
   getReviewLaunchCandidateByMediaId,
   getGlobalReviewOverviewCounts,
+  listGrammarEntryReviewSummariesByIds,
   listReviewLaunchCandidates,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
+  listTermEntryReviewSummariesByIds,
   type DatabaseClient,
   type MediaListItem,
   type ReviewCardListItem,
@@ -85,14 +87,10 @@ export async function loadReviewEntrySummariesForCards(input: {
   const { grammarIds, termIds } = collectReviewLinkedEntryIds(input.cards);
   const [terms, grammar] = await Promise.all([
     measureWith(input.profiler, "listTermEntryReviewSummariesByIds", () =>
-      import("@/db").then(({ listTermEntryReviewSummariesByIds }) =>
-        listTermEntryReviewSummariesByIds(input.database, termIds)
-      )
+      listTermEntryReviewSummariesByIds(input.database, termIds)
     ),
     measureWith(input.profiler, "listGrammarEntryReviewSummariesByIds", () =>
-      import("@/db").then(({ listGrammarEntryReviewSummariesByIds }) =>
-        listGrammarEntryReviewSummariesByIds(input.database, grammarIds)
-      )
+      listGrammarEntryReviewSummariesByIds(input.database, grammarIds)
     )
   ]);
 
@@ -175,7 +173,11 @@ export async function loadStableReviewWorkspaceV2Cached(input: {
           "stable-workspace",
           ...orderedMediaIds.map((mediaId) => `media:${mediaId}`)
         ],
-        loader: () => loadStableReviewWorkspaceV2(input),
+        loader: () =>
+          loadStableReviewWorkspaceV2({
+            ...input,
+            mediaIds: orderedMediaIds
+          }),
         tags: buildReviewSummaryTags(orderedMediaIds)
       }),
     { cacheEligible, mediaIds: orderedMediaIds.length }

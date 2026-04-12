@@ -121,14 +121,19 @@ export function useReviewPageController(input: {
   const selectedCard = viewData.selectedCard;
   const selectedCardId = selectedCard?.id ?? null;
   const selectedCardContext = viewData.selectedCardContext;
+  const queueCardIndexLookup = useMemo(
+    () => new Map(queueCardIds.map((cardId, index) => [cardId, index] as const)),
+    [queueCardIds]
+  );
   const resolvedQueuePosition = useMemo(
     () =>
       resolveReviewQueuePosition({
         data: viewData,
+        queueCardIndexLookup,
         queueCardIds,
         selectedCardId
       }),
-    [queueCardIds, selectedCardId, viewData]
+    [queueCardIds, queueCardIndexLookup, selectedCardId, viewData]
   );
   const queueIndex = selectedCard ? resolvedQueuePosition.queueIndex : -1;
   const isQueueCard = selectedCard ? selectedCardContext.isQueueCard : false;

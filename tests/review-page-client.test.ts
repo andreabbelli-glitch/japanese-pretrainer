@@ -8,7 +8,10 @@ import {
   buildReviewGradePreviewLookup,
   resolveHydratedFirstCandidateRevealedCardId
 } from "@/components/review/review-page-client-utils";
-import { collectQueuedPrefetchCardIds } from "@/components/review/review-page-helpers";
+import {
+  collectQueuedPrefetchCardIds,
+  resolveReviewQueuePosition
+} from "@/components/review/review-page-helpers";
 import { ReviewPageSidebar } from "@/components/review/review-page-sidebar";
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
@@ -101,6 +104,26 @@ describe("review page client hydration", () => {
         queueIndex: 0
       })
     ).toEqual(["card-d"]);
+  });
+
+  it("resolves the selected queue position from the memoized optimistic lookup", () => {
+    const queueCardIds = ["card-a", "card-b", "card-c"];
+
+    expect(
+      resolveReviewQueuePosition({
+        data: buildFullReviewPageData({
+          cardId: "card-b"
+        }),
+        queueCardIds,
+        queueCardIndexLookup: new Map(
+          queueCardIds.map((cardId, index) => [cardId, index] as const)
+        ),
+        selectedCardId: "card-b"
+      })
+    ).toEqual({
+      queueCardIds,
+      queueIndex: 1
+    });
   });
 
   it("renders grading controls even when the stage is still hydrating the full payload", () => {

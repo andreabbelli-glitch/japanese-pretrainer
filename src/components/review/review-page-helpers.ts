@@ -68,6 +68,7 @@ export function collectQueuedPrefetchCardIds(input: {
 
 export function resolveReviewQueuePosition(input: {
   data: ReviewPageClientData;
+  queueCardIndexLookup?: ReadonlyMap<string, number>;
   queueCardIds: string[];
   selectedCardId: string | null;
 }) {
@@ -78,7 +79,9 @@ export function resolveReviewQueuePosition(input: {
     };
   }
 
-  const optimisticQueueIndex = input.queueCardIds.indexOf(input.selectedCardId);
+  const optimisticQueueIndex =
+    input.queueCardIndexLookup?.get(input.selectedCardId) ??
+    input.queueCardIds.indexOf(input.selectedCardId);
 
   if (optimisticQueueIndex >= 0) {
     return {
