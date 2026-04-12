@@ -203,6 +203,19 @@ export type GlobalReviewOverviewCounts = {
   totalCards: number;
 };
 
+function buildCompletedLessonsCteSql() {
+  return `
+    completed_lessons AS (
+      SELECT l.id
+      FROM lesson l
+      INNER JOIN lesson_progress lp
+        ON lp.lesson_id = l.id
+      WHERE l.status = 'active'
+        AND lp.status = 'completed'
+    )
+  `;
+}
+
 export async function getGlobalReviewOverviewCounts(
   database: DatabaseQueryClient,
   asOf = new Date()
@@ -229,6 +242,7 @@ export async function getGlobalReviewOverviewCounts(
     totalCards: number | string | null;
   }>(`
     WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: "SELECT id FROM media WHERE status = 'active'" })},
+    ${buildCompletedLessonsCteSql()},
     global_subject_card_candidates AS (
       SELECT
         si.subject_key AS subjectKey,
@@ -266,16 +280,10 @@ export async function getGlobalReviewOverviewCounts(
       FROM subject_identity si
       LEFT JOIN review_subject_state rss
         ON rss.subject_key = si.subject_key
+      LEFT JOIN completed_lessons cl
+        ON cl.id = si.lesson_id
       WHERE si.lesson_id IS NOT NULL
-       AND EXISTS (
-         SELECT 1
-         FROM lesson l
-         INNER JOIN lesson_progress lp
-           ON lp.lesson_id = l.id
-         WHERE l.id = si.lesson_id
-           AND l.status = 'active'
-           AND lp.status = 'completed'
-       )
+       AND cl.id IS NOT NULL
     ),
     global_subject_candidates AS (
       SELECT
@@ -434,22 +442,14 @@ async function loadReviewLaunchCandidates(
     WITH ${buildReviewSubjectIdentityCteSql({
       mediaFilter: subjectIdentityMediaFilter
     })},
+    ${buildCompletedLessonsCteSql()},
     subject_media_candidates AS (
       SELECT
         si.media_id AS mediaId,
         si.subject_key AS subjectKey,
         MAX(
           CASE
-            WHEN si.lesson_id IS NOT NULL
-             AND EXISTS (
-               SELECT 1
-               FROM lesson l
-               INNER JOIN lesson_progress lp
-                 ON lp.lesson_id = l.id
-               WHERE l.id = si.lesson_id
-                 AND l.status = 'active'
-                 AND lp.status = 'completed'
-             )
+            WHEN cl.id IS NOT NULL
             THEN 1
             ELSE 0
           END
@@ -467,6 +467,8 @@ async function loadReviewLaunchCandidates(
       FROM subject_identity si
       LEFT JOIN review_subject_state rss
         ON rss.subject_key = si.subject_key
+      LEFT JOIN completed_lessons cl
+        ON cl.id = si.lesson_id
       GROUP BY si.media_id, si.subject_key
     )
     SELECT
