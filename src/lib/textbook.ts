@@ -24,7 +24,6 @@ import {
   getFuriganaModeSetting,
   type FuriganaMode
 } from "@/lib/settings";
-import { pickBestBy } from "@/lib/collections";
 import {
   calculatePercent,
   compareIsoDates,
@@ -254,10 +253,50 @@ function buildTextbookIndexModel(input: {
   lessons: LessonListItem[];
   furiganaMode: FuriganaMode;
 }): TextbookIndexData {
-  const lessons = input.lessons.map(mapLessonNavItem);
-  const completedLessons = lessons.filter(
-    (lesson) => lesson.status === "completed"
-  ).length;
+  const lessons: TextbookLessonNavItem[] = [];
+  const groups = new Map<string, TextbookLessonGroup>();
+  let activeLesson: TextbookLessonNavItem | null = null;
+  let resumeLesson: TextbookLessonNavItem | null = null;
+  let completedLessons = 0;
+
+  for (const sourceLesson of input.lessons) {
+    const lessonItem = mapLessonNavItem(sourceLesson);
+    const isCompleted = lessonItem.status === "completed";
+    const groupKey = sourceLesson.segment?.id ?? "__ungrouped__";
+    const existingGroup = groups.get(groupKey);
+
+    lessons.push(lessonItem);
+
+    if (isCompleted) {
+      completedLessons++;
+    } else if (!resumeLesson) {
+      resumeLesson = lessonItem;
+    }
+
+    if (
+      lessonItem.status === "in_progress" &&
+      (!activeLesson ||
+        compareIsoDates(activeLesson.lastOpenedAt, lessonItem.lastOpenedAt) < 0)
+    ) {
+      activeLesson = lessonItem;
+    }
+
+    if (existingGroup) {
+      existingGroup.lessons.push(lessonItem);
+      existingGroup.totalLessons += 1;
+      existingGroup.completedLessons += isCompleted ? 1 : 0;
+      continue;
+    }
+
+    groups.set(groupKey, {
+      id: groupKey,
+      title: sourceLesson.segment?.title ?? "Percorso principale",
+      note: sourceLesson.segment?.notes ?? null,
+      completedLessons: isCompleted ? 1 : 0,
+      totalLessons: 1,
+      lessons: [lessonItem]
+    });
+  }
 
   return {
     media: {
@@ -272,9 +311,9 @@ function buildTextbookIndexModel(input: {
     },
     furiganaMode: input.furiganaMode,
     lessons,
-    groups: groupLessons(lessons, input.lessons),
-    activeLesson: selectActiveLesson(lessons),
-    resumeLesson: selectResumeLesson(lessons),
+    groups: [...groups.values()],
+    activeLesson,
+    resumeLesson: resumeLesson ?? lessons[0] ?? null,
     completedLessons,
     totalLessons: lessons.length,
     textbookProgressPercent: calculatePercent(completedLessons, lessons.length),
@@ -300,52 +339,6 @@ function mapLessonNavItem(lesson: LessonListItem): TextbookLessonNavItem {
     lastOpenedAt: lesson.progress?.lastOpenedAt ?? null,
     completedAt: lesson.progress?.completedAt ?? null
   };
-}
-
-function groupLessons(
-  lessonItems: TextbookLessonNavItem[],
-  sourceLessons: LessonListItem[]
-) {
-  const groups = new Map<string, TextbookLessonGroup>();
-
-  sourceLessons.forEach((lesson, index) => {
-    const lessonItem = lessonItems[index];
-    const key = lesson.segment?.id ?? "__ungrouped__";
-    const existing = groups.get(key);
-
-    if (existing) {
-      existing.lessons.push(lessonItem);
-      existing.totalLessons += 1;
-      existing.completedLessons += lessonItem.status === "completed" ? 1 : 0;
-      return;
-    }
-
-    groups.set(key, {
-      id: key,
-      title: lesson.segment?.title ?? "Percorso principale",
-      note: lesson.segment?.notes ?? null,
-      completedLessons: lessonItem.status === "completed" ? 1 : 0,
-      totalLessons: 1,
-      lessons: [lessonItem]
-    });
-  });
-
-  return [...groups.values()];
-}
-
-function selectActiveLesson(lessons: TextbookLessonNavItem[]) {
-  return pickBestBy(
-    lessons.filter((lesson) => lesson.status === "in_progress"),
-    (left, right) => compareIsoDates(right.lastOpenedAt, left.lastOpenedAt)
-  );
-}
-
-function selectResumeLesson(lessons: TextbookLessonNavItem[]) {
-  return (
-    lessons.find((lesson) => lesson.status !== "completed") ??
-    lessons[0] ??
-    null
-  );
 }
 
 function normalizeLessonStatus(
