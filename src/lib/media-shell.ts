@@ -48,6 +48,8 @@ const STUDY_STATE_LABELS: Record<string, string> = {
   available: "Disponibile"
 };
 
+type ResolvedMedia = NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>;
+
 export async function getMediaLibraryData(database: DatabaseClient = db) {
   const cacheDayKey = getLocalIsoDateKey(new Date());
 
@@ -76,9 +78,12 @@ export async function getMediaDetailData(
   database: DatabaseClient = db,
   options: {
     includeReviewCounts?: boolean;
+    resolvedMedia?: ResolvedMedia | null;
   } = {}
 ) {
-  const media = await getMediaBySlugCached(database, mediaSlug);
+  const media =
+    options.resolvedMedia ??
+    (await getMediaBySlugCached(database, mediaSlug));
 
   if (!media) {
     return null;

@@ -183,6 +183,7 @@ export function mapLessonTarget(
 
 export function buildLessonMetrics(lessons: LessonListItem[]) {
   let lessonsCompleted = 0;
+  let inProgressLessons = 0;
   let activeLessonRaw: LessonListItem | null = null;
   let nextLessonRaw: LessonListItem | null = null;
   let lastOpenedLessonRaw: LessonListItem | null = null;
@@ -201,6 +202,8 @@ export function buildLessonMetrics(lessons: LessonListItem[]) {
     }
 
     if (isInProgress) {
+      inProgressLessons++;
+
       if (
         !activeLessonRaw ||
         compareIsoDates(
@@ -267,6 +270,7 @@ export function buildLessonMetrics(lessons: LessonListItem[]) {
 
   return {
     activeLesson,
+    inProgressLessons,
     lastOpenedLesson: mapLessonTarget(lastOpenedLessonRaw),
     lessonsCompleted,
     lessonsTotal: lessons.length,

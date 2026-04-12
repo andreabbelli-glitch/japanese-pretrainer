@@ -28,6 +28,7 @@ describe("buildLessonMetrics", () => {
       })
     ]);
 
+    expect(metrics.inProgressLessons).toBe(2);
     expect(metrics.segments).toHaveLength(1);
     expect(metrics.segments[0]?.currentLessonTitle).toBe("Dialoghi");
   });

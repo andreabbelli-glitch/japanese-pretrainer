@@ -107,6 +107,19 @@ describe("progress, settings, and study controls", () => {
     settingsQuerySpy.mockRestore();
   });
 
+  it("reuses the resolved media row while building the media page", async () => {
+    const mediaQuerySpy = vi.spyOn(database.query.media, "findFirst");
+
+    const data = await getMediaProgressPageData(
+      developmentFixture.mediaSlug,
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(mediaQuerySpy).toHaveBeenCalledTimes(1);
+    mediaQuerySpy.mockRestore();
+  });
+
   it("recommends review when the queue has only new cards", async () => {
     await database
       .update(reviewSubjectState)

@@ -163,6 +163,7 @@ export function mapMediaShellSnapshotFromCounts(input: {
 }): MediaShellSnapshot {
   const {
     lessonsCompleted,
+    inProgressLessons,
     lessonsTotal,
     activeLesson,
     lastOpenedLesson,
@@ -170,9 +171,6 @@ export function mapMediaShellSnapshotFromCounts(input: {
     nextLesson,
     segments
   } = buildLessonMetrics(input.lessons);
-  const inProgressLessons = input.lessons.filter(
-    (lesson) => lesson.progress?.status === "in_progress"
-  ).length;
   const reviewCounts = input.reviewCounts ?? {
     activeReviewCards: 0,
     cardsTotal: 0,
