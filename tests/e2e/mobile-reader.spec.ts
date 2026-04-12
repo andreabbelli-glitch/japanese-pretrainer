@@ -8,10 +8,7 @@ test.use({
   }
 });
 
-test("keeps reader interactions usable on mobile", async ({
-  browserName,
-  page
-}) => {
+test("keeps reader interactions usable on mobile", async ({ page }) => {
   await page.goto("/media/duel-masters-dm25/textbook/tcg-core-overview");
 
   await expect(page.getByRole("button", { name: "Lezioni" })).toBeVisible();
@@ -27,11 +24,7 @@ test("keeps reader interactions usable on mobile", async ({
   const pronunciationAudio = mobileSheet.locator(
     "audio.pronunciation-audio__player"
   );
-  if (browserName === "webkit") {
-    await expect(pronunciationAudio).toHaveAttribute("preload", "auto");
-  } else {
-    await expect(pronunciationAudio).toHaveAttribute("preload", "none");
-  }
+  await expect(pronunciationAudio).toHaveAttribute("preload", "none");
   await page.waitForTimeout(250);
   await expect(pronunciationAudio).toHaveAttribute("preload", "auto");
   await expect(mobileSheet.getByRole("link", { name: "Apri voce" })).toBeVisible();

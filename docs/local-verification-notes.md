@@ -109,30 +109,20 @@ Il comando costruisce l'app, prepara un DB E2E temporaneo, importa tutti i
 bundle reali presenti in `content/` e avvia un server locale su porta `3100`
 per la suite.
 
-Per run sandboxati di automazioni Codex su macOS e disponibile anche il
-fallback:
-
-`./scripts/with-node.sh pnpm test:e2e:webkit`
-
-Il flusso e identico, ma forza WebKit come browser Playwright.
-
 Se ti serve invocare direttamente `./scripts/with-node.sh pnpm test:e2e:runner`
 su una subset, assicurati prima di avere una build fresca. `start:e2e` rifiuta
 di partire se `.next/BUILD_ID` e piu vecchio dei file applicativi rilevanti, in
 modo da evitare falsi failure Playwright contro una build production stale.
 
-Allo stesso modo, se vuoi rilanciare una subset con WebKit senza rifare la
-build:
-
-`./scripts/with-node.sh pnpm test:e2e:runner:webkit -- <pattern>`
-
 Quando il comando gira da un worktree Codex locale in sandbox, il setup del
 worktree deve avere gia eseguito `.codex/scripts/setup-worktree.sh` e il profilo
 di sandbox deve poter usare `nvm` e la cache browser Playwright fuori dal repo.
 
-Su questo repository il blocco noto del sandbox riguarda Chromium
-(`mach_port_rendezvous ... Permission denied (1100)`), mentre WebKit e stato
-verificato come fallback praticabile almeno sugli smoke test locali.
+Su questo repository il blocco noto del sandbox puo impedire l'avvio dei browser
+Playwright su macOS. Se `release:check` o il runner E2E arrivano a Playwright
+ma il browser non parte per limiti del sandbox, segnala esplicitamente che gli
+E2E browser non sono eseguibili in quell'ambiente e completa il resto delle
+verifiche disponibili.
 
 ## Gate Canonico Di Verifica
 
@@ -146,10 +136,6 @@ Il gate canonico copre nell'ordine:
 - `pnpm build`;
 - `pnpm content:validate`;
 - runner E2E Playwright sul setup locale dedicato.
-
-Il gate canonico resta intenzionalmente ancorato al runner Playwright di
-default. Il percorso `test:e2e:webkit` e un fallback operativo per automazioni
-in sandbox, non il nuovo riferimento di sign-off.
 
 Il sign-off locale resta valido solo sul runtime supportato del repo, cioe
 `Node 22.x` risolto tramite `./scripts/with-node.sh`. Gli script CLI

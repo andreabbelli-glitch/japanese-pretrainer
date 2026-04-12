@@ -149,6 +149,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-koushite-misetamushoku-card-1-nitsuki",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-made",
       "pitch_accent": 1,
       "pitch_accent_source": "Wiktionary",
@@ -182,6 +187,11 @@
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%9C%AA",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-misetakado-wa-subete",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
@@ -221,7 +231,17 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-sarenakatta",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-sareta-toki",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-sareteiru",
       "pitch_accent_status": "miss"
     },
     {
@@ -396,12 +416,22 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-yamafuda-no-ue-ka-shita-no-dochiraka-ni-modosu",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-yori",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-youni",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-zu",
       "pitch_accent_status": "miss"
     },
     {
@@ -1340,6 +1370,11 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-justdiver",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kaku",
       "audio_src": "assets/audio/term/term-kaku/forvo-manual-かく.mp3",
       "audio_source": "forvo",
@@ -1380,7 +1415,11 @@
       "audio_src": "assets/audio/term/term-kasu/forvo-manual-かす.mp3",
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
-      "audio_page_url": "https://forvo.com/word/%E5%8C%96%E3%81%99/#ja"
+      "audio_page_url": "https://forvo.com/word/%E5%8C%96%E3%81%99/#ja",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%8C%96%E3%81%99",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",
@@ -1955,6 +1994,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-sale-period",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-sarani",
       "pitch_accent_status": "miss"
     },
     {

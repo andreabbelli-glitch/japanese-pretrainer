@@ -169,7 +169,6 @@ Le action repo-shared consigliate per l'app Codex sono:
 - `.codex/scripts/check.sh`
 - `.codex/scripts/release-check.sh`
 - `.codex/scripts/test-e2e.sh`
-- `.codex/scripts/test-e2e-webkit.sh`
 - `.codex/scripts/db-setup.sh`
 - `.codex/scripts/content-import.sh`
 
@@ -190,17 +189,6 @@ Il comando `release:check` copre l'intero set di controlli locali:
 - validazione contenuti su tutti i bundle reali presenti in `content/media`
 - E2E su browser Playwright di default
 
-Per automazioni Codex che girano in sandbox `workspace-write` su macOS, esiste
-anche un percorso E2E alternativo con WebKit:
-
-```sh
-./scripts/with-node.sh pnpm test:e2e:webkit
-```
-
-Questo comando non sostituisce il gate canonico `release:check`: serve come
-fallback operativo quando Chromium non riesce a bootstrapparsi dentro il
-sandbox locale dell'automazione.
-
 ## Script disponibili
 
 ```sh
@@ -213,7 +201,6 @@ pnpm format:check
 pnpm typecheck
 pnpm test
 pnpm test:e2e
-pnpm test:e2e:webkit
 pnpm check
 pnpm content:validate
 pnpm release:check

@@ -325,6 +325,37 @@ export async function getReviewPageData(
   );
 }
 
+export async function loadReviewPageDataSession(
+  input: {
+    mediaSlug?: string;
+    scope: ReviewScope;
+    searchParams: Record<string, string | string[] | undefined>;
+  },
+  database: DatabaseClient = db
+): Promise<ReviewPageData> {
+  if (input.scope === "global") {
+    return getGlobalReviewPageData(input.searchParams, database, {
+      bypassCache: false
+    });
+  }
+
+  if (!input.mediaSlug) {
+    throw new Error("Media review scope requires a media slug.");
+  }
+
+  const data = await getReviewPageData(input.mediaSlug, input.searchParams, database, {
+    bypassCache: false
+  });
+
+  if (!data) {
+    throw new Error(
+      `Unable to load review page data for media: ${input.mediaSlug}`
+    );
+  }
+
+  return data;
+}
+
 export async function buildGlobalReviewPageData(
   input: LoadedGlobalReviewPageWorkspace,
   database: DatabaseClient = db,

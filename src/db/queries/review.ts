@@ -203,7 +203,11 @@ export type GlobalReviewOverviewCounts = {
   totalCards: number;
 };
 
-function buildCompletedLessonsCteSql() {
+function buildCompletedLessonsCteSql(mediaId?: string) {
+  const mediaFilterSql = mediaId
+    ? `\n        AND l.media_id = ${quoteSqlString(mediaId)}`
+    : "";
+
   return `
     completed_lessons AS (
       SELECT l.id
@@ -211,7 +215,7 @@ function buildCompletedLessonsCteSql() {
       INNER JOIN lesson_progress lp
         ON lp.lesson_id = l.id
       WHERE l.status = 'active'
-        AND lp.status = 'completed'
+        AND lp.status = 'completed'${mediaFilterSql}
     )
   `;
 }
@@ -442,7 +446,7 @@ async function loadReviewLaunchCandidates(
     WITH ${buildReviewSubjectIdentityCteSql({
       mediaFilter: subjectIdentityMediaFilter
     })},
-    ${buildCompletedLessonsCteSql()},
+    ${buildCompletedLessonsCteSql(mediaId)},
     subject_media_candidates AS (
       SELECT
         si.media_id AS mediaId,

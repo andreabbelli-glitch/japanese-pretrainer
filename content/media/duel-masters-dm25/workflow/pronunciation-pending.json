@@ -1,9 +1,58 @@
 {
   "version": 1,
   "media_slug": "duel-masters-dm25",
-  "total_targets": 299,
+  "total_targets": 307,
   "audio_backed_count": 122,
   "known_missing_count": 177,
-  "pending_count": 0,
-  "pending": []
+  "pending_count": 8,
+  "pending": [
+    {
+      "entry_type": "term",
+      "entry_id": "term-justdiver",
+      "label": "ジャストダイバー",
+      "reading": "じゃすとだいばー"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-sarani",
+      "label": "さらに",
+      "reading": "さらに"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-sarenakatta",
+      "label": "～されなかった",
+      "reading": "されなかった"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-sareteiru",
+      "label": "～されている",
+      "reading": "されている"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-zu",
+      "label": "～ず",
+      "reading": "ず"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-koushite-misetamushoku-card-1-nitsuki",
+      "label": "こうして見せた無色カード1枚につき",
+      "reading": "こうしてみせたむしょくかーどいちまいにつき"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-misetakado-wa-subete",
+      "label": "見せたカードはすべて",
+      "reading": "みせたかーどはすべて"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-yamafuda-no-ue-ka-shita-no-dochiraka-ni-modosu",
+      "label": "山札の上か下のどちらかに戻す",
+      "reading": "やまふだのうえかしたのどちらかにもどす"
+    }
+  ]
 }

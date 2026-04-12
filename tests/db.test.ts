@@ -530,6 +530,9 @@ describe("database layer", () => {
       expect(queryLog).not.toContain(
         "SELECT id FROM media WHERE status = 'active'"
       );
+      expect(queryLog).toContain(
+        `AND l.media_id = '${developmentFixture.mediaId}'`
+      );
       expect(queryLog).toContain(`AND m.id = '${developmentFixture.mediaId}'`);
     } finally {
       logSpy.mockRestore();

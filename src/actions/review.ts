@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import { readRequiredString } from "./form-data.ts";
 import { db, getMediaBySlug } from "@/db";
+import { loadReviewPageDataSession } from "@/lib/review-page-data";
 import {
   getMediaBySlugCached,
   updateGlossarySummaryCache,
@@ -281,15 +282,7 @@ export async function loadReviewPageDataSessionAction(input: {
   scope: "global" | "media";
   searchParams: Record<string, string | string[] | undefined>;
 }): Promise<ReviewPageData> {
-  return requireReviewPageDataForScope(
-    {
-      mediaSlug: input.mediaSlug,
-      scope: input.scope
-    },
-    input.searchParams,
-    undefined,
-    false
-  );
+  return loadReviewPageDataSession(input, db);
 }
 
 export async function markLinkedEntryKnownSessionAction(

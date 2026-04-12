@@ -93,21 +93,9 @@ Action repo-shared consigliate nell'app Codex:
 .codex/scripts/check.sh
 .codex/scripts/release-check.sh
 .codex/scripts/test-e2e.sh
-.codex/scripts/test-e2e-webkit.sh
 .codex/scripts/db-setup.sh
 .codex/scripts/content-import.sh
 ```
-
-Per automazioni Codex che lavorano in sandbox `workspace-write`, il fallback
-E2E consigliato e:
-
-```sh
-./scripts/with-node.sh pnpm test:e2e:webkit
-```
-
-Il comando forza WebKit e serve come alternativa pratica quando Chromium fallisce
-il bootstrap nel sandbox locale macOS. Non sostituisce `pnpm release:check`,
-che resta il gate canonico del repo.
 
 Workflow immagini:
 
@@ -166,8 +154,10 @@ sia fresca. Se `.next/BUILD_ID` e piu vecchio di `src/`, `package.json`,
 `next.config.ts` o `tsconfig.json`, il bootstrap termina con un errore
 esplicito invece di servire una UI stale.
 
-Per gli stessi debug in sandbox puoi usare anche `pnpm test:e2e:runner:webkit`
-oppure `pnpm test:e2e:webkit` quando vuoi rifare anche la build.
+Se lo stesso debug gira dentro il sandbox Codex su macOS e il browser non parte,
+tratta gli E2E browser come non eseguibili in quell'ambiente e riportalo
+esplicitamente nel riepilogo finale. Non introdurre fallback browser-specifici
+nel repo come sostituzione del gate canonico.
 
 Quando modifichi route, query, queue builder, pairing, round controller o
 server action di Kanji Clash:

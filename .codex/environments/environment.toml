@@ -7,30 +7,24 @@ script = ".codex/scripts/setup-worktree.sh"
 
 [[actions]]
 name = "Dev"
-icon = "play"
 command = ".codex/scripts/dev.sh"
 
 [[actions]]
 name = "Check"
-icon = "check"
 command = ".codex/scripts/check.sh"
 
 [[actions]]
 name = "Release Check"
-icon = "shield"
 command = ".codex/scripts/release-check.sh"
 
 [[actions]]
 name = "E2E"
-icon = "globe"
 command = ".codex/scripts/test-e2e.sh"
 
 [[actions]]
 name = "DB Setup"
-icon = "database"
 command = ".codex/scripts/db-setup.sh"
 
 [[actions]]
 name = "Content Import"
-icon = "book"
 command = ".codex/scripts/content-import.sh"

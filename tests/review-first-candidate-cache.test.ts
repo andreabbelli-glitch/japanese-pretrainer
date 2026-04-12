@@ -52,13 +52,13 @@ import {
   runMigrations,
   type DatabaseClient
 } from "@/db";
-import { loadReviewPageDataSessionAction } from "@/actions/review";
 import {
   revalidateGlossarySummaryCache,
   revalidateReviewSummaryCache,
   revalidateSettingsCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
+import { loadReviewPageDataSession } from "@/lib/review-page-data";
 import { loadReviewWorkspaceV2 } from "@/lib/review-loader";
 import {
   getGlobalReviewFirstCandidateLoadResult,
@@ -221,14 +221,14 @@ describe("global review first-candidate cache", () => {
   it("reuses the stable workspace cache for read-only session hydration", async () => {
     await seedSingleReviewCardFixture(database);
 
-    const first = await loadReviewPageDataSessionAction({
+    const first = await loadReviewPageDataSession({
       scope: "global",
       searchParams: {}
-    });
-    const second = await loadReviewPageDataSessionAction({
+    }, database);
+    const second = await loadReviewPageDataSession({
       scope: "global",
       searchParams: {}
-    });
+    }, database);
 
     expect(first.selectedCard).not.toBeNull();
     expect(second).toEqual(first);

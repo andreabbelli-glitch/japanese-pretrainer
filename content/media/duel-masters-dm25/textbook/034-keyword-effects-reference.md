@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 84
+order: 87
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -156,6 +156,26 @@ reveal_mode: sentence
   `ある`.
 - Il senso è `se ce n'è il numero richiesto`, quindi prima conti e poi controlli
   se l'effetto si accende.
+
+### [ジャストダイバー](term:term-justdiver)
+
+:::example_sentence
+jp: >-
+  [ジャストダイバー](term:term-justdiver)：このクリーチャーが
+  {{出|で}}た{{時|とき}}、{{次|つぎ}}の{{自分|じぶん}}のターンのはじめまで、
+  このクリーチャーは{{相手|あいて}}に{{選|えら}}ばれず、
+  {{攻撃|こうげき}}されない。
+translation_it: >-
+  Justdiver: quando questa creatura entra, fino all'inizio del tuo prossimo
+  turno non può essere scelta dall'avversario né attaccata.
+reveal_mode: sentence
+:::
+
+- `{{出|で}}た{{時|とき}}` accende la keyword nel momento dell'ingresso.
+- `{{次|つぎ}}の{{自分|じぶん}}のターンのはじめまで` fissa una durata precisa, non
+  una protezione indefinita.
+- `{{選|えら}}ばれず、{{攻撃|こうげき}}されない` unisce due negazioni parallele:
+  l'avversario non può né scegliere né attaccare quella creatura.
 
 ### [G・ストライク](term:term-g-strike)
 
