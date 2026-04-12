@@ -264,21 +264,22 @@ export async function getReviewPageData(
   options: ReviewPageLoadOptions = {}
 ): Promise<ReviewPageData | null> {
   const now = new Date();
-
-  const media =
-    options.resolvedMedia ??
-    (await measureWith(options.profiler, "getMediaBySlug", () =>
-      getMediaBySlugCached(database, mediaSlug)
-    ));
+  const [media, settings] = await Promise.all([
+    options.resolvedMedia
+      ? Promise.resolve(options.resolvedMedia)
+      : measureWith(options.profiler, "getMediaBySlug", () =>
+          getMediaBySlugCached(database, mediaSlug)
+        ),
+    measureWith(options.profiler, "getStudySettings", () =>
+      getStudySettings(database)
+    )
+  ]);
 
   if (!media) {
     return null;
   }
 
   const searchState = normalizeReviewSearchState(searchParams);
-  const settings = await measureWith(options.profiler, "getStudySettings", () =>
-    getStudySettings(database)
-  );
   const workspace = await measureWith(
     options.profiler,
     "loadGlobalReviewWorkspace",

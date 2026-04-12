@@ -144,20 +144,19 @@ export async function getTextbookIndexData(
   mediaSlug: string,
   database: DatabaseClient = db
 ): Promise<TextbookIndexData | null> {
-  const furiganaMode = await getFuriganaMode(database);
+  const [media, furiganaMode] = await Promise.all([
+    getMediaBySlugCached(database, mediaSlug),
+    getFuriganaMode(database)
+  ]);
+
+  if (!media) {
+    return null;
+  }
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["textbook", "index", mediaSlug, `furigana:${furiganaMode}`],
-    loader: async () => {
-      const media = await getMediaBySlugCached(database, mediaSlug);
-
-      if (!media) {
-        return null;
-      }
-
-      return getTextbookIndexDataForMedia(media, furiganaMode, database);
-    },
+    loader: () => getTextbookIndexDataForMedia(media, furiganaMode, database),
     tags: [MEDIA_LIST_TAG, SETTINGS_TAG]
   });
 }
