@@ -4,7 +4,14 @@ import path from "node:path";
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-const { cacheStore, revalidateTagMock, unstableCacheMock } = vi.hoisted(() => {
+const {
+  cacheStore,
+  getFsrsOptimizerCacheKeyPartMock,
+  getFsrsOptimizerRuntimeContextMock,
+  getFsrsOptimizerSnapshotMock,
+  revalidateTagMock,
+  unstableCacheMock
+} = vi.hoisted(() => {
   const cacheStore = new Map<string, Promise<unknown>>();
   const revalidateTagMock = vi.fn();
   const unstableCacheMock = vi.fn(
@@ -23,6 +30,9 @@ const { cacheStore, revalidateTagMock, unstableCacheMock } = vi.hoisted(() => {
 
   return {
     cacheStore,
+    getFsrsOptimizerCacheKeyPartMock: vi.fn(),
+    getFsrsOptimizerRuntimeContextMock: vi.fn(),
+    getFsrsOptimizerSnapshotMock: vi.fn(),
     revalidateTagMock,
     unstableCacheMock
   };
@@ -43,6 +53,30 @@ vi.mock("@/lib/data-cache", async () => {
   return {
     ...actual,
     canUseDataCache: vi.fn(() => true)
+  };
+});
+
+vi.mock("@/lib/fsrs-optimizer", async () => {
+  const actual =
+    await vi.importActual<typeof import("@/lib/fsrs-optimizer")>(
+      "@/lib/fsrs-optimizer"
+    );
+
+  getFsrsOptimizerCacheKeyPartMock.mockImplementation(
+    actual.getFsrsOptimizerCacheKeyPart
+  );
+  getFsrsOptimizerRuntimeContextMock.mockImplementation(
+    actual.getFsrsOptimizerRuntimeContext
+  );
+  getFsrsOptimizerSnapshotMock.mockImplementation(
+    actual.getFsrsOptimizerSnapshot
+  );
+
+  return {
+    ...actual,
+    getFsrsOptimizerCacheKeyPart: getFsrsOptimizerCacheKeyPartMock,
+    getFsrsOptimizerRuntimeContext: getFsrsOptimizerRuntimeContextMock,
+    getFsrsOptimizerSnapshot: getFsrsOptimizerSnapshotMock
   };
 });
 
@@ -73,6 +107,9 @@ describe("global review first-candidate cache", () => {
 
   beforeEach(async () => {
     cacheStore.clear();
+    getFsrsOptimizerCacheKeyPartMock.mockClear();
+    getFsrsOptimizerRuntimeContextMock.mockClear();
+    getFsrsOptimizerSnapshotMock.mockClear();
     unstableCacheMock.mockClear();
     revalidateTagMock.mockClear();
     tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-first-candidate-"));
@@ -126,6 +163,9 @@ describe("global review first-candidate cache", () => {
         ([, keyParts]) => JSON.stringify(keyParts) === sharedCacheKey
       );
       expect(cacheHits).toHaveLength(2);
+      expect(getFsrsOptimizerCacheKeyPartMock).toHaveBeenCalledTimes(2);
+      expect(getFsrsOptimizerSnapshotMock).toHaveBeenCalledTimes(1);
+      expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
 
       revalidateReviewSummaryCache("media_a");
       revalidateGlossarySummaryCache("media_a");
@@ -173,6 +213,9 @@ describe("global review first-candidate cache", () => {
 
     expect(unstableCacheMock).toHaveBeenCalled();
     expect(cacheStore.has(cacheKey)).toBe(true);
+    expect(getFsrsOptimizerCacheKeyPartMock).toHaveBeenCalledTimes(2);
+    expect(getFsrsOptimizerSnapshotMock).toHaveBeenCalledTimes(1);
+    expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
 
     revalidateReviewSummaryCache("media_a");
     revalidateGlossarySummaryCache("media_a");
