@@ -211,6 +211,24 @@ describe("textbook data", () => {
     expect(lessonData?.lesson).not.toHaveProperty("htmlRendered");
   });
 
+  it("reuses the resolved media row and furigana settings while loading a lesson", async () => {
+    const mediaQuerySpy = vi.spyOn(database.query.media, "findFirst");
+    const settingsQuerySpy = vi.spyOn(database.query.userSetting, "findMany");
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(lessonData).not.toBeNull();
+    expect(mediaQuerySpy).toHaveBeenCalledTimes(1);
+    expect(settingsQuerySpy).toHaveBeenCalledTimes(1);
+
+    mediaQuerySpy.mockRestore();
+    settingsQuerySpy.mockRestore();
+  });
+
   it("returns null for a missing media slug before reading furigana settings", async () => {
     const settingsQuerySpy = vi
       .spyOn(settings, "getFuriganaModeSetting")

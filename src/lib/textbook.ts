@@ -59,6 +59,10 @@ export {
   settleLessonOpenedStateForRender
 } from "@/lib/textbook-progress";
 
+type ResolvedMedia = NonNullable<
+  Awaited<ReturnType<typeof getMediaBySlugCached>>
+>;
+
 export async function getFuriganaMode(
   database: DatabaseClient = db
 ): Promise<FuriganaMode> {
@@ -67,15 +71,22 @@ export async function getFuriganaMode(
 
 export async function getTextbookIndexData(
   mediaSlug: string,
-  database: DatabaseClient = db
+  database: DatabaseClient = db,
+  options: {
+    resolvedFuriganaMode?: FuriganaMode;
+    resolvedMedia?: ResolvedMedia | null;
+  } = {}
 ): Promise<TextbookIndexData | null> {
-  const media = await getMediaBySlugCached(database, mediaSlug);
+  const media =
+    options.resolvedMedia ??
+    (await getMediaBySlugCached(database, mediaSlug));
 
   if (!media) {
     return null;
   }
 
-  const furiganaMode = await getFuriganaMode(database);
+  const furiganaMode =
+    options.resolvedFuriganaMode ?? (await getFuriganaMode(database));
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
@@ -98,8 +109,14 @@ export async function getTextbookLessonData(
     return null;
   }
 
+  const indexModelPromise = getFuriganaMode(database).then((furiganaMode) =>
+    getTextbookIndexData(mediaSlug, database, {
+      resolvedFuriganaMode: furiganaMode,
+      resolvedMedia: media
+    })
+  );
   const [indexModel, lesson] = await Promise.all([
-    getTextbookIndexData(mediaSlug, database),
+    indexModelPromise,
     getTextbookLessonBodyData({
       database,
       lessonSlug,
@@ -183,7 +200,7 @@ async function loadTextbookLessonTooltipEntries(
 }
 
 async function getTextbookIndexDataForMedia(
-  media: NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>,
+  media: ResolvedMedia,
   furiganaMode: FuriganaMode,
   database: DatabaseClient
 ) {
