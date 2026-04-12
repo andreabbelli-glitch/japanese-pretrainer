@@ -163,9 +163,9 @@ describe("global review first-candidate cache", () => {
         ([, keyParts]) => JSON.stringify(keyParts) === sharedCacheKey
       );
       expect(cacheHits).toHaveLength(2);
-      expect(getFsrsOptimizerCacheKeyPartMock).toHaveBeenCalledTimes(2);
-      expect(getFsrsOptimizerSnapshotMock).toHaveBeenCalledTimes(1);
-      expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
+      expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(2);
+      expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
+      expect(getFsrsOptimizerCacheKeyPartMock).not.toHaveBeenCalled();
 
       revalidateReviewSummaryCache("media_a");
       revalidateGlossarySummaryCache("media_a");
@@ -213,9 +213,9 @@ describe("global review first-candidate cache", () => {
 
     expect(unstableCacheMock).toHaveBeenCalled();
     expect(cacheStore.has(cacheKey)).toBe(true);
-    expect(getFsrsOptimizerCacheKeyPartMock).toHaveBeenCalledTimes(2);
-    expect(getFsrsOptimizerSnapshotMock).toHaveBeenCalledTimes(1);
-    expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
+    expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(2);
+    expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
+    expect(getFsrsOptimizerCacheKeyPartMock).not.toHaveBeenCalled();
 
     revalidateReviewSummaryCache("media_a");
     revalidateGlossarySummaryCache("media_a");

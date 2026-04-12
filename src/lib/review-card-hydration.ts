@@ -59,7 +59,7 @@ import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./re
 import {
   buildDefaultFsrsOptimizerSnapshot,
   buildReviewSeedStateWithFsrsPreset,
-  getFsrsOptimizerCacheKeyPart,
+  getFsrsOptimizerRuntimeContext,
   getFsrsOptimizerSnapshot,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
@@ -140,7 +140,8 @@ export async function hydrateReviewCard(input: {
 }): Promise<ReviewQueueCard | null> {
   const database = input.database ?? db;
   const cacheEligible = canUseDataCache(database);
-  const fsrsCacheKeyPart = await getFsrsOptimizerCacheKeyPart(database);
+  const { cacheKeyPart: fsrsCacheKeyPart, snapshot: fsrsOptimizerSnapshot } =
+    await getFsrsOptimizerRuntimeContext(database);
 
   return measureWith(
     input.profiler,
@@ -157,7 +158,7 @@ export async function hydrateReviewCard(input: {
         loader: async () =>
           hydrateReviewCardUncached({
             ...input,
-            fsrsOptimizerSnapshot: await getFsrsOptimizerSnapshot(database)
+            fsrsOptimizerSnapshot
           }),
         tags: [
           ...buildReviewSummaryTags(),
