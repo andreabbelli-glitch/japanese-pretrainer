@@ -33,21 +33,31 @@ card_type: concept
 front: '{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない{{効果|こうか}}'
 back: effetto che impedisce di attaccare il giocatore avversario
 example_jp: >-
-  [{{呪文|じゅもん}}](term:term-spell){{以外|いがい}}で
-  「{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない」または
-  「このクリーチャーは{{攻撃|こうげき}}できない」
-  [{{効果|こうか}}](term:term-effect)があった[{{時|とき}}](grammar:grammar-toki)、
-  その[{{効果|こうか}}](term:term-effect)は[{{無効|むこう}}](term:term-mukou)になる。
+  このターン、{{自分|じぶん}}のクリーチャーが{{相手|あいて}}プレイヤーを
+  [{{攻撃|こうげき}}](term:term-attack)できない
+  [{{効果|こうか}}](term:term-effect)はすべて
+  [{{無効|むこう}}](term:term-mukou)になる。（[{{召喚酔|しょうかんよ}}い](term:term-shoukan-yoi)や、
+  「このクリーチャーは[{{攻撃|こうげき}}](term:term-attack)できない」または
+  「このクリーチャーは、{{相手|あいて}}プレイヤーを
+  [{{攻撃|こうげき}}](term:term-attack)できない」などの
+  [{{効果|こうか}}](term:term-effect)が[{{無効|むこう}}](term:term-mukou)になる。
+  ただし、この[{{効果|こうか}}](term:term-effect)によってクリーチャーを
+  [{{攻撃|こうげき}}](term:term-attack)することは{{可能|かのう}}にならない）
 example_it: >-
-  Se c'era un effetto non proveniente da uno spell che diceva "non può
-  attaccare il giocatore avversario" oppure "questa creatura non può
-  attaccare", quell'effetto diventa nullo.
+  In questo turno, tutti gli effetti che impediscono alle tue creature di
+  attaccare il giocatore avversario diventano nulli. Per esempio si annullano
+  la summon sickness e frasi come "questa creatura non può attaccare" o
+  "questa creatura non può attaccare il giocatore avversario". Tuttavia, questo
+  effetto non rende possibile attaccare le creature.
 notes_it: >-
   In giapponese generale [{{効果|こうか}}](term:term-effect) è il risultato
   prodotto da un testo. Qui la frase si specializza in un metalinguaggio molto
-  preciso: non ordina direttamente un attacco, ma isola gli effetti che lo
-  vietano verso il player avversario e dice che vengono spenti da Diamond
-  Sword.
+  preciso: non ordina direttamente un attacco, ma isola tutti gli effetti che
+  impediscono l'attacco verso il player avversario, compresa
+  [{{召喚酔|しょうかんよ}}い](term:term-shoukan-yoi), e dice che vengono spenti da
+  Diamond Sword. La
+  parentesi finale evita l'errore opposto: non per questo puoi attaccare una
+  creatura.
 tags: [live-duel, concept, effect, attack-restriction]
 :::
 

@@ -31,7 +31,7 @@ alt: "Diamond Sword card."
 caption: >-
   ダイヤモンド・ソード。 Spell Light che per questo turno fa perdere
   `ブロッカー`, lascia attaccare il giocatore avversario e annulla gli effetti
-  non-spell che vietano quell'attacco. La chiusura
+  che vietano quell'attacco. La chiusura
   `ただし...{{可能|かのう}}にならない`
   evita però una lettura troppo larga: la spell non apre l'attacco alle
   creature.
@@ -59,26 +59,22 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  [{{呪文|じゅもん}}](term:term-spell){{以外|いがい}}で「{{相手|あいて}}プレイヤーを
-  [{{攻撃|こうげき}}](term:term-attack)できない」または「このクリーチャーは
-  [{{攻撃|こうげき}}](term:term-attack)できない」
-  [{{効果|こうか}}](term:term-effect)があった[{{時|とき}}](grammar:grammar-toki)、
-  その[{{効果|こうか}}](term:term-effect)は
-  [{{無効|むこう}}](term:term-mukou)になる。
+  このターン、{{自分|じぶん}}のクリーチャーが{{相手|あいて}}プレイヤーを
+  [{{攻撃|こうげき}}](term:term-attack)できない
+  [{{効果|こうか}}](term:term-effect)はすべて
+  [{{無効|むこう}}](term:term-mukou)になる。（[{{召喚酔|しょうかんよ}}い](term:term-shoukan-yoi)や、
+  「このクリーチャーは[{{攻撃|こうげき}}](term:term-attack)できない」または
+  「このクリーチャーは、{{相手|あいて}}プレイヤーを
+  [{{攻撃|こうげき}}](term:term-attack)できない」などの
+  [{{効果|こうか}}](term:term-effect)が[{{無効|むこう}}](term:term-mukou)になる。
+  ただし、この[{{効果|こうか}}](term:term-effect)によってクリーチャーを
+  [{{攻撃|こうげき}}](term:term-attack)することは{{可能|かのう}}にならない）
 translation_it: >-
-  Se c'era un effetto non proveniente da uno spell che diceva "non può
-  attaccare il giocatore avversario" oppure "questa creatura non può
-  attaccare", quell'effetto diventa nullo.
-reveal_mode: sentence
-:::
-
-:::example_sentence
-jp: >-
-  ただし、この[{{呪文|じゅもん}}](term:term-spell)によって
-  クリーチャーを[{{攻撃|こうげき}}](term:term-attack)することは
-  {{可能|かのう}}にならない。
-translation_it: >-
-  Tuttavia, questa spell non rende possibile attaccare le creature.
+  In questo turno, tutti gli effetti che impediscono alle tue creature di
+  attaccare il giocatore avversario diventano nulli. Per esempio si annullano
+  la summon sickness e frasi come "questa creatura non può attaccare" o
+  "questa creatura non può attaccare il giocatore avversario". Tuttavia, questo
+  effetto non rende possibile attaccare le creature.
 reveal_mode: sentence
 :::
 
@@ -103,23 +99,28 @@ reveal_mode: sentence
 - Per questo la frase successiva deve essere letta insieme a questa: la carta
   chiarisce quali restrizioni vengono spente e quali no.
 
-### 3. 呪文以外で...効果があった時、その効果は無効になる
+### 3. 自分のクリーチャーが相手プレイヤーを攻撃できない効果はすべて無効になる
 
-- `{{呪文|じゅもん}}{{以外|いがい}}で` non descrive il contenuto dell'effetto, ma
-  la sua provenienza: conta che il blocco proibitivo non venga da uno spell.
-- Le due citazioni
-  `「{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない」` e
-  `「このクリーチャーは{{攻撃|こうげき}}できない」` sono collegate da
-  `または`, quindi basta uno dei due tipi di divieto.
-- `その{{効果|こうか}}は[{{無効|むこう}}](term:term-mukou)になる` è
-  metalinguaggio tecnico: non distrugge la carta sorgente, ma spegne il pezzo
-  di testo che stava impedendo l'attacco.
+- `{{自分|じぶん}}のクリーチャーが{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない{{効果|こうか}}`
+  definisce con precisione il bersaglio del divieto: contano solo gli effetti
+  che bloccano l'attacco verso il player avversario.
+- `はすべて` allarga la portata in modo totale: non sta scegliendo un singolo
+  divieto, li spegne tutti finché rientrano in quella categoria.
+- `[{{無効|むこう}}](term:term-mukou)になる` resta metalinguaggio tecnico:
+  l'effetto proibitivo continua a esistere come testo, ma non si applica più
+  per questo turno.
 
-### 4. ただし、この呪文によってクリーチャーを攻撃することは可能にならない
+### 4. （召喚酔いや...ただし、この効果によってクリーチャーを攻撃することは可能にならない）
 
+- `[{{召喚酔|しょうかんよ}}い](term:term-shoukan-yoi)` dentro la parentesi chiarisce che anche il blocco
+  standard del turno di evocazione rientra tra gli effetti annullati.
+- Le citazioni
+  `「このクリーチャーは{{攻撃|こうげき}}できない」` e
+  `「このクリーチャーは、{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない」`
+  danno esempi concreti del tipo di testo che la carta spegne.
 - `ただし` corregge subito una lettura troppo ampia del testo precedente.
-- `この{{呪文|じゅもん}}によって` vuol dire `grazie a questa spell`, cioè per
-  effetto di Diamond Sword stessa.
+- `この{{効果|こうか}}によって` vuol dire `grazie a questo effetto`, cioè per
+  effetto di Diamond Sword.
 - `クリーチャーを{{攻撃|こうげき}}することは{{可能|かのう}}にならない`
   chiude la finestra: la spell rimuove i divieti contro l'attacco al giocatore,
   ma non trasforma la creatura in un attaccante libero contro qualunque
