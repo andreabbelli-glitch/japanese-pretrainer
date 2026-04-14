@@ -43,6 +43,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-dokokarademo",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-erabareta-player",
       "pitch_accent_status": "miss"
     },
@@ -195,6 +200,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-monotoshite",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-nakereba",
       "pitch_accent_status": "miss"
     },
@@ -316,6 +326,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-star-pippi-double-cost-reduction",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-sukina-junjo-de",
       "pitch_accent_status": "miss"
     },
@@ -408,6 +423,11 @@
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E4%B8%AD",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-uramuki-no-mama",
+      "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
@@ -1100,6 +1120,11 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-face-down",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-face-up",
       "audio_src": "assets/audio/term/term-face-up/forvo-manual-おもてむき.mp3",
       "audio_source": "forvo",
@@ -1633,6 +1658,14 @@
       "entry_type": "term",
       "entry_id": "term-mugestsu-no-mon",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mukou",
+      "pitch_accent": 0,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%84%A1%E5%8A%B9",
+      "pitch_accent_status": "resolved"
     },
     {
       "entry_type": "term",

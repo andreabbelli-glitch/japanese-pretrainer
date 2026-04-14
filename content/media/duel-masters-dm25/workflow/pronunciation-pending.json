@@ -1,16 +1,52 @@
 {
   "version": 1,
   "media_slug": "duel-masters-dm25",
-  "total_targets": 308,
+  "total_targets": 314,
   "audio_backed_count": 123,
   "known_missing_count": 184,
-  "pending_count": 1,
+  "pending_count": 7,
   "pending": [
     {
       "entry_type": "term",
       "entry_id": "term-sanzen",
       "label": "3000",
       "reading": "さんぜん"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mukou",
+      "label": "無効",
+      "reading": "むこう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-face-down",
+      "label": "裏向き",
+      "reading": "うらむき"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-uramuki-no-mama",
+      "label": "裏向きのまま",
+      "reading": "うらむきのまま"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-dokokarademo",
+      "label": "どこからでも",
+      "reading": "どこからでも"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-star-pippi-double-cost-reduction",
+      "label": "自分の光のクリーチャーの召喚コストを1、火のクリーチャーの召喚コストを1少なくしてもよい",
+      "reading": "じぶんのひかりのくりーちゃーのしょうかんこすとをいち、ひのくりーちゃーのしょうかんこすとをいちすくなくしてもよい"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-monotoshite",
+      "label": "～ものとして",
+      "reading": "ものとして"
     }
   ]
 }
