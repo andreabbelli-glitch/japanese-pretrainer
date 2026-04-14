@@ -12,15 +12,14 @@ tags:
     live-duel,
     card-encounter,
     spell,
-    blocker,
     attack-restriction,
     invalidation,
     duel-masters
   ]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-patterns]
 summary: >-
-  Diamond Sword: perdere blocker, leggere bene le restrizioni d'attacco che la
-  spell annulla e fissare il valore tecnico di mukou ni naru.
+  Diamond Sword: leggere con precisione gli effetti che impediscono l'attacco
+  al giocatore avversario e la chiusura tecnica con mukou ni naru.
 ---
 
 # ダイヤモンド・ソード
@@ -29,33 +28,19 @@ summary: >-
 src: assets/cards/live-duel/diamond-sword.webp
 alt: "Diamond Sword card."
 caption: >-
-  ダイヤモンド・ソード。 Spell Light che per questo turno fa perdere
-  `ブロッカー`, lascia attaccare il giocatore avversario e annulla gli effetti
-  che vietano quell'attacco. La chiusura
-  `ただし...{{可能|かのう}}にならない`
-  evita però una lettura troppo larga: la spell non apre l'attacco alle
-  creature.
+  ダイヤモンド・ソード。 Spell Light che per questo turno rende nulli gli
+  effetti che impediscono alle tue creature di attaccare il giocatore
+  avversario. La parentesi elenca esempi come
+  [{{召喚酔|しょうかんよ}}い](term:term-shoukan-yoi) e la chiusura
+  `ただし...{{可能|かのう}}にならない` evita una lettura troppo larga: la carta
+  non apre l'attacco alle creature.
 :::
 
-## Etichette già note nella frase
-
-- [ブロッカー](term:term-blocker)
-
-Qui non ci sono keyword nuove da banca effetti. Il punto utile è leggere bene
-come la spell parla di altri effetti e ne limita il campo.
+Qui il punto utile non è una keyword nuova, ma la frase tecnica che prende di
+mira gli effetti restrittivi e li rende
+[{{無効|むこう}}](term:term-mukou).
 
 ## Effetti da leggere
-
-:::example_sentence
-jp: >-
-  このターン、{{自分|じぶん}}のクリーチャーはすべて「ブロッカー」を
-  {{失|うしな}}い、{{相手|あいて}}プレイヤーを
-  [{{攻撃|こうげき}}](term:term-attack)できる。
-translation_it: >-
-  In questo turno, tutte le tue creature perdono Blocker e possono attaccare
-  il giocatore avversario.
-reveal_mode: sentence
-:::
 
 :::example_sentence
 jp: >-
@@ -80,26 +65,12 @@ reveal_mode: sentence
 
 ## Parsing grammaticale
 
-### 1. このターン、自分のクリーチャーはすべて「ブロッカー」を失い
+### 1. このターン
 
-- `このターン` fissa una finestra temporanea: la modifica vale solo per il
+- `このターン` fissa una finestra temporanea: l'annullamento vale solo per il
   turno attuale.
-- `{{自分|じぶん}}のクリーチャーはすべて` allarga l'effetto a tutto il tuo lato
-  del campo, non a una creatura scelta.
-- `ブロッカーを{{失|うしな}}い` non vuol dire che la creatura lascia il campo:
-  perde quella keyword difensiva per la durata indicata dal turno.
 
-### 2. 相手プレイヤーを攻撃できる
-
-- `{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できる` specifica proprio il
-  bersaglio giocatore.
-- Qui la spell non dice genericamente `può attaccare tutto`: sblocca il
-  passaggio verso il player avversario anche per creature che normalmente non
-  potrebbero farlo.
-- Per questo la frase successiva deve essere letta insieme a questa: la carta
-  chiarisce quali restrizioni vengono spente e quali no.
-
-### 3. 自分のクリーチャーが相手プレイヤーを攻撃できない効果はすべて無効になる
+### 2. 自分のクリーチャーが相手プレイヤーを攻撃できない効果はすべて無効になる
 
 - `{{自分|じぶん}}のクリーチャーが{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない{{効果|こうか}}`
   definisce con precisione il bersaglio del divieto: contano solo gli effetti
@@ -110,7 +81,7 @@ reveal_mode: sentence
   l'effetto proibitivo continua a esistere come testo, ma non si applica più
   per questo turno.
 
-### 4. （召喚酔いや...ただし、この効果によってクリーチャーを攻撃することは可能にならない）
+### 3. （召喚酔いや...ただし、この効果によってクリーチャーを攻撃することは可能にならない）
 
 - `[{{召喚酔|しょうかんよ}}い](term:term-shoukan-yoi)` dentro la parentesi chiarisce che anche il blocco
   standard del turno di evocazione rientra tra gli effetti annullati.
@@ -130,8 +101,9 @@ reveal_mode: sentence
 
 - [{{無効|むこう}}](term:term-mukou) è il verbo tecnico da fissare: un effetto
   può esistere come testo, ma non applicarsi più.
-- `{{失|うしな}}う` qui vale come `perdere un'abilità`, non come `smarrire`
-  qualcosa in senso narrativo.
+- [{{召喚酔|しょうかんよ}}い](term:term-shoukan-yoi) è uno degli esempi espliciti
+  dentro la parentesi, quindi qui non è una spiegazione esterna: compare nel
+  testo della carta.
 - `{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない{{効果|こうか}}` è un
   chunk utile perché la carta non parla direttamente dell'attacco: parla degli
   effetti che lo vietano.
