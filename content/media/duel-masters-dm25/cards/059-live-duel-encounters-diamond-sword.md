@@ -2,7 +2,7 @@
 id: cards-duel-masters-dm25-live-duel-encounters-diamond-sword
 media_id: media-duel-masters-dm25
 slug: live-duel-encounters-diamond-sword
-title: Carte incontrate in partita 38 - Diamond Sword, 無効 e 攻撃できない効果
+title: Carte incontrate in partita 38 - Diamond Sword, 無効 e 攻撃することができない
 order: 87
 segment_ref: live-duel-encounters
 ---
@@ -30,11 +30,11 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-diamond-sword
 entry_type: term
 entry_id: term-effect
 card_type: concept
-front: '{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない{{効果|こうか}}'
-back: effetto che impedisce di attaccare il giocatore avversario
+front: '{{攻撃|こうげき}}することができない'
+back: non poter attaccare / non essere in grado di attaccare
 example_jp: >-
   このターン、{{自分|じぶん}}のクリーチャーが{{相手|あいて}}プレイヤーを
-  [{{攻撃|こうげき}}](term:term-attack)できない
+  [{{攻撃|こうげき}}](term:term-attack)することができない
   [{{効果|こうか}}](term:term-effect)はすべて
   [{{無効|むこう}}](term:term-mukou)になる。（[{{召喚酔|しょうかんよ}}い](term:term-shoukan-yoi)や、
   「このクリーチャーは[{{攻撃|こうげき}}](term:term-attack)できない」または
@@ -45,20 +45,13 @@ example_jp: >-
   [{{攻撃|こうげき}}](term:term-attack)することは{{可能|かのう}}にならない）
 example_it: >-
   In questo turno, tutti gli effetti che impediscono alle tue creature di
-  attaccare il giocatore avversario diventano nulli. Per esempio si annullano
-  la summon sickness e frasi come "questa creatura non può attaccare" o
-  "questa creatura non può attaccare il giocatore avversario". Tuttavia, questo
-  effetto non rende possibile attaccare le creature.
+  attaccare il giocatore avversario diventano nulli.
 notes_it: >-
-  In giapponese generale [{{効果|こうか}}](term:term-effect) è il risultato
-  prodotto da un testo. Qui la frase si specializza in un metalinguaggio molto
-  preciso: non ordina direttamente un attacco, ma isola tutti gli effetti che
-  impediscono l'attacco verso il player avversario, compresa
-  [{{召喚酔|しょうかんよ}}い](term:term-shoukan-yoi), e dice che vengono spenti da
-  Diamond Sword. La
-  parentesi finale evita l'errore opposto: non per questo puoi attaccare una
-  creatura.
-tags: [live-duel, concept, effect, attack-restriction]
+  Nello screenshot la frase principale usa la forma analitica
+  `{{攻撃|こうげき}}することができない`, non la versione corta
+  `{{攻撃|こうげき}}できない`. Qui il punto utile e` fissare proprio quel chunk
+  completo.
+tags: [live-duel, concept, grammar, attack-restriction]
 :::
 
 :::card
