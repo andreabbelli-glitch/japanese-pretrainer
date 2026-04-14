@@ -48,6 +48,26 @@ tags: [live-duel, grammar, framing, treated-as]
 :::
 
 :::card
+id: card-kawarini-kanji-surface-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-shooting-drop
+entry_type: grammar
+entry_id: grammar-kawarini
+card_type: concept
+front: "{{代|か}}わりに"
+back: invece di / al posto di
+example_jp: >-
+  [{{コスト|こすと}}](term:term-cost)の{{代|か}}わりに
+  {{水|みず}}{{1|いち}}を{{支払|しはら}}ってもよい。
+example_it: >-
+  Invece del costo normale, puoi pagare Water 1.
+notes_it: >-
+  La grammatica e il significato restano quelli di `かわりに`, ma qui vale la
+  pena fissare anche la superficie con kanji `{{代|か}}わりに`, perché nella
+  carta compare scritta così e segnala sempre una sostituzione vera.
+tags: [live-duel, grammar, replacement, kanji-surface]
+:::
+
+:::card
 id: card-cost-wo-shiharatta-monotoshite-concept
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-shooting-drop
 entry_type: grammar

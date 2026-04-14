@@ -42,7 +42,7 @@ cost.
 jp: >-
   ギャラクシールド
   {{水|みず}}{{1|いち}}（このカードを{{使|つか}}う
-  [{{コスト|こすと}}](term:term-cost)の[かわりに](grammar:grammar-kawarini)、
+  [{{コスト|こすと}}](term:term-cost)の[{{代|か}}わりに](grammar:grammar-kawarini)、
   {{水|みず}}{{1|いち}}を[{{支払|しはら}}って](term:term-harau)もよい。
   [そうしたら](grammar:grammar-soushitara)、このカードを
   [{{表向|おもてむ}}き](term:term-face-up)にし、
