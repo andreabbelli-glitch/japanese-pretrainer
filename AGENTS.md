@@ -46,11 +46,16 @@ src/
     kanji-clash/    Modalita' allenamento kanji con sessioni dedicate
     login/          Pagina di accesso locale
     media/          Route dinamiche per media, glossary locale, textbook, review e progress
-      [mediaSlug]/assets/ Asset route catch-all per file statici del media bundle
+      [mediaSlug]/assets/ Asset route del media bundle
+        [...assetPath]/ Catch-all per servire file statici del media bundle
       [mediaSlug]/glossary/ Glossary locale del media e filtri dedicati
+        grammar/        Dettaglio e navigazione per pattern grammaticali del media
+        term/           Dettaglio e navigazione per termini del media
       [mediaSlug]/progress/ Stato di avanzamento e metriche del media
       [mediaSlug]/review/ Vista review verticale sul sistema review globale
-      [mediaSlug]/textbook/ Route del textbook del media e lesson reader
+        card/           Vista dedicata alla review di una card nel contesto del media
+      [mediaSlug]/textbook/ Indice del textbook del media
+        [lessonSlug]/   Lesson reader per la singola lesson del media
     review/         Coda review cross-media
     settings/       Pagina impostazioni utente
   components/       Componenti React organizzati per feature area
@@ -115,7 +120,9 @@ tests/
   e2e/              Test Playwright end-to-end
     helpers/        Utility E2E condivise
   fixtures/         Dati statici per i test
-    content/        Bundle validi e invalidi per parser/importer
+    content/        Fixture content bundle per parser/importer
+      invalid/      Bundle volutamente invalidi per test di validazione
+      valid/        Bundle validi usati nei test di parsing e import
   helpers/          Utility condivise dai test
 
 content/
