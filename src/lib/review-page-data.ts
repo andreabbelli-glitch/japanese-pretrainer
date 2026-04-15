@@ -263,6 +263,7 @@ export async function getReviewPageData(
   options: ReviewPageLoadOptions = {}
 ): Promise<ReviewPageData | null> {
   const now = new Date();
+  const searchState = normalizeReviewSearchState(searchParams);
   const mediaRowsPromise = options.resolvedMediaRows
     ? Promise.resolve(options.resolvedMediaRows)
     : measureWith(options.profiler, "listMediaCached", () =>
@@ -281,13 +282,9 @@ export async function getReviewPageData(
   const settingsPromise = measureWith(options.profiler, "getStudySettings", () =>
     getStudySettings(database)
   );
-  const settings = await settingsPromise;
-
-  const searchState = normalizeReviewSearchState(searchParams);
-  const workspace = await measureWith(
-    options.profiler,
-    "loadGlobalReviewWorkspace",
-    () =>
+  const [settings, workspace] = await Promise.all([
+    settingsPromise,
+    measureWith(options.profiler, "loadGlobalReviewWorkspace", () =>
       loadGlobalReviewWorkspace(
         searchState,
         database,
@@ -295,9 +292,10 @@ export async function getReviewPageData(
           ...options,
           resolvedMediaRows: mediaRows
         },
-        settings.reviewDailyLimit
+        settingsPromise.then((settings) => settings.reviewDailyLimit)
       )
-  );
+    )
+  ]);
 
   return measureWith(options.profiler, "buildReviewPageDataFromWorkspace", () =>
     buildReviewPageDataFromWorkspace({

@@ -190,7 +190,7 @@ export async function loadReviewWorkspaceV2(input: {
   mediaIds: string[];
   now?: Date;
   profiler?: ReviewProfiler | null;
-  resolvedDailyLimit?: number;
+  resolvedDailyLimit?: number | Promise<number>;
   resolvedNewIntroducedTodayCount?: number;
 }): Promise<LoadedReviewWorkspaceV2> {
   const database = input.database ?? db;
@@ -278,7 +278,7 @@ export async function loadGlobalReviewWorkspace(
   searchState: ReviewSearchState,
   database: DatabaseClient = db,
   options: ReviewPageLoadOptions = {},
-  resolvedDailyLimit?: number
+  resolvedDailyLimit?: number | Promise<number>
 ): Promise<Omit<LoadedGlobalReviewPageWorkspace, "reviewFrontFurigana">> {
   const now = new Date();
   const mediaRows =
