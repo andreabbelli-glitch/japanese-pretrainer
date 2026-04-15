@@ -114,7 +114,7 @@ type FsrsTrainingDataset = {
 };
 
 type FsrsOptimizerSettingRow = Pick<
-  (typeof userSetting.$inferSelect),
+  typeof userSetting.$inferSelect,
   "key" | "updatedAt" | "valueJson"
 >;
 
@@ -138,6 +138,8 @@ const fsrsOptimizerRuntimeCacheKeySettingKeys = [
   FSRS_PARAMS_CONCEPT_KEY
 ] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
 
+const FSRS_RUNTIME_CONTEXT_TTL_MS = 60_000;
+
 const defaultFsrsOptimizerConfig: FsrsOptimizerConfig = {
   desiredRetention: 0.9,
   enabled: true,
@@ -149,6 +151,14 @@ const defaultFsrsOptimizerConfig: FsrsOptimizerConfig = {
 type FsrsSettingsReader = Pick<DatabaseClient, "query" | "select">;
 type FsrsSettingsWriter = Pick<DatabaseClient, "insert" | "query">;
 type FsrsSettingsCounter = Pick<DatabaseClient, "select">;
+
+let cachedFsrsRuntimeContext: {
+  expiresAt: number;
+  promise: Promise<{
+    cacheKeyPart: string;
+    snapshot: FsrsOptimizerSnapshot;
+  }>;
+} | null = null;
 
 function defaultFsrsOptimizerState(): FsrsOptimizerState {
   return {
@@ -214,12 +224,36 @@ export async function getFsrsOptimizerRuntimeContext(
   cacheKeyPart: string;
   snapshot: FsrsOptimizerSnapshot;
 }> {
-  const rows = await loadFsrsOptimizerRows(database, fsrsOptimizerSettingKeys);
+  if (!canUseFsrsRuntimeContextCache(database)) {
+    return loadFsrsOptimizerRuntimeContext(database);
+  }
 
-  return {
-    cacheKeyPart: buildFsrsOptimizerCacheKeyPartFromRows(rows),
-    snapshot: buildFsrsOptimizerSnapshotFromRows(rows)
+  const now = Date.now();
+
+  if (cachedFsrsRuntimeContext && cachedFsrsRuntimeContext.expiresAt > now) {
+    return cachedFsrsRuntimeContext.promise;
+  }
+
+  const promise = loadFsrsOptimizerRuntimeContext(database).catch((error) => {
+    if (cachedFsrsRuntimeContext?.promise === promise) {
+      cachedFsrsRuntimeContext = null;
+    }
+
+    throw error;
+  });
+
+  cachedFsrsRuntimeContext = {
+    expiresAt: now + FSRS_RUNTIME_CONTEXT_TTL_MS,
+    promise
   };
+
+  return promise;
+}
+
+export async function getFsrsOptimizerRuntimeSnapshot(
+  database: DatabaseClient = db
+): Promise<FsrsOptimizerSnapshot> {
+  return (await getFsrsOptimizerRuntimeContext(database)).snapshot;
 }
 
 export async function getFsrsOptimizerStatus(
@@ -261,7 +295,10 @@ export async function getFsrsOptimizerCacheKeyPart(
   database: DatabaseClient = db
 ): Promise<string> {
   return buildFsrsOptimizerCacheKeyPartFromRows(
-    await loadFsrsOptimizerRows(database, fsrsOptimizerRuntimeCacheKeySettingKeys)
+    await loadFsrsOptimizerRows(
+      database,
+      fsrsOptimizerRuntimeCacheKeySettingKeys
+    )
   );
 }
 
@@ -294,6 +331,7 @@ export async function writeFsrsOptimizerConfig(
     nowIso,
     valueJson: JSON.stringify(normalizedConfig)
   });
+  invalidateFsrsOptimizerRuntimeContextCache();
 }
 
 export async function writeFsrsOptimizerState(
@@ -325,6 +363,7 @@ export async function writeFsrsOptimizedParameters(
     nowIso,
     valueJson: JSON.stringify(normalizeFsrsOptimizedParameters(parameters))
   });
+  invalidateFsrsOptimizerRuntimeContextCache();
 }
 
 export function buildFsrsTrainingDataset(
@@ -347,9 +386,7 @@ export function buildFsrsTrainingDataset(
 
     const subjectReviews = reviewsBySubject.get(row.subjectKey) ?? [];
     const deltaT =
-      subjectReviews.length === 0
-        ? 0
-        : normalizeElapsedDays(row.elapsedDays);
+      subjectReviews.length === 0 ? 0 : normalizeElapsedDays(row.elapsedDays);
 
     subjectReviews.push({
       deltaT,
@@ -444,6 +481,23 @@ async function loadFsrsOptimizerRows(
   }) as Promise<FsrsOptimizerSettingRow[]>;
 }
 
+async function loadFsrsOptimizerRuntimeContext(
+  database: DatabaseClient
+): Promise<{
+  cacheKeyPart: string;
+  snapshot: FsrsOptimizerSnapshot;
+}> {
+  const rows = await loadFsrsOptimizerRows(
+    database,
+    fsrsOptimizerRuntimeCacheKeySettingKeys
+  );
+
+  return {
+    cacheKeyPart: buildFsrsOptimizerCacheKeyPartFromRows(rows),
+    snapshot: buildFsrsOptimizerSnapshotFromRows(rows)
+  };
+}
+
 function buildFsrsOptimizerSnapshotFromRows(
   rows: FsrsOptimizerSettingRow[]
 ): FsrsOptimizerSnapshot {
@@ -465,7 +519,9 @@ function buildFsrsOptimizerSnapshotFromRows(
   };
 }
 
-function buildFsrsOptimizerCacheKeyPartFromRows(rows: FsrsOptimizerSettingRow[]) {
+function buildFsrsOptimizerCacheKeyPartFromRows(
+  rows: FsrsOptimizerSettingRow[]
+) {
   const byKey = new Map(rows.map((row) => [row.key, row.updatedAt]));
 
   return [
@@ -473,6 +529,16 @@ function buildFsrsOptimizerCacheKeyPartFromRows(rows: FsrsOptimizerSettingRow[])
     byKey.get(FSRS_PARAMS_RECOGNITION_KEY) ?? "none",
     byKey.get(FSRS_PARAMS_CONCEPT_KEY) ?? "none"
   ].join("|");
+}
+
+function canUseFsrsRuntimeContextCache(database: DatabaseClient) {
+  return (
+    database === db && process.env.NODE_ENV !== "test" && !process.env.VITEST
+  );
+}
+
+function invalidateFsrsOptimizerRuntimeContextCache() {
+  cachedFsrsRuntimeContext = null;
 }
 
 function parseConfigValue(valueJson: string | undefined): FsrsOptimizerConfig {
@@ -576,7 +642,8 @@ function normalizeFsrsOptimizerState(
 ): FsrsOptimizerState {
   return {
     bindingVersion:
-      typeof input.bindingVersion === "string" && input.bindingVersion.length > 0
+      typeof input.bindingVersion === "string" &&
+      input.bindingVersion.length > 0
         ? input.bindingVersion
         : getBindingPackageVersion(),
     lastAttemptAt: normalizeNullableIsoString(input.lastAttemptAt),
@@ -734,9 +801,9 @@ export function getBindingPackageVersion() {
       "binding",
       "package.json"
     );
-    const parsed = JSON.parse(
-      fs.readFileSync(packageJson, "utf8")
-    ) as { version?: string };
+    const parsed = JSON.parse(fs.readFileSync(packageJson, "utf8")) as {
+      version?: string;
+    };
     cachedBindingPackageVersion =
       typeof parsed.version === "string" && parsed.version.length > 0
         ? parsed.version

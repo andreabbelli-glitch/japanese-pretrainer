@@ -19,7 +19,7 @@ import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./re
 import {
   buildReviewSeedStateWithFsrsPreset,
   getFsrsOptimizerRuntimeContext,
-  getFsrsOptimizerSnapshot,
+  getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
 import {
@@ -124,7 +124,9 @@ export async function buildReviewPageDataFromWorkspace(input: {
   profiler?: ReviewProfiler | null;
 }) {
   const nowIso = input.now.toISOString();
-  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(input.database);
+  const fsrsOptimizerSnapshot = await getFsrsOptimizerRuntimeSnapshot(
+    input.database
+  );
   const segmentFilteredCards = input.searchState.segmentId
     ? input.cards.filter(
         (card) => card.segmentId === input.searchState.segmentId
@@ -279,8 +281,10 @@ export async function getReviewPageData(
     return null;
   }
 
-  const settingsPromise = measureWith(options.profiler, "getStudySettings", () =>
-    getStudySettings(database)
+  const settingsPromise = measureWith(
+    options.profiler,
+    "getStudySettings",
+    () => getStudySettings(database)
   );
   const [settings, workspace] = await Promise.all([
     settingsPromise,
@@ -342,9 +346,14 @@ export async function loadReviewPageDataSession(
     throw new Error("Media review scope requires a media slug.");
   }
 
-  const data = await getReviewPageData(input.mediaSlug, input.searchParams, database, {
-    bypassCache: false
-  });
+  const data = await getReviewPageData(
+    input.mediaSlug,
+    input.searchParams,
+    database,
+    {
+      bypassCache: false
+    }
+  );
 
   if (!data) {
     throw new Error(
@@ -442,7 +451,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   const nowIso = input.now.toISOString();
   const fsrsOptimizerSnapshot =
     input.fsrsOptimizerSnapshot ??
-    (await getFsrsOptimizerSnapshot(input.database ?? db));
+    (await getFsrsOptimizerRuntimeSnapshot(input.database ?? db));
   const segmentFilteredCards = input.searchState.segmentId
     ? input.cards.filter(
         (card) => card.segmentId === input.searchState.segmentId
@@ -650,7 +659,7 @@ export async function getReviewQueueSnapshotForMedia(
 ): Promise<ReviewQueueSnapshot | null> {
   const now = new Date();
   const [fsrsOptimizerSnapshot, mediaRows] = await Promise.all([
-    getFsrsOptimizerSnapshot(database),
+    getFsrsOptimizerRuntimeSnapshot(database),
     listMediaCached(database)
   ]);
   const media =

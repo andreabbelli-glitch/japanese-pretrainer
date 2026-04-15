@@ -60,7 +60,7 @@ import {
   buildDefaultFsrsOptimizerSnapshot,
   buildReviewSeedStateWithFsrsPreset,
   getFsrsOptimizerRuntimeContext,
-  getFsrsOptimizerSnapshot,
+  getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
 import {
@@ -149,12 +149,7 @@ export async function hydrateReviewCard(input: {
     () =>
       runWithTaggedCache({
         enabled: cacheEligible,
-        keyParts: [
-          "review",
-          "hydrated-card",
-          input.cardId,
-          fsrsCacheKeyPart
-        ],
+        keyParts: ["review", "hydrated-card", input.cardId, fsrsCacheKeyPart],
         loader: async () =>
           hydrateReviewCardUncached({
             ...input,
@@ -182,7 +177,7 @@ export async function hydrateReviewCardUncached(input: {
   const nowIso = now.toISOString();
   const fsrsOptimizerSnapshotPromise = input.fsrsOptimizerSnapshot
     ? Promise.resolve(input.fsrsOptimizerSnapshot)
-    : getFsrsOptimizerSnapshot(database);
+    : getFsrsOptimizerRuntimeSnapshot(database);
   const card = await measureWith(input.profiler, "getCardById", () =>
     getCardById(database, input.cardId)
   );
@@ -264,7 +259,8 @@ export async function getReviewCardDetailData(
   database: DatabaseClient = db
 ): Promise<ReviewCardDetailData | null> {
   const nowIso = new Date().toISOString();
-  const fsrsOptimizerSnapshotPromise = getFsrsOptimizerSnapshot(database);
+  const fsrsOptimizerSnapshotPromise =
+    getFsrsOptimizerRuntimeSnapshot(database);
 
   const [media, selectedRawCard] = await Promise.all([
     getMediaBySlugCached(database, mediaSlug),
@@ -281,7 +277,9 @@ export async function getReviewCardDetailData(
     return null;
   }
 
-  const { termIds, grammarIds } = collectReviewLinkedEntryIds([selectedRawCard]);
+  const { termIds, grammarIds } = collectReviewLinkedEntryIds([
+    selectedRawCard
+  ]);
   const [fsrsOptimizerSnapshot, terms, grammar] = await Promise.all([
     fsrsOptimizerSnapshotPromise,
     getGlossaryEntriesByIds(database, "term", termIds),
@@ -478,32 +476,30 @@ export function buildReviewCardPronunciations(
   entryLookup: Map<string, ReviewEntryLookupItem>,
   sortedEntryLinks?: ReviewEntryLinkLike[]
 ): ReviewCardPronunciation[] {
-  const links = sortedEntryLinks ?? card.entryLinks.slice().sort(compareEntryLinks);
+  const links =
+    sortedEntryLinks ?? card.entryLinks.slice().sort(compareEntryLinks);
 
   if (!canExposeReviewEntryMedia(card, entryLookup, links)) {
     return [];
   }
 
-  return getDrivingEntryLinks(links)
-    .flatMap((link) => {
-      const entry = entryLookup.get(
-        buildEntryKey(link.entryType, link.entryId)
-      );
+  return getDrivingEntryLinks(links).flatMap((link) => {
+    const entry = entryLookup.get(buildEntryKey(link.entryType, link.entryId));
 
-      if (!entry?.pronunciation) {
-        return [];
+    if (!entry?.pronunciation) {
+      return [];
+    }
+
+    return [
+      {
+        audio: entry.pronunciation,
+        kind: entry.kind,
+        label: entry.label,
+        meaning: entry.meaning,
+        relationshipLabel: formatCardRelationshipLabel(link.relationshipType)
       }
-
-      return [
-        {
-          audio: entry.pronunciation,
-          kind: entry.kind,
-          label: entry.label,
-          meaning: entry.meaning,
-          relationshipLabel: formatCardRelationshipLabel(link.relationshipType)
-        }
-      ];
-    });
+    ];
+  });
 }
 
 export async function loadReviewCardPronunciations(input: {
@@ -577,32 +573,33 @@ export function mapQueueCard(
 ): ReviewQueueCard {
   const cardMedia = resolveReviewCardMedia(card, mediaById);
   const sortedEntryLinks = card.entryLinks.slice().sort(compareEntryLinks);
-  const entries = sortedEntryLinks
-    .flatMap((link) => {
-      const entry = entryLookup.get(
-        buildEntryKey(link.entryType, link.entryId)
-      );
+  const entries = sortedEntryLinks.flatMap((link) => {
+    const entry = entryLookup.get(buildEntryKey(link.entryType, link.entryId));
 
-      if (!entry) {
-        return [];
-      }
+    if (!entry) {
+      return [];
+    }
 
-      return [
-        {
-          href: entry.href,
-          id: entry.id,
-          kind: entry.kind,
-          label: entry.label,
-          meaning: entry.meaning,
-          relationshipLabel: formatCardRelationshipLabel(link.relationshipType),
-          statusLabel: "Disponibile",
-          subtitle: entry.subtitle
-        } satisfies ReviewCardEntrySummary
-      ];
-    });
+    return [
+      {
+        href: entry.href,
+        id: entry.id,
+        kind: entry.kind,
+        label: entry.label,
+        meaning: entry.meaning,
+        relationshipLabel: formatCardRelationshipLabel(link.relationshipType),
+        statusLabel: "Disponibile",
+        subtitle: entry.subtitle
+      } satisfies ReviewCardEntrySummary
+    ];
+  });
   const resolved =
     queueStateSnapshot ?? resolveReviewQueueState(card.status, null, nowIso);
-  const pronunciations = buildReviewCardPronunciations(card, entryLookup, sortedEntryLinks);
+  const pronunciations = buildReviewCardPronunciations(
+    card,
+    entryLookup,
+    sortedEntryLinks
+  );
   const reading = resolveReviewCardReading(card, entryLookup, sortedEntryLinks);
 
   return {
@@ -650,7 +647,8 @@ export function resolveReviewCardReading(
   entryLookup: Map<string, ReviewEntryLookupItem>,
   sortedEntryLinks?: ReviewEntryLinkLike[]
 ) {
-  const links = sortedEntryLinks ?? card.entryLinks.slice().sort(compareEntryLinks);
+  const links =
+    sortedEntryLinks ?? card.entryLinks.slice().sort(compareEntryLinks);
 
   if (!canExposeReviewEntryMedia(card, entryLookup, links)) {
     return undefined;
