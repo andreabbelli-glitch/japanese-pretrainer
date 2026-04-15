@@ -1,10 +1,10 @@
 {
   "version": 1,
   "media_slug": "duel-masters-dm25",
-  "total_targets": 314,
+  "total_targets": 317,
   "audio_backed_count": 123,
   "known_missing_count": 184,
-  "pending_count": 7,
+  "pending_count": 10,
   "pending": [
     {
       "entry_type": "term",
@@ -47,6 +47,24 @@
       "entry_id": "grammar-monotoshite",
       "label": "～ものとして",
       "reading": "ものとして"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card",
+      "label": "「ブロッカー」を持つ光または水のシールドカード",
+      "reading": "ぶろっかーをもつひかりまたはみずのしーるどかーど"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-subete-ni-s-trigger-wo-ataeru",
+      "label": "すべてに「S・トリガー」を与える",
+      "reading": "すべてにえすとりがーをあたえる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-byoito-full-effect",
+      "label": "自分の手札に加える、「ブロッカー」を持つ光または水のシールドカードすべてに、「S・トリガー」を与える",
+      "reading": "じぶんのてふだにくわえる ぶろっかーをもつひかりまたはみずのしーるどかーどすべてに えすとりがーをあたえる"
     }
   ]
 }

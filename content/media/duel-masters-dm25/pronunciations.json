@@ -13,6 +13,16 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-byoito-full-effect",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-de-hajimaru",
       "pitch_accent_status": "miss"
     },
@@ -327,6 +337,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-star-pippi-double-cost-reduction",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-subete-ni-s-trigger-wo-ataeru",
       "pitch_accent_status": "miss"
     },
     {
