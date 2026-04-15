@@ -498,6 +498,33 @@ async function loadCachedGlobalGlossarySearchEntries(
   });
 }
 
+async function loadCachedGlobalGlossaryResolvedEntries(
+  database: DatabaseClient,
+  filters: GlossaryQueryState
+) {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: [
+      "glossary",
+      "search-resolved",
+      `cards:${filters.cards}`,
+      `media:${filters.media}`,
+      ...buildGlossaryQueryCacheKeyParts(filters.query),
+      `study:${filters.study}`,
+      `type:${filters.entryType}`
+    ],
+    loader: async () => {
+      const entries = await loadCachedGlobalGlossarySearchEntries(
+        database,
+        filters
+      );
+
+      return buildGlobalGlossaryResolvedEntries(database, entries, filters);
+    },
+    tags: [GLOSSARY_SUMMARY_TAG]
+  });
+}
+
 async function loadFullEntriesForCandidateRefs(
   database: DatabaseClient,
   refs: GlossarySearchCandidateRef[]
@@ -744,10 +771,8 @@ async function loadPaginatedGlobalGlossarySearchResults(
   database: DatabaseClient,
   filters: GlossaryQueryState
 ) {
-  const entries = await loadCachedGlobalGlossarySearchEntries(database, filters);
-  const { candidates } = await buildGlobalGlossaryResolvedEntries(
+  const { candidates } = await loadCachedGlobalGlossaryResolvedEntries(
     database,
-    entries,
     filters
   );
   const allResults = buildGlobalGlossaryResults(candidates, filters);
@@ -854,13 +879,8 @@ async function loadCachedGlobalGlossaryAutocompleteData(
       `type:${filters.entryType}`
     ],
     loader: async () => {
-      const entries = await loadCachedGlobalGlossarySearchEntries(
+      const { candidates } = await loadCachedGlobalGlossaryResolvedEntries(
         database,
-        filters
-      );
-      const { candidates } = await buildGlobalGlossaryResolvedEntries(
-        database,
-        entries,
         filters
       );
       const groups = groupResolvedEntriesByResult(candidates);

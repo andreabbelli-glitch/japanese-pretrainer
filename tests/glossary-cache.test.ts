@@ -186,7 +186,7 @@ describe("global glossary cache", () => {
     expect(cacheStore.has(cacheKey)).toBe(true);
   });
 
-  it("reuses the normalized global search entries cache across autocomplete and results pages", async () => {
+  it("reuses the normalized global glossary search caches across autocomplete and results pages", async () => {
     await getGlobalGlossaryAutocompleteData(
       {
         q: "  IKU  "
@@ -214,7 +214,26 @@ describe("global glossary cache", () => {
     const keySpecificCalls = unstableCacheMock.mock.calls.filter(
       ([, keyParts]) => JSON.stringify(keyParts) === sharedCacheKey
     );
-    expect(keySpecificCalls).toHaveLength(2);
+    expect(keySpecificCalls).toHaveLength(1);
     expect(cacheStore.has(sharedCacheKey)).toBe(true);
+
+    const sharedResolvedCacheKey = JSON.stringify([
+      "glossary",
+      "search-resolved",
+      "cards:all",
+      "media:all",
+      "query:iku",
+      "kana:iku",
+      "grammar-kana:iku",
+      "compact:iku",
+      "study:all",
+      "type:all"
+    ]);
+
+    const resolvedKeySpecificCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === sharedResolvedCacheKey
+    );
+    expect(resolvedKeySpecificCalls).toHaveLength(2);
+    expect(cacheStore.has(sharedResolvedCacheKey)).toBe(true);
   });
 });
