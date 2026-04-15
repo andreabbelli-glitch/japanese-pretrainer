@@ -313,14 +313,8 @@ export async function loadGlossaryDetailData(
     return null;
   }
 
-  const [studySignals, lessonConnections, cardConnections, crossMediaFamily] =
+  const [lessonConnections, cardConnections, crossMediaFamily] =
     await Promise.all([
-      listEntryStudySignals(database, [
-        {
-          entryId: entry.id,
-          entryType: kind
-        }
-      ]),
       listEntryLessonConnections(database, [
         {
           entryId: entry.id,
@@ -337,10 +331,12 @@ export async function loadGlossaryDetailData(
         ? getCrossMediaFamilyByEntryId(database, "term", entry.id)
         : getCrossMediaFamilyByEntryId(database, "grammar", entry.id)
     ]);
-  const entryStudySignals = studySignals.map((signal) => ({
-    manualOverride: signal.manualOverride,
-    reviewState: signal.reviewState
-  }));
+  const entryStudySignals = cardConnections
+    .filter((connection) => connection.cardStatus === "active")
+    .map((connection) => ({
+      manualOverride: connection.manualOverride,
+      reviewState: connection.reviewState
+    }));
   const baseEntry =
     kind === "term"
       ? mapEntryToBaseModel(entry as TermGlossaryEntry, "term")

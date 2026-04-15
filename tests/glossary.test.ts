@@ -1338,6 +1338,7 @@ describe("glossary data", () => {
     );
 
     expect(detail).not.toBeNull();
+    expect(detail?.entry.studyState.key).toBe("available");
     expect(detail?.cards).toHaveLength(1);
     expect(detail?.cards[0]?.reviewLabel).toBe("Sospesa");
   });
