@@ -185,4 +185,36 @@ describe("global glossary cache", () => {
     expect(keySpecificCalls).toHaveLength(2);
     expect(cacheStore.has(cacheKey)).toBe(true);
   });
+
+  it("reuses the normalized global search entries cache across autocomplete and results pages", async () => {
+    await getGlobalGlossaryAutocompleteData(
+      {
+        q: "  IKU  "
+      },
+      database
+    );
+    await getGlobalGlossaryPageData(
+      {
+        q: "iku",
+        media: "all"
+      },
+      database
+    );
+
+    const sharedCacheKey = JSON.stringify([
+      "glossary",
+      "search-entries",
+      "query:iku",
+      "kana:iku",
+      "grammar-kana:iku",
+      "compact:iku",
+      "type:all"
+    ]);
+
+    const keySpecificCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === sharedCacheKey
+    );
+    expect(keySpecificCalls).toHaveLength(2);
+    expect(cacheStore.has(sharedCacheKey)).toBe(true);
+  });
 });

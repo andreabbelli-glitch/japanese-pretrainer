@@ -481,6 +481,23 @@ async function loadGlobalGlossarySearchEntries(
   );
 }
 
+async function loadCachedGlobalGlossarySearchEntries(
+  database: DatabaseClient,
+  filters: GlossaryQueryState
+) {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: [
+      "glossary",
+      "search-entries",
+      ...buildGlossaryQueryCacheKeyParts(filters.query),
+      `type:${filters.entryType}`
+    ],
+    loader: () => loadGlobalGlossarySearchEntries(database, filters),
+    tags: [GLOSSARY_SUMMARY_TAG]
+  });
+}
+
 async function loadFullEntriesForCandidateRefs(
   database: DatabaseClient,
   refs: GlossarySearchCandidateRef[]
@@ -727,7 +744,7 @@ async function loadPaginatedGlobalGlossarySearchResults(
   database: DatabaseClient,
   filters: GlossaryQueryState
 ) {
-  const entries = await loadGlobalGlossarySearchEntries(database, filters);
+  const entries = await loadCachedGlobalGlossarySearchEntries(database, filters);
   const { candidates } = await buildGlobalGlossaryResolvedEntries(
     database,
     entries,
@@ -837,7 +854,10 @@ async function loadCachedGlobalGlossaryAutocompleteData(
       `type:${filters.entryType}`
     ],
     loader: async () => {
-      const entries = await loadGlobalGlossarySearchEntries(database, filters);
+      const entries = await loadCachedGlobalGlossarySearchEntries(
+        database,
+        filters
+      );
       const { candidates } = await buildGlobalGlossaryResolvedEntries(
         database,
         entries,
