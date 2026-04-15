@@ -100,9 +100,8 @@ export async function loadGlossaryPageData(
     filters.query.length > 0 ? "search" : "list";
   const [segments, entries] = await Promise.all([
     listGlossarySegmentsByMediaId(database, media.id),
-    loadGlossaryBaseEntries(database, {
+    loadCachedLocalGlossaryBaseEntries(database, media, {
       entryType: filters.entryType,
-      mediaId: media.id,
       mode: loadMode
     })
   ]);
@@ -444,6 +443,38 @@ async function loadGlossaryBaseEntries(
         : mapEntryToBaseModel(entry as GrammarGlossaryEntry, "grammar")
     )
   ];
+}
+
+async function loadCachedLocalGlossaryBaseEntries(
+  database: DatabaseClient,
+  media: {
+    id: string;
+    slug: string;
+  },
+  options: {
+    entryType?: GlossaryQueryState["entryType"];
+    mode?: GlossaryLoadMode;
+  } = {}
+) {
+  const mode = options.mode ?? "search";
+
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: [
+      "glossary",
+      "local-base-entries",
+      `media:${media.id}:${media.slug}`,
+      `mode:${mode}`,
+      `type:${options.entryType ?? "all"}`
+    ],
+    loader: () =>
+      loadGlossaryBaseEntries(database, {
+        entryType: options.entryType,
+        mediaId: media.id,
+        mode
+      }),
+    tags: buildGlossarySummaryTags([media.id])
+  });
 }
 
 async function loadGlobalGlossarySearchEntries(

@@ -53,6 +53,7 @@ vi.mock("@/lib/data-cache", async () => {
 import {
   closeDatabaseClient,
   createDatabaseClient,
+  developmentFixture,
   seedDevelopmentDatabase,
   runMigrations,
   type DatabaseClient
@@ -63,7 +64,8 @@ import {
 } from "@/lib/data-cache";
 import {
   getGlobalGlossaryAutocompleteData,
-  getGlobalGlossaryPageData
+  getGlobalGlossaryPageData,
+  getGlossaryPageData
 } from "@/lib/glossary";
 
 describe("global glossary cache", () => {
@@ -235,5 +237,48 @@ describe("global glossary cache", () => {
     );
     expect(resolvedKeySpecificCalls).toHaveLength(2);
     expect(cacheStore.has(sharedResolvedCacheKey)).toBe(true);
+  });
+
+  it("caches local glossary base entries across repeated searches for the same media", async () => {
+    const first = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        q: "IKU"
+      },
+      database
+    );
+    const second = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        q: "iku"
+      },
+      database
+    );
+
+    expect(first?.results).not.toHaveLength(0);
+    expect(second?.results).toEqual(first?.results);
+    expect(second?.stats).toEqual(first?.stats);
+
+    const localBaseEntriesCacheKey = JSON.stringify([
+      "glossary",
+      "local-base-entries",
+      `media:${developmentFixture.mediaId}:${developmentFixture.mediaSlug}`,
+      "mode:search",
+      "type:all"
+    ]);
+
+    const localBaseEntryCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === localBaseEntriesCacheKey
+    );
+
+    expect(localBaseEntryCalls).toHaveLength(2);
+    expect(cacheStore.has(localBaseEntriesCacheKey)).toBe(true);
+
+    const localBaseEntriesOptions = localBaseEntryCalls[0]?.[2];
+    expect(localBaseEntriesOptions?.tags).toEqual(
+      expect.arrayContaining([
+        `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`
+      ])
+    );
   });
 });
