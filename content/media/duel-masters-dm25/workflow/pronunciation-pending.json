@@ -1,10 +1,10 @@
 {
   "version": 1,
   "media_slug": "duel-masters-dm25",
-  "total_targets": 317,
+  "total_targets": 320,
   "audio_backed_count": 123,
   "known_missing_count": 184,
-  "pending_count": 10,
+  "pending_count": 13,
   "pending": [
     {
       "entry_type": "term",
@@ -23,6 +23,18 @@
       "entry_id": "term-face-down",
       "label": "裏向き",
       "reading": "うらむき"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-labyrinth",
+      "label": "ラビリンス",
+      "reading": "らびりんす"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kazu",
+      "label": "数",
+      "reading": "かず"
     },
     {
       "entry_type": "grammar",
@@ -65,6 +77,12 @@
       "entry_id": "grammar-byoito-full-effect",
       "label": "自分の手札に加える、「ブロッカー」を持つ光または水のシールドカードすべてに、「S・トリガー」を与える",
       "reading": "じぶんのてふだにくわえる ぶろっかーをもつひかりまたはみずのしーるどかーどすべてに えすとりがーをあたえる"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-seigi-no-shield-count-yori-ookereba",
+      "label": "自分のシールドの数が相手より多ければ",
+      "reading": "じぶんのしーるどのかずがあいてよりおおければ"
     }
   ]
 }

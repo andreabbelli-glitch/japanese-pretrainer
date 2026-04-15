@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 92
+order: 93
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -285,6 +285,25 @@ reveal_mode: sentence
 - `{{下|した}}にあるカード` nomina il materiale sotto la creatura.
 - Il verbo successivo dice quante carte di quel materiale devi consumare per
   ottenere il payoff.
+
+### [ラビリンス](term:term-labyrinth)
+
+:::example_sentence
+jp: >-
+  [ラビリンス](term:term-labyrinth)：
+  {{自分|じぶん}}のシールドの[{{数|かず}}](term:term-kazu)が
+  {{相手|あいて}}より{{多|おお}}ければ、このカードの{{条件|じょうけん}}や
+  {{追加|ついか}}の[{{効果|こうか}}](term:term-effect)が{{有効|ゆうこう}}になる。
+translation_it: >-
+  Labyrinth: se il numero dei tuoi scudi è maggiore di quello dell'avversario,
+  la condizione o l'effetto aggiuntivo di questa carta diventa attivo.
+reveal_mode: sentence
+:::
+
+- `{{相手|あいて}}より{{多|おお}}ければ` costruisce un confronto vero tra i due
+  giocatori: a parità di scudi la keyword non si accende.
+- [{{数|かず}}](term:term-kazu) è il conteggio da guardare, non il contenuto
+  degli scudi.
 
 ### [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon)
 

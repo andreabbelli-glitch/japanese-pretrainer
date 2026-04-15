@@ -266,6 +266,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-seigi-no-shield-count-yori-ookereba",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-shika",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
@@ -1463,6 +1468,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-kazu",
+      "pitch_accent": 1,
+      "pitch_accent_source": "Wiktionary",
+      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%95%B0",
+      "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-kenzan-no-sabaki",
       "pitch_accent_status": "miss"
     },
@@ -1520,6 +1533,11 @@
     {
       "entry_type": "term",
       "entry_id": "term-kuromame-danshaku",
+      "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-labyrinth",
       "pitch_accent_status": "miss"
     },
     {
