@@ -44,9 +44,10 @@ vi.mock("next/cache", () => ({
 }));
 
 vi.mock("@/lib/data-cache", async () => {
-  const actual = await vi.importActual<typeof import("@/lib/data-cache")>(
-    "@/lib/data-cache"
-  );
+  const actual =
+    await vi.importActual<typeof import("@/lib/data-cache")>(
+      "@/lib/data-cache"
+    );
 
   return {
     ...actual,
@@ -171,6 +172,8 @@ describe("textbook index cache", () => {
     expect(cacheStore.has(cacheKey)).toBe(true);
 
     const cacheOptions = keySpecificCalls[0]?.[2];
-    expect(cacheOptions?.tags).toEqual(expect.arrayContaining([MEDIA_LIST_TAG]));
+    expect(cacheOptions?.tags).toEqual(
+      expect.arrayContaining([MEDIA_LIST_TAG])
+    );
   });
 });

@@ -19,10 +19,7 @@ import {
   SETTINGS_TAG
 } from "@/lib/data-cache";
 import { mediaGlossaryHref } from "@/lib/site";
-import {
-  getFuriganaModeSetting,
-  type FuriganaMode
-} from "@/lib/settings";
+import { getFuriganaModeSetting, type FuriganaMode } from "@/lib/settings";
 import {
   calculatePercent,
   compareIsoDates,
@@ -76,8 +73,7 @@ export async function getTextbookIndexData(
   } = {}
 ): Promise<TextbookIndexData | null> {
   const media =
-    options.resolvedMedia ??
-    (await getMediaBySlugCached(database, mediaSlug));
+    options.resolvedMedia ?? (await getMediaBySlugCached(database, mediaSlug));
 
   if (!media) {
     return null;
@@ -254,7 +250,11 @@ async function loadTextbookLessonBodyData(
   mediaId: string,
   lessonSlug: string
 ) {
-  const lesson = await getLessonTooltipSourceBySlug(database, mediaId, lessonSlug);
+  const lesson = await getLessonTooltipSourceBySlug(
+    database,
+    mediaId,
+    lessonSlug
+  );
 
   if (!lesson) {
     return null;
