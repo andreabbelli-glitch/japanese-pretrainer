@@ -45,6 +45,31 @@ export async function listLessonsByMediaIds(
   });
 }
 
+export async function listLessonsByMediaIdsForShell(
+  database: DatabaseClient,
+  mediaIds: string[]
+): Promise<LessonListItem[]> {
+  if (mediaIds.length === 0) {
+    return [];
+  }
+
+  const rows = await database.query.lesson.findMany({
+    where: and(inArray(lesson.mediaId, mediaIds), eq(lesson.status, "active")),
+    with: {
+      segment: true,
+      progress: true
+    },
+    orderBy: [asc(lesson.mediaId), asc(lesson.orderIndex), asc(lesson.slug)]
+  });
+
+  return rows.map((row) => ({
+    ...row,
+    content: {
+      excerpt: null
+    }
+  }));
+}
+
 export async function getLessonBySlug(
   database: DatabaseClient,
   mediaId: string,

@@ -3,7 +3,7 @@ import {
   listGlossaryPreviewEntries,
   listGlossaryProgressSummaries,
   listLessonsByMediaId,
-  listLessonsByMediaIds,
+  listLessonsByMediaIdsForShell,
   type DatabaseClient,
   type MediaListItem
 } from "@/db";
@@ -149,7 +149,7 @@ export async function loadMediaShellSnapshots(
     dailyLimit,
     newIntroducedTodayCount
   ] = await Promise.all([
-    listLessonsByMediaIds(database, mediaIds),
+    listLessonsByMediaIdsForShell(database, mediaIds),
     loadGlossaryProgressSummarySnapshotsCached(
       database,
       media.map((item) => ({
@@ -415,7 +415,7 @@ export { pickFocusMedia };
 export type { MediaShellSnapshot };
 
 function groupLessonsByMedia(
-  lessons: Awaited<ReturnType<typeof listLessonsByMediaIds>>
+  lessons: Awaited<ReturnType<typeof listLessonsByMediaIdsForShell>>
 ) {
   const grouped = new Map<
     string,

@@ -22,6 +22,7 @@ import {
   listGlossaryProgressSummaries,
   listGrammarEntryReviewSummaries,
   listLessonsByMediaId,
+  listLessonsByMediaIdsForShell,
   listMedia,
   listTermEntryReviewSummaries,
   lessonProgress,
@@ -91,6 +92,30 @@ describe("database layer", () => {
 
     expect(lesson?.content?.markdownRaw).toContain("行く");
     expect(lesson?.segment?.slug).toBe("starter-core");
+  });
+
+  it("returns shell lesson rows without joining lesson content", async () => {
+    const executeSpy = vi.spyOn(database.$client, "execute");
+
+    const lessons = await listLessonsByMediaIdsForShell(database, [
+      developmentFixture.mediaId
+    ]);
+
+    expect(lessons).toHaveLength(1);
+    expect(lessons[0]?.content?.excerpt).toBeNull();
+    expect(lessons[0]?.progress?.status).toBe("completed");
+    expect(
+      executeSpy.mock.calls.some(([input]) => {
+        const sql =
+          typeof input === "string"
+            ? input
+            : (input as { sql?: unknown }).sql;
+
+        return typeof sql === "string" && sql.includes("lesson_content");
+      })
+    ).toBe(false);
+
+    executeSpy.mockRestore();
   });
 
   it("keeps canonical glossary entries free of legacy status projections", async () => {
