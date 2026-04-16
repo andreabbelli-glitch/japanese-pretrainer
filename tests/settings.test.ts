@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   closeDatabaseClient,
@@ -31,6 +31,7 @@ describe("study settings", () => {
   });
 
   afterEach(async () => {
+    vi.useRealTimers();
     closeDatabaseClient(database);
     await rm(tempDir, { recursive: true, force: true });
   });
@@ -54,6 +55,40 @@ describe("study settings", () => {
       kanjiClashDefaultScope: "media",
       kanjiClashManualDefaultSize: 40
     });
+  });
+
+  it("writes only the settings that actually change", async () => {
+    vi.useFakeTimers();
+
+    vi.setSystemTime(new Date("2026-04-16T10:00:00.000Z"));
+    await updateStudySettings(
+      {
+        furiganaMode: "off",
+        reviewDailyLimit: 12
+      },
+      database
+    );
+
+    vi.setSystemTime(new Date("2026-04-16T10:05:00.000Z"));
+    await updateStudySettings(
+      {
+        furiganaMode: "on"
+      },
+      database
+    );
+
+    const rows = await database.query.userSetting.findMany();
+    const rowsByKey = new Map(rows.map((row) => [row.key, row]));
+
+    expect(rows).toHaveLength(2);
+    expect(rowsByKey.get("furigana_mode")?.valueJson).toBe('"on"');
+    expect(rowsByKey.get("furigana_mode")?.updatedAt).toBe(
+      "2026-04-16T10:05:00.000Z"
+    );
+    expect(rowsByKey.get("review_daily_limit")?.valueJson).toBe("12");
+    expect(rowsByKey.get("review_daily_limit")?.updatedAt).toBe(
+      "2026-04-16T10:00:00.000Z"
+    );
   });
 
   it("falls back to global scope when media is missing", () => {

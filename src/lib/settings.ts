@@ -51,6 +51,8 @@ const studySettingKeys = [
   "review_daily_limit"
 ] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
 
+type StudySettingKey = (typeof userSetting.$inferSelect)["key"];
+
 export async function getStudySettings(
   database: DatabaseClient = db
 ): Promise<StudySettings> {
@@ -170,52 +172,61 @@ export async function updateStudySettings(
         ? current.reviewDailyLimit
         : normalizeReviewDailyLimit(input.reviewDailyLimit)
   };
+  const changedSettings = [
+    ["furigana_mode", current.furiganaMode, next.furiganaMode],
+    [
+      "glossary_default_sort",
+      current.glossaryDefaultSort,
+      next.glossaryDefaultSort
+    ],
+    [
+      "kanji_clash_daily_new_limit",
+      current.kanjiClashDailyNewLimit,
+      next.kanjiClashDailyNewLimit
+    ],
+    [
+      "kanji_clash_default_scope",
+      current.kanjiClashDefaultScope,
+      next.kanjiClashDefaultScope
+    ],
+    [
+      "kanji_clash_manual_default_size",
+      current.kanjiClashManualDefaultSize,
+      next.kanjiClashManualDefaultSize
+    ],
+    [
+      "review_front_furigana",
+      current.reviewFrontFurigana,
+      next.reviewFrontFurigana
+    ],
+    ["review_daily_limit", current.reviewDailyLimit, next.reviewDailyLimit]
+  ].flatMap(([key, currentValue, nextValue]) =>
+    currentValue === nextValue
+      ? []
+      : [
+          {
+            key: key as StudySettingKey,
+            valueJson: JSON.stringify(nextValue)
+          }
+        ]
+  );
+
+  if (changedSettings.length === 0) {
+    return next;
+  }
+
   const nowIso = new Date().toISOString();
 
-  await Promise.all([
-    upsertUserSetting({
-      database,
-      key: "furigana_mode",
-      nowIso,
-      valueJson: JSON.stringify(next.furiganaMode)
-    }),
-    upsertUserSetting({
-      database,
-      key: "glossary_default_sort",
-      nowIso,
-      valueJson: JSON.stringify(next.glossaryDefaultSort)
-    }),
-    upsertUserSetting({
-      database,
-      key: "kanji_clash_daily_new_limit",
-      nowIso,
-      valueJson: JSON.stringify(next.kanjiClashDailyNewLimit)
-    }),
-    upsertUserSetting({
-      database,
-      key: "kanji_clash_default_scope",
-      nowIso,
-      valueJson: JSON.stringify(next.kanjiClashDefaultScope)
-    }),
-    upsertUserSetting({
-      database,
-      key: "kanji_clash_manual_default_size",
-      nowIso,
-      valueJson: JSON.stringify(next.kanjiClashManualDefaultSize)
-    }),
-    upsertUserSetting({
-      database,
-      key: "review_front_furigana",
-      nowIso,
-      valueJson: JSON.stringify(next.reviewFrontFurigana)
-    }),
-    upsertUserSetting({
-      database,
-      key: "review_daily_limit",
-      nowIso,
-      valueJson: JSON.stringify(next.reviewDailyLimit)
-    })
-  ]);
+  await Promise.all(
+    changedSettings.map((setting) =>
+      upsertUserSetting({
+        database,
+        key: setting.key,
+        nowIso,
+        valueJson: setting.valueJson
+      })
+    )
+  );
 
   return next;
 }
