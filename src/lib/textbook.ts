@@ -2,7 +2,8 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import {
   db,
-  getLessonTooltipSourceBySlug,
+  getLessonAstBySlug,
+  getLessonIdBySlug,
   listLessonEntryLinks,
   listLessonsByMediaId,
   type DatabaseClient,
@@ -193,11 +194,7 @@ async function loadTextbookLessonTooltipEntries(
   lessonSlug: string,
   database: DatabaseClient
 ): Promise<TextbookTooltipEntry[] | null> {
-  const lesson = await getLessonTooltipSourceBySlug(
-    database,
-    mediaId,
-    lessonSlug
-  );
+  const lesson = await getLessonIdBySlug(database, mediaId, lessonSlug);
 
   if (!lesson) {
     return null;
@@ -250,11 +247,7 @@ async function loadTextbookLessonBodyData(
   mediaId: string,
   lessonSlug: string
 ) {
-  const lesson = await getLessonTooltipSourceBySlug(
-    database,
-    mediaId,
-    lessonSlug
-  );
+  const lesson = await getLessonAstBySlug(database, mediaId, lessonSlug);
 
   if (!lesson) {
     return null;

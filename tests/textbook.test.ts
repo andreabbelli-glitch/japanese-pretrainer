@@ -251,6 +251,27 @@ describe("textbook data", () => {
     lessonQuerySpy.mockRestore();
   });
 
+  it("loads textbook tooltip entries without fetching the lesson AST", async () => {
+    const lessonQuerySpy = vi.spyOn(database.query.lesson, "findFirst");
+
+    const tooltipEntries = await getTextbookLessonTooltipEntries(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(tooltipEntries).not.toBeNull();
+    expect(lessonQuerySpy).toHaveBeenCalledTimes(1);
+    expect(lessonQuerySpy.mock.calls[0]?.[0]).toMatchObject({
+      columns: {
+        id: true
+      }
+    });
+    expect(lessonQuerySpy.mock.calls[0]?.[0]).not.toHaveProperty("with");
+
+    lessonQuerySpy.mockRestore();
+  });
+
   it("returns null for a missing media slug before reading furigana settings", async () => {
     const settingsQuerySpy = vi
       .spyOn(settings, "getFuriganaModeSetting")

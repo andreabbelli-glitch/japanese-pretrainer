@@ -88,7 +88,7 @@ export async function getLessonReaderBySlug(
   });
 }
 
-export async function getLessonTooltipSourceBySlug(
+export async function getLessonAstBySlug(
   database: DatabaseClient,
   mediaId: string,
   slug: string
@@ -108,6 +108,23 @@ export async function getLessonTooltipSourceBySlug(
           astJson: true
         }
       }
+    }
+  });
+}
+
+export async function getLessonIdBySlug(
+  database: DatabaseClient,
+  mediaId: string,
+  slug: string
+) {
+  return database.query.lesson.findFirst({
+    where: and(
+      eq(lesson.mediaId, mediaId),
+      eq(lesson.slug, slug),
+      eq(lesson.status, "active")
+    ),
+    columns: {
+      id: true
     }
   });
 }
