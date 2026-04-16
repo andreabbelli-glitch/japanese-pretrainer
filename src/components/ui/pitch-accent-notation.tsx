@@ -36,6 +36,17 @@ type MoraMeasurement = {
   width: number;
 };
 
+type PitchAccentLayoutModel = {
+  connectors: AccentConnector[];
+  fallbackGraphStyle: CSSProperties;
+  fallbackOffsets: number[];
+  fallbackUnits: number[];
+  lowerRails: AccentRail[];
+  upperRails: AccentRail[];
+};
+
+const pitchAccentLayoutCache = new Map<string, PitchAccentLayoutModel>();
+
 export function PitchAccentNotation({
   compact = false,
   showMeta = true,
@@ -44,18 +55,18 @@ export function PitchAccentNotation({
 }: PitchAccentNotationProps) {
   const graphRef = useRef<HTMLSpanElement | null>(null);
   const cellRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const [measurements, setMeasurements] = useState<MoraMeasurement[] | null>(null);
-  const upperRails = buildUpperRails(pitchAccent);
-  const lowerRails = buildLowerRails(pitchAccent);
-  const connectors = buildConnectors(pitchAccent);
-  const fallbackUnits = pitchAccent.morae.map(getMoraVisualUnits);
+  const [measurements, setMeasurements] = useState<MoraMeasurement[] | null>(
+    null
+  );
   const moraKey = pitchAccent.morae.join("|");
-  const fallbackUnitsKey = fallbackUnits.join("|");
-  const fallbackGraphStyle = {
-    gridTemplateColumns: fallbackUnits
-      .map((unit) => `calc(${unit} * var(--pitch-accent-cell-size))`)
-      .join(" ")
-  } as CSSProperties;
+  const {
+    connectors,
+    fallbackGraphStyle,
+    fallbackOffsets,
+    fallbackUnits,
+    lowerRails,
+    upperRails
+  } = getPitchAccentLayoutModel(pitchAccent, moraKey);
 
   useEffect(() => {
     const graph = graphRef.current;
@@ -66,14 +77,15 @@ export function PitchAccentNotation({
 
     const measure = () => {
       const graphRect = graph.getBoundingClientRect();
-      const nextMeasurements = pitchAccent.morae.map((_, index) => {
+      const estimatedCellSize = estimateCellSizePx(graph);
+      const nextMeasurements = fallbackUnits.map((_, index) => {
         const cell = cellRefs.current[index];
         const rect = cell?.getBoundingClientRect();
 
         if (!rect) {
           return {
-            left: sumMoraUnits(fallbackUnits, 0, index) * estimateCellSizePx(graph),
-            width: fallbackUnits[index] * estimateCellSizePx(graph)
+            left: fallbackOffsets[index] * estimatedCellSize,
+            width: fallbackUnits[index] * estimatedCellSize
           };
         }
 
@@ -109,7 +121,7 @@ export function PitchAccentNotation({
     return () => {
       resizeObserver.disconnect();
     };
-  }, [fallbackUnits, fallbackUnitsKey, moraKey, pitchAccent.morae]);
+  }, [fallbackOffsets, fallbackUnits, moraKey]);
 
   return (
     <div
@@ -284,7 +296,9 @@ function buildRailStyle(
   }
 
   return {
-    "--pitch-accent-span-offset": String(sumMoraUnits(fallbackUnits, 0, rail.start)),
+    "--pitch-accent-span-offset": String(
+      sumMoraUnits(fallbackUnits, 0, rail.start)
+    ),
     "--pitch-accent-span-width": String(
       sumMoraUnits(fallbackUnits, rail.start, rail.start + rail.length)
     )
@@ -374,12 +388,63 @@ function estimateCellSizePx(graph: HTMLSpanElement) {
   return Number.isFinite(fontSize) ? fontSize * 1.04 : 24.96;
 }
 
+function getPitchAccentLayoutModel(
+  pitchAccent: PitchAccentData,
+  moraKey: string
+): PitchAccentLayoutModel {
+  const cacheKey = `${moraKey}:${pitchAccent.downstep}`;
+  const cached = pitchAccentLayoutCache.get(cacheKey);
+
+  if (cached) {
+    return cached;
+  }
+
+  const fallbackUnits = pitchAccent.morae.map(getMoraVisualUnits);
+  const computed: PitchAccentLayoutModel = {
+    connectors: buildConnectors(pitchAccent),
+    fallbackGraphStyle: {
+      gridTemplateColumns: fallbackUnits
+        .map((unit) => `calc(${unit} * var(--pitch-accent-cell-size))`)
+        .join(" ")
+    },
+    fallbackOffsets: buildMoraUnitOffsets(fallbackUnits),
+    fallbackUnits,
+    lowerRails: buildLowerRails(pitchAccent),
+    upperRails: buildUpperRails(pitchAccent)
+  };
+
+  pitchAccentLayoutCache.set(cacheKey, computed);
+  return computed;
+}
+
+function buildMoraUnitOffsets(moraUnits: number[]) {
+  const offsets = new Array<number>(moraUnits.length);
+  let total = 0;
+
+  for (let index = 0; index < moraUnits.length; index += 1) {
+    offsets[index] = total;
+    total += moraUnits[index] ?? 0;
+  }
+
+  return offsets;
+}
+
 function sumMoraUnits(moraUnits: number[], start: number, end: number) {
   if (moraUnits.length === 0) {
     return Math.max(end - start, 0);
   }
 
-  return moraUnits.slice(start, end).reduce((total, unit) => total + unit, 0);
+  let total = 0;
+
+  for (
+    let index = Math.max(start, 0);
+    index < Math.min(end, moraUnits.length);
+    index += 1
+  ) {
+    total += moraUnits[index] ?? 0;
+  }
+
+  return total;
 }
 
 function getMoraVisualUnits(mora: string) {
