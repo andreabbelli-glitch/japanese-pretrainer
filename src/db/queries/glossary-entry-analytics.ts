@@ -351,18 +351,23 @@ export type GlossaryPreviewEntryState = {
 
 export async function listGlossaryPreviewEntries(
   database: DatabaseClient,
-  mediaIds: string[],
+  media: Array<{
+    id: string;
+    slug: string;
+  }>,
   limitPerMedia = 6
 ): Promise<GlossaryPreviewEntryState[]> {
-  if (mediaIds.length === 0) {
+  if (media.length === 0) {
     return [];
   }
 
-  const mediaIdList = mediaIds.map(quoteSqlString).join(", ");
+  const mediaIdList = media.map((item) => quoteSqlString(item.id)).join(", ");
+  const mediaSlugById = new Map(
+    media.map((item) => [item.id, item.slug] as const)
+  );
 
   const rows = await database.all<{
     mediaId: string;
-    mediaSlug: string;
     sourceId: string;
     entryType: "term" | "grammar";
     label: string;
@@ -511,7 +516,6 @@ export async function listGlossaryPreviewEntries(
     )
     SELECT
       es.media_id AS mediaId,
-      m.slug AS mediaSlug,
       es.source_id AS sourceId,
       es.entry_type AS entryType,
       es.label AS label,
@@ -520,20 +524,29 @@ export async function listGlossaryPreviewEntries(
       es.segment_title AS segmentTitle,
       es.state AS state
     FROM entry_states es
-    INNER JOIN media m ON m.id = es.media_id
     WHERE es.rn <= ${limitPerMedia}
     ORDER BY es.media_id ASC, es.rn ASC
   `);
 
-  return rows.map((row) => ({
-    mediaId: row.mediaId,
-    mediaSlug: row.mediaSlug,
-    sourceId: row.sourceId,
-    kind: row.entryType,
-    label: row.label,
-    meaningIt: row.meaningIt,
-    reading: row.reading,
-    segmentTitle: row.segmentTitle,
-    state: row.state
-  }));
+  return rows.map((row) => {
+    const mediaSlug = mediaSlugById.get(row.mediaId);
+
+    if (!mediaSlug) {
+      throw new Error(
+        `Missing media slug for glossary preview media ${row.mediaId}.`
+      );
+    }
+
+    return {
+      mediaId: row.mediaId,
+      mediaSlug,
+      sourceId: row.sourceId,
+      kind: row.entryType,
+      label: row.label,
+      meaningIt: row.meaningIt,
+      reading: row.reading,
+      segmentTitle: row.segmentTitle,
+      state: row.state
+    };
+  });
 }

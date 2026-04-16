@@ -115,7 +115,7 @@ export async function loadGlossaryProgressSnapshots(
   const mediaIds = media.map((item) => item.id);
   const [summaries, previews] = await Promise.all([
     listGlossaryProgressSummaries(database, mediaIds),
-    listGlossaryPreviewEntries(database, mediaIds, 6)
+    listGlossaryPreviewEntries(database, media, 6)
   ]);
 
   const snapshots = new Map<string, GlossaryProgressSnapshot>();

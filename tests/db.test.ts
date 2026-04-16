@@ -253,8 +253,14 @@ describe("database layer", () => {
         groupedMediaId
       ]),
       listGlossaryPreviewEntries(database, [
-        developmentFixture.mediaId,
-        groupedMediaId
+        {
+          id: developmentFixture.mediaId,
+          slug: developmentFixture.mediaSlug
+        },
+        {
+          id: groupedMediaId,
+          slug: groupedMediaSlug
+        }
       ])
     ]);
 

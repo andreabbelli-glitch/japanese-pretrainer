@@ -301,7 +301,7 @@ async function loadGlossaryPreviewEntriesCached(
     loader: async () => {
       const previews = await listGlossaryPreviewEntries(
         database,
-        media.map((item) => item.id),
+        media,
         limitPerMedia
       );
       const previewsByMedia = new Map<string, StudyEntryPreview[]>();
