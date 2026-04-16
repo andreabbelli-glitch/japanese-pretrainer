@@ -181,28 +181,47 @@ function preferReviewSubjectModelCardForMedia(
   } satisfies ReviewSubjectModel;
 }
 
-function buildReviewQueueLookup(
-  models: ReviewSubjectModel[],
-  visibleMediaId?: string
-) {
-  const modelByCardId = new Map<string, ReviewSubjectModel>();
-  const queueIndexByCardId = new Map<string, number>();
-
-  for (const [index, model] of models.entries()) {
+function findReviewSubjectSelectionInModels(input: {
+  models: ReviewSubjectModel[];
+  selectedCardId: string;
+  visibleMediaId?: string;
+}) {
+  for (const [index, model] of input.models.entries()) {
     for (const card of model.group.cards) {
-      if (visibleMediaId && card.mediaId !== visibleMediaId) {
+      if (input.visibleMediaId && card.mediaId !== input.visibleMediaId) {
         continue;
       }
 
-      modelByCardId.set(card.id, model);
-      queueIndexByCardId.set(card.id, index);
+      if (card.id === input.selectedCardId) {
+        return {
+          index,
+          model
+        };
+      }
     }
   }
 
-  return {
-    modelByCardId,
-    queueIndexByCardId
-  };
+  return null;
+}
+
+function findReviewSubjectSelectionInModelLists(input: {
+  modelLists: ReviewSubjectModel[][];
+  selectedCardId: string;
+  visibleMediaId?: string;
+}) {
+  for (const models of input.modelLists) {
+    const selection = findReviewSubjectSelectionInModels({
+      models,
+      selectedCardId: input.selectedCardId,
+      visibleMediaId: input.visibleMediaId
+    });
+
+    if (selection) {
+      return selection;
+    }
+  }
+
+  return null;
 }
 
 export function resolveReviewPageSelection(input: {
@@ -211,33 +230,35 @@ export function resolveReviewPageSelection(input: {
 }) {
   const { selectedCardId } = input.searchState;
   const { visibleMediaId } = input.queueSnapshot;
-  const queueLookup =
+  const queueSelection =
     selectedCardId === null
       ? null
-      : buildReviewQueueLookup(input.queueSnapshot.queueModels, visibleMediaId);
-  const supportSelectionLookup =
-    selectedCardId === null || queueLookup?.modelByCardId.has(selectedCardId)
-      ? null
-      : buildReviewQueueLookup(
-          [
-            ...input.queueSnapshot.manualModels,
-            ...input.queueSnapshot.suspendedModels,
-            ...input.queueSnapshot.upcomingModels
-          ],
+      : findReviewSubjectSelectionInModelLists({
+          modelLists: [input.queueSnapshot.queueModels],
+          selectedCardId,
           visibleMediaId
-        );
-  const explicitSelectionModel =
-    selectedCardId === null
+        });
+  const supportSelection =
+    selectedCardId === null || queueSelection !== null
       ? null
-      : queueLookup?.modelByCardId.get(selectedCardId) ??
-        supportSelectionLookup?.modelByCardId.get(selectedCardId) ??
-        null;
+      : findReviewSubjectSelectionInModelLists({
+          modelLists: [
+            input.queueSnapshot.manualModels,
+            input.queueSnapshot.suspendedModels,
+            input.queueSnapshot.upcomingModels
+          ],
+          selectedCardId,
+          visibleMediaId
+        });
+  const explicitSelectionModel =
+    queueSelection?.model ?? supportSelection?.model ?? null;
   const fallbackSelectionModel =
     selectedCardId && explicitSelectionModel === null
-      ? buildReviewQueueLookup(
-          input.queueSnapshot.subjectModels,
+      ? findReviewSubjectSelectionInModelLists({
+          modelLists: [input.queueSnapshot.subjectModels],
+          selectedCardId,
           visibleMediaId
-        ).modelByCardId.get(selectedCardId) ?? null
+        })?.model ?? null
       : null;
   const selectedModel =
     explicitSelectionModel ??
@@ -251,7 +272,7 @@ export function resolveReviewPageSelection(input: {
       ? -1
       : resolvedSelectedCardId === null
         ? 0
-        : queueLookup?.queueIndexByCardId.get(resolvedSelectedCardId) ?? -1;
+        : queueSelection?.index ?? -1;
 
   return {
     queueIndex,

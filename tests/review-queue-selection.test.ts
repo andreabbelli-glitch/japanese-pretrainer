@@ -146,4 +146,37 @@ describe("resolveReviewPageSelection", () => {
     expect(selection.selectedQueueModel).toBe(localQueueModel);
     expect(selection.queueIndex).toBe(0);
   });
+
+  it("keeps explicit support-card selections out of the queue index", () => {
+    const queueModel = createModel({
+      groupCardIds: ["card-a"]
+    });
+    const manualModel = createModel({
+      groupCardIds: ["card-b"]
+    });
+    const queueSnapshot = createQueueSnapshot({
+      manualCount: 1,
+      manualModels: [manualModel],
+      queueCount: 1,
+      queueModels: [queueModel],
+      subjectModels: [queueModel, manualModel]
+    });
+
+    const selection = resolveReviewPageSelection({
+      queueSnapshot,
+      searchState: {
+        answeredCount: 0,
+        extraNewCount: 0,
+        noticeCode: null,
+        segmentId: null,
+        selectedCardId: "card-b",
+        showAnswer: false
+      }
+    });
+
+    expect(selection.selectedCardId).toBe("card-b");
+    expect(selection.selectedModel).toBe(manualModel);
+    expect(selection.selectedQueueModel).toBeNull();
+    expect(selection.queueIndex).toBe(-1);
+  });
 });
