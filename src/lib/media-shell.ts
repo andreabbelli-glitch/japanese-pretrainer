@@ -128,6 +128,7 @@ export async function loadMediaShellSnapshots(
   media: MediaListItem[],
   options: {
     includePreviewEntries?: boolean;
+    previewEntryLimit?: number;
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
   } = {}
@@ -201,7 +202,9 @@ export async function loadMediaShellSnapshots(
       id: focusMedia.id,
       slug: focusMedia.slug
     }
-  ]).then((entriesByMedia) => entriesByMedia.get(focusMedia.id) ?? []);
+  ], options.previewEntryLimit ?? 1).then(
+    (entriesByMedia) => entriesByMedia.get(focusMedia.id) ?? []
+  );
 
   return snapshots.map((snapshot) =>
     snapshot.id === focusMedia.id
@@ -277,7 +280,8 @@ async function loadGlossaryPreviewEntriesCached(
   media: Array<{
     id: string;
     slug: string;
-  }>
+  }>,
+  limitPerMedia = 6
 ) {
   if (media.length === 0) {
     return new Map<string, StudyEntryPreview[]>();
@@ -291,13 +295,14 @@ async function loadGlossaryPreviewEntriesCached(
     keyParts: [
       "app-shell",
       "glossary-progress-preview",
+      `limit:${limitPerMedia}`,
       ...orderedMedia.map((item) => `media:${item.id}:${item.slug}`)
     ],
     loader: async () => {
       const previews = await listGlossaryPreviewEntries(
         database,
         media.map((item) => item.id),
-        6
+        limitPerMedia
       );
       const previewsByMedia = new Map<string, StudyEntryPreview[]>();
 
@@ -362,7 +367,7 @@ async function buildMediaShellSnapshot(
           id: media.id,
           slug: media.slug
         }
-      ]),
+      ], 4),
       reviewCountsPromise
     ]);
   const glossary =

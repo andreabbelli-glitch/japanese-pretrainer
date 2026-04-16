@@ -89,6 +89,7 @@ describe("app shell live data", () => {
     expect(dashboard.totals.lessonsCompleted).toBe(1);
     expect(dashboard.totals.entriesKnown).toBe(2);
     expect(dashboard.review.cardsDue).toBe(0);
+    expect(dashboard.focusMedia?.previewEntries).toHaveLength(1);
     // The dashboard now uses lesson-aware SQL counts, so the remaining
     // lesson-bound review card is filtered out once its driving entry is
     // manually marked known.

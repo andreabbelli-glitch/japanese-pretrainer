@@ -168,9 +168,16 @@ describe("app shell day-scoped cache keys", () => {
       "glossary-progress-summary",
       `media:${developmentFixture.mediaId}:${developmentFixture.mediaSlug}`
     ]);
-    const progressPreviewKey = JSON.stringify([
+    const dashboardPreviewKey = JSON.stringify([
       "app-shell",
       "glossary-progress-preview",
+      "limit:1",
+      `media:${developmentFixture.mediaId}:${developmentFixture.mediaSlug}`
+    ]);
+    const detailPreviewKey = JSON.stringify([
+      "app-shell",
+      "glossary-progress-preview",
+      "limit:4",
       `media:${developmentFixture.mediaId}:${developmentFixture.mediaSlug}`
     ]);
 
@@ -181,7 +188,9 @@ describe("app shell day-scoped cache keys", () => {
       ([, keyParts]) => JSON.stringify(keyParts) === progressSummaryKey
     );
     const previewCalls = unstableCacheMock.mock.calls.filter(
-      ([, keyParts]) => JSON.stringify(keyParts) === progressPreviewKey
+      ([, keyParts]) =>
+        JSON.stringify(keyParts) === detailPreviewKey ||
+        JSON.stringify(keyParts) === dashboardPreviewKey
     );
 
     expect(studyOnlyCalls.length).toBeGreaterThan(0);
@@ -200,6 +209,8 @@ describe("app shell day-scoped cache keys", () => {
         `${REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
       ])
     );
+    expect(cacheStore.has(dashboardPreviewKey)).toBe(true);
+    expect(cacheStore.has(detailPreviewKey)).toBe(true);
     expect(previewCalls.length).toBeGreaterThan(0);
     expect(previewCalls[0]?.[2]?.tags).toEqual(
       expect.arrayContaining([
