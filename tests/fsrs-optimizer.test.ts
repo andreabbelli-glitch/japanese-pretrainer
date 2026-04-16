@@ -30,6 +30,7 @@ import {
   writeFsrsOptimizerConfig,
   writeFsrsOptimizerState
 } from "@/lib/fsrs-optimizer";
+import * as fsrsOptimizer from "@/lib/fsrs-optimizer";
 import { runFsrsOptimizer } from "@/lib/fsrs-optimizer-trainer";
 import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
 import { applyReviewGrade } from "@/lib/review-service";
@@ -449,6 +450,71 @@ describe("fsrs optimizer", () => {
       } finally {
         executeSpy.mockRestore();
         closeDatabaseClient(concurrentDatabase);
+      }
+    },
+    20_000
+  );
+
+  it(
+    "invalidates the fsrs runtime cache only after the training transaction commits",
+    async () => {
+      await seedFsrsFixture(database, {
+        conceptLogCount: 4,
+        recognitionLogCount: 12
+      });
+
+      const invalidateSpy = vi.spyOn(
+        fsrsOptimizer,
+        "invalidateFsrsOptimizerRuntimeContextCache"
+      );
+      const originalWrite = fsrsOptimizer.writeFsrsOptimizedParameters;
+      let releaseWriteGate: () => void = () => {};
+      let resolveWriteCompleted: () => void = () => {};
+      const writeGate = new Promise<void>((resolve) => {
+        releaseWriteGate = resolve;
+      });
+      const writeCompleted = new Promise<void>((resolve) => {
+        resolveWriteCompleted = resolve;
+      });
+      const writeSpy = vi
+        .spyOn(fsrsOptimizer, "writeFsrsOptimizedParameters")
+        .mockImplementation(async (...args) => {
+          const result = await originalWrite(
+            ...(args as Parameters<typeof originalWrite>)
+          );
+
+          resolveWriteCompleted();
+          await writeGate;
+
+          return result;
+        });
+
+      try {
+        const runPromise = runFsrsOptimizer({
+          database,
+          force: true,
+          now: new Date("2026-04-01T09:00:00.000Z")
+        });
+
+        await writeCompleted;
+
+        expect(writeSpy).toHaveBeenCalledTimes(1);
+        expect(invalidateSpy).not.toHaveBeenCalled();
+
+        releaseWriteGate();
+
+        const result = await runPromise;
+        const snapshot = await getFsrsOptimizerSnapshot(database);
+
+        expect(result.status).toBe("trained");
+        expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
+          "2026-04-01T09:00:00.000Z"
+        );
+        expect(invalidateSpy).toHaveBeenCalledTimes(1);
+      } finally {
+        releaseWriteGate();
+        writeSpy.mockRestore();
+        invalidateSpy.mockRestore();
       }
     },
     20_000

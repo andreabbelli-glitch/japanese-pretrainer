@@ -12,137 +12,149 @@ const defaultKanjiClashSettings: KanjiClashSettingsPreset = {
   manualDefaultSize: 20
 };
 
-test.afterEach(async ({ page }) => {
-  if (page.isClosed()) {
-    return;
-  }
+test.describe("with Kanji Clash settings overrides", () => {
+  test.afterEach(async ({ page }) => {
+    if (page.isClosed()) {
+      return;
+    }
 
-  await restoreKanjiClashSettings(page);
-});
-
-test("smokes automatic mode and invalid manual size fallback from persisted settings", async ({
-  page
-}) => {
-  await applyKanjiClashSettings(page, {
-    defaultScope: "media",
-    manualDefaultSize: 40
+    await restoreKanjiClashSettings(page);
   });
 
-  await page.goto("/kanji-clash?mode=manual&size=999");
+  test("smokes automatic mode and invalid manual size fallback from persisted settings", async ({
+    page
+  }) => {
+    await applyKanjiClashSettings(page, {
+      defaultScope: "media",
+      manualDefaultSize: 40
+    });
 
-  await expect(
-    page.getByRole("heading", { name: "Workspace di confronto" })
-  ).toBeVisible();
-  await expect(
-    page.getByRole("link", { name: "Drill", exact: true })
-  ).toHaveAttribute("aria-current", "page");
-  await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
-  await expect(page.getByText("Sessione finita con taglia 40")).toBeVisible();
+    await page.goto("/kanji-clash?mode=manual&size=999");
 
-  await page.getByRole("link", { name: "FSRS", exact: true }).click();
-  await page.waitForURL(
-    (url) =>
-      url.pathname === "/kanji-clash" &&
-      url.searchParams.get("mode") === "automatic" &&
-      !url.searchParams.has("media") &&
-      !url.searchParams.has("size")
-  );
+    await expect(
+      page.getByRole("heading", { name: "Workspace di confronto" })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Drill", exact: true })
+    ).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
+      "aria-current",
+      "page"
+    );
+    await expect(page.getByText("Sessione finita con taglia 40")).toBeVisible();
 
-  await expect(
-    page.getByRole("link", { name: "FSRS", exact: true })
-  ).toHaveAttribute("aria-current", "page");
-  await expect(
-    page.getByText(
-      "Le nuove coppie restano separate dalla review standard e contano solo nel workspace Kanji Clash."
-    )
-  ).toBeVisible();
+    await Promise.all([
+      page.waitForURL(
+        (url) =>
+          url.pathname === "/kanji-clash" &&
+          url.searchParams.get("mode") === "automatic" &&
+          !url.searchParams.has("media") &&
+          !url.searchParams.has("size")
+      ),
+      page.getByRole("link", { name: "FSRS", exact: true }).click()
+    ]);
 
-  await page.getByRole("link", { name: "Drill", exact: true }).click();
-  await page.waitForURL(
-    (url) =>
-      url.pathname === "/kanji-clash" &&
-      url.searchParams.get("mode") === "manual" &&
-      url.searchParams.get("size") === "40" &&
-      !url.searchParams.has("media")
-  );
+    await expect(
+      page.getByRole("link", { name: "FSRS", exact: true })
+    ).toHaveAttribute("aria-current", "page");
+    await expect(
+      page.getByText(
+        "Le nuove coppie restano separate dalla review standard e contano solo nel workspace Kanji Clash."
+      )
+    ).toBeVisible();
 
-  await expect(
-    page.getByRole("link", { name: "Drill", exact: true })
-  ).toHaveAttribute("aria-current", "page");
-  await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
-});
+    await Promise.all([
+      page.waitForURL(
+        (url) =>
+          url.pathname === "/kanji-clash" &&
+          url.searchParams.get("mode") === "manual" &&
+          url.searchParams.get("size") === "40" &&
+          !url.searchParams.has("media")
+      ),
+      page.getByRole("link", { name: "Drill", exact: true }).click()
+    ]);
 
-test("switches Kanji Clash mode from the UI while preserving media context and normalized size", async ({
-  page
-}) => {
-  await applyKanjiClashSettings(page, {
-    defaultScope: "media",
-    manualDefaultSize: 40
+    await expect(
+      page.getByRole("link", { name: "Drill", exact: true })
+    ).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
+      "aria-current",
+      "page"
+    );
   });
 
-  await page.goto("/kanji-clash?media=zz-kanji-clash-e2e&mode=manual&size=999");
+  test("switches Kanji Clash mode from the UI while preserving media context and normalized size", async ({
+    page
+  }) => {
+    await applyKanjiClashSettings(page, {
+      defaultScope: "media",
+      manualDefaultSize: 40
+    });
 
-  await expect(
-    page.getByRole("heading", { name: "Workspace di confronto" })
-  ).toBeVisible();
-  await expect(
-    page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
-  ).toHaveAttribute("aria-current", "page");
-  await expect(
-    page.getByRole("link", { name: "Drill", exact: true })
-  ).toHaveAttribute("aria-current", "page");
-  await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
-  await expect(page.getByText("Sessione finita con taglia 40")).toBeVisible();
+    await page.goto(
+      "/kanji-clash?media=zz-kanji-clash-e2e&mode=manual&size=999"
+    );
 
-  await page.getByRole("link", { name: "FSRS", exact: true }).click();
-  await page.waitForURL(
-    (url) =>
-      url.pathname === "/kanji-clash" &&
-      url.searchParams.get("media") === "zz-kanji-clash-e2e" &&
-      url.searchParams.get("mode") === "automatic" &&
-      !url.searchParams.has("size")
-  );
+    await expect(
+      page.getByRole("heading", { name: "Workspace di confronto" })
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
+    ).toHaveAttribute("aria-current", "page");
+    await expect(
+      page.getByRole("link", { name: "Drill", exact: true })
+    ).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
+      "aria-current",
+      "page"
+    );
+    await expect(page.getByText("Sessione finita con taglia 40")).toBeVisible();
 
-  await expect(
-    page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
-  ).toHaveAttribute("aria-current", "page");
-  await expect(
-    page.getByRole("link", { name: "FSRS", exact: true })
-  ).toHaveAttribute("aria-current", "page");
-  await expect(
-    page.getByText(
-      "Le nuove coppie restano separate dalla review standard e contano solo nel workspace Kanji Clash."
-    )
-  ).toBeVisible();
+    await Promise.all([
+      page.waitForURL(
+        (url) =>
+          url.pathname === "/kanji-clash" &&
+          url.searchParams.get("media") === "zz-kanji-clash-e2e" &&
+          url.searchParams.get("mode") === "automatic" &&
+          !url.searchParams.has("size")
+      ),
+      page.getByRole("link", { name: "FSRS", exact: true }).click()
+    ]);
 
-  await page.getByRole("link", { name: "Drill", exact: true }).click();
-  await page.waitForURL(
-    (url) =>
-      url.pathname === "/kanji-clash" &&
-      url.searchParams.get("media") === "zz-kanji-clash-e2e" &&
-      url.searchParams.get("mode") === "manual" &&
-      url.searchParams.get("size") === "40"
-  );
+    await expect(
+      page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
+    ).toHaveAttribute("aria-current", "page");
+    await expect(
+      page.getByRole("link", { name: "FSRS", exact: true })
+    ).toHaveAttribute("aria-current", "page");
+    await expect(
+      page.getByText(
+        "Le nuove coppie restano separate dalla review standard e contano solo nel workspace Kanji Clash."
+      )
+    ).toBeVisible();
 
-  await expect(
-    page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
-  ).toHaveAttribute("aria-current", "page");
-  await expect(
-    page.getByRole("link", { name: "Drill", exact: true })
-  ).toHaveAttribute("aria-current", "page");
-  await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
-    "aria-current",
-    "page"
-  );
+    await Promise.all([
+      page.waitForURL(
+        (url) =>
+          url.pathname === "/kanji-clash" &&
+          url.searchParams.get("media") === "zz-kanji-clash-e2e" &&
+          url.searchParams.get("mode") === "manual" &&
+          url.searchParams.get("size") === "40"
+      ),
+      page.getByRole("link", { name: "Drill", exact: true }).click()
+    ]);
+
+    await expect(
+      page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
+    ).toHaveAttribute("aria-current", "page");
+    await expect(
+      page.getByRole("link", { name: "Drill", exact: true })
+    ).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("link", { name: "40" })).toHaveAttribute(
+      "aria-current",
+      "page"
+    );
+  });
 });
 
 test("opens Kanji Clash from global review and leaves review counts unchanged", async ({
@@ -161,14 +173,16 @@ test("opens Kanji Clash from global review and leaves review counts unchanged", 
   });
 
   await expect(kanjiClashCta).toHaveAttribute("href", "/kanji-clash");
-  await kanjiClashCta.click();
-  await page.waitForURL(
-    (url) =>
-      url.pathname === "/kanji-clash" &&
-      !url.searchParams.has("media") &&
-      !url.searchParams.has("mode") &&
-      !url.searchParams.has("size")
-  );
+  await Promise.all([
+    page.waitForURL(
+      (url) =>
+        url.pathname === "/kanji-clash" &&
+        !url.searchParams.has("media") &&
+        !url.searchParams.has("mode") &&
+        !url.searchParams.has("size")
+    ),
+    kanjiClashCta.click()
+  ]);
 
   await expect(
     page.getByRole("heading", { name: "Workspace di confronto" })
@@ -182,14 +196,16 @@ test("opens Kanji Clash from global review and leaves review counts unchanged", 
     )
   ).toBeVisible();
 
-  await page.getByRole("link", { name: "Drill", exact: true }).click();
-  await page.waitForURL(
-    (url) =>
-      url.pathname === "/kanji-clash" &&
-      url.searchParams.get("mode") === "manual" &&
-      url.searchParams.get("size") === "20" &&
-      !url.searchParams.has("media")
-  );
+  await Promise.all([
+    page.waitForURL(
+      (url) =>
+        url.pathname === "/kanji-clash" &&
+        url.searchParams.get("mode") === "manual" &&
+        url.searchParams.get("size") === "20" &&
+        !url.searchParams.has("media")
+    ),
+    page.getByRole("link", { name: "Drill", exact: true }).click()
+  ]);
 
   const firstRound = await readCurrentRound(page);
   await answerRoundWithClick(page, firstRound.correctSide);
@@ -245,14 +261,16 @@ test("opens Kanji Clash from media detail and leaves local review counts unchang
     page.getByRole("link", { name: "ZZ Kanji Clash E2E" })
   ).toHaveAttribute("aria-current", "page");
 
-  await page.getByRole("link", { name: "Drill", exact: true }).click();
-  await page.waitForURL(
-    (url) =>
-      url.pathname === "/kanji-clash" &&
-      url.searchParams.get("media") === "zz-kanji-clash-e2e" &&
-      url.searchParams.get("mode") === "manual" &&
-      url.searchParams.get("size") === "20"
-  );
+  await Promise.all([
+    page.waitForURL(
+      (url) =>
+        url.pathname === "/kanji-clash" &&
+        url.searchParams.get("media") === "zz-kanji-clash-e2e" &&
+        url.searchParams.get("mode") === "manual" &&
+        url.searchParams.get("size") === "20"
+    ),
+    page.getByRole("link", { name: "Drill", exact: true }).click()
+  ]);
 
   const firstRound = await readCurrentRound(page);
   await answerRoundWithClick(page, firstRound.correctSide);

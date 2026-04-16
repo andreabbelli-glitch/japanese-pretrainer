@@ -11,6 +11,7 @@ import {
   getBindingPackageVersion,
   getFsrsOptimizerSnapshot,
   loadFsrsOptimizerLogRows,
+  invalidateFsrsOptimizerRuntimeContextCache,
   normalizeFsrsWeights,
   writeFsrsOptimizedParameters,
   writeFsrsOptimizerConfig,
@@ -212,6 +213,7 @@ export async function runFsrsOptimizer(
         nowIso
       );
     });
+    invalidateFsrsOptimizerRuntimeContextCache();
 
     return {
       lastCheckAt: nowIso,

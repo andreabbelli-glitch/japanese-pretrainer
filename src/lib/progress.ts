@@ -117,12 +117,13 @@ export async function getMediaProgressPageData(
   const resolvedMedia = cacheEligible
     ? await getMediaBySlugCached(database, mediaSlug)
     : null;
-  const mediaRows =
-    resolvedMedia || cacheEligible ? null : await listMediaCached(database);
   const media =
     resolvedMedia ??
-    mediaRows?.find((candidate) => candidate.slug === mediaSlug) ??
-    null;
+    (!cacheEligible
+      ? (await listMediaCached(database)).find(
+          (candidate) => candidate.slug === mediaSlug
+        ) ?? null
+      : null);
 
   if (!media) {
     return null;
@@ -135,16 +136,9 @@ export async function getMediaProgressPageData(
     keyParts: ["progress", "media-page", media.id, `day:${cacheDayKey}`],
     loader: async () => {
       const settingsPromise = getStudySettings(database);
-      const mediaRowsPromise = mediaRows
-        ? Promise.resolve(mediaRows)
-        : listMediaCached(database);
-      const reviewSnapshotsPromise = Promise.all([
-        settingsPromise,
-        mediaRowsPromise
-      ]).then(([settings, resolvedMediaRows]) =>
+      const reviewSnapshotsPromise = settingsPromise.then((settings) =>
         loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id], {
-          resolvedDailyLimit: settings.reviewDailyLimit,
-          resolvedMediaRows
+          resolvedDailyLimit: settings.reviewDailyLimit
         })
       );
       const [sharedMedia, reviewSnapshots, settings] = await Promise.all([

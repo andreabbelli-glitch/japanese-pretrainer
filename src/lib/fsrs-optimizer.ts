@@ -363,7 +363,6 @@ export async function writeFsrsOptimizedParameters(
     nowIso,
     valueJson: JSON.stringify(normalizeFsrsOptimizedParameters(parameters))
   });
-  invalidateFsrsOptimizerRuntimeContextCache();
 }
 
 export function buildFsrsTrainingDataset(
@@ -537,7 +536,7 @@ function canUseFsrsRuntimeContextCache(database: DatabaseClient) {
   );
 }
 
-function invalidateFsrsOptimizerRuntimeContextCache() {
+export function invalidateFsrsOptimizerRuntimeContextCache() {
   cachedFsrsRuntimeContext = null;
 }
 

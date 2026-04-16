@@ -107,9 +107,8 @@ describe("progress, settings, and study controls", () => {
     settingsQuerySpy.mockRestore();
   });
 
-  it("reuses the resolved media row while building the media page", async () => {
+  it("avoids a direct media slug lookup while building the progress page", async () => {
     const mediaFindFirstSpy = vi.spyOn(database.query.media, "findFirst");
-    const mediaFindManySpy = vi.spyOn(database.query.media, "findMany");
 
     const data = await getMediaProgressPageData(
       developmentFixture.mediaSlug,
@@ -118,9 +117,7 @@ describe("progress, settings, and study controls", () => {
 
     expect(data).not.toBeNull();
     expect(mediaFindFirstSpy).not.toHaveBeenCalled();
-    expect(mediaFindManySpy).toHaveBeenCalledTimes(1);
     mediaFindFirstSpy.mockRestore();
-    mediaFindManySpy.mockRestore();
   });
 
   it("recommends review when the queue has only new cards", async () => {

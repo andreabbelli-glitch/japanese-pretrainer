@@ -52,6 +52,10 @@ const studySettingKeys = [
 ] as const satisfies Array<(typeof userSetting.$inferSelect)["key"]>;
 
 type StudySettingKey = (typeof userSetting.$inferSelect)["key"];
+type StudySettingRow = Pick<
+  typeof userSetting.$inferSelect,
+  "key" | "valueJson"
+>;
 
 export async function getStudySettings(
   database: DatabaseClient = db
@@ -83,56 +87,65 @@ export async function getGlossaryDefaultSort(
   return (await loadStudySettingsSnapshot(database)).glossaryDefaultSort;
 }
 
+async function loadStudySettingsRows(
+  database: DatabaseClient
+): Promise<StudySettingRow[]> {
+  return database.query.userSetting.findMany({
+    where: inArray(userSetting.key, studySettingKeys)
+  });
+}
+
+function buildStudySettingsSnapshot(
+  rows: StudySettingRow[]
+): StudySettings {
+  const valuesByKey = new Map(rows.map((row) => [row.key, row.valueJson]));
+
+  return {
+    furiganaMode: parseSettingValue(
+      valuesByKey.get("furigana_mode"),
+      normalizeFuriganaMode,
+      defaultStudySettings.furiganaMode
+    ),
+    glossaryDefaultSort: parseSettingValue(
+      valuesByKey.get("glossary_default_sort"),
+      normalizeGlossaryDefaultSort,
+      defaultStudySettings.glossaryDefaultSort
+    ),
+    kanjiClashDailyNewLimit: parseSettingValue(
+      valuesByKey.get("kanji_clash_daily_new_limit"),
+      normalizeKanjiClashDailyNewLimit,
+      defaultStudySettings.kanjiClashDailyNewLimit
+    ),
+    kanjiClashDefaultScope: parseSettingValue(
+      valuesByKey.get("kanji_clash_default_scope"),
+      normalizeKanjiClashDefaultScope,
+      defaultStudySettings.kanjiClashDefaultScope
+    ),
+    kanjiClashManualDefaultSize: parseSettingValue(
+      valuesByKey.get("kanji_clash_manual_default_size"),
+      normalizeKanjiClashManualDefaultSize,
+      defaultStudySettings.kanjiClashManualDefaultSize
+    ),
+    reviewFrontFurigana: parseSettingValue(
+      valuesByKey.get("review_front_furigana"),
+      normalizeReviewFrontFurigana,
+      defaultStudySettings.reviewFrontFurigana
+    ),
+    reviewDailyLimit: parseSettingValue(
+      valuesByKey.get("review_daily_limit"),
+      normalizeReviewDailyLimit,
+      defaultStudySettings.reviewDailyLimit
+    )
+  };
+}
+
 async function loadStudySettingsSnapshot(
   database: DatabaseClient
 ): Promise<StudySettings> {
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["settings", "snapshot"],
-    loader: async () => {
-      const rows = await database.query.userSetting.findMany({
-        where: inArray(userSetting.key, studySettingKeys)
-      });
-      const valuesByKey = new Map(rows.map((row) => [row.key, row.valueJson]));
-
-      return {
-        furiganaMode: parseSettingValue(
-          valuesByKey.get("furigana_mode"),
-          normalizeFuriganaMode,
-          defaultStudySettings.furiganaMode
-        ),
-        glossaryDefaultSort: parseSettingValue(
-          valuesByKey.get("glossary_default_sort"),
-          normalizeGlossaryDefaultSort,
-          defaultStudySettings.glossaryDefaultSort
-        ),
-        kanjiClashDailyNewLimit: parseSettingValue(
-          valuesByKey.get("kanji_clash_daily_new_limit"),
-          normalizeKanjiClashDailyNewLimit,
-          defaultStudySettings.kanjiClashDailyNewLimit
-        ),
-        kanjiClashDefaultScope: parseSettingValue(
-          valuesByKey.get("kanji_clash_default_scope"),
-          normalizeKanjiClashDefaultScope,
-          defaultStudySettings.kanjiClashDefaultScope
-        ),
-        kanjiClashManualDefaultSize: parseSettingValue(
-          valuesByKey.get("kanji_clash_manual_default_size"),
-          normalizeKanjiClashManualDefaultSize,
-          defaultStudySettings.kanjiClashManualDefaultSize
-        ),
-        reviewFrontFurigana: parseSettingValue(
-          valuesByKey.get("review_front_furigana"),
-          normalizeReviewFrontFurigana,
-          defaultStudySettings.reviewFrontFurigana
-        ),
-        reviewDailyLimit: parseSettingValue(
-          valuesByKey.get("review_daily_limit"),
-          normalizeReviewDailyLimit,
-          defaultStudySettings.reviewDailyLimit
-        )
-      };
-    },
+    loader: () => loadStudySettingsRows(database).then(buildStudySettingsSnapshot),
     tags: [SETTINGS_TAG]
   });
 }
@@ -141,7 +154,8 @@ export async function updateStudySettings(
   input: StudySettingsInput,
   database: DatabaseClient = db
 ) {
-  const current = await getStudySettings(database);
+  const rows = await loadStudySettingsRows(database);
+  const current = buildStudySettingsSnapshot(rows);
   const next: StudySettings = {
     furiganaMode:
       input.furiganaMode === undefined
@@ -172,6 +186,7 @@ export async function updateStudySettings(
         ? current.reviewDailyLimit
         : normalizeReviewDailyLimit(input.reviewDailyLimit)
   };
+  const rowsByKey = new Map(rows.map((row) => [row.key, row]));
   const changedSettings = [
     ["furigana_mode", current.furiganaMode, next.furiganaMode],
     [
@@ -200,16 +215,22 @@ export async function updateStudySettings(
       next.reviewFrontFurigana
     ],
     ["review_daily_limit", current.reviewDailyLimit, next.reviewDailyLimit]
-  ].flatMap(([key, currentValue, nextValue]) =>
-    currentValue === nextValue
-      ? []
-      : [
+  ].flatMap(([key, currentValue, nextValue]) => {
+    const rawRow = rowsByKey.get(key as StudySettingKey);
+    const nextValueJson = JSON.stringify(nextValue);
+    const shouldWrite = rawRow
+      ? rawRow.valueJson !== nextValueJson
+      : currentValue !== nextValue;
+
+    return shouldWrite
+      ? [
           {
             key: key as StudySettingKey,
-            valueJson: JSON.stringify(nextValue)
+            valueJson: nextValueJson
           }
         ]
-  );
+      : [];
+  });
 
   if (changedSettings.length === 0) {
     return next;

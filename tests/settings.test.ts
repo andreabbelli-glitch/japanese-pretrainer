@@ -8,6 +8,7 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   runMigrations,
+  userSetting,
   type DatabaseClient
 } from "@/db";
 import {
@@ -89,6 +90,62 @@ describe("study settings", () => {
     expect(rowsByKey.get("review_daily_limit")?.updatedAt).toBe(
       "2026-04-16T10:00:00.000Z"
     );
+  });
+
+  it("repairs dirty persisted settings when saving unchanged values", async () => {
+    vi.useFakeTimers();
+
+    await database.insert(userSetting).values([
+      {
+        key: "furigana_mode",
+        valueJson: '"hover"',
+        updatedAt: "2026-04-16T09:00:00.000Z"
+      },
+      {
+        key: "review_daily_limit",
+        valueJson: '"20"',
+        updatedAt: "2026-04-16T09:00:00.000Z"
+      }
+    ]);
+
+    vi.setSystemTime(new Date("2026-04-16T10:00:00.000Z"));
+    await updateStudySettings({}, database);
+
+    const rows = await database.query.userSetting.findMany();
+    const rowsByKey = new Map(rows.map((row) => [row.key, row]));
+
+    expect(rows).toHaveLength(2);
+    expect(rowsByKey.get("furigana_mode")?.valueJson).toBe('"hover"');
+    expect(rowsByKey.get("furigana_mode")?.updatedAt).toBe(
+      "2026-04-16T09:00:00.000Z"
+    );
+    expect(rowsByKey.get("review_daily_limit")?.valueJson).toBe("20");
+    expect(rowsByKey.get("review_daily_limit")?.updatedAt).toBe(
+      "2026-04-16T10:00:00.000Z"
+    );
+  });
+
+  it("does not rewrite canonical settings on a no-op save", async () => {
+    vi.useFakeTimers();
+
+    await database.insert(userSetting).values({
+      key: "review_daily_limit",
+      valueJson: "20",
+      updatedAt: "2026-04-16T09:00:00.000Z"
+    });
+
+    vi.setSystemTime(new Date("2026-04-16T10:00:00.000Z"));
+    await updateStudySettings({}, database);
+
+    const rows = await database.query.userSetting.findMany();
+
+    expect(rows).toEqual([
+      {
+        key: "review_daily_limit",
+        valueJson: "20",
+        updatedAt: "2026-04-16T09:00:00.000Z"
+      }
+    ]);
   });
 
   it("falls back to global scope when media is missing", () => {

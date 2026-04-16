@@ -56,10 +56,7 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
-import {
-  GLOSSARY_SUMMARY_TAG,
-  REVIEW_SUMMARY_TAG
-} from "@/lib/data-cache";
+import * as dataCache from "@/lib/data-cache";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";
 import { getMediaProgressPageData } from "@/lib/progress";
@@ -196,17 +193,17 @@ describe("app shell day-scoped cache keys", () => {
     expect(cacheStore.has(studyOnlyKey)).toBe(true);
     expect(studyOnlyCalls[0]?.[2]?.tags).toEqual(
       expect.arrayContaining([
-        `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,
-        REVIEW_SUMMARY_TAG,
-        `${REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
+        `${dataCache.GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,
+        dataCache.REVIEW_SUMMARY_TAG,
+        `${dataCache.REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
       ])
     );
     expect(summaryCalls.length).toBeGreaterThan(0);
     expect(summaryCalls[0]?.[2]?.tags).toEqual(
       expect.arrayContaining([
-        `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,
-        REVIEW_SUMMARY_TAG,
-        `${REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
+        `${dataCache.GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,
+        dataCache.REVIEW_SUMMARY_TAG,
+        `${dataCache.REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
       ])
     );
     expect(cacheStore.has(dashboardPreviewKey)).toBe(true);
@@ -214,24 +211,24 @@ describe("app shell day-scoped cache keys", () => {
     expect(previewCalls.length).toBeGreaterThan(0);
     expect(previewCalls[0]?.[2]?.tags).toEqual(
       expect.arrayContaining([
-        `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,
-        REVIEW_SUMMARY_TAG,
-        `${REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
+        `${dataCache.GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,
+        dataCache.REVIEW_SUMMARY_TAG,
+        `${dataCache.REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
       ])
     );
   });
 
-  it("avoids reloading the full media list on warm media detail cache hits", async () => {
+  it("avoids loading the full media list on cache-enabled progress loads", async () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));
 
-    const mediaFindManySpy = vi.spyOn(database.query.media, "findMany");
+    const listMediaCachedSpy = vi.spyOn(dataCache, "listMediaCached");
 
     await getMediaProgressPageData(developmentFixture.mediaSlug, database);
     await getMediaProgressPageData(developmentFixture.mediaSlug, database);
 
-    expect(mediaFindManySpy).toHaveBeenCalledTimes(1);
+    expect(listMediaCachedSpy).not.toHaveBeenCalled();
 
-    mediaFindManySpy.mockRestore();
+    listMediaCachedSpy.mockRestore();
   });
 });

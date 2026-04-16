@@ -17,6 +17,7 @@ import {
   buildReviewSummaryTags,
   canUseDataCache,
   getMediaBySlugCached,
+  listActiveMediaIdsCached,
   listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
@@ -533,14 +534,13 @@ export async function loadGlobalAndMediaReviewOverviewSnapshots(
   database: DatabaseClient,
   visibleMediaIds: string[],
   options: {
-    resolvedMediaRows?: MediaListItem[];
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
   } = {}
 ) {
-  const media = options.resolvedMediaRows ?? (await listMediaCached(database));
+  const mediaIds = await listActiveMediaIdsCached(database);
 
-  if (media.length === 0) {
+  if (mediaIds.length === 0) {
     const emptySnapshot = buildReviewOverviewSnapshot({
       cards: [],
       dailyLimit: 0,
@@ -560,7 +560,7 @@ export async function loadGlobalAndMediaReviewOverviewSnapshots(
   const now = new Date();
   const workspace = await loadReviewWorkspaceV2({
     database,
-    mediaIds: media.map((item) => item.id),
+    mediaIds,
     now,
     resolvedDailyLimit: options.resolvedDailyLimit,
     resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount

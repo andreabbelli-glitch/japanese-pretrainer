@@ -1,7 +1,13 @@
 import * as nextCache from "next/cache";
 import { cache } from "react";
 
-import { db, getMediaBySlug, listMedia, type DatabaseClient } from "@/db";
+import {
+  db,
+  getMediaBySlug,
+  listActiveMediaIds,
+  listMedia,
+  type DatabaseClient
+} from "@/db";
 
 export const MEDIA_LIST_TAG = "media-list";
 export const SETTINGS_TAG = "settings";
@@ -82,6 +88,15 @@ export async function listMediaCached(database: DatabaseClient = db) {
     enabled: canUseDataCache(database),
     keyParts: ["media-list"],
     loader: () => listMedia(database),
+    tags: [MEDIA_LIST_TAG]
+  });
+}
+
+export async function listActiveMediaIdsCached(database: DatabaseClient = db) {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["media-active-ids"],
+    loader: () => listActiveMediaIds(database),
     tags: [MEDIA_LIST_TAG]
   });
 }
