@@ -87,7 +87,7 @@ describe("app shell day-scoped cache keys", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("rotates dashboard, media detail, and progress caches when the local day changes", async () => {
+  it("rotates only the day-sensitive app shell caches when the local day changes", async () => {
     vi.useFakeTimers();
 
     vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));
@@ -160,8 +160,7 @@ describe("app shell day-scoped cache keys", () => {
       "app-shell",
       "media-detail",
       developmentFixture.mediaSlug,
-      "study-only",
-      "day:2026-03-10"
+      "study-only"
     ]);
     const progressSummaryKey = JSON.stringify([
       "app-shell",
@@ -194,6 +193,7 @@ describe("app shell day-scoped cache keys", () => {
     );
 
     expect(studyOnlyCalls.length).toBeGreaterThan(0);
+    expect(cacheStore.has(studyOnlyKey)).toBe(true);
     expect(studyOnlyCalls[0]?.[2]?.tags).toEqual(
       expect.arrayContaining([
         `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`,

@@ -96,17 +96,20 @@ export async function getMediaDetailData(
     return null;
   }
 
-  const cacheDayKey = getLocalIsoDateKey(new Date());
+  const keyParts = [
+    "app-shell",
+    "media-detail",
+    mediaSlug,
+    options.includeReviewCounts === false ? "study-only" : "full"
+  ];
+
+  if (options.includeReviewCounts !== false) {
+    keyParts.push(`day:${getLocalIsoDateKey(new Date())}`);
+  }
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: [
-      "app-shell",
-      "media-detail",
-      mediaSlug,
-      options.includeReviewCounts === false ? "study-only" : "full",
-      `day:${cacheDayKey}`
-    ],
+    keyParts,
     loader: () =>
       buildMediaShellSnapshot(database, media, {
         includeReviewCounts: options.includeReviewCounts
