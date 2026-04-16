@@ -126,10 +126,31 @@ export async function loadGlossaryPageData(
     entryId: entry.internalId,
     entryType: entry.kind
   }));
-  const lessonConnections = await listEntryLessonConnections(
-    database,
-    resultRefs
+  const selectedPreviewEntry = resolvePreviewEntry(
+    searchParams,
+    filteredEntries
   );
+  const selectedPreviewHasCards = selectedPreviewEntry?.hasCards === true;
+  const [lessonConnections, previewEntry, selectedPreviewCardConnections] =
+    await Promise.all([
+      listEntryLessonConnections(database, resultRefs),
+      selectedPreviewEntry
+        ? hydrateLocalGlossaryPreviewEntry(
+            database,
+            media.id,
+            selectedPreviewEntry,
+            loadMode
+          )
+        : Promise.resolve<RankedGlossaryEntry | null>(null),
+      selectedPreviewEntry && selectedPreviewHasCards
+        ? listEntryCardConnections(database, [
+            {
+              entryId: selectedPreviewEntry.internalId,
+              entryType: selectedPreviewEntry.kind
+            }
+          ])
+        : Promise.resolve([])
+    ]);
   const lessonsByEntry = groupRowsByEntry(lessonConnections);
   const mediaSummary = buildGlossaryMediaSummary(media);
   const results = filteredEntries.map((entry) => {
@@ -161,33 +182,10 @@ export async function loadGlossaryPageData(
           studyState: entry.studyState
         }
       ],
-      primaryLesson,
-      resultKey: `${entry.kind}:entry:${entry.internalId}`
+      resultKey: `${entry.kind}:entry:${entry.internalId}`,
+      primaryLesson
     };
   });
-  const selectedPreviewEntry = resolvePreviewEntry(searchParams, results);
-  const previewEntry = selectedPreviewEntry
-    ? await hydrateLocalGlossaryPreviewEntry(
-        database,
-        media.id,
-        selectedPreviewEntry,
-        loadMode
-      )
-    : null;
-  const selectedPreviewHasCards =
-    selectedPreviewEntry !== undefined &&
-    "hasCards" in selectedPreviewEntry &&
-    selectedPreviewEntry.hasCards;
-  const selectedPreviewCardConnections = previewEntry
-    ? selectedPreviewHasCards
-      ? await listEntryCardConnections(database, [
-          {
-            entryId: previewEntry.internalId,
-            entryType: previewEntry.kind
-          }
-        ])
-      : []
-    : [];
   const preview = previewEntry
     ? buildGlossaryDetailData({
         cardConnections: selectedPreviewCardConnections,
@@ -376,7 +374,7 @@ export async function loadGlossaryDetailData(
 async function hydrateLocalGlossaryPreviewEntry(
   database: DatabaseClient,
   mediaId: string,
-  entry: GlossaryPageData["results"][number],
+  entry: RankedGlossaryEntry,
   mode: GlossaryLoadMode
 ): Promise<RankedGlossaryEntry> {
   if (mode === "search") {
@@ -386,7 +384,12 @@ async function hydrateLocalGlossaryPreviewEntry(
   const previewSource =
     entry.kind === "term"
       ? await getGlossaryEntryBySourceId(database, "term", mediaId, entry.id)
-      : await getGlossaryEntryBySourceId(database, "grammar", mediaId, entry.id);
+      : await getGlossaryEntryBySourceId(
+          database,
+          "grammar",
+          mediaId,
+          entry.id
+        );
 
   if (!previewSource) {
     return entry;
@@ -963,9 +966,9 @@ function dedupeFullGlossaryEntries(
   return [...unique.values()];
 }
 
-function resolvePreviewEntry(
+function resolvePreviewEntry<T extends { id: string; kind: GlossaryKind }>(
   searchParams: Record<string, string | string[] | undefined>,
-  results: GlossaryPageData["results"]
+  results: T[]
 ) {
   const previewKind = readMatchingSearchParam(
     searchParams,
