@@ -2,7 +2,6 @@ import {
   getCrossMediaSiblingCounts,
   getGlossaryEntriesByIds,
   listEntryCardConnections,
-  listEntryStudySignals,
   type EntryCardConnection,
   type DatabaseClient,
   type GrammarGlossaryEntry,
@@ -18,7 +17,7 @@ import type {
   TextbookTooltipEntry
 } from "@/lib/textbook-types";
 
-type StudySignalRow = Awaited<ReturnType<typeof listEntryStudySignals>>[number];
+type StudySignalRow = Pick<EntryCardConnection, "manualOverride" | "reviewState">;
 
 export async function loadLessonTooltipEntries(input: {
   database: DatabaseClient;
@@ -30,17 +29,8 @@ export async function loadLessonTooltipEntries(input: {
   const uniqueLessonEntryLinks = dedupeLessonEntryLinks(input.lessonEntryLinks);
   const termIds: string[] = [];
   const grammarIds: string[] = [];
-  const studySignalEntries: Array<{
-    entryId: string;
-    entryType: "term" | "grammar";
-  }> = [];
 
   for (const entry of uniqueLessonEntryLinks) {
-    studySignalEntries.push({
-      entryId: entry.entryId,
-      entryType: entry.entryType
-    });
-
     if (entry.entryType === "term") {
       termIds.push(entry.entryId);
       continue;
@@ -55,22 +45,20 @@ export async function loadLessonTooltipEntries(input: {
   const [
     terms,
     grammar,
-    studySignals,
     cardConnections,
     termCrossMediaCounts,
     grammarCrossMediaCounts
   ] = await Promise.all([
     getGlossaryEntriesByIds(input.database, "term", termIds),
     getGlossaryEntriesByIds(input.database, "grammar", grammarIds),
-    listEntryStudySignals(input.database, studySignalEntries),
-    listEntryCardConnections(input.database, studySignalEntries),
+    listEntryCardConnections(input.database, uniqueLessonEntryLinks),
     getCrossMediaSiblingCounts(input.database, "term", termIds),
     getCrossMediaSiblingCounts(input.database, "grammar", grammarIds)
   ]);
   const termMap = new Map(terms.map((entry) => [entry.id, entry]));
   const grammarMap = new Map(grammar.map((entry) => [entry.id, entry]));
   const grammarCardFrontByEntryId = buildGrammarCardFrontMap(cardConnections);
-  const studySignalsByEntry = buildStudySignalMap(studySignals);
+  const studySignalsByEntry = buildStudySignalMap(cardConnections);
 
   const baseEntries = uniqueLessonEntryLinks.flatMap((link) => {
     if (link.entryType === "term") {
@@ -131,19 +119,27 @@ function dedupeLessonEntryLinks(
   });
 }
 
-function buildStudySignalMap(rows: StudySignalRow[]) {
+function buildStudySignalMap(cardConnections: EntryCardConnection[]) {
   const map = new Map<string, StudySignalRow[]>();
 
-  for (const row of rows) {
-    const key = buildEntryKey(row.entryType, row.entryId);
-    const existing = map.get(key);
-
-    if (existing) {
-      existing.push(row);
+  for (const row of cardConnections) {
+    if (row.cardStatus !== "active") {
       continue;
     }
 
-    map.set(key, [row]);
+    const key = buildEntryKey(row.entryType, row.entryId);
+    const existing = map.get(key);
+    const signal = {
+      manualOverride: row.manualOverride,
+      reviewState: row.reviewState
+    } satisfies StudySignalRow;
+
+    if (existing) {
+      existing.push(signal);
+      continue;
+    }
+
+    map.set(key, [signal]);
   }
 
   return map;

@@ -9,6 +9,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
+  card,
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
@@ -1070,6 +1071,28 @@ describe("textbook data", () => {
         reading: "たけい"
       }
     ]);
+  });
+
+  it("ignores suspended cards when deriving tooltip study state labels", async () => {
+    await database
+      .update(card)
+      .set({
+        status: "suspended"
+      })
+      .where(eq(card.id, developmentFixture.primaryCardId));
+
+    const tooltipEntries = await getTextbookLessonTooltipEntries(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(
+      tooltipEntries?.find((entry) => entry.kind === "term")?.statusLabel
+    ).toBe("Disponibile");
+    expect(
+      tooltipEntries?.find((entry) => entry.kind === "grammar")?.statusLabel
+    ).toBe("Già nota");
   });
 
   it("resolves textbook tooltip entries inside the current media when source ids are reused across media", async () => {
