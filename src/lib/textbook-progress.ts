@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
 import { db, lessonProgress, type DatabaseClient } from "@/db";
 import { updateStudySettings, type FuriganaMode } from "@/lib/settings";
@@ -19,48 +19,47 @@ export async function recordLessonOpened(
   database: DatabaseClient = db
 ): Promise<LessonOpenState> {
   const nowIso = new Date().toISOString();
-  const existing = await database.query.lessonProgress.findFirst({
-    where: eq(lessonProgress.lessonId, lessonId)
-  });
-
-  if (!existing) {
-    await database.insert(lessonProgress).values({
+  const [updated] = await database
+    .insert(lessonProgress)
+    .values({
       lessonId,
       status: "in_progress",
       startedAt: nowIso,
       completedAt: null,
       lastOpenedAt: nowIso
+    })
+    .onConflictDoUpdate({
+      target: lessonProgress.lessonId,
+      set: {
+        status: sql`case
+          when ${lessonProgress.status} = 'completed'
+            then ${lessonProgress.status}
+          else 'in_progress'
+        end`,
+        startedAt: sql`case
+          when ${lessonProgress.status} = 'not_started'
+            or ${lessonProgress.startedAt} is null
+            then excluded.started_at
+          else ${lessonProgress.startedAt}
+        end`,
+        completedAt: sql`case
+          when ${lessonProgress.status} = 'completed'
+            then ${lessonProgress.completedAt}
+          else null
+        end`,
+        lastOpenedAt: sql`excluded.last_opened_at`
+      }
+    })
+    .returning({
+      lastOpenedAt: lessonProgress.lastOpenedAt,
+      startedAt: lessonProgress.startedAt,
+      status: lessonProgress.status
     });
 
-    return {
-      lastOpenedAt: nowIso,
-      startedAt: nowIso,
-      status: "in_progress"
-    };
-  }
-
-  const nextStatus =
-    existing.status === "completed" ? "completed" : "in_progress";
-  const nextStartedAt =
-    existing.status === "not_started" || existing.startedAt === null
-      ? nowIso
-      : existing.startedAt;
-
-  await database
-    .update(lessonProgress)
-    .set({
-      status: nextStatus,
-      startedAt: nextStartedAt,
-      completedAt:
-        existing.status === "completed" ? existing.completedAt : null,
-      lastOpenedAt: nowIso
-    })
-    .where(eq(lessonProgress.lessonId, lessonId));
-
   return {
-    lastOpenedAt: nowIso,
-    startedAt: nextStartedAt,
-    status: nextStatus
+    lastOpenedAt: updated?.lastOpenedAt ?? nowIso,
+    startedAt: updated?.startedAt ?? nowIso,
+    status: updated?.status === "completed" ? "completed" : "in_progress"
   };
 }
 

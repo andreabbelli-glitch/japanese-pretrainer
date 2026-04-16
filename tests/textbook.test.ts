@@ -434,6 +434,34 @@ describe("textbook data", () => {
     ).toBe("in_progress");
   });
 
+  it("keeps completed lesson progress completed when reopening the lesson", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "completed",
+        startedAt: "2026-03-09T10:00:00.000Z",
+        completedAt: "2026-03-11T10:00:00.000Z",
+        lastOpenedAt: "2026-03-10T10:00:00.000Z"
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const openedState = await recordLessonOpened(
+      developmentFixture.lessonId,
+      database
+    );
+    const progress = await database.query.lessonProgress.findFirst({
+      where: eq(lessonProgress.lessonId, developmentFixture.lessonId)
+    });
+
+    expect(openedState.status).toBe("completed");
+    expect(openedState.startedAt).toBe("2026-03-09T10:00:00.000Z");
+    expect(progress?.status).toBe("completed");
+    expect(progress?.startedAt).toBe("2026-03-09T10:00:00.000Z");
+    expect(progress?.completedAt).toBe("2026-03-11T10:00:00.000Z");
+    expect(progress?.lastOpenedAt).toBe(openedState.lastOpenedAt);
+    expect(progress?.lastOpenedAt).not.toBe("2026-03-10T10:00:00.000Z");
+  });
+
   it("applies lesson completion locally without reloading the full lesson payload", async () => {
     await database
       .update(lessonProgress)
