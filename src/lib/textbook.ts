@@ -2,7 +2,6 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import {
   db,
-  getLessonReaderBySlug,
   getLessonTooltipSourceBySlug,
   listLessonEntryLinks,
   listLessonsByMediaId,
@@ -119,6 +118,7 @@ export async function getTextbookLessonData(
     getTextbookLessonBodyData({
       database,
       lessonSlug,
+      mediaSlug,
       mediaId: media.id
     })
   ]);
@@ -128,12 +128,30 @@ export async function getTextbookLessonData(
   }
 
   const currentIndex = indexModel.lessons.findIndex(
-    (item) => item.id === lesson.lesson.id
+    (item) => item.id === lesson.id
   );
+
+  if (currentIndex < 0) {
+    return null;
+  }
+
+  const currentLesson = indexModel.lessons[currentIndex]!;
 
   return {
     ...indexModel,
-    lesson: lesson.lesson,
+    lesson: {
+      ast: lesson.ast,
+      completedAt: currentLesson.completedAt,
+      difficulty: currentLesson.difficulty,
+      excerpt: currentLesson.excerpt,
+      id: currentLesson.id,
+      segmentTitle: currentLesson.segmentTitle,
+      slug: currentLesson.slug,
+      status: currentLesson.status,
+      statusLabel: currentLesson.statusLabel,
+      summary: currentLesson.summary,
+      title: currentLesson.title
+    },
     entries: [],
     previousLesson:
       currentIndex > 0 ? indexModel.lessons[currentIndex - 1] : null,
@@ -215,36 +233,36 @@ async function getTextbookIndexDataForMedia(
 async function getTextbookLessonBodyData(input: {
   database: DatabaseClient;
   lessonSlug: string;
+  mediaSlug: string;
   mediaId: string;
 }) {
-  const lesson = await getLessonReaderBySlug(
-    input.database,
-    input.mediaId,
-    input.lessonSlug
-  );
+  return runWithTaggedCache({
+    enabled: canUseDataCache(input.database),
+    keyParts: ["textbook", "lesson-body", input.mediaSlug, input.lessonSlug],
+    loader: () =>
+      loadTextbookLessonBodyData(
+        input.database,
+        input.mediaId,
+        input.lessonSlug
+      ),
+    tags: [MEDIA_LIST_TAG]
+  });
+}
+
+async function loadTextbookLessonBodyData(
+  database: DatabaseClient,
+  mediaId: string,
+  lessonSlug: string
+) {
+  const lesson = await getLessonTooltipSourceBySlug(database, mediaId, lessonSlug);
 
   if (!lesson) {
     return null;
   }
 
-  const lessonAst = parseLessonAst(lesson.content?.astJson ?? null);
-
   return {
-    lesson: {
-      ast: lessonAst,
-      completedAt: lesson.progress?.completedAt ?? null,
-      difficulty: lesson.difficulty,
-      excerpt: lesson.content?.excerpt ?? null,
-      id: lesson.id,
-      segmentTitle: lesson.segment?.title ?? "Percorso principale",
-      slug: lesson.slug,
-      status: normalizeLessonStatus(lesson.progress?.status ?? null),
-      statusLabel: formatLessonProgressStatusLabel(
-        lesson.progress?.status ?? null
-      ),
-      summary: lesson.summary,
-      title: lesson.title
-    }
+    ast: parseLessonAst(lesson.content?.astJson ?? null),
+    id: lesson.id
   };
 }
 

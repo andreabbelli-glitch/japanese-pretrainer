@@ -68,7 +68,7 @@ import {
   revalidateSettingsCache,
   SETTINGS_TAG
 } from "@/lib/data-cache";
-import { getTextbookIndexData } from "@/lib/textbook";
+import { getTextbookIndexData, getTextbookLessonData } from "@/lib/textbook";
 
 describe("textbook index cache", () => {
   let database: DatabaseClient;
@@ -139,5 +139,38 @@ describe("textbook index cache", () => {
 
     expect(revalidateTagMock).toHaveBeenCalledWith(MEDIA_LIST_TAG, "max");
     expect(revalidateTagMock).toHaveBeenCalledWith(SETTINGS_TAG, "max");
+  });
+
+  it("reuses the cached lesson body while keeping the lesson page live", async () => {
+    const cacheKey = JSON.stringify([
+      "textbook",
+      "lesson-body",
+      developmentFixture.mediaSlug,
+      "core-vocab"
+    ]);
+
+    const first = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+    const second = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(first).not.toBeNull();
+    expect(second).toEqual(first);
+    expect(noStoreMock).toHaveBeenCalledTimes(2);
+
+    const keySpecificCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === cacheKey
+    );
+    expect(keySpecificCalls).toHaveLength(2);
+    expect(cacheStore.has(cacheKey)).toBe(true);
+
+    const cacheOptions = keySpecificCalls[0]?.[2];
+    expect(cacheOptions?.tags).toEqual(expect.arrayContaining([MEDIA_LIST_TAG]));
   });
 });

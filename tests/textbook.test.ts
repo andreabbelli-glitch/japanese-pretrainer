@@ -214,6 +214,7 @@ describe("textbook data", () => {
   it("reuses the resolved media row and furigana settings while loading a lesson", async () => {
     const mediaQuerySpy = vi.spyOn(database.query.media, "findFirst");
     const settingsQuerySpy = vi.spyOn(database.query.userSetting, "findMany");
+    const lessonQuerySpy = vi.spyOn(database.query.lesson, "findFirst");
 
     const lessonData = await getTextbookLessonData(
       developmentFixture.mediaSlug,
@@ -224,9 +225,29 @@ describe("textbook data", () => {
     expect(lessonData).not.toBeNull();
     expect(mediaQuerySpy).toHaveBeenCalledTimes(1);
     expect(settingsQuerySpy).toHaveBeenCalledTimes(1);
+    expect(lessonQuerySpy).toHaveBeenCalledTimes(1);
+    expect(lessonQuerySpy.mock.calls[0]?.[0]).toMatchObject({
+      columns: {
+        id: true
+      },
+      with: {
+        content: {
+          columns: {
+            astJson: true
+          }
+        }
+      }
+    });
+    expect(lessonQuerySpy.mock.calls[0]?.[0]?.with).not.toHaveProperty(
+      "progress"
+    );
+    expect(lessonQuerySpy.mock.calls[0]?.[0]?.with).not.toHaveProperty(
+      "segment"
+    );
 
     mediaQuerySpy.mockRestore();
     settingsQuerySpy.mockRestore();
+    lessonQuerySpy.mockRestore();
   });
 
   it("returns null for a missing media slug before reading furigana settings", async () => {
