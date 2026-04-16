@@ -48,7 +48,11 @@ export const card = sqliteTable(
     updatedAt: text("updated_at").notNull()
   },
   (table) => [
-    index("card_media_order_idx").on(table.mediaId, table.orderIndex),
+    index("card_media_order_idx").on(
+      table.mediaId,
+      table.orderIndex,
+      table.createdAt
+    ),
     index("card_lesson_idx").on(table.lessonId),
     index("card_segment_order_idx").on(table.segmentId, table.orderIndex),
     index("card_status_type_idx").on(table.status, table.cardType)

@@ -75,7 +75,11 @@ export const lesson = sqliteTable(
   },
   (table) => [
     uniqueIndex("lesson_media_slug_unique").on(table.mediaId, table.slug),
-    index("lesson_media_order_idx").on(table.mediaId, table.orderIndex),
+    index("lesson_media_order_idx").on(
+      table.mediaId,
+      table.orderIndex,
+      table.slug
+    ),
     index("lesson_segment_order_idx").on(table.segmentId, table.orderIndex)
   ]
 );
