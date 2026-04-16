@@ -72,6 +72,7 @@ type ReviewQueueCardMapInput = {
   contextCache?: Map<string, ReviewQueueCard["contexts"]>;
   entryLookup: Map<string, ReviewEntryLookupItem>;
   fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
+  includePronunciations?: boolean;
   mediaById: ReviewMediaLookup;
   nowIso: string;
   selectedCardId?: string | null;
@@ -177,6 +178,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
           fsrsOptimizerSnapshot: await getFsrsOptimizerRuntimeSnapshot(
             input.database
           ),
+          includePronunciations: false,
           mediaById: input.mediaById,
           nowIso,
           selectedCardId: selection.selectedCardId,
@@ -830,7 +832,10 @@ export function mapReviewQueueSubjectModel(
       input.mediaById,
       input.contextCache,
       input.visibleMediaId
-    )
+    ),
+    {
+      includePronunciations: input.includePronunciations
+    }
   );
 }
 

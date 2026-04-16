@@ -569,7 +569,10 @@ export function mapQueueCard(
   nowIso: string,
   fsrsOptimizerSnapshot?: FsrsOptimizerSnapshot,
   queueStateSnapshot?: ReviewQueueStateSnapshot,
-  contexts?: ReviewQueueCard["contexts"]
+  contexts?: ReviewQueueCard["contexts"],
+  options: {
+    includePronunciations?: boolean;
+  } = {}
 ): ReviewQueueCard {
   const cardMedia = resolveReviewCardMedia(card, mediaById);
   const sortedEntryLinks = card.entryLinks.slice().sort(compareEntryLinks);
@@ -595,11 +598,10 @@ export function mapQueueCard(
   });
   const resolved =
     queueStateSnapshot ?? resolveReviewQueueState(card.status, null, nowIso);
-  const pronunciations = buildReviewCardPronunciations(
-    card,
-    entryLookup,
-    sortedEntryLinks
-  );
+  const pronunciations =
+    options.includePronunciations === false
+      ? []
+      : buildReviewCardPronunciations(card, entryLookup, sortedEntryLinks);
   const reading = resolveReviewCardReading(card, entryLookup, sortedEntryLinks);
 
   return {
