@@ -110,19 +110,14 @@ export async function loadStableReviewWorkspaceV2(input: {
         listReviewCardsByMediaIds(input.database, input.mediaIds)
       )
     : Promise.resolve([]));
-  const eligibleCards = await measureWith(
+  const cards = await measureWith(
     input.profiler,
-    "buildEligibleReviewCardsByMedia",
-    () =>
-      buildEligibleReviewCardsByMedia({
-        cards: reviewCards,
-        mediaIds: input.mediaIds
-      }),
+    "filterEligibleReviewCards",
+    () => filterEligibleReviewCards(reviewCards),
     (value) => ({
-      mediaBuckets: value.size
+      cards: value.length
     })
   );
-  const cards = [...eligibleCards.values()].flat();
 
   if (cards.length === 0) {
     return {
@@ -436,7 +431,7 @@ export async function getEligibleReviewCardsByMediaId(
 ): Promise<ReviewCardListItem[]> {
   const cards = await listReviewCardsByMediaId(database, mediaId);
 
-  return cards.filter((card) => hasCompletedReviewLesson(card));
+  return filterEligibleReviewCards(cards);
 }
 
 export async function loadReviewOverviewSnapshots(
@@ -636,6 +631,10 @@ function buildEligibleReviewCardsByMedia(input: {
   }
 
   return eligibleCards;
+}
+
+function filterEligibleReviewCards(cards: ReviewCardListItem[]) {
+  return cards.filter((card) => hasCompletedReviewLesson(card));
 }
 
 function scoreReviewLaunchCandidate(candidate: {

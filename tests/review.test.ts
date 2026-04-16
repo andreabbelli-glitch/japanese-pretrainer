@@ -42,6 +42,7 @@ import {
   type ReviewPageData
 } from "@/lib/review";
 import { resolveReviewCardReading } from "@/lib/review-card-hydration";
+import * as fsrsOptimizer from "@/lib/fsrs-optimizer";
 import {
   applyReviewGrade,
   resetReviewCardProgress,
@@ -3076,6 +3077,43 @@ describe("review system", () => {
       expect(settingsQuerySpy).not.toHaveBeenCalled();
     } finally {
       settingsQuerySpy.mockRestore();
+    }
+  });
+
+  it("skips loading the FSRS runtime snapshot when the review queue has no selected card", async () => {
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
+
+    const fsrsSnapshotSpy = vi
+      .spyOn(fsrsOptimizer, "getFsrsOptimizerRuntimeSnapshot")
+      .mockImplementation(async () => {
+        throw new Error(
+          "fsrs runtime snapshot should not load without a selected card"
+        );
+      });
+
+    try {
+      const pageData = await getReviewPageData(
+        developmentFixture.mediaSlug,
+        {},
+        database
+      );
+
+      expect(pageData?.queue.queueCount).toBe(0);
+      expect(pageData?.selectedCard).toBeNull();
+      expect(fsrsSnapshotSpy).not.toHaveBeenCalled();
+    } finally {
+      fsrsSnapshotSpy.mockRestore();
     }
   });
 

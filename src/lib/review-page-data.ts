@@ -124,9 +124,6 @@ export async function buildReviewPageDataFromWorkspace(input: {
   profiler?: ReviewProfiler | null;
 }) {
   const nowIso = input.now.toISOString();
-  const fsrsOptimizerSnapshot = await getFsrsOptimizerRuntimeSnapshot(
-    input.database
-  );
   const segmentFilteredCards = input.searchState.segmentId
     ? input.cards.filter(
         (card) => card.segmentId === input.searchState.segmentId
@@ -165,27 +162,27 @@ export async function buildReviewPageDataFromWorkspace(input: {
     queueSnapshot,
     searchState: input.searchState
   });
-  const queueCardMapInput: ReviewQueueCardMapInput = {
-    contextCache: new Map(),
-    entryLookup: input.entryLookup,
-    fsrsOptimizerSnapshot,
-    mediaById: input.mediaById,
-    nowIso,
-    visibleMediaId: input.visibleMediaId
-  };
   const queueCardIds = queueSnapshot.queueModels.map((model) => model.card.id);
-  const selectedCardBase = selection.selectedModel
-    ? mapReviewQueueSubjectModel(selection.selectedModel, {
-        ...queueCardMapInput,
-        selectedCardId: selection.selectedCardId
-      })
-    : null;
   const selectedRawCard = selection.selectedModel
     ? resolveReviewSubjectSelectionCard({
         selectedCardId: selection.selectedCardId,
         subjectModel: selection.selectedModel
       })
     : null;
+  const selectedCardBase =
+    selection.selectedModel && selectedRawCard
+      ? mapReviewQueueSubjectModel(selection.selectedModel, {
+          contextCache: new Map(),
+          entryLookup: input.entryLookup,
+          fsrsOptimizerSnapshot: await getFsrsOptimizerRuntimeSnapshot(
+            input.database
+          ),
+          mediaById: input.mediaById,
+          nowIso,
+          selectedCardId: selection.selectedCardId,
+          visibleMediaId: input.visibleMediaId
+        })
+      : null;
   const selectedCard =
     selectedCardBase && selectedRawCard
       ? {
