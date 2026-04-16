@@ -4,7 +4,6 @@ import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
   canUseDataCache,
-  getMediaBySlugCached,
   listMediaCached,
   MEDIA_LIST_TAG,
   runWithTaggedCache,
@@ -113,7 +112,8 @@ export async function getMediaProgressPageData(
   mediaSlug: string,
   database: DatabaseClient = db
 ): Promise<ProgressPageData | null> {
-  const media = await getMediaBySlugCached(database, mediaSlug);
+  const mediaRows = await listMediaCached(database);
+  const media = mediaRows.find((candidate) => candidate.slug === mediaSlug) ?? null;
 
   if (!media) {
     return null;
@@ -126,11 +126,7 @@ export async function getMediaProgressPageData(
     keyParts: ["progress", "media-page", media.id, `day:${cacheDayKey}`],
     loader: async () => {
       const settingsPromise = getStudySettings(database);
-      const mediaRowsPromise = listMediaCached(database);
-      const reviewSnapshotsPromise = Promise.all([
-        settingsPromise,
-        mediaRowsPromise
-      ]).then(([settings, mediaRows]) =>
+      const reviewSnapshotsPromise = settingsPromise.then((settings) =>
         loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id], {
           resolvedDailyLimit: settings.reviewDailyLimit,
           resolvedMediaRows: mediaRows
