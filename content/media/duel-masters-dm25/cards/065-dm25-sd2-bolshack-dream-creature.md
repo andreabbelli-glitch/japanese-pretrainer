@@ -102,6 +102,55 @@ notes_it: >-
 level_hint: n3
 :::
 
+:::term
+id: term-en
+lemma: 縁
+reading: えん
+romaji: en
+meaning_it: legame / vincolo / connessione profonda
+pos: noun
+aliases: [縁, えん, en]
+notes_it: >-
+  `{{縁|えん}}` non è una relazione qualsiasi. In questo brano indica un legame
+  profondo che continua a tenere insieme Bolshack e Lupia. Serve quindi a
+  leggere il rapporto non come semplice amicizia occasionale, ma come vincolo
+  destinato a restare.
+level_hint: n3
+:::
+
+:::term
+id: term-kitte-mo-kirenai
+lemma: 切っても切れない
+reading: きってもきれない
+romaji: kitte mo kirenai
+meaning_it: inseparabile / impossibile da spezzare
+pos: phrase
+aliases: [切っても切れない, きってもきれない, kitte mo kirenai]
+notes_it: >-
+  `{{切|き}}っても{{切|き}}れない` va letto come idiom intero. La forma
+  letterale parla di un taglio che non riesce a separare; nel brano il
+  significato reale è `inseparabile`. Qui spiega che il rapporto fra
+  Bolshack e Lupia non può essere reciso.
+level_hint: n3
+:::
+
+:::term
+id: term-munen
+lemma: 無念
+reading: むねん
+romaji: munen
+meaning_it: amarezza irrisolta / rimpianto amaro
+pos: noun
+aliases: [無念, むねん, munen]
+notes_it: >-
+  `{{無念|むねん}}` non e' semplice tristezza. Indica l'amarezza di qualcosa
+  finito male o rimasto incompiuto, spesso con il tono di una morte ingiusta
+  o di un desiderio lasciato senza risposta. In
+  `{{無念|むねん}}を{{晴|は}}らす` il booklet dice che Bolshack combatte per
+  dare soluzione a quel peso.
+level_hint: n2
+:::
+
 :::grammar
 id: grammar-tsuzukeru
 pattern: ～{{続|つづ}}ける
@@ -265,6 +314,60 @@ example_it: >-
 notes_it: >-
   `{{復活|ふっかつ}}` qui non è un semplice ritorno in scena: indica un
   ritorno che porta anche una nuova forma.
+tags: [dm25-sd2, booklet, narrative, term]
+:::
+
+:::card
+id: card-en-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-bolshack-dream-creature
+entry_type: term
+entry_id: term-en
+card_type: recognition
+front: '{{縁|えん}}'
+back: legame / vincolo / connessione profonda
+example_jp: >-
+  ボルシャックとルピアの{{縁|えん}}はつよい。
+example_it: >-
+  Il legame fra Bolshack e Lupia è forte.
+notes_it: >-
+  Qui `{{縁|えん}}` non dice solo `rapporto`. Indica un vincolo che continua a
+  tenere uniti i due personaggi nel tempo.
+tags: [dm25-sd2, booklet, narrative, term]
+:::
+
+:::card
+id: card-kitte-mo-kirenai-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-bolshack-dream-creature
+entry_type: term
+entry_id: term-kitte-mo-kirenai
+card_type: recognition
+front: '{{切|き}}っても{{切|き}}れない'
+back: inseparabile / impossibile da spezzare
+example_jp: >-
+  ボルシャックとルピアは{{切|き}}っても{{切|き}}れない。
+example_it: >-
+  Bolshack e Lupia sono inseparabili.
+notes_it: >-
+  La forma letterale parla di un taglio che non riesce a separare. Il senso da
+  leggere davvero è `inseparabile`.
+tags: [dm25-sd2, booklet, narrative, term]
+:::
+
+:::card
+id: card-munen-recognition
+lesson_id: lesson-duel-masters-dm25-dm25-sd2-bolshack-dream-creature
+entry_type: term
+entry_id: term-munen
+card_type: recognition
+front: '{{無念|むねん}}'
+back: amarezza irrisolta / rimpianto amaro
+example_jp: >-
+  なかまの{{無念|むねん}}をはらすために、たたかい{{続|つづ}}ける。
+example_it: >-
+  Continua a combattere per dare risposta all'amarezza irrisolta dei compagni.
+notes_it: >-
+  Qui `{{無念|むねん}}` non e' semplice dolore. E' qualcosa rimasto aperto,
+  che chiede ancora risposta.
 tags: [dm25-sd2, booklet, narrative, term]
 :::
 
