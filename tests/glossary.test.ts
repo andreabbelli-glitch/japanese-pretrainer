@@ -18,6 +18,7 @@ import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
 import { GlossaryPage } from "@/components/glossary/glossary-page";
 import { GlossaryPortalPage } from "@/components/glossary/glossary-portal-page";
 import { ReviewCardDetailPage } from "@/components/review/review-card-detail-page";
+import * as dbModule from "@/db";
 import {
   closeDatabaseClient,
   createDatabaseClient,
@@ -1725,6 +1726,36 @@ describe("glossary data", () => {
     ).toEqual(expect.arrayContaining(["いきます", "iku"]));
   });
 
+  it("skips preview card queries when the selected local entry has no cards", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-content");
+    const cardConnectionsSpy = vi.spyOn(dbModule, "listEntryCardConnections");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const data = await getGlossaryPageData(
+      crossMediaFixture.alpha.mediaSlug,
+      {
+        preview: crossMediaFixture.alpha.mixedNoCardTermSourceId,
+        previewKind: "term"
+      },
+      database
+    );
+
+    expect(data?.preview?.entry.id).toBe(
+      crossMediaFixture.alpha.mixedNoCardTermSourceId
+    );
+    expect(data?.preview?.cards).toHaveLength(0);
+    expect(cardConnectionsSpy).not.toHaveBeenCalled();
+    cardConnectionsSpy.mockRestore();
+  });
+
   it("skips duplicated invalid preview params until it finds a valid glossary preview", async () => {
     const result = await importContentWorkspace({
       contentRoot: validContentRoot,
@@ -1796,6 +1827,22 @@ describe("glossary data", () => {
     expect(markup).toContain(
       `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
     );
+  });
+
+  it("skips cross-media detail queries for entries outside shared families", async () => {
+    await seedDevelopmentDatabase(database);
+    const crossMediaSpy = vi.spyOn(dbModule, "getCrossMediaFamilyByEntryId");
+
+    const detail = await getTermGlossaryDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.termId,
+      database
+    );
+
+    expect(detail?.entry.id).toBe(developmentFixture.termId);
+    expect(detail?.crossMedia).toBeNull();
+    expect(crossMediaSpy).not.toHaveBeenCalled();
+    crossMediaSpy.mockRestore();
   });
 
   it("treats glossary returnTo as glossary context instead of review", async () => {

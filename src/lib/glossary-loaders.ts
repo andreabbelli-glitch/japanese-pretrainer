@@ -174,13 +174,19 @@ export async function loadGlossaryPageData(
         loadMode
       )
     : null;
+  const selectedPreviewHasCards =
+    selectedPreviewEntry !== undefined &&
+    "hasCards" in selectedPreviewEntry &&
+    selectedPreviewEntry.hasCards;
   const selectedPreviewCardConnections = previewEntry
-    ? await listEntryCardConnections(database, [
-        {
-          entryId: previewEntry.internalId,
-          entryType: previewEntry.kind
-        }
-      ])
+    ? selectedPreviewHasCards
+      ? await listEntryCardConnections(database, [
+          {
+            entryId: previewEntry.internalId,
+            entryType: previewEntry.kind
+          }
+        ])
+      : []
     : [];
   const preview = previewEntry
     ? buildGlossaryDetailData({
@@ -313,6 +319,14 @@ export async function loadGlossaryDetailData(
     return null;
   }
 
+  const crossMediaFamilyPromise = entry.crossMediaGroupId
+    ? kind === "term"
+      ? getCrossMediaFamilyByEntryId(database, "term", entry.id)
+      : getCrossMediaFamilyByEntryId(database, "grammar", entry.id)
+    : Promise.resolve({
+        group: null,
+        siblings: []
+      });
   const [lessonConnections, cardConnections, crossMediaFamily] =
     await Promise.all([
       listEntryLessonConnections(database, [
@@ -327,9 +341,7 @@ export async function loadGlossaryDetailData(
           entryType: kind
         }
       ]),
-      kind === "term"
-        ? getCrossMediaFamilyByEntryId(database, "term", entry.id)
-        : getCrossMediaFamilyByEntryId(database, "grammar", entry.id)
+      crossMediaFamilyPromise
     ]);
   const entryStudySignals = cardConnections
     .filter((connection) => connection.cardStatus === "active")
