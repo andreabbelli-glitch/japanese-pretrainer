@@ -94,8 +94,74 @@ describe("database layer", () => {
     expect(lesson?.segment?.slug).toBe("starter-core");
   });
 
+  it("uses a trimmed lesson query for single-media lesson lists", async () => {
+    const lessonQuerySpy = vi.spyOn(database.query.lesson, "findMany");
+
+    const lessons = await listLessonsByMediaId(
+      database,
+      developmentFixture.mediaId
+    );
+
+    expect(lessons).toHaveLength(1);
+    expect(lessonQuerySpy).toHaveBeenCalledTimes(1);
+    const lessonQueryInput = lessonQuerySpy.mock.calls[0]?.[0] as {
+      columns?: Record<string, boolean>;
+      with?: {
+        content?: {
+          columns?: Record<string, boolean>;
+        };
+        progress?: {
+          columns?: Record<string, boolean>;
+        };
+        segment?: {
+          columns?: Record<string, boolean>;
+        };
+      };
+    };
+
+    expect(lessonQueryInput).toMatchObject({
+      columns: {
+        id: true,
+        slug: true,
+        title: true,
+        orderIndex: true,
+        difficulty: true,
+        summary: true
+      },
+      with: {
+        content: {
+          columns: {
+            excerpt: true
+          }
+        },
+        progress: {
+          columns: {
+            completedAt: true,
+            lastOpenedAt: true,
+            status: true
+          }
+        },
+        segment: {
+          columns: {
+            id: true,
+            notes: true,
+            title: true
+          }
+        }
+      }
+    });
+    expect(lessonQueryInput.columns).not.toHaveProperty("sourceFile");
+    expect(lessonQueryInput.with?.progress?.columns).not.toHaveProperty(
+      "startedAt"
+    );
+    expect(lessonQueryInput.with?.segment?.columns).not.toHaveProperty("slug");
+
+    lessonQuerySpy.mockRestore();
+  });
+
   it("returns shell lesson rows without joining lesson content", async () => {
     const executeSpy = vi.spyOn(database.$client, "execute");
+    const lessonQuerySpy = vi.spyOn(database.query.lesson, "findMany");
 
     const lessons = await listLessonsByMediaIdsForShell(database, [
       developmentFixture.mediaId
@@ -104,6 +170,46 @@ describe("database layer", () => {
     expect(lessons).toHaveLength(1);
     expect(lessons[0]?.content?.excerpt).toBeNull();
     expect(lessons[0]?.progress?.status).toBe("completed");
+    expect(lessonQuerySpy).toHaveBeenCalledTimes(1);
+    const lessonQueryInput = lessonQuerySpy.mock.calls[0]?.[0] as {
+      columns?: Record<string, boolean>;
+      with?: {
+        progress?: {
+          columns?: Record<string, boolean>;
+        };
+        segment?: {
+          columns?: Record<string, boolean>;
+        };
+      };
+    };
+
+    expect(lessonQueryInput).toMatchObject({
+      columns: {
+        id: true,
+        mediaId: true,
+        slug: true,
+        title: true,
+        orderIndex: true,
+        difficulty: true,
+        summary: true
+      },
+      with: {
+        progress: {
+          columns: {
+            completedAt: true,
+            lastOpenedAt: true,
+            status: true
+          }
+        },
+        segment: {
+          columns: {
+            id: true,
+            notes: true,
+            title: true
+          }
+        }
+      }
+    });
     expect(
       executeSpy.mock.calls.some(([input]) => {
         const sql =
@@ -115,6 +221,7 @@ describe("database layer", () => {
       })
     ).toBe(false);
 
+    lessonQuerySpy.mockRestore();
     executeSpy.mockRestore();
   });
 

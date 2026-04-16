@@ -46,40 +46,26 @@ function buildLesson(input: {
 }): LessonListItem {
   return {
     id: input.id,
-    mediaId: "media-fixture",
     slug: input.slug,
     title: input.title,
-    summary: null,
     orderIndex: input.orderIndex,
     difficulty: null,
-    segmentId: "segment-1",
-    status: "active",
-    sourceFile: "fixtures/study-metrics.md",
-    createdAt: "2026-04-10T07:00:00.000Z",
-    updatedAt: "2026-04-10T07:00:00.000Z",
+    summary: null,
     segment: {
       id: "segment-1",
-      mediaId: "media-fixture",
-      slug: "segment-1",
       title: "Blocco 1",
-      orderIndex: 1,
-      segmentType: "chapter",
       notes: null
     },
-    progress: input.progress
-      ? {
-          lessonId: input.id,
-          status: input.progress.status,
-          startedAt: input.progress.lastOpenedAt,
-          lastOpenedAt: input.progress.lastOpenedAt,
-          completedAt:
-            input.progress.status === "completed"
-              ? input.progress.lastOpenedAt
-              : null
-        }
-      : null,
+    progress: {
+      status: input.progress?.status ?? "not_started",
+      lastOpenedAt: input.progress?.lastOpenedAt ?? null,
+      completedAt:
+        input.progress?.status === "completed"
+          ? input.progress.lastOpenedAt
+          : null
+    },
     content: {
       excerpt: null
     }
-  } as LessonListItem;
+  };
 }

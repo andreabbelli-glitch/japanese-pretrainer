@@ -4,6 +4,7 @@ import {
   listGlossaryProgressSummaries,
   listLessonsByMediaId,
   listLessonsByMediaIdsForShell,
+  type ShellLessonListItem,
   type DatabaseClient,
   type MediaListItem
 } from "@/db";
@@ -415,11 +416,11 @@ export { pickFocusMedia };
 export type { MediaShellSnapshot };
 
 function groupLessonsByMedia(
-  lessons: Awaited<ReturnType<typeof listLessonsByMediaIdsForShell>>
+  lessons: ShellLessonListItem[]
 ) {
   const grouped = new Map<
     string,
-    Awaited<ReturnType<typeof listLessonsByMediaId>>
+    ShellLessonListItem[]
   >();
 
   for (const lesson of lessons) {
