@@ -220,4 +220,18 @@ describe("app shell day-scoped cache keys", () => {
       ])
     );
   });
+
+  it("avoids reloading the full media list on warm media detail cache hits", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));
+
+    const mediaFindManySpy = vi.spyOn(database.query.media, "findMany");
+
+    await getMediaProgressPageData(developmentFixture.mediaSlug, database);
+    await getMediaProgressPageData(developmentFixture.mediaSlug, database);
+
+    expect(mediaFindManySpy).toHaveBeenCalledTimes(1);
+
+    mediaFindManySpy.mockRestore();
+  });
 });

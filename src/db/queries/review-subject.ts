@@ -118,24 +118,21 @@ export async function countReviewSubjectsIntroducedOnDay(
   const { dayEndIso, dayStartIso } = getLocalDayBounds(asOf);
 
   const rows = await database
-    .selectDistinct({
-      subjectKey: reviewSubjectLog.subjectKey
+    .select({
+      count: sql<number>`cast(count(distinct ${reviewSubjectLog.subjectKey}) as integer)`
     })
     .from(reviewSubjectLog)
     .where(
       and(
         eq(reviewSubjectLog.previousState, "new"),
+        ne(reviewSubjectLog.subjectKey, ""),
+        ne(reviewSubjectLog.subjectKey, "undefined"),
         gte(reviewSubjectLog.answeredAt, dayStartIso),
         lt(reviewSubjectLog.answeredAt, dayEndIso)
       )
     );
 
-  return rows.filter(
-    (row) =>
-      row.subjectKey &&
-      row.subjectKey.length > 0 &&
-      row.subjectKey !== "undefined"
-  ).length;
+  return rows[0]?.count ?? 0;
 }
 
 export async function countReviewSubjectsIntroducedOnDayByMediaId(
