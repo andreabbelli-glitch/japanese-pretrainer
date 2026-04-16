@@ -170,38 +170,43 @@ export async function buildReviewPageDataFromWorkspace(input: {
         subjectModel: selection.selectedModel
       })
     : null;
-  const selectedCardBase =
-    selection.selectedModel && selectedRawCard
-      ? mapReviewQueueSubjectModel(selection.selectedModel, {
-          contextCache: new Map(),
-          entryLookup: input.entryLookup,
-          fsrsOptimizerSnapshot: await getFsrsOptimizerRuntimeSnapshot(
-            input.database
-          ),
-          includePronunciations: false,
-          mediaById: input.mediaById,
-          nowIso,
-          selectedCardId: selection.selectedCardId,
-          visibleMediaId: input.visibleMediaId
-        })
-      : null;
+  const hasSelectedCard =
+    selection.selectedModel !== null && selectedRawCard !== null;
+  const [selectedCardBase, selectedCardPronunciations] = hasSelectedCard
+    ? await Promise.all([
+        getFsrsOptimizerRuntimeSnapshot(input.database).then(
+          (fsrsOptimizerSnapshot) =>
+            mapReviewQueueSubjectModel(selection.selectedModel!, {
+              contextCache: new Map(),
+              entryLookup: input.entryLookup,
+              fsrsOptimizerSnapshot,
+              includePronunciations: false,
+              mediaById: input.mediaById,
+              nowIso,
+              selectedCardId: selection.selectedCardId,
+              visibleMediaId: input.visibleMediaId
+            })
+        ),
+        measureWith(
+          input.profiler,
+          "loadReviewCardPronunciations.selected",
+          () =>
+            loadReviewCardPronunciations({
+              card: selectedRawCard,
+              database: input.database,
+              entryLookup: input.entryLookup
+            }),
+          (value) => ({
+            pronunciations: value.length
+          })
+        )
+      ])
+    : [null, []];
   const selectedCard =
     selectedCardBase && selectedRawCard
       ? {
           ...selectedCardBase,
-          pronunciations: await measureWith(
-            input.profiler,
-            "loadReviewCardPronunciations.selected",
-            () =>
-              loadReviewCardPronunciations({
-                card: selectedRawCard,
-                database: input.database,
-                entryLookup: input.entryLookup
-              }),
-            (value) => ({
-              pronunciations: value.length
-            })
-          )
+          pronunciations: selectedCardPronunciations
         }
       : selectedCardBase;
   const selectedGradePreviews = selectedCard
