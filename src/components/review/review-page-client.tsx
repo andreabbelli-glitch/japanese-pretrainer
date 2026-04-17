@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReviewPageClientData } from "./review-page-state";
-import { ReviewPageSidebar } from "./review-page-sidebar";
+import { MemoizedReviewPageSidebar } from "./review-page-sidebar";
 import { ReviewPageStage } from "./review-page-stage";
 import { useReviewPageController } from "./use-review-page-controller";
 
@@ -43,7 +43,7 @@ export function ReviewPageClient({
           showFrontFurigana={controller.showFrontFurigana}
           viewData={controller.viewData}
         />
-        <ReviewPageSidebar
+        <MemoizedReviewPageSidebar
           clientError={controller.clientError}
           isGlobalReview={controller.isGlobalReview}
           isPending={controller.isPending}

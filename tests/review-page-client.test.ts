@@ -12,7 +12,10 @@ import {
   collectQueuedPrefetchCardIds,
   resolveReviewQueuePosition
 } from "@/components/review/review-page-helpers";
-import { ReviewPageSidebar } from "@/components/review/review-page-sidebar";
+import {
+  areReviewPageSidebarPropsEqual,
+  ReviewPageSidebar
+} from "@/components/review/review-page-sidebar";
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
 import type { ReviewPageData } from "@/lib/review-types";
@@ -201,6 +204,42 @@ describe("review page client hydration", () => {
     expect(globalMarkup).toContain("Apri Kanji Clash");
     expect(mediaMarkup).not.toContain("Apri Kanji Clash");
     expect(mediaMarkup).not.toContain('href="/kanji-clash"');
+  });
+
+  it("skips sidebar rerenders when only stage-local review state changes", () => {
+    const previous = {
+      clientError: null,
+      isGlobalReview: true,
+      isPending: false,
+      viewData: buildCurrentReviewPageClientData({
+        cardId: "card-a",
+        showAnswer: false
+      })
+    };
+    const next = {
+      ...previous,
+      viewData: {
+        ...previous.viewData,
+        selectedCardContext: {
+          ...previous.viewData.selectedCardContext,
+          showAnswer: true
+        }
+      }
+    };
+
+    expect(areReviewPageSidebarPropsEqual(previous, next)).toBe(true);
+    expect(
+      areReviewPageSidebarPropsEqual(previous, {
+        ...next,
+        viewData: {
+          ...next.viewData,
+          queue: {
+            ...next.viewData.queue,
+            queueCount: next.viewData.queue.queueCount + 1
+          }
+        }
+      })
+    ).toBe(false);
   });
 });
 

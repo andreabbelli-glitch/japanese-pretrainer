@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Link from "next/link";
 
 import { kanjiClashHref } from "@/lib/site";
@@ -7,17 +8,19 @@ import { SurfaceCard } from "../ui/surface-card";
 
 import type { ReviewPageClientData } from "./review-page-state";
 
+export type ReviewPageSidebarProps = {
+  clientError: string | null;
+  isGlobalReview: boolean;
+  isPending: boolean;
+  viewData: ReviewPageClientData;
+};
+
 export function ReviewPageSidebar({
   clientError,
   isGlobalReview,
   isPending,
   viewData
-}: {
-  clientError: string | null;
-  isGlobalReview: boolean;
-  isPending: boolean;
-  viewData: ReviewPageClientData;
-}) {
+}: ReviewPageSidebarProps) {
   return (
     <SurfaceCard className="review-sidebar">
       <p className="eyebrow">Sessione</p>
@@ -94,3 +97,40 @@ export function ReviewPageSidebar({
     </SurfaceCard>
   );
 }
+
+export function areReviewPageSidebarPropsEqual(
+  previous: ReviewPageSidebarProps,
+  next: ReviewPageSidebarProps
+) {
+  if (previous === next) {
+    return true;
+  }
+
+  if (
+    previous.clientError !== next.clientError ||
+    previous.isGlobalReview !== next.isGlobalReview ||
+    previous.isPending !== next.isPending ||
+    previous.viewData.session.notice !== next.viewData.session.notice
+  ) {
+    return false;
+  }
+
+  const previousQueue = previous.viewData.queue;
+  const nextQueue = next.viewData.queue;
+
+  return (
+    previousQueue.queueCount === nextQueue.queueCount &&
+    previousQueue.dueCount === nextQueue.dueCount &&
+    previousQueue.newAvailableCount === nextQueue.newAvailableCount &&
+    previousQueue.newQueuedCount === nextQueue.newQueuedCount &&
+    previousQueue.manualCount === nextQueue.manualCount &&
+    previousQueue.suspendedCount === nextQueue.suspendedCount &&
+    previousQueue.tomorrowCount === nextQueue.tomorrowCount &&
+    previousQueue.upcomingCount === nextQueue.upcomingCount
+  );
+}
+
+export const MemoizedReviewPageSidebar = memo(
+  ReviewPageSidebar,
+  areReviewPageSidebarPropsEqual
+);
