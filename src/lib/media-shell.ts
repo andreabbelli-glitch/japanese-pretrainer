@@ -86,6 +86,7 @@ export async function getMediaDetailData(
   database: DatabaseClient = db,
   options: {
     includeReviewCounts?: boolean;
+    includePreviewEntries?: boolean;
     resolvedMedia?: ResolvedMedia | null;
   } = {}
 ) {
@@ -103,6 +104,11 @@ export async function getMediaDetailData(
     mediaSlug,
     options.includeReviewCounts === false ? "study-only" : "full"
   ];
+  const includePreviewEntries = options.includePreviewEntries !== false;
+
+  if (!includePreviewEntries) {
+    keyParts.push("no-preview");
+  }
 
   if (options.includeReviewCounts !== false) {
     keyParts.push(`day:${getLocalIsoDateKey(new Date())}`);
@@ -113,6 +119,7 @@ export async function getMediaDetailData(
     keyParts,
     loader: () =>
       buildMediaShellSnapshot(database, media, {
+        includePreviewEntries,
         includeReviewCounts: options.includeReviewCounts
       }),
     tags:
@@ -350,6 +357,7 @@ async function buildMediaShellSnapshot(
     | MediaListItem
     | NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>,
   options: {
+    includePreviewEntries?: boolean;
     includeReviewCounts?: boolean;
   } = {}
 ): Promise<MediaShellSnapshot> {
@@ -357,6 +365,19 @@ async function buildMediaShellSnapshot(
     options.includeReviewCounts === false
       ? Promise.resolve(undefined)
       : loadMediaReviewCounts(database, media.id);
+  const previewEntriesByMediaPromise =
+    options.includePreviewEntries === false
+      ? Promise.resolve(new Map<string, StudyEntryPreview[]>())
+      : loadGlossaryPreviewEntriesCached(
+          database,
+          [
+            {
+              id: media.id,
+              slug: media.slug
+            }
+          ],
+          4
+        );
   const [lessons, glossarySnapshots, previewEntriesByMedia, reviewCounts] =
     await Promise.all([
       listLessonsByMediaId(database, media.id),
@@ -366,12 +387,7 @@ async function buildMediaShellSnapshot(
           slug: media.slug
         }
       ]),
-      loadGlossaryPreviewEntriesCached(database, [
-        {
-          id: media.id,
-          slug: media.slug
-        }
-      ], 4),
+      previewEntriesByMediaPromise,
       reviewCountsPromise
     ]);
   const glossary =

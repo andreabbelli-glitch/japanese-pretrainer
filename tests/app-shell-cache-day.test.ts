@@ -231,4 +231,34 @@ describe("app shell day-scoped cache keys", () => {
 
     listMediaCachedSpy.mockRestore();
   });
+
+  it("keeps progress study shells separate from preview-bearing study shells", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));
+
+    await getMediaProgressPageData(developmentFixture.mediaSlug, database);
+
+    const progressStudyOnlyKey = JSON.stringify([
+      "app-shell",
+      "media-detail",
+      developmentFixture.mediaSlug,
+      "study-only",
+      "no-preview"
+    ]);
+    const detailPreviewKey = JSON.stringify([
+      "app-shell",
+      "glossary-progress-preview",
+      "limit:4",
+      `media:${developmentFixture.mediaId}:${developmentFixture.mediaSlug}`
+    ]);
+
+    expect(cacheStore.has(progressStudyOnlyKey)).toBe(true);
+    expect(cacheStore.has(detailPreviewKey)).toBe(false);
+
+    await getMediaDetailData(developmentFixture.mediaSlug, database, {
+      includeReviewCounts: false
+    });
+
+    expect(cacheStore.has(detailPreviewKey)).toBe(true);
+  });
 });

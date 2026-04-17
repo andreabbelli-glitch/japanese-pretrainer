@@ -7,6 +7,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import * as dbModule from "@/db";
 import { MediaDetailPage } from "@/components/media/media-detail-page";
 import {
   card,
@@ -131,6 +132,19 @@ describe("progress, settings, and study controls", () => {
     expect(data).not.toBeNull();
     expect(mediaFindManySpy).toHaveBeenCalledTimes(1);
     mediaFindManySpy.mockRestore();
+  });
+
+  it("skips glossary preview queries while building the progress page", async () => {
+    const previewEntriesSpy = vi.spyOn(dbModule, "listGlossaryPreviewEntries");
+
+    const data = await getMediaProgressPageData(
+      developmentFixture.mediaSlug,
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(previewEntriesSpy).not.toHaveBeenCalled();
+    previewEntriesSpy.mockRestore();
   });
 
   it("recommends review when the queue has only new cards", async () => {
