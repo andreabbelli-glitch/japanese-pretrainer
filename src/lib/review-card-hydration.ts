@@ -20,7 +20,6 @@ import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
   canUseDataCache,
-  getMediaBySlugCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
@@ -256,15 +255,13 @@ export async function getReviewCardDetailData(
   const fsrsOptimizerSnapshotPromise =
     getFsrsOptimizerRuntimeSnapshot(database);
 
-  const [media, selectedRawCard] = await Promise.all([
-    getMediaBySlugCached(database, mediaSlug),
-    getCardById(database, cardId)
-  ]);
+  const selectedRawCard = await getCardById(database, cardId);
+  const cardMedia = selectedRawCard?.media;
 
   if (
-    !media ||
     !selectedRawCard ||
-    selectedRawCard.mediaId !== media.id ||
+    !cardMedia ||
+    cardMedia.slug !== mediaSlug ||
     selectedRawCard.status === "archived" ||
     !hasCompletedReviewLesson(selectedRawCard)
   ) {
@@ -301,7 +298,11 @@ export async function getReviewCardDetailData(
     selectedRawCard,
     entryLookup,
     [selectedRawCard],
-    new Map([[media.id, { slug: media.slug, title: media.title }]]),
+    buildSingleMediaLookup({
+      id: selectedRawCard.mediaId,
+      slug: cardMedia.slug,
+      title: cardMedia.title
+    }),
     nowIso,
     fsrsOptimizerSnapshot,
     queueStateSnapshot
@@ -382,11 +383,11 @@ export async function getReviewCardDetailData(
     entries: selectedCard.entries,
     pronunciations: selectedCard.pronunciations,
     media: {
-      glossaryHref: mediaGlossaryHref(media.slug),
-      href: mediaHref(media.slug),
-      reviewHref: mediaStudyHref(media.slug, "review"),
-      slug: media.slug,
-      title: media.title
+      glossaryHref: mediaGlossaryHref(cardMedia.slug),
+      href: mediaHref(cardMedia.slug),
+      reviewHref: mediaStudyHref(cardMedia.slug, "review"),
+      slug: cardMedia.slug,
+      title: cardMedia.title
     }
   };
 }

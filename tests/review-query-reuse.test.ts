@@ -16,6 +16,7 @@ import {
   type DatabaseClient
 } from "@/db";
 import {
+  getReviewCardDetailData,
   getReviewPageData,
   getReviewQueueSnapshotForMedia,
   loadGlobalReviewOverviewSnapshot,
@@ -81,6 +82,21 @@ describe("review media query reuse", () => {
 
     mediaFindFirstSpy.mockRestore();
     mediaFindManySpy.mockRestore();
+  });
+
+  it("builds the review card detail without a separate media slug lookup", async () => {
+    const mediaFindFirstSpy = vi.spyOn(database.query.media, "findFirst");
+
+    const detailData = await getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.primaryCardId,
+      database
+    );
+
+    expect(detailData).not.toBeNull();
+    expect(mediaFindFirstSpy).not.toHaveBeenCalled();
+
+    mediaFindFirstSpy.mockRestore();
   });
 
   it("builds the global review overview from a single raw overview query", async () => {
