@@ -5,6 +5,7 @@ import path from "node:path";
 import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import * as dbModule from "@/db";
 import {
   closeDatabaseClient,
   createDatabaseClient,
@@ -17,7 +18,8 @@ import {
 import {
   getReviewPageData,
   getReviewQueueSnapshotForMedia,
-  loadGlobalReviewOverviewSnapshot
+  loadGlobalReviewOverviewSnapshot,
+  loadReviewOverviewSnapshots
 } from "@/lib/review";
 
 describe("review media query reuse", () => {
@@ -101,5 +103,32 @@ describe("review media query reuse", () => {
     ).toHaveLength(1);
 
     databaseAllSpy.mockRestore();
+  });
+
+  it("builds a single-media overview snapshot without hydrating the full review workspace", async () => {
+    const reviewCardsSpy = vi.spyOn(dbModule, "listReviewCardsByMediaIds");
+    const termsSpy = vi.spyOn(dbModule, "listTermEntryReviewSummariesByIds");
+    const grammarSpy = vi.spyOn(
+      dbModule,
+      "listGrammarEntryReviewSummariesByIds"
+    );
+
+    const snapshots = await loadReviewOverviewSnapshots(database, [
+      {
+        id: developmentFixture.mediaId,
+        slug: developmentFixture.mediaSlug
+      }
+    ]);
+
+    expect(snapshots.get(developmentFixture.mediaId)?.queueCount).toBeGreaterThanOrEqual(
+      0
+    );
+    expect(reviewCardsSpy).not.toHaveBeenCalled();
+    expect(termsSpy).not.toHaveBeenCalled();
+    expect(grammarSpy).not.toHaveBeenCalled();
+
+    reviewCardsSpy.mockRestore();
+    termsSpy.mockRestore();
+    grammarSpy.mockRestore();
   });
 });

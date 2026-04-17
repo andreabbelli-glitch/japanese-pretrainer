@@ -266,6 +266,18 @@ export type GlobalReviewOverviewData = GlobalReviewOverviewCounts & {
   firstNewFront: string | null;
 };
 
+type ReviewOverviewDataRow = {
+  activeReviewCards: number | string | null;
+  dueCount: number | string | null;
+  firstDueFront: string | null;
+  firstNewFront: string | null;
+  manualCount: number | string | null;
+  newAvailableCount: number | string | null;
+  suspendedCount: number | string | null;
+  tomorrowCount: number | string | null;
+  totalCards: number | string | null;
+};
+
 function buildCompletedLessonsCteSql(mediaId?: string) {
   const mediaFilterSql = mediaId
     ? `\n        AND l.media_id = ${quoteSqlString(mediaId)}`
@@ -302,6 +314,38 @@ export async function getGlobalReviewOverviewData(
   database: DatabaseQueryClient,
   asOf = new Date()
 ): Promise<GlobalReviewOverviewData> {
+  return loadReviewOverviewData(database, {
+    asOf,
+    completedLessonsMediaId: undefined,
+    scopePrefix: "global",
+    subjectIdentityMediaFilter: "SELECT id FROM media WHERE status = 'active'"
+  });
+}
+
+export async function getReviewOverviewDataByMediaId(
+  database: DatabaseQueryClient,
+  mediaId: string,
+  asOf = new Date()
+): Promise<GlobalReviewOverviewData> {
+  return loadReviewOverviewData(database, {
+    asOf,
+    completedLessonsMediaId: mediaId,
+    scopePrefix: "media",
+    subjectIdentityMediaFilter: quoteSqlString(mediaId)
+  });
+}
+
+async function loadReviewOverviewData(
+  database: DatabaseQueryClient,
+  input: {
+    asOf: Date;
+    completedLessonsMediaId?: string;
+    scopePrefix: string;
+    subjectIdentityMediaFilter: string;
+  }
+): Promise<GlobalReviewOverviewData> {
+  const { asOf, completedLessonsMediaId, scopePrefix, subjectIdentityMediaFilter } =
+    input;
   const asOfIso = asOf.toISOString();
   const tomorrowStart = new Date(
     asOf.getFullYear(),
@@ -313,21 +357,13 @@ export async function getGlobalReviewOverviewData(
     asOf.getMonth(),
     asOf.getDate() + 2
   );
+  const subjectCardCandidatesCte = `${scopePrefix}_subject_card_candidates`;
+  const subjectCandidatesCte = `${scopePrefix}_subject_candidates`;
 
-  const rows = await database.all<{
-    activeReviewCards: number | string | null;
-    dueCount: number | string | null;
-    firstDueFront: string | null;
-    firstNewFront: string | null;
-    manualCount: number | string | null;
-    newAvailableCount: number | string | null;
-    suspendedCount: number | string | null;
-    tomorrowCount: number | string | null;
-    totalCards: number | string | null;
-  }>(`
-    WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: "SELECT id FROM media WHERE status = 'active'" })},
-    ${buildCompletedLessonsCteSql()},
-    global_subject_card_candidates AS (
+  const rows = await database.all<ReviewOverviewDataRow>(`
+    WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: subjectIdentityMediaFilter })},
+    ${buildCompletedLessonsCteSql(completedLessonsMediaId)},
+    ${subjectCardCandidatesCte} AS (
       SELECT
         si.subject_key AS subjectKey,
         si.card_id AS cardId,
@@ -373,7 +409,7 @@ export async function getGlobalReviewOverviewData(
       WHERE si.lesson_id IS NOT NULL
        AND cl.id IS NOT NULL
     ),
-    global_subject_candidates AS (
+    ${subjectCandidatesCte} AS (
       SELECT
         cardId,
         createdAt,
@@ -391,12 +427,12 @@ export async function getGlobalReviewOverviewData(
            OR reviewState = 'known_manual' THEN 'known_manual'
           ELSE reviewState
         END AS effectiveState
-      FROM global_subject_card_candidates
+      FROM ${subjectCardCandidatesCte}
       WHERE rowNumber = 1
     ),
     first_due AS (
       SELECT front
-      FROM global_subject_candidates
+      FROM ${subjectCandidatesCte}
       WHERE effectiveState NOT IN ('new', 'known_manual', 'suspended')
         AND (dueAt IS NULL OR dueAt <= ${quoteSqlString(asOfIso)})
       ORDER BY
@@ -413,7 +449,7 @@ export async function getGlobalReviewOverviewData(
     ),
     first_new AS (
       SELECT front
-      FROM global_subject_candidates
+      FROM ${subjectCandidatesCte}
       WHERE effectiveState = 'new'
       ORDER BY
         lastInteractionAt DESC,
@@ -503,7 +539,7 @@ export async function getGlobalReviewOverviewData(
       ) AS tomorrowCount,
       (SELECT front FROM first_due) AS firstDueFront,
       (SELECT front FROM first_new) AS firstNewFront
-    FROM global_subject_candidates gsc
+    FROM ${subjectCandidatesCte} gsc
   `);
 
   const row = rows[0];

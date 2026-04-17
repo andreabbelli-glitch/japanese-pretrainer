@@ -2,6 +2,7 @@ import {
   countReviewSubjectsIntroducedOnDay,
   db,
   getGlobalReviewOverviewData,
+  getReviewOverviewDataByMediaId,
   getReviewLaunchCandidateByMediaId,
   listGrammarEntryReviewSummariesByIds,
   listReviewLaunchCandidates,
@@ -451,6 +452,28 @@ export async function loadReviewOverviewSnapshots(
   }
 
   const now = new Date();
+  const [singleMedia] = media;
+
+  if (singleMedia && media.length === 1) {
+    const [overview, dailyLimit, newIntroducedTodayCount] = await Promise.all([
+      getReviewOverviewDataByMediaId(database, singleMedia.id, now),
+      options.resolvedDailyLimit ?? getReviewDailyLimit(database),
+      options.resolvedNewIntroducedTodayCount ??
+        loadReviewIntroducedTodayCountCached(database, now)
+    ]);
+
+    return new Map([
+      [
+        singleMedia.id,
+        mapReviewOverviewSnapshot({
+          dailyLimit,
+          newIntroducedTodayCount,
+          overview
+        })
+      ]
+    ]);
+  }
+
   const mediaIds = media.map((item) => item.id);
   const workspace = await loadReviewWorkspaceV2({
     database,
@@ -506,6 +529,20 @@ export async function loadGlobalReviewOverviewSnapshot(
     options.resolvedNewIntroducedTodayCount ??
       loadReviewIntroducedTodayCountCached(database, now)
   ]);
+
+  return mapReviewOverviewSnapshot({
+    dailyLimit,
+    newIntroducedTodayCount,
+    overview
+  });
+}
+
+function mapReviewOverviewSnapshot(input: {
+  dailyLimit: number;
+  newIntroducedTodayCount: number;
+  overview: Awaited<ReturnType<typeof getGlobalReviewOverviewData>>;
+}) {
+  const { dailyLimit, newIntroducedTodayCount, overview } = input;
   const remainingNewSlots = Math.max(dailyLimit - newIntroducedTodayCount, 0);
   const newQueuedCount = Math.min(overview.newAvailableCount, remainingNewSlots);
   const upcomingCount = Math.max(
