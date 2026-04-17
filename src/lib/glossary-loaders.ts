@@ -98,18 +98,10 @@ export async function loadGlossaryPageData(
   });
   const loadMode: GlossaryLoadMode =
     filters.query.length > 0 ? "search" : "list";
-  const [segments, entries] = await Promise.all([
+  const [segments, { candidates }] = await Promise.all([
     listGlossarySegmentsByMediaId(database, media.id),
-    loadCachedLocalGlossaryBaseEntries(database, media, {
-      entryType: filters.entryType,
-      mode: loadMode
-    })
+    loadCachedLocalGlossaryResolvedEntries(database, media, filters, loadMode)
   ]);
-  const { candidates } = await buildGlossaryResolvedEntries(
-    database,
-    entries,
-    filters
-  );
   const segmentOrder = new Map(
     segments.map((segment, index) => [segment.id, index] as const)
   );
@@ -211,7 +203,7 @@ export async function loadGlossaryPageData(
     media: mediaSummary,
     resultSummary: {
       filtered: filteredEntries.length,
-      total: entries.length,
+      total: candidates.length,
       queryLabel: filters.query || undefined
     },
     preview,
@@ -484,6 +476,40 @@ async function loadCachedLocalGlossaryBaseEntries(
         mediaId: media.id,
         mode
       }),
+    tags: buildGlossarySummaryTags([media.id])
+  });
+}
+
+async function loadCachedLocalGlossaryResolvedEntries(
+  database: DatabaseClient,
+  media: {
+    id: string;
+    slug: string;
+  },
+  filters: GlossaryQueryState,
+  mode: GlossaryLoadMode
+) {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: [
+      "glossary",
+      "local-resolved-entries",
+      `media:${media.id}:${media.slug}`,
+      `mode:${mode}`,
+      `cards:${filters.cards}`,
+      ...buildGlossaryQueryCacheKeyParts(filters.query),
+      `segment:${filters.segmentId}`,
+      `study:${filters.study}`,
+      `type:${filters.entryType}`
+    ],
+    loader: async () => {
+      const entries = await loadCachedLocalGlossaryBaseEntries(database, media, {
+        entryType: filters.entryType,
+        mode
+      });
+
+      return buildGlossaryResolvedEntries(database, entries, filters);
+    },
     tags: buildGlossarySummaryTags([media.id])
   });
 }

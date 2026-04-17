@@ -58,6 +58,7 @@ import {
   runMigrations,
   type DatabaseClient
 } from "@/db";
+import * as dbModule from "@/db";
 import {
   GLOSSARY_SUMMARY_TAG,
   revalidateGlossarySummaryCache
@@ -271,7 +272,7 @@ describe("global glossary cache", () => {
       ([, keyParts]) => JSON.stringify(keyParts) === localBaseEntriesCacheKey
     );
 
-    expect(localBaseEntryCalls).toHaveLength(2);
+    expect(localBaseEntryCalls).toHaveLength(1);
     expect(cacheStore.has(localBaseEntriesCacheKey)).toBe(true);
 
     const localBaseEntriesOptions = localBaseEntryCalls[0]?.[2];
@@ -280,5 +281,64 @@ describe("global glossary cache", () => {
         `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`
       ])
     );
+  });
+
+  it("caches local glossary resolved entries across equivalent query casing and spacing", async () => {
+    const studySignalsSpy = vi.spyOn(dbModule, "listEntryStudySignals");
+    const cardCountsSpy = vi.spyOn(dbModule, "listEntryCardCounts");
+
+    const first = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        q: "  IKU  "
+      },
+      database
+    );
+    const second = await getGlossaryPageData(
+      developmentFixture.mediaSlug,
+      {
+        q: "iku"
+      },
+      database
+    );
+
+    expect(first?.results).not.toHaveLength(0);
+    expect(second?.results).toEqual(first?.results);
+    expect(second?.stats).toEqual(first?.stats);
+    expect(studySignalsSpy).toHaveBeenCalledTimes(1);
+    expect(cardCountsSpy).toHaveBeenCalledTimes(1);
+
+    const localResolvedEntriesCacheKey = JSON.stringify([
+      "glossary",
+      "local-resolved-entries",
+      `media:${developmentFixture.mediaId}:${developmentFixture.mediaSlug}`,
+      "mode:search",
+      "cards:all",
+      "query:iku",
+      "kana:iku",
+      "grammar-kana:iku",
+      "compact:iku",
+      "segment:all",
+      "study:all",
+      "type:all"
+    ]);
+
+    const localResolvedEntryCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) =>
+        JSON.stringify(keyParts) === localResolvedEntriesCacheKey
+    );
+
+    expect(localResolvedEntryCalls).toHaveLength(2);
+    expect(cacheStore.has(localResolvedEntriesCacheKey)).toBe(true);
+
+    const localResolvedEntriesOptions = localResolvedEntryCalls[0]?.[2];
+    expect(localResolvedEntriesOptions?.tags).toEqual(
+      expect.arrayContaining([
+        `${GLOSSARY_SUMMARY_TAG}:${developmentFixture.mediaId}`
+      ])
+    );
+
+    studySignalsSpy.mockRestore();
+    cardCountsSpy.mockRestore();
   });
 });
