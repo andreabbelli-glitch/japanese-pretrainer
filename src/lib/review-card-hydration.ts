@@ -261,9 +261,6 @@ export async function getReviewCardDetailData(
   database: DatabaseClient = db
 ): Promise<ReviewCardDetailData | null> {
   const nowIso = new Date().toISOString();
-  const fsrsOptimizerSnapshotPromise =
-    getFsrsOptimizerRuntimeSnapshot(database);
-
   const selectedRawCard = await getCardById(database, cardId);
   const cardMedia = selectedRawCard?.media;
 
@@ -281,8 +278,7 @@ export async function getReviewCardDetailData(
   const { termIds, grammarIds } = collectReviewLinkedEntryIds([
     selectedRawCard
   ]);
-  const [fsrsOptimizerSnapshot, terms, grammar] = await Promise.all([
-    fsrsOptimizerSnapshotPromise,
+  const [terms, grammar] = await Promise.all([
     getGlossaryEntriesByIds(database, "term", termIds),
     getGlossaryEntriesByIds(database, "grammar", grammarIds)
   ]);
@@ -314,7 +310,7 @@ export async function getReviewCardDetailData(
       title: cardMedia.title
     }),
     nowIso,
-    fsrsOptimizerSnapshot,
+    undefined,
     queueStateSnapshot
   );
 

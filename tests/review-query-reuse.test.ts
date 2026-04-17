@@ -102,6 +102,21 @@ describe("review media query reuse", () => {
     mediaFindFirstSpy.mockRestore();
   });
 
+  it("builds the review card detail without loading FSRS settings", async () => {
+    const userSettingFindManySpy = vi.spyOn(database.query.userSetting, "findMany");
+
+    const detailData = await getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.primaryCardId,
+      database
+    );
+
+    expect(detailData).not.toBeNull();
+    expect(userSettingFindManySpy).not.toHaveBeenCalled();
+
+    userSettingFindManySpy.mockRestore();
+  });
+
   it("does not expose review card detail for archived media slugs", async () => {
     await database
       .update(media)
