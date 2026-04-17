@@ -226,7 +226,7 @@ describe("textbook data", () => {
     expect(lessonData?.lesson).not.toHaveProperty("htmlRendered");
   });
 
-  it("starts media and furigana lookups in parallel while loading a lesson", async () => {
+  it("waits for the media lookup before starting the furigana lookup while loading a lesson", async () => {
     const mediaGate = createDeferred();
     const settingsGate = createDeferred();
     let mediaStarted = false;
@@ -262,7 +262,7 @@ describe("textbook data", () => {
 
     try {
       expect(mediaStarted).toBe(true);
-      expect(settingsStarted).toBe(true);
+      expect(settingsStarted).toBe(false);
     } finally {
       mediaGate.resolve();
       settingsGate.resolve();
@@ -342,6 +342,24 @@ describe("textbook data", () => {
     try {
       await expect(
         getTextbookIndexData("missing-media-slug", database)
+      ).resolves.toBeNull();
+
+      expect(settingsQuerySpy).not.toHaveBeenCalled();
+    } finally {
+      settingsQuerySpy.mockRestore();
+    }
+  });
+
+  it("returns null for a missing lesson media slug before reading furigana settings", async () => {
+    const settingsQuerySpy = vi
+      .spyOn(settings, "getFuriganaModeSetting")
+      .mockImplementation(async () => {
+        throw new Error("furigana settings should not be read for missing media");
+      });
+
+    try {
+      await expect(
+        getTextbookLessonData("missing-media-slug", "missing-lesson-slug", database)
       ).resolves.toBeNull();
 
       expect(settingsQuerySpy).not.toHaveBeenCalled();

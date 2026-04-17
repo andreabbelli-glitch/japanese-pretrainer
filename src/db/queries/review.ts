@@ -396,7 +396,12 @@ async function loadReviewOverviewData(
                OR rss.due_at <= ${quoteSqlString(asOfIso)} THEN 0
               ELSE 1
             END ASC,
-            COALESCE(rss.last_interaction_at, c.updated_at, si.created_at) DESC,
+            CASE
+              WHEN rss.card_id IS NOT NULL
+               AND rss.card_id = si.card_id
+                THEN COALESCE(rss.last_interaction_at, c.updated_at, si.created_at)
+              ELSE COALESCE(c.updated_at, si.created_at)
+            END DESC,
             COALESCE(si.order_index, 2147483647) ASC,
             si.card_id ASC
         ) AS rowNumber

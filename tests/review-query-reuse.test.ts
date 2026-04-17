@@ -9,10 +9,13 @@ import * as dataCacheModule from "@/lib/data-cache";
 import * as dbModule from "@/db";
 import {
   closeDatabaseClient,
+  card,
+  cardEntryLink,
   createDatabaseClient,
   developmentFixture,
   lessonProgress,
   media,
+  reviewSubjectState,
   runMigrations,
   seedDevelopmentDatabase,
   type DatabaseClient
@@ -201,5 +204,56 @@ describe("review media query reuse", () => {
     reviewCardsSpy.mockRestore();
     termsSpy.mockRestore();
     grammarSpy.mockRestore();
+  });
+
+  it("keeps the single-media overview next card aligned with the canonical representative when subject state has no pinned card", async () => {
+    await database.insert(card).values({
+      id: "card_fixture_iku_newer",
+      mediaId: developmentFixture.mediaId,
+      lessonId: developmentFixture.lessonId,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/fixtures/db/fixture-tcg/cards/iku-newer.md",
+      cardType: "recognition",
+      front: "行った",
+      normalizedFront: "行った",
+      back: "andato",
+      exampleJp: null,
+      exampleIt: null,
+      notesIt: "Sibling card for representative-card ordering coverage.",
+      status: "active",
+      orderIndex: 99,
+      createdAt: "2026-03-08T09:00:00.000Z",
+      updatedAt: "2026-03-10T09:30:00.000Z"
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card_entry_link_fixture_iku_newer_primary",
+      cardId: "card_fixture_iku_newer",
+      entryType: "term",
+      entryId: developmentFixture.termDbId,
+      relationshipType: "primary"
+    });
+    await database
+      .update(reviewSubjectState)
+      .set({
+        cardId: null,
+        state: "review",
+        dueAt: "2000-01-01T00:00:00.000Z",
+        lastInteractionAt: "2026-03-10T08:00:00.000Z"
+      })
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
+
+    const snapshots = await loadReviewOverviewSnapshots(database, [
+      {
+        id: developmentFixture.mediaId,
+        slug: developmentFixture.mediaSlug
+      }
+    ]);
+
+    expect(snapshots.get(developmentFixture.mediaId)?.nextCardFront).toBe("行った");
   });
 });

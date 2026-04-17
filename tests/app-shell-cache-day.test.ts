@@ -232,7 +232,7 @@ describe("app shell day-scoped cache keys", () => {
     listMediaCachedSpy.mockRestore();
   });
 
-  it("keeps progress study shells separate from preview-bearing study shells", async () => {
+  it("lets the progress page warm the same preview-bearing study shell used by the media detail page", async () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));
 
@@ -242,8 +242,7 @@ describe("app shell day-scoped cache keys", () => {
       "app-shell",
       "media-detail",
       developmentFixture.mediaSlug,
-      "study-only",
-      "no-preview"
+      "study-only"
     ]);
     const detailPreviewKey = JSON.stringify([
       "app-shell",
@@ -253,12 +252,13 @@ describe("app shell day-scoped cache keys", () => {
     ]);
 
     expect(cacheStore.has(progressStudyOnlyKey)).toBe(true);
-    expect(cacheStore.has(detailPreviewKey)).toBe(false);
+    expect(cacheStore.has(detailPreviewKey)).toBe(true);
 
     await getMediaDetailData(developmentFixture.mediaSlug, database, {
       includeReviewCounts: false
     });
 
+    expect(cacheStore.has(progressStudyOnlyKey)).toBe(true);
     expect(cacheStore.has(detailPreviewKey)).toBe(true);
   });
 });

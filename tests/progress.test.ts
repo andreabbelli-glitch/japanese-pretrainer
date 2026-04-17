@@ -134,7 +134,7 @@ describe("progress, settings, and study controls", () => {
     mediaFindManySpy.mockRestore();
   });
 
-  it("skips glossary preview queries while building the progress page", async () => {
+  it("includes glossary preview entries for the media detail progress page", async () => {
     const previewEntriesSpy = vi.spyOn(dbModule, "listGlossaryPreviewEntries");
 
     const data = await getMediaProgressPageData(
@@ -143,7 +143,17 @@ describe("progress, settings, and study controls", () => {
     );
 
     expect(data).not.toBeNull();
-    expect(previewEntriesSpy).not.toHaveBeenCalled();
+    expect(previewEntriesSpy).toHaveBeenCalled();
+    expect(data?.glossary.previewEntries.length ?? 0).toBeGreaterThan(0);
+    expect(data?.glossary.previewEntries.map((entry) => entry.label)).toContain(
+      "行く"
+    );
+
+    const markup = renderToStaticMarkup(
+      createElement(MediaDetailPage, { data: data! })
+    );
+
+    expect(markup).toContain("行く");
     previewEntriesSpy.mockRestore();
   });
 
