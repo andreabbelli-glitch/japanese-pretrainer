@@ -18,7 +18,7 @@ import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
   buildReviewSeedStateWithFsrsPreset,
-  getFsrsOptimizerRuntimeContext,
+  getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
@@ -453,9 +453,6 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   profiler?: ReviewProfiler | null;
 }): Promise<ReviewFirstCandidatePageData> {
   const nowIso = input.now.toISOString();
-  const fsrsOptimizerSnapshot =
-    input.fsrsOptimizerSnapshot ??
-    (await getFsrsOptimizerRuntimeSnapshot(input.database ?? db));
   const segmentFilteredCards = input.searchState.segmentId
     ? input.cards.filter(
         (card) => card.segmentId === input.searchState.segmentId
@@ -504,7 +501,9 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
       ? mapReviewQueueSubjectCardPreview({
           card: selectedRawCard,
           entryLookup: input.entryLookup,
-          fsrsOptimizerSnapshot,
+          fsrsOptimizerSnapshot:
+            input.fsrsOptimizerSnapshot ??
+            (await getFsrsOptimizerRuntimeSnapshot(input.database ?? db)),
           mediaById: input.mediaById,
           nowIso,
           queueStateSnapshot: selection.selectedModel.queueStateSnapshot
@@ -565,8 +564,9 @@ export async function getGlobalReviewFirstCandidateLoadResult(
   const cacheEligible = !options.bypassCache && canUseDataCache(database);
   const searchState = normalizeReviewSearchState(searchParams);
   const cacheDayKey = getLocalIsoDateKey(new Date());
-  const { cacheKeyPart: fsrsCacheKeyPart, snapshot: fsrsOptimizerSnapshot } =
-    await getFsrsOptimizerRuntimeContext(database);
+  const fsrsCacheKeyPart = cacheEligible
+    ? await getFsrsOptimizerCacheKeyPart(database)
+    : "uncached";
   const cacheKeyParts = [
     "review",
     "global-first-candidate",
@@ -601,7 +601,6 @@ export async function getGlobalReviewFirstCandidateLoadResult(
         database,
         dailyLimit: workspace.dailyLimit,
         entryLookup: workspace.entryLookup,
-        fsrsOptimizerSnapshot,
         media: {
           glossaryHref: "/glossary",
           href: "/",
