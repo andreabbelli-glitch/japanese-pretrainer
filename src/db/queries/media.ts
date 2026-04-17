@@ -40,10 +40,4 @@ export async function getMediaBySlug(database: DatabaseClient, slug: string) {
   });
 }
 
-export async function getMediaById(database: DatabaseClient, mediaId: string) {
-  return database.query.media.findFirst({
-    where: and(eq(media.id, mediaId), eq(media.status, "active"))
-  });
-}
-
 export type MediaListItem = Awaited<ReturnType<typeof listMedia>>[number];

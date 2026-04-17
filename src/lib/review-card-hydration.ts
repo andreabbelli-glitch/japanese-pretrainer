@@ -2,7 +2,6 @@ import {
   db,
   getCardById,
   getGlossaryEntriesByIds,
-  getMediaById,
   listCrossMediaFamiliesByEntryIds,
   getReviewSubjectStateByKey,
   type CrossMediaFamily,
@@ -191,16 +190,13 @@ export async function hydrateReviewCardUncached(input: {
   }
 
   const { termIds, grammarIds } = collectReviewLinkedEntryIds([card]);
-  const [fsrsOptimizerSnapshot, terms, grammar, cardMedia] = await Promise.all([
+  const [fsrsOptimizerSnapshot, terms, grammar] = await Promise.all([
     fsrsOptimizerSnapshotPromise,
     measureWith(input.profiler, "getGlossaryEntriesByIds.term", () =>
       getGlossaryEntriesByIds(database, "term", termIds)
     ),
     measureWith(input.profiler, "getGlossaryEntriesByIds.grammar", () =>
       getGlossaryEntriesByIds(database, "grammar", grammarIds)
-    ),
-    measureWith(input.profiler, "getMediaById", () =>
-      getMediaById(database, card.mediaId)
     )
   ]);
   const entryLookup = buildEntryLookup(terms, grammar);
@@ -221,12 +217,10 @@ export async function hydrateReviewCardUncached(input: {
     subjectState,
     nowIso
   );
-  const resolvedMedia = cardMedia
-    ? { slug: cardMedia.slug, title: cardMedia.title }
-    : { slug: "unknown-media" as const, title: "Media" };
   const mediaById = buildSingleMediaLookup({
     id: card.mediaId,
-    ...resolvedMedia
+    slug: card.media?.slug ?? "unknown-media",
+    title: card.media?.title ?? "Media"
   });
   const queueCard = await measureWith(
     input.profiler,

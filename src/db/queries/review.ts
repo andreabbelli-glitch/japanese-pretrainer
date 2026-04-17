@@ -69,6 +69,19 @@ const reviewCardSelection = {
   }
 } as const;
 
+const reviewCardDetailSelection = {
+  ...reviewCardSelection,
+  with: {
+    ...reviewCardSelection.with,
+    media: {
+      columns: {
+        slug: true,
+        title: true
+      }
+    }
+  }
+} as const;
+
 export async function listCardsByMediaId(
   database: DatabaseQueryClient,
   mediaId: string
@@ -83,7 +96,7 @@ export async function listCardsByMediaId(
 export async function getCardById(database: DatabaseQueryClient, cardId: string) {
   return database.query.card.findFirst({
     where: eq(card.id, cardId),
-    ...reviewCardSelection
+    ...reviewCardDetailSelection
   });
 }
 

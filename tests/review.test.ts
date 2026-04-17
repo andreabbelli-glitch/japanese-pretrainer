@@ -2058,6 +2058,21 @@ describe("review system", () => {
     }
   });
 
+  it("hydrates a single review card without a separate media lookup", async () => {
+    const mediaFindFirstSpy = vi.spyOn(database.query.media, "findFirst");
+
+    const hydratedCard = await hydrateReviewCard({
+      cardId: developmentFixture.primaryCardId,
+      database,
+      now: new Date("2026-03-12T10:00:00.000Z")
+    });
+
+    expect(hydratedCard).not.toBeNull();
+    expect(mediaFindFirstSpy).not.toHaveBeenCalled();
+
+    mediaFindFirstSpy.mockRestore();
+  });
+
   it("blocks single-card hydration, prefetch, and grading when the lesson is incomplete", async () => {
     await database
       .update(lessonProgress)
