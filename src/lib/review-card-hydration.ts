@@ -57,7 +57,7 @@ import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./re
 import {
   buildDefaultFsrsOptimizerSnapshot,
   buildReviewSeedStateWithFsrsPreset,
-  getFsrsOptimizerCacheKeyPart,
+  getFsrsOptimizerRuntimeContext,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
@@ -143,7 +143,7 @@ export async function hydrateReviewCard(input: {
     return hydrateReviewCardUncached(input);
   }
 
-  const fsrsCacheKeyPart = await getFsrsOptimizerCacheKeyPart(database);
+  const fsrsRuntimeContext = await getFsrsOptimizerRuntimeContext(database);
 
   return measureWith(
     input.profiler,
@@ -151,8 +151,17 @@ export async function hydrateReviewCard(input: {
     () =>
       runWithTaggedCache({
         enabled: cacheEligible,
-        keyParts: ["review", "hydrated-card", input.cardId, fsrsCacheKeyPart],
-        loader: () => hydrateReviewCardUncached(input),
+        keyParts: [
+          "review",
+          "hydrated-card",
+          input.cardId,
+          fsrsRuntimeContext.cacheKeyPart
+        ],
+        loader: () =>
+          hydrateReviewCardUncached({
+            ...input,
+            fsrsOptimizerSnapshot: fsrsRuntimeContext.snapshot
+          }),
         tags: [
           ...buildReviewSummaryTags(),
           ...buildGlossarySummaryTags(),
@@ -262,6 +271,7 @@ export async function getReviewCardDetailData(
     !selectedRawCard ||
     !cardMedia ||
     cardMedia.slug !== mediaSlug ||
+    cardMedia.status !== "active" ||
     selectedRawCard.status === "archived" ||
     !hasCompletedReviewLesson(selectedRawCard)
   ) {

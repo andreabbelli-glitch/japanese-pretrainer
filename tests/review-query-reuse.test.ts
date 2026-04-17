@@ -5,12 +5,14 @@ import path from "node:path";
 import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import * as dataCacheModule from "@/lib/data-cache";
 import * as dbModule from "@/db";
 import {
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
   lessonProgress,
+  media,
   runMigrations,
   seedDevelopmentDatabase,
   type DatabaseClient
@@ -19,6 +21,7 @@ import {
   getReviewCardDetailData,
   getReviewPageData,
   getReviewQueueSnapshotForMedia,
+  hydrateReviewCard,
   loadGlobalReviewOverviewSnapshot,
   loadReviewOverviewSnapshots
 } from "@/lib/review";
@@ -97,6 +100,43 @@ describe("review media query reuse", () => {
     expect(mediaFindFirstSpy).not.toHaveBeenCalled();
 
     mediaFindFirstSpy.mockRestore();
+  });
+
+  it("does not expose review card detail for archived media slugs", async () => {
+    await database
+      .update(media)
+      .set({ status: "archived" })
+      .where(eq(media.id, developmentFixture.mediaId));
+
+    const detailData = await getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.primaryCardId,
+      database
+    );
+
+    expect(detailData).toBeNull();
+  });
+
+  it("hydrates a single review card with one FSRS settings read when the cache path is enabled", async () => {
+    const canUseDataCacheSpy = vi
+      .spyOn(dataCacheModule, "canUseDataCache")
+      .mockReturnValue(true);
+    const runWithTaggedCacheSpy = vi
+      .spyOn(dataCacheModule, "runWithTaggedCache")
+      .mockImplementation(async ({ loader }) => loader());
+    const userSettingFindManySpy = vi.spyOn(database.query.userSetting, "findMany");
+
+    const hydratedCard = await hydrateReviewCard({
+      cardId: developmentFixture.primaryCardId,
+      database
+    });
+
+    expect(hydratedCard).not.toBeNull();
+    expect(userSettingFindManySpy).toHaveBeenCalledTimes(1);
+
+    userSettingFindManySpy.mockRestore();
+    runWithTaggedCacheSpy.mockRestore();
+    canUseDataCacheSpy.mockRestore();
   });
 
   it("builds the global review overview from a single raw overview query", async () => {

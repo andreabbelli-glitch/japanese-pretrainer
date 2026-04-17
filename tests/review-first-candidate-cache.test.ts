@@ -225,9 +225,9 @@ describe("global review first-candidate cache", () => {
 
     expect(unstableCacheMock).toHaveBeenCalled();
     expect(cacheStore.has(cacheKey)).toBe(true);
-    expect(getFsrsOptimizerCacheKeyPartMock).toHaveBeenCalledTimes(2);
-    expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
-    expect(getFsrsOptimizerRuntimeSnapshotMock).toHaveBeenCalledTimes(1);
+    expect(getFsrsOptimizerCacheKeyPartMock).not.toHaveBeenCalled();
+    expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(2);
+    expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
     expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
 
     revalidateReviewSummaryCache("media_a");

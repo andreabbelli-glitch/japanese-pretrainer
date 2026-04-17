@@ -76,6 +76,7 @@ const reviewCardDetailSelection = {
     media: {
       columns: {
         slug: true,
+        status: true,
         title: true
       }
     }
