@@ -18,7 +18,7 @@ import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
   buildReviewSeedStateWithFsrsPreset,
-  getFsrsOptimizerCacheKeyPart,
+  getFsrsOptimizerRuntimeContext,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
@@ -564,15 +564,15 @@ export async function getGlobalReviewFirstCandidateLoadResult(
   const cacheEligible = !options.bypassCache && canUseDataCache(database);
   const searchState = normalizeReviewSearchState(searchParams);
   const cacheDayKey = getLocalIsoDateKey(new Date());
-  const fsrsCacheKeyPart = cacheEligible
-    ? await getFsrsOptimizerCacheKeyPart(database)
-    : "uncached";
+  const fsrsRuntimeContext = cacheEligible
+    ? await getFsrsOptimizerRuntimeContext(database)
+    : null;
   const cacheKeyParts = [
     "review",
     "global-first-candidate",
     `day:${cacheDayKey}`,
     ...buildReviewSearchStateCacheKeyParts(searchState),
-    `fsrs:${fsrsCacheKeyPart}`
+    `fsrs:${fsrsRuntimeContext?.cacheKeyPart ?? "uncached"}`
   ];
 
   const loadSnapshot = async () => {
@@ -601,6 +601,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
         database,
         dailyLimit: workspace.dailyLimit,
         entryLookup: workspace.entryLookup,
+        fsrsOptimizerSnapshot: fsrsRuntimeContext?.snapshot,
         media: {
           glossaryHref: "/glossary",
           href: "/",

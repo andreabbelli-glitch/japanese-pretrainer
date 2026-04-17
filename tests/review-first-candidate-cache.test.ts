@@ -174,9 +174,9 @@ describe("global review first-candidate cache", () => {
         ([, keyParts]) => JSON.stringify(keyParts) === sharedCacheKey
       );
       expect(cacheHits).toHaveLength(2);
-      expect(getFsrsOptimizerCacheKeyPartMock).toHaveBeenCalledTimes(2);
-      expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
-      expect(getFsrsOptimizerRuntimeSnapshotMock).toHaveBeenCalledTimes(1);
+      expect(getFsrsOptimizerCacheKeyPartMock).not.toHaveBeenCalled();
+      expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(2);
+      expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
       expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
 
       revalidateReviewSummaryCache("media_a");
@@ -239,7 +239,7 @@ describe("global review first-candidate cache", () => {
     );
   });
 
-  it("skips loading the full FSRS runtime context when the global queue has no selected card", async () => {
+  it("reuses the FSRS runtime context for the cache key even when the global queue has no selected card", async () => {
     await seedSingleReviewCardFixture(database);
 
     await database.insert(reviewSubjectState).values(
@@ -261,8 +261,8 @@ describe("global review first-candidate cache", () => {
 
     expect(result.kind).toBe("ready");
     expect(result.kind === "ready" ? result.data.selectedCard : null).toBeNull();
-    expect(getFsrsOptimizerCacheKeyPartMock).toHaveBeenCalledTimes(1);
-    expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
+    expect(getFsrsOptimizerCacheKeyPartMock).not.toHaveBeenCalled();
+    expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(1);
     expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
   });
 
