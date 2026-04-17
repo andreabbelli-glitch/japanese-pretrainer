@@ -4,7 +4,6 @@ import { cache } from "react";
 import {
   db,
   getMediaBySlug,
-  listActiveMediaIds,
   listMedia,
   type DatabaseClient
 } from "@/db";
@@ -88,15 +87,6 @@ export async function listMediaCached(database: DatabaseClient = db) {
     enabled: canUseDataCache(database),
     keyParts: ["media-list"],
     loader: () => listMedia(database),
-    tags: [MEDIA_LIST_TAG]
-  });
-}
-
-export async function listActiveMediaIdsCached(database: DatabaseClient = db) {
-  return runWithTaggedCache({
-    enabled: canUseDataCache(database),
-    keyParts: ["media-active-ids"],
-    loader: () => listActiveMediaIds(database),
     tags: [MEDIA_LIST_TAG]
   });
 }

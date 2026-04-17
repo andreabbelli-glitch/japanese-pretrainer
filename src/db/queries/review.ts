@@ -278,6 +278,130 @@ function buildCompletedLessonsCteSql(mediaId?: string) {
   `;
 }
 
+export async function getGlobalReviewNextCardFront(
+  database: DatabaseQueryClient,
+  input: {
+    asOf?: Date;
+    queuedNewLimit?: number;
+  } = {}
+) {
+  const asOf = input.asOf ?? new Date();
+  const asOfIso = asOf.toISOString();
+  const queuedNewLimit = input.queuedNewLimit ?? 0;
+  const rows = await database.all<{
+    front: string | null;
+  }>(`
+    WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: "SELECT id FROM media WHERE status = 'active'" })},
+    ${buildCompletedLessonsCteSql()},
+    global_subject_card_candidates AS (
+      SELECT
+        si.subject_key AS subjectKey,
+        si.card_id AS cardId,
+        si.card_status AS cardStatus,
+        si.created_at AS createdAt,
+        si.order_index AS orderIndex,
+        c.front AS front,
+        COALESCE(rss.last_interaction_at, c.updated_at, si.created_at) AS lastInteractionAt,
+        COALESCE(rss.manual_override, 0) AS manualOverride,
+        COALESCE(rss.suspended, 0) AS suspended,
+        COALESCE(rss.state, 'new') AS reviewState,
+        rss.due_at AS dueAt,
+        ROW_NUMBER() OVER (
+          PARTITION BY si.subject_key
+          ORDER BY
+            CASE
+              WHEN rss.card_id IS NOT NULL
+               AND rss.card_id = si.card_id THEN 0
+              ELSE 1
+            END ASC,
+            CASE
+              WHEN si.card_status = 'suspended'
+               OR COALESCE(rss.suspended, 0) = 1
+               OR COALESCE(rss.state, 'new') = 'suspended' THEN 4
+              WHEN COALESCE(rss.manual_override, 0) = 1
+               OR COALESCE(rss.state, 'new') = 'known_manual' THEN 3
+              WHEN COALESCE(rss.state, 'new') = 'new' THEN 2
+              WHEN rss.due_at IS NULL
+               OR rss.due_at <= ${quoteSqlString(asOfIso)} THEN 0
+              ELSE 1
+            END ASC,
+            COALESCE(rss.last_interaction_at, c.updated_at, si.created_at) DESC,
+            COALESCE(si.order_index, 2147483647) ASC,
+            si.card_id ASC
+        ) AS rowNumber
+      FROM subject_identity si
+      INNER JOIN card c
+        ON c.id = si.card_id
+      LEFT JOIN review_subject_state rss
+        ON rss.subject_key = si.subject_key
+      LEFT JOIN completed_lessons cl
+        ON cl.id = si.lesson_id
+      WHERE si.lesson_id IS NOT NULL
+       AND cl.id IS NOT NULL
+    ),
+    global_subject_candidates AS (
+      SELECT
+        cardId,
+        createdAt,
+        dueAt,
+        front,
+        lastInteractionAt,
+        orderIndex,
+        CASE
+          WHEN cardStatus = 'suspended'
+           OR suspended = 1
+           OR reviewState = 'suspended' THEN 'suspended'
+          WHEN manualOverride = 1
+           OR reviewState = 'known_manual' THEN 'known_manual'
+          ELSE reviewState
+        END AS effectiveState
+      FROM global_subject_card_candidates
+      WHERE rowNumber = 1
+    ),
+    first_due AS (
+      SELECT front
+      FROM global_subject_candidates
+      WHERE effectiveState NOT IN ('new', 'known_manual', 'suspended')
+        AND (dueAt IS NULL OR dueAt <= ${quoteSqlString(asOfIso)})
+      ORDER BY
+        CASE
+          WHEN dueAt IS NULL THEN 1
+          ELSE 0
+        END ASC,
+        dueAt ASC,
+        lastInteractionAt DESC,
+        COALESCE(orderIndex, 2147483647) ASC,
+        createdAt ASC,
+        cardId ASC
+      LIMIT 1
+    ),
+    first_new AS (
+      SELECT front
+      FROM global_subject_candidates
+      WHERE effectiveState = 'new'
+      ORDER BY
+        lastInteractionAt DESC,
+        COALESCE(orderIndex, 2147483647) ASC,
+        createdAt ASC,
+        cardId ASC
+      LIMIT 1
+    )
+    SELECT front
+    FROM (
+      SELECT 0 AS queuePriority, front
+      FROM first_due
+      UNION ALL
+      SELECT 1 AS queuePriority, front
+      FROM first_new
+      WHERE ${queuedNewLimit > 0 ? "1" : "0"} = 1
+    )
+    ORDER BY queuePriority ASC
+    LIMIT 1
+  `);
+
+  return typeof rows[0]?.front === "string" ? rows[0].front : null;
+}
+
 export async function getGlobalReviewOverviewCounts(
   database: DatabaseQueryClient,
   asOf = new Date()

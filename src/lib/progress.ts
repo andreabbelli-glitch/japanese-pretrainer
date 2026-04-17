@@ -26,10 +26,17 @@ import {
 } from "@/lib/study-metrics";
 
 import {
-  loadGlobalAndMediaReviewOverviewSnapshots
+  loadGlobalReviewOverviewSnapshot,
+  loadReviewIntroducedTodayCountCached,
+  loadReviewOverviewSnapshots
 } from "./review";
 import type { ReviewOverviewSnapshot } from "./review-types";
 import { getLocalIsoDateKey } from "./local-date";
+
+type ProgressReviewSnapshots = {
+  byMedia: Map<string, ReviewOverviewSnapshot>;
+  global: ReviewOverviewSnapshot;
+};
 
 export type ProgressPageData = {
   globalReview: {
@@ -136,11 +143,37 @@ export async function getMediaProgressPageData(
     keyParts: ["progress", "media-page", media.id, `day:${cacheDayKey}`],
     loader: async () => {
       const settingsPromise = getStudySettings(database);
-      const reviewSnapshotsPromise = settingsPromise.then((settings) =>
-        loadGlobalAndMediaReviewOverviewSnapshots(database, [media.id], {
-          resolvedDailyLimit: settings.reviewDailyLimit
-        })
-      );
+      const newIntroducedTodayCountPromise =
+        loadReviewIntroducedTodayCountCached(database);
+      const reviewSnapshotsPromise = Promise.all([
+        settingsPromise,
+        newIntroducedTodayCountPromise
+      ]).then(async ([settings, newIntroducedTodayCount]) => {
+        const [global, byMedia] = await Promise.all([
+          loadGlobalReviewOverviewSnapshot(database, {
+            resolvedDailyLimit: settings.reviewDailyLimit,
+            resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+          }),
+          loadReviewOverviewSnapshots(
+            database,
+            [
+              {
+                id: media.id,
+                slug: media.slug
+              }
+            ],
+            {
+              resolvedDailyLimit: settings.reviewDailyLimit,
+              resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+            }
+          )
+        ]);
+
+        return {
+          byMedia,
+          global
+        } satisfies ProgressReviewSnapshots;
+      });
       const [sharedMedia, reviewSnapshots, settings] = await Promise.all([
         getMediaDetailData(mediaSlug, database, {
           includeReviewCounts: false,
@@ -167,9 +200,7 @@ export async function getMediaProgressPageData(
 
 function buildMediaProgressPageData(
   sharedMedia: NonNullable<Awaited<ReturnType<typeof getMediaDetailData>>>,
-  reviewSnapshots: Awaited<
-    ReturnType<typeof loadGlobalAndMediaReviewOverviewSnapshots>
-  >,
+  reviewSnapshots: ProgressReviewSnapshots,
   settings: Awaited<ReturnType<typeof getStudySettings>>
 ): ProgressPageData {
   const reviewOverview = reviewSnapshots.byMedia.get(sharedMedia.id);

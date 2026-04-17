@@ -120,6 +120,19 @@ describe("progress, settings, and study controls", () => {
     mediaFindFirstSpy.mockRestore();
   });
 
+  it("reuses the loaded media list while building progress review snapshots", async () => {
+    const mediaFindManySpy = vi.spyOn(database.query.media, "findMany");
+
+    const data = await getMediaProgressPageData(
+      developmentFixture.mediaSlug,
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(mediaFindManySpy).toHaveBeenCalledTimes(1);
+    mediaFindManySpy.mockRestore();
+  });
+
   it("recommends review when the queue has only new cards", async () => {
     await database
       .update(reviewSubjectState)

@@ -21,18 +21,6 @@ export async function listMedia(database: DatabaseClient) {
   });
 }
 
-export async function listActiveMediaIds(database: DatabaseClient) {
-  const rows = await database.query.media.findMany({
-    columns: {
-      id: true
-    },
-    where: eq(media.status, "active"),
-    orderBy: [asc(media.id)]
-  });
-
-  return rows.map((row) => row.id);
-}
-
 export async function getMediaBySlug(database: DatabaseClient, slug: string) {
   return database.query.media.findFirst({
     columns: mediaSummaryColumns,

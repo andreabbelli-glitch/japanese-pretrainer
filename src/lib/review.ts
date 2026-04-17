@@ -37,6 +37,5 @@ export {
   getReviewLaunchMedia,
   getEligibleReviewCardsByMediaId,
   loadReviewOverviewSnapshots,
-  loadGlobalReviewOverviewSnapshot,
-  loadGlobalAndMediaReviewOverviewSnapshots
+  loadGlobalReviewOverviewSnapshot
 } from "./review-loader";

@@ -2,6 +2,7 @@ import {
   countReviewSubjectsIntroducedOnDay,
   db,
   getReviewLaunchCandidateByMediaId,
+  getGlobalReviewNextCardFront,
   getGlobalReviewOverviewCounts,
   listGrammarEntryReviewSummariesByIds,
   listReviewLaunchCandidates,
@@ -17,13 +18,13 @@ import {
   buildReviewSummaryTags,
   canUseDataCache,
   getMediaBySlugCached,
-  listActiveMediaIdsCached,
   listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
 import { pickBestBy } from "@/lib/collections";
 import { getLocalIsoDateKey } from "@/lib/local-date";
+import { stripInlineMarkdown } from "@/lib/render-furigana";
 import { getReviewDailyLimit, getStudySettings } from "@/lib/settings";
 import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { resolveReviewSubjectGroups } from "./review-subject-state-lookup";
@@ -440,7 +441,11 @@ export async function loadReviewOverviewSnapshots(
   media: Array<{
     id: string;
     slug: string;
-  }>
+  }>,
+  options: {
+    resolvedDailyLimit?: number;
+    resolvedNewIntroducedTodayCount?: number;
+  } = {}
 ) {
   if (media.length === 0) {
     return new Map<string, ReviewOverviewSnapshot>();
@@ -451,7 +456,9 @@ export async function loadReviewOverviewSnapshots(
   const workspace = await loadReviewWorkspaceV2({
     database,
     mediaIds,
-    now
+    now,
+    resolvedDailyLimit: options.resolvedDailyLimit,
+    resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount
   });
   const snapshots = new Map<string, ReviewOverviewSnapshot>();
 
@@ -505,6 +512,13 @@ export async function loadGlobalReviewOverviewSnapshot(
     Math.max(dailyLimit - newIntroducedTodayCount, 0)
   );
   const upcomingCount = Math.max(counts.activeReviewCards - counts.dueCount, 0);
+  const nextCardFront =
+    counts.dueCount + newQueuedCount > 0
+      ? await getGlobalReviewNextCardFront(database, {
+          asOf: now,
+          queuedNewLimit: newQueuedCount
+        })
+      : null;
 
   return {
     activeCards: counts.activeReviewCards,
@@ -514,6 +528,9 @@ export async function loadGlobalReviewOverviewSnapshot(
     manualCount: counts.manualCount,
     newAvailableCount: counts.newAvailableCount,
     newQueuedCount,
+    nextCardFront: nextCardFront
+      ? stripInlineMarkdown(nextCardFront)
+      : undefined,
     queueCount: counts.dueCount + newQueuedCount,
     queueLabel: buildQueueIntroLabel({
       dailyLimit,
@@ -528,86 +545,6 @@ export async function loadGlobalReviewOverviewSnapshot(
     totalCards: counts.totalCards,
     upcomingCount
   };
-}
-
-export async function loadGlobalAndMediaReviewOverviewSnapshots(
-  database: DatabaseClient,
-  visibleMediaIds: string[],
-  options: {
-    resolvedDailyLimit?: number;
-    resolvedNewIntroducedTodayCount?: number;
-  } = {}
-) {
-  const mediaIds = await listActiveMediaIdsCached(database);
-
-  if (mediaIds.length === 0) {
-    const emptySnapshot = buildReviewOverviewSnapshot({
-      cards: [],
-      dailyLimit: 0,
-      entryLookup: EMPTY_ENTRY_LOOKUP,
-      extraNewCount: 0,
-      newIntroducedTodayCount: 0,
-      nowIso: new Date().toISOString(),
-      subjectStates: new Map()
-    });
-
-    return {
-      global: emptySnapshot,
-      byMedia: new Map<string, ReviewOverviewSnapshot>()
-    };
-  }
-
-  const now = new Date();
-  const workspace = await loadReviewWorkspaceV2({
-    database,
-    mediaIds,
-    now,
-    resolvedDailyLimit: options.resolvedDailyLimit,
-    resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount
-  });
-
-  const nowIso = workspace.now.toISOString();
-  const subjectModels = buildReviewSubjectModels({
-    cards: workspace.cards,
-    entryLookup: EMPTY_ENTRY_LOOKUP,
-    nowIso,
-    subjectGroups: workspace.subjectGroups
-  });
-  const buckets = bucketAndSortReviewSubjectModels(subjectModels);
-
-  const globalSnapshot = buildReviewOverviewSnapshot({
-    cards: workspace.cards,
-    dailyLimit: workspace.dailyLimit,
-    entryLookup: EMPTY_ENTRY_LOOKUP,
-    extraNewCount: 0,
-    newIntroducedTodayCount: workspace.newIntroducedTodayCount,
-    nowIso,
-    subjectGroups: workspace.subjectGroups,
-    subjectModels,
-    buckets
-  });
-
-  const byMedia = new Map<string, ReviewOverviewSnapshot>();
-
-  for (const mediaId of visibleMediaIds) {
-    byMedia.set(
-      mediaId,
-      buildReviewOverviewSnapshot({
-        cards: workspace.cards,
-        dailyLimit: workspace.dailyLimit,
-        entryLookup: EMPTY_ENTRY_LOOKUP,
-        extraNewCount: 0,
-        newIntroducedTodayCount: workspace.newIntroducedTodayCount,
-        nowIso,
-        subjectGroups: workspace.subjectGroups,
-        subjectModels,
-        buckets,
-        visibleMediaId: mediaId
-      })
-    );
-  }
-
-  return { global: globalSnapshot, byMedia };
 }
 
 function buildEligibleReviewCardsByMedia(input: {
