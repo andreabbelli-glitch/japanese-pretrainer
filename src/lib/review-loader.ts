@@ -1,9 +1,8 @@
 import {
   countReviewSubjectsIntroducedOnDay,
   db,
+  getGlobalReviewOverviewData,
   getReviewLaunchCandidateByMediaId,
-  getGlobalReviewNextCardFront,
-  getGlobalReviewOverviewCounts,
   listGrammarEntryReviewSummariesByIds,
   listReviewLaunchCandidates,
   listReviewCardsByMediaId,
@@ -501,48 +500,45 @@ export async function loadGlobalReviewOverviewSnapshot(
   } = {}
 ) {
   const now = new Date();
-  const [counts, dailyLimit, newIntroducedTodayCount] = await Promise.all([
-    getGlobalReviewOverviewCounts(database, now),
+  const [overview, dailyLimit, newIntroducedTodayCount] = await Promise.all([
+    getGlobalReviewOverviewData(database, now),
     options.resolvedDailyLimit ?? getReviewDailyLimit(database),
     options.resolvedNewIntroducedTodayCount ??
       loadReviewIntroducedTodayCountCached(database, now)
   ]);
-  const newQueuedCount = Math.min(
-    counts.newAvailableCount,
-    Math.max(dailyLimit - newIntroducedTodayCount, 0)
+  const remainingNewSlots = Math.max(dailyLimit - newIntroducedTodayCount, 0);
+  const newQueuedCount = Math.min(overview.newAvailableCount, remainingNewSlots);
+  const upcomingCount = Math.max(
+    overview.activeReviewCards - overview.dueCount,
+    0
   );
-  const upcomingCount = Math.max(counts.activeReviewCards - counts.dueCount, 0);
   const nextCardFront =
-    counts.dueCount + newQueuedCount > 0
-      ? await getGlobalReviewNextCardFront(database, {
-          asOf: now,
-          queuedNewLimit: newQueuedCount
-        })
-      : null;
+    overview.firstDueFront ??
+    (newQueuedCount > 0 ? overview.firstNewFront ?? null : null);
 
   return {
-    activeCards: counts.activeReviewCards,
+    activeCards: overview.activeReviewCards,
     dailyLimit,
-    dueCount: counts.dueCount,
+    dueCount: overview.dueCount,
     effectiveDailyLimit: dailyLimit,
-    manualCount: counts.manualCount,
-    newAvailableCount: counts.newAvailableCount,
+    manualCount: overview.manualCount,
+    newAvailableCount: overview.newAvailableCount,
     newQueuedCount,
     nextCardFront: nextCardFront
       ? stripInlineMarkdown(nextCardFront)
       : undefined,
-    queueCount: counts.dueCount + newQueuedCount,
+    queueCount: overview.dueCount + newQueuedCount,
     queueLabel: buildQueueIntroLabel({
       dailyLimit,
-      dueCount: counts.dueCount,
-      manualCount: counts.manualCount,
+      dueCount: overview.dueCount,
+      manualCount: overview.manualCount,
       newQueuedCount,
       sessionTopUpNewCount: 0,
       upcomingCount
     }),
-    suspendedCount: counts.suspendedCount,
-    tomorrowCount: counts.tomorrowCount,
-    totalCards: counts.totalCards,
+    suspendedCount: overview.suspendedCount,
+    tomorrowCount: overview.tomorrowCount,
+    totalCards: overview.totalCards,
     upcomingCount
   };
 }

@@ -261,6 +261,11 @@ export type GlobalReviewOverviewCounts = {
   totalCards: number;
 };
 
+export type GlobalReviewOverviewData = GlobalReviewOverviewCounts & {
+  firstDueFront: string | null;
+  firstNewFront: string | null;
+};
+
 function buildCompletedLessonsCteSql(mediaId?: string) {
   const mediaFilterSql = mediaId
     ? `\n        AND l.media_id = ${quoteSqlString(mediaId)}`
@@ -286,10 +291,39 @@ export async function getGlobalReviewNextCardFront(
   } = {}
 ) {
   const asOf = input.asOf ?? new Date();
-  const asOfIso = asOf.toISOString();
   const queuedNewLimit = input.queuedNewLimit ?? 0;
+  const overview = await getGlobalReviewOverviewData(database, asOf);
+
+  return overview.firstDueFront ??
+    (queuedNewLimit > 0 ? overview.firstNewFront ?? null : null);
+}
+
+export async function getGlobalReviewOverviewData(
+  database: DatabaseQueryClient,
+  asOf = new Date()
+): Promise<GlobalReviewOverviewData> {
+  const asOfIso = asOf.toISOString();
+  const tomorrowStart = new Date(
+    asOf.getFullYear(),
+    asOf.getMonth(),
+    asOf.getDate() + 1
+  );
+  const tomorrowEnd = new Date(
+    asOf.getFullYear(),
+    asOf.getMonth(),
+    asOf.getDate() + 2
+  );
+
   const rows = await database.all<{
-    front: string | null;
+    activeReviewCards: number | string | null;
+    dueCount: number | string | null;
+    firstDueFront: string | null;
+    firstNewFront: string | null;
+    manualCount: number | string | null;
+    newAvailableCount: number | string | null;
+    suspendedCount: number | string | null;
+    tomorrowCount: number | string | null;
+    totalCards: number | string | null;
   }>(`
     WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: "SELECT id FROM media WHERE status = 'active'" })},
     ${buildCompletedLessonsCteSql()},
@@ -346,7 +380,9 @@ export async function getGlobalReviewNextCardFront(
         dueAt,
         front,
         lastInteractionAt,
+        manualOverride,
         orderIndex,
+        subjectKey,
         CASE
           WHEN cardStatus = 'suspended'
            OR suspended = 1
@@ -385,107 +421,6 @@ export async function getGlobalReviewNextCardFront(
         createdAt ASC,
         cardId ASC
       LIMIT 1
-    )
-    SELECT front
-    FROM (
-      SELECT 0 AS queuePriority, front
-      FROM first_due
-      UNION ALL
-      SELECT 1 AS queuePriority, front
-      FROM first_new
-      WHERE ${queuedNewLimit > 0 ? "1" : "0"} = 1
-    )
-    ORDER BY queuePriority ASC
-    LIMIT 1
-  `);
-
-  return typeof rows[0]?.front === "string" ? rows[0].front : null;
-}
-
-export async function getGlobalReviewOverviewCounts(
-  database: DatabaseQueryClient,
-  asOf = new Date()
-): Promise<GlobalReviewOverviewCounts> {
-  const asOfIso = asOf.toISOString();
-  const tomorrowStart = new Date(
-    asOf.getFullYear(),
-    asOf.getMonth(),
-    asOf.getDate() + 1
-  );
-  const tomorrowEnd = new Date(
-    asOf.getFullYear(),
-    asOf.getMonth(),
-    asOf.getDate() + 2
-  );
-
-  const rows = await database.all<{
-    activeReviewCards: number | string | null;
-    dueCount: number | string | null;
-    manualCount: number | string | null;
-    newAvailableCount: number | string | null;
-    suspendedCount: number | string | null;
-    tomorrowCount: number | string | null;
-    totalCards: number | string | null;
-  }>(`
-    WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: "SELECT id FROM media WHERE status = 'active'" })},
-    ${buildCompletedLessonsCteSql()},
-    global_subject_card_candidates AS (
-      SELECT
-        si.subject_key AS subjectKey,
-        si.card_id AS cardId,
-        si.card_status AS cardStatus,
-        si.created_at AS createdAt,
-        si.order_index AS orderIndex,
-        COALESCE(rss.manual_override, 0) AS manualOverride,
-        COALESCE(rss.suspended, 0) AS suspended,
-        COALESCE(rss.state, 'new') AS reviewState,
-        rss.due_at AS dueAt,
-        ROW_NUMBER() OVER (
-          PARTITION BY si.subject_key
-          ORDER BY
-            CASE
-              WHEN rss.card_id IS NOT NULL
-               AND rss.card_id = si.card_id THEN 0
-              ELSE 1
-            END ASC,
-            CASE
-              WHEN si.card_status = 'suspended'
-               OR COALESCE(rss.suspended, 0) = 1
-               OR COALESCE(rss.state, 'new') = 'suspended' THEN 4
-              WHEN COALESCE(rss.manual_override, 0) = 1
-               OR COALESCE(rss.state, 'new') = 'known_manual' THEN 3
-              WHEN COALESCE(rss.state, 'new') = 'new' THEN 2
-              WHEN rss.due_at IS NULL
-               OR rss.due_at <= ${quoteSqlString(asOfIso)} THEN 0
-              ELSE 1
-            END ASC,
-            COALESCE(si.created_at, '') DESC,
-            COALESCE(si.order_index, 2147483647) ASC,
-            si.card_id ASC
-        ) AS rowNumber
-      FROM subject_identity si
-      LEFT JOIN review_subject_state rss
-        ON rss.subject_key = si.subject_key
-      LEFT JOIN completed_lessons cl
-        ON cl.id = si.lesson_id
-      WHERE si.lesson_id IS NOT NULL
-       AND cl.id IS NOT NULL
-    ),
-    global_subject_candidates AS (
-      SELECT
-        dueAt,
-        CASE
-          WHEN cardStatus = 'suspended'
-           OR suspended = 1
-           OR reviewState = 'suspended' THEN 'suspended'
-          WHEN manualOverride = 1
-           OR reviewState = 'known_manual' THEN 'known_manual'
-          ELSE reviewState
-        END AS effectiveState,
-        manualOverride,
-        subjectKey
-      FROM global_subject_card_candidates
-      WHERE rowNumber = 1
     )
     SELECT
       COALESCE(
@@ -565,19 +500,43 @@ export async function getGlobalReviewOverviewCounts(
           END
         ),
         0
-      ) AS tomorrowCount
+      ) AS tomorrowCount,
+      (SELECT front FROM first_due) AS firstDueFront,
+      (SELECT front FROM first_new) AS firstNewFront
     FROM global_subject_candidates gsc
   `);
+
   const row = rows[0];
 
   return {
     activeReviewCards: Number(row?.activeReviewCards ?? 0),
     dueCount: Number(row?.dueCount ?? 0),
+    firstDueFront:
+      typeof row?.firstDueFront === "string" ? row.firstDueFront : null,
+    firstNewFront:
+      typeof row?.firstNewFront === "string" ? row.firstNewFront : null,
     manualCount: Number(row?.manualCount ?? 0),
     newAvailableCount: Number(row?.newAvailableCount ?? 0),
     suspendedCount: Number(row?.suspendedCount ?? 0),
     tomorrowCount: Number(row?.tomorrowCount ?? 0),
     totalCards: Number(row?.totalCards ?? 0)
+  };
+}
+
+export async function getGlobalReviewOverviewCounts(
+  database: DatabaseQueryClient,
+  asOf = new Date()
+): Promise<GlobalReviewOverviewCounts> {
+  const overview = await getGlobalReviewOverviewData(database, asOf);
+
+  return {
+    activeReviewCards: overview.activeReviewCards,
+    dueCount: overview.dueCount,
+    manualCount: overview.manualCount,
+    newAvailableCount: overview.newAvailableCount,
+    suspendedCount: overview.suspendedCount,
+    tomorrowCount: overview.tomorrowCount,
+    totalCards: overview.totalCards
   };
 }
 

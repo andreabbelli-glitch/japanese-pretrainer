@@ -14,7 +14,11 @@ import {
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
-import { getReviewPageData, getReviewQueueSnapshotForMedia } from "@/lib/review";
+import {
+  getReviewPageData,
+  getReviewQueueSnapshotForMedia,
+  loadGlobalReviewOverviewSnapshot
+} from "@/lib/review";
 
 describe("review media query reuse", () => {
   let tempDir = "";
@@ -75,5 +79,27 @@ describe("review media query reuse", () => {
 
     mediaFindFirstSpy.mockRestore();
     mediaFindManySpy.mockRestore();
+  });
+
+  it("builds the global review overview from a single raw overview query", async () => {
+    const databaseAllSpy = vi.spyOn(
+      database as DatabaseClient & {
+        all: (sql: string) => Promise<unknown[]>;
+      },
+      "all"
+    );
+
+    const overview = await loadGlobalReviewOverviewSnapshot(database);
+
+    expect(overview.queueCount).toBeGreaterThanOrEqual(0);
+    expect(
+      databaseAllSpy.mock.calls.filter(
+        ([sql]) =>
+          typeof sql === "string" &&
+          sql.includes("global_subject_card_candidates")
+      )
+    ).toHaveLength(1);
+
+    databaseAllSpy.mockRestore();
   });
 });
