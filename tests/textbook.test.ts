@@ -35,6 +35,7 @@ import {
   setFuriganaMode,
   setLessonCompletionState
 } from "@/lib/textbook";
+import * as dataCache from "@/lib/data-cache";
 import * as settings from "@/lib/settings";
 import { applyLessonCompletionState } from "@/lib/textbook-reader-state";
 import { parseTextbookDocument } from "@/lib/textbook-document";
@@ -158,6 +159,18 @@ back: passato
   );
 }
 
+function createDeferred() {
+  let resolve!: () => void;
+  const promise = new Promise<void>((res) => {
+    resolve = res;
+  });
+
+  return {
+    promise,
+    resolve
+  };
+}
+
 describe("textbook data", () => {
   let tempDir = "";
   let database: DatabaseClient;
@@ -211,6 +224,52 @@ describe("textbook data", () => {
       type: "paragraph"
     });
     expect(lessonData?.lesson).not.toHaveProperty("htmlRendered");
+  });
+
+  it("starts media and furigana lookups in parallel while loading a lesson", async () => {
+    const mediaGate = createDeferred();
+    const settingsGate = createDeferred();
+    let mediaStarted = false;
+    let settingsStarted = false;
+
+    const originalMediaLookup = dataCache.getMediaBySlugCached;
+    const originalFuriganaLookup = settings.getFuriganaModeSetting;
+    const mediaLookupSpy = vi
+      .spyOn(dataCache, "getMediaBySlugCached")
+      .mockImplementation(async (...args) => {
+        mediaStarted = true;
+        const resultPromise = originalMediaLookup(...args);
+        await mediaGate.promise;
+        return resultPromise;
+      });
+    const settingsLookupSpy = vi
+      .spyOn(settings, "getFuriganaModeSetting")
+      .mockImplementation(async (...args) => {
+        settingsStarted = true;
+        const resultPromise = originalFuriganaLookup(...args);
+        await settingsGate.promise;
+        return resultPromise;
+      });
+
+    const lessonPromise = getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    await Promise.resolve();
+    await Promise.resolve();
+
+    try {
+      expect(mediaStarted).toBe(true);
+      expect(settingsStarted).toBe(true);
+    } finally {
+      mediaGate.resolve();
+      settingsGate.resolve();
+      await lessonPromise;
+      mediaLookupSpy.mockRestore();
+      settingsLookupSpy.mockRestore();
+    }
   });
 
   it("reuses the resolved media row and furigana settings while loading a lesson", async () => {

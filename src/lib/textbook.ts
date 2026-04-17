@@ -98,13 +98,15 @@ export async function getTextbookLessonData(
 ): Promise<TextbookLessonData | null> {
   markDataAsLive();
 
-  const media = await getMediaBySlugCached(database, mediaSlug);
+  const mediaPromise = getMediaBySlugCached(database, mediaSlug);
+  const furiganaModePromise = getFuriganaMode(database);
+  const media = await mediaPromise;
 
   if (!media) {
     return null;
   }
 
-  const indexModelPromise = getFuriganaMode(database).then((furiganaMode) =>
+  const indexModelPromise = furiganaModePromise.then((furiganaMode) =>
     getTextbookIndexData(mediaSlug, database, {
       resolvedFuriganaMode: furiganaMode,
       resolvedMedia: media
