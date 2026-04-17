@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
-import type { ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 
 import { cx } from "@/lib/classnames";
 import type {
@@ -281,6 +281,21 @@ export function LessonRail({
     </div>
   );
 }
+
+export function areLessonRailPropsEqual(
+  previous: Readonly<LessonRailProps>,
+  next: Readonly<LessonRailProps>
+) {
+  return (
+    previous.activeLessonId === next.activeLessonId &&
+    previous.compact === next.compact &&
+    previous.groups === next.groups &&
+    previous.mediaSlug === next.mediaSlug &&
+    previous.onNavigate === next.onNavigate
+  );
+}
+
+export const MemoizedLessonRail = memo(LessonRail, areLessonRailPropsEqual);
 
 type LessonNavLinkProps = {
   direction: "prev" | "next";

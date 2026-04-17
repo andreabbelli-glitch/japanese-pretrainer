@@ -33,7 +33,7 @@ import {
   type TooltipTarget
 } from "./lesson-article";
 import {
-  LessonRail,
+  MemoizedLessonRail,
   LessonReaderFooter,
   LessonReaderHeader,
   LessonReaderMobileStrip,
@@ -49,6 +49,7 @@ export {
   LessonArticle,
   formatCrossMediaHintLabel
 } from "./lesson-article";
+export { areLessonRailPropsEqual } from "./lesson-reader-ui";
 
 type LessonReaderClientProps = {
   data: TextbookLessonData;
@@ -526,6 +527,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
 
     void flushFuriganaModeChange(nextMode);
   };
+  const handleCloseLessonSheet = useCallback(() => {
+    setMobileSheet(null);
+  }, []);
 
   const toggleLessonCompletion = () => {
     const wasCompleted = lessonStatus === "completed";
@@ -594,7 +598,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
 
       <div className="reader-layout">
         <aside className="reader-rail">
-          <LessonRail
+          <MemoizedLessonRail
             activeLessonId={readerData.lesson.id}
             groups={readerData.groups}
             mediaSlug={readerData.media.slug}
@@ -681,12 +685,12 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
                 <p className="eyebrow">Lezioni</p>
                 <h2 className="reader-sheet__title">Percorso del media</h2>
               </div>
-              <LessonRail
+              <MemoizedLessonRail
                 activeLessonId={readerData.lesson.id}
                 compact
                 groups={readerData.groups}
                 mediaSlug={readerData.media.slug}
-                onNavigate={() => setMobileSheet(null)}
+                onNavigate={handleCloseLessonSheet}
               />
             </div>
           ) : (

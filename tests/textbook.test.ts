@@ -41,6 +41,7 @@ import { parseTextbookDocument } from "@/lib/textbook-document";
 import { renderFurigana } from "@/lib/render-furigana";
 import {
   LessonArticle,
+  areLessonRailPropsEqual,
   formatCrossMediaHintLabel
 } from "@/components/textbook/lesson-reader-client";
 
@@ -567,6 +568,70 @@ describe("textbook data", () => {
     ).toBe("2026-03-10T10:00:00.000Z");
     expect(patched.activeLesson?.lastOpenedAt).toBe("2026-03-10T10:00:00.000Z");
     expect(patched.resumeLesson?.lastOpenedAt).toBe("2026-03-10T10:00:00.000Z");
+  });
+
+  it("skips lesson rail rerenders when reader-local state changes without touching lesson props", () => {
+    const groups = [
+      {
+        completedLessons: 0,
+        id: "group-a",
+        lessons: [
+          {
+            completedAt: null,
+            difficulty: null,
+            excerpt: "Intro excerpt",
+            id: "lesson-a",
+            lastOpenedAt: null,
+            orderIndex: 1,
+            segmentId: "segment-a",
+            segmentTitle: "Segment A",
+            slug: "intro",
+            status: "not_started" as const,
+            statusLabel: "Da iniziare",
+            summary: "Intro",
+            title: "Intro"
+          }
+        ],
+        note: null,
+        title: "Capitolo 1",
+        totalLessons: 1
+      }
+    ];
+    const onNavigate = () => {};
+    const previous = {
+      activeLessonId: "lesson-a",
+      compact: false,
+      groups,
+      mediaSlug: "sample-media",
+      onNavigate
+    };
+
+    expect(areLessonRailPropsEqual(previous, { ...previous })).toBe(true);
+    expect(
+      areLessonRailPropsEqual(previous, {
+        ...previous,
+        activeLessonId: "lesson-b"
+      })
+    ).toBe(false);
+    expect(
+      areLessonRailPropsEqual(previous, {
+        ...previous,
+        groups: [
+          {
+            ...groups[0],
+            completedLessons: 1,
+            lessons: [
+              {
+                ...groups[0].lessons[0],
+                completedAt: "2026-03-10T10:00:00.000Z",
+                status: "completed",
+                statusLabel: "Completata"
+              }
+            ]
+          }
+        ]
+      })
+    ).toBe(false);
   });
 
   it("keeps rendering textbook data when recording the opened lesson fails", async () => {
