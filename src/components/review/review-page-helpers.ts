@@ -66,6 +66,60 @@ export function collectQueuedPrefetchCardIds(input: {
   return cardIdsToFetch;
 }
 
+export function collectQueuedAdvanceCandidateCardIds(input: {
+  bufferSize: number;
+  queueCardIds: string[];
+  queueIndex: number;
+}) {
+  const startIndex = input.queueIndex + 1;
+  const endIndex = Math.min(
+    startIndex + input.bufferSize,
+    input.queueCardIds.length
+  );
+
+  return input.queueCardIds.slice(startIndex, endIndex);
+}
+
+export function resolveReviewAdvanceCandidateCardId(input: {
+  candidateCardIds: string[];
+  prefetchedCardIds: ReadonlySet<string>;
+}) {
+  for (const cardId of input.candidateCardIds) {
+    if (input.prefetchedCardIds.has(cardId)) {
+      return cardId;
+    }
+  }
+
+  return null;
+}
+
+export function resolveReviewAdvanceCandidateQueuePosition(input: {
+  candidateCardIds: string[];
+  selectedCardId: string | null;
+}) {
+  if (!input.selectedCardId) {
+    return null;
+  }
+
+  const queueIndex = input.candidateCardIds.indexOf(input.selectedCardId);
+
+  return queueIndex >= 0 ? queueIndex + 1 : null;
+}
+
+export function prioritizeReviewAdvanceCandidateCardIds(input: {
+  candidateCardIds: string[];
+  preferredCardId: string | null;
+}) {
+  if (!input.preferredCardId) {
+    return input.candidateCardIds;
+  }
+
+  return [
+    input.preferredCardId,
+    ...input.candidateCardIds.filter((cardId) => cardId !== input.preferredCardId)
+  ];
+}
+
 export function resolveReviewQueuePosition(input: {
   data: ReviewPageClientData;
   queueCardIndexLookup?: ReadonlyMap<string, number>;
@@ -100,6 +154,7 @@ export function buildOptimisticGradeResult(input: {
   currentData: ReviewPageData;
   gradedCardBucket: ReviewQueueCard["bucket"];
   nextCard: ReviewQueueCard | null;
+  nextQueuePosition: number | null;
   nextQueueCardIds: string[];
 }): ReviewPageData {
   return {
@@ -114,8 +169,11 @@ export function buildOptimisticGradeResult(input: {
           bucket: input.nextCard.bucket,
           gradePreviews: input.nextCard.gradePreviews,
           isQueueCard: true,
-          position: 1,
-          remainingCount: Math.max(0, input.nextQueueCardIds.length - 1),
+          position: input.nextQueuePosition,
+          remainingCount:
+            input.nextQueuePosition !== null
+              ? Math.max(0, input.nextQueueCardIds.length - input.nextQueuePosition)
+              : 0,
           showAnswer: false
         }
       : {

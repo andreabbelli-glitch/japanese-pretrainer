@@ -2747,6 +2747,80 @@ describe("review system", () => {
     expect(revalidatePathMock).not.toHaveBeenCalled();
   });
 
+  it("hydrates a later prefetched queue card when the immediate next one is unavailable", async () => {
+    const { currentCardId, nextCardId } =
+      await prepareTwoQueueCardFixture(database);
+    const pageData = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    expect(pageData?.queueCardIds).toEqual([currentCardId, nextCardId]);
+
+    const result = await gradeReviewCardSessionAction({
+      answeredCount: pageData?.session.answeredCount ?? 0,
+      cardId: currentCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      candidateCardIds: ["missing-card", nextCardId],
+      extraNewCount: pageData?.session.extraNewCount ?? 0,
+      gradedCardBucket: pageData?.selectedCard?.bucket,
+      mediaSlug: developmentFixture.mediaSlug,
+      rating: "good",
+      scope: "media",
+      sessionMedia: pageData?.media,
+      sessionQueue: pageData?.queue,
+      sessionSettings: pageData?.settings
+    });
+
+    expect(reviewPageCalls).toEqual([]);
+    expect(result.selectedCard?.id).toBe(nextCardId);
+    expect(result.queue.queueCount).toBe(
+      Math.max(0, (pageData?.queue.queueCount ?? 0) - 1)
+    );
+    expect(result.selectedCardContext.isQueueCard).toBe(true);
+    expect(result.selectedCardContext.position).toBe(2);
+  });
+
+  it("keeps the canonical queue position when hydration prefers a later candidate", async () => {
+    const { currentCardId, nextCardId } =
+      await prepareTwoQueueCardFixture(database);
+    const pageData = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    expect(pageData?.queueCardIds).toEqual([currentCardId, nextCardId]);
+
+    const result = await gradeReviewCardSessionAction({
+      answeredCount: pageData?.session.answeredCount ?? 0,
+      cardId: currentCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      candidateCardIds: [currentCardId, nextCardId],
+      extraNewCount: pageData?.session.extraNewCount ?? 0,
+      gradedCardBucket: pageData?.selectedCard?.bucket,
+      mediaSlug: developmentFixture.mediaSlug,
+      nextCardId,
+      rating: "good",
+      scope: "media",
+      sessionMedia: pageData?.media,
+      sessionQueue: pageData?.queue,
+      sessionSettings: pageData?.settings
+    });
+
+    expect(reviewPageCalls).toEqual([]);
+    expect(result.selectedCard?.id).toBe(nextCardId);
+    expect(result.selectedCardContext.position).toBe(2);
+    expect(result.selectedCardContext.remainingCount).toBe(
+      Math.max(0, result.queue.queueCount - 2)
+    );
+  });
+
   it("falls back to a full rebuild instead of forcing completion when the session plan has no nextCardId", async () => {
     const { currentCardId } = await prepareTwoQueueCardFixture(database);
     const pageData = await getGlobalReviewPageData({}, database);
@@ -2775,6 +2849,47 @@ describe("review system", () => {
         }
       }
     ]);
+    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
+      developmentFixture.mediaId
+    );
+    expect(revalidatePathMock).not.toHaveBeenCalled();
+  });
+
+  it("falls back to a full rebuild when nextCardId is null and queued cards remain", async () => {
+    const { currentCardId } = await prepareTwoQueueCardFixture(database);
+    const pageData = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    const result = await gradeReviewCardSessionAction({
+      answeredCount: pageData?.session.answeredCount ?? 0,
+      cardId: currentCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      extraNewCount: pageData?.session.extraNewCount ?? 0,
+      gradedCardBucket: pageData?.selectedCard?.bucket,
+      mediaSlug: developmentFixture.mediaSlug,
+      nextCardId: null,
+      rating: "good",
+      scope: "media",
+      sessionMedia: pageData?.media,
+      sessionQueue: pageData?.queue,
+      sessionSettings: pageData?.settings
+    });
+
+    expect(reviewPageCalls).toEqual([
+      {
+        mediaSlug: developmentFixture.mediaSlug,
+        scope: "media",
+        searchParams: {
+          answered: "1"
+        }
+      }
+    ]);
+    expect(result).toEqual({});
     expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
       developmentFixture.mediaId
     );

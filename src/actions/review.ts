@@ -37,6 +37,7 @@ type ReviewSessionInput = {
   answeredCount: number;
   cardId: string;
   cardMediaSlug?: string;
+  candidateCardIds?: string[];
   extraNewCount: number;
   gradedCardBucket?: ReviewQueueCard["bucket"];
   gradedCardIds?: string[];
@@ -166,21 +167,30 @@ export async function gradeReviewCardSessionAction(
       input.sessionQueue,
       input.gradedCardBucket
     );
+    const hydratedAdvanceCandidate = await resolveHydratedAdvanceCandidate({
+      candidateCardIds: input.candidateCardIds ?? [],
+      nextCardId: input.nextCardId,
+      now: new Date()
+    });
+    const hasAdvanceCandidates = (input.candidateCardIds?.length ?? 0) > 0;
 
-    if (input.nextCardId === null) {
+    if (hydratedAdvanceCandidate) {
       return {
         scope: input.scope === "global" ? "global" : "media",
         media: input.sessionMedia,
         settings: input.sessionSettings,
         queue: updatedQueue,
         queueCardIds: [],
-        selectedCard: null,
+        selectedCard: hydratedAdvanceCandidate.card,
         selectedCardContext: {
-          bucket: null,
-          gradePreviews: [],
-          isQueueCard: false,
-          position: null,
-          remainingCount: 0,
+          bucket: hydratedAdvanceCandidate.card.bucket,
+          gradePreviews: hydratedAdvanceCandidate.card.gradePreviews,
+          isQueueCard: true,
+          position: hydratedAdvanceCandidate.position,
+          remainingCount: Math.max(
+            0,
+            updatedQueue.queueCount - hydratedAdvanceCandidate.position
+          ),
           showAnswer: false
         },
         session: {
@@ -191,9 +201,20 @@ export async function gradeReviewCardSessionAction(
       } satisfies ReviewPageData;
     }
 
-    const nextCardId = input.nextCardId;
-    if (nextCardId === undefined) {
-      if (updatedQueue.queueCount <= 0) {
+    if (!hasAdvanceCandidates) {
+      if (input.nextCardId === null) {
+        if (updatedQueue.queueCount > 0) {
+          return requireReviewPageDataForScope(
+            input,
+            buildReviewSearchParams({
+              answeredCount: input.answeredCount + 1,
+              extraNewCount: input.extraNewCount,
+              segmentId: input.segmentId
+            }),
+            media
+          );
+        }
+
         return {
           scope: input.scope === "global" ? "global" : "media",
           media: input.sessionMedia,
@@ -217,45 +238,91 @@ export async function gradeReviewCardSessionAction(
         } satisfies ReviewPageData;
       }
 
+      if (input.nextCardId === undefined) {
+        if (updatedQueue.queueCount <= 0) {
+          return {
+            scope: input.scope === "global" ? "global" : "media",
+            media: input.sessionMedia,
+            settings: input.sessionSettings,
+            queue: updatedQueue,
+            queueCardIds: [],
+            selectedCard: null,
+            selectedCardContext: {
+              bucket: null,
+              gradePreviews: [],
+              isQueueCard: false,
+              position: null,
+              remainingCount: 0,
+              showAnswer: false
+            },
+            session: {
+              answeredCount: input.answeredCount + 1,
+              extraNewCount: input.extraNewCount,
+              segmentId: input.segmentId
+            }
+          } satisfies ReviewPageData;
+        }
+
+        return requireReviewPageDataForScope(
+          input,
+          buildReviewSearchParams({
+            answeredCount: input.answeredCount + 1,
+            extraNewCount: input.extraNewCount
+          }),
+          media
+        );
+      }
+
+      const now = new Date();
+      const hydratedCard = await hydrateReviewCard({
+        cardId: input.nextCardId,
+        now
+      });
+
+      if (hydratedCard) {
+        return {
+          scope: input.scope === "global" ? "global" : "media",
+          media: input.sessionMedia,
+          settings: input.sessionSettings,
+          queue: updatedQueue,
+          queueCardIds: [],
+          selectedCard: hydratedCard,
+          selectedCardContext: {
+            bucket: hydratedCard.bucket,
+            gradePreviews: hydratedCard.gradePreviews,
+            isQueueCard: true,
+            position: 1,
+            remainingCount: Math.max(0, updatedQueue.queueCount - 1),
+            showAnswer: false
+          },
+          session: {
+            answeredCount: input.answeredCount + 1,
+            extraNewCount: input.extraNewCount,
+            segmentId: input.segmentId
+          }
+        } satisfies ReviewPageData;
+      }
+
       return requireReviewPageDataForScope(
         input,
         buildReviewSearchParams({
           answeredCount: input.answeredCount + 1,
-          extraNewCount: input.extraNewCount
+          extraNewCount: input.extraNewCount,
+          segmentId: input.segmentId
         }),
         media
       );
     }
 
-    const now = new Date();
-    const hydratedCard = await hydrateReviewCard({
-      cardId: nextCardId,
-      now
-    });
-
-    if (hydratedCard) {
-      return {
-        scope: input.scope === "global" ? "global" : "media",
-        media: input.sessionMedia,
-        settings: input.sessionSettings,
-        queue: updatedQueue,
-        queueCardIds: [],
-        selectedCard: hydratedCard,
-        selectedCardContext: {
-          bucket: hydratedCard.bucket,
-          gradePreviews: hydratedCard.gradePreviews,
-          isQueueCard: true,
-          position: 1,
-          remainingCount: Math.max(0, updatedQueue.queueCount - 1),
-          showAnswer: false
-        },
-        session: {
-          answeredCount: input.answeredCount + 1,
-          extraNewCount: input.extraNewCount,
-          segmentId: input.segmentId
-        }
-      } satisfies ReviewPageData;
-    }
+    return requireReviewPageDataForScope(
+      input,
+      buildReviewSearchParams({
+        answeredCount: input.answeredCount + 1,
+        extraNewCount: input.extraNewCount,
+        segmentId: input.segmentId
+      }),
+      media
+    );
   }
 
   return requireReviewPageDataForScope(
@@ -407,6 +474,38 @@ function revalidateEntryStatusCaches(input: {
   if (input.mediaId) {
     updateGlossarySummaryCache(input.mediaId);
   }
+}
+
+async function resolveHydratedAdvanceCandidate(input: {
+  candidateCardIds: string[];
+  nextCardId?: string | null;
+  now: Date;
+}) {
+  const orderedCardIds = [
+    ...new Set([
+      ...(input.nextCardId ? [input.nextCardId] : []),
+      ...input.candidateCardIds
+    ])
+  ];
+
+  for (const [index, cardId] of orderedCardIds.entries()) {
+    const hydratedCard = await hydrateReviewCard({
+      cardId,
+      now: input.now
+    });
+
+    if (hydratedCard) {
+      const canonicalQueuePosition = input.candidateCardIds.indexOf(cardId);
+
+      return {
+        card: hydratedCard,
+        position:
+          canonicalQueuePosition >= 0 ? canonicalQueuePosition + 1 : index + 1
+      };
+    }
+  }
+
+  return null;
 }
 
 function readReviewFormMutationInput(

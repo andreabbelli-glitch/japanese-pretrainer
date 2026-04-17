@@ -29,9 +29,12 @@ import {
 } from "./review-page-state";
 import {
   buildOptimisticGradeResult,
+  collectQueuedAdvanceCandidateCardIds,
   collectQueuedPrefetchCardIds,
   buildReviewHydrationRequestKey,
   isReviewPageData,
+  resolveReviewAdvanceCandidateCardId,
+  resolveReviewAdvanceCandidateQueuePosition,
   resolveReviewQueuePosition,
   showCompletionTopUp,
   type ReviewGradeValue
@@ -141,14 +144,17 @@ export function useReviewPageController(input: {
   const isAnswerRevealed = selectedCard
     ? selectedCardContext.showAnswer || revealedCardId === selectedCardId
     : false;
-  const nextQueueCardId =
-    !isQueueCard || selectedCardId === null
-      ? null
-      : isReviewPageData(viewData)
-        ? queueIndex >= 0
-          ? (activeQueueCardIds[queueIndex + 1] ?? null)
-          : undefined
-        : viewData.nextCardId;
+  const advanceWindowCardIds = useMemo(
+    () =>
+      isQueueCard && queueIndex >= 0
+        ? collectQueuedAdvanceCandidateCardIds({
+            bufferSize: 3,
+            queueCardIds: activeQueueCardIds,
+            queueIndex
+          })
+        : [],
+    [activeQueueCardIds, isQueueCard, queueIndex]
+  );
   const position = selectedCard ? selectedCardContext.position : null;
   const remainingCount = selectedCard ? selectedCardContext.remainingCount : 0;
   const fullSelectedCardContext = isFullReviewPageData
@@ -507,15 +513,27 @@ export function useReviewPageController(input: {
       return;
     }
 
-    const nextCardId = nextQueueCardId;
     const nextQueueCardIds = activeQueueCardIds.filter(
       (id) => id !== selectedCard.id
     );
-    const optimisticNextCard = nextCardId
-      ? (prefetchBufferRef.current.get(nextCardId) ?? null)
+    const preferredNextCardId = resolveReviewAdvanceCandidateCardId({
+      candidateCardIds: advanceWindowCardIds,
+      prefetchedCardIds: new Set(prefetchBufferRef.current.keys())
+    });
+    const candidateCardIds = advanceWindowCardIds;
+    const nextCardId = preferredNextCardId ?? candidateCardIds[0] ?? null;
+    const optimisticNextCardId = preferredNextCardId;
+    const optimisticNextCard = optimisticNextCardId
+      ? (prefetchBufferRef.current.get(optimisticNextCardId) ?? null)
       : null;
+    const optimisticNextQueuePosition = resolveReviewAdvanceCandidateQueuePosition(
+      {
+        candidateCardIds,
+        selectedCardId: optimisticNextCardId
+      }
+    );
     const canOptimisticallyAdvance =
-      fullViewData !== null && (!nextCardId || optimisticNextCard !== null);
+      fullViewData !== null && optimisticNextCard !== null;
 
     runSessionUpdate(
       () =>
@@ -523,6 +541,7 @@ export function useReviewPageController(input: {
           answeredCount: sessionViewData.session.answeredCount,
           cardId: selectedCard.id,
           cardMediaSlug: selectedCard.mediaSlug,
+          candidateCardIds,
           extraNewCount: sessionViewData.session.extraNewCount,
           gradedCardBucket: selectedCard.bucket,
           gradedCardIds: Array.from(gradedCardIdsRef.current),
@@ -553,6 +572,7 @@ export function useReviewPageController(input: {
                     currentData: fullViewData,
                     gradedCardBucket: selectedCard.bucket,
                     nextCard: optimisticNextCard ?? null,
+                    nextQueuePosition: optimisticNextQueuePosition,
                     nextQueueCardIds
                   })
                 );
