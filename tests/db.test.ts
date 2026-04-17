@@ -24,6 +24,7 @@ import {
   listLessonsByMediaId,
   listLessonsByMediaIdsForShell,
   listMedia,
+  listReviewCardsByMediaIds,
   listTermEntryReviewSummaries,
   lessonProgress,
   media,
@@ -72,6 +73,49 @@ describe("database layer", () => {
 
     expect(media?.id).toBe(developmentFixture.mediaId);
     expect(media?.slug).toBe(developmentFixture.mediaSlug);
+  });
+
+  it("uses a trimmed media query for list and slug lookups", async () => {
+    const mediaListQuerySpy = vi.spyOn(database.query.media, "findMany");
+    const mediaLookupQuerySpy = vi.spyOn(database.query.media, "findFirst");
+
+    const [rows, media] = await Promise.all([
+      listMedia(database),
+      getMediaBySlug(database, developmentFixture.mediaSlug)
+    ]);
+
+    expect(rows).toHaveLength(1);
+    expect(media?.id).toBe(developmentFixture.mediaId);
+    expect(mediaListQuerySpy).toHaveBeenCalledTimes(1);
+    expect(mediaLookupQuerySpy).toHaveBeenCalledTimes(1);
+
+    const mediaListQueryInput = mediaListQuerySpy.mock.calls[0]?.[0] as {
+      columns?: Record<string, boolean>;
+    };
+    const mediaLookupQueryInput = mediaLookupQuerySpy.mock.calls[0]?.[0] as {
+      columns?: Record<string, boolean>;
+    };
+
+    expect(mediaListQueryInput.columns).toMatchObject({
+      description: true,
+      id: true,
+      mediaType: true,
+      segmentKind: true,
+      slug: true,
+      status: true,
+      title: true
+    });
+    expect(mediaListQueryInput.columns).not.toHaveProperty("language");
+    expect(mediaListQueryInput.columns).not.toHaveProperty(
+      "baseExplanationLanguage"
+    );
+    expect(mediaListQueryInput.columns).not.toHaveProperty("createdAt");
+    expect(mediaListQueryInput.columns).not.toHaveProperty("updatedAt");
+
+    expect(mediaLookupQueryInput.columns).toEqual(mediaListQueryInput.columns);
+
+    mediaListQuerySpy.mockRestore();
+    mediaLookupQuerySpy.mockRestore();
   });
 
   it("returns lesson metadata and full lesson content", async () => {
@@ -298,6 +342,88 @@ describe("database layer", () => {
 
     expect(dueCards).toHaveLength(1);
     expect(dueCards[0]?.id).toBe(developmentFixture.primaryCardId);
+  });
+
+  it("uses a trimmed review-card query for workspace loads", async () => {
+    const cardQuerySpy = vi.spyOn(database.query.card, "findMany");
+
+    const cards = await listReviewCardsByMediaIds(database, [
+      developmentFixture.mediaId
+    ]);
+
+    expect(cards).toHaveLength(2);
+    expect(cardQuerySpy).toHaveBeenCalledTimes(1);
+    const cardQueryInput = cardQuerySpy.mock.calls[0]?.[0] as {
+      columns?: Record<string, boolean>;
+      with?: {
+        entryLinks?: {
+          columns?: Record<string, boolean>;
+        };
+        lesson?: {
+          columns?: Record<string, boolean>;
+          with?: {
+            progress?: {
+              columns?: Record<string, boolean>;
+            };
+          };
+        };
+        segment?: {
+          columns?: Record<string, boolean>;
+        };
+      };
+    };
+
+    expect(cardQueryInput).toMatchObject({
+      columns: {
+        id: true,
+        mediaId: true,
+        lessonId: true,
+        segmentId: true,
+        cardType: true,
+        front: true,
+        back: true,
+        exampleJp: true,
+        exampleIt: true,
+        notesIt: true,
+        status: true,
+        orderIndex: true,
+        createdAt: true,
+        updatedAt: true
+      },
+      with: {
+        entryLinks: {
+          columns: {
+            entryId: true,
+            entryType: true,
+            relationshipType: true
+          }
+        },
+        lesson: {
+          columns: {
+            status: true
+          },
+          with: {
+            progress: {
+              columns: {
+                status: true
+              }
+            }
+          }
+        },
+        segment: {
+          columns: {
+            title: true
+          }
+        }
+      }
+    });
+    expect(cardQueryInput.columns).not.toHaveProperty("sourceFile");
+    expect(cardQueryInput.columns).not.toHaveProperty("normalizedFront");
+    expect(cardQueryInput.with?.lesson?.columns).not.toHaveProperty("title");
+    expect(cardQueryInput.with?.segment?.columns).not.toHaveProperty("slug");
+    expect(cardQueryInput.with?.entryLinks?.columns).not.toHaveProperty("id");
+
+    cardQuerySpy.mockRestore();
   });
 
   it("keeps glossary progress summaries and previews aligned for direct and grouped entry states", async () => {
