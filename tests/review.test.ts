@@ -435,15 +435,13 @@ describe("review system", () => {
           cardType: "concept",
           entryLinks: [
             {
-              id: "link-grammar-takei",
               entryType: "grammar",
               entryId: "grammar-takei",
-              cardId: "card-grammar-takei-concept",
               relationshipType: "primary"
             }
           ],
           front: "た{{形|けい}}"
-        } as Parameters<typeof resolveReviewCardReading>[0],
+        } as unknown as Parameters<typeof resolveReviewCardReading>[0],
         new Map([
           [
             "grammar:grammar-takei",

@@ -4,7 +4,6 @@ import type { ReviewCardListItem } from "@/db";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
-  normalizeReviewSubjectSurface,
   selectReviewSubjectRepresentativeCard
 } from "@/lib/review-subject";
 
@@ -16,11 +15,8 @@ function buildReviewCard(
     mediaId: input.mediaId ?? "media-fixture",
     lessonId: input.lessonId ?? "lesson-fixture",
     segmentId: input.segmentId ?? null,
-    sourceFile: input.sourceFile ?? `tests/${input.id}.md`,
     cardType: input.cardType ?? "recognition",
     front: input.front,
-    normalizedFront:
-      input.normalizedFront ?? normalizeReviewSubjectSurface(input.front),
     back: input.back ?? `${input.front} back`,
     exampleJp: input.exampleJp ?? null,
     exampleIt: input.exampleIt ?? null,
@@ -32,24 +28,9 @@ function buildReviewCard(
     lesson:
       input.lesson ??
       ({
-        id: input.lessonId ?? "lesson-fixture",
-        mediaId: input.mediaId ?? "media-fixture",
-        segmentId: input.segmentId ?? null,
-        slug: "lesson-fixture",
-        title: "Lesson fixture",
-        orderIndex: 1,
-        difficulty: "beginner",
-        summary: "Lesson fixture",
         status: "active",
-        sourceFile: "tests/lesson-fixture.md",
-        createdAt: "2026-03-10T08:00:00.000Z",
-        updatedAt: "2026-03-10T08:00:00.000Z",
         progress: {
-          lessonId: input.lessonId ?? "lesson-fixture",
-          status: "completed",
-          startedAt: "2026-03-10T08:00:00.000Z",
-          completedAt: "2026-03-10T08:00:00.000Z",
-          lastOpenedAt: "2026-03-10T08:00:00.000Z"
+          status: "completed"
         }
       } satisfies ReviewCardListItem["lesson"]),
     segment: input.segment ?? null,
