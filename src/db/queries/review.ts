@@ -24,6 +24,51 @@ const cardRelations = {
   entryLinks: true
 } as const;
 
+const reviewCardSelection = {
+  columns: {
+    id: true,
+    mediaId: true,
+    lessonId: true,
+    segmentId: true,
+    cardType: true,
+    front: true,
+    back: true,
+    exampleJp: true,
+    exampleIt: true,
+    notesIt: true,
+    status: true,
+    orderIndex: true,
+    createdAt: true,
+    updatedAt: true
+  },
+  with: {
+    lesson: {
+      columns: {
+        status: true
+      },
+      with: {
+        progress: {
+          columns: {
+            status: true
+          }
+        }
+      }
+    },
+    segment: {
+      columns: {
+        title: true
+      }
+    },
+    entryLinks: {
+      columns: {
+        entryId: true,
+        entryType: true,
+        relationshipType: true
+      }
+    }
+  }
+} as const;
+
 export async function listCardsByMediaId(
   database: DatabaseQueryClient,
   mediaId: string
@@ -38,7 +83,7 @@ export async function listCardsByMediaId(
 export async function getCardById(database: DatabaseQueryClient, cardId: string) {
   return database.query.card.findFirst({
     where: eq(card.id, cardId),
-    with: cardRelations
+    ...reviewCardSelection
   });
 }
 
@@ -67,7 +112,7 @@ export async function listReviewCardsByIds(
 
   return database.query.card.findMany({
     where: and(ne(card.status, "archived"), inArray(card.id, cardIds)),
-    with: cardRelations,
+    ...reviewCardSelection,
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
 }
@@ -78,7 +123,7 @@ export async function listReviewCardsByMediaId(
 ) {
   return database.query.card.findMany({
     where: and(eq(card.mediaId, mediaId), ne(card.status, "archived")),
-    with: cardRelations,
+    ...reviewCardSelection,
     orderBy: [asc(card.orderIndex), asc(card.createdAt)]
   });
 }
@@ -93,7 +138,7 @@ export async function listReviewCardsByMediaIds(
 
   return database.query.card.findMany({
     where: and(inArray(card.mediaId, mediaIds), ne(card.status, "archived")),
-    with: cardRelations,
+    ...reviewCardSelection,
     orderBy: [asc(card.mediaId), asc(card.orderIndex), asc(card.createdAt)]
   });
 }
@@ -606,7 +651,7 @@ export async function listDueCardsByMediaId(
 
   const cards = await database.query.card.findMany({
     where: inArray(card.id, orderedCardIds),
-    with: cardRelations
+    ...reviewCardSelection
   });
   const cardsById = new Map(cards.map((dueCard) => [dueCard.id, dueCard]));
 
