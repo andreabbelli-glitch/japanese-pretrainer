@@ -105,7 +105,8 @@ Opzioni utili:
 - `--known-missing-file /path`: file JSON dove salvare gli skip persistenti;
 - `--request-registry-file /path`: file JSON dove salvare le richieste
   `word-add` gia aperte;
-- `--retry-known-missing`: riprova anche le voci gia marcate come missing.
+- `--retry-known-missing`: riprova anche le voci gia marcate come missing; vale
+  sia per `pnpm pronunciations:forvo` sia per `pnpm pronunciations:resolve`.
 - `--no-open-word-add-on-skip`: registra la richiesta ma non apre la tab
   `word-add` quando salti una entry.
 

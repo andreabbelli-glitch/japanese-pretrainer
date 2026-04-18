@@ -55,7 +55,8 @@ if (!options.mode) {
       mediaSlug: options.mediaSlug,
       mode: options.mode,
       network: options.network,
-      refresh: options.refresh
+      refresh: options.refresh,
+      retryKnownMissing: options.retryKnownMissing
     });
 
     console.info(

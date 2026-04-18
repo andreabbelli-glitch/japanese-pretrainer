@@ -269,6 +269,86 @@ describe("pronunciation resolve", () => {
     expect(summary.forvoSummary?.matched).toBe(1);
   });
 
+  it("applies limit after dropping already audio-backed targets", async () => {
+    const bundle = await loadBundle(contentRoot, "sample-game");
+    const audioBackedTarget = createTarget(
+      await loadBundle(contentRoot, "sample-anime"),
+      "term",
+      "term-taberu"
+    );
+    const unresolvedTarget = createTarget(bundle, "term", "term-kiku");
+    const reuseSpy = vi.fn(async () => ({
+      ambiguous: 0,
+      reused: 0,
+      results: []
+    }));
+    const offlineSpy = vi.fn(async () => ({
+      matched: 0,
+      missed: 1,
+      results: [
+        {
+          entryId: "term-kiku",
+          kind: "term" as const,
+          status: "miss" as const
+        }
+      ]
+    }));
+    const forvoSpy = vi.fn(async () => ({
+      knownMissingSkipped: [],
+      matched: 1,
+      missed: 0,
+      requestedUnresolved: [],
+      results: [
+        {
+          entryId: "term-kiku",
+          kind: "term" as const,
+          speaker: "Test Speaker",
+          status: "matched" as const,
+          votes: 5
+        }
+      ]
+    }));
+
+    const summary = await executePronunciationResolveForBundle({
+      bundle,
+      dryRun: false,
+      fetchOffline: offlineSpy,
+      fetchForvoManual: forvoSpy,
+      knownMissingEntryIds: new Set(),
+      refreshBundleState: vi.fn(async () => bundle),
+      reuseCrossMedia: reuseSpy,
+      reuseContext: { audioBackedEntries: [] },
+      selectedTargets: [audioBackedTarget, unresolvedTarget],
+      limit: 1,
+      updatePendingSummary: vi.fn(async () => ({
+        audioBackedCount: 1,
+        knownMissingCount: 0,
+        mediaSlug: "sample-game",
+        pending: [],
+        pendingCount: 0,
+        totalTargets: 1,
+        workflowFilePath: path.join(bundle.mediaDirectory, "workflow", "pronunciation-pending.json")
+      }))
+    });
+
+    expect(reuseSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        onlyTargets: [expect.objectContaining({ id: "term-kiku" })]
+      })
+    );
+    expect(offlineSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        onlyTargets: [expect.objectContaining({ id: "term-kiku" })]
+      })
+    );
+    expect(forvoSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        entryIds: ["term-kiku"]
+      })
+    );
+    expect(summary.finalEntryIds).toEqual(["term-kiku"]);
+  });
+
   it("skips known-missing entries before the Forvo step", async () => {
     const bundle = await loadBundle(contentRoot, "sample-game");
     const forvoSpy = vi.fn();
@@ -311,6 +391,69 @@ describe("pronunciation resolve", () => {
     expect(forvoSpy).not.toHaveBeenCalled();
     expect(summary.finalEntryIds).toEqual([]);
     expect(summary.knownMissingSkipped).toEqual(["term-yomu"]);
+  });
+
+  it("retries known-missing entries when retry is enabled", async () => {
+    const bundle = await loadBundle(contentRoot, "sample-game");
+    const forvoSpy = vi.fn(async () => ({
+      knownMissingSkipped: [],
+      matched: 1,
+      missed: 0,
+      requestedUnresolved: [],
+      results: [
+        {
+          entryId: "term-yomu",
+          kind: "term" as const,
+          speaker: "Test Speaker",
+          status: "matched" as const,
+          votes: 5
+        }
+      ]
+    }));
+
+    const summary = await executePronunciationResolveForBundle({
+      bundle,
+      dryRun: false,
+      fetchOffline: vi.fn(async () => ({
+        matched: 0,
+        missed: 1,
+        results: [
+          {
+            entryId: "term-yomu",
+            kind: "term" as const,
+            status: "miss" as const
+          }
+        ]
+      })),
+      fetchForvoManual: forvoSpy,
+      knownMissingEntryIds: new Set(["term:term-yomu"]),
+      refreshBundleState: vi.fn(async () => bundle),
+      reuseCrossMedia: vi.fn(async () => ({
+        ambiguous: 0,
+        reused: 0,
+        results: []
+      })),
+      reuseContext: { audioBackedEntries: [] },
+      retryKnownMissing: true,
+      selectedTargets: [createTarget(bundle, "term", "term-yomu")],
+      updatePendingSummary: vi.fn(async () => ({
+        audioBackedCount: 1,
+        knownMissingCount: 0,
+        mediaSlug: "sample-game",
+        pending: [],
+        pendingCount: 0,
+        totalTargets: 1,
+        workflowFilePath: path.join(bundle.mediaDirectory, "workflow", "pronunciation-pending.json")
+      }))
+    } as Parameters<typeof executePronunciationResolveForBundle>[0]);
+
+    expect(forvoSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        entryIds: ["term-yomu"]
+      })
+    );
+    expect(summary.finalEntryIds).toEqual(["term-yomu"]);
+    expect(summary.knownMissingSkipped).toEqual([]);
   });
 });
 

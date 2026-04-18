@@ -81,6 +81,7 @@ type ExecutePronunciationResolveForBundleInput = {
   forvoManualOptions?: ForvoManualOptions;
   knownMissingEntryIds: Set<string>;
   limit?: number;
+  retryKnownMissing?: boolean;
   refresh?: boolean;
   refreshBundleState: (bundle: NormalizedMediaBundle) => Promise<NormalizedMediaBundle>;
   reuseContext: PronunciationReuseContext;
@@ -184,22 +185,22 @@ export async function executePronunciationResolveForBundle(
   let currentBundle = input.bundle;
   const limit =
     typeof input.limit === "number" && input.limit >= 0 ? input.limit : undefined;
-  const limitedTargets =
-    typeof limit === "number" ? input.selectedTargets.slice(0, limit) : input.selectedTargets;
   const actionableTargets = await filterAudioBackedTargets(
     currentBundle,
-    limitedTargets,
+    input.selectedTargets,
     input.refresh
   );
+  const limitedTargets =
+    typeof limit === "number" ? actionableTargets.slice(0, limit) : actionableTargets;
 
   const reuseSummary = await input.reuseCrossMedia({
     bundle: currentBundle,
     dryRun: input.dryRun,
-    onlyTargets: actionableTargets,
+    onlyTargets: limitedTargets,
     reuseContext: input.reuseContext
   });
   let remainingTargets = removeTargetsByEntryIds(
-    actionableTargets,
+    limitedTargets,
     reuseSummary.results
       .filter((result) => result.status === "reused")
       .map((result) => buildEntryKey(result.kind, result.entryId))
@@ -213,7 +214,6 @@ export async function executePronunciationResolveForBundle(
     bundle: currentBundle,
     cacheRoot: path.resolve(process.cwd(), "data", "pronunciations-cache"),
     dryRun: input.dryRun,
-    limit,
     onlyTargets: remainingTargets,
     refresh: input.refresh
   });
@@ -228,12 +228,19 @@ export async function executePronunciationResolveForBundle(
     currentBundle = await input.refreshBundleState(currentBundle);
   }
 
-  const knownMissingSkipped = remainingTargets
-    .filter((target) => input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id)))
-    .map((target) => target.id);
-  const forvoTargets = remainingTargets.filter(
-    (target) => !input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
-  );
+  const knownMissingSkipped = input.retryKnownMissing
+    ? []
+    : remainingTargets
+        .filter((target) =>
+          input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
+        )
+        .map((target) => target.id);
+  const forvoTargets = input.retryKnownMissing
+    ? remainingTargets
+    : remainingTargets.filter(
+        (target) =>
+          !input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
+      );
   let forvoSummary: Awaited<
     ReturnType<typeof fetchForvoPronunciationsForBundleManual>
   > | null = null;
@@ -279,6 +286,7 @@ export async function resolvePronunciations(input: {
   mode: PronunciationResolveMode;
   network?: PronunciationFetchNetworkOptions;
   refresh?: boolean;
+  retryKnownMissing?: boolean;
 }) {
   const selection = await selectPronunciationResolveTargets({
     contentRoot: input.contentRoot,
@@ -326,6 +334,7 @@ export async function resolvePronunciations(input: {
       forvoManualOptions: input.forvoManualOptions,
       knownMissingEntryIds,
       limit: input.limit,
+      retryKnownMissing: input.retryKnownMissing,
       refresh: input.refresh,
       refreshBundleState: async (bundle) => {
         const refreshed = await refreshBundleState(bundle);

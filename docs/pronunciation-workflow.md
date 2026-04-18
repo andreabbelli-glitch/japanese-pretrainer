@@ -164,6 +164,8 @@ La documentazione operativa dettagliata di Forvo resta in
   fetch offline o non e stato almeno riportato un elenco dei mancanti.
 - Le entry gia marcate in `data/forvo-known-missing.json` vanno escluse dal
   fallback Forvo per default.
+- Se vuoi riprovare anche quelle entry, passa `--retry-known-missing` a
+  `pnpm pronunciations:resolve` o a `pnpm pronunciations:forvo`.
 
 ## Riferimenti
 

@@ -98,6 +98,8 @@ non sostituisce un audit completo e aggiornato del codice.
 - `pronunciations:resolve -- --mode review|next-lesson|lesson-url --dry-run`
   seleziona i target attesi, esclude le entry gia coperte e non propone Forvo
   per voci gia marcate come `known missing`.
+- Aggiungendo `--retry-known-missing` allo stesso comando, quelle entry
+  tornano eleggibili per il passaggio manuale Forvo.
 - Settings mostra anche lo stato read-only dell'optimizer FSRS, inclusi ultimo
   training riuscito, review nuove accumulate e stato dei preset `recognition` /
   `concept`.
