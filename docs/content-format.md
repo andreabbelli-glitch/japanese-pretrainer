@@ -596,12 +596,23 @@ Regola review obbligatoria per `:::card`:
 - `example_jp` deve essere centrata il piu possibile sul media attuale: la frase
   deve usare il contesto, il lessico e le situazioni del media in cui la card
   vive, non scenari generici scollegati;
+- priorita consigliata per `example_jp`: riusa una frase reale della fonte solo
+  se la entry compare li come unita naturale e la frase intera resta leggibile;
+  altrimenti scrivi una parafrasi breve ma fedele al contesto del media;
+- se la entry e stata estratta da una locuzione piu lunga e da sola non compare
+  in modo autonomo nella fonte, scrivi una frase nuova ma naturale che usi bene
+  quella entry nel dominio del media;
+- `example_jp` deve mostrare uso vivo, non spiegazione della parola: niente
+  frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
+  `Xという言葉は...` o simili;
 - `example_jp` non deve contenere kanji che non hanno una flashcard associata nel
   corpus di studio (indipendentemente dal media e dallo stato di studio della
   card); anticipare leggermente e ammesso, usare kanji completamente fuori dal
   corpus no;
 - `example_it` deve tradurre quella stessa frase in italiano in modo utile per
   il retro review.
+- se serve spiegare composizione, famiglia lessicale o rapporto con una
+  locuzione piu lunga, fallo in `notes_it`, non in `example_jp`;
 - `front` e `example_jp` devono usare i furigana ogni volta che compare un
   kanji che il learner deve davvero leggere.
 - Se in `notes_it` citi giapponese con kanji come parte del punto didattico,

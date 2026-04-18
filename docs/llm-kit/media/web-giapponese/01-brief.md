@@ -66,6 +66,13 @@ I termini molto verticali del singolo sito vanno trattati cosi:
 - gli `example_jp` vanno presi dalla pagina solo quando la frase completa resta
   leggibile col corpus gia coperto; altrimenti scrivere esempi semplificati ma
   fedeli al contesto della pagina.
+- se la entry e stata estratta da una locuzione piu lunga e da sola non
+  compare in modo autonomo nella pagina, scrivere una frase nuova ma naturale
+  che usi bene la entry nel dominio del sito.
+- gli `example_jp` devono mostrare uso vivo, non spiegare la parola: vietate
+  frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
+  `Xという言葉は...`; la spiegazione della composizione va in `notes_it`, non
+  in `example_jp`.
 
 ## Politica immagini
 

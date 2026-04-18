@@ -124,6 +124,15 @@ La richiesta deve esplicitare:
 - obbligo di usare YAML sicuro per `notes_it`, `summary`, `description`, `notes`;
 - obbligo che ogni blocco `:::card` includa sempre `example_jp` +
   `example_it`, con frase completa e contestuale utile sul retro review;
+- obbligo che `example_jp` mostri uso vivo della entry: riusare una frase reale
+  solo quando la entry compare li come unita naturale e la frase resta
+  leggibile; altrimenti scrivere una parafrasi breve ma fedele al contesto del
+  media;
+- obbligo che, se la entry e ricavata da una locuzione piu lunga e non compare
+  da sola nella fonte, `example_jp` venga scritto ex novo come frase naturale
+  del dominio, non come spiegazione della parola;
+- divieto di esempi meta-lessicali in `example_jp` come `XにYがつくと...`,
+  `XはYの意味`, `Xという言葉は...` o simili;
 - obbligo che ogni spiegazione chiarisca significato reale + effetto concreto
   nel media, non solo che l'elemento e "utile" o "importante";
 - obbligo di tenere distinti textbook e flashcard: il textbook deve spiegare
@@ -259,6 +268,12 @@ Oltre alla validazione strutturale, fai sempre un controllo editoriale rapido:
 - verifica che ogni `:::card` abbia `example_jp` e `example_it`, che
   `example_jp` sia una frase completa contestuale e che `example_it` traduca la
   stessa frase;
+- verifica che `example_jp` non deragli in meta-lessico: niente frasi che
+  spiegano come si forma la parola invece di usarla davvero nel contesto del
+  media;
+- se la entry deriva da una locuzione piu lunga, verifica che l'esempio nuovo
+  la usi in modo naturale e plausibile per il dominio invece di simularne una
+  definizione;
 - verifica che la stessa spiegazione dica anche che cosa ti fa capire o fare
   nel media;
 - verifica che la spiegazione non deragli in una guida al gioco: il focus

@@ -135,12 +135,12 @@ entry_type: term
 entry_id: term-use
 card_type: concept
 front: '{{使用|しよう}}'
-back: uso / impiego; base lessicale di 使用可能
+back: uso / impiego; uso tecnico di "usare"
 example_jp: >-
-  {{使用|しよう}}に{{可能|かのう}}がつくと、
-  {{使用可能|しようかのう}}になる。
+  このターンは、コスト{{5以下|ごいか}}の{{呪文|じゅもん}}しか
+  {{使用|しよう}}できない。
 example_it: >-
-  Quando a 使用 si aggiunge 可能, si ottiene 使用可能.
+  In questo turno puoi usare solo magie di costo 5 o inferiore.
 notes_it: >-
   Qui non serve ripassare `usare` in astratto, ma riconoscere che il cuore di
   `{{使用可能|しようかのう}}マナ` è proprio [{{使用|しよう}}](term:term-use): la

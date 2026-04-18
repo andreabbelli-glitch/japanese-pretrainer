@@ -68,6 +68,16 @@ Il bundle deve insegnare:
 - le spiegazioni devono sempre unire significato giapponese e azione concreta;
 - non basta dire che una label e "utile" o "importante": bisogna spiegare che
   cosa segnala e quale decisione abilita;
+- per gli `example_jp`, preferire questo ordine: frase reale del manuale, della
+  UI o della guida solo se la entry compare come unita naturale e la frase
+  completa resta leggibile; altrimenti parafrasi breve ma fedele alla situazione
+  di gioco o di navigazione;
+- se la entry e stata estratta da una locuzione piu lunga e non compare da sola
+  nel sorgente, scrivere una frase nuova ma naturale di dominio Gundam Arsenal
+  Base che la usi bene;
+- vietate frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
+  `Xという言葉は...`: la spiegazione della composizione va in `notes_it`, non
+  in `example_jp`;
 - non trasformare in flashcard i nomi propri di unita, campagne, eventi o
   altre cose singole solo per memorizzarli; se servono, spiegali nel textbook
   e semmai isola i componenti giapponesi riusabili del nome;

@@ -44,6 +44,15 @@ Regola editoriale forte:
   tutorial, battle flow e story progression;
 - se un termine in katakana e quasi autoesplicativo e non aggiunge molto
   valore didattico, meglio evitarlo o tenerlo solo come supporto secondario.
+- per gli `example_jp`, preferire questo ordine: frase reale del gioco o del
+  transcript solo se la entry compare come unita naturale e la frase completa
+  resta leggibile; altrimenti parafrasi breve ma fedele alla scena o alla UI;
+- se la entry e stata estratta da una locuzione piu lunga e non compare da sola
+  nel sorgente, scrivere una frase nuova ma naturale di dominio Pokemon che la
+  usi bene;
+- vietate frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
+  `Xという言葉は...`: la spiegazione della composizione va in `notes_it`, non
+  in `example_jp`.
 
 ## Struttura didattica consigliata
 

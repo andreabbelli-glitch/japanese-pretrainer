@@ -236,6 +236,17 @@ Per ridurre i fallimenti di import:
 - `example_jp` deve essere una frase completa e contestuale utile sul retro
   review, non una parola isolata, una pseudo-definizione o una semplice
   ripetizione del `front`;
+- per `example_jp`, riusa una frase reale della fonte solo se la entry compare
+  li come unita naturale e la frase intera resta leggibile; altrimenti scrivi
+  una parafrasi breve ma fedele al contesto del media;
+- se la entry e stata estratta da una locuzione piu lunga e da sola non
+  compare in modo autonomo nella fonte, scrivi una frase nuova ma naturale che
+  la usi bene nel dominio del media;
+- `example_jp` deve mostrare uso vivo della entry, non spiegare la parola:
+  vietate frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
+  `Xという言葉は...` o simili;
+- se devi spiegare famiglia lessicale, composizione o rapporto con una
+  locuzione piu lunga, fallo in `notes_it`, non in `example_jp`;
 - per estensione, anche `summary`, `description` e `notes` vanno preferiti in
   `>-` quando compaiono in YAML;
 - non deve usare plain scalar per testo che contiene `:` o `：`, furigana,
@@ -456,6 +467,17 @@ Vincoli obbligatori:
 - Ogni blocco `:::card` deve includere sempre `example_jp` + `example_it`.
   `example_jp` deve essere una frase giapponese completa e contestuale utile
   sul retro review, non una parola isolata o una ripetizione del `front`.
+- Per `example_jp`, riusa una frase reale della fonte solo se la entry compare
+  li come unita naturale e la frase intera resta leggibile; altrimenti scrivi
+  una parafrasi breve ma fedele al contesto del media.
+- Se la entry e stata estratta da una locuzione piu lunga e da sola non
+  compare in modo autonomo nella fonte, scrivi una frase nuova ma naturale che
+  la usi bene nel dominio del media.
+- `example_jp` deve mostrare uso vivo della entry, non spiegare la parola:
+  niente frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
+  `Xという言葉は...` o simili.
+- Se devi spiegare famiglia lessicale, composizione o rapporto con una
+  locuzione piu lunga, fallo in `notes_it`, non in `example_jp`.
 - Le flashcard devono avere un obiettivo linguistico chiaro: allenare kanji,
   lessico o grammatica giapponese. Non creare card che servono solo a
   memorizzare una meccanica di gioco in astratto.

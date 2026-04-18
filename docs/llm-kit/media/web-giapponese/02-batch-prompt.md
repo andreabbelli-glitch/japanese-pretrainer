@@ -38,6 +38,13 @@ Vincoli didattici obbligatori:
 - riusa una frase vera della pagina come `example_jp` solo se la frase completa
   resta leggibile col corpus gia coperto; altrimenti crea un esempio
   semplificato ma fedele al contesto.
+- se la entry e stata estratta da una locuzione piu lunga e da sola non
+  compare in modo autonomo nella pagina, crea una frase nuova ma naturale che
+  la usi bene nel dominio del sito.
+- `example_jp` deve mostrare uso vivo della entry, non spiegarla: vietate
+  frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
+  `Xという言葉は...`; se devi spiegare famiglia lessicale o composizione,
+  fallo in `notes_it`, non in `example_jp`.
 
 Politica immagini:
 - prevedi una snapshot generale orientativa della pagina;

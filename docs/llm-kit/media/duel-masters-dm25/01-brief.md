@@ -196,6 +196,16 @@ canoniche utili a glossary/review.
 - pattern grammaticali davvero ricorrenti;
 - kanji usati in contesto carta;
 - frasi modello tratte da testo carta o molto vicine ad esso;
+- per gli `example_jp`, preferire questo ordine: frase reale della carta o
+  della schermata solo se la entry compare come unita naturale e la frase
+  completa resta leggibile; altrimenti parafrasi breve ma fedele al contesto
+  Duel Masters;
+- se la entry e stata estratta da una locuzione piu lunga e non compare da sola
+  nel testo sorgente, scrivere una frase nuova ma naturale di dominio Duel
+  Masters che la usi bene;
+- vietate frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
+  `Xという言葉は...`: la spiegazione della composizione va in `notes_it`, non
+  in `example_jp`;
 - spiegazioni orientate alla lettura pratica;
 - elementi piu avanzati quando sono comuni, strutturali o essenziali.
 

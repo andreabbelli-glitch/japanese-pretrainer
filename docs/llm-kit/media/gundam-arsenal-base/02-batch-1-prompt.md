@@ -74,6 +74,18 @@ Vincoli di formato obbligatori:
 - `example_jp` deve essere centrata il piu possibile sul media attuale: la
   frase deve usare il contesto, il lessico e le situazioni del media in cui
   la card vive, non scenari generici scollegati.
+- Per `example_jp`, riusa una frase reale del manuale, della UI o della guida
+  solo se la entry compare li come unita naturale e la frase intera resta
+  leggibile; altrimenti scrivi una parafrasi breve ma fedele alla situazione di
+  gioco o di navigazione.
+- Se la entry e stata estratta da una locuzione piu lunga e da sola non
+  compare in modo autonomo nella fonte, scrivi una frase nuova ma naturale di
+  dominio Gundam Arsenal Base che la usi bene.
+- `example_jp` deve mostrare uso vivo della entry, non spiegarla: vietate
+  frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
+  `Xという言葉は...` o simili.
+- Se devi spiegare famiglia lessicale, composizione o rapporto con una
+  locuzione piu lunga, fallo in `notes_it`, non in `example_jp`.
 - `example_jp` non deve contenere kanji che non hanno una flashcard associata
   nel corpus di studio (indipendentemente dal media e dallo stato di studio
   della card); anticipare leggermente e ammesso, usare kanji completamente
