@@ -4,6 +4,7 @@ import {
   listKanjiClashPairStatesByPairKeys
 } from "@/db/queries";
 
+import type { KanjiClashManualContrastSeed } from "./manual-contrast.ts";
 import { buildKanjiClashQueueSnapshot } from "./queue.ts";
 import {
   buildKanjiClashCandidate,
@@ -30,10 +31,12 @@ const MANUAL_FRONTIER_MIN_SIZE = 16;
 export async function loadManualKanjiClashQueueSnapshot(input: {
   database: DatabaseClient;
   eligibleSubjects: KanjiClashEligibleSubject[];
+  manualContrastSeed: KanjiClashManualContrastSeed;
   now: Date;
   requestedSize?: number | null;
   scope: KanjiClashScope;
   seenPairKeys?: string[];
+  seenRoundKeys?: string[];
 }): Promise<KanjiClashQueueSnapshot> {
   const requestedSize = normalizePositiveInteger(
     input.requestedSize,
@@ -50,7 +53,8 @@ export async function loadManualKanjiClashQueueSnapshot(input: {
       pairStates: new Map<string, KanjiClashPairState>(),
       requestedSize,
       scope: input.scope,
-      seenPairKeys
+      seenPairKeys,
+      seenRoundKeys: input.seenRoundKeys
     });
   }
 
@@ -61,13 +65,21 @@ export async function loadManualKanjiClashQueueSnapshot(input: {
     database: input.database,
     eligibleSubjectsByKey,
     now: input.now,
+    pairKeysToSuppress: input.manualContrastSeed.suppressedContrastKeys,
     requestedSize,
     seenPairKeys
   });
-  const combinedCandidates: KanjiClashCandidate[] = [...dueSeed.candidates];
-  const combinedPairStates = new Map(dueSeed.pairStates);
+  const combinedCandidates: KanjiClashCandidate[] = [
+    ...input.manualContrastSeed.candidates,
+    ...dueSeed.candidates
+  ];
+  const combinedPairStates = new Map<string, KanjiClashPairState>([
+    ...input.manualContrastSeed.pairStates,
+    ...dueSeed.pairStates
+  ]);
   const combinedPairKeySet = new Set([
     ...seenPairKeys,
+    ...input.manualContrastSeed.candidates.map((candidate) => candidate.pairKey),
     ...dueSeed.candidates.map((candidate) => candidate.pairKey)
   ]);
   let frontierSize = Math.min(
@@ -89,6 +101,7 @@ export async function loadManualKanjiClashQueueSnapshot(input: {
       const frontierCandidates = collectManualFrontierExpansionCandidates({
         frontierIndex,
         pairKeysToSkip: combinedPairKeySet,
+        pairKeysToSuppress: input.manualContrastSeed.suppressedContrastKeys,
         subjects: frontierSubjects
       });
       indexedFrontierSize = frontierSize;
@@ -117,7 +130,8 @@ export async function loadManualKanjiClashQueueSnapshot(input: {
         pairStates: combinedPairStates,
         requestedSize,
         scope: input.scope,
-        seenPairKeys
+        seenPairKeys,
+        seenRoundKeys: input.seenRoundKeys
       });
 
       if (
@@ -152,7 +166,8 @@ export async function loadManualKanjiClashQueueSnapshot(input: {
     pairStates: combinedPairStates,
     requestedSize,
     scope: input.scope,
-    seenPairKeys
+    seenPairKeys,
+    seenRoundKeys: input.seenRoundKeys
   });
 }
 
@@ -160,6 +175,7 @@ async function collectManualDueCandidates(input: {
   database: DatabaseClient;
   eligibleSubjectsByKey: Map<string, KanjiClashEligibleSubject>;
   now: Date;
+  pairKeysToSuppress: Set<string>;
   requestedSize: number;
   seenPairKeys: string[];
 }): Promise<{
@@ -205,7 +221,11 @@ async function collectManualDueCandidates(input: {
 
       const candidate = buildKanjiClashCandidate(left, right);
 
-      if (!candidate || seenPairKeySet.has(candidate.pairKey)) {
+      if (
+        !candidate ||
+        seenPairKeySet.has(candidate.pairKey) ||
+        input.pairKeysToSuppress.has(candidate.pairKey)
+      ) {
         continue;
       }
 
@@ -232,6 +252,7 @@ async function collectManualDueCandidates(input: {
 function collectManualFrontierExpansionCandidates(input: {
   frontierIndex: Map<string, KanjiClashEligibleSubject[]>;
   pairKeysToSkip: Set<string>;
+  pairKeysToSuppress: Set<string>;
   subjects: KanjiClashEligibleSubject[];
 }) {
   const candidatesByPairKey = new Map<string, KanjiClashCandidate>();
@@ -243,7 +264,11 @@ function collectManualFrontierExpansionCandidates(input: {
     )) {
       const candidate = buildKanjiClashCandidate(subject, relatedSubject);
 
-      if (!candidate || input.pairKeysToSkip.has(candidate.pairKey)) {
+      if (
+        !candidate ||
+        input.pairKeysToSkip.has(candidate.pairKey) ||
+        input.pairKeysToSuppress.has(candidate.pairKey)
+      ) {
         continue;
       }
 

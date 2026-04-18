@@ -9,6 +9,8 @@ import {
   createDatabaseClient,
   card,
   cardEntryLink,
+  kanjiClashManualContrast,
+  kanjiClashManualContrastRoundState,
   kanjiClashPairLog,
   kanjiClashPairState,
   lesson,
@@ -22,7 +24,9 @@ import {
 } from "@/db";
 import {
   applyKanjiClashSessionAction,
+  buildKanjiClashCandidate,
   buildKanjiClashPairKey,
+  buildKanjiClashQueueSnapshot,
   loadKanjiClashQueueSnapshot
 } from "@/lib/kanji-clash";
 import { seedKanjiClashFixture } from "./helpers/kanji-clash-fixture";
@@ -677,7 +681,188 @@ describe("kanji clash session service", () => {
       closeDatabaseClient(competingDatabase);
     }
   });
+
+  it("advances by round key so directional manual contrast rounds can be answered independently", async () => {
+    const now = new Date("2026-04-09T12:00:00.000Z");
+    const alpha = makeSubject({
+      kanji: ["食", "費"],
+      label: "食費",
+      reading: "しょくひ",
+      subjectKey: "entry:term:manual-alpha"
+    });
+    const beta = makeSubject({
+      kanji: ["食", "品"],
+      label: "食品",
+      reading: "しょくひん",
+      subjectKey: "entry:term:manual-beta"
+    });
+    const candidate = buildKanjiClashCandidate(alpha, beta);
+
+    if (!candidate) {
+      throw new Error("Missing forced manual contrast session candidate.");
+    }
+
+    const contrastKey = candidate.pairKey;
+    await insertForcedManualContrastFixture(database, {
+      contrastKey,
+      leftSubjectKey: alpha.subjectKey,
+      rightSubjectKey: beta.subjectKey
+    });
+    const queue = buildKanjiClashQueueSnapshot({
+      candidates: [
+        {
+          ...candidate,
+          roundOverride: {
+            origin: {
+              contrastKey,
+              direction: "subject_a",
+              type: "manual-contrast"
+            },
+            roundKey: `${contrastKey}::subject_a`,
+            targetSubjectKey: alpha.subjectKey
+          }
+        },
+        {
+          ...candidate,
+          roundOverride: {
+            origin: {
+              contrastKey,
+              direction: "subject_b",
+              type: "manual-contrast"
+            },
+            roundKey: `${contrastKey}::subject_b`,
+            targetSubjectKey: beta.subjectKey
+          }
+        }
+      ],
+      mode: "manual",
+      now,
+      requestedSize: 2,
+      scope: "global"
+    });
+    const currentRound = queue.rounds[0];
+
+    if (!currentRound) {
+      throw new Error("Expected a forced manual contrast round.");
+    }
+
+    const result = await applyKanjiClashSessionAction({
+      chosenSubjectKey: currentRound.correctSubjectKey,
+      database,
+      now,
+      queue,
+      responseMs: 160
+    });
+
+    expect(result.answeredRound.roundKey).toBe(`${contrastKey}::subject_a`);
+    expect(result.nextQueue.seenRoundKeys).toEqual([`${contrastKey}::subject_a`]);
+    expect(result.nextQueue.seenPairKeys).toEqual([contrastKey]);
+    expect(result.nextRound?.pairKey).toBe(contrastKey);
+    expect(result.nextRound?.roundKey).toBe(`${contrastKey}::subject_b`);
+    expect(result.nextRound?.origin).toEqual({
+      contrastKey,
+      direction: "subject_b",
+      type: "manual-contrast"
+    });
+  });
 });
+
+function makeSubject(input: {
+  kanji: string[];
+  label: string;
+  reading: string;
+  subjectKey: string;
+}) {
+  return {
+    entryType: "term" as const,
+    kanji: input.kanji,
+    label: input.label,
+    members: [
+      {
+        entryId: input.subjectKey,
+        lemma: input.label,
+        meaningIt: `${input.label} meaning`,
+        mediaId: "media-alpha",
+        mediaSlug: "alpha",
+        mediaTitle: "Alpha",
+        reading: input.reading
+      }
+    ],
+    reading: input.reading,
+    readingForms: [input.reading],
+    reps: 4,
+    reviewState: "review" as const,
+    source: {
+      entryId: input.subjectKey,
+      type: "entry" as const
+    },
+    stability: 10,
+    subjectKey: input.subjectKey,
+    surfaceForms: [input.label]
+  };
+}
+
+async function insertForcedManualContrastFixture(
+  database: DatabaseClient,
+  input: {
+    contrastKey: string;
+    leftSubjectKey: string;
+    rightSubjectKey: string;
+  }
+) {
+  await database.insert(kanjiClashManualContrast).values({
+    contrastKey: input.contrastKey,
+    createdAt: "2026-04-08T08:00:00.000Z",
+    source: "forced",
+    status: "active",
+    subjectAKey: input.leftSubjectKey,
+    subjectBKey: input.rightSubjectKey,
+    timesConfirmed: 1,
+    updatedAt: "2026-04-08T08:00:00.000Z"
+  });
+  await database.insert(kanjiClashManualContrastRoundState).values([
+    {
+      contrastKey: input.contrastKey,
+      createdAt: "2026-04-08T08:00:00.000Z",
+      difficulty: null,
+      direction: "subject_a",
+      dueAt: "2026-04-08T08:00:00.000Z",
+      lapses: 0,
+      lastInteractionAt: "2026-04-08T08:00:00.000Z",
+      lastReviewedAt: null,
+      learningSteps: 0,
+      leftSubjectKey: input.leftSubjectKey,
+      reps: 0,
+      rightSubjectKey: input.rightSubjectKey,
+      roundKey: `${input.contrastKey}::subject_a`,
+      scheduledDays: 0,
+      stability: null,
+      state: "new",
+      targetSubjectKey: input.leftSubjectKey,
+      updatedAt: "2026-04-08T08:00:00.000Z"
+    },
+    {
+      contrastKey: input.contrastKey,
+      createdAt: "2026-04-08T08:00:00.000Z",
+      difficulty: null,
+      direction: "subject_b",
+      dueAt: "2026-04-08T08:00:00.000Z",
+      lapses: 0,
+      lastInteractionAt: "2026-04-08T08:00:00.000Z",
+      lastReviewedAt: null,
+      learningSteps: 0,
+      leftSubjectKey: input.leftSubjectKey,
+      reps: 0,
+      rightSubjectKey: input.rightSubjectKey,
+      roundKey: `${input.contrastKey}::subject_b`,
+      scheduledDays: 0,
+      stability: null,
+      state: "new",
+      targetSubjectKey: input.rightSubjectKey,
+      updatedAt: "2026-04-08T08:00:00.000Z"
+    }
+  ]);
+}
 
 async function seedManualFrontierFixture(database: DatabaseClient) {
   const now = "2026-04-08T12:00:00.000Z";

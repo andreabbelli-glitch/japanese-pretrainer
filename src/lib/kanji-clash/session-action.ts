@@ -8,6 +8,7 @@ import {
   updateKanjiClashPairStateIfCurrent
 } from "@/db/queries";
 
+import { applyKanjiClashManualContrastRoundAnswer } from "./manual-contrast.ts";
 import {
   advanceKanjiClashQueueSnapshot,
   getKanjiClashCurrentRound
@@ -55,6 +56,61 @@ export async function applyKanjiClashSessionAction(
     input.expectedPairStateUpdatedAt ?? currentRound.pairState?.updatedAt ?? null;
 
   return database.transaction(async (tx) => {
+    if (currentRound.origin.type === "manual-contrast") {
+      const currentState =
+        currentRound.pairState ??
+        createInitialKanjiClashPairState({
+          leftSubjectKey: currentRound.candidate.leftSubjectKey,
+          now,
+          pairKey: currentRound.pairKey,
+          rightSubjectKey: currentRound.candidate.rightSubjectKey
+        });
+      const canonicalRound = {
+        ...currentRound,
+        pairState: currentState
+      };
+      const transition = transitionKanjiClashPairState({
+        current: currentState,
+        now,
+        result
+      });
+
+      const logId = await applyKanjiClashManualContrastRoundAnswer({
+        chosenSubjectKey: input.chosenSubjectKey,
+        contrastKey: currentRound.origin.contrastKey,
+        currentRound,
+        expectedUpdatedAt: expectedPairStateUpdatedAt,
+        now,
+        responseMs: input.responseMs,
+        result,
+        scheduled: transition.scheduled,
+        transaction: tx,
+        transition
+      });
+
+      const nextQueue = advanceKanjiClashQueueSnapshot(
+        input.queue,
+        currentRound.roundKey,
+        {
+          awaitingConfirmation: !isCorrect
+        }
+      );
+
+      return {
+        answeredRound: canonicalRound,
+        isCorrect,
+        logId,
+        nextQueue,
+        nextQueueToken: createKanjiClashQueueToken(nextQueue),
+        nextRound: getKanjiClashCurrentRound(nextQueue),
+        pairState: transition.next,
+        previousPairState: transition.previous,
+        result,
+        scheduled: transition.scheduled,
+        selectedSubjectKey: input.chosenSubjectKey
+      };
+    }
+
     const persistedPairState = await loadCurrentPairState(tx, {
       expectedPairStateUpdatedAt,
       pairKey: currentRound.pairKey,
@@ -116,7 +172,7 @@ export async function applyKanjiClashSessionAction(
 
     const nextQueue = advanceKanjiClashQueueSnapshot(
       input.queue,
-      currentRound.pairKey,
+      currentRound.roundKey,
       {
         awaitingConfirmation: !isCorrect
       }

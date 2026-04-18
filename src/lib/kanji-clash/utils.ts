@@ -86,6 +86,20 @@ export function buildKanjiClashPairKey(
     .join("::");
 }
 
+export function buildKanjiClashContrastKey(
+  leftEndpointKey: string,
+  rightEndpointKey: string
+) {
+  return buildKanjiClashPairKey(leftEndpointKey, rightEndpointKey);
+}
+
+export function buildKanjiClashContrastRoundKey(
+  contrastKey: string,
+  targetEndpointKey: string
+) {
+  return `${contrastKey}::target:${targetEndpointKey}`;
+}
+
 export function getSharedKanji(
   left: Pick<KanjiClashEligibleSubject, "kanji">,
   right: Pick<KanjiClashEligibleSubject, "kanji">

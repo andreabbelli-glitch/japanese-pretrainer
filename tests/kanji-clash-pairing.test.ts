@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 
 import {
   buildKanjiClashCandidate,
+  buildKanjiClashContrastKey,
+  buildKanjiClashContrastRoundKey,
   buildKanjiClashPairKey,
   extractKanjiFromText,
   generateKanjiClashCandidates,
@@ -57,6 +59,26 @@ describe("kanji clash pairing helpers", () => {
     expect(buildKanjiClashPairKey("entry:term:zeta", "entry:term:alpha")).toBe(
       "entry:term:alpha::entry:term:zeta"
     );
+  });
+
+  it("reuses the unordered canonical key for manual contrast identity", () => {
+    expect(
+      buildKanjiClashContrastKey("entry:term:zeta", "entry:grammar:alpha")
+    ).toBe("entry:grammar:alpha::entry:term:zeta");
+  });
+
+  it("builds directional manual contrast round keys per target endpoint", () => {
+    const contrastKey = buildKanjiClashContrastKey(
+      "entry:term:hold",
+      "entry:term:wait"
+    );
+
+    expect(
+      buildKanjiClashContrastRoundKey(contrastKey, "entry:term:hold")
+    ).toBe("entry:term:hold::entry:term:wait::target:entry:term:hold");
+    expect(
+      buildKanjiClashContrastRoundKey(contrastKey, "entry:term:wait")
+    ).toBe("entry:term:hold::entry:term:wait::target:entry:term:wait");
   });
 
   it("excludes surface clones even when subject keys differ", () => {

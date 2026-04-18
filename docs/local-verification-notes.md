@@ -21,9 +21,15 @@ non sostituisce un audit completo e aggiornato del codice.
 - Loading state contestuali per glossary, textbook, lesson, review, progress e settings.
 - `Kanji Clash` resta un workspace separato da `/review`, con pair state e log
   dedicati e senza mutazioni laterali sulla review standard.
+- La Review puo` pero` forzare l'ingresso di un contrasto in `Kanji Clash`
+  tramite `+ Contrasto`, senza mischiare queue e log dei due workspace.
 - `Kanji Clash` puo` ammettere coppie sia per `shared-kanji` sia per
   `similar-kanji`, mantenendo la pair key unica quando una coppia passa
   entrambe le route.
+- I `forced manual contrast` possono includere anche subject fuori dal pool
+  automatico, purche` materializzabili come round Kanji Clash.
+- I `forced manual contrast` hanno una chiave unordered di contrasto ma due
+  round direzionali distinti.
 - `Kanji Clash` esclude correttamente same-entry, same-group, same-surface ed
   editorial-clone dal pool eligibile.
 - `Kanji Clash` esclude anche i `qualified-contained-clone`, dove una forma
@@ -71,6 +77,8 @@ non sostituisce un audit completo e aggiornato del codice.
   dataset versionato, con stessa lunghezza e resto della superficie identico.
 - La sessione `Kanji Clash` non deve ripresentare la stessa pair key nella
   stessa run, anche con lati invertiti o target invertito.
+- Un `forced manual contrast` deve invece poter mostrare entrambe le direzioni
+  nella stessa sessione, una per target.
 - Una risposta corretta in `Kanji Clash` deve avanzare al round successivo
   senza pannello verde inline, senza timer artificiale e senza micro-scroll del
   viewport.
@@ -78,6 +86,12 @@ non sostituisce un audit completo e aggiornato del codice.
   e fermarsi finche l'utente non conferma `Continua`.
 - Una sessione `Kanji Clash` non deve cambiare queue, log o contatori
   giornalieri della review standard.
+- Con un contrasto selezionato in Review, grading e inserimento in `Kanji
+  Clash` devono essere transazionali: se l'upsert fallisce, la Review non deve
+  avanzare silenziosamente.
+- Un contrasto manuale archiviato non deve ricomparire ne dalla queue manuale
+  ne come candidate automatico equivalente; restore o riselezione dalla Review
+  devono riportarlo `due-now` in entrambe le direzioni.
 - Il daily limit della review è globale e la coda mostra fusioni cross-media
   quando la stessa entry o pattern è condivisa tra più media.
 - Su DB già esistenti, il comportamento della review deve restare compatibile
@@ -155,6 +169,9 @@ specifico, ma non conta come matrice ufficiale di verifica.
   conviene coprire sia il workspace globale sia il filtro verticale sul media.
 - `Kanji Clash` ha una suite E2E mirata, ma resta focalizzata sul round flow
   principale: filtro media, click, tastiera, swipe, errore con stop e dedupe.
+- Se la feature `forced manual contrast` e` attiva, la verifica locale utile
+  include anche il passaggio Review -> `+ Contrasto` -> selezione glossary ->
+  grading -> presenza dei due round direzionali in `Kanji Clash`.
 - La doc di `Kanji Clash` deve restare allineata ai guardrail editoriali: niente
   duplicati creati solo per aumentare le coppie candidabili.
 - Il primo avvio di `/review` va controllato anche senza media importati, per

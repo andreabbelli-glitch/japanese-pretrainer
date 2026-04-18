@@ -97,8 +97,19 @@
 - Glossary detail: lesson e card collegate sono navigabili.
 - Review: il toggle `Furigana sul fronte` rispetta sia la modalita immediata sia quella solo dopo risposta.
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione subito, senza flash di pagina completa, e in caso di errore ripristina la card precedente con messaggio chiaro.
+- Review: dopo `Mostra risposta` compare il controllo compatto `+ Contrasto`;
+  `C` apre/chiude il picker e `Esc` lo chiude senza rompere il flusso.
+- Review: il picker `+ Contrasto` usa una search globale stile glossary e
+  trova risultati per kanji, kana, romaji e significato italiano.
+- Review: se l'utente digita ma non seleziona nulla dal dropdown, il grading
+  procede normalmente e ignora il testo libero.
+- Review: se l'utente seleziona un contrasto, compare il chip `Contrasto con:
+  ...` con azioni `Cambia` e `Rimuovi`.
 - Review: il daily limit dei nuovi è globale e la coda mostra contenuti fusi
   quando la stessa entry o pattern compare in più media.
+- Review -> Kanji Clash: selezionando un contrasto e poi gradeando con
+  `Again`, `Hard`, `Good` o `Easy`, il voto review viene salvato e `Kanji
+  Clash` riceve subito il contrasto manuale.
 - Kanji Clash: una risposta corretta auto-avanza rapidamente senza pannello
   feedback inline, senza timer artificiale e senza micro-scroll del viewport.
 - Kanji Clash: una risposta errata mostra feedback esplicito, non avanza da
@@ -109,8 +120,17 @@
   swipe a destra seleziona l'opzione destra.
 - Kanji Clash: la stessa pair non ricompare nella stessa sessione ne nello
   stesso ordine ne invertita.
+- Kanji Clash: i `forced manual contrast` possono invece comparire in entrambe
+  le direzioni nella stessa sessione, una con A target e una con B target.
+- Kanji Clash: un contrasto manuale appena segnalato dalla Review compare con
+  priorita alta e con una pill chiara di origine manuale / review.
 - Kanji Clash: una pair che passa sia la route `shared-kanji` sia la route
   `similar-kanji` compare una sola volta nella sessione.
+- Kanji Clash: se il contrasto manuale viene archiviato, entrambe le direzioni
+  spariscono dalla queue e non devono rientrare subito come candidate
+  automatiche equivalenti.
+- Kanji Clash: ripristinando o riselezionando dalla Review un contrasto
+  archiviato, entrambe le direzioni tornano `due-now`.
 - Kanji Clash: le voci simili restano separate solo quando la differenza e`
   reale e documentata, non come quasi-cloni creati artificialmente.
 - Kanji Clash: una sessione completata o parziale non deve alterare numeri,

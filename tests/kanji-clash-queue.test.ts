@@ -300,4 +300,72 @@ describe("kanji clash queue builder", () => {
     );
     expect(first.correctSubjectKey).toBe(first.targetSubjectKey);
   });
+
+  it("keeps forced manual contrast rounds distinct even when they share a pair key", () => {
+    const alpha = makeSubject({
+      kanji: ["食", "費"],
+      label: "食費",
+      reading: "しょくひ",
+      subjectKey: "entry:term:alpha"
+    });
+    const beta = makeSubject({
+      kanji: ["食", "品"],
+      label: "食品",
+      reading: "しょくひん",
+      subjectKey: "entry:term:beta"
+    });
+    const candidate = buildKanjiClashCandidate(alpha, beta);
+
+    if (!candidate) {
+      throw new Error("Missing forced manual contrast candidate fixture.");
+    }
+
+    const contrastKey = candidate.pairKey;
+    const subjectARoundKey = `${contrastKey}::subject_a`;
+    const subjectBRoundKey = `${contrastKey}::subject_b`;
+    const queue = buildKanjiClashQueueSnapshot({
+      candidates: [
+        {
+          ...candidate,
+          roundOverride: {
+            origin: {
+              contrastKey,
+              direction: "subject_a",
+              type: "manual-contrast"
+            },
+            roundKey: subjectARoundKey,
+            targetSubjectKey: alpha.subjectKey
+          }
+        },
+        {
+          ...candidate,
+          roundOverride: {
+            origin: {
+              contrastKey,
+              direction: "subject_b",
+              type: "manual-contrast"
+            },
+            roundKey: subjectBRoundKey,
+            targetSubjectKey: beta.subjectKey
+          }
+        }
+      ],
+      mode: "manual",
+      now: "2026-04-09T10:00:00.000Z",
+      requestedSize: 2,
+      scope: "global",
+      seenRoundKeys: [subjectARoundKey]
+    });
+
+    expect(queue.seenRoundKeys).toEqual([subjectARoundKey]);
+    expect(queue.totalCount).toBe(1);
+    expect(queue.rounds[0]?.pairKey).toBe(contrastKey);
+    expect(queue.rounds[0]?.roundKey).toBe(subjectBRoundKey);
+    expect(queue.rounds[0]?.origin).toEqual({
+      contrastKey,
+      direction: "subject_b",
+      type: "manual-contrast"
+    });
+    expect(queue.rounds[0]?.targetSubjectKey).toBe(beta.subjectKey);
+  });
 });

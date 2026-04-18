@@ -17,6 +17,7 @@ import {
   type EntryType,
   type ReviewCardListItem
 } from "@/db";
+import { resolveReviewForcedContrast } from "@/lib/kanji-clash/manual-contrast-review";
 
 import {
   getDrivingEntryLinks,
@@ -40,9 +41,14 @@ import {
   type ReviewRating,
   type ReviewState
 } from "./review-scheduler";
+import type {
+  ReviewForcedContrastPayload,
+  ReviewForcedContrastResolution,
+  ReviewScope
+} from "./review-types";
 import { buildEntryKey } from "./entry-id";
 
-type DatabaseTransaction = Parameters<
+export type ReviewMutationTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
 >[0];
 
@@ -74,122 +80,164 @@ type ReviewSubjectMemberCard = Awaited<
   ReturnType<typeof listReviewCardsByIds>
 >[number];
 
+export type ReviewGradeResult = {
+  cardId: string;
+  dueAt: string;
+  forcedContrast?: ReviewForcedContrastResolution;
+  mediaId: string;
+  newState: ReviewState;
+  previousState: ReviewState;
+};
+
 export async function applyReviewGrade(input: {
   cardId: string;
   database?: DatabaseClient;
   expectedMediaId?: string;
+  forcedContrast?: ReviewForcedContrastPayload;
+  forcedContrastMediaSlug?: string;
+  forcedContrastScope?: ReviewScope;
   now?: Date;
   rating: ReviewRating;
   responseMs?: number | null;
-}) {
+}): Promise<ReviewGradeResult> {
   const database = input.database ?? db;
+
+  return database.transaction((transaction) =>
+    gradeReviewCardInTransaction({
+      ...input,
+      transaction
+    })
+  );
+}
+
+export async function gradeReviewCardInTransaction(input: {
+  cardId: string;
+  expectedMediaId?: string;
+  forcedContrast?: ReviewForcedContrastPayload;
+  forcedContrastMediaSlug?: string;
+  forcedContrastScope?: ReviewScope;
+  now?: Date;
+  rating: ReviewRating;
+  responseMs?: number | null;
+  transaction: ReviewMutationTransaction;
+}): Promise<ReviewGradeResult> {
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
+  const loadedCard = await loadReviewCardForMutation(input.transaction, input.cardId);
 
-  return database.transaction(async (tx) => {
-    const loadedCard = await loadReviewCardForMutation(tx, input.cardId);
+  if (!isActiveReviewableMutationCard(loadedCard)) {
+    throw new Error("Review card not available for grading.");
+  }
 
-    if (!isActiveReviewableMutationCard(loadedCard)) {
-      throw new Error("Review card not available for grading.");
-    }
+  assertCardBelongsToExpectedMedia(loadedCard.mediaId, input.expectedMediaId);
 
-    assertCardBelongsToExpectedMedia(loadedCard.mediaId, input.expectedMediaId);
+  const subjectContext = await loadReviewSubjectMutationContext(
+    input.transaction,
+    loadedCard,
+    nowIso
+  );
+  const resolvedSubjectState = resolveSubjectReviewStateForValidation(
+    subjectContext.subjectState
+  );
 
-    const subjectContext = await loadReviewSubjectMutationContext(
-      tx,
-      loadedCard,
-      nowIso
-    );
-    const resolvedSubjectState = resolveSubjectReviewStateForValidation(
-      subjectContext.subjectState
-    );
-
-    const effectiveState = resolveEffectiveReviewState({
-      cardStatus: subjectContext.seedCard.status,
-      reviewState: resolvedSubjectState
-    });
-
-    if (effectiveState.state === "known_manual") {
-      throw new Error(
-        "Manual mastery cards cannot be graded until the entry is reopened."
-      );
-    }
-
-    if (effectiveState.state === "suspended") {
-      throw new Error("Suspended cards must be resumed before grading.");
-    }
-
-    const seedState = buildReviewSubjectSeedState(
-      subjectContext.memberCards,
-      subjectContext.subjectState
-        ? (subjectContext.subjectState as ReviewSubjectStateSnapshot)
-        : null,
-      nowIso
-    );
-    const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(tx);
-    const presetKey = resolveFsrsPresetKey(loadedCard.cardType);
-    const optimizedParameters = presetKey
-      ? fsrsOptimizerSnapshot.presets[presetKey]
-      : null;
-    const previousState = (resolvedSubjectState?.state ?? "new") as ReviewState;
-    const scheduled = scheduleReview({
-      current: seedState.current,
-      now,
-      rating: input.rating,
-      scheduler: {
-        desiredRetention: fsrsOptimizerSnapshot.config.desiredRetention,
-        weights: optimizedParameters?.weights ?? undefined
-      }
-    });
-
-    await upsertReviewSubjectState(tx, {
-      cardId: loadedCard.id,
-      createdAt:
-        subjectContext.subjectState?.createdAt ??
-        subjectContext.seedCard.createdAt,
-      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
-      difficulty: scheduled.difficulty,
-      dueAt: scheduled.dueAt,
-      entryId: subjectContext.identity.entryId,
-      entryType: subjectContext.identity.entryType,
-      lapses: scheduled.lapses,
-      lastInteractionAt: nowIso,
-      lastReviewedAt: nowIso,
-      learningSteps: scheduled.learningSteps,
-      manualOverride: false,
-      reps: scheduled.reps,
-      scheduledDays: scheduled.scheduledDays,
-      schedulerVersion: scheduled.schedulerVersion,
-      stability: scheduled.stability,
-      state: scheduled.state,
-      subjectKey: subjectContext.identity.subjectKey,
-      subjectType: subjectContext.identity.subjectKind,
-      suspended: false,
-      updatedAt: nowIso
-    });
-
-    await tx.insert(reviewSubjectLog).values({
-      id: `review_subject_log_${randomUUID()}`,
-      subjectKey: subjectContext.identity.subjectKey,
-      cardId: loadedCard.id,
-      answeredAt: nowIso,
-      rating: input.rating,
-      previousState,
-      newState: scheduled.state,
-      scheduledDueAt: scheduled.dueAt,
-      elapsedDays: scheduled.elapsedDays,
-      responseMs: input.responseMs ?? null,
-      schedulerVersion: scheduled.schedulerVersion
-    });
-
-    return {
-      cardId: loadedCard.id,
-      dueAt: scheduled.dueAt,
-      mediaId: loadedCard.mediaId,
-      newState: scheduled.state,
-      previousState
-    };
+  const effectiveState = resolveEffectiveReviewState({
+    cardStatus: subjectContext.seedCard.status,
+    reviewState: resolvedSubjectState
   });
+
+  if (effectiveState.state === "known_manual") {
+    throw new Error(
+      "Manual mastery cards cannot be graded until the entry is reopened."
+    );
+  }
+
+  if (effectiveState.state === "suspended") {
+    throw new Error("Suspended cards must be resumed before grading.");
+  }
+
+  const seedState = buildReviewSubjectSeedState(
+    subjectContext.memberCards,
+    subjectContext.subjectState
+      ? (subjectContext.subjectState as ReviewSubjectStateSnapshot)
+      : null,
+    nowIso
+  );
+  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(input.transaction);
+  const presetKey = resolveFsrsPresetKey(loadedCard.cardType);
+  const optimizedParameters = presetKey
+    ? fsrsOptimizerSnapshot.presets[presetKey]
+    : null;
+  const previousState = (resolvedSubjectState?.state ?? "new") as ReviewState;
+  const scheduled = scheduleReview({
+    current: seedState.current,
+    now,
+    rating: input.rating,
+    scheduler: {
+      desiredRetention: fsrsOptimizerSnapshot.config.desiredRetention,
+      weights: optimizedParameters?.weights ?? undefined
+    }
+  });
+
+  await upsertReviewSubjectState(input.transaction, {
+    cardId: loadedCard.id,
+    createdAt:
+      subjectContext.subjectState?.createdAt ??
+      subjectContext.seedCard.createdAt,
+    crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
+    difficulty: scheduled.difficulty,
+    dueAt: scheduled.dueAt,
+    entryId: subjectContext.identity.entryId,
+    entryType: subjectContext.identity.entryType,
+    lapses: scheduled.lapses,
+    lastInteractionAt: nowIso,
+    lastReviewedAt: nowIso,
+    learningSteps: scheduled.learningSteps,
+    manualOverride: false,
+    reps: scheduled.reps,
+    scheduledDays: scheduled.scheduledDays,
+    schedulerVersion: scheduled.schedulerVersion,
+    stability: scheduled.stability,
+    state: scheduled.state,
+    subjectKey: subjectContext.identity.subjectKey,
+    subjectType: subjectContext.identity.subjectKind,
+    suspended: false,
+    updatedAt: nowIso
+  });
+
+  await input.transaction.insert(reviewSubjectLog).values({
+    id: `review_subject_log_${randomUUID()}`,
+    subjectKey: subjectContext.identity.subjectKey,
+    cardId: loadedCard.id,
+    answeredAt: nowIso,
+    rating: input.rating,
+    previousState,
+    newState: scheduled.state,
+    scheduledDueAt: scheduled.dueAt,
+    elapsedDays: scheduled.elapsedDays,
+    responseMs: input.responseMs ?? null,
+    schedulerVersion: scheduled.schedulerVersion
+  });
+
+  const forcedContrast = input.forcedContrast
+    ? await resolveReviewForcedContrast({
+        identity: subjectContext.identity,
+        mediaId: loadedCard.mediaId,
+        mediaSlug: input.forcedContrastMediaSlug,
+        nowIso,
+        payload: input.forcedContrast,
+        scope: input.forcedContrastScope ?? "global",
+        transaction: input.transaction
+      })
+    : undefined;
+
+  return {
+    cardId: loadedCard.id,
+    dueAt: scheduled.dueAt,
+    forcedContrast,
+    mediaId: loadedCard.mediaId,
+    newState: scheduled.state,
+    previousState
+  };
 }
 
 export async function resetReviewCardProgress(input: {
@@ -473,7 +521,7 @@ export async function setLinkedEntryStatusByCard(input: {
 }
 
 async function loadReviewCardForMutation(
-  transaction: DatabaseTransaction,
+  transaction: ReviewMutationTransaction,
   cardId: string
 ) {
   const row = await transaction.query.card.findFirst({
@@ -549,7 +597,7 @@ type ReviewSubjectMutationContext = {
 };
 
 async function loadReviewSubjectMutationContext(
-  transaction: DatabaseTransaction,
+  transaction: ReviewMutationTransaction,
   loadedCard: LoadedReviewCard,
   nowIso?: string
 ): Promise<ReviewSubjectMutationContext> {
@@ -647,7 +695,7 @@ async function loadReviewSubjectMutationContext(
 }
 
 async function resolveReviewSubjectEntryRefs(
-  transaction: DatabaseTransaction,
+  transaction: ReviewMutationTransaction,
   loadedCard: LoadedReviewCard,
   identity: ReviewSubjectIdentity
 ) {
@@ -728,7 +776,7 @@ function resolveSubjectReviewStateForValidation(
 }
 
 async function upsertReviewSubjectState(
-  transaction: DatabaseTransaction,
+  transaction: ReviewMutationTransaction,
   state: typeof reviewSubjectState.$inferInsert
 ) {
   await transaction

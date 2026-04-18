@@ -1,3 +1,5 @@
+import type { EntryType } from "@/db";
+
 export type KanjiClashEligibleReviewState = "review" | "relearning";
 
 export type KanjiClashSubjectSource =
@@ -8,6 +10,10 @@ export type KanjiClashSubjectSource =
   | {
       type: "group";
       crossMediaGroupId: string;
+    }
+  | {
+      type: "card";
+      cardId: string;
     };
 
 export type KanjiClashEligibleSubjectMember = {
@@ -21,7 +27,7 @@ export type KanjiClashEligibleSubjectMember = {
 };
 
 export type KanjiClashEligibleSubject = {
-  entryType: "term";
+  entryType: EntryType | null;
   kanji: string[];
   label: string;
   members: KanjiClashEligibleSubjectMember[];
@@ -51,6 +57,7 @@ export type KanjiClashCandidate = {
   pairReasons: KanjiClashPairReason[];
   right: KanjiClashEligibleSubject;
   rightSubjectKey: string;
+  roundOverride?: KanjiClashCandidateRoundOverride;
   score: number;
   sharedKanji: string[];
   similarKanjiSwaps: KanjiClashSimilarKanjiSwap[];
@@ -60,6 +67,22 @@ export type KanjiClashSessionMode = "automatic" | "manual";
 export type KanjiClashScope = "global" | "media";
 export type KanjiClashRoundSide = "left" | "right";
 export type KanjiClashRoundSource = "due" | "new" | "reserve";
+export type KanjiClashManualContrastDirection = "subject_a" | "subject_b";
+export type KanjiClashRoundOrigin =
+  | {
+      type: "pair";
+    }
+  | {
+      contrastKey: string;
+      direction: KanjiClashManualContrastDirection;
+      type: "manual-contrast";
+    };
+
+export type KanjiClashCandidateRoundOverride = {
+  origin: KanjiClashRoundOrigin;
+  roundKey: string;
+  targetSubjectKey: string;
+};
 
 export type KanjiClashPairResult = "again" | "good";
 export type KanjiClashPairStateStatus =
@@ -123,10 +146,12 @@ export type KanjiClashSessionRound = {
   correctSubjectKey: string;
   left: KanjiClashEligibleSubject;
   leftSubjectKey: string;
+  origin: KanjiClashRoundOrigin;
   pairKey: string;
   pairState: KanjiClashPairState | null;
   right: KanjiClashEligibleSubject;
   rightSubjectKey: string;
+  roundKey: string;
   source: KanjiClashRoundSource;
   target: KanjiClashEligibleSubject;
   targetPlacement: KanjiClashRoundSide;
@@ -150,6 +175,7 @@ export type KanjiClashQueueSnapshot = {
   snapshotAtIso: string;
   scope: KanjiClashScope;
   seenPairKeys: string[];
+  seenRoundKeys: string[];
   totalCount: number;
 };
 
@@ -166,9 +192,20 @@ export type KanjiClashPageSettings = {
   manualSizeOptions: readonly number[];
 };
 
+export type KanjiClashManualContrastSummary = {
+  contrastKey: string;
+  leftLabel: string;
+  leftSubjectKey: string;
+  rightLabel: string;
+  rightSubjectKey: string;
+  source: "manual" | "forced";
+  status: "active" | "suspended" | "archived";
+};
+
 export type KanjiClashPageData = {
   availableMedia: KanjiClashPageMediaOption[];
   currentRound: KanjiClashSessionRound | null;
+  manualContrasts: KanjiClashManualContrastSummary[];
   mode: KanjiClashSessionMode;
   queue: KanjiClashQueueSnapshot;
   queueToken: string;
@@ -181,6 +218,7 @@ export type KanjiClashPageData = {
 export type KanjiClashAnswerSubmissionPayload = {
   expectedPairKey: string;
   expectedPairStateUpdatedAt: string | null;
+  expectedRoundKey?: string | null;
   queueToken: string;
   selectedSide: KanjiClashRoundSide;
 };

@@ -1,6 +1,9 @@
 import type { Route } from "next";
 import Link from "next/link";
+import type { RefObject } from "react";
 
+import { GlossaryAutocompleteDropdown } from "@/components/glossary/glossary-autocomplete-dropdown";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
 import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import {
   appendReturnToParam,
@@ -17,21 +20,36 @@ import {
   reviewGradeRatingCopy,
   type ReviewGradeValue
 } from "./review-page-helpers";
-import type { ReviewPageClientData } from "./review-page-state";
+import type {
+  ReviewForcedContrastSelection,
+  ReviewPageClientData
+} from "./review-page-state";
 
 export function ReviewPageStage({
   additionalNewCount,
   contextualGlossaryHref,
+  forcedContrastInputRef,
+  forcedContrastListboxId,
+  forcedContrastQuery,
+  forcedContrastSelection,
+  forcedContrastShouldShowSuggestions,
+  forcedContrastSuggestions,
   fullSelectedCard,
   gradePreviewLookup,
+  handleCloseForcedContrast,
+  handleForcedContrastQueryChange,
+  handleForcedContrastSelect,
   handleGradeCard,
   handleMarkKnown,
+  handleOpenForcedContrast,
   handleResetCard,
   handleRevealAnswer,
+  handleRemoveForcedContrast,
   handleSetLearning,
   handleToggleSuspended,
   hasSupportCards,
   isAnswerRevealed,
+  isForcedContrastOpen,
   isFullReviewPageData,
   isGlobalReview,
   isHydratingFullData,
@@ -44,16 +62,30 @@ export function ReviewPageStage({
 }: {
   additionalNewCount: number;
   contextualGlossaryHref: Route;
+  forcedContrastInputRef: RefObject<HTMLInputElement | null>;
+  forcedContrastListboxId: string;
+  forcedContrastQuery: string;
+  forcedContrastSelection: ReviewForcedContrastSelection | null;
+  forcedContrastShouldShowSuggestions: boolean;
+  forcedContrastSuggestions: GlobalGlossaryAutocompleteSuggestion[];
   fullSelectedCard: ReviewQueueCard | null;
   gradePreviewLookup: Map<string, string>;
+  handleCloseForcedContrast: () => void;
+  handleForcedContrastQueryChange: (value: string) => void;
+  handleForcedContrastSelect: (
+    suggestion: GlobalGlossaryAutocompleteSuggestion
+  ) => void;
   handleGradeCard: (rating: ReviewGradeValue) => void;
   handleMarkKnown: () => void;
+  handleOpenForcedContrast: () => void;
   handleResetCard: () => void;
   handleRevealAnswer: () => void;
+  handleRemoveForcedContrast: () => void;
   handleSetLearning: () => void;
   handleToggleSuspended: () => void;
   hasSupportCards: boolean;
   isAnswerRevealed: boolean;
+  isForcedContrastOpen: boolean;
   isFullReviewPageData: boolean;
   isGlobalReview: boolean;
   isHydratingFullData: boolean;
@@ -177,23 +209,107 @@ export function ReviewPageStage({
           </div>
 
           {isQueueCard && isAnswerRevealed ? (
-            <div className="review-grade-grid">
-              {reviewGradeRatingCopy.map((rating) => (
-                <button
-                  key={rating.value}
-                  className={`review-grade-button review-grade-button--${rating.tone}`}
-                  disabled={isPending}
-                  type="button"
-                  onClick={() => handleGradeCard(rating.value)}
-                >
-                  <span>{rating.label}</span>
-                  <small>{rating.detail}</small>
-                  <small className="review-grade-button__next">
-                    Prossima review: {gradePreviewLookup.get(rating.value) ?? "n/d"}
-                  </small>
-                </button>
-              ))}
-            </div>
+            <>
+              <div className="review-stage__contrast">
+                <p className="eyebrow">Contrasto</p>
+                {forcedContrastSelection && !isForcedContrastOpen ? (
+                  <div className="review-stage__contrast-selection">
+                    <span className="chip">
+                      Contrasto con:{" "}
+                      <span className="jp-inline">{forcedContrastSelection.label}</span>
+                    </span>
+                    {forcedContrastSelection.reading ? (
+                      <span className="meta-pill jp-inline">
+                        {forcedContrastSelection.reading}
+                      </span>
+                    ) : null}
+                    <span className="review-stage__meta">
+                      {forcedContrastSelection.meaning}
+                    </span>
+                    <button
+                      className="button button--ghost button--small"
+                      disabled={isPending}
+                      type="button"
+                      onClick={handleOpenForcedContrast}
+                    >
+                      Cambia
+                    </button>
+                    <button
+                      className="button button--ghost button--small"
+                      disabled={isPending}
+                      type="button"
+                      onClick={handleRemoveForcedContrast}
+                    >
+                      Rimuovi
+                    </button>
+                  </div>
+                ) : isForcedContrastOpen ? (
+                  <div className="glossary-autocomplete">
+                    <input
+                      ref={forcedContrastInputRef}
+                      aria-autocomplete="list"
+                      aria-controls={
+                        forcedContrastShouldShowSuggestions
+                          ? forcedContrastListboxId
+                          : undefined
+                      }
+                      autoCapitalize="none"
+                      autoComplete="off"
+                      autoCorrect="off"
+                      className="glossary-search-form__input"
+                      enterKeyHint="search"
+                      inputMode="search"
+                      onBlur={handleCloseForcedContrast}
+                      onChange={(event) => {
+                        handleForcedContrastQueryChange(event.currentTarget.value);
+                      }}
+                      onKeyDown={(event) => {
+                        if (event.key === "Escape") {
+                          handleCloseForcedContrast();
+                        }
+                      }}
+                      placeholder="待つ, まつ, matsu, aspettare"
+                      spellCheck={false}
+                      type="search"
+                      value={forcedContrastQuery}
+                    />
+                    <GlossaryAutocompleteDropdown
+                      listboxId={forcedContrastListboxId}
+                      onSelect={handleForcedContrastSelect}
+                      shouldShowSuggestions={forcedContrastShouldShowSuggestions}
+                      suggestions={forcedContrastSuggestions}
+                    />
+                  </div>
+                ) : (
+                  <button
+                    className="button button--ghost button--small"
+                    disabled={isPending}
+                    type="button"
+                    onClick={handleOpenForcedContrast}
+                  >
+                    + Contrasto
+                  </button>
+                )}
+              </div>
+
+              <div className="review-grade-grid">
+                {reviewGradeRatingCopy.map((rating) => (
+                  <button
+                    key={rating.value}
+                    className={`review-grade-button review-grade-button--${rating.tone}`}
+                    disabled={isPending}
+                    type="button"
+                    onClick={() => handleGradeCard(rating.value)}
+                  >
+                    <span>{rating.label}</span>
+                    <small>{rating.detail}</small>
+                    <small className="review-grade-button__next">
+                      Prossima review: {gradePreviewLookup.get(rating.value) ?? "n/d"}
+                    </small>
+                  </button>
+                ))}
+              </div>
+            </>
           ) : isHydratingFullData ? (
             <div className="review-sidebar__notice">
               <p>Sto completando i dettagli della review in background.</p>

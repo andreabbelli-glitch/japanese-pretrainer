@@ -1,0 +1,2 @@
+ALTER TABLE `kanji_clash_manual_contrast_round_state` ADD `left_subject_key` text NOT NULL;--> statement-breakpoint
+ALTER TABLE `kanji_clash_manual_contrast_round_state` ADD `right_subject_key` text NOT NULL;

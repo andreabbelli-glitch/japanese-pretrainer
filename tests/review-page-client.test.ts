@@ -18,6 +18,7 @@ import {
 } from "@/components/review/review-page-sidebar";
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
 import type { ReviewPageData } from "@/lib/review-types";
 
 describe("review page client hydration", () => {
@@ -145,16 +146,28 @@ describe("review page client hydration", () => {
       ReviewPageStage({
         additionalNewCount: 0,
         contextualGlossaryHref: "/glossary",
+        forcedContrastInputRef: { current: null },
+        forcedContrastListboxId: "review-contrast-listbox",
+        forcedContrastQuery: "",
+        forcedContrastSelection: null,
+        forcedContrastShouldShowSuggestions: false,
+        forcedContrastSuggestions: [],
         fullSelectedCard: null,
         gradePreviewLookup,
         handleGradeCard: () => {},
+        handleCloseForcedContrast: () => {},
+        handleForcedContrastQueryChange: () => {},
+        handleForcedContrastSelect: () => {},
         handleMarkKnown: () => {},
+        handleOpenForcedContrast: () => {},
         handleResetCard: () => {},
         handleRevealAnswer: () => {},
+        handleRemoveForcedContrast: () => {},
         handleSetLearning: () => {},
         handleToggleSuspended: () => {},
         hasSupportCards: false,
         isAnswerRevealed: true,
+        isForcedContrastOpen: false,
         isFullReviewPageData: false,
         isGlobalReview: true,
         isHydratingFullData: true,
@@ -172,6 +185,74 @@ describe("review page client hydration", () => {
     expect(markup).toContain("Good");
     expect(markup).toContain("Hard");
     expect(markup).toContain("Easy");
+    expect(markup).toContain("+ Contrasto");
+  });
+
+  it("renders the selected forced contrast chip before grading", () => {
+    const data = buildFirstCandidateReviewPageData({
+      cardId: "card-a",
+      showAnswer: true
+    });
+    const gradePreviewLookup = buildReviewGradePreviewLookup({
+      data,
+      fullSelectedCardContext: null,
+      now: new Date("2026-04-02T12:00:00.000Z")
+    });
+    const selection: Pick<
+      GlobalGlossaryAutocompleteSuggestion,
+      "kind" | "label" | "meaning" | "reading" | "resultKey" | "romaji" | "title"
+    > = {
+      kind: "term",
+      label: "コスト",
+      meaning: "costo",
+      reading: "こすと",
+      resultKey: "term:entry:cost",
+      romaji: "kosuto",
+      title: undefined
+    };
+
+    const markup = renderToStaticMarkup(
+      ReviewPageStage({
+        additionalNewCount: 0,
+        contextualGlossaryHref: "/glossary",
+        forcedContrastInputRef: { current: null },
+        forcedContrastListboxId: "review-contrast-listbox",
+        forcedContrastQuery: "コスト",
+        forcedContrastSelection: selection,
+        forcedContrastShouldShowSuggestions: false,
+        forcedContrastSuggestions: [],
+        fullSelectedCard: null,
+        gradePreviewLookup,
+        handleGradeCard: () => {},
+        handleCloseForcedContrast: () => {},
+        handleForcedContrastQueryChange: () => {},
+        handleForcedContrastSelect: () => {},
+        handleMarkKnown: () => {},
+        handleOpenForcedContrast: () => {},
+        handleResetCard: () => {},
+        handleRevealAnswer: () => {},
+        handleRemoveForcedContrast: () => {},
+        handleSetLearning: () => {},
+        handleToggleSuspended: () => {},
+        hasSupportCards: false,
+        isAnswerRevealed: true,
+        isForcedContrastOpen: false,
+        isFullReviewPageData: false,
+        isGlobalReview: true,
+        isHydratingFullData: false,
+        isPending: false,
+        remainingCount: 3,
+        sessionHref: "/review",
+        showCompletionState: false,
+        showFrontFurigana: true,
+        viewData: data
+      })
+    );
+
+    expect(markup).toContain("Contrasto");
+    expect(markup).toContain("コスト");
+    expect(markup).toContain("Cambia");
+    expect(markup).toContain("Rimuovi");
   });
 
   it("renders the global Kanji Clash CTA only on the global review sidebar", () => {

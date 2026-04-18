@@ -17,7 +17,10 @@ import {
 import { lessonProgress } from "./progress.ts";
 import {
   kanjiClashPairLog,
-  kanjiClashPairState
+  kanjiClashPairState,
+  kanjiClashManualContrast,
+  kanjiClashManualContrastRoundLog,
+  kanjiClashManualContrastRoundState
 } from "./kanji-clash.ts";
 import {
   card,
@@ -205,6 +208,38 @@ export const kanjiClashPairLogRelations = relations(
     pairState: one(kanjiClashPairState, {
       fields: [kanjiClashPairLog.pairKey],
       references: [kanjiClashPairState.pairKey]
+    })
+  })
+);
+
+export const kanjiClashManualContrastRelations = relations(
+  kanjiClashManualContrast,
+  ({ many }) => ({
+    roundStates: many(kanjiClashManualContrastRoundState)
+  })
+);
+
+export const kanjiClashManualContrastRoundStateRelations = relations(
+  kanjiClashManualContrastRoundState,
+  ({ many, one }) => ({
+    manualContrast: one(kanjiClashManualContrast, {
+      fields: [kanjiClashManualContrastRoundState.contrastKey],
+      references: [kanjiClashManualContrast.contrastKey]
+    }),
+    logs: many(kanjiClashManualContrastRoundLog)
+  })
+);
+
+export const kanjiClashManualContrastRoundLogRelations = relations(
+  kanjiClashManualContrastRoundLog,
+  ({ one }) => ({
+    manualContrast: one(kanjiClashManualContrast, {
+      fields: [kanjiClashManualContrastRoundLog.contrastKey],
+      references: [kanjiClashManualContrast.contrastKey]
+    }),
+    roundState: one(kanjiClashManualContrastRoundState, {
+      fields: [kanjiClashManualContrastRoundLog.roundKey],
+      references: [kanjiClashManualContrastRoundState.roundKey]
     })
   })
 );

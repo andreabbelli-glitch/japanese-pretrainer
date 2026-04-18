@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { ReviewPageControllerResult } from "@/components/review/use-review-page-controller";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
 import type { ReviewFirstCandidatePageData, ReviewQueueCard } from "@/lib/review-types";
 
 const mocks = vi.hoisted(() => ({
@@ -14,6 +15,7 @@ const mocks = vi.hoisted(() => ({
   resetReviewCardSessionAction: vi.fn(),
   setLinkedEntryLearningSessionAction: vi.fn(),
   setReviewCardSuspendedSessionAction: vi.fn(),
+  useGlossaryAutocomplete: vi.fn(),
   useSearchParams: vi.fn()
 }));
 
@@ -31,7 +33,31 @@ vi.mock("@/actions/review", () => ({
   setReviewCardSuspendedSessionAction: mocks.setReviewCardSuspendedSessionAction
 }));
 
+vi.mock("@/components/glossary/use-glossary-autocomplete", () => ({
+  useGlossaryAutocomplete: (input: unknown) => mocks.useGlossaryAutocomplete(input)
+}));
+
 import { useReviewPageController } from "@/components/review/use-review-page-controller";
+
+const contrastSuggestion: GlobalGlossaryAutocompleteSuggestion = {
+  aliases: [],
+  hasCards: true,
+  hasCardlessVariant: false,
+  kind: "term",
+  label: "コスト",
+  localHits: [
+    {
+      hasCards: true,
+      mediaSlug: "duel-masters-dm25",
+      studyKey: "review"
+    }
+  ],
+  meaning: "costo",
+  mediaCount: 1,
+  reading: "こすと",
+  resultKey: "term:entry:cost",
+  romaji: "kosuto"
+};
 
 describe("useReviewPageController first-candidate grading", () => {
   const emptySearchParams = {
@@ -55,6 +81,14 @@ describe("useReviewPageController first-candidate grading", () => {
     mocks.resetReviewCardSessionAction.mockReset();
     mocks.setLinkedEntryLearningSessionAction.mockReset();
     mocks.setReviewCardSuspendedSessionAction.mockReset();
+    mocks.useGlossaryAutocomplete.mockImplementation(
+      ({ isOpen, query }: { isOpen: boolean; query: string }) => ({
+        listboxId: "review-contrast-listbox",
+        shouldShowSuggestions: isOpen && query.trim().length > 0,
+        suggestions: query.trim().length > 0 ? [contrastSuggestion] : [],
+        suggestionsKey: query.trim()
+      })
+    );
   });
 
   afterEach(async () => {
@@ -173,6 +207,369 @@ describe("useReviewPageController first-candidate grading", () => {
     expect(controller().viewData.selectedCardContext.position).toBe(1);
     expect(controller().viewData.selectedCardContext.remainingCount).toBe(1);
   });
+
+  it("passes the selected forced contrast payload and disables optimistic advance", async () => {
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Keep hydration pending while inspecting client state.
+        })
+    );
+    mocks.gradeReviewCardSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Intentionally left pending.
+        })
+    );
+
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFirstCandidateReviewPageData(),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+    act(() => {
+      controller().handleOpenForcedContrast();
+    });
+    act(() => {
+      controller().handleForcedContrastQueryChange("kosuto");
+    });
+    act(() => {
+      controller().handleForcedContrastSelect(contrastSuggestion);
+    });
+    act(() => {
+      controller().handleGradeCard("good");
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledWith(
+      expect.objectContaining({
+        forcedKanjiClashContrast: {
+          source: "review-grading",
+          targetLabel: "コスト",
+          targetResultKey: "term:entry:cost"
+        }
+      })
+    );
+    expect(controller().forcedContrastSelection?.resultKey).toBe(
+      "term:entry:cost"
+    );
+    expect(controller().viewData.selectedCard?.id).toBe("card-a");
+    expect(controller().viewData.session.answeredCount).toBe(0);
+  });
+
+  it("surfaces allowlisted forced contrast validation errors without advancing the card", async () => {
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Keep hydration pending while inspecting client state.
+        })
+    );
+    mocks.gradeReviewCardSessionAction.mockRejectedValue(
+      new Error("Il contrasto selezionato non è più disponibile.")
+    );
+
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFirstCandidateReviewPageData(),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+    act(() => {
+      controller().handleOpenForcedContrast();
+    });
+    act(() => {
+      controller().handleForcedContrastQueryChange("kosuto");
+    });
+    act(() => {
+      controller().handleForcedContrastSelect(contrastSuggestion);
+    });
+
+    await act(async () => {
+      controller().handleGradeCard("good");
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+
+    expect(controller().clientError).toBe(
+      "Il contrasto selezionato non è più disponibile."
+    );
+    expect(controller().forcedContrastSelection?.resultKey).toBe(
+      "term:entry:cost"
+    );
+    expect(controller().viewData.selectedCard?.id).toBe("card-a");
+    expect(controller().viewData.session.answeredCount).toBe(0);
+  });
+
+  it("keeps non-allowlisted forced contrast failures generic", async () => {
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Keep hydration pending while inspecting client state.
+        })
+    );
+    mocks.gradeReviewCardSessionAction.mockRejectedValue(
+      new Error("Forced contrast persistence failed.")
+    );
+
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFirstCandidateReviewPageData(),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+    act(() => {
+      controller().handleOpenForcedContrast();
+    });
+    act(() => {
+      controller().handleForcedContrastQueryChange("kosuto");
+    });
+    act(() => {
+      controller().handleForcedContrastSelect(contrastSuggestion);
+    });
+
+    await act(async () => {
+      controller().handleGradeCard("good");
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+
+    expect(controller().clientError).toBe(
+      "Non sono riuscito ad aggiornare la review. Riprova un attimo."
+    );
+    expect(controller().forcedContrastSelection?.resultKey).toBe(
+      "term:entry:cost"
+    );
+    expect(controller().viewData.selectedCard?.id).toBe("card-a");
+    expect(controller().viewData.session.answeredCount).toBe(0);
+  });
+
+  it("ignores typed-but-unselected contrast text and preserves optimistic advance", async () => {
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Keep hydration pending while inspecting client state.
+        })
+    );
+    mocks.gradeReviewCardSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Intentionally left pending.
+        })
+    );
+
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFirstCandidateReviewPageData(),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+    act(() => {
+      controller().handleOpenForcedContrast();
+    });
+    act(() => {
+      controller().handleForcedContrastQueryChange("kosuto");
+    });
+    act(() => {
+      controller().handleGradeCard("good");
+    });
+
+    const actionInput = mocks.gradeReviewCardSessionAction.mock.calls[0]?.[0];
+
+    expect(actionInput).not.toHaveProperty("forcedKanjiClashContrast");
+    expect(controller().forcedContrastSelection).toBeNull();
+    expect(controller().viewData.selectedCard?.id).toBe("card-b");
+    expect(controller().viewData.session.answeredCount).toBe(1);
+  });
+
+  it("opens and closes the forced contrast UI with C and Escape after reveal", async () => {
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Keep hydration pending while inspecting keyboard shortcuts.
+        })
+    );
+
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFirstCandidateReviewPageData(),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    expect(controller().isForcedContrastOpen).toBe(false);
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+    act(() => {
+      dispatchWindowKeyboardEvent("c");
+    });
+
+    expect(controller().isForcedContrastOpen).toBe(true);
+
+    act(() => {
+      dispatchWindowKeyboardEvent("Escape");
+    });
+
+    expect(controller().isForcedContrastOpen).toBe(false);
+  });
 });
 
 function buildFirstCandidateReviewPageData(): ReviewFirstCandidatePageData {
@@ -267,6 +664,7 @@ function buildQueueCard(id: string): ReviewQueueCard {
 function installMinimalDom() {
   const g = globalThis as typeof globalThis & Record<string, unknown>;
   const doc = new DocumentStub();
+  const listeners = new Map<string, Set<(event: EventLike) => void>>();
 
   Object.defineProperty(g, "window", {
     configurable: true,
@@ -336,6 +734,30 @@ function installMinimalDom() {
     configurable: true,
     value: () => {}
   });
+  Object.defineProperty(g, "addEventListener", {
+    configurable: true,
+    value: (type: string, listener: (event: EventLike) => void) => {
+      const listenersForType = listeners.get(type) ?? new Set();
+      listenersForType.add(listener);
+      listeners.set(type, listenersForType);
+    }
+  });
+  Object.defineProperty(g, "removeEventListener", {
+    configurable: true,
+    value: (type: string, listener: (event: EventLike) => void) => {
+      listeners.get(type)?.delete(listener);
+    }
+  });
+  Object.defineProperty(g, "dispatchEvent", {
+    configurable: true,
+    value: (event: EventLike) => {
+      for (const listener of listeners.get(event.type) ?? []) {
+        listener(event);
+      }
+
+      return true;
+    }
+  });
 
   doc.defaultView = g as typeof globalThis;
   doc.activeElement = doc.body;
@@ -358,10 +780,43 @@ function uninstallMinimalDom() {
     "history",
     "location",
     "requestAnimationFrame",
-    "cancelAnimationFrame"
+    "cancelAnimationFrame",
+    "addEventListener",
+    "removeEventListener",
+    "dispatchEvent"
   ]) {
     delete g[key];
   }
+}
+
+type EventLike = {
+  altKey?: boolean;
+  ctrlKey?: boolean;
+  defaultPrevented?: boolean;
+  key?: string;
+  metaKey?: boolean;
+  preventDefault: () => void;
+  shiftKey?: boolean;
+  target?: EventTarget | null;
+  type: string;
+};
+
+function dispatchWindowKeyboardEvent(key: string) {
+  const event: EventLike = {
+    altKey: false,
+    ctrlKey: false,
+    defaultPrevented: false,
+    key,
+    metaKey: false,
+    preventDefault() {
+      event.defaultPrevented = true;
+    },
+    shiftKey: false,
+    target: document.body as unknown as EventTarget,
+    type: "keydown"
+  };
+
+  window.dispatchEvent(event as unknown as Event);
 }
 
 class NodeStub {

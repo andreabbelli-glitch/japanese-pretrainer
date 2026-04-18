@@ -1,4 +1,5 @@
 import type { EffectiveReviewState } from "./review-model";
+import type { EntryType } from "@/db";
 import type {
   ReviewGradePreview,
   ReviewSeedState
@@ -19,6 +20,31 @@ type ReviewHref = ReturnType<typeof import("@/lib/site").reviewHref>;
 export type ReviewCardEntryKind = "term" | "grammar";
 
 export type ReviewScope = "global" | "media";
+
+export type ReviewForcedContrastPayload = {
+  source: "review-grading";
+  targetLabel?: string;
+  targetResultKey: string;
+};
+
+export type ReviewForcedContrastEndpoint = {
+  cardId: string | null;
+  crossMediaGroupId: string | null;
+  entryId: string | null;
+  entryType: EntryType | null;
+  subjectKey: string;
+  subjectType: "card" | "entry" | "group";
+};
+
+export type ReviewForcedContrastResolution = {
+  contrastKey: string;
+  current: ReviewForcedContrastEndpoint;
+  mediaId?: string;
+  mediaSlug?: string;
+  scope: ReviewScope;
+  source: "forced";
+  target: ReviewForcedContrastEndpoint;
+};
 
 export type ReviewCardEntrySummary = {
   href: MediaGlossaryEntryHref;
@@ -139,6 +165,7 @@ export type ReviewPageData = {
   session: {
     answeredCount: number;
     extraNewCount: number;
+    forcedContrast?: ReviewForcedContrastResolution;
     notice?: string;
     segmentId?: string | null;
   };

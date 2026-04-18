@@ -15,10 +15,19 @@ import type {
 const KANJI_CLASH_QUEUE_TOKEN_VERSION_V1 = 1;
 const KANJI_CLASH_QUEUE_TOKEN_VERSION_V2 = 2;
 const KANJI_CLASH_QUEUE_TOKEN_VERSION_V3 = 3;
+const KANJI_CLASH_QUEUE_TOKEN_VERSION_V4 = 4;
 const KANJI_CLASH_ROUND_SOURCE_CODES = {
   due: 0,
   new: 1,
   reserve: 2
+} as const;
+const KANJI_CLASH_ROUND_ORIGIN_CODES = {
+  "manual-contrast": 1,
+  pair: 0
+} as const;
+const KANJI_CLASH_MANUAL_CONTRAST_DIRECTION_CODES = {
+  subject_a: 0,
+  subject_b: 1
 } as const;
 
 type KanjiClashLegacyQueueTokenPayload = {
@@ -74,6 +83,10 @@ type CompactKanjiClashRoundPayloadV3 = {
   src: (typeof KANJI_CLASH_ROUND_SOURCE_CODES)[keyof typeof KANJI_CLASH_ROUND_SOURCE_CODES];
 };
 
+type CompactKanjiClashRoundOriginPayload =
+  | readonly [0]
+  | readonly [1, string, 0 | 1];
+
 type CompactKanjiClashQueueTokenPayloadV3 = {
   queue: {
     a: boolean;
@@ -92,11 +105,43 @@ type CompactKanjiClashQueueTokenPayloadV3 = {
   version: typeof KANJI_CLASH_QUEUE_TOKEN_VERSION_V3;
 };
 
+type CompactKanjiClashRoundPayloadV4 = {
+  k: string[];
+  p: CompactKanjiClashPairState | null;
+  pr: KanjiClashPairReason[];
+  rk: string;
+  ro: CompactKanjiClashRoundOriginPayload;
+  rt: number;
+  s: readonly [number, number];
+  score: number;
+  sk: CompactKanjiClashSimilarSwapPayload[];
+  src: (typeof KANJI_CLASH_ROUND_SOURCE_CODES)[keyof typeof KANJI_CLASH_ROUND_SOURCE_CODES];
+};
+
+type CompactKanjiClashQueueTokenPayloadV4 = {
+  queue: {
+    a: boolean;
+    c: number;
+    d: number | null;
+    i: number;
+    m: KanjiClashQueueSnapshot["mode"];
+    n: number;
+    q: CompactKanjiClashRoundPayloadV4[];
+    r: number | null;
+    s: string[];
+    scope: KanjiClashQueueSnapshot["scope"];
+    sr: string[];
+    t: string;
+    u: KanjiClashEligibleSubject[];
+  };
+  version: typeof KANJI_CLASH_QUEUE_TOKEN_VERSION_V4;
+};
+
 export function createKanjiClashQueueToken(queue: KanjiClashQueueSnapshot) {
   const payload = JSON.stringify(
-    serializeKanjiClashQueueTokenPayloadV3(
+    serializeKanjiClashQueueTokenPayloadV4(
       queue
-    ) satisfies CompactKanjiClashQueueTokenPayloadV3
+    ) satisfies CompactKanjiClashQueueTokenPayloadV4
   );
   const encodedPayload = toBase64Url(payload);
   const signature = signKanjiClashQueueTokenPayload(
@@ -125,10 +170,15 @@ export function verifyKanjiClashQueueToken(token: string) {
 
   try {
     const payload = JSON.parse(fromBase64Url(encodedPayload)) as Partial<
+      | CompactKanjiClashQueueTokenPayloadV4
       | CompactKanjiClashQueueTokenPayloadV3
       | CompactKanjiClashQueueTokenPayload
       | KanjiClashLegacyQueueTokenPayload
     >;
+
+    if (payload.version === KANJI_CLASH_QUEUE_TOKEN_VERSION_V4) {
+      return inflateKanjiClashQueueTokenPayloadV4(payload);
+    }
 
     if (payload.version === KANJI_CLASH_QUEUE_TOKEN_VERSION_V3) {
       return inflateKanjiClashQueueTokenPayloadV3(payload);
@@ -188,9 +238,9 @@ function safeEqual(left: string, right: string) {
   return timingSafeEqual(leftBuffer, rightBuffer);
 }
 
-function serializeKanjiClashQueueTokenPayloadV3(
+function serializeKanjiClashQueueTokenPayloadV4(
   queue: KanjiClashQueueSnapshot
-): CompactKanjiClashQueueTokenPayloadV3 {
+): CompactKanjiClashQueueTokenPayloadV4 {
   const { subjects, subjectIndexByKey } = buildSubjectRegistry(queue.rounds);
 
   return {
@@ -205,6 +255,9 @@ function serializeKanjiClashQueueTokenPayloadV3(
         k: round.candidate.sharedKanji,
         p: round.pairState ? compactKanjiClashPairState(round.pairState) : null,
         pr: round.candidate.pairReasons,
+        rk: round.roundKey,
+        ro: compactKanjiClashRoundOrigin(round.origin),
+        rt: requireSubjectIndex(subjectIndexByKey, round.targetSubjectKey),
         s: [
           requireSubjectIndex(
             subjectIndexByKey,
@@ -227,11 +280,70 @@ function serializeKanjiClashQueueTokenPayloadV3(
       r: queue.requestedSize,
       s: queue.seenPairKeys,
       scope: queue.scope,
+      sr: queue.seenRoundKeys,
       t: queue.snapshotAtIso,
       u: subjects
     },
-    version: KANJI_CLASH_QUEUE_TOKEN_VERSION_V3
+    version: KANJI_CLASH_QUEUE_TOKEN_VERSION_V4
   };
+}
+
+function inflateKanjiClashQueueTokenPayloadV4(
+  payload: Partial<CompactKanjiClashQueueTokenPayloadV4>
+) {
+  if (!isCompactKanjiClashQueueTokenPayloadV4(payload)) {
+    return null;
+  }
+
+  const subjects = payload.queue.u;
+  const rounds = payload.queue.q.map((round, index) => {
+    const left = subjects[round.s[0]];
+    const right = subjects[round.s[1]];
+    const target = subjects[round.rt];
+
+    if (!left || !right || !target) {
+      throw new Error("Kanji Clash queue token references a missing subject.");
+    }
+
+    const pairKey = buildKanjiClashPairKey(left.subjectKey, right.subjectKey);
+    const pairState = round.p
+      ? inflateKanjiClashPairState(round.p, {
+          leftSubjectKey: left.subjectKey,
+          pairKey,
+          rightSubjectKey: right.subjectKey
+        })
+      : null;
+    const origin = inflateKanjiClashRoundOriginPayload(round.ro);
+
+    return materializeKanjiClashSessionRound(
+      {
+        candidate: {
+          left,
+          leftSubjectKey: left.subjectKey,
+          pairKey,
+          pairReasons: round.pr,
+          right,
+          rightSubjectKey: right.subjectKey,
+          roundOverride:
+            round.rk !== pairKey || origin.type !== "pair"
+              ? {
+                  origin,
+                  roundKey: round.rk,
+                  targetSubjectKey: target.subjectKey
+                }
+              : undefined,
+          score: round.score,
+          sharedKanji: round.k,
+          similarKanjiSwaps: round.sk.map(inflateKanjiClashSimilarSwap)
+        },
+        pairState,
+        source: inflateKanjiClashRoundSource(round.src)
+      },
+      index
+    );
+  });
+
+  return buildQueueSnapshotFromInflatedRounds(payload.queue, rounds);
 }
 
 function inflateKanjiClashQueueTokenPayloadV3(
@@ -333,7 +445,8 @@ function inflateKanjiClashQueueTokenPayloadV2(
 function buildQueueSnapshotFromInflatedRounds(
   queuePayload:
     | CompactKanjiClashQueueTokenPayload["queue"]
-    | CompactKanjiClashQueueTokenPayloadV3["queue"],
+    | CompactKanjiClashQueueTokenPayloadV3["queue"]
+    | CompactKanjiClashQueueTokenPayloadV4["queue"],
   rounds: KanjiClashSessionRound[]
 ) {
   const counts = countRoundSources(rounds);
@@ -355,6 +468,7 @@ function buildQueueSnapshotFromInflatedRounds(
     rounds,
     scope: queuePayload.scope,
     seenPairKeys: queuePayload.s,
+    seenRoundKeys: "sr" in queuePayload ? queuePayload.sr : queuePayload.s,
     snapshotAtIso: queuePayload.t,
     totalCount: rounds.length
   } satisfies KanjiClashQueueSnapshot;
@@ -479,6 +593,39 @@ function countRoundSources(rounds: KanjiClashSessionRound[]) {
   };
 }
 
+function compactKanjiClashRoundOrigin(
+  origin: KanjiClashSessionRound["origin"]
+): CompactKanjiClashRoundOriginPayload {
+  if (origin.type === "pair") {
+    return [KANJI_CLASH_ROUND_ORIGIN_CODES.pair];
+  }
+
+  return [
+    KANJI_CLASH_ROUND_ORIGIN_CODES["manual-contrast"],
+    origin.contrastKey,
+    KANJI_CLASH_MANUAL_CONTRAST_DIRECTION_CODES[origin.direction]
+  ];
+}
+
+function inflateKanjiClashRoundOriginPayload(
+  origin: CompactKanjiClashRoundOriginPayload
+): KanjiClashSessionRound["origin"] {
+  if (origin[0] === KANJI_CLASH_ROUND_ORIGIN_CODES.pair) {
+    return {
+      type: "pair"
+    };
+  }
+
+  return {
+    contrastKey: origin[1],
+    direction:
+      origin[2] === KANJI_CLASH_MANUAL_CONTRAST_DIRECTION_CODES.subject_a
+        ? "subject_a"
+        : "subject_b",
+    type: "manual-contrast"
+  };
+}
+
 function isCompactKanjiClashQueueTokenPayload(
   value: Partial<CompactKanjiClashQueueTokenPayload>
 ): value is CompactKanjiClashQueueTokenPayload {
@@ -506,6 +653,24 @@ function isCompactKanjiClashQueueTokenPayloadV3(
     typeof value.queue === "object" &&
     Array.isArray(value.queue.q) &&
     Array.isArray(value.queue.s) &&
+    Array.isArray(value.queue.u) &&
+    typeof value.queue.m === "string" &&
+    typeof value.queue.scope === "string" &&
+    typeof value.queue.t === "string"
+  );
+}
+
+function isCompactKanjiClashQueueTokenPayloadV4(
+  value: Partial<CompactKanjiClashQueueTokenPayloadV4>
+): value is CompactKanjiClashQueueTokenPayloadV4 {
+  return Boolean(
+    value &&
+    value.version === KANJI_CLASH_QUEUE_TOKEN_VERSION_V4 &&
+    value.queue &&
+    typeof value.queue === "object" &&
+    Array.isArray(value.queue.q) &&
+    Array.isArray(value.queue.s) &&
+    Array.isArray(value.queue.sr) &&
     Array.isArray(value.queue.u) &&
     typeof value.queue.m === "string" &&
     typeof value.queue.scope === "string" &&
@@ -545,6 +710,10 @@ function normalizeLegacyKanjiClashQueueSnapshot(
     ...queue,
     rounds: queue.rounds.map((round) => ({
       ...round,
+      origin: round.origin ?? {
+        type: "pair"
+      },
+      roundKey: round.roundKey ?? round.pairKey,
       candidate: {
         ...round.candidate,
         pairReasons: Array.isArray(round.candidate.pairReasons)
@@ -556,6 +725,9 @@ function normalizeLegacyKanjiClashQueueSnapshot(
           ? round.candidate.similarKanjiSwaps
           : []
       }
-    }))
+    })),
+    seenRoundKeys: Array.isArray(queue.seenRoundKeys)
+      ? queue.seenRoundKeys
+      : queue.seenPairKeys
   };
 }

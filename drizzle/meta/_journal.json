@@ -162,6 +162,20 @@
       "when": 1776315703043,
       "tag": "0022_damp_doctor_strange",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "6",
+      "when": 1776530510898,
+      "tag": "0023_messy_payback",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "6",
+      "when": 1776530562567,
+      "tag": "0024_superb_apocalypse",
+      "breakpoints": true
     }
   ]
 }

@@ -19,6 +19,8 @@ import {
   countReviewSubjectsIntroducedOnDay,
   createDatabaseClient,
   developmentFixture,
+  kanjiClashManualContrast,
+  kanjiClashManualContrastRoundState,
   lesson,
   lessonProgress,
   media,
@@ -41,14 +43,20 @@ import {
   loadReviewOverviewSnapshots,
   type ReviewPageData
 } from "@/lib/review";
+import { buildKanjiClashContrastKey } from "@/lib/kanji-clash";
 import { resolveReviewCardReading } from "@/lib/review-card-hydration";
 import * as fsrsOptimizer from "@/lib/fsrs-optimizer";
 import {
   applyReviewGrade,
+  gradeReviewCardInTransaction,
   resetReviewCardProgress,
   setLinkedEntryStatusByCard,
   setReviewCardSuspended
 } from "@/lib/review-service";
+import {
+  getSafeReviewForcedContrastClientErrorMessage
+} from "@/lib/review-error-messages";
+import type { ReviewForcedContrastResolution } from "@/lib/review-types";
 import { scheduleReview } from "@/lib/review-scheduler";
 import {
   buildCanonicalReviewSessionHref,
@@ -1406,6 +1414,141 @@ describe("review system", () => {
 
     expect(subjectState?.lastReviewedAt).toBe(nowIso);
     expect(subjectState?.cardId).toBe(crossMediaFixture.alpha.termCardId);
+  });
+
+  it("exposes a transaction-aware grading core with a canonical forced contrast endpoint", async () => {
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2000-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+
+    const result = await database.transaction((tx) =>
+      gradeReviewCardInTransaction({
+        cardId: developmentFixture.primaryCardId,
+        forcedContrast: {
+          source: "review-grading",
+          targetResultKey: `grammar:entry:${developmentFixture.grammarDbId}`
+        },
+        now: new Date("2026-03-09T12:00:00.000Z"),
+        rating: "good",
+        transaction: tx
+      })
+    );
+
+    expect(result.forcedContrast).toEqual({
+      contrastKey: buildKanjiClashContrastKey(
+        primarySubjectKey,
+        secondarySubjectKey
+      ),
+      current: {
+        cardId: developmentFixture.primaryCardId,
+        crossMediaGroupId: null,
+        entryId: developmentFixture.termDbId,
+        entryType: "term",
+        subjectKey: primarySubjectKey,
+        subjectType: "entry"
+      },
+      mediaId: developmentFixture.mediaId,
+      mediaSlug: undefined,
+      scope: "global",
+      source: "forced",
+      target: {
+        cardId: null,
+        crossMediaGroupId: null,
+        entryId: developmentFixture.grammarDbId,
+        entryType: "grammar",
+        subjectKey: secondarySubjectKey,
+        subjectType: "entry"
+      }
+    } satisfies ReviewForcedContrastResolution);
+
+    const storedContrast = await database.query.kanjiClashManualContrast.findFirst(
+      {
+        where: eq(
+          kanjiClashManualContrast.contrastKey,
+          buildKanjiClashContrastKey(primarySubjectKey, secondarySubjectKey)
+        )
+      }
+    );
+    const storedRoundStates =
+      await database.query.kanjiClashManualContrastRoundState.findMany({
+        where: eq(
+          kanjiClashManualContrastRoundState.contrastKey,
+          buildKanjiClashContrastKey(primarySubjectKey, secondarySubjectKey)
+        )
+      });
+
+    const persistedState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
+
+    expect(persistedState?.state).toBe("review");
+    expect(storedContrast?.status).toBe("active");
+    expect(storedContrast?.source).toBe("forced");
+    expect(storedRoundStates).toHaveLength(2);
+  });
+
+  it("resolves forced contrast to the canonical shared term subject for cross-media cards", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-forced-contrast");
+
+    await writeCrossMediaContentFixture(contentRoot);
+    await importContentWorkspace({
+      contentRoot,
+      database
+    });
+    await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
+
+    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
+      await loadCrossMediaTermSubjectContext(database);
+
+    const result = await database.transaction((tx) =>
+      gradeReviewCardInTransaction({
+        cardId: crossMediaFixture.alpha.termCardId,
+        forcedContrast: {
+          source: "review-grading",
+          targetResultKey: `grammar:group:${crossMediaFixture.grammarGroup}`
+        },
+        now: new Date("2026-03-11T09:00:00.000Z"),
+        rating: "good",
+        transaction: tx
+      })
+    );
+
+    expect(result.forcedContrast?.current).toMatchObject({
+      cardId: crossMediaFixture.alpha.termCardId,
+      crossMediaGroupId,
+      entryId: alphaTermEntry.id,
+      entryType: "term",
+      subjectKey,
+      subjectType: "group"
+    });
+  });
+
+  it("marks forced contrast validation failures as safe client-facing review errors", async () => {
+    const thrownError = await applyReviewGrade({
+      cardId: developmentFixture.primaryCardId,
+      database,
+      forcedContrast: {
+        source: "review-grading",
+        targetResultKey: `term:entry:${developmentFixture.termDbId}`
+      },
+      rating: "good"
+    }).catch((error: unknown) => error);
+
+    expect(thrownError).toBeInstanceOf(Error);
+    expect((thrownError as Error).message).toBe(
+      "Seleziona un contrasto diverso dalla card corrente."
+    );
+    expect(
+      getSafeReviewForcedContrastClientErrorMessage(thrownError)
+    ).toBe("Seleziona un contrasto diverso dalla card corrente.");
+    expect(
+      getSafeReviewForcedContrastClientErrorMessage(
+        new Error("Review card not available for grading.")
+      )
+    ).toBeNull();
   });
 
   it("rejects review mutations when card and requested media do not match", async () => {
@@ -2862,6 +3005,65 @@ describe("review system", () => {
       developmentFixture.mediaId
     );
     expect(revalidatePathMock).not.toHaveBeenCalled();
+  });
+
+  it("returns forced contrast session metadata when grading with an incremental session plan", async () => {
+    const { currentCardId, nextCardId } =
+      await prepareTwoQueueCardFixture(database);
+    const pageData = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    const result = await gradeReviewCardSessionAction({
+      answeredCount: pageData?.session.answeredCount ?? 0,
+      cardId: currentCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      extraNewCount: pageData?.session.extraNewCount ?? 0,
+      forcedContrast: {
+        source: "review-grading",
+        targetResultKey: `grammar:entry:${developmentFixture.grammarDbId}`
+      },
+      gradedCardBucket: pageData?.selectedCard?.bucket,
+      mediaSlug: developmentFixture.mediaSlug,
+      nextCardId,
+      rating: "good",
+      scope: "media",
+      sessionMedia: pageData?.media,
+      sessionQueue: pageData?.queue,
+      sessionSettings: pageData?.settings
+    });
+
+    expect(reviewPageCalls).toEqual([]);
+    expect(result.session.forcedContrast).toEqual({
+      contrastKey: buildKanjiClashContrastKey(
+        primarySubjectKey,
+        secondarySubjectKey
+      ),
+      current: {
+        cardId: currentCardId,
+        crossMediaGroupId: null,
+        entryId: developmentFixture.termDbId,
+        entryType: "term",
+        subjectKey: primarySubjectKey,
+        subjectType: "entry"
+      },
+      mediaId: developmentFixture.mediaId,
+      mediaSlug: developmentFixture.mediaSlug,
+      scope: "media",
+      source: "forced",
+      target: {
+        cardId: null,
+        crossMediaGroupId: null,
+        entryId: developmentFixture.grammarDbId,
+        entryType: "grammar",
+        subjectKey: secondarySubjectKey,
+        subjectType: "entry"
+      }
+    } satisfies ReviewForcedContrastResolution);
   });
 
   it("hydrates a later prefetched queue card when the immediate next one is unavailable", async () => {
