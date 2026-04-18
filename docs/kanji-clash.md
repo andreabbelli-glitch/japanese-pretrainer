@@ -11,8 +11,13 @@ Non sostituisce la review standard. In v1:
 
 - non modifica `review_subject_state` o `review_subject_log`;
 - non riusa la coda `/review`;
-- non include `grammar`;
+- il pool automatico non include `grammar`;
 - non crea o deduce contenuto editoriale runtime.
+
+Da questa estensione in poi il workspace ha anche un ingresso esplicito dalla
+Review: il flusso `forced manual contrast`. Quando l'utente segnala due cose
+che confonde, `Kanji Clash` deve accettarle anche se non passano i guardrail del
+pool automatico.
 
 La surface pubblica e:
 
@@ -28,10 +33,15 @@ La surface pubblica e:
 - Lo scope puo essere `global` o `media`.
 - Uno scope `media` richiede sempre un media esplicito; se `Settings` indica
   `media` ma manca `media=<slug>`, il runtime fa fallback a `global`.
-- Nella stessa sessione una pair key unordered non puo ricomparire, ne nello
-  stesso ordine ne invertita.
+- Nella stessa sessione una pair key unordered automatica non puo ricomparire,
+  ne nello stesso ordine ne invertita.
+- I `forced manual contrast` usano invece una dedupe unita al round
+  direzionale: le due direzioni della stessa coppia possono comparire entrambe
+  nella stessa sessione.
 - Una risposta errata deve fermare l'auto-advance finche l'utente non conferma.
 - Una risposta corretta deve avanzare rapidamente senza attrito extra.
+- Un contrasto manuale archiviato non deve ricomparire ne dalla queue manuale
+  ne dalla generazione automatica equivalente.
 
 ## Query Contract
 
@@ -79,6 +89,12 @@ Un subject entra nel pool solo se:
 La soglia e volutamente conservativa: Kanji Clash deve partire da materiale gia
 stabile nella review standard, non da ricordi ancora fragili o appena
 introdotti.
+
+Questi vincoli valgono solo per il pool automatico. Un `forced manual contrast`
+puo invece partire da qualsiasi card review corrente e da qualsiasi target
+globale materializzabile, inclusi `term`, `grammar`, card `kana-only`, frasi o
+card senza kanji. Il criterio non e` l'eligibility algoritmica: e`
+semplicemente il fatto che l'utente abbia dichiarato quella confusione.
 
 Il loader aggrega sia subject `entry` sia subject `group`, preservando:
 
@@ -221,6 +237,46 @@ Registra ogni risposta:
 L'isolamento e intenzionale: Kanji Clash non scrive mai nelle tabelle della
 review standard.
 
+### `kanji_clash_manual_contrast`
+
+Rappresenta il contrasto canonico unordered segnalato manualmente:
+
+- chiave `contrastKey` unordered, costruita sugli endpoint canonici dei due
+  subject;
+- estremi canonici della coppia;
+- `source` (`review_confusion` / forced manual flow);
+- `status` archivistico (`active` o `archived`);
+- metadata di conferma (`timesConfirmed`, `lastConfirmedAt`, `lastForcedAt`).
+
+Questa tabella non e` un log di risposta: esiste per dedupe, archivio,
+riattivazione e soppressione del candidate automatico equivalente.
+
+### `kanji_clash_manual_contrast_round_state`
+
+Rappresenta invece il round direzionale schedulato:
+
+- chiave `contrastCardKey` / `roundKey` distinta per direzione;
+- `contrastKey` unordered di appartenenza;
+- `targetEndpointKey` e `distractorEndpointKey`;
+- stato SRS e `dueAt` per singola direzione;
+- eventuale `forcedDueAt` o reset `due-now` quando il contrasto viene appena
+  segnalato o ripristinato.
+
+La separazione e` intenzionale: una sola pair state unordered non basta a
+modellare il requisito forte "mostra entrambe le direzioni".
+
+### `kanji_clash_manual_contrast_round_log`
+
+Registra solo i round manuali effettivamente giocati:
+
+- chiave del round direzionale;
+- target, corretto e scelto;
+- transizione di stato precedente e nuova;
+- `answeredAt`, `scheduledDueAt`, `responseMs`, `schedulerVersion`.
+
+La segnalazione dalla Review non crea log Kanji Clash. Il log nasce solo quando
+l'utente gioca davvero quel round nel workspace dedicato.
+
 ## Scheduling
 
 Lo scheduler vive in `src/lib/kanji-clash/scheduler.ts` e usa `ts-fsrs` con:
@@ -233,6 +289,9 @@ Lo scheduler vive in `src/lib/kanji-clash/scheduler.ts` e usa `ts-fsrs` con:
 La prima risposta su una pair usa `createEmptyCard()` e crea lo stato iniziale
 dedicato della coppia. Le transizioni future aggiornano solo la pair state.
 
+Per i `forced manual contrast` lo stesso scheduler si applica invece alla round
+state direzionale. Le due direzioni evolvono in modo indipendente.
+
 ## Queue E Sessione
 
 La queue viene caricata in `src/lib/kanji-clash/session.ts` e ordinata in
@@ -244,6 +303,30 @@ La queue viene caricata in `src/lib/kanji-clash/session.ts` e ordinata in
 - rispetta il daily new limit dedicato;
 - conta le nuove introdotte oggi con `kanji_clash_pair_log`;
 - non mostra pair `reserve` non ancora dovute.
+
+### Forced Manual Contrast
+
+La queue finale fonde due famiglie diverse:
+
+- pair automatiche generate dal pool eligibile;
+- round direzionali dei `forced manual contrast` attivi.
+
+Ordine pratico:
+
+- manual `due-now` o appena riconfermati dalla Review;
+- manual `due`;
+- automatic `due`;
+- automatic `new`;
+- eventuali `reserve` della modalita drill.
+
+Regole aggiuntive:
+
+- i manuali bypassano completamente l'eligibility automatica;
+- la dedupe di sessione per i manual usa `roundKey`, non `contrastKey`;
+- se esiste un contrasto manuale `active` o `archived` con la stessa
+  `contrastKey`, il candidate automatico equivalente viene soppresso;
+- un contrasto appena segnalato dalla Review deve entrare subito in queue con
+  priorita alta in entrambe le direzioni.
 
 Default v1:
 
@@ -277,19 +360,68 @@ Ogni round include:
 - opzione sinistra e destra;
 - metadata compatto sul motivo del confronto (`chip` shared oppure `Kanji simili:
   A / B`);
-- `pairKey` e `targetSubjectKey` usati anche per verifica E2E;
+- `roundKey` come identita del round; per i round automatici coincide con la
+  `pairKey`, per i manuali e` direzionale;
+- `pairKey` o `contrastKey`, piu `targetSubjectKey`, usati anche per verifica
+  E2E;
 - source `due`, `new` o `reserve`.
 
 La disposizione sinistra/destra e il target corretto vengono derivati da un
 seed stabile su `pairKey:index`, cosi la sessione resta deterministica senza
 reintrodurre la stessa pair due volte.
 
+Per i `forced manual contrast` la materializzazione conserva anche una pill di
+origine tipo `Contrasto manuale` / `Segnalato dalla review`, cosi il round non
+si confonde con una pair automatica del pool standard.
+
+## Review -> Forced Contrast
+
+Il flusso di ingresso canonico dalla Review e` questo:
+
+1. l'utente rivela la risposta;
+2. prima del grading puo` aprire `+ Contrasto` oppure usare la shortcut `C`;
+3. compare una search globale tipo glossary, con supporto kanji, kana, romaji
+   e significato italiano;
+4. l'utente deve selezionare esplicitamente un risultato dal dropdown;
+5. il grading `Again` / `Hard` / `Good` / `Easy` salva il voto e, se esiste una
+   selezione valida, forza l'upsert del contrasto manuale.
+
+Comportamenti voluti:
+
+- il controllo e` chiuso di default e non appesantisce il flusso standard;
+- `Esc` chiude il picker;
+- la selezione appare come chip `Contrasto con: ...`, con `Cambia` e `Rimuovi`;
+- se l'utente digita ma non seleziona nulla dal dropdown, il grading procede
+  normalmente ignorando il testo;
+- l'identita trasmessa al server non e` il testo libero, ma la chiave stabile
+  del risultato glossary selezionato.
+
+## Failure Semantics
+
+Se il grading include un contrasto selezionato, la Review e l'inserimento del
+forced manual contrast devono stare nella stessa transazione.
+
+Ordine richiesto:
+
+1. risolvere card corrente e target selezionato in endpoint canonici;
+2. fare solo i check tecnici minimi;
+3. upsertare contrasto unordered;
+4. upsertare entrambe le round state direzionali;
+5. applicare il grading Review;
+6. commit.
+
+Se un qualsiasi passo fallisce:
+
+- la Review non deve avanzare silenziosamente;
+- il contrasto non deve andare perso come best-effort fallito;
+- l'utente deve restare sulla card corrente con errore chiaro.
+
 ## Mutazioni Ed Edge Case
 
 La server action `src/actions/kanji-clash.ts` applica guardrail stretti:
 
-- rifiuta submit senza scelta o senza `expectedPairKey`;
-- rifiuta round stale se `expectedPairKey` non coincide col round corrente;
+- rifiuta submit senza scelta o senza `expectedRoundKey`;
+- rifiuta round stale se `expectedRoundKey` non coincide col round corrente;
 - rifiuta scelta non appartenente alle due opzioni mostrate;
 - verifica coerenza interna del payload round prima di mutare lo stato.
 
@@ -301,8 +433,33 @@ La mutazione:
 - avanza la queue locale;
 - imposta `awaitingConfirmation` dopo un errore.
 
+Per i round `forced manual`:
+
+- aggiorna solo la round state direzionale che l'utente ha appena giocato;
+- non consuma o riscrive automaticamente anche la direzione inversa;
+- lascia l'altra direzione indipendente e ancora dovuta se era stata forzata;
+- rispetta `status=archived` sul contrasto unordered come kill-switch di
+  visibilita` per entrambe le direzioni.
+
 Non aggiorna mai `review_subject_state`, `review_subject_log` o il daily limit
 dei nuovi della review standard.
+
+## Archivio E Ripristino
+
+I `forced manual contrast` hanno un lifecycle archivistico esplicito:
+
+- `active`: il contrasto puo` entrare in queue;
+- `archived`: entrambe le direzioni spariscono dalla queue;
+- `restore`: il contrasto torna `active` e rientra `due-now`.
+
+Regole operative:
+
+- l'archivio vive sull'entita unordered, quindi nasconde entrambe le direzioni;
+- un contrasto archiviato sopprime anche l'eventuale pair automatica con la
+  stessa chiave canonica;
+- se l'utente riseleziona dalla Review un contrasto archiviato, il runtime lo
+  riattiva, incrementa `timesConfirmed` e forza di nuovo entrambe le direzioni
+  a comparire subito.
 
 ## QA E Casi Edge
 
@@ -317,7 +474,11 @@ I casi edge gia coperti includono:
 - filtro media esplicito e fallback globale;
 - tap/click, `ArrowLeft`/`ArrowRight`, swipe mobile;
 - stop-on-error con conferma `Continua`;
-- dedupe della pair key per l'intera sessione;
+- dedupe della pair key automatica per l'intera sessione;
+- presenza di entrambe le direzioni per i `forced manual contrast`;
+- grading Review con contrasto selezionato, senza perdita silenziosa su errore;
+- testo digitato ma non selezionato che viene ignorato dal grading;
+- archive/restore dei contrasti manuali;
 - completamento pulito della sessione;
 - protezione contro round payload incoerente o stale.
 

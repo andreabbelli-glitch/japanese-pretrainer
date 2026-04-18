@@ -1,4 +1,5 @@
 import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
 import type {
   ReviewFirstCandidatePageData,
   ReviewPageData
@@ -7,6 +8,25 @@ import type {
 export type ReviewPageClientData =
   | ReviewPageData
   | ReviewFirstCandidatePageData;
+
+export type ReviewForcedContrastSelection = Pick<
+  GlobalGlossaryAutocompleteSuggestion,
+  "kind" | "label" | "meaning" | "reading" | "resultKey" | "romaji" | "title"
+>;
+
+export function toReviewForcedContrastSelection(
+  suggestion: GlobalGlossaryAutocompleteSuggestion
+): ReviewForcedContrastSelection {
+  return {
+    kind: suggestion.kind,
+    label: suggestion.label,
+    meaning: suggestion.meaning,
+    reading: suggestion.reading,
+    resultKey: suggestion.resultKey,
+    romaji: suggestion.romaji,
+    title: suggestion.title
+  };
+}
 
 export function resolveReviewGradePreviews(input: {
   selectedCard: ReviewPageClientData["selectedCard"];

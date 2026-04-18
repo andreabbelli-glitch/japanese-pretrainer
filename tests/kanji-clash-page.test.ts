@@ -216,4 +216,47 @@ describe("kanji clash page", () => {
     expect(markup).toContain("機");
     expect(markup).toContain("Kanji simili: 待 / 持");
   });
+
+  it("renders manual contrast archive and restore controls", () => {
+    const markup = renderToStaticMarkup(
+      createElement(KanjiClashPage, {
+        data: buildKanjiClashPageData({
+          currentRound: buildKanjiClashRound({
+            origin: {
+              contrastKey: "entry:term:left::entry:term:right",
+              direction: "subject_a",
+              type: "manual-contrast"
+            },
+            pairKey: "entry:term:left::entry:term:right",
+            roundKey: "entry:term:left::entry:term:right::subject_a"
+          }),
+          manualContrasts: [
+            {
+              contrastKey: "entry:term:left::entry:term:right",
+              leftLabel: "待つ",
+              leftSubjectKey: "entry:term:left",
+              rightLabel: "持つ",
+              rightSubjectKey: "entry:term:right",
+              source: "forced",
+              status: "active"
+            },
+            {
+              contrastKey: "entry:term:old-left::entry:term:old-right",
+              leftLabel: "聞く",
+              leftSubjectKey: "entry:term:old-left",
+              rightLabel: "効く",
+              rightSubjectKey: "entry:term:old-right",
+              source: "forced",
+              status: "archived"
+            }
+          ]
+        })
+      })
+    );
+
+    expect(markup).toContain("Archivia contrasto");
+    expect(markup).toContain("Contrasti manuali attivi");
+    expect(markup).toContain("Contrasti archiviati");
+    expect(markup).toContain("Ripristina");
+  });
 });

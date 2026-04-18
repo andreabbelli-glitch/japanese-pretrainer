@@ -44,6 +44,22 @@ export const kanjiClashPairStateValues = [
 export const kanjiClashPairResultValues = ["again", "good"] as const;
 export const kanjiClashPairModeValues = ["automatic", "manual"] as const;
 export const kanjiClashSchedulerVersionValues = ["kanji_clash_fsrs_v1"] as const;
+export const kanjiClashManualContrastStatusValues = [
+  "active",
+  "suspended",
+  "archived"
+] as const;
+export const kanjiClashManualContrastSourceValues = [
+  "manual",
+  "forced"
+] as const;
+export const kanjiClashManualContrastDirectionValues = [
+  "subject_a",
+  "subject_b"
+] as const;
+export const kanjiClashManualContrastSchedulerVersionValues = [
+  "kanji_clash_manual_contrast_fsrs_v1"
+] as const;
 export const lessonProgressStatusValues = [
   "not_started",
   "in_progress",

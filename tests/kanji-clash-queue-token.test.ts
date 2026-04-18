@@ -284,4 +284,62 @@ describe("kanji clash queue token", () => {
       verifyKanjiClashQueueToken(createKanjiClashQueueToken(queue))
     ).toEqual(queue);
   });
+
+  it("round-trips forced manual contrast round identity and origin metadata", () => {
+    const alpha = makeSubject({
+      kanji: ["食", "費"],
+      label: "食費",
+      reading: "しょくひ",
+      subjectKey: "entry:term:alpha"
+    });
+    const beta = makeSubject({
+      kanji: ["食", "品"],
+      label: "食品",
+      reading: "しょくひん",
+      subjectKey: "entry:term:beta"
+    });
+    const candidate = buildKanjiClashCandidate(alpha, beta);
+
+    if (!candidate) {
+      throw new Error("Missing forced manual contrast token candidate.");
+    }
+
+    const contrastKey = candidate.pairKey;
+    const queue = buildKanjiClashQueueSnapshot({
+      candidates: [
+        {
+          ...candidate,
+          roundOverride: {
+            origin: {
+              contrastKey,
+              direction: "subject_a",
+              type: "manual-contrast"
+            },
+            roundKey: `${contrastKey}::subject_a`,
+            targetSubjectKey: alpha.subjectKey
+          }
+        },
+        {
+          ...candidate,
+          roundOverride: {
+            origin: {
+              contrastKey,
+              direction: "subject_b",
+              type: "manual-contrast"
+            },
+            roundKey: `${contrastKey}::subject_b`,
+            targetSubjectKey: beta.subjectKey
+          }
+        }
+      ],
+      mode: "manual",
+      now: "2026-04-09T12:00:00.000Z",
+      requestedSize: 2,
+      scope: "global",
+      seenRoundKeys: [`${contrastKey}::subject_a`]
+    });
+    const token = createKanjiClashQueueToken(queue);
+
+    expect(verifyKanjiClashQueueToken(token)).toEqual(queue);
+  });
 });

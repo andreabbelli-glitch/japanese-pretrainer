@@ -5,6 +5,8 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
+  kanjiClashManualContrast,
+  kanjiClashManualContrastRoundState,
   closeDatabaseClient,
   createDatabaseClient,
   runMigrations,
@@ -172,5 +174,97 @@ describe("kanji clash page data", () => {
     expect(data.scope).toBe("media");
     expect(data.selectedMedia?.slug).toBe("beta");
     expect(data.queue.requestedSize).toBe(20);
+  });
+
+  it("surfaces active manual contrasts in page data and queues both restored directions first", async () => {
+    const baseline = await getKanjiClashPageData(
+      {},
+      database,
+      new Date("2026-04-09T12:00:00.000Z")
+    );
+    const firstRound = baseline.queue.rounds[0];
+
+    if (!firstRound) {
+      throw new Error("Expected a baseline Kanji Clash round.");
+    }
+
+    const contrastKey = firstRound.pairKey;
+
+    await database.insert(kanjiClashManualContrast).values({
+      contrastKey,
+      createdAt: "2026-04-09T11:00:00.000Z",
+      forcedDueAt: "2026-04-09T12:05:00.000Z",
+      source: "forced",
+      status: "active",
+      subjectAKey: firstRound.candidate.leftSubjectKey,
+      subjectBKey: firstRound.candidate.rightSubjectKey,
+      timesConfirmed: 1,
+      updatedAt: "2026-04-09T11:00:00.000Z"
+    });
+    await database.insert(kanjiClashManualContrastRoundState).values([
+      {
+        contrastKey,
+        createdAt: "2026-04-09T11:00:00.000Z",
+        difficulty: null,
+        direction: "subject_a",
+        dueAt: "2026-04-09T12:05:00.000Z",
+        lapses: 0,
+        lastInteractionAt: "2026-04-09T11:00:00.000Z",
+        lastReviewedAt: null,
+        learningSteps: 0,
+        leftSubjectKey: firstRound.candidate.leftSubjectKey,
+        reps: 0,
+        rightSubjectKey: firstRound.candidate.rightSubjectKey,
+        roundKey: `${contrastKey}::subject_a`,
+        scheduledDays: 0,
+        stability: null,
+        state: "new",
+        targetSubjectKey: firstRound.candidate.leftSubjectKey,
+        updatedAt: "2026-04-09T11:00:00.000Z"
+      },
+      {
+        contrastKey,
+        createdAt: "2026-04-09T11:00:00.000Z",
+        difficulty: null,
+        direction: "subject_b",
+        dueAt: "2026-04-09T12:05:00.000Z",
+        lapses: 0,
+        lastInteractionAt: "2026-04-09T11:00:00.000Z",
+        lastReviewedAt: null,
+        learningSteps: 0,
+        leftSubjectKey: firstRound.candidate.leftSubjectKey,
+        reps: 0,
+        rightSubjectKey: firstRound.candidate.rightSubjectKey,
+        roundKey: `${contrastKey}::subject_b`,
+        scheduledDays: 0,
+        stability: null,
+        state: "new",
+        targetSubjectKey: firstRound.candidate.rightSubjectKey,
+        updatedAt: "2026-04-09T11:00:00.000Z"
+      }
+    ]);
+
+    const data = await getKanjiClashPageData(
+      {},
+      database,
+      new Date("2026-04-09T12:10:00.000Z")
+    );
+
+    expect(data.manualContrasts).toEqual([
+      expect.objectContaining({
+        contrastKey,
+        status: "active"
+      })
+    ]);
+    expect(data.queue.rounds[0]?.origin).toEqual({
+      contrastKey,
+      direction: "subject_a",
+      type: "manual-contrast"
+    });
+    expect(data.queue.rounds[1]?.origin).toEqual({
+      contrastKey,
+      direction: "subject_b",
+      type: "manual-contrast"
+    });
   });
 });

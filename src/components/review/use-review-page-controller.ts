@@ -2,7 +2,14 @@
 
 import type { Route } from "next";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useRef, useState, useTransition } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useTransition,
+  type RefObject
+} from "react";
 
 import {
   gradeReviewCardSessionAction,
@@ -13,6 +20,11 @@ import {
   setLinkedEntryLearningSessionAction,
   setReviewCardSuspendedSessionAction
 } from "@/actions/review";
+import { useGlossaryAutocomplete } from "@/components/glossary/use-glossary-autocomplete";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
+import {
+  getSafeReviewForcedContrastClientErrorMessage
+} from "@/lib/review-error-messages";
 import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
 import {
   appendReturnToParam,
@@ -25,6 +37,8 @@ import {
   resolveReviewGradePreviews,
   shouldAdoptServerFirstCandidateData,
   shouldAcceptServerReviewData,
+  toReviewForcedContrastSelection,
+  type ReviewForcedContrastSelection,
   type ReviewPageClientData
 } from "./review-page-state";
 import {
@@ -53,20 +67,41 @@ type ReviewSessionActionInput = Parameters<
   typeof markLinkedEntryKnownSessionAction
 >[0];
 
+type ReviewForcedContrastUiState = {
+  cardId: string | null;
+  isOpen: boolean;
+  query: string;
+  selection: ReviewForcedContrastSelection | null;
+};
+
 export type ReviewPageControllerResult = {
   additionalNewCount: number;
   clientError: string | null;
   contextualGlossaryHref: Route;
+  forcedContrastInputRef: RefObject<HTMLInputElement | null>;
+  forcedContrastListboxId: string;
+  forcedContrastQuery: string;
+  forcedContrastSelection: ReviewForcedContrastSelection | null;
+  forcedContrastShouldShowSuggestions: boolean;
+  forcedContrastSuggestions: GlobalGlossaryAutocompleteSuggestion[];
   fullSelectedCard: ReviewQueueCard | null;
   gradePreviewLookup: Map<string, string>;
+  handleCloseForcedContrast: () => void;
+  handleForcedContrastQueryChange: (value: string) => void;
+  handleForcedContrastSelect: (
+    suggestion: GlobalGlossaryAutocompleteSuggestion
+  ) => void;
   handleGradeCard: (rating: ReviewGradeValue) => void;
   handleMarkKnown: () => void;
+  handleOpenForcedContrast: () => void;
   handleResetCard: () => void;
   handleRevealAnswer: () => void;
+  handleRemoveForcedContrast: () => void;
   handleSetLearning: () => void;
   handleToggleSuspended: () => void;
   hasSupportCards: boolean;
   isAnswerRevealed: boolean;
+  isForcedContrastOpen: boolean;
   isFullReviewPageData: boolean;
   isGlobalReview: boolean;
   isHydratingFullData: boolean;
@@ -102,6 +137,14 @@ export function useReviewPageController(input: {
   const inFlightGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const gradedCardIdsRef = useRef<Set<string>>(new Set());
   const lastAcceptedServerDataRef = useRef(data);
+  const forcedContrastInputRef = useRef<HTMLInputElement>(null);
+  const [forcedContrastUiState, setForcedContrastUiState] =
+    useState<ReviewForcedContrastUiState>({
+      cardId: data.selectedCard?.id ?? null,
+      isOpen: false,
+      query: "",
+      selection: null
+    });
   const [isPending, startTransition] = useTransition();
   const currentSearchParams = useMemo(
     () => buildSearchParamsRecord(liveSearchParams, searchParams),
@@ -207,10 +250,90 @@ export function useReviewPageController(input: {
     currentSearchParams && viewData.scope === "global"
       ? buildReviewHydrationRequestKey(currentSearchParams)
       : null;
+  const forcedContrastState =
+    forcedContrastUiState.cardId === selectedCardId
+      ? forcedContrastUiState
+      : {
+          cardId: selectedCardId,
+          isOpen: false,
+          query: "",
+          selection: null
+        };
+  const forcedContrastQuery = forcedContrastState.query;
+  const forcedContrastSelection = forcedContrastState.selection;
+  const isForcedContrastOpen = forcedContrastState.isOpen;
+  const forcedContrastAutocomplete = useGlossaryAutocomplete({
+    filters: {
+      cards: "with_cards",
+      entryType: "all",
+      media: "all",
+      study: "all"
+    },
+    isOpen: isForcedContrastOpen,
+    query: forcedContrastQuery
+  });
 
   useEffect(() => {
     latestViewDataRef.current = viewData;
   }, [viewData]);
+
+  useEffect(() => {
+    if (!isForcedContrastOpen) {
+      return;
+    }
+
+    forcedContrastInputRef.current?.focus?.();
+  }, [isForcedContrastOpen]);
+
+  useEffect(() => {
+    if (!selectedCard || !isAnswerRevealed) {
+      return;
+    }
+
+    const handleWindowKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) {
+        return;
+      }
+
+      const target = event.target;
+      const isEditableTarget =
+        target instanceof HTMLElement &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable);
+
+      if (event.key === "Escape") {
+        if (!isForcedContrastOpen) {
+          return;
+        }
+
+        event.preventDefault();
+        setForcedContrastUiState((currentState) => ({
+          ...currentState,
+          cardId: selectedCardId,
+          isOpen: false
+        }));
+        forcedContrastInputRef.current?.blur?.();
+        return;
+      }
+
+      if (event.key.toLowerCase() !== "c" || isEditableTarget) {
+        return;
+      }
+
+      event.preventDefault();
+      setForcedContrastUiState((currentState) => ({
+        ...currentState,
+        cardId: selectedCardId,
+        isOpen: !isForcedContrastOpen
+      }));
+    };
+
+    window.addEventListener("keydown", handleWindowKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleWindowKeyDown);
+    };
+  }, [isAnswerRevealed, isForcedContrastOpen, selectedCard, selectedCardId]);
 
   useEffect(() => {
     if (data === lastAcceptedServerDataRef.current) {
@@ -410,9 +533,61 @@ export function useReviewPageController(input: {
     serverAdvanceCardIds
   ]);
 
+  function handleOpenForcedContrast() {
+    if (!selectedCard || !isAnswerRevealed) {
+      return;
+    }
+
+    setForcedContrastUiState((currentState) => ({
+      ...currentState,
+      cardId: selectedCardId,
+      isOpen: true
+    }));
+  }
+
+  function handleCloseForcedContrast() {
+    setForcedContrastUiState((currentState) => ({
+      ...currentState,
+      cardId: selectedCardId,
+      isOpen: false
+    }));
+    forcedContrastInputRef.current?.blur?.();
+  }
+
+  function handleForcedContrastQueryChange(value: string) {
+    setForcedContrastUiState({
+      cardId: selectedCardId,
+      isOpen: true,
+      query: value,
+      selection: null
+    });
+  }
+
+  function handleForcedContrastSelect(
+    suggestion: GlobalGlossaryAutocompleteSuggestion
+  ) {
+    setForcedContrastUiState({
+      cardId: selectedCardId,
+      isOpen: false,
+      query: suggestion.label,
+      selection: toReviewForcedContrastSelection(suggestion)
+    });
+    forcedContrastInputRef.current?.blur?.();
+  }
+
+  function handleRemoveForcedContrast() {
+    setForcedContrastUiState({
+      cardId: selectedCardId,
+      isOpen: false,
+      query: "",
+      selection: null
+    });
+  }
+
   function runSessionUpdate(
     loadNextData: () => Promise<ReviewPageData>,
     options?: {
+      errorResolver?: (error: unknown) => string;
       onError?: () => void;
       onSuccess?: (nextData: ReviewPageData) => void;
       optimisticUpdate?: () => (() => void) | void;
@@ -443,7 +618,8 @@ export function useReviewPageController(input: {
           rollbackOptimisticUpdate?.();
           options?.onError?.();
           setClientError(
-            "Non sono riuscito ad aggiornare la review. Riprova un attimo."
+            options?.errorResolver?.(error) ??
+              "Non sono riuscito ad aggiornare la review. Riprova un attimo."
           );
         });
     });
@@ -492,6 +668,13 @@ export function useReviewPageController(input: {
     const fullViewData = isReviewPageData(sessionViewData)
       ? sessionViewData
       : null;
+    const forcedKanjiClashContrast = forcedContrastSelection
+      ? {
+          source: "review-grading" as const,
+          targetLabel: forcedContrastSelection.label,
+          targetResultKey: forcedContrastSelection.resultKey
+        }
+      : undefined;
 
     gradedCardIdsRef.current.add(selectedCard.id);
     setPendingAnsweredCountScroll(sessionViewData.session.answeredCount);
@@ -499,21 +682,33 @@ export function useReviewPageController(input: {
     if (!isQueueCard) {
       runSessionUpdate(
         () =>
-          gradeReviewCardSessionAction({
-            answeredCount: sessionViewData.session.answeredCount,
-            cardId: selectedCard.id,
-            cardMediaSlug: selectedCard.mediaSlug,
-            extraNewCount: sessionViewData.session.extraNewCount,
-            gradedCardIds: Array.from(gradedCardIdsRef.current),
-            mediaSlug:
-              sessionViewData.scope === "media"
-                ? sessionViewData.media.slug
-                : undefined,
-            rating,
-            segmentId: sessionViewData.session.segmentId,
-            scope: sessionViewData.scope
-          }),
+          gradeReviewCardSessionAction(
+            {
+              answeredCount: sessionViewData.session.answeredCount,
+              cardId: selectedCard.id,
+              cardMediaSlug: selectedCard.mediaSlug,
+              extraNewCount: sessionViewData.session.extraNewCount,
+              gradedCardIds: Array.from(gradedCardIdsRef.current),
+              mediaSlug:
+                sessionViewData.scope === "media"
+                  ? sessionViewData.media.slug
+                  : undefined,
+              rating,
+              segmentId: sessionViewData.session.segmentId,
+              scope: sessionViewData.scope,
+              ...(forcedKanjiClashContrast
+                ? { forcedKanjiClashContrast }
+                : {})
+            } as Parameters<typeof gradeReviewCardSessionAction>[0]
+          ),
         {
+          ...(forcedKanjiClashContrast
+            ? {
+                errorResolver: (error: unknown) =>
+                  getSafeReviewForcedContrastClientErrorMessage(error) ??
+                  "Non sono riuscito ad aggiornare la review. Riprova un attimo."
+              }
+            : {}),
           onError: () => {
             setPendingAnsweredCountScroll(null);
           }
@@ -549,32 +744,46 @@ export function useReviewPageController(input: {
     const optimisticSourceData =
       fullViewData ?? (isHydratingFullData ? viewData : null);
     const canOptimisticallyAdvance =
-      optimisticSourceData !== null && optimisticNextCard !== null;
+      optimisticSourceData !== null &&
+      optimisticNextCard !== null &&
+      forcedKanjiClashContrast === undefined;
 
     runSessionUpdate(
       () =>
-        gradeReviewCardSessionAction({
-          answeredCount: sessionViewData.session.answeredCount,
-          cardId: selectedCard.id,
-          cardMediaSlug: selectedCard.mediaSlug,
-          candidateCardIds,
-          canonicalCandidateCardIds: nextQueueCardIds,
-          extraNewCount: sessionViewData.session.extraNewCount,
-          gradedCardBucket: selectedCard.bucket,
-          gradedCardIds: Array.from(gradedCardIdsRef.current),
-          mediaSlug:
-            sessionViewData.scope === "media"
-              ? sessionViewData.media.slug
-              : undefined,
-          nextCardId,
-          rating,
-          segmentId: sessionViewData.session.segmentId,
-          scope: sessionViewData.scope,
-          sessionMedia: sessionViewData.media,
-          sessionQueue: fullViewData?.queue,
-          sessionSettings: fullViewData?.settings
-        }),
+        gradeReviewCardSessionAction(
+          {
+            answeredCount: sessionViewData.session.answeredCount,
+            cardId: selectedCard.id,
+            cardMediaSlug: selectedCard.mediaSlug,
+            candidateCardIds,
+            canonicalCandidateCardIds: nextQueueCardIds,
+            extraNewCount: sessionViewData.session.extraNewCount,
+            gradedCardBucket: selectedCard.bucket,
+            gradedCardIds: Array.from(gradedCardIdsRef.current),
+            mediaSlug:
+              sessionViewData.scope === "media"
+                ? sessionViewData.media.slug
+                : undefined,
+            nextCardId,
+            rating,
+            segmentId: sessionViewData.session.segmentId,
+            scope: sessionViewData.scope,
+            sessionMedia: sessionViewData.media,
+            sessionQueue: fullViewData?.queue,
+            sessionSettings: fullViewData?.settings,
+            ...(forcedKanjiClashContrast
+              ? { forcedKanjiClashContrast }
+              : {})
+          } as Parameters<typeof gradeReviewCardSessionAction>[0]
+        ),
       {
+        ...(forcedKanjiClashContrast
+          ? {
+              errorResolver: (error: unknown) =>
+                getSafeReviewForcedContrastClientErrorMessage(error) ??
+                "Non sono riuscito ad aggiornare la review. Riprova un attimo."
+            }
+          : {}),
         onError: () => {
           setPendingAnsweredCountScroll(null);
         },
@@ -671,16 +880,29 @@ export function useReviewPageController(input: {
     additionalNewCount,
     clientError,
     contextualGlossaryHref,
+    forcedContrastInputRef,
+    forcedContrastListboxId: forcedContrastAutocomplete.listboxId,
+    forcedContrastQuery,
+    forcedContrastSelection,
+    forcedContrastShouldShowSuggestions:
+      forcedContrastAutocomplete.shouldShowSuggestions,
+    forcedContrastSuggestions: forcedContrastAutocomplete.suggestions,
     fullSelectedCard,
     gradePreviewLookup,
+    handleCloseForcedContrast,
+    handleForcedContrastQueryChange,
+    handleForcedContrastSelect,
     handleGradeCard,
     handleMarkKnown,
+    handleOpenForcedContrast,
     handleResetCard,
     handleRevealAnswer,
+    handleRemoveForcedContrast,
     handleSetLearning,
     handleToggleSuspended,
     hasSupportCards,
     isAnswerRevealed,
+    isForcedContrastOpen,
     isFullReviewPageData,
     isGlobalReview,
     isHydratingFullData,

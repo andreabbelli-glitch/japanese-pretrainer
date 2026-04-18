@@ -5,6 +5,7 @@ import type { TouchEventHandler } from "react";
 
 import type {
   KanjiClashEligibleSubject,
+  KanjiClashManualContrastSummary,
   KanjiClashPageData,
   KanjiClashQueueSnapshot,
   KanjiClashSessionRound
@@ -87,6 +88,7 @@ function KanjiClashPageClient({ data }: KanjiClashPageProps) {
       <section className="hero-grid hero-grid--detail kanji-clash-workspace">
         {controller.currentRound ? (
           <KanjiClashRoundWorkspace
+            archivePendingContrastKey={controller.archivePendingContrastKey}
             clientError={controller.clientError}
             feedback={controller.feedback}
             feedbackCopy={
@@ -96,6 +98,7 @@ function KanjiClashPageClient({ data }: KanjiClashPageProps) {
             }
             isSelectionLocked={controller.isSelectionLocked}
             liveMessage={controller.liveMessage}
+            onArchiveManualContrast={controller.handleArchiveManualContrast}
             onChooseSide={controller.handleChooseSide}
             onContinue={controller.handleContinue}
             onTouchEnd={controller.handleTouchEnd}
@@ -110,18 +113,28 @@ function KanjiClashPageClient({ data }: KanjiClashPageProps) {
           <KanjiClashEmptyWorkspace content={content.emptyState} />
         )}
 
-        <KanjiClashSidebar content={content.sidebar} queue={controller.queue} />
+        <KanjiClashSidebar
+          activeManualContrasts={controller.activeManualContrasts}
+          archivePendingContrastKey={controller.archivePendingContrastKey}
+          archivedManualContrasts={controller.archivedManualContrasts}
+          content={content.sidebar}
+          onArchiveManualContrast={controller.handleArchiveManualContrast}
+          onRestoreManualContrast={controller.handleRestoreManualContrast}
+          queue={controller.queue}
+        />
       </section>
     </div>
   );
 }
 
 function KanjiClashRoundWorkspace({
+  archivePendingContrastKey,
   clientError,
   feedback,
   feedbackCopy,
   isSelectionLocked,
   liveMessage,
+  onArchiveManualContrast,
   onChooseSide,
   onContinue,
   onTouchEnd,
@@ -132,6 +145,7 @@ function KanjiClashRoundWorkspace({
   roundSummary,
   scopeLabel
 }: {
+  archivePendingContrastKey: string | null;
   clientError: string | null;
   feedback: KanjiClashRoundFeedback | null;
   feedbackCopy: {
@@ -140,6 +154,7 @@ function KanjiClashRoundWorkspace({
   } | null;
   isSelectionLocked: boolean;
   liveMessage: string | null;
+  onArchiveManualContrast: (contrastKey: string) => void;
   onChooseSide: (side: "left" | "right") => void;
   onContinue: () => void;
   onTouchEnd: TouchEventHandler<HTMLElement>;
@@ -150,6 +165,9 @@ function KanjiClashRoundWorkspace({
   roundSummary: string;
   scopeLabel: string;
 }) {
+  const manualContrastKey =
+    round.origin.type === "manual-contrast" ? round.origin.contrastKey : null;
+
   return (
     <article
       className="surface-card surface-card--hero kanji-clash-stage"
@@ -188,6 +206,18 @@ function KanjiClashRoundWorkspace({
             >
               Conferma richiesta
             </span>
+          ) : null}
+          {manualContrastKey ? (
+            <button
+              className="button button--ghost button--small"
+              disabled={archivePendingContrastKey === manualContrastKey}
+              onClick={() => onArchiveManualContrast(manualContrastKey)}
+              type="button"
+            >
+              {archivePendingContrastKey === manualContrastKey
+                ? "Archiviazione..."
+                : "Archivia contrasto"}
+            </button>
           ) : null}
         </div>
       </div>
@@ -393,11 +423,21 @@ function KanjiClashEmptyWorkspace({
 }
 
 function KanjiClashSidebar({
+  activeManualContrasts,
+  archivePendingContrastKey,
+  archivedManualContrasts,
   queue,
-  content
+  content,
+  onArchiveManualContrast,
+  onRestoreManualContrast
 }: {
+  activeManualContrasts: KanjiClashManualContrastSummary[];
+  archivePendingContrastKey: string | null;
+  archivedManualContrasts: KanjiClashManualContrastSummary[];
   queue: KanjiClashQueueSnapshot;
   content: KanjiClashPageContent["sidebar"];
+  onArchiveManualContrast: (contrastKey: string) => void;
+  onRestoreManualContrast: (contrastKey: string) => void;
 }) {
   return (
     <SurfaceCard className="kanji-clash-sidebar" variant="quiet">
@@ -467,6 +507,62 @@ function KanjiClashSidebar({
         ) : (
           <p className="kanji-clash-sidebar__note">{content.note}</p>
         )}
+
+        {activeManualContrasts.length > 0 ? (
+          <div>
+            <p className="eyebrow">Contrasti manuali attivi</p>
+            <div className="kanji-clash-sidebar__manual-contrasts">
+              {activeManualContrasts.map((contrast) => (
+                <div
+                  key={contrast.contrastKey}
+                  className="surface-card surface-card--quiet"
+                >
+                  <p className="kanji-clash-sidebar__manual-label">
+                    {contrast.leftLabel} / {contrast.rightLabel}
+                  </p>
+                  <button
+                    className="button button--ghost button--small"
+                    disabled={archivePendingContrastKey === contrast.contrastKey}
+                    onClick={() => onArchiveManualContrast(contrast.contrastKey)}
+                    type="button"
+                  >
+                    {archivePendingContrastKey === contrast.contrastKey
+                      ? "Archiviazione..."
+                      : "Archivia"}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        {archivedManualContrasts.length > 0 ? (
+          <div>
+            <p className="eyebrow">Contrasti archiviati</p>
+            <div className="kanji-clash-sidebar__manual-contrasts">
+              {archivedManualContrasts.map((contrast) => (
+                <div
+                  key={contrast.contrastKey}
+                  className="surface-card surface-card--quiet"
+                >
+                  <p className="kanji-clash-sidebar__manual-label">
+                    {contrast.leftLabel} / {contrast.rightLabel}
+                  </p>
+                  <button
+                    className="button button--ghost button--small"
+                    disabled={archivePendingContrastKey === contrast.contrastKey}
+                    onClick={() => onRestoreManualContrast(contrast.contrastKey)}
+                    type="button"
+                  >
+                    {archivePendingContrastKey === contrast.contrastKey
+                      ? "Ripristino..."
+                      : "Ripristina"}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
     </SurfaceCard>
   );

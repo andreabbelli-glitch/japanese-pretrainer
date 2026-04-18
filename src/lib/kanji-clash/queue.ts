@@ -27,6 +27,7 @@ type BuildKanjiClashQueueSnapshotInput = {
   requestedSize?: number | null;
   scope: KanjiClashScope;
   seenPairKeys?: string[];
+  seenRoundKeys?: string[];
 };
 
 type KanjiClashQueuedCandidate = {
@@ -43,7 +44,7 @@ export function buildKanjiClashQueueSnapshot(
     candidates: normalizedInput.candidates,
     now: normalizedInput.now,
     pairStates: normalizedInput.pairStates,
-    seenPairKeys: normalizedInput.seenPairKeys
+    seenRoundKeys: normalizedInput.seenRoundKeys
   });
   const selectedCandidates = selectQueuedCandidates({
     manualSelectionLimit: normalizedInput.manualSelectionLimit,
@@ -75,6 +76,7 @@ export function buildKanjiClashQueueSnapshot(
     snapshotAtIso: normalizedInput.now.toISOString(),
     scope: normalizedInput.scope,
     seenPairKeys: normalizedInput.seenPairKeys,
+    seenRoundKeys: normalizedInput.seenRoundKeys,
     totalCount: rounds.length
   };
 }
@@ -87,11 +89,12 @@ export function getKanjiClashCurrentRound(
 
 export function advanceKanjiClashQueueSnapshot(
   current: KanjiClashQueueSnapshot,
-  consumedPairKey: string,
+  consumedRoundKey: string,
   options: {
     awaitingConfirmation?: boolean;
   } = {}
 ): KanjiClashQueueSnapshot {
+  const consumedRound = getKanjiClashCurrentRound(current);
   const currentRoundIndex = Math.min(
     current.currentRoundIndex + 1,
     current.rounds.length
@@ -103,7 +106,10 @@ export function advanceKanjiClashQueueSnapshot(
     currentRoundIndex,
     finished: currentRoundIndex >= current.rounds.length,
     remainingCount: Math.max(0, current.rounds.length - currentRoundIndex),
-    seenPairKeys: dedupeStable([...current.seenPairKeys, consumedPairKey])
+    seenPairKeys: consumedRound
+      ? dedupeStable([...current.seenPairKeys, consumedRound.pairKey])
+      : current.seenPairKeys,
+    seenRoundKeys: dedupeStable([...current.seenRoundKeys, consumedRoundKey])
   };
 }
 
@@ -111,9 +117,8 @@ export function materializeKanjiClashSessionRound(
   queuedCandidate: KanjiClashQueuedCandidate,
   index: number
 ): KanjiClashSessionRound {
-  const seed = hashKanjiClashString(
-    `${queuedCandidate.candidate.pairKey}:${index}`
-  );
+  const roundKey = getKanjiClashCandidateRoundKey(queuedCandidate.candidate);
+  const seed = hashKanjiClashString(`${roundKey}:${index}`);
   const swapDisplaySides = seed % 2 === 1;
   const left = swapDisplaySides
     ? queuedCandidate.candidate.right
@@ -122,17 +127,31 @@ export function materializeKanjiClashSessionRound(
     ? queuedCandidate.candidate.left
     : queuedCandidate.candidate.right;
   const targetPlacement = seed % 4 < 2 ? "left" : "right";
-  const target = targetPlacement === "left" ? left : right;
+  const defaultTarget = targetPlacement === "left" ? left : right;
+  const targetSubjectKey =
+    queuedCandidate.candidate.roundOverride?.targetSubjectKey ??
+    defaultTarget.subjectKey;
+  const target =
+    left.subjectKey === targetSubjectKey
+      ? left
+      : right.subjectKey === targetSubjectKey
+        ? right
+        : defaultTarget;
 
   return {
     candidate: queuedCandidate.candidate,
     correctSubjectKey: target.subjectKey,
     left,
     leftSubjectKey: left.subjectKey,
+    origin:
+      queuedCandidate.candidate.roundOverride?.origin ?? {
+        type: "pair"
+      },
     pairKey: queuedCandidate.candidate.pairKey,
     pairState: queuedCandidate.pairState,
     right,
     rightSubjectKey: right.subjectKey,
+    roundKey,
     source: queuedCandidate.source,
     target,
     targetPlacement,
@@ -146,6 +165,7 @@ function normalizeBuildKanjiClashQueueSnapshotInput(
   const now = toDate(input.now);
   const pairStates = input.pairStates ?? new Map<string, KanjiClashPairState>();
   const seenPairKeys = dedupeStable(input.seenPairKeys ?? []);
+  const seenRoundKeys = dedupeStable(input.seenRoundKeys ?? input.seenPairKeys ?? []);
   const mode = input.mode;
   const dailyNewLimit =
     mode === "automatic"
@@ -182,7 +202,8 @@ function normalizeBuildKanjiClashQueueSnapshotInput(
     remainingNewSlots,
     requestedSize,
     scope: input.scope,
-    seenPairKeys
+    seenPairKeys,
+    seenRoundKeys
   };
 }
 
@@ -190,19 +211,22 @@ function buildQueuedCandidates(input: {
   candidates: KanjiClashCandidate[];
   now: Date;
   pairStates: Map<string, KanjiClashPairState>;
-  seenPairKeys: string[];
+  seenRoundKeys: string[];
 }) {
-  const seenPairKeySet = new Set(input.seenPairKeys);
+  const seenRoundKeySet = new Set(input.seenRoundKeys);
   const queuedCandidates: KanjiClashQueuedCandidate[] = [];
   let newAvailableCount = 0;
 
   for (const candidate of input.candidates) {
-    if (seenPairKeySet.has(candidate.pairKey)) {
+    if (seenRoundKeySet.has(getKanjiClashCandidateRoundKey(candidate))) {
       continue;
     }
 
-    const pairState = input.pairStates.get(candidate.pairKey) ?? null;
-    const source = resolveKanjiClashRoundSource(pairState, input.now);
+    const pairState =
+      input.pairStates.get(getKanjiClashCandidateRoundKey(candidate)) ??
+      input.pairStates.get(candidate.pairKey) ??
+      null;
+    const source = resolveKanjiClashRoundSource(candidate, pairState, input.now);
 
     if (source === "new") {
       newAvailableCount += 1;
@@ -317,9 +341,16 @@ function summarizeSelectedCandidates(
 }
 
 function resolveKanjiClashRoundSource(
+  candidate: KanjiClashCandidate,
   pairState: KanjiClashPairState | null,
   now: Date
 ): KanjiClashRoundSource {
+  if (candidate.roundOverride?.origin.type === "manual-contrast") {
+    if (!pairState || pairState.state === "new") {
+      return "due";
+    }
+  }
+
   if (!pairState || pairState.state === "new") {
     return "new";
   }
@@ -367,11 +398,20 @@ function compareQueuedCandidates(
     }
   }
 
+  const originDifference =
+    roundOriginRank(left.candidate) - roundOriginRank(right.candidate);
+
+  if (originDifference !== 0) {
+    return originDifference;
+  }
+
   if (left.candidate.score !== right.candidate.score) {
     return right.candidate.score - left.candidate.score;
   }
 
-  return left.candidate.pairKey.localeCompare(right.candidate.pairKey);
+  return getKanjiClashCandidateRoundKey(left.candidate).localeCompare(
+    getKanjiClashCandidateRoundKey(right.candidate)
+  );
 }
 
 function roundSourceRank(source: KanjiClashRoundSource) {
@@ -385,6 +425,14 @@ function roundSourceRank(source: KanjiClashRoundSource) {
   }
 }
 
+function roundOriginRank(candidate: KanjiClashCandidate) {
+  return candidate.roundOverride?.origin.type === "manual-contrast" ? 0 : 1;
+}
+
 function toDate(value: string | Date) {
   return value instanceof Date ? value : new Date(value);
+}
+
+function getKanjiClashCandidateRoundKey(candidate: KanjiClashCandidate) {
+  return candidate.roundOverride?.roundKey ?? candidate.pairKey;
 }

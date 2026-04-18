@@ -19,12 +19,14 @@ type BuildRoundOverrides = Partial<KanjiClashSessionRound> & {
   left?: KanjiClashEligibleSubject;
   pairKey?: string;
   right?: KanjiClashEligibleSubject;
+  roundKey?: string;
   targetPlacement?: "left" | "right";
 };
 
 type BuildPageDataOverrides = {
   availableMedia?: KanjiClashPageData["availableMedia"];
   currentRound?: KanjiClashPageData["currentRound"];
+  manualContrasts?: KanjiClashPageData["manualContrasts"];
   mode?: KanjiClashPageData["mode"];
   queue?: Partial<KanjiClashPageData["queue"]>;
   selectedMedia?: KanjiClashPageData["selectedMedia"];
@@ -92,6 +94,7 @@ export function buildKanjiClashRound(
       subjectKey: "entry:term:term-alpha-shokuhin"
     });
   const pairKey = overrides.pairKey ?? "pair-alpha";
+  const roundKey = overrides.roundKey ?? pairKey;
   const targetPlacement = overrides.targetPlacement ?? "left";
   const target = targetPlacement === "left" ? left : right;
 
@@ -110,10 +113,14 @@ export function buildKanjiClashRound(
     correctSubjectKey: target.subjectKey,
     left,
     leftSubjectKey: left.subjectKey,
+    origin: overrides.origin ?? {
+      type: "pair"
+    },
     pairKey,
     pairState: null,
     right,
     rightSubjectKey: right.subjectKey,
+    roundKey,
     source: "due",
     target,
     targetPlacement,
@@ -174,6 +181,7 @@ export function buildKanjiClashQueue(
     snapshotAtIso: "2026-04-09T12:00:00.000Z",
     scope: "global",
     seenPairKeys: [],
+    seenRoundKeys: [],
     totalCount: rounds.length,
     ...overrides
   };
@@ -214,6 +222,7 @@ export function buildKanjiClashPageData(
       { id: "media-beta", slug: "beta", title: "Beta" }
     ],
     currentRound: currentRound as KanjiClashPageData["currentRound"],
+    manualContrasts: overrides.manualContrasts ?? [],
     mode,
     queue,
     queueToken: "test-kanji-clash-queue-token",

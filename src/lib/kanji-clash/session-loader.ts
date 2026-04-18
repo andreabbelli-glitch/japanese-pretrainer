@@ -5,6 +5,10 @@ import {
   listKanjiClashPairStatesByPairKeys
 } from "@/db/queries";
 
+import {
+  loadKanjiClashManualContrastCandidates,
+  type KanjiClashManualContrastSeed
+} from "./manual-contrast.ts";
 import { loadManualKanjiClashQueueSnapshot } from "./manual-queue-loader.ts";
 import { buildKanjiClashQueueSnapshot } from "./queue.ts";
 import { generateKanjiClashCandidates } from "./pairing.ts";
@@ -24,6 +28,7 @@ export type LoadKanjiClashQueueSnapshotInput = {
   requestedSize?: number | null;
   scope: KanjiClashScope;
   seenPairKeys?: string[];
+  seenRoundKeys?: string[];
 };
 
 export async function loadKanjiClashQueueSnapshot(
@@ -34,15 +39,21 @@ export async function loadKanjiClashQueueSnapshot(
   const eligibleSubjects = await listEligibleKanjiClashSubjects(database, {
     mediaIds: input.mediaIds
   });
+  const manualContrastSeed = await loadKanjiClashManualContrastCandidates({
+    database,
+    mediaIds: input.mediaIds
+  });
 
   if (input.mode === "manual") {
     return loadManualKanjiClashQueueSnapshot({
       database,
       eligibleSubjects,
+      manualContrastSeed,
       now,
       requestedSize: input.requestedSize,
       scope: input.scope,
-      seenPairKeys: input.seenPairKeys
+      seenPairKeys: input.seenPairKeys,
+      seenRoundKeys: input.seenRoundKeys
     });
   }
 
@@ -50,11 +61,13 @@ export async function loadKanjiClashQueueSnapshot(
     dailyNewLimit: input.dailyNewLimit,
     database,
     eligibleSubjects,
+    manualContrastSeed,
     mode: input.mode,
     now,
     requestedSize: input.requestedSize,
     scope: input.scope,
-    seenPairKeys: input.seenPairKeys
+    seenPairKeys: input.seenPairKeys,
+    seenRoundKeys: input.seenRoundKeys
   });
 }
 
@@ -62,20 +75,35 @@ async function loadAutomaticKanjiClashQueueSnapshot(input: {
   dailyNewLimit?: number | null;
   database: DatabaseClient;
   eligibleSubjects: Awaited<ReturnType<typeof listEligibleKanjiClashSubjects>>;
+  manualContrastSeed: KanjiClashManualContrastSeed;
   mode: KanjiClashSessionMode;
   now: Date;
   requestedSize?: number | null;
   scope: KanjiClashScope;
   seenPairKeys?: string[];
+  seenRoundKeys?: string[];
 }): Promise<KanjiClashQueueSnapshot> {
-  const candidates = generateKanjiClashCandidates(input.eligibleSubjects);
-  const pairStates =
-    candidates.length > 0
+  const automaticCandidates = generateKanjiClashCandidates(
+    input.eligibleSubjects
+  ).filter(
+    (candidate) =>
+      !input.manualContrastSeed.suppressedContrastKeys.has(candidate.pairKey)
+  );
+  const automaticPairStates =
+    automaticCandidates.length > 0
       ? await listKanjiClashPairStatesByPairKeys(
           input.database,
-          candidates.map((candidate) => candidate.pairKey)
+          automaticCandidates.map((candidate) => candidate.pairKey)
         )
       : new Map<string, KanjiClashPairState>();
+  const candidates = [
+    ...input.manualContrastSeed.candidates,
+    ...automaticCandidates
+  ];
+  const pairStates = new Map<string, KanjiClashPairState>([
+    ...automaticPairStates,
+    ...input.manualContrastSeed.pairStates
+  ]);
   const introducedTodayCount =
     await countKanjiClashAutomaticNewPairIntroductions({
       database: input.database,
@@ -92,7 +120,8 @@ async function loadAutomaticKanjiClashQueueSnapshot(input: {
     pairStates,
     requestedSize: input.requestedSize,
     scope: input.scope,
-    seenPairKeys: input.seenPairKeys
+    seenPairKeys: input.seenPairKeys,
+    seenRoundKeys: input.seenRoundKeys
   });
 }
 

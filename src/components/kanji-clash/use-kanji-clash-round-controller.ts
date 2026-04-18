@@ -6,13 +6,19 @@ import {
   useReducer,
   useRef,
   useState,
+  useTransition,
   type TouchEventHandler
 } from "react";
 
-import { submitKanjiClashAnswerAction } from "@/actions/kanji-clash";
+import {
+  archiveKanjiClashManualContrastAction,
+  restoreKanjiClashManualContrastAction,
+  submitKanjiClashAnswerAction
+} from "@/actions/kanji-clash";
 import { getKanjiClashCurrentRound } from "@/lib/kanji-clash/queue";
 import type {
   KanjiClashAnswerSubmissionPayload,
+  KanjiClashManualContrastSummary,
   KanjiClashPageData,
   KanjiClashQueueSnapshot,
   KanjiClashRoundSide,
@@ -30,11 +36,16 @@ import { useKanjiClashRoundInputs } from "./kanji-clash-round-inputs";
 export type { KanjiClashRoundFeedback } from "./kanji-clash-round-controller-state";
 
 export type KanjiClashRoundControllerResult = {
+  activeManualContrasts: KanjiClashManualContrastSummary[];
+  archivedManualContrasts: KanjiClashManualContrastSummary[];
+  archivePendingContrastKey: string | null;
   clientError: string | null;
   currentRound: KanjiClashSessionRound | null;
   feedback: KanjiClashRoundFeedback | null;
+  handleArchiveManualContrast: (contrastKey: string) => void;
   handleChooseSide: (side: KanjiClashRoundSide) => void;
   handleContinue: () => void;
+  handleRestoreManualContrast: (contrastKey: string) => void;
   handleTouchEnd: TouchEventHandler<HTMLElement>;
   handleTouchStart: TouchEventHandler<HTMLElement>;
   isSelectionLocked: boolean;
@@ -52,6 +63,10 @@ export function useKanjiClashRoundController(
   );
   const [clientError, setClientError] = useState<string | null>(null);
   const [liveMessage, setLiveMessage] = useState<string | null>(null);
+  const [archivePendingContrastKey, setArchivePendingContrastKey] = useState<
+    string | null
+  >(null);
+  const [isArchivePending, startArchiveTransition] = useTransition();
   const controllerStateRef = useRef(controllerState);
 
   useEffect(() => {
@@ -125,24 +140,78 @@ export function useKanjiClashRoundController(
     });
   }, []);
 
+  const runManualContrastMutation = useCallback(
+    (contrastKey: string, action: "archive" | "restore") => {
+      if (!contrastKey.trim()) {
+        return;
+      }
+
+      startArchiveTransition(async () => {
+        try {
+          setClientError(null);
+          setLiveMessage(null);
+          setArchivePendingContrastKey(contrastKey);
+
+          if (action === "archive") {
+            await archiveKanjiClashManualContrastAction({
+              contrastKey
+            });
+          } else {
+            await restoreKanjiClashManualContrastAction({
+              contrastKey
+            });
+          }
+
+          if (typeof window !== "undefined") {
+            window.location.reload();
+          }
+        } catch (error) {
+          setClientError(
+            error instanceof Error
+              ? error.message
+              : "Impossibile aggiornare il contrasto manuale."
+          );
+        } finally {
+          setArchivePendingContrastKey(null);
+        }
+      });
+    },
+    []
+  );
+
   const { handleChooseSide, handleTouchEnd, handleTouchStart } =
     useKanjiClashRoundInputs({
-      isSelectionLocked: controllerState.phase.kind !== "idle",
+      isSelectionLocked:
+        controllerState.phase.kind !== "idle" || isArchivePending,
       onChooseSide: submitSide
     });
 
   return {
+    activeManualContrasts: data.manualContrasts.filter(
+      (contrast) => contrast.status === "active"
+    ),
+    archivedManualContrasts: data.manualContrasts.filter(
+      (contrast) => contrast.status === "archived"
+    ),
+    archivePendingContrastKey,
     clientError,
     currentRound: getKanjiClashCurrentRound(controllerState.visibleQueue),
     feedback:
       controllerState.phase.kind === "incorrect-review"
         ? controllerState.phase.feedback
         : null,
+    handleArchiveManualContrast: (contrastKey: string) => {
+      runManualContrastMutation(contrastKey, "archive");
+    },
     handleChooseSide,
     handleContinue,
+    handleRestoreManualContrast: (contrastKey: string) => {
+      runManualContrastMutation(contrastKey, "restore");
+    },
     handleTouchEnd,
     handleTouchStart,
-    isSelectionLocked: controllerState.phase.kind !== "idle",
+    isSelectionLocked:
+      controllerState.phase.kind !== "idle" || isArchivePending,
     liveMessage,
     pendingSelectionSide:
       controllerState.phase.kind === "submitting"
@@ -161,6 +230,7 @@ function buildKanjiClashAnswerSubmissionPayload(input: {
   return {
     expectedPairKey: input.currentRound.pairKey,
     expectedPairStateUpdatedAt: input.currentRound.pairState?.updatedAt ?? null,
+    expectedRoundKey: input.currentRound.roundKey,
     queueToken: input.queueToken,
     responseMs: input.responseMs,
     selectedSide: input.selectedSide

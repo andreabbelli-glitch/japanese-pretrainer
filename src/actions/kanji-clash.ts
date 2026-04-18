@@ -1,12 +1,16 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import {
   db,
   type DatabaseClient
 } from "@/db";
 import {
+  archiveKanjiClashManualContrast,
   applyKanjiClashSessionAction,
   getKanjiClashCurrentRound,
+  restoreKanjiClashManualContrast,
   type KanjiClashAnswerSubmissionPayload,
   type KanjiClashSessionActionResult,
   type KanjiClashSessionRound,
@@ -22,6 +26,7 @@ export async function submitKanjiClashAnswerAction(
   input: SubmitKanjiClashAnswerActionInput
 ): Promise<KanjiClashSessionActionResult> {
   const expectedPairKey = input.expectedPairKey.trim();
+  const expectedRoundKey = normalizeOptionalString(input.expectedRoundKey);
   const expectedPairStateUpdatedAt = normalizeOptionalString(
     input.expectedPairStateUpdatedAt
   );
@@ -32,8 +37,8 @@ export async function submitKanjiClashAnswerAction(
     throw new Error("Missing Kanji Clash selection.");
   }
 
-  if (!expectedPairKey) {
-    throw new Error("Missing Kanji Clash pair key.");
+  if (!expectedPairKey && !expectedRoundKey) {
+    throw new Error("Missing Kanji Clash round key.");
   }
 
   const currentRound = getKanjiClashCurrentRound(queue);
@@ -42,7 +47,11 @@ export async function submitKanjiClashAnswerAction(
     throw new Error("Kanji Clash session is already complete.");
   }
 
-  if (currentRound.pairKey !== expectedPairKey) {
+  if (expectedPairKey && currentRound.pairKey !== expectedPairKey) {
+    throw new Error("Kanji Clash round is out of date.");
+  }
+
+  if (expectedRoundKey && currentRound.roundKey !== expectedRoundKey) {
     throw new Error("Kanji Clash round is out of date.");
   }
 
@@ -68,6 +77,16 @@ export async function submitKanjiClashAnswerAction(
 
 function assertRoundCoherence(round: KanjiClashSessionRound) {
   if (round.candidate.pairKey !== round.pairKey) {
+    throw new Error("Kanji Clash round payload is inconsistent.");
+  }
+
+  if (
+    round.candidate.roundOverride &&
+    (round.candidate.roundOverride.roundKey !== round.roundKey ||
+      round.candidate.roundOverride.targetSubjectKey !== round.targetSubjectKey ||
+      JSON.stringify(round.candidate.roundOverride.origin) !==
+        JSON.stringify(round.origin))
+  ) {
     throw new Error("Kanji Clash round payload is inconsistent.");
   }
 
@@ -117,4 +136,55 @@ function validateSubmittedQueueToken(queueToken: string) {
   }
 
   return queue;
+}
+
+export async function archiveKanjiClashManualContrastAction(input: {
+  contrastKey: string;
+  database?: DatabaseClient;
+  now?: Date;
+}) {
+  const contrastKey = input.contrastKey.trim();
+
+  if (!contrastKey) {
+    throw new Error("Missing Kanji Clash manual contrast key.");
+  }
+
+  await archiveKanjiClashManualContrast({
+    contrastKey,
+    database: input.database ?? db,
+    now: input.now
+  });
+  safeRevalidateKanjiClashPath();
+}
+
+export async function restoreKanjiClashManualContrastAction(input: {
+  contrastKey: string;
+  database?: DatabaseClient;
+  now?: Date;
+}) {
+  const contrastKey = input.contrastKey.trim();
+
+  if (!contrastKey) {
+    throw new Error("Missing Kanji Clash manual contrast key.");
+  }
+
+  await restoreKanjiClashManualContrast({
+    contrastKey,
+    database: input.database ?? db,
+    now: input.now
+  });
+  safeRevalidateKanjiClashPath();
+}
+
+function safeRevalidateKanjiClashPath() {
+  try {
+    revalidatePath("/kanji-clash");
+  } catch (error) {
+    if (
+      !(error instanceof Error) ||
+      !error.message.includes("static generation store missing")
+    ) {
+      throw error;
+    }
+  }
 }

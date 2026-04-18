@@ -22,7 +22,11 @@ import {
   getReviewPageData,
   hydrateReviewCard
 } from "@/lib/review";
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
+import type {
+  ReviewForcedContrastPayload,
+  ReviewPageData,
+  ReviewQueueCard
+} from "@/lib/review-types";
 import {
   appendReturnToParam,
   mediaReviewCardHref,
@@ -40,6 +44,8 @@ type ReviewSessionInput = {
   candidateCardIds?: string[];
   canonicalCandidateCardIds?: string[];
   extraNewCount: number;
+  forcedContrast?: ReviewForcedContrastPayload;
+  forcedKanjiClashContrast?: ReviewForcedContrastPayload;
   gradedCardBucket?: ReviewQueueCard["bucket"];
   gradedCardIds?: string[];
   mediaSlug?: string;
@@ -143,10 +149,15 @@ export async function gradeReviewCardSessionAction(
     input.scope === "media" && input.mediaSlug
       ? await requireMediaForSlug(input.mediaSlug!)
       : undefined;
+  const forcedContrast =
+    input.forcedKanjiClashContrast ?? input.forcedContrast;
 
-  await applyReviewGrade({
+  const gradeResult = await applyReviewGrade({
     cardId: input.cardId,
     expectedMediaId: media?.id,
+    forcedContrast,
+    forcedContrastMediaSlug: input.mediaSlug,
+    forcedContrastScope: input.scope === "media" ? "media" : "global",
     rating: input.rating
   });
   revalidateActiveReviewCaches(
@@ -209,6 +220,7 @@ export async function gradeReviewCardSessionAction(
         session: {
           answeredCount: input.answeredCount + 1,
           extraNewCount: input.extraNewCount,
+          forcedContrast: gradeResult.forcedContrast,
           segmentId: input.segmentId
         }
       } satisfies ReviewPageData;
@@ -246,6 +258,7 @@ export async function gradeReviewCardSessionAction(
           session: {
             answeredCount: input.answeredCount + 1,
             extraNewCount: input.extraNewCount,
+            forcedContrast: gradeResult.forcedContrast,
             segmentId: input.segmentId
           }
         } satisfies ReviewPageData;

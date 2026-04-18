@@ -6,6 +6,7 @@ import {
   resolveKanjiClashDefaultScope
 } from "@/lib/settings";
 
+import { listKanjiClashManualContrastSummaries } from "./manual-contrast.ts";
 import { getKanjiClashCurrentRound } from "./queue.ts";
 import { createKanjiClashQueueToken } from "./queue-token.ts";
 import { loadKanjiClashQueueSnapshot } from "./session.ts";
@@ -26,9 +27,10 @@ export async function getKanjiClashPageData(
   now?: Date
 ): Promise<KanjiClashPageData> {
   const snapshotAt = now ?? new Date();
-  const [settings, mediaRows] = await Promise.all([
+  const [settings, mediaRows, manualContrasts] = await Promise.all([
     getStudySettings(database),
-    listMediaCached(database)
+    listMediaCached(database),
+    listKanjiClashManualContrastSummaries(database)
   ]);
   const availableMedia = mediaRows.map((row) => ({
     id: row.id,
@@ -64,6 +66,7 @@ export async function getKanjiClashPageData(
   return {
     availableMedia,
     currentRound: getKanjiClashCurrentRound(queue),
+    manualContrasts,
     mode,
     queue,
     queueToken: createKanjiClashQueueToken(queue),
