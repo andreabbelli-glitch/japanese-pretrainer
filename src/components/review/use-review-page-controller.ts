@@ -29,10 +29,12 @@ import {
 } from "./review-page-state";
 import {
   buildOptimisticGradeResult,
+  buildOptimisticFirstCandidateGradeResult,
   collectQueuedAdvanceCandidateCardIds,
   collectQueuedPrefetchCardIds,
   buildReviewHydrationRequestKey,
   isReviewPageData,
+  resolveOptimisticReviewAdvanceCardForClientData,
   resolveReviewAdvanceCandidateCardId,
   resolveReviewAdvanceCandidateQueuePosition,
   resolveReviewQueuePosition,
@@ -124,6 +126,11 @@ export function useReviewPageController(input: {
   const selectedCard = viewData.selectedCard;
   const selectedCardId = selectedCard?.id ?? null;
   const selectedCardContext = viewData.selectedCardContext;
+  const serverAdvanceCards = viewData.queue.advanceCards;
+  const serverAdvanceCardIds = useMemo(
+    () => new Set(serverAdvanceCards.map((card) => card.id)),
+    [serverAdvanceCards]
+  );
   const queueCardIndexLookup = useMemo(
     () => new Map(queueCardIds.map((cardId, index) => [cardId, index] as const)),
     [queueCardIds]
@@ -229,7 +236,7 @@ export function useReviewPageController(input: {
         // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve full client state until session counters move forward.
         setViewData(data);
         setRevealedCardId(nextRevealedCardId);
-        setQueueCardIds([]);
+        setQueueCardIds(data.queueCardIds);
         setClientError(null);
       }
       return;
@@ -353,12 +360,13 @@ export function useReviewPageController(input: {
   }, [pendingAnsweredCountScroll, viewData.session.answeredCount]);
 
   useEffect(() => {
-    if (!selectedCard || !isQueueCard || !isFullReviewPageData) {
+    if (!selectedCard || !isQueueCard) {
       return;
     }
 
     const cardIdsToFetch = collectQueuedPrefetchCardIds({
       bufferSize: 3,
+      coveredCardIds: serverAdvanceCardIds,
       prefetchedCardIds: new Set(prefetchBufferRef.current.keys()),
       prefetchingCardIds: prefetchInFlightRef.current,
       queueCardIds: activeQueueCardIds,
@@ -398,7 +406,8 @@ export function useReviewPageController(input: {
     isFullReviewPageData,
     activeQueueCardIds,
     queueIndex,
-    selectedCard
+    selectedCard,
+    serverAdvanceCardIds
   ]);
 
   function runSessionUpdate(
@@ -522,18 +531,25 @@ export function useReviewPageController(input: {
     });
     const candidateCardIds = advanceWindowCardIds;
     const nextCardId = preferredNextCardId ?? candidateCardIds[0] ?? null;
-    const optimisticNextCardId = preferredNextCardId;
-    const optimisticNextCard = optimisticNextCardId
-      ? (prefetchBufferRef.current.get(optimisticNextCardId) ?? null)
-      : null;
+    const optimisticNextCard = resolveOptimisticReviewAdvanceCardForClientData(
+      {
+        candidateCardIds,
+        data: sessionViewData,
+        preferredCardId: preferredNextCardId,
+        prefetchedCards: prefetchBufferRef.current
+      }
+    );
+    const optimisticNextCardId = optimisticNextCard?.id ?? null;
     const optimisticNextQueuePosition = resolveReviewAdvanceCandidateQueuePosition(
       {
         candidateCardIds: nextQueueCardIds,
         selectedCardId: optimisticNextCardId
       }
     );
+    const optimisticSourceData =
+      fullViewData ?? (isHydratingFullData ? viewData : null);
     const canOptimisticallyAdvance =
-      fullViewData !== null && optimisticNextCard !== null;
+      optimisticSourceData !== null && optimisticNextCard !== null;
 
     runSessionUpdate(
       () =>
@@ -562,29 +578,36 @@ export function useReviewPageController(input: {
         onError: () => {
           setPendingAnsweredCountScroll(null);
         },
-        optimisticUpdate:
-          fullViewData !== null && canOptimisticallyAdvance
-            ? () => {
-                const previousViewData = fullViewData;
-                const previousQueueCardIds = queueCardIds;
+        optimisticUpdate: canOptimisticallyAdvance
+          ? () => {
+              const previousViewData = optimisticSourceData;
+              const previousQueueCardIds = queueCardIds;
 
-                setViewData(
-                  buildOptimisticGradeResult({
-                    currentData: fullViewData,
-                    gradedCardBucket: selectedCard.bucket,
-                    nextCard: optimisticNextCard ?? null,
-                    nextQueuePosition: optimisticNextQueuePosition,
-                    nextQueueCardIds
-                  })
-                );
-                setQueueCardIds(nextQueueCardIds);
+              setViewData(
+                fullViewData
+                  ? buildOptimisticGradeResult({
+                      currentData: fullViewData,
+                      gradedCardBucket: selectedCard.bucket,
+                      nextCard: optimisticNextCard ?? null,
+                      nextQueuePosition: optimisticNextQueuePosition,
+                      nextQueueCardIds
+                    })
+                  : buildOptimisticFirstCandidateGradeResult({
+                      currentData: optimisticSourceData!,
+                      gradedCardBucket: selectedCard.bucket,
+                      nextCard: optimisticNextCard ?? null,
+                      nextQueuePosition: optimisticNextQueuePosition,
+                      nextQueueCardIds
+                    })
+              );
+              setQueueCardIds(nextQueueCardIds);
 
-                return () => {
-                  setViewData(previousViewData);
-                  setQueueCardIds(previousQueueCardIds);
-                };
-              }
-            : undefined,
+              return () => {
+                setViewData(previousViewData);
+                setQueueCardIds(previousQueueCardIds);
+              };
+            }
+          : undefined,
         onSuccess: (nextData) => {
           if (nextData.queueCardIds.length === 0) {
             setQueueCardIds(nextQueueCardIds);

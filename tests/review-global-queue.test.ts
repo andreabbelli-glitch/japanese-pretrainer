@@ -74,16 +74,16 @@ describe("global review queue filtering", () => {
       ])
     ]);
 
-    expect(globalPage.queue.cards).toEqual([]);
+    expect(globalPage.queue.advanceCards).toEqual([]);
     expect(globalPage.queue.queueCount).toBe(1);
     expect(globalPage.selectedCard?.id).toBe("card_a");
 
-    expect(mediaAPage?.queue.cards).toEqual([]);
+    expect(mediaAPage?.queue.advanceCards).toEqual([]);
     expect(mediaAPage?.queue.newQueuedCount).toBe(1);
     expect(mediaAPage?.queue.queueCount).toBe(1);
     expect(mediaAPage?.selectedCard?.id).toBe("card_a");
 
-    expect(mediaBPage?.queue.cards).toEqual([]);
+    expect(mediaBPage?.queue.advanceCards).toEqual([]);
     expect(mediaBPage?.queue.newAvailableCount).toBe(1);
     expect(mediaBPage?.queue.newQueuedCount).toBe(0);
     expect(mediaBPage?.queue.queueCount).toBe(0);
@@ -371,8 +371,12 @@ describe("global review queue filtering", () => {
       remainingCount: 0,
       showAnswer: false
     });
+    expect(firstCandidate.data.queueCardIds).toEqual(fullPage.queueCardIds);
     expect(firstCandidate.data.queue.queueCount).toBe(
       fullPage.queue.queueCount
+    );
+    expect(firstCandidate.data.queue.advanceCards.map((card) => card.id)).toEqual(
+      fullPage.queueCardIds.slice(1, 4)
     );
     expect(firstCandidate.data.nextCardId).toBe(
       fullPage.queueCardIds[1] ?? null

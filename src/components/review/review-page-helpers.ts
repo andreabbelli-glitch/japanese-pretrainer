@@ -1,4 +1,8 @@
-import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
+import type {
+  ReviewFirstCandidatePageData,
+  ReviewPageData,
+  ReviewQueueCard
+} from "@/lib/review-types";
 
 import type { ReviewPageClientData } from "./review-page-state";
 
@@ -37,6 +41,7 @@ export function formatRemainingCardsLabel(count: number) {
 
 export function collectQueuedPrefetchCardIds(input: {
   bufferSize: number;
+  coveredCardIds?: ReadonlySet<string>;
   prefetchedCardIds: Set<string>;
   prefetchingCardIds: Set<string>;
   queueCardIds: string[];
@@ -54,6 +59,7 @@ export function collectQueuedPrefetchCardIds(input: {
 
     if (
       !cardId ||
+      input.coveredCardIds?.has(cardId) ||
       input.prefetchedCardIds.has(cardId) ||
       input.prefetchingCardIds.has(cardId)
     ) {
@@ -120,13 +126,58 @@ export function prioritizeReviewAdvanceCandidateCardIds(input: {
   ];
 }
 
+export function resolveOptimisticReviewAdvanceCard(input: {
+  candidateCardIds: string[];
+  preferredCardId: string | null;
+  advanceCards: ReadonlyArray<ReviewQueueCard>;
+  prefetchedCards: ReadonlyMap<string, ReviewQueueCard>;
+}) {
+  const advanceCardLookup = new Map(
+    input.advanceCards.map((card) => [card.id, card] as const)
+  );
+  const prioritizedCandidateCardIds = prioritizeReviewAdvanceCandidateCardIds({
+    candidateCardIds: input.candidateCardIds,
+    preferredCardId: input.preferredCardId
+  });
+
+  for (const cardId of prioritizedCandidateCardIds) {
+    const prefetchedCard = input.prefetchedCards.get(cardId);
+
+    if (prefetchedCard) {
+      return prefetchedCard;
+    }
+
+    const advanceCard = advanceCardLookup.get(cardId);
+
+    if (advanceCard) {
+      return advanceCard;
+    }
+  }
+
+  return null;
+}
+
+export function resolveOptimisticReviewAdvanceCardForClientData(input: {
+  candidateCardIds: string[];
+  data: ReviewPageClientData;
+  preferredCardId: string | null;
+  prefetchedCards: ReadonlyMap<string, ReviewQueueCard>;
+}) {
+  return resolveOptimisticReviewAdvanceCard({
+    candidateCardIds: input.candidateCardIds,
+    preferredCardId: input.preferredCardId,
+    advanceCards: input.data.queue.advanceCards,
+    prefetchedCards: input.prefetchedCards
+  });
+}
+
 export function resolveReviewQueuePosition(input: {
   data: ReviewPageClientData;
   queueCardIndexLookup?: ReadonlyMap<string, number>;
   queueCardIds: string[];
   selectedCardId: string | null;
 }) {
-  if (!isReviewPageData(input.data) || input.selectedCardId === null) {
+  if (input.selectedCardId === null) {
     return {
       queueCardIds: input.queueCardIds,
       queueIndex: -1
@@ -144,9 +195,12 @@ export function resolveReviewQueuePosition(input: {
     };
   }
 
+  const dataQueueCardIds =
+    "queueCardIds" in input.data ? input.data.queueCardIds : input.queueCardIds;
+
   return {
-    queueCardIds: input.data.queueCardIds,
-    queueIndex: input.data.queueCardIds.indexOf(input.selectedCardId)
+    queueCardIds: dataQueueCardIds,
+    queueIndex: dataQueueCardIds.indexOf(input.selectedCardId)
   };
 }
 
@@ -157,10 +211,18 @@ export function buildOptimisticGradeResult(input: {
   nextQueuePosition: number | null;
   nextQueueCardIds: string[];
 }): ReviewPageData {
+  const nextAdvanceCards = buildOptimisticAdvanceCards({
+    currentAdvanceCards: input.currentData.queue.advanceCards,
+    nextCardId: input.nextCard?.id ?? null
+  });
+
   return {
     ...input.currentData,
     queue: buildOptimisticQueueUpdate(
-      input.currentData.queue,
+      {
+        ...input.currentData.queue,
+        advanceCards: nextAdvanceCards
+      },
       input.gradedCardBucket
     ),
     selectedCard: input.nextCard,
@@ -192,10 +254,89 @@ export function buildOptimisticGradeResult(input: {
   };
 }
 
-function buildOptimisticQueueUpdate(
-  currentQueue: ReviewPageData["queue"],
+export function buildOptimisticFirstCandidateGradeResult(input: {
+  currentData: ReviewFirstCandidatePageData;
+  gradedCardBucket: ReviewQueueCard["bucket"];
+  nextCard: ReviewQueueCard | null;
+  nextQueuePosition: number | null;
+  nextQueueCardIds: string[];
+}): ReviewFirstCandidatePageData {
+  const nextAdvanceCards = buildOptimisticAdvanceCards({
+    currentAdvanceCards: input.currentData.queue.advanceCards,
+    nextCardId: input.nextCard?.id ?? null
+  });
+
+  return {
+    ...input.currentData,
+    nextCardId:
+      input.nextQueuePosition !== null
+        ? input.nextQueueCardIds[input.nextQueuePosition] ?? null
+        : null,
+    queue: buildOptimisticQueueUpdate(
+      {
+        ...input.currentData.queue,
+        advanceCards: nextAdvanceCards
+      },
+      input.gradedCardBucket
+    ),
+    selectedCard: input.nextCard,
+    selectedCardContext: input.nextCard
+      ? {
+          bucket: input.nextCard.bucket,
+          isQueueCard: true,
+          position: input.nextQueuePosition,
+          remainingCount:
+            input.nextQueuePosition !== null
+              ? Math.max(0, input.nextQueueCardIds.length - input.nextQueuePosition)
+              : 0,
+          showAnswer: false
+        }
+      : {
+          bucket: null,
+          isQueueCard: false,
+          position: null,
+          remainingCount: 0,
+          showAnswer: false
+        },
+    session: {
+      answeredCount: input.currentData.session.answeredCount + 1,
+      extraNewCount: input.currentData.session.extraNewCount,
+      segmentId: input.currentData.session.segmentId
+    }
+  };
+}
+
+function buildOptimisticAdvanceCards(input: {
+  currentAdvanceCards: ReadonlyArray<ReviewQueueCard>;
+  nextCardId: string | null;
+}) {
+  if (!input.nextCardId || input.currentAdvanceCards.length === 0) {
+    return [];
+  }
+
+  const nextCardIndex = input.currentAdvanceCards.findIndex(
+    (card) => card.id === input.nextCardId
+  );
+
+  if (nextCardIndex < 0) {
+    return [];
+  }
+
+  return input.currentAdvanceCards.slice(nextCardIndex + 1);
+}
+
+function buildOptimisticQueueUpdate<
+  T extends {
+    advanceCards: ReadonlyArray<ReviewQueueCard>;
+    dueCount: number;
+    newAvailableCount: number;
+    newQueuedCount: number;
+    queueCount: number;
+  }
+>(
+  currentQueue: T,
   gradedCardBucket: ReviewQueueCard["bucket"]
-): ReviewPageData["queue"] {
+): T {
   const isQueuedBucket =
     gradedCardBucket === "due" || gradedCardBucket === "new";
 
@@ -234,7 +375,7 @@ export function formatTopUpLabel(count: number) {
 export function isReviewPageData(
   data: ReviewPageClientData
 ): data is ReviewPageData {
-  return "queueCardIds" in data;
+  return "cards" in data.queue;
 }
 
 export function buildReviewHydrationRequestKey(

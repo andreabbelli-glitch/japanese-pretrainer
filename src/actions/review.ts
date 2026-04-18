@@ -164,6 +164,7 @@ export async function gradeReviewCardSessionAction(
     input.sessionQueue &&
     input.sessionSettings
   ) {
+    const now = new Date();
     const updatedQueue = buildIncrementalQueueUpdate(
       input.sessionQueue,
       input.gradedCardBucket
@@ -172,16 +173,26 @@ export async function gradeReviewCardSessionAction(
       candidateCardIds: input.candidateCardIds ?? [],
       canonicalCandidateCardIds: input.canonicalCandidateCardIds ?? [],
       nextCardId: input.nextCardId,
-      now: new Date()
+      now
     });
     const hasAdvanceCandidates = (input.candidateCardIds?.length ?? 0) > 0;
 
     if (hydratedAdvanceCandidate) {
+      const advanceCards = await hydrateReviewAdvanceCards({
+        canonicalCandidateCardIds:
+          input.canonicalCandidateCardIds ?? input.candidateCardIds ?? [],
+        now,
+        selectedQueuePosition: hydratedAdvanceCandidate.position
+      });
+
       return {
         scope: input.scope === "global" ? "global" : "media",
         media: input.sessionMedia,
         settings: input.sessionSettings,
-        queue: updatedQueue,
+        queue: {
+          ...updatedQueue,
+          advanceCards
+        },
         queueCardIds: [],
         selectedCard: hydratedAdvanceCandidate.card,
         selectedCardContext: {
@@ -408,6 +419,7 @@ function buildIncrementalQueueUpdate(
 
   return {
     ...currentQueue,
+    advanceCards: [],
     dueCount:
       gradedCardBucket === "due"
         ? Math.max(0, currentQueue.dueCount - 1)
@@ -513,6 +525,34 @@ async function resolveHydratedAdvanceCandidate(input: {
   }
 
   return null;
+}
+
+async function hydrateReviewAdvanceCards(input: {
+  canonicalCandidateCardIds: string[];
+  now: Date;
+  selectedQueuePosition: number;
+}) {
+  const advanceCardIds = input.canonicalCandidateCardIds.slice(
+    input.selectedQueuePosition,
+    input.selectedQueuePosition + 3
+  );
+
+  if (advanceCardIds.length === 0) {
+    return [];
+  }
+
+  const hydratedCards = await Promise.all(
+    advanceCardIds.map((cardId) =>
+      hydrateReviewCard({
+        cardId,
+        now: input.now
+      })
+    )
+  );
+
+  return hydratedCards.filter(
+    (card): card is ReviewQueueCard => card !== null
+  );
 }
 
 function readReviewFormMutationInput(

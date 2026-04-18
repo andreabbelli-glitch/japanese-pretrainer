@@ -101,12 +101,13 @@ describe("review page client hydration", () => {
     expect(
       collectQueuedPrefetchCardIds({
         bufferSize: 3,
+        coveredCardIds: new Set(["card-d"]),
         prefetchedCardIds: new Set(["card-b"]),
         prefetchingCardIds: new Set(["card-c"]),
         queueCardIds: ["card-a", "card-b", "card-c", "card-d", "card-e"],
         queueIndex: 0
       })
-    ).toEqual(["card-d"]);
+    ).toEqual([]);
   });
 
   it("resolves the selected queue position from the memoized optimistic lookup", () => {
@@ -330,29 +331,61 @@ function buildFirstCandidateReviewPageData(input: {
   cardId: string;
   showAnswer?: boolean;
 }) {
-  return {
-    media: {
-      glossaryHref: "/glossary",
-      href: "/",
-      reviewHref: "/review",
-      slug: "global-review",
-      title: "Review globale"
-    },
-    nextCardId: null,
-    queue: {
+    return {
+      media: {
+        glossaryHref: "/glossary",
+        href: "/",
+        reviewHref: "/review",
+        slug: "global-review",
+        title: "Review globale"
+      },
+      nextCardId: null,
+      queueCardIds: ["card-a", "card-b"],
+      queue: {
+        advanceCards: [
+          {
+            back: "deck",
+          bucket: "new",
+          bucketDetail: "Pronta per entrare nella coda giornaliera senza perdere il legame con il Glossary.",
+          bucketLabel: "Nuova",
+          createdAt: "2026-04-02T00:00:00.000Z",
+          dueAt: null,
+          effectiveState: "new",
+          effectiveStateLabel: "Nuova",
+          front: "札",
+          href: "/media/duel-masters-dm25/review/card/card-b" as Route,
+          id: "card-b",
+          mediaSlug: "duel-masters-dm25",
+          mediaTitle: "Duel Masters",
+          rawReviewLabel: "Nuova",
+          reviewSeedState: {
+            difficulty: null,
+            dueAt: null,
+            lapses: 0,
+            lastReviewedAt: null,
+            learningSteps: 0,
+            reps: 0,
+            scheduledDays: 0,
+            stability: null,
+            state: "new"
+          },
+          segmentTitle: "Tcg Core",
+          typeLabel: "Recognition"
+        }
+      ],
       dailyLimit: 20,
       dueCount: 1,
       effectiveDailyLimit: 20,
       introLabel: "1 card da ripassare adesso.",
       manualCount: 0,
       newAvailableCount: 1,
-      newQueuedCount: 1,
-      queueCount: 1,
-      queueLabel: "1 card da ripassare adesso.",
-      suspendedCount: 0,
-      tomorrowCount: 0,
-      upcomingCount: 0
-    },
+        newQueuedCount: 1,
+        queueCount: 1,
+        queueLabel: "1 card da ripassare adesso.",
+        suspendedCount: 0,
+        tomorrowCount: 0,
+        upcomingCount: 0
+      },
     scope: "global",
     selectedCard: {
       back: "mazzo / deck",

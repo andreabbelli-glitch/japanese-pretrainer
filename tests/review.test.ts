@@ -2377,7 +2377,9 @@ describe("review system", () => {
     expect(reviewPage?.selectedCardContext.gradePreviews).toHaveLength(4);
     expect(reviewPage?.selectedCard?.gradePreviews).toEqual([]);
     expect(
-      reviewPage?.queue.cards.every((card) => card.gradePreviews.length === 0)
+      reviewPage?.queue.advanceCards.every(
+        (card) => card.gradePreviews.length === 0
+      )
     ).toBe(true);
     expect(
       reviewPage?.selectedCardContext.gradePreviews.map(
@@ -2835,6 +2837,9 @@ describe("review system", () => {
     });
 
     expect(reviewPageCalls).toEqual([]);
+    expect(pageData?.queue.advanceCards.map((card) => card.id)).toEqual([
+      nextCardId
+    ]);
     expect(result.selectedCard?.id).toBe(nextCardId);
     expect(result.queue.queueCount).toBe(
       Math.max(0, (pageData?.queue.queueCount ?? 0) - 1)
@@ -2849,6 +2854,7 @@ describe("review system", () => {
       Math.max(0, result.queue.queueCount - 1)
     );
     expect(result.selectedCardContext.showAnswer).toBe(false);
+    expect(result.queue.advanceCards).toEqual([]);
     expect(result.session.answeredCount).toBe(
       (pageData?.session.answeredCount ?? 0) + 1
     );
@@ -2986,6 +2992,9 @@ describe("review system", () => {
     expect(firstResult.selectedCard?.id).toBe(bufferedCardCId);
     expect(firstResult.selectedCardContext.position).toBe(2);
     expect(firstResult.selectedCardContext.remainingCount).toBe(1);
+    expect(firstResult.queue.advanceCards.map((card) => card.id)).toEqual([
+      developmentFixture.secondaryCardId
+    ]);
 
     const secondResult = await gradeReviewCardSessionAction({
       answeredCount: firstResult.session.answeredCount,
@@ -3012,6 +3021,7 @@ describe("review system", () => {
     );
     expect(secondResult.selectedCardContext.position).toBe(2);
     expect(secondResult.selectedCardContext.remainingCount).toBe(0);
+    expect(secondResult.queue.advanceCards).toEqual([]);
 
     const sessionHref = buildCanonicalReviewSessionHref({
       answeredCount: secondResult.session.answeredCount,
@@ -3303,7 +3313,10 @@ describe("review system", () => {
       getReviewPageData(crossMediaFixture.beta.mediaSlug, {}, database)
     ]);
     expect(globalPage.queue.dueCount).toBe(1);
-    expect(globalPage.queue.cards).toEqual([]);
+    expect(globalPage.queue.advanceCards.map((card) => card.id)).toEqual([
+      crossMediaFixture.beta.mixedCardTermCardId,
+      crossMediaFixture.alpha.grammarCardId
+    ]);
     expect(globalPage.queue.queueCount).toBeGreaterThan(0);
     expect(globalPage.selectedCard?.id).toBe(
       crossMediaFixture.alpha.termCardId

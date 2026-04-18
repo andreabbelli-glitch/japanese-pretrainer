@@ -76,6 +76,7 @@ export type ReviewQueueCard = {
 };
 
 export type ReviewQueueSnapshot = {
+  advanceCards: ReviewQueueCard[];
   cards: ReviewQueueCard[];
   dailyLimit: number;
   dueCount: number;
@@ -182,6 +183,7 @@ export type ReviewFirstCandidateQueueSnapshot = Pick<
   | "tomorrowCount"
   | "upcomingCount"
 > & {
+  advanceCards: ReviewQueueCard[];
   introLabel: string;
   queueLabel: string;
 };
@@ -194,6 +196,7 @@ export type ReviewFirstCandidateSelectedCardContext = Omit<
 export type ReviewFirstCandidatePageData = {
   media: ReviewPageData["media"];
   nextCardId?: string | null;
+  queueCardIds: string[];
   queue: ReviewFirstCandidateQueueSnapshot;
   scope: ReviewScope;
   selectedCard: ReviewFirstCandidateCard | null;
