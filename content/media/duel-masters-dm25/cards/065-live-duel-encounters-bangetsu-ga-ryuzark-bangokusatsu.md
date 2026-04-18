@@ -56,8 +56,8 @@ meaning_it: utilizzabile / disponibile all'uso
 pos: na-adjective
 aliases: [使用可能, しようかのう, shiyou kanou]
 notes_it: >-
-  In giapponese generale vuol dire `utilizzabile`, `che si può usare`. Nella
-  resa app-side di Duel Masters diventa utile in espressioni come
+  In giapponese generale vuol dire `utilizzabile`, `che si può usare`. In
+  questa lesson compare nel wording vecchio
   `{{使用可能|しようかのう}}マナ`, dove il punto non è quanta mana esiste in
   totale, ma quanta mana resta davvero spendibile in quel turno. Il blocco
   riusa [{{使用|しよう}}](term:term-use) già noto e lo restringe con
@@ -129,6 +129,26 @@ tags: [live-duel, quantity, total, procedure]
 :::
 
 :::card
+id: card-use-base-for-shiyou-kanou-concept
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bangetsu-ga-ryuzark-bangokusatsu
+entry_type: term
+entry_id: term-use
+card_type: concept
+front: '{{使用|しよう}}'
+back: uso / impiego; base lessicale di 使用可能
+example_jp: >-
+  {{使用|しよう}}に{{可能|かのう}}がつくと、
+  {{使用可能|しようかのう}}になる。
+example_it: >-
+  Quando a 使用 si aggiunge 可能, si ottiene 使用可能.
+notes_it: >-
+  Qui non serve ripassare `usare` in astratto, ma riconoscere che il cuore di
+  `{{使用可能|しようかのう}}マナ` è proprio [{{使用|しよう}}](term:term-use): la
+  mana che il testo considera è quella `usabile`.
+tags: [live-duel, term, compound, mana]
+:::
+
+:::card
 id: card-shiyou-kanou-recognition
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-bangetsu-ga-ryuzark-bangokusatsu
 entry_type: term
@@ -137,14 +157,15 @@ card_type: recognition
 front: '{{使用可能|しようかのう}}'
 back: utilizzabile / disponibile all'uso
 example_jp: >-
-  {{使用可能|しようかのう}}マナだけが、このターンに
+  {{相手|あいて}}の{{使用可能|しようかのう}}マナだけが、このターンに
   {{使|つか}}えるマナになる。
 example_it: >-
-  Solo la mana utilizzabile è davvero spendibile in questo turno.
+  Solo la mana utilizzabile dell'avversario è davvero spendibile in questo
+  turno.
 notes_it: >-
-  In generale vuol dire `utilizzabile`. Nella resa app-side di Duel Masters
+  In generale vuol dire `utilizzabile`. Nel wording vecchio di questa carta
   serve a separare la mana `presente` dalla mana che resta concretamente
-  spendibile dopo il lock o dopo l'untap.
+  spendibile dopo il lock.
 tags: [live-duel, term, app-wording, mana]
 :::
 
@@ -177,16 +198,16 @@ card_type: concept
 front: '{{使用可能|しようかのう}}マナは{{3|さん}}しか{{回復|かいふく}}しない'
 back: si recuperano solo 3 mana utilizzabili
 example_jp: >-
-  アプリ{{表示|ひょうじ}}では、
-  {{使用可能|しようかのう}}マナは{{3|さん}}しか
-  {{回復|かいふく}}しないと{{書|か}}かれることがある。
+  {{相手|あいて}}のターン{{開始時|かいしじ}}、
+  {{相手|あいて}}の{{使用可能|しようかのう}}マナは{{3|さん}}しか
+  {{回復|かいふく}}しない。
 example_it: >-
-  Nella resa dell'app può comparire la frase "si recuperano solo 3 mana
-  utilizzabili".
+  All'inizio del turno avversario, l'avversario recupera solo 3 mana
+  utilizzabili.
 notes_it: >-
-  Questa è la parafrasi UI dello stesso lock espresso sulla carta con
-  `{{3枚|さんまい}}までしかアンタップできない`. L'app mette a fuoco la mana
-  `utilizzabile`, la carta stampata mette a fuoco l'[アンタップ](term:term-untap)
-  delle carte.
+  Questo è il wording vecchio e più denso dello stesso lock poi semplificato
+  come `{{3枚|さんまい}}までしかアンタップできない`. Qui il testo mette a
+  fuoco la mana `utilizzabile` che si recupera, non l'[アンタップ](term:term-untap)
+  delle singole carte.
 tags: [live-duel, grammar, app-wording, mana-lock]
 :::

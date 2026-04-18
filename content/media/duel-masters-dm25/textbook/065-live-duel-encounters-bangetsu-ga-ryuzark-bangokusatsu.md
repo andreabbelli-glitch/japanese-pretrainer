@@ -24,8 +24,8 @@ prerequisites:
   ]
 summary: >-
   Bangetsu Ga Ryuzark / Bangokusatsu: differenza tra la Moonless Gate base e la
-  variante Zetsu, conteggio totale di sei Magic Tool e resa app-side del lock
-  sulla mana.
+  variante Zetsu, conteggio totale di sei Magic Tool e lettura del wording
+  vecchio sul lock della mana avversaria.
 ---
 
 # Bangetsu Ga Ryuzark / Bangokusatsu
@@ -36,9 +36,10 @@ alt: "Bangetsu Ga Ryuzark / Bangokusatsu card."
 caption: >-
   Bangetsu Ga Ryuzark / Bangokusatsu. Twinpact di tenebra. Lato creatura:
   [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu),
-  [W・ブレイカー](term:term-w-breaker) e lock sull'untap della mana
-  avversaria. Lato spell: wipe totale delle creature e condizione che può
-  aggiungere [S・トリガー](term:term-s-trigger).
+  [W・ブレイカー](term:term-w-breaker) e lock espresso nel wording vecchio come
+  recupero della mana utilizzabile avversaria. Lato spell: wipe totale delle
+  creature e condizione che può aggiungere
+  [S・トリガー](term:term-s-trigger).
 :::
 
 ## Keyword presenti sulla carta
@@ -50,7 +51,8 @@ caption: >-
 differenza tra [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon) e
 [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu), sul
 conteggio `{{合計6|ごうけいむっ}}つ` e sul modo in cui il lock della mana
-viene espresso sulla carta stampata e nella resa app-side.
+viene espresso nel wording vecchio con
+`{{使用可能|しようかのう}}マナは{{3|さん}}しか{{回復|かいふく}}しない`.
 
 ## Effetti da leggere
 
@@ -77,12 +79,12 @@ reveal_mode: sentence
 
 :::example_sentence
 jp: >-
-  {{相手|あいて}}のターンのはじめに、{{相手|あいて}}は{{自身|じしん}}の
-  マナゾーンのカードを{{3枚|さんまい}}までしか
-  [アンタップ](term:term-untap)できない。
+  {{相手|あいて}}のターン{{開始時|かいしじ}}、
+  {{相手|あいて}}の{{使用可能|しようかのう}}マナは{{3|さん}}しか
+  {{回復|かいふく}}しない。
 translation_it: >-
-  All'inizio del turno avversario, l'avversario non può stappare più di 3 carte
-  del proprio mana zone.
+  All'inizio del turno avversario, l'avversario recupera solo 3 mana
+  utilizzabili.
 reveal_mode: sentence
 :::
 
@@ -141,21 +143,21 @@ reveal_mode: sentence
 - `それら{{6枚|ろくまい}}の{{上|うえ}}に` chiude la procedura: la creatura non
   entra semplicemente in campo, ma si sovrappone al gruppo appena costruito.
 
-### 3. 3枚までしかアンタップできない e la resa 使用可能マナは3しか回復しない
+### 3. 相手の使用可能マナは3しか回復しない
 
-- La carta stampata formula il lock come
-  `{{3枚|さんまい}}までしかアンタップできない`: il punto tecnico è che
-  solo tre carte della mana possono tornare untapped.
-- Nello screenshot dell'app lo stesso effetto viene reso come
-  `{{使用可能|しようかのう}}マナは{{3|さん}}しか{{回復|かいふく}}しない`.
-- [{{使用可能|しようかのう}}](term:term-shiyou-kanou) riusa
-  [{{使用|しよう}}](term:term-use) ma restringe il focus alla mana che resta
-  davvero spendibile in quel turno.
-- Quindi la differenza non è di effetto, ma di punto di vista linguistico: la
-  carta fisica parla di [アンタップ](term:term-untap) delle carte, l'app parla
-  della quantità di mana `utilizzabile` che si recupera.
-- `しか ... ない` resta il cuore della frase in entrambe le rese: la carta
-  impone un tetto massimo, non una semplice descrizione dello stato della mana.
+- Questo è il wording vecchio e più difficile della carta. Invece di parlare
+  direttamente di [アンタップ](term:term-untap), la frase descrive quanta mana
+  dell'avversario torna davvero spendibile all'inizio del turno.
+- `{{相手|あいて}}のターン{{開始時|かいしじ}}` compatta l'idea di
+  `all'inizio del turno avversario` in un blocco secco da testo regolistico.
+- [{{使用可能|しようかのう}}](term:term-shiyou-kanou) si capisce meglio se lo
+  spacchi in [{{使用|しよう}}](term:term-use) + `{{可能|かのう}}`: non parla
+  della mana esistente in astratto, ma della mana `che può essere usata`.
+- `{{3|さん}}しか{{回復|かいふく}}しない` mantiene il tetto rigido di
+  `しか ... ない`, ma lo esprime come recupero di risorsa disponibile.
+- Le formulazioni più recenti semplificano lo stesso effetto come
+  `{{3枚|さんまい}}までしかアンタップできない`: il significato pratico non
+  cambia, cambia il punto di vista linguistico con cui il lock viene spiegato.
 
 ### 4. すべての墓地にあるカードの合計が13枚以上で
 
@@ -180,11 +182,13 @@ reveal_mode: sentence
   rispetto alla keyword base già studiata.
 - [{{6|むっ}}つ](term:term-muttsu) è piccolo ma decisivo: qui controlla
   quante carte devi raccogliere davvero per aprire la procedura.
+- [{{使用|しよう}}](term:term-use) è la base da tenere d'occhio dentro
+  [{{使用可能|しようかのう}}](term:term-shiyou-kanou): il vecchio wording del
+  lock ragiona in termini di mana `usabile`, non di carte che si stappano.
 - [{{使用可能|しようかのう}}](term:term-shiyou-kanou) è la parola utile per la
-  resa app-side: non tutta la mana presente, ma solo quella che resta
+  frase vecchia: non tutta la mana presente, ma solo quella che resta
   concretamente spendibile.
-- `{{3枚|さんまい}}までしかアンタップできない` e
-  `{{使用可能|しようかのう}}マナは{{3|さん}}しか{{回復|かいふく}}しない`
-  sono due letture complementari dello stesso lock: la prima è la formulazione
-  tecnica della carta, la seconda è la parafrasi UI che il giocatore incontra
-  davvero.
+- `{{相手|あいて}}の{{使用可能|しようかのう}}マナは{{3|さん}}しか
+  {{回復|かいふく}}しない` è il blocco da fissare per questa stampa; la
+  formulazione più recente `{{3枚|さんまい}}までしかアンタップできない` è la
+  versione più esplicita dello stesso lock.
