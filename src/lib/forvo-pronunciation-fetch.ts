@@ -39,6 +39,7 @@ import {
   buildForvoWordAddUrl,
   loadForvoWordAddRequestRegistry,
   persistForvoWordAddRequestRegistry,
+  reconcileForvoWordAddRequestRegistry,
   type ForvoWordAddRequestRegistry
 } from "./forvo-word-add.ts";
 
@@ -433,6 +434,20 @@ async function prepareForvoPronunciationRun(input: {
   const requestRegistry = await loadForvoWordAddRequestRegistry(
     input.requestRegistryPath
   );
+  const resolvedRequestCount = reconcileForvoWordAddRequestRegistry(
+    requestRegistry,
+    allTargets.map((entry) => {
+      const manifestEntry = manifestEntries.get(buildEntryKey(entry.kind, entry.id));
+
+      return {
+        audioSource: manifestEntry?.audioSource,
+        audioSrc: manifestEntry?.audioSrc ?? entry.audioSrc,
+        entryId: entry.id,
+        entryKind: entry.kind,
+        mediaSlug: entry.mediaSlug
+      };
+    })
+  );
   const knownMissingPruned = pruneKnownMissingRegistry(
     knownMissingRegistry,
     allTargets,
@@ -442,6 +457,12 @@ async function prepareForvoPronunciationRun(input: {
     await persistForvoKnownMissingRegistry(
       input.knownMissingPath,
       knownMissingRegistry
+    );
+  }
+  if (resolvedRequestCount > 0 && !input.dryRun) {
+    await persistForvoWordAddRequestRegistry(
+      input.requestRegistryPath,
+      requestRegistry
     );
   }
   const knownMissingSkipped = input.retryKnownMissing

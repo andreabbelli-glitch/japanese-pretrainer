@@ -28,6 +28,9 @@
 - Workflow pronunce: `./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --dry-run`
   produce un batch coerente con la review reale e non ripropone entry gia
   coperte localmente.
+- Workflow pronunce: dopo una run reale, il registry
+  `data/forvo-requested-word-add.json` continua a contenere lo storico ma
+  distingue le richieste risolte tramite campo `resolvedAt`.
 - Workflow pronunce: `next-lesson` usa la prima lesson non completata del media
   e `lesson-url` accetta la route textbook dell'app senza scraping esterno.
 - Root review `/review`: apre la queue globale reale su tutti i subject e, se

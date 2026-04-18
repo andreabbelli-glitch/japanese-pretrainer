@@ -5,9 +5,14 @@ import {
   buildForvoWordAddPrefill,
   buildForvoWordAddUrl,
   hasForvoWordAddRequestForEntry,
+  loadForvoWordAddRequestRegistry,
+  reconcileForvoWordAddRequestRegistry,
   normalizeForvoWordAddLabel,
   type ForvoWordAddRequestRegistry
 } from "@/lib/pronunciation";
+import { mkdtemp, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 
 describe("forvo word-add helpers", () => {
   it("builds the expected word-add URL for a label", () => {
@@ -118,5 +123,75 @@ describe("forvo word-add helpers", () => {
     expect(registry.entries[0]?.requestUrl).toBe(
       "https://forvo.com/word-add/%E6%94%BB%E6%92%83%E5%85%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0"
     );
+  });
+
+  it("marks requested entries as resolved when audio becomes available", () => {
+    const registry: ForvoWordAddRequestRegistry = {
+      entries: [],
+      version: 1
+    };
+
+    addForvoWordAddRequestEntry(registry, {
+      entryId: "term-kougekisaki",
+      entryKind: "term",
+      label: "攻撃先",
+      mediaSlug: "duel-masters-dm25",
+      reading: "こうげきさき"
+    });
+
+    const changed = reconcileForvoWordAddRequestRegistry(registry, [
+      {
+        audioSource: "forvo",
+        audioSrc: "assets/audio/term/term-kougekisaki/forvo-speaker.mp3",
+        entryId: "term-kougekisaki",
+        entryKind: "term",
+        mediaSlug: "duel-masters-dm25"
+      }
+    ]);
+
+    expect(changed).toBe(1);
+    expect(registry.entries[0]).toMatchObject({
+      entryId: "term-kougekisaki",
+      resolvedAudioSource: "forvo",
+      resolvedAudioSrc:
+        "assets/audio/term/term-kougekisaki/forvo-speaker.mp3"
+    });
+    expect(registry.entries[0]?.resolvedAt).toEqual(expect.any(String));
+  });
+
+  it("loads legacy registries without resolved metadata", async () => {
+    const tempDir = await mkdtemp(path.join(os.tmpdir(), "jcs-forvo-word-add-"));
+    const registryPath = path.join(tempDir, "forvo-requested-word-add.json");
+
+    await writeFile(
+      registryPath,
+      `${JSON.stringify(
+        {
+          version: 1,
+          entries: [
+            {
+              entryId: "term-kougekisaki",
+              entryKind: "term",
+              label: "攻撃先",
+              mediaSlug: "duel-masters-dm25",
+              requestUrl:
+                "https://forvo.com/word-add/%E6%94%BB%E6%92%83%E5%85%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0",
+              requestedAt: "2026-04-11T22:12:00.000Z"
+            }
+          ]
+        },
+        null,
+        2
+      )}\n`
+    );
+
+    const registry = await loadForvoWordAddRequestRegistry(registryPath);
+
+    expect(registry.entries[0]).toMatchObject({
+      entryId: "term-kougekisaki",
+      requestUrl:
+        "https://forvo.com/word-add/%E6%94%BB%E6%92%83%E5%85%88/?jcs_lang=ja&jcs_phrase=0&jcs_autosubmit=1&jcs_person_name=0"
+    });
+    expect(registry.entries[0]?.resolvedAt).toBeUndefined();
   });
 });

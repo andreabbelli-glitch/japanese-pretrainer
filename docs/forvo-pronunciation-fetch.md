@@ -41,6 +41,9 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 - quando marchi una entry come missing (`s` o `/skip`), apre anche l'URL
   `word-add/...` nel browser normale per chiedere la pronuncia e registra la
   richiesta in `data/forvo-requested-word-add.json`;
+- il registry `data/forvo-requested-word-add.json` e' storico: quando una entry
+  ottiene poi un audio locale, il workflow la marca automaticamente come
+  `resolved` nello stesso file, senza rimuovere la traccia della richiesta;
 - gli URL `word-add` includono anche hint di prefill (`jcs_lang`, `jcs_phrase`,
   `jcs_person_name`, `jcs_autosubmit`) per lo userscript Tampermonkey locale;
 - quando il label contiene varianti separate da slash ASCII (`/`), l'URL
@@ -163,7 +166,8 @@ term-taberu
 - batch operativo consigliato: `10` entry alla volta;
 - gli skip persistenti finiscono di default in `data/forvo-known-missing.json`;
 - le richieste `word-add` gia aperte finiscono di default in
-  `data/forvo-requested-word-add.json`;
+  `data/forvo-requested-word-add.json`; le entry risolte restano nello storico
+  ma vengono annotate con `resolvedAt` e metadata dell'audio trovato;
 - il residuo operativo corrente vive in
   `content/media/<slug>/workflow/pronunciation-pending.json`;
 - `--refresh` forza il rimpiazzo anche se l'entry ha gia audio locale;

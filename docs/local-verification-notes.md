@@ -114,6 +114,9 @@ non sostituisce un audit completo e aggiornato del codice.
   per voci gia marcate come `known missing`.
 - Aggiungendo `--retry-known-missing` allo stesso comando, quelle entry
   tornano eleggibili per il passaggio manuale Forvo.
+- Dopo una run reale che trova audio, `data/forvo-requested-word-add.json`
+  mantiene lo storico delle richieste ma marca come `resolved` le entry ormai
+  coperte.
 - Settings mostra anche lo stato read-only dell'optimizer FSRS, inclusi ultimo
   training riuscito, review nuove accumulate e stato dei preset `recognition` /
   `concept`.

@@ -125,7 +125,8 @@ export {
   hasForvoWordAddRequestForEntry,
   loadForvoWordAddRequestRegistry,
   normalizeForvoWordAddLabel,
-  persistForvoWordAddRequestRegistry
+  persistForvoWordAddRequestRegistry,
+  reconcileForvoWordAddRequestRegistry
 } from "./forvo-word-add.ts";
 export type {
   ForvoWordAddPrefill,

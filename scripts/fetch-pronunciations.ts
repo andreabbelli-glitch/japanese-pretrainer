@@ -9,11 +9,17 @@ import {
   createPronunciationReuseContext,
   fetchPronunciationsForBundle,
   loadForvoKnownMissingRegistry,
+  loadForvoWordAddRequestRegistry,
+  persistForvoWordAddRequestRegistry,
+  reconcileForvoWordAddRequestRegistry,
   refreshPronunciationReuseContextBundle,
   reuseCrossMediaPronunciationsForBundle,
   writeBundlePronunciationPendingSummary,
   type PronunciationFetchNetworkOptions
 } from "../src/lib/pronunciation.ts";
+import { loadValidatedManifest } from "../src/lib/manifest-helpers.ts";
+import { buildEntryKey } from "../src/lib/entry-id.ts";
+import { collectPronunciationTargets } from "../src/lib/pronunciation-shared.ts";
 
 type CliOptions = {
   contentRoot: string;
@@ -117,6 +123,7 @@ if (!parseResult.ok) {
     }
 
     if (!options.dryRun) {
+      await syncResolvedForvoRequests(currentBundle);
       const pendingSummary = await writeBundlePronunciationPendingSummary({
         bundle: currentBundle,
         knownMissingPath,
@@ -157,6 +164,37 @@ async function refreshBundleState(input: {
         : candidate
     )
   };
+}
+
+async function syncResolvedForvoRequests(bundle: NormalizedMediaBundle) {
+  const requestRegistryPath = path.resolve(
+    process.cwd(),
+    "data",
+    "forvo-requested-word-add.json"
+  );
+  const { entries: manifestEntries } = await loadValidatedManifest(
+    bundle.mediaDirectory,
+    bundle.mediaSlug
+  );
+  const requestRegistry = await loadForvoWordAddRequestRegistry(requestRegistryPath);
+  const changed = reconcileForvoWordAddRequestRegistry(
+    requestRegistry,
+    collectPronunciationTargets(bundle).map((entry) => {
+      const manifestEntry = manifestEntries.get(buildEntryKey(entry.kind, entry.id));
+
+      return {
+        audioSource: manifestEntry?.audioSource,
+        audioSrc: manifestEntry?.audioSrc ?? entry.audioSrc,
+        entryId: entry.id,
+        entryKind: entry.kind,
+        mediaSlug: entry.mediaSlug
+      };
+    })
+  );
+
+  if (changed > 0) {
+    await persistForvoWordAddRequestRegistry(requestRegistryPath, requestRegistry);
+  }
 }
 
 function parseCliOptions(argv: string[]): CliOptions {

@@ -14,6 +14,9 @@ export type ForvoWordAddRequestEntry = {
   mediaSlug: string;
   reading?: string;
   requestUrl: string;
+  resolvedAt?: string;
+  resolvedAudioSource?: string;
+  resolvedAudioSrc?: string;
   requestedAt: string;
 };
 
@@ -82,7 +85,9 @@ export async function loadForvoWordAddRequestRegistry(filePath?: string) {
     const parsed = JSON.parse(raw) as Partial<ForvoWordAddRequestRegistry>;
 
     return {
-      entries: Array.isArray(parsed.entries) ? parsed.entries : [],
+      entries: Array.isArray(parsed.entries)
+        ? parsed.entries.map((entry) => normalizeForvoWordAddRequestEntry(entry))
+        : [],
       version: 1
     } satisfies ForvoWordAddRequestRegistry;
   } catch (error) {
@@ -187,6 +192,57 @@ export function addForvoWordAddRequestEntry(
   return true;
 }
 
+export function reconcileForvoWordAddRequestRegistry(
+  registry: ForvoWordAddRequestRegistry,
+  resolvedEntries: Array<{
+    audioSource?: string;
+    audioSrc?: string;
+    entryId: string;
+    entryKind: "term" | "grammar";
+    mediaSlug: string;
+  }>
+) {
+  let changed = 0;
+  const resolvedAt = new Date().toISOString();
+
+  for (const resolvedEntry of resolvedEntries) {
+    if (!resolvedEntry.audioSrc) {
+      continue;
+    }
+
+    const match = registry.entries.find(
+      (candidate) =>
+        candidate.mediaSlug === resolvedEntry.mediaSlug &&
+        candidate.entryKind === resolvedEntry.entryKind &&
+        candidate.entryId === resolvedEntry.entryId
+    );
+
+    if (!match) {
+      continue;
+    }
+
+    const nextResolvedAt = match.resolvedAt ?? resolvedAt;
+    const nextResolvedAudioSource =
+      resolvedEntry.audioSource ?? match.resolvedAudioSource;
+    const nextResolvedAudioSrc = resolvedEntry.audioSrc ?? match.resolvedAudioSrc;
+
+    if (
+      match.resolvedAt === nextResolvedAt &&
+      match.resolvedAudioSource === nextResolvedAudioSource &&
+      match.resolvedAudioSrc === nextResolvedAudioSrc
+    ) {
+      continue;
+    }
+
+    match.resolvedAt = nextResolvedAt;
+    match.resolvedAudioSource = nextResolvedAudioSource;
+    match.resolvedAudioSrc = nextResolvedAudioSrc;
+    changed += 1;
+  }
+
+  return changed;
+}
+
 function inferForvoWordAddPhrase(input: ForvoWordAddEntryLike) {
   if (input.entryKind === "grammar") {
     return true;
@@ -211,4 +267,30 @@ function inferForvoWordAddPhrase(input: ForvoWordAddEntryLike) {
   }
 
   return false;
+}
+
+function normalizeForvoWordAddRequestEntry(entry: unknown): ForvoWordAddRequestEntry {
+  const record =
+    typeof entry === "object" && entry !== null
+      ? (entry as Partial<ForvoWordAddRequestEntry>)
+      : ({} as Partial<ForvoWordAddRequestEntry>);
+
+  return {
+    entryId: typeof record.entryId === "string" ? record.entryId : "",
+    entryKind: record.entryKind === "grammar" ? "grammar" : "term",
+    label: typeof record.label === "string" ? record.label : "",
+    mediaSlug: typeof record.mediaSlug === "string" ? record.mediaSlug : "",
+    reading: typeof record.reading === "string" ? record.reading : undefined,
+    requestUrl: typeof record.requestUrl === "string" ? record.requestUrl : "",
+    requestedAt: typeof record.requestedAt === "string" ? record.requestedAt : "",
+    resolvedAt: typeof record.resolvedAt === "string" ? record.resolvedAt : undefined,
+    resolvedAudioSource:
+      typeof record.resolvedAudioSource === "string"
+        ? record.resolvedAudioSource
+        : undefined,
+    resolvedAudioSrc:
+      typeof record.resolvedAudioSrc === "string"
+        ? record.resolvedAudioSrc
+        : undefined
+  };
 }

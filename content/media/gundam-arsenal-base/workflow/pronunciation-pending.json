@@ -2,8 +2,8 @@
   "version": 1,
   "media_slug": "gundam-arsenal-base",
   "total_targets": 70,
-  "audio_backed_count": 24,
-  "known_missing_count": 46,
+  "audio_backed_count": 59,
+  "known_missing_count": 11,
   "pending_count": 0,
   "pending": []
 }

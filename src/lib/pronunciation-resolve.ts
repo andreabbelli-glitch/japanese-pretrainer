@@ -18,6 +18,9 @@ import {
   fetchForvoPronunciationsForBundleManual,
   fetchPronunciationsForBundle,
   loadForvoKnownMissingRegistry,
+  loadForvoWordAddRequestRegistry,
+  persistForvoWordAddRequestRegistry,
+  reconcileForvoWordAddRequestRegistry,
   refreshPronunciationReuseContextBundle,
   reuseCrossMediaPronunciationsForBundle,
   writeBundlePronunciationPendingSummary,
@@ -257,6 +260,13 @@ export async function executePronunciationResolveForBundle(
     if (!input.dryRun && forvoSummary.matched > 0) {
       currentBundle = await input.refreshBundleState(currentBundle);
     }
+  }
+
+  if (!input.dryRun) {
+    await syncResolvedForvoRequests(
+      currentBundle,
+      (input.forvoManualOptions ?? buildDefaultForvoManualOptions()).requestRegistryPath
+    );
   }
 
   const pendingSummary = await input.updatePendingSummary({
@@ -623,4 +633,37 @@ async function refreshBundleState(bundle: NormalizedMediaBundle) {
   }
 
   return refreshed.data;
+}
+
+async function syncResolvedForvoRequests(
+  bundle: NormalizedMediaBundle,
+  requestRegistryPath?: string
+) {
+  if (!requestRegistryPath) {
+    return;
+  }
+
+  const { entries: manifestEntries } = await loadValidatedManifest(
+    bundle.mediaDirectory,
+    bundle.mediaSlug
+  );
+  const requestRegistry = await loadForvoWordAddRequestRegistry(requestRegistryPath);
+  const changed = reconcileForvoWordAddRequestRegistry(
+    requestRegistry,
+    collectPronunciationTargets(bundle).map((entry) => {
+      const manifestEntry = manifestEntries.get(buildEntryKey(entry.kind, entry.id));
+
+      return {
+        audioSource: manifestEntry?.audioSource,
+        audioSrc: manifestEntry?.audioSrc ?? entry.audioSrc,
+        entryId: entry.id,
+        entryKind: entry.kind,
+        mediaSlug: entry.mediaSlug
+      };
+    })
+  );
+
+  if (changed > 0) {
+    await persistForvoWordAddRequestRegistry(requestRegistryPath, requestRegistry);
+  }
 }

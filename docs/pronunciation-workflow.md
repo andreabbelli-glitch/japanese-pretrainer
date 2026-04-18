@@ -42,12 +42,16 @@ entry rimaste scoperte.
 9. Per Forvo usa batch da `10` come default operativo, salvo richiesta diversa
    dell'utente.
 10. Mantieni aggiornata la lista residua in
-   `content/media/<slug>/workflow/pronunciation-pending.json`.
+    `content/media/<slug>/workflow/pronunciation-pending.json`.
 11. Quando una entry viene saltata come `missing on Forvo`, apri anche il suo
     URL `word-add/...` nel browser normale e registra la richiesta in
     `data/forvo-requested-word-add.json`.
 12. Passa nell'URL anche gli hint di prefill per Tampermonkey:
     lingua giapponese, `phrase yes/no`, `personal name = no`.
+13. Quando una entry richiesta in passato ottiene poi un audio locale
+    (riuso cross-media, fetch offline o Forvo), aggiorna
+    `data/forvo-requested-word-add.json` marcandola come `resolved` invece di
+    lasciarla indistinguibile dalle richieste ancora aperte.
 
 ## Entry point standard
 
@@ -67,7 +71,9 @@ Questo comando:
 - esegue riuso cross-media;
 - esegue il fetch offline sul residuo;
 - manda a Forvo manuale solo le entry ancora scoperte;
-- aggiorna `workflow/pronunciation-pending.json`.
+- aggiorna `workflow/pronunciation-pending.json`;
+- sincronizza anche lo stato `resolved` delle entry storiche in
+  `data/forvo-requested-word-add.json` quando trova un audio.
 
 ## Fase 1: fetch offline primario
 

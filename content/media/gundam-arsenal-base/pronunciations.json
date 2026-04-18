@@ -44,7 +44,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-ability",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-ability/forvo-manual-あひ-りてぃ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A2%E3%83%93%E3%83%AA%E3%83%86%E3%82%A3/#ja"
     },
     {
       "entry_type": "term",
@@ -58,12 +61,18 @@
     {
       "entry_type": "term",
       "entry_id": "term-amate-yuzuriha-machu",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-amate-yuzuriha-machu/forvo-manual-あまてゆす-りは-まちゅ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A2%E3%83%9E%E3%83%86%E3%83%BB%E3%83%A6%E3%82%BA%E3%83%AA%E3%83%8F(%E3%83%9E%E3%83%81%E3%83%A5)/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-amusement-ic-card",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-amusement-ic-card/forvo-manual-あみゅーす-めんとあいしーかーと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A2%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%BA%E3%83%A1%E3%83%B3%E3%83%88IC%E3%82%AB%E3%83%BC%E3%83%89/#ja"
     },
     {
       "entry_type": "term",
@@ -89,7 +98,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-battlefield",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-battlefield/forvo-manual-は-とるふぃーると.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%90%E3%83%88%E3%83%AB%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89/#ja"
     },
     {
       "entry_type": "term",
@@ -120,7 +132,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-card-outlet",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-card-outlet/forvo-manual-かーと-とりた-しく-ち.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AB%E3%83%BC%E3%83%89%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%97%E5%8F%A3/#ja"
     },
     {
       "entry_type": "term",
@@ -134,22 +149,34 @@
     {
       "entry_type": "term",
       "entry_id": "term-card-slot",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-card-slot/forvo-manual-かーと-すろっと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AB%E3%83%BC%E3%83%89%E3%82%B9%E3%83%AD%E3%83%83%E3%83%88/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-casual-match",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-casual-match/forvo-manual-かし-ゅあるまっち.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AB%E3%82%B8%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%9E%E3%83%83%E3%83%81/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-challenge-mode",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-challenge-mode/forvo-manual-ちゃれんし-もーと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%81%E3%83%A3%E3%83%AC%E3%83%B3%E3%82%B8%E3%83%A2%E3%83%BC%E3%83%89/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-climax-boost",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-climax-boost/forvo-manual-くらいまっくすふ-ーすと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AF%E3%83%A9%E3%82%A4%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9%E3%83%96%E3%83%BC%E3%82%B9%E3%83%88/#ja"
     },
     {
       "entry_type": "term",
@@ -166,7 +193,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-commander-level",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-commander-level/forvo-manual-しきかんれへ-る.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%8C%87%E6%8F%AE%E5%AE%98%E3%83%AC%E3%83%99%E3%83%AB/#ja"
     },
     {
       "entry_type": "term",
@@ -204,22 +234,34 @@
     {
       "entry_type": "term",
       "entry_id": "term-earphone-jack",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-earphone-jack/forvo-manual-いやほんし-ゃっく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A4%E3%83%A4%E3%83%9B%E3%83%B3%E3%82%B8%E3%83%A3%E3%83%83%E3%82%AF/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-enemy-strength-gauge",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-enemy-strength-gauge/forvo-manual-てきく-んせんりょくけ-ーし.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%95%B5%E8%BB%8D%E6%88%A6%E5%8A%9B%E3%82%B2%E3%83%BC%E3%82%B8/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-ex-battle",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-ex-battle/forvo-manual-いーえっくすは-とる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/EX%E3%83%90%E3%83%88%E3%83%AB/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-friendly-strength-gauge",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-friendly-strength-gauge/forvo-manual-し-く-んせんりょくけ-ーし.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%87%AA%E8%BB%8D%E6%88%A6%E5%8A%9B%E3%82%B2%E3%83%BC%E3%82%B8/#ja"
     },
     {
       "entry_type": "term",
@@ -236,7 +278,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-gelgoog-menace-lunamaria-custom",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-gelgoog-menace-lunamaria-custom/forvo-manual-け-るく-く-めなーす-るなまりあほーくせんようき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B2%E3%83%AB%E3%82%B0%E3%82%B0%E3%83%A1%E3%83%8A%E3%83%BC%E3%82%B9(%E3%83%AB%E3%83%8A%E3%83%9E%E3%83%AA%E3%82%A2%E3%83%BB%E3%83%9B%E3%83%BC%E3%82%AF%E5%B0%82%E7%94%A8%E6%A9%9F)/#ja"
     },
     {
       "entry_type": "term",
@@ -246,37 +291,58 @@
     {
       "entry_type": "term",
       "entry_id": "term-immortal-justice-gundam",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-immortal-justice-gundam/forvo-manual-いもーたるし-ゃすてぃすか-んた-む.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A4%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%AB%E3%82%B8%E3%83%A3%E3%82%B9%E3%83%86%E3%82%A3%E3%82%B9%E3%82%AC%E3%83%B3%E3%83%80%E3%83%A0/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-kira-yamato-lacus-clyne",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-kira-yamato-lacus-clyne/forvo-manual-きらやまとあんと-らくすくらいん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AD%E3%83%A9%E3%83%BB%E3%83%A4%E3%83%9E%E3%83%88%EF%BC%86%E3%83%A9%E3%82%AF%E3%82%B9%E3%83%BB%E3%82%AF%E3%83%A9%E3%82%A4%E3%83%B3/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-link-ability",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-link-ability/forvo-manual-りんくあひ-りてぃ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%AA%E3%83%B3%E3%82%AF%E3%82%A2%E3%83%93%E3%83%AA%E3%83%86%E3%82%A3/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-lunamaria-hawk",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-lunamaria-hawk/forvo-manual-るなまりあほーく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%AB%E3%83%8A%E3%83%9E%E3%83%AA%E3%82%A2%E3%83%BB%E3%83%9B%E3%83%BC%E3%82%AF/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-main-slot",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-main-slot/forvo-manual-めいんわく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%A1%E3%82%A4%E3%83%B3%E6%9E%A0/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-mighty-strike-freedom-gundam",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-mighty-strike-freedom-gundam/forvo-manual-まいてぃーすとらいくふりーた-むか-んた-む.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%9E%E3%82%A4%E3%83%86%E3%82%A3%E3%83%BC%E3%82%B9%E3%83%88%E3%83%A9%E3%82%A4%E3%82%AF%E3%83%95%E3%83%AA%E3%83%BC%E3%83%80%E3%83%A0%E3%82%AC%E3%83%B3%E3%83%80%E3%83%A0/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-minimap",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-minimap/forvo-manual-みにまっふ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%9F%E3%83%8B%E3%83%9E%E3%83%83%E3%83%97/#ja"
     },
     {
       "entry_type": "term",
@@ -293,7 +359,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-ms-card",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-ms-card/forvo-manual-えむえすかーと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/MS%E3%82%AB%E3%83%BC%E3%83%89/#ja"
     },
     {
       "entry_type": "term",
@@ -342,12 +411,18 @@
     {
       "entry_type": "term",
       "entry_id": "term-pl-card",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-pl-card/forvo-manual-ひ-ーえるかーと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/PL%E3%82%AB%E3%83%BC%E3%83%89/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-pl-skill",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-pl-skill/forvo-manual-ひ-ーえるすきる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/PL%E3%82%B9%E3%82%AD%E3%83%AB/#ja"
     },
     {
       "entry_type": "term",
@@ -364,17 +439,26 @@
     {
       "entry_type": "term",
       "entry_id": "term-rank-match",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-rank-match/forvo-manual-らんくまっち.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%A9%E3%83%B3%E3%82%AF%E3%83%9E%E3%83%83%E3%83%81/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-rank-point",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-rank-point/forvo-manual-らんくほ-いんと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%A9%E3%83%B3%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-red-gundam-0085",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-red-gundam-0085/forvo-manual-あかいか-んた-む-せ-ろせ-ろはちこ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%B5%A4%E3%81%84%E3%82%AC%E3%83%B3%E3%83%80%E3%83%A0(0085)/#ja"
     },
     {
       "entry_type": "term",
@@ -427,7 +511,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-shinn-asuka",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-shinn-asuka/forvo-manual-しんあすか.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B7%E3%83%B3%E3%83%BB%E3%82%A2%E3%82%B9%E3%82%AB/#ja"
     },
     {
       "entry_type": "term",
@@ -446,27 +533,42 @@
     {
       "entry_type": "term",
       "entry_id": "term-sp-gauge",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-sp-gauge/forvo-manual-えすひ-ーけ-ーし.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/SP%E3%82%B2%E3%83%BC%E3%82%B8/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-special-attack",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-special-attack/forvo-manual-せんし-ゅつき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%88%A6%E8%A1%93%E6%8A%80/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-starter-deck",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-starter-deck/forvo-manual-すたーたーて-っき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%87%E3%83%83%E3%82%AD/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-sub-slot",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-sub-slot/forvo-manual-さふ-わく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%B5%E3%83%96%E6%9E%A0/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-tactics-card",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-tactics-card/forvo-manual-さくせんかーと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BD%9C%E6%88%A6%E3%82%AB%E3%83%BC%E3%83%89/#ja"
     },
     {
       "entry_type": "term",
@@ -495,7 +597,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-ve-raid-battle",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-ve-raid-battle/forvo-manual-ふ-いいーれいと-は-とる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/VE%E3%83%AC%E3%82%A4%E3%83%89%E3%83%90%E3%83%88%E3%83%AB/#ja"
     },
     {
       "entry_type": "term",
