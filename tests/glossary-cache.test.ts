@@ -240,6 +240,44 @@ describe("global glossary cache", () => {
     expect(cacheStore.has(sharedResolvedCacheKey)).toBe(true);
   });
 
+  it("reuses global glossary search results across page changes", async () => {
+    await getGlobalGlossaryPageData(
+      {
+        q: "iku",
+        page: "1"
+      },
+      database
+    );
+    await getGlobalGlossaryPageData(
+      {
+        q: "iku",
+        page: "999"
+      },
+      database
+    );
+
+    const sharedResultsCacheKey = JSON.stringify([
+      "glossary",
+      "search-results",
+      "cards:all",
+      "media:all",
+      "query:iku",
+      "kana:iku",
+      "grammar-kana:iku",
+      "compact:iku",
+      "sort:lesson_order",
+      "study:all",
+      "type:all"
+    ]);
+
+    const keySpecificCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === sharedResultsCacheKey
+    );
+
+    expect(keySpecificCalls).toHaveLength(2);
+    expect(cacheStore.has(sharedResultsCacheKey)).toBe(true);
+  });
+
   it("caches local glossary base entries across repeated searches for the same media", async () => {
     const first = await getGlossaryPageData(
       developmentFixture.mediaSlug,
