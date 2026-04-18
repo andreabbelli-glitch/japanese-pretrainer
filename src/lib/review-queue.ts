@@ -343,7 +343,7 @@ function compareReviewSubjectModelsByOrder(
 function buildQueuedNewReviewSubjectModels(input: {
   classifiedModels: ReturnType<typeof classifyReviewSubjectModels>;
   newSlots: number;
-  nowIso: string;
+  resolveModelForDisplay: (model: ReviewSubjectModel) => ReviewSubjectModel;
   visibleMediaId?: string;
 }) {
   const queuedNewModels = input.classifiedModels.globalNewModels
@@ -357,26 +357,47 @@ function buildQueuedNewReviewSubjectModels(input: {
   }
 
   return queuedNewModels
-    .map((model) =>
-      preferReviewSubjectModelCardForMedia(
-        model,
-        input.visibleMediaId,
-        input.nowIso
-      )
-    )
+    .map(input.resolveModelForDisplay)
     .sort(compareReviewSubjectModelsByOrder);
 }
 
 function mapReviewSubjectModelsForVisibleMedia(
   models: ReviewSubjectModel[],
-  visibleMediaId: string | undefined,
-  nowIso: string
+  resolveModelForDisplay: (model: ReviewSubjectModel) => ReviewSubjectModel,
+  visibleMediaId: string | undefined
 ) {
   return visibleMediaId
-    ? models.map((model) =>
-        preferReviewSubjectModelCardForMedia(model, visibleMediaId, nowIso)
-      )
+    ? models.map(resolveModelForDisplay)
     : models;
+}
+
+function createReviewSubjectDisplayResolver(input: {
+  nowIso: string;
+  visibleMediaId?: string;
+}) {
+  if (!input.visibleMediaId) {
+    return (model: ReviewSubjectModel) => model;
+  }
+
+  const resolvedModels = new Map<string, ReviewSubjectModel>();
+
+  return (model: ReviewSubjectModel) => {
+    const cacheKey = model.group.identity.subjectKey;
+    const cached = resolvedModels.get(cacheKey);
+
+    if (cached) {
+      return cached;
+    }
+
+    const resolved = preferReviewSubjectModelCardForMedia(
+      model,
+      input.visibleMediaId,
+      input.nowIso
+    );
+
+    resolvedModels.set(cacheKey, resolved);
+    return resolved;
+  };
 }
 
 function resolveQueuedNewSlots(input: {
@@ -419,6 +440,10 @@ export function buildReviewOverviewSnapshot(input: {
     modelBuckets,
     input.visibleMediaId
   );
+  const resolveModelForDisplay = createReviewSubjectDisplayResolver({
+    nowIso: input.nowIso,
+    visibleMediaId: input.visibleMediaId
+  });
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
   const newSlots = resolveQueuedNewSlots({
     dailyLimit: input.dailyLimit,
@@ -428,13 +453,13 @@ export function buildReviewOverviewSnapshot(input: {
   const queuedNewModels = buildQueuedNewReviewSubjectModels({
     classifiedModels,
     newSlots,
-    nowIso: input.nowIso,
+    resolveModelForDisplay,
     visibleMediaId: input.visibleMediaId
   });
   const dueModelsForDisplay = mapReviewSubjectModelsForVisibleMedia(
     classifiedModels.dueModels,
-    input.visibleMediaId,
-    input.nowIso
+    resolveModelForDisplay,
+    input.visibleMediaId
   );
 
   const dueCount = classifiedModels.dueModels.length;
@@ -512,6 +537,10 @@ export function buildReviewQueueSubjectSnapshot(input: {
     buckets,
     input.visibleMediaId
   );
+  const resolveModelForDisplay = createReviewSubjectDisplayResolver({
+    nowIso: input.nowIso,
+    visibleMediaId: input.visibleMediaId
+  });
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
   const newSlots = resolveQueuedNewSlots({
     dailyLimit: input.dailyLimit,
@@ -521,13 +550,13 @@ export function buildReviewQueueSubjectSnapshot(input: {
   const mapModelsForDisplay = (models: ReviewSubjectModel[]) =>
     mapReviewSubjectModelsForVisibleMedia(
       models,
-      input.visibleMediaId,
-      input.nowIso
+      resolveModelForDisplay,
+      input.visibleMediaId
     );
   const queuedNewModels = buildQueuedNewReviewSubjectModels({
     classifiedModels,
     newSlots,
-    nowIso: input.nowIso,
+    resolveModelForDisplay,
     visibleMediaId: input.visibleMediaId
   });
   const queueModels = mapModelsForDisplay([

@@ -1,10 +1,12 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
+  buildReviewQueueSubjectSnapshot,
   resolveReviewPageSelection,
   type ReviewQueueSubjectSnapshot,
   type ReviewSubjectModel
 } from "@/lib/review-queue";
+import * as reviewSubjectModule from "@/lib/review-subject";
 import type { ReviewSubjectGroup } from "@/lib/review-subject";
 import type { ReviewCardListItem } from "@/db";
 
@@ -178,5 +180,84 @@ describe("resolveReviewPageSelection", () => {
     expect(selection.selectedModel).toBe(manualModel);
     expect(selection.selectedQueueModel).toBeNull();
     expect(selection.queueIndex).toBe(-1);
+  });
+
+  it("reuses the preferred local representative card for the same subject within one snapshot build", () => {
+    const sharedCards = [
+      {
+        id: "card-global",
+        mediaId: "media-b",
+        status: "active",
+        orderIndex: 2,
+        createdAt: "2026-03-10T09:00:00.000Z"
+      },
+      {
+        id: "card-local",
+        mediaId: "media-a",
+        status: "active",
+        orderIndex: 1,
+        createdAt: "2026-03-10T08:00:00.000Z"
+      }
+    ] as unknown as ReviewCardListItem[];
+    const subjectGroups = [
+      {
+        cards: sharedCards,
+        identity: {
+          cardId: "card-global",
+          crossMediaGroupId: "group-shared",
+          entryId: "entry-shared",
+          entryType: "term",
+          subjectKey: "group:shared",
+          subjectKind: "group"
+        },
+        lastInteractionAt: "2026-03-10T09:00:00.000Z",
+        representativeCard: sharedCards[0]!,
+        subjectState: {
+          cardId: "card-global",
+          createdAt: "2026-03-10T09:00:00.000Z",
+          crossMediaGroupId: "group-shared",
+          dueAt: "2026-03-10T09:00:00.000Z",
+          difficulty: 2.5,
+          entryId: "entry-shared",
+          entryType: "term",
+          lapses: 0,
+          lastInteractionAt: "2026-03-10T09:00:00.000Z",
+          lastReviewedAt: "2026-03-10T09:00:00.000Z",
+          learningSteps: 0,
+          manualOverride: false,
+          reps: 1,
+          scheduledDays: 1,
+          schedulerVersion: "fsrs_v1",
+          stability: 3,
+          state: "review",
+          subjectKey: "group:shared",
+          subjectType: "group",
+          suspended: false,
+          updatedAt: "2026-03-10T09:00:00.000Z"
+        }
+      } satisfies ReviewSubjectGroup
+    ];
+    const representativeSpy = vi.spyOn(
+      reviewSubjectModule,
+      "selectReviewSubjectRepresentativeCard"
+    );
+
+    const snapshot = buildReviewQueueSubjectSnapshot({
+      cards: sharedCards,
+      dailyLimit: 10,
+      entryLookup: new Map(),
+      extraNewCount: 0,
+      newIntroducedTodayCount: 0,
+      nowIso: "2026-03-10T09:00:00.000Z",
+      subjectGroups,
+      visibleMediaId: "media-a"
+    });
+
+    expect(snapshot.queueModels[0]?.card.id).toBe("card-local");
+    expect(snapshot.subjectModels[0]?.card.id).toBe("card-local");
+    expect(snapshot.queueModels[0]).toBe(snapshot.subjectModels[0]);
+    expect(representativeSpy).toHaveBeenCalledTimes(1);
+
+    representativeSpy.mockRestore();
   });
 });
