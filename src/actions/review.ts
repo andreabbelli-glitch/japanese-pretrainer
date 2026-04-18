@@ -38,6 +38,7 @@ type ReviewSessionInput = {
   cardId: string;
   cardMediaSlug?: string;
   candidateCardIds?: string[];
+  canonicalCandidateCardIds?: string[];
   extraNewCount: number;
   gradedCardBucket?: ReviewQueueCard["bucket"];
   gradedCardIds?: string[];
@@ -169,6 +170,7 @@ export async function gradeReviewCardSessionAction(
     );
     const hydratedAdvanceCandidate = await resolveHydratedAdvanceCandidate({
       candidateCardIds: input.candidateCardIds ?? [],
+      canonicalCandidateCardIds: input.canonicalCandidateCardIds ?? [],
       nextCardId: input.nextCardId,
       now: new Date()
     });
@@ -478,9 +480,14 @@ function revalidateEntryStatusCaches(input: {
 
 async function resolveHydratedAdvanceCandidate(input: {
   candidateCardIds: string[];
+  canonicalCandidateCardIds?: string[];
   nextCardId?: string | null;
   now: Date;
 }) {
+  const canonicalCandidateCardIds =
+    input.canonicalCandidateCardIds && input.canonicalCandidateCardIds.length > 0
+      ? input.canonicalCandidateCardIds
+      : input.candidateCardIds;
   const orderedCardIds = [
     ...new Set([
       ...(input.nextCardId ? [input.nextCardId] : []),
@@ -495,7 +502,7 @@ async function resolveHydratedAdvanceCandidate(input: {
     });
 
     if (hydratedCard) {
-      const canonicalQueuePosition = input.candidateCardIds.indexOf(cardId);
+      const canonicalQueuePosition = canonicalCandidateCardIds.indexOf(cardId);
 
       return {
         card: hydratedCard,

@@ -7,6 +7,11 @@
       "pitch_accent_status": "miss"
     },
     {
+      "entry_type": "grammar",
+      "entry_id": "grammar-state-de",
+      "pitch_accent_status": "source_error"
+    },
+    {
       "entry_type": "term",
       "entry_id": "term-backline",
       "audio_src": "assets/audio/term/term-backline/forvo-manual-こうえい.mp3",
@@ -32,6 +37,11 @@
       "entry_type": "term",
       "entry_id": "term-collab",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-deck-code",
+      "pitch_accent_status": "source_error"
     },
     {
       "entry_type": "term",
@@ -131,6 +141,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-nyuryoku-suru",
+      "audio_src": "assets/audio/term/term-nyuryoku-suru/forvo-manual-にゅうりょくする.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%85%A5%E5%8A%9B%E3%81%99%E3%82%8B/#ja"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-osusume",
       "audio_src": "assets/audio/term/term-osusume/forvo-manual-おすすめ.mp3",
       "audio_source": "forvo",
@@ -170,6 +188,14 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-sakusei-suru",
+      "audio_src": "assets/audio/term/term-sakusei-suru/forvo-manual-さくせいする.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B/#ja"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-seino",
       "audio_src": "assets/audio/term/term-seino/forvo-manual-せいのう.mp3",
       "audio_source": "forvo",
@@ -179,6 +205,14 @@
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%80%A7%E8%83%BD",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shinki",
+      "audio_src": "assets/audio/term/term-shinki/forvo-manual-しんき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%96%B0%E8%A6%8F/#ja"
     },
     {
       "entry_type": "term",

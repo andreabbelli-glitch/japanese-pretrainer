@@ -1,10 +1,10 @@
 {
   "version": 1,
   "media_slug": "duel-masters-dm25",
-  "total_targets": 320,
+  "total_targets": 323,
   "audio_backed_count": 123,
   "known_missing_count": 184,
-  "pending_count": 13,
+  "pending_count": 16,
   "pending": [
     {
       "entry_type": "term",
@@ -35,6 +35,24 @@
       "entry_id": "term-kazu",
       "label": "数",
       "reading": "かず"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-mugestsu-no-mon-zetsu",
+      "label": "無月の門・絶",
+      "reading": "むげつのもんぜつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-muttsu",
+      "label": "6つ",
+      "reading": "むっつ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shiyou-kanou",
+      "label": "使用可能",
+      "reading": "しようかのう"
     },
     {
       "entry_type": "grammar",

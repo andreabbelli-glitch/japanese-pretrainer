@@ -95,6 +95,9 @@ non sostituisce un audit completo e aggiornato del codice.
   `Review del media` o equivalente, senza presentarli come globali.
 - Le schermate di studio secondarie non ereditano più il loading generico “Caricamento media”, ma comunicano cosa si sta preparando.
 - `content:import` non esplode più con stacktrace SQL opaco quando manca lo schema: ora indica di eseguire `db:migrate`.
+- `pronunciations:resolve -- --mode review|next-lesson|lesson-url --dry-run`
+  seleziona i target attesi, esclude le entry gia coperte e non propone Forvo
+  per voci gia marcate come `known missing`.
 - Settings mostra anche lo stato read-only dell'optimizer FSRS, inclusi ultimo
   training riuscito, review nuove accumulate e stato dei preset `recognition` /
   `concept`.

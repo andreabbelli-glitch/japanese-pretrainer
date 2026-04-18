@@ -235,3 +235,101 @@ requests:
       e dove conviene usarlo.
     notes: >-
       Screenshot reale preso dalla pagina pubblica con Playwright.
+  - id: dmps-deckbuilder-overview
+    lesson_slug: 030-dmps-takaratomy-deckbuilder-create-or-code-input
+    anchor: "Questa è la pagina iniziale del deckbuilder di DUEL MASTERS PLAY'S."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo il contesto, perché mostra nello stesso colpo d'occhio la
+      scelta Division e i due flussi centrali della pagina.
+    visual_goal: >-
+      Rendere leggibili il contesto generale del deckbuilder e la separazione
+      tra creazione di un nuovo deck e inserimento di un deck code.
+    source_preference: >-
+      Pagina pubblica renderizzata di
+      https://dmps.takaratomy.co.jp/deckbuilder/.
+    capture_instructions: >-
+      Usa il viewport reale della pagina nella parte alta, mantenendo visibili
+      la barra di navigazione del sito, la selezione Division e i due blocchi
+      centrali del deckbuilder.
+    must_show: >-
+      `デッキ編成`, `Divisionを選択する`, `新規でデッキを作成する`,
+      `新規デッキ作成`, `デッキコードを入力する` e il pulsante `決定`.
+    avoid: >-
+      Scroll troppo bassi che tagliano i due blocchi principali o crop troppo
+      stretti che fanno perdere il contesto della pagina.
+    alt_it: >-
+      Pagina deckbuilder di Duel Masters Plays con selezione division e due
+      azioni principali.
+    caption_it: >-
+      La schermata separa subito
+      [{{新規|しんき}}](term:term-shinki)で
+      デッキを
+      [{{作成|さくせい}}する](term:term-sakusei-suru) da
+      [デッキコード](term:term-deck-code)を
+      [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru).
+    notes: >-
+      Screenshot reale preso dalla pagina pubblica con Playwright.
+  - id: dmps-deckbuilder-create
+    lesson_slug: 030-dmps-takaratomy-deckbuilder-create-or-code-input
+    anchor: "Il blocco di sinistra è la via da zero."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va subito dopo la spiegazione di `新規でデッキを作成する`, perché mostra
+      insieme frase esplicativa e CTA compressa.
+    visual_goal: >-
+      Rendere leggibili il testo `新規でデッキを作成する` e il pulsante
+      `新規デッキ作成`, così il lettore vede il passaggio da frase verbale a
+      label nominale.
+    source_preference: >-
+      Element screenshot del blocco sinistro nella pagina pubblica
+      https://dmps.takaratomy.co.jp/deckbuilder/.
+    capture_instructions: >-
+      Cattura il solo riquadro di sinistra con heading e pulsante, senza
+      includere il blocco per il deck code.
+    must_show: >-
+      `新規でデッキを作成する` e `新規デッキ作成`.
+    avoid: >-
+      Crop che tagliano il testo superiore o il pulsante principale.
+    alt_it: >-
+      Blocco di sinistra con testo di creazione nuovo mazzo e pulsante
+      principale.
+    caption_it: >-
+      La frase esplicativa usa la forma verbale
+      [{{新規|しんき}}](term:term-shinki)で
+      デッキを
+      [{{作成|さくせい}}する](term:term-sakusei-suru), mentre la CTA la comprime
+      in `{{新規|しんき}}デッキ{{作成|さくせい}}`.
+    notes: >-
+      Element screenshot reale preso con Playwright dal riquadro di sinistra.
+  - id: dmps-deckbuilder-input
+    lesson_slug: 030-dmps-takaratomy-deckbuilder-create-or-code-input
+    anchor: "Il blocco di destra cambia logica."
+    kind: app-screen
+    priority: high
+    placement_rationale: >-
+      Va nel punto in cui la lesson spiega `デッキコードを入力する`, perché il
+      crop mostra chiaramente campo di immissione e conferma.
+    visual_goal: >-
+      Rendere leggibili il testo `デッキコードを入力する`, il campo nero e il
+      pulsante `決定`.
+    source_preference: >-
+      Element screenshot del blocco destro nella pagina pubblica
+      https://dmps.takaratomy.co.jp/deckbuilder/.
+    capture_instructions: >-
+      Cattura il solo riquadro di destra con heading, campo di input e pulsante
+      di conferma.
+    must_show: >-
+      `デッキコードを入力する`, il box di input e `決定`.
+    avoid: >-
+      Crop che perdono il campo nero o mostrano troppo del riquadro sinistro.
+    alt_it: >-
+      Blocco di destra con campo per codice deck e pulsante di conferma.
+    caption_it: >-
+      Qui [デッキコード](term:term-deck-code) è l'oggetto da inserire e
+      [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) è l'azione; `{{決定|けってい}}`
+      arriva solo dopo l'immissione.
+    notes: >-
+      Element screenshot reale preso con Playwright dal riquadro di destra.

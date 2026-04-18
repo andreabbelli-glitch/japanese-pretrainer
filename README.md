@@ -208,6 +208,10 @@ pnpm db:generate
 pnpm db:migrate
 pnpm db:seed
 pnpm content:import
+pnpm pronunciations:resolve
+pnpm pronunciations:fetch
+pnpm pronunciations:reuse
+pnpm pronunciations:forvo
 pnpm db:setup
 pnpm db:studio
 pnpm auth:hash-password
@@ -220,6 +224,25 @@ Se lanci direttamente `pnpm test:e2e:runner`, serve prima una build fresca:
 il bootstrap E2E ora blocca l'avvio quando `.next` e piu vecchio dei file
 applicativi per evitare falsi failure contro asset stale. Il percorso canonico
 resta `./scripts/with-node.sh pnpm test:e2e`.
+
+## Workflow pronunce
+
+Per richieste del tipo "aggiungi le pronunce mancanti" il percorso standard non
+parte piu dal low-level Forvo, ma dal resolver smart:
+
+```sh
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media duel-masters-dm25
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
+```
+
+Il resolver seleziona i target, esclude le entry gia coperte, prova il riuso
+cross-media, esegue il fetch offline e manda a Forvo manuale solo il residuo.
+
+`pnpm pronunciations:forvo` resta disponibile come comando low-level per batch
+mirati di fallback o debug del fetcher. La source of truth operativa e
+[`docs/pronunciation-workflow.md`](./docs/pronunciation-workflow.md).
 
 ## Database locale
 

@@ -528,7 +528,7 @@ export function useReviewPageController(input: {
       : null;
     const optimisticNextQueuePosition = resolveReviewAdvanceCandidateQueuePosition(
       {
-        candidateCardIds,
+        candidateCardIds: nextQueueCardIds,
         selectedCardId: optimisticNextCardId
       }
     );
@@ -542,6 +542,7 @@ export function useReviewPageController(input: {
           cardId: selectedCard.id,
           cardMediaSlug: selectedCard.mediaSlug,
           candidateCardIds,
+          canonicalCandidateCardIds: nextQueueCardIds,
           extraNewCount: sessionViewData.session.extraNewCount,
           gradedCardBucket: selectedCard.bucket,
           gradedCardIds: Array.from(gradedCardIdsRef.current),

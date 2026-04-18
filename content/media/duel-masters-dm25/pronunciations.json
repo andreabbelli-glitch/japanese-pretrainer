@@ -1694,6 +1694,11 @@
     },
     {
       "entry_type": "term",
+      "entry_id": "term-mugestsu-no-mon-zetsu",
+      "pitch_accent_status": "source_error"
+    },
+    {
+      "entry_type": "term",
       "entry_id": "term-mukou",
       "pitch_accent": 0,
       "pitch_accent_source": "Wiktionary",
@@ -1720,6 +1725,11 @@
       "pitch_accent_source": "OJAD",
       "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%82%80%E3%81%97%E3%81%99%E3%82%8B",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-muttsu",
+      "pitch_accent_status": "source_error"
     },
     {
       "entry_type": "term",
@@ -2145,6 +2155,11 @@
       "entry_type": "term",
       "entry_id": "term-shinkarize",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shiyou-kanou",
+      "pitch_accent_status": "source_error"
     },
     {
       "entry_type": "term",

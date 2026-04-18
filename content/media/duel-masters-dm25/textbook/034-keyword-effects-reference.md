@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 93
+order: 94
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -330,6 +330,34 @@ reveal_mode: sentence
   zone e due dal cimitero.
 - `それら{{4枚|よんまい}}の上に` segnala che non è una semplice messa in campo: la carta
   entra sopra il materiale appena scelto.
+
+### [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu)
+
+:::example_sentence
+jp: >-
+  [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu)：
+  {{各|かく}}ターンの{{終|お}}わりに、{{自分|じぶん}}の
+  [{{魔導具|ま.どう.ぐ}}](term:term-madougu)を
+  [バトルゾーン](term:term-battle-zone)または
+  [{{墓地|ぼち}}](term:term-graveyard)から
+  {{合計6|ごうけいむっ}}つ{{選|えら}}び、このクリーチャーを
+  {{自分|じぶん}}の[{{手札|てふだ}}](term:term-hand)または
+  [{{墓地|ぼち}}](term:term-graveyard)からそれら{{6枚|ろくまい}}の{{上|うえ}}に
+  [コスト](term:term-cost)を
+  [{{支払|しはら}}わずに](grammar:grammar-zuni)
+  [{{召喚|しょうかん}}](term:term-summon)してもよい。
+translation_it: >-
+  Gate of Moonless Night Zetsu: alla fine di ogni turno scegli un totale di
+  sei Magic Tool dal battle zone o dal cimitero, poi puoi evocare questa
+  creatura dalla mano o dal cimitero sopra quelle sei carte senza pagarne il
+  costo.
+reveal_mode: sentence
+:::
+
+- `{{各|かく}}ターンの{{終|お}}わりに` sposta il controllo alla fine del turno,
+  non all'ingresso di un Magic Tool.
+- `{{合計6|ごうけいむっ}}つ` lascia libera la ripartizione tra battle zone e
+  cimitero: qui non c'è più `{{2|ふた}}つずつ`.
 
 ### [S・トリガー](term:term-s-trigger)
 

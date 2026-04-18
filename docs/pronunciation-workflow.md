@@ -11,36 +11,63 @@ Quando in una nuova chat arriva una richiesta del tipo:
 - "completa le parti vocali delle flashcard"
 - "riempi gli audio che non ci sono ancora"
 
-il flusso corretto non parte da Forvo. Parte sempre dal fetch offline su fonti
-libere, riusa prima gli audio gia presenti in altri media compatibili e usa
-Forvo solo come fallback manuale sulle entry rimaste scoperte.
+il flusso corretto non parte piu dal low-level Forvo. Parte dal resolver smart
+del repo, che seleziona i target, prova prima il riuso cross-media, esegue il
+fetch offline su fonti libere e usa Forvo solo come fallback manuale sulle
+entry rimaste scoperte.
 
 ## Flusso canonico
 
-1. Identifica le entry del bundle che non hanno ancora audio locale valido.
-2. Escludi solo le entry che hanno gia audio locale nel Markdown o in
+1. Identifica i target dal contesto richiesto:
+   - `review` globale o filtrata per media;
+   - `next-lesson` sul primo step non completato del media;
+   - `lesson-url` su una route textbook dell'app.
+2. Converti le card selezionate in entry audio usando tutte le `card_entry_link`
+   e deduplica per `entryType + entryId`.
+3. Escludi subito le entry che hanno gia audio locale nel Markdown o in
    `pronunciations.json`.
-3. Prima di cercare audio fuori dal bundle, controlla sempre se esiste gia una
+4. Prima di cercare audio fuori dal bundle, controlla sempre se esiste gia una
    card equivalente in un altro media con stesso tipo entry, stesso label e
    stessa reading; in quel caso riusa lo stesso audio e collega le due card.
-4. Esegui il fetch offline con `pnpm pronunciations:fetch`.
-5. Raccogli il riepilogo del comando e riporta chiaramente:
+5. Esegui il fetch offline sul residuo con `pnpm pronunciations:fetch` oppure
+   lascia che il resolver lo faccia automaticamente.
+6. Raccogli il riepilogo del comando e riporta chiaramente:
    - quante entry sono state completate;
    - quali entry sono ancora senza audio;
    - eventuali errori o limitazioni del run.
-6. Se dopo il fetch offline restano mancanti, proponi il fallback Forvo.
-7. Se il fallback viene richiesto, costruisci un batch Forvo solo con le entry
+7. Se dopo il fetch offline restano mancanti, proponi il fallback Forvo.
+8. Se il fallback viene richiesto, costruisci un batch Forvo solo con le entry
    ancora mancanti, escludendo quelle gia marcate in
    `data/forvo-known-missing.json`.
-8. Per Forvo usa batch da `10` come default operativo, salvo richiesta diversa
+9. Per Forvo usa batch da `10` come default operativo, salvo richiesta diversa
    dell'utente.
-9. Mantieni aggiornata la lista residua in
+10. Mantieni aggiornata la lista residua in
    `content/media/<slug>/workflow/pronunciation-pending.json`.
-10. Quando una entry viene saltata come `missing on Forvo`, apri anche il suo
+11. Quando una entry viene saltata come `missing on Forvo`, apri anche il suo
     URL `word-add/...` nel browser normale e registra la richiesta in
     `data/forvo-requested-word-add.json`.
-11. Passa nell'URL anche gli hint di prefill per Tampermonkey:
+12. Passa nell'URL anche gli hint di prefill per Tampermonkey:
     lingua giapponese, `phrase yes/no`, `personal name = no`.
+
+## Entry point standard
+
+Per la maggior parte delle richieste operative, usa direttamente il resolver:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media <media-slug>
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media <media-slug>
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/<media-slug>/textbook/<lesson-slug>
+```
+
+Questo comando:
+
+- seleziona i target dal contesto richiesto;
+- filtra le entry gia coperte;
+- esegue riuso cross-media;
+- esegue il fetch offline sul residuo;
+- manda a Forvo manuale solo le entry ancora scoperte;
+- aggiorna `workflow/pronunciation-pending.json`.
 
 ## Fase 1: fetch offline primario
 
@@ -66,6 +93,10 @@ Questo step:
   Commons collegati;
 - aggiorna direttamente `content/media/<slug>/pronunciations.json` e gli asset
   locali.
+
+Se stai gia usando `pronunciations:resolve`, questa fase viene eseguita in
+automatico solo sul sottoinsieme selezionato; il comando `pronunciations:fetch`
+resta utile quando vuoi forzare solo il pass offline su un intero media.
 
 ## Output atteso dopo il fetch offline
 
@@ -110,12 +141,21 @@ Comando tipico:
 ~/.codex/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --entry <entry-id> ...
 ```
 
+Oppure, come entry point standard ad alto livello:
+
+```bash
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media <media-slug>
+```
+
 La documentazione operativa dettagliata di Forvo resta in
 `docs/forvo-pronunciation-fetch.md`.
 
 ## Guardrail
 
 - Non saltare direttamente a Forvo quando la richiesta utente e generica.
+- Non usare `pnpm pronunciations:forvo` come entry point standard quando il
+  target reale e `review`, `next-lesson` o una pagina textbook: in quei casi
+  usare `pnpm pronunciations:resolve`.
 - Non usare il browser Playwright per i batch reali Forvo; il comportamento
   standard e il browser normale in `--manual`.
 - Non aprire Forvo per entry che possono essere collegate a un audio gia

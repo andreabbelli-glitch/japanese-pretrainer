@@ -54,6 +54,7 @@ import {
   buildCanonicalReviewSessionHref,
   mediaReviewCardHref
 } from "@/lib/site";
+import type { ReviewQueueCard } from "@/lib/review-types";
 import * as settings from "@/lib/settings";
 import { updateStudySettings } from "@/lib/settings";
 import { importContentWorkspace } from "@/lib/content/importer";
@@ -61,7 +62,10 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
-import { seedSingleReviewCardFixture } from "./helpers/review-fixture";
+import {
+  buildReviewSubjectStateRow,
+  seedSingleReviewCardFixture
+} from "./helpers/review-fixture";
 import { getLocalDayBounds } from "@/db/queries/review-query-helpers";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -161,13 +165,109 @@ async function prepareTwoQueueCardFixture(database: DatabaseClient) {
   };
 }
 
+async function prepareChainedBufferedAdvanceFixture(database: DatabaseClient) {
+  const bufferedCardBId = "card_fixture_buffered_b";
+  const bufferedCardCId = "card_fixture_buffered_c";
+
+  await database
+    .update(reviewSubjectState)
+    .set({
+      dueAt: "2026-03-09T08:03:00.000Z",
+      manualOverride: false,
+      state: "learning"
+    })
+    .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
+
+  await database.insert(card).values([
+    {
+      back: "B back",
+      cardType: "recognition",
+      createdAt: "2026-03-08T09:00:00.000Z",
+      exampleJp: null,
+      exampleIt: null,
+      front: "B",
+      id: bufferedCardBId,
+      lessonId: developmentFixture.lessonId,
+      mediaId: developmentFixture.mediaId,
+      notesIt: null,
+      orderIndex: 2,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/review-buffered-advance/card-b.md",
+      status: "active",
+      updatedAt: "2026-03-08T09:00:00.000Z"
+    },
+    {
+      back: "C back",
+      cardType: "recognition",
+      createdAt: "2026-03-08T09:00:00.000Z",
+      exampleJp: null,
+      exampleIt: null,
+      front: "C",
+      id: bufferedCardCId,
+      lessonId: developmentFixture.lessonId,
+      mediaId: developmentFixture.mediaId,
+      notesIt: null,
+      orderIndex: 3,
+      segmentId: developmentFixture.segmentId,
+      sourceFile: "tests/review-buffered-advance/card-c.md",
+      status: "active",
+      updatedAt: "2026-03-08T09:00:00.000Z"
+    }
+  ]);
+
+  await database.insert(reviewSubjectState).values([
+    buildReviewSubjectStateRow({
+      cardId: bufferedCardBId,
+      difficulty: 4,
+      dueAt: "2026-03-09T08:01:00.000Z",
+      lapses: 0,
+      learningSteps: 0,
+      lastInteractionAt: "2026-03-08T09:00:00.000Z",
+      lastReviewedAt: "2026-03-08T09:00:00.000Z",
+      reps: 1,
+      scheduledDays: 0,
+      state: "learning",
+      stability: 1.6,
+      subjectKey: `card:${bufferedCardBId}`
+    }),
+    buildReviewSubjectStateRow({
+      cardId: bufferedCardCId,
+      difficulty: 4,
+      dueAt: "2026-03-09T08:02:00.000Z",
+      lapses: 0,
+      learningSteps: 0,
+      lastInteractionAt: "2026-03-08T09:00:00.000Z",
+      lastReviewedAt: "2026-03-08T09:00:00.000Z",
+      reps: 1,
+      scheduledDays: 0,
+      state: "learning",
+      stability: 1.6,
+      subjectKey: `card:${bufferedCardCId}`
+    })
+  ]);
+
+  return {
+    bufferedCardBId,
+    bufferedCardCId
+  };
+}
+
 type ReviewPageLoadCall = {
   mediaSlug?: string;
   scope: "global" | "media";
   searchParams: Record<string, string>;
 };
 
-async function loadReviewActionsForDatabase(database: DatabaseClient) {
+type LoadReviewActionsOptions = {
+  hydrateReviewCard?: (input: {
+    cardId: string;
+  }) => Promise<ReviewQueueCard | null | undefined> | ReviewQueueCard | null | undefined;
+};
+
+async function loadReviewActionsForDatabase(
+  database: DatabaseClient,
+  options: LoadReviewActionsOptions = {}
+) {
   const globalDatabase = globalThis as {
     __japaneseCustomStudyDb__?: DatabaseClient;
   };
@@ -194,6 +294,17 @@ async function loadReviewActionsForDatabase(database: DatabaseClient) {
 
       return {
         ...actual,
+        hydrateReviewCard: vi.fn(async (input: { cardId: string }) => {
+          if (options.hydrateReviewCard) {
+            const hydratedCard = await options.hydrateReviewCard(input);
+
+            if (hydratedCard !== undefined) {
+              return hydratedCard;
+            }
+          }
+
+          return actual.hydrateReviewCard(input);
+        }),
         getGlobalReviewPageData: vi.fn(
           async (searchParams: Record<string, string>) => {
             reviewPageCalls.push({
@@ -2819,6 +2930,104 @@ describe("review system", () => {
     expect(result.selectedCardContext.remainingCount).toBe(
       Math.max(0, result.queue.queueCount - 2)
     );
+  });
+
+  it("keeps canonical positions through chained buffered advances when the middle card is unavailable", async () => {
+    const { bufferedCardBId, bufferedCardCId } =
+      await prepareChainedBufferedAdvanceFixture(database);
+    const pageData = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database, {
+        hydrateReviewCard: ({ cardId }) =>
+          cardId === bufferedCardBId ? null : undefined
+      });
+    const chainedSessionQueue = pageData
+      ? {
+          ...pageData.queue,
+          dueCount: 4,
+          introLabel: "4 cards",
+          queueCount: 4,
+          queueLabel: "4 cards"
+        }
+      : null;
+
+    expect(chainedSessionQueue).not.toBeNull();
+
+    const firstResult = await gradeReviewCardSessionAction({
+      answeredCount: pageData?.session.answeredCount ?? 0,
+      cardId: developmentFixture.primaryCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      canonicalCandidateCardIds: [
+        bufferedCardBId,
+        bufferedCardCId,
+        developmentFixture.secondaryCardId
+      ],
+      candidateCardIds: [
+        bufferedCardBId,
+        bufferedCardCId,
+        developmentFixture.secondaryCardId
+      ],
+      extraNewCount: pageData?.session.extraNewCount ?? 0,
+      gradedCardBucket: pageData?.selectedCard?.bucket,
+      mediaSlug: developmentFixture.mediaSlug,
+      nextCardId: bufferedCardCId,
+      rating: "good",
+      scope: "media",
+      sessionMedia: pageData?.media,
+      sessionQueue: chainedSessionQueue ?? pageData?.queue,
+      sessionSettings: pageData?.settings
+    });
+
+    expect(reviewPageCalls).toEqual([]);
+    expect(firstResult.selectedCard?.id).toBe(bufferedCardCId);
+    expect(firstResult.selectedCardContext.position).toBe(2);
+    expect(firstResult.selectedCardContext.remainingCount).toBe(1);
+
+    const secondResult = await gradeReviewCardSessionAction({
+      answeredCount: firstResult.session.answeredCount,
+      cardId: bufferedCardCId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      canonicalCandidateCardIds: [
+        bufferedCardBId,
+        developmentFixture.secondaryCardId
+      ],
+      candidateCardIds: [developmentFixture.secondaryCardId],
+      extraNewCount: firstResult.session.extraNewCount,
+      gradedCardBucket: firstResult.selectedCard?.bucket,
+      mediaSlug: developmentFixture.mediaSlug,
+      nextCardId: developmentFixture.secondaryCardId,
+      rating: "good",
+      scope: "media",
+      sessionMedia: firstResult.media,
+      sessionQueue: firstResult.queue,
+      sessionSettings: firstResult.settings
+    });
+
+    expect(secondResult.selectedCard?.id).toBe(
+      developmentFixture.secondaryCardId
+    );
+    expect(secondResult.selectedCardContext.position).toBe(2);
+    expect(secondResult.selectedCardContext.remainingCount).toBe(0);
+
+    const sessionHref = buildCanonicalReviewSessionHref({
+      answeredCount: secondResult.session.answeredCount,
+      cardId: secondResult.selectedCard?.id,
+      extraNewCount: secondResult.session.extraNewCount,
+      isQueueCard: secondResult.selectedCardContext.isQueueCard,
+      mediaSlug: developmentFixture.mediaSlug,
+      position: secondResult.selectedCardContext.position,
+      segmentId: secondResult.session.segmentId,
+      showAnswer: secondResult.selectedCardContext.showAnswer
+    });
+
+    expect(sessionHref).toContain(
+      `card=${developmentFixture.secondaryCardId}`
+    );
+    expect(sessionHref).not.toContain(`card=${bufferedCardBId}`);
   });
 
   it("falls back to a full rebuild instead of forcing completion when the session plan has no nextCardId", async () => {

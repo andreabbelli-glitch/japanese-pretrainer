@@ -109,6 +109,22 @@ Workflow immagini:
 `image:apply` aggiorna i markdown, ma il reader usa il contenuto importato nel
 DB locale. Dopo un apply reale serve quindi un nuovo `content:import`.
 
+Workflow pronunce:
+
+```sh
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media duel-masters-dm25
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
+./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --entry term-cost
+```
+
+`pronunciations:resolve` e il percorso operativo standard: seleziona i target
+da review, prossima lesson o pagina textbook, filtra le entry gia coperte,
+prova il riuso cross-media, esegue il fetch offline e manda a Forvo manuale
+solo il residuo. `pronunciations:forvo` resta il comando low-level per batch
+mirati o debug del solo fallback manuale.
+
 Workflow optimizer FSRS:
 
 ```sh

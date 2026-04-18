@@ -117,4 +117,55 @@ assets:
       e dove conviene usarlo.
     notes: >-
       Screenshot reale preso dalla pagina pubblica con Playwright.
-*** Delete File: /Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/assets/starsavior-79717421-evaluation-table.png
+  - id: dmps-deckbuilder-overview
+    src: assets/dmps-deckbuilder-overview.png
+    source_type: screenshot
+    width: 1440
+    height: 1200
+    lesson_slug: 030-dmps-takaratomy-deckbuilder-create-or-code-input
+    anchor: "Questa è la pagina iniziale del deckbuilder di DUEL MASTERS PLAY'S."
+    alt_it: >-
+      Pagina deckbuilder di Duel Masters Plays con selezione division e due
+      azioni principali.
+    caption_it: >-
+      La schermata separa subito
+      [{{新規|しんき}}](term:term-shinki)で
+      デッキを
+      [{{作成|さくせい}}する](term:term-sakusei-suru) da
+      [デッキコード](term:term-deck-code)を
+      [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru).
+    notes: >-
+      Screenshot reale preso dalla pagina pubblica con Playwright.
+  - id: dmps-deckbuilder-create
+    src: assets/dmps-deckbuilder-create.png
+    source_type: screenshot
+    width: 460
+    height: 156
+    lesson_slug: 030-dmps-takaratomy-deckbuilder-create-or-code-input
+    anchor: "Il blocco di sinistra è la via da zero."
+    alt_it: >-
+      Blocco di sinistra con testo di creazione nuovo mazzo e pulsante
+      principale.
+    caption_it: >-
+      La frase esplicativa usa la forma verbale
+      [{{新規|しんき}}](term:term-shinki)で
+      デッキを
+      [{{作成|さくせい}}する](term:term-sakusei-suru), mentre la CTA la comprime
+      in `{{新規|しんき}}デッキ{{作成|さくせい}}`.
+    notes: >-
+      Element screenshot reale preso con Playwright dal riquadro di sinistra.
+  - id: dmps-deckbuilder-input
+    src: assets/dmps-deckbuilder-input.png
+    source_type: screenshot
+    width: 460
+    height: 156
+    lesson_slug: 030-dmps-takaratomy-deckbuilder-create-or-code-input
+    anchor: "Il blocco di destra cambia logica."
+    alt_it: >-
+      Blocco di destra con campo per codice deck e pulsante di conferma.
+    caption_it: >-
+      Qui [デッキコード](term:term-deck-code) è l'oggetto da inserire e
+      [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) è l'azione; `{{決定|けってい}}`
+      arriva solo dopo l'immissione.
+    notes: >-
+      Element screenshot reale preso con Playwright dal riquadro di destra.

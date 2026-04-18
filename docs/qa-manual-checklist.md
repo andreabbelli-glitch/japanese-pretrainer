@@ -25,6 +25,11 @@
 - Glossary globale `/glossary`: ricerca cross-media navigabile e coerente con
   le viste locali.
 - Media detail: le entry point `Textbook`, `Glossary`, `Review`, `Progress` sono tutte operative.
+- Workflow pronunce: `./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --dry-run`
+  produce un batch coerente con la review reale e non ripropone entry gia
+  coperte localmente.
+- Workflow pronunce: `next-lesson` usa la prima lesson non completata del media
+  e `lesson-url` accetta la route textbook dell'app senza scraping esterno.
 - Root review `/review`: apre la queue globale reale su tutti i subject e, se
   non esistono ancora media o card disponibili, mostra un empty state dedicato
   al primo avvio.

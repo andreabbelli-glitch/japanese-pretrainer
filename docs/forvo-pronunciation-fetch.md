@@ -5,13 +5,18 @@ pronunce MP3 e inserirle nel bundle locale. Nel flusso operativo standard usa
 `--manual` nel browser normale; il percorso browser dedicato resta per debug o
 manutenzione del fetcher.
 
+Per richieste operative ad alto livello come `review`, `next-lesson` o
+`lesson-url`, l'entry point standard e ora
+`pnpm pronunciations:resolve`. `pnpm pronunciations:forvo` resta il comando
+low-level per batch espliciti di fallback manuale e debug.
+
 ## Ruolo nel workflow
 
 Questo non e il primo step del workflow pronunce.
 
-Forvo e un fallback da usare solo dopo `pnpm pronunciations:fetch`, sulle sole
-entry rimaste senza audio anche dopo il controllo di riuso cross-media. La
-source of truth del processo completo e
+Forvo e un fallback da usare solo dopo il pass offline sulle sole entry rimaste
+senza audio anche dopo il controllo di riuso cross-media. La source of truth
+del processo completo e
 `docs/pronunciation-workflow.md`.
 
 ## Quando usarlo
@@ -22,6 +27,9 @@ source of truth del processo completo e
 - hai un account Forvo e puoi scaricare manualmente gli MP3 dal browser;
 - vuoi passare una lista mirata di parole o entry invece di processare tutto il
   bundle.
+
+Se invece vuoi che il repo scelga da solo le card giuste partendo da review,
+prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 
 ## Come funziona
 
@@ -52,6 +60,9 @@ source of truth del processo completo e
 ## Comandi
 
 ```bash
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --media duel-masters-dm25
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
+./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --limit 10
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --dry-run --limit 5
@@ -141,6 +152,8 @@ term-taberu
 
 ## Note operative
 
+- `pnpm pronunciations:resolve` e il percorso standard per richieste orientate
+  al prodotto; `pnpm pronunciations:forvo` resta il low-level manuale;
 - default: browser headed, perche Forvo passa da Cloudflare e sessione login;
 - `--headless` esiste ma non e consigliato per il flusso reale;
 - `--manual` e la modalita operativa standard per questo repo; usa il browser Playwright solo per debug mirato o manutenzione del fetcher;

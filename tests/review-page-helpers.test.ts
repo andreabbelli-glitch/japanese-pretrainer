@@ -129,4 +129,57 @@ describe("resolveReviewQueuePosition", () => {
     expect(result.selectedCardContext.position).toBe(2);
     expect(result.selectedCardContext.remainingCount).toBe(1);
   });
+
+  it("keeps the canonical position when a buffered advance skips an unavailable card", () => {
+    const result = buildOptimisticGradeResult({
+      currentData: {
+        queue: {
+          dailyLimit: 20,
+          dueCount: 2,
+          effectiveDailyLimit: 20,
+          introLabel: "2 cards",
+          manualCards: [],
+          manualCount: 0,
+          newAvailableCount: 0,
+          newQueuedCount: 0,
+          queueCount: 3,
+          queueLabel: "2 cards",
+          suspendedCards: [],
+          suspendedCount: 0,
+          tomorrowCount: 0,
+          upcomingCards: [],
+          upcomingCount: 0
+        },
+        scope: "global",
+        selectedCard: {
+          id: "card-c"
+        },
+        selectedCardContext: {
+          bucket: "due",
+          gradePreviews: [],
+          isQueueCard: true,
+          position: 2,
+          remainingCount: 1,
+          showAnswer: false
+        },
+        session: {
+          answeredCount: 4,
+          extraNewCount: 0,
+          segmentId: null
+        }
+      } as unknown as ReviewPageData,
+      gradedCardBucket: "due",
+      nextCard: {
+        id: "card-d"
+      } as unknown as NonNullable<
+        Parameters<typeof buildOptimisticGradeResult>[0]["nextCard"]
+      >,
+      nextQueuePosition: 2,
+      nextQueueCardIds: ["card-b", "card-d"]
+    });
+
+    expect(result.selectedCard?.id).toBe("card-d");
+    expect(result.selectedCardContext.position).toBe(2);
+    expect(result.selectedCardContext.remainingCount).toBe(0);
+  });
 });

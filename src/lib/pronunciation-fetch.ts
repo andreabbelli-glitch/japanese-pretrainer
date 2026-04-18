@@ -98,13 +98,15 @@ export async function fetchPronunciationsForBundle(input: {
   dryRun?: boolean;
   limit?: number;
   network?: PronunciationFetchNetworkOptions;
+  onlyTargets?: PronunciationTargetEntry[];
   refresh?: boolean;
 }) {
   const { entries: manifestEntries } = await loadValidatedManifest(
     input.bundle.mediaDirectory,
     input.bundle.mediaSlug
   );
-  const entries = collectPronunciationTargets(input.bundle).filter((entry) => {
+  const targetPool = input.onlyTargets ?? collectPronunciationTargets(input.bundle);
+  const entries = targetPool.filter((entry) => {
     if (input.refresh) {
       return true;
     }
