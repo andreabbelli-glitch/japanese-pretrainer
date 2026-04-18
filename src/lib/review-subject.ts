@@ -301,33 +301,49 @@ export function selectReviewSubjectRepresentativeCard(
     }
   }
 
-  const cardsWithPriority = cards.map((card) => ({
-    card,
-    priority: getReviewCardPriority(card, subjectState, nowIso)
-  }));
+  let bestCard = cards[0]!;
+  let bestPriority = getReviewCardPriority(bestCard, subjectState, nowIso);
 
-  return (
-    cardsWithPriority.sort((left, right) => {
-      const priorityDifference = left.priority - right.priority;
+  for (let index = 1; index < cards.length; index++) {
+    const candidate = cards[index]!;
+    const candidatePriority = getReviewCardPriority(
+      candidate,
+      subjectState,
+      nowIso
+    );
 
-      if (priorityDifference !== 0) {
-        return priorityDifference;
+    if (candidatePriority < bestPriority) {
+      bestCard = candidate;
+      bestPriority = candidatePriority;
+      continue;
+    }
+
+    if (candidatePriority > bestPriority) {
+      continue;
+    }
+
+    if (nowIso) {
+      const recencyDifference = compareReviewCardsBySubjectRecency(
+        candidate,
+        bestCard
+      );
+
+      if (recencyDifference < 0) {
+        bestCard = candidate;
+        continue;
       }
 
-      if (nowIso) {
-        const recencyDifference = compareReviewCardsBySubjectRecency(
-          left.card,
-          right.card
-        );
-
-        if (recencyDifference !== 0) {
-          return recencyDifference;
-        }
+      if (recencyDifference > 0) {
+        continue;
       }
+    }
 
-      return compareReviewCardsBySubjectDisplay(left.card, right.card);
-    })[0]?.card ?? cards[0]!
-  );
+    if (compareReviewCardsBySubjectDisplay(candidate, bestCard) < 0) {
+      bestCard = candidate;
+    }
+  }
+
+  return bestCard;
 }
 
 export function resolveReviewSubjectLastInteractionAt(
@@ -484,4 +500,3 @@ function getReviewCardPriority(
 
   return 1;
 }
-

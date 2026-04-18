@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import type { ReviewCardListItem } from "@/db";
 import {
@@ -131,5 +131,56 @@ describe("review subject representative fallback", () => {
     );
 
     expect(representative.id).toBe("card-active");
+  });
+
+  it("picks the most relevant due sibling without sorting the whole group", () => {
+    const sortSpy = vi.spyOn(Array.prototype, "sort");
+    const olderCard = buildReviewCard({
+      id: "card-older",
+      front: "older",
+      orderIndex: 2,
+      updatedAt: "2026-03-10T08:00:00.000Z"
+    });
+    const newerCard = buildReviewCard({
+      id: "card-newer",
+      front: "newer",
+      orderIndex: 5,
+      updatedAt: "2026-03-10T09:00:00.000Z"
+    });
+
+    try {
+      const representative = selectReviewSubjectRepresentativeCard(
+        [olderCard, newerCard],
+        {
+          cardId: null,
+          createdAt: "2026-03-10T07:00:00.000Z",
+          crossMediaGroupId: null,
+          dueAt: "2026-03-10T07:30:00.000Z",
+          difficulty: 2.5,
+          entryId: null,
+          entryType: null,
+          lapses: 0,
+          lastInteractionAt: "2026-03-10T07:30:00.000Z",
+          lastReviewedAt: "2026-03-10T07:30:00.000Z",
+          learningSteps: 0,
+          manualOverride: false,
+          reps: 1,
+          scheduledDays: 1,
+          schedulerVersion: "fsrs_v1",
+          stability: 2,
+          state: "review",
+          subjectKey: "card:card-older",
+          subjectType: "card",
+          suspended: false,
+          updatedAt: "2026-03-10T07:30:00.000Z"
+        },
+        "2026-03-10T10:00:00.000Z"
+      );
+
+      expect(representative.id).toBe("card-newer");
+      expect(sortSpy).not.toHaveBeenCalled();
+    } finally {
+      sortSpy.mockRestore();
+    }
   });
 });
