@@ -1,14 +1,5 @@
 import type { ReviewCardListItem } from "@/db";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
-import { formatReviewStateLabel } from "@/lib/study-format";
-
-import {
-  isReviewCardDue,
-  isReviewCardNew,
-  resolveEffectiveReviewState,
-  type EffectiveReviewState
-} from "./review-model";
-import { type ReviewState } from "./review-scheduler";
 import {
   groupReviewCardsBySubject,
   selectReviewSubjectRepresentativeCard,
@@ -16,21 +7,21 @@ import {
   type ReviewSubjectGroup,
   type ReviewSubjectStateSnapshot
 } from "./review-subject";
-import type {
-  ReviewFirstCandidateSelectedCardContext,
-  ReviewOverviewSnapshot,
-  ReviewQueueCard
-} from "./review-types";
-import type { ReviewSearchState } from "./review-search-state";
-import { formatLocalIsoDate } from "./local-date";
+import type { ReviewOverviewSnapshot, ReviewQueueCard } from "./review-types";
+import {
+  resolveReviewQueueState,
+  type ReviewQueueStateSnapshot
+} from "./review-queue-state";
 
-export type ReviewQueueStateSnapshot = {
-  bucket: ReviewQueueCard["bucket"];
-  dueAt: string | null;
-  effectiveState: EffectiveReviewState["state"];
-  rawReviewLabel: string;
-  reviewSeedState: ReviewQueueCard["reviewSeedState"];
-};
+export {
+  buildReviewFirstCandidateSelectedCardContext,
+  resolveReviewPageSelection
+} from "./review-queue-selection";
+export {
+  buildBucketDetail,
+  formatBucketLabel,
+  formatShortIsoDate
+} from "./review-queue-presentation";
 
 export type ReviewSubjectModel = {
   card: ReviewCardListItem;
@@ -66,51 +57,6 @@ function isReviewSubjectVisibleInMedia(
     !visibleMediaId ||
     group.cards.some((card) => card.mediaId === visibleMediaId)
   );
-}
-
-export function resolveReviewQueueState(
-  cardStatus: string,
-  reviewState: ReviewSubjectStateSnapshot | null,
-  nowIso: string
-): ReviewQueueStateSnapshot {
-  const effectiveState = resolveEffectiveReviewState({
-    cardStatus,
-    reviewState: reviewState
-      ? {
-          manualOverride: reviewState.manualOverride,
-          suspended: reviewState.suspended,
-          state: reviewState.state as ReviewState
-        }
-      : null
-  });
-  const rawReviewLabel = formatReviewStateLabel(
-    reviewState?.state ?? null,
-    reviewState?.manualOverride ?? false
-  );
-  const dueAt = reviewState?.dueAt ?? null;
-
-  return {
-    bucket: resolveCardBucket({
-      asOfIso: nowIso,
-      dueAt,
-      effectiveState: effectiveState.state,
-      reviewState: (reviewState?.state as ReviewState | null) ?? null
-    }),
-    dueAt,
-    effectiveState: effectiveState.state,
-    rawReviewLabel,
-    reviewSeedState: {
-      difficulty: reviewState?.difficulty ?? null,
-      dueAt: reviewState?.dueAt ?? null,
-      lapses: reviewState?.lapses ?? 0,
-      lastReviewedAt: reviewState?.lastReviewedAt ?? null,
-      learningSteps: reviewState?.learningSteps ?? 0,
-      reps: reviewState?.reps ?? 0,
-      scheduledDays: reviewState?.scheduledDays ?? 0,
-      stability: reviewState?.stability ?? null,
-      state: (reviewState?.state as ReviewState | null) ?? null
-    }
-  };
 }
 
 export function buildReviewSubjectModels(input: {
@@ -179,126 +125,6 @@ function preferReviewSubjectModelCardForMedia(
       nowIso
     )
   } satisfies ReviewSubjectModel;
-}
-
-function findReviewSubjectSelectionInModels(input: {
-  models: ReviewSubjectModel[];
-  selectedCardId: string;
-  visibleMediaId?: string;
-}) {
-  for (const [index, model] of input.models.entries()) {
-    for (const card of model.group.cards) {
-      if (input.visibleMediaId && card.mediaId !== input.visibleMediaId) {
-        continue;
-      }
-
-      if (card.id === input.selectedCardId) {
-        return {
-          index,
-          model
-        };
-      }
-    }
-  }
-
-  return null;
-}
-
-function findReviewSubjectSelectionInModelLists(input: {
-  modelLists: ReviewSubjectModel[][];
-  selectedCardId: string;
-  visibleMediaId?: string;
-}) {
-  for (const models of input.modelLists) {
-    const selection = findReviewSubjectSelectionInModels({
-      models,
-      selectedCardId: input.selectedCardId,
-      visibleMediaId: input.visibleMediaId
-    });
-
-    if (selection) {
-      return selection;
-    }
-  }
-
-  return null;
-}
-
-export function resolveReviewPageSelection(input: {
-  queueSnapshot: ReviewQueueSubjectSnapshot;
-  searchState: ReviewSearchState;
-}) {
-  const { selectedCardId } = input.searchState;
-  const { visibleMediaId } = input.queueSnapshot;
-  const queueSelection =
-    selectedCardId === null
-      ? null
-      : findReviewSubjectSelectionInModelLists({
-          modelLists: [input.queueSnapshot.queueModels],
-          selectedCardId,
-          visibleMediaId
-        });
-  const supportSelection =
-    selectedCardId === null || queueSelection !== null
-      ? null
-      : findReviewSubjectSelectionInModelLists({
-          modelLists: [
-            input.queueSnapshot.manualModels,
-            input.queueSnapshot.suspendedModels,
-            input.queueSnapshot.upcomingModels
-          ],
-          selectedCardId,
-          visibleMediaId
-        });
-  const explicitSelectionModel =
-    queueSelection?.model ?? supportSelection?.model ?? null;
-  const fallbackSelectionModel =
-    selectedCardId && explicitSelectionModel === null
-      ? findReviewSubjectSelectionInModelLists({
-          modelLists: [input.queueSnapshot.subjectModels],
-          selectedCardId,
-          visibleMediaId
-        })?.model ?? null
-      : null;
-  const selectedModel =
-    explicitSelectionModel ??
-    fallbackSelectionModel ??
-    input.queueSnapshot.queueModels[0] ??
-    null;
-  const resolvedSelectedCardId =
-    explicitSelectionModel || fallbackSelectionModel ? selectedCardId : null;
-  const queueIndex =
-    selectedModel === null
-      ? -1
-      : resolvedSelectedCardId === null
-        ? 0
-        : queueSelection?.index ?? -1;
-
-  return {
-    queueIndex,
-    selectedCardId: resolvedSelectedCardId,
-    selectedModel,
-    selectedQueueModel:
-      queueIndex >= 0 ? input.queueSnapshot.queueModels[queueIndex] ?? null : null
-  };
-}
-
-export function buildReviewFirstCandidateSelectedCardContext(input: {
-  bucket: ReviewQueueCard["bucket"] | null;
-  queueIndex: number;
-  queueSnapshot: ReviewQueueSubjectSnapshot;
-  searchState: ReviewSearchState;
-}): ReviewFirstCandidateSelectedCardContext {
-  return {
-    bucket: input.bucket,
-    isQueueCard: input.queueIndex >= 0,
-    position: input.queueIndex >= 0 ? input.queueIndex + 1 : null,
-    remainingCount:
-      input.queueIndex >= 0
-        ? input.queueSnapshot.queueCount - input.queueIndex - 1
-        : 0,
-    showAnswer: input.searchState.showAnswer || input.queueIndex < 0
-  };
 }
 
 function compareReviewSubjectModelsByDue(
@@ -710,38 +536,6 @@ function countUpcomingDueTomorrow(
   }).length;
 }
 
-function resolveCardBucket(input: {
-  asOfIso: string;
-  dueAt: string | null;
-  effectiveState: EffectiveReviewState["state"];
-  reviewState: ReviewState | null;
-}): ReviewQueueCard["bucket"] {
-  if (input.effectiveState === "suspended") {
-    return "suspended";
-  }
-
-  if (input.effectiveState === "known_manual") {
-    return "manual";
-  }
-
-  if (
-    isReviewCardDue({
-      asOfIso: input.asOfIso,
-      dueAt: input.dueAt,
-      effectiveState: input.effectiveState,
-      reviewState: input.reviewState
-    })
-  ) {
-    return "due";
-  }
-
-  if (isReviewCardNew(input.reviewState)) {
-    return "new";
-  }
-
-  return "upcoming";
-}
-
 export function buildQueueIntroLabel(input: {
   dailyLimit: number;
   dueCount: number;
@@ -797,57 +591,6 @@ export function buildQueueIntroLabel(input: {
   }
 
   return "La Review di oggi è vuota: il media non ha ancora card attive da mettere in coda.";
-}
-
-export function buildBucketDetail(
-  bucket: ReviewQueueCard["bucket"],
-  dueAt: string | null
-) {
-  if (bucket === "due") {
-    return dueAt
-      ? `Richiede attenzione oggi. Scadenza ${formatShortIsoDate(dueAt)}.`
-      : "Richiede attenzione oggi.";
-  }
-
-  if (bucket === "new") {
-    return "Pronta per entrare nella coda giornaliera senza perdere il legame con il Glossary.";
-  }
-
-  if (bucket === "manual") {
-    return "Una voce collegata è stata impostata manualmente come già nota.";
-  }
-
-  if (bucket === "suspended") {
-    return "La card è stata messa in pausa e non entra nella sessione finché non la riattivi.";
-  }
-
-  return dueAt
-    ? `Resta in rotazione. Prossima scadenza ${formatShortIsoDate(dueAt)}.`
-    : "Resta in rotazione ma oggi non richiede un passaggio.";
-}
-
-export function formatBucketLabel(bucket: ReviewQueueCard["bucket"]) {
-  if (bucket === "due") {
-    return "Dovuta";
-  }
-
-  if (bucket === "new") {
-    return "Nuova";
-  }
-
-  if (bucket === "suspended") {
-    return "Sospesa";
-  }
-
-  if (bucket === "upcoming") {
-    return "Da ripassare nei prossimi giorni";
-  }
-
-  return "Già nota";
-}
-
-export function formatShortIsoDate(value: string) {
-  return formatLocalIsoDate(value);
 }
 
 function compareReviewCardsByOrder<

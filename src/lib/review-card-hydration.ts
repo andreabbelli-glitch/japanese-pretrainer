@@ -62,12 +62,14 @@ import {
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
 import {
+  type ReviewQueueStateSnapshot,
+  resolveReviewQueueState
+} from "./review-queue-state";
+import {
   buildBucketDetail,
   formatBucketLabel,
-  formatShortIsoDate,
-  resolveReviewQueueState,
-  type ReviewQueueStateSnapshot
-} from "./review-queue";
+  formatShortIsoDate
+} from "./review-queue-presentation";
 import type {
   ReviewCardDetailData,
   ReviewCardEntryKind,
