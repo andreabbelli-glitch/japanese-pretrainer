@@ -525,16 +525,11 @@ export async function loadGlobalReviewOverviewSnapshot(
   } = {}
 ) {
   const now = new Date();
-  const dailyLimitPromise =
-    options.resolvedDailyLimit ?? getReviewDailyLimit(database);
-  const newIntroducedTodayCountPromise =
+  const [dailyLimit, newIntroducedTodayCount, overview] = await Promise.all([
+    options.resolvedDailyLimit ?? getReviewDailyLimit(database),
     options.resolvedNewIntroducedTodayCount ??
-    loadReviewIntroducedTodayCountCached(database, now);
-
-  const [overview, dailyLimit, newIntroducedTodayCount] = await Promise.all([
-    getGlobalReviewOverviewData(database, now),
-    dailyLimitPromise,
-    newIntroducedTodayCountPromise
+      loadReviewIntroducedTodayCountCached(database, now),
+    loadGlobalReviewOverviewDataCached(database, now)
   ]);
 
   return mapReviewOverviewSnapshot({
@@ -544,12 +539,55 @@ export async function loadGlobalReviewOverviewSnapshot(
   });
 }
 
+export async function loadGlobalReviewOverviewDataCached(
+  database: DatabaseClient = db,
+  asOf = new Date()
+) {
+  const cacheDayKey = getLocalIsoDateKey(asOf);
+
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["review-global-overview", `day:${cacheDayKey}`],
+    loader: () => getGlobalReviewOverviewData(database, asOf),
+    tags: buildReviewSummaryTags()
+  });
+}
+
 function mapReviewOverviewSnapshot(input: {
   dailyLimit: number;
   newIntroducedTodayCount: number;
-  overview: Awaited<ReturnType<typeof getGlobalReviewOverviewData>>;
+  overview:
+    | Awaited<ReturnType<typeof getGlobalReviewOverviewData>>
+    | (ReviewLaunchCandidate & { newAvailableCount: number })
+    | undefined;
 }) {
   const { dailyLimit, newIntroducedTodayCount, overview } = input;
+
+  if (!overview) {
+    return {
+      activeCards: 0,
+      dailyLimit,
+      dueCount: 0,
+      effectiveDailyLimit: dailyLimit,
+      manualCount: 0,
+      newAvailableCount: 0,
+      newQueuedCount: 0,
+      queueCount: 0,
+      queueLabel: buildQueueIntroLabel({
+        dailyLimit,
+        dueCount: 0,
+        manualCount: 0,
+        newQueuedCount: 0,
+        sessionTopUpNewCount: 0,
+        upcomingCount: 0
+      }),
+      suspendedCount: 0,
+      tomorrowCount: 0,
+      totalCards: 0,
+      upcomingCount: 0
+    };
+  }
+
   const remainingNewSlots = Math.max(dailyLimit - newIntroducedTodayCount, 0);
   const newQueuedCount = Math.min(
     overview.newAvailableCount,
