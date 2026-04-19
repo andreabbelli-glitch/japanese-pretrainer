@@ -92,15 +92,21 @@ async function loadDashboardData(
       newQueuedCount: globalReviewOverview.newQueuedCount,
       queueLabel: globalReviewOverview.queueLabel
     },
-    totals: {
-      lessonsCompleted: media.reduce(
-        (sum, item) => sum + item.lessonsCompleted,
-        0
-      ),
-      lessonsTotal: media.reduce((sum, item) => sum + item.lessonsTotal, 0),
-      entriesKnown: media.reduce((sum, item) => sum + item.entriesKnown, 0),
-      entriesTotal: media.reduce((sum, item) => sum + item.entriesTotal, 0)
-    }
+    totals: media.reduce(
+      (acc, item) => {
+        acc.lessonsCompleted += item.lessonsCompleted;
+        acc.lessonsTotal += item.lessonsTotal;
+        acc.entriesKnown += item.entriesKnown;
+        acc.entriesTotal += item.entriesTotal;
+        return acc;
+      },
+      {
+        lessonsCompleted: 0,
+        lessonsTotal: 0,
+        entriesKnown: 0,
+        entriesTotal: 0
+      }
+    )
   };
 }
 
