@@ -14,8 +14,8 @@ romaji: kouchou sensei
 meaning_it: preside / il preside
 notes_it: >-
   Nel prologo è la forma con cui la madre presenta Clavell.
-  `{{校長先生|こう.ちょう.せん.せい}}` marca subito un registro scolastico formale:
-  il parlante riconosce il ruolo di autorità dell'Accademia.
+  `{{校長先生|こう.ちょう.せん.せい}}` marca subito un registro scolastico formale: il
+  parlante riconosce il ruolo di autorità dell'Accademia.
 :::
 :::card
 id: card-kouchou-sensei-recognition
@@ -38,9 +38,8 @@ romaji: tennyuu
 meaning_it: trasferimento / ingresso come studente trasferito
 notes_it: >-
   In Scarlet / Violet il protagonista non parte come studente generico ma come
-  persona che `{{転入|てんにゅう}}` nell'Accademia.
-  Nel flusso narrativo questo stato attiva dialoghi di presentazione, nuova
-  scuola e ambientamento.
+  persona che `{{転入|てんにゅう}}` nell'Accademia. Nel flusso narrativo questo stato
+  attiva dialoghi di presentazione, nuova scuola e ambientamento.
 :::
 :::card
 id: card-tennyuu-recognition
@@ -159,8 +158,8 @@ meaning_it: Rotom Phone / smartphone di gioco
 notes_it: >-
   È il telefono del protagonista in Scarlet / Violet. Quando il gioco nomina
   `スマホロトム`, non indica solo un oggetto narrativo: è l'interfaccia da cui si
-  aprono mappa e [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan).
-  Nel gioco segnala quindi funzioni di orientamento, registrazione e stato.
+  aprono mappa e [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan). Nel gioco segnala
+  quindi funzioni di orientamento, registrazione e stato.
 :::
 :::term
 id: term-touroku
@@ -170,8 +169,8 @@ romaji: touroku
 meaning_it: registrazione
 notes_it: >-
   Vuol dire inserire ufficialmente un dato nel sistema. Nel prologo compare
-  soprattutto con la [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan):
-  i Pokemon catturati vengono aggiunti automaticamente all'app senza inserimento
+  soprattutto con la [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan): i Pokemon
+  catturati vengono aggiunti automaticamente all'app senza inserimento
   manuale.
 :::
 :::card
@@ -195,9 +194,9 @@ romaji: shoubu
 meaning_it: sfida / match / confronto di battaglia
 notes_it: >-
   È la parola che Nemona usa continuamente per proporre un confronto vero.
-  Quando senti `{{勝負|しょうぶ}}しよう` o `{{勝負|しょうぶ}}の {{準備|じゅんび}}は
-  いい？`, non è un riferimento astratto al combattimento:
-  la scena entra in un tutorial o in un match concreto.
+  Quando senti `{{勝負|しょうぶ}}しよう` o `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`, non è un
+  riferimento astratto al combattimento: la scena entra in un tutorial o in un
+  match concreto.
 :::
 :::card
 id: card-shoubu-recognition
@@ -220,8 +219,8 @@ romaji: junbi
 meaning_it: preparazione / essere pronti
 notes_it: >-
   Segnala un check prima dell'azione successiva: mettere la divisa, scegliere il
-  Pokemon o confermare l'ingresso in battaglia.
-  Nel prologo compare spesso subito prima di un passaggio di stato.
+  Pokemon o confermare l'ingresso in battaglia. Nel prologo compare spesso
+  subito prima di un passaggio di stato.
 :::
 :::card
 id: card-junbi-recognition
@@ -244,9 +243,9 @@ romaji: jakuten
 meaning_it: debolezza / punto debole
 notes_it: >-
   In battaglia indica il tipo contro cui un Pokemon subisce più danni. Nel
-  primo match con Nemona collega la teoria dei tipi al risultato del turno:
-  se colpisci la `{{弱点|じゃくてん}}`, il danno sale
-  e compare spesso [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun).
+  primo match con Nemona collega la teoria dei tipi al risultato del turno: se
+  colpisci la `{{弱点|じゃくてん}}`, il danno sale e compare spesso [こうかは
+  ばつぐんだ！](term:term-kouka-wa-batsugun).
 :::
 :::card
 id: card-jakuten-recognition
@@ -294,8 +293,8 @@ romaji: gokinjo
 meaning_it: vicinato / persona del quartiere
 notes_it: >-
   Nel prologo Nemona lo usa per trasformare un rapporto geografico in un legame
-  sociale immediato. La variante `ご{{近所|きんじょ}}{{同士|どうし}}` sottolinea
-  che i due personaggi sono "del quartiere" allo stesso modo.
+  sociale immediato. La variante `ご{{近所|きんじょ}}{{同士|どうし}}` sottolinea che i due
+  personaggi sono "del quartiere" allo stesso modo.
 :::
 :::card
 id: card-gokinjo-recognition
@@ -317,8 +316,8 @@ reading: デビューせん
 romaji: debyuu sen
 meaning_it: match di debutto / prima sfida ufficiale
 notes_it: >-
-  Combina il prestito `デビュー` con `{{戦|せん}}` per marcare la prima vera prova
-  di un Pokemon o di un allenatore. Nemona lo usa per caricare il primo match di
+  Combina il prestito `デビュー` con `{{戦|せん}}` per marcare la prima vera prova di
+  un Pokemon o di un allenatore. Nemona lo usa per caricare il primo match di
   valore inaugurale.
 :::
 :::card
@@ -365,9 +364,9 @@ title: Istruzione o richiesta cortese
 meaning_it: per favore fai...
 notes_it: >-
   Nel prologo questa forma non suona come richiesta facoltativa ma come
-  istruzione gentile del sistema o degli adulti. Se la madre dice
-  `もう {{少|すこ}}し {{家|いえ}}で {{待|ま}}っててください`, il gioco applica un
-  blocco temporaneo e indica l'azione successiva.
+  istruzione gentile del sistema o degli adulti. Se la madre dice `もう
+  {{少|すこ}}し {{家|いえ}}で {{待|ま}}っててください`, il gioco applica un blocco temporaneo e
+  indica l'azione successiva.
 :::
 :::card
 id: card-te-kudasai-concept
@@ -390,8 +389,8 @@ meaning_it: sembra / pare
 notes_it: >-
   Compare spesso nei dialoghi per valutare una situazione senza dirla in modo
   assoluto. In apertura lo senti con oggetti non ancora arrivati o con i
-  Pokemon che sembrano aver preso simpatia per il protagonista;
-  il valore è di impressione, non di certezza secca.
+  Pokemon che sembrano aver preso simpatia per il protagonista; il valore è di
+  impressione, non di certezza secca.
 :::
 :::card
 id: card-mitai-concept
@@ -413,10 +412,10 @@ title: Finire per / fare per errore
 meaning_it: completare del tutto; oppure fare senza volerlo / per errore
 aliases: [～ちゃう, ～じゃう]
 notes_it: >-
-  Nel parlato di Nemona compare spesso nella forma contratta `～ちゃう`. Nel
-  primo match segnala un'abitudine che stava quasi partendo da sola:
-  `{{繰|く}}り{{出|だ}}しちゃう` vuol dire che per poco non mandava in campo il
-  team sbagliato.
+  Nel parlato di Nemona compare spesso nella forma contratta `～ちゃう`. Nel primo
+  match segnala un'abitudine che stava quasi partendo da sola:
+  `{{繰|く}}り{{出|だ}}しちゃう` vuol dire che per poco non mandava in campo il team
+  sbagliato.
 :::
 :::card
 id: card-te-shimau-concept
@@ -439,8 +438,8 @@ meaning_it: aver appena fatto qualcosa
 aliases: [～たばっかり]
 notes_it: >-
   Nel prologo segnala che il protagonista è all'inizio assoluto del percorso.
-  Quando Nemona dice `ポケモンを {{始|はじ}}めたばっかり`, il tutorial viene
-  calibrato su un profilo principiante.
+  Quando Nemona dice `ポケモンを {{始|はじ}}めたばっかり`, il tutorial viene calibrato su un
+  profilo principiante.
 :::
 :::card
 id: card-ta-bakari-concept
@@ -463,8 +462,8 @@ romaji: you chekku
 meaning_it: da controllare assolutamente / da non perdere
 notes_it: >-
   È un'etichetta colloquiale da tutorial o commento pratico. Quando Nemona dice
-  `ポケモントレーナーなら {{要|よう}}チェック`, sta segnalando che quell'app o
-  funzione merita attenzione immediata.
+  `ポケモントレーナーなら {{要|よう}}チェック`, sta segnalando che quell'app o funzione merita
+  attenzione immediata.
 :::
 :::card
 id: card-you-check-recognition
@@ -487,7 +486,8 @@ romaji: tegaki
 meaning_it: scritto a mano / compilato a mano
 notes_it: >-
   In questo prologo serve a far percepire il contrasto tra il vecchio Pokedex
-  compilato a mano e l'app automatica dello [スマホロトム](term:term-smartphone-rotom).
+  compilato a mano e l'app automatica dello [スマホロトム](term:term-smartphone-
+  rotom).
 :::
 :::card
 id: card-tegaki-recognition
@@ -532,9 +532,9 @@ pattern: ～づくし
 title: Pieno di... / tutto all'insegna di...
 meaning_it: tutto pieno di / una sequenza continua di
 notes_it: >-
-  Aggiunto a un nome, `～づくし` dice che una fase o un periodo è dominato da
-  quel tipo di esperienza. In `{{初|はじ}}めてづくし` la madre descrive i primi
-  giorni lontano da casa come una serie continua di novità.
+  Aggiunto a un nome, `～づくし` dice che una fase o un periodo è dominato da quel
+  tipo di esperienza. In `{{初|はじ}}めてづくし` la madre descrive i primi giorni
+  lontano da casa come una serie continua di novità.
 :::
 :::card
 id: card-zukushi-concept
@@ -563,9 +563,9 @@ example_jp: >-
 example_it: >-
   Nel Pokedex i Pokemon catturati vengono registrati automaticamente.
 notes_it: >-
-  Nel prologo non è solo una collezione:
-  è un'app attiva dello [スマホロトム](term:term-smartphone-rotom) che aggiorna
-  automaticamente le catture.
+  Nel prologo non è solo una collezione: è un'app attiva dello
+  [スマホロトム](term:term-smartphone-rotom) che aggiorna automaticamente le
+  catture.
 :::
 :::card
 id: card-tara-prologue-01-concept

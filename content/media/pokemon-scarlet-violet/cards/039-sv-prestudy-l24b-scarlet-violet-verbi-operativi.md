@@ -13,7 +13,7 @@ reading: ひみつだよ
 romaji: himitsu dayo
 meaning_it: è un segreto
 notes_it: >-
-  Espressione ricorrente della lezione L24 nell'area Reazioni. Rivelazione trattenuta, tono giocoso o misterioso.
+  Rivelazione trattenuta, tono giocoso o misterioso.
 :::
 :::card
 id: card-e085-himitsu-dayo-recognition
@@ -35,7 +35,7 @@ reading: 〜してもらえる？
 romaji: ~ shitemoraeru？
 meaning_it: potresti dare un'occhiata un attimo?
 notes_it: >-
-  Espressione ricorrente della lezione L24 nell'area Richieste. Richiesta comune nei dialoghi amichevoli.
+  Richiesta comune nei dialoghi amichevoli.
 :::
 :::card
 id: card-e086-shitemoraeru-recognition
@@ -57,7 +57,7 @@ reading: いってきます
 romaji: itte kimasu
 meaning_it: vado e torno
 notes_it: >-
-  Espressione ricorrente della lezione L24 nell'area Saluti / gestione dialogo. Formula di partenza.
+  Formula di partenza.
 :::
 :::card
 id: card-e087-itte-kimasu-recognition
@@ -78,7 +78,7 @@ pattern: だけ
 title: Solo
 meaning_it: solo
 notes_it: >-
-  Pattern della lezione L24 nella famiglia Particelle e struttura. Formazione: N + だけ. Molto frequente in spiegazioni e restrizioni leggere.
+  Formazione: N + だけ. Molto frequente in spiegazioni e restrizioni leggere.
 :::
 :::card
 id: card-g089-solo-concept
@@ -99,7 +99,7 @@ pattern: も
 title: Anche
 meaning_it: anche
 notes_it: >-
-  Pattern della lezione L24 nella famiglia Particelle e struttura. Formazione: N + も. Molto comune quando si aggiunge qualcuno/qualcosa.
+  Formazione: N + も. Molto comune quando si aggiunge qualcuno/qualcosa.
 :::
 :::card
 id: card-g090-anche-concept
@@ -120,7 +120,7 @@ pattern: や / など
 title: Tra gli altri / eccetera
 meaning_it: tra gli altri / eccetera
 notes_it: >-
-  Pattern della lezione L24 nella famiglia Particelle e struttura. Formazione: N や N など. Utile nelle liste non esaustive.
+  Formazione: N や N など. Utile nelle liste non esaustive.
 :::
 :::card
 id: card-g091-tra-gli-altri-eccetera-concept
@@ -141,7 +141,7 @@ pattern: し
 title: E inoltre / tra l'altro
 meaning_it: e inoltre / tra l'altro
 notes_it: >-
-  Pattern della lezione L24 nella famiglia Spiegazione, opinione, apparenza. Formazione: frase + し. Accumula motivi o caratteristiche.
+  Formazione: frase + し. Accumula motivi o caratteristiche.
 :::
 :::card
 id: card-g092-e-inoltre-tra-l-altro-concept
@@ -163,7 +163,7 @@ reading: ひろげる
 romaji: hiroge ru
 meaning_it: allargare / espandere
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v454-hiroge-ru-recognition
@@ -185,7 +185,7 @@ reading: しんけん
 romaji: shinken
 meaning_it: serio
 notes_it: >-
-  Voce della lezione L24 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v455-shinken-recognition
@@ -207,7 +207,7 @@ reading: めじるし
 romaji: mejirushi
 meaning_it: punto di riferimento
 notes_it: >-
-  Voce della lezione L24 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v456-mejirushi-recognition
@@ -229,7 +229,7 @@ reading: はやい
 romaji: hayai
 meaning_it: veloce
 notes_it: >-
-  Voce della lezione L24 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v457-hayai-recognition
@@ -251,7 +251,7 @@ reading: のぼる
 romaji: noboru
 meaning_it: salire / arrampicarsi
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v458-noboru-recognition
@@ -273,7 +273,7 @@ reading: はしご
 romaji: hashigo
 meaning_it: scala a pioli / ladder
 notes_it: >-
-  Voce della lezione L24 nell'area Esplorazione. Parte del discorso: sostantivo. Parola poco frequente ma molto pratica nei tratti-labirinto e nei cartelli.
+  Parola poco frequente ma molto pratica nei tratti-labirinto e nei cartelli.
 :::
 :::card
 id: card-v459-hashigo-recognition
@@ -295,7 +295,7 @@ reading: きょうりょくする
 romaji: kyouryoku suru
 meaning_it: cooperare
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v460-kyouryoku-suru-recognition
@@ -317,7 +317,7 @@ reading: たちよる
 romaji: tachi yoru
 meaning_it: fermarsi di passaggio
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v461-tachi-yoru-recognition
@@ -339,7 +339,7 @@ reading: かいふくさせる
 romaji: kaifuku saseru
 meaning_it: curare / far recuperare
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v462-kaifuku-saseru-recognition
@@ -361,7 +361,8 @@ reading: てごわい
 romaji: tegowai
 meaning_it: ostico / tosto
 notes_it: >-
-  Voce della lezione L24 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v463-tegowai-recognition
@@ -383,7 +384,7 @@ reading: ぽけもんのおとしもの
 romaji: pokemon nootoshimono
 meaning_it: materiali lasciati dai Pokémon
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v464-pokemon-nootoshimono-recognition
@@ -405,7 +406,7 @@ reading: あずける
 romaji: azuke ru
 meaning_it: depositare
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v465-azuke-ru-recognition
@@ -427,7 +428,7 @@ reading: かっくうけいたい
 romaji: kakkuukeitai
 meaning_it: forma planata
 notes_it: >-
-  Voce della lezione L24 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v466-kakkuukeitai-recognition
@@ -449,7 +450,7 @@ reading: しっそうけいたい
 romaji: shissoukeitai
 meaning_it: forma corsa
 notes_it: >-
-  Voce della lezione L24 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v467-shissoukeitai-recognition
@@ -471,7 +472,7 @@ reading: ゆうえいけいたい
 romaji: yuueikeitai
 meaning_it: forma nuoto
 notes_it: >-
-  Voce della lezione L24 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v468-yuueikeitai-recognition
@@ -493,7 +494,7 @@ reading: ぐらいどもーど
 romaji: guraidomoodo
 meaning_it: Glide Mode
 notes_it: >-
-  Voce della lezione L24 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v470-doraibumoodo
@@ -502,7 +503,7 @@ reading: どらいぶもーど
 romaji: doraibumoodo
 meaning_it: Drive Mode
 notes_it: >-
-  Voce della lezione L24 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v471-furootomoodo
@@ -511,7 +512,7 @@ reading: ふろーともーど
 romaji: furootomoodo
 meaning_it: Float Mode
 notes_it: >-
-  Voce della lezione L24 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v472-meguru
@@ -520,7 +521,7 @@ reading: めぐる
 romaji: meguru
 meaning_it: girare / visitare
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v472-meguru-recognition
@@ -542,7 +543,8 @@ reading: ならべかえ
 romaji: narabekae
 meaning_it: riordinare / sorting
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v473-narabekae-recognition
@@ -564,7 +566,7 @@ reading: にゅうしゅ
 romaji: nyuushu
 meaning_it: ottenimento
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v474-nyuushu-recognition
@@ -586,7 +588,8 @@ reading: ひっこめる
 romaji: hikkomeru
 meaning_it: ritirare (un Pokémon)
 notes_it: >-
-  Voce della lezione L24 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v475-hitsu-kome-ru-recognition

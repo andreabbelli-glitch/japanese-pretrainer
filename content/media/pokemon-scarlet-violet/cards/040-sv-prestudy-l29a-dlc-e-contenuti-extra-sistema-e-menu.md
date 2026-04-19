@@ -13,7 +13,7 @@ reading: ありがとうございました
 romaji: arigatougozaimashita
 meaning_it: grazie mille
 notes_it: >-
-  Espressione ricorrente della lezione L29 nell'area Saluti / gestione dialogo. Chiusura di negozi e servizi
+  Chiusura di negozi e servizi
 :::
 :::card
 id: card-e088-arigatougozaimashita-recognition
@@ -35,7 +35,7 @@ reading: いいよね
 romaji: iiyone
 meaning_it: va bene così, no? / ci sta, no?
 notes_it: >-
-  Espressione ricorrente della lezione L29 nell'area Reazioni. Conferma colloquiale di assenso
+  Conferma colloquiale di assenso
 :::
 :::card
 id: card-e089-iiyone-recognition
@@ -82,7 +82,8 @@ reading: キタカミ
 romaji: kitakami
 meaning_it: Kitakami
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v477-buruuberiigakuen
@@ -91,7 +92,8 @@ reading: ブルーベリーがくえん
 romaji: buruuberiigakuen
 meaning_it: Blueberry Academy
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v478-oogapon
@@ -100,7 +102,8 @@ reading: オーガポン
 romaji: oogapon
 meaning_it: Ogerpon
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v479-kuria
@@ -109,7 +112,8 @@ reading: クリア
 romaji: kuria
 meaning_it: completato / clear
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v479-kuria-recognition
@@ -131,7 +135,8 @@ reading: ルール
 romaji: ruuru
 meaning_it: regola
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v480-ruuru-recognition
@@ -153,7 +158,8 @@ reading: びーぴー
 romaji: biipii
 meaning_it: BP / Blueberry Points
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::term
 id: term-v482-kakunin
@@ -162,7 +168,7 @@ reading: かくにん
 romaji: kakunin
 meaning_it: conferma / controllo
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v482-kakunin-recognition
@@ -184,7 +190,7 @@ reading: おまけ
 romaji: omake
 meaning_it: bonus / omaggio
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Piccola parola di negozio che indica un extra gratuito o un bonus aggiunto.
+  Piccola parola di negozio che indica un extra gratuito o un bonus aggiunto.
 :::
 :::card
 id: card-v483-omake-recognition
@@ -206,7 +212,8 @@ reading: どうくつ
 romaji: doukutsu
 meaning_it: grotta
 notes_it: >-
-  Voce della lezione L29 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v484-doukutsu-recognition
@@ -228,7 +235,8 @@ reading: テラリウムドーム
 romaji: terariumudoomu
 meaning_it: Terarium Dome
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v487-shokudou
@@ -237,7 +245,8 @@ reading: しょくどう
 romaji: shokudou
 meaning_it: mensa / tavola calda
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v487-shokudou-recognition
@@ -259,7 +268,8 @@ reading: コーストエリア
 romaji: koosutoeria
 meaning_it: Coast Biome
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v489-seikai
@@ -268,7 +278,8 @@ reading: せいかい
 romaji: seikai
 meaning_it: risposta corretta
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v489-seikai-recognition
@@ -290,7 +301,7 @@ reading: おもだか
 romaji: omodaka
 meaning_it: Geeta
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v491-sabanaeria
@@ -299,7 +310,8 @@ reading: サバンナエリア
 romaji: sabanaeria
 meaning_it: Savanna Biome
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v492-pooraeria
@@ -308,7 +320,8 @@ reading: ポーラエリア
 romaji: pooraeria
 meaning_it: Polar Biome
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v493-daisakusen
@@ -317,7 +330,8 @@ reading: だいさくせん
 romaji: daisakusen
 meaning_it: grande operazione
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v493-daisakusen-recognition
@@ -339,7 +353,8 @@ reading: ピック
 romaji: pikku
 meaning_it: stuzzicadente / pick
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v494-pikku-recognition
@@ -361,7 +376,8 @@ reading: ちょうせんしゃ
 romaji: chousensha
 meaning_it: sfidante
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v495-chousensha-recognition
@@ -383,7 +399,8 @@ reading: ブルレク
 romaji: burureku
 meaning_it: Blueberry Quest
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v497-sakusen
@@ -392,7 +409,8 @@ reading: さくせん
 romaji: sakusen
 meaning_it: strategia / operazione
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v497-sakusen-recognition
@@ -414,7 +432,8 @@ reading: キャニオンエリア
 romaji: kyanioneria
 meaning_it: Canyon Biome
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v499-misshon
@@ -423,7 +442,8 @@ reading: ミッション
 romaji: misshon
 meaning_it: missione
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v499-misshon-recognition
@@ -445,7 +465,8 @@ reading: ヒント
 romaji: hinto
 meaning_it: indizio
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v500-hinto-recognition
@@ -467,7 +488,7 @@ reading: だいすき
 romaji: daisuki
 meaning_it: piacere moltissimo
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v501-daisuki-recognition
@@ -489,7 +510,8 @@ reading: かんばん
 romaji: kanban
 meaning_it: insegna / cartello
 notes_it: >-
-  Voce della lezione L29 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v502-kanban-recognition
@@ -511,7 +533,8 @@ reading: うけつけ
 romaji: uketsuke
 meaning_it: reception / sportello
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v504-uketsuke-recognition
@@ -533,7 +556,8 @@ reading: かんそく
 romaji: kansoku
 meaning_it: osservazione
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v505-kansoku-recognition
@@ -555,7 +579,8 @@ reading: かいし
 romaji: kaishi
 meaning_it: inizio / avvio
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v506-kaishi-recognition
@@ -577,7 +602,7 @@ reading: ちしき
 romaji: chishiki
 meaning_it: conoscenza
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v507-chishiki-recognition
@@ -599,7 +624,8 @@ reading: さつえい
 romaji: satsuei
 meaning_it: ripresa / scatto fotografico
 notes_it: >-
-  Voce della lezione L29 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v508-satsuei-recognition

@@ -494,9 +494,9 @@ card_type: recognition
 front: '{{一括|いっかつ}}{{受|う}}け{{取|と}}り'
 back: riscuoti tutto insieme / bulk claim
 example_jp: >-
-  {{一括|いっかつ}}{{受|う}}け{{取|と}}りで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
+  {{一括|いっかつ}}{{受|う}}け{{取|と}}りでミッションの{{報酬|ほうしゅう}}をすべて{{受|う}}け{{取|と}}る。
 example_it: >-
-  Riscuoti tutto in una volta.
+  Riscuoto tutte le ricompense delle missioni tramite riscossione globale.
 notes_it: >-
   È un comando di velocità: ti evita il claim ripetuto voce per voce.
 tags: [duel-plays, app, ui, action]
@@ -528,9 +528,9 @@ card_type: recognition
 front: '{{期限|きげん}}'
 back: scadenza / termine valido
 example_jp: >-
-  {{期限|きげん}}までに{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
+  {{受|う}}け{{取|と}}り{{期限|きげん}}が{{切|き}}れる{{前|まえ}}にプレゼントを{{開|ひら}}く。
 example_it: >-
-  Riscuoti la reward entro la scadenza.
+  Apro i regali prima che la scadenza per il ritiro passi.
 notes_it: >-
   È il nucleo lessicale che poi ritrovi dentro molti label più lunghi. Se lo
   riconosci, la UI sta parlando di tempo residuo.
@@ -564,9 +564,9 @@ card_type: recognition
 front: '{{日時|にちじ}}'
 back: data e ora / date-time
 example_jp: >-
-  {{獲得|かくとく}}{{日時|にちじ}}を{{確認|かくにん}}する。
+  {{獲得|かくとく}}{{日時|にちじ}}が{{新|あたら}}しいカードから{{順番|じゅんばん}}に{{確認|かくにん}}する。
 example_it: >-
-  Controlla la data e l'ora di ottenimento.
+  Controllo le carte in ordine partendo da quelle ottenute più di recente.
 notes_it: >-
   Indica il momento registrato di un reward o di un risultato, non la sua
   scadenza.
@@ -582,9 +582,9 @@ card_type: recognition
 front: 'ステージ{{選択|せんたく}}'
 back: selezione stage / stage select
 example_jp: >-
-  ステージ{{選択|せんたく}}で{{難易度|なん.い.ど}}を{{選|えら}}ぶ。
+  ステージ{{選択|せんたく}}で、{{一番|いちばん}}{{難易度|なん.い.ど}}が{{高|たか}}いバトルを{{選|えら}}ぶ。
 example_it: >-
-  Scegli la difficoltà nella schermata stage select.
+  Nella schermata di selezione livello, scelgo la battaglia con la difficoltà più alta.
 notes_it: >-
   Qui confluiscono livello, costo, reward preview e pulsanti di ingresso.
 tags: [duel-plays, app, ui, stage]
@@ -618,9 +618,9 @@ card_type: recognition
 front: '{{提供割合|てい.きょう.わり.あい}}'
 back: percentuali di apparizione / rates
 example_jp: >-
-  {{提供割合|てい.きょう.わり.あい}}で{{内容|ないよう}}を{{確認|かくにん}}する。
+  パックを{{購入|こうにゅう}}する{{前|まえ}}に、カードの{{提供割合|てい.きょう.わり.あい}}を{{確認|かくにん}}する。
 example_it: >-
-  Controlla i rates e il contenuto.
+  Prima di comprare il pacchetto, verifico i rates di drop delle carte.
 notes_it: >-
   `{{提供割合|てい.きょう.わり.あい}}` è la schermata dei drop rate: non ti dice
   che cosa fa il pack, ma con quale probabilità può contenere certe carte o
@@ -655,9 +655,9 @@ card_type: recognition
 front: '{{所持|しょじ}}チケット'
 back: ticket posseduti / owned tickets
 example_jp: >-
-  {{所持|しょじ}}チケットは{{4枚|よんまい}}ある。
+  パックチケットの{{所持|しょじ}}{{数|すう}}が{{不足|ふそく}}しているので、ジェムで{{買|か}}う。
 example_it: >-
-  Hai 4 ticket disponibili.
+  Siccome la quantità di ticket posseduti è insufficiente, compro con le gemme.
 notes_it: >-
   È lo stock immediato che il popup userà per decidere fino a dove puoi arrivare.
   Non è il nome della valuta in astratto, ma il numero spendibile adesso.
@@ -673,9 +673,9 @@ card_type: recognition
 front: '{{購入個数|こう.にゅう.こ.すう}}'
 back: quantità da acquistare / purchase quantity
 example_jp: >-
-  {{購入個数|こう.にゅう.こ.すう}}を{{4個|よんこ}}にする。
+  {{購入個数|こう.にゅう.こ.すう}}を{{10|じゅう}}にセットして、パックを{{引|ひ}}く。
 example_it: >-
-  Imposta la quantità da acquistare su 4.
+  Imposto la quantità di acquisto a 10 e sbusto i pacchetti.
 notes_it: >-
   Non è il costo: è il numero di unità che stai per comprare.
 tags: [duel-plays, app, ui, shop]
@@ -690,9 +690,9 @@ card_type: recognition
 front: '{{交換期間|こう.かん.き.かん}}'
 back: periodo di scambio / exchange period
 example_jp: >-
-  {{交換期間|こう.かん.き.かん}}は{{3月26日|さんがつにじゅうろくにち}}までだ。
+  カードの{{交換期間|こう.かん.き.かん}}が{{終了時|しゅう.りょう.じ}}に{{近|ちか}}づいている。
 example_it: >-
-  Il periodo di scambio dura fino al 26 marzo.
+  Il periodo di scambio della carta si sta avvicinando al termine.
 notes_it: >-
   È il label che ti dice se quello scambio è ancora nel suo intervallo valido.
 tags: [duel-plays, app, ui, time]
@@ -724,9 +724,9 @@ card_type: recognition
 front: '{{構築|こうちく}}{{済|ず}}み'
 back: già costruito / prebuilt
 example_jp: >-
-  {{構築|こうちく}}{{済|ず}}みデッキを{{買|か}}う。
+  {{初心|しょしん}}{{者|しゃ}}には、すぐに{{対戦|たいせん}}できる{{構築|こうちく}}{{済|ず}}みデッキをすすめる。
 example_it: >-
-  Compra un deck già costruito.
+  Ai principianti consiglio un deck pre-costruito pronto a combattere.
 notes_it: >-
   Letto da solo, chiarisce subito i label composti che lo contengono:
   l'oggetto è già pronto e non richiede deck building.
@@ -797,9 +797,9 @@ card_type: recognition
 front: '{{不足|ふそく}}'
 back: insufficienza / mancanza
 example_jp: >-
-  DMポイントが{{不足|ふそく}}している。
+  カードを{{生成|せいせい}}するためのDMポイントが{{不足|ふそく}}している。
 example_it: >-
-  I DM Points non sono sufficienti.
+  I DM points per generare la carta sono insufficienti.
 notes_it: >-
   Nei popup di blocco segnala che il problema è la risorsa disponibile.
 tags: [duel-plays, app, ui, status, kanji]
@@ -918,9 +918,9 @@ card_type: recognition
 front: '{{挑戦|ちょうせん}}'
 back: tentativo / sfida / challenge
 example_jp: >-
-  このステージに{{2回|にかい}}{{挑戦|ちょうせん}}する。
+  {{新|あたら}}しいデッキを{{使|つか}}って、レジェンドバトルに{{挑戦|ちょうせん}}する。
 example_it: >-
-  Tenta questo stage due volte.
+  Tento il Legend Battle usando il mazzo nuovo.
 notes_it: >-
   È il verbo dell'ingresso vero nella sfida, spesso collegato a un consumo di
   ticket o di altra risorsa.

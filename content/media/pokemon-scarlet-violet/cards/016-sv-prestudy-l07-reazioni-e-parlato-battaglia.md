@@ -41,11 +41,11 @@ meaning_it: dover fare...
 notes_it: >-
   Questa struttura esprime obbligo: “devo fare X”, “bisogna fare X”. Si forma
   partendo dalla forma negativa del verbo: {{行|い}}く → {{行|い}}かない →
-  {{行|い}}かなければならない / {{行|い}}かないといけない. Il senso letterale è
-  simile a “se non lo fai, non va bene”, per questo il risultato finale è
-  “devi farlo”. ～なければならない suona più rigido o scritto; ～ないといけない è
-  più comune nel parlato dei dialoghi. Nei giochi appare spesso per obiettivi,
-  istruzioni o cose necessarie per proseguire.
+  {{行|い}}かなければならない / {{行|い}}かないといけない. Il senso letterale è simile a “se non lo
+  fai, non va bene”, per questo il risultato finale è “devi farlo”. ～なければならない
+  suona più rigido o scritto; ～ないといけない è più comune nel parlato dei dialoghi.
+  Nei giochi appare spesso per obiettivi, istruzioni o cose necessarie per
+  proseguire.
 :::
 :::card
 id: card-g019-dover-fare-concept
@@ -69,10 +69,10 @@ notes_it: >-
   La forma potenziale dice che un'azione è possibile o che qualcuno è capace di
   farla: “posso andare”, “riesco a mangiare”, “si può entrare”. Con molti verbi
   in -u la vocale cambia in -eる: {{行|い}}く → {{行|い}}ける, {{戦|たたか}}う →
-  {{戦|たたか}}える. Con i verbi in -る: {{食|た}}べる → {{食|た}}べられる.
-  Eccezioni importanti: する → できる, {{来|く}}る → {{来|こ}}られる. Nei testi
-  di gioco questa forma segnala molto spesso cosa puoi fare adesso e cosa invece
-  non è ancora disponibile.
+  {{戦|たたか}}える. Con i verbi in -る: {{食|た}}べる → {{食|た}}べられる. Eccezioni
+  importanti: する → できる, {{来|く}}る → {{来|こ}}られる. Nei testi di gioco questa forma
+  segnala molto spesso cosa puoi fare adesso e cosa invece non è ancora
+  disponibile.
 :::
 :::card
 id: card-g020-poter-fare-concept
@@ -96,9 +96,9 @@ notes_it: >-
   La た形 è la forma base del passato dei verbi, ma il suo valore più utile da
   ricordare è questo: indica un'azione vista come completata. Da sola spesso
   corrisponde a “ho fatto / ha fatto”, ma serve anche come mattone per molte
-  altre strutture: ～たら, ～たあとで, ～てしまった e così via. Quindi non va
-  pensata solo come “passato italiano”, ma come forma di evento già avvenuto o
-  già concluso. Nei messaggi di gioco compare spesso quando qualcosa è stato
+  altre strutture: ～たら, ～たあとで, ～てしまった e così via. Quindi non va pensata solo
+  come “passato italiano”, ma come forma di evento già avvenuto o già
+  concluso. Nei messaggi di gioco compare spesso quando qualcosa è stato
   ottenuto, visto, vinto o finito.
 :::
 :::card
@@ -125,11 +125,11 @@ notes_it: >-
   affidabile”: non basta che qualcosa sia fatto correttamente, conta che sia
   fatto con tenuta, energia e sostanza. Per questo può voler dire “bene”, “con
   attenzione”, “seriamente”, “con fermezza”, “senza cedere” o “in modo
-  robusto”, a seconda del contesto. A differenza di ちゃんと, che mette al
-  centro lo standard da rispettare, しっかり mette al centro la solidità del
-  processo o della persona. Nei dialoghi di Pokémon compare bene in frasi come
-  しっかり{{見|み}}る, しっかり{{覚|おぼ}}える, しっかり{{戦|たたか}}う:
-  osservare con attenzione, ricordare bene, combattere con fermezza.
+  robusto”, a seconda del contesto. A differenza di ちゃんと, che mette al centro
+  lo standard da rispettare, しっかり mette al centro la solidità del processo o
+  della persona. Nei dialoghi di Pokémon compare bene in frasi come
+  しっかり{{見|み}}る, しっかり{{覚|おぼ}}える, しっかり{{戦|たたか}}う: osservare con attenzione,
+  ricordare bene, combattere con fermezza.
 :::
 :::card
 id: card-v077-shikkari-recognition
@@ -258,14 +258,14 @@ reading: とくこう
 romaji: tokukou
 meaning_it: Attacco Speciale
 notes_it: >-
-  Nel lessico di Pokémon, 特攻 è l'abbreviazione di 特殊攻撃
-  (とくしゅこうげき), cioè “Attacco Speciale”. Per questo, nei giochi si legge
-  とくこう e non va interpretato come la parola comune 特攻 letta とっこう.
-  Fuori dal contesto Pokémon, 特攻 come parola autonoma di solito significa
-  “assalto speciale / attacco suicida” ed è un'altra cosa. Nei menu e nelle
-  schermate di stato, invece, 特攻 indica semplicemente la statistica usata
-  dalle mosse speciali, quindi va distinta da 攻撃 “Attacco” fisico. È utile
-  ricordare anche la coppia con 特防, che è la Difesa Speciale.
+  Nel lessico di Pokémon, 特攻 è l'abbreviazione di 特殊攻撃 (とくしゅこうげき), cioè
+  “Attacco Speciale”. Per questo, nei giochi si legge とくこう e non va
+  interpretato come la parola comune 特攻 letta とっこう. Fuori dal contesto
+  Pokémon, 特攻 come parola autonoma di solito significa “assalto speciale /
+  attacco suicida” ed è un'altra cosa. Nei menu e nelle schermate di stato,
+  invece, 特攻 indica semplicemente la statistica usata dalle mosse speciali,
+  quindi va distinta da 攻撃 “Attacco” fisico. È utile ricordare anche la coppia
+  con 特防, che è la Difesa Speciale.
 :::
 :::card
 id: card-v083-tokukou-recognition
@@ -290,8 +290,8 @@ notes_it: >-
   È un avverbio molto usato per organizzare il discorso. Significa “prima di
   tutto”, “per cominciare”, “intanto” e introduce il primo passo di una
   spiegazione o di una sequenza di azioni. Non indica solo tempo: serve anche a
-  guidare chi ascolta. Nei tutorial e nelle istruzioni di gioco è frequentissimo,
-  perché aiuta a scandire i passaggi: まず X, つぎに Y.
+  guidare chi ascolta. Nei tutorial e nelle istruzioni di gioco è
+  frequentissimo, perché aiuta a scandire i passaggi: まず X, つぎに Y.
 :::
 :::card
 id: card-v084-mazu-recognition
@@ -316,8 +316,8 @@ notes_it: >-
   È la sigla inglese HP, letta in giapponese えいちぴー. Nella lingua dei giochi
   indica i punti salute, cioè quanta energia vitale resta a un Pokémon. Se gli
   HP arrivano a 0, il Pokémon non può più combattere. In giapponese compare
-  spesso con verbi come {{回復|かいふく}}する “recuperare”, {{減|へ}}る
-  “diminuire” e {{削|けず}}る “consumare/ridurre”.
+  spesso con verbi come {{回復|かいふく}}する “recuperare”, {{減|へ}}る “diminuire” e
+  {{削|けず}}る “consumare/ridurre”.
 :::
 :::card
 id: card-v085-eichipii-recognition

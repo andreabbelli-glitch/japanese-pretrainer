@@ -13,7 +13,7 @@ reading: じゅぎょうを おもいだす
 romaji: jugyou wo omoidasu
 meaning_it: ripassare / ricordare la lezione
 notes_it: >-
-  Espressione ricorrente della lezione L29 nell'area Storia/Scuola. Voce di menu scolastica per review e ripasso.
+  Voce di menu scolastica per review e ripasso.
 :::
 :::term
 id: term-v540-kakuritsu
@@ -22,7 +22,8 @@ reading: かくりつ
 romaji: kakuritsu
 meaning_it: probabilità
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v540-kakuritsu-recognition
@@ -44,7 +45,7 @@ reading: ほんもの
 romaji: honmono
 meaning_it: vero / autentico
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v541-honmono-recognition
@@ -66,7 +67,7 @@ reading: ようす
 romaji: yousu
 meaning_it: aspetto / situazione
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v542-yousu-recognition
@@ -88,7 +89,8 @@ reading: ポケモンウォッシュ
 romaji: pokemonwosshu
 meaning_it: Pokémon Wash
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v544-meiwaku
@@ -97,7 +99,7 @@ reading: めいわく
 romaji: meiwaku
 meaning_it: disturbo / fastidio
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v544-meiwaku-recognition
@@ -119,7 +121,7 @@ reading: ようい
 romaji: youi
 meaning_it: preparazione
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v545-youi-recognition
@@ -141,7 +143,8 @@ reading: しょうたい
 romaji: shoutai
 meaning_it: vera identità
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v546-shoutai-recognition
@@ -163,7 +166,7 @@ reading: しょうかい
 romaji: shoukai
 meaning_it: presentazione / introduzione
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v547-shoukai-recognition
@@ -185,7 +188,8 @@ reading: ひみつのメニュー
 romaji: himitsunomenyuu
 meaning_it: menu segreto
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v549-kenkyuujo
@@ -194,7 +198,8 @@ reading: けんきゅうじょ
 romaji: kenkyuujo
 meaning_it: istituto di ricerca
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v549-kenkyuujo-recognition
@@ -216,7 +221,8 @@ reading: とくしゅ
 romaji: tokushu
 meaning_it: speciale
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: na-aggettivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v550-tokushu-recognition
@@ -238,7 +244,7 @@ reading: しっぱい
 romaji: shippai
 meaning_it: errore / fallimento
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v551-shippai-recognition
@@ -260,7 +266,8 @@ reading: おうえん
 romaji: ouen
 meaning_it: incitamento / cheer
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v552-ouen-recognition
@@ -282,7 +289,8 @@ reading: ほうしゅう
 romaji: houshuu
 meaning_it: ricompensa
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v553-houshuu-recognition
@@ -304,7 +312,8 @@ reading: たんさく
 romaji: tansaku
 meaning_it: esplorazione
 notes_it: >-
-  Voce della lezione L29 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v554-tansaku-recognition
@@ -326,7 +335,8 @@ reading: シェア
 romaji: shiea
 meaning_it: condivisione
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v555-shiea-recognition
@@ -348,7 +358,8 @@ reading: げんしょう
 romaji: genshou
 meaning_it: fenomeno
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v556-genshou-recognition
@@ -370,7 +381,8 @@ reading: おんがく
 romaji: ongaku
 meaning_it: musica
 notes_it: >-
-  Voce della lezione L29 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v557-ongaku-recognition
@@ -392,7 +404,8 @@ reading: おにたいじフェス
 romaji: onitaijifesu
 meaning_it: Ogre Oustin' festival
 notes_it: >-
-  Voce della lezione L29 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v559-kaisai
@@ -401,7 +414,8 @@ reading: かいさい
 romaji: kaisai
 meaning_it: svolgimento / organizzazione
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v559-kaisai-recognition
@@ -423,7 +437,8 @@ reading: しょうたい
 romaji: shoutai
 meaning_it: invito
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v560-shoutai-recognition
@@ -445,7 +460,8 @@ reading: こうばいぶ
 romaji: koubaibu
 meaning_it: spaccio scolastico
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v561-koubaibu-recognition
@@ -467,7 +483,7 @@ reading: かなり
 romaji: kanari
 meaning_it: parecchio
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v562-kanari-recognition
@@ -489,7 +505,8 @@ reading: こうりゅう
 romaji: kouryuu
 meaning_it: scambio / interazione
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v563-kouryuu-recognition
@@ -511,7 +528,8 @@ reading: こんらん
 romaji: konran
 meaning_it: confusione
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v564-konran-recognition
@@ -533,7 +551,8 @@ reading: のうりょくへんか
 romaji: nouryokuhenka
 meaning_it: variazione delle statistiche
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v565-nouryokuhenka-recognition
@@ -555,7 +574,8 @@ reading: しんにゅうしゃ
 romaji: shinyuusha
 meaning_it: intruso
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v566-shinyuusha-recognition
@@ -577,7 +597,8 @@ reading: マジカルこうかん
 romaji: majikarukoukan
 meaning_it: scambio magico / surprise trade
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v567-majikarukoukan-recognition
@@ -599,7 +620,8 @@ reading: たんけん
 romaji: tanken
 meaning_it: esplorazione
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v568-tanken-recognition
@@ -621,7 +643,8 @@ reading: じょうしょう
 romaji: joushou
 meaning_it: salita / aumento
 notes_it: >-
-  Voce della lezione L29 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v569-joushou-recognition
@@ -643,7 +666,8 @@ reading: まいご
 romaji: maigo
 meaning_it: essere smarrito
 notes_it: >-
-  Voce della lezione L29 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v570-maigo-recognition

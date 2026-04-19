@@ -13,7 +13,8 @@ reading: あいて
 romaji: aite
 meaning_it: avversario
 notes_it: >-
-  Voce della lezione L01 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v001-aite-recognition
@@ -35,7 +36,7 @@ reading: できません
 romaji: dekimasen
 meaning_it: non si può / impossibile
 notes_it: >-
-  Espressione ricorrente della lezione L01 nell'area Sistema/UI. Messaggio di sistema onnipresente
+  Messaggio di sistema molto frequente: segnala che l'azione non puo' essere eseguita.
 :::
 :::card
 id: card-e001-dekimasen-recognition
@@ -58,8 +59,8 @@ meaning_it: spiega, giustifica o mette enfasi su qualcosa
 notes_it: >-
   Si usa quando il parlante sta spiegando il motivo, chiarendo un fatto o
   insistendo su un punto: "e che...", "il fatto e che...". Forma: frase piana
-  + のだ / んだ. Nei dialoghi fa sentire che dietro la frase c'e una spiegazione
-  o una presa di posizione.
+  + のだ / んだ. Nei dialoghi fa sentire che dietro la frase c'e una spiegazione o
+  una presa di posizione.
 :::
 :::card
 id: card-g001-spiegazione-enfasi-concept
@@ -81,7 +82,7 @@ reading: たりない / たりません
 romaji: tarinai / tarimasen
 meaning_it: non basta / insufficiente
 notes_it: >-
-  Espressione ricorrente della lezione L01 nell'area Sistema/UI. Messaggi su soldi, LP o materiali insufficienti.
+  Messaggio tipico quando soldi, LP o materiali non bastano.
 :::
 :::card
 id: card-e002-tarinai-tarimasen-recognition
@@ -102,7 +103,7 @@ pattern: ～かな
 title: Mi chiedo se...
 meaning_it: mi chiedo se...
 notes_it: >-
-  Pattern della lezione L01 nella famiglia Colloquiale da dialogo. Formazione: phrase + かな. Comunissimo nei pensieri ad alta voce.
+  Formazione: phrase + かな. Comunissimo nei pensieri ad alta voce.
 :::
 :::card
 id: card-g002-mi-chiedo-se-concept
@@ -124,7 +125,8 @@ reading: ジム
 romaji: jimu
 meaning_it: palestra Pokémon
 notes_it: >-
-  Voce della lezione L01 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v003-jimu-recognition
@@ -146,8 +148,8 @@ title: Stato in corso / stato risultante
 meaning_it: stare facendo / essere in uno stato risultante
 notes_it: >-
   Con un verbo d'azione puo voler dire che l'azione e in corso. Con molti
-  verbi indica invece lo stato risultante: すわっている = essere seduto,
-  しっている = sapere. Va letto dal tipo di verbo e dal contesto.
+  verbi indica invece lo stato risultante: すわっている = essere seduto, しっている =
+  sapere. Va letto dal tipo di verbo e dal contesto.
 :::
 :::card
 id: card-g003-stato-in-corso-stato-risultante-concept
@@ -169,7 +171,7 @@ reading: どう
 romaji: dou
 meaning_it: come
 notes_it: >-
-  Voce della lezione L01 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v004-dou-recognition
@@ -191,7 +193,8 @@ reading: たいぷ
 romaji: taipu
 meaning_it: tipo
 notes_it: >-
-  Voce della lezione L01 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v006-taipu-recognition
@@ -213,7 +216,8 @@ reading: チャンピオン
 romaji: chanpion
 meaning_it: campione
 notes_it: >-
-  Voce della lezione L01 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v007-chanpion-recognition
@@ -235,7 +239,7 @@ reading: せんせい
 romaji: sensei
 meaning_it: insegnante
 notes_it: >-
-  Voce della lezione L01 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v008-sensei-recognition
@@ -257,7 +261,7 @@ reading: いつ
 romaji: itsu
 meaning_it: quando
 notes_it: >-
-  Voce della lezione L01 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v010-itsu-recognition
@@ -279,7 +283,8 @@ reading: ばとる
 romaji: batoru
 meaning_it: battaglia
 notes_it: >-
-  Voce della lezione L01 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v011-batoru-recognition

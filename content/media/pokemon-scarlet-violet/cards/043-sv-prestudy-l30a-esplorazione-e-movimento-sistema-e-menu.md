@@ -13,7 +13,7 @@ reading: くやしいけど
 romaji: kuyashiikedo
 meaning_it: che rabbia, però…
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Reazioni. Post-sconfitta e ammissione riluttante
+  Post-sconfitta e ammissione riluttante
 :::
 :::card
 id: card-e090-kuyashiikedo-recognition
@@ -35,7 +35,7 @@ reading: 〜してみましょう
 romaji: shitemimashou
 meaning_it: proviamo a…
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Azione / proposta. Istruzioni/tutorial più gentili
+  Istruzioni/tutorial più gentili
 :::
 :::card
 id: card-e091-shitemimashou-recognition
@@ -57,7 +57,7 @@ reading: おかえり
 romaji: okaeri
 meaning_it: bentornato
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Saluti / gestione dialogo. Rientro a casa/base.
+  Rientro a casa/base.
 :::
 :::card
 id: card-e092-okaeri-recognition
@@ -79,7 +79,7 @@ reading: ただいま
 romaji: tadaima
 meaning_it: sono tornato
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Saluti / gestione dialogo. Rientro del parlante.
+  Rientro del parlante.
 :::
 :::card
 id: card-e093-tadaima-recognition
@@ -152,7 +152,8 @@ meaning_it: una cosa come… / che…!
 aliases:
 - 〜なんか
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Colloquiale da dialogo. Formazione: nome / frase + なんて. Usato spesso per stupore, giudizio o enfasi nei dialoghi NPC.
+  Formazione: nome / frase + なんて. Usato spesso per stupore, giudizio o enfasi
+  nei dialoghi NPC.
 :::
 :::card
 id: card-g096-una-cosa-come-che-concept
@@ -173,7 +174,8 @@ pattern: ～ために
 title: Per / allo scopo di
 meaning_it: per / allo scopo di
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Desiderio, intenzione, possibilità. Formazione: dizionario / nome + の + ために. Molto utile nei tutorial su obiettivi, requisiti e benefici.
+  Formazione: dizionario / nome + の + ために. Molto utile nei tutorial su
+  obiettivi, requisiti e benefici.
 :::
 :::card
 id: card-g097-per-allo-scopo-di-concept
@@ -195,7 +197,7 @@ reading: ぬける
 romaji: nukeru
 meaning_it: passare attraverso / uscire da
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: verbo. Ricorre in grotte, scorciatoie e cartelli di percorso.
+  Ricorre in grotte, scorciatoie e cartelli di percorso.
 :::
 :::card
 id: card-v485-nukeru-recognition
@@ -217,7 +219,7 @@ reading: ぬけみち
 romaji: nukemichi
 meaning_it: scorciatoia / passaggio alternativo
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile nei cartelli che indicano percorsi alternativi e shortcut.
+  Utile nei cartelli che indicano percorsi alternativi e shortcut.
 :::
 :::card
 id: card-v503-nukemichi-recognition
@@ -239,7 +241,8 @@ reading: しはらい
 romaji: shiharai
 meaning_it: pagamento
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v571-shiharai-recognition
@@ -261,7 +264,7 @@ reading: くみ
 romaji: kumi
 meaning_it: squadra / gruppo
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v572-kumi-recognition
@@ -283,7 +286,7 @@ reading: デリバードポーチ
 romaji: deribaadopoochi
 meaning_it: Delibird Presents
 notes_it: >-
-  Voce della lezione L30 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v574-purofiiru
@@ -292,7 +295,8 @@ reading: プロフィール
 romaji: purofiiru
 meaning_it: profilo
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v574-purofiiru-recognition
@@ -314,7 +318,7 @@ reading: べつに
 romaji: betsuni
 meaning_it: non particolarmente
 notes_it: >-
-  Voce della lezione L30 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v575-betsuni-recognition
@@ -336,7 +340,8 @@ reading: ぐみみあわせ
 romaji: gumimiawase
 meaning_it: combinazione
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v576-gumimiawase-recognition
@@ -358,7 +363,8 @@ reading: たいおう
 romaji: taiou
 meaning_it: compatibilità / corrispondenza
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v577-taiou-recognition
@@ -380,7 +386,8 @@ reading: さかみち
 romaji: sakamichi
 meaning_it: strada in salita
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v578-sakamichi-recognition
@@ -402,7 +409,7 @@ reading: そうち
 romaji: souchi
 meaning_it: dispositivo
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v579-souchi-recognition
@@ -424,7 +431,8 @@ reading: じどり
 romaji: jidori
 meaning_it: selfie
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v580-jidori-recognition
@@ -446,7 +454,8 @@ reading: とうちゃく
 romaji: touchaku
 meaning_it: arrivo
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v581-touchaku-recognition
@@ -468,7 +477,8 @@ reading: とくべつこうし
 romaji: tokubetsukoushi
 meaning_it: docente speciale
 notes_it: >-
-  Voce della lezione L30 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v582-tokubetsukoushi-recognition
@@ -490,7 +500,8 @@ reading: ないよう
 romaji: naiyou
 meaning_it: contenuto
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v583-naiyou-recognition
@@ -512,7 +523,8 @@ reading: しよう
 romaji: shiyou
 meaning_it: uso
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v584-shiyou-recognition
@@ -534,7 +546,8 @@ reading: いきとまり
 romaji: ikitomari
 meaning_it: vicolo cieco
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v585-ikitomari-recognition
@@ -556,7 +569,8 @@ reading: ひょうじ
 romaji: hyouji
 meaning_it: visualizzazione
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v586-hyouji-recognition
@@ -578,7 +592,8 @@ reading: しゅうい
 romaji: shuui
 meaning_it: dintorni / area intorno
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v587-shuui-recognition
@@ -600,7 +615,8 @@ reading: フィルター
 romaji: firutaa
 meaning_it: filtro
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v588-firutaa-recognition
@@ -622,5 +638,6 @@ reading: シンクロマシン
 romaji: shinkuromashin
 meaning_it: Synchro Machine
 notes_it: >-
-  Voce della lezione L30 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::

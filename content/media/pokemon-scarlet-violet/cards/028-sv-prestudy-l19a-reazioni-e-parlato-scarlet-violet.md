@@ -13,7 +13,7 @@ reading: そうだね
 romaji: soudane
 meaning_it: già / è vero
 notes_it: >-
-  Espressione ricorrente della lezione L19 nell'area Reazioni. Conferma morbida.
+  Conferma morbida.
 :::
 :::card
 id: card-e043-soudane-recognition
@@ -35,7 +35,7 @@ reading: とにかく
 romaji: tonikaku
 meaning_it: comunque
 notes_it: >-
-  Espressione ricorrente della lezione L19 nell'area Connettori. Ritorna al punto centrale.
+  Ritorna al punto centrale.
 :::
 :::card
 id: card-e044-tonikaku-recognition
@@ -57,7 +57,7 @@ reading: しまった！
 romaji: shimatta !
 meaning_it: accidenti!
 notes_it: >-
-  Espressione ricorrente della lezione L19 nell'area Reazioni. Errore o occasione persa.
+  Errore o occasione persa.
 :::
 :::card
 id: card-e045-shimatta-recognition
@@ -78,7 +78,7 @@ pattern: ～ようだ / ～ように見える
 title: Sembra che / sembra
 meaning_it: sembra che / sembra
 notes_it: >-
-  Pattern della lezione L19 nella famiglia Confronto e struttura. Formazione: phrase + ようだ. Meno base ma molto utile nei testi descrittivi.
+  Formazione: phrase + ようだ. Meno base ma molto utile nei testi descrittivi.
 :::
 :::card
 id: card-g046-sembra-che-sembra-concept
@@ -99,7 +99,7 @@ pattern: ～よね
 title: Vero?, no?
 meaning_it: vero?, no?
 notes_it: >-
-  Pattern della lezione L19 nella famiglia Colloquiale da dialogo. Formazione: frase + よね. Molto comune per cercare accordo.
+  Formazione: frase + よね. Molto comune per cercare accordo.
 :::
 :::card
 id: card-g047-vero-no-concept
@@ -120,7 +120,7 @@ pattern: ～やすい
 title: Facile da fare
 meaning_it: facile da fare
 notes_it: >-
-  Pattern della lezione L19 nella famiglia Confronto e struttura. Formazione: V-stem + やすい. Tutorial e descrizioni di comodità.
+  Formazione: V-stem + やすい. Tutorial e descrizioni di comodità.
 :::
 :::card
 id: card-g048-facile-da-fare-concept
@@ -142,7 +142,7 @@ reading: さっそく
 romaji: sassoku
 meaning_it: subito / senza perdere tempo
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v235-sassoku-recognition
@@ -164,7 +164,8 @@ reading: ゼロラボ
 romaji: zerorabo
 meaning_it: Zero Lab
 notes_it: >-
-  Voce della lezione L19 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v238-zehi
@@ -173,7 +174,7 @@ reading: ぜひ
 romaji: zehi
 meaning_it: assolutamente / ti prego
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v238-zehi-recognition
@@ -195,7 +196,8 @@ reading: ライドポケモン
 romaji: raidopokemon
 meaning_it: Pokémon cavalcatura
 notes_it: >-
-  Voce della lezione L19 nell''area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::term
 id: term-v240-kawa-ru
@@ -204,7 +206,7 @@ reading: かわる
 romaji: kawa ru
 meaning_it: cambiare
 notes_it: >-
-  Voce della lezione L19 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v240-kawa-ru-recognition
@@ -226,7 +228,8 @@ reading: ゴースト
 romaji: goosuto
 meaning_it: spettro
 notes_it: >-
-  Voce della lezione L19 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v241-goosuto-recognition
@@ -248,7 +251,7 @@ reading: いがい
 romaji: igai
 meaning_it: inaspettato
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v242-igai-recognition
@@ -270,7 +273,7 @@ reading: せかい
 romaji: sekai
 meaning_it: mondo
 notes_it: >-
-  Voce della lezione L19 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v244-sekai-recognition
@@ -292,7 +295,7 @@ reading: とくべつ
 romaji: tokubetsu
 meaning_it: speciale
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v245-tokubetsu-recognition
@@ -314,7 +317,8 @@ reading: きろく
 romaji: kiroku
 meaning_it: record / registrazione
 notes_it: >-
-  Voce della lezione L19 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v246-kiroku-recognition
@@ -336,7 +340,7 @@ reading: ぽいんと
 romaji: pointo
 meaning_it: punti
 notes_it: >-
-  Voce della lezione L19 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v247-pointo-recognition
@@ -358,7 +362,8 @@ reading: そんざい
 romaji: sonzai
 meaning_it: esistenza
 notes_it: >-
-  Voce della lezione L19 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v248-sonzai-recognition
@@ -380,7 +385,8 @@ reading: ノーマル
 romaji: noomaru
 meaning_it: normale
 notes_it: >-
-  Voce della lezione L19 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v249-noomaru-recognition
@@ -402,7 +408,8 @@ reading: じょうほう
 romaji: jouhou
 meaning_it: informazioni
 notes_it: >-
-  Voce della lezione L19 nell''area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v250-jouhou-recognition
@@ -424,7 +431,7 @@ reading: かんけい
 romaji: kankei
 meaning_it: relazione / rapporto
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v251-kankei-recognition
@@ -446,7 +453,7 @@ reading: すでに
 romaji: sudeni
 meaning_it: già
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v252-sudeni-recognition
@@ -468,7 +475,7 @@ reading: しんぱい
 romaji: shinpai
 meaning_it: preoccupazione
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v253-shinpai-recognition
@@ -490,7 +497,7 @@ reading: ゆうめい
 romaji: yuumei
 meaning_it: famoso
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v254-yuumei-recognition

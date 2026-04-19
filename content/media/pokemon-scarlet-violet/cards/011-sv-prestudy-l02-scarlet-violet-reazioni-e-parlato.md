@@ -13,7 +13,7 @@ reading: もちきれない / もちきれません
 romaji: mochikirenai / mochikiremasen
 meaning_it: non puoi portarne di più / inventario pieno
 notes_it: >-
-  Espressione ricorrente della lezione L02 nell'area Sistema/UI. Quando la borsa o lo spazio disponibile sono saturi.
+  Quando la borsa o lo spazio disponibile sono saturi.
 :::
 :::card
 id: card-e003-mochikirenai-mochikiremasen-recognition
@@ -35,7 +35,7 @@ reading: がんばって
 romaji: ganbatte
 meaning_it: forza / buona fortuna
 notes_it: >-
-  Espressione ricorrente della lezione L02 nell'area Supporto / incoraggiamento. Incoraggiamento classico prima di una sfida.
+  Incoraggiamento classico prima di una sfida.
 :::
 :::card
 id: card-e004-ganbatte-recognition
@@ -57,7 +57,8 @@ reading: よろしく
 romaji: yoroshiku
 meaning_it: piacere / conto su di te
 notes_it: >-
-  Espressione ricorrente della lezione L02 nell'area Saluti / gestione dialogo. Formula super frequente quando inizi una sfida, una collaborazione o un dialogo importante.
+  Formula super frequente quando inizi una sfida, una collaborazione o un
+  dialogo importante.
 :::
 :::card
 id: card-e005-yoroshiku-recognition
@@ -103,8 +104,8 @@ meaning_it: forma colloquiale di ～ている
 aliases:
 - 〜ている
 notes_it: >-
-  Nel parlato 〜ている diventa spesso 〜てる. Il significato non cambia: cambia
-  solo il registro, piu naturale e informale nei dialoghi veloci.
+  Nel parlato 〜ている diventa spesso 〜てる. Il significato non cambia: cambia solo
+  il registro, piu naturale e informale nei dialoghi veloci.
 :::
 :::card
 id: card-g006-contrazione-colloquiale-di-concept
@@ -126,7 +127,7 @@ reading: もう
 romaji: mou
 meaning_it: già / ormai
 notes_it: >-
-  Voce della lezione L02 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v013-mou-recognition
@@ -148,7 +149,8 @@ reading: ライド
 romaji: raido
 meaning_it: ride / cavalcata
 notes_it: >-
-  Voce della lezione L02 nell''area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v014-raido-recognition
@@ -170,7 +172,7 @@ reading: じぶん
 romaji: jibun
 meaning_it: sé stesso
 notes_it: >-
-  Voce della lezione L02 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v015-jibun-recognition
@@ -192,7 +194,7 @@ reading: すごい
 romaji: sugoi
 meaning_it: incredibile / forte
 notes_it: >-
-  Voce della lezione L02 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v016-sugoi-recognition
@@ -214,7 +216,7 @@ reading: すたーだん
 romaji: sutaa dan
 meaning_it: Team Star
 notes_it: >-
-  Voce della lezione L02 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v018-botan
@@ -223,7 +225,7 @@ reading: ぼたん
 romaji: botan
 meaning_it: Penny
 notes_it: >-
-  Voce della lezione L02 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v019-gakkou
@@ -232,7 +234,7 @@ reading: がっこう
 romaji: gakkou
 meaning_it: scuola
 notes_it: >-
-  Voce della lezione L02 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v019-gakkou-recognition
@@ -254,7 +256,8 @@ reading: アカデミー
 romaji: akademii
 meaning_it: accademia
 notes_it: >-
-  Voce della lezione L02 nell''area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v020-akademii-recognition
@@ -276,7 +279,8 @@ reading: つよい
 romaji: tsuyoi
 meaning_it: forte
 notes_it: >-
-  Voce della lezione L02 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v021-tsuyoi-recognition
@@ -298,7 +302,8 @@ reading: エリアゼロ
 romaji: eriazero
 meaning_it: Area Zero
 notes_it: >-
-  Voce della lezione L02 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v023-sandowicchi
@@ -307,7 +312,8 @@ reading: サンドウィッチ
 romaji: sandowicchi
 meaning_it: sandwich
 notes_it: >-
-  Voce della lezione L02 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v023-sandowicchi-recognition
@@ -329,7 +335,7 @@ reading: せいと
 romaji: seito
 meaning_it: studente
 notes_it: >-
-  Voce della lezione L02 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v024-seito-recognition
@@ -351,7 +357,8 @@ reading: してんのう
 romaji: shitenou
 meaning_it: Superquattro
 notes_it: >-
-  Voce della lezione L02 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v025-shitenou-recognition

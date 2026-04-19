@@ -205,9 +205,9 @@ Così eviti di trattare pulsanti diversi come varianti dello stesso flusso.
 
 :::example_sentence
 jp: >-
-  {{交換期間|こう.かん.き.かん}}は{{3月26日|さんがつにじゅうろくにち}}までだ。
+  {{限定|げんてい}}カードの{{交換期間|こう.かん.き.かん}}は{{3月26日|さんがつにじゅうろくにち}}までなので、{{急|いそ}}いでDMポイントをあつめる。
 translation_it: >-
-  Il periodo di scambio dura fino al 26 marzo.
+  La finestra di scambio delle carte evento dura fino al 26 Marzo, per cui mi sbrigo a raccogliere i punti.
 :::
 
 - [{{交換期間|こう.かん.き.かん}}](term:term-exchange-period) non è il prezzo, ma la

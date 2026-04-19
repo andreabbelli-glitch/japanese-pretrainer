@@ -13,7 +13,7 @@ reading: はやく！
 romaji: hayaku !
 meaning_it: presto!
 notes_it: >-
-  Espressione ricorrente della lezione L23 nell'area Azione / proposta. Pressione o urgenza.
+  Pressione o urgenza.
 :::
 :::card
 id: card-e078-hayaku-recognition
@@ -35,7 +35,7 @@ reading: つぎはだれ？
 romaji: tsugi hadare？
 meaning_it: chi è il prossimo?
 notes_it: >-
-  Espressione ricorrente della lezione L23 nell'area Azione / proposta. Tipico in battaglia o in sequenze di sfide.
+  Tipico in battaglia o in sequenze di sfide.
 :::
 :::card
 id: card-e079-tsugi-hadare-recognition
@@ -57,7 +57,7 @@ reading: むりしないで
 romaji: muri shinaide
 meaning_it: non esagerare
 notes_it: >-
-  Espressione ricorrente della lezione L23 nell'area Azione / proposta. Consiglio protettivo.
+  Consiglio protettivo.
 :::
 :::card
 id: card-e080-muri-shinaide-recognition
@@ -78,7 +78,7 @@ pattern: ～なくてもいい
 title: Non è necessario fare
 meaning_it: non è necessario fare
 notes_it: >-
-  Pattern della lezione L23 nella famiglia Forme verbali e richieste. Formazione: V-なくてもいい. Molto utile per cogliere libertà e opzioni.
+  Formazione: V-なくてもいい. Molto utile per cogliere libertà e opzioni.
 :::
 :::card
 id: card-g082-non-e-necessario-fare-concept
@@ -99,7 +99,8 @@ pattern: 辞書形 + な
 title: Non fare! (ordine secco)
 meaning_it: non fare! (ordine secco)
 notes_it: >-
-  Pattern della lezione L23 nella famiglia Forme verbali e richieste. Formazione: V-dizionario + な. Può apparire in battaglia, tensione o personaggi ruvidi.
+  Formazione: V-dizionario + な. Può apparire in battaglia, tensione o personaggi
+  ruvidi.
 :::
 :::card
 id: card-g083-non-fare-ordine-secco-concept
@@ -120,7 +121,7 @@ pattern: finali di frase よ / ね / な
 title: Enfasi / conferma / tono emotivo
 meaning_it: enfasi / conferma / tono emotivo
 notes_it: >-
-  Pattern della lezione L23 nella famiglia Colloquiale da dialogo. Formazione: fine frase. Anche se semplici, cambiano molto il tono del dialogo.
+  Formazione: fine frase. Anche se semplici, cambiano molto il tono del dialogo.
 :::
 :::card
 id: card-g084-enfasi-conferma-tono-emotivo-concept
@@ -142,7 +143,8 @@ reading: けいけんちパワー
 romaji: keikenchipawaa
 meaning_it: Exp. Point Power
 notes_it: >-
-  Voce della lezione L23 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v414-reidopawaa
@@ -151,7 +153,8 @@ reading: レイドパワー
 romaji: reidopawaa
 meaning_it: Raid Power
 notes_it: >-
-  Voce della lezione L23 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v415-oku
@@ -160,7 +163,7 @@ reading: おく
 romaji: oku
 meaning_it: in fondo / all'interno
 notes_it: >-
-  Voce della lezione L23 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v415-oku-recognition
@@ -182,7 +185,8 @@ reading: にげる
 romaji: nige ru
 meaning_it: fuggire
 notes_it: >-
-  Voce della lezione L23 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v416-nige-ru-recognition
@@ -204,7 +208,7 @@ reading: たすける
 romaji: tasuke ru
 meaning_it: aiutare
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v417-tasuke-ru-recognition
@@ -226,7 +230,7 @@ reading: おわる
 romaji: owa ru
 meaning_it: finire
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v418-owa-ru-recognition
@@ -248,7 +252,8 @@ reading: タマゴパワー
 romaji: tamagopawaa
 meaning_it: Egg Power
 notes_it: >-
-  Voce della lezione L23 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v420-mitome-ru
@@ -257,7 +262,7 @@ reading: みとめる
 romaji: mitome ru
 meaning_it: riconoscere
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v420-mitome-ru-recognition
@@ -279,7 +284,7 @@ reading: あっというまに
 romaji: attoiu mani
 meaning_it: in un attimo
 notes_it: >-
-  Voce della lezione L23 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v421-attoiu-mani-recognition
@@ -301,7 +306,7 @@ reading: うけとる
 romaji: uketoru
 meaning_it: ricevere
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alto rendimento che ricorrono spesso nei tutorial e nei dialoghi.
+  Verbo ad alta frequenza nei tutorial e nei dialoghi.
 :::
 :::card
 id: card-v422-uketoru-recognition
@@ -323,7 +328,7 @@ reading: すすめる
 romaji: susume ru
 meaning_it: portare avanti / far progredire
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v423-susume-ru-recognition
@@ -345,7 +350,7 @@ reading: ようやく
 romaji: youyaku
 meaning_it: finalmente
 notes_it: >-
-  Voce della lezione L23 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v424-youyaku-recognition
@@ -367,7 +372,7 @@ reading: たちむかう
 romaji: tachi muka u
 meaning_it: fronteggiare
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v425-tachi-muka-u-recognition
@@ -389,7 +394,7 @@ reading: ふれる
 romaji: fureru
 meaning_it: toccare
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v426-fureru-recognition
@@ -411,7 +416,7 @@ reading: なんどでも
 romaji: nando demo
 meaning_it: quante volte vuoi
 notes_it: >-
-  Voce della lezione L23 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v427-nando-demo-recognition
@@ -433,7 +438,7 @@ reading: のる
 romaji: noru
 meaning_it: salire / cavalcare / andare su
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v428-noru-recognition
@@ -455,7 +460,8 @@ reading: おまかせかいふく
 romaji: omakasekaifuku
 meaning_it: cura automatica
 notes_it: >-
-  Voce della lezione L23 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v429-omakasekaifuku-recognition
@@ -477,7 +483,7 @@ reading: みずうみ
 romaji: mizuumi
 meaning_it: lago
 notes_it: >-
-  Voce della lezione L23 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v430-mizuumi-recognition
@@ -499,7 +505,8 @@ reading: はつどう
 romaji: hatsudou
 meaning_it: attivazione
 notes_it: >-
-  Voce della lezione L23 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v431-hatsudou-recognition

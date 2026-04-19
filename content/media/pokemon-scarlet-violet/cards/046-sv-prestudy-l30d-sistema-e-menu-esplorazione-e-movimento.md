@@ -13,7 +13,7 @@ reading: ほんきで？
 romaji: honki de？
 meaning_it: sul serio?
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Reazioni. Sorpresa o dubbio.
+  Sorpresa o dubbio.
 :::
 :::card
 id: card-e103-honki-de-recognition
@@ -35,7 +35,7 @@ reading: またきてくださいね
 romaji: matakitekudasaine
 meaning_it: torna a trovarci, mi raccomando
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Saluti / gestione dialogo. Chiusura cordiale da NPC/negozio
+  Chiusura cordiale da NPC/negozio
 :::
 :::card
 id: card-e104-matakitekudasaine-recognition
@@ -57,7 +57,7 @@ reading: どの ならびに かえますか
 romaji: dono narabini kaemasuka
 meaning_it: in quale ordine vuoi riordinare?
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Sistema/UI. Sorting inventario/box
+  Sorting inventario/box
 :::
 :::card
 id: card-e105-dono-narabini-kaemasuka-recognition
@@ -81,8 +81,8 @@ aliases:
 - registro personaggio
 notes_it: >-
   E una variante marcata di です, usata per dare un tono teatrale, antiquato o
-  da samurai. Il significato di base resta quello della frase: cambia soprattutto
-  il personaggio che senti parlare.
+  da samurai. Il significato di base resta quello della frase: cambia
+  soprattutto il personaggio che senti parlare.
 :::
 :::card
 id: card-g106-registro-samurai-comico-concept
@@ -151,7 +151,8 @@ reading: らっか
 romaji: rakka
 meaning_it: caduta
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v638-rakka-recognition
@@ -173,7 +174,8 @@ reading: しえんボード
 romaji: shienboodo
 meaning_it: bacheca dei supporti
 notes_it: >-
-  Voce della lezione L30 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v639-shienboodo-recognition
@@ -195,7 +197,7 @@ reading: かりる
 romaji: kariru
 meaning_it: prendere in prestito
 notes_it: >-
-  Voce della lezione L30 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alto rendimento che ricorrono spesso nei tutorial e nei dialoghi.
+  Verbo ad alta frequenza nei tutorial e nei dialoghi.
 :::
 :::card
 id: card-v640-kariru-recognition
@@ -217,7 +219,7 @@ reading: きりかえる
 romaji: kirikaeru
 meaning_it: cambiare modalità / switchare
 notes_it: >-
-  Voce della lezione L30 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alto rendimento che ricorrono spesso nei tutorial e nei dialoghi.
+  Verbo ad alta frequenza nei tutorial e nei dialoghi.
 :::
 :::card
 id: card-v641-kirikaeru-recognition
@@ -239,7 +241,8 @@ reading: プロフィールアプリ
 romaji: purofiiruapuri
 meaning_it: app del profilo
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v642-purofiiruapuri-recognition
@@ -261,7 +264,7 @@ reading: とくに
 romaji: tokuni
 meaning_it: soprattutto
 notes_it: >-
-  Voce della lezione L30 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v643-tokuni-recognition
@@ -283,7 +286,8 @@ reading: かいさいちゅう
 romaji: kaisaichuu
 meaning_it: in corso
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v644-kaisaichuu-recognition
@@ -305,7 +309,8 @@ reading: ちゅうし
 romaji: chuushi
 meaning_it: interruzione / annullamento
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v645-chuushi-recognition
@@ -327,7 +332,7 @@ reading: かんゆう
 romaji: kanyuu
 meaning_it: reclutamento
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v646-kanyuu-recognition
@@ -349,7 +354,8 @@ reading: きょういん
 romaji: kyouin
 meaning_it: insegnante / corpo docente
 notes_it: >-
-  Voce della lezione L30 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v647-kyouin-recognition
@@ -371,7 +377,8 @@ reading: つうち
 romaji: tsuuchi
 meaning_it: notifica
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v648-tsuuchi-recognition
@@ -393,7 +400,8 @@ reading: こうかんあいて
 romaji: koukanaite
 meaning_it: partner di scambio
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v649-koukanaite-recognition
@@ -415,7 +423,8 @@ reading: かこう
 romaji: kakou
 meaning_it: discesa
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v650-kakou-recognition
@@ -437,7 +446,7 @@ reading: しりぞける
 romaji: shirizoke ru
 meaning_it: respingere / sconfiggere
 notes_it: >-
-  Voce della lezione L30 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v651-shirizoke-ru-recognition
@@ -459,7 +468,8 @@ reading: ひひょうじ
 romaji: hihyouji
 meaning_it: nascondi / non visualizzare
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v652-hihyouji-recognition
@@ -481,7 +491,8 @@ reading: いちらん
 romaji: ichiran
 meaning_it: elenco
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v653-ichiran-recognition
@@ -503,7 +514,8 @@ reading: かちまけ
 romaji: kachimake
 meaning_it: esito vittoria / sconfitta
 notes_it: >-
-  Voce della lezione L30 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v654-kachimake-recognition
@@ -525,7 +537,8 @@ reading: まとめかい
 romaji: matomekai
 meaning_it: acquisto in blocco
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v655-matomekai-recognition
@@ -547,7 +560,7 @@ reading: らいんなっぷ
 romaji: rainnappu
 meaning_it: lista disponibile
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v656-rainnappu-recognition
@@ -569,7 +582,7 @@ reading: ぜんそくりょく
 romaji: zensokuryoku
 meaning_it: massima velocità
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v657-zensokuryoku-recognition
@@ -591,7 +604,8 @@ reading: きんきゅうじたい
 romaji: kinkyuujitai
 meaning_it: emergenza
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v658-kinkyuujitai-recognition
@@ -613,7 +627,8 @@ reading: たいじょう
 romaji: taijou
 meaning_it: uscita di scena
 notes_it: >-
-  Voce della lezione L30 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v659-taijou-recognition
@@ -635,7 +650,7 @@ reading: あこがれ
 romaji: akogare
 meaning_it: ammirazione / aspirazione
 notes_it: >-
-  Voce della lezione L30 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v660-akogare-recognition

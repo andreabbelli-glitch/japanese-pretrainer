@@ -13,7 +13,7 @@ reading: 〜してみたら？
 romaji: shitemitara？
 meaning_it: perché non provi a…?
 notes_it: >-
-  Espressione ricorrente della lezione L10 nell'area Azione / proposta. Suggerimento molto frequente nei dialoghi
+  Suggerimento molto frequente nei dialoghi
 :::
 :::card
 id: card-e021-shitemitara-recognition
@@ -35,7 +35,7 @@ reading: 〜してくれる？
 romaji: ~ shitekureru？
 meaning_it: me lo fai?
 notes_it: >-
-  Espressione ricorrente della lezione L10 nell'area Richieste. Richiesta colloquiale ma morbida.
+  Richiesta colloquiale ma morbida.
 :::
 :::card
 id: card-e022-shitekureru-recognition
@@ -79,9 +79,9 @@ pattern: に
 title: Destinazione, tempo, bersaglio, esistenza
 meaning_it: a / in / per / nel momento di
 notes_it: >-
-  に puo indicare destinazione, tempo preciso, persona o cosa bersaglio,
-  oppure il luogo di esistenza con いる / ある. E una particella molto frequente
-  con piu funzioni.
+  に puo indicare destinazione, tempo preciso, persona o cosa bersaglio, oppure
+  il luogo di esistenza con いる / ある. E una particella molto frequente con piu
+  funzioni.
 :::
 :::card
 id: card-g029-destinazione-tempo-bersaglio-esistenza-concept
@@ -125,7 +125,8 @@ reading: そらとぶタクシー
 romaji: soratobutakushii
 meaning_it: taxi volante
 notes_it: >-
-  Voce della lezione L10 nell''area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v113-soratobutakushii-recognition
@@ -147,7 +148,8 @@ reading: たおす
 romaji: taosu
 meaning_it: sconfiggere
 notes_it: >-
-  Voce della lezione L10 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v115-taosu-recognition
@@ -169,7 +171,7 @@ reading: つぎ
 romaji: tsugi
 meaning_it: prossimo
 notes_it: >-
-  Voce della lezione L10 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v116-tsugi-recognition
@@ -191,7 +193,8 @@ reading: おまかせバトル
 romaji: omakasebatoru
 meaning_it: lotta automatica
 notes_it: >-
-  Voce della lezione L10 nell''area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v118-omakasebatoru-recognition
@@ -213,7 +216,8 @@ reading: かつ
 romaji: katsu
 meaning_it: vincere
 notes_it: >-
-  Voce della lezione L10 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v119-katsu-recognition
@@ -235,7 +239,8 @@ reading: よわい
 romaji: yowai
 meaning_it: debole
 notes_it: >-
-  Voce della lezione L10 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v120-yowai-recognition
@@ -257,7 +262,7 @@ reading: かう
 romaji: kau
 meaning_it: comprare
 notes_it: >-
-  Voce della lezione L10 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v121-kau-recognition
@@ -279,7 +284,7 @@ reading: だれ
 romaji: dare
 meaning_it: chi
 notes_it: >-
-  Voce della lezione L10 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v122-dare-recognition
@@ -301,7 +306,7 @@ reading: いくら
 romaji: ikura
 meaning_it: quanto costa / quanto
 notes_it: >-
-  Voce della lezione L10 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v123-ikura-recognition
@@ -323,7 +328,7 @@ reading: うみ
 romaji: umi
 meaning_it: mare
 notes_it: >-
-  Voce della lezione L10 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v124-umi-recognition

@@ -13,7 +13,7 @@ reading: 〜を うけとりました！
 romaji: o uketorimashita！
 meaning_it: hai ricevuto …!
 notes_it: >-
-  Espressione ricorrente della lezione L19 nell'area Sistema/UI. Messaggio standard di ricezione.
+  Messaggio standard di ricezione.
 :::
 :::card
 id: card-e046-o-uketorimashita-recognition
@@ -35,7 +35,7 @@ reading: 〜を えらんでください
 romaji: o erandekudasai
 meaning_it: seleziona …
 notes_it: >-
-  Espressione ricorrente della lezione L19 nell'area Sistema/UI. Prompt di menu e box
+  Prompt di menu e box
 :::
 :::card
 id: card-e047-o-erandekudasai-recognition
@@ -56,7 +56,8 @@ pattern: ～てほしい
 title: Voglio che… / mi piacerebbe che…
 meaning_it: voglio che… / mi piacerebbe che…
 notes_it: >-
-  Pattern della lezione L19 nella famiglia Desiderio, intenzione, possibilità. Formazione: て-forma + ほしい. Utile nei dialoghi emotivi della trama e nelle richieste personali.
+  Formazione: て-forma + ほしい. Utile nei dialoghi emotivi della trama e nelle
+  richieste personali.
 :::
 :::card
 id: card-g050-voglio-che-mi-piacerebbe-che-concept
@@ -78,7 +79,7 @@ reading: 〜してみて
 romaji: ~ shitemite
 meaning_it: prova a...
 notes_it: >-
-  Espressione ricorrente della lezione L19 nell'area Azione / proposta. Richiesta gentile di tentare qualcosa.
+  Richiesta gentile di tentare qualcosa.
 :::
 :::card
 id: card-e053-shitemite-recognition
@@ -125,7 +126,8 @@ reading: こだい
 romaji: kodai
 meaning_it: antichità / passato remoto
 notes_it: >-
-  Voce della lezione L19 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v255-kodai-recognition
@@ -147,7 +149,8 @@ reading: フェアリー
 romaji: fearii
 meaning_it: folletto
 notes_it: >-
-  Voce della lezione L19 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v256-fearii-recognition
@@ -169,7 +172,8 @@ reading: はがね
 romaji: hagane
 meaning_it: acciaio
 notes_it: >-
-  Voce della lezione L19 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v257-hagane-recognition
@@ -191,7 +195,8 @@ reading: みかた
 romaji: mikata
 meaning_it: alleato
 notes_it: >-
-  Voce della lezione L19 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v258-mikata-recognition
@@ -213,7 +218,8 @@ reading: なみのり
 romaji: naminori
 meaning_it: nuoto / surf sull'acqua
 notes_it: >-
-  Voce della lezione L19 nell''area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v260-naminori-recognition
@@ -235,7 +241,7 @@ reading: ちゅうい
 romaji: chuui
 meaning_it: attenzione / cautela
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v261-chuui-recognition
@@ -257,7 +263,7 @@ reading: うける
 romaji: ukeru
 meaning_it: ricevere / sostenere
 notes_it: >-
-  Voce della lezione L19 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v262-ukeru-recognition
@@ -279,7 +285,8 @@ reading: かていか
 romaji: kateika
 meaning_it: economia domestica
 notes_it: >-
-  Voce della lezione L19 nell''area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v263-kateika-recognition
@@ -301,7 +308,8 @@ reading: レシピ
 romaji: reshipi
 meaning_it: ricetta
 notes_it: >-
-  Voce della lezione L19 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v264-reshipi-recognition
@@ -323,7 +331,8 @@ reading: ひこう
 romaji: hikou
 meaning_it: volo
 notes_it: >-
-  Voce della lezione L19 nell''area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v265-hikou-recognition
@@ -345,7 +354,7 @@ reading: ぜんぶ
 romaji: zenbu
 meaning_it: tutto
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v266-zenbu-recognition
@@ -367,7 +376,8 @@ reading: つうしん
 romaji: tsuushin
 meaning_it: connessione / comunicazione
 notes_it: >-
-  Voce della lezione L19 nell''area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v267-tsuushin-recognition
@@ -389,7 +399,7 @@ reading: ふつう
 romaji: futsuu
 meaning_it: normale
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v268-futsuu-recognition
@@ -411,7 +421,7 @@ reading: けっか
 romaji: kekka
 meaning_it: risultato
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v269-kekka-recognition
@@ -433,7 +443,7 @@ reading: せっかく
 romaji: sekkaku
 meaning_it: visto che / già che
 notes_it: >-
-  Voce della lezione L19 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v270-sekkaku-recognition
@@ -455,7 +465,7 @@ reading: やくそく
 romaji: yakusoku
 meaning_it: promessa / appuntamento
 notes_it: >-
-  Voce della lezione L19 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v271-yakusoku-recognition
@@ -477,7 +487,7 @@ reading: てーぶるしてぃ
 romaji: teeburushitei
 meaning_it: città centrale di Paldea
 notes_it: >-
-  Voce della lezione L19 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v273-kakutou
@@ -486,7 +496,8 @@ reading: かくとう
 romaji: kakutou
 meaning_it: lotta
 notes_it: >-
-  Voce della lezione L19 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v273-kakutou-recognition

@@ -13,7 +13,7 @@ reading: これでおーけー
 romaji: korede okee
 meaning_it: così va bene / conferma finale
 notes_it: >-
-  Espressione ricorrente della lezione L29 nell'area Sistema/UI. Schermata finale di conferma negli shop.
+  Schermata finale di conferma negli shop.
 :::
 :::card
 id: card-e096-korede-okee-recognition
@@ -35,7 +35,8 @@ reading: たからしょくどう
 romaji: takarashokudou
 meaning_it: Treasure Eatery
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v510-atae-ru
@@ -44,7 +45,7 @@ reading: あたえる
 romaji: atae ru
 meaning_it: concedere / dare
 notes_it: >-
-  Voce della lezione L29 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v510-atae-ru-recognition
@@ -66,7 +67,8 @@ reading: レイドバトル
 romaji: reidobatoru
 meaning_it: raid battle
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::term
 id: term-v512-shouhin
@@ -75,7 +77,8 @@ reading: しょうひん
 romaji: shouhin
 meaning_it: prodotto
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v512-shouhin-recognition
@@ -97,7 +100,7 @@ reading: ぐれーぷあかでみー
 romaji: gureepuakademii
 meaning_it: Accademia Grape
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v514-shizen
@@ -106,7 +109,8 @@ reading: しぜん
 romaji: shizen
 meaning_it: natura
 notes_it: >-
-  Voce della lezione L29 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v514-shizen-recognition
@@ -128,7 +132,8 @@ reading: バトルチーム
 romaji: batoruchiimu
 meaning_it: battle team
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::term
 id: term-v516-shuuchuu
@@ -137,7 +142,8 @@ reading: しゅうちゅう
 romaji: shuuchuu
 meaning_it: concentrazione
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v516-shuuchuu-recognition
@@ -159,7 +165,8 @@ reading: ついか
 romaji: tsuika
 meaning_it: aggiunta
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v517-tsuika-recognition
@@ -181,7 +188,8 @@ reading: じょしゅ
 romaji: joshu
 meaning_it: assistente
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v518-joshu-recognition
@@ -203,7 +211,8 @@ reading: せいとかいちょう
 romaji: seitokaichou
 meaning_it: presidente del consiglio studentesco
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v519-seitokaichou-recognition
@@ -225,7 +234,8 @@ reading: ぶしつ
 romaji: bushitsu
 meaning_it: stanza del club
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v520-bushitsu-recognition
@@ -247,7 +257,8 @@ reading: きょうしつ
 romaji: kyoushitsu
 meaning_it: aula
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v521-kyoushitsu-recognition
@@ -269,7 +280,7 @@ reading: すてき
 romaji: suteki
 meaning_it: carino / splendido
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v522-suteki-recognition
@@ -291,7 +302,8 @@ reading: しえん
 romaji: shien
 meaning_it: supporto / sostegno
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v523-shien-recognition
@@ -313,7 +325,8 @@ reading: とうだい
 romaji: toudai
 meaning_it: faro
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v524-toudai-recognition
@@ -335,7 +348,8 @@ reading: きねん
 romaji: kinen
 meaning_it: ricordo / commemorazione
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v525-kinen-recognition
@@ -357,7 +371,7 @@ reading: べんり
 romaji: benri
 meaning_it: comodo / utile
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v526-benri-recognition
@@ -379,7 +393,8 @@ reading: せいかく
 romaji: seikaku
 meaning_it: natura / personalità
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v527-seikaku-recognition
@@ -401,7 +416,8 @@ reading: にゅうがく
 romaji: nyuugaku
 meaning_it: iscrizione / ingresso a scuola
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v528-nyuugaku-recognition
@@ -423,7 +439,8 @@ reading: ちゅうもん
 romaji: chuumon
 meaning_it: ordine
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v529-chuumon-recognition
@@ -445,7 +462,8 @@ reading: したっぱ
 romaji: shitappa
 meaning_it: gregario / sottoposto
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v530-shitappa-recognition
@@ -467,7 +485,8 @@ reading: せんぱい
 romaji: senpai
 meaning_it: senpai / studente più grande
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v531-senpai-recognition
@@ -489,7 +508,8 @@ reading: うけとり
 romaji: uketori
 meaning_it: riscossione / ritiro
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v532-uketori-recognition
@@ -511,7 +531,8 @@ reading: おこづかい
 romaji: okozukai
 meaning_it: paghetta / soldi a disposizione
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v533-okozukai-recognition
@@ -533,7 +554,8 @@ reading: せいふく
 romaji: seifuku
 meaning_it: uniforme
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v534-seifuku-recognition
@@ -555,7 +577,8 @@ reading: ぶかつ
 romaji: bukatsu
 meaning_it: club scolastico / attività extracurricolare
 notes_it: >-
-  Voce della lezione L29 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v535-bukatsu-recognition
@@ -577,7 +600,8 @@ reading: エントリー
 romaji: entorii
 meaning_it: iscrizione / entry
 notes_it: >-
-  Voce della lezione L29 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v536-entorii-recognition
@@ -599,7 +623,7 @@ reading: へんじ
 romaji: henji
 meaning_it: risposta
 notes_it: >-
-  Voce della lezione L29 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v537-henji-recognition
@@ -621,7 +645,7 @@ reading: じどう
 romaji: jidou
 meaning_it: automatico
 notes_it: >-
-  Voce della lezione L29 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v538-jidou-recognition
@@ -643,7 +667,8 @@ reading: おうえん
 romaji: ouen
 meaning_it: tifo / supporto
 notes_it: >-
-  Voce della lezione L29 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v539-ouen-recognition

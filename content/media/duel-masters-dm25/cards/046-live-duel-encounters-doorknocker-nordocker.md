@@ -84,9 +84,9 @@ card_type: recognition
 front: '{{行|おこな}}う'
 back: eseguire / carry out
 example_jp: >-
-  {{次|つぎ}}の{{能力|のうりょく}}を{{2回|にかい}}{{行|おこな}}う。
+  クリーチャーを{{破壊|はかい}}した{{後|あと}}、{{次|つぎ}}の{{能力|のうりょく}}をもう{{一度|いちど}}{{行|おこな}}う。
 example_it: >-
-  Esegui due volte la seguente abilita.
+  Dopo aver distrutto la creatura, esegui quest'abilità un'altra volta.
 notes_it: >-
   Qui `{{行|おこな}}う` non e` un vago `fare`: comanda di eseguire davvero il
   blocco di effetto che il testo ha appena identificato.

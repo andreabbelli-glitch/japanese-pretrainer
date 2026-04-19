@@ -13,7 +13,7 @@ reading: なんで？
 romaji: nande？
 meaning_it: perché mai?
 notes_it: >-
-  Espressione ricorrente della lezione L21 nell'area Domande rapide. Forma colloquiale di 'perché'.
+  Forma colloquiale di 'perché'.
 :::
 :::card
 id: card-e065-nande-recognition
@@ -35,7 +35,7 @@ reading: しばらく おまちください
 romaji: shibaraku omachikudasai
 meaning_it: attenda un momento
 notes_it: >-
-  Espressione ricorrente della lezione L21 nell'area Sistema/UI. Messaggi di attesa / connessione
+  Messaggi di attesa / connessione
 :::
 :::card
 id: card-e066-shibaraku-omachikudasai-recognition
@@ -57,7 +57,7 @@ reading: どうして？
 romaji: doushite？
 meaning_it: come mai?
 notes_it: >-
-  Espressione ricorrente della lezione L21 nell'area Domande rapide. Perché più neutro e leggermente più gentile di なんで.
+  Perché più neutro e leggermente più gentile di なんで.
 :::
 :::card
 id: card-e067-doushite-recognition
@@ -79,7 +79,7 @@ reading: きっとだいじょうぶ
 romaji: kitto daijoubu
 meaning_it: sicuramente andrà tutto bene
 notes_it: >-
-  Espressione ricorrente della lezione L21 nell'area Reazioni. Incoraggiamento rassicurante.
+  Incoraggiamento rassicurante.
 :::
 :::card
 id: card-e068-kitto-daijoubu-recognition
@@ -102,7 +102,8 @@ meaning_it: non vuoi…? / ti va di…?
 aliases:
 - 〜ない？
 notes_it: >-
-  Pattern della lezione L21 nella famiglia Forme verbali e richieste. Formazione: ます-forma negativa + か. Forma di invito gentile che appare nei dialoghi di servizio o proposta.
+  Formazione: ます-forma negativa + か. Forma di invito gentile che appare nei
+  dialoghi di servizio o proposta.
 :::
 :::card
 id: card-g068-non-vuoi-ti-va-di-concept
@@ -146,7 +147,7 @@ pattern: ～てある
 title: Qualcosa è stato fatto intenzionalmente
 meaning_it: qualcosa è stato fatto intenzionalmente
 notes_it: >-
-  Pattern della lezione L21 nella famiglia Forme verbali e richieste. Formazione: 他動詞てある. Utile nelle descrizioni di oggetti e situazioni preparate.
+  Formazione: 他動詞てある. Utile nelle descrizioni di oggetti e situazioni preparate.
 :::
 :::card
 id: card-g070-qualcosa-e-stato-fatto-intenzionalmente-concept
@@ -168,7 +169,7 @@ reading: むり
 romaji: muri
 meaning_it: impossibile / non esagerare
 notes_it: >-
-  Voce della lezione L21 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v333-muri-recognition
@@ -190,7 +191,7 @@ reading: らいばる
 romaji: raibaru
 meaning_it: rivale
 notes_it: >-
-  Voce della lezione L21 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v334-raibaru-recognition
@@ -212,7 +213,7 @@ reading: そら
 romaji: sora
 meaning_it: cielo
 notes_it: >-
-  Voce della lezione L21 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v335-sora-recognition
@@ -234,7 +235,8 @@ reading: あいことば
 romaji: aikotoba
 meaning_it: codice link / password condivisa
 notes_it: >-
-  Voce della lezione L21 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v336-aikotoba-recognition
@@ -256,7 +258,7 @@ reading: いきなり
 romaji: ikinari
 meaning_it: all'improvviso
 notes_it: >-
-  Voce della lezione L21 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v337-ikinari-recognition
@@ -278,7 +280,8 @@ reading: かいひりつ
 romaji: kaihiritsu
 meaning_it: evasione
 notes_it: >-
-  Voce della lezione L21 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v338-kaihiritsu-recognition
@@ -300,7 +303,7 @@ reading: ざいりょう
 romaji: zairyou
 meaning_it: materiale
 notes_it: >-
-  Voce della lezione L21 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v339-zairyou-recognition
@@ -322,7 +325,8 @@ reading: カメラアプリ
 romaji: kameraapuri
 meaning_it: app fotocamera
 notes_it: >-
-  Voce della lezione L21 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v340-kameraapuri-recognition
@@ -344,7 +348,7 @@ reading: ちゃんぴおんてすと
 romaji: chanpiontesuto
 meaning_it: test da campione
 notes_it: >-
-  Voce della lezione L21 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v344-jibun-dake
@@ -353,7 +357,7 @@ reading: じぶんだけ
 romaji: jibun dake
 meaning_it: solo per sé
 notes_it: >-
-  Voce della lezione L21 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v344-jibun-dake-recognition
@@ -375,7 +379,8 @@ reading: きょうりょく
 romaji: kyouryoku
 meaning_it: cooperazione
 notes_it: >-
-  Voce della lezione L21 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v345-kyouryoku-recognition
@@ -397,7 +402,8 @@ reading: こうかバツグン
 romaji: koukabatsugun
 meaning_it: super efficace
 notes_it: >-
-  Voce della lezione L21 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v346-koukabatsugun-recognition
@@ -419,7 +425,7 @@ reading: とおく
 romaji: tooku
 meaning_it: lontano
 notes_it: >-
-  Voce della lezione L21 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v347-tooku-recognition
@@ -441,7 +447,8 @@ reading: インターネット
 romaji: intaanetto
 meaning_it: internet
 notes_it: >-
-  Voce della lezione L21 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v348-intaanetto-recognition
@@ -463,7 +470,8 @@ reading: めんせつ
 romaji: mensetsu
 meaning_it: colloquio / intervista
 notes_it: >-
-  Voce della lezione L21 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v349-mensetsu-recognition
@@ -485,7 +493,7 @@ reading: ばあい
 romaji: baai
 meaning_it: caso / situazione
 notes_it: >-
-  Voce della lezione L21 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v350-baai-recognition
@@ -507,7 +515,7 @@ reading: つづける
 romaji: tsuzuke ru
 meaning_it: continuare
 notes_it: >-
-  Voce della lezione L21 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v351-tsuzuke-ru-recognition
@@ -529,7 +537,8 @@ reading: ユニオンサークル
 romaji: yunionsaakuru
 meaning_it: Union Circle
 notes_it: >-
-  Voce della lezione L21 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::term
 id: term-v353-jouken
@@ -538,7 +547,8 @@ reading: じょうけん
 romaji: jouken
 meaning_it: condizione
 notes_it: >-
-  Voce della lezione L21 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v353-jouken-recognition

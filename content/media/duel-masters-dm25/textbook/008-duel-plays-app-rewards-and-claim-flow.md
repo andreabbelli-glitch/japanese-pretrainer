@@ -201,9 +201,9 @@ Regola operativa:
 
 :::example_sentence
 jp: >-
-  {{未|み}}{{受|う}}け{{取|と}}りの{{報酬|ほうしゅう}}が{{2件|にけん}}ある。
+  {{未|み}}{{受|う}}け{{取|と}}りの{{報酬|ほうしゅう}}が{{2件|にけん}}あるので、{{受|う}}け{{取|と}}り{{期限|きげん}}が{{切|き}}れる{{前|まえ}}にボタンを{{押|お}}す。
 translation_it: >-
-  Ci sono 2 reward ancora da riscuotere.
+  Ci sono 2 ricompense non ritirate, quindi premo il bottone prima che scada il periodo per il ritiro.
 :::
 
 - [{{未|み}}{{受|う}}け{{取|と}}り](term:term-unclaimed) ti dice subito che
@@ -215,9 +215,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{一括|いっかつ}}{{受|う}}け{{取|と}}りで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
+  アイテムが{{多|おお}}すぎる{{時|とき}}は、{{一括|いっかつ}}{{受|う}}け{{取|と}}りボタンで{{全部|ぜんぶ}}{{受|う}}け{{取|と}}る。
 translation_it: >-
-  Riscuoti tutto in una volta.
+  Quando ci sono troppi item, ricevo tutto assieme cliccando sul tasto del ritiro cumulativo.
 :::
 
 - [{{一括|いっかつ}}{{受|う}}け{{取|と}}り](term:term-bulk-claim) non descrive lo
@@ -229,9 +229,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{中級|ちゅうきゅう}}にチケット{{2枚|にまい}}で{{挑戦|ちょうせん}}する。
+  ストーリーの{{中級|ちゅうきゅう}}にチケット{{2枚|にまい}}で{{挑戦|ちょうせん}}して、ボスを{{倒|たお}}す。
 translation_it: >-
-  Sfida il livello intermedio usando 2 ticket.
+  Sfido il livello intermedio della storia consumando 2 ticket e sconfiggo il boss.
 :::
 
 - [{{中級|ちゅうきゅう}}](term:term-intermediate-class) definisce il livello.
@@ -243,9 +243,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{既読|きどく}}ストーリーをスキップする。
+  {{時間|じかん}}がない{{時|とき}}は、{{既読|きどく}}ストーリーをスキップしてバトルだけ{{楽|たの}}しむ。
 translation_it: >-
-  Salta le scene di storia già lette.
+  Quando non si ha tempo, si salta la storia già letta per godersi solamente il combattimento.
 :::
 
 - [{{既読|きどく}}](term:term-read-already) ti dice che quel contenuto non è

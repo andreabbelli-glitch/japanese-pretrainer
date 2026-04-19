@@ -13,7 +13,7 @@ reading: そうか
 romaji: souka
 meaning_it: ah, capisco
 notes_it: >-
-  Espressione ricorrente della lezione L18 nell'area Reazioni. Realizzazione o accettazione.
+  Realizzazione o accettazione.
 :::
 :::card
 id: card-e036-souka-recognition
@@ -35,7 +35,7 @@ reading: おつかれさまでスター
 romaji: otsukaresamadesutaa
 meaning_it: ottimo lavoro, Star!
 notes_it: >-
-  Espressione ricorrente della lezione L18 nell'area Saluti / gestione dialogo. Saluto ricorrente di Team Star
+  Saluto ricorrente di Team Star
 :::
 :::grammar
 id: grammar-g037-citazione-tema-colloquiale
@@ -67,7 +67,7 @@ reading: まさか
 romaji: masaka
 meaning_it: non ci credo / ma dai
 notes_it: >-
-  Espressione ricorrente della lezione L18 nell'area Reazioni. Sorpresa incredula.
+  Sorpresa incredula.
 :::
 :::card
 id: card-e038-masaka-recognition
@@ -88,8 +88,8 @@ pattern: ～より / ～ほど
 title: Più... di / non così... come
 meaning_it: confronto tra due cose
 notes_it: >-
-  Con A より B, B e piu di A. Con A ほど B ない, B non e cosi come A. Molto
-  comune per confrontare persone, mosse, percorsi o statistiche.
+  Con A より B, B e piu di A. Con A ほど B ない, B non e cosi come A. Molto comune
+  per confrontare persone, mosse, percorsi o statistiche.
 :::
 :::card
 id: card-g038-piu-di-al-punto-da-concept
@@ -110,7 +110,7 @@ pattern: ～ば
 title: Se
 meaning_it: se
 notes_it: >-
-  Pattern della lezione L18 nella famiglia Condizioni, tempo, sequenza. Formazione: V/A + ば. Più formale, ma appare in testi e spiegazioni.
+  Formazione: V/A + ば. Più formale, ma appare in testi e spiegazioni.
 :::
 :::card
 id: card-g039-se-concept
@@ -132,7 +132,8 @@ reading: たいかい
 romaji: taikai
 meaning_it: torneo
 notes_it: >-
-  Voce della lezione L18 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v196-taikai-recognition
@@ -154,7 +155,7 @@ reading: ずっと
 romaji: zutto
 meaning_it: per tutto il tempo / di gran lunga
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v197-zutto-recognition
@@ -176,7 +177,7 @@ reading: ことば
 romaji: kotoba
 meaning_it: parola / espressione
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v198-kotoba-recognition
@@ -198,7 +199,7 @@ reading: いちばん
 romaji: ichiban
 meaning_it: numero uno / il più
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v199-ichiban-recognition
@@ -220,7 +221,8 @@ reading: むし
 romaji: mushi
 meaning_it: coleottero / tipo insetto
 notes_it: >-
-  Voce della lezione L18 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v200-mushi-recognition
@@ -242,7 +244,8 @@ reading: テラピース
 romaji: terapiisu
 meaning_it: Tera Shards
 notes_it: >-
-  Voce della lezione L18 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::term
 id: term-v202-mota-seru
@@ -251,7 +254,7 @@ reading: もたせる
 romaji: mota seru
 meaning_it: far tenere (un oggetto)
 notes_it: >-
-  Voce della lezione L18 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v202-mota-seru-recognition
@@ -273,7 +276,7 @@ reading: ぜんぜん
 romaji: zenzen
 meaning_it: per niente / completamente
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: avverbio. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v203-zenzen-recognition
@@ -295,7 +298,8 @@ reading: こおり
 romaji: koori
 meaning_it: ghiaccio
 notes_it: >-
-  Voce della lezione L18 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v204-koori-recognition
@@ -317,7 +321,8 @@ reading: せんとう
 romaji: sentou
 meaning_it: combattimento
 notes_it: >-
-  Voce della lezione L18 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v205-sentou-recognition
@@ -339,7 +344,7 @@ reading: たしかに
 romaji: tashikani
 meaning_it: in effetti
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v206-tashikani-recognition
@@ -361,7 +366,7 @@ reading: たいへん
 romaji: taihen
 meaning_it: duro / impegnativo
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v207-taihen-recognition
@@ -383,7 +388,7 @@ reading: かんしゃ
 romaji: kansha
 meaning_it: gratitudine
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v208-kansha-recognition

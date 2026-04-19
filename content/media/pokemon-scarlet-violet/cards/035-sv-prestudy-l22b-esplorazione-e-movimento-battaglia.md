@@ -13,7 +13,7 @@ reading: てかげんしないよ
 romaji: tekagen shinaiyo
 meaning_it: non avrò pietà
 notes_it: >-
-  Espressione ricorrente della lezione L22 nell'area Battaglia. Linea tipica da sfida seria.
+  Linea tipica da sfida seria.
 :::
 :::card
 id: card-e071-tekagen-shinaiyo-recognition
@@ -35,7 +35,7 @@ reading: 〜してくれない？
 romaji: ~ shitekurenai？
 meaning_it: non è che potresti farlo?
 notes_it: >-
-  Espressione ricorrente della lezione L22 nell'area Richieste. Richiesta ancora più soft.
+  Richiesta ancora più soft.
 :::
 :::card
 id: card-e072-shitekurenai-recognition
@@ -57,7 +57,7 @@ reading: 〜のやりかた
 romaji: noyarikata
 meaning_it: come si fa…
 notes_it: >-
-  Espressione ricorrente della lezione L22 nell'area Sistema/UI. Titolo/tutorial su una funzione
+  Titolo/tutorial su una funzione
 :::
 :::card
 id: card-e073-noyarikata-recognition
@@ -79,7 +79,7 @@ reading: ほんとうに よろしいですか
 romaji: hontouni yoroshiidesuka
 meaning_it: sei sicuro?
 notes_it: >-
-  Espressione ricorrente della lezione L22 nell'area Sistema/UI. Conferma importante
+  Conferma importante
 :::
 :::card
 id: card-e074-hontouni-yoroshiidesuka-recognition
@@ -168,7 +168,8 @@ reading: ほかくパワー
 romaji: hokakupawaa
 meaning_it: Catching Power
 notes_it: >-
-  Voce della lezione L22 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v376-nazo
@@ -177,7 +178,7 @@ reading: なぞ
 romaji: nazo
 meaning_it: mistero
 notes_it: >-
-  Voce della lezione L22 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v376-nazo-recognition
@@ -199,7 +200,7 @@ reading: あどばいす
 romaji: adobaisu
 meaning_it: consiglio
 notes_it: >-
-  Voce della lezione L22 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v377-adobaisu-recognition
@@ -221,7 +222,8 @@ reading: ねむり
 romaji: nemuri
 meaning_it: sonno
 notes_it: >-
-  Voce della lezione L22 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v378-nemuri-recognition
@@ -243,7 +245,7 @@ reading: まわり
 romaji: mawari
 meaning_it: intorno
 notes_it: >-
-  Voce della lezione L22 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v379-mawari-recognition
@@ -265,7 +267,7 @@ reading: ちかづく
 romaji: chikazu ku
 meaning_it: avvicinarsi
 notes_it: >-
-  Voce della lezione L22 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v380-chikazu-ku-recognition
@@ -287,7 +289,8 @@ reading: いっしゅん
 romaji: isshun
 meaning_it: un istante
 notes_it: >-
-  Voce della lezione L22 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v381-isshun-recognition
@@ -309,7 +312,8 @@ reading: ゼロゲート
 romaji: zerogeeto
 meaning_it: Zero Gate
 notes_it: >-
-  Voce della lezione L22 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v383-hiroi
@@ -318,7 +322,7 @@ reading: ひろい
 romaji: hiroi
 meaning_it: ampio / largo
 notes_it: >-
-  Voce della lezione L22 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v383-hiroi-recognition
@@ -340,7 +344,7 @@ reading: すいじょう
 romaji: suijou
 meaning_it: sull'acqua
 notes_it: >-
-  Voce della lezione L22 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v384-suijou-recognition
@@ -362,7 +366,7 @@ reading: いっきに
 romaji: ikki ni
 meaning_it: tutto d'un colpo
 notes_it: >-
-  Voce della lezione L22 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v385-ikki-ni-recognition
@@ -384,7 +388,8 @@ reading: きょうりょく
 romaji: kyouryoku
 meaning_it: potente
 notes_it: >-
-  Voce della lezione L22 nell'area Battaglia. Parte del discorso: na-aggettivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v386-kyouryoku-recognition
@@ -406,7 +411,8 @@ reading: おおジャンプ
 romaji: oojanpu
 meaning_it: super salto
 notes_it: >-
-  Voce della lezione L22 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v387-oojanpu-recognition
@@ -428,7 +434,7 @@ reading: つく
 romaji: tsuku
 meaning_it: arrivare
 notes_it: >-
-  Voce della lezione L22 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v388-tsuku-recognition
@@ -450,7 +456,7 @@ reading: あぶない
 romaji: abunai
 meaning_it: pericoloso
 notes_it: >-
-  Voce della lezione L22 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v389-abunai-recognition
@@ -472,7 +478,8 @@ reading: けっしょうか
 romaji: kesshouka
 meaning_it: cristallizzazione
 notes_it: >-
-  Voce della lezione L22 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v390-kesshouka-recognition
@@ -494,7 +501,8 @@ reading: そだてる
 romaji: sodate ru
 meaning_it: allenare / crescere
 notes_it: >-
-  Voce della lezione L22 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v391-sodate-ru-recognition
@@ -516,5 +524,6 @@ reading: だんラッシュ
 romaji: danrasshu
 meaning_it: Team Star Barrage
 notes_it: >-
-  Voce della lezione L22 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::

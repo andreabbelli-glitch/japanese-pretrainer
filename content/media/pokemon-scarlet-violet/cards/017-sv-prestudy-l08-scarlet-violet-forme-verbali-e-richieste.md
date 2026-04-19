@@ -13,13 +13,12 @@ reading: どうしよう
 romaji: doushiyou
 meaning_it: che faccio? / come faccio? / e adesso?
 notes_it: >-
-  Espressione ricorrente della lezione L08 nell'area Domande rapide. Viene da どう
-  ("come?") + しよう, forma volitiva di する ("fare"): letteralmente e qualcosa
-  come "come faccio? / che faccio?". Per questo suona come esitazione,
-  incertezza o piccolo panico davanti a una decisione. In review pensa a queste
-  sfumature: "che faccio?" quando devi scegliere il prossimo passo, "come
-  faccio?" quando non vedi una soluzione, "e adesso?" quando la situazione ti
-  mette pressione o ti coglie impreparato.
+  Viene da どう ("come?") + しよう, forma volitiva di する ("fare"): letteralmente e
+  qualcosa come "come faccio? / che faccio?". Per questo suona come
+  esitazione, incertezza o piccolo panico davanti a una decisione. In review
+  pensa a queste sfumature: "che faccio?" quando devi scegliere il prossimo
+  passo, "come faccio?" quando non vedi una soluzione, "e adesso?" quando la
+  situazione ti mette pressione o ti coglie impreparato.
 :::
 :::card
 id: card-e017-doushiyou-recognition
@@ -41,10 +40,9 @@ reading: どうしたの？
 romaji: doushitano？
 meaning_it: che c'e? / che hai? / cos'e successo?
 notes_it: >-
-  Espressione ricorrente della lezione L08 nell'area Domande rapide. Si appoggia
-  a どうした, cioe il passato di どうする ("che fare / come comportarsi"), usato
-  in pratica con il senso di "che c'e? / che hai? / cos'e successo?". Il の
-  finale rende la domanda piu esplicativa e colloquiale: per questo どうしたの？
+  Si appoggia a どうした, cioe il passato di どうする ("che fare / come comportarsi"),
+  usato in pratica con il senso di "che c'e? / che hai? / cos'e successo?". Il
+  の finale rende la domanda piu esplicativa e colloquiale: per questo どうしたの？
   si usa spesso quando qualcuno sembra strano, fermo o preoccupato. In review
   pensa a queste sfumature: "che c'e?" se noti qualcosa di insolito, "che hai?"
   se l'altra persona sembra giu o agitata, "cos'e successo?" se immagini un
@@ -93,8 +91,7 @@ title: Negazione
 meaning_it: 'forma negativa: non fare / non essere'
 notes_it: >-
   La ない{{形|けい}} e la base della negazione. Serve per dire che qualcosa non
-  accade, non esiste o non si fa, e per costruire forme come 〜ないで e
-  〜なければならない.
+  accade, non esiste o non si fa, e per costruire forme come 〜ないで e 〜なければならない.
 :::
 :::card
 id: card-g023-negazione-concept
@@ -138,7 +135,8 @@ reading: とくぼう
 romaji: tokubou
 meaning_it: Difesa Speciale
 notes_it: >-
-  Voce della lezione L08 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v088-tokubou-recognition
@@ -160,7 +158,7 @@ reading: どれ
 romaji: dore
 meaning_it: quale (fra più cose)
 notes_it: >-
-  Voce della lezione L08 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v091-dore-recognition
@@ -182,7 +180,7 @@ reading: じゆうに
 romaji: jiyuu ni
 meaning_it: liberamente
 notes_it: >-
-  Voce della lezione L08 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v092-jiyuu-ni-recognition
@@ -204,7 +202,7 @@ reading: しつもん
 romaji: shitsumon
 meaning_it: domanda
 notes_it: >-
-  Voce della lezione L08 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v093-shitsumon-recognition
@@ -226,7 +224,8 @@ reading: しょくじパワー
 romaji: shokujipawaa
 meaning_it: Meal Power
 notes_it: >-
-  Voce della lezione L08 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v095-hajime-ru
@@ -235,7 +234,7 @@ reading: はじめる
 romaji: hajime ru
 meaning_it: iniziare
 notes_it: >-
-  Voce della lezione L08 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v095-hajime-ru-recognition
@@ -257,7 +256,7 @@ reading: こらいどん
 romaji: koraidon
 meaning_it: Koraidon
 notes_it: >-
-  Voce della lezione L08 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v097-miraidon
@@ -266,7 +265,7 @@ reading: みらいどん
 romaji: miraidon
 meaning_it: Miraidon
 notes_it: >-
-  Voce della lezione L08 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v098-chikaku
@@ -275,7 +274,7 @@ reading: ちかく
 romaji: chikaku
 meaning_it: vicino
 notes_it: >-
-  Voce della lezione L08 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v098-chikaku-recognition
@@ -297,7 +296,7 @@ reading: こたえ
 romaji: kotae
 meaning_it: risposta
 notes_it: >-
-  Voce della lezione L08 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v099-kotae-recognition
@@ -319,5 +318,8 @@ reading: ひでんすぱいす
 romaji: hiden supaisu
 meaning_it: Herba Mystica / spezia segreta
 notes_it: >-
-  Voce della lezione L08 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Qui 秘伝 (hiden) non e solo "segreto" in senso generico: richiama qualcosa di custodito o tramandato come una ricetta speciale. Per questo la label si puo leggere anche come "spezia segreta", oltre al nome localizzato Herba Mystica. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Qui 秘伝 (hiden) non e solo "segreto" in senso generico: richiama qualcosa di
+  custodito o tramandato come una ricetta speciale. Per questo la label si puo
+  leggere anche come "spezia segreta", oltre al nome localizzato Herba Mystica.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::

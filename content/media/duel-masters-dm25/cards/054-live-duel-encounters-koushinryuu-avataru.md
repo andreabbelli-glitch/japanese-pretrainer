@@ -52,9 +52,9 @@ card_type: concept
 front: 'シールド{{化|か}}してもよい'
 back: puoi trasformarla in uno scudo
 example_jp: >-
-  それをシールド{{化|か}}してもよい。
+  このカードが{{出|で}}た{{時|とき}}、{{自分|じぶん}}の{{手札|てふだ}}を{{1枚|いちまい}}シールド{{化|か}}してもよい。
 example_it: >-
-  Puoi trasformarla in uno scudo.
+  Quando questa entra, puoi trasformare 1 carta della mano in scudo.
 notes_it: >-
   Questo è il chunk davvero utile della carta. `シールド` fissa il nuovo ruolo,
   `{{化|か}}す` marca la trasformazione e `してもよい` lascia la scelta al

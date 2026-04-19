@@ -242,9 +242,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{所持|しょじ}}チケットは{{4枚|よんまい}}ある。
+  スーパーレアが{{出|で}}るまで、{{所持|しょじ}}している{{4枚|よんまい}}のチケットをすべて{{使|つか}}う。
 translation_it: >-
-  Hai 4 ticket disponibili.
+  Uso tutti e 4 i biglietti rimasti finchè non tiro una carta Super Rara.
 :::
 
 - [{{所持|しょじ}}チケット](term:term-owned-ticket) non parla di ciò
@@ -268,9 +268,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{獲得|かくとく}}カード{{一覧|いちらん}}で{{結果|けっか}}を{{確認|かくにん}}する。
+  パックを{{引|ひ}}いた{{後|あと}}、{{獲得|かくとく}}カード{{一覧|いちらん}}でスクリーンショットを{{撮|と}}る。
 translation_it: >-
-  Controlla il risultato nella lista delle carte ottenute.
+  Dopo aver scartato, faccio lo screenshot della lista col riepilogo delle carte ottenute.
 :::
 
 - [{{獲得|かくとく}}](term:term-kakutoku) spiega che quelle carte sono già state

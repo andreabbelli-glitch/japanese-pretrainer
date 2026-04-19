@@ -44,9 +44,9 @@ card_type: recognition
 front: '{{新規|しんき}}'
 back: 'nuovo; da zero'
 example_jp: >-
-  {{新規|しんき}}でデッキを{{作成|さくせい}}する。
+  {{新規|しんき}}プレイヤーは、まず{{無料|むりょう}}で{{配|くば}}られるデッキを{{作成|さくせい}}するのがおすすめだ。
 example_it: >-
-  Creo un deck nuovo da zero.
+  Ai nuovi giocatori si consiglia, come prima cosa, di impostare il mazzo distribuito gratuitamente.
 notes_it: >-
   In questo contesto [{{新規|しんき}}](term:term-shinki) non è “ultimo” o
   “appena arrivato”: indica il fatto che la lista nasce nuova.
@@ -75,9 +75,9 @@ card_type: recognition
 front: '{{作成|さくせい}}する'
 back: 'creare; generare'
 example_jp: >-
-  デッキを{{作成|さくせい}}する。
+  {{手|て}}に{{入|い}}れたカードを{{使|つか}}って、{{自分|じぶん}}だけのオリジナルデッキを{{作成|さくせい}}する。
 example_it: >-
-  Creo il deck.
+  Uso le carte ottenute per creare un mio mazzo personalizzato ed originale.
 notes_it: >-
   [{{作成|さくせい}}する](term:term-sakusei-suru) è il verbo della creazione
   da zero. In questa schermata si oppone bene al flusso di
@@ -107,9 +107,9 @@ card_type: recognition
 front: 'デッキコード'
 back: 'codice del deck; deck code'
 example_jp: >-
-  デッキコードを{{入力|にゅうりょく}}する。
+  サイトに{{載|の}}っている{{強|つよ}}いデッキコードをコピーして、ゲームに{{入力|にゅうりょく}}する。
 example_it: >-
-  Inserisco il deck code.
+  Copio il deck code di un mazzo forte presente sul sito per inserirlo in gioco.
 notes_it: >-
   [デッキコード](term:term-deck-code) non è il nome libero del mazzo: è una
   stringa tecnica che richiama una lista precisa.
@@ -139,9 +139,9 @@ card_type: recognition
 front: '{{入力|にゅうりょく}}する'
 back: 'inserire; digitare'
 example_jp: >-
-  コードを{{入力|にゅうりょく}}する。
+  {{発行|はっこう}}されたパスワードを{{正|ただ}}しく{{入力|にゅうりょく}}して、データを{{引|ひ}}き{{継|つ}}ぐ。
 example_it: >-
-  Inserisco il codice.
+  Per ripristinare l'account inserisco correttamente la password emessa dal sistema.
 notes_it: >-
   [{{入力|にゅうりょく}}する](term:term-nyuryoku-suru) qui è il verbo del
   campo di testo: prima immetti il valore, poi confermi con `{{決定|けってい}}`.

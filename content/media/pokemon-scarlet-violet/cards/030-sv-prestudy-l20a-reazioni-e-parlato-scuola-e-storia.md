@@ -13,7 +13,7 @@ reading: それって
 romaji: sorette
 meaning_it: e quello allora...?
 notes_it: >-
-  Espressione ricorrente della lezione L20 nell'area Connettori. Riprende colloquialmente qualcosa appena detto.
+  Riprende colloquialmente qualcosa appena detto.
 :::
 :::card
 id: card-e054-sorette-recognition
@@ -34,9 +34,9 @@ pattern: ～間 / ～間に
 title: Durante / mentre
 meaning_it: durante / mentre
 notes_it: >-
-  〜{{間|あいだ}} indica "durante tutto il tempo in cui..."; 〜{{間|あいだ}}に
-  indica "mentre..., nel frattempo...". Con 〜{{間|あいだ}} l'azione dura per
-  tutto quel periodo; con 〜{{間|あいだ}}に succede qualcosa dentro quel periodo.
+  〜{{間|あいだ}} indica "durante tutto il tempo in cui..."; 〜{{間|あいだ}}に indica
+  "mentre..., nel frattempo...". Con 〜{{間|あいだ}} l'azione dura per tutto quel
+  periodo; con 〜{{間|あいだ}}に succede qualcosa dentro quel periodo.
 :::
 :::card
 id: card-g054-durante-mentre-concept
@@ -58,7 +58,7 @@ reading: またね
 romaji: matane
 meaning_it: a dopo / ci si vede
 notes_it: >-
-  Espressione ricorrente della lezione L20 nell'area Saluti / gestione dialogo. Chiusura amichevole.
+  Chiusura amichevole.
 :::
 :::card
 id: card-e055-matane-recognition
@@ -102,7 +102,7 @@ reading: ってことは
 romaji: ttekotoha
 meaning_it: quindi vuol dire che
 notes_it: >-
-  Espressione ricorrente della lezione L20 nell'area Connettori. Da quello che è stato detto si tira una conclusione.
+  Da quello che è stato detto si tira una conclusione.
 :::
 :::card
 id: card-e056-ttekotoha-recognition
@@ -173,7 +173,8 @@ reading: やけど
 romaji: yakedo
 meaning_it: scottatura
 notes_it: >-
-  Voce della lezione L20 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v274-yakedo-recognition
@@ -195,7 +196,8 @@ reading: しゅうりょう
 romaji: shuuryou
 meaning_it: fine / chiusura
 notes_it: >-
-  Voce della lezione L20 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v275-shuuryou-recognition
@@ -217,7 +219,7 @@ reading: かいじょ
 romaji: kaijo
 meaning_it: annullamento / rimozione
 notes_it: >-
-  Voce della lezione L20 nell'area SV specifico. Parte del discorso: sostantivo. Indica la rimozione o lo sblocco di qualcosa in menu, progressione o tutorial.
+  Indica la rimozione o lo sblocco di qualcosa in menu, progressione o tutorial.
 :::
 :::card
 id: card-v276-kaijo-recognition
@@ -239,7 +241,7 @@ reading: きぶん
 romaji: kibun
 meaning_it: umore / sensazione
 notes_it: >-
-  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Compare spesso nei dialoghi NPC e nelle reazioni dei personaggi.
+  Compare spesso nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v277-kibun-recognition
@@ -261,7 +263,7 @@ reading: しつれい
 romaji: shitsurei
 meaning_it: scortesia / con permesso
 notes_it: >-
-  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v278-shitsurei-recognition
@@ -283,7 +285,8 @@ reading: ひでん
 romaji: hiden
 meaning_it: segreto / Herba Mystica (come nome breve)
 notes_it: >-
-  Voce della lezione L20 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v280-kakkuu
@@ -292,7 +295,8 @@ reading: かっくう
 romaji: kakkuu
 meaning_it: planata
 notes_it: >-
-  Voce della lezione L20 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v280-kakkuu-recognition
@@ -314,7 +318,7 @@ reading: たいせつ
 romaji: taisetsu
 meaning_it: importante / caro
 notes_it: >-
-  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v281-taisetsu-recognition
@@ -336,7 +340,7 @@ reading: たから
 romaji: takara
 meaning_it: tesoro
 notes_it: >-
-  Voce della lezione L20 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v282-takara-recognition
@@ -358,7 +362,7 @@ reading: そうげん
 romaji: sougen
 meaning_it: prateria
 notes_it: >-
-  Voce della lezione L20 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v283-sougen-recognition
@@ -380,7 +384,8 @@ reading: こうどう
 romaji: koudou
 meaning_it: azione
 notes_it: >-
-  Voce della lezione L20 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v284-koudou-recognition
@@ -402,7 +407,7 @@ reading: りゆう
 romaji: riyuu
 meaning_it: motivo
 notes_it: >-
-  Voce della lezione L20 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v285-riyuu-recognition
@@ -424,7 +429,7 @@ reading: たからもの
 romaji: takaramono
 meaning_it: tesoro personale
 notes_it: >-
-  Voce della lezione L20 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v286-takaramono-recognition
@@ -446,7 +451,7 @@ reading: じつりょく
 romaji: jitsuryoku
 meaning_it: vera capacità / livello reale
 notes_it: >-
-  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v287-jitsuryoku-recognition
@@ -468,7 +473,8 @@ reading: マップアプリ
 romaji: mappuapuri
 meaning_it: app mappa
 notes_it: >-
-  Voce della lezione L20 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v288-mappuapuri-recognition
@@ -490,7 +496,7 @@ reading: もつ
 romaji: motsu
 meaning_it: avere / tenere
 notes_it: >-
-  Voce della lezione L20 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v289-motsu-recognition
@@ -512,7 +518,7 @@ reading: れんらく
 romaji: renraku
 meaning_it: contatto / chiamata / messaggio
 notes_it: >-
-  Voce della lezione L20 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v290-renraku-recognition
@@ -534,7 +540,7 @@ reading: にがて
 romaji: nigate
 meaning_it: non essere bravo / non piacere
 notes_it: >-
-  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v291-nigate-recognition
@@ -556,7 +562,8 @@ reading: きけん
 romaji: kiken
 meaning_it: pericolo
 notes_it: >-
-  Voce della lezione L20 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v292-kiken-recognition
@@ -578,7 +585,7 @@ reading: あんしん
 romaji: anshin
 meaning_it: sollievo / tranquillità
 notes_it: >-
-  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v293-anshin-recognition

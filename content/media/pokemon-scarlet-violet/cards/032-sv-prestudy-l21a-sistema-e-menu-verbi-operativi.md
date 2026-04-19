@@ -13,7 +13,7 @@ reading: まとめて
 romaji: matomete
 meaning_it: tutto insieme / in totale
 notes_it: >-
-  Espressione ricorrente della lezione L21 nell'area Sistema/UI. Acquisti multipli, totale, shop e TM machine.
+  Acquisti multipli, totale, shop e TM machine.
 :::
 :::card
 id: card-e048-matomete-recognition
@@ -35,7 +35,7 @@ reading: つくれる
 romaji: tsukureru
 meaning_it: si può creare / craftare
 notes_it: >-
-  Espressione ricorrente della lezione L21 nell'area Sistema/UI. TM machine, ricette e sblocco di sandwich.
+  TM machine, ricette e sblocco di sandwich.
 :::
 :::card
 id: card-e049-tsukureru-recognition
@@ -57,7 +57,7 @@ reading: ちなみに
 romaji: chinamini
 meaning_it: tra l'altro
 notes_it: >-
-  Espressione ricorrente della lezione L21 nell'area Connettori. Aggiunge informazione laterale ma utile.
+  Aggiunge informazione laterale ma utile.
 :::
 :::card
 id: card-e060-chinamini-recognition
@@ -79,7 +79,7 @@ reading: どうかな
 romaji: doukana
 meaning_it: chissà / come sarà?
 notes_it: >-
-  Espressione ricorrente della lezione L21 nell'area Domande rapide. Dubbi, supposizioni, commenti morbidi.
+  Dubbi, supposizioni, commenti morbidi.
 :::
 :::card
 id: card-e061-doukana-recognition
@@ -101,7 +101,7 @@ reading: 〜のヒント
 romaji: nohinto
 meaning_it: indizio su…
 notes_it: >-
-  Espressione ricorrente della lezione L21 nell'area Sistema/UI. Ricorre in prove, quiz e tutorial
+  Ricorre in prove, quiz e tutorial
 :::
 :::card
 id: card-e064-nohinto-recognition
@@ -124,7 +124,7 @@ meaning_it: contrazione di 〜かもしれない
 aliases:
 - 〜かもしれない
 notes_it: >-
-  Pattern della lezione L21 nella famiglia Colloquiale da dialogo. Formazione: phrase + かも. Molto utile per cogliere ipotesi leggere.
+  Formazione: phrase + かも. Molto utile per cogliere ipotesi leggere.
 :::
 :::card
 id: card-g064-contrazione-di-concept
@@ -145,7 +145,7 @@ pattern: ～にくい
 title: Difficile da fare
 meaning_it: difficile da fare
 notes_it: >-
-  Pattern della lezione L21 nella famiglia Confronto e struttura. Formazione: V-stem + にくい. Compare in descrizioni pratiche o difficoltà.
+  Formazione: V-stem + にくい. Compare in descrizioni pratiche o difficoltà.
 :::
 :::card
 id: card-g065-difficile-da-fare-concept
@@ -166,7 +166,7 @@ pattern: ～つもりだ
 title: Avere intenzione di
 meaning_it: avere intenzione di
 notes_it: >-
-  Pattern della lezione L21 nella famiglia Desiderio, intenzione, possibilità. Formazione: V-dizionario/ない + つもり. Missioni, piani e promesse.
+  Formazione: V-dizionario/ない + つもり. Missioni, piani e promesse.
 :::
 :::card
 id: card-g067-avere-intenzione-di-concept
@@ -188,7 +188,7 @@ reading: ふえる
 romaji: fue ru
 meaning_it: aumentare
 notes_it: >-
-  Voce della lezione L21 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v314-fue-ru-recognition
@@ -210,7 +210,7 @@ reading: もどる
 romaji: modoru
 meaning_it: tornare indietro
 notes_it: >-
-  Voce della lezione L21 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v315-modoru-recognition
@@ -232,7 +232,8 @@ reading: まひ
 romaji: mahi
 meaning_it: paralisi
 notes_it: >-
-  Voce della lezione L21 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v316-mahi-recognition
@@ -254,7 +255,7 @@ reading: とくい
 romaji: tokui
 meaning_it: essere bravo in
 notes_it: >-
-  Voce della lezione L21 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v317-tokui-recognition
@@ -276,7 +277,8 @@ reading: がけのぼり
 romaji: gakenobori
 meaning_it: arrampicata sulla parete
 notes_it: >-
-  Voce della lezione L21 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v318-gakenobori-recognition
@@ -298,7 +300,7 @@ reading: ちゃーじ
 romaji: chaaji
 meaning_it: ricarica
 notes_it: >-
-  Voce della lezione L21 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v319-chaaji-recognition
@@ -320,7 +322,7 @@ reading: あんない
 romaji: annai
 meaning_it: guida / accompagnamento
 notes_it: >-
-  Voce della lezione L21 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v320-annai-recognition
@@ -342,7 +344,8 @@ reading: みため
 romaji: mitame
 meaning_it: aspetto
 notes_it: >-
-  Voce della lezione L21 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v321-mitame-recognition
@@ -364,7 +367,7 @@ reading: えらぶ
 romaji: erabu
 meaning_it: scegliere
 notes_it: >-
-  Voce della lezione L21 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v322-erabu-recognition
@@ -386,7 +389,7 @@ reading: ほんきで
 romaji: honki de
 meaning_it: sul serio
 notes_it: >-
-  Voce della lezione L21 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v323-honki-de-recognition
@@ -408,7 +411,7 @@ reading: まもる
 romaji: mamoru
 meaning_it: proteggere / rispettare
 notes_it: >-
-  Voce della lezione L21 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v324-mamoru-recognition
@@ -430,7 +433,7 @@ reading: ふるい
 romaji: furui
 meaning_it: vecchio
 notes_it: >-
-  Voce della lezione L21 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v325-furui-recognition
@@ -452,7 +455,8 @@ reading: あいしょう
 romaji: aishou
 meaning_it: compatibilità / matchup
 notes_it: >-
-  Voce della lezione L21 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v326-aishou-recognition
@@ -474,7 +478,7 @@ reading: さばく
 romaji: sabaku
 meaning_it: deserto
 notes_it: >-
-  Voce della lezione L21 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v327-sabaku-recognition
@@ -496,7 +500,7 @@ reading: もくひょう
 romaji: mokuhyou
 meaning_it: obiettivo
 notes_it: >-
-  Voce della lezione L21 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v328-mokuhyou-recognition
@@ -518,7 +522,7 @@ reading: けしき
 romaji: keshiki
 meaning_it: paesaggio
 notes_it: >-
-  Voce della lezione L21 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v329-keshiki-recognition
@@ -540,7 +544,7 @@ reading: ほうほう
 romaji: houhou
 meaning_it: metodo
 notes_it: >-
-  Voce della lezione L21 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v330-houhou-recognition
@@ -562,7 +566,8 @@ reading: へんこう
 romaji: henkou
 meaning_it: modifica
 notes_it: >-
-  Voce della lezione L21 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v331-henkou-recognition
@@ -584,7 +589,7 @@ reading: さんかする
 romaji: sanka suru
 meaning_it: partecipare
 notes_it: >-
-  Voce della lezione L21 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v332-sanka-suru-recognition

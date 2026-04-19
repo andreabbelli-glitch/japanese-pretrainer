@@ -13,7 +13,7 @@ reading: さて
 romaji: sate
 meaning_it: bene allora / dunque
 notes_it: >-
-  Espressione ricorrente della lezione L17 nell'area Connettori. Apre un nuovo punto o una nuova fase.
+  Apre un nuovo punto o una nuova fase.
 :::
 :::card
 id: card-e030-sate-recognition
@@ -35,7 +35,7 @@ reading: どうぞ
 romaji: douzo
 meaning_it: prego / ecco
 notes_it: >-
-  Espressione ricorrente della lezione L17 nell'area Saluti / gestione dialogo. Quando qualcuno ti offre o ti invita a fare qualcosa
+  Quando qualcuno ti offre o ti invita a fare qualcosa
 :::
 :::card
 id: card-e031-douzo-recognition
@@ -57,7 +57,7 @@ reading: おねがいします
 romaji: onegaishimasu
 meaning_it: per favore / ti affido la cosa
 notes_it: >-
-  Espressione ricorrente della lezione L17 nell'area Richieste. Richiesta educata; molto ricorrente
+  Richiesta educata; molto ricorrente
 :::
 :::card
 id: card-e032-onegaishimasu-recognition
@@ -79,7 +79,8 @@ reading: ちーむ
 romaji: chiimu
 meaning_it: squadra
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v157-chiimu-recognition
@@ -101,7 +102,8 @@ reading: がくえん
 romaji: gakuen
 meaning_it: accademia / campus
 notes_it: >-
-  Voce della lezione L17 nell''area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v158-gakuen-recognition
@@ -123,7 +125,7 @@ reading: ぼす
 romaji: bosu
 meaning_it: capo
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v159-bosu-recognition
@@ -145,7 +147,8 @@ reading: くさ
 romaji: kusa
 meaning_it: erba
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v160-kusa-recognition
@@ -167,7 +170,7 @@ reading: ふしぎ
 romaji: fushigi
 meaning_it: misterioso / strano
 notes_it: >-
-  Voce della lezione L17 nell''area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v161-fushigi-recognition
@@ -189,7 +192,8 @@ reading: だめーじ
 romaji: dameeji
 meaning_it: danno
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v162-dameeji-recognition
@@ -211,7 +215,8 @@ reading: スパイス
 romaji: supaisu
 meaning_it: spezia
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v163-supaisu-recognition
@@ -233,7 +238,7 @@ reading: あじと
 romaji: ajito
 meaning_it: base / nascondiglio
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v165-ajito-recognition
@@ -255,7 +260,8 @@ reading: りょうり
 romaji: ryouri
 meaning_it: cucina / piatto
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v166-ryouri-recognition
@@ -277,7 +283,8 @@ reading: ヌシ
 romaji: nushi
 meaning_it: Titan / boss dominante
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v168-kouchou
@@ -286,7 +293,7 @@ reading: こうちょう
 romaji: kouchou
 meaning_it: preside
 notes_it: >-
-  Voce della lezione L17 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v168-kouchou-recognition
@@ -308,7 +315,7 @@ reading: あたらしい
 romaji: atarashii
 meaning_it: nuovo
 notes_it: >-
-  Voce della lezione L17 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v169-atarashii-recognition
@@ -330,7 +337,8 @@ reading: ほのお
 romaji: honoo
 meaning_it: fuoco
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v170-honoo-recognition
@@ -352,7 +360,8 @@ reading: ランク
 romaji: ranku
 meaning_it: rank / grado
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v171-ranku-recognition
@@ -374,7 +383,8 @@ reading: だす
 romaji: dasu
 meaning_it: mandare fuori / far entrare in campo
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v172-dasu-recognition
@@ -396,7 +406,8 @@ reading: みず
 romaji: mizu
 meaning_it: acqua
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v173-mizu-recognition
@@ -418,7 +429,8 @@ reading: べんきょう
 romaji: benkyou
 meaning_it: studio
 notes_it: >-
-  Voce della lezione L17 nell''area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v174-benkyou-recognition
@@ -440,7 +452,7 @@ reading: いじょう
 romaji: ijou
 meaning_it: più di / oltre
 notes_it: >-
-  Voce della lezione L17 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v175-ijou-recognition
@@ -462,7 +474,8 @@ reading: ちから
 romaji: chikara
 meaning_it: forza / potere
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v176-chikara-recognition

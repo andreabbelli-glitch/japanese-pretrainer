@@ -13,7 +13,7 @@ reading: きみしだい
 romaji: kimi shidai
 meaning_it: dipende da te
 notes_it: >-
-  Espressione ricorrente della lezione L24 nell'area Battaglia. Mette la decisione nelle mani del giocatore/personaggio.
+  Mette la decisione nelle mani del giocatore/personaggio.
 :::
 :::card
 id: card-e081-kimi-shidai-recognition
@@ -35,7 +35,7 @@ reading: ここまできたら
 romaji: kokomade kita ra
 meaning_it: ormai che siamo arrivati fin qui
 notes_it: >-
-  Espressione ricorrente della lezione L24 nell'area Battaglia. Formula narrativa prima del passo decisivo.
+  Formula narrativa prima del passo decisivo.
 :::
 :::card
 id: card-e082-kokomade-kita-ra-recognition
@@ -57,7 +57,7 @@ reading: ぜんりょくでいこう
 romaji: zenryoku deikou
 meaning_it: andiamo al massimo
 notes_it: >-
-  Espressione ricorrente della lezione L24 nell'area Battaglia. Invito a dare tutto.
+  Invito a dare tutto.
 :::
 :::card
 id: card-e083-zenryoku-deikou-recognition
@@ -79,7 +79,7 @@ reading: まだおわりじゃない
 romaji: mada owari janai
 meaning_it: non è ancora finita
 notes_it: >-
-  Espressione ricorrente della lezione L24 nell'area Reazioni. Frase classica di resistenza o tensione narrativa.
+  Frase classica di resistenza o tensione narrativa.
 :::
 :::card
 id: card-e084-mada-owari-janai-recognition
@@ -100,7 +100,7 @@ pattern: ～と
 title: Quando / se (risultato naturale)
 meaning_it: quando / se (risultato naturale)
 notes_it: >-
-  Pattern della lezione L24 nella famiglia Condizioni, tempo, sequenza. Formazione: V-dizionario + と. Molto comune in spiegazioni meccaniche.
+  Formazione: V-dizionario + と. Molto comune in spiegazioni meccaniche.
 :::
 :::card
 id: card-g085-quando-se-risultato-naturale-concept
@@ -121,7 +121,8 @@ pattern: frase relativa (連体修飾)
 title: Frase che modifica un nome
 meaning_it: frase che modifica un nome
 notes_it: >-
-  Pattern della lezione L24 nella famiglia Confronto e struttura. Formazione: [frase] + N. Fondamentale nei giochi: tantissime info stanno prima del nome.
+  Formazione: [frase] + N. Fondamentale nei giochi: tantissime info stanno prima
+  del nome.
 :::
 :::card
 id: card-g086-frase-che-modifica-un-nome-concept
@@ -142,7 +143,7 @@ pattern: 受け身
 title: Forma passiva
 meaning_it: forma passiva
 notes_it: >-
-  Pattern della lezione L24 nella famiglia Dare/ricevere e diatesi. Formazione: V-passivo. A volte usata in spiegazioni, regole o tono narrativo.
+  Formazione: V-passivo. A volte usata in spiegazioni, regole o tono narrativo.
 :::
 :::card
 id: card-g087-forma-passiva-concept
@@ -163,7 +164,8 @@ pattern: しか～ない
 title: Solo e nient'altro
 meaning_it: solo e nient'altro
 notes_it: >-
-  Pattern della lezione L24 nella famiglia Particelle e struttura. Formazione: N + しか + ない. Frequente quando un personaggio restringe una scelta o un'ipotesi.
+  Formazione: N + しか + ない. Frequente quando un personaggio restringe una scelta
+  o un'ipotesi.
 :::
 :::card
 id: card-g088-solo-e-nient-altro-concept
@@ -185,7 +187,7 @@ reading: おぼえる
 romaji: oboe ru
 meaning_it: memorizzare / imparare
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v432-oboe-ru-recognition
@@ -207,7 +209,7 @@ reading: きたえる
 romaji: kitae ru
 meaning_it: allenare / temprare
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v433-kitae-ru-recognition
@@ -229,7 +231,7 @@ reading: おりる
 romaji: ori ru
 meaning_it: scendere
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v434-ori-ru-recognition
@@ -251,7 +253,7 @@ reading: うれしい
 romaji: ureshii
 meaning_it: contento / felice
 notes_it: >-
-  Voce della lezione L24 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v435-ureshii-recognition
@@ -273,7 +275,8 @@ reading: オンライン
 romaji: onrain
 meaning_it: online
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v436-onrain-recognition
@@ -295,7 +298,8 @@ reading: ふっかつ
 romaji: fukkatsu
 meaning_it: resurrezione / ritorno in campo
 notes_it: >-
-  Voce della lezione L24 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v437-fukkatsu-recognition
@@ -317,7 +321,7 @@ reading: おそい
 romaji: osoi
 meaning_it: lento / tardi
 notes_it: >-
-  Voce della lezione L24 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v438-osoi-recognition
@@ -339,7 +343,7 @@ reading: もん
 romaji: mon
 meaning_it: porta / cancello
 notes_it: >-
-  Voce della lezione L24 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v439-mon-recognition
@@ -361,7 +365,8 @@ reading: オフライン
 romaji: ofurain
 meaning_it: offline
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v440-ofurain-recognition
@@ -383,7 +388,7 @@ reading: おぼえさせる
 romaji: oboe saseru
 meaning_it: insegnare una mossa
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v441-oboe-saseru-recognition
@@ -405,7 +410,7 @@ reading: しゅじんこう
 romaji: shujinkou
 meaning_it: protagonista
 notes_it: >-
-  Voce della lezione L24 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v442-shujinkou-recognition
@@ -427,7 +432,8 @@ reading: けんさく
 romaji: kensaku
 meaning_it: ricerca
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v443-kensaku-recognition
@@ -449,7 +455,7 @@ reading: がけ
 romaji: gake
 meaning_it: scogliera / precipizio
 notes_it: >-
-  Voce della lezione L24 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v444-gake-recognition
@@ -471,7 +477,7 @@ reading: とじる
 romaji: tojiru
 meaning_it: chiudere
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alto rendimento che ricorrono spesso nei tutorial e nei dialoghi.
+  Verbo ad alta frequenza nei tutorial e nei dialoghi.
 :::
 :::card
 id: card-v445-tojiru-recognition
@@ -493,7 +499,7 @@ reading: ならう
 romaji: narau
 meaning_it: imparare (da qualcuno)
 notes_it: >-
-  Voce della lezione L24 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v446-narau-recognition
@@ -515,7 +521,7 @@ reading: とし
 romaji: toshi
 meaning_it: città (grande)
 notes_it: >-
-  Voce della lezione L24 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v447-toshi-recognition
@@ -537,7 +543,8 @@ reading: ほうがく
 romaji: hougaku
 meaning_it: direzione
 notes_it: >-
-  Voce della lezione L24 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v448-hougaku-recognition
@@ -559,7 +566,7 @@ reading: きた
 romaji: kita
 meaning_it: nord
 notes_it: >-
-  Voce della lezione L24 nell'area Esplorazione. Parte del discorso: sostantivo. Direzione cardinale ricorrente in mappa, cartelli e indicazioni degli NPC.
+  Direzione cardinale ricorrente in mappa, cartelli e indicazioni degli NPC.
 :::
 :::card
 id: card-v449-kita-recognition
@@ -581,7 +588,8 @@ reading: みなみ
 romaji: minami
 meaning_it: sud
 notes_it: >-
-  Voce della lezione L24 nell'area Esplorazione. Parte del discorso: sostantivo. Direzione cardinale utile per leggere mappe, cartelli e indicazioni di percorso.
+  Direzione cardinale utile per leggere mappe, cartelli e indicazioni di
+  percorso.
 :::
 :::card
 id: card-v450-minami-recognition
@@ -603,7 +611,7 @@ reading: にし
 romaji: nishi
 meaning_it: ovest
 notes_it: >-
-  Voce della lezione L24 nell'area Esplorazione. Parte del discorso: sostantivo. Direzione cardinale che compare in cartelli di città e percorsi.
+  Direzione cardinale che compare in cartelli di città e percorsi.
 :::
 :::card
 id: card-v451-nishi-recognition
@@ -625,7 +633,8 @@ reading: ひがし
 romaji: higashi
 meaning_it: est
 notes_it: >-
-  Voce della lezione L24 nell'area Esplorazione. Parte del discorso: sostantivo. Completa il blocco delle direzioni cardinali; torna in nomi di aree e orientamento.
+  Completa il blocco delle direzioni cardinali; torna in nomi di aree e
+  orientamento.
 :::
 :::card
 id: card-v452-higashi-recognition
@@ -647,7 +656,7 @@ reading: めずらしい
 romaji: mezurashii
 meaning_it: raro
 notes_it: >-
-  Voce della lezione L24 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v453-mezurashii-recognition

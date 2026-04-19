@@ -13,7 +13,7 @@ reading: 〜させて
 romaji: ~ sasete
 meaning_it: lascia che io...
 notes_it: >-
-  Espressione ricorrente della lezione L16 nell'area Richieste. Chiedere permesso di fare un'azione.
+  Chiedere permesso di fare un'azione.
 :::
 :::card
 id: card-e027-sasete-recognition
@@ -35,7 +35,7 @@ reading: おめでとう
 romaji: omedetou
 meaning_it: congratulazioni
 notes_it: >-
-  Espressione ricorrente della lezione L16 nell'area Saluti / gestione dialogo. Dopo una vittoria, promozione o obiettivo raggiunto.
+  Dopo una vittoria, promozione o obiettivo raggiunto.
 :::
 :::card
 id: card-e028-omedetou-recognition
@@ -57,7 +57,7 @@ reading: ようこそ
 romaji: youkoso
 meaning_it: benvenuto / ben arrivato
 notes_it: >-
-  Espressione ricorrente della lezione L16 nell'area Saluti / gestione dialogo. Ingresso in un luogo / presentazione
+  Ingresso in un luogo / presentazione
 :::
 :::card
 id: card-e029-youkoso-recognition
@@ -79,7 +79,8 @@ reading: こうかん
 romaji: koukan
 meaning_it: scambio
 notes_it: >-
-  Voce della lezione L16 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v151-koukan-recognition
@@ -101,7 +102,8 @@ reading: こうげき
 romaji: kougeki
 meaning_it: attacco
 notes_it: >-
-  Voce della lezione L16 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v152-kougeki-recognition
@@ -123,7 +125,7 @@ reading: ただ
 romaji: tada
 meaning_it: solo / però
 notes_it: >-
-  Voce della lezione L16 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v153-tada-recognition
@@ -145,7 +147,8 @@ reading: いわ
 romaji: iwa
 meaning_it: roccia
 notes_it: >-
-  Voce della lezione L16 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v154-iwa-recognition
@@ -167,7 +170,7 @@ reading: ほんとう
 romaji: hontou
 meaning_it: vero / davvero
 notes_it: >-
-  Voce della lezione L16 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v155-hontou-recognition
@@ -189,7 +192,8 @@ reading: じゅぎょう
 romaji: jugyou
 meaning_it: lezione
 notes_it: >-
-  Voce della lezione L16 nell'area Battaglia / saluti e dialogo. Parte del discorso: sostantivo. Lessico della scuola che compare nei dialoghi e nel contesto accademico iniziale.
+  Parola che ricorre nei dialoghi e nel contesto accademico.
+  iniziale.
 :::
 :::card
 id: card-v156-jugyou-recognition

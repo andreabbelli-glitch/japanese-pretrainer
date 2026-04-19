@@ -13,7 +13,7 @@ reading: 〜できるようになった
 romaji: dekiruyouninatta
 meaning_it: ora puoi farlo
 notes_it: >-
-  Espressione ricorrente della lezione L12 nell'area Sistema/UI. Indica che una funzione è diventata disponibile.
+  Indica che una funzione è diventata disponibile.
 :::
 :::card
 id: card-e025-dekiruyouninatta-recognition
@@ -35,7 +35,7 @@ reading: まかせて
 romaji: makase te
 meaning_it: lascia fare a me
 notes_it: >-
-  Espressione ricorrente della lezione L12 nell'area Supporto / incoraggiamento. Risposta breve e rassicurante quando ti chiedono aiuto.
+  Risposta breve e rassicurante quando ti chiedono aiuto.
 :::
 :::card
 id: card-e026-makase-te-recognition
@@ -56,7 +56,7 @@ pattern: から
 title: Perché
 meaning_it: perché
 notes_it: >-
-  Pattern della lezione L12 nella famiglia Spiegazione, opinione, apparenza. Formazione: frase + から. Spiegazione diretta, frequentissima nei dialoghi.
+  Formazione: frase + から. Spiegazione diretta, frequentissima nei dialoghi.
 :::
 :::card
 id: card-g034-perche-concept
@@ -77,7 +77,7 @@ pattern: けど / けれど
 title: Ma / però
 meaning_it: ma / però
 notes_it: >-
-  Pattern della lezione L12 nella famiglia Spiegazione, opinione, apparenza. Formazione: frase + けど. Connessione e contrasto molto comuni nel parlato.
+  Formazione: frase + けど. Connessione e contrasto molto comuni nel parlato.
 :::
 :::card
 id: card-g035-ma-pero-concept
@@ -98,7 +98,8 @@ pattern: ので
 title: Siccome / dato che
 meaning_it: siccome / dato che
 notes_it: >-
-  Pattern della lezione L12 nella famiglia Spiegazione, opinione, apparenza. Formazione: frase + ので. Spiegazione più morbida, comune in parlato cortese e testi.
+  Formazione: frase + ので. Spiegazione più morbida, comune in parlato cortese e
+  testi.
 :::
 :::card
 id: card-g036-siccome-dato-che-concept
@@ -120,7 +121,7 @@ reading: せいそくち
 romaji: seisokuchi
 meaning_it: habitat
 notes_it: >-
-  Voce della lezione L12 nell''area Esplorazione. Parte del discorso: sostantivo. Indica l'habitat di un Pokémon, cioè dove vive o si trova.
+  Indica l'habitat di un Pokémon, cioè dove vive o si trova.
 :::
 :::card
 id: card-v138-seisokuchi-recognition
@@ -142,7 +143,7 @@ reading: なんにん
 romaji: nannin
 meaning_it: quante persone
 notes_it: >-
-  Voce della lezione L12 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v139-nannin-recognition
@@ -164,7 +165,7 @@ reading: うる
 romaji: uru
 meaning_it: vendere
 notes_it: >-
-  Voce della lezione L12 nell''area Sistema/UI. Parte del discorso: verbo. Parola utile per la funzione di vendita nei menu.
+  Parola utile per la funzione di vendita nei menu.
 :::
 :::card
 id: card-v140-uru-recognition
@@ -186,7 +187,7 @@ reading: いっかい
 romaji: ikkai
 meaning_it: una volta
 notes_it: >-
-  Voce della lezione L12 nell''area Sistema/UI. Parte del discorso: sostantivo. Indicatore di quantità: una sola volta.
+  Indicatore di quantità: una sola volta.
 :::
 :::card
 id: card-v141-ikkai-recognition
@@ -208,7 +209,7 @@ reading: かわ
 romaji: kawa
 meaning_it: fiume
 notes_it: >-
-  Voce della lezione L12 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v142-kawa-recognition
@@ -230,7 +231,7 @@ reading: まち
 romaji: machi
 meaning_it: città / paese
 notes_it: >-
-  Voce della lezione L12 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v143-machi-recognition
@@ -252,7 +253,7 @@ reading: たぶん
 romaji: tabun
 meaning_it: forse / probabilmente
 notes_it: >-
-  Voce della lezione L12 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v144-tabun-recognition
@@ -274,7 +275,7 @@ reading: なんびき
 romaji: nanbiki
 meaning_it: quanti animali / Pokémon
 notes_it: >-
-  Voce della lezione L12 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v145-nanbiki-recognition
@@ -296,7 +297,7 @@ reading: いきさき
 romaji: ikisaki
 meaning_it: destinazione / dove andare
 notes_it: >-
-  Voce della lezione L12 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v146-ikisaki-recognition
@@ -318,7 +319,7 @@ reading: すたーだすと★すとりーと
 romaji: sutaadasuto★sutoriito
 meaning_it: Starfall Street
 notes_it: >-
-  Voce della lezione L12 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v148-chanpionroodo
@@ -327,7 +328,7 @@ reading: ちゃんぴおんろーど
 romaji: chanpionroodo
 meaning_it: Champion Road
 notes_it: >-
-  Voce della lezione L12 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v149-rejiendoruuto
@@ -336,7 +337,7 @@ reading: れじぇんどるーと
 romaji: rejiendoruuto
 meaning_it: Path of Legends
 notes_it: >-
-  Voce della lezione L12 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v150-waka-ru
@@ -345,7 +346,7 @@ reading: わかる
 romaji: waka ru
 meaning_it: capire
 notes_it: >-
-  Voce della lezione L12 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v150-waka-ru-recognition

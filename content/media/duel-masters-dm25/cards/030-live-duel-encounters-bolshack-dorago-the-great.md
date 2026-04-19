@@ -46,10 +46,9 @@ card_type: recognition
 front: '{{人数|にんずう}}'
 back: numero di persone / numero di giocatori coinvolti
 example_jp: >-
-  {{相手|あいて}}の{{人数|にんずう}}と{{同|おな}}じ{{枚数|まいすう}}を
-  {{見|み}}る。
+  バトルに{{参加|さんか}}しているプレイヤーの{{人数|にんずう}}だけ、カードを{{引|ひ}}く。
 example_it: >-
-  Guardi un numero di carte pari al numero di avversari.
+  Peschi carte per quant'è il numero dei giocatori partecipanti alla lotta.
 notes_it: >-
   Qui `{{人数|にんずう}}` non conta permanenti o carte: conta proprio quante
   persone sono avversarie in questa partita. E quel numero diventa subito il
@@ -66,10 +65,9 @@ card_type: concept
 front: '{{相手|あいて}}の{{人数|にんずう}}と{{同|おな}}じ{{枚数|まいすう}}'
 back: il numero di carte pari al numero di avversari
 example_jp: >-
-  {{相手|あいて}}の{{人数|にんずう}}と{{同|おな}}じ{{枚数|まいすう}}を
-  {{見|み}}る。
+  {{相手|あいて}}のクリーチャーと{{同|おな}}じ{{枚数|まいすう}}のカードを、{{墓地|ぼち}}から{{選|えら}}ぶ。
 example_it: >-
-  Guardi un numero di carte pari al numero di avversari.
+  Scegli dal cimitero un numero di carte uguale a quello delle creature dell'avversario.
 notes_it: >-
   Qui `と同じ枚数` non significa semplicemente "molte carte": il testo ti fa
   agganciare la quantità a un conteggio preciso già presente nel turno.

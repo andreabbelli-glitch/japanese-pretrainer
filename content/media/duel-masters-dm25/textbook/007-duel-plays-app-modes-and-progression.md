@@ -162,9 +162,9 @@ partita.
 
 :::example_sentence
 jp: >-
-  ランクマッチ {{開催中|かい.さい.ちゅう}}
+  ランクマッチが{{開催中|かい.さい.ちゅう}}なので、{{新|あたら}}しいデッキでマスターランクに{{挑戦|ちょうせん}}する。
 translation_it: >-
-  Ranked match attualmente attivo.
+  Visto che i match classificati sono attivi, provo a scalare fino al Master rank col nuovo mazzo.
 :::
 
 - [ランクマッチ](term:term-ranked-match) ti dice il tipo di contenuto.
@@ -174,9 +174,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{未解放|み.かい.ほう}}
+  {{条件|じょうけん}}をクリアするまで、このイベントステージは{{未解放|み.かい.ほう}}のままになる。
 translation_it: >-
-  Non ancora sbloccato.
+  Finché non completi i requisiti, questo stage dell'evento resterà bloccato.
 :::
 
 - [{{未|み}}～](grammar:grammar-mi-prefix) imposta subito la lettura negativa.
@@ -187,9 +187,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{達成済|たっ.せい.ず}}み
+  このミッションはすでに{{達成済|たっ.せい.ず}}みなので、もう{{一度|いちど}}{{報酬|ほうしゅう}}をもらうことはできない。
 translation_it: >-
-  Già completato.
+  Dato che questa missione è già completata, non puoi riceverne di nuovo i premi.
 :::
 
 - [{{達成|たっせい}}](term:term-achievement) = completamento.
@@ -200,9 +200,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{対戦開始|たい.せん.かい.し}}
+  デッキの{{準備|じゅんび}}がすべて{{終|お}}わったら、{{対戦開始|たい.せん.かい.し}}のボタンをタップする。
 translation_it: >-
-  Inizia la partita.
+  Una volta pronti col mazzo da usare, si clicca il tasto "inizio lotta".
 :::
 
 - È il bottone finale del flusso.

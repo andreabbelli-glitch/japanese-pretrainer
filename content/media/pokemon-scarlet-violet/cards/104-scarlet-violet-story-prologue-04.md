@@ -91,8 +91,7 @@ meaning_it: dormitorio studentesco
 notes_it: >-
   E la zona abitativa degli studenti. Nel prologo non e solo ambientazione:
   riposare nella `{{学生寮|がく.せい.りょう}}` avanza il tempo di gioco e prepara
-  l'apertura della
-  [{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou).
+  l'apertura della [{{課外授業|か.がい.じゅ.ぎょう}}](term:term-kagai-jugyou).
 :::
 :::card
 id: card-gakusei-ryou-recognition
@@ -260,10 +259,10 @@ pattern: ～放題
 title: A volontà / illimitato / quanto vuoi
 meaning_it: fare o usare liberamente e in grande quantità
 notes_it: >-
-  Attaccato alla radice in `ます`, `～{{放題|ほうだい}}` comunica disponibilità
-  ampia o assenza pratica di limite. In questo arco si sente in frasi come
-  `{{使|つか}}い{{放題|ほうだい}}` per le facility del campus e richiama anche il
-  più colloquiale `やり{{放題|ほうだい}}` di Nemona.
+  Attaccato alla radice in `ます`, `～{{放題|ほうだい}}` comunica disponibilità ampia o
+  assenza pratica di limite. In questo arco si sente in frasi come
+  `{{使|つか}}い{{放題|ほうだい}}` per le facility del campus e richiama anche il più
+  colloquiale `やり{{放題|ほうだい}}` di Nemona.
 :::
 :::card
 id: card-houdai-concept

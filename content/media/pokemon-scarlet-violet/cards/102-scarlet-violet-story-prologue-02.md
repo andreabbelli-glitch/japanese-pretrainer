@@ -161,10 +161,10 @@ reading: わざマシン
 romaji: waza mashin
 meaning_it: MT / oggetto per insegnare una mossa
 notes_it: >-
-  In Scarlet / Violet una `わざマシン` serve a insegnare una mossa a un Pokemon.
-  In questo capitolo compare come premio subito dopo la grotta: non è un
-  oggetto decorativo, ma un primo assaggio della personalizzazione del team e
-  del fatto che in questo titolo la MT si consuma quando viene usata.
+  In Scarlet / Violet una `わざマシン` serve a insegnare una mossa a un Pokemon. In
+  questo capitolo compare come premio subito dopo la grotta: non è un oggetto
+  decorativo, ma un primo assaggio della personalizzazione del team e del
+  fatto che in questo titolo la MT si consuma quando viene usata.
 :::
 :::card
 id: card-waza-machine-recognition
@@ -403,9 +403,8 @@ title: Più..., più...
 meaning_it: più succede X, più aumenta Y
 notes_it: >-
   Collega due movimenti che crescono insieme. In questo arco è perfetto per
-  leggere osservazioni come `{{見|み}}れば {{見|み}}るほど`:
-  più Pepper osserva il Pokemon misterioso, più lo trova strano o degno di
-  attenzione.
+  leggere osservazioni come `{{見|み}}れば {{見|み}}るほど`: più Pepper osserva il
+  Pokemon misterioso, più lo trova strano o degno di attenzione.
 :::
 :::card
 id: card-ba-hodo-concept

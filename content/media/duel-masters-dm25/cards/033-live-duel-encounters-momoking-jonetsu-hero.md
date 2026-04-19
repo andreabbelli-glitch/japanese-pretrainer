@@ -79,9 +79,9 @@ card_type: recognition
 front: キリフダッシュ
 back: keyword che sblocca un'evocazione dopo un attacco che ha rotto uno scudo
 example_jp: >-
-  キリフダッシュ{{6|ろく}}。
+  {{自分|じぶん}}のクリーチャーがシールドをブレイクした{{時|とき}}、キリフダッシュを{{使|つか}}う。
 example_it: >-
-  Kirifudash 6.
+  Quando una tua creatura ha distrutto uno scudo, usa Kirifudash.
 notes_it: >-
   La parola chiave è il vero target di memoria: non basta riconoscere il costo
   `6`, bisogna collegarlo alla finestra `攻撃の終わりに` e alla condizione già

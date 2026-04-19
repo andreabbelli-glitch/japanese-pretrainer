@@ -13,7 +13,7 @@ reading: どの わざを かいふくする
 romaji: dono wazao kaifukusuru
 meaning_it: quale mossa vuoi recuperare?
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Sistema/UI. UI oggetti e PP
+  UI oggetti e PP
 :::
 :::card
 id: card-e106-dono-wazao-kaifukusuru-recognition
@@ -35,7 +35,7 @@ reading: 〜してもいいからね
 romaji: shitemoiikarane
 meaning_it: va bene anche se…
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Supporto / incoraggiamento. Tono rassicurante, spesso in dialogo amichevole
+  Tono rassicurante, spesso in dialogo amichevole
 :::
 :::card
 id: card-e107-shitemoiikarane-recognition
@@ -57,7 +57,7 @@ reading: おつかれさま
 romaji: otsukaresama
 meaning_it: bel lavoro / ti sei stancato
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Supporto / incoraggiamento. Si usa dopo una fatica o a fine attività.
+  Si usa dopo una fatica o a fine attività.
 :::
 :::card
 id: card-e108-otsukaresama-recognition
@@ -78,7 +78,8 @@ pattern: ～ってば
 title: Ti sto dicendo che...
 meaning_it: ti sto dicendo che...
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Colloquiale da dialogo. Formazione: colloquiale enfatico. Raro ma utile se compare in un personaggio molto espressivo.
+  Formazione: colloquiale enfatico. Raro ma utile se compare in un personaggio
+  molto espressivo.
 :::
 :::card
 id: card-g109-ti-sto-dicendo-che-concept
@@ -101,7 +102,8 @@ meaning_it: non è che… / non significa che…
 aliases:
 - 〜わけではない
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Spiegazione, opinione, apparenza. Formazione: frase piana + わけじゃない. Utile per capire sfumature, smentite e mezze ammissioni dei personaggi.
+  Formazione: frase piana + わけじゃない. Utile per capire sfumature, smentite e mezze
+  ammissioni dei personaggi.
 :::
 :::card
 id: card-g110-non-e-che-non-significa-che-concept
@@ -122,7 +124,8 @@ pattern: 使役
 title: Far fare / lasciar fare
 meaning_it: far fare / lasciar fare
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Dare/ricevere e diatesi. Formazione: V-causativo. Meno frequente, ma utile se compare in spiegazioni o dialoghi di comando.
+  Formazione: V-causativo. Meno frequente, ma utile se compare in spiegazioni o
+  dialoghi di comando.
 :::
 :::card
 id: card-g111-far-fare-lasciar-fare-concept
@@ -144,7 +147,7 @@ reading: ひきかえす
 romaji: hikikaesu
 meaning_it: tornare indietro
 notes_it: >-
-  Voce della lezione L30 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alto rendimento che ricorrono spesso nei tutorial e nei dialoghi.
+  Verbo ad alta frequenza nei tutorial e nei dialoghi.
 :::
 :::card
 id: card-v661-hikikaesu-recognition
@@ -166,7 +169,8 @@ reading: でんとうぎょうじ
 romaji: dentougyouji
 meaning_it: evento / tradizione della scuola
 notes_it: >-
-  Voce della lezione L30 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v662-dentougyouji-recognition
@@ -188,7 +192,8 @@ reading: かがいかつどう
 romaji: kagaikatsudou
 meaning_it: attività extrascolastica
 notes_it: >-
-  Voce della lezione L30 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v663-kagaikatsudou-recognition
@@ -210,7 +215,8 @@ reading: まとめうり
 romaji: matomeuri
 meaning_it: vendita in blocco
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v664-matomeuri-recognition
@@ -232,7 +238,8 @@ reading: ぜんせんたく
 romaji: zensentaku
 meaning_it: seleziona tutto
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v665-zensentaku-recognition
@@ -254,7 +261,8 @@ reading: しょうはい
 romaji: shouhai
 meaning_it: esito della sfida
 notes_it: >-
-  Voce della lezione L30 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v666-shouhai-recognition
@@ -276,7 +284,7 @@ reading: ふうき
 romaji: fuuki
 meaning_it: disciplina scolastica
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v667-fuuki-recognition
@@ -298,7 +306,8 @@ reading: うけとりかのう
 romaji: uketorikanou
 meaning_it: riscattabile
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v668-uketorikanou-recognition
@@ -320,7 +329,8 @@ reading: うけとりずみ
 romaji: uketorizumi
 meaning_it: già riscattato
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v669-uketorizumi-recognition
@@ -342,7 +352,8 @@ reading: こうもく
 romaji: koumoku
 meaning_it: voce / elemento
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v670-koumoku-recognition
@@ -364,7 +375,8 @@ reading: きょうとう
 romaji: kyoutou
 meaning_it: combattere insieme
 notes_it: >-
-  Voce della lezione L30 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v671-kyoutou-recognition
@@ -386,7 +398,7 @@ reading: こんなん
 romaji: konnan
 meaning_it: difficile / complesso
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v672-konnan-recognition
@@ -408,7 +420,7 @@ reading: かっくうする
 romaji: kakkuu suru
 meaning_it: planare
 notes_it: >-
-  Voce della lezione L30 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v673-kakkuu-suru-recognition
@@ -430,7 +442,8 @@ reading: おいはらう
 romaji: oiharau
 meaning_it: scacciare
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: verbo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v674-oiharau-recognition
@@ -452,7 +465,7 @@ reading: きりかえる
 romaji: kirikaeru
 meaning_it: commutare / cambiare
 notes_it: >-
-  Voce della lezione L30 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alto rendimento che ricorrono spesso nei tutorial e nei dialoghi.
+  Verbo ad alta frequenza nei tutorial e nei dialoghi.
 :::
 :::card
 id: card-v675-kirikaeru-recognition
@@ -474,7 +487,7 @@ reading: ふるまう
 romaji: furu mau
 meaning_it: offrire / servire
 notes_it: >-
-  Voce della lezione L30 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v676-furu-mau-recognition
@@ -496,7 +509,7 @@ reading: じょうせつ
 romaji: jousetsu
 meaning_it: installato stabilmente
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v677-jousetsu-recognition
@@ -518,7 +531,8 @@ reading: かいとり
 romaji: kaitori
 meaning_it: acquisto da parte del negozio
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v678-kaitori-recognition
@@ -540,7 +554,8 @@ reading: さいてきかい
 romaji: saitekikai
 meaning_it: soluzione ottimale
 notes_it: >-
-  Voce della lezione L30 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v679-saitekikai-recognition
@@ -562,7 +577,8 @@ reading: うでをみがく
 romaji: ude wo migaku
 meaning_it: affinare le proprie capacità
 notes_it: >-
-  Voce della lezione L30 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v680-ude-wo-migaku-recognition
@@ -584,7 +600,7 @@ reading: ひとくろう
 romaji: hitokurou
 meaning_it: una bella fatica
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v681-hitokurou-recognition
@@ -606,7 +622,7 @@ reading: じゅうおうむじん
 romaji: juuoumujin
 meaning_it: in lungo e in largo / liberamente
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v682-juuoumujin-recognition
@@ -628,7 +644,7 @@ reading: よかん
 romaji: yokan
 meaning_it: presentimento
 notes_it: >-
-  Voce della lezione L30 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v683-yokan-recognition

@@ -13,7 +13,7 @@ reading: ボウルタウン
 romaji: bourutaun
 meaning_it: Artazon
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v685-nappeyama
@@ -22,7 +22,7 @@ reading: ナッペやま
 romaji: nappeyama
 meaning_it: Glaseado Mountain
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v686-kimenshuu
@@ -31,7 +31,8 @@ reading: きめんしゅう
 romaji: kimenshuu
 meaning_it: clan / maschere dell'orco
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v687-chanpurutaun
@@ -40,7 +41,7 @@ reading: チャンプルタウン
 romaji: chanpurutaun
 meaning_it: Medali
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v688-suiryokutaun
@@ -49,7 +50,8 @@ reading: スイリョクタウン
 romaji: suiryokutaun
 meaning_it: Mossui Town
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v689-hakkoushiti
@@ -58,7 +60,7 @@ reading: ハッコウシティ
 romaji: hakkoushiti
 meaning_it: Levincia
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v690-beikutaun
@@ -67,7 +69,7 @@ reading: ベイクタウン
 romaji: beikutaun
 meaning_it: Alfornada
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v691-karafushiti
@@ -76,7 +78,7 @@ reading: カラフシティ
 romaji: karafushiti
 meaning_it: Cascarrafa
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v692-moyou
@@ -85,7 +87,8 @@ reading: もよう
 romaji: moyou
 meaning_it: motivo / pattern
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::card
 id: card-v692-moyou-recognition
@@ -107,7 +110,7 @@ reading: かのうせい
 romaji: kanousei
 meaning_it: possibilità
 notes_it: >-
-  Voce della lezione L34 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v693-kanousei-recognition
@@ -129,7 +132,7 @@ reading: セルクルタウン
 romaji: serukurutaun
 meaning_it: Cortondo
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v695-furijjitaun
@@ -138,7 +141,7 @@ reading: フリッジタウン
 romaji: furijjitaun
 meaning_it: Montenevera
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v696-kosajitaun
@@ -147,7 +150,7 @@ reading: コサジタウン
 romaji: kosajitaun
 meaning_it: Cabo Poco
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v697-sumahokabaa
@@ -156,7 +159,8 @@ reading: スマホカバー
 romaji: sumahokabaa
 meaning_it: cover dello smartphone
 notes_it: >-
-  Voce della lezione L34 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v697-sumahokabaa-recognition
@@ -178,7 +182,7 @@ reading: オージャのみずうみ
 romaji: oojanomizuumi
 meaning_it: Casseroya Lake
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v699-saakurumisshon
@@ -187,7 +191,8 @@ reading: サークルミッション
 romaji: saakurumisshon
 meaning_it: missione di gruppo
 notes_it: >-
-  Voce della lezione L34 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v699-saakurumisshon-recognition
@@ -209,7 +214,8 @@ reading: はいたつ
 romaji: haitatsu
 meaning_it: consegna
 notes_it: >-
-  Voce della lezione L34 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v700-haitatsu-recognition
@@ -231,7 +237,8 @@ reading: つうじょう
 romaji: tsuujou
 meaning_it: normale / standard
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::card
 id: card-v701-tsuujou-recognition
@@ -253,7 +260,7 @@ reading: プラトタウン
 romaji: puratotaun
 meaning_it: Los Platos
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::
 :::term
 id: term-v703-henshin
@@ -262,7 +269,8 @@ reading: へんしん
 romaji: henshin
 meaning_it: trasformazione
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::card
 id: card-v703-henshin-recognition
@@ -284,7 +292,8 @@ reading: きょてん
 romaji: kyoten
 meaning_it: base / punto chiave
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::card
 id: card-v704-kyoten-recognition
@@ -306,7 +315,8 @@ reading: あとのせエフェクト
 romaji: atonoseefekuto
 meaning_it: effetto aggiunto dopo lo scatto
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v706-dekofureemu
@@ -315,7 +325,8 @@ reading: デコフレーム
 romaji: dekofureemu
 meaning_it: cornice decorativa
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v707-sentaasukuea
@@ -324,7 +335,8 @@ reading: センタースクエア
 romaji: sentaasukuea
 meaning_it: Center Square
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v708-funiki
@@ -333,7 +345,8 @@ reading: ふんいき
 romaji: funiki
 meaning_it: atmosfera
 notes_it: >-
-  Voce della lezione L34 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v708-funiki-recognition
@@ -355,7 +368,8 @@ reading: きのみだい
 romaji: kinomidai
 meaning_it: supporto per bacche
 notes_it: >-
-  Voce della lezione L34 nell'area DLC. Parte del discorso: sostantivo. Termine soprattutto utile nei DLC; da studiare dopo il nucleo base del gioco.
+  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
+  base del gioco.
 :::
 :::term
 id: term-v710-piketaun
@@ -364,5 +378,5 @@ reading: ピケタウン
 romaji: piketaun
 meaning_it: Porto Marinada? / insediamento vicino
 notes_it: >-
-  Voce della lezione L34 nell'area Luoghi. Parte del discorso: sostantivo. Nome di luogo o struttura utile per capire mappa, indicazioni e contesto.
+  Nome di luogo utile per capire mappa, indicazioni e contesto.
 :::

@@ -77,9 +77,9 @@ card_type: recognition
 front: '{{編成|へんせい}}'
 back: 'composizione; setup'
 example_jp: >-
-  {{前衛|ぜんえい}}と{{後衛|こうえい}}で{{編成|へんせい}}する。
+  ボスの{{攻撃|こうげき}}を{{耐|た}}えるために、{{回復役|かい.ふく.やく}}を{{後衛|こうえい}}に{{置|お}}くパーティー{{編成|へんせい}}にする。
 example_it: >-
-  Compongo la squadra con una prima linea e una retroguardia.
+  Per sopravvivere agli attacchi del boss, costruisco un team con l'healer nelle retrovie.
 notes_it: >-
   In questa pagina [{{編成|へんせい}}](term:term-hensei) non è “organizzazione”
   in senso astratto: è il modo concreto in cui disponi i personaggi e i loro
@@ -111,9 +111,9 @@ card_type: recognition
 front: 'パーティー{{編成|へんせい}}'
 back: 'composizione della squadra; party build'
 example_jp: >-
-  このパーティー{{編成|へんせい}}でいく。
+  このパーティー{{編成|へんせい}}なら、{{最高|さいこう}}レアがいなくてもストーリーをクリアできる。
 example_it: >-
-  Vado con questa composizione della squadra.
+  Con questo party puoi completare la storia anche senza alcun personaggio di massima rarità.
 notes_it: >-
   Nelle guide di gioco [パーティー{{編成|へんせい}}](term:term-party-composition)
   è un blocco fisso e molto comune: il senso non cambia “partendo” da
@@ -144,9 +144,9 @@ card_type: recognition
 front: 'おすすめ'
 back: 'consigliato; raccomandato'
 example_jp: >-
-  この{{編成|へんせい}}はおすすめだ。
+  {{無課金|む.か.きん}}の{{人|ひと}}には、この{{記事|きじ}}のおすすめ{{編成|へんせい}}をそのまま{{使|つか}}うのが{{一番|いちばん}}だ。
 example_it: >-
-  Questa composizione è consigliata.
+  Per i giocatori che non shoppano, la cosa migliore è adottare così com'è il team consigliato in questo articolo.
 notes_it: >-
   In [おすすめ](term:term-osusume)
   [{{編成|へんせい}}](term:term-hensei) il primo pezzo modifica il secondo:
@@ -177,9 +177,9 @@ card_type: recognition
 front: 'おすすめ{{編成|へんせい}}'
 back: 'build consigliata'
 example_jp: >-
-  おすすめ{{編成|へんせい}}をためす。
+  {{攻略|こうりゃく}}サイトのおすすめ{{編成|へんせい}}を{{真似|まね}}して、{{高難易度|こう.なん.い.ど}}をためしてみる。
 example_it: >-
-  Provo la build consigliata.
+  Copio la build suggerita nei pareri della wiki per sperimentare alla difficoltà suprema.
 notes_it: >-
   Il blocco va letto tutto insieme: [おすすめ](term:term-osusume)
   + [{{編成|へんせい}}](term:term-hensei). La struttura è la stessa che vedi
@@ -209,9 +209,9 @@ card_type: recognition
 front: 'コラボ{{開催|かいさい}}'
 back: 'annuncio di collaborazione; evento collab'
 example_jp: >-
-  コラボ{{開催|かいさい}}だ。
+  {{期間限定|き.かん.げん.てい}}のコラボイベントが{{開催|かいさい}}されたので、{{忘|わす}}れずにログインする。
 example_it: >-
-  C'è un evento collab.
+  Siccome si tiene in via eccezionale un evento collaborativo limitato, accedo senza dimenticarmi.
 notes_it: >-
   In una pagina di wiki/guide [コラボ開催](term:term-collab)
   spesso appare come banner o notizia, non come parte della spiegazione delle
@@ -240,9 +240,9 @@ card_type: recognition
 front: '{{序盤|じょばん}}'
 back: 'fase iniziale; early game'
 example_jp: >-
-  {{序盤|じょばん}}はむずかしい。
+  ゲームの{{序盤|じょばん}}は、{{育成素材|いく.せい.そ.ざい}}が{{足|た}}りなくてレベル{{上|あ}}げが{{本当|ほんとう}}にむずかしい。
 example_it: >-
-  La fase iniziale è difficile.
+  Nel prologo introduttivo del gioco mancano i materiali di potenziamento e alzare i livelli è tosto.
 notes_it: >-
   [{{序盤|じょばん}}](term:term-shoban) non è una parola vaga: nei consigli di
   gioco di solito segnala la parte iniziale della run o della progressione.
@@ -270,9 +270,9 @@ card_type: recognition
 front: '{{記事|きじ}}'
 back: 'articolo; post'
 example_jp: >-
-  {{記事|きじ}}をよむ。
+  ガチャのおすすめランキング{{記事|きじ}}を{{読|よ}}んでから、リセマラを{{終了|しゅうりょう}}する。
 example_it: >-
-  Leggo l'articolo.
+  Leggo l'articolo con la tier list dei drop per poter completare la fase di re-roll del tutorial.
 notes_it: >-
   In un portale come AppMedia [{{記事|きじ}}](term:term-kiji) è il mattoncino
   base per indicare un contenuto scritto e cliccabile.
@@ -301,9 +301,9 @@ card_type: recognition
 front: '{{序盤|じょばん}}おすすめ{{記事|きじ}}'
 back: "articoli consigliati per l'inizio"
 example_jp: >-
-  {{序盤|じょばん}}おすすめ{{記事|きじ}}をよむ。
+  {{序盤|じょばん}}におすすめの{{進|すす}}め{{方|かた}}が{{書|か}}かれた{{記事|きじ}}を{{読|よ}}んで、{{無駄|むだ}}なくプレイする。
 example_it: >-
-  Leggo gli articoli consigliati per l'inizio.
+  Sfoglio le guide suggerite a chi è da poco partito per riuscire a giocare ottimizzando tutto.
 notes_it: >-
   Questa etichetta è molto tipica dei portali guida: unisce l'idea di
   [{{序盤|じょばん}}](term:term-shoban) con quella di
@@ -333,9 +333,9 @@ card_type: recognition
 front: '{{目次|もくじ}}'
 back: 'indice; sommario'
 example_jp: >-
-  {{目次|もくじ}}をみる。
+  ページの{{目次|もくじ}}を{{見|み}}て、{{一番|いちばん}}{{知|し}}りたい{{攻略情報|こう.りゃく.じょう.ほう}}のところに{{直接|ちょくせつ}}ジャンプする。
 example_it: >-
-  Guardo il sommario.
+  Do un primo sguardo alla tavola dei contenuti e salto alla porzione d'interesse.
 notes_it: >-
   [{{目次|もくじ}}](term:term-mokuji) è la parola che ti dice dove inizia la
   struttura cliccabile della guida.
@@ -365,9 +365,9 @@ card_type: recognition
 front: 'まとめ'
 back: 'riassunto; riepilogo; raccolta ordinata'
 example_jp: >-
-  ページのまとめを{{読|よ}}む。
+  イベントの{{効率|こうりつ}}の{{良|よ}}い{{周回|しゅうかい}}{{方法|ほうほう}}は、ページの{{一番下|いち.ばん.した}}にあるまとめを{{読|よ}}むとわかる。
 example_it: >-
-  Leggo il riepilogo della pagina.
+  Per capire quale sia il metodo di farming più veloce, basta scorrere a fine pagina al riepilogativo.
 notes_it: >-
   Qui il punto importante non è un “riassunto scolastico” in senso stretto:
   [まとめ](term:term-matome) è una parola ampia che in siti, guide e articoli
@@ -397,9 +397,9 @@ card_type: recognition
 front: '{{前衛|ぜんえい}}'
 back: 'prima linea; frontline'
 example_jp: >-
-  {{前衛|ぜんえい}}におく。
+  HPが{{高|たか}}く{{防御力|ぼう.ぎょ.りょく}}のあるキャラクターを、パーティーの{{前衛|ぜんえい}}におく。
 example_it: >-
-  Lo metto in prima linea.
+  Posizioniamo nella prima linea del party un personaggio con alti HP e valevole dal lato difensivo.
 notes_it: >-
   Qui [{{前衛|ぜんえい}}](term:term-frontline) indica la parte della squadra che
   sta davanti, non una generica idea militare astratta.
@@ -427,9 +427,9 @@ card_type: recognition
 front: '{{後衛|こうえい}}'
 back: 'retroguardia; linea arretrata'
 example_jp: >-
-  {{後衛|こうえい}}におく。
+  {{体力|たいりょく}}が{{低|ひく}}くて{{倒|たお}}されやすい{{魔法使|ま.ほう.つか}}いは、{{安全|あんぜん}}な{{後衛|こうえい}}におくべきだ。
 example_it: >-
-  Lo metto in retroguardia.
+  Una strega facilmente buttata giù in pochi scontri fisici dovrebbe piazzarsi al sicuro dietro i ranghi.
 notes_it: >-
   [{{後衛|こうえい}}](term:term-backline) è il blocco opposto a
   [{{前衛|ぜんえい}}](term:term-frontline): qui il testo ti segnala la zona più
@@ -458,9 +458,9 @@ card_type: recognition
 front: '{{代用|だいよう}}'
 back: 'sostituto; alternativa'
 example_jp: >-
-  そのキャラを{{代用|だいよう}}にする。
+  {{目的|もくてき}}の{{星|ほし}}{{5|ご}}キャラクターが{{当|あ}}たらない{{時|とき}}は、{{星|ほし}}{{4|よん}}のキャラを{{代用|だいよう}}にして{{戦|たたか}}う。
 example_it: >-
-  Faccio di quel personaggio un sostituto.
+  Quando il personaggio desiderato a stella 5 non viene sbustato, optiamo per usare personaggi a stella 4 come alternativa per combattere.
 notes_it: >-
   Nelle tabelle della guida [{{代用|だいよう}}](term:term-substitute) ti dice
   subito chi può entrare al posto di chi.
@@ -488,9 +488,9 @@ card_type: recognition
 front: '{{太陽属性|たいようぞくせい}}'
 back: 'attributo sole; elemento solare'
 example_jp: >-
-  {{太陽属性|たいようぞくせい}}をえらぶ。
+  {{敵|てき}}が{{月属性|つきぞくせい}}のボスなので、{{有利|ゆうり}}に{{戦|たたか}}える{{太陽属性|たいようぞくせい}}のキャラをえらぶ。
 example_it: >-
-  Scelgo l'attributo sole.
+  Siccome il nemico è della stirpe lunare, selezioniamo il sole come affinità avversa per avvantaggiarci.
 notes_it: >-
   In questa guida [{{太陽属性|たいようぞくせい}}](term:term-sun-attribute) è uno
   dei tre filtri principali per dividere le composizioni.
@@ -518,9 +518,9 @@ card_type: recognition
 front: '{{月属性|つきぞくせい}}'
 back: 'attributo luna; elemento lunare'
 example_jp: >-
-  {{月属性|つきぞくせい}}をえらぶ。
+  {{太陽属性|たいようぞくせい}}の{{敵|てき}}から{{受|う}}けるダメージを{{減|へ}}らすため、{{月属性|つきぞくせい}}の{{防具|ぼうぐ}}を{{装備|そうび}}する。
 example_it: >-
-  Scelgo l'attributo luna.
+  Con lo scopo di ridurre i danni che subiamo dai nemici con affinità Sole, andiamo a equipaggiare corazze con affinità Luna.
 notes_it: >-
   [{{月属性|つきぞくせい}}](term:term-moon-attribute) è una delle etichette
   elementali usate nella pagina per organizzare le composizioni.
@@ -548,9 +548,9 @@ card_type: recognition
 front: '{{星属性|ほしぞくせい}}'
 back: 'attributo stella; elemento stellare'
 example_jp: >-
-  {{星属性|ほしぞくせい}}をえらぶ。
+  すべての{{属性|ぞくせい}}に{{等倍|とうばい}}でダメージを{{与|あた}}えられる{{星属性|ほしぞくせい}}をメインで{{育成|いくせい}}する。
 example_it: >-
-  Scelgo l'attributo stella.
+  Sviluppiamo principalmente gli elementi con affinità Stella, che consente di arrecare danni con un fattore pari a x1 in faccia a qualsiasi affinità.
 notes_it: >-
   [{{星属性|ほしぞくせい}}](term:term-star-attribute) chiude il trio
   elementale che la guida usa per spezzare le proposte.
@@ -579,9 +579,9 @@ card_type: recognition
 front: 'ストラテジー{{戦|せん}}'
 back: 'battaglia strategica; strategy battle'
 example_jp: >-
-  ストラテジー{{戦|せん}}でかつ。
+  ユニットの{{配置|はいち}}がいちばん{{大切|たいせつ}}になるストラテジー{{戦|せん}}で、{{最後|さいご}}まで{{勝|か}}ち{{残|のこ}}る。
 example_it: >-
-  Vinco nella battaglia strategica.
+  Sopravviviamo vincendo fino all'ultimo in una battaglia strategica dove la disposizione delle unità è l'essenza più importante.
 notes_it: >-
   Qui [ストラテジー{{戦|せん}}](term:term-strategy-battle) è il
   contenitore competitivo da cui la guida fa partire le versioni di attacco e
@@ -611,9 +611,9 @@ card_type: recognition
 front: '{{防衛戦|ぼうえいせん}}'
 back: 'battaglia di difesa'
 example_jp: >-
-  {{防衛戦|ぼうえいせん}}でまもる。
+  {{押|お}}し{{寄|よ}}せる{{敵|てき}}から{{拠点|きょてん}}にダメージが{{入|はい}}らないように、{{防衛戦|ぼうえいせん}}でしっかり{{陣地|じんち}}を{{守|まも}}る。
 example_it: >-
-  Difendo nella battaglia di difesa.
+  Difendiamo tenacemente il posizionamento nella battaglia di base, per far sì che alcun danno raggiunga il nucleo centrale da parte dei nemici che assalgono a frotte.
 notes_it: >-
   [{{防衛戦|ぼうえいせん}}](term:term-defense-battle) è la faccia “tenere
   il campo” della strategia battle, quindi l'idea chiave è la resistenza.
@@ -641,9 +641,9 @@ card_type: recognition
 front: 'ランク{{戦|せん}}'
 back: 'ranked match; battaglia rank'
 example_jp: >-
-  ランク{{戦|せん}}にでる。
+  {{強|つよ}}いプレイヤーと{{戦|たたか}}って{{自分|じぶん}}の{{実力|じつりょく}}を{{試|ため}}すために、ランク{{戦|せん}}にでることにした。
 example_it: >-
-  Entro in ranked.
+  Ho deciso di scendere nel circuito delle lotte competitive classificate, per testare la mia forza lottando con ottimi giocatori.
 notes_it: >-
   [ランク{{戦|せん}}](term:term-rank-battle) è il contesto competitivo
   in cui la guida parla di lineup specifiche e dei requisiti di accesso.
@@ -671,9 +671,9 @@ card_type: recognition
 front: '{{初心者|しょしんしゃ}}'
 back: 'principiante; beginner'
 example_jp: >-
-  {{初心者|しょしんしゃ}}でもわかる。
+  この{{記事|きじ}}はガチャの{{仕組|しく}}みが{{初心者|しょしんしゃ}}でもわかるように、ていねいに{{解説|かいせつ}}されている。
 example_it: >-
-  Anche un principiante lo capisce.
+  Questo articolo è commentato assai accuratamente, di modo che perfino un novellino in erba sappia capire come sono strutturati i sistemi di evocazione dei gacha.
 notes_it: >-
   [{{初心者|しょしんしゃ}}](term:term-shoshinsha) qui non è generico: marca il
   blocco che prova a far partire bene chi entra nel gioco adesso.
@@ -701,9 +701,9 @@ card_type: recognition
 front: '{{考|かんが}}え{{方|かた}}'
 back: 'modo di pensare; approccio'
 example_jp: >-
-  {{考|かんが}}え{{方|かた}}をかえる。
+  {{難|むずか}}しいイベントをクリアできない{{時|とき}}は、パーティーの{{考|かんが}}え{{方|かた}}をガラッとかえる。
 example_it: >-
-  Cambio approccio.
+  Quando le side-quest diventano insormontabili e smetti di vincere, devia diametralmente il concetto che hai in mente per il tuo team.
 notes_it: >-
   [{{考|かんが}}え{{方|かた}}](term:term-kangaekata) è la parola che la pagina
   usa per passare dalle singole squadre al criterio generale di costruzione.

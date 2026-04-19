@@ -177,9 +177,9 @@ l'area vera in cui sei entrato.
 
 :::example_sentence
 jp: >-
-  ミッション{{一覧|いちらん}}
+  ホーム{{画面|がめん}}からミッション{{一覧|いちらん}}を{{開|ひら}}いて、イベントの{{進|すす}}み{{具合|ぐあい}}を{{見|み}}る。
 translation_it: >-
-  Elenco delle missioni.
+  Apro il foglio con tutti gli obiettivi e guardo l'avanzamento progressivo dell'evento attuale.
 :::
 
 - [～{{一覧|いちらん}}](grammar:grammar-ichiran) indica una lista.
@@ -190,9 +190,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{開催中|かい.さい.ちゅう}}のイベント
+  {{開催中|かい.さい.ちゅう}}のイベントに{{参加|さんか}}して、{{特別|とくべつ}}なカードを{{手|て}}に{{入|い}}れる。
 translation_it: >-
-  Evento attualmente in corso.
+  Partecipo al festival speciale adesso disponibile per procurarmi le copie omaggio delle carte promo.
 :::
 
 - [{{開催中|かい.さい.ちゅう}}](term:term-ongoing) segnala uno stato attivo.
@@ -202,9 +202,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る
+  デイリーミッションをクリアして、プレゼントボックスから{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
 translation_it: >-
-  Ritira la ricompensa.
+  Risolvo gli obiettivi del giorno per andare al box dei regali e riscattare le ricompense in sospeso.
 :::
 
 - [{{報酬|ほうしゅう}}](term:term-reward) = ciò che ottieni;
@@ -216,9 +216,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{未達成|み.たっ.せい}}
+  ストーリーの{{最後|さいご}}のステージが{{未達成|み.たっ.せい}}なので、ジェムがまだ{{足|た}}りない。
 translation_it: >-
-  Non ancora completato.
+  Poiché l'ultima battaglia storia non è completata, non ho gemme abbastanza per le bustine.
 :::
 
 - [{{未|み}}～](grammar:grammar-mi-prefix) indica stato non ancora raggiunto.

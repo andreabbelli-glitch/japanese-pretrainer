@@ -712,9 +712,9 @@ card_type: recognition
 front: ホーム
 back: schermata principale / home
 example_jp: >-
-  ホームからミッションを{{開|ひら}}く。
+  ゲームを{{開|ひら}}いたら、まずはホームでミッションを{{確認|かくにん}}する。
 example_it: >-
-  Apri le missioni dalla Home.
+  Appena avvio il gioco, per prima cosa controllo le missioni nella Home.
 notes_it: >-
   È il punto di orientamento base. Se lo riconosci subito, poi tutto il resto
   dell'app smette di sembrare un insieme di schermate scollegate.
@@ -750,9 +750,9 @@ card_type: recognition
 front: ログインボーナス
 back: bonus di accesso / login bonus
 example_jp: >-
-  ログインボーナスを{{受|う}}け{{取|と}}る。
+  ログインボーナスを{{受|う}}け{{取|と}}ってから、ショップを{{見|み}}る。
 example_it: >-
-  Riscuoti il login bonus.
+  Riscuoto i bonus login e poi guardo lo shop.
 notes_it: >-
   Conviene leggerlo come blocco unico. Ti serve sia per orientarti sia per
   associare subito quella schermata a ricompense giornaliere.
@@ -804,9 +804,9 @@ card_type: recognition
 front: ショップ
 back: negozio / shop
 example_jp: >-
-  ショップでカードを{{交換|こうかん}}する。
+  ショップで{{新|あたら}}しいカードパックを{{購入|こうにゅう}}する。
 example_it: >-
-  Scambia una carta nello shop.
+  Acquisto nuovi pacchetti di carte nello shop.
 notes_it: >-
   È l'ingresso alle aree di acquisto e scambio. Quando lo vedi, preparati a
   leggere bene i verbi operativi delle risorse.
@@ -822,9 +822,9 @@ card_type: recognition
 front: '{{設定|せってい}}'
 back: impostazioni / settings
 example_jp: >-
-  {{設定|せってい}}で{{音量|おんりょう}}を{{変|か}}える。
+  ランクマッチに{{挑戦|ちょうせん}}する{{前|まえ}}に、ゲームの{{設定|せってい}}を{{確認|かくにん}}してBGMの{{音量|おんりょう}}を{{下|さ}}げる。
 example_it: >-
-  Cambia il volume nelle impostazioni.
+  Prima di sfidare un match classificato, controllo le impostazioni del gioco e abbasso il volume della BGM.
 notes_it: >-
   Etichetta molto comune e molto pratica: quando la riconosci, sai che stai
   entrando nelle opzioni dell'app, non in una schermata evento o reward.
@@ -840,9 +840,9 @@ card_type: recognition
 front: 'その{{他|た}}'
 back: altro / varie / etc.
 example_jp: >-
-  その{{他|た}}から{{設定|せってい}}を{{開|ひら}}く。
+  ゲームが{{開始|かいし}}できない{{時|とき}}は、その{{他|た}}のメニューからアカウントの{{設定|せってい}}を{{開|ひら}}いてみる。
 example_it: >-
-  Apri le impostazioni dal menu Etc.
+  Quando non si riesce ad avviare il gioco, si prova ad aprire le impostazioni dell’account dal menu 'Altro'.
 notes_it: >-
   Non indica un contenuto specifico come missioni o shop: segnala invece un
   contenitore di voci secondarie. Se lo riconosci, capisci che stai entrando in
@@ -877,9 +877,9 @@ card_type: recognition
 front: '{{開|ひら}}く'
 back: aprire / open
 example_jp: >-
-  ホームからミッションを{{開|ひら}}く。
+  {{画面|がめん}}の{{右|みぎ}}{{上|うえ}}にある{{設定|せってい}}メニューを{{開|ひら}}いて、それぞれの{{音量|おんりょう}}バランスを{{確認|かくにん}}する。
 example_it: >-
-  Apri le missioni dalla Home.
+  Apro il menu delle impostazioni situato a schermo in alto a destra e controllo il bilanciamento dei vari volumi.
 notes_it: >-
   Nelle schermate dell'app è un verbo di navigazione molto concreto: ti dice
   quale sezione stai facendo emergere davvero, non che cosa stai ancora solo
@@ -896,9 +896,9 @@ card_type: recognition
 front: '{{選択|せんたく}}'
 back: selezione / scegliere
 example_jp: >-
-  デッキを{{選択|せんたく}}してください。
+  バトルの{{前|まえ}}に、{{使|つか}}うデッキを{{選択|せんたく}}する。
 example_it: >-
-  Seleziona un deck, per favore.
+  Prima della partita, selezioni il mazzo da utilizzare.
 notes_it: >-
   Ti prepara bene ai prompt dell'app: quando compare, la lettura non è più
   passiva e la schermata ti chiede di scegliere qualcosa di preciso.
@@ -950,9 +950,9 @@ card_type: recognition
 front: デッキ
 back: mazzo costruito / deck
 example_jp: >-
-  このデッキで{{対戦|たいせん}}する。
+  {{初心|しょしん}}{{者|しゃ}}にはすぐ{{戦|たたか}}える{{構築|こうちく}}{{済|ず}}みデッキをおすすめする。
 example_it: >-
-  Gioca una partita con questo deck.
+  Per i principianti si consiglia un deck pre-costruito e pronto all'uso.
 notes_it: >-
   In app indica la tua lista di gioco, non [{{山札|やまふだ}}](term:term-deck)
   come zona di partita. Questa distinzione evita molte confusioni inutili.
@@ -1026,9 +1026,9 @@ card_type: recognition
 front: '{{購入|こうにゅう}}'
 back: acquisto / comprare
 example_jp: >-
-  チケットで{{購入|こうにゅう}}する。
+  ジュエルで{{新|あたら}}しい{{構築|こうちく}}{{済|ず}}みデッキを{{購入|こうにゅう}}する。
 example_it: >-
-  Compra usando un ticket.
+  Acquisto un deck pre-costruito usando i jewel.
 notes_it: >-
   È il verbo-base dell'acquisto nell'app. Ti aiuta a leggere bene sia il costo
   che il risultato atteso prima di confermare.
@@ -1065,9 +1065,9 @@ card_type: recognition
 front: '{{交換|こうかん}}'
 back: scambio / exchange
 example_jp: >-
-  ショップでカードを{{交換|こうかん}}する。
+  DMポイントを{{使|つか}}って、{{必要|ひつよう}}なカードを{{交換|こうかん}}する。
 example_it: >-
-  Scambia una carta nello shop.
+  Uso i DM points per scambiare la carta necessaria.
 notes_it: >-
   Va letto come azione autonoma, così i composti più lunghi come
   `カード{{交換|こうかん}}` o `{{交換期間|こう.かん.き.かん}}` smettono di sembrare
@@ -1142,9 +1142,9 @@ card_type: recognition
 front: '{{所持|しょじ}}'
 back: posseduto / in possesso
 example_jp: >-
-  {{所持|しょじ}}: {{2枚|にまい}}
+  {{現在|げんざい}}のカードの{{所持|しょじ}}{{枚数|まいすう}}を{{確認|かくにん}}する。
 example_it: >-
-  Possedute: 2 copie.
+  Controllo la quantità di copie possedute di base.
 notes_it: >-
   `{{所持|しょじ}}` indica quante copie sono già presenti nel tuo account. In
   shop e collezione ti serve per capire se devi ancora comprare, craftare o
@@ -1197,9 +1197,9 @@ card_type: recognition
 front: ランクマッチ
 back: partita classificata / ranked match
 example_jp: >-
-  ランクマッチで{{1勝|いっしょう}}する。
+  ランクマッチで{{勝利|しょうり}}して、マスターランクに{{上|あ}}がる。
 example_it: >-
-  Ottieni 1 vittoria in ranked match.
+  Vinco nella partita classificata e salgo a Master Rank.
 notes_it: >-
   Modalità competitiva da riconoscere a colpo d'occhio. Se la vedi, sai che il
   contesto è ladder e non modalità libera.
@@ -1251,9 +1251,9 @@ card_type: recognition
 front: ソロプレイ
 back: gioco singolo / solo play
 example_jp: >-
-  ソロプレイで{{練習|れんしゅう}}する。
+  デッキの{{強|つよ}}さを{{確|たし}}かめるために、まずはソロプレイで{{遊|あそ}}ぶ。
 example_it: >-
-  Fai pratica in Solo Play.
+  Per verificare la forza del mazzo inizio giocando in solo play.
 notes_it: >-
   È il contenitore generale dell'area single-player. Se entri qui, avvii
   contenuti PvE o pratica senza matchmaking competitivo.
@@ -1362,9 +1362,9 @@ card_type: recognition
 front: '{{対戦|たいせん}}'
 back: partita / match / battle
 example_jp: >-
-  このデッキで{{対戦|たいせん}}する。
+  ルームマッチで{{友達|ともだち}}と{{対戦|たいせん}}する。
 example_it: >-
-  Fai una partita con questo deck.
+  Gioco una partita con un amico nel room match.
 notes_it: >-
   Quando leggi `{{対戦|たいせん}}`, la UI sta parlando del confronto vero e
   proprio contro un avversario. È il nucleo che poi ritrovi in
@@ -1475,9 +1475,9 @@ card_type: concept
 front: '{{未|み}}～'
 back: non ancora / ancora non disponibile
 example_jp: >-
-  このモードは{{未解放|み.かい.ほう}}だ。
+  {{条件|じょうけん}}を{{達成|たっせい}}するまで、そのミッションは{{未解放|み.かい.ほう}}のままになる。
 example_it: >-
-  Questa modalità non è ancora sbloccata.
+  Finché non raggiungi i requisiti, la missione rimarrà non sbloccata.
 notes_it: >-
   Questo prefisso orienta subito il verso del messaggio: non stai guardando una
   funzione assente, ma una funzione esistente che non ha ancora raggiunto la
@@ -1515,9 +1515,9 @@ card_type: concept
 front: '～を{{選択|せんたく}}'
 back: seleziona X
 example_jp: >-
-  デッキを{{選択|せんたく}}してください。
+  デッキの{{切|き}}り{{札|ふだ}}にするため、{{交換所|こう.かん.じょ}}でこのスーパーレアを{{選択|せんたく}}して{{手|て}}に{{入|い}}れる。
 example_it: >-
-  Seleziona un deck.
+  Poiché sarà l’asso nella manica del deck, seleziono e ricevo questa Super Rara al centro di scambio.
 notes_it: >-
   Formula di istruzione diretta. Se la riconosci, capisci subito quale oggetto
   l'app si aspetta che tu scelga prima di proseguire.

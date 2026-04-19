@@ -162,9 +162,9 @@ card_type: recognition
 front: '{{攻撃種|こうげきしゅ}}'
 back: 'tipo di attacco; categoria di danno'
 example_jp: >-
-  {{攻撃種|こうげきしゅ}}をさきにみる。
+  {{敵|てき}}の{{弱点|じゃくてん}}に{{合|あ}}わせるために、{{味方|みかた}}の{{攻撃種|こうげきしゅ}}を{{先|さき}}にチェックする。
 example_it: >-
-  Guardo prima il tipo di attacco.
+  Per sfruttare le debolezze nemiche, per prima cosa controllo il tipo d'attacco degli alleati.
 notes_it: >-
   In una tabella di scheda personaggio
   [{{攻撃種|こうげきしゅ}}](term:term-kougekishu) è una scorciatoia molto
@@ -199,9 +199,9 @@ card_type: recognition
 front: '{{使|つか}}い{{道|みち}}'
 back: 'uso; use case; impiego'
 example_jp: >-
-  このキャラの{{使|つか}}い{{道|みち}}がわかる。
+  このサポートキャラは、{{高難易度|こう.なん.い.ど}}クエストでの{{使|つか}}い{{道|みち}}がとても{{広|ひろ}}い。
 example_it: >-
-  Capisco in quali contesti usare questo personaggio.
+  Questo personaggio di supporto ha un raggio di utilizzo vastissimo nelle missioni ad alta difficoltà.
 notes_it: >-
   [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi) indica dove e come il kit
   rende bene, non solo il fatto che “si può usare”.

@@ -13,7 +13,7 @@ reading: いらっしゃいませ
 romaji: irasshaimase
 meaning_it: benvenuto / benvenuta
 notes_it: >-
-  Espressione ricorrente della lezione L09 nell'area Saluti / gestione dialogo. Accoglienza da negozio o servizio.
+  Accoglienza da negozio o servizio.
 :::
 :::card
 id: card-e019-irasshaimase-recognition
@@ -35,7 +35,7 @@ reading: だいじょうぶ？
 romaji: daijoubu？
 meaning_it: tutto bene?
 notes_it: >-
-  Espressione ricorrente della lezione L09 nell'area Supporto / incoraggiamento. Domanda rapida per controllare se qualcuno sta bene.
+  Domanda rapida per controllare se qualcuno sta bene.
 :::
 :::card
 id: card-e020-daijoubu-recognition
@@ -124,7 +124,8 @@ reading: たいりょく
 romaji: tairyoku
 meaning_it: HP / energia
 notes_it: >-
-  Voce della lezione L09 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v103-tairyoku-recognition
@@ -146,7 +147,7 @@ reading: そと
 romaji: soto
 meaning_it: fuori / esterno
 notes_it: >-
-  Voce della lezione L09 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v104-soto-recognition
@@ -168,7 +169,7 @@ reading: いくつ
 romaji: ikutsu
 meaning_it: quanti / quanti anni
 notes_it: >-
-  Voce della lezione L09 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v105-ikutsu-recognition
@@ -190,7 +191,7 @@ reading: どちら
 romaji: dochira
 meaning_it: quale / quale dei due / dove (forma più gentile)
 notes_it: >-
-  Voce della lezione L09 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v106-dochira-recognition
@@ -212,7 +213,7 @@ reading: おれんじあかでみー
 romaji: orenjiakademii
 meaning_it: Accademia Orange
 notes_it: >-
-  Voce della lezione L09 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Nome dell'Accademia Orange, riferimento di luogo e trama.
+  Nome dell'Accademia Orange, riferimento di luogo e trama.
 :::
 :::term
 id: term-v108-make-ru
@@ -221,7 +222,8 @@ reading: まける
 romaji: make ru
 meaning_it: perdere
 notes_it: >-
-  Voce della lezione L09 nell''area Battaglia. Parte del discorso: verbo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v108-make-ru-recognition
@@ -243,7 +245,7 @@ reading: やま
 romaji: yama
 meaning_it: montagna
 notes_it: >-
-  Voce della lezione L09 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v109-yama-recognition
@@ -265,7 +267,8 @@ reading: てられいどばとる
 romaji: terareidobatoru
 meaning_it: Raid Teracristal
 notes_it: >-
-  Voce della lezione L09 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Nome della modalità Raid Teracristal, da riconoscere come etichetta di sistema.
+  Nome della modalità Raid Teracristal, da riconoscere come etichetta di
+  sistema.
 :::
 :::term
 id: term-v111-michi
@@ -274,7 +277,7 @@ reading: みち
 romaji: michi
 meaning_it: strada
 notes_it: >-
-  Voce della lezione L09 nell''area Storia/Scuola. Parte del discorso: sostantivo. Termine usato per indicare una strada o un percorso da seguire.
+  Termine usato per indicare una strada o un percorso da seguire.
 :::
 :::card
 id: card-v111-michi-recognition
@@ -296,7 +299,7 @@ reading: くる
 romaji: kuru
 meaning_it: venire
 notes_it: >-
-  Voce della lezione L09 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v112-kuru-recognition

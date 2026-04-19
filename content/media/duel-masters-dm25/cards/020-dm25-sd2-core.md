@@ -446,9 +446,9 @@ card_type: recognition
 front: '{{一番上|いち.ばん.うえ}}'
 back: la cima / il punto più in alto
 example_jp: >-
-  {{一番上|いち.ばん.うえ}}のカードを{{破壊|はかい}}する。
+  {{山札|やまふだ}}の{{一番上|いち.ばん.うえ}}を{{見|み}}て、{{手札|てふだ}}に{{加|くわ}}える。
 example_it: >-
-  Distruggi la carta in cima.
+  Guardi la carta in cima al mazzo e l'aggiungi alla mano.
 notes_it: >-
   Questo chunk di posizione serve a individuare una carta sola e ben precisa:
   quella che sta proprio in cima al mazzo o alla pila considerata.

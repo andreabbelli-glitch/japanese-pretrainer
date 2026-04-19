@@ -247,9 +247,9 @@ pattern: ～っぽい
 title: Sembra / ha l'aria di
 meaning_it: sembra / ha l'aria di / da...
 notes_it: >-
-  Pattern colloquiale usato per dare un'impressione rapida: "sembra...",
-  "ha l'aria di...", "sa di...". Si usa quando il parlante giudica aspetto,
-  stile o natura di qualcosa senza voler essere troppo preciso.
+  Pattern colloquiale usato per dare un'impressione rapida: "sembra...", "ha
+  l'aria di...", "sa di...". Si usa quando il parlante giudica aspetto, stile
+  o natura di qualcosa senza voler essere troppo preciso.
 :::
 :::card
 id: card-g112-sembra-ha-l-aria-di-concept
@@ -294,9 +294,9 @@ pattern: ～つもりはない
 title: Non ho intenzione di
 meaning_it: non ho intenzione di...
 notes_it: >-
-  Variante negativa di `～つもりだ`. Qui non descrive solo un piano assente:
-  viene usata per tranquillizzare, difendersi o chiarire che non si vuole fare
-  una certa azione.
+  Variante negativa di `～つもりだ`. Qui non descrive solo un piano assente: viene
+  usata per tranquillizzare, difendersi o chiarire che non si vuole fare una
+  certa azione.
 :::
 :::card
 id: card-g114-non-ho-intenzione-di-concept

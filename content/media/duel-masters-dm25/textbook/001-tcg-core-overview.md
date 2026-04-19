@@ -254,9 +254,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{相手|あいて}}のクリーチャーを{{1体|いったい}}{{選|えら}}ぶ。
+  {{自分|じぶん}}のターンに、バトルゾーンにいる{{相手|あいて}}のクリーチャーを{{1体|いったい}}{{選|えら}}んでタップする。
 translation_it: >-
-  Scegli 1 creatura del tuo avversario.
+  Nel tuo turno, scegli 1 creatura dell'avversario nella battle zone e la tappi.
 :::
 
 - Bersaglio: lato avversario.
@@ -279,9 +279,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  コスト{{4以下|よんいか}}のアビス
+  コスト{{4以下|よんいか}}のアビスを{{墓地|ぼち}}から{{選|えら}}んで、バトルゾーンに{{出|だ}}す。
 translation_it: >-
-  Un Abyss di costo 4 o inferiore.
+  Scegli dalla zona scarti un Abyss di costo 4 o inferiore e mettilo in gioco.
 :::
 
 - [～{{以下|いか}} / ～{{以上|いじょう}}](grammar:grammar-ika-ijou) = filtro numerico.

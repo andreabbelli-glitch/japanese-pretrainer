@@ -13,7 +13,7 @@ reading: それじゃ
 romaji: soreja
 meaning_it: allora, in quel caso
 notes_it: >-
-  Espressione ricorrente della lezione L03 nell'area Connettori. Passaggio a saluto/azione successiva.
+  Passaggio a saluto/azione successiva.
 :::
 :::card
 id: card-e006-soreja-recognition
@@ -35,7 +35,7 @@ reading: まって
 romaji: matte
 meaning_it: aspetta
 notes_it: >-
-  Espressione ricorrente della lezione L03 nell'area Azione / proposta. Interruzione rapida.
+  Interruzione rapida.
 :::
 :::card
 id: card-e007-matsu-te-recognition
@@ -58,7 +58,9 @@ meaning_it: devo... / bisogna... (colloquiale)
 aliases:
 - 〜なければならない / 〜ないといけない
 notes_it: >-
-  Forma colloquiale di 〜なければならない / 〜なくてはいけない. Vuol dire "devo..." o "bisogna...". Si forma dalla base in ない del verbo: 行かない→行かなきゃ, しない→しなきゃ. Nei dialoghi e nei giochi è molto comune al posto della forma completa.
+  Forma colloquiale di 〜なければならない / 〜なくてはいけない. Vuol dire "devo..." o
+  "bisogna...". Si forma dalla base in ない del verbo: 行かない→行かなきゃ, しない→しなきゃ. Nei
+  dialoghi e nei giochi è molto comune al posto della forma completa.
 :::
 :::card
 id: card-g009-contrazione-di-dovere-concept
@@ -80,7 +82,7 @@ reading: まだ
 romaji: mada
 meaning_it: ancora
 notes_it: >-
-  Voce della lezione L03 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v026-mada-recognition
@@ -102,7 +104,7 @@ reading: どこ
 romaji: doko
 meaning_it: dove
 notes_it: >-
-  Voce della lezione L03 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v027-doko-recognition
@@ -124,7 +126,7 @@ reading: じむりーだー
 romaji: jimuriidaa
 meaning_it: capopalestra
 notes_it: >-
-  Voce della lezione L03 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v028-jimuriidaa-recognition
@@ -146,7 +148,7 @@ reading: いっしょに
 romaji: isshoni
 meaning_it: insieme
 notes_it: >-
-  Voce della lezione L03 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v029-isshoni-recognition
@@ -168,7 +170,7 @@ reading: ひつよう
 romaji: hitsuyou
 meaning_it: necessario
 notes_it: >-
-  Voce della lezione L03 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v030-hitsuyou-recognition
@@ -190,7 +192,7 @@ reading: ばっじ
 romaji: bajji
 meaning_it: medaglia
 notes_it: >-
-  Voce della lezione L03 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::card
 id: card-v031-bajji-recognition
@@ -212,7 +214,8 @@ reading: ちょうせん
 romaji: chousen
 meaning_it: sfida
 notes_it: >-
-  Voce della lezione L03 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v032-chousen-recognition
@@ -234,7 +237,7 @@ reading: いっしょ
 romaji: issho
 meaning_it: insieme
 notes_it: >-
-  Voce della lezione L03 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v033-issho-recognition
@@ -256,7 +259,7 @@ reading: ばしょ
 romaji: basho
 meaning_it: luogo
 notes_it: >-
-  Voce della lezione L03 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v034-basho-recognition
@@ -278,7 +281,8 @@ reading: じょうたい
 romaji: joutai
 meaning_it: stato / status
 notes_it: >-
-  Voce della lezione L03 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v035-joutai-recognition
@@ -300,7 +304,7 @@ reading: ちほう
 romaji: chihou
 meaning_it: regione
 notes_it: >-
-  Voce della lezione L03 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v036-chihou-recognition
@@ -322,7 +326,7 @@ reading: げんき
 romaji: genki
 meaning_it: in forma / energico
 notes_it: >-
-  Voce della lezione L03 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v037-genki-recognition

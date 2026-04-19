@@ -14,8 +14,8 @@ romaji: butsuri
 meaning_it: fisico / Physical
 notes_it: >-
   Nella classe di lotta distingue le mosse che usano l'Attacco come statistica
-  di riferimento. Se leggi `{{物理|ぶつり}}` insieme a `{{特殊|とくしゅ}}`,
-  capisci subito come il gioco sta classificando una tecnica.
+  di riferimento. Se leggi `{{物理|ぶつり}}` insieme a `{{特殊|とくしゅ}}`, capisci
+  subito come il gioco sta classificando una tecnica.
 :::
 :::card
 id: card-v730-butsuri-recognition
@@ -275,9 +275,9 @@ reading: いはん
 romaji: ihan
 meaning_it: violazione / infrazione
 notes_it: >-
-  Completa il lessico dei divieti. Quando appare insieme a
-  `{{校則|こうそく}}`, il gioco ti sta dicendo che l'azione supera il limite
-  consentito e diventa infrazione vera e propria.
+  Completa il lessico dei divieti. Quando appare insieme a `{{校則|こうそく}}`, il
+  gioco ti sta dicendo che l'azione supera il limite consentito e diventa
+  infrazione vera e propria.
 :::
 :::card
 id: card-v742-ihan-recognition

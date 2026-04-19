@@ -15,9 +15,9 @@ meaning_it: Centro Pokemon
 notes_it: >-
   In Scarlet / Violet non e solo il posto dove curi la squadra. E il nodo dove
   rimetti in sesto la [{{手|て}}{{持|も}}ち](term:term-te-mochi), compri oggetti,
-  usi il [わざマシン](term:term-waza-machine) e, dopo lo sblocco,
-  ricarichi il [テラスタルオーブ](term:term-terastal-orb). Quando compare sulla
-  mappa o nei dialoghi, indica un checkpoint operativo.
+  usi il [わざマシン](term:term-waza-machine) e, dopo lo sblocco, ricarichi il
+  [テラスタルオーブ](term:term-terastal-orb). Quando compare sulla mappa o nei
+  dialoghi, indica un checkpoint operativo.
 :::
 :::card
 id: card-pokemon-center-recognition
@@ -41,9 +41,9 @@ romaji: furendorii shoppu
 meaning_it: negozio del Centro Pokemon
 notes_it: >-
   Non nomina un negozio qualsiasi della citta ma il banco collegato al
-  [ポケモンセンター](term:term-pokemon-center) dove compri Ball, medicine e
-  altri oggetti di base. Il termine distingue subito il punto cura dal
-  punto acquisti dentro lo stesso hub.
+  [ポケモンセンター](term:term-pokemon-center) dove compri Ball, medicine e altri
+  oggetti di base. Il termine distingue subito il punto cura dal punto
+  acquisti dentro lo stesso hub.
 :::
 :::term
 id: term-lp
@@ -68,8 +68,8 @@ notes_it: >-
   Nel lessico comune puo voler dire oggetto smarrito, ma in Scarlet / Violet
   indica i materiali che i Pokemon lasciano dopo le lotte o gli scontri sul
   campo. Ti serve per leggere correttamente il crafting delle
-  [わざマシン](term:term-waza-machine): il gioco non parla di quest item ma di
-  drop di specie.
+  [わざマシン](term:term-waza-machine): il gioco non parla di quest item ma di drop
+  di specie.
 :::
 :::card
 id: card-otoshimono-recognition
@@ -93,8 +93,8 @@ meaning_it: comando Let's Go / manda avanti il Pokemon
 notes_it: >-
   In questo gioco non e un semplice inglesismo trasparente. E il nome del
   comando con cui mandi avanti il Pokemon in testa alla squadra per fargli
-  raccogliere oggetti o affrontare da solo piccoli scontri. Il termine
-  compare sia nel tutorial di Nemona sia nelle istruzioni future sul campo.
+  raccogliere oggetti o affrontare da solo piccoli scontri. Il termine compare
+  sia nel tutorial di Nemona sia nelle istruzioni future sul campo.
 :::
 :::term
 id: term-terastal
@@ -115,9 +115,9 @@ reading: テラスタルオーブ
 romaji: terasutaru oobu
 meaning_it: Tera Orb / strumento per il Terastal
 notes_it: >-
-  E l'oggetto che abilita il [テラスタル](term:term-terastal). Non va letto
-  come accessorio scenico: senza questo oggetto il comando non si attiva.
-  Dopo l'uso si scarica e il gioco ti insegna subito che va ricaricato al
+  E l'oggetto che abilita il [テラスタル](term:term-terastal). Non va letto come
+  accessorio scenico: senza questo oggetto il comando non si attiva. Dopo
+  l'uso si scarica e il gioco ti insegna subito che va ricaricato al
   [ポケモンセンター](term:term-pokemon-center) o vicino a certe fonti di energia.
 :::
 :::term
@@ -129,8 +129,8 @@ meaning_it: Tera tipo / tipo Terastal
 notes_it: >-
   E il tipo che conta dopo la trasformazione, non per forza il tipo originale
   del Pokemon. Quando il tutorial parla di mosse piu forti o di strategia
-  diversa dopo il [テラスタル](term:term-terastal), il punto da guardare e
-  proprio questo tipo.
+  diversa dopo il [テラスタル](term:term-terastal), il punto da guardare e proprio
+  questo tipo.
 :::
 :::term
 id: term-kashikomarimashita
@@ -164,8 +164,8 @@ romaji: otsukaresama desu
 meaning_it: ben fatto / vi vedo stanchi
 notes_it: >-
   Formula di contatto molto comune nei servizi e sul lavoro. Al Pokemon Center
-  la senti anche allungata colloquialmente come `お{{疲|つか}}れさまでーす`, ma la
-  forma canonica resta `お{{疲|つか}}れさまです`.
+  la senti anche allungata colloquialmente come `お{{疲|つか}}れさまでーす`, ma la forma
+  canonica resta `お{{疲|つか}}れさまです`.
 :::
 :::card
 id: card-otsukaresama-desu-recognition
@@ -187,9 +187,9 @@ title: Ricevere un favore o un servizio
 meaning_it: qualcuno fa qualcosa per te / a tuo vantaggio
 notes_it: >-
   E il punto di vista di chi riceve aiuto, servizio o gestione da parte di un
-  altro. In questo capitolo marca la cura al
-  [ポケモンセンター](term:term-pokemon-center) e le procedure che Nemona
-  organizza prima del primo [テラスタル](term:term-terastal).
+  altro. In questo capitolo marca la cura al [ポケモンセンター](term:term-pokemon-
+  center) e le procedure che Nemona organizza prima del primo
+  [テラスタル](term:term-terastal).
 :::
 :::card
 id: card-te-morau-concept
@@ -210,10 +210,10 @@ pattern: ～てくる
 title: Andare a fare e tornare / riportare il risultato
 meaning_it: andare a fare qualcosa e poi tornare / far arrivare il risultato qui
 notes_it: >-
-  In questo prologo e il pattern chiave del comando
-  [レッツゴー](term:term-lets-go). Ti fa leggere bene frasi come
-  `{{拾|ひろ}}ってきて` o `{{戦|たたか}}ってきて`: il Pokemon parte, compie
-  l'azione sul campo e il risultato rientra nel tuo flusso di gioco.
+  In questo prologo e il pattern chiave del comando [レッツゴー](term:term-lets-
+  go). Ti fa leggere bene frasi come `{{拾|ひろ}}ってきて` o `{{戦|たたか}}ってきて`: il
+  Pokemon parte, compie l'azione sul campo e il risultato rientra nel tuo
+  flusso di gioco.
 :::
 :::card
 id: card-te-kuru-concept
@@ -243,8 +243,8 @@ example_jp: >-
 example_it: >-
   Se la squadra viene curata prima della lunga salita, il percorso prosegue con meno rischio.
 notes_it: >-
-  In questo blocco la cura puo essere espressa anche come `{{元気|げんき}}にする`.
-  Il significato operativo pero resta lo stesso: rimettere il team in condizioni
+  In questo blocco la cura puo essere espressa anche come `{{元気|げんき}}にする`. Il
+  significato operativo pero resta lo stesso: rimettere il team in condizioni
   di continuare subito.
 :::
 :::card

@@ -13,7 +13,7 @@ reading: じゃあ
 romaji: jaa
 meaning_it: allora
 notes_it: >-
-  Espressione ricorrente della lezione L04 nell'area Connettori. Introduce il passo successivo nel dialogo o il cambio di azione.
+  Introduce il passo successivo nel dialogo o il cambio di azione.
 :::
 :::card
 id: card-e008-jaa-recognition
@@ -35,7 +35,7 @@ reading: いこう
 romaji: ikou
 meaning_it: andiamo
 notes_it: >-
-  Espressione ricorrente della lezione L04 nell'area Azione / proposta. Invito a partire o a continuare insieme.
+  Invito a partire o a continuare insieme.
 :::
 :::card
 id: card-e009-iko-u-recognition
@@ -79,8 +79,7 @@ title: Voler fare
 meaning_it: volere fare...
 notes_it: >-
   Esprime il desiderio di fare qualcosa da parte di chi parla o di qualcuno
-  vicino al suo punto di vista. Si forma con la base in ます + たい:
-  行きたい, 食べたい.
+  vicino al suo punto di vista. Si forma con la base in ます + たい: 行きたい, 食べたい.
 :::
 :::card
 id: card-g011-voler-fare-concept
@@ -102,7 +101,7 @@ reading: じむてすと
 romaji: jimutesuto
 meaning_it: prova preliminare della palestra
 notes_it: >-
-  Voce della lezione L04 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v039-daijoubu
@@ -111,7 +110,7 @@ reading: だいじょうぶ
 romaji: daijoubu
 meaning_it: va bene / non c'è problema
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Indica che la situazione va bene o che non c'è problema.
+  Indica che la situazione va bene o che non c'è problema.
 :::
 :::card
 id: card-v039-daijoubu-recognition
@@ -133,7 +132,7 @@ reading: じかん
 romaji: jikan
 meaning_it: tempo
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Indica il tempo disponibile o il momento giusto per muoversi.
+  Indica il tempo disponibile o il momento giusto per muoversi.
 :::
 :::card
 id: card-v041-jikan-recognition
@@ -155,7 +154,7 @@ reading: きもち
 romaji: kimochi
 meaning_it: sensazione / sentimento
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Indica ciò che un personaggio sente o prova.
+  Indica ciò che un personaggio sente o prova.
 :::
 :::card
 id: card-v042-kimochi-recognition
@@ -177,7 +176,7 @@ reading: しゃしん
 romaji: shashin
 meaning_it: foto
 notes_it: >-
-  Voce della lezione L04 nell''area Esplorazione. Parte del discorso: sostantivo. Utile quando il gioco parla di scatti, foto o obiettivi legati alle immagini.
+  Utile quando il gioco parla di scatti, foto o obiettivi legati alle immagini.
 :::
 :::card
 id: card-v043-shashin-recognition
@@ -199,7 +198,7 @@ reading: ねも
 romaji: nemo
 meaning_it: Nemona
 notes_it: >-
-  Voce della lezione L04 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v046-tomodachi
@@ -208,7 +207,7 @@ reading: ともだち
 romaji: tomodachi
 meaning_it: amico
 notes_it: >-
-  Voce della lezione L04 nell''area Storia/Scuola. Parte del discorso: sostantivo. Parola comune per amici, compagni e scene sociali.
+  Parola comune per amici, compagni e scene sociali.
 :::
 :::card
 id: card-v046-tomodachi-recognition
@@ -230,7 +229,7 @@ reading: やっぱり
 romaji: yappari
 meaning_it: come pensavo / dopotutto
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Si usa quando una scelta o un'impressione conferma quello che pensavi.
+  Si usa quando una scelta o un'impressione conferma quello che pensavi.
 :::
 :::card
 id: card-v047-yappari-recognition
@@ -252,7 +251,7 @@ reading: ぺぱー
 romaji: pepaa
 meaning_it: Arven
 notes_it: >-
-  Voce della lezione L04 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v049-saki
@@ -261,7 +260,7 @@ reading: さき
 romaji: saki
 meaning_it: davanti / più avanti / destinazione
 notes_it: >-
-  Voce della lezione L04 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Indica ciò che sta davanti a te o il punto più avanti lungo il percorso.
+  Indica ciò che sta davanti a te o il punto più avanti lungo il percorso.
 :::
 :::card
 id: card-v049-saki-recognition
@@ -283,7 +282,7 @@ reading: たのしい
 romaji: tanoshii
 meaning_it: divertente
 notes_it: >-
-  Voce della lezione L04 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Si usa per dire che qualcosa è divertente o piacevole.
+  Si usa per dire che qualcosa è divertente o piacevole.
 :::
 :::card
 id: card-v050-tanoshii-recognition

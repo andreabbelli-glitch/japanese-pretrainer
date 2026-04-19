@@ -189,9 +189,9 @@ Se leggi `デッキを{{選択|せんたく}}`, il messaggio dell'app è diretto
 
 :::example_sentence
 jp: >-
-  デッキを{{選択|せんたく}}
+  バトルの{{前|まえ}}に、{{使|つか}}い{{慣|な}}れたデッキを{{選択|せんたく}}して{{準備|じゅんび}}する。
 translation_it: >-
-  Seleziona un mazzo.
+  Prima della battaglia, seleziono il mazzo a cui sono abituato e mi preparo.
 :::
 
 - [～を{{選択|せんたく}}](grammar:grammar-wo-sentaku) è un pattern operativo molto
@@ -203,9 +203,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  レンタルデッキ
+  {{持|も}}っているカードが{{少|すく}}ない{{時|とき}}は、レンタルデッキを{{使|つか}}ってバトルする。
 translation_it: >-
-  Mazzo prestato / rental deck.
+  Quando si hanno poche carte, si combatte usando un mazzo in prestito.
 :::
 
 - Qui il punto non è la brevità del label, ma la funzione: `レンタル` ti dice che
@@ -217,9 +217,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  DMポイントで{{生成可能|せい.せい.か.のう}}
+  この{{呪文|じゅもん}}はDMポイントで{{生成可能|せい.せい.か.のう}}なので、パックを{{引|ひ}}かなくても{{交換|こうかん}}できる。
 translation_it: >-
-  Puoi creare questa carta usando punti DM.
+  Questa magia è creabile con i DM Points, quindi può essere scambiata senza aprire pacchetti.
 :::
 
 - [DMポイント](term:term-dm-points) = risorsa.
@@ -232,9 +232,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  {{所持|しょじ}}: {{2枚|にまい}}
+  レアカードの{{所持|しょじ}}が{{2枚|にまい}}だけなので、デッキにはあと{{2枚|にまい}}{{入|い}}れることができる。
 translation_it: >-
-  Possedute: 2 copie.
+  Poiché possiedi solo 2 copie della carta rara, puoi inserirne altre due nel mazzo.
 :::
 
 - [{{所持|しょじ}}](term:term-owned) ti dice che il numero riguarda ciò che hai

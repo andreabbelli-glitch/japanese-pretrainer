@@ -13,7 +13,7 @@ reading: きがかわったら よろしくね
 romaji: kigakawattara yoroshikune
 meaning_it: se cambi idea, fammelo sapere
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Saluti / gestione dialogo. Quando un NPC lascia aperta una possibilità
+  Quando un NPC lascia aperta una possibilità
 :::
 :::card
 id: card-e099-kigakawattara-yoroshikune-recognition
@@ -35,7 +35,7 @@ reading: していの きょうしつへ むかってください
 romaji: shitei no kyoushitsu e mukatte kudasai
 meaning_it: dirigiti verso l’aula indicata
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Storia/Scuola. Istruzione amministrativa prima di lezioni o esami.
+  Istruzione amministrativa prima di lezioni o esami.
 :::
 :::term
 id: term-e102-shitemo-iishi
@@ -44,7 +44,7 @@ reading: 〜しても いいし
 romaji: shitemo iishi
 meaning_it: si può anche…
 notes_it: >-
-  Espressione ricorrente della lezione L30 nell'area Connettori. Presenta opzioni alternative
+  Presenta opzioni alternative
 :::
 :::card
 id: card-e102-shitemo-iishi-recognition
@@ -65,7 +65,8 @@ pattern: ～らしい
 title: Pare che / tipico di
 meaning_it: pare che / tipico di
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Spiegazione, opinione, apparenza. Formazione: phrase + らしい. Meno essenziale, ma utile per indiscrezioni e deduzioni.
+  Formazione: phrase + らしい. Meno essenziale, ma utile per indiscrezioni e
+  deduzioni.
 :::
 :::card
 id: card-g102-pare-che-tipico-di-concept
@@ -86,7 +87,8 @@ pattern: ～うちに
 title: Mentre… / finché…
 meaning_it: mentre… / finché…
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Condizioni, tempo, sequenza. Formazione: verbo / frase + うちに. Ricorre in consigli e processi che succedono “nel frattempo”.
+  Formazione: verbo / frase + うちに. Ricorre in consigli e processi che succedono
+  “nel frattempo”.
 :::
 :::card
 id: card-g103-mentre-finche-concept
@@ -109,7 +111,8 @@ meaning_it: vero? / no? / immagino che…
 aliases:
 - 〜でしょ
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Colloquiale da dialogo. Formazione: frase colloquiale + っしょ. Appare nel parlato giovanile di alcuni personaggi.
+  Formazione: frase colloquiale + っしょ. Appare nel parlato giovanile di alcuni
+  personaggi.
 :::
 :::card
 id: card-g104-vero-no-immagino-che-concept
@@ -132,7 +135,8 @@ meaning_it: finale ruvida / maschile
 aliases:
 - 〜だよ / 〜だな
 notes_it: >-
-  Pattern della lezione L30 nella famiglia Colloquiale da dialogo. Formazione: frase + だぜ. Aiuta a riconoscere il tono di personaggi più ruvidi o molto sicuri di sé.
+  Formazione: frase + だぜ. Aiuta a riconoscere il tono di personaggi più ruvidi o
+  molto sicuri di sé.
 :::
 :::card
 id: card-g105-finale-ruvida-maschile-concept
@@ -154,7 +158,8 @@ reading: どうきゅうせい
 romaji: doukyuusei
 meaning_it: compagno di classe
 notes_it: >-
-  Voce della lezione L30 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v615-doukyuusei-recognition
@@ -176,7 +181,8 @@ reading: リタイア
 romaji: ritaia
 meaning_it: ritirarsi / mollare
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v616-ritaia-recognition
@@ -198,7 +204,7 @@ reading: しゃがむ
 romaji: shagamu
 meaning_it: accovacciarsi
 notes_it: >-
-  Voce della lezione L30 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alto rendimento che ricorrono spesso nei tutorial e nei dialoghi.
+  Verbo ad alta frequenza nei tutorial e nei dialoghi.
 :::
 :::card
 id: card-v617-shagamu-recognition
@@ -220,7 +226,8 @@ reading: せいべつ
 romaji: seibetsu
 meaning_it: sesso
 notes_it: >-
-  Voce della lezione L30 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v618-seibetsu-recognition
@@ -242,7 +249,8 @@ reading: ほぞん
 romaji: hozon
 meaning_it: salvare / conservare
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v619-hozon-recognition
@@ -264,7 +272,8 @@ reading: いわやま
 romaji: iwayama
 meaning_it: montagna rocciosa
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v620-iwayama-recognition
@@ -286,7 +295,8 @@ reading: れんけい
 romaji: renkei
 meaning_it: coordinazione
 notes_it: >-
-  Voce della lezione L30 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v621-renkei-recognition
@@ -308,7 +318,8 @@ reading: くうちゅう
 romaji: kuuchuu
 meaning_it: aria / in aria
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v622-kuuchuu-recognition
@@ -330,7 +341,8 @@ reading: レンタルチーム
 romaji: rentaruchiimu
 meaning_it: team a noleggio
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::term
 id: term-v624-fuzai
@@ -339,7 +351,8 @@ reading: ふざい
 romaji: fuzai
 meaning_it: assenza / non presente
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v624-fuzai-recognition
@@ -361,7 +374,8 @@ reading: めんせつかん
 romaji: mensetsukan
 meaning_it: intervistatore
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v625-mensetsukan-recognition
@@ -383,7 +397,8 @@ reading: はいご
 romaji: haigo
 meaning_it: retro / alle spalle
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v626-haigo-recognition
@@ -405,7 +420,8 @@ reading: ランキング
 romaji: rankingu
 meaning_it: classifica
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v627-rankingu-recognition
@@ -427,7 +443,8 @@ reading: ゆうり
 romaji: yuuri
 meaning_it: vantaggioso
 notes_it: >-
-  Voce della lezione L30 nell'area Battaglia. Parte del discorso: na-aggettivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v628-yuuri-recognition
@@ -449,7 +466,7 @@ reading: こうだい
 romaji: koudai
 meaning_it: vastissimo
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v629-koudai-recognition
@@ -471,7 +488,8 @@ reading: リセット
 romaji: risetto
 meaning_it: reset
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v630-risetto-recognition
@@ -493,7 +511,8 @@ reading: じゅんい
 romaji: juni
 meaning_it: posizione in classifica
 notes_it: >-
-  Voce della lezione L30 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v631-juni-recognition
@@ -515,7 +534,8 @@ reading: しょうがいぶつ
 romaji: shougaibutsu
 meaning_it: ostacolo
 notes_it: >-
-  Voce della lezione L30 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v632-shougaibutsu-recognition
@@ -537,7 +557,8 @@ reading: こてい
 romaji: kotei
 meaning_it: fissaggio / lock
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v633-kotei-recognition
@@ -559,7 +580,8 @@ reading: ヘルプ
 romaji: herupu
 meaning_it: aiuto
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v634-herupu-recognition
@@ -581,7 +603,8 @@ reading: あたまもじ
 romaji: atamamoji
 meaning_it: iniziale
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v635-atamamoji-recognition
@@ -603,7 +626,8 @@ reading: ほんこう
 romaji: honkou
 meaning_it: sede principale
 notes_it: >-
-  Voce della lezione L30 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v636-honkou-recognition
@@ -625,7 +649,8 @@ reading: たいきなか
 romaji: taikinaka
 meaning_it: in attesa
 notes_it: >-
-  Voce della lezione L30 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v637-taikinaka-recognition

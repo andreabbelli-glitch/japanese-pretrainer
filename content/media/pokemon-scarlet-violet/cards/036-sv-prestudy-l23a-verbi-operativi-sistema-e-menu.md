@@ -13,7 +13,7 @@ reading: みてみよう
 romaji: mitemiyou
 meaning_it: proviamo a vedere
 notes_it: >-
-  Espressione ricorrente della lezione L23 nell'area Azione / proposta. Invito a controllare o osservare qualcosa
+  Invito semplice a controllare o osservare qualcosa.
 :::
 :::card
 id: card-e075-mitemiyou-recognition
@@ -35,7 +35,7 @@ reading: あとはまかせて
 romaji: atoha makase te
 meaning_it: al resto penso io
 notes_it: >-
-  Espressione ricorrente della lezione L23 nell'area Azione / proposta. Prendersi carico dell'ultima parte.
+  Chi parla si prende carico dell'ultima parte e ti toglie il resto del compito.
 :::
 :::card
 id: card-e076-atoha-makase-te-recognition
@@ -57,7 +57,7 @@ reading: まずはここから
 romaji: mazuhakokokara
 meaning_it: prima partiamo da qui
 notes_it: >-
-  Espressione ricorrente della lezione L23 nell'area Azione / proposta. Introduzione a piano o percorso.
+  Introduce il punto da cui iniziare un piano o un percorso.
 :::
 :::card
 id: card-e077-mazuhakokokara-recognition
@@ -78,7 +78,7 @@ pattern: ～ないでください
 title: Per favore non fare...
 meaning_it: per favore non fare...
 notes_it: >-
-  Pattern della lezione L23 nella famiglia Forme verbali e richieste. Formazione: V-ないでください. Divieti o consigli gentili.
+  Formazione: V-ないでください. Divieti o consigli gentili.
 :::
 :::card
 id: card-g079-per-favore-non-fare-concept
@@ -99,7 +99,8 @@ pattern: ～たがる
 title: Sembrare voler fare (terza persona)
 meaning_it: sembrare voler fare (terza persona)
 notes_it: >-
-  Pattern della lezione L23 nella famiglia Desiderio, intenzione, possibilità. Formazione: V-stem + たがる. Utile quando si descrive ciò che qualcun altro vuole fare.
+  Formazione: V-stem + たがる. Utile quando si descrive ciò che qualcun altro vuole
+  fare.
 :::
 :::card
 id: card-g080-sembrare-voler-fare-terza-persona-concept
@@ -120,7 +121,7 @@ pattern: ～ほうがいい
 title: È meglio fare
 meaning_it: è meglio fare
 notes_it: >-
-  Pattern della lezione L23 nella famiglia Confronto e struttura. Formazione: Vた / Vない + ほうがいい. Consigli pratici di NPC o compagni.
+  Formazione: Vた / Vない + ほうがいい. Consigli pratici di NPC o compagni.
 :::
 :::card
 id: card-g081-e-meglio-fare-concept
@@ -142,7 +143,8 @@ reading: せいり
 romaji: seiri
 meaning_it: riordino
 notes_it: >-
-  Voce della lezione L23 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v393-seiri-recognition
@@ -164,7 +166,7 @@ reading: すすむ
 romaji: susumu
 meaning_it: procedere / avanzare
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v394-susumu-recognition
@@ -186,7 +188,8 @@ reading: かがやきパワー
 romaji: kagayakipawaa
 meaning_it: Sparkling Power
 notes_it: >-
-  Voce della lezione L23 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v396-tobu
@@ -195,7 +198,7 @@ reading: とぶ
 romaji: tobu
 meaning_it: volare
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v396-tobu-recognition
@@ -217,7 +220,7 @@ reading: かえる
 romaji: kaeru
 meaning_it: tornare
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v397-kaeru-recognition
@@ -239,7 +242,8 @@ reading: パラドックスポケモン
 romaji: paradokkusupokemon
 meaning_it: Pokémon Paradosso
 notes_it: >-
-  Voce della lezione L23 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v399-souguupawaa
@@ -248,7 +252,8 @@ reading: そうぐうパワー
 romaji: souguupawaa
 meaning_it: Encounter Power
 notes_it: >-
-  Voce della lezione L23 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v400-tsuushinkoukan
@@ -257,7 +262,8 @@ reading: つうしんこうかん
 romaji: tsuushinkoukan
 meaning_it: scambio in link / trade
 notes_it: >-
-  Voce della lezione L23 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v400-tsuushinkoukan-recognition
@@ -279,7 +285,8 @@ reading: せんりゃく
 romaji: senryaku
 meaning_it: strategia
 notes_it: >-
-  Voce della lezione L23 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v401-senryaku-recognition
@@ -301,7 +308,7 @@ reading: りーぐぺい
 romaji: riigupei
 meaning_it: League Pay (LP)
 notes_it: >-
-  Voce della lezione L23 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::term
 id: term-v403-shirabe-ru
@@ -310,7 +317,7 @@ reading: しらべる
 romaji: shirabe ru
 meaning_it: controllare / investigare
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v403-shirabe-ru-recognition
@@ -332,7 +339,7 @@ reading: どうやら
 romaji: douyara
 meaning_it: a quanto pare
 notes_it: >-
-  Voce della lezione L23 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v404-douyara-recognition
@@ -354,7 +361,8 @@ reading: おとしものパワー
 romaji: otoshimonopawaa
 meaning_it: Item Drop Power
 notes_it: >-
-  Voce della lezione L23 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v406-tekagen
@@ -363,7 +371,8 @@ reading: てかげん
 romaji: tekagen
 meaning_it: trattenersi / non andare al massimo
 notes_it: >-
-  Voce della lezione L23 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v406-tekagen-recognition
@@ -385,7 +394,7 @@ reading: ひらく
 romaji: hiraku
 meaning_it: aprire
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alto rendimento che ricorrono spesso nei tutorial e nei dialoghi.
+  Verbo ad alta frequenza nei tutorial e nei dialoghi.
 :::
 :::card
 id: card-v407-hiraku-recognition
@@ -407,7 +416,7 @@ reading: ひくい
 romaji: hikui
 meaning_it: basso
 notes_it: >-
-  Voce della lezione L23 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v408-hikui-recognition
@@ -429,7 +438,7 @@ reading: まっすぐ
 romaji: massugu
 meaning_it: dritto
 notes_it: >-
-  Voce della lezione L23 nell'area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v409-massugu-recognition
@@ -451,7 +460,7 @@ reading: であう
 romaji: deau
 meaning_it: imbattersi in / incontrare
 notes_it: >-
-  Voce della lezione L23 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v410-deau-recognition
@@ -473,7 +482,8 @@ reading: せんとう
 romaji: sentou
 meaning_it: posizione di testa / primo
 notes_it: >-
-  Voce della lezione L23 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v411-sentou-recognition
@@ -495,7 +505,7 @@ reading: ずかんかんせい
 romaji: zukan kansei
 meaning_it: completamento del Pokédex
 notes_it: >-
-  Voce della lezione L23 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v412-zukan-kansei-recognition

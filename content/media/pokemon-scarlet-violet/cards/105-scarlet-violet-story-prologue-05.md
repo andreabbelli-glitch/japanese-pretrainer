@@ -53,8 +53,8 @@ meaning_it: Champion Rank / rango Campione
 notes_it: >-
   In Paldea indica un rango ufficiale riconosciuto dalla Lega Pokemon dopo il
   percorso Gym e il test finale. Quando il dialogo usa `チャンピオンランク` o
-  `{{目指|めざ}}してみない`, la scena sta aprendo un obiettivo di progressione
-  preciso, non un incoraggiamento generico.
+  `{{目指|めざ}}してみない`, la scena sta aprendo un obiettivo di progressione preciso,
+  non un incoraggiamento generico.
 :::
 :::term
 id: term-gym-badge
@@ -64,8 +64,8 @@ romaji: jimu bajji
 meaning_it: Medaglia Palestra
 notes_it: >-
   Segna il superamento di un Gym, non un semplice souvenir. Nel flusso di
-  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemona e, piu
-  avanti, incidono anche su quali Pokemon forti ti obbediscono senza problemi.
+  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemona e, piu avanti,
+  incidono anche su quali Pokemon forti ti obbediscono senza problemi.
 :::
 :::card
 id: card-gym-badge-recognition

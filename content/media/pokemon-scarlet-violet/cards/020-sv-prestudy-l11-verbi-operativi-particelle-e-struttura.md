@@ -13,7 +13,7 @@ reading: ちょっとまって
 romaji: chotto matte
 meaning_it: aspetta un attimo
 notes_it: >-
-  Espressione ricorrente della lezione L11 nell'area Azione / proposta. Versione più morbida di {{待|ま}}って.
+  Versione più morbida di {{待|ま}}って.
 :::
 :::card
 id: card-e023-chotto-matsu-te-recognition
@@ -35,7 +35,8 @@ reading: どの ポケモンに つかいますか
 romaji: dono pokemoni tsukaimasuka
 meaning_it: su quale Pokémon vuoi usarlo?
 notes_it: >-
-  Espressione ricorrente della lezione L11 nell'area Sistema/UI. Messaggio ricorrente della borsa quando devi scegliere su quale Pokémon usare l'oggetto.
+  Messaggio ricorrente della borsa quando devi scegliere su quale Pokémon usare
+  l'oggetto.
 :::
 :::card
 id: card-e024-dono-pokemoni-tsukaimasuka-recognition
@@ -78,8 +79,8 @@ pattern: へ
 title: Verso
 meaning_it: verso...
 notes_it: >-
-  へ indica direzione. Si usa soprattutto con verbi di movimento come
-  {{行|い}}く, {{来|く}}る, {{向|む}}かう.
+  へ indica direzione. Si usa soprattutto con verbi di movimento come {{行|い}}く,
+  {{来|く}}る, {{向|む}}かう.
 :::
 :::card
 id: card-g032-verso-concept
@@ -123,7 +124,7 @@ reading: あう
 romaji: au
 meaning_it: incontrare
 notes_it: >-
-  Voce della lezione L11 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v126-au-recognition
@@ -145,7 +146,7 @@ reading: きめる
 romaji: kime ru
 meaning_it: decidere
 notes_it: >-
-  Voce della lezione L11 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v127-kime-ru-recognition
@@ -167,7 +168,7 @@ reading: むずかしい
 romaji: muzukashii
 meaning_it: difficile
 notes_it: >-
-  Voce della lezione L11 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v128-muzukashii-recognition
@@ -189,7 +190,7 @@ reading: さがす
 romaji: sagasu
 meaning_it: cercare
 notes_it: >-
-  Voce della lezione L11 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v129-sagasu-recognition
@@ -211,7 +212,7 @@ reading: ぬしぽけもん
 romaji: nushipokemon
 meaning_it: Pokémon dominante (Titan)
 notes_it: >-
-  Voce della lezione L11 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v131-kantan
@@ -220,7 +221,7 @@ reading: かんたん
 romaji: kantan
 meaning_it: semplice
 notes_it: >-
-  Voce della lezione L11 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v131-kantan-recognition
@@ -242,7 +243,8 @@ reading: いどむ
 romaji: idomu
 meaning_it: sfidare / affrontare
 notes_it: >-
-  Voce della lezione L11 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v132-idomu-recognition
@@ -264,7 +266,7 @@ reading: どうやって
 romaji: douyatte
 meaning_it: in che modo
 notes_it: >-
-  Voce della lezione L11 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v133-douyatte-recognition
@@ -286,7 +288,7 @@ reading: ちず
 romaji: chizu
 meaning_it: mappa
 notes_it: >-
-  Voce della lezione L11 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v134-chizu-recognition
@@ -308,7 +310,7 @@ reading: みつける
 romaji: mitsu keru
 meaning_it: trovare
 notes_it: >-
-  Voce della lezione L11 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v135-mitsu-keru-recognition
@@ -330,7 +332,7 @@ reading: なぜ
 romaji: naze
 meaning_it: perché
 notes_it: >-
-  Voce della lezione L11 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v136-naze-recognition
@@ -352,7 +354,7 @@ reading: たび
 romaji: tabi
 meaning_it: viaggio
 notes_it: >-
-  Voce della lezione L11 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v137-tabi-recognition

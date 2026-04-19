@@ -518,9 +518,9 @@ reading: けいけんち
 romaji: keikenchi
 meaning_it: punti esperienza
 notes_it: >-
-  Spiega la crescita numerica dopo le lotte. Quando la schermata
-  post-battaglia parla di `{{経験値|けい.けん.ち}}`, il gioco sta indicando la risorsa
-  che fa salire di livello i Pokemon coinvolti.
+  Spiega la crescita numerica dopo le lotte. Quando la schermata post-
+  battaglia parla di `{{経験値|けい.けん.ち}}`, il gioco sta indicando la risorsa che
+  fa salire di livello i Pokemon coinvolti.
 :::
 :::card
 id: card-keikenchi-recognition
@@ -616,8 +616,8 @@ title: Provare a fare
 meaning_it: fare qualcosa per prova / per vedere come va
 aliases: [～てみよう, ～てみたら]
 notes_it: >-
-  Nei tutorial Pokemon introduce un test operativo immediato. Dopo `～てみる`,
-  il gioco richiede di eseguire l'azione nella UI, per esempio registrare una
+  Nei tutorial Pokemon introduce un test operativo immediato. Dopo `～てみる`, il
+  gioco richiede di eseguire l'azione nella UI, per esempio registrare una
   [{{目的地|もく.てき.ち}}](term:term-mokutekichi) o aprire
   [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru).
 :::
@@ -757,9 +757,9 @@ pattern: ～ておく
 title: Fare in anticipo / lasciare pronto
 meaning_it: fare qualcosa prima per prepararsi o lasciarlo fatto
 notes_it: >-
-  Segnala preparazione preventiva. Se leggi `{{回復|かいふく}}しておく` o
-  `レポートしておく`, l'azione viene completata prima dell'evento successivo, così
-  stato squadra e progresso restano gia aggiornati.
+  Segnala preparazione preventiva. Se leggi `{{回復|かいふく}}しておく` o `レポートしておく`,
+  l'azione viene completata prima dell'evento successivo, così stato squadra e
+  progresso restano gia aggiornati.
 :::
 :::card
 id: card-teoku-concept

@@ -633,9 +633,9 @@ front: >-
 back: >-
   richiamare / caricare dati già registrati
 example_jp: >-
-  {{前回|ぜんかい}}のデータを{{呼|よ}}び{{出|だ}}せます。
+  ゲームセンターの{{筐体|きょうたい}}で、ICカードから{{前回|ぜんかい}}のプレイデータを{{呼|よ}}び{{出|だ}}す。
 example_it: >-
-  Puoi richiamare i dati della sessione precedente.
+  Richiamo i dati di gioco precedenti dalla carta IC sul cabinato della sala giochi.
 notes_it: >-
   Qui la parola serve a leggere la tessera IC come accesso a dati salvati, non
   come oggetto di gioco.
@@ -752,9 +752,9 @@ front: >-
 back: >-
   dopo essere tornato a casa
 example_jp: >-
-  {{帰宅後|き.たく.ご}}にMY PAGEを{{開|ひら}}く。
+  {{帰宅後|き.たく.ご}}、スマホでMY PAGEにログインしてデッキを{{編成|へんせい}}する。
 example_it: >-
-  Apri MY PAGE dopo essere tornato a casa.
+  Dopo essere tornato a casa, accedo a MY PAGE dallo smartphone per assemblare il mazzo.
 notes_it: >-
   Ti segnala il passaggio tra sessione arcade e rilettura da casa del profilo.
 tags: [term, onboarding]
@@ -992,9 +992,9 @@ front: >-
 back: >-
   prima linea / frontline
 example_jp: >-
-  {{前線|ぜんせん}}に{{出|だ}}す{{役割|やくわり}}を{{先|さき}}に{{決|き}}める。
+  アーセナルベースでは、{{前線|ぜんせん}}で{{戦|たたか}}うユニットの{{役割|やくわり}}をどう{{決|き}}めるかが{{重要|じゅうよう}}だ。
 example_it: >-
-  Decidi prima quale ruolo mandare in prima linea.
+  In Arsenal Base è fondamentale stabilire il ruolo delle unità che combattono in prima linea.
 notes_it: >-
   Indica la zona di ingaggio immediato sulla mappa. La lettura decide quale
   ruolo entra in contatto e quale resta in retrovia.

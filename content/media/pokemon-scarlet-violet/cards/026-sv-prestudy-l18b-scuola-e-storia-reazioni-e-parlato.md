@@ -13,7 +13,7 @@ reading: いってらっしゃい
 romaji: itterasshai
 meaning_it: buon viaggio / vai e torna
 notes_it: >-
-  Espressione ricorrente della lezione L18 nell'area Saluti / gestione dialogo. Risposta tipica a {{行|い}}ってきます.
+  Risposta tipica a {{行|い}}ってきます.
 :::
 :::card
 id: card-e039-itterasshai-recognition
@@ -35,7 +35,7 @@ reading: ところで
 romaji: tokorode
 meaning_it: a proposito
 notes_it: >-
-  Espressione ricorrente della lezione L18 nell'area Connettori. Cambio di argomento.
+  Cambio di argomento.
 :::
 :::card
 id: card-e040-tokorode-recognition
@@ -56,7 +56,8 @@ pattern: ～とき
 title: Quando / nel momento in cui
 meaning_it: quando / nel momento in cui
 notes_it: >-
-  Pattern della lezione L18 nella famiglia Condizioni, tempo, sequenza. Formazione: frase + とき. Comunissimo nelle spiegazioni del tipo “quando succede X, fai Y”.
+  Formazione: frase + とき. Comunissimo nelle spiegazioni del tipo “quando succede
+  X, fai Y”.
 :::
 :::card
 id: card-g040-quando-nel-momento-in-cui-concept
@@ -78,7 +79,7 @@ reading: いったい
 romaji: ittai
 meaning_it: ma che... / in fondo chi / cosa...?
 notes_it: >-
-  Espressione ricorrente della lezione L18 nell''area Domande rapide. Dà enfasi a una domanda: いったい{{何|なに}}？
+  Dà enfasi a una domanda: いったい{{何|なに}}？
 :::
 :::card
 id: card-e041-ittai-recognition
@@ -99,7 +100,7 @@ pattern: ～だろう / でしょう
 title: Probabilmente / suppongo
 meaning_it: probabilmente / suppongo
 notes_it: >-
-  Pattern della lezione L18 nella famiglia Colloquiale da dialogo. Formazione: phrase + だろう/でしょう. Supposizioni e tono assertivo.
+  Formazione: phrase + だろう/でしょう. Supposizioni e tono assertivo.
 :::
 :::card
 id: card-g041-probabilmente-suppongo-concept
@@ -122,7 +123,8 @@ meaning_it: 'domanda spiegativa / sorpresa: “davvero…? / è così che…?”
 aliases:
 - 〜のだ / 〜んだ
 notes_it: >-
-  Pattern della lezione L18 nella famiglia Colloquiale da dialogo. Formazione: plain + のか. Chiarisce domande e auto-spiegazioni molto frequenti nei dialoghi dei personaggi.
+  Formazione: plain + のか. Chiarisce domande e auto-spiegazioni molto frequenti
+  nei dialoghi dei personaggi.
 :::
 :::card
 id: card-g042-domanda-spiegativa-sorpresa-davvero-e-co-concept
@@ -144,7 +146,8 @@ reading: てんにゅうせい
 romaji: tenyuusei
 meaning_it: studente trasferito
 notes_it: >-
-  Voce della lezione L18 nell''area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v210-tenyuusei-recognition
@@ -166,7 +169,7 @@ reading: たかい
 romaji: takai
 meaning_it: alto
 notes_it: >-
-  Voce della lezione L18 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v211-takai-recognition
@@ -188,7 +191,7 @@ reading: さいきん
 romaji: saikin
 meaning_it: ultimamente
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v212-saikin-recognition
@@ -210,7 +213,7 @@ reading: ぜったい
 romaji: zettai
 meaning_it: assolutamente
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: avverbio. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v213-zettai-recognition
@@ -232,7 +235,8 @@ reading: せいぶつ
 romaji: seibutsu
 meaning_it: biologia / esseri viventi
 notes_it: >-
-  Voce della lezione L18 nell''area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v214-seibutsu-recognition
@@ -254,7 +258,8 @@ reading: せつめい
 romaji: setsumei
 meaning_it: spiegazione
 notes_it: >-
-  Voce della lezione L18 nell''area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v215-setsumei-recognition
@@ -276,7 +281,8 @@ reading: ごうかく
 romaji: goukaku
 meaning_it: promozione / superamento
 notes_it: >-
-  Voce della lezione L18 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v216-goukaku-recognition
@@ -298,7 +304,7 @@ reading: もんだい
 romaji: mondai
 meaning_it: problema
 notes_it: >-
-  Voce della lezione L18 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v217-mondai-recognition
@@ -320,7 +326,8 @@ reading: みらい
 romaji: mirai
 meaning_it: futuro
 notes_it: >-
-  Voce della lezione L18 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v218-mirai-recognition
@@ -342,7 +349,8 @@ reading: ほんき
 romaji: honki
 meaning_it: serietà / al massimo
 notes_it: >-
-  Voce della lezione L18 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v219-honki-recognition
@@ -364,7 +372,7 @@ reading: いちど
 romaji: ichido
 meaning_it: una volta
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v220-ichido-recognition
@@ -386,7 +394,7 @@ reading: きずぐすり
 romaji: kizu gusuri
 meaning_it: pozione
 notes_it: >-
-  Voce della lezione L18 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v221-kizu-gusuri-recognition
@@ -408,7 +416,8 @@ reading: ぼうぎょ
 romaji: bougyo
 meaning_it: difesa
 notes_it: >-
-  Voce della lezione L18 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v223-bougyo-recognition

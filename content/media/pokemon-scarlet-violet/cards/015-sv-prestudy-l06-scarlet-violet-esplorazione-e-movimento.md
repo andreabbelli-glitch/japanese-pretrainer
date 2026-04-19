@@ -13,7 +13,7 @@ reading: このさき
 romaji: kono saki
 meaning_it: più avanti / da qui in poi
 notes_it: >-
-  Espressione ricorrente della lezione L06 nell'area Esplorazione. Cartelli e indicazioni verso città, percorsi e aree.
+  Cartelli e indicazioni verso città, percorsi e aree.
 :::
 :::card
 id: card-e010-kono-saki-recognition
@@ -35,7 +35,7 @@ reading: こっち
 romaji: kocchi
 meaning_it: da questa parte / qui
 notes_it: >-
-  Espressione ricorrente della lezione L06 nell'area Esplorazione. Direzione colloquiale rapidissima in popup e dialoghi.
+  Direzione colloquiale rapidissima in popup e dialoghi.
 :::
 :::card
 id: card-e011-kocchi-recognition
@@ -57,7 +57,8 @@ reading: よろしくね
 romaji: yoroshikune
 meaning_it: contiamo l'uno sull'altro / conto su di te
 notes_it: >-
-  Espressione ricorrente della lezione L06 nell'area Saluti / gestione dialogo. Versione colloquiale e amichevole di よろしく, usata quando si inizia un rapporto, una collaborazione o una sfida.
+  Versione colloquiale e amichevole di よろしく, usata quando si inizia un rapporto,
+  una collaborazione o una sfida.
 :::
 :::card
 id: card-e014-yoroshikune-recognition
@@ -79,7 +80,8 @@ reading: よろしくおねがいします
 romaji: yoroshiku onegai shimasu
 meaning_it: conto sulla tua / sua collaborazione / le chiedo di occuparsene
 notes_it: >-
-  Espressione ricorrente della lezione L06 nell'area Saluti / gestione dialogo. Versione più formale di よろしく, utile con professori o adulti quando si chiede collaborazione o si affida qualcosa.
+  Versione più formale di よろしく, utile con professori o adulti quando si chiede
+  collaborazione o si affida qualcosa.
 :::
 :::card
 id: card-e015-yoroshikuo-negai-shimasu-recognition
@@ -145,7 +147,7 @@ reading: ぼうけん
 romaji: bouken
 meaning_it: avventura
 notes_it: >-
-  Voce della lezione L06 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v063-bouken-recognition
@@ -167,7 +169,7 @@ reading: ぱるであちほう
 romaji: parudea chihou
 meaning_it: regione di Paldea
 notes_it: >-
-  Voce della lezione L06 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v065-dougu
@@ -176,7 +178,7 @@ reading: どうぐ
 romaji: dougu
 meaning_it: strumento / oggetto
 notes_it: >-
-  Voce della lezione L06 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v065-dougu-recognition
@@ -198,7 +200,7 @@ reading: つかう
 romaji: tsukau
 meaning_it: usare
 notes_it: >-
-  Voce della lezione L06 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v066-tsukau-recognition
@@ -220,7 +222,8 @@ reading: わざ
 romaji: waza
 meaning_it: mossa / tecnica
 notes_it: >-
-  Voce della lezione L06 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v067-waza-recognition
@@ -242,7 +245,8 @@ reading: おおあな
 romaji: ooana
 meaning_it: grande voragine
 notes_it: >-
-  Voce della lezione L06 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v069-kuraberu
@@ -251,7 +255,7 @@ reading: くらべる
 romaji: kuraberu
 meaning_it: Clavell
 notes_it: >-
-  Voce della lezione L06 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v071-idou
@@ -260,7 +264,7 @@ reading: いどう
 romaji: idou
 meaning_it: spostamento
 notes_it: >-
-  Voce della lezione L06 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v071-idou-recognition
@@ -282,7 +286,7 @@ reading: なに
 romaji: nani
 meaning_it: cosa / che cosa
 notes_it: >-
-  Voce della lezione L06 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v072-nani-recognition
@@ -304,7 +308,7 @@ reading: まっぷ
 romaji: mappu
 meaning_it: mappa
 notes_it: >-
-  Voce della lezione L06 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v073-mappu-recognition
@@ -326,7 +330,7 @@ reading: いく
 romaji: iku
 meaning_it: andare
 notes_it: >-
-  Voce della lezione L06 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v074-iku-recognition
@@ -348,7 +352,8 @@ reading: すばやさ
 romaji: subayasa
 meaning_it: Velocità
 notes_it: >-
-  Voce della lezione L06 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v075-subayasa-recognition

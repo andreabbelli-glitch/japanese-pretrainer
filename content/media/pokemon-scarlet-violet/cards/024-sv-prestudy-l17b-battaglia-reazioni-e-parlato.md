@@ -13,7 +13,7 @@ reading: なるほど
 romaji: naruhodo
 meaning_it: capisco / ah, ecco
 notes_it: >-
-  Espressione ricorrente della lezione L17 nell'area Reazioni. Presa d'atto: segnala che hai capito o che una spiegazione ti torna.
+  Presa d'atto: segnala che hai capito o che una spiegazione ti torna.
 :::
 :::card
 id: card-e033-naruhodo-recognition
@@ -35,7 +35,7 @@ reading: すみません
 romaji: sumimasen
 meaning_it: scusi / mi scusi
 notes_it: >-
-  Espressione ricorrente della lezione L17 nell'area Richieste. Per attirare attenzione o scusarsi.
+  Per attirare attenzione o scusarsi.
 :::
 :::card
 id: card-e034-sumimasen-recognition
@@ -57,7 +57,7 @@ reading: 〜が あります
 romaji: ga arimasu
 meaning_it: c’è / ci sono …
 notes_it: >-
-  Espressione ricorrente della lezione L17 nell'area Sistema/UI. Indica che qualcosa c'è o si trova in un punto preciso.
+  Indica che qualcosa c'è o si trova in un punto preciso.
 :::
 :::card
 id: card-e035-ga-arimasu-recognition
@@ -79,7 +79,8 @@ reading: けんきゅう
 romaji: kenkyuu
 meaning_it: ricerca
 notes_it: >-
-  Voce della lezione L17 nell''area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v177-kenkyuu-recognition
@@ -101,7 +102,8 @@ reading: ドラゴン
 romaji: doragon
 meaning_it: drago
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v178-doragon-recognition
@@ -123,7 +125,8 @@ reading: いりょく
 romaji: iryoku
 meaning_it: potenza
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v179-iryoku-recognition
@@ -145,7 +148,7 @@ reading: けっしょう
 romaji: kesshou
 meaning_it: cristallo
 notes_it: >-
-  Voce della lezione L17 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v181-kesshou-recognition
@@ -167,7 +170,8 @@ reading: どく
 romaji: doku
 meaning_it: veleno
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v182-doku-recognition
@@ -189,7 +193,7 @@ reading: だいじ
 romaji: daiji
 meaning_it: importante / prezioso
 notes_it: >-
-  Voce della lezione L17 nell''area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v183-daiji-recognition
@@ -211,7 +215,8 @@ reading: のうりょく
 romaji: nouryoku
 meaning_it: statistica / capacità
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v184-nouryoku-recognition
@@ -233,7 +238,7 @@ reading: なまえ
 romaji: namae
 meaning_it: nome
 notes_it: >-
-  Voce della lezione L17 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v185-namae-recognition
@@ -255,7 +260,7 @@ reading: れきし
 romaji: rekishi
 meaning_it: storia
 notes_it: >-
-  Voce della lezione L17 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v186-rekishi-recognition
@@ -277,7 +282,8 @@ reading: ぽけもんりーぐ
 romaji: pokemonriigu
 meaning_it: Lega Pokémon
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: nome proprio / termine di gioco. Nome proprio della Lega Pokémon, da riconoscere come riferimento del gioco quando la scena parla della Lega.
+  Nome proprio della Lega Pokémon, da riconoscere come riferimento del gioco
+  quando la scena parla della Lega.
 :::
 :::term
 id: term-v189-kanou
@@ -286,7 +292,7 @@ reading: かのう
 romaji: kanou
 meaning_it: possibile
 notes_it: >-
-  Voce della lezione L17 nell''area Emozioni/Discorsivi. Parte del discorso: na-aggettivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v189-kanou-recognition
@@ -308,7 +314,8 @@ reading: ちょうさ
 romaji: chousa
 meaning_it: indagine / ricerca sul campo
 notes_it: >-
-  Voce della lezione L17 nell''area SV specifico. Parte del discorso: sostantivo. Indica un'indagine o una ricerca sul campo: quando compare, il testo parla di studio o verifica concreta.
+  Indica un'indagine o una ricerca sul campo: quando compare, il testo parla di
+  studio o verifica concreta.
 :::
 :::card
 id: card-v190-chousa-recognition
@@ -330,7 +337,7 @@ reading: もしかして
 romaji: moshikashite
 meaning_it: forse per caso
 notes_it: >-
-  Voce della lezione L17 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v191-moshikashite-recognition
@@ -352,7 +359,7 @@ reading: こんかい
 romaji: konkai
 meaning_it: questa volta
 notes_it: >-
-  Voce della lezione L17 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v192-konkai-recognition
@@ -374,7 +381,8 @@ reading: せいちょう
 romaji: seichou
 meaning_it: crescita
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v193-seichou-recognition
@@ -396,7 +404,7 @@ reading: さいこう
 romaji: saikou
 meaning_it: il migliore / top
 notes_it: >-
-  Voce della lezione L17 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v194-saikou-recognition
@@ -418,7 +426,8 @@ reading: さんか
 romaji: sanka
 meaning_it: partecipazione
 notes_it: >-
-  Voce della lezione L17 nell''area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v195-sanka-recognition

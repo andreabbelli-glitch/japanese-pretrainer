@@ -13,7 +13,7 @@ reading: 〜してあげる
 romaji: ~ shiteageru
 meaning_it: te lo faccio io
 notes_it: >-
-  Espressione ricorrente della lezione L18 nell'area Richieste. Offerta di aiuto.
+  Offerta di aiuto.
 :::
 :::card
 id: card-e042-shiteageru-recognition
@@ -36,7 +36,8 @@ meaning_it: anche se / nonostante
 aliases:
 - けど / けれど
 notes_it: >-
-  Pattern della lezione L18 nella famiglia Confronto e struttura. Formazione: plain + のに. Serve nei rimproveri, nei contrasti tra personaggi e nei dialoghi emotivi.
+  Formazione: plain + のに. Serve nei rimproveri, nei contrasti tra personaggi e
+  nei dialoghi emotivi.
 :::
 :::card
 id: card-g043-anche-se-nonostante-concept
@@ -59,7 +60,8 @@ meaning_it: facciamo… / andiamo a…
 aliases:
 - 〜よう
 notes_it: >-
-  Pattern della lezione L18 nella famiglia Forme verbali e richieste. Formazione: ます-stem + ましょう. Ricorre spesso nei tutorial e negli inviti cortesi a provare una funzione.
+  Formazione: ます-stem + ましょう. Ricorre spesso nei tutorial e negli inviti cortesi
+  a provare una funzione.
 :::
 :::card
 id: card-g044-facciamo-andiamo-a-concept
@@ -82,7 +84,8 @@ meaning_it: facciamo… / proverò a…
 aliases:
 - 〜ましょう
 notes_it: >-
-  Pattern della lezione L18 nella famiglia Desiderio, intenzione, possibilità. Formazione: volitivo di verbo. Molto comune nelle proposte tra amici e nelle auto-esortazioni.
+  Formazione: volitivo di verbo. Molto comune nelle proposte tra amici e nelle
+  auto-esortazioni.
 :::
 :::card
 id: card-g045-facciamo-provero-a-concept
@@ -104,7 +107,7 @@ reading: むこう
 romaji: mukou
 meaning_it: laggiù / di là / dall’altra parte
 notes_it: >-
-  Espressione ricorrente della lezione L18 nell'area Esplorazione. Percorsi, porte e punti visibili in lontananza.
+  Percorsi, porte e punti visibili in lontananza.
 :::
 :::card
 id: card-e062-mukou-recognition
@@ -126,7 +129,7 @@ reading: どっち
 romaji: docchi
 meaning_it: quale direzione? / da che parte?
 notes_it: >-
-  Espressione ricorrente della lezione L18 nell'area Domande rapide. Orientamento colloquiale rapidissimo.
+  Orientamento colloquiale rapidissimo.
 :::
 :::card
 id: card-e063-docchi-recognition
@@ -148,7 +151,8 @@ reading: しゅるい
 romaji: shurui
 meaning_it: tipo / categoria
 notes_it: >-
-  Voce della lezione L18 nell''area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v224-shurui-recognition
@@ -170,7 +174,8 @@ reading: しょくじ
 romaji: shokuji
 meaning_it: pasto
 notes_it: >-
-  Voce della lezione L18 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v225-shokuji-recognition
@@ -192,7 +197,8 @@ reading: ライドわざ
 romaji: raidowaza
 meaning_it: abilità di ride
 notes_it: >-
-  Voce della lezione L18 nell''area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v226-raidowaza-recognition
@@ -214,7 +220,7 @@ reading: めにゅー
 romaji: menyuu
 meaning_it: menu
 notes_it: >-
-  Voce della lezione L18 nell''area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v227-menyuu-recognition
@@ -236,7 +242,7 @@ reading: こんど
 romaji: kondo
 meaning_it: questa volta / la prossima
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v228-kondo-recognition
@@ -258,7 +264,8 @@ reading: いろちがい
 romaji: irochigai
 meaning_it: shiny / colore diverso
 notes_it: >-
-  Voce della lezione L18 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v229-irochigai-recognition
@@ -280,7 +287,7 @@ reading: いみ
 romaji: imi
 meaning_it: significato
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v230-imi-recognition
@@ -302,7 +309,8 @@ reading: でんき
 romaji: denki
 meaning_it: elettro
 notes_it: >-
-  Voce della lezione L18 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v231-denki-recognition
@@ -324,7 +332,7 @@ reading: ざんねん
 romaji: zannen
 meaning_it: peccato / spiacevole
 notes_it: >-
-  Voce della lezione L18 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v232-zannen-recognition
@@ -346,7 +354,7 @@ reading: じゆう
 romaji: jiyuu
 meaning_it: libertà / libero
 notes_it: >-
-  Voce della lezione L18 nell''area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v233-jiyuu-recognition
@@ -368,7 +376,8 @@ reading: しょうり
 romaji: shouri
 meaning_it: vittoria
 notes_it: >-
-  Voce della lezione L18 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v234-shouri-recognition
@@ -390,7 +399,8 @@ reading: ちゅうかんてすと
 romaji: chuukan tesuto
 meaning_it: esame di metà corso / midterm
 notes_it: >-
-  Voce della lezione L18 nell''area Storia/Scuola. Parte del discorso: sostantivo / termine scolastico. Ricorre nelle lezioni e negli esami dell''Accademia; utile se vuoi seguire davvero la parte scuola.
+  Ricorre nelle lezioni e negli esami dell''Accademia; utile se vuoi seguire
+  davvero la parte scuola.
 :::
 :::card
 id: card-v342-chuukan-tesuto-recognition
@@ -412,7 +422,7 @@ reading: きまつてすと
 romaji: kimatsu tesuto
 meaning_it: esame finale / test di fine corso
 notes_it: >-
-  Voce della lezione L18 nell''area Storia/Scuola. Parte del discorso: sostantivo / termine scolastico. Compare nelle classi dell''Accademia e nei dialoghi legati a lezioni ed esami.
+  Compare nelle classi dell''Accademia e nei dialoghi legati a lezioni ed esami.
 :::
 :::card
 id: card-v343-kimatsu-tesuto-recognition

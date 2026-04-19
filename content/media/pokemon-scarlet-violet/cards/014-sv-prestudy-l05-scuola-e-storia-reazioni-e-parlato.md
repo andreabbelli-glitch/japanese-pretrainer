@@ -13,7 +13,7 @@ reading: きをつけて
 romaji: kiwo tsukete
 meaning_it: stai attento
 notes_it: >-
-  Espressione ricorrente della lezione L05 nell'area Supporto / incoraggiamento. Molto comune prima di partire o affrontare qualcosa di rischioso.
+  Molto comune prima di partire o affrontare qualcosa di rischioso.
 :::
 :::card
 id: card-e012-kiwo-tsukete-recognition
@@ -35,7 +35,7 @@ reading: すごい！
 romaji: sugoi !
 meaning_it: forte! / incredibile!
 notes_it: >-
-  Espressione ricorrente della lezione L05 nell'area Reazioni. Reazione entusiasta o ammirata.
+  Reazione entusiasta o ammirata.
 :::
 :::card
 id: card-e013-sugoi-recognition
@@ -101,7 +101,8 @@ reading: こうか
 romaji: kouka
 meaning_it: effetto
 notes_it: >-
-  Voce della lezione L05 nell''area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v051-kouka-recognition
@@ -123,7 +124,8 @@ reading: しょくざい
 romaji: shokuzai
 meaning_it: ingrediente
 notes_it: >-
-  Voce della lezione L05 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v052-shokuzai-recognition
@@ -145,7 +147,8 @@ reading: はかせ
 romaji: hakase
 meaning_it: professore / ricercatore
 notes_it: >-
-  Voce della lezione L05 nell''area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v053-hakase-recognition
@@ -167,7 +170,8 @@ reading: ずかん
 romaji: zukan
 meaning_it: Pokédex / enciclopedia
 notes_it: >-
-  Voce della lezione L05 nell''area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v054-zukan-recognition
@@ -189,7 +193,7 @@ reading: どんな
 romaji: donna
 meaning_it: che tipo di
 notes_it: >-
-  Voce della lezione L05 nell''area Domande. Parte del discorso: interrogativo. Parole interrogative essenziali per capire richieste, missioni e dialoghi.
+  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
 :::
 :::card
 id: card-v055-donna-recognition
@@ -211,15 +215,13 @@ reading: ちゃんと
 romaji: chanto
 meaning_it: come si deve / per bene
 notes_it: >-
-  Voce della lezione L05 nell''area Emozioni/Discorsivi. Parte del discorso:
-  aggettivo/avverbio/sostantivo. Qui l'idea centrale non è la forza, ma il
-  fatto di fare qualcosa come previsto, in ordine e senza trascuratezza. ちゃんと
-  si usa quando conta rispettare uno standard, una regola o un'aspettativa:
-  mangiare come si deve, fare i compiti per bene, guardare davvero con
-  attenzione perché è quello che ci si aspetta. Per questo in italiano rende
-  bene “come si deve”, “per bene”, “correttamente”. Se invece il punto è la
-  solidità, la fermezza o il metterci sostanza, la parola che spesso entra in
-  gioco è しっかり.
+  Qui l'idea centrale non è la forza, ma il fatto di fare qualcosa come
+  previsto, in ordine e senza trascuratezza. ちゃんと si usa quando conta
+  rispettare uno standard, una regola o un'aspettativa: mangiare come si deve,
+  fare i compiti per bene, guardare davvero con attenzione perché è quello che
+  ci si aspetta. Per questo in italiano rende bene “come si deve”, “per bene”,
+  “correttamente”. Se invece il punto è la solidità, la fermezza o il metterci
+  sostanza, la parola che spesso entra in gioco è しっかり.
 :::
 :::card
 id: card-v056-chanto-recognition
@@ -241,7 +243,7 @@ reading: なか
 romaji: naka
 meaning_it: dentro / interno / in mezzo
 notes_it: >-
-  Voce della lezione L05 nell''area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v057-naka-recognition
@@ -263,7 +265,7 @@ reading: つくる
 romaji: tsukuru
 meaning_it: creare
 notes_it: >-
-  Voce della lezione L05 nell''area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v058-tsukuru-recognition
@@ -285,7 +287,8 @@ reading: ピクニック
 romaji: pikunikku
 meaning_it: picnic
 notes_it: >-
-  Voce della lezione L05 nell''area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v059-pikunikku-recognition
@@ -307,7 +310,7 @@ reading: さいご
 romaji: saigo
 meaning_it: ultimo
 notes_it: >-
-  Voce della lezione L05 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v060-saigo-recognition
@@ -329,7 +332,7 @@ reading: きっと
 romaji: kitto
 meaning_it: sicuramente
 notes_it: >-
-  Voce della lezione L05 nell''area Emozioni/Discorsivi. Parte del discorso: aggettivo/avverbio/sostantivo. Aggettivi, avverbi e parole-cerniera che rendono comprensibili i dialoghi.
+  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
 :::
 :::card
 id: card-v061-kitto-recognition

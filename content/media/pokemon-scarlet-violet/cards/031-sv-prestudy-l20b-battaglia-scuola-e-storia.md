@@ -13,7 +13,7 @@ reading: いってみよう
 romaji: ittemiyou
 meaning_it: andiamo a vedere / proviamo ad andarci
 notes_it: >-
-  Espressione ricorrente della lezione L20 nell'area Azione / proposta. Invita a provare ad avanzare verso una meta.
+  Invita a provare ad avanzare verso una meta.
 :::
 :::card
 id: card-e057-ittemiyou-recognition
@@ -35,7 +35,7 @@ reading: それなら
 romaji: sorenara
 meaning_it: in quel caso / allora
 notes_it: >-
-  Espressione ricorrente della lezione L20 nell'area Connettori. Risposta a una condizione o proposta
+  Risposta a una condizione o proposta
 :::
 :::card
 id: card-e058-sorenara-recognition
@@ -57,7 +57,7 @@ reading: 〜しておこう
 romaji: ~ shiteokou
 meaning_it: facciamolo in anticipo
 notes_it: >-
-  Espressione ricorrente della lezione L20 nell'area Azione / proposta. Preparazione prudente.
+  Preparazione prudente.
 :::
 :::card
 id: card-e059-shiteokou-recognition
@@ -78,7 +78,7 @@ pattern: ～{{言|い}}う / ～って{{言|い}}う
 title: Dire / chiamarsi
 meaning_it: dire / chiamarsi
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Spiegazione, opinione, apparenza. Formazione: frase + と言う. Per citazioni e per introdurre nomi/termini.
+  Formazione: frase + と言う. Per citazioni e per introdurre nomi/termini.
 :::
 :::card
 id: card-g059-dire-chiamarsi-concept
@@ -99,7 +99,8 @@ pattern: ～すぎる
 title: Troppo
 meaning_it: troppo
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Confronto e struttura. Formazione: stem + すぎる. Per capire eccesso: troppo forte, troppo presto, troppo caro.
+  Formazione: stem + すぎる. Per capire eccesso: troppo forte, troppo presto,
+  troppo caro.
 :::
 :::card
 id: card-g061-troppo-concept
@@ -120,7 +121,7 @@ pattern: ～そうだ (sembra)
 title: Sembra che
 meaning_it: sembra che
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Spiegazione, opinione, apparenza. Formazione: V-stem / いA drop い + そう. Usato per impressioni immediate.
+  Formazione: V-stem / いA drop い + そう. Usato per impressioni immediate.
 :::
 :::card
 id: card-g062-sembra-che-concept
@@ -141,7 +142,7 @@ pattern: ～そうだ (si dice)
 title: Si dice che / pare che
 meaning_it: si dice che / pare che
 notes_it: >-
-  Pattern della lezione L20 nella famiglia Spiegazione, opinione, apparenza. Formazione: frase + そうだ. Meno base, ma utile in spiegazioni e voci riportate.
+  Formazione: frase + そうだ. Meno base, ma utile in spiegazioni e voci riportate.
 :::
 :::card
 id: card-g063-si-dice-che-pare-che-concept
@@ -163,7 +164,8 @@ reading: ダッシュ
 romaji: dasshu
 meaning_it: scatto
 notes_it: >-
-  Voce della lezione L20 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v294-dasshu-recognition
@@ -185,7 +187,8 @@ reading: きのう
 romaji: kinou
 meaning_it: funzione
 notes_it: >-
-  Voce della lezione L20 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v295-kinou-recognition
@@ -207,7 +210,8 @@ reading: あく
 romaji: aku
 meaning_it: buio
 notes_it: >-
-  Voce della lezione L20 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v296-aku-recognition
@@ -229,7 +233,8 @@ reading: たいせん
 romaji: taisen
 meaning_it: lotta / match
 notes_it: >-
-  Voce della lezione L20 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::card
 id: card-v297-taisen-recognition
@@ -251,7 +256,7 @@ reading: でる
 romaji: deru
 meaning_it: uscire / comparire
 notes_it: >-
-  Voce della lezione L20 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v298-deru-recognition
@@ -273,7 +278,8 @@ reading: エスパー
 romaji: esupaa
 meaning_it: psico
 notes_it: >-
-  Voce della lezione L20 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v299-esupaa-recognition
@@ -295,7 +301,7 @@ reading: いる
 romaji: iru
 meaning_it: entrare
 notes_it: >-
-  Voce della lezione L20 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v300-iru-recognition
@@ -317,7 +323,7 @@ reading: こうかんする
 romaji: koukan suru
 meaning_it: scambiare
 notes_it: >-
-  Voce della lezione L20 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v301-koukan-suru-recognition
@@ -339,7 +345,7 @@ reading: であい
 romaji: deai
 meaning_it: incontri
 notes_it: >-
-  Voce della lezione L20 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v302-deai-recognition
@@ -361,7 +367,7 @@ reading: ちょうし
 romaji: choushi
 meaning_it: condizione / forma
 notes_it: >-
-  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v303-choushi-recognition
@@ -383,7 +389,7 @@ reading: ひみつ
 romaji: himitsu
 meaning_it: segreto
 notes_it: >-
-  Voce della lezione L20 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v304-himitsu-recognition
@@ -405,7 +411,7 @@ reading: せってい
 romaji: settei
 meaning_it: impostazioni
 notes_it: >-
-  Voce della lezione L20 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::card
 id: card-v305-settei-recognition
@@ -427,7 +433,7 @@ reading: わざましんましん
 romaji: waza mashinmashin
 meaning_it: macchina per creare MT
 notes_it: >-
-  Voce della lezione L20 nell'area Sistema/UI. Parte del discorso: sostantivo/verbo. Parole utili per centro Pokémon, oggetti, menu e gestione squadra.
+  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
 :::
 :::term
 id: term-v307-suugaku
@@ -436,7 +442,8 @@ reading: すうがく
 romaji: suugaku
 meaning_it: matematica
 notes_it: >-
-  Voce della lezione L20 nell'area Storia/Scuola. Parte del discorso: sostantivo. Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di trama.
+  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
+  trama.
 :::
 :::card
 id: card-v307-suugaku-recognition
@@ -458,7 +465,7 @@ reading: けいけん
 romaji: keiken
 meaning_it: esperienza
 notes_it: >-
-  Voce della lezione L20 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v309-keiken-recognition
@@ -480,7 +487,7 @@ reading: きたい
 romaji: kitai
 meaning_it: attesa / aspettativa
 notes_it: >-
-  Voce della lezione L20 nell'area Emozioni/Discorsivi. Parte del discorso: sostantivo. Parole molto frequenti nei dialoghi NPC e nelle reazioni dei personaggi.
+  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
 :::
 :::card
 id: card-v310-kitai-recognition
@@ -502,7 +509,8 @@ reading: めいちゅうりつ
 romaji: meichuuritsu
 meaning_it: precisione
 notes_it: >-
-  Voce della lezione L20 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v311-meichuuritsu-recognition
@@ -524,7 +532,8 @@ reading: じめん
 romaji: jimen
 meaning_it: terra
 notes_it: >-
-  Voce della lezione L20 nell'area Battaglia. Parte del discorso: sostantivo. Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di battaglia.
+  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
+  battaglia.
 :::
 :::card
 id: card-v312-jimen-recognition

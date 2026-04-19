@@ -59,13 +59,25 @@ In Scarlet / Violet queste parole ricorrono in menu, istruzioni e dialoghi rapid
 
 ## Spiegazione
 
-Parole come [整理](term:term-v393-seiri), [進む](term:term-v394-susumu), [飛ぶ](term:term-v396-tobu) e [帰る](term:term-v397-kaeru) dicono subito se stai riordinando, avanzando, muovendoti o tornando indietro. Nei menu e nei tutorial sono segnali operativi molto concreti: ti fanno capire che tipo di azione sta chiedendo la schermata.
+I verbi operativi come [進む](term:term-v394-susumu) (avanzare),
+[飛ぶ](term:term-v396-tobu) (volare) e [帰る](term:term-v397-kaeru)
+(tornare) sono essenziali per navigare il gioco: ti dicono subito se devi
+andare avanti, spostarti rapidamente o rientrare. [整理](term:term-v393-seiri)
+invece non è un verbo ma il termine standard per il "riordino" o la
+"sistemazione" di box e borsa.
 
 Le espressioni come [見てみよう](term:term-e075-mitemiyou), [あとは任せて](term:term-e076-atoha-makase-te) e [まずはここから](term:term-e077-mazuhakokokara) servono a guidare l'azione: invitano a guardare qualcosa, prendono in carico il resto o fissano il punto da cui partire.
 
 Sul piano grammaticale, [〜ないでください](grammar:grammar-g079-per-favore-non-fare) è un divieto gentile, [〜たがる](grammar:grammar-g080-sembrare-voler-fare-terza-persona) segnala che un altro personaggio mostra di voler fare qualcosa e [〜ほうがいい](grammar:grammar-g081-e-meglio-fare) introduce un consiglio pratico.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [かがやきパワー](term:term-v395-kagayakipawaa)、 [パラドックスポケモン](term:term-v398-paradokkusupokemon)、 [そうぐうパワー](term:term-v399-souguupawaa)、 [リーグペイ](term:term-v402-riigupei) e [おとしものパワー](term:term-v405-otoshimonopawaa). Sono nomi di funzione o di categoria: quando compaiono, ti dicono subito quale bonus, gruppo o risorsa sta entrando in gioco.
+Accanto a questo nucleo restano alcune etichette contestuali, per esempio
+[かがやきパワー](term:term-v395-kagayakipawaa),
+[パラドックスポケモン](term:term-v398-paradokkusupokemon),
+[そうぐうパワー](term:term-v399-souguupawaa),
+[リーグペイ](term:term-v402-riigupei) e
+[おとしものパワー](term:term-v405-otoshimonopawaa). Sono nomi di funzione o
+di categoria: quando compaiono, ti dicono subito quale bonus, gruppo o
+risorsa entra in gioco.
 
 ## Esempi guidati
 

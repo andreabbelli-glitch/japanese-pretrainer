@@ -13,7 +13,7 @@ reading: かくにんする
 romaji: kakunin suru
 meaning_it: confermare / controllare
 notes_it: >-
-  Espressione ricorrente della lezione L22 nell'area Sistema/UI. Bottone o azione di controllo nei menu.
+  Bottone o azione di controllo nei menu.
 :::
 :::card
 id: card-e050-kakunin-suru-recognition
@@ -35,7 +35,7 @@ reading: もどる
 romaji: modoru
 meaning_it: indietro / tornare
 notes_it: >-
-  Espressione ricorrente della lezione L22 nell'area Sistema/UI. Bottone “back” in kana nei menu.
+  Bottone “back” in kana nei menu.
 :::
 :::card
 id: card-e051-modoru-recognition
@@ -57,7 +57,7 @@ reading: くりあする
 romaji: kuria suru
 meaning_it: completare / superare
 notes_it: >-
-  Espressione ricorrente della lezione L22 nell'area Sistema/UI. Palestre, test, obiettivi e messaggi di progressione.
+  Palestre, test, obiettivi e messaggi di progressione.
 :::
 :::card
 id: card-e052-kuria-suru-recognition
@@ -79,7 +79,7 @@ reading: 〜は どうだ？
 romaji: ha douda？
 meaning_it: che ne dici di…?
 notes_it: >-
-  Espressione ricorrente della lezione L22 nell'area Azione / proposta. Consiglio informale degli NPC
+  Consiglio informale degli NPC
 :::
 :::card
 id: card-e069-ha-douda-recognition
@@ -101,7 +101,7 @@ reading: やってみよう
 romaji: yattemiyou
 meaning_it: proviamo a farlo
 notes_it: >-
-  Espressione ricorrente della lezione L22 nell'area Azione / proposta. Invito a testare un'azione o una strategia.
+  Invito a testare un'azione o una strategia.
 :::
 :::card
 id: card-e070-yattemiyou-recognition
@@ -122,7 +122,8 @@ pattern: ～なら
 title: Se è così / se parli di
 meaning_it: se è così / se parli di
 notes_it: >-
-  Pattern della lezione L22 nella famiglia Condizioni, tempo, sequenza. Formazione: N/phrase + なら. Molto comune per reagire a ciò che l'altro ha detto.
+  Formazione: N/phrase + なら. Molto comune per reagire a ciò che l'altro ha
+  detto.
 :::
 :::card
 id: card-g072-se-e-cosi-se-parli-di-concept
@@ -143,7 +144,7 @@ pattern: ～予定だ
 title: Essere previsto
 meaning_it: essere previsto
 notes_it: >-
-  Pattern della lezione L22 nella famiglia Desiderio, intenzione, possibilità. Formazione: V-dizionario + 予定だ. Programmi o eventi pianificati.
+  Formazione: V-dizionario + 予定だ. Programmi o eventi pianificati.
 :::
 :::card
 id: card-g073-essere-previsto-concept
@@ -165,7 +166,7 @@ reading: あつめる
 romaji: atsume ru
 meaning_it: raccogliere
 notes_it: >-
-  Voce della lezione L22 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v354-atsume-ru-recognition
@@ -187,7 +188,7 @@ reading: てらすたるえねるぎー
 romaji: terasutaruenerugii
 meaning_it: energia teracristal
 notes_it: >-
-  Voce della lezione L22 nell'area SV specifico. Parte del discorso: nome proprio / termine di gioco. Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::
 :::term
 id: term-v356-tanomu
@@ -196,7 +197,7 @@ reading: たのむ
 romaji: tanomu
 meaning_it: chiedere / affidare
 notes_it: >-
-  Voce della lezione L22 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v356-tanomu-recognition
@@ -218,7 +219,7 @@ reading: むかう
 romaji: muka u
 meaning_it: dirigersi verso
 notes_it: >-
-  Voce della lezione L22 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v358-muka-u-recognition
@@ -240,7 +241,7 @@ reading: おしえる
 romaji: oshie ru
 meaning_it: insegnare / dire
 notes_it: >-
-  Voce della lezione L22 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v359-oshie-ru-recognition
@@ -262,7 +263,7 @@ reading: あるく
 romaji: aruku
 meaning_it: camminare
 notes_it: >-
-  Voce della lezione L22 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v360-aruku-recognition
@@ -284,7 +285,7 @@ reading: ちゅうおう
 romaji: chuuou
 meaning_it: centro
 notes_it: >-
-  Voce della lezione L22 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v361-chuuou-recognition
@@ -306,7 +307,8 @@ reading: おきにいり
 romaji: okiniiri
 meaning_it: preferito / favorito
 notes_it: >-
-  Voce della lezione L22 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v362-okiniiri-recognition
@@ -328,7 +330,8 @@ reading: でんせつのポケモン
 romaji: densetsunopokemon
 meaning_it: Pokémon leggendario
 notes_it: >-
-  Voce della lezione L22 nell'area SV specifico. Parte del discorso: sostantivo. Termine molto utile per capire la progressione principale, i tutorial e i dialoghi chiave di Scarlet/Violet.
+  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
+  dialoghi chiave.
 :::
 :::term
 id: term-v364-tochuu
@@ -337,7 +340,7 @@ reading: とちゅう
 romaji: tochuu
 meaning_it: durante il percorso / a metà
 notes_it: >-
-  Voce della lezione L22 nell'area Esplorazione. Parte del discorso: sostantivo/avverbio/aggettivo. Parole di movimento, luoghi e navigazione del mondo aperto.
+  Parola utile per orientarti e capire il movimento nel mondo aperto.
 :::
 :::card
 id: card-v364-tochuu-recognition
@@ -359,7 +362,8 @@ reading: せいげんじかん
 romaji: seigenjikan
 meaning_it: tempo limite
 notes_it: >-
-  Voce della lezione L22 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v366-seigenjikan-recognition
@@ -381,7 +385,7 @@ reading: はしる
 romaji: hashiru
 meaning_it: correre
 notes_it: >-
-  Voce della lezione L22 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v367-hashiru-recognition
@@ -403,7 +407,8 @@ reading: せんたく
 romaji: sentaku
 meaning_it: selezione
 notes_it: >-
-  Voce della lezione L22 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v368-sentaku-recognition
@@ -425,7 +430,8 @@ reading: ロックオン
 romaji: rokkuon
 meaning_it: lock-on
 notes_it: >-
-  Voce della lezione L22 nell'area Esplorazione. Parte del discorso: sostantivo. Utile per orientarti, seguire gli obiettivi e capire i tutorial di movimento.
+  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
+  movimento.
 :::
 :::card
 id: card-v369-rokkuon-recognition
@@ -447,7 +453,7 @@ reading: しる
 romaji: shiru
 meaning_it: sapere / venire a sapere
 notes_it: >-
-  Voce della lezione L22 nell'area Verbi base. Parte del discorso: verbo. Verbi ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
 :::
 :::card
 id: card-v370-shiru-recognition
@@ -469,7 +475,8 @@ reading: キャンセル
 romaji: kyanseru
 meaning_it: annulla
 notes_it: >-
-  Voce della lezione L22 nell'area Sistema/UI. Parte del discorso: sostantivo. Molto utile nei menu, nei tutorial, nel box, nella borsa e nei messaggi di sistema.
+  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
+  messaggi di sistema.
 :::
 :::card
 id: card-v371-kyanseru-recognition
@@ -491,7 +498,8 @@ reading: ぜんりょく
 romaji: zenryoku
 meaning_it: massimo impegno
 notes_it: >-
-  Voce della lezione L22 nell'area Battaglia. Parte del discorso: sostantivo/verbo/aggettivo. Lessico usato in sfide, spiegazioni di lotta, palestre e raid.
+  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
+  raid.
 :::
 :::card
 id: card-v372-zenryoku-recognition
@@ -513,7 +521,7 @@ reading: ひとびと
 romaji: hitobito
 meaning_it: la gente / le persone
 notes_it: >-
-  Voce della lezione L22 nell'area Storia/Scuola. Parte del discorso: sostantivo. Lessico della scuola, dei compagni e della trama iniziale.
+  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
 :::
 :::card
 id: card-v373-hitobito-recognition

@@ -530,8 +530,8 @@ reading: あやしい
 romaji: ayashii
 meaning_it: sospetto / losco
 notes_it: >-
-  Aggettivo utilissimo per capire subito se un NPC o una situazione non
-  ispira fiducia. In gioco spesso basta da solo a orientare il tono.
+  Aggettivo utilissimo per capire subito se un NPC o una situazione non ispira
+  fiducia. In gioco spesso basta da solo a orientare il tono.
 :::
 :::card
 id: card-v761-ayashii-recognition

@@ -101,15 +101,16 @@ spiega e ti mette in mano gli strumenti minimi per partire. Lo stesso vale per
 invito astratto a provare un giorno, ma l'istruzione morbida per eseguire subito
 il tuo primo test guidato.
 
-La salita verso il faro è importante anche per il linguaggio di esplorazione.
-[{{気|き}}をつける](term:term-ki-o-tsukeru) è una formula ricorrente da gioco e
-non solo da dialogo quotidiano. In questo contesto ti segnala pericolo reale:
-bordi, dislivelli, Pokemon aggressivi, entrate rischiose. Si aggancia bene a
-[～ないように](grammar:grammar-nai-you-ni), che in Scarlet / Violet compare bene
-nelle avvertenze morbide ma operative. Quando Nemona dice di non entrare in una
-caverna pericolosa, non sta facendo colore narrativo: sta marcando un'area da
-evitare in quel momento e ti dice quale comportamento mantiene il flusso sotto
-controllo.
+Durante la salita impariamo il linguaggio di allerta.
+[{{気|き}}をつける](term:term-ki-o-tsukeru) vuol dire "fare attenzione". Se
+vuoi ricordarlo bene, puoi pensarlo come "mettere attenzione" su qualcosa. Nei
+dialoghi segnala un pericolo concreto: bordi, dislivelli o Pokemon aggressivi.
+
+Questa espressione si lega bene a
+[～ないように](grammar:grammar-nai-you-ni), che esprime uno scopo al negativo:
+"in modo da non..." o "per evitare di...". Quando Nemona ti dice di non
+entrare nella caverna (`入らないように`), non sta solo parlando in modo prudente:
+ti sta indicando il comportamento corretto per restare nel percorso guidato.
 
 Anche [{{生息|せいそく}}する](term:term-seisoku-suru) merita attenzione.
 Nel dialogo sulla grotta spiega che certi Pokemon vivono stabilmente in quel

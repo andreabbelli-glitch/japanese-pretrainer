@@ -1014,9 +1014,9 @@ card_type: recognition
 front: '{{進化|しんか}}'
 back: evoluzione
 example_jp: >-
-  {{進化|しんか}}クリーチャーを{{1体|いったい}} {{出|だ}}す。
+  {{自分|じぶん}}のクリーチャーの{{上|うえ}}に、{{進化|しんか}}クリーチャーを{{置|お}}く。
 example_it: >-
-  Metti in gioco 1 creatura evoluzione.
+  Metto una creatura evoluzione sopra una propria creatura.
 notes_it: >-
   Ti dice che la carta va messa sopra una base valida. Se compare, controlla
   sempre quale carta deve stare sotto e quali condizioni servono.
@@ -1111,9 +1111,9 @@ card_type: recognition
 front: コマンド
 back: Command / famiglia di creature
 example_jp: >-
-  {{火|ひ}}のコマンドを{{1体|いったい}} {{出|だ}}す。
+  このカードが{{出|で}}た{{時|とき}}、{{火|ひ}}のコマンドを{{1体|いったい}}{{破壊|はかい}}する。
 example_it: >-
-  Metti in gioco 1 Command di fuoco.
+  Quando questa entra, distruggi un Command di fuoco.
 notes_it: >-
   In SD2 questa famiglia compare soprattutto come condizione di validità
   dell'effetto. Non basta che una creatura attacchi: deve attaccare proprio un
@@ -1130,9 +1130,9 @@ card_type: recognition
 front: '{{文明|ぶんめい}}'
 back: civiltà / civilization
 example_jp: >-
-  このカードは{{火|ひ}}の{{文明|ぶんめい}}を{{持|も}}つ。
+  マナゾーンにすべての{{文明|ぶんめい}}のカードがそろっている。
 example_it: >-
-  Questa carta ha la civiltà fuoco.
+  Nella mana zone sono presenti carte di tutte le civiltà.
 notes_it: >-
   È il colore della carta. Serve sia a leggere l'anatomia della carta sia a
   capire filtri come `{{火|ひ}}のコマンド` o effetti che richiedono una civiltà
@@ -1294,9 +1294,9 @@ card_type: recognition
 front: '{{山札|やまふだ}}'
 back: mazzo / deck
 example_jp: >-
-  {{山札|やまふだ}}の{{上|うえ}}から{{1枚|いちまい}} {{引|ひ}}く。
+  ターンのはじめに、{{山札|やまふだ}}の{{上|うえ}}からカードを{{引|ひ}}く。
 example_it: >-
-  Pesca 1 carta dalla cima del mazzo.
+  All'inizio del turno, pesca una carta dalla cima del mazzo.
 notes_it: >-
   Significa "mazzo". Compare spesso in frasi come
   `{{山札|やまふだ}}の{{上|うえ}}からX{{枚|まい}}`. La lettura chiave è
@@ -1566,9 +1566,9 @@ card_type: recognition
 front: '{{置|お}}く'
 back: mettere / porre
 example_jp: >-
-  このカードを{{墓地|ぼち}}に{{置|お}}く。
+  シールドがブレイクされた{{時|とき}}、そのカードを{{墓地|ぼち}}に{{置|お}}く。
 example_it: >-
-  Metti questa carta nel cimitero.
+  Quando lo scudo viene rotto, metti quella carta nel cimitero.
 notes_it: >-
   È un verbo molto comune e neutro. Il significato operativo dipende dalla
   destinazione: nel cimitero, nel mazzo, sopra una carta o altrove.
@@ -1602,9 +1602,9 @@ card_type: recognition
 front: '{{選|えら}}ぶ'
 back: scegliere
 example_jp: >-
-  クリーチャーを{{1体|いったい}} {{選|えら}}ぶ。
+  {{相手|あいて}}のクリーチャーを{{1体|いったい}}{{選|えら}}んで、{{手札|てふだ}}に{{戻|もど}}す。
 example_it: >-
-  Scegli 1 creatura.
+  Scegli una creatura dell'avversario e rimettila in mano.
 notes_it: >-
   Indica una scelta. Se compare, l'effetto non è casuale: qualcuno deve
   selezionare un bersaglio o una carta precisa.
@@ -1620,9 +1620,9 @@ card_type: recognition
 front: '{{引|ひ}}く'
 back: pescare / tirare
 example_jp: >-
-  カードを{{2枚|にまい}} {{引|ひ}}く。
+  このクリーチャーが{{破壊|はかい}}された{{時|とき}}、カードを{{2枚|にまい}}{{引|ひ}}く。
 example_it: >-
-  Pesca 2 carte.
+  Quando questa creatura viene distrutta, pesca 2 carte.
 notes_it: >-
   Nel linguaggio delle carte significa quasi sempre pescare. È uno dei verbi più
   diretti da riconoscere.
@@ -1638,9 +1638,9 @@ card_type: recognition
 front: '{{捨|す}}てる'
 back: scartare / buttare via
 example_jp: >-
-  {{手札|てふだ}}を{{1枚|いちまい}} {{捨|す}}てる。
+  この{{呪文|じゅもん}}を{{唱|とな}}える{{時|とき}}、{{自分|じぶん}}の{{手札|てふだ}}を{{1枚|いちまい}}{{捨|す}}てる。
 example_it: >-
-  Scarta 1 carta dalla mano.
+  Quando lanci questa magia, scarta una tua carta dalla mano.
 notes_it: >-
   Significa scartare, di solito dalla mano. Spesso è un costo o una perdita che
   serve ad attivare un effetto migliore.
@@ -1656,9 +1656,9 @@ card_type: recognition
 front: '{{戻|もど}}す'
 back: rimandare / restituire
 example_jp: >-
-  このカードを{{手札|てふだ}}に{{戻|もど}}す。
+  バトルゾーンにある{{相手|あいて}}のクリーチャーをすべて{{手札|てふだ}}に{{戻|もど}}す。
 example_it: >-
-  Rimetti questa carta nella tua mano.
+  Rimetti in mano tutte le creature dell'avversario nella battle zone.
 notes_it: >-
   Significa riportare una carta in una zona, molto spesso la mano. Leggilo come
   verbo di ritorno.
