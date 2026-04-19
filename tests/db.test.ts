@@ -805,6 +805,41 @@ describe("database layer", () => {
     }
   });
 
+  it("keeps cardsTotal aligned with totalCards for future-scheduled active review cards", async () => {
+    await database
+      .update(card)
+      .set({
+        status: "archived"
+      })
+      .where(eq(card.id, developmentFixture.secondaryCardId));
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        state: "review",
+        dueAt: "2030-03-12T08:00:00.000Z",
+        manualOverride: false,
+        suspended: false
+      })
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `entry:term:${developmentFixture.termDbId}`
+        )
+      );
+
+    const candidate = await getReviewLaunchCandidateByMediaId(
+      database,
+      developmentFixture.mediaId,
+      "2026-03-10T00:00:00.000Z"
+    );
+
+    expect(candidate).not.toBeNull();
+    expect(candidate?.totalCards).toBe(1);
+    expect(candidate?.cardsTotal).toBe(candidate?.totalCards);
+    expect(candidate?.cardsTotal).toBeGreaterThan(0);
+  });
+
   it("excludes known_manual cards from the due queue", async () => {
     await database
       .update(reviewSubjectState)

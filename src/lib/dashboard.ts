@@ -17,7 +17,8 @@ import {
 } from "@/lib/media-shell";
 import {
   loadGlobalReviewOverviewSnapshot,
-  loadReviewIntroducedTodayCountCached
+  loadReviewIntroducedTodayCountCached,
+  loadReviewLaunchCandidatesCached
 } from "@/lib/review";
 import { getLocalIsoDateKey } from "@/lib/local-date";
 import { getReviewDailyLimit } from "@/lib/settings";
@@ -63,15 +64,19 @@ export async function getDashboardData(
 async function loadDashboardData(
   database: DatabaseClient
 ): Promise<DashboardData> {
-  const [mediaRows, dailyLimit, newIntroducedTodayCount] = await Promise.all([
-    listMediaCached(database),
-    getReviewDailyLimit(database),
-    loadReviewIntroducedTodayCountCached(database)
-  ]);
+  const now = new Date();
+  const [mediaRows, dailyLimit, newIntroducedTodayCount, reviewCandidates] =
+    await Promise.all([
+      listMediaCached(database),
+      getReviewDailyLimit(database),
+      loadReviewIntroducedTodayCountCached(database, now),
+      loadReviewLaunchCandidatesCached(database, now.toISOString())
+    ]);
   const [media, globalReviewOverview] = await Promise.all([
     loadMediaShellSnapshots(database, mediaRows, {
       resolvedDailyLimit: dailyLimit,
-      resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+      resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
+      resolvedReviewCandidates: reviewCandidates
     }),
     loadGlobalReviewOverviewSnapshot(database, {
       resolvedDailyLimit: dailyLimit,

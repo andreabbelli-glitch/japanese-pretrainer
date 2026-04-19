@@ -314,8 +314,10 @@ export async function loadGlobalReviewPageWorkspace(
     : measureWith(options.profiler, "listMediaCached", () =>
         listMediaCached(database)
       );
-  const settingsPromise = measureWith(options.profiler, "getStudySettings", () =>
-    getStudySettings(database)
+  const settingsPromise = measureWith(
+    options.profiler,
+    "getStudySettings",
+    () => getStudySettings(database)
   );
   const [mediaRows, settings] = await Promise.all([
     mediaRowsPromise,
@@ -523,11 +525,16 @@ export async function loadGlobalReviewOverviewSnapshot(
   } = {}
 ) {
   const now = new Date();
+  const dailyLimitPromise =
+    options.resolvedDailyLimit ?? getReviewDailyLimit(database);
+  const newIntroducedTodayCountPromise =
+    options.resolvedNewIntroducedTodayCount ??
+    loadReviewIntroducedTodayCountCached(database, now);
+
   const [overview, dailyLimit, newIntroducedTodayCount] = await Promise.all([
     getGlobalReviewOverviewData(database, now),
-    options.resolvedDailyLimit ?? getReviewDailyLimit(database),
-    options.resolvedNewIntroducedTodayCount ??
-      loadReviewIntroducedTodayCountCached(database, now)
+    dailyLimitPromise,
+    newIntroducedTodayCountPromise
   ]);
 
   return mapReviewOverviewSnapshot({
@@ -544,14 +551,17 @@ function mapReviewOverviewSnapshot(input: {
 }) {
   const { dailyLimit, newIntroducedTodayCount, overview } = input;
   const remainingNewSlots = Math.max(dailyLimit - newIntroducedTodayCount, 0);
-  const newQueuedCount = Math.min(overview.newAvailableCount, remainingNewSlots);
+  const newQueuedCount = Math.min(
+    overview.newAvailableCount,
+    remainingNewSlots
+  );
   const upcomingCount = Math.max(
     overview.activeReviewCards - overview.dueCount,
     0
   );
   const nextCardFront =
     overview.firstDueFront ??
-    (newQueuedCount > 0 ? overview.firstNewFront ?? null : null);
+    (newQueuedCount > 0 ? (overview.firstNewFront ?? null) : null);
 
   return {
     activeCards: overview.activeReviewCards,

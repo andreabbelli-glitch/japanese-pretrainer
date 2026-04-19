@@ -8,6 +8,7 @@ import {
   type DatabaseClient,
   type MediaListItem
 } from "@/db";
+import type { ReviewLaunchCandidate } from "@/db/queries/review";
 import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
@@ -142,6 +143,7 @@ export async function loadMediaShellSnapshots(
     previewEntryLimit?: number;
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
+    resolvedReviewCandidates?: ReviewLaunchCandidate[];
   } = {}
 ) {
   if (media.length === 0) {
@@ -165,7 +167,8 @@ export async function loadMediaShellSnapshots(
         slug: item.slug
       }))
     ),
-    loadReviewLaunchCandidatesCached(database, nowIso),
+    options.resolvedReviewCandidates ??
+      loadReviewLaunchCandidatesCached(database, nowIso),
     options.resolvedDailyLimit ?? getReviewDailyLimit(database),
     options.resolvedNewIntroducedTodayCount ??
       loadReviewIntroducedTodayCountCached(database, new Date(nowIso))

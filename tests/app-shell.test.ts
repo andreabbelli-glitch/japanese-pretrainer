@@ -70,7 +70,10 @@ describe("app shell live data", () => {
         )
       );
 
-    const media = await getMediaDetailData(developmentFixture.mediaSlug, database);
+    const media = await getMediaDetailData(
+      developmentFixture.mediaSlug,
+      database
+    );
 
     expect(media).not.toBeNull();
     expect(media?.previewEntries[0]?.label).toBe("行く");
@@ -134,7 +137,8 @@ describe("app shell live data", () => {
       difficulty: "beginner",
       summary: "Lesson Duel Masters.",
       status: "active",
-      sourceFile: "content/media/duel-masters-dm25/textbook/001-tcg-core-overview.md",
+      sourceFile:
+        "content/media/duel-masters-dm25/textbook/001-tcg-core-overview.md",
       createdAt: "2026-03-08T09:00:00.000Z",
       updatedAt: "2026-03-08T09:30:00.000Z"
     });
@@ -184,7 +188,10 @@ describe("app shell live data", () => {
     });
 
     const dashboard = await getDashboardData(database);
-    const duelMastersMedia = await getMediaDetailData("duel-masters-dm25", database);
+    const duelMastersMedia = await getMediaDetailData(
+      "duel-masters-dm25",
+      database
+    );
 
     expect(dashboard.focusMedia?.slug).toBe("duel-masters-dm25");
     expect(dashboard.reviewMedia?.slug).toBe("duel-masters-dm25");
@@ -220,9 +227,14 @@ describe("app shell live data", () => {
       }
     ]);
 
-    const sharedSubjectState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.cardId, crossMediaFixture.alpha.termCardId)
+    await database.update(reviewSubjectState).set({
+      dueAt: "2999-01-01T00:00:00.000Z"
     });
+
+    const sharedSubjectState =
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.cardId, crossMediaFixture.alpha.termCardId)
+      });
 
     expect(sharedSubjectState).not.toBeNull();
 
@@ -260,9 +272,21 @@ describe("app shell live data", () => {
       globalReviewOverview.newQueuedCount
     );
     expect(dashboard.review.queueLabel).toBe(globalReviewOverview.queueLabel);
-    expect(
-      dashboard.media.reduce((sum, item) => sum + item.cardsDue, 0)
-    ).toBeGreaterThan(dashboard.review.cardsDue);
+
+    const alphaMedia = dashboard.media.find(
+      (item) => item.slug === crossMediaFixture.alpha.mediaSlug
+    );
+    const betaMedia = dashboard.media.find(
+      (item) => item.slug === crossMediaFixture.beta.mediaSlug
+    );
+
+    expect(globalReviewOverview.dueCount).toBe(1);
+    expect(dashboard.review.cardsDue).toBe(1);
+    expect(alphaMedia?.cardsDue).toBe(1);
+    expect(betaMedia?.cardsDue).toBe(1);
+    expect(dashboard.media.reduce((sum, item) => sum + item.cardsDue, 0)).toBe(
+      2
+    );
     expect(
       dashboard.media.reduce((sum, item) => sum + item.activeReviewCards, 0)
     ).toBeGreaterThan(dashboard.review.activeReviewCards);

@@ -11,6 +11,7 @@ import {
 } from "../schema/index.ts";
 import {
   buildReviewSubjectIdentityCteSql,
+  getLocalDayBounds,
   quoteSqlString
 } from "./review-query-helpers.ts";
 
@@ -94,7 +95,10 @@ export async function listCardsByMediaId(
   });
 }
 
-export async function getCardById(database: DatabaseQueryClient, cardId: string) {
+export async function getCardById(
+  database: DatabaseQueryClient,
+  cardId: string
+) {
   return database.query.card.findFirst({
     where: eq(card.id, cardId),
     ...reviewCardDetailSelection
@@ -246,10 +250,26 @@ export type ReviewLaunchCandidate = {
   activeReviewCards: number;
   cardsTotal: number;
   dueCount: number;
+  firstDueCardId: string | null;
+  firstDueCreatedAt: string | null;
+  firstDueDueAt: string | null;
+  firstDueFront: string | null;
+  firstDueLastInteractionAt: string | null;
+  firstDueOrderIndex: number | null;
+  firstNewCardId: string | null;
+  firstNewCreatedAt: string | null;
+  firstNewFront: string | null;
+  firstNewLastInteractionAt: string | null;
+  firstNewOrderIndex: number | null;
+  manualCount: number;
   mediaId: string;
+  newAvailableCount: number;
   newCount: number;
   slug: string;
+  suspendedCount: number;
   title: string;
+  tomorrowCount: number;
+  totalCards: number;
 };
 
 export type GlobalReviewOverviewCounts = {
@@ -265,18 +285,6 @@ export type GlobalReviewOverviewCounts = {
 export type GlobalReviewOverviewData = GlobalReviewOverviewCounts & {
   firstDueFront: string | null;
   firstNewFront: string | null;
-};
-
-type ReviewOverviewDataRow = {
-  activeReviewCards: number | string | null;
-  dueCount: number | string | null;
-  firstDueFront: string | null;
-  firstNewFront: string | null;
-  manualCount: number | string | null;
-  newAvailableCount: number | string | null;
-  suspendedCount: number | string | null;
-  tomorrowCount: number | string | null;
-  totalCards: number | string | null;
 };
 
 function buildCompletedLessonsCteSql(mediaId?: string) {
@@ -307,33 +315,183 @@ export async function getGlobalReviewNextCardFront(
   const queuedNewLimit = input.queuedNewLimit ?? 0;
   const overview = await getGlobalReviewOverviewData(database, asOf);
 
-  return overview.firstDueFront ??
-    (queuedNewLimit > 0 ? overview.firstNewFront ?? null : null);
+  return (
+    overview.firstDueFront ??
+    (queuedNewLimit > 0 ? (overview.firstNewFront ?? null) : null)
+  );
 }
 
-export async function getGlobalReviewOverviewData(
-  database: DatabaseQueryClient,
-  asOf = new Date()
-): Promise<GlobalReviewOverviewData> {
-  return loadReviewOverviewData(database, {
-    asOf,
-    completedLessonsMediaId: undefined,
-    scopePrefix: "global",
-    subjectIdentityMediaFilter: "SELECT id FROM media WHERE status = 'active'"
-  });
+function compareNullableStringAsc(left: string | null, right: string | null) {
+  if (left === right) {
+    return 0;
+  }
+
+  if (left === null) {
+    return 1;
+  }
+
+  if (right === null) {
+    return -1;
+  }
+
+  return left.localeCompare(right);
 }
 
-export async function getReviewOverviewDataByMediaId(
-  database: DatabaseQueryClient,
-  mediaId: string,
-  asOf = new Date()
-): Promise<GlobalReviewOverviewData> {
-  return loadReviewOverviewData(database, {
-    asOf,
-    completedLessonsMediaId: mediaId,
-    scopePrefix: "media",
-    subjectIdentityMediaFilter: quoteSqlString(mediaId)
-  });
+function compareNullableStringDesc(left: string | null, right: string | null) {
+  if (left === right) {
+    return 0;
+  }
+
+  if (left === null) {
+    return 1;
+  }
+
+  if (right === null) {
+    return -1;
+  }
+
+  return right.localeCompare(left);
+}
+
+function compareNullableNumberAsc(left: number | null, right: number | null) {
+  if (left === right) {
+    return 0;
+  }
+
+  if (left === null) {
+    return 1;
+  }
+
+  if (right === null) {
+    return -1;
+  }
+
+  return left - right;
+}
+
+function buildSubjectCardPartitionSql(partitionByMedia: boolean) {
+  return partitionByMedia
+    ? "PARTITION BY si.media_id, si.subject_key"
+    : "PARTITION BY si.subject_key";
+}
+
+function compareReviewLaunchCandidatesByDue(
+  left: ReviewLaunchCandidate,
+  right: ReviewLaunchCandidate
+) {
+  const dueAtDifference = compareNullableStringAsc(
+    left.firstDueDueAt,
+    right.firstDueDueAt
+  );
+
+  if (dueAtDifference !== 0) {
+    return dueAtDifference;
+  }
+
+  const interactionDifference = compareNullableStringDesc(
+    left.firstDueLastInteractionAt,
+    right.firstDueLastInteractionAt
+  );
+
+  if (interactionDifference !== 0) {
+    return interactionDifference;
+  }
+
+  const orderIndexDifference = compareNullableNumberAsc(
+    left.firstDueOrderIndex,
+    right.firstDueOrderIndex
+  );
+
+  if (orderIndexDifference !== 0) {
+    return orderIndexDifference;
+  }
+
+  const createdAtDifference = compareNullableStringAsc(
+    left.firstDueCreatedAt,
+    right.firstDueCreatedAt
+  );
+
+  if (createdAtDifference !== 0) {
+    return createdAtDifference;
+  }
+
+  return compareNullableStringAsc(left.firstDueCardId, right.firstDueCardId);
+}
+
+function compareReviewLaunchCandidatesByNew(
+  left: ReviewLaunchCandidate,
+  right: ReviewLaunchCandidate
+) {
+  const interactionDifference = compareNullableStringDesc(
+    left.firstNewLastInteractionAt,
+    right.firstNewLastInteractionAt
+  );
+
+  if (interactionDifference !== 0) {
+    return interactionDifference;
+  }
+
+  const orderIndexDifference = compareNullableNumberAsc(
+    left.firstNewOrderIndex,
+    right.firstNewOrderIndex
+  );
+
+  if (orderIndexDifference !== 0) {
+    return orderIndexDifference;
+  }
+
+  const createdAtDifference = compareNullableStringAsc(
+    left.firstNewCreatedAt,
+    right.firstNewCreatedAt
+  );
+
+  if (createdAtDifference !== 0) {
+    return createdAtDifference;
+  }
+
+  return compareNullableStringAsc(left.firstNewCardId, right.firstNewCardId);
+}
+
+export function selectReviewLaunchCandidateByDue(
+  candidates: ReviewLaunchCandidate[]
+) {
+  let best: ReviewLaunchCandidate | null = null;
+
+  for (const candidate of candidates) {
+    if (candidate.firstDueFront === null) {
+      continue;
+    }
+
+    if (
+      best === null ||
+      compareReviewLaunchCandidatesByDue(candidate, best) < 0
+    ) {
+      best = candidate;
+    }
+  }
+
+  return best;
+}
+
+export function selectReviewLaunchCandidateByNew(
+  candidates: ReviewLaunchCandidate[]
+) {
+  let best: ReviewLaunchCandidate | null = null;
+
+  for (const candidate of candidates) {
+    if (candidate.firstNewFront === null) {
+      continue;
+    }
+
+    if (
+      best === null ||
+      compareReviewLaunchCandidatesByNew(candidate, best) < 0
+    ) {
+      best = candidate;
+    }
+  }
+
+  return best;
 }
 
 async function loadReviewOverviewData(
@@ -343,29 +501,53 @@ async function loadReviewOverviewData(
     completedLessonsMediaId?: string;
     scopePrefix: string;
     subjectIdentityMediaFilter: string;
+    subjectCardPartitionByMedia?: boolean;
   }
-): Promise<GlobalReviewOverviewData> {
-  const { asOf, completedLessonsMediaId, scopePrefix, subjectIdentityMediaFilter } =
-    input;
+): Promise<Array<ReviewLaunchCandidate & GlobalReviewOverviewCounts>> {
+  const {
+    asOf,
+    completedLessonsMediaId,
+    scopePrefix,
+    subjectIdentityMediaFilter,
+    subjectCardPartitionByMedia = false
+  } = input;
   const asOfIso = asOf.toISOString();
-  const tomorrowStart = new Date(
-    asOf.getFullYear(),
-    asOf.getMonth(),
-    asOf.getDate() + 1
+  const { dayStartIso, dayEndIso } = getLocalDayBounds(
+    new Date(asOf.getTime() + 86400000)
   );
-  const tomorrowEnd = new Date(
-    asOf.getFullYear(),
-    asOf.getMonth(),
-    asOf.getDate() + 2
-  );
+
   const subjectCardCandidatesCte = `${scopePrefix}_subject_card_candidates`;
   const subjectCandidatesCte = `${scopePrefix}_subject_candidates`;
 
-  const rows = await database.all<ReviewOverviewDataRow>(`
+  const rows = await database.all<{
+    activeReviewCards: number | string | null;
+    cardsTotal: number | string | null;
+    dueCount: number | string | null;
+    firstDueCardId: string | null;
+    firstDueCreatedAt: string | null;
+    firstDueDueAt: string | null;
+    firstDueFront: string | null;
+    firstDueLastInteractionAt: string | null;
+    firstDueOrderIndex: number | string | null;
+    firstNewCardId: string | null;
+    firstNewCreatedAt: string | null;
+    firstNewFront: string | null;
+    firstNewLastInteractionAt: string | null;
+    firstNewOrderIndex: number | string | null;
+    manualCount: number | string | null;
+    mediaId: string;
+    newAvailableCount: number | string | null;
+    slug: string;
+    suspendedCount: number | string | null;
+    title: string;
+    tomorrowCount: number | string | null;
+    totalCards: number | string | null;
+  }>(`
     WITH ${buildReviewSubjectIdentityCteSql({ mediaFilter: subjectIdentityMediaFilter })},
     ${buildCompletedLessonsCteSql(completedLessonsMediaId)},
     ${subjectCardCandidatesCte} AS (
       SELECT
+        si.media_id AS mediaId,
         si.subject_key AS subjectKey,
         si.card_id AS cardId,
         si.card_status AS cardStatus,
@@ -378,7 +560,7 @@ async function loadReviewOverviewData(
         COALESCE(rss.state, 'new') AS reviewState,
         rss.due_at AS dueAt,
         ROW_NUMBER() OVER (
-          PARTITION BY si.subject_key
+          ${buildSubjectCardPartitionSql(subjectCardPartitionByMedia)}
           ORDER BY
             CASE
               WHEN rss.card_id IS NOT NULL
@@ -399,7 +581,7 @@ async function loadReviewOverviewData(
             CASE
               WHEN rss.card_id IS NOT NULL
                AND rss.card_id = si.card_id
-                THEN COALESCE(rss.last_interaction_at, c.updated_at, si.created_at)
+                 THEN COALESCE(rss.last_interaction_at, c.updated_at, si.created_at)
               ELSE COALESCE(c.updated_at, si.created_at)
             END DESC,
             COALESCE(si.order_index, 2147483647) ASC,
@@ -417,6 +599,7 @@ async function loadReviewOverviewData(
     ),
     ${subjectCandidatesCte} AS (
       SELECT
+        mediaId,
         cardId,
         createdAt,
         dueAt,
@@ -436,149 +619,176 @@ async function loadReviewOverviewData(
       FROM ${subjectCardCandidatesCte}
       WHERE rowNumber = 1
     ),
-    first_due AS (
-      SELECT front
+    due_fronts AS (
+      SELECT
+        mediaId,
+        front,
+        dueAt,
+        lastInteractionAt,
+        orderIndex,
+        createdAt,
+        cardId,
+        ROW_NUMBER() OVER (
+          PARTITION BY mediaId
+          ORDER BY
+            CASE WHEN dueAt IS NULL THEN 1 ELSE 0 END ASC,
+            dueAt ASC,
+            lastInteractionAt DESC,
+            COALESCE(orderIndex, 2147483647) ASC,
+            createdAt ASC,
+            cardId ASC
+        ) AS rowNumber
       FROM ${subjectCandidatesCte}
       WHERE effectiveState NOT IN ('new', 'known_manual', 'suspended')
         AND (dueAt IS NULL OR dueAt <= ${quoteSqlString(asOfIso)})
-      ORDER BY
-        CASE
-          WHEN dueAt IS NULL THEN 1
-          ELSE 0
-        END ASC,
-        dueAt ASC,
-        lastInteractionAt DESC,
-        COALESCE(orderIndex, 2147483647) ASC,
-        createdAt ASC,
-        cardId ASC
-      LIMIT 1
     ),
-    first_new AS (
-      SELECT front
+    new_fronts AS (
+      SELECT
+        mediaId,
+        front,
+        lastInteractionAt,
+        orderIndex,
+        createdAt,
+        cardId,
+        ROW_NUMBER() OVER (
+          PARTITION BY mediaId
+          ORDER BY
+            lastInteractionAt DESC,
+            COALESCE(orderIndex, 2147483647) ASC,
+            createdAt ASC,
+            cardId ASC
+        ) AS rowNumber
       FROM ${subjectCandidatesCte}
       WHERE effectiveState = 'new'
-      ORDER BY
-        lastInteractionAt DESC,
-        COALESCE(orderIndex, 2147483647) ASC,
-        createdAt ASC,
-        cardId ASC
-      LIMIT 1
     )
     SELECT
-      COALESCE(
-        SUM(
-          CASE
-            WHEN gsc.subjectKey IS NOT NULL THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS totalCards,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN gsc.manualOverride = 0
-             AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended')
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS activeReviewCards,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN gsc.manualOverride = 0
-             AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended')
-             AND (gsc.dueAt IS NULL OR gsc.dueAt <= ${quoteSqlString(asOfIso)})
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS dueCount,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN gsc.manualOverride = 0
-             AND gsc.effectiveState = 'new'
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS newAvailableCount,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN gsc.effectiveState = 'known_manual'
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS manualCount,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN gsc.effectiveState = 'suspended'
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS suspendedCount,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN gsc.manualOverride = 0
-             AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended')
-             AND gsc.dueAt IS NOT NULL
-             AND gsc.dueAt > ${quoteSqlString(asOfIso)}
-             AND gsc.dueAt >= ${quoteSqlString(tomorrowStart.toISOString())}
-             AND gsc.dueAt < ${quoteSqlString(tomorrowEnd.toISOString())}
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS tomorrowCount,
-      (SELECT front FROM first_due) AS firstDueFront,
-      (SELECT front FROM first_new) AS firstNewFront
-    FROM ${subjectCandidatesCte} gsc
+      m.id AS mediaId,
+      m.slug AS slug,
+      m.title AS title,
+      COALESCE(COUNT(gsc.subjectKey), 0) AS totalCards,
+      COALESCE(SUM(CASE WHEN gsc.manualOverride = 0 AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended') THEN 1 ELSE 0 END), 0) AS activeReviewCards,
+      COALESCE(SUM(CASE WHEN gsc.manualOverride = 0 AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended') AND (gsc.dueAt IS NULL OR gsc.dueAt <= ${quoteSqlString(asOfIso)}) THEN 1 ELSE 0 END), 0) AS dueCount,
+      COALESCE(SUM(CASE WHEN gsc.manualOverride = 0 AND gsc.effectiveState = 'new' THEN 1 ELSE 0 END), 0) AS newAvailableCount,
+      COALESCE(SUM(CASE WHEN gsc.effectiveState = 'known_manual' THEN 1 ELSE 0 END), 0) AS manualCount,
+      COALESCE(SUM(CASE WHEN gsc.effectiveState = 'suspended' THEN 1 ELSE 0 END), 0) AS suspendedCount,
+      COALESCE(SUM(CASE WHEN gsc.manualOverride = 0 AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended') AND gsc.dueAt IS NOT NULL AND gsc.dueAt >= ${quoteSqlString(dayStartIso)} AND gsc.dueAt < ${quoteSqlString(dayEndIso)} THEN 1 ELSE 0 END), 0) AS tomorrowCount,
+      (SELECT front FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueFront,
+      (SELECT dueAt FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueDueAt,
+      (SELECT lastInteractionAt FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueLastInteractionAt,
+      (SELECT orderIndex FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueOrderIndex,
+      (SELECT createdAt FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueCreatedAt,
+      (SELECT cardId FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueCardId,
+      (SELECT front FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewFront,
+      (SELECT lastInteractionAt FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewLastInteractionAt,
+      (SELECT orderIndex FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewOrderIndex,
+      (SELECT createdAt FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewCreatedAt,
+      (SELECT cardId FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewCardId
+    FROM media m
+    LEFT JOIN ${subjectCandidatesCte} gsc ON gsc.mediaId = m.id
+    WHERE m.status = 'active'
+      ${completedLessonsMediaId ? `AND m.id = ${quoteSqlString(completedLessonsMediaId)}` : ""}
+    GROUP BY m.id, m.slug, m.title
+    ORDER BY m.title ASC, m.slug ASC
   `);
 
-  const row = rows[0];
+  return rows.map((row) => ({
+    activeReviewCards: Number(row.activeReviewCards ?? 0),
+    cardsTotal: Number(row.totalCards ?? 0),
+    dueCount: Number(row.dueCount ?? 0),
+    firstDueCardId: row.firstDueCardId,
+    firstDueCreatedAt: row.firstDueCreatedAt,
+    firstDueDueAt: row.firstDueDueAt,
+    firstDueFront: row.firstDueFront,
+    firstDueLastInteractionAt: row.firstDueLastInteractionAt,
+    firstDueOrderIndex:
+      row.firstDueOrderIndex == null ? null : Number(row.firstDueOrderIndex),
+    firstNewCardId: row.firstNewCardId,
+    firstNewCreatedAt: row.firstNewCreatedAt,
+    firstNewFront: row.firstNewFront,
+    firstNewLastInteractionAt: row.firstNewLastInteractionAt,
+    firstNewOrderIndex:
+      row.firstNewOrderIndex == null ? null : Number(row.firstNewOrderIndex),
+    manualCount: Number(row.manualCount ?? 0),
+    mediaId: row.mediaId,
+    newAvailableCount: Number(row.newAvailableCount ?? 0),
+    newCount: Number(row.newAvailableCount ?? 0),
+    slug: row.slug,
+    suspendedCount: Number(row.suspendedCount ?? 0),
+    title: row.title,
+    tomorrowCount: Number(row.tomorrowCount ?? 0),
+    totalCards: Number(row.totalCards ?? 0)
+  }));
+}
+
+export async function getGlobalReviewOverviewData(
+  database: DatabaseQueryClient,
+  asOf = new Date()
+): Promise<GlobalReviewOverviewData> {
+  const mediaStats = await loadReviewOverviewData(database, {
+    asOf,
+    completedLessonsMediaId: undefined,
+    scopePrefix: "global",
+    subjectIdentityMediaFilter: "SELECT id FROM media WHERE status = 'active'"
+  });
+
+  const totals = mediaStats.reduce(
+    (acc, row) => {
+      acc.activeReviewCards += row.activeReviewCards;
+      acc.dueCount += row.dueCount;
+      acc.manualCount += row.manualCount;
+      acc.newAvailableCount += row.newAvailableCount;
+      acc.suspendedCount += row.suspendedCount;
+      acc.tomorrowCount += row.tomorrowCount;
+      acc.totalCards += row.totalCards;
+      return acc;
+    },
+    {
+      activeReviewCards: 0,
+      dueCount: 0,
+      manualCount: 0,
+      newAvailableCount: 0,
+      suspendedCount: 0,
+      tomorrowCount: 0,
+      totalCards: 0
+    }
+  );
+
+  const firstDueFront =
+    selectReviewLaunchCandidateByDue(mediaStats)?.firstDueFront ?? null;
+  const firstNewFront =
+    selectReviewLaunchCandidateByNew(mediaStats)?.firstNewFront ?? null;
 
   return {
-    activeReviewCards: Number(row?.activeReviewCards ?? 0),
-    dueCount: Number(row?.dueCount ?? 0),
-    firstDueFront:
-      typeof row?.firstDueFront === "string" ? row.firstDueFront : null,
-    firstNewFront:
-      typeof row?.firstNewFront === "string" ? row.firstNewFront : null,
-    manualCount: Number(row?.manualCount ?? 0),
-    newAvailableCount: Number(row?.newAvailableCount ?? 0),
-    suspendedCount: Number(row?.suspendedCount ?? 0),
-    tomorrowCount: Number(row?.tomorrowCount ?? 0),
-    totalCards: Number(row?.totalCards ?? 0)
+    ...totals,
+    firstDueFront,
+    firstNewFront
   };
 }
 
-export async function getGlobalReviewOverviewCounts(
+export async function getReviewOverviewDataByMediaId(
   database: DatabaseQueryClient,
+  mediaId: string,
   asOf = new Date()
-): Promise<GlobalReviewOverviewCounts> {
-  const overview = await getGlobalReviewOverviewData(database, asOf);
+): Promise<GlobalReviewOverviewData> {
+  const stats = await loadReviewOverviewData(database, {
+    asOf,
+    completedLessonsMediaId: mediaId,
+    scopePrefix: "media",
+    subjectIdentityMediaFilter: quoteSqlString(mediaId)
+  });
+
+  const row = stats[0];
 
   return {
-    activeReviewCards: overview.activeReviewCards,
-    dueCount: overview.dueCount,
-    manualCount: overview.manualCount,
-    newAvailableCount: overview.newAvailableCount,
-    suspendedCount: overview.suspendedCount,
-    tomorrowCount: overview.tomorrowCount,
-    totalCards: overview.totalCards
+    activeReviewCards: row?.activeReviewCards ?? 0,
+    dueCount: row?.dueCount ?? 0,
+    firstDueFront: row?.firstDueFront ?? null,
+    firstNewFront: row?.firstNewFront ?? null,
+    manualCount: row?.manualCount ?? 0,
+    newAvailableCount: row?.newAvailableCount ?? 0,
+    suspendedCount: row?.suspendedCount ?? 0,
+    tomorrowCount: row?.tomorrowCount ?? 0,
+    totalCards: row?.totalCards ?? 0
   };
 }
 
@@ -586,7 +796,15 @@ export async function listReviewLaunchCandidates(
   database: DatabaseQueryClient,
   asOfIso = new Date().toISOString()
 ): Promise<ReviewLaunchCandidate[]> {
-  return loadReviewLaunchCandidates(database, asOfIso);
+  const stats = await loadReviewOverviewData(database, {
+    asOf: new Date(asOfIso),
+    completedLessonsMediaId: undefined,
+    scopePrefix: "launch",
+    subjectIdentityMediaFilter: "SELECT id FROM media WHERE status = 'active'",
+    subjectCardPartitionByMedia: true
+  });
+
+  return stats;
 }
 
 export async function getReviewLaunchCandidateByMediaId(
@@ -594,144 +812,15 @@ export async function getReviewLaunchCandidateByMediaId(
   mediaId: string,
   asOfIso = new Date().toISOString()
 ): Promise<ReviewLaunchCandidate | null> {
-  const [candidate] = await loadReviewLaunchCandidates(
-    database,
-    asOfIso,
-    mediaId
-  );
+  const stats = await loadReviewOverviewData(database, {
+    asOf: new Date(asOfIso),
+    completedLessonsMediaId: mediaId,
+    scopePrefix: "launch",
+    subjectIdentityMediaFilter: quoteSqlString(mediaId),
+    subjectCardPartitionByMedia: true
+  });
 
-  return candidate ?? null;
-}
-
-async function loadReviewLaunchCandidates(
-  database: DatabaseQueryClient,
-  asOfIso: string,
-  mediaId?: string
-): Promise<ReviewLaunchCandidate[]> {
-  const asOfSql = quoteSqlString(asOfIso);
-  const subjectIdentityMediaFilter = mediaId
-    ? quoteSqlString(mediaId)
-    : "SELECT id FROM media WHERE status = 'active'";
-  const mediaFilterSql = mediaId
-    ? ` AND m.id = ${quoteSqlString(mediaId)}`
-    : "";
-  const orderBySql = mediaId ? "" : "ORDER BY m.title ASC, m.slug ASC";
-
-  const rows = await database.all<{
-    activeReviewCards: number | string | null;
-    cardsTotal: number | string | null;
-    dueCount: number | string | null;
-    mediaId: string;
-    newCount: number | string | null;
-    slug: string;
-    title: string;
-  }>(`
-    WITH ${buildReviewSubjectIdentityCteSql({
-      mediaFilter: subjectIdentityMediaFilter
-    })},
-    ${buildCompletedLessonsCteSql(mediaId)},
-    subject_media_candidates AS (
-      SELECT
-        si.media_id AS mediaId,
-        si.subject_key AS subjectKey,
-        MAX(
-          CASE
-            WHEN cl.id IS NOT NULL
-            THEN 1
-            ELSE 0
-          END
-        ) AS hasCompletedLesson,
-        MAX(
-          CASE
-            WHEN si.card_status != 'suspended' THEN 1
-            ELSE 0
-          END
-        ) AS hasActiveCard,
-        MAX(COALESCE(rss.manual_override, 0)) AS manualOverride,
-        MAX(COALESCE(rss.suspended, 0)) AS suspended,
-        MAX(rss.state) AS reviewState,
-        MAX(rss.due_at) AS dueAt
-      FROM subject_identity si
-      LEFT JOIN review_subject_state rss
-        ON rss.subject_key = si.subject_key
-      LEFT JOIN completed_lessons cl
-        ON cl.id = si.lesson_id
-      GROUP BY si.media_id, si.subject_key
-    )
-    SELECT
-      m.id AS mediaId,
-      m.slug AS slug,
-      m.title AS title,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN smc.hasCompletedLesson = 1
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS cardsTotal,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN smc.hasCompletedLesson = 1
-             AND smc.hasActiveCard = 1
-             AND smc.suspended = 0
-             AND smc.manualOverride = 0
-             AND smc.reviewState NOT IN ('new', 'known_manual', 'suspended')
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS activeReviewCards,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN smc.hasCompletedLesson = 1
-             AND smc.hasActiveCard = 1
-             AND smc.suspended = 0
-             AND smc.manualOverride = 0
-             AND smc.reviewState NOT IN ('new', 'known_manual', 'suspended')
-             AND (smc.dueAt IS NULL OR smc.dueAt <= ${asOfSql})
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS dueCount,
-      COALESCE(
-        SUM(
-          CASE
-            WHEN smc.hasCompletedLesson = 1
-             AND smc.hasActiveCard = 1
-             AND smc.suspended = 0
-             AND COALESCE(smc.reviewState, 'new') = 'new'
-            THEN 1
-            ELSE 0
-          END
-        ),
-        0
-      ) AS newCount
-    FROM media m
-    LEFT JOIN subject_media_candidates smc
-      ON smc.mediaId = m.id
-    WHERE m.status = 'active'
-      ${mediaFilterSql}
-    GROUP BY m.id, m.slug, m.title
-    ${orderBySql}
-  `);
-
-  return rows.map((row) => ({
-    activeReviewCards: Number(row.activeReviewCards ?? 0),
-    cardsTotal: Number(row.cardsTotal ?? 0),
-    dueCount: Number(row.dueCount ?? 0),
-    mediaId: row.mediaId,
-    newCount: Number(row.newCount ?? 0),
-    slug: row.slug,
-    title: row.title
-  }));
+  return stats[0] ?? null;
 }
 
 export async function listDueCardsByMediaId(
