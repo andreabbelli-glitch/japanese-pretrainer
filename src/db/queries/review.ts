@@ -720,17 +720,9 @@ async function loadReviewOverviewData(
   }));
 }
 
-export async function getGlobalReviewOverviewData(
-  database: DatabaseQueryClient,
-  asOf = new Date()
-): Promise<GlobalReviewOverviewData> {
-  const mediaStats = await loadReviewOverviewData(database, {
-    asOf,
-    completedLessonsMediaId: undefined,
-    scopePrefix: "global",
-    subjectIdentityMediaFilter: "SELECT id FROM media WHERE status = 'active'"
-  });
-
+export function aggregateGlobalReviewOverviewData(
+  mediaStats: ReviewLaunchCandidate[]
+): GlobalReviewOverviewData {
   const totals = mediaStats.reduce(
     (acc, row) => {
       acc.activeReviewCards += row.activeReviewCards;
@@ -763,6 +755,20 @@ export async function getGlobalReviewOverviewData(
     firstDueFront,
     firstNewFront
   };
+}
+
+export async function getGlobalReviewOverviewData(
+  database: DatabaseQueryClient,
+  asOf = new Date()
+): Promise<GlobalReviewOverviewData> {
+  const mediaStats = await loadReviewOverviewData(database, {
+    asOf,
+    completedLessonsMediaId: undefined,
+    scopePrefix: "global",
+    subjectIdentityMediaFilter: "SELECT id FROM media WHERE status = 'active'"
+  });
+
+  return aggregateGlobalReviewOverviewData(mediaStats);
 }
 
 export async function getReviewOverviewDataByMediaId(

@@ -28,7 +28,8 @@ import {
 import {
   loadGlobalReviewOverviewSnapshot,
   loadReviewIntroducedTodayCountCached,
-  loadReviewOverviewSnapshots
+  loadReviewLaunchCandidatesCached,
+  mapReviewOverviewSnapshot
 } from "./review";
 import type { ReviewOverviewSnapshot } from "./review-types";
 import { getLocalIsoDateKey } from "./local-date";
@@ -147,26 +148,25 @@ export async function getMediaProgressPageData(
         loadReviewIntroducedTodayCountCached(database);
       const reviewSnapshotsPromise = Promise.all([
         settingsPromise,
-        newIntroducedTodayCountPromise
-      ]).then(async ([settings, newIntroducedTodayCount]) => {
-        const [global, byMedia] = await Promise.all([
-          loadGlobalReviewOverviewSnapshot(database, {
-            resolvedDailyLimit: settings.reviewDailyLimit,
-            resolvedNewIntroducedTodayCount: newIntroducedTodayCount
-          }),
-          loadReviewOverviewSnapshots(
-            database,
-            [
-              {
-                id: media.id,
-                slug: media.slug
-              }
-            ],
-            {
-              resolvedDailyLimit: settings.reviewDailyLimit,
-              resolvedNewIntroducedTodayCount: newIntroducedTodayCount
-            }
-          )
+        newIntroducedTodayCountPromise,
+        loadReviewLaunchCandidatesCached(database)
+      ]).then(async ([settings, newIntroducedTodayCount, candidates]) => {
+        const global = await loadGlobalReviewOverviewSnapshot(database, {
+          resolvedDailyLimit: settings.reviewDailyLimit,
+          resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
+          resolvedReviewCandidates: candidates
+        });
+
+        const mediaCandidate = candidates.find((c) => c.mediaId === media.id);
+        const byMedia = new Map([
+          [
+            media.id,
+            mapReviewOverviewSnapshot({
+              dailyLimit: settings.reviewDailyLimit,
+              newIntroducedTodayCount,
+              overview: mediaCandidate ?? undefined
+            })
+          ]
         ]);
 
         return {

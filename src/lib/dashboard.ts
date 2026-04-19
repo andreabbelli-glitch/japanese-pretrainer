@@ -80,7 +80,8 @@ async function loadDashboardData(
     }),
     loadGlobalReviewOverviewSnapshot(database, {
       resolvedDailyLimit: dailyLimit,
-      resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+      resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
+      resolvedReviewCandidates: reviewCandidates
     })
   ]);
   const focusMedia = pickFocusMedia(media);

@@ -1,4 +1,5 @@
 import {
+  aggregateGlobalReviewOverviewData,
   countReviewSubjectsIntroducedOnDay,
   db,
   getGlobalReviewOverviewData,
@@ -10,6 +11,7 @@ import {
   listReviewCardsByMediaIds,
   listTermEntryReviewSummariesByIds,
   type DatabaseClient,
+  type GlobalReviewOverviewData,
   type MediaListItem,
   type ReviewCardListItem,
   type ReviewLaunchCandidate
@@ -522,14 +524,29 @@ export async function loadGlobalReviewOverviewSnapshot(
   options: {
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
+    resolvedReviewCandidates?: ReviewLaunchCandidate[];
   } = {}
 ) {
   const now = new Date();
+  const dailyLimitPromise =
+    options.resolvedDailyLimit != null
+      ? Promise.resolve(options.resolvedDailyLimit)
+      : getReviewDailyLimit(database);
+  const newIntroducedTodayCountPromise =
+    options.resolvedNewIntroducedTodayCount != null
+      ? Promise.resolve(options.resolvedNewIntroducedTodayCount)
+      : loadReviewIntroducedTodayCountCached(database, now);
+  const overviewPromise =
+    options.resolvedReviewCandidates != null
+      ? Promise.resolve(
+          aggregateGlobalReviewOverviewData(options.resolvedReviewCandidates)
+        )
+      : loadGlobalReviewOverviewDataCached(database, now);
+
   const [dailyLimit, newIntroducedTodayCount, overview] = await Promise.all([
-    options.resolvedDailyLimit ?? getReviewDailyLimit(database),
-    options.resolvedNewIntroducedTodayCount ??
-      loadReviewIntroducedTodayCountCached(database, now),
-    loadGlobalReviewOverviewDataCached(database, now)
+    dailyLimitPromise,
+    newIntroducedTodayCountPromise,
+    overviewPromise
   ]);
 
   return mapReviewOverviewSnapshot({
@@ -553,7 +570,7 @@ export async function loadGlobalReviewOverviewDataCached(
   });
 }
 
-function mapReviewOverviewSnapshot(input: {
+export function mapReviewOverviewSnapshot(input: {
   dailyLimit: number;
   newIntroducedTodayCount: number;
   overview:
