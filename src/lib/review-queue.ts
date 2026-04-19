@@ -385,10 +385,17 @@ export function buildReviewQueueSubjectSnapshot(input: {
     resolveModelForDisplay,
     visibleMediaId: input.visibleMediaId
   });
-  const queueModels = mapModelsForDisplay([
-    ...classifiedModels.dueModels,
+  const mappedVisibleModels = mapModelsForDisplay(visibleSubjectModels);
+  const mappedManualModels = mapModelsForDisplay(classifiedModels.manualModels);
+  const mappedSuspendedModels = mapModelsForDisplay(classifiedModels.suspendedModels);
+  const mappedUpcomingModels = mapModelsForDisplay(classifiedModels.upcomingModels);
+  const mappedDueModels = mapModelsForDisplay(classifiedModels.dueModels);
+
+  // queuedNewModels are already resolved for display inside buildQueuedNewReviewSubjectModels if visibleMediaId is provided.
+  const queueModels = [
+    ...mappedDueModels,
     ...queuedNewModels
-  ]);
+  ];
   const introLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
     dueCount: classifiedModels.dueModels.length,
@@ -404,20 +411,20 @@ export function buildReviewQueueSubjectSnapshot(input: {
     effectiveDailyLimit,
     introLabel,
     manualCount: classifiedModels.manualModels.length,
-    manualModels: mapModelsForDisplay(classifiedModels.manualModels),
+    manualModels: mappedManualModels,
     newAvailableCount: classifiedModels.visibleNewModels.length,
     newQueuedCount: queuedNewModels.length,
     queueCount: queueModels.length,
     queueModels,
-    subjectModels: mapModelsForDisplay(visibleSubjectModels),
+    subjectModels: mappedVisibleModels,
     suspendedCount: classifiedModels.suspendedModels.length,
-    suspendedModels: mapModelsForDisplay(classifiedModels.suspendedModels),
+    suspendedModels: mappedSuspendedModels,
     tomorrowCount: countUpcomingDueTomorrow(
       classifiedModels.upcomingModels,
       input.nowIso
     ),
     upcomingCount: classifiedModels.upcomingModels.length,
-    upcomingModels: mapModelsForDisplay(classifiedModels.upcomingModels),
+    upcomingModels: mappedUpcomingModels,
     visibleMediaId: input.visibleMediaId
   };
 }
