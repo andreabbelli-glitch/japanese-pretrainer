@@ -146,6 +146,16 @@ export async function getMediaProgressPageData(
       const settingsPromise = getStudySettings(database);
       const newIntroducedTodayCountPromise =
         loadReviewIntroducedTodayCountCached(database, now);
+      const globalReviewSnapshotPromise = Promise.all([
+        settingsPromise,
+        newIntroducedTodayCountPromise
+      ]).then(([settings, newIntroducedTodayCount]) =>
+        loadGlobalReviewOverviewSnapshot(database, {
+          asOf: now,
+          resolvedDailyLimit: settings.reviewDailyLimit,
+          resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+        })
+      );
       const reviewSnapshotsPromise = Promise.all([
         settingsPromise,
         newIntroducedTodayCountPromise,
@@ -153,13 +163,9 @@ export async function getMediaProgressPageData(
           database,
           media.id,
           now.toISOString()
-        )
-      ]).then(async ([settings, newIntroducedTodayCount, mediaCandidate]) => {
-        const global = await loadGlobalReviewOverviewSnapshot(database, {
-          asOf: now,
-          resolvedDailyLimit: settings.reviewDailyLimit,
-          resolvedNewIntroducedTodayCount: newIntroducedTodayCount
-        });
+        ),
+        globalReviewSnapshotPromise
+      ]).then(([settings, newIntroducedTodayCount, mediaCandidate, global]) => {
 
         const byMedia = new Map([
           [
