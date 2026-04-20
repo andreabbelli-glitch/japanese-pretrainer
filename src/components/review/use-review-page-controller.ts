@@ -338,6 +338,9 @@ export function useReviewPageController(input: {
 
   useEffect(() => {
     if (data === lastAcceptedServerDataRef.current) {
+      if (isReviewPageData(data) && globalHydrationRequestKey !== null) {
+        lastGlobalHydrationRequestKeyRef.current = globalHydrationRequestKey;
+      }
       return;
     }
     lastAcceptedServerDataRef.current = data;
@@ -379,6 +382,9 @@ export function useReviewPageController(input: {
     }
 
     const merged = mergeReviewPageData(currentViewData, data);
+    if (merged.scope === "global" && globalHydrationRequestKey !== null) {
+      lastGlobalHydrationRequestKeyRef.current = globalHydrationRequestKey;
+    }
     latestViewDataRef.current = merged;
     setViewData(merged);
     setRevealedCardId(getInitiallyRevealedCardId(merged));

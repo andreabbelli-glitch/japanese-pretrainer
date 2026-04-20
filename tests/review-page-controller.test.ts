@@ -5,7 +5,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ReviewPageControllerResult } from "@/components/review/use-review-page-controller";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
-import type { ReviewFirstCandidatePageData, ReviewQueueCard } from "@/lib/review-types";
+import type {
+  ReviewFirstCandidatePageData,
+  ReviewPageData,
+  ReviewQueueCard
+} from "@/lib/review-types";
 
 const mocks = vi.hoisted(() => ({
   gradeReviewCardSessionAction: vi.fn(),
@@ -207,6 +211,47 @@ describe("useReviewPageController first-candidate grading", () => {
     expect(controller().viewData.session.answeredCount).toBe(1);
     expect(controller().viewData.selectedCardContext.position).toBe(1);
     expect(controller().viewData.selectedCardContext.remainingCount).toBe(1);
+  });
+
+  it("skips the redundant hydration fetch when global review data is already complete", async () => {
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFullReviewPageData("card-a"),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+      await Promise.resolve();
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    expect(controller().isFullReviewPageData).toBe(true);
+    expect(mocks.loadReviewPageDataSessionAction).not.toHaveBeenCalled();
   });
 
   it("passes the selected forced contrast payload and disables optimistic advance", async () => {
@@ -682,6 +727,37 @@ function buildFirstCandidateReviewPageData(): ReviewFirstCandidatePageData {
       extraNewCount: 0,
       segmentId: null
     }
+  };
+}
+
+function buildFullReviewPageData(cardId: string): ReviewPageData {
+  const data = buildFirstCandidateReviewPageData();
+  const queue = data.queue;
+  const selectedCard = buildQueueCard(cardId);
+
+  return {
+    media: data.media,
+    queue: {
+      ...queue,
+      cards: [selectedCard, ...queue.advanceCards],
+      manualCards: [],
+      suspendedCards: [],
+      upcomingCards: []
+    },
+    queueCardIds: [cardId, ...queue.advanceCards.map((card) => card.id)],
+    scope: data.scope,
+    selectedCard,
+    selectedCardContext: {
+      ...data.selectedCardContext,
+      gradePreviews: [],
+      isQueueCard: true,
+      position: 1,
+      remainingCount: 2,
+      reviewStateUpdatedAt: "2026-04-02T11:00:00.000Z",
+      showAnswer: false
+    },
+    settings: data.settings,
+    session: data.session
   };
 }
 
