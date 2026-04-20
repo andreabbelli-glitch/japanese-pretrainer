@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as dataCacheModule from "@/lib/data-cache";
 import * as dbModule from "@/db";
+import * as settingsModule from "@/lib/settings";
 import {
   closeDatabaseClient,
   card,
@@ -35,6 +36,18 @@ import {
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
 import { importContentWorkspace } from "@/lib/content/importer";
+
+function createDeferred() {
+  let resolve!: () => void;
+  const promise = new Promise<void>((res) => {
+    resolve = res;
+  });
+
+  return {
+    promise,
+    resolve
+  };
+}
 
 describe("review media query reuse", () => {
   let tempDir = "";
@@ -78,6 +91,61 @@ describe("review media query reuse", () => {
 
     mediaFindFirstSpy.mockRestore();
     mediaFindManySpy.mockRestore();
+  });
+
+  it("starts the settings lookup before the media list settles when the media is already resolved", async () => {
+    const mediaGate = createDeferred();
+    const settingsGate = createDeferred();
+    let mediaStarted = false;
+    let settingsStarted = false;
+    const resolvedMedia = await dataCacheModule.getMediaBySlugCached(
+      database,
+      developmentFixture.mediaSlug
+    );
+
+    expect(resolvedMedia).not.toBeNull();
+
+    const originalListMediaCached = dataCacheModule.listMediaCached;
+    const originalGetStudySettings = settingsModule.getStudySettings;
+    const mediaLookupSpy = vi
+      .spyOn(dataCacheModule, "listMediaCached")
+      .mockImplementation(async (...args) => {
+        mediaStarted = true;
+        const resultPromise = originalListMediaCached(...args);
+        await mediaGate.promise;
+        return resultPromise;
+      });
+    const settingsLookupSpy = vi
+      .spyOn(settingsModule, "getStudySettings")
+      .mockImplementation(async (...args) => {
+        settingsStarted = true;
+        const resultPromise = originalGetStudySettings(...args);
+        await settingsGate.promise;
+        return resultPromise;
+      });
+
+    const pageDataPromise = getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database,
+      {
+        resolvedMedia
+      }
+    );
+
+    await Promise.resolve();
+    await Promise.resolve();
+
+    try {
+      expect(mediaStarted).toBe(true);
+      expect(settingsStarted).toBe(true);
+    } finally {
+      mediaGate.resolve();
+      settingsGate.resolve();
+      await pageDataPromise;
+      mediaLookupSpy.mockRestore();
+      settingsLookupSpy.mockRestore();
+    }
   });
 
   it("builds the media queue snapshot from the loaded media rows without a slug lookup", async () => {

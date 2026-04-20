@@ -334,6 +334,11 @@ export async function getReviewPageData(
     : measureWith(options.profiler, "listMediaCached", () =>
         listMediaCached(database)
       );
+  const eagerSettingsPromise = options.resolvedMedia
+    ? measureWith(options.profiler, "getStudySettings", () =>
+        getStudySettings(database)
+      )
+    : null;
   const mediaRows = await mediaRowsPromise;
   const media =
     options.resolvedMedia ??
@@ -344,11 +349,11 @@ export async function getReviewPageData(
     return null;
   }
 
-  const settingsPromise = measureWith(
-    options.profiler,
-    "getStudySettings",
-    () => getStudySettings(database)
-  );
+  const settingsPromise =
+    eagerSettingsPromise ??
+    measureWith(options.profiler, "getStudySettings", () =>
+      getStudySettings(database)
+    );
   const [settings, workspace] = await Promise.all([
     settingsPromise,
     measureWith(options.profiler, "loadGlobalReviewWorkspace", () =>
