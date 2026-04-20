@@ -32,7 +32,7 @@ import {
   mapReviewOverviewSnapshot
 } from "./review";
 import type { ReviewOverviewSnapshot } from "./review-types";
-import { getLocalIsoDateKey } from "./local-date";
+import { getLocalIsoTimeBucketKey } from "./local-date";
 
 type ProgressReviewSnapshots = {
   byMedia: Map<string, ReviewOverviewSnapshot>;
@@ -122,6 +122,8 @@ export async function getMediaProgressPageData(
   database: DatabaseClient = db
 ): Promise<ProgressPageData | null> {
   const cacheEligible = canUseDataCache(database);
+  const now = new Date();
+  const cacheBucketKey = getLocalIsoTimeBucketKey(now);
   const resolvedMedia = cacheEligible
     ? await getMediaBySlugCached(database, mediaSlug)
     : null;
@@ -137,24 +139,22 @@ export async function getMediaProgressPageData(
     return null;
   }
 
-  const cacheDayKey = getLocalIsoDateKey(new Date());
-
   return runWithTaggedCache({
     enabled: cacheEligible,
-    keyParts: ["progress", "media-page", media.id, `day:${cacheDayKey}`],
+    keyParts: ["progress", "media-page", media.id, `bucket:${cacheBucketKey}`],
     loader: async () => {
       const settingsPromise = getStudySettings(database);
       const newIntroducedTodayCountPromise =
-        loadReviewIntroducedTodayCountCached(database);
+        loadReviewIntroducedTodayCountCached(database, now);
       const reviewSnapshotsPromise = Promise.all([
         settingsPromise,
         newIntroducedTodayCountPromise,
-        loadReviewLaunchCandidatesCached(database)
+        loadReviewLaunchCandidatesCached(database, now.toISOString())
       ]).then(async ([settings, newIntroducedTodayCount, candidates]) => {
         const global = await loadGlobalReviewOverviewSnapshot(database, {
+          asOf: now,
           resolvedDailyLimit: settings.reviewDailyLimit,
-          resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
-          resolvedReviewCandidates: candidates
+          resolvedNewIntroducedTodayCount: newIntroducedTodayCount
         });
 
         const mediaCandidate = candidates.find((c) => c.mediaId === media.id);

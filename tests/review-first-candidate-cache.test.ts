@@ -99,8 +99,13 @@ import {
   revalidateSettingsCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
+import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { loadReviewPageDataSession } from "@/lib/review-page-data";
-import { loadReviewWorkspaceV2 } from "@/lib/review-loader";
+import {
+  loadGlobalReviewOverviewDataCached,
+  loadReviewLaunchCandidatesCached,
+  loadReviewWorkspaceV2
+} from "@/lib/review-loader";
 import {
   getGlobalReviewFirstCandidateLoadResult,
   hydrateReviewCard
@@ -136,28 +141,50 @@ describe("global review first-candidate cache", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("reuses the cached snapshot across UTC midnight when the local day has not changed", async () => {
+  it("reuses the cached snapshot within a local time bucket and refreshes on the next bucket", async () => {
     await seedSingleReviewCardFixture(database);
 
     vi.useFakeTimers();
     try {
-      vi.setSystemTime(new Date("2026-03-10T23:30:00.000Z"));
+      const firstTime = new Date(2026, 2, 10, 10, 1, 0, 0);
+      const secondTime = new Date(2026, 2, 10, 10, 8, 0, 0);
+      const thirdTime = new Date(2026, 2, 10, 10, 11, 0, 0);
+      const firstBucketKey = getLocalIsoTimeBucketKey(firstTime);
+      const thirdBucketKey = getLocalIsoTimeBucketKey(thirdTime);
+
+      vi.setSystemTime(firstTime);
       const first = await getGlobalReviewFirstCandidateLoadResult({}, database);
 
-      vi.setSystemTime(new Date("2026-03-11T00:15:00.000Z"));
+      vi.setSystemTime(secondTime);
       const second = await getGlobalReviewFirstCandidateLoadResult(
         {},
         database
       );
 
+      vi.setSystemTime(thirdTime);
+      const third = await getGlobalReviewFirstCandidateLoadResult({}, database);
+
       expect(first.kind).toBe("ready");
       expect(second.kind).toBe("ready");
+      expect(third.kind).toBe("ready");
       expect(second).toEqual(first);
 
-      const sharedCacheKey = JSON.stringify([
+      const firstCacheKey = JSON.stringify([
         "review",
         "global-first-candidate",
-        "day:2026-03-11",
+        `bucket:${firstBucketKey}`,
+        "answered:0",
+        "extra-new:0",
+        "notice:",
+        "segment:",
+        "selected:",
+        "show:0",
+        "fsrs:none|none|none"
+      ]);
+      const thirdCacheKey = JSON.stringify([
+        "review",
+        "global-first-candidate",
+        `bucket:${thirdBucketKey}`,
         "answered:0",
         "extra-new:0",
         "notice:",
@@ -168,14 +195,19 @@ describe("global review first-candidate cache", () => {
       ]);
 
       expect(unstableCacheMock).toHaveBeenCalled();
-      expect(cacheStore.has(sharedCacheKey)).toBe(true);
+      expect(cacheStore.has(firstCacheKey)).toBe(true);
+      expect(cacheStore.has(thirdCacheKey)).toBe(true);
 
-      const cacheHits = unstableCacheMock.mock.calls.filter(
-        ([, keyParts]) => JSON.stringify(keyParts) === sharedCacheKey
+      const firstCacheHits = unstableCacheMock.mock.calls.filter(
+        ([, keyParts]) => JSON.stringify(keyParts) === firstCacheKey
       );
-      expect(cacheHits).toHaveLength(2);
+      const thirdCacheHits = unstableCacheMock.mock.calls.filter(
+        ([, keyParts]) => JSON.stringify(keyParts) === thirdCacheKey
+      );
+      expect(firstCacheHits).toHaveLength(2);
+      expect(thirdCacheHits).toHaveLength(1);
       expect(getFsrsOptimizerCacheKeyPartMock).not.toHaveBeenCalled();
-      expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(2);
+      expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(3);
       expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
       expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
 
@@ -190,6 +222,49 @@ describe("global review first-candidate cache", () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+
+  it("reuses the time-sensitive review loader caches within a local bucket and refreshes on the next bucket", async () => {
+    const databaseAllSpy = vi.spyOn(
+      database as DatabaseClient & {
+        all: (sql: string) => Promise<unknown[]>;
+      },
+      "all"
+    );
+    const firstTime = new Date(2026, 2, 10, 10, 1, 0, 0);
+    const secondTime = new Date(2026, 2, 10, 10, 8, 0, 0);
+    const thirdTime = new Date(2026, 2, 10, 10, 11, 0, 0);
+    const firstOverviewKey = JSON.stringify([
+      "review-global-overview",
+      `bucket:${getLocalIsoTimeBucketKey(firstTime)}`
+    ]);
+    const thirdOverviewKey = JSON.stringify([
+      "review-global-overview",
+      `bucket:${getLocalIsoTimeBucketKey(thirdTime)}`
+    ]);
+    const firstCandidateKey = JSON.stringify([
+      "review-launch-candidates",
+      `bucket:${getLocalIsoTimeBucketKey(firstTime)}`
+    ]);
+    const thirdCandidateKey = JSON.stringify([
+      "review-launch-candidates",
+      `bucket:${getLocalIsoTimeBucketKey(thirdTime)}`
+    ]);
+
+    await loadGlobalReviewOverviewDataCached(database, firstTime);
+    await loadReviewLaunchCandidatesCached(database, firstTime.toISOString());
+    await loadGlobalReviewOverviewDataCached(database, secondTime);
+    await loadReviewLaunchCandidatesCached(database, secondTime.toISOString());
+    await loadGlobalReviewOverviewDataCached(database, thirdTime);
+    await loadReviewLaunchCandidatesCached(database, thirdTime.toISOString());
+
+    expect(databaseAllSpy).toHaveBeenCalledTimes(4);
+    expect(cacheStore.has(firstOverviewKey)).toBe(true);
+    expect(cacheStore.has(thirdOverviewKey)).toBe(true);
+    expect(cacheStore.has(firstCandidateKey)).toBe(true);
+    expect(cacheStore.has(thirdCandidateKey)).toBe(true);
+
+    databaseAllSpy.mockRestore();
   });
 
   it("reuses the cached hydrated review card for repeated loads", async () => {

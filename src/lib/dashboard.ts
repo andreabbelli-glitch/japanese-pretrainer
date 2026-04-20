@@ -20,7 +20,7 @@ import {
   loadReviewIntroducedTodayCountCached,
   loadReviewLaunchCandidatesCached
 } from "@/lib/review";
-import { getLocalIsoDateKey } from "@/lib/local-date";
+import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { getReviewDailyLimit } from "@/lib/settings";
 
 export type DashboardData = {
@@ -45,12 +45,13 @@ export type DashboardData = {
 export async function getDashboardData(
   database: DatabaseClient = db
 ): Promise<DashboardData> {
-  const cacheDayKey = getLocalIsoDateKey(new Date());
+  const now = new Date();
+  const cacheBucketKey = getLocalIsoTimeBucketKey(now);
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "dashboard", `day:${cacheDayKey}`],
-    loader: () => loadDashboardData(database),
+    keyParts: ["app-shell", "dashboard", `bucket:${cacheBucketKey}`],
+    loader: () => loadDashboardData(database, now),
     tags: [
       MEDIA_LIST_TAG,
       GLOSSARY_SUMMARY_TAG,
@@ -62,9 +63,9 @@ export async function getDashboardData(
 }
 
 async function loadDashboardData(
-  database: DatabaseClient
+  database: DatabaseClient,
+  now: Date
 ): Promise<DashboardData> {
-  const now = new Date();
   const [mediaRows, dailyLimit, newIntroducedTodayCount, reviewCandidates] =
     await Promise.all([
       listMediaCached(database),
@@ -74,14 +75,15 @@ async function loadDashboardData(
     ]);
   const [media, globalReviewOverview] = await Promise.all([
     loadMediaShellSnapshots(database, mediaRows, {
+      now,
       resolvedDailyLimit: dailyLimit,
       resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
       resolvedReviewCandidates: reviewCandidates
     }),
     loadGlobalReviewOverviewSnapshot(database, {
+      asOf: now,
       resolvedDailyLimit: dailyLimit,
-      resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
-      resolvedReviewCandidates: reviewCandidates
+      resolvedNewIntroducedTodayCount: newIntroducedTodayCount
     })
   ]);
   const focusMedia = pickFocusMedia(media);

@@ -40,7 +40,7 @@ import {
   pickFocusMedia,
   type MediaShellSnapshot
 } from "@/lib/media-shell-snapshot";
-import { getLocalIsoDateKey } from "@/lib/local-date";
+import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 
 const STUDY_STATE_LABELS: Record<string, string> = {
   known: "Già nota",
@@ -60,16 +60,18 @@ function buildGlossaryReviewTags(mediaIds: string[] = []) {
 type ResolvedMedia = NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>;
 
 export async function getMediaLibraryData(database: DatabaseClient = db) {
-  const cacheDayKey = getLocalIsoDateKey(new Date());
+  const now = new Date();
+  const cacheBucketKey = getLocalIsoTimeBucketKey(now);
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "media-library", `day:${cacheDayKey}`],
+    keyParts: ["app-shell", "media-library", `bucket:${cacheBucketKey}`],
     loader: async () => {
       const rows = await listMediaCached(database);
 
       return loadMediaShellSnapshots(database, rows, {
-        includePreviewEntries: false
+        includePreviewEntries: false,
+        now
       });
     },
     tags: [
@@ -99,6 +101,7 @@ export async function getMediaDetailData(
     return null;
   }
 
+  const now = new Date();
   const keyParts = [
     "app-shell",
     "media-detail",
@@ -112,7 +115,7 @@ export async function getMediaDetailData(
   }
 
   if (options.includeReviewCounts !== false) {
-    keyParts.push(`day:${getLocalIsoDateKey(new Date())}`);
+    keyParts.push(`bucket:${getLocalIsoTimeBucketKey(now)}`);
   }
 
   return runWithTaggedCache({
@@ -121,7 +124,8 @@ export async function getMediaDetailData(
     loader: () =>
       buildMediaShellSnapshot(database, media, {
         includePreviewEntries,
-        includeReviewCounts: options.includeReviewCounts
+        includeReviewCounts: options.includeReviewCounts,
+        now
       }),
     tags:
       options.includeReviewCounts === false
@@ -144,13 +148,15 @@ export async function loadMediaShellSnapshots(
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
     resolvedReviewCandidates?: ReviewLaunchCandidate[];
+    now?: Date;
   } = {}
 ) {
   if (media.length === 0) {
     return [];
   }
 
-  const nowIso = new Date().toISOString();
+  const now = options.now ?? new Date();
+  const nowIso = now.toISOString();
   const mediaIds = media.map((item) => item.id);
   const [
     lessons,
@@ -171,7 +177,7 @@ export async function loadMediaShellSnapshots(
       loadReviewLaunchCandidatesCached(database, nowIso),
     options.resolvedDailyLimit ?? getReviewDailyLimit(database),
     options.resolvedNewIntroducedTodayCount ??
-      loadReviewIntroducedTodayCountCached(database, new Date(nowIso))
+      loadReviewIntroducedTodayCountCached(database, now)
   ]);
   const lessonsByMedia = groupLessonsByMedia(lessons);
 
@@ -362,12 +368,13 @@ async function buildMediaShellSnapshot(
   options: {
     includePreviewEntries?: boolean;
     includeReviewCounts?: boolean;
+    now?: Date;
   } = {}
 ): Promise<MediaShellSnapshot> {
   const reviewCountsPromise =
     options.includeReviewCounts === false
       ? Promise.resolve(undefined)
-      : loadMediaReviewCounts(database, media.id);
+      : loadMediaReviewCounts(database, media.id, options.now);
   const previewEntriesByMediaPromise =
     options.includePreviewEntries === false
       ? Promise.resolve(new Map<string, StudyEntryPreview[]>())
@@ -410,14 +417,15 @@ async function buildMediaShellSnapshot(
 
 async function loadMediaReviewCounts(
   database: DatabaseClient,
-  mediaId: string
+  mediaId: string,
+  now: Date = new Date()
 ) {
-  const nowIso = new Date().toISOString();
+  const nowIso = now.toISOString();
   const [reviewCandidate, dailyLimit, newIntroducedTodayCount] =
     await Promise.all([
       loadReviewLaunchCandidateByMediaIdCached(database, mediaId, nowIso),
       getReviewDailyLimit(database),
-      loadReviewIntroducedTodayCountCached(database, new Date(nowIso))
+      loadReviewIntroducedTodayCountCached(database, now)
     ]);
 
   return {

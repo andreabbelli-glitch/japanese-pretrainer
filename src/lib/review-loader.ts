@@ -1,5 +1,4 @@
 import {
-  aggregateGlobalReviewOverviewData,
   countReviewSubjectsIntroducedOnDay,
   db,
   getGlobalReviewOverviewData,
@@ -11,7 +10,6 @@ import {
   listReviewCardsByMediaIds,
   listTermEntryReviewSummariesByIds,
   type DatabaseClient,
-  type GlobalReviewOverviewData,
   type MediaListItem,
   type ReviewCardListItem,
   type ReviewLaunchCandidate
@@ -25,7 +23,10 @@ import {
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
 import { pickBestBy } from "@/lib/collections";
-import { getLocalIsoDateKey } from "@/lib/local-date";
+import {
+  getLocalIsoDateKey,
+  getLocalIsoTimeBucketKey
+} from "@/lib/local-date";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 import { getReviewDailyLimit, getStudySettings } from "@/lib/settings";
 import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
@@ -361,11 +362,11 @@ export async function loadReviewLaunchCandidatesCached(
   database: DatabaseClient = db,
   nowIso = new Date().toISOString()
 ): Promise<ReviewLaunchCandidate[]> {
-  const cacheDayKey = getLocalIsoDateKey(nowIso);
+  const cacheBucketKey = getLocalIsoTimeBucketKey(nowIso);
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["review-launch-candidates", `day:${cacheDayKey}`],
+    keyParts: ["review-launch-candidates", `bucket:${cacheBucketKey}`],
     loader: () => listReviewLaunchCandidates(database, nowIso),
     tags: [...buildReviewSummaryTags(), REVIEW_FIRST_CANDIDATE_TAG]
   });
@@ -376,11 +377,11 @@ export async function loadReviewLaunchCandidateByMediaIdCached(
   mediaId: string,
   nowIso = new Date().toISOString()
 ): Promise<ReviewLaunchCandidate | null> {
-  const cacheDayKey = getLocalIsoDateKey(nowIso);
+  const cacheBucketKey = getLocalIsoTimeBucketKey(nowIso);
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["review-launch-candidate", mediaId, `day:${cacheDayKey}`],
+    keyParts: ["review-launch-candidate", mediaId, `bucket:${cacheBucketKey}`],
     loader: () => getReviewLaunchCandidateByMediaId(database, mediaId, nowIso),
     tags: [...buildReviewSummaryTags([mediaId]), REVIEW_FIRST_CANDIDATE_TAG]
   });
@@ -522,12 +523,12 @@ export async function loadReviewOverviewSnapshots(
 export async function loadGlobalReviewOverviewSnapshot(
   database: DatabaseClient = db,
   options: {
+    asOf?: Date;
     resolvedDailyLimit?: number;
     resolvedNewIntroducedTodayCount?: number;
-    resolvedReviewCandidates?: ReviewLaunchCandidate[];
   } = {}
 ) {
-  const now = new Date();
+  const now = options.asOf ?? new Date();
   const dailyLimitPromise =
     options.resolvedDailyLimit != null
       ? Promise.resolve(options.resolvedDailyLimit)
@@ -536,17 +537,11 @@ export async function loadGlobalReviewOverviewSnapshot(
     options.resolvedNewIntroducedTodayCount != null
       ? Promise.resolve(options.resolvedNewIntroducedTodayCount)
       : loadReviewIntroducedTodayCountCached(database, now);
-  const overviewPromise =
-    options.resolvedReviewCandidates != null
-      ? Promise.resolve(
-          aggregateGlobalReviewOverviewData(options.resolvedReviewCandidates)
-        )
-      : loadGlobalReviewOverviewDataCached(database, now);
 
   const [dailyLimit, newIntroducedTodayCount, overview] = await Promise.all([
     dailyLimitPromise,
     newIntroducedTodayCountPromise,
-    overviewPromise
+    loadGlobalReviewOverviewDataCached(database, now)
   ]);
 
   return mapReviewOverviewSnapshot({
@@ -560,11 +555,11 @@ export async function loadGlobalReviewOverviewDataCached(
   database: DatabaseClient = db,
   asOf = new Date()
 ) {
-  const cacheDayKey = getLocalIsoDateKey(asOf);
+  const cacheBucketKey = getLocalIsoTimeBucketKey(asOf);
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["review-global-overview", `day:${cacheDayKey}`],
+    keyParts: ["review-global-overview", `bucket:${cacheBucketKey}`],
     loader: () => getGlobalReviewOverviewData(database, asOf),
     tags: buildReviewSummaryTags()
   });

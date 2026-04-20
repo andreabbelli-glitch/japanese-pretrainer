@@ -13,7 +13,7 @@ import {
   mediaStudyHref
 } from "@/lib/site";
 import { capitalizeToken, formatReviewStateLabel } from "@/lib/study-format";
-import { getLocalIsoDateKey } from "@/lib/local-date";
+import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
@@ -644,14 +644,14 @@ export async function getGlobalReviewFirstCandidateLoadResult(
 ): Promise<GlobalReviewFirstCandidateLoadResult> {
   const cacheEligible = !options.bypassCache && canUseDataCache(database);
   const searchState = normalizeReviewSearchState(searchParams);
-  const cacheDayKey = getLocalIsoDateKey(new Date());
+  const cacheBucketKey = getLocalIsoTimeBucketKey(new Date());
   const fsrsRuntimeContext = cacheEligible
     ? await getFsrsOptimizerRuntimeContext(database)
     : null;
   const cacheKeyParts = [
     "review",
     "global-first-candidate",
-    `day:${cacheDayKey}`,
+    `bucket:${cacheBucketKey}`,
     ...buildReviewSearchStateCacheKeyParts(searchState),
     `fsrs:${fsrsRuntimeContext?.cacheKeyPart ?? "uncached"}`
   ];

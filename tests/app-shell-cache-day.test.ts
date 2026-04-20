@@ -2,6 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
+import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const { cacheStore, unstableCacheMock } = vi.hoisted(() => {
@@ -52,11 +53,13 @@ import {
   closeDatabaseClient,
   createDatabaseClient,
   developmentFixture,
+  reviewSubjectState,
   runMigrations,
   seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
 import * as dataCache from "@/lib/data-cache";
+import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";
 import { getMediaProgressPageData } from "@/lib/progress";
@@ -84,10 +87,15 @@ describe("app shell day-scoped cache keys", () => {
     await rm(tempDir, { recursive: true, force: true });
   });
 
-  it("rotates only the day-sensitive app shell caches when the local day changes", async () => {
+  it("rotates only the bucket-sensitive app shell caches as time advances", async () => {
     vi.useFakeTimers();
 
-    vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));
+    const firstTime = new Date("2026-03-10T21:30:00.000Z");
+    const secondTime = new Date("2026-03-10T23:15:00.000Z");
+    const firstBucketKey = getLocalIsoTimeBucketKey(firstTime);
+    const secondBucketKey = getLocalIsoTimeBucketKey(secondTime);
+
+    vi.setSystemTime(firstTime);
     await getDashboardData(database);
     await getMediaDetailData(developmentFixture.mediaSlug, database);
     await getMediaDetailData(developmentFixture.mediaSlug, database, {
@@ -95,19 +103,27 @@ describe("app shell day-scoped cache keys", () => {
     });
     await getMediaProgressPageData(developmentFixture.mediaSlug, database);
 
-    vi.setSystemTime(new Date("2026-03-10T23:15:00.000Z"));
+    vi.setSystemTime(secondTime);
     await getDashboardData(database);
     await getMediaDetailData(developmentFixture.mediaSlug, database);
     await getMediaProgressPageData(developmentFixture.mediaSlug, database);
 
     expect(
       cacheStore.has(
-        JSON.stringify(["app-shell", "dashboard", "day:2026-03-10"])
+        JSON.stringify([
+          "app-shell",
+          "dashboard",
+          `bucket:${firstBucketKey}`
+        ])
       )
     ).toBe(true);
     expect(
       cacheStore.has(
-        JSON.stringify(["app-shell", "dashboard", "day:2026-03-11"])
+        JSON.stringify([
+          "app-shell",
+          "dashboard",
+          `bucket:${secondBucketKey}`
+        ])
       )
     ).toBe(true);
     expect(
@@ -117,7 +133,7 @@ describe("app shell day-scoped cache keys", () => {
           "media-detail",
           developmentFixture.mediaSlug,
           "full",
-          "day:2026-03-10"
+          `bucket:${firstBucketKey}`
         ])
       )
     ).toBe(true);
@@ -128,7 +144,7 @@ describe("app shell day-scoped cache keys", () => {
           "media-detail",
           developmentFixture.mediaSlug,
           "full",
-          "day:2026-03-11"
+          `bucket:${secondBucketKey}`
         ])
       )
     ).toBe(true);
@@ -138,7 +154,7 @@ describe("app shell day-scoped cache keys", () => {
           "progress",
           "media-page",
           developmentFixture.mediaId,
-          "day:2026-03-10"
+          `bucket:${firstBucketKey}`
         ])
       )
     ).toBe(true);
@@ -148,7 +164,7 @@ describe("app shell day-scoped cache keys", () => {
           "progress",
           "media-page",
           developmentFixture.mediaId,
-          "day:2026-03-11"
+          `bucket:${secondBucketKey}`
         ])
       )
     ).toBe(true);
@@ -216,6 +232,67 @@ describe("app shell day-scoped cache keys", () => {
         `${dataCache.REVIEW_SUMMARY_TAG}:${developmentFixture.mediaId}`
       ])
     );
+  });
+
+  it("refreshes the progress review box on the next local bucket after the queue changes", async () => {
+    vi.useFakeTimers();
+
+    const firstTime = new Date("2026-03-10T21:01:00.000Z");
+    const secondTime = new Date("2026-03-10T21:11:00.000Z");
+    const firstBucketKey = getLocalIsoTimeBucketKey(firstTime);
+    const secondBucketKey = getLocalIsoTimeBucketKey(secondTime);
+    const subjectKey = `entry:term:${developmentFixture.termDbId}`;
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2000-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, subjectKey));
+
+    vi.setSystemTime(firstTime);
+    const first = await getMediaProgressPageData(developmentFixture.mediaSlug, database);
+
+    expect(first).not.toBeNull();
+    expect(first?.review.dueCount).toBe(1);
+    expect(first?.resume.recommendedArea).toBe("review");
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, subjectKey));
+
+    vi.setSystemTime(secondTime);
+    const second = await getMediaProgressPageData(
+      developmentFixture.mediaSlug,
+      database
+    );
+
+    expect(second).not.toBeNull();
+    expect(second?.review.dueCount).toBe(0);
+    expect(second?.resume.recommendedArea).toBe("textbook");
+    expect(
+      cacheStore.has(
+        JSON.stringify([
+          "progress",
+          "media-page",
+          developmentFixture.mediaId,
+          `bucket:${firstBucketKey}`
+        ])
+      )
+    ).toBe(true);
+    expect(
+      cacheStore.has(
+        JSON.stringify([
+          "progress",
+          "media-page",
+          developmentFixture.mediaId,
+          `bucket:${secondBucketKey}`
+        ])
+      )
+    ).toBe(true);
   });
 
   it("avoids loading the full media list on cache-enabled progress loads", async () => {
