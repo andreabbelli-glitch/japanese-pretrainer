@@ -28,7 +28,7 @@ import {
 import {
   loadGlobalReviewOverviewSnapshot,
   loadReviewIntroducedTodayCountCached,
-  loadReviewLaunchCandidatesCached,
+  loadReviewLaunchCandidateByMediaIdCached,
   mapReviewOverviewSnapshot
 } from "./review";
 import type { ReviewOverviewSnapshot } from "./review-types";
@@ -149,15 +149,18 @@ export async function getMediaProgressPageData(
       const reviewSnapshotsPromise = Promise.all([
         settingsPromise,
         newIntroducedTodayCountPromise,
-        loadReviewLaunchCandidatesCached(database, now.toISOString())
-      ]).then(async ([settings, newIntroducedTodayCount, candidates]) => {
+        loadReviewLaunchCandidateByMediaIdCached(
+          database,
+          media.id,
+          now.toISOString()
+        )
+      ]).then(async ([settings, newIntroducedTodayCount, mediaCandidate]) => {
         const global = await loadGlobalReviewOverviewSnapshot(database, {
           asOf: now,
           resolvedDailyLimit: settings.reviewDailyLimit,
           resolvedNewIntroducedTodayCount: newIntroducedTodayCount
         });
 
-        const mediaCandidate = candidates.find((c) => c.mediaId === media.id);
         const byMedia = new Map([
           [
             media.id,

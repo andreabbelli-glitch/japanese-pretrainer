@@ -134,6 +134,26 @@ describe("progress, settings, and study controls", () => {
     mediaFindManySpy.mockRestore();
   });
 
+  it("loads the local progress review snapshot from the scoped media candidate query", async () => {
+    const globalCandidatesSpy = vi.spyOn(dbModule, "listReviewLaunchCandidates");
+    const mediaCandidateSpy = vi.spyOn(
+      dbModule,
+      "getReviewLaunchCandidateByMediaId"
+    );
+
+    const data = await getMediaProgressPageData(
+      developmentFixture.mediaSlug,
+      database
+    );
+
+    expect(data).not.toBeNull();
+    expect(globalCandidatesSpy).not.toHaveBeenCalled();
+    expect(mediaCandidateSpy).toHaveBeenCalledTimes(1);
+
+    globalCandidatesSpy.mockRestore();
+    mediaCandidateSpy.mockRestore();
+  });
+
   it("includes glossary preview entries for the media detail progress page", async () => {
     const previewEntriesSpy = vi.spyOn(dbModule, "listGlossaryPreviewEntries");
 
