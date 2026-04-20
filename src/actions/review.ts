@@ -44,6 +44,7 @@ type ReviewSessionInput = {
   candidateCardIds?: string[];
   canonicalCandidateCardIds?: string[];
   extraNewCount: number;
+  expectedUpdatedAt?: string | null;
   forcedContrast?: ReviewForcedContrastPayload;
   forcedKanjiClashContrast?: ReviewForcedContrastPayload;
   gradedCardBucket?: ReviewQueueCard["bucket"];
@@ -83,11 +84,13 @@ export async function gradeReviewCardAction(formData: FormData) {
   const rating = readRequiredString(formData, "rating");
   const answeredCount = readCount(formData, "answered");
   const extraNewCount = readCount(formData, "extraNew");
+  const expectedUpdatedAt = readOptionalString(formData, "expectedUpdatedAt");
   const mediaId = await requireMediaIdForSlug(mediaSlug);
 
   await applyReviewGrade({
     cardId,
     expectedMediaId: mediaId,
+    expectedUpdatedAt,
     rating:
       rating === "again" ||
       rating === "hard" ||
@@ -155,6 +158,7 @@ export async function gradeReviewCardSessionAction(
   const gradeResult = await applyReviewGrade({
     cardId: input.cardId,
     expectedMediaId: media?.id,
+    expectedUpdatedAt: input.expectedUpdatedAt,
     forcedContrast,
     forcedContrastMediaSlug: input.mediaSlug,
     forcedContrastScope: input.scope === "media" ? "media" : "global",
@@ -718,6 +722,13 @@ function readCount(formData: FormData, key: string) {
     typeof raw === "string" ? Number.parseInt(raw, 10) : Number.NaN;
 
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+}
+
+function readOptionalString(formData: FormData, key: string) {
+  const value = formData.get(key);
+  const normalized = typeof value === "string" ? value.trim() : "";
+
+  return normalized.length > 0 ? normalized : undefined;
 }
 
 function readRedirectMode(formData: FormData): ReviewRedirectMode {

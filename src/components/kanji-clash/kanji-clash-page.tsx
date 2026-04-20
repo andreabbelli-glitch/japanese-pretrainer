@@ -40,11 +40,9 @@ type KanjiClashPageProps = {
 export function KanjiClashPage({ data }: KanjiClashPageProps) {
   const controllerKey = [
     data.mode,
+    data.scope,
     data.selectedMedia?.slug ?? "global",
-    data.queue.requestedSize ?? "auto",
-    data.queue.totalCount,
-    data.currentRound?.pairKey ?? "empty",
-    data.snapshotAtIso
+    data.queue.requestedSize ?? "auto"
   ].join(":");
 
   return <KanjiClashPageClient key={controllerKey} data={data} />;
@@ -98,9 +96,11 @@ function KanjiClashPageClient({ data }: KanjiClashPageProps) {
             }
             isSelectionLocked={controller.isSelectionLocked}
             liveMessage={controller.liveMessage}
+            manualContrastStatusByKey={controller.manualContrastStatusByKey}
             onArchiveManualContrast={controller.handleArchiveManualContrast}
             onChooseSide={controller.handleChooseSide}
             onContinue={controller.handleContinue}
+            onRestoreManualContrast={controller.handleRestoreManualContrast}
             onTouchEnd={controller.handleTouchEnd}
             onTouchStart={controller.handleTouchStart}
             pendingSelectionSide={controller.pendingSelectionSide}
@@ -134,9 +134,11 @@ function KanjiClashRoundWorkspace({
   feedbackCopy,
   isSelectionLocked,
   liveMessage,
+  manualContrastStatusByKey,
   onArchiveManualContrast,
   onChooseSide,
   onContinue,
+  onRestoreManualContrast,
   onTouchEnd,
   onTouchStart,
   pendingSelectionSide,
@@ -154,9 +156,14 @@ function KanjiClashRoundWorkspace({
   } | null;
   isSelectionLocked: boolean;
   liveMessage: string | null;
+  manualContrastStatusByKey: Record<
+    string,
+    KanjiClashManualContrastSummary["status"]
+  >;
   onArchiveManualContrast: (contrastKey: string) => void;
   onChooseSide: (side: "left" | "right") => void;
   onContinue: () => void;
+  onRestoreManualContrast: (contrastKey: string) => void;
   onTouchEnd: TouchEventHandler<HTMLElement>;
   onTouchStart: TouchEventHandler<HTMLElement>;
   pendingSelectionSide: "left" | "right" | null;
@@ -167,6 +174,9 @@ function KanjiClashRoundWorkspace({
 }) {
   const manualContrastKey =
     round.origin.type === "manual-contrast" ? round.origin.contrastKey : null;
+  const manualContrastStatus = manualContrastKey
+    ? manualContrastStatusByKey[manualContrastKey] ?? "active"
+    : null;
 
   return (
     <article
@@ -211,12 +221,23 @@ function KanjiClashRoundWorkspace({
             <button
               className="button button--ghost button--small"
               disabled={archivePendingContrastKey === manualContrastKey}
-              onClick={() => onArchiveManualContrast(manualContrastKey)}
+              onClick={() => {
+                if (manualContrastStatus === "archived") {
+                  onRestoreManualContrast(manualContrastKey);
+                  return;
+                }
+
+                onArchiveManualContrast(manualContrastKey);
+              }}
               type="button"
             >
               {archivePendingContrastKey === manualContrastKey
-                ? "Archiviazione..."
-                : "Archivia contrasto"}
+                ? manualContrastStatus === "archived"
+                  ? "Ripristino..."
+                  : "Archiviazione..."
+                : manualContrastStatus === "archived"
+                  ? "Ripristina contrasto"
+                  : "Archivia contrasto"}
             </button>
           ) : null}
         </div>

@@ -283,6 +283,8 @@ export async function buildReviewPageDataFromWorkspace(input: {
         selection.queueIndex >= 0
           ? queueSnapshot.queueCount - selection.queueIndex - 1
           : 0,
+      reviewStateUpdatedAt:
+        selection.selectedModel?.group.subjectState?.updatedAt ?? null,
       showAnswer: input.searchState.showAnswer || selection.queueIndex < 0
     },
     session: {
@@ -624,7 +626,11 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
     },
     scope: input.scope,
     selectedCard,
-    selectedCardContext,
+    selectedCardContext: {
+      ...selectedCardContext,
+      reviewStateUpdatedAt:
+        selection.selectedModel?.group.subjectState?.updatedAt ?? null
+    },
     settings: {
       reviewFrontFurigana: input.reviewFrontFurigana
     },

@@ -93,6 +93,7 @@ export async function applyReviewGrade(input: {
   cardId: string;
   database?: DatabaseClient;
   expectedMediaId?: string;
+  expectedUpdatedAt?: string | null;
   forcedContrast?: ReviewForcedContrastPayload;
   forcedContrastMediaSlug?: string;
   forcedContrastScope?: ReviewScope;
@@ -113,6 +114,7 @@ export async function applyReviewGrade(input: {
 export async function gradeReviewCardInTransaction(input: {
   cardId: string;
   expectedMediaId?: string;
+  expectedUpdatedAt?: string | null;
   forcedContrast?: ReviewForcedContrastPayload;
   forcedContrastMediaSlug?: string;
   forcedContrastScope?: ReviewScope;
@@ -136,6 +138,16 @@ export async function gradeReviewCardInTransaction(input: {
     loadedCard,
     nowIso
   );
+  const expectedUpdatedAt = normalizeOptionalString(input.expectedUpdatedAt);
+  const currentUpdatedAt = subjectContext.subjectState?.updatedAt ?? null;
+
+  if (
+    expectedUpdatedAt !== undefined &&
+    expectedUpdatedAt !== currentUpdatedAt
+  ) {
+    throw new Error("Review card is out of date.");
+  }
+
   const resolvedSubjectState = resolveSubjectReviewStateForValidation(
     subjectContext.subjectState
   );
@@ -824,4 +836,10 @@ function dedupeLinkedEntryRefs(entryRefs: LinkedEntryRef[]) {
   }
 
   return deduped;
+}
+
+function normalizeOptionalString(value?: string | null) {
+  const normalized = value?.trim();
+
+  return normalized ? normalized : undefined;
 }

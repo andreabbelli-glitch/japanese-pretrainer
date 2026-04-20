@@ -160,6 +160,7 @@ export type ReviewPageData = {
     isQueueCard: boolean;
     position: number | null;
     remainingCount: number;
+    reviewStateUpdatedAt?: string | null;
     showAnswer: boolean;
   };
   session: {

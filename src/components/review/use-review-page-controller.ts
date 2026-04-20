@@ -132,6 +132,7 @@ export function useReviewPageController(input: {
   >(null);
   const prefetchBufferRef = useRef<Map<string, ReviewQueueCard>>(new Map());
   const prefetchInFlightRef = useRef<Set<string>>(new Set());
+  const gradeSubmissionInFlightRef = useRef(false);
   const latestViewDataRef = useRef<ReviewPageClientData>(data);
   const lastGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const inFlightGlobalHydrationRequestKeyRef = useRef<string | null>(null);
@@ -664,6 +665,10 @@ export function useReviewPageController(input: {
       return;
     }
 
+    if (gradeSubmissionInFlightRef.current) {
+      return;
+    }
+
     const sessionViewData = viewData;
     const fullViewData = isReviewPageData(sessionViewData)
       ? sessionViewData
@@ -678,6 +683,7 @@ export function useReviewPageController(input: {
 
     gradedCardIdsRef.current.add(selectedCard.id);
     setPendingAnsweredCountScroll(sessionViewData.session.answeredCount);
+    gradeSubmissionInFlightRef.current = true;
 
     if (!isQueueCard) {
       runSessionUpdate(
@@ -688,6 +694,9 @@ export function useReviewPageController(input: {
               cardId: selectedCard.id,
               cardMediaSlug: selectedCard.mediaSlug,
               extraNewCount: sessionViewData.session.extraNewCount,
+              expectedUpdatedAt:
+                sessionViewData.selectedCardContext.reviewStateUpdatedAt ??
+                undefined,
               gradedCardIds: Array.from(gradedCardIdsRef.current),
               mediaSlug:
                 sessionViewData.scope === "media"
@@ -710,7 +719,11 @@ export function useReviewPageController(input: {
               }
             : {}),
           onError: () => {
+            gradeSubmissionInFlightRef.current = false;
             setPendingAnsweredCountScroll(null);
+          },
+          onSuccess: () => {
+            gradeSubmissionInFlightRef.current = false;
           }
         }
       );
@@ -758,6 +771,9 @@ export function useReviewPageController(input: {
             candidateCardIds,
             canonicalCandidateCardIds: nextQueueCardIds,
             extraNewCount: sessionViewData.session.extraNewCount,
+            expectedUpdatedAt:
+              sessionViewData.selectedCardContext.reviewStateUpdatedAt ??
+              undefined,
             gradedCardBucket: selectedCard.bucket,
             gradedCardIds: Array.from(gradedCardIdsRef.current),
             mediaSlug:
@@ -776,15 +792,16 @@ export function useReviewPageController(input: {
               : {})
           } as Parameters<typeof gradeReviewCardSessionAction>[0]
         ),
-      {
-        ...(forcedKanjiClashContrast
-          ? {
-              errorResolver: (error: unknown) =>
-                getSafeReviewForcedContrastClientErrorMessage(error) ??
-                "Non sono riuscito ad aggiornare la review. Riprova un attimo."
+        {
+          ...(forcedKanjiClashContrast
+            ? {
+                errorResolver: (error: unknown) =>
+                  getSafeReviewForcedContrastClientErrorMessage(error) ??
+                  "Non sono riuscito ad aggiornare la review. Riprova un attimo."
             }
           : {}),
         onError: () => {
+          gradeSubmissionInFlightRef.current = false;
           setPendingAnsweredCountScroll(null);
         },
         optimisticUpdate: canOptimisticallyAdvance
@@ -818,6 +835,7 @@ export function useReviewPageController(input: {
             }
           : undefined,
         onSuccess: (nextData) => {
+          gradeSubmissionInFlightRef.current = false;
           if (nextData.queueCardIds.length === 0) {
             setQueueCardIds(nextQueueCardIds);
           }

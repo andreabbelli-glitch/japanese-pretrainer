@@ -1380,6 +1380,52 @@ describe("review system", () => {
     expect(logs.at(-1)?.schedulerVersion).toBe("fsrs_v1");
   });
 
+  it("rejects a stale second grade for the same review card", async () => {
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2000-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
+    const beforeLogs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
+    });
+    const expectedUpdatedAt = beforeState?.updatedAt ?? null;
+    const now = new Date("2026-03-09T12:30:00.000Z");
+
+    await applyReviewGrade({
+      cardId: developmentFixture.primaryCardId,
+      database,
+      expectedUpdatedAt,
+      now,
+      rating: "good"
+    });
+
+    await expect(
+      applyReviewGrade({
+        cardId: developmentFixture.primaryCardId,
+        database,
+        expectedUpdatedAt,
+        now,
+        rating: "easy"
+      })
+    ).rejects.toThrow("Review card is out of date.");
+
+    const afterState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
+    const afterLogs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
+    });
+
+    expect(afterState?.reps).toBe((beforeState?.reps ?? 0) + 1);
+    expect(afterLogs).toHaveLength((beforeLogs?.length ?? 0) + 1);
+  });
+
   it("stores cross-media grading on the canonical shared subject state", async () => {
     const contentRoot = path.join(tempDir, "cross-media-legacy-mirror");
 

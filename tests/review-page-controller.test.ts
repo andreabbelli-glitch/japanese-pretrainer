@@ -186,6 +186,7 @@ describe("useReviewPageController first-candidate grading", () => {
         candidateCardIds: ["card-b", "card-c"],
         canonicalCandidateCardIds: ["card-b", "card-c"],
         extraNewCount: 0,
+        expectedUpdatedAt: "2026-04-02T11:00:00.000Z",
         gradedCardBucket: "due",
         gradedCardIds: ["card-a"],
         mediaSlug: undefined,
@@ -276,6 +277,7 @@ describe("useReviewPageController first-candidate grading", () => {
     expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
     expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledWith(
       expect.objectContaining({
+        expectedUpdatedAt: "2026-04-02T11:00:00.000Z",
         forcedKanjiClashContrast: {
           source: "review-grading",
           targetLabel: "コスト",
@@ -288,6 +290,70 @@ describe("useReviewPageController first-candidate grading", () => {
     );
     expect(controller().viewData.selectedCard?.id).toBe("card-a");
     expect(controller().viewData.session.answeredCount).toBe(0);
+  });
+
+  it("keeps the grade button single-flight while a submission is in progress", async () => {
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Keep hydration pending while the submission lock is exercised.
+        })
+    );
+    mocks.gradeReviewCardSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Keep the first submission in flight.
+        })
+    );
+
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFirstCandidateReviewPageData(),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+      controller().handleGradeCard("good");
+      controller().handleGradeCard("easy");
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledWith(
+      expect.objectContaining({
+        expectedUpdatedAt: "2026-04-02T11:00:00.000Z",
+        rating: "good"
+      })
+    );
   });
 
   it("surfaces allowlisted forced contrast validation errors without advancing the card", async () => {
@@ -605,6 +671,7 @@ function buildFirstCandidateReviewPageData(): ReviewFirstCandidatePageData {
       isQueueCard: true,
       position: 1,
       remainingCount: 2,
+      reviewStateUpdatedAt: "2026-04-02T11:00:00.000Z",
       showAnswer: false
     },
     settings: {

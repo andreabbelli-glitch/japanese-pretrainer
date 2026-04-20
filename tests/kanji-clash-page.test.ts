@@ -1,6 +1,6 @@
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { KanjiClashPage } from "@/components/kanji-clash/kanji-clash-page";
 
@@ -9,6 +9,12 @@ import {
   buildKanjiClashRound,
   buildKanjiClashSubject
 } from "./helpers/kanji-clash-test-data";
+
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({
+    refresh() {}
+  })
+}));
 
 describe("kanji clash page", () => {
   it("renders the workspace shell with mode toggles, media filters, and round layout", () => {
@@ -258,5 +264,38 @@ describe("kanji clash page", () => {
     expect(markup).toContain("Contrasti manuali attivi");
     expect(markup).toContain("Contrasti archiviati");
     expect(markup).toContain("Ripristina");
+  });
+
+  it("shows a restore control for the current archived manual contrast round", () => {
+    const contrastKey = "entry:term:left::entry:term:right";
+    const markup = renderToStaticMarkup(
+      createElement(KanjiClashPage, {
+        data: buildKanjiClashPageData({
+          currentRound: buildKanjiClashRound({
+            origin: {
+              contrastKey,
+              direction: "subject_a",
+              type: "manual-contrast"
+            },
+            pairKey: contrastKey,
+            roundKey: `${contrastKey}::subject_a`
+          }),
+          manualContrasts: [
+            {
+              contrastKey,
+              leftLabel: "待つ",
+              leftSubjectKey: "entry:term:left",
+              rightLabel: "持つ",
+              rightSubjectKey: "entry:term:right",
+              source: "forced",
+              status: "archived"
+            }
+          ]
+        })
+      })
+    );
+
+    expect(markup).toContain("Ripristina contrasto");
+    expect(markup).not.toContain("Archivia contrasto");
   });
 });

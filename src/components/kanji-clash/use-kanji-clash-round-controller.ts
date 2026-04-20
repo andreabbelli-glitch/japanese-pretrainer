@@ -9,6 +9,7 @@ import {
   useTransition,
   type TouchEventHandler
 } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   archiveKanjiClashManualContrastAction,
@@ -30,6 +31,7 @@ import {
   reduceKanjiClashRoundControllerState,
   type KanjiClashRoundFeedback
 } from "./kanji-clash-round-controller-state";
+import { createKanjiClashRoundResponseTimer } from "./kanji-clash-response-timing";
 import { resolveKanjiClashSubmitLiveMessage } from "./kanji-clash-round-live-message";
 import { useKanjiClashRoundInputs } from "./kanji-clash-round-inputs";
 
@@ -50,6 +52,10 @@ export type KanjiClashRoundControllerResult = {
   handleTouchStart: TouchEventHandler<HTMLElement>;
   isSelectionLocked: boolean;
   liveMessage: string | null;
+  manualContrastStatusByKey: Record<
+    string,
+    KanjiClashManualContrastSummary["status"]
+  >;
   pendingSelectionSide: KanjiClashRoundSide | null;
   queue: KanjiClashQueueSnapshot;
 };
@@ -57,21 +63,39 @@ export type KanjiClashRoundControllerResult = {
 export function useKanjiClashRoundController(
   data: KanjiClashPageData
 ): KanjiClashRoundControllerResult {
+  const router = useRouter();
   const [controllerState, dispatch] = useReducer(
     reduceKanjiClashRoundControllerState,
     createInitialKanjiClashRoundControllerState(data.queue, data.queueToken)
   );
   const [clientError, setClientError] = useState<string | null>(null);
   const [liveMessage, setLiveMessage] = useState<string | null>(null);
+  const [manualContrasts, setManualContrasts] = useState(data.manualContrasts);
   const [archivePendingContrastKey, setArchivePendingContrastKey] = useState<
     string | null
   >(null);
   const [isArchivePending, startArchiveTransition] = useTransition();
   const controllerStateRef = useRef(controllerState);
+  const responseTimerRef = useRef(createKanjiClashRoundResponseTimer());
 
   useEffect(() => {
     controllerStateRef.current = controllerState;
   }, [controllerState]);
+
+  useEffect(() => {
+    setManualContrasts(data.manualContrasts);
+  }, [data.manualContrasts]);
+
+  const currentRound = getKanjiClashCurrentRound(controllerState.visibleQueue);
+  const currentRoundKey = currentRound?.roundKey ?? null;
+
+  useEffect(() => {
+    if (controllerState.phase.kind !== "idle" || !currentRoundKey) {
+      return;
+    }
+
+    responseTimerRef.current.markRoundPresented(currentRoundKey, performance.now());
+  }, [controllerState.phase.kind, currentRoundKey]);
 
   const submitSide = useCallback(async (side: KanjiClashRoundSide) => {
     const currentState = controllerStateRef.current;
@@ -93,14 +117,15 @@ export function useKanjiClashRoundController(
     setClientError(null);
     setLiveMessage(null);
 
-    const startedAt = performance.now();
+    const submittedAt = performance.now();
+    const responseMs = responseTimerRef.current.getResponseMs(submittedAt);
 
     try {
       const result = await submitKanjiClashAnswerAction(
         buildKanjiClashAnswerSubmissionPayload({
           currentRound,
           queueToken: currentState.committedQueueToken,
-          responseMs: performance.now() - startedAt,
+          responseMs,
           selectedSide: side
         })
       );
@@ -162,9 +187,17 @@ export function useKanjiClashRoundController(
             });
           }
 
-          if (typeof window !== "undefined") {
-            window.location.reload();
-          }
+          setManualContrasts((currentContrasts) =>
+            currentContrasts.map((contrast) =>
+              contrast.contrastKey === contrastKey
+                ? {
+                    ...contrast,
+                    status: action === "archive" ? "archived" : "active"
+                  }
+                : contrast
+            )
+          );
+          router.refresh();
         } catch (error) {
           setClientError(
             error instanceof Error
@@ -176,8 +209,18 @@ export function useKanjiClashRoundController(
         }
       });
     },
-    []
+    [router]
   );
+
+  const activeManualContrasts = manualContrasts.filter(
+    (contrast) => contrast.status === "active"
+  );
+  const archivedManualContrasts = manualContrasts.filter(
+    (contrast) => contrast.status === "archived"
+  );
+  const manualContrastStatusByKey = Object.fromEntries(
+    manualContrasts.map((contrast) => [contrast.contrastKey, contrast.status])
+  ) satisfies Record<string, KanjiClashManualContrastSummary["status"]>;
 
   const { handleChooseSide, handleTouchEnd, handleTouchStart } =
     useKanjiClashRoundInputs({
@@ -187,15 +230,11 @@ export function useKanjiClashRoundController(
     });
 
   return {
-    activeManualContrasts: data.manualContrasts.filter(
-      (contrast) => contrast.status === "active"
-    ),
-    archivedManualContrasts: data.manualContrasts.filter(
-      (contrast) => contrast.status === "archived"
-    ),
+    activeManualContrasts,
+    archivedManualContrasts,
     archivePendingContrastKey,
     clientError,
-    currentRound: getKanjiClashCurrentRound(controllerState.visibleQueue),
+    currentRound,
     feedback:
       controllerState.phase.kind === "incorrect-review"
         ? controllerState.phase.feedback
@@ -213,6 +252,7 @@ export function useKanjiClashRoundController(
     isSelectionLocked:
       controllerState.phase.kind !== "idle" || isArchivePending,
     liveMessage,
+    manualContrastStatusByKey,
     pendingSelectionSide:
       controllerState.phase.kind === "submitting"
         ? controllerState.phase.selectedSide
@@ -224,9 +264,9 @@ export function useKanjiClashRoundController(
 function buildKanjiClashAnswerSubmissionPayload(input: {
   currentRound: KanjiClashSessionRound;
   queueToken: string;
-  responseMs: number;
+  responseMs: number | null;
   selectedSide: KanjiClashRoundSide;
-}): KanjiClashAnswerSubmissionPayload & { responseMs: number } {
+}): KanjiClashAnswerSubmissionPayload & { responseMs: number | null } {
   return {
     expectedPairKey: input.currentRound.pairKey,
     expectedPairStateUpdatedAt: input.currentRound.pairState?.updatedAt ?? null,
