@@ -43,7 +43,8 @@ import { renderFurigana } from "@/lib/render-furigana";
 import {
   LessonArticle,
   areLessonRailPropsEqual,
-  formatCrossMediaHintLabel
+  formatCrossMediaHintLabel,
+  hasLessonTooltipTargets
 } from "@/components/textbook/lesson-reader-client";
 
 vi.mock("next/navigation", () => ({
@@ -961,6 +962,79 @@ describe("textbook data", () => {
     expect(markup).toContain("reader-ref");
     expect(markup).toContain("reader-ref--term");
     expect(markup).toContain("食べる");
+  });
+
+  it("skips tooltip prefetch work for lesson documents without glossary references", () => {
+    expect(
+      hasLessonTooltipTargets({
+        raw: "stub",
+        blocks: [
+          {
+            type: "paragraph",
+            children: [{ type: "text", value: "Solo testo semplice." }]
+          },
+          {
+            type: "exampleSentence",
+            sentence: {
+              raw: "そのまま読む。",
+              nodes: [{ type: "text", value: "そのまま読む。" }]
+            },
+            translationIt: {
+              raw: "Leggere cosi com'e'.",
+              nodes: [{ type: "text", value: "Leggere cosi com'e'." }]
+            }
+          }
+        ]
+      })
+    ).toBe(false);
+  });
+
+  it("detects tooltip targets even when the reference is nested inside rich lesson content", () => {
+    expect(
+      hasLessonTooltipTargets({
+        raw: "stub",
+        blocks: [
+          {
+            type: "grammarDefinition",
+            entry: {
+              id: "grammar-teiru",
+              kind: "grammar",
+              pattern: "～ている",
+              title: "Forma in -te iru",
+              reading: "ている",
+              meaningIt: "azione in corso",
+              aliases: [],
+              notesIt: {
+                raw: "Nota con `[食べる](term:term-taberu)`.",
+                nodes: [
+                  { type: "text", value: "Nota con " },
+                  {
+                    type: "inlineCode",
+                    children: [
+                      {
+                        type: "reference",
+                        raw: "[食べる](term:term-taberu)",
+                        display: "食べる",
+                        targetType: "term",
+                        targetId: "term-taberu",
+                        children: [{ type: "text", value: "食べる" }]
+                      }
+                    ]
+                  },
+                  { type: "text", value: "." }
+                ]
+              },
+              source: {
+                filePath: "content/media/demo/textbook/001.md",
+                documentKind: "lesson",
+                documentId: "lesson-demo",
+                sequence: 0
+              }
+            }
+          }
+        ]
+      })
+    ).toBe(true);
   });
 
   it("renders an empty state when the lesson AST is unavailable", () => {

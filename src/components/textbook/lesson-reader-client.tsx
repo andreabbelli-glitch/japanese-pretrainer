@@ -29,6 +29,7 @@ import {
   EntryTooltipCard,
   type ExpandedImageState,
   getTooltipEntryKey,
+  hasLessonTooltipTargets,
   LessonArticle,
   type TooltipTarget
 } from "./lesson-article";
@@ -47,7 +48,8 @@ import {
 } from "./tooltip-position";
 export {
   LessonArticle,
-  formatCrossMediaHintLabel
+  formatCrossMediaHintLabel,
+  hasLessonTooltipTargets
 } from "./lesson-article";
 export { areLessonRailPropsEqual } from "./lesson-reader-ui";
 
@@ -114,6 +116,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const persistedFuriganaModeRef = useRef(data.furiganaMode);
   const queuedFuriganaModeRef = useRef<FuriganaMode | null>(null);
   const lessonStatus = readerData.lesson.status;
+  const hasTooltipTargets = hasLessonTooltipTargets(readerData.lesson.ast);
 
   useEffect(() => {
     if (currentLessonIdRef.current === data.lesson.id) {
@@ -264,7 +267,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   // Prefetch tooltip entries during idle time so they're ready before the
   // user's first hover/tap.
   useEffect(() => {
-    if (tooltipLoadState !== "idle") {
+    if (tooltipLoadState !== "idle" || !hasTooltipTargets) {
       return;
     }
 
@@ -285,7 +288,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     return () => {
       cancel(id);
     };
-  }, [tooltipLoadState, ensureTooltipEntries]);
+  }, [hasTooltipTargets, tooltipLoadState, ensureTooltipEntries]);
 
   const recomputeTooltipPosition = useCallback(() => {
     if (!anchorRef.current) {

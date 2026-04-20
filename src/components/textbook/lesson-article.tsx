@@ -93,6 +93,10 @@ export function getTooltipEntryKey(target: TooltipTarget) {
   return `${target.kind}:${target.id}`;
 }
 
+export function hasLessonTooltipTargets(document: MarkdownDocument | null) {
+  return document ? blocksHaveTooltipTargets(document.blocks) : false;
+}
+
 type LessonArticleProps = {
   activeEntryKey: string | null;
   document: MarkdownDocument | null;
@@ -476,6 +480,60 @@ function ReferenceToken({
       {children}
     </button>
   );
+}
+
+function blocksHaveTooltipTargets(blocks: ContentBlock[]): boolean {
+  return blocks.some((block) => {
+    switch (block.type) {
+      case "paragraph":
+      case "heading":
+        return inlineNodesHaveTooltipTargets(block.children);
+      case "list":
+        return block.items.some((item) => blocksHaveTooltipTargets(item.children));
+      case "blockquote":
+        return blocksHaveTooltipTargets(block.children);
+      case "image":
+        return block.caption
+          ? inlineNodesHaveTooltipTargets(block.caption.nodes)
+          : false;
+      case "exampleSentence":
+        return (
+          inlineNodesHaveTooltipTargets(block.sentence.nodes) ||
+          inlineNodesHaveTooltipTargets(block.translationIt.nodes)
+        );
+      case "termDefinition":
+      case "grammarDefinition":
+        return block.entry.notesIt
+          ? inlineNodesHaveTooltipTargets(block.entry.notesIt.nodes)
+          : false;
+      case "cardDefinition":
+        return (
+          inlineNodesHaveTooltipTargets(block.card.front.nodes) ||
+          inlineNodesHaveTooltipTargets(block.card.back.nodes)
+        );
+      case "code":
+      case "thematicBreak":
+        return false;
+    }
+  });
+}
+
+function inlineNodesHaveTooltipTargets(nodes: InlineNode[]): boolean {
+  return nodes.some((node) => {
+    switch (node.type) {
+      case "reference":
+        return true;
+      case "emphasis":
+      case "strong":
+      case "inlineCode":
+      case "link":
+        return inlineNodesHaveTooltipTargets(node.children);
+      case "text":
+      case "furigana":
+      case "break":
+        return false;
+    }
+  });
 }
 
 type FuriganaRubyProps = {
