@@ -226,22 +226,30 @@ export async function loadGlobalGlossaryPageData(
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db
 ): Promise<GlobalGlossaryPageData> {
-  const [defaultSort, mediaRows, aggregateStats] = await Promise.all([
-    getGlossaryDefaultSort(database),
-    listMediaCached(database),
-    getGlobalGlossaryAggregateStatsCached(database)
-  ]);
+  const defaultSortPromise = getGlossaryDefaultSort(database);
+  const mediaRowsPromise = listMediaCached(database);
+  const aggregateStatsPromise = getGlobalGlossaryAggregateStatsCached(database);
+  const defaultSort = await defaultSortPromise;
   const normalizedFilters = normalizeGlossaryQuery(searchParams, defaultSort);
-  const { filteredTotal, filters, pagination, results } =
+  const resultsPromise =
     normalizedFilters.query
-      ? await loadCachedPaginatedGlobalGlossarySearchResults(
+      ? loadCachedPaginatedGlobalGlossarySearchResults(
           database,
           normalizedFilters
         )
-      : await loadCachedPaginatedGlobalGlossaryBrowseResults(
+      : loadCachedPaginatedGlobalGlossaryBrowseResults(
           database,
           normalizedFilters
         );
+  const [
+    { filteredTotal, filters, pagination, results },
+    mediaRows,
+    aggregateStats
+  ] = await Promise.all([
+    resultsPromise,
+    mediaRowsPromise,
+    aggregateStatsPromise
+  ]);
 
   return {
     filters,
