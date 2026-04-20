@@ -57,6 +57,10 @@ export type GlossaryProgressSnapshot = {
   };
 };
 
+export type LessonMetricsListItem = Omit<LessonListItem, "content"> & {
+  content?: LessonListItem["content"];
+};
+
 type GlossaryProgressMediaTarget = {
   id: string;
   slug: string;
@@ -158,7 +162,7 @@ export async function loadGlossaryProgressSnapshots(
 }
 
 export function mapLessonTarget(
-  lesson: LessonListItem | null
+  lesson: LessonMetricsListItem | null
 ): LessonResumeTarget | null {
   if (!lesson) {
     return null;
@@ -181,12 +185,12 @@ export function mapLessonTarget(
   };
 }
 
-export function buildLessonMetrics(lessons: LessonListItem[]) {
+export function buildLessonMetrics(lessons: LessonMetricsListItem[]) {
   let lessonsCompleted = 0;
   let inProgressLessons = 0;
-  let activeLessonRaw: LessonListItem | null = null;
-  let nextLessonRaw: LessonListItem | null = null;
-  let lastOpenedLessonRaw: LessonListItem | null = null;
+  let activeLessonRaw: LessonMetricsListItem | null = null;
+  let nextLessonRaw: LessonMetricsListItem | null = null;
+  let lastOpenedLessonRaw: LessonMetricsListItem | null = null;
 
   const groups = new Map<string, SegmentStudyPreview>();
   const segmentCurrentLessonOpenedAt = new Map<string, string | null>();

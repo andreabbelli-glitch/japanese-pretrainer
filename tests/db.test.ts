@@ -203,7 +203,7 @@ describe("database layer", () => {
     lessonQuerySpy.mockRestore();
   });
 
-  it("returns shell lesson rows without joining lesson content", async () => {
+  it("returns shell lesson rows without joining or synthesizing lesson content", async () => {
     const executeSpy = vi.spyOn(database.$client, "execute");
     const lessonQuerySpy = vi.spyOn(database.query.lesson, "findMany");
 
@@ -212,7 +212,7 @@ describe("database layer", () => {
     ]);
 
     expect(lessons).toHaveLength(1);
-    expect(lessons[0]?.content?.excerpt).toBeNull();
+    expect(lessons[0]).not.toHaveProperty("content");
     expect(lessons[0]?.progress?.status).toBe("completed");
     expect(lessonQuerySpy).toHaveBeenCalledTimes(1);
     const lessonQueryInput = lessonQuerySpy.mock.calls[0]?.[0] as {

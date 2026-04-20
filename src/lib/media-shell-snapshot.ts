@@ -1,4 +1,4 @@
-import type { MediaListItem, listLessonsByMediaId } from "@/db";
+import type { MediaListItem } from "@/db";
 import {
   calculatePercent,
   formatMediaTypeLabel,
@@ -8,6 +8,7 @@ import {
 import {
   buildLessonMetrics,
   type GlossaryProgressSnapshot,
+  type LessonMetricsListItem,
   type LessonResumeTarget,
   type SegmentStudyPreview,
   type StudyEntryPreview
@@ -152,7 +153,7 @@ function scoreMediaFocus(item: MediaShellSnapshot) {
 
 export function mapMediaShellSnapshotFromCounts(input: {
   glossary: GlossaryProgressSnapshot;
-  lessons: Awaited<ReturnType<typeof listLessonsByMediaId>>;
+  lessons: LessonMetricsListItem[];
   media: MediaShellMedia;
   reviewCounts?: {
     activeReviewCards: number;

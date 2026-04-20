@@ -91,19 +91,12 @@ export async function listLessonsByMediaIdsForShell(
     return [];
   }
 
-  const rows = await database.query.lesson.findMany({
+  return database.query.lesson.findMany({
     columns: shellLessonListColumns,
     where: and(inArray(lesson.mediaId, mediaIds), eq(lesson.status, "active")),
     with: shellLessonListRelations,
     orderBy: [asc(lesson.mediaId), asc(lesson.orderIndex), asc(lesson.slug)]
   });
-
-  return rows.map((row) => ({
-    ...row,
-    content: {
-      excerpt: null
-    }
-  }));
 }
 
 export async function getLessonBySlug(
@@ -194,6 +187,7 @@ export type LessonListItem = Awaited<
   ReturnType<typeof listLessonsByMediaId>
 >[number];
 
-export type ShellLessonListItem = LessonListItem & {
+export type ShellLessonListItem = Omit<LessonListItem, "content"> & {
+  content?: LessonListItem["content"];
   mediaId: string;
 };
