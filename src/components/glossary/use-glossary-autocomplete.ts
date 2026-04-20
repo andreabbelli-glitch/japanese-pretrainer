@@ -63,7 +63,7 @@ export function useGlossaryAutocomplete({
   useEffect(() => {
     const trimmedQuery = debouncedQuery.trim();
 
-    if (trimmedQuery.length === 0) {
+    if (!isOpen || trimmedQuery.length === 0) {
       startTransition(() => {
         setSuggestions([]);
         setSuggestionsKey("");
@@ -127,7 +127,8 @@ export function useGlossaryAutocomplete({
     filters.cards,
     filters.entryType,
     filters.media,
-    filters.study
+    filters.study,
+    isOpen
   ]);
 
   const autocompleteKey = buildAutocompleteKey({

@@ -95,6 +95,9 @@ describe("useGlossaryAutocomplete", () => {
       useEffect(() => {
         latestController = {
           ...controller,
+          closeSuggestions: () => {
+            setIsOpen(false);
+          },
           openSuggestions: () => {
             setIsOpen(true);
           },
@@ -189,9 +192,130 @@ describe("useGlossaryAutocomplete", () => {
     expect(controller().suggestions).toEqual(initialSuggestions);
     expect(controller().shouldShowSuggestions).toBe(true);
   });
+
+  it("does not fetch while suggestions stay closed", async () => {
+    const firstResponse = new Response(JSON.stringify(initialSuggestions), {
+      status: 200
+    });
+    const secondResponse = new Response(JSON.stringify(updatedSuggestions), {
+      status: 200
+    });
+    const fetchMock = vi.mocked(fetch);
+    fetchMock.mockResolvedValueOnce(firstResponse);
+    fetchMock.mockResolvedValueOnce(secondResponse);
+
+    let latestController: GlossaryAutocompleteProbeResult | null = null;
+
+    function Probe() {
+      const [query, setQuery] = useState("");
+      const [isOpen, setIsOpen] = useState(false);
+      const controller = useGlossaryAutocompleteProbe({
+        isOpen,
+        query
+      });
+
+      useEffect(() => {
+        latestController = {
+          ...controller,
+          closeSuggestions: () => {
+            setIsOpen(false);
+          },
+          openSuggestions: () => {
+            setIsOpen(true);
+          },
+          query,
+          setQuery: (value: string) => {
+            setQuery(value);
+          }
+        };
+      }, [controller, query]);
+
+      return createElement("div");
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe));
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    await act(async () => {
+      controller().setQuery("kosu");
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(140);
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(controller().suggestions).toEqual([]);
+    expect(controller().shouldShowSuggestions).toBe(false);
+
+    await act(async () => {
+      controller().openSuggestions();
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(readFetchedAutocompleteQuery(fetchMock.mock.calls[0]?.[0])).toEqual({
+      q: "kosu"
+    });
+
+    await act(async () => {
+      controller().closeSuggestions();
+      controller().setQuery("kosuto");
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(140);
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(controller().shouldShowSuggestions).toBe(false);
+
+    await act(async () => {
+      controller().openSuggestions();
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(readFetchedAutocompleteQuery(fetchMock.mock.calls[1]?.[0])).toEqual({
+      q: "kosuto"
+    });
+  });
 });
 
 type GlossaryAutocompleteProbeResult = {
+  closeSuggestions: () => void;
   openSuggestions: () => void;
   query: string;
   setQuery: (value: string) => void;
