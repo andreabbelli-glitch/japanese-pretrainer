@@ -2973,6 +2973,7 @@ describe("review system", () => {
   it("revalidates active review paths after grading a card in global review", async () => {
     const { gradeReviewCardSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
+    const mediaFindFirstSpy = vi.spyOn(database.query.media, "findFirst");
 
     await gradeReviewCardSessionAction({
       answeredCount: 0,
@@ -2995,6 +2996,9 @@ describe("review system", () => {
         }
       }
     ]);
+    expect(mediaFindFirstSpy).not.toHaveBeenCalled();
+
+    mediaFindFirstSpy.mockRestore();
   });
 
   it("hydrates the next queue card without a full rebuild when the client sends the session plan", async () => {
@@ -3407,6 +3411,7 @@ describe("review system", () => {
   it("revalidates review and glossary paths after marking a linked entry known in global review", async () => {
     const { markLinkedEntryKnownSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
+    const mediaFindFirstSpy = vi.spyOn(database.query.media, "findFirst");
 
     await markLinkedEntryKnownSessionAction({
       answeredCount: 0,
@@ -3434,6 +3439,9 @@ describe("review system", () => {
         }
       }
     ]);
+    expect(mediaFindFirstSpy).not.toHaveBeenCalled();
+
+    mediaFindFirstSpy.mockRestore();
   });
 
   it("keeps stay_detail mutations on tag invalidation only", async () => {

@@ -101,8 +101,7 @@ export async function gradeReviewCardAction(formData: FormData) {
   });
 
   revalidateActiveReviewCaches({
-    mediaId,
-    mediaSlug
+    mediaId
   });
   redirect(
     buildReviewRedirectUrl({
@@ -164,14 +163,7 @@ export async function gradeReviewCardSessionAction(
     forcedContrastScope: input.scope === "media" ? "media" : "global",
     rating: input.rating
   });
-  revalidateActiveReviewCaches(
-    await resolveSessionReviewRevalidationInput({
-      cardMediaSlug: input.cardMediaSlug,
-      mediaSlug: input.mediaSlug,
-      resolvedMedia: media,
-      scope: input.scope
-    })
-  );
+  revalidateActiveReviewCaches({ mediaId: gradeResult.mediaId });
 
   if (
     (input.gradedCardBucket === "due" || input.gradedCardBucket === "new") &&
@@ -490,14 +482,12 @@ function buildReviewRedirectUrl(input: {
 
 function revalidateActiveReviewCaches(input: {
   mediaId?: string;
-  mediaSlug: string | undefined;
 }) {
   updateReviewSummaryCache(input.mediaId);
 }
 
 function revalidateEntryStatusCaches(input: {
   mediaId?: string;
-  mediaSlug: string | undefined;
 }) {
   revalidateActiveReviewCaches(input);
   updateGlossarySummaryCache();
@@ -601,15 +591,10 @@ async function runReviewFormMutationAction(
     suspended: input.suspended
   });
 
-  const revalidateInput = {
-    mediaId,
-    mediaSlug: input.mediaSlug
-  };
-
   if (usesEntryStatusRevalidation(input.kind)) {
-    revalidateEntryStatusCaches(revalidateInput);
+    revalidateEntryStatusCaches({ mediaId });
   } else {
-    revalidateActiveReviewCaches(revalidateInput);
+    revalidateActiveReviewCaches({ mediaId });
   }
 
   redirect(
@@ -630,23 +615,17 @@ async function runReviewSessionMutationAction(
 ): Promise<ReviewPageData> {
   const media = await resolveReviewSessionMedia(input);
 
-  await runReviewMutation({
+  const mutationResult = await runReviewMutation({
     cardId: input.cardId,
     expectedMediaId: media?.id,
     kind: input.kind,
     suspended: input.suspended
   });
-  const revalidateInput = await resolveSessionReviewRevalidationInput({
-    cardMediaSlug: input.cardMediaSlug,
-    mediaSlug: input.mediaSlug,
-    resolvedMedia: media,
-    scope: input.scope
-  });
 
   if (usesEntryStatusRevalidation(input.kind)) {
-    revalidateEntryStatusCaches(revalidateInput);
+    revalidateEntryStatusCaches({ mediaId: mutationResult.mediaId });
   } else {
-    revalidateActiveReviewCaches(revalidateInput);
+    revalidateActiveReviewCaches({ mediaId: mutationResult.mediaId });
   }
 
   return requireReviewPageDataForScope(
@@ -666,32 +645,28 @@ async function runReviewSessionMutationAction(
 async function runReviewMutation(input: ReviewMutationInput) {
   switch (input.kind) {
     case "known":
-      await setLinkedEntryStatusByCard({
+      return setLinkedEntryStatusByCard({
         cardId: input.cardId,
         expectedMediaId: input.expectedMediaId,
         status: "known_manual"
       });
-      return;
     case "learning":
-      await setLinkedEntryStatusByCard({
+      return setLinkedEntryStatusByCard({
         cardId: input.cardId,
         expectedMediaId: input.expectedMediaId,
         status: "learning"
       });
-      return;
     case "reset":
-      await resetReviewCardProgress({
+      return resetReviewCardProgress({
         cardId: input.cardId,
         expectedMediaId: input.expectedMediaId
       });
-      return;
     case "suspended":
-      await setReviewCardSuspended({
+      return setReviewCardSuspended({
         cardId: input.cardId,
         expectedMediaId: input.expectedMediaId,
         suspended: input.suspended === true
       });
-      return;
   }
 }
 
@@ -850,29 +825,6 @@ async function resolveReviewSessionMedia(
   return input.scope === "media" && input.mediaSlug
     ? requireMediaForSlug(input.mediaSlug)
     : undefined;
-}
-
-async function resolveSessionReviewRevalidationInput(
-  input: Pick<
-    ReviewSessionInput,
-    "cardMediaSlug" | "mediaSlug" | "scope"
-  > & {
-    resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {};
-  }
-) {
-  const media =
-    input.scope === "media" && input.resolvedMedia
-      ? input.resolvedMedia
-      : input.mediaSlug
-        ? await getMediaBySlugCached(db, input.mediaSlug)
-        : input.cardMediaSlug
-          ? await getMediaBySlugCached(db, input.cardMediaSlug)
-          : null;
-
-  return {
-    mediaId: media?.id,
-    mediaSlug: media?.slug
-  };
 }
 
 async function requireMediaForSlug(mediaSlug: string) {
