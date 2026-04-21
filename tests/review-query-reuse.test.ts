@@ -270,6 +270,55 @@ describe("review media query reuse", () => {
     }
   });
 
+  it("starts cross-media detail lookups before glossary entry loading settles", async () => {
+    const glossaryGate = createDeferred();
+    const crossMediaGate = createDeferred();
+    let glossaryStarted = false;
+    let crossMediaStarted = false;
+
+    const originalGetGlossaryEntriesByIds = dbModule.getGlossaryEntriesByIds;
+    const originalListCrossMediaFamiliesByEntryIds =
+      dbModule.listCrossMediaFamiliesByEntryIds;
+    const glossarySpy = vi
+      .spyOn(dbModule, "getGlossaryEntriesByIds")
+      .mockImplementation(async (...args) => {
+        glossaryStarted = true;
+        const resultPromise = originalGetGlossaryEntriesByIds(...args);
+        await glossaryGate.promise;
+        return resultPromise;
+      });
+    const crossMediaSpy = vi
+      .spyOn(dbModule, "listCrossMediaFamiliesByEntryIds")
+      .mockImplementation(async (...args) => {
+        crossMediaStarted = true;
+        const resultPromise = originalListCrossMediaFamiliesByEntryIds(...args);
+        await crossMediaGate.promise;
+        return resultPromise;
+      });
+
+    const detailPromise = getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.primaryCardId,
+      database
+    );
+
+    try {
+      await waitForTruthy(
+        () => glossaryStarted,
+        "Expected glossary entry loading to start."
+      );
+      await flushMicrotasks();
+
+      expect(crossMediaStarted).toBe(true);
+    } finally {
+      glossaryGate.resolve();
+      crossMediaGate.resolve();
+      await detailPromise;
+      glossarySpy.mockRestore();
+      crossMediaSpy.mockRestore();
+    }
+  });
+
   it("starts selected-card pronunciation loading before the FSRS snapshot settles", async () => {
     const fsrsGate = createDeferred();
     const pronunciationsGate = createDeferred();
