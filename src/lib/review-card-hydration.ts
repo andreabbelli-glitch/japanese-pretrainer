@@ -293,10 +293,31 @@ export async function getReviewCardDetailData(
     entryLinks: selectedRawCard.entryLinks,
     entryLookup: buildReviewSubjectEntryLookup({ grammar, terms })
   });
-  const subjectState = await getReviewSubjectStateByKey(
+  const subjectStatePromise = getReviewSubjectStateByKey(
     database,
     subjectIdentity.subjectKey
   );
+
+  const termById = new Map(terms.map((entry) => [entry.id, entry]));
+  const grammarById = new Map(grammar.map((entry) => [entry.id, entry]));
+  const drivingLinks = getDrivingEntryLinks(selectedRawCard.entryLinks);
+  const termEntryIds = drivingLinks
+    .filter((link) => link.entryType === "term" && termById.has(link.entryId))
+    .map((link) => link.entryId);
+  const grammarEntryIds = drivingLinks
+    .filter(
+      (link) => link.entryType === "grammar" && grammarById.has(link.entryId)
+    )
+    .map((link) => link.entryId);
+  const [subjectState, termFamilies, grammarFamilies] = await Promise.all([
+    subjectStatePromise,
+    termEntryIds.length > 0
+      ? listCrossMediaFamiliesByEntryIds(database, "term", termEntryIds)
+      : Promise.resolve(new Map<string, CrossMediaFamily>()),
+    grammarEntryIds.length > 0
+      ? listCrossMediaFamiliesByEntryIds(database, "grammar", grammarEntryIds)
+      : Promise.resolve(new Map<string, CrossMediaFamily>())
+  ]);
   const queueStateSnapshot = resolveReviewQueueState(
     selectedRawCard.status,
     subjectState,
@@ -315,26 +336,6 @@ export async function getReviewCardDetailData(
     undefined,
     queueStateSnapshot
   );
-
-  const termById = new Map(terms.map((entry) => [entry.id, entry]));
-  const grammarById = new Map(grammar.map((entry) => [entry.id, entry]));
-  const drivingLinks = getDrivingEntryLinks(selectedRawCard.entryLinks);
-  const termEntryIds = drivingLinks
-    .filter((link) => link.entryType === "term" && termById.has(link.entryId))
-    .map((link) => link.entryId);
-  const grammarEntryIds = drivingLinks
-    .filter(
-      (link) => link.entryType === "grammar" && grammarById.has(link.entryId)
-    )
-    .map((link) => link.entryId);
-  const [termFamilies, grammarFamilies] = await Promise.all([
-    termEntryIds.length > 0
-      ? listCrossMediaFamiliesByEntryIds(database, "term", termEntryIds)
-      : Promise.resolve(new Map<string, CrossMediaFamily>()),
-    grammarEntryIds.length > 0
-      ? listCrossMediaFamiliesByEntryIds(database, "grammar", grammarEntryIds)
-      : Promise.resolve(new Map<string, CrossMediaFamily>())
-  ]);
   const crossMedia = drivingLinks.map((link) => {
     const localEntry =
       link.entryType === "term"

@@ -49,6 +49,27 @@ function createDeferred() {
   };
 }
 
+async function flushMicrotasks() {
+  await Promise.resolve();
+  await Promise.resolve();
+}
+
+async function waitForTruthy(
+  predicate: () => boolean,
+  message: string,
+  attempts = 50
+) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    if (predicate()) {
+      return;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  }
+
+  throw new Error(message);
+}
+
 describe("review media query reuse", () => {
   let tempDir = "";
   let database: DatabaseClient;
@@ -196,6 +217,55 @@ describe("review media query reuse", () => {
     expect(userSettingFindManySpy).not.toHaveBeenCalled();
 
     userSettingFindManySpy.mockRestore();
+  });
+
+  it("starts cross-media detail lookups before the review subject state settles", async () => {
+    const subjectStateGate = createDeferred();
+    const crossMediaGate = createDeferred();
+    let subjectStateStarted = false;
+    let crossMediaStarted = false;
+
+    const originalGetReviewSubjectStateByKey = dbModule.getReviewSubjectStateByKey;
+    const originalListCrossMediaFamiliesByEntryIds =
+      dbModule.listCrossMediaFamiliesByEntryIds;
+    const subjectStateSpy = vi
+      .spyOn(dbModule, "getReviewSubjectStateByKey")
+      .mockImplementation(async (...args) => {
+        subjectStateStarted = true;
+        const resultPromise = originalGetReviewSubjectStateByKey(...args);
+        await subjectStateGate.promise;
+        return resultPromise;
+      });
+    const crossMediaSpy = vi
+      .spyOn(dbModule, "listCrossMediaFamiliesByEntryIds")
+      .mockImplementation(async (...args) => {
+        crossMediaStarted = true;
+        const resultPromise = originalListCrossMediaFamiliesByEntryIds(...args);
+        await crossMediaGate.promise;
+        return resultPromise;
+      });
+
+    const detailPromise = getReviewCardDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.primaryCardId,
+      database
+    );
+
+    try {
+      await waitForTruthy(
+        () => subjectStateStarted,
+        "Expected the review subject lookup to start."
+      );
+      await flushMicrotasks();
+
+      expect(crossMediaStarted).toBe(true);
+    } finally {
+      subjectStateGate.resolve();
+      crossMediaGate.resolve();
+      await detailPromise;
+      subjectStateSpy.mockRestore();
+      crossMediaSpy.mockRestore();
+    }
   });
 
   it("does not expose review card detail for archived media slugs", async () => {
