@@ -184,55 +184,55 @@ export async function buildReviewPageDataFromWorkspace(input: {
           selection.queueIndex + 1 + REVIEW_ADVANCE_WINDOW_SIZE
         )
       : [];
-  const fsrsOptimizerSnapshot =
+  const fsrsOptimizerSnapshotPromise =
     hasSelectedCard || advanceCardModels.length > 0
-      ? await getFsrsOptimizerRuntimeSnapshot(input.database)
-      : null;
-  const [selectedCardBase, selectedCardPronunciations, advanceCards] =
+      ? getFsrsOptimizerRuntimeSnapshot(input.database)
+      : Promise.resolve(null);
+  const selectedCardPronunciationsPromise = hasSelectedCard
+    ? measureWith(
+        input.profiler,
+        "loadReviewCardPronunciations.selected",
+        () =>
+          loadReviewCardPronunciations({
+            card: selectedRawCard,
+            database: input.database,
+            entryLookup: input.entryLookup
+          }),
+        (value) => ({
+          pronunciations: value.length
+        })
+      )
+    : Promise.resolve([]);
+  const [fsrsOptimizerSnapshot, selectedCardPronunciations] =
     await Promise.all([
-      hasSelectedCard && fsrsOptimizerSnapshot
-        ? Promise.resolve(
-            mapReviewQueueSubjectModel(selection.selectedModel!, {
-              contextCache: new Map(),
-              entryLookup: input.entryLookup,
-              fsrsOptimizerSnapshot,
-              includePronunciations: false,
-              mediaById: input.mediaById,
-              nowIso,
-              selectedCardId: selection.selectedCardId,
-              visibleMediaId: input.visibleMediaId
-            })
-          )
-        : Promise.resolve(null),
-      hasSelectedCard
-        ? measureWith(
-            input.profiler,
-            "loadReviewCardPronunciations.selected",
-            () =>
-              loadReviewCardPronunciations({
-                card: selectedRawCard,
-                database: input.database,
-                entryLookup: input.entryLookup
-              }),
-            (value) => ({
-              pronunciations: value.length
-            })
-          )
-        : Promise.resolve([]),
-      advanceCardModels.length > 0 && fsrsOptimizerSnapshot
-        ? Promise.resolve(
-          buildReviewAdvanceCardsFromQueueModels({
-              advanceCardModels,
-              entryLookup: input.entryLookup,
-              fsrsOptimizerSnapshot,
-              mediaById: input.mediaById,
-              nowIso,
-              selectedCardId: selection.selectedCardId,
-              visibleMediaId: input.visibleMediaId
-            })
-          )
-        : Promise.resolve([])
+      fsrsOptimizerSnapshotPromise,
+      selectedCardPronunciationsPromise
     ]);
+  const selectedCardBase =
+    hasSelectedCard && fsrsOptimizerSnapshot
+      ? mapReviewQueueSubjectModel(selection.selectedModel!, {
+          contextCache: new Map(),
+          entryLookup: input.entryLookup,
+          fsrsOptimizerSnapshot,
+          includePronunciations: false,
+          mediaById: input.mediaById,
+          nowIso,
+          selectedCardId: selection.selectedCardId,
+          visibleMediaId: input.visibleMediaId
+        })
+      : null;
+  const advanceCards =
+    advanceCardModels.length > 0 && fsrsOptimizerSnapshot
+      ? buildReviewAdvanceCardsFromQueueModels({
+          advanceCardModels,
+          entryLookup: input.entryLookup,
+          fsrsOptimizerSnapshot,
+          mediaById: input.mediaById,
+          nowIso,
+          selectedCardId: selection.selectedCardId,
+          visibleMediaId: input.visibleMediaId
+        })
+      : [];
   const selectedCard =
     selectedCardBase && selectedRawCard
       ? {

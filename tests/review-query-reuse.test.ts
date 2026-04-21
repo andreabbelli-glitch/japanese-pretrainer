@@ -7,6 +7,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as dataCacheModule from "@/lib/data-cache";
 import * as dbModule from "@/db";
+import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
+import * as reviewCardHydrationModule from "@/lib/review-card-hydration";
 import * as settingsModule from "@/lib/settings";
 import {
   closeDatabaseClient,
@@ -265,6 +267,56 @@ describe("review media query reuse", () => {
       await detailPromise;
       subjectStateSpy.mockRestore();
       crossMediaSpy.mockRestore();
+    }
+  });
+
+  it("starts selected-card pronunciation loading before the FSRS snapshot settles", async () => {
+    const fsrsGate = createDeferred();
+    const pronunciationsGate = createDeferred();
+    let fsrsStarted = false;
+    let pronunciationsStarted = false;
+
+    const originalGetFsrsOptimizerRuntimeSnapshot =
+      fsrsOptimizerModule.getFsrsOptimizerRuntimeSnapshot;
+    const originalLoadReviewCardPronunciations =
+      reviewCardHydrationModule.loadReviewCardPronunciations;
+    const fsrsSnapshotSpy = vi
+      .spyOn(fsrsOptimizerModule, "getFsrsOptimizerRuntimeSnapshot")
+      .mockImplementation(async (...args) => {
+        fsrsStarted = true;
+        const resultPromise = originalGetFsrsOptimizerRuntimeSnapshot(...args);
+        await fsrsGate.promise;
+        return resultPromise;
+      });
+    const pronunciationsSpy = vi
+      .spyOn(reviewCardHydrationModule, "loadReviewCardPronunciations")
+      .mockImplementation(async (...args) => {
+        pronunciationsStarted = true;
+        const resultPromise = originalLoadReviewCardPronunciations(...args);
+        await pronunciationsGate.promise;
+        return resultPromise;
+      });
+
+    const pageDataPromise = getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+
+    try {
+      await waitForTruthy(
+        () => fsrsStarted,
+        "Expected the FSRS snapshot lookup to start."
+      );
+      await flushMicrotasks();
+
+      expect(pronunciationsStarted).toBe(true);
+    } finally {
+      fsrsGate.resolve();
+      pronunciationsGate.resolve();
+      await pageDataPromise;
+      fsrsSnapshotSpy.mockRestore();
+      pronunciationsSpy.mockRestore();
     }
   });
 
