@@ -27,10 +27,12 @@ export async function getKanjiClashPageData(
   now?: Date
 ): Promise<KanjiClashPageData> {
   const snapshotAt = now ?? new Date();
-  const [settings, mediaRows, manualContrasts] = await Promise.all([
-    getStudySettings(database),
-    listMediaCached(database),
-    listKanjiClashManualContrastSummaries(database)
+  const settingsPromise = getStudySettings(database);
+  const mediaRowsPromise = listMediaCached(database);
+  const manualContrastsPromise = listKanjiClashManualContrastSummaries(database);
+  const [settings, mediaRows] = await Promise.all([
+    settingsPromise,
+    mediaRowsPromise
   ]);
   const availableMedia = mediaRows.map((row) => ({
     id: row.id,
@@ -53,7 +55,7 @@ export async function getKanjiClashPageData(
           settings.kanjiClashManualDefaultSize
         )
       : null;
-  const queue = await loadKanjiClashQueueSnapshot({
+  const queuePromise = loadKanjiClashQueueSnapshot({
     dailyNewLimit: settings.kanjiClashDailyNewLimit,
     database,
     mediaIds: selectedMedia ? [selectedMedia.id] : undefined,
@@ -62,6 +64,10 @@ export async function getKanjiClashPageData(
     requestedSize,
     scope
   });
+  const [manualContrasts, queue] = await Promise.all([
+    manualContrastsPromise,
+    queuePromise
+  ]);
 
   return {
     availableMedia,
