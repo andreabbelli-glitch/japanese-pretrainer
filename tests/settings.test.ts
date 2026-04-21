@@ -13,6 +13,8 @@ import {
 } from "@/db";
 import {
   defaultStudySettings,
+  getGlossaryDefaultSort,
+  getReviewDailyLimit,
   getStudySettings,
   resolveKanjiClashDefaultScope,
   updateStudySettings
@@ -56,6 +58,23 @@ describe("study settings", () => {
       kanjiClashDefaultScope: "media",
       kanjiClashManualDefaultSize: 40
     });
+  });
+
+  it("deduplicates concurrent study setting getters into one database read", async () => {
+    const settingsQuerySpy = vi.spyOn(database.query.userSetting, "findMany");
+
+    const [settings, reviewDailyLimit, glossaryDefaultSort] = await Promise.all([
+      getStudySettings(database),
+      getReviewDailyLimit(database),
+      getGlossaryDefaultSort(database)
+    ]);
+
+    expect(settings).toMatchObject(defaultStudySettings);
+    expect(reviewDailyLimit).toBe(defaultStudySettings.reviewDailyLimit);
+    expect(glossaryDefaultSort).toBe(defaultStudySettings.glossaryDefaultSort);
+    expect(settingsQuerySpy).toHaveBeenCalledTimes(1);
+
+    settingsQuerySpy.mockRestore();
   });
 
   it("writes only the settings that actually change", async () => {

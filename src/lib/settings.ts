@@ -57,6 +57,11 @@ type StudySettingRow = Pick<
   "key" | "valueJson"
 >;
 
+const inFlightStudySettingsSnapshots = new WeakMap<
+  DatabaseClient,
+  Promise<StudySettings>
+>();
+
 export async function getStudySettings(
   database: DatabaseClient = db
 ): Promise<StudySettings> {
@@ -142,12 +147,26 @@ function buildStudySettingsSnapshot(
 async function loadStudySettingsSnapshot(
   database: DatabaseClient
 ): Promise<StudySettings> {
-  return runWithTaggedCache({
+  const inFlight = inFlightStudySettingsSnapshots.get(database);
+
+  if (inFlight) {
+    return inFlight;
+  }
+
+  const snapshotPromise = runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["settings", "snapshot"],
     loader: () => loadStudySettingsRows(database).then(buildStudySettingsSnapshot),
     tags: [SETTINGS_TAG]
+  }).finally(() => {
+    if (inFlightStudySettingsSnapshots.get(database) === snapshotPromise) {
+      inFlightStudySettingsSnapshots.delete(database);
+    }
   });
+
+  inFlightStudySettingsSnapshots.set(database, snapshotPromise);
+
+  return snapshotPromise;
 }
 
 export async function updateStudySettings(
