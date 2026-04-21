@@ -385,7 +385,6 @@ export function buildReviewQueueSubjectSnapshot(input: {
     resolveModelForDisplay,
     visibleMediaId: input.visibleMediaId
   });
-  const mappedVisibleModels = mapModelsForDisplay(visibleSubjectModels);
   const mappedManualModels = mapModelsForDisplay(classifiedModels.manualModels);
   const mappedSuspendedModels = mapModelsForDisplay(classifiedModels.suspendedModels);
   const mappedUpcomingModels = mapModelsForDisplay(classifiedModels.upcomingModels);
@@ -416,7 +415,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
     newQueuedCount: queuedNewModels.length,
     queueCount: queueModels.length,
     queueModels,
-    subjectModels: mappedVisibleModels,
+    subjectModels: visibleSubjectModels,
     suspendedCount: classifiedModels.suspendedModels.length,
     suspendedModels: mappedSuspendedModels,
     tomorrowCount: countUpcomingDueTomorrow(

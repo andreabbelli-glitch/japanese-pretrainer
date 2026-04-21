@@ -182,7 +182,7 @@ describe("resolveReviewPageSelection", () => {
     expect(selection.queueIndex).toBe(-1);
   });
 
-  it("reuses the preferred local representative card for the same subject within one snapshot build", () => {
+  it("keeps fallback subject models raw while reusing the preferred local representative for visible buckets", () => {
     const sharedCards = [
       {
         id: "card-global",
@@ -254,8 +254,8 @@ describe("resolveReviewPageSelection", () => {
     });
 
     expect(snapshot.queueModels[0]?.card.id).toBe("card-local");
-    expect(snapshot.subjectModels[0]?.card.id).toBe("card-local");
-    expect(snapshot.queueModels[0]).toBe(snapshot.subjectModels[0]);
+    expect(snapshot.subjectModels[0]?.card.id).toBe("card-global");
+    expect(snapshot.queueModels[0]).not.toBe(snapshot.subjectModels[0]);
     expect(representativeSpy).toHaveBeenCalledTimes(1);
 
     representativeSpy.mockRestore();
