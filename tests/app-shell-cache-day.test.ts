@@ -63,23 +63,8 @@ import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";
 import { getMediaProgressPageData } from "@/lib/progress";
-
-function createDeferred<T>() {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function flushMicrotasks(count = 8) {
-  for (let index = 0; index < count; index += 1) {
-    await Promise.resolve();
-  }
-}
+import * as reviewModule from "@/lib/review";
+import * as settingsModule from "@/lib/settings";
 
 describe("app shell day-scoped cache keys", () => {
   let database: DatabaseClient;
@@ -326,40 +311,28 @@ describe("app shell day-scoped cache keys", () => {
     listMediaCachedSpy.mockRestore();
   });
 
-  it("serves a warm progress cache hit without waiting for the media lookup", async () => {
+  it("skips media and settings lookups entirely on a warm progress cache hit", async () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));
 
     await getMediaProgressPageData(developmentFixture.mediaSlug, database);
 
-    const resolvedMedia = await dataCache.getMediaBySlugCached(
-      database,
-      developmentFixture.mediaSlug
+    const mediaLookupSpy = vi.spyOn(dataCache, "getMediaBySlugCached");
+    const settingsLookupSpy = vi.spyOn(settingsModule, "getStudySettings");
+    const introducedTodaySpy = vi.spyOn(
+      reviewModule,
+      "loadReviewIntroducedTodayCountCached"
     );
-    const mediaLookupDeferred = createDeferred<typeof resolvedMedia>();
-    let cacheHitResolved = false;
-    const mediaLookupSpy = vi
-      .spyOn(dataCache, "getMediaBySlugCached")
-      .mockImplementation(async () => mediaLookupDeferred.promise);
 
-    const cachedResultPromise = getMediaProgressPageData(
-      developmentFixture.mediaSlug,
-      database
-    ).then((result) => {
-      cacheHitResolved = true;
-      return result;
-    });
+    await getMediaProgressPageData(developmentFixture.mediaSlug, database);
 
-    try {
-      await flushMicrotasks();
+    expect(mediaLookupSpy).not.toHaveBeenCalled();
+    expect(settingsLookupSpy).not.toHaveBeenCalled();
+    expect(introducedTodaySpy).not.toHaveBeenCalled();
 
-      expect(cacheHitResolved).toBe(true);
-      expect(mediaLookupSpy).toHaveBeenCalledTimes(1);
-    } finally {
-      mediaLookupDeferred.resolve(resolvedMedia);
-      await cachedResultPromise;
-      mediaLookupSpy.mockRestore();
-    }
+    mediaLookupSpy.mockRestore();
+    settingsLookupSpy.mockRestore();
+    introducedTodaySpy.mockRestore();
   });
 
   it("lets the progress page warm the same preview-bearing study shell used by the media detail page", async () => {

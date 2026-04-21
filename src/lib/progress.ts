@@ -124,20 +124,21 @@ export async function getMediaProgressPageData(
   const cacheEligible = canUseDataCache(database);
   const now = new Date();
   const cacheBucketKey = getLocalIsoTimeBucketKey(now);
-  const settingsPromise = getStudySettings(database);
-  const newIntroducedTodayCountPromise =
-    loadReviewIntroducedTodayCountCached(database, now);
-  const mediaPromise = cacheEligible
-    ? getMediaBySlugCached(database, mediaSlug)
-    : listMediaCached(database).then(
-        (mediaRows) =>
-          mediaRows.find((candidate) => candidate.slug === mediaSlug) ?? null
-      );
 
   return runWithTaggedCache({
     enabled: cacheEligible,
     keyParts: ["progress", "media-page", mediaSlug, `bucket:${cacheBucketKey}`],
     loader: async () => {
+      const settingsPromise = getStudySettings(database);
+      const newIntroducedTodayCountPromise =
+        loadReviewIntroducedTodayCountCached(database, now);
+      const mediaPromise = cacheEligible
+        ? getMediaBySlugCached(database, mediaSlug)
+        : listMediaCached(database).then(
+            (mediaRows) =>
+              mediaRows.find((candidate) => candidate.slug === mediaSlug) ??
+              null
+          );
       const media = await mediaPromise;
 
       if (!media) {
