@@ -173,6 +173,8 @@ export async function updateStudySettings(
   input: StudySettingsInput,
   database: DatabaseClient = db
 ) {
+  inFlightStudySettingsSnapshots.delete(database);
+
   const rows = await loadStudySettingsRows(database);
   const current = buildStudySettingsSnapshot(rows);
   const next: StudySettings = {
@@ -267,6 +269,8 @@ export async function updateStudySettings(
       })
     )
   );
+
+  inFlightStudySettingsSnapshots.delete(database);
 
   return next;
 }

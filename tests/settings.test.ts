@@ -77,6 +77,51 @@ describe("study settings", () => {
     settingsQuerySpy.mockRestore();
   });
 
+  it("does not reuse a stale in-flight snapshot after settings are updated", async () => {
+    let releaseInitialSnapshot!: () => void;
+    const initialSnapshotGate = new Promise<void>((resolve) => {
+      releaseInitialSnapshot = resolve;
+    });
+    const originalFindMany = database.query.userSetting.findMany.bind(
+      database.query.userSetting
+    );
+    let queryCount = 0;
+    const settingsQuerySpy = vi
+      .spyOn(database.query.userSetting, "findMany")
+      .mockImplementation(
+        ((...args) => {
+          queryCount += 1;
+
+          if (queryCount === 1) {
+            return originalFindMany(...args).then(async (rows) => {
+              await initialSnapshotGate;
+              return rows;
+            });
+          }
+
+          return originalFindMany(...args);
+        }) as typeof database.query.userSetting.findMany
+      );
+
+    const initialSettingsPromise = getStudySettings(database);
+    await Promise.resolve();
+
+    await updateStudySettings(
+      {
+        reviewDailyLimit: 12
+      },
+      database
+    );
+
+    const updatedDailyLimitPromise = getReviewDailyLimit(database);
+    releaseInitialSnapshot();
+
+    expect(await initialSettingsPromise).toMatchObject(defaultStudySettings);
+    await expect(updatedDailyLimitPromise).resolves.toBe(12);
+
+    settingsQuerySpy.mockRestore();
+  });
+
   it("writes only the settings that actually change", async () => {
     vi.useFakeTimers();
 

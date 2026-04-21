@@ -125,7 +125,11 @@ async function loadKanjiClashManualContrastRowsWithRoundStates(
       operators.desc(fields.updatedAt),
       operators.asc(fields.contrastKey)
     ],
-    where: inArray(kanjiClashManualContrast.status, ["active", "archived"]),
+    where: inArray(kanjiClashManualContrast.status, [
+      "active",
+      "archived",
+      "suspended"
+    ]),
     with: {
       roundStates: true
     }
