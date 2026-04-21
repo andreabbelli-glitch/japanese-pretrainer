@@ -57,7 +57,6 @@ import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./re
 import {
   buildDefaultFsrsOptimizerSnapshot,
   buildReviewSeedStateWithFsrsPreset,
-  getFsrsOptimizerRuntimeContext,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
@@ -145,25 +144,14 @@ export async function hydrateReviewCard(input: {
     return hydrateReviewCardUncached(input);
   }
 
-  const fsrsRuntimeContext = await getFsrsOptimizerRuntimeContext(database);
-
   return measureWith(
     input.profiler,
     "hydrateReviewCard.cached",
     () =>
       runWithTaggedCache({
         enabled: cacheEligible,
-        keyParts: [
-          "review",
-          "hydrated-card",
-          input.cardId,
-          fsrsRuntimeContext.cacheKeyPart
-        ],
-        loader: () =>
-          hydrateReviewCardUncached({
-            ...input,
-            fsrsOptimizerSnapshot: fsrsRuntimeContext.snapshot
-          }),
+        keyParts: ["review", "hydrated-card", input.cardId],
+        loader: () => hydrateReviewCardUncached(input),
         tags: [
           ...buildReviewSummaryTags(),
           ...buildGlossarySummaryTags(),
@@ -278,16 +266,20 @@ export async function getReviewCardDetailData(
   }
 
   const drivingLinks = getDrivingEntryLinks(selectedRawCard.entryLinks);
-  const termEntryIds = [...new Set(
-    drivingLinks
-      .filter((link) => link.entryType === "term")
-      .map((link) => link.entryId)
-  )];
-  const grammarEntryIds = [...new Set(
-    drivingLinks
-      .filter((link) => link.entryType === "grammar")
-      .map((link) => link.entryId)
-  )];
+  const termEntryIds = [
+    ...new Set(
+      drivingLinks
+        .filter((link) => link.entryType === "term")
+        .map((link) => link.entryId)
+    )
+  ];
+  const grammarEntryIds = [
+    ...new Set(
+      drivingLinks
+        .filter((link) => link.entryType === "grammar")
+        .map((link) => link.entryId)
+    )
+  ];
   const termFamiliesPromise =
     termEntryIds.length > 0
       ? listCrossMediaFamiliesByEntryIds(database, "term", termEntryIds)

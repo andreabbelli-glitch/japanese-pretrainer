@@ -1,12 +1,7 @@
 import * as nextCache from "next/cache";
 import { cache } from "react";
 
-import {
-  db,
-  getMediaBySlug,
-  listMedia,
-  type DatabaseClient
-} from "@/db";
+import { db, getMediaBySlug, listMedia, type DatabaseClient } from "@/db";
 
 export const MEDIA_LIST_TAG = "media-list";
 export const SETTINGS_TAG = "settings";
@@ -46,13 +41,15 @@ export function buildTextbookTooltipTags(input?: {
   const mediaSlug = input?.mediaSlug?.trim();
   const lessonSlug = input?.lessonSlug?.trim();
 
-  return dedupeTags([
-    TEXTBOOK_TOOLTIP_TAG,
-    mediaSlug ? `${TEXTBOOK_TOOLTIP_TAG}:${mediaSlug}` : null,
-    mediaSlug && lessonSlug
-      ? `${TEXTBOOK_TOOLTIP_TAG}:${mediaSlug}:${lessonSlug}`
-      : null
-  ].filter((tag): tag is string => Boolean(tag)));
+  return dedupeTags(
+    [
+      TEXTBOOK_TOOLTIP_TAG,
+      mediaSlug ? `${TEXTBOOK_TOOLTIP_TAG}:${mediaSlug}` : null,
+      mediaSlug && lessonSlug
+        ? `${TEXTBOOK_TOOLTIP_TAG}:${mediaSlug}:${lessonSlug}`
+        : null
+    ].filter((tag): tag is string => Boolean(tag))
+  );
 }
 
 export function canUseDataCache(database: DatabaseClient) {

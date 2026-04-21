@@ -332,6 +332,7 @@ export async function writeFsrsOptimizerConfig(
     valueJson: JSON.stringify(normalizedConfig)
   });
   invalidateFsrsOptimizerRuntimeContextCache();
+  await revalidateReviewFirstCandidateCacheIfSupported();
 }
 
 export async function writeFsrsOptimizerState(
@@ -363,6 +364,8 @@ export async function writeFsrsOptimizedParameters(
     nowIso,
     valueJson: JSON.stringify(normalizeFsrsOptimizedParameters(parameters))
   });
+  invalidateFsrsOptimizerRuntimeContextCache();
+  await revalidateReviewFirstCandidateCacheIfSupported();
 }
 
 export function buildFsrsTrainingDataset(
@@ -538,6 +541,58 @@ function canUseFsrsRuntimeContextCache(database: DatabaseClient) {
 
 export function invalidateFsrsOptimizerRuntimeContextCache() {
   cachedFsrsRuntimeContext = null;
+}
+
+type NextCacheModule = {
+  revalidateTag?: (tag: string, profile?: "max") => void;
+};
+
+async function revalidateReviewFirstCandidateCacheIfSupported() {
+  const nextCache = await loadNextCacheModule();
+
+  if (typeof nextCache?.revalidateTag !== "function") {
+    return;
+  }
+
+  try {
+    nextCache.revalidateTag("review-first-candidate", "max");
+  } catch (error) {
+    if (
+      !(error instanceof Error) ||
+      !error.message.includes("static generation store missing")
+    ) {
+      throw error;
+    }
+  }
+}
+
+async function loadNextCacheModule(): Promise<NextCacheModule | null> {
+  try {
+    return (await import("next/cache")) as NextCacheModule;
+  } catch (error) {
+    if (!isNextCacheModuleResolutionError(error)) {
+      throw error;
+    }
+  }
+
+  try {
+    return (await import("next/cache.js")) as NextCacheModule;
+  } catch (error) {
+    if (isNextCacheModuleResolutionError(error)) {
+      return null;
+    }
+
+    throw error;
+  }
+}
+
+function isNextCacheModuleResolutionError(error: unknown) {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    error.code === "ERR_MODULE_NOT_FOUND"
+  );
 }
 
 function parseConfigValue(valueJson: string | undefined): FsrsOptimizerConfig {

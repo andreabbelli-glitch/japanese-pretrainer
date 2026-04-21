@@ -18,7 +18,6 @@ import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
   buildReviewSeedStateWithFsrsPreset,
-  getFsrsOptimizerRuntimeContext,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
@@ -27,9 +26,7 @@ import {
   normalizeReviewSearchState,
   type ReviewSearchState
 } from "./review-search-state";
-import {
-  buildReviewQueueSubjectSnapshot,
-} from "./review-queue";
+import { buildReviewQueueSubjectSnapshot } from "./review-queue";
 import {
   buildReviewFirstCandidateSelectedCardContext,
   resolveReviewPageSelection
@@ -203,11 +200,9 @@ export async function buildReviewPageDataFromWorkspace(input: {
         })
       )
     : Promise.resolve([]);
-  const [fsrsOptimizerSnapshot, selectedCardPronunciations] =
-    await Promise.all([
-      fsrsOptimizerSnapshotPromise,
-      selectedCardPronunciationsPromise
-    ]);
+  const [fsrsOptimizerSnapshot, selectedCardPronunciations] = await Promise.all(
+    [fsrsOptimizerSnapshotPromise, selectedCardPronunciationsPromise]
+  );
   const selectedCardBase =
     hasSelectedCard && fsrsOptimizerSnapshot
       ? mapReviewQueueSubjectModel(selection.selectedModel!, {
@@ -334,8 +329,10 @@ export async function getReviewPageData(
     : measureWith(options.profiler, "listMediaCached", () =>
         listMediaCached(database)
       );
-  const settingsPromise = measureWith(options.profiler, "getStudySettings", () =>
-    getStudySettings(database)
+  const settingsPromise = measureWith(
+    options.profiler,
+    "getStudySettings",
+    () => getStudySettings(database)
   );
   const mediaRows = await mediaRowsPromise;
   const media =
@@ -650,15 +647,11 @@ export async function getGlobalReviewFirstCandidateLoadResult(
   const cacheEligible = !options.bypassCache && canUseDataCache(database);
   const searchState = normalizeReviewSearchState(searchParams);
   const cacheBucketKey = getLocalIsoTimeBucketKey(new Date());
-  const fsrsRuntimeContext = cacheEligible
-    ? await getFsrsOptimizerRuntimeContext(database)
-    : null;
   const cacheKeyParts = [
     "review",
     "global-first-candidate",
     `bucket:${cacheBucketKey}`,
-    ...buildReviewSearchStateCacheKeyParts(searchState),
-    `fsrs:${fsrsRuntimeContext?.cacheKeyPart ?? "uncached"}`
+    ...buildReviewSearchStateCacheKeyParts(searchState)
   ];
 
   const loadSnapshot = async () => {
@@ -687,7 +680,6 @@ export async function getGlobalReviewFirstCandidateLoadResult(
         database,
         dailyLimit: workspace.dailyLimit,
         entryLookup: workspace.entryLookup,
-        fsrsOptimizerSnapshot: fsrsRuntimeContext?.snapshot,
         media: {
           glossaryHref: "/glossary",
           href: "/",

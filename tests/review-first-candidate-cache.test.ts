@@ -6,7 +6,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const {
   cacheStore,
-  getFsrsOptimizerCacheKeyPartMock,
   getFsrsOptimizerRuntimeContextMock,
   getFsrsOptimizerRuntimeSnapshotMock,
   getFsrsOptimizerSnapshotMock,
@@ -31,7 +30,6 @@ const {
 
   return {
     cacheStore,
-    getFsrsOptimizerCacheKeyPartMock: vi.fn(),
     getFsrsOptimizerRuntimeContextMock: vi.fn(),
     getFsrsOptimizerRuntimeSnapshotMock: vi.fn(),
     getFsrsOptimizerSnapshotMock: vi.fn(),
@@ -59,14 +57,10 @@ vi.mock("@/lib/data-cache", async () => {
 });
 
 vi.mock("@/lib/fsrs-optimizer", async () => {
-  const actual =
-    await vi.importActual<typeof import("@/lib/fsrs-optimizer")>(
-      "@/lib/fsrs-optimizer"
-    );
-
-  getFsrsOptimizerCacheKeyPartMock.mockImplementation(
-    actual.getFsrsOptimizerCacheKeyPart
+  const actual = await vi.importActual<typeof import("@/lib/fsrs-optimizer")>(
+    "@/lib/fsrs-optimizer"
   );
+
   getFsrsOptimizerRuntimeContextMock.mockImplementation(
     actual.getFsrsOptimizerRuntimeContext
   );
@@ -79,7 +73,6 @@ vi.mock("@/lib/fsrs-optimizer", async () => {
 
   return {
     ...actual,
-    getFsrsOptimizerCacheKeyPart: getFsrsOptimizerCacheKeyPartMock,
     getFsrsOptimizerRuntimeContext: getFsrsOptimizerRuntimeContextMock,
     getFsrsOptimizerRuntimeSnapshot: getFsrsOptimizerRuntimeSnapshotMock,
     getFsrsOptimizerSnapshot: getFsrsOptimizerSnapshotMock
@@ -99,6 +92,10 @@ import {
   revalidateSettingsCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
+import {
+  writeFsrsOptimizedParameters,
+  writeFsrsOptimizerConfig
+} from "@/lib/fsrs-optimizer";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { loadReviewPageDataSession } from "@/lib/review-page-data";
 import {
@@ -116,13 +113,64 @@ import {
   seedSingleReviewCardFixture
 } from "./helpers/review-fixture";
 
+function createDeferred<T>() {
+  let resolve!: (value: T) => void;
+
+  return {
+    promise: new Promise<T>((innerResolve) => {
+      resolve = innerResolve;
+    }),
+    resolve
+  };
+}
+
+async function waitForTruthy(
+  predicate: () => boolean,
+  message: string,
+  attempts = 50
+) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    if (predicate()) {
+      return;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  }
+
+  throw new Error(message);
+}
+
+function buildTestFsrsSnapshot() {
+  return {
+    config: {
+      desiredRetention: 0.9,
+      enabled: true,
+      minDaysBetweenRuns: 30,
+      minNewReviews: 500,
+      presetStrategy: "card_type_v1" as const
+    },
+    presets: {
+      concept: null,
+      recognition: null
+    },
+    state: {
+      bindingVersion: "test",
+      lastAttemptAt: null,
+      lastCheckAt: null,
+      lastSuccessfulTrainingAt: null,
+      lastTrainingError: null,
+      newEligibleReviewsSinceLastTraining: 0,
+      totalEligibleReviewsAtLastTraining: 0
+    }
+  };
+}
+
 describe("global review first-candidate cache", () => {
   let database: DatabaseClient;
   let tempDir = "";
 
   beforeEach(async () => {
     cacheStore.clear();
-    getFsrsOptimizerCacheKeyPartMock.mockClear();
     getFsrsOptimizerRuntimeContextMock.mockClear();
     getFsrsOptimizerRuntimeSnapshotMock.mockClear();
     getFsrsOptimizerSnapshotMock.mockClear();
@@ -178,8 +226,7 @@ describe("global review first-candidate cache", () => {
         "notice:",
         "segment:",
         "selected:",
-        "show:0",
-        "fsrs:none|none|none"
+        "show:0"
       ]);
       const thirdCacheKey = JSON.stringify([
         "review",
@@ -190,8 +237,7 @@ describe("global review first-candidate cache", () => {
         "notice:",
         "segment:",
         "selected:",
-        "show:0",
-        "fsrs:none|none|none"
+        "show:0"
       ]);
 
       expect(unstableCacheMock).toHaveBeenCalled();
@@ -206,9 +252,8 @@ describe("global review first-candidate cache", () => {
       );
       expect(firstCacheHits).toHaveLength(2);
       expect(thirdCacheHits).toHaveLength(1);
-      expect(getFsrsOptimizerCacheKeyPartMock).not.toHaveBeenCalled();
-      expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(3);
-      expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
+      expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
+      expect(getFsrsOptimizerRuntimeSnapshotMock).toHaveBeenCalledTimes(2);
       expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
 
       revalidateReviewSummaryCache("media_a");
@@ -291,18 +336,12 @@ describe("global review first-candidate cache", () => {
     expect(second).toEqual(first);
     expect(warmMs).toBeLessThanOrEqual(coldMs);
 
-    const cacheKey = JSON.stringify([
-      "review",
-      "hydrated-card",
-      "card_a",
-      "none|none|none"
-    ]);
+    const cacheKey = JSON.stringify(["review", "hydrated-card", "card_a"]);
 
     expect(unstableCacheMock).toHaveBeenCalled();
     expect(cacheStore.has(cacheKey)).toBe(true);
-    expect(getFsrsOptimizerCacheKeyPartMock).not.toHaveBeenCalled();
-    expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(2);
-    expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
+    expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
+    expect(getFsrsOptimizerRuntimeSnapshotMock).toHaveBeenCalledTimes(1);
     expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
 
     revalidateReviewSummaryCache("media_a");
@@ -314,7 +353,7 @@ describe("global review first-candidate cache", () => {
     );
   });
 
-  it("reuses the FSRS runtime context for the cache key even when the global queue has no selected card", async () => {
+  it("skips FSRS snapshot loading when the global queue has no selected card", async () => {
     await seedSingleReviewCardFixture(database);
 
     await database.insert(reviewSubjectState).values(
@@ -335,10 +374,126 @@ describe("global review first-candidate cache", () => {
     const result = await getGlobalReviewFirstCandidateLoadResult({}, database);
 
     expect(result.kind).toBe("ready");
-    expect(result.kind === "ready" ? result.data.selectedCard : null).toBeNull();
-    expect(getFsrsOptimizerCacheKeyPartMock).not.toHaveBeenCalled();
-    expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(1);
+    expect(
+      result.kind === "ready" ? result.data.selectedCard : null
+    ).toBeNull();
+    expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
     expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
+  });
+
+  it("serves a warm first-candidate cache hit without waiting for FSRS snapshot lookup", async () => {
+    await seedSingleReviewCardFixture(database);
+    await getGlobalReviewFirstCandidateLoadResult({}, database);
+    getFsrsOptimizerRuntimeSnapshotMock.mockClear();
+
+    const fsrsSnapshotDeferred =
+      createDeferred<ReturnType<typeof buildTestFsrsSnapshot>>();
+    const originalFsrsSnapshotImplementation =
+      getFsrsOptimizerRuntimeSnapshotMock.getMockImplementation();
+    let cacheHitResolved = false;
+    const fsrsSnapshotSpy =
+      getFsrsOptimizerRuntimeSnapshotMock.mockImplementation(
+        async () => fsrsSnapshotDeferred.promise
+      );
+
+    const cachedResultPromise = getGlobalReviewFirstCandidateLoadResult(
+      {},
+      database
+    ).then((result) => {
+      cacheHitResolved = true;
+      return result;
+    });
+
+    try {
+      await waitForTruthy(
+        () => cacheHitResolved,
+        "Expected the warm first-candidate cache hit to resolve."
+      );
+
+      expect(fsrsSnapshotSpy).not.toHaveBeenCalled();
+    } finally {
+      fsrsSnapshotDeferred.resolve(buildTestFsrsSnapshot());
+      await cachedResultPromise;
+      if (originalFsrsSnapshotImplementation) {
+        getFsrsOptimizerRuntimeSnapshotMock.mockImplementation(
+          originalFsrsSnapshotImplementation
+        );
+      }
+    }
+  });
+
+  it("serves a warm hydrated-card cache hit without waiting for FSRS snapshot lookup", async () => {
+    await seedSingleReviewCardFixture(database);
+    await hydrateReviewCard({
+      cardId: "card_a",
+      database
+    });
+    getFsrsOptimizerRuntimeSnapshotMock.mockClear();
+
+    const fsrsSnapshotDeferred =
+      createDeferred<ReturnType<typeof buildTestFsrsSnapshot>>();
+    const originalFsrsSnapshotImplementation =
+      getFsrsOptimizerRuntimeSnapshotMock.getMockImplementation();
+    let cacheHitResolved = false;
+    const fsrsSnapshotSpy =
+      getFsrsOptimizerRuntimeSnapshotMock.mockImplementation(
+        async () => fsrsSnapshotDeferred.promise
+      );
+
+    const cachedResultPromise = hydrateReviewCard({
+      cardId: "card_a",
+      database
+    }).then((result) => {
+      cacheHitResolved = true;
+      return result;
+    });
+
+    try {
+      await waitForTruthy(
+        () => cacheHitResolved,
+        "Expected the warm hydrated-card cache hit to resolve."
+      );
+
+      expect(fsrsSnapshotSpy).not.toHaveBeenCalled();
+    } finally {
+      fsrsSnapshotDeferred.resolve(buildTestFsrsSnapshot());
+      await cachedResultPromise;
+      if (originalFsrsSnapshotImplementation) {
+        getFsrsOptimizerRuntimeSnapshotMock.mockImplementation(
+          originalFsrsSnapshotImplementation
+        );
+      }
+    }
+  });
+
+  it("revalidates review-first-candidate-tagged caches when FSRS runtime inputs change", async () => {
+    await writeFsrsOptimizerConfig(
+      {
+        desiredRetention: 0.91,
+        enabled: true,
+        minDaysBetweenRuns: 30,
+        minNewReviews: 500,
+        presetStrategy: "card_type_v1"
+      },
+      database,
+      "2026-03-10T12:00:00.000Z"
+    );
+    await writeFsrsOptimizedParameters(
+      {
+        desiredRetention: 0.91,
+        presetKey: "recognition",
+        trainedAt: "2026-03-10T12:01:00.000Z",
+        trainingReviewCount: 42,
+        weights: new Array(17).fill(1)
+      },
+      database,
+      "2026-03-10T12:01:00.000Z"
+    );
+
+    expect(revalidateTagMock).toHaveBeenCalledWith(
+      REVIEW_FIRST_CANDIDATE_TAG,
+      "max"
+    );
   });
 
   it("refreshes the introduced-today count when review workspace bypasses cache", async () => {
@@ -379,14 +534,20 @@ describe("global review first-candidate cache", () => {
   it("reuses the stable workspace cache for read-only session hydration", async () => {
     await seedSingleReviewCardFixture(database);
 
-    const first = await loadReviewPageDataSession({
-      scope: "global",
-      searchParams: {}
-    }, database);
-    const second = await loadReviewPageDataSession({
-      scope: "global",
-      searchParams: {}
-    }, database);
+    const first = await loadReviewPageDataSession(
+      {
+        scope: "global",
+        searchParams: {}
+      },
+      database
+    );
+    const second = await loadReviewPageDataSession(
+      {
+        scope: "global",
+        searchParams: {}
+      },
+      database
+    );
 
     expect(first.selectedCard).not.toBeNull();
     expect(second).toEqual(first);
