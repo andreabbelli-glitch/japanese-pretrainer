@@ -124,6 +124,9 @@ export async function getMediaProgressPageData(
   const cacheEligible = canUseDataCache(database);
   const now = new Date();
   const cacheBucketKey = getLocalIsoTimeBucketKey(now);
+  const settingsPromise = getStudySettings(database);
+  const newIntroducedTodayCountPromise =
+    loadReviewIntroducedTodayCountCached(database, now);
   const resolvedMedia = cacheEligible
     ? await getMediaBySlugCached(database, mediaSlug)
     : null;
@@ -143,9 +146,6 @@ export async function getMediaProgressPageData(
     enabled: cacheEligible,
     keyParts: ["progress", "media-page", media.id, `bucket:${cacheBucketKey}`],
     loader: async () => {
-      const settingsPromise = getStudySettings(database);
-      const newIntroducedTodayCountPromise =
-        loadReviewIntroducedTodayCountCached(database, now);
       const globalReviewSnapshotPromise = Promise.all([
         settingsPromise,
         newIntroducedTodayCountPromise
