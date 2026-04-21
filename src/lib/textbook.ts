@@ -170,13 +170,11 @@ export async function getTextbookLessonTooltipEntries(
   lessonSlug: string,
   database: DatabaseClient = db
 ): Promise<TextbookTooltipEntry[] | null> {
-  const mediaPromise = getMediaBySlugCached(database, mediaSlug);
-
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["textbook", "tooltips", mediaSlug, lessonSlug],
     loader: async () => {
-      const media = await mediaPromise;
+      const media = await getMediaBySlugCached(database, mediaSlug);
 
       if (!media) {
         return null;

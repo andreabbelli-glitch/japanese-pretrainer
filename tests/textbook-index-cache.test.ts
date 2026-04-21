@@ -241,7 +241,7 @@ describe("textbook index cache", () => {
         "Expected the warm textbook tooltip cache hit to resolve."
       );
 
-      expect(mediaLookupSpy).toHaveBeenCalledTimes(1);
+      expect(mediaLookupSpy).not.toHaveBeenCalled();
     } finally {
       mediaLookupDeferred.resolve(resolvedMedia);
       await cachedResultPromise;
