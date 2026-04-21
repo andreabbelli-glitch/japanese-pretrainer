@@ -50,6 +50,11 @@ const glossaryEntryRelations = {
   segment: true
 } as const;
 
+const glossarySegmentColumns = {
+  id: true,
+  title: true
+} as const;
+
 function buildMediaScopeFilter(
   column: typeof term.mediaId | typeof grammarPattern.mediaId,
   options: ListGlossaryEntriesOptions
@@ -216,6 +221,7 @@ export async function listGlossarySegmentsByMediaId(
   mediaId: string
 ) {
   return database.query.segment.findMany({
+    columns: glossarySegmentColumns,
     where: eq(segment.mediaId, mediaId),
     orderBy: [asc(segment.orderIndex), asc(segment.title)]
   });

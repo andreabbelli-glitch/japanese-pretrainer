@@ -18,9 +18,11 @@ import {
   listCardsByMediaId,
   listDueCardsByMediaId,
   listGlossaryEntriesByKind,
+  listGlossarySegmentsByMediaId,
   listGlossaryPreviewEntries,
   listGlossaryProgressSummaries,
   listGrammarEntryReviewSummaries,
+  listLessonEntryLinks,
   listLessonsByMediaId,
   listLessonsByMediaIdsForShell,
   listMedia,
@@ -269,6 +271,33 @@ describe("database layer", () => {
     executeSpy.mockRestore();
   });
 
+  it("uses a trimmed entry-link query for textbook tooltip loading", async () => {
+    const entryLinkQuerySpy = vi.spyOn(database.query.entryLink, "findMany");
+
+    const entryLinks = await listLessonEntryLinks(
+      database,
+      developmentFixture.lessonId
+    );
+
+    expect(entryLinks).toHaveLength(2);
+    expect(entryLinkQuerySpy).toHaveBeenCalledTimes(1);
+    const entryLinkQueryInput = entryLinkQuerySpy.mock.calls[0]?.[0] as {
+      columns?: Record<string, boolean>;
+    };
+
+    expect(entryLinkQueryInput.columns).toEqual({
+      entryId: true,
+      entryType: true
+    });
+    expect(entryLinkQueryInput.columns).not.toHaveProperty("id");
+    expect(entryLinkQueryInput.columns).not.toHaveProperty("linkRole");
+    expect(entryLinkQueryInput.columns).not.toHaveProperty("sortOrder");
+    expect(entryLinkQueryInput.columns).not.toHaveProperty("sourceId");
+    expect(entryLinkQueryInput.columns).not.toHaveProperty("sourceType");
+
+    entryLinkQuerySpy.mockRestore();
+  });
+
   it("keeps canonical glossary entries free of legacy status projections", async () => {
     const terms = await listGlossaryEntriesByKind(database, "term", {
       mediaId: developmentFixture.mediaId
@@ -316,6 +345,33 @@ describe("database layer", () => {
     expect(grammar[0]).not.toHaveProperty("entryStatus");
     expect(grammar[0]).not.toHaveProperty("levelHint");
     expect(grammar[0]).not.toHaveProperty("searchPatternNorm");
+  });
+
+  it("uses a trimmed segment query for local glossary filters", async () => {
+    const segmentQuerySpy = vi.spyOn(database.query.segment, "findMany");
+
+    const segments = await listGlossarySegmentsByMediaId(
+      database,
+      developmentFixture.mediaId
+    );
+
+    expect(segments).toHaveLength(1);
+    expect(segmentQuerySpy).toHaveBeenCalledTimes(1);
+    const segmentQueryInput = segmentQuerySpy.mock.calls[0]?.[0] as {
+      columns?: Record<string, boolean>;
+    };
+
+    expect(segmentQueryInput.columns).toEqual({
+      id: true,
+      title: true
+    });
+    expect(segmentQueryInput.columns).not.toHaveProperty("mediaId");
+    expect(segmentQueryInput.columns).not.toHaveProperty("notes");
+    expect(segmentQueryInput.columns).not.toHaveProperty("orderIndex");
+    expect(segmentQueryInput.columns).not.toHaveProperty("segmentType");
+    expect(segmentQueryInput.columns).not.toHaveProperty("slug");
+
+    segmentQuerySpy.mockRestore();
   });
 
   it("returns cards with review state and due filtering", async () => {
