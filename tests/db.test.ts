@@ -23,6 +23,7 @@ import {
   listGlossaryProgressSummaries,
   listGrammarEntryReviewSummaries,
   listLessonEntryLinks,
+  listEntryStudySignals,
   listLessonsByMediaId,
   listLessonsByMediaIdsForShell,
   listMedia,
@@ -296,6 +297,30 @@ describe("database layer", () => {
     expect(entryLinkQueryInput.columns).not.toHaveProperty("sourceType");
 
     entryLinkQuerySpy.mockRestore();
+  });
+
+  it("returns only glossary study-signal fields needed by loaders", async () => {
+    const rows = await listEntryStudySignals(database, [
+      {
+        entryId: developmentFixture.termDbId,
+        entryType: "term"
+      },
+      {
+        entryId: developmentFixture.grammarDbId,
+        entryType: "grammar"
+      }
+    ]);
+
+    expect(rows).toHaveLength(2);
+    expect(Object.keys(rows[0] ?? {}).sort()).toEqual([
+      "entryId",
+      "entryType",
+      "manualOverride",
+      "reviewState"
+    ]);
+    expect(rows[0]).not.toHaveProperty("cardId");
+    expect(rows[0]).not.toHaveProperty("dueAt");
+    expect(rows[0]).not.toHaveProperty("relationshipType");
   });
 
   it("keeps canonical glossary entries free of legacy status projections", async () => {

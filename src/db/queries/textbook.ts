@@ -89,10 +89,7 @@ export async function listEntryStudySignals(
     .select({
       entryId: cardEntryLink.entryId,
       entryType: cardEntryLink.entryType,
-      relationshipType: cardEntryLink.relationshipType,
-      cardId: card.id,
       reviewState: reviewSubjectState.state,
-      dueAt: reviewSubjectState.dueAt,
       manualOverride: reviewSubjectState.manualOverride
     })
     .from(cardEntryLink)
