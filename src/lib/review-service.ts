@@ -133,11 +133,18 @@ export async function gradeReviewCardInTransaction(input: {
 
   assertCardBelongsToExpectedMedia(loadedCard.mediaId, input.expectedMediaId);
 
-  const subjectContext = await loadReviewSubjectMutationContext(
+  const fsrsOptimizerSnapshotPromise = getFsrsOptimizerSnapshot(
+    input.transaction
+  );
+  const subjectContextPromise = loadReviewSubjectMutationContext(
     input.transaction,
     loadedCard,
     nowIso
   );
+  const [subjectContext, fsrsOptimizerSnapshot] = await Promise.all([
+    subjectContextPromise,
+    fsrsOptimizerSnapshotPromise
+  ]);
   const expectedUpdatedAt = normalizeOptionalString(input.expectedUpdatedAt);
   const currentUpdatedAt = subjectContext.subjectState?.updatedAt ?? null;
 
@@ -174,7 +181,6 @@ export async function gradeReviewCardInTransaction(input: {
       : null,
     nowIso
   );
-  const fsrsOptimizerSnapshot = await getFsrsOptimizerSnapshot(input.transaction);
   const presetKey = resolveFsrsPresetKey(loadedCard.cardType);
   const optimizedParameters = presetKey
     ? fsrsOptimizerSnapshot.presets[presetKey]

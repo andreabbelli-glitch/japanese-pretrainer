@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, it, vi } from "vitest";
 
 import * as dbModule from "@/db";
+import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
 import { applyReviewGrade } from "@/lib/review-service";
 import {
   closeDatabaseClient,
@@ -126,6 +127,52 @@ describe("review service query scheduling", () => {
       await gradePromise;
       subjectStateSpy.mockRestore();
       memberCardLookupSpy.mockRestore();
+    }
+  });
+
+  it("starts the FSRS snapshot lookup before the subject context settles during grading", async () => {
+    const subjectStateGate = createDeferred();
+    let subjectStateStarted = false;
+    let fsrsSnapshotStarted = false;
+    const originalGetReviewSubjectStateByKey = dbModule.getReviewSubjectStateByKey;
+    const originalGetFsrsOptimizerSnapshot =
+      fsrsOptimizerModule.getFsrsOptimizerSnapshot;
+    const subjectStateSpy = vi
+      .spyOn(dbModule, "getReviewSubjectStateByKey")
+      .mockImplementation(async (...args) => {
+        subjectStateStarted = true;
+        const resultPromise = originalGetReviewSubjectStateByKey(...args);
+        await subjectStateGate.promise;
+        return resultPromise;
+      });
+    const fsrsSnapshotSpy = vi
+      .spyOn(fsrsOptimizerModule, "getFsrsOptimizerSnapshot")
+      .mockImplementation(async (...args) => {
+        fsrsSnapshotStarted = true;
+        return originalGetFsrsOptimizerSnapshot(...args);
+      });
+
+    const gradePromise = applyReviewGrade({
+      cardId: developmentFixture.primaryCardId,
+      database,
+      now: new Date("2026-03-09T12:00:00.000Z"),
+      rating: "good"
+    });
+
+    try {
+      await waitForTruthy(
+        () => subjectStateStarted,
+        "Expected the subject context lookup to start."
+      );
+      await waitForTruthy(
+        () => fsrsSnapshotStarted,
+        "Expected the FSRS snapshot lookup to start before the subject context resolved."
+      );
+    } finally {
+      subjectStateGate.resolve();
+      await gradePromise;
+      subjectStateSpy.mockRestore();
+      fsrsSnapshotSpy.mockRestore();
     }
   });
 });
