@@ -36,13 +36,15 @@ export async function loadKanjiClashQueueSnapshot(
 ): Promise<KanjiClashQueueSnapshot> {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
-  const eligibleSubjects = await listEligibleKanjiClashSubjects(database, {
-    mediaIds: input.mediaIds
-  });
-  const manualContrastSeed = await loadKanjiClashManualContrastCandidates({
-    database,
-    mediaIds: input.mediaIds
-  });
+  const [eligibleSubjects, manualContrastSeed] = await Promise.all([
+    listEligibleKanjiClashSubjects(database, {
+      mediaIds: input.mediaIds
+    }),
+    loadKanjiClashManualContrastCandidates({
+      database,
+      mediaIds: input.mediaIds
+    })
+  ]);
 
   if (input.mode === "manual") {
     return loadManualKanjiClashQueueSnapshot({
@@ -89,13 +91,24 @@ async function loadAutomaticKanjiClashQueueSnapshot(input: {
     (candidate) =>
       !input.manualContrastSeed.suppressedContrastKeys.has(candidate.pairKey)
   );
-  const automaticPairStates =
+  const automaticPairStatesPromise =
     automaticCandidates.length > 0
-      ? await listKanjiClashPairStatesByPairKeys(
+      ? listKanjiClashPairStatesByPairKeys(
           input.database,
           automaticCandidates.map((candidate) => candidate.pairKey)
         )
-      : new Map<string, KanjiClashPairState>();
+      : Promise.resolve(new Map<string, KanjiClashPairState>());
+  const introducedTodayCountPromise = countKanjiClashAutomaticNewPairIntroductions(
+    {
+      database: input.database,
+      endAt: startOfNextLocalDay(input.now).toISOString(),
+      startAt: startOfLocalDay(input.now).toISOString()
+    }
+  );
+  const [automaticPairStates, introducedTodayCount] = await Promise.all([
+    automaticPairStatesPromise,
+    introducedTodayCountPromise
+  ]);
   const candidates = [
     ...input.manualContrastSeed.candidates,
     ...automaticCandidates
@@ -104,12 +117,6 @@ async function loadAutomaticKanjiClashQueueSnapshot(input: {
     ...automaticPairStates,
     ...input.manualContrastSeed.pairStates
   ]);
-  const introducedTodayCount =
-    await countKanjiClashAutomaticNewPairIntroductions({
-      database: input.database,
-      endAt: startOfNextLocalDay(input.now).toISOString(),
-      startAt: startOfLocalDay(input.now).toISOString()
-    });
 
   return buildKanjiClashQueueSnapshot({
     candidates,
