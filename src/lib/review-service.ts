@@ -629,19 +629,26 @@ async function loadReviewSubjectMutationContext(
     entryLinks: loadedCard.entryLinks,
     entryLookup
   });
-  const subjectState = await getReviewSubjectStateByKey(
+  const subjectStatePromise = getReviewSubjectStateByKey(
     txDb,
     identity.subjectKey
   );
-  const subjectEntryRefs = await resolveReviewSubjectEntryRefs(
+  const subjectEntryRefsPromise = resolveReviewSubjectEntryRefs(
     transaction,
     loadedCard,
     identity
   );
-  const memberCardIds =
+  const memberCardIdsPromise =
     identity.subjectKind === "card"
-      ? [loadedCard.id]
-      : await listReviewCardIdsByEntryRefs(txDb, subjectEntryRefs);
+      ? Promise.resolve([loadedCard.id])
+      : subjectEntryRefsPromise.then((subjectEntryRefs) =>
+          listReviewCardIdsByEntryRefs(txDb, subjectEntryRefs)
+        );
+  const [subjectState, subjectEntryRefs, memberCardIds] = await Promise.all([
+    subjectStatePromise,
+    subjectEntryRefsPromise,
+    memberCardIdsPromise
+  ]);
   const dedupedMemberCardIds = [...new Set([loadedCard.id, ...memberCardIds])];
   const { termIds: memberEntryRefTerms, grammarIds: memberEntryRefGrammar } =
     splitLinkIds(subjectEntryRefs);
