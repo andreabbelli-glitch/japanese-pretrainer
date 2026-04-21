@@ -218,4 +218,104 @@ describe("dashboard query scheduling", () => {
 
     expect(dashboard.review.cardsDue).toBe(1);
   });
+
+  it("starts loading media shell snapshots before the global review overview settles", async () => {
+    const mediaRowsDeferred = createDeferred<
+      Array<{ id: string; slug: string; title: string }>
+    >();
+    const dailyLimitDeferred = createDeferred<number>();
+    const introducedTodayDeferred = createDeferred<number>();
+    const reviewCandidatesDeferred = createDeferred<unknown[]>();
+    const globalOverviewDeferred = createDeferred<Record<string, number | string>>();
+    const mediaSnapshotsDeferred = createDeferred<unknown[]>();
+    let mediaShellStarted = false;
+
+    vi.doMock("@/db", () => ({
+      db: {}
+    }));
+    vi.doMock("@/lib/data-cache", () => ({
+      GLOSSARY_SUMMARY_TAG: "glossary-summary",
+      MEDIA_LIST_TAG: "media-list",
+      REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
+      REVIEW_SUMMARY_TAG: "review-summary",
+      SETTINGS_TAG: "settings",
+      canUseDataCache: vi.fn(() => false),
+      listMediaCached: vi.fn(() => mediaRowsDeferred.promise),
+      runWithTaggedCache: vi.fn(async ({ loader }) => loader())
+    }));
+    vi.doMock("@/lib/local-date", () => ({
+      getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+    }));
+    vi.doMock("@/lib/media-shell", () => ({
+      loadMediaShellSnapshots: vi.fn(() => {
+        mediaShellStarted = true;
+        return mediaSnapshotsDeferred.promise;
+      }),
+      pickFocusMedia: vi.fn(() => null)
+    }));
+    vi.doMock("@/lib/review", () => ({
+      loadGlobalReviewOverviewSnapshot: vi.fn(
+        () => globalOverviewDeferred.promise
+      ),
+      loadReviewIntroducedTodayCountCached: vi.fn(
+        () => introducedTodayDeferred.promise
+      ),
+      loadReviewLaunchCandidatesCached: vi.fn(
+        () => reviewCandidatesDeferred.promise
+      )
+    }));
+    vi.doMock("@/lib/settings", () => ({
+      getReviewDailyLimit: vi.fn(() => dailyLimitDeferred.promise)
+    }));
+
+    const { getDashboardData } = await import("@/lib/dashboard");
+    const dashboardPromise = getDashboardData();
+
+    await flushMicrotasks();
+
+    mediaRowsDeferred.resolve([
+      {
+        id: "media-1",
+        slug: "fixture-media",
+        title: "Fixture Media"
+      }
+    ]);
+    dailyLimitDeferred.resolve(7);
+    introducedTodayDeferred.resolve(2);
+    reviewCandidatesDeferred.resolve([
+      {
+        activeReviewCards: 1,
+        cardsTotal: 2,
+        dueCount: 1,
+        mediaId: "media-1",
+        newAvailableCount: 3,
+        newCount: 3
+      }
+    ]);
+
+    await flushMicrotasks();
+
+    expect(mediaShellStarted).toBe(true);
+
+    globalOverviewDeferred.resolve({
+      activeCards: 1,
+      dailyLimit: 7,
+      dueCount: 1,
+      effectiveDailyLimit: 7,
+      manualCount: 0,
+      newAvailableCount: 3,
+      newQueuedCount: 3,
+      queueCount: 4,
+      queueLabel: "queue",
+      suspendedCount: 0,
+      tomorrowCount: 0,
+      totalCards: 2,
+      upcomingCount: 0
+    });
+    mediaSnapshotsDeferred.resolve([]);
+
+    const dashboard = await dashboardPromise;
+
+    expect(dashboard.media).toEqual([]);
+  });
 });

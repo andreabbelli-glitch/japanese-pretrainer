@@ -86,25 +86,24 @@ async function loadDashboardData(
       resolvedNewIntroducedTodayCount: newIntroducedTodayCount
     })
   );
-  const [
-    mediaRows,
-    dailyLimit,
-    newIntroducedTodayCount,
-    reviewCandidates,
-    globalReviewOverview
-  ] = await Promise.all([
+  const mediaPromise = Promise.all([
     mediaRowsPromise,
     dailyLimitPromise,
     newIntroducedTodayCountPromise,
-    reviewCandidatesPromise,
+    reviewCandidatesPromise
+  ]).then(
+    ([mediaRows, dailyLimit, newIntroducedTodayCount, reviewCandidates]) =>
+      loadMediaShellSnapshots(database, mediaRows, {
+        now,
+        resolvedDailyLimit: dailyLimit,
+        resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
+        resolvedReviewCandidates: reviewCandidates
+      })
+  );
+  const [media, globalReviewOverview] = await Promise.all([
+    mediaPromise,
     globalReviewOverviewPromise
   ]);
-  const media = await loadMediaShellSnapshots(database, mediaRows, {
-    now,
-    resolvedDailyLimit: dailyLimit,
-    resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
-    resolvedReviewCandidates: reviewCandidates
-  });
   const focusMedia = pickFocusMedia(media);
   const reviewMedia = pickReviewMedia(media);
 
