@@ -172,7 +172,7 @@ describe("textbook index cache", () => {
     expect(revalidateTagMock).toHaveBeenCalledWith(SETTINGS_TAG, "max");
   });
 
-  it("serves a warm textbook index cache hit without waiting for the media lookup", async () => {
+  it("skips the media lookup entirely on a warm textbook index cache hit", async () => {
     await getTextbookIndexData(developmentFixture.mediaSlug, database);
 
     const dataCacheModule = await import("@/lib/data-cache");
@@ -200,7 +200,7 @@ describe("textbook index cache", () => {
         "Expected the warm textbook index cache hit to resolve."
       );
 
-      expect(mediaLookupSpy).toHaveBeenCalledTimes(1);
+      expect(mediaLookupSpy).not.toHaveBeenCalled();
     } finally {
       mediaLookupDeferred.resolve(resolvedMedia);
       await cachedResultPromise;

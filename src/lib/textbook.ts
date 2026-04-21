@@ -73,18 +73,24 @@ export async function getTextbookIndexData(
     resolvedMedia?: ResolvedMedia | null;
   } = {}
 ): Promise<TextbookIndexData | null> {
-  const mediaPromise =
+  const cacheEligible = canUseDataCache(database);
+  const resolvedMediaPromise =
     options.resolvedMedia !== undefined
       ? Promise.resolve(options.resolvedMedia)
-      : getMediaBySlugCached(database, mediaSlug);
+      : !cacheEligible
+        ? getMediaBySlugCached(database, mediaSlug)
+        : null;
   const furiganaMode =
     options.resolvedFuriganaMode ?? (await getFuriganaMode(database));
 
   return runWithTaggedCache({
-    enabled: canUseDataCache(database),
+    enabled: cacheEligible,
     keyParts: ["textbook", "index", mediaSlug, `furigana:${furiganaMode}`],
     loader: async () => {
-      const media = await mediaPromise;
+      const media = await (
+        resolvedMediaPromise ??
+        getMediaBySlugCached(database, mediaSlug)
+      );
 
       if (!media) {
         return null;
