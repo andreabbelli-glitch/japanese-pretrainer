@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   kanjiClashManualContrast,
@@ -74,6 +74,23 @@ describe("kanji clash page data", () => {
       data.queue.rounds[0]?.pairKey ?? null
     );
     expect(data.snapshotAtIso).toBe(snapshotAt.toISOString());
+  });
+
+  it("reuses the manual contrast rows across the sidebar and queue snapshot", async () => {
+    const manualContrastFindManySpy = vi.spyOn(
+      database.query.kanjiClashManualContrast,
+      "findMany"
+    );
+
+    await getKanjiClashPageData(
+      {},
+      database,
+      new Date("2026-04-09T12:00:00.000Z")
+    );
+
+    expect(manualContrastFindManySpy).toHaveBeenCalledTimes(1);
+
+    manualContrastFindManySpy.mockRestore();
   });
 
   it("applies explicit manual params, validates size server-side, and filters by media", async () => {

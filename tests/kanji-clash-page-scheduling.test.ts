@@ -56,12 +56,17 @@ describe("kanji clash page query scheduling", () => {
     };
     const settingsDeferred = createDeferred<typeof settingsValue>();
     const mediaRowsDeferred = createDeferred<typeof mediaRowsValue>();
-    const manualContrastsDeferred = createDeferred<
-      Array<{
+    const manualContrastSnapshotDeferred = createDeferred<{
+      manualContrastSeed: {
+        candidates: [];
+        pairStates: Map<string, null>;
+        suppressedContrastKeys: Set<string>;
+      };
+      manualContrasts: Array<{
         contrastKey: string;
         status: "active";
-      }>
-    >();
+      }>;
+    }>();
     const queueDeferred = createDeferred<typeof queueValue>();
     const loadKanjiClashQueueSnapshot = vi.fn(() => queueDeferred.promise);
 
@@ -79,8 +84,8 @@ describe("kanji clash page query scheduling", () => {
       )
     }));
     vi.doMock("@/lib/kanji-clash/manual-contrast.ts", () => ({
-      listKanjiClashManualContrastSummaries: vi.fn(
-        () => manualContrastsDeferred.promise
+      loadKanjiClashManualContrastPageSnapshot: vi.fn(
+        () => manualContrastSnapshotDeferred.promise
       )
     }));
     vi.doMock("@/lib/kanji-clash/queue.ts", () => ({
@@ -104,17 +109,27 @@ describe("kanji clash page query scheduling", () => {
     await flushMicrotasks();
 
     expect(loadKanjiClashQueueSnapshot).toHaveBeenCalledTimes(1);
-    expect(loadKanjiClashQueueSnapshot).toHaveBeenCalledWith({
-      dailyNewLimit: 7,
-      database: {},
-      mediaIds: ["media-1"],
-      mode: "automatic",
-      now: expect.any(Date),
-      requestedSize: null,
-      scope: "media"
-    });
+    expect(loadKanjiClashQueueSnapshot).toHaveBeenCalledWith(
+      expect.objectContaining({
+        dailyNewLimit: 7,
+        database: {},
+        mediaIds: ["media-1"],
+        mode: "automatic",
+        now: expect.any(Date),
+        requestedSize: null,
+        resolvedManualContrastSeed: expect.any(Promise),
+        scope: "media"
+      })
+    );
 
-    manualContrastsDeferred.resolve([]);
+    manualContrastSnapshotDeferred.resolve({
+      manualContrastSeed: {
+        candidates: [],
+        pairStates: new Map<string, null>(),
+        suppressedContrastKeys: new Set<string>()
+      },
+      manualContrasts: []
+    });
     queueDeferred.resolve(queueValue);
 
     const data = await dataPromise;

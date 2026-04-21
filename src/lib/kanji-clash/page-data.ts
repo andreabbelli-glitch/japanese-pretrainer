@@ -6,7 +6,7 @@ import {
   resolveKanjiClashDefaultScope
 } from "@/lib/settings";
 
-import { listKanjiClashManualContrastSummaries } from "./manual-contrast.ts";
+import { loadKanjiClashManualContrastPageSnapshot } from "./manual-contrast.ts";
 import { getKanjiClashCurrentRound } from "./queue.ts";
 import { createKanjiClashQueueToken } from "./queue-token.ts";
 import { loadKanjiClashQueueSnapshot } from "./session.ts";
@@ -29,7 +29,6 @@ export async function getKanjiClashPageData(
   const snapshotAt = now ?? new Date();
   const settingsPromise = getStudySettings(database);
   const mediaRowsPromise = listMediaCached(database);
-  const manualContrastsPromise = listKanjiClashManualContrastSummaries(database);
   const [settings, mediaRows] = await Promise.all([
     settingsPromise,
     mediaRowsPromise
@@ -55,6 +54,12 @@ export async function getKanjiClashPageData(
           settings.kanjiClashManualDefaultSize
         )
       : null;
+  const manualContrastSnapshotPromise = loadKanjiClashManualContrastPageSnapshot(
+    {
+      database,
+      mediaIds: selectedMedia ? [selectedMedia.id] : undefined
+    }
+  );
   const queuePromise = loadKanjiClashQueueSnapshot({
     dailyNewLimit: settings.kanjiClashDailyNewLimit,
     database,
@@ -62,17 +67,20 @@ export async function getKanjiClashPageData(
     mode,
     now: snapshotAt,
     requestedSize,
+    resolvedManualContrastSeed: manualContrastSnapshotPromise.then(
+      ({ manualContrastSeed }) => manualContrastSeed
+    ),
     scope
   });
-  const [manualContrasts, queue] = await Promise.all([
-    manualContrastsPromise,
+  const [manualContrastSnapshot, queue] = await Promise.all([
+    manualContrastSnapshotPromise,
     queuePromise
   ]);
 
   return {
     availableMedia,
     currentRound: getKanjiClashCurrentRound(queue),
-    manualContrasts,
+    manualContrasts: manualContrastSnapshot.manualContrasts,
     mode,
     queue,
     queueToken: createKanjiClashQueueToken(queue),

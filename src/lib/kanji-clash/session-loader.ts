@@ -26,6 +26,7 @@ export type LoadKanjiClashQueueSnapshotInput = {
   mode: KanjiClashSessionMode;
   now?: Date;
   requestedSize?: number | null;
+  resolvedManualContrastSeed?: KanjiClashManualContrastSeed | Promise<KanjiClashManualContrastSeed>;
   scope: KanjiClashScope;
   seenPairKeys?: string[];
   seenRoundKeys?: string[];
@@ -36,14 +37,17 @@ export async function loadKanjiClashQueueSnapshot(
 ): Promise<KanjiClashQueueSnapshot> {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
+  const manualContrastSeedPromise =
+    input.resolvedManualContrastSeed ??
+    loadKanjiClashManualContrastCandidates({
+      database,
+      mediaIds: input.mediaIds
+    });
   const [eligibleSubjects, manualContrastSeed] = await Promise.all([
     listEligibleKanjiClashSubjects(database, {
       mediaIds: input.mediaIds
     }),
-    loadKanjiClashManualContrastCandidates({
-      database,
-      mediaIds: input.mediaIds
-    })
+    manualContrastSeedPromise
   ]);
 
   if (input.mode === "manual") {

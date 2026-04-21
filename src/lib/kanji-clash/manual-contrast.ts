@@ -38,35 +38,152 @@ export type KanjiClashManualContrastSeed = {
   suppressedContrastKeys: Set<string>;
 };
 
+type LoadedKanjiClashManualContrastRows = Awaited<
+  ReturnType<typeof loadKanjiClashManualContrastRows>
+>;
+type LoadedKanjiClashManualContrastRowsWithRoundStates = Awaited<
+  ReturnType<typeof loadKanjiClashManualContrastRowsWithRoundStates>
+>;
+
+export async function loadKanjiClashManualContrastPageSnapshot(input: {
+  database: Pick<DatabaseClient, "query" | "select">;
+  mediaIds?: string[];
+}): Promise<{
+  manualContrastSeed: KanjiClashManualContrastSeed;
+  manualContrasts: KanjiClashManualContrastSummary[];
+}> {
+  const rows = await loadKanjiClashManualContrastRowsWithRoundStates(
+    input.database
+  );
+  const subjectsByKey = await loadManualContrastSubjectMap({
+    database: input.database,
+    rows
+  });
+
+  return {
+    manualContrastSeed: buildKanjiClashManualContrastSeed({
+      mediaIds: input.mediaIds,
+      rows,
+      subjectsByKey
+    }),
+    manualContrasts: buildKanjiClashManualContrastSummaries(
+      rows,
+      subjectsByKey
+    )
+  };
+}
+
 export async function loadKanjiClashManualContrastCandidates(input: {
   database: Pick<DatabaseClient, "query" | "select">;
   mediaIds?: string[];
 }): Promise<KanjiClashManualContrastSeed> {
-  const rows = await input.database.query.kanjiClashManualContrast.findMany({
+  const rows = await loadKanjiClashManualContrastRowsWithRoundStates(
+    input.database
+  );
+  const subjectsByKey = await loadManualContrastSubjectMap({
+    database: input.database,
+    rows
+  });
+
+  return buildKanjiClashManualContrastSeed({
+    mediaIds: input.mediaIds,
+    rows,
+    subjectsByKey
+  });
+}
+
+export async function listKanjiClashManualContrastSummaries(
+  database: Pick<DatabaseClient, "query" | "select">
+): Promise<KanjiClashManualContrastSummary[]> {
+  const rows = await loadKanjiClashManualContrastRows(database);
+  const subjectsByKey = await loadManualContrastSubjectMap({
+    database,
+    rows
+  });
+
+  return buildKanjiClashManualContrastSummaries(rows, subjectsByKey);
+}
+
+async function loadKanjiClashManualContrastRows(
+  database: Pick<DatabaseClient, "query">
+) {
+  return database.query.kanjiClashManualContrast.findMany({
+    orderBy: (fields, operators) => [
+      operators.asc(fields.status),
+      operators.desc(fields.updatedAt),
+      operators.asc(fields.contrastKey)
+    ]
+  });
+}
+
+async function loadKanjiClashManualContrastRowsWithRoundStates(
+  database: Pick<DatabaseClient, "query">
+) {
+  return database.query.kanjiClashManualContrast.findMany({
+    orderBy: (fields, operators) => [
+      operators.asc(fields.status),
+      operators.desc(fields.updatedAt),
+      operators.asc(fields.contrastKey)
+    ],
     where: inArray(kanjiClashManualContrast.status, ["active", "archived"]),
     with: {
       roundStates: true
     }
   });
+}
+
+async function loadManualContrastSubjectMap(input: {
+  database: Pick<DatabaseClient, "query" | "select">;
+  rows: Array<{
+    subjectAKey: string;
+    subjectBKey: string;
+  }>;
+}) {
+  return loadManualContrastSubjects({
+    database: input.database,
+    subjectKeys: dedupeStable(
+      input.rows.flatMap((row) => [row.subjectAKey, row.subjectBKey])
+    )
+  });
+}
+
+function buildKanjiClashManualContrastSummaries(
+  rows: LoadedKanjiClashManualContrastRows,
+  subjectsByKey: Map<string, KanjiClashEligibleSubject>
+) {
+  return rows.map((row) => ({
+    contrastKey: row.contrastKey,
+    leftLabel:
+      subjectsByKey.get(row.subjectAKey)?.label ??
+      formatManualContrastSubjectLabel(row.subjectAKey),
+    leftSubjectKey: row.subjectAKey,
+    rightLabel:
+      subjectsByKey.get(row.subjectBKey)?.label ??
+      formatManualContrastSubjectLabel(row.subjectBKey),
+    rightSubjectKey: row.subjectBKey,
+    source: row.source,
+    status: row.status
+  }));
+}
+
+function buildKanjiClashManualContrastSeed(input: {
+  mediaIds?: string[];
+  rows: LoadedKanjiClashManualContrastRowsWithRoundStates;
+  subjectsByKey: Map<string, KanjiClashEligibleSubject>;
+}): KanjiClashManualContrastSeed {
   const candidates: KanjiClashCandidate[] = [];
   const pairStates = new Map<string, KanjiClashPairState>();
   const suppressedContrastKeys = new Set<string>();
-  const subjectsByKey = await loadManualContrastSubjects({
-    database: input.database,
-    subjectKeys: dedupeStable(
-      rows.flatMap((contrast) => [contrast.subjectAKey, contrast.subjectBKey])
-    )
-  });
 
-  for (const contrast of rows) {
+  for (const contrast of input.rows) {
     suppressedContrastKeys.add(contrast.contrastKey);
 
     if (contrast.status !== "active") {
       continue;
     }
 
-    const left = subjectsByKey.get(contrast.subjectAKey);
-    const right = subjectsByKey.get(contrast.subjectBKey);
+    const left = input.subjectsByKey.get(contrast.subjectAKey);
+    const right = input.subjectsByKey.get(contrast.subjectBKey);
 
     if (!left || !right) {
       continue;
@@ -113,38 +230,6 @@ export async function loadKanjiClashManualContrastCandidates(input: {
     pairStates,
     suppressedContrastKeys
   };
-}
-
-export async function listKanjiClashManualContrastSummaries(
-  database: Pick<DatabaseClient, "query" | "select">
-): Promise<KanjiClashManualContrastSummary[]> {
-  const rows = await database.query.kanjiClashManualContrast.findMany({
-    orderBy: (fields, operators) => [
-      operators.asc(fields.status),
-      operators.desc(fields.updatedAt),
-      operators.asc(fields.contrastKey)
-    ]
-  });
-  const subjectsByKey = await loadManualContrastSubjects({
-    database,
-    subjectKeys: dedupeStable(
-      rows.flatMap((row) => [row.subjectAKey, row.subjectBKey])
-    )
-  });
-
-  return rows.map((row) => ({
-    contrastKey: row.contrastKey,
-    leftLabel:
-      subjectsByKey.get(row.subjectAKey)?.label ??
-      formatManualContrastSubjectLabel(row.subjectAKey),
-    leftSubjectKey: row.subjectAKey,
-    rightLabel:
-      subjectsByKey.get(row.subjectBKey)?.label ??
-      formatManualContrastSubjectLabel(row.subjectBKey),
-    rightSubjectKey: row.subjectBKey,
-    source: row.source,
-    status: row.status
-  }));
 }
 
 export async function archiveKanjiClashManualContrast(input: {
