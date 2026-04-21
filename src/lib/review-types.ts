@@ -139,6 +139,7 @@ export type ReviewPageData = {
   media: {
     glossaryHref: MediaGlossaryHref;
     href: MediaHref | "/";
+    id?: string;
     reviewHref: MediaStudyHref | ReviewHref;
     slug: string;
     title: string;

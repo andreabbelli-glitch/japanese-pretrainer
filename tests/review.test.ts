@@ -3011,50 +3011,56 @@ describe("review system", () => {
     );
     const { gradeReviewCardSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
+    const mediaFindFirstSpy = vi.spyOn(database.query.media, "findFirst");
 
-    expect(pageData?.queueCardIds).toEqual([currentCardId, nextCardId]);
+    try {
+      expect(pageData?.queueCardIds).toEqual([currentCardId, nextCardId]);
 
-    const result = await gradeReviewCardSessionAction({
-      answeredCount: pageData?.session.answeredCount ?? 0,
-      cardId: currentCardId,
-      cardMediaSlug: developmentFixture.mediaSlug,
-      extraNewCount: pageData?.session.extraNewCount ?? 0,
-      gradedCardBucket: pageData?.selectedCard?.bucket,
-      mediaSlug: developmentFixture.mediaSlug,
-      nextCardId,
-      rating: "good",
-      scope: "media",
-      sessionMedia: pageData?.media,
-      sessionQueue: pageData?.queue,
-      sessionSettings: pageData?.settings
-    });
+      const result = await gradeReviewCardSessionAction({
+        answeredCount: pageData?.session.answeredCount ?? 0,
+        cardId: currentCardId,
+        cardMediaSlug: developmentFixture.mediaSlug,
+        extraNewCount: pageData?.session.extraNewCount ?? 0,
+        gradedCardBucket: pageData?.selectedCard?.bucket,
+        mediaSlug: developmentFixture.mediaSlug,
+        nextCardId,
+        rating: "good",
+        scope: "media",
+        sessionMedia: pageData?.media,
+        sessionQueue: pageData?.queue,
+        sessionSettings: pageData?.settings
+      });
 
-    expect(reviewPageCalls).toEqual([]);
-    expect(pageData?.queue.advanceCards.map((card) => card.id)).toEqual([
-      nextCardId
-    ]);
-    expect(result.selectedCard?.id).toBe(nextCardId);
-    expect(result.queue.queueCount).toBe(
-      Math.max(0, (pageData?.queue.queueCount ?? 0) - 1)
-    );
-    expect(result.queue.dueCount).toBe(
-      Math.max(0, (pageData?.queue.dueCount ?? 0) - 1)
-    );
-    expect(result.queueCardIds).toEqual([]);
-    expect(result.selectedCardContext.isQueueCard).toBe(true);
-    expect(result.selectedCardContext.position).toBe(1);
-    expect(result.selectedCardContext.remainingCount).toBe(
-      Math.max(0, result.queue.queueCount - 1)
-    );
-    expect(result.selectedCardContext.showAnswer).toBe(false);
-    expect(result.queue.advanceCards).toEqual([]);
-    expect(result.session.answeredCount).toBe(
-      (pageData?.session.answeredCount ?? 0) + 1
-    );
-    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
-      developmentFixture.mediaId
-    );
-    expect(revalidatePathMock).not.toHaveBeenCalled();
+      expect(reviewPageCalls).toEqual([]);
+      expect(pageData?.queue.advanceCards.map((card) => card.id)).toEqual([
+        nextCardId
+      ]);
+      expect(result.selectedCard?.id).toBe(nextCardId);
+      expect(result.queue.queueCount).toBe(
+        Math.max(0, (pageData?.queue.queueCount ?? 0) - 1)
+      );
+      expect(result.queue.dueCount).toBe(
+        Math.max(0, (pageData?.queue.dueCount ?? 0) - 1)
+      );
+      expect(result.queueCardIds).toEqual([]);
+      expect(result.selectedCardContext.isQueueCard).toBe(true);
+      expect(result.selectedCardContext.position).toBe(1);
+      expect(result.selectedCardContext.remainingCount).toBe(
+        Math.max(0, result.queue.queueCount - 1)
+      );
+      expect(result.selectedCardContext.showAnswer).toBe(false);
+      expect(result.queue.advanceCards).toEqual([]);
+      expect(result.session.answeredCount).toBe(
+        (pageData?.session.answeredCount ?? 0) + 1
+      );
+      expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
+        developmentFixture.mediaId
+      );
+      expect(revalidatePathMock).not.toHaveBeenCalled();
+      expect(mediaFindFirstSpy).not.toHaveBeenCalled();
+    } finally {
+      mediaFindFirstSpy.mockRestore();
+    }
   });
 
   it("returns forced contrast session metadata when grading with an incremental session plan", async () => {

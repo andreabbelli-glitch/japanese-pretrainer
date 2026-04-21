@@ -708,13 +708,17 @@ export function useReviewPageController(input: {
                 sessionViewData.scope === "media"
                   ? sessionViewData.media.slug
                   : undefined,
-              rating,
-              segmentId: sessionViewData.session.segmentId,
-              scope: sessionViewData.scope,
-              ...(forcedKanjiClashContrast
-                ? { forcedKanjiClashContrast }
-                : {})
-            } as Parameters<typeof gradeReviewCardSessionAction>[0]
+            rating,
+            segmentId: sessionViewData.session.segmentId,
+            sessionMedia:
+              sessionViewData.scope === "media"
+                ? sessionViewData.media
+                : undefined,
+            scope: sessionViewData.scope,
+            ...(forcedKanjiClashContrast
+              ? { forcedKanjiClashContrast }
+              : {})
+          } as Parameters<typeof gradeReviewCardSessionAction>[0]
           ),
         {
           ...(forcedKanjiClashContrast

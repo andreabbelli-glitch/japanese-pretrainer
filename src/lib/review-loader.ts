@@ -17,7 +17,6 @@ import {
 import {
   buildReviewSummaryTags,
   canUseDataCache,
-  getMediaBySlugCached,
   listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
@@ -53,7 +52,7 @@ export type ReviewPageLoadOptions = {
   bypassCache?: boolean;
   excludeCardIds?: string[];
   profiler?: ReviewProfiler | null;
-  resolvedMedia?: NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>;
+  resolvedMedia?: Pick<MediaListItem, "id" | "slug" | "title">;
   resolvedMediaRows?: MediaListItem[];
 };
 

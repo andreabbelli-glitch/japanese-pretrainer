@@ -89,6 +89,7 @@ export function buildReviewSessionActionInput(
     mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
     redirectMode,
     segmentId: viewData.session.segmentId,
+    sessionMedia: viewData.scope === "media" ? viewData.media : undefined,
     scope: viewData.scope
   };
 }

@@ -4,7 +4,7 @@ import type { Route } from "next";
 import { redirect } from "next/navigation";
 
 import { readRequiredString } from "./form-data.ts";
-import { db, getMediaBySlug } from "@/db";
+import { db } from "@/db";
 import { loadReviewPageDataSession } from "@/lib/review-page-data";
 import {
   getMediaBySlugCached,
@@ -77,6 +77,11 @@ type ReviewSessionMutationInput = ReviewSessionInput & {
   redirectMode: ReviewSessionRedirectMode;
   suspended?: boolean;
 };
+type ResolvedReviewScopeMedia = {
+  id: string;
+  slug: string;
+  title: string;
+};
 
 export async function gradeReviewCardAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
@@ -147,10 +152,7 @@ export async function gradeReviewCardSessionAction(
     rating: "again" | "hard" | "good" | "easy";
   }
 ): Promise<ReviewPageData> {
-  const media =
-    input.scope === "media" && input.mediaSlug
-      ? await requireMediaForSlug(input.mediaSlug!)
-      : undefined;
+  const media = await resolveReviewSessionMedia(input);
   const forcedContrast =
     input.forcedKanjiClashContrast ?? input.forcedContrast;
 
@@ -774,7 +776,7 @@ function buildReviewSearchParams(input: {
 async function requireReviewPageData(
   mediaSlug: string,
   searchParams: Record<string, string | string[] | undefined>,
-  resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {},
+  resolvedMedia?: ResolvedReviewScopeMedia,
   excludeCardIds?: string[],
   bypassCache = true
 ) {
@@ -794,7 +796,7 @@ async function requireReviewPageData(
 async function requireReviewPageDataForScope(
   input: Pick<ReviewSessionInput, "gradedCardIds" | "mediaSlug" | "scope">,
   searchParams: Record<string, string | string[] | undefined>,
-  resolvedMedia?: Awaited<ReturnType<typeof getMediaBySlug>> & {},
+  resolvedMedia?: ResolvedReviewScopeMedia,
   bypassCache = true
 ) {
   const excludeCardIds = input.gradedCardIds;
@@ -820,11 +822,23 @@ async function requireReviewPageDataForScope(
 }
 
 async function resolveReviewSessionMedia(
-  input: Pick<ReviewSessionInput, "mediaSlug" | "scope">
+  input: Pick<ReviewSessionInput, "mediaSlug" | "scope" | "sessionMedia">
 ) {
-  return input.scope === "media" && input.mediaSlug
-    ? requireMediaForSlug(input.mediaSlug)
-    : undefined;
+  if (input.scope !== "media" || !input.mediaSlug) {
+    return undefined;
+  }
+
+  const sessionMedia = input.sessionMedia;
+
+  if (sessionMedia?.id && sessionMedia.slug === input.mediaSlug) {
+    return {
+      id: sessionMedia.id,
+      slug: sessionMedia.slug,
+      title: sessionMedia.title
+    } satisfies ResolvedReviewScopeMedia;
+  }
+
+  return requireMediaForSlug(input.mediaSlug);
 }
 
 async function requireMediaForSlug(mediaSlug: string) {

@@ -379,6 +379,7 @@ export async function getReviewPageData(
       media: {
         glossaryHref: mediaGlossaryHref(media.slug),
         href: mediaHref(media.slug),
+        id: media.id,
         reviewHref: mediaStudyHref(media.slug, "review"),
         slug: media.slug,
         title: media.title
