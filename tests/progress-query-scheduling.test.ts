@@ -108,6 +108,88 @@ describe("progress query scheduling", () => {
     await expect(progressPromise).resolves.toBeNull();
   });
 
+  it("starts the global review overview before the cache-enabled media lookup settles", async () => {
+    const settingsValue = {
+      furiganaMode: "hover" as const,
+      glossaryDefaultSort: "lesson_order" as const,
+      kanjiClashDailyNewLimit: 5,
+      kanjiClashDefaultScope: "global" as const,
+      kanjiClashManualDefaultSize: 20,
+      reviewFrontFurigana: true,
+      reviewDailyLimit: 7
+    };
+    const mediaDeferred = createDeferred<{
+      id: string;
+      slug: string;
+      title: string;
+    } | null>();
+    const settingsDeferred = createDeferred<typeof settingsValue>();
+    const introducedTodayDeferred = createDeferred<number>();
+    const globalOverviewDeferred = createDeferred<unknown>();
+    let overviewStarted = false;
+
+    const loadGlobalReviewOverviewSnapshot = vi.fn(() => {
+      overviewStarted = true;
+      return globalOverviewDeferred.promise;
+    });
+
+    vi.doMock("@/db", () => ({
+      db: {}
+    }));
+    vi.doMock("@/lib/data-cache", () => ({
+      GLOSSARY_SUMMARY_TAG: "glossary-summary",
+      MEDIA_LIST_TAG: "media-list",
+      REVIEW_SUMMARY_TAG: "review-summary",
+      SETTINGS_TAG: "settings",
+      buildGlossarySummaryTags: vi.fn(() => []),
+      buildReviewSummaryTags: vi.fn(() => []),
+      canUseDataCache: vi.fn(() => true),
+      getMediaBySlugCached: vi.fn(() => mediaDeferred.promise),
+      listMediaCached: vi.fn(),
+      runWithTaggedCache: vi.fn(async ({ loader }) => loader())
+    }));
+    vi.doMock("@/lib/local-date", () => ({
+      getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+    }));
+    vi.doMock("@/lib/media-shell", () => ({
+      getMediaDetailData: vi.fn()
+    }));
+    vi.doMock("@/lib/review", () => ({
+      loadGlobalReviewOverviewSnapshot,
+      loadReviewIntroducedTodayCountCached: vi.fn(
+        () => introducedTodayDeferred.promise
+      ),
+      loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
+      mapReviewOverviewSnapshot: vi.fn()
+    }));
+    vi.doMock("@/lib/settings", () => ({
+      getStudySettings: vi.fn(() => settingsDeferred.promise)
+    }));
+
+    const { getMediaProgressPageData } = await import("@/lib/progress");
+    const progressPromise = getMediaProgressPageData("fixture-media");
+
+    await flushMicrotasks();
+    expect(overviewStarted).toBe(false);
+
+    settingsDeferred.resolve(settingsValue);
+    introducedTodayDeferred.resolve(2);
+    await flushMicrotasks();
+
+    expect(overviewStarted).toBe(true);
+    expect(loadGlobalReviewOverviewSnapshot).toHaveBeenCalledWith(
+      {},
+      expect.objectContaining({
+        resolvedDailyLimit: 7,
+        resolvedNewIntroducedTodayCount: 2
+      })
+    );
+
+    mediaDeferred.resolve(null);
+    globalOverviewDeferred.resolve(null);
+    await expect(progressPromise).resolves.toBeNull();
+  });
+
   it("starts the global review overview load before the local media candidate settles", async () => {
     const settingsValue = {
       furiganaMode: "hover" as const,

@@ -132,6 +132,16 @@ export async function getMediaProgressPageData(
       const settingsPromise = getStudySettings(database);
       const newIntroducedTodayCountPromise =
         loadReviewIntroducedTodayCountCached(database, now);
+      const globalReviewSnapshotPromise = Promise.all([
+        settingsPromise,
+        newIntroducedTodayCountPromise
+      ]).then(([settings, newIntroducedTodayCount]) =>
+        loadGlobalReviewOverviewSnapshot(database, {
+          asOf: now,
+          resolvedDailyLimit: settings.reviewDailyLimit,
+          resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+        })
+      );
       const mediaPromise = cacheEligible
         ? getMediaBySlugCached(database, mediaSlug)
         : listMediaCached(database).then(
@@ -145,16 +155,6 @@ export async function getMediaProgressPageData(
         return null;
       }
 
-      const globalReviewSnapshotPromise = Promise.all([
-        settingsPromise,
-        newIntroducedTodayCountPromise
-      ]).then(([settings, newIntroducedTodayCount]) =>
-        loadGlobalReviewOverviewSnapshot(database, {
-          asOf: now,
-          resolvedDailyLimit: settings.reviewDailyLimit,
-          resolvedNewIntroducedTodayCount: newIntroducedTodayCount
-        })
-      );
       const reviewSnapshotsPromise = Promise.all([
         settingsPromise,
         newIntroducedTodayCountPromise,
