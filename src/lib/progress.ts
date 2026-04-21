@@ -1,12 +1,12 @@
 import { db, type DatabaseClient } from "@/db";
 import { getMediaDetailData } from "@/lib/media-shell";
 import {
-  buildGlossarySummaryTags,
-  buildReviewSummaryTags,
   canUseDataCache,
+  GLOSSARY_SUMMARY_TAG,
   getMediaBySlugCached,
   listMediaCached,
   MEDIA_LIST_TAG,
+  REVIEW_SUMMARY_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
 } from "@/lib/data-cache";
@@ -127,25 +127,23 @@ export async function getMediaProgressPageData(
   const settingsPromise = getStudySettings(database);
   const newIntroducedTodayCountPromise =
     loadReviewIntroducedTodayCountCached(database, now);
-  const resolvedMedia = cacheEligible
-    ? await getMediaBySlugCached(database, mediaSlug)
-    : null;
-  const media =
-    resolvedMedia ??
-    (!cacheEligible
-      ? (await listMediaCached(database)).find(
-          (candidate) => candidate.slug === mediaSlug
-        ) ?? null
-      : null);
-
-  if (!media) {
-    return null;
-  }
+  const mediaPromise = cacheEligible
+    ? getMediaBySlugCached(database, mediaSlug)
+    : listMediaCached(database).then(
+        (mediaRows) =>
+          mediaRows.find((candidate) => candidate.slug === mediaSlug) ?? null
+      );
 
   return runWithTaggedCache({
     enabled: cacheEligible,
-    keyParts: ["progress", "media-page", media.id, `bucket:${cacheBucketKey}`],
+    keyParts: ["progress", "media-page", mediaSlug, `bucket:${cacheBucketKey}`],
     loader: async () => {
+      const media = await mediaPromise;
+
+      if (!media) {
+        return null;
+      }
+
       const globalReviewSnapshotPromise = Promise.all([
         settingsPromise,
         newIntroducedTodayCountPromise
@@ -201,8 +199,8 @@ export async function getMediaProgressPageData(
     tags: [
       MEDIA_LIST_TAG,
       SETTINGS_TAG,
-      ...buildGlossarySummaryTags([media.id]),
-      ...buildReviewSummaryTags([media.id])
+      GLOSSARY_SUMMARY_TAG,
+      REVIEW_SUMMARY_TAG
     ]
   });
 }

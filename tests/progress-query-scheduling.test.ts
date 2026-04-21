@@ -60,7 +60,9 @@ describe("progress query scheduling", () => {
       db: {}
     }));
     vi.doMock("@/lib/data-cache", () => ({
+      GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
+      REVIEW_SUMMARY_TAG: "review-summary",
       SETTINGS_TAG: "settings",
       buildGlossarySummaryTags: vi.fn(() => []),
       buildReviewSummaryTags: vi.fn(() => []),
@@ -176,7 +178,9 @@ describe("progress query scheduling", () => {
       db: {}
     }));
     vi.doMock("@/lib/data-cache", () => ({
+      GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
+      REVIEW_SUMMARY_TAG: "review-summary",
       SETTINGS_TAG: "settings",
       buildGlossarySummaryTags: vi.fn(() => []),
       buildReviewSummaryTags: vi.fn(() => []),
