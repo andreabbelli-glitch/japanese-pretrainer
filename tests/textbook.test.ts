@@ -172,6 +172,22 @@ function createDeferred() {
   };
 }
 
+async function waitForTruthy(
+  predicate: () => boolean,
+  message: string,
+  attempts = 50
+) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    if (predicate()) {
+      return;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  }
+
+  throw new Error(message);
+}
+
 describe("textbook data", () => {
   let tempDir = "";
   let database: DatabaseClient;
@@ -312,6 +328,63 @@ describe("textbook data", () => {
       await lessonPromise;
       mediaLookupSpy.mockRestore();
       settingsLookupSpy.mockRestore();
+    }
+  });
+
+  it("starts loading the lesson body as soon as the media row is ready", async () => {
+    const mediaGate = createDeferred();
+    const settingsGate = createDeferred();
+    let lessonStarted = false;
+
+    const originalMediaLookup = dataCache.getMediaBySlugCached;
+    const originalFuriganaLookup = settings.getFuriganaModeSetting;
+    const originalLessonLookup = database.query.lesson.findFirst.bind(
+      database.query.lesson
+    );
+    const mediaLookupSpy = vi
+      .spyOn(dataCache, "getMediaBySlugCached")
+      .mockImplementation(async (...args) => {
+        const resultPromise = originalMediaLookup(...args);
+        await mediaGate.promise;
+        return resultPromise;
+      });
+    const settingsLookupSpy = vi
+      .spyOn(settings, "getFuriganaModeSetting")
+      .mockImplementation(async (...args) => {
+        const resultPromise = originalFuriganaLookup(...args);
+        await settingsGate.promise;
+        return resultPromise;
+      });
+    const lessonLookupSpy = vi
+      .spyOn(database.query.lesson, "findFirst")
+      .mockImplementation((...args) => {
+        lessonStarted = true;
+        return originalLessonLookup(...args);
+      });
+
+    const lessonPromise = getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    await Promise.resolve();
+    await Promise.resolve();
+
+    try {
+      expect(lessonStarted).toBe(false);
+
+      mediaGate.resolve();
+      await waitForTruthy(
+        () => lessonStarted,
+        "Expected the lesson body load to start once the media row resolved."
+      );
+    } finally {
+      settingsGate.resolve();
+      await lessonPromise;
+      mediaLookupSpy.mockRestore();
+      settingsLookupSpy.mockRestore();
+      lessonLookupSpy.mockRestore();
     }
   });
 

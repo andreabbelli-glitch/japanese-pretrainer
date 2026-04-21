@@ -103,27 +103,29 @@ export async function getTextbookLessonData(
 ): Promise<TextbookLessonData | null> {
   markDataAsLive();
 
-  const [media, furiganaMode] = await Promise.all([
-    getMediaBySlugCached(database, mediaSlug),
-    getFuriganaMode(database)
-  ]);
+  const mediaPromise = getMediaBySlugCached(database, mediaSlug);
+  const furiganaModePromise = getFuriganaMode(database);
+  const media = await mediaPromise;
 
   if (!media) {
+    await furiganaModePromise;
     return null;
   }
 
+  const lessonPromise = getTextbookLessonBodyData({
+    database,
+    lessonSlug,
+    mediaSlug,
+    mediaId: media.id
+  });
+  const furiganaMode = await furiganaModePromise;
   const indexModelPromise = getTextbookIndexData(mediaSlug, database, {
-      resolvedFuriganaMode: furiganaMode,
-      resolvedMedia: media
-    });
+    resolvedFuriganaMode: furiganaMode,
+    resolvedMedia: media
+  });
   const [indexModel, lesson] = await Promise.all([
     indexModelPromise,
-    getTextbookLessonBodyData({
-      database,
-      lessonSlug,
-      mediaSlug,
-      mediaId: media.id
-    })
+    lessonPromise
   ]);
 
   if (!indexModel || !lesson) {
