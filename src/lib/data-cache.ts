@@ -15,6 +15,13 @@ export const REVIEW_SUMMARY_TAG = "review-summary";
 export const REVIEW_FIRST_CANDIDATE_TAG = "review-first-candidate";
 export const TEXTBOOK_TOOLTIP_TAG = "textbook-tooltips";
 
+type MediaListSnapshot = Awaited<ReturnType<typeof listMedia>>;
+
+const inFlightMediaListSnapshots = new WeakMap<
+  DatabaseClient,
+  Promise<MediaListSnapshot>
+>();
+
 export function buildGlossarySummaryTags(mediaIds: string[] = []) {
   if (mediaIds.length === 0) {
     return [GLOSSARY_SUMMARY_TAG];
@@ -83,12 +90,26 @@ export const getMediaBySlugCached = cache(
 );
 
 export async function listMediaCached(database: DatabaseClient = db) {
-  return runWithTaggedCache({
+  const inFlight = inFlightMediaListSnapshots.get(database);
+
+  if (inFlight) {
+    return inFlight;
+  }
+
+  const snapshotPromise = runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["media-list"],
     loader: () => listMedia(database),
     tags: [MEDIA_LIST_TAG]
+  }).finally(() => {
+    if (inFlightMediaListSnapshots.get(database) === snapshotPromise) {
+      inFlightMediaListSnapshots.delete(database);
+    }
   });
+
+  inFlightMediaListSnapshots.set(database, snapshotPromise);
+
+  return snapshotPromise;
 }
 
 export function revalidateMediaListCache() {
