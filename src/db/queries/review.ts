@@ -672,19 +672,25 @@ async function loadReviewOverviewData(
       COALESCE(SUM(CASE WHEN gsc.effectiveState = 'known_manual' THEN 1 ELSE 0 END), 0) AS manualCount,
       COALESCE(SUM(CASE WHEN gsc.effectiveState = 'suspended' THEN 1 ELSE 0 END), 0) AS suspendedCount,
       COALESCE(SUM(CASE WHEN gsc.manualOverride = 0 AND gsc.effectiveState NOT IN ('new', 'known_manual', 'suspended') AND gsc.dueAt IS NOT NULL AND gsc.dueAt >= ${quoteSqlString(dayStartIso)} AND gsc.dueAt < ${quoteSqlString(dayEndIso)} THEN 1 ELSE 0 END), 0) AS tomorrowCount,
-      (SELECT front FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueFront,
-      (SELECT dueAt FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueDueAt,
-      (SELECT lastInteractionAt FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueLastInteractionAt,
-      (SELECT orderIndex FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueOrderIndex,
-      (SELECT createdAt FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueCreatedAt,
-      (SELECT cardId FROM due_fronts df WHERE df.mediaId = m.id AND df.rowNumber = 1) AS firstDueCardId,
-      (SELECT front FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewFront,
-      (SELECT lastInteractionAt FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewLastInteractionAt,
-      (SELECT orderIndex FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewOrderIndex,
-      (SELECT createdAt FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewCreatedAt,
-      (SELECT cardId FROM new_fronts nf WHERE nf.mediaId = m.id AND nf.rowNumber = 1) AS firstNewCardId
+      MAX(first_due.front) AS firstDueFront,
+      MAX(first_due.dueAt) AS firstDueDueAt,
+      MAX(first_due.lastInteractionAt) AS firstDueLastInteractionAt,
+      MAX(first_due.orderIndex) AS firstDueOrderIndex,
+      MAX(first_due.createdAt) AS firstDueCreatedAt,
+      MAX(first_due.cardId) AS firstDueCardId,
+      MAX(first_new.front) AS firstNewFront,
+      MAX(first_new.lastInteractionAt) AS firstNewLastInteractionAt,
+      MAX(first_new.orderIndex) AS firstNewOrderIndex,
+      MAX(first_new.createdAt) AS firstNewCreatedAt,
+      MAX(first_new.cardId) AS firstNewCardId
     FROM media m
     LEFT JOIN ${subjectCandidatesCte} gsc ON gsc.mediaId = m.id
+    LEFT JOIN due_fronts first_due
+      ON first_due.mediaId = m.id
+     AND first_due.rowNumber = 1
+    LEFT JOIN new_fronts first_new
+      ON first_new.mediaId = m.id
+     AND first_new.rowNumber = 1
     WHERE m.status = 'active'
       ${completedLessonsMediaId ? `AND m.id = ${quoteSqlString(completedLessonsMediaId)}` : ""}
     GROUP BY m.id, m.slug, m.title
