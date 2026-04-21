@@ -194,16 +194,43 @@ export async function loadReviewWorkspaceV2(input: {
 }): Promise<LoadedReviewWorkspaceV2> {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
-  const [stableWorkspace, dailyLimit, newIntroducedTodayCount] =
+  const stableWorkspacePromise = measureWith(
+    input.profiler,
+    "loadStableReviewWorkspaceV2",
+    () =>
+      loadStableReviewWorkspaceV2Cached({
+        bypassCache: input.bypassCache,
+        database,
+        mediaIds: input.mediaIds,
+        profiler: input.profiler
+      })
+  );
+  const subjectGroupsPromise = stableWorkspacePromise.then(
+    async (stableWorkspace) => {
+      if (stableWorkspace.cards.length === 0) {
+        return [] as ReviewSubjectGroup[];
+      }
+
+      const { subjectGroups } = await measureWith(
+        input.profiler,
+        "resolveReviewSubjectGroups",
+        () =>
+          resolveReviewSubjectGroups({
+            cards: stableWorkspace.cards,
+            database,
+            grammar: stableWorkspace.grammar,
+            nowIso: now.toISOString(),
+            terms: stableWorkspace.terms
+          }),
+        (value) => ({ subjectGroups: value.subjectGroups.length })
+      );
+
+      return subjectGroups;
+    }
+  );
+  const [stableWorkspace, dailyLimit, newIntroducedTodayCount, subjectGroups] =
     await Promise.all([
-      measureWith(input.profiler, "loadStableReviewWorkspaceV2", () =>
-        loadStableReviewWorkspaceV2Cached({
-          bypassCache: input.bypassCache,
-          database,
-          mediaIds: input.mediaIds,
-          profiler: input.profiler
-        })
-      ),
+      stableWorkspacePromise,
       input.resolvedDailyLimit != null
         ? input.resolvedDailyLimit
         : measureWith(input.profiler, "getReviewDailyLimit", () =>
@@ -220,7 +247,8 @@ export async function loadReviewWorkspaceV2(input: {
                 now,
                 input.bypassCache
               )
-          )
+          ),
+      subjectGroupsPromise
     ]);
   const cards = stableWorkspace.cards;
   input.profiler?.addMeta({
@@ -242,20 +270,6 @@ export async function loadReviewWorkspaceV2(input: {
       terms: []
     };
   }
-
-  const { subjectGroups } = await measureWith(
-    input.profiler,
-    "resolveReviewSubjectGroups",
-    () =>
-      resolveReviewSubjectGroups({
-        cards,
-        database,
-        grammar: stableWorkspace.grammar,
-        nowIso: now.toISOString(),
-        terms: stableWorkspace.terms
-      }),
-    (value) => ({ subjectGroups: value.subjectGroups.length })
-  );
 
   return {
     cards,

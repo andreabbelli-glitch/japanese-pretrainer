@@ -9,6 +9,7 @@ import * as dataCacheModule from "@/lib/data-cache";
 import * as dbModule from "@/db";
 import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
 import * as reviewCardHydrationModule from "@/lib/review-card-hydration";
+import * as reviewSubjectStateLookupModule from "@/lib/review-subject-state-lookup";
 import * as settingsModule from "@/lib/settings";
 import {
   closeDatabaseClient,
@@ -33,7 +34,10 @@ import {
   loadReviewLaunchCandidatesCached,
   loadReviewOverviewSnapshots
 } from "@/lib/review";
-import { loadGlobalReviewPageWorkspace } from "@/lib/review-loader";
+import {
+  loadGlobalReviewPageWorkspace,
+  loadReviewWorkspaceV2
+} from "@/lib/review-loader";
 import { normalizeReviewSearchState } from "@/lib/review-search-state";
 import {
   crossMediaFixture,
@@ -266,6 +270,58 @@ describe("review media query reuse", () => {
       await workspacePromise;
       settingsLookupSpy.mockRestore();
       workspaceLookupSpy.mockRestore();
+    }
+  });
+
+  it("starts subject-group resolution before the daily limit settles", async () => {
+    const dailyLimitGate = createDeferred();
+    const subjectGroupsGate = createDeferred();
+    let dailyLimitStarted = false;
+    let subjectGroupsStarted = false;
+
+    const originalGetReviewDailyLimit = settingsModule.getReviewDailyLimit;
+    const originalResolveReviewSubjectGroups =
+      reviewSubjectStateLookupModule.resolveReviewSubjectGroups;
+    const dailyLimitSpy = vi
+      .spyOn(settingsModule, "getReviewDailyLimit")
+      .mockImplementation(async (...args) => {
+        dailyLimitStarted = true;
+        const resultPromise = originalGetReviewDailyLimit(...args);
+        await dailyLimitGate.promise;
+        return resultPromise;
+      });
+    const subjectGroupsSpy = vi
+      .spyOn(
+        reviewSubjectStateLookupModule,
+        "resolveReviewSubjectGroups"
+      )
+      .mockImplementation(async (...args) => {
+        subjectGroupsStarted = true;
+        const resultPromise = originalResolveReviewSubjectGroups(...args);
+        await subjectGroupsGate.promise;
+        return resultPromise;
+      });
+
+    const workspacePromise = loadReviewWorkspaceV2({
+      database,
+      mediaIds: [developmentFixture.mediaId]
+    });
+
+    try {
+      await waitForTruthy(
+        () => dailyLimitStarted,
+        "Expected the daily limit lookup to start."
+      );
+      await waitForTruthy(
+        () => subjectGroupsStarted,
+        "Expected subject-group resolution to start before the daily limit settles."
+      );
+    } finally {
+      dailyLimitGate.resolve();
+      subjectGroupsGate.resolve();
+      await workspacePromise;
+      dailyLimitSpy.mockRestore();
+      subjectGroupsSpy.mockRestore();
     }
   });
 
