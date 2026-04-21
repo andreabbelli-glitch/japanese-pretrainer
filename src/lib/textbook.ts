@@ -10,12 +10,12 @@ import {
   type LessonListItem
 } from "@/db";
 import {
-  buildGlossarySummaryTags,
-  buildReviewSummaryTags,
   buildTextbookTooltipTags,
   canUseDataCache,
   getMediaBySlugCached,
+  GLOSSARY_SUMMARY_TAG,
   MEDIA_LIST_TAG,
+  REVIEW_SUMMARY_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
 } from "@/lib/data-cache";
@@ -170,26 +170,29 @@ export async function getTextbookLessonTooltipEntries(
   lessonSlug: string,
   database: DatabaseClient = db
 ): Promise<TextbookTooltipEntry[] | null> {
-  const media = await getMediaBySlugCached(database, mediaSlug);
-
-  if (!media) {
-    return null;
-  }
+  const mediaPromise = getMediaBySlugCached(database, mediaSlug);
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["textbook", "tooltips", mediaSlug, lessonSlug],
-    loader: () =>
-      loadTextbookLessonTooltipEntries(
+    loader: async () => {
+      const media = await mediaPromise;
+
+      if (!media) {
+        return null;
+      }
+
+      return loadTextbookLessonTooltipEntries(
         media.id,
         mediaSlug,
         lessonSlug,
         database
-      ),
+      );
+    },
     tags: [
       ...buildTextbookTooltipTags({ mediaSlug, lessonSlug }),
-      ...buildGlossarySummaryTags([media.id]),
-      ...buildReviewSummaryTags([media.id])
+      GLOSSARY_SUMMARY_TAG,
+      REVIEW_SUMMARY_TAG
     ]
   });
 }

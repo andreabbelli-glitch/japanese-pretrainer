@@ -69,7 +69,11 @@ import {
   revalidateSettingsCache,
   SETTINGS_TAG
 } from "@/lib/data-cache";
-import { getTextbookIndexData, getTextbookLessonData } from "@/lib/textbook";
+import {
+  getTextbookIndexData,
+  getTextbookLessonData,
+  getTextbookLessonTooltipEntries
+} from "@/lib/textbook";
 
 function createDeferred<T>() {
   let resolve!: (value: T) => void;
@@ -194,6 +198,47 @@ describe("textbook index cache", () => {
       await waitForTruthy(
         () => cacheHitResolved,
         "Expected the warm textbook index cache hit to resolve."
+      );
+
+      expect(mediaLookupSpy).toHaveBeenCalledTimes(1);
+    } finally {
+      mediaLookupDeferred.resolve(resolvedMedia);
+      await cachedResultPromise;
+      mediaLookupSpy.mockRestore();
+    }
+  });
+
+  it("serves a warm textbook tooltip cache hit without waiting for the media lookup", async () => {
+    await getTextbookLessonTooltipEntries(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    const dataCacheModule = await import("@/lib/data-cache");
+    const resolvedMedia = await dataCacheModule.getMediaBySlugCached(
+      database,
+      developmentFixture.mediaSlug
+    );
+    const mediaLookupDeferred = createDeferred<typeof resolvedMedia>();
+    let cacheHitResolved = false;
+    const mediaLookupSpy = vi
+      .spyOn(dataCacheModule, "getMediaBySlugCached")
+      .mockImplementation(async () => mediaLookupDeferred.promise);
+
+    const cachedResultPromise = getTextbookLessonTooltipEntries(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    ).then((result) => {
+      cacheHitResolved = true;
+      return result;
+    });
+
+    try {
+      await waitForTruthy(
+        () => cacheHitResolved,
+        "Expected the warm textbook tooltip cache hit to resolve."
       );
 
       expect(mediaLookupSpy).toHaveBeenCalledTimes(1);
