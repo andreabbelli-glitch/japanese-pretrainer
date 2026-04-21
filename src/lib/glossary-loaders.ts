@@ -341,12 +341,9 @@ export async function loadGlossaryDetailData(
       ]),
       crossMediaFamilyPromise
     ]);
-  const entryStudySignals = cardConnections
-    .filter((connection) => connection.cardStatus === "active")
-    .map((connection) => ({
-      manualOverride: connection.manualOverride,
-      reviewState: connection.reviewState
-    }));
+  const entryStudySignals = cardConnections.filter(
+    (connection) => connection.cardStatus === "active"
+  );
   const baseEntry =
     kind === "term"
       ? mapEntryToBaseModel(entry as TermGlossaryEntry, "term")

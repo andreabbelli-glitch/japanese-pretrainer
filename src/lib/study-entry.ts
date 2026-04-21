@@ -20,12 +20,31 @@ export type DerivedStudyState = {
 export function deriveEntryStudyState(
   studySignals: EntryStudySignal[] | null | undefined
 ): DerivedStudyState {
-  const signals = studySignals ?? [];
-  const hasKnownSignal =
-    signals.some(
-      (signal) =>
-        signal.reviewState === "known_manual" || signal.manualOverride
-    );
+  let hasKnownSignal = false;
+  let hasLearningCards = false;
+  let hasCardsInReview = false;
+  let hasNewCards = false;
+
+  for (const signal of studySignals ?? []) {
+    if (signal.reviewState === "known_manual" || signal.manualOverride) {
+      hasKnownSignal = true;
+      break;
+    }
+
+    if (signal.reviewState === "learning") {
+      hasLearningCards = true;
+      continue;
+    }
+
+    if (signal.reviewState === "review" || signal.reviewState === "relearning") {
+      hasCardsInReview = true;
+      continue;
+    }
+
+    if (signal.reviewState === "new") {
+      hasNewCards = true;
+    }
+  }
 
   if (hasKnownSignal) {
     return {
@@ -36,10 +55,6 @@ export function deriveEntryStudyState(
     };
   }
 
-  const hasLearningCards = signals.some(
-    (signal) => signal.reviewState === "learning"
-  );
-
   if (hasLearningCards) {
     return {
       key: "learning",
@@ -49,20 +64,16 @@ export function deriveEntryStudyState(
     };
   }
 
-  const hasCardsInReview = signals.some((signal) =>
-    ["review", "relearning"].includes(signal.reviewState ?? "")
-  );
-
   if (hasCardsInReview) {
     return {
       key: "review",
       label: "In review",
-      hasCardsInReview,
+      hasCardsInReview: true,
       hasKnownSignal: false
     };
   }
 
-  if (signals.some((signal) => signal.reviewState === "new")) {
+  if (hasNewCards) {
     return {
       key: "new",
       label: "Nuova",

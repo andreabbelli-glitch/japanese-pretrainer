@@ -146,14 +146,8 @@ export function buildResolvedEntriesFromMaps(input: {
   const query = buildFilteredQuery(input.filters.query);
 
   return input.entries.map((entry) => {
-    const studySignals = (
-      input.studySignalsByEntry.get(
-        buildEntryKey(entry.kind, entry.internalId)
-      ) ?? []
-    ).map((signal) => ({
-      manualOverride: signal.manualOverride,
-      reviewState: signal.reviewState
-    }));
+    const entryKey = buildEntryKey(entry.kind, entry.internalId);
+    const studySignals = input.studySignalsByEntry.get(entryKey) ?? [];
     const studyState = deriveEntryStudyState(studySignals);
     const rankedEntry =
       buildRankedGlossaryEntry(entry, query, studyState) ??
@@ -167,9 +161,7 @@ export function buildResolvedEntriesFromMaps(input: {
         score: 0,
         studyState
       } satisfies RankedGlossaryEntry);
-    const cardCount =
-      input.cardCountByEntry.get(buildEntryKey(entry.kind, entry.internalId)) ??
-      0;
+    const cardCount = input.cardCountByEntry.get(entryKey) ?? 0;
 
     return {
       ...rankedEntry,
