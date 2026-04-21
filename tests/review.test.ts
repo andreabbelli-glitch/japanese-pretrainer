@@ -3298,6 +3298,109 @@ describe("review system", () => {
     expect(sessionHref).not.toContain(`card=${bufferedCardBId}`);
   });
 
+  it("starts later queued card hydrations before the first missing candidate settles and reuses them for advance cards", async () => {
+    const { bufferedCardBId, bufferedCardCId } =
+      await prepareChainedBufferedAdvanceFixture(database);
+    const pageData = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+    const hydrateGate = (() => {
+      let resolve!: () => void;
+
+      return {
+        promise: new Promise<void>((innerResolve) => {
+          resolve = innerResolve;
+        }),
+        resolve
+      };
+    })();
+    const hydrateCallsById = new Map<string, number>();
+    const startedCardIds = new Set<string>();
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database, {
+        hydrateReviewCard: async ({ cardId }) => {
+          startedCardIds.add(cardId);
+          hydrateCallsById.set(cardId, (hydrateCallsById.get(cardId) ?? 0) + 1);
+
+          if (cardId === bufferedCardBId) {
+            await hydrateGate.promise;
+            return null;
+          }
+
+          return hydrateReviewCard({
+            cardId,
+            database
+          });
+        }
+      });
+    const chainedSessionQueue = pageData
+      ? {
+          ...pageData.queue,
+          dueCount: 4,
+          introLabel: "4 cards",
+          queueCount: 4,
+          queueLabel: "4 cards"
+        }
+      : null;
+
+    expect(chainedSessionQueue).not.toBeNull();
+
+    const resultPromise = gradeReviewCardSessionAction({
+      answeredCount: pageData?.session.answeredCount ?? 0,
+      cardId: developmentFixture.primaryCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      canonicalCandidateCardIds: [
+        bufferedCardBId,
+        bufferedCardCId,
+        developmentFixture.secondaryCardId
+      ],
+      candidateCardIds: [
+        bufferedCardBId,
+        bufferedCardCId,
+        developmentFixture.secondaryCardId
+      ],
+      extraNewCount: pageData?.session.extraNewCount ?? 0,
+      gradedCardBucket: pageData?.selectedCard?.bucket,
+      mediaSlug: developmentFixture.mediaSlug,
+      nextCardId: bufferedCardCId,
+      rating: "good",
+      scope: "media",
+      sessionMedia: pageData?.media,
+      sessionQueue: chainedSessionQueue ?? pageData?.queue,
+      sessionSettings: pageData?.settings
+    });
+
+    for (let attempt = 0; attempt < 50; attempt += 1) {
+      if (startedCardIds.has(bufferedCardBId)) {
+        break;
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    }
+
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(startedCardIds).toContain(bufferedCardBId);
+    expect(startedCardIds).toContain(bufferedCardCId);
+    expect(startedCardIds).toContain(developmentFixture.secondaryCardId);
+
+    hydrateGate.resolve();
+
+    const result = await resultPromise;
+
+    expect(reviewPageCalls).toEqual([]);
+    expect(result.selectedCard?.id).toBe(bufferedCardCId);
+    expect(result.queue.advanceCards.map((card) => card.id)).toEqual([
+      developmentFixture.secondaryCardId
+    ]);
+    expect(hydrateCallsById.get(bufferedCardBId)).toBe(1);
+    expect(hydrateCallsById.get(bufferedCardCId)).toBe(1);
+    expect(hydrateCallsById.get(developmentFixture.secondaryCardId)).toBe(1);
+  });
+
   it("falls back to a full rebuild instead of forcing completion when the session plan has no nextCardId", async () => {
     const { currentCardId } = await prepareTwoQueueCardFixture(database);
     const pageData = await getGlobalReviewPageData({}, database);

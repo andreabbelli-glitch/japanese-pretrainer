@@ -82,6 +82,13 @@ type ResolvedReviewScopeMedia = {
   slug: string;
   title: string;
 };
+type HydratedReviewCardOutcome =
+  | {
+      card: ReviewQueueCard | null;
+    }
+  | {
+      error: unknown;
+    };
 
 export async function gradeReviewCardAction(formData: FormData) {
   const mediaSlug = readRequiredString(formData, "mediaSlug");
@@ -190,6 +197,7 @@ export async function gradeReviewCardSessionAction(
       const advanceCards = await hydrateReviewAdvanceCards({
         canonicalCandidateCardIds:
           input.canonicalCandidateCardIds ?? input.candidateCardIds ?? [],
+        hydratedCardOutcomes: hydratedAdvanceCandidate.hydratedCardOutcomes,
         now,
         selectedQueuePosition: hydratedAdvanceCandidate.position
       });
@@ -515,18 +523,28 @@ async function resolveHydratedAdvanceCandidate(input: {
       ...input.candidateCardIds
     ])
   ];
+  const hydratedCardOutcomes = new Map(
+    orderedCardIds.map((cardId) => [
+      cardId,
+      loadHydratedReviewCardOutcome(cardId, input.now)
+    ] as const)
+  );
 
   for (const [index, cardId] of orderedCardIds.entries()) {
-    const hydratedCard = await hydrateReviewCard({
-      cardId,
-      now: input.now
-    });
+    const outcome = await hydratedCardOutcomes.get(cardId)!;
+
+    if ("error" in outcome) {
+      throw outcome.error;
+    }
+
+    const hydratedCard = outcome.card;
 
     if (hydratedCard) {
       const canonicalQueuePosition = canonicalCandidateCardIds.indexOf(cardId);
 
       return {
         card: hydratedCard,
+        hydratedCardOutcomes,
         position:
           canonicalQueuePosition >= 0 ? canonicalQueuePosition + 1 : index + 1
       };
@@ -538,6 +556,7 @@ async function resolveHydratedAdvanceCandidate(input: {
 
 async function hydrateReviewAdvanceCards(input: {
   canonicalCandidateCardIds: string[];
+  hydratedCardOutcomes?: ReadonlyMap<string, Promise<HydratedReviewCardOutcome>>;
   now: Date;
   selectedQueuePosition: number;
 }) {
@@ -551,17 +570,41 @@ async function hydrateReviewAdvanceCards(input: {
   }
 
   const hydratedCards = await Promise.all(
-    advanceCardIds.map((cardId) =>
-      hydrateReviewCard({
-        cardId,
-        now: input.now
-      })
-    )
+    advanceCardIds.map(async (cardId) => {
+      const outcome =
+        (await input.hydratedCardOutcomes?.get(cardId)) ??
+        (await loadHydratedReviewCardOutcome(cardId, input.now));
+
+      if ("error" in outcome) {
+        throw outcome.error;
+      }
+
+      return outcome.card;
+    })
   );
 
   return hydratedCards.filter(
     (card): card is ReviewQueueCard => card !== null
   );
+}
+
+function loadHydratedReviewCardOutcome(cardId: string, now: Date) {
+  return hydrateReviewCard({
+    cardId,
+    now
+  })
+    .then(
+      (card) =>
+        ({
+          card
+        }) satisfies HydratedReviewCardOutcome
+    )
+    .catch(
+      (error) =>
+        ({
+          error
+        }) satisfies HydratedReviewCardOutcome
+    );
 }
 
 function readReviewFormMutationInput(
