@@ -3778,19 +3778,17 @@ describe("review system", () => {
     );
   });
 
-  it("returns null for a missing media slug before reading study settings", async () => {
+  it("returns null for a missing media slug even if study settings already started loading", async () => {
     const settingsQuerySpy = vi
       .spyOn(settings, "getStudySettings")
-      .mockImplementation(async () => {
-        throw new Error("study settings should not be read for missing media");
-      });
+      .mockResolvedValue(settings.defaultStudySettings);
 
     try {
       await expect(
         getReviewPageData("missing-media-slug", {}, database)
       ).resolves.toBeNull();
 
-      expect(settingsQuerySpy).not.toHaveBeenCalled();
+      expect(settingsQuerySpy).toHaveBeenCalledTimes(1);
     } finally {
       settingsQuerySpy.mockRestore();
     }

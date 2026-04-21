@@ -173,6 +173,51 @@ describe("review media query reuse", () => {
     }
   });
 
+  it("starts the settings lookup before the media list settles on standard media review loads", async () => {
+    const mediaGate = createDeferred();
+    const settingsGate = createDeferred();
+    let mediaStarted = false;
+    let settingsStarted = false;
+
+    const originalListMediaCached = dataCacheModule.listMediaCached;
+    const originalGetStudySettings = settingsModule.getStudySettings;
+    const mediaLookupSpy = vi
+      .spyOn(dataCacheModule, "listMediaCached")
+      .mockImplementation(async (...args) => {
+        mediaStarted = true;
+        const resultPromise = originalListMediaCached(...args);
+        await mediaGate.promise;
+        return resultPromise;
+      });
+    const settingsLookupSpy = vi
+      .spyOn(settingsModule, "getStudySettings")
+      .mockImplementation(async (...args) => {
+        settingsStarted = true;
+        const resultPromise = originalGetStudySettings(...args);
+        await settingsGate.promise;
+        return resultPromise;
+      });
+
+    const pageDataPromise = getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+
+    await flushMicrotasks();
+
+    try {
+      expect(mediaStarted).toBe(true);
+      expect(settingsStarted).toBe(true);
+    } finally {
+      mediaGate.resolve();
+      settingsGate.resolve();
+      await pageDataPromise;
+      mediaLookupSpy.mockRestore();
+      settingsLookupSpy.mockRestore();
+    }
+  });
+
   it("starts the global review workspace before settings settle when media rows are already resolved", async () => {
     const settingsGate = createDeferred();
     const workspaceGate = createDeferred();
