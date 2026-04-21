@@ -73,23 +73,25 @@ export async function getTextbookIndexData(
     resolvedMedia?: ResolvedMedia | null;
   } = {}
 ): Promise<TextbookIndexData | null> {
-  const [media, furiganaMode] = await Promise.all([
+  const mediaPromise =
     options.resolvedMedia !== undefined
       ? Promise.resolve(options.resolvedMedia)
-      : getMediaBySlugCached(database, mediaSlug),
-    options.resolvedFuriganaMode !== undefined
-      ? Promise.resolve(options.resolvedFuriganaMode)
-      : getFuriganaMode(database)
-  ]);
-
-  if (!media) {
-    return null;
-  }
+      : getMediaBySlugCached(database, mediaSlug);
+  const furiganaMode =
+    options.resolvedFuriganaMode ?? (await getFuriganaMode(database));
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["textbook", "index", mediaSlug, `furigana:${furiganaMode}`],
-    loader: () => getTextbookIndexDataForMedia(media, furiganaMode, database),
+    loader: async () => {
+      const media = await mediaPromise;
+
+      if (!media) {
+        return null;
+      }
+
+      return getTextbookIndexDataForMedia(media, furiganaMode, database);
+    },
     tags: [MEDIA_LIST_TAG, SETTINGS_TAG]
   });
 }

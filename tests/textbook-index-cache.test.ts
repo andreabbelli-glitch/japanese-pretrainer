@@ -71,6 +71,32 @@ import {
 } from "@/lib/data-cache";
 import { getTextbookIndexData, getTextbookLessonData } from "@/lib/textbook";
 
+function createDeferred<T>() {
+  let resolve!: (value: T) => void;
+
+  return {
+    promise: new Promise<T>((innerResolve) => {
+      resolve = innerResolve;
+    }),
+    resolve
+  };
+}
+async function waitForTruthy(
+  predicate: () => boolean,
+  message: string,
+  attempts = 50
+) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    if (predicate()) {
+      return;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  }
+
+  throw new Error(message);
+}
+
 describe("textbook index cache", () => {
   let database: DatabaseClient;
   let tempDir = "";
@@ -140,6 +166,42 @@ describe("textbook index cache", () => {
 
     expect(revalidateTagMock).toHaveBeenCalledWith(MEDIA_LIST_TAG, "max");
     expect(revalidateTagMock).toHaveBeenCalledWith(SETTINGS_TAG, "max");
+  });
+
+  it("serves a warm textbook index cache hit without waiting for the media lookup", async () => {
+    await getTextbookIndexData(developmentFixture.mediaSlug, database);
+
+    const dataCacheModule = await import("@/lib/data-cache");
+    const resolvedMedia = await dataCacheModule.getMediaBySlugCached(
+      database,
+      developmentFixture.mediaSlug
+    );
+    const mediaLookupDeferred = createDeferred<typeof resolvedMedia>();
+    let cacheHitResolved = false;
+    const mediaLookupSpy = vi
+      .spyOn(dataCacheModule, "getMediaBySlugCached")
+      .mockImplementation(async () => mediaLookupDeferred.promise);
+
+    const cachedResultPromise = getTextbookIndexData(
+      developmentFixture.mediaSlug,
+      database
+    ).then((result) => {
+      cacheHitResolved = true;
+      return result;
+    });
+
+    try {
+      await waitForTruthy(
+        () => cacheHitResolved,
+        "Expected the warm textbook index cache hit to resolve."
+      );
+
+      expect(mediaLookupSpy).toHaveBeenCalledTimes(1);
+    } finally {
+      mediaLookupDeferred.resolve(resolvedMedia);
+      await cachedResultPromise;
+      mediaLookupSpy.mockRestore();
+    }
   });
 
   it("reuses the cached lesson body while keeping the lesson page live", async () => {
