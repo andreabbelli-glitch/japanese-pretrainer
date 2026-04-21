@@ -227,7 +227,49 @@ describe("textbook data", () => {
     expect(lessonData?.lesson).not.toHaveProperty("htmlRendered");
   });
 
-  it("waits for the media lookup before starting the furigana lookup while loading a lesson", async () => {
+  it("starts the furigana lookup in parallel with the media lookup while loading textbook index data", async () => {
+    const mediaGate = createDeferred();
+    const settingsGate = createDeferred();
+    let mediaStarted = false;
+    let settingsStarted = false;
+
+    const originalMediaLookup = dataCache.getMediaBySlugCached;
+    const originalFuriganaLookup = settings.getFuriganaModeSetting;
+    const mediaLookupSpy = vi
+      .spyOn(dataCache, "getMediaBySlugCached")
+      .mockImplementation(async (...args) => {
+        mediaStarted = true;
+        const resultPromise = originalMediaLookup(...args);
+        await mediaGate.promise;
+        return resultPromise;
+      });
+    const settingsLookupSpy = vi
+      .spyOn(settings, "getFuriganaModeSetting")
+      .mockImplementation(async (...args) => {
+        settingsStarted = true;
+        const resultPromise = originalFuriganaLookup(...args);
+        await settingsGate.promise;
+        return resultPromise;
+      });
+
+    const indexPromise = getTextbookIndexData(developmentFixture.mediaSlug, database);
+
+    await Promise.resolve();
+    await Promise.resolve();
+
+    try {
+      expect(mediaStarted).toBe(true);
+      expect(settingsStarted).toBe(true);
+    } finally {
+      mediaGate.resolve();
+      settingsGate.resolve();
+      await indexPromise;
+      mediaLookupSpy.mockRestore();
+      settingsLookupSpy.mockRestore();
+    }
+  });
+
+  it("starts the furigana lookup in parallel with the media lookup while loading a lesson", async () => {
     const mediaGate = createDeferred();
     const settingsGate = createDeferred();
     let mediaStarted = false;
@@ -263,7 +305,7 @@ describe("textbook data", () => {
 
     try {
       expect(mediaStarted).toBe(true);
-      expect(settingsStarted).toBe(false);
+      expect(settingsStarted).toBe(true);
     } finally {
       mediaGate.resolve();
       settingsGate.resolve();
@@ -333,40 +375,16 @@ describe("textbook data", () => {
     lessonQuerySpy.mockRestore();
   });
 
-  it("returns null for a missing media slug before reading furigana settings", async () => {
-    const settingsQuerySpy = vi
-      .spyOn(settings, "getFuriganaModeSetting")
-      .mockImplementation(async () => {
-        throw new Error("furigana settings should not be read for missing media");
-      });
-
-    try {
-      await expect(
-        getTextbookIndexData("missing-media-slug", database)
-      ).resolves.toBeNull();
-
-      expect(settingsQuerySpy).not.toHaveBeenCalled();
-    } finally {
-      settingsQuerySpy.mockRestore();
-    }
+  it("returns null for a missing media slug", async () => {
+    await expect(
+      getTextbookIndexData("missing-media-slug", database)
+    ).resolves.toBeNull();
   });
 
-  it("returns null for a missing lesson media slug before reading furigana settings", async () => {
-    const settingsQuerySpy = vi
-      .spyOn(settings, "getFuriganaModeSetting")
-      .mockImplementation(async () => {
-        throw new Error("furigana settings should not be read for missing media");
-      });
-
-    try {
-      await expect(
-        getTextbookLessonData("missing-media-slug", "missing-lesson-slug", database)
-      ).resolves.toBeNull();
-
-      expect(settingsQuerySpy).not.toHaveBeenCalled();
-    } finally {
-      settingsQuerySpy.mockRestore();
-    }
+  it("returns null for a missing lesson media slug", async () => {
+    await expect(
+      getTextbookLessonData("missing-media-slug", "missing-lesson-slug", database)
+    ).resolves.toBeNull();
   });
 
   it("normalizes legacy lesson AST payloads without crashing the reader", async () => {

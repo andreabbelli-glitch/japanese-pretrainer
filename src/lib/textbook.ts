@@ -73,15 +73,18 @@ export async function getTextbookIndexData(
     resolvedMedia?: ResolvedMedia | null;
   } = {}
 ): Promise<TextbookIndexData | null> {
-  const media =
-    options.resolvedMedia ?? (await getMediaBySlugCached(database, mediaSlug));
+  const [media, furiganaMode] = await Promise.all([
+    options.resolvedMedia !== undefined
+      ? Promise.resolve(options.resolvedMedia)
+      : getMediaBySlugCached(database, mediaSlug),
+    options.resolvedFuriganaMode !== undefined
+      ? Promise.resolve(options.resolvedFuriganaMode)
+      : getFuriganaMode(database)
+  ]);
 
   if (!media) {
     return null;
   }
-
-  const furiganaMode =
-    options.resolvedFuriganaMode ?? (await getFuriganaMode(database));
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
@@ -98,19 +101,19 @@ export async function getTextbookLessonData(
 ): Promise<TextbookLessonData | null> {
   markDataAsLive();
 
-  const media = await getMediaBySlugCached(database, mediaSlug);
+  const [media, furiganaMode] = await Promise.all([
+    getMediaBySlugCached(database, mediaSlug),
+    getFuriganaMode(database)
+  ]);
 
   if (!media) {
     return null;
   }
 
-  const furiganaModePromise = getFuriganaMode(database);
-  const indexModelPromise = furiganaModePromise.then((furiganaMode) =>
-    getTextbookIndexData(mediaSlug, database, {
+  const indexModelPromise = getTextbookIndexData(mediaSlug, database, {
       resolvedFuriganaMode: furiganaMode,
       resolvedMedia: media
-    })
-  );
+    });
   const [indexModel, lesson] = await Promise.all([
     indexModelPromise,
     getTextbookLessonBodyData({
