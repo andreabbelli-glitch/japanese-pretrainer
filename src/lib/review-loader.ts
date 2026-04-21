@@ -321,22 +321,23 @@ export async function loadGlobalReviewPageWorkspace(
     "getStudySettings",
     () => getStudySettings(database)
   );
-  const [mediaRows, settings] = await Promise.all([
-    mediaRowsPromise,
-    settingsPromise
-  ]);
-  const workspace = await loadGlobalReviewWorkspace(
+  const mediaRows = await mediaRowsPromise;
+  const workspacePromise = loadGlobalReviewWorkspace(
     searchState,
     database,
     {
       ...options,
       resolvedMediaRows: mediaRows
     },
-    settings.reviewDailyLimit
+    settingsPromise.then((settings) => settings.reviewDailyLimit)
   );
+  const [mediaWorkspace, settings] = await Promise.all([
+    workspacePromise,
+    settingsPromise
+  ]);
 
   return {
-    ...workspace,
+    ...mediaWorkspace,
     reviewFrontFurigana: settings.reviewFrontFurigana
   };
 }

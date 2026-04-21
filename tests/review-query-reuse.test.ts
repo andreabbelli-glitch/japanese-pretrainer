@@ -33,6 +33,8 @@ import {
   loadReviewLaunchCandidatesCached,
   loadReviewOverviewSnapshots
 } from "@/lib/review";
+import { loadGlobalReviewPageWorkspace } from "@/lib/review-loader";
+import { normalizeReviewSearchState } from "@/lib/review-search-state";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture
@@ -168,6 +170,57 @@ describe("review media query reuse", () => {
       await pageDataPromise;
       mediaLookupSpy.mockRestore();
       settingsLookupSpy.mockRestore();
+    }
+  });
+
+  it("starts the global review workspace before settings settle when media rows are already resolved", async () => {
+    const settingsGate = createDeferred();
+    const workspaceGate = createDeferred();
+    let settingsStarted = false;
+    let workspaceStarted = false;
+    const resolvedMediaRows = await dataCacheModule.listMediaCached(database);
+
+    const originalGetStudySettings = settingsModule.getStudySettings;
+    const originalListReviewCardsByMediaIds = dbModule.listReviewCardsByMediaIds;
+    const settingsLookupSpy = vi
+      .spyOn(settingsModule, "getStudySettings")
+      .mockImplementation(async (...args) => {
+        settingsStarted = true;
+        const resultPromise = originalGetStudySettings(...args);
+        await settingsGate.promise;
+        return resultPromise;
+      });
+    const workspaceLookupSpy = vi
+      .spyOn(dbModule, "listReviewCardsByMediaIds")
+      .mockImplementation(async (...args) => {
+        workspaceStarted = true;
+        const resultPromise = originalListReviewCardsByMediaIds(...args);
+        await workspaceGate.promise;
+        return resultPromise;
+      });
+
+    const workspacePromise = loadGlobalReviewPageWorkspace(
+      normalizeReviewSearchState({}),
+      database,
+      {
+        resolvedMediaRows
+      }
+    );
+
+    try {
+      await waitForTruthy(
+        () => settingsStarted,
+        "Expected the settings lookup to start."
+      );
+      await flushMicrotasks();
+
+      expect(workspaceStarted).toBe(true);
+    } finally {
+      settingsGate.resolve();
+      workspaceGate.resolve();
+      await workspacePromise;
+      settingsLookupSpy.mockRestore();
+      workspaceLookupSpy.mockRestore();
     }
   });
 
