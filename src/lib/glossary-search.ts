@@ -4,7 +4,6 @@ import {
   type SearchQueryVariants
 } from "@/lib/study-search";
 import { getGlossaryAutocompleteSuggestions } from "@/lib/glossary-autocomplete";
-import { pickBestBy } from "@/lib/collections";
 import type {
   GlossaryBaseEntry,
   GlossaryCollectedMatch,
@@ -76,48 +75,56 @@ export function buildGlobalGlossaryAutocompleteSuggestions(
   > = [];
 
   for (const [resultKey, entries] of groups.entries()) {
-    const matchingEntries = query
-      ? entries.filter(
-          (entry) => entry.matchesCurrentFilters && entry.matchesCurrentQuery
-        )
-      : entries.filter((entry) => entry.matchesCurrentFilters);
-    const representative = pickBestBy(matchingEntries, (left, right) => {
-      if (query && left.score !== right.score) {
-        return right.score - left.score;
+    const aliases = new Set<string>();
+    const mediaIds = new Set<string>();
+    const localHits: GlobalGlossaryAutocompleteSuggestion["localHits"] = [];
+    let representative: GlossaryResolvedEntry | null = null;
+    let hasCards = false;
+    let hasCardlessVariant = false;
+
+    for (const entry of entries) {
+      for (const alias of entry.aliases) {
+        aliases.add(alias.text);
       }
 
-      if (left.hasCards !== right.hasCards) {
-        return left.hasCards ? -1 : 1;
+      mediaIds.add(entry.mediaId);
+      localHits.push({
+        hasCards: entry.hasCards,
+        mediaSlug: entry.mediaSlug,
+        studyKey: entry.studyState.key
+      });
+      hasCards ||= entry.hasCards;
+      hasCardlessVariant ||= !entry.hasCards;
+
+      const matchesCurrentContext = query
+        ? entry.matchesCurrentFilters && entry.matchesCurrentQuery
+        : entry.matchesCurrentFilters;
+
+      if (!matchesCurrentContext) {
+        continue;
       }
 
-      if (left.mediaTitle !== right.mediaTitle) {
-        return left.mediaTitle.localeCompare(right.mediaTitle);
+      if (
+        !representative ||
+        compareAutocompleteRepresentatives(entry, representative, query) < 0
+      ) {
+        representative = entry;
       }
-
-      return left.label.localeCompare(right.label, "ja");
-    });
+    }
 
     if (!representative) {
       continue;
     }
 
     suggestions.push({
-      aliases: [
-        ...new Set(
-          entries.flatMap((entry) => entry.aliases.map((alias) => alias.text))
-        )
-      ],
-      hasCards: entries.some((entry) => entry.hasCards),
-      hasCardlessVariant: entries.some((entry) => !entry.hasCards),
+      aliases: [...aliases],
+      hasCards,
+      hasCardlessVariant,
       kind: representative.kind,
       label: representative.label,
-      localHits: entries.map((entry) => ({
-        hasCards: entry.hasCards,
-        mediaSlug: entry.mediaSlug,
-        studyKey: entry.studyState.key
-      })),
+      localHits,
       meaning: representative.meaning,
-      mediaCount: new Set(entries.map((entry) => entry.mediaId)).size,
+      mediaCount: mediaIds.size,
       reading: representative.reading,
       resultKey,
       romaji: representative.romaji,
@@ -144,6 +151,26 @@ export function buildGlobalGlossaryAutocompleteSuggestions(
     query,
     suggestions
   });
+}
+
+function compareAutocompleteRepresentatives(
+  left: GlossaryResolvedEntry,
+  right: GlossaryResolvedEntry,
+  query?: string
+) {
+  if (query && left.score !== right.score) {
+    return right.score - left.score;
+  }
+
+  if (left.hasCards !== right.hasCards) {
+    return left.hasCards ? -1 : 1;
+  }
+
+  if (left.mediaTitle !== right.mediaTitle) {
+    return left.mediaTitle.localeCompare(right.mediaTitle);
+  }
+
+  return left.label.localeCompare(right.label, "ja");
 }
 
 export function compareGlobalGlossaryResults(

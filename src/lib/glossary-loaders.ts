@@ -985,14 +985,9 @@ async function loadCachedGlobalGlossaryAutocompleteData(
         filters
       );
       const groups = groupResolvedEntriesByResult(candidates);
-      const relevantGroups = new Map(
-        [...groups.entries()].filter(([, entries]) =>
-          entries.some((entry) => entry.matchesCurrentQuery)
-        )
-      );
 
       return buildGlobalGlossaryAutocompleteSuggestions(
-        relevantGroups,
+        groups,
         filters.query,
         filters
       );
