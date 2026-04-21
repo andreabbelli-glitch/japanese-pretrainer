@@ -31,6 +31,8 @@ import {
   canUseDataCache,
   getMediaBySlugCached,
   listMediaCached,
+  MEDIA_LIST_TAG,
+  REVIEW_SUMMARY_TAG,
   runWithTaggedCache
 } from "@/lib/data-cache";
 import {
@@ -297,20 +299,45 @@ export async function loadGlossaryDetailData(
   entryId: string,
   database: DatabaseClient = db
 ): Promise<GlossaryDetailData | null> {
-  const media = await getMediaBySlugCached(database, mediaSlug);
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: ["glossary", "detail", mediaSlug, `kind:${kind}`, `entry:${entryId}`],
+    loader: () =>
+      loadGlossaryDetailDataUncached({
+        database,
+        entryId,
+        kind,
+        mediaSlug
+      }),
+    tags: [MEDIA_LIST_TAG, GLOSSARY_SUMMARY_TAG, REVIEW_SUMMARY_TAG]
+  });
+}
+
+async function loadGlossaryDetailDataUncached(input: {
+  database: DatabaseClient;
+  entryId: string;
+  kind: GlossaryKind;
+  mediaSlug: string;
+}): Promise<GlossaryDetailData | null> {
+  const media = await getMediaBySlugCached(input.database, input.mediaSlug);
 
   if (!media) {
     return null;
   }
 
   const entry =
-    kind === "term"
-      ? await getGlossaryEntryBySourceId(database, "term", media.id, entryId)
+    input.kind === "term"
+      ? await getGlossaryEntryBySourceId(
+          input.database,
+          "term",
+          media.id,
+          input.entryId
+        )
       : await getGlossaryEntryBySourceId(
-          database,
+          input.database,
           "grammar",
           media.id,
-          entryId
+          input.entryId
         );
 
   if (!entry) {
@@ -318,25 +345,25 @@ export async function loadGlossaryDetailData(
   }
 
   const crossMediaFamilyPromise = entry.crossMediaGroupId
-    ? kind === "term"
-      ? getCrossMediaFamilyByEntryId(database, "term", entry.id)
-      : getCrossMediaFamilyByEntryId(database, "grammar", entry.id)
+    ? input.kind === "term"
+      ? getCrossMediaFamilyByEntryId(input.database, "term", entry.id)
+      : getCrossMediaFamilyByEntryId(input.database, "grammar", entry.id)
     : Promise.resolve({
         group: null,
         siblings: []
       });
   const [lessonConnections, cardConnections, crossMediaFamily] =
     await Promise.all([
-      listEntryLessonConnections(database, [
+      listEntryLessonConnections(input.database, [
         {
           entryId: entry.id,
-          entryType: kind
+          entryType: input.kind
         }
       ]),
-      listEntryCardConnections(database, [
+      listEntryCardConnections(input.database, [
         {
           entryId: entry.id,
-          entryType: kind
+          entryType: input.kind
         }
       ]),
       crossMediaFamilyPromise
@@ -345,12 +372,12 @@ export async function loadGlossaryDetailData(
     (connection) => connection.cardStatus === "active"
   );
   const baseEntry =
-    kind === "term"
+    input.kind === "term"
       ? mapEntryToBaseModel(entry as TermGlossaryEntry, "term")
       : mapEntryToBaseModel(entry as GrammarGlossaryEntry, "grammar");
   const rankedEntry = {
     ...baseEntry,
-    href: mediaGlossaryEntryHref(media.slug, kind, entry.sourceId),
+    href: mediaGlossaryEntryHref(media.slug, input.kind, entry.sourceId),
     matchBadges: [],
     matchedFields: {
       aliases: []

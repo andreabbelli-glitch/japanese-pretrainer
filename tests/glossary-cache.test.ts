@@ -59,14 +59,18 @@ import {
   type DatabaseClient
 } from "@/db";
 import * as dbModule from "@/db";
+import * as dataCacheModule from "@/lib/data-cache";
 import {
+  MEDIA_LIST_TAG,
   GLOSSARY_SUMMARY_TAG,
+  REVIEW_SUMMARY_TAG,
   revalidateGlossarySummaryCache
 } from "@/lib/data-cache";
 import {
   getGlobalGlossaryAutocompleteData,
   getGlobalGlossaryPageData,
-  getGlossaryPageData
+  getGlossaryPageData,
+  getTermGlossaryDetailData
 } from "@/lib/glossary";
 
 describe("global glossary cache", () => {
@@ -378,5 +382,59 @@ describe("global glossary cache", () => {
 
     studySignalsSpy.mockRestore();
     cardCountsSpy.mockRestore();
+  });
+
+  it("serves a warm glossary detail cache hit without repeating the detail queries", async () => {
+    await getTermGlossaryDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.termId,
+      database
+    );
+
+    const mediaLookupSpy = vi.spyOn(dataCacheModule, "getMediaBySlugCached");
+    const entryLookupSpy = vi.spyOn(dbModule, "getGlossaryEntryBySourceId");
+    const lessonConnectionsSpy = vi.spyOn(
+      dbModule,
+      "listEntryLessonConnections"
+    );
+    const cardConnectionsSpy = vi.spyOn(dbModule, "listEntryCardConnections");
+
+    const detail = await getTermGlossaryDetailData(
+      developmentFixture.mediaSlug,
+      developmentFixture.termId,
+      database
+    );
+
+    expect(detail).not.toBeNull();
+    expect(mediaLookupSpy).not.toHaveBeenCalled();
+    expect(entryLookupSpy).not.toHaveBeenCalled();
+    expect(lessonConnectionsSpy).not.toHaveBeenCalled();
+    expect(cardConnectionsSpy).not.toHaveBeenCalled();
+
+    const cacheKey = JSON.stringify([
+      "glossary",
+      "detail",
+      developmentFixture.mediaSlug,
+      "kind:term",
+      `entry:${developmentFixture.termId}`
+    ]);
+    const keySpecificCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === cacheKey
+    );
+
+    expect(keySpecificCalls).toHaveLength(2);
+    expect(cacheStore.has(cacheKey)).toBe(true);
+    expect(keySpecificCalls[0]?.[2]?.tags).toEqual(
+      expect.arrayContaining([
+        MEDIA_LIST_TAG,
+        GLOSSARY_SUMMARY_TAG,
+        REVIEW_SUMMARY_TAG
+      ])
+    );
+
+    mediaLookupSpy.mockRestore();
+    entryLookupSpy.mockRestore();
+    lessonConnectionsSpy.mockRestore();
+    cardConnectionsSpy.mockRestore();
   });
 });
