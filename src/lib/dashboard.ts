@@ -66,26 +66,45 @@ async function loadDashboardData(
   database: DatabaseClient,
   now: Date
 ): Promise<DashboardData> {
-  const [mediaRows, dailyLimit, newIntroducedTodayCount, reviewCandidates] =
-    await Promise.all([
-      listMediaCached(database),
-      getReviewDailyLimit(database),
-      loadReviewIntroducedTodayCountCached(database, now),
-      loadReviewLaunchCandidatesCached(database, now.toISOString())
-    ]);
-  const [media, globalReviewOverview] = await Promise.all([
-    loadMediaShellSnapshots(database, mediaRows, {
-      now,
-      resolvedDailyLimit: dailyLimit,
-      resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
-      resolvedReviewCandidates: reviewCandidates
-    }),
+  const mediaRowsPromise = listMediaCached(database);
+  const dailyLimitPromise = getReviewDailyLimit(database);
+  const newIntroducedTodayCountPromise = loadReviewIntroducedTodayCountCached(
+    database,
+    now
+  );
+  const reviewCandidatesPromise = loadReviewLaunchCandidatesCached(
+    database,
+    now.toISOString()
+  );
+  const globalReviewOverviewPromise = Promise.all([
+    dailyLimitPromise,
+    newIntroducedTodayCountPromise
+  ]).then(([dailyLimit, newIntroducedTodayCount]) =>
     loadGlobalReviewOverviewSnapshot(database, {
       asOf: now,
       resolvedDailyLimit: dailyLimit,
       resolvedNewIntroducedTodayCount: newIntroducedTodayCount
     })
+  );
+  const [
+    mediaRows,
+    dailyLimit,
+    newIntroducedTodayCount,
+    reviewCandidates,
+    globalReviewOverview
+  ] = await Promise.all([
+    mediaRowsPromise,
+    dailyLimitPromise,
+    newIntroducedTodayCountPromise,
+    reviewCandidatesPromise,
+    globalReviewOverviewPromise
   ]);
+  const media = await loadMediaShellSnapshots(database, mediaRows, {
+    now,
+    resolvedDailyLimit: dailyLimit,
+    resolvedNewIntroducedTodayCount: newIntroducedTodayCount,
+    resolvedReviewCandidates: reviewCandidates
+  });
   const focusMedia = pickFocusMedia(media);
   const reviewMedia = pickReviewMedia(media);
 
