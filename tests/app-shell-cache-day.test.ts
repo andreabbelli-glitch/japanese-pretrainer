@@ -297,6 +297,28 @@ describe("app shell day-scoped cache keys", () => {
     ).toBe(true);
   });
 
+  it("tags the progress page cache with the review first-candidate invalidation tag", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));
+
+    await getMediaProgressPageData(developmentFixture.mediaSlug, database);
+
+    const progressKey = JSON.stringify([
+      "progress",
+      "media-page",
+      developmentFixture.mediaSlug,
+      `bucket:${getLocalIsoTimeBucketKey(new Date())}`
+    ]);
+    const progressCalls = unstableCacheMock.mock.calls.filter(
+      ([, keyParts]) => JSON.stringify(keyParts) === progressKey
+    );
+
+    expect(progressCalls.length).toBeGreaterThan(0);
+    expect(progressCalls[0]?.[2]?.tags).toEqual(
+      expect.arrayContaining([dataCache.REVIEW_FIRST_CANDIDATE_TAG])
+    );
+  });
+
   it("avoids loading the full media list on cache-enabled progress loads", async () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-03-10T21:30:00.000Z"));

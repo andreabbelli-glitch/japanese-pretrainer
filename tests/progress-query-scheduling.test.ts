@@ -62,6 +62,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/data-cache", () => ({
       GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
+      REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
       REVIEW_SUMMARY_TAG: "review-summary",
       SETTINGS_TAG: "settings",
       buildGlossarySummaryTags: vi.fn(() => []),
@@ -139,6 +140,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/data-cache", () => ({
       GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
+      REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
       REVIEW_SUMMARY_TAG: "review-summary",
       SETTINGS_TAG: "settings",
       buildGlossarySummaryTags: vi.fn(() => []),
@@ -262,6 +264,7 @@ describe("progress query scheduling", () => {
     vi.doMock("@/lib/data-cache", () => ({
       GLOSSARY_SUMMARY_TAG: "glossary-summary",
       MEDIA_LIST_TAG: "media-list",
+      REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
       REVIEW_SUMMARY_TAG: "review-summary",
       SETTINGS_TAG: "settings",
       buildGlossarySummaryTags: vi.fn(() => []),

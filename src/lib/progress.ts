@@ -6,6 +6,7 @@ import {
   getMediaBySlugCached,
   listMediaCached,
   MEDIA_LIST_TAG,
+  REVIEW_FIRST_CANDIDATE_TAG,
   REVIEW_SUMMARY_TAG,
   runWithTaggedCache,
   SETTINGS_TAG
@@ -201,6 +202,7 @@ export async function getMediaProgressPageData(
       MEDIA_LIST_TAG,
       SETTINGS_TAG,
       GLOSSARY_SUMMARY_TAG,
+      REVIEW_FIRST_CANDIDATE_TAG,
       REVIEW_SUMMARY_TAG
     ]
   });
