@@ -48,6 +48,8 @@ import {
   collectQueuedPrefetchCardIds,
   buildReviewHydrationRequestKey,
   isReviewPageData,
+  pruneQueuedPrefetchedCardMap,
+  pruneQueuedPrefetchingCardIds,
   resolveOptimisticReviewAdvanceCardForClientData,
   resolveReviewAdvanceCandidateCardId,
   resolveReviewAdvanceCandidateQueuePosition,
@@ -277,6 +279,17 @@ export function useReviewPageController(input: {
   useEffect(() => {
     latestViewDataRef.current = viewData;
   }, [viewData]);
+
+  useEffect(() => {
+    prefetchBufferRef.current = pruneQueuedPrefetchedCardMap(
+      prefetchBufferRef.current,
+      queueCardIds
+    );
+    prefetchInFlightRef.current = pruneQueuedPrefetchingCardIds(
+      prefetchInFlightRef.current,
+      queueCardIds
+    );
+  }, [queueCardIds]);
 
   useEffect(() => {
     if (!isForcedContrastOpen) {

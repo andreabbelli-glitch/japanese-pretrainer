@@ -4,6 +4,8 @@ import {
   buildOptimisticGradeResult,
   buildOptimisticFirstCandidateGradeResult,
   collectQueuedPrefetchCardIds,
+  pruneQueuedPrefetchedCardMap,
+  pruneQueuedPrefetchingCardIds,
   prioritizeReviewAdvanceCandidateCardIds,
   resolveOptimisticReviewAdvanceCardForClientData,
   resolveOptimisticReviewAdvanceCard,
@@ -97,6 +99,32 @@ describe("resolveReviewQueuePosition", () => {
         queueIndex: 0
       })
     ).toEqual([]);
+  });
+
+  it("drops prefetched review cards that are no longer present in the queue", () => {
+    expect(
+      Array.from(
+        pruneQueuedPrefetchedCardMap(
+          new Map([
+            ["card-a", { id: "card-a" } as ReviewQueueCard],
+            ["card-b", { id: "card-b" } as ReviewQueueCard],
+            ["card-c", { id: "card-c" } as ReviewQueueCard]
+          ]),
+          ["card-b", "card-c", "card-d"]
+        ).keys()
+      )
+    ).toEqual(["card-b", "card-c"]);
+  });
+
+  it("drops in-flight prefetch ids that are no longer present in the queue", () => {
+    expect(
+      Array.from(
+        pruneQueuedPrefetchingCardIds(
+          new Set(["card-a", "card-b", "card-c"]),
+          ["card-b", "card-d"]
+        )
+      )
+    ).toEqual(["card-b"]);
   });
 
   it("moves the preferred buffered candidate to the front of the server hint list", () => {

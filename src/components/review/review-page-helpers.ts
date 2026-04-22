@@ -72,6 +72,30 @@ export function collectQueuedPrefetchCardIds(input: {
   return cardIdsToFetch;
 }
 
+export function pruneQueuedPrefetchedCardMap<T>(
+  prefetchedCards: ReadonlyMap<string, T>,
+  queueCardIds: ReadonlyArray<string>
+) {
+  const queuedCardIdSet = new Set(queueCardIds);
+
+  return new Map(
+    Array.from(prefetchedCards).filter(([cardId]) => queuedCardIdSet.has(cardId))
+  );
+}
+
+export function pruneQueuedPrefetchingCardIds(
+  prefetchingCardIds: ReadonlySet<string>,
+  queueCardIds: ReadonlyArray<string>
+) {
+  const queuedCardIdSet = new Set(queueCardIds);
+
+  return new Set(
+    Array.from(prefetchingCardIds).filter((cardId) =>
+      queuedCardIdSet.has(cardId)
+    )
+  );
+}
+
 export function collectQueuedAdvanceCandidateCardIds(input: {
   bufferSize: number;
   queueCardIds: string[];
