@@ -114,6 +114,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const tooltipAbortRef = useRef<AbortController | null>(null);
   const currentLessonIdRef = useRef(data.lesson.id);
   const persistedFuriganaModeRef = useRef(data.furiganaMode);
+  const serverFuriganaModeRef = useRef(data.furiganaMode);
   const queuedFuriganaModeRef = useRef<FuriganaMode | null>(null);
   const lessonStatus = readerData.lesson.status;
   const hasTooltipTargets = hasLessonTooltipTargets(readerData.lesson.ast);
@@ -140,8 +141,29 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   }, [data]);
 
   useEffect(() => {
+    if (currentLessonIdRef.current !== data.lesson.id) {
+      return;
+    }
+
+    setReaderData((current) => (current === data ? current : data));
+  }, [data]);
+
+  useEffect(() => {
+    const previousServerFuriganaMode = serverFuriganaModeRef.current;
+    serverFuriganaModeRef.current = data.furiganaMode;
     persistedFuriganaModeRef.current = data.furiganaMode;
-  }, [data.furiganaMode]);
+
+    if (
+      currentLessonIdRef.current !== data.lesson.id ||
+      previousServerFuriganaMode === data.furiganaMode
+    ) {
+      return;
+    }
+
+    setFuriganaModeState((current) =>
+      current === data.furiganaMode ? current : data.furiganaMode
+    );
+  }, [data.furiganaMode, data.lesson.id]);
 
   useEffect(() => {
     return () => {
