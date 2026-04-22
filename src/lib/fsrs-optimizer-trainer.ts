@@ -39,8 +39,10 @@ export async function runFsrsOptimizer(
   const database = input.database ?? db;
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
-  const snapshot = await getFsrsOptimizerSnapshot(database);
-  const totalEligibleReviews = await countEligibleFsrsOptimizerReviews(database);
+  const [snapshot, totalEligibleReviews] = await Promise.all([
+    getFsrsOptimizerSnapshot(database),
+    countEligibleFsrsOptimizerReviews(database)
+  ]);
   const newEligibleReviews = Math.max(
     totalEligibleReviews - snapshot.state.totalEligibleReviewsAtLastTraining,
     0
