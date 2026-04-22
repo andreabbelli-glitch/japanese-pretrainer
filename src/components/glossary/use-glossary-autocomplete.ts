@@ -48,11 +48,12 @@ export function useGlossaryAutocomplete({
     GlobalGlossaryAutocompleteSuggestion[]
   >([]);
   const [suggestionsKey, setSuggestionsKey] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState(query);
+  const [debouncedQuery, setDebouncedQuery] = useState(query.trim());
 
   useEffect(() => {
+    const normalizedQuery = query.trim();
     const timeoutId = window.setTimeout(() => {
-      setDebouncedQuery(query);
+      setDebouncedQuery(normalizedQuery);
     }, AUTOCOMPLETE_DEBOUNCE_MS);
 
     return () => {
@@ -61,7 +62,7 @@ export function useGlossaryAutocomplete({
   }, [query]);
 
   useEffect(() => {
-    const trimmedQuery = debouncedQuery.trim();
+    const trimmedQuery = debouncedQuery;
 
     if (!isOpen || trimmedQuery.length === 0) {
       startTransition(() => {

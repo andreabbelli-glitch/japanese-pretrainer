@@ -312,6 +312,94 @@ describe("useGlossaryAutocomplete", () => {
       q: "kosuto"
     });
   });
+
+  it("does not restart the request while only the query spacing changes for the same normalized key", async () => {
+    const responseDeferred = createDeferred<Response>();
+    const fetchMock = vi.mocked(fetch);
+    fetchMock.mockImplementation(() => responseDeferred.promise);
+
+    let latestController: GlossaryAutocompleteProbeResult | null = null;
+
+    function Probe() {
+      const [query, setQuery] = useState("");
+      const [isOpen, setIsOpen] = useState(false);
+      const controller = useGlossaryAutocompleteProbe({
+        isOpen,
+        query
+      });
+
+      useEffect(() => {
+        latestController = {
+          ...controller,
+          closeSuggestions: () => {
+            setIsOpen(false);
+          },
+          openSuggestions: () => {
+            setIsOpen(true);
+          },
+          query,
+          setQuery: (value: string) => {
+            setQuery(value);
+          }
+        };
+      }, [controller, query]);
+
+      return createElement("div");
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe));
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    await act(async () => {
+      controller().setQuery("kosu");
+      controller().openSuggestions();
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(140);
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    await act(async () => {
+      controller().setQuery("  kosu  ");
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(140);
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    responseDeferred.resolve(
+      new Response(JSON.stringify(initialSuggestions), {
+        status: 200
+      })
+    );
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(controller().suggestions).toEqual(initialSuggestions);
+    expect(controller().shouldShowSuggestions).toBe(true);
+  });
 });
 
 type GlossaryAutocompleteProbeResult = {
@@ -322,6 +410,17 @@ type GlossaryAutocompleteProbeResult = {
   shouldShowSuggestions: boolean;
   suggestions: GlobalGlossaryAutocompleteSuggestion[];
 };
+
+function createDeferred<T>() {
+  let resolve!: (value: T) => void;
+
+  return {
+    promise: new Promise<T>((innerResolve) => {
+      resolve = innerResolve;
+    }),
+    resolve
+  };
+}
 
 function useGlossaryAutocompleteProbe(input: {
   isOpen: boolean;
