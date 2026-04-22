@@ -100,6 +100,7 @@ describe("useReviewPageController first-candidate grading", () => {
       root?.unmount();
       await Promise.resolve();
     });
+    vi.restoreAllMocks();
     root = null;
     container = null;
     uninstallMinimalDom();
@@ -402,6 +403,9 @@ describe("useReviewPageController first-candidate grading", () => {
   });
 
   it("surfaces allowlisted forced contrast validation errors without advancing the card", async () => {
+    const consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
     mocks.loadReviewPageDataSessionAction.mockImplementation(
       () =>
         new Promise<ReviewPageClientData>(() => {
@@ -474,9 +478,13 @@ describe("useReviewPageController first-candidate grading", () => {
     );
     expect(controller().viewData.selectedCard?.id).toBe("card-a");
     expect(controller().viewData.session.answeredCount).toBe(0);
+    expect(consoleErrorSpy).not.toHaveBeenCalled();
   });
 
   it("keeps non-allowlisted forced contrast failures generic", async () => {
+    const consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
     mocks.loadReviewPageDataSessionAction.mockImplementation(
       () =>
         new Promise<ReviewPageClientData>(() => {
@@ -549,6 +557,7 @@ describe("useReviewPageController first-candidate grading", () => {
     );
     expect(controller().viewData.selectedCard?.id).toBe("card-a");
     expect(controller().viewData.session.answeredCount).toBe(0);
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
   });
 
   it("ignores typed-but-unselected contrast text and preserves optimistic advance", async () => {

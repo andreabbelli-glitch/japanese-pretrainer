@@ -598,6 +598,7 @@ export function useReviewPageController(input: {
       onError?: () => void;
       onSuccess?: (nextData: ReviewPageData) => void;
       optimisticUpdate?: () => (() => void) | void;
+      shouldLogError?: (error: unknown) => boolean;
       shouldSyncQueueCardIds?: (nextData: ReviewPageData) => boolean;
     }
   ) {
@@ -621,7 +622,9 @@ export function useReviewPageController(input: {
           options?.onSuccess?.(mergedData);
         })
         .catch((error) => {
-          console.error(error);
+          if (options?.shouldLogError?.(error) ?? true) {
+            console.error(error);
+          }
           rollbackOptimisticUpdate?.();
           options?.onError?.();
           setClientError(
@@ -725,7 +728,9 @@ export function useReviewPageController(input: {
             ? {
                 errorResolver: (error: unknown) =>
                   getSafeReviewForcedContrastClientErrorMessage(error) ??
-                  "Non sono riuscito ad aggiornare la review. Riprova un attimo."
+                  "Non sono riuscito ad aggiornare la review. Riprova un attimo.",
+                shouldLogError: (error: unknown) =>
+                  getSafeReviewForcedContrastClientErrorMessage(error) === null
               }
             : {}),
           onError: () => {
@@ -807,9 +812,11 @@ export function useReviewPageController(input: {
             ? {
                 errorResolver: (error: unknown) =>
                   getSafeReviewForcedContrastClientErrorMessage(error) ??
-                  "Non sono riuscito ad aggiornare la review. Riprova un attimo."
-            }
-          : {}),
+                  "Non sono riuscito ad aggiornare la review. Riprova un attimo.",
+                shouldLogError: (error: unknown) =>
+                  getSafeReviewForcedContrastClientErrorMessage(error) === null
+              }
+            : {}),
         onError: () => {
           gradeSubmissionInFlightRef.current = false;
           setPendingAnsweredCountScroll(null);
