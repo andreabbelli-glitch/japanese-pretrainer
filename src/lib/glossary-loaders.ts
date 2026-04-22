@@ -109,6 +109,12 @@ export async function loadGlossaryPageData(
     forcedMediaSlug: media.slug,
     supportsSegmentFilter: true
   });
+  const hasActiveNonSortFilters = hasActiveGlossaryFilters(filters, filters.sort, {
+    forcedMediaSlug: media.slug,
+    supportsSegmentFilter: true
+  });
+  const defaultSortPromise =
+    requestedSort && !hasActiveNonSortFilters ? loadDefaultSort() : null;
   const loadMode: GlossaryLoadMode =
     filters.query.length > 0 ? "search" : "list";
   const [segments, { candidates }] = await Promise.all([
@@ -207,10 +213,8 @@ export async function loadGlossaryPageData(
       })
     : undefined;
   const hasActiveFilters =
-    hasActiveGlossaryFilters(filters, filters.sort, {
-      forcedMediaSlug: media.slug,
-      supportsSegmentFilter: true
-    }) || filters.sort !== (await loadDefaultSort());
+    hasActiveNonSortFilters ||
+    filters.sort !== (defaultSortPromise ? await defaultSortPromise : resolvedSort);
 
   return {
     filters,
@@ -245,10 +249,14 @@ export async function loadGlobalGlossaryPageData(
   const loadDefaultSort = createDefaultSortLoader(database);
   const mediaRowsPromise = listMediaCached(database);
   const aggregateStatsPromise = getGlobalGlossaryAggregateStatsCached(database);
-  const normalizedFilters = normalizeGlossaryQuery(
-    searchParams,
-    requestedSort ?? (await loadDefaultSort())
+  const resolvedSort = requestedSort ?? (await loadDefaultSort());
+  const normalizedFilters = normalizeGlossaryQuery(searchParams, resolvedSort);
+  const hasActiveNonSortFilters = hasActiveGlossaryFilters(
+    normalizedFilters,
+    normalizedFilters.sort
   );
+  const defaultSortPromise =
+    requestedSort && !hasActiveNonSortFilters ? loadDefaultSort() : null;
   const resultsPromise =
     normalizedFilters.query
       ? loadCachedPaginatedGlobalGlossarySearchResults(
@@ -269,8 +277,8 @@ export async function loadGlobalGlossaryPageData(
     aggregateStatsPromise
   ]);
   const hasActiveFilters =
-    hasActiveGlossaryFilters(filters, filters.sort) ||
-    filters.sort !== (await loadDefaultSort());
+    hasActiveNonSortFilters ||
+    filters.sort !== (defaultSortPromise ? await defaultSortPromise : resolvedSort);
 
   return {
     filters,

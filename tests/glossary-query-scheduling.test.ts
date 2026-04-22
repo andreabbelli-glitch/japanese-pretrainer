@@ -178,6 +178,7 @@ describe("glossary query scheduling", () => {
       }>
     >();
     let browseStarted = false;
+    let defaultSortStarted = false;
 
     vi.doMock("@/db", async () => {
       const actual = await vi.importActual<typeof import("@/db")>("@/db");
@@ -215,7 +216,10 @@ describe("glossary query scheduling", () => {
 
       return {
         ...actual,
-        getGlossaryDefaultSort: vi.fn(() => defaultSortDeferred.promise)
+        getGlossaryDefaultSort: vi.fn(() => {
+          defaultSortStarted = true;
+          return defaultSortDeferred.promise;
+        })
       };
     });
 
@@ -230,6 +234,7 @@ describe("glossary query scheduling", () => {
     await flushMicrotasks();
 
     expect(browseStarted).toBe(true);
+    expect(defaultSortStarted).toBe(true);
 
     browseRefsDeferred.resolve([]);
     mediaRowsDeferred.resolve([
@@ -255,6 +260,7 @@ describe("glossary query scheduling", () => {
   it("starts the local browse query before the default sort settles when the URL already pins sort", async () => {
     const defaultSortDeferred = createDeferred<"lesson_order" | "alphabetical">();
     let localBrowseStarted = false;
+    let defaultSortStarted = false;
 
     vi.doMock("@/db", async () => {
       const actual = await vi.importActual<typeof import("@/db")>("@/db");
@@ -302,7 +308,10 @@ describe("glossary query scheduling", () => {
 
       return {
         ...actual,
-        getGlossaryDefaultSort: vi.fn(() => defaultSortDeferred.promise)
+        getGlossaryDefaultSort: vi.fn(() => {
+          defaultSortStarted = true;
+          return defaultSortDeferred.promise;
+        })
       };
     });
 
@@ -318,6 +327,7 @@ describe("glossary query scheduling", () => {
     await flushMicrotasks();
 
     expect(localBrowseStarted).toBe(true);
+    expect(defaultSortStarted).toBe(true);
 
     defaultSortDeferred.resolve("lesson_order");
 
