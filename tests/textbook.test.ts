@@ -739,6 +739,34 @@ describe("textbook data", () => {
     expect(patched.resumeLesson?.lastOpenedAt).toBe("2026-03-10T10:00:00.000Z");
   });
 
+  it("keeps lesson rail groups stable when reopening only updates the opened timestamp", async () => {
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "in_progress",
+        startedAt: "2026-03-09T10:00:00.000Z",
+        completedAt: null,
+        lastOpenedAt: "2026-03-09T10:00:00.000Z"
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const lessonData = await getTextbookLessonData(
+      developmentFixture.mediaSlug,
+      "core-vocab",
+      database
+    );
+
+    expect(lessonData).not.toBeNull();
+
+    const patched = applyLessonOpenedState(lessonData!, {
+      lastOpenedAt: "2026-03-10T10:00:00.000Z",
+      startedAt: "2026-03-09T10:00:00.000Z",
+      status: "in_progress"
+    });
+
+    expect(patched.groups).toBe(lessonData?.groups);
+  });
+
   it("skips lesson rail rerenders when reader-local state changes without touching lesson props", () => {
     const groups = [
       {

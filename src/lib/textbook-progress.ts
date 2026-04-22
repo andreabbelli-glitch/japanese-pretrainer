@@ -137,8 +137,11 @@ export function applyLessonOpenedState(
   data: TextbookLessonData,
   openedState: LessonOpenState
 ): TextbookLessonData {
+  const currentLessonIndex = data.lessons.findIndex(
+    (lesson) => lesson.id === data.lesson.id
+  );
   const currentLessonItem =
-    data.lessons.find((lesson) => lesson.id === data.lesson.id) ?? null;
+    currentLessonIndex >= 0 ? data.lessons[currentLessonIndex]! : null;
   const hasStatusChange = data.lesson.status !== openedState.status;
   const hasLastOpenedAtChange =
     currentLessonItem?.lastOpenedAt !== openedState.lastOpenedAt;
@@ -149,25 +152,42 @@ export function applyLessonOpenedState(
 
   const nextStatus = openedState.status;
   const nextStatusLabel = formatLessonProgressStatusLabel(nextStatus);
-  const updateLessonNavItem = (lesson: TextbookLessonNavItem) =>
-    lesson.id === data.lesson.id
-      ? {
-          ...lesson,
+  const updatedLesson =
+    currentLessonItem === null
+      ? null
+      : ({
+          ...currentLessonItem,
           lastOpenedAt: openedState.lastOpenedAt,
           status: nextStatus,
           statusLabel: nextStatusLabel
-        }
-      : lesson;
-  const lessons = data.lessons.map(updateLessonNavItem);
+        } satisfies TextbookLessonNavItem);
+  const lessons =
+    updatedLesson === null
+      ? data.lessons
+      : data.lessons.map((lesson, index) =>
+          index === currentLessonIndex ? updatedLesson : lesson
+        );
   const activeLesson =
-    lessons.find((lesson) => lesson.id === data.lesson.id) ?? data.activeLesson;
-  const resumeLesson = data.resumeLesson
-    ? updateLessonNavItem(data.resumeLesson)
-    : null;
-  const groups = data.groups.map((group) => ({
-    ...group,
-    lessons: group.lessons.map(updateLessonNavItem)
-  }));
+    updatedLesson && nextStatus === "in_progress"
+      ? updatedLesson
+      : data.activeLesson;
+  const resumeLesson =
+    updatedLesson && data.resumeLesson?.id === updatedLesson.id
+      ? updatedLesson
+      : data.resumeLesson;
+  const groups =
+    !hasStatusChange || updatedLesson === null
+      ? data.groups
+      : data.groups.map((group) =>
+          group.id !== (updatedLesson.segmentId ?? "__ungrouped__")
+            ? group
+            : {
+                ...group,
+                lessons: group.lessons.map((lesson) =>
+                  lesson.id === updatedLesson.id ? updatedLesson : lesson
+                )
+              }
+        );
 
   return {
     ...data,
