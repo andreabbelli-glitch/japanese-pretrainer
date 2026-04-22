@@ -11,10 +11,15 @@ export const REVIEW_FIRST_CANDIDATE_TAG = "review-first-candidate";
 export const TEXTBOOK_TOOLTIP_TAG = "textbook-tooltips";
 
 type MediaListSnapshot = Awaited<ReturnType<typeof listMedia>>;
+type MediaBySlugSnapshot = Awaited<ReturnType<typeof getMediaBySlug>>;
 
 const inFlightMediaListSnapshots = new WeakMap<
   DatabaseClient,
   Promise<MediaListSnapshot>
+>();
+const inFlightMediaBySlugSnapshots = new WeakMap<
+  DatabaseClient,
+  Map<string, Promise<MediaBySlugSnapshot>>
 >();
 
 export function buildGlossarySummaryTags(mediaIds: string[] = []) {
@@ -77,13 +82,43 @@ export async function runWithTaggedCache<T>(input: {
 }
 
 export const getMediaBySlugCached = cache(
-  (database: DatabaseClient, slug: string) =>
-    runWithTaggedCache({
+  (database: DatabaseClient, slug: string) => {
+    const inFlightBySlug = inFlightMediaBySlugSnapshots.get(database);
+    const inFlight = inFlightBySlug?.get(slug);
+
+    if (inFlight) {
+      return inFlight;
+    }
+
+    const snapshotPromise = runWithTaggedCache({
       enabled: canUseDataCache(database),
       keyParts: ["media", "by-slug", slug],
       loader: () => getMediaBySlug(database, slug),
       tags: [MEDIA_LIST_TAG]
-    })
+    }).finally(() => {
+      const currentInFlightBySlug = inFlightMediaBySlugSnapshots.get(database);
+
+      if (!currentInFlightBySlug) {
+        return;
+      }
+
+      if (currentInFlightBySlug.get(slug) === snapshotPromise) {
+        currentInFlightBySlug.delete(slug);
+
+        if (currentInFlightBySlug.size === 0) {
+          inFlightMediaBySlugSnapshots.delete(database);
+        }
+      }
+    });
+
+    if (inFlightBySlug) {
+      inFlightBySlug.set(slug, snapshotPromise);
+    } else {
+      inFlightMediaBySlugSnapshots.set(database, new Map([[slug, snapshotPromise]]));
+    }
+
+    return snapshotPromise;
+  }
 );
 
 export async function listMediaCached(database: DatabaseClient = db) {
