@@ -18,6 +18,7 @@ import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
   buildReviewSeedStateWithFsrsPreset,
+  getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerRuntimeSnapshot,
   type FsrsOptimizerSnapshot
 } from "./fsrs-optimizer";
@@ -646,11 +647,15 @@ export async function getGlobalReviewFirstCandidateLoadResult(
 ): Promise<GlobalReviewFirstCandidateLoadResult> {
   const cacheEligible = !options.bypassCache && canUseDataCache(database);
   const searchState = normalizeReviewSearchState(searchParams);
+  const fsrsCacheKeyPart = cacheEligible
+    ? await getFsrsOptimizerCacheKeyPart(database)
+    : "fsrs:none";
   const cacheBucketKey = getLocalIsoTimeBucketKey(new Date());
   const cacheKeyParts = [
     "review",
     "global-first-candidate",
     `bucket:${cacheBucketKey}`,
+    `fsrs:${fsrsCacheKeyPart}`,
     ...buildReviewSearchStateCacheKeyParts(searchState)
   ];
 

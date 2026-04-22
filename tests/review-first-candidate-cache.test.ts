@@ -93,6 +93,7 @@ import {
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
 import {
+  getFsrsOptimizerCacheKeyPart,
   writeFsrsOptimizedParameters,
   writeFsrsOptimizerConfig
 } from "@/lib/fsrs-optimizer";
@@ -140,7 +141,7 @@ async function waitForTruthy(
   throw new Error(message);
 }
 
-function buildTestFsrsSnapshot() {
+function buildTestFsrsSnapshot(recognitionWeights: number[] | null = null) {
   return {
     config: {
       desiredRetention: 0.9,
@@ -151,7 +152,15 @@ function buildTestFsrsSnapshot() {
     },
     presets: {
       concept: null,
-      recognition: null
+      recognition: recognitionWeights
+        ? {
+            desiredRetention: 0.9,
+            presetKey: "recognition" as const,
+            trainedAt: "2026-03-10T10:00:00.000Z",
+            trainingReviewCount: 42,
+            weights: recognitionWeights
+          }
+        : null
     },
     state: {
       bindingVersion: "test",
@@ -199,6 +208,7 @@ describe("global review first-candidate cache", () => {
       const thirdTime = new Date(2026, 2, 10, 10, 11, 0, 0);
       const firstBucketKey = getLocalIsoTimeBucketKey(firstTime);
       const thirdBucketKey = getLocalIsoTimeBucketKey(thirdTime);
+      const fsrsCacheKeyPart = await getFsrsOptimizerCacheKeyPart(database);
 
       vi.setSystemTime(firstTime);
       const first = await getGlobalReviewFirstCandidateLoadResult({}, database);
@@ -221,6 +231,7 @@ describe("global review first-candidate cache", () => {
         "review",
         "global-first-candidate",
         `bucket:${firstBucketKey}`,
+        `fsrs:${fsrsCacheKeyPart}`,
         "answered:0",
         "extra-new:0",
         "notice:",
@@ -232,6 +243,7 @@ describe("global review first-candidate cache", () => {
         "review",
         "global-first-candidate",
         `bucket:${thirdBucketKey}`,
+        `fsrs:${fsrsCacheKeyPart}`,
         "answered:0",
         "extra-new:0",
         "notice:",
@@ -314,6 +326,7 @@ describe("global review first-candidate cache", () => {
 
   it("reuses the cached hydrated review card for repeated loads", async () => {
     await seedSingleReviewCardFixture(database);
+    const fsrsCacheKeyPart = await getFsrsOptimizerCacheKeyPart(database);
 
     const coldStart = performance.now();
     const first = await hydrateReviewCard({
@@ -336,12 +349,17 @@ describe("global review first-candidate cache", () => {
     expect(second).toEqual(first);
     expect(warmMs).toBeLessThanOrEqual(coldMs);
 
-    const cacheKey = JSON.stringify(["review", "hydrated-card", "card_a"]);
+    const cacheKey = JSON.stringify([
+      "review",
+      "hydrated-card",
+      "card_a",
+      `fsrs:${fsrsCacheKeyPart}`
+    ]);
 
     expect(unstableCacheMock).toHaveBeenCalled();
     expect(cacheStore.has(cacheKey)).toBe(true);
-    expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
-    expect(getFsrsOptimizerRuntimeSnapshotMock).toHaveBeenCalledTimes(1);
+    expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(2);
+    expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
     expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
 
     revalidateReviewSummaryCache("media_a");
@@ -422,6 +440,79 @@ describe("global review first-candidate cache", () => {
     }
   });
 
+  it("reloads the first-candidate cache after FSRS optimized parameters change", async () => {
+    await seedSingleReviewCardFixture(database);
+
+    vi.useFakeTimers();
+    try {
+      const now = new Date(2026, 2, 10, 10, 1, 0, 0);
+      vi.setSystemTime(now);
+
+      const initialFsrsCacheKeyPart =
+        await getFsrsOptimizerCacheKeyPart(database);
+      const cacheBucketKey = getLocalIsoTimeBucketKey(now);
+      const first = await getGlobalReviewFirstCandidateLoadResult({}, database);
+
+      expect(first.kind).toBe("ready");
+      expect(
+        first.kind === "ready" ? first.data.selectedCard?.reviewSeedState.fsrsWeights : null
+      ).toBeNull();
+      expect(initialFsrsCacheKeyPart).toBe("none|none|none");
+
+      await writeFsrsOptimizedParameters(
+        {
+          desiredRetention: 0.91,
+          presetKey: "recognition",
+          trainedAt: "2026-03-10T10:02:00.000Z",
+          trainingReviewCount: 42,
+          weights: new Array(17).fill(1)
+        },
+        database,
+        "2026-03-10T10:02:00.000Z"
+      );
+
+      const updatedFsrsCacheKeyPart =
+        await getFsrsOptimizerCacheKeyPart(database);
+      const firstCacheKey = JSON.stringify([
+        "review",
+        "global-first-candidate",
+        `bucket:${cacheBucketKey}`,
+        `fsrs:${initialFsrsCacheKeyPart}`,
+        "answered:0",
+        "extra-new:0",
+        "notice:",
+        "segment:",
+        "selected:",
+        "show:0"
+      ]);
+      const secondCacheKey = JSON.stringify([
+        "review",
+        "global-first-candidate",
+        `bucket:${cacheBucketKey}`,
+        `fsrs:${updatedFsrsCacheKeyPart}`,
+        "answered:0",
+        "extra-new:0",
+        "notice:",
+        "segment:",
+        "selected:",
+        "show:0"
+      ]);
+
+      const second = await getGlobalReviewFirstCandidateLoadResult(
+        {},
+        database
+      );
+
+      expect(second.kind).toBe("ready");
+      expect(updatedFsrsCacheKeyPart).not.toBe(initialFsrsCacheKeyPart);
+      expect(cacheStore.has(firstCacheKey)).toBe(true);
+      expect(cacheStore.has(secondCacheKey)).toBe(true);
+      expect(secondCacheKey).not.toBe(firstCacheKey);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("serves a warm hydrated-card cache hit without waiting for FSRS snapshot lookup", async () => {
     await seedSingleReviewCardFixture(database);
     await hydrateReviewCard({
@@ -464,6 +555,69 @@ describe("global review first-candidate cache", () => {
         );
       }
     }
+  });
+
+  it("reloads the hydrated-card cache after FSRS optimized parameters change", async () => {
+    await seedSingleReviewCardFixture(database);
+
+    const initialWeights = new Array(17).fill(1);
+    const updatedWeights = new Array(17).fill(2);
+    await writeFsrsOptimizedParameters(
+      {
+        desiredRetention: 0.9,
+        presetKey: "recognition",
+        trainedAt: "2026-03-10T10:01:00.000Z",
+        trainingReviewCount: 42,
+        weights: initialWeights
+      },
+      database,
+      "2026-03-10T10:01:00.000Z"
+    );
+    const initialFsrsCacheKeyPart =
+      await getFsrsOptimizerCacheKeyPart(database);
+    const first = await hydrateReviewCard({
+      cardId: "card_a",
+      database
+    });
+    const firstCacheKey = JSON.stringify([
+      "review",
+      "hydrated-card",
+      "card_a",
+      `fsrs:${initialFsrsCacheKeyPart}`
+    ]);
+
+    expect(first).not.toBeNull();
+    expect(cacheStore.has(firstCacheKey)).toBe(true);
+
+    await writeFsrsOptimizedParameters(
+      {
+        desiredRetention: 0.9,
+        presetKey: "recognition",
+        trainedAt: "2026-03-10T10:02:00.000Z",
+        trainingReviewCount: 42,
+        weights: updatedWeights
+      },
+      database,
+      "2026-03-10T10:02:00.000Z"
+    );
+
+    const updatedFsrsCacheKeyPart =
+      await getFsrsOptimizerCacheKeyPart(database);
+    const second = await hydrateReviewCard({
+      cardId: "card_a",
+      database
+    });
+    const secondCacheKey = JSON.stringify([
+      "review",
+      "hydrated-card",
+      "card_a",
+      `fsrs:${updatedFsrsCacheKeyPart}`
+    ]);
+
+    expect(second).not.toBeNull();
+    expect(updatedFsrsCacheKeyPart).not.toBe(initialFsrsCacheKeyPart);
+    expect(cacheStore.has(secondCacheKey)).toBe(true);
+    expect(secondCacheKey).not.toBe(firstCacheKey);
   });
 
   it("revalidates review-first-candidate-tagged caches when FSRS runtime inputs change", async () => {
