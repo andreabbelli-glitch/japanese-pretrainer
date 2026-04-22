@@ -86,15 +86,15 @@ export async function loadGlossaryPageData(
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db
 ): Promise<GlossaryPageData | null> {
-  const [media, defaultSort] = await Promise.all([
-    getMediaBySlugCached(database, mediaSlug),
-    getGlossaryDefaultSort(database)
-  ]);
+  const requestedSort = readGlossarySortSearchParam(searchParams);
+  const defaultSortPromise = getGlossaryDefaultSort(database);
+  const media = await getMediaBySlugCached(database, mediaSlug);
 
   if (!media) {
     return null;
   }
-  const filters = normalizeGlossaryQuery(searchParams, defaultSort, {
+  const resolvedSort = await (requestedSort ?? defaultSortPromise);
+  const filters = normalizeGlossaryQuery(searchParams, resolvedSort, {
     forcedMediaSlug: media.slug,
     supportsSegmentFilter: true
   });
@@ -195,6 +195,7 @@ export async function loadGlossaryPageData(
         media: mediaSummary
       })
     : undefined;
+  const defaultSort = await defaultSortPromise;
 
   return {
     filters,

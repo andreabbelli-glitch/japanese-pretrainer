@@ -235,4 +235,79 @@ describe("glossary query scheduling", () => {
     expect(data.filters.sort).toBe("alphabetical");
     expect(data.hasActiveFilters).toBe(true);
   });
+
+  it("starts the local browse query before the default sort settles when the URL already pins sort", async () => {
+    const defaultSortDeferred = createDeferred<"lesson_order" | "alphabetical">();
+    let localBrowseStarted = false;
+
+    vi.doMock("@/db", async () => {
+      const actual = await vi.importActual<typeof import("@/db")>("@/db");
+
+      return {
+        ...actual,
+        listEntryCardCounts: vi.fn(() => Promise.resolve([])),
+        listEntryLessonConnections: vi.fn(() => Promise.resolve([])),
+        listEntryStudySignals: vi.fn(() => Promise.resolve([])),
+        listGlossarySegmentsByMediaId: vi.fn(() => Promise.resolve([])),
+        listGrammarEntrySummaries: vi.fn(() => Promise.resolve([])),
+        listTermEntrySummaries: vi.fn(() => {
+          localBrowseStarted = true;
+          return Promise.resolve([]);
+        })
+      };
+    });
+    vi.doMock("@/lib/data-cache", async () => {
+      const actual =
+        await vi.importActual<typeof import("@/lib/data-cache")>(
+          "@/lib/data-cache"
+        );
+
+      return {
+        ...actual,
+        canUseDataCache: vi.fn(() => false),
+        getMediaBySlugCached: vi.fn(() =>
+          Promise.resolve({
+            description: "Fixture media",
+            id: "media-1",
+            mediaType: "game",
+            segmentKind: "chapter",
+            slug: "fixture-media",
+            title: "Fixture Media"
+          })
+        ),
+        runWithTaggedCache: vi.fn(async ({ loader }) => loader())
+      };
+    });
+    vi.doMock("@/lib/settings", async () => {
+      const actual =
+        await vi.importActual<typeof import("@/lib/settings")>(
+          "@/lib/settings"
+        );
+
+      return {
+        ...actual,
+        getGlossaryDefaultSort: vi.fn(() => defaultSortDeferred.promise)
+      };
+    });
+
+    const { loadGlossaryPageData } = await import("@/lib/glossary-loaders");
+    const glossaryPromise = loadGlossaryPageData(
+      "fixture-media",
+      {
+        sort: "alphabetical"
+      },
+      {} as never
+    );
+
+    await flushMicrotasks();
+
+    expect(localBrowseStarted).toBe(true);
+
+    defaultSortDeferred.resolve("lesson_order");
+
+    const data = await glossaryPromise;
+
+    expect(data?.filters.sort).toBe("alphabetical");
+    expect(data?.hasActiveFilters).toBe(true);
+  });
 });
