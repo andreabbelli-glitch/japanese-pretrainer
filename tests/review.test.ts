@@ -262,6 +262,7 @@ async function prepareChainedBufferedAdvanceFixture(database: DatabaseClient) {
 
 type ReviewPageLoadCall = {
   mediaSlug?: string;
+  resolvedMediaRowsLength?: number;
   scope: "global" | "media";
   searchParams: Record<string, string>;
 };
@@ -314,21 +315,46 @@ async function loadReviewActionsForDatabase(
           return actual.hydrateReviewCard(input);
         }),
         getGlobalReviewPageData: vi.fn(
-          async (searchParams: Record<string, string>) => {
+          async (
+            searchParams: Record<string, string>,
+            _database?: unknown,
+            reviewOptions?: {
+              resolvedMediaRows?: unknown[];
+            }
+          ) => {
             reviewPageCalls.push({
               scope: "global",
-              searchParams
+              searchParams,
+              ...(reviewOptions?.resolvedMediaRows
+                ? {
+                    resolvedMediaRowsLength:
+                      reviewOptions.resolvedMediaRows.length
+                  }
+                : {})
             });
 
             return {} as ReviewPageData;
           }
         ),
         getReviewPageData: vi.fn(
-          async (mediaSlug: string, searchParams: Record<string, string>) => {
+          async (
+            mediaSlug: string,
+            searchParams: Record<string, string>,
+            _database?: unknown,
+            reviewOptions?: {
+              resolvedMediaRows?: unknown[];
+            }
+          ) => {
             reviewPageCalls.push({
               mediaSlug,
               scope: "media",
-              searchParams
+              searchParams,
+              ...(reviewOptions?.resolvedMediaRows
+                ? {
+                    resolvedMediaRowsLength:
+                      reviewOptions.resolvedMediaRows.length
+                  }
+                : {})
             });
 
             return {} as ReviewPageData;
@@ -2963,11 +2989,31 @@ describe("review system", () => {
     expect(reviewPageCalls).toHaveLength(1);
     expect(reviewPageCalls[0]).toEqual({
       mediaSlug: developmentFixture.mediaSlug,
+      resolvedMediaRowsLength: 1,
       scope: "media",
       searchParams: {
         notice: "reset"
       }
     });
+  });
+
+  it("reuses prefetched media rows when rebuilding a media review session after a mutation", async () => {
+    const { targetCardId } =
+      await prepareReviewSessionRedirectFixture(database);
+    const { resetReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    await resetReviewCardSessionAction({
+      answeredCount: 0,
+      cardId: targetCardId,
+      extraNewCount: 0,
+      mediaSlug: developmentFixture.mediaSlug,
+      redirectMode: "advance_queue",
+      scope: "media"
+    });
+
+    expect(reviewPageCalls).toHaveLength(1);
+    expect(reviewPageCalls[0]?.resolvedMediaRowsLength).toBe(1);
   });
 
   it("revalidates active review paths after grading a card in global review", async () => {
@@ -3510,6 +3556,7 @@ describe("review system", () => {
     expect(reviewPageCalls).toHaveLength(1);
     expect(reviewPageCalls[0]).toEqual({
       mediaSlug: developmentFixture.mediaSlug,
+      resolvedMediaRowsLength: 1,
       scope: "media",
       searchParams: {
         notice: "suspended"
@@ -3542,6 +3589,7 @@ describe("review system", () => {
     expect(revalidatePathMock).not.toHaveBeenCalled();
     expect(reviewPageCalls).toEqual([
       {
+        resolvedMediaRowsLength: 1,
         scope: "global",
         searchParams: {
           notice: "known"
@@ -3599,6 +3647,7 @@ describe("review system", () => {
     expect(reviewPageCalls).toHaveLength(1);
     expect(reviewPageCalls[0]).toEqual({
       mediaSlug: developmentFixture.mediaSlug,
+      resolvedMediaRowsLength: 1,
       scope: "media",
       searchParams: {
         notice: "learning"

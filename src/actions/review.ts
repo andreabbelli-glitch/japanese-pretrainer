@@ -8,6 +8,7 @@ import { db } from "@/db";
 import { loadReviewPageDataSession } from "@/lib/review-page-data";
 import {
   getMediaBySlugCached,
+  listMediaCached,
   updateGlossarySummaryCache,
   updateReviewSummaryCache
 } from "@/lib/data-cache";
@@ -658,6 +659,7 @@ async function runReviewFormMutationAction(
 async function runReviewSessionMutationAction(
   input: ReviewSessionMutationInput
 ): Promise<ReviewPageData> {
+  const mediaRowsPromise = listMediaCached(db);
   const media = await resolveReviewSessionMedia(input);
 
   const mutationResult = await runReviewMutation({
@@ -683,7 +685,9 @@ async function runReviewSessionMutationAction(
       redirectMode: input.redirectMode,
       segmentId: input.segmentId
     }),
-    media
+    media,
+    true,
+    await mediaRowsPromise
   );
 }
 
@@ -821,12 +825,14 @@ async function requireReviewPageData(
   searchParams: Record<string, string | string[] | undefined>,
   resolvedMedia?: ResolvedReviewScopeMedia,
   excludeCardIds?: string[],
-  bypassCache = true
+  bypassCache = true,
+  resolvedMediaRows?: Awaited<ReturnType<typeof listMediaCached>>
 ) {
   const data = await getReviewPageData(mediaSlug, searchParams, db, {
     bypassCache,
     excludeCardIds,
-    resolvedMedia
+    resolvedMedia,
+    resolvedMediaRows
   });
 
   if (!data) {
@@ -840,14 +846,16 @@ async function requireReviewPageDataForScope(
   input: Pick<ReviewSessionInput, "gradedCardIds" | "mediaSlug" | "scope">,
   searchParams: Record<string, string | string[] | undefined>,
   resolvedMedia?: ResolvedReviewScopeMedia,
-  bypassCache = true
+  bypassCache = true,
+  resolvedMediaRows?: Awaited<ReturnType<typeof listMediaCached>>
 ) {
   const excludeCardIds = input.gradedCardIds;
 
   if (input.scope === "global") {
     return getGlobalReviewPageData(searchParams, db, {
       bypassCache,
-      excludeCardIds
+      excludeCardIds,
+      resolvedMediaRows
     });
   }
 
@@ -860,7 +868,8 @@ async function requireReviewPageDataForScope(
     searchParams,
     resolvedMedia,
     excludeCardIds,
-    bypassCache
+    bypassCache,
+    resolvedMediaRows
   );
 }
 
