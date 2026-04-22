@@ -7,6 +7,7 @@ import {
   type LessonListItem
 } from "@/db";
 import { mediaGlossaryEntryHref } from "@/lib/site";
+import { formatDerivedStudyStateLabel } from "@/lib/study-entry";
 import {
   calculatePercent,
   compareIsoDates,
@@ -100,14 +101,6 @@ export async function loadGlossaryProgressSnapshot(
   );
 }
 
-const STUDY_STATE_LABELS: Record<string, string> = {
-  known: "Già nota",
-  learning: "In studio",
-  review: "In review",
-  new: "Nuova",
-  available: "Disponibile"
-};
-
 export async function loadGlossaryProgressSnapshots(
   database: DatabaseClient,
   media: GlossaryProgressMediaTarget[]
@@ -136,7 +129,7 @@ export async function loadGlossaryProgressSnapshots(
       meaning: preview.meaningIt,
       reading: preview.reading ?? undefined,
       segmentTitle: preview.segmentTitle ?? undefined,
-      statusLabel: STUDY_STATE_LABELS[preview.state] ?? "Disponibile"
+      statusLabel: formatDerivedStudyStateLabel(preview.state)
     });
     
     previewsByMedia.set(preview.mediaId, existing);

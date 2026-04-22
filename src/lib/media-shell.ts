@@ -30,6 +30,7 @@ import {
   loadReviewLaunchCandidatesCached
 } from "@/lib/review-loader";
 import { getReviewDailyLimit } from "@/lib/settings";
+import { formatDerivedStudyStateLabel } from "@/lib/study-entry";
 import {
   buildEmptyGlossaryProgressSnapshot,
   type GlossaryProgressSnapshot,
@@ -41,14 +42,6 @@ import {
   type MediaShellSnapshot
 } from "@/lib/media-shell-snapshot";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
-
-const STUDY_STATE_LABELS: Record<string, string> = {
-  known: "Già nota",
-  learning: "In studio",
-  review: "In review",
-  new: "Nuova",
-  available: "Disponibile"
-};
 
 function buildGlossaryReviewTags(mediaIds: string[] = []) {
   return [
@@ -363,7 +356,7 @@ async function loadGlossaryPreviewEntriesCached(
           meaning: preview.meaningIt,
           reading: preview.reading ?? undefined,
           segmentTitle: preview.segmentTitle ?? undefined,
-          statusLabel: STUDY_STATE_LABELS[preview.state] ?? "Disponibile"
+          statusLabel: formatDerivedStudyStateLabel(preview.state)
         });
 
         previewsByMedia.set(preview.mediaId, existing);

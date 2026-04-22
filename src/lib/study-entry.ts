@@ -17,6 +17,20 @@ export type DerivedStudyState = {
   hasKnownSignal: boolean;
 };
 
+const DERIVED_STUDY_STATE_LABELS: Record<DerivedStudyStateKey, string> = {
+  known: "Già nota",
+  learning: "In studio",
+  review: "In review",
+  new: "Nuova",
+  available: "Disponibile"
+};
+
+export function formatDerivedStudyStateLabel(
+  value: DerivedStudyStateKey | string
+) {
+  return DERIVED_STUDY_STATE_LABELS[value as DerivedStudyStateKey] ?? "Disponibile";
+}
+
 export function deriveEntryStudyState(
   studySignals: EntryStudySignal[] | null | undefined
 ): DerivedStudyState {
@@ -49,7 +63,7 @@ export function deriveEntryStudyState(
   if (hasKnownSignal) {
     return {
       key: "known",
-      label: "Già nota",
+      label: formatDerivedStudyStateLabel("known"),
       hasCardsInReview: false,
       hasKnownSignal: true
     };
@@ -58,7 +72,7 @@ export function deriveEntryStudyState(
   if (hasLearningCards) {
     return {
       key: "learning",
-      label: "In studio",
+      label: formatDerivedStudyStateLabel("learning"),
       hasCardsInReview: true,
       hasKnownSignal: false
     };
@@ -67,7 +81,7 @@ export function deriveEntryStudyState(
   if (hasCardsInReview) {
     return {
       key: "review",
-      label: "In review",
+      label: formatDerivedStudyStateLabel("review"),
       hasCardsInReview: true,
       hasKnownSignal: false
     };
@@ -76,7 +90,7 @@ export function deriveEntryStudyState(
   if (hasNewCards) {
     return {
       key: "new",
-      label: "Nuova",
+      label: formatDerivedStudyStateLabel("new"),
       hasCardsInReview: false,
       hasKnownSignal: false
     };
@@ -84,7 +98,7 @@ export function deriveEntryStudyState(
 
   return {
     key: "available",
-    label: "Disponibile",
+    label: formatDerivedStudyStateLabel("available"),
     hasCardsInReview: false,
     hasKnownSignal: false
   };
