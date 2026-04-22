@@ -3,10 +3,8 @@ import { and, asc, eq, inArray, ne } from "drizzle-orm";
 import type { DatabaseQueryClient } from "../client.ts";
 import {
   card,
-  crossMediaGroup,
   grammarPattern,
   media,
-  segment,
   term
 } from "../schema/index.ts";
 import {
@@ -174,8 +172,6 @@ export async function listTermEntryReviewSummariesByIds(
       id: term.id,
       sourceId: term.sourceId,
       crossMediaGroupId: term.crossMediaGroupId,
-      mediaId: term.mediaId,
-      segmentId: term.segmentId,
       lemma: term.lemma,
       reading: term.reading,
       romaji: term.romaji,
@@ -189,15 +185,10 @@ export async function listTermEntryReviewSummariesByIds(
       pitchAccent: term.pitchAccent,
       pitchAccentSource: term.pitchAccentSource,
       pitchAccentPageUrl: term.pitchAccentPageUrl,
-      mediaSlug: media.slug,
-      mediaTitle: media.title,
-      segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey
+      mediaSlug: media.slug
     })
     .from(term)
     .innerJoin(media, eq(media.id, term.mediaId))
-    .leftJoin(segment, eq(segment.id, term.segmentId))
-    .leftJoin(crossMediaGroup, eq(crossMediaGroup.id, term.crossMediaGroupId))
     .where(inArray(term.id, termIds))
     .orderBy(asc(term.lemma), asc(term.reading));
 }
@@ -215,8 +206,6 @@ export async function listGrammarEntryReviewSummariesByIds(
       id: grammarPattern.id,
       sourceId: grammarPattern.sourceId,
       crossMediaGroupId: grammarPattern.crossMediaGroupId,
-      mediaId: grammarPattern.mediaId,
-      segmentId: grammarPattern.segmentId,
       pattern: grammarPattern.pattern,
       title: grammarPattern.title,
       reading: grammarPattern.reading,
@@ -230,21 +219,21 @@ export async function listGrammarEntryReviewSummariesByIds(
       pitchAccent: grammarPattern.pitchAccent,
       pitchAccentSource: grammarPattern.pitchAccentSource,
       pitchAccentPageUrl: grammarPattern.pitchAccentPageUrl,
-      mediaSlug: media.slug,
-      mediaTitle: media.title,
-      segmentTitle: segment.title,
-      crossMediaGroupKey: crossMediaGroup.groupKey
+      mediaSlug: media.slug
     })
     .from(grammarPattern)
     .innerJoin(media, eq(media.id, grammarPattern.mediaId))
-    .leftJoin(segment, eq(segment.id, grammarPattern.segmentId))
-    .leftJoin(
-      crossMediaGroup,
-      eq(crossMediaGroup.id, grammarPattern.crossMediaGroupId)
-    )
     .where(inArray(grammarPattern.id, grammarIds))
     .orderBy(asc(grammarPattern.pattern), asc(grammarPattern.title));
 }
+
+export type TermEntryReviewSummaryById = Awaited<
+  ReturnType<typeof listTermEntryReviewSummariesByIds>
+>[number];
+
+export type GrammarEntryReviewSummaryById = Awaited<
+  ReturnType<typeof listGrammarEntryReviewSummariesByIds>
+>[number];
 
 export type ReviewLaunchCandidate = {
   activeReviewCards: number;

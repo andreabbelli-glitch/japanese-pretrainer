@@ -22,6 +22,7 @@ import {
   listGlossaryPreviewEntries,
   listGlossaryProgressSummaries,
   listGrammarEntryReviewSummaries,
+  listGrammarEntryReviewSummariesByIds,
   listLessonEntryLinks,
   listEntryStudySignals,
   listLessonsByMediaId,
@@ -29,6 +30,7 @@ import {
   listMedia,
   listReviewCardsByMediaIds,
   listTermEntryReviewSummaries,
+  listTermEntryReviewSummariesByIds,
   lessonProgress,
   media,
   reviewSubjectState,
@@ -370,6 +372,36 @@ describe("database layer", () => {
     expect(grammar[0]).not.toHaveProperty("entryStatus");
     expect(grammar[0]).not.toHaveProperty("levelHint");
     expect(grammar[0]).not.toHaveProperty("searchPatternNorm");
+  });
+
+  it("keeps review workspace entry summaries free of unused presentation fields", async () => {
+    const [terms, grammar] = await Promise.all([
+      listTermEntryReviewSummariesByIds(database, [developmentFixture.termDbId]),
+      listGrammarEntryReviewSummariesByIds(database, [
+        developmentFixture.grammarDbId
+      ])
+    ]);
+
+    expect(terms).toHaveLength(1);
+    expect(terms[0]).toHaveProperty("mediaSlug", developmentFixture.mediaSlug);
+    expect(terms[0]).toHaveProperty("audioSrc");
+    expect(terms[0]).not.toHaveProperty("mediaId");
+    expect(terms[0]).not.toHaveProperty("segmentId");
+    expect(terms[0]).not.toHaveProperty("mediaTitle");
+    expect(terms[0]).not.toHaveProperty("segmentTitle");
+    expect(terms[0]).not.toHaveProperty("crossMediaGroupKey");
+
+    expect(grammar).toHaveLength(1);
+    expect(grammar[0]).toHaveProperty(
+      "mediaSlug",
+      developmentFixture.mediaSlug
+    );
+    expect(grammar[0]).toHaveProperty("audioSrc");
+    expect(grammar[0]).not.toHaveProperty("mediaId");
+    expect(grammar[0]).not.toHaveProperty("segmentId");
+    expect(grammar[0]).not.toHaveProperty("mediaTitle");
+    expect(grammar[0]).not.toHaveProperty("segmentTitle");
+    expect(grammar[0]).not.toHaveProperty("crossMediaGroupKey");
   });
 
   it("uses a trimmed segment query for local glossary filters", async () => {

@@ -3,18 +3,16 @@ import {
   getCardById,
   getGlossaryEntriesByIds,
   listCrossMediaFamiliesByEntryIds,
+  type GrammarEntryReviewSummaryById,
   getReviewSubjectStateByKey,
   type CrossMediaFamily,
   type CrossMediaSibling,
   type DatabaseClient,
-  type GrammarEntryReviewSummary,
   type GrammarGlossaryEntry,
-  type GrammarGlossaryEntrySummary,
   type MediaListItem,
   type ReviewCardListItem,
-  type TermEntryReviewSummary,
+  type TermEntryReviewSummaryById,
   type TermGlossaryEntry,
-  type TermGlossaryEntrySummary
 } from "@/db";
 import {
   buildGlossarySummaryTags,
@@ -90,13 +88,11 @@ export type ReviewEntryLookupItem = {
 
 export type ReviewTermLookupEntry =
   | TermGlossaryEntry
-  | TermGlossaryEntrySummary
-  | TermEntryReviewSummary;
+  | TermEntryReviewSummaryById;
 
 export type ReviewGrammarLookupEntry =
   | GrammarGlossaryEntry
-  | GrammarGlossaryEntrySummary
-  | GrammarEntryReviewSummary;
+  | GrammarEntryReviewSummaryById;
 
 export type ReviewMediaLookup = Map<
   string,
