@@ -241,6 +241,7 @@ describe("resolveReviewPageSelection", () => {
       reviewSubjectModule,
       "selectReviewSubjectRepresentativeCard"
     );
+    const visibilitySpy = vi.spyOn(Array.prototype, "some");
 
     const snapshot = buildReviewQueueSubjectSnapshot({
       cards: sharedCards,
@@ -253,11 +254,13 @@ describe("resolveReviewPageSelection", () => {
       visibleMediaId: "media-a"
     });
 
+    expect(visibilitySpy).toHaveBeenCalledTimes(1);
     expect(snapshot.queueModels[0]?.card.id).toBe("card-local");
     expect(snapshot.subjectModels[0]?.card.id).toBe("card-global");
     expect(snapshot.queueModels[0]).not.toBe(snapshot.subjectModels[0]);
     expect(representativeSpy).toHaveBeenCalledTimes(1);
 
+    visibilitySpy.mockRestore();
     representativeSpy.mockRestore();
   });
 });

@@ -49,14 +49,26 @@ export type ReviewQueueSubjectSnapshot = {
   visibleMediaId?: string;
 };
 
-function isReviewSubjectVisibleInMedia(
-  group: ReviewSubjectGroup,
-  visibleMediaId?: string
-) {
-  return (
-    !visibleMediaId ||
-    group.cards.some((card) => card.mediaId === visibleMediaId)
-  );
+function createReviewSubjectVisibilityResolver(visibleMediaId?: string) {
+  if (!visibleMediaId) {
+    return () => true;
+  }
+
+  const visibilityBySubjectKey = new Map<string, boolean>();
+
+  return (group: ReviewSubjectGroup) => {
+    const cacheKey = group.identity.subjectKey;
+    const cached = visibilityBySubjectKey.get(cacheKey);
+
+    if (cached !== undefined) {
+      return cached;
+    }
+
+    const visible = group.cards.some((card) => card.mediaId === visibleMediaId);
+
+    visibilityBySubjectKey.set(cacheKey, visible);
+    return visible;
+  };
 }
 
 export function buildReviewSubjectModels(input: {
@@ -168,15 +180,14 @@ function compareReviewSubjectModelsByOrder(
 
 function buildQueuedNewReviewSubjectModels(input: {
   classifiedModels: ReturnType<typeof classifyReviewSubjectModels>;
+  isVisibleInMedia: (group: ReviewSubjectGroup) => boolean;
   newSlots: number;
   resolveModelForDisplay: (model: ReviewSubjectModel) => ReviewSubjectModel;
   visibleMediaId?: string;
 }) {
   const queuedNewModels = input.classifiedModels.globalNewModels
     .slice(0, input.newSlots)
-    .filter((model) =>
-      isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
-    );
+    .filter((model) => input.isVisibleInMedia(model.group));
 
   if (!input.visibleMediaId) {
     return queuedNewModels;
@@ -262,8 +273,12 @@ export function buildReviewOverviewSnapshot(input: {
       subjectStates: input.subjectStates
     });
   const modelBuckets = input.buckets ?? bucketAndSortReviewSubjectModels(models);
+  const isVisibleInMedia = createReviewSubjectVisibilityResolver(
+    input.visibleMediaId
+  );
   const classifiedModels = classifyReviewSubjectModels(
     modelBuckets,
+    isVisibleInMedia,
     input.visibleMediaId
   );
   const resolveModelForDisplay = createReviewSubjectDisplayResolver({
@@ -278,6 +293,7 @@ export function buildReviewOverviewSnapshot(input: {
   });
   const queuedNewModels = buildQueuedNewReviewSubjectModels({
     classifiedModels,
+    isVisibleInMedia,
     newSlots,
     resolveModelForDisplay,
     visibleMediaId: input.visibleMediaId
@@ -353,14 +369,16 @@ export function buildReviewQueueSubjectSnapshot(input: {
           !model.group.cards.some((card) => excludeSet.has(card.id))
       )
     : allSubjectModels;
+  const isVisibleInMedia = createReviewSubjectVisibilityResolver(
+    input.visibleMediaId
+  );
   const visibleSubjectModels = input.visibleMediaId
-    ? subjectModels.filter((model) =>
-        isReviewSubjectVisibleInMedia(model.group, input.visibleMediaId)
-      )
+    ? subjectModels.filter((model) => isVisibleInMedia(model.group))
     : subjectModels;
   const buckets = bucketAndSortReviewSubjectModels(subjectModels);
   const classifiedModels = classifyReviewSubjectModels(
     buckets,
+    isVisibleInMedia,
     input.visibleMediaId
   );
   const resolveModelForDisplay = createReviewSubjectDisplayResolver({
@@ -381,6 +399,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
     );
   const queuedNewModels = buildQueuedNewReviewSubjectModels({
     classifiedModels,
+    isVisibleInMedia,
     newSlots,
     resolveModelForDisplay,
     visibleMediaId: input.visibleMediaId
@@ -472,6 +491,7 @@ export function bucketAndSortReviewSubjectModels(models: ReviewSubjectModel[]) {
 
 function classifyReviewSubjectModels(
   buckets: ReturnType<typeof bucketAndSortReviewSubjectModels>,
+  isVisibleInMedia: (group: ReviewSubjectGroup) => boolean,
   visibleMediaId?: string
 ) {
   if (!visibleMediaId) {
@@ -492,9 +512,7 @@ function classifyReviewSubjectModels(
   }
 
   const filterVisible = (models: ReviewSubjectModel[]) =>
-    models.filter((model) =>
-      isReviewSubjectVisibleInMedia(model.group, visibleMediaId)
-    );
+    models.filter((model) => isVisibleInMedia(model.group));
 
   const dueModels = filterVisible(buckets.dueModels);
   const visibleNewModels = filterVisible(buckets.newModels);
