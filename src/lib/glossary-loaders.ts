@@ -81,19 +81,28 @@ type GlossaryLoadMode = "list" | "search";
 
 const GLOBAL_GLOSSARY_PAGE_SIZE = 24;
 
+function createDefaultSortLoader(database: DatabaseClient) {
+  let defaultSortPromise: ReturnType<typeof getGlossaryDefaultSort> | undefined;
+
+  return () => {
+    defaultSortPromise ??= getGlossaryDefaultSort(database);
+    return defaultSortPromise;
+  };
+}
+
 export async function loadGlossaryPageData(
   mediaSlug: string,
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db
 ): Promise<GlossaryPageData | null> {
   const requestedSort = readGlossarySortSearchParam(searchParams);
-  const defaultSortPromise = getGlossaryDefaultSort(database);
+  const loadDefaultSort = createDefaultSortLoader(database);
   const media = await getMediaBySlugCached(database, mediaSlug);
 
   if (!media) {
     return null;
   }
-  const resolvedSort = await (requestedSort ?? defaultSortPromise);
+  const resolvedSort = await (requestedSort ?? loadDefaultSort());
   const filters = normalizeGlossaryQuery(searchParams, resolvedSort, {
     forcedMediaSlug: media.slug,
     supportsSegmentFilter: true
@@ -195,14 +204,15 @@ export async function loadGlossaryPageData(
         media: mediaSummary
       })
     : undefined;
-  const defaultSort = await defaultSortPromise;
+  const hasActiveFilters =
+    hasActiveGlossaryFilters(filters, filters.sort, {
+      forcedMediaSlug: media.slug,
+      supportsSegmentFilter: true
+    }) || filters.sort !== (await loadDefaultSort());
 
   return {
     filters,
-    hasActiveFilters: hasActiveGlossaryFilters(filters, defaultSort, {
-      forcedMediaSlug: media.slug,
-      supportsSegmentFilter: true
-    }),
+    hasActiveFilters,
     media: mediaSummary,
     resultSummary: {
       filtered: filteredEntries.length,
@@ -230,12 +240,12 @@ export async function loadGlobalGlossaryPageData(
   database: DatabaseClient = db
 ): Promise<GlobalGlossaryPageData> {
   const requestedSort = readGlossarySortSearchParam(searchParams);
-  const defaultSortPromise = getGlossaryDefaultSort(database);
+  const loadDefaultSort = createDefaultSortLoader(database);
   const mediaRowsPromise = listMediaCached(database);
   const aggregateStatsPromise = getGlobalGlossaryAggregateStatsCached(database);
   const normalizedFilters = normalizeGlossaryQuery(
     searchParams,
-    requestedSort ?? (await defaultSortPromise)
+    requestedSort ?? (await loadDefaultSort())
   );
   const resultsPromise =
     normalizedFilters.query
@@ -250,18 +260,19 @@ export async function loadGlobalGlossaryPageData(
   const [
     { filteredTotal, filters, pagination, results },
     mediaRows,
-    aggregateStats,
-    defaultSort
+    aggregateStats
   ] = await Promise.all([
     resultsPromise,
     mediaRowsPromise,
-    aggregateStatsPromise,
-    defaultSortPromise
+    aggregateStatsPromise
   ]);
+  const hasActiveFilters =
+    hasActiveGlossaryFilters(filters, filters.sort) ||
+    filters.sort !== (await loadDefaultSort());
 
   return {
     filters,
-    hasActiveFilters: hasActiveGlossaryFilters(filters, defaultSort),
+    hasActiveFilters,
     mediaOptions: mediaRows.map((row) => ({
       id: row.id,
       slug: row.slug,
