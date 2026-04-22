@@ -1,9 +1,12 @@
 import type { KanjiClashSimilarKanjiSwap } from "./types.ts";
-import { KANJI_CLASH_SIMILAR_KANJI_DATASET } from "./similar-kanji-dataset.generated.ts";
-import type { SimilarKanjiDatasetEntry } from "./similar-kanji-dataset-builder.ts";
+import similarKanjiDatasetJson from "./similar-kanji-dataset.generated.json";
+import type {
+  SimilarKanjiDataset,
+  SimilarKanjiDatasetEntry
+} from "./similar-kanji-dataset-builder.ts";
 
 const similarKanjiDataset = freezeSimilarKanjiDataset(
-  KANJI_CLASH_SIMILAR_KANJI_DATASET
+  similarKanjiDatasetJson as SimilarKanjiDataset
 );
 
 const similarKanjiSwapByKey = new Map(
