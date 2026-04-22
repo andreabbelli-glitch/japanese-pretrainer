@@ -228,11 +228,14 @@ export async function loadGlobalGlossaryPageData(
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db
 ): Promise<GlobalGlossaryPageData> {
+  const requestedSort = readGlossarySortSearchParam(searchParams);
   const defaultSortPromise = getGlossaryDefaultSort(database);
   const mediaRowsPromise = listMediaCached(database);
   const aggregateStatsPromise = getGlobalGlossaryAggregateStatsCached(database);
-  const defaultSort = await defaultSortPromise;
-  const normalizedFilters = normalizeGlossaryQuery(searchParams, defaultSort);
+  const normalizedFilters = normalizeGlossaryQuery(
+    searchParams,
+    requestedSort ?? (await defaultSortPromise)
+  );
   const resultsPromise =
     normalizedFilters.query
       ? loadCachedPaginatedGlobalGlossarySearchResults(
@@ -246,11 +249,13 @@ export async function loadGlobalGlossaryPageData(
   const [
     { filteredTotal, filters, pagination, results },
     mediaRows,
-    aggregateStats
+    aggregateStats,
+    defaultSort
   ] = await Promise.all([
     resultsPromise,
     mediaRowsPromise,
-    aggregateStatsPromise
+    aggregateStatsPromise,
+    defaultSortPromise
   ]);
 
   return {
@@ -275,6 +280,24 @@ export async function loadGlobalGlossaryPageData(
       withCardsCount: aggregateStats.withCardsCount
     }
   };
+}
+
+function readGlossarySortSearchParam(
+  searchParams: Record<string, string | string[] | undefined>
+): GlossaryQueryState["sort"] | undefined {
+  const candidates = Array.isArray(searchParams.sort)
+    ? searchParams.sort
+    : [searchParams.sort];
+
+  for (const candidate of candidates) {
+    const trimmed = candidate?.trim();
+
+    if (trimmed === "alphabetical" || trimmed === "lesson_order") {
+      return trimmed;
+    }
+  }
+
+  return undefined;
 }
 
 export async function loadGlobalGlossaryAutocompleteData(
