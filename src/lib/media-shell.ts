@@ -61,17 +61,39 @@ type ResolvedMedia = NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>
 
 export async function getMediaLibraryData(database: DatabaseClient = db) {
   const now = new Date();
+  const nowIso = now.toISOString();
   const cacheBucketKey = getLocalIsoTimeBucketKey(now);
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["app-shell", "media-library", `bucket:${cacheBucketKey}`],
     loader: async () => {
-      const rows = await listMediaCached(database);
+      const mediaRowsPromise = listMediaCached(database);
+      const dailyLimitPromise = getReviewDailyLimit(database);
+      const newIntroducedTodayCountPromise =
+        loadReviewIntroducedTodayCountCached(database, now);
+      const reviewCandidatesPromise = loadReviewLaunchCandidatesCached(
+        database,
+        nowIso
+      );
+      const [
+        rows,
+        resolvedDailyLimit,
+        resolvedNewIntroducedTodayCount,
+        resolvedReviewCandidates
+      ] = await Promise.all([
+        mediaRowsPromise,
+        dailyLimitPromise,
+        newIntroducedTodayCountPromise,
+        reviewCandidatesPromise
+      ]);
 
       return loadMediaShellSnapshots(database, rows, {
         includePreviewEntries: false,
-        now
+        now,
+        resolvedDailyLimit,
+        resolvedNewIntroducedTodayCount,
+        resolvedReviewCandidates
       });
     },
     tags: [
