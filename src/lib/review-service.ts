@@ -72,9 +72,19 @@ type LinkedEntryRef = {
   entryType: EntryType;
 };
 
-type ReviewMutationCard = ReviewCardListItem & {
-  drivingEntries: LinkedEntryRef[];
-};
+type ReviewMutationCard = Pick<
+  ReviewCardListItem,
+  | "cardType"
+  | "createdAt"
+  | "entryLinks"
+  | "front"
+  | "id"
+  | "lesson"
+  | "lessonId"
+  | "mediaId"
+  | "status"
+  | "updatedAt"
+>;
 
 type ReviewSubjectMemberCard = Awaited<
   ReturnType<typeof listReviewCardsByIds>
@@ -543,32 +553,41 @@ async function loadReviewCardForMutation(
   cardId: string
 ) {
   const row = await transaction.query.card.findFirst({
+    columns: {
+      cardType: true,
+      createdAt: true,
+      front: true,
+      id: true,
+      lessonId: true,
+      mediaId: true,
+      status: true,
+      updatedAt: true
+    },
     where: eq(card.id, cardId),
     with: {
       lesson: {
+        columns: {
+          status: true
+        },
         with: {
-          progress: true
+          progress: {
+            columns: {
+              status: true
+            }
+          }
         }
       },
-      segment: true,
-      entryLinks: true
+      entryLinks: {
+        columns: {
+          entryId: true,
+          entryType: true,
+          relationshipType: true
+        }
+      }
     }
   });
 
-  if (!row) {
-    return null;
-  }
-
-  const drivingEntryRefs = getDrivingEntryLinks(row.entryLinks);
-  const drivingEntries = drivingEntryRefs.map((entry) => ({
-    entryId: entry.entryId,
-    entryType: entry.entryType
-  }));
-
-  return {
-    ...row,
-    drivingEntries
-  };
+  return row ?? null;
 }
 
 function isActiveReviewableMutationCard(
@@ -690,8 +709,16 @@ async function loadReviewSubjectMutationContext(
         entryLookup: memberEntryLookup
       }).subjectKey === identity.subjectKey
   );
+  const fallbackMemberCard =
+    loadedMemberCards.find((cardRow) => cardRow.id === loadedCard.id) ??
+    loadedMemberCards[0] ??
+    null;
   const effectiveMemberCards =
-    memberCards.length > 0 ? memberCards : [loadedCard];
+    memberCards.length > 0
+      ? memberCards
+      : fallbackMemberCard
+        ? [fallbackMemberCard]
+        : [];
   const seedCard = selectReviewSubjectRepresentativeCard(
     effectiveMemberCards,
     subjectState ? (subjectState as ReviewSubjectStateSnapshot) : null,

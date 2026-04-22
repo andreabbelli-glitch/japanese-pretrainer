@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { eq } from "drizzle-orm";
-import { afterEach, beforeEach, describe, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as dbModule from "@/db";
 import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
@@ -174,5 +174,78 @@ describe("review service query scheduling", () => {
       subjectStateSpy.mockRestore();
       fsrsSnapshotSpy.mockRestore();
     }
+  });
+
+  it("loads only the fields needed for review mutations", async () => {
+    const sentinel = new Error("stop after mutation card load");
+    const findFirst = vi.fn(async (query: unknown) => {
+      void query;
+      throw sentinel;
+    });
+    const minimalDatabase = {
+      transaction: async (
+        callback: (transaction: {
+          query: {
+            card: {
+              findFirst: typeof findFirst;
+            };
+          };
+        }) => Promise<unknown>
+      ) =>
+        callback({
+          query: {
+            card: {
+              findFirst
+            }
+          }
+        })
+    } as unknown as DatabaseClient;
+
+    await expect(
+      applyReviewGrade({
+        cardId: developmentFixture.primaryCardId,
+        database: minimalDatabase,
+        rating: "good"
+      })
+    ).rejects.toBe(sentinel);
+
+    const queryInput = findFirst.mock.calls[0]?.[0] as
+      | {
+          columns?: unknown;
+          with?: unknown;
+        }
+      | undefined;
+
+    expect(queryInput?.columns).toEqual({
+      cardType: true,
+      createdAt: true,
+      front: true,
+      id: true,
+      lessonId: true,
+      mediaId: true,
+      status: true,
+      updatedAt: true
+    });
+    expect(queryInput?.with).toEqual({
+      lesson: {
+        columns: {
+          status: true
+        },
+        with: {
+          progress: {
+            columns: {
+              status: true
+            }
+          }
+        }
+      },
+      entryLinks: {
+        columns: {
+          entryId: true,
+          entryType: true,
+          relationshipType: true
+        }
+      }
+    });
   });
 });
