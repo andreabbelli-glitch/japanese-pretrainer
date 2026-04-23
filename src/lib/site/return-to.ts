@@ -25,7 +25,12 @@ export function readInternalHref(
 
     const trimmed = entry.trim();
 
-    if (!trimmed || !trimmed.startsWith("/") || trimmed.startsWith("//")) {
+    if (
+      !trimmed ||
+      !trimmed.startsWith("/") ||
+      trimmed.startsWith("//") ||
+      trimmed.includes("\\")
+    ) {
       continue;
     }
 

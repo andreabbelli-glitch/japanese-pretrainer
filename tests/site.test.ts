@@ -232,6 +232,9 @@ describe("site helpers", () => {
     expect(readInternalHref(["//evil.test/path", " /glossary?q=iku "])).toBe(
       "/glossary?q=iku"
     );
+    expect(readInternalHref(["/\\evil.test/path", " /review "])).toBe(
+      "/review"
+    );
   });
 
   it("derives glossary back navigation from explicit return context with safe fallbacks", () => {

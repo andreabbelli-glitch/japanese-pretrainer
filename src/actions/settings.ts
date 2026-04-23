@@ -1,11 +1,10 @@
 "use server";
 
-import type { Route } from "next";
 import { redirect } from "next/navigation";
 
 import { readRequiredString } from "./form-data.ts";
 import { revalidateSettingsCache } from "@/lib/data-cache";
-import { buildHrefWithSearch } from "@/lib/site";
+import { buildHrefWithSearch, readInternalHref } from "@/lib/site";
 import {
   normalizeFuriganaMode,
   normalizeGlossaryDefaultSort,
@@ -63,18 +62,8 @@ export async function saveStudySettingsAction(formData: FormData) {
 function readOptionalInternalHref(
   formData: FormData,
   key: string
-): Route | null {
+) {
   const value = formData.get(key);
 
-  if (typeof value !== "string") {
-    return null;
-  }
-
-  const trimmed = value.trim();
-
-  if (!trimmed.startsWith("/") || trimmed.startsWith("//")) {
-    return null;
-  }
-
-  return trimmed as Route;
+  return readInternalHref(typeof value === "string" ? value : undefined);
 }
