@@ -251,11 +251,17 @@ function verifyPasswordHash(password: string, storedHash: string) {
     return false;
   }
 
+  if (!/^[a-f0-9]+$/iu.test(expectedHash) || expectedHash.length % 2 !== 0) {
+    return false;
+  }
+
+  const expectedHashBuffer = Buffer.from(expectedHash, "hex");
+
   const actualHash = pbkdf2Sync(
     password,
     salt,
     iterations,
-    Buffer.from(expectedHash, "hex").length,
+    expectedHashBuffer.length,
     PBKDF2_DIGEST
   ).toString("hex");
 

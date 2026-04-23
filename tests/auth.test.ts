@@ -110,6 +110,20 @@ describe("auth helpers", () => {
     expect(verifySessionToken(`${token}.extra`, issuedAt + 1_000)).toBe(false);
   });
 
+  it("rejects malformed password hashes without throwing during login", () => {
+    clearAuthEnv();
+    process.env.AUTH_USERNAME = "owner";
+    process.env.AUTH_PASSWORD_HASH = "pbkdf2_sha256$210000$salt$not-hex";
+    process.env.AUTH_SESSION_SECRET = "super-secret-session-key";
+
+    expect(
+      verifyLoginCredentials({
+        password: "study-hard",
+        username: "owner"
+      })
+    ).toBe(false);
+  });
+
   it("uses the same timestamp base for session cookie expiry", () => {
     const issuedAt = Date.UTC(2026, 2, 14, 10, 0, 0);
 
