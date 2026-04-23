@@ -29,7 +29,9 @@ import { useKanjiClashRoundController } from "@/components/kanji-clash/use-kanji
 
 import {
   buildKanjiClashPageData,
-  buildKanjiClashRound
+  buildKanjiClashQueue,
+  buildKanjiClashRound,
+  buildKanjiClashSessionActionResult
 } from "./helpers/kanji-clash-test-data";
 
 describe("useKanjiClashRoundController manual contrast sync", () => {
@@ -161,7 +163,179 @@ describe("useKanjiClashRoundController manual contrast sync", () => {
     ).not.toContain(contrastKey);
     expect(mocks.refresh).toHaveBeenCalledTimes(2);
   });
+
+  it("shows the next card while a correct answer commit is still pending", async () => {
+    const submitDeferred =
+      createDeferred<ReturnType<typeof buildKanjiClashSessionActionResult>>();
+    mocks.submitKanjiClashAnswerAction.mockReturnValue(submitDeferred.promise);
+
+    let latestController: KanjiClashRoundControllerResult | null = null;
+
+    function Probe(props: { data: ReturnType<typeof buildKanjiClashPageData> }) {
+      const controller = useKanjiClashRoundController(props.data);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    const queue = buildKanjiClashQueue(0);
+    const data = buildKanjiClashPageData({
+      currentRound: queue.rounds[0] ?? null,
+      queue
+    });
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe, { data }));
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    expect(controller().currentRound?.pairKey).toBe("pair-1");
+
+    await act(async () => {
+      controller().handleChooseSide("left");
+      await Promise.resolve();
+    });
+
+    expect(controller().currentRound?.pairKey).toBe("pair-2");
+    expect(controller().queue.awaitingConfirmation).toBe(true);
+    expect(controller().isSelectionLocked).toBe(false);
+    expect(controller().pendingSelectionSide).toBeNull();
+    expect(mocks.submitKanjiClashAnswerAction).toHaveBeenCalledTimes(1);
+
+    await act(async () => {
+      submitDeferred.resolve(buildKanjiClashSessionActionResult());
+      await submitDeferred.promise;
+    });
+
+    expect(controller().currentRound?.pairKey).toBe("pair-2");
+    expect(controller().queue.awaitingConfirmation).toBe(false);
+    expect(controller().isSelectionLocked).toBe(false);
+  });
+
+  it("buffers one answer on the visible next card until the prior commit returns", async () => {
+    let now = 1_000;
+    const performanceNowSpy = vi
+      .spyOn(performance, "now")
+      .mockImplementation(() => now);
+    const firstSubmitDeferred =
+      createDeferred<ReturnType<typeof buildKanjiClashSessionActionResult>>();
+    const bufferedSubmitDeferred =
+      createDeferred<ReturnType<typeof buildKanjiClashSessionActionResult>>();
+    mocks.submitKanjiClashAnswerAction
+      .mockReturnValueOnce(firstSubmitDeferred.promise)
+      .mockReturnValueOnce(bufferedSubmitDeferred.promise);
+
+    let latestController: KanjiClashRoundControllerResult | null = null;
+
+    function Probe(props: { data: ReturnType<typeof buildKanjiClashPageData> }) {
+      const controller = useKanjiClashRoundController(props.data);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    const queue = buildKanjiClashQueue(0);
+    const data = buildKanjiClashPageData({
+      currentRound: queue.rounds[0] ?? null,
+      queue
+    });
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe, { data }));
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    now = 1_300;
+    await act(async () => {
+      controller().handleChooseSide("left");
+      await Promise.resolve();
+    });
+
+    expect(controller().currentRound?.pairKey).toBe("pair-2");
+    expect(controller().isSelectionLocked).toBe(false);
+    expect(mocks.submitKanjiClashAnswerAction).toHaveBeenCalledTimes(1);
+
+    now = 1_450;
+    await act(async () => {
+      controller().handleChooseSide("left");
+      await Promise.resolve();
+    });
+
+    expect(controller().pendingSelectionSide).toBe("left");
+    expect(controller().isSelectionLocked).toBe(true);
+    expect(mocks.submitKanjiClashAnswerAction).toHaveBeenCalledTimes(1);
+
+    await act(async () => {
+      firstSubmitDeferred.resolve(buildKanjiClashSessionActionResult());
+      await firstSubmitDeferred.promise;
+      await Promise.resolve();
+    });
+
+    expect(mocks.submitKanjiClashAnswerAction).toHaveBeenCalledTimes(2);
+    expect(mocks.submitKanjiClashAnswerAction).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        expectedRoundKey: "pair-2",
+        queueToken: "token-2",
+        responseMs: 150,
+        selectedSide: "left"
+      })
+    );
+
+    await act(async () => {
+      bufferedSubmitDeferred.resolve(
+        buildKanjiClashSessionActionResult({
+          nextQueue: buildKanjiClashQueue(2),
+          nextRound: null
+        })
+      );
+      await bufferedSubmitDeferred.promise;
+      await Promise.resolve();
+    });
+
+    performanceNowSpy.mockRestore();
+  });
 });
+
+function createDeferred<T>() {
+  let resolve!: (value: T) => void;
+  let reject!: (reason?: unknown) => void;
+  const promise = new Promise<T>((promiseResolve, promiseReject) => {
+    resolve = promiseResolve;
+    reject = promiseReject;
+  });
+
+  return {
+    promise,
+    reject,
+    resolve
+  };
+}
 
 function installMinimalDom() {
   class SimpleEvent {

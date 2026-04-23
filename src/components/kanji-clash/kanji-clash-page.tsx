@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { TouchEventHandler } from "react";
+import { useMemo, type TouchEventHandler } from "react";
 
 import type {
   KanjiClashEligibleSubject,
@@ -50,12 +50,16 @@ export function KanjiClashPage({ data }: KanjiClashPageProps) {
 
 function KanjiClashPageClient({ data }: KanjiClashPageProps) {
   const controller = useKanjiClashRoundController(data);
-  const content: KanjiClashPageContent = buildKanjiClashPageContent({
-    currentRound: controller.currentRound,
-    data,
-    feedback: controller.feedback,
-    queue: controller.queue
-  });
+  const content: KanjiClashPageContent = useMemo(
+    () =>
+      buildKanjiClashPageContent({
+        currentRound: controller.currentRound,
+        data,
+        feedback: controller.feedback,
+        queue: controller.queue
+      }),
+    [controller.currentRound, controller.feedback, controller.queue, data]
+  );
 
   return (
     <div className="kanji-clash-page">

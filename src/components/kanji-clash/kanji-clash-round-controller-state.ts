@@ -5,6 +5,10 @@ import type {
   KanjiClashRoundSide,
   KanjiClashSessionActionResult
 } from "@/lib/kanji-clash/types";
+import {
+  advanceKanjiClashQueueSnapshot,
+  getKanjiClashCurrentRound
+} from "@/lib/kanji-clash/queue";
 
 export type KanjiClashRoundFeedback = {
   answeredRound: KanjiClashSessionActionResult["answeredRound"];
@@ -13,6 +17,11 @@ export type KanjiClashRoundFeedback = {
   selectedSubjectKey: string;
   selectedSide: KanjiClashRoundSide;
   status: "correct" | "incorrect";
+};
+
+export type KanjiClashBufferedRoundAnswer = {
+  roundKey: string;
+  selectedSide: KanjiClashRoundSide;
 };
 
 export type KanjiClashRoundControllerPhase =
@@ -24,7 +33,10 @@ export type KanjiClashRoundControllerPhase =
       feedback: KanjiClashRoundFeedback;
     }
   | {
+      acceptsBufferedAnswer: boolean;
+      bufferedAnswer: KanjiClashBufferedRoundAnswer | null;
       kind: "submitting";
+      submittedRoundKey: string;
       selectedSide: KanjiClashRoundSide;
     };
 
@@ -72,20 +84,73 @@ export function reduceKanjiClashRoundControllerState(
 ): KanjiClashRoundControllerState {
   switch (action.type) {
     case "choose-side":
+      const currentRound = getKanjiClashCurrentRound(state.visibleQueue);
+
+      if (!currentRound) {
+        return state;
+      }
+
+      if (state.phase.kind === "submitting") {
+        if (
+          !state.phase.acceptsBufferedAnswer ||
+          state.phase.bufferedAnswer ||
+          state.phase.submittedRoundKey === currentRound.roundKey
+        ) {
+          return state;
+        }
+
+        return {
+          ...state,
+          phase: {
+            ...state.phase,
+            bufferedAnswer: {
+              roundKey: currentRound.roundKey,
+              selectedSide: action.side
+            }
+          }
+        };
+      }
+
       if (state.phase.kind !== "idle") {
         return state;
       }
 
+      const selectedSubjectKey =
+        action.side === "left"
+          ? currentRound.leftSubjectKey
+          : currentRound.rightSubjectKey;
+      const nextVisibleQueue =
+        selectedSubjectKey === currentRound.correctSubjectKey
+          ? advanceKanjiClashQueueSnapshot(
+              state.visibleQueue,
+              currentRound.roundKey,
+              {
+                awaitingConfirmation: true
+              }
+            )
+          : state.visibleQueue;
+
       return {
         ...state,
         phase: {
+          acceptsBufferedAnswer: true,
+          bufferedAnswer: null,
           kind: "submitting",
+          submittedRoundKey: currentRound.roundKey,
           selectedSide: action.side
-        }
+        },
+        visibleQueue: nextVisibleQueue
       };
     case "submit-succeeded":
       if (state.phase.kind !== "submitting") {
         return state;
+      }
+
+      if (action.result.isCorrect && state.phase.bufferedAnswer) {
+        return buildBufferedSubmissionState(
+          action.result,
+          state.phase.bufferedAnswer
+        );
       }
 
       if (action.result.isCorrect) {
@@ -117,7 +182,8 @@ export function reduceKanjiClashRoundControllerState(
         ...state,
         phase: {
           kind: "idle"
-        }
+        },
+        visibleQueue: state.committedQueue
       };
     case "continue-after-incorrect":
       if (state.phase.kind !== "incorrect-review") {
@@ -134,6 +200,48 @@ export function reduceKanjiClashRoundControllerState(
   }
 
   return state;
+}
+
+function buildBufferedSubmissionState(
+  result: KanjiClashSessionActionResult,
+  bufferedAnswer: KanjiClashBufferedRoundAnswer
+): KanjiClashRoundControllerState {
+  const currentRound = getKanjiClashCurrentRound(result.nextQueue);
+
+  if (!currentRound || currentRound.roundKey !== bufferedAnswer.roundKey) {
+    return {
+      committedQueue: result.nextQueue,
+      committedQueueToken: result.nextQueueToken,
+      phase: {
+        kind: "idle"
+      },
+      visibleQueue: result.nextQueue
+    };
+  }
+
+  const selectedSubjectKey =
+    bufferedAnswer.selectedSide === "left"
+      ? currentRound.leftSubjectKey
+      : currentRound.rightSubjectKey;
+  const visibleQueue =
+    selectedSubjectKey === currentRound.correctSubjectKey
+      ? advanceKanjiClashQueueSnapshot(result.nextQueue, currentRound.roundKey, {
+          awaitingConfirmation: true
+        })
+      : result.nextQueue;
+
+  return {
+    committedQueue: result.nextQueue,
+    committedQueueToken: result.nextQueueToken,
+    phase: {
+      acceptsBufferedAnswer: false,
+      bufferedAnswer: null,
+      kind: "submitting",
+      submittedRoundKey: currentRound.roundKey,
+      selectedSide: bufferedAnswer.selectedSide
+    },
+    visibleQueue
+  };
 }
 
 function buildIncorrectAnswerFeedback(

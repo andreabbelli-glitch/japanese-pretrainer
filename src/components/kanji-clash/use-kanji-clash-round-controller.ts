@@ -3,6 +3,7 @@
 import {
   useCallback,
   useEffect,
+  useMemo,
   useReducer,
   useRef,
   useState,
@@ -77,6 +78,9 @@ export function useKanjiClashRoundController(
   const [isArchivePending, startArchiveTransition] = useTransition();
   const controllerStateRef = useRef(controllerState);
   const responseTimerRef = useRef(createKanjiClashRoundResponseTimer());
+  const bufferedAnswerRef = useRef<BufferedKanjiClashAnswerSubmission | null>(
+    null
+  );
 
   useEffect(() => {
     controllerStateRef.current = controllerState;
@@ -88,51 +92,43 @@ export function useKanjiClashRoundController(
 
   const currentRound = getKanjiClashCurrentRound(controllerState.visibleQueue);
   const currentRoundKey = currentRound?.roundKey ?? null;
+  let pendingSelectionSide: KanjiClashRoundSide | null = null;
 
-  useEffect(() => {
-    if (controllerState.phase.kind !== "idle" || !currentRoundKey) {
-      return;
+  if (controllerState.phase.kind === "submitting") {
+    if (controllerState.phase.submittedRoundKey === currentRoundKey) {
+      pendingSelectionSide = controllerState.phase.selectedSide;
+    } else if (
+      controllerState.phase.bufferedAnswer?.roundKey === currentRoundKey
+    ) {
+      pendingSelectionSide = controllerState.phase.bufferedAnswer.selectedSide;
     }
+  }
 
-    responseTimerRef.current.markRoundPresented(currentRoundKey, performance.now());
-  }, [controllerState.phase.kind, currentRoundKey]);
+  const canSelectVisibleRound =
+    currentRoundKey !== null &&
+    (controllerState.phase.kind === "idle" ||
+      (controllerState.phase.kind === "submitting" &&
+        controllerState.phase.acceptsBufferedAnswer &&
+        !controllerState.phase.bufferedAnswer &&
+        controllerState.phase.submittedRoundKey !== currentRoundKey));
+  const isSelectionLocked = !canSelectVisibleRound || isArchivePending;
 
-  const submitSide = useCallback(async (side: KanjiClashRoundSide) => {
-    const currentState = controllerStateRef.current;
-
-    if (currentState.phase.kind !== "idle") {
-      return;
-    }
-
-    const currentRound = getKanjiClashCurrentRound(currentState.visibleQueue);
-
-    if (!currentRound) {
-      return;
-    }
-
-    dispatch({
-      side,
-      type: "choose-side"
-    });
-    setClientError(null);
-    setLiveMessage(null);
-
-    const submittedAt = performance.now();
-    const responseMs = responseTimerRef.current.getResponseMs(submittedAt);
-
+  const submitAnswer = useCallback(async function submitAnswer(input: {
+    currentRound: KanjiClashSessionRound;
+    queueToken: string;
+    responseMs: number | null;
+    selectedSide: KanjiClashRoundSide;
+  }): Promise<void> {
     try {
       const result = await submitKanjiClashAnswerAction(
-        buildKanjiClashAnswerSubmissionPayload({
-          currentRound,
-          queueToken: currentState.committedQueueToken,
-          responseMs,
-          selectedSide: side
-        })
+        buildKanjiClashAnswerSubmissionPayload(input)
       );
+      const bufferedAnswer = result.isCorrect ? bufferedAnswerRef.current : null;
 
+      bufferedAnswerRef.current = null;
       dispatch({
         result,
-        selectedSide: side,
+        selectedSide: input.selectedSide,
         type: "submit-succeeded"
       });
       const liveMessage = resolveKanjiClashSubmitLiveMessage(result);
@@ -140,7 +136,28 @@ export function useKanjiClashRoundController(
       if (liveMessage) {
         setLiveMessage(liveMessage);
       }
+
+      if (!bufferedAnswer) {
+        return;
+      }
+
+      const authoritativeRound = getKanjiClashCurrentRound(result.nextQueue);
+
+      if (
+        !authoritativeRound ||
+        authoritativeRound.roundKey !== bufferedAnswer.currentRound.roundKey
+      ) {
+        return;
+      }
+
+      await submitAnswer({
+        currentRound: authoritativeRound,
+        queueToken: result.nextQueueToken,
+        responseMs: bufferedAnswer.responseMs,
+        selectedSide: bufferedAnswer.selectedSide
+      });
     } catch (error) {
+      bufferedAnswerRef.current = null;
       dispatch({
         type: "submit-failed"
       });
@@ -152,6 +169,72 @@ export function useKanjiClashRoundController(
       setLiveMessage("Errore durante il salvataggio della risposta.");
     }
   }, []);
+
+  useEffect(() => {
+    if (!currentRoundKey) {
+      return;
+    }
+
+    responseTimerRef.current.markRoundPresented(
+      currentRoundKey,
+      performance.now()
+    );
+  }, [currentRoundKey]);
+
+  const submitSide = useCallback(async (side: KanjiClashRoundSide) => {
+    const currentState = controllerStateRef.current;
+
+    const currentRound = getKanjiClashCurrentRound(currentState.visibleQueue);
+
+    if (!currentRound) {
+      return;
+    }
+
+    const submittedAt = performance.now();
+    const responseMs = responseTimerRef.current.getResponseMs(submittedAt);
+
+    if (currentState.phase.kind === "submitting") {
+      if (
+        !currentState.phase.acceptsBufferedAnswer ||
+        currentState.phase.bufferedAnswer ||
+        bufferedAnswerRef.current ||
+        currentState.phase.submittedRoundKey === currentRound.roundKey
+      ) {
+        return;
+      }
+
+      bufferedAnswerRef.current = {
+        currentRound,
+        responseMs,
+        selectedSide: side
+      };
+      dispatch({
+        side,
+        type: "choose-side"
+      });
+      setClientError(null);
+      setLiveMessage(null);
+      return;
+    }
+
+    if (currentState.phase.kind !== "idle") {
+      return;
+    }
+
+    dispatch({
+      side,
+      type: "choose-side"
+    });
+    setClientError(null);
+    setLiveMessage(null);
+
+    await submitAnswer({
+      currentRound,
+      queueToken: currentState.committedQueueToken,
+      responseMs,
+      selectedSide: side
+    });
+  }, [submitAnswer]);
 
   const handleContinue = useCallback(() => {
     if (controllerStateRef.current.phase.kind !== "incorrect-review") {
@@ -212,20 +295,45 @@ export function useKanjiClashRoundController(
     [router]
   );
 
-  const activeManualContrasts = manualContrasts.filter(
-    (contrast) => contrast.status === "active"
+  const {
+    activeManualContrasts,
+    archivedManualContrasts,
+    manualContrastStatusByKey
+  } = useMemo(() => {
+    const activeManualContrasts = manualContrasts.filter(
+      (contrast) => contrast.status === "active"
+    );
+    const archivedManualContrasts = manualContrasts.filter(
+      (contrast) => contrast.status === "archived"
+    );
+    const manualContrastStatusByKey = Object.fromEntries(
+      manualContrasts.map((contrast) => [contrast.contrastKey, contrast.status])
+    ) satisfies Record<string, KanjiClashManualContrastSummary["status"]>;
+
+    return {
+      activeManualContrasts,
+      archivedManualContrasts,
+      manualContrastStatusByKey
+    };
+  }, [manualContrasts]);
+
+  const handleArchiveManualContrast = useCallback(
+    (contrastKey: string) => {
+      runManualContrastMutation(contrastKey, "archive");
+    },
+    [runManualContrastMutation]
   );
-  const archivedManualContrasts = manualContrasts.filter(
-    (contrast) => contrast.status === "archived"
+
+  const handleRestoreManualContrast = useCallback(
+    (contrastKey: string) => {
+      runManualContrastMutation(contrastKey, "restore");
+    },
+    [runManualContrastMutation]
   );
-  const manualContrastStatusByKey = Object.fromEntries(
-    manualContrasts.map((contrast) => [contrast.contrastKey, contrast.status])
-  ) satisfies Record<string, KanjiClashManualContrastSummary["status"]>;
 
   const { handleChooseSide, handleTouchEnd, handleTouchStart } =
     useKanjiClashRoundInputs({
-      isSelectionLocked:
-        controllerState.phase.kind !== "idle" || isArchivePending,
+      isSelectionLocked,
       onChooseSide: submitSide
     });
 
@@ -239,27 +347,25 @@ export function useKanjiClashRoundController(
       controllerState.phase.kind === "incorrect-review"
         ? controllerState.phase.feedback
         : null,
-    handleArchiveManualContrast: (contrastKey: string) => {
-      runManualContrastMutation(contrastKey, "archive");
-    },
+    handleArchiveManualContrast,
     handleChooseSide,
     handleContinue,
-    handleRestoreManualContrast: (contrastKey: string) => {
-      runManualContrastMutation(contrastKey, "restore");
-    },
+    handleRestoreManualContrast,
     handleTouchEnd,
     handleTouchStart,
-    isSelectionLocked:
-      controllerState.phase.kind !== "idle" || isArchivePending,
+    isSelectionLocked,
     liveMessage,
     manualContrastStatusByKey,
-    pendingSelectionSide:
-      controllerState.phase.kind === "submitting"
-        ? controllerState.phase.selectedSide
-        : null,
+    pendingSelectionSide,
     queue: controllerState.visibleQueue
   };
 }
+
+type BufferedKanjiClashAnswerSubmission = {
+  currentRound: KanjiClashSessionRound;
+  responseMs: number | null;
+  selectedSide: KanjiClashRoundSide;
+};
 
 function buildKanjiClashAnswerSubmissionPayload(input: {
   currentRound: KanjiClashSessionRound;
