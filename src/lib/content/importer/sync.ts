@@ -27,7 +27,7 @@ import {
   mediaComparisonKeys,
   prepareLessonContentRow,
   prepareTimestampedRow,
-  termComparisonKeys,
+  termComparisonKeys
 } from "./sync-diff.ts";
 import type {
   ExistingMediaState,
@@ -99,7 +99,9 @@ export async function buildContentWorkspaceSyncPlan(
 
   return {
     filesChanged: mediaPlans.reduce((total, entry) => {
-      return total + countChangedSourceDocuments(entry.plan, entry.existingState);
+      return (
+        total + countChangedSourceDocuments(entry.plan, entry.existingState)
+      );
     }, 0),
     mediaPlans
   };
@@ -139,7 +141,9 @@ export async function executeContentWorkspaceSyncPlan(
 
   if (input.syncMode === "full") {
     const removedMediaSummary = await archiveRemovedMedia(transaction, {
-      currentMediaIds: input.plan.mediaPlans.map((entry) => entry.plan.media.row.id),
+      currentMediaIds: new Set(
+        input.plan.mediaPlans.map((entry) => entry.plan.media.row.id)
+      ),
       nowIso: input.nowIso
     });
 
@@ -252,6 +256,23 @@ async function applyMediaImportPlan(
     (plan) => plan.row.id
   );
   const currentSegmentIds = input.plan.segments.map((row) => row.id);
+  const currentLessonIdSet = new Set(currentLessonIds);
+  const currentCardIdSet = new Set(currentCardIds);
+  const currentTermIdSet = new Set(currentTermIds);
+  const currentGrammarIdSet = new Set(currentGrammarIds);
+  const currentSegmentIdSet = new Set(currentSegmentIds);
+  const existingLessonById = new Map(
+    input.existingState.lessons.map((row) => [row.id, row])
+  );
+  const existingTermById = new Map(
+    input.existingState.terms.map((row) => [row.id, row])
+  );
+  const existingGrammarPatternById = new Map(
+    input.existingState.grammarPatterns.map((row) => [row.id, row])
+  );
+  const existingCardById = new Map(
+    input.existingState.cards.map((row) => [row.id, row])
+  );
 
   const preparedMediaRow = prepareTimestampedRow(
     input.existingState.media,
@@ -289,12 +310,12 @@ async function applyMediaImportPlan(
   }
 
   const archivedLessonIds = await archiveRemovedLessons(transaction, {
-    currentLessonIds,
+    currentLessonIds: currentLessonIdSet,
     mediaId: input.plan.media.row.id,
     nowIso: input.nowIso
   });
   const archivedCardIds = await archiveRemovedCards(transaction, {
-    currentCardIds,
+    currentCardIds: currentCardIdSet,
     mediaId: input.plan.media.row.id,
     nowIso: input.nowIso
   });
@@ -302,8 +323,7 @@ async function applyMediaImportPlan(
   if (input.plan.lessons.length > 0) {
     const lessonRows = input.plan.lessons.map((plan) =>
       prepareTimestampedRow(
-        input.existingState.lessons.find((row) => row.id === plan.row.id) ??
-          null,
+        existingLessonById.get(plan.row.id) ?? null,
         plan.row,
         lessonComparisonKeys
       )
@@ -341,7 +361,7 @@ async function applyMediaImportPlan(
     const currentLessonEntryLinkIds = input.existingState.entryLinks
       .filter(
         (row) =>
-          row.sourceType === "lesson" && currentLessonIds.includes(row.sourceId)
+          row.sourceType === "lesson" && currentLessonIdSet.has(row.sourceId)
       )
       .map((row) => row.id);
 
@@ -355,8 +375,7 @@ async function applyMediaImportPlan(
   if (currentCardIds.length > 0) {
     const currentCardEntryLinkIds = input.existingState.entryLinks
       .filter(
-        (row) =>
-          row.sourceType === "card" && currentCardIds.includes(row.sourceId)
+        (row) => row.sourceType === "card" && currentCardIdSet.has(row.sourceId)
       )
       .map((row) => row.id);
 
@@ -374,7 +393,7 @@ async function applyMediaImportPlan(
   if (input.plan.terms.length > 0) {
     const termRows = input.plan.terms.map((plan) =>
       prepareTimestampedRow(
-        input.existingState.terms.find((row) => row.id === plan.row.id) ?? null,
+        existingTermById.get(plan.row.id) ?? null,
         plan.row,
         termComparisonKeys
       )
@@ -401,9 +420,7 @@ async function applyMediaImportPlan(
   if (input.plan.grammarPatterns.length > 0) {
     const grammarRows = input.plan.grammarPatterns.map((plan) =>
       prepareTimestampedRow(
-        input.existingState.grammarPatterns.find(
-          (row) => row.id === plan.row.id
-        ) ?? null,
+        existingGrammarPatternById.get(plan.row.id) ?? null,
         plan.row,
         grammarComparisonKeys
       )
@@ -435,7 +452,7 @@ async function applyMediaImportPlan(
   if (input.plan.cards.length > 0) {
     const cardRows = input.plan.cards.map((plan) =>
       prepareTimestampedRow(
-        input.existingState.cards.find((row) => row.id === plan.row.id) ?? null,
+        existingCardById.get(plan.row.id) ?? null,
         plan.row,
         cardComparisonKeys
       )
@@ -460,15 +477,15 @@ async function applyMediaImportPlan(
   }
 
   const prunedTermIds = await pruneRemovedTerms(transaction, {
-    currentTermIds,
+    currentTermIds: currentTermIdSet,
     existingTermIds: input.existingState.terms.map((row) => row.id)
   });
   const prunedGrammarIds = await pruneRemovedGrammarPatterns(transaction, {
-    currentGrammarIds,
+    currentGrammarIds: currentGrammarIdSet,
     existingGrammarIds: input.existingState.grammarPatterns.map((row) => row.id)
   });
   await pruneRemovedSegments(transaction, {
-    currentSegmentIds,
+    currentSegmentIds: currentSegmentIdSet,
     existingSegmentIds: input.existingState.segments.map((row) => row.id)
   });
 
@@ -483,7 +500,7 @@ async function applyMediaImportPlan(
 async function archiveRemovedLessons(
   transaction: DatabaseTransaction,
   input: {
-    currentLessonIds: string[];
+    currentLessonIds: ReadonlySet<string>;
     mediaId: string;
     nowIso: string;
   }
@@ -494,8 +511,7 @@ async function archiveRemovedLessons(
     })
   )
     .filter(
-      (row) =>
-        row.status !== "archived" && !input.currentLessonIds.includes(row.id)
+      (row) => row.status !== "archived" && !input.currentLessonIds.has(row.id)
     )
     .map((row) => row.id);
 
@@ -517,7 +533,7 @@ async function archiveRemovedLessons(
 async function archiveRemovedCards(
   transaction: DatabaseTransaction,
   input: {
-    currentCardIds: string[];
+    currentCardIds: ReadonlySet<string>;
     mediaId: string;
     nowIso: string;
   }
@@ -528,8 +544,7 @@ async function archiveRemovedCards(
     })
   )
     .filter(
-      (row) =>
-        row.status !== "archived" && !input.currentCardIds.includes(row.id)
+      (row) => row.status !== "archived" && !input.currentCardIds.has(row.id)
     )
     .map((row) => row.id);
 
@@ -551,12 +566,12 @@ async function archiveRemovedCards(
 async function pruneRemovedTerms(
   transaction: DatabaseTransaction,
   input: {
-    currentTermIds: string[];
+    currentTermIds: ReadonlySet<string>;
     existingTermIds: string[];
   }
 ) {
   const removedIds = input.existingTermIds.filter(
-    (termId) => !input.currentTermIds.includes(termId)
+    (termId) => !input.currentTermIds.has(termId)
   );
 
   if (removedIds.length === 0) {
@@ -570,12 +585,12 @@ async function pruneRemovedTerms(
 async function pruneRemovedGrammarPatterns(
   transaction: DatabaseTransaction,
   input: {
-    currentGrammarIds: string[];
+    currentGrammarIds: ReadonlySet<string>;
     existingGrammarIds: string[];
   }
 ) {
   const removedIds = input.existingGrammarIds.filter(
-    (grammarId) => !input.currentGrammarIds.includes(grammarId)
+    (grammarId) => !input.currentGrammarIds.has(grammarId)
   );
 
   if (removedIds.length === 0) {
@@ -591,12 +606,12 @@ async function pruneRemovedGrammarPatterns(
 async function pruneRemovedSegments(
   transaction: DatabaseTransaction,
   input: {
-    currentSegmentIds: string[];
+    currentSegmentIds: ReadonlySet<string>;
     existingSegmentIds: string[];
   }
 ) {
   const removedIds = input.existingSegmentIds.filter(
-    (segmentId) => !input.currentSegmentIds.includes(segmentId)
+    (segmentId) => !input.currentSegmentIds.has(segmentId)
   );
 
   if (removedIds.length === 0) {
@@ -609,13 +624,12 @@ async function pruneRemovedSegments(
 async function archiveRemovedMedia(
   transaction: DatabaseTransaction,
   input: {
-    currentMediaIds: string[];
+    currentMediaIds: ReadonlySet<string>;
     nowIso: string;
   }
 ) {
   const removedMedia = (await transaction.query.media.findMany()).filter(
-    (row) =>
-      row.status !== "archived" && !input.currentMediaIds.includes(row.id)
+    (row) => row.status !== "archived" && !input.currentMediaIds.has(row.id)
   );
 
   if (removedMedia.length === 0) {
@@ -651,6 +665,8 @@ async function archiveRemovedMedia(
   const archivedCardIds = removedCards
     .filter((row) => row.status !== "archived")
     .map((row) => row.id);
+  const archivedLessonIdSet = new Set(archivedLessonIds);
+  const archivedCardIdSet = new Set(archivedCardIds);
 
   await transaction
     .update(media)
@@ -707,12 +723,12 @@ async function archiveRemovedMedia(
       removedMedia.length +
       new Set(
         removedLessons
-          .filter((row) => archivedLessonIds.includes(row.id))
+          .filter((row) => archivedLessonIdSet.has(row.id))
           .map((row) => row.sourceFile)
       ).size +
       new Set(
         removedCards
-          .filter((row) => archivedCardIds.includes(row.id))
+          .filter((row) => archivedCardIdSet.has(row.id))
           .map((row) => row.sourceFile)
       ).size,
     summary: {
