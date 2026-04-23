@@ -103,6 +103,10 @@ export function useGlossaryAutocomplete({
         const payload =
           (await response.json()) as GlobalGlossaryAutocompleteSuggestion[];
 
+        if (controller.signal.aborted) {
+          return;
+        }
+
         suggestionCacheRef.current.set(cacheKey, payload);
         startTransition(() => {
           setSuggestions(payload);

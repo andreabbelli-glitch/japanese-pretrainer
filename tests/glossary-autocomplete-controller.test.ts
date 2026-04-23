@@ -400,6 +400,106 @@ describe("useGlossaryAutocomplete", () => {
     expect(controller().suggestions).toEqual(initialSuggestions);
     expect(controller().shouldShowSuggestions).toBe(true);
   });
+
+  it("ignores an aborted request that finishes JSON parsing after a newer query", async () => {
+    const staleJsonDeferred =
+      createDeferred<GlobalGlossaryAutocompleteSuggestion[]>();
+    const fetchMock = vi.mocked(fetch);
+    fetchMock
+      .mockResolvedValueOnce({
+        json: () => staleJsonDeferred.promise,
+        ok: true
+      } as Response)
+      .mockResolvedValueOnce(
+        new Response(JSON.stringify(updatedSuggestions), {
+          status: 200
+        })
+      );
+
+    let latestController: GlossaryAutocompleteProbeResult | null = null;
+
+    function Probe() {
+      const [query, setQuery] = useState("");
+      const [isOpen, setIsOpen] = useState(false);
+      const controller = useGlossaryAutocompleteProbe({
+        isOpen,
+        query
+      });
+
+      useEffect(() => {
+        latestController = {
+          ...controller,
+          closeSuggestions: () => {
+            setIsOpen(false);
+          },
+          openSuggestions: () => {
+            setIsOpen(true);
+          },
+          query,
+          setQuery: (value: string) => {
+            setQuery(value);
+          }
+        };
+      }, [controller, query]);
+
+      return createElement("div");
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe));
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    await act(async () => {
+      controller().setQuery("kosu");
+      controller().openSuggestions();
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(140);
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    await act(async () => {
+      controller().setQuery("kosuto");
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(140);
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(controller().suggestions).toEqual(updatedSuggestions);
+    expect(controller().shouldShowSuggestions).toBe(true);
+
+    staleJsonDeferred.resolve(initialSuggestions);
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(controller().suggestions).toEqual(updatedSuggestions);
+    expect(controller().shouldShowSuggestions).toBe(true);
+  });
 });
 
 type GlossaryAutocompleteProbeResult = {
@@ -438,7 +538,9 @@ function useGlossaryAutocompleteProbe(input: {
   });
 }
 
-function readFetchedAutocompleteQuery(request: RequestInfo | URL | string | undefined) {
+function readFetchedAutocompleteQuery(
+  request: RequestInfo | URL | string | undefined
+) {
   if (!request) {
     throw new Error("missing fetch request");
   }
@@ -450,7 +552,10 @@ function readFetchedAutocompleteQuery(request: RequestInfo | URL | string | unde
         ? request
         : new URL(request.url);
 
-  return Object.fromEntries(url.searchParams.entries()) as Record<string, string>;
+  return Object.fromEntries(url.searchParams.entries()) as Record<
+    string,
+    string
+  >;
 }
 
 function installMinimalDom() {
@@ -628,7 +733,8 @@ class ElementStub extends NodeStub {
   }
 
   set textContent(value: string) {
-    this.childNodes = value.length > 0 ? [new TextStub(value, this.ownerDocument)] : [];
+    this.childNodes =
+      value.length > 0 ? [new TextStub(value, this.ownerDocument)] : [];
   }
 
   setAttribute(name: string, value: string) {
