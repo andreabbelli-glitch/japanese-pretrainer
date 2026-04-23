@@ -245,9 +245,13 @@ function verifyPasswordHash(password: string, storedHash: string) {
     return false;
   }
 
-  const iterations = Number.parseInt(rawIterations, 10);
+  if (!/^\d+$/u.test(rawIterations)) {
+    return false;
+  }
 
-  if (!Number.isFinite(iterations) || iterations <= 0) {
+  const iterations = Number(rawIterations);
+
+  if (!Number.isSafeInteger(iterations) || iterations <= 0) {
     return false;
   }
 

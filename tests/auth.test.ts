@@ -124,6 +124,23 @@ describe("auth helpers", () => {
     ).toBe(false);
   });
 
+  it("rejects password hashes with malformed iteration counts", () => {
+    clearAuthEnv();
+    process.env.AUTH_USERNAME = "owner";
+    process.env.AUTH_PASSWORD_HASH = createPasswordHash("study-hard").replace(
+      "$210000$",
+      "$210000abc$"
+    );
+    process.env.AUTH_SESSION_SECRET = "super-secret-session-key";
+
+    expect(
+      verifyLoginCredentials({
+        password: "study-hard",
+        username: "owner"
+      })
+    ).toBe(false);
+  });
+
   it("uses the same timestamp base for session cookie expiry", () => {
     const issuedAt = Date.UTC(2026, 2, 14, 10, 0, 0);
 
