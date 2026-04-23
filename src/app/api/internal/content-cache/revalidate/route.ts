@@ -20,12 +20,9 @@ import {
 } from "@/lib/site";
 
 type RevalidationRequest = {
-  importId?: string;
-  lessons?: Array<{
-    lessonSlug?: string;
-    mediaSlug?: string;
-  }>;
-  mediaSlugs?: string[];
+  importId?: unknown;
+  lessons?: unknown;
+  mediaSlugs?: unknown;
 };
 
 export async function POST(request: Request) {
@@ -53,8 +50,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const mediaSlugs = normalizeMediaSlugs(body.mediaSlugs ?? []);
-  const lessons = normalizeLessons(body.lessons ?? []);
+  const mediaSlugs = normalizeMediaSlugs(body.mediaSlugs);
+  const lessons = normalizeLessons(body.lessons);
   const mediaIds = await resolveMediaIds([
     ...mediaSlugs,
     ...lessons.map((lesson) => lesson.mediaSlug)
@@ -85,14 +82,16 @@ export async function POST(request: Request) {
 
   for (const lesson of lessons) {
     revalidateTextbookTooltipCache(lesson);
-    revalidatePath(mediaTextbookLessonHref(lesson.mediaSlug, lesson.lessonSlug));
+    revalidatePath(
+      mediaTextbookLessonHref(lesson.mediaSlug, lesson.lessonSlug)
+    );
     revalidatePath(
       mediaTextbookLessonTooltipsHref(lesson.mediaSlug, lesson.lessonSlug)
     );
   }
 
   return NextResponse.json({
-    importId: body.importId ?? null,
+    importId: normalizeImportId(body.importId),
     lessonCount: lessons.length,
     mediaCount: mediaSlugs.length,
     ok: true
@@ -107,29 +106,50 @@ async function parseRequestBody(request: Request) {
   }
 }
 
-function normalizeMediaSlugs(mediaSlugs: string[]) {
-  return [...new Set(mediaSlugs.map((slug) => slug.trim()).filter(Boolean))];
+function normalizeImportId(importId: unknown) {
+  return typeof importId === "string" && importId.trim() ? importId : null;
+}
+
+function normalizeMediaSlugs(mediaSlugs: unknown) {
+  if (!Array.isArray(mediaSlugs)) {
+    return [];
+  }
+
+  return [
+    ...new Set(
+      mediaSlugs
+        .map((slug) => (typeof slug === "string" ? slug.trim() : ""))
+        .filter(Boolean)
+    )
+  ];
 }
 
 async function resolveMediaIds(mediaSlugs: string[]) {
   const media = await Promise.all(
-    normalizeMediaSlugs(mediaSlugs).map((mediaSlug) => getMediaBySlug(db, mediaSlug))
+    normalizeMediaSlugs(mediaSlugs).map((mediaSlug) =>
+      getMediaBySlug(db, mediaSlug)
+    )
   );
 
   return [...new Set(media.map((entry) => entry?.id).filter(Boolean))];
 }
 
-function normalizeLessons(
-  lessons: Array<{
-    lessonSlug?: string;
-    mediaSlug?: string;
-  }>
-) {
+function normalizeLessons(lessons: unknown) {
   const unique = new Map<string, { lessonSlug: string; mediaSlug: string }>();
 
+  if (!Array.isArray(lessons)) {
+    return [];
+  }
+
   for (const lesson of lessons) {
-    const mediaSlug = lesson.mediaSlug?.trim();
-    const lessonSlug = lesson.lessonSlug?.trim();
+    if (!isRecord(lesson)) {
+      continue;
+    }
+
+    const mediaSlug =
+      typeof lesson.mediaSlug === "string" ? lesson.mediaSlug.trim() : "";
+    const lessonSlug =
+      typeof lesson.lessonSlug === "string" ? lesson.lessonSlug.trim() : "";
 
     if (!mediaSlug || !lessonSlug) {
       continue;
@@ -144,7 +164,14 @@ function normalizeLessons(
   return [...unique.values()];
 }
 
-function matchesSecret(providedSecret: string | undefined, configuredSecret: string) {
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function matchesSecret(
+  providedSecret: string | undefined,
+  configuredSecret: string
+) {
   if (!providedSecret) {
     return false;
   }

@@ -59,20 +59,23 @@ describe("content cache revalidation route", () => {
     });
 
     const response = await POST(
-      new Request("https://example.test/api/internal/content-cache/revalidate", {
-        body: JSON.stringify({
-          lessons: [
-            { lessonSlug: "lesson-1", mediaSlug: "duel-masters" },
-            { lessonSlug: "lesson-2", mediaSlug: "persona" }
-          ],
-          mediaSlugs: ["duel-masters", "persona"]
-        }),
-        headers: {
-          "content-type": "application/json",
-          "x-revalidate-secret": "test-secret"
-        },
-        method: "POST"
-      })
+      new Request(
+        "https://example.test/api/internal/content-cache/revalidate",
+        {
+          body: JSON.stringify({
+            lessons: [
+              { lessonSlug: "lesson-1", mediaSlug: "duel-masters" },
+              { lessonSlug: "lesson-2", mediaSlug: "persona" }
+            ],
+            mediaSlugs: ["duel-masters", "persona"]
+          }),
+          headers: {
+            "content-type": "application/json",
+            "x-revalidate-secret": "test-secret"
+          },
+          method: "POST"
+        }
+      )
     );
 
     expect(response.status).toBe(200);
@@ -84,5 +87,40 @@ describe("content cache revalidation route", () => {
     expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith("media_dm");
     expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith("media_p5");
     expect(revalidateTextbookTooltipCacheMock).toHaveBeenCalledTimes(2);
+  });
+
+  it("ignores malformed payload members instead of failing the revalidation request", async () => {
+    getMediaBySlugMock.mockResolvedValue({ id: "media_dm" });
+
+    const response = await POST(
+      new Request(
+        "https://example.test/api/internal/content-cache/revalidate",
+        {
+          body: JSON.stringify({
+            lessons: [
+              { lessonSlug: "lesson-1", mediaSlug: "duel-masters" },
+              null,
+              "lesson-2",
+              { lessonSlug: 3, mediaSlug: "persona" }
+            ],
+            mediaSlugs: ["duel-masters", 42, null, " duel-masters "]
+          }),
+          headers: {
+            "content-type": "application/json",
+            "x-revalidate-secret": "test-secret"
+          },
+          method: "POST"
+        }
+      )
+    );
+
+    await expect(response.json()).resolves.toMatchObject({
+      lessonCount: 1,
+      mediaCount: 1,
+      ok: true
+    });
+    expect(response.status).toBe(200);
+    expect(revalidateTextbookTooltipCacheMock).toHaveBeenCalledTimes(1);
+    expect(getMediaBySlugMock).toHaveBeenCalledTimes(1);
   });
 });
