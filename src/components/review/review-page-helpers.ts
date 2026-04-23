@@ -260,6 +260,7 @@ export function buildOptimisticGradeResult(input: {
             input.nextQueuePosition !== null
               ? Math.max(0, input.nextQueueCardIds.length - input.nextQueuePosition)
               : 0,
+          reviewStateUpdatedAt: input.nextCard.reviewStateUpdatedAt ?? null,
           showAnswer: false
         }
       : {
@@ -313,6 +314,7 @@ export function buildOptimisticFirstCandidateGradeResult(input: {
             input.nextQueuePosition !== null
               ? Math.max(0, input.nextQueueCardIds.length - input.nextQueuePosition)
               : 0,
+          reviewStateUpdatedAt: input.nextCard.reviewStateUpdatedAt ?? null,
           showAnswer: false
         }
       : {

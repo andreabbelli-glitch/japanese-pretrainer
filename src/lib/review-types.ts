@@ -96,6 +96,7 @@ export type ReviewQueueCard = {
   rawReviewLabel: string;
   reading?: string;
   gradePreviews: ReviewGradePreview[];
+  reviewStateUpdatedAt?: string | null;
   reviewSeedState: ReviewSeedState;
   segmentTitle?: string;
   typeLabel: string;

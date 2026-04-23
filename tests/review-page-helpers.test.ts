@@ -185,6 +185,7 @@ describe("resolveReviewQueuePosition", () => {
           gradePreviews: [],
           isQueueCard: true,
           position: 1,
+          reviewStateUpdatedAt: "2026-04-02T11:00:00.000Z",
           remainingCount: 2,
           showAnswer: false
         },
@@ -196,7 +197,8 @@ describe("resolveReviewQueuePosition", () => {
       } as unknown as ReviewPageData,
       gradedCardBucket: "due",
       nextCard: {
-        id: "card-c"
+        id: "card-c",
+        reviewStateUpdatedAt: "2026-04-02T11:30:00.000Z"
       } as unknown as NonNullable<
         Parameters<typeof buildOptimisticGradeResult>[0]["nextCard"]
       >,
@@ -206,6 +208,9 @@ describe("resolveReviewQueuePosition", () => {
 
     expect(result.selectedCard?.id).toBe("card-c");
     expect(result.selectedCardContext.position).toBe(2);
+    expect(result.selectedCardContext.reviewStateUpdatedAt).toBe(
+      "2026-04-02T11:30:00.000Z"
+    );
     expect(result.selectedCardContext.remainingCount).toBe(1);
   });
 
@@ -337,6 +342,7 @@ describe("resolveReviewQueuePosition", () => {
           bucket: "due",
           isQueueCard: true,
           position: 1,
+          reviewStateUpdatedAt: "2026-04-02T11:00:00.000Z",
           remainingCount: 1,
           showAnswer: false
         },
@@ -454,6 +460,7 @@ describe("resolveReviewQueuePosition", () => {
         mediaSlug: "duel-masters-dm25",
         mediaTitle: "Duel Masters",
         rawReviewLabel: "In review",
+        reviewStateUpdatedAt: "2026-04-02T11:30:00.000Z",
         reviewSeedState: {
           difficulty: 2.5,
           dueAt: "2026-04-02T12:00:00.000Z",
@@ -473,6 +480,9 @@ describe("resolveReviewQueuePosition", () => {
 
     expect(result.selectedCard?.id).toBe("card-b");
     expect(result.selectedCardContext.position).toBe(1);
+    expect(result.selectedCardContext.reviewStateUpdatedAt).toBe(
+      "2026-04-02T11:30:00.000Z"
+    );
     expect(result.selectedCardContext.remainingCount).toBe(1);
     expect(result.queue.advanceCards.map((card) => card.id)).toEqual(["card-c"]);
     expect(result.nextCardId).toBe("card-c");

@@ -51,6 +51,7 @@ export function ReviewPageClient({
           isForcedContrastOpen={controller.isForcedContrastOpen}
           isFullReviewPageData={controller.isFullReviewPageData}
           isGlobalReview={controller.isGlobalReview}
+          isGradeControlsDisabled={controller.isGradeControlsDisabled}
           isHydratingFullData={controller.isHydratingFullData}
           isPending={controller.isPending}
           remainingCount={controller.remainingCount}

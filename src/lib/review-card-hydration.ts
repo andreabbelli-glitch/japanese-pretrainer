@@ -239,7 +239,11 @@ export async function hydrateReviewCardUncached(input: {
         mediaById,
         nowIso,
         fsrsOptimizerSnapshot,
-        queueStateSnapshot
+        queueStateSnapshot,
+        undefined,
+        {
+          reviewStateUpdatedAt: subjectState?.updatedAt ?? null
+        }
       ),
     { cardId: card.id }
   );
@@ -340,7 +344,11 @@ export async function getReviewCardDetailData(
     }),
     nowIso,
     undefined,
-    queueStateSnapshot
+    queueStateSnapshot,
+    undefined,
+    {
+      reviewStateUpdatedAt: subjectState?.updatedAt ?? null
+    }
   );
   const crossMedia = drivingLinks.map((link) => {
     const localEntry =
@@ -582,6 +590,7 @@ export function mapQueueCard(
   contexts?: ReviewQueueCard["contexts"],
   options: {
     includePronunciations?: boolean;
+    reviewStateUpdatedAt?: string | null;
   } = {}
 ): ReviewQueueCard {
   const cardMedia = resolveReviewCardMedia(card, mediaById);
@@ -649,6 +658,7 @@ export function mapQueueCard(
       card.cardType,
       fsrsOptimizerSnapshot ?? buildDefaultFsrsOptimizerSnapshot()
     ),
+    reviewStateUpdatedAt: options.reviewStateUpdatedAt ?? null,
     segmentTitle: card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(card.cardType)
   };

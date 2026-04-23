@@ -214,6 +214,190 @@ describe("useReviewPageController first-candidate grading", () => {
     expect(controller().viewData.selectedCardContext.remainingCount).toBe(1);
   });
 
+  it("queues the next optimistic grade until the prior grade finishes persisting", async () => {
+    const cardAGrade = createDeferred<ReviewPageClientData>();
+    const cardBGrade = createDeferred<ReviewPageClientData>();
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Intentionally left pending to keep the hydration window open.
+        })
+    );
+    mocks.gradeReviewCardSessionAction
+      .mockImplementationOnce(() => cardAGrade.promise)
+      .mockImplementationOnce(() => cardBGrade.promise);
+
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFirstCandidateReviewPageData(),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+    act(() => {
+      controller().handleGradeCard("good");
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
+    expect(controller().viewData.selectedCard?.id).toBe("card-b");
+    expect(controller().viewData.session.answeredCount).toBe(1);
+    expect(controller().isAnswerRevealed).toBe(false);
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+
+    expect(controller().isAnswerRevealed).toBe(true);
+    expect(controller().viewData.selectedCard?.id).toBe("card-b");
+
+    act(() => {
+      controller().handleGradeCard("good");
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
+    expect(controller().viewData.selectedCard?.id).toBe("card-c");
+    expect(controller().viewData.session.answeredCount).toBe(2);
+    expect(controller().isAnswerRevealed).toBe(false);
+
+    await act(async () => {
+      cardAGrade.resolve(
+        buildPersistedGradeReviewPageData({
+          answeredCount: 1,
+          queueCardIds: ["card-b", "card-c"],
+          selectedCardId: "card-b"
+        })
+      );
+      await flushPromises();
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(2);
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({
+        answeredCount: 1,
+        cardId: "card-b",
+        cardMediaSlug: "duel-masters-dm25",
+        candidateCardIds: ["card-c"],
+        canonicalCandidateCardIds: ["card-c"],
+        expectedUpdatedAt: "2026-04-02T11:30:00.000Z",
+        gradedCardIds: ["card-a", "card-b"],
+        nextCardId: "card-c",
+        rating: "good",
+        scope: "global"
+      })
+    );
+  });
+
+  it("stops later queued optimistic grades when an earlier persistence fails", async () => {
+    const consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
+    const cardAGrade = createDeferred<ReviewPageClientData>();
+    mocks.loadReviewPageDataSessionAction.mockImplementation(
+      () =>
+        new Promise<ReviewPageClientData>(() => {
+          // Intentionally left pending to keep the hydration window open.
+        })
+    );
+    mocks.gradeReviewCardSessionAction.mockImplementationOnce(
+      () => cardAGrade.promise
+    );
+
+    let latestController: ReviewPageControllerResult | null = null;
+
+    function Probe(props: {
+      data: ReviewPageClientData;
+      searchParams?: Record<string, string | string[] | undefined>;
+    }) {
+      const controller = useReviewPageController(props);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, {
+          data: buildFirstCandidateReviewPageData(),
+          searchParams: { answered: "0", card: "card-a" }
+        })
+      );
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+    act(() => {
+      controller().handleGradeCard("good");
+    });
+    act(() => {
+      controller().handleRevealAnswer();
+    });
+    act(() => {
+      controller().handleGradeCard("good");
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
+    expect(controller().viewData.selectedCard?.id).toBe("card-c");
+    expect(controller().viewData.session.answeredCount).toBe(2);
+
+    await act(async () => {
+      cardAGrade.reject(new Error("Persistence failed."));
+      await flushPromises();
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
+    expect(controller().clientError).toBe(
+      "Non sono riuscito ad aggiornare la review. Riprova un attimo."
+    );
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+  });
+
   it("skips the redundant hydration fetch when global review data is already complete", async () => {
     let latestController: ReviewPageControllerResult | null = null;
 
@@ -770,7 +954,54 @@ function buildFullReviewPageData(cardId: string): ReviewPageData {
   };
 }
 
-function buildQueueCard(id: string): ReviewQueueCard {
+function buildPersistedGradeReviewPageData(input: {
+  answeredCount: number;
+  queueCardIds: string[];
+  selectedCardId: string;
+}): ReviewPageData {
+  const data = buildFirstCandidateReviewPageData();
+  const selectedCard = buildQueueCard(input.selectedCardId);
+  const advanceCards = input.queueCardIds
+    .filter((cardId) => cardId !== input.selectedCardId)
+    .map((cardId) => buildQueueCard(cardId));
+
+  return {
+    ...data,
+    queue: {
+      ...data.queue,
+      advanceCards,
+      cards: [selectedCard, ...advanceCards],
+      queueCount: input.queueCardIds.length,
+      manualCards: [],
+      suspendedCards: [],
+      upcomingCards: []
+    },
+    queueCardIds: input.queueCardIds,
+    selectedCard,
+    selectedCardContext: {
+      ...data.selectedCardContext,
+      gradePreviews: [],
+      position: input.answeredCount + 1,
+      remainingCount: Math.max(input.queueCardIds.length - 1, 0),
+      reviewStateUpdatedAt: selectedCard.reviewStateUpdatedAt ?? null,
+      showAnswer: false
+    },
+    session: {
+      ...data.session,
+      answeredCount: input.answeredCount
+    }
+  };
+}
+
+function buildQueueCard(
+  id: string
+): ReviewQueueCard & { reviewStateUpdatedAt?: string | null } {
+  const reviewStateUpdatedAtByCardId = new Map([
+    ["card-a", "2026-04-02T11:00:00.000Z"],
+    ["card-b", "2026-04-02T11:30:00.000Z"],
+    ["card-c", "2026-04-02T12:00:00.000Z"]
+  ]);
+
   return {
     back: id === "card-a" ? "costo / cost" : "casella / slot",
     bucket: "due",
@@ -795,6 +1026,7 @@ function buildQueueCard(id: string): ReviewQueueCard {
     pronunciations: [],
     rawReviewLabel: "In review",
     reading: "やまふだ",
+    reviewStateUpdatedAt: reviewStateUpdatedAtByCardId.get(id) ?? null,
     reviewSeedState: {
       difficulty: 2.5,
       dueAt: "2026-04-02T12:00:00.000Z",
@@ -811,6 +1043,23 @@ function buildQueueCard(id: string): ReviewQueueCard {
     segmentTitle: "Tcg Core",
     typeLabel: "Recognition"
   };
+}
+
+function createDeferred<T>() {
+  let resolve!: (value: T) => void;
+  let reject!: (reason?: unknown) => void;
+  const promise = new Promise<T>((resolvePromise, rejectPromise) => {
+    resolve = resolvePromise;
+    reject = rejectPromise;
+  });
+
+  return { promise, reject, resolve };
+}
+
+async function flushPromises() {
+  await Promise.resolve();
+  await Promise.resolve();
+  await Promise.resolve();
 }
 
 function installMinimalDom() {

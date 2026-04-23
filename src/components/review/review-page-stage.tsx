@@ -52,6 +52,7 @@ export function ReviewPageStage({
   isForcedContrastOpen,
   isFullReviewPageData,
   isGlobalReview,
+  isGradeControlsDisabled,
   isHydratingFullData,
   isPending,
   remainingCount,
@@ -88,6 +89,7 @@ export function ReviewPageStage({
   isForcedContrastOpen: boolean;
   isFullReviewPageData: boolean;
   isGlobalReview: boolean;
+  isGradeControlsDisabled: boolean;
   isHydratingFullData: boolean;
   isPending: boolean;
   remainingCount: number;
@@ -297,7 +299,7 @@ export function ReviewPageStage({
                   <button
                     key={rating.value}
                     className={`review-grade-button review-grade-button--${rating.tone}`}
-                    disabled={isPending}
+                    disabled={isGradeControlsDisabled}
                     type="button"
                     onClick={() => handleGradeCard(rating.value)}
                   >

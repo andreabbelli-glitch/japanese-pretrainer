@@ -924,7 +924,8 @@ export function mapReviewQueueSubjectModel(
       input.visibleMediaId
     ),
     {
-      includePronunciations: input.includePronunciations
+      includePronunciations: input.includePronunciations,
+      reviewStateUpdatedAt: model.group.subjectState?.updatedAt ?? null
     }
   );
 }

@@ -76,6 +76,16 @@ type ReviewForcedContrastUiState = {
   selection: ReviewForcedContrastSelection | null;
 };
 
+type ReviewSessionUpdateOptions = {
+  errorResolver?: (error: unknown) => string;
+  onDiscarded?: (nextData: ReviewPageData) => void;
+  onError?: () => void;
+  onSuccess?: (nextData: ReviewPageData) => void;
+  optimisticUpdate?: () => (() => void) | void;
+  shouldLogError?: (error: unknown) => boolean;
+  shouldSyncQueueCardIds?: (nextData: ReviewPageData) => boolean;
+};
+
 export type ReviewPageControllerResult = {
   additionalNewCount: number;
   clientError: string | null;
@@ -106,6 +116,7 @@ export type ReviewPageControllerResult = {
   isForcedContrastOpen: boolean;
   isFullReviewPageData: boolean;
   isGlobalReview: boolean;
+  isGradeControlsDisabled: boolean;
   isHydratingFullData: boolean;
   isPending: boolean;
   remainingCount: number;
@@ -132,13 +143,28 @@ export function useReviewPageController(input: {
   const [pendingAnsweredCountScroll, setPendingAnsweredCountScroll] = useState<
     number | null
   >(null);
+  const [
+    hasBlockingGradeSubmissionInFlight,
+    setHasBlockingGradeSubmissionInFlight
+  ] = useState(false);
   const prefetchBufferRef = useRef<Map<string, ReviewQueueCard>>(new Map());
   const prefetchInFlightRef = useRef<Set<string>>(new Set());
-  const gradeSubmissionInFlightRef = useRef(false);
+  const submittedGradeCardIdsRef = useRef<Set<string>>(new Set());
+  const pendingGradeCardIdsRef = useRef<Set<string>>(new Set());
+  const blockingGradeSubmissionInFlightRef = useRef(false);
+  const gradeQueueTailRef = useRef<Promise<void>>(Promise.resolve());
+  const gradeQueueActiveRef = useRef(false);
+  const gradeQueueFailedRef = useRef(false);
   const latestViewDataRef = useRef<ReviewPageClientData>(data);
   const lastGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const inFlightGlobalHydrationRequestKeyRef = useRef<string | null>(null);
   const gradedCardIdsRef = useRef<Set<string>>(new Set());
+  const [submittedGradeCardIds, setSubmittedGradeCardIds] = useState<
+    ReadonlySet<string>
+  >(() => new Set());
+  const [pendingGradeCardIds, setPendingGradeCardIds] = useState<
+    ReadonlySet<string>
+  >(() => new Set());
   const lastAcceptedServerDataRef = useRef(data);
   const forcedContrastInputRef = useRef<HTMLInputElement>(null);
   const [forcedContrastUiState, setForcedContrastUiState] =
@@ -265,6 +291,12 @@ export function useReviewPageController(input: {
   const forcedContrastQuery = forcedContrastState.query;
   const forcedContrastSelection = forcedContrastState.selection;
   const isForcedContrastOpen = forcedContrastState.isOpen;
+  const isGradeControlsDisabled =
+    selectedCardId !== null &&
+    (clientError !== null ||
+      submittedGradeCardIds.has(selectedCardId) ||
+      hasBlockingGradeSubmissionInFlight ||
+      (forcedContrastSelection !== null && pendingGradeCardIds.size > 0));
   const forcedContrastAutocomplete = useGlossaryAutocomplete({
     filters: {
       cards: "with_cards",
@@ -377,6 +409,7 @@ export function useReviewPageController(input: {
         setViewData(data);
         setRevealedCardId(nextRevealedCardId);
         setQueueCardIds(data.queueCardIds);
+        gradeQueueFailedRef.current = false;
         setClientError(null);
       }
       return;
@@ -402,6 +435,7 @@ export function useReviewPageController(input: {
     setViewData(merged);
     setRevealedCardId(getInitiallyRevealedCardId(merged));
     setQueueCardIds(data.queueCardIds);
+    gradeQueueFailedRef.current = false;
     setClientError(null);
   }, [
     data,
@@ -606,46 +640,99 @@ export function useReviewPageController(input: {
 
   function runSessionUpdate(
     loadNextData: () => Promise<ReviewPageData>,
-    options?: {
-      errorResolver?: (error: unknown) => string;
-      onError?: () => void;
-      onSuccess?: (nextData: ReviewPageData) => void;
-      optimisticUpdate?: () => (() => void) | void;
-      shouldLogError?: (error: unknown) => boolean;
-      shouldSyncQueueCardIds?: (nextData: ReviewPageData) => boolean;
-    }
+    options?: ReviewSessionUpdateOptions
   ) {
     setClientError(null);
     const rollbackOptimisticUpdate = options?.optimisticUpdate?.();
 
     startTransition(() => {
-      void loadNextData()
-        .then((nextData) => {
-          const mergedData = mergeReviewPageData(
-            latestViewDataRef.current,
-            nextData
-          );
-
-          latestViewDataRef.current = mergedData;
-          setViewData(mergedData);
-          setRevealedCardId(getInitiallyRevealedCardId(mergedData));
-          if (options?.shouldSyncQueueCardIds?.(nextData) ?? true) {
-            setQueueCardIds(nextData.queueCardIds);
-          }
-          options?.onSuccess?.(mergedData);
-        })
-        .catch((error) => {
-          if (options?.shouldLogError?.(error) ?? true) {
-            console.error(error);
-          }
-          rollbackOptimisticUpdate?.();
-          options?.onError?.();
-          setClientError(
-            options?.errorResolver?.(error) ??
-              "Non sono riuscito ad aggiornare la review. Riprova un attimo."
-          );
-        });
+      void executeSessionUpdate(
+        loadNextData,
+        options,
+        rollbackOptimisticUpdate
+      );
     });
+  }
+
+  function enqueueOptimisticGradeSessionUpdate(
+    loadNextData: () => Promise<ReviewPageData>,
+    options?: ReviewSessionUpdateOptions
+  ) {
+    setClientError(null);
+    const rollbackOptimisticUpdate = options?.optimisticUpdate?.();
+    const runQueuedUpdate = () => {
+      if (gradeQueueFailedRef.current) {
+        options?.onError?.();
+        return Promise.resolve();
+      }
+
+      return executeSessionUpdate(
+        loadNextData,
+        {
+          ...options,
+          onError: () => {
+            gradeQueueFailedRef.current = true;
+            options?.onError?.();
+          }
+        },
+        rollbackOptimisticUpdate
+      );
+    };
+
+    const nextTail = gradeQueueActiveRef.current
+      ? gradeQueueTailRef.current.then(runQueuedUpdate, runQueuedUpdate)
+      : runQueuedUpdate();
+    gradeQueueActiveRef.current = true;
+
+    const trackedTail = nextTail.finally(() => {
+      if (gradeQueueTailRef.current === trackedTail) {
+        gradeQueueActiveRef.current = false;
+      }
+    });
+    gradeQueueTailRef.current = trackedTail;
+  }
+
+  function executeSessionUpdate(
+    loadNextData: () => Promise<ReviewPageData>,
+    options: ReviewSessionUpdateOptions | undefined,
+    rollbackOptimisticUpdate: (() => void) | void
+  ) {
+    return loadNextData()
+      .then((nextData) => {
+        const currentViewData = latestViewDataRef.current;
+        if (
+          !shouldAcceptServerReviewData(
+            currentViewData,
+            nextData,
+            requestedSelectedCardId,
+            isGlobalReview
+          )
+        ) {
+          options?.onDiscarded?.(nextData);
+          return;
+        }
+
+        const mergedData = mergeReviewPageData(currentViewData, nextData);
+
+        latestViewDataRef.current = mergedData;
+        setViewData(mergedData);
+        setRevealedCardId(getInitiallyRevealedCardId(mergedData));
+        if (options?.shouldSyncQueueCardIds?.(nextData) ?? true) {
+          setQueueCardIds(nextData.queueCardIds);
+        }
+        options?.onSuccess?.(mergedData);
+      })
+      .catch((error) => {
+        if (options?.shouldLogError?.(error) ?? true) {
+          console.error(error);
+        }
+        rollbackOptimisticUpdate?.();
+        options?.onError?.();
+        setClientError(
+          options?.errorResolver?.(error) ??
+            "Non sono riuscito ad aggiornare la review. Riprova un attimo."
+        );
+      });
   }
 
   function handleRevealAnswer() {
@@ -687,7 +774,11 @@ export function useReviewPageController(input: {
       return;
     }
 
-    if (gradeSubmissionInFlightRef.current) {
+    if (
+      clientError !== null ||
+      blockingGradeSubmissionInFlightRef.current ||
+      submittedGradeCardIdsRef.current.has(selectedCard.id)
+    ) {
       return;
     }
 
@@ -703,9 +794,38 @@ export function useReviewPageController(input: {
         }
       : undefined;
 
+    if (
+      forcedKanjiClashContrast &&
+      pendingGradeCardIdsRef.current.size > 0
+    ) {
+      return;
+    }
+
     gradedCardIdsRef.current.add(selectedCard.id);
+    submittedGradeCardIdsRef.current.add(selectedCard.id);
+    pendingGradeCardIdsRef.current.add(selectedCard.id);
+    setSubmittedGradeCardIds(new Set(submittedGradeCardIdsRef.current));
+    setPendingGradeCardIds(new Set(pendingGradeCardIdsRef.current));
     setPendingAnsweredCountScroll(sessionViewData.session.answeredCount);
-    gradeSubmissionInFlightRef.current = true;
+    const isBlockingGradeSubmission =
+      !isQueueCard || forcedKanjiClashContrast !== undefined;
+    if (isBlockingGradeSubmission) {
+      blockingGradeSubmissionInFlightRef.current = true;
+      setHasBlockingGradeSubmissionInFlight(true);
+    }
+
+    const releaseGradeSubmission = (options?: { allowRetry?: boolean }) => {
+      pendingGradeCardIdsRef.current.delete(selectedCard.id);
+      if (options?.allowRetry) {
+        submittedGradeCardIdsRef.current.delete(selectedCard.id);
+      }
+      if (isBlockingGradeSubmission) {
+        blockingGradeSubmissionInFlightRef.current = false;
+        setHasBlockingGradeSubmissionInFlight(false);
+      }
+      setPendingGradeCardIds(new Set(pendingGradeCardIdsRef.current));
+      setSubmittedGradeCardIds(new Set(submittedGradeCardIdsRef.current));
+    };
 
     if (!isQueueCard) {
       runSessionUpdate(
@@ -747,11 +867,14 @@ export function useReviewPageController(input: {
               }
             : {}),
           onError: () => {
-            gradeSubmissionInFlightRef.current = false;
+            releaseGradeSubmission({ allowRetry: true });
             setPendingAnsweredCountScroll(null);
           },
+          onDiscarded: () => {
+            releaseGradeSubmission();
+          },
           onSuccess: () => {
-            gradeSubmissionInFlightRef.current = false;
+            releaseGradeSubmission();
           }
         }
       );
@@ -788,8 +911,11 @@ export function useReviewPageController(input: {
       optimisticSourceData !== null &&
       optimisticNextCard !== null &&
       forcedKanjiClashContrast === undefined;
+    const runGradeSessionUpdate = canOptimisticallyAdvance
+      ? enqueueOptimisticGradeSessionUpdate
+      : runSessionUpdate;
 
-    runSessionUpdate(
+    runGradeSessionUpdate(
       () =>
         gradeReviewCardSessionAction(
           {
@@ -831,41 +957,55 @@ export function useReviewPageController(input: {
               }
             : {}),
         onError: () => {
-          gradeSubmissionInFlightRef.current = false;
+          releaseGradeSubmission({ allowRetry: true });
           setPendingAnsweredCountScroll(null);
+        },
+        onDiscarded: () => {
+          releaseGradeSubmission();
         },
         optimisticUpdate: canOptimisticallyAdvance
           ? () => {
               const previousViewData = optimisticSourceData;
               const previousQueueCardIds = queueCardIds;
+              const optimisticViewData = fullViewData
+                ? buildOptimisticGradeResult({
+                    currentData: fullViewData,
+                    gradedCardBucket: selectedCard.bucket,
+                    nextCard: optimisticNextCard ?? null,
+                    nextQueuePosition: optimisticNextQueuePosition,
+                    nextQueueCardIds
+                  })
+                : buildOptimisticFirstCandidateGradeResult({
+                    currentData: optimisticSourceData!,
+                    gradedCardBucket: selectedCard.bucket,
+                    nextCard: optimisticNextCard ?? null,
+                    nextQueuePosition: optimisticNextQueuePosition,
+                    nextQueueCardIds
+                  });
 
-              setViewData(
-                fullViewData
-                  ? buildOptimisticGradeResult({
-                      currentData: fullViewData,
-                      gradedCardBucket: selectedCard.bucket,
-                      nextCard: optimisticNextCard ?? null,
-                      nextQueuePosition: optimisticNextQueuePosition,
-                      nextQueueCardIds
-                    })
-                  : buildOptimisticFirstCandidateGradeResult({
-                      currentData: optimisticSourceData!,
-                      gradedCardBucket: selectedCard.bucket,
-                      nextCard: optimisticNextCard ?? null,
-                      nextQueuePosition: optimisticNextQueuePosition,
-                      nextQueueCardIds
-                    })
-              );
+              latestViewDataRef.current = optimisticViewData;
+              setViewData(optimisticViewData);
               setQueueCardIds(nextQueueCardIds);
 
               return () => {
+                const currentViewData = latestViewDataRef.current;
+                if (
+                  currentViewData.session.answeredCount !==
+                    optimisticViewData.session.answeredCount ||
+                  currentViewData.selectedCard?.id !==
+                    optimisticViewData.selectedCard?.id
+                ) {
+                  return;
+                }
+
+                latestViewDataRef.current = previousViewData;
                 setViewData(previousViewData);
                 setQueueCardIds(previousQueueCardIds);
               };
             }
           : undefined,
         onSuccess: (nextData) => {
-          gradeSubmissionInFlightRef.current = false;
+          releaseGradeSubmission();
           if (nextData.queueCardIds.length === 0) {
             setQueueCardIds(nextQueueCardIds);
           }
@@ -953,6 +1093,7 @@ export function useReviewPageController(input: {
     isForcedContrastOpen,
     isFullReviewPageData,
     isGlobalReview,
+    isGradeControlsDisabled,
     isHydratingFullData,
     isPending,
     remainingCount,
