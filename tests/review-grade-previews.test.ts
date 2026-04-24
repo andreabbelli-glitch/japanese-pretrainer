@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ReviewSeedState } from "@/lib/review-grade-previews";
 
 const { scheduleReviewMock } = vi.hoisted(() => ({
@@ -29,8 +29,16 @@ const baseSeedState: ReviewSeedState = {
 };
 
 describe("review grade previews", () => {
+  const originalTimezone = process.env.TZ;
+
+  afterAll(() => {
+    process.env.TZ = originalTimezone;
+  });
+
   beforeEach(() => {
+    process.env.TZ = "Europe/Rome";
     scheduleReviewMock.mockReset();
+    vi.resetModules();
   });
 
   it("keeps minute countdowns for intervals just below one hour", async () => {
@@ -97,5 +105,27 @@ describe("review grade previews", () => {
     expect(previews.some((preview) => preview.nextReviewLabel === "Il 2026-05-02")).toBe(
       true
     );
+  });
+
+  it("labels tomorrow by local calendar date across the spring DST boundary", async () => {
+    const { buildReviewGradePreviews } = await import(
+      "@/lib/review-grade-previews"
+    );
+    const now = new Date(2026, 2, 29, 12, 0, 0);
+    const tomorrowMorning = new Date(2026, 2, 30, 10, 0, 0);
+    scheduleReviewMock.mockImplementation(({ rating }: { rating: string }) => ({
+      dueAt:
+        rating === "again"
+          ? tomorrowMorning.toISOString()
+          : new Date(now.getTime() + 2 * 60 * 60_000).toISOString()
+    }));
+
+    const previews = buildReviewGradePreviews(baseSeedState, now);
+
+    expect(
+      previews.some(
+        (preview) => preview.nextReviewLabel === "Domani alle 10:00"
+      )
+    ).toBe(true);
   });
 });

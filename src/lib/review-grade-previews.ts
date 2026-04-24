@@ -124,11 +124,11 @@ function isSameLocalDate(left: Date, right: Date) {
 }
 
 function isNextLocalDate(left: Date, right: Date) {
-  return (
-    (startOfLocalDay(left).getTime() - startOfLocalDay(right).getTime()) /
-      86_400_000 ===
-    1
-  );
+  const nextLocalDay = startOfLocalDay(right);
+
+  nextLocalDay.setDate(nextLocalDay.getDate() + 1);
+
+  return isSameLocalDate(left, nextLocalDay);
 }
 
 function startOfLocalDay(value: Date) {
