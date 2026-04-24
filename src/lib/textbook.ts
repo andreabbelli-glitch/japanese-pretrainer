@@ -110,10 +110,14 @@ export async function getTextbookLessonData(
 
   const mediaPromise = getMediaBySlugCached(database, mediaSlug);
   const furiganaModePromise = getFuriganaMode(database);
+
+  void furiganaModePromise.catch(() => {
+    // The furigana lookup can be abandoned when the media slug misses.
+  });
+
   const media = await mediaPromise;
 
   if (!media) {
-    await furiganaModePromise;
     return null;
   }
 
