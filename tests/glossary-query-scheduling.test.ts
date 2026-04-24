@@ -37,6 +37,66 @@ async function waitForTruthy(
   throw new Error(message);
 }
 
+function mockGlossaryDb(overrides: Record<string, unknown>) {
+  vi.doMock("@/db", () => ({
+    countGlobalGlossaryBrowseGroups: vi.fn(() => Promise.resolve(0)),
+    db: {},
+    getCrossMediaFamilyByEntryId: vi.fn(() => Promise.resolve(null)),
+    getGlobalGlossaryAggregateStats: vi.fn(() =>
+      Promise.resolve({
+        crossMediaCount: 0,
+        entryCount: 0,
+        withCardsCount: 0
+      })
+    ),
+    getGlossaryEntriesByCrossMediaGroupIds: vi.fn(() => Promise.resolve([])),
+    getGlossaryEntriesByIds: vi.fn(() => Promise.resolve([])),
+    getGlossaryEntryBySourceId: vi.fn(() => Promise.resolve(null)),
+    listEntryCardConnections: vi.fn(() => Promise.resolve([])),
+    listEntryCardCounts: vi.fn(() => Promise.resolve([])),
+    listEntryLessonConnections: vi.fn(() => Promise.resolve([])),
+    listEntryStudySignals: vi.fn(() => Promise.resolve([])),
+    listGlobalGlossaryBrowseGroupRefs: vi.fn(() => Promise.resolve([])),
+    listGlossaryEntriesByKind: vi.fn(() => Promise.resolve([])),
+    listGlossarySearchCandidateRefs: vi.fn(() => Promise.resolve([])),
+    listGlossarySegmentsByMediaId: vi.fn(() => Promise.resolve([])),
+    listGrammarEntrySummaries: vi.fn(() => Promise.resolve([])),
+    listTermEntrySummaries: vi.fn(() => Promise.resolve([])),
+    ...overrides
+  }));
+}
+
+function mockGlossaryDataCache(overrides: Record<string, unknown>) {
+  vi.doMock("@/lib/data-cache", () => ({
+    GLOSSARY_SUMMARY_TAG: "glossary-summary",
+    MEDIA_LIST_TAG: "media-list",
+    REVIEW_SUMMARY_TAG: "review-summary",
+    buildGlossarySummaryTags: vi.fn(() => []),
+    canUseDataCache: vi.fn(() => false),
+    getMediaBySlugCached: vi.fn(),
+    listMediaCached: vi.fn(),
+    runWithTaggedCache: vi.fn(async ({ loader }) => loader()),
+    ...overrides
+  }));
+}
+
+function mockGlossarySettings(
+  getGlossaryDefaultSort: () => Promise<"lesson_order" | "alphabetical">
+) {
+  vi.doMock("@/lib/settings", () => ({
+    defaultStudySettings: {
+      furiganaMode: "hover",
+      glossaryDefaultSort: "lesson_order",
+      kanjiClashDailyNewLimit: 5,
+      kanjiClashDefaultScope: "global",
+      kanjiClashManualDefaultSize: 20,
+      reviewDailyLimit: 20,
+      reviewFrontFurigana: true
+    },
+    getGlossaryDefaultSort: vi.fn(getGlossaryDefaultSort)
+  }));
+}
+
 describe("glossary query scheduling", () => {
   afterEach(() => {
     vi.resetModules();
@@ -70,49 +130,24 @@ describe("glossary query scheduling", () => {
     let aggregateStarted = false;
     let browseStarted = false;
 
-    vi.doMock("@/db", async () => {
-      const actual = await vi.importActual<typeof import("@/db")>("@/db");
-
-      return {
-        ...actual,
-        countGlobalGlossaryBrowseGroups: vi.fn(),
-        getGlobalGlossaryAggregateStats: vi.fn(() => {
-          aggregateStarted = true;
-          return aggregateStatsDeferred.promise;
-        }),
-        listGlobalGlossaryBrowseGroupRefs: vi.fn(() => {
-          browseStarted = true;
-          return browseRefsDeferred.promise;
-        })
-      };
+    mockGlossaryDb({
+      countGlobalGlossaryBrowseGroups: vi.fn(),
+      getGlobalGlossaryAggregateStats: vi.fn(() => {
+        aggregateStarted = true;
+        return aggregateStatsDeferred.promise;
+      }),
+      listGlobalGlossaryBrowseGroupRefs: vi.fn(() => {
+        browseStarted = true;
+        return browseRefsDeferred.promise;
+      })
     });
-    vi.doMock("@/lib/data-cache", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/data-cache")>(
-          "@/lib/data-cache"
-        );
-
-      return {
-        ...actual,
-        canUseDataCache: vi.fn(() => false),
-        listMediaCached: vi.fn(() => {
-          mediaStarted = true;
-          return mediaRowsDeferred.promise;
-        }),
-        runWithTaggedCache: vi.fn(async ({ loader }) => loader())
-      };
+    mockGlossaryDataCache({
+      listMediaCached: vi.fn(() => {
+        mediaStarted = true;
+        return mediaRowsDeferred.promise;
+      })
     });
-    vi.doMock("@/lib/settings", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/settings")>(
-          "@/lib/settings"
-        );
-
-      return {
-        ...actual,
-        getGlossaryDefaultSort: vi.fn(() => defaultSortDeferred.promise)
-      };
-    });
+    mockGlossarySettings(() => defaultSortDeferred.promise);
 
     const { loadGlobalGlossaryPageData } = await import("@/lib/glossary-loaders");
     const glossaryPromise = loadGlobalGlossaryPageData({}, {} as never);
@@ -180,47 +215,22 @@ describe("glossary query scheduling", () => {
     let browseStarted = false;
     let defaultSortStarted = false;
 
-    vi.doMock("@/db", async () => {
-      const actual = await vi.importActual<typeof import("@/db")>("@/db");
-
-      return {
-        ...actual,
-        countGlobalGlossaryBrowseGroups: vi.fn(),
-        getGlobalGlossaryAggregateStats: vi.fn(
-          () => aggregateStatsDeferred.promise
-        ),
-        listGlobalGlossaryBrowseGroupRefs: vi.fn(() => {
-          browseStarted = true;
-          return browseRefsDeferred.promise;
-        })
-      };
+    mockGlossaryDb({
+      countGlobalGlossaryBrowseGroups: vi.fn(),
+      getGlobalGlossaryAggregateStats: vi.fn(
+        () => aggregateStatsDeferred.promise
+      ),
+      listGlobalGlossaryBrowseGroupRefs: vi.fn(() => {
+        browseStarted = true;
+        return browseRefsDeferred.promise;
+      })
     });
-    vi.doMock("@/lib/data-cache", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/data-cache")>(
-          "@/lib/data-cache"
-        );
-
-      return {
-        ...actual,
-        canUseDataCache: vi.fn(() => false),
-        listMediaCached: vi.fn(() => mediaRowsDeferred.promise),
-        runWithTaggedCache: vi.fn(async ({ loader }) => loader())
-      };
+    mockGlossaryDataCache({
+      listMediaCached: vi.fn(() => mediaRowsDeferred.promise)
     });
-    vi.doMock("@/lib/settings", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/settings")>(
-          "@/lib/settings"
-        );
-
-      return {
-        ...actual,
-        getGlossaryDefaultSort: vi.fn(() => {
-          defaultSortStarted = true;
-          return defaultSortDeferred.promise;
-        })
-      };
+    mockGlossarySettings(() => {
+      defaultSortStarted = true;
+      return defaultSortDeferred.promise;
     });
 
     const { loadGlobalGlossaryPageData } = await import("@/lib/glossary-loaders");
@@ -262,57 +272,27 @@ describe("glossary query scheduling", () => {
     let localBrowseStarted = false;
     let defaultSortStarted = false;
 
-    vi.doMock("@/db", async () => {
-      const actual = await vi.importActual<typeof import("@/db")>("@/db");
-
-      return {
-        ...actual,
-        listEntryCardCounts: vi.fn(() => Promise.resolve([])),
-        listEntryLessonConnections: vi.fn(() => Promise.resolve([])),
-        listEntryStudySignals: vi.fn(() => Promise.resolve([])),
-        listGlossarySegmentsByMediaId: vi.fn(() => Promise.resolve([])),
-        listGrammarEntrySummaries: vi.fn(() => Promise.resolve([])),
-        listTermEntrySummaries: vi.fn(() => {
-          localBrowseStarted = true;
-          return Promise.resolve([]);
-        })
-      };
+    mockGlossaryDb({
+      listTermEntrySummaries: vi.fn(() => {
+        localBrowseStarted = true;
+        return Promise.resolve([]);
+      })
     });
-    vi.doMock("@/lib/data-cache", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/data-cache")>(
-          "@/lib/data-cache"
-        );
-
-      return {
-        ...actual,
-        canUseDataCache: vi.fn(() => false),
-        getMediaBySlugCached: vi.fn(() =>
-          Promise.resolve({
-            description: "Fixture media",
-            id: "media-1",
-            mediaType: "game",
-            segmentKind: "chapter",
-            slug: "fixture-media",
-            title: "Fixture Media"
-          })
-        ),
-        runWithTaggedCache: vi.fn(async ({ loader }) => loader())
-      };
-    });
-    vi.doMock("@/lib/settings", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/settings")>(
-          "@/lib/settings"
-        );
-
-      return {
-        ...actual,
-        getGlossaryDefaultSort: vi.fn(() => {
-          defaultSortStarted = true;
-          return defaultSortDeferred.promise;
+    mockGlossaryDataCache({
+      getMediaBySlugCached: vi.fn(() =>
+        Promise.resolve({
+          description: "Fixture media",
+          id: "media-1",
+          mediaType: "game",
+          segmentKind: "chapter",
+          slug: "fixture-media",
+          title: "Fixture Media"
         })
-      };
+      )
+    });
+    mockGlossarySettings(() => {
+      defaultSortStarted = true;
+      return defaultSortDeferred.promise;
     });
 
     const { loadGlossaryPageData } = await import("@/lib/glossary-loaders");
@@ -359,42 +339,17 @@ describe("glossary query scheduling", () => {
     >();
     let glossaryResolved = false;
 
-    vi.doMock("@/db", async () => {
-      const actual = await vi.importActual<typeof import("@/db")>("@/db");
-
-      return {
-        ...actual,
-        countGlobalGlossaryBrowseGroups: vi.fn(),
-        getGlobalGlossaryAggregateStats: vi.fn(
-          () => aggregateStatsDeferred.promise
-        ),
-        listGlobalGlossaryBrowseGroupRefs: vi.fn(() => browseRefsDeferred.promise)
-      };
+    mockGlossaryDb({
+      countGlobalGlossaryBrowseGroups: vi.fn(),
+      getGlobalGlossaryAggregateStats: vi.fn(
+        () => aggregateStatsDeferred.promise
+      ),
+      listGlobalGlossaryBrowseGroupRefs: vi.fn(() => browseRefsDeferred.promise)
     });
-    vi.doMock("@/lib/data-cache", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/data-cache")>(
-          "@/lib/data-cache"
-        );
-
-      return {
-        ...actual,
-        canUseDataCache: vi.fn(() => false),
-        listMediaCached: vi.fn(() => mediaRowsDeferred.promise),
-        runWithTaggedCache: vi.fn(async ({ loader }) => loader())
-      };
+    mockGlossaryDataCache({
+      listMediaCached: vi.fn(() => mediaRowsDeferred.promise)
     });
-    vi.doMock("@/lib/settings", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/settings")>(
-          "@/lib/settings"
-        );
-
-      return {
-        ...actual,
-        getGlossaryDefaultSort: vi.fn(() => defaultSortDeferred.promise)
-      };
-    });
+    mockGlossarySettings(() => defaultSortDeferred.promise);
 
     const { loadGlobalGlossaryPageData } = await import("@/lib/glossary-loaders");
     const glossaryPromise = loadGlobalGlossaryPageData(
@@ -442,52 +397,20 @@ describe("glossary query scheduling", () => {
     const defaultSortDeferred = createDeferred<"lesson_order" | "alphabetical">();
     let glossaryResolved = false;
 
-    vi.doMock("@/db", async () => {
-      const actual = await vi.importActual<typeof import("@/db")>("@/db");
-
-      return {
-        ...actual,
-        listEntryCardCounts: vi.fn(() => Promise.resolve([])),
-        listEntryLessonConnections: vi.fn(() => Promise.resolve([])),
-        listEntryStudySignals: vi.fn(() => Promise.resolve([])),
-        listGlossarySegmentsByMediaId: vi.fn(() => Promise.resolve([])),
-        listGrammarEntrySummaries: vi.fn(() => Promise.resolve([])),
-        listTermEntrySummaries: vi.fn(() => Promise.resolve([]))
-      };
+    mockGlossaryDb({});
+    mockGlossaryDataCache({
+      getMediaBySlugCached: vi.fn(() =>
+        Promise.resolve({
+          description: "Fixture media",
+          id: "media-1",
+          mediaType: "game",
+          segmentKind: "chapter",
+          slug: "fixture-media",
+          title: "Fixture Media"
+        })
+      )
     });
-    vi.doMock("@/lib/data-cache", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/data-cache")>(
-          "@/lib/data-cache"
-        );
-
-      return {
-        ...actual,
-        canUseDataCache: vi.fn(() => false),
-        getMediaBySlugCached: vi.fn(() =>
-          Promise.resolve({
-            description: "Fixture media",
-            id: "media-1",
-            mediaType: "game",
-            segmentKind: "chapter",
-            slug: "fixture-media",
-            title: "Fixture Media"
-          })
-        ),
-        runWithTaggedCache: vi.fn(async ({ loader }) => loader())
-      };
-    });
-    vi.doMock("@/lib/settings", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/settings")>(
-          "@/lib/settings"
-        );
-
-      return {
-        ...actual,
-        getGlossaryDefaultSort: vi.fn(() => defaultSortDeferred.promise)
-      };
-    });
+    mockGlossarySettings(() => defaultSortDeferred.promise);
 
     const { loadGlossaryPageData } = await import("@/lib/glossary-loaders");
     const glossaryPromise = loadGlossaryPageData(
@@ -523,43 +446,18 @@ describe("glossary query scheduling", () => {
     const mediaDeferred = createDeferred<null>();
     let glossaryResolved = false;
 
-    vi.doMock("@/db", async () => {
-      const actual = await vi.importActual<typeof import("@/db")>("@/db");
-
-      return {
-        ...actual,
-        listEntryCardCounts: vi.fn(),
-        listEntryLessonConnections: vi.fn(),
-        listEntryStudySignals: vi.fn(),
-        listGlossarySegmentsByMediaId: vi.fn(),
-        listGrammarEntrySummaries: vi.fn(),
-        listTermEntrySummaries: vi.fn()
-      };
+    mockGlossaryDb({
+      listEntryCardCounts: vi.fn(),
+      listEntryLessonConnections: vi.fn(),
+      listEntryStudySignals: vi.fn(),
+      listGlossarySegmentsByMediaId: vi.fn(),
+      listGrammarEntrySummaries: vi.fn(),
+      listTermEntrySummaries: vi.fn()
     });
-    vi.doMock("@/lib/data-cache", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/data-cache")>(
-          "@/lib/data-cache"
-        );
-
-      return {
-        ...actual,
-        canUseDataCache: vi.fn(() => false),
-        getMediaBySlugCached: vi.fn(() => mediaDeferred.promise),
-        runWithTaggedCache: vi.fn(async ({ loader }) => loader())
-      };
+    mockGlossaryDataCache({
+      getMediaBySlugCached: vi.fn(() => mediaDeferred.promise)
     });
-    vi.doMock("@/lib/settings", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/lib/settings")>(
-          "@/lib/settings"
-        );
-
-      return {
-        ...actual,
-        getGlossaryDefaultSort: vi.fn(() => defaultSortDeferred.promise)
-      };
-    });
+    mockGlossarySettings(() => defaultSortDeferred.promise);
 
     const { loadGlossaryPageData } = await import("@/lib/glossary-loaders");
     const glossaryPromise = loadGlossaryPageData(
