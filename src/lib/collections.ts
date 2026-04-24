@@ -5,7 +5,7 @@ export function pickBestBy<T>(
   let best: T | null = null;
 
   for (const value of values) {
-    if (!best || compare(value, best) < 0) {
+    if (best === null || compare(value, best) < 0) {
       best = value;
     }
   }
