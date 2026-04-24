@@ -51,11 +51,11 @@ export function readNestedReturnTo(
     return null;
   }
 
-  const nestedReturnTo = new URL(href, "https://jcs.local").searchParams.get(
+  const nestedReturnTo = new URL(href, "https://jcs.local").searchParams.getAll(
     "returnTo"
   );
 
-  return readInternalHref(nestedReturnTo ?? undefined);
+  return readInternalHref(nestedReturnTo);
 }
 
 export function resolveReturnToContext(

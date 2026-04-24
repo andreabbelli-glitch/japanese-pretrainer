@@ -307,6 +307,11 @@ describe("site helpers", () => {
     ).toBe("/media/fixture-tcg/review?answered=3&card=card-iku");
     expect(
       resolveGlossaryReviewReturnTo(
+        "/glossary?q=iku&returnTo=&returnTo=https%3A%2F%2Fevil.test%2Freview&returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"
+      )
+    ).toBe("/review?answered=3&card=card-iku");
+    expect(
+      resolveGlossaryReviewReturnTo(
         "/media/fixture-tcg/glossary?q=iku&returnTo=%2Fglossary%3Fq%3Diku"
       )
     ).toBeNull();
