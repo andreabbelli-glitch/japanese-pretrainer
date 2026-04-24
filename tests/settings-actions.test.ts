@@ -62,4 +62,23 @@ describe("settings actions", () => {
     });
     expect(revalidateSettingsCacheMock).toHaveBeenCalledTimes(1);
   });
+
+  it("keeps the first valid duplicated return target after saving settings", async () => {
+    const formData = new FormData();
+    formData.set("furiganaMode", "hover");
+    formData.set("glossaryDefaultSort", "lesson_order");
+    formData.set("kanjiClashDailyNewLimit", "5");
+    formData.set("kanjiClashDefaultScope", "global");
+    formData.set("kanjiClashManualDefaultSize", "20");
+    formData.set("reviewFrontFurigana", "true");
+    formData.set("reviewDailyLimit", "20");
+    formData.append("returnTo", "https://evil.test/review");
+    formData.append("returnTo", "/review?answered=2&card=card-iku");
+
+    await expect(saveStudySettingsAction(formData)).rejects.toThrow(
+      "redirect:/settings?saved=1&returnTo=%2Freview%3Fanswered%3D2%26card%3Dcard-iku"
+    );
+
+    expect(revalidateSettingsCacheMock).toHaveBeenCalledTimes(1);
+  });
 });

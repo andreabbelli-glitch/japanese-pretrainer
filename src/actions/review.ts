@@ -3,7 +3,7 @@
 import type { Route } from "next";
 import { redirect } from "next/navigation";
 
-import { readRequiredString } from "./form-data.ts";
+import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
 import { db } from "@/db";
 import { loadReviewPageDataSession } from "@/lib/review-page-data";
 import { listMediaCached } from "@/lib/data-cache";
@@ -13,7 +13,6 @@ import type { ReviewPageData, ReviewQueueCard } from "@/lib/review-types";
 import {
   buildRedirectSearchParams,
   buildReviewRedirectUrl,
-  readInternalHref,
   type ReviewRedirectMode
 } from "@/lib/site";
 import { applyReviewActionCachePolicy } from "@/lib/review-action-cache-policy";
@@ -211,7 +210,7 @@ function readReviewFormMutationInput(
     extraNewCount: readCount(formData, "extraNew"),
     mediaSlug: readRequiredString(formData, "mediaSlug"),
     redirectMode: readRedirectMode(formData),
-    returnTo: readInternalHref(formData.get("returnTo")?.toString()),
+    returnTo: readOptionalInternalHref(formData, "returnTo"),
     suspended: options?.includeSuspended
       ? formData.get("suspended") === "true"
       : undefined

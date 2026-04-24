@@ -2,9 +2,9 @@
 
 import { redirect } from "next/navigation";
 
-import { readRequiredString } from "./form-data.ts";
+import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
 import { revalidateSettingsCache } from "@/lib/data-cache";
-import { buildHrefWithSearch, readInternalHref } from "@/lib/site";
+import { buildHrefWithSearch } from "@/lib/site";
 import {
   normalizeFuriganaMode,
   normalizeGlossaryDefaultSort,
@@ -54,12 +54,6 @@ export async function saveStudySettingsAction(formData: FormData) {
       }
     })
   );
-}
-
-function readOptionalInternalHref(formData: FormData, key: string) {
-  const value = formData.get(key);
-
-  return readInternalHref(typeof value === "string" ? value : undefined);
 }
 
 function readRequiredInteger(formData: FormData, key: string) {

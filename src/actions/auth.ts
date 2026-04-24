@@ -4,7 +4,7 @@ import type { Route } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { readRequiredString } from "./form-data.ts";
+import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
 import {
   AUTH_SESSION_COOKIE,
   createSessionToken,
@@ -12,7 +12,7 @@ import {
   getSessionCookieOptions,
   verifyLoginCredentials
 } from "@/lib/auth";
-import { buildHrefWithSearch, readInternalHref } from "@/lib/site";
+import { buildHrefWithSearch } from "@/lib/site";
 
 export async function loginAction(formData: FormData) {
   const config = getAuthConfig();
@@ -21,7 +21,7 @@ export async function loginAction(formData: FormData) {
     redirect("/");
   }
 
-  const nextHref = readInternalHref(formData.get("next")?.toString());
+  const nextHref = readOptionalInternalHref(formData, "next");
   const username = readRequiredString(formData, "username");
   const password = readRequiredPassword(formData, "password");
   const credentialsValid = verifyLoginCredentials({ username, password });
