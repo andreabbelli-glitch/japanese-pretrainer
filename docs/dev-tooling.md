@@ -145,6 +145,9 @@ via `./scripts/with-node.sh`.
 ottimizzati in `user_setting`. Il run forzato ignora il flag `enabled`: quel
 flag blocca solo il job automatico schedulato.
 
+`FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS` puo ridurre o estendere il timeout di ogni
+training preset; se non e impostato resta il default runtime di `5000ms`.
+
 `fsrs:optimize:if-needed` e il comando da schedulare esternamente una volta al
 giorno. Il comando fa no-op finche non sono passati almeno `30` giorni
 dall'ultimo training riuscito oppure non ci sono almeno `500` review nuove

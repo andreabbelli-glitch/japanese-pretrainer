@@ -916,6 +916,8 @@ describe("fsrs optimizer", () => {
       const snapshot = await getFsrsOptimizerSnapshot(reopened);
 
       expect(stdout).toContain("FSRS optimizer completato");
+      expect(stdout).toContain("Preset recognition: trained");
+      expect(stdout).toContain("Preset concept: trained");
       expect(snapshot.presets.recognition).not.toBeNull();
       expect(snapshot.presets.concept).not.toBeNull();
     } finally {
@@ -950,6 +952,8 @@ describe("fsrs optimizer", () => {
         const snapshot = await getFsrsOptimizerSnapshot(reopened);
 
         expect(stdout).toContain("FSRS optimizer completato");
+        expect(stdout).toContain("Preset recognition: trained");
+        expect(stdout).toContain("Preset concept: trained");
         expect(snapshot.state.lastSuccessfulTrainingAt).not.toBeNull();
         expect(snapshot.presets.recognition).not.toBeNull();
         expect(snapshot.presets.concept).not.toBeNull();
@@ -987,7 +991,10 @@ describe("fsrs optimizer", () => {
         cwd: process.cwd(),
         env: {
           ...process.env,
-          DATABASE_URL: databasePath
+          DATABASE_URL: databasePath,
+          FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS: String(
+            TEST_FSRS_TRAINING_TIMEOUT_MS
+          )
         }
       }
     );

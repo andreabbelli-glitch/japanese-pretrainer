@@ -76,6 +76,8 @@ massimo una volta ogni `30` giorni e solo dopo almeno `500` review eleggibili
 nuove, segmentando i parametri in due preset per `cardType`:
 `recognition` e `concept`. La pagina `/settings` mostra in sola lettura lo
 stato corrente dell'optimizer e dei preset salvati in `user_setting`.
+`FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS` puo essere impostato per cambiare il
+timeout per-preset del training CLI, altrimenti resta il default di `5000ms`.
 
 ## Kanji Clash
 

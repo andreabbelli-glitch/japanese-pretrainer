@@ -25,6 +25,7 @@ const DAY = 24 * 60 * 60_000;
 const MIN_TRAINING_REVIEW_COUNT = 10;
 const MIN_TRAINING_ITEM_COUNT = 5;
 const DEFAULT_TRAINING_TIMEOUT_MS = 5_000;
+const TRAINING_TIMEOUT_ENV = "FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS";
 
 type FsrsOptimizationPresetResult = NonNullable<
   Extract<FsrsOptimizationRunResult, { status: "trained" }>["presetResults"][FsrsPresetKey]
@@ -42,7 +43,9 @@ export async function runFsrsOptimizer(
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
   const trainingTimeoutMs =
-    input.trainingTimeoutMs ?? DEFAULT_TRAINING_TIMEOUT_MS;
+    input.trainingTimeoutMs ??
+    readTrainingTimeoutMsFromEnv() ??
+    DEFAULT_TRAINING_TIMEOUT_MS;
   const [snapshot, totalEligibleReviews] = await Promise.all([
     getFsrsOptimizerSnapshot(database),
     countEligibleFsrsOptimizerReviews(database)
@@ -260,6 +263,18 @@ function buildBindingItems(
         reviews.map((review) => new FSRSBindingReview(review.rating, review.deltaT))
       )
   );
+}
+
+function readTrainingTimeoutMsFromEnv() {
+  const rawValue = process.env[TRAINING_TIMEOUT_ENV]?.trim();
+
+  if (!rawValue || !/^\d+$/u.test(rawValue)) {
+    return null;
+  }
+
+  const parsed = Number(rawValue);
+
+  return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : null;
 }
 
 async function trainFsrsPreset(
