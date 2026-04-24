@@ -9,11 +9,14 @@ base_explanation_language: it
 status: active
 tags: [arcade, onboarding, ui, battle]
 description: >-
-  Giapponese operativo di Mobile Suit Gundam Arsenal Base: onboarding arcade,
-  schermata di battaglia e decisioni pratiche delle prime partite.
+  Onboarding arcade, schermate di battaglia e starter deck: label come
+  card slot, touch panel e shutsugeki distinguono oggetti fisici, comandi touch
+  e passaggi della partita.
 ---
 
 # Mobile Suit Gundam Arsenal Base
 
-Questo bundle insegna il giapponese che serve per usare il cabinato, leggere le
-label stabili dell'interfaccia e capire che cosa fare nelle prime sessioni.
+Le schermate di Arsenal Base alternano parti fisiche del cabinato, comandi UI e
+nomi di carte. アミューズメントICカード identifica il profilo, カードスロット indica
+la zona in cui inserire le carte e {{出撃|しゅつげき}} è il comando che porta
+alla partita.

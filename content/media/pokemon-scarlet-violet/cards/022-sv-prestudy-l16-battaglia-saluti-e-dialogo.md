@@ -79,8 +79,8 @@ reading: こうかん
 romaji: koukan
 meaning_it: scambio
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{交換|こうかん}} indica uno scambio: dare un Pokémon o un oggetto e riceverne un
+  altro. Con を marca ciò che viene scambiato.
 :::
 :::card
 id: card-v151-koukan-recognition
@@ -102,8 +102,8 @@ reading: こうげき
 romaji: kougeki
 meaning_it: attacco
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{攻撃|こうげき}} può nominare l'azione offensiva o la statistica Attacco. Nei
+  menu va distinto da 特攻, l'Attacco Speciale.
 :::
 :::card
 id: card-v152-kougeki-recognition
@@ -125,7 +125,8 @@ reading: ただ
 romaji: tada
 meaning_it: solo / però
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  ただ introduce una limitazione: "solo", "però", "detto questo". In una battuta
+  corregge o restringe ciò che è appena stato detto.
 :::
 :::card
 id: card-v153-tada-recognition
@@ -147,8 +148,8 @@ reading: いわ
 romaji: iwa
 meaning_it: roccia
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  いわ è il tipo Roccia. In いわタイプのわざ, specifica il tipo della mossa e quindi
+  il rapporto di efficacia in battaglia.
 :::
 :::card
 id: card-v154-iwa-recognition
@@ -159,9 +160,9 @@ card_type: recognition
 front: 'いわ'
 back: roccia
 example_jp: >-
-  いわタイプの ポケモンです。
+  いわタイプの わざで {{攻撃|こうげき}}します。
 example_it: >-
-  È un Pokémon di tipo roccia.
+  Attacco con una mossa di tipo Roccia.
 :::
 :::term
 id: term-v155-hontou
@@ -170,7 +171,8 @@ reading: ほんとう
 romaji: hontou
 meaning_it: vero / davvero
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  {{本当|ほんとう}} conferma o mette in dubbio la verità di ciò che è stato detto.
+  {{本当|ほんとう}}ですか può essere una domanda sorpresa: "davvero?".
 :::
 :::card
 id: card-v155-hontou-recognition
@@ -192,8 +194,8 @@ reading: じゅぎょう
 romaji: jugyou
 meaning_it: lezione
 notes_it: >-
-  Parola che ricorre nei dialoghi e nel contesto accademico.
-  iniziale.
+  {{授業|じゅぎょう}} è una lezione scolastica. Con を{{受|う}}ける significa
+  frequentare o seguire una lezione.
 :::
 :::card
 id: card-v156-jugyou-recognition

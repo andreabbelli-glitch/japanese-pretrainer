@@ -18,10 +18,11 @@ summary: 'Lessico ed espressioni per Team Star, telefonate e parlato marcato: 8 
 ---
 # Obiettivo
 
-Capire il giapponese che compare in Team Star, telefonate e parlato marcato.
-Qui il focus e su chiamate misteriose, tono ruvido, registro professorale e
-modi di parlare che cambiano l'impressione del personaggio piu del contenuto
-letterale.
+Capire il giapponese di Team Star, telefonate e parlato marcato. [ハッキング](term:term-v762-hakkingu)
+e [{{監視|かんし}}カメラ](term:term-v763-kanshikamera) costruiscono la scena come
+intrusione e sorveglianza; [オマエ](term:term-v765-omae), [おやおや](term:term-e113-oyaoya)
+e [やるっきゃない](term:term-e114-yarukkyanai) cambiano invece la voce del
+personaggio anche quando il contenuto letterale resta semplice.
 
 ## Contesto
 
@@ -85,8 +86,8 @@ presentarsi o no.
 Sul piano grammaticale, [～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di) e
 [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che) sono i due pattern
 che fanno sentire impressione e ipotesi in modo molto naturale. A loro si
-aggiunge [～つもりはない](grammar:grammar-g114-non-ho-intenzione-di), utile per
-leggere dichiarazioni difensive o rassicuranti come `{{責|せ}}める つもりはない`.
+aggiunge [～つもりはない](grammar:grammar-g114-non-ho-intenzione-di), che compare
+in dichiarazioni difensive o rassicuranti come `{{責|せ}}める つもりはない`.
 
 ## Esempi guidati
 
@@ -136,11 +137,9 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco il tono conta quanto il contenuto. Se stabilizzi
-[オマエ](term:term-v765-omae),
-[{{管理|かんり}}](term:term-v766-kanri),
-[{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki),
-[～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di) e
-[～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che), le chiamate e i
-dialoghi marcati di questa parte della storia diventano molto piu facili da
-leggere.
+Il tono qui nasce da scelte lessicali precise. [オマエ](term:term-v765-omae)
+può rendere ruvida una richiesta, [{{管理|かんり}}](term:term-v766-kanri) trasforma
+un Pokemon in responsabilità concreta, [{{引|ひ}}き{{続|つづ}}き](term:term-v767-hikitsuzuki)
+mantiene aperto un incarico e [～っぽい](grammar:grammar-g112-sembra-ha-l-aria-di)
+/ [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che) fanno passare
+impressione e ipotesi senza dichiararle in modo rigido.

@@ -17,8 +17,9 @@ summary: >-
 
 # Obiettivo
 
-Questo contenuto descrive il flusso che va dall'ingresso nello shop
-fino al risultato finale dell'apertura pack.
+La schermata shop va letta dal primo pannello fino alla lista finale
+dell'apertura pack: tipo di acquisto, risorsa consumata, quantità confermata e
+risultato ottenuto.
 
 Alla fine dovresti riuscire a:
 
@@ -28,16 +29,17 @@ Alla fine dovresti riuscire a:
 
 ## Contesto
 
-Lo shop di `デュエプレ` è pieno di schermate con grafica forte, ma la lettura
-utile è quasi sempre più semplice:
+Lo shop di `デュエプレ` mostra banner grandi, ma le decisioni dipendono da label
+più piccoli:
 
 - che cosa stai comprando;
 - con quale risorsa;
 - quante unità stai consumando;
 - dove controlli il risultato in modo leggibile.
 
-Per questo le schermate shop sono perfette per allenare il giapponese UI:
-molti label sembrano decorativi, ma in realtà sono istruzioni molto precise.
+Per esempio `ジェムで{{購入|こうにゅう}}` nomina la valuta prima del verbo,
+`{{所持|しょじ}}チケット` indica lo stock disponibile e
+`{{提供割合|てい.きょう.わり.あい}}` apre le percentuali prima della spesa.
 
 ## Termini chiave
 
@@ -125,7 +127,7 @@ come tabella di accesso:
 In altre parole, il layout ti dice se stai usando gemme, oro o ticket e ti evita
 errori di acquisto.
 
-Qui è utile separare anche i bottoni per funzione:
+Separa i bottoni per funzione:
 
 - `ジェムで{{購入|こうにゅう}}`, `ゴールドで{{購入|こうにゅう}}`,
   `チケットで{{購入|こうにゅう}}` consumano una risorsa;
@@ -145,7 +147,7 @@ caption: >-
   [{{所持|しょじ}}チケット](term:term-owned-ticket), contatore e `MAX`.
 :::
 
-Nel popup quantità, il testo davvero utile non è il logo del pack. È questo:
+Nel popup quantità, il testo operativo non è il logo del pack. È questo:
 
 - [{{所持|しょじ}}チケット](term:term-owned-ticket) = quanti ingressi
   spendibili hai davvero in quel momento;
@@ -157,8 +159,9 @@ Nel popup quantità, il testo davvero utile non è il logo del pack. È questo:
 Qui la UI non ti chiede un'opinione sul pack. Ti chiede di impostare con
 precisione una quantità.
 
-La frase in alto ti aiuta a non perdere il focus: stai usando ticket per
-comprare pack, non solo guardando un logo o un'illustrazione.
+La frase in alto collega `チケット`, [{{購入個数|こう.にゅう.こ.すう}}](term:term-purchase-quantity)
+e [{{購入|こうにゅう}}](term:term-purchase): stai impostando quante buste comprare
+con lo stock ticket visibile.
 
 ### 4. Il popup conferma imposta quantità, risorsa e acquisto in una riga
 
@@ -207,21 +210,20 @@ alt: >-
   Schermata lista carte ottenute con filtri per civiltà o categoria e griglia
   delle carte.
 caption: >-
-  `{{獲得|かくとく}}カード{{一覧|いちらん}}` è la schermata utile per
-  verificare davvero il risultato dell'apertura, con filtri e griglia delle
-  carte.
+  `{{獲得|かくとく}}カード{{一覧|いちらん}}` mostra il risultato dell'apertura con
+  filtri e griglia delle carte ottenute.
 :::
 
 Queste due schermate fanno due lavori diversi:
 
-- il reveal serve a rendere memorabile il momento dell'apertura;
-- `{{獲得|かくとく}}`カード{{一覧|いちらん}} serve a verificare davvero che cosa
-  hai ottenuto.
+- il reveal mostra una carta appena uscita;
+- `{{獲得|かくとく}}`カード{{一覧|いちらん}} raccoglie tutte le carte ottenute in una
+  lista verificabile.
 
 La riga `{{獲得|かくとく}}カード{{一覧|いちらん}}` è quella da usare per
 verificare l'esito reale con filtri e confronto diretto.
-Il reveal serve a mostrare l'apertura, mentre la lista finale conferma in modo
-contabile il contenuto ricevuto.
+Il reveal è una schermata di presentazione; la lista finale è la schermata da
+leggere quando vuoi controllare quantità, rarità e carte ricevute.
 
 ## Esempi guidati
 
@@ -244,12 +246,13 @@ translation_it: >-
 jp: >-
   スーパーレアが{{出|で}}るまで、{{所持|しょじ}}している{{4枚|よんまい}}のチケットをすべて{{使|つか}}う。
 translation_it: >-
-  Uso tutti e 4 i biglietti rimasti finchè non tiro una carta Super Rara.
+  Uso tutti e 4 i ticket posseduti finché non esce una carta Super Rara.
 :::
 
 - [{{所持|しょじ}}チケット](term:term-owned-ticket) non parla di ciò
   che esiste nel gioco, ma dello stock attuale del tuo account.
-- È una lettura molto più pratica di una semplice voce di inventario.
+- La forma `{{所持|しょじ}}している{{4枚|よんまい}}のチケット` lega il numero allo
+  stock effettivo, non alla lista generale dei ticket esistenti.
 
 **Esempio 3**
 
@@ -270,7 +273,7 @@ translation_it: >-
 jp: >-
   パックを{{引|ひ}}いた{{後|あと}}、{{獲得|かくとく}}カード{{一覧|いちらん}}でスクリーンショットを{{撮|と}}る。
 translation_it: >-
-  Dopo aver scartato, faccio lo screenshot della lista col riepilogo delle carte ottenute.
+  Dopo aver aperto un pack, faccio uno screenshot nella lista delle carte ottenute.
 :::
 
 - [{{獲得|かくとく}}](term:term-kakutoku) spiega che quelle carte sono già state

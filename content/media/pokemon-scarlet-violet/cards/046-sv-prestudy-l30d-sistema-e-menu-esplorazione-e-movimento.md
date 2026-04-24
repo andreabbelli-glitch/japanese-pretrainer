@@ -151,8 +151,8 @@ reading: らっか
 romaji: rakka
 meaning_it: caduta
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica una caduta o il rischio di cadere. In percorsi verticali segnala un
+  pericolo fisico, non un semplice cambio di direzione.
 :::
 :::card
 id: card-v638-rakka-recognition
@@ -174,8 +174,8 @@ reading: しえんボード
 romaji: shienboodo
 meaning_it: bacheca dei supporti
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Nomina una bacheca per richieste o supporti. In accademia è un punto da
+  consultare per trovare persone, incarichi o aiuti concreti.
 :::
 :::card
 id: card-v639-shienboodo-recognition
@@ -186,9 +186,9 @@ card_type: recognition
 front: "{{支援|しえん}}ボード"
 back: bacheca dei supporti
 example_jp: >-
-  これは {{支援|しえん}}ボードです。
+  {{支援|しえん}}ボードで {{困|こま}}っている {{人|ひと}}を {{探|さが}}します。
 example_it: >-
-  Questa è la bacheca dei supporti.
+  Cerco sulla bacheca dei supporti le persone in difficoltà.
 :::
 :::term
 id: term-v640-kariru
@@ -197,7 +197,8 @@ reading: かりる
 romaji: kariru
 meaning_it: prendere in prestito
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Indica prendere qualcosa in prestito e poi restituirlo. In menu o dialoghi
+  scolastici segnala uso temporaneo, non possesso definitivo.
 :::
 :::card
 id: card-v640-kariru-recognition
@@ -219,7 +220,8 @@ reading: きりかえる
 romaji: kirikaeru
 meaning_it: cambiare modalità / switchare
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Indica passare da una modalità, ordine o visualizzazione a un'altra. Nei menu
+  è un'azione di switch, non un movimento fisico.
 :::
 :::card
 id: card-v641-kirikaeru-recognition
@@ -241,8 +243,8 @@ reading: プロフィールアプリ
 romaji: purofiiruapuri
 meaning_it: app del profilo
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Nomina l'app che mostra o modifica il profilo. `アプリ` la rende una funzione
+  dello smartphone, non un semplice testo descrittivo.
 :::
 :::card
 id: card-v642-purofiiruapuri-recognition
@@ -253,9 +255,9 @@ card_type: recognition
 front: "プロフィールアプリ"
 back: app del profilo
 example_jp: >-
-  これは プロフィールアプリです。
+  プロフィールアプリで {{名前|なまえ}}を {{確認|かくにん}}します。
 example_it: >-
-  Questa è l'app del profilo.
+  Controllo il nome nell'app del profilo.
 :::
 :::term
 id: term-v643-tokuni
@@ -264,7 +266,8 @@ reading: とくに
 romaji: tokuni
 meaning_it: soprattutto
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Restringe il focus a ciò che conta più del resto. In frasi come `とくに注意`,
+  il parlante segnala una priorità dentro un gruppo più ampio.
 :::
 :::card
 id: card-v643-tokuni-recognition
@@ -275,9 +278,9 @@ card_type: recognition
 front: "とくに"
 back: soprattutto
 example_jp: >-
-  とくに ここが だいじです。
+  とくに {{落下|らっか}}に {{注意|ちゅうい}}してください。
 example_it: >-
-  Qui è particolarmente importante.
+  Fate attenzione soprattutto alle cadute.
 :::
 :::term
 id: term-v644-kaisaichuu
@@ -286,8 +289,8 @@ reading: かいさいちゅう
 romaji: kaisaichuu
 meaning_it: in corso
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica che un evento o servizio è attualmente attivo. Nei menu temporanei va
+  letto come stato aperto, non come evento futuro.
 :::
 :::card
 id: card-v644-kaisaichuu-recognition
@@ -309,8 +312,8 @@ reading: ちゅうし
 romaji: chuushi
 meaning_it: interruzione / annullamento
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica interruzione o annullamento di un evento, servizio o azione prevista.
+  In UI segnala che qualcosa non procede più.
 :::
 :::card
 id: card-v645-chuushi-recognition
@@ -332,7 +335,8 @@ reading: かんゆう
 romaji: kanyuu
 meaning_it: reclutamento
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Indica invitare o reclutare qualcuno in un gruppo. Nelle scene scolastiche o
+  Team Star chiarisce che la pressione è sociale, non solo informativa.
 :::
 :::card
 id: card-v646-kanyuu-recognition
@@ -343,9 +347,9 @@ card_type: recognition
 front: "{{勧誘|かんゆう}}"
 back: reclutamento
 example_jp: >-
-  これは {{勧誘|かんゆう}} です。
+  スター{{団|だん}}が {{新|あたら}}しい {{仲間|なかま}}を {{勧誘|かんゆう}}しています。
 example_it: >-
-  Questo è un reclutamento.
+  Il Team Star sta reclutando nuovi compagni.
 :::
 :::term
 id: term-v647-kyouin
@@ -354,8 +358,8 @@ reading: きょういん
 romaji: kyouin
 meaning_it: insegnante / corpo docente
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica insegnanti e personale docente. Nei dialoghi scolastici parla del ruolo
+  istituzionale, non del singolo nome del personaggio.
 :::
 :::card
 id: card-v647-kyouin-recognition
@@ -377,8 +381,8 @@ reading: つうち
 romaji: tsuuchi
 meaning_it: notifica
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica una notifica ricevuta dal sistema. In smartphone e menu segnala un
+  messaggio da leggere, non un dialogo già aperto.
 :::
 :::card
 id: card-v648-tsuuchi-recognition
@@ -400,8 +404,8 @@ reading: こうかんあいて
 romaji: koukanaite
 meaning_it: partner di scambio
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica la persona con cui farai lo scambio. Nei menu online identifica il
+  partner della transazione, non il Pokemon scambiato.
 :::
 :::card
 id: card-v649-koukanaite-recognition
@@ -423,8 +427,8 @@ reading: かこう
 romaji: kakou
 meaning_it: discesa
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica un movimento verso il basso o una riduzione. In percorsi segnala
+  discesa; in statistiche può indicare calo.
 :::
 :::card
 id: card-v650-kakou-recognition
@@ -435,9 +439,9 @@ card_type: recognition
 front: "{{下降|かこう}}"
 back: discesa
 example_jp: >-
-  ここは {{下降|かこう}}です。
+  ここから ゆっくり {{下降|かこう}}します。
 example_it: >-
-  Qui c'è una discesa.
+  Da qui scendiamo lentamente.
 :::
 :::term
 id: term-v651-shirizoke-ru
@@ -446,7 +450,8 @@ reading: しりぞける
 romaji: shirizoke ru
 meaning_it: respingere / sconfiggere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Indica respingere o mandare via un avversario. In battaglia e storia non
+  significa solo evitare: comporta vincere lo scontro o allontanare la minaccia.
 :::
 :::card
 id: card-v651-shirizoke-ru-recognition
@@ -468,8 +473,8 @@ reading: ひひょうじ
 romaji: hihyouji
 meaning_it: nascondi / non visualizzare
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica che una voce viene nascosta. È l'opposto operativo di `表示`: la UI
+  mantiene il dato, ma non lo mostra.
 :::
 :::card
 id: card-v652-hihyouji-recognition
@@ -491,8 +496,8 @@ reading: いちらん
 romaji: ichiran
 meaning_it: elenco
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica una lista consultabile. Nei menu porta a una vista ordinata di voci,
+  oggetti, giocatori o risultati.
 :::
 :::card
 id: card-v653-ichiran-recognition
@@ -514,8 +519,8 @@ reading: かちまけ
 romaji: kachimake
 meaning_it: esito vittoria / sconfitta
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Indica il risultato come alternanza tra vittoria e sconfitta. In lotta parla
+  dell'esito complessivo, non del singolo colpo.
 :::
 :::card
 id: card-v654-kachimake-recognition
@@ -537,8 +542,8 @@ reading: まとめかい
 romaji: matomekai
 meaning_it: acquisto in blocco
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica comprare più unità in una sola operazione. Nei negozi cambia quantità e
+  costo totale della transazione.
 :::
 :::card
 id: card-v655-matomekai-recognition
@@ -560,7 +565,8 @@ reading: らいんなっぷ
 romaji: rainnappu
 meaning_it: lista disponibile
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  Indica la gamma disponibile di prodotti, opzioni o servizi. In negozio non è
+  il carrello: è ciò che puoi scegliere.
 :::
 :::card
 id: card-v656-rainnappu-recognition
@@ -582,7 +588,8 @@ reading: ぜんそくりょく
 romaji: zensokuryoku
 meaning_it: massima velocità
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  Indica muoversi alla massima velocità. In esplorazione o fuga marca ritmo e
+  urgenza, non solo movimento generico.
 :::
 :::card
 id: card-v657-zensokuryoku-recognition
@@ -604,8 +611,8 @@ reading: きんきゅうじたい
 romaji: kinkyuujitai
 meaning_it: emergenza
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica una situazione urgente che richiede risposta immediata. Nei dialoghi
+  alza la posta: non è un problema ordinario o rimandabile.
 :::
 :::card
 id: card-v658-kinkyuujitai-recognition
@@ -616,9 +623,9 @@ card_type: recognition
 front: "{{緊急事態|きん.きゅう.じ.たい}}"
 back: emergenza
 example_jp: >-
-  これは {{緊急事態|きん.きゅう.じ.たい}} です。
+  {{緊急事態|きん.きゅう.じ.たい}}なので すぐに {{先生|せんせい}}を {{呼|よ}}びます。
 example_it: >-
-  È un'emergenza.
+  È un'emergenza, quindi chiamo subito l'insegnante.
 :::
 :::term
 id: term-v659-taijou
@@ -627,8 +634,8 @@ reading: たいじょう
 romaji: taijou
 meaning_it: uscita di scena
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Indica uscire da una sfida o far uscire qualcuno dalla scena. In lotta e gare
+  marca la rimozione dal campo o dall'attività.
 :::
 :::card
 id: card-v659-taijou-recognition
@@ -650,7 +657,8 @@ reading: あこがれ
 romaji: akogare
 meaning_it: ammirazione / aspirazione
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Indica ammirazione o desiderio di diventare come qualcuno. Nei dialoghi
+  caratterizza il legame con un modello, non una semplice preferenza.
 :::
 :::card
 id: card-v660-akogare-recognition
@@ -661,7 +669,7 @@ card_type: recognition
 front: "{{憧|あこが}}れ"
 back: ammirazione / aspirazione
 example_jp: >-
-  {{憧|あこが}}れ です。
+  ネモは みんなの {{憧|あこが}}れです。
 example_it: >-
-  È un'aspirazione.
+  Nemona è l'ammirazione di tutti.
 :::

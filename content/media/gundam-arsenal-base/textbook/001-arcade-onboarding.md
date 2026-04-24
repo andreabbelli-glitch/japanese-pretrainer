@@ -16,17 +16,20 @@ summary: >-
 
 # Obiettivo
 
-Orientati davanti al cabinato di Arsenal Base senza confondere oggetti fisici,
-dati del profilo e carte del gioco. Qui non si tratta ancora di ottimizzare la
-partita: serve mappare rapidamente cosa toccare, dove inserire le carte e quale
-passaggio segue.
+Davanti al cabinato di Arsenal Base, separa oggetti fisici, dati del profilo e
+carte del gioco. L'[アミューズメントICカード](term:term-amusement-ic-card)
+identifica il profilo, il [カードスロット](term:term-card-slot) riceve
+[MSカード](term:term-ms-card) e [PLカード](term:term-pl-card), e
+[{{出撃|しゅつげき}}](term:term-sortie) è la conferma che porta alla partita.
 
 ## Contesto
 
 Questi termini compaiono prima della battaglia vera e propria, nel manuale
-ufficiale e nelle schermate di avvio. Sono le parole che ti permettono di
-capire il cabinato come sistema: lettore, slot, conferme, salvataggio dati e
-servizi collegati fuori dalla sala giochi.
+ufficiale e nelle schermate di avvio. Il manuale li distribuisce tra parti della
+macchina, conferme sul [タッチパネル](term:term-touch-panel) e servizi web:
+[カードリーダー](term:term-card-reader) è il punto per la tessera,
+[カードスロット](term:term-card-slot) è la zona per le carte, e
+[MY PAGE](term:term-mypage) mostra dati salvati fuori dalla sessione arcade.
 
 ## Termini chiave
 
@@ -55,19 +58,18 @@ servizi collegati fuori dalla sala giochi.
 
 Per separare chiaramente i passaggi, usa subito tre livelli distinti.
 L'[アミューズメントICカード](term:term-amusement-ic-card)
-serve a identificare il tuo profilo al cabinato e a salvare i dati. Le carte di
+identifica il tuo profilo al cabinato e salva i dati. Le carte di
 gioco, cioè [MSカード](term:term-ms-card) e [PLカード](term:term-pl-card),
-servono invece a costruire il tuo [デッキ](term:term-deck). [MY PAGE](term:term-mypage)
+costruiscono invece il tuo [デッキ](term:term-deck). [MY PAGE](term:term-mypage)
 non sostituisce la tessera fisica: è il servizio web che legge i dati già
 salvati dalla tessera registrata.
 
 La tessera IC viene usata davanti alla macchina.
-L'account Bandai Namco ID serve per collegare quella tessera al servizio web.
-[MY PAGE](term:term-mypage) ti permette poi di controllare profilo, missioni,
+L'account Bandai Namco ID collega quella tessera al servizio web.
+[MY PAGE](term:term-mypage) mostra poi profilo, missioni,
 [{{戦績|せんせき}}](term:term-battle-record) e livelli fuori dalla sessione
-arcade. Se confondi questi tre livelli,
-ti ritrovi a cercare sul sito una funzione che in realtà richiede ancora la
-tessera fisica.
+arcade. Se questi tre livelli vengono confusi, una funzione cercata sul sito
+può richiedere invece la tessera fisica al cabinato.
 
 I componenti del cabinato hanno funzioni molto precise.
 
@@ -75,7 +77,11 @@ I componenti del cabinato hanno funzioni molto precise.
 src: assets/ui/arcade-cabinet-overview.webp
 alt: "Cabinato ufficiale di Gundam Arsenal Base visto frontalmente, con schermo, fila di card slot, pulsante destro e uscita carte inferiore ben visibili."
 caption: >-
-  Vista ufficiale del cabinato: ti aiuta a separare subito schermo, [カードスロット](term:term-card-slot), [ボタン](term:term-button) e [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet) prima ancora di iniziare la partita.
+  Vista ufficiale del cabinato: lo schermo corrisponde al
+  [タッチパネル](term:term-touch-panel), la fila orizzontale ai
+  [カードスロット](term:term-card-slot), il comando fisico al
+  [ボタン](term:term-button) e l'uscita inferiore al
+  [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet).
 :::
 
 - [タッチパネル](term:term-touch-panel): è lo schermo operativo principale. Qui
@@ -88,7 +94,7 @@ caption: >-
   IC per leggere o salvare il profilo.
 - [ボタン](term:term-button): è il comando fisico usato in alcune azioni di
   battaglia e nei cambi camera.
-- [イヤホンジャック](term:term-earphone-jack): serve se vuoi ascoltare audio e
+- [イヤホンジャック](term:term-earphone-jack): è la presa per ascoltare audio e
   voci direttamente dal cabinato.
 - [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet): è
   l'uscita da cui ritiri le carte erogate dalla macchina.
@@ -112,10 +118,10 @@ La sequenza minimale di una prima sessione è:
    [カード{{取|と}}り{{出|だ}}し{{口|ぐち}}](term:term-card-outlet), perché
    le carte fisiche nuove escono da lì.
 
-Dettaglio utile: il gioco può partire anche senza una collezione completa.
-Un [スターターデッキ](term:term-starter-deck) rende comunque più leggibile la logica
-MS + PL, perché mostra subito una struttura completa di [デッキ](term:term-deck)
-senza buchi.
+Il gioco può partire anche senza una collezione completa. Un
+[スターターデッキ](term:term-starter-deck) mostra subito la logica MS + PL:
+una carta MS sopra, una carta PL sotto, e la coppia verticale diventa
+[ユニット](term:term-unit) senza lasciare slot vuoti.
 
 ## Esempi guidati
 
@@ -143,4 +149,5 @@ translation_it: >-
 ## Nota finale
 
 Non confondere la tessera che salva i dati con le carte del mazzo: la prima
-serve a riconoscere te, le seconde costruiscono le tue unità.
+identifica il profilo sul cabinato, le seconde costruiscono le tue unità nel
+[デッキ](term:term-deck).

@@ -13,12 +13,11 @@ reading: どうしよう
 romaji: doushiyou
 meaning_it: che faccio? / come faccio? / e adesso?
 notes_it: >-
-  Viene da どう ("come?") + しよう, forma volitiva di する ("fare"): letteralmente e
+  Viene da どう ("come?") + しよう, forma volitiva di する ("fare"): letteralmente è
   qualcosa come "come faccio? / che faccio?". Per questo suona come
-  esitazione, incertezza o piccolo panico davanti a una decisione. In review
-  pensa a queste sfumature: "che faccio?" quando devi scegliere il prossimo
-  passo, "come faccio?" quando non vedi una soluzione, "e adesso?" quando la
-  situazione ti mette pressione o ti coglie impreparato.
+  esitazione, incertezza o piccolo panico davanti a una decisione: il
+  personaggio non sta chiedendo una procedura neutra, sta reagendo a una scelta
+  o a un imprevisto.
 :::
 :::card
 id: card-e017-doushiyou-recognition
@@ -40,13 +39,11 @@ reading: どうしたの？
 romaji: doushitano？
 meaning_it: che c'e? / che hai? / cos'e successo?
 notes_it: >-
-  Si appoggia a どうした, cioe il passato di どうする ("che fare / come comportarsi"),
-  usato in pratica con il senso di "che c'e? / che hai? / cos'e successo?". Il
-  の finale rende la domanda piu esplicativa e colloquiale: per questo どうしたの？
-  si usa spesso quando qualcuno sembra strano, fermo o preoccupato. In review
-  pensa a queste sfumature: "che c'e?" se noti qualcosa di insolito, "che hai?"
-  se l'altra persona sembra giu o agitata, "cos'e successo?" se immagini un
-  fatto appena avvenuto.
+  Si appoggia a どうした, cioè il passato di どうする ("che fare / come
+  comportarsi"), usato in pratica con il senso di "che c'è? / che hai? /
+  cos'è successo?". Il の finale rende la domanda più esplicativa e
+  colloquiale: la battuta nasce quando qualcuno sembra strano, fermo o
+  preoccupato.
 :::
 :::card
 id: card-e018-doushitano-recognition
@@ -67,9 +64,10 @@ pattern: て形
 title: Te-forma
 meaning_it: forma che collega azioni e costruisce molte espressioni
 notes_it: >-
-  La て{{形|けい}} serve per unire azioni, fare richieste, dare permessi,
-  esprimere stati e costruire molte forme importanti. Non ha un solo significato
-  fisso: e una base grammaticale.
+  La て{{形|けい}} collega azioni e regge molte costruzioni: richieste come
+  {{待|ま}}って, istruzioni come {{始|はじ}}めて, permessi e stati risultanti. Non
+  traduce una sola parola italiana: mostra che il verbo è agganciato a ciò che
+  viene dopo.
 :::
 :::card
 id: card-g022-collega-azioni-crea-richieste-e-molte-co-concept
@@ -90,8 +88,9 @@ pattern: ない形
 title: Negazione
 meaning_it: 'forma negativa: non fare / non essere'
 notes_it: >-
-  La ない{{形|けい}} e la base della negazione. Serve per dire che qualcosa non
-  accade, non esiste o non si fa, e per costruire forme come 〜ないで e 〜なければならない.
+  La ない{{形|けい}} è la base della negazione. Dice che un'azione non avviene o
+  non va fatta, e diventa il punto di partenza per forme come 〜ないで e
+  〜なければならない.
 :::
 :::card
 id: card-g023-negazione-concept
@@ -112,8 +111,9 @@ pattern: ます / 辞書形
 title: Registro cortese vs piano
 meaning_it: forma cortese in ～ます vs forma piana del dizionario
 notes_it: >-
-  La forma in ます e piu cortese e neutra. La forma del dizionario e piu piana e
-  appare spesso in dialoghi casuali, spiegazioni interne o stile piu diretto.
+  La forma in ます è più cortese e neutra. La forma del dizionario è più piana e
+  appare in dialoghi casuali, spiegazioni interne o istruzioni dal tono più
+  diretto.
 :::
 :::card
 id: card-g024-registro-cortese-vs-piano-concept
@@ -135,8 +135,8 @@ reading: とくぼう
 romaji: tokubou
 meaning_it: Difesa Speciale
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  特防 è la Difesa Speciale: nelle schermate di stato si oppone a 特攻 e dice
+  quanto un Pokémon regge le mosse speciali.
 :::
 :::card
 id: card-v088-tokubou-recognition
@@ -158,7 +158,9 @@ reading: どれ
 romaji: dore
 meaning_it: quale (fra più cose)
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  どれ sceglie un elemento fra più opzioni già visibili o già nominate. In una
+  frase come どれを{{使|つか}}いますか, la domanda chiede quale oggetto o scelta
+  selezionare.
 :::
 :::card
 id: card-v091-dore-recognition
@@ -180,7 +182,8 @@ reading: じゆうに
 romaji: jiyuu ni
 meaning_it: liberamente
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  {{自由|じゆう}}に modifica il verbo e indica che l'azione non è vincolata: muoversi,
+  scegliere o esplorare senza un percorso obbligato.
 :::
 :::card
 id: card-v092-jiyuu-ni-recognition
@@ -202,7 +205,8 @@ reading: しつもん
 romaji: shitsumon
 meaning_it: domanda
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  {{質問|しつもん}} è la domanda posta a qualcuno, spesso in classe o in un dialogo
+  di spiegazione; con がある diventa "ho una domanda".
 :::
 :::card
 id: card-v093-shitsumon-recognition
@@ -224,8 +228,8 @@ reading: しょくじパワー
 romaji: shokujipawaa
 meaning_it: Meal Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  食事パワー è la label dei bonus ottenuti mangiando. 食事 indica il pasto; パワー
+  nomina l'effetto che il gioco applica dopo il cibo.
 :::
 :::term
 id: term-v095-hajime-ru
@@ -234,7 +238,8 @@ reading: はじめる
 romaji: hajime ru
 meaning_it: iniziare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  {{始|はじ}}める prende come oggetto ciò che parte: una lotta, una lezione, un
+  test o una nuova fase del percorso.
 :::
 :::card
 id: card-v095-hajime-ru-recognition
@@ -256,7 +261,9 @@ reading: こらいどん
 romaji: koraidon
 meaning_it: Koraidon
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  コライドン è il nome proprio del leggendario di Scarlet; nelle frasi funziona
+  come referente di cavalcata, storia e spostamento, non come parola da
+  scomporre.
 :::
 :::term
 id: term-v097-miraidon
@@ -265,7 +272,8 @@ reading: みらいどん
 romaji: miraidon
 meaning_it: Miraidon
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  ミライドン è il nome proprio del leggendario di Violet; nei dialoghi identifica
+  il compagno di viaggio e le funzioni di cavalcata.
 :::
 :::term
 id: term-v098-chikaku
@@ -274,7 +282,8 @@ reading: ちかく
 romaji: chikaku
 meaning_it: vicino
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  {{近|ちか}}く indica la zona vicina al punto di riferimento. Con に, come in
+  {{近|ちか}}くにいる, dice che qualcosa si trova nei paraggi.
 :::
 :::card
 id: card-v098-chikaku-recognition
@@ -296,7 +305,8 @@ reading: こたえ
 romaji: kotae
 meaning_it: risposta
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  {{答|こた}}え è la risposta a una domanda o a un problema. In classe e nei
+  dialoghi appare spesso con わかる, {{出|だ}}す o {{聞|き}}く.
 :::
 :::card
 id: card-v099-kotae-recognition
@@ -318,8 +328,7 @@ reading: ひでんすぱいす
 romaji: hiden supaisu
 meaning_it: Herba Mystica / spezia segreta
 notes_it: >-
-  Qui 秘伝 (hiden) non e solo "segreto" in senso generico: richiama qualcosa di
-  custodito o tramandato come una ricetta speciale. Per questo la label si puo
+  Qui 秘伝 (hiden) non è solo "segreto" in senso generico: richiama qualcosa di
+  custodito o tramandato come una ricetta speciale. Per questo la label si può
   leggere anche come "spezia segreta", oltre al nome localizzato Herba Mystica.
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
 :::

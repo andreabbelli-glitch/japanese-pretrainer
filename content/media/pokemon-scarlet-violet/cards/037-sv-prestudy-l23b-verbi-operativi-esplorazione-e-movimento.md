@@ -143,8 +143,8 @@ reading: けいけんちパワー
 romaji: keikenchipawaa
 meaning_it: Exp. Point Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  けいけんちパワー è un bonus ai punti esperienza: けいけんち specifica il tipo di
+  guadagno, パワー il bonus attivo.
 :::
 :::term
 id: term-v414-reidopawaa
@@ -153,8 +153,8 @@ reading: レイドパワー
 romaji: reidopawaa
 meaning_it: Raid Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  レイドパワー indica un bonus collegato ai raid. Quando appare in un menu panino o
+  bonus, non parla di lotta generica ma di quella modalità.
 :::
 :::term
 id: term-v415-oku
@@ -163,7 +163,8 @@ reading: おく
 romaji: oku
 meaning_it: in fondo / all'interno
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  奥 è il fondo o interno di uno spazio. 奥へ進む indica andare più dentro o più in
+  profondità.
 :::
 :::card
 id: card-v415-oku-recognition
@@ -174,9 +175,9 @@ card_type: recognition
 front: "{{奥|おく}}"
 back: in fondo / all'interno
 example_jp: >-
-  バッグの {{中|なか}}です。
+  {{奥|おく}}へ {{進|すす}}む。
 example_it: >-
-  È nella borsa.
+  Avanzo verso il fondo.
 :::
 :::term
 id: term-v416-nige-ru
@@ -185,8 +186,8 @@ reading: にげる
 romaji: nige ru
 meaning_it: fuggire
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  逃げる è fuggire da una battaglia o situazione. In battaglia indica uscire
+  dall'incontro, non solo muoversi via.
 :::
 :::card
 id: card-v416-nige-ru-recognition
@@ -208,7 +209,8 @@ reading: たすける
 romaji: tasuke ru
 meaning_it: aiutare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  助ける prende come oggetto la persona o il Pokémon aiutato. In una missione
+  dice chi va salvato o supportato.
 :::
 :::card
 id: card-v417-tasuke-ru-recognition
@@ -219,9 +221,9 @@ card_type: recognition
 front: "{{助|たす}}ける"
 back: aiutare
 example_jp: >-
-  ここで {{助|たす}}ける。
+  {{味方|みかた}}を {{助|たす}}ける。
 example_it: >-
-  Qui aiuto.
+  Aiuto un alleato.
 :::
 :::term
 id: term-v418-owa-ru
@@ -230,7 +232,8 @@ reading: おわる
 romaji: owa ru
 meaning_it: finire
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  終わる è intransitivo: la battaglia, la prova o il dialogo finiscono da soli dal
+  punto di vista della frase.
 :::
 :::card
 id: card-v418-owa-ru-recognition
@@ -241,9 +244,9 @@ card_type: recognition
 front: "{{終|お}}わる"
 back: finire
 example_jp: >-
-  ここで {{終|お}}わる。
+  バトルが {{終|お}}わる。
 example_it: >-
-  Qui finisce.
+  La battaglia finisce.
 :::
 :::term
 id: term-v419-tamagopawaa
@@ -252,8 +255,8 @@ reading: タマゴパワー
 romaji: tamagopawaa
 meaning_it: Egg Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  タマゴパワー è un bonus legato alle uova. In una lista di poteri, タマゴ separa
+  questo effetto da esperienza, raid o cattura.
 :::
 :::term
 id: term-v420-mitome-ru
@@ -262,7 +265,8 @@ reading: みとめる
 romaji: mitome ru
 meaning_it: riconoscere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  認める è riconoscere o ammettere qualcosa come valido. Può riguardare una
+  persona, un risultato o una verità scomoda.
 :::
 :::card
 id: card-v420-mitome-ru-recognition
@@ -284,7 +288,8 @@ reading: あっというまに
 romaji: attoiu mani
 meaning_it: in un attimo
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  あっという間に indica che qualcosa accade in un attimo. Spesso commenta una
+  conclusione rapida o un cambiamento improvviso.
 :::
 :::card
 id: card-v421-attoiu-mani-recognition
@@ -306,7 +311,8 @@ reading: うけとる
 romaji: uketoru
 meaning_it: ricevere
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  受けとる indica ricevere qualcosa di concreto o assegnato dal sistema: oggetto,
+  ricetta, premio o messaggio.
 :::
 :::card
 id: card-v422-uketoru-recognition
@@ -317,9 +323,9 @@ card_type: recognition
 front: "{{受|う}}けとる"
 back: ricevere
 example_jp: >-
-  ここで {{受|う}}けとる。
+  レシピを {{受|う}}けとる。
 example_it: >-
-  Qui ricevo.
+  Ricevo una ricetta.
 :::
 :::term
 id: term-v423-susume-ru
@@ -328,7 +334,8 @@ reading: すすめる
 romaji: susume ru
 meaning_it: portare avanti / far progredire
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  進める è transitivo: il soggetto porta avanti una storia, una prova o una
+  preparazione. 進む invece è avanzare da solo.
 :::
 :::card
 id: card-v423-susume-ru-recognition
@@ -339,9 +346,9 @@ card_type: recognition
 front: "{{進|すす}}める"
 back: portare avanti / far progredire
 example_jp: >-
-  ここで {{進|すす}}める。
+  ストーリーを {{進|すす}}める。
 example_it: >-
-  Qui porto avanti.
+  Porto avanti la storia.
 :::
 :::term
 id: term-v424-youyaku
@@ -350,7 +357,8 @@ reading: ようやく
 romaji: youyaku
 meaning_it: finalmente
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  ようやく indica che qualcosa arriva dopo attesa, sforzo o ritardo. In dialogo
+  porta il senso di "finalmente".
 :::
 :::card
 id: card-v424-youyaku-recognition
@@ -361,9 +369,9 @@ card_type: recognition
 front: "ようやく"
 back: finalmente
 example_jp: >-
-  ようやく です。
+  ようやく ゼロゲートに {{着|つ}}いた。
 example_it: >-
-  Finalmente.
+  Finalmente sono arrivato allo Zero Gate.
 :::
 :::term
 id: term-v425-tachi-muka-u
@@ -372,7 +380,8 @@ reading: たちむかう
 romaji: tachi muka u
 meaning_it: fronteggiare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  立ち向かう significa fronteggiare qualcuno o qualcosa di difficile. Il bersaglio
+  prende に e spesso è un avversario o un problema.
 :::
 :::card
 id: card-v425-tachi-muka-u-recognition
@@ -383,9 +392,9 @@ card_type: recognition
 front: "{{立|た}}ち{{向|む}}かう"
 back: fronteggiare
 example_jp: >-
-  ここで {{立|た}}ち{{向|む}}かう。
+  {{強|つよ}}い {{相手|あいて}}に {{立|た}}ち{{向|む}}かう。
 example_it: >-
-  Fronteggiare.
+  Affronto un avversario forte.
 :::
 :::term
 id: term-v426-fureru
@@ -394,7 +403,8 @@ reading: ふれる
 romaji: fureru
 meaning_it: toccare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  触れる indica toccare o entrare in contatto con qualcosa; in avvisi può
+  segnalare un oggetto da non toccare.
 :::
 :::card
 id: card-v426-fureru-recognition
@@ -405,9 +415,9 @@ card_type: recognition
 front: "{{触|ふ}}れる"
 back: toccare
 example_jp: >-
-  ここで {{触|ふ}}れる。
+  ボールに {{触|ふ}}れる。
 example_it: >-
-  Toccare.
+  Tocco la Poké Ball.
 :::
 :::term
 id: term-v427-nando-demo
@@ -416,7 +426,8 @@ reading: なんどでも
 romaji: nando demo
 meaning_it: quante volte vuoi
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  何度でも significa "quante volte vuoi": でも dopo il contatore toglie il limite
+  sul numero di ripetizioni.
 :::
 :::card
 id: card-v427-nando-demo-recognition
@@ -438,7 +449,8 @@ reading: のる
 romaji: noru
 meaning_it: salire / cavalcare / andare su
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  乗る indica salire su un mezzo, cavalcare un Pokémon o prendere un trasporto. Il
+  mezzo prende に.
 :::
 :::card
 id: card-v428-noru-recognition
@@ -449,9 +461,9 @@ card_type: recognition
 front: "{{乗|の}}る"
 back: salire / cavalcare / andare su
 example_jp: >-
-  ここへ {{乗|の}}る。
+  ライドポケモンに {{乗|の}}る。
 example_it: >-
-  Salire.
+  Salgo sul Pokémon cavalcatura.
 :::
 :::term
 id: term-v429-omakasekaifuku
@@ -460,8 +472,8 @@ reading: おまかせかいふく
 romaji: omakasekaifuku
 meaning_it: cura automatica
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  おまかせ回復 è la cura automatica: おまかせ indica che il sistema sceglie e usa le
+  cure al posto del giocatore.
 :::
 :::card
 id: card-v429-omakasekaifuku-recognition
@@ -483,7 +495,8 @@ reading: みずうみ
 romaji: mizuumi
 meaning_it: lago
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  湖 è un lago. In mappa o indicazioni di percorso segnala un'area d'acqua
+  chiusa, diversa da fiume o mare.
 :::
 :::card
 id: card-v430-mizuumi-recognition
@@ -505,8 +518,8 @@ reading: はつどう
 romaji: hatsudou
 meaning_it: attivazione
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  発動 è l'attivazione di un effetto. 効果が発動する significa che l'effetto entra in
+  funzione.
 :::
 :::card
 id: card-v431-hatsudou-recognition
@@ -517,7 +530,7 @@ card_type: recognition
 front: "{{発動|はつどう}}"
 back: attivazione
 example_jp: >-
-  バトルで {{発動|はつどう}}を {{使|つか}}います。
+  {{効果|こうか}}が {{発動|はつどう}}する。
 example_it: >-
-  Uso l'attivazione in battaglia.
+  L'effetto si attiva.
 :::

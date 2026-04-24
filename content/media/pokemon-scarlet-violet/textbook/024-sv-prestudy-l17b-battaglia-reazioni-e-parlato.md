@@ -24,7 +24,7 @@ Capire il giapponese che compare in battaglia, nelle reazioni e nel parlato: par
 
 ## Contesto
 
-Questo blocco mescola vocaboli di battaglia e parole da dialogo. Alcuni termini ti dicono subito che cosa stai leggendo in menu e messaggi di lotta; altri servono a riconoscere una reazione, una scusa o il fatto che qualcosa è presente in un punto preciso. I nomi propri come [ポケモンリーグ](term:term-v187-pokemonriigu) vanno letti come riferimenti del gioco, non come lessico da scomporre.
+Questa lesson combina vocaboli di battaglia e parole da dialogo. [威力](term:term-v179-iryoku) e [能力](term:term-v184-nouryoku) portano la lettura su mossa e statistica; [なるほど](term:term-e033-naruhodo), [すみません](term:term-e034-sumimasen) e [〜が あります](term:term-e035-ga-arimasu) segnalano presa d'atto, scusa o presenza in un punto preciso. I nomi propri come [ポケモンリーグ](term:term-v187-pokemonriigu) vanno letti come riferimenti del gioco, non come lessico da scomporre.
 
 ## Termini chiave
 
@@ -85,4 +85,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando leggi questo blocco, cerca prima le parole che ti dicono cosa stai guardando: un tipo, una mossa, una presenza sullo schermo o una formula di parlato. Le etichette come [ポケモンリーグ](term:term-v187-pokemonriigu) servono a orientarti subito nella scena, non a creare altra grammatica da studiare a parte.
+Quando leggi queste frasi, cerca prima il dominio della parola: ドラゴン / どく sono tipi, 威力 è la potenza della mossa, 〜が あります marca presenza, なるほど e すみません regolano la risposta del parlante. [ポケモンリーグ](term:term-v187-pokemonriigu) fissa invece il luogo istituzionale della scena.

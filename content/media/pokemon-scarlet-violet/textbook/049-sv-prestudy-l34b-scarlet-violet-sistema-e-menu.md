@@ -14,17 +14,17 @@ tags:
 - phase-c
 - lesson-34
 prerequisites: []
-summary: 'Lessico ed espressioni per Scarlet/Violet, sistema e menu: 24 carte lessicali
-  attive, 0 formule ricorrenti, 0 pattern grammaticali e 2 etichette contestuali da
-  riconoscere.'
+summary: 'Lessico per schermate di Scarlet/Violet: menu, scuola, funzioni online,
+  stato della scena e messaggi di completamento. Include 24 carte lessicali attive
+  e 2 etichette contestuali da riconoscere.'
 ---
 # Obiettivo
 
-Capire il giapponese che compare in Scarlet/Violet, sistema e menu. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Leggere con precisione le schermate in cui Scarlet/Violet parla di ricerca, scuola, gruppi, funzioni online e stato di un'azione. Le parole di questo pacchetto compaiono come sostantivi da menu, formule di stato o descrizioni brevi dentro dialoghi e tutorial.
 
 ## Contesto
 
-In Scarlet / Violet questa lezione raccoglie parole che compaiono in schermate, dialoghi e menu quando il gioco parla di identità, condivisione, sostituzione, priorità e stato della scena. Le etichette più specifiche nominano invece funzioni, gruppi o elementi molto locali del titolo.
+Il lessico qui non è un blocco di battaglia puro. Serve quando il gioco passa da esplorazione e dialoghi a interfacce: iscrizione all'Accademia, missioni extra, scambi, impostazioni di gruppo, priorità di azione e messaggi che confermano che qualcosa è finito. Alcune parole sono astratte, ma in gioco arrivano quasi sempre in collocazioni riconoscibili: `情報を共有する`, `被害が出る`, `交換完了`, `あたり一帯`, `拠点を占拠する`.
 
 ## Termini chiave
 
@@ -32,10 +32,14 @@ In Scarlet / Violet questa lezione raccoglie parole che compaiono in schermate, 
 - [不良](term:term-v713-furyou) — teppista / delinquente
 - [共有](term:term-v714-kyouyuu) — condividere / condivisione
 - [入れ替わる](term:term-v715-irekawaru) — venire sostituito
-- [決められた数](term:term-v716-kimeraretakazu) — numero stabilito
+- [決められた数](term:term-v716-kimeraretakazu) — numero prestabilito
 - [単位](term:term-v717-tani) — crediti scolastici
-- [被害](term:term-v718-higai) — danno / vittima
+- [被害](term:term-v718-higai) — danno / danni subiti
 - [挿絵](term:term-v719-sashie) — illustrazione inserita
+- [交換完了](term:term-v733-koukankanryou) — scambio completato
+- [一帯](term:term-v734-ittai) — tutta la zona / area circostante
+- [占拠](term:term-v735-senkyo) — occupazione / controllo dell'area
+- [競い合う](term:term-v732-seiau) — competere
 
 ## Etichette da riconoscere
 
@@ -44,40 +48,42 @@ In Scarlet / Violet questa lezione raccoglie parole che compaiono in schermate, 
 
 ## Spiegazione
 
-Parole come [解明](term:term-v712-kaimei), [不良](term:term-v713-furyou) e [共有](term:term-v714-kyouyuu) ti dicono subito se la schermata parla di chiarire qualcosa, di un teppista o di condivisione. Nei menu e nei dialoghi chiariscono che tipo di informazione sta entrando in gioco.
+[解明](term:term-v712-kaimei) si lega a misteri, cause e ricerche: `ナゾを解明する` significa arrivare a una spiegazione, non semplicemente "spiegare" una parola. [被害](term:term-v718-higai) invece nomina il danno subito o prodotto da un incidente: una frase come `被害が出た` dice che ci sono stati danni, non che qualcuno ha usato un attacco.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ロトりぼう](term:term-v711-rotoribou) e [チームＩＤ](term:term-v729-chiimuid). Quando compaiono, ti orientano su una funzione o su un'etichetta molto specifica del titolo.
+Nelle interfacce online, [共有](term:term-v714-kyouyuu), [おことわりリスト](term:term-v720-okotowaririsuto), [活動メンバー](term:term-v730-katsudoumenbaa) e [交換完了](term:term-v733-koukankanryou) segnalano funzioni molto pratiche: condividere informazioni, bloccare o rifiutare un contatto, controllare chi è attivo, confermare che lo scambio è terminato. [チームＩＤ](term:term-v729-chiimuid) resta un'etichetta di identificazione, non un nome narrativo.
+
+Le parole di area e controllo hanno collocazioni più rigide. [一帯](term:term-v734-ittai) sta bene con `この一帯` o `湖の一帯`, cioè la zona attorno a un punto; [占拠](term:term-v735-senkyo) richiede qualcosa che viene preso e controllato, come una base o un edificio. Per [競い合う](term:term-v732-seiau), la lettura da fissare è `きそいあう`: il verbo descrive persone o gruppi che competono tra loro.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  ナゾの {{解明|かいめい}}が {{進|すす}}む。
+  {{博士|はかせ}}は パルデアの ナゾを {{解明|かいめい}}しようとしている。
 translation_it: >-
-  La soluzione del mistero va avanti.
+  Il professore sta cercando di risolvere il mistero di Paldea.
 :::
 
 :::example_sentence
 jp: >-
-  かれは {{不良|ふりょう}}で {{有名|ゆうめい}}だ。
+  スター{{団|だん}}には {{不良|ふりょう}}と よばれる {{生徒|せいと}}も いる。
 translation_it: >-
-  Lui e famoso per essere un teppista.
+  Nel Team Star ci sono anche studenti chiamati teppisti.
 :::
 
 :::example_sentence
 jp: >-
-  じょうほうを {{共有|きょうゆう}}する。
+  {{通信交換|つうしんこうかん}}の {{画面|がめん}}に {{交換完了|こうかんかんりょう}}！と {{出|で}}た。
 translation_it: >-
-  Condivido le informazioni.
+  Nella schermata dello scambio via comunicazione è apparso "scambio completato!".
 :::
 
 :::example_sentence
 jp: >-
-  さっきの メンバーと {{入|い}}れ{{替|か}}わる。
+  {{湖|みずうみ}}の {{一帯|いったい}}に {{珍|めずら}}しい ポケモンが {{出|で}}る。
 translation_it: >-
-  Prende il posto del gruppo di prima.
+  Nella zona attorno al lago appaiono Pokémon rari.
 :::
 
 ## Nota finale
 
-In questo blocco conta soprattutto riconoscere che cosa sta dicendo la schermata: chiarimento, condivisione, sostituzione o numero stabilito. Le etichette specifiche aiutano a orientarti quando il gioco mostra una funzione precisa.
+Quando trovi una parola astratta, guardala insieme al verbo vicino: `解明する`, `共有する`, `被害が出る`, `占拠する`. Nei menu invece presta attenzione ai messaggi compatti come [交換完了](term:term-v733-koukankanryou): spesso sono formule di stato e valgono più come conferma dell'azione che come frase narrativa.

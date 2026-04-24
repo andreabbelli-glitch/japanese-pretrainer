@@ -24,7 +24,7 @@ Leggere il giapponese che compare in battaglia, scuola e storia: parole operativ
 
 ## Contesto
 
-In questo blocco compaiono parole che segnalano subito funzione, movimento, incontro, stato e aspettativa della scena. Accanto a queste ci sono anche riferimenti più specifici di scuola o battaglia che basta riconoscere quando appaiono.
+Queste forme separano funzione, movimento, incontro, stato e aspettativa: 機能 nomina ciò che un menu può fare, ダッシュ indica scatto, 出会い apre l'idea di incontro, 調子 descrive la condizione, 期待 guarda a ciò che deve ancora succedere.
 
 ## Termini chiave
 
@@ -62,7 +62,7 @@ Le espressioni come [行ってみよう](term:term-e057-ittemiyou) e [それな�
 
 Sul piano grammaticale, pattern come [〜と言う / 〜って言う](grammar:grammar-g059-dire-chiamarsi) e [〜すぎる](grammar:grammar-g061-troppo) chiariscono se la frase sta nominando qualcosa o sta marcando un eccesso. [〜そうだ (sembra)](grammar:grammar-g062-sembra-che) aggiunge invece un'impressione immediata; [〜そうだ (si dice)](grammar:grammar-g063-si-dice-che-pare-che) riporta una voce o una lettura riferita.
 
-Accanto a questo nucleo resta [わざマシンマシン](term:term-v306-waza-mashinmashin), che è un'etichetta contestuale: conviene saperla leggere al volo, ma non serve trattarla come lessico da ripassare a parte.
+[わざマシンマシン](term:term-v306-waza-mashinmashin) ripete マシン perché nomina la macchina che crea le わざマシン, le MT. In una schermata di crafting o di Centro Pokémon, questa etichetta indica il dispositivo, non una mossa o un oggetto consumabile.
 
 ## Esempi guidati
 
@@ -89,11 +89,11 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  これは ジムって {{言|い}}う。
+  みんなは ジムって {{言|い}}う。
 translation_it: >-
-  Questo si chiama palestra.
+  Tutti la chiamano palestra.
 :::
 
 ## Nota finale
 
-In questo blocco conta soprattutto il giapponese che ritorna nelle schermate, nelle scelte e nei dialoghi. Le etichette contestuali servono a non inciampare quando compaiono, ma il lavoro vero resta sulle forme che puoi riconoscere e riusare più volte.
+Guarda se la frase nomina una funzione, propone di provare qualcosa o marca un eccesso con すぎる. わざマシンマシン dà il punto della schermata; verbi e pattern decidono che cosa succede nella frase.

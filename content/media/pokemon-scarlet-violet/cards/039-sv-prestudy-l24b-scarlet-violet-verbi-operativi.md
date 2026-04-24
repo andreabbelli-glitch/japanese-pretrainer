@@ -163,7 +163,8 @@ reading: ひろげる
 romaji: hiroge ru
 meaning_it: allargare / espandere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  広げる è transitivo: il soggetto allarga o dispiega qualcosa, come una mappa,
+  un'area o un campo d'azione.
 :::
 :::card
 id: card-v454-hiroge-ru-recognition
@@ -174,9 +175,9 @@ card_type: recognition
 front: "{{広|ひろ}}げる"
 back: allargare / espandere
 example_jp: >-
-  ここで {{広|ひろ}}げる。
+  マップを {{広|ひろ}}げる。
 example_it: >-
-  Allargo qui.
+  Espando la mappa.
 :::
 :::term
 id: term-v455-shinken
@@ -185,7 +186,8 @@ reading: しんけん
 romaji: shinken
 meaning_it: serio
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  真剣 indica serietà reale, senza scherzo o leggerezza. Con に modifica il modo
+  in cui si affronta un'azione.
 :::
 :::card
 id: card-v455-shinken-recognition
@@ -196,9 +198,9 @@ card_type: recognition
 front: "{{真剣|しんけん}}"
 back: serio
 example_jp: >-
-  {{真剣|しんけん}} です。
+  {{真剣|しんけん}}に {{戦|たたか}}う。
 example_it: >-
-  È serio.
+  Combatte seriamente.
 :::
 :::term
 id: term-v456-mejirushi
@@ -207,7 +209,8 @@ reading: めじるし
 romaji: mejirushi
 meaning_it: punto di riferimento
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  目印 è un segno usato come riferimento. Con にする indica scegliere qualcosa come
+  punto per orientarsi.
 :::
 :::card
 id: card-v456-mejirushi-recognition
@@ -218,9 +221,9 @@ card_type: recognition
 front: "{{目印|めじるし}}"
 back: punto di riferimento
 example_jp: >-
-  ここが {{目印|めじるし}} です。
+  {{門|もん}}を {{目印|めじるし}}にする。
 example_it: >-
-  Questo è il punto di riferimento.
+  Uso il cancello come punto di riferimento.
 :::
 :::term
 id: term-v457-hayai
@@ -229,7 +232,8 @@ reading: はやい
 romaji: hayai
 meaning_it: veloce
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  速い descrive velocità alta. Contrasta con 遅い e in battaglia può suggerire chi
+  agisce prima.
 :::
 :::card
 id: card-v457-hayai-recognition
@@ -251,7 +255,8 @@ reading: のぼる
 romaji: noboru
 meaning_it: salire / arrampicarsi
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  登る indica salire su qualcosa: scala, parete, montagna o punto alto. Il
+  bersaglio del movimento prende を.
 :::
 :::card
 id: card-v458-noboru-recognition
@@ -262,9 +267,9 @@ card_type: recognition
 front: "{{登|のぼ}}る"
 back: salire / arrampicarsi
 example_jp: >-
-  ここで {{登|のぼ}}ります。
+  はしごを {{登|のぼ}}る。
 example_it: >-
-  Salgo qui.
+  Salgo la scala a pioli.
 :::
 :::term
 id: term-v459-hashigo
@@ -295,7 +300,8 @@ reading: きょうりょくする
 romaji: kyouryoku suru
 meaning_it: cooperare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  協力する è agire insieme ad altri per lo stesso obiettivo. みんなで specifica il
+  gruppo che collabora.
 :::
 :::card
 id: card-v460-kyouryoku-suru-recognition
@@ -317,7 +323,8 @@ reading: たちよる
 romaji: tachi yoru
 meaning_it: fermarsi di passaggio
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  立ち寄る è fermarsi di passaggio senza farne la destinazione principale. Funziona
+  bene per negozi, città o punti di cura lungo il percorso.
 :::
 :::card
 id: card-v461-tachi-yoru-recognition
@@ -339,7 +346,8 @@ reading: かいふくさせる
 romaji: kaifuku saseru
 meaning_it: curare / far recuperare
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  回復させる è causativo: qualcuno fa recuperare HP o stato a un Pokémon. Il
+  Pokémon curato prende を.
 :::
 :::card
 id: card-v462-kaifuku-saseru-recognition
@@ -361,8 +369,8 @@ reading: てごわい
 romaji: tegowai
 meaning_it: ostico / tosto
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  手ごわい descrive un avversario difficile da battere o una situazione ostica. Non
+  dice solo "forte", ma "richiede fatica".
 :::
 :::card
 id: card-v463-tegowai-recognition
@@ -373,9 +381,9 @@ card_type: recognition
 front: "{{手|て}}ごわい"
 back: ostico / tosto
 example_jp: >-
-  これは {{手|て}}ごわい。
+  {{手|て}}ごわい {{相手|あいて}}だ。
 example_it: >-
-  Questo è ostico.
+  È un avversario ostico.
 :::
 :::term
 id: term-v464-pokemon-nootoshimono
@@ -384,7 +392,8 @@ reading: ぽけもんのおとしもの
 romaji: pokemon nootoshimono
 meaning_it: materiali lasciati dai Pokémon
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  ポケモンのおとしもの sono materiali lasciati dai Pokémon. In crafting diventano
+  risorse da raccogliere o consumare.
 :::
 :::card
 id: card-v464-pokemon-nootoshimono-recognition
@@ -395,9 +404,9 @@ card_type: recognition
 front: "ポケモンのおとしもの"
 back: materiali lasciati dai Pokémon
 example_jp: >-
-  これは ポケモンのおとしものです。
+  ポケモンのおとしものを {{集|あつ}}める。
 example_it: >-
-  Questo è il materiale lasciato dai Pokémon.
+  Raccolgo materiali lasciati dai Pokémon.
 :::
 :::term
 id: term-v465-azuke-ru
@@ -406,7 +415,8 @@ reading: あずける
 romaji: azuke ru
 meaning_it: depositare
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  預ける è depositare o affidare qualcosa a un sistema/persona. Nel box Pokémon
+  indica togliere un Pokémon dalla squadra e lasciarlo in deposito.
 :::
 :::card
 id: card-v465-azuke-ru-recognition
@@ -428,7 +438,8 @@ reading: かっくうけいたい
 romaji: kakkuukeitai
 meaning_it: forma planata
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  かっくうけいたい è la forma di planata: かっくう indica il movimento nell'aria,
+  けいたい la forma/modalità assunta.
 :::
 :::card
 id: card-v466-kakkuukeitai-recognition
@@ -439,9 +450,9 @@ card_type: recognition
 front: "かっくうけいたい"
 back: forma planata
 example_jp: >-
-  これは かっくうけいたい です。
+  かっくうけいたいで {{空|そら}}を {{進|すす}}む。
 example_it: >-
-  Questa è la forma planata.
+  Avanzo nel cielo in forma planata.
 :::
 :::term
 id: term-v467-shissoukeitai
@@ -450,7 +461,8 @@ reading: しっそうけいたい
 romaji: shissoukeitai
 meaning_it: forma corsa
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  しっそうけいたい è la forma di corsa: しっそう indica lo scatto veloce, けいたい la
+  modalità.
 :::
 :::card
 id: card-v467-shissoukeitai-recognition
@@ -461,9 +473,9 @@ card_type: recognition
 front: "しっそうけいたい"
 back: forma corsa
 example_jp: >-
-  これは しっそうけいたい です。
+  しっそうけいたいで {{走|はし}}る。
 example_it: >-
-  Questa è la forma corsa.
+  Corro in forma corsa.
 :::
 :::term
 id: term-v468-yuueikeitai
@@ -472,7 +484,8 @@ reading: ゆうえいけいたい
 romaji: yuueikeitai
 meaning_it: forma nuoto
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  ゆうえいけいたい è la forma di nuoto: ゆうえい indica il nuotare, けいたい la forma
+  usata per quel movimento.
 :::
 :::card
 id: card-v468-yuueikeitai-recognition
@@ -483,9 +496,9 @@ card_type: recognition
 front: "ゆうえいけいたい"
 back: forma nuoto
 example_jp: >-
-  これは ゆうえいけいたい です。
+  ゆうえいけいたいで {{水上|すいじょう}}を {{進|すす}}む。
 example_it: >-
-  Questa è la forma nuoto.
+  Avanzo sull'acqua in forma nuoto.
 :::
 :::term
 id: term-v469-guraidomoodo
@@ -494,7 +507,8 @@ reading: ぐらいどもーど
 romaji: guraidomoodo
 meaning_it: Glide Mode
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  グライドモード è la modalità di planata: グライド identifica il movimento in aria,
+  モード la modalità attiva.
 :::
 :::term
 id: term-v470-doraibumoodo
@@ -503,7 +517,8 @@ reading: どらいぶもーど
 romaji: doraibumoodo
 meaning_it: Drive Mode
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  ドライブモード è la modalità di avanzamento su terreno: ドライブ qui descrive il
+  muoversi/correre con la cavalcatura.
 :::
 :::term
 id: term-v471-furootomoodo
@@ -512,7 +527,8 @@ reading: ふろーともーど
 romaji: furootomoodo
 meaning_it: Float Mode
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  フロートモード è la modalità sull'acqua: フロート richiama il galleggiamento,
+  モード la forma attiva del movimento.
 :::
 :::term
 id: term-v472-meguru
@@ -521,7 +537,8 @@ reading: めぐる
 romaji: meguru
 meaning_it: girare / visitare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  巡る significa girare o visitare più punti. Con 町を巡る il percorso attraversa
+  la città, non entra solo in un luogo.
 :::
 :::card
 id: card-v472-meguru-recognition
@@ -543,8 +560,8 @@ reading: ならべかえ
 romaji: narabekae
 meaning_it: riordinare / sorting
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  並べかえ è riordinare una lista. Nei menu cambia l'ordine di Pokémon, oggetti o
+  voci visualizzate.
 :::
 :::card
 id: card-v473-narabekae-recognition
@@ -566,7 +583,8 @@ reading: にゅうしゅ
 romaji: nyuushu
 meaning_it: ottenimento
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  入手 è ottenimento/acquisizione. アイテムを入手する indica che l'oggetto entra
+  nell'inventario o nelle risorse disponibili.
 :::
 :::card
 id: card-v474-nyuushu-recognition
@@ -588,8 +606,8 @@ reading: ひっこめる
 romaji: hikkomeru
 meaning_it: ritirare (un Pokémon)
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  引っ込める significa ritirare o far rientrare. In battaglia con ポケモンを indica
+  richiamare il Pokémon dalla lotta.
 :::
 :::card
 id: card-v475-hitsu-kome-ru-recognition

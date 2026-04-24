@@ -151,8 +151,8 @@ reading: しゅるい
 romaji: shurui
 meaning_it: tipo / categoria
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  {{種類|しゅるい}} indica tipo o categoria. In un menu restringe la scelta a una
+  classe di oggetti, mosse o informazioni.
 :::
 :::card
 id: card-v224-shurui-recognition
@@ -163,9 +163,9 @@ card_type: recognition
 front: '{{種類|しゅるい}}'
 back: tipo / categoria
 example_jp: >-
-  {{種類|しゅるい}}が あります。
+  {{種類|しゅるい}}を {{選|えら}}びます。
 example_it: >-
-  Ci sono categorie.
+  Scelgo la categoria.
 :::
 :::term
 id: term-v225-shokuji
@@ -174,8 +174,8 @@ reading: しょくじ
 romaji: shokuji
 meaning_it: pasto
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  {{食事|しょくじ}} è il pasto come evento o contenuto del piatto. In
+  食事パワー, il pasto è la fonte del bonus.
 :::
 :::card
 id: card-v225-shokuji-recognition
@@ -186,9 +186,9 @@ card_type: recognition
 front: '{{食事|しょくじ}}'
 back: pasto
 example_jp: >-
-  これは {{食事|しょくじ}} です。
+  {{食事|しょくじ}}で パワーが つきます。
 example_it: >-
-  Questo è un pasto.
+  Il pasto dà un bonus.
 :::
 :::term
 id: term-v226-raidowaza
@@ -197,8 +197,8 @@ reading: ライドわざ
 romaji: raidowaza
 meaning_it: abilità di ride
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  ライド{{技|わざ}} è un'abilità usata durante la cavalcata. 技 resta "mossa /
+  tecnica", qui applicata al movimento fuori dalla battaglia.
 :::
 :::card
 id: card-v226-raidowaza-recognition
@@ -209,9 +209,9 @@ card_type: recognition
 front: 'ライド{{技|わざ}}'
 back: abilità di ride
 example_jp: >-
-  ライド{{技|わざ}}が あります。
+  ライド{{技|わざ}}が {{使|つか}}えるようになった。
 example_it: >-
-  C'è un'abilità di cavalcata.
+  Ora si può usare l'abilità di cavalcata.
 :::
 :::term
 id: term-v227-menyuu
@@ -220,7 +220,8 @@ reading: めにゅー
 romaji: menyuu
 meaning_it: menu
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  メニュー è la schermata da cui apri funzioni, strumenti e impostazioni. Con
+  で marca il luogo dell'operazione: メニューで{{道具|どうぐ}}を{{見|み}}る.
 :::
 :::card
 id: card-v227-menyuu-recognition
@@ -231,9 +232,9 @@ card_type: recognition
 front: 'メニュー'
 back: menu
 example_jp: >-
-  メニューを {{使|つか}}います。
+  メニューを {{開|ひら}}いて {{道具|どうぐ}}を {{選|えら}}びます。
 example_it: >-
-  Uso il menu.
+  Apro il menu e scelgo uno strumento.
 :::
 :::term
 id: term-v228-kondo
@@ -242,7 +243,8 @@ reading: こんど
 romaji: kondo
 meaning_it: questa volta / la prossima
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{今度|こんど}} può indicare questa occasione o la prossima, secondo contesto.
+  In una promessa come 今度、{{行|い}}きます vale "la prossima volta".
 :::
 :::card
 id: card-v228-kondo-recognition
@@ -264,8 +266,8 @@ reading: いろちがい
 romaji: irochigai
 meaning_it: shiny / colore diverso
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  {{色違|いろちが}}い indica una variante cromatica diversa dal normale, lo shiny.
+  Letteralmente è "colore diverso".
 :::
 :::card
 id: card-v229-irochigai-recognition
@@ -287,7 +289,8 @@ reading: いみ
 romaji: imi
 meaning_it: significato
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{意味|いみ}} è il significato di una parola, frase o segnale. Con が
+  {{分|わ}}かる indica che il senso diventa chiaro.
 :::
 :::card
 id: card-v230-imi-recognition
@@ -298,9 +301,9 @@ card_type: recognition
 front: '{{意味|いみ}}'
 back: significato
 example_jp: >-
-  その {{意味|いみ}}は これです。
+  この {{言葉|ことば}}の {{意味|いみ}}が {{分|わ}}かります。
 example_it: >-
-  Il significato è questo.
+  Capisco il significato di questa parola.
 :::
 :::term
 id: term-v231-denki
@@ -309,8 +312,7 @@ reading: でんき
 romaji: denki
 meaning_it: elettro
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  でんき è il tipo Elettro. In でんきタイプのわざ, specifica il tipo della mossa.
 :::
 :::card
 id: card-v231-denki-recognition
@@ -321,9 +323,9 @@ card_type: recognition
 front: 'でんき'
 back: elettro
 example_jp: >-
-  でんきタイプの ポケモンです。
+  でんきタイプの わざを {{使|つか}}います。
 example_it: >-
-  È un Pokémon di tipo elettrico.
+  Uso una mossa di tipo Elettro.
 :::
 :::term
 id: term-v232-zannen
@@ -332,7 +334,8 @@ reading: ざんねん
 romaji: zannen
 meaning_it: peccato / spiacevole
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  {{残念|ざんねん}} esprime dispiacere o delusione: "peccato". In それは残念です,
+  reagisce a un esito negativo.
 :::
 :::card
 id: card-v232-zannen-recognition
@@ -354,7 +357,8 @@ reading: じゆう
 romaji: jiyuu
 meaning_it: libertà / libero
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  {{自由|じゆう}} indica libertà o stato libero. Con に diventa avverbiale:
+  {{自由|じゆう}}に{{行|い}}ける, "poter andare liberamente".
 :::
 :::card
 id: card-v233-jiyuu-recognition
@@ -365,9 +369,9 @@ card_type: recognition
 front: '{{自由|じゆう}}'
 back: libertà / libero
 example_jp: >-
-  {{学校|がっこう}}で {{自由|じゆう}}が だいじ です。
+  {{自由|じゆう}}に {{行|い}}けます。
 example_it: >-
-  A scuola la libertà è importante.
+  Puoi andarci liberamente.
 :::
 :::term
 id: term-v234-shouri
@@ -376,8 +380,8 @@ reading: しょうり
 romaji: shouri
 meaning_it: vittoria
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  {{勝利|しょうり}} è la vittoria come risultato. Con する diventa "vincere /
+  ottenere la vittoria" in stile più nominale di {{勝|か}}つ.
 :::
 :::card
 id: card-v234-shouri-recognition
@@ -399,8 +403,8 @@ reading: ちゅうかんてすと
 romaji: chuukan tesuto
 meaning_it: esame di metà corso / midterm
 notes_it: >-
-  Ricorre nelle lezioni e negli esami dell''Accademia; utile se vuoi seguire
-  davvero la parte scuola.
+  {{中間|ちゅうかん}}テスト è l'esame di metà corso dell'Accademia. 中間 indica il
+  punto intermedio del percorso di lezioni.
 :::
 :::card
 id: card-v342-chuukan-tesuto-recognition

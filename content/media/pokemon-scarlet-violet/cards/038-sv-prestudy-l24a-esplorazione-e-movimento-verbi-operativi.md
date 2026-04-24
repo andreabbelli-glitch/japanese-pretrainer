@@ -187,7 +187,8 @@ reading: おぼえる
 romaji: oboe ru
 meaning_it: memorizzare / imparare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  覚える significa memorizzare o imparare una mossa/abilità. Con わざを覚える il
+  soggetto acquisisce una mossa nuova.
 :::
 :::card
 id: card-v432-oboe-ru-recognition
@@ -198,9 +199,9 @@ card_type: recognition
 front: "{{覚|おぼ}}える"
 back: memorizzare / imparare
 example_jp: >-
-  ここで {{覚|おぼ}}える。
+  {{新|あたら}}しい わざを {{覚|おぼ}}える。
 example_it: >-
-  Imparo qui.
+  Impara una nuova mossa.
 :::
 :::term
 id: term-v433-kitae-ru
@@ -209,7 +210,8 @@ reading: きたえる
 romaji: kitae ru
 meaning_it: allenare / temprare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  鍛える è allenare o temprare qualcuno/qualcosa perché diventi più forte:
+  Pokémon, corpo, tecnica o abilità.
 :::
 :::card
 id: card-v433-kitae-ru-recognition
@@ -220,9 +222,9 @@ card_type: recognition
 front: "{{鍛|きた}}える"
 back: allenare / temprare
 example_jp: >-
-  ここで {{鍛|きた}}える。
+  ポケモンを {{鍛|きた}}える。
 example_it: >-
-  Mi alleno qui.
+  Alleno il Pokémon.
 :::
 :::term
 id: term-v434-ori-ru
@@ -231,7 +233,8 @@ reading: おりる
 romaji: ori ru
 meaning_it: scendere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  降りる indica scendere da un mezzo, da un Pokémon cavalcatura o da un punto
+  alto. Il punto di partenza può essere marcato da から.
 :::
 :::card
 id: card-v434-ori-ru-recognition
@@ -242,9 +245,9 @@ card_type: recognition
 front: "{{降|お}}りる"
 back: scendere
 example_jp: >-
-  ここで {{降|お}}りる。
+  ライドポケモンから {{降|お}}りる。
 example_it: >-
-  Scendo qui.
+  Scendo dal Pokémon cavalcatura.
 :::
 :::term
 id: term-v435-ureshii
@@ -253,7 +256,8 @@ reading: うれしい
 romaji: ureshii
 meaning_it: contento / felice
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  嬉しい esprime gioia personale. In 来てくれて嬉しい il motivo della gioia è
+  l'azione fatta dall'altra persona.
 :::
 :::card
 id: card-v435-ureshii-recognition
@@ -264,9 +268,9 @@ card_type: recognition
 front: "{{嬉|うれ}}しい"
 back: contento / felice
 example_jp: >-
-  {{嬉|うれ}}しい です。
+  {{来|き}}てくれて {{嬉|うれ}}しい。
 example_it: >-
-  Sono contento.
+  Sono contento che tu sia venuto.
 :::
 :::term
 id: term-v436-onrain
@@ -275,8 +279,8 @@ reading: オンライン
 romaji: onrain
 meaning_it: online
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  オンライン indica connessione attiva o gioco via rete. Con で specifica il modo in
+  cui si partecipa.
 :::
 :::card
 id: card-v436-onrain-recognition
@@ -287,9 +291,9 @@ card_type: recognition
 front: "オンライン"
 back: online
 example_jp: >-
-  オンラインです。
+  オンラインで {{参加|さんか}}する。
 example_it: >-
-  È online.
+  Partecipo online.
 :::
 :::term
 id: term-v437-fukkatsu
@@ -298,8 +302,8 @@ reading: ふっかつ
 romaji: fukkatsu
 meaning_it: resurrezione / ritorno in campo
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  復活 è il ritorno in campo o rianimazione dopo una caduta. Con する diventa
+  "tornare attivo".
 :::
 :::card
 id: card-v437-fukkatsu-recognition
@@ -321,7 +325,8 @@ reading: おそい
 romaji: osoi
 meaning_it: lento / tardi
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  遅い può essere lento o tardi. In movimento descrive velocità bassa; in orario
+  descrive ritardo.
 :::
 :::card
 id: card-v438-osoi-recognition
@@ -343,7 +348,8 @@ reading: もん
 romaji: mon
 meaning_it: porta / cancello
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  門 è porta o cancello grande. In mappa o città può essere un punto di ingresso
+  o riferimento visivo.
 :::
 :::card
 id: card-v439-mon-recognition
@@ -365,8 +371,8 @@ reading: オフライン
 romaji: ofurain
 meaning_it: offline
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  オフライン indica assenza di connessione o modalità locale. Contrasta
+  direttamente con オンライン nelle schermate di comunicazione.
 :::
 :::card
 id: card-v440-ofurain-recognition
@@ -377,9 +383,9 @@ card_type: recognition
 front: "オフライン"
 back: offline
 example_jp: >-
-  オフラインです。
+  オフラインで {{遊|あそ}}ぶ。
 example_it: >-
-  È offline.
+  Gioco offline.
 :::
 :::term
 id: term-v441-oboe-saseru
@@ -388,7 +394,8 @@ reading: おぼえさせる
 romaji: oboe saseru
 meaning_it: insegnare una mossa
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  覚えさせる è causativo: qualcuno fa imparare una mossa a un Pokémon. Il Pokémon
+  prende に e la mossa resta sottintesa o marcata da を.
 :::
 :::card
 id: card-v441-oboe-saseru-recognition
@@ -410,7 +417,8 @@ reading: しゅじんこう
 romaji: shujinkou
 meaning_it: protagonista
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  主人公 è il protagonista controllato o seguito dalla storia. Con 名前を決める si
+  parla della configurazione iniziale del personaggio.
 :::
 :::card
 id: card-v442-shujinkou-recognition
@@ -421,9 +429,9 @@ card_type: recognition
 front: "{{主人公|しゅ.じん.こう}}"
 back: protagonista
 example_jp: >-
-  {{主人公|しゅ.じん.こう}}です。
+  {{主人公|しゅ.じん.こう}}の {{名前|なまえ}}を {{決|き}}める。
 example_it: >-
-  È il protagonista.
+  Decido il nome del protagonista.
 :::
 :::term
 id: term-v443-kensaku
@@ -432,8 +440,8 @@ reading: けんさく
 romaji: kensaku
 meaning_it: ricerca
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  検索 è ricerca. In menu indica cercare Pokémon, oggetti, condizioni o voci in
+  una lista.
 :::
 :::card
 id: card-v443-kensaku-recognition
@@ -455,7 +463,8 @@ reading: がけ
 romaji: gake
 meaning_it: scogliera / precipizio
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  崖 è una parete rocciosa o precipizio. In esplorazione può essere ostacolo,
+  punto da scalare o pericolo.
 :::
 :::card
 id: card-v444-gake-recognition
@@ -477,7 +486,8 @@ reading: とじる
 romaji: tojiru
 meaning_it: chiudere
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  閉じる è chiudere qualcosa che era aperto: porta, menu, finestra o schermata.
+  Il bersaglio prende を.
 :::
 :::card
 id: card-v445-tojiru-recognition
@@ -499,7 +509,8 @@ reading: ならう
 romaji: narau
 meaning_it: imparare (da qualcuno)
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  習う è imparare da una persona, scuola o corso. Si distingue da 覚える perché
+  mette in primo piano l'insegnamento ricevuto.
 :::
 :::card
 id: card-v446-narau-recognition
@@ -510,9 +521,9 @@ card_type: recognition
 front: "{{習|なら}}う"
 back: imparare (da qualcuno)
 example_jp: >-
-  ここで {{習|なら}}う。
+  {{学校|がっこう}}で {{数学|すうがく}}を {{習|なら}}う。
 example_it: >-
-  Imparo qui.
+  Studio matematica a scuola.
 :::
 :::term
 id: term-v447-toshi
@@ -521,7 +532,8 @@ reading: とし
 romaji: toshi
 meaning_it: città (grande)
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  都市 è una città grande o urbana. Nei nomi di area può distinguere un centro
+  abitato da percorsi e zone naturali.
 :::
 :::card
 id: card-v447-toshi-recognition
@@ -543,8 +555,8 @@ reading: ほうがく
 romaji: hougaku
 meaning_it: direzione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  方角 è direzione cardinale o orientamento. Con 確認する indica controllare dove si
+  sta andando.
 :::
 :::card
 id: card-v448-hougaku-recognition
@@ -656,7 +668,8 @@ reading: めずらしい
 romaji: mezurashii
 meaning_it: raro
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  珍しい descrive qualcosa di raro o insolito; nei dialoghi può segnalare un
+  Pokémon, un oggetto o una situazione che non capita spesso.
 :::
 :::card
 id: card-v453-mezurashii-recognition
@@ -667,7 +680,7 @@ card_type: recognition
 front: "{{珍|めずら}}しい"
 back: raro
 example_jp: >-
-  {{珍|めずら}}しい です。
+  {{珍|めずら}}しい ポケモンが {{出|で}}る。
 example_it: >-
-  È raro.
+  Compare un Pokémon raro.
 :::

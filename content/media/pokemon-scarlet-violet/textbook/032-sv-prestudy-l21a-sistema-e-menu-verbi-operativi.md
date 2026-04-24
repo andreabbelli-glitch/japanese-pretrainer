@@ -77,9 +77,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  ちなみに、 これは {{新|あたら}}しいよ。
+  ちなみに、 {{新|あたら}}しい メニューが {{増|ふ}}えるよ。
 translation_it: >-
-  Tra l'altro, questo è nuovo.
+  Tra l'altro, verrà aggiunto un nuovo menu.
 :::
 
 :::example_sentence
@@ -91,4 +91,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri questi menu o questi dialoghi brevi, controlla subito se il testo ti sta dicendo che cosa puoi fare, che cosa cambia e quale opzione stai scegliendo. In questo blocco la comprensione passa soprattutto da quei segnali.
+Quando incontri questi menu o dialoghi brevi, individua l'azione: 作れる apre una possibilità, 増える mostra un aumento, 戻る porta indietro, 選ぶ decide l'opzione.

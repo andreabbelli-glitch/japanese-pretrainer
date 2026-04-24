@@ -20,7 +20,7 @@ summary: 'Lessico ed espressioni per sistema e menu, Scarlet/Violet: 18 carte le
 ---
 # Obiettivo
 
-Capire il giapponese che compare in sistema e menu, Scarlet/Violet. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Leggere il giapponese di connessione, menu online, conferme e funzioni di sistema. Forme come [接続](term:term-v592-setsuzoku), [通信対戦](term:term-v594-tsuushintaisen), [公開](term:term-v597-koukai) e [売り切れ](term:term-v609-urikire) dicono se la schermata collega, sfida, rende pubblico o blocca un acquisto.
 
 ## Contesto
 
@@ -61,13 +61,13 @@ In Scarlet / Violet questa lezione raccoglie parole che compaiono quando il gioc
 
 ## Spiegazione
 
-Parole come [接続](term:term-v592-setsuzoku), [同時](term:term-v593-douji) e [通信対戦](term:term-v594-tsuushintaisen) ti dicono subito che tipo di schermata stai leggendo: connessione, azione simultanea o lotta online. Nei menu e nei dialoghi chiariscono subito quale funzione è attiva e che cosa puoi fare.
+Parole come [接続](term:term-v592-setsuzoku), [同時](term:term-v593-douji) e [通信対戦](term:term-v594-tsuushintaisen) definiscono la funzione della schermata: connessione attiva, azione simultanea o lotta contro un altro giocatore. Se le leggi accanto a pulsanti di conferma o ricerca, sai se stai entrando in rete, aspettando un partner o avviando una sfida.
 
 Le espressioni come [〜してあげましょう](term:term-e094-shiteagemashou) e [〜を 確認してみましょう！](term:term-e095-o-kakuninshitemimashou) regolano il tono del parlato: aiuto offerto, invito a controllare, avviso o proposta di azione.
 
-Sul piano grammaticale, pattern come [〜まま](grammar:grammar-g098-cosi-com-e-lasciando-come-sta) e [〜じゃん](grammar:grammar-g099-vero-che-ma-guarda) chiariscono stato, constatazione e sfumatura colloquiale. Ti fanno sentire se una frase suona come osservazione, commento diretto o avvertimento pratico.
+Sul piano grammaticale, [〜まま](grammar:grammar-g098-cosi-com-e-lasciando-come-sta) mantiene uno stato invariato, mentre [〜じゃん](grammar:grammar-g099-vero-che-ma-guarda) porta la frase nel parlato colloquiale. In `そのまま` il testo dice di lasciare qualcosa com'è; in `いいじゃん` il parlante reagisce come a una constatazione condivisa, non come a un ordine di menu.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ちびちびパワー](term:term-v600-chibichibipawaa)、 [でかでかパワー](term:term-v601-dekadekapawaa)、 [二つ名パワー](term:term-v602-nitsunapawaa)、 [どうぐプリンター](term:term-v608-dougupurintaa). Quando compaiono, ti orientano subito su bonus, tag o funzione specifica.
+[ちびちびパワー](term:term-v600-chibichibipawaa), [でかでかパワー](term:term-v601-dekadekapawaa), [二つ名パワー](term:term-v602-nitsunapawaa) e [どうぐプリンター](term:term-v608-dougupurintaa) sono etichette di funzione. `パワー` segnala un bonus applicato, mentre `プリンター` indica uno strumento che produce oggetti: il nome specifico va letto come categoria d'uso prima ancora di cercarne il dettaglio.
 
 ## Esempi guidati
 
@@ -101,4 +101,4 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco conta soprattutto il giapponese che segnala connessione, conferma, avviso o scelta. Le etichette molto specifiche servono a orientarti quando il gioco mostra una funzione precisa, ma il nucleo utile resta nelle parole che ritornano spesso.
+In menu e portali, [接続](term:term-v592-setsuzoku), [確認](term:term-e095-o-kakuninshitemimashou), [なくなってしまいます](term:term-e097-nakunatteshimaimasuga-yoroshiidesuka) e [公開](term:term-v597-koukai) cambiano la decisione pratica: collegare, controllare, accettare una perdita o rendere visibile un dato. Le etichette verticali vengono dopo, perché indicano quale bonus o strumento è coinvolto.

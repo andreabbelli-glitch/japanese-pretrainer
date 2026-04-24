@@ -13,7 +13,9 @@ reading: いらっしゃいませ
 romaji: irasshaimase
 meaning_it: benvenuto / benvenuta
 notes_it: >-
-  Accoglienza da negozio o servizio.
+  Formula cortese di accoglienza usata da negozi, servizi e sportelli; non
+  richiede risposta lunga, segnala che la scena passa a un'interazione con il
+  cliente.
 :::
 :::card
 id: card-e019-irasshaimase-recognition
@@ -35,7 +37,9 @@ reading: だいじょうぶ？
 romaji: daijoubu？
 meaning_it: tutto bene?
 notes_it: >-
-  Domanda rapida per controllare se qualcuno sta bene.
+  {{大丈夫？|だいじょうぶ？}} controlla se una persona o una situazione va bene. In
+  una battuta breve può voler dire "tutto bene?", "ce la fai?" o "non ci sono
+  problemi?".
 :::
 :::card
 id: card-e020-daijoubu-recognition
@@ -102,7 +106,7 @@ title: Particella で
 meaning_it: in / con / tramite
 notes_it: >-
   で indica spesso il luogo in cui si svolge un'azione oppure il mezzo o
-  strumento con cui la fai: scuola, menu, bus, mano, ecc.
+  strumento usato per farla: scuola, menu, bus, mano, ecc.
 :::
 :::card
 id: card-g027-luogo-dell-azione-mezzo-concept
@@ -124,8 +128,8 @@ reading: たいりょく
 romaji: tairyoku
 meaning_it: HP / energia
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  {{体力|たいりょく}} indica l'energia fisica o gli HP rimasti. Con が{{少|すこ}}ない
+  segnala che lo stato è basso e può richiedere cura o cambio di strategia.
 :::
 :::card
 id: card-v103-tairyoku-recognition
@@ -147,7 +151,8 @@ reading: そと
 romaji: soto
 meaning_it: fuori / esterno
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  {{外|そと}} nomina il fuori rispetto a un edificio, una stanza o un'area
+  chiusa. Con へ o に marca l'uscita o la posizione all'esterno.
 :::
 :::card
 id: card-v104-soto-recognition
@@ -169,7 +174,9 @@ reading: いくつ
 romaji: ikutsu
 meaning_it: quanti / quanti anni
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  いくつ chiede una quantità non ancora nota; nei negozi e nei dialoghi può
+  chiedere quanti oggetti comprare, quanti elementi ci sono o quanti anni ha
+  qualcuno.
 :::
 :::card
 id: card-v105-ikutsu-recognition
@@ -191,7 +198,8 @@ reading: どちら
 romaji: dochira
 meaning_it: quale / quale dei due / dove (forma più gentile)
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  どちら è la forma più cortese di "quale / da che parte". Può chiedere una
+  scelta fra due opzioni o una direzione, come in どちらへ{{行|い}}きますか.
 :::
 :::card
 id: card-v106-dochira-recognition
@@ -222,8 +230,8 @@ reading: まける
 romaji: make ru
 meaning_it: perdere
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{負|ま}}ける indica l'esito negativo di una sfida. In このバトルに{{負|ま}}ける,
+  に marca la battaglia rispetto alla quale si perde.
 :::
 :::card
 id: card-v108-make-ru-recognition
@@ -245,7 +253,8 @@ reading: やま
 romaji: yama
 meaning_it: montagna
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  {{山|やま}} è un riferimento di terreno e percorso: può indicare una zona da
+  raggiungere, una salita o un ostacolo naturale sulla mappa.
 :::
 :::card
 id: card-v109-yama-recognition
@@ -299,7 +308,8 @@ reading: くる
 romaji: kuru
 meaning_it: venire
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  {{来|く}}る indica movimento verso il punto del parlante o della scena. Con
+  ここに{{来|く}}る, il testo porta qualcuno "qui", non genericamente "andare".
 :::
 :::card
 id: card-v112-kuru-recognition

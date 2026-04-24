@@ -57,7 +57,7 @@ pattern: は
 title: Particella は
 meaning_it: quanto a... / parlando di...
 notes_it: >-
-  は marca il tema della frase, cioe cio di cui si sta parlando. Non sempre
+  は marca il tema della frase, cioè ciò di cui si sta parlando. Non sempre
   coincide con il soggetto grammaticale.
 :::
 :::card
@@ -102,7 +102,7 @@ title: Particella を
 meaning_it: marca ciò che subisce direttamente l'azione
 notes_it: >-
   を indica l'oggetto diretto del verbo: la cosa che mangi, apri, scegli,
-  guardi o usi. E una delle particelle base per leggere le azioni.
+  guardi o usi. È una delle particelle base per leggere le azioni.
 :::
 :::card
 id: card-g033-marca-l-oggetto-diretto-concept
@@ -124,7 +124,8 @@ reading: あう
 romaji: au
 meaning_it: incontrare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  {{会|あ}}う richiede di solito に per la persona incontrata:
+  {{先生|せんせい}}に{{会|あ}}う, "incontrare il professore".
 :::
 :::card
 id: card-v126-au-recognition
@@ -146,7 +147,8 @@ reading: きめる
 romaji: kime ru
 meaning_it: decidere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  {{決|き}}める indica la scelta che viene fissata. Con を marca ciò che decidi:
+  行き先を{{決|き}}める, "decidere la destinazione".
 :::
 :::card
 id: card-v127-kime-ru-recognition
@@ -168,7 +170,8 @@ reading: むずかしい
 romaji: muzukashii
 meaning_it: difficile
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  {{難|むずか}}しい valuta un compito, una lotta o un percorso come difficile. In
+  frasi come このジムは{{難|むずか}}しい, il tema è la sfida da affrontare.
 :::
 :::card
 id: card-v128-muzukashii-recognition
@@ -190,7 +193,8 @@ reading: さがす
 romaji: sagasu
 meaning_it: cercare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  {{探|さが}}す prende con を la cosa cercata: ポケモンを{{探|さが}}す, cercare un
+  Pokémon sulla mappa o in una zona.
 :::
 :::card
 id: card-v129-sagasu-recognition
@@ -212,7 +216,8 @@ reading: ぬしぽけもん
 romaji: nushipokemon
 meaning_it: Pokémon dominante (Titan)
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  ヌシポケモン è la label dei Pokémon dominanti legati al percorso dei Titan. ヌシ
+  dà l'idea del "padrone" di un luogo; qui diventa nome di boss del gioco.
 :::
 :::term
 id: term-v131-kantan
@@ -221,7 +226,8 @@ reading: かんたん
 romaji: kantan
 meaning_it: semplice
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  {{簡単|かんたん}} valuta una cosa come semplice o poco impegnativa. Può descrivere
+  un test, una spiegazione, una mappa o una procedura.
 :::
 :::card
 id: card-v131-kantan-recognition
@@ -232,9 +238,9 @@ card_type: recognition
 front: '{{簡単|かんたん}}'
 back: semplice
 example_jp: >-
-  これは {{簡単|かんたん}} です。
+  この テストは {{簡単|かんたん}}です。
 example_it: >-
-  Questo è semplice.
+  Questo test è semplice.
 :::
 :::term
 id: term-v132-idomu
@@ -266,7 +272,8 @@ reading: どうやって
 romaji: douyatte
 meaning_it: in che modo
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  どうやって chiede il metodo: non "dove" o "quando", ma in che modo si arriva,
+  si usa qualcosa o si risolve un passaggio.
 :::
 :::card
 id: card-v133-douyatte-recognition
@@ -288,7 +295,8 @@ reading: ちず
 romaji: chizu
 meaning_it: mappa
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  {{地図|ちず}} è la mappa. Con を{{見|み}}る / を{{見|み}}ます indica l'azione di
+  controllare la destinazione o la posizione.
 :::
 :::card
 id: card-v134-chizu-recognition
@@ -310,7 +318,8 @@ reading: みつける
 romaji: mitsu keru
 meaning_it: trovare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  {{見|み}}つける indica che la ricerca arriva al risultato: trovare un Pokémon,
+  una persona o un punto sulla mappa.
 :::
 :::card
 id: card-v135-mitsu-keru-recognition
@@ -332,7 +341,8 @@ reading: なぜ
 romaji: naze
 meaning_it: perché
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  なぜ chiede la ragione in modo più neutro o scritto rispetto a なんで. Nei
+  dialoghi può aprire una spiegazione sul motivo di una scelta.
 :::
 :::card
 id: card-v136-naze-recognition
@@ -343,9 +353,9 @@ card_type: recognition
 front: 'なぜ'
 back: perché
 example_jp: >-
-  なぜ ですか。
+  なぜ {{行|い}}くのですか。
 example_it: >-
-  Perché?
+  Perché ci vai?
 :::
 :::term
 id: term-v137-tabi
@@ -354,7 +364,8 @@ reading: たび
 romaji: tabi
 meaning_it: viaggio
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  {{旅|たび}} indica il viaggio come percorso o avventura. Con に{{出|で}}る diventa
+  "partire per un viaggio".
 :::
 :::card
 id: card-v137-tabi-recognition

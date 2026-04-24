@@ -10,19 +10,18 @@ status: active
 tags: [starter-deck, cards, seed-freedom, gquuuuuux]
 prerequisites: [lesson-gundam-arsenal-base-battle-screen-and-core-actions, lesson-gundam-arsenal-base-modes-and-progression]
 summary: >-
-  Lezione verticale sullo starter deck ufficiale Special Starter Deck Set
-  SEED FREEDOM and GQ: leggere il frame delle carte, identificare i 10 nomi del
-  deck e gestire i pairing iniziali.
+  Leggi lo starter deck ufficiale SEED FREEDOM and GQ: frame delle carte,
+  dieci nomi del deck e pairing iniziali MS + PL.
 ---
 
 # Obiettivo
 
 Leggere il frame dello starter deck in modo affidabile.
 
-Alla fine dovresti riconoscere tre cose insieme:
+Nel frame dello starter deck, tre letture arrivano insieme:
 
 - dove leggere subito [コスト](term:term-cost), tipo MS e ruolo PL;
-- i campi card più utili da individuare a colpo d'occhio;
+- quali campi separano dati tecnici, effetto e collegamento;
 - come trasformare le 10 carte del set in 5 [ユニット](term:term-unit) facili da
   pilotare nelle prime partite.
 
@@ -31,16 +30,16 @@ Alla fine dovresti riconoscere tre cose insieme:
 Il prodotto ufficiale è `SPECIAL STARTER DECK SET [SEED FREEDOM & GQ]`. Il set include
 10 carte totali: 5 MS e 5 PL.
 
-Il set copre due aspetti fondamentali: prima, la lettura di nomi lunghi in katakana e
-label operative come
+Il set mette nello stesso mazzo due letture diverse. La prima è la lettura di
+nomi lunghi in katakana e label operative come
 [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range),
 [{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range),
 [{{機動|きどう}}](term:term-ms-type-mobility),
 [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
 [{{制圧|せいあつ}}](term:term-role-seiatsu) e
-[{{防衛|ぼうえい}}](term:term-role-bouei). Secondo: mette insieme due blocchi
-franchise molto riconoscibili, `SEED FREEDOM` e `GQuuuuuuX`, quindi include
-anche la lettura di nomi misti, parentesi e titoli ibridi.
+[{{防衛|ぼうえい}}](term:term-role-bouei), che indicano distanza d'azione,
+mobilità e ruolo della PL. La seconda è la lettura di nomi misti: `SEED FREEDOM`
+e `GQuuuuuuX` combinano latino, katakana, parentesi e titoli ibridi.
 
 ## Termini chiave
 
@@ -89,8 +88,8 @@ Le 5 PL del deck sono:
 
 La distribuzione dei ruoli PL è 2/2/1: due [{{殲滅|せんめつ}}](term:term-role-shoumetsu), due
 [{{制圧|せいあつ}}](term:term-role-seiatsu), una
-[{{防衛|ぼうえい}}](term:term-role-bouei). È subito visibile la struttura base di
-ruoli utile per leggere la curva di gioco.
+[{{防衛|ぼうえい}}](term:term-role-bouei). La riga ruolo indica subito se la
+PL rimuove unità, spinge sugli obiettivi o protegge la linea.
 
 :::image
 src: assets/cards/starter-seed-freedom-gq-contact.webp
@@ -117,13 +116,14 @@ Per leggere il frame in modo stabile usa sempre questo ordine.
   leggibile: 2, 3, 4 e poi un top-end da 7.
 - Solo per terza cosa fermati sul nome carta.
 
-Già a questo livello puoi iniziare a immaginare dove lavorerà l'unità:
+Già a questo livello puoi iniziare a leggere dove lavorerà l'unità:
 [{{前線|ぜんせん}}](term:term-frontline),
 [{{戦闘|せんとう}}](term:term-combat) ravvicinato, pressione a distanza o
 mobilità.
 
-Questo ordine evita di fermarti subito sul nome: serve per ricavare subito la funzione
-operativa della carta nel match.
+Questo ordine separa forma e funzione: il tipo MS dice distanza o mobilità, il
+ruolo PL dice il lavoro in corsia, e [コスト](term:term-cost) dice quando la
+carta entra realisticamente nel match. Il nome carta arriva dopo questi dati.
 
 Nel retro MS riconosci questi pannelli:
 
@@ -138,8 +138,8 @@ Nel retro PL, i due blocchi prioritari sono:
 - [リンクアビリティ](term:term-link-ability): il bonus di collegamento quando
   la coppia funziona bene.
 
-Se riesci a distinguere questi blocchi a vista, stai già leggendo una carta di
-Arsenal Base molto meglio di quanto sembri.
+Quando distingui questi blocchi a vista, la carta diventa un'interfaccia:
+prima il campo effetto, poi il bonus di coppia, poi l'azione speciale.
 
 ### 3. Le 5 coppie più naturali del deck
 
@@ -166,10 +166,11 @@ Per le prime partite usa le coppie più lineari del set:
   leggere nome con kanji + parentesi numerica e gestire un ruolo di
   [{{制圧|せいあつ}}](term:term-role-seiatsu) meno costoso.
 
-Usa queste 5 coppie come base iniziale: mantieni i pairing costanti finché non hai
-chiaro il ruolo di ognuna, poi valuta eventuali incroci diversi.
+Queste 5 coppie tengono stabili i ruoli iniziali: leggi prima il pairing
+naturale MS + PL, poi valuta eventuali incroci diversi quando il ruolo di ogni
+carta è già chiaro.
 
-### 4. Che giapponese ti costringe a leggere questo deck
+### 4. Che giapponese appare nel frame del deck
 
 Il deck propone tre punti di lettura ricorrenti.
 
@@ -210,8 +211,10 @@ Per avviare le prime partite con meno rumore:
 5. Conserva il pezzo da [コスト](term:term-cost) 7 per un momento in cui la
    corsia è già leggibile o la partita sta girando davvero dalla tua parte.
 
-Seguire questa traccia mantiene la lettura dei ruoli senza frammentare
-l'attenzione.
+La sequenza mantiene insieme forma e azione: [{{防衛|ぼうえい}}](term:term-role-bouei)
+protegge la linea, [{{制圧|せいあつ}}](term:term-role-seiatsu) trasforma una
+corsia libera in pressione sugli obiettivi, e
+[{{殲滅|せんめつ}}](term:term-role-shoumetsu) rimuove gli ostacoli.
 
 ### 6. Carta per carta
 
@@ -236,7 +239,9 @@ caption: >-
   [リンクアビリティ](term:term-link-ability),
   [アビリティ](term:term-ability) e
   [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack). Anche se non leggi ogni
-  riga, sapere dove sono ti orienta.
+  riga, `WEAPON` indica armi e gittata, [リンクアビリティ](term:term-link-ability)
+  il bonus di coppia, [アビリティ](term:term-ability) l'effetto MS e
+  [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack) la tecnica speciale.
 - Ruolo in campo: non aprire con questa carta. La funzione è da finisher o
   come pezzo di pressione tardiva insieme a
   [キラ・ヤマト＆ラクス・クライン](term:term-kira-yamato-lacus-clyne), quando
@@ -261,7 +266,8 @@ caption: >-
 - Sezione effetto: anche qui cerca
   [リンクアビリティ](term:term-link-ability),
   [アビリティ](term:term-ability) e
-  [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack). Il retro MS usa una grammatica visiva stabile.
+  [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack). Sono gli stessi blocchi
+  del retro MS: bonus di pairing, effetto proprio e tecnica speciale.
 - Ruolo in campo: con
   [シン・アスカ](term:term-shinn-asuka) è una delle coppie più lineari del deck.
   La lettura è: corsia aperta -> MS di
@@ -279,13 +285,16 @@ caption: >-
 
 - Giapponese da leggere: questa è la carta di riferimento per il pattern
   [～{{専用機|せん.よう.き}}](grammar:grammar-senyouki). La parentesi non è lore:
-  ti segnala una variante dedicata a
+  indica una variante dedicata a
   [ルナマリア・ホーク](term:term-lunamaria-hawk).
 - Frame: in alto a sinistra leggi
   [{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range) e
-  [コスト](term:term-cost) `2`. Questo ti dice che è una MS economica.
-- Sezione effetto: nel retro ritornano i pannelli standard MS. La lettura rapida qui
-  deve restare uguale anche su una carta poco impattante in valore nominale.
+  [コスト](term:term-cost) `2`. Il frame la marca come MS economica.
+- Sezione effetto: nel retro ritornano i pannelli standard MS. Anche su una
+  carta economica, [リンクアビリティ](term:term-link-ability),
+  [アビリティ](term:term-ability) e
+  [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack) restano nei punti da
+  controllare.
 - Ruolo in campo: insieme a
   [ルナマリア・ホーク](term:term-lunamaria-hawk) costruisce la difesa più facile
   da leggere del deck. È una leva diretta per l'asse
@@ -314,8 +323,8 @@ caption: >-
   [{{戦術技|せん.じゅつ.ぎ}}](term:term-special-attack).
 - Ruolo in campo: con
   [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu) è una coppia ottima
-  per il profilo [{{殲滅|せんめつ}}](term:term-role-shoumetsu). Serve a togliere
-  di mezzo difese o pezzi che bloccano la corsia.
+  per il profilo [{{殲滅|せんめつ}}](term:term-role-shoumetsu). La coppia rimuove
+  difese o pezzi che bloccano la corsia.
 
 #### {{赤|あか}}いガンダム(0085)
 
@@ -327,18 +336,18 @@ caption: >-
   fronte + retro.
 :::
 
-- Giapponese da leggere: il lavoro qui è doppio. `{{赤|あか}}い` ti costringe a
-  leggere un kanji dentro il nome carta; `(0085)` va letto come etichetta di
-  variante o contesto, non come numero buttato lì.
+- Giapponese da leggere: il nome combina `{{赤|あか}}い` in kanji + kana con
+  `(0085)`. L'aggettivo identifica il Gundam, mentre la parentesi numerica
+  distingue variante o contesto.
 - Frame: in alto a sinistra trovi
   [{{近距離|きん.きょ.り}}](term:term-ms-type-near-range) e
   [コスト](term:term-cost) `5`. Quindi è un pezzo intermedio, meno pesante del
   GQuuuuuuX ma ancora adatto a stare vicino al conflitto.
-- Sezione effetto: il retro ti fa vedere che anche una carta con nome in parte
+- Sezione effetto: il retro conferma che anche una carta con nome in parte
   giapponese usa la stessa grammatica visiva delle altre MS del set.
 - Ruolo in campo: con [シュウジ・イトウ](term:term-shuji-itou) forma una
-  coppia GQ a basso frizione cognitiva. È il segmento meno costoso per
-  passare alla lettura di corsia a
+  coppia GQ con nome MS in kanji + numero e PL senza alias. È il segmento meno
+  costoso per passare alla lettura di corsia a
   [{{制圧|せいあつ}}](term:term-role-seiatsu).
 
 #### キラ・ヤマト＆ラクス・クライン
@@ -382,8 +391,8 @@ caption: >-
   ruolo e costo.
 - Frame: in alto a sinistra leggi
   [{{制圧|せいあつ}}](term:term-role-seiatsu) e
-  [コスト](term:term-cost) `2`. Questo ti dice che il suo lavoro base è spingere
-  sugli obiettivi, non fare da puro duellante.
+  [コスト](term:term-cost) `2`. Il suo lavoro base è spingere sugli obiettivi,
+  non fare da puro duellante.
 - Dati PL: ritornano
   `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とう.じょう.き.たい}}`,
   quindi anche qui puoi riusare la stessa griglia di lettura delle altre PL.
@@ -436,10 +445,11 @@ caption: >-
   [コスト](term:term-cost) `4`. Quindi la carta porta un ruolo aggressivo, non
   di mera pressione agli obiettivi.
 - Dati PL: i pannelli `{{身長|しんちょう}} / {{年齢|ねんれい}} / {{所属|しょぞく}} / {{搭乗機体|とう.じょう.き.たい}}`
-  qui sono utili anche per distinguere il personaggio dal suo soprannome.
+  separano dati biografici, appartenenza e unità pilotata; il nome tra
+  parentesi resta il soprannome, non un secondo personaggio.
 - Ruolo in campo: abbinala a
-  [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu). Ti aiuta
-  a tenere unito il blocco `GQ` e a usare una coppia di
+  [GQuuuuuuX (オメガ・サイコミュ)](term:term-gquuuuuux-omega-psycommu). Il pairing
+  tiene unito il blocco `GQ` e produce una coppia di
   [{{殲滅|せんめつ}}](term:term-role-shoumetsu) molto leggibile.
 
 #### シュウジ・イトウ
@@ -459,15 +469,15 @@ caption: >-
   [アマテ・ユズリハ(マチュ)](term:term-amate-yuzuriha-machu).
 - Frame: in alto a sinistra trovi
   [{{制圧|せいあつ}}](term:term-role-seiatsu) e
-  [コスト](term:term-cost) `3`. Questo ti dice che non è la PL da lasciare a
-  guardare il centro mappa: il suo lavoro-base è trasformare una corsia aperta
-  in danno agli obiettivi.
+  [コスト](term:term-cost) `3`. Non è la PL da lasciare a guardare il centro
+  mappa: il suo lavoro-base è trasformare una corsia aperta in danno agli
+  obiettivi.
 - Dati PL: come sulle altre pilot card, il primo riferimento è il pannello
   [PLスキル](term:term-pl-skill) e poi
   [リンクアビリティ](term:term-link-ability), senza perderti nel resto.
 - Ruolo in campo: usalo con
   [{{赤|あか}}いガンダム(0085)](term:term-red-gundam-0085) per tenere leggibile
-  la seconda coppia `GQ`. In apertura di game è utile quando
+  la seconda coppia `GQ`. In apertura di game entra meglio quando
   la corsia è stata già ripulita da una coppia di
   [{{殲滅|せんめつ}}](term:term-role-shoumetsu).
 
@@ -499,6 +509,11 @@ translation_it: >-
 
 ## Nota finale
 
-Questo starter deck permette di lavorare da 10 nomi, 5 unità, 3 ruoli PL e 3 tipi MS.
-Se la lettura diventa fluida, il passaggio alle altre liste di Arsenal Base è più
-diretto.
+In questo starter deck, 10 nomi diventano 5 unità, 3 ruoli PL e 3 tipi MS.
+Quando riconosci [{{殲滅|せんめつ}}](term:term-role-shoumetsu),
+[{{制圧|せいあつ}}](term:term-role-seiatsu),
+[{{防衛|ぼうえい}}](term:term-role-bouei),
+[{{近距離|きん.きょ.り}}](term:term-ms-type-near-range),
+[{{遠距離|えん.きょ.り}}](term:term-ms-type-long-range) e
+[{{機動|きどう}}](term:term-ms-type-mobility) nel frame, le altre liste di
+Arsenal Base si leggono con la stessa griglia.

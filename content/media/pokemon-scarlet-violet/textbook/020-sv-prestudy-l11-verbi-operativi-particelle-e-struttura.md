@@ -24,7 +24,7 @@ Capire il giapponese che compare in verbi operativi, particelle e struttura: qui
 
 ## Contesto
 
-Questa lezione ruota attorno ad azioni operative e al modo in cui la frase le collega: [会う](term:term-v126-au), [決める](term:term-v127-kime-ru), [探す](term:term-v129-sagasu) e [挑む](term:term-v132-idomu) dicono che cosa fai; [どうやって](term:term-v133-douyatte) chiede il modo; [地図](term:term-v134-chizu) segnala l'orientamento.
+Questa lezione ruota attorno ad azioni operative e al modo in cui la frase le collega: [会う](term:term-v126-au), [決める](term:term-v127-kime-ru), [探す](term:term-v129-sagasu) e [挑む](term:term-v132-idomu) dicono che cosa fai; [どうやって](term:term-v133-douyatte) chiede il modo; [地図](term:term-v134-chizu) porta la lettura su mappa e destinazione.
 
 ## Termini chiave
 
@@ -60,7 +60,7 @@ Le espressioni come [ちょっと待って](term:term-e023-chotto-matsu-te) e [�
 
 Sul piano grammaticale, [は](grammar:grammar-g031-marca-il-tema) marca il tema della frase, [へ](grammar:grammar-g032-verso) marca la direzione verso cui vai, e [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene usato o toccato dall'azione. In pratica: `Aは...` dice di che cosa stai parlando, `Bへ行く` dice dove vai, `Xを使う` dice che cosa usi.
 
-Accanto a questo nucleo resta [ヌシポケモン](term:term-v130-nushipokemon), una label specifica del mondo di gioco: riconoscila al volo come riferimento al Pokémon dominante, non come lessico generico.
+[ヌシポケモン](term:term-v130-nushipokemon) è una label specifica del mondo di gioco: ヌシ richiama il dominante di una zona, mentre ポケモン fissa il referente come boss del percorso dei Titan.
 
 ## Esempi guidati
 
@@ -101,4 +101,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri queste frasi, controlla prima il tema della frase, poi che cosa viene usato o sfidato e infine verso dove va l'azione. È lì che il blocco diventa leggibile.
+Quando incontri queste frasi, controlla prima il tema marcato da は, poi l'oggetto marcato da を e infine la direzione marcata da へ. Così distingui chi o che cosa si decide, si cerca, si usa o si sfida.

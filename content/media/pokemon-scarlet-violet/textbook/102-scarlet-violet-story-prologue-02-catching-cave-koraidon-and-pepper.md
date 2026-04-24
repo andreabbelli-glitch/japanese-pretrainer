@@ -28,7 +28,7 @@ Questo capitolo è il vero ponte tra introduzione narrativa e gioco reale. Dopo
 la scelta dello starter e il primo match, Scarlet / Violet ti chiede di fare
 quello che farai per tutto il resto dell'avventura: affrontare
 [{{野生|やせい}}](term:term-yasei) Pokemon, capire quando
-[{{回復|かいふく}}](term:term-kaifuku), orientarti sul campo e leggere dialoghi che
+[{{回復|かいふく}}](term:term-kaifuku), muoverti sul campo e leggere dialoghi che
 non spiegano solo la storia ma anche che cosa devi fare subito.
 
 Qui cambiano anche i registri. Nemona parla in modo amichevole e didattico,
@@ -65,8 +65,8 @@ morbido e dialogo caratteriale.
 
 ## Spiegazione
 
-La prima parola da fissare in questo blocco è
-[{{捕獲|ほかく}}](term:term-hokaku). Nel tutorial di Nemona non vuol dire
+[{{捕獲|ほかく}}](term:term-hokaku) è la parola che trasforma il primo tratto di
+percorso in tutorial di cattura. Nel dialogo di Nemona non vuol dire
 semplicemente "prendere un Pokemon" nel senso vago del verbo: nomina proprio la
 pratica della cattura come attività di gioco. Quando ti chiede se la
 [{{捕獲|ほかく}}](term:term-hokaku) procede bene, il punto non è solo quanti
@@ -124,13 +124,14 @@ Nello stesso blocco il suono conta quasi quanto l'immagine. Una
 [{{鳴|な}}き{{声|ごえ}}](term:term-nakigoe) sconosciuta non serve solo a creare
 atmosfera: nel prologo è l'indizio che ti spinge a investigare un punto preciso
 del percorso e ad associare un verso a una presenza reale. Questo dettaglio
-aiuta a leggere meglio la transizione tra esplorazione libera e scena scriptata.
+segna la transizione tra esplorazione libera e scena scriptata: il suono fa da
+bersaglio, poi il gioco sposta la visuale sul punto da investigare.
 
 :::image
 src: assets/story/inlet-cave-houndour-warning.webp
 alt: "Area della grotta iniziale vicino al faro con ambiente roccioso e Pokemon selvatici del luogo."
 caption: >-
-  Un'immagine della grotta o dell'area vicina al faro aiuta a leggere [{{生息|せいそく}}する](term:term-seisoku-suru) come informazione di gameplay: certe specie appartengono davvero a quel luogo.
+  Un'immagine della grotta o dell'area vicina al faro rende [{{生息|せいそく}}する](term:term-seisoku-suru) un'informazione di gameplay: certe specie appartengono davvero a quel luogo.
 :::
 
 Il pattern [～ながら](grammar:grammar-nagara) entra bene nella frase in cui il
@@ -147,8 +148,9 @@ indica solo l'aspetto esteriore del Pokemon misterioso: segnala il suo stato
 attuale, cioè la forma indebolita in cui si trova dopo avere consumato la sua
 forza. Per questo la frase `この {{姿|すがた}}じゃ {{戦|たたか}}えねえ` va letta come
 "in questo stato non può ancora combattere", non come un commento estetico.
-Capire [{{姿|すがた}}](term:term-sugata) ti aiuterà più avanti ogni volta che
-incontrerai forme, cambiamenti o condizioni speciali.
+[{{姿|すがた}}](term:term-sugata) tornerà più avanti ogni volta che il gioco parla
+di forme, cambiamenti o condizioni speciali: qui introduce già una differenza di
+stato con conseguenze di battaglia.
 
 Per leggere fino in fondo questa scena conviene agganciare anche due espressioni
 molto concrete: [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu)
@@ -161,7 +163,7 @@ la scena come esaurimento reale di risorse, non come semplice posa drammatica.
 src: assets/story/weakened-legendary-cave-scene.webp
 alt: "Koraidon in una forma speciale del prologo accanto al protagonista."
 caption: >-
-  Il leggendario appare qui in una [{{姿|すがた}}](term:term-sugata) diversa da quella di un Pokemon da battaglia normale: il visuale aiuta a leggere la scena come cambio di stato, non come semplice incontro casuale.
+  Il leggendario appare qui in una [{{姿|すがた}}](term:term-sugata) diversa da quella di un Pokemon da battaglia normale: il visuale mostra un cambio di stato, non un semplice incontro casuale.
 :::
 
 In questo stesso blocco torna utile [～てしまう](grammar:grammar-te-shimau).
@@ -176,16 +178,16 @@ L'ultimo nucleo importante è quello di Pepper.
 [{{制御|せいぎょ}}する](term:term-seigyo-suru) è più avanzato del livello base,
 ma in questa scena vale la pena includerlo perché spiega davvero che cos'è la
 Ball che ti consegna. Non è una semplice Pokeball trovata per caso: è l'oggetto
-che serve a gestire quel Pokemon specifico. Capire
-[{{制御|せいぎょ}}する](term:term-seigyo-suru) ti fa leggere bene il rapporto tra
-Pepper e il leggendario e ti prepara al fatto che Koraidon / Miraidon non entra
-nel gioco come un normale Pokemon appena catturato.
+che serve a gestire quel Pokemon specifico. [{{制御|せいぎょ}}する](term:term-seigyo-suru)
+definisce il rapporto tra Pepper e il leggendario: la Ball non serve a
+"possedere" un Pokemon qualunque, ma a gestire una creatura che non entra nel
+gioco come una normale cattura.
 
 :::image
 src: assets/story/pepper-control-ball.webp
 alt: "Pepper in primo piano con una Monster Ball tesa in avanti verso il giocatore."
 caption: >-
-  Pepper entra in scena con la Ball in mano: il visuale aiuta a legare il suo tono ruvido a [{{制御|せいぎょ}}する](term:term-seigyo-suru), cioe l'idea che quell'oggetto serva a gestire il Pokemon misterioso.
+  Pepper entra in scena con la Ball in mano: il visuale lega il suo tono ruvido a [{{制御|せいぎょ}}する](term:term-seigyo-suru), cioe l'idea che quell'oggetto serva a gestire il Pokemon misterioso.
 :::
 
 Pepper porta anche il primo giapponese marcatamente ruvido del percorso.
@@ -202,8 +204,8 @@ Dentro questo stesso registro entrano bene
 situazione come un guaio capitato addosso; la seconda proietta subito un
 presagio negativo sul futuro. E quando Pepper osserva il Pokemon misterioso con
 forme del tipo `{{見|み}}れば {{見|み}}るほど`, il pattern
-[～ば ～ほど](grammar:grammar-ba-hodo) ti aiuta a capire che la sua impressione
-cresce man mano che continua a guardarlo.
+[～ば ～ほど](grammar:grammar-ba-hodo) dice che la sua impressione cresce man mano
+che continua a guardarlo.
 
 Infine [わざマシン](term:term-waza-machine) è la ricompensa di sistema che il
 capitolo mette in mano al giocatore prima di arrivare al Centro Pokemon del
@@ -269,7 +271,7 @@ jp: >-
   {{助|たす}}けた あとで へたりこんだ {{姿|すがた}}を {{見|み}}ると {{先|さき}}が
   {{思|おも}}いやられる。
 translation_it: >-
-  Quando lo vedi accasciarsi dopo averti aiutato, viene da pensare che quello
+  Quando lo vedi accasciarsi dopo il salvataggio, viene da pensare che quello
   che ci aspetta non sarà semplice.
 :::
 

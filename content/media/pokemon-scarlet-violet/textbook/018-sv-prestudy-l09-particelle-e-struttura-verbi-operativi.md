@@ -24,7 +24,7 @@ Capire il giapponese che compare in particelle e struttura, verbi operativi: ind
 
 ## Contesto
 
-In questo blocco compaiono parole che ti fanno leggere quantità, posizione, percorso e stato della scena. Accanto a queste ci sono anche alcune etichette di sistema o di mondo di gioco che basta riconoscere al volo quando compaiono.
+Qui compaiono parole che marcano quantità, posizione, percorso e stato della scena. [いくつ](term:term-v105-ikutsu) apre una domanda di numero, [外](term:term-v104-soto) sposta verso l'esterno, [道](term:term-v111-michi) indica il percorso e [体力](term:term-v103-tairyoku) porta la lettura sugli HP.
 
 ## Termini chiave
 
@@ -55,13 +55,13 @@ In questo blocco compaiono parole che ti fanno leggere quantità, posizione, per
 
 ## Spiegazione
 
-Parole come [体力](term:term-v103-tairyoku), [外](term:term-v104-soto) e [いくつ](term:term-v105-ikutsu) ti dicono subito se la frase parla di HP, spazio o quantità. [外] segnala il fuori o l'esterno, [いくつ] chiede quanti sono o quanti anni ha qualcuno: in gioco queste forme aiutano a leggere al volo stato, spostamento e domanda.
+Parole come [体力](term:term-v103-tairyoku), [外](term:term-v104-soto) e [いくつ](term:term-v105-ikutsu) separano tre letture diverse: stato degli HP, spazio esterno e quantità richiesta. [外](term:term-v104-soto) con へ indica uscita o direzione verso fuori; [いくつ](term:term-v105-ikutsu) chiede quanti oggetti, anni o elementi sono coinvolti.
 
 Le espressioni come [いらっしゃいませ](term:term-e019-irasshaimase) e [大丈夫？](term:term-e020-daijoubu) sono formule fisse. La prima accoglie, la seconda controlla se tutto va bene: non spiegano una regola, ma il tono con cui il gioco si rivolge a te o a un personaggio.
 
 Sul piano grammaticale, [から / まで](grammar:grammar-g025-da-fino-a) segnano inizio e fine di un percorso o di un intervallo, [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo) mette in evidenza ciò che c'è o ciò che conta, e [で](grammar:grammar-g027-luogo-dell-azione-mezzo) dice dove avviene l'azione. Qui le particelle servono a leggere subito la struttura della frase, non solo a nominarla.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [オレンジアカデミー](term:term-v107-orenjiakademii) e [テラレイドバトル](term:term-v110-terareidobatoru). Sono nomi da riconoscere al volo, legati al mondo e alle funzioni del gioco.
+[オレンジアカデミー](term:term-v107-orenjiakademii) e [テラレイドバトル](term:term-v110-terareidobatoru) sono label referenziali: la prima nomina il luogo scolastico, la seconda una modalità di raid. Quando compaiono, fissano dove si svolge la scena o quale funzione di gioco è coinvolta.
 
 ## Esempi guidati
 
@@ -95,4 +95,4 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco, leggi prima le particelle e le formule fisse: ti dicono da dove parte l'azione, che cosa si conta e se la frase è un saluto, un controllo rapido o un'indicazione di movimento.
+Nelle frasi di questa lesson, から / まで delimitano partenza e arrivo, が introduce ciò che esiste o conta, で marca luogo o mezzo. Le formule fisse chiariscono se la battuta accoglie, controlla lo stato di qualcuno o dà un'indicazione di movimento.

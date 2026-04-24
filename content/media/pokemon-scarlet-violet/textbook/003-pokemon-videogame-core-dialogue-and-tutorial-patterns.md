@@ -92,8 +92,8 @@ tuo favore. Nei Pokemon può essere un NPC che
 [{{手|て}}{{持|も}}ち](term:term-te-mochi) ti
 [{{回復|かいふく}}](term:term-kaifuku)してくれる, oppure un oggetto che ti
 toglie uno [{{状態異常|じょう.たい.い.じょう}}](term:term-joutai-ijou). Il
-punto non è solo "succede un effetto", ma "succede per aiutarti". Questa nuance
-ti aiuta a capire il ruolo benevolo di sistemi, alleati e servizi.
+punto non è solo "succede un effetto", ma "succede per aiutarti": il soggetto
+viene presentato come favorevole o cooperativo.
 
 [～ておく](grammar:grammar-teoku) è il pattern della preparazione. Nei tutorial e
 nei consigli strategici vale quasi sempre "fai questa cosa adesso e lasciala

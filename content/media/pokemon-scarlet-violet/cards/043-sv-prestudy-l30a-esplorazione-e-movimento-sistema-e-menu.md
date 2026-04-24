@@ -174,8 +174,9 @@ pattern: ～ために
 title: Per / allo scopo di
 meaning_it: per / allo scopo di
 notes_it: >-
-  Formazione: dizionario / nome + の + ために. Molto utile nei tutorial su
-  obiettivi, requisiti e benefici.
+  Formazione: verbo dizionario / nome + の + ために. In frasi come
+  `参加するために` o `移動するために` collega l'azione allo scopo: prima leggi
+  cosa fare, poi perché farlo.
 :::
 :::card
 id: card-g097-per-allo-scopo-di-concept
@@ -186,9 +187,9 @@ card_type: concept
 front: "～ために"
 back: per / allo scopo di
 example_jp: >-
-  {{日本語|に.ほん.ご}}を {{学|まな}}ぶために {{読|よ}}む。
+  ポケモンを {{探|さが}}すために マップを {{開|ひら}}きます。
 example_it: >-
-  Leggo per studiare il giapponese.
+  Apro la mappa per cercare Pokémon.
 :::
 :::term
 id: term-v485-nukeru
@@ -241,8 +242,9 @@ reading: しはらい
 romaji: shiharai
 meaning_it: pagamento
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Nei negozi e nelle schermate di conferma indica l'atto di pagare. Quando
+  compare accanto a prezzo, LP o denaro, la frase sta parlando del costo da
+  saldare, non di un oggetto ricevuto.
 :::
 :::card
 id: card-v571-shiharai-recognition
@@ -253,9 +255,9 @@ card_type: recognition
 front: "{{支払|しはら}}い"
 back: pagamento
 example_jp: >-
-  メニューで {{支払|しはら}}いを {{見|み}}ます。
+  お{{店|みせ}}で {{支払|しはら}}いを すませます。
 example_it: >-
-  Controllo il pagamento nel menu.
+  Completo il pagamento al negozio.
 :::
 :::term
 id: term-v572-kumi
@@ -264,7 +266,8 @@ reading: くみ
 romaji: kumi
 meaning_it: squadra / gruppo
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  In contesti scolastici o di squadra indica un gruppo organizzato, come una
+  classe o una sezione. Non va confuso con il semplice contare persone.
 :::
 :::card
 id: card-v572-kumi-recognition
@@ -275,9 +278,9 @@ card_type: recognition
 front: "{{組|くみ}}"
 back: squadra / gruppo
 example_jp: >-
-  これは {{組|くみ}} です。
+  {{1組|いちくみ}}は グラウンドに {{集|あつ}}まってください。
 example_it: >-
-  Questa è una squadra.
+  La classe 1 si raduni nel campo sportivo.
 :::
 :::term
 id: term-v573-deribaadopoochi
@@ -286,7 +289,9 @@ reading: デリバードポーチ
 romaji: deribaadopoochi
 meaning_it: Delibird Presents
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Nomina il negozio Delibird Presents. In mappa o nei dialoghi funziona come
+  destinazione concreta: se compare con `行く` o `買う`, la scena riguarda il
+  negozio e non il Pokemon Delibird in battaglia.
 :::
 :::term
 id: term-v574-purofiiru
@@ -295,8 +300,8 @@ reading: プロフィール
 romaji: purofiiru
 meaning_it: profilo
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica la schermata con dati del giocatore o del profilo pubblico. In menu va
+  letto come area informativa: nome, icona, commento e statistiche personali.
 :::
 :::card
 id: card-v574-purofiiru-recognition
@@ -307,9 +312,9 @@ card_type: recognition
 front: "プロフィール"
 back: profilo
 example_jp: >-
-  メニューで プロフィールを {{見|み}}ます。
+  プロフィールの アイコンを {{変|か}}えます。
 example_it: >-
-  Controllo il profilo nel menu.
+  Cambio l'icona del profilo.
 :::
 :::term
 id: term-v575-betsuni
@@ -318,7 +323,8 @@ reading: べつに
 romaji: betsuni
 meaning_it: non particolarmente
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Riduce o nega l'intensità della frase. In risposte come `別にいい` il parlante
+  non dice "separatamente", ma "non mi importa molto" o "va bene lo stesso".
 :::
 :::card
 id: card-v575-betsuni-recognition
@@ -329,9 +335,9 @@ card_type: recognition
 front: "{{別|べつ}}に"
 back: non particolarmente
 example_jp: >-
-  {{別|べつ}}に です。
+  {{別|べつ}}に {{怒|おこ}}ってないよ。
 example_it: >-
-  Non particolarmente.
+  Non sono particolarmente arrabbiato.
 :::
 :::term
 id: term-v576-gumimiawase
@@ -340,8 +346,9 @@ reading: ぐみみあわせ
 romaji: gumimiawase
 meaning_it: combinazione
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica come elementi diversi stanno insieme: mosse, oggetti, colori o opzioni
+  di menu. In una scelta pratica non descrive un pezzo singolo, ma il risultato
+  creato dalla loro relazione.
 :::
 :::card
 id: card-v576-gumimiawase-recognition
@@ -352,9 +359,9 @@ card_type: recognition
 front: "{{組|ぐ}}み{{合|みあ}}わせ"
 back: combinazione
 example_jp: >-
-  これは {{組|ぐ}}み{{合|みあ}}わせ です。
+  わざの {{組|ぐ}}み{{合|みあ}}わせを {{変|か}}えます。
 example_it: >-
-  Questa è una combinazione.
+  Cambio la combinazione delle mosse.
 :::
 :::term
 id: term-v577-taiou
@@ -363,8 +370,9 @@ reading: たいおう
 romaji: taiou
 meaning_it: compatibilità / corrispondenza
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Segnala che una funzione, un formato o un dispositivo è supportato. In UI
+  `対応` non significa solo "rispondere": dice che quella voce funziona con una
+  certa opzione.
 :::
 :::card
 id: card-v577-taiou-recognition
@@ -375,9 +383,9 @@ card_type: recognition
 front: "{{対応|たいおう}}"
 back: compatibilità / corrispondenza
 example_jp: >-
-  メニューで {{対応|たいおう}}を {{見|み}}ます。
+  この コントローラーは {{対応|たいおう}}しています。
 example_it: >-
-  Controllo la compatibilità nel menu.
+  Questo controller è supportato.
 :::
 :::term
 id: term-v578-sakamichi
@@ -386,8 +394,8 @@ reading: さかみち
 romaji: sakamichi
 meaning_it: strada in salita
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica una strada inclinata o in salita. Nei percorsi serve a leggere
+  dislivelli reali, non una direzione astratta sulla mappa.
 :::
 :::card
 id: card-v578-sakamichi-recognition
@@ -409,7 +417,8 @@ reading: そうち
 romaji: souchi
 meaning_it: dispositivo
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  Indica un dispositivo fisico o una macchina di sistema. Quando compare con
+  `使う` o `起動`, la frase parla di attivare uno strumento, non di una regola.
 :::
 :::card
 id: card-v579-souchi-recognition
@@ -420,9 +429,9 @@ card_type: recognition
 front: "{{装置|そうち}}"
 back: dispositivo
 example_jp: >-
-  メニューで {{装置|そうち}}を {{見|み}}ます。
+  {{古|ふる}}い {{装置|そうち}}を {{起動|きどう}}します。
 example_it: >-
-  Controllo il dispositivo nel menu.
+  Avvio un vecchio dispositivo.
 :::
 :::term
 id: term-v580-jidori
@@ -431,8 +440,8 @@ reading: じどり
 romaji: jidori
 meaning_it: selfie
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica uno scatto fatto a sé stessi. Nei menu foto distingue il selfie da una
+  foto del paesaggio o dei Pokemon.
 :::
 :::card
 id: card-v580-jidori-recognition
@@ -454,8 +463,8 @@ reading: とうちゃく
 romaji: touchaku
 meaning_it: arrivo
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Nomina il momento in cui arrivi a destinazione. Nei percorsi e nelle missioni
+  chiude lo spostamento: il punto segnato sulla mappa è stato raggiunto.
 :::
 :::card
 id: card-v581-touchaku-recognition
@@ -477,8 +486,8 @@ reading: とくべつこうし
 romaji: tokubetsukoushi
 meaning_it: docente speciale
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica un docente invitato o assegnato a una lezione speciale. In accademia
+  chiarisce che non stai parlando con un insegnante ordinario della classe.
 :::
 :::card
 id: card-v582-tokubetsukoushi-recognition
@@ -500,8 +509,8 @@ reading: ないよう
 romaji: naiyou
 meaning_it: contenuto
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica il contenuto o i dettagli di una schermata. Se appare in `内容を確認`,
+  il gioco sta chiedendo di controllare cosa c'è dentro prima di confermare.
 :::
 :::card
 id: card-v583-naiyou-recognition
@@ -512,9 +521,9 @@ card_type: recognition
 front: "{{内容|ないよう}}"
 back: contenuto
 example_jp: >-
-  メニューで {{内容|ないよう}}を {{見|み}}ます。
+  {{内容|ないよう}}を {{確認|かくにん}}してから {{決|き}}めます。
 example_it: >-
-  Controllo il contenuto nel menu.
+  Controllo il contenuto e poi decido.
 :::
 :::term
 id: term-v584-shiyou
@@ -523,8 +532,8 @@ reading: しよう
 romaji: shiyou
 meaning_it: uso
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica l'uso di un oggetto, una funzione o un servizio. Nei menu spesso marca
+  la differenza tra possedere qualcosa e consumarlo o attivarlo davvero.
 :::
 :::card
 id: card-v584-shiyou-recognition
@@ -535,9 +544,9 @@ card_type: recognition
 front: "{{使用|しよう}}"
 back: uso
 example_jp: >-
-  メニューで {{使用|しよう}}を {{見|み}}ます。
+  この {{道具|どうぐ}}は {{使用|しよう}}できます。
 example_it: >-
-  Controllo l'uso nel menu.
+  Questo strumento può essere usato.
 :::
 :::term
 id: term-v585-ikitomari
@@ -546,8 +555,8 @@ reading: いきとまり
 romaji: ikitomari
 meaning_it: vicolo cieco
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica un passaggio senza uscita. In esplorazione segnala che il percorso non
+  continua e che devi cambiare direzione.
 :::
 :::card
 id: card-v585-ikitomari-recognition
@@ -569,8 +578,8 @@ reading: ひょうじ
 romaji: hyouji
 meaning_it: visualizzazione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica ciò che viene mostrato a schermo. In opzioni come `表示` e `非表示`,
+  il punto non è l'oggetto in sé, ma se la UI lo rende visibile.
 :::
 :::card
 id: card-v586-hyouji-recognition
@@ -581,9 +590,9 @@ card_type: recognition
 front: "{{表示|ひょうじ}}"
 back: visualizzazione
 example_jp: >-
-  メニューで {{表示|ひょうじ}}を {{見|み}}ます。
+  マップに {{目的地|もく.てき.ち}}を {{表示|ひょうじ}}します。
 example_it: >-
-  Guardo la visualizzazione in menu.
+  Mostro la destinazione sulla mappa.
 :::
 :::term
 id: term-v587-shuui
@@ -592,8 +601,8 @@ reading: しゅうい
 romaji: shuui
 meaning_it: dintorni / area intorno
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica l'area intorno al personaggio o al punto corrente. In mappe e avvisi
+  restringe la ricerca ai dintorni, non a tutta Paldea.
 :::
 :::card
 id: card-v587-shuui-recognition
@@ -604,9 +613,9 @@ card_type: recognition
 front: "{{周囲|しゅうい}}"
 back: dintorni / area intorno
 example_jp: >-
-  ここは {{周囲|しゅうい}} です。
+  マップで {{周囲|しゅうい}}を {{確認|かくにん}}します。
 example_it: >-
-  Questi sono i dintorni.
+  Controllo i dintorni sulla mappa.
 :::
 :::term
 id: term-v588-firutaa
@@ -615,8 +624,8 @@ reading: フィルター
 romaji: firutaa
 meaning_it: filtro
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica un filtro che restringe ciò che viene mostrato. Nei menu serve a far
+  comparire solo certe voci, tipi o risultati.
 :::
 :::card
 id: card-v588-firutaa-recognition
@@ -638,6 +647,6 @@ reading: シンクロマシン
 romaji: shinkuromashin
 meaning_it: Synchro Machine
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome di una funzione DLC: `シンクロ` richiama la sincronizzazione tra giocatore
+  e Pokémon, mentre `マシン` lo presenta come dispositivo o modalità da avviare.
 :::

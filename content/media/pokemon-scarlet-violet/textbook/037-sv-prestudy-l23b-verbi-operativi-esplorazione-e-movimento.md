@@ -63,7 +63,7 @@ Le espressioni come [早く！](term:term-e078-hayaku), [次はだれ？](term:t
 
 Sul piano grammaticale, pattern come [〜なくてもいい](grammar:grammar-g082-non-e-necessario-fare) e [辞書形 + な](grammar:grammar-g083-non-fare-ordine-secco) dicono se qualcosa non è necessario o se arriva un divieto secco. I finali di frase come [よ / ね / な](grammar:grammar-g084-enfasi-conferma-tono-emotivo) cambiano poi il tono: spinta, conferma o sfumatura emotiva.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [けいけんちパワー](term:term-v413-keikenchipawaa)、 [レイドパワー](term:term-v414-reidopawaa)、 [タマゴパワー](term:term-v419-tamagopawaa). Riconoscile quando compaiono: sono nomi legati a funzioni molto specifiche del gioco.
+[けいけんちパワー](term:term-v413-keikenchipawaa)、 [レイドパワー](term:term-v414-reidopawaa) e [タマゴパワー](term:term-v419-tamagopawaa) sono nomi di bonus: il nome prima di パワー specifica se l'effetto riguarda esperienza, raid o uova. In un menu panino o bonus, questa parte iniziale decide quale risultato aspettarsi.
 
 ## Esempi guidati
 
@@ -97,4 +97,4 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco tornano soprattutto parole che indicano posizione, azione e tono della scena. Capirle bene ti fa leggere più in fretta schermate, scelte e dialoghi.
+Le parole centrali indicano posizione, azione e tono: 奥 localizza il fondo, 逃げる e 助ける definiscono l'azione, 早く！ e 無理しないで cambiano l'urgenza della battuta.

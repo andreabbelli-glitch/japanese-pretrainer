@@ -142,7 +142,8 @@ reading: さっそく
 romaji: sassoku
 meaning_it: subito / senza perdere tempo
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  さっそく apre una proposta o un comando quando l'azione parte senza attesa:
+  subito dopo ci si aspetta un movimento, una prova o una scelta.
 :::
 :::card
 id: card-v235-sassoku-recognition
@@ -153,9 +154,9 @@ card_type: recognition
 front: 'さっそく'
 back: subito / senza perdere tempo
 example_jp: >-
-  さっそく です。
+  さっそく {{行|い}}こう。
 example_it: >-
-  Si comincia subito.
+  Andiamo subito.
 :::
 :::term
 id: term-v236-zerorabo
@@ -164,8 +165,8 @@ reading: ゼロラボ
 romaji: zerorabo
 meaning_it: Zero Lab
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  ゼロラボ è un nome proprio di struttura: nei dialoghi indica un luogo specifico
+  legato alla trama, non un laboratorio qualsiasi.
 :::
 :::term
 id: term-v238-zehi
@@ -174,7 +175,8 @@ reading: ぜひ
 romaji: zehi
 meaning_it: assolutamente / ti prego
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  ぜひ rafforza inviti e richieste: in ぜひ来てください il parlante non informa
+  soltanto, ma spinge cortesemente l'altra persona ad accettare.
 :::
 :::card
 id: card-v238-zehi-recognition
@@ -185,9 +187,9 @@ card_type: recognition
 front: 'ぜひ'
 back: assolutamente / ti prego
 example_jp: >-
-  {{絶対|ぜったい}} {{行|い}}きます。
+  ぜひ {{来|き}}てください。
 example_it: >-
-  Ci vado assolutamente.
+  Vieni, ti prego.
 :::
 :::term
 id: term-v239-raidopokemon
@@ -196,8 +198,8 @@ reading: ライドポケモン
 romaji: raidopokemon
 meaning_it: Pokémon cavalcatura
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  ライドポケモン indica il Pokémon usato per muoversi: ライド specifica la funzione
+  di cavalcatura, quindi il testo sta parlando di movimento e non di lotta.
 :::
 :::term
 id: term-v240-kawa-ru
@@ -206,7 +208,8 @@ reading: かわる
 romaji: kawa ru
 meaning_it: cambiare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  変わる è intransitivo: il soggetto cambia da solo o risulta diverso, come
+  見た目が変わる. Non significa "cambiare qualcosa", che richiederebbe 変える.
 :::
 :::card
 id: card-v240-kawa-ru-recognition
@@ -217,9 +220,9 @@ card_type: recognition
 front: '{{変|か}}わる'
 back: cambiare
 example_jp: >-
-  ここで {{変|か}}わる。
+  {{見|み}}た{{目|め}}が {{変|か}}わる。
 example_it: >-
-  Qui cambia.
+  L'aspetto cambia.
 :::
 :::term
 id: term-v241-goosuto
@@ -228,8 +231,8 @@ reading: ゴースト
 romaji: goosuto
 meaning_it: spettro
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  ゴースト è il tipo Spettro. In nomi come ゴーストタイプ, la parola prima di タイプ
+  decide compatibilità e effetto della mossa.
 :::
 :::card
 id: card-v241-goosuto-recognition
@@ -240,9 +243,9 @@ card_type: recognition
 front: 'ゴースト'
 back: spettro
 example_jp: >-
-  ゴーストタイプの ポケモンです。
+  ゴーストタイプの わざを {{受|う}}ける。
 example_it: >-
-  È un Pokémon di tipo spettro.
+  Subisce una mossa di tipo Spettro.
 :::
 :::term
 id: term-v242-igai
@@ -251,7 +254,8 @@ reading: いがい
 romaji: igai
 meaning_it: inaspettato
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  意外 marca uno scarto rispetto a ciò che ci si aspettava: 意外と強い vuol dire
+  che qualcosa risulta forte contro previsione.
 :::
 :::card
 id: card-v242-igai-recognition
@@ -262,9 +266,9 @@ card_type: recognition
 front: '{{意外|いがい}}'
 back: inaspettato
 example_jp: >-
-  {{意外|いがい}} です。
+  {{意外|いがい}}と {{強|つよ}}い。
 example_it: >-
-  È inaspettato.
+  È inaspettatamente forte.
 :::
 :::term
 id: term-v244-sekai
@@ -273,7 +277,8 @@ reading: せかい
 romaji: sekai
 meaning_it: mondo
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  世界 indica il mondo come spazio o insieme di luoghi; in un open world può
+  riferirsi alla scala dell'avventura, non solo al pianeta in astratto.
 :::
 :::card
 id: card-v244-sekai-recognition
@@ -284,9 +289,9 @@ card_type: recognition
 front: '{{世界|せかい}}'
 back: mondo
 example_jp: >-
-  {{学校|がっこう}}で {{世界|せかい}}が だいじ です。
+  {{世界|せかい}}が {{広|ひろ}}い。
 example_it: >-
-  A scuola il mondo è importante.
+  Il mondo è vasto.
 :::
 :::term
 id: term-v245-tokubetsu
@@ -295,7 +300,8 @@ reading: とくべつ
 romaji: tokubetsu
 meaning_it: speciale
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  特別 qualifica qualcosa come fuori dal normale: 特別なわざ è una mossa speciale,
+  non semplicemente una mossa "buona".
 :::
 :::card
 id: card-v245-tokubetsu-recognition
@@ -306,9 +312,9 @@ card_type: recognition
 front: '{{特別|とくべつ}}'
 back: speciale
 example_jp: >-
-  {{特別|とくべつ}} です。
+  {{特別|とくべつ}}な わざを {{覚|おぼ}}える。
 example_it: >-
-  È speciale.
+  Impara una mossa speciale.
 :::
 :::term
 id: term-v246-kiroku
@@ -317,8 +323,8 @@ reading: きろく
 romaji: kiroku
 meaning_it: record / registrazione
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  記録 indica un dato salvato o un risultato registrato. In menu e riepiloghi
+  punta a qualcosa che il gioco conserva e può mostrare di nuovo.
 :::
 :::card
 id: card-v246-kiroku-recognition
@@ -329,9 +335,9 @@ card_type: recognition
 front: '{{記録|きろく}}'
 back: record / registrazione
 example_jp: >-
-  これは {{記録|きろく}} です。
+  バトルの {{記録|きろく}}を {{見|み}}る。
 example_it: >-
-  Questo è un record.
+  Guardo il record della battaglia.
 :::
 :::term
 id: term-v247-pointo
@@ -340,7 +346,8 @@ reading: ぽいんと
 romaji: pointo
 meaning_it: punti
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  ポイント conta punti o valuta di sistema. Con 増える o 使う indica una quantità
+  che aumenta o viene spesa.
 :::
 :::card
 id: card-v247-pointo-recognition
@@ -351,9 +358,9 @@ card_type: recognition
 front: 'ポイント'
 back: punti
 example_jp: >-
-  メニューで ポイントを {{見|み}}ます。
+  ポイントが {{増|ふ}}える。
 example_it: >-
-  Guardo il punti in menu.
+  I punti aumentano.
 :::
 :::term
 id: term-v248-sonzai
@@ -362,8 +369,8 @@ reading: そんざい
 romaji: sonzai
 meaning_it: esistenza
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  存在 è "esistenza/presenza" in senso nominale: 存在を知る significa venire a
+  sapere che qualcosa o qualcuno esiste davvero.
 :::
 :::card
 id: card-v248-sonzai-recognition
@@ -374,9 +381,9 @@ card_type: recognition
 front: '{{存在|そんざい}}'
 back: esistenza
 example_jp: >-
-  これは {{存在|そんざい}} です。
+  {{強|つよ}}い ポケモンの {{存在|そんざい}}を {{知|し}}る。
 example_it: >-
-  Questa è un’esistenza.
+  Vengo a sapere dell'esistenza di un Pokémon forte.
 :::
 :::term
 id: term-v249-noomaru
@@ -385,8 +392,8 @@ reading: ノーマル
 romaji: noomaru
 meaning_it: normale
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  ノーマル è il tipo Normale scritto in katakana. Va distinto da 普通, che significa
+  "normale/di solito" nel parlato comune.
 :::
 :::card
 id: card-v249-noomaru-recognition
@@ -397,9 +404,9 @@ card_type: recognition
 front: 'ノーマル'
 back: normale
 example_jp: >-
-  ノーマルタイプの ポケモンです。
+  ノーマルタイプの わざを {{使|つか}}う。
 example_it: >-
-  È un Pokémon di tipo normale.
+  Usa una mossa di tipo Normale.
 :::
 :::term
 id: term-v250-jouhou
@@ -408,8 +415,8 @@ reading: じょうほう
 romaji: jouhou
 meaning_it: informazioni
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  情報 è un'informazione o dato comunicato dal gioco. Con 受けとる, 見る o 知る
+  indica rispettivamente ricevere, vedere o venire a sapere qualcosa.
 :::
 :::card
 id: card-v250-jouhou-recognition
@@ -420,9 +427,9 @@ card_type: recognition
 front: '{{情報|じょうほう}}'
 back: informazioni
 example_jp: >-
-  メニューで {{情報|じょうほう}}を {{見|み}}ます。
+  {{新|あたら}}しい {{情報|じょうほう}}を {{受|う}}けとる。
 example_it: >-
-  Guardo l'informazione in menu.
+  Ricevo nuove informazioni.
 :::
 :::term
 id: term-v251-kankei
@@ -431,7 +438,8 @@ reading: かんけい
 romaji: kankei
 meaning_it: relazione / rapporto
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  関係 indica un legame tra persone, fatti o argomenti; 関係ない nega proprio quel
+  collegamento.
 :::
 :::card
 id: card-v251-kankei-recognition
@@ -442,9 +450,9 @@ card_type: recognition
 front: '{{関係|かんけい}}'
 back: relazione / rapporto
 example_jp: >-
-  {{関係|かんけい}} です。
+  この{{話|はなし}}は {{関係|かんけい}}ない。
 example_it: >-
-  È una questione di rapporto.
+  Questa storia non c'entra.
 :::
 :::term
 id: term-v252-sudeni
@@ -453,7 +461,8 @@ reading: すでに
 romaji: sudeni
 meaning_it: già
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  すでに dice che uno stato è già vero prima del momento presente; con 終わっている
+  segnala che l'azione non è in corso, ma completata.
 :::
 :::card
 id: card-v252-sudeni-recognition
@@ -464,9 +473,9 @@ card_type: recognition
 front: 'すでに'
 back: già
 example_jp: >-
-  もう {{行|い}}きます。
+  すでに {{終|お}}わっている。
 example_it: >-
-  Già.
+  È già finito.
 :::
 :::term
 id: term-v253-shinpai
@@ -475,7 +484,8 @@ reading: しんぱい
 romaji: shinpai
 meaning_it: preoccupazione
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  心配 è preoccupazione; con しないで diventa un invito a non preoccuparsi, spesso
+  usato per rassicurare un'altra persona.
 :::
 :::card
 id: card-v253-shinpai-recognition
@@ -486,9 +496,9 @@ card_type: recognition
 front: '{{心配|しんぱい}}'
 back: preoccupazione
 example_jp: >-
-  {{心配|しんぱい}} です。
+  {{心配|しんぱい}}しないで。
 example_it: >-
-  È preoccupante.
+  Non preoccuparti.
 :::
 :::term
 id: term-v254-yuumei
@@ -497,7 +507,8 @@ reading: ゆうめい
 romaji: yuumei
 meaning_it: famoso
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  有名 descrive qualcuno o qualcosa conosciuto da molti; 有名なトレーナー è un
+  allenatore noto, non semplicemente "bravo".
 :::
 :::card
 id: card-v254-yuumei-recognition
@@ -508,7 +519,7 @@ card_type: recognition
 front: '{{有名|ゆうめい}}'
 back: famoso
 example_jp: >-
-  {{有名|ゆうめい}} です。
+  {{有名|ゆうめい}}な トレーナーだ。
 example_it: >-
-  Famoso.
+  È un allenatore famoso.
 :::

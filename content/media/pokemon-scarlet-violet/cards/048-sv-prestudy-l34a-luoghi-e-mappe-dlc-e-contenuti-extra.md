@@ -13,7 +13,9 @@ reading: ボウルタウン
 romaji: bourutaun
 meaning_it: Artazon
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Città di Paldea associata a destinazioni, voli rapidi e percorsi verso la
+  palestra Erba; quando appare in una frase, aggancia il testo a un punto
+  preciso della mappa.
 :::
 :::term
 id: term-v685-nappeyama
@@ -22,17 +24,18 @@ reading: ナッペやま
 romaji: nappeyama
 meaning_it: Glaseado Mountain
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Area montana innevata di Paldea; compare in nomi di zona, percorsi vicini e
+  indicazioni legate a pendii, neve o spostamenti in quota.
 :::
 :::term
 id: term-v686-kimenshuu
 lemma: 鬼面衆
 reading: きめんしゅう
 romaji: kimenshuu
-meaning_it: clan / maschere dell'orco
+meaning_it: gruppo delle maschere dell'orco
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Voce del DLC legata all'evento delle maschere dell'orco; nei dialoghi può
+  indicare un gruppo locale, una sfida o personaggi collegati a quell'evento.
 :::
 :::term
 id: term-v687-chanpurutaun
@@ -41,7 +44,8 @@ reading: チャンプルタウン
 romaji: chanpurutaun
 meaning_it: Medali
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Città di Paldea che può comparire in fast travel, direzioni e obiettivi di
+  percorso; in una frase segnala una destinazione urbana.
 :::
 :::term
 id: term-v688-suiryokutaun
@@ -50,8 +54,8 @@ reading: スイリョクタウン
 romaji: suiryokutaun
 meaning_it: Mossui Town
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Villaggio principale dell'area DLC; compare come punto di arrivo per eventi,
+  dialoghi locali e spostamenti nella regione del contenuto extra.
 :::
 :::term
 id: term-v689-hakkoushiti
@@ -60,7 +64,8 @@ reading: ハッコウシティ
 romaji: hakkoushiti
 meaning_it: Levincia
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Grande città costiera di Paldea; nei menu di mappa e nei dialoghi può
+  indicare una destinazione cittadina o un riferimento a un evento urbano.
 :::
 :::term
 id: term-v690-beikutaun
@@ -69,7 +74,8 @@ reading: ベイクタウン
 romaji: beikutaun
 meaning_it: Alfornada
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Città di Paldea collocata in una zona più isolata; quando appare in una
+  schermata, di solito il testo sta parlando di viaggio, percorso o palestra.
 :::
 :::term
 id: term-v691-karafushiti
@@ -78,17 +84,18 @@ reading: カラフシティ
 romaji: karafushiti
 meaning_it: Cascarrafa
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Città di Paldea vicino al deserto; in mappa e dialoghi può indicare negozi,
+  percorsi cittadini o una tappa del viaggio.
 :::
 :::term
 id: term-v692-moyou
 lemma: 模様
 reading: もよう
 romaji: moyou
-meaning_it: motivo / pattern
+meaning_it: motivo / pattern visivo
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Descrive un motivo visivo su Pokémon, abiti, icone o decorazioni; in contesto
+  serve a distinguere aspetto, variante o dettaglio grafico.
 :::
 :::card
 id: card-v692-moyou-recognition
@@ -97,11 +104,11 @@ entry_type: term
 entry_id: term-v692-moyou
 card_type: recognition
 front: "{{模様|もよう}}"
-back: motivo / pattern
+back: motivo / pattern visivo
 example_jp: >-
-  これは {{模様|もよう}} です。
+  ポケモンの {{模様|もよう}}を {{図鑑|ずかん}}で {{見|み}}ます。
 example_it: >-
-  Questo è un motivo.
+  Guardo il motivo del Pokémon nel Pokédex.
 :::
 :::term
 id: term-v693-kanousei
@@ -110,7 +117,8 @@ reading: かのうせい
 romaji: kanousei
 meaning_it: possibilità
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  Nelle frasi con `{{可能性|か.のう.せい}}がある` indica che un incontro, un
+  evento o un risultato può avvenire, ma non è ancora certo.
 :::
 :::card
 id: card-v693-kanousei-recognition
@@ -121,9 +129,9 @@ card_type: recognition
 front: "{{可能性|か.のう.せい}}"
 back: possibilità
 example_jp: >-
-  {{可能性|か.のう.せい}} です。
+  この{{先|さき}}で {{珍|めずら}}しい ポケモンに {{会|あ}}える{{可能性|か.のう.せい}}が あります。
 example_it: >-
-  C'è una possibilità.
+  Più avanti c'è la possibilità di incontrare un Pokémon raro.
 :::
 :::term
 id: term-v694-serukurutaun
@@ -132,7 +140,8 @@ reading: セルクルタウン
 romaji: serukurutaun
 meaning_it: Cortondo
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Città iniziale di Paldea; può apparire in indicazioni di percorso, voli
+  rapidi e riferimenti a tappe vicine alla partenza.
 :::
 :::term
 id: term-v695-furijjitaun
@@ -141,7 +150,8 @@ reading: フリッジタウン
 romaji: furijjitaun
 meaning_it: Montenevera
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Località innevata di Paldea; nei testi di mappa collega la frase a una zona
+  fredda, a percorsi montani o a un obiettivo cittadino.
 :::
 :::term
 id: term-v696-kosajitaun
@@ -150,7 +160,8 @@ reading: コサジタウン
 romaji: kosajitaun
 meaning_it: Cabo Poco
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Zona di partenza del protagonista; quando compare, la frase richiama casa,
+  inizio viaggio o spostamenti verso l'area iniziale.
 :::
 :::term
 id: term-v697-sumahokabaa
@@ -159,8 +170,8 @@ reading: スマホカバー
 romaji: sumahokabaa
 meaning_it: cover dello smartphone
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Accessorio del Rotom Phone; compare in negozi e menu di personalizzazione
+  quando cambi l'aspetto dello smartphone.
 :::
 :::card
 id: card-v697-sumahokabaa-recognition
@@ -171,9 +182,9 @@ card_type: recognition
 front: "スマホカバー"
 back: cover dello smartphone
 example_jp: >-
-  メニューで スマホカバーを {{見|み}}ます。
+  ショップで スマホカバーを {{買|か}}います。
 example_it: >-
-  Nel menu vedo la cover dello smartphone.
+  Compro una cover dello smartphone al negozio.
 :::
 :::term
 id: term-v698-oojanomizuumi
@@ -182,7 +193,8 @@ reading: オージャのみずうみ
 romaji: oojanomizuumi
 meaning_it: Casseroya Lake
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Grande lago di Paldea; compare in indicazioni di area, spawn selvatici,
+  obiettivi di esplorazione e percorsi sull'acqua.
 :::
 :::term
 id: term-v699-saakurumisshon
@@ -191,8 +203,8 @@ reading: サークルミッション
 romaji: saakurumisshon
 meaning_it: missione di gruppo
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Missione da completare in una sessione di gruppo; nei menu DLC segnala un
+  obiettivo condiviso, spesso con ricompense o condizioni specifiche.
 :::
 :::card
 id: card-v699-saakurumisshon-recognition
@@ -203,9 +215,9 @@ card_type: recognition
 front: "サークルミッション"
 back: missione di gruppo
 example_jp: >-
-  メニューで サークルミッションを {{見|み}}ます。
+  ユニオンサークルで サークルミッションを {{始|はじ}}めます。
 example_it: >-
-  Nel menu vedo la missione di gruppo.
+  Nel Cerchio Unione avvio una missione di gruppo.
 :::
 :::term
 id: term-v700-haitatsu
@@ -214,8 +226,8 @@ reading: はいたつ
 romaji: haitatsu
 meaning_it: consegna
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Consegna di oggetti o informazioni; spesso si combina con un luogo di arrivo
+  e indica dove portare qualcosa.
 :::
 :::card
 id: card-v700-haitatsu-recognition
@@ -226,9 +238,9 @@ card_type: recognition
 front: "{{配達|はいたつ}}"
 back: consegna
 example_jp: >-
-  この{{先|さき}}に {{配達|はいたつ}}が あります。
+  {{配達|はいたつ}}の {{場所|ばしょ}}を マップで {{確認|かくにん}}します。
 example_it: >-
-  Più avanti c'è una consegna.
+  Controllo sulla mappa il luogo della consegna.
 :::
 :::term
 id: term-v701-tsuujou
@@ -237,8 +249,8 @@ reading: つうじょう
 romaji: tsuujou
 meaning_it: normale / standard
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Stato o modalità standard; nei menu contrasta con una variante, un effetto
+  speciale o una trasformazione.
 :::
 :::card
 id: card-v701-tsuujou-recognition
@@ -249,9 +261,9 @@ card_type: recognition
 front: "{{通常|つうじょう}}"
 back: normale / standard
 example_jp: >-
-  {{通常|つうじょう}}タイプの ポケモンです。
+  {{通常|つうじょう}}の {{姿|すがた}}に {{戻|もど}}ります。
 example_it: >-
-  È un Pokémon di tipo normale.
+  Ritorna alla forma normale.
 :::
 :::term
 id: term-v702-puratotaun
@@ -260,7 +272,8 @@ reading: プラトタウン
 romaji: puratotaun
 meaning_it: Los Platos
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Piccola città vicino all'inizio del viaggio; nei testi di mappa può indicare
+  una tappa iniziale, un punto di passaggio o un volo rapido.
 :::
 :::term
 id: term-v703-henshin
@@ -269,8 +282,8 @@ reading: へんしん
 romaji: henshin
 meaning_it: trasformazione
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Cambio di forma o aspetto; in Pokémon può essere una mossa, un effetto evento
+  o una descrizione di imitazione.
 :::
 :::card
 id: card-v703-henshin-recognition
@@ -281,19 +294,19 @@ card_type: recognition
 front: "{{変身|へんしん}}"
 back: trasformazione
 example_jp: >-
-  これは {{変身|へんしん}} です。
+  メタモンが ピカチュウに {{変身|へんしん}}します。
 example_it: >-
-  Questa è una trasformazione.
+  Ditto si trasforma in Pikachu.
 :::
 :::term
 id: term-v704-kyoten
 lemma: 拠点
 reading: きょてん
 romaji: kyoten
-meaning_it: base / punto chiave
+meaning_it: base / punto d'appoggio
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Base operativa o punto fisso di un gruppo; in Scarlet / Violet richiama
+  spesso basi del Team Star o hub di attività.
 :::
 :::card
 id: card-v704-kyoten-recognition
@@ -302,11 +315,11 @@ entry_type: term
 entry_id: term-v704-kyoten
 card_type: recognition
 front: "{{拠点|きょてん}}"
-back: base / punto chiave
+back: base / punto d'appoggio
 example_jp: >-
-  あそこが {{拠点|きょてん}} です。
+  スター{{団|だん}}の {{拠点|きょてん}}が マップに {{出|で}}ます。
 example_it: >-
-  Là c'è la base.
+  La base del Team Star appare sulla mappa.
 :::
 :::term
 id: term-v705-atonoseefekuto
@@ -315,8 +328,8 @@ reading: あとのせエフェクト
 romaji: atonoseefekuto
 meaning_it: effetto aggiunto dopo lo scatto
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Etichetta di modifica foto o decorazione: indica un effetto applicato dopo lo
+  scatto, quindi appartiene a schermate di editing.
 :::
 :::term
 id: term-v706-dekofureemu
@@ -325,8 +338,8 @@ reading: デコフレーム
 romaji: dekofureemu
 meaning_it: cornice decorativa
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Cornice decorativa in schermate foto, profilo o personalizzazione; indica il
+  bordo grafico da applicare, non un luogo.
 :::
 :::term
 id: term-v707-sentaasukuea
@@ -335,18 +348,18 @@ reading: センタースクエア
 romaji: sentaasukuea
 meaning_it: Center Square
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Piazza centrale o area hub; nel DLC può indicare un punto di ritrovo sulla
+  mappa dell'istituto o della zona.
 :::
 :::term
 id: term-v708-funiki
 lemma: 雰囲気
 reading: ふんいき
 romaji: funiki
-meaning_it: atmosfera
+meaning_it: atmosfera / mood
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Atmosfera o tono visivo di un luogo o di una stanza; nei menu di
+  personalizzazione può indicare il mood da cambiare.
 :::
 :::card
 id: card-v708-funiki-recognition
@@ -355,11 +368,11 @@ entry_type: term
 entry_id: term-v708-funiki
 card_type: recognition
 front: "{{雰囲気|ふん.い.き}}"
-back: atmosfera
+back: atmosfera / mood
 example_jp: >-
-  メニューで {{雰囲気|ふん.い.き}}を {{見|み}}ます。
+  {{部室|ぶしつ}}の {{雰囲気|ふん.い.き}}を {{変|か}}えます。
 example_it: >-
-  Nel menu vedo l'atmosfera.
+  Cambio l'atmosfera della stanza del club.
 :::
 :::term
 id: term-v709-kinomidai
@@ -368,15 +381,16 @@ reading: きのみだい
 romaji: kinomidai
 meaning_it: supporto per bacche
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Banco o supporto legato alle bacche; in minigiochi o eventi segnala il punto
+  in cui raccogliere, depositare o usare una risorsa.
 :::
 :::term
 id: term-v710-piketaun
 lemma: ピケタウン
 reading: ピケタウン
 romaji: piketaun
-meaning_it: Porto Marinada? / insediamento vicino
+meaning_it: Zapapico
 notes_it: >-
-  Nome di luogo utile per capire mappa, indicazioni e contesto.
+  Insediamento di Paldea; quando appare in mappa o nei voli rapidi indica
+  Zapapico, distinto da Porto Marinada.
 :::

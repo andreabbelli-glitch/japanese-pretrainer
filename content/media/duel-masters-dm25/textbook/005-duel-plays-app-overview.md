@@ -19,7 +19,7 @@ summary: >-
 Usa la home di `デュエプレ` per distinguere subito cosa descrive lo schermo e
 quale elemento avvia un'azione.
 
-All'apertura della home, ti serve riconoscere:
+All'apertura della home, separa quattro tipi di testo:
 
 - le etichette-base della schermata iniziale;
 - dove sono missioni, avvisi, premi e impostazioni;
@@ -179,7 +179,7 @@ l'area vera in cui sei entrato.
 jp: >-
   ホーム{{画面|がめん}}からミッション{{一覧|いちらん}}を{{開|ひら}}いて、イベントの{{進|すす}}み{{具合|ぐあい}}を{{見|み}}る。
 translation_it: >-
-  Apro il foglio con tutti gli obiettivi e guardo l'avanzamento progressivo dell'evento attuale.
+  Dalla schermata Home apro l'elenco missioni e guardo l'avanzamento dell'evento.
 :::
 
 - [～{{一覧|いちらん}}](grammar:grammar-ichiran) indica una lista.
@@ -192,7 +192,7 @@ translation_it: >-
 jp: >-
   {{開催中|かい.さい.ちゅう}}のイベントに{{参加|さんか}}して、{{特別|とくべつ}}なカードを{{手|て}}に{{入|い}}れる。
 translation_it: >-
-  Partecipo al festival speciale adesso disponibile per procurarmi le copie omaggio delle carte promo.
+  Partecipo all'evento in corso e ottengo una carta speciale.
 :::
 
 - [{{開催中|かい.さい.ちゅう}}](term:term-ongoing) segnala uno stato attivo.
@@ -204,7 +204,7 @@ translation_it: >-
 jp: >-
   デイリーミッションをクリアして、プレゼントボックスから{{報酬|ほうしゅう}}を{{受|う}}け{{取|と}}る。
 translation_it: >-
-  Risolvo gli obiettivi del giorno per andare al box dei regali e riscattare le ricompense in sospeso.
+  Completo le missioni giornaliere e riscuoto le ricompense dalla casella regali.
 :::
 
 - [{{報酬|ほうしゅう}}](term:term-reward) = ciò che ottieni;
@@ -218,7 +218,7 @@ translation_it: >-
 jp: >-
   ストーリーの{{最後|さいご}}のステージが{{未達成|み.たっ.せい}}なので、ジェムがまだ{{足|た}}りない。
 translation_it: >-
-  Poiché l'ultima battaglia storia non è completata, non ho gemme abbastanza per le bustine.
+  Poiché l'ultimo stage della storia non è completato, le gemme non sono ancora sufficienti.
 :::
 
 - [{{未|み}}～](grammar:grammar-mi-prefix) indica stato non ancora raggiunto.
@@ -234,5 +234,6 @@ Schema da applicare a ogni schermata:
 3) `azione` ([{{確認|かくにん}}](term:term-confirm), [{{受|う}}け{{取|と}}る](term:term-receive)) → tocca solo se il flusso richiede una conferma
    o un claim.
 
-Con questa lettura, `デュエプレ` diventa prevedibile: meno popup ambiguo, più
-azione concreta.
+Con questa lettura, ogni label viene classificato prima del tap: titolo di
+sezione, stato già chiuso oppure comando che cambia davvero reward, schermata o
+flusso.

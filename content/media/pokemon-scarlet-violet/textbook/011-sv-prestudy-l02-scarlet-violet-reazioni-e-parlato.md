@@ -14,9 +14,8 @@ tags:
 - phase-s
 - lesson-02
 prerequisites: []
-summary: 'Lessico ed espressioni per Scarlet/Violet, reazioni e parlato: 10 carte
-  lessicali attive, 3 formule ricorrenti, 2 pattern grammaticali e 3 etichette contestuali
-  da riconoscere.'
+summary: 'もう, よろしく, ～ないで e ～てる nei dialoghi iniziali: tempo percepito,
+  rapporto tra personaggi, richiesta negativa e parlato contratto.'
 ---
 # Obiettivo
 
@@ -24,7 +23,7 @@ Capire il giapponese che compare nelle reazioni e nel parlato di Scarlet/Violet:
 
 ## Contesto
 
-Questo blocco mescola parole discorsive, formule sociali e parlato contratto. [もう](term:term-v013-mou) cambia spesso la sfumatura temporale di una frase; [がんばって](term:term-e004-ganbatte) e [よろしく](term:term-e005-yoroshiku) sono formule che nei dialoghi fanno subito capire il tono relazionale; [～ないで](grammar:grammar-g005-senza-fare-non-fare-e) e [～てる](grammar:grammar-g006-contrazione-colloquiale-di) sono pattern molto frequenti nel parlato vivo. Se li riconosci, i dialoghi di Scarlet/Violet suonano molto meno artificiali.
+[もう](term:term-v013-mou) cambia la sfumatura temporale: `もう {{行|い}}こう` spinge verso l’azione adesso, mentre `もう {{大丈夫|だいじょうぶ}}` presenta la situazione come risolta. [がんばって](term:term-e004-ganbatte) e [よろしく](term:term-e005-yoroshiku) regolano il rapporto tra personaggi; [～ないで](grammar:grammar-g005-senza-fare-non-fare-e) ferma un’azione, e [～てる](grammar:grammar-g006-contrazione-colloquiale-di) trasforma `{{待|ま}}っている` in `{{待|ま}}ってる`, la forma parlata che compare più naturalmente nei dialoghi.
 
 ## Termini chiave
 
@@ -60,9 +59,9 @@ Tra i termini, [もう](term:term-v013-mou) è importante perché spesso non vuo
 
 [持ちきれない / 持ちきれません](term:term-e003-mochikirenai-mochikiremasen) è un messaggio da sistema: non dice genericamente che qualcosa "non va", ma che non puoi più portare altro perché hai raggiunto il limite. [がんばって](term:term-e004-ganbatte) invece è l'opposto come tono: è un incoraggiamento, quindi in una scena prima di una sfida equivale a "dai, impegnati" o "buona fortuna". [よろしく](term:term-e005-yoroshiku) non corrisponde bene a un solo italiano fisso: a seconda del contesto può voler dire "piacere", ma anche "conto su di te" o "affidiamoci l'uno all'altro". In `これから よろしく` il punto non è la presentazione neutra, ma il rapporto che inizia da questo momento in poi.
 
-[～ないで](grammar:grammar-g005-senza-fare-non-fare-e) appare spesso in richieste e divieti: `バトルしないで` è "non combattere", quindi il focus non è una negazione astratta ma l'istruzione di non fare quell'azione. [～てる](grammar:grammar-g006-contrazione-colloquiale-di) è semplicemente il parlato contratto di `～ている`: quando senti o leggi `待ってる`, il significato resta "sta aspettando", ma il tono è più naturale e colloquiale. Riconoscerlo è utile perché nei dialoghi dei personaggi il giapponese parlato taglia spesso forme che in un manuale comparirebbero complete.
+[～ないで](grammar:grammar-g005-senza-fare-non-fare-e) appare spesso in richieste e divieti: `バトルしないで` è "non combattere", quindi il focus non è una negazione astratta ma l'istruzione di non fare quell'azione. [～てる](grammar:grammar-g006-contrazione-colloquiale-di) è il parlato contratto di `～ている`: quando senti o leggi `{{待|ま}}ってる`, il significato resta "sta aspettando", ma il tono è più naturale e colloquiale. In una battuta come `ネモが {{待|ま}}ってる`, la forma tagliata fa suonare la frase come parlato vivo, non come manuale.
 
-Accanto a questo nucleo ci sono etichette contestuali come [スター団](term:term-v017-sutaa-dan), [ボタン](term:term-v018-botan) e [エリアゼロ](term:term-v022-eriazero). Qui la cosa utile non è analizzarle grammaticalmente, ma riconoscerle subito come riferimenti narrativi o geografici tipici di Scarlet/Violet.
+[スター団](term:term-v017-sutaa-dan) nomina il gruppo legato al filone scolastico dei bulli e delle basi; [ボタン](term:term-v018-botan) è il personaggio Penny quando il dialogo passa su quel filone; [エリアゼロ](term:term-v022-eriazero) è il luogo centrale della trama più avanti. Quando appaiono, il punto non è scomporli grammaticalmente: servono a capire quale ramo narrativo o quale area viene richiamata.
 
 ## Esempi guidati
 
@@ -96,4 +95,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando un dialogo ti sembra semplice ma sfuggente, controlla subito se c'è una formula sociale, una negazione richiesta o una contrazione colloquiale. In questa lesson il salto di comprensione viene soprattutto da quei dettagli.
+Quando in una battuta compaiono `もう`, `よろしく`, `しないで` o `{{待|ま}}ってる`, leggi prima la funzione della forma: urgenza o stato ormai cambiato, rapporto che inizia, azione da non fare, oppure parlato contratto. Sono dettagli brevi, ma decidono tono e direzione della scena.

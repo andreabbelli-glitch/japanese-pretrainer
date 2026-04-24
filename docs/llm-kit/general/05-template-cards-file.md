@@ -86,6 +86,9 @@ Regole pratiche:
 - ogni `:::card` deve avere sempre `example_jp` + `example_it`;
 - `example_jp` deve essere una frase completa e contestuale utile sul retro
   review, non una parola isolata o una ripetizione del `front`;
+- `example_jp` deve contenere il target della card nella forma che il learner
+  deve riconoscere; se il target e una locuzione o una forma flessa, non
+  sostituirla con una parola vicina;
 - `example_jp` deve essere centrata il piu possibile sul media attuale: usa il
   contesto, il lessico e le situazioni del media in cui la card vive, non
   scenari generici scollegati;
@@ -98,6 +101,9 @@ Regole pratiche:
 - `example_jp` deve mostrare uso vivo, non spiegazione della parola: vietate
   frasi meta-lessicali come `XにYがつくと...`, `XはYの意味`,
   `Xという言葉は...` o simili;
+- evita anche esempi da template come `これはXです`, `ここはXです`,
+  `Xがだいじです`, `Xタイプのポケモンです` quando non corrispondono a una
+  schermata o battuta naturale del media;
 - se serve spiegare composizione, famiglia lessicale o rapporto con una
   locuzione piu lunga, fallo in `notes_it`, non in `example_jp`;
 - `example_jp` non deve contenere kanji che non hanno una flashcard associata
@@ -153,6 +159,16 @@ Regole pratiche:
   locale;
 - non fermarti a formule come "X e utile/importante": `notes_it` deve dire che
   cosa significa davvero X e che cosa ti fa capire o fare nel media;
+- vieta formule generiche come "Termine tipico di...", "Parola-cerniera utile",
+  "Verbo ad alta frequenza", "ti aiuta a seguire", "ti orienta" se non sono
+  seguite da contesto, collocazione e funzione concreti;
+- per nomi astratti o tecnici, usa collocazioni naturali nel dominio del media:
+  per esempio `{{被害|ひがい}}が{{出|で}}る`,
+  `{{勝率|しょうりつ}}が{{上|あ}}がる`,
+  `{{単位|たんい}}を{{取|と}}る`,
+  `{{優先度|ゆうせんど}}が{{高|たか}}い`;
+- `example_it` deve tradurre fedelmente `example_jp`: non aggiungere lore,
+  tono letterario, spiegazioni o dettagli che non sono nella frase giapponese;
 - privilegia entry con buona spendibilita linguistica: kanji, lessico e pattern
   che puoi reincontrare anche fuori da una singola scena o da uno specifico
   media;

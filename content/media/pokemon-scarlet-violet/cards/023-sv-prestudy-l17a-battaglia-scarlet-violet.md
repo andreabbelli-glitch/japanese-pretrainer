@@ -13,7 +13,8 @@ reading: さて
 romaji: sate
 meaning_it: bene allora / dunque
 notes_it: >-
-  Apre un nuovo punto o una nuova fase.
+  さて apre una nuova fase del discorso: chiude il punto precedente e prepara la
+  battuta successiva, spesso prima di una spiegazione o di un invito.
 :::
 :::card
 id: card-e030-sate-recognition
@@ -35,7 +36,8 @@ reading: どうぞ
 romaji: douzo
 meaning_it: prego / ecco
 notes_it: >-
-  Quando qualcuno ti offre o ti invita a fare qualcosa
+  どうぞ accompagna un'offerta o un permesso: "prego", "ecco", "vai pure". Il
+  senso dipende da ciò che viene dato o concesso nella scena.
 :::
 :::card
 id: card-e031-douzo-recognition
@@ -57,7 +59,9 @@ reading: おねがいします
 romaji: onegaishimasu
 meaning_it: per favore / ti affido la cosa
 notes_it: >-
-  Richiesta educata; molto ricorrente
+  お{{願|ねが}}いします formula una richiesta educata o affida qualcosa
+  all'interlocutore; in battaglia e dialogo può chiudere una scelta con tono
+  cortese.
 :::
 :::card
 id: card-e032-onegaishimasu-recognition
@@ -79,8 +83,8 @@ reading: ちーむ
 romaji: chiimu
 meaning_it: squadra
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  チーム indica una squadra o un gruppo organizzato. In チームで{{戦|たたか}}う,
+  marca che l'azione avviene come gruppo.
 :::
 :::card
 id: card-v157-chiimu-recognition
@@ -91,9 +95,9 @@ card_type: recognition
 front: 'チーム'
 back: squadra
 example_jp: >-
-  チームです。
+  チームで {{戦|たたか}}います。
 example_it: >-
-  È la squadra.
+  Combattiamo in squadra.
 :::
 :::term
 id: term-v158-gakuen
@@ -114,9 +118,9 @@ card_type: recognition
 front: '{{学園|がくえん}}'
 back: accademia / campus
 example_jp: >-
-  ここは {{学園|がくえん}} です。
+  {{学園|がくえん}}で {{授業|じゅぎょう}}を {{受|う}}けます。
 example_it: >-
-  Questa è l'accademia.
+  Frequento le lezioni all'accademia.
 :::
 :::term
 id: term-v159-bosu
@@ -125,7 +129,8 @@ reading: ぼす
 romaji: bosu
 meaning_it: capo
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  ボス è il capo di un gruppo avversario. Nei dialoghi di Team Star identifica la
+  persona da raggiungere o affrontare.
 :::
 :::card
 id: card-v159-bosu-recognition
@@ -147,8 +152,8 @@ reading: くさ
 romaji: kusa
 meaning_it: erba
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  くさ è il tipo Erba. In くさタイプのわざ, specifica il tipo della mossa e quindi
+  quali avversari può colpire meglio o peggio.
 :::
 :::card
 id: card-v160-kusa-recognition
@@ -159,9 +164,9 @@ card_type: recognition
 front: 'くさ'
 back: erba
 example_jp: >-
-  くさタイプの ポケモンです。
+  くさタイプの わざを {{使|つか}}います。
 example_it: >-
-  È un Pokémon di tipo erba.
+  Uso una mossa di tipo Erba.
 :::
 :::term
 id: term-v161-fushigi
@@ -170,7 +175,8 @@ reading: ふしぎ
 romaji: fushigi
 meaning_it: misterioso / strano
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{不思議|ふ.し.ぎ}} descrive qualcosa che non torna, sembra misterioso o provoca
+  curiosità. Con ですね diventa una reazione condivisa: "è strano, vero?".
 :::
 :::card
 id: card-v161-fushigi-recognition
@@ -192,8 +198,8 @@ reading: だめーじ
 romaji: dameeji
 meaning_it: danno
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  ダメージ è il danno subito o inflitto. Con が{{大|おお}}きい segnala che l'impatto
+  della mossa è forte.
 :::
 :::card
 id: card-v162-dameeji-recognition
@@ -215,8 +221,8 @@ reading: スパイス
 romaji: supaisu
 meaning_it: spezia
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  スパイス indica la spezia. In Scarlet/Violet si lega alle Herba Mystica e ai
+  pasti che producono effetti.
 :::
 :::card
 id: card-v163-supaisu-recognition
@@ -238,7 +244,8 @@ reading: あじと
 romaji: ajito
 meaning_it: base / nascondiglio
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  アジト è una base o nascondiglio. In una scena di Team Star indica il luogo da
+  trovare, raggiungere o assaltare.
 :::
 :::card
 id: card-v165-ajito-recognition
@@ -249,9 +256,9 @@ card_type: recognition
 front: 'アジト'
 back: base / nascondiglio
 example_jp: >-
-  あそこが アジト です。
+  あそこが チームの アジトです。
 example_it: >-
-  Là è base.
+  Là è la base della squadra.
 :::
 :::term
 id: term-v166-ryouri
@@ -260,8 +267,8 @@ reading: りょうり
 romaji: ryouri
 meaning_it: cucina / piatto
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  {{料理|りょうり}} può indicare l'atto di cucinare o il piatto preparato. Con
+  を{{作|つく}}る il senso è "preparare un piatto".
 :::
 :::card
 id: card-v166-ryouri-recognition
@@ -274,7 +281,7 @@ back: cucina / piatto
 example_jp: >-
   {{料理|りょうり}}を {{作|つく}}ります。
 example_it: >-
-  Preparo la cucina.
+  Preparo un piatto.
 :::
 :::term
 id: term-v167-nushi
@@ -283,8 +290,8 @@ reading: ヌシ
 romaji: nushi
 meaning_it: Titan / boss dominante
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  ヌシ è il "dominante" associato ai Titan. In gioco non indica un padrone
+  qualunque, ma il boss che controlla una zona o una risorsa.
 :::
 :::term
 id: term-v168-kouchou
@@ -293,7 +300,8 @@ reading: こうちょう
 romaji: kouchou
 meaning_it: preside
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  {{校長|こうちょう}} è il preside. Con と{{話|はな}}す indica un dialogo con la
+  figura che rappresenta l'Accademia.
 :::
 :::card
 id: card-v168-kouchou-recognition
@@ -315,7 +323,8 @@ reading: あたらしい
 romaji: atarashii
 meaning_it: nuovo
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  {{新|あたら}}しい descrive qualcosa appena ottenuto, introdotto o non ancora
+  familiare: una mossa, una funzione, un percorso.
 :::
 :::card
 id: card-v169-atarashii-recognition
@@ -326,9 +335,9 @@ card_type: recognition
 front: '{{新|あたら}}しい'
 back: nuovo
 example_jp: >-
-  これは {{新|あたら}}しい ものです。
+  {{新|あたら}}しい わざを {{覚|おぼ}}えた。
 example_it: >-
-  Questa è una cosa nuova.
+  Ha imparato una nuova mossa.
 :::
 :::term
 id: term-v170-honoo
@@ -337,8 +346,8 @@ reading: ほのお
 romaji: honoo
 meaning_it: fuoco
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  ほのお è il tipo Fuoco. In ほのおタイプのわざ, specifica il tipo della mossa e il
+  suo rapporto con debolezze e resistenze.
 :::
 :::card
 id: card-v170-honoo-recognition
@@ -349,9 +358,9 @@ card_type: recognition
 front: 'ほのお'
 back: fuoco
 example_jp: >-
-  ほのおタイプの ポケモンです。
+  ほのおタイプの わざを {{使|つか}}います。
 example_it: >-
-  È un Pokémon di tipo fuoco.
+  Uso una mossa di tipo Fuoco.
 :::
 :::term
 id: term-v171-ranku
@@ -360,8 +369,8 @@ reading: ランク
 romaji: ranku
 meaning_it: rank / grado
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  ランク indica un grado o livello classificato. Con が{{高|たか}}い descrive un
+  rank alto, non una quantità fisica.
 :::
 :::card
 id: card-v171-ranku-recognition
@@ -374,7 +383,7 @@ back: rank / grado
 example_jp: >-
   ランクが {{高|たか}}いです。
 example_it: >-
-  Il rank è alta.
+  Il rank è alto.
 :::
 :::term
 id: term-v172-dasu
@@ -383,8 +392,8 @@ reading: だす
 romaji: dasu
 meaning_it: mandare fuori / far entrare in campo
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{出|だ}}す significa "far uscire / mettere fuori". In battaglia, ポケモンを
+  {{出|だ}}す è mandare un Pokémon in campo.
 :::
 :::card
 id: card-v172-dasu-recognition
@@ -406,8 +415,7 @@ reading: みず
 romaji: mizu
 meaning_it: acqua
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  みず è il tipo Acqua. In みずタイプのわざ, specifica il tipo della mossa.
 :::
 :::card
 id: card-v173-mizu-recognition
@@ -418,9 +426,9 @@ card_type: recognition
 front: 'みず'
 back: acqua
 example_jp: >-
-  みずタイプの ポケモンです。
+  みずタイプの わざを {{使|つか}}います。
 example_it: >-
-  È un Pokémon di tipo acqua.
+  Uso una mossa di tipo Acqua.
 :::
 :::term
 id: term-v174-benkyou
@@ -443,7 +451,7 @@ back: studio
 example_jp: >-
   {{家|いえ}}で {{勉強|べんきょう}}します。
 example_it: >-
-  Studio.
+  Studio a casa.
 :::
 :::term
 id: term-v175-ijou
@@ -452,7 +460,8 @@ reading: いじょう
 romaji: ijou
 meaning_it: più di / oltre
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{以上|いじょう}} marca il limite superiore già superato o raggiunto: これ以上 è
+  "più di così / oltre questo".
 :::
 :::card
 id: card-v175-ijou-recognition
@@ -465,7 +474,7 @@ back: più di / oltre
 example_jp: >-
   これ{{以上|いじょう}}は むりです。
 example_it: >-
-  Più di.
+  Più di così è impossibile.
 :::
 :::term
 id: term-v176-chikara
@@ -474,8 +483,8 @@ reading: ちから
 romaji: chikara
 meaning_it: forza / potere
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{力|ちから}} è forza o potere. Con がある indica che qualcuno o qualcosa possiede
+  potenza reale, non solo autorità.
 :::
 :::card
 id: card-v176-chikara-recognition

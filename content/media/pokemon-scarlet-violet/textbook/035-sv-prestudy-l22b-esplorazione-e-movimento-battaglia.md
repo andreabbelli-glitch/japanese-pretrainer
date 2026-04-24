@@ -64,7 +64,7 @@ In Scarlet / Violet alcune parole tornano come lessico riusabile, mentre nomi pr
 
 Sul piano grammaticale, [〜ことになる](grammar:grammar-g075-si-decide-che-finire-per) dice che qualcosa finisce per essere deciso o stabilito dall'esterno; [〜ことにする](grammar:grammar-g076-decidere-di-fare) dice che il parlante decide di farlo; [〜ようにする](grammar:grammar-g077-fare-in-modo-di) dice che cerca di fare in modo che succeda. Non sono formule astratte: cambiano il senso concreto tra decisione, conseguenza e intenzione.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ほかくパワー](term:term-v374-hokakupawaa)、 [ゼロゲート](term:term-v382-zerogeeto)、 [団ラッシュ](term:term-v392-danrasshu). Qui la cosa utile non è analizzarle come lessico generale, ma riconoscerle subito come riferimenti molto specifici della scena.
+[ほかくパワー](term:term-v374-hokakupawaa) nomina un bonus alla cattura, [ゼロゲート](term:term-v382-zerogeeto) un luogo specifico e [団ラッシュ](term:term-v392-danrasshu) una modalità di assalto legata al Team Star. Quando compaiono, distinguono bonus, luogo e sfida: tre funzioni diverse anche se tutte molto specifiche di Scarlet/Violet.
 
 ## Esempi guidati
 
@@ -98,4 +98,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri queste schermate o queste battute, controlla subito se il testo ti sta dando un avviso, un consiglio, una richiesta o una decisione sul da farsi. In questo blocco la comprensione passa soprattutto da quei segnali.
+Quando incontri queste schermate o battute, controlla la funzione della frase: アドバイス introduce un consiglio, してくれない？ chiede un favore, 本当に よろしいですか？ ferma l'azione per conferma, ことにする marca una decisione.

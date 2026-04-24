@@ -13,7 +13,8 @@ reading: きをつけて
 romaji: kiwo tsukete
 meaning_it: stai attento
 notes_it: >-
-  Molto comune prima di partire o affrontare qualcosa di rischioso.
+  Avviso gentile prima di partire, esplorare o affrontare qualcosa di rischioso.
+  Non descrive il pericolo: chiede di muoversi con cautela.
 :::
 :::card
 id: card-e012-kiwo-tsukete-recognition
@@ -35,7 +36,8 @@ reading: すごい！
 romaji: sugoi !
 meaning_it: forte! / incredibile!
 notes_it: >-
-  Reazione entusiasta o ammirata.
+  Reazione immediata di sorpresa o ammirazione. Può rispondere a una vittoria,
+  a una mossa riuscita o a un risultato inatteso.
 :::
 :::card
 id: card-e013-sugoi-recognition
@@ -90,9 +92,9 @@ card_type: concept
 front: '～{{後|あと}}で / ～あとで'
 back: dopo aver fatto... / dopo...
 example_jp: >-
-  あとで {{行|い}}く。
+  バトルの {{後|あと}}で {{回復|かいふく}}する。
 example_it: >-
-  Ci vado dopo.
+  Dopo la lotta mi rimetto in sesto.
 :::
 :::term
 id: term-v051-kouka
@@ -101,8 +103,8 @@ reading: こうか
 romaji: kouka
 meaning_it: effetto
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Indica l’effetto prodotto da una mossa, un oggetto o un bonus. In battaglia
+  va letto con bersaglio e tipo: quale risultato ha avuto su chi.
 :::
 :::card
 id: card-v051-kouka-recognition
@@ -113,9 +115,9 @@ card_type: recognition
 front: '{{効果|こうか}}'
 back: effetto
 example_jp: >-
-  この わざの {{効果|こうか}}を {{見|み}}ます。
+  この わざは みずタイプに {{効果|こうか}}が あります。
 example_it: >-
-  Controllo l'effetto di questa mossa.
+  Questa mossa ha effetto sul tipo Acqua.
 :::
 :::term
 id: term-v052-shokuzai
@@ -124,8 +126,8 @@ reading: しょくざい
 romaji: shokuzai
 meaning_it: ingrediente
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  È l’ingrediente usato nei picnic e nei sandwich. Vicino a {{買|か}}う,
+  {{使|つか}}う o {{作|つく}}る indica preparazione del cibo, non un oggetto qualsiasi.
 :::
 :::card
 id: card-v052-shokuzai-recognition
@@ -136,9 +138,9 @@ card_type: recognition
 front: '{{食材|しょくざい}}'
 back: ingrediente
 example_jp: >-
-  {{食材|しょくざい}}を {{買|か}}います。
+  ピクニックで {{食材|しょくざい}}を {{使|つか}}う。
 example_it: >-
-  Compro un ingrediente.
+  Uso gli ingredienti durante il picnic.
 :::
 :::term
 id: term-v053-hakase
@@ -147,8 +149,8 @@ reading: はかせ
 romaji: hakase
 meaning_it: professore / ricercatore
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica un professore o ricercatore. Nei dialoghi può essere la persona che
+  spiega Pokémon, ricerca o dati del {{図鑑|ずかん}}.
 :::
 :::card
 id: card-v053-hakase-recognition
@@ -159,9 +161,9 @@ card_type: recognition
 front: '{{博士|はかせ}}'
 back: professore / ricercatore
 example_jp: >-
-  {{博士|はかせ}}と {{話|はな}}します。
+  {{博士|はかせ}}に {{図鑑|ずかん}}を {{見|み}}せる。
 example_it: >-
-  Parlo con il professore.
+  Mostro il Pokédex al professore.
 :::
 :::term
 id: term-v054-zukan
@@ -170,8 +172,8 @@ reading: ずかん
 romaji: zukan
 meaning_it: Pokédex / enciclopedia
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  È il registro dei Pokémon visti o catturati. Con {{登録|とうろく}}する indica che
+  una voce viene aggiunta, non solo guardata.
 :::
 :::card
 id: card-v054-zukan-recognition
@@ -182,9 +184,9 @@ card_type: recognition
 front: '{{図鑑|ずかん}}'
 back: Pokédex / enciclopedia
 example_jp: >-
-  {{図鑑|ずかん}}を {{見|み}}ます。
+  {{新|あたら}}しい ポケモンを {{図鑑|ずかん}}に {{登録|とうろく}}する。
 example_it: >-
-  Controllo il Pokédex.
+  Registro un nuovo Pokémon nel Pokédex.
 :::
 :::term
 id: term-v055-donna
@@ -193,7 +195,8 @@ reading: どんな
 romaji: donna
 meaning_it: che tipo di
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  Chiede la qualità o il tipo di qualcosa. In `どんな わざ` cerca una categoria
+  precisa, non una risposta sì/no.
 :::
 :::card
 id: card-v055-donna-recognition
@@ -204,9 +207,9 @@ card_type: recognition
 front: 'どんな'
 back: che tipo di
 example_jp: >-
-  どんな ポケモン ですか。
+  どんな わざを {{使|つか}}いますか。
 example_it: >-
-  Che tipo di Pokémon è?
+  Che tipo di mossa usi?
 :::
 :::term
 id: term-v056-chanto
@@ -232,9 +235,9 @@ card_type: recognition
 front: 'ちゃんと'
 back: come si deve / per bene
 example_jp: >-
-  ちゃんと {{見|み}}てください。
+  マップを ちゃんと {{見|み}}てから {{行|い}}こう。
 example_it: >-
-  Guarda bene, per favore.
+  Andiamo dopo aver guardato bene la mappa.
 :::
 :::term
 id: term-v057-naka
@@ -243,7 +246,8 @@ reading: なか
 romaji: naka
 meaning_it: dentro / interno / in mezzo
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  Indica l’interno o il mezzo di uno spazio. In バッグの {{中|なか}} punta al
+  contenuto della borsa, non al movimento.
 :::
 :::card
 id: card-v057-naka-recognition
@@ -254,9 +258,9 @@ card_type: recognition
 front: '{{中|なか}}'
 back: dentro / interno / in mezzo
 example_jp: >-
-  バッグの {{中|なか}}です。
+  バッグの {{中|なか}}に {{道具|どうぐ}}が あります。
 example_it: >-
-  È nella borsa.
+  Nella borsa ci sono degli strumenti.
 :::
 :::term
 id: term-v058-tsukuru
@@ -265,7 +269,8 @@ reading: つくる
 romaji: tsukuru
 meaning_it: creare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Indica creare o preparare qualcosa. In Scarlet / Violet compare naturalmente
+  con サンドウィッチ e {{食材|しょくざい}} nei picnic.
 :::
 :::card
 id: card-v058-tsukuru-recognition
@@ -287,8 +292,8 @@ reading: ピクニック
 romaji: pikunikku
 meaning_it: picnic
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  In Scarlet / Violet è una funzione di campo: riposo, cura e preparazione dei
+  sandwich con i Pokémon fuori dalla lotta.
 :::
 :::card
 id: card-v059-pikunikku-recognition
@@ -299,9 +304,9 @@ card_type: recognition
 front: 'ピクニック'
 back: picnic
 example_jp: >-
-  ここで ピクニック します。
+  ピクニックで サンドウィッチを {{作|つく}}る。
 example_it: >-
-  Qui faccio un picnic.
+  Durante il picnic preparo un sandwich.
 :::
 :::term
 id: term-v060-saigo
@@ -310,7 +315,8 @@ reading: さいご
 romaji: saigo
 meaning_it: ultimo
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Indica l’ultimo elemento o la parte finale di una sequenza. In percorsi e
+  sfide può segnare l’ultima medaglia, ultima prova o ultima domanda.
 :::
 :::card
 id: card-v060-saigo-recognition
@@ -321,9 +327,9 @@ card_type: recognition
 front: '{{最後|さいご}}'
 back: ultimo
 example_jp: >-
-  これが {{最後|さいご}} です。
+  {{最後|さいご}}の バッジを もらう。
 example_it: >-
-  Questo è l’ultimo.
+  Ricevo l’ultima medaglia.
 :::
 :::term
 id: term-v061-kitto
@@ -332,7 +338,8 @@ reading: きっと
 romaji: kitto
 meaning_it: sicuramente
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Esprime una previsione sicura dal punto di vista del parlante. Non è prova
+  oggettiva: è fiducia forte che qualcosa andrà in quel modo.
 :::
 :::card
 id: card-v061-kitto-recognition
@@ -343,7 +350,7 @@ card_type: recognition
 front: 'きっと'
 back: sicuramente
 example_jp: >-
-  きっと {{大丈夫|だい.じょう.ぶ}} です。
+  きっと ネモも {{来|く}}ると {{思|おも}}う。
 example_it: >-
-  Andrà bene di sicuro.
+  Penso che sicuramente verrà anche Nemona.
 :::

@@ -109,7 +109,7 @@ alt: >-
   Popup che avvisa della mancanza di DMポイント e propone il flusso di
   dismantle carte come azione successiva.
 caption: >-
-  Il popup identifica il blocco reale (`DMポイントが[{{不足|ふそく}}](term:term-shortage)しています`)
+  Il popup identifica il blocco reale (`DMポイントが{{不足|ふそく}}しています`)
   e propone subito il flusso di recupero (`カード{{分解|ぶんかい}}しますか？`).
 :::
 
@@ -176,9 +176,9 @@ In [デッキ{{一覧|いちらん}}](term:term-deck-list) la UI ti mette davant
 livelli di lettura:
 
 - lista dei mazzi disponibili;
-- focus sul deck selezionato;
+- pannello del deck selezionato;
 - pannello [キーカード](term:term-key-card) per capire l'identità del mazzo;
-- pulsanti finali come `デッキ[{{概要|がいよう}}](term:term-overview)`,
+- pulsanti finali come [デッキ{{概要|がいよう}}](term:term-overview),
   `レジェンドスキル{{確認|かくにん}}`
   e [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
 
@@ -192,7 +192,7 @@ identità rapida del deck.
 
 Classifica i pulsanti per funzione:
 
-- `デッキ[{{概要|がいよう}}](term:term-overview)` e
+- [デッキ{{概要|がいよう}}](term:term-overview) e
   `デッキ{{確認|かくにん}}` = ispezioni;
 - `デッキ{{編成|へんせい}}` = modifichi;
 - [{{対戦開始|たい.せん.かい.し}}](term:term-start-match) = parti davvero.
@@ -207,7 +207,7 @@ Così eviti di trattare pulsanti diversi come varianti dello stesso flusso.
 jp: >-
   {{限定|げんてい}}カードの{{交換期間|こう.かん.き.かん}}は{{3月26日|さんがつにじゅうろくにち}}までなので、{{急|いそ}}いでDMポイントをあつめる。
 translation_it: >-
-  La finestra di scambio delle carte evento dura fino al 26 Marzo, per cui mi sbrigo a raccogliere i punti.
+  Il periodo di scambio della carta limitata dura fino al 26 marzo, quindi mi sbrigo a raccogliere DM Points.
 :::
 
 - [{{交換期間|こう.かん.き.かん}}](term:term-exchange-period) non è il prezzo, ma la
@@ -221,7 +221,7 @@ translation_it: >-
 jp: >-
   DMポイントが{{不足|ふそく}}しているのでカードを{{分解|ぶんかい}}する。
 translation_it: >-
-  I DM Points non bastano, quindi smonta una carta.
+  I DM Points non bastano, quindi smonto una carta.
 :::
 
 - Il messaggio individua il blocco reale: la risorsa.
@@ -234,11 +234,11 @@ translation_it: >-
 jp: >-
   {{販売期間|はん.ばい.き.かん}}を{{見|み}}てから{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}を{{決|き}}める。
 translation_it: >-
-  Controlla il periodo di vendita prima di decidere se comprare il deck
-  prebuilt.
+  Guardo il periodo di vendita e poi decido se comprare il deck prebuilt.
 :::
 
-- [{{販売期間|はん.ばい.き.かん}}](term:term-sale-period) ti orienta sul tempo.
+- [{{販売期間|はん.ばい.き.かん}}](term:term-sale-period) indica la finestra in cui
+  il prodotto resta acquistabile.
 - [{{構築|こうちく}}{{済|ず}}みデッキ{{購入|こうにゅう}}](term:term-constructed-deck-purchase)
   ti dice il tipo di prodotto che stai guardando.
 
@@ -252,11 +252,13 @@ translation_it: >-
 :::
 
 - [デッキ{{一覧|いちらん}}](term:term-deck-list) è una schermata di scelta.
-- [キーカード](term:term-key-card) ti aiuta a capire velocemente il mazzo che
-  stai per usare.
+- [キーカード](term:term-key-card) nomina la carta centrale da controllare prima
+  di premere [{{対戦開始|たい.せん.かい.し}}](term:term-start-match).
 
 ## Nota finale
 
-Queste schermate insegnano una regola molto utile: prima di partire, leggi
-sempre *finestra attiva*, *risorsa disponibile* e *contesto del deck*. È lì che
-la UI di `デュエプレ` ti dice se l'azione è davvero pronta oppure no.
+Prima di partire, leggi sempre *finestra attiva*, *risorsa disponibile* e
+*contesto del deck*. `{{交換期間|こう.かん.き.かん}}`,
+`DMポイントが{{不足|ふそく}}しています` e
+[{{対戦開始|たい.せん.かい.し}}](term:term-start-match) dicono rispettivamente se
+l'operazione è ancora aperta, se manca una risorsa e se il match può iniziare.

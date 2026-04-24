@@ -252,7 +252,7 @@ back: accasciarsi / crollare a terra
 example_jp: >-
   {{助|たす}}けた あとで そのまま へたりこんじゃった みたいだ。
 example_it: >-
-  Sembra che dopo averti aiutato sia crollato lì sul posto.
+  Sembra che sia crollato lì sul posto dopo il salvataggio.
 :::
 :::term
 id: term-seigyo-suru

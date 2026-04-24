@@ -115,7 +115,7 @@ traguardo.
 Il pattern [～たら](grammar:grammar-tara) compare bene nelle istruzioni di
 battaglia per segnare una condizione pratica: "se succede questo, fai questo".
 [～てくれる](grammar:grammar-te-kureru) compare quando un NPC, un oggetto o una
-funzione ti aiuta attivamente, per esempio curando o proteggendo. Infine
+funzione agisce a tuo favore, per esempio curando o proteggendo. Infine
 [～ておく](grammar:grammar-teoku) è il pattern della preparazione: curare la
 squadra, sistemare le [わざ](term:term-waza) o ricaricare gli oggetti prima del
 prossimo scontro significa mettere il team in stato buono prima che il gioco ti
@@ -175,5 +175,4 @@ dopo il turno o dopo lo scontro. Se sai leggere bene
 [{{経験値|けい.けん.ち}}](term:term-keikenchi) e
 [{{進化|しんか}}](term:term-shinka), il flusso di lotta diventa molto più
 trasparente.
-
 

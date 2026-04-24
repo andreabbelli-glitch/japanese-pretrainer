@@ -13,7 +13,8 @@ reading: このさき
 romaji: kono saki
 meaning_it: più avanti / da qui in poi
 notes_it: >-
-  Cartelli e indicazioni verso città, percorsi e aree.
+  Indica ciò che si trova più avanti rispetto al punto attuale. In cartelli e
+  dialoghi può introdurre una città, un’area bloccata o un pericolo.
 :::
 :::card
 id: card-e010-kono-saki-recognition
@@ -35,7 +36,8 @@ reading: こっち
 romaji: kocchi
 meaning_it: da questa parte / qui
 notes_it: >-
-  Direzione colloquiale rapidissima in popup e dialoghi.
+  Direzione colloquiale verso il parlante o verso il percorso indicato. In una
+  battuta breve spesso equivale a "seguimi da questa parte".
 :::
 :::card
 id: card-e011-kocchi-recognition
@@ -57,8 +59,8 @@ reading: よろしくね
 romaji: yoroshikune
 meaning_it: contiamo l'uno sull'altro / conto su di te
 notes_it: >-
-  Versione colloquiale e amichevole di よろしく, usata quando si inizia un rapporto,
-  una collaborazione o una sfida.
+  Versione amichevole di よろしく. Il ね ammorbidisce la formula e la rende adatta
+  a compagni, amici o rivalità cordiali.
 :::
 :::card
 id: card-e014-yoroshikune-recognition
@@ -80,8 +82,8 @@ reading: よろしくおねがいします
 romaji: yoroshiku onegai shimasu
 meaning_it: conto sulla tua / sua collaborazione / le chiedo di occuparsene
 notes_it: >-
-  Versione più formale di よろしく, utile con professori o adulti quando si chiede
-  collaborazione o si affida qualcosa.
+  Versione più formale di よろしく. Con professori, adulti o richieste ufficiali
+  segnala rispetto mentre affidi un compito o chiedi collaborazione.
 :::
 :::card
 id: card-e015-yoroshikuo-negai-shimasu-recognition
@@ -114,9 +116,9 @@ card_type: concept
 front: '～と{{思|おも}}う'
 back: pensare che...
 example_jp: >-
-  これは {{便利|べんり}}だと {{思|おも}}う。
+  マップが あると {{便利|べんり}}だと {{思|おも}}う。
 example_it: >-
-  Penso che questo sia utile.
+  Penso che avere la mappa sia comodo.
 :::
 :::grammar
 id: grammar-g018-non-si-deve
@@ -125,7 +127,7 @@ title: Non si deve
 meaning_it: non bisogna fare... / non si deve fare...
 notes_it: >-
   Esprime divieto o regola. La forma colloquiale 〜ちゃいけない ha lo stesso
-  significato ma suona piu parlata.
+  significato ma suona più parlata.
 :::
 :::card
 id: card-g018-non-si-deve-concept
@@ -136,9 +138,9 @@ card_type: concept
 front: '～てはいけない / ～ちゃいけない'
 back: non bisogna fare... / non si deve fare...
 example_jp: >-
-  ここで {{入|い}}ってはいけない。
+  この{{先|さき}}に {{入|はい}}ってはいけない。
 example_it: >-
-  Qui non si deve entrare.
+  Non si deve entrare più avanti.
 :::
 :::term
 id: term-v063-bouken
@@ -147,7 +149,8 @@ reading: ぼうけん
 romaji: bouken
 meaning_it: avventura
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  Indica il viaggio o l’avventura in corso. In frasi come
+  {{冒険|ぼうけん}}が {{始|はじ}}まる segna l’inizio del percorso del giocatore.
 :::
 :::card
 id: card-v063-bouken-recognition
@@ -169,7 +172,8 @@ reading: ぱるであちほう
 romaji: parudea chihou
 meaning_it: regione di Paldea
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Nome della regione in cui si svolge Scarlet / Violet. Il componente
+  {{地方|ちほう}} indica che non è una città singola, ma l’area geografica ampia.
 :::
 :::term
 id: term-v065-dougu
@@ -178,7 +182,8 @@ reading: どうぐ
 romaji: dougu
 meaning_it: strumento / oggetto
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  Indica strumenti e oggetti usabili. In menu e battaglia va letto insieme a
+  {{使|つか}}う, {{回復|かいふく}} o バッグ per capire l’azione disponibile.
 :::
 :::card
 id: card-v065-dougu-recognition
@@ -189,9 +194,9 @@ card_type: recognition
 front: '{{道具|どうぐ}}'
 back: strumento / oggetto
 example_jp: >-
-  {{道具|どうぐ}}を {{使|つか}}います。
+  {{回復|かいふく}}の {{道具|どうぐ}}を {{使|つか}}う。
 example_it: >-
-  Uso lo strumento.
+  Uso uno strumento di cura.
 :::
 :::term
 id: term-v066-tsukau
@@ -200,7 +205,8 @@ reading: つかう
 romaji: tsukau
 meaning_it: usare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo operativo per oggetti, mosse e funzioni di menu. Il bersaglio prima di
+  を dice che cosa viene effettivamente usato.
 :::
 :::card
 id: card-v066-tsukau-recognition
@@ -211,9 +217,9 @@ card_type: recognition
 front: '{{使|つか}}う'
 back: usare
 example_jp: >-
-  これを {{使|つか}}う。
+  バトルの {{後|あと}}で {{道具|どうぐ}}を {{使|つか}}う。
 example_it: >-
-  Uso questo.
+  Dopo la lotta uso uno strumento.
 :::
 :::term
 id: term-v067-waza
@@ -222,8 +228,8 @@ reading: わざ
 romaji: waza
 meaning_it: mossa / tecnica
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Indica una mossa o tecnica. In battaglia è l’azione selezionata nel turno,
+  mentre in descrizioni può indicare che effetto produce.
 :::
 :::card
 id: card-v067-waza-recognition
@@ -245,8 +251,8 @@ reading: おおあな
 romaji: ooana
 meaning_it: grande voragine
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Nome della grande voragine di Paldea. Quando appare con この{{先|さき}} o
+  パルデア{{地方|ちほう}}, il dialogo sta parlando di un luogo centrale della mappa.
 :::
 :::term
 id: term-v069-kuraberu
@@ -255,7 +261,8 @@ reading: くらべる
 romaji: kuraberu
 meaning_it: Clavell
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Nome giapponese di Clavell. Nei dialoghi scolastici richiama il direttore
+  dell’Accademia e le scene legate a regole o introduzioni ufficiali.
 :::
 :::term
 id: term-v071-idou
@@ -264,7 +271,8 @@ reading: いどう
 romaji: idou
 meaning_it: spostamento
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  Indica spostamento da un punto a un altro. In menu e mappa descrive il cambio
+  di posizione, non l’andare a piedi in sé.
 :::
 :::card
 id: card-v071-idou-recognition
@@ -275,9 +283,9 @@ card_type: recognition
 front: '{{移動|いどう}}'
 back: spostamento
 example_jp: >-
-  ここへ {{移動|いどう}} します。
+  マップから この{{場所|ばしょ}}へ {{移動|いどう}}します。
 example_it: >-
-  Mi sposto qui.
+  Dalla mappa mi sposto in questo luogo.
 :::
 :::term
 id: term-v072-nani
@@ -286,7 +294,8 @@ reading: なに
 romaji: nani
 meaning_it: cosa / che cosa
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  Chiede cosa viene scelto, visto o fatto. In menu spesso il verbo dopo を
+  chiarisce il tipo di risposta richiesta.
 :::
 :::card
 id: card-v072-nani-recognition
@@ -297,9 +306,9 @@ card_type: recognition
 front: '{{何|なに}}'
 back: cosa / che cosa
 example_jp: >-
-  {{何|なに}}を {{見|み}}ますか。
+  マップで {{何|なに}}を {{確認|かくにん}}しますか。
 example_it: >-
-  Che cosa guardi?
+  Che cosa controlli sulla mappa?
 :::
 :::term
 id: term-v073-mappu
@@ -308,7 +317,8 @@ reading: まっぷ
 romaji: mappu
 meaning_it: mappa
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  È la schermata di navigazione. Con {{目的地|もく.てき.ち}},
+  {{場所|ばしょ}} o {{移動|いどう}} collega il testo alla scelta di dove andare.
 :::
 :::card
 id: card-v073-mappu-recognition
@@ -319,9 +329,9 @@ card_type: recognition
 front: 'マップ'
 back: mappa
 example_jp: >-
-  マップを {{見|み}}ます。
+  マップで {{目的地|もく.てき.ち}}を {{確認|かくにん}}する。
 example_it: >-
-  Guardo la mappa.
+  Controllo la destinazione sulla mappa.
 :::
 :::term
 id: term-v074-iku
@@ -330,7 +340,8 @@ reading: いく
 romaji: iku
 meaning_it: andare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo base del movimento verso una destinazione. Con へ o に indica il punto
+  verso cui ci si muove.
 :::
 :::card
 id: card-v074-iku-recognition
@@ -341,9 +352,9 @@ card_type: recognition
 front: '{{行|い}}く'
 back: andare
 example_jp: >-
-  {{学校|がっこう}}へ {{行|い}}く。
+  この{{先|さき}}へ {{行|い}}く。
 example_it: >-
-  Vado a scuola.
+  Vado più avanti.
 :::
 :::term
 id: term-v075-subayasa
@@ -352,8 +363,8 @@ reading: すばやさ
 romaji: subayasa
 meaning_it: Velocità
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Statistica di velocità del Pokémon. In battaglia decide spesso chi agisce
+  prima, quindi non è una qualità generica ma un valore operativo.
 :::
 :::card
 id: card-v075-subayasa-recognition
@@ -364,7 +375,7 @@ card_type: recognition
 front: '{{素早|すばや}}さ'
 back: Velocità
 example_jp: >-
-  この ポケモンは {{素早|すばや}}さが {{高|たか}}いです。
+  {{素早|すばや}}さが {{高|たか}}い ポケモンは {{先|さき}}に {{動|うご}}く。
 example_it: >-
-  Questo Pokémon ha una Velocità alta.
+  Un Pokémon con Velocità alta agisce per primo.
 :::

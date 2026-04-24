@@ -225,8 +225,8 @@ reading: ちょうみりょう
 romaji: choumiryou
 meaning_it: condimento / seasoning
 notes_it: >-
-  Nelle scene di sandwich aiuta a leggere ingredienti e preparazione come parte
-  del gameplay, non solo come chiacchiera sul cibo.
+  Nelle scene di sandwich lega ingredienti e preparazione al gameplay, non solo
+  a una chiacchiera sul cibo.
 :::
 :::card
 id: card-v748-choumiryou-recognition
@@ -272,8 +272,8 @@ reading: いりくむ
 romaji: irikumu
 meaning_it: essere intricato / pieno di svolte
 notes_it: >-
-  Descrive una zona con passaggi complessi. E molto utile per leggere avvisi di
-  orientamento nelle aree rocciose o piene di curve.
+  Descrive una zona con passaggi complessi. Negli avvisi sulle aree rocciose
+  segnala strade piene di curve o incroci difficili da seguire.
 :::
 :::card
 id: card-v750-irikumu-recognition
@@ -389,8 +389,8 @@ reading: きんきょう
 romaji: kinkyou
 meaning_it: aggiornamenti recenti / come vanno le cose
 notes_it: >-
-  Parola utile nelle scene di telefono o contatto a distanza. Fa capire che il
-  dialogo sta parlando dello stato attuale delle cose, non di un evento unico.
+  Nelle scene di telefono o contatto a distanza indica lo stato attuale delle
+  cose, non un evento unico già chiuso.
 :::
 :::card
 id: card-v755-kinkyou-recognition
@@ -483,7 +483,7 @@ romaji: kyuusoku
 meaning_it: pausa / riposo
 notes_it: >-
   Nelle scene di picnic e ristoro nomina una pausa vera, non solo il sedersi un
-  attimo. Ti aiuta a leggere il valore di recupero del momento.
+  attimo. Il valore della scena è recupero, riposo e ripartenza.
 :::
 :::card
 id: card-v759-kyuusoku-recognition
@@ -530,8 +530,8 @@ reading: あやしい
 romaji: ayashii
 meaning_it: sospetto / losco
 notes_it: >-
-  Aggettivo utilissimo per capire subito se un NPC o una situazione non ispira
-  fiducia. In gioco spesso basta da solo a orientare il tono.
+  Indica che un NPC o una situazione non ispira fiducia. Anche senza spiegazioni
+  lunghe, colora la battuta come sospetta o poco limpida.
 :::
 :::card
 id: card-v761-ayashii-recognition

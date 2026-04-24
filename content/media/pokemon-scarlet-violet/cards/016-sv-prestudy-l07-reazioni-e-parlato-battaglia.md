@@ -17,8 +17,8 @@ notes_it: >-
   passato di やる (“fare”), quindi letteralmente è qualcosa come “l'ho fatto!”,
   ma in pratica si usa come “yes!”, “ce l'ho fatta!”, “grande!”. In Pokémon
   funziona bene dopo una vittoria, una cattura riuscita o quando finalmente si
-  sblocca qualcosa. Il punto importante non è il verbo “fare”, ma l'idea di
-  successo appena ottenuto.
+  sblocca qualcosa. In una battuta come やった！{{勝|か}}った！ il passato di
+  やる non descrive un'azione qualsiasi: marca il successo appena ottenuto.
 :::
 :::card
 id: card-e016-yatta-recognition
@@ -93,8 +93,8 @@ pattern: た形
 title: Passato / completamento
 meaning_it: ha fatto... / aver fatto...
 notes_it: >-
-  La た形 è la forma base del passato dei verbi, ma il suo valore più utile da
-  ricordare è questo: indica un'azione vista come completata. Da sola spesso
+  La た形 è la forma base del passato dei verbi; in lettura segnala soprattutto
+  un'azione vista come completata. Da sola spesso
   corrisponde a “ho fatto / ha fatto”, ma serve anche come mattone per molte
   altre strutture: ～たら, ～たあとで, ～てしまった e così via. Quindi non va pensata solo
   come “passato italiano”, ma come forma di evento già avvenuto o già
@@ -154,8 +154,8 @@ notes_it: >-
   È il verbo “combattere, lottare”. In Pokémon ricorre continuamente perché una
   grande parte dei dialoghi riguarda sfide, lotte, Palestre, Team Star o raid.
   Molto spesso si usa con と per indicare contro chi si combatte:
-  {{相手|あいて}}と{{戦|たたか}}う = “combattere contro l'avversario”. È utile
-  riconoscerne anche le forme più comuni: {{戦|たたか}}います, {{戦|たたか}}った,
+  {{相手|あいて}}と{{戦|たたか}}う = “combattere contro l'avversario”. Nei messaggi
+  compaiono anche forme come {{戦|たたか}}います, {{戦|たたか}}った,
   {{戦|たたか}}える. Il significato resta quello di confronto diretto, non solo di
   “fare una battaglia” in senso tecnico.
 :::
@@ -183,8 +183,8 @@ notes_it: >-
   “come mai?”. Rispetto a なぜ è più comune nel parlato quotidiano e spesso ha
   un tono più emotivo o più coinvolto. Da solo può suonare sorpreso o quasi
   incredulo; con ですか o なの diventa più costruito. Nei dialoghi di storia è
-  utile perché segnala subito che un personaggio sta chiedendo il motivo di un
-  fatto, una scelta o un comportamento.
+  quando apre una battuta, il personaggio sta chiedendo il motivo di un fatto,
+  una scelta o un comportamento.
 :::
 :::card
 id: card-v079-doushite-recognition
@@ -263,9 +263,9 @@ notes_it: >-
   interpretato come la parola comune 特攻 letta とっこう. Fuori dal contesto
   Pokémon, 特攻 come parola autonoma di solito significa “assalto speciale /
   attacco suicida” ed è un'altra cosa. Nei menu e nelle schermate di stato,
-  invece, 特攻 indica semplicemente la statistica usata dalle mosse speciali,
-  quindi va distinta da 攻撃 “Attacco” fisico. È utile ricordare anche la coppia
-  con 特防, che è la Difesa Speciale.
+  invece, 特攻 indica la statistica usata dalle mosse speciali e va distinta da
+  攻撃 “Attacco” fisico. La coppia naturale nei menu è 特攻 / 特防: Attacco
+  Speciale e Difesa Speciale.
 :::
 :::card
 id: card-v083-tokukou-recognition
@@ -290,8 +290,8 @@ notes_it: >-
   È un avverbio molto usato per organizzare il discorso. Significa “prima di
   tutto”, “per cominciare”, “intanto” e introduce il primo passo di una
   spiegazione o di una sequenza di azioni. Non indica solo tempo: serve anche a
-  guidare chi ascolta. Nei tutorial e nelle istruzioni di gioco è
-  frequentissimo, perché aiuta a scandire i passaggi: まず X, つぎに Y.
+  guidare chi ascolta. Nei tutorial e nelle istruzioni di gioco ordina i
+  passaggi: まず X, つぎに Y.
 :::
 :::card
 id: card-v084-mazu-recognition

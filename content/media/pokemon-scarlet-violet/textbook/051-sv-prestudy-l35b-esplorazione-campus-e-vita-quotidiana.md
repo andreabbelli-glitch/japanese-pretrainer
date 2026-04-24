@@ -152,12 +152,10 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco contano soprattutto consigli, deviazioni, picnic, mappe e
-piccole interazioni quotidiane. Se riconosci
-[とりあえず](term:term-e109-toriaezu),
-[{{戻|もど}}れる](term:term-v746-modoreru),
-[{{知|し}}れる](term:term-v753-shireru),
-[なかよし](term:term-v754-nakayoshi),
-[おすそわけ](term:term-v758-osusowake) e
-[{{自称|じしょう}}](term:term-v760-jishou), il blocco diventa molto piu
-leggibile come vita quotidiana di Paldea.
+Consigli, deviazioni, picnic, mappe e interazioni quotidiane hanno segnali
+diversi. [とりあえず](term:term-e109-toriaezu) apre una priorità provvisoria,
+[{{戻|もど}}れる](term:term-v746-modoreru) dice che il ritorno è possibile,
+[なかよし](term:term-v754-nakayoshi) e [おすそわけ](term:term-v758-osusowake)
+spostano il tono verso affetto e condivisione, mentre
+[{{自称|じしょう}}](term:term-v760-jishou) e [あやしい](term:term-v761-ayashii)
+colorano subito un NPC come poco affidabile.

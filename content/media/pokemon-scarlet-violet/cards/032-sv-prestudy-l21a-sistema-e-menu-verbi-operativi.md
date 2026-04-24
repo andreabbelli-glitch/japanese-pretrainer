@@ -68,9 +68,9 @@ card_type: recognition
 front: "ちなみに"
 back: tra l'altro
 example_jp: >-
-  ちなみに、 これは {{新|あたら}}しいよ。
+  ちなみに、 {{新|あたら}}しい メニューが {{増|ふ}}えるよ。
 example_it: >-
-  Tra l'altro, questo è nuovo.
+  Tra l'altro, verrà aggiunto un nuovo menu.
 :::
 :::term
 id: term-e061-doukana
@@ -101,7 +101,8 @@ reading: 〜のヒント
 romaji: nohinto
 meaning_it: indizio su…
 notes_it: >-
-  Ricorre in prove, quiz e tutorial
+  〜のヒント lega ヒント al tema che lo precede: 次の町のヒント è un indizio sulla
+  prossima città, non un suggerimento generico.
 :::
 :::card
 id: card-e064-nohinto-recognition
@@ -112,9 +113,9 @@ card_type: recognition
 front: "〜のヒント"
 back: indizio su…
 example_jp: >-
-  {{次|つぎ}}の{{町|まち}}の ヒントです。
+  {{次|つぎ}}の{{町|まち}}の ヒントを {{教|おし}}える。
 example_it: >-
-  Indizio su….
+  Do un indizio sulla prossima città.
 :::
 :::grammar
 id: grammar-g064-contrazione-di
@@ -188,7 +189,8 @@ reading: ふえる
 romaji: fue ru
 meaning_it: aumentare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  増える è intransitivo: punti, quantità o opzioni aumentano da soli nella frase.
+  Per "aumentare qualcosa" servirebbe 増やす.
 :::
 :::card
 id: card-v314-fue-ru-recognition
@@ -199,9 +201,9 @@ card_type: recognition
 front: "{{増|ふ}}える"
 back: aumentare
 example_jp: >-
-  ここで {{増|ふ}}える。
+  ポイントが {{増|ふ}}える。
 example_it: >-
-  Qui aumenta.
+  I punti aumentano.
 :::
 :::term
 id: term-v315-modoru
@@ -210,7 +212,8 @@ reading: もどる
 romaji: modoru
 meaning_it: tornare indietro
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  戻る indica tornare a un punto precedente: menu precedente, luogo già visitato
+  o stato prima di una scelta.
 :::
 :::card
 id: card-v315-modoru-recognition
@@ -221,9 +224,9 @@ card_type: recognition
 front: "{{戻|もど}}る"
 back: tornare indietro
 example_jp: >-
-  ここで {{戻|もど}}る。
+  {{前|まえ}}の メニューに {{戻|もど}}る。
 example_it: >-
-  Qui si torna indietro.
+  Torno al menu precedente.
 :::
 :::term
 id: term-v316-mahi
@@ -232,8 +235,8 @@ reading: まひ
 romaji: mahi
 meaning_it: paralisi
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  まひ è la paralisi come stato alterato. Con まひになる il Pokémon entra in una
+  condizione che limita l'azione.
 :::
 :::card
 id: card-v316-mahi-recognition
@@ -255,7 +258,8 @@ reading: とくい
 romaji: tokui
 meaning_it: essere bravo in
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  得意 indica ciò in cui qualcuno riesce bene; バトルが得意だ parla di abilità, non
+  solo di preferenza.
 :::
 :::card
 id: card-v317-tokui-recognition
@@ -266,9 +270,9 @@ card_type: recognition
 front: "{{得意|とくい}}"
 back: essere bravo in
 example_jp: >-
-  {{得意|とくい}} です。
+  バトルが {{得意|とくい}}だ。
 example_it: >-
-  È bravo in questo.
+  È bravo nelle lotte.
 :::
 :::term
 id: term-v318-gakenobori
@@ -277,8 +281,8 @@ reading: がけのぼり
 romaji: gakenobori
 meaning_it: arrampicata sulla parete
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  がけのぼり nomina l'arrampicata sulle pareti: がけ indica la parete/precipizio e
+  のぼり il salire.
 :::
 :::card
 id: card-v318-gakenobori-recognition
@@ -300,7 +304,8 @@ reading: ちゃーじ
 romaji: chaaji
 meaning_it: ricarica
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  チャージ è ricarica o accumulo di energia. In menu segnala che una risorsa torna
+  disponibile o si riempie.
 :::
 :::card
 id: card-v319-chaaji-recognition
@@ -311,9 +316,9 @@ card_type: recognition
 front: "チャージ"
 back: ricarica
 example_jp: >-
-  メニューで チャージを {{見|み}}ます。
+  テラスタルエネルギーを チャージします。
 example_it: >-
-  Controllo la ricarica nel menu.
+  Ricarico l'energia Terastal.
 :::
 :::term
 id: term-v320-annai
@@ -322,7 +327,8 @@ reading: あんない
 romaji: annai
 meaning_it: guida / accompagnamento
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  案内 è guida o accompagnamento. 案内する significa mostrare la strada o spiegare
+  dove andare.
 :::
 :::card
 id: card-v320-annai-recognition
@@ -333,9 +339,9 @@ card_type: recognition
 front: "{{案内|あんない}}"
 back: guida / accompagnamento
 example_jp: >-
-  {{学校|がっこう}}で {{案内|あんない}}が だいじ です。
+  {{町|まち}}を {{案内|あんない}}する。
 example_it: >-
-  A scuola, la guida è importante.
+  Faccio da guida in città.
 :::
 :::term
 id: term-v321-mitame
@@ -344,8 +350,8 @@ reading: みため
 romaji: mitame
 meaning_it: aspetto
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  見た目 è l'aspetto visibile. Con 変える o 変わる parla di estetica, non di
+  statistiche.
 :::
 :::card
 id: card-v321-mitame-recognition
@@ -367,7 +373,8 @@ reading: えらぶ
 romaji: erabu
 meaning_it: scegliere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  選ぶ è scegliere fra opzioni visibili: Pokémon, voce di menu, destinazione o
+  risposta.
 :::
 :::card
 id: card-v322-erabu-recognition
@@ -378,9 +385,9 @@ card_type: recognition
 front: "{{選|えら}}ぶ"
 back: scegliere
 example_jp: >-
-  ここで {{選|えら}}ぶ。
+  ポケモンを {{選|えら}}ぶ。
 example_it: >-
-  Qui scelgo.
+  Scelgo un Pokémon.
 :::
 :::term
 id: term-v323-honki-de
@@ -389,7 +396,8 @@ reading: ほんきで
 romaji: honki de
 meaning_it: sul serio
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  本気で aggiunge serietà all'azione: 本気でやる non è solo "fare", ma farlo senza
+  scherzare o trattenersi.
 :::
 :::card
 id: card-v323-honki-de-recognition
@@ -411,7 +419,8 @@ reading: まもる
 romaji: mamoru
 meaning_it: proteggere / rispettare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  守る può proteggere una persona, un Pokémon o una regola. Il bersaglio marcato
+  con を è ciò che resta al sicuro o viene rispettato.
 :::
 :::card
 id: card-v324-mamoru-recognition
@@ -422,9 +431,9 @@ card_type: recognition
 front: "{{守|まも}}る"
 back: proteggere / rispettare
 example_jp: >-
-  ここで {{守|まも}}る。
+  {{味方|みかた}}を {{守|まも}}る。
 example_it: >-
-  Qui proteggo.
+  Proteggo un alleato.
 :::
 :::term
 id: term-v325-furui
@@ -433,7 +442,8 @@ reading: ふるい
 romaji: furui
 meaning_it: vecchio
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  古い descrive qualcosa di vecchio o precedente; in storia e oggetti può
+  indicare età, non per forza valore scarso.
 :::
 :::card
 id: card-v325-furui-recognition
@@ -444,9 +454,9 @@ card_type: recognition
 front: "{{古|ふる}}い"
 back: vecchio
 example_jp: >-
-  これは {{古|ふる}}い。
+  {{古|ふる}}い {{記録|きろく}}を {{見|み}}る。
 example_it: >-
-  Questo è vecchio.
+  Guardo un vecchio record.
 :::
 :::term
 id: term-v326-aishou
@@ -455,8 +465,8 @@ reading: あいしょう
 romaji: aishou
 meaning_it: compatibilità / matchup
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  相性 è la compatibilità tra tipi o persone. In battaglia decide se una mossa è
+  favorevole o sfavorevole.
 :::
 :::card
 id: card-v326-aishou-recognition
@@ -467,9 +477,9 @@ card_type: recognition
 front: "{{相性|あいしょう}}"
 back: compatibilità / matchup
 example_jp: >-
-  バトルで {{相性|あいしょう}}を {{使|つか}}います。
+  バトルで {{相性|あいしょう}}を {{確認|かくにん}}する。
 example_it: >-
-  In battaglia conta la compatibilità.
+  Controllo la compatibilità in battaglia.
 :::
 :::term
 id: term-v327-sabaku
@@ -478,7 +488,8 @@ reading: さばく
 romaji: sabaku
 meaning_it: deserto
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  砂漠 indica un deserto o area sabbiosa. In indicazioni di viaggio funziona come
+  ambiente da raggiungere o attraversare.
 :::
 :::card
 id: card-v327-sabaku-recognition
@@ -500,7 +511,8 @@ reading: もくひょう
 romaji: mokuhyou
 meaning_it: obiettivo
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  目標 è l'obiettivo scelto o indicato. 次の目標 è la prossima meta o azione da
+  seguire.
 :::
 :::card
 id: card-v328-mokuhyou-recognition
@@ -522,7 +534,8 @@ reading: けしき
 romaji: keshiki
 meaning_it: paesaggio
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  景色 è il paesaggio visibile. 景色がいい commenta la vista di un luogo, non la sua
+  utilità.
 :::
 :::card
 id: card-v329-keshiki-recognition
@@ -544,7 +557,8 @@ reading: ほうほう
 romaji: houhou
 meaning_it: metodo
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  方法 è il metodo o modo di fare qualcosa. やり方 è più colloquiale; 方法 suona
+  più neutro o tecnico.
 :::
 :::card
 id: card-v330-houhou-recognition
@@ -555,9 +569,9 @@ card_type: recognition
 front: "{{方法|ほうほう}}"
 back: metodo
 example_jp: >-
-  {{方法|ほうほう}} です。
+  {{別|べつ}}の {{方法|ほうほう}}を {{教|おし}}える。
 example_it: >-
-  Metodo.
+  Spiego un altro metodo.
 :::
 :::term
 id: term-v331-henkou
@@ -566,8 +580,8 @@ reading: へんこう
 romaji: henkou
 meaning_it: modifica
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  変更 è modifica. 設定を変更する indica cambiare un'opzione già presente, non
+  crearne una nuova.
 :::
 :::card
 id: card-v331-henkou-recognition
@@ -578,9 +592,9 @@ card_type: recognition
 front: "{{変更|へんこう}}"
 back: modifica
 example_jp: >-
-  メニューで {{変更|へんこう}}を {{見|み}}ます。
+  {{設定|せってい}}を {{変更|へんこう}}する。
 example_it: >-
-  Controllo la modifica nel menu.
+  Cambio le impostazioni.
 :::
 :::term
 id: term-v332-sanka-suru
@@ -589,7 +603,8 @@ reading: さんかする
 romaji: sanka suru
 meaning_it: partecipare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  参加する indica entrare a far parte di un'attività: raid, sfida, cerchia o
+  evento. Il luogo o evento prende に.
 :::
 :::card
 id: card-v332-sanka-suru-recognition
@@ -600,7 +615,7 @@ card_type: recognition
 front: "{{参加|さんか}}する"
 back: partecipare
 example_jp: >-
-  ここで {{参加|さんか}}する。
+  レイドに {{参加|さんか}}する。
 example_it: >-
-  Qui partecipo.
+  Partecipo a un raid.
 :::

@@ -24,7 +24,7 @@ Capire il giapponese che compare in battaglia in Scarlet/Violet: parole operativ
 
 ## Contesto
 
-In questo blocco compaiono parole che segnalano subito ruolo, gruppo, danno e tono della battaglia. Accanto a queste ci sono anche alcune etichette molto specifiche del mondo di gioco che basta riconoscere quando appaiono.
+Qui compaiono parole che marcano ruolo, gruppo, danno e tono della battaglia: チーム nomina la squadra, ボス il capo, ダメージ l'effetto subito o inflitto, さて / どうぞ regolano l'apertura e il turno della battuta.
 
 ## Termini chiave
 
@@ -53,7 +53,7 @@ Parole come [チーム](term:term-v157-chiimu), [学園](term:term-v158-gakuen) 
 
 Le espressioni come [さて](term:term-e030-sate) e [どうぞ](term:term-e031-douzo) regolano il parlato: [さて](term:term-e030-sate) apre o cambia argomento, [どうぞ](term:term-e031-douzo) invita, concede il turno o offre qualcosa. In un gioco molto dialogato bastano spesso a capire il tono della scena.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ヌシ](term:term-v167-nushi). Riconoscile quando compaiono, ma non trattarle come lessico generale: qui funzionano soprattutto come nome di gioco per un boss dominante.
+[ヌシ](term:term-v167-nushi) è una label contestuale: nel giapponese comune può richiamare il "padrone" o dominante di un luogo, ma qui funziona come nome di gioco per un boss Titan.
 
 ## Esempi guidati
 
@@ -80,11 +80,11 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  チームです。
+  チームで {{戦|たたか}}います。
 translation_it: >-
-  È la squadra.
+  Combattiamo in squadra.
 :::
 
 ## Nota finale
 
-In questa lesson guarda prima se il testo sta nominando un gruppo, un capo, un danno o una formula di turno come `さて` e `どうぞ`. Sono questi segnali a rendere subito leggibile la scena di battaglia.
+In questa lesson, チーム / ボス identificano chi agisce, ダメージ indica che cosa succede alla lotta, さて / どうぞ gestiscono il passaggio di turno nel dialogo.

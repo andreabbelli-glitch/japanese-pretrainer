@@ -24,7 +24,7 @@ Leggere il giapponese che compare in reazioni, dialoghi brevi e messaggi di batt
 
 ## Contesto
 
-Questo blocco mette insieme parole ricorrenti nei dialoghi e alcuni nomi fissi del gioco. Le prime aiutano a leggere subito di che cosa si parla; i secondi servono a riconoscere riferimenti specifici di Scarlet/Violet.
+Questa lesson mette insieme parole da dialogo e nomi fissi del gioco. [そうか](term:term-e036-souka) prende atto di un'informazione, [まさか](term:term-e038-masaka) reagisce con incredulità, [大会](term:term-v196-taikai) nomina un torneo e [持たせる](term:term-v202-mota-seru) descrive l'azione di far tenere uno strumento a un Pokémon.
 
 ## Termini chiave
 
@@ -61,7 +61,7 @@ Le espressioni come [そうか](term:term-e036-souka) e [まさか](term:term-e0
 
 Sul piano grammaticale, [〜って](grammar:grammar-g037-citazione-tema-colloquiale) introduce ciò che qualcuno ha detto o sposta il discorso su un tema; [〜より / 〜ほど](grammar:grammar-g038-piu-di-al-punto-da) confronta due elementi o misura l'intensità; [〜ば](grammar:grammar-g039-se) introduce una condizione. Se li riconosci, capisci subito se la frase sta citando, confrontando o impostando un "se...".
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [テラピース](term:term-v201-terapiisu) e [お疲れさまでスター](term:term-e037-otsukaresamadesutaa). [テラピース](term:term-v201-terapiisu) è il nome di una risorsa del gioco; [お疲れさまでスター](term:term-e037-otsukaresamadesutaa) è una formula fissa legata a Team Star.
+[テラピース](term:term-v201-terapiisu) e [お疲れさまでスター](term:term-e037-otsukaresamadesutaa) sono riferimenti contestuali diversi: il primo è una risorsa legata alla Teracristal, il secondo gioca su お疲れさま e スター per produrre una formula di Team Star.
 
 ## Esempi guidati
 
@@ -95,4 +95,4 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco guarda subito se la frase sta reagendo, citando qualcosa, mettendo a confronto due elementi o aprendo una condizione. Sono questi segnali a rendere leggibile la scena di battaglia.
+In queste frasi, そうか / まさか danno la reazione, 〜って introduce citazione o tema, より / ほど confrontano due elementi e ば apre una condizione. Sono queste forme a decidere se la scena sta rispondendo, citando, paragonando o impostando un "se".

@@ -13,7 +13,8 @@ reading: みてみよう
 romaji: mitemiyou
 meaning_it: proviamo a vedere
 notes_it: >-
-  Invito semplice a controllare o osservare qualcosa.
+  Forma volitiva di 見てみる. 見る è transitivo e prende を: propone di controllare
+  insieme una mappa, una borsa o una schermata appena aperta.
 :::
 :::card
 id: card-e075-mitemiyou-recognition
@@ -24,9 +25,9 @@ card_type: recognition
 front: "{{見|み}}てみよう"
 back: proviamo a vedere
 example_jp: >-
-  マップを {{見|み}}てみよう。
+  バッグの {{中身|なかみ}}を {{見|み}}てみよう。
 example_it: >-
-  Proviamo a dare un'occhiata alla mappa.
+  Proviamo a controllare il contenuto della borsa.
 :::
 :::term
 id: term-e076-atoha-makase-te
@@ -35,7 +36,8 @@ reading: あとはまかせて
 romaji: atoha makase te
 meaning_it: al resto penso io
 notes_it: >-
-  Chi parla si prende carico dell'ultima parte e ti toglie il resto del compito.
+  Frase da compagno o NPC. 任せる usa spesso XをYに任せる; qui あとは è il "resto"
+  da lasciare alla persona che parla.
 :::
 :::card
 id: card-e076-atoha-makase-te-recognition
@@ -46,9 +48,9 @@ card_type: recognition
 front: "あとは{{任|まか}}せて"
 back: al resto penso io
 example_jp: >-
-  あとは {{任|まか}}せて。
+  きみは {{先|さき}}に {{行|い}}って。あとは {{任|まか}}せて。
 example_it: >-
-  Al resto penso io.
+  Tu vai avanti. Al resto penso io.
 :::
 :::term
 id: term-e077-mazuhakokokara
@@ -57,7 +59,8 @@ reading: まずはここから
 romaji: mazuhakokokara
 meaning_it: prima partiamo da qui
 notes_it: >-
-  Introduce il punto da cui iniziare un piano o un percorso.
+  Formula per indicare il primo passo: qui può essere un punto della mappa, una
+  voce del menu o l'inizio di una spiegazione.
 :::
 :::card
 id: card-e077-mazuhakokokara-recognition
@@ -68,9 +71,9 @@ card_type: recognition
 front: "まずはここから"
 back: prima partiamo da qui
 example_jp: >-
-  まずは ここから です。
+  まずはここから {{始|はじ}}めよう。
 example_it: >-
-  Per prima cosa, da qui.
+  Per prima cosa, iniziamo da qui.
 :::
 :::grammar
 id: grammar-g079-per-favore-non-fare
@@ -78,7 +81,8 @@ pattern: ～ないでください
 title: Per favore non fare...
 meaning_it: per favore non fare...
 notes_it: >-
-  Formazione: V-ないでください. Divieti o consigli gentili.
+  Formazione: V-ない + でください. Serve per richieste negative gentili, avvisi di
+  sistema o istruzioni di un NPC.
 :::
 :::card
 id: card-g079-per-favore-non-fare-concept
@@ -89,9 +93,9 @@ card_type: concept
 front: "～ないでください"
 back: per favore non fare...
 example_jp: >-
-  ここで {{進|すす}}まないでください。
+  ソフトを {{終了|しゅうりょう}}しないでください。
 example_it: >-
-  Per favore non andare avanti qui.
+  Per favore non chiudere il software.
 :::
 :::grammar
 id: grammar-g080-sembrare-voler-fare-terza-persona
@@ -99,8 +103,8 @@ pattern: ～たがる
 title: Sembrare voler fare (terza persona)
 meaning_it: sembrare voler fare (terza persona)
 notes_it: >-
-  Formazione: V-stem + たがる. Utile quando si descrive ciò che qualcun altro vuole
-  fare.
+  Formazione: V-stem + たがる. Si usa per il desiderio osservabile di una terza
+  persona; non per dire direttamente "io voglio".
 :::
 :::card
 id: card-g080-sembrare-voler-fare-terza-persona-concept
@@ -111,9 +115,9 @@ card_type: concept
 front: "～たがる"
 back: sembrare voler fare (terza persona)
 example_jp: >-
-  {{弟|おとうと}}は {{早|はや}}く {{行|い}}きたがる。
+  ネモは すぐ バトルしたがる。
 example_it: >-
-  Mio fratello vuole proprio andare presto.
+  Nemona tende a voler lottare subito.
 :::
 :::grammar
 id: grammar-g081-e-meglio-fare
@@ -121,7 +125,8 @@ pattern: ～ほうがいい
 title: È meglio fare
 meaning_it: è meglio fare
 notes_it: >-
-  Formazione: Vた / Vない + ほうがいい. Consigli pratici di NPC o compagni.
+  Formazione: Vた / Vない + ほうがいい. Introduce un consiglio pratico prima di
+  muoversi, lottare o aprire un menu.
 :::
 :::card
 id: card-g081-e-meglio-fare-concept
@@ -132,9 +137,9 @@ card_type: concept
 front: "～ほうがいい"
 back: è meglio fare
 example_jp: >-
-  {{早|はや}}く {{回復|かいふく}}したほうがいい。
+  {{先|さき}}に ポケモンを {{回復|かいふく}}したほうがいい。
 example_it: >-
-  È meglio curarsi presto.
+  È meglio curare prima i Pokémon.
 :::
 :::term
 id: term-v393-seiri
@@ -143,8 +148,8 @@ reading: せいり
 romaji: seiri
 meaning_it: riordino
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Nome che diventa azione con する. Nei menu prende spesso l'oggetto con を:
+  ボックスのポケモンを整理する, バッグを整理する.
 :::
 :::card
 id: card-v393-seiri-recognition
@@ -155,9 +160,9 @@ card_type: recognition
 front: "{{整理|せいり}}"
 back: riordino
 example_jp: >-
-  メニューで {{整理|せいり}}を {{見|み}}ます。
+  ボックスの ポケモンを {{整理|せいり}}します。
 example_it: >-
-  Guardo il riordino in menu.
+  Riordino i Pokémon nel box.
 :::
 :::term
 id: term-v394-susumu
@@ -166,7 +171,8 @@ reading: すすむ
 romaji: susumu
 meaning_it: procedere / avanzare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo intransitivo. Può usare を per il percorso attraversato, come 道を進む, o
+  へ per la direzione, come 先へ進む.
 :::
 :::card
 id: card-v394-susumu-recognition
@@ -177,9 +183,9 @@ card_type: recognition
 front: "{{進|すす}}む"
 back: procedere / avanzare
 example_jp: >-
-  ここで {{進|すす}}む。
+  この {{道|みち}}を まっすぐ {{進|すす}}みます。
 example_it: >-
-  Qui avanzo.
+  Procedo dritto per questa strada.
 :::
 :::term
 id: term-v395-kagayakipawaa
@@ -188,8 +194,8 @@ reading: かがやきパワー
 romaji: kagayakipawaa
 meaning_it: Sparkling Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Bonus pasto di Scarlet/Violet legato alla ricerca di Pokémon cromatici. Nella
+  schermata dei poteri compare insieme al tipo interessato.
 :::
 :::term
 id: term-v396-tobu
@@ -198,7 +204,8 @@ reading: とぶ
 romaji: tobu
 meaning_it: volare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo intransitivo. Nel contesto mappa/viaggio rapido prende la destinazione
+  con へ o に: ポケモンセンターへ飛ぶ.
 :::
 :::card
 id: card-v396-tobu-recognition
@@ -209,9 +216,9 @@ card_type: recognition
 front: "{{飛|と}}ぶ"
 back: volare
 example_jp: >-
-  ここで {{飛|と}}ぶ。
+  ポケモンセンターへ {{飛|と}}びます。
 example_it: >-
-  Qui volo.
+  Volo fino al Centro Pokémon.
 :::
 :::term
 id: term-v397-kaeru
@@ -220,7 +227,8 @@ reading: かえる
 romaji: kaeru
 meaning_it: tornare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo intransitivo. Il luogo di ritorno si marca normalmente con に o へ:
+  学校に帰る, 家へ帰る.
 :::
 :::card
 id: card-v397-kaeru-recognition
@@ -231,9 +239,9 @@ card_type: recognition
 front: "{{帰|かえ}}る"
 back: tornare
 example_jp: >-
-  ここで {{帰|かえ}}る。
+  いったん {{学校|がっこう}}に {{帰|かえ}}ります。
 example_it: >-
-  Qui torno.
+  Per ora torno a scuola.
 :::
 :::term
 id: term-v398-paradokkusupokemon
@@ -242,8 +250,8 @@ reading: パラドックスポケモン
 romaji: paradokkusupokemon
 meaning_it: Pokémon Paradosso
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Categoria propria di Scarlet/Violet per Pokémon collegati al passato o al
+  futuro. Compare in dialoghi, descrizioni e materiali sul Pokédex.
 :::
 :::term
 id: term-v399-souguupawaa
@@ -252,8 +260,8 @@ reading: そうぐうパワー
 romaji: souguupawaa
 meaning_it: Encounter Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Bonus pasto che aumenta la probabilità di incontrare Pokémon di un certo tipo.
+  Si legge come etichetta nella lista dei poteri attivi.
 :::
 :::term
 id: term-v400-tsuushinkoukan
@@ -262,8 +270,8 @@ reading: つうしんこうかん
 romaji: tsuushinkoukan
 meaning_it: scambio in link / trade
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Nome da menu per lo scambio con collegamento. La persona si marca con と e
+  l'azione prende spesso をする: 友だちと通信交換をする.
 :::
 :::card
 id: card-v400-tsuushinkoukan-recognition
@@ -274,9 +282,9 @@ card_type: recognition
 front: "{{通信交換|つう.しん.こう.かん}}"
 back: scambio in link / trade
 example_jp: >-
-  {{通信交換|つう.しん.こう.かん}}を します。
+  {{友|とも}}だちと {{通信交換|つう.しん.こう.かん}}をします。
 example_it: >-
-  Faccio uno scambio in link.
+  Faccio uno scambio in link con un amico.
 :::
 :::term
 id: term-v401-senryaku
@@ -285,8 +293,8 @@ reading: せんりゃく
 romaji: senryaku
 meaning_it: strategia
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Nome per piano di battaglia o approccio tattico. Colloca bene con を立てる,
+  を変える, が決まる.
 :::
 :::card
 id: card-v401-senryaku-recognition
@@ -297,9 +305,9 @@ card_type: recognition
 front: "{{戦略|せんりゃく}}"
 back: strategia
 example_jp: >-
-  バトルで {{戦略|せんりゃく}}を {{使|つか}}います。
+  ジム{{戦|せん}}では {{戦略|せんりゃく}}を {{変|か}}えます。
 example_it: >-
-  Uso la strategia in battaglia.
+  Nella lotta in palestra cambio strategia.
 :::
 :::term
 id: term-v402-riigupei
@@ -308,7 +316,8 @@ reading: りーぐぺい
 romaji: riigupei
 meaning_it: League Pay (LP)
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  Valuta LP di Paldea usata in negozi, MT e funzioni di sistema. Nei menu appare
+  come risorsa di pagamento.
 :::
 :::term
 id: term-v403-shirabe-ru
@@ -317,7 +326,8 @@ reading: しらべる
 romaji: shirabe ru
 meaning_it: controllare / investigare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo transitivo: l'oggetto o il punto da controllare prende を. Ricorre in
+  prompt come 場所を調べる o 手がかりを調べる.
 :::
 :::card
 id: card-v403-shirabe-ru-recognition
@@ -328,9 +338,9 @@ card_type: recognition
 front: "{{調|しら}}べる"
 back: controllare / investigare
 example_jp: >-
-  ここを {{調|しら}}べます。
+  {{光|ひか}}っている {{場所|ばしょ}}を {{調|しら}}べます。
 example_it: >-
-  Controllo qui.
+  Controllo il punto che brilla.
 :::
 :::term
 id: term-v404-douyara
@@ -339,7 +349,8 @@ reading: どうやら
 romaji: douyara
 meaning_it: a quanto pare
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Avverbio da deduzione: introduce ciò che sembra vero dai segnali disponibili,
+  senza dirlo come certezza assoluta.
 :::
 :::card
 id: card-v404-douyara-recognition
@@ -350,9 +361,9 @@ card_type: recognition
 front: "どうやら"
 back: a quanto pare
 example_jp: >-
-  どうやら {{今日|きょう}}は だめです。
+  どうやら {{奥|おく}}に ポケモンが います。
 example_it: >-
-  A quanto pare oggi non va.
+  A quanto pare c'è un Pokémon più avanti.
 :::
 :::term
 id: term-v405-otoshimonopawaa
@@ -361,8 +372,8 @@ reading: おとしものパワー
 romaji: otoshimonopawaa
 meaning_it: Item Drop Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Bonus pasto che aumenta gli oggetti lasciati dai Pokémon dopo la lotta. È
+  un'etichetta da leggere insieme al tipo del potere.
 :::
 :::term
 id: term-v406-tekagen
@@ -371,8 +382,8 @@ reading: てかげん
 romaji: tekagen
 meaning_it: trattenersi / non andare al massimo
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Nome/する per "andarci piano" in lotta. Si vede spesso in forma negativa:
+  手加減しない, cioè non trattenersi.
 :::
 :::card
 id: card-v406-tekagen-recognition
@@ -383,9 +394,9 @@ card_type: recognition
 front: "{{手加減|て.か.げん}}"
 back: trattenersi / non andare al massimo
 example_jp: >-
-  バトルで {{手加減|て.か.げん}}を {{使|つか}}います。
+  ジムリーダーは {{手加減|て.か.げん}}しません。
 example_it: >-
-  Uso il trattenersi in battaglia.
+  Il Capopalestra non si trattiene.
 :::
 :::term
 id: term-v407-hiraku
@@ -394,7 +405,8 @@ reading: ひらく
 romaji: hiraku
 meaning_it: aprire
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Verbo transitivo: il menu, la mappa o una schermata prendono を. È il verbo
+  naturale per "aprire" un'interfaccia.
 :::
 :::card
 id: card-v407-hiraku-recognition
@@ -405,9 +417,9 @@ card_type: recognition
 front: "{{開|ひら}}く"
 back: aprire
 example_jp: >-
-  ここで {{開|ひら}}く。
+  メニューを {{開|ひら}}きます。
 example_it: >-
-  Qui apro.
+  Apro il menu.
 :::
 :::term
 id: term-v408-hikui
@@ -416,7 +428,8 @@ reading: ひくい
 romaji: hikui
 meaning_it: basso
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  Aggettivo in -い per valori bassi, quote basse o percentuali basse. In lotta
+  colloca bene con 命中率が低い.
 :::
 :::card
 id: card-v408-hikui-recognition
@@ -427,9 +440,9 @@ card_type: recognition
 front: "{{低|ひく}}い"
 back: basso
 example_jp: >-
-  ここは {{低|ひく}}いです。
+  この {{技|わざ}}は {{命中率|めいちゅうりつ}}が {{低|ひく}}いです。
 example_it: >-
-  Qui è basso.
+  La precisione di questa mossa è bassa.
 :::
 :::term
 id: term-v409-massugu
@@ -438,7 +451,8 @@ reading: まっすぐ
 romaji: massugu
 meaning_it: dritto
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Avverbio di direzione: indica di proseguire diritto senza girare. Colloca
+  naturalmente con 進む, 行く, 走る.
 :::
 :::card
 id: card-v409-massugu-recognition
@@ -449,9 +463,9 @@ card_type: recognition
 front: "まっすぐ"
 back: dritto
 example_jp: >-
-  まっすぐ です。
+  この {{道|みち}}を まっすぐ {{進|すす}}みます。
 example_it: >-
-  Dritto.
+  Procedo dritto per questa strada.
 :::
 :::term
 id: term-v410-deau
@@ -460,7 +474,8 @@ reading: であう
 romaji: deau
 meaning_it: imbattersi in / incontrare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Verbo intransitivo per incontri non pianificati. La persona o il Pokémon
+  incontrato prende に o と: ポケモンに出会う, 人と出会う.
 :::
 :::card
 id: card-v410-deau-recognition
@@ -471,9 +486,9 @@ card_type: recognition
 front: "{{出会|であ}}う"
 back: imbattersi in / incontrare
 example_jp: >-
-  ここで {{出会|であ}}う。
+  {{草|くさ}}むらで {{珍|めずら}}しい ポケモンに {{出会|であ}}います。
 example_it: >-
-  Qui incontro qualcuno.
+  Nel prato incontro un Pokémon raro.
 :::
 :::term
 id: term-v411-sentou
@@ -482,8 +497,8 @@ reading: せんとう
 romaji: sentou
 meaning_it: posizione di testa / primo
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Posizione iniziale di squadra o lista. La collocazione pratica è
+  ポケモンを先頭にする: mettere un Pokémon davanti.
 :::
 :::card
 id: card-v411-sentou-recognition
@@ -494,9 +509,9 @@ card_type: recognition
 front: "{{先頭|せんとう}}"
 back: posizione di testa / primo
 example_jp: >-
-  ポケモンを {{先頭|せんとう}}に します。
+  ピカチュウを {{先頭|せんとう}}にします。
 example_it: >-
-  Metto il Pokémon in prima posizione.
+  Metto Pikachu in prima posizione.
 :::
 :::term
 id: term-v412-zukan-kansei
@@ -505,7 +520,8 @@ reading: ずかんかんせい
 romaji: zukan kansei
 meaning_it: completamento del Pokédex
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  Nome obiettivo per il Pokédex completato o quasi completato. Compare in frasi
+  di progresso come 図鑑完成まであと一匹.
 :::
 :::card
 id: card-v412-zukan-kansei-recognition
@@ -516,7 +532,7 @@ card_type: recognition
 front: "{{図鑑完成|ず.かん.かん.せい}}"
 back: completamento del Pokédex
 example_jp: >-
-  {{図鑑完成|ず.かん.かん.せい}}です。
+  {{図鑑完成|ず.かん.かん.せい}}まで あと {{一匹|いっぴき}}です。
 example_it: >-
-  Pokédex completato.
+  Manca solo un Pokémon al completamento del Pokédex.
 :::

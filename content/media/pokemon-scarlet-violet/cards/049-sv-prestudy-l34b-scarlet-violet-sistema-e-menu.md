@@ -13,7 +13,9 @@ reading: ロトりぼう
 romaji: rotoribou
 meaning_it: asta / selfie stick Rotom
 notes_it: >-
-  Termine utile per capire il tono narrativo e le schermate del DLC.
+  Etichetta di oggetto legata al Rotom Phone: indica un accessorio fisico da
+  usare o riconoscere in schermata, non una mossa o un Pokémon. La scrittura è
+  quasi tutta in kana, quindi conviene fissarla come label di menu.
 :::
 :::term
 id: term-v712-kaimei
@@ -22,8 +24,9 @@ reading: かいめい
 romaji: kaimei
 meaning_it: chiarimento / risoluzione scientifica
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Compare quando dialoghi o documenti parlano di misteri, cause e ricerche:
+  `ナゾを解明する` è arrivare a una soluzione. Non confonderlo con una semplice
+  spiegazione data al giocatore.
 :::
 :::card
 id: card-v712-kaimei-recognition
@@ -34,9 +37,9 @@ card_type: recognition
 front: "{{解明|かいめい}}"
 back: chiarimento / risoluzione scientifica
 example_jp: >-
-  ナゾの {{解明|かいめい}}が {{進|すす}}む。
+  {{博士|はかせ}}は パルデアの ナゾを {{解明|かいめい}}しようとしている。
 example_it: >-
-  La soluzione del mistero va avanti.
+  Il professore sta cercando di risolvere il mistero di Paldea.
 :::
 :::term
 id: term-v713-furyou
@@ -45,8 +48,9 @@ reading: ふりょう
 romaji: furyou
 meaning_it: teppista / delinquente
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Nella cornice scolastica indica uno studente problematico o un teppista, per
+  esempio quando si parla di gruppi come il Team Star. Fuori contesto può anche
+  voler dire "difettoso", ma qui la lettura utile è quella riferita alle persone.
 :::
 :::card
 id: card-v713-furyou-recognition
@@ -57,9 +61,9 @@ card_type: recognition
 front: "{{不良|ふりょう}}"
 back: teppista / delinquente
 example_jp: >-
-  これは {{不良|ふりょう}} です。
+  スター{{団|だん}}には {{不良|ふりょう}}と よばれる {{生徒|せいと}}も いる。
 example_it: >-
-  Questo è un teppista.
+  Nel Team Star ci sono anche studenti chiamati teppisti.
 :::
 :::term
 id: term-v714-kyouyuu
@@ -68,7 +72,9 @@ reading: きょうゆう
 romaji: kyouyuu
 meaning_it: condividere / condivisione
 notes_it: >-
-  Termine utile per capire il tono narrativo e le schermate del DLC.
+  Parola da menu e comunicazione online: si usa per informazioni, impostazioni
+  o dati mostrati ad altri giocatori. La collocazione più naturale è
+  `情報を共有する`.
 :::
 :::card
 id: card-v714-kyouyuu-recognition
@@ -79,9 +85,9 @@ card_type: recognition
 front: "{{共有|きょうゆう}}"
 back: condividere / condivisione
 example_jp: >-
-  じょうほうを {{共有|きょうゆう}}する。
+  フレンドと {{冒険|ぼうけん}}の {{情報|じょうほう}}を {{共有|きょうゆう}}する。
 example_it: >-
-  Condivido le informazioni.
+  Condivido con un amico le informazioni sull'avventura.
 :::
 :::term
 id: term-v715-irekawaru
@@ -90,7 +96,9 @@ reading: いれかわる
 romaji: irekawaru
 meaning_it: venire sostituito
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Verbo intransitivo per ordini, membri o posizioni che si scambiano: `Aと
+  入れ替わる` significa "cambiare posto con A". Per sostituire qualcosa
+  volontariamente, il verbo transitivo è `入れ替える`.
 :::
 :::card
 id: card-v715-irekawaru-recognition
@@ -101,19 +109,20 @@ card_type: recognition
 front: "{{入|い}}れ{{替|か}}わる"
 back: venire sostituito
 example_jp: >-
-  さっきの メンバーと {{入|い}}れ{{替|か}}わる。
+  メンバーの {{順番|じゅんばん}}が {{入|い}}れ{{替|か}}わる。
 example_it: >-
-  Prende il posto del gruppo di prima.
+  L'ordine dei membri cambia.
 :::
 :::term
 id: term-v716-kimeraretakazu
 lemma: 決められた数
 reading: きめられたかず
 romaji: kimeraretakazu
-meaning_it: numero stabilito
+meaning_it: numero prestabilito
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Espressione da regola o obiettivo: indica una quantità già fissata dal gioco,
+  per esempio quanti Pokémon scegliere o quanti oggetti raccogliere. Non è un
+  numero casuale visto in schermata.
 :::
 :::card
 id: card-v716-kimeraretakazu-recognition
@@ -122,11 +131,11 @@ entry_type: term
 entry_id: term-v716-kimeraretakazu
 card_type: recognition
 front: "{{決|き}}められた{{数|かず}}"
-back: numero stabilito
+back: numero prestabilito
 example_jp: >-
-  これは {{決|き}}められた{{数|かず}} です。
+  {{決|き}}められた{{数|かず}}の ポケモンを {{選|えら}}ぶ。
 example_it: >-
-  Questo è il numero stabilito.
+  Scegli il numero prestabilito di Pokémon.
 :::
 :::term
 id: term-v717-tani
@@ -135,8 +144,8 @@ reading: たんい
 romaji: tani
 meaning_it: crediti scolastici
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Nel contesto dell'Accademia indica i crediti o le unità scolastiche ottenute
+  seguendo lezioni e attività. Non leggerlo qui come "unità di misura" tecnica.
 :::
 :::card
 id: card-v717-tani-recognition
@@ -147,19 +156,20 @@ card_type: recognition
 front: "{{単位|たんい}}"
 back: crediti scolastici
 example_jp: >-
-  {{学校|がっこう}}で {{単位|たんい}}が だいじ です。
+  {{授業|じゅぎょう}}を {{受|う}}けて {{単位|たんい}}を {{取|と}}る。
 example_it: >-
-  A scuola i crediti scolastici sono importanti.
+  Segui le lezioni e ottieni crediti scolastici.
 :::
 :::term
 id: term-v718-higai
 lemma: 被害
 reading: ひがい
 romaji: higai
-meaning_it: danno / vittima
+meaning_it: danno / danni subiti
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Sostantivo per danni causati da un incidente o da qualcuno che si scatena:
+  `被害が出る` significa che si verificano danni. Non sostituisce `ダメージ` quando
+  il gioco parla del danno numerico in battaglia.
 :::
 :::card
 id: card-v718-higai-recognition
@@ -168,11 +178,11 @@ entry_type: term
 entry_id: term-v718-higai
 card_type: recognition
 front: "{{被害|ひがい}}"
-back: danno / vittima
+back: danno / danni subiti
 example_jp: >-
-  ダメージが {{大|おお}}きいです。
+  あばれた ポケモンの せいで {{町|まち}}に {{被害|ひがい}}が {{出|で}}た。
 example_it: >-
-  Il danno è grave.
+  Per colpa del Pokémon che si è scatenato, ci sono stati danni in città.
 :::
 :::term
 id: term-v719-sashie
@@ -181,8 +191,8 @@ reading: さしえ
 romaji: sashie
 meaning_it: illustrazione inserita
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Parola da testi, libri o schede illustrative: è un'immagine inserita in una
+  spiegazione, non una foto di schermata. Si incontra bene con `説明に挿絵がある`.
 :::
 :::card
 id: card-v719-sashie-recognition
@@ -193,9 +203,9 @@ card_type: recognition
 front: "{{挿絵|さしえ}}"
 back: illustrazione inserita
 example_jp: >-
-  これは {{挿絵|さしえ}} です。
+  {{図鑑|ずかん}}の {{説明|せつめい}}に {{挿絵|さしえ}}が ついている。
 example_it: >-
-  Questa è un'illustrazione inserita.
+  Alla descrizione del Pokédex è allegata un'illustrazione.
 :::
 :::term
 id: term-v720-okotowaririsuto
@@ -204,8 +214,9 @@ reading: おことわりリスト
 romaji: okotowaririsuto
 meaning_it: lista di blocco
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Etichetta di funzione online per mettere un giocatore o un contatto in una
+  lista di rifiuto/blocco. Il tono è cortese (`おことわり`), ma la funzione pratica
+  è impedire o rifiutare un'interazione.
 :::
 :::card
 id: card-v720-okotowaririsuto-recognition
@@ -216,9 +227,9 @@ card_type: recognition
 front: "おことわりリスト"
 back: lista di blocco
 example_jp: >-
-  メニューで おことわりリストを {{見|み}}ます。
+  オンラインで おことわりリストに {{相手|あいて}}を {{入|い}}れる。
 example_it: >-
-  Nel menu guardo la lista di blocco.
+  Online inserisco l'altra persona nella lista di blocco.
 :::
 :::term
 id: term-v721-zaiseki
@@ -227,8 +238,8 @@ reading: ざいせき
 romaji: zaiseki
 meaning_it: essere iscritto / registrato
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica che qualcuno risulta iscritto o registrato in una scuola, gruppo o
+  elenco ufficiale. La forma comune è `アカデミーに在籍している`.
 :::
 :::card
 id: card-v721-zaiseki-recognition
@@ -239,9 +250,9 @@ card_type: recognition
 front: "{{在籍|ざいせき}}"
 back: essere iscritto / registrato
 example_jp: >-
-  {{学校|がっこう}}で {{在籍|ざいせき}}が だいじ です。
+  {{主人公|しゅじんこう}}は アカデミーに {{在籍|ざいせき}}している。
 example_it: >-
-  A scuola l'iscrizione è importante.
+  Il protagonista è iscritto all'Accademia.
 :::
 :::term
 id: term-v722-boonasumisshon
@@ -250,8 +261,8 @@ reading: ボーナスミッション
 romaji: boonasumisshon
 meaning_it: missione bonus
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Etichetta da obiettivi extra o attività opzionali: è una missione aggiuntiva
+  rispetto a quella principale, spesso collegata a ricompense o punti bonus.
 :::
 :::card
 id: card-v722-boonasumisshon-recognition
@@ -262,9 +273,9 @@ card_type: recognition
 front: "ボーナスミッション"
 back: missione bonus
 example_jp: >-
-  メニューで ボーナスミッションを {{見|み}}ます。
+  ボーナスミッションを クリアすると {{報酬|ほうしゅう}}が もらえる。
 example_it: >-
-  Nel menu vedo la missione bonus.
+  Se completi la missione bonus, ricevi una ricompensa.
 :::
 :::term
 id: term-v723-honkakuteki
@@ -273,8 +284,8 @@ reading: ほんかくてき
 romaji: honkakuteki
 meaning_it: serio / a tutti gli effetti
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Segnala che qualcosa parte "sul serio" o diventa completo: `本格的に始まる`,
+  `本格的なバトル`. Nei dialoghi marca il passaggio da preparazione a fase reale.
 :::
 :::card
 id: card-v723-honkakuteki-recognition
@@ -282,12 +293,12 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v723-honkakuteki
 card_type: recognition
-front: "{{本格的|ほん.かく.てき}}"
+front: "{{本格的|ほんかくてき}}"
 back: serio / a tutti gli effetti
 example_jp: >-
-  ここから {{本格的|ほん.かく.てき}}に {{始|はじ}}まる。
+  {{課外授業|かがいじゅぎょう}}が {{本格的|ほんかくてき}}に {{始|はじ}}まる。
 example_it: >-
-  Da qui inizia sul serio.
+  La lezione extracurricolare inizia sul serio.
 :::
 :::term
 id: term-v724-yuusendo
@@ -296,8 +307,9 @@ reading: ゆうせんど
 romaji: yuusendo
 meaning_it: priorità
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Nei sistemi di battaglia o nei menu indica quale azione viene prima. In
+  Pokémon può riferirsi alla priorità di una mossa: se è alta, il Pokémon può
+  agire prima.
 :::
 :::card
 id: card-v724-yuusendo-recognition
@@ -305,12 +317,12 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v724-yuusendo
 card_type: recognition
-front: "{{優先度|ゆう.せん.ど}}"
+front: "{{優先度|ゆうせんど}}"
 back: priorità
 example_jp: >-
-  メニューで {{優先度|ゆう.せん.ど}}を {{見|み}}ます。
+  {{技|わざ}}の {{優先度|ゆうせんど}}が {{高|たか}}いと {{先|さき}}に {{動|うご}}ける。
 example_it: >-
-  Guardo la priorità in menu.
+  Se la priorità della mossa è alta, puoi agire per primo.
 :::
 :::term
 id: term-v725-ugokikata
@@ -319,8 +331,9 @@ reading: うごきかた
 romaji: ugokikata
 meaning_it: modo di muoversi
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Espressione concreta per il modo in cui un Pokémon, un personaggio o il
+  ride-Pokémon si muove. Si usa con `の`: `ポケモンの動き方`,
+  `ライドポケモンの動き方`.
 :::
 :::card
 id: card-v725-ugokikata-recognition
@@ -331,9 +344,9 @@ card_type: recognition
 front: "{{動|うご}}き{{方|かた}}"
 back: modo di muoversi
 example_jp: >-
-  ポケモンの {{動|うご}}き{{方|かた}}を {{覚|おぼ}}える。
+  ライドポケモンの {{動|うご}}き{{方|かた}}を {{覚|おぼ}}える。
 example_it: >-
-  Imparo come si muove il Pokemon.
+  Imparo il modo di muoversi del Pokémon da monta.
 :::
 :::term
 id: term-v726-koutokuten
@@ -342,8 +355,8 @@ reading: こうとくてん
 romaji: koutokuten
 meaning_it: punteggio alto
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Parola da minigiochi, prove o missioni con punteggio: `高得点をねらう` è
+  puntare a un risultato alto, non semplicemente vincere una battaglia.
 :::
 :::card
 id: card-v726-koutokuten-recognition
@@ -351,12 +364,12 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v726-koutokuten
 card_type: recognition
-front: "{{高得点|こう.とく.てん}}"
+front: "{{高得点|こうとくてん}}"
 back: punteggio alto
 example_jp: >-
-  {{高得点|こう.とく.てん}}を ねらう。
+  ミニゲームで {{高得点|こうとくてん}}を ねらう。
 example_it: >-
-  Punto a un punteggio alto.
+  Punto a un punteggio alto nel minigioco.
 :::
 :::term
 id: term-v727-shouritsu
@@ -365,8 +378,8 @@ reading: しょうりつ
 romaji: shouritsu
 meaning_it: percentuale di vittoria
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Statistica da lotte o competizione online: indica la percentuale di vittorie.
+  Colloca naturalmente con `勝率が上がる`, `勝率が下がる`, `勝率が高い`.
 :::
 :::card
 id: card-v727-shouritsu-recognition
@@ -377,9 +390,9 @@ card_type: recognition
 front: "{{勝率|しょうりつ}}"
 back: percentuale di vittoria
 example_jp: >-
-  これは {{勝率|しょうりつ}} です。
+  {{対戦|たいせん}}を {{続|つづ}}けると {{勝率|しょうりつ}}が {{変|か}}わる。
 example_it: >-
-  Questa è la percentuale di vittoria.
+  Se continui le lotte, la percentuale di vittoria cambia.
 :::
 :::term
 id: term-v728-shugosha
@@ -388,8 +401,9 @@ reading: しゅごしゃ
 romaji: shugosha
 meaning_it: guardiano
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Titolo narrativo per chi protegge un luogo, un tesoro o una funzione
+  importante. Non è il generico addetto alla sicurezza: per quello aspetteresti
+  parole come `警備員`.
 :::
 :::card
 id: card-v728-shugosha-recognition
@@ -397,12 +411,12 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v728-shugosha
 card_type: recognition
-front: "{{守護者|しゅ.ご.しゃ}}"
+front: "{{守護者|しゅごしゃ}}"
 back: guardiano
 example_jp: >-
-  これは {{守護者|しゅ.ご.しゃ}} です。
+  その ポケモンは {{宝|たから}}の {{守護者|しゅごしゃ}}と {{呼|よ}}ばれる。
 example_it: >-
-  Questo è il guardiano.
+  Quel Pokémon viene chiamato guardiano del tesoro.
 :::
 :::term
 id: term-v729-chiimuid
@@ -411,8 +425,9 @@ reading: チームＩＤ
 romaji: chiimuＩＤ
 meaning_it: ID squadra
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Etichetta di identificazione per gruppi o squadre, soprattutto in schermate
+  online o di gestione. `ID` resta da leggere come codice, non come parte di un
+  nome giapponese.
 :::
 :::term
 id: term-v730-katsudoumenbaa
@@ -421,8 +436,8 @@ reading: かつどうメンバー
 romaji: katsudoumenbaa
 meaning_it: membri attivi
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Etichetta da gestione gruppo: indica i membri attualmente attivi o selezionati
+  per una sessione. Non equivale a tutti gli amici registrati.
 :::
 :::card
 id: card-v730-katsudoumenbaa-recognition
@@ -433,9 +448,9 @@ card_type: recognition
 front: "{{活動|かつどう}}メンバー"
 back: membri attivi
 example_jp: >-
-  メニューで {{活動|かつどう}}メンバーを {{見|み}}ます。
+  {{活動|かつどう}}メンバーを {{確認|かくにん}}してから {{出発|しゅっぱつ}}する。
 example_it: >-
-  Nel menu vedo i membri attivi.
+  Dopo aver controllato i membri attivi, si parte.
 :::
 :::term
 id: term-v731-kaidame
@@ -444,7 +459,9 @@ reading: かいだめ
 romaji: kaidame
 meaning_it: fare scorta
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Nome/verbo in `買いだめする`: fare scorta prima di una spedizione, una lotta o
+  una zona lunga. Si usa spesso con oggetti consumabili come Poké Ball e
+  medicine.
 :::
 :::card
 id: card-v731-kaidame-recognition
@@ -455,18 +472,19 @@ card_type: recognition
 front: "{{買|か}}いだめ"
 back: fare scorta
 example_jp: >-
-  ここで {{買|か}}いだめ。
+  {{長|なが}}い {{探索|たんさく}}の {{前|まえ}}に ボールを {{買|か}}いだめする。
 example_it: >-
-  Fare scorta.
+  Prima di una lunga esplorazione faccio scorta di Ball.
 :::
 :::term
 id: term-v732-seiau
 lemma: 競い合う
-reading: せいあう
-romaji: seiau
+reading: きそいあう
+romaji: kisoiau
 meaning_it: competere
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Verbo reciproco: persone, squadre o Allenatori competono tra loro su forza,
+  punteggio o risultati. La lettura corretta è `きそいあう`, non `せいあう`.
 :::
 :::card
 id: card-v732-seiau-recognition
@@ -474,12 +492,12 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v732-seiau
 card_type: recognition
-front: "{{競|せ}}い{{合|あ}}う"
+front: "{{競|きそ}}い{{合|あ}}う"
 back: competere
 example_jp: >-
-  ここで {{競|せ}}い{{合|あ}}う。
+  トレーナーどうしで {{強|つよ}}さを {{競|きそ}}い{{合|あ}}う。
 example_it: >-
-  Competere.
+  Gli Allenatori competono tra loro sulla forza.
 :::
 :::term
 id: term-v733-koukankanryou
@@ -488,8 +506,9 @@ reading: こうかんかんりょう
 romaji: koukankanryou
 meaning_it: scambio completato
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Formula di stato dopo uno scambio: segnala che l'operazione è conclusa. Va
+  letta come messaggio completivo tipo "Scambio completato!", non come invito a
+  iniziare lo scambio.
 :::
 :::card
 id: card-v733-koukankanryou-recognition
@@ -497,22 +516,22 @@ lesson_id: lesson-pokemon-scarlet-violet-sv-prestudy-049-sv-prestudy-l34b-scarle
 entry_type: term
 entry_id: term-v733-koukankanryou
 card_type: recognition
-front: "{{交換完了|こう.かん.かん.りょう}}"
+front: "{{交換完了|こうかんかんりょう}}"
 back: scambio completato
 example_jp: >-
-  ポケモンを {{交換|こうかん}}します。
+  {{通信交換|つうしんこうかん}}の {{画面|がめん}}に {{交換完了|こうかんかんりょう}}！と {{出|で}}た。
 example_it: >-
-  Scambio un Pokémon.
+  Nella schermata dello scambio via comunicazione è apparso "scambio completato!".
 :::
 :::term
 id: term-v734-ittai
 lemma: 一帯
 reading: いったい
 romaji: ittai
-meaning_it: tutta la zona
+meaning_it: tutta la zona / area circostante
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica l'area attorno a un luogo: `この一帯`, `あたり一帯`, `湖の一帯`. Non funziona
+  bene come predicato da solo; vuole quasi sempre un punto di riferimento.
 :::
 :::card
 id: card-v734-ittai-recognition
@@ -521,11 +540,11 @@ entry_type: term
 entry_id: term-v734-ittai
 card_type: recognition
 front: "{{一帯|いったい}}"
-back: tutta la zona
+back: tutta la zona / area circostante
 example_jp: >-
-  これは {{一帯|いったい}} です。
+  {{湖|みずうみ}}の {{一帯|いったい}}に {{珍|めずら}}しい ポケモンが {{出|で}}る。
 example_it: >-
-  Questa è tutta la zona.
+  Nella zona attorno al lago appaiono Pokémon rari.
 :::
 :::term
 id: term-v735-senkyo
@@ -534,8 +553,9 @@ reading: せんきょ
 romaji: senkyo
 meaning_it: occupazione / controllo dell'area
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Parola forte per un gruppo che prende e controlla una base, un edificio o
+  un'area. Colloca con `拠点を占拠する` o `占拠される`, non come semplice "essere in
+  un posto".
 :::
 :::card
 id: card-v735-senkyo-recognition
@@ -546,9 +566,9 @@ card_type: recognition
 front: "{{占拠|せんきょ}}"
 back: occupazione / controllo dell'area
 example_jp: >-
-  ここは {{占拠|せんきょ}} です。
+  スター{{団|だん}}が {{古|ふる}}い {{基地|きち}}を {{占拠|せんきょ}}した。
 example_it: >-
-  Qui c'è un'occupazione.
+  Il Team Star ha occupato una vecchia base.
 :::
 :::term
 id: term-v736-odorokaseru
@@ -557,7 +577,9 @@ reading: おどろかせる
 romaji: odorokaseru
 meaning_it: spaventare / sorprendere
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Verbo transitivo: qualcuno fa spaventare o sorprende qualcun altro. La
+  persona o il Pokémon colpito va normalmente con `を`; `驚く` invece è
+  "spaventarsi / sorprendersi".
 :::
 :::card
 id: card-v736-odorokaseru-recognition
@@ -568,7 +590,7 @@ card_type: recognition
 front: "{{驚|おどろ}}かせる"
 back: spaventare / sorprendere
 example_jp: >-
-  ここで {{驚|おどろ}}かせる。
+  {{草|くさ}}むらから {{出|で}}て ポケモンを {{驚|おどろ}}かせる。
 example_it: >-
-  Spaventare / sorprendere.
+  Esco dall'erba alta e spavento il Pokémon.
 :::

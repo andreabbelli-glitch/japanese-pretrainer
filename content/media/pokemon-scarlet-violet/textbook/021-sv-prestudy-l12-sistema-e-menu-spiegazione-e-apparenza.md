@@ -24,7 +24,7 @@ Capire il giapponese che compare in sistema e menu, spiegazione e apparenza: par
 
 ## Contesto
 
-In questo blocco compaiono parole che segnalano sblocco, quantità, funzione e luogo della schermata. Accanto a queste ci sono anche nomi di percorso o label di gioco che basta riconoscere quando appaiono.
+Qui compaiono parole che segnalano sblocco, quantità, funzione e luogo della schermata: できるようになった annuncia una nuova possibilità, 何人 / 何匹 chiedono quantità diverse, 売る apre la funzione di vendita e 生息地 porta alla posizione di un Pokémon.
 
 ## Termini chiave
 
@@ -62,7 +62,7 @@ Le espressioni come [〜できるようになった](term:term-e025-dekiruyounin
 
 Sul piano grammaticale, [から](grammar:grammar-g034-perche) e [ので](grammar:grammar-g036-siccome-dato-che) introducono la causa o la spiegazione; [けど / けれど](grammar:grammar-g035-ma-pero) introduce un contrasto o attenua quello che segue. In una frase dialogata questo ti fa capire subito se il personaggio sta spiegando, giustificando o lasciando in sospeso il discorso.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [スターダスト★ストリート](term:term-v147-sutaadasutosutoriito)、 [チャンピオンロード](term:term-v148-chanpionroodo)、 [レジェンドルート](term:term-v149-rejiendoruuto): sono nomi di percorso o di funzione da riconoscere al volo quando compaiono.
+[スターダスト★ストリート](term:term-v147-sutaadasutosutoriito)、 [チャンピオンロード](term:term-v148-chanpionroodo) e [レジェンドルート](term:term-v149-rejiendoruuto) sono titoli di percorsi: quando appaiono, dicono quale linea narrativa o funzione di mappa sta parlando, non introducono una nuova struttura grammaticale.
 
 ## Esempi guidati
 
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri queste schermate, controlla subito se il testo ti sta annunciando uno sblocco, indicando una funzione o spiegando una causa. In questo blocco la comprensione passa soprattutto da quei segnali.
+Quando incontri queste schermate, controlla subito se il testo annuncia uno sblocco, indica una funzione o spiega una causa: できるようになった apre la nuova possibilità, から / ので danno la ragione, けど lascia un contrasto in sospeso.

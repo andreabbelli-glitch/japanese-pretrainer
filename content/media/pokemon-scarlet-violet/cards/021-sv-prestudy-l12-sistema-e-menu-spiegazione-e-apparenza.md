@@ -56,7 +56,8 @@ pattern: から
 title: Perché
 meaning_it: perché
 notes_it: >-
-  Formazione: frase + から. Spiegazione diretta, frequentissima nei dialoghi.
+  In posizione finale o dopo una frase, から dà la causa: XからY significa che Y
+  avviene o viene detto perché X.
 :::
 :::card
 id: card-g034-perche-concept
@@ -77,7 +78,8 @@ pattern: けど / けれど
 title: Ma / però
 meaning_it: ma / però
 notes_it: >-
-  Formazione: frase + けど. Connessione e contrasto molto comuni nel parlato.
+  Dopo una frase, けど introduce un contrasto o attenua ciò che segue: XけどY
+  tiene insieme "X, però Y".
 :::
 :::card
 id: card-g035-ma-pero-concept
@@ -98,8 +100,8 @@ pattern: ので
 title: Siccome / dato che
 meaning_it: siccome / dato che
 notes_it: >-
-  Formazione: frase + ので. Spiegazione più morbida, comune in parlato cortese e
-  testi.
+  Dopo una frase, ので presenta una causa in modo più morbido di から: XのでY
+  spiega Y partendo da X.
 :::
 :::card
 id: card-g036-siccome-dato-che-concept
@@ -143,7 +145,8 @@ reading: なんにん
 romaji: nannin
 meaning_it: quante persone
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  {{何人|なんにん}} chiede il numero di persone. In {{何人|なんにん}}{{来|き}}ますか,
+  il contatore 人 restringe la domanda agli esseri umani.
 :::
 :::card
 id: card-v139-nannin-recognition
@@ -165,7 +168,8 @@ reading: うる
 romaji: uru
 meaning_it: vendere
 notes_it: >-
-  Parola utile per la funzione di vendita nei menu.
+  {{売|う}}る è vendere. Nei menu marca l'azione opposta a {{買|か}}う: dare un
+  oggetto al negozio e ricevere denaro.
 :::
 :::card
 id: card-v140-uru-recognition
@@ -209,7 +213,8 @@ reading: かわ
 romaji: kawa
 meaning_it: fiume
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  {{川|かわ}} nomina un fiume o corso d'acqua sulla mappa; con がある segnala un
+  elemento del terreno presente nella zona.
 :::
 :::card
 id: card-v142-kawa-recognition
@@ -231,7 +236,8 @@ reading: まち
 romaji: machi
 meaning_it: città / paese
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  {{街|まち}} indica una città o un centro abitato. Con へ{{行|い}}く diventa la
+  destinazione del movimento.
 :::
 :::card
 id: card-v143-machi-recognition
@@ -253,7 +259,8 @@ reading: たぶん
 romaji: tabun
 meaning_it: forse / probabilmente
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  たぶん abbassa la certezza della frase: "forse / probabilmente". Davanti a
+  {{大丈夫|だい.じょう.ぶ}}です segnala una risposta rassicurante ma non assoluta.
 :::
 :::card
 id: card-v144-tabun-recognition
@@ -275,7 +282,8 @@ reading: なんびき
 romaji: nanbiki
 meaning_it: quanti animali / Pokémon
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  {{何匹|なんびき}} chiede quanti animali o Pokémon ci sono. 匹 è il contatore che
+  rende la domanda diversa da {{何人|なんにん}}.
 :::
 :::card
 id: card-v145-nanbiki-recognition
@@ -297,7 +305,8 @@ reading: いきさき
 romaji: ikisaki
 meaning_it: destinazione / dove andare
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  {{行先|いきさき}} è la destinazione, il punto verso cui si va. In menu e mappe
+  può indicare il luogo selezionato o il prossimo arrivo.
 :::
 :::card
 id: card-v146-ikisaki-recognition
@@ -319,7 +328,8 @@ reading: すたーだすと★すとりーと
 romaji: sutaadasuto★sutoriito
 meaning_it: Starfall Street
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  スターダスト★ストリート è il nome della trama legata a Team Star. Va letto come
+  titolo di percorso, non come frase giapponese da analizzare parola per parola.
 :::
 :::term
 id: term-v148-chanpionroodo
@@ -328,7 +338,8 @@ reading: ちゃんぴおんろーど
 romaji: chanpionroodo
 meaning_it: Champion Road
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  チャンピオンロード è il nome del percorso delle Palestre e della Lega. ロード
+  funziona come "route/percorso" nel titolo.
 :::
 :::term
 id: term-v149-rejiendoruuto
@@ -337,7 +348,8 @@ reading: れじぇんどるーと
 romaji: rejiendoruuto
 meaning_it: Path of Legends
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  レジェンドルート è il nome del percorso dei Titan e delle Herba Mystica. ルート
+  lo presenta come itinerario narrativo del gioco.
 :::
 :::term
 id: term-v150-waka-ru
@@ -346,7 +358,8 @@ reading: わかる
 romaji: waka ru
 meaning_it: capire
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  {{分|わ}}かる indica che un significato, una situazione o una risposta diventa
+  chiara. Il soggetto logico spesso è ciò che "si capisce", come 意味が分かる.
 :::
 :::card
 id: card-v150-waka-ru-recognition

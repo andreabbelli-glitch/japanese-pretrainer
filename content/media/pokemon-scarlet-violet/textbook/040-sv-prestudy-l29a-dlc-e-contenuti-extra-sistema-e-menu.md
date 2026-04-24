@@ -20,26 +20,31 @@ summary: 'Lessico ed espressioni per DLC e contenuti extra, sistema e menu: 20 c
 ---
 # Obiettivo
 
-Capire il giapponese che compare in DLC e contenuti extra, sistema e menu: voci che segnano completamento, regole, conferme e istruzioni brevi sullo schermo.
+Leggere il giapponese che compare nei contenuti extra e nelle schermate di sistema: stati di missione, conferme, regole, ricompense, aree del Bioterarium e nomi propri ricorrenti del DLC.
 
 ## Contesto
 
-In Scarlet / Violet alcuni termini sono voci operative dell'interfaccia, altri sono nomi propri o etichette molto locali del DLC. I primi ti dicono se qualcosa è completato, da confermare o regolato; i secondi nominano aree, personaggi e risorse del contenuto extra.
+In Scarlet / Violet il DLC alterna messaggi brevissimi di menu e nomi locali molto specifici. Una voce come [クリア](term:term-v479-kuria) chiude una missione, [{{確認|かくにん}}](term:term-v482-kakunin) apre un controllo prima di confermare, mentre [キタカミ](term:term-v476-kitakami) o [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen) restringono subito il contesto a una zona del contenuto extra.
 
 ## Termini chiave
 
 - [クリア](term:term-v479-kuria) — completato / clear
 - [ルール](term:term-v480-ruuru) — regola
-- [確認](term:term-v482-kakunin) — conferma / controllo
-- [おまけ](term:term-v483-omake) — bonus / omaggio
-- [洞くつ](term:term-v484-doukutsu) — grotta
-- [食堂](term:term-v487-shokudou) — mensa / tavola calda
-- [正解](term:term-v489-seikai) — risposta corretta
-- [大作戦](term:term-v493-daisakusen) — grande operazione
+- [{{確認|かくにん}}](term:term-v482-kakunin) — conferma / controllo
+- [おまけ](term:term-v483-omake) — bonus / extra omaggio
+- [{{洞|どう}}くつ](term:term-v484-doukutsu) — grotta
+- [{{食堂|しょくどう}}](term:term-v487-shokudou) — mensa / sala da pranzo
+- [{{正解|せいかい}}](term:term-v489-seikai) — risposta corretta
+- [{{大作戦|だいさくせん}}](term:term-v493-daisakusen) — grande operazione / grande piano
+- [{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha) — sfidante
+- [{{作戦|さくせん}}](term:term-v497-sakusen) — strategia / operazione
+- [ミッション](term:term-v499-misshon) — missione
+- [ヒント](term:term-v500-hinto) — indizio / suggerimento
+- [{{開始|かいし}}](term:term-v506-kaishi) — avvio / inizio
 
 ## Espressioni ricorrenti
 
-- [ありがとうございました](term:term-e088-arigatougozaimashita) — grazie mille
+- [ありがとうございました](term:term-e088-arigatougozaimashita) — grazie mille / formula di chiusura
 - [いいよね](term:term-e089-iiyone) — va bene così, no? / ci sta, no?
 
 ## Pattern grammaticali chiave
@@ -48,53 +53,60 @@ In Scarlet / Violet alcuni termini sono voci operative dell'interfaccia, altri s
 
 ## Etichette da riconoscere
 
-- [キタカミ](term:term-v476-kitakami) — Kitakami
-- [ブルーベリー学園](term:term-v477-buruuberiigakuen) — Blueberry Academy
+- [キタカミ](term:term-v476-kitakami) — Kitakami / Nordivia
+- [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen) — Istituto Mirtillo / Blueberry Academy
 - [オーガポン](term:term-v478-oogapon) — Ogerpon
-- [ＢＰ](term:term-v481-biipii) — BP / Blueberry Points
-- [テラリウムドーム](term:term-v486-terariumudoomu) — Terarium Dome
-- [コーストエリア](term:term-v488-koosutoeria) — Coast Biome
+- [ＢＰ](term:term-v481-biipii) — BP / Punti Mirtillo
+- [テラリウムドーム](term:term-v486-terariumudoomu) — Bioterarium / Terarium Dome
+- [コーストエリア](term:term-v488-koosutoeria) — Settore Costa
+- [オモダカ](term:term-v490-omodaka) — Alisma / Geeta
+- [サバンナエリア](term:term-v491-sabanaeria) — Settore Savana
+- [ポーラエリア](term:term-v492-pooraeria) — Settore Ghiacciai / area polare
+- [ブルレク](term:term-v496-burureku) — Ricreattività Mirtillo / Blueberry Quest
+- [キャニオンエリア](term:term-v498-kyanioneria) — Settore Canyon
 
 ## Spiegazione
 
-Parole come [クリア](term:term-v479-kuria), [ルール](term:term-v480-ruuru) e [確認](term:term-v482-kakunin) non spiegano una teoria astratta: nei menu e nei messaggi indicano se qualcosa è completato, quale regola vale o che cosa va controllato.
+[クリア](term:term-v479-kuria), [{{開始|かいし}}](term:term-v506-kaishi) e [{{確認|かくにん}}](term:term-v482-kakunin) sono parole da interfaccia. `ミッションを クリアしました` indica uno stato completato; `ミッションを {{開始|かいし}}します` avvia l'attività; `ルールを {{確認|かくにん}}します` apre un controllo prima di procedere.
 
-Le espressioni come [ありがとうございました](term:term-e088-arigatougozaimashita) e [いいよね](term:term-e089-iiyone) orientano il dialogo: la prima chiude con gratitudine dopo un aiuto o un servizio, la seconda chiede assenso su una scelta già quasi fissata.
+[ルール](term:term-v480-ruuru), [{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha), [{{作戦|さくせん}}](term:term-v497-sakusen) e [{{大作戦|だいさくせん}}](term:term-v493-daisakusen) appartengono alla parte competitiva e narrativa: regole di una lotta, sfidanti da affrontare, piani di azione e operazioni più marcate negli eventi.
 
-Sul piano grammaticale, pattern come [〜とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) introducono esempi aperti, tipo "palestra, scuola e cose così", senza dire che la lista sia finita.
+[ＢＰ](term:term-v481-biipii), [ブルレク](term:term-v496-burureku) e i nomi delle aree come [コーストエリア](term:term-v488-koosutoeria), [サバンナエリア](term:term-v491-sabanaeria), [ポーラエリア](term:term-v492-pooraeria) e [キャニオンエリア](term:term-v498-kyanioneria) sono segnali del Disco Indaco. Nei menu compaiono come saldo, ricompensa, elenco missioni o settore della mappa del Bioterarium.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [キタカミ](term:term-v476-kitakami)、 [ブルーベリー学園](term:term-v477-buruuberiigakuen)、 [オーガポン](term:term-v478-oogapon)、 [ＢＰ](term:term-v481-biipii). Quando compaiono, ti orientano nel DLC indicando subito luogo, personaggio o risorsa specifica.
+[ありがとうございました](term:term-e088-arigatougozaimashita) chiude una vendita, una cura o un servizio; [いいよね](term:term-e089-iiyone) chiede assenso su una scelta già proposta. Nel lessico quotidiano del gioco, [おまけ](term:term-v483-omake), [ピック](term:term-v494-pikku), [{{食堂|しょくどう}}](term:term-v487-shokudou) e [{{受付|うけつけ}}](term:term-v504-uketsuke) fanno leggere shop, panini, mensa scolastica e sportelli.
+
+Il pattern [〜とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) apre una lista non chiusa. `キタカミとか ブルーベリー{{学園|がくえん}}とか` significa "Kitakami, l'Istituto Mirtillo e posti del genere", non una lista completa e definitiva.
 
 ## Esempi guidati
 
 :::example_sentence
 jp: >-
-  ありがとうございました。
+  ありがとうございました。また きてください。
 translation_it: >-
-  Grazie mille.
+  Grazie mille. Torni presto.
 :::
 
 :::example_sentence
 jp: >-
-  これで いいよね。
+  この ルールで いいよね。
 translation_it: >-
-  Così va bene, no?
+  Con questa regola va bene, no?
 :::
 
 :::example_sentence
 jp: >-
-  ジムとか {{学校|がっこう}}とか。
+  キタカミとか ブルーベリー{{学園|がくえん}}とかに いきます。
 translation_it: >-
-  Tipo la palestra, la scuola e cose così.
+  Vado a Kitakami, all'Istituto Mirtillo e posti del genere.
 :::
 
 :::example_sentence
 jp: >-
-  メニューで クリアを {{見|み}}ます。
+  ミッションを クリアしました。
 translation_it: >-
-  Nel menu vedo la voce "completato".
+  Ho completato la missione.
 :::
 
 ## Nota finale
 
-In questo blocco contano soprattutto le voci che dicono se qualcosa è completato, confermato o regolato. I nomi di area e personaggio completano invece l'orientamento nel DLC.
+Le parole operative dicono che cosa fare o che cosa è già successo; le etichette del DLC indicano dove si svolge l'azione, quale valuta o missione è coinvolta e quale area della mappa viene richiamata.

@@ -24,7 +24,7 @@ Capire il giapponese breve che in scuola e storia segnala aiuto, contrasto, prop
 
 ## Contesto
 
-In questo blocco compaiono parole che dicono subito se qualcuno ti offre aiuto, indica una direzione, parla di una categoria o commenta un risultato. Accanto a queste ci sono anche riferimenti più specifici di scuola o storia che basta riconoscere quando appaiono.
+Qui compaiono parole che marcano aiuto, direzione, categoria e risultato: 〜してあげる offre un'azione a favore di qualcuno, 向こう indica l'altra parte dello spazio, 種類 classifica, 勝利 nomina l'esito positivo.
 
 ## Termini chiave
 
@@ -51,9 +51,9 @@ In questo blocco compaiono parole che dicono subito se qualcuno ti offre aiuto, 
 
 ## Spiegazione
 
-Parole come [種類](term:term-v224-shurui), [食事](term:term-v225-shokuji), [ライド技](term:term-v226-raidowaza) e [メニュー](term:term-v227-menyuu) ti dicono che tipo di schermata stai leggendo: scelta di categoria, indicazione sui pasti, abilità di ride o menu di sistema. Quando compaiono, non stanno solo etichettando qualcosa: restringono subito l'informazione utile.
+Parole come [種類](term:term-v224-shurui), [食事](term:term-v225-shokuji), [ライド技](term:term-v226-raidowaza) e [メニュー](term:term-v227-menyuu) distinguono quattro domini della schermata: categoria, pasto, abilità di cavalcata e menu di sistema. La forma restringe subito il tipo di scelta o informazione richiesta.
 
-Le espressioni come [〜してあげる](term:term-e042-shiteageru), [向こう](term:term-e062-mukou) e [どっち？](term:term-e063-docchi) orientano il parlato e lo spazio: un aiuto offerto, qualcosa che sta dall'altra parte, oppure una domanda rapidissima su direzione o scelta.
+Le espressioni come [〜してあげる](term:term-e042-shiteageru), [向こう](term:term-e062-mukou) e [どっち？](term:term-e063-docchi) dividono parlato e spazio: la prima offre aiuto, la seconda colloca qualcosa dall'altra parte, la terza chiede quale direzione o scelta prendere.
 
 Sul piano grammaticale, [〜のに](grammar:grammar-g043-anche-se-nonostante) segnala un contrasto inatteso, [〜ましょう / 〜ましょ](grammar:grammar-g044-facciamo-andiamo-a) è un invito cortese e [〜よう](grammar:grammar-g045-facciamo-provero-a) è la forma volitiva che suona come proposta, intenzione o auto-incoraggiamento.
 
@@ -89,4 +89,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri queste battute, controlla subito se la frase sta offrendo aiuto, aprendo un contrasto, proponendo un'azione o indicando una direzione. In questo capitolo la comprensione passa soprattutto da quei segnali.
+Quando incontri queste battute, 〜してあげる segnala l'aiuto offerto, 〜のに il contrasto inatteso, 〜ましょう / 〜よう la proposta o intenzione, 向こう / どっち la direzione nello spazio.

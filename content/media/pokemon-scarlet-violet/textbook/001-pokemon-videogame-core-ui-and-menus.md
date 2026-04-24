@@ -87,8 +87,8 @@ di consumarsi come una cura o una Pokeball.
 
 [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) non è solo una collezione da
 completare: è la schermata che registra ciò che hai visto o catturato, quindi
-ti aiuta a capire se stai avanzando nella raccolta e se una specie è già stata
-documentata. In Scarlet / Violet la navigazione aggiunge anche
+mostra l'avanzamento della raccolta e se una specie è già stata documentata. In
+Scarlet / Violet la navigazione aggiunge anche
 [{{目的地|もく.てき.ち}}](term:term-mokutekichi): quando lo vedi in mappa o in un
 tutorial, la parola non indica una località generica ma il punto che il gioco
 vuole farti raggiungere o segnare per non perdere la direzione.

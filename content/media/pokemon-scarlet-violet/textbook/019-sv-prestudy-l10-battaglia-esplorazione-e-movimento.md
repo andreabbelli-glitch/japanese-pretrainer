@@ -24,7 +24,7 @@ Capire il giapponese che compare quando scegli come muoverti, leggi i messaggi d
 
 ## Contesto
 
-Qui le parole utili sono quelle che ti dicono subito cosa sta succedendo: [そらとぶタクシー](term:term-v113-soratobutakushii) per il trasporto, [倒す](term:term-v115-taosu) e [勝つ](term:term-v119-katsu) per l'esito dello scontro, [次](term:term-v116-tsugi) per il passo successivo, [買う](term:term-v121-kau) e [いくら](term:term-v123-ikura) per gli scambi e i menu. Nomi propri ed etichette restano come riferimento quando compaiono in scena.
+Qui [そらとぶタクシー](term:term-v113-soratobutakushii) nomina il trasporto, [倒す](term:term-v115-taosu) e [勝つ](term:term-v119-katsu) danno l'esito dello scontro, [次](term:term-v116-tsugi) sposta al passo successivo, [買う](term:term-v121-kau) e [いくら](term:term-v123-ikura) portano la frase su negozi, prezzo e acquisto.
 
 ## Termini chiave
 
@@ -88,4 +88,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando leggi questo blocco, chiediti subito se la frase parla di trasporto, scontro, richiesta o passo successivo. I segnali utili sono quelli che ti fanno capire al volo come si muove la scena.
+Quando leggi queste frasi, distingui subito trasporto, scontro, richiesta e passo successivo: で marca il mezzo, に la destinazione o il bersaglio, と il compagno o la citazione, の il rapporto tra due nomi.

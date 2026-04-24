@@ -18,9 +18,11 @@ summary: 'Lessico ed espressioni per scuola, classi e regole d''accademia: 12 ca
 ---
 # Obiettivo
 
-Capire il giapponese che compare in scuola, classi e regole d'accademia. Qui il
-focus e su lessico di aula, classe di lotta, avvisi scolastici e regole del
-campus.
+Leggere il giapponese di aula, classi di lotta, avvisi scolastici e regole del
+campus. [{{担当|たんとう}}](term:term-v733-tantou) assegna un ruolo,
+[{{学籍番号|がく.せき.ばん.ごう}}](term:term-v734-gakusekibangou) identifica lo
+studente e [{{校則|こうそく}}](term:term-v741-kousoku) trasforma un divieto in una
+regola ufficiale.
 
 ## Contesto
 
@@ -29,7 +31,7 @@ per nome, indicazioni su dove andare e avvisi su quello che non si puo fare.
 Parole come [{{学籍番号|がく.せき.ばん.ごう}}](term:term-v734-gakusekibangou) o
 [{{始業|し.ぎょう}}](term:term-v738-shigyou) segnano il lato formale della
 scuola; parole come [{{階段|かいだん}}](term:term-v732-kaidan) o
-[{{急|いそ}}ぐ](term:term-v739-isogu) ti dicono invece come ci si muove davvero
+[{{急|いそ}}ぐ](term:term-v739-isogu) indicano invece come ci si muove davvero
 nel campus.
 
 ## Termini chiave
@@ -57,12 +59,14 @@ precisa e che usa un certo tipo di statistica.
 [{{担当|たんとう}}](term:term-v733-tantou),
 [{{学籍番号|がく.せき.ばん.ごう}}](term:term-v734-gakusekibangou) e
 [{{敬語|けいご}}](term:term-v736-keigo) sono invece il lato piu istituzionale
-dell'accademia. Ti fanno capire chi ha un certo ruolo, quando la scena diventa
-piu formale e come cambia il tono in aula.
+dell'accademia. [{{担当|たんとう}}](term:term-v733-tantou) dice chi segue una
+materia, [{{学籍番号|がく.せき.ばん.ごう}}](term:term-v734-gakusekibangou) introduce
+un'identificazione amministrativa e [{{敬語|けいご}}](term:term-v736-keigo) segnala
+che il tono in aula è più formale del dialogo tra amici.
 
 Le parole di movimento hanno un peso pratico immediato.
 [{{階段|かいだん}}](term:term-v732-kaidan) e
-[グラウンド](term:term-v735-guraundo) ti orientano nello spazio reale del
+[グラウンド](term:term-v735-guraundo) nominano punti fisici del
 campus; [{{始業|し.ぎょう}}](term:term-v738-shigyou) e
 [{{急|いそ}}ぐ](term:term-v739-isogu) trasformano un semplice cambio scena in un
 segnale di ritmo: e ora di rientrare, sbrigarsi o presentarsi nel posto giusto.
@@ -124,13 +128,10 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco contano soprattutto ruoli, orari, spostamenti e divieti. Se
-riconosci
-[{{担当|たんとう}}](term:term-v733-tantou),
-[{{学籍番号|がく.せき.ばん.ごう}}](term:term-v734-gakusekibangou),
-[{{階段|かいだん}}](term:term-v732-kaidan),
-[グラウンド](term:term-v735-guraundo) e il trio
+Ruoli, orari, spostamenti e divieti formano la grammatica pratica dell'accademia.
+[{{担当|たんとう}}](term:term-v733-tantou) assegna responsabilità,
+[{{始業|し.ぎょう}}](term:term-v738-shigyou) apre il tempo scolastico e
 [{{立|た}}ち{{入|い}}り](term:term-v740-tachiiri) /
 [{{校則|こうそく}}](term:term-v741-kousoku) /
-[{{違反|いはん}}](term:term-v742-ihan), la parte scolastica diventa molto piu
-chiara da leggere.
+[{{違反|いはん}}](term:term-v742-ihan) spiegano quando uno spazio o un'azione
+superano il limite consentito.

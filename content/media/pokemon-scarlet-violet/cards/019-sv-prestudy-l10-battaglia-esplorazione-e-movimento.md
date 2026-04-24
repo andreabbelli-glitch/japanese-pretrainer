@@ -13,7 +13,8 @@ reading: 〜してみたら？
 romaji: shitemitara？
 meaning_it: perché non provi a…?
 notes_it: >-
-  Suggerimento molto frequente nei dialoghi
+  〜してみたら？ unisce てみる ("provare a fare") e たら interrogativo: propone
+  un'azione senza trasformarla in ordine.
 :::
 :::card
 id: card-e021-shitemitara-recognition
@@ -56,7 +57,7 @@ pattern: と
 title: Particella と
 meaning_it: con / e / "...\" / se...
 notes_it: >-
-  と ha piu usi distinti: "con" qualcuno, elenco completo tra nomi, citazione
+  と ha più usi distinti: "con" qualcuno, elenco completo tra nomi, citazione
   di parole o pensieri, e in alcuni casi condizione automatica. Va letto dal
   contesto.
 :::
@@ -79,8 +80,8 @@ pattern: に
 title: Destinazione, tempo, bersaglio, esistenza
 meaning_it: a / in / per / nel momento di
 notes_it: >-
-  に puo indicare destinazione, tempo preciso, persona o cosa bersaglio, oppure
-  il luogo di esistenza con いる / ある. E una particella molto frequente con piu
+  に può indicare destinazione, tempo preciso, persona o cosa bersaglio, oppure
+  il luogo di esistenza con いる / ある. È una particella molto frequente con più
   funzioni.
 :::
 :::card
@@ -102,7 +103,7 @@ pattern: の
 title: Possesso / collegamento tra nomi
 meaning_it: di / collegamento tra due nomi
 notes_it: >-
-  の unisce due nomi. Spesso indica possesso o appartenenza, ma puo anche
+  の unisce due nomi. Spesso indica possesso o appartenenza, ma può anche
   descrivere categoria, tipo, origine o relazione tra i due nomi.
 :::
 :::card
@@ -125,8 +126,8 @@ reading: そらとぶタクシー
 romaji: soratobutakushii
 meaning_it: taxi volante
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  そらとぶタクシー combina そらとぶ ("volare") e タクシー: è il servizio di
+  spostamento rapido verso luoghi già disponibili.
 :::
 :::card
 id: card-v113-soratobutakushii-recognition
@@ -171,7 +172,8 @@ reading: つぎ
 romaji: tsugi
 meaning_it: prossimo
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  {{次|つぎ}} indica il passo successivo in una sequenza: 次はジムです sposta
+  l'attenzione dalla fase attuale alla prossima tappa.
 :::
 :::card
 id: card-v116-tsugi-recognition
@@ -193,8 +195,8 @@ reading: おまかせバトル
 romaji: omakasebatoru
 meaning_it: lotta automatica
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  おまかせバトル contiene おまかせ, "lasciare fare / affidare": nomina la lotta in
+  cui il Pokémon agisce automaticamente mentre esplori.
 :::
 :::card
 id: card-v118-omakasebatoru-recognition
@@ -262,7 +264,8 @@ reading: かう
 romaji: kau
 meaning_it: comprare
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  {{買|か}}う è l'azione di comprare. Con で marca il luogo dello scambio, come
+  {{店|みせ}}で{{買|か}}う; con を marca l'oggetto acquistato.
 :::
 :::card
 id: card-v121-kau-recognition
@@ -317,9 +320,9 @@ card_type: recognition
 front: 'いくら'
 back: quanto costa / quanto
 example_jp: >-
-  これは いくら ですか。
+  この ボールは いくら ですか。
 example_it: >-
-  Quanto costa questo?
+  Quanto costa questa Ball?
 :::
 :::term
 id: term-v124-umi
@@ -328,7 +331,8 @@ reading: うみ
 romaji: umi
 meaning_it: mare
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  {{海|うみ}} è un riferimento di mappa e paesaggio. In frasi con が{{見|み}}える
+  indica ciò che entra nel campo visivo.
 :::
 :::card
 id: card-v124-umi-recognition

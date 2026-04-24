@@ -63,7 +63,7 @@ Le espressioni come [なんで？](term:term-e065-nande), [どうして？](term
 
 Sul piano grammaticale, [〜ませんか](grammar:grammar-g068-non-vuoi-ti-va-di) propone o invita con tono gentile, [〜ていく](grammar:grammar-g069-andare-avanti-facendo-cambiare-nel-tempo) dice che qualcosa prosegue da qui in avanti o cambia poco a poco, e [〜てある](grammar:grammar-g070-qualcosa-e-stato-fatto-intenzionalmente) indica che qualcuno ha fatto qualcosa apposta e il risultato resta visibile. Qui conta il tono e l'effetto della frase, non solo il nome del pattern.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [チャンピオンテスト](term:term-v341-chanpiontesuto) e [ユニオンサークル](term:term-v352-yunionsaakuru). Servono a orientarti nel mondo di gioco, non a costruire frasi nuove.
+[チャンピオンテスト](term:term-v341-chanpiontesuto) e [ユニオンサークル](term:term-v352-yunionsaakuru) sono nomi di funzione: il primo indica la prova legata al rango di Campione, il secondo la modalità cooperativa locale/online. Quando appaiono in menu o dialoghi, identificano il sistema aperto dalla schermata, non un concetto grammaticale da riusare in frasi comuni.
 
 ## Esempi guidati
 
@@ -97,4 +97,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri questo blocco, leggi prima le parole che guidano l'azione, poi i messaggi di attesa e le reazioni brevi. Le etichette specifiche del gioco basta riconoscerle, mentre il resto vale perché torna spesso in schermate e dialoghi.
+Leggi prima le parole che guidano l'azione, poi i messaggi di attesa e le reazioni brevi: 無理 blocca, しばらくお待ちください sospende, なんで e どうして chiedono motivo, きっと大丈夫 rassicura.

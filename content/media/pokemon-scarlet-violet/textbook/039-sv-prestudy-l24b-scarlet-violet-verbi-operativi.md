@@ -20,7 +20,7 @@ summary: 'Lessico ed espressioni per Scarlet/Violet, verbi operativi: 19 carte l
 ---
 # Obiettivo
 
-Capire il giapponese che compare in Scarlet/Violet, verbi operativi. Qui il focus è su parole operative, formule di dialogo e strutture che aiutano a leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in Scarlet/Violet nei verbi operativi: forme che indicano espansione, movimento, cooperazione, deposito e modalità di spostamento.
 
 ## Contesto
 
@@ -64,7 +64,7 @@ Le espressioni come [秘密だよ](term:term-e085-himitsu-dayo) e [〜しても�
 
 Sul piano grammaticale, [だけ](grammar:grammar-g089-solo) limita a "solo", [も](grammar:grammar-g090-anche) aggiunge un altro elemento, [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) elenca senza chiudere la lista e [し](grammar:grammar-g092-e-inoltre-tra-l-altro) aggiunge un motivo o un secondo argomento. Sono le particelle che fanno leggere meglio quantità, inclusione e spiegazione.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [グライドモード](term:term-v469-guraidomoodo)、 [ドライブモード](term:term-v470-doraibumoodo)、 [フロートモード](term:term-v471-furootomoodo). Sono nomi di modalità: quando compaiono, ti dicono subito se stai planando, correndo o galleggiando.
+[グライドモード](term:term-v469-guraidomoodo)、 [ドライブモード](term:term-v470-doraibumoodo) e [フロートモード](term:term-v471-furootomoodo) condividono モード, ma la prima parte cambia il movimento: グライド è planare, ドライブ è avanzare su terreno, フロート è muoversi sull'acqua. In una schermata di abilità, quella parola iniziale decide quale forma è attiva.
 
 ## Esempi guidati
 
@@ -98,4 +98,4 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco il giapponese più utile è quello che segnala azione, richiesta, limite o aggiunta. I nomi di modalità completano subito la lettura della schermata dicendoti come ti stai muovendo.
+Qui il giapponese segnala azione, richiesta, limite e aggiunta: 広げる espande, してもらえる？ chiede un favore, だけ limita, も aggiunge. I nomi di modalità specificano il movimento attivo.

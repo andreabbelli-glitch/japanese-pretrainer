@@ -37,6 +37,20 @@ Una spiegazione passa il controllo solo se chiarisce almeno due livelli:
 1. che cosa sta dicendo davvero il giapponese;
 2. che differenza pratica fa nel media o nel contesto.
 
+Regola operativa piu severa: ogni paragrafo esplicativo deve contenere almeno
+due ancore verificabili tra queste:
+
+- una forma giapponese reale;
+- un significato o valore tecnico preciso;
+- una collocazione naturale o un frame grammaticale;
+- una funzione concreta nel media;
+- un target, timing, condizione, stato o risultato;
+- un contrasto con una lettura sbagliata probabile.
+
+Se un paragrafo dice soltanto che una parola "aiuta", "orienta", "segnala" o
+"serve", ma non mostra come la forma giapponese funziona nella frase, va
+riscritto.
+
 ## 2. Divisione dei ruoli: textbook vs flashcard
 
 `textbook/` e `cards/` non hanno lo stesso scopo.
@@ -116,6 +130,19 @@ Eccezione:
   spesso, può diventare flashcard, ma la motivazione deve restare linguistica,
   non collezionistica o di completismo.
 
+Se una flashcard esiste gia in un pacchetto in revisione, non va indebolita con
+esempi generici pur di conservarla. Va riabilitata:
+
+- `example_jp` deve contenere il target nella forma che si vuole imparare;
+- `example_jp` deve usare una collocazione naturale, non frasi tipo
+  `これはXです` o `Xがだいじです`;
+- `example_it` deve tradurre la frase giapponese, non migliorarla
+  narrativamente;
+- `notes_it` deve spiegare contesto, collocazione o funzione, non giustificare
+  la scelta della card;
+- se il target e molto verticale, la nota deve essere onesta: spiega che cosa
+  permette di riconoscere in quella schermata o scena.
+
 ## 3. Regola di spendibilità
 
 Quando devi scegliere tra più candidati, privilegia il giapponese più
@@ -154,6 +181,11 @@ questi punti:
 - con quale risultato;
 - quale decisione pratica sblocca.
 
+Per pattern grammaticali, non basta dare il nome della regola. Ogni pattern
+deve essere mostrato in un frame leggibile, per esempio `[N]によって`,
+`[V/plain]じゃん`, `[X の]まま`, e deve chiarire che cosa aggiunge alla frase
+rispetto a una lettura senza quel pattern.
+
 ## 5. Frasi da rifiutare
 
 Queste formule non bastano da sole:
@@ -163,6 +195,12 @@ Queste formule non bastano da sole:
 - `Qui c'è un concetto importante.`
 - `Questa schermata è molto utile.`
 - `Questa keyword è una buona ancora mentale.`
+- `Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e dialoghi chiave.`
+- `Parola-cerniera utile per capire tono e passaggi dei dialoghi.`
+- `Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.`
+- `Qui il focus è su parole operative, formule di dialogo e strutture.`
+- `Accanto a questo nucleo restano alcune etichette contestuali.`
+- `Questo blocco serve a orientarti.`
 
 Versione accettabile:
 
@@ -171,17 +209,56 @@ Versione accettabile:
 - `Il pattern lega questa condizione a questo effetto; senza quel pezzo la
   frase viene letta male.`
 
-## 6. Checklist editoriale minima
+Esempi di correzione:
+
+- Debole: `{{被害|ひがい}} = danno / vittima.`
+- Forte: `{{被害|ひがい}} indica il danno subito o causato da una situazione; la
+  persona colpita sarebbe {{被害者|ひがいしゃ}}. In frasi come
+  {{被害|ひがい}}が{{出|で}}る, il testo dice che il problema ha prodotto
+  conseguenze reali.`
+- Debole: `{{共有|きょうゆう}} è utile nei menu.`
+- Forte: `{{共有|きょうゆう}} compare quando informazioni, team o dati vengono
+  messi in comune. In una UI non indica solo "avere", ma rendere disponibile
+  lo stesso dato anche a qualcun altro o a un altro contesto.`
+- Debole: `なくなってしまいますが よろしいですか？ = andrà perso, va bene?`
+- Forte: `Cerca prima che cosa precede なくなる: quello è l'elemento che
+  sparisce. しまいます aggiunge perdita completa o indesiderata, mentre
+  よろしいですか chiede conferma prima di procedere.`
+
+## 6. Anti-pattern da bloccare in review
+
+Rifiuta o riscrivi sempre questi casi:
+
+- metadiscorso su lesson, batch, workflow, review o processo editoriale;
+- spiegazioni che parlano del gioco senza una forma giapponese da aprire;
+- traduzioni secche senza funzione nella frase;
+- liste di termini non integrate in una frase o scena;
+- pattern grammaticali senza frame;
+- esempi `example_jp` che non contengono il target della card;
+- esempi costruiti come definizioni (`これはXです`) invece che uso vivo;
+- italiano creativo che aggiunge lore, tono o dettagli non presenti nel
+  giapponese;
+- back troppo larghi o inesatti, per esempio confondere `{{被害|ひがい}}` con
+  `{{被害者|ひがいしゃ}}`;
+- letture ricostruite a intuito invece di verificate;
+- card su katakana trasparente o nome proprio trattate come memorization target
+  senza spiegare quale riconoscimento concreto sblocchino.
+
+## 7. Checklist editoriale minima
 
 Prima di chiudere un batch, verifica:
 
 - ogni paragrafo del textbook trasmette informazione concreta, non solo
   valutazione;
+- ogni paragrafo esplicativo contiene almeno due ancore verificabili tra forma,
+  significato, collocazione, funzione, timing, target, risultato o contrasto;
 - i termini verticali necessari alla comprensione o all'interazione corretta
   con il media sono spiegati anche se non diventano flashcard;
 - anche quando spieghi il media o la meccanica, il bersaglio primario resta il
   giapponese e non il game design in astratto;
 - le flashcard selezionate hanno vero valore linguistico e buona spendibilità;
+- ogni `example_jp` contiene il target e usa una collocazione naturale;
+- ogni `example_it` traduce il giapponese senza romanzare o aggiungere dettagli;
 - non stai sprecando card su sigle, acronimi, nomi interni o dettagli che non
   costruiscono literacy;
 - il contenuto spiega insieme giapponese e funzione nel media;

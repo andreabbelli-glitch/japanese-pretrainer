@@ -84,8 +84,8 @@ reading: かんしかめら
 romaji: kanshi kamera
 meaning_it: telecamera di sorveglianza
 notes_it: >-
-  Compare quando il dialogo introduce prove, controllo o sorveglianza. Aiuta a
-  capire che qualcuno non sta parlando per intuizione ma perche ha gia visto.
+  Compare quando il dialogo introduce prove, controllo o sorveglianza. La frase
+  dice che qualcuno non parla per intuizione: ha già visto tramite una camera.
 :::
 :::card
 id: card-v763-kanshikamera-recognition

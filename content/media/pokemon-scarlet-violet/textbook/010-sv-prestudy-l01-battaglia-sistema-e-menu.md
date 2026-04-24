@@ -14,17 +14,16 @@ tags:
 - phase-s
 - lesson-01
 prerequisites: []
-summary: 'Lessico ed espressioni per battaglia, sistema e menu: 8 carte lessicali
-  attive, 2 formule ricorrenti, 3 pattern grammaticali e 0 etichette contestuali da
-  riconoscere.'
+summary: 'aite, type, dekimasen e tarimasen nei menu e nelle lotte: chi agisce,
+  quale scelta è disponibile e quale risorsa o condizione blocca l’azione.'
 ---
 # Obiettivo
 
-Capire il giapponese che ti fa orientare subito in battaglia e nei menu: chi hai davanti, quale scelta ti viene chiesta e quando il gioco ti sta bloccando con un messaggio di sistema.
+Capire il giapponese dei primi menu e delle prime lotte: [相手](term:term-v001-aite) indica la parte avversaria, [タイプ](term:term-v006-taipu) apre il ragionamento sui match-up, [どう](term:term-v004-dou) introduce la scelta richiesta e [できません](term:term-e001-dekimasen) / [足りない](term:term-e002-tarinai-tarimasen) spiegano perché un comando non parte.
 
 ## Contesto
 
-In questo blocco tornano parole piccole ma decisive. [相手](term:term-v001-aite) ti dice che la frase parla dell'avversario; [どう](term:term-v004-dou) e [いつ](term:term-v010-itsu) aprono domande operative; [できません](term:term-e001-dekimasen) e [足りない / 足りません](term:term-e002-tarinai-tarimasen) sono tipici messaggi di blocco del sistema. Se li riconosci al volo, la schermata smette di sembrare una lista di label e diventa molto più leggibile.
+Le schermate iniziali alternano domande brevi e messaggi di blocco. `どうしますか` chiede quale azione scegliere; `ここでは できません` nega il comando in quello stato o luogo; `お{{金|かね}}が {{足|た}}りません` indica invece una risorsa insufficiente. In battaglia, `{{相手|あいて}}の タイプ` sposta subito l’attenzione sull’avversario e sulla compatibilità della mossa.
 
 ## Termini chiave
 
@@ -50,9 +49,9 @@ In questo blocco tornano parole piccole ma decisive. [相手](term:term-v001-ait
 
 ## Spiegazione
 
-Tra i termini, [相手](term:term-v001-aite) è molto più specifico di un generico "altra persona": in battaglia è la parte avversaria, quindi ti aiuta subito a capire da che lato arriva l'azione. [タイプ](term:term-v006-taipu) in Pokémon non è un "tipo" astratto, ma il tipo elementale del Pokémon o della mossa; quando lo vedi in una frase o in un menu, il contesto è quasi sempre quello dei match-up di battaglia. [ジム](term:term-v003-jimu), [チャンピオン](term:term-v007-chanpion) e [先生](term:term-v008-sensei) sono invece parole che ti fanno riconoscere al volo il dominio della scena: progressione palestra, obiettivo alto di carriera, oppure scuola e dialoghi accademici.
+Tra i termini, [相手](term:term-v001-aite) è molto più specifico di un generico "altra persona": in battaglia è la parte avversaria, quindi chiarisce da che lato arriva l'azione. [タイプ](term:term-v006-taipu) in Pokémon non è un "tipo" astratto, ma il tipo elementale del Pokémon o della mossa; quando lo vedi vicino a `わざ` o `{{相手|あいて}}`, il testo sta parlando di compatibilità. [ジム](term:term-v003-jimu), [チャンピオン](term:term-v007-chanpion) e [先生](term:term-v008-sensei) fissano invece il dominio della scena: percorso palestra, obiettivo da Lega, oppure vita scolastica e spiegazioni in classe.
 
-[どう](term:term-v004-dou) e [いつ](term:term-v010-itsu) sono utili perché cambiano subito il tipo di frase che stai leggendo. `どうしますか` non sta chiedendo una teoria astratta sul "come", ma di solito "che cosa vuoi fare?"; `いつ` invece ti segnala domande su tempi, appuntamenti o progressione. Sono parole brevi, ma se ti sfuggono rischi di leggere una domanda come se fosse una semplice affermazione.
+[どう](term:term-v004-dou) e [いつ](term:term-v010-itsu) cambiano subito il tipo di frase. `どうしますか` non chiede una teoria astratta sul "come", ma di solito "che cosa vuoi fare?"; `いつ` porta la frase su tempi, appuntamenti o progressione. Sono parole brevi, ma se ti sfuggono rischi di leggere una domanda come se fosse una semplice affermazione.
 
 [できません](term:term-e001-dekimasen) e [足りない / 足りません](term:term-e002-tarinai-tarimasen) sono due messaggi da UI molto comuni, ma non dicono la stessa cosa. `できません` vuol dire che l'azione non si può fare in quel punto o in quello stato; spesso l'oggetto è sottinteso e devi recuperarlo dal pulsante o dal menu appena selezionato. `足りません` vuol dire invece che qualcosa non basta, e quel qualcosa spesso è espresso con `Xが`: in `お金が 足りません` il problema non è generico, ma è proprio che non hai abbastanza soldi.
 
@@ -62,9 +61,9 @@ Sul piano grammaticale, [～のだ / ～んだ](grammar:grammar-g001-spiegazione
 
 :::example_sentence
 jp: >-
-  {{相手|あいて}}は つよい です。
+  {{相手|あいて}}の タイプを {{見|み}}てから わざを {{選|えら}}ぼう。
 translation_it: >-
-  L'avversario è forte.
+  Scegli la mossa dopo aver guardato il tipo dell’avversario.
 :::
 
 :::example_sentence
@@ -76,9 +75,9 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  これは {{大事|だいじ}}なんだ。
+  この ジムバトルに {{勝|か}}たなきゃ いけないんだ。
 translation_it: >-
-  Il punto è che questa cosa è importante.
+  Il punto è che devo vincere questa lotta in palestra.
 :::
 
 :::example_sentence
@@ -90,4 +89,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri una schermata nuova, prova a cercare per prime tre cose: chi è il referente della frase, se il gioco ti sta facendo una domanda e se il messaggio è un blocco di impossibilità o di mancanza. Questo capitolo serve soprattutto a rendere immediati quei segnali.
+Quando una schermata nuova mostra `{{相手|あいて}}`, `どうしますか`, `できません` o `{{足|た}}りません`, leggi prima il referente, poi il tipo di richiesta o blocco. Così distingui una scelta di battaglia, una domanda di menu e una risorsa insufficiente senza trattare tutti i messaggi come semplici label.

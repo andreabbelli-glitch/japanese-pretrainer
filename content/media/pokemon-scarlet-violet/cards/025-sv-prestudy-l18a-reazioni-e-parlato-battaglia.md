@@ -35,7 +35,8 @@ reading: おつかれさまでスター
 romaji: otsukaresamadesutaa
 meaning_it: ottimo lavoro, Star!
 notes_it: >-
-  Saluto ricorrente di Team Star
+  Formula di Team Star costruita su お疲れさま, "grazie per il lavoro / ottimo
+  lavoro", con il gioco di parole finale スター.
 :::
 :::grammar
 id: grammar-g037-citazione-tema-colloquiale
@@ -43,8 +44,8 @@ pattern: ～って
 title: Citazione o tema colloquiale
 meaning_it: '"..." / quanto a... / a proposito di...'
 notes_it: >-
-  Nel parlato って puo introdurre una citazione in modo informale oppure
-  riprendere un tema: "quanto a X", "X invece". E molto comune nei dialoghi
+  Nel parlato って può introdurre una citazione in modo informale oppure
+  riprendere un tema: "quanto a X", "X invece". È molto comune nei dialoghi
   giovanili e nei giochi.
 :::
 :::card
@@ -88,7 +89,7 @@ pattern: ～より / ～ほど
 title: Più... di / non così... come
 meaning_it: confronto tra due cose
 notes_it: >-
-  Con A より B, B e piu di A. Con A ほど B ない, B non e cosi come A. Molto comune
+  Con A より B, B è più di A. Con A ほど B ない, B non è così come A. Molto comune
   per confrontare persone, mosse, percorsi o statistiche.
 :::
 :::card
@@ -132,8 +133,8 @@ reading: たいかい
 romaji: taikai
 meaning_it: torneo
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  {{大会|たいかい}} è un torneo o evento competitivo. Con に{{参加|さんか}}する, la frase
+  parla dell'iscrizione o partecipazione al torneo.
 :::
 :::card
 id: card-v196-taikai-recognition
@@ -155,7 +156,8 @@ reading: ずっと
 romaji: zutto
 meaning_it: per tutto il tempo / di gran lunga
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  ずっと indica continuità nel tempo o confronto molto marcato. Con
+  {{待|ま}}っている diventa "sto aspettando da tutto questo tempo".
 :::
 :::card
 id: card-v197-zutto-recognition
@@ -177,7 +179,8 @@ reading: ことば
 romaji: kotoba
 meaning_it: parola / espressione
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{言葉|ことば}} è una parola o espressione detta da qualcuno. Nei dialoghi può
+  riferirsi a ciò che un personaggio ha appena dichiarato.
 :::
 :::card
 id: card-v198-kotoba-recognition
@@ -188,9 +191,9 @@ card_type: recognition
 front: '{{言葉|ことば}}'
 back: parola / espressione
 example_jp: >-
-  この {{言葉|ことば}}を {{覚|おぼ}}えます。
+  その {{言葉|ことば}}は {{本当|ほんとう}}ですか。
 example_it: >-
-  Memorizzo questa parola.
+  Quelle parole sono vere?
 :::
 :::term
 id: term-v199-ichiban
@@ -199,7 +202,8 @@ reading: いちばん
 romaji: ichiban
 meaning_it: numero uno / il più
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{一番|いちばん}} indica il primo posto o il grado massimo. Prima di un aggettivo,
+  come 一番{{強|つよ}}い, forma "il più...".
 :::
 :::card
 id: card-v199-ichiban-recognition
@@ -210,9 +214,9 @@ card_type: recognition
 front: '{{一番|いちばん}}'
 back: numero uno / il più
 example_jp: >-
-  これが {{一番|いちばん}} です。
+  この わざが {{一番|いちばん}} {{強|つよ}}いです。
 example_it: >-
-  Questo è il migliore.
+  Questa mossa è la più forte.
 :::
 :::term
 id: term-v200-mushi
@@ -221,8 +225,7 @@ reading: むし
 romaji: mushi
 meaning_it: coleottero / tipo insetto
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  むし è il tipo Insetto. In むしタイプのわざ, specifica il tipo della mossa.
 :::
 :::card
 id: card-v200-mushi-recognition
@@ -233,9 +236,9 @@ card_type: recognition
 front: 'むし'
 back: coleottero / tipo insetto
 example_jp: >-
-  むしタイプの ポケモンです。
+  むしタイプの わざを {{使|つか}}います。
 example_it: >-
-  È un Pokémon di tipo insetto.
+  Uso una mossa di tipo Insetto.
 :::
 :::term
 id: term-v201-terapiisu
@@ -244,8 +247,8 @@ reading: テラピース
 romaji: terapiisu
 meaning_it: Tera Shards
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  テラピース è il nome dei frammenti legati alla Teracristal. La label indica una
+  risorsa da ottenere, consumare o controllare nel menu.
 :::
 :::term
 id: term-v202-mota-seru
@@ -254,7 +257,8 @@ reading: もたせる
 romaji: mota seru
 meaning_it: far tenere (un oggetto)
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  {{持|も}}たせる è il causativo di {{持|も}}つ: far tenere qualcosa a qualcuno. In
+  Pokémon di solito il bersaglio è un Pokémon e l'oggetto è marcato con を.
 :::
 :::card
 id: card-v202-mota-seru-recognition
@@ -276,7 +280,8 @@ reading: ぜんぜん
 romaji: zenzen
 meaning_it: per niente / completamente
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{全然|ぜんぜん}} rafforza una negazione o, nel parlato moderno, anche una
+  risposta positiva colloquiale come {{全然|ぜんぜん}}{{大丈夫|だい.じょう.ぶ}}です.
 :::
 :::card
 id: card-v203-zenzen-recognition
@@ -298,8 +303,7 @@ reading: こおり
 romaji: koori
 meaning_it: ghiaccio
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  こおり è il tipo Ghiaccio. In こおりタイプのわざ, specifica il tipo della mossa.
 :::
 :::card
 id: card-v204-koori-recognition
@@ -310,9 +314,9 @@ card_type: recognition
 front: 'こおり'
 back: ghiaccio
 example_jp: >-
-  こおりタイプの ポケモンです。
+  こおりタイプの わざを {{使|つか}}います。
 example_it: >-
-  È un Pokémon di tipo ghiaccio.
+  Uso una mossa di tipo Ghiaccio.
 :::
 :::term
 id: term-v205-sentou
@@ -344,7 +348,8 @@ reading: たしかに
 romaji: tashikani
 meaning_it: in effetti
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  たしかに conferma che l'interlocutore ha un punto valido: "in effetti". Spesso
+  ammorbidisce l'accordo prima di aggiungere altro.
 :::
 :::card
 id: card-v206-tashikani-recognition
@@ -366,7 +371,8 @@ reading: たいへん
 romaji: taihen
 meaning_it: duro / impegnativo
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  {{大変|たいへん}} descrive una situazione dura, impegnativa o seria. Può riferirsi
+  a un test, a un problema o a una battaglia complicata.
 :::
 :::card
 id: card-v207-taihen-recognition
@@ -388,7 +394,8 @@ reading: かんしゃ
 romaji: kansha
 meaning_it: gratitudine
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{感謝|かんしゃ}} è gratitudine espressa in modo più formale di ありがとう. Con
+  します diventa "ringrazio / sono grato".
 :::
 :::card
 id: card-v208-kansha-recognition

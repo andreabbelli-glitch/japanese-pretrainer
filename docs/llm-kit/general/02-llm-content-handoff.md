@@ -208,6 +208,15 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
   funzione e conseguenza pratica, non come focus principale separato;
 - che le spiegazioni devono esplicitare significato reale + conseguenza concreta
   nel media;
+- che `notes_it` e paragrafi textbook non devono usare formule generiche come
+  "Termine tipico di...", "Parola-cerniera utile", "Verbo ad alta frequenza",
+  "ti aiuta a leggere" o "ti orienta" senza spiegare collocazione e funzione
+  della forma giapponese;
+- che ogni `example_jp` deve contenere il target della card e usare una
+  collocazione naturale; sono da evitare esempi da dizionario come
+  `これはXです`, `ここはXです` o `Xがだいじです`;
+- che `example_it` deve tradurre la frase giapponese senza aggiungere lore,
+  tono letterario o dettagli non presenti nel testo;
 - che non deve aggiungere spiegazioni fuori dai file.
 
 Per il workflow immagini, chiedi esplicitamente anche:

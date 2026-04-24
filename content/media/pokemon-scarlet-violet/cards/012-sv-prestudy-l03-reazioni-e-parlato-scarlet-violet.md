@@ -13,7 +13,8 @@ reading: それじゃ
 romaji: soreja
 meaning_it: allora, in quel caso
 notes_it: >-
-  Passaggio a saluto/azione successiva.
+  Apre la conseguenza di ciò che è appena stato deciso: "allora / in quel
+  caso". In `それじゃ、 {{行|い}}こう` il dialogo passa dalla decisione al movimento.
 :::
 :::card
 id: card-e006-soreja-recognition
@@ -35,7 +36,8 @@ reading: まって
 romaji: matte
 meaning_it: aspetta
 notes_it: >-
-  Interruzione rapida.
+  Imperativo colloquiale che ferma una persona o sospende l’azione. Spesso
+  precede una spiegazione: {{待|ま}}って、 まだ... .
 :::
 :::card
 id: card-e007-matsu-te-recognition
@@ -59,8 +61,8 @@ aliases:
 - 〜なければならない / 〜ないといけない
 notes_it: >-
   Forma colloquiale di 〜なければならない / 〜なくてはいけない. Vuol dire "devo..." o
-  "bisogna...". Si forma dalla base in ない del verbo: 行かない→行かなきゃ, しない→しなきゃ. Nei
-  dialoghi e nei giochi è molto comune al posto della forma completa.
+  "bisogna...". Si forma dalla base in ない del verbo: 行かない→行かなきゃ,
+  しない→しなきゃ. Nei dialoghi rende il dovere più immediato e parlato della forma completa.
 :::
 :::card
 id: card-g009-contrazione-di-dovere-concept
@@ -82,7 +84,8 @@ reading: まだ
 romaji: mada
 meaning_it: ancora
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Indica che qualcosa continua, manca o non è ancora concluso. Con verbi e
+  quantità decide se la scena può procedere o deve aspettare.
 :::
 :::card
 id: card-v026-mada-recognition
@@ -93,9 +96,9 @@ card_type: recognition
 front: 'まだ'
 back: ancora
 example_jp: >-
-  まだ あります。
+  バッジは まだ {{3|みっ}}つ あります。
 example_it: >-
-  Ce n’è ancora.
+  Ci sono ancora tre medaglie.
 :::
 :::term
 id: term-v027-doko
@@ -104,7 +107,8 @@ reading: どこ
 romaji: doko
 meaning_it: dove
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  Chiede il luogo o la destinazione. In `どこへ {{行|い}}く？` il punto è quale
+  area raggiungere, non solo una domanda astratta su "dove".
 :::
 :::card
 id: card-v027-doko-recognition
@@ -115,9 +119,9 @@ card_type: recognition
 front: 'どこ'
 back: dove
 example_jp: >-
-  どこへ {{行|い}}きますか。
+  {{次|つぎ}}は どこへ {{行|い}}きますか。
 example_it: >-
-  Dove vai?
+  Dove andiamo dopo?
 :::
 :::term
 id: term-v028-jimuriidaa
@@ -126,7 +130,8 @@ reading: じむりーだー
 romaji: jimuriidaa
 meaning_it: capopalestra
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  È il capo di una palestra. Vicino a ジム, バッジ o {{挑戦|ちょうせん}} indica
+  l’avversario ufficiale del percorso palestra.
 :::
 :::card
 id: card-v028-jimuriidaa-recognition
@@ -137,9 +142,9 @@ card_type: recognition
 front: 'ジムリーダー'
 back: capopalestra
 example_jp: >-
-  ジムリーダーは つよい です。
+  ジムリーダーに {{挑戦|ちょうせん}}する {{前|まえ}}に {{準備|じゅんび}}する。
 example_it: >-
-  La capopalestra è forte.
+  Mi preparo prima di sfidare la capopalestra.
 :::
 :::term
 id: term-v029-isshoni
@@ -148,7 +153,8 @@ reading: いっしょに
 romaji: isshoni
 meaning_it: insieme
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Forma avverbiale: indica fare qualcosa insieme a qualcuno. In dialoghi con
+  {{行|い}}く, やる o バトルする trasforma l’azione in proposta condivisa.
 :::
 :::card
 id: card-v029-isshoni-recognition
@@ -159,9 +165,9 @@ card_type: recognition
 front: '{{一緒|いっしょ}}に'
 back: insieme
 example_jp: >-
-  {{一緒|いっしょ}}に {{行|い}}きます。
+  ネモと {{一緒|いっしょ}}に ジムへ {{行|い}}く。
 example_it: >-
-  Andiamo insieme.
+  Vado alla palestra insieme a Nemona.
 :::
 :::term
 id: term-v030-hitsuyou
@@ -170,7 +176,8 @@ reading: ひつよう
 romaji: hitsuyou
 meaning_it: necessario
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  Indica un requisito reale: oggetto, medaglia, informazione o condizione senza
+  cui l’azione non può procedere.
 :::
 :::card
 id: card-v030-hitsuyou-recognition
@@ -181,9 +188,9 @@ card_type: recognition
 front: '{{必要|ひつよう}}'
 back: necessario
 example_jp: >-
-  それは {{必要|ひつよう}} です。
+  この{{先|さき}}へ {{行|い}}くには バッジが {{必要|ひつよう}}です。
 example_it: >-
-  Quello è necessario.
+  Per andare più avanti serve una medaglia.
 :::
 :::term
 id: term-v031-bajji
@@ -192,7 +199,8 @@ reading: ばっじ
 romaji: bajji
 meaning_it: medaglia
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  In Pokémon è la medaglia ottenuta dopo una palestra. In frasi su obbedienza,
+  progressione o Lega indica un traguardo che sblocca possibilità.
 :::
 :::card
 id: card-v031-bajji-recognition
@@ -203,9 +211,9 @@ card_type: recognition
 front: 'バッジ'
 back: medaglia
 example_jp: >-
-  バッジを もらいます。
+  ジムリーダーに {{勝|か}}って バッジを もらう。
 example_it: >-
-  Ricevo la medaglia.
+  Vinco contro la capopalestra e ricevo la medaglia.
 :::
 :::term
 id: term-v032-chousen
@@ -214,8 +222,8 @@ reading: ちょうせん
 romaji: chousen
 meaning_it: sfida
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica sfidare qualcuno o affrontare una prova. Con ジム, ジムリーダー o
+  {{四天王|し.てん.のう}} segnala un obiettivo ufficiale, non solo una difficoltà generica.
 :::
 :::card
 id: card-v032-chousen-recognition
@@ -226,9 +234,9 @@ card_type: recognition
 front: '{{挑戦|ちょうせん}}'
 back: sfida
 example_jp: >-
-  ジムに {{挑戦|ちょうせん}} します。
+  {{次|つぎ}}の ジムに {{挑戦|ちょうせん}}する。
 example_it: >-
-  Sfido la palestra.
+  Sfido la prossima palestra.
 :::
 :::term
 id: term-v033-issho
@@ -237,7 +245,8 @@ reading: いっしょ
 romaji: issho
 meaning_it: insieme
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  Nome o stato: "essere insieme". Con に diventa {{一緒|いっしょ}}に, cioè fare
+  l’azione insieme a qualcuno.
 :::
 :::card
 id: card-v033-issho-recognition
@@ -248,9 +257,9 @@ card_type: recognition
 front: '{{一緒|いっしょ}}'
 back: insieme
 example_jp: >-
-  {{一緒|いっしょ}}に やります。
+  {{一緒|いっしょ}}に サンドウィッチを {{作|つく}}ろう。
 example_it: >-
-  Lo facciamo insieme.
+  Prepariamo insieme un sandwich.
 :::
 :::term
 id: term-v034-basho
@@ -259,7 +268,8 @@ reading: ばしょ
 romaji: basho
 meaning_it: luogo
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  Indica un posto concreto o una posizione da raggiungere. In mappa e dialoghi
+  spesso risponde a どこ.
 :::
 :::card
 id: card-v034-basho-recognition
@@ -270,9 +280,9 @@ card_type: recognition
 front: '{{場所|ばしょ}}'
 back: luogo
 example_jp: >-
-  ここが {{場所|ばしょ}} です。
+  ネモが {{待|ま}}ってる {{場所|ばしょ}}は どこですか。
 example_it: >-
-  Questo è il posto.
+  Dov’è il posto in cui Nemona sta aspettando?
 :::
 :::term
 id: term-v035-joutai
@@ -281,8 +291,8 @@ reading: じょうたい
 romaji: joutai
 meaning_it: stato / status
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Indica la condizione attuale di una persona, Pokémon o sistema. In battaglia
+  può riferirsi anche a problemi come sonno, veleno o paralisi.
 :::
 :::card
 id: card-v035-joutai-recognition
@@ -293,9 +303,9 @@ card_type: recognition
 front: '{{状態|じょうたい}}'
 back: stato / status
 example_jp: >-
-  この ポケモンは いい {{状態|じょうたい}} です。
+  バトルの {{後|あと}}で ポケモンの {{状態|じょうたい}}を {{確認|かくにん}}する。
 example_it: >-
-  Questo Pokémon è in buono stato.
+  Dopo la lotta controllo lo stato del Pokémon.
 :::
 :::term
 id: term-v036-chihou
@@ -304,7 +314,8 @@ reading: ちほう
 romaji: chihou
 meaning_it: regione
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  Indica una regione ampia, non un singolo luogo. In パルデア{{地方|ちほう}}
+  identifica il mondo geografico in cui si svolge il viaggio.
 :::
 :::card
 id: card-v036-chihou-recognition
@@ -315,9 +326,9 @@ card_type: recognition
 front: '{{地方|ちほう}}'
 back: regione
 example_jp: >-
-  パルデア{{地方|ちほう}}へ {{行|い}}きます。
+  パルデア{{地方|ちほう}}を {{一緒|いっしょ}}に {{冒険|ぼうけん}}しよう。
 example_it: >-
-  Vado nella regione di Paldea.
+  Esploriamo insieme la regione di Paldea.
 :::
 :::term
 id: term-v037-genki
@@ -326,7 +337,8 @@ reading: げんき
 romaji: genki
 meaning_it: in forma / energico
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Indica energia, salute o buon umore. Con ポケモン può voler dire che è pronto a
+  muoversi o combattere.
 :::
 :::card
 id: card-v037-genki-recognition
@@ -337,7 +349,7 @@ card_type: recognition
 front: '{{元気|げんき}}'
 back: in forma / energico
 example_jp: >-
-  ポケモンは {{元気|げんき}} です。
+  ポケモンが {{元気|げんき}}なら、 もう {{行|い}}こう。
 example_it: >-
-  Il Pokémon è in forma.
+  Se il Pokémon è in forma, andiamo ormai.
 :::

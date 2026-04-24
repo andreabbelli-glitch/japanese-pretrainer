@@ -13,7 +13,8 @@ reading: じゅぎょうを おもいだす
 romaji: jugyou wo omoidasu
 meaning_it: ripassare / ricordare la lezione
 notes_it: >-
-  Voce di menu scolastica per review e ripasso.
+  Voce del menu scolastico: riapre una lezione già vista o permette di
+  ripassarla prima di continuare le classi dell'accademia.
 :::
 :::term
 id: term-v540-kakuritsu
@@ -22,8 +23,9 @@ reading: かくりつ
 romaji: kakuritsu
 meaning_it: probabilità
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Compare quando una descrizione non promette un effetto certo: una mossa può
+  avere una probabilità di causare uno stato, colpire in modo critico o
+  attivare un effetto secondario.
 :::
 :::card
 id: card-v540-kakuritsu-recognition
@@ -34,9 +36,10 @@ card_type: recognition
 front: "{{確率|かくりつ}}"
 back: probabilità
 example_jp: >-
-  バトルで {{確率|かくりつ}}を {{見|み}}ます。
+  この {{技|わざ}}は {{相手|あいて}}を {{混乱|こんらん}}させる
+  {{確率|かくりつ}}が ある。
 example_it: >-
-  In battaglia guardo la probabilità.
+  Questa mossa ha una probabilità di confondere l'avversario.
 :::
 :::term
 id: term-v541-honmono
@@ -45,7 +48,8 @@ reading: ほんもの
 romaji: honmono
 meaning_it: vero / autentico
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  Marca autenticità: un personaggio o un oggetto è quello vero, non una copia,
+  una finzione o una presenza sospetta.
 :::
 :::card
 id: card-v541-honmono-recognition
@@ -56,9 +60,10 @@ card_type: recognition
 front: "{{本物|ほんもの}}"
 back: vero / autentico
 example_jp: >-
-  {{本物|ほんもの}} ですか。
+  スグリは {{本物|ほんもの}}の オーガポンを {{見|み}}たと
+  {{言|い}}った。
 example_it: >-
-  È vero?
+  Kieran ha detto di aver visto il vero Ogerpon.
 :::
 :::term
 id: term-v542-yousu
@@ -67,7 +72,8 @@ reading: ようす
 romaji: yousu
 meaning_it: aspetto / situazione
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  Descrive lo stato osservabile di una scena o di un Pokémon: aspetto, segni di
+  stanchezza, reazione o condizione anomala.
 :::
 :::card
 id: card-v542-yousu-recognition
@@ -78,9 +84,10 @@ card_type: recognition
 front: "{{様子|ようす}}"
 back: aspetto / situazione
 example_jp: >-
-  {{様子|ようす}} です。
+  {{相手|あいて}}の ポケモンは {{混乱|こんらん}}している
+  {{様子|ようす}}だ。
 example_it: >-
-  La situazione è questa.
+  Il Pokémon avversario sembra confuso.
 :::
 :::term
 id: term-v543-pokemonwosshu
@@ -89,8 +96,8 @@ reading: ポケモンウォッシュ
 romaji: pokemonwosshu
 meaning_it: Pokémon Wash
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Etichetta del picnic: indica la funzione per lavare il Pokémon selezionato
+  durante una pausa, prima di tornare a esplorazione o lotte.
 :::
 :::term
 id: term-v544-meiwaku
@@ -99,7 +106,8 @@ reading: めいわく
 romaji: meiwaku
 meaning_it: disturbo / fastidio
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Si usa spesso nella forma `迷惑になる`: un'azione crea disturbo a un altro
+  allenatore, a un gruppo o a un NPC.
 :::
 :::card
 id: card-v544-meiwaku-recognition
@@ -110,9 +118,11 @@ card_type: recognition
 front: "{{迷惑|めいわく}}"
 back: disturbo / fastidio
 example_jp: >-
-  これは {{迷惑|めいわく}} です。
+  {{他|ほか}}の トレーナーの {{迷惑|めいわく}}に なるから、
+  バトルの {{前|まえ}}に {{用意|ようい}}しておく。
 example_it: >-
-  Questo è un disturbo.
+  È un disturbo per gli altri allenatori, quindi mi preparo prima della
+  battaglia.
 :::
 :::term
 id: term-v545-youi
@@ -121,7 +131,8 @@ reading: ようい
 romaji: youi
 meaning_it: preparazione
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  In frasi come `用意ができた`, segnala che il giocatore o il Pokémon è pronto
+  per una lotta, una prova o un evento.
 :::
 :::card
 id: card-v545-youi-recognition
@@ -130,11 +141,12 @@ entry_type: term
 entry_id: term-v545-youi
 card_type: recognition
 front: "{{用意|ようい}}"
-back: preparazione
+back: preparazione / essere pronto
 example_jp: >-
-  {{準備|じゅんび}}を します。
+  {{勝負|しょうぶ}}の {{用意|ようい}}が できたら ジムリーダーに
+  {{話|はな}}しかける。
 example_it: >-
-  Mi preparo.
+  Quando sei pronto per la sfida, parla al capopalestra.
 :::
 :::term
 id: term-v546-shoutai
@@ -143,8 +155,8 @@ reading: しょうたい
 romaji: shoutai
 meaning_it: vera identità
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica la vera identità dietro una persona, una voce o una presenza di trama;
+  è diverso da una semplice descrizione fisica.
 :::
 :::card
 id: card-v546-shoutai-recognition
@@ -155,9 +167,9 @@ card_type: recognition
 front: "{{正体|しょうたい}}"
 back: vera identità
 example_jp: >-
-  これは {{正体|しょうたい}} です。
+  エリアゼロで {{博士|はかせ}}の {{正体|しょうたい}}が わかる。
 example_it: >-
-  È la vera identità.
+  Nell'Area Zero si scopre la vera identità del professore.
 :::
 :::term
 id: term-v547-shoukai
@@ -166,7 +178,8 @@ reading: しょうかい
 romaji: shoukai
 meaning_it: presentazione / introduzione
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  Compare quando qualcuno presenta una regola, un compagno, una funzione o un
+  luogo prima che il giocatore lo usi.
 :::
 :::card
 id: card-v547-shoukai-recognition
@@ -177,9 +190,10 @@ card_type: recognition
 front: "{{紹介|しょうかい}}"
 back: presentazione / introduzione
 example_jp: >-
-  {{紹介|しょうかい}} です。
+  ネモが {{新|あたら}}しい トレーナーに バトルの ルールを
+  {{紹介|しょうかい}}する。
 example_it: >-
-  È una presentazione.
+  Nemona presenta le regole della battaglia al nuovo allenatore.
 :::
 :::term
 id: term-v548-himitsunomenyuu
@@ -188,8 +202,8 @@ reading: ひみつのメニュー
 romaji: himitsunomenyuu
 meaning_it: menu segreto
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indizio del test della palestra di Medali: collega il dialogo del locale
+  alla scelta corretta nel ristorante.
 :::
 :::term
 id: term-v549-kenkyuujo
@@ -198,8 +212,8 @@ reading: けんきゅうじょ
 romaji: kenkyuujo
 meaning_it: istituto di ricerca
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Luogo di ricerca legato a professori, appunti e tecnologia; in Scarlet/Violet
+  può rimandare alla storia dell'Area Zero o al laboratorio vicino al faro.
 :::
 :::card
 id: card-v549-kenkyuujo-recognition
@@ -208,11 +222,12 @@ entry_type: term
 entry_id: term-v549-kenkyuujo
 card_type: recognition
 front: "{{研究所|けん.きゅう.じょ}}"
-back: istituto di ricerca
+back: laboratorio / istituto di ricerca
 example_jp: >-
-  {{研究所|けん.きゅう.じょ}} です。
+  {{灯台|とうだい}}の {{近|ちか}}くの {{研究所|けん.きゅう.じょ}}で
+  {{博士|はかせ}}の {{記録|きろく}}を {{調|しら}}べる。
 example_it: >-
-  È un istituto di ricerca.
+  Nel laboratorio vicino al faro esamini i registri del professore.
 :::
 :::term
 id: term-v550-tokushu
@@ -221,8 +236,8 @@ reading: とくしゅ
 romaji: tokushu
 meaning_it: speciale
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Nelle mosse Pokémon è la categoria che usa l'Attacco Speciale come
+  riferimento; si contrappone a `物理`.
 :::
 :::card
 id: card-v550-tokushu-recognition
@@ -231,11 +246,13 @@ entry_type: term
 entry_id: term-v550-tokushu
 card_type: recognition
 front: "{{特殊|とくしゅ}}"
-back: speciale
+back: speciale / categoria Special
 example_jp: >-
-  この ポケモンは {{特殊|とくしゅ}} です。
+  {{特殊|とくしゅ}}の {{技|わざ}}は ポケモンの {{特攻|とくこう}}で
+  ダメージが {{変|か}}わる。
 example_it: >-
-  Questo Pokémon è speciale.
+  Il danno di una mossa speciale cambia in base all'Attacco Speciale del
+  Pokémon.
 :::
 :::term
 id: term-v551-shippai
@@ -244,7 +261,8 @@ reading: しっぱい
 romaji: shippai
 meaning_it: errore / fallimento
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  In battaglia segnala che l'azione non è riuscita: il bersaglio si è protetto,
+  non c'era una condizione valida o la mossa non ha avuto effetto.
 :::
 :::card
 id: card-v551-shippai-recognition
@@ -253,11 +271,12 @@ entry_type: term
 entry_id: term-v551-shippai
 card_type: recognition
 front: "{{失敗|しっぱい}}"
-back: errore / fallimento
+back: fallimento / non riuscita
 example_jp: >-
-  {{失敗|しっぱい}} です。
+  {{相手|あいて}}が まもるを {{使|つか}}ったので、こちらの
+  {{技|わざ}}は {{失敗|しっぱい}}した。
 example_it: >-
-  È un errore.
+  Poiché l'avversario ha usato Protezione, la nostra mossa è fallita.
 :::
 :::term
 id: term-v552-ouen
@@ -266,8 +285,8 @@ reading: おうえん
 romaji: ouen
 meaning_it: incitamento / cheer
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Nei Raid Teracristal indica il comando di supporto dato alla squadra, distinto
+  da una mossa offensiva.
 :::
 :::card
 id: card-v552-ouen-recognition
@@ -276,11 +295,13 @@ entry_type: term
 entry_id: term-v552-ouen
 card_type: recognition
 front: "おうえん"
-back: incitamento / cheer
+back: incitamento / supporto
 example_jp: >-
-  バトルで おうえんします。
+  テラレイドバトルで おうえんを {{使|つか}}うと、{{味方|みかた}}の
+  HPが {{回復|かいふく}}する。
 example_it: >-
-  Faccio il tifo in battaglia.
+  In un Raid Teracristal, usando il supporto, gli HP degli alleati si
+  recuperano.
 :::
 :::term
 id: term-v553-houshuu
@@ -289,8 +310,8 @@ reading: ほうしゅう
 romaji: houshuu
 meaning_it: ricompensa
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Indica ciò che si ottiene dopo una lotta, un raid o un evento: strumenti,
+  materiali, punti o denaro.
 :::
 :::card
 id: card-v553-houshuu-recognition
@@ -301,9 +322,10 @@ card_type: recognition
 front: "{{報酬|ほうしゅう}}"
 back: ricompensa
 example_jp: >-
-  バトルで {{報酬|ほうしゅう}}を もらいます。
+  レイドバトルに {{勝|か}}つと、{{報酬|ほうしゅう}}として
+  テラピースを もらえる。
 example_it: >-
-  Ricevo una ricompensa in battaglia.
+  Se vinci un raid, ricevi Tera Shard come ricompensa.
 :::
 :::term
 id: term-v554-tansaku
@@ -312,8 +334,8 @@ reading: たんさく
 romaji: tansaku
 meaning_it: esplorazione
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica l'esplorazione sistematica di una zona: cercare Pokémon, oggetti,
+  indizi o l'uscita di un'area.
 :::
 :::card
 id: card-v554-tansaku-recognition
@@ -322,11 +344,12 @@ entry_type: term
 entry_id: term-v554-tansaku
 card_type: recognition
 front: "{{探索|たんさく}}"
-back: esplorazione
+back: esplorazione / ricerca sul campo
 example_jp: >-
-  ここを {{探索|たんさく}}します。
+  エリアゼロを {{探索|たんさく}}して、{{強|つよ}}い ポケモンの
+  {{様子|ようす}}を {{調|しら}}べる。
 example_it: >-
-  Esploro qui.
+  Esplori l'Area Zero e controlli lo stato dei Pokémon forti.
 :::
 :::term
 id: term-v555-shiea
@@ -335,8 +358,8 @@ reading: シェア
 romaji: shiea
 meaning_it: condivisione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Voce da menu e online: condividere un codice, un profilo, una schermata o un
+  invito con un altro giocatore.
 :::
 :::card
 id: card-v555-shiea-recognition
@@ -345,11 +368,12 @@ entry_type: term
 entry_id: term-v555-shiea
 card_type: recognition
 front: "シェア"
-back: condivisione
+back: condivisione / condividi
 example_jp: >-
-  メニューで シェアを {{見|み}}ます。
+  ポケポータルで あいことばを シェアして、{{友|とも}}だちを
+  レイドに {{招待|しょうたい}}する。
 example_it: >-
-  Nel menu vedo la condivisione.
+  Nel Poké Portal condividi la password e inviti un amico al raid.
 :::
 :::term
 id: term-v556-genshou
@@ -358,8 +382,8 @@ reading: げんしょう
 romaji: genshou
 meaning_it: fenomeno
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  In Scarlet/Violet richiama spesso il fenomeno Teracristal: una regola del
+  mondo, non un semplice evento visivo.
 :::
 :::card
 id: card-v556-genshou-recognition
@@ -370,9 +394,10 @@ card_type: recognition
 front: "{{現象|げんしょう}}"
 back: fenomeno
 example_jp: >-
-  これは {{現象|げんしょう}}です。
+  パルデアでは テラスタル{{現象|げんしょう}}で ポケモンの タイプが
+  {{変|か}}わる。
 example_it: >-
-  Questo è un fenomeno.
+  A Paldea, con il fenomeno Teracristal, il tipo del Pokémon cambia.
 :::
 :::term
 id: term-v557-ongaku
@@ -381,8 +406,8 @@ reading: おんがく
 romaji: ongaku
 meaning_it: musica
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Può segnalare cambio di scena: musica di lotta, evento, palestra o base del
+  Team Star.
 :::
 :::card
 id: card-v557-ongaku-recognition
@@ -393,9 +418,10 @@ card_type: recognition
 front: "{{音楽|おんがく}}"
 back: musica
 example_jp: >-
-  ここに {{音楽|おんがく}}が あります。
+  スター{{団|だん}}の アジトでは、バトルの {{音楽|おんがく}}が
+  {{変|か}}わる。
 example_it: >-
-  Qui c'è musica.
+  Nella base del Team Star, la musica della battaglia cambia.
 :::
 :::term
 id: term-v558-onitaijifesu
@@ -404,8 +430,8 @@ reading: おにたいじフェス
 romaji: onitaijifesu
 meaning_it: Ogre Oustin' festival
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome del minigioco del DLC di Kitakami/Nordivia: raccogli bacche e affronti
+  palloni/bersagli in un evento separato dalle lotte normali.
 :::
 :::term
 id: term-v559-kaisai
@@ -414,8 +440,8 @@ reading: かいさい
 romaji: kaisai
 meaning_it: svolgimento / organizzazione
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Si usa per eventi che vengono organizzati o si tengono in un luogo preciso;
+  nelle schermate può comparire anche in `開催中`.
 :::
 :::card
 id: card-v559-kaisai-recognition
@@ -424,11 +450,12 @@ entry_type: term
 entry_id: term-v559-kaisai
 card_type: recognition
 front: "{{開催|かいさい}}"
-back: svolgimento / organizzazione
+back: tenersi / organizzazione di un evento
 example_jp: >-
-  これは {{開催|かいさい}} です。
+  {{鬼退治|おにたいじ}}フェスは キタカミの {{里|さと}}で
+  {{開催|かいさい}}される。
 example_it: >-
-  L'evento si svolge.
+  L'Ogre Oustin' Festival si tiene nel villaggio di Kitakami.
 :::
 :::term
 id: term-v560-shoutai
@@ -437,8 +464,8 @@ reading: しょうたい
 romaji: shoutai
 meaning_it: invito
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica un invito dato a una persona: a un raid, a uno scambio, a una classe o
+  a un evento di storia.
 :::
 :::card
 id: card-v560-shoutai-recognition
@@ -447,11 +474,11 @@ entry_type: term
 entry_id: term-v560-shoutai
 card_type: recognition
 front: "{{招待|しょうたい}}"
-back: invito
+back: invito / invitare
 example_jp: >-
-  {{学校|がっこう}}で {{招待|しょうたい}}が だいじ です。
+  {{友|とも}}だちを テラレイドバトルに {{招待|しょうたい}}する。
 example_it: >-
-  Questo è un invito.
+  Inviti un amico a un Raid Teracristal.
 :::
 :::term
 id: term-v561-koubaibu
@@ -460,8 +487,8 @@ reading: こうばいぶ
 romaji: koubaibu
 meaning_it: spaccio scolastico
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Negozio interno dell'accademia: luogo dove si comprano oggetti utili prima di
+  lezioni, esplorazione o lotte.
 :::
 :::card
 id: card-v561-koubaibu-recognition
@@ -472,9 +499,10 @@ card_type: recognition
 front: "{{購買部|こう.ばい.ぶ}}"
 back: spaccio scolastico
 example_jp: >-
-  {{学校|がっこう}}で {{購買部|こう.ばい.ぶ}}が だいじ です。
+  {{購買部|こう.ばい.ぶ}}で キズぐすりを {{買|か}}ってから
+  バトルに {{行|い}}く。
 example_it: >-
-  C'è lo spaccio scolastico.
+  Compri una Pozione allo spaccio scolastico e poi vai alla battaglia.
 :::
 :::term
 id: term-v562-kanari
@@ -483,7 +511,8 @@ reading: かなり
 romaji: kanari
 meaning_it: parecchio
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Avverbio di grado: rafforza un aggettivo o una valutazione senza arrivare a
+  "massimo" o "estremo".
 :::
 :::card
 id: card-v562-kanari-recognition
@@ -492,11 +521,11 @@ entry_type: term
 entry_id: term-v562-kanari
 card_type: recognition
 front: "かなり"
-back: parecchio
+back: parecchio / abbastanza
 example_jp: >-
-  {{誰|だれ}}が {{来|き}}ますか。
+  {{相手|あいて}}の ポケモンは かなり {{素早|すばや}}い。
 example_it: >-
-  È parecchio buono.
+  Il Pokémon avversario è parecchio veloce.
 :::
 :::term
 id: term-v563-kouryuu
@@ -505,8 +534,8 @@ reading: こうりゅう
 romaji: kouryuu
 meaning_it: scambio / interazione
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Copre interazione e scambio tra persone: studenti, allenatori o giocatori nel
+  Poké Portal.
 :::
 :::card
 id: card-v563-kouryuu-recognition
@@ -517,9 +546,10 @@ card_type: recognition
 front: "{{交流|こうりゅう}}"
 back: scambio / interazione
 example_jp: >-
-  ポケモンを {{交換|こうかん}}します。
+  ポケポータルの {{交流|こうりゅう}}で {{友|とも}}だちと ポケモンを
+  {{交換|こうかん}}する。
 example_it: >-
-  Faccio uno scambio di Pokémon.
+  Nel Poké Portal interagisci con un amico e scambi Pokémon.
 :::
 :::term
 id: term-v564-konran
@@ -528,8 +558,8 @@ reading: こんらん
 romaji: konran
 meaning_it: confusione
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Stato di battaglia: il Pokémon colpito può danneggiarsi da solo o non agire
+  come previsto.
 :::
 :::card
 id: card-v564-konran-recognition
@@ -540,9 +570,10 @@ card_type: recognition
 front: "{{混乱|こんらん}}"
 back: confusione
 example_jp: >-
-  バトルで {{混乱|こんらん}}を {{使|つか}}います。
+  {{相手|あいて}}の {{技|わざ}}で ピカチュウは
+  {{混乱|こんらん}}した。
 example_it: >-
-  Il Pokémon va in confusione.
+  Per la mossa dell'avversario, Pikachu è andato in confusione.
 :::
 :::term
 id: term-v565-nouryokuhenka
@@ -551,8 +582,8 @@ reading: のうりょくへんか
 romaji: nouryokuhenka
 meaning_it: variazione delle statistiche
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Termine di sistema per aumenti o cali di statistiche durante la lotta, come
+  Attacco, Difesa o Velocità.
 :::
 :::card
 id: card-v565-nouryokuhenka-recognition
@@ -563,9 +594,10 @@ card_type: recognition
 front: "{{能力変化|のう.りょく.へん.か}}"
 back: variazione delle statistiche
 example_jp: >-
-  バトルで {{能力変化|のう.りょく.へん.か}}を {{使|つか}}います。
+  {{能力変化|のう.りょく.へん.か}}で ニャオハの {{攻撃|こうげき}}が
+  {{上|あ}}がった。
 example_it: >-
-  Ci sono variazioni delle statistiche.
+  Con una variazione delle statistiche, l'Attacco di Sprigatito è aumentato.
 :::
 :::term
 id: term-v566-shinyuusha
@@ -574,8 +606,8 @@ reading: しんにゅうしゃ
 romaji: shinyuusha
 meaning_it: intruso
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Parola narrativa per chi entra dove non dovrebbe: base del Team Star, area
+  protetta o luogo sorvegliato.
 :::
 :::card
 id: card-v566-shinyuusha-recognition
@@ -586,9 +618,10 @@ card_type: recognition
 front: "{{侵入者|しん.にゅう.しゃ}}"
 back: intruso
 example_jp: >-
-  これは {{侵入者|しん.にゅう.しゃ}} です。
+  スター{{団|だん}}の アジトで、こちらの トレーナーは
+  {{侵入者|しん.にゅう.しゃ}}として {{止|と}}められた。
 example_it: >-
-  Questo è un intruso.
+  Nella base del Team Star, il nostro allenatore è stato fermato come intruso.
 :::
 :::term
 id: term-v567-majikarukoukan
@@ -597,8 +630,8 @@ reading: マジカルこうかん
 romaji: majikarukoukan
 meaning_it: scambio magico / surprise trade
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Funzione online: mandi un Pokémon e ne ricevi uno da un giocatore casuale,
+  quindi il risultato non è scelto in anticipo.
 :::
 :::card
 id: card-v567-majikarukoukan-recognition
@@ -609,9 +642,11 @@ card_type: recognition
 front: "マジカル{{交換|こうかん}}"
 back: scambio magico / surprise trade
 example_jp: >-
-  ポケモンを {{交換|こうかん}}します。
+  マジカル{{交換|こうかん}}で {{出|だ}}した ポケモンは、{{知|し}}らない
+  トレーナーの ポケモンと {{交換|こうかん}}される。
 example_it: >-
-  Faccio uno scambio di Pokémon.
+  Il Pokémon inviato con lo scambio magico viene scambiato con quello di un
+  allenatore sconosciuto.
 :::
 :::term
 id: term-v568-tanken
@@ -620,8 +655,8 @@ reading: たんけん
 romaji: tanken
 meaning_it: esplorazione
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Ha un tono più narrativo di `探索`: partire in spedizione, cercare qualcosa o
+  attraversare un'area nuova.
 :::
 :::card
 id: card-v568-tanken-recognition
@@ -630,11 +665,12 @@ entry_type: term
 entry_id: term-v568-tanken
 card_type: recognition
 front: "{{探検|たんけん}}"
-back: esplorazione
+back: esplorazione / spedizione
 example_jp: >-
-  これは {{探検|たんけん}} です。
+  キタカミで {{探検|たんけん}}を はじめる {{前|まえ}}に、
+  ポケモンの HPを {{回復|かいふく}}する。
 example_it: >-
-  Questa è un'esplorazione.
+  Prima di iniziare la spedizione a Kitakami, recuperi gli HP dei Pokémon.
 :::
 :::term
 id: term-v569-joushou
@@ -643,8 +679,8 @@ reading: じょうしょう
 romaji: joushou
 meaning_it: salita / aumento
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  In battaglia indica un valore che aumenta; fuori dalla lotta può descrivere
+  una salita fisica o un incremento numerico.
 :::
 :::card
 id: card-v569-joushou-recognition
@@ -653,11 +689,12 @@ entry_type: term
 entry_id: term-v569-joushou
 card_type: recognition
 front: "{{上昇|じょうしょう}}"
-back: salita / aumento
+back: aumento / salita
 example_jp: >-
-  この{{先|さき}}に {{上昇|じょうしょう}}が あります。
+  {{能力変化|のう.りょく.へん.か}}で ウェーニバルの
+  {{素早|すばや}}さが {{上昇|じょうしょう}}した。
 example_it: >-
-  Più avanti c'è una salita.
+  Per una variazione delle statistiche, la Velocità di Quaquaval è aumentata.
 :::
 :::term
 id: term-v570-maigo
@@ -666,8 +703,8 @@ reading: まいご
 romaji: maigo
 meaning_it: essere smarrito
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica qualcuno che si è perso: bambino, NPC, allenatore o Pokémon separato
+  dal gruppo.
 :::
 :::card
 id: card-v570-maigo-recognition
@@ -676,9 +713,10 @@ entry_type: term
 entry_id: term-v570-maigo
 card_type: recognition
 front: "{{迷子|まいご}}"
-back: essere smarrito
+back: persona smarrita / essere smarrito
 example_jp: >-
-  この{{先|さき}}に {{迷子|まいご}}が あります。
+  {{町|まち}}で {{迷子|まいご}}の {{子|こ}}を {{見|み}}つけたら、
+  {{近|ちか}}くの NPCに {{話|はな}}しかける。
 example_it: >-
-  Qui c'è qualcuno smarrito.
+  Se trovi un bambino smarrito in città, parla con l'NPC vicino.
 :::

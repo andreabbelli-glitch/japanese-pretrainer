@@ -14,17 +14,16 @@ tags:
 - phase-s
 - lesson-04
 prerequisites: []
-summary: 'Lessico ed espressioni per reazioni e parlato, Scarlet/Violet: 8 carte lessicali
-  attive, 2 formule ricorrenti, 2 pattern grammaticali e 3 etichette contestuali da
-  riconoscere.'
+summary: 'daijoubu, jaa, ikou, mae ni e tai per conferme, passaggi d’azione,
+  sequenze e desideri nei dialoghi.'
 ---
 # Obiettivo
 
-Capire il giapponese usato in reazioni, proposte e piccoli passaggi di dialogo in Scarlet/Violet.
+Capire come Scarlet / Violet passa da una reazione a un’azione: [大丈夫](term:term-v039-daijoubu) conferma che la situazione regge, [じゃあ](term:term-e008-jaa) apre il passo successivo, [行こう](term:term-e009-iko-u) invita a muoversi, [～前に](grammar:grammar-g010-prima-di) ordina due eventi e [～たい](grammar:grammar-g011-voler-fare) mostra desiderio o intenzione.
 
 ## Contesto
 
-In questa lezione compaiono sia parole di reazione e proposta sia etichette specifiche del gioco. Le prime ti fanno leggere subito tono e intenzione; le seconde ti aiutano a riconoscere chi o cosa viene nominato nella scena.
+Le battute brevi spesso contengono già tutta la logica della scena. `{{大丈夫|だいじょうぶ}}？` controlla se si può procedere; `じゃあ、 {{行|い}}こう` chiude l’esitazione; `{{行|い}}く {{前|まえ}}に` mette una condizione temporale prima del movimento; `{{先|さき}}へ {{行|い}}きたい` rende esplicita la volontà del parlante.
 
 ## Termini chiave
 
@@ -61,7 +60,7 @@ In questa lezione compaiono sia parole di reazione e proposta sia etichette spec
 
 Sul piano grammaticale, [〜前に](grammar:grammar-g010-prima-di) marca ciò che viene prima di un'altra azione. [〜たい](grammar:grammar-g011-voler-fare) esprime desiderio o intenzione: "voglio fare...". Qui servono a leggere l'ordine degli eventi e la volontà del personaggio, non solo il nome della regola.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ジムテスト](term:term-v038-jimutesuto)、 [ネモ](term:term-v044-nemo)、 [ペパー](term:term-v048-pepaa). Basta riconoscerle quando compaiono: sono nomi propri o riferimenti di gioco, non forme da analizzare.
+[ジムテスト](term:term-v038-jimutesuto) è la prova prima della sfida al leader della palestra; [ネモ](term:term-v044-nemo) richiama il filone delle lotte e della rivalità amichevole; [ペパー](term:term-v048-pepaa) richiama invece il percorso con i Pokémon dominanti e la ricerca delle spezie. Quando compaiono, fissano il ramo della scena e il tipo di obiettivo di cui si sta parlando.
 
 ## Esempi guidati
 
@@ -95,4 +94,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando studi questo blocco, guarda prima il tono della battuta e poi il passaggio logico: conferma, proposta, desiderio o sequenza. Le etichette del gioco servono solo a riconoscere chi o cosa viene nominato.
+Quando una battuta contiene `{{大丈夫|だいじょうぶ}}`, `じゃあ`, `{{行|い}}こう`, `～{{前|まえ}}に` o `～たい`, leggi prima che cosa fa nella scena: conferma, passaggio d’azione, invito, sequenza o desiderio. I nomi come [ネモ](term:term-v044-nemo) e [ペパー](term:term-v048-pepaa) agganciano quella funzione al filone narrativo giusto.

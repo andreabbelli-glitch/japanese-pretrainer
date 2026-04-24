@@ -33,9 +33,8 @@ pos: screen-label
 aliases: [ミッション, mission]
 notes_it: >-
   Indica i compiti che puoi completare per ottenere
-  [{{報酬|ほうしゅう}}](term:term-reward). In pratica è una delle prime parole da
-  riconoscere se vuoi capire come avanzare e raccogliere risorse dentro
-  `デュエプレ`.
+  [{{報酬|ほうしゅう}}](term:term-reward). In `デュエプレ` collega l'azione richiesta,
+  lo stato di completamento e il premio che può essere riscosso.
 level_hint: custom
 :::
 
@@ -64,8 +63,9 @@ pos: screen-label
 aliases: [プレゼント, present]
 notes_it: >-
   In app non vuol dire solo "regalo" in astratto: indica la casella dove trovi
-  oggetti e premi da riscattare. Se la riconosci subito, recuperi le risorse
-  senza dover cercare a tentoni.
+  oggetti e premi da riscattare. Quando compare con
+  [{{受|う}}け{{取|と}}る](term:term-receive), il flusso porta dal deposito del
+  premio al claim effettivo.
 level_hint: custom
 :::
 
@@ -78,9 +78,9 @@ meaning_it: avvisi / notice
 pos: screen-label
 aliases: [お知らせ, oshirase]
 notes_it: >-
-  È la sezione degli avvisi ufficiali. Dentro `デュエプレ` ti aiuta a capire se
-  un evento è attivo, se una modalità è cambiata o se ci sono campagne o
-  manutenzioni in corso. Non è una inbox personale: è il contesto del gioco.
+  È la sezione degli avvisi ufficiali. Dentro `デュエプレ` raccoglie stato degli
+  eventi, cambi di modalità, campagne e manutenzioni. Non è una inbox personale:
+  è il contesto pubblico del gioco.
 level_hint: n4
 :::
 
@@ -161,7 +161,7 @@ aliases: [開く, ひらく, hiraku]
 notes_it: >-
   Nella UI non vuol dire "sbloccare", ma aprire davvero una schermata, un menu
   o una lista. In frasi come `ホームからミッションを{{開|ひら}}く`, il punto
-  pratico è il passaggio di navigazione verso il contenuto che ti serve.
+  pratico è il passaggio di navigazione verso il contenuto richiesto.
 level_hint: n4
 :::
 
@@ -177,7 +177,8 @@ notes_it: >-
   È il nome dell'azione che la UI ti chiede quando non basta ancora guardare una
   schermata e devi scegliere un oggetto preciso. Va distinto dal pattern
   [～を{{選択|せんたく}}](grammar:grammar-wo-sentaku): quello ti dà la formula
-  completa, questo ti aiuta a riconoscere il nucleo lessicale ricorrente.
+  completa con oggetto marcato da `を`, questo è il nucleo lessicale che appare
+  in pulsanti e prompt.
 level_hint: n4
 :::
 
@@ -222,8 +223,8 @@ pos: noun
 aliases: [報酬, houshuu]
 notes_it: >-
   È la parola-base per premi e ricompense. Dentro le schermate di missione ti
-  aiuta a capire non solo che cosa hai completato, ma soprattutto che cosa puoi
-  incassare subito.
+  dice quale oggetto viene assegnato dopo il completamento e se resta un claim da
+  fare con [{{受|う}}け{{取|と}}る](term:term-receive).
 level_hint: n4
 :::
 
@@ -237,10 +238,9 @@ meaning_it: mazzo costruito / deck
 pos: noun
 aliases: [デッキ, deck]
 notes_it: >-
-  In app indica il mazzo che costruisci o selezioni per giocare. È importante
-  distinguerlo da [{{山札|やまふだ}}](term:term-deck): `デッキ` è la
-  lista che prepari fuori dalla partita, `{{山札|やまふだ}}` è il deck come zona
-  durante la partita.
+  In app indica il mazzo che costruisci o selezioni per giocare. Va distinto da
+  [{{山札|やまふだ}}](term:term-deck): `デッキ` è la lista che prepari fuori dalla
+  partita, `{{山札|やまふだ}}` è il deck come zona durante la partita.
 level_hint: custom
 :::
 
@@ -488,9 +488,8 @@ meaning_it: gioco singolo / solo play
 pos: mode-name
 aliases: [ソロプレイ, solo play]
 notes_it: >-
-  Etichetta generale dell'area single-player. Ti serve per orientarti quando
-  vuoi leggere contenuto, fare pratica o progredire senza entrare subito nel
-  matchmaking contro altri giocatori.
+  Etichetta generale dell'area single-player. La schermata porta a contenuti PvE,
+  pratica o progressione senza matchmaking contro altri giocatori.
 level_hint: custom
 :::
 
@@ -504,8 +503,8 @@ pos: mode-name
 aliases: [レジェンドバトル, legend battle]
 notes_it: >-
   È un nome di modalità o evento della sezione solo. Anche quando non conosci
-  tutti i dettagli, riconoscerlo ti aiuta a capire subito che non sei in una
-  schermata PvP standard.
+  tutti i dettagli, `レジェンドバトル` segnala un contesto PvE/evento distinto da
+  ladder e room match.
 level_hint: custom
 :::
 
@@ -534,8 +533,8 @@ pos: status-label
 aliases: [達成, tassei]
 notes_it: >-
   Indica che un obiettivo è stato raggiunto o che una condizione conta come
-  completata. Nelle schermate missione ti aiuta a leggere lo stato reale dei
-  task, non solo il loro titolo. Molto spesso lo incontri in composti come
+  completata. Nelle schermate missione definisce lo stato reale del task, non
+  solo il suo titolo. Molto spesso lo incontri in composti come
   `{{達成済|たっ.せい.ず}}み`.
 level_hint: n4
 :::
@@ -626,8 +625,8 @@ meaning_it: elenco / overview di X
 aliases: [一覧]
 notes_it: >-
   Nelle interfacce indica una schermata che raccoglie più elementi dello stesso
-  tipo, per esempio `ミッション{{一覧|いちらん}}`. Se lo riconosci, sai che stai
-  guardando una lista e non un singolo dettaglio.
+  tipo, per esempio `ミッション{{一覧|いちらん}}`. La presenza di
+  `{{一覧|いちらん}}` segnala una lista consultabile, non un singolo dettaglio.
 level_hint: n4
 :::
 
@@ -716,8 +715,9 @@ example_jp: >-
 example_it: >-
   Appena avvio il gioco, per prima cosa controllo le missioni nella Home.
 notes_it: >-
-  È il punto di orientamento base. Se lo riconosci subito, poi tutto il resto
-  dell'app smette di sembrare un insieme di schermate scollegate.
+  È il punto di ingresso della navigazione. Da `ホーム` parti verso missioni,
+  shop, avvisi e reward; il label indica quindi area iniziale, non un'azione di
+  claim.
 tags: [duel-plays, app, navigation]
 :::
 
@@ -754,8 +754,9 @@ example_jp: >-
 example_it: >-
   Riscuoto i bonus login e poi guardo lo shop.
 notes_it: >-
-  Conviene leggerlo come blocco unico. Ti serve sia per orientarti sia per
-  associare subito quella schermata a ricompense giornaliere.
+  Va letto come blocco unico: `ログイン` indica l'accesso, `ボーナス` il premio
+  collegato. La schermata riguarda una reward giornaliera, non una missione da
+  completare.
 tags: [duel-plays, app, reward]
 :::
 
@@ -773,7 +774,8 @@ example_it: >-
   Riscuoti una ricompensa dalla casella regali.
 notes_it: >-
   In `デュエプレ` non è un "regalo" generico: è il posto dove incassare oggetti
-  e premi. Riconoscerlo ti fa agire, non solo capire.
+  e premi. Quando è seguito da [{{受|う}}け{{取|と}}る](term:term-receive), il
+  premio passa dalla casella al tuo account.
 tags: [duel-plays, app, reward]
 :::
 
@@ -845,8 +847,8 @@ example_it: >-
   Quando non si riesce ad avviare il gioco, si prova ad aprire le impostazioni dell’account dal menu 'Altro'.
 notes_it: >-
   Non indica un contenuto specifico come missioni o shop: segnala invece un
-  contenitore di voci secondarie. Se lo riconosci, capisci che stai entrando in
-  un menu-cassetto e non in una funzione unica già definita.
+  contenitore di voci secondarie. Il label apre un menu-cassetto, non una
+  funzione unica già definita.
 tags: [duel-plays, app, navigation]
 :::
 
@@ -900,8 +902,8 @@ example_jp: >-
 example_it: >-
   Prima della partita, selezioni il mazzo da utilizzare.
 notes_it: >-
-  Ti prepara bene ai prompt dell'app: quando compare, la lettura non è più
-  passiva e la schermata ti chiede di scegliere qualcosa di preciso.
+  Quando compare, la schermata non sta solo mostrando informazioni: richiede la
+  scelta di un oggetto preciso prima del passaggio successivo.
 tags: [duel-plays, app, action, kanji]
 :::
 
@@ -1012,8 +1014,8 @@ example_it: >-
   Inizia una partita con un rental deck.
 notes_it: >-
   La parte decisiva è `レンタル`: il mazzo ti viene prestato, non costruito da
-  te. Se lo riconosci, capisci subito che puoi entrare in modalità di gioco con
-  una lista pronta anche senza una collezione completa.
+  te. La label indica una lista pronta utilizzabile anche senza una collezione
+  completa.
 tags: [duel-plays, app, deck]
 :::
 
@@ -1030,8 +1032,9 @@ example_jp: >-
 example_it: >-
   Acquisto un deck pre-costruito usando i jewel.
 notes_it: >-
-  È il verbo-base dell'acquisto nell'app. Ti aiuta a leggere bene sia il costo
-  che il risultato atteso prima di confermare.
+  È il verbo-base dell'acquisto nell'app. In frasi con `ジェムで` o
+  `チケットで`, la particella `で` marca la risorsa consumata e
+  `{{購入|こうにゅう}}` il prodotto che stai ottenendo.
 tags: [duel-plays, app, shop, kanji]
 :::
 
@@ -1050,9 +1053,8 @@ example_it: >-
 notes_it: >-
   Il punto chiave è `{{購入|こうにゅう}}`: qui stai comprando, non scambiando o
   craftando. La distinzione operativa è tra acquisto diretto e flusso specifico
-  delle buste:
-  `カード{{購入|こうにゅう}}` dal flusso più specifico
-  `カードパック{{購入|こうにゅう}}`.
+  delle buste: `カード{{購入|こうにゅう}}` è il lato acquisto generale,
+  `カードパック{{購入|こうにゅう}}` è il flusso dedicato ai pack.
 tags: [duel-plays, app, shop]
 :::
 
@@ -1086,7 +1088,7 @@ back: scambio carte / card exchange
 example_jp: >-
   カード{{交換|こうかん}}で{{必要|ひつよう}}なカードを{{手|て}}に{{入|い}}れる。
 example_it: >-
-  Ottieni la carta che ti serve tramite Card Exchange.
+  Ottieni la carta necessaria tramite Card Exchange.
 notes_it: >-
   Il punto chiave è `{{交換|こうかん}}`: qui stai scambiando risorse, non
   comprando in senso diretto. Questa distinzione evita errori pratici nelle
@@ -1108,9 +1110,8 @@ example_it: >-
   Crea una carta con i DM Points.
 notes_it: >-
   Qui `{{生成|せいせい}}` non vuol dire "generare" in astratto: vuol dire creare
-  direttamente una carta usando una risorsa. Se la riconosci, sai subito che
-  quella schermata ti permette di convertire stock o punti in una carta
-  specifica della collezione.
+  direttamente una carta usando una risorsa. La schermata converte stock o punti
+  in una carta specifica della collezione.
 tags: [duel-plays, app, collection, kanji]
 :::
 
@@ -1125,7 +1126,7 @@ back: smontare / convertire in risorsa
 example_jp: >-
   {{不要|ふよう}}なカードを{{分解|ぶんかい}}する。
 example_it: >-
-  Smonta una carta che non ti serve.
+  Smonta una carta non necessaria.
 notes_it: >-
   È l'opposto operativo di [{{生成|せいせい}}](term:term-craft). Questa coppia
   compare spesso in sequenza: `{{分解|ぶんかい}}` converte una carta in risorsa, `{{生成|せいせい}}` usa la
@@ -1147,7 +1148,7 @@ example_it: >-
   Controllo la quantità di copie possedute di base.
 notes_it: >-
   `{{所持|しょじ}}` indica quante copie sono già presenti nel tuo account. In
-  shop e collezione ti serve per capire se devi ancora comprare, craftare o
+  shop e collezione quel numero decide se devi ancora comprare, craftare o
   scambiare quella carta.
 tags: [duel-plays, app, resource, kanji]
 :::
@@ -1184,7 +1185,8 @@ example_it: >-
   Usa 1 ticket.
 notes_it: >-
   Parola molto frequente nelle schermate di pack, eventi e accesso alle sfide.
-  Se la riconosci al volo, capisci subito quale risorsa stai per consumare.
+  Quando compare vicino a [{{使用|しよう}}](term:term-use) o
+  [{{購入|こうにゅう}}](term:term-purchase), indica la risorsa che verrà consumata.
 tags: [duel-plays, app, resource]
 :::
 
@@ -1201,8 +1203,8 @@ example_jp: >-
 example_it: >-
   Vinco nella partita classificata e salgo a Master Rank.
 notes_it: >-
-  Modalità competitiva da riconoscere a colpo d'occhio. Se la vedi, sai che il
-  contesto è ladder e non modalità libera.
+  È il label della ladder competitiva. La schermata registra progressione di
+  rank e risultati, non una partita libera o privata.
 tags: [duel-plays, app, mode]
 :::
 
@@ -1219,8 +1221,8 @@ example_jp: >-
 example_it: >-
   Gioca una partita con un amico in room match.
 notes_it: >-
-  È il label del contesto privato o organizzato. Ti aiuta a distinguere subito
-  la partita in stanza dal matchmaking standard.
+  È il label del contesto privato o organizzato. `ルーム` segnala una stanza con
+  accesso mirato, distinta dal matchmaking standard.
 tags: [duel-plays, app, mode]
 :::
 
@@ -1237,8 +1239,8 @@ example_jp: >-
 example_it: >-
   Scegli 1 carta in Quick Pick.
 notes_it: >-
-  Nome di modalità da memorizzare come blocco. Riconoscerlo ti evita di fermarti
-  a tradurre ogni parte mentre stai scegliendo dove entrare.
+  Nome di modalità da leggere come blocco unico. Il label porta a un formato di
+  scelta rapida, diverso dal deck costruito selezionato dalla collezione.
 tags: [duel-plays, app, mode]
 :::
 
@@ -1273,8 +1275,8 @@ example_jp: >-
 example_it: >-
   Nella Tower of Trials la difficoltà sale gradualmente.
 notes_it: >-
-  Allena un composto kanji poco trasparente ma ricorrente: `試練` = prova,
-  `塔` = torre.
+  Il composto combina `{{試練|しれん}}` = prova/trial e `{{塔|とう}}` = torre. Nel
+  menu nomina una modalità di sfida progressiva, non una semplice area narrativa.
 tags: [duel-plays, app, mode, kanji]
 :::
 
@@ -1423,8 +1425,9 @@ example_jp: >-
 example_it: >-
   Apri l'elenco delle missioni.
 notes_it: >-
-  Ti aiuta a leggere schermate come `ミッション{{一覧|いちらん}}` senza perderti:
-  se vedi `{{一覧|いちらん}}`, stai guardando una lista.
+  In `ミッション{{一覧|いちらん}}`, il nome prima di `{{一覧|いちらん}}` definisce il
+  tipo di elementi raccolti; il risultato è una lista consultabile, non un
+  singolo dettaglio.
 tags: [duel-plays, app, grammar]
 :::
 
@@ -1441,9 +1444,9 @@ example_jp: >-
 example_it: >-
   Durante la manutenzione non puoi fare partite.
 notes_it: >-
-  Pattern di stato molto frequente nelle UI. Il punto non è solo memorizzarlo,
-  ma capire che `{{中|ちゅう}}` comprime l'idea di "in corso proprio adesso": in due
-  caratteri la schermata ti comunica lo stato attivo del contenuto.
+  Pattern di stato molto frequente nelle UI. `{{中|ちゅう}}` comprime l'idea di
+  "in corso proprio adesso": in due caratteri la schermata comunica lo stato
+  attivo del contenuto.
 tags: [duel-plays, app, grammar]
 :::
 
@@ -1461,8 +1464,8 @@ example_it: >-
   Questa ricompensa è già stata riscossa.
 notes_it: >-
   Serve a leggere al volo se un'azione o una ricompensa sono già stati gestiti.
-  Questo pattern torna in molte schermate e impedisce claim doppi su premi già
-  incassati.
+  In schermate reward e missioni, `{{済|ず}}み` chiude il flusso e impedisce claim
+  doppi su premi già incassati.
 tags: [duel-plays, app, grammar]
 :::
 
@@ -1479,10 +1482,9 @@ example_jp: >-
 example_it: >-
   Finché non raggiungi i requisiti, la missione rimarrà non sbloccata.
 notes_it: >-
-  Questo prefisso orienta subito il verso del messaggio: non stai guardando una
-  funzione assente, ma una funzione esistente che non ha ancora raggiunto la
-  condizione richiesta. Se compare, l'app ti sta dicendo che manca ancora
-  qualcosa prima dell'accesso o del completamento.
+  `{{未|み}}` ribalta il valore del nome che segue: `{{未解放|み.かい.ほう}}` è non
+  ancora sbloccato, `{{未達成|み.たっ.せい}}` non ancora completato. L'app segnala
+  che manca una condizione prima dell'accesso o del completamento.
 tags: [duel-plays, app, grammar]
 :::
 
@@ -1519,7 +1521,8 @@ example_jp: >-
 example_it: >-
   Poiché sarà l’asso nella manica del deck, seleziono e ricevo questa Super Rara al centro di scambio.
 notes_it: >-
-  Formula di istruzione diretta. Se la riconosci, capisci subito quale oggetto
-  l'app si aspetta che tu scelga prima di proseguire.
+  Formula di istruzione diretta: il nome prima di `を` è l'oggetto da scegliere,
+  [{{選択|せんたく}}](term:term-selection) è l'azione richiesta prima di
+  proseguire.
 tags: [duel-plays, app, grammar]
 :::

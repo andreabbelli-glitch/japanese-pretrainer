@@ -24,7 +24,7 @@ Capire il giapponese che compare in reazioni e parlato, Scarlet/Violet. Qui guar
 
 ## Contesto
 
-In questo blocco compaiono parole che segnalano subito avvio, invito, cambiamento, conferma e facilità. Accanto a queste ci sono anche alcuni nomi propri o riferimenti di funzione che basta riconoscere quando appaiono.
+Le forme di questa lesson coprono avvio, invito, cambiamento, conferma e facilità: さっそく fa partire l'azione, ぜひ rafforza un invito, 変わる descrive ciò che diventa diverso. I nomi ゼロラボ e ライドポケモン fissano invece luogo e funzione di movimento.
 
 ## Termini chiave
 
@@ -62,7 +62,7 @@ Le espressioni come [そうだね](term:term-e043-soudane) e [とにかく](term
 
 Sul piano grammaticale, pattern come [〜ようだ / 〜ように見える](grammar:grammar-g046-sembra-che-sembra), [〜よね](grammar:grammar-g047-vero-no) e [〜やすい](grammar:grammar-g048-facile-da-fare) chiariscono inferenza, conferma o facilità concreta. [〜ようだ] segnala che il parlante deduce o osserva, [〜よね] cerca accordo, [〜やすい] dice che qualcosa è facile da fare o tende a riuscire con facilità. Non servono solo a “capire la regola”: aiutano a leggere il tono della frase e il grado di certezza.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [ゼロラボ](term:term-v236-zerorabo) e [ライドポケモン](term:term-v239-raidopokemon). Qui la cosa utile non è analizzarle, ma riconoscerle subito come riferimenti al mondo di gioco o a una funzione specifica.
+[ゼロラボ](term:term-v236-zerorabo) è un nome proprio di luogo/struttura, mentre [ライドポケモン](term:term-v239-raidopokemon) unisce ライド “ride” e ポケモン per indicare il Pokémon usato come cavalcatura. Quando compaiono in dialoghi o tutorial, non descrivono qualità generali: fissano rispettivamente il luogo di riferimento e la funzione di movimento.
 
 ## Esempi guidati
 
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri queste battute, guarda subito se la frase sta confermando, invitando, segnalando un cambiamento o suggerendo che qualcosa è facile. In questo blocco la comprensione passa soprattutto da quelle sfumature.
+Quando incontri queste battute, guarda se la frase conferma con そうだね, invita con ぜひ, segnala un cambiamento con 変わる o presenta facilità con 〜やすい. Quelle forme decidono tono e azione della riga.

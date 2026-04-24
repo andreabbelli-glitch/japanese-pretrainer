@@ -26,7 +26,7 @@ back: e quello allora...?
 example_jp: >-
   それって {{本当|ほんとう}}？
 example_it: >-
-  E quello allora...?
+  E quello, è vero?
 :::
 :::grammar
 id: grammar-g054-durante-mentre
@@ -173,8 +173,8 @@ reading: やけど
 romaji: yakedo
 meaning_it: scottatura
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  やけど è la scottatura come stato alterato. Con やけどになる il Pokémon entra in
+  quella condizione.
 :::
 :::card
 id: card-v274-yakedo-recognition
@@ -196,8 +196,8 @@ reading: しゅうりょう
 romaji: shuuryou
 meaning_it: fine / chiusura
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  終了 indica chiusura o fine di una sessione, battaglia o schermata. In menu può
+  essere il comando che conclude l'operazione.
 :::
 :::card
 id: card-v275-shuuryou-recognition
@@ -241,7 +241,8 @@ reading: きぶん
 romaji: kibun
 meaning_it: umore / sensazione
 notes_it: >-
-  Compare spesso nei dialoghi NPC e nelle reazioni dei personaggi.
+  気分 indica umore o sensazione del momento. 気分がいい descrive come una persona
+  si sente, non uno stato tecnico del menu.
 :::
 :::card
 id: card-v277-kibun-recognition
@@ -263,7 +264,8 @@ reading: しつれい
 romaji: shitsurei
 meaning_it: scortesia / con permesso
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  失礼 può essere scortesia o una formula di permesso. 失礼します si usa entrando,
+  uscendo o interrompendo con tono educato.
 :::
 :::card
 id: card-v278-shitsurei-recognition
@@ -285,8 +287,8 @@ reading: ひでん
 romaji: hiden
 meaning_it: segreto / Herba Mystica (come nome breve)
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  秘伝 richiama qualcosa di segreto o tramandato; qui può funzionare come nome
+  breve di un oggetto speciale legato alla ricerca.
 :::
 :::term
 id: term-v280-kakkuu
@@ -295,8 +297,8 @@ reading: かっくう
 romaji: kakkuu
 meaning_it: planata
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  かっくう indica la planata: nei comandi di movimento distingue il volo planato
+  dal correre o dal muoversi sull'acqua.
 :::
 :::card
 id: card-v280-kakkuu-recognition
@@ -318,7 +320,8 @@ reading: たいせつ
 romaji: taisetsu
 meaning_it: importante / caro
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  大切 può indicare importanza pratica o valore affettivo. Con に, come 大切に育てる,
+  diventa "con cura".
 :::
 :::card
 id: card-v281-taisetsu-recognition
@@ -329,9 +332,9 @@ card_type: recognition
 front: "{{大切|たいせつ}}"
 back: importante / caro
 example_jp: >-
-  これは {{大切|たいせつ}} です。
+  ポケモンを {{大切|たいせつ}}に {{育|そだ}}てる。
 example_it: >-
-  Questo è importante.
+  Allevo il Pokémon con cura.
 :::
 :::term
 id: term-v282-takara
@@ -340,7 +343,8 @@ reading: たから
 romaji: takara
 meaning_it: tesoro
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  宝 è "tesoro" come cosa preziosa o ricercata; nel tema scolastico di
+  Scarlet/Violet può anticipare l'idea di ciò che vale davvero per il personaggio.
 :::
 :::card
 id: card-v282-takara-recognition
@@ -351,9 +355,9 @@ card_type: recognition
 front: "{{宝|たから}}"
 back: tesoro
 example_jp: >-
-  {{学校|がっこう}}で {{宝|たから}}が だいじ です。
+  {{宝|たから}}を {{持|も}}つ。
 example_it: >-
-  Questo è un tesoro.
+  Ho un tesoro.
 :::
 :::term
 id: term-v283-sougen
@@ -362,7 +366,8 @@ reading: そうげん
 romaji: sougen
 meaning_it: prateria
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  草原 indica un'area aperta erbosa. In indicazioni di percorso funziona come
+  nome di ambiente attraversabile.
 :::
 :::card
 id: card-v283-sougen-recognition
@@ -384,8 +389,8 @@ reading: こうどう
 romaji: koudou
 meaning_it: azione
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  行動 è l'azione scelta o compiuta. In battaglia può indicare il turno pratico:
+  cosa farà il Pokémon o il giocatore.
 :::
 :::card
 id: card-v284-koudou-recognition
@@ -396,9 +401,9 @@ card_type: recognition
 front: "{{行動|こうどう}}"
 back: azione
 example_jp: >-
-  {{行動|こうどう}}が {{大切|たいせつ}}です。
+  {{次|つぎ}}の {{行動|こうどう}}を {{選|えら}}ぶ。
 example_it: >-
-  L'azione è importante.
+  Scelgo la prossima azione.
 :::
 :::term
 id: term-v285-riyuu
@@ -407,7 +412,8 @@ reading: りゆう
 romaji: riyuu
 meaning_it: motivo
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  宝物 è un tesoro personale o qualcosa di prezioso per qualcuno. Rispetto a 宝,
+  mette più peso sul legame affettivo o individuale.
 :::
 :::card
 id: card-v285-riyuu-recognition
@@ -429,7 +435,8 @@ reading: たからもの
 romaji: takaramono
 meaning_it: tesoro personale
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  理由 è il motivo o la ragione. 理由は何ですか chiede la spiegazione dietro una
+  scelta o un fatto.
 :::
 :::card
 id: card-v286-takaramono-recognition
@@ -440,9 +447,9 @@ card_type: recognition
 front: "{{宝物|たからもの}}"
 back: tesoro personale
 example_jp: >-
-  これは {{宝物|たからもの}}です。
+  {{大切|たいせつ}}な {{宝物|たからもの}}を {{見|み}}せる。
 example_it: >-
-  Questo è un tesoro prezioso.
+  Mostro un tesoro prezioso.
 :::
 :::term
 id: term-v287-jitsuryoku
@@ -451,7 +458,8 @@ reading: じつりょく
 romaji: jitsuryoku
 meaning_it: vera capacità / livello reale
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  実力 è la capacità reale dimostrata, non il titolo o la reputazione. 実力を見せる
+  significa far vedere quanto si vale.
 :::
 :::card
 id: card-v287-jitsuryoku-recognition
@@ -462,9 +470,9 @@ card_type: recognition
 front: "{{実力|じつりょく}}"
 back: vera capacità / livello reale
 example_jp: >-
-  {{実力|じつりょく}} が あります。
+  {{実力|じつりょく}}を {{見|み}}せる。
 example_it: >-
-  Ha capacità reali.
+  Mostra la sua vera capacità.
 :::
 :::term
 id: term-v288-mappuapuri
@@ -473,8 +481,8 @@ reading: マップアプリ
 romaji: mappuapuri
 meaning_it: app mappa
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  マップアプリ è l'app della mappa. Nei menu indica lo strumento per controllare
+  posizione, destinazioni e segnalini.
 :::
 :::card
 id: card-v288-mappuapuri-recognition
@@ -496,7 +504,8 @@ reading: もつ
 romaji: motsu
 meaning_it: avere / tenere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  持つ significa tenere o avere con sé: これを持つ può essere fisico, mentre
+  意味を持つ sarebbe più astratto.
 :::
 :::card
 id: card-v289-motsu-recognition
@@ -518,7 +527,8 @@ reading: れんらく
 romaji: renraku
 meaning_it: contatto / chiamata / messaggio
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  連絡 è contatto o messaggio. 連絡する significa avvisare o mettersi in contatto
+  con qualcuno.
 :::
 :::card
 id: card-v290-renraku-recognition
@@ -540,7 +550,8 @@ reading: にがて
 romaji: nigate
 meaning_it: non essere bravo / non piacere
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  苦手 indica difficoltà o scarso gradimento verso qualcosa; non è solo "debole",
+  ma "non me la cavo bene con X" oppure "X non mi piace".
 :::
 :::card
 id: card-v291-nigate-recognition
@@ -562,8 +573,8 @@ reading: きけん
 romaji: kiken
 meaning_it: pericolo
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  危険 segnala pericolo reale o rischio pratico; in avvisi e dialoghi prepara a
+  evitare un luogo, un nemico o un'azione.
 :::
 :::card
 id: card-v292-kiken-recognition
@@ -574,9 +585,9 @@ card_type: recognition
 front: "{{危険|きけん}}"
 back: pericolo
 example_jp: >-
-  ここは {{危険|きけん}}です。
+  {{危険|きけん}}な {{場所|ばしょ}}に {{近|ちか}}づかない。
 example_it: >-
-  Qui è pericoloso.
+  Non avvicinarti a un luogo pericoloso.
 :::
 :::term
 id: term-v293-anshin
@@ -585,7 +596,8 @@ reading: あんしん
 romaji: anshin
 meaning_it: sollievo / tranquillità
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  安心 indica sollievo o tranquillità dopo un dubbio o pericolo. 安心しました vuol
+  dire che la preoccupazione si è sciolta.
 :::
 :::card
 id: card-v293-anshin-recognition

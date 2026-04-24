@@ -142,8 +142,8 @@ pattern: ～くらい / ～ぐらい
 title: Circa / al punto da…
 meaning_it: circa / al punto da…
 notes_it: >-
-  Formazione: nome / frase + くらい. Utile per misure, intensità e confronti nelle
-  descrizioni.
+  Si aggancia a un nome o a una frase per dare misura, approssimazione o grado.
+  In descrizioni e confronti indica "circa" oppure "al punto da".
 :::
 :::card
 id: card-g100-circa-al-punto-da-concept
@@ -187,8 +187,8 @@ reading: せつぞく
 romaji: setsuzoku
 meaning_it: connessione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica il collegamento a una rete, a un servizio o a un altro giocatore. Nei
+  menu precede spesso ricerca, attesa o conferma della sessione online.
 :::
 :::card
 id: card-v592-setsuzoku-recognition
@@ -199,9 +199,9 @@ card_type: recognition
 front: "{{接続|せつぞく}}"
 back: connessione
 example_jp: >-
-  メニューで {{接続|せつぞく}}を {{見|み}}ます。
+  インターネットに {{接続|せつぞく}}します。
 example_it: >-
-  Controllo la connessione nel menu.
+  Mi connetto a internet.
 :::
 :::term
 id: term-v593-douji
@@ -210,8 +210,8 @@ reading: どうじ
 romaji: douji
 meaning_it: simultaneamente
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Indica che due azioni avvengono nello stesso momento. In schermate di attesa o
+  matchmaking segnala sincronizzazione, non semplice velocità.
 :::
 :::card
 id: card-v593-douji-recognition
@@ -233,8 +233,9 @@ reading: つうしんたいせん
 romaji: tsuushintaisen
 meaning_it: lotta online
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Nomina una lotta tramite comunicazione, quindi contro un altro giocatore. La
+  parte `通信` sposta la sfida fuori dalla CPU locale e dentro una sessione
+  collegata.
 :::
 :::card
 id: card-v594-tsuushintaisen-recognition
@@ -245,9 +246,9 @@ card_type: recognition
 front: "{{通信対戦|つう.しん.たい.せん}}"
 back: lotta online
 example_jp: >-
-  {{通信対戦|つう.しん.たい.せん}}タイプの ポケモンです。
+  {{通信対戦|つう.しん.たい.せん}}を はじめます。
 example_it: >-
-  È un Pokémon per le lotte online.
+  Avvio una lotta online.
 :::
 :::term
 id: term-v595-koushiki
@@ -256,8 +257,9 @@ reading: こうしき
 romaji: koushiki
 meaning_it: ufficiale
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Marca qualcosa come ufficiale: regole, tornei, informazioni o canali
+  pubblicati dal gioco. Contrasta con voci personali, non confermate o create dai
+  giocatori.
 :::
 :::card
 id: card-v595-koushiki-recognition
@@ -268,9 +270,9 @@ card_type: recognition
 front: "{{公式|こうしき}}"
 back: ufficiale
 example_jp: >-
-  これは {{公式|こうしき}} です。
+  {{公式|こうしき}}サイトで おしらせを {{見|み}}ます。
 example_it: >-
-  Questa è la versione ufficiale.
+  Controllo l'avviso sul sito ufficiale.
 :::
 :::term
 id: term-v596-shiizun
@@ -279,8 +281,8 @@ reading: シーズン
 romaji: shiizun
 meaning_it: stagione
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica una stagione competitiva o un periodo delimitato. Nei menu online
+  organizza ricompense, regole e ranking dentro una finestra temporale.
 :::
 :::card
 id: card-v596-shiizun-recognition
@@ -302,8 +304,8 @@ reading: こうかい
 romaji: koukai
 meaning_it: pubblicazione / rendere pubblico
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica che un dato viene reso pubblico o messo visibile ad altri. Nei profili
+  e nelle liste non significa solo "aprire", ma condividere una informazione.
 :::
 :::card
 id: card-v597-koukai-recognition
@@ -314,9 +316,9 @@ card_type: recognition
 front: "{{公開|こうかい}}"
 back: pubblicazione / rendere pubblico
 example_jp: >-
-  これは {{公開|こうかい}}です。
+  プロフィールを {{公開|こうかい}}します。
 example_it: >-
-  Questa informazione è pubblica.
+  Rendo pubblico il profilo.
 :::
 :::term
 id: term-v598-kabe
@@ -325,8 +327,8 @@ reading: かべ
 romaji: kabe
 meaning_it: parete
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica una parete o un ostacolo fisico. In percorsi e grotte segnala un limite
+  dello spazio, non una regola astratta.
 :::
 :::card
 id: card-v598-kabe-recognition
@@ -348,8 +350,8 @@ reading: けんきゅうしつ
 romaji: kenkyuushitsu
 meaning_it: laboratorio
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica il laboratorio di un professore o ricercatore. In accademia sposta la
+  scena dall'aula a uno spazio tecnico e personale.
 :::
 :::card
 id: card-v599-kenkyuushitsu-recognition
@@ -371,8 +373,9 @@ reading: ちびちびパワー
 romaji: chibichibipawaa
 meaning_it: Teensy Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Etichetta un bonus che riduce la taglia dei Pokemon incontrati o cercati.
+  `ちびちび` porta una sfumatura di "piccolino", quindi va letto come effetto di
+  dimensione.
 :::
 :::term
 id: term-v601-dekadekapawaa
@@ -381,8 +384,8 @@ reading: でかでかパワー
 romaji: dekadekapawaa
 meaning_it: Humungo Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Etichetta un bonus che aumenta la taglia dei Pokemon incontrati o cercati.
+  `でかでか` ha valore colloquiale di "molto grande", non di forza o rarità.
 :::
 :::term
 id: term-v602-nitsunapawaa
@@ -391,8 +394,9 @@ reading: につなパワー
 romaji: nitsunapawaa
 meaning_it: Title Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Etichetta un bonus legato ai Pokemon con titolo o marchio speciale. `二つ名`
+  indica un soprannome onorifico, quindi il power riguarda quel tipo di
+  riconoscimento.
 :::
 :::term
 id: term-v603-hyoujou
@@ -401,8 +405,8 @@ reading: ひょうじょう
 romaji: hyoujou
 meaning_it: espressione facciale
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica l'espressione del volto. Nei profili e nelle scene fotografiche
+  distingue posa, faccia e umore visuale del personaggio.
 :::
 :::card
 id: card-v603-hyoujou-recognition
@@ -413,9 +417,9 @@ card_type: recognition
 front: "{{表情|ひょうじょう}}"
 back: espressione facciale
 example_jp: >-
-  この {{表情|ひょうじょう}}です。
+  カメラで {{表情|ひょうじょう}}を {{変|か}}えます。
 example_it: >-
-  Questa è un'espressione facciale.
+  Cambio l'espressione con la fotocamera.
 :::
 :::term
 id: term-v604-fui
@@ -424,8 +428,8 @@ reading: ふい
 romaji: fui
 meaning_it: sorpresa / impreparazione
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica un evento improvviso o una situazione in cui qualcuno è colto alla
+  sprovvista. In `不意をつく` il punto è sorprendere prima che l'altro reagisca.
 :::
 :::card
 id: card-v604-fui-recognition
@@ -447,8 +451,8 @@ reading: どくじょうたい
 romaji: dokujoutai
 meaning_it: stato veleno
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Indica lo stato alterato di veleno. In battaglia `状態` segnala una condizione
+  persistente, non un singolo colpo.
 :::
 :::card
 id: card-v605-dokujoutai-recognition
@@ -470,8 +474,8 @@ reading: きょり
 romaji: kyori
 meaning_it: distanza
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica la distanza tra due punti o personaggi. In mappe, lotte e obiettivi
+  quantifica quanto sei lontano dal bersaglio.
 :::
 :::card
 id: card-v606-kyori-recognition
@@ -493,7 +497,8 @@ reading: さんちょう
 romaji: sanchou
 meaning_it: cima
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  Indica la cima di una montagna. Nei percorsi restringe la meta al punto alto,
+  non alla montagna intera.
 :::
 :::card
 id: card-v607-sanchou-recognition
@@ -515,8 +520,8 @@ reading: どうぐプリンター
 romaji: dougupurintaa
 meaning_it: Item Printer
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome di una funzione DLC: `どうぐ` indica gli oggetti prodotti o convertiti,
+  mentre `プリンター` presenta la funzione come macchina che genera risultati.
 :::
 :::term
 id: term-v609-urikire
@@ -525,8 +530,8 @@ reading: うりきれ
 romaji: urikire
 meaning_it: esaurito
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica che un prodotto non è più disponibile per l'acquisto. In negozio blocca
+  la transazione: puoi vedere la voce, ma non comprarla.
 :::
 :::card
 id: card-v609-urikire-recognition
@@ -537,9 +542,9 @@ card_type: recognition
 front: "{{売|う}}り{{切|き}}れ"
 back: esaurito
 example_jp: >-
-  これは {{売|う}}り{{切|き}}れです。
+  この どうぐは {{売|う}}り{{切|き}}れです。
 example_it: >-
-  Questo è esaurito.
+  Questo strumento è esaurito.
 :::
 :::term
 id: term-v610-kitae-ta
@@ -548,8 +553,8 @@ reading: きたえた
 romaji: kitae ta
 meaning_it: allenato / ben preparato
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Descrive qualcuno o qualcosa che è stato allenato. In battaglia segnala
+  preparazione precedente, non forza casuale.
 :::
 :::card
 id: card-v610-kitae-ta-recognition
@@ -571,8 +576,8 @@ reading: ポケポータル
 romaji: pokepootaru
 meaning_it: Poké Portal
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Nomina il portale delle funzioni online e di comunicazione. Se compare in una
+  istruzione, la prossima azione passa da quel menu.
 :::
 :::term
 id: term-v612-goukei
@@ -581,8 +586,8 @@ reading: ごうけい
 romaji: goukei
 meaning_it: totale
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica il totale dopo una somma. In negozi, ricompense e statistiche segnala
+  il risultato aggregato, non una singola voce.
 :::
 :::card
 id: card-v612-goukei-recognition
@@ -604,8 +609,8 @@ reading: たいりょうはっせい
 romaji: tairyouhassei
 meaning_it: mass outbreak
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica un'apparizione massiccia di Pokemon selvatici. In mappa segnala un
+  evento localizzato con molte occorrenze della stessa specie.
 :::
 :::card
 id: card-v613-tairyouhassei-recognition
@@ -627,8 +632,8 @@ reading: にゅうりょく
 romaji: nyuuryoku
 meaning_it: inserimento / input
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica l'inserimento di testo, codice o scelta numerica. Nei menu marca il
+  momento in cui il giocatore deve scrivere o confermare un dato.
 :::
 :::card
 id: card-v614-nyuuryoku-recognition

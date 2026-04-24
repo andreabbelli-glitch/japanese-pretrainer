@@ -101,7 +101,8 @@ reading: じむてすと
 romaji: jimutesuto
 meaning_it: prova preliminare della palestra
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  È la prova preliminare legata a una palestra. Prima del ジムリーダー, il testo
+  può chiedere di superare questo passaggio per aprire la sfida.
 :::
 :::term
 id: term-v039-daijoubu
@@ -132,7 +133,8 @@ reading: じかん
 romaji: jikan
 meaning_it: tempo
 notes_it: >-
-  Indica il tempo disponibile o il momento giusto per muoversi.
+  Indica tempo disponibile, durata o momento adatto. In frasi come
+  {{時間|じかん}}が ない marca una pressione immediata sulla scelta.
 :::
 :::card
 id: card-v041-jikan-recognition
@@ -143,9 +145,9 @@ card_type: recognition
 front: '{{時間|じかん}}'
 back: tempo
 example_jp: >-
-  {{時間|じかん}}が あります。
+  ジムテストの {{前|まえ}}に まだ {{時間|じかん}}が あります。
 example_it: >-
-  Abbiamo tempo.
+  C’è ancora tempo prima della prova della palestra.
 :::
 :::term
 id: term-v042-kimochi
@@ -176,7 +178,8 @@ reading: しゃしん
 romaji: shashin
 meaning_it: foto
 notes_it: >-
-  Utile quando il gioco parla di scatti, foto o obiettivi legati alle immagini.
+  Indica una foto o uno scatto. In menu e dialoghi può essere l’azione di
+  fotografare un Pokémon, un luogo o un momento del viaggio.
 :::
 :::card
 id: card-v043-shashin-recognition
@@ -187,9 +190,9 @@ card_type: recognition
 front: '{{写真|しゃしん}}'
 back: foto
 example_jp: >-
-  ここで {{写真|しゃしん}}を {{撮|と}}ります。
+  ネモと {{一緒|いっしょ}}に {{写真|しゃしん}}を {{撮|と}}ろう。
 example_it: >-
-  Qui scatto una foto.
+  Scattiamo una foto insieme a Nemona.
 :::
 :::term
 id: term-v044-nemo
@@ -198,7 +201,8 @@ reading: ねも
 romaji: nemo
 meaning_it: Nemona
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Nome giapponese di Nemona. Quando compare, la scena di solito riguarda
+  rivalità amichevole, lotte, consigli o spinta ad andare avanti.
 :::
 :::term
 id: term-v046-tomodachi
@@ -207,7 +211,8 @@ reading: ともだち
 romaji: tomodachi
 meaning_it: amico
 notes_it: >-
-  Parola comune per amici, compagni e scene sociali.
+  Indica un amico o compagno in modo comune. Nei dialoghi scolastici si collega
+  bene a {{一緒|いっしょ}}に, よろしく e scene di collaborazione.
 :::
 :::card
 id: card-v046-tomodachi-recognition
@@ -218,9 +223,9 @@ card_type: recognition
 front: '{{友達|ともだち}}'
 back: amico
 example_jp: >-
-  {{友達|ともだち}}と {{行|い}}きます。
+  {{友達|ともだち}}と {{一緒|いっしょ}}に アカデミーへ {{行|い}}く。
 example_it: >-
-  Vado con un amico.
+  Vado all’Accademia insieme a un amico.
 :::
 :::term
 id: term-v047-yappari
@@ -251,7 +256,8 @@ reading: ぺぱー
 romaji: pepaa
 meaning_it: Arven
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Nome giapponese di Arven. Quando compare, la scena tende a spostarsi su
+  esplorazione, spezie segrete, picnic o Pokémon dominanti.
 :::
 :::term
 id: term-v049-saki
@@ -293,7 +299,7 @@ card_type: recognition
 front: '{{楽|たの}}しい'
 back: divertente
 example_jp: >-
-  この バトルは {{楽|たの}}しい です。
+  ネモとの バトルは {{楽|たの}}しいです。
 example_it: >-
-  Questa battaglia è divertente.
+  La lotta con Nemona è divertente.
 :::

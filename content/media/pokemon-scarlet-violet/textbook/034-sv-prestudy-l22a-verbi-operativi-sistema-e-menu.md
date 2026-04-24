@@ -65,7 +65,7 @@ Le espressioni [確認する](term:term-e050-kakunin-suru), [もどる](term:ter
 
 Sul piano grammaticale, [〜なら](grammar:grammar-g072-se-e-cosi-se-parli-di) prende un'informazione già detta e la usa come base: "se parli di X" o "se intendi X". [〜予定だ](grammar:grammar-g073-essere-previsto) segnala invece un'azione già programmata o prevista.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [テラスタルエネルギー](term:term-v355-terasutaruenerugii) e [伝説のポケモン](term:term-v363-densetsunopokemon). Sono riferimenti del mondo di gioco: basta identificarli subito quando compaiono.
+[テラスタルエネルギー](term:term-v355-terasutaruenerugii) nomina la risorsa legata alla teracristallizzazione; [伝説のポケモン](term:term-v363-densetsunopokemon) usa 伝説 “leggenda” per classificare un Pokémon come leggendario. In una schermata o in un briefing, questi nomi dicono quale risorsa o categoria è coinvolta.
 
 ## Esempi guidati
 

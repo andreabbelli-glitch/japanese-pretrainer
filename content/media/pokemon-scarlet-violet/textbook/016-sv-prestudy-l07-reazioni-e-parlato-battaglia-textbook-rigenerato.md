@@ -20,7 +20,7 @@ summary: 'Lessico ed espressioni per capire reazioni, istruzioni e linguaggio di
 
 Capire **che funzione svolge il giapponese** nelle frasi brevi di dialogo e di battaglia: esultare, chiedere una ragione, indicare priorità, parlare di compagni, statistiche e possibilità/obbligo di fare qualcosa.
 
-Non basta tradurre parola per parola: in questo blocco bisogna imparare a riconoscere **il segnale pratico** che una parola dà mentre leggi la schermata.
+La lettura non procede parola per parola: やった！ reagisce a un risultato, まず ordina il primo passo, 特攻 nomina una statistica e 〜できる / 〜ないといけない dicono cosa è possibile o necessario fare.
 
 ## Contesto
 
@@ -52,7 +52,7 @@ Nel parlato dei giochi Pokémon molte frasi sono molto corte. Per questo alcune 
 - [可能形](grammar:grammar-g020-poter-fare) — forma potenziale: poter fare
 - [た形](grammar:grammar-g021-passato-completamento) — forma in た: azione completata / passato / base di altre strutture
 
-## Spiegazione utile
+## Spiegazione
 
 ### 1) Reazioni: il giapponese breve che esprime emozione
 
@@ -70,7 +70,7 @@ Quindi qui non va studiato come semplice passato di un verbo, ma come **esclamaz
 
 [まず](term:term-v084-mazu) serve a organizzare il discorso. Quando compare, il parlante sta dicendo **qual è il primo passo**. In italiano spesso lo rendi con "prima di tutto" o "intanto".
 
-[しっかり](term:term-v077-shikkari) è molto comune e utile. Non significa semplicemente "bene" in modo vago. A seconda del contesto vuol dire:
+[しっかり](term:term-v077-shikkari) non significa semplicemente "bene" in modo vago. A seconda del contesto vuol dire:
 
 - in modo attento;
 - con fermezza;
@@ -94,7 +94,7 @@ Per esempio, in un'istruzione può significare "guarda bene", "tieni bene a ment
 - **なんで** è spesso più colloquiale;
 - **どうして** è molto comune nel parlato e può suonare anche emotivo: "come mai?".
 
-Per capire il gioco, non serve memorizzare tutta la teoria: basta sapere che quando leggi [どうして](term:term-v079-doushite), la frase sta entrando nella zona **"dimmi il motivo"**.
+Quando leggi [どうして](term:term-v079-doushite), la battuta sta chiedendo il motivo di una scelta o di un evento, non solo aprendo una domanda generica.
 
 ### 4) Lessico relazionale: 仲間
 
@@ -105,13 +105,13 @@ Per capire il gioco, non serve memorizzare tutta la teoria: basta sapere che qua
 - membro del team;
 - persona "dei nostri".
 
-Nel mondo Pokémon questo è importante perché il concetto di gruppo conta molto: compagni di avventura, compagni di squadra, alleati in raid, persone che combattono con te o dalla tua parte.
+Nel mondo Pokémon questa sfumatura distingue il semplice amico da chi combatte dalla tua parte: compagni di avventura, membri di squadra e alleati in raid rientrano tutti nel frame di [仲間](term:term-v080-nakama).
 
 ### 5) Lessico di battaglia: 戦う, 特攻, ＨＰ
 
 [戦う](term:term-v078-tatakau) è il verbo generale "combattere". Non è un termine tecnico esclusivo dei Pokémon: è il verbo normale per la lotta o il combattimento. In Pokémon però diventa frequentissimo perché appare sia nel parlato sia nelle spiegazioni di gioco.
 
-[特攻](term:term-v083-tokukou) nel contesto Pokémon si legge **とくこう / tokukou** e indica **Attacco Speciale**. Questo è importante perché fuori da Pokémon la parola 特攻 può avere anche un'altra lettura e un altro significato; qui però non stiamo leggendo la parola comune, ma l'abbreviazione di **特殊攻撃**. Quindi, per le statistiche del gioco, la lettura giusta è **とくこう**.
+[特攻](term:term-v083-tokukou) nel contesto Pokémon si legge **とくこう / tokukou** e indica **Attacco Speciale**. Fuori da Pokémon la parola 特攻 può avere un'altra lettura e un altro significato; nelle statistiche del gioco, invece, è l'abbreviazione di **特殊攻撃**, quindi la lettura da applicare è **とくこう**.
 
 [ＨＰ](term:term-v085-eichipii) è il prestito dall'inglese "HP" e in giapponese viene letto **えいちぴー**. Nelle schermate non va tradotto mentalmente lettera per lettera: va riconosciuto subito come **barra salute / punti vita**.
 
@@ -141,7 +141,7 @@ Esempio:
 
 - {{行|い}}かないといけない = devo andare
 
-Non tradurre pezzo per pezzo. Riconosci la struttura intera come blocco.
+La lettura corretta prende la struttura intera: 行かないといけない vale "devo andare", non una somma letterale di "non andare" più "non va bene".
 
 ### 可能形
 
@@ -158,7 +158,7 @@ Nel videogioco spesso indica:
 - movimenti consentiti;
 - possibilità legate alla situazione attuale.
 
-Quindi quando vedi una forma potenziale, la domanda utile non è "che tempo verbale è?", ma **"cosa mi sta dicendo che adesso è possibile?"**
+Quindi una forma potenziale non va letta come un tempo verbale: segnala quale azione è disponibile adesso, per esempio salire, entrare, combattere o usare una funzione.
 
 ### た形
 
@@ -180,7 +180,7 @@ translation_it: >-
   Sì! Ce l'ho fatta!
 :::
 
-**Perché è utile:**
+**Lettura concreta:**
 
 - やった！ = reazione di successo;
 - できた = "sono riuscito / è riuscito", cioè completamento con sfumatura di riuscita.
@@ -243,7 +243,7 @@ Se riconosci subito la funzione, capisci il senso della scena molto prima di tra
 
 ## Nota finale
 
-Questo capitolo è utile perché ti abitua a leggere il giapponese non come lista di vocaboli isolati, ma come **segnali rapidi di funzione**:
+In queste frasi brevi il giapponese non funziona come lista di vocaboli isolati: ogni forma dà una funzione leggibile nella scena.
 
 - chi sta reagendo;
 - cosa bisogna fare;

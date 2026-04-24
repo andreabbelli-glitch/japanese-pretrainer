@@ -166,7 +166,8 @@ reading: あつめる
 romaji: atsume ru
 meaning_it: raccogliere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  集める prende come oggetto ciò che viene raccolto: materiali, informazioni,
+  oggetti o persone. Il risultato è un gruppo o una quantità più grande.
 :::
 :::card
 id: card-v354-atsume-ru-recognition
@@ -177,9 +178,9 @@ card_type: recognition
 front: "{{集|あつ}}める"
 back: raccogliere
 example_jp: >-
-  ここで {{集|あつ}}める。
+  {{材料|ざいりょう}}を {{集|あつ}}める。
 example_it: >-
-  Raccolgo qui.
+  Raccolgo materiali.
 :::
 :::term
 id: term-v355-terasutaruenerugii
@@ -188,7 +189,8 @@ reading: てらすたるえねるぎー
 romaji: terasutaruenerugii
 meaning_it: energia teracristal
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  テラスタルエネルギー nomina la risorsa legata alla teracristallizzazione. In
+  messaggi di sistema indica carica o disponibilità, non energia generica.
 :::
 :::term
 id: term-v356-tanomu
@@ -197,7 +199,8 @@ reading: たのむ
 romaji: tanomu
 meaning_it: chiedere / affidare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  頼む può essere chiedere un favore o affidare qualcosa a qualcuno. Il tono
+  dipende dal contesto: richiesta amichevole, incarico o supplica.
 :::
 :::card
 id: card-v356-tanomu-recognition
@@ -219,7 +222,8 @@ reading: むかう
 romaji: muka u
 meaning_it: dirigersi verso
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  向かう indica dirigersi verso una meta marcata da へ o に. Non dice solo
+  "andare": mette l'accento sull'orientamento del movimento.
 :::
 :::card
 id: card-v358-muka-u-recognition
@@ -241,7 +245,8 @@ reading: おしえる
 romaji: oshie ru
 meaning_it: insegnare / dire
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  教える copre insegnare, spiegare o dire un'informazione. L'oggetto con を è il
+  contenuto trasmesso.
 :::
 :::card
 id: card-v359-oshie-ru-recognition
@@ -252,9 +257,9 @@ card_type: recognition
 front: "{{教|おし}}える"
 back: insegnare / dire
 example_jp: >-
-  これを {{教|おし}}える。
+  やり{{方|かた}}を {{教|おし}}える。
 example_it: >-
-  Lo spiego.
+  Spiego come si fa.
 :::
 :::term
 id: term-v360-aruku
@@ -263,7 +268,8 @@ reading: あるく
 romaji: aruku
 meaning_it: camminare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  歩く è il movimento a piedi. In indicazioni di percorso contrasta con 走る,
+  ダッシュ o forme di cavalcatura.
 :::
 :::card
 id: card-v360-aruku-recognition
@@ -285,7 +291,8 @@ reading: ちゅうおう
 romaji: chuuou
 meaning_it: centro
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  中央 è il centro di un'area o schermata. Con へ向かう diventa una destinazione
+  precisa.
 :::
 :::card
 id: card-v361-chuuou-recognition
@@ -296,9 +303,9 @@ card_type: recognition
 front: "{{中央|ちゅうおう}}"
 back: centro
 example_jp: >-
-  ここは {{中央|ちゅうおう}} です。
+  {{中央|ちゅうおう}}へ {{向|む}}かう。
 example_it: >-
-  Qui è il centro.
+  Mi dirigo verso il centro.
 :::
 :::term
 id: term-v362-okiniiri
@@ -307,8 +314,8 @@ reading: おきにいり
 romaji: okiniiri
 meaning_it: preferito / favorito
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  お気に入り indica un elemento marcato come preferito. Nei menu può essere una
+  lista o un filtro personale.
 :::
 :::card
 id: card-v362-okiniiri-recognition
@@ -319,9 +326,9 @@ card_type: recognition
 front: "お{{気|き}}に{{入|い}}り"
 back: preferito / favorito
 example_jp: >-
-  メニューで お{{気|き}}に{{入|い}}りを {{見|み}}ます。
+  お{{気|き}}に{{入|い}}りの ポケモンを {{登録|とうろく}}します。
 example_it: >-
-  Nel menu vedo i preferiti.
+  Registro un Pokémon tra i preferiti.
 :::
 :::term
 id: term-v363-densetsunopokemon
@@ -330,8 +337,8 @@ reading: でんせつのポケモン
 romaji: densetsunopokemon
 meaning_it: Pokémon leggendario
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  伝説のポケモン usa 伝説 per classificare un Pokémon come leggendario. Nei dialoghi
+  segnala una categoria narrativa speciale, non una specie comune.
 :::
 :::term
 id: term-v364-tochuu
@@ -340,7 +347,8 @@ reading: とちゅう
 romaji: tochuu
 meaning_it: durante il percorso / a metà
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  途中 indica il mezzo del percorso o di un'azione ancora in corso. バトルの途中
+  significa che la lotta non è finita.
 :::
 :::card
 id: card-v364-tochuu-recognition
@@ -362,8 +370,8 @@ reading: せいげんじかん
 romaji: seigenjikan
 meaning_it: tempo limite
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  制限時間 è il tempo limite. Se compare in una prova o battaglia, la condizione
+  di successo dipende anche dal timer.
 :::
 :::card
 id: card-v366-seigenjikan-recognition
@@ -385,7 +393,8 @@ reading: はしる
 romaji: hashiru
 meaning_it: correre
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  走る è correre. In esplorazione indica movimento rapido a piedi e resta distinto
+  da ダッシュ, che è lo scatto come comando o abilità.
 :::
 :::card
 id: card-v367-hashiru-recognition
@@ -407,8 +416,8 @@ reading: せんたく
 romaji: sentaku
 meaning_it: selezione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  選択 è selezione o scelta. In menu indica l'opzione evidenziata o l'atto di
+  scegliere.
 :::
 :::card
 id: card-v368-sentaku-recognition
@@ -419,9 +428,9 @@ card_type: recognition
 front: "{{選択|せんたく}}"
 back: selezione
 example_jp: >-
-  メニューの {{選択|せんたく}}です。
+  {{次|つぎ}}の {{行動|こうどう}}を {{選択|せんたく}}する。
 example_it: >-
-  È una selezione del menu.
+  Seleziono la prossima azione.
 :::
 :::term
 id: term-v369-rokkuon
@@ -430,8 +439,8 @@ reading: ロックオン
 romaji: rokkuon
 meaning_it: lock-on
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  ロックオン è l'aggancio a un bersaglio. Con 使う indica fissare l'attenzione del
+  sistema su Pokémon o oggetti vicini.
 :::
 :::card
 id: card-v369-rokkuon-recognition
@@ -453,7 +462,8 @@ reading: しる
 romaji: shiru
 meaning_it: sapere / venire a sapere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  知る è venire a sapere o conoscere un fatto. Con 情報を知る il testo segnala che
+  il personaggio acquisisce un'informazione.
 :::
 :::card
 id: card-v370-shiru-recognition
@@ -464,9 +474,9 @@ card_type: recognition
 front: "{{知|し}}る"
 back: sapere / venire a sapere
 example_jp: >-
-  ここで {{知|し}}る。
+  {{新|あたら}}しい {{情報|じょうほう}}を {{知|し}}る。
 example_it: >-
-  Qui lo scopro.
+  Vengo a sapere una nuova informazione.
 :::
 :::term
 id: term-v371-kyanseru
@@ -475,8 +485,8 @@ reading: キャンセル
 romaji: kyanseru
 meaning_it: annulla
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  キャンセル è annullare o uscire dall'azione corrente. Nei menu interrompe una
+  scelta prima della conferma.
 :::
 :::card
 id: card-v371-kyanseru-recognition
@@ -498,8 +508,8 @@ reading: ぜんりょく
 romaji: zenryoku
 meaning_it: massimo impegno
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  全力 è massimo impegno o piena forza. Con で modifica l'azione: 全力で走る,
+  全力でいこう.
 :::
 :::card
 id: card-v372-zenryoku-recognition
@@ -510,9 +520,9 @@ card_type: recognition
 front: "{{全力|ぜんりょく}}"
 back: massimo impegno
 example_jp: >-
-  バトルで {{全力|ぜんりょく}}を {{使|つか}}います。
+  {{全力|ぜんりょく}}で {{走|はし}}る。
 example_it: >-
-  Do il massimo in battaglia.
+  Corro con tutte le forze.
 :::
 :::term
 id: term-v373-hitobito
@@ -521,7 +531,8 @@ reading: ひとびと
 romaji: hitobito
 meaning_it: la gente / le persone
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  人々 indica le persone come gruppo. Nei dialoghi descrive la gente presente o
+  coinvolta in un luogo.
 :::
 :::card
 id: card-v373-hitobito-recognition

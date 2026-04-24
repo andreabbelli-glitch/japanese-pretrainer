@@ -16,5 +16,7 @@ description: >-
 # Duel Masters
 
 In `Duel Masters` tornano di continuo verbi di azione, condizioni, timing,
-restrizioni e label UI molto compatti. Qui il focus è leggerli nel punto in cui
-servono davvero: testo carta, keyword e interfaccia di `デュエプレ`.
+restrizioni e label UI molto compatti. La lettura parte dalla forma giapponese:
+chi agisce, quale zona o bersaglio viene nominato, quando si applica la
+condizione e quale risultato produce nel testo carta o nell'interfaccia di
+`デュエプレ`.

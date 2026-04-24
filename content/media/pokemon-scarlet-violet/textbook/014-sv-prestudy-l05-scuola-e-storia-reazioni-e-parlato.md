@@ -14,17 +14,16 @@ tags:
 - phase-s
 - lesson-05
 prerequisites: []
-summary: 'Lessico ed espressioni per scuola e storia, reazioni e parlato: 11 carte
-  lessicali attive, 2 formule ricorrenti, 2 pattern grammaticali e 0 etichette contestuali
-  da riconoscere.'
+summary: 'kouka, shokuzai, zukan, chanto, temo ii e ato de tra scuola, picnic,
+  oggetti e sequenze di dialogo.'
 ---
 # Obiettivo
 
-Capire il giapponese che segnala scuola, storia, reazioni e parlato: chi parla, che ruolo ha nella scena e quale azione o risposta sta chiedendo il gioco.
+Capire il giapponese che collega scuola, sistemi e dialoghi: [効果](term:term-v051-kouka) descrive il risultato di una mossa o di un oggetto, [食材](term:term-v052-shokuzai) entra nei picnic, [図鑑](term:term-v054-zukan) registra i Pokémon, [ちゃんと](term:term-v056-chanto) chiede accuratezza e [～てもいい](grammar:grammar-g014-si-puo-va-bene-fare) / [～後で](grammar:grammar-g015-dopo) regolano permesso e sequenza.
 
 ## Contesto
 
-Qui il lessico gira attorno a scuola, ricerca e progressione: le parole più concrete ti dicono subito quale oggetto, ruolo o sistema è in primo piano, mentre i nomi più verticali restano utili come riferimento quando compaiono nei dialoghi.
+Qui il lessico passa da spiegazioni di sistema a scene quotidiane. `この わざは {{効果|こうか}}が ある` parla del risultato in battaglia; `{{食材|しょくざい}}を {{使|つか}}って サンドウィッチを {{作|つく}}る` sposta la scena sul picnic; `{{図鑑|ずかん}}に {{登録|とうろく}}する` indica registrazione, non semplice consultazione; `ちゃんと {{見|み}}て` chiede attenzione reale prima di agire.
 
 ## Termini chiave
 
@@ -49,9 +48,9 @@ Qui il lessico gira attorno a scuola, ricerca e progressione: le parole più con
 
 ## Spiegazione
 
-Parole come [効果](term:term-v051-kouka), [食材](term:term-v052-shokuzai), [博士](term:term-v053-hakase) e [図鑑](term:term-v054-zukan) ti dicono subito quale oggetto o interlocutore è in scena: l'effetto di una mossa, un ingrediente, il professore o ricercatore con cui interagisci, il Pokédex che stai consultando. [どんな](term:term-v055-donna) chiede il tipo preciso di qualcosa, [ちゃんと](term:term-v056-chanto) segnala che qualcosa va fatto come si deve, secondo lo standard atteso, [中](term:term-v057-naka) localizza qualcosa dentro o in mezzo, e [作る](term:term-v058-tsukuru) è il verbo concreto del creare o preparare.
+[効果](term:term-v051-kouka) è il risultato prodotto da una mossa, un oggetto o un bonus; in battaglia va letto insieme a bersaglio e tipo. [食材](term:term-v052-shokuzai) è l’ingrediente che usi per preparare un sandwich, quindi spesso appare con [作る](term:term-v058-tsukuru) o [使う](term:term-v066-tsukau). [博士](term:term-v053-hakase) indica il professore / ricercatore che spiega o studia i Pokémon; [図鑑](term:term-v054-zukan) è il registro consultato o aggiornato. [どんな](term:term-v055-donna) chiede il tipo preciso di qualcosa, [ちゃんと](term:term-v056-chanto) segnala che l’azione va fatta come si deve, e [中](term:term-v057-naka) localizza dentro o in mezzo.
 
-Le espressioni come [気をつけて](term:term-e012-kiwo-tsukete) e [すごい！](term:term-e013-sugoi) regolano il parlato: possono essere un avviso, un incoraggiamento o una reazione breve. [〜てもいい](grammar:grammar-g014-si-puo-va-bene-fare) e [〜後で / 〜あとで](grammar:grammar-g015-dopo) servono invece a leggere permesso e sequenza: cosa è consentito fare e cosa viene dopo.
+[気をつけて](term:term-e012-kiwo-tsukete) è un avviso prima di muoversi o affrontare un rischio; [すごい！](term:term-e013-sugoi) è una reazione immediata a forza, risultato o sorpresa. [〜てもいい](grammar:grammar-g014-si-puo-va-bene-fare) concede permesso (`ここで {{休|やす}}んでも いい`), mentre [〜後で / 〜あとで](grammar:grammar-g015-dopo) ordina gli eventi (`バトルの {{後|あと}}で {{回復|かいふく}}する`).
 
 ## Esempi guidati
 
@@ -78,11 +77,11 @@ translation_it: >-
 
 :::example_sentence
 jp: >-
-  あとで {{行|い}}く。
+  バトルの {{後|あと}}で {{回復|かいふく}}する。
 translation_it: >-
-  Ci vado dopo.
+  Dopo la lotta mi rimetto in sesto.
 :::
 
 ## Nota finale
 
-Quando incontri questo blocco, leggi prima che cosa il testo sta nominando, poi se sta dando un permesso, un avviso o una sequenza temporale. È lì che la scena diventa immediata.
+Quando una frase contiene `{{効果|こうか}}`, `{{食材|しょくざい}}`, `{{図鑑|ずかん}}`, `ちゃんと`, `～てもいい` o `～{{後|あと}}で`, separa oggetto e funzione: risultato, ingrediente, registro, accuratezza richiesta, permesso o sequenza. Così il dialogo non resta una lista di parole scolastiche, ma diventa un’azione concreta.

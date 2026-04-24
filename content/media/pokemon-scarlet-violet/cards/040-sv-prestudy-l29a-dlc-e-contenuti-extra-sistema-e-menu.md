@@ -11,9 +11,10 @@ id: term-e088-arigatougozaimashita
 lemma: ありがとうございました
 reading: ありがとうございました
 romaji: arigatougozaimashita
-meaning_it: grazie mille
+meaning_it: grazie mille / formula di chiusura
 notes_it: >-
-  Chiusura di negozi e servizi
+  Formula cortese che chiude una vendita, una cura al Centro Pokémon o un
+  servizio. In dialogo segnala che l'interazione è terminata.
 :::
 :::card
 id: card-e088-arigatougozaimashita-recognition
@@ -22,11 +23,11 @@ entry_type: term
 entry_id: term-e088-arigatougozaimashita
 card_type: recognition
 front: "ありがとうございました"
-back: grazie mille
+back: grazie mille / formula di chiusura
 example_jp: >-
-  ありがとうございました。
+  ありがとうございました。また きてください。
 example_it: >-
-  Grazie mille.
+  Grazie mille. Torni presto.
 :::
 :::term
 id: term-e089-iiyone
@@ -35,7 +36,8 @@ reading: いいよね
 romaji: iiyone
 meaning_it: va bene così, no? / ci sta, no?
 notes_it: >-
-  Conferma colloquiale di assenso
+  Conferma colloquiale: il parlante propone una scelta quasi già decisa e
+  cerca un assenso leggero.
 :::
 :::card
 id: card-e089-iiyone-recognition
@@ -44,23 +46,22 @@ entry_type: term
 entry_id: term-e089-iiyone
 card_type: recognition
 front: "いいよね"
-back: va bene così, no? / ci sta, no?
+back: va bene così, no?
 example_jp: >-
-  これで いいよね。
+  この ルールで いいよね。
 example_it: >-
-  Così va bene, no?
+  Con questa regola va bene, no?
 :::
 :::grammar
 id: grammar-g095-tipo-e-cose-cosi-tra-gli-esempi
 pattern: ～とか
 title: Tipo... / per esempio...
-meaning_it: esempi non esaustivi, in tono colloquiale
+meaning_it: esempi non esaustivi, tipo... / cose come...
 aliases:
 - や / など
 notes_it: >-
-  Elenca esempi in modo non completo: "tipo...", "per esempio...", "e cose
-  cosi". Puo comparire sia con nomi sia con frasi, soprattutto nel parlato
-  rilassato.
+  Elenca esempi senza chiudere la lista: "tipo...", "per esempio...", "e cose
+  così". Può comparire con nomi o frasi, soprattutto nel parlato rilassato.
 :::
 :::card
 id: card-g095-tipo-e-cose-cosi-tra-gli-esempi-concept
@@ -69,31 +70,31 @@ entry_type: grammar
 entry_id: grammar-g095-tipo-e-cose-cosi-tra-gli-esempi
 card_type: concept
 front: "～とか"
-back: tipo... / per esempio...
+back: tipo... / cose come...
 example_jp: >-
-  ジムとか {{学校|がっこう}}とか。
+  キタカミとか ブルーベリー{{学園|がくえん}}とかに いきます。
 example_it: >-
-  Tipo la palestra, la scuola e cose così.
+  Vado a Kitakami, all'Istituto Mirtillo e posti del genere.
 :::
 :::term
 id: term-v476-kitakami
 lemma: キタカミ
 reading: キタカミ
 romaji: kitakami
-meaning_it: Kitakami
+meaning_it: Kitakami / Nordivia
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome giapponese di Nordivia. Sulla mappa e nei dialoghi del DLC segnala la
+  zona della Maschera Turchese, distinta da Paldea e dall'Istituto Mirtillo.
 :::
 :::term
 id: term-v477-buruuberiigakuen
 lemma: ブルーベリー学園
 reading: ブルーベリーがくえん
 romaji: buruuberiigakuen
-meaning_it: Blueberry Academy
+meaning_it: Istituto Mirtillo / Blueberry Academy
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome dell'accademia del Disco Indaco. Quando appare in menu o dialogo,
+  richiama scambio studentesco, Lega Mirtillo, Bioterarium e servizi interni.
 :::
 :::term
 id: term-v478-oogapon
@@ -102,8 +103,8 @@ reading: オーガポン
 romaji: oogapon
 meaning_it: Ogerpon
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome del Pokémon mascherato al centro della Maschera Turchese. Nei dialoghi
+  indica il personaggio specifico dell'evento, non una specie generica.
 :::
 :::term
 id: term-v479-kuria
@@ -112,8 +113,8 @@ reading: クリア
 romaji: kuria
 meaning_it: completato / clear
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Nei menu indica uno stato completato: missione, attività, sfida o sezione già
+  chiusa. Come prestito da "clear" mantiene il senso operativo di superato.
 :::
 :::card
 id: card-v479-kuria-recognition
@@ -124,9 +125,9 @@ card_type: recognition
 front: "クリア"
 back: completato / clear
 example_jp: >-
-  メニューで クリアを {{見|み}}ます。
+  ミッションを クリアしました。
 example_it: >-
-  Nel menu vedo la voce "completato".
+  Ho completato la missione.
 :::
 :::term
 id: term-v480-ruuru
@@ -135,8 +136,8 @@ reading: ルール
 romaji: ruuru
 meaning_it: regola
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Voce per condizioni di lotta, minigiochi, tornei e impostazioni. Introduce
+  ciò che è permesso, vietato o richiesto prima di iniziare.
 :::
 :::card
 id: card-v480-ruuru-recognition
@@ -147,19 +148,19 @@ card_type: recognition
 front: "ルール"
 back: regola
 example_jp: >-
-  バトルで ルールを {{使|つか}}います。
+  バトルの ルールを {{確認|かくにん}}します。
 example_it: >-
-  Uso la regola in battaglia.
+  Controllo le regole della lotta.
 :::
 :::term
 id: term-v481-biipii
 lemma: ＢＰ
 reading: びーぴー
 romaji: biipii
-meaning_it: BP / Blueberry Points
+meaning_it: BP / Punti Mirtillo
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Valuta dell'Istituto Mirtillo. Nei menu del DLC compare come saldo, costo,
+  ricompensa delle Ricreattività o contributo ai club.
 :::
 :::term
 id: term-v482-kakunin
@@ -168,7 +169,8 @@ reading: かくにん
 romaji: kakunin
 meaning_it: conferma / controllo
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  Sostantivo da schermata di controllo: confermare regole, dettagli di una
+  missione, ricompense, impostazioni o contenuto prima di proseguire.
 :::
 :::card
 id: card-v482-kakunin-recognition
@@ -179,18 +181,19 @@ card_type: recognition
 front: "{{確認|かくにん}}"
 back: conferma / controllo
 example_jp: >-
-  メニューで {{確認|かくにん}}を {{見|み}}ます。
+  ルールを {{確認|かくにん}}してから はじめます。
 example_it: >-
-  Guardo la conferma in menu.
+  Controllo le regole e poi inizio.
 :::
 :::term
 id: term-v483-omake
 lemma: おまけ
 reading: おまけ
 romaji: omake
-meaning_it: bonus / omaggio
+meaning_it: bonus / extra omaggio
 notes_it: >-
-  Piccola parola di negozio che indica un extra gratuito o un bonus aggiunto.
+  Piccola parola da shop o ricompense: indica un extra aggiunto al premio, al
+  prodotto o alla scelta principale.
 :::
 :::card
 id: card-v483-omake-recognition
@@ -199,11 +202,11 @@ entry_type: term
 entry_id: term-v483-omake
 card_type: recognition
 front: "おまけ"
-back: bonus / omaggio
+back: bonus / extra omaggio
 example_jp: >-
-  おまけが あります。
+  おまけに ピックが つきます。
 example_it: >-
-  C'è il bonus.
+  Come bonus viene incluso un pick.
 :::
 :::term
 id: term-v484-doukutsu
@@ -212,8 +215,8 @@ reading: どうくつ
 romaji: doukutsu
 meaning_it: grotta
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Nome di luogo naturale. In mappa, obiettivi o indicazioni segnala una grotta
+  da raggiungere, esplorare o usare come riferimento.
 :::
 :::card
 id: card-v484-doukutsu-recognition
@@ -224,29 +227,29 @@ card_type: recognition
 front: "{{洞|どう}}くつ"
 back: grotta
 example_jp: >-
-  この{{先|さき}}に {{洞|どう}}くつが あります。
+  マップに {{洞|どう}}くつの いりぐちが あります。
 example_it: >-
-  Più avanti c'è la grotta.
+  Sulla mappa c'è l'ingresso della grotta.
 :::
 :::term
 id: term-v486-terariumudoomu
 lemma: テラリウムドーム
 reading: テラリウムドーム
 romaji: terariumudoomu
-meaning_it: Terarium Dome
+meaning_it: Bioterarium / Terarium Dome
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Grande area artificiale dell'Istituto Mirtillo. Sulla mappa del DLC introduce
+  i settori ambientali in cui si esplorano Pokémon e missioni.
 :::
 :::term
 id: term-v487-shokudou
 lemma: 食堂
 reading: しょくどう
 romaji: shokudou
-meaning_it: mensa / tavola calda
+meaning_it: mensa / sala da pranzo
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Luogo scolastico o di ristoro. In Scarlet/Violet richiama mense, ristoranti
+  e punti in cui si mangia o si parla con personaggi.
 :::
 :::card
 id: card-v487-shokudou-recognition
@@ -255,21 +258,21 @@ entry_type: term
 entry_id: term-v487-shokudou
 card_type: recognition
 front: "{{食堂|しょくどう}}"
-back: mensa / tavola calda
+back: mensa / sala da pranzo
 example_jp: >-
-  {{学校|がっこう}}で {{食堂|しょくどう}}が だいじ です。
+  {{食堂|しょくどう}}で サンドウィッチを たべます。
 example_it: >-
-  A scuola la mensa è importante.
+  Mangio un panino alla mensa.
 :::
 :::term
 id: term-v488-koosutoeria
 lemma: コーストエリア
 reading: コーストエリア
 romaji: koosutoeria
-meaning_it: Coast Biome
+meaning_it: Settore Costa / Coast Area
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome di settore del Bioterarium. In mappa e missioni indica la zona costiera,
+  utile per capire dove cercare Pokémon, sfidanti o obiettivi.
 :::
 :::term
 id: term-v489-seikai
@@ -278,8 +281,8 @@ reading: せいかい
 romaji: seikai
 meaning_it: risposta corretta
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Nei quiz, nelle prove e nei dialoghi di risposta indica che la scelta è
+  corretta. Contrasta con risposte sbagliate o tentativi da rifare.
 :::
 :::card
 id: card-v489-seikai-recognition
@@ -290,48 +293,49 @@ card_type: recognition
 front: "{{正解|せいかい}}"
 back: risposta corretta
 example_jp: >-
-  メニューで {{正解|せいかい}}を {{見|み}}ます。
+  クイズで {{正解|せいかい}}を えらびます。
 example_it: >-
-  Guardo la risposta corretta in menu.
+  Nel quiz scelgo la risposta corretta.
 :::
 :::term
 id: term-v490-omodaka
 lemma: オモダカ
 reading: おもだか
 romaji: omodaka
-meaning_it: Geeta
+meaning_it: Alisma / Geeta
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Nome giapponese di Alisma, supercampionessa di Paldea. Nei dialoghi indica la
+  persona specifica legata alla Lega Pokémon, non un titolo generico.
 :::
 :::term
 id: term-v491-sabanaeria
 lemma: サバンナエリア
 reading: サバンナエリア
 romaji: sabanaeria
-meaning_it: Savanna Biome
+meaning_it: Settore Savana / Savanna Area
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome di settore del Bioterarium. Sulla mappa rimanda alla zona savana e alle
+  missioni o ricompense che chiedono di agire in quel settore.
 :::
 :::term
 id: term-v492-pooraeria
 lemma: ポーラエリア
 reading: ポーラエリア
 romaji: pooraeria
-meaning_it: Polar Biome
+meaning_it: Settore Ghiacciai / area polare
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome giapponese dell'area polare del Bioterarium, localizzata in italiano
+  come Settore Ghiacciai. Compare in mappa, missioni e indicazioni di zona.
 :::
 :::term
 id: term-v493-daisakusen
 lemma: 大作戦
 reading: だいさくせん
 romaji: daisakusen
-meaning_it: grande operazione
+meaning_it: grande operazione / grande piano
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Forma enfatica di 作戦: non solo "strategia", ma un piano dichiarato come
+  evento o operazione importante nella scena.
 :::
 :::card
 id: card-v493-daisakusen-recognition
@@ -340,21 +344,21 @@ entry_type: term
 entry_id: term-v493-daisakusen
 card_type: recognition
 front: "{{大作戦|だい.さく.せん}}"
-back: grande operazione
+back: grande operazione / grande piano
 example_jp: >-
-  これは {{大作戦|だい.さく.せん}} です。
+  オーガポンを さがす {{大作戦|だい.さく.せん}}が はじまります。
 example_it: >-
-  Questa è una grande operazione.
+  Comincia la grande operazione per cercare Ogerpon.
 :::
 :::term
 id: term-v494-pikku
 lemma: ピック
 reading: ピック
 romaji: pikku
-meaning_it: stuzzicadente / pick
+meaning_it: pick da panino / stuzzicadente decorativo
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Voce della personalizzazione dei panini. Indica il pick decorativo da
+  scegliere quando si prepara un sandwich.
 :::
 :::card
 id: card-v494-pikku-recognition
@@ -363,11 +367,11 @@ entry_type: term
 entry_id: term-v494-pikku
 card_type: recognition
 front: "ピック"
-back: stuzzicadente / pick
+back: pick da panino
 example_jp: >-
-  これは ピック です。
+  サンドウィッチの ピックを えらびます。
 example_it: >-
-  Questo è uno stuzzicadenti.
+  Scelgo il pick del panino.
 :::
 :::term
 id: term-v495-chousensha
@@ -376,8 +380,8 @@ reading: ちょうせんしゃ
 romaji: chousensha
 meaning_it: sfidante
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Lessico di sfida: indica la persona che affronta una prova, una lotta, un
+  torneo o un allenatore già registrato dal sistema.
 :::
 :::card
 id: card-v495-chousensha-recognition
@@ -388,19 +392,19 @@ card_type: recognition
 front: "{{挑戦者|ちょう.せん.しゃ}}"
 back: sfidante
 example_jp: >-
-  バトルで {{挑戦者|ちょう.せん.しゃ}}を {{使|つか}}います。
+  {{挑戦者|ちょう.せん.しゃ}}が バトルを はじめます。
 example_it: >-
-  Uso il sfidante in battaglia.
+  Lo sfidante inizia la lotta.
 :::
 :::term
 id: term-v496-burureku
 lemma: ブルレク
 reading: ブルレク
 romaji: burureku
-meaning_it: Blueberry Quest
+meaning_it: Ricreattività Mirtillo / Blueberry Quest
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Abbreviazione giapponese delle missioni dell'Istituto Mirtillo. Nei menu del
+  DLC apre l'elenco delle attività che danno Punti Mirtillo.
 :::
 :::term
 id: term-v497-sakusen
@@ -409,8 +413,8 @@ reading: さくせん
 romaji: sakusen
 meaning_it: strategia / operazione
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Piano o strategia. In battaglia può riferirsi alla linea d'azione; nella
+  storia può nominare un'operazione organizzata.
 :::
 :::card
 id: card-v497-sakusen-recognition
@@ -421,19 +425,19 @@ card_type: recognition
 front: "{{作戦|さくせん}}"
 back: strategia / operazione
 example_jp: >-
-  これは {{作戦|さくせん}} です。
+  バトルの {{作戦|さくせん}}を かえます。
 example_it: >-
-  Questa è una strategia.
+  Cambio la strategia di lotta.
 :::
 :::term
 id: term-v498-kyanioneria
 lemma: キャニオンエリア
 reading: キャニオンエリア
 romaji: kyanioneria
-meaning_it: Canyon Biome
+meaning_it: Settore Canyon / Canyon Area
 notes_it: >-
-  Termine soprattutto utile nei DLC: meglio consolidarlo dopo il lessico
-  base del gioco.
+  Nome di settore del Bioterarium. In mappa e obiettivi richiama la zona dei
+  canyon, spesso come luogo di cattura, sfida o ricerca.
 :::
 :::term
 id: term-v499-misshon
@@ -442,8 +446,8 @@ reading: ミッション
 romaji: misshon
 meaning_it: missione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Voce di obiettivo. Nei menu indica un compito da completare, spesso con stato
+  di avanzamento, ricompensa o condizione di clear.
 :::
 :::card
 id: card-v499-misshon-recognition
@@ -454,19 +458,19 @@ card_type: recognition
 front: "ミッション"
 back: missione
 example_jp: >-
-  メニューで ミッションを {{見|み}}ます。
+  ミッションを クリアして ＢＰを もらいます。
 example_it: >-
-  Nel menu guardo la missione.
+  Completo la missione e ricevo BP.
 :::
 :::term
 id: term-v500-hinto
 lemma: ヒント
 reading: ヒント
 romaji: hinto
-meaning_it: indizio
+meaning_it: indizio / suggerimento
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Voce che introduce un suggerimento operativo. Di solito compare quando il
+  gioco dà una pista per trovare un obiettivo, rispondere o riprovare.
 :::
 :::card
 id: card-v500-hinto-recognition
@@ -475,20 +479,21 @@ entry_type: term
 entry_id: term-v500-hinto
 card_type: recognition
 front: "ヒント"
-back: indizio
+back: indizio / suggerimento
 example_jp: >-
-  メニューで ヒントを {{見|み}}ます。
+  ヒントを {{確認|かくにん}}して もういちど さがします。
 example_it: >-
-  Guardo l'indizio in menu.
+  Controllo l'indizio e cerco di nuovo.
 :::
 :::term
 id: term-v501-daisuki
 lemma: 大好き
 reading: だいすき
 romaji: daisuki
-meaning_it: piacere moltissimo
+meaning_it: piacere moltissimo / adorare
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  Aggettivo/locuzione affettiva molto comune nei dialoghi. Esprime preferenza
+  forte per un Pokémon, un personaggio, un luogo o un'attività.
 :::
 :::card
 id: card-v501-daisuki-recognition
@@ -497,21 +502,21 @@ entry_type: term
 entry_id: term-v501-daisuki
 card_type: recognition
 front: "{{大好|だいす}}き"
-back: piacere moltissimo
+back: piacere moltissimo / adorare
 example_jp: >-
-  {{大好|だいす}}き です。
+  オーガポンが {{大好|だいす}}き です。
 example_it: >-
-  Piacere moltissimo.
+  Ogerpon mi piace tantissimo.
 :::
 :::term
 id: term-v502-kanban
 lemma: 看板
 reading: かんばん
 romaji: kanban
-meaning_it: insegna / cartello
+meaning_it: cartello / insegna
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Oggetto di scenario leggibile. Sulla mappa o nei villaggi segnala luoghi,
+  direzioni, spiegazioni o informazioni locali.
 :::
 :::card
 id: card-v502-kanban-recognition
@@ -520,21 +525,21 @@ entry_type: term
 entry_id: term-v502-kanban
 card_type: recognition
 front: "{{看板|かんばん}}"
-back: insegna / cartello
+back: cartello / insegna
 example_jp: >-
-  この{{先|さき}}に {{看板|かんばん}}が あります。
+  {{看板|かんばん}}に キタカミの マップが あります。
 example_it: >-
-  Più avanti c'è l'insegna.
+  Sul cartello c'è la mappa di Kitakami.
 :::
 :::term
 id: term-v504-uketsuke
 lemma: 受付
 reading: うけつけ
 romaji: uketsuke
-meaning_it: reception / sportello
+meaning_it: reception / banco accettazione
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Banco dove si accetta una prova, si parla con lo staff o si riceve una
+  spiegazione. Nei menu può introdurre iscrizioni, regolamenti e conferme.
 :::
 :::card
 id: card-v504-uketsuke-recognition
@@ -545,19 +550,19 @@ card_type: recognition
 front: "{{受付|うけつけ}}"
 back: reception / sportello
 example_jp: >-
-  これは {{受付|うけつけ}} です。
+  {{受付|うけつけ}}で ルールを {{確認|かくにん}}します。
 example_it: >-
-  Questo è lo sportello.
+  Alla reception controllo le regole.
 :::
 :::term
 id: term-v505-kansoku
 lemma: 観測
 reading: かんそく
 romaji: kansoku
-meaning_it: osservazione
+meaning_it: osservazione / rilevamento
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Lessico da ricerca e monitoraggio. Può descrivere dati raccolti su Pokémon,
+  ambiente, fenomeni o attività del Bioterarium.
 :::
 :::card
 id: card-v505-kansoku-recognition
@@ -566,21 +571,21 @@ entry_type: term
 entry_id: term-v505-kansoku
 card_type: recognition
 front: "{{観測|かんそく}}"
-back: osservazione
+back: osservazione / rilevamento
 example_jp: >-
-  これは {{観測|かんそく}} です。
+  {{観測|かんそく}}データを {{確認|かくにん}}します。
 example_it: >-
-  Questa è un'osservazione.
+  Controllo i dati di osservazione.
 :::
 :::term
 id: term-v506-kaishi
 lemma: 開始
 reading: かいし
 romaji: kaishi
-meaning_it: inizio / avvio
+meaning_it: avvio / inizio
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Sostantivo da comando o stato: avvia missioni, prove, lotte, funzioni o
+  procedure. Spesso appare su pulsanti e schermate di conferma.
 :::
 :::card
 id: card-v506-kaishi-recognition
@@ -589,11 +594,11 @@ entry_type: term
 entry_id: term-v506-kaishi
 card_type: recognition
 front: "{{開始|かいし}}"
-back: inizio / avvio
+back: avvio / inizio
 example_jp: >-
-  メニューで {{開始|かいし}}を {{見|み}}ます。
+  ミッションを {{開始|かいし}}します。
 example_it: >-
-  Guardo l'inizio in menu.
+  Avvio la missione.
 :::
 :::term
 id: term-v507-chishiki
@@ -602,7 +607,8 @@ reading: ちしき
 romaji: chishiki
 meaning_it: conoscenza
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  Conoscenza o informazione acquisita. Nei dialoghi scolastici e nelle
+  spiegazioni può riguardare Pokémon, regole, luoghi o fenomeni.
 :::
 :::card
 id: card-v507-chishiki-recognition
@@ -613,19 +619,19 @@ card_type: recognition
 front: "{{知識|ちしき}}"
 back: conoscenza
 example_jp: >-
-  {{知識|ちしき}} です。
+  ポケモンの {{知識|ちしき}}が ふえます。
 example_it: >-
-  Conoscenza.
+  Le conoscenze sui Pokémon aumentano.
 :::
 :::term
 id: term-v508-satsuei
 lemma: 撮影
 reading: さつえい
 romaji: satsuei
-meaning_it: ripresa / scatto fotografico
+meaning_it: scatto fotografico / ripresa
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Azione di fotografare o riprendere. Nelle missioni può richiedere uno scatto
+  di un Pokémon, di un luogo o di una situazione specifica.
 :::
 :::card
 id: card-v508-satsuei-recognition
@@ -634,9 +640,9 @@ entry_type: term
 entry_id: term-v508-satsuei
 card_type: recognition
 front: "{{撮影|さつえい}}"
-back: ripresa / scatto fotografico
+back: scatto fotografico / ripresa
 example_jp: >-
-  {{撮影|さつえい}}を {{見|み}}ます。
+  {{撮影|さつえい}}ミッションを {{開始|かいし}}します。
 example_it: >-
-  Guardo la ripresa.
+  Avvio la missione fotografica.
 :::

@@ -79,8 +79,9 @@ reading: けんきゅう
 romaji: kenkyuu
 meaning_it: ricerca
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  {{研究|けんきゅう}} indica studio sistematico o ricerca. Con をする diventa
+  "fare ricerca"; nei dialoghi accademici può riferirsi al lavoro dei
+  professori.
 :::
 :::card
 id: card-v177-kenkyuu-recognition
@@ -102,8 +103,8 @@ reading: ドラゴン
 romaji: doragon
 meaning_it: drago
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  ドラゴン è il tipo Drago. In ドラゴンタイプのわざ, specifica il tipo della mossa e
+  quindi il suo rapporto con debolezze e resistenze.
 :::
 :::card
 id: card-v178-doragon-recognition
@@ -114,9 +115,9 @@ card_type: recognition
 front: 'ドラゴン'
 back: drago
 example_jp: >-
-  ドラゴンタイプの ポケモンです。
+  ドラゴンタイプの わざを {{使|つか}}います。
 example_it: >-
-  È un Pokémon di tipo drago.
+  Uso una mossa di tipo Drago.
 :::
 :::term
 id: term-v179-iryoku
@@ -125,8 +126,8 @@ reading: いりょく
 romaji: iryoku
 meaning_it: potenza
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{威力|いりょく}} è la potenza di una mossa. Con が{{高|たか}}い, il testo dice che
+  la mossa colpisce forte.
 :::
 :::card
 id: card-v179-iryoku-recognition
@@ -148,7 +149,8 @@ reading: けっしょう
 romaji: kesshou
 meaning_it: cristallo
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  {{結晶|けっしょう}} è un cristallo. In Scarlet/Violet richiama i cristalli della
+  Teracristal e i punti visibili in mappa o in raid.
 :::
 :::card
 id: card-v181-kesshou-recognition
@@ -170,8 +172,7 @@ reading: どく
 romaji: doku
 meaning_it: veleno
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  どく è il tipo Veleno. In どくタイプのわざ, specifica il tipo della mossa.
 :::
 :::card
 id: card-v182-doku-recognition
@@ -182,9 +183,9 @@ card_type: recognition
 front: 'どく'
 back: veleno
 example_jp: >-
-  どくタイプの ポケモンです。
+  どくタイプの わざを {{使|つか}}います。
 example_it: >-
-  È un Pokémon di tipo veleno.
+  Uso una mossa di tipo Veleno.
 :::
 :::term
 id: term-v183-daiji
@@ -193,7 +194,9 @@ reading: だいじ
 romaji: daiji
 meaning_it: importante / prezioso
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{大事|だいじ}} descrive qualcosa di importante o prezioso. Prima di un nome,
+  come {{大事|だいじ}}な{{道具|どうぐ}}, qualifica l'oggetto come da non perdere o
+  da trattare con cura.
 :::
 :::card
 id: card-v183-daiji-recognition
@@ -204,9 +207,9 @@ card_type: recognition
 front: '{{大事|だいじ}}'
 back: importante / prezioso
 example_jp: >-
-  これは {{大事|だいじ}} です。
+  {{大事|だいじ}}な {{道具|どうぐ}}を {{持|も}}っています。
 example_it: >-
-  Questo è importante.
+  Ho con me uno strumento importante.
 :::
 :::term
 id: term-v184-nouryoku
@@ -215,8 +218,8 @@ reading: のうりょく
 romaji: nouryoku
 meaning_it: statistica / capacità
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{能力|のうりょく}} indica una capacità o statistica. Nei menu Pokémon può
+  riferirsi ai valori che descrivono forza, difesa o altri parametri.
 :::
 :::card
 id: card-v184-nouryoku-recognition
@@ -238,7 +241,8 @@ reading: なまえ
 romaji: namae
 meaning_it: nome
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{名前|なまえ}} è il nome di una persona, un Pokémon o un oggetto. Con を
+  {{書|か}}く / を{{決|き}}める marca l'azione di scriverlo o sceglierlo.
 :::
 :::card
 id: card-v185-namae-recognition
@@ -260,7 +264,8 @@ reading: れきし
 romaji: rekishi
 meaning_it: storia
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  {{歴史|れきし}} è la storia come materia o passato degli eventi. Con の
+  {{授業|じゅぎょう}} indica la lezione di storia dell'Accademia.
 :::
 :::card
 id: card-v186-rekishi-recognition
@@ -292,7 +297,8 @@ reading: かのう
 romaji: kanou
 meaning_it: possibile
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{可能|かのう}} indica che un'azione è possibile o permessa. Nelle schermate può
+  comparire come stato di disponibilità di una funzione.
 :::
 :::card
 id: card-v189-kanou-recognition
@@ -303,9 +309,9 @@ card_type: recognition
 front: '{{可能|かのう}}'
 back: possibile
 example_jp: >-
-  {{可能|かのう}} です。
+  ここから ライドが {{可能|かのう}}です。
 example_it: >-
-  È possibile.
+  Da qui la cavalcata è possibile.
 :::
 :::term
 id: term-v190-chousa
@@ -337,7 +343,8 @@ reading: もしかして
 romaji: moshikashite
 meaning_it: forse per caso
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  もしかして introduce un'ipotesi incerta: "forse per caso...?" Spesso precede
+  una domanda che il parlante non vuole affermare troppo direttamente.
 :::
 :::card
 id: card-v191-moshikashite-recognition
@@ -348,9 +355,9 @@ card_type: recognition
 front: 'もしかして'
 back: forse per caso
 example_jp: >-
-  もしかして そうですか。
+  もしかして、 あれは ヌシですか。
 example_it: >-
-  Forse è proprio così?
+  Per caso quello è il Titan?
 :::
 :::term
 id: term-v192-konkai
@@ -359,7 +366,8 @@ reading: こんかい
 romaji: konkai
 meaning_it: questa volta
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{今回|こんかい}} delimita la frase alla situazione attuale: "questa volta /
+  stavolta", in contrasto con altre occasioni.
 :::
 :::card
 id: card-v192-konkai-recognition
@@ -381,8 +389,8 @@ reading: せいちょう
 romaji: seichou
 meaning_it: crescita
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{成長|せいちょう}} indica crescita o sviluppo. Per un Pokémon può riferirsi
+  all'aumento di forza dopo esperienza e allenamento.
 :::
 :::card
 id: card-v193-seichou-recognition
@@ -404,7 +412,8 @@ reading: さいこう
 romaji: saikou
 meaning_it: il migliore / top
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{最高|さいこう}} esprime il livello massimo o una valutazione entusiasta:
+  "il migliore", "il massimo", "top".
 :::
 :::card
 id: card-v194-saikou-recognition
@@ -426,8 +435,8 @@ reading: さんか
 romaji: sanka
 meaning_it: partecipazione
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{参加|さんか}} è la partecipazione a un evento, torneo o attività. Con に
+  {{参加|さんか}}する, に marca l'evento a cui si prende parte.
 :::
 :::card
 id: card-v195-sanka-recognition

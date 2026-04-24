@@ -89,9 +89,9 @@ card_type: concept
 front: "～{{言|い}}う / ～って{{言|い}}う"
 back: dire / chiamarsi
 example_jp: >-
-  これは ジムって{{言|い}}う。
+  みんなは ジムって{{言|い}}う。
 example_it: >-
-  Questo si chiama palestra.
+  Tutti la chiamano palestra.
 :::
 :::grammar
 id: grammar-g061-troppo
@@ -164,8 +164,8 @@ reading: ダッシュ
 romaji: dasshu
 meaning_it: scatto
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  ダッシュ è lo scatto: nei tutorial di movimento indica accelerazione breve, non
+  il semplice camminare.
 :::
 :::card
 id: card-v294-dasshu-recognition
@@ -187,8 +187,8 @@ reading: きのう
 romaji: kinou
 meaning_it: funzione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  機能 è una funzione disponibile in una schermata o in un dispositivo. In menu
+  indica ciò che il sistema può fare.
 :::
 :::card
 id: card-v295-kinou-recognition
@@ -210,8 +210,8 @@ reading: あく
 romaji: aku
 meaning_it: buio
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  あく è il tipo Buio. In あくタイプ la parola prima di タイプ stabilisce la
+  categoria di battaglia.
 :::
 :::card
 id: card-v296-aku-recognition
@@ -222,9 +222,9 @@ card_type: recognition
 front: "あく"
 back: buio
 example_jp: >-
-  あくタイプの ポケモンです。
+  あくタイプの わざを {{受|う}}ける。
 example_it: >-
-  È un Pokémon di tipo buio.
+  Subisce una mossa di tipo Buio.
 :::
 :::term
 id: term-v297-taisen
@@ -233,8 +233,8 @@ reading: たいせん
 romaji: taisen
 meaning_it: lotta / match
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  対戦 indica un match contro un avversario. In menu e dialoghi distingue la lotta
+  competitiva o diretta da una battaglia generica contro l'ambiente.
 :::
 :::card
 id: card-v297-taisen-recognition
@@ -245,9 +245,9 @@ card_type: recognition
 front: "{{対戦|たいせん}}"
 back: lotta / match
 example_jp: >-
-  {{対戦|たいせん}}で つよい ポケモンです。
+  {{対戦|たいせん}}で {{強|つよ}}い ポケモンを {{選|えら}}ぶ。
 example_it: >-
-  È un Pokémon adatto alle lotte.
+  Scelgo un Pokémon forte per le lotte.
 :::
 :::term
 id: term-v298-deru
@@ -256,7 +256,8 @@ reading: でる
 romaji: deru
 meaning_it: uscire / comparire
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  出る copre "uscire" e "comparire": in ポケモンが出る il soggetto entra nella scena
+  o appare come incontro.
 :::
 :::card
 id: card-v298-deru-recognition
@@ -267,9 +268,9 @@ card_type: recognition
 front: "{{出|で}}る"
 back: uscire / comparire
 example_jp: >-
-  ここで {{出|で}}る。
+  {{珍|めずら}}しい ポケモンが {{出|で}}る。
 example_it: >-
-  Qui compare.
+  Compare un Pokémon raro.
 :::
 :::term
 id: term-v299-esupaa
@@ -278,8 +279,8 @@ reading: エスパー
 romaji: esupaa
 meaning_it: psico
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  エスパー è il tipo Psico. In nomi di tipo e mosse si legge come categoria
+  tecnica, non come persona con poteri psichici.
 :::
 :::card
 id: card-v299-esupaa-recognition
@@ -290,9 +291,9 @@ card_type: recognition
 front: "エスパー"
 back: psico
 example_jp: >-
-  エスパータイプの ポケモンです。
+  エスパータイプの {{相手|あいて}}と {{対戦|たいせん}}する。
 example_it: >-
-  È un Pokémon di tipo psico.
+  Affronto un avversario di tipo Psico.
 :::
 :::term
 id: term-v300-iru
@@ -301,7 +302,8 @@ reading: いる
 romaji: iru
 meaning_it: entrare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  入る indica entrare in un luogo, in un menu o in una modalità. Il soggetto passa
+  da fuori a dentro un contesto.
 :::
 :::card
 id: card-v300-iru-recognition
@@ -312,9 +314,9 @@ card_type: recognition
 front: "{{入|い}}る"
 back: entrare
 example_jp: >-
-  ここで {{入|い}}る。
+  ジムに {{入|い}}る。
 example_it: >-
-  Si entra qui.
+  Entro nella palestra.
 :::
 :::term
 id: term-v301-koukan-suru
@@ -323,7 +325,8 @@ reading: こうかんする
 romaji: koukan suru
 meaning_it: scambiare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  交換する è scambiare due elementi, spesso Pokémon o oggetti. In una UI implica
+  che ciò che scegli passa a qualcun altro o cambia posizione.
 :::
 :::card
 id: card-v301-koukan-suru-recognition
@@ -334,9 +337,9 @@ card_type: recognition
 front: "{{交換|こうかん}}する"
 back: scambiare
 example_jp: >-
-  ここで {{交換|こうかん}}する。
+  ポケモンを {{交換|こうかん}}する。
 example_it: >-
-  Qui si scambia.
+  Scambio un Pokémon.
 :::
 :::term
 id: term-v302-deai
@@ -345,7 +348,8 @@ reading: であい
 romaji: deai
 meaning_it: incontri
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  出会い è un incontro significativo o nuovo. In frasi narrative può segnalare
+  l'inizio di un rapporto o di una scena.
 :::
 :::card
 id: card-v302-deai-recognition
@@ -356,9 +360,9 @@ card_type: recognition
 front: "{{出会|であ}}い"
 back: incontri
 example_jp: >-
-  {{学校|がっこう}}で {{出会|であ}}いが だいじ です。
+  {{新|あたら}}しい {{出会|であ}}いが ある。
 example_it: >-
-  A scuola gli incontri sono importanti.
+  C'è un nuovo incontro.
 :::
 :::term
 id: term-v303-choushi
@@ -367,7 +371,8 @@ reading: ちょうし
 romaji: choushi
 meaning_it: condizione / forma
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  調子 è condizione o forma del momento. 調子がいい parla di come qualcuno sta o di
+  come sta andando una prestazione.
 :::
 :::card
 id: card-v303-choushi-recognition
@@ -389,7 +394,8 @@ reading: ひみつ
 romaji: himitsu
 meaning_it: segreto
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  秘密 è un'informazione tenuta nascosta. 秘密だよ marca complicità o riservatezza
+  in una battuta.
 :::
 :::card
 id: card-v304-himitsu-recognition
@@ -411,7 +417,8 @@ reading: せってい
 romaji: settei
 meaning_it: impostazioni
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  設定 indica impostazioni regolabili. Con 変更する o 見る rimanda a opzioni di
+  configurazione.
 :::
 :::card
 id: card-v305-settei-recognition
@@ -433,7 +440,8 @@ reading: わざましんましん
 romaji: waza mashinmashin
 meaning_it: macchina per creare MT
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  わざマシンマシン è il dispositivo per creare MT. La ripetizione di マシン distingue
+  la macchina dalle わざマシン prodotte.
 :::
 :::term
 id: term-v307-suugaku
@@ -442,8 +450,8 @@ reading: すうがく
 romaji: suugaku
 meaning_it: matematica
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  数学 è la materia scolastica matematica. Con 習う o 受ける indica una lezione,
+  non un calcolo isolato.
 :::
 :::card
 id: card-v307-suugaku-recognition
@@ -454,9 +462,9 @@ card_type: recognition
 front: "{{数学|すうがく}}"
 back: matematica
 example_jp: >-
-  {{学校|がっこう}}で {{数学|すうがく}}が だいじ です。
+  {{学校|がっこう}}で {{数学|すうがく}}を {{習|なら}}う。
 example_it: >-
-  A scuola la matematica è importante.
+  Studio matematica a scuola.
 :::
 :::term
 id: term-v309-keiken
@@ -465,7 +473,8 @@ reading: けいけん
 romaji: keiken
 meaning_it: esperienza
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  経験 è esperienza accumulata. In battaglia può aumentare come risultato, mentre
+  nei dialoghi può indicare ciò che una persona ha vissuto.
 :::
 :::card
 id: card-v309-keiken-recognition
@@ -476,9 +485,9 @@ card_type: recognition
 front: "{{経験|けいけん}}"
 back: esperienza
 example_jp: >-
-  {{学校|がっこう}}で {{経験|けいけん}}が だいじ です。
+  バトルで {{経験|けいけん}}が {{増|ふ}}える。
 example_it: >-
-  A scuola l'esperienza è importante.
+  L'esperienza aumenta in battaglia.
 :::
 :::term
 id: term-v310-kitai
@@ -487,7 +496,8 @@ reading: きたい
 romaji: kitai
 meaning_it: attesa / aspettativa
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  期待 è aspettativa verso qualcosa che deve ancora succedere. 期待している implica
+  attesa positiva o pressione.
 :::
 :::card
 id: card-v310-kitai-recognition
@@ -498,9 +508,9 @@ card_type: recognition
 front: "{{期待|きたい}}"
 back: attesa / aspettativa
 example_jp: >-
-  {{期待|きたい}}が あります。
+  {{期待|きたい}}しているよ。
 example_it: >-
-  Ho aspettative.
+  Ho delle aspettative.
 :::
 :::term
 id: term-v311-meichuuritsu
@@ -509,8 +519,8 @@ reading: めいちゅうりつ
 romaji: meichuuritsu
 meaning_it: precisione
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  命中率 è la percentuale di precisione di una mossa. 高い o 低い cambia la
+  probabilità che colpisca.
 :::
 :::card
 id: card-v311-meichuuritsu-recognition
@@ -532,8 +542,8 @@ reading: じめん
 romaji: jimen
 meaning_it: terra
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  じめん è il tipo Terra. In じめんタイプ indica la categoria di mosse o Pokémon
+  usata per compatibilità e debolezze.
 :::
 :::card
 id: card-v312-jimen-recognition
@@ -544,7 +554,7 @@ card_type: recognition
 front: "じめん"
 back: terra
 example_jp: >-
-  じめんタイプの ポケモンです。
+  じめんタイプの わざを {{使|つか}}う。
 example_it: >-
-  È un Pokémon di tipo terra.
+  Usa una mossa di tipo Terra.
 :::

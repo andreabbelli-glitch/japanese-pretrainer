@@ -17,22 +17,23 @@ summary: >-
 
 Capire come AppMedia divide una scheda personaggio in due blocchi diversi ma
 vicini. [バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}](term:term-bunny-charles-hyoka-seino)
-ti dice come il sito giudica il personaggio e quali dati di base mostra subito;
+indica come il sito giudica il personaggio e quali dati di base mostra subito;
 [バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}](term:term-bunny-charles-tsuyosa-tsukaimichi)
 spiega invece perché il personaggio rende bene e in quali contesti conviene
-usarlo. In mezzo, [{{攻撃種|こうげきしゅ}}](term:term-kougekishu) ti aiuta a
-leggere che categoria di danno stai guardando.
+usarlo. In mezzo, [{{攻撃種|こうげきしゅ}}](term:term-kougekishu) introduce la
+categoria del danno mostrata nella tabella dati.
 
 ## Contesto
 
 Questa pagina di AppMedia è una scheda personaggio completa per Star Savior. Il
 titolo principale parla anche di equipaggiamento e crescita del personaggio,
-ma il [{{目次|もくじ}}](term:term-mokuji) separa subito i blocchi che servono a
-orientarsi: [バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}](term:term-bunny-charles-hyoka-seino),
+ma il [{{目次|もくじ}}](term:term-mokuji) separa subito i blocchi che
+strutturano la pagina:
+[バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}](term:term-bunny-charles-hyoka-seino),
 バニーシャルルは{{強|つよ}}い？ e
 [バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}](term:term-bunny-charles-tsuyosa-tsukaimichi).
-Vedere l'ordine di queste etichette ti evita di confondere tabella dati, review
-degli utenti e spiegazione pratica del ruolo.
+Questo ordine separa tabella dati, review degli utenti e spiegazione pratica
+del ruolo.
 
 :::image
 src: assets/starsavior-79717421-overview.png
@@ -40,8 +41,8 @@ alt: >-
   Pagina AppMedia di Star Savior dedicata a Bunny Charles con titolo e immagine
   iniziale.
 caption: >-
-  Qui si riconosce subito la struttura della scheda: nome del personaggio,
-  titolo lungo della guida e apertura dell'articolo. [{{評価|ひょうか}}](term:term-hyoka),
+  L'apertura mostra nome del personaggio, titolo lungo della guida e immagine
+  iniziale. [{{評価|ひょうか}}](term:term-hyoka),
   [{{性能|せいのう}}](term:term-seino), [{{強|つよ}}さ](term:term-tsuyosa) e
   [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi) sono sezioni interne di una
   pagina più ampia, non l'unico titolo della schermata.
@@ -110,8 +111,7 @@ caption: >-
 La riga [{{攻撃種|こうげきしゅ}}](term:term-kougekishu) è un buon esempio di
 etichetta web compatta. Qui [{{攻撃種|こうげきしゅ}}](term:term-kougekishu) non
 è il nome di una skill, ma la categoria del danno; per questo il valore
-{{精神|せいしん}}ダメージ ti dice subito quale famiglia offensiva devi
-aspettarti.
+{{精神|せいしん}}ダメージ identifica subito la famiglia offensiva attesa.
 
 La sezione successiva cambia prospettiva e passa dai dati agli scenari.
 [バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}](term:term-bunny-charles-tsuyosa-tsukaimichi)
@@ -133,8 +133,9 @@ caption: >-
   dove conviene usarlo.
 :::
 
-Questa distinzione è utile perché [{{性能|せいのう}}](term:term-seino) da sola
-descrive ciò che il personaggio possiede, mentre
+La distinzione cambia il punto della pagina in cui cercare l'informazione:
+[{{性能|せいのう}}](term:term-seino) da sola descrive ciò che il personaggio
+possiede, mentre
 [{{強|つよ}}さ](term:term-tsuyosa) e
 [{{使|つか}}い{{道|みち}}](term:term-tsukaimichi) spiegano quando quel kit pesa
 davvero in battaglia.
@@ -143,23 +144,23 @@ davvero in battaglia.
 
 :::example_sentence
 jp: >-
-  バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}をよむ。
+  バニーシャルルの{{評価|ひょうか}}と{{性能|せいのう}}
 translation_it: >-
-  Leggo la sezione su valutazione e performance di Bunny Charles.
+  Valutazione e performance di Bunny Charles.
 :::
 
 :::example_sentence
 jp: >-
-  {{攻撃種|こうげきしゅ}}をみてから{{性能|せいのう}}をたしかめる。
+  {{攻撃種|こうげきしゅ}}：{{精神|せいしん}}ダメージ
 translation_it: >-
-  Guardo il tipo di attacco e poi verifico le caratteristiche del kit.
+  Tipo di attacco: danno mentale.
 :::
 
 :::example_sentence
 jp: >-
-  {{強|つよ}}さと{{使|つか}}い{{道|みち}}をわけてみる。
+  バニーシャルルの{{強|つよ}}さと{{使|つか}}い{{道|みち}}
 translation_it: >-
-  Guardo separatamente i punti di forza e gli use case.
+  Punti di forza e contesti d'uso di Bunny Charles.
 :::
 
 ## Nota finale

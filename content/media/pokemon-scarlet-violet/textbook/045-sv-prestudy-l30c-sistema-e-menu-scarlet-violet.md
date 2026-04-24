@@ -62,7 +62,7 @@ Le espressioni come [気が変わったら よろしくね](term:term-e099-kigak
 
 Sul piano grammaticale, pattern come [〜らしい](grammar:grammar-g102-pare-che-tipico-di) e [〜うちに](grammar:grammar-g103-mentre-finche) chiariscono stato, deduzione e sequenza. Sono utili perché fanno capire se la frase suona come supposizione, azione da fare in tempo o passaggio da chiudere prima che cambi la situazione.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [レンタルチーム](term:term-v623-rentaruchiimu)、 [指定の教室へ 向かってください](term:term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai). Quando compaiono, ti orientano subito: indicano un team, una consegna o una destinazione precisa.
+[レンタルチーム](term:term-v623-rentaruchiimu) e [指定の教室へ 向かってください](term:term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai) sono istruzioni più che semplici etichette. `レンタル` dice che il team non è tuo ma preso in prestito; `指定の教室へ` restringe la destinazione all'aula indicata, quindi il verbo [向かう](term:term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai) diventa un comando di spostamento concreto.
 
 ## Esempi guidati
 
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco conta soprattutto distinguere chi compare, quale azione è possibile e se la frase lascia aperta una scelta oppure dà un'indicazione precisa. Questo basta già a leggere molto più in fretta menu e dialoghi.
+Per leggere menu e dialoghi di questa sezione, separa tre segnali: chi compare ([同級生](term:term-v615-doukyuusei), [面接官](term:term-v625-mensetsukan)), quale azione è possibile ([しゃがむ](term:term-v617-shagamu), [保存](term:term-v619-hozon), [リセット](term:term-v630-risetto)) e se la frase apre una scelta con [〜しても いいし](term:term-e102-shitemo-iishi) oppure impone una destinazione precisa.

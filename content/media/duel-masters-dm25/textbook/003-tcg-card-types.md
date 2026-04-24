@@ -10,23 +10,19 @@ status: active
 tags: [core, card-types, vocabulary, tcg-language]
 prerequisites: [lesson-duel-masters-dm25-tcg-core-overview]
 summary: >-
-  Modulo ponte tra overview e rules text: come leggere i tipi di carta
-  particolari, distinguere tipo base e prefisso, e fissare il vocabolario che
-  evita più confusione.
+  Tipi di carta particolari: come separare tipo base, prefisso e forma speciale
+  per capire ingresso in campo, zona rilevante e stato della carta.
 ---
 
 # Obiettivo
 
-Questa sezione chiarisce una parte di Duel Masters che all'inizio
-sembra più complicata di quanto sia davvero: la riga del tipo carta.
-
-L'obiettivo non è memorizzare tutta la storia del gioco. L'obiettivo è saper
-guardare un type line un po' strano e capire subito tre cose:
+La riga del tipo carta condensa categoria, zona e comportamento in pochi
+caratteri. Davanti a un type line non familiare, controlla tre elementi:
 
 - qual è il tipo base della carta;
 - quale prefisso o forma speciale ne cambia il comportamento;
-- quale vocabolario ricompare con alta frequenza e ti fa capire più in fretta
-  che cosa fa la carta.
+- quale vocabolario ricorre nei rules text che descrivono ingresso, pila,
+  trasformazione o permanenza in campo.
 
 ## Contesto
 
@@ -44,8 +40,9 @@ dice solo "che categoria è questa carta". Molto spesso ti dice già:
   [シールドゾーン](term:term-shield-zone) o in un sistema separato;
 - se conta come un solo oggetto o come una carta con due nature.
 
-Per studiare bene il giapponese, questo è prezioso: impari a leggere la carta
-dal suo label più compatto, non solo dal paragrafo effetto.
+Quella riga spesso anticipa il rules text: `{{進化|しんか}}` richiama una base
+sotto la carta, `フィールド` sposta la lettura sul board state, e lo slash in
+`タマシード/クリーチャー` segnala due ruoli possibili.
 
 ## Termini chiave
 
@@ -71,7 +68,7 @@ dal suo label più compatto, non solo dal paragrafo effetto.
 
 ### 1. La riga del tipo si legge a strati
 
-Il modo più utile di leggere questi label è dividerli in due strati:
+Leggi questi label in due strati:
 
 1. il tipo base della carta;
 2. il prefisso o la forma speciale che ti dice come si comporta.
@@ -87,9 +84,9 @@ Esempi rapidi:
   [クリーチャー](term:term-creature) come corpo +
   `サイキック` come sistema di carta a due facce.
 
-Questo punto è molto più importante di quanto sembri. Se impari a separare
-"tipo base" e "prefisso", smetti di leggere la riga del tipo come un nome
-opaco e inizi a usarla come una mini-spiegazione di regole.
+Separare "tipo base" e "prefisso" evita una lettura opaca: in
+`{{進化|しんか}}クリーチャー`, `クリーチャー` dice che l'oggetto combatte come
+corpo, mentre `{{進化|しんか}}` aggiunge la condizione di ingresso sopra una base.
 
 ### 2. Famiglia evoluzione: stesso corpo, ingressi diversi
 
@@ -111,9 +108,9 @@ Sembrano tutti parenti, e in effetti lo sono, ma non dicono la stessa cosa:
 - [G{{-|じーねおくりーちゃー}}NEOクリーチャー](term:term-g-neo-creature) ti avvisa che la gestione della
   pila quando lascia il campo cambia ancora.
 
-Didatticamente il punto è questo: non memorizzare solo la traduzione di
-`{{進化|しんか}}`. Abituati a chiederti quale tipo di pila stai guardando e che
-succede quando quella pila entra o si smonta.
+La parola `{{進化|しんか}}` da sola non basta. Il prefisso specifica quale pila
+stai guardando, quale carta resta sotto e che cosa succede quando la pila entra,
+lascia il campo o viene trattata come base.
 
 ### 3. Carte con doppia natura: non un'etichetta, ma due letture possibili
 
@@ -139,9 +136,9 @@ devi capire se la frase sta parlando del lato creatura o del lato
 ### 4. Carte a due facce e sistemi esterni
 
 [サイキック・クリーチャー](term:term-psychic-creature) e
-[ドラグハート](term:term-dragheart) hanno un altro valore didattico forte:
-ti allenano a non dare per scontato che ogni carta nasca dalla
-[{{手札|てふだ}}](term:term-hand) e resti sempre la stessa.
+[ドラグハート](term:term-dragheart) indicano carte legate a zone o facce
+speciali. Il type line ti avvisa che la carta non nasce per forza dalla
+[{{手札|てふだ}}](term:term-hand) e non resta sempre nella stessa forma.
 
 [サイキック・クリーチャー](term:term-psychic-creature) segnala una carta a due
 facce che può ribaltarsi.
@@ -168,17 +165,17 @@ spostano subito l'attenzione fuori dal "corpo che attacca":
 - [D{{2|でぃーつー}}フィールド](term:term-d2-field)
 
 [クロスギア](term:term-crossgear) è un oggetto che entra nel campo e poi si
-`クロスする` a una [クリーチャー](term:term-creature). Ti serve quindi il
-vocabolario dell'aggancio, non quello della presenza autonoma.
+`クロスする` a una [クリーチャー](term:term-creature). Il vocabolario rilevante è
+quello dell'aggancio a un bersaglio, non quello della presenza autonoma.
 
-[{{城|しろ}}](term:term-castle) è molto utile anche linguisticamente: il kanji è
-facile da ricordare, ma in Duel Masters non indica "un edificio" in senso
-vago. Ti manda direttamente alla zona scudi e alla logica di
-`{{要塞化|よう.さい.か}}`.
+[{{城|しろ}}](term:term-castle) non indica "un edificio" in senso vago. Nel type
+line di Duel Masters rimanda alla zona scudi e alla logica di
+`{{要塞化|よう.さい.か}}`, quindi la collocazione va letta insieme a dove la carta
+viene messa.
 
-[D{{2|でぃーつー}}フィールド](term:term-d2-field) ti insegna a leggere `フィールド` come pezzo
-di board state e `D2` come regola di famiglia. Se resti solo sulla traduzione
-"field", perdi la parte utile.
+[D{{2|でぃーつー}}フィールド](term:term-d2-field) combina `フィールド` come pezzo di
+board state e `D2` come regola di famiglia. La traduzione "field" non basta:
+quando entra un altro D2 Field, il testo può cambiare subito lo stato del campo.
 
 ### 6. Metodo rapido quando incontri un type line strano
 
@@ -193,8 +190,9 @@ Quando vedi un tipo di carta che non conosci, prova sempre questo ordine:
    possibili;
 5. solo dopo passa al rules text.
 
-Questo ti aiuta a studiare giapponese meglio perché riduce il rumore. Non stai
-più cercando di capire tutto insieme: stai prima classificando l'oggetto.
+Questo ordine separa la classificazione dell'oggetto dal rules text: prima
+capisci se la carta è corpo, spell, pila, field o faccia speciale; poi leggi
+condizione, bersaglio e risultato dell'effetto.
 
 ## Esempi guidati
 
@@ -209,8 +207,9 @@ translation_it: >-
 
 - Il punto chiave nel label è
   [スター{{進化|しんか}}クリーチャー](term:term-star-evolution-creature).
-- La parte importante non è solo `{{進化|しんか}}`, ma il fatto che il label ti
-  sta già descrivendo come entra la carta.
+- `{{進化|しんか}}` non è solo una traduzione: con
+  `クリーチャー{{1体|いったい}}の{{上|うえ}}に{{置|お}}く` descrive il bersaglio
+  della base e il risultato di ingresso.
 
 **Esempio 2**
 
@@ -224,9 +223,10 @@ translation_it: >-
 
 - Qui il cuore della frase è che il
   [タマシード](term:term-tamaseed) viene trattato come base valida.
-- È il modo più semplice per sentire perché
-  [タマシード/クリーチャー](term:term-tamaseed-creature) è il lessico collegato
-  ricompaiono quando una carta fa da base a un'evoluzione.
+- La forma `クリーチャーであるかのように` dice che il Tamaseed viene trattato
+  come se fosse una creatura; per questo
+  [タマシード/クリーチャー](term:term-tamaseed-creature) ricompare quando una carta
+  può fare da base a un'evoluzione.
 
 **Esempio 3**
 
@@ -269,7 +269,7 @@ translation_it: >-
 
 ## Nota finale
 
-Non serve memorizzare tutta la tassonomia di Duel Masters in una volta.
-Conviene invece fissare bene i label che cambiano davvero il modo in cui leggi
-la carta. Se sai distinguere "tipo base" e "prefisso speciale", il rules text
-successivo diventa molto meno opaco.
+Non leggere il type line come nome proprio lungo. Cerca prima il tipo base
+(`クリーチャー`, `{{呪文|じゅもん}}`, `フィールド`), poi il prefisso speciale
+(`{{進化|しんか}}`, `NEO`, `D2`, `ドラグハート`): il rules text successivo specifica
+condizione, timing e risultato su quella base.

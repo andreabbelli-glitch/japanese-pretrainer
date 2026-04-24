@@ -91,4 +91,4 @@ translation_it: >-
 
 ## Nota finale
 
-In questo blocco conviene leggere prima il verbo o la struttura che muove la scena: scelta, conseguenza, limite o stato. Sono loro che chiariscono subito come interpretare la schermata.
+Leggi prima il verbo o la struttura che muove la scena: 次第 assegna la scelta, と lega azione e risultato, しか〜ない restringe le possibilità, 受け身 sposta il fuoco su chi subisce.

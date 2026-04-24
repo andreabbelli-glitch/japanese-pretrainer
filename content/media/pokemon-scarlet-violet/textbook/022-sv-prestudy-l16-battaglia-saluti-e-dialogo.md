@@ -79,4 +79,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri questo blocco, leggi prima che cosa il testo sta facendo: scambiare, attaccare, salutare, ringraziare o chiedere permesso. La differenza tra queste mosse rende subito più chiara la scena.
+Quando incontri queste forme, leggi prima l'atto della battuta: 交換 scambia, 攻撃 attacca, 〜させて chiede permesso, おめでとう si congratula e ようこそ accoglie qualcuno in un luogo.

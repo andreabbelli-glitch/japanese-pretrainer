@@ -115,7 +115,7 @@ caption: >-
 :::
 
 Con Nemona il registro cambia subito. Le sue battute sono veloci, emotive e
-molto orientate all'azione. La parola che devi fissare è
+molto orientate all'azione. Il termine centrale è
 [{{勝負|しょうぶ}}](term:term-shoubu): quando ti dice `{{勝負|しょうぶ}}しよう` o
 `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`, non sta parlando della battaglia
 come sistema astratto ma del match che sta per partire davvero. Anche
@@ -126,10 +126,10 @@ il tutorial può iniziare.
 La scena della scelta dello starter usa un giapponese più semplice di quanto
 sembri. Nemona presenta i tre Pokemon con frasi corte basate su tipo ed effetto,
 mentre Clavell usa una formula come `{{気|き}}に {{入|い}}った みたいですね`.
-Qui [～みたい](grammar:grammar-mitai) non vuol dire solo "sembra" in astratto: ti
-fa leggere la reazione del Pokemon come impressione condivisa dai personaggi. In
-pratica, ti aiuta a capire che la scena di scelta è stata accettata dal gioco e
-che quel Pokemon è ormai il tuo partner iniziale.
+Qui [～みたい](grammar:grammar-mitai) non vuol dire solo "sembra" in astratto:
+trasforma la reazione del Pokemon in un'impressione condivisa dai personaggi. In
+pratica, la scena conferma che la scelta è stata accettata dal gioco e che quel
+Pokemon è ormai il tuo partner iniziale.
 
 In questa stessa sezione entrano bene anche alcune parole di relazione e
 valutazione. Nemona ti legge subito come
@@ -169,18 +169,18 @@ vale più di una semplice battuta caratteriale. Il verbo
 battaglia: mandare un Pokemon in campo o lanciare qualcosa in modo deciso. La
 forma [～てしまう](grammar:grammar-te-shimau), qui contratta in `～ちゃう`,
 aggiunge l'idea che stava quasi partendo per abitudine con il team sbagliato.
-Capire questa frase ti aiuta a seguire sia il significato narrativo sia la
-meccanica del tutorial: Nemona si sta autocontenendo per combattere davvero al
-tuo livello.
+Questa frase lega significato narrativo e meccanica del tutorial: Nemona si sta
+autocontenendo per combattere davvero al tuo livello, invece di mandare subito in
+campo il suo team abituale.
 
 Dopo la lotta, il gioco passa dalla spiegazione del match alla spiegazione del
 sistema. Nemona prende il tuo telefono, installa la
 [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) e dice che i Pokemon catturati
 vengono [{{登録|とうろく}}](term:term-touroku) automaticamente. Qui il termine
 chiave non è solo l'app, ma il verbo di sistema:
-[{{登録|とうろく}}](term:term-touroku) ti fa capire che la cattura produrrà una
-registrazione ufficiale nel Pokedex senza passaggi manuali. Anche il pattern
-[～たばかり](grammar:grammar-ta-bakari) si incastra bene in questo blocco:
+[{{登録|とうろく}}](term:term-touroku) dice che la cattura produrrà una
+registrazione ufficiale nel Pokedex senza passaggi manuali. Anche
+[～たばかり](grammar:grammar-ta-bakari) chiarisce il punto di partenza:
 Nemona ti tratta come qualcuno che ha appena iniziato e per questo calibra
 spiegazioni e complimenti sul livello zero del protagonista.
 

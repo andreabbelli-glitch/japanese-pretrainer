@@ -100,7 +100,8 @@ pattern: ～だろう / でしょう
 title: Probabilmente / suppongo
 meaning_it: probabilmente / suppongo
 notes_it: >-
-  Formazione: phrase + だろう/でしょう. Supposizioni e tono assertivo.
+  Dopo una frase, だろう / でしょう segnala supposizione: il parlante presenta
+  qualcosa come probabile, non come fatto già verificato.
 :::
 :::card
 id: card-g041-probabilmente-suppongo-concept
@@ -123,8 +124,8 @@ meaning_it: 'domanda spiegativa / sorpresa: “davvero…? / è così che…?”
 aliases:
 - 〜のだ / 〜んだ
 notes_it: >-
-  Formazione: plain + のか. Chiarisce domande e auto-spiegazioni molto frequenti
-  nei dialoghi dei personaggi.
+  Dopo una forma piana, のか trasforma la frase in domanda esplicativa o
+  sorpresa: il parlante sta cercando di capire "è così che stanno le cose?".
 :::
 :::card
 id: card-g042-domanda-spiegativa-sorpresa-davvero-e-co-concept
@@ -146,8 +147,8 @@ reading: てんにゅうせい
 romaji: tenyuusei
 meaning_it: studente trasferito
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  {{転入生|てん.にゅう.せい}} è lo studente che entra in una scuola dopo un
+  trasferimento. In classe identifica subito il nuovo arrivato.
 :::
 :::card
 id: card-v210-tenyuusei-recognition
@@ -169,7 +170,8 @@ reading: たかい
 romaji: takai
 meaning_it: alto
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  {{高|たか}}い descrive altezza, prezzo o livello elevato. Con {{山|やま}} indica
+  altezza fisica; con statistiche indica un valore alto.
 :::
 :::card
 id: card-v211-takai-recognition
@@ -191,7 +193,8 @@ reading: さいきん
 romaji: saikin
 meaning_it: ultimamente
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{最近|さいきん}} restringe la frase al periodo recente: "ultimamente / di
+  recente", spesso in apertura di dialogo.
 :::
 :::card
 id: card-v212-saikin-recognition
@@ -213,7 +216,8 @@ reading: ぜったい
 romaji: zettai
 meaning_it: assolutamente
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{絶対|ぜったい}} rafforza l'impegno o la certezza: "assolutamente". Davanti a
+  un verbo rende la scelta molto decisa.
 :::
 :::card
 id: card-v213-zettai-recognition
@@ -235,8 +239,8 @@ reading: せいぶつ
 romaji: seibutsu
 meaning_it: biologia / esseri viventi
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  {{生物|せいぶつ}} indica gli esseri viventi e, come materia scolastica, biologia.
+  Con の{{授業|じゅぎょう}} diventa "lezione di biologia".
 :::
 :::card
 id: card-v214-seibutsu-recognition
@@ -258,8 +262,8 @@ reading: せつめい
 romaji: setsumei
 meaning_it: spiegazione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  {{説明|せつめい}} è una spiegazione. Nei menu e nei tutorial nomina il testo che
+  chiarisce effetto, regola o funzione.
 :::
 :::card
 id: card-v215-setsumei-recognition
@@ -281,8 +285,8 @@ reading: ごうかく
 romaji: goukaku
 meaning_it: promozione / superamento
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  {{合格|ごうかく}} indica il superamento di un test o esame. Con に
+  {{合格|ごうかく}}する, に marca la prova superata.
 :::
 :::card
 id: card-v216-goukaku-recognition
@@ -304,7 +308,8 @@ reading: もんだい
 romaji: mondai
 meaning_it: problema
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  {{問題|もんだい}} può essere una domanda di test o un problema da risolvere. In
+  classe il contesto decide se leggerlo come quesito o difficoltà.
 :::
 :::card
 id: card-v217-mondai-recognition
@@ -326,8 +331,8 @@ reading: みらい
 romaji: mirai
 meaning_it: futuro
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  {{未来|みらい}} è il futuro. In dialoghi di storia può indicare il tempo futuro
+  o il tema narrativo legato a ciò che deve ancora accadere.
 :::
 :::card
 id: card-v218-mirai-recognition
@@ -349,8 +354,8 @@ reading: ほんき
 romaji: honki
 meaning_it: serietà / al massimo
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{本気|ほんき}} indica serietà piena, "fare sul serio". La collocazione naturale
+  è {{本気|ほんき}}を{{出|だ}}す, mettere fuori il proprio massimo.
 :::
 :::card
 id: card-v219-honki-recognition
@@ -361,7 +366,7 @@ card_type: recognition
 front: '{{本気|ほんき}}'
 back: serietà / al massimo
 example_jp: >-
-  バトルで {{本気|ほんき}}を {{使|つか}}います。
+  バトルで {{本気|ほんき}}を {{出|だ}}します。
 example_it: >-
   In battaglia do il massimo.
 :::
@@ -372,7 +377,8 @@ reading: いちど
 romaji: ichido
 meaning_it: una volta
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  {{一度|いちど}} indica una singola volta o occasione. Con だけ restringe
+  esplicitamente l'azione a una sola prova.
 :::
 :::card
 id: card-v220-ichido-recognition
@@ -383,9 +389,9 @@ card_type: recognition
 front: '{{一度|いちど}}'
 back: una volta
 example_jp: >-
-  {{一度|いちど}} です。
+  {{一度|いちど}}だけ {{見|み}}ます。
 example_it: >-
-  Una sola volta.
+  Guardo solo una volta.
 :::
 :::term
 id: term-v221-kizu-gusuri
@@ -394,7 +400,8 @@ reading: きずぐすり
 romaji: kizu gusuri
 meaning_it: pozione
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  キズぐすり è la pozione base: キズ richiama la ferita e ぐすり è "medicina".
+  Serve a recuperare HP.
 :::
 :::card
 id: card-v221-kizu-gusuri-recognition
@@ -405,9 +412,9 @@ card_type: recognition
 front: 'キズぐすり'
 back: pozione
 example_jp: >-
-  メニューで キズぐすりを {{見|み}}ます。
+  キズぐすりで ＨＰを {{回復|かいふく}}します。
 example_it: >-
-  Controllo la pozione nel menu.
+  Recupero HP con una Pozione.
 :::
 :::term
 id: term-v223-bougyo
@@ -416,8 +423,8 @@ reading: ぼうぎょ
 romaji: bougyo
 meaning_it: difesa
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  {{防御|ぼうぎょ}} è la difesa fisica o l'azione di difendersi. Nei menu va
+  distinta da 特防, la Difesa Speciale.
 :::
 :::card
 id: card-v223-bougyo-recognition
@@ -428,7 +435,7 @@ card_type: recognition
 front: '{{防御|ぼうぎょ}}'
 back: difesa
 example_jp: >-
-  バトルで {{防御|ぼうぎょ}}が だいじ です。
+  {{防御|ぼうぎょ}}が {{高|たか}}い ポケモンです。
 example_it: >-
-  In battaglia la difesa è importante.
+  È un Pokémon con Difesa alta.
 :::

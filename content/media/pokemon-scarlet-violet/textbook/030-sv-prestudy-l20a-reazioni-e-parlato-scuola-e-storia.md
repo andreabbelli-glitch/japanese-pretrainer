@@ -24,7 +24,7 @@ Leggere il giapponese che compare in reazioni, parlato, scuola e storia. Qui le 
 
 ## Contesto
 
-In Scarlet / Violet queste voci servono a leggere menu, dialoghi e briefing senza dover tradurre tutto parola per parola. I nomi propri e le etichette molto specifiche restano nel testo come contesto; le parole riusabili entrano nelle flashcard attive.
+In Scarlet / Violet queste voci compaiono quando un menu chiude un'azione, rimuove un effetto, mostra uno stato o quando un personaggio commenta scuola e ricerca. Le parole riusabili aprono il senso della frase; i nomi specifici come 秘伝 fissano invece un riferimento del mondo di gioco.
 
 ## Termini chiave
 
@@ -62,7 +62,7 @@ Le espressioni come [それって](term:term-e054-sorette) e [またね](term:te
 
 Sul piano grammaticale, pattern come [〜間 / 〜間に](grammar:grammar-g054-durante-mentre), [〜かなあ](grammar:grammar-g055-mi-chiedo-proprio), [〜かしら](grammar:grammar-g057-mi-chiedo-chissa) e [〜だっけ](grammar:grammar-g058-comera-gia-dovera) aiutano a leggere durata, dubbio leggero o ricordo incerto. Non servono solo a “sapere la regola”: dicono se il personaggio sta descrivendo una situazione, pensando ad alta voce o cercando un dettaglio.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [秘伝](term:term-v279-hiden). Qui la cosa utile non è analizzarle come lessico generale, ma riconoscerle subito come riferimenti molto specifici del mondo di gioco.
+[秘伝](term:term-v279-hiden) letteralmente richiama qualcosa di “segreto” o tramandato; in Scarlet/Violet funziona anche come nome breve legato a ingredienti speciali. Se lo trovi in una battuta o in una descrizione, il punto non è un generico “segreto”, ma un riferimento preciso alla ricerca e ai suoi oggetti chiave.
 
 ## Esempi guidati
 
@@ -96,4 +96,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri queste schermate o battute, controlla subito se il testo ti sta segnalando uno stato, una chiusura, una rimozione di effetto o una reazione breve. In questo blocco la comprensione passa soprattutto da quei segnali.
+Quando incontri queste schermate o battute, separa stato, chiusura e reazione: やけど indica condizione, 終了 chiude, 解除 rimuove, それって e ってことは riprendono ciò che è appena stato detto.

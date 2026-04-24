@@ -20,11 +20,11 @@ summary: 'Lessico ed espressioni per reazioni e parlato, Scarlet/Violet: 17 cart
 ---
 # Obiettivo
 
-Capire il giapponese che compare in reazioni e parlato in Scarlet/Violet: parole operative, formule di dialogo e strutture che ti fanno leggere subito cosa sta succedendo sullo schermo.
+Capire il giapponese che compare in reazioni e parlato in Scarlet/Violet: parole operative, formule di dialogo e strutture che indicano ricezione, scelta, cautela e richiesta personale.
 
 ## Contesto
 
-In questo blocco compaiono parole che segnalano subito tipo, avvertimento, ricezione, scelta e richiesta personale. Accanto a queste ci sono anche riferimenti di città o di sistema che basta riconoscere quando appaiono.
+Le forme qui distinguono tipo, avvertimento, ricezione, scelta e richiesta personale: フェアリー e はがね classificano battaglie, 注意 avverte, 受けとりました conferma ricezione, 選んでください chiede una scelta. テーブルシティ funziona come destinazione o luogo citato.
 
 ## Termini chiave
 
@@ -60,7 +60,7 @@ Le espressioni come [〜を 受けとりました！](term:term-e046-o-uketorima
 
 Sul piano grammaticale, [〜てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) esprime che il parlante vuole che qualcuno faccia qualcosa; [〜だな](grammar:grammar-g056-finale-maschile-riflessiva-osservativa) chiude la frase con una constatazione o un commento colloquiale. Quando compaiono, il punto non è la regola in astratto ma il tono della frase: richiesta personale da una parte, riflessione o nota finale dall'altra.
 
-Accanto a questo nucleo restano alcune etichette contestuali, per esempio [テーブルシティ](term:term-v272-teeburushitei). Qui la cosa utile non è analizzarle come lessico generale, ma riconoscerle subito come riferimenti di luogo o di funzione.
+[テーブルシティ](term:term-v272-teeburushitei) è un toponimo: テーブルシティ non va letto come descrizione di un tavolo, ma come nome della città centrale di Paldea. In una riga di destinazione o in un dialogo, segnala il luogo verso cui andare o di cui si sta parlando.
 
 ## Esempi guidati
 
@@ -94,4 +94,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri queste schermate o battute, controlla subito se il testo ti sta consegnando qualcosa, chiedendo una scelta, invitandoti a provare o formulando una richiesta personale. In questo blocco la comprensione passa soprattutto da quei segnali.
+Quando incontri queste schermate o battute, cerca il verbo: 受けとりました consegna qualcosa, 選んでください richiede una scelta, してみて invita a provare, てほしい formula una richiesta personale.

@@ -102,8 +102,8 @@ meaning_it: non è che… / non significa che…
 aliases:
 - 〜わけではない
 notes_it: >-
-  Formazione: frase piana + わけじゃない. Utile per capire sfumature, smentite e mezze
-  ammissioni dei personaggi.
+  Si aggancia a una frase piana e nega una conclusione troppo forte. In dialogo
+  funziona per correggere, attenuare o fare una mezza ammissione.
 :::
 :::card
 id: card-g110-non-e-che-non-significa-che-concept
@@ -147,7 +147,8 @@ reading: ひきかえす
 romaji: hikikaesu
 meaning_it: tornare indietro
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Indica tornare sui propri passi. Nei percorsi segnala che il gioco consiglia o
+  impone di rientrare invece di avanzare.
 :::
 :::card
 id: card-v661-hikikaesu-recognition
@@ -169,8 +170,8 @@ reading: でんとうぎょうじ
 romaji: dentougyouji
 meaning_it: evento / tradizione della scuola
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica una cerimonia o attività tramandata dalla scuola. In accademia dà peso
+  istituzionale a un evento, invece di presentarlo come giornata casuale.
 :::
 :::card
 id: card-v662-dentougyouji-recognition
@@ -181,9 +182,9 @@ card_type: recognition
 front: "{{伝統行事|でん.とう.ぎょう.じ}}"
 back: evento / tradizione della scuola
 example_jp: >-
-  ここは {{伝統行事|でん.とう.ぎょう.じ}} です。
+  {{宝|たから}}{{探|さが}}しは アカデミーの {{伝統行事|でん.とう.ぎょう.じ}}です。
 example_it: >-
-  Qui c'è una tradizione scolastica.
+  Il Treasure Hunt è una tradizione dell'Accademia.
 :::
 :::term
 id: term-v663-kagaikatsudou
@@ -192,8 +193,8 @@ reading: かがいかつどう
 romaji: kagaikatsudou
 meaning_it: attività extrascolastica
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica un'attività fuori dalla lezione ordinaria. In Scarlet / Violet può
+  coincidere con uscire nel mondo, non solo con un club scolastico.
 :::
 :::card
 id: card-v663-kagaikatsudou-recognition
@@ -204,9 +205,9 @@ card_type: recognition
 front: "{{課外活動|か.がい.かつ.どう}}"
 back: attività extrascolastica
 example_jp: >-
-  {{学校|がっこう}}で {{課外活動|か.がい.かつ.どう}}が だいじ です。
+  {{課外活動|か.がい.かつ.どう}}で パルデアを {{旅|たび}}します。
 example_it: >-
-  Le attività extrascolastiche sono importanti a scuola.
+  Viaggio per Paldea durante l'attività extrascolastica.
 :::
 :::term
 id: term-v664-matomeuri
@@ -215,8 +216,8 @@ reading: まとめうり
 romaji: matomeuri
 meaning_it: vendita in blocco
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica vendere più oggetti insieme. Nei negozi sposta l'azione dal singolo
+  oggetto a un gruppo selezionato.
 :::
 :::card
 id: card-v664-matomeuri-recognition
@@ -227,9 +228,9 @@ card_type: recognition
 front: "まとめ{{売|う}}り"
 back: vendita in blocco
 example_jp: >-
-  メニューで まとめ{{売|う}}りを {{見|み}}ます。
+  どうぐを まとめ{{売|う}}りします。
 example_it: >-
-  Nel menu c'è la vendita in blocco.
+  Vendo gli strumenti in blocco.
 :::
 :::term
 id: term-v665-zensentaku
@@ -238,8 +239,8 @@ reading: ぜんせんたく
 romaji: zensentaku
 meaning_it: seleziona tutto
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica selezionare tutte le voci disponibili. In un elenco cambia lo scope
+  dell'azione: non un elemento, ma l'intera lista.
 :::
 :::card
 id: card-v665-zensentaku-recognition
@@ -250,9 +251,9 @@ card_type: recognition
 front: "{{全選択|ぜん.せん.たく}}"
 back: seleziona tutto
 example_jp: >-
-  メニューで {{全選択|ぜん.せん.たく}}を {{見|み}}ます。
+  リストの {{道具|どうぐ}}を {{全選択|ぜん.せん.たく}}します。
 example_it: >-
-  Nel menu c'è "seleziona tutto".
+  Seleziono tutti gli strumenti della lista.
 :::
 :::term
 id: term-v666-shouhai
@@ -261,8 +262,8 @@ reading: しょうはい
 romaji: shouhai
 meaning_it: esito della sfida
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Indica l'esito complessivo di una sfida: vittoria o sconfitta. Non descrive
+  il danno di un turno, ma il risultato finale.
 :::
 :::card
 id: card-v666-shouhai-recognition
@@ -273,9 +274,9 @@ card_type: recognition
 front: "{{勝敗|しょうはい}}"
 back: esito della sfida
 example_jp: >-
-  バトルで {{勝敗|しょうはい}}を {{使|つか}}います。
+  バトルの {{勝敗|しょうはい}}は まだ わかりません。
 example_it: >-
-  In battaglia conta l'esito della sfida.
+  L'esito della lotta non è ancora chiaro.
 :::
 :::term
 id: term-v667-fuuki
@@ -284,7 +285,8 @@ reading: ふうき
 romaji: fuuki
 meaning_it: disciplina scolastica
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Indica disciplina e ordine scolastico. Nei dialoghi dell'accademia si lega a
+  regole, comportamento degli studenti e controllo degli spazi comuni.
 :::
 :::card
 id: card-v667-fuuki-recognition
@@ -295,9 +297,9 @@ card_type: recognition
 front: "{{風紀|ふうき}}"
 back: disciplina scolastica
 example_jp: >-
-  これは {{風紀|ふうき}} です。
+  {{風紀|ふうき}}を {{守|まも}}るために {{校則|こうそく}}があります。
 example_it: >-
-  Questa è disciplina scolastica.
+  Esiste il regolamento scolastico per mantenere la disciplina.
 :::
 :::term
 id: term-v668-uketorikanou
@@ -306,8 +308,8 @@ reading: うけとりかのう
 romaji: uketorikanou
 meaning_it: riscattabile
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica che un regalo, oggetto o premio può essere ricevuto ora. `可能` segnala
+  disponibilità operativa, non ricezione già completata.
 :::
 :::card
 id: card-v668-uketorikanou-recognition
@@ -318,9 +320,9 @@ card_type: recognition
 front: "{{受|う}}けとり{{可能|かのう}}"
 back: riscattabile
 example_jp: >-
-  メニューで {{受|う}}けとり{{可能|かのう}}を {{見|み}}ます。
+  ふしぎなおくりものが {{受|う}}けとり{{可能|かのう}}です。
 example_it: >-
-  Nel menu c'è la voce riscattabile.
+  Il Dono Segreto è riscattabile.
 :::
 :::term
 id: term-v669-uketorizumi
@@ -329,8 +331,8 @@ reading: うけとりずみ
 romaji: uketorizumi
 meaning_it: già riscattato
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica che la ricezione è già avvenuta. In menu impedisce di prendere lo stesso
+  premio una seconda volta.
 :::
 :::card
 id: card-v669-uketorizumi-recognition
@@ -341,9 +343,9 @@ card_type: recognition
 front: "{{受|う}}けとり{{済|ず}}み"
 back: già riscattato
 example_jp: >-
-  メニューで {{受|う}}けとり{{済|ず}}みを {{見|み}}ます。
+  この プレゼントは {{受|う}}けとり{{済|ず}}みです。
 example_it: >-
-  Nel menu c'è già riscattato.
+  Questo regalo è già stato riscattato.
 :::
 :::term
 id: term-v670-koumoku
@@ -352,8 +354,8 @@ reading: こうもく
 romaji: koumoku
 meaning_it: voce / elemento
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica una voce di menu o un elemento in elenco. Quando compare con `選ぶ`,
+  il bersaglio è una riga specifica della UI.
 :::
 :::card
 id: card-v670-koumoku-recognition
@@ -364,9 +366,9 @@ card_type: recognition
 front: "{{項目|こうもく}}"
 back: voce / elemento
 example_jp: >-
-  この {{項目|こうもく}}を {{見|み}}ます。
+  この {{項目|こうもく}}を {{選|えら}}びます。
 example_it: >-
-  Questa è una voce.
+  Scelgo questa voce.
 :::
 :::term
 id: term-v671-kyoutou
@@ -375,8 +377,8 @@ reading: きょうとう
 romaji: kyoutou
 meaning_it: combattere insieme
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Indica combattere insieme contro lo stesso avversario. In raid o missioni
+  marca cooperazione, non semplice presenza nello stesso luogo.
 :::
 :::card
 id: card-v671-kyoutou-recognition
@@ -387,9 +389,9 @@ card_type: recognition
 front: "{{共闘|きょうとう}}"
 back: combattere insieme
 example_jp: >-
-  バトルで {{共闘|きょうとう}}を {{使|つか}}います。
+  {{仲間|なかま}}と {{共闘|きょうとう}}して ボスに {{挑|いど}}みます。
 example_it: >-
-  In battaglia si combatte insieme.
+  Affronto il boss combattendo insieme ai compagni.
 :::
 :::term
 id: term-v672-konnan
@@ -398,7 +400,8 @@ reading: こんなん
 romaji: konnan
 meaning_it: difficile / complesso
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  Indica qualcosa di difficile da superare. In percorsi o sfide segnala
+  complessità reale, non solo fastidio momentaneo.
 :::
 :::card
 id: card-v672-konnan-recognition
@@ -420,7 +423,8 @@ reading: かっくうする
 romaji: kakkuu suru
 meaning_it: planare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Indica planare dopo un salto o da un punto alto. In esplorazione descrive un
+  movimento in aria controllato, diverso dalla caduta.
 :::
 :::card
 id: card-v673-kakkuu-suru-recognition
@@ -431,9 +435,9 @@ card_type: recognition
 front: "{{滑空|かっくう}}する"
 back: planare
 example_jp: >-
-  ここで {{滑空|かっくう}}する。
+  {{高|たか}}い{{場所|ばしょ}}から {{滑空|かっくう}}します。
 example_it: >-
-  Qui si plana.
+  Plano da un punto alto.
 :::
 :::term
 id: term-v674-oiharau
@@ -442,8 +446,8 @@ reading: おいはらう
 romaji: oiharau
 meaning_it: scacciare
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica scacciare o mandare via qualcuno. In storia e battaglia implica
+  allontanare una minaccia, spesso con un confronto.
 :::
 :::card
 id: card-v674-oiharau-recognition
@@ -454,9 +458,9 @@ card_type: recognition
 front: "{{追|お}}いはらう"
 back: scacciare
 example_jp: >-
-  ここで {{追|お}}いはらう。
+  {{野生|やせい}}の ポケモンを {{追|お}}いはらう。
 example_it: >-
-  Qui si scaccia.
+  Scaccio il Pokémon selvatico.
 :::
 :::term
 id: term-v675-kirikaeru
@@ -465,7 +469,8 @@ reading: きりかえる
 romaji: kirikaeru
 meaning_it: commutare / cambiare
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Indica cambiare impostazione, modalità o bersaglio. Nei menu è una
+  commutazione tra opzioni, non uno spostamento fisico.
 :::
 :::card
 id: card-v675-kirikaeru-recognition
@@ -476,9 +481,9 @@ card_type: recognition
 front: "{{切|き}}り{{替|か}}える"
 back: commutare / cambiare
 example_jp: >-
-  ここで {{切|き}}り{{替|か}}える。
+  {{表示|ひょうじ}}を {{切|き}}り{{替|か}}える。
 example_it: >-
-  Qui si cambia.
+  Cambio la visualizzazione.
 :::
 :::term
 id: term-v676-furu-mau
@@ -487,7 +492,8 @@ reading: ふるまう
 romaji: furu mau
 meaning_it: offrire / servire
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  Indica offrire o servire qualcosa a qualcuno, spesso cibo o ospitalità. Non è
+  solo "comportarsi": qui riguarda dare concretamente qualcosa.
 :::
 :::card
 id: card-v676-furu-mau-recognition
@@ -498,9 +504,9 @@ card_type: recognition
 front: "{{振|ふ}}る{{舞|ま}}う"
 back: offrire / servire
 example_jp: >-
-  ここで {{振|ふ}}る{{舞|ま}}う。
+  {{友|とも}}だちに サンドウィッチを {{振|ふ}}る{{舞|ま}}う。
 example_it: >-
-  Qui si offre.
+  Offro un sandwich a un amico.
 :::
 :::term
 id: term-v677-jousetsu
@@ -509,7 +515,8 @@ reading: じょうせつ
 romaji: jousetsu
 meaning_it: installato stabilmente
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  Indica una funzione o servizio disponibile stabilmente. Contrasta con eventi
+  temporanei, campagne limitate o bonus di stagione.
 :::
 :::card
 id: card-v677-jousetsu-recognition
@@ -520,9 +527,9 @@ card_type: recognition
 front: "{{常設|じょうせつ}}"
 back: installato stabilmente
 example_jp: >-
-  メニューで {{常設|じょうせつ}}を {{見|み}}ます。
+  この サービスは {{常設|じょうせつ}}です。
 example_it: >-
-  Nel menu c'è l'installato stabilmente.
+  Questo servizio è disponibile stabilmente.
 :::
 :::term
 id: term-v678-kaitori
@@ -531,8 +538,8 @@ reading: かいとり
 romaji: kaitori
 meaning_it: acquisto da parte del negozio
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica l'acquisto di oggetti da parte del negozio. Quando scegli questa voce,
+  stai vendendo al negozio, non comprando da lui.
 :::
 :::card
 id: card-v678-kaitori-recognition
@@ -543,9 +550,9 @@ card_type: recognition
 front: "{{買|か}}い{{取|と}}り"
 back: acquisto da parte del negozio
 example_jp: >-
-  メニューで {{買|か}}い{{取|と}}りを {{見|み}}ます。
+  {{買|か}}い{{取|と}}り{{価格|かかく}}を {{確認|かくにん}}します。
 example_it: >-
-  Nel menu c'è l'acquisto da parte del negozio.
+  Controllo il prezzo di acquisto del negozio.
 :::
 :::term
 id: term-v679-saitekikai
@@ -554,8 +561,8 @@ reading: さいてきかい
 romaji: saitekikai
 meaning_it: soluzione ottimale
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Indica la scelta più efficace in una situazione data. In battaglia dipende da
+  tipo, avversario e obiettivo, non da una forza assoluta.
 :::
 :::card
 id: card-v679-saitekikai-recognition
@@ -566,9 +573,9 @@ card_type: recognition
 front: "{{最適解|さい.てき.かい}}"
 back: soluzione ottimale
 example_jp: >-
-  バトルで {{最適解|さい.てき.かい}}を {{使|つか}}います。
+  この バトルでは でんきタイプが {{最適解|さい.てき.かい}}です。
 example_it: >-
-  In battaglia c'è la soluzione ottimale.
+  In questa lotta il tipo Elettro è la soluzione ottimale.
 :::
 :::term
 id: term-v680-ude-wo-migaku
@@ -577,8 +584,8 @@ reading: うでをみがく
 romaji: ude wo migaku
 meaning_it: affinare le proprie capacità
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Letteralmente "lucidare il braccio", cioè allenarsi fino a migliorare. In
+  contesti di sfida parla di crescere come allenatore.
 :::
 :::card
 id: card-v680-ude-wo-migaku-recognition
@@ -589,9 +596,9 @@ card_type: recognition
 front: "{{腕|うで}}を{{磨|みが}}く"
 back: affinare le proprie capacità
 example_jp: >-
-  バトルで {{腕|うで}}を{{磨|みが}}くを {{使|つか}}います。
+  バトルで {{腕|うで}}を{{磨|みが}}きます。
 example_it: >-
-  In battaglia si affinano le proprie capacità.
+  Affino le mie capacità in battaglia.
 :::
 :::term
 id: term-v681-hitokurou
@@ -600,7 +607,8 @@ reading: ひとくろう
 romaji: hitokurou
 meaning_it: una bella fatica
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  Indica un compito faticoso o laborioso. In viaggio segnala che raggiungere un
+  punto o superare una prova richiederà impegno.
 :::
 :::card
 id: card-v681-hitokurou-recognition
@@ -611,9 +619,9 @@ card_type: recognition
 front: "{{一苦労|ひと.く.ろう}}"
 back: una bella fatica
 example_jp: >-
-  この{{先|さき}}に {{一苦労|ひと.く.ろう}}が あります。
+  {{山頂|さんちょう}}まで {{行|い}}くのは {{一苦労|ひと.く.ろう}}です。
 example_it: >-
-  Più avanti c'è una bella fatica.
+  Arrivare fino alla cima è una bella fatica.
 :::
 :::term
 id: term-v682-juuoumujin
@@ -622,7 +630,8 @@ reading: じゅうおうむじん
 romaji: juuoumujin
 meaning_it: in lungo e in largo / liberamente
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  Indica movimento libero in ogni direzione. Nel mondo aperto rende l'idea di
+  attraversare il campo senza seguire un corridoio fisso.
 :::
 :::card
 id: card-v682-juuoumujin-recognition
@@ -633,9 +642,9 @@ card_type: recognition
 front: "{{縦横無尽|じゅう.おう.む.じん}}"
 back: in lungo e in largo / liberamente
 example_jp: >-
-  この{{先|さき}}に {{縦横無尽|じゅう.おう.む.じん}}が あります。
+  {{広大|こうだい}}な フィールドを {{縦横無尽|じゅう.おう.む.じん}}に {{走|はし}}ります。
 example_it: >-
-  Più avanti puoi muoverti liberamente.
+  Corro liberamente nel vasto campo.
 :::
 :::term
 id: term-v683-yokan
@@ -644,7 +653,8 @@ reading: よかん
 romaji: yokan
 meaning_it: presentimento
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Indica una sensazione anticipata che qualcosa accadrà. Nei dialoghi crea
+  aspettativa o inquietudine prima che il fatto sia confermato.
 :::
 :::card
 id: card-v683-yokan-recognition
@@ -655,7 +665,7 @@ card_type: recognition
 front: "{{予感|よかん}}"
 back: presentimento
 example_jp: >-
-  {{予感|よかん}} です。
+  なにかが {{起|お}}こる {{予感|よかん}}がします。
 example_it: >-
-  È un presentimento.
+  Ho il presentimento che succederà qualcosa.
 :::

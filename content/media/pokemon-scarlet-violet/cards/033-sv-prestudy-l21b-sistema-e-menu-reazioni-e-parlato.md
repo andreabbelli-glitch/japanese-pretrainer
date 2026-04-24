@@ -169,7 +169,8 @@ reading: むり
 romaji: muri
 meaning_it: impossibile / non esagerare
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  無理 indica impossibilità o eccesso. Da solo può voler dire "non si può"; in
+  無理しないで diventa "non strafare".
 :::
 :::card
 id: card-v333-muri-recognition
@@ -180,9 +181,9 @@ card_type: recognition
 front: "{{無理|むり}}"
 back: impossibile / non esagerare
 example_jp: >-
-  {{無理|むり}} です。
+  {{無理|むり}}しないで。
 example_it: >-
-  Impossibile.
+  Non esagerare.
 :::
 :::term
 id: term-v334-raibaru
@@ -191,7 +192,8 @@ reading: らいばる
 romaji: raibaru
 meaning_it: rivale
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  ライバル è il rivale: qualcuno che compete con te e ritorna come interlocutore
+  o avversario.
 :::
 :::card
 id: card-v334-raibaru-recognition
@@ -213,7 +215,8 @@ reading: そら
 romaji: sora
 meaning_it: cielo
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  空 è il cielo o spazio sopra il personaggio. In scene di movimento può essere
+  legato a planata, volo o semplice osservazione.
 :::
 :::card
 id: card-v335-sora-recognition
@@ -235,8 +238,8 @@ reading: あいことば
 romaji: aikotoba
 meaning_it: codice link / password condivisa
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  あいことば è un codice condiviso. In funzioni online/locali serve ad abbinare
+  giocatori o gruppi.
 :::
 :::card
 id: card-v336-aikotoba-recognition
@@ -247,9 +250,9 @@ card_type: recognition
 front: "あいことば"
 back: codice link / password condivisa
 example_jp: >-
-  メニューで あいことばを {{見|み}}ます。
+  あいことばを {{入力|にゅうりょく}}します。
 example_it: >-
-  Controllo il codice link nel menu.
+  Inserisco il codice link.
 :::
 :::term
 id: term-v337-ikinari
@@ -258,7 +261,8 @@ reading: いきなり
 romaji: ikinari
 meaning_it: all'improvviso
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  いきなり marca un inizio senza preparazione: l'azione arriva all'improvviso,
+  spesso prima che il personaggio sia pronto.
 :::
 :::card
 id: card-v337-ikinari-recognition
@@ -269,9 +273,9 @@ card_type: recognition
 front: "いきなり"
 back: all'improvviso
 example_jp: >-
-  いきなり です。
+  いきなり ネモが {{来|く}}る。
 example_it: >-
-  All'improvviso.
+  Nemona arriva all'improvviso.
 :::
 :::term
 id: term-v338-kaihiritsu
@@ -280,8 +284,8 @@ reading: かいひりつ
 romaji: kaihiritsu
 meaning_it: evasione
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  回避率 è la probabilità di evitare un colpo. 上がる o 下がる cambia quanto è
+  facile mancare il bersaglio.
 :::
 :::card
 id: card-v338-kaihiritsu-recognition
@@ -303,7 +307,8 @@ reading: ざいりょう
 romaji: zairyou
 meaning_it: materiale
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  材料 sono materiali o ingredienti usati per creare ricette, MT o oggetti. Con
+  集める diventano risorse da raccogliere.
 :::
 :::card
 id: card-v339-zairyou-recognition
@@ -314,9 +319,9 @@ card_type: recognition
 front: "{{材料|ざいりょう}}"
 back: materiale
 example_jp: >-
-  メニューで {{材料|ざいりょう}}を {{見|み}}ます。
+  サンドウィッチの {{材料|ざいりょう}}を {{集|あつ}}めます。
 example_it: >-
-  Controllo i materiali nel menu.
+  Raccolgo gli ingredienti per il sandwich.
 :::
 :::term
 id: term-v340-kameraapuri
@@ -325,8 +330,8 @@ reading: カメラアプリ
 romaji: kameraapuri
 meaning_it: app fotocamera
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  カメラアプリ è l'app fotocamera del menu. Con 使う indica aprire lo strumento per
+  scattare o gestire foto.
 :::
 :::card
 id: card-v340-kameraapuri-recognition
@@ -348,7 +353,8 @@ reading: ちゃんぴおんてすと
 romaji: chanpiontesuto
 meaning_it: test da campione
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  チャンピオンテスト è il test legato al percorso Campione. Nei menu o dialoghi
+  indica la prova specifica, non un esame generico.
 :::
 :::term
 id: term-v344-jibun-dake
@@ -357,7 +363,8 @@ reading: じぶんだけ
 romaji: jibun dake
 meaning_it: solo per sé
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  自分だけ limita l'azione al soggetto: "solo io/solo per sé". だけ esclude gli
+  altri partecipanti o destinatari.
 :::
 :::card
 id: card-v344-jibun-dake-recognition
@@ -368,9 +375,9 @@ card_type: recognition
 front: "{{自分|じぶん}}だけ"
 back: solo per sé
 example_jp: >-
-  {{自分|じぶん}}だけ です。
+  {{自分|じぶん}}だけ {{先|さき}}に {{行|い}}く。
 example_it: >-
-  Solo per sé.
+  Solo io vado avanti per primo.
 :::
 :::term
 id: term-v345-kyouryoku
@@ -379,8 +386,8 @@ reading: きょうりょく
 romaji: kyouryoku
 meaning_it: cooperazione
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  協力 è cooperazione. In raid o funzioni condivise indica che più persone agiscono
+  insieme, non solo che sono nella stessa schermata.
 :::
 :::card
 id: card-v345-kyouryoku-recognition
@@ -402,8 +409,8 @@ reading: こうかバツグン
 romaji: koukabatsugun
 meaning_it: super efficace
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  効果バツグン è il messaggio "super efficace": 効果 indica effetto, バツグン
+  intensifica il risultato.
 :::
 :::card
 id: card-v346-koukabatsugun-recognition
@@ -425,7 +432,8 @@ reading: とおく
 romaji: tooku
 meaning_it: lontano
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  遠く è un luogo lontano o una distanza marcata. Con へ indica muoversi verso un
+  punto più distante.
 :::
 :::card
 id: card-v347-tooku-recognition
@@ -436,9 +444,9 @@ card_type: recognition
 front: "{{遠|とお}}く"
 back: lontano
 example_jp: >-
-  ここから {{遠|とお}}くです。
+  ここから {{遠|とお}}くへ {{行|い}}く。
 example_it: >-
-  È lontano da qui.
+  Vado lontano da qui.
 :::
 :::term
 id: term-v348-intaanetto
@@ -447,8 +455,8 @@ reading: インターネット
 romaji: intaanetto
 meaning_it: internet
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  インターネット indica la connessione alla rete. Nei menu distingue comunicazione
+  online da gioco locale o offline.
 :::
 :::card
 id: card-v348-intaanetto-recognition
@@ -470,8 +478,8 @@ reading: めんせつ
 romaji: mensetsu
 meaning_it: colloquio / intervista
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  面接 è un colloquio o intervista: nel percorso Campione indica una fase in cui
+  si risponde a domande, non una battaglia.
 :::
 :::card
 id: card-v349-mensetsu-recognition
@@ -482,9 +490,9 @@ card_type: recognition
 front: "{{面接|めんせつ}}"
 back: colloquio / intervista
 example_jp: >-
-  これは {{面接|めんせつ}} です。
+  チャンピオンテストで {{面接|めんせつ}}を {{受|う}}ける。
 example_it: >-
-  Questo è un colloquio.
+  Sostengo un colloquio nel test da Campione.
 :::
 :::term
 id: term-v350-baai
@@ -493,7 +501,8 @@ reading: ばあい
 romaji: baai
 meaning_it: caso / situazione
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  場合 indica un caso o una situazione. その場合 lega la risposta a una condizione
+  appena detta.
 :::
 :::card
 id: card-v350-baai-recognition
@@ -504,9 +513,9 @@ card_type: recognition
 front: "{{場合|ばあい}}"
 back: caso / situazione
 example_jp: >-
-  その {{場合|ばあい}} です。
+  その {{場合|ばあい}}は {{戻|もど}}る。
 example_it: >-
-  In quel caso.
+  In quel caso torno indietro.
 :::
 :::term
 id: term-v351-tsuzuke-ru
@@ -515,7 +524,8 @@ reading: つづける
 romaji: tsuzuke ru
 meaning_it: continuare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  続ける mantiene un'azione o una sessione in corso: nei menu può essere
+  l'opzione per proseguire senza uscire.
 :::
 :::card
 id: card-v351-tsuzuke-ru-recognition
@@ -526,9 +536,9 @@ card_type: recognition
 front: "{{続|つづ}}ける"
 back: continuare
 example_jp: >-
-  ここで {{続|つづ}}ける。
+  このまま {{続|つづ}}ける。
 example_it: >-
-  Continuo qui.
+  Continuo così.
 :::
 :::term
 id: term-v352-yunionsaakuru
@@ -537,8 +547,8 @@ reading: ユニオンサークル
 romaji: yunionsaakuru
 meaning_it: Union Circle
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  ユニオンサークル è la funzione cooperativa di Scarlet/Violet. Nei menu indica il
+  sistema per riunirsi con altri giocatori.
 :::
 :::term
 id: term-v353-jouken
@@ -547,8 +557,8 @@ reading: じょうけん
 romaji: jouken
 meaning_it: condizione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  条件 è una condizione da soddisfare. In messaggi di sistema spiega quando
+  un'opzione si sblocca o un effetto si applica.
 :::
 :::card
 id: card-v353-jouken-recognition
@@ -559,7 +569,7 @@ card_type: recognition
 front: "{{条件|じょうけん}}"
 back: condizione
 example_jp: >-
-  メニューで {{条件|じょうけん}}を {{見|み}}ます。
+  この {{条件|じょうけん}}を {{満|み}}たすと {{参加|さんか}}できます。
 example_it: >-
-  Controllo le condizioni nel menu.
+  Se soddisfi questa condizione, puoi partecipare.
 :::

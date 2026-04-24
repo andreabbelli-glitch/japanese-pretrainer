@@ -168,8 +168,8 @@ reading: ほかくパワー
 romaji: hokakupawaa
 meaning_it: Catching Power
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  ほかくパワー è un bonus alla cattura: ほかく specifica il risultato, パワー indica
+  l'effetto attivo.
 :::
 :::term
 id: term-v376-nazo
@@ -178,7 +178,8 @@ reading: なぞ
 romaji: nazo
 meaning_it: mistero
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  謎 è un mistero o punto non chiarito. In una scena narrativa segnala qualcosa
+  da indagare, non solo una domanda.
 :::
 :::card
 id: card-v376-nazo-recognition
@@ -200,7 +201,8 @@ reading: あどばいす
 romaji: adobaisu
 meaning_it: consiglio
 notes_it: >-
-  Termine utile per centro Pokemon, oggetti, menu e gestione squadra.
+  アドバイス è un consiglio pratico. In menu o dialoghi introduce indicazioni su
+  cosa fare dopo.
 :::
 :::card
 id: card-v377-adobaisu-recognition
@@ -211,9 +213,9 @@ card_type: recognition
 front: "アドバイス"
 back: consiglio
 example_jp: >-
-  メニューで アドバイスを {{見|み}}ます。
+  アドバイスを {{読|よ}}んでから {{進|すす}}みます。
 example_it: >-
-  Guardo i consigli nel menu.
+  Leggo il consiglio e poi avanzo.
 :::
 :::term
 id: term-v378-nemuri
@@ -222,8 +224,8 @@ reading: ねむり
 romaji: nemuri
 meaning_it: sonno
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  ねむり è il sonno come stato alterato. Con ねむりになる il Pokémon entra in quella
+  condizione.
 :::
 :::card
 id: card-v378-nemuri-recognition
@@ -234,9 +236,9 @@ card_type: recognition
 front: "ねむり"
 back: sonno
 example_jp: >-
-  バトルで ねむりを {{使|つか}}います。
+  バトルで ねむりに なる。
 example_it: >-
-  In battaglia compare la condizione di sonno.
+  In battaglia si addormenta.
 :::
 :::term
 id: term-v379-mawari
@@ -245,7 +247,8 @@ reading: まわり
 romaji: mawari
 meaning_it: intorno
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  周り indica ciò che sta intorno al punto o personaggio di riferimento. 周りに
+  ポケモンがいる localizza presenze vicine.
 :::
 :::card
 id: card-v379-mawari-recognition
@@ -267,7 +270,8 @@ reading: ちかづく
 romaji: chikazu ku
 meaning_it: avvicinarsi
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  近づく indica ridurre la distanza rispetto a un bersaglio marcato da に:
+  Pokémon, persona, luogo o oggetto.
 :::
 :::card
 id: card-v380-chikazu-ku-recognition
@@ -289,8 +293,8 @@ reading: いっしゅん
 romaji: isshun
 meaning_it: un istante
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  一瞬 è un istante brevissimo. Con 一瞬で descrive un'azione che avviene quasi
+  subito.
 :::
 :::card
 id: card-v381-isshun-recognition
@@ -312,8 +316,8 @@ reading: ゼロゲート
 romaji: zerogeeto
 meaning_it: Zero Gate
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  ゼロゲート è un nome proprio di luogo; nei dialoghi indica una destinazione
+  precisa legata all'Area Zero, non un cancello generico.
 :::
 :::term
 id: term-v383-hiroi
@@ -322,7 +326,8 @@ reading: ひろい
 romaji: hiroi
 meaning_it: ampio / largo
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  広い descrive uno spazio ampio o largo. In esplorazione spesso qualifica aree,
+  sale o percorsi.
 :::
 :::card
 id: card-v383-hiroi-recognition
@@ -333,9 +338,9 @@ card_type: recognition
 front: "{{広|ひろ}}い"
 back: ampio / largo
 example_jp: >-
-  ここは {{広|ひろ}}い。
+  {{広|ひろ}}い {{草原|そうげん}}を {{歩|ある}}く。
 example_it: >-
-  Qui è spazioso.
+  Cammino in una prateria ampia.
 :::
 :::term
 id: term-v384-suijou
@@ -344,7 +349,8 @@ reading: すいじょう
 romaji: suijou
 meaning_it: sull'acqua
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  水上 significa "sull'acqua". Nei movimenti distingue il percorso acquatico da
+  quello su terra.
 :::
 :::card
 id: card-v384-suijou-recognition
@@ -366,7 +372,8 @@ reading: いっきに
 romaji: ikki ni
 meaning_it: tutto d'un colpo
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  一気に indica che l'azione avviene tutta in una volta, senza fasi intermedie.
+  Con 近づく descrive un avvicinamento rapido.
 :::
 :::card
 id: card-v385-ikki-ni-recognition
@@ -388,8 +395,8 @@ reading: きょうりょく
 romaji: kyouryoku
 meaning_it: potente
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  強力 descrive una forza elevata. In このわざは強力です valuta la potenza concreta
+  della mossa.
 :::
 :::card
 id: card-v386-kyouryoku-recognition
@@ -411,8 +418,8 @@ reading: おおジャンプ
 romaji: oojanpu
 meaning_it: super salto
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  大ジャンプ è un salto più grande del normale. 大 modifica ジャンプ e indica
+  estensione o altezza maggiore.
 :::
 :::card
 id: card-v387-oojanpu-recognition
@@ -434,7 +441,8 @@ reading: つく
 romaji: tsuku
 meaning_it: arrivare
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  着く indica arrivare a una destinazione. Il punto d'arrivo prende に, come
+  ゼロゲートに着く.
 :::
 :::card
 id: card-v388-tsuku-recognition
@@ -445,9 +453,9 @@ card_type: recognition
 front: "{{着|つ}}く"
 back: arrivare
 example_jp: >-
-  ここに {{着|つ}}く。
+  ゼロゲートに {{着|つ}}く。
 example_it: >-
-  Arrivo qui.
+  Arrivo allo Zero Gate.
 :::
 :::term
 id: term-v389-abunai
@@ -456,7 +464,8 @@ reading: あぶない
 romaji: abunai
 meaning_it: pericoloso
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  危ない segnala pericolo immediato o rischio vicino; nei dialoghi può essere un
+  avvertimento prima di fermarsi o tornare indietro.
 :::
 :::card
 id: card-v389-abunai-recognition
@@ -467,9 +476,9 @@ card_type: recognition
 front: "{{危|あぶ}}ない"
 back: pericoloso
 example_jp: >-
-  {{危|あぶ}}ない です。
+  {{危|あぶ}}ないから {{戻|もど}}る。
 example_it: >-
-  È pericoloso.
+  Torno indietro perché è pericoloso.
 :::
 :::term
 id: term-v390-kesshouka
@@ -478,8 +487,8 @@ reading: けっしょうか
 romaji: kesshouka
 meaning_it: cristallizzazione
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  結晶化 è il diventare cristallino: in Scarlet/Violet richiama la trasformazione
+  visiva e meccanica della teracristallizzazione.
 :::
 :::card
 id: card-v390-kesshouka-recognition
@@ -490,9 +499,9 @@ card_type: recognition
 front: "{{結晶化|けっ.しょう.か}}"
 back: cristallizzazione
 example_jp: >-
-  これは {{結晶化|けっ.しょう.か}} です。
+  ポケモンが {{結晶化|けっ.しょう.か}}する。
 example_it: >-
-  Questa è la cristallizzazione.
+  Il Pokémon si cristallizza.
 :::
 :::term
 id: term-v391-sodate-ru
@@ -501,8 +510,8 @@ reading: そだてる
 romaji: sodate ru
 meaning_it: allenare / crescere
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  育てる è far crescere o allenare. Con ポケモンを育てる include esperienza, cura e
+  sviluppo nel tempo.
 :::
 :::card
 id: card-v391-sodate-ru-recognition
@@ -524,6 +533,6 @@ reading: だんラッシュ
 romaji: danrasshu
 meaning_it: Team Star Barrage
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  団ラッシュ nomina una sfida del Team Star: 団 richiama il gruppo, ラッシュ
+  l'assalto in serie.
 :::

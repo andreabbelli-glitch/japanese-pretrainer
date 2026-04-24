@@ -126,8 +126,8 @@ reading: こだい
 romaji: kodai
 meaning_it: antichità / passato remoto
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  古代 si usa prima di un nome, come 古代のポケモン, per collocarlo in un passato
+  remoto. In Scarlet/Violet contrasta spesso con ciò che è moderno o presente.
 :::
 :::card
 id: card-v255-kodai-recognition
@@ -138,9 +138,9 @@ card_type: recognition
 front: '{{古代|こだい}}'
 back: antichità / passato remoto
 example_jp: >-
-  {{古代|こだい}}の ポケモンです。
+  {{古代|こだい}}の ポケモンを {{見|み}}た。
 example_it: >-
-  È un Pokémon antico.
+  Ho visto un Pokémon antico.
 :::
 :::term
 id: term-v256-fearii
@@ -149,8 +149,8 @@ reading: フェアリー
 romaji: fearii
 meaning_it: folletto
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  フェアリー è il tipo Folletto. In フェアリータイプ, la parola prima di タイプ decide
+  il rapporto con mosse, resistenze e debolezze.
 :::
 :::card
 id: card-v256-fearii-recognition
@@ -161,9 +161,9 @@ card_type: recognition
 front: 'フェアリー'
 back: folletto
 example_jp: >-
-  フェアリータイプの ポケモンです。
+  フェアリータイプの わざを {{使|つか}}う。
 example_it: >-
-  È un Pokémon di tipo folletto.
+  Usa una mossa di tipo Folletto.
 :::
 :::term
 id: term-v257-hagane
@@ -172,8 +172,8 @@ reading: はがね
 romaji: hagane
 meaning_it: acciaio
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  はがね è il tipo Acciaio; compare in kana nei nomi di tipo e va letto come
+  categoria di battaglia, non come materiale generico.
 :::
 :::card
 id: card-v257-hagane-recognition
@@ -184,9 +184,9 @@ card_type: recognition
 front: 'はがね'
 back: acciaio
 example_jp: >-
-  はがねタイプの ポケモンです。
+  はがねタイプの わざを {{受|う}}ける。
 example_it: >-
-  È un Pokémon di tipo acciaio.
+  Subisce una mossa di tipo Acciaio.
 :::
 :::term
 id: term-v258-mikata
@@ -195,8 +195,8 @@ reading: みかた
 romaji: mikata
 meaning_it: alleato
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  味方 è chi sta dalla tua parte in battaglia o in una scena. Contrasta con 相手,
+  l'avversario o interlocutore dall'altra parte.
 :::
 :::card
 id: card-v258-mikata-recognition
@@ -207,9 +207,9 @@ card_type: recognition
 front: '{{味方|みかた}}'
 back: alleato
 example_jp: >-
-  {{味方|みかた}}が います。
+  {{味方|みかた}}を {{助|たす}}ける。
 example_it: >-
-  C'è un alleato.
+  Aiuto un alleato.
 :::
 :::term
 id: term-v260-naminori
@@ -218,8 +218,8 @@ reading: なみのり
 romaji: naminori
 meaning_it: nuoto / surf sull'acqua
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  なみのり nomina il movimento sull'acqua: nei comandi di esplorazione indica
+  attraversamento di fiumi o mare, non il semplice verbo "nuotare".
 :::
 :::card
 id: card-v260-naminori-recognition
@@ -230,9 +230,9 @@ card_type: recognition
 front: 'なみのり'
 back: nuoto / surf sull'acqua
 example_jp: >-
-  なみのりを します。
+  なみのりで {{水上|すいじょう}}を {{進|すす}}む。
 example_it: >-
-  Faccio surf sull'acqua.
+  Avanzo sull'acqua con Surf.
 :::
 :::term
 id: term-v261-chuui
@@ -241,7 +241,8 @@ reading: ちゅうい
 romaji: chuui
 meaning_it: attenzione / cautela
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  注意 segnala cautela o avvertimento; 注意してください è la formula che chiede di
+  fare attenzione prima di procedere.
 :::
 :::card
 id: card-v261-chuui-recognition
@@ -252,9 +253,9 @@ card_type: recognition
 front: '{{注意|ちゅうい}}'
 back: attenzione / cautela
 example_jp: >-
-  {{注意|ちゅうい}} です。
+  {{注意|ちゅうい}}してください。
 example_it: >-
-  Attenzione.
+  Fai attenzione.
 :::
 :::term
 id: term-v262-ukeru
@@ -263,7 +264,8 @@ reading: うける
 romaji: ukeru
 meaning_it: ricevere / sostenere
 notes_it: >-
-  Verbo ad alta frequenza nei dialoghi narrativi e nelle missioni.
+  受ける prende ciò che arriva verso il soggetto: danno, lezione, test,
+  avvertimento o effetto. Non implica per forza ricevere un oggetto concreto.
 :::
 :::card
 id: card-v262-ukeru-recognition
@@ -308,8 +310,8 @@ reading: レシピ
 romaji: reshipi
 meaning_it: ricetta
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  レシピ è una ricetta di crafting o cucina: quando appare con 受けとる o 作れる, il
+  testo parla di una procedura sbloccata o ottenuta.
 :::
 :::card
 id: card-v264-reshipi-recognition
@@ -320,9 +322,9 @@ card_type: recognition
 front: 'レシピ'
 back: ricetta
 example_jp: >-
-  これは レシピ です。
+  {{新|あたら}}しい レシピを {{受|う}}けとる。
 example_it: >-
-  Questa è una ricetta.
+  Ricevo una nuova ricetta.
 :::
 :::term
 id: term-v265-hikou
@@ -331,8 +333,8 @@ reading: ひこう
 romaji: hikou
 meaning_it: volo
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  ひこう è il tipo Volante e compare in nomi di tipo, mosse e compatibilità. Non
+  va confuso con 飛行 scritto in kanji nei testi più generali.
 :::
 :::card
 id: card-v265-hikou-recognition
@@ -343,9 +345,9 @@ card_type: recognition
 front: 'ひこう'
 back: volo
 example_jp: >-
-  ひこうタイプの ポケモンです。
+  ひこうタイプの ポケモンが {{出|で}}る。
 example_it: >-
-  È un Pokémon di tipo volante.
+  Compare un Pokémon di tipo Volante.
 :::
 :::term
 id: term-v266-zenbu
@@ -354,7 +356,8 @@ reading: ぜんぶ
 romaji: zenbu
 meaning_it: tutto
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  全部 indica l'intero insieme senza esclusioni. In prompt di scelta può chiedere
+  di prendere, vendere o selezionare tutto.
 :::
 :::card
 id: card-v266-zenbu-recognition
@@ -365,9 +368,9 @@ card_type: recognition
 front: '{{全部|ぜんぶ}}'
 back: tutto
 example_jp: >-
-  {{全部|ぜんぶ}} です。
+  {{全部|ぜんぶ}} {{選|えら}}んでください。
 example_it: >-
-  È tutto.
+  Seleziona tutto.
 :::
 :::term
 id: term-v267-tsuushin
@@ -376,8 +379,8 @@ reading: つうしん
 romaji: tsuushin
 meaning_it: connessione / comunicazione
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  通信 indica comunicazione o connessione. In menu come 通信する o 通信交換 il testo
+  passa a funzioni online/locali.
 :::
 :::card
 id: card-v267-tsuushin-recognition
@@ -388,9 +391,9 @@ card_type: recognition
 front: '{{通信|つうしん}}'
 back: connessione / comunicazione
 example_jp: >-
-  {{通信|つうしん}}の メニューです。
+  {{通信|つうしん}}で ポケモンを {{交換|こうかん}}する。
 example_it: >-
-  È il menu di comunicazione.
+  Scambio Pokémon tramite comunicazione.
 :::
 :::term
 id: term-v268-futsuu
@@ -399,7 +402,8 @@ reading: ふつう
 romaji: futsuu
 meaning_it: normale
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  普通 può dire "normale" come valutazione o "di solito" come avverbio. In
+  battaglia resta distinto dal tipo ノーマル scritto in katakana.
 :::
 :::card
 id: card-v268-futsuu-recognition
@@ -410,9 +414,9 @@ card_type: recognition
 front: '{{普通|ふつう}}'
 back: normale
 example_jp: >-
-  {{普通|ふつう}}タイプの ポケモンです。
+  {{普通|ふつう}}は ここで {{戻|もど}}る。
 example_it: >-
-  È un Pokémon di tipo normale.
+  Di solito qui si torna indietro.
 :::
 :::term
 id: term-v269-kekka
@@ -421,7 +425,8 @@ reading: けっか
 romaji: kekka
 meaning_it: risultato
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  結果 è il risultato dopo una scelta, una lotta o una prova. 結果が出る significa
+  che l'esito viene mostrato.
 :::
 :::card
 id: card-v269-kekka-recognition
@@ -432,9 +437,9 @@ card_type: recognition
 front: '{{結果|けっか}}'
 back: risultato
 example_jp: >-
-  {{結果|けっか}} です。
+  {{結果|けっか}}が {{出|で}}る。
 example_it: >-
-  È il risultato.
+  Esce il risultato.
 :::
 :::term
 id: term-v270-sekkaku
@@ -443,7 +448,8 @@ reading: せっかく
 romaji: sekkaku
 meaning_it: visto che / già che
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  せっかく introduce l'idea di sfruttare un'occasione già ottenuta: せっかくなので
+  spiega perché vale la pena fare il passo successivo.
 :::
 :::card
 id: card-v270-sekkaku-recognition
@@ -465,7 +471,8 @@ reading: やくそく
 romaji: yakusoku
 meaning_it: promessa / appuntamento
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  約束 è una promessa o un appuntamento. Con 約束する il parlante prende un impegno,
+  non registra solo un'informazione.
 :::
 :::card
 id: card-v271-yakusoku-recognition
@@ -487,7 +494,8 @@ reading: てーぶるしてぃ
 romaji: teeburushitei
 meaning_it: città centrale di Paldea
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  テーブルシティ è il nome della città centrale di Paldea. Nei dialoghi funziona
+  come destinazione o luogo di riferimento, non come parola comune da tradurre.
 :::
 :::term
 id: term-v273-kakutou
@@ -496,8 +504,8 @@ reading: かくとう
 romaji: kakutou
 meaning_it: lotta
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  かくとう è il tipo Lotta. In かくとうタイプ segnala la categoria di battaglia usata
+  per compatibilità e mosse.
 :::
 :::card
 id: card-v273-kakutou-recognition
@@ -508,7 +516,7 @@ card_type: recognition
 front: 'かくとう'
 back: lotta
 example_jp: >-
-  かくとうタイプの ポケモンです。
+  かくとうタイプの わざを {{受|う}}ける。
 example_it: >-
-  È un Pokémon di tipo lotta.
+  Subisce una mossa di tipo Lotta.
 :::

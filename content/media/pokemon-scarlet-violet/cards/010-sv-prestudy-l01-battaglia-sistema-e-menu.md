@@ -13,8 +13,9 @@ reading: あいて
 romaji: aite
 meaning_it: avversario
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  In battaglia indica la parte avversaria, non una persona qualsiasi. In frasi
+  come {{相手|あいて}}の タイプ, il testo sta parlando del bersaglio contro cui
+  scegliere la mossa.
 :::
 :::card
 id: card-v001-aite-recognition
@@ -25,9 +26,9 @@ card_type: recognition
 front: '{{相手|あいて}}'
 back: avversario
 example_jp: >-
-  {{相手|あいて}}は つよい です。
+  {{相手|あいて}}の タイプを {{見|み}}てから わざを {{選|えら}}ぼう。
 example_it: >-
-  L'avversario è forte.
+  Scegli la mossa dopo aver guardato il tipo dell’avversario.
 :::
 :::term
 id: term-e001-dekimasen
@@ -36,7 +37,8 @@ reading: できません
 romaji: dekimasen
 meaning_it: non si può / impossibile
 notes_it: >-
-  Messaggio di sistema molto frequente: segnala che l'azione non puo' essere eseguita.
+  Appare quando il comando selezionato non può partire nello stato corrente:
+  luogo sbagliato, condizione non rispettata o funzione non disponibile.
 :::
 :::card
 id: card-e001-dekimasen-recognition
@@ -58,8 +60,8 @@ title: Spiegazione / enfasi
 meaning_it: spiega, giustifica o mette enfasi su qualcosa
 notes_it: >-
   Si usa quando il parlante sta spiegando il motivo, chiarendo un fatto o
-  insistendo su un punto: "e che...", "il fatto e che...". Forma: frase piana
-  + のだ / んだ. Nei dialoghi fa sentire che dietro la frase c'e una spiegazione o
+  insistendo su un punto: "è che...", "il fatto è che...". Forma: frase piana
+  + のだ / んだ. Nei dialoghi fa sentire che dietro la frase c'è una spiegazione o
   una presa di posizione.
 :::
 :::card
@@ -71,9 +73,9 @@ card_type: concept
 front: '～のだ / ～んだ'
 back: spiega, giustifica o mette enfasi su qualcosa
 example_jp: >-
-  これは {{大事|だいじ}}なんだ。
+  この ジムバトルに {{勝|か}}たなきゃ いけないんだ。
 example_it: >-
-  Il punto è che questa cosa è importante.
+  Il punto è che devo vincere questa lotta in palestra.
 :::
 :::term
 id: term-e002-tarinai-tarimasen
@@ -82,7 +84,9 @@ reading: たりない / たりません
 romaji: tarinai / tarimasen
 meaning_it: non basta / insufficiente
 notes_it: >-
-  Messaggio tipico quando soldi, LP o materiali non bastano.
+  Segnala una quantità insufficiente. Il nome prima di が indica che cosa manca:
+  お{{金|かね}}が {{足|た}}りません, LPが {{足|た}}りません, {{材料|ざいりょう}}が
+  {{足|た}}りません.
 :::
 :::card
 id: card-e002-tarinai-tarimasen-recognition
@@ -103,7 +107,8 @@ pattern: ～かな
 title: Mi chiedo se...
 meaning_it: mi chiedo se...
 notes_it: >-
-  Formazione: phrase + かな. Comunissimo nei pensieri ad alta voce.
+  Si attacca a una frase quando il parlante formula un dubbio leggero o pensa
+  ad alta voce: どこへ {{行|い}}こうかな non chiede a qualcuno, ma pesa una scelta.
 :::
 :::card
 id: card-g002-mi-chiedo-se-concept
@@ -125,8 +130,8 @@ reading: ジム
 romaji: jimu
 meaning_it: palestra Pokémon
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  In Pokémon è la palestra del percorso Lega: vicino a バトル, テスト o リーダー
+  indica una prova di progressione, non una palestra sportiva generica.
 :::
 :::card
 id: card-v003-jimu-recognition
@@ -137,9 +142,9 @@ card_type: recognition
 front: 'ジム'
 back: palestra Pokémon
 example_jp: >-
-  あそこが ジム です。
+  ジムの {{前|まえ}}で バトルの {{説明|せつめい}}を {{聞|き}}く。
 example_it: >-
-  Quella là è la palestra Pokémon.
+  Davanti alla palestra ascolto la spiegazione della lotta.
 :::
 :::grammar
 id: grammar-g003-stato-in-corso-stato-risultante
@@ -147,7 +152,7 @@ pattern: ～ている
 title: Stato in corso / stato risultante
 meaning_it: stare facendo / essere in uno stato risultante
 notes_it: >-
-  Con un verbo d'azione puo voler dire che l'azione e in corso. Con molti
+  Con un verbo d'azione può voler dire che l'azione è in corso. Con molti
   verbi indica invece lo stato risultante: すわっている = essere seduto, しっている =
   sapere. Va letto dal tipo di verbo e dal contesto.
 :::
@@ -171,7 +176,8 @@ reading: どう
 romaji: dou
 meaning_it: come
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  In domande di menu entra spesso in formule come どうしますか: il sistema non
+  chiede una spiegazione teorica, ma quale azione vuoi scegliere.
 :::
 :::card
 id: card-v004-dou-recognition
@@ -193,8 +199,8 @@ reading: たいぷ
 romaji: taipu
 meaning_it: tipo
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  In Pokémon indica il tipo elementale di un Pokémon o di una mossa. Vicino a
+  {{相手|あいて}} o わざ indica la compatibilità del colpo.
 :::
 :::card
 id: card-v006-taipu-recognition
@@ -205,9 +211,9 @@ card_type: recognition
 front: 'タイプ'
 back: tipo
 example_jp: >-
-  この ポケモンの タイプは みず です。
+  みず タイプの わざで {{相手|あいて}}を {{攻撃|こうげき}}する。
 example_it: >-
-  Il tipo di questo Pokémon è acqua.
+  Attacco l’avversario con una mossa di tipo Acqua.
 :::
 :::term
 id: term-v007-chanpion
@@ -216,8 +222,8 @@ reading: チャンピオン
 romaji: chanpion
 meaning_it: campione
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Nel percorso Lega indica chi ha già raggiunto il rango massimo. Quando compare
+  vicino a ジム o バッジ, la scena parla dell’obiettivo finale delle sfide.
 :::
 :::card
 id: card-v007-chanpion-recognition
@@ -228,9 +234,9 @@ card_type: recognition
 front: 'チャンピオン'
 back: campione
 example_jp: >-
-  チャンピオンは つよい です。
+  チャンピオンに なるには ジムバッジが {{必要|ひつよう}}です。
 example_it: >-
-  Il campione è forte.
+  Per diventare campione servono le Medaglie Palestra.
 :::
 :::term
 id: term-v008-sensei
@@ -239,7 +245,8 @@ reading: せんせい
 romaji: sensei
 meaning_it: insegnante
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  Indica l’insegnante o l’adulto che spiega regole e vita scolastica. Nelle
+  scene dell’Accademia spesso introduce tutorial in forma di dialogo.
 :::
 :::card
 id: card-v008-sensei-recognition
@@ -250,9 +257,9 @@ card_type: recognition
 front: '{{先生|せんせい}}'
 back: insegnante
 example_jp: >-
-  {{先生|せんせい}}と {{話|はな}}します。
+  {{先生|せんせい}}が バトルの ルールを {{説明|せつめい}}している。
 example_it: >-
-  Parlo con l'insegnante.
+  L’insegnante sta spiegando le regole della lotta.
 :::
 :::term
 id: term-v010-itsu
@@ -261,7 +268,8 @@ reading: いつ
 romaji: itsu
 meaning_it: quando
 notes_it: >-
-  Parola interrogativa essenziale per capire richieste, missioni e dialoghi.
+  Porta la domanda sul tempo: quando partire, quando sfidare qualcuno o quando
+  un evento diventa disponibile.
 :::
 :::card
 id: card-v010-itsu-recognition
@@ -272,9 +280,9 @@ card_type: recognition
 front: 'いつ'
 back: quando
 example_jp: >-
-  いつ {{行|い}}きますか。
+  ジムバトルは いつ {{始|はじ}}まりますか。
 example_it: >-
-  Quando vai?
+  Quando inizia la lotta in palestra?
 :::
 :::term
 id: term-v011-batoru
@@ -283,8 +291,8 @@ reading: ばとる
 romaji: batoru
 meaning_it: battaglia
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  È il combattimento come evento o modalità. In ジムバトル, ポケモンバトル e
+  テラレイドバトル segnala che la scena passa alla scelta di mosse e turni.
 :::
 :::card
 id: card-v011-batoru-recognition
@@ -295,7 +303,7 @@ card_type: recognition
 front: 'バトル'
 back: battaglia
 example_jp: >-
-  ここで バトルを します。
+  ジムで ネモと バトルを します。
 example_it: >-
-  Qui combatto.
+  Affronto una lotta con Nemona in palestra.
 :::

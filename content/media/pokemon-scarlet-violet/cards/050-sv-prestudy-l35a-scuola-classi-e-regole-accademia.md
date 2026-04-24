@@ -39,8 +39,8 @@ romaji: bunrui
 meaning_it: categoria / classificazione
 notes_it: >-
   Compare nelle spiegazioni di sistema quando il gioco divide mosse, effetti o
-  contenuti in famiglie diverse. Ti aiuta a capire quando la scena sta
-  definendo una meccanica invece di descrivere un singolo caso.
+  contenuti in famiglie diverse. In queste frasi la scena sta definendo una
+  meccanica invece di descrivere un singolo caso.
 :::
 :::card
 id: card-v731-bunrui-recognition
@@ -134,7 +134,8 @@ romaji: guraundo
 meaning_it: campo sportivo / ground
 notes_it: >-
   In accademia indica l'area esterna dove si tengono spiegazioni e dimostrazioni
-  pratiche. Aiuta a capire subito che la scena sta uscendo dall'aula.
+  pratiche. Quando compare, la scena sta uscendo dall'aula e si sposta in uno
+  spazio fisico condiviso.
 :::
 :::card
 id: card-v735-guraundo-recognition
@@ -182,7 +183,8 @@ romaji: shigyou
 meaning_it: inizio delle lezioni / inizio attivita
 notes_it: >-
   Segna il momento in cui la giornata scolastica entra davvero in funzione.
-  Leggerlo bene aiuta a capire i piccoli avvisi di ritmo nell'accademia.
+  Negli avvisi dell'accademia marca l'inizio di lezioni, orari e spostamenti
+  obbligati.
 :::
 :::card
 id: card-v738-shigyou-recognition

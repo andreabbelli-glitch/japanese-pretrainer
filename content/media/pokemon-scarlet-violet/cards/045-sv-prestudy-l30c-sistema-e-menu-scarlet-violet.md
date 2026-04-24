@@ -65,8 +65,9 @@ pattern: ～らしい
 title: Pare che / tipico di
 meaning_it: pare che / tipico di
 notes_it: >-
-  Formazione: phrase + らしい. Meno essenziale, ma utile per indiscrezioni e
-  deduzioni.
+  Si aggancia a una frase o a un nome e presenta l'informazione come
+  impressione, voce riportata o tratto tipico. In dialogo lascia una distanza
+  tra parlante e fatto confermato.
 :::
 :::card
 id: card-g102-pare-che-tipico-di-concept
@@ -135,8 +136,8 @@ meaning_it: finale ruvida / maschile
 aliases:
 - 〜だよ / 〜だな
 notes_it: >-
-  Formazione: frase + だぜ. Aiuta a riconoscere il tono di personaggi più ruvidi o
-  molto sicuri di sé.
+  Finale colloquiale e marcata, spesso maschile o spavalda. Non aggiunge un dato
+  nuovo alla frase: cambia il modo in cui il personaggio occupa la scena.
 :::
 :::card
 id: card-g105-finale-ruvida-maschile-concept
@@ -158,8 +159,8 @@ reading: どうきゅうせい
 romaji: doukyuusei
 meaning_it: compagno di classe
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica uno studente della stessa classe o dello stesso anno. Nei dialoghi
+  scolastici crea vicinanza sociale senza dire necessariamente "amico".
 :::
 :::card
 id: card-v615-doukyuusei-recognition
@@ -170,9 +171,9 @@ card_type: recognition
 front: "{{同級生|どう.きゅう.せい}}"
 back: compagno di classe
 example_jp: >-
-  {{学校|がっこう}}で {{同級生|どう.きゅう.せい}}が だいじ です。
+  {{同級生|どう.きゅう.せい}}と {{教室|きょうしつ}}へ {{行|い}}きます。
 example_it: >-
-  A scuola il compagno di classe è importante.
+  Vado in aula con un compagno di classe.
 :::
 :::term
 id: term-v616-ritaia
@@ -181,8 +182,8 @@ reading: リタイア
 romaji: ritaia
 meaning_it: ritirarsi / mollare
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Nei menu di gara o attività indica l'abbandono prima della fine. Non è una
+  sconfitta automatica di battaglia: è la scelta di ritirarsi da una prova.
 :::
 :::card
 id: card-v616-ritaia-recognition
@@ -204,7 +205,8 @@ reading: しゃがむ
 romaji: shagamu
 meaning_it: accovacciarsi
 notes_it: >-
-  Verbo ad alta frequenza nei tutorial e nei dialoghi.
+  Indica abbassarsi o accovacciarsi. In esplorazione cambia il modo in cui ti
+  muovi vicino a Pokemon o ostacoli, spesso per avvicinarti senza farti notare.
 :::
 :::card
 id: card-v617-shagamu-recognition
@@ -226,8 +228,8 @@ reading: せいべつ
 romaji: seibetsu
 meaning_it: sesso
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Indica il sesso o genere registrato per un personaggio o Pokemon. In schermate
+  dati funziona come campo di profilo, non come descrizione caratteriale.
 :::
 :::card
 id: card-v618-seibetsu-recognition
@@ -249,8 +251,8 @@ reading: ほぞん
 romaji: hozon
 meaning_it: salvare / conservare
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica salvare o conservare dati. Nei menu distingue il tenere uno stato
+  registrato dal semplice guardarlo a schermo.
 :::
 :::card
 id: card-v619-hozon-recognition
@@ -272,8 +274,8 @@ reading: いわやま
 romaji: iwayama
 meaning_it: montagna rocciosa
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica una zona montuosa rocciosa. Nei percorsi prepara a dislivelli, passaggi
+  stretti e ostacoli naturali.
 :::
 :::card
 id: card-v620-iwayama-recognition
@@ -295,8 +297,8 @@ reading: れんけい
 romaji: renkei
 meaning_it: coordinazione
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Indica coordinazione tra persone, Pokemon o funzioni. In lotta e missioni
+  segnala azioni che funzionano insieme, non mosse isolate.
 :::
 :::card
 id: card-v621-renkei-recognition
@@ -307,9 +309,9 @@ card_type: recognition
 front: "{{連携|れんけい}}"
 back: coordinazione
 example_jp: >-
-  {{連携|れんけい}}が だいじです。
+  ネモと {{連携|れんけい}}して バトルします。
 example_it: >-
-  La coordinazione è importante.
+  Combatto coordinandomi con Nemona.
 :::
 :::term
 id: term-v622-kuuchuu
@@ -318,8 +320,8 @@ reading: くうちゅう
 romaji: kuuchuu
 meaning_it: aria / in aria
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica ciò che avviene in aria o mentre sei sospeso. In movimento separa
+  salto, planata e traiettoria dal terreno.
 :::
 :::card
 id: card-v622-kuuchuu-recognition
@@ -341,8 +343,8 @@ reading: レンタルチーム
 romaji: rentaruchiimu
 meaning_it: team a noleggio
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica un team preso in prestito per la lotta. `レンタル` segnala che lo usi
+  temporaneamente, senza possederne i membri.
 :::
 :::term
 id: term-v624-fuzai
@@ -351,8 +353,9 @@ reading: ふざい
 romaji: fuzai
 meaning_it: assenza / non presente
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica che una persona non è presente nel luogo previsto. In aula o reception
+  cambia la lettura della scena: devi aspettare, cercare altrove o parlare con
+  qualcun altro.
 :::
 :::card
 id: card-v624-fuzai-recognition
@@ -374,8 +377,8 @@ reading: めんせつかん
 romaji: mensetsukan
 meaning_it: intervistatore
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica chi conduce un colloquio o una prova orale. In una scena scolastica
+  definisce il ruolo di chi fa domande, non solo una persona qualunque.
 :::
 :::card
 id: card-v625-mensetsukan-recognition
@@ -397,8 +400,8 @@ reading: はいご
 romaji: haigo
 meaning_it: retro / alle spalle
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica la parte dietro qualcuno o qualcosa. In esplorazione e lotta può
+  segnalare un avversario alle spalle o un punto da controllare dietro di te.
 :::
 :::card
 id: card-v626-haigo-recognition
@@ -420,8 +423,8 @@ reading: ランキング
 romaji: rankingu
 meaning_it: classifica
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica una classifica ordinata. Nei menu competitivi va letta insieme a
+  posizione, stagione e punteggio.
 :::
 :::card
 id: card-v627-rankingu-recognition
@@ -443,8 +446,9 @@ reading: ゆうり
 romaji: yuuri
 meaning_it: vantaggioso
 notes_it: >-
-  Ricorre in lotte, descrizioni di mosse, tipi, statistiche e messaggi di
-  battaglia.
+  Indica una situazione favorevole. In lotta può riguardare tipo, posizione o
+  condizione: non significa "forte" in assoluto, ma avvantaggiato rispetto a
+  qualcosa.
 :::
 :::card
 id: card-v628-yuuri-recognition
@@ -466,7 +470,8 @@ reading: こうだい
 romaji: koudai
 meaning_it: vastissimo
 notes_it: >-
-  Parola utile per orientarti e capire il movimento nel mondo aperto.
+  Descrive uno spazio molto ampio. Nel mondo aperto fa percepire scala e
+  distanza, non solo bellezza del paesaggio.
 :::
 :::card
 id: card-v629-koudai-recognition
@@ -477,9 +482,9 @@ card_type: recognition
 front: "{{広大|こうだい}}"
 back: vastissimo
 example_jp: >-
-  ここは {{広大|こうだい}}です。
+  {{広大|こうだい}}な パルデアを {{旅|たび}}します。
 example_it: >-
-  Qui è vastissimo.
+  Viaggio nella vastissima Paldea.
 :::
 :::term
 id: term-v630-risetto
@@ -488,8 +493,8 @@ reading: リセット
 romaji: risetto
 meaning_it: reset
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica riportare una scelta o un valore allo stato iniziale. Nei menu può
+  annullare modifiche, quindi va letto come azione potenzialmente distruttiva.
 :::
 :::card
 id: card-v630-risetto-recognition
@@ -511,8 +516,8 @@ reading: じゅんい
 romaji: juni
 meaning_it: posizione in classifica
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Indica la posizione occupata in una classifica. Va letto con numeri, stagione
+  o ranking: dice dove ti trovi rispetto agli altri.
 :::
 :::card
 id: card-v631-juni-recognition
@@ -534,8 +539,8 @@ reading: しょうがいぶつ
 romaji: shougaibutsu
 meaning_it: ostacolo
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica un ostacolo fisico sul percorso. In movimento segnala ciò che blocca,
+  rallenta o richiede un'abilità per essere superato.
 :::
 :::card
 id: card-v632-shougaibutsu-recognition
@@ -557,8 +562,8 @@ reading: こてい
 romaji: kotei
 meaning_it: fissaggio / lock
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica fissare o bloccare un'impostazione. Nei menu fa capire che una scelta
+  resta stabile finché non la cambi.
 :::
 :::card
 id: card-v633-kotei-recognition
@@ -580,8 +585,8 @@ reading: ヘルプ
 romaji: herupu
 meaning_it: aiuto
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica la funzione di aiuto o guida. In UI di solito apre spiegazioni, non una
+  cura o un supporto in battaglia.
 :::
 :::card
 id: card-v634-herupu-recognition
@@ -603,8 +608,8 @@ reading: あたまもじ
 romaji: atamamoji
 meaning_it: iniziale
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica la prima lettera o il primo carattere. In ordinamenti e filtri serve a
+  cercare nomi per iniziale.
 :::
 :::card
 id: card-v635-atamamoji-recognition
@@ -626,8 +631,8 @@ reading: ほんこう
 romaji: honkou
 meaning_it: sede principale
 notes_it: >-
-  Ricorre nella cornice scolastica, nei dialoghi di classe e nelle parti di
-  trama.
+  Indica la sede principale della scuola. Quando compare, distingue il campus
+  centrale da sedi, luoghi o attività esterne.
 :::
 :::card
 id: card-v636-honkou-recognition
@@ -649,8 +654,8 @@ reading: たいきなか
 romaji: taikinaka
 meaning_it: in attesa
 notes_it: >-
-  Termine molto utile nei menu, nei tutorial, nel box, nella borsa e nei
-  messaggi di sistema.
+  Indica che il sistema o un giocatore sta aspettando. In matchmaking e menu
+  online segnala uno stato temporaneo, prima che l'azione prosegua.
 :::
 :::card
 id: card-v637-taikinaka-recognition

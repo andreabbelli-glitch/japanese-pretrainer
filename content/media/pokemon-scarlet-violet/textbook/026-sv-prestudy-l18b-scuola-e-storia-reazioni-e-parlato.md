@@ -89,4 +89,4 @@ translation_it: >-
 
 ## Nota finale
 
-Se una frase ti sembra corta ma sfuggente, guarda prima se sta indicando una materia, un esito, un cambio di argomento o una supposizione. In questo blocco sono questi i segnali che chiariscono la scena più in fretta.
+Se una frase è corta ma sfuggente, cerca prima il ruolo della forma: 生物 nomina la materia, 合格 l'esito, ところで il cambio di argomento, だろう / でしょう la supposizione e のか la domanda esplicativa.

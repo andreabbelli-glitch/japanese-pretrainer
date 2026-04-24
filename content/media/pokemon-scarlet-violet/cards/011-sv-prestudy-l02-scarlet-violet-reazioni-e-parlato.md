@@ -13,7 +13,8 @@ reading: もちきれない / もちきれません
 romaji: mochikirenai / mochikiremasen
 meaning_it: non puoi portarne di più / inventario pieno
 notes_it: >-
-  Quando la borsa o lo spazio disponibile sono saturi.
+  Segnala che il limite di trasporto è già stato raggiunto. In un popup non
+  parla di peso fisico generico, ma dello spazio disponibile in borsa o inventario.
 :::
 :::card
 id: card-e003-mochikirenai-mochikiremasen-recognition
@@ -35,7 +36,8 @@ reading: がんばって
 romaji: ganbatte
 meaning_it: forza / buona fortuna
 notes_it: >-
-  Incoraggiamento classico prima di una sfida.
+  Formula di incoraggiamento prima di una sfida, un test o una partenza. Non
+  descrive lo sforzo: invita l’altra persona a reggere bene la prova.
 :::
 :::card
 id: card-e004-ganbatte-recognition
@@ -57,8 +59,8 @@ reading: よろしく
 romaji: yoroshiku
 meaning_it: piacere / conto su di te
 notes_it: >-
-  Formula super frequente quando inizi una sfida, una collaborazione o un
-  dialogo importante.
+  Formula elastica per avviare un rapporto, una collaborazione o una sfida. In
+  `これから よろしく` il punto è "da qui in poi contiamo l’uno sull’altro".
 :::
 :::card
 id: card-e005-yoroshiku-recognition
@@ -79,8 +81,8 @@ pattern: ～ないで
 title: Senza fare / non fare
 meaning_it: senza fare... / non fare e...
 notes_it: >-
-  Si usa per dire "senza fare X" oppure per collegare una negazione a cio che
-  segue. E comune in istruzioni e richieste: みないで = senza guardare / non
+  Si usa per dire "senza fare X" oppure per collegare una negazione a ciò che
+  segue. È comune in istruzioni e richieste: みないで = senza guardare / non
   guardare.
 :::
 :::card
@@ -105,7 +107,7 @@ aliases:
 - 〜ている
 notes_it: >-
   Nel parlato 〜ている diventa spesso 〜てる. Il significato non cambia: cambia solo
-  il registro, piu naturale e informale nei dialoghi veloci.
+  il registro, più naturale e informale nei dialoghi veloci.
 :::
 :::card
 id: card-g006-contrazione-colloquiale-di-concept
@@ -127,7 +129,8 @@ reading: もう
 romaji: mou
 meaning_it: già / ormai
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Può significare "già", "ormai" o "su, adesso". In `もう {{行|い}}こう` non
+  misura solo il tempo: spinge il dialogo verso l’azione successiva.
 :::
 :::card
 id: card-v013-mou-recognition
@@ -138,9 +141,9 @@ card_type: recognition
 front: 'もう'
 back: già / ormai
 example_jp: >-
-  もう {{行|い}}きます。
+  もう {{行|い}}こう、 ネモが {{待|ま}}ってる。
 example_it: >-
-  Ormai vado.
+  Andiamo ormai, Nemona sta aspettando.
 :::
 :::term
 id: term-v014-raido
@@ -149,8 +152,8 @@ reading: ライド
 romaji: raido
 meaning_it: ride / cavalcata
 notes_it: >-
-  Utile per orientarti, seguire gli obiettivi e capire i tutorial di
-  movimento.
+  Indica la cavalcata sul Pokémon leggendario usata per muoversi. Vicino a
+  {{移動|いどう}}, こっち o この{{先|さき}} segnala un tutorial di spostamento.
 :::
 :::card
 id: card-v014-raido-recognition
@@ -161,9 +164,9 @@ card_type: recognition
 front: 'ライド'
 back: ride / cavalcata
 example_jp: >-
-  ライドで {{行|い}}きます。
+  ライドで こっちへ {{行|い}}きます。
 example_it: >-
-  Ci vado in sella.
+  Vado da questa parte in sella.
 :::
 :::term
 id: term-v015-jibun
@@ -172,7 +175,8 @@ reading: じぶん
 romaji: jibun
 meaning_it: sé stesso
 notes_it: >-
-  Parola molto frequente nei dialoghi NPC e nelle reazioni dei personaggi.
+  Indica il soggetto stesso. In `{{自分|じぶん}}で やる` il senso è "farlo da
+  soli / personalmente", non semplicemente "io".
 :::
 :::card
 id: card-v015-jibun-recognition
@@ -194,7 +198,9 @@ reading: すごい
 romaji: sugoi
 meaning_it: incredibile / forte
 notes_it: >-
-  Parola-cerniera utile per capire tono e passaggi dei dialoghi.
+  Reazione larga di sorpresa o ammirazione. Può riferirsi a forza, risultato,
+  oggetto o scena; il contesto decide se tradurre "incredibile", "forte" o
+  "notevole".
 :::
 :::card
 id: card-v016-sugoi-recognition
@@ -205,9 +211,9 @@ card_type: recognition
 front: 'すごい'
 back: incredibile / forte
 example_jp: >-
-  この ポケモンは すごい です。
+  すごい！ ジムバトル、 {{強|つよ}}かったね。
 example_it: >-
-  Questo Pokémon è incredibile.
+  Incredibile! Nella lotta in palestra eri forte.
 :::
 :::term
 id: term-v017-sutaa-dan
@@ -216,7 +222,8 @@ reading: すたーだん
 romaji: sutaa dan
 meaning_it: Team Star
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Nome del gruppo legato al percorso scolastico di Scarlet / Violet. Quando
+  compare, la scena sta entrando nel filone delle basi e dei membri del Team Star.
 :::
 :::term
 id: term-v018-botan
@@ -225,7 +232,8 @@ reading: ぼたん
 romaji: botan
 meaning_it: Penny
 notes_it: >-
-  Termini tipici di Scarlet/Violet che vale la pena conoscere prima di iniziare.
+  Nome giapponese di Penny. Nei dialoghi segnala il passaggio a un personaggio
+  specifico del filone Team Star, non un bottone della UI.
 :::
 :::term
 id: term-v019-gakkou
@@ -234,7 +242,8 @@ reading: がっこう
 romaji: gakkou
 meaning_it: scuola
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  Indica la scuola come luogo e istituzione. In frasi con アカデミー o
+  {{先生|せんせい}} porta la scena dentro la cornice scolastica.
 :::
 :::card
 id: card-v019-gakkou-recognition
@@ -245,9 +254,9 @@ card_type: recognition
 front: '{{学校|がっこう}}'
 back: scuola
 example_jp: >-
-  {{学校|がっこう}}へ {{行|い}}きます。
+  {{学校|がっこう}}で {{先生|せんせい}}の {{話|はなし}}を {{聞|き}}く。
 example_it: >-
-  Vado a scuola.
+  A scuola ascolto il discorso dell’insegnante.
 :::
 :::term
 id: term-v020-akademii
@@ -268,9 +277,9 @@ card_type: recognition
 front: 'アカデミー'
 back: accademia
 example_jp: >-
-  アカデミーへ {{行|い}}きます。
+  アカデミーで {{新|あたら}}しい {{生徒|せいと}}に {{会|あ}}う。
 example_it: >-
-  Vado all'accademia.
+  All’Accademia incontro un nuovo studente.
 :::
 :::term
 id: term-v021-tsuyoi
@@ -279,8 +288,8 @@ reading: つよい
 romaji: tsuyoi
 meaning_it: forte
 notes_it: >-
-  Lessico di battaglia: ricorre in sfide, spiegazioni di lotta, palestre e
-  raid.
+  Descrive forza, potenza o capacità in lotta. Con ポケモン, わざ o
+  {{相手|あいて}} parla della minaccia concreta nello scontro.
 :::
 :::card
 id: card-v021-tsuyoi-recognition
@@ -291,9 +300,9 @@ card_type: recognition
 front: '{{強|つよ}}い'
 back: forte
 example_jp: >-
-  この ポケモンは {{強|つよ}}い です。
+  {{相手|あいて}}の ポケモンは {{強|つよ}}いから、 タイプを {{見|み}}よう。
 example_it: >-
-  Questo Pokémon è forte.
+  Il Pokémon avversario è forte, quindi guardiamo il tipo.
 :::
 :::term
 id: term-v022-eriazero
@@ -302,8 +311,8 @@ reading: エリアゼロ
 romaji: eriazero
 meaning_it: Area Zero
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Nome dell’Area Zero. Quando appare, la scena richiama la grande zona centrale
+  della trama, non una generica area di mappa.
 :::
 :::term
 id: term-v023-sandowicchi
@@ -312,8 +321,8 @@ reading: サンドウィッチ
 romaji: sandowicchi
 meaning_it: sandwich
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Oggetto preparato durante picnic e tutorial di cucina. Nei menu è legato a
+  {{食材|しょくざい}}, preparazione e bonus pasto.
 :::
 :::card
 id: card-v023-sandowicchi-recognition
@@ -335,7 +344,8 @@ reading: せいと
 romaji: seito
 meaning_it: studente
 notes_it: >-
-  Parola utile nella vita scolastica e nei dialoghi della trama iniziale.
+  Indica uno studente dell’Accademia. Vicino a {{先生|せんせい}} o
+  {{学校|がっこう}} chiarisce il ruolo della persona nella scena.
 :::
 :::card
 id: card-v024-seito-recognition
@@ -346,9 +356,9 @@ card_type: recognition
 front: '{{生徒|せいと}}'
 back: studente
 example_jp: >-
-  {{生徒|せいと}}が います。
+  {{新|あたら}}しい {{生徒|せいと}}が アカデミーに {{来|き}}ます。
 example_it: >-
-  C'è uno studente.
+  Un nuovo studente arriva all’Accademia.
 :::
 :::term
 id: term-v025-shitenou
@@ -357,8 +367,8 @@ reading: してんのう
 romaji: shitenou
 meaning_it: Superquattro
 notes_it: >-
-  Termine tipico di Scarlet/Violet: aiuta a seguire progressione, tutorial e
-  dialoghi chiave.
+  Nome del gruppo dei quattro avversari finali della Lega. Vicino a
+  チャンピオン indica la parte alta del percorso competitivo.
 :::
 :::card
 id: card-v025-shitenou-recognition
@@ -369,7 +379,7 @@ card_type: recognition
 front: '{{四天王|し.てん.のう}}'
 back: Superquattro
 example_jp: >-
-  {{四天王|し.てん.のう}}は つよい です。
+  {{四天王|し.てん.のう}}に {{挑戦|ちょうせん}}する {{前|まえ}}に {{準備|じゅんび}}する。
 example_it: >-
-  Superquattro è forte.
+  Mi preparo prima di sfidare i Superquattro.
 :::
