@@ -46,7 +46,7 @@ import type {
   GlossaryKind,
   GlossaryMediaSummary,
   RankedGlossaryEntry
-} from "@/lib/glossary";
+} from "@/lib/glossary-types";
 
 export function mapEntryToBaseModel(
   entry: TermGlossaryEntry,

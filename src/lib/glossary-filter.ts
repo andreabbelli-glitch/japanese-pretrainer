@@ -18,7 +18,7 @@ import type {
   GlossarySearchResult,
   RankedGlossaryEntry,
   StudySignalRow
-} from "@/lib/glossary";
+} from "@/lib/glossary-types";
 
 const cardsFilterOptions: GlossaryCardsFilter[] = [
   "all",

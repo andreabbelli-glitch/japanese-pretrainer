@@ -1,5 +1,7 @@
-import { createHmac, timingSafeEqual } from "node:crypto";
-
+import {
+  createSignedPayloadToken,
+  verifySignedPayloadToken
+} from "../signed-token.ts";
 import { materializeKanjiClashSessionRound } from "./queue.ts";
 import { buildKanjiClashPairKey } from "./utils.ts";
 import type {
@@ -143,39 +145,22 @@ export function createKanjiClashQueueToken(queue: KanjiClashQueueSnapshot) {
       queue
     ) satisfies CompactKanjiClashQueueTokenPayloadV4
   );
-  const encodedPayload = toBase64Url(payload);
-  const signature = signKanjiClashQueueTokenPayload(
-    encodedPayload,
-    getKanjiClashQueueTokenSecret()
-  );
 
-  return `${encodedPayload}.${signature}`;
+  return createSignedPayloadToken(payload, getKanjiClashQueueTokenSecret());
 }
 
 export function verifyKanjiClashQueueToken(token: string) {
-  const tokenParts = token.split(".");
-
-  if (tokenParts.length !== 2) {
-    return null;
-  }
-
-  const [encodedPayload, signature] = tokenParts;
-
-  if (!encodedPayload || !signature) {
-    return null;
-  }
-
-  const expectedSignature = signKanjiClashQueueTokenPayload(
-    encodedPayload,
+  const verifiedPayload = verifySignedPayloadToken(
+    token,
     getKanjiClashQueueTokenSecret()
   );
 
-  if (!safeEqual(signature, expectedSignature)) {
+  if (verifiedPayload === null) {
     return null;
   }
 
   try {
-    const payload = JSON.parse(fromBase64Url(encodedPayload)) as Partial<
+    const payload = JSON.parse(verifiedPayload) as Partial<
       | CompactKanjiClashQueueTokenPayloadV4
       | CompactKanjiClashQueueTokenPayloadV3
       | CompactKanjiClashQueueTokenPayload
@@ -219,29 +204,6 @@ function getKanjiClashQueueTokenSecret() {
   // the local workspace, so it preserves integrity checks against accidental
   // corruption, but it is not meant to be a security boundary.
   return `jcs-kanji-clash:${process.cwd()}`;
-}
-
-function signKanjiClashQueueTokenPayload(payload: string, secret: string) {
-  return createHmac("sha256", secret).update(payload).digest("base64url");
-}
-
-function toBase64Url(value: string) {
-  return Buffer.from(value, "utf8").toString("base64url");
-}
-
-function fromBase64Url(value: string) {
-  return Buffer.from(value, "base64url").toString("utf8");
-}
-
-function safeEqual(left: string, right: string) {
-  const leftBuffer = Buffer.from(left);
-  const rightBuffer = Buffer.from(right);
-
-  if (leftBuffer.length !== rightBuffer.length) {
-    return false;
-  }
-
-  return timingSafeEqual(leftBuffer, rightBuffer);
 }
 
 function serializeKanjiClashQueueTokenPayloadV4(

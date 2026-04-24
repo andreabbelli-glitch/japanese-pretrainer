@@ -14,7 +14,7 @@ import type {
   GlossarySearchResult,
   GlobalGlossaryAutocompleteSuggestion,
   RankedGlossaryEntry
-} from "@/lib/glossary";
+} from "@/lib/glossary-types";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 
 type FilteredQuery = SearchQueryVariants;

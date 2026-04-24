@@ -1,4 +1,4 @@
-import type { EntryType } from "@/db";
+import type { EntryType } from "@/domain/content";
 
 export type KanjiClashEligibleReviewState = "review" | "relearning";
 

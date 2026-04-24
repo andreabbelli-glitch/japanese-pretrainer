@@ -8,10 +8,11 @@ import {
   type ReviewSubjectStateSnapshot
 } from "./review-subject";
 import type { ReviewOverviewSnapshot, ReviewQueueCard } from "./review-types";
-import {
-  resolveReviewQueueState,
-  type ReviewQueueStateSnapshot
-} from "./review-queue-state";
+import { resolveReviewQueueState } from "./review-queue-state";
+import type {
+  ReviewQueueSubjectSnapshot,
+  ReviewSubjectModel
+} from "./review-queue-types";
 
 export {
   buildReviewFirstCandidateSelectedCardContext,
@@ -22,32 +23,10 @@ export {
   formatBucketLabel,
   formatShortIsoDate
 } from "./review-queue-presentation";
-
-export type ReviewSubjectModel = {
-  card: ReviewCardListItem;
-  group: ReviewSubjectGroup;
-  queueStateSnapshot: ReviewQueueStateSnapshot;
-};
-
-export type ReviewQueueSubjectSnapshot = {
-  dailyLimit: number;
-  dueCount: number;
-  effectiveDailyLimit: number;
-  introLabel: string;
-  manualCount: number;
-  manualModels: ReviewSubjectModel[];
-  newAvailableCount: number;
-  newQueuedCount: number;
-  queueCount: number;
-  queueModels: ReviewSubjectModel[];
-  subjectModels: ReviewSubjectModel[];
-  suspendedCount: number;
-  suspendedModels: ReviewSubjectModel[];
-  tomorrowCount: number;
-  upcomingCount: number;
-  upcomingModels: ReviewSubjectModel[];
-  visibleMediaId?: string;
-};
+export type {
+  ReviewQueueSubjectSnapshot,
+  ReviewSubjectModel
+} from "./review-queue-types";
 
 function createReviewSubjectVisibilityResolver(visibleMediaId?: string) {
   if (!visibleMediaId) {

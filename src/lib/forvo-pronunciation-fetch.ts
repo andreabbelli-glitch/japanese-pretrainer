@@ -1,12 +1,5 @@
 import { createInterface } from "node:readline/promises";
-import {
-  copyFile,
-  mkdir,
-  readdir,
-  readFile,
-  stat,
-  writeFile
-} from "node:fs/promises";
+import { copyFile, mkdir, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import { spawn } from "node:child_process";
 import { createServer } from "node:http";
@@ -34,6 +27,13 @@ import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
 } from "./pronunciation-shared.ts";
+import {
+  addForvoKnownMissingEntry,
+  hasForvoKnownMissingEntry,
+  loadForvoKnownMissingRegistry,
+  persistForvoKnownMissingRegistry,
+  pruneForvoKnownMissingRegistry
+} from "./forvo-known-missing.ts";
 import {
   addForvoWordAddRequestEntry,
   buildForvoWordAddUrl,
@@ -72,21 +72,6 @@ export type ForvoManualOptions = {
   openWordAddOnSkip?: boolean;
   requestRegistryPath?: string;
   retryKnownMissing?: boolean;
-};
-
-type ForvoKnownMissingEntry = {
-  entryId: string;
-  entryKind: "term" | "grammar";
-  label: string;
-  mediaSlug: string;
-  reading?: string;
-  reason: "not_found_on_forvo";
-  updatedAt: string;
-};
-
-type ForvoKnownMissingRegistry = {
-  version: 1;
-  entries: ForvoKnownMissingEntry[];
 };
 
 type SkipResolutionMode = "active" | "pending";
@@ -309,7 +294,7 @@ export async function fetchForvoPronunciationsForBundleManual(input: {
       }
 
       if (resolved.status === "skipped_known_missing") {
-        addKnownMissingEntry(knownMissingRegistry, {
+        addForvoKnownMissingEntry(knownMissingRegistry, {
           entry,
           mediaSlug: input.bundle.mediaSlug
         });
@@ -437,7 +422,9 @@ async function prepareForvoPronunciationRun(input: {
   const resolvedRequestCount = reconcileForvoWordAddRequestRegistry(
     requestRegistry,
     allTargets.map((entry) => {
-      const manifestEntry = manifestEntries.get(buildEntryKey(entry.kind, entry.id));
+      const manifestEntry = manifestEntries.get(
+        buildEntryKey(entry.kind, entry.id)
+      );
 
       return {
         audioSource: manifestEntry?.audioSource,
@@ -448,7 +435,7 @@ async function prepareForvoPronunciationRun(input: {
       };
     })
   );
-  const knownMissingPruned = pruneKnownMissingRegistry(
+  const knownMissingPruned = pruneForvoKnownMissingRegistry(
     knownMissingRegistry,
     allTargets,
     input.bundle.mediaSlug
@@ -468,20 +455,20 @@ async function prepareForvoPronunciationRun(input: {
   const knownMissingSkipped = input.retryKnownMissing
     ? []
     : limitedTargets.filter((entry) =>
-        hasKnownMissingForEntry(
+        hasForvoKnownMissingEntry(
           knownMissingRegistry,
-          input.bundle.mediaSlug,
-          entry
+          entry,
+          input.bundle.mediaSlug
         )
       );
   const runnableTargets =
     knownMissingSkipped.length > 0
       ? limitedTargets.filter(
           (entry) =>
-            !hasKnownMissingForEntry(
+            !hasForvoKnownMissingEntry(
               knownMissingRegistry,
-              input.bundle.mediaSlug,
-              entry
+              entry,
+              input.bundle.mediaSlug
             )
         )
       : limitedTargets;
@@ -1051,133 +1038,6 @@ function closeInteractiveReadline(
   if (process.stdin.isTTY) {
     process.stdin.pause();
   }
-}
-
-async function loadForvoKnownMissingRegistry(filePath?: string) {
-  if (!filePath) {
-    return {
-      entries: [],
-      version: 1
-    } satisfies ForvoKnownMissingRegistry;
-  }
-
-  try {
-    const raw = await readFile(filePath, "utf8");
-    const parsed = JSON.parse(raw) as Partial<ForvoKnownMissingRegistry>;
-
-    return {
-      entries: Array.isArray(parsed.entries) ? parsed.entries : [],
-      version: 1
-    } satisfies ForvoKnownMissingRegistry;
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return {
-        entries: [],
-        version: 1
-      } satisfies ForvoKnownMissingRegistry;
-    }
-
-    throw error;
-  }
-}
-
-async function persistForvoKnownMissingRegistry(
-  filePath: string | undefined,
-  registry: ForvoKnownMissingRegistry
-) {
-  if (!filePath) {
-    return;
-  }
-
-  await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(
-    filePath,
-    `${JSON.stringify(
-      {
-        version: 1,
-        entries: registry.entries.sort((left, right) => {
-          const mediaDelta = left.mediaSlug.localeCompare(right.mediaSlug);
-
-          if (mediaDelta !== 0) {
-            return mediaDelta;
-          }
-
-          const kindDelta = left.entryKind.localeCompare(right.entryKind);
-
-          if (kindDelta !== 0) {
-            return kindDelta;
-          }
-
-          return left.entryId.localeCompare(right.entryId);
-        })
-      },
-      null,
-      2
-    )}\n`
-  );
-}
-
-function hasKnownMissingForEntry(
-  registry: ForvoKnownMissingRegistry,
-  mediaSlug: string,
-  entry: PronunciationTargetEntry
-) {
-  return registry.entries.some(
-    (candidate) =>
-      candidate.mediaSlug === mediaSlug &&
-      candidate.entryKind === entry.kind &&
-      candidate.entryId === entry.id
-  );
-}
-
-function addKnownMissingEntry(
-  registry: ForvoKnownMissingRegistry,
-  input: {
-    entry: PronunciationTargetEntry;
-    mediaSlug: string;
-  }
-) {
-  if (input.entry.audioSrc) {
-    return;
-  }
-
-  if (hasKnownMissingForEntry(registry, input.mediaSlug, input.entry)) {
-    return;
-  }
-
-  registry.entries.push({
-    entryId: input.entry.id,
-    entryKind: input.entry.kind,
-    label: input.entry.label,
-    mediaSlug: input.mediaSlug,
-    reading: input.entry.reading,
-    reason: "not_found_on_forvo",
-    updatedAt: new Date().toISOString()
-  });
-}
-
-function pruneKnownMissingRegistry(
-  registry: ForvoKnownMissingRegistry,
-  targets: PronunciationTargetEntry[],
-  mediaSlug: string
-) {
-  const audioBacked = new Set(
-    targets
-      .filter((entry) => entry.mediaSlug === mediaSlug && entry.audioSrc)
-      .map((entry) => buildEntryKey(entry.kind, entry.id))
-  );
-  const nextEntries = registry.entries.filter(
-    (entry) =>
-      entry.mediaSlug !== mediaSlug ||
-      !audioBacked.has(buildEntryKey(entry.entryKind, entry.entryId))
-  );
-
-  if (nextEntries.length === registry.entries.length) {
-    return false;
-  }
-
-  registry.entries = nextEntries;
-  return true;
 }
 
 async function findNewestCompletedAudioFile(input: {

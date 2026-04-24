@@ -1,9 +1,10 @@
+import { pbkdf2Sync, randomBytes } from "node:crypto";
+
 import {
-  createHmac,
-  pbkdf2Sync,
-  randomBytes,
-  timingSafeEqual
-} from "node:crypto";
+  createSignedPayloadToken,
+  timingSafeStringEqual,
+  verifySignedPayloadToken
+} from "./signed-token.ts";
 
 export const AUTH_SESSION_COOKIE = "jcs_session";
 export const AUTH_LOGIN_PATH = "/login";
@@ -141,7 +142,7 @@ export function verifyLoginCredentials(input: {
     return false;
   }
 
-  if (!safeEqual(input.username.trim(), config.username)) {
+  if (!timingSafeStringEqual(input.username.trim(), config.username)) {
     return false;
   }
 
@@ -149,7 +150,7 @@ export function verifyLoginCredentials(input: {
     return verifyPasswordHash(input.password, config.passwordHash);
   }
 
-  return safeEqual(input.password, config.passwordPlaintext ?? "");
+  return timingSafeStringEqual(input.password, config.passwordPlaintext ?? "");
 }
 
 export function createSessionToken(now = Date.now()) {
@@ -163,10 +164,7 @@ export function createSessionToken(now = Date.now()) {
     exp: now + SESSION_DURATION_MS,
     usr: config.username
   });
-  const encodedPayload = toBase64Url(payload);
-  const signature = signSessionPayload(encodedPayload, config.sessionSecret);
-
-  return `${encodedPayload}.${signature}`;
+  return createSignedPayloadToken(payload, config.sessionSecret);
 }
 
 export function verifySessionToken(token: string, now = Date.now()) {
@@ -176,29 +174,14 @@ export function verifySessionToken(token: string, now = Date.now()) {
     return true;
   }
 
-  const tokenSegments = token.split(".");
+  const verifiedPayload = verifySignedPayloadToken(token, config.sessionSecret);
 
-  if (tokenSegments.length !== 2) {
-    return false;
-  }
-
-  const [encodedPayload, signature] = tokenSegments;
-
-  if (!encodedPayload || !signature) {
-    return false;
-  }
-
-  const expectedSignature = signSessionPayload(
-    encodedPayload,
-    config.sessionSecret
-  );
-
-  if (!safeEqual(signature, expectedSignature)) {
+  if (verifiedPayload === null) {
     return false;
   }
 
   try {
-    const payload = JSON.parse(fromBase64Url(encodedPayload)) as {
+    const payload = JSON.parse(verifiedPayload) as {
       exp?: number;
       usr?: string;
     };
@@ -207,7 +190,7 @@ export function verifySessionToken(token: string, now = Date.now()) {
       typeof payload.exp === "number" &&
       payload.exp > now &&
       typeof payload.usr === "string" &&
-      safeEqual(payload.usr, config.username)
+      timingSafeStringEqual(payload.usr, config.username)
     );
   } catch {
     return false;
@@ -269,28 +252,5 @@ function verifyPasswordHash(password: string, storedHash: string) {
     PBKDF2_DIGEST
   ).toString("hex");
 
-  return safeEqual(actualHash, expectedHash);
-}
-
-function signSessionPayload(payload: string, secret: string) {
-  return createHmac("sha256", secret).update(payload).digest("base64url");
-}
-
-function toBase64Url(value: string) {
-  return Buffer.from(value, "utf8").toString("base64url");
-}
-
-function fromBase64Url(value: string) {
-  return Buffer.from(value, "base64url").toString("utf8");
-}
-
-function safeEqual(left: string, right: string) {
-  const leftBuffer = Buffer.from(left);
-  const rightBuffer = Buffer.from(right);
-
-  if (leftBuffer.length !== rightBuffer.length) {
-    return false;
-  }
-
-  return timingSafeEqual(leftBuffer, rightBuffer);
+  return timingSafeStringEqual(actualHash, expectedHash);
 }

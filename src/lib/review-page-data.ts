@@ -38,7 +38,7 @@ import {
   formatShortIsoDate
 } from "./review-queue-presentation";
 import { type ReviewQueueStateSnapshot } from "./review-queue-state";
-import { type ReviewSubjectModel } from "./review-queue";
+import { type ReviewSubjectModel } from "./review-queue-types";
 import type { ReviewSubjectGroup } from "./review-subject";
 import {
   buildReviewMediaLookup,

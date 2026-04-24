@@ -8,6 +8,8 @@ import { TextbookIndexPage } from "@/components/textbook/textbook-index-page";
 import {
   buildGlossaryHref,
   kanjiClashHref,
+  buildReviewRedirectUrl,
+  buildReviewSearchParams,
   buildReviewSessionHref,
   mediaKanjiClashHref,
   mediaAssetHref,
@@ -135,6 +137,48 @@ describe("site helpers", () => {
       "/media/fixture-tcg/review",
       "/media/fixture-tcg/progress"
     ]);
+  });
+
+  it("builds review redirect URLs with preserved cards, detail return targets, and answer state", () => {
+    expect(
+      buildReviewRedirectUrl({
+        answeredCount: 4,
+        cardId: "card-iku-review",
+        extraNewCount: 2,
+        mediaSlug: "fixture-tcg",
+        notice: "known",
+        redirectMode: "preserve_card",
+        segmentId: "segment_fixture_starter_core"
+      })
+    ).toBe(
+      "/media/fixture-tcg/review?answered=4&card=card-iku-review&extraNew=2&segment=segment_fixture_starter_core&notice=known"
+    );
+
+    expect(
+      buildReviewRedirectUrl({
+        answeredCount: 0,
+        cardId: "card-iku-review",
+        mediaSlug: "fixture-tcg",
+        redirectMode: "stay_detail",
+        returnTo: "/review?answered=3&card=card-prev" as Route
+      })
+    ).toBe(
+      "/media/fixture-tcg/review/card/card-iku-review?returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-prev"
+    );
+
+    expect(
+      buildReviewSearchParams({
+        answeredCount: 1,
+        cardId: "card-iku-review",
+        extraNewCount: 0,
+        segmentId: null,
+        showAnswer: true
+      })
+    ).toEqual({
+      answered: "1",
+      card: "card-iku-review",
+      show: "answer"
+    });
   });
 
   it("resolves the active primary nav entry for nested review routes", () => {

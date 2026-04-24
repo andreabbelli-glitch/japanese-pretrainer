@@ -1,7 +1,7 @@
 import type {
   GlobalGlossaryAutocompleteSuggestion,
   GlossaryQueryState
-} from "@/lib/glossary";
+} from "@/lib/glossary-types";
 import {
   buildSearchQueryVariants,
   compactLatinSearchText,

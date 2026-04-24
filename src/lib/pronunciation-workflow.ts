@@ -8,24 +8,20 @@ import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
 } from "./pronunciation-shared.ts";
+import { loadForvoKnownMissingRegistry } from "./forvo-known-missing.ts";
+import type {
+  ForvoKnownMissingEntry,
+  ForvoKnownMissingRegistry
+} from "./forvo-known-missing.ts";
+
+export { loadForvoKnownMissingRegistry } from "./forvo-known-missing.ts";
+export type {
+  ForvoKnownMissingEntry,
+  ForvoKnownMissingRegistry
+} from "./forvo-known-missing.ts";
 
 export const pronunciationWorkflowDirectoryName = "workflow";
 export const pronunciationPendingFileName = "pronunciation-pending.json";
-
-export type ForvoKnownMissingEntry = {
-  entryId: string;
-  entryKind: "term" | "grammar";
-  label?: string;
-  mediaSlug: string;
-  reading?: string;
-  reason?: "not_found_on_forvo";
-  updatedAt?: string;
-};
-
-export type ForvoKnownMissingRegistry = {
-  version: 1;
-  entries: ForvoKnownMissingEntry[];
-};
 
 export type PronunciationPendingEntry = {
   entryId: string;
@@ -162,55 +158,6 @@ function hasAudio(
   return (
     Boolean(entry.audioSrc) ||
     manifestAudioBacked.has(buildEntryKey(entry.kind, entry.id))
-  );
-}
-
-export async function loadForvoKnownMissingRegistry(
-  knownMissingPath?: string
-): Promise<ForvoKnownMissingRegistry> {
-  if (!knownMissingPath) {
-    return {
-      entries: [],
-      version: 1
-    } satisfies ForvoKnownMissingRegistry;
-  }
-
-  try {
-    const source = await readFile(knownMissingPath, "utf8");
-    const parsed = JSON.parse(source);
-    const entries = Array.isArray(parsed?.entries) ? parsed.entries : [];
-
-    return {
-      entries: entries.filter(isForvoKnownMissingEntry),
-      version: 1
-    } satisfies ForvoKnownMissingRegistry;
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException)?.code === "ENOENT") {
-      return {
-        entries: [],
-        version: 1
-      } satisfies ForvoKnownMissingRegistry;
-    }
-
-    throw new Error(
-      `Could not read Forvo known-missing registry at '${knownMissingPath}'.`
-    );
-  }
-}
-
-function isForvoKnownMissingEntry(
-  value: unknown
-): value is ForvoKnownMissingEntry {
-  if (!value || typeof value !== "object") {
-    return false;
-  }
-
-  const candidate = value as Partial<ForvoKnownMissingEntry>;
-
-  return (
-    (candidate.entryKind === "term" || candidate.entryKind === "grammar") &&
-    typeof candidate.entryId === "string" &&
-    typeof candidate.mediaSlug === "string"
   );
 }
 

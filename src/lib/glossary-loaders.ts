@@ -76,7 +76,7 @@ import type {
   GlobalGlossaryAutocompleteSuggestion,
   GlobalGlossaryPageData,
   GlobalGlossaryPagination
-} from "./glossary";
+} from "./glossary-types";
 type GlossaryLoadMode = "list" | "search";
 
 const GLOBAL_GLOSSARY_PAGE_SIZE = 24;

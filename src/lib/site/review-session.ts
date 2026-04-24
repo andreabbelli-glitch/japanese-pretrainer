@@ -1,6 +1,18 @@
 import type { Route } from "next";
 
-import { buildHrefWithSearch, mediaReviewHref, reviewHref } from "./hrefs.ts";
+import {
+  appendReturnToParam,
+  buildHrefWithSearch,
+  mediaReviewCardHref,
+  mediaReviewHref,
+  mediaStudyHref,
+  reviewHref
+} from "./hrefs.ts";
+
+export type ReviewRedirectMode =
+  | "advance_queue"
+  | "preserve_card"
+  | "stay_detail";
 
 export function buildReviewSessionHref(input: {
   answeredCount?: number;
@@ -119,4 +131,96 @@ export function replaceReviewCardInHref(
     params.set("card", cardId);
     params.delete("show");
   });
+}
+
+export function buildReviewRedirectUrl(input: {
+  answeredCount: number;
+  cardId?: string;
+  extraNewCount?: number;
+  mediaSlug: string;
+  redirectMode?: ReviewRedirectMode;
+  notice?: string;
+  segmentId?: string | null;
+  returnTo?: Route | null;
+}): Route {
+  if (input.redirectMode === "stay_detail" && input.cardId) {
+    return appendReturnToParam(
+      mediaReviewCardHref(input.mediaSlug, input.cardId),
+      input.returnTo
+    );
+  }
+
+  const params = new URLSearchParams(
+    buildRedirectSearchParams({
+      answeredCount: input.answeredCount,
+      cardId: input.cardId,
+      extraNewCount: input.extraNewCount,
+      notice: input.notice,
+      redirectMode: input.redirectMode,
+      segmentId: input.segmentId
+    })
+  );
+
+  const baseHref = mediaStudyHref(input.mediaSlug, "review");
+
+  return (
+    params.size > 0 ? `${baseHref}?${params.toString()}` : baseHref
+  ) as Route;
+}
+
+export function buildRedirectSearchParams(input: {
+  answeredCount: number;
+  cardId?: string;
+  extraNewCount?: number;
+  notice?: string;
+  redirectMode?: ReviewRedirectMode;
+  segmentId?: string | null;
+}) {
+  return buildReviewSearchParams({
+    answeredCount: input.answeredCount,
+    cardId:
+      input.cardId && input.redirectMode === "preserve_card"
+        ? input.cardId
+        : undefined,
+    extraNewCount: input.extraNewCount,
+    notice: input.notice,
+    segmentId: input.segmentId
+  });
+}
+
+export function buildReviewSearchParams(input: {
+  answeredCount: number;
+  cardId?: string;
+  extraNewCount?: number;
+  notice?: string;
+  segmentId?: string | null;
+  showAnswer?: boolean;
+}) {
+  const params: Record<string, string> = {};
+
+  if (input.answeredCount > 0) {
+    params.answered = String(input.answeredCount);
+  }
+
+  if (input.cardId) {
+    params.card = input.cardId;
+  }
+
+  if (input.extraNewCount && input.extraNewCount > 0) {
+    params.extraNew = String(input.extraNewCount);
+  }
+
+  if (input.segmentId) {
+    params.segment = input.segmentId;
+  }
+
+  if (input.notice) {
+    params.notice = input.notice;
+  }
+
+  if (input.showAnswer) {
+    params.show = "answer";
+  }
+
+  return params;
 }

@@ -1,10 +1,12 @@
 import {
   card,
+  cardEntryLink,
   lesson,
   lessonProgress,
   media,
   reviewSubjectLog,
   reviewSubjectState,
+  term,
   userSetting,
   type DatabaseClient
 } from "@/db";
@@ -83,6 +85,101 @@ export async function seedSingleReviewCardFixture(database: DatabaseClient) {
     }
   ]);
   await database.insert(userSetting).values(buildReviewDailyLimitSetting());
+}
+
+export async function createIsolatedNewMediaFixture(
+  client: DatabaseClient,
+  input: {
+    cardCount: number;
+    mediaId: string;
+    mediaSlug: string;
+    title: string;
+  }
+) {
+  await client.insert(media).values({
+    id: input.mediaId,
+    slug: input.mediaSlug,
+    title: input.title,
+    mediaType: "game",
+    segmentKind: "chapter",
+    language: "ja",
+    baseExplanationLanguage: "it",
+    description: `${input.title} fixture`,
+    status: "active",
+    createdAt: "2026-03-11T09:00:00.000Z",
+    updatedAt: "2026-03-11T09:00:00.000Z"
+  });
+  await client.insert(lesson).values({
+    id: `${input.mediaId}_lesson`,
+    mediaId: input.mediaId,
+    segmentId: null,
+    slug: `${input.mediaSlug}-intro`,
+    title: `${input.title} Intro`,
+    orderIndex: 1,
+    difficulty: "beginner",
+    summary: `${input.title} Intro`,
+    status: "active",
+    sourceFile: `tests/review/${input.mediaSlug}.md`,
+    createdAt: "2026-03-11T09:00:00.000Z",
+    updatedAt: "2026-03-11T09:00:00.000Z"
+  });
+  await client.insert(lessonProgress).values({
+    lessonId: `${input.mediaId}_lesson`,
+    status: "completed",
+    completedAt: "2026-03-11T09:00:00.000Z"
+  });
+
+  const cards = Array.from({ length: input.cardCount }, (_, index) => ({
+    id: `${input.mediaId}_card_${index + 1}`,
+    mediaId: input.mediaId,
+    lessonId: `${input.mediaId}_lesson`,
+    segmentId: null,
+    sourceFile: `tests/review/${input.mediaSlug}.md`,
+    cardType: "recognition" as const,
+    front: `新規 ${index + 1}`,
+    back: `nuova ${index + 1}`,
+    notesIt: `Card nuova ${index + 1}`,
+    status: "active" as const,
+    orderIndex: index + 1,
+    createdAt: `2026-03-11T09:0${index}:00.000Z`,
+    updatedAt: `2026-03-11T09:0${index}:00.000Z`
+  }));
+  const terms = Array.from({ length: input.cardCount }, (_, index) => ({
+    id: `${input.mediaId}_term_${index + 1}`,
+    sourceId: `${input.mediaSlug}-term-${index + 1}`,
+    mediaId: input.mediaId,
+    segmentId: null,
+    lemma: `新規${index + 1}`,
+    reading: `しんき${index + 1}`,
+    romaji: `shinki-${index + 1}`,
+    pos: "sostantivo",
+    meaningIt: `nuova ${index + 1}`,
+    meaningLiteralIt: null,
+    notesIt: `Termine ${index + 1}`,
+    levelHint: null,
+    searchLemmaNorm: `新規${index + 1}`,
+    searchReadingNorm: `しんき${index + 1}`,
+    searchRomajiNorm: `shinki-${index + 1}`,
+    createdAt: `2026-03-11T09:0${index}:00.000Z`,
+    updatedAt: `2026-03-11T09:0${index}:00.000Z`
+  }));
+  const entryLinks = Array.from({ length: input.cardCount }, (_, index) => ({
+    id: `${input.mediaId}_link_${index + 1}`,
+    cardId: `${input.mediaId}_card_${index + 1}`,
+    entryType: "term" as const,
+    entryId: `${input.mediaId}_term_${index + 1}`,
+    relationshipType: "primary" as const
+  }));
+
+  await client.insert(card).values(cards);
+  await client.insert(term).values(terms);
+  await client.insert(cardEntryLink).values(entryLinks);
+
+  return {
+    cardIds: cards.map((item) => item.id),
+    mediaSlug: input.mediaSlug,
+    termIds: terms.map((item) => item.id)
+  };
 }
 
 export function buildReviewDailyLimitSetting(

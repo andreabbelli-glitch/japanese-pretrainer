@@ -6,7 +6,7 @@ import type {
 import type {
   ReviewQueueSubjectSnapshot,
   ReviewSubjectModel
-} from "./review-queue";
+} from "./review-queue-types";
 
 function findReviewSubjectSelectionInModels(input: {
   models: ReviewSubjectModel[];
