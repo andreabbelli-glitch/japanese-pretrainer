@@ -64,38 +64,26 @@ function buildReviewShellSignals(input: {
   newQueuedCount: number;
 }) {
   const { dueCount, activeReviewCards, cardsTotal, newQueuedCount } = input;
-  const queueCount = dueCount + newQueuedCount;
-
-  if (queueCount > 0) {
-    return {
-      value:
-        dueCount > 0
-          ? `${dueCount} da ripassare`
-          : newQueuedCount > 0
-            ? "Nuove pronte"
-            : `${queueCount} in coda`,
-      detail: "Sessione pronta",
-      queueLabel:
-        dueCount > 0
-          ? dueCount === 1
-            ? "1 card richiede attenzione adesso."
-            : `${dueCount} card richiedono attenzione adesso.`
-          : newQueuedCount > 0
-            ? newQueuedCount === 1
-              ? "1 card nuova è pronta per oggi."
-              : `${newQueuedCount} card nuove sono pronte per oggi.`
-            : `${queueCount} in coda`
-    };
-  }
 
   if (dueCount > 0) {
     return {
       value: `${dueCount} da ripassare`,
-      detail: "Richiedono attenzione adesso",
+      detail: "Sessione pronta",
       queueLabel:
         dueCount === 1
           ? "1 card richiede attenzione adesso."
           : `${dueCount} card richiedono attenzione adesso.`
+    };
+  }
+
+  if (newQueuedCount > 0) {
+    return {
+      value: "Nuove pronte",
+      detail: "Sessione pronta",
+      queueLabel:
+        newQueuedCount === 1
+          ? "1 card nuova è pronta per oggi."
+          : `${newQueuedCount} card nuove sono pronte per oggi.`
     };
   }
 
