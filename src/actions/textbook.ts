@@ -5,6 +5,7 @@ import {
   updateReviewSummaryCache,
   updateSettingsCache
 } from "@/lib/data-cache";
+import { db, getMediaBySlug } from "@/db";
 import { setFuriganaMode, setLessonCompletionState } from "@/lib/textbook";
 import type { FuriganaMode } from "@/lib/settings";
 
@@ -29,9 +30,13 @@ export async function setLessonCompletionAction(input: {
   lessonSlug: string;
   completed: boolean;
 }) {
+  const mediaPromise = getMediaBySlug(db, input.mediaSlug);
+
   await setLessonCompletionState(input.lessonId, input.completed);
+  const media = await mediaPromise;
+
   updateMediaListCache();
-  updateReviewSummaryCache();
+  updateReviewSummaryCache(media?.id);
 
   return {
     ok: true as const,
