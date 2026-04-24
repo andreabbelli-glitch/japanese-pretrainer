@@ -78,4 +78,25 @@ describe("media glossary route", () => {
       "/glossary?q=iku&type=term&media=fixture-tcg&study=learning&cards=with_cards&sort=alphabetical"
     );
   });
+
+  it("preserves the first valid pagination value when redirecting legacy glossary urls", async () => {
+    await expect(
+      MediaGlossaryRoute({
+        params: Promise.resolve({
+          mediaSlug: "fixture-tcg"
+        }),
+        searchParams: Promise.resolve({
+          page: ["oops", "12"],
+          q: "iku",
+          segment: "segment_fixture_starter_core"
+        })
+      })
+    ).rejects.toThrow(
+      "redirect:/glossary?q=iku&media=fixture-tcg&page=12&segment=segment_fixture_starter_core"
+    );
+
+    expect(redirectMock).toHaveBeenCalledWith(
+      "/glossary?q=iku&media=fixture-tcg&page=12&segment=segment_fixture_starter_core"
+    );
+  });
 });

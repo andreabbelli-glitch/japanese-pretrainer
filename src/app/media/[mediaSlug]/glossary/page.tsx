@@ -26,6 +26,7 @@ export default async function MediaGlossaryRoute({
     cards: readCardsFilter(resolvedSearchParams.cards),
     entryType: readEntryType(resolvedSearchParams.type),
     media: mediaSlug,
+    page: readPositiveIntegerSearchParam(resolvedSearchParams.page),
     query: readSearchParam(resolvedSearchParams.q) ?? undefined,
     returnTo: readInternalHref(resolvedSearchParams.returnTo) ?? undefined,
     segmentId: readSearchParam(resolvedSearchParams.segment) ?? undefined,
@@ -95,6 +96,23 @@ function readStudyFilter(
       candidate === "new" ||
       candidate === "available"
   );
+}
+
+function readPositiveIntegerSearchParam(value: string | string[] | undefined) {
+  const parsed = readMatchingSearchParam(
+    value,
+    (candidate): candidate is string => {
+      if (!/^\d+$/u.test(candidate)) {
+        return false;
+      }
+
+      const page = Number.parseInt(candidate, 10);
+
+      return Number.isSafeInteger(page) && page > 0;
+    }
+  );
+
+  return parsed ? Number.parseInt(parsed, 10) : undefined;
 }
 
 function readMatchingSearchParam<T extends string>(
