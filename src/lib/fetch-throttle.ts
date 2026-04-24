@@ -98,6 +98,7 @@ export function createFetchThrottle(
         continue;
       }
 
+      await cancelResponseBody(response);
       throw new Error(
         `Failed to fetch ${url}: ${response.status} ${response.statusText}`
       );
