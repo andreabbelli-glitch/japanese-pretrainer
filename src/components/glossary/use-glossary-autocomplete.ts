@@ -6,6 +6,7 @@ import type {
   GlobalGlossaryAutocompleteSuggestion,
   GlobalGlossaryPageData
 } from "@/lib/glossary";
+import { normalizeSearchText } from "@/lib/study-search";
 
 type GlossaryAutocompleteFilters = Pick<
   GlobalGlossaryPageData["filters"],
@@ -48,10 +49,12 @@ export function useGlossaryAutocomplete({
     GlobalGlossaryAutocompleteSuggestion[]
   >([]);
   const [suggestionsKey, setSuggestionsKey] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState(query.trim());
+  const [debouncedQuery, setDebouncedQuery] = useState(
+    normalizeSearchText(query)
+  );
 
   useEffect(() => {
-    const normalizedQuery = query.trim();
+    const normalizedQuery = normalizeSearchText(query);
     const timeoutId = window.setTimeout(() => {
       setDebouncedQuery(normalizedQuery);
     }, AUTOCOMPLETE_DEBOUNCE_MS);
@@ -159,7 +162,7 @@ export function useGlossaryAutocomplete({
 
 function buildAutocompleteKey(input: GlossaryAutocompleteKeyInput) {
   const params = new URLSearchParams({
-    q: input.query.trim()
+    q: normalizeSearchText(input.query)
   });
 
   if (input.entryType !== "all") {

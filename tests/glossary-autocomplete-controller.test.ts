@@ -313,7 +313,7 @@ describe("useGlossaryAutocomplete", () => {
     });
   });
 
-  it("does not restart the request while only the query spacing changes for the same normalized key", async () => {
+  it("does not restart the request while only query casing or spacing changes for the same normalized key", async () => {
     const responseDeferred = createDeferred<Response>();
     const fetchMock = vi.mocked(fetch);
     fetchMock.mockImplementation(() => responseDeferred.promise);
@@ -377,6 +377,18 @@ describe("useGlossaryAutocomplete", () => {
 
     await act(async () => {
       controller().setQuery("  kosu  ");
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(140);
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    await act(async () => {
+      controller().setQuery("KOSU");
       await Promise.resolve();
     });
 
