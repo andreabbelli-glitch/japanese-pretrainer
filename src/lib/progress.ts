@@ -143,6 +143,9 @@ export async function getMediaProgressPageData(
           resolvedNewIntroducedTodayCount: newIntroducedTodayCount
         })
       );
+      void globalReviewSnapshotPromise.catch(() => {
+        // This eager query can be abandoned when the media slug does not resolve.
+      });
       const mediaPromise = cacheEligible
         ? getMediaBySlugCached(database, mediaSlug)
         : listMediaCached(database).then(

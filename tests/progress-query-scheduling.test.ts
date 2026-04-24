@@ -2,16 +2,20 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 type Deferred<T> = {
   promise: Promise<T>;
+  reject: (reason: unknown) => void;
   resolve: (value: T) => void;
 };
 
 function createDeferred<T>(): Deferred<T> {
+  let reject!: (reason: unknown) => void;
   let resolve!: (value: T) => void;
 
   return {
-    promise: new Promise<T>((innerResolve) => {
+    promise: new Promise<T>((innerResolve, innerReject) => {
+      reject = innerReject;
       resolve = innerResolve;
     }),
+    reject,
     resolve
   };
 }
@@ -107,6 +111,58 @@ describe("progress query scheduling", () => {
     settingsDeferred.resolve(settingsValue);
     introducedTodayDeferred.resolve(2);
     await expect(progressPromise).resolves.toBeNull();
+  });
+
+  it("handles shared query failures when the media lookup misses", async () => {
+    const mediaDeferred = createDeferred<{
+      id: string;
+      slug: string;
+      title: string;
+    } | null>();
+    const settingsDeferred = createDeferred<never>();
+    const introducedTodayDeferred = createDeferred<number>();
+
+    vi.doMock("@/db", () => ({
+      db: {}
+    }));
+    vi.doMock("@/lib/data-cache", () => ({
+      GLOSSARY_SUMMARY_TAG: "glossary-summary",
+      MEDIA_LIST_TAG: "media-list",
+      REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
+      REVIEW_SUMMARY_TAG: "review-summary",
+      SETTINGS_TAG: "settings",
+      buildGlossarySummaryTags: vi.fn(() => []),
+      buildReviewSummaryTags: vi.fn(() => []),
+      canUseDataCache: vi.fn(() => true),
+      getMediaBySlugCached: vi.fn(() => mediaDeferred.promise),
+      listMediaCached: vi.fn(),
+      runWithTaggedCache: vi.fn(async ({ loader }) => loader())
+    }));
+    vi.doMock("@/lib/local-date", () => ({
+      getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+    }));
+    vi.doMock("@/lib/review", () => ({
+      loadGlobalReviewOverviewSnapshot: vi.fn(),
+      loadReviewIntroducedTodayCountCached: vi.fn(
+        () => introducedTodayDeferred.promise
+      ),
+      loadReviewLaunchCandidateByMediaIdCached: vi.fn(),
+      mapReviewOverviewSnapshot: vi.fn()
+    }));
+    vi.doMock("@/lib/settings", () => ({
+      getStudySettings: vi.fn(() => settingsDeferred.promise)
+    }));
+
+    const { getMediaProgressPageData } = await import("@/lib/progress");
+    const progressPromise = getMediaProgressPageData("missing-media");
+
+    await flushMicrotasks();
+    settingsDeferred.reject(new Error("settings lookup failed after media miss"));
+    introducedTodayDeferred.resolve(2);
+    mediaDeferred.resolve(null);
+
+    await expect(progressPromise).resolves.toBeNull();
+    await flushMicrotasks();
   });
 
   it("starts the global review overview before the cache-enabled media lookup settles", async () => {
