@@ -44,7 +44,7 @@ export function readInternalHref(
 function hasEncodedPathSeparator(href: string) {
   let pathname = href.split(/[?#]/u, 1)[0] ?? "";
 
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  while (true) {
     if (/%(?:2f|5c)/iu.test(pathname)) {
       return true;
     }

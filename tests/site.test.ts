@@ -288,6 +288,9 @@ describe("site helpers", () => {
     expect(readInternalHref(["/%5c%5cevil.test/path", "/glossary"])).toBe(
       "/glossary"
     );
+    expect(
+      readInternalHref(["/%2525252f%2525252fevil.test/path", "/review"])
+    ).toBe("/review");
   });
 
   it("derives glossary back navigation from explicit return context with safe fallbacks", () => {
