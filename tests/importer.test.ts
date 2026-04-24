@@ -232,6 +232,43 @@ describe("content importer", () => {
     15_000
   );
 
+  it("deduplicates grammar aliases after search normalization", async () => {
+    await copyContentFixture(validContentRoot, contentRoot);
+
+    const lessonPath = path.join(
+      contentRoot,
+      "media",
+      "sample-anime",
+      "textbook",
+      "001-intro.md"
+    );
+    const lessonSource = await readFile(lessonPath, "utf8");
+
+    await writeFile(
+      lessonPath,
+      lessonSource.replace(
+        "aliases: [てる]",
+        "aliases: [～てる, てる, 〜てる]"
+      )
+    );
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-09T10:00:00.000Z")
+    });
+
+    expect(result.status).toBe("completed");
+
+    const grammarAliases = await database.query.grammarAlias.findMany();
+
+    expect(grammarAliases).toHaveLength(1);
+    expect(grammarAliases[0]).toMatchObject({
+      aliasNorm: "てる",
+      grammarId: grammarDbId
+    });
+  });
+
   it("reimports the same content idempotently without duplicating rows or wiping user state", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
 

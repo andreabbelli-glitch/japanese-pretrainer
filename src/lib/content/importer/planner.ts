@@ -441,8 +441,8 @@ function buildGrammarPlan(input: {
     input.mediaId,
     input.grammarPattern.id
   );
-  const aliases = dedupeStrings(input.grammarPattern.aliases).map(
-    (aliasText) => {
+  const aliases = dedupeByKey(
+    dedupeStrings(input.grammarPattern.aliases).map((aliasText) => {
       const aliasNorm = normalizeGrammarSearchText(aliasText);
 
       return {
@@ -451,7 +451,8 @@ function buildGrammarPlan(input: {
         aliasText,
         aliasNorm
       };
-    }
+    }),
+    (alias) => alias.aliasNorm
   );
   const segmentRef = resolveEntrySegmentRef({
     segmentRef: input.grammarPattern.segmentRef,
