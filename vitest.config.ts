@@ -14,6 +14,7 @@ export default defineConfig({
   },
   test: {
     environment: "node",
+    execArgv: ["--disable-warning=DEP0040"],
     include: ["tests/**/*.test.ts"],
     testTimeout: 10_000
   }
