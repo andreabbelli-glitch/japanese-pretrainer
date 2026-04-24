@@ -145,6 +145,17 @@ export function countChangedSourceDocuments(
   const existingSegmentsById = new Map(
     existingState.segments.map((row) => [row.id, row])
   );
+  const planLessonsById = new Map(
+    plan.lessons.map((row) => [row.row.id, row])
+  );
+  const planLessonContentsByLessonId = new Map(
+    plan.lessonContents.map((row) => [row.row.lessonId, row])
+  );
+  const planTermsById = new Map(plan.terms.map((row) => [row.row.id, row]));
+  const planGrammarById = new Map(
+    plan.grammarPatterns.map((row) => [row.row.id, row])
+  );
+  const planCardsById = new Map(plan.cards.map((row) => [row.row.id, row]));
   const currentSourceFiles = new Set(
     plan.sourceDocuments.map((document) => document.sourceFile)
   );
@@ -169,7 +180,7 @@ export function countChangedSourceDocuments(
           (lessonId) =>
             !rowsMatch(
               existingLessonsById.get(lessonId) ?? null,
-              plan.lessons.find((row) => row.row.id === lessonId)?.row ?? null,
+              planLessonsById.get(lessonId)?.row ?? null,
               lessonComparisonKeys
             )
         ) ||
@@ -177,39 +188,42 @@ export function countChangedSourceDocuments(
           (lessonId) =>
             !rowsMatch(
               existingLessonContentById.get(lessonId) ?? null,
-              plan.lessonContents.find((row) => row.row.lessonId === lessonId)
-                ?.row ?? null,
+              planLessonContentsByLessonId.get(lessonId)?.row ?? null,
               lessonContentComparisonKeys
             )
         ) ||
-        document.entityIds.terms.some(
-          (termId) =>
+        document.entityIds.terms.some((termId) => {
+          const plannedTerm = planTermsById.get(termId);
+
+          return (
             !rowsMatch(
               existingTermsById.get(termId) ?? null,
-              plan.terms.find((row) => row.row.id === termId)?.row ?? null,
+              plannedTerm?.row ?? null,
               termComparisonKeys
             ) ||
             !aliasSetsMatch(
               existingTermsById.get(termId)?.aliases ?? [],
-              plan.terms.find((row) => row.row.id === termId)?.aliases ?? [],
+              plannedTerm?.aliases ?? [],
               termAliasComparisonKeys
             )
-        ) ||
-        document.entityIds.grammarPatterns.some(
-          (grammarId) =>
+          );
+        }) ||
+        document.entityIds.grammarPatterns.some((grammarId) => {
+          const plannedGrammar = planGrammarById.get(grammarId);
+
+          return (
             !rowsMatch(
               existingGrammarById.get(grammarId) ?? null,
-              plan.grammarPatterns.find((row) => row.row.id === grammarId)
-                ?.row ?? null,
+              plannedGrammar?.row ?? null,
               grammarComparisonKeys
             ) ||
             !aliasSetsMatch(
               existingGrammarById.get(grammarId)?.aliases ?? [],
-              plan.grammarPatterns.find((row) => row.row.id === grammarId)
-                ?.aliases ?? [],
+              plannedGrammar?.aliases ?? [],
               grammarAliasComparisonKeys
             )
-        ) ||
+          );
+        }) ||
         existingState.lessons.some(
           (row) =>
             row.sourceFile === document.sourceFile &&
@@ -224,38 +238,42 @@ export function countChangedSourceDocuments(
         (cardId) =>
           !rowsMatch(
             existingCardsById.get(cardId) ?? null,
-            plan.cards.find((row) => row.row.id === cardId)?.row ?? null,
+            planCardsById.get(cardId)?.row ?? null,
             cardComparisonKeys
           )
       ) ||
-      document.entityIds.terms.some(
-        (termId) =>
+      document.entityIds.terms.some((termId) => {
+        const plannedTerm = planTermsById.get(termId);
+
+        return (
           !rowsMatch(
             existingTermsById.get(termId) ?? null,
-            plan.terms.find((row) => row.row.id === termId)?.row ?? null,
+            plannedTerm?.row ?? null,
             termComparisonKeys
           ) ||
           !aliasSetsMatch(
             existingTermsById.get(termId)?.aliases ?? [],
-            plan.terms.find((row) => row.row.id === termId)?.aliases ?? [],
+            plannedTerm?.aliases ?? [],
             termAliasComparisonKeys
           )
-      ) ||
-      document.entityIds.grammarPatterns.some(
-        (grammarId) =>
+        );
+      }) ||
+      document.entityIds.grammarPatterns.some((grammarId) => {
+        const plannedGrammar = planGrammarById.get(grammarId);
+
+        return (
           !rowsMatch(
             existingGrammarById.get(grammarId) ?? null,
-            plan.grammarPatterns.find((row) => row.row.id === grammarId)?.row ??
-              null,
+            plannedGrammar?.row ?? null,
             grammarComparisonKeys
           ) ||
           !aliasSetsMatch(
             existingGrammarById.get(grammarId)?.aliases ?? [],
-            plan.grammarPatterns.find((row) => row.row.id === grammarId)
-              ?.aliases ?? [],
+            plannedGrammar?.aliases ?? [],
             grammarAliasComparisonKeys
           )
-      ) ||
+        );
+      }) ||
       existingState.cards.some(
         (row) =>
           row.sourceFile === document.sourceFile &&
