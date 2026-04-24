@@ -159,6 +159,12 @@ export function countChangedSourceDocuments(
   const currentSourceFiles = new Set(
     plan.sourceDocuments.map((document) => document.sourceFile)
   );
+  const activeLessonIdsBySourceFile = groupActiveEntityIdsBySourceFile(
+    existingState.lessons
+  );
+  const activeCardIdsBySourceFile = groupActiveEntityIdsBySourceFile(
+    existingState.cards
+  );
   const changedDocuments = plan.sourceDocuments.filter((document) => {
     if (document.kind === "media") {
       return (
@@ -224,11 +230,10 @@ export function countChangedSourceDocuments(
             )
           );
         }) ||
-        existingState.lessons.some(
-          (row) =>
-            row.sourceFile === document.sourceFile &&
-            row.status !== "archived" &&
-            !document.entityIds.lessons.includes(row.id)
+        hasRemovedActiveEntity(
+          activeLessonIdsBySourceFile,
+          document.sourceFile,
+          document.entityIds.lessons
         )
       );
     }
@@ -274,11 +279,10 @@ export function countChangedSourceDocuments(
           )
         );
       }) ||
-      existingState.cards.some(
-        (row) =>
-          row.sourceFile === document.sourceFile &&
-          row.status !== "archived" &&
-          !document.entityIds.cards.includes(row.id)
+      hasRemovedActiveEntity(
+        activeCardIdsBySourceFile,
+        document.sourceFile,
+        document.entityIds.cards
       )
     );
   });
@@ -302,6 +306,51 @@ export function countChangedSourceDocuments(
   return (
     changedDocuments.length + removedLessonFiles.size + removedCardFiles.size
   );
+}
+
+function groupActiveEntityIdsBySourceFile<
+  T extends { id: string; sourceFile: string; status: string }
+>(rows: T[]) {
+  const idsBySourceFile = new Map<string, Set<string>>();
+
+  for (const row of rows) {
+    if (row.status === "archived") {
+      continue;
+    }
+
+    const existing = idsBySourceFile.get(row.sourceFile);
+
+    if (existing) {
+      existing.add(row.id);
+      continue;
+    }
+
+    idsBySourceFile.set(row.sourceFile, new Set([row.id]));
+  }
+
+  return idsBySourceFile;
+}
+
+function hasRemovedActiveEntity(
+  activeIdsBySourceFile: ReadonlyMap<string, ReadonlySet<string>>,
+  sourceFile: string,
+  currentIds: readonly string[]
+) {
+  const activeIds = activeIdsBySourceFile.get(sourceFile);
+
+  if (!activeIds || activeIds.size === 0) {
+    return false;
+  }
+
+  const currentIdSet = new Set(currentIds);
+
+  for (const id of activeIds) {
+    if (!currentIdSet.has(id)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 export function prepareTimestampedRow<
