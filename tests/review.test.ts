@@ -3629,6 +3629,26 @@ describe("review system", () => {
     expect(revalidatePathMock).not.toHaveBeenCalled();
   });
 
+  it("rejects malformed review form counters instead of partially parsing them", async () => {
+    const { gradeReviewCardAction } =
+      await loadReviewActionsForDatabase(database);
+    const formData = new FormData();
+    formData.set("mediaSlug", developmentFixture.mediaSlug);
+    formData.set("cardId", developmentFixture.primaryCardId);
+    formData.set("rating", "good");
+    formData.set("answered", "3abc");
+    formData.set("extraNew", "2abc");
+
+    await expect(gradeReviewCardAction(formData)).rejects.toThrow(
+      `redirect:/media/${developmentFixture.mediaSlug}/review?answered=1`
+    );
+
+    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
+      developmentFixture.mediaId
+    );
+    expect(revalidatePathMock).not.toHaveBeenCalled();
+  });
+
   it("advances to the next queue card after reopening a manual card when redirectMode advances queue", async () => {
     const { targetCardId } =
       await prepareReviewSessionRedirectFixture(database);

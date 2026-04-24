@@ -742,10 +742,15 @@ function getReviewMutationNotice(
 
 function readCount(formData: FormData, key: string) {
   const raw = formData.get(key);
-  const parsed =
-    typeof raw === "string" ? Number.parseInt(raw, 10) : Number.NaN;
+  const normalized = typeof raw === "string" ? raw.trim() : "";
 
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+  if (!/^\d+$/u.test(normalized)) {
+    return 0;
+  }
+
+  const parsed = Number.parseInt(normalized, 10);
+
+  return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : 0;
 }
 
 function readOptionalString(formData: FormData, key: string) {
