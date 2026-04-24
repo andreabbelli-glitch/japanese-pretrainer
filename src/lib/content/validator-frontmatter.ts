@@ -330,8 +330,6 @@ export function normalizeLessonFrontmatter(
 export function normalizeCardsFrontmatter(
   raw: Record<string, unknown> | null,
   filePath: string,
-  fieldRanges: Record<string, SourceRange>,
-  fieldStyles: Record<string, string>,
   issues: ValidationIssue[]
 ): CardsFrontmatter | null {
   const scope = "frontmatter";

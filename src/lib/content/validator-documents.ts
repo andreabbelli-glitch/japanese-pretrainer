@@ -366,8 +366,6 @@ export async function normalizeCardsDocument(
   const frontmatter = normalizeCardsFrontmatter(
     state.draft.frontmatter,
     state.draft.sourceFile,
-    state.frontmatterFieldRanges,
-    state.frontmatterFieldStyles,
     issues
   );
 
