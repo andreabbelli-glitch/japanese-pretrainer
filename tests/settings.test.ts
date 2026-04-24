@@ -166,8 +166,18 @@ describe("study settings", () => {
         updatedAt: "2026-04-16T09:00:00.000Z"
       },
       {
+        key: "kanji_clash_daily_new_limit",
+        valueJson: '"8"',
+        updatedAt: "2026-04-16T09:00:00.000Z"
+      },
+      {
+        key: "kanji_clash_manual_default_size",
+        valueJson: '"40"',
+        updatedAt: "2026-04-16T09:00:00.000Z"
+      },
+      {
         key: "review_daily_limit",
-        valueJson: '"20"',
+        valueJson: '"12"',
         updatedAt: "2026-04-16T09:00:00.000Z"
       }
     ]);
@@ -178,12 +188,22 @@ describe("study settings", () => {
     const rows = await database.query.userSetting.findMany();
     const rowsByKey = new Map(rows.map((row) => [row.key, row]));
 
-    expect(rows).toHaveLength(2);
+    expect(rows).toHaveLength(4);
     expect(rowsByKey.get("furigana_mode")?.valueJson).toBe('"hover"');
     expect(rowsByKey.get("furigana_mode")?.updatedAt).toBe(
       "2026-04-16T09:00:00.000Z"
     );
-    expect(rowsByKey.get("review_daily_limit")?.valueJson).toBe("20");
+    expect(rowsByKey.get("kanji_clash_daily_new_limit")?.valueJson).toBe("8");
+    expect(rowsByKey.get("kanji_clash_daily_new_limit")?.updatedAt).toBe(
+      "2026-04-16T10:00:00.000Z"
+    );
+    expect(rowsByKey.get("kanji_clash_manual_default_size")?.valueJson).toBe(
+      "40"
+    );
+    expect(rowsByKey.get("kanji_clash_manual_default_size")?.updatedAt).toBe(
+      "2026-04-16T10:00:00.000Z"
+    );
+    expect(rowsByKey.get("review_daily_limit")?.valueJson).toBe("12");
     expect(rowsByKey.get("review_daily_limit")?.updatedAt).toBe(
       "2026-04-16T10:00:00.000Z"
     );

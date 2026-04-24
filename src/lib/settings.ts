@@ -289,12 +289,14 @@ export function normalizeGlossaryDefaultSort(
     : defaultStudySettings.glossaryDefaultSort;
 }
 
-export function normalizeKanjiClashDailyNewLimit(value: number) {
-  if (!Number.isFinite(value)) {
+export function normalizeKanjiClashDailyNewLimit(value: number | string) {
+  const numericValue = normalizeNumericSettingValue(value);
+
+  if (numericValue === null) {
     return defaultStudySettings.kanjiClashDailyNewLimit;
   }
 
-  return Math.max(0, Math.min(20, Math.round(value)));
+  return Math.max(0, Math.min(20, Math.round(numericValue)));
 }
 
 export function normalizeKanjiClashDefaultScope(
@@ -303,12 +305,14 @@ export function normalizeKanjiClashDefaultScope(
   return value === "media" ? "media" : defaultStudySettings.kanjiClashDefaultScope;
 }
 
-export function normalizeKanjiClashManualDefaultSize(value: number) {
-  if (!Number.isFinite(value)) {
+export function normalizeKanjiClashManualDefaultSize(value: number | string) {
+  const numericValue = normalizeNumericSettingValue(value);
+
+  if (numericValue === null) {
     return defaultStudySettings.kanjiClashManualDefaultSize;
   }
 
-  const normalizedValue = Math.round(value);
+  const normalizedValue = Math.round(numericValue);
 
   return kanjiClashManualDefaultSizeOptions.includes(
     normalizedValue as (typeof kanjiClashManualDefaultSizeOptions)[number]
@@ -329,12 +333,14 @@ export function normalizeReviewFrontFurigana(value: boolean | string) {
       : defaultStudySettings.reviewFrontFurigana;
 }
 
-export function normalizeReviewDailyLimit(value: number) {
-  if (!Number.isFinite(value)) {
+export function normalizeReviewDailyLimit(value: number | string) {
+  const numericValue = normalizeNumericSettingValue(value);
+
+  if (numericValue === null) {
     return defaultStudySettings.reviewDailyLimit;
   }
 
-  return Math.max(1, Math.min(200, Math.round(value)));
+  return Math.max(1, Math.min(200, Math.round(numericValue)));
 }
 
 export function resolveKanjiClashDefaultScope(
@@ -362,6 +368,22 @@ function parseSettingValue<TValue, TResult>(
   } catch {
     return fallback;
   }
+}
+
+function normalizeNumericSettingValue(value: number | string) {
+  if (typeof value === "number") {
+    return Number.isFinite(value) ? value : null;
+  }
+
+  const trimmed = value.trim();
+
+  if (!/^-?\d+(?:\.\d+)?$/u.test(trimmed)) {
+    return null;
+  }
+
+  const parsed = Number(trimmed);
+
+  return Number.isFinite(parsed) ? parsed : null;
 }
 
 async function upsertUserSetting(input: {
