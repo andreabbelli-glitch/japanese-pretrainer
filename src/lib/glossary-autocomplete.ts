@@ -4,7 +4,6 @@ import type {
 } from "@/lib/glossary-types";
 import {
   buildSearchQueryVariants,
-  compactLatinSearchText,
   foldJapaneseKana,
   normalizeSearchText,
   romanizeKanaForSearch
@@ -219,15 +218,8 @@ function normalizeValue(
   switch (mode) {
     case "kana":
       return foldJapaneseKana(normalizeSearchText(value));
-    case "compact": {
-      const compactValue = compactLatinSearchText(value);
-
-      if (compactValue.length > 0) {
-        return compactValue;
-      }
-
+    case "compact":
       return romanizeKanaForSearch(value);
-    }
     case "normalized":
       return normalizeSearchText(value);
   }

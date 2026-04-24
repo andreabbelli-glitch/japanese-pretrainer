@@ -64,6 +64,41 @@ describe("glossary autocomplete", () => {
     expect(result.map((entry) => entry.label)).toEqual(["デッキ"]);
   });
 
+  it("matches compact romaji queries against mixed latin-kana labels", () => {
+    const result = getGlossaryAutocompleteSuggestions({
+      filters: {
+        cards: "all",
+        entryType: "all",
+        media: "all",
+        study: "all"
+      },
+      query: "mskaado",
+      suggestions: [
+        {
+          aliases: ["MSカード"],
+          hasCards: true,
+          hasCardlessVariant: false,
+          kind: "term",
+          label: "MSカード",
+          localHits: [
+            {
+              hasCards: true,
+              mediaSlug: "gundam-arsenal-base",
+              studyKey: "available"
+            }
+          ],
+          meaning: "carta mobile suit",
+          mediaCount: 1,
+          reading: "えむえすかーど",
+          resultKey: "term:entry:ms-card",
+          romaji: "emuesu kaado"
+        }
+      ]
+    });
+
+    expect(result.map((entry) => entry.label)).toEqual(["MSカード"]);
+  });
+
   it("respects cards filters using local-hit semantics", () => {
     const withoutCards = getGlossaryAutocompleteSuggestions({
       filters: {
