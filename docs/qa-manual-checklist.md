@@ -36,6 +36,9 @@
 - Root review `/review`: apre la queue globale reale su tutti i subject e, se
   non esistono ancora media o card disponibili, mostra un empty state dedicato
   al primo avvio.
+- Cold start deployato: la prima apertura della root deve renderizzare senza
+  aspettare il warm-up completo della review; eventuali cache review si
+  scaldano in background.
 - `Kanji Clash` `/kanji-clash`: apre un workspace separato dalla review, con
   modalita `FSRS` e `Drill`, e senza confondere la UI con la
   coda FSRS standard.

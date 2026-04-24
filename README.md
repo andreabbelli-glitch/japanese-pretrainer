@@ -316,9 +316,10 @@ Questo evita di affidarsi a filesystem effimeri del provider e tiene il setup
 coerente con `@libsql/client` gia presente nel repo.
 
 Con questo setup, il bootstrap del server usa direttamente Turso come database
-remoto e prova solo a scaldare le cache dati di dashboard e media library per
-ridurre la latenza del primo caricamento, senza introdurre repliche locali o
-sync extra.
+remoto e non crea repliche locali o sync extra. Il warm-up delle cache piu
+costose parte solo in background dopo l'avvio del runtime: e best-effort e non
+blocca la prima risposta del sito, cosi il cold start Vercel non paga in
+anticipo l'intera preparazione della review.
 
 ## Backup schedulato del database
 
