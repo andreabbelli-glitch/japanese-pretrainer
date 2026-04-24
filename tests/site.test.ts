@@ -281,6 +281,15 @@ describe("site helpers", () => {
     );
   });
 
+  it("skips encoded slash and backslash variants before accepting an internal fallback", () => {
+    expect(readInternalHref(["/%2f%2fevil.test/path", "/review"])).toBe(
+      "/review"
+    );
+    expect(readInternalHref(["/%5c%5cevil.test/path", "/glossary"])).toBe(
+      "/glossary"
+    );
+  });
+
   it("derives glossary back navigation from explicit return context with safe fallbacks", () => {
     expect(
       resolveGlossaryBackNavigation({

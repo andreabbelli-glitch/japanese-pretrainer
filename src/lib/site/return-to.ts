@@ -29,7 +29,8 @@ export function readInternalHref(
       !trimmed ||
       !trimmed.startsWith("/") ||
       trimmed.startsWith("//") ||
-      trimmed.includes("\\")
+      trimmed.includes("\\") ||
+      hasEncodedPathSeparator(trimmed)
     ) {
       continue;
     }
@@ -38,6 +39,30 @@ export function readInternalHref(
   }
 
   return null;
+}
+
+function hasEncodedPathSeparator(href: string) {
+  let pathname = href.split(/[?#]/u, 1)[0] ?? "";
+
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    if (/%(?:2f|5c)/iu.test(pathname)) {
+      return true;
+    }
+
+    try {
+      const decodedPathname = decodeURIComponent(pathname);
+
+      if (decodedPathname === pathname) {
+        return false;
+      }
+
+      pathname = decodedPathname;
+    } catch {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 export function readNestedReturnTo(
