@@ -395,6 +395,8 @@ describe("useReviewPageController first-candidate grading", () => {
     expect(controller().clientError).toBe(
       "Non sono riuscito ad aggiornare la review. Riprova un attimo."
     );
+    expect(controller().viewData.selectedCard?.id).toBe("card-a");
+    expect(controller().viewData.session.answeredCount).toBe(0);
     expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
   });
 

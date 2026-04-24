@@ -81,10 +81,12 @@ type ReviewSessionUpdateOptions = {
   onDiscarded?: (nextData: ReviewPageData) => void;
   onError?: () => void;
   onSuccess?: (nextData: ReviewPageData) => void;
-  optimisticUpdate?: () => (() => void) | void;
+  optimisticUpdate?: () => ReviewOptimisticRollback | void;
   shouldLogError?: (error: unknown) => boolean;
   shouldSyncQueueCardIds?: (nextData: ReviewPageData) => boolean;
 };
+
+type ReviewOptimisticRollback = (options?: { force?: boolean }) => void;
 
 export type ReviewPageControllerResult = {
   additionalNewCount: number;
@@ -676,6 +678,8 @@ export function useReviewPageController(input: {
           }
         },
         rollbackOptimisticUpdate
+          ? () => rollbackOptimisticUpdate({ force: true })
+          : undefined
       );
     };
 
@@ -695,7 +699,7 @@ export function useReviewPageController(input: {
   function executeSessionUpdate(
     loadNextData: () => Promise<ReviewPageData>,
     options: ReviewSessionUpdateOptions | undefined,
-    rollbackOptimisticUpdate: (() => void) | void
+    rollbackOptimisticUpdate: ReviewOptimisticRollback | void
   ) {
     return loadNextData()
       .then((nextData) => {
@@ -987,13 +991,15 @@ export function useReviewPageController(input: {
               setViewData(optimisticViewData);
               setQueueCardIds(nextQueueCardIds);
 
-              return () => {
+              return (options) => {
                 const currentViewData = latestViewDataRef.current;
+                const forceRollback = options?.force ?? false;
                 if (
-                  currentViewData.session.answeredCount !==
+                  !forceRollback &&
+                  (currentViewData.session.answeredCount !==
                     optimisticViewData.session.answeredCount ||
-                  currentViewData.selectedCard?.id !==
-                    optimisticViewData.selectedCard?.id
+                    currentViewData.selectedCard?.id !==
+                      optimisticViewData.selectedCard?.id)
                 ) {
                   return;
                 }
