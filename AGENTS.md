@@ -147,13 +147,24 @@ drizzle/
 
 docs/
   blueprint-operativo.md  Architettura e vision del prodotto
-  database.md             Design del DB e strategia di persistenza
   content-format.md       Specifica del formato Markdown (30KB)
-  design/                 Token di design e UX
+  content-parser.md       Dettagli del parser contenuti e blocchi Markdown
+  database.md             Design del DB e strategia di persistenza
+  design/                 Token, direzione UX e wireframe
+  dev-tooling.md          Note sugli strumenti e comandi di sviluppo locali
+  forvo-pronunciation-fetch.md Workflow fallback Forvo autenticato
+  importer-sync-strategy.md Strategia di import e sync dei bundle contenuto
+  kanji-clash.md          Specifica della modalita' Kanji Clash
   llm-kit/                Guide per integrazione LLM esterna
+    README.md             Indice e regole del kit LLM
     general/              Template e regole riusabili cross-media
     media/                Brief e prompt specifici per singolo media
       <slug>/             Cartelle per-media con brief e prompt batchizzati
+  local-verification-notes.md Note per verifiche locali e troubleshooting
+  pitch-accent-workflow.md Workflow dati accento tonale
+  pronunciation-fetch.md  Workflow di fetch pronunce dai provider
+  pronunciation-workflow.md Workflow editoriale e tecnico delle pronunce
+  qa-manual-checklist.md  Checklist QA manuale
   tasks/                  Task operative e note di lavoro per manutenzione e backlog
   drift-report.md         Report periodico di drift tra codice e docs strategiche
 
