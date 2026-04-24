@@ -517,4 +517,72 @@ describe("glossary query scheduling", () => {
       await glossaryPromise;
     }
   });
+
+  it("returns null for missing local media without waiting for default sort", async () => {
+    const defaultSortDeferred = createDeferred<"lesson_order" | "alphabetical">();
+    const mediaDeferred = createDeferred<null>();
+    let glossaryResolved = false;
+
+    vi.doMock("@/db", async () => {
+      const actual = await vi.importActual<typeof import("@/db")>("@/db");
+
+      return {
+        ...actual,
+        listEntryCardCounts: vi.fn(),
+        listEntryLessonConnections: vi.fn(),
+        listEntryStudySignals: vi.fn(),
+        listGlossarySegmentsByMediaId: vi.fn(),
+        listGrammarEntrySummaries: vi.fn(),
+        listTermEntrySummaries: vi.fn()
+      };
+    });
+    vi.doMock("@/lib/data-cache", async () => {
+      const actual =
+        await vi.importActual<typeof import("@/lib/data-cache")>(
+          "@/lib/data-cache"
+        );
+
+      return {
+        ...actual,
+        canUseDataCache: vi.fn(() => false),
+        getMediaBySlugCached: vi.fn(() => mediaDeferred.promise),
+        runWithTaggedCache: vi.fn(async ({ loader }) => loader())
+      };
+    });
+    vi.doMock("@/lib/settings", async () => {
+      const actual =
+        await vi.importActual<typeof import("@/lib/settings")>(
+          "@/lib/settings"
+        );
+
+      return {
+        ...actual,
+        getGlossaryDefaultSort: vi.fn(() => defaultSortDeferred.promise)
+      };
+    });
+
+    const { loadGlossaryPageData } = await import("@/lib/glossary-loaders");
+    const glossaryPromise = loadGlossaryPageData(
+      "missing-media",
+      {},
+      {} as never
+    ).then((data) => {
+      glossaryResolved = true;
+      return data;
+    });
+
+    mediaDeferred.resolve(null);
+
+    try {
+      await waitForTruthy(
+        () => glossaryResolved,
+        "Expected the local glossary response to resolve without the default sort lookup."
+      );
+
+      await expect(glossaryPromise).resolves.toBeNull();
+    } finally {
+      defaultSortDeferred.resolve("lesson_order");
+      await glossaryPromise;
+    }
+  });
 });

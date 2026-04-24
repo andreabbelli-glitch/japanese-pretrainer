@@ -97,14 +97,24 @@ export async function loadGlossaryPageData(
 ): Promise<GlossaryPageData | null> {
   const requestedSort = readGlossarySortSearchParam(searchParams);
   const loadDefaultSort = createDefaultSortLoader(database);
-  const [media, resolvedSort] = await Promise.all([
-    getMediaBySlugCached(database, mediaSlug),
-    requestedSort ? Promise.resolve(requestedSort) : loadDefaultSort()
-  ]);
+  const mediaPromise = getMediaBySlugCached(database, mediaSlug);
+  const resolvedSortPromise = requestedSort
+    ? Promise.resolve(requestedSort)
+    : loadDefaultSort();
+
+  if (!requestedSort) {
+    void resolvedSortPromise.catch(() => {
+      // The default sort lookup can be abandoned when the media slug misses.
+    });
+  }
+
+  const media = await mediaPromise;
 
   if (!media) {
     return null;
   }
+
+  const resolvedSort = await resolvedSortPromise;
   const filters = normalizeGlossaryQuery(searchParams, resolvedSort, {
     forcedMediaSlug: media.slug,
     supportsSegmentFilter: true
