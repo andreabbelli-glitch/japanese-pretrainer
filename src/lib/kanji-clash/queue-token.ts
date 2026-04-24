@@ -153,7 +153,13 @@ export function createKanjiClashQueueToken(queue: KanjiClashQueueSnapshot) {
 }
 
 export function verifyKanjiClashQueueToken(token: string) {
-  const [encodedPayload, signature] = token.split(".");
+  const tokenParts = token.split(".");
+
+  if (tokenParts.length !== 2) {
+    return null;
+  }
+
+  const [encodedPayload, signature] = tokenParts;
 
   if (!encodedPayload || !signature) {
     return null;

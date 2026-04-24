@@ -226,6 +226,13 @@ describe("kanji clash queue token", () => {
     expect(verifyKanjiClashQueueToken(token)).toEqual(queue);
   });
 
+  it("rejects signed tokens with extra segments", () => {
+    const queue = buildFixtureQueue();
+    const token = createKanjiClashQueueToken(queue);
+
+    expect(verifyKanjiClashQueueToken(`${token}.extra`)).toBeNull();
+  });
+
   it("normalizes legacy v1 tokens and reserializes them successfully", () => {
     const queue = buildFixtureQueue();
     const legacyToken = createLegacyQueueToken(queue);
