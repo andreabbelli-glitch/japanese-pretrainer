@@ -7,6 +7,15 @@ import {
   createDatabaseClient,
   runMigrations
 } from "../src/db/index.ts";
+import {
+  card,
+  cardEntryLink,
+  entryLink,
+  grammarAlias,
+  grammarPattern,
+  term,
+  termAlias
+} from "../src/db/schema/index.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
 import { parseMediaDirectory } from "../src/lib/content/validator.ts";
 import {
@@ -72,6 +81,24 @@ async function collectDuelMastersRealBundleStats(contentRoot: string) {
       );
     }
 
+    const [
+      termCount,
+      termAliasCount,
+      grammarPatternCount,
+      grammarAliasCount,
+      entryLinkCount,
+      cardCount,
+      cardEntryLinkCount
+    ] = await Promise.all([
+      database.$count(term),
+      database.$count(termAlias),
+      database.$count(grammarPattern),
+      database.$count(grammarAlias),
+      database.$count(entryLink),
+      database.$count(card),
+      database.$count(cardEntryLink)
+    ]);
+
     return {
       parser: {
         lessons: parseResult.data.lessons.length,
@@ -82,13 +109,13 @@ async function collectDuelMastersRealBundleStats(contentRoot: string) {
         references: parseResult.data.references.length
       },
       importer: {
-        term: await countRows(database.query.term.findMany()),
-        termAlias: await countRows(database.query.termAlias.findMany()),
-        grammarPattern: await countRows(database.query.grammarPattern.findMany()),
-        grammarAlias: await countRows(database.query.grammarAlias.findMany()),
-        entryLink: await countRows(database.query.entryLink.findMany()),
-        card: await countRows(database.query.card.findMany()),
-        cardEntryLink: await countRows(database.query.cardEntryLink.findMany())
+        term: termCount,
+        termAlias: termAliasCount,
+        grammarPattern: grammarPatternCount,
+        grammarAlias: grammarAliasCount,
+        entryLink: entryLinkCount,
+        card: cardCount,
+        cardEntryLink: cardEntryLinkCount
       }
     } satisfies DuelMastersRealBundleStats;
   } finally {
@@ -144,10 +171,6 @@ async function readExistingStats() {
 
     throw error;
   }
-}
-
-async function countRows<T>(rowsPromise: Promise<T[]>) {
-  return (await rowsPromise).length;
 }
 
 function isMissingFileError(error: unknown): error is NodeJS.ErrnoException {
