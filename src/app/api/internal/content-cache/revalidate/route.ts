@@ -8,6 +8,7 @@ import {
   revalidateGlossarySummaryCache,
   revalidateMediaListCache,
   revalidateReviewSummaryCache,
+  revalidateTextbookLessonBodyCache,
   revalidateTextbookTooltipCache
 } from "@/lib/data-cache";
 import {
@@ -81,6 +82,7 @@ export async function POST(request: Request) {
   }
 
   for (const lesson of lessons) {
+    revalidateTextbookLessonBodyCache(lesson);
     revalidateTextbookTooltipCache(lesson);
     revalidatePath(
       mediaTextbookLessonHref(lesson.mediaSlug, lesson.lessonSlug)

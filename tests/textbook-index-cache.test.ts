@@ -67,7 +67,8 @@ import {
   MEDIA_LIST_TAG,
   revalidateMediaListCache,
   revalidateSettingsCache,
-  SETTINGS_TAG
+  SETTINGS_TAG,
+  TEXTBOOK_LESSON_BODY_TAG
 } from "@/lib/data-cache";
 import {
   getTextbookIndexData,
@@ -280,7 +281,7 @@ describe("textbook index cache", () => {
 
     const cacheOptions = keySpecificCalls[0]?.[2];
     expect(cacheOptions?.tags).toEqual(
-      expect.arrayContaining([MEDIA_LIST_TAG])
+      expect.arrayContaining([MEDIA_LIST_TAG, TEXTBOOK_LESSON_BODY_TAG])
     );
   });
 });

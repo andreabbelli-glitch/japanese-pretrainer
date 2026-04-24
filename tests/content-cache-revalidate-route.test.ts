@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const {
   getMediaBySlugMock,
   revalidateGlossarySummaryCacheMock,
+  revalidateTextbookLessonBodyCacheMock,
   revalidateMediaListCacheMock,
   revalidatePathMock,
   revalidateReviewSummaryCacheMock,
@@ -10,6 +11,7 @@ const {
 } = vi.hoisted(() => ({
   getMediaBySlugMock: vi.fn(),
   revalidateGlossarySummaryCacheMock: vi.fn(),
+  revalidateTextbookLessonBodyCacheMock: vi.fn(),
   revalidateMediaListCacheMock: vi.fn(),
   revalidatePathMock: vi.fn(),
   revalidateReviewSummaryCacheMock: vi.fn(),
@@ -29,6 +31,7 @@ vi.mock("@/lib/data-cache", () => ({
   revalidateGlossarySummaryCache: revalidateGlossarySummaryCacheMock,
   revalidateMediaListCache: revalidateMediaListCacheMock,
   revalidateReviewSummaryCache: revalidateReviewSummaryCacheMock,
+  revalidateTextbookLessonBodyCache: revalidateTextbookLessonBodyCacheMock,
   revalidateTextbookTooltipCache: revalidateTextbookTooltipCacheMock
 }));
 
@@ -39,6 +42,7 @@ describe("content cache revalidation route", () => {
     process.env.CONTENT_CACHE_REVALIDATE_SECRET = "test-secret";
     getMediaBySlugMock.mockReset();
     revalidateGlossarySummaryCacheMock.mockReset();
+    revalidateTextbookLessonBodyCacheMock.mockReset();
     revalidateMediaListCacheMock.mockReset();
     revalidatePathMock.mockReset();
     revalidateReviewSummaryCacheMock.mockReset();
@@ -86,6 +90,7 @@ describe("content cache revalidation route", () => {
     expect(revalidateGlossarySummaryCacheMock).toHaveBeenCalledWith("media_p5");
     expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith("media_dm");
     expect(revalidateReviewSummaryCacheMock).toHaveBeenCalledWith("media_p5");
+    expect(revalidateTextbookLessonBodyCacheMock).toHaveBeenCalledTimes(2);
     expect(revalidateTextbookTooltipCacheMock).toHaveBeenCalledTimes(2);
   });
 
@@ -120,6 +125,7 @@ describe("content cache revalidation route", () => {
       ok: true
     });
     expect(response.status).toBe(200);
+    expect(revalidateTextbookLessonBodyCacheMock).toHaveBeenCalledTimes(1);
     expect(revalidateTextbookTooltipCacheMock).toHaveBeenCalledTimes(1);
     expect(getMediaBySlugMock).toHaveBeenCalledTimes(1);
   });

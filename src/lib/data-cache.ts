@@ -8,6 +8,7 @@ export const SETTINGS_TAG = "settings";
 export const GLOSSARY_SUMMARY_TAG = "glossary-summary";
 export const REVIEW_SUMMARY_TAG = "review-summary";
 export const REVIEW_FIRST_CANDIDATE_TAG = "review-first-candidate";
+export const TEXTBOOK_LESSON_BODY_TAG = "textbook-lesson-body";
 export const TEXTBOOK_TOOLTIP_TAG = "textbook-tooltips";
 
 type MediaListSnapshot = Awaited<ReturnType<typeof listMedia>>;
@@ -52,6 +53,24 @@ export function buildTextbookTooltipTags(input?: {
       mediaSlug ? `${TEXTBOOK_TOOLTIP_TAG}:${mediaSlug}` : null,
       mediaSlug && lessonSlug
         ? `${TEXTBOOK_TOOLTIP_TAG}:${mediaSlug}:${lessonSlug}`
+        : null
+    ].filter((tag): tag is string => Boolean(tag))
+  );
+}
+
+export function buildTextbookLessonBodyTags(input?: {
+  lessonSlug?: string | null;
+  mediaSlug?: string | null;
+}) {
+  const mediaSlug = input?.mediaSlug?.trim();
+  const lessonSlug = input?.lessonSlug?.trim();
+
+  return dedupeTags(
+    [
+      TEXTBOOK_LESSON_BODY_TAG,
+      mediaSlug ? `${TEXTBOOK_LESSON_BODY_TAG}:${mediaSlug}` : null,
+      mediaSlug && lessonSlug
+        ? `${TEXTBOOK_LESSON_BODY_TAG}:${mediaSlug}:${lessonSlug}`
         : null
     ].filter((tag): tag is string => Boolean(tag))
   );
@@ -114,7 +133,10 @@ export const getMediaBySlugCached = cache(
     if (inFlightBySlug) {
       inFlightBySlug.set(slug, snapshotPromise);
     } else {
-      inFlightMediaBySlugSnapshots.set(database, new Map([[slug, snapshotPromise]]));
+      inFlightMediaBySlugSnapshots.set(
+        database,
+        new Map([[slug, snapshotPromise]])
+      );
     }
 
     return snapshotPromise;
@@ -209,6 +231,15 @@ export function revalidateTextbookTooltipCache(input?: {
   mediaSlug?: string | null;
 }) {
   for (const tag of buildTextbookTooltipTags(input)) {
+    safeRevalidateTag(tag);
+  }
+}
+
+export function revalidateTextbookLessonBodyCache(input?: {
+  lessonSlug?: string | null;
+  mediaSlug?: string | null;
+}) {
+  for (const tag of buildTextbookLessonBodyTags(input)) {
     safeRevalidateTag(tag);
   }
 }

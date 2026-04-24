@@ -10,6 +10,7 @@ import {
   type LessonListItem
 } from "@/db";
 import {
+  buildTextbookLessonBodyTags,
   buildTextbookTooltipTags,
   canUseDataCache,
   getMediaBySlugCached,
@@ -87,10 +88,8 @@ export async function getTextbookIndexData(
     enabled: cacheEligible,
     keyParts: ["textbook", "index", mediaSlug, `furigana:${furiganaMode}`],
     loader: async () => {
-      const media = await (
-        resolvedMediaPromise ??
-        getMediaBySlugCached(database, mediaSlug)
-      );
+      const media = await (resolvedMediaPromise ??
+        getMediaBySlugCached(database, mediaSlug));
 
       if (!media) {
         return null;
@@ -253,7 +252,13 @@ async function getTextbookLessonBodyData(input: {
         input.mediaId,
         input.lessonSlug
       ),
-    tags: [MEDIA_LIST_TAG]
+    tags: [
+      MEDIA_LIST_TAG,
+      ...buildTextbookLessonBodyTags({
+        mediaSlug: input.mediaSlug,
+        lessonSlug: input.lessonSlug
+      })
+    ]
   });
 }
 
