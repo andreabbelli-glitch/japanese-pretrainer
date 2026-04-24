@@ -93,6 +93,7 @@ export function createFetchThrottle(
           retryDelayMs,
           url
         });
+        await cancelResponseBody(response);
         await sleep(retryDelayMs);
         continue;
       }
@@ -106,6 +107,14 @@ export function createFetchThrottle(
   }
 
   return { fetchWithRetry, throttledFetch };
+}
+
+async function cancelResponseBody(response: Response) {
+  try {
+    await response.body?.cancel();
+  } catch {
+    // Best effort: body cleanup should not mask the original retry path.
+  }
 }
 
 export function parseRetryAfterMs(value: string | null) {
