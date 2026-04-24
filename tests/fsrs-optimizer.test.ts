@@ -38,6 +38,16 @@ import { reviewSchedulerConfig, scheduleReview } from "@/lib/review-scheduler";
 
 const execFileAsync = promisify(execFile);
 const DAY = 24 * 60 * 60_000;
+const TEST_FSRS_TRAINING_TIMEOUT_MS = 25;
+
+function runTestFsrsOptimizer(
+  input: Parameters<typeof runFsrsOptimizer>[0] = {}
+) {
+  return runFsrsOptimizer({
+    ...input,
+    trainingTimeoutMs: TEST_FSRS_TRAINING_TIMEOUT_MS
+  });
+}
 
 describe("fsrs optimizer", () => {
   let database: DatabaseClient;
@@ -149,7 +159,7 @@ describe("fsrs optimizer", () => {
       });
 
     try {
-      const result = await runFsrsOptimizer({
+      const result = await runTestFsrsOptimizer({
         database,
         now: new Date("2026-04-01T09:00:00.000Z")
       });
@@ -185,7 +195,7 @@ describe("fsrs optimizer", () => {
       database
     );
 
-    const result = await runFsrsOptimizer({
+    const result = await runTestFsrsOptimizer({
       database,
       now: new Date("2026-04-01T09:00:00.000Z")
     });
@@ -234,7 +244,7 @@ describe("fsrs optimizer", () => {
         })
       ]);
 
-      const firstResult = await runFsrsOptimizer({
+      const firstResult = await runTestFsrsOptimizer({
         database,
         now: new Date("2026-04-01T09:00:00.000Z")
       });
@@ -262,7 +272,7 @@ describe("fsrs optimizer", () => {
         })
       );
 
-      const secondResult = await runFsrsOptimizer({
+      const secondResult = await runTestFsrsOptimizer({
         database,
         now: new Date("2026-04-02T09:00:00.000Z")
       });
@@ -309,7 +319,7 @@ describe("fsrs optimizer", () => {
     )?.updatedAt;
     const initialCacheKey = await getFsrsOptimizerCacheKeyPart(database);
 
-    const result = await runFsrsOptimizer({
+    const result = await runTestFsrsOptimizer({
       database,
       now: new Date("2026-04-01T09:00:00.000Z")
     });
@@ -352,7 +362,7 @@ describe("fsrs optimizer", () => {
         recognitionLogCount: 12
       });
 
-      const result = await runFsrsOptimizer({
+      const result = await runTestFsrsOptimizer({
         database,
         force: true,
         now: new Date("2026-04-01T09:00:00.000Z")
@@ -432,7 +442,7 @@ describe("fsrs optimizer", () => {
         });
 
       try {
-        const result = await runFsrsOptimizer({
+        const result = await runTestFsrsOptimizer({
           database,
           force: true,
           now: new Date("2026-04-01T09:00:00.000Z")
@@ -490,7 +500,7 @@ describe("fsrs optimizer", () => {
         });
 
       try {
-        const runPromise = runFsrsOptimizer({
+        const runPromise = runTestFsrsOptimizer({
           database,
           force: true,
           now: new Date("2026-04-01T09:00:00.000Z")
@@ -528,7 +538,7 @@ describe("fsrs optimizer", () => {
         recognitionLogCount: 12
       });
 
-      const baseline = await runFsrsOptimizer({
+      const baseline = await runTestFsrsOptimizer({
         database,
         force: true,
         now: new Date("2026-04-01T09:00:00.000Z")
@@ -553,7 +563,7 @@ describe("fsrs optimizer", () => {
       await installConceptWriteAbortTrigger(database);
 
       await expect(
-        runFsrsOptimizer({
+        runTestFsrsOptimizer({
           database,
           force: true,
           now: new Date("2026-04-10T09:00:00.000Z")
@@ -579,7 +589,7 @@ describe("fsrs optimizer", () => {
         recognitionLogCount: 12
       });
 
-      const baseline = await runFsrsOptimizer({
+      const baseline = await runTestFsrsOptimizer({
         database,
         force: true,
         now: new Date("2026-04-01T09:00:00.000Z")
@@ -604,7 +614,7 @@ describe("fsrs optimizer", () => {
       await installOptimizerStateWriteAbortTrigger(database);
 
       await expect(
-        runFsrsOptimizer({
+        runTestFsrsOptimizer({
           database,
           force: true,
           now: new Date("2026-04-10T09:00:00.000Z")
@@ -630,7 +640,7 @@ describe("fsrs optimizer", () => {
         recognitionLogCount: 12
       });
 
-      const result = await runFsrsOptimizer({
+      const result = await runTestFsrsOptimizer({
         database,
         force: true,
         now: new Date("2026-04-01T09:00:00.000Z")
@@ -665,7 +675,7 @@ describe("fsrs optimizer", () => {
         "2026-03-01T10:00:00.000Z"
       );
 
-      const result = await runFsrsOptimizer({
+      const result = await runTestFsrsOptimizer({
         database,
         force: true,
         now: new Date("2026-04-01T09:00:00.000Z")
@@ -689,7 +699,7 @@ describe("fsrs optimizer", () => {
         conceptLogCount: 12,
         recognitionLogCount: 12
       });
-      await runFsrsOptimizer({
+      await runTestFsrsOptimizer({
         database,
         force: true,
         now: new Date("2026-04-01T09:00:00.000Z")
@@ -725,7 +735,7 @@ describe("fsrs optimizer", () => {
         conceptLogCount: 12,
         recognitionLogCount: 12
       });
-      await runFsrsOptimizer({
+      await runTestFsrsOptimizer({
         database,
         force: true,
         now: new Date("2026-04-01T09:00:00.000Z")
@@ -843,7 +853,7 @@ describe("fsrs optimizer", () => {
         });
 
       try {
-        await runFsrsOptimizer({
+        await runTestFsrsOptimizer({
           database,
           force: true,
           now: new Date("2026-04-01T09:00:00.000Z")

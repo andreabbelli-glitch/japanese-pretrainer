@@ -24,6 +24,7 @@ import {
 const DAY = 24 * 60 * 60_000;
 const MIN_TRAINING_REVIEW_COUNT = 10;
 const MIN_TRAINING_ITEM_COUNT = 5;
+const DEFAULT_TRAINING_TIMEOUT_MS = 5_000;
 
 type FsrsOptimizationPresetResult = NonNullable<
   Extract<FsrsOptimizationRunResult, { status: "trained" }>["presetResults"][FsrsPresetKey]
@@ -34,11 +35,14 @@ export async function runFsrsOptimizer(
     database?: DatabaseClient;
     force?: boolean;
     now?: Date;
+    trainingTimeoutMs?: number;
   } = {}
 ): Promise<FsrsOptimizationRunResult> {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
+  const trainingTimeoutMs =
+    input.trainingTimeoutMs ?? DEFAULT_TRAINING_TIMEOUT_MS;
   const [snapshot, totalEligibleReviews] = await Promise.all([
     getFsrsOptimizerSnapshot(database),
     countEligibleFsrsOptimizerReviews(database)
@@ -165,7 +169,8 @@ export async function runFsrsOptimizer(
             recognitionDataset.items,
             recognitionDataset.reviewCount,
             snapshot.config.desiredRetention,
-            nowIso
+            nowIso,
+            trainingTimeoutMs
           )
         : null,
       conceptTrainable
@@ -174,7 +179,8 @@ export async function runFsrsOptimizer(
             conceptDataset.items,
             conceptDataset.reviewCount,
             snapshot.config.desiredRetention,
-            nowIso
+            nowIso,
+            trainingTimeoutMs
           )
         : null
     ]);
@@ -261,12 +267,13 @@ async function trainFsrsPreset(
   items: Array<Array<{ deltaT: number; rating: 1 | 2 | 3 | 4 }>>,
   trainingReviewCount: number,
   desiredRetention: number,
-  nowIso: string
+  nowIso: string,
+  trainingTimeoutMs: number
 ): Promise<FsrsOptimizedParameters> {
   const weights = await computeParameters(buildBindingItems(items), {
     enableShortTerm: true,
     numRelearningSteps: 1,
-    timeout: 5_000
+    timeout: trainingTimeoutMs
   });
   const normalizedWeights = normalizeFsrsWeights(weights);
 
