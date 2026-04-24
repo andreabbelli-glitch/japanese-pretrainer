@@ -28,13 +28,13 @@ export function createFetchThrottle(
   ): Promise<Response> {
     const resolvedConfig = resolveConfig(config, override);
     const now = Date.now();
-    const waitMs = Math.max(0, nextAllowedAt - now);
+    const scheduledAt = Math.max(now, nextAllowedAt);
+    const waitMs = scheduledAt - now;
+    nextAllowedAt = scheduledAt + Math.max(0, resolvedConfig.requestDelayMs);
 
     if (waitMs > 0) {
       await sleep(waitMs);
     }
-
-    nextAllowedAt = Date.now() + Math.max(0, resolvedConfig.requestDelayMs);
 
     const timeoutController = new AbortController();
     const timeout = setTimeout(() => {

@@ -4,6 +4,7 @@ import { createFetchThrottle } from "@/lib/fetch-throttle";
 
 describe("fetch throttle", () => {
   afterEach(() => {
+    vi.useRealTimers();
     vi.unstubAllGlobals();
   });
 
@@ -71,5 +72,50 @@ describe("fetch throttle", () => {
 
     expect(cancelBody).toHaveBeenCalledTimes(1);
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("serializes calls already waiting for the next throttle slot", async () => {
+    vi.useFakeTimers();
+    const start = new Date("2026-04-24T12:00:00.000Z");
+    vi.setSystemTime(start);
+    const fetchStartTimes: number[] = [];
+    const successResponse = {
+      ok: true
+    } as Response;
+    const fetchMock = vi.fn(async () => {
+      fetchStartTimes.push(Date.now());
+      return successResponse;
+    });
+    const throttle = createFetchThrottle({
+      requestDelayMs: 1_000,
+      requestTimeoutMs: 10_000
+    });
+
+    vi.stubGlobal("fetch", fetchMock);
+
+    const firstFetch = throttle.throttledFetch("https://example.test/one.ogg");
+    const secondFetch = throttle.throttledFetch("https://example.test/two.ogg");
+    const thirdFetch = throttle.throttledFetch("https://example.test/three.ogg");
+
+    expect(fetchStartTimes).toEqual([start.getTime()]);
+
+    await vi.advanceTimersByTimeAsync(999);
+
+    expect(fetchStartTimes).toEqual([start.getTime()]);
+
+    await vi.advanceTimersByTimeAsync(1);
+
+    expect(fetchStartTimes).toEqual([start.getTime(), start.getTime() + 1_000]);
+
+    await vi.advanceTimersByTimeAsync(1_000);
+    await expect(
+      Promise.all([firstFetch, secondFetch, thirdFetch])
+    ).resolves.toEqual([successResponse, successResponse, successResponse]);
+
+    expect(fetchStartTimes).toEqual([
+      start.getTime(),
+      start.getTime() + 1_000,
+      start.getTime() + 2_000
+    ]);
   });
 });
