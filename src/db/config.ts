@@ -50,7 +50,7 @@ export function resolveDatabaseLocation(
   const rawPath = normalizedUrl.startsWith("file:")
     ? normalizedUrl.slice("file:".length)
     : normalizedUrl;
-  const databasePath = path.resolve(process.cwd(), rawPath);
+  const databasePath = resolveLocalDatabasePath(rawPath);
 
   return {
     configuredPath: normalizedUrl,
@@ -66,4 +66,16 @@ export function ensureDatabaseDirectory(databasePath?: string): void {
   }
 
   fs.mkdirSync(path.dirname(databasePath), { recursive: true });
+}
+
+function resolveLocalDatabasePath(rawPath: string) {
+  if (rawPath.length === 0) {
+    return process.cwd();
+  }
+
+  if (path.isAbsolute(rawPath)) {
+    return path.normalize(rawPath);
+  }
+
+  return path.normalize(`${process.cwd()}${path.sep}${rawPath}`);
 }
