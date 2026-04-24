@@ -27,22 +27,19 @@ export async function saveStudySettingsAction(formData: FormData) {
       readRequiredString(formData, "glossaryDefaultSort")
     ),
     kanjiClashDailyNewLimit: normalizeKanjiClashDailyNewLimit(
-      Number.parseInt(readRequiredString(formData, "kanjiClashDailyNewLimit"), 10)
+      readRequiredInteger(formData, "kanjiClashDailyNewLimit")
     ),
     kanjiClashDefaultScope: normalizeKanjiClashDefaultScope(
       readRequiredString(formData, "kanjiClashDefaultScope")
     ),
     kanjiClashManualDefaultSize: normalizeKanjiClashManualDefaultSize(
-      Number.parseInt(
-        readRequiredString(formData, "kanjiClashManualDefaultSize"),
-        10
-      )
+      readRequiredInteger(formData, "kanjiClashManualDefaultSize")
     ),
     reviewFrontFurigana: normalizeReviewFrontFurigana(
       readRequiredString(formData, "reviewFrontFurigana")
     ),
     reviewDailyLimit: normalizeReviewDailyLimit(
-      Number.parseInt(readRequiredString(formData, "reviewDailyLimit"), 10)
+      readRequiredInteger(formData, "reviewDailyLimit")
     )
   });
 
@@ -59,11 +56,20 @@ export async function saveStudySettingsAction(formData: FormData) {
   );
 }
 
-function readOptionalInternalHref(
-  formData: FormData,
-  key: string
-) {
+function readOptionalInternalHref(formData: FormData, key: string) {
   const value = formData.get(key);
 
   return readInternalHref(typeof value === "string" ? value : undefined);
+}
+
+function readRequiredInteger(formData: FormData, key: string) {
+  const value = readRequiredString(formData, key);
+
+  if (!/^-?\d+$/u.test(value)) {
+    return Number.NaN;
+  }
+
+  const parsed = Number(value);
+
+  return Number.isSafeInteger(parsed) ? parsed : Number.NaN;
 }
