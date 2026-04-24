@@ -12,16 +12,6 @@ export const mediaComparisonKeys = [
   "status"
 ];
 
-export const segmentComparisonKeys = [
-  "id",
-  "mediaId",
-  "slug",
-  "title",
-  "orderIndex",
-  "segmentType",
-  "notes"
-];
-
 export const lessonComparisonKeys = [
   "id",
   "mediaId",
@@ -142,9 +132,6 @@ export function countChangedSourceDocuments(
   const existingCardsById = new Map(
     existingState.cards.map((row) => [row.id, row])
   );
-  const existingSegmentsById = new Map(
-    existingState.segments.map((row) => [row.id, row])
-  );
   const planLessonsById = new Map(
     plan.lessons.map((row) => [row.row.id, row])
   );
@@ -167,17 +154,7 @@ export function countChangedSourceDocuments(
   );
   const changedDocuments = plan.sourceDocuments.filter((document) => {
     if (document.kind === "media") {
-      return (
-        !rowsMatch(existingState.media, plan.media.row, mediaComparisonKeys) ||
-        plan.segments.some(
-          (row) =>
-            !rowsMatch(
-              existingSegmentsById.get(row.id) ?? null,
-              row,
-              segmentComparisonKeys
-            )
-        )
-      );
+      return !rowsMatch(existingState.media, plan.media.row, mediaComparisonKeys);
     }
 
     if (document.kind === "lesson") {

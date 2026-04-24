@@ -315,6 +315,50 @@ describe("content importer", () => {
     expect(persistedLessonProgress?.status).toBe("in_progress");
   });
 
+  it("counts a segment_ref-only cards file change once", async () => {
+    await copyContentFixture(validContentRoot, contentRoot);
+
+    await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-09T10:00:00.000Z")
+    });
+
+    const cardsPath = path.join(
+      contentRoot,
+      "media",
+      "sample-anime",
+      "cards",
+      "001-core.md"
+    );
+
+    await writeFile(
+      cardsPath,
+      (await readFile(cardsPath, "utf8")).replace(
+        "segment_ref: episode-01",
+        "segment_ref: episode-02"
+      )
+    );
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-09T11:00:00.000Z")
+    });
+
+    expect(result.status).toBe("completed");
+    expect(result.filesChanged).toBe(1);
+
+    const importedSegments = await database.query.segment.findMany({
+      where: eq(segment.mediaId, mediaId)
+    });
+
+    expect(importedSegments.map((row) => row.slug).sort()).toEqual([
+      "episode-01",
+      "episode-02"
+    ]);
+  });
+
   it("imports semantic references nested inside inline code into card entry links", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
 
