@@ -101,6 +101,34 @@ describe("useReviewSessionUpdateRunner", () => {
     expect(controller().queueCardIds).toEqual(["card-c"]);
   });
 
+  it("accepts same-counter mutation updates that advance to a different selected card", async () => {
+    const initialData = buildReviewPageData({
+      answeredCount: 0,
+      queueCardIds: ["card-a", "card-b"],
+      selectedCardId: "card-a"
+    });
+    const nextData = buildReviewPageData({
+      answeredCount: 0,
+      queueCardIds: ["card-b"],
+      selectedCardId: "card-b"
+    });
+    const onDiscarded = vi.fn();
+    const controller = await renderRunner(initialData);
+
+    await act(async () => {
+      controller().runSessionUpdate(() => Promise.resolve(nextData), {
+        acceptSameProgressSelectionChange: true,
+        onDiscarded
+      });
+      await flushPromises();
+    });
+
+    expect(onDiscarded).not.toHaveBeenCalled();
+    expect(controller().viewData.selectedCard?.id).toBe("card-b");
+    expect(controller().viewData.session.answeredCount).toBe(0);
+    expect(controller().queueCardIds).toEqual(["card-b"]);
+  });
+
   it("handles errors with rollback, callbacks, default and custom messages, and controlled logging", async () => {
     const consoleErrorSpy = vi
       .spyOn(console, "error")

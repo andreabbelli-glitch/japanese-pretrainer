@@ -14,6 +14,7 @@ import {
 type LoadReviewSessionData = () => Promise<ReviewPageData>;
 
 export type ReviewSessionUpdateOptions = {
+  acceptSameProgressSelectionChange?: boolean;
   errorResolver?: (error: unknown) => string;
   onDiscarded?: (nextData: ReviewPageData) => void;
   onError?: () => void;
@@ -113,7 +114,11 @@ export function useReviewSessionUpdateRunner(input: {
             currentViewData,
             nextData,
             input.requestedSelectedCardId,
-            input.isGlobalReview
+            input.isGlobalReview,
+            {
+              acceptSameProgressSelectionChange:
+                options?.acceptSameProgressSelectionChange
+            }
           )
         ) {
           options?.onDiscarded?.(nextData);

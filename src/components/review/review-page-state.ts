@@ -102,7 +102,10 @@ export function shouldAcceptServerReviewData(
   currentData: ReviewPageClientData,
   nextData: ReviewPageData,
   requestedSelectedCardId?: string | null,
-  allowRequestedSelectedCardId = false
+  allowRequestedSelectedCardId = false,
+  options: {
+    acceptSameProgressSelectionChange?: boolean;
+  } = {}
 ) {
   if (currentData.session.answeredCount < nextData.session.answeredCount) {
     return true;
@@ -129,7 +132,10 @@ export function shouldAcceptServerReviewData(
     return true;
   }
 
-  return currentData.selectedCard?.id === nextData.selectedCard?.id;
+  return (
+    options.acceptSameProgressSelectionChange ||
+    currentData.selectedCard?.id === nextData.selectedCard?.id
+  );
 }
 
 export function shouldKeepRevealedReviewAnswer(input: {

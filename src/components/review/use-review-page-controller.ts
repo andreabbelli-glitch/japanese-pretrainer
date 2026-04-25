@@ -294,7 +294,9 @@ export function useReviewPageController(input: {
       actionRedirectMode
     );
 
-    runSessionUpdate(() => action(actionInput));
+    runSessionUpdate(() => action(actionInput), {
+      acceptSameProgressSelectionChange: true
+    });
   }
 
   function handleMarkKnown() {
@@ -321,11 +323,15 @@ export function useReviewPageController(input: {
       actionRedirectMode
     );
 
-    runSessionUpdate(() =>
-      setReviewCardSuspendedSessionAction({
-        ...actionInput,
-        suspended: selectedCard.bucket !== "suspended"
-      })
+    runSessionUpdate(
+      () =>
+        setReviewCardSuspendedSessionAction({
+          ...actionInput,
+          suspended: selectedCard.bucket !== "suspended"
+        }),
+      {
+        acceptSameProgressSelectionChange: true
+      }
     );
   }
 
