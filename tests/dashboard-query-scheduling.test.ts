@@ -1,27 +1,8 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-type Deferred<T> = {
-  promise: Promise<T>;
-  resolve: (value: T) => void;
-};
+import type { MediaShellSnapshot } from "@/lib/media-shell";
 
-function createDeferred<T>(): Deferred<T> {
-  let resolve!: (value: T) => void;
-
-  return {
-    promise: new Promise<T>((innerResolve) => {
-      resolve = innerResolve;
-    }),
-    resolve
-  };
-}
-
-async function flushMicrotasks() {
-  await Promise.resolve();
-  await Promise.resolve();
-}
-
-describe("dashboard query scheduling", () => {
+describe("dashboard data", () => {
   afterEach(() => {
     vi.resetModules();
     vi.clearAllMocks();
@@ -33,289 +14,188 @@ describe("dashboard query scheduling", () => {
     vi.doUnmock("@/lib/settings");
   });
 
-  it("starts the global review overview as soon as the shared review limits are ready", async () => {
-    const mediaRowsDeferred = createDeferred<
-      Array<{
-        id: string;
-        slug: string;
-        title: string;
-      }>
-    >();
-    const dailyLimitDeferred = createDeferred<number>();
-    const introducedTodayDeferred = createDeferred<number>();
-    const reviewCandidatesDeferred = createDeferred<
-      Array<{
-        activeReviewCards: number;
-        cardsTotal: number;
-        dueCount: number;
-        mediaId: string;
-        newAvailableCount: number;
-        newCount: number;
-      }>
-    >();
-    const globalOverviewDeferred = createDeferred<{
-      activeCards: number;
-      dailyLimit: number;
-      dueCount: number;
-      effectiveDailyLimit: number;
-      manualCount: number;
-      newAvailableCount: number;
-      newQueuedCount: number;
-      queueCount: number;
-      queueLabel: string;
-      suspendedCount: number;
-      tomorrowCount: number;
-      totalCards: number;
-      upcomingCount: number;
-    }>();
-    const mediaSnapshotsDeferred = createDeferred<
-      Array<{
-        activeReviewCards: number;
-        cardsDue: number;
-        cardsTotal: number;
-        description: string;
-        entriesKnown: number;
-        entriesTotal: number;
-        glossary: {
-          breakdown: {
-            available: number;
-            known: number;
-            learning: number;
-            new: number;
-            review: number;
-          };
-          entriesCovered: number;
-          entriesTotal: number;
-          previewEntries: [];
-          progressPercent: number | null;
-        };
-        glossaryProgressPercent: number | null;
-        id: string;
-        inProgressLessons: number;
-        lessonsCompleted: number;
-        lessonsTotal: number;
-        mediaType: string;
-        mediaTypeLabel: string;
-        nextLesson: null;
-        previewEntries: [];
-        resumeLesson: null;
-        reviewQueueLabel: string;
-        reviewStatDetail: string;
-        reviewStatValue: string;
-        segmentKindLabel: string;
-        segments: [];
-        slug: string;
-        statusLabel: string;
-        textbookProgressPercent: number | null;
-        title: string;
-      }>
-    >();
-    let mediaStarted = false;
-    let reviewCandidatesStarted = false;
-    let overviewStarted = false;
-
-    vi.doMock("@/db", () => ({
-      db: {}
-    }));
-    vi.doMock("@/lib/data-cache", () => ({
-      GLOSSARY_SUMMARY_TAG: "glossary-summary",
-      MEDIA_LIST_TAG: "media-list",
-      REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
-      REVIEW_SUMMARY_TAG: "review-summary",
-      SETTINGS_TAG: "settings",
-      canUseDataCache: vi.fn(() => false),
-      listMediaCached: vi.fn(() => {
-        mediaStarted = true;
-        return mediaRowsDeferred.promise;
+  it("combines media shell totals with the global review overview", async () => {
+    const mediaSnapshots = [
+      buildMediaSnapshot({
+        cardsDue: 0,
+        entriesKnown: 2,
+        entriesTotal: 5,
+        id: "media-1",
+        lessonsCompleted: 1,
+        lessonsTotal: 3,
+        slug: "media-one",
+        title: "Media One"
       }),
-      runWithTaggedCache: vi.fn(async ({ loader }) => loader())
-    }));
-    vi.doMock("@/lib/local-date", () => ({
-      getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
-    }));
-    vi.doMock("@/lib/media-shell", () => ({
-      loadMediaShellSnapshots: vi.fn(() => mediaSnapshotsDeferred.promise),
-      pickFocusMedia: vi.fn(() => null)
-    }));
-    vi.doMock("@/lib/review", () => ({
-      loadGlobalReviewOverviewSnapshot: vi.fn(
-        (_database: unknown, options: unknown) => {
-          void options;
-          overviewStarted = true;
-          return globalOverviewDeferred.promise;
-        }
-      ),
-      loadReviewIntroducedTodayCountCached: vi.fn(
-        () => introducedTodayDeferred.promise
-      ),
-      loadReviewLaunchCandidatesCached: vi.fn(() => {
-        reviewCandidatesStarted = true;
-        return reviewCandidatesDeferred.promise;
+      buildMediaSnapshot({
+        cardsDue: 2,
+        entriesKnown: 3,
+        entriesTotal: 4,
+        id: "media-2",
+        lessonsCompleted: 2,
+        lessonsTotal: 4,
+        slug: "media-two",
+        title: "Media Two"
       })
-    }));
-    vi.doMock("@/lib/settings", () => ({
-      getReviewDailyLimit: vi.fn(() => dailyLimitDeferred.promise)
-    }));
+    ];
+
+    mockDashboardDependencies({
+      mediaSnapshots
+    });
 
     const { getDashboardData } = await import("@/lib/dashboard");
-    const reviewModule = await import("@/lib/review");
-    const dashboardPromise = getDashboardData();
+    const dashboard = await getDashboardData({} as never);
 
-    await flushMicrotasks();
-
-    expect(mediaStarted).toBe(true);
-    expect(reviewCandidatesStarted).toBe(true);
-    expect(overviewStarted).toBe(false);
-
-    dailyLimitDeferred.resolve(7);
-    introducedTodayDeferred.resolve(2);
-    await flushMicrotasks();
-
-    expect(overviewStarted).toBe(true);
-    expect(reviewModule.loadGlobalReviewOverviewSnapshot).toHaveBeenCalledWith(
-      {},
-      expect.objectContaining({
-        resolvedDailyLimit: 7,
-        resolvedNewIntroducedTodayCount: 2
-      })
-    );
-
-    mediaRowsDeferred.resolve([
-      {
-        id: "media-1",
-        slug: "fixture-media",
-        title: "Fixture Media"
-      }
-    ]);
-    reviewCandidatesDeferred.resolve([
-      {
-        activeReviewCards: 1,
-        cardsTotal: 2,
-        dueCount: 1,
-        mediaId: "media-1",
-        newAvailableCount: 3,
-        newCount: 3
-      }
-    ]);
-    globalOverviewDeferred.resolve({
-      activeCards: 1,
-      dailyLimit: 7,
-      dueCount: 1,
-      effectiveDailyLimit: 7,
-      manualCount: 0,
-      newAvailableCount: 3,
-      newQueuedCount: 3,
-      queueCount: 4,
-      queueLabel: "queue",
-      suspendedCount: 0,
-      tomorrowCount: 0,
-      totalCards: 2,
-      upcomingCount: 0
+    expect(dashboard.media).toEqual(mediaSnapshots);
+    expect(dashboard.focusMedia).toBe(mediaSnapshots[0]);
+    expect(dashboard.reviewMedia).toBe(mediaSnapshots[1]);
+    expect(dashboard.review).toEqual({
+      activeReviewCards: 4,
+      cardsDue: 2,
+      newQueuedCount: 1,
+      queueCount: 3,
+      queueLabel: "3 card in coda"
     });
-    mediaSnapshotsDeferred.resolve([]);
-
-    const dashboard = await dashboardPromise;
-
-    expect(dashboard.review.cardsDue).toBe(1);
+    expect(dashboard.totals).toEqual({
+      entriesKnown: 5,
+      entriesTotal: 9,
+      lessonsCompleted: 3,
+      lessonsTotal: 7
+    });
   });
 
-  it("starts loading media shell snapshots before the global review overview settles", async () => {
-    const mediaRowsDeferred = createDeferred<
-      Array<{ id: string; slug: string; title: string }>
-    >();
-    const dailyLimitDeferred = createDeferred<number>();
-    const introducedTodayDeferred = createDeferred<number>();
-    const reviewCandidatesDeferred = createDeferred<unknown[]>();
-    const globalOverviewDeferred = createDeferred<Record<string, number | string>>();
-    const mediaSnapshotsDeferred = createDeferred<unknown[]>();
-    let mediaShellStarted = false;
+  it("prefers due media for the dashboard review shortcut", async () => {
+    const focusMedia = buildMediaSnapshot({
+      cardsDue: 0,
+      cardsTotal: 8,
+      id: "focus-media",
+      slug: "focus-media",
+      title: "Focus Media"
+    });
+    const dueMedia = buildMediaSnapshot({
+      activeReviewCards: 1,
+      cardsDue: 1,
+      cardsTotal: 1,
+      id: "due-media",
+      slug: "due-media",
+      title: "Due Media"
+    });
 
-    vi.doMock("@/db", () => ({
-      db: {}
-    }));
-    vi.doMock("@/lib/data-cache", () => ({
-      GLOSSARY_SUMMARY_TAG: "glossary-summary",
-      MEDIA_LIST_TAG: "media-list",
-      REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
-      REVIEW_SUMMARY_TAG: "review-summary",
-      SETTINGS_TAG: "settings",
-      canUseDataCache: vi.fn(() => false),
-      listMediaCached: vi.fn(() => mediaRowsDeferred.promise),
-      runWithTaggedCache: vi.fn(async ({ loader }) => loader())
-    }));
-    vi.doMock("@/lib/local-date", () => ({
-      getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
-    }));
-    vi.doMock("@/lib/media-shell", () => ({
-      loadMediaShellSnapshots: vi.fn(() => {
-        mediaShellStarted = true;
-        return mediaSnapshotsDeferred.promise;
-      }),
-      pickFocusMedia: vi.fn(() => null)
-    }));
-    vi.doMock("@/lib/review", () => ({
-      loadGlobalReviewOverviewSnapshot: vi.fn(
-        () => globalOverviewDeferred.promise
-      ),
-      loadReviewIntroducedTodayCountCached: vi.fn(
-        () => introducedTodayDeferred.promise
-      ),
-      loadReviewLaunchCandidatesCached: vi.fn(
-        () => reviewCandidatesDeferred.promise
-      )
-    }));
-    vi.doMock("@/lib/settings", () => ({
-      getReviewDailyLimit: vi.fn(() => dailyLimitDeferred.promise)
-    }));
+    mockDashboardDependencies({
+      mediaSnapshots: [focusMedia, dueMedia]
+    });
 
     const { getDashboardData } = await import("@/lib/dashboard");
-    const dashboardPromise = getDashboardData();
+    const dashboard = await getDashboardData({} as never);
 
-    await flushMicrotasks();
-
-    mediaRowsDeferred.resolve([
-      {
-        id: "media-1",
-        slug: "fixture-media",
-        title: "Fixture Media"
-      }
-    ]);
-    dailyLimitDeferred.resolve(7);
-    introducedTodayDeferred.resolve(2);
-    reviewCandidatesDeferred.resolve([
-      {
-        activeReviewCards: 1,
-        cardsTotal: 2,
-        dueCount: 1,
-        mediaId: "media-1",
-        newAvailableCount: 3,
-        newCount: 3
-      }
-    ]);
-
-    await flushMicrotasks();
-
-    expect(mediaShellStarted).toBe(true);
-
-    globalOverviewDeferred.resolve({
-      activeCards: 1,
-      dailyLimit: 7,
-      dueCount: 1,
-      effectiveDailyLimit: 7,
-      manualCount: 0,
-      newAvailableCount: 3,
-      newQueuedCount: 3,
-      queueCount: 4,
-      queueLabel: "queue",
-      suspendedCount: 0,
-      tomorrowCount: 0,
-      totalCards: 2,
-      upcomingCount: 0
-    });
-    mediaSnapshotsDeferred.resolve([]);
-
-    const dashboard = await dashboardPromise;
-
-    expect(dashboard.media).toEqual([]);
+    expect(dashboard.focusMedia).toBe(focusMedia);
+    expect(dashboard.reviewMedia).toBe(dueMedia);
   });
 });
+
+function mockDashboardDependencies(input: {
+  mediaSnapshots: MediaShellSnapshot[];
+}) {
+  vi.doMock("@/db", () => ({
+    db: {}
+  }));
+  vi.doMock("@/lib/data-cache", () => ({
+    GLOSSARY_SUMMARY_TAG: "glossary-summary",
+    MEDIA_LIST_TAG: "media-list",
+    REVIEW_FIRST_CANDIDATE_TAG: "review-first-candidate",
+    REVIEW_SUMMARY_TAG: "review-summary",
+    SETTINGS_TAG: "settings",
+    canUseDataCache: vi.fn(() => false),
+    listMediaCached: vi.fn(() =>
+      Promise.resolve(
+        input.mediaSnapshots.map((snapshot) => ({
+          id: snapshot.id,
+          slug: snapshot.slug,
+          title: snapshot.title
+        }))
+      )
+    ),
+    runWithTaggedCache: vi.fn(async ({ loader }) => loader())
+  }));
+  vi.doMock("@/lib/local-date", () => ({
+    getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+  }));
+  vi.doMock("@/lib/media-shell", () => ({
+    loadMediaShellSnapshots: vi.fn(() => Promise.resolve(input.mediaSnapshots)),
+    pickFocusMedia: vi.fn(() => input.mediaSnapshots[0] ?? null)
+  }));
+  vi.doMock("@/lib/review", () => ({
+    loadGlobalReviewOverviewSnapshot: vi.fn(() =>
+      Promise.resolve({
+        activeCards: 4,
+        dailyLimit: 7,
+        dueCount: 2,
+        effectiveDailyLimit: 7,
+        manualCount: 0,
+        newAvailableCount: 1,
+        newQueuedCount: 1,
+        queueCount: 3,
+        queueLabel: "3 card in coda",
+        suspendedCount: 0,
+        tomorrowCount: 0,
+        totalCards: 5,
+        upcomingCount: 0
+      })
+    ),
+    loadReviewIntroducedTodayCountCached: vi.fn(() => Promise.resolve(0)),
+    loadReviewLaunchCandidatesCached: vi.fn(() => Promise.resolve([]))
+  }));
+  vi.doMock("@/lib/settings", () => ({
+    getReviewDailyLimit: vi.fn(() => Promise.resolve(7))
+  }));
+}
+
+function buildMediaSnapshot(
+  overrides: Partial<MediaShellSnapshot> &
+    Pick<MediaShellSnapshot, "id" | "slug" | "title">
+): MediaShellSnapshot {
+  const { id, slug, title, ...rest } = overrides;
+
+  return {
+    activeLesson: null,
+    activeReviewCards: 0,
+    cardsDue: 0,
+    cardsTotal: 0,
+    description: `${title} description`,
+    entriesKnown: 0,
+    entriesTotal: 0,
+    glossary: {
+      breakdown: {
+        available: 0,
+        known: 0,
+        learning: 0,
+        new: 0,
+        review: 0
+      },
+      entriesCovered: 0,
+      entriesTotal: 0,
+      previewEntries: [],
+      progressPercent: null
+    },
+    glossaryProgressPercent: null,
+    id,
+    inProgressLessons: 0,
+    lastOpenedLesson: null,
+    lessonsCompleted: 0,
+    lessonsTotal: 0,
+    mediaType: "game",
+    mediaTypeLabel: "Videogioco",
+    nextLesson: null,
+    previewEntries: [],
+    resumeLesson: null,
+    reviewQueueLabel: "Nessuna review",
+    reviewStatDetail: "Nessuna review",
+    reviewStatValue: "0",
+    segmentKindLabel: "Capitoli",
+    segments: [],
+    slug,
+    statusLabel: "Attivo",
+    textbookProgressPercent: null,
+    title,
+    ...rest
+  };
+}

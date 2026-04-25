@@ -2,6 +2,8 @@ import { act, createElement, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { installMinimalDom, uninstallMinimalDom } from "./helpers/minimal-dom";
+
 import type { KanjiClashRoundControllerResult } from "@/components/kanji-clash/use-kanji-clash-round-controller";
 
 const mocks = vi.hoisted(() => ({
@@ -62,7 +64,9 @@ describe("useKanjiClashRoundController manual contrast sync", () => {
 
     let latestController: KanjiClashRoundControllerResult | null = null;
 
-    function Probe(props: { data: ReturnType<typeof buildKanjiClashPageData> }) {
+    function Probe(props: {
+      data: ReturnType<typeof buildKanjiClashPageData>;
+    }) {
       const controller = useKanjiClashRoundController(props.data);
 
       useEffect(() => {
@@ -122,11 +126,13 @@ describe("useKanjiClashRoundController manual contrast sync", () => {
     };
 
     expect(controller().currentRound?.roundKey).toBe(currentRound.roundKey);
-    expect(controller().activeManualContrasts.map((contrast) => contrast.contrastKey)).toEqual([
-      contrastKey
-    ]);
     expect(
-      controller().archivedManualContrasts.map((contrast) => contrast.contrastKey)
+      controller().activeManualContrasts.map((contrast) => contrast.contrastKey)
+    ).toEqual([contrastKey]);
+    expect(
+      controller().archivedManualContrasts.map(
+        (contrast) => contrast.contrastKey
+      )
     ).toEqual(["entry:term:archived-left::entry:term:archived-right"]);
 
     await act(async () => {
@@ -141,7 +147,9 @@ describe("useKanjiClashRoundController manual contrast sync", () => {
     expect(controller().currentRound?.roundKey).toBe(currentRound.roundKey);
     expect(controller().activeManualContrasts).toHaveLength(0);
     expect(
-      controller().archivedManualContrasts.map((contrast) => contrast.contrastKey)
+      controller().archivedManualContrasts.map(
+        (contrast) => contrast.contrastKey
+      )
     ).toContain(contrastKey);
     expect(mocks.refresh).toHaveBeenCalledTimes(1);
 
@@ -155,11 +163,13 @@ describe("useKanjiClashRoundController manual contrast sync", () => {
       contrastKey
     });
     expect(controller().currentRound?.roundKey).toBe(currentRound.roundKey);
-    expect(controller().activeManualContrasts.map((contrast) => contrast.contrastKey)).toEqual([
-      contrastKey
-    ]);
     expect(
-      controller().archivedManualContrasts.map((contrast) => contrast.contrastKey)
+      controller().activeManualContrasts.map((contrast) => contrast.contrastKey)
+    ).toEqual([contrastKey]);
+    expect(
+      controller().archivedManualContrasts.map(
+        (contrast) => contrast.contrastKey
+      )
     ).not.toContain(contrastKey);
     expect(mocks.refresh).toHaveBeenCalledTimes(2);
   });
@@ -171,7 +181,9 @@ describe("useKanjiClashRoundController manual contrast sync", () => {
 
     let latestController: KanjiClashRoundControllerResult | null = null;
 
-    function Probe(props: { data: ReturnType<typeof buildKanjiClashPageData> }) {
+    function Probe(props: {
+      data: ReturnType<typeof buildKanjiClashPageData>;
+    }) {
       const controller = useKanjiClashRoundController(props.data);
 
       useEffect(() => {
@@ -240,7 +252,9 @@ describe("useKanjiClashRoundController manual contrast sync", () => {
 
     let latestController: KanjiClashRoundControllerResult | null = null;
 
-    function Probe(props: { data: ReturnType<typeof buildKanjiClashPageData> }) {
+    function Probe(props: {
+      data: ReturnType<typeof buildKanjiClashPageData>;
+    }) {
       const controller = useKanjiClashRoundController(props.data);
 
       useEffect(() => {
@@ -335,193 +349,4 @@ function createDeferred<T>() {
     reject,
     resolve
   };
-}
-
-function installMinimalDom() {
-  class SimpleEvent {
-    bubbles: boolean;
-    cancelable: boolean;
-    defaultPrevented = false;
-    type: string;
-
-    constructor(type: string, init?: { bubbles?: boolean; cancelable?: boolean }) {
-      this.type = type;
-      this.bubbles = init?.bubbles ?? false;
-      this.cancelable = init?.cancelable ?? false;
-    }
-
-    preventDefault() {
-      if (this.cancelable) {
-        this.defaultPrevented = true;
-      }
-    }
-  }
-
-  class SimpleNode {
-    childNodes: SimpleNode[] = [];
-    isConnected = false;
-    nodeType: number;
-    ownerDocument: SimpleDocument | null = null;
-    parentNode: SimpleNode | null = null;
-
-    constructor(nodeType: number) {
-      this.nodeType = nodeType;
-    }
-
-    appendChild<T extends SimpleNode>(child: T): T {
-      child.parentNode = this;
-      child.ownerDocument = this.ownerDocument;
-      this.childNodes.push(child);
-      child.isConnected = this.isConnected;
-      return child;
-    }
-
-    insertBefore<T extends SimpleNode>(child: T, before: SimpleNode | null): T {
-      child.parentNode = this;
-      child.ownerDocument = this.ownerDocument;
-      const index = before ? this.childNodes.indexOf(before) : -1;
-
-      if (index === -1) {
-        this.childNodes.push(child);
-      } else {
-        this.childNodes.splice(index, 0, child);
-      }
-
-      child.isConnected = this.isConnected;
-      return child;
-    }
-
-    removeChild<T extends SimpleNode>(child: T): T {
-      const index = this.childNodes.indexOf(child);
-
-      if (index >= 0) {
-        this.childNodes.splice(index, 1);
-      }
-
-      child.parentNode = null;
-      child.isConnected = false;
-      return child;
-    }
-  }
-
-  class SimpleTextNode extends SimpleNode {
-    data: string;
-    nodeValue: string;
-
-    constructor(data: string) {
-      super(3);
-      this.data = data;
-      this.nodeValue = data;
-    }
-  }
-
-  class SimpleElement extends SimpleNode {
-    attributes = new Map<string, string>();
-    namespaceURI = "http://www.w3.org/1999/xhtml";
-    nodeName: string;
-    style = {};
-    tagName: string;
-
-    constructor(tagName: string) {
-      super(1);
-      this.tagName = tagName.toUpperCase();
-      this.nodeName = this.tagName;
-    }
-
-    addEventListener() {}
-
-    dispatchEvent() {
-      return true;
-    }
-
-    get firstChild() {
-      return this.childNodes[0] ?? null;
-    }
-
-    get textContent() {
-      return this.childNodes
-        .map((child) => {
-          if (child instanceof SimpleTextNode) {
-            return child.data;
-          }
-
-          return child instanceof SimpleElement ? child.textContent : "";
-        })
-        .join("");
-    }
-
-    set textContent(value: string | null) {
-      this.childNodes = value ? [new SimpleTextNode(value)] : [];
-    }
-
-    removeEventListener() {}
-
-    removeAttribute(name: string) {
-      this.attributes.delete(name);
-    }
-
-    setAttribute(name: string, value: string) {
-      this.attributes.set(name, value);
-    }
-  }
-
-  class SimpleDocument extends SimpleNode {
-    body: SimpleElement;
-    defaultView: typeof globalThis;
-    documentElement: SimpleElement;
-    nodeName = "#document";
-
-    constructor() {
-      super(9);
-      this.ownerDocument = this;
-      this.isConnected = true;
-      this.documentElement = new SimpleElement("html");
-      this.documentElement.ownerDocument = this;
-      this.documentElement.isConnected = true;
-      this.body = new SimpleElement("body");
-      this.body.ownerDocument = this;
-      this.body.isConnected = true;
-      this.documentElement.appendChild(this.body);
-      this.appendChild(this.documentElement);
-      this.defaultView = globalThis;
-    }
-
-    createElement(tagName: string) {
-      const element = new SimpleElement(tagName);
-      element.ownerDocument = this;
-      return element;
-    }
-
-    createTextNode(data: string) {
-      const node = new SimpleTextNode(data);
-      node.ownerDocument = this;
-      return node;
-    }
-
-    addEventListener() {}
-
-    removeEventListener() {}
-
-    dispatchEvent() {
-      return true;
-    }
-  }
-
-  const document = new SimpleDocument();
-
-  vi.stubGlobal("document", document);
-  vi.stubGlobal("window", globalThis);
-  vi.stubGlobal("navigator", { userAgent: "vitest" });
-  vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
-  vi.stubGlobal("HTMLElement", SimpleElement);
-  vi.stubGlobal("HTMLIFrameElement", class {});
-  vi.stubGlobal("Node", SimpleNode);
-  vi.stubGlobal("Event", SimpleEvent);
-  vi.stubGlobal("addEventListener", () => {});
-  vi.stubGlobal("removeEventListener", () => {});
-  vi.stubGlobal("dispatchEvent", () => true);
-}
-
-function uninstallMinimalDom() {
-  vi.unstubAllGlobals();
 }

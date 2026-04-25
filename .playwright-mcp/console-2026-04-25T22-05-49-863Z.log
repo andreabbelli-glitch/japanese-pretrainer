@@ -1,0 +1,2 @@
+[     296ms] [ERROR] Access to fetch at 'https://forvo.com/download/mp3/%E7%9B%B8%E6%89%8B1%E4%BA%BA%E3%81%AB%E3%81%A4%E3%81%8D/ja/9229988' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ about:blank:0
+[     296ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://forvo.com/download/mp3/%E7%9B%B8%E6%89%8B1%E4%BA%BA%E3%81%AB%E3%81%A4%E3%81%8D/ja/9229988:0

@@ -4,7 +4,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-aite-hitori-nitsuki",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-aite-hitori-nitsuki/forvo-manual-あいてひとりにつき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%9B%B8%E6%89%8B1%E4%BA%BA%E3%81%AB%E3%81%A4%E3%81%8D/#ja"
     },
     {
       "entry_type": "grammar",
@@ -44,7 +47,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-deru-made-omotemuki-ni-shi",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-deru-made-omotemuki-ni-shi/forvo-manual-くりーちゃーか-て-るまて-おもてむきにし.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%81%8C%E5%87%BA%E3%82%8B%E3%81%BE%E3%81%A7%E8%A1%A8%E5%90%91%E3%81%8D%E3%81%AB%E3%81%97/#ja"
     },
     {
       "entry_type": "grammar",
@@ -63,20 +69,26 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-erabareta-player",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-erabareta-player/forvo-manual-し-しんのクリーチャーか-えらは-れたフ-レイヤーは.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%87%AA%E8%BA%AB%E3%81%AE%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%81%8C%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%9F%E3%83%97%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%81%AF/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-hajimatte-ite",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%A7%8B%E3%81%BE%E3%82%8B",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/grammar/grammar-hajimatte-ite/forvo-manual-はし-まっていて.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%A7%8B%E3%81%BE%E3%81%A3%E3%81%A6%E3%81%84%E3%81%A6/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-hajimete-shita-toki",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-hajimete-shita-toki/forvo-manual-はし-めて-したとき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%EF%BD%9E%E3%81%97%E3%81%9F%E6%99%82/#ja"
     },
     {
       "entry_type": "grammar",
@@ -86,7 +98,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-hitotsu-zutsu",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-hitotsu-zutsu/forvo-manual-ひとつす-つ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/1%E3%81%A4%E3%81%9A%E3%81%A4/#ja"
     },
     {
       "entry_type": "grammar",
@@ -123,12 +138,18 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-kaku-turn-hajimete-attack",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-kaku-turn-hajimete-attack/forvo-manual-かくターン-このクリーチャーか-はし-めてこうけ-きするとき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%90%84%E3%82%BF%E3%83%BC%E3%83%B3%E3%80%81%E3%81%93%E3%81%AE%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%81%8C%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E6%94%BB%E6%92%83%E3%81%99%E3%82%8B%E6%99%82/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-kaku-turn-ni-ichido",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-kaku-turn-ni-ichido/forvo-manual-かくたーんにいちと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%90%84%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AB%E4%B8%80%E5%BA%A6/#ja"
     },
     {
       "entry_type": "grammar",
@@ -141,12 +162,18 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-kanou-nara",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-kanou-nara/forvo-manual-かのうなら.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8F%AF%E8%83%BD%E3%81%AA%E3%82%89/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-kanoyouni",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-kanoyouni/forvo-manual-かのように.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8B%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB/#ja"
     },
     {
       "entry_type": "grammar",
@@ -238,7 +265,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-nikai-okonau",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-nikai-okonau/forvo-manual-にかいおこなう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%82%922%E5%9B%9E%E8%A1%8C%E3%81%86/#ja"
     },
     {
       "entry_type": "grammar",
@@ -289,7 +319,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-shoukan-ni-yotte",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-shoukan-ni-yotte/forvo-manual-しょうかんによって.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8F%AC%E5%96%9A%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6/#ja"
     },
     {
       "entry_type": "grammar",
@@ -299,7 +332,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba/forvo-manual-そのこうけ-きちゅうにしーると-をふ-れいくしていれは.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9D%E3%81%AE%E6%94%BB%E6%92%83%E4%B8%AD%E3%81%AB%E3%82%B7%E3%83%BC%E3%83%AB%E3%83%89%E3%82%92%E3%83%96%E3%83%AC%E3%82%A4%E3%82%AF%E3%81%97%E3%81%A6%E3%81%84%E3%82%8C%E3%81%B0/#ja"
     },
     {
       "entry_type": "grammar",
@@ -326,7 +362,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-soreigai-nara",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-soreigai-nara/forvo-manual-それいか-いなら.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%9D%E3%82%8C%E4%BB%A5%E5%A4%96%E3%81%AA%E3%82%89/#ja"
     },
     {
       "entry_type": "grammar",
@@ -371,7 +410,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-sukina-junjo-de",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-sukina-junjo-de/forvo-manual-すきなし-ゅんし-ょて.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%A5%BD%E3%81%8D%E3%81%AA%E9%A0%86%E5%BA%8F%E3%81%A7/#ja"
     },
     {
       "entry_type": "grammar",
@@ -430,7 +472,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-to-onaji-maisuu",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-to-onaji-maisuu/forvo-manual-とおなし-まいすう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%81%A8%E5%90%8C%E3%81%98%E6%9E%9A%E6%95%B0/#ja"
     },
     {
       "entry_type": "grammar",
@@ -476,7 +521,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-wo-sentaku",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-wo-sentaku/forvo-manual-をせんたく.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%82%92%E9%81%B8%E6%8A%9E/#ja"
     },
     {
       "entry_type": "grammar",
@@ -542,7 +590,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-abyss-mekureido",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-abyss-mekureido/forvo-manual-あひ-す-めくれいと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A2%E3%83%93%E3%82%B9%E3%83%BB%E3%83%A1%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%89/#ja"
     },
     {
       "entry_type": "term",

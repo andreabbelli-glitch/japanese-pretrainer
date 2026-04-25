@@ -1,0 +1,131 @@
+mediaSlug	entryKind	entryId	label	reading	forvoDate	forvoPage	speaker
+duel-masters-dm25	grammar	grammar-aite-hitori-nitsuki	相手1人につき	あいてひとりにつき	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-deru-made-omotemuki-ni-shi	クリーチャーが出るまで表向きにし	くりーちゃーがでるまでおもてむきにし	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-erabareta-player	自身のクリーチャーが選ばれたプレイヤーは	じしんのクリーチャーがえらばれたプレイヤーは	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-hajimatte-ite	始まっていて	はじまっていて	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-hajimete-shita-toki	はじめて～した時	はじめて～したとき	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-hitotsu-zutsu	1つずつ	ひとつずつ	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-kaku-turn-hajimete-attack	各ターン、このクリーチャーがはじめて攻撃する時	かくターン、このクリーチャーがはじめてこうげきするとき	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-kaku-turn-ni-ichido	各ターンに一度	かくたーんにいちど	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-kanou-nara	可能なら	かのうなら	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-kanoyouni	かのように	かのように	2026-04-12	2	yuko56
+duel-masters-dm25	grammar	grammar-nikai-okonau	～を2回行う	にかいおこなう	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-shoukan-ni-yotte	召喚によって	しょうかんによって	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba	その攻撃中にシールドをブレイクしていれば	そのこうげきちゅうにしーるどをぶれいくしていれば	2026-04-12	8	mezashi
+duel-masters-dm25	grammar	grammar-soreigai-nara	それ以外なら	それいがいなら	2026-04-12	7	mezashi
+duel-masters-dm25	grammar	grammar-sukina-junjo-de	好きな順序で	すきなじゅんじょで	2026-04-12	7	mezashi
+duel-masters-dm25	grammar	grammar-to-onaji-maisuu	～と同じ枚数	とおなじまいすう	2026-04-12	7	mezashi
+duel-masters-dm25	grammar	grammar-wo-sentaku	～を選択	をせんたく	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-abyss-mekureido	アビス・メクレイド	あびす めくれいど	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-abyss-royal	アビスロイヤル	あびすろいやる	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-abyss-rush	アビスラッシュ	あびすらっしゅ	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-abyssbell-jashintei	アビスベル=ジャシン帝	あびすべるじゃしんてい	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-add-turn	ターンを追加する	たーんをついかする	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-apollonus-dragelion	アポロヌス・ドラゲリオン	あぽろぬす・どらげりおん	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-attack-target	攻撃先	こうげきさき	2026-04-11	9	mezashi
+duel-masters-dm25	term	term-babyponnosuke	ベイビーポンの助	べいびーぽんのすけ	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-bad-brand-first	“罰怒”ブランド 1st	ばっどぶらんど ふぁーすと	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-balga-raizou-super-heavenly-nova	超天星バルガライゾウ	ちょうてんせい ばるがらいぞう	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade	裏斬隠裏蒼頭バルガリスク	うらぎりがくれうらそうとう ばるがりすく	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-battle-saseru	バトルさせる	ばとるさせる	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-bauwauja	深淵の三咆哮 バウワウジャ	しんえんのさんほうこう ばうわうじゃ	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-beat-jockey	ビートジョッキー	びーとじょっきー	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-beethoven-zenith-of-horror	「戦慄」の頂 ベートーベン	せんりつ の いただき べーとーべん	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-bolzard-superhero	ボルザード・スーパーヒーロー	ぼるざーど・すーぱーひーろー	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-bottom-of-deck	山札の一番下	やまふだのいちばんした	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-bulk-claim	一括受け取り	いっかつうけとり	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-card-exchange	カード交換	かーどこうかん	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-card-pack-purchase	カードパック購入	かーどぱっくこうにゅう	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-card-purchase	カード購入	かーどこうにゅう	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-civil-count	シビルカウント	しびるかうんと	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-claim-deadline	受け取り期限	うけとりきげん	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-claim-history	受け取り履歴	うけとりりれき	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-colorless-spell	無色呪文	むしょく じゅもん	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-constructed-deck-purchase	構築済みデッキ購入	こうちくずみでっきこうにゅう	2026-04-12	7	mezashi
+duel-masters-dm25	term	term-crash-hadou	勝利龍装 クラッシュ“覇道”	しょうりりゅうそう くらっしゅはどう	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-crossgear	クロスギア	くろすぎあ	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-d2-field	D2フィールド	でぃーつーふぃーるど	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-death-puppet	デスパペット	ですぱぺっと	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-deck-edit	デッキ編成	でっきへんせい	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-deck-list	デッキ一覧	でっきいちらん	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-dm-points	DMポイント	でぃーえむぽいんと	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-doorknocker-nordocker	ドアノッカ＝ノアドッカ	どあのっか のあどっか	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-dragheart	ドラグハート	どらぐはーと	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-dragocalypse-day	ドラゴカリプス・デイ	どらごかりぷす でい	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-dragonguild	ドラゴンギルド	どらごんぎるど	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-enter-battle-zone-tapped	タップして置く	たっぷしておく	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-eternal-omega	エターナル・Ω	えたーなる おめが	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-evolution-creature	進化クリーチャー	しんかくりーちゃー	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-exchange-period	交換期間	こうかんきかん	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-felix-misery	フェリックス・ミザリィ	ふぇりっくす みざりぃ	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-g-neo-creature	G-NEOクリーチャー	じーねおくりーちゃー	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-g-strike	G・ストライク	がーどすとらいく	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-g-zero	G・ゼロ	じーぜろ	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-gouhaten-tsukumogatari	轟破天九十九語	ごうはてんつくもがたり	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-gransect	グランセクト	ぐらんせくと	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-hanasaki-gelgranos	ハナサキ・ゲルグラノス	はなさき げるぐらのす	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-infelstarge	インフェル星樹	いんふぇるすたーじゅ	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-jablood	ジャブラッド	じゃぶらっど	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-jashinnyuu	邪侵入	じゃしんにゅう	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-jenny-jane	刻解人形ジェニー・ジェーン	こくかいにんぎょう じぇにー じぇーん	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-judgment-emblem	裁きの紋章	さばきのもんしょう	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-kenzan-no-sabaki	剣参ノ裁キ	けんざんのさばき	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-key-card	キーカード	きーかーど	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-kingdom-ohkabuto	キングダム・オウ禍武斗	きんぐだむ おうかぶと	2026-04-12	6	mezashi
+duel-masters-dm25	term	term-kirifudash	キリフダッシュ	きりふだっしゅ	2026-04-12	5	mezashi
+duel-masters-dm25	term	term-kuromame-danshaku	黒豆だんしゃく	くろまめだんしゃく	2026-04-12	5	mezashi
+duel-masters-dm25	term	term-legend-battle	レジェンドバトル	れじぇんどばとる	2026-04-12	5	mezashi
+duel-masters-dm25	term	term-legend-skill	レジェンドスキル	れじぇんどすきる	2026-04-12	5	mezashi
+duel-masters-dm25	term	term-login-bonus	ログインボーナス	ろぐいんぼーなす	2026-04-12	5	mezashi
+duel-masters-dm25	term	term-mach-fighter	マッハファイター	まっはふぁいたー	2026-04-12	5	mezashi
+duel-masters-dm25	term	term-madougu	魔導具	まどうぐ	2026-04-12	5	mezashi
+duel-masters-dm25	term	term-mafi-gang	マフィ・ギャング	まふぃ ぎゃんぐ	2026-04-12	5	mezashi
+duel-masters-dm25	term	term-maou-de-szark	魔凰 デ・スザーク	まおう で すざーく	2026-04-12	5	mezashi
+duel-masters-dm25	term	term-sofa-softysonia	ソファ＝ソフティソニア	そふぁ そふてぃそにあ	2026-04-12	4	mezashi
+gundam-arsenal-base	grammar	grammar-a-and-b	A＆B		2026-04-12	3	mezashi
+gundam-arsenal-base	grammar	grammar-ga-hyouji-sareru	～が表示される	ひょうじされる	2026-04-12	3	mezashi
+gundam-arsenal-base	grammar	grammar-ga-kaihou-sareru	～が解放される	かいほうされる	2026-04-12	3	mezashi
+gundam-arsenal-base	grammar	grammar-wo-setto-suru	～をセットする		2026-04-12	3	mezashi
+gundam-arsenal-base	grammar	grammar-wo-tacchi-suru	～をタッチする		2026-04-12	3	mezashi
+gundam-arsenal-base	term	term-gquuuuuux-omega-psycommu	GQuuuuuuX (オメガ・サイコミュ)	じーくあくす おめがさいこみゅ	2026-04-12	3	mezashi
+gundam-arsenal-base	term	term-shuji-itou	シュウジ・イトウ	しゅうじいとう	2026-04-12	2	mezashi
+pokemon-scarlet-violet	term	term-champion-rank	チャンピオンランク	チャンピオンランク	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-dougu	どうぐ	どうぐ	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-e013-sugoi	すごい！	すごい！	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-e016-yatta	やった！	やった！	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-e018-doushitano	どうしたの？	どうしたの？	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-e024-dono-pokemoni-tsukaimasuka	どの ポケモンに 使いますか？	どの ポケモンに つかいますか	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-friendly-shop	フレンドリィショップ	フレンドリィショップ	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-hinshi	ひんし	ひんし	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-joutai-ijou	状態異常	じょうたいいじょう	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-kouka-wa-batsugun	こうかは ばつぐんだ！	こうかは ばつぐんだ	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-mochimono	もちもの	もちもの	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-otoshimono	おとしもの	おとしもの	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-pokemon-zukan	ポケモン図鑑	ポケモンずかん	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-smartphone-rotom	スマホロトム	スマホロトム	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-taisetsu-na-mono	たいせつなもの	たいせつなもの	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-tera-type	テラスタイプ	テラスタイプ	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-terastal	テラスタル	テラスタル	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-terastal-orb	テラスタルオーブ	テラスタルオーブ	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-tsuyosa-o-miru	強さを見る	つよさをみる	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-type-aishou	タイプ相性	タイプあいしょう	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-v017-sutaa-dan	スター団	すたーだん	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-v028-jimuriidaa	ジムリーダー	じむりーだー	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-v038-jimutesuto	ジムテスト	じむてすと	2026-04-11	9	mezashi
+pokemon-scarlet-violet	term	term-v044-nemo	ネモ	ねも	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v048-pepaa	ペパー	ぺぱー	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v064-parudea-chihou	パルデア地方	ぱるであちほう	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v069-kuraberu	クラベル	くらべる	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v088-tokubou	特防	とくぼう	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v094-shokujipawaa	食事パワー	しょくじパワー	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v096-koraidon	コライドン	こらいどん	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v097-miraidon	ミライドン	みらいどん	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v100-hiden-supaisu	秘伝スパイス	ひでんすぱいす	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v107-orenjiakademii	オレンジアカデミー	おれんじあかでみー	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v110-terareidobatoru	テラレイドバトル	てられいどばとる	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v113-soratobutakushii	そらとぶタクシー	そらとぶタクシー	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v118-omakasebatoru	おまかせバトル	おまかせバトル	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-v130-nushipokemon	ヌシポケモン	ぬしぽけもん	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-waza-machine	わざマシン	わざマシン	2026-04-11	8	mezashi
+pokemon-scarlet-violet	term	term-yowaraseru	弱らせる	よわらせる	2026-04-11	8	mezashi
+web-giapponese	grammar	grammar-state-de	新規で〜する	しんきで〜する	2026-04-18	1	yuko56

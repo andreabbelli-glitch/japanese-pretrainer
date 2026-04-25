@@ -1,0 +1,1302 @@
+[
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-aite-hitori-nitsuki",
+    "label": "相手1人につき",
+    "reading": "あいてひとりにつき",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-deru-made-omotemuki-ni-shi",
+    "label": "クリーチャーが出るまで表向きにし",
+    "reading": "くりーちゃーがでるまでおもてむきにし",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-erabareta-player",
+    "label": "自身のクリーチャーが選ばれたプレイヤーは",
+    "reading": "じしんのクリーチャーがえらばれたプレイヤーは",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-hajimatte-ite",
+    "label": "始まっていて",
+    "reading": "はじまっていて",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-hajimete-shita-toki",
+    "label": "はじめて～した時",
+    "reading": "はじめて～したとき",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-hitotsu-zutsu",
+    "label": "1つずつ",
+    "reading": "ひとつずつ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-kaku-turn-hajimete-attack",
+    "label": "各ターン、このクリーチャーがはじめて攻撃する時",
+    "reading": "かくターン、このクリーチャーがはじめてこうげきするとき",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-kaku-turn-ni-ichido",
+    "label": "各ターンに一度",
+    "reading": "かくたーんにいちど",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-kanou-nara",
+    "label": "可能なら",
+    "reading": "かのうなら",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-kanoyouni",
+    "label": "かのように",
+    "reading": "かのように",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 2,
+    "speaker": "yuko56"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-nikai-okonau",
+    "label": "～を2回行う",
+    "reading": "にかいおこなう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-shoukan-ni-yotte",
+    "label": "召喚によって",
+    "reading": "しょうかんによって",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-sono-kougeki-chuu-ni-shield-break-shite-ireba",
+    "label": "その攻撃中にシールドをブレイクしていれば",
+    "reading": "そのこうげきちゅうにしーるどをぶれいくしていれば",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-soreigai-nara",
+    "label": "それ以外なら",
+    "reading": "それいがいなら",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-sukina-junjo-de",
+    "label": "好きな順序で",
+    "reading": "すきなじゅんじょで",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-to-onaji-maisuu",
+    "label": "～と同じ枚数",
+    "reading": "とおなじまいすう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "grammar",
+    "entryId": "grammar-wo-sentaku",
+    "label": "～を選択",
+    "reading": "をせんたく",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-abyss-mekureido",
+    "label": "アビス・メクレイド",
+    "reading": "あびす めくれいど",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-abyss-royal",
+    "label": "アビスロイヤル",
+    "reading": "あびすろいやる",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-abyss-rush",
+    "label": "アビスラッシュ",
+    "reading": "あびすらっしゅ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-abyssbell-jashintei",
+    "label": "アビスベル=ジャシン帝",
+    "reading": "あびすべるじゃしんてい",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-add-turn",
+    "label": "ターンを追加する",
+    "reading": "たーんをついかする",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-apollonus-dragelion",
+    "label": "アポロヌス・ドラゲリオン",
+    "reading": "あぽろぬす・どらげりおん",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-attack-target",
+    "label": "攻撃先",
+    "reading": "こうげきさき",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-babyponnosuke",
+    "label": "ベイビーポンの助",
+    "reading": "べいびーぽんのすけ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-bad-brand-first",
+    "label": "“罰怒”ブランド 1st",
+    "reading": "ばっどぶらんど ふぁーすと",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-balga-raizou-super-heavenly-nova",
+    "label": "超天星バルガライゾウ",
+    "reading": "ちょうてんせい ばるがらいぞう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-balgarisk-hideaway-dragon-of-the-hideaway-hidden-blade",
+    "label": "裏斬隠裏蒼頭バルガリスク",
+    "reading": "うらぎりがくれうらそうとう ばるがりすく",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-battle-saseru",
+    "label": "バトルさせる",
+    "reading": "ばとるさせる",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-bauwauja",
+    "label": "深淵の三咆哮 バウワウジャ",
+    "reading": "しんえんのさんほうこう ばうわうじゃ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-beat-jockey",
+    "label": "ビートジョッキー",
+    "reading": "びーとじょっきー",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-beethoven-zenith-of-horror",
+    "label": "「戦慄」の頂 ベートーベン",
+    "reading": "せんりつ の いただき べーとーべん",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-bolzard-superhero",
+    "label": "ボルザード・スーパーヒーロー",
+    "reading": "ぼるざーど・すーぱーひーろー",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-bottom-of-deck",
+    "label": "山札の一番下",
+    "reading": "やまふだのいちばんした",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-bulk-claim",
+    "label": "一括受け取り",
+    "reading": "いっかつうけとり",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-card-exchange",
+    "label": "カード交換",
+    "reading": "かーどこうかん",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-card-pack-purchase",
+    "label": "カードパック購入",
+    "reading": "かーどぱっくこうにゅう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-card-purchase",
+    "label": "カード購入",
+    "reading": "かーどこうにゅう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-civil-count",
+    "label": "シビルカウント",
+    "reading": "しびるかうんと",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-claim-deadline",
+    "label": "受け取り期限",
+    "reading": "うけとりきげん",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-claim-history",
+    "label": "受け取り履歴",
+    "reading": "うけとりりれき",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-colorless-spell",
+    "label": "無色呪文",
+    "reading": "むしょく じゅもん",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-constructed-deck-purchase",
+    "label": "構築済みデッキ購入",
+    "reading": "こうちくずみでっきこうにゅう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 7,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-crash-hadou",
+    "label": "勝利龍装 クラッシュ“覇道”",
+    "reading": "しょうりりゅうそう くらっしゅはどう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-crossgear",
+    "label": "クロスギア",
+    "reading": "くろすぎあ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-d2-field",
+    "label": "D2フィールド",
+    "reading": "でぃーつーふぃーるど",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-death-puppet",
+    "label": "デスパペット",
+    "reading": "ですぱぺっと",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-deck-edit",
+    "label": "デッキ編成",
+    "reading": "でっきへんせい",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-deck-list",
+    "label": "デッキ一覧",
+    "reading": "でっきいちらん",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-dm-points",
+    "label": "DMポイント",
+    "reading": "でぃーえむぽいんと",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-doorknocker-nordocker",
+    "label": "ドアノッカ＝ノアドッカ",
+    "reading": "どあのっか のあどっか",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-dragheart",
+    "label": "ドラグハート",
+    "reading": "どらぐはーと",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-dragocalypse-day",
+    "label": "ドラゴカリプス・デイ",
+    "reading": "どらごかりぷす でい",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-dragonguild",
+    "label": "ドラゴンギルド",
+    "reading": "どらごんぎるど",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-enter-battle-zone-tapped",
+    "label": "タップして置く",
+    "reading": "たっぷしておく",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-eternal-omega",
+    "label": "エターナル・Ω",
+    "reading": "えたーなる おめが",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-evolution-creature",
+    "label": "進化クリーチャー",
+    "reading": "しんかくりーちゃー",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-exchange-period",
+    "label": "交換期間",
+    "reading": "こうかんきかん",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-felix-misery",
+    "label": "フェリックス・ミザリィ",
+    "reading": "ふぇりっくす みざりぃ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-g-neo-creature",
+    "label": "G-NEOクリーチャー",
+    "reading": "じーねおくりーちゃー",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-g-strike",
+    "label": "G・ストライク",
+    "reading": "がーどすとらいく",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-g-zero",
+    "label": "G・ゼロ",
+    "reading": "じーぜろ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-gouhaten-tsukumogatari",
+    "label": "轟破天九十九語",
+    "reading": "ごうはてんつくもがたり",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-gransect",
+    "label": "グランセクト",
+    "reading": "ぐらんせくと",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-hanasaki-gelgranos",
+    "label": "ハナサキ・ゲルグラノス",
+    "reading": "はなさき げるぐらのす",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-infelstarge",
+    "label": "インフェル星樹",
+    "reading": "いんふぇるすたーじゅ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-jablood",
+    "label": "ジャブラッド",
+    "reading": "じゃぶらっど",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-jashinnyuu",
+    "label": "邪侵入",
+    "reading": "じゃしんにゅう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-jenny-jane",
+    "label": "刻解人形ジェニー・ジェーン",
+    "reading": "こくかいにんぎょう じぇにー じぇーん",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-judgment-emblem",
+    "label": "裁きの紋章",
+    "reading": "さばきのもんしょう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-kenzan-no-sabaki",
+    "label": "剣参ノ裁キ",
+    "reading": "けんざんのさばき",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-key-card",
+    "label": "キーカード",
+    "reading": "きーかーど",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-kingdom-ohkabuto",
+    "label": "キングダム・オウ禍武斗",
+    "reading": "きんぐだむ おうかぶと",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 6,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-kirifudash",
+    "label": "キリフダッシュ",
+    "reading": "きりふだっしゅ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 5,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-kuromame-danshaku",
+    "label": "黒豆だんしゃく",
+    "reading": "くろまめだんしゃく",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 5,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-legend-battle",
+    "label": "レジェンドバトル",
+    "reading": "れじぇんどばとる",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 5,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-legend-skill",
+    "label": "レジェンドスキル",
+    "reading": "れじぇんどすきる",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 5,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-login-bonus",
+    "label": "ログインボーナス",
+    "reading": "ろぐいんぼーなす",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 5,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-mach-fighter",
+    "label": "マッハファイター",
+    "reading": "まっはふぁいたー",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 5,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-madougu",
+    "label": "魔導具",
+    "reading": "まどうぐ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 5,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-mafi-gang",
+    "label": "マフィ・ギャング",
+    "reading": "まふぃ ぎゃんぐ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 5,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-maou-de-szark",
+    "label": "魔凰 デ・スザーク",
+    "reading": "まおう で すざーく",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 5,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "duel-masters-dm25",
+    "entryKind": "term",
+    "entryId": "term-sofa-softysonia",
+    "label": "ソファ＝ソフティソニア",
+    "reading": "そふぁ そふてぃそにあ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 4,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "gundam-arsenal-base",
+    "entryKind": "grammar",
+    "entryId": "grammar-a-and-b",
+    "label": "A＆B",
+    "reading": "",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 3,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "gundam-arsenal-base",
+    "entryKind": "grammar",
+    "entryId": "grammar-ga-hyouji-sareru",
+    "label": "～が表示される",
+    "reading": "ひょうじされる",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 3,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "gundam-arsenal-base",
+    "entryKind": "grammar",
+    "entryId": "grammar-ga-kaihou-sareru",
+    "label": "～が解放される",
+    "reading": "かいほうされる",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 3,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "gundam-arsenal-base",
+    "entryKind": "grammar",
+    "entryId": "grammar-wo-setto-suru",
+    "label": "～をセットする",
+    "reading": "",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 3,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "gundam-arsenal-base",
+    "entryKind": "grammar",
+    "entryId": "grammar-wo-tacchi-suru",
+    "label": "～をタッチする",
+    "reading": "",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 3,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "gundam-arsenal-base",
+    "entryKind": "term",
+    "entryId": "term-gquuuuuux-omega-psycommu",
+    "label": "GQuuuuuuX (オメガ・サイコミュ)",
+    "reading": "じーくあくす おめがさいこみゅ",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 3,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "gundam-arsenal-base",
+    "entryKind": "term",
+    "entryId": "term-shuji-itou",
+    "label": "シュウジ・イトウ",
+    "reading": "しゅうじいとう",
+    "forvoDate": "2026-04-12",
+    "forvoPage": 2,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-champion-rank",
+    "label": "チャンピオンランク",
+    "reading": "チャンピオンランク",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-dougu",
+    "label": "どうぐ",
+    "reading": "どうぐ",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-e013-sugoi",
+    "label": "すごい！",
+    "reading": "すごい！",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-e016-yatta",
+    "label": "やった！",
+    "reading": "やった！",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-e018-doushitano",
+    "label": "どうしたの？",
+    "reading": "どうしたの？",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-e024-dono-pokemoni-tsukaimasuka",
+    "label": "どの ポケモンに 使いますか？",
+    "reading": "どの ポケモンに つかいますか",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-friendly-shop",
+    "label": "フレンドリィショップ",
+    "reading": "フレンドリィショップ",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-hinshi",
+    "label": "ひんし",
+    "reading": "ひんし",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-joutai-ijou",
+    "label": "状態異常",
+    "reading": "じょうたいいじょう",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-kouka-wa-batsugun",
+    "label": "こうかは ばつぐんだ！",
+    "reading": "こうかは ばつぐんだ",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-mochimono",
+    "label": "もちもの",
+    "reading": "もちもの",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-otoshimono",
+    "label": "おとしもの",
+    "reading": "おとしもの",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-pokemon-zukan",
+    "label": "ポケモン図鑑",
+    "reading": "ポケモンずかん",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-smartphone-rotom",
+    "label": "スマホロトム",
+    "reading": "スマホロトム",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-taisetsu-na-mono",
+    "label": "たいせつなもの",
+    "reading": "たいせつなもの",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-tera-type",
+    "label": "テラスタイプ",
+    "reading": "テラスタイプ",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-terastal",
+    "label": "テラスタル",
+    "reading": "テラスタル",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-terastal-orb",
+    "label": "テラスタルオーブ",
+    "reading": "テラスタルオーブ",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-tsuyosa-o-miru",
+    "label": "強さを見る",
+    "reading": "つよさをみる",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-type-aishou",
+    "label": "タイプ相性",
+    "reading": "タイプあいしょう",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v017-sutaa-dan",
+    "label": "スター団",
+    "reading": "すたーだん",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v028-jimuriidaa",
+    "label": "ジムリーダー",
+    "reading": "じむりーだー",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v038-jimutesuto",
+    "label": "ジムテスト",
+    "reading": "じむてすと",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 9,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v044-nemo",
+    "label": "ネモ",
+    "reading": "ねも",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v048-pepaa",
+    "label": "ペパー",
+    "reading": "ぺぱー",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v064-parudea-chihou",
+    "label": "パルデア地方",
+    "reading": "ぱるであちほう",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v069-kuraberu",
+    "label": "クラベル",
+    "reading": "くらべる",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v088-tokubou",
+    "label": "特防",
+    "reading": "とくぼう",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v094-shokujipawaa",
+    "label": "食事パワー",
+    "reading": "しょくじパワー",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v096-koraidon",
+    "label": "コライドン",
+    "reading": "こらいどん",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v097-miraidon",
+    "label": "ミライドン",
+    "reading": "みらいどん",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v100-hiden-supaisu",
+    "label": "秘伝スパイス",
+    "reading": "ひでんすぱいす",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v107-orenjiakademii",
+    "label": "オレンジアカデミー",
+    "reading": "おれんじあかでみー",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v110-terareidobatoru",
+    "label": "テラレイドバトル",
+    "reading": "てられいどばとる",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v113-soratobutakushii",
+    "label": "そらとぶタクシー",
+    "reading": "そらとぶタクシー",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v118-omakasebatoru",
+    "label": "おまかせバトル",
+    "reading": "おまかせバトル",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-v130-nushipokemon",
+    "label": "ヌシポケモン",
+    "reading": "ぬしぽけもん",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-waza-machine",
+    "label": "わざマシン",
+    "reading": "わざマシン",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "pokemon-scarlet-violet",
+    "entryKind": "term",
+    "entryId": "term-yowaraseru",
+    "label": "弱らせる",
+    "reading": "よわらせる",
+    "forvoDate": "2026-04-11",
+    "forvoPage": 8,
+    "speaker": "mezashi"
+  },
+  {
+    "mediaSlug": "web-giapponese",
+    "entryKind": "grammar",
+    "entryId": "grammar-state-de",
+    "label": "新規で〜する",
+    "reading": "しんきで〜する",
+    "forvoDate": "2026-04-18",
+    "forvoPage": 1,
+    "speaker": "yuko56"
+  }
+]
