@@ -80,6 +80,11 @@
     },
     {
       "entry_type": "grammar",
+      "entry_id": "grammar-hitotsu-demo",
+      "pitch_accent_status": "source_error"
+    },
+    {
+      "entry_type": "grammar",
       "entry_id": "grammar-hitotsu-zutsu",
       "pitch_accent_status": "miss"
     },
@@ -285,6 +290,11 @@
       "entry_type": "grammar",
       "entry_id": "grammar-shoukan-ni-yotte",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "grammar",
+      "entry_id": "grammar-sono-card-to-onaji-bunmei-hitotsu-demo-motsu",
+      "pitch_accent_status": "source_error"
     },
     {
       "entry_type": "grammar",
@@ -782,6 +792,14 @@
       "pitch_accent_source": "Wiktionary",
       "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%8C%91%E6%88%A6",
       "pitch_accent_status": "resolved"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-chou",
+      "audio_src": "assets/audio/term/term-chou/forvo-manual-ちょう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%B6%85/#ja"
     },
     {
       "entry_type": "term",
@@ -1418,6 +1436,14 @@
       "entry_type": "term",
       "entry_id": "term-jenny-jane",
       "pitch_accent_status": "miss"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-jigen",
+      "audio_src": "assets/audio/term/term-jigen/forvo-manual-じげん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%AC%A1%E5%85%83/#ja"
     },
     {
       "entry_type": "term",
@@ -2571,6 +2597,11 @@
       "audio_source": "forvo",
       "audio_attribution": "Downloaded manually from Forvo",
       "audio_page_url": "https://forvo.com/word/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%BBS%E3%83%BB%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC/#ja",
+      "pitch_accent_status": "source_error"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-superdimension-zone",
       "pitch_accent_status": "source_error"
     },
     {
