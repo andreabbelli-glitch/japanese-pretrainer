@@ -1,4 +1,4 @@
-import type { GlossaryMatchMode } from "@/lib/glossary";
+import type { GlossaryMatchMode } from "@/features/glossary/types";
 import {
   compactLatinSearchText,
   foldJapaneseKana,

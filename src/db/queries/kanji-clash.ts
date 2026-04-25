@@ -1,9 +1,9 @@
 import type { DatabaseQueryClient } from "../client.ts";
-import type { KanjiClashEligibleSubject } from "../../lib/kanji-clash/types.ts";
+import type { KanjiClashEligibleSubject } from "../../features/kanji-clash/types.ts";
 import {
   mapEligibleKanjiClashSubjectRows,
   type EligibleKanjiClashSubjectRow
-} from "../../lib/kanji-clash/eligible-subject-mapper.ts";
+} from "../../features/kanji-clash/model/eligible-subject-mapper.ts";
 
 import { buildListEligibleKanjiClashSubjectsSql } from "./kanji-clash-eligibility-policy.ts";
 

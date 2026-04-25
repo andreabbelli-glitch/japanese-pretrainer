@@ -8,9 +8,6 @@ import { and, asc, eq, ne, sql } from "drizzle-orm";
 import {
   card,
   cardEntryLink,
-  closeDatabaseClient,
-  createDatabaseClient,
-  type DatabaseClient,
   lesson,
   lessonProgress,
   media,
@@ -18,9 +15,17 @@ import {
   segment,
   term,
   userSetting
-} from "../src/db/index.ts";
+} from "../src/db/schema/index.ts";
+import {
+  closeDatabaseClient,
+  createDatabaseClient,
+  type DatabaseClient
+} from "../src/db/client.ts";
 import { seedDuelMastersReviewBaseline } from "../src/lib/e2e/review-baseline.ts";
-import { buildStartE2ERuntimeEnv, resolveStartE2EDatabaseUrl } from "./start-e2e-config.ts";
+import {
+  buildStartE2ERuntimeEnv,
+  resolveStartE2EDatabaseUrl
+} from "./start-e2e-config.ts";
 import { ensureStartE2EDatabaseSnapshot } from "./start-e2e-snapshot.ts";
 import { resolveDatabaseLocation } from "../src/db/config.ts";
 
@@ -223,7 +228,10 @@ async function seedE2ELessonProgress(database: DatabaseClient) {
     .from(card)
     .innerJoin(lesson, eq(card.lessonId, lesson.id))
     .where(
-      and(eq(card.mediaId, duelMastersMedia.id), ne(lesson.slug, "tcg-core-overview"))
+      and(
+        eq(card.mediaId, duelMastersMedia.id),
+        ne(lesson.slug, "tcg-core-overview")
+      )
     )
     .groupBy(lesson.id, lesson.slug, lesson.orderIndex)
     .orderBy(asc(lesson.orderIndex), asc(lesson.slug))

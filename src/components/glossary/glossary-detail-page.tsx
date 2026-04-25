@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Route } from "next";
 
-import type { GlossaryDetailData } from "@/lib/glossary";
+import type { GlossaryDetailData } from "@/features/glossary/types";
 import {
   appendReturnToParam,
   replaceReviewCardInHref,

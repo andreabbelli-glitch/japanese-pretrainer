@@ -1,5 +1,6 @@
 import type { Route } from "next";
 
+export type AppHref = Route;
 export type StudyAreaKey = "textbook" | "glossary" | "review" | "progress";
 export type GlossaryEntryKind = "term" | "grammar";
 export type GlossaryCardsFilter = "all" | "with_cards" | "without_cards";

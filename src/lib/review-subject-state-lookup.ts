@@ -1,9 +1,4 @@
-import type { DatabaseClient } from "../db/client.ts";
-import {
-  listReviewSubjectStatesByKeys,
-  type ReviewCardListItem
-} from "../db/queries/index.ts";
-
+import type { ReviewCardSource } from "./review-card-contract.ts";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
@@ -13,16 +8,19 @@ import {
   type ReviewSubjectStateSnapshot
 } from "./review-subject.ts";
 
+type ReviewSubjectStateLoader = (
+  subjectKeys: string[]
+) => Promise<ReadonlyMap<string, ReviewSubjectStateSnapshot>>;
 
 type ResolveReviewSubjectGroupsInput = {
-  cards: ReviewCardListItem[];
-  database: Pick<DatabaseClient, "query">;
+  cards: ReviewCardSource[];
   grammar: Array<{
     crossMediaGroupId: string | null;
     id: string;
     pattern: string;
     reading?: string | null;
   }>;
+  loadSubjectStatesByKeys: ReviewSubjectStateLoader;
   nowIso?: string;
   terms: Array<{
     crossMediaGroupId: string | null;
@@ -61,16 +59,8 @@ export async function resolveReviewSubjectGroups(
   }
 
   const subjectKeys = [...subjectKeysSet];
-  const subjectStateRows = await listReviewSubjectStatesByKeys(
-    input.database,
-    subjectKeys
-  );
-  const subjectStates = new Map(
-    [...subjectStateRows.entries()].map(([subjectKey, row]) => [
-      subjectKey,
-      row as ReviewSubjectStateSnapshot
-    ])
-  );
+  const subjectStateRows = await input.loadSubjectStatesByKeys(subjectKeys);
+  const subjectStates = new Map(subjectStateRows);
   const groupedCards = groupReviewCardsBySubject({
     cards: input.cards,
     entryLookup: subjectEntryLookup,

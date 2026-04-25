@@ -1,24 +1,10 @@
 import { timingSafeEqual } from "node:crypto";
 
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
-import { db, getMediaBySlug } from "@/db";
-import {
-  revalidateGlossarySummaryCache,
-  revalidateMediaListCache,
-  revalidateReviewSummaryCache,
-  revalidateTextbookLessonBodyCache,
-  revalidateTextbookTooltipCache
-} from "@/lib/data-cache";
-import {
-  mediaGlossaryHref,
-  mediaHref,
-  mediaStudyHref,
-  mediaTextbookLessonHref,
-  mediaTextbookLessonTooltipsHref,
-  reviewHref
-} from "@/lib/site";
+import { db } from "@/db";
+import { getMediaBySlug } from "@/db/queries";
+import { invalidateImportedContentCaches } from "@/lib/cache-invalidation-policy";
 
 type RevalidationRequest = {
   importId?: unknown;
@@ -58,39 +44,11 @@ export async function POST(request: Request) {
     ...lessons.map((lesson) => lesson.mediaSlug)
   ]);
 
-  revalidateMediaListCache();
-  revalidateGlossarySummaryCache();
-  revalidateReviewSummaryCache();
-
-  for (const mediaId of mediaIds) {
-    revalidateGlossarySummaryCache(mediaId);
-    revalidateReviewSummaryCache(mediaId);
-  }
-
-  revalidatePath("/");
-  revalidatePath("/glossary");
-  revalidatePath("/media");
-  revalidatePath(reviewHref());
-
-  for (const mediaSlug of mediaSlugs) {
-    revalidatePath(mediaHref(mediaSlug));
-    revalidatePath(mediaGlossaryHref(mediaSlug));
-    revalidatePath(mediaStudyHref(mediaSlug, "glossary"));
-    revalidatePath(mediaStudyHref(mediaSlug, "progress"));
-    revalidatePath(mediaStudyHref(mediaSlug, "review"));
-    revalidatePath(mediaStudyHref(mediaSlug, "textbook"));
-  }
-
-  for (const lesson of lessons) {
-    revalidateTextbookLessonBodyCache(lesson);
-    revalidateTextbookTooltipCache(lesson);
-    revalidatePath(
-      mediaTextbookLessonHref(lesson.mediaSlug, lesson.lessonSlug)
-    );
-    revalidatePath(
-      mediaTextbookLessonTooltipsHref(lesson.mediaSlug, lesson.lessonSlug)
-    );
-  }
+  invalidateImportedContentCaches({
+    lessons,
+    mediaIds,
+    mediaSlugs
+  });
 
   return NextResponse.json({
     importId: normalizeImportId(body.importId),
@@ -133,7 +91,13 @@ async function resolveMediaIds(mediaSlugs: string[]) {
     )
   );
 
-  return [...new Set(media.map((entry) => entry?.id).filter(Boolean))];
+  return [
+    ...new Set(
+      media
+        .map((entry) => entry?.id)
+        .filter((mediaId): mediaId is string => Boolean(mediaId))
+    )
+  ];
 }
 
 function normalizeLessons(lessons: unknown) {

@@ -8,7 +8,7 @@ import {
 } from "@/lib/review-queue";
 import * as reviewSubjectModule from "@/lib/review-subject";
 import type { ReviewSubjectGroup } from "@/lib/review-subject";
-import type { ReviewCardListItem } from "@/db";
+import type { ReviewCardListItem } from "@/db/queries";
 
 function createModel(input: {
   groupCardIds: string[];
@@ -19,9 +19,9 @@ function createModel(input: {
     id: cardId,
     mediaId: input.mediaIds?.[index] ?? "media-a"
   })) as unknown as ReviewCardListItem[];
-  const representativeCard =
-    (cards.find((card) => card.id === input.representativeCardId) ??
-      cards[0]) as ReviewCardListItem;
+  const representativeCard = (cards.find(
+    (card) => card.id === input.representativeCardId
+  ) ?? cards[0]) as ReviewCardListItem;
 
   return {
     card: representativeCard,

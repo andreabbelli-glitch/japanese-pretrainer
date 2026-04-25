@@ -1,19 +1,17 @@
+import { db, type DatabaseClient } from "@/db";
 import {
-  db,
   getCardById,
   getGlossaryEntriesByIds,
   listCrossMediaFamiliesByEntryIds,
-  type GrammarEntryReviewSummaryById,
   getReviewSubjectStateByKey,
   type CrossMediaFamily,
   type CrossMediaSibling,
-  type DatabaseClient,
+  type GrammarEntryReviewSummaryById,
   type GrammarGlossaryEntry,
   type MediaListItem,
-  type ReviewCardListItem,
   type TermEntryReviewSummaryById,
-  type TermGlossaryEntry,
-} from "@/db";
+  type TermGlossaryEntry
+} from "@/db/queries";
 import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
@@ -50,7 +48,7 @@ import {
 import {
   buildPronunciationData,
   type PronunciationData
-} from "./pronunciation";
+} from "./pronunciation-data";
 import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "./review-grade-previews";
 import {
   buildDefaultFsrsOptimizerSnapshot,
@@ -68,6 +66,11 @@ import {
   formatBucketLabel,
   formatShortIsoDate
 } from "./review-queue-presentation";
+import type {
+  ReviewCardSource,
+  ReviewCardEntryLink,
+  ReviewCardSegmentSource
+} from "./review-card-contract";
 import type {
   ReviewCardDetailData,
   ReviewCardEntryKind,
@@ -104,7 +107,7 @@ export type ReviewMediaLookup = Map<
 >;
 
 export function collectReviewLinkedEntryIds(
-  cards: Array<Pick<ReviewCardListItem, "entryLinks">>
+  cards: Array<Pick<ReviewCardSource, "entryLinks">>
 ) {
   const termIds = new Set<string>();
   const grammarIds = new Set<string>();
@@ -490,7 +493,7 @@ export function buildEntryLookup(
 }
 
 export function buildReviewCardPronunciations(
-  card: Pick<ReviewCardListItem, "cardType" | "entryLinks" | "front">,
+  card: Pick<ReviewCardSource, "cardType" | "entryLinks" | "front">,
   entryLookup: Map<string, ReviewEntryLookupItem>,
   sortedEntryLinks?: ReviewEntryLinkLike[]
 ): ReviewCardPronunciation[] {
@@ -521,7 +524,7 @@ export function buildReviewCardPronunciations(
 }
 
 export async function loadReviewCardPronunciations(input: {
-  card: Pick<ReviewCardListItem, "cardType" | "entryLinks" | "front">;
+  card: Pick<ReviewCardSource, "cardType" | "entryLinks" | "front">;
   database: DatabaseClient;
   entryLookup: Map<string, ReviewEntryLookupItem>;
 }) {
@@ -568,7 +571,7 @@ export async function loadReviewCardPronunciations(input: {
 }
 
 export function resolveReviewCardMedia(
-  card: ReviewCardListItem,
+  card: Pick<ReviewCardSource, "mediaId">,
   mediaById: ReviewMediaLookup
 ) {
   return (
@@ -580,9 +583,9 @@ export function resolveReviewCardMedia(
 }
 
 export function mapQueueCard(
-  card: ReviewCardListItem,
+  card: ReviewCardSource,
   entryLookup: Map<string, ReviewEntryLookupItem>,
-  subjectCards: ReviewCardListItem[],
+  subjectCards: ReviewCardSource[],
   mediaById: ReviewMediaLookup,
   nowIso: string,
   fsrsOptimizerSnapshot?: FsrsOptimizerSnapshot,
@@ -665,7 +668,7 @@ export function mapQueueCard(
 }
 
 export function resolveReviewCardReading(
-  card: ReviewCardListItem,
+  card: Pick<ReviewCardSource, "cardType" | "entryLinks" | "front">,
   entryLookup: Map<string, ReviewEntryLookupItem>,
   sortedEntryLinks?: ReviewEntryLinkLike[]
 ) {
@@ -702,7 +705,7 @@ export function resolveReviewCardReading(
 }
 
 export function canExposeReviewEntryMedia(
-  card: Pick<ReviewCardListItem, "cardType" | "entryLinks" | "front">,
+  card: Pick<ReviewCardSource, "cardType" | "entryLinks" | "front">,
   entryLookup: Map<string, ReviewEntryLookupItem>,
   sortedEntryLinks?: ReviewEntryLinkLike[]
 ) {
@@ -853,7 +856,11 @@ function getEntryMediaSlug(
 }
 
 function buildReviewCardContexts(
-  cards: ReviewCardListItem[],
+  cards: Array<
+    Pick<ReviewCardSource, "front" | "id" | "mediaId"> & {
+      segment?: ReviewCardSegmentSource | null;
+    }
+  >,
   mediaById: ReviewMediaLookup
 ) {
   return cards
@@ -917,8 +924,8 @@ function deriveKanaReading(value: string) {
 }
 
 function compareEntryLinks(
-  left: ReviewEntryLinkLike,
-  right: ReviewEntryLinkLike
+  left: ReviewCardEntryLink,
+  right: ReviewCardEntryLink
 ) {
   const leftRank = getRelationshipRank(left.relationshipType);
   const rightRank = getRelationshipRank(right.relationshipType);

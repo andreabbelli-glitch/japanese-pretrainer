@@ -9,7 +9,7 @@ import type {
   KanjiClashPageData,
   KanjiClashQueueSnapshot,
   KanjiClashSessionRound
-} from "@/lib/kanji-clash/types";
+} from "@/features/kanji-clash/types";
 import { cx } from "@/lib/classnames";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
@@ -179,7 +179,7 @@ function KanjiClashRoundWorkspace({
   const manualContrastKey =
     round.origin.type === "manual-contrast" ? round.origin.contrastKey : null;
   const manualContrastStatus = manualContrastKey
-    ? manualContrastStatusByKey[manualContrastKey] ?? "active"
+    ? (manualContrastStatusByKey[manualContrastKey] ?? "active")
     : null;
 
   return (
@@ -547,8 +547,12 @@ function KanjiClashSidebar({
                   </p>
                   <button
                     className="button button--ghost button--small"
-                    disabled={archivePendingContrastKey === contrast.contrastKey}
-                    onClick={() => onArchiveManualContrast(contrast.contrastKey)}
+                    disabled={
+                      archivePendingContrastKey === contrast.contrastKey
+                    }
+                    onClick={() =>
+                      onArchiveManualContrast(contrast.contrastKey)
+                    }
                     type="button"
                   >
                     {archivePendingContrastKey === contrast.contrastKey
@@ -575,8 +579,12 @@ function KanjiClashSidebar({
                   </p>
                   <button
                     className="button button--ghost button--small"
-                    disabled={archivePendingContrastKey === contrast.contrastKey}
-                    onClick={() => onRestoreManualContrast(contrast.contrastKey)}
+                    disabled={
+                      archivePendingContrastKey === contrast.contrastKey
+                    }
+                    onClick={() =>
+                      onRestoreManualContrast(contrast.contrastKey)
+                    }
                     type="button"
                   >
                     {archivePendingContrastKey === contrast.contrastKey

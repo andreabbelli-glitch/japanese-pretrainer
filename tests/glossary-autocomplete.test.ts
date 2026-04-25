@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { getGlossaryAutocompleteSuggestions } from "@/lib/glossary-autocomplete";
+import { getGlossaryAutocompleteSuggestions } from "@/features/glossary/model/autocomplete";
 
 const suggestions = [
   {

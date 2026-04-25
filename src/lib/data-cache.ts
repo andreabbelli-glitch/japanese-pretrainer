@@ -1,7 +1,8 @@
 import * as nextCache from "next/cache";
 import { cache } from "react";
 
-import { db, getMediaBySlug, listMedia, type DatabaseClient } from "@/db";
+import { db, type DatabaseClient } from "@/db";
+import { getMediaBySlug, listMedia } from "@/db/queries";
 
 export const MEDIA_LIST_TAG = "media-list";
 export const SETTINGS_TAG = "settings";

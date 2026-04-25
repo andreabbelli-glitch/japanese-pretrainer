@@ -13,13 +13,13 @@ import {
   setFuriganaModeAction,
   setLessonCompletionAction
 } from "@/actions/textbook";
-import { cx } from "@/lib/classnames";
-import { applyLessonCompletionState } from "@/lib/textbook-reader-state";
+import { applyLessonCompletionState } from "@/features/textbook/client/reader-state";
 import type {
   FuriganaMode,
   TextbookLessonData,
   TextbookTooltipEntry
-} from "@/lib/textbook-types";
+} from "@/features/textbook/types";
+import { cx } from "@/lib/classnames";
 import {
   buildReviewSessionHref,
   mediaTextbookLessonTooltipsHref

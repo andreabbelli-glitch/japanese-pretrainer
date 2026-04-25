@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { TextbookIndexPage } from "@/components/textbook/textbook-index-page";
-import { getTextbookIndexData } from "@/lib/textbook";
+import { getTextbookIndexData } from "@/features/textbook/server";
 
 type StudyAreaRouteProps = {
   params: Promise<{

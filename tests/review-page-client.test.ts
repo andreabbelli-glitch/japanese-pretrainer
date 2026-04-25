@@ -18,7 +18,7 @@ import {
 } from "@/components/review/review-page-sidebar";
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
-import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 import type { ReviewPageData } from "@/lib/review-types";
 
 describe("review page client hydration", () => {

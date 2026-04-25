@@ -1,13 +1,16 @@
 "use server";
 
 import {
-  updateMediaListCache,
-  updateReviewSummaryCache,
-  updateSettingsCache
-} from "@/lib/data-cache";
-import { db, getMediaBySlug } from "@/db";
-import { setFuriganaMode, setLessonCompletionState } from "@/lib/textbook";
-import type { FuriganaMode } from "@/lib/settings";
+  invalidateFuriganaModeChanged,
+  invalidateLessonCompletionChanged
+} from "@/lib/cache-invalidation-policy";
+import { db } from "@/db";
+import { getMediaBySlug } from "@/db/queries";
+import {
+  setFuriganaMode,
+  setLessonCompletionState
+} from "@/features/textbook/server";
+import type { FuriganaMode } from "@/features/textbook/types";
 
 export async function setFuriganaModeAction(input: {
   mediaSlug: string;
@@ -16,7 +19,7 @@ export async function setFuriganaModeAction(input: {
 }) {
   await setFuriganaMode(input.mode);
 
-  updateSettingsCache();
+  invalidateFuriganaModeChanged();
 
   return {
     ok: true as const,
@@ -35,8 +38,9 @@ export async function setLessonCompletionAction(input: {
   await setLessonCompletionState(input.lessonId, input.completed);
   const media = await mediaPromise;
 
-  updateMediaListCache();
-  updateReviewSummaryCache(media?.id);
+  invalidateLessonCompletionChanged({
+    mediaId: media?.id
+  });
 
   return {
     ok: true as const,

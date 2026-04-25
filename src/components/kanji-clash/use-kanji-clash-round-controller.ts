@@ -17,7 +17,7 @@ import {
   restoreKanjiClashManualContrastAction,
   submitKanjiClashAnswerAction
 } from "@/actions/kanji-clash";
-import { getKanjiClashCurrentRound } from "@/lib/kanji-clash/queue";
+import { getKanjiClashCurrentRound } from "@/features/kanji-clash/model/queue";
 import type {
   KanjiClashAnswerSubmissionPayload,
   KanjiClashManualContrastSummary,
@@ -25,7 +25,7 @@ import type {
   KanjiClashQueueSnapshot,
   KanjiClashRoundSide,
   KanjiClashSessionRound
-} from "@/lib/kanji-clash/types";
+} from "@/features/kanji-clash/types";
 
 import {
   createInitialKanjiClashRoundControllerState,
@@ -123,7 +123,9 @@ export function useKanjiClashRoundController(
       const result = await submitKanjiClashAnswerAction(
         buildKanjiClashAnswerSubmissionPayload(input)
       );
-      const bufferedAnswer = result.isCorrect ? bufferedAnswerRef.current : null;
+      const bufferedAnswer = result.isCorrect
+        ? bufferedAnswerRef.current
+        : null;
 
       bufferedAnswerRef.current = null;
       dispatch({
@@ -181,60 +183,63 @@ export function useKanjiClashRoundController(
     );
   }, [currentRoundKey]);
 
-  const submitSide = useCallback(async (side: KanjiClashRoundSide) => {
-    const currentState = controllerStateRef.current;
+  const submitSide = useCallback(
+    async (side: KanjiClashRoundSide) => {
+      const currentState = controllerStateRef.current;
 
-    const currentRound = getKanjiClashCurrentRound(currentState.visibleQueue);
+      const currentRound = getKanjiClashCurrentRound(currentState.visibleQueue);
 
-    if (!currentRound) {
-      return;
-    }
-
-    const submittedAt = performance.now();
-    const responseMs = responseTimerRef.current.getResponseMs(submittedAt);
-
-    if (currentState.phase.kind === "submitting") {
-      if (
-        !currentState.phase.acceptsBufferedAnswer ||
-        currentState.phase.bufferedAnswer ||
-        bufferedAnswerRef.current ||
-        currentState.phase.submittedRoundKey === currentRound.roundKey
-      ) {
+      if (!currentRound) {
         return;
       }
 
-      bufferedAnswerRef.current = {
-        currentRound,
-        responseMs,
-        selectedSide: side
-      };
+      const submittedAt = performance.now();
+      const responseMs = responseTimerRef.current.getResponseMs(submittedAt);
+
+      if (currentState.phase.kind === "submitting") {
+        if (
+          !currentState.phase.acceptsBufferedAnswer ||
+          currentState.phase.bufferedAnswer ||
+          bufferedAnswerRef.current ||
+          currentState.phase.submittedRoundKey === currentRound.roundKey
+        ) {
+          return;
+        }
+
+        bufferedAnswerRef.current = {
+          currentRound,
+          responseMs,
+          selectedSide: side
+        };
+        dispatch({
+          side,
+          type: "choose-side"
+        });
+        setClientError(null);
+        setLiveMessage(null);
+        return;
+      }
+
+      if (currentState.phase.kind !== "idle") {
+        return;
+      }
+
       dispatch({
         side,
         type: "choose-side"
       });
       setClientError(null);
       setLiveMessage(null);
-      return;
-    }
 
-    if (currentState.phase.kind !== "idle") {
-      return;
-    }
-
-    dispatch({
-      side,
-      type: "choose-side"
-    });
-    setClientError(null);
-    setLiveMessage(null);
-
-    await submitAnswer({
-      currentRound,
-      queueToken: currentState.committedQueueToken,
-      responseMs,
-      selectedSide: side
-    });
-  }, [submitAnswer]);
+      await submitAnswer({
+        currentRound,
+        queueToken: currentState.committedQueueToken,
+        responseMs,
+        selectedSide: side
+      });
+    },
+    [submitAnswer]
+  );
 
   const handleContinue = useCallback(() => {
     if (controllerStateRef.current.phase.kind !== "incorrect-review") {

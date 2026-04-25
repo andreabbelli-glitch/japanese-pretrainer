@@ -4,7 +4,7 @@ const { getGlobalGlossaryAutocompleteDataMock } = vi.hoisted(() => ({
   getGlobalGlossaryAutocompleteDataMock: vi.fn()
 }));
 
-vi.mock("@/lib/glossary", () => ({
+vi.mock("@/features/glossary/server", () => ({
   getGlobalGlossaryAutocompleteData: getGlobalGlossaryAutocompleteDataMock
 }));
 

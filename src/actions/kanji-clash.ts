@@ -1,21 +1,19 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-
-import {
-  db,
-  type DatabaseClient
-} from "@/db";
+import { db, type DatabaseClient } from "@/db";
+import { invalidateKanjiClashManualContrastChanged } from "@/lib/cache-invalidation-policy";
+import { getKanjiClashCurrentRound } from "@/features/kanji-clash/model/queue";
 import {
   archiveKanjiClashManualContrast,
   applyKanjiClashSessionAction,
-  getKanjiClashCurrentRound,
   restoreKanjiClashManualContrast,
-  type KanjiClashAnswerSubmissionPayload,
-  type KanjiClashSessionActionResult,
-  type KanjiClashSessionRound,
   verifyKanjiClashQueueToken
-} from "@/lib/kanji-clash";
+} from "@/features/kanji-clash/server";
+import type {
+  KanjiClashAnswerSubmissionPayload,
+  KanjiClashSessionActionResult,
+  KanjiClashSessionRound
+} from "@/features/kanji-clash/types";
 
 type SubmitKanjiClashAnswerActionInput = KanjiClashAnswerSubmissionPayload & {
   database?: DatabaseClient;
@@ -55,7 +53,9 @@ export async function submitKanjiClashAnswerAction(
     throw new Error("Kanji Clash round is out of date.");
   }
 
-  if ((currentRound.pairState?.updatedAt ?? null) !== expectedPairStateUpdatedAt) {
+  if (
+    (currentRound.pairState?.updatedAt ?? null) !== expectedPairStateUpdatedAt
+  ) {
     throw new Error("Kanji Clash queue payload is inconsistent.");
   }
 
@@ -83,7 +83,8 @@ function assertRoundCoherence(round: KanjiClashSessionRound) {
   if (
     round.candidate.roundOverride &&
     (round.candidate.roundOverride.roundKey !== round.roundKey ||
-      round.candidate.roundOverride.targetSubjectKey !== round.targetSubjectKey ||
+      round.candidate.roundOverride.targetSubjectKey !==
+        round.targetSubjectKey ||
       JSON.stringify(round.candidate.roundOverride.origin) !==
         JSON.stringify(round.origin))
   ) {
@@ -154,7 +155,7 @@ export async function archiveKanjiClashManualContrastAction(input: {
     database: input.database ?? db,
     now: input.now
   });
-  safeRevalidateKanjiClashPath();
+  invalidateKanjiClashManualContrastChanged();
 }
 
 export async function restoreKanjiClashManualContrastAction(input: {
@@ -173,18 +174,5 @@ export async function restoreKanjiClashManualContrastAction(input: {
     database: input.database ?? db,
     now: input.now
   });
-  safeRevalidateKanjiClashPath();
-}
-
-function safeRevalidateKanjiClashPath() {
-  try {
-    revalidatePath("/kanji-clash");
-  } catch (error) {
-    if (
-      !(error instanceof Error) ||
-      !error.message.includes("static generation store missing")
-    ) {
-      throw error;
-    }
-  }
+  invalidateKanjiClashManualContrastChanged();
 }

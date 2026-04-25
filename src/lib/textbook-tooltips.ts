@@ -3,26 +3,32 @@ import {
   getGlossaryEntriesByIds,
   listEntryCardConnections,
   type EntryCardConnection,
-  type DatabaseClient,
   type GrammarGlossaryEntry,
   type TermGlossaryEntry
-} from "@/db";
+} from "@/db/queries";
+import type { DatabaseClient } from "@/db";
 import { mediaGlossaryEntryHref } from "@/lib/site";
-import { buildPronunciationData } from "@/lib/pronunciation";
+import { buildPronunciationData } from "@/lib/pronunciation-data";
 import { buildEntryKey } from "@/lib/entry-id";
-import { deriveInlineReading, stripInlineMarkdown } from "@/lib/inline-markdown";
+import {
+  deriveInlineReading,
+  stripInlineMarkdown
+} from "@/lib/inline-markdown";
 import { deriveEntryStudyState } from "@/lib/study-entry";
 import type {
   TextbookEntryTooltip,
   TextbookTooltipEntry
 } from "@/lib/textbook-types";
 
-type StudySignalRow = Pick<EntryCardConnection, "manualOverride" | "reviewState">;
+type StudySignalRow = Pick<
+  EntryCardConnection,
+  "manualOverride" | "reviewState"
+>;
 
 export async function loadLessonTooltipEntries(input: {
   database: DatabaseClient;
   lessonEntryLinks: Awaited<
-    ReturnType<typeof import("@/db").listLessonEntryLinks>
+    ReturnType<typeof import("@/db/queries").listLessonEntryLinks>
   >;
   mediaSlug: string;
 }): Promise<TextbookTooltipEntry[]> {
@@ -103,7 +109,7 @@ export async function loadLessonTooltipEntries(input: {
 }
 
 function dedupeLessonEntryLinks(
-  links: Awaited<ReturnType<typeof import("@/db").listLessonEntryLinks>>
+  links: Awaited<ReturnType<typeof import("@/db/queries").listLessonEntryLinks>>
 ) {
   const seen = new Set<string>();
 

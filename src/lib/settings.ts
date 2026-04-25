@@ -1,10 +1,7 @@
 import { inArray } from "drizzle-orm";
 
-import {
-  db,
-  userSetting,
-  type DatabaseClient
-} from "@/db";
+import { db, type DatabaseClient } from "@/db";
+import { userSetting } from "@/db/schema";
 import {
   SETTINGS_TAG,
   canUseDataCache,
@@ -100,9 +97,7 @@ async function loadStudySettingsRows(
   });
 }
 
-function buildStudySettingsSnapshot(
-  rows: StudySettingRow[]
-): StudySettings {
+function buildStudySettingsSnapshot(rows: StudySettingRow[]): StudySettings {
   const valuesByKey = new Map(rows.map((row) => [row.key, row.valueJson]));
 
   return {
@@ -156,7 +151,8 @@ async function loadStudySettingsSnapshot(
   const snapshotPromise = runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: ["settings", "snapshot"],
-    loader: () => loadStudySettingsRows(database).then(buildStudySettingsSnapshot),
+    loader: () =>
+      loadStudySettingsRows(database).then(buildStudySettingsSnapshot),
     tags: [SETTINGS_TAG]
   }).finally(() => {
     if (inFlightStudySettingsSnapshots.get(database) === snapshotPromise) {
@@ -197,7 +193,9 @@ export async function updateStudySettings(
     kanjiClashManualDefaultSize:
       input.kanjiClashManualDefaultSize === undefined
         ? current.kanjiClashManualDefaultSize
-        : normalizeKanjiClashManualDefaultSize(input.kanjiClashManualDefaultSize),
+        : normalizeKanjiClashManualDefaultSize(
+            input.kanjiClashManualDefaultSize
+          ),
     reviewFrontFurigana:
       input.reviewFrontFurigana === undefined
         ? current.reviewFrontFurigana
@@ -302,7 +300,9 @@ export function normalizeKanjiClashDailyNewLimit(value: number | string) {
 export function normalizeKanjiClashDefaultScope(
   value: string
 ): KanjiClashDefaultScope {
-  return value === "media" ? "media" : defaultStudySettings.kanjiClashDefaultScope;
+  return value === "media"
+    ? "media"
+    : defaultStudySettings.kanjiClashDefaultScope;
 }
 
 export function normalizeKanjiClashManualDefaultSize(value: number | string) {

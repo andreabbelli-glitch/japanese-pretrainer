@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getGlobalGlossaryAutocompleteData } from "@/lib/glossary";
+import { getGlobalGlossaryAutocompleteData } from "@/features/glossary/server";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

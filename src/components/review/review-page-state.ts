@@ -1,5 +1,5 @@
 import { buildReviewGradePreviews } from "@/lib/review-grade-previews";
-import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 import type {
   ReviewFirstCandidatePageData,
   ReviewPageData

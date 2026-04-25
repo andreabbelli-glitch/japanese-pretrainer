@@ -9,16 +9,13 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-  card,
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
-  lessonContent,
-  lessonProgress,
-  runMigrations,
-  seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { card, lessonContent, lessonProgress } from "@/db/schema";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
   crossMediaFixture,
@@ -268,7 +265,10 @@ describe("textbook data", () => {
         return resultPromise;
       });
 
-    const indexPromise = getTextbookIndexData(developmentFixture.mediaSlug, database);
+    const indexPromise = getTextbookIndexData(
+      developmentFixture.mediaSlug,
+      database
+    );
 
     await Promise.resolve();
     await Promise.resolve();
@@ -456,7 +456,11 @@ describe("textbook data", () => {
 
   it("returns null for a missing lesson media slug", async () => {
     await expect(
-      getTextbookLessonData("missing-media-slug", "missing-lesson-slug", database)
+      getTextbookLessonData(
+        "missing-media-slug",
+        "missing-lesson-slug",
+        database
+      )
     ).resolves.toBeNull();
   });
 

@@ -82,10 +82,10 @@ vi.mock("@/lib/fsrs-optimizer", async () => {
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  reviewSubjectState,
-  runMigrations,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { reviewSubjectState } from "@/db/schema";
 import {
   revalidateGlossarySummaryCache,
   revalidateReviewSummaryCache,
@@ -455,7 +455,9 @@ describe("global review first-candidate cache", () => {
 
       expect(first.kind).toBe("ready");
       expect(
-        first.kind === "ready" ? first.data.selectedCard?.reviewSeedState.fsrsWeights : null
+        first.kind === "ready"
+          ? first.data.selectedCard?.reviewSeedState.fsrsWeights
+          : null
       ).toBeNull();
       expect(initialFsrsCacheKeyPart).toBe("none|none|none");
 

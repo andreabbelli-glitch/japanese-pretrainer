@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   dedupeStable,
   normalizePositiveInteger
-} from "@/lib/kanji-clash/shared-utils";
+} from "@/features/kanji-clash/model/shared-utils";
 
 describe("kanji clash shared utils", () => {
   it("normalizes positive integers with fallback and floor semantics", () => {

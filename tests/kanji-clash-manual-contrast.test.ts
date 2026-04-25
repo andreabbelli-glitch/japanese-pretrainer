@@ -5,16 +5,18 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
-  card,
   closeDatabaseClient,
-  crossMediaGroup,
   createDatabaseClient,
-  grammarPattern,
-  kanjiClashManualContrast,
-  kanjiClashManualContrastRoundState,
-  runMigrations,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import {
+  card,
+  crossMediaGroup,
+  grammarPattern,
+  kanjiClashManualContrast,
+  kanjiClashManualContrastRoundState
+} from "@/db/schema";
 import {
   applyKanjiClashSessionAction,
   buildKanjiClashContrastKey,
@@ -61,16 +63,18 @@ describe("kanji clash manual contrast subject materialization", () => {
         FIXTURE_NOW
       )
     );
-    await database.insert(card).values(
-      buildCardRow(
-        "card-alpha-manual-confusion",
-        "待った",
-        "lesson-alpha",
-        "media-alpha",
-        "segment-alpha",
-        FIXTURE_NOW
-      )
-    );
+    await database
+      .insert(card)
+      .values(
+        buildCardRow(
+          "card-alpha-manual-confusion",
+          "待った",
+          "lesson-alpha",
+          "media-alpha",
+          "segment-alpha",
+          FIXTURE_NOW
+        )
+      );
 
     const contrastKey = await insertManualContrastFixture(database, {
       leftSubjectKey: "entry:grammar:grammar-alpha-matsu-contrast",
@@ -181,10 +185,9 @@ describe("kanji clash manual contrast subject materialization", () => {
       },
       subjectKey: "group:grammar:group-grammar-matsu"
     });
-    expect(grammarGroup.members.map((member) => member.entryId).sort()).toEqual([
-      "grammar-alpha-shared-left",
-      "grammar-alpha-shared-right"
-    ]);
+    expect(grammarGroup.members.map((member) => member.entryId).sort()).toEqual(
+      ["grammar-alpha-shared-left", "grammar-alpha-shared-right"]
+    );
   });
 
   it("keeps manual round/session behavior working for grammar-card contrasts", async () => {
@@ -203,16 +206,18 @@ describe("kanji clash manual contrast subject materialization", () => {
         FIXTURE_NOW
       )
     );
-    await database.insert(card).values(
-      buildCardRow(
-        "card-alpha-session-confusion",
-        "待って",
-        "lesson-alpha",
-        "media-alpha",
-        "segment-alpha",
-        FIXTURE_NOW
-      )
-    );
+    await database
+      .insert(card)
+      .values(
+        buildCardRow(
+          "card-alpha-session-confusion",
+          "待って",
+          "lesson-alpha",
+          "media-alpha",
+          "segment-alpha",
+          FIXTURE_NOW
+        )
+      );
 
     const contrastKey = await insertManualContrastFixture(database, {
       leftSubjectKey: "entry:grammar:grammar-alpha-session",
@@ -256,13 +261,17 @@ describe("kanji clash manual contrast subject materialization", () => {
       queue,
       responseMs: 140
     });
-    const logs = await database.query.kanjiClashManualContrastRoundLog.findMany({
-      where: (table, { eq }) => eq(table.contrastKey, contrastKey)
-    });
+    const logs = await database.query.kanjiClashManualContrastRoundLog.findMany(
+      {
+        where: (table, { eq }) => eq(table.contrastKey, contrastKey)
+      }
+    );
 
     expect(result.answeredRound.roundKey).toBe(`${contrastKey}::subject_a`);
     expect(result.nextRound?.roundKey).toBe(`${contrastKey}::subject_b`);
-    expect(result.nextQueue.seenRoundKeys).toEqual([`${contrastKey}::subject_a`]);
+    expect(result.nextQueue.seenRoundKeys).toEqual([
+      `${contrastKey}::subject_a`
+    ]);
     expect(logs).toHaveLength(1);
   });
 });

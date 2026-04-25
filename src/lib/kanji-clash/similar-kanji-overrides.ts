@@ -1,3 +1,1 @@
-export const KANJI_CLASH_SIMILAR_KANJI_MANUAL_INCLUDES = [] as const;
-
-export const KANJI_CLASH_SIMILAR_KANJI_MANUAL_EXCLUDES = [] as const;
+export * from "@/features/kanji-clash/tooling/similar-kanji-overrides";

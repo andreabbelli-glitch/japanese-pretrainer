@@ -162,7 +162,7 @@ Workflow dataset `Kanji Clash` per kanji simili:
 
 Il comando rigenera il dataset versionato degli swap `A <-> B` combinando
 White Rabbit, `strokeEditDistance >= 0.75`, `yehAndLiRadical >= 0.75` e gli
-override manuali in `src/lib/kanji-clash/similar-kanji-overrides.ts`.
+override manuali in `src/features/kanji-clash/tooling/similar-kanji-overrides.ts`.
 
 ## Kanji Clash
 

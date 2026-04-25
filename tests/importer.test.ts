@@ -17,20 +17,20 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  lessonProgress,
-  listCardsByMediaId,
-  reviewSubjectLog,
-  reviewSubjectState,
-  runMigrations,
   type DatabaseClient
 } from "@/db";
+import { listCardsByMediaId } from "@/db/queries";
+import { runMigrations } from "@/db/migrate";
 import {
   card,
   cardEntryLink,
   contentImport,
   grammarPattern,
   lesson,
+  lessonProgress,
   media,
+  reviewSubjectLog,
+  reviewSubjectState,
   segment,
   term
 } from "@/db/schema/index.ts";
@@ -110,7 +110,9 @@ describe("content importer", () => {
     expect(await countRows(database.query.entryLink.findMany())).toBe(6);
     expect(await countRows(database.query.card.findMany())).toBe(2);
     expect(await countRows(database.query.cardEntryLink.findMany())).toBe(2);
-    expect(await countRows(database.query.reviewSubjectState.findMany())).toBe(2);
+    expect(await countRows(database.query.reviewSubjectState.findMany())).toBe(
+      2
+    );
     expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
     const importedLesson = await database.query.lesson.findFirst({
@@ -161,76 +163,72 @@ describe("content importer", () => {
     expect(importedGrammar?.searchRomajiNorm).toBe("teiru");
   });
 
-  it(
-    "imports the real Duel Masters bundle",
-    async () => {
-      await copySingleMediaBundleFixture(demoMediaFixtureRoot, contentRoot);
-      const expectedSourceFileCount =
-        await countImportableMediaSourceFiles(demoMediaFixtureRoot);
+  it("imports the real Duel Masters bundle", async () => {
+    await copySingleMediaBundleFixture(demoMediaFixtureRoot, contentRoot);
+    const expectedSourceFileCount =
+      await countImportableMediaSourceFiles(demoMediaFixtureRoot);
 
-      const result = await importContentWorkspace({
-        contentRoot,
-        database,
-        now: new Date("2026-03-10T09:00:00.000Z")
-      });
+    const result = await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-10T09:00:00.000Z")
+    });
 
-      expect(result.status).toBe("completed");
-      expect(result.filesScanned).toBe(expectedSourceFileCount);
-      expect(result.filesChanged).toBe(expectedSourceFileCount);
+    expect(result.status).toBe("completed");
+    expect(result.filesScanned).toBe(expectedSourceFileCount);
+    expect(result.filesChanged).toBe(expectedSourceFileCount);
 
-      expect(await countRows(database.query.media.findMany())).toBe(1);
-      expect(await countRows(database.query.contentImport.findMany())).toBe(1);
+    expect(await countRows(database.query.media.findMany())).toBe(1);
+    expect(await countRows(database.query.contentImport.findMany())).toBe(1);
 
-      const importedMedia = await database.query.media.findFirst({
-        where: eq(media.id, "media-duel-masters-dm25")
-      });
-      const importedSegment = await database.query.segment.findFirst({
-        where: eq(segment.slug, "tcg-core")
-      });
-      const importedLesson = await database.query.lesson.findFirst({
-        where: eq(lesson.id, "lesson-duel-masters-dm25-tcg-core-overview"),
-        with: {
-          content: true
-        }
-      });
-      const importedTerm = await database.query.term.findFirst({
-        where: eq(term.sourceId, "term-invasion")
-      });
-      const importedGrammar = await database.query.grammarPattern.findFirst({
-        where: eq(grammarPattern.sourceId, "grammar-toki")
-      });
-      const importedCard = await database.query.card.findFirst({
-        where: eq(card.id, "card-invasion-recognition")
-      });
-      const importedCardLink = await database.query.cardEntryLink.findFirst({
-        where: eq(cardEntryLink.cardId, "card-invasion-recognition")
-      });
+    const importedMedia = await database.query.media.findFirst({
+      where: eq(media.id, "media-duel-masters-dm25")
+    });
+    const importedSegment = await database.query.segment.findFirst({
+      where: eq(segment.slug, "tcg-core")
+    });
+    const importedLesson = await database.query.lesson.findFirst({
+      where: eq(lesson.id, "lesson-duel-masters-dm25-tcg-core-overview"),
+      with: {
+        content: true
+      }
+    });
+    const importedTerm = await database.query.term.findFirst({
+      where: eq(term.sourceId, "term-invasion")
+    });
+    const importedGrammar = await database.query.grammarPattern.findFirst({
+      where: eq(grammarPattern.sourceId, "grammar-toki")
+    });
+    const importedCard = await database.query.card.findFirst({
+      where: eq(card.id, "card-invasion-recognition")
+    });
+    const importedCardLink = await database.query.cardEntryLink.findFirst({
+      where: eq(cardEntryLink.cardId, "card-invasion-recognition")
+    });
 
-      expect(importedMedia?.slug).toBe("duel-masters-dm25");
-      expect(importedMedia?.title).toBe("Duel Masters");
-      expect(importedSegment?.slug).toBe("tcg-core");
-      expect(importedSegment?.mediaId).toBe("media-duel-masters-dm25");
-      expect(importedLesson?.sourceFile).toBe(
-        "media/duel-masters-dm25/textbook/001-tcg-core-overview.md"
-      );
-      expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
-      expect(importedLesson?.content?.astJson).toContain('"type":"image"');
-      expect(importedTerm?.lemma).toBe("侵略");
-      expect(importedGrammar?.pattern).toBe("～時 / ～た時");
-      expect(importedGrammar?.reading).toBe("とき / たとき");
-      expect(importedCard?.front).toBe("{{侵略|しんりゃく}}");
-      expect(importedCard?.exampleJp).toBe(
-        "{{侵略|しんりゃく}}でこのクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。"
-      );
-      expect(importedCard?.exampleIt).toBe(
-        "Con Invasion, sovrapponila su questa creatura."
-      );
-      expect(importedCardLink?.entryId).toBe(
-        buildScopedEntryId("term", "media-duel-masters-dm25", "term-invasion")
-      );
-    },
-    15_000
-  );
+    expect(importedMedia?.slug).toBe("duel-masters-dm25");
+    expect(importedMedia?.title).toBe("Duel Masters");
+    expect(importedSegment?.slug).toBe("tcg-core");
+    expect(importedSegment?.mediaId).toBe("media-duel-masters-dm25");
+    expect(importedLesson?.sourceFile).toBe(
+      "media/duel-masters-dm25/textbook/001-tcg-core-overview.md"
+    );
+    expect(importedLesson?.content?.htmlRendered).toContain("<ruby>");
+    expect(importedLesson?.content?.astJson).toContain('"type":"image"');
+    expect(importedTerm?.lemma).toBe("侵略");
+    expect(importedGrammar?.pattern).toBe("～時 / ～た時");
+    expect(importedGrammar?.reading).toBe("とき / たとき");
+    expect(importedCard?.front).toBe("{{侵略|しんりゃく}}");
+    expect(importedCard?.exampleJp).toBe(
+      "{{侵略|しんりゃく}}でこのクリーチャーの{{上|うえ}}に{{重|かさ}}ねる。"
+    );
+    expect(importedCard?.exampleIt).toBe(
+      "Con Invasion, sovrapponila su questa creatura."
+    );
+    expect(importedCardLink?.entryId).toBe(
+      buildScopedEntryId("term", "media-duel-masters-dm25", "term-invasion")
+    );
+  }, 15_000);
 
   it("deduplicates grammar aliases after search normalization", async () => {
     await copyContentFixture(validContentRoot, contentRoot);
@@ -246,10 +244,7 @@ describe("content importer", () => {
 
     await writeFile(
       lessonPath,
-      lessonSource.replace(
-        "aliases: [てる]",
-        "aliases: [～てる, てる, 〜てる]"
-      )
+      lessonSource.replace("aliases: [てる]", "aliases: [～てる, てる, 〜てる]")
     );
 
     const result = await importContentWorkspace({
@@ -580,7 +575,7 @@ meaning_it: azione in corso o stato risultante
 aliases: [てる]
 :::
 `
-      );
+    );
     await writeFile(
       cardsPath,
       `---
@@ -931,7 +926,9 @@ async function listMarkdownFiles(directory: string) {
     withFileTypes: true
   });
 
-  return entries.filter((entry) => entry.isFile() && entry.name.endsWith(".md"));
+  return entries.filter(
+    (entry) => entry.isFile() && entry.name.endsWith(".md")
+  );
 }
 
 async function writeScopedMediaFixture(destinationRoot: string) {

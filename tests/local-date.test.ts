@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { formatGlossaryShortDate } from "@/lib/glossary-detail-helpers";
+import { formatGlossaryShortDate } from "@/features/glossary/model/detail-helpers";
 import { formatShortIsoDate } from "@/lib/review-queue";
 
 describe("local date formatting", () => {

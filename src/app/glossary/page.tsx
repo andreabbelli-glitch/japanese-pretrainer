@@ -1,5 +1,5 @@
 import { GlossaryPortalPage } from "@/components/glossary/glossary-portal-page";
-import { getGlobalGlossaryPageData } from "@/lib/glossary";
+import { getGlobalGlossaryPageData } from "@/features/glossary/server";
 
 type GlossaryRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

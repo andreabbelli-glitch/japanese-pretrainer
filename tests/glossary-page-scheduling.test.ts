@@ -7,13 +7,12 @@ import { afterEach, beforeEach, describe, it, vi } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
-  runMigrations,
-  seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import * as dataCacheModule from "@/lib/data-cache";
-import { getGlossaryPageData } from "@/lib/glossary";
+import { getGlossaryPageData } from "@/features/glossary/server";
 import * as settingsModule from "@/lib/settings";
 
 function createDeferred<T>() {

@@ -27,16 +27,15 @@ describe("kanji clash session loader scheduling", () => {
     vi.clearAllMocks();
     vi.doUnmock("@/db");
     vi.doUnmock("@/db/queries");
-    vi.doUnmock("@/lib/kanji-clash/manual-contrast.ts");
-    vi.doUnmock("@/lib/kanji-clash/manual-queue-loader.ts");
-    vi.doUnmock("@/lib/kanji-clash/pairing.ts");
-    vi.doUnmock("@/lib/kanji-clash/queue.ts");
+    vi.doUnmock("@/features/kanji-clash/server/manual-contrast.ts");
+    vi.doUnmock("@/features/kanji-clash/server/manual-queue-loader.ts");
+    vi.doUnmock("@/features/kanji-clash/model/pairing.ts");
+    vi.doUnmock("@/features/kanji-clash/model/queue.ts");
   });
 
   it("starts loading manual contrast candidates before eligible subjects settle", async () => {
-    const eligibleSubjectsDeferred = createDeferred<
-      Array<{ subjectKey: string }>
-    >();
+    const eligibleSubjectsDeferred =
+      createDeferred<Array<{ subjectKey: string }>>();
     const manualContrastSeedDeferred = createDeferred<{
       candidates: [];
       pairStates: Map<string, null>;
@@ -56,13 +55,13 @@ describe("kanji clash session loader scheduling", () => {
       }),
       listKanjiClashPairStatesByPairKeys: vi.fn()
     }));
-    vi.doMock("@/lib/kanji-clash/manual-contrast.ts", () => ({
+    vi.doMock("@/features/kanji-clash/server/manual-contrast.ts", () => ({
       loadKanjiClashManualContrastCandidates: vi.fn(() => {
         manualContrastStarted = true;
         return manualContrastSeedDeferred.promise;
       })
     }));
-    vi.doMock("@/lib/kanji-clash/manual-queue-loader.ts", () => ({
+    vi.doMock("@/features/kanji-clash/server/manual-queue-loader.ts", () => ({
       loadManualKanjiClashQueueSnapshot: vi.fn(() =>
         Promise.resolve({
           mode: "manual",
@@ -74,16 +73,15 @@ describe("kanji clash session loader scheduling", () => {
         })
       )
     }));
-    vi.doMock("@/lib/kanji-clash/pairing.ts", () => ({
+    vi.doMock("@/features/kanji-clash/model/pairing.ts", () => ({
       generateKanjiClashCandidates: vi.fn(() => [])
     }));
-    vi.doMock("@/lib/kanji-clash/queue.ts", () => ({
+    vi.doMock("@/features/kanji-clash/model/queue.ts", () => ({
       buildKanjiClashQueueSnapshot: vi.fn()
     }));
 
-    const { loadKanjiClashQueueSnapshot } = await import(
-      "@/lib/kanji-clash/session-loader.ts"
-    );
+    const { loadKanjiClashQueueSnapshot } =
+      await import("@/features/kanji-clash/server/session-loader.ts");
     const queuePromise = loadKanjiClashQueueSnapshot({
       database: {} as never,
       mode: "manual",
@@ -129,7 +127,7 @@ describe("kanji clash session loader scheduling", () => {
         return pairStatesDeferred.promise;
       })
     }));
-    vi.doMock("@/lib/kanji-clash/manual-contrast.ts", () => ({
+    vi.doMock("@/features/kanji-clash/server/manual-contrast.ts", () => ({
       loadKanjiClashManualContrastCandidates: vi.fn(() =>
         Promise.resolve({
           candidates: [],
@@ -138,23 +136,19 @@ describe("kanji clash session loader scheduling", () => {
         })
       )
     }));
-    vi.doMock("@/lib/kanji-clash/manual-queue-loader.ts", () => ({
+    vi.doMock("@/features/kanji-clash/server/manual-queue-loader.ts", () => ({
       loadManualKanjiClashQueueSnapshot: vi.fn()
     }));
-    vi.doMock("@/lib/kanji-clash/pairing.ts", () => ({
+    vi.doMock("@/features/kanji-clash/model/pairing.ts", () => ({
       generateKanjiClashCandidates: vi.fn(() => [
         {
           pairKey: "pair-a"
         }
       ])
     }));
-    vi.doMock("@/lib/kanji-clash/queue.ts", () => ({
+    vi.doMock("@/features/kanji-clash/model/queue.ts", () => ({
       buildKanjiClashQueueSnapshot: vi.fn(
-        ({
-          newIntroducedTodayCount
-        }: {
-          newIntroducedTodayCount: number;
-        }) => ({
+        ({ newIntroducedTodayCount }: { newIntroducedTodayCount: number }) => ({
           mode: "automatic",
           requestedSize: null,
           rounds: [],
@@ -165,9 +159,8 @@ describe("kanji clash session loader scheduling", () => {
       )
     }));
 
-    const { loadKanjiClashQueueSnapshot } = await import(
-      "@/lib/kanji-clash/session-loader.ts"
-    );
+    const { loadKanjiClashQueueSnapshot } =
+      await import("@/features/kanji-clash/server/session-loader.ts");
     const queuePromise = loadKanjiClashQueueSnapshot({
       dailyNewLimit: 7,
       database: {} as never,

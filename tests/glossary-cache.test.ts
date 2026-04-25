@@ -40,9 +40,10 @@ vi.mock("next/cache", () => ({
 }));
 
 vi.mock("@/lib/data-cache", async () => {
-  const actual = await vi.importActual<typeof import("@/lib/data-cache")>(
-    "@/lib/data-cache"
-  );
+  const actual =
+    await vi.importActual<typeof import("@/lib/data-cache")>(
+      "@/lib/data-cache"
+    );
 
   return {
     ...actual,
@@ -53,12 +54,11 @@ vi.mock("@/lib/data-cache", async () => {
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
-  seedDevelopmentDatabase,
-  runMigrations,
   type DatabaseClient
 } from "@/db";
-import * as dbModule from "@/db";
+import { runMigrations } from "@/db/migrate";
+import * as dbQueriesModule from "@/db/queries";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import * as dataCacheModule from "@/lib/data-cache";
 import {
   MEDIA_LIST_TAG,
@@ -71,7 +71,7 @@ import {
   getGlobalGlossaryPageData,
   getGlossaryPageData,
   getTermGlossaryDetailData
-} from "@/lib/glossary";
+} from "@/features/glossary/server";
 
 describe("global glossary cache", () => {
   let database: DatabaseClient;
@@ -326,8 +326,8 @@ describe("global glossary cache", () => {
   });
 
   it("caches local glossary resolved entries across equivalent query casing and spacing", async () => {
-    const studySignalsSpy = vi.spyOn(dbModule, "listEntryStudySignals");
-    const cardCountsSpy = vi.spyOn(dbModule, "listEntryCardCounts");
+    const studySignalsSpy = vi.spyOn(dbQueriesModule, "listEntryStudySignals");
+    const cardCountsSpy = vi.spyOn(dbQueriesModule, "listEntryCardCounts");
 
     const first = await getGlossaryPageData(
       developmentFixture.mediaSlug,
@@ -392,12 +392,18 @@ describe("global glossary cache", () => {
     );
 
     const mediaLookupSpy = vi.spyOn(dataCacheModule, "getMediaBySlugCached");
-    const entryLookupSpy = vi.spyOn(dbModule, "getGlossaryEntryBySourceId");
+    const entryLookupSpy = vi.spyOn(
+      dbQueriesModule,
+      "getGlossaryEntryBySourceId"
+    );
     const lessonConnectionsSpy = vi.spyOn(
-      dbModule,
+      dbQueriesModule,
       "listEntryLessonConnections"
     );
-    const cardConnectionsSpy = vi.spyOn(dbModule, "listEntryCardConnections");
+    const cardConnectionsSpy = vi.spyOn(
+      dbQueriesModule,
+      "listEntryCardConnections"
+    );
 
     const detail = await getTermGlossaryDetailData(
       developmentFixture.mediaSlug,

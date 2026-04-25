@@ -1,4 +1,4 @@
-import type { KanjiClashRoundSide } from "@/lib/kanji-clash/types";
+import type { KanjiClashRoundSide } from "@/features/kanji-clash/types";
 
 export const KANJI_CLASH_SWIPE_MIN_DISTANCE_PX = 24;
 const KANJI_CLASH_SWIPE_MIN_RATIO = 1.25;
@@ -35,7 +35,9 @@ export function resolveKanjiClashRoundSideFromSwipe(
   return deltaX < 0 ? "left" : "right";
 }
 
-export function shouldIgnoreKanjiClashKeyboardTarget(target: EventTarget | null) {
+export function shouldIgnoreKanjiClashKeyboardTarget(
+  target: EventTarget | null
+) {
   if (typeof HTMLElement === "undefined") {
     return false;
   }

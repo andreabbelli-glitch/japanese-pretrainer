@@ -4,7 +4,7 @@ import Form from "next/form";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
-import type { GlobalGlossaryPageData } from "@/lib/glossary";
+import type { GlobalGlossaryPageData } from "@/features/glossary/types";
 
 import { GlossaryAutocompleteDropdown } from "./glossary-autocomplete-dropdown";
 import { useGlossaryAutocomplete } from "./use-glossary-autocomplete";

@@ -1,4 +1,4 @@
-import type { MediaListItem } from "@/db";
+import type { MediaListItem } from "@/db/queries";
 import {
   calculatePercent,
   formatMediaTypeLabel,

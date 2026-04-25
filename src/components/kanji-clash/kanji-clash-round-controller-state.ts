@@ -4,11 +4,11 @@ import type {
   KanjiClashQueueSnapshot,
   KanjiClashRoundSide,
   KanjiClashSessionActionResult
-} from "@/lib/kanji-clash/types";
+} from "@/features/kanji-clash/types";
 import {
   advanceKanjiClashQueueSnapshot,
   getKanjiClashCurrentRound
-} from "@/lib/kanji-clash/queue";
+} from "@/features/kanji-clash/model/queue";
 
 export type KanjiClashRoundFeedback = {
   answeredRound: KanjiClashSessionActionResult["answeredRound"];
@@ -225,9 +225,13 @@ function buildBufferedSubmissionState(
       : currentRound.rightSubjectKey;
   const visibleQueue =
     selectedSubjectKey === currentRound.correctSubjectKey
-      ? advanceKanjiClashQueueSnapshot(result.nextQueue, currentRound.roundKey, {
-          awaitingConfirmation: true
-        })
+      ? advanceKanjiClashQueueSnapshot(
+          result.nextQueue,
+          currentRound.roundKey,
+          {
+            awaitingConfirmation: true
+          }
+        )
       : result.nextQueue;
 
   return {

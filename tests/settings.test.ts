@@ -7,10 +7,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  runMigrations,
-  userSetting,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { userSetting } from "@/db/schema";
 import {
   defaultStudySettings,
   getGlossaryDefaultSort,
@@ -40,7 +40,9 @@ describe("study settings", () => {
   });
 
   it("loads kanji clash defaults from an empty database", async () => {
-    expect(await getStudySettings(database)).toMatchObject(defaultStudySettings);
+    expect(await getStudySettings(database)).toMatchObject(
+      defaultStudySettings
+    );
   });
 
   it("persists kanji clash settings alongside the existing study settings", async () => {
@@ -63,11 +65,13 @@ describe("study settings", () => {
   it("deduplicates concurrent study setting getters into one database read", async () => {
     const settingsQuerySpy = vi.spyOn(database.query.userSetting, "findMany");
 
-    const [settings, reviewDailyLimit, glossaryDefaultSort] = await Promise.all([
-      getStudySettings(database),
-      getReviewDailyLimit(database),
-      getGlossaryDefaultSort(database)
-    ]);
+    const [settings, reviewDailyLimit, glossaryDefaultSort] = await Promise.all(
+      [
+        getStudySettings(database),
+        getReviewDailyLimit(database),
+        getGlossaryDefaultSort(database)
+      ]
+    );
 
     expect(settings).toMatchObject(defaultStudySettings);
     expect(reviewDailyLimit).toBe(defaultStudySettings.reviewDailyLimit);
@@ -88,20 +92,18 @@ describe("study settings", () => {
     let queryCount = 0;
     const settingsQuerySpy = vi
       .spyOn(database.query.userSetting, "findMany")
-      .mockImplementation(
-        ((...args) => {
-          queryCount += 1;
+      .mockImplementation(((...args) => {
+        queryCount += 1;
 
-          if (queryCount === 1) {
-            return originalFindMany(...args).then(async (rows) => {
-              await initialSnapshotGate;
-              return rows;
-            });
-          }
+        if (queryCount === 1) {
+          return originalFindMany(...args).then(async (rows) => {
+            await initialSnapshotGate;
+            return rows;
+          });
+        }
 
-          return originalFindMany(...args);
-        }) as typeof database.query.userSetting.findMany
-      );
+        return originalFindMany(...args);
+      }) as typeof database.query.userSetting.findMany);
 
     const initialSettingsPromise = getStudySettings(database);
     await Promise.resolve();

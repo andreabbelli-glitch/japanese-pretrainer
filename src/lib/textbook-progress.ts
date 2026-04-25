@@ -1,6 +1,7 @@
 import { eq, sql } from "drizzle-orm";
 
-import { db, lessonProgress, type DatabaseClient } from "@/db";
+import { db, type DatabaseClient } from "@/db";
+import { lessonProgress } from "@/db/schema";
 import { updateStudySettings, type FuriganaMode } from "@/lib/settings";
 import { formatLessonProgressStatusLabel } from "@/lib/study-format";
 import type {

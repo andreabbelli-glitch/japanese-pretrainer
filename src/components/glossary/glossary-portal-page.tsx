@@ -1,7 +1,7 @@
 import type { Route } from "next";
 import Link from "next/link";
 
-import type { GlobalGlossaryPageData } from "@/lib/glossary";
+import type { GlobalGlossaryPageData } from "@/features/glossary/types";
 import { buildGlossaryHref } from "@/lib/site";
 
 import { GlobalGlossaryResultCard } from "./global-glossary-result-card";

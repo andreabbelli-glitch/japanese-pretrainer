@@ -1,6 +1,6 @@
 "use client";
 
-import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 
 type GlossaryAutocompleteDropdownProps = {
   listboxId: string;

@@ -5,7 +5,7 @@ import { startTransition, useEffect, useId, useRef, useState } from "react";
 import type {
   GlobalGlossaryAutocompleteSuggestion,
   GlobalGlossaryPageData
-} from "@/lib/glossary";
+} from "@/features/glossary/types";
 import { normalizeSearchText } from "@/lib/study-search";
 
 type GlossaryAutocompleteFilters = Pick<

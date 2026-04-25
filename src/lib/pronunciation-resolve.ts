@@ -6,9 +6,9 @@ import {
   listLessonsByMediaId,
   listLessonPronunciationCards,
   listPronunciationEntryRefsByCardIds,
-  listReviewPronunciationCards,
-  type DatabaseClient
-} from "@/db";
+  listReviewPronunciationCards
+} from "@/db/queries";
+import type { DatabaseClient } from "@/db";
 import { parseContentRoot, parseMediaDirectory } from "@/lib/content";
 import type { NormalizedMediaBundle } from "@/lib/content/types";
 import { buildEntryKey } from "@/lib/entry-id";
@@ -56,7 +56,9 @@ export type BundleResolveExecutionSummary = {
   > | null;
   knownMissingSkipped: string[];
   offlineSummary: Awaited<ReturnType<typeof fetchPronunciationsForBundle>>;
-  pendingSummary: Awaited<ReturnType<typeof writeBundlePronunciationPendingSummary>>;
+  pendingSummary: Awaited<
+    ReturnType<typeof writeBundlePronunciationPendingSummary>
+  >;
   reuseSummary: Awaited<
     ReturnType<typeof reuseCrossMediaPronunciationsForBundle>
   >;
@@ -71,7 +73,9 @@ type ExecutePronunciationResolveForBundleInput = {
     entryIds?: string[];
     manual: ForvoManualOptions;
     refresh?: boolean;
-  }) => Promise<Awaited<ReturnType<typeof fetchForvoPronunciationsForBundleManual>>>;
+  }) => Promise<
+    Awaited<ReturnType<typeof fetchForvoPronunciationsForBundleManual>>
+  >;
   fetchOffline: (input: {
     bundle: NormalizedMediaBundle;
     cacheRoot: string;
@@ -86,18 +90,24 @@ type ExecutePronunciationResolveForBundleInput = {
   limit?: number;
   retryKnownMissing?: boolean;
   refresh?: boolean;
-  refreshBundleState: (bundle: NormalizedMediaBundle) => Promise<NormalizedMediaBundle>;
+  refreshBundleState: (
+    bundle: NormalizedMediaBundle
+  ) => Promise<NormalizedMediaBundle>;
   reuseContext: PronunciationReuseContext;
   reuseCrossMedia: (input: {
     bundle: NormalizedMediaBundle;
     dryRun?: boolean;
     onlyTargets?: PronunciationTargetEntry[];
     reuseContext?: PronunciationReuseContext;
-  }) => Promise<Awaited<ReturnType<typeof reuseCrossMediaPronunciationsForBundle>>>;
+  }) => Promise<
+    Awaited<ReturnType<typeof reuseCrossMediaPronunciationsForBundle>>
+  >;
   selectedTargets: PronunciationTargetEntry[];
   updatePendingSummary: (input: {
     bundle: NormalizedMediaBundle;
-  }) => Promise<Awaited<ReturnType<typeof writeBundlePronunciationPendingSummary>>>;
+  }) => Promise<
+    Awaited<ReturnType<typeof writeBundlePronunciationPendingSummary>>
+  >;
 };
 
 export async function selectPronunciationResolveTargets(input: {
@@ -169,7 +179,9 @@ export function parseTextbookLessonUrl(value: string) {
     throw new Error("Unsupported lesson URL: empty value.");
   }
 
-  const pathname = hasUrlProtocol(trimmed) ? new URL(trimmed).pathname : trimmed;
+  const pathname = hasUrlProtocol(trimmed)
+    ? new URL(trimmed).pathname
+    : trimmed;
   const match = pathname.match(/^\/media\/([^/]+)\/textbook\/([^/?#]+)\/?$/u);
 
   if (!match) {
@@ -187,14 +199,18 @@ export async function executePronunciationResolveForBundle(
 ): Promise<BundleResolveExecutionSummary> {
   let currentBundle = input.bundle;
   const limit =
-    typeof input.limit === "number" && input.limit >= 0 ? input.limit : undefined;
+    typeof input.limit === "number" && input.limit >= 0
+      ? input.limit
+      : undefined;
   const actionableTargets = await filterAudioBackedTargets(
     currentBundle,
     input.selectedTargets,
     input.refresh
   );
   const limitedTargets =
-    typeof limit === "number" ? actionableTargets.slice(0, limit) : actionableTargets;
+    typeof limit === "number"
+      ? actionableTargets.slice(0, limit)
+      : actionableTargets;
 
   const reuseSummary = await input.reuseCrossMedia({
     bundle: currentBundle,
@@ -265,7 +281,8 @@ export async function executePronunciationResolveForBundle(
   if (!input.dryRun) {
     await syncResolvedForvoRequests(
       currentBundle,
-      (input.forvoManualOptions ?? buildDefaultForvoManualOptions()).requestRegistryPath
+      (input.forvoManualOptions ?? buildDefaultForvoManualOptions())
+        .requestRegistryPath
     );
   }
 
@@ -308,7 +325,9 @@ export async function resolvePronunciations(input: {
   const knownMissingRegistry = await loadForvoKnownMissingRegistry(
     input.knownMissingPath
   );
-  const reuseContext = await createPronunciationReuseContext(selection.allBundles);
+  const reuseContext = await createPronunciationReuseContext(
+    selection.allBundles
+  );
   let liveBundles = selection.allBundles;
   const summaries: Array<
     SelectedPronunciationBundle & { execution: BundleResolveExecutionSummary }
@@ -416,13 +435,20 @@ async function selectNextLessonTargets(input: {
 }) {
   const media = await getRequiredMedia(input.database, input.mediaSlug);
   const lessons = await listLessonsByMediaId(input.database, media.id);
-  const targetLesson = lessons.find((lesson) => lesson.progress?.status !== "completed");
+  const targetLesson = lessons.find(
+    (lesson) => lesson.progress?.status !== "completed"
+  );
 
   if (!targetLesson) {
-    throw new Error(`Media '${input.mediaSlug}' has no pending textbook lesson.`);
+    throw new Error(
+      `Media '${input.mediaSlug}' has no pending textbook lesson.`
+    );
   }
 
-  const cards = await listLessonPronunciationCards(input.database, targetLesson.id);
+  const cards = await listLessonPronunciationCards(
+    input.database,
+    targetLesson.id
+  );
 
   return buildSelectionFromCards({
     bundleByMediaId: input.bundleByMediaId,
@@ -547,7 +573,10 @@ async function filterAudioBackedTargets(
     return targets;
   }
 
-  const manifest = await loadValidatedManifest(bundle.mediaDirectory, bundle.mediaSlug);
+  const manifest = await loadValidatedManifest(
+    bundle.mediaDirectory,
+    bundle.mediaSlug
+  );
 
   return targets.filter(
     (target) =>
@@ -647,11 +676,14 @@ async function syncResolvedForvoRequests(
     bundle.mediaDirectory,
     bundle.mediaSlug
   );
-  const requestRegistry = await loadForvoWordAddRequestRegistry(requestRegistryPath);
+  const requestRegistry =
+    await loadForvoWordAddRequestRegistry(requestRegistryPath);
   const changed = reconcileForvoWordAddRequestRegistry(
     requestRegistry,
     collectPronunciationTargets(bundle).map((entry) => {
-      const manifestEntry = manifestEntries.get(buildEntryKey(entry.kind, entry.id));
+      const manifestEntry = manifestEntries.get(
+        buildEntryKey(entry.kind, entry.id)
+      );
 
       return {
         audioSource: manifestEntry?.audioSource,
@@ -664,6 +696,9 @@ async function syncResolvedForvoRequests(
   );
 
   if (changed > 0) {
-    await persistForvoWordAddRequestRegistry(requestRegistryPath, requestRegistry);
+    await persistForvoWordAddRequestRegistry(
+      requestRegistryPath,
+      requestRegistry
+    );
   }
 }

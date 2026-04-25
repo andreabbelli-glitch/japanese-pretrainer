@@ -8,11 +8,10 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  kanjiClashPairLog,
-  kanjiClashPairState,
-  runMigrations,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { kanjiClashPairLog, kanjiClashPairState } from "@/db/schema";
 import {
   countKanjiClashAutomaticNewPairIntroductions,
   listKanjiClashPairStatesBySubjectKeys,
@@ -124,8 +123,10 @@ describe("kanji clash pair persistence", () => {
 
   it("chunks pair-state lookups beyond a single sqlite-sized IN clause", async () => {
     const pairCount = 1200;
-    const pairKeys = Array.from({ length: pairCount }, (_, index) =>
-      `entry:term:${String(index).padStart(4, "0")}::entry:term:${String(index + 5000).padStart(4, "0")}`
+    const pairKeys = Array.from(
+      { length: pairCount },
+      (_, index) =>
+        `entry:term:${String(index).padStart(4, "0")}::entry:term:${String(index + 5000).padStart(4, "0")}`
     );
     const insertedAt = "2026-04-02T09:00:00.000Z";
 

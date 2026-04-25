@@ -3,7 +3,7 @@ import { pathToFileURL } from "node:url";
 
 import { describe, expect, it } from "vitest";
 
-import { resolveDatabaseLocation } from "@/db";
+import { resolveDatabaseLocation } from "@/db/config";
 
 describe("database config", () => {
   it("keeps remote libsql urls untouched for hosted deployments", () => {

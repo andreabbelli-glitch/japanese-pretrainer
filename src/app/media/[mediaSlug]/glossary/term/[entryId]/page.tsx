@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
-import { getTermGlossaryDetailData } from "@/lib/glossary";
+import { getTermGlossaryDetailData } from "@/features/glossary/server";
 import { readInternalHref } from "@/lib/site";
 
 type GlossaryTermDetailRouteProps = {

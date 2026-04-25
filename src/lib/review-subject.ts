@@ -1,5 +1,6 @@
-import type { ReviewCardListItem } from "../db/queries/review.ts";
-import type { EntryType } from "../db/schema/enums.ts";
+import type { EntryType } from "@/domain/content";
+
+import type { ReviewCardSource } from "./review-card-contract.ts";
 import { buildEntryKey } from "./entry-id.ts";
 import { stripInlineMarkdown } from "./inline-markdown.ts";
 
@@ -54,10 +55,10 @@ export type ReviewSubjectStateSnapshot = {
 };
 
 export type ReviewSubjectGroup = {
-  cards: ReviewCardListItem[];
+  cards: ReviewCardSource[];
   identity: ReviewSubjectIdentity;
   lastInteractionAt: string;
-  representativeCard: ReviewCardListItem;
+  representativeCard: ReviewCardSource;
   subjectState: ReviewSubjectStateSnapshot | null;
 };
 
@@ -229,7 +230,7 @@ export function normalizeReviewSubjectSurface(value: string) {
 }
 
 export function groupReviewCardsBySubject(input: {
-  cards: ReviewCardListItem[];
+  cards: ReviewCardSource[];
   entryLookup: Map<string, ReviewSubjectEntryMeta>;
   nowIso?: string;
   subjectStates: Map<string, ReviewSubjectStateSnapshot>;
@@ -282,8 +283,10 @@ export function groupReviewCardsBySubject(input: {
   }));
 }
 
-export function selectReviewSubjectRepresentativeCard(
-  cards: ReviewCardListItem[],
+export function selectReviewSubjectRepresentativeCard<
+  TCard extends ReviewCardSource
+>(
+  cards: TCard[],
   subjectState: ReviewSubjectStateSnapshot | null,
   nowIso?: string
 ) {
@@ -347,7 +350,7 @@ export function selectReviewSubjectRepresentativeCard(
 }
 
 export function resolveReviewSubjectLastInteractionAt(
-  card: ReviewCardListItem,
+  card: ReviewCardSource,
   subjectState: ReviewSubjectStateSnapshot | null
 ) {
   if (subjectState) {
@@ -358,7 +361,7 @@ export function resolveReviewSubjectLastInteractionAt(
 }
 
 export function buildReviewSubjectSeedState(
-  cards: ReviewCardListItem[],
+  cards: ReviewCardSource[],
   subjectState: ReviewSubjectStateSnapshot | null,
   nowIso?: string
 ): {
@@ -415,8 +418,8 @@ export function buildReviewSubjectSeedState(
 }
 
 function compareReviewCardsBySubjectRecency(
-  left: ReviewCardListItem,
-  right: ReviewCardListItem
+  left: ReviewCardSource,
+  right: ReviewCardSource
 ) {
   const interactionDifference =
     toTime(right.updatedAt ?? right.createdAt) -
@@ -437,8 +440,8 @@ function compareReviewCardsBySubjectRecency(
 }
 
 function compareReviewCardsBySubjectDisplay(
-  left: ReviewCardListItem,
-  right: ReviewCardListItem
+  left: ReviewCardSource,
+  right: ReviewCardSource
 ) {
   if (left.status !== right.status) {
     return left.status === "active" ? -1 : 1;
@@ -467,7 +470,7 @@ function toTime(value: string) {
 }
 
 function getReviewCardPriority(
-  card: ReviewCardListItem,
+  card: ReviewCardSource,
   subjectState: ReviewSubjectStateSnapshot | null,
   nowIso?: string
 ) {

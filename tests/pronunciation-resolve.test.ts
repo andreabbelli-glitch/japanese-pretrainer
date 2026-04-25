@@ -6,19 +6,21 @@ import { fileURLToPath } from "node:url";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-  card,
-  cardEntryLink,
   closeDatabaseClient,
   createDatabaseClient,
-  getMediaBySlug,
+  type DatabaseClient
+} from "@/db";
+import { getMediaBySlug } from "@/db/queries";
+import { runMigrations } from "@/db/migrate";
+import {
+  card,
+  cardEntryLink,
   grammarPattern,
   lesson,
   lessonProgress,
   media,
-  runMigrations,
-  term,
-  type DatabaseClient
-} from "@/db";
+  term
+} from "@/db/schema";
 import { parseContentRoot } from "@/lib/content/validator";
 import type { NormalizedMediaBundle } from "@/lib/content/types";
 import {
@@ -68,7 +70,9 @@ describe("pronunciation resolve", () => {
       mediaSlug: "sample-game"
     });
 
-    expect(parseTextbookLessonUrl("/media/sample-game/textbook/next-lesson")).toEqual({
+    expect(
+      parseTextbookLessonUrl("/media/sample-game/textbook/next-lesson")
+    ).toEqual({
       lessonSlug: "next-lesson",
       mediaSlug: "sample-game"
     });
@@ -92,22 +96,22 @@ describe("pronunciation resolve", () => {
       "sample-anime",
       "sample-game"
     ]);
-    expect(selection.bundles.map((bundle) => bundle.bundle.mediaSlug).sort()).toEqual([
-      "sample-anime",
-      "sample-game"
-    ]);
+    expect(
+      selection.bundles.map((bundle) => bundle.bundle.mediaSlug).sort()
+    ).toEqual(["sample-anime", "sample-game"]);
 
     const animeTargets =
-      selection.bundles.find((bundle) => bundle.bundle.mediaSlug === "sample-anime")
-        ?.targets ?? [];
+      selection.bundles.find(
+        (bundle) => bundle.bundle.mediaSlug === "sample-anime"
+      )?.targets ?? [];
     const gameTargets =
-      selection.bundles.find((bundle) => bundle.bundle.mediaSlug === "sample-game")
-        ?.targets ?? [];
+      selection.bundles.find(
+        (bundle) => bundle.bundle.mediaSlug === "sample-game"
+      )?.targets ?? [];
 
-    expect(animeTargets.map((entry) => `${entry.kind}:${entry.id}`).sort()).toEqual([
-      "grammar:grammar-teiru",
-      "term:term-taberu"
-    ]);
+    expect(
+      animeTargets.map((entry) => `${entry.kind}:${entry.id}`).sort()
+    ).toEqual(["grammar:grammar-teiru", "term:term-taberu"]);
     expect(gameTargets.map((entry) => `${entry.kind}:${entry.id}`)).toEqual([
       "term:term-miru"
     ]);
@@ -123,10 +127,11 @@ describe("pronunciation resolve", () => {
 
     expect(selection.selectedMediaSlugs).toEqual(["sample-anime"]);
     expect(selection.bundles).toHaveLength(1);
-    expect(selection.bundles[0]?.targets.map((entry) => `${entry.kind}:${entry.id}`).sort()).toEqual([
-      "grammar:grammar-teiru",
-      "term:term-taberu"
-    ]);
+    expect(
+      selection.bundles[0]?.targets
+        .map((entry) => `${entry.kind}:${entry.id}`)
+        .sort()
+    ).toEqual(["grammar:grammar-teiru", "term:term-taberu"]);
   });
 
   it("selects the first non-completed lesson for next-lesson mode", async () => {
@@ -223,7 +228,11 @@ describe("pronunciation resolve", () => {
       pending: [],
       pendingCount: 0,
       totalTargets: 3,
-      workflowFilePath: path.join(bundle.mediaDirectory, "workflow", "pronunciation-pending.json")
+      workflowFilePath: path.join(
+        bundle.mediaDirectory,
+        "workflow",
+        "pronunciation-pending.json"
+      )
     }));
 
     const summary = await executePronunciationResolveForBundle({
@@ -327,7 +336,11 @@ describe("pronunciation resolve", () => {
         pending: [],
         pendingCount: 0,
         totalTargets: 1,
-        workflowFilePath: path.join(bundle.mediaDirectory, "workflow", "pronunciation-pending.json")
+        workflowFilePath: path.join(
+          bundle.mediaDirectory,
+          "workflow",
+          "pronunciation-pending.json"
+        )
       }))
     });
 
@@ -384,7 +397,11 @@ describe("pronunciation resolve", () => {
         pending: [],
         pendingCount: 0,
         totalTargets: 1,
-        workflowFilePath: path.join(bundle.mediaDirectory, "workflow", "pronunciation-pending.json")
+        workflowFilePath: path.join(
+          bundle.mediaDirectory,
+          "workflow",
+          "pronunciation-pending.json"
+        )
       }))
     });
 
@@ -443,7 +460,11 @@ describe("pronunciation resolve", () => {
         pending: [],
         pendingCount: 0,
         totalTargets: 1,
-        workflowFilePath: path.join(bundle.mediaDirectory, "workflow", "pronunciation-pending.json")
+        workflowFilePath: path.join(
+          bundle.mediaDirectory,
+          "workflow",
+          "pronunciation-pending.json"
+        )
       }))
     } as Parameters<typeof executePronunciationResolveForBundle>[0]);
 
@@ -761,7 +782,8 @@ async function seedResolveDatabase(database: DatabaseClient) {
 
   await database.insert(term).values([
     {
-      audioAttribution: "Test Native Speaker via Lingua Libre / Wikimedia Commons",
+      audioAttribution:
+        "Test Native Speaker via Lingua Libre / Wikimedia Commons",
       audioLicense: "CC BY-SA 4.0",
       audioPageUrl:
         "https://commons.wikimedia.org/wiki/File:LL-Q188_(jpn)-Test_Native_Speaker-%E9%A3%9F%E3%81%B9%E3%82%8B.ogg",

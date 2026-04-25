@@ -7,11 +7,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
-  runMigrations,
-  seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import { getMediaBySlugCached } from "@/lib/data-cache";
 
 describe("media-by-slug cache", () => {

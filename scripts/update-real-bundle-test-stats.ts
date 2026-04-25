@@ -2,11 +2,8 @@ import path from "node:path";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 
-import {
-  closeDatabaseClient,
-  createDatabaseClient,
-  runMigrations
-} from "../src/db/index.ts";
+import { closeDatabaseClient, createDatabaseClient } from "../src/db/client.ts";
+import { runMigrations } from "../src/db/migrate.ts";
 import {
   card,
   cardEntryLink,
@@ -27,7 +24,9 @@ const duelMastersMediaSlug = "duel-masters-dm25";
 
 try {
   const cliOptions = resolveCliOptions(process.argv.slice(2));
-  const nextStats = await collectDuelMastersRealBundleStats(cliOptions.contentRoot);
+  const nextStats = await collectDuelMastersRealBundleStats(
+    cliOptions.contentRoot
+  );
   const formattedStats = `${JSON.stringify(nextStats, null, 2)}\n`;
 
   if (!cliOptions.write) {
@@ -44,7 +43,9 @@ try {
           ? "Verified"
           : "Updated";
 
-    console.info(`${status} ${path.relative(process.cwd(), duelMastersRealBundleStatsPath)}.`);
+    console.info(
+      `${status} ${path.relative(process.cwd(), duelMastersRealBundleStatsPath)}.`
+    );
   }
 } catch (error) {
   console.error(formatUnexpectedError(error));

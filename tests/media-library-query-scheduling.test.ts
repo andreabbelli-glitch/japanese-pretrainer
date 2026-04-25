@@ -26,6 +26,7 @@ describe("media library query scheduling", () => {
     vi.resetModules();
     vi.clearAllMocks();
     vi.doUnmock("@/db");
+    vi.doUnmock("@/db/queries");
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/local-date");
     vi.doUnmock("@/lib/media-shell-snapshot");
@@ -65,7 +66,9 @@ describe("media library query scheduling", () => {
     let reviewCandidatesStarted = false;
 
     vi.doMock("@/db", () => ({
-      db: {},
+      db: {}
+    }));
+    vi.doMock("@/db/queries", () => ({
       listGlossaryPreviewEntries: vi.fn(() => Promise.resolve([])),
       listGlossaryProgressSummaries: vi.fn(() => Promise.resolve([])),
       listLessonsByMediaId: vi.fn(() => Promise.resolve([])),

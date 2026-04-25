@@ -1,6 +1,6 @@
 "use client";
 
-import type { KanjiClashSessionActionResult } from "@/lib/kanji-clash/types";
+import type { KanjiClashSessionActionResult } from "@/features/kanji-clash/types";
 
 export function resolveKanjiClashSubmitLiveMessage(
   result: KanjiClashSessionActionResult

@@ -7,10 +7,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  runMigrations,
-  seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { seedDevelopmentDatabase } from "@/db/seed";
 import { listMediaCached } from "@/lib/data-cache";
 
 describe("media list cache", () => {

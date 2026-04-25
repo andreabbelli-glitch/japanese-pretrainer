@@ -1,8 +1,11 @@
 import os from "node:os";
 import path from "node:path";
 
-import { db } from "../src/db/index.ts";
-import { resolvePronunciations, type PronunciationResolveMode } from "../src/lib/pronunciation-resolve.ts";
+import { db } from "../src/db/client.ts";
+import {
+  resolvePronunciations,
+  type PronunciationResolveMode
+} from "../src/lib/pronunciation-resolve.ts";
 import type { PronunciationFetchNetworkOptions } from "../src/lib/pronunciation.ts";
 
 type CliOptions = {
@@ -116,7 +119,11 @@ function parseCliOptions(argv: string[]): CliOptions {
 
     if (argument === "--mode") {
       const mode = argv[index + 1];
-      if (mode === "review" || mode === "next-lesson" || mode === "lesson-url") {
+      if (
+        mode === "review" ||
+        mode === "next-lesson" ||
+        mode === "lesson-url"
+      ) {
         options.mode = mode;
       }
       index += 1;
@@ -201,7 +208,8 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--downloads-dir") {
-      options.manualDownloadsDir = argv[index + 1] ?? options.manualDownloadsDir;
+      options.manualDownloadsDir =
+        argv[index + 1] ?? options.manualDownloadsDir;
       index += 1;
       continue;
     }

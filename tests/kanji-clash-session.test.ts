@@ -7,6 +7,10 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
+  type DatabaseClient
+} from "@/db";
+import { runMigrations } from "@/db/migrate";
+import {
   card,
   cardEntryLink,
   kanjiClashManualContrast,
@@ -17,11 +21,9 @@ import {
   lessonProgress,
   media,
   reviewSubjectState,
-  runMigrations,
   segment,
-  term,
-  type DatabaseClient
-} from "@/db";
+  term
+} from "@/db/schema";
 import {
   applyKanjiClashSessionAction,
   buildKanjiClashCandidate,
@@ -755,7 +757,9 @@ describe("kanji clash session service", () => {
     });
 
     expect(result.answeredRound.roundKey).toBe(`${contrastKey}::subject_a`);
-    expect(result.nextQueue.seenRoundKeys).toEqual([`${contrastKey}::subject_a`]);
+    expect(result.nextQueue.seenRoundKeys).toEqual([
+      `${contrastKey}::subject_a`
+    ]);
     expect(result.nextQueue.seenPairKeys).toEqual([contrastKey]);
     expect(result.nextRound?.pairKey).toBe(contrastKey);
     expect(result.nextRound?.roundKey).toBe(`${contrastKey}::subject_b`);

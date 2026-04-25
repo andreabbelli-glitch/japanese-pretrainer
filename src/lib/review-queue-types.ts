@@ -1,10 +1,9 @@
-import type { ReviewCardListItem } from "@/db";
-
+import type { ReviewCardSource } from "./review-card-contract";
 import type { ReviewQueueStateSnapshot } from "./review-queue-state";
 import type { ReviewSubjectGroup } from "./review-subject";
 
 export type ReviewSubjectModel = {
-  card: ReviewCardListItem;
+  card: ReviewCardSource;
   group: ReviewSubjectGroup;
   queueStateSnapshot: ReviewQueueStateSnapshot;
 };

@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 
 import type { DatabaseClient } from "../db/client.ts";
 import { listReviewCardsByMediaIds } from "../db/queries/review.ts";
+import { listReviewSubjectStatesByKeys } from "../db/queries/review-subject.ts";
 import { reviewSubjectState } from "../db/schema/review.ts";
 
 import type { ReviewSubjectStateSnapshot } from "./review-subject.ts";
@@ -132,8 +133,9 @@ async function loadReviewSubjectCoverageSnapshot(
 
   const { subjectGroups, subjectStates } = await resolveReviewSubjectGroups({
     cards,
-    database,
     grammar,
+    loadSubjectStatesByKeys: (subjectKeys) =>
+      listReviewSubjectStatesByKeys(database, subjectKeys),
     nowIso: input.now?.toISOString(),
     terms
   });

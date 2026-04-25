@@ -7,12 +7,11 @@ import { eq } from "drizzle-orm";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
-  lessonProgress,
-  runMigrations,
-  seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { lessonProgress } from "@/db/schema";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 
 type ReviewDatabaseFixture = {
   database: DatabaseClient;

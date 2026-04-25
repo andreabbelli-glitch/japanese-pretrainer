@@ -3,9 +3,9 @@ import type { Route } from "next";
 import {
   listGlossaryProgressSummaries,
   listGlossaryPreviewEntries,
-  type DatabaseClient,
   type LessonListItem
-} from "@/db";
+} from "@/db/queries";
+import type { DatabaseClient } from "@/db";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import { formatDerivedStudyStateLabel } from "@/lib/study-entry";
 import {
@@ -95,10 +95,7 @@ export async function loadGlossaryProgressSnapshot(
     }
   ]);
 
-  return (
-    snapshots.get(mediaId) ??
-    buildEmptyGlossaryProgressSnapshot()
-  );
+  return snapshots.get(mediaId) ?? buildEmptyGlossaryProgressSnapshot();
 }
 
 export async function loadGlossaryProgressSnapshots(
@@ -120,9 +117,13 @@ export async function loadGlossaryProgressSnapshots(
 
   for (const preview of previews) {
     const existing = previewsByMedia.get(preview.mediaId) ?? [];
-    
+
     existing.push({
-      href: mediaGlossaryEntryHref(preview.mediaSlug, preview.kind, preview.sourceId),
+      href: mediaGlossaryEntryHref(
+        preview.mediaSlug,
+        preview.kind,
+        preview.sourceId
+      ),
       id: preview.sourceId,
       kind: preview.kind,
       label: preview.label,
@@ -131,7 +132,7 @@ export async function loadGlossaryProgressSnapshots(
       segmentTitle: preview.segmentTitle ?? undefined,
       statusLabel: formatDerivedStudyStateLabel(preview.state)
     });
-    
+
     previewsByMedia.set(preview.mediaId, existing);
   }
 
@@ -139,7 +140,10 @@ export async function loadGlossaryProgressSnapshots(
     snapshots.set(summary.mediaId, {
       entriesCovered: summary.entriesCovered,
       entriesTotal: summary.entriesTotal,
-      progressPercent: calculatePercent(summary.entriesCovered, summary.entriesTotal),
+      progressPercent: calculatePercent(
+        summary.entriesCovered,
+        summary.entriesTotal
+      ),
       previewEntries: previewsByMedia.get(summary.mediaId) ?? [],
       breakdown: {
         available: summary.available,
@@ -244,7 +248,10 @@ export function buildLessonMetrics(lessons: LessonMetricsListItem[]) {
         ) > 0
       ) {
         existing.currentLessonTitle = currentLessonTitle;
-        segmentCurrentLessonOpenedAt.set(key, lesson.progress?.lastOpenedAt ?? null);
+        segmentCurrentLessonOpenedAt.set(
+          key,
+          lesson.progress?.lastOpenedAt ?? null
+        );
       }
     } else {
       groups.set(key, {
@@ -257,7 +264,10 @@ export function buildLessonMetrics(lessons: LessonMetricsListItem[]) {
       });
 
       if (currentLessonTitle) {
-        segmentCurrentLessonOpenedAt.set(key, lesson.progress?.lastOpenedAt ?? null);
+        segmentCurrentLessonOpenedAt.set(
+          key,
+          lesson.progress?.lastOpenedAt ?? null
+        );
       }
     }
   }

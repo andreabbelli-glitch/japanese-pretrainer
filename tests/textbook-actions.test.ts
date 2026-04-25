@@ -17,7 +17,10 @@ const {
 }));
 
 vi.mock("@/db", () => ({
-  db: {},
+  db: {}
+}));
+
+vi.mock("@/db/queries", () => ({
   getMediaBySlug: getMediaBySlugMock
 }));
 
@@ -27,7 +30,7 @@ vi.mock("@/lib/data-cache", () => ({
   updateSettingsCache: updateSettingsCacheMock
 }));
 
-vi.mock("@/lib/textbook", () => ({
+vi.mock("@/features/textbook/server", () => ({
   setFuriganaMode: setFuriganaModeMock,
   setLessonCompletionState: setLessonCompletionStateMock
 }));
@@ -69,7 +72,10 @@ describe("textbook actions", () => {
       mediaSlug: "fixture-media"
     });
 
-    expect(setLessonCompletionStateMock).toHaveBeenCalledWith("lesson_001", true);
+    expect(setLessonCompletionStateMock).toHaveBeenCalledWith(
+      "lesson_001",
+      true
+    );
     expect(getMediaBySlugMock).toHaveBeenCalledWith({}, "fixture-media");
     expect(updateMediaListCacheMock).toHaveBeenCalledTimes(1);
     expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith("media_fixture");

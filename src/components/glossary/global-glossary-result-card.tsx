@@ -1,7 +1,7 @@
 import type { Route } from "next";
 import Link from "next/link";
 
-import type { GlossarySearchResult } from "@/lib/glossary";
+import type { GlossarySearchResult } from "@/features/glossary/types";
 import { appendReturnToParam } from "@/lib/site";
 
 import { HighlightText } from "./glossary-highlight-text";

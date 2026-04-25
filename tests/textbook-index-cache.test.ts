@@ -58,11 +58,10 @@ vi.mock("@/lib/data-cache", async () => {
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
-  runMigrations,
-  seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import {
   MEDIA_LIST_TAG,
   revalidateMediaListCache,

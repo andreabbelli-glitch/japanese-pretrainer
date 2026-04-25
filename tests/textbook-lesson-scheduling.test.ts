@@ -43,6 +43,7 @@ describe("textbook lesson query scheduling", () => {
     vi.clearAllMocks();
     vi.doUnmock("next/cache");
     vi.doUnmock("@/db");
+    vi.doUnmock("@/db/queries");
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/settings");
   });
@@ -56,7 +57,9 @@ describe("textbook lesson query scheduling", () => {
       unstable_noStore: noStoreMock
     }));
     vi.doMock("@/db", () => ({
-      db: {},
+      db: {}
+    }));
+    vi.doMock("@/db/queries", () => ({
       getLessonAstBySlug: vi.fn(),
       getLessonIdBySlug: vi.fn(),
       listLessonEntryLinks: vi.fn(),

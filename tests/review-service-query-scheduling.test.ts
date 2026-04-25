@@ -5,19 +5,17 @@ import path from "node:path";
 import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import * as dbModule from "@/db";
+import * as dbQueriesModule from "@/db/queries";
 import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
 import { applyReviewGrade } from "@/lib/review-service";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
-  lessonProgress,
-  reviewSubjectState,
-  runMigrations,
-  seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { lessonProgress, reviewSubjectState } from "@/db/schema";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
 
@@ -88,11 +86,12 @@ describe("review service query scheduling", () => {
     const subjectStateGate = createDeferred();
     let subjectStateStarted = false;
     let memberCardLookupStarted = false;
-    const originalGetReviewSubjectStateByKey = dbModule.getReviewSubjectStateByKey;
+    const originalGetReviewSubjectStateByKey =
+      dbQueriesModule.getReviewSubjectStateByKey;
     const originalListReviewCardIdsByEntryRefs =
-      dbModule.listReviewCardIdsByEntryRefs;
+      dbQueriesModule.listReviewCardIdsByEntryRefs;
     const subjectStateSpy = vi
-      .spyOn(dbModule, "getReviewSubjectStateByKey")
+      .spyOn(dbQueriesModule, "getReviewSubjectStateByKey")
       .mockImplementation(async (...args) => {
         subjectStateStarted = true;
         const resultPromise = originalGetReviewSubjectStateByKey(...args);
@@ -100,7 +99,7 @@ describe("review service query scheduling", () => {
         return resultPromise;
       });
     const memberCardLookupSpy = vi
-      .spyOn(dbModule, "listReviewCardIdsByEntryRefs")
+      .spyOn(dbQueriesModule, "listReviewCardIdsByEntryRefs")
       .mockImplementation(async (...args) => {
         memberCardLookupStarted = true;
         return originalListReviewCardIdsByEntryRefs(...args);
@@ -134,11 +133,12 @@ describe("review service query scheduling", () => {
     const subjectStateGate = createDeferred();
     let subjectStateStarted = false;
     let fsrsSnapshotStarted = false;
-    const originalGetReviewSubjectStateByKey = dbModule.getReviewSubjectStateByKey;
+    const originalGetReviewSubjectStateByKey =
+      dbQueriesModule.getReviewSubjectStateByKey;
     const originalGetFsrsOptimizerSnapshot =
       fsrsOptimizerModule.getFsrsOptimizerSnapshot;
     const subjectStateSpy = vi
-      .spyOn(dbModule, "getReviewSubjectStateByKey")
+      .spyOn(dbQueriesModule, "getReviewSubjectStateByKey")
       .mockImplementation(async (...args) => {
         subjectStateStarted = true;
         const resultPromise = originalGetReviewSubjectStateByKey(...args);

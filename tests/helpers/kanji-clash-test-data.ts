@@ -5,7 +5,7 @@ import type {
   KanjiClashQueueSnapshot,
   KanjiClashSessionActionResult,
   KanjiClashSessionRound
-} from "@/lib/kanji-clash/types";
+} from "@/features/kanji-clash/types";
 
 type BuildSubjectOverrides = Partial<KanjiClashEligibleSubject> & {
   kanji?: string[];

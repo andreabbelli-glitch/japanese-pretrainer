@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { RefObject } from "react";
 
 import { GlossaryAutocompleteDropdown } from "@/components/glossary/glossary-autocomplete-dropdown";
-import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 import { renderFurigana, stripInlineMarkdown } from "@/lib/render-furigana";
 import {
   appendReturnToParam,

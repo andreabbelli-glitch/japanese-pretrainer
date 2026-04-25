@@ -1,5 +1,5 @@
 import { KanjiClashPage } from "@/components/kanji-clash/kanji-clash-page";
-import { getKanjiClashPageData } from "@/lib/kanji-clash";
+import { getKanjiClashPageData } from "@/features/kanji-clash/server";
 
 type KanjiClashRouteProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

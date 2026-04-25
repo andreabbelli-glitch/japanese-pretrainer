@@ -1,6 +1,6 @@
+import { db, type DatabaseClient } from "@/db";
 import {
   countReviewSubjectsIntroducedOnDay,
-  db,
   getGlobalReviewOverviewData,
   getReviewOverviewDataByMediaId,
   getReviewLaunchCandidateByMediaId,
@@ -8,12 +8,12 @@ import {
   listReviewLaunchCandidates,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
+  listReviewSubjectStatesByKeys,
   listTermEntryReviewSummariesByIds,
-  type DatabaseClient,
   type MediaListItem,
   type ReviewCardListItem,
   type ReviewLaunchCandidate
-} from "@/db";
+} from "@/db/queries";
 import {
   buildReviewSummaryTags,
   canUseDataCache,
@@ -22,10 +22,7 @@ import {
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
 import { pickBestBy } from "@/lib/collections";
-import {
-  getLocalIsoDateKey,
-  getLocalIsoTimeBucketKey
-} from "@/lib/local-date";
+import { getLocalIsoDateKey, getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
 import { getReviewDailyLimit, getStudySettings } from "@/lib/settings";
 import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
@@ -217,8 +214,9 @@ export async function loadReviewWorkspaceV2(input: {
         () =>
           resolveReviewSubjectGroups({
             cards: stableWorkspace.cards,
-            database,
             grammar: stableWorkspace.grammar,
+            loadSubjectStatesByKeys: (subjectKeys) =>
+              listReviewSubjectStatesByKeys(database, subjectKeys),
             nowIso: now.toISOString(),
             terms: stableWorkspace.terms
           }),

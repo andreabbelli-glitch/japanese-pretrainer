@@ -1,13 +1,12 @@
+import { db, type DatabaseClient } from "@/db";
 import {
-  db,
   listGlossaryPreviewEntries,
   listGlossaryProgressSummaries,
   listLessonsByMediaId,
   listLessonsByMediaIdsForShell,
-  type ShellLessonListItem,
-  type DatabaseClient,
-  type MediaListItem
-} from "@/db";
+  type MediaListItem,
+  type ShellLessonListItem
+} from "@/db/queries";
 import type { ReviewLaunchCandidate } from "@/db/queries/review";
 import {
   buildGlossarySummaryTags,
@@ -50,7 +49,9 @@ function buildGlossaryReviewTags(mediaIds: string[] = []) {
   ];
 }
 
-type ResolvedMedia = NonNullable<Awaited<ReturnType<typeof getMediaBySlugCached>>>;
+type ResolvedMedia = NonNullable<
+  Awaited<ReturnType<typeof getMediaBySlugCached>>
+>;
 
 export async function getMediaLibraryData(database: DatabaseClient = db) {
   const now = new Date();
@@ -109,8 +110,7 @@ export async function getMediaDetailData(
   } = {}
 ) {
   const media =
-    options.resolvedMedia ??
-    (await getMediaBySlugCached(database, mediaSlug));
+    options.resolvedMedia ?? (await getMediaBySlugCached(database, mediaSlug));
 
   if (!media) {
     return null;
@@ -232,14 +232,16 @@ export async function loadMediaShellSnapshots(
     return snapshots;
   }
 
-  const focusPreviewEntries = await loadGlossaryPreviewEntriesCached(database, [
-    {
-      id: focusMedia.id,
-      slug: focusMedia.slug
-    }
-  ], options.previewEntryLimit ?? 1).then(
-    (entriesByMedia) => entriesByMedia.get(focusMedia.id) ?? []
-  );
+  const focusPreviewEntries = await loadGlossaryPreviewEntriesCached(
+    database,
+    [
+      {
+        id: focusMedia.id,
+        slug: focusMedia.slug
+      }
+    ],
+    options.previewEntryLimit ?? 1
+  ).then((entriesByMedia) => entriesByMedia.get(focusMedia.id) ?? []);
 
   return snapshots.map((snapshot) =>
     snapshot.id === focusMedia.id
@@ -457,13 +459,8 @@ async function loadMediaReviewCounts(
 export { pickFocusMedia };
 export type { MediaShellSnapshot };
 
-function groupLessonsByMedia(
-  lessons: ShellLessonListItem[]
-) {
-  const grouped = new Map<
-    string,
-    ShellLessonListItem[]
-  >();
+function groupLessonsByMedia(lessons: ShellLessonListItem[]) {
+  const grouped = new Map<string, ShellLessonListItem[]>();
 
   for (const lesson of lessons) {
     const existing = grouped.get(lesson.mediaId);

@@ -7,26 +7,27 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import * as dbModule from "@/db";
 import { MediaDetailPage } from "@/components/media/media-detail-page";
+import {
+  closeDatabaseClient,
+  createDatabaseClient,
+  type DatabaseClient
+} from "@/db";
+import { runMigrations } from "@/db/migrate";
+import * as dbQueriesModule from "@/db/queries";
 import {
   card,
   cardEntryLink,
-  closeDatabaseClient,
-  createDatabaseClient,
-  developmentFixture,
   lesson,
   lessonProgress,
   media,
   reviewSubjectState,
-  runMigrations,
-  seedDevelopmentDatabase,
   segment,
-  term,
-  type DatabaseClient
-} from "@/db";
+  term
+} from "@/db/schema";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import { buildScopedEntryId } from "@/lib/entry-id";
-import { getGlossaryPageData } from "@/lib/glossary";
+import { getGlossaryPageData } from "@/features/glossary/server";
 import { importContentWorkspace } from "@/lib/content/importer";
 import { getMediaProgressPageData } from "@/lib/progress";
 import { getReviewPageData } from "@/lib/review";
@@ -90,9 +91,7 @@ describe("progress, settings, and study controls", () => {
     expect(data?.review.dueCount).toBe(1);
     expect(data?.resume.recommendedArea).toBe("review");
     expect(data?.resume.recommendedLabel).toBe("Apri review globale");
-    expect(data?.resume.recommendedHref).toBe(
-      "/review"
-    );
+    expect(data?.resume.recommendedHref).toBe("/review");
   });
 
   it("reuses the resolved settings snapshot while building the media page", async () => {
@@ -135,9 +134,12 @@ describe("progress, settings, and study controls", () => {
   });
 
   it("loads the local progress review snapshot from the scoped media candidate query", async () => {
-    const globalCandidatesSpy = vi.spyOn(dbModule, "listReviewLaunchCandidates");
+    const globalCandidatesSpy = vi.spyOn(
+      dbQueriesModule,
+      "listReviewLaunchCandidates"
+    );
     const mediaCandidateSpy = vi.spyOn(
-      dbModule,
+      dbQueriesModule,
       "getReviewLaunchCandidateByMediaId"
     );
 
@@ -155,7 +157,10 @@ describe("progress, settings, and study controls", () => {
   });
 
   it("includes glossary preview entries for the media detail progress page", async () => {
-    const previewEntriesSpy = vi.spyOn(dbModule, "listGlossaryPreviewEntries");
+    const previewEntriesSpy = vi.spyOn(
+      dbQueriesModule,
+      "listGlossaryPreviewEntries"
+    );
 
     const data = await getMediaProgressPageData(
       developmentFixture.mediaSlug,
@@ -367,9 +372,10 @@ describe("progress, settings, and study controls", () => {
       })
       .where(eq(card.id, crossMediaFixture.beta.termCardId));
 
-    const sharedSubjectState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.cardId, crossMediaFixture.alpha.termCardId)
-    });
+    const sharedSubjectState =
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.cardId, crossMediaFixture.alpha.termCardId)
+      });
 
     expect(sharedSubjectState).not.toBeNull();
 

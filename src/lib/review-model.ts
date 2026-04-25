@@ -1,22 +1,13 @@
-import type { EntryType } from "../db/schema/enums.ts";
+import type {
+  ReviewCardEntryLink,
+  ReviewLessonCompletionSource
+} from "./review-card-contract.ts";
 
 import type { ReviewState } from "./review-scheduler.ts";
 
-export type ReviewEntryLinkLike = {
-  entryId: string;
-  entryType: EntryType;
-  relationshipType: string;
-};
+export type ReviewEntryLinkLike = ReviewCardEntryLink;
 
-export type ReviewLessonCompletionLike = {
-  lessonId: string | null;
-  lesson?: {
-    status?: string | null;
-    progress?: {
-      status: string | null;
-    } | null;
-  } | null;
-};
+export type ReviewLessonCompletionLike = ReviewLessonCompletionSource;
 
 export type EffectiveReviewState = {
   reason:

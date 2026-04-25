@@ -17,7 +17,7 @@ import {
   kanjiClashPairLog,
   kanjiClashPairState
 } from "../schema/kanji-clash.ts";
-import type { KanjiClashPairState } from "../../lib/kanji-clash/types.ts";
+import type { KanjiClashPairState } from "../../features/kanji-clash/types.ts";
 import { quoteSqlString } from "./review-query-helpers.ts";
 
 const KANJI_CLASH_PAIR_STATE_QUERY_CHUNK_SIZE = 400;

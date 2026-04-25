@@ -18,21 +18,20 @@ import { GlossaryDetailPage } from "@/components/glossary/glossary-detail-page";
 import { GlossaryPage } from "@/components/glossary/glossary-page";
 import { GlossaryPortalPage } from "@/components/glossary/glossary-portal-page";
 import { ReviewCardDetailPage } from "@/components/review/review-card-detail-page";
-import * as dbModule from "@/db";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
-  getGlobalGlossaryAggregateStats,
-  lessonProgress,
-  runMigrations,
-  seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
 import {
   countGlobalGlossaryBrowseGroups,
+  getGlobalGlossaryAggregateStats,
   listGlobalGlossaryBrowseGroupRefs
 } from "@/db/queries/glossary";
+import * as dbQueriesModule from "@/db/queries";
+import { runMigrations } from "@/db/migrate";
+import { lessonProgress } from "@/db/schema";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import { buildScopedEntryId } from "@/lib/entry-id";
 import {
   card,
@@ -48,7 +47,7 @@ import {
   getGlossaryPageData,
   getGrammarGlossaryDetailData,
   getTermGlossaryDetailData
-} from "@/lib/glossary";
+} from "@/features/glossary/server";
 import { buildPitchAccentData } from "@/lib/pitch-accent";
 import { getReviewCardDetailData } from "@/lib/review";
 import { setReviewCardSuspended } from "@/lib/review-service";
@@ -669,7 +668,9 @@ describe("glossary data", () => {
 
     expect(filteredTotal).toBe(2);
     expect(pageRefs).toHaveLength(2);
-    expect(pageRefs.every((ref) => ref.totalCount === filteredTotal)).toBe(true);
+    expect(pageRefs.every((ref) => ref.totalCount === filteredTotal)).toBe(
+      true
+    );
     expect(pageRefs.map((ref) => ref.resultKey)).toEqual([
       `term:group:${crossMediaFixture.termGroup}`,
       `term:group:${crossMediaFixture.mixedCardsGroup}`
@@ -693,9 +694,7 @@ describe("glossary data", () => {
 
     const browseCountQueries = executeSpy.mock.calls.filter(([input]) => {
       const sql =
-        typeof input === "string"
-          ? input
-          : (input as { sql?: unknown }).sql;
+        typeof input === "string" ? input : (input as { sql?: unknown }).sql;
 
       return (
         typeof sql === "string" &&
@@ -1728,7 +1727,10 @@ describe("glossary data", () => {
 
   it("skips preview card queries when the selected local entry has no cards", async () => {
     const contentRoot = path.join(tempDir, "cross-media-content");
-    const cardConnectionsSpy = vi.spyOn(dbModule, "listEntryCardConnections");
+    const cardConnectionsSpy = vi.spyOn(
+      dbQueriesModule,
+      "listEntryCardConnections"
+    );
 
     await writeCrossMediaContentFixture(contentRoot);
 
@@ -1831,7 +1833,10 @@ describe("glossary data", () => {
 
   it("skips cross-media detail queries for entries outside shared families", async () => {
     await seedDevelopmentDatabase(database);
-    const crossMediaSpy = vi.spyOn(dbModule, "getCrossMediaFamilyByEntryId");
+    const crossMediaSpy = vi.spyOn(
+      dbQueriesModule,
+      "getCrossMediaFamilyByEntryId"
+    );
 
     const detail = await getTermGlossaryDetailData(
       developmentFixture.mediaSlug,

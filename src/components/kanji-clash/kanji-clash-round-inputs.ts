@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, type TouchEventHandler } from "react";
 
-import type { KanjiClashRoundSide } from "@/lib/kanji-clash/types";
+import type { KanjiClashRoundSide } from "@/features/kanji-clash/types";
 
 import {
   resolveKanjiClashRoundSideFromKey,

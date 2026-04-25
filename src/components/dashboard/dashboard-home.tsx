@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getDashboardData } from "@/lib/dashboard";
+import type { DashboardData } from "@/lib/dashboard";
 import { renderFurigana } from "@/lib/render-furigana";
 import {
   mediaGlossaryHref,
@@ -15,8 +15,12 @@ import { Section } from "../ui/section";
 import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
 
-export async function DashboardHome() {
-  const { focusMedia, media, review, reviewMedia } = await getDashboardData();
+type DashboardHomeProps = {
+  data: DashboardData;
+};
+
+export function DashboardHome({ data }: DashboardHomeProps) {
+  const { focusMedia, media, review, reviewMedia } = data;
 
   if (!focusMedia) {
     return (

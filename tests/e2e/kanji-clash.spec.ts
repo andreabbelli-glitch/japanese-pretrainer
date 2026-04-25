@@ -4,10 +4,12 @@ import { eq } from "drizzle-orm";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  kanjiClashManualContrast,
-  kanjiClashManualContrastRoundState,
   type DatabaseClient
 } from "@/db";
+import {
+  kanjiClashManualContrast,
+  kanjiClashManualContrastRoundState
+} from "@/db/schema";
 import { loadKanjiClashQueueSnapshot } from "@/lib/kanji-clash";
 
 import { resolveStartE2EDatabaseUrl } from "../../scripts/start-e2e-config.ts";
@@ -514,7 +516,9 @@ test("keeps Kanji Clash progress when archiving and restoring a manual contrast"
 
   if (!contrastRound) {
     closeDatabaseClient(database);
-    throw new Error("Expected a Kanji Clash round to seed the archive fixture.");
+    throw new Error(
+      "Expected a Kanji Clash round to seed the archive fixture."
+    );
   }
 
   await insertKanjiClashManualContrast(database, contrastRound, now);
@@ -649,7 +653,10 @@ async function waitForNextRoundOrCompletion(
   previousRound: KanjiClashRoundSnapshot
 ) {
   const timeoutAt = Date.now() + 5_000;
-  let lastState: KanjiClashRoundState = { kind: "transition", state: "unknown" };
+  let lastState: KanjiClashRoundState = {
+    kind: "transition",
+    state: "unknown"
+  };
 
   while (Date.now() < timeoutAt) {
     lastState = await getRoundState(page);
@@ -681,10 +688,7 @@ async function finishManualSession(page: Page, maxRounds: number) {
 
     await answerRoundWithClick(page, currentRound.correctSide);
 
-    const nextState = await waitForNextRoundOrCompletion(
-      page,
-      currentRound
-    );
+    const nextState = await waitForNextRoundOrCompletion(page, currentRound);
 
     if (nextState === "done") {
       return;
@@ -701,7 +705,9 @@ async function getRoundState(page: Page) {
 
   if (await stage.isVisible().catch(() => false)) {
     const pairKey = await stage.getAttribute("data-pair-key");
-    const targetSubjectKey = await stage.getAttribute("data-target-subject-key");
+    const targetSubjectKey = await stage.getAttribute(
+      "data-target-subject-key"
+    );
 
     if (pairKey && targetSubjectKey) {
       return {
@@ -836,7 +842,9 @@ function createKanjiClashE2EDatabaseClient() {
 
 async function insertKanjiClashManualContrast(
   database: DatabaseClient,
-  round: Awaited<ReturnType<typeof loadKanjiClashQueueSnapshot>>["rounds"][number],
+  round: Awaited<
+    ReturnType<typeof loadKanjiClashQueueSnapshot>
+  >["rounds"][number],
   nowIso: string
 ) {
   await database.insert(kanjiClashManualContrast).values({

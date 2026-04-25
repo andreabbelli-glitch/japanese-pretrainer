@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 
 import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
-import { revalidateSettingsCache } from "@/lib/data-cache";
+import { invalidateStudySettingsSaved } from "@/lib/cache-invalidation-policy";
 import { buildHrefWithSearch } from "@/lib/site";
 import {
   normalizeFuriganaMode,
@@ -43,7 +43,7 @@ export async function saveStudySettingsAction(formData: FormData) {
     )
   });
 
-  revalidateSettingsCache();
+  invalidateStudySettingsSaved();
 
   redirect(
     buildHrefWithSearch("/settings", (params) => {

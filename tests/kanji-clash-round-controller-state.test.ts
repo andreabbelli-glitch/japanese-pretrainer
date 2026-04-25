@@ -4,7 +4,7 @@ import {
   createInitialKanjiClashRoundControllerState,
   reduceKanjiClashRoundControllerState
 } from "@/components/kanji-clash/kanji-clash-round-controller-state";
-import { getKanjiClashCurrentRound } from "@/lib/kanji-clash/queue";
+import { getKanjiClashCurrentRound } from "@/features/kanji-clash/model/queue";
 
 import {
   buildKanjiClashQueue,

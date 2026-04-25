@@ -1,21 +1,18 @@
 import type { EffectiveReviewState } from "./review-model";
-import type { EntryType } from "@/db";
+import type { EntryType } from "@/domain/content";
 import type {
   ReviewGradePreview,
   ReviewSeedState
 } from "./review-grade-previews";
-import type { PronunciationData } from "./pronunciation";
+import type { PronunciationData } from "./pronunciation-data";
+import type { AppHref } from "./site";
 
-type MediaGlossaryEntryHref = ReturnType<
-  typeof import("@/lib/site").mediaGlossaryEntryHref
->;
-type MediaGlossaryHref = ReturnType<typeof import("@/lib/site").mediaGlossaryHref>;
-type MediaHref = ReturnType<typeof import("@/lib/site").mediaHref>;
-type MediaReviewCardHref = ReturnType<
-  typeof import("@/lib/site").mediaReviewCardHref
->;
-type MediaStudyHref = ReturnType<typeof import("@/lib/site").mediaStudyHref>;
-type ReviewHref = ReturnType<typeof import("@/lib/site").reviewHref>;
+type MediaGlossaryEntryHref = AppHref;
+type MediaGlossaryHref = AppHref;
+type MediaHref = AppHref;
+type MediaReviewCardHref = AppHref;
+type MediaStudyHref = AppHref;
+type ReviewHref = AppHref;
 
 export type ReviewCardEntryKind = "term" | "grammar";
 

@@ -7,9 +7,9 @@ import {
   reviewSubjectLog,
   reviewSubjectState,
   term,
-  userSetting,
-  type DatabaseClient
-} from "@/db";
+  userSetting
+} from "@/db/schema";
+import type { DatabaseClient } from "@/db";
 
 const REVIEW_FIXTURE_CREATED_AT = "2026-03-10T09:00:00.000Z";
 const REVIEW_FIXTURE_SETTINGS_UPDATED_AT = "2026-03-10T11:00:00.000Z";

@@ -8,12 +8,14 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  kanjiClashManualContrast,
-  kanjiClashManualContrastRoundLog,
-  kanjiClashManualContrastRoundState,
-  runMigrations,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import {
+  kanjiClashManualContrast,
+  kanjiClashManualContrastRoundLog,
+  kanjiClashManualContrastRoundState
+} from "@/db/schema";
 import {
   createKanjiClashManualContrastRoundLog,
   getKanjiClashManualContrastByContrastKey,
@@ -29,7 +31,9 @@ describe("kanji clash manual contrast persistence", () => {
   let database: DatabaseClient;
 
   beforeEach(async () => {
-    tempDir = await mkdtemp(path.join(tmpdir(), "jcs-kanji-clash-manual-contrast-db-"));
+    tempDir = await mkdtemp(
+      path.join(tmpdir(), "jcs-kanji-clash-manual-contrast-db-")
+    );
     database = createDatabaseClient({
       databaseUrl: path.join(tempDir, "test.sqlite")
     });
@@ -115,16 +119,18 @@ describe("kanji clash manual contrast persistence", () => {
       database,
       contrastKey
     );
-    const log = await database.query.kanjiClashManualContrastRoundLog.findFirst({
-      where: eq(kanjiClashManualContrastRoundLog.id, "manual-contrast-log-1"),
-      with: {
-        roundState: {
-          with: {
-            manualContrast: true
+    const log = await database.query.kanjiClashManualContrastRoundLog.findFirst(
+      {
+        where: eq(kanjiClashManualContrastRoundLog.id, "manual-contrast-log-1"),
+        with: {
+          roundState: {
+            with: {
+              manualContrast: true
+            }
           }
         }
       }
-    });
+    );
 
     expect(contrast).not.toBeNull();
     expect(contrast?.subjectAKey).toBe("entry:term:alpha");
@@ -136,7 +142,9 @@ describe("kanji clash manual contrast persistence", () => {
     expect(contrast?.roundStates[0]?.logs[0]?.direction).toBe("subject_a");
     expect(fetchedContrast?.forcedDueAt).toBe("2026-04-13T10:00:00.000Z");
     expect(log?.roundState?.manualContrast?.contrastKey).toBe(contrastKey);
-    expect(log?.roundState?.manualContrast?.subjectBKey).toBe("entry:term:beta");
+    expect(log?.roundState?.manualContrast?.subjectBKey).toBe(
+      "entry:term:beta"
+    );
   });
 
   it("supports optimistic round-state persistence and chunked directional lookups", async () => {
@@ -179,9 +187,8 @@ describe("kanji clash manual contrast persistence", () => {
         }
       }
     );
-    const duplicateInsert = await insertKanjiClashManualContrastRoundStateIfAbsent(
-      database,
-      {
+    const duplicateInsert =
+      await insertKanjiClashManualContrastRoundStateIfAbsent(database, {
         createdAt: insertedAt,
         nextState: {
           contrastKey,
@@ -203,8 +210,7 @@ describe("kanji clash manual contrast persistence", () => {
           targetSubjectKey: "entry:term:gamma",
           updatedAt: insertedAt
         }
-      }
-    );
+      });
 
     await database.insert(kanjiClashManualContrastRoundState).values({
       contrastKey,
@@ -229,13 +235,7 @@ describe("kanji clash manual contrast persistence", () => {
 
     const lookup = await listKanjiClashManualContrastRoundStatesByRoundKeys(
       database,
-      [
-        "",
-        firstRoundKey,
-        firstRoundKey,
-        secondRoundKey,
-        secondRoundKey
-      ]
+      ["", firstRoundKey, firstRoundKey, secondRoundKey, secondRoundKey]
     );
     const contrastLookup = await listKanjiClashManualContrastsByContrastKeys(
       database,
@@ -310,14 +310,10 @@ describe("kanji clash manual contrast persistence", () => {
       }
     );
 
-    const stored = await database.query.kanjiClashManualContrastRoundState.findFirst(
-      {
-        where: eq(
-          kanjiClashManualContrastRoundState.roundKey,
-          firstRoundKey
-        )
-      }
-    );
+    const stored =
+      await database.query.kanjiClashManualContrastRoundState.findFirst({
+        where: eq(kanjiClashManualContrastRoundState.roundKey, firstRoundKey)
+      });
 
     expect(updated).toBe(true);
     expect(staleUpdate).toBe(false);
@@ -343,14 +339,13 @@ describe("kanji clash manual contrast persistence", () => {
       targetSubjectKey: "entry:term:gamma"
     });
 
-    const insertedLog = await database.query.kanjiClashManualContrastRoundLog.findFirst(
-      {
+    const insertedLog =
+      await database.query.kanjiClashManualContrastRoundLog.findFirst({
         where: eq(kanjiClashManualContrastRoundLog.id, "manual-contrast-log-2"),
         with: {
           roundState: true
         }
-      }
-    );
+      });
 
     expect(insertedLog?.roundState?.roundKey).toBe(firstRoundKey);
     expect(insertedLog?.direction).toBe("subject_a");

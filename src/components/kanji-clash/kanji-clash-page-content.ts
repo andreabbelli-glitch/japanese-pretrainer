@@ -6,7 +6,7 @@ import type {
   KanjiClashPageData,
   KanjiClashQueueSnapshot,
   KanjiClashSessionRound
-} from "@/lib/kanji-clash/types";
+} from "@/features/kanji-clash/types";
 
 import { formatKanjiClashModeLabel } from "./kanji-clash-format";
 import {

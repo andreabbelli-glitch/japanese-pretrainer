@@ -8,18 +8,20 @@ import { desc, eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-  card,
   closeDatabaseClient,
   createDatabaseClient,
+  type DatabaseClient
+} from "@/db";
+import { runMigrations } from "@/db/migrate";
+import {
+  card,
   lesson,
   lessonProgress,
   media,
   reviewSubjectLog,
   reviewSubjectState,
-  runMigrations,
-  userSetting,
-  type DatabaseClient
-} from "@/db";
+  userSetting
+} from "@/db/schema";
 import {
   buildReviewSeedStateWithFsrsPreset,
   buildFsrsTrainingDataset,
@@ -152,7 +154,9 @@ describe("fsrs optimizer", () => {
               : "";
 
         if (sql.includes("rsl.id as id")) {
-          throw new Error("too-soon path should not load the full FSRS log history");
+          throw new Error(
+            "too-soon path should not load the full FSRS log history"
+          );
         }
 
         return originalExecute(args[0]!);
@@ -210,84 +214,80 @@ describe("fsrs optimizer", () => {
     expect(snapshot.state.newEligibleReviewsSinceLastTraining).toBe(400);
   });
 
-  it(
-    "preserves the training baseline after a no-trainable-data run",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 1,
-        recognitionLogCount: 1
-      });
-      await database.insert(reviewSubjectState).values([
-        ...buildSingleReviewSubjectStates({
-          cardId: "recognition-card",
-          count: 250,
-          subjectKeyPrefix: "single:recognition"
-        }),
-        ...buildSingleReviewSubjectStates({
-          cardId: "concept-card",
-          count: 250,
-          subjectKeyPrefix: "single:concept"
-        })
-      ]);
-      await database.insert(reviewSubjectLog).values([
-        ...buildSingleReviewLogs({
-          cardId: "recognition-card",
-          count: 250,
-          idPrefix: "recognition-single",
-          subjectKeyPrefix: "single:recognition"
-        }),
-        ...buildSingleReviewLogs({
-          cardId: "concept-card",
-          count: 250,
-          idPrefix: "concept-single",
-          subjectKeyPrefix: "single:concept"
-        })
-      ]);
+  it("preserves the training baseline after a no-trainable-data run", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 1,
+      recognitionLogCount: 1
+    });
+    await database.insert(reviewSubjectState).values([
+      ...buildSingleReviewSubjectStates({
+        cardId: "recognition-card",
+        count: 250,
+        subjectKeyPrefix: "single:recognition"
+      }),
+      ...buildSingleReviewSubjectStates({
+        cardId: "concept-card",
+        count: 250,
+        subjectKeyPrefix: "single:concept"
+      })
+    ]);
+    await database.insert(reviewSubjectLog).values([
+      ...buildSingleReviewLogs({
+        cardId: "recognition-card",
+        count: 250,
+        idPrefix: "recognition-single",
+        subjectKeyPrefix: "single:recognition"
+      }),
+      ...buildSingleReviewLogs({
+        cardId: "concept-card",
+        count: 250,
+        idPrefix: "concept-single",
+        subjectKeyPrefix: "single:concept"
+      })
+    ]);
 
-      const firstResult = await runTestFsrsOptimizer({
-        database,
-        now: new Date("2026-04-01T09:00:00.000Z")
-      });
-      const snapshotAfterFirstRun = await getFsrsOptimizerSnapshot(database);
+    const firstResult = await runTestFsrsOptimizer({
+      database,
+      now: new Date("2026-04-01T09:00:00.000Z")
+    });
+    const snapshotAfterFirstRun = await getFsrsOptimizerSnapshot(database);
 
-      expect(firstResult).toMatchObject({
-        newEligibleReviews: 502,
-        reason: "no-trainable-data",
-        status: "skipped",
-        totalEligibleReviews: 502
-      });
-      expect(snapshotAfterFirstRun.state.totalEligibleReviewsAtLastTraining).toBe(
-        0
-      );
-      expect(snapshotAfterFirstRun.state.newEligibleReviewsSinceLastTraining).toBe(
-        502
-      );
+    expect(firstResult).toMatchObject({
+      newEligibleReviews: 502,
+      reason: "no-trainable-data",
+      status: "skipped",
+      totalEligibleReviews: 502
+    });
+    expect(snapshotAfterFirstRun.state.totalEligibleReviewsAtLastTraining).toBe(
+      0
+    );
+    expect(
+      snapshotAfterFirstRun.state.newEligibleReviewsSinceLastTraining
+    ).toBe(502);
 
-      await database.insert(reviewSubjectLog).values(
-        buildReviewLogs({
-          cardId: "recognition-card",
-          count: 9,
-          startIndex: 1,
-          subjectKey: "card:recognition-card"
-        })
-      );
+    await database.insert(reviewSubjectLog).values(
+      buildReviewLogs({
+        cardId: "recognition-card",
+        count: 9,
+        startIndex: 1,
+        subjectKey: "card:recognition-card"
+      })
+    );
 
-      const secondResult = await runTestFsrsOptimizer({
-        database,
-        now: new Date("2026-04-02T09:00:00.000Z")
-      });
-      const snapshotAfterSecondRun = await getFsrsOptimizerSnapshot(database);
+    const secondResult = await runTestFsrsOptimizer({
+      database,
+      now: new Date("2026-04-02T09:00:00.000Z")
+    });
+    const snapshotAfterSecondRun = await getFsrsOptimizerSnapshot(database);
 
-      expect(secondResult.status).toBe("trained");
-      expect(snapshotAfterSecondRun.state.lastSuccessfulTrainingAt).toBe(
-        "2026-04-02T09:00:00.000Z"
-      );
-      expect(snapshotAfterSecondRun.state.totalEligibleReviewsAtLastTraining).toBe(
-        511
-      );
-    },
-    20_000
-  );
+    expect(secondResult.status).toBe("trained");
+    expect(snapshotAfterSecondRun.state.lastSuccessfulTrainingAt).toBe(
+      "2026-04-02T09:00:00.000Z"
+    );
+    expect(
+      snapshotAfterSecondRun.state.totalEligibleReviewsAtLastTraining
+    ).toBe(511);
+  }, 20_000);
 
   it("does not rewrite the optimizer config on skipped runs when it is unchanged", async () => {
     await seedFsrsFixture(database, {
@@ -354,534 +354,492 @@ describe("fsrs optimizer", () => {
     expect(status.totalEligibleReviews).toBe(600);
   });
 
-  it(
-    "persists optimized parameters for both card-type presets on a forced run",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
+  it("persists optimized parameters for both card-type presets on a forced run", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
 
-      const result = await runTestFsrsOptimizer({
-        database,
-        force: true,
-        now: new Date("2026-04-01T09:00:00.000Z")
-      });
-      const snapshot = await getFsrsOptimizerSnapshot(database);
+    const result = await runTestFsrsOptimizer({
+      database,
+      force: true,
+      now: new Date("2026-04-01T09:00:00.000Z")
+    });
+    const snapshot = await getFsrsOptimizerSnapshot(database);
 
-      expect(result.status).toBe("trained");
-      expect(snapshot.config).toMatchObject({
-        desiredRetention: 0.9,
-        enabled: true,
-        minDaysBetweenRuns: 30,
-        minNewReviews: 500,
-        presetStrategy: "card_type_v1"
-      });
-      expect(snapshot.presets.recognition?.weights).toHaveLength(
-        reviewSchedulerConfig.fsrs.w.length
-      );
-      expect(snapshot.presets.concept?.weights).toHaveLength(
-        reviewSchedulerConfig.fsrs.w.length
-      );
-      expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
-        "2026-04-01T09:00:00.000Z"
-      );
-      expect(snapshot.state.totalEligibleReviewsAtLastTraining).toBe(24);
-    },
-    20_000
-  );
+    expect(result.status).toBe("trained");
+    expect(snapshot.config).toMatchObject({
+      desiredRetention: 0.9,
+      enabled: true,
+      minDaysBetweenRuns: 30,
+      minNewReviews: 500,
+      presetStrategy: "card_type_v1"
+    });
+    expect(snapshot.presets.recognition?.weights).toHaveLength(
+      reviewSchedulerConfig.fsrs.w.length
+    );
+    expect(snapshot.presets.concept?.weights).toHaveLength(
+      reviewSchedulerConfig.fsrs.w.length
+    );
+    expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
+      "2026-04-01T09:00:00.000Z"
+    );
+    expect(snapshot.state.totalEligibleReviewsAtLastTraining).toBe(24);
+  }, 20_000);
 
-  it(
-    "keeps reviews that arrive during training in the post-training baseline",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
+  it("keeps reviews that arrive during training in the post-training baseline", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
 
-      const concurrentDatabase = createDatabaseClient({
-        databaseUrl: databasePath
-      });
-      let injected = false;
-      const originalExecute = database.$client.execute.bind(database.$client);
-      const executeSpy = vi
-        .spyOn(database.$client, "execute")
-        .mockImplementation(async (...args) => {
-          const statement = args[0] as unknown;
-          const sql =
-            typeof statement === "string"
-              ? statement
-              : typeof statement === "object" &&
-                  statement !== null &&
-                  "sql" in statement
-                ? String((statement as { sql: string }).sql)
-                : "";
+    const concurrentDatabase = createDatabaseClient({
+      databaseUrl: databasePath
+    });
+    let injected = false;
+    const originalExecute = database.$client.execute.bind(database.$client);
+    const executeSpy = vi
+      .spyOn(database.$client, "execute")
+      .mockImplementation(async (...args) => {
+        const statement = args[0] as unknown;
+        const sql =
+          typeof statement === "string"
+            ? statement
+            : typeof statement === "object" &&
+                statement !== null &&
+                "sql" in statement
+              ? String((statement as { sql: string }).sql)
+              : "";
 
-          const result = await originalExecute(args[0]!);
+        const result = await originalExecute(args[0]!);
 
-          if (!injected && sql.includes("from review_subject_log rsl")) {
-            injected = true;
-            await concurrentDatabase.insert(reviewSubjectLog).values(
-              {
-                answeredAt: "2026-04-01T09:05:00.000Z",
-                cardId: "recognition-card",
-                elapsedDays: 4,
-                id: "review_subject_log_recognition_during_training",
-                newState: "review",
-                previousState: "review",
-                rating: "good",
-                responseMs: 940,
-                scheduledDueAt: "2026-04-08T09:05:00.000Z",
-                schedulerVersion: "fsrs_v1",
-                subjectKey: "card:recognition-card"
-              }
-            );
-          }
-
-          return result;
-        });
-
-      try {
-        const result = await runTestFsrsOptimizer({
-          database,
-          force: true,
-          now: new Date("2026-04-01T09:00:00.000Z")
-        });
-
-        expect(result.status).toBe("trained");
-
-        const snapshot = await getFsrsOptimizerSnapshot(database);
-        const status = await getFsrsOptimizerStatus(database);
-
-        expect(snapshot.state.totalEligibleReviewsAtLastTraining).toBe(24);
-        expect(snapshot.state.newEligibleReviewsSinceLastTraining).toBe(1);
-        expect(status.newEligibleReviews).toBe(1);
-        expect(status.totalEligibleReviews).toBe(25);
-      } finally {
-        executeSpy.mockRestore();
-        closeDatabaseClient(concurrentDatabase);
-      }
-    },
-    20_000
-  );
-
-  it(
-    "invalidates the fsrs runtime cache only after the training transaction commits",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 4,
-        recognitionLogCount: 12
-      });
-
-      const invalidateSpy = vi.spyOn(
-        fsrsOptimizer,
-        "invalidateFsrsOptimizerRuntimeContextCache"
-      );
-      const originalWrite = fsrsOptimizer.writeFsrsOptimizedParameters;
-      let releaseWriteGate: () => void = () => {};
-      let resolveWriteCompleted: () => void = () => {};
-      const writeGate = new Promise<void>((resolve) => {
-        releaseWriteGate = resolve;
-      });
-      const writeCompleted = new Promise<void>((resolve) => {
-        resolveWriteCompleted = resolve;
-      });
-      const writeSpy = vi
-        .spyOn(fsrsOptimizer, "writeFsrsOptimizedParameters")
-        .mockImplementation(async (...args) => {
-          const result = await originalWrite(
-            ...(args as Parameters<typeof originalWrite>)
-          );
-
-          resolveWriteCompleted();
-          await writeGate;
-
-          return result;
-        });
-
-      try {
-        const runPromise = runTestFsrsOptimizer({
-          database,
-          force: true,
-          now: new Date("2026-04-01T09:00:00.000Z")
-        });
-
-        await writeCompleted;
-
-        expect(writeSpy).toHaveBeenCalledTimes(1);
-        expect(invalidateSpy).not.toHaveBeenCalled();
-
-        releaseWriteGate();
-
-        const result = await runPromise;
-        const snapshot = await getFsrsOptimizerSnapshot(database);
-
-        expect(result.status).toBe("trained");
-        expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
-          "2026-04-01T09:00:00.000Z"
-        );
-        expect(invalidateSpy).toHaveBeenCalledTimes(1);
-      } finally {
-        releaseWriteGate();
-        writeSpy.mockRestore();
-        invalidateSpy.mockRestore();
-      }
-    },
-    20_000
-  );
-
-  it(
-    "rolls back partial preset writes if the training transaction fails",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
-
-      const baseline = await runTestFsrsOptimizer({
-        database,
-        force: true,
-        now: new Date("2026-04-01T09:00:00.000Z")
-      });
-      expect(baseline.status).toBe("trained");
-
-      const baselineSnapshot = await getFsrsOptimizerSnapshot(database);
-      const baselineRecognition = baselineSnapshot.presets.recognition;
-      const baselineConcept = baselineSnapshot.presets.concept;
-      const baselineSuccessfulTrainingAt =
-        baselineSnapshot.state.lastSuccessfulTrainingAt;
-
-      await database.insert(reviewSubjectLog).values(
-        buildReviewLogs({
-          cardId: "recognition-card",
-          count: 1,
-          subjectKey: "card:recognition-card",
-          startIndex: 12
-        })[0]!
-      );
-
-      await installConceptWriteAbortTrigger(database);
-
-      await expect(
-        runTestFsrsOptimizer({
-          database,
-          force: true,
-          now: new Date("2026-04-10T09:00:00.000Z")
-        })
-      ).rejects.toThrow(/fsrs_params_concept/i);
-
-      const snapshot = await getFsrsOptimizerSnapshot(database);
-
-      expect(snapshot.presets.recognition).toEqual(baselineRecognition);
-      expect(snapshot.presets.concept).toEqual(baselineConcept);
-      expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
-        baselineSuccessfulTrainingAt
-      );
-    },
-    40_000
-  );
-
-  it(
-    "rolls back preset writes when the optimizer state write fails",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
-
-      const baseline = await runTestFsrsOptimizer({
-        database,
-        force: true,
-        now: new Date("2026-04-01T09:00:00.000Z")
-      });
-      expect(baseline.status).toBe("trained");
-
-      const baselineSnapshot = await getFsrsOptimizerSnapshot(database);
-      const baselineRecognition = baselineSnapshot.presets.recognition;
-      const baselineConcept = baselineSnapshot.presets.concept;
-      const baselineSuccessfulTrainingAt =
-        baselineSnapshot.state.lastSuccessfulTrainingAt;
-
-      await database.insert(reviewSubjectLog).values(
-        buildReviewLogs({
-          cardId: "recognition-card",
-          count: 1,
-          subjectKey: "card:recognition-card",
-          startIndex: 12
-        })[0]!
-      );
-
-      await installOptimizerStateWriteAbortTrigger(database);
-
-      await expect(
-        runTestFsrsOptimizer({
-          database,
-          force: true,
-          now: new Date("2026-04-10T09:00:00.000Z")
-        })
-      ).rejects.toThrow(/fsrs_optimizer_state|optimizer state write blocked/i);
-
-      const snapshot = await getFsrsOptimizerSnapshot(database);
-
-      expect(snapshot.presets.recognition).toEqual(baselineRecognition);
-      expect(snapshot.presets.concept).toEqual(baselineConcept);
-      expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
-        baselineSuccessfulTrainingAt
-      );
-    },
-    40_000
-  );
-
-  it(
-    "skips training for presets below the minimum size while still training the larger one",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 4,
-        recognitionLogCount: 12
-      });
-
-      const result = await runTestFsrsOptimizer({
-        database,
-        force: true,
-        now: new Date("2026-04-01T09:00:00.000Z")
-      });
-      const snapshot = await getFsrsOptimizerSnapshot(database);
-
-      expect(result.status).toBe("trained");
-      if (result.status !== "trained") {
-        throw new Error("Expected trained result.");
-      }
-      expect(result.presetResults.recognition.status).toBe("trained");
-      expect(result.presetResults.concept.status).toBe("unchanged");
-      expect(snapshot.presets.recognition).not.toBeNull();
-      expect(snapshot.presets.concept).toBeNull();
-    },
-    20_000
-  );
-
-  it(
-    "allows a forced run even when the automatic optimizer is disabled",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
-      await writeFsrsOptimizerConfig(
-        {
-          ...getFsrsOptimizerConfigDefaults(),
-          enabled: false
-        },
-        database,
-        "2026-03-01T10:00:00.000Z"
-      );
-
-      const result = await runTestFsrsOptimizer({
-        database,
-        force: true,
-        now: new Date("2026-04-01T09:00:00.000Z")
-      });
-      const snapshot = await getFsrsOptimizerSnapshot(database);
-
-      expect(result.status).toBe("trained");
-      expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
-        "2026-04-01T09:00:00.000Z"
-      );
-      expect(snapshot.presets.recognition).not.toBeNull();
-      expect(snapshot.presets.concept).not.toBeNull();
-    },
-    20_000
-  );
-
-  it(
-    "does not attach optimized weights to unsupported card types",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
-      await runTestFsrsOptimizer({
-        database,
-        force: true,
-        now: new Date("2026-04-01T09:00:00.000Z")
-      });
-
-      const snapshot = await getFsrsOptimizerSnapshot(database);
-      const productionSeedState = buildReviewSeedStateWithFsrsPreset(
-        {
-          difficulty: 3.1,
-          dueAt: "2026-04-20T09:00:00.000Z",
-          lapses: 1,
-          lastReviewedAt: "2026-04-10T09:00:00.000Z",
-          learningSteps: 0,
-          reps: 4,
-          scheduledDays: 10,
-          stability: 4.2,
-          state: "review"
-        },
-        "production",
-        snapshot
-      );
-
-      expect(productionSeedState.fsrsDesiredRetention).toBe(0.9);
-      expect(productionSeedState.fsrsWeights).toBeNull();
-    },
-    20_000
-  );
-
-  it(
-    "uses the same optimized preset for preview scheduling and grading",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
-      await runTestFsrsOptimizer({
-        database,
-        force: true,
-        now: new Date("2026-04-01T09:00:00.000Z")
-      });
-
-      const snapshot = await getFsrsOptimizerSnapshot(database);
-      const subjectState = await database.query.reviewSubjectState.findFirst({
-        where: eq(reviewSubjectState.subjectKey, "card:recognition-card")
-      });
-
-      expect(subjectState).not.toBeNull();
-
-      const baseSeedState = {
-        difficulty: subjectState!.difficulty,
-        dueAt: subjectState!.dueAt,
-        lapses: subjectState!.lapses,
-        lastReviewedAt: subjectState!.lastReviewedAt,
-        learningSteps: subjectState!.learningSteps,
-        reps: subjectState!.reps,
-        scheduledDays: subjectState!.scheduledDays,
-        stability: subjectState!.stability,
-        state: subjectState!.state
-      };
-      const optimizedSeedState = buildReviewSeedStateWithFsrsPreset(
-        baseSeedState,
-        "recognition",
-        snapshot
-      );
-      const now = new Date("2026-04-20T09:00:00.000Z");
-      const expected = scheduleReview({
-        current: {
-          difficulty: optimizedSeedState.difficulty,
-          dueAt: optimizedSeedState.dueAt,
-          lapses: optimizedSeedState.lapses,
-          lastReviewedAt: optimizedSeedState.lastReviewedAt,
-          learningSteps: optimizedSeedState.learningSteps,
-          reps: optimizedSeedState.reps,
-          scheduledDays: optimizedSeedState.scheduledDays,
-          stability: optimizedSeedState.stability,
-          state: optimizedSeedState.state
-        },
-        now,
-        rating: "good",
-        scheduler: {
-          desiredRetention: optimizedSeedState.fsrsDesiredRetention,
-          weights: optimizedSeedState.fsrsWeights
+        if (!injected && sql.includes("from review_subject_log rsl")) {
+          injected = true;
+          await concurrentDatabase.insert(reviewSubjectLog).values({
+            answeredAt: "2026-04-01T09:05:00.000Z",
+            cardId: "recognition-card",
+            elapsedDays: 4,
+            id: "review_subject_log_recognition_during_training",
+            newState: "review",
+            previousState: "review",
+            rating: "good",
+            responseMs: 940,
+            scheduledDueAt: "2026-04-08T09:05:00.000Z",
+            schedulerVersion: "fsrs_v1",
+            subjectKey: "card:recognition-card"
+          });
         }
+
+        return result;
       });
-      const previews = buildReviewGradePreviews(optimizedSeedState, now);
 
-      expect(optimizedSeedState.fsrsWeights).toEqual(
-        snapshot.presets.recognition?.weights ?? null
-      );
-      expect(previews).toHaveLength(4);
-      expect(previews.find((preview) => preview.rating === "good")).toBeDefined();
-
-      const result = await applyReviewGrade({
-        cardId: "recognition-card",
+    try {
+      const result = await runTestFsrsOptimizer({
         database,
-        now,
-        rating: "good"
-      });
-      const latestLog = await database.query.reviewSubjectLog.findFirst({
-        orderBy: desc(reviewSubjectLog.answeredAt),
-        where: eq(reviewSubjectLog.subjectKey, "card:recognition-card")
+        force: true,
+        now: new Date("2026-04-01T09:00:00.000Z")
       });
 
-      expect(result.dueAt).toBe(expected.dueAt);
-      expect(latestLog?.scheduledDueAt).toBe(expected.dueAt);
-    },
-    40_000
-  );
+      expect(result.status).toBe("trained");
 
-  it(
-    "stores the training baseline from the same log snapshot used to fit the presets",
-    async () => {
-      await seedFsrsFixture(database, {
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
-
-      const originalExecute = database.$client.execute.bind(database.$client);
-      let injectedLog = false;
-      const executeSpy = vi
-        .spyOn(database.$client, "execute")
-        .mockImplementation(async (...args) => {
-          const statement = args[0] as unknown;
-          const sql =
-            typeof statement === "string"
-              ? statement
-              : typeof statement === "object" &&
-                  statement !== null &&
-                  "sql" in statement
-                ? String((statement as { sql: string }).sql)
-                : "";
-
-          if (!injectedLog && sql.includes("rsl.id as id")) {
-            injectedLog = true;
-            await database.insert(reviewSubjectLog).values({
-              answeredAt: "2026-04-01T08:59:59.000Z",
-              cardId: "recognition-card",
-              elapsedDays: 4,
-              id: "review_subject_log_recognition_snapshot_race",
-              newState: "review",
-              previousState: "review",
-              rating: "good",
-              responseMs: 900,
-              scheduledDueAt: "2026-04-08T00:00:00.000Z",
-              schedulerVersion: "fsrs_v1",
-              subjectKey: "card:recognition-card"
-            });
-          }
-
-          return originalExecute(args[0]!);
-        });
-
-      try {
-        await runTestFsrsOptimizer({
-          database,
-          force: true,
-          now: new Date("2026-04-01T09:00:00.000Z")
-        });
-      } finally {
-        executeSpy.mockRestore();
-      }
-
+      const snapshot = await getFsrsOptimizerSnapshot(database);
       const status = await getFsrsOptimizerStatus(database);
+
+      expect(snapshot.state.totalEligibleReviewsAtLastTraining).toBe(24);
+      expect(snapshot.state.newEligibleReviewsSinceLastTraining).toBe(1);
+      expect(status.newEligibleReviews).toBe(1);
+      expect(status.totalEligibleReviews).toBe(25);
+    } finally {
+      executeSpy.mockRestore();
+      closeDatabaseClient(concurrentDatabase);
+    }
+  }, 20_000);
+
+  it("invalidates the fsrs runtime cache only after the training transaction commits", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 4,
+      recognitionLogCount: 12
+    });
+
+    const invalidateSpy = vi.spyOn(
+      fsrsOptimizer,
+      "invalidateFsrsOptimizerRuntimeContextCache"
+    );
+    const originalWrite = fsrsOptimizer.writeFsrsOptimizedParameters;
+    let releaseWriteGate: () => void = () => {};
+    let resolveWriteCompleted: () => void = () => {};
+    const writeGate = new Promise<void>((resolve) => {
+      releaseWriteGate = resolve;
+    });
+    const writeCompleted = new Promise<void>((resolve) => {
+      resolveWriteCompleted = resolve;
+    });
+    const writeSpy = vi
+      .spyOn(fsrsOptimizer, "writeFsrsOptimizedParameters")
+      .mockImplementation(async (...args) => {
+        const result = await originalWrite(
+          ...(args as Parameters<typeof originalWrite>)
+        );
+
+        resolveWriteCompleted();
+        await writeGate;
+
+        return result;
+      });
+
+    try {
+      const runPromise = runTestFsrsOptimizer({
+        database,
+        force: true,
+        now: new Date("2026-04-01T09:00:00.000Z")
+      });
+
+      await writeCompleted;
+
+      expect(writeSpy).toHaveBeenCalledTimes(1);
+      expect(invalidateSpy).not.toHaveBeenCalled();
+
+      releaseWriteGate();
+
+      const result = await runPromise;
       const snapshot = await getFsrsOptimizerSnapshot(database);
 
-      expect(snapshot.state.totalEligibleReviewsAtLastTraining).toBe(25);
-      expect(snapshot.state.newEligibleReviewsSinceLastTraining).toBe(0);
-      expect(status.newEligibleReviews).toBe(0);
-      expect(status.totalEligibleReviews).toBe(25);
-    },
-    20_000
-  );
+      expect(result.status).toBe("trained");
+      expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
+        "2026-04-01T09:00:00.000Z"
+      );
+      expect(invalidateSpy).toHaveBeenCalledTimes(1);
+    } finally {
+      releaseWriteGate();
+      writeSpy.mockRestore();
+      invalidateSpy.mockRestore();
+    }
+  }, 20_000);
 
-  it(
-    "skips the scheduled script when the monthly gate is not yet satisfied",
-    async () => {
-      await recreateDatabaseWithFixture({
-        conceptLogCount: 4,
-        recognitionLogCount: 4
+  it("rolls back partial preset writes if the training transaction fails", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
+
+    const baseline = await runTestFsrsOptimizer({
+      database,
+      force: true,
+      now: new Date("2026-04-01T09:00:00.000Z")
+    });
+    expect(baseline.status).toBe("trained");
+
+    const baselineSnapshot = await getFsrsOptimizerSnapshot(database);
+    const baselineRecognition = baselineSnapshot.presets.recognition;
+    const baselineConcept = baselineSnapshot.presets.concept;
+    const baselineSuccessfulTrainingAt =
+      baselineSnapshot.state.lastSuccessfulTrainingAt;
+
+    await database.insert(reviewSubjectLog).values(
+      buildReviewLogs({
+        cardId: "recognition-card",
+        count: 1,
+        subjectKey: "card:recognition-card",
+        startIndex: 12
+      })[0]!
+    );
+
+    await installConceptWriteAbortTrigger(database);
+
+    await expect(
+      runTestFsrsOptimizer({
+        database,
+        force: true,
+        now: new Date("2026-04-10T09:00:00.000Z")
+      })
+    ).rejects.toThrow(/fsrs_params_concept/i);
+
+    const snapshot = await getFsrsOptimizerSnapshot(database);
+
+    expect(snapshot.presets.recognition).toEqual(baselineRecognition);
+    expect(snapshot.presets.concept).toEqual(baselineConcept);
+    expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
+      baselineSuccessfulTrainingAt
+    );
+  }, 40_000);
+
+  it("rolls back preset writes when the optimizer state write fails", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
+
+    const baseline = await runTestFsrsOptimizer({
+      database,
+      force: true,
+      now: new Date("2026-04-01T09:00:00.000Z")
+    });
+    expect(baseline.status).toBe("trained");
+
+    const baselineSnapshot = await getFsrsOptimizerSnapshot(database);
+    const baselineRecognition = baselineSnapshot.presets.recognition;
+    const baselineConcept = baselineSnapshot.presets.concept;
+    const baselineSuccessfulTrainingAt =
+      baselineSnapshot.state.lastSuccessfulTrainingAt;
+
+    await database.insert(reviewSubjectLog).values(
+      buildReviewLogs({
+        cardId: "recognition-card",
+        count: 1,
+        subjectKey: "card:recognition-card",
+        startIndex: 12
+      })[0]!
+    );
+
+    await installOptimizerStateWriteAbortTrigger(database);
+
+    await expect(
+      runTestFsrsOptimizer({
+        database,
+        force: true,
+        now: new Date("2026-04-10T09:00:00.000Z")
+      })
+    ).rejects.toThrow(/fsrs_optimizer_state|optimizer state write blocked/i);
+
+    const snapshot = await getFsrsOptimizerSnapshot(database);
+
+    expect(snapshot.presets.recognition).toEqual(baselineRecognition);
+    expect(snapshot.presets.concept).toEqual(baselineConcept);
+    expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
+      baselineSuccessfulTrainingAt
+    );
+  }, 40_000);
+
+  it("skips training for presets below the minimum size while still training the larger one", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 4,
+      recognitionLogCount: 12
+    });
+
+    const result = await runTestFsrsOptimizer({
+      database,
+      force: true,
+      now: new Date("2026-04-01T09:00:00.000Z")
+    });
+    const snapshot = await getFsrsOptimizerSnapshot(database);
+
+    expect(result.status).toBe("trained");
+    if (result.status !== "trained") {
+      throw new Error("Expected trained result.");
+    }
+    expect(result.presetResults.recognition.status).toBe("trained");
+    expect(result.presetResults.concept.status).toBe("unchanged");
+    expect(snapshot.presets.recognition).not.toBeNull();
+    expect(snapshot.presets.concept).toBeNull();
+  }, 20_000);
+
+  it("allows a forced run even when the automatic optimizer is disabled", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
+    await writeFsrsOptimizerConfig(
+      {
+        ...getFsrsOptimizerConfigDefaults(),
+        enabled: false
+      },
+      database,
+      "2026-03-01T10:00:00.000Z"
+    );
+
+    const result = await runTestFsrsOptimizer({
+      database,
+      force: true,
+      now: new Date("2026-04-01T09:00:00.000Z")
+    });
+    const snapshot = await getFsrsOptimizerSnapshot(database);
+
+    expect(result.status).toBe("trained");
+    expect(snapshot.state.lastSuccessfulTrainingAt).toBe(
+      "2026-04-01T09:00:00.000Z"
+    );
+    expect(snapshot.presets.recognition).not.toBeNull();
+    expect(snapshot.presets.concept).not.toBeNull();
+  }, 20_000);
+
+  it("does not attach optimized weights to unsupported card types", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
+    await runTestFsrsOptimizer({
+      database,
+      force: true,
+      now: new Date("2026-04-01T09:00:00.000Z")
+    });
+
+    const snapshot = await getFsrsOptimizerSnapshot(database);
+    const productionSeedState = buildReviewSeedStateWithFsrsPreset(
+      {
+        difficulty: 3.1,
+        dueAt: "2026-04-20T09:00:00.000Z",
+        lapses: 1,
+        lastReviewedAt: "2026-04-10T09:00:00.000Z",
+        learningSteps: 0,
+        reps: 4,
+        scheduledDays: 10,
+        stability: 4.2,
+        state: "review"
+      },
+      "production",
+      snapshot
+    );
+
+    expect(productionSeedState.fsrsDesiredRetention).toBe(0.9);
+    expect(productionSeedState.fsrsWeights).toBeNull();
+  }, 20_000);
+
+  it("uses the same optimized preset for preview scheduling and grading", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
+    await runTestFsrsOptimizer({
+      database,
+      force: true,
+      now: new Date("2026-04-01T09:00:00.000Z")
+    });
+
+    const snapshot = await getFsrsOptimizerSnapshot(database);
+    const subjectState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, "card:recognition-card")
+    });
+
+    expect(subjectState).not.toBeNull();
+
+    const baseSeedState = {
+      difficulty: subjectState!.difficulty,
+      dueAt: subjectState!.dueAt,
+      lapses: subjectState!.lapses,
+      lastReviewedAt: subjectState!.lastReviewedAt,
+      learningSteps: subjectState!.learningSteps,
+      reps: subjectState!.reps,
+      scheduledDays: subjectState!.scheduledDays,
+      stability: subjectState!.stability,
+      state: subjectState!.state
+    };
+    const optimizedSeedState = buildReviewSeedStateWithFsrsPreset(
+      baseSeedState,
+      "recognition",
+      snapshot
+    );
+    const now = new Date("2026-04-20T09:00:00.000Z");
+    const expected = scheduleReview({
+      current: {
+        difficulty: optimizedSeedState.difficulty,
+        dueAt: optimizedSeedState.dueAt,
+        lapses: optimizedSeedState.lapses,
+        lastReviewedAt: optimizedSeedState.lastReviewedAt,
+        learningSteps: optimizedSeedState.learningSteps,
+        reps: optimizedSeedState.reps,
+        scheduledDays: optimizedSeedState.scheduledDays,
+        stability: optimizedSeedState.stability,
+        state: optimizedSeedState.state
+      },
+      now,
+      rating: "good",
+      scheduler: {
+        desiredRetention: optimizedSeedState.fsrsDesiredRetention,
+        weights: optimizedSeedState.fsrsWeights
+      }
+    });
+    const previews = buildReviewGradePreviews(optimizedSeedState, now);
+
+    expect(optimizedSeedState.fsrsWeights).toEqual(
+      snapshot.presets.recognition?.weights ?? null
+    );
+    expect(previews).toHaveLength(4);
+    expect(previews.find((preview) => preview.rating === "good")).toBeDefined();
+
+    const result = await applyReviewGrade({
+      cardId: "recognition-card",
+      database,
+      now,
+      rating: "good"
+    });
+    const latestLog = await database.query.reviewSubjectLog.findFirst({
+      orderBy: desc(reviewSubjectLog.answeredAt),
+      where: eq(reviewSubjectLog.subjectKey, "card:recognition-card")
+    });
+
+    expect(result.dueAt).toBe(expected.dueAt);
+    expect(latestLog?.scheduledDueAt).toBe(expected.dueAt);
+  }, 40_000);
+
+  it("stores the training baseline from the same log snapshot used to fit the presets", async () => {
+    await seedFsrsFixture(database, {
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
+
+    const originalExecute = database.$client.execute.bind(database.$client);
+    let injectedLog = false;
+    const executeSpy = vi
+      .spyOn(database.$client, "execute")
+      .mockImplementation(async (...args) => {
+        const statement = args[0] as unknown;
+        const sql =
+          typeof statement === "string"
+            ? statement
+            : typeof statement === "object" &&
+                statement !== null &&
+                "sql" in statement
+              ? String((statement as { sql: string }).sql)
+              : "";
+
+        if (!injectedLog && sql.includes("rsl.id as id")) {
+          injectedLog = true;
+          await database.insert(reviewSubjectLog).values({
+            answeredAt: "2026-04-01T08:59:59.000Z",
+            cardId: "recognition-card",
+            elapsedDays: 4,
+            id: "review_subject_log_recognition_snapshot_race",
+            newState: "review",
+            previousState: "review",
+            rating: "good",
+            responseMs: 900,
+            scheduledDueAt: "2026-04-08T00:00:00.000Z",
+            schedulerVersion: "fsrs_v1",
+            subjectKey: "card:recognition-card"
+          });
+        }
+
+        return originalExecute(args[0]!);
       });
 
-    const { stdout } = await execNodeScript("scripts/fsrs-optimize-if-needed.ts");
+    try {
+      await runTestFsrsOptimizer({
+        database,
+        force: true,
+        now: new Date("2026-04-01T09:00:00.000Z")
+      });
+    } finally {
+      executeSpy.mockRestore();
+    }
+
+    const status = await getFsrsOptimizerStatus(database);
+    const snapshot = await getFsrsOptimizerSnapshot(database);
+
+    expect(snapshot.state.totalEligibleReviewsAtLastTraining).toBe(25);
+    expect(snapshot.state.newEligibleReviewsSinceLastTraining).toBe(0);
+    expect(status.newEligibleReviews).toBe(0);
+    expect(status.totalEligibleReviews).toBe(25);
+  }, 20_000);
+
+  it("skips the scheduled script when the monthly gate is not yet satisfied", async () => {
+    await recreateDatabaseWithFixture({
+      conceptLogCount: 4,
+      recognitionLogCount: 4
+    });
+
+    const { stdout } = await execNodeScript(
+      "scripts/fsrs-optimize-if-needed.ts"
+    );
     const reopened = createDatabaseClient({
       databaseUrl: databasePath
     });
@@ -893,19 +851,15 @@ describe("fsrs optimizer", () => {
       expect(snapshot.presets.recognition).toBeNull();
       expect(snapshot.presets.concept).toBeNull();
     } finally {
-        closeDatabaseClient(reopened);
-      }
-    },
-    20_000
-  );
+      closeDatabaseClient(reopened);
+    }
+  }, 20_000);
 
-  it(
-    "runs the forced optimizer script and persists the trained presets",
-    async () => {
-      await recreateDatabaseWithFixture({
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
+  it("runs the forced optimizer script and persists the trained presets", async () => {
+    await recreateDatabaseWithFixture({
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
 
     const { stdout } = await execNodeScript("scripts/fsrs-optimize.ts");
     const reopened = createDatabaseClient({
@@ -921,48 +875,42 @@ describe("fsrs optimizer", () => {
       expect(snapshot.presets.recognition).not.toBeNull();
       expect(snapshot.presets.concept).not.toBeNull();
     } finally {
-        closeDatabaseClient(reopened);
-      }
-    },
-    20_000
-  );
+      closeDatabaseClient(reopened);
+    }
+  }, 20_000);
 
-  it(
-    "runs the forced optimizer script even when the automatic optimizer is disabled",
-    async () => {
-      await recreateDatabaseWithFixture({
-        conceptLogCount: 12,
-        recognitionLogCount: 12
-      });
-      await writeFsrsOptimizerConfig(
-        {
-          ...getFsrsOptimizerConfigDefaults(),
-          enabled: false
-        },
-        database,
-        "2026-03-01T10:00:00.000Z"
-      );
+  it("runs the forced optimizer script even when the automatic optimizer is disabled", async () => {
+    await recreateDatabaseWithFixture({
+      conceptLogCount: 12,
+      recognitionLogCount: 12
+    });
+    await writeFsrsOptimizerConfig(
+      {
+        ...getFsrsOptimizerConfigDefaults(),
+        enabled: false
+      },
+      database,
+      "2026-03-01T10:00:00.000Z"
+    );
 
-      const { stdout } = await execNodeScript("scripts/fsrs-optimize.ts");
-      const reopened = createDatabaseClient({
-        databaseUrl: databasePath
-      });
+    const { stdout } = await execNodeScript("scripts/fsrs-optimize.ts");
+    const reopened = createDatabaseClient({
+      databaseUrl: databasePath
+    });
 
-      try {
-        const snapshot = await getFsrsOptimizerSnapshot(reopened);
+    try {
+      const snapshot = await getFsrsOptimizerSnapshot(reopened);
 
-        expect(stdout).toContain("FSRS optimizer completato");
-        expect(stdout).toContain("Preset recognition: trained");
-        expect(stdout).toContain("Preset concept: trained");
-        expect(snapshot.state.lastSuccessfulTrainingAt).not.toBeNull();
-        expect(snapshot.presets.recognition).not.toBeNull();
-        expect(snapshot.presets.concept).not.toBeNull();
-      } finally {
-        closeDatabaseClient(reopened);
-      }
-    },
-    20_000
-  );
+      expect(stdout).toContain("FSRS optimizer completato");
+      expect(stdout).toContain("Preset recognition: trained");
+      expect(stdout).toContain("Preset concept: trained");
+      expect(snapshot.state.lastSuccessfulTrainingAt).not.toBeNull();
+      expect(snapshot.presets.recognition).not.toBeNull();
+      expect(snapshot.presets.concept).not.toBeNull();
+    } finally {
+      closeDatabaseClient(reopened);
+    }
+  }, 20_000);
 
   async function recreateDatabaseWithFixture(input: {
     conceptLogCount: number;
@@ -1173,7 +1121,9 @@ async function installConceptWriteAbortTrigger(database: DatabaseClient) {
   });
 }
 
-async function installOptimizerStateWriteAbortTrigger(database: DatabaseClient) {
+async function installOptimizerStateWriteAbortTrigger(
+  database: DatabaseClient
+) {
   await database.$client.execute({
     sql: `
       create trigger if not exists fsrs_optimizer_state_insert_block

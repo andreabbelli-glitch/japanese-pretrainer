@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   aggregateGlossaryLessonConnections,
   groupAliasesForGlossaryDetail
-} from "@/lib/glossary-detail-helpers";
+} from "@/features/glossary/model/detail-helpers";
 
 describe("glossary detail helpers", () => {
   it("keeps sortOrder null when duplicate lesson links have no explicit order", () => {

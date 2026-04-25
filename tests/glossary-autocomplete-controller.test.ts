@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { useGlossaryAutocomplete } from "@/components/glossary/use-glossary-autocomplete";
-import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 
 const initialSuggestions: GlobalGlossaryAutocompleteSuggestion[] = [
   {

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getTextbookLessonTooltipEntries } from "@/lib/textbook";
+import { getTextbookLessonTooltipEntries } from "@/features/textbook/server";
 
 type RouteContext = {
   params: Promise<{

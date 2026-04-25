@@ -5,13 +5,15 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
-  kanjiClashManualContrast,
-  kanjiClashManualContrastRoundState,
   closeDatabaseClient,
   createDatabaseClient,
-  runMigrations,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import {
+  kanjiClashManualContrast,
+  kanjiClashManualContrastRoundState
+} from "@/db/schema";
 import {
   archiveKanjiClashManualContrastAction,
   restoreKanjiClashManualContrastAction,
@@ -161,9 +163,11 @@ describe("submitKanjiClashAnswerAction", () => {
       })
     ).rejects.toThrow("Kanji Clash round is out of date.");
 
-    const stateAfterSecond = await database.query.kanjiClashPairState.findFirst({
-      where: (table, { eq }) => eq(table.pairKey, currentRound.pairKey)
-    });
+    const stateAfterSecond = await database.query.kanjiClashPairState.findFirst(
+      {
+        where: (table, { eq }) => eq(table.pairKey, currentRound.pairKey)
+      }
+    );
     const logsAfterSecond = await database.query.kanjiClashPairLog.findMany({
       where: (table, { eq }) => eq(table.pairKey, currentRound.pairKey)
     });
@@ -378,13 +382,16 @@ describe("submitKanjiClashAnswerAction", () => {
     const archived = await database.query.kanjiClashManualContrast.findFirst({
       where: (table, { eq }) => eq(table.contrastKey, contrastKey)
     });
-    const roundStates = await database.query.kanjiClashManualContrastRoundState.findMany({
-      where: (table, { eq }) => eq(table.contrastKey, contrastKey),
-      orderBy: (table, { asc }) => asc(table.roundKey)
-    });
-    const logs = await database.query.kanjiClashManualContrastRoundLog.findMany({
-      where: (table, { eq }) => eq(table.contrastKey, contrastKey)
-    });
+    const roundStates =
+      await database.query.kanjiClashManualContrastRoundState.findMany({
+        where: (table, { eq }) => eq(table.contrastKey, contrastKey),
+        orderBy: (table, { asc }) => asc(table.roundKey)
+      });
+    const logs = await database.query.kanjiClashManualContrastRoundLog.findMany(
+      {
+        where: (table, { eq }) => eq(table.contrastKey, contrastKey)
+      }
+    );
 
     expect(archived?.status).toBe("archived");
     expect(roundStates.map((state) => state.updatedAt)).toEqual([

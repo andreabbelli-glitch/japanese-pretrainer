@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-import type { ReviewCardListItem } from "@/db";
+import type { ReviewCardListItem } from "@/db/queries";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,

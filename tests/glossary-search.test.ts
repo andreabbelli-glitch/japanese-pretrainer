@@ -1,8 +1,8 @@
 import type { Route } from "next";
 import { describe, expect, it } from "vitest";
 
-import type { GlossaryResolvedEntry } from "@/lib/glossary";
-import { buildGlobalGlossaryAutocompleteSuggestions } from "@/lib/glossary-search";
+import type { GlossaryResolvedEntry } from "@/features/glossary/types";
+import { buildGlobalGlossaryAutocompleteSuggestions } from "@/features/glossary/model/search";
 
 function createResolvedEntry(input: {
   aliases?: string[];

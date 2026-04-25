@@ -5,19 +5,21 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-  card,
   closeDatabaseClient,
   createDatabaseClient,
+  type DatabaseClient
+} from "@/db";
+import { runMigrations } from "@/db/migrate";
+import {
+  card,
   lesson,
   lessonProgress,
   media,
   reviewSubjectLog,
   reviewSubjectState,
-  runMigrations,
   segment,
-  userSetting,
-  type DatabaseClient
-} from "@/db";
+  userSetting
+} from "@/db/schema";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";
 import {
@@ -166,15 +168,21 @@ describe("global review queue filtering", () => {
         })
       );
 
-      const [globalPage, mediaAPage, mediaBPage, mediaBQueue, dashboard, mediaBDetail] =
-        await Promise.all([
-          getGlobalReviewPageData({}, database),
-          getReviewPageData("media-a", {}, database),
-          getReviewPageData("media-b", {}, database),
-          getReviewQueueSnapshotForMedia("media-b", database),
-          getDashboardData(database),
-          getMediaDetailData("media-b", database)
-        ]);
+      const [
+        globalPage,
+        mediaAPage,
+        mediaBPage,
+        mediaBQueue,
+        dashboard,
+        mediaBDetail
+      ] = await Promise.all([
+        getGlobalReviewPageData({}, database),
+        getReviewPageData("media-a", {}, database),
+        getReviewPageData("media-b", {}, database),
+        getReviewQueueSnapshotForMedia("media-b", database),
+        getDashboardData(database),
+        getMediaDetailData("media-b", database)
+      ]);
 
       expect(globalPage.queue.newQueuedCount).toBe(0);
       expect(globalPage.queue.queueCount).toBe(0);
@@ -195,8 +203,11 @@ describe("global review queue filtering", () => {
         dashboard.media.find((item) => item.slug === "media-b")?.reviewStatValue
       ).toBe("In pausa");
       expect(
-        dashboard.media.find((item) => item.slug === "media-b")?.reviewQueueLabel
-      ).toBe("Le card presenti non richiedono Review attiva in questo momento.");
+        dashboard.media.find((item) => item.slug === "media-b")
+          ?.reviewQueueLabel
+      ).toBe(
+        "Le card presenti non richiedono Review attiva in questo momento."
+      );
 
       expect(mediaBDetail?.reviewStatValue).toBe("In pausa");
       expect(mediaBDetail?.reviewQueueLabel).toBe(
@@ -342,9 +353,9 @@ describe("global review queue filtering", () => {
         updatedAt: "2026-03-10T09:00:00.000Z"
       }
     ]);
-    await database.insert(userSetting).values(
-      buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z")
-    );
+    await database
+      .insert(userSetting)
+      .values(buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z"));
 
     const [firstCandidate, fullPage] = await Promise.all([
       getGlobalReviewFirstCandidateLoadResult({}, database),
@@ -375,9 +386,9 @@ describe("global review queue filtering", () => {
     expect(firstCandidate.data.queue.queueCount).toBe(
       fullPage.queue.queueCount
     );
-    expect(firstCandidate.data.queue.advanceCards.map((card) => card.id)).toEqual(
-      fullPage.queueCardIds.slice(1, 4)
-    );
+    expect(
+      firstCandidate.data.queue.advanceCards.map((card) => card.id)
+    ).toEqual(fullPage.queueCardIds.slice(1, 4));
     expect(firstCandidate.data.nextCardId).toBe(
       fullPage.queueCardIds[1] ?? null
     );
@@ -514,9 +525,9 @@ describe("global review queue filtering", () => {
         updatedAt: "2026-03-10T09:00:00.000Z"
       }
     ]);
-    await database.insert(userSetting).values(
-      buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z")
-    );
+    await database
+      .insert(userSetting)
+      .values(buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z"));
 
     const [firstCandidate, fullPage] = await Promise.all([
       getGlobalReviewFirstCandidateLoadResult(

@@ -51,7 +51,7 @@ La pagina legge solo query params semplici:
 - `media=<slug>`
 - `size=<multiplo-di-10>` solo per `manual`
 
-Regole applicate in `src/lib/kanji-clash/page-data.ts`:
+Regole applicate in `src/features/kanji-clash/server/page-data.ts`:
 
 - `mode` diverso da `manual` viene normalizzato a `automatic`;
 - `media` entra in vigore solo se corrisponde a un media attivo noto;
@@ -106,7 +106,7 @@ Il loader aggrega sia subject `entry` sia subject `group`, preservando:
 
 ## Pairing
 
-Il pairing canonico vive in `src/lib/kanji-clash/pairing.ts` e usa una pair key
+Il pairing canonico vive in `src/features/kanji-clash/model/pairing.ts` e usa una pair key
 unordered costruita con `leftSubjectKey::rightSubjectKey` in ordine
 lessicografico stabile.
 
@@ -279,7 +279,7 @@ l'utente gioca davvero quel round nel workspace dedicato.
 
 ## Scheduling
 
-Lo scheduler vive in `src/lib/kanji-clash/scheduler.ts` e usa `ts-fsrs` con:
+Lo scheduler vive in `src/features/kanji-clash/model/scheduler.ts` e usa `ts-fsrs` con:
 
 - namespace separato `kanji_clash_fsrs_v1`;
 - `request_retention = 0.9`;
@@ -294,8 +294,8 @@ state direzionale. Le due direzioni evolvono in modo indipendente.
 
 ## Queue E Sessione
 
-La queue viene caricata in `src/lib/kanji-clash/session.ts` e ordinata in
-`src/lib/kanji-clash/queue.ts`.
+La queue viene caricata in `src/features/kanji-clash/server/session.ts` e ordinata in
+`src/features/kanji-clash/model/queue.ts`.
 
 ### Modalita automatica
 
@@ -489,9 +489,9 @@ I casi edge gia coperti includono:
 - `src/db/schema/kanji-clash.ts`
 - `src/db/queries/kanji-clash.ts`
 - `src/db/queries/kanji-clash-session.ts`
-- `src/lib/kanji-clash/page-data.ts`
-- `src/lib/kanji-clash/pairing.ts`
-- `src/lib/kanji-clash/queue.ts`
-- `src/lib/kanji-clash/scheduler.ts`
-- `src/lib/kanji-clash/session.ts`
+- `src/features/kanji-clash/server/page-data.ts`
+- `src/features/kanji-clash/model/pairing.ts`
+- `src/features/kanji-clash/model/queue.ts`
+- `src/features/kanji-clash/model/scheduler.ts`
+- `src/features/kanji-clash/server/session.ts`
 - `tests/e2e/kanji-clash.spec.ts`

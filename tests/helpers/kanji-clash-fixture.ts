@@ -6,9 +6,9 @@ import {
   media,
   reviewSubjectState,
   segment,
-  term,
-  type DatabaseClient
-} from "@/db";
+  term
+} from "@/db/schema";
+import type { DatabaseClient } from "@/db";
 
 type SeedKanjiClashFixtureOptions = {
   includeSecondaryMedia?: boolean;
@@ -121,56 +121,90 @@ async function seedAlphaMedia(database: DatabaseClient, now: string) {
       now
     )
   ]);
-  await database.insert(card).values([
-    buildCardRow("card-alpha-shokuhi", "食費", "lesson-alpha", "media-alpha", "segment-alpha", now),
-    buildCardRow("card-alpha-shokuhin", "食品", "lesson-alpha", "media-alpha", "segment-alpha", now),
-    buildCardRow("card-alpha-shokutaku", "食卓", "lesson-alpha", "media-alpha", "segment-alpha", now),
-    buildCardRow("card-alpha-inshoku", "飲食", "lesson-alpha", "media-alpha", "segment-alpha", now)
-  ]);
-  await database.insert(cardEntryLink).values([
-    buildCardEntryLinkRow("card-alpha-shokuhi", "term-alpha-shokuhi"),
-    buildCardEntryLinkRow("card-alpha-shokuhin", "term-alpha-shokuhin"),
-    buildCardEntryLinkRow("card-alpha-shokutaku", "term-alpha-shokutaku"),
-    buildCardEntryLinkRow("card-alpha-inshoku", "term-alpha-inshoku")
-  ]);
-  await database.insert(reviewSubjectState).values([
-    buildReviewSubjectStateRow(
-      "card-alpha-shokuhi",
-      "term-alpha-shokuhi",
-      "entry:term:term-alpha-shokuhi",
-      now,
-      8.2,
-      3,
-      "review"
-    ),
-    buildReviewSubjectStateRow(
-      "card-alpha-shokuhin",
-      "term-alpha-shokuhin",
-      "entry:term:term-alpha-shokuhin",
-      now,
-      9.1,
-      4,
-      "review"
-    ),
-    buildReviewSubjectStateRow(
-      "card-alpha-shokutaku",
-      "term-alpha-shokutaku",
-      "entry:term:term-alpha-shokutaku",
-      now,
-      8.7,
-      3,
-      "review"
-    ),
-    buildReviewSubjectStateRow(
-      "card-alpha-inshoku",
-      "term-alpha-inshoku",
-      "entry:term:term-alpha-inshoku",
-      now,
-      10.2,
-      5,
-      "relearning"
-    )
-  ]);
+  await database
+    .insert(card)
+    .values([
+      buildCardRow(
+        "card-alpha-shokuhi",
+        "食費",
+        "lesson-alpha",
+        "media-alpha",
+        "segment-alpha",
+        now
+      ),
+      buildCardRow(
+        "card-alpha-shokuhin",
+        "食品",
+        "lesson-alpha",
+        "media-alpha",
+        "segment-alpha",
+        now
+      ),
+      buildCardRow(
+        "card-alpha-shokutaku",
+        "食卓",
+        "lesson-alpha",
+        "media-alpha",
+        "segment-alpha",
+        now
+      ),
+      buildCardRow(
+        "card-alpha-inshoku",
+        "飲食",
+        "lesson-alpha",
+        "media-alpha",
+        "segment-alpha",
+        now
+      )
+    ]);
+  await database
+    .insert(cardEntryLink)
+    .values([
+      buildCardEntryLinkRow("card-alpha-shokuhi", "term-alpha-shokuhi"),
+      buildCardEntryLinkRow("card-alpha-shokuhin", "term-alpha-shokuhin"),
+      buildCardEntryLinkRow("card-alpha-shokutaku", "term-alpha-shokutaku"),
+      buildCardEntryLinkRow("card-alpha-inshoku", "term-alpha-inshoku")
+    ]);
+  await database
+    .insert(reviewSubjectState)
+    .values([
+      buildReviewSubjectStateRow(
+        "card-alpha-shokuhi",
+        "term-alpha-shokuhi",
+        "entry:term:term-alpha-shokuhi",
+        now,
+        8.2,
+        3,
+        "review"
+      ),
+      buildReviewSubjectStateRow(
+        "card-alpha-shokuhin",
+        "term-alpha-shokuhin",
+        "entry:term:term-alpha-shokuhin",
+        now,
+        9.1,
+        4,
+        "review"
+      ),
+      buildReviewSubjectStateRow(
+        "card-alpha-shokutaku",
+        "term-alpha-shokutaku",
+        "entry:term:term-alpha-shokutaku",
+        now,
+        8.7,
+        3,
+        "review"
+      ),
+      buildReviewSubjectStateRow(
+        "card-alpha-inshoku",
+        "term-alpha-inshoku",
+        "entry:term:term-alpha-inshoku",
+        now,
+        10.2,
+        5,
+        "relearning"
+      )
+    ]);
 }
 
 async function seedBetaMedia(database: DatabaseClient, now: string) {
@@ -243,34 +277,54 @@ async function seedBetaMedia(database: DatabaseClient, now: string) {
       now
     )
   ]);
-  await database.insert(card).values([
-    buildCardRow("card-beta-kaigan", "海岸", "lesson-beta", "media-beta", "segment-beta", now),
-    buildCardRow("card-beta-kaiyou", "海洋", "lesson-beta", "media-beta", "segment-beta", now)
-  ]);
-  await database.insert(cardEntryLink).values([
-    buildCardEntryLinkRow("card-beta-kaigan", "term-beta-kaigan"),
-    buildCardEntryLinkRow("card-beta-kaiyou", "term-beta-kaiyou")
-  ]);
-  await database.insert(reviewSubjectState).values([
-    buildReviewSubjectStateRow(
-      "card-beta-kaigan",
-      "term-beta-kaigan",
-      "entry:term:term-beta-kaigan",
-      now,
-      8.6,
-      3,
-      "review"
-    ),
-    buildReviewSubjectStateRow(
-      "card-beta-kaiyou",
-      "term-beta-kaiyou",
-      "entry:term:term-beta-kaiyou",
-      now,
-      8.9,
-      4,
-      "review"
-    )
-  ]);
+  await database
+    .insert(card)
+    .values([
+      buildCardRow(
+        "card-beta-kaigan",
+        "海岸",
+        "lesson-beta",
+        "media-beta",
+        "segment-beta",
+        now
+      ),
+      buildCardRow(
+        "card-beta-kaiyou",
+        "海洋",
+        "lesson-beta",
+        "media-beta",
+        "segment-beta",
+        now
+      )
+    ]);
+  await database
+    .insert(cardEntryLink)
+    .values([
+      buildCardEntryLinkRow("card-beta-kaigan", "term-beta-kaigan"),
+      buildCardEntryLinkRow("card-beta-kaiyou", "term-beta-kaiyou")
+    ]);
+  await database
+    .insert(reviewSubjectState)
+    .values([
+      buildReviewSubjectStateRow(
+        "card-beta-kaigan",
+        "term-beta-kaigan",
+        "entry:term:term-beta-kaigan",
+        now,
+        8.6,
+        3,
+        "review"
+      ),
+      buildReviewSubjectStateRow(
+        "card-beta-kaiyou",
+        "term-beta-kaiyou",
+        "entry:term:term-beta-kaiyou",
+        now,
+        8.9,
+        4,
+        "review"
+      )
+    ]);
 }
 
 function buildTermRow(

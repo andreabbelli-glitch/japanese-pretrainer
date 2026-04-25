@@ -1,4 +1,4 @@
-import { db, type DatabaseClient, type ReviewCardListItem } from "@/db";
+import { db, type DatabaseClient } from "@/db";
 import {
   canUseDataCache,
   listMediaCached,
@@ -12,6 +12,7 @@ import {
   mediaReviewCardHref,
   mediaStudyHref
 } from "@/lib/site";
+import type { ReviewCardSource } from "@/lib/review-card-contract";
 import { capitalizeToken, formatReviewStateLabel } from "@/lib/study-format";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { measureWith, type ReviewProfiler } from "@/lib/review-profiler";
@@ -84,7 +85,7 @@ type ReviewQueueCardMapInput = {
 
 function filterReviewSubjectGroupsByCards(
   subjectGroups: ReviewSubjectGroup[],
-  cards: ReviewCardListItem[]
+  cards: ReviewCardSource[]
 ) {
   const visibleCardIds = new Set(cards.map((card) => card.id));
 
@@ -111,7 +112,7 @@ function filterReviewSubjectGroupsByCards(
 }
 
 export async function buildReviewPageDataFromWorkspace(input: {
-  cards: ReviewCardListItem[];
+  cards: ReviewCardSource[];
   dailyLimit: number;
   database: DatabaseClient;
   excludeCardIds?: string[];
@@ -492,7 +493,7 @@ export async function getGlobalReviewPageLoadResult(
 }
 
 export async function buildReviewFirstCandidateDataFromWorkspace(input: {
-  cards: ReviewCardListItem[];
+  cards: ReviewCardSource[];
   database?: DatabaseClient;
   dailyLimit: number;
   entryLookup: Map<string, ReviewEntryLookupItem>;
@@ -792,7 +793,7 @@ export async function getReviewQueueSnapshotForMedia(
 }
 
 export function mapReviewQueueSubjectCardPreview(input: {
-  card: ReviewCardListItem;
+  card: ReviewCardSource;
   entryLookup: Map<string, ReviewEntryLookupItem>;
   fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
   mediaById: ReviewMediaLookup;
@@ -841,7 +842,7 @@ export function mapReviewQueueSubjectCardPreview(input: {
 }
 
 export function buildReviewQueueSnapshot(input: {
-  cards: ReviewCardListItem[];
+  cards: ReviewCardSource[];
   dailyLimit: number;
   entryLookup: Map<string, ReviewEntryLookupItem>;
   extraNewCount: number;
@@ -931,7 +932,7 @@ export function mapReviewQueueSubjectModel(
 }
 
 function buildReviewCardContexts(
-  cards: ReviewCardListItem[],
+  cards: ReviewCardSource[],
   mediaById: ReviewMediaLookup
 ) {
   return cards

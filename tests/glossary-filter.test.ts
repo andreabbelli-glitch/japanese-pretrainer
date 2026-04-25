@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { normalizeGlossaryQuery } from "@/lib/glossary-filter";
+import { normalizeGlossaryQuery } from "@/features/glossary/model/filter";
 
 describe("normalizeGlossaryQuery", () => {
   it("keeps fully numeric page params", () => {

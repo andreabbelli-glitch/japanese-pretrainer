@@ -2,22 +2,22 @@ import { randomUUID } from "node:crypto";
 
 import { eq, inArray } from "drizzle-orm";
 
+import { db, type DatabaseClient, type DatabaseQueryClient } from "@/db";
 import {
-  card,
-  db,
   getCrossMediaFamilyByEntryId,
   getGlossaryEntriesByIds,
   getReviewSubjectStateByKey,
   listReviewCardIdsByEntryRefs,
   listReviewCardsByIds,
+  type ReviewCardListItem
+} from "@/db/queries";
+import {
+  card,
   reviewSubjectLog,
   reviewSubjectState,
-  type DatabaseClient,
-  type DatabaseQueryClient,
-  type EntryType,
-  type ReviewCardListItem
-} from "@/db";
-import { resolveReviewForcedContrast } from "@/lib/kanji-clash/manual-contrast-review";
+  type EntryType
+} from "@/db/schema";
+import { resolveReviewForcedContrast } from "@/features/kanji-clash/server/manual-contrast-review";
 
 import {
   getDrivingEntryLinks,
@@ -135,7 +135,10 @@ export async function gradeReviewCardInTransaction(input: {
 }): Promise<ReviewGradeResult> {
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
-  const loadedCard = await loadReviewCardForMutation(input.transaction, input.cardId);
+  const loadedCard = await loadReviewCardForMutation(
+    input.transaction,
+    input.cardId
+  );
 
   if (!isActiveReviewableMutationCard(loadedCard)) {
     throw new Error("Review card not available for grading.");

@@ -11,7 +11,7 @@ import {
 import path from "node:path";
 
 import { closeDatabaseClient, createDatabaseClient } from "../src/db/client.ts";
-import { runMigrations } from "../src/db/index.ts";
+import { runMigrations } from "../src/db/migrate.ts";
 import { backfillReviewSubjectState } from "../src/lib/review-subject-state-backfill.ts";
 import { purgeArchivedMedia } from "../src/db/purge-archived-media.ts";
 import { importContentWorkspace } from "../src/lib/content/importer.ts";
@@ -144,10 +144,7 @@ async function rebuildStartE2EDatabaseSnapshot(input: {
         .join("\n");
 
       throw new Error(
-        [
-          importResult.message,
-          issueDetails.length > 0 ? issueDetails : null
-        ]
+        [importResult.message, issueDetails.length > 0 ? issueDetails : null]
           .filter((value): value is string => value !== null)
           .join("\n")
       );
@@ -192,9 +189,9 @@ async function isStartE2EDatabaseSnapshotValid(
 
   return Boolean(
     metadata &&
-      metadata.version === START_E2E_SNAPSHOT_VERSION &&
-      metadata.contentFingerprint === contentFingerprint &&
-      snapshotStat?.isFile()
+    metadata.version === START_E2E_SNAPSHOT_VERSION &&
+    metadata.contentFingerprint === contentFingerprint &&
+    snapshotStat?.isFile()
   );
 }
 
@@ -206,7 +203,9 @@ async function readStartE2ESnapshotMetadata(metadataPath: string) {
   }
 
   try {
-    const metadata = JSON.parse(metadataText) as Partial<StartE2ESnapshotMetadata>;
+    const metadata = JSON.parse(
+      metadataText
+    ) as Partial<StartE2ESnapshotMetadata>;
 
     if (
       typeof metadata.version !== "number" ||
@@ -253,11 +252,17 @@ async function copySqliteDatabaseArtifacts(
 
 async function removeSqliteDatabaseArtifacts(basePath: string) {
   await Promise.all(
-    SQLITE_ARTIFACT_SUFFIXES.map((suffix) => rm(`${basePath}${suffix}`, { force: true }))
+    SQLITE_ARTIFACT_SUFFIXES.map((suffix) =>
+      rm(`${basePath}${suffix}`, { force: true })
+    )
   );
 }
 
-async function hashPathTree(rootPath: string, hash: ReturnType<typeof createHash>, currentPath = rootPath) {
+async function hashPathTree(
+  rootPath: string,
+  hash: ReturnType<typeof createHash>,
+  currentPath = rootPath
+) {
   const currentStat = await statOrNull(currentPath);
 
   if (!currentStat) {

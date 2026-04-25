@@ -1,11 +1,11 @@
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { buildSimilarKanjiDataset } from "../src/lib/kanji-clash/similar-kanji-dataset-builder.ts";
+import { buildSimilarKanjiDataset } from "../src/features/kanji-clash/tooling/similar-kanji-dataset-builder.ts";
 import {
   KANJI_CLASH_SIMILAR_KANJI_MANUAL_EXCLUDES,
   KANJI_CLASH_SIMILAR_KANJI_MANUAL_INCLUDES
-} from "../src/lib/kanji-clash/similar-kanji-overrides.ts";
+} from "../src/features/kanji-clash/tooling/similar-kanji-overrides.ts";
 
 const WHITE_RABBIT_URL =
   "https://lars.yencken.org/datasets/kanji-confusion/flashcards.csv";
@@ -15,7 +15,7 @@ const YEH_AND_LI_RADICAL_URL =
   "https://lars.yencken.org/datasets/kanji-confusion/jyouyou__yehAndLiRadical.csv";
 const SIMILAR_KANJI_DATASET_OUTPUT = path.resolve(
   process.cwd(),
-  "src/lib/kanji-clash/similar-kanji-dataset.generated.json"
+  "src/features/kanji-clash/model/similar-kanji-dataset.generated.json"
 );
 const SIMILAR_KANJI_RULES_VERSION = 1;
 const SIMILAR_KANJI_MINIMUM_METRIC_SCORE = 0.75;

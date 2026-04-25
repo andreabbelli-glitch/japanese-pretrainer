@@ -1,23 +1,13 @@
 import {
-  updateGlossarySummaryCache,
-  updateReviewSummaryCache
-} from "@/lib/data-cache";
+  invalidateReviewMutationCaches,
+  type ReviewMutationCachePolicy
+} from "@/lib/cache-invalidation-policy";
 
-export type ReviewActionCachePolicy = "review" | "entry-status";
+export type ReviewActionCachePolicy = ReviewMutationCachePolicy;
 
 export function applyReviewActionCachePolicy(input: {
   mediaId?: string;
   policy: ReviewActionCachePolicy;
 }) {
-  updateReviewSummaryCache(input.mediaId);
-
-  if (input.policy !== "entry-status") {
-    return;
-  }
-
-  updateGlossarySummaryCache();
-
-  if (input.mediaId) {
-    updateGlossarySummaryCache(input.mediaId);
-  }
+  invalidateReviewMutationCaches(input);
 }

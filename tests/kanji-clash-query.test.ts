@@ -5,22 +5,24 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
-  card,
-  cardEntryLink,
   closeDatabaseClient,
   createDatabaseClient,
+  type DatabaseClient
+} from "@/db";
+import { listEligibleKanjiClashSubjects } from "@/db/queries";
+import { runMigrations } from "@/db/migrate";
+import {
+  card,
+  cardEntryLink,
   crossMediaGroup,
   grammarPattern,
   lesson,
   lessonProgress,
-  listEligibleKanjiClashSubjects,
   media,
   reviewSubjectState,
-  runMigrations,
   segment,
-  term,
-  type DatabaseClient
-} from "@/db";
+  term
+} from "@/db/schema";
 
 describe("kanji clash eligibility query", () => {
   let tempDir = "";
@@ -223,24 +225,43 @@ describe("kanji clash eligibility query", () => {
     ]);
 
     await database.insert(cardEntryLink).values([
-      buildCardEntryLinkRow("card-alpha-ambiguous-primary", "term-alpha-ambiguous-primary"),
-      buildCardEntryLinkRow("card-alpha-ambiguous-primary", "grammar-alpha-extra-link", {
-        entryType: "grammar",
-        id: "card-alpha-ambiguous-primary-grammar-alpha-extra-link"
-      }),
-      buildCardEntryLinkRow("card-alpha-ambiguous-fallback", "term-alpha-ambiguous-fallback", {
-        id: "card-alpha-ambiguous-fallback-term-alpha-ambiguous-fallback",
-        relationshipType: "secondary"
-      }),
-      buildCardEntryLinkRow("card-alpha-ambiguous-fallback", "grammar-alpha-extra-link", {
-        entryType: "grammar",
-        id: "card-alpha-ambiguous-fallback-grammar-alpha-extra-link",
-        relationshipType: "secondary"
-      }),
-      buildCardEntryLinkRow("card-alpha-secondary-concept", "term-alpha-secondary-concept", {
-        id: "card-alpha-secondary-concept-term-alpha-secondary-concept",
-        relationshipType: "secondary"
-      })
+      buildCardEntryLinkRow(
+        "card-alpha-ambiguous-primary",
+        "term-alpha-ambiguous-primary"
+      ),
+      buildCardEntryLinkRow(
+        "card-alpha-ambiguous-primary",
+        "grammar-alpha-extra-link",
+        {
+          entryType: "grammar",
+          id: "card-alpha-ambiguous-primary-grammar-alpha-extra-link"
+        }
+      ),
+      buildCardEntryLinkRow(
+        "card-alpha-ambiguous-fallback",
+        "term-alpha-ambiguous-fallback",
+        {
+          id: "card-alpha-ambiguous-fallback-term-alpha-ambiguous-fallback",
+          relationshipType: "secondary"
+        }
+      ),
+      buildCardEntryLinkRow(
+        "card-alpha-ambiguous-fallback",
+        "grammar-alpha-extra-link",
+        {
+          entryType: "grammar",
+          id: "card-alpha-ambiguous-fallback-grammar-alpha-extra-link",
+          relationshipType: "secondary"
+        }
+      ),
+      buildCardEntryLinkRow(
+        "card-alpha-secondary-concept",
+        "term-alpha-secondary-concept",
+        {
+          id: "card-alpha-secondary-concept-term-alpha-secondary-concept",
+          relationshipType: "secondary"
+        }
+      )
     ]);
 
     await database.insert(reviewSubjectState).values([
@@ -459,27 +480,32 @@ describe("kanji clash eligibility query", () => {
       )
     ]);
 
-    await database.insert(cardEntryLink).values([
-      buildCardEntryLinkRow("card-alpha-abyss-rush", "term-alpha-abyss-rush"),
-      buildCardEntryLinkRow(
-        "card-alpha-card-exchange",
-        "term-alpha-card-exchange"
-      ),
-      buildCardEntryLinkRow(
-        "card-alpha-bottom-fragment",
-        "term-alpha-bottom-fragment"
-      ),
-      buildCardEntryLinkRow("card-alpha-use-question", "term-alpha-use-question"),
-      buildCardEntryLinkRow(
-        "card-alpha-pokemon-zukan",
-        "term-alpha-pokemon-zukan"
-      ),
-      buildCardEntryLinkRow(
-        "card-alpha-evolution-creature",
-        "term-alpha-evolution-creature"
-      ),
-      buildCardEntryLinkRow("card-alpha-tap-state", "term-alpha-tap-state")
-    ]);
+    await database
+      .insert(cardEntryLink)
+      .values([
+        buildCardEntryLinkRow("card-alpha-abyss-rush", "term-alpha-abyss-rush"),
+        buildCardEntryLinkRow(
+          "card-alpha-card-exchange",
+          "term-alpha-card-exchange"
+        ),
+        buildCardEntryLinkRow(
+          "card-alpha-bottom-fragment",
+          "term-alpha-bottom-fragment"
+        ),
+        buildCardEntryLinkRow(
+          "card-alpha-use-question",
+          "term-alpha-use-question"
+        ),
+        buildCardEntryLinkRow(
+          "card-alpha-pokemon-zukan",
+          "term-alpha-pokemon-zukan"
+        ),
+        buildCardEntryLinkRow(
+          "card-alpha-evolution-creature",
+          "term-alpha-evolution-creature"
+        ),
+        buildCardEntryLinkRow("card-alpha-tap-state", "term-alpha-tap-state")
+      ]);
 
     await database.insert(reviewSubjectState).values([
       buildReviewSubjectStateRow(
@@ -569,7 +595,9 @@ describe("kanji clash eligibility query", () => {
 
     expect(subjectKeys.has("entry:term:term-alpha-abyss-rush")).toBe(false);
     expect(subjectKeys.has("entry:term:term-alpha-card-exchange")).toBe(false);
-    expect(subjectKeys.has("entry:term:term-alpha-bottom-fragment")).toBe(false);
+    expect(subjectKeys.has("entry:term:term-alpha-bottom-fragment")).toBe(
+      false
+    );
     expect(subjectKeys.has("entry:term:term-alpha-use-question")).toBe(false);
     expect(subjectKeys.has("entry:term:term-alpha-pokemon-zukan")).toBe(false);
     expect(subjectKeys.has("entry:term:term-alpha-evolution-creature")).toBe(

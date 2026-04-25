@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import type { LessonListItem } from "@/db";
+import type { LessonListItem } from "@/db/queries";
 import { buildLessonMetrics } from "@/lib/study-metrics";
 
 describe("buildLessonMetrics", () => {

@@ -1,5 +1,5 @@
-import type { ReviewCardListItem } from "@/db";
 import { stripInlineMarkdown } from "@/lib/render-furigana";
+import type { ReviewCardSource } from "./review-card-contract";
 import {
   groupReviewCardsBySubject,
   selectReviewSubjectRepresentativeCard,
@@ -51,7 +51,7 @@ function createReviewSubjectVisibilityResolver(visibleMediaId?: string) {
 }
 
 export function buildReviewSubjectModels(input: {
-  cards: ReviewCardListItem[];
+  cards: ReviewCardSource[];
   entryLookup: Map<string, unknown>;
   nowIso: string;
   subjectGroups?: ReviewSubjectGroup[];
@@ -182,9 +182,7 @@ function mapReviewSubjectModelsForVisibleMedia(
   resolveModelForDisplay: (model: ReviewSubjectModel) => ReviewSubjectModel,
   visibleMediaId: string | undefined
 ) {
-  return visibleMediaId
-    ? models.map(resolveModelForDisplay)
-    : models;
+  return visibleMediaId ? models.map(resolveModelForDisplay) : models;
 }
 
 function createReviewSubjectDisplayResolver(input: {
@@ -230,7 +228,7 @@ function resolveQueuedNewSlots(input: {
 }
 
 export function buildReviewOverviewSnapshot(input: {
-  cards: ReviewCardListItem[];
+  cards: ReviewCardSource[];
   dailyLimit: number;
   entryLookup: Map<string, unknown>;
   extraNewCount: number;
@@ -251,7 +249,8 @@ export function buildReviewOverviewSnapshot(input: {
       subjectGroups: input.subjectGroups,
       subjectStates: input.subjectStates
     });
-  const modelBuckets = input.buckets ?? bucketAndSortReviewSubjectModels(models);
+  const modelBuckets =
+    input.buckets ?? bucketAndSortReviewSubjectModels(models);
   const isVisibleInMedia = createReviewSubjectVisibilityResolver(
     input.visibleMediaId
   );
@@ -322,7 +321,7 @@ export function buildReviewOverviewSnapshot(input: {
 }
 
 export function buildReviewQueueSubjectSnapshot(input: {
-  cards: ReviewCardListItem[];
+  cards: ReviewCardSource[];
   dailyLimit: number;
   entryLookup: Map<string, unknown>;
   excludeCardIds?: string[];
@@ -344,8 +343,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
       : null;
   const subjectModels = excludeSet
     ? allSubjectModels.filter(
-        (model) =>
-          !model.group.cards.some((card) => excludeSet.has(card.id))
+        (model) => !model.group.cards.some((card) => excludeSet.has(card.id))
       )
     : allSubjectModels;
   const isVisibleInMedia = createReviewSubjectVisibilityResolver(
@@ -384,15 +382,16 @@ export function buildReviewQueueSubjectSnapshot(input: {
     visibleMediaId: input.visibleMediaId
   });
   const mappedManualModels = mapModelsForDisplay(classifiedModels.manualModels);
-  const mappedSuspendedModels = mapModelsForDisplay(classifiedModels.suspendedModels);
-  const mappedUpcomingModels = mapModelsForDisplay(classifiedModels.upcomingModels);
+  const mappedSuspendedModels = mapModelsForDisplay(
+    classifiedModels.suspendedModels
+  );
+  const mappedUpcomingModels = mapModelsForDisplay(
+    classifiedModels.upcomingModels
+  );
   const mappedDueModels = mapModelsForDisplay(classifiedModels.dueModels);
 
   // queuedNewModels are already resolved for display inside buildQueuedNewReviewSubjectModels if visibleMediaId is provided.
-  const queueModels = [
-    ...mappedDueModels,
-    ...queuedNewModels
-  ];
+  const queueModels = [...mappedDueModels, ...queuedNewModels];
   const introLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
     dueCount: classifiedModels.dueModels.length,

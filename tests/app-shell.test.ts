@@ -6,18 +6,19 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
-  card,
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
+  type DatabaseClient
+} from "@/db";
+import { runMigrations } from "@/db/migrate";
+import {
+  card,
   lesson,
   lessonProgress,
   media,
-  reviewSubjectState,
-  runMigrations,
-  seedDevelopmentDatabase,
-  type DatabaseClient
-} from "@/db";
+  reviewSubjectState
+} from "@/db/schema";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import { importContentWorkspace } from "@/lib/content/importer";
 import { getDashboardData } from "@/lib/dashboard";
 import { getMediaDetailData } from "@/lib/media-shell";

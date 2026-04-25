@@ -15,7 +15,7 @@ import { mediaAssetHref } from "@/lib/site";
 import type {
   FuriganaMode,
   TextbookEntryTooltip
-} from "@/lib/textbook-types";
+} from "@/features/textbook/types";
 
 import { EmptyState } from "../ui/empty-state";
 import { PronunciationAudio } from "../ui/pronunciation-audio";

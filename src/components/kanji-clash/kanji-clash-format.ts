@@ -4,7 +4,7 @@ import type {
   KanjiClashSimilarKanjiSwap,
   KanjiClashRoundSource,
   KanjiClashSessionMode
-} from "@/lib/kanji-clash/types";
+} from "@/features/kanji-clash/types";
 
 export function formatKanjiClashModeLabel(mode: KanjiClashSessionMode) {
   return mode === "automatic" ? "FSRS" : "Drill";

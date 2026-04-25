@@ -4,7 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { ReviewPageControllerResult } from "@/components/review/use-review-page-controller";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
-import type { GlobalGlossaryAutocompleteSuggestion } from "@/lib/glossary";
+import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 import type {
   ReviewFirstCandidatePageData,
   ReviewPageData,
@@ -33,12 +33,14 @@ vi.mock("@/actions/review", () => ({
   markLinkedEntryKnownSessionAction: mocks.markLinkedEntryKnownSessionAction,
   prefetchReviewCardSessionAction: mocks.prefetchReviewCardSessionAction,
   resetReviewCardSessionAction: mocks.resetReviewCardSessionAction,
-  setLinkedEntryLearningSessionAction: mocks.setLinkedEntryLearningSessionAction,
+  setLinkedEntryLearningSessionAction:
+    mocks.setLinkedEntryLearningSessionAction,
   setReviewCardSuspendedSessionAction: mocks.setReviewCardSuspendedSessionAction
 }));
 
 vi.mock("@/components/glossary/use-glossary-autocomplete", () => ({
-  useGlossaryAutocomplete: (input: unknown) => mocks.useGlossaryAutocomplete(input)
+  useGlossaryAutocomplete: (input: unknown) =>
+    mocks.useGlossaryAutocomplete(input)
 }));
 
 import { useReviewPageController } from "@/components/review/use-review-page-controller";
@@ -176,7 +178,10 @@ describe("useReviewPageController first-candidate grading", () => {
     });
 
     expect(controller().isAnswerRevealed).toBe(true);
-    expect((controller().viewData as ReviewFirstCandidatePageData).selectedCardContext.showAnswer).toBe(true);
+    expect(
+      (controller().viewData as ReviewFirstCandidatePageData)
+        .selectedCardContext.showAnswer
+    ).toBe(true);
 
     act(() => {
       controller().handleGradeCard("good");
@@ -198,9 +203,7 @@ describe("useReviewPageController first-candidate grading", () => {
         nextCardId: "card-b",
         rating: "good",
         scope: "global",
-        segmentId: null,
-        sessionQueue: undefined,
-        sessionSettings: undefined
+        segmentId: null
       })
     );
 
@@ -208,7 +211,9 @@ describe("useReviewPageController first-candidate grading", () => {
     expect(controller().isHydratingFullData).toBe(true);
     expect(controller().isAnswerRevealed).toBe(false);
     expect(controller().viewData.selectedCard?.id).toBe("card-b");
-    expect((controller().viewData as ReviewFirstCandidatePageData).nextCardId).toBe("card-c");
+    expect(
+      (controller().viewData as ReviewFirstCandidatePageData).nextCardId
+    ).toBe("card-c");
     expect(controller().viewData.session.answeredCount).toBe(1);
     expect(controller().viewData.selectedCardContext.position).toBe(1);
     expect(controller().viewData.selectedCardContext.remainingCount).toBe(1);
@@ -905,7 +910,9 @@ function buildFirstCandidateReviewPageData(): ReviewFirstCandidatePageData {
       upcomingCount: 0
     },
     scope: "global",
-    selectedCard: buildQueueCard("card-a") as ReviewFirstCandidatePageData["selectedCard"],
+    selectedCard: buildQueueCard(
+      "card-a"
+    ) as ReviewFirstCandidatePageData["selectedCard"],
     selectedCardContext: {
       bucket: "due",
       isQueueCard: true,
@@ -1295,7 +1302,8 @@ class ElementStub extends NodeStub {
   }
 
   set textContent(value: string) {
-    this.childNodes = value.length > 0 ? [new TextStub(value, this.ownerDocument)] : [];
+    this.childNodes =
+      value.length > 0 ? [new TextStub(value, this.ownerDocument)] : [];
   }
 
   setAttribute(name: string, value: string) {

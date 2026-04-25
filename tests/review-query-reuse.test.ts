@@ -6,25 +6,26 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as dataCacheModule from "@/lib/data-cache";
-import * as dbModule from "@/db";
+import * as dbQueriesModule from "@/db/queries";
 import * as fsrsOptimizerModule from "@/lib/fsrs-optimizer";
 import * as reviewCardHydrationModule from "@/lib/review-card-hydration";
 import * as reviewSubjectStateLookupModule from "@/lib/review-subject-state-lookup";
 import * as settingsModule from "@/lib/settings";
 import {
   closeDatabaseClient,
+  createDatabaseClient,
+  type DatabaseClient
+} from "@/db";
+import { runMigrations } from "@/db/migrate";
+import {
   card,
   cardEntryLink,
-  createDatabaseClient,
-  developmentFixture,
   lessonProgress,
   media,
   reviewSubjectState,
-  runMigrations,
-  seedDevelopmentDatabase,
-  term,
-  type DatabaseClient
-} from "@/db";
+  term
+} from "@/db/schema";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import {
   getReviewCardDetailData,
   getReviewPageData,
@@ -230,7 +231,8 @@ describe("review media query reuse", () => {
     const resolvedMediaRows = await dataCacheModule.listMediaCached(database);
 
     const originalGetStudySettings = settingsModule.getStudySettings;
-    const originalListReviewCardsByMediaIds = dbModule.listReviewCardsByMediaIds;
+    const originalListReviewCardsByMediaIds =
+      dbQueriesModule.listReviewCardsByMediaIds;
     const settingsLookupSpy = vi
       .spyOn(settingsModule, "getStudySettings")
       .mockImplementation(async (...args) => {
@@ -240,7 +242,7 @@ describe("review media query reuse", () => {
         return resultPromise;
       });
     const workspaceLookupSpy = vi
-      .spyOn(dbModule, "listReviewCardsByMediaIds")
+      .spyOn(dbQueriesModule, "listReviewCardsByMediaIds")
       .mockImplementation(async (...args) => {
         workspaceStarted = true;
         const resultPromise = originalListReviewCardsByMediaIds(...args);
@@ -291,10 +293,7 @@ describe("review media query reuse", () => {
         return resultPromise;
       });
     const subjectGroupsSpy = vi
-      .spyOn(
-        reviewSubjectStateLookupModule,
-        "resolveReviewSubjectGroups"
-      )
+      .spyOn(reviewSubjectStateLookupModule, "resolveReviewSubjectGroups")
       .mockImplementation(async (...args) => {
         subjectGroupsStarted = true;
         const resultPromise = originalResolveReviewSubjectGroups(...args);
@@ -381,11 +380,12 @@ describe("review media query reuse", () => {
     let subjectStateStarted = false;
     let crossMediaStarted = false;
 
-    const originalGetReviewSubjectStateByKey = dbModule.getReviewSubjectStateByKey;
+    const originalGetReviewSubjectStateByKey =
+      dbQueriesModule.getReviewSubjectStateByKey;
     const originalListCrossMediaFamiliesByEntryIds =
-      dbModule.listCrossMediaFamiliesByEntryIds;
+      dbQueriesModule.listCrossMediaFamiliesByEntryIds;
     const subjectStateSpy = vi
-      .spyOn(dbModule, "getReviewSubjectStateByKey")
+      .spyOn(dbQueriesModule, "getReviewSubjectStateByKey")
       .mockImplementation(async (...args) => {
         subjectStateStarted = true;
         const resultPromise = originalGetReviewSubjectStateByKey(...args);
@@ -393,7 +393,7 @@ describe("review media query reuse", () => {
         return resultPromise;
       });
     const crossMediaSpy = vi
-      .spyOn(dbModule, "listCrossMediaFamiliesByEntryIds")
+      .spyOn(dbQueriesModule, "listCrossMediaFamiliesByEntryIds")
       .mockImplementation(async (...args) => {
         crossMediaStarted = true;
         const resultPromise = originalListCrossMediaFamiliesByEntryIds(...args);
@@ -430,11 +430,12 @@ describe("review media query reuse", () => {
     let glossaryStarted = false;
     let crossMediaStarted = false;
 
-    const originalGetGlossaryEntriesByIds = dbModule.getGlossaryEntriesByIds;
+    const originalGetGlossaryEntriesByIds =
+      dbQueriesModule.getGlossaryEntriesByIds;
     const originalListCrossMediaFamiliesByEntryIds =
-      dbModule.listCrossMediaFamiliesByEntryIds;
+      dbQueriesModule.listCrossMediaFamiliesByEntryIds;
     const glossarySpy = vi
-      .spyOn(dbModule, "getGlossaryEntriesByIds")
+      .spyOn(dbQueriesModule, "getGlossaryEntriesByIds")
       .mockImplementation(async (...args) => {
         glossaryStarted = true;
         const resultPromise = originalGetGlossaryEntriesByIds(...args);
@@ -442,7 +443,7 @@ describe("review media query reuse", () => {
         return resultPromise;
       });
     const crossMediaSpy = vi
-      .spyOn(dbModule, "listCrossMediaFamiliesByEntryIds")
+      .spyOn(dbQueriesModule, "listCrossMediaFamiliesByEntryIds")
       .mockImplementation(async (...args) => {
         crossMediaStarted = true;
         const resultPromise = originalListCrossMediaFamiliesByEntryIds(...args);
@@ -832,10 +833,16 @@ describe("review media query reuse", () => {
   });
 
   it("builds a single-media overview snapshot without hydrating the full review workspace", async () => {
-    const reviewCardsSpy = vi.spyOn(dbModule, "listReviewCardsByMediaIds");
-    const termsSpy = vi.spyOn(dbModule, "listTermEntryReviewSummariesByIds");
+    const reviewCardsSpy = vi.spyOn(
+      dbQueriesModule,
+      "listReviewCardsByMediaIds"
+    );
+    const termsSpy = vi.spyOn(
+      dbQueriesModule,
+      "listTermEntryReviewSummariesByIds"
+    );
     const grammarSpy = vi.spyOn(
-      dbModule,
+      dbQueriesModule,
       "listGrammarEntryReviewSummariesByIds"
     );
 

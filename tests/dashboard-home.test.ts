@@ -1,41 +1,14 @@
+import type { DashboardData } from "@/lib/dashboard";
 import { renderToStaticMarkup } from "react-dom/server";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { DashboardHome } from "@/components/dashboard/dashboard-home";
-import { getDashboardData } from "@/lib/dashboard";
-
-vi.mock("@/lib/dashboard", () => ({
-  getDashboardData: vi.fn()
-}));
-
-const mockedGetDashboardData = vi.mocked(getDashboardData);
 
 describe("dashboard home", () => {
-  afterEach(() => {
-    vi.resetAllMocks();
-  });
-
-  it("shows queued new cards in the global review card", async () => {
-    mockedGetDashboardData.mockResolvedValue({
-      focusMedia: buildMediaSnapshot(),
-      reviewMedia: buildMediaSnapshot(),
-      media: [buildMediaSnapshot()],
-      review: {
-        activeReviewCards: 0,
-        cardsDue: 0,
-        queueCount: 1,
-        newQueuedCount: 1,
-        queueLabel: "1 card nuova è pronta per oggi."
-      },
-      totals: {
-        lessonsCompleted: 1,
-        lessonsTotal: 1,
-        entriesKnown: 2,
-        entriesTotal: 2
-      }
-    });
-
-    const markup = renderToStaticMarkup(await DashboardHome());
+  it("shows queued new cards in the global review card", () => {
+    const markup = renderToStaticMarkup(
+      DashboardHome({ data: buildDashboardData() })
+    );
 
     expect(markup).toContain("In coda oggi");
     expect(markup).toContain("Hai 1 nuova card pronta");
@@ -43,6 +16,27 @@ describe("dashboard home", () => {
     expect(markup).toContain("1 card nuova è pronta per oggi.");
   });
 });
+
+function buildDashboardData(): DashboardData {
+  return {
+    focusMedia: buildMediaSnapshot(),
+    reviewMedia: buildMediaSnapshot(),
+    media: [buildMediaSnapshot()],
+    review: {
+      activeReviewCards: 0,
+      cardsDue: 0,
+      queueCount: 1,
+      newQueuedCount: 1,
+      queueLabel: "1 card nuova è pronta per oggi."
+    },
+    totals: {
+      lessonsCompleted: 1,
+      lessonsTotal: 1,
+      entriesKnown: 2,
+      entriesTotal: 2
+    }
+  };
+}
 
 function buildMediaSnapshot() {
   return {

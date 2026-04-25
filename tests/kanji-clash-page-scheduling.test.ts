@@ -28,10 +28,10 @@ describe("kanji clash page query scheduling", () => {
     vi.doUnmock("@/db");
     vi.doUnmock("@/lib/data-cache");
     vi.doUnmock("@/lib/settings");
-    vi.doUnmock("@/lib/kanji-clash/manual-contrast.ts");
-    vi.doUnmock("@/lib/kanji-clash/queue-token.ts");
-    vi.doUnmock("@/lib/kanji-clash/queue.ts");
-    vi.doUnmock("@/lib/kanji-clash/session.ts");
+    vi.doUnmock("@/features/kanji-clash/server/manual-contrast.ts");
+    vi.doUnmock("@/features/kanji-clash/server/queue-token.ts");
+    vi.doUnmock("@/features/kanji-clash/model/queue.ts");
+    vi.doUnmock("@/features/kanji-clash/server/session.ts");
   });
 
   it("starts queue loading before manual contrast summaries settle", async () => {
@@ -83,22 +83,23 @@ describe("kanji clash page query scheduling", () => {
         (defaultScope: "global" | "media") => defaultScope
       )
     }));
-    vi.doMock("@/lib/kanji-clash/manual-contrast.ts", () => ({
+    vi.doMock("@/features/kanji-clash/server/manual-contrast.ts", () => ({
       loadKanjiClashManualContrastPageSnapshot: vi.fn(
         () => manualContrastSnapshotDeferred.promise
       )
     }));
-    vi.doMock("@/lib/kanji-clash/queue.ts", () => ({
+    vi.doMock("@/features/kanji-clash/model/queue.ts", () => ({
       getKanjiClashCurrentRound: vi.fn(() => null)
     }));
-    vi.doMock("@/lib/kanji-clash/queue-token.ts", () => ({
+    vi.doMock("@/features/kanji-clash/server/queue-token.ts", () => ({
       createKanjiClashQueueToken: vi.fn(() => "queue-token")
     }));
-    vi.doMock("@/lib/kanji-clash/session.ts", () => ({
+    vi.doMock("@/features/kanji-clash/server/session.ts", () => ({
       loadKanjiClashQueueSnapshot
     }));
 
-    const { getKanjiClashPageData } = await import("@/lib/kanji-clash/page-data");
+    const { getKanjiClashPageData } =
+      await import("@/features/kanji-clash/server/page-data");
     const dataPromise = getKanjiClashPageData({
       media: "alpha"
     });

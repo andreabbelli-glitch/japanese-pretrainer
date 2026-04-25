@@ -6,12 +6,11 @@ import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-  card,
-  cardEntryLink,
   closeDatabaseClient,
-  crossMediaGroup,
   createDatabaseClient,
-  developmentFixture,
+  type DatabaseClient
+} from "@/db";
+import {
   getLessonBySlug,
   getMediaBySlug,
   getReviewLaunchCandidateByMediaId,
@@ -30,15 +29,19 @@ import {
   listMedia,
   listReviewCardsByMediaIds,
   listTermEntryReviewSummaries,
-  listTermEntryReviewSummariesByIds,
+  listTermEntryReviewSummariesByIds
+} from "@/db/queries";
+import { runMigrations } from "@/db/migrate";
+import {
+  card,
+  cardEntryLink,
+  crossMediaGroup,
   lessonProgress,
   media,
   reviewSubjectState,
-  runMigrations,
-  seedDevelopmentDatabase,
-  term,
-  type DatabaseClient
-} from "@/db";
+  term
+} from "@/db/schema";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import {
   buildReviewSubjectIdentityCteSql,
   quoteSqlString
@@ -262,9 +265,7 @@ describe("database layer", () => {
     expect(
       executeSpy.mock.calls.some(([input]) => {
         const sql =
-          typeof input === "string"
-            ? input
-            : (input as { sql?: unknown }).sql;
+          typeof input === "string" ? input : (input as { sql?: unknown }).sql;
 
         return typeof sql === "string" && sql.includes("lesson_content");
       })
@@ -376,7 +377,9 @@ describe("database layer", () => {
 
   it("keeps review workspace entry summaries free of unused presentation fields", async () => {
     const [terms, grammar] = await Promise.all([
-      listTermEntryReviewSummariesByIds(database, [developmentFixture.termDbId]),
+      listTermEntryReviewSummariesByIds(database, [
+        developmentFixture.termDbId
+      ]),
       listGrammarEntryReviewSummariesByIds(database, [
         developmentFixture.grammarDbId
       ])
@@ -636,7 +639,9 @@ describe("database layer", () => {
     ]);
 
     expect(
-      [...summaries].sort((left, right) => left.mediaId.localeCompare(right.mediaId))
+      [...summaries].sort((left, right) =>
+        left.mediaId.localeCompare(right.mediaId)
+      )
     ).toEqual([
       {
         available: 0,
@@ -790,7 +795,8 @@ describe("database layer", () => {
       back: "restare senza andare",
       exampleJp: "{{駅|えき}}へ{{行|い}}かずに{{家|いえ}}に{{残|のこ}}る。",
       exampleIt: "Resto a casa senza andare alla stazione.",
-      notesIt: "Chunk card legata allo stesso termine ma con fronte non canonico.",
+      notesIt:
+        "Chunk card legata allo stesso termine ma con fronte non canonico.",
       status: "active",
       orderIndex: 4,
       createdAt: "2026-03-09T10:00:00.000Z",
@@ -876,7 +882,9 @@ describe("database layer", () => {
   });
 
   it("scopes the per-media review launch candidate query to the target media", async () => {
-    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-review-launch-sql-"));
+    const tempDir = await mkdtemp(
+      path.join(tmpdir(), "jcs-review-launch-sql-")
+    );
     const localDatabase = createDatabaseClient({
       databaseUrl: path.join(tempDir, "test.sqlite"),
       logger: true

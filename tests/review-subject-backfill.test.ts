@@ -7,11 +7,10 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  lessonProgress,
-  reviewSubjectState,
-  runMigrations,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { lessonProgress, reviewSubjectState } from "@/db/schema";
 import { getGlobalReviewPageData, getReviewPageData } from "@/lib/review";
 import { importContentWorkspace } from "@/lib/content/importer";
 import { backfillReviewSubjectState } from "@/lib/review-subject-state-backfill";

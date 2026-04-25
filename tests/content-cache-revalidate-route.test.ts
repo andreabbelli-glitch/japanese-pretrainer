@@ -23,7 +23,10 @@ vi.mock("next/cache", () => ({
 }));
 
 vi.mock("@/db", () => ({
-  db: {},
+  db: {}
+}));
+
+vi.mock("@/db/queries", () => ({
   getMediaBySlug: getMediaBySlugMock
 }));
 

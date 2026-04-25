@@ -39,9 +39,10 @@ vi.mock("next/cache", () => ({
 }));
 
 vi.mock("@/lib/data-cache", async () => {
-  const actual = await vi.importActual<typeof import("@/lib/data-cache")>(
-    "@/lib/data-cache"
-  );
+  const actual =
+    await vi.importActual<typeof import("@/lib/data-cache")>(
+      "@/lib/data-cache"
+    );
 
   return {
     ...actual,
@@ -52,12 +53,11 @@ vi.mock("@/lib/data-cache", async () => {
 import {
   closeDatabaseClient,
   createDatabaseClient,
-  developmentFixture,
-  reviewSubjectState,
-  runMigrations,
-  seedDevelopmentDatabase,
   type DatabaseClient
 } from "@/db";
+import { runMigrations } from "@/db/migrate";
+import { reviewSubjectState } from "@/db/schema";
+import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import * as dataCache from "@/lib/data-cache";
 import { getLocalIsoTimeBucketKey } from "@/lib/local-date";
 import { getDashboardData } from "@/lib/dashboard";
@@ -112,20 +112,12 @@ describe("app shell day-scoped cache keys", () => {
 
     expect(
       cacheStore.has(
-        JSON.stringify([
-          "app-shell",
-          "dashboard",
-          `bucket:${firstBucketKey}`
-        ])
+        JSON.stringify(["app-shell", "dashboard", `bucket:${firstBucketKey}`])
       )
     ).toBe(true);
     expect(
       cacheStore.has(
-        JSON.stringify([
-          "app-shell",
-          "dashboard",
-          `bucket:${secondBucketKey}`
-        ])
+        JSON.stringify(["app-shell", "dashboard", `bucket:${secondBucketKey}`])
       )
     ).toBe(true);
     expect(
@@ -253,7 +245,10 @@ describe("app shell day-scoped cache keys", () => {
       .where(eq(reviewSubjectState.subjectKey, subjectKey));
 
     vi.setSystemTime(firstTime);
-    const first = await getMediaProgressPageData(developmentFixture.mediaSlug, database);
+    const first = await getMediaProgressPageData(
+      developmentFixture.mediaSlug,
+      database
+    );
 
     expect(first).not.toBeNull();
     expect(first?.review.dueCount).toBe(1);

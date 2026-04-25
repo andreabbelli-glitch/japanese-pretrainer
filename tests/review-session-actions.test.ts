@@ -3,13 +3,9 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ReviewPage } from "@/components/review/review-page";
-import {
-  card,
-  developmentFixture,
-  lessonProgress,
-  reviewSubjectState,
-  type DatabaseClient
-} from "@/db";
+import { card, lessonProgress, reviewSubjectState } from "@/db/schema";
+import type { DatabaseClient } from "@/db";
+import { developmentFixture } from "@/db/seed";
 import { buildKanjiClashContrastKey } from "@/lib/kanji-clash";
 import {
   getGlobalReviewPageData,
@@ -221,7 +217,11 @@ type ReviewPageLoadCall = {
 type LoadReviewActionsOptions = {
   hydrateReviewCard?: (input: {
     cardId: string;
-  }) => Promise<ReviewQueueCard | null | undefined> | ReviewQueueCard | null | undefined;
+  }) =>
+    | Promise<ReviewQueueCard | null | undefined>
+    | ReviewQueueCard
+    | null
+    | undefined;
 };
 
 async function loadReviewActionsForDatabase(
@@ -855,9 +855,7 @@ describe("review session actions", () => {
       showAnswer: secondResult.selectedCardContext.showAnswer
     });
 
-    expect(sessionHref).toContain(
-      `card=${developmentFixture.secondaryCardId}`
-    );
+    expect(sessionHref).toContain(`card=${developmentFixture.secondaryCardId}`);
     expect(sessionHref).not.toContain(`card=${bufferedCardBId}`);
   });
 
