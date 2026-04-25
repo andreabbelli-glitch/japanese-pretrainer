@@ -181,6 +181,10 @@ docs/
 
 prompts/                  Prompt locali ignorati da git
   automations/            Prompt per automazioni Codex locali
+
+.agents/
+  skills/          Skill Codex repo-scoped, versionate insieme ai workflow che
+                   mantengono; non duplicarle manualmente in ~/.codex/skills
 ```
 
 ---

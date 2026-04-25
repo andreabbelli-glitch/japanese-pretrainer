@@ -1,0 +1,7 @@
+interface:
+  display_name: "Web Giapponese Builder"
+  short_description: "Build a web page lesson with cards and screenshots"
+  default_prompt: "Use $web-giapponese-page-builder to turn a public Japanese web page into a web-giapponese lesson with cards and screenshot assets."
+
+policy:
+  allow_implicit_invocation: true

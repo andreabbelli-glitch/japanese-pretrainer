@@ -1,0 +1,7 @@
+interface:
+  display_name: "Forvo Pronunciations"
+  short_description: "Resolve Japanese pronunciation audio"
+  default_prompt: "Use $forvo-pronunciations to resolve missing Japanese audio for review, the next lesson, or a specific textbook page."
+
+policy:
+  allow_implicit_invocation: true

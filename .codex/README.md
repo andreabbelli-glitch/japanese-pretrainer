@@ -15,6 +15,10 @@ in sandbox `workspace-write`.
 - `scripts/db-setup.sh`: migrazioni + seed locale.
 - `scripts/content-import.sh`: import del workspace `content/`.
 
+Le skill Codex specifiche del repo non stanno in questa cartella: la fonte
+versionata e scansionata da Codex e `.agents/skills/`. `.codex/` resta riservata
+alla configurazione locale condivisa e alle action del progetto.
+
 ## Configurazione consigliata nell'app Codex
 
 - Setup script worktree: `.codex/scripts/setup-worktree.sh`

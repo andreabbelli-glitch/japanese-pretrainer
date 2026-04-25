@@ -144,7 +144,7 @@ Per Forvo:
 Comando tipico:
 
 ```bash
-~/.codex/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --entry <entry-id> ...
+.agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --entry <entry-id> ...
 ```
 
 Oppure, come entry point standard ad alto livello:

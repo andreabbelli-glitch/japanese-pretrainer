@@ -1,0 +1,7 @@
+interface:
+  display_name: "Duel Masters Live Textbook"
+  short_description: "Create DM25 card lessons and flashcards"
+  default_prompt: "Use $duel-masters-live-textbook-maintainer to turn this Duel Masters card screenshot into a DM25 lesson and Japanese flashcards."
+
+policy:
+  allow_implicit_invocation: true
