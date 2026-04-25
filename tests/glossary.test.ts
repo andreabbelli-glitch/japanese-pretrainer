@@ -37,6 +37,7 @@ import {
   card,
   cardEntryLink,
   grammarPattern,
+  reviewSubjectState,
   term,
   termAlias
 } from "@/db/schema/index.ts";
@@ -746,6 +747,55 @@ describe("glossary data", () => {
         crossMediaFixture.beta.mixedCardTermSourceId
       )
     ]);
+  });
+
+  it("ignores legacy grouped study signals stored with groupKey instead of group id", async () => {
+    const contentRoot = path.join(tempDir, "legacy-group-key-content");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const result = await importContentWorkspace({
+      contentRoot,
+      database
+    });
+
+    expect(result.status).toBe("completed");
+
+    const groupedTerm = await database.query.term.findFirst({
+      where: (row, { eq }) =>
+        eq(row.sourceId, crossMediaFixture.alpha.termSourceId),
+      with: {
+        crossMediaGroup: true
+      }
+    });
+
+    expect(groupedTerm?.crossMediaGroupId).toBeTruthy();
+    expect(groupedTerm?.crossMediaGroup?.groupKey).toBe("コスト");
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        crossMediaGroupId: groupedTerm?.crossMediaGroup?.groupKey,
+        manualOverride: true,
+        state: "known_manual"
+      })
+      .where(
+        eq(
+          reviewSubjectState.subjectKey,
+          `group:term:${groupedTerm?.crossMediaGroupId}`
+        )
+      );
+
+    const knownGroups = await listGlobalGlossaryBrowseGroupRefs(database, {
+      cards: "all",
+      entryType: "term",
+      page: 1,
+      pageSize: 10,
+      sort: "alphabetical",
+      study: "known"
+    });
+
+    expect(knownGroups).toEqual([]);
   });
 
   it("loads the first global browse page without issuing a separate count query", async () => {

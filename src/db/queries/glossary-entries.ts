@@ -22,7 +22,8 @@ export type {
 export {
   listEntryCardConnections,
   listEntryCardCounts,
-  listEntryLessonConnections
+  listEntryLessonConnections,
+  listEntryStudySignals
 } from "./glossary-entry-connections.ts";
 export type {
   EntryCardConnection,

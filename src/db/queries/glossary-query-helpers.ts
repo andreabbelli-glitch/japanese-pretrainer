@@ -40,9 +40,7 @@ function buildTextMatchClause(
   };
 }
 
-export function buildTermBaseMatchClauses(
-  input: GlossarySearchCandidateInput
-) {
+export function buildTermBaseMatchClauses(input: GlossarySearchCandidateInput) {
   return [
     buildTextMatchClause("term.search_lemma_norm", input.normalized),
     buildTextMatchClause("term.search_reading_norm", input.kana),
@@ -243,10 +241,7 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           and card.status != 'archived'
         left join review_subject_state
           on review_subject_state.entry_type = 'term'
-          and review_subject_state.cross_media_group_id in (
-            term.cross_media_group_id,
-            cross_media_group.group_key
-          )
+          and review_subject_state.cross_media_group_id = term.cross_media_group_id
         where term.cross_media_group_id is not null
         group by
           term.id,
@@ -396,10 +391,7 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           and card.status != 'archived'
         left join review_subject_state
           on review_subject_state.entry_type = 'grammar'
-          and review_subject_state.cross_media_group_id in (
-            grammar_pattern.cross_media_group_id,
-            cross_media_group.group_key
-          )
+          and review_subject_state.cross_media_group_id = grammar_pattern.cross_media_group_id
         where grammar_pattern.cross_media_group_id is not null
         group by
           grammar_pattern.id,

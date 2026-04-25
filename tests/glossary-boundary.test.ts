@@ -86,6 +86,15 @@ describe("glossary feature boundary", () => {
 
     expect(violations).toEqual([]);
   });
+
+  it("keeps glossary study signal queries out of textbook query ownership", async () => {
+    const source = await readFile(
+      path.join(PROJECT_ROOT, "src/db/queries/textbook.ts"),
+      "utf8"
+    );
+
+    expect(source).not.toContain("listEntryStudySignals");
+  });
 });
 
 async function listSourceFiles(roots: readonly string[]) {
@@ -121,7 +130,10 @@ async function findImportViolations(files: readonly string[], pattern: RegExp) {
   const violations: string[] = [];
 
   for (const relativePath of files) {
-    const source = await readFile(path.join(PROJECT_ROOT, relativePath), "utf8");
+    const source = await readFile(
+      path.join(PROJECT_ROOT, relativePath),
+      "utf8"
+    );
 
     if (pattern.test(source)) {
       violations.push(relativePath);
