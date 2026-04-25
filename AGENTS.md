@@ -83,6 +83,10 @@ src/
     seed.ts         Seeder dati iniziali
     migrate.ts      Runner migrazioni
   domain/           Logica di dominio pura, zero dipendenze framework
+  features/         Moduli feature-oriented condivisi tra route, componenti e test
+    textbook/       Contratti e helper del textbook reader
+      client/       Stato e adapter client-side del reader
+      server/       API server-side e loader condivisi del textbook
   lib/              Utility e helper condivisi tra app/ e scripts/
     content/        Utility per parser, validazione e sync dei bundle Markdown
       importer/     Pipeline di import e rendering dei bundle nel modello applicativo
