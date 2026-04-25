@@ -2,17 +2,19 @@ import path from "node:path";
 
 import {
   getLessonIdBySlug,
-  getMediaBySlug,
-  listLessonsByMediaId,
+  listLessonsByMediaId
+} from "../db/queries/lessons.ts";
+import { getMediaBySlug } from "../db/queries/media.ts";
+import {
   listLessonPronunciationCards,
   listPronunciationEntryRefsByCardIds,
   listReviewPronunciationCards
-} from "@/db/queries";
-import type { DatabaseClient } from "@/db";
-import { parseContentRoot, parseMediaDirectory } from "@/lib/content";
-import type { NormalizedMediaBundle } from "@/lib/content/types";
-import { buildEntryKey } from "@/lib/entry-id";
-import { loadValidatedManifest } from "@/lib/manifest-helpers";
+} from "../db/queries/pronunciation-resolve.ts";
+import type { DatabaseClient } from "../db/index.ts";
+import { parseContentRoot, parseMediaDirectory } from "./content/index.ts";
+import type { NormalizedMediaBundle } from "./content/types.ts";
+import { buildEntryKey } from "./entry-id.ts";
+import { loadValidatedManifest } from "./manifest-helpers.ts";
 import {
   createPronunciationReuseContext,
   fetchForvoPronunciationsForBundleManual,
@@ -23,15 +25,16 @@ import {
   reconcileForvoWordAddRequestRegistry,
   refreshPronunciationReuseContextBundle,
   reuseCrossMediaPronunciationsForBundle,
+  summarizeBundlePronunciationPending,
   writeBundlePronunciationPendingSummary,
   type ForvoManualOptions,
   type PronunciationFetchNetworkOptions,
   type PronunciationReuseContext
-} from "@/lib/pronunciation";
+} from "./pronunciation.ts";
 import {
   collectPronunciationTargets,
   type PronunciationTargetEntry
-} from "@/lib/pronunciation-shared";
+} from "./pronunciation-shared.ts";
 
 export type PronunciationResolveMode = "review" | "next-lesson" | "lesson-url";
 
@@ -105,6 +108,7 @@ type ExecutePronunciationResolveForBundleInput = {
   selectedTargets: PronunciationTargetEntry[];
   updatePendingSummary: (input: {
     bundle: NormalizedMediaBundle;
+    write: boolean;
   }) => Promise<
     Awaited<ReturnType<typeof writeBundlePronunciationPendingSummary>>
   >;
@@ -207,10 +211,23 @@ export async function executePronunciationResolveForBundle(
     input.selectedTargets,
     input.refresh
   );
+  const knownMissingSkipped = input.retryKnownMissing
+    ? []
+    : actionableTargets
+        .filter((target) =>
+          input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
+        )
+        .map((target) => target.id);
+  const candidateTargets = input.retryKnownMissing
+    ? actionableTargets
+    : actionableTargets.filter(
+        (target) =>
+          !input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
+      );
   const limitedTargets =
     typeof limit === "number"
-      ? actionableTargets.slice(0, limit)
-      : actionableTargets;
+      ? candidateTargets.slice(0, limit)
+      : candidateTargets;
 
   const reuseSummary = await input.reuseCrossMedia({
     bundle: currentBundle,
@@ -247,19 +264,7 @@ export async function executePronunciationResolveForBundle(
     currentBundle = await input.refreshBundleState(currentBundle);
   }
 
-  const knownMissingSkipped = input.retryKnownMissing
-    ? []
-    : remainingTargets
-        .filter((target) =>
-          input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
-        )
-        .map((target) => target.id);
-  const forvoTargets = input.retryKnownMissing
-    ? remainingTargets
-    : remainingTargets.filter(
-        (target) =>
-          !input.knownMissingEntryIds.has(buildEntryKey(target.kind, target.id))
-      );
+  const forvoTargets = remainingTargets;
   let forvoSummary: Awaited<
     ReturnType<typeof fetchForvoPronunciationsForBundleManual>
   > | null = null;
@@ -287,7 +292,8 @@ export async function executePronunciationResolveForBundle(
   }
 
   const pendingSummary = await input.updatePendingSummary({
-    bundle: currentBundle
+    bundle: currentBundle,
+    write: !input.dryRun
   });
 
   return {
@@ -383,12 +389,18 @@ export async function resolvePronunciations(input: {
           reuseContext: params.reuseContext
         }),
       selectedTargets: bundleSelection.targets,
-      updatePendingSummary: ({ bundle }) =>
-        writeBundlePronunciationPendingSummary({
-          bundle,
-          knownMissingPath: input.knownMissingPath,
-          knownMissingRegistry
-        })
+      updatePendingSummary: ({ bundle, write }) =>
+        write
+          ? writeBundlePronunciationPendingSummary({
+              bundle,
+              knownMissingPath: input.knownMissingPath,
+              knownMissingRegistry
+            })
+          : summarizeBundlePronunciationPending({
+              bundle,
+              knownMissingPath: input.knownMissingPath,
+              knownMissingRegistry
+            })
     });
 
     summaries.push({

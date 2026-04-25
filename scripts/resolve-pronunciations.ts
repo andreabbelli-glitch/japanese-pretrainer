@@ -94,6 +94,7 @@ if (!options.mode) {
 }
 
 function parseCliOptions(argv: string[]): CliOptions {
+  const normalizedArgv = expandEqualsOptions(argv);
   const options: CliOptions = {
     contentRoot: "content",
     controlPort: 3210,
@@ -108,17 +109,21 @@ function parseCliOptions(argv: string[]): CliOptions {
     retryKnownMissing: false
   };
 
-  for (let index = 0; index < argv.length; index += 1) {
-    const argument = argv[index];
+  for (let index = 0; index < normalizedArgv.length; index += 1) {
+    const argument = normalizedArgv[index];
+
+    if (argument === "--") {
+      continue;
+    }
 
     if (argument === "--content-root") {
-      options.contentRoot = argv[index + 1] ?? options.contentRoot;
+      options.contentRoot = normalizedArgv[index + 1] ?? options.contentRoot;
       index += 1;
       continue;
     }
 
     if (argument === "--mode") {
-      const mode = argv[index + 1];
+      const mode = normalizedArgv[index + 1];
       if (
         mode === "review" ||
         mode === "next-lesson" ||
@@ -131,19 +136,19 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--media") {
-      options.mediaSlug = argv[index + 1] ?? options.mediaSlug;
+      options.mediaSlug = normalizedArgv[index + 1] ?? options.mediaSlug;
       index += 1;
       continue;
     }
 
     if (argument === "--lesson-url") {
-      options.lessonUrl = argv[index + 1] ?? options.lessonUrl;
+      options.lessonUrl = normalizedArgv[index + 1] ?? options.lessonUrl;
       index += 1;
       continue;
     }
 
     if (argument === "--limit") {
-      const parsedLimit = Number.parseInt(argv[index + 1] ?? "", 10);
+      const parsedLimit = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
 
       if (Number.isFinite(parsedLimit) && parsedLimit >= 0) {
         options.limit = parsedLimit;
@@ -164,7 +169,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--request-delay-ms") {
-      const parsedDelay = Number.parseInt(argv[index + 1] ?? "", 10);
+      const parsedDelay = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
 
       if (Number.isFinite(parsedDelay) && parsedDelay >= 0) {
         options.network.requestDelayMs = parsedDelay;
@@ -175,7 +180,10 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--request-timeout-ms") {
-      const parsedTimeout = Number.parseInt(argv[index + 1] ?? "", 10);
+      const parsedTimeout = Number.parseInt(
+        normalizedArgv[index + 1] ?? "",
+        10
+      );
 
       if (Number.isFinite(parsedTimeout) && parsedTimeout >= 0) {
         options.network.requestTimeoutMs = parsedTimeout;
@@ -186,7 +194,10 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--max-retries") {
-      const parsedRetries = Number.parseInt(argv[index + 1] ?? "", 10);
+      const parsedRetries = Number.parseInt(
+        normalizedArgv[index + 1] ?? "",
+        10
+      );
 
       if (Number.isFinite(parsedRetries) && parsedRetries >= 0) {
         options.network.maxRetries = parsedRetries;
@@ -197,7 +208,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--retry-base-delay-ms") {
-      const parsedDelay = Number.parseInt(argv[index + 1] ?? "", 10);
+      const parsedDelay = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
 
       if (Number.isFinite(parsedDelay) && parsedDelay >= 0) {
         options.network.retryBaseDelayMs = parsedDelay;
@@ -209,13 +220,13 @@ function parseCliOptions(argv: string[]): CliOptions {
 
     if (argument === "--downloads-dir") {
       options.manualDownloadsDir =
-        argv[index + 1] ?? options.manualDownloadsDir;
+        normalizedArgv[index + 1] ?? options.manualDownloadsDir;
       index += 1;
       continue;
     }
 
     if (argument === "--control-port") {
-      const parsedPort = Number.parseInt(argv[index + 1] ?? "", 10);
+      const parsedPort = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
 
       if (Number.isFinite(parsedPort) && parsedPort > 0) {
         options.controlPort = parsedPort;
@@ -231,14 +242,15 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--known-missing-file") {
-      options.knownMissingPath = argv[index + 1] ?? options.knownMissingPath;
+      options.knownMissingPath =
+        normalizedArgv[index + 1] ?? options.knownMissingPath;
       index += 1;
       continue;
     }
 
     if (argument === "--request-registry-file") {
       options.requestRegistryPath =
-        argv[index + 1] ?? options.requestRegistryPath;
+        normalizedArgv[index + 1] ?? options.requestRegistryPath;
       index += 1;
       continue;
     }
@@ -255,4 +267,19 @@ function parseCliOptions(argv: string[]): CliOptions {
   }
 
   return options;
+}
+
+function expandEqualsOptions(argv: string[]) {
+  return argv.flatMap((argument) => {
+    if (!argument.startsWith("--") || !argument.includes("=")) {
+      return [argument];
+    }
+
+    const separatorIndex = argument.indexOf("=");
+
+    return [
+      argument.slice(0, separatorIndex),
+      argument.slice(separatorIndex + 1)
+    ];
+  });
 }

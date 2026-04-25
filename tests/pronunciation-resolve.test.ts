@@ -1,7 +1,9 @@
 import path from "node:path";
+import { execFile } from "node:child_process";
 import { cp, mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -32,6 +34,7 @@ import type { PronunciationTargetEntry } from "@/lib/pronunciation-shared";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const execFileAsync = promisify(execFile);
 const fixturesRoot = path.resolve(__dirname, "fixtures", "content");
 const validContentRoot = path.join(fixturesRoot, "valid", "content");
 const NOW = "2026-04-18T09:00:00.000Z";
@@ -39,13 +42,15 @@ const NOW = "2026-04-18T09:00:00.000Z";
 describe("pronunciation resolve", () => {
   let contentRoot = "";
   let database: DatabaseClient;
+  let databasePath = "";
   let tempDir = "";
 
   beforeEach(async () => {
     tempDir = await mkdtemp(path.join(tmpdir(), "jcs-pronunciation-resolve-"));
     contentRoot = path.join(tempDir, "content");
+    databasePath = path.join(tempDir, "test.sqlite");
     database = createDatabaseClient({
-      databaseUrl: path.join(tempDir, "test.sqlite")
+      databaseUrl: databasePath
     });
 
     await runMigrations(database);
@@ -82,6 +87,52 @@ describe("pronunciation resolve", () => {
     expect(() =>
       parseTextbookLessonUrl("/media/sample-game/glossary/term/term-kiku")
     ).toThrow("Unsupported lesson URL");
+  });
+
+  it("can be imported by the Node strip-types runtime used by pronunciation scripts", async () => {
+    await execFileAsync(
+      process.execPath,
+      [
+        "--experimental-strip-types",
+        "-e",
+        "await import('./src/lib/pronunciation-resolve.ts')"
+      ],
+      {
+        cwd: process.cwd()
+      }
+    );
+  });
+
+  it("accepts equals-form options in the resolver CLI used by the skill wrapper", async () => {
+    closeDatabaseClient(database);
+
+    try {
+      const { stdout } = await execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+          "--mode=review",
+          `--content-root=${contentRoot}`,
+          "--dry-run",
+          "--limit=0",
+          "--no-open"
+        ],
+        {
+          cwd: process.cwd(),
+          env: {
+            ...process.env,
+            DATABASE_URL: databasePath
+          }
+        }
+      );
+
+      expect(stdout).toContain("mode=review");
+    } finally {
+      database = createDatabaseClient({
+        databaseUrl: databasePath
+      });
+    }
   });
 
   it("selects review targets globally and deduplicates linked entries", async () => {
@@ -278,6 +329,67 @@ describe("pronunciation resolve", () => {
     expect(summary.forvoSummary?.matched).toBe(1);
   });
 
+  it("summarizes pending pronunciations without writing during dry runs", async () => {
+    const bundle = await loadBundle(contentRoot, "sample-game");
+    const pendingSpy = vi.fn(async () => ({
+      audioBackedCount: 0,
+      knownMissingCount: 0,
+      mediaSlug: "sample-game",
+      pending: [],
+      pendingCount: 0,
+      totalTargets: 1,
+      workflowFilePath: path.join(
+        bundle.mediaDirectory,
+        "workflow",
+        "pronunciation-pending.json"
+      )
+    }));
+
+    await executePronunciationResolveForBundle({
+      bundle,
+      dryRun: true,
+      fetchOffline: vi.fn(async () => ({
+        matched: 0,
+        missed: 1,
+        results: [
+          {
+            entryId: "term-yomu",
+            kind: "term" as const,
+            status: "miss" as const
+          }
+        ]
+      })),
+      fetchForvoManual: vi.fn(async () => ({
+        knownMissingSkipped: [],
+        matched: 0,
+        missed: 1,
+        requestedUnresolved: [],
+        results: [
+          {
+            entryId: "term-yomu",
+            kind: "term" as const,
+            status: "miss" as const
+          }
+        ]
+      })),
+      knownMissingEntryIds: new Set(),
+      refreshBundleState: vi.fn(async () => bundle),
+      reuseCrossMedia: vi.fn(async () => ({
+        ambiguous: 0,
+        reused: 0,
+        results: []
+      })),
+      reuseContext: { audioBackedEntries: [] },
+      selectedTargets: [createTarget(bundle, "term", "term-yomu")],
+      updatePendingSummary: pendingSpy
+    });
+
+    expect(pendingSpy).toHaveBeenCalledWith({
+      bundle,
+      write: false
+    });
+  });
+
   it("applies limit after dropping already audio-backed targets", async () => {
     const bundle = await loadBundle(contentRoot, "sample-game");
     const audioBackedTarget = createTarget(
@@ -407,6 +519,76 @@ describe("pronunciation resolve", () => {
 
     expect(forvoSpy).not.toHaveBeenCalled();
     expect(summary.finalEntryIds).toEqual([]);
+    expect(summary.knownMissingSkipped).toEqual(["term-yomu"]);
+  });
+
+  it("does not let known-missing entries consume the batch limit", async () => {
+    const bundle = await loadBundle(contentRoot, "sample-game");
+    const forvoSpy = vi.fn(async () => ({
+      knownMissingSkipped: [],
+      matched: 1,
+      missed: 0,
+      requestedUnresolved: [],
+      results: [
+        {
+          entryId: "term-kiku",
+          kind: "term" as const,
+          speaker: "Test Speaker",
+          status: "matched" as const,
+          votes: 5
+        }
+      ]
+    }));
+
+    const summary = await executePronunciationResolveForBundle({
+      bundle,
+      dryRun: false,
+      fetchOffline: vi.fn(async () => ({
+        matched: 0,
+        missed: 1,
+        results: [
+          {
+            entryId: "term-kiku",
+            kind: "term" as const,
+            status: "miss" as const
+          }
+        ]
+      })),
+      fetchForvoManual: forvoSpy,
+      knownMissingEntryIds: new Set(["term:term-yomu"]),
+      limit: 1,
+      refreshBundleState: vi.fn(async () => bundle),
+      reuseCrossMedia: vi.fn(async () => ({
+        ambiguous: 0,
+        reused: 0,
+        results: []
+      })),
+      reuseContext: { audioBackedEntries: [] },
+      selectedTargets: [
+        createTarget(bundle, "term", "term-yomu"),
+        createTarget(bundle, "term", "term-kiku")
+      ],
+      updatePendingSummary: vi.fn(async () => ({
+        audioBackedCount: 0,
+        knownMissingCount: 1,
+        mediaSlug: "sample-game",
+        pending: [],
+        pendingCount: 0,
+        totalTargets: 2,
+        workflowFilePath: path.join(
+          bundle.mediaDirectory,
+          "workflow",
+          "pronunciation-pending.json"
+        )
+      }))
+    });
+
+    expect(forvoSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        entryIds: ["term-kiku"]
+      })
+    );
+    expect(summary.finalEntryIds).toEqual(["term-kiku"]);
     expect(summary.knownMissingSkipped).toEqual(["term-yomu"]);
   });
 
@@ -848,7 +1030,7 @@ async function seedResolveDatabase(database: DatabaseClient) {
       audioSrc: null,
       createdAt: NOW,
       crossMediaGroupId: null,
-      id: "term-kiku",
+      id: "db-term-kiku",
       lemma: "聞く",
       meaningIt: "ascoltare",
       meaningLiteralIt: null,
@@ -1045,7 +1227,7 @@ async function seedResolveDatabase(database: DatabaseClient) {
     },
     {
       cardId: "card-kiku-recognition",
-      entryId: "term-kiku",
+      entryId: "db-term-kiku",
       entryType: "term",
       id: "card-entry-kiku-primary",
       relationshipType: "primary"

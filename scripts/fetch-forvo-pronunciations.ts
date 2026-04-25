@@ -202,6 +202,7 @@ if (!parseResult.ok) {
 }
 
 function parseCliOptions(argv: string[]): CliOptions {
+  const normalizedArgv = expandEqualsOptions(argv);
   const options: CliOptions = {
     controlPort: 3210,
     contentRoot: "content",
@@ -222,17 +223,21 @@ function parseCliOptions(argv: string[]): CliOptions {
     words: []
   };
 
-  for (let index = 0; index < argv.length; index += 1) {
-    const argument = argv[index];
+  for (let index = 0; index < normalizedArgv.length; index += 1) {
+    const argument = normalizedArgv[index];
+
+    if (argument === "--") {
+      continue;
+    }
 
     if (argument === "--content-root") {
-      options.contentRoot = argv[index + 1] ?? options.contentRoot;
+      options.contentRoot = normalizedArgv[index + 1] ?? options.contentRoot;
       index += 1;
       continue;
     }
 
     if (argument === "--control-port") {
-      const parsedPort = Number.parseInt(argv[index + 1] ?? "", 10);
+      const parsedPort = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
 
       if (Number.isFinite(parsedPort) && parsedPort > 0) {
         options.controlPort = parsedPort;
@@ -243,7 +248,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--media") {
-      const mediaSlug = argv[index + 1];
+      const mediaSlug = normalizedArgv[index + 1];
 
       if (mediaSlug) {
         options.mediaSlugs.push(mediaSlug);
@@ -254,7 +259,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--limit") {
-      const parsedLimit = Number.parseInt(argv[index + 1] ?? "", 10);
+      const parsedLimit = Number.parseInt(normalizedArgv[index + 1] ?? "", 10);
 
       if (Number.isFinite(parsedLimit) && parsedLimit >= 0) {
         options.limit = parsedLimit;
@@ -265,7 +270,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--word") {
-      const word = argv[index + 1];
+      const word = normalizedArgv[index + 1];
 
       if (word) {
         options.words.push(word);
@@ -276,7 +281,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--entry") {
-      const entryId = argv[index + 1];
+      const entryId = normalizedArgv[index + 1];
 
       if (entryId) {
         options.entryIds.push(entryId);
@@ -287,7 +292,7 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--words-file") {
-      options.wordListPath = argv[index + 1];
+      options.wordListPath = normalizedArgv[index + 1];
       index += 1;
       continue;
     }
@@ -299,21 +304,21 @@ function parseCliOptions(argv: string[]): CliOptions {
 
     if (argument === "--downloads-dir") {
       options.manualDownloadsDir =
-        argv[index + 1] ?? options.manualDownloadsDir;
+        normalizedArgv[index + 1] ?? options.manualDownloadsDir;
       index += 1;
       continue;
     }
 
     if (argument === "--known-missing-file") {
       options.knownMissingPath =
-        argv[index + 1] ?? options.knownMissingPath;
+        normalizedArgv[index + 1] ?? options.knownMissingPath;
       index += 1;
       continue;
     }
 
     if (argument === "--request-registry-file") {
       options.requestRegistryPath =
-        argv[index + 1] ?? options.requestRegistryPath;
+        normalizedArgv[index + 1] ?? options.requestRegistryPath;
       index += 1;
       continue;
     }
@@ -329,13 +334,16 @@ function parseCliOptions(argv: string[]): CliOptions {
     }
 
     if (argument === "--profile-dir") {
-      options.profileDir = argv[index + 1] ?? options.profileDir;
+      options.profileDir = normalizedArgv[index + 1] ?? options.profileDir;
       index += 1;
       continue;
     }
 
     if (argument === "--browser-timeout-ms") {
-      const parsedTimeout = Number.parseInt(argv[index + 1] ?? "", 10);
+      const parsedTimeout = Number.parseInt(
+        normalizedArgv[index + 1] ?? "",
+        10
+      );
 
       if (Number.isFinite(parsedTimeout) && parsedTimeout > 0) {
         options.browserTimeoutMs = parsedTimeout;
@@ -372,4 +380,19 @@ function parseCliOptions(argv: string[]): CliOptions {
   }
 
   return options;
+}
+
+function expandEqualsOptions(argv: string[]) {
+  return argv.flatMap((argument) => {
+    if (!argument.startsWith("--") || !argument.includes("=")) {
+      return [argument];
+    }
+
+    const separatorIndex = argument.indexOf("=");
+
+    return [
+      argument.slice(0, separatorIndex),
+      argument.slice(separatorIndex + 1)
+    ];
+  });
 }

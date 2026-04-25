@@ -1,11 +1,13 @@
-import { and, asc, eq, inArray } from "drizzle-orm";
+import { and, asc, eq, inArray, sql } from "drizzle-orm";
 
 import type { DatabaseQueryClient } from "../client.ts";
 import {
   card,
   cardEntryLink,
+  grammarPattern,
   lesson,
-  lessonProgress
+  lessonProgress,
+  term
 } from "../schema/index.ts";
 
 export async function listReviewPronunciationCards(
@@ -56,12 +58,23 @@ export async function listPronunciationEntryRefsByCardIds(
   return database
     .select({
       cardId: cardEntryLink.cardId,
-      entryId: cardEntryLink.entryId,
+      entryId: sql<string>`COALESCE(${term.sourceId}, ${grammarPattern.sourceId}, ${cardEntryLink.entryId})`,
       entryType: cardEntryLink.entryType,
       mediaId: card.mediaId
     })
     .from(cardEntryLink)
     .innerJoin(card, eq(card.id, cardEntryLink.cardId))
+    .leftJoin(
+      term,
+      and(eq(cardEntryLink.entryType, "term"), eq(term.id, cardEntryLink.entryId))
+    )
+    .leftJoin(
+      grammarPattern,
+      and(
+        eq(cardEntryLink.entryType, "grammar"),
+        eq(grammarPattern.id, cardEntryLink.entryId)
+      )
+    )
     .where(inArray(cardEntryLink.cardId, cardIds))
     .orderBy(
       asc(card.mediaId),
