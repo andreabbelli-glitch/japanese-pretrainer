@@ -52,7 +52,7 @@ import { buildPitchAccentData } from "@/lib/pitch-accent";
 import { getReviewCardDetailData } from "@/lib/review";
 import { setReviewCardSuspended } from "@/lib/review-service";
 import * as settings from "@/lib/settings";
-import { buildReviewSessionHref } from "@/lib/site";
+import { buildReviewSessionHref, mediaGlossaryEntryHref } from "@/lib/site";
 import {
   crossMediaOverflowFixture,
   crossMediaFixture,
@@ -73,6 +73,21 @@ const validContentRoot = path.join(
   "valid",
   "content"
 );
+
+function expectedGlossaryEntryHref(
+  mediaSlug: string,
+  kind: "term" | "grammar",
+  surface: string,
+  sourceId: string
+) {
+  return mediaGlossaryEntryHref(mediaSlug, kind, surface, {
+    sourceId
+  });
+}
+
+function expectedGlossaryEntryPath(kind: "term" | "grammar", surface: string) {
+  return `/glossary/${kind}/${encodeURIComponent(surface)}`;
+}
 
 const reusedSourceIdFixture = {
   sourceId: "term-shared-source",
@@ -369,10 +384,20 @@ describe("glossary data", () => {
     expect(data?.results).toHaveLength(1);
     expect(data?.results[0]?.id).toBe(developmentFixture.termId);
     expect(data?.results[0]?.href).toBe(
-      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}`
+      expectedGlossaryEntryHref(
+        developmentFixture.mediaSlug,
+        "term",
+        "行く",
+        developmentFixture.termId
+      )
     );
     expect(data?.results[0]?.bestLocalHref).toBe(
-      `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}`
+      expectedGlossaryEntryHref(
+        developmentFixture.mediaSlug,
+        "term",
+        "行く",
+        developmentFixture.termId
+      )
     );
     expect(data?.results[0]?.primaryLesson?.roleLabel).toBe("Introdotta");
     expect(data?.results[0]?.hasCards).toBe(true);
@@ -458,7 +483,12 @@ describe("glossary data", () => {
     expect(data.results[0]?.cardCount).toBe(2);
     expect(data.results[0]?.mediaCount).toBe(2);
     expect(data.results[0]?.bestLocalHref).toBe(
-      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+      expectedGlossaryEntryHref(
+        crossMediaFixture.beta.mediaSlug,
+        "term",
+        "コスト",
+        crossMediaFixture.beta.termSourceId
+      )
     );
     expect(data.results[0]?.mediaHits).toHaveLength(2);
     expect(data.results[0]?.mediaHits.map((hit) => hit.mediaSlug)).toEqual([
@@ -471,7 +501,12 @@ describe("glossary data", () => {
     expect(
       data.results[0]?.mediaHits.find((hit) => hit.isBestLocal)?.href
     ).toBe(
-      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+      expectedGlossaryEntryHref(
+        crossMediaFixture.beta.mediaSlug,
+        "term",
+        "コスト",
+        crossMediaFixture.beta.termSourceId
+      )
     );
   });
 
@@ -522,7 +557,12 @@ describe("glossary data", () => {
       crossMediaFixture.alpha.mediaSlug
     ]);
     expect(allCardsData.results[0]?.bestLocalHref).toBe(
-      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.mixedCardTermSourceId}`
+      expectedGlossaryEntryHref(
+        crossMediaFixture.beta.mediaSlug,
+        "term",
+        "余白",
+        crossMediaFixture.beta.mixedCardTermSourceId
+      )
     );
 
     expect(withCardsData.results.map((entry) => entry.label)).toEqual(["余白"]);
@@ -535,7 +575,12 @@ describe("glossary data", () => {
     );
     expect(withCardsData.results[0]?.mediaHits[0]?.hasCards).toBe(true);
     expect(withCardsData.results[0]?.bestLocalHref).toBe(
-      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.mixedCardTermSourceId}`
+      expectedGlossaryEntryHref(
+        crossMediaFixture.beta.mediaSlug,
+        "term",
+        "余白",
+        crossMediaFixture.beta.mixedCardTermSourceId
+      )
     );
 
     expect(withoutCardsData.results.map((entry) => entry.label)).toEqual([
@@ -550,7 +595,12 @@ describe("glossary data", () => {
     );
     expect(withoutCardsData.results[0]?.mediaHits[0]?.hasCards).toBe(false);
     expect(withoutCardsData.results[0]?.bestLocalHref).toBe(
-      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.mixedNoCardTermSourceId}`
+      expectedGlossaryEntryHref(
+        crossMediaFixture.alpha.mediaSlug,
+        "term",
+        "余白",
+        crossMediaFixture.alpha.mixedNoCardTermSourceId
+      )
     );
   });
 
@@ -672,8 +722,8 @@ describe("glossary data", () => {
       true
     );
     expect(pageRefs.map((ref) => ref.resultKey)).toEqual([
-      `term:group:${crossMediaFixture.termGroup}`,
-      `term:group:${crossMediaFixture.mixedCardsGroup}`
+      "term:group:コスト",
+      "term:group:余白"
     ]);
     expect(pageRefs.every((ref) => ref.crossMediaGroupId !== null)).toBe(true);
     expect(pageData.results.map((entry) => entry.label)).toEqual([
@@ -682,8 +732,18 @@ describe("glossary data", () => {
     ]);
     expect(pageData.results.map((entry) => entry.mediaCount)).toEqual([2, 2]);
     expect(pageData.results.map((entry) => entry.bestLocalHref)).toEqual([
-      `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`,
-      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.mixedCardTermSourceId}`
+      expectedGlossaryEntryHref(
+        crossMediaFixture.alpha.mediaSlug,
+        "term",
+        "コスト",
+        crossMediaFixture.alpha.termSourceId
+      ),
+      expectedGlossaryEntryHref(
+        crossMediaFixture.beta.mediaSlug,
+        "term",
+        "余白",
+        crossMediaFixture.beta.mixedCardTermSourceId
+      )
     ]);
   });
 
@@ -962,7 +1022,11 @@ describe("glossary data", () => {
     expect(markup).toContain("Pagina 2 di");
     expect(data.results[0]?.bestLocalHref).toBeDefined();
     expectMarkupHref(markup, {
-      pathname: data.results[0]!.bestLocalHref!,
+      pathname: expectedGlossaryEntryPath("term", data.results[0]!.label),
+      searchParams: {
+        media: data.results[0]!.mediaSlug,
+        source: data.results[0]!.id
+      },
       returnTo: "/glossary?page=2"
     });
   });
@@ -996,11 +1060,19 @@ describe("glossary data", () => {
     expect(markup).not.toContain("Apri voce");
     expect(markup).toContain("Aprila in");
     expectMarkupHref(markup, {
-      pathname: `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`,
+      pathname: expectedGlossaryEntryPath("term", "コスト"),
+      searchParams: {
+        media: crossMediaFixture.beta.mediaSlug,
+        source: crossMediaFixture.beta.termSourceId
+      },
       returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}`
     });
     expectMarkupHref(markup, {
-      pathname: `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`,
+      pathname: expectedGlossaryEntryPath("term", "コスト"),
+      searchParams: {
+        media: crossMediaFixture.alpha.mediaSlug,
+        source: crossMediaFixture.alpha.termSourceId
+      },
       returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}`
     });
   });
@@ -1023,7 +1095,11 @@ describe("glossary data", () => {
     const markup = renderToStaticMarkup(GlossaryPortalPage({ data }));
 
     expectMarkupHref(markup, {
-      pathname: `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}`,
+      pathname: expectedGlossaryEntryPath("term", "行く"),
+      searchParams: {
+        media: developmentFixture.mediaSlug,
+        source: developmentFixture.termId
+      },
       returnTo: `/glossary?q=iku&type=term&media=${developmentFixture.mediaSlug}&study=learning&cards=with_cards&sort=alphabetical`
     });
   });
@@ -1057,7 +1133,11 @@ describe("glossary data", () => {
       `?q=iku&amp;segment=${developmentFixture.segmentId}&amp;cards=with_cards&amp;sort=alphabetical&amp;study=learning&amp;preview=${developmentFixture.termId}&amp;previewKind=term&amp;returnTo=%2Fglossary%3Fq%3Diku%26media%3D${developmentFixture.mediaSlug}`
     );
     expectMarkupHref(markup, {
-      pathname: `/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}`,
+      pathname: expectedGlossaryEntryPath("term", "行く"),
+      searchParams: {
+        media: developmentFixture.mediaSlug,
+        source: developmentFixture.termId
+      },
       returnTo: `/glossary?q=iku&segment=${developmentFixture.segmentId}&study=learning&cards=with_cards&sort=alphabetical&returnTo=/glossary?q=iku&media=${developmentFixture.mediaSlug}`
     });
   });
@@ -1152,7 +1232,12 @@ describe("glossary data", () => {
 
     expect(data.results).toHaveLength(1);
     expect(data.results[0]?.bestLocalHref).toBe(
-      `/media/${crossMediaOverflowFixture.zeta.mediaSlug}/glossary/term/${crossMediaOverflowFixture.zeta.termSourceId}`
+      expectedGlossaryEntryHref(
+        crossMediaOverflowFixture.zeta.mediaSlug,
+        "term",
+        "コスト",
+        crossMediaOverflowFixture.zeta.termSourceId
+      )
     );
     expect(data.results[0]?.mediaHits.map((hit) => hit.mediaSlug)).toEqual([
       crossMediaOverflowFixture.zeta.mediaSlug,
@@ -1364,7 +1449,12 @@ describe("glossary data", () => {
     expect(detail?.card.back).toContain("azione in corso");
     expect(detail?.entries).toHaveLength(1);
     expect(detail?.entries[0]?.href).toBe(
-      "/media/sample-anime/glossary/grammar/grammar-teiru"
+      expectedGlossaryEntryHref(
+        "sample-anime",
+        "grammar",
+        "～ている",
+        "grammar-teiru"
+      )
     );
     expect(detail?.pronunciations[0]?.audio.src).toBe(
       "/media/sample-anime/assets/audio/grammar/grammar-teiru/grammar-teiru.mp3"
@@ -1813,7 +1903,12 @@ describe("glossary data", () => {
     expect(alphaDetail?.cards[0]?.id).toBe(crossMediaFixture.alpha.termCardId);
     expect(alphaDetail?.crossMedia?.siblings).toHaveLength(1);
     expect(alphaDetail?.crossMedia?.siblings[0]?.href).toBe(
-      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+      expectedGlossaryEntryHref(
+        crossMediaFixture.beta.mediaSlug,
+        "term",
+        "コスト",
+        crossMediaFixture.beta.termSourceId
+      )
     );
     expect(betaDetail?.entry.meaning).toBe(crossMediaFixture.beta.termMeaning);
     expect(betaDetail?.cards[0]?.id).toBe(crossMediaFixture.beta.termCardId);
@@ -1827,7 +1922,7 @@ describe("glossary data", () => {
 
     expect(markup).toContain("Compare anche in altri media");
     expect(markup).toContain(
-      `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+      "/glossary/term/%E3%82%B3%E3%82%B9%E3%83%88?media=beta&amp;source=term-beta-shared"
     );
   });
 
@@ -1885,7 +1980,11 @@ describe("glossary data", () => {
     );
     expect(markup).not.toContain("Apri in Review");
     expectMarkupHref(markup, {
-      pathname: `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`,
+      pathname: expectedGlossaryEntryPath("term", "コスト"),
+      searchParams: {
+        media: crossMediaFixture.alpha.mediaSlug,
+        source: crossMediaFixture.alpha.termSourceId
+      },
       returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}`
     });
   });
@@ -1928,7 +2027,11 @@ describe("glossary data", () => {
       }
     });
     expectMarkupHref(markup, {
-      pathname: `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`,
+      pathname: expectedGlossaryEntryPath("term", "コスト"),
+      searchParams: {
+        media: crossMediaFixture.alpha.mediaSlug,
+        source: crossMediaFixture.alpha.termSourceId
+      },
       returnTo: `/glossary?q=kosuto&media=${crossMediaFixture.beta.mediaSlug}&cards=with_cards`
     });
   });
@@ -2076,14 +2179,18 @@ describe("glossary data", () => {
       database
     );
 
-    expect(data.results).toHaveLength(2);
-    expect(new Set(data.results.map((entry) => entry.resultKey)).size).toBe(2);
+    expect(data.results).toHaveLength(1);
+    expect(new Set(data.results.map((entry) => entry.resultKey)).size).toBe(1);
     expect(data.results.map((entry) => entry.bestLocalHref)).toEqual([
-      `/media/${reusedSourceIdFixture.alpha.mediaSlug}/glossary/term/${reusedSourceIdFixture.sourceId}`,
-      `/media/${reusedSourceIdFixture.beta.mediaSlug}/glossary/term/${reusedSourceIdFixture.sourceId}`
+      expectedGlossaryEntryHref(
+        reusedSourceIdFixture.alpha.mediaSlug,
+        "term",
+        "共有",
+        reusedSourceIdFixture.sourceId
+      )
     ]);
-    expect(data.results.map((entry) => entry.mediaCount)).toEqual([1, 1]);
-    expect(data.results.map((entry) => entry.cardCount)).toEqual([1, 1]);
+    expect(data.results.map((entry) => entry.mediaCount)).toEqual([2]);
+    expect(data.results.map((entry) => entry.cardCount)).toEqual([2]);
 
     const [alphaDetail, betaDetail] = await Promise.all([
       getTermGlossaryDetailData(

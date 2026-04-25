@@ -45,7 +45,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g009-contrazione-di-dovere",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-g009-contrazione-di-dovere/forvo-manual-なきゃ-なくちゃ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%EF%BD%9E%E3%81%AA%E3%81%8D%E3%82%83%20%2F%20%EF%BD%9E%E3%81%AA%E3%81%8F%E3%81%A1%E3%82%83/#ja"
     },
     {
       "entry_type": "grammar",
@@ -88,7 +91,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g020-poter-fare",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-g020-poter-fare/forvo-manual-可能形.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%8F%AF%E8%83%BD%E5%BD%A2/#ja"
     },
     {
       "entry_type": "grammar",
@@ -98,7 +104,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g022-collega-azioni-crea-richieste-e-molte-co",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-g022-collega-azioni-crea-richieste-e-molte-co/forvo-manual-て形.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E5%BD%A2/#ja"
     },
     {
       "entry_type": "grammar",
@@ -108,64 +117,84 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g024-registro-cortese-vs-piano",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-g024-registro-cortese-vs-piano/forvo-manual-ます-辞書形.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%BE%E3%81%99%20%2F%20%E8%BE%9E%E6%9B%B8%E5%BD%A2/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g025-da-fino-a",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-g025-da-fino-a/forvo-manual-から-まて.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8B%E3%82%89%20%2F%20%E3%81%BE%E3%81%A7/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo/forvo-manual-か.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8C/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g027-luogo-dell-azione-mezzo",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-g027-luogo-dell-azione-mezzo/forvo-manual-て.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A7/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g028-con-e-citazione",
-      "pitch_accent": 1,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%A8",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/grammar/grammar-g028-con-e-citazione/forvo-manual-と.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A8/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g029-destinazione-tempo-bersaglio-esistenza",
-      "pitch_accent": 1,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AB",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/grammar/grammar-g029-destinazione-tempo-bersaglio-esistenza/forvo-manual-に.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AB/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g030-possesso-collegamento-tra-nomi",
-      "pitch_accent": 1,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AE",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/grammar/grammar-g030-possesso-collegamento-tra-nomi/forvo-manual-の.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AE/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g031-marca-il-tema",
-      "pitch_accent": 1,
-      "pitch_accent_source": "OJAD",
-      "pitch_accent_page_url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/word:%E3%81%AF",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/grammar/grammar-g031-marca-il-tema/forvo-manual-は.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AF/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g032-verso",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-g032-verso/forvo-manual-へ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%B8/#ja"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-g033-marca-l-oggetto-diretto",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-g033-marca-l-oggetto-diretto/ja-o.oga",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "No machine-readable author provided. Spacecat2~commonswiki assumed (based on copyright claims).",
+      "audio_license": "Public domain",
+      "audio_attribution": "No machine-readable source provided. Own work assumed (based on copyright claims).",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-O.oga"
     },
     {
       "entry_type": "grammar",
@@ -3457,10 +3486,12 @@
     {
       "entry_type": "term",
       "entry_id": "term-v169-atarashii",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%96%B0%E3%81%97%E3%81%84",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v169-atarashii/ll-q5287-jpn-zsrtrgh-あたらしい.wav",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "Speaker: Zsrtrgh Recorder: Zsrtrgh",
+      "audio_license": "CC BY-SA 4.0",
+      "audio_attribution": "Own work",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:LL-Q5287_(jpn)-Zsrtrgh-%E3%81%82%E3%81%9F%E3%82%89%E3%81%97%E3%81%84.wav"
     },
     {
       "entry_type": "term",
@@ -3585,10 +3616,12 @@
     {
       "entry_type": "term",
       "entry_id": "term-v185-namae",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%90%8D%E5%89%8D",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-v185-namae/ja-namae.ogg",
+      "audio_source": "wikimedia_commons",
+      "audio_speaker": "FreeMediaKid!",
+      "audio_license": "CC0",
+      "audio_attribution": "Own work",
+      "audio_page_url": "https://commons.wikimedia.org/wiki/File:Ja-namae.ogg"
     },
     {
       "entry_type": "term",

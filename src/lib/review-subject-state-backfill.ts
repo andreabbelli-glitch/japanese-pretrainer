@@ -1,15 +1,19 @@
-import { sql } from "drizzle-orm";
+import { inArray, sql } from "drizzle-orm";
 
 import type { DatabaseClient } from "../db/client.ts";
 import { listReviewCardsByMediaIds } from "../db/queries/review.ts";
 import { listReviewSubjectStatesByKeys } from "../db/queries/review-subject.ts";
-import { reviewSubjectState } from "../db/schema/review.ts";
+import {
+  reviewSubjectLog,
+  reviewSubjectState
+} from "../db/schema/review.ts";
 
 import type { ReviewSubjectStateSnapshot } from "./review-subject.ts";
 import {
   resolveReviewSubjectGroups,
   type ResolveReviewSubjectGroupsResult
 } from "./review-subject-state-lookup.ts";
+import { getDrivingEntryLinks } from "./review-model.ts";
 
 export type ReviewSubjectStateBackfillResult = {
   cardCount: number;
@@ -17,7 +21,10 @@ export type ReviewSubjectStateBackfillResult = {
   subjectCount: number;
 };
 
-type ReviewSubjectStateDatabase = Pick<DatabaseClient, "insert" | "query">;
+type ReviewSubjectStateDatabase = Pick<
+  DatabaseClient,
+  "delete" | "insert" | "query" | "update"
+>;
 
 type ReviewSubjectCoverageSnapshot = {
   cardCount: number;
@@ -43,24 +50,56 @@ export async function syncReviewSubjectState(
     };
   }
 
+  const synchronizedStates = await buildSynchronizedReviewSubjectStates(
+    database,
+    snapshot.subjectGroups
+  );
+
   await database
     .insert(reviewSubjectState)
-    .values(
-      snapshot.subjectGroups.map((group) =>
-        buildSynchronizedReviewSubjectState(group)
-      )
-    )
+    .values(synchronizedStates.map((entry) => entry.state))
     .onConflictDoUpdate({
       target: reviewSubjectState.subjectKey,
       set: {
         cardId: sql.raw("excluded.card_id"),
+        createdAt: sql.raw("excluded.created_at"),
         crossMediaGroupId: sql.raw("excluded.cross_media_group_id"),
+        difficulty: sql.raw("excluded.difficulty"),
+        dueAt: sql.raw("excluded.due_at"),
         entryId: sql.raw("excluded.entry_id"),
         entryType: sql.raw("excluded.entry_type"),
+        lapses: sql.raw("excluded.lapses"),
+        lastInteractionAt: sql.raw("excluded.last_interaction_at"),
+        lastReviewedAt: sql.raw("excluded.last_reviewed_at"),
+        learningSteps: sql.raw("excluded.learning_steps"),
+        manualOverride: sql.raw("excluded.manual_override"),
+        reps: sql.raw("excluded.reps"),
+        scheduledDays: sql.raw("excluded.scheduled_days"),
+        schedulerVersion: sql.raw("excluded.scheduler_version"),
+        stability: sql.raw("excluded.stability"),
+        state: sql.raw("excluded.state"),
         subjectType: sql.raw("excluded.subject_type"),
-        suspended: sql.raw("excluded.suspended")
+        suspended: sql.raw("excluded.suspended"),
+        updatedAt: sql.raw("excluded.updated_at")
       }
     });
+
+  for (const entry of synchronizedStates) {
+    if (entry.legacySubjectKeys.length === 0) {
+      continue;
+    }
+
+    await database
+      .update(reviewSubjectLog)
+      .set({
+        subjectKey: entry.state.subjectKey
+      })
+      .where(inArray(reviewSubjectLog.subjectKey, entry.legacySubjectKeys));
+
+    await database
+      .delete(reviewSubjectState)
+      .where(inArray(reviewSubjectState.subjectKey, entry.legacySubjectKeys));
+  }
 
   return {
     cardCount: snapshot.cardCount,
@@ -179,10 +218,48 @@ function buildInitialReviewSubjectState(
   };
 }
 
-function buildSynchronizedReviewSubjectState(
-  group: ReviewSubjectCoverageSnapshot["subjectGroups"][number]
+async function buildSynchronizedReviewSubjectStates(
+  database: ReviewSubjectStateDatabase,
+  subjectGroups: ReviewSubjectCoverageSnapshot["subjectGroups"]
 ) {
-  const currentState = group.subjectState ?? buildInitialReviewSubjectState(group);
+  const currentStates = await database.query.reviewSubjectState.findMany();
+  const candidateStatesBySubject = new Map<string, ReviewSubjectStateSnapshot[]>();
+
+  for (const state of currentStates) {
+    if (state.subjectType === "card") {
+      continue;
+    }
+
+    const subjectKeys = findCandidateCanonicalSubjectKeys(state, subjectGroups);
+
+    for (const subjectKey of subjectKeys) {
+      const states = candidateStatesBySubject.get(subjectKey) ?? [];
+
+      states.push(state);
+      candidateStatesBySubject.set(subjectKey, states);
+    }
+  }
+
+  return subjectGroups.map((group) => {
+    const candidates = candidateStatesBySubject.get(group.identity.subjectKey);
+    const currentState =
+      selectBestReviewSubjectState(candidates) ??
+      group.subjectState ??
+      buildInitialReviewSubjectState(group);
+
+    return {
+      legacySubjectKeys: (candidates ?? [])
+        .map((state) => state.subjectKey)
+        .filter((subjectKey) => subjectKey !== group.identity.subjectKey),
+      state: buildSynchronizedReviewSubjectState(group, currentState)
+    };
+  });
+}
+
+function buildSynchronizedReviewSubjectState(
+  group: ReviewSubjectCoverageSnapshot["subjectGroups"][number],
+  currentState: ReviewSubjectStateSnapshot
+) {
 
   return {
     cardId: group.representativeCard.id,
@@ -207,4 +284,122 @@ function buildSynchronizedReviewSubjectState(
     suspended: currentState.suspended,
     updatedAt: currentState.updatedAt
   };
+}
+
+function findCandidateCanonicalSubjectKeys(
+  state: ReviewSubjectStateSnapshot,
+  subjectGroups: ReviewSubjectCoverageSnapshot["subjectGroups"]
+) {
+  const subjectKeys: string[] = [];
+
+  for (const group of subjectGroups) {
+    if (
+      state.subjectKey === group.identity.subjectKey ||
+      isLegacyStateForSubjectGroup(state, group)
+    ) {
+      subjectKeys.push(group.identity.subjectKey);
+    }
+  }
+
+  return subjectKeys;
+}
+
+function isLegacyStateForSubjectGroup(
+  state: ReviewSubjectStateSnapshot,
+  group: ReviewSubjectCoverageSnapshot["subjectGroups"][number]
+) {
+  if (
+    !group.identity.entryType ||
+    state.entryType !== group.identity.entryType ||
+    state.subjectType === "card"
+  ) {
+    return false;
+  }
+
+  const entryIds = collectSubjectGroupEntryIds(group);
+
+  return Boolean(state.entryId && entryIds.has(state.entryId));
+}
+
+function collectSubjectGroupEntryIds(
+  group: ReviewSubjectCoverageSnapshot["subjectGroups"][number]
+) {
+  const entryIds = new Set<string>();
+
+  for (const card of group.cards) {
+    for (const link of getDrivingEntryLinks(card.entryLinks)) {
+      if (link.entryType === group.identity.entryType) {
+        entryIds.add(link.entryId);
+      }
+    }
+  }
+
+  if (group.identity.entryId) {
+    entryIds.add(group.identity.entryId);
+  }
+
+  return entryIds;
+}
+
+function selectBestReviewSubjectState(
+  states: ReviewSubjectStateSnapshot[] | undefined
+) {
+  if (!states || states.length === 0) {
+    return null;
+  }
+
+  return [...states].sort(compareReviewSubjectStatesForMerge)[0] ?? null;
+}
+
+function compareReviewSubjectStatesForMerge(
+  left: ReviewSubjectStateSnapshot,
+  right: ReviewSubjectStateSnapshot
+) {
+  const leftRank = getReviewSubjectStateMergeRank(left);
+  const rightRank = getReviewSubjectStateMergeRank(right);
+
+  if (leftRank !== rightRank) {
+    return leftRank - rightRank;
+  }
+
+  if (leftRank === 1) {
+    const stabilityDifference =
+      (right.stability ?? Number.NEGATIVE_INFINITY) -
+      (left.stability ?? Number.NEGATIVE_INFINITY);
+
+    if (stabilityDifference !== 0) {
+      return stabilityDifference;
+    }
+  }
+
+  if (left.lastInteractionAt !== right.lastInteractionAt) {
+    return right.lastInteractionAt.localeCompare(left.lastInteractionAt);
+  }
+
+  if (left.reps !== right.reps) {
+    return right.reps - left.reps;
+  }
+
+  return left.subjectKey.localeCompare(right.subjectKey);
+}
+
+function getReviewSubjectStateMergeRank(state: ReviewSubjectStateSnapshot) {
+  if (
+    state.manualOverride ||
+    state.suspended ||
+    state.state === "known_manual" ||
+    state.state === "suspended"
+  ) {
+    return 0;
+  }
+
+  if (state.state === "review" || state.state === "relearning") {
+    return 1;
+  }
+
+  if (state.state === "learning") {
+    return 2;
+  }
+
+  return 3;
 }

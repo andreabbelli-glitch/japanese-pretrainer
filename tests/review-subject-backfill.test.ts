@@ -2,6 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
+import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
@@ -10,7 +11,12 @@ import {
   type DatabaseClient
 } from "@/db";
 import { runMigrations } from "@/db/migrate";
-import { lessonProgress, reviewSubjectState } from "@/db/schema";
+import {
+  lessonProgress,
+  reviewSubjectLog,
+  reviewSubjectState,
+  term
+} from "@/db/schema";
 import { getGlobalReviewPageData, getReviewPageData } from "@/lib/review";
 import { importContentWorkspace } from "@/lib/content/importer";
 import { backfillReviewSubjectState } from "@/lib/review-subject-state-backfill";
@@ -137,5 +143,141 @@ describe("review subject state recovery backfill", () => {
     expect(afterBeta?.selectedCard?.bucket).toBe(
       beforeBeta?.selectedCard?.bucket ?? null
     );
+  });
+
+  it("merges legacy per-entry subject states into the canonical surface subject and rewrites logs", async () => {
+    const contentRoot = path.join(tempDir, "cross-media-state-merge");
+
+    await writeCrossMediaContentFixture(contentRoot);
+
+    const importResult = await importContentWorkspace({
+      contentRoot,
+      database,
+      now: new Date("2026-03-11T08:00:00.000Z")
+    });
+
+    expect(importResult.status).toBe("completed");
+
+    const [alphaTerm, betaTerm] = await Promise.all([
+      database.query.term.findFirst({
+        where: eq(term.sourceId, crossMediaFixture.alpha.termSourceId)
+      }),
+      database.query.term.findFirst({
+        where: eq(term.sourceId, crossMediaFixture.beta.termSourceId)
+      })
+    ]);
+
+    expect(alphaTerm?.crossMediaGroupId).toBeTruthy();
+    expect(betaTerm?.crossMediaGroupId).toBe(alphaTerm?.crossMediaGroupId);
+
+    const canonicalSubjectKey = `group:term:${alphaTerm?.crossMediaGroupId}`;
+
+    await database.insert(reviewSubjectState).values([
+      {
+        subjectKey: `entry:term:${alphaTerm!.id}`,
+        subjectType: "entry",
+        entryType: "term",
+        crossMediaGroupId: null,
+        entryId: alphaTerm!.id,
+        cardId: crossMediaFixture.alpha.termCardId,
+        state: "known_manual",
+        stability: null,
+        difficulty: null,
+        dueAt: null,
+        lastReviewedAt: null,
+        lastInteractionAt: "2026-03-11T08:30:00.000Z",
+        scheduledDays: 0,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 0,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: true,
+        suspended: false,
+        createdAt: "2026-03-11T08:00:00.000Z",
+        updatedAt: "2026-03-11T08:30:00.000Z"
+      },
+      {
+        subjectKey: `entry:term:${betaTerm!.id}`,
+        subjectType: "entry",
+        entryType: "term",
+        crossMediaGroupId: null,
+        entryId: betaTerm!.id,
+        cardId: crossMediaFixture.beta.termCardId,
+        state: "review",
+        stability: 99,
+        difficulty: 2,
+        dueAt: "2026-04-11T08:00:00.000Z",
+        lastReviewedAt: "2026-03-11T08:40:00.000Z",
+        lastInteractionAt: "2026-03-11T08:40:00.000Z",
+        scheduledDays: 31,
+        learningSteps: 0,
+        lapses: 0,
+        reps: 9,
+        schedulerVersion: "fsrs_v1",
+        manualOverride: false,
+        suspended: false,
+        createdAt: "2026-03-11T08:00:00.000Z",
+        updatedAt: "2026-03-11T08:40:00.000Z"
+      }
+    ]);
+    await database.insert(reviewSubjectLog).values([
+      {
+        id: "legacy-log-alpha",
+        subjectKey: `entry:term:${alphaTerm!.id}`,
+        cardId: crossMediaFixture.alpha.termCardId,
+        answeredAt: "2026-03-11T08:30:00.000Z",
+        rating: "easy",
+        previousState: "new",
+        newState: "known_manual",
+        scheduledDueAt: null,
+        elapsedDays: 0,
+        responseMs: 1200,
+        schedulerVersion: "fsrs_v1"
+      },
+      {
+        id: "legacy-log-beta",
+        subjectKey: `entry:term:${betaTerm!.id}`,
+        cardId: crossMediaFixture.beta.termCardId,
+        answeredAt: "2026-03-11T08:40:00.000Z",
+        rating: "good",
+        previousState: "learning",
+        newState: "review",
+        scheduledDueAt: "2026-04-11T08:00:00.000Z",
+        elapsedDays: 1,
+        responseMs: 1800,
+        schedulerVersion: "fsrs_v1"
+      }
+    ]);
+
+    await backfillReviewSubjectState(database, {
+      now: new Date("2026-03-11T09:00:00.000Z")
+    });
+
+    const canonicalState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, canonicalSubjectKey)
+    });
+    const oldAlphaState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, `entry:term:${alphaTerm!.id}`)
+    });
+    const oldBetaState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, `entry:term:${betaTerm!.id}`)
+    });
+    const rewrittenLogs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, canonicalSubjectKey)
+    });
+
+    expect(canonicalState).toMatchObject({
+      manualOverride: true,
+      state: "known_manual",
+      subjectKey: canonicalSubjectKey,
+      subjectType: "group"
+    });
+    expect(oldAlphaState).toBeUndefined();
+    expect(oldBetaState).toBeUndefined();
+    expect(rewrittenLogs.map((log) => log.id).sort()).toEqual([
+      "legacy-log-alpha",
+      "legacy-log-beta"
+    ]);
+    expect(rewrittenLogs.every((log) => log.cardId)).toBe(true);
   });
 });

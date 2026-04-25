@@ -153,7 +153,9 @@ export function buildResolvedEntriesFromMaps(input: {
       buildRankedGlossaryEntry(entry, query, studyState) ??
       ({
         ...entry,
-        href: mediaGlossaryEntryHref(entry.mediaSlug, entry.kind, entry.id),
+        href: mediaGlossaryEntryHref(entry.mediaSlug, entry.kind, entry.label, {
+          sourceId: entry.id
+        }),
         matchBadges: [],
         matchedFields: {
           aliases: []

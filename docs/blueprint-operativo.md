@@ -155,7 +155,8 @@ sono la sorgente operativa.
 - `/media/[mediaSlug]`
 - `/media/[mediaSlug]/textbook`
 - `/media/[mediaSlug]/textbook/[lessonSlug]`
-- `/media/[mediaSlug]/glossary`
+- `/glossary?media=[mediaSlug]` come vista globale filtrata per media; le route
+  locali `/media/[mediaSlug]/glossary` non sono superfici supportate
 - `/media/[mediaSlug]/review` come filtro verticale sullo stesso sistema, non
   come launcher indipendente
 - `/kanji-clash` come workspace separato per contrasti automatici e drill

@@ -27,6 +27,11 @@ export type GlossaryHrefInput = {
   study?: GlossaryStudyFilter;
 };
 
+export type GlossaryEntryHrefOptions = {
+  media?: string;
+  sourceId?: string;
+};
+
 export type KanjiClashHrefInput = {
   media?: string;
   mode?: KanjiClashMode;
@@ -114,27 +119,47 @@ export function mediaAssetHref(mediaSlug: string, assetPath: string): Route {
 }
 
 export function mediaGlossaryTermHref(
-  mediaSlug: string,
-  entryId: string
+  entrySurface: string,
+  options: GlossaryEntryHrefOptions = {}
 ): Route {
-  return `/media/${mediaSlug}/glossary/term/${entryId}` as Route;
+  return globalGlossaryEntryHref("term", entrySurface, options);
 }
 
 export function mediaGlossaryGrammarHref(
-  mediaSlug: string,
-  entryId: string
+  entrySurface: string,
+  options: GlossaryEntryHrefOptions = {}
 ): Route {
-  return `/media/${mediaSlug}/glossary/grammar/${entryId}` as Route;
+  return globalGlossaryEntryHref("grammar", entrySurface, options);
 }
 
 export function mediaGlossaryEntryHref(
   mediaSlug: string,
   entryKind: GlossaryEntryKind,
-  entryId: string
+  entrySurface: string,
+  options: Omit<GlossaryEntryHrefOptions, "media"> = {}
 ): Route {
   return entryKind === "term"
-    ? mediaGlossaryTermHref(mediaSlug, entryId)
-    : mediaGlossaryGrammarHref(mediaSlug, entryId);
+    ? mediaGlossaryTermHref(entrySurface, {
+        media: mediaSlug,
+        ...options
+      })
+    : mediaGlossaryGrammarHref(entrySurface, {
+        media: mediaSlug,
+        ...options
+      });
+}
+
+function globalGlossaryEntryHref(
+  entryKind: GlossaryEntryKind,
+  entrySurface: string,
+  options: GlossaryEntryHrefOptions
+): Route {
+  const encodedSurface = encodeURIComponent(entrySurface);
+
+  return buildHrefWithSearch(`/glossary/${entryKind}/${encodedSurface}`, (params) => {
+    setOptionalSearchParam(params, "media", options.media, "all");
+    setOptionalSearchParam(params, "source", options.sourceId);
+  });
 }
 
 export function buildHrefWithSearch(

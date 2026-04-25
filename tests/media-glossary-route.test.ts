@@ -1,102 +1,35 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const { redirectMock } = vi.hoisted(() => ({
-  redirectMock: vi.fn((href: string) => {
-    throw new Error(`redirect:${href}`);
+const { notFoundMock } = vi.hoisted(() => ({
+  notFoundMock: vi.fn(() => {
+    throw new Error("not-found");
   })
 }));
 
 vi.mock("next/navigation", () => ({
-  redirect: redirectMock
+  notFound: notFoundMock
 }));
 
 import MediaGlossaryRoute from "@/app/media/[mediaSlug]/glossary/page";
 
 describe("media glossary route", () => {
-  it("preserves the local segment filter when redirecting to the global glossary", async () => {
-    await expect(
-      MediaGlossaryRoute({
-        params: Promise.resolve({
-          mediaSlug: "fixture-tcg"
-        }),
-        searchParams: Promise.resolve({
-          q: "iku",
-          returnTo: "/review?answered=3&card=card-iku",
-          segment: "segment_fixture_starter_core",
-          study: "learning"
-        })
-      })
-    ).rejects.toThrow(
-      "redirect:/glossary?q=iku&media=fixture-tcg&segment=segment_fixture_starter_core&study=learning&returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"
-    );
-
-    expect(redirectMock).toHaveBeenCalledWith(
-      "/glossary?q=iku&media=fixture-tcg&segment=segment_fixture_starter_core&study=learning&returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"
-    );
+  beforeEach(() => {
+    notFoundMock.mockClear();
   });
 
-  it("keeps the first non-empty duplicated params when the local glossary url starts with empty values", async () => {
+  it("returns 404 instead of preserving legacy local glossary urls", async () => {
     await expect(
       MediaGlossaryRoute({
         params: Promise.resolve({
           mediaSlug: "fixture-tcg"
         }),
         searchParams: Promise.resolve({
-          q: ["", " iku "],
-          segment: ["", "segment_fixture_starter_core"],
-          study: ["", "learning"]
-        })
-      })
-    ).rejects.toThrow(
-      "redirect:/glossary?q=iku&media=fixture-tcg&segment=segment_fixture_starter_core&study=learning"
-    );
-
-    expect(redirectMock).toHaveBeenCalledWith(
-      "/glossary?q=iku&media=fixture-tcg&segment=segment_fixture_starter_core&study=learning"
-    );
-  });
-
-  it("skips invalid duplicated filters until it finds a valid glossary value", async () => {
-    await expect(
-      MediaGlossaryRoute({
-        params: Promise.resolve({
-          mediaSlug: "fixture-tcg"
-        }),
-        searchParams: Promise.resolve({
-          cards: ["invalid", "with_cards"],
-          q: ["", "iku"],
-          sort: ["newest", "alphabetical"],
-          study: ["oops", "learning"],
-          type: ["bad", "term"]
-        })
-      })
-    ).rejects.toThrow(
-      "redirect:/glossary?q=iku&type=term&media=fixture-tcg&study=learning&cards=with_cards&sort=alphabetical"
-    );
-
-    expect(redirectMock).toHaveBeenCalledWith(
-      "/glossary?q=iku&type=term&media=fixture-tcg&study=learning&cards=with_cards&sort=alphabetical"
-    );
-  });
-
-  it("preserves the first valid pagination value when redirecting legacy glossary urls", async () => {
-    await expect(
-      MediaGlossaryRoute({
-        params: Promise.resolve({
-          mediaSlug: "fixture-tcg"
-        }),
-        searchParams: Promise.resolve({
-          page: ["oops", "12"],
           q: "iku",
           segment: "segment_fixture_starter_core"
         })
       })
-    ).rejects.toThrow(
-      "redirect:/glossary?q=iku&media=fixture-tcg&page=12&segment=segment_fixture_starter_core"
-    );
+    ).rejects.toThrow("not-found");
 
-    expect(redirectMock).toHaveBeenCalledWith(
-      "/glossary?q=iku&media=fixture-tcg&page=12&segment=segment_fixture_starter_core"
-    );
+    expect(notFoundMock).toHaveBeenCalledOnce();
   });
 });

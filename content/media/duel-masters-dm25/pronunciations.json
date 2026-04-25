@@ -2162,7 +2162,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-sanzen",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-sanzen/forvo-manual-さんせ-ん.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/3000/#ja"
     },
     {
       "entry_type": "term",

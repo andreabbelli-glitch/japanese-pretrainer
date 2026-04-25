@@ -53,7 +53,9 @@ export function buildRankedGlossaryEntry(
 
   return {
     ...entry,
-    href: mediaGlossaryEntryHref(entry.mediaSlug, entry.kind, entry.id),
+    href: mediaGlossaryEntryHref(entry.mediaSlug, entry.kind, entry.label, {
+      sourceId: entry.id
+    }),
     matchBadges: [...new Set(sortedMatches.map((match) => match.badge))].slice(
       0,
       3

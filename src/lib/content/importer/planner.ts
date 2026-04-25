@@ -128,24 +128,20 @@ function buildCrossMediaGroupRows(
   >();
 
   for (const entry of bundle.terms) {
-    if (!entry.crossMediaGroup) {
-      continue;
-    }
+    const groupKey = buildCanonicalTermGroupKey(entry.lemma);
 
-    registry.set(`term:${entry.crossMediaGroup}`, {
+    registry.set(`term:${groupKey}`, {
       entryType: "term",
-      groupKey: entry.crossMediaGroup
+      groupKey
     });
   }
 
   for (const entry of bundle.grammarPatterns) {
-    if (!entry.crossMediaGroup) {
-      continue;
-    }
+    const groupKey = buildCanonicalGrammarGroupKey(entry.pattern);
 
-    registry.set(`grammar:${entry.crossMediaGroup}`, {
+    registry.set(`grammar:${groupKey}`, {
       entryType: "grammar",
-      groupKey: entry.crossMediaGroup
+      groupKey
     });
   }
 
@@ -384,9 +380,10 @@ function buildTermPlan(input: {
     segmentRef: input.term.segmentRef,
     sourceSegmentRef: input.term.source.segmentRef
   });
-  const crossMediaGroupId = input.term.crossMediaGroup
-    ? buildCrossMediaGroupId("term", input.term.crossMediaGroup)
-    : null;
+  const crossMediaGroupId = buildCrossMediaGroupId(
+    "term",
+    buildCanonicalTermGroupKey(input.term.lemma)
+  );
 
   return {
     aliases,
@@ -458,9 +455,10 @@ function buildGrammarPlan(input: {
     segmentRef: input.grammarPattern.segmentRef,
     sourceSegmentRef: input.grammarPattern.source.segmentRef
   });
-  const crossMediaGroupId = input.grammarPattern.crossMediaGroup
-    ? buildCrossMediaGroupId("grammar", input.grammarPattern.crossMediaGroup)
-    : null;
+  const crossMediaGroupId = buildCrossMediaGroupId(
+    "grammar",
+    buildCanonicalGrammarGroupKey(input.grammarPattern.pattern)
+  );
   const searchPatternNorm = normalizeGrammarSearchText(
     input.grammarPattern.pattern
   );
@@ -882,4 +880,12 @@ function dedupeById<T extends { id: string }>(values: T[]) {
 
 function buildCrossMediaGroupId(entryType: EntryType, groupKey: string) {
   return buildDeterministicId("cross_media_group", entryType, groupKey);
+}
+
+function buildCanonicalTermGroupKey(lemma: string) {
+  return normalizeReviewSubjectSurface(lemma);
+}
+
+function buildCanonicalGrammarGroupKey(pattern: string) {
+  return normalizeReviewSubjectSurface(pattern);
 }

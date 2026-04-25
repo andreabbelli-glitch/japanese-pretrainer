@@ -378,6 +378,124 @@ export async function loadGlossaryDetailData(
   });
 }
 
+export async function loadGlobalGlossaryDetailData(
+  kind: GlossaryKind,
+  surface: string,
+  searchParams: Record<string, string | string[] | undefined>,
+  database: DatabaseClient = db
+): Promise<GlossaryDetailData | null> {
+  return runWithTaggedCache({
+    enabled: canUseDataCache(database),
+    keyParts: [
+      "glossary",
+      "global-detail",
+      `kind:${kind}`,
+      `surface:${surface}`,
+      `media:${readFirstSearchParam(searchParams.media) ?? "all"}`,
+      `source:${readFirstSearchParam(searchParams.source) ?? "all"}`
+    ],
+    loader: () =>
+      loadGlobalGlossaryDetailDataUncached({
+        database,
+        kind,
+        mediaSlug: readFirstSearchParam(searchParams.media),
+        sourceId: readFirstSearchParam(searchParams.source),
+        surface
+      }),
+    tags: [MEDIA_LIST_TAG, GLOSSARY_SUMMARY_TAG, REVIEW_SUMMARY_TAG]
+  });
+}
+
+async function loadGlobalGlossaryDetailDataUncached(input: {
+  database: DatabaseClient;
+  kind: GlossaryKind;
+  mediaSlug?: string;
+  sourceId?: string;
+  surface: string;
+}): Promise<GlossaryDetailData | null> {
+  const resolvedGroup = await input.database.query.crossMediaGroup.findFirst({
+    where: (row, { and, eq }) =>
+      and(eq(row.entryType, input.kind), eq(row.groupKey, input.surface))
+  });
+
+  if (!resolvedGroup) {
+    return null;
+  }
+
+  const entries =
+    input.kind === "term"
+      ? await getGlossaryEntriesByCrossMediaGroupIds(input.database, "term", [
+          resolvedGroup.id
+        ])
+      : await getGlossaryEntriesByCrossMediaGroupIds(input.database, "grammar", [
+          resolvedGroup.id
+        ]);
+
+  if (entries.length === 0) {
+    return null;
+  }
+
+  const preferredEntry =
+    entries.find(
+      (entry) =>
+        entry.sourceId === input.sourceId &&
+        (!input.mediaSlug || entry.media.slug === input.mediaSlug)
+    ) ??
+    entries.find((entry) => entry.media.slug === input.mediaSlug) ??
+    entries[0]!;
+  const media = preferredEntry.media;
+  const entryRefs = entries.map((entry) => ({
+    entryId: entry.id,
+    entryType: input.kind
+  }));
+  const [lessonConnections, cardConnections, crossMediaFamily] =
+    await Promise.all([
+      listEntryLessonConnections(input.database, entryRefs),
+      listEntryCardConnections(input.database, entryRefs),
+      getCrossMediaFamilyByEntryId(input.database, input.kind, preferredEntry.id)
+    ]);
+  const entryStudySignals = cardConnections.filter(
+    (connection) => connection.cardStatus === "active"
+  );
+  const baseEntry =
+    input.kind === "term"
+      ? mapEntryToBaseModel(preferredEntry as TermGlossaryEntry, "term")
+      : mapEntryToBaseModel(preferredEntry as GrammarGlossaryEntry, "grammar");
+  const rankedEntry = {
+    ...baseEntry,
+    href: mediaGlossaryEntryHref(media.slug, input.kind, baseEntry.label, {
+      sourceId: preferredEntry.sourceId
+    }),
+    matchBadges: [],
+    matchedFields: {
+      aliases: []
+    },
+    score: 0,
+    studyState: deriveEntryStudyState(entryStudySignals)
+  };
+
+  return buildGlossaryDetailData({
+    cardConnections,
+    crossMediaFamily,
+    entry: rankedEntry,
+    lessonConnections,
+    media: buildGlossaryMediaSummary(media)
+  });
+}
+
+function readFirstSearchParam(value: string | string[] | undefined) {
+  if (Array.isArray(value)) {
+    return (
+      value.find((entry) => typeof entry === "string" && entry.trim())?.trim() ??
+      undefined
+    );
+  }
+
+  const trimmed = value?.trim();
+
+  return trimmed ? trimmed : undefined;
+}
+
 async function loadGlossaryDetailDataUncached(input: {
   database: DatabaseClient;
   entryId: string;
@@ -442,7 +560,9 @@ async function loadGlossaryDetailDataUncached(input: {
       : mapEntryToBaseModel(entry as GrammarGlossaryEntry, "grammar");
   const rankedEntry = {
     ...baseEntry,
-    href: mediaGlossaryEntryHref(media.slug, input.kind, entry.sourceId),
+    href: mediaGlossaryEntryHref(media.slug, input.kind, baseEntry.label, {
+      sourceId: entry.sourceId
+    }),
     matchBadges: [],
     matchedFields: {
       aliases: []

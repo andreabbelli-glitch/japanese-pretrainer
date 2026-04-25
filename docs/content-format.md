@@ -77,24 +77,26 @@ Implementazione rilevante:
   dall'ID editoriale;
 - la UI continua a trattare il media corrente come verita primaria.
 
-### 4.0.1 Layer cross-media esplicito
+### 4.0.1 Layer cross-media canonico
 
-In fase 2 esiste un terzo livello distinto dall'ID tecnico e dall'ID
+Il DB mantiene un livello canonico distinto dall'ID tecnico e dall'ID
 editoriale locale:
 
 - `cross_media_group`
 
-Serve solo per collegare entry locali appartenenti a media diversi quando il
-collegamento e intenzionale e dichiarato.
+Per `term` e `grammar`, l'importer assegna automaticamente il gruppo canonico
+partendo dalla superficie grafica normalizzata (`lemma` per i termini,
+`pattern` per la grammatica). Letture, audio, significati e note diverse
+restano occorrenze locali del media, ma confluiscono nella stessa voce globale
+e nello stesso subject review.
 
 Regole:
 
-- `cross_media_group` e opzionale;
+- `cross_media_group` nel Markdown resta opzionale e documentativo;
 - non sostituisce `term.id` o `grammar.id`;
-- non cambia il routing pubblico, che resta `mediaSlug + source_id locale`;
+- il routing pubblico del detail e globale: `/glossary/term/<surface>` o
+  `/glossary/grammar/<surface>`;
 - `meaning_it`, `notes_it`, lesson e card restano sempre locali al media;
-- non va usato per unire automaticamente omografi, falsi amici o label UI
-  simili ma editorialmente diverse;
 - lo stesso `cross_media_group` puo essere riusato solo dallo stesso tipo di
   entry: o tutti `term`, o tutti `grammar`;
 - dentro uno stesso media, uno stesso `cross_media_group` deve puntare a una

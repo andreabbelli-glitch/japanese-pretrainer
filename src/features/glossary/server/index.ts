@@ -3,6 +3,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import { db, type DatabaseClient } from "@/db";
 import {
   loadGlobalGlossaryAutocompleteData,
+  loadGlobalGlossaryDetailData,
   loadGlobalGlossaryPageData,
   loadGlossaryDetailData,
   loadGlossaryPageData
@@ -37,6 +38,29 @@ export async function getGlobalGlossaryAutocompleteData(
   database: DatabaseClient = db
 ): Promise<GlobalGlossaryAutocompleteSuggestion[]> {
   return loadGlobalGlossaryAutocompleteData(searchParams, database);
+}
+
+export async function getGlobalTermGlossaryDetailData(
+  surface: string,
+  searchParams: Record<string, string | string[] | undefined>,
+  database: DatabaseClient = db
+): Promise<GlossaryDetailData | null> {
+  markDataAsLive();
+  return loadGlobalGlossaryDetailData("term", surface, searchParams, database);
+}
+
+export async function getGlobalGrammarGlossaryDetailData(
+  surface: string,
+  searchParams: Record<string, string | string[] | undefined>,
+  database: DatabaseClient = db
+): Promise<GlossaryDetailData | null> {
+  markDataAsLive();
+  return loadGlobalGlossaryDetailData(
+    "grammar",
+    surface,
+    searchParams,
+    database
+  );
 }
 
 export async function getTermGlossaryDetailData(

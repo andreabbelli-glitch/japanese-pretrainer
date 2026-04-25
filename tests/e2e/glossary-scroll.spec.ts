@@ -1,16 +1,22 @@
 import { expect, test } from "@playwright/test";
 
-test("redirects the legacy local glossary route to the filtered global glossary", async ({
+test("returns not found for the legacy local glossary route", async ({
   page
 }) => {
   await page.goto(
     "/media/duel-masters-dm25/glossary?preview=term-creature&previewKind=term"
   );
-  await expect(page).toHaveURL("/glossary?media=duel-masters-dm25");
+  await expect(page).toHaveURL(
+    "/media/duel-masters-dm25/glossary?preview=term-creature&previewKind=term"
+  );
+  await expect(page.getByText("Percorso non trovato")).toBeVisible();
   await expect(
-    page.getByText("Ricerca globale")
+    page.getByRole("heading", {
+      name: "Questa pagina non è disponibile nel workspace attuale."
+    })
   ).toBeVisible();
-  await expect(page.getByRole("combobox", { name: "Media" })).toHaveValue(
-    "duel-masters-dm25"
+  await expect(page.getByRole("link", { name: "Torna ai media" })).toHaveAttribute(
+    "href",
+    "/media"
   );
 });

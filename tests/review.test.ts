@@ -58,7 +58,10 @@ import {
 import { getSafeReviewForcedContrastClientErrorMessage } from "@/lib/review-error-messages";
 import type { ReviewForcedContrastResolution } from "@/lib/review-types";
 import { scheduleReview } from "@/lib/review-scheduler";
-import { buildCanonicalReviewSessionHref } from "@/lib/site";
+import {
+  buildCanonicalReviewSessionHref,
+  mediaGlossaryEntryHref
+} from "@/lib/site";
 import * as settings from "@/lib/settings";
 import { updateStudySettings } from "@/lib/settings";
 import { importContentWorkspace } from "@/lib/content/importer";
@@ -88,6 +91,17 @@ const validContentRoot = path.join(
 );
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
 const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
+
+function expectedGlossaryEntryHref(
+  mediaSlug: string,
+  kind: "term" | "grammar",
+  surface: string,
+  sourceId: string
+) {
+  return mediaGlossaryEntryHref(mediaSlug, kind, surface, {
+    sourceId
+  });
+}
 const { revalidatePathMock } = vi.hoisted(() => ({
   revalidatePathMock: vi.fn()
 }));
@@ -1144,7 +1158,7 @@ describe("review system", () => {
           cardId: crossMediaFixture.alpha.termCardId,
           forcedContrast: {
             source: "review-grading",
-            targetResultKey: `grammar:group:${crossMediaFixture.grammarGroup}`
+            targetResultKey: "grammar:group:〜共有"
           },
           now: new Date("2026-03-11T09:00:00.000Z"),
           rating: "good",
@@ -1941,7 +1955,7 @@ describe("review system", () => {
         `href="/glossary?media=${developmentFixture.mediaSlug}&amp;returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"`
       );
       expect(markup).toContain(
-        `href="/media/${developmentFixture.mediaSlug}/glossary/term/${developmentFixture.termId}?returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"`
+        `href="/glossary/term/%E8%A1%8C%E3%81%8F?media=${developmentFixture.mediaSlug}&amp;source=${developmentFixture.termId}&amp;returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku"`
       );
       expect(markup).toContain(
         'name="returnTo" value="/review?answered=3&amp;card=card-iku"'
@@ -2475,6 +2489,12 @@ describe("review system", () => {
       expect(globalPage.selectedCard?.id).toBe(
         crossMediaFixture.alpha.termCardId
       );
+      expect(globalPage.selectedCard?.back).toContain(
+        crossMediaFixture.alpha.termMeaning
+      );
+      expect(globalPage.selectedCard?.back).toContain(
+        crossMediaFixture.beta.termMeaning
+      );
       expect(globalPage.selectedCard?.bucket).toBe("due");
       expect(globalPage.selectedCard?.contexts).toHaveLength(2);
 
@@ -2809,11 +2829,21 @@ describe("review system", () => {
         crossMediaFixture.beta.termMeaning
       );
       expect(betaDetail?.entries[0]?.href).toBe(
-        `/media/${crossMediaFixture.beta.mediaSlug}/glossary/term/${crossMediaFixture.beta.termSourceId}`
+        expectedGlossaryEntryHref(
+          crossMediaFixture.beta.mediaSlug,
+          "term",
+          "コスト",
+          crossMediaFixture.beta.termSourceId
+        )
       );
       expect(betaDetail?.crossMedia).toHaveLength(1);
       expect(betaDetail?.crossMedia[0]?.siblings[0]?.href).toBe(
-        `/media/${crossMediaFixture.alpha.mediaSlug}/glossary/term/${crossMediaFixture.alpha.termSourceId}`
+        expectedGlossaryEntryHref(
+          crossMediaFixture.alpha.mediaSlug,
+          "term",
+          "コスト",
+          crossMediaFixture.alpha.termSourceId
+        )
       );
 
       const markup = renderToStaticMarkup(

@@ -2,22 +2,10 @@
   "version": 1,
   "media_slug": "duel-masters-dm25",
   "total_targets": 323,
-  "audio_backed_count": 179,
-  "known_missing_count": 134,
-  "pending_count": 10,
+  "audio_backed_count": 180,
+  "known_missing_count": 138,
+  "pending_count": 5,
   "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-sanzen",
-      "label": "3000",
-      "reading": "さんぜん"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-mugestsu-no-mon-zetsu",
-      "label": "無月の門・絶",
-      "reading": "むげつのもんぜつ"
-    },
     {
       "entry_type": "term",
       "entry_id": "term-shiyou-kanou",
@@ -38,27 +26,9 @@
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-monotoshite",
-      "label": "～ものとして",
-      "reading": "ものとして"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card",
-      "label": "「ブロッカー」を持つ光または水のシールドカード",
-      "reading": "ぶろっかーをもつひかりまたはみずのしーるどかーど"
-    },
-    {
-      "entry_type": "grammar",
       "entry_id": "grammar-subete-ni-s-trigger-wo-ataeru",
       "label": "すべてに「S・トリガー」を与える",
       "reading": "すべてにえすとりがーをあたえる"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-byoito-full-effect",
-      "label": "自分の手札に加える、「ブロッカー」を持つ光または水のシールドカードすべてに、「S・トリガー」を与える",
-      "reading": "じぶんのてふだにくわえる ぶろっかーをもつひかりまたはみずのしーるどかーどすべてに えすとりがーをあたえる"
     },
     {
       "entry_type": "grammar",

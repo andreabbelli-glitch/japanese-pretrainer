@@ -29,6 +29,18 @@ Il repository include attualmente:
 - tooling locale per lint, format, typecheck, test unit/integration ed E2E;
 - struttura cartelle coerente con importer, persistence e UI gia in uso.
 
+## Glossary Canonico Globale
+
+Il glossary pubblico e solo globale: `/glossary` mostra l'enciclopedia
+ricercabile cross-media e le CTA dei media puntano a `/glossary?media=<slug>`.
+Le vecchie route `/media/[mediaSlug]/glossary` e detail locali non sono piu una
+superficie supportata.
+
+Termini e pattern grammaticali vengono raggruppati automaticamente per
+superficie grafica normalizzata. Le occorrenze editoriali restano locali al
+media, ma la pagina globale e la review mostrano un'unica voce/subject con le
+sfaccettature incontrate nei media studiati.
+
 ## Semantica Del Resume Textbook
 
 Le CTA come `Continua il percorso` nel Textbook e nei punti di ingresso del

@@ -176,7 +176,10 @@ function mapTooltipEntry(input: {
     glossaryHref: mediaGlossaryEntryHref(
       input.mediaSlug,
       input.kind,
-      input.entry.sourceId
+      "lemma" in input.entry ? input.entry.lemma : input.entry.pattern,
+      {
+        sourceId: input.entry.sourceId
+      }
     )
   };
 

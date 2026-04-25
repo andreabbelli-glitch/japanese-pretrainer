@@ -34,7 +34,7 @@ test("smokes core study routes for duel-masters-dm25", async ({ page }) => {
   );
   await expect(page.locator(".reader-article").first()).toBeVisible();
 
-  await page.goto(`/media/${canonicalMediaSlug}/glossary`);
+  await page.goto(`/glossary?media=${canonicalMediaSlug}`);
 
   await expect(page).toHaveURL(`/glossary?media=${canonicalMediaSlug}`);
   await expect(page.getByRole("combobox", { name: "Media" })).toHaveValue(

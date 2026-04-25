@@ -122,7 +122,10 @@ export async function loadGlossaryProgressSnapshots(
       href: mediaGlossaryEntryHref(
         preview.mediaSlug,
         preview.kind,
-        preview.sourceId
+        preview.label,
+        {
+          sourceId: preview.sourceId
+        }
       ),
       id: preview.sourceId,
       kind: preview.kind,

@@ -119,22 +119,23 @@ Tabelle incluse nel perimetro del task:
   conservano l'ID editoriale importato dal Markdown in `source_id`.
 - Per `term` e `grammar_pattern`, l'unicita editoriale e `(media_id, source_id)`
   e non piu `source_id` globale al workspace.
-- `cross_media_group` e il layer esplicito di collegamento cross-media.
-  L'authoring usa un campo opzionale `cross_media_group` nei blocchi `:::term`
-  e `:::grammar`; il DB lo materializza nella tabella dedicata e nelle FK
-  nullable `term.cross_media_group_id` / `grammar_pattern.cross_media_group_id`.
-- `cross_media_group` non sostituisce le entry locali: serve solo a recuperare
-  sibling secondarie in altri media, mantenendo `meaning_it` e `notes_it`
-  locali come fonte primaria.
+- `cross_media_group` e il layer canonico di collegamento cross-media.
+  L'importer lo assegna automaticamente dalla superficie normalizzata
+  (`term.lemma` o `grammar_pattern.pattern`); il campo Markdown
+  `cross_media_group` resta compatibile ma non e piu richiesto per unire le
+  stesse superfici.
+- `cross_media_group` non sostituisce le entry locali: recupera le occorrenze
+  del media e permette a glossary/review di mostrare una sola voce canonica con
+  `meaning_it`, `notes_it`, audio, esempi e lesson locali.
 - `entry_status` e il modello review restano separati per tenere distinti
   override manuali di entita e stato SRS.
 - I riferimenti polimorfici (`entry_type + entry_id`, `source_type + source_id`)
   non usano false foreign key; per `entry_id` il valore persistito e la chiave
   tecnica interna della entry, mentre il routing pubblico continua a usare
   l'ID editoriale locale al media.
-- In fase 2, textbook popup resta locale; glossary detail e review detail
-  possono mostrare sibling cross-media solo quando esiste un
-  `cross_media_group` esplicito.
+- Il detail pubblico del glossary e globale (`/glossary/term/<surface>` e
+  `/glossary/grammar/<surface>`); le vecchie route locali del glossary non sono
+  superfici runtime supportate.
 - Gli indici minimi richiesti da glossary, ordering e review queue sono gia
   inclusi nella migrazione iniziale.
 - Le grammar persistono anche `search_romaji_norm`, cosi le query romaji del

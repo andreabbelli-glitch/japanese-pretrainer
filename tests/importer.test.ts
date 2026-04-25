@@ -292,12 +292,21 @@ describe("content importer", () => {
     expect(await countRows(database.query.cardEntryLink.findMany())).toBe(2);
     expect(await countRows(database.query.contentImport.findMany())).toBe(2);
 
+    const persistedTerm = await database.query.term.findFirst({
+      where: eq(term.id, termDbId)
+    });
+    expect(persistedTerm?.crossMediaGroupId).toBeTruthy();
+    const canonicalSubjectKey = `group:term:${persistedTerm?.crossMediaGroupId}`;
     const persistedReviewState =
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, canonicalSubjectKey)
+      });
+    const legacyReviewState =
       await database.query.reviewSubjectState.findFirst({
         where: eq(reviewSubjectState.subjectKey, `entry:term:${termDbId}`)
       });
     const persistedReviewLog = await database.query.reviewSubjectLog.findMany({
-      where: eq(reviewSubjectLog.subjectKey, `entry:term:${termDbId}`)
+      where: eq(reviewSubjectLog.subjectKey, canonicalSubjectKey)
     });
     const persistedLessonProgress =
       await database.query.lessonProgress.findFirst({
@@ -306,6 +315,7 @@ describe("content importer", () => {
 
     expect(persistedReviewState?.state).toBe("learning");
     expect(persistedReviewState?.manualOverride).toBe(true);
+    expect(legacyReviewState).toBeUndefined();
     expect(persistedReviewLog).toHaveLength(1);
     expect(persistedLessonProgress?.status).toBe("in_progress");
   });
@@ -506,12 +516,20 @@ describe("content importer", () => {
     });
     const persistedReviewState =
       await database.query.reviewSubjectState.findFirst({
+        where: eq(
+          reviewSubjectState.subjectKey,
+          `group:term:${importedTerm?.crossMediaGroupId}`
+        )
+      });
+    const legacyReviewState =
+      await database.query.reviewSubjectState.findFirst({
         where: eq(reviewSubjectState.subjectKey, `entry:term:${termDbId}`)
       });
 
     expect(importedTerm?.meaningIt).toBe("assumere cibo");
     expect(importedCard?.back).toBe("assumere cibo");
     expect(persistedReviewState?.state).toBe("learning");
+    expect(legacyReviewState).toBeUndefined();
   });
 
   it("archives removed lessons or cards and prunes removed entries without deleting user-owned state", async () => {

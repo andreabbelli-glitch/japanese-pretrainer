@@ -82,13 +82,13 @@ test("keeps the glossary portal state while moving from global search to local d
   await expect(page.getByRole("link", { name: "Apri voce" })).toHaveCount(0);
   await expect(mediaLink).toHaveAttribute(
     "href",
-    /\/media\/duel-masters-dm25\/glossary\/term\/term-cost\?returnTo=%2Fglossary%3Fq%3Dkosuto%26cards%3Dwith_cards$/
+    /\/glossary\/term\/%E3%82%B3%E3%82%B9%E3%83%88\?media=duel-masters-dm25&source=term-cost&returnTo=%2Fglossary%3Fq%3Dkosuto%26cards%3Dwith_cards$/
   );
 
   await mediaLink.click();
 
   await expect(page).toHaveURL(
-    /\/media\/duel-masters-dm25\/glossary\/term\/term-cost\?returnTo=%2Fglossary%3Fq%3Dkosuto%26cards%3Dwith_cards$/
+    /\/glossary\/term\/%E3%82%B3%E3%82%B9%E3%83%88\?media=duel-masters-dm25&source=term-cost&returnTo=%2Fglossary%3Fq%3Dkosuto%26cards%3Dwith_cards$/
   );
   await expect(glossaryNav).toHaveAttribute("aria-current", "page");
   await expect(page.getByRole("link", { name: "Torna al Glossary" })).toHaveAttribute(

@@ -172,7 +172,10 @@ export function mapGlossaryCrossMediaSibling(sibling: CrossMediaSibling) {
     href: mediaGlossaryEntryHref(
       sibling.mediaSlug,
       sibling.kind,
-      sibling.sourceId
+      sibling.label,
+      {
+        sourceId: sibling.sourceId
+      }
     ),
     kind: sibling.kind,
     label: sibling.label,

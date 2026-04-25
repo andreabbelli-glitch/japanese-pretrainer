@@ -454,7 +454,9 @@ export function buildEntryLookup(
     const mediaSlug = getEntryMediaSlug(entry);
 
     lookup.set(buildEntryKey("term", entry.id), {
-      href: mediaGlossaryEntryHref(mediaSlug, "term", entry.sourceId),
+      href: mediaGlossaryEntryHref(mediaSlug, "term", entry.lemma, {
+        sourceId: entry.sourceId
+      }),
       id: entry.sourceId,
       kind: "term",
       label: entry.lemma,
@@ -474,7 +476,9 @@ export function buildEntryLookup(
     const mediaSlug = getEntryMediaSlug(entry);
 
     lookup.set(buildEntryKey("grammar", entry.id), {
-      href: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.sourceId),
+      href: mediaGlossaryEntryHref(mediaSlug, "grammar", entry.pattern, {
+        sourceId: entry.sourceId
+      }),
       id: entry.sourceId,
       kind: "grammar",
       label: entry.pattern,
@@ -627,7 +631,7 @@ export function mapQueueCard(
   const reading = resolveReviewCardReading(card, entryLookup, sortedEntryLinks);
 
   return {
-    back: card.back,
+    back: buildAggregatedReviewBack(card, subjectCards, mediaById),
     bucket: resolved.bucket,
     bucketDetail: buildBucketDetail(resolved.bucket, resolved.dueAt),
     bucketLabel: formatBucketLabel(resolved.bucket),
@@ -665,6 +669,36 @@ export function mapQueueCard(
     segmentTitle: card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(card.cardType)
   };
+}
+
+function buildAggregatedReviewBack(
+  representativeCard: ReviewCardSource,
+  subjectCards: ReviewCardSource[],
+  mediaById: ReviewMediaLookup
+) {
+  const uniqueBacks = new Map<string, ReviewCardSource>();
+
+  for (const subjectCard of subjectCards) {
+    const normalizedBack = subjectCard.back.trim();
+
+    if (!normalizedBack || uniqueBacks.has(normalizedBack)) {
+      continue;
+    }
+
+    uniqueBacks.set(normalizedBack, subjectCard);
+  }
+
+  if (uniqueBacks.size <= 1) {
+    return representativeCard.back;
+  }
+
+  return [...uniqueBacks.entries()]
+    .map(([back, subjectCard]) => {
+      const media = resolveReviewCardMedia(subjectCard, mediaById);
+
+      return `${media.title}\n${back}`;
+    })
+    .join("\n\n");
 }
 
 export function resolveReviewCardReading(
@@ -747,7 +781,10 @@ function mapReviewCrossMediaSibling(sibling: CrossMediaSibling) {
     href: mediaGlossaryEntryHref(
       sibling.mediaSlug,
       sibling.kind,
-      sibling.sourceId
+      sibling.label,
+      {
+        sourceId: sibling.sourceId
+      }
     ),
     label: sibling.label,
     meaning: sibling.meaningIt,

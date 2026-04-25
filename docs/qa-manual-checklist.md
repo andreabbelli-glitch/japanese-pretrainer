@@ -21,9 +21,11 @@
 
 - Dashboard: compare `Duel Masters`, con CTA per riprendere studio e review.
 - Libreria media: `Duel Masters` e `Mobile Suit Gundam Arsenal Base` sono entrambi visibili con metriche sintetiche coerenti.
-- Ogni media attivo in `content/media` apre senza errori almeno `detail`, `textbook`, `glossary`, `review` e il redirect `progress`.
+- Ogni media attivo in `content/media` apre senza errori almeno `detail`,
+  `textbook`, `review` e il redirect `progress`; la CTA `Glossary` porta al
+  glossary globale filtrato per media.
 - Glossary globale `/glossary`: ricerca cross-media navigabile e coerente con
-  le viste locali.
+  il filtro `media=<slug>`.
 - Media detail: le entry point `Textbook`, `Glossary`, `Review`, `Progress` sono tutte operative.
 - Workflow pronunce: `./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --dry-run`
   produce un batch coerente con la review reale e non ripropone entry gia
@@ -99,8 +101,12 @@
   lightbox, anche se il contenuto legacy aveva `card_id`.
 - Reader lesson mobile: tap su un termine apre sheet; `Lezioni` apre la rail mobile.
 - Reader lesson mobile: tap su un'immagine del textbook apre il lightbox.
-- Glossary: ricerca per kanji, kana e romaji (`bochi`, `yamafuda`, `侵略`) restituisce risultati sensati.
-- Glossary detail: lesson e card collegate sono navigabili.
+- Glossary: ricerca per kanji, kana e romaji (`bochi`, `yamafuda`, `侵略`)
+  restituisce risultati sensati e link detail globali `/glossary/term/...` o
+  `/glossary/grammar/...`.
+- Glossary detail: lesson e card collegate sono navigabili; se la stessa
+  superficie compare in piu media, la pagina mostra le sfaccettature
+  cross-media in un unico posto.
 - Review: il toggle `Furigana sul fronte` rispetta sia la modalita immediata sia quella solo dopo risposta.
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione subito, senza flash di pagina completa, e in caso di errore ripristina la card precedente con messaggio chiaro.
 - Review: dopo `Mostra risposta` compare il controllo compatto `+ Contrasto`;
@@ -113,6 +119,8 @@
   ...` con azioni `Cambia` e `Rimuovi`.
 - Review: il daily limit dei nuovi è globale e la coda mostra contenuti fusi
   quando la stessa entry o pattern compare in più media.
+- Review: il retro della card canonica mostra tutte le spiegazioni incontrate
+  per quella superficie, non solo il retro della card rappresentante.
 - Review -> Kanji Clash: selezionando un contrasto e poi gradeando con
   `Again`, `Hard`, `Good` o `Easy`, il voto review viene salvato e `Kanji
   Clash` riceve subito il contrasto manuale.
@@ -153,8 +161,10 @@
 - Settings: salvare furigana reader, furigana review e ordine glossary aggiorna le viste collegate.
 - Settings: la sezione `FSRS optimizer` mostra stato read-only coerente con i
   dati salvati in `user_setting`, senza esporre pulsanti manuali di retrain.
-- Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook, glossary e progress risultano navigabili senza errori o stati vuoti incoerenti.
-- Media `Web giapponese`: detail, textbook, glossary e review aprono senza
+- Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook,
+  glossary globale filtrato e progress risultano navigabili senza errori o
+  stati vuoti incoerenti.
+- Media `Web giapponese`: detail, textbook, glossary globale filtrato e review aprono senza
   errori; il textbook espone le lesson reali generate dal workflow web.
 
 ## Stati e resilienza

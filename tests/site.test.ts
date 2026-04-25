@@ -93,14 +93,18 @@ describe("site helpers", () => {
     expect(mediaAssetHref("fixture-tcg", "/ui/deck-edit.webp")).toBe(
       "/media/fixture-tcg/assets/ui/deck-edit.webp"
     );
-    expect(mediaGlossaryTermHref("fixture-tcg", "term-iku")).toBe(
-      "/media/fixture-tcg/glossary/term/term-iku"
+    expect(mediaGlossaryTermHref("能力")).toBe(
+      "/glossary/term/%E8%83%BD%E5%8A%9B"
     );
-    expect(mediaGlossaryGrammarHref("fixture-tcg", "grammar-teiru")).toBe(
-      "/media/fixture-tcg/glossary/grammar/grammar-teiru"
+    expect(mediaGlossaryGrammarHref("〜ている")).toBe(
+      "/glossary/grammar/%E3%80%9C%E3%81%A6%E3%81%84%E3%82%8B"
     );
-    expect(mediaGlossaryEntryHref("fixture-tcg", "term", "term-iku")).toBe(
-      "/media/fixture-tcg/glossary/term/term-iku"
+    expect(
+      mediaGlossaryEntryHref("fixture-tcg", "term", "能力", {
+        sourceId: "term-nouryoku"
+      })
+    ).toBe(
+      "/glossary/term/%E8%83%BD%E5%8A%9B?media=fixture-tcg&source=term-nouryoku"
     );
     expect(mediaGlossaryHref("fixture-tcg")).toBe(
       "/glossary?media=fixture-tcg"

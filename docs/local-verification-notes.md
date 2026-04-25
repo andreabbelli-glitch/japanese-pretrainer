@@ -93,7 +93,11 @@ non sostituisce un audit completo e aggiornato del codice.
   ne come candidate automatico equivalente; restore o riselezione dalla Review
   devono riportarlo `due-now` in entrambe le direzioni.
 - Il daily limit della review è globale e la coda mostra fusioni cross-media
-  quando la stessa entry o pattern è condivisa tra più media.
+  quando la stessa superficie grafica di un termine o pattern è condivisa tra
+  più media.
+- Il glossary è globale: le CTA locali dei media devono portare a
+  `/glossary?media=<slug>`, mentre `/media/[mediaSlug]/glossary` deve risultare
+  non disponibile.
 - Su DB già esistenti, il comportamento della review deve restare compatibile
   con lo storico legacy: la migrazione deve preservare i soggetti già introdotti
   e non deve far ricomparire card già contate nel limite giornaliero.
