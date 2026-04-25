@@ -2,9 +2,9 @@
   "version": 1,
   "media_slug": "duel-masters-dm25",
   "total_targets": 323,
-  "audio_backed_count": 173,
+  "audio_backed_count": 179,
   "known_missing_count": 134,
-  "pending_count": 16,
+  "pending_count": 10,
   "pending": [
     {
       "entry_type": "term",
@@ -14,39 +14,9 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-mukou",
-      "label": "無効",
-      "reading": "むこう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-face-down",
-      "label": "裏向き",
-      "reading": "うらむき"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-labyrinth",
-      "label": "ラビリンス",
-      "reading": "らびりんす"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kazu",
-      "label": "数",
-      "reading": "かず"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-mugestsu-no-mon-zetsu",
       "label": "無月の門・絶",
       "reading": "むげつのもんぜつ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-muttsu",
-      "label": "6つ",
-      "reading": "むっつ"
     },
     {
       "entry_type": "term",
@@ -59,12 +29,6 @@
       "entry_id": "grammar-uramuki-no-mama",
       "label": "裏向きのまま",
       "reading": "うらむきのまま"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-dokokarademo",
-      "label": "どこからでも",
-      "reading": "どこからでも"
     },
     {
       "entry_type": "grammar",

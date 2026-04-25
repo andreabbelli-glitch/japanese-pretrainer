@@ -44,7 +44,7 @@ describe("forvo pronunciations skill wrapper", () => {
     await rm(tempRepo, { force: true, recursive: true });
   });
 
-  it("routes mode runs through the resolver and defaults to a ten item batch", async () => {
+  it("routes review mode through the resolver without an implicit batch limit", async () => {
     await runWrapper("--mode", "review");
 
     await expectCapturedArgs([
@@ -52,13 +52,25 @@ describe("forvo pronunciations skill wrapper", () => {
       "pronunciations:resolve",
       "--",
       "--mode",
-      "review",
-      "--limit",
-      "10"
+      "review"
     ]);
   });
 
-  it("routes targeted fallback runs through manual Forvo with the same default batch limit", async () => {
+  it("does not add an implicit batch limit for non-review resolver modes", async () => {
+    await runWrapper("--mode", "next-lesson", "--media", "sample-game");
+
+    await expectCapturedArgs([
+      "pnpm",
+      "pronunciations:resolve",
+      "--",
+      "--mode",
+      "next-lesson",
+      "--media",
+      "sample-game"
+    ]);
+  });
+
+  it("routes targeted fallback runs through manual Forvo without an implicit batch limit", async () => {
     await runWrapper("--media", "sample-game", "--entry", "term-yomu");
 
     await expectCapturedArgs([
@@ -69,9 +81,7 @@ describe("forvo pronunciations skill wrapper", () => {
       "--media",
       "sample-game",
       "--entry",
-      "term-yomu",
-      "--limit",
-      "10"
+      "term-yomu"
     ]);
   });
 

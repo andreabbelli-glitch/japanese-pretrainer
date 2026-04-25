@@ -39,8 +39,8 @@ entry rimaste scoperte.
 8. Se il fallback viene richiesto, costruisci un batch Forvo solo con le entry
    ancora mancanti, escludendo quelle gia marcate in
    `data/forvo-known-missing.json`.
-9. Per Forvo usa batch da `10` come default operativo, salvo richiesta diversa
-   dell'utente.
+9. Non aggiungere mai un limite batch implicito. Usa `--limit` solo quando
+   l'utente chiede esplicitamente un numero massimo o uno smoke test.
 10. Mantieni aggiornata la lista residua in
     `content/media/<slug>/workflow/pronunciation-pending.json`.
 11. Quando una entry viene saltata come `missing on Forvo`, apri anche il suo
@@ -87,7 +87,6 @@ Comandi utili:
 
 ```bash
 ./scripts/with-node.sh pnpm pronunciations:fetch -- --media <media-slug> --dry-run
-./scripts/with-node.sh pnpm pronunciations:fetch -- --media <media-slug> --limit 10
 ./scripts/with-node.sh pnpm pronunciations:fetch -- --media <media-slug> --refresh
 ```
 
@@ -132,7 +131,10 @@ Per Forvo:
 - costruisci la lista solo dalle entry ancora senza audio dopo la fase 1;
 - escludi quelle presenti in `data/forvo-known-missing.json`, salvo richiesta
   esplicita di retry;
-- usa batch da `10` come default;
+- non imporre mai un batch implicito: copri tutte le entry selezionate nello
+  scope richiesto;
+- passa `--limit` solo se l'utente chiede esplicitamente un numero massimo o
+  uno smoke test;
 - usa sempre il flusso `--manual` nel browser normale.
 - quando salti una entry con `s` o `/skip`, lascia che il comando apra anche la
   tab `word-add/...` per chiedere la pronuncia e registri la richiesta fatta;

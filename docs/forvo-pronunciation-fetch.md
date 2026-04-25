@@ -67,13 +67,12 @@ prossima lesson o pagina textbook, usa `pnpm pronunciations:resolve`.
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode next-lesson --media duel-masters-dm25
 ./scripts/with-node.sh pnpm pronunciations:resolve -- --mode lesson-url --lesson-url /media/duel-masters-dm25/textbook/tcg-core-overview
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25
-./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --limit 10
-./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --dry-run --limit 5
+./scripts/with-node.sh pnpm pronunciations:forvo -- --media duel-masters-dm25 --dry-run
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media gundam-arsenal-base --word 専用機 --word 戦艦
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --entry term-cost
 ./scripts/with-node.sh pnpm pronunciations:forvo -- --manual --media duel-masters-dm25 --words-file tmp/forvo-list.tsv
-./scripts/with-node.sh pnpm pronunciations:forvo:request -- --limit 10
-./scripts/with-node.sh pnpm pronunciations:forvo:request -- --media duel-masters-dm25 --limit 25
+./scripts/with-node.sh pnpm pronunciations:forvo:request
+./scripts/with-node.sh pnpm pronunciations:forvo:request -- --media duel-masters-dm25
 ```
 
 ## Modalita manuale consigliata
@@ -163,7 +162,8 @@ term-taberu
 - `--manual` e la modalita operativa standard per questo repo; usa il browser Playwright solo per debug mirato o manutenzione del fetcher;
 - se una voce esiste gia in un altro media compatibile, il comando deve
   collegarla e non proportela su Forvo;
-- batch operativo consigliato: `10` entry alla volta;
+- nessun batch implicito: `--limit` va passato solo quando l'utente chiede
+  esplicitamente un numero massimo o uno smoke test;
 - gli skip persistenti finiscono di default in `data/forvo-known-missing.json`;
 - le richieste `word-add` gia aperte finiscono di default in
   `data/forvo-requested-word-add.json`; le entry risolte restano nello storico
@@ -180,7 +180,7 @@ Quando vuoi coprire in blocco il backlog gia segnato come `not_found_on_forvo`,
 usa:
 
 ```bash
-./scripts/with-node.sh pnpm pronunciations:forvo:request -- --limit 10
+./scripts/with-node.sh pnpm pronunciations:forvo:request
 ```
 
 Questo comando:

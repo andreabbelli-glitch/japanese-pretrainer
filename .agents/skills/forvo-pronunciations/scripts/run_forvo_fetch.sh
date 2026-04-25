@@ -46,22 +46,14 @@ fi
 cd "$REPO_ROOT"
 
 has_mode=0
-has_limit=0
-for arg in "$@"; do
+args=("$@")
+for arg in "${args[@]}"; do
   case "$arg" in
     --mode|--mode=*)
       has_mode=1
       ;;
-    --limit|--limit=*)
-      has_limit=1
-      ;;
   esac
 done
-
-args=("$@")
-if [[ "$has_limit" -eq 0 ]]; then
-  args+=("--limit" "10")
-fi
 
 if [[ "$has_mode" -eq 1 ]]; then
   ./scripts/with-node.sh pnpm pronunciations:resolve -- "${args[@]}"

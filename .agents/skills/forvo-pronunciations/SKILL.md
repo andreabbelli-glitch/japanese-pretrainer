@@ -59,7 +59,7 @@ typically at:
 .agents/skills/forvo-pronunciations/scripts/run_forvo_fetch.sh --media <media-slug> --words-file /absolute/path/list.tsv
 ```
 
-7. Default the batch size to `10` unless the user asks for a different size or a tighter smoke test.
+7. Do not add a default batch limit. Process every selected entry after audio-backed, reuse, known-missing, and requested-entry filtering. Pass `--limit` only when the user explicitly asks for a numeric cap or a smoke test.
 8. If the browser pauses for manual verification or login, tell the user exactly that and then continue the batch.
 9. Prefer `--dry-run` first when the user wants a preview or when selectors may have drifted.
 10. Manual mode means: open the Forvo URL in the user’s real browser, wait for the downloaded MP3 in `~/Downloads`, and import it into the repo. Do not claim or assume that Downloads cleanup happens automatically.
@@ -83,7 +83,10 @@ typically at:
 - Keep the browser profile under `data/forvo-profile` unless the user asks otherwise.
 - Keep the known-missing registry under `data/forvo-known-missing.json` unless the user asks otherwise.
 - For `review`, support both the global scope and the filtered `--media <slug>`
-  scope; the default without `--media` is global.
+  scope; the default without `--media` is global. Review mode must not impose
+  an implicit `--limit`; it should cover every active review card in scope.
+- For all modes, never add an implicit `--limit`; only preserve one provided
+  explicitly by the user.
 - For `next-lesson`, use the same repo semantics as the textbook resume CTA:
   first lesson whose status is not `completed`.
 - For `lesson-url`, accept only the app textbook route shape

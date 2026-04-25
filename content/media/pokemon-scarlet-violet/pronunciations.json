@@ -964,10 +964,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-e028-omedetou",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%8A%E3%82%81%E3%81%A7%E3%81%A8%E3%81%86",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-e028-omedetou/forvo-manual-おめて-とう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8A%E3%82%81%E3%81%A7%E3%81%A8%E3%81%86/#ja"
     },
     {
       "entry_type": "term",
@@ -984,39 +984,42 @@
     {
       "entry_type": "term",
       "entry_id": "term-e030-sate",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%95%E3%81%A6",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-e030-sate/forvo-manual-さて.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%95%E3%81%A6/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-e031-douzo",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%A9%E3%81%86%E3%81%9E",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-e031-douzo/forvo-manual-と-うそ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A9%E3%81%86%E3%81%9E/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-e032-onegaishimasu",
-      "pitch_accent": 6,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-e032-onegaishimasu/forvo-manual-おねか-いします.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-e033-naruhodo",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-e033-naruhodo/forvo-manual-なるほと.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AA%E3%82%8B%E3%81%BB%E3%81%A9/#ja"
     },
     {
       "entry_type": "term",
       "entry_id": "term-e034-sumimasen",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E3%81%99%E3%81%BF%E3%81%BE%E3%81%9B%E3%82%93",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-e034-sumimasen/forvo-manual-すみません.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%99%E3%81%BF%E3%81%BE%E3%81%9B%E3%82%93/#ja"
     },
     {
       "entry_type": "term",

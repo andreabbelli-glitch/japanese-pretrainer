@@ -1,3 +1,5 @@
+import "./load-env.ts";
+
 import os from "node:os";
 import path from "node:path";
 

@@ -2,9 +2,9 @@
   "version": 1,
   "media_slug": "pokemon-scarlet-violet",
   "total_targets": 1057,
-  "audio_backed_count": 170,
+  "audio_backed_count": 176,
   "known_missing_count": 64,
-  "pending_count": 823,
+  "pending_count": 817,
   "pending": [
     {
       "entry_type": "term",
@@ -44,12 +44,6 @@
     },
     {
       "entry_type": "term",
-      "entry_id": "term-e028-omedetou",
-      "label": "おめでとう",
-      "reading": "おめでとう"
-    },
-    {
-      "entry_type": "term",
       "entry_id": "term-v153-tada",
       "label": "ただ",
       "reading": "ただ"
@@ -71,24 +65,6 @@
       "entry_id": "term-v156-jugyou",
       "label": "授業",
       "reading": "じゅぎょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e030-sate",
-      "label": "さて",
-      "reading": "さて"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e031-douzo",
-      "label": "どうぞ",
-      "reading": "どうぞ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e032-onegaishimasu",
-      "label": "お願いします",
-      "reading": "おねがいします"
     },
     {
       "entry_type": "term",
@@ -197,18 +173,6 @@
       "entry_id": "term-v176-chikara",
       "label": "力",
       "reading": "ちから"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e033-naruhodo",
-      "label": "なるほど",
-      "reading": "なるほど"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-e034-sumimasen",
-      "label": "すみません",
-      "reading": "すみません"
     },
     {
       "entry_type": "term",
@@ -3772,7 +3736,7 @@
       "entry_type": "term",
       "entry_id": "term-v732-seiau",
       "label": "競い合う",
-      "reading": "せいあう"
+      "reading": "きそいあう"
     },
     {
       "entry_type": "term",

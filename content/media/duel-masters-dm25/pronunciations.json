@@ -54,7 +54,10 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-dokokarademo",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/grammar/grammar-dokokarademo/forvo-manual-と-こからて-も.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A9%E3%81%93%E3%81%8B%E3%82%89%E3%81%A7%E3%82%82/#ja"
     },
     {
       "entry_type": "grammar",
@@ -1141,7 +1144,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-face-down",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-face-down/forvo-manual-うらむき.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%A3%8F%E5%90%91%E3%81%8D/#ja"
     },
     {
       "entry_type": "term",
@@ -1469,10 +1475,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-kazu",
-      "pitch_accent": 1,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E6%95%B0",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-kazu/forvo-manual-かす.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%95%B0/#ja"
     },
     {
       "entry_type": "term",
@@ -1538,7 +1544,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-labyrinth",
-      "pitch_accent_status": "miss"
+      "audio_src": "assets/audio/term/term-labyrinth/forvo-manual-らひ-りんす.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%83%A9%E3%83%93%E3%83%AA%E3%83%B3%E3%82%B9/#ja"
     },
     {
       "entry_type": "term",
@@ -1727,10 +1736,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-mukou",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E7%84%A1%E5%8A%B9",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-mukou/forvo-manual-むこう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E7%84%A1%E5%8A%B9/#ja"
     },
     {
       "entry_type": "term",
@@ -1756,7 +1765,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-muttsu",
-      "pitch_accent_status": "source_error"
+      "audio_src": "assets/audio/term/term-muttsu/forvo-manual-むっつ.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/6%E3%81%A4/#ja"
     },
     {
       "entry_type": "term",

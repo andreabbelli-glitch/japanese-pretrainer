@@ -135,6 +135,44 @@ describe("pronunciation resolve", () => {
     }
   });
 
+  it("loads .env.local before creating the resolver CLI database client", async () => {
+    closeDatabaseClient(database);
+    await writeFile(
+      path.join(tempDir, ".env.local"),
+      `DATABASE_URL=${databasePath}\n`
+    );
+    const env = { ...process.env };
+    delete env.DATABASE_URL;
+    delete env.DATABASE_AUTH_TOKEN;
+    delete env.LIBSQL_AUTH_TOKEN;
+
+    try {
+      const { stdout } = await execFileAsync(
+        process.execPath,
+        [
+          "--experimental-strip-types",
+          path.join(process.cwd(), "scripts", "resolve-pronunciations.ts"),
+          "--mode=review",
+          `--content-root=${contentRoot}`,
+          "--dry-run",
+          "--limit=0",
+          "--no-open"
+        ],
+        {
+          cwd: tempDir,
+          env
+        }
+      );
+
+      expect(stdout).toContain("mode=review");
+      expect(stdout).toContain("media=sample-anime,sample-game");
+    } finally {
+      database = createDatabaseClient({
+        databaseUrl: databasePath
+      });
+    }
+  });
+
   it("selects review targets globally and deduplicates linked entries", async () => {
     const selection = await selectPronunciationResolveTargets({
       contentRoot,
