@@ -103,18 +103,34 @@ typically at:
 
 ## Verification
 
-After workflow changes, run at least:
+For normal skill runs that only update pronunciation artifacts such as
+`content/media/<slug>/assets/audio/**`, `content/media/<slug>/pronunciations.json`,
+`content/media/<slug>/workflow/pronunciation-pending.json`,
+`data/forvo-known-missing.json`, or `data/forvo-requested-word-add.json`, do not
+run the full `pnpm check` or `pnpm release:check` suites.
+
+For each media bundle whose pronunciation manifest or audio assets changed, run
+only:
 
 ```bash
-./scripts/with-node.sh pnpm check
+./scripts/with-node.sh pnpm content:validate -- --media-slug <media-slug>
+./scripts/with-node.sh pnpm content:import -- --media-slug <media-slug>
 ```
 
-For content workflow changes, real bundle imports, or user-visible flows, also
-run:
+If the run only changed `data/forvo-known-missing.json` or
+`data/forvo-requested-word-add.json` and no content media file changed, no repo
+test is required; report the registry update.
+
+If you edit pronunciation or Forvo implementation code, wrapper scripts, or the
+selection workflow, run the targeted subsystem tests instead of the full suite:
 
 ```bash
-./scripts/with-node.sh pnpm release:check
+./scripts/with-node.sh pnpm test -- tests/pronunciation-resolve.test.ts tests/pronunciation-workflow.test.ts tests/pronunciation-fetch.test.ts tests/pronunciation-reuse.test.ts tests/forvo-pronunciation-fetch.test.ts tests/forvo-known-missing.test.ts tests/forvo-word-add.test.ts tests/forvo-pronunciations-wrapper.test.ts tests/pronunciation-runtime-boundary.test.ts
 ```
+
+Run `pnpm check` or `pnpm release:check` only if the task also changes app
+routing, DB schema, importer/sync code, auth, cache revalidation, or
+user-facing UI outside the pronunciation workflow.
 
 ## References
 

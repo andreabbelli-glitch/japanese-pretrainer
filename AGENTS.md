@@ -8,9 +8,13 @@ Anki-like.
 Lo sviluppo è **100% AI-driven**: l'utente non legge mai il codice manualmente.
 Ogni sessione deve essere completamente autonoma e lasciare il repo in stato
 valido. Per i comandi Node/pnpm, per gli agenti il percorso canonico è
-`./scripts/with-node.sh pnpm ...`: come minimo `pnpm check` deve essere verde;
-per modifiche a routing, DB, importer, auth, workflow contenuti o flussi utente
-serve anche il gate completo `./scripts/with-node.sh pnpm release:check`.
+`./scripts/with-node.sh pnpm ...`: per modifiche al codice applicativo come
+minimo `pnpm check` deve essere verde; per modifiche a routing, DB, importer,
+auth, cache revalidation o flussi utente serve anche il gate completo
+`./scripts/with-node.sh pnpm release:check`. I workflow editoriali/content-only
+versionati nelle skill `.agents/skills/*` possono dichiarare gate mirati più
+stretti e non devono far partire suite complete quando modificano solo bundle
+contenuto, asset, pronunce o sidecar workflow del media.
 
 ---
 
@@ -255,8 +259,12 @@ prompts/                  Prompt locali ignorati da git
 - Sempre: eseguire almeno `./scripts/with-node.sh pnpm check` dopo modifiche al
   codice o alla logica.
 - Eseguire anche `./scripts/with-node.sh pnpm release:check` quando la modifica
-  tocca routing, DB, importer/sync contenuti, auth, cache revalidation,
-  workflow contenuti o superfici utente coperte da E2E.
+  tocca routing, DB, importer/sync contenuti, auth, cache revalidation o
+  superfici utente coperte da E2E.
+- Per task editoriali/content-only gestiti da skill repo-scoped, seguire invece
+  la sezione `Verification` della skill: deve indicare solo `content:validate`,
+  `content:import`, workflow pronunce/accenti e test mirati realmente necessari
+  per il media o sottosistema toccato.
 - Se una verifica non è eseguibile, dichiararlo esplicitamente nel riepilogo
   finale e spiegare il motivo.
 
@@ -274,8 +282,10 @@ prompts/                  Prompt locali ignorati da git
 3. `drizzle/` è gestito da `pnpm db:generate` – non editare SQL a mano.
 4. Gli ID (`mediaSlug`, `lessonSlug`, `termId`, ecc.) sono stabili per design.
    Non rinominarli senza una migrazione DB.
-5. `./scripts/with-node.sh pnpm check` deve passare al termine di ogni sessione;
-   per le aree a maggior impatto vale anche il gate `release:check`.
+5. `./scripts/with-node.sh pnpm check` deve passare al termine delle sessioni
+   che modificano codice o logica applicativa; per le aree a maggior impatto
+   vale anche il gate `release:check`. Le sessioni content-only coperte da una
+   skill seguono i gate mirati della skill.
 6. I test in `tests/` sono la rete di sicurezza – non eliminarli.
 7. Il deploy è single-user locale-first: non aggiungere multi-tenancy o auth
    complessa senza una milestone dedicata.

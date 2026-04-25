@@ -2,63 +2,8 @@
   "version": 1,
   "media_slug": "duel-masters-dm25",
   "total_targets": 332,
-  "audio_backed_count": 180,
-  "known_missing_count": 143,
-  "pending_count": 9,
-  "pending": [
-    {
-      "entry_type": "term",
-      "entry_id": "term-danchou",
-      "label": "団長",
-      "reading": "だんちょう"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kakumei-change",
-      "label": "革命チェンジ",
-      "reading": "かくめいチェンジ"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-final-revolution",
-      "label": "ファイナル革命",
-      "reading": "ファイナルかくめい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-shitei",
-      "label": "指定",
-      "reading": "してい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-kakumei",
-      "label": "革命",
-      "reading": "かくめい"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-irekaeru",
-      "label": "入れ替える",
-      "reading": "いれかえる"
-    },
-    {
-      "entry_type": "term",
-      "entry_id": "term-aruiwa",
-      "label": "あるいは",
-      "reading": "あるいは"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-sonoturnchuu-hoka-final-kakumei-mada-tsukatte-inakereba",
-      "label": "そのターン中に他の「ファイナル革命」をまだ使っていなければ",
-      "reading": "そのターンちゅうにほかのファイナルかくめいをまだつかっていなければ"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-suterareta-toki",
-      "label": "捨てられた時",
-      "reading": "すてられたとき"
-    }
-  ]
+  "audio_backed_count": 185,
+  "known_missing_count": 147,
+  "pending_count": 0,
+  "pending": []
 }

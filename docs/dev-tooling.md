@@ -164,6 +164,26 @@ Il comando rigenera il dataset versionato degli swap `A <-> B` combinando
 White Rabbit, `strokeEditDistance >= 0.75`, `yehAndLiRadical >= 0.75` e gli
 override manuali in `src/features/kanji-clash/tooling/similar-kanji-overrides.ts`.
 
+## Gate per skill content-only
+
+Le skill repo-scoped sotto `.agents/skills/` che modificano solo contenuti,
+asset, pronunce o sidecar workflow devono indicare nella propria sezione
+`Verification` il gate minimo necessario per il media o sottosistema toccato.
+Non devono imporre `pnpm check` o `pnpm release:check` per default.
+
+Per un normale aggiornamento editoriale il gate tipico è:
+
+```sh
+./scripts/with-node.sh pnpm content:validate -- --media-slug <media-slug>
+./scripts/with-node.sh pnpm content:import -- --media-slug <media-slug>
+```
+
+Se la skill crea o modifica card, pronunce o accenti, aggiunge i workflow
+specifici del media, per esempio `pronunciations:pending` e
+`pitch-accents:fetch`. Se invece cambia codice di parser, importer, routing,
+DB, auth, cache o UI, torna ai gate canonici del repo e ai test mirati indicati
+dalla skill.
+
 ## Kanji Clash
 
 Kanji Clash non richiede comandi dedicati oltre ai gate canonici del repo, ma

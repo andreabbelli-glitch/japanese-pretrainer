@@ -132,18 +132,22 @@ For browser capture and inspection, use:
 
 ## Verification
 
-Always run:
+For the normal page-builder workflow, where the diff is limited to
+`content/media/web-giapponese/**` lesson/card/asset/workflow/pronunciation files
+and no app code, parser, importer, routing, DB schema, auth, cache, or UI code
+changed, do not run the full `pnpm check` or `pnpm release:check` suites.
+
+Always validate only the affected media bundle:
 
 ```bash
-cd /Users/abelli/Codex/Japanese\ Custom\ Study
-./scripts/with-node.sh pnpm check
+./scripts/with-node.sh pnpm content:validate -- --media-slug web-giapponese
 ```
 
-Then fetch pitch accents and import the generated lesson into the configured
-target database:
+Then refresh the media-side pronunciation workflows and import the generated
+lesson into the configured target database:
 
 ```bash
-cd /Users/abelli/Codex/Japanese\ Custom\ Study
+./scripts/with-node.sh pnpm pronunciations:pending -- --media-slug web-giapponese
 ./scripts/with-node.sh pnpm pitch-accents:fetch -- --media web-giapponese
 ./scripts/with-node.sh pnpm content:import -- --media-slug web-giapponese
 ```
@@ -157,10 +161,19 @@ Keep
 in the same change set as well whenever new cards are added or revised, so the
 pending manifest immediately reflects new entries that still lack local audio.
 
-If the work touches UI-visible flows, content workflow integration, or the real
-bundle verification path, also run:
+Run broader targeted tests only when the implementation actually changed. If the
+renderer, parser, or content model code changed, run:
 
 ```bash
-cd /Users/abelli/Codex/Japanese\ Custom\ Study
-./scripts/with-node.sh pnpm release:check
+./scripts/with-node.sh pnpm test -- tests/textbook.test.ts tests/content.test.ts
 ```
+
+If importer or DB sync code changed, run:
+
+```bash
+./scripts/with-node.sh pnpm test -- tests/importer.test.ts
+```
+
+Run `pnpm check` or `pnpm release:check` only if the task also changes app
+routing, DB schema, auth, cache revalidation, or user-facing UI outside this
+content-only workflow.

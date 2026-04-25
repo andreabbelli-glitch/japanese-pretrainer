@@ -586,7 +586,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-aruiwa",
-      "pitch_accent_status": "source_error"
+      "audio_src": "assets/audio/term/term-aruiwa/forvo-manual-あるいは.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%82%E3%82%8B%E3%81%84%E3%81%AF/#ja"
     },
     {
       "entry_type": "term",
@@ -927,10 +930,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-danchou",
-      "pitch_accent": 0,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%9B%A3%E9%95%B7",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-danchou/forvo-manual-た-んちょう.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%9B%A3%E9%95%B7/#ja"
     },
     {
       "entry_type": "term",
@@ -1396,10 +1399,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-irekaeru",
-      "pitch_accent": 4,
-      "pitch_accent_source": "Wiktionary",
-      "pitch_accent_page_url": "https://en.wiktionary.org/wiki/%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B",
-      "pitch_accent_status": "resolved"
+      "audio_src": "assets/audio/term/term-irekaeru/forvo-manual-いれかえる.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B/#ja"
     },
     {
       "entry_type": "term",
@@ -1477,7 +1480,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-kakumei",
-      "pitch_accent_status": "source_error"
+      "audio_src": "assets/audio/term/term-kakumei/forvo-manual-かくめい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E9%9D%A9%E5%91%BD/#ja"
     },
     {
       "entry_type": "term",
@@ -2349,7 +2355,10 @@
     {
       "entry_type": "term",
       "entry_id": "term-shitei",
-      "pitch_accent_status": "source_error"
+      "audio_src": "assets/audio/term/term-shitei/forvo-manual-してい.mp3",
+      "audio_source": "forvo",
+      "audio_attribution": "Downloaded manually from Forvo",
+      "audio_page_url": "https://forvo.com/word/%E6%8C%87%E5%AE%9A/#ja"
     },
     {
       "entry_type": "term",
