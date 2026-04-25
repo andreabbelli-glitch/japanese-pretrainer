@@ -306,26 +306,36 @@ Practical card-selection rules:
   point to the same card.
 - Check that `id`, `slug`, `order`, `segment_ref`, links, and asset references
   are internally coherent.
-- Do not stop at content validation alone. If you add, remove, or reorder real
-  DM25 content, you must also run the repo tests that exercise the real bundle
-  and fix or align any affected expectations in the same diff.
+- For the normal live-card workflow, where the diff is limited to
+  `content/media/duel-masters-dm25/**` lesson/card/asset/pronunciation files and
+  no app code, parser, importer, routing, DB schema, auth, cache, or UI code
+  changed, do not run the full `pnpm test`, `pnpm check`, or
+  `pnpm release:check` suites.
+- Always validate only the affected media bundle:
+  `./scripts/with-node.sh pnpm content:validate -- --media-slug duel-masters-dm25`
+- Also run only the two Vitest cases that exercise the real DM25 bundle parse
+  and import paths:
+  `./scripts/with-node.sh pnpm test -- tests/content.test.ts tests/importer.test.ts -t "real Duel Masters bundle"`
 - If the DM25 real bundle changes in a way that alters observable parser/import
-  expectations, update the real-bundle tests in
-  `tests/content.test.ts` and `tests/importer.test.ts` in the same diff.
-- Treat this as alignment work, not as a generic "fix the tests" rule:
-  update those tests only when the content change really affects counts,
-  lesson slugs, cards-file IDs, alias totals, entry-link totals, or other
-  asserted real-bundle outputs.
+  expectations, align only the affected real-bundle assertions or fixtures in
+  the same diff.
+- Treat this as alignment work, not as a generic "fix the tests" rule: update
+  expectations only when the content change really affects asserted lesson
+  slugs, cards-file IDs, term IDs, grammar IDs, card IDs, reference links,
+  source-file counts, imported row checks, alias totals, entry-link totals, or
+  other asserted real-bundle outputs.
 - If the real-bundle fixture stats become stale, update them with the repo
   command:
   `./scripts/with-node.sh pnpm content:test-stats -- --write`
 - If a test fails because of a real code bug, fix the code first instead of
   weakening or rewriting the assertion to match the bug.
-- Run `./scripts/with-node.sh pnpm content:validate`.
-- Run targeted tests when the renderer or parser changed:
+- Run broader targeted tests only when the implementation actually changed.
+  If the renderer, parser, or content model code changed, run:
   `./scripts/with-node.sh pnpm test -- tests/textbook.test.ts tests/content.test.ts`
-- After content and targeted fixes, run the full canonical suite:
-  `./scripts/with-node.sh pnpm test`
+- If importer or DB sync code changed, run:
+  `./scripts/with-node.sh pnpm test -- tests/importer.test.ts`
+- If app routing, DB schema, auth, cache revalidation, or user-facing UI changed,
+  follow the repo-level gate in `AGENTS.md` instead of this content-only shortcut.
 - Do not consider the task complete until the relevant tests pass and any test
   or fixture updates caused by the new content have been committed alongside
   the content change.
@@ -346,11 +356,13 @@ Practical card-selection rules:
 - Treat the pitch-accent fetch as part of completion, not as an optional extra:
   new card content is not done until this check has been run and the outcome is
   reported.
-- Run `./scripts/with-node.sh pnpm content:import` against the real workspace
-  database before finishing, not only a temporary test harness import.
+- Run `./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25`
+  against the real workspace database before finishing, not only a temporary
+  test harness import.
 - If the import fails because the database schema is missing, run
   `./scripts/with-node.sh pnpm db:migrate` for the configured database and then
-  rerun `./scripts/with-node.sh pnpm content:import`.
+  rerun
+  `./scripts/with-node.sh pnpm content:import -- --media-slug duel-masters-dm25`.
 - Do not consider the task complete until the real import succeeds.
 - Keep
   `content/media/duel-masters-dm25/workflow/pronunciation-pending.json`

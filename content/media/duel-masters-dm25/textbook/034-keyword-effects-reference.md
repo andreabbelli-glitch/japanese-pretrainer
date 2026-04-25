@@ -3,7 +3,7 @@ id: lesson-duel-masters-dm25-keyword-effects-reference
 media_id: media-duel-masters-dm25
 slug: keyword-effects-reference
 title: Keyword Effects Bank - reference unica delle keyword
-order: 94
+order: 96
 segment_ref: keyword-bank
 difficulty: n3
 status: active
@@ -212,6 +212,27 @@ reveal_mode: sentence
 - `コストを{{支払|しはら}}わずに{{召喚|しょうかん}}してもよい` è il payoff:
   l'evocazione è gratuita ma resta facoltativa.
 
+### [{{革命|かくめい}}チェンジ](term:term-kakumei-change)
+
+:::example_sentence
+jp: >-
+  [{{革命|かくめい}}チェンジ](term:term-kakumei-change)：
+  {{自分|じぶん}}の{{指定|してい}}された[クリーチャー](term:term-creature)が
+  [{{攻撃|こうげき}}](term:term-attack)する{{時|とき}}、その
+  [クリーチャー](term:term-creature)と[{{手札|てふだ}}](term:term-hand)にある
+  この[クリーチャー](term:term-creature)を
+  [{{入|い}}れ{{替|か}}えてもよい](term:term-irekaeru)。
+translation_it: >-
+  Revolution Change: quando una tua creatura specificata attacca, puoi
+  scambiare quella creatura con questa creatura nella tua mano.
+reveal_mode: sentence
+:::
+
+- `{{指定|してい}}された` rimanda alla condizione scritta dopo i due punti sulla
+  carta concreta.
+- `{{入|い}}れ{{替|か}}えてもよい` è il cuore della procedura: non è solo una
+  messa in campo, ma uno scambio fra battle zone e mano.
+
 ### [キリフダッシュ](term:term-kirifudash)
 
 :::example_sentence
@@ -243,6 +264,28 @@ reveal_mode: sentence
 - `{{召喚|しょうかん}}してもよい` è il payoff facoltativo: il testo non dice che
   devi evocare
   per forza, ma che puoi farlo se la condizione è stata soddisfatta.
+
+### [ファイナル{{革命|かくめい}}](term:term-final-revolution)
+
+:::example_sentence
+jp: >-
+  [ファイナル{{革命|かくめい}}](term:term-final-revolution)：
+  この[クリーチャー](term:term-creature)が
+  [{{革命|かくめい}}チェンジ](term:term-kakumei-change)によって
+  [バトルゾーン](term:term-battle-zone)に{{出|で}}た{{時|とき}}、そのターン
+  {{中|ちゅう}}に{{他|ほか}}の「ファイナル{{革命|かくめい}}」をまだ
+  {{使|つか}}っていなければ、{{書|か}}かれた
+  [{{効果|こうか}}](term:term-effect)を{{使|つか}}う。
+translation_it: >-
+  Final Revolution: quando questa creatura entra nel battle zone tramite
+  Revolution Change, se in quel turno non hai ancora usato un'altra Final
+  Revolution, usi l'effetto scritto.
+reveal_mode: sentence
+:::
+
+- `そのターン{{中|ちゅう}}に` fissa il limite al turno corrente.
+- `{{他|ほか}}の` e `まだ{{使|つか}}っていなければ` impediscono di concatenare più
+  Final Revolution nello stesso turno.
 
 ### [ニンジャ・ストライク](term:term-ninja-strike)
 

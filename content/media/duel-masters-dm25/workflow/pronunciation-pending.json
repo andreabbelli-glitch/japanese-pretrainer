@@ -1,40 +1,64 @@
 {
   "version": 1,
   "media_slug": "duel-masters-dm25",
-  "total_targets": 323,
+  "total_targets": 332,
   "audio_backed_count": 180,
-  "known_missing_count": 138,
-  "pending_count": 5,
+  "known_missing_count": 143,
+  "pending_count": 9,
   "pending": [
     {
       "entry_type": "term",
-      "entry_id": "term-shiyou-kanou",
-      "label": "使用可能",
-      "reading": "しようかのう"
+      "entry_id": "term-danchou",
+      "label": "団長",
+      "reading": "だんちょう"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kakumei-change",
+      "label": "革命チェンジ",
+      "reading": "かくめいチェンジ"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-final-revolution",
+      "label": "ファイナル革命",
+      "reading": "ファイナルかくめい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-shitei",
+      "label": "指定",
+      "reading": "してい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-kakumei",
+      "label": "革命",
+      "reading": "かくめい"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-irekaeru",
+      "label": "入れ替える",
+      "reading": "いれかえる"
+    },
+    {
+      "entry_type": "term",
+      "entry_id": "term-aruiwa",
+      "label": "あるいは",
+      "reading": "あるいは"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-uramuki-no-mama",
-      "label": "裏向きのまま",
-      "reading": "うらむきのまま"
+      "entry_id": "grammar-sonoturnchuu-hoka-final-kakumei-mada-tsukatte-inakereba",
+      "label": "そのターン中に他の「ファイナル革命」をまだ使っていなければ",
+      "reading": "そのターンちゅうにほかのファイナルかくめいをまだつかっていなければ"
     },
     {
       "entry_type": "grammar",
-      "entry_id": "grammar-star-pippi-double-cost-reduction",
-      "label": "自分の光のクリーチャーの召喚コストを1、火のクリーチャーの召喚コストを1少なくしてもよい",
-      "reading": "じぶんのひかりのくりーちゃーのしょうかんこすとをいち、ひのくりーちゃーのしょうかんこすとをいちすくなくしてもよい"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-subete-ni-s-trigger-wo-ataeru",
-      "label": "すべてに「S・トリガー」を与える",
-      "reading": "すべてにえすとりがーをあたえる"
-    },
-    {
-      "entry_type": "grammar",
-      "entry_id": "grammar-seigi-no-shield-count-yori-ookereba",
-      "label": "自分のシールドの数が相手より多ければ",
-      "reading": "じぶんのしーるどのかずがあいてよりおおければ"
+      "entry_id": "grammar-suterareta-toki",
+      "label": "捨てられた時",
+      "reading": "すてられたとき"
     }
   ]
 }
