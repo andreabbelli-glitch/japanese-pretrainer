@@ -14,6 +14,8 @@ funzionare bene sia su desktop sia su mobile.
 - Generare il glossary a partire da textbook e cards.
 - Supportare review Anki-like con possibilita di marcare elementi come gia
   imparati manualmente.
+- Allenare contrasti rapidi tra kanji e vocaboli confondibili tramite Kanji
+  Clash, mantenendo stato e log separati dalla review standard.
 - Mostrare furigana on demand e tooltip ricchi di contesto.
 - Tracciare avanzamento textbook, copertura del lessico e storico review.
 
@@ -109,6 +111,11 @@ model delle entita.
 - `entry_status`
 - `review_subject_state`
 - `review_subject_log`
+- `kanji_clash_pair_state`
+- `kanji_clash_pair_log`
+- `kanji_clash_manual_contrast`
+- `kanji_clash_manual_contrast_round_state`
+- `kanji_clash_manual_contrast_round_log`
 - `user_setting`
 - `lesson_progress`
 - `content_import`
@@ -151,6 +158,8 @@ sono la sorgente operativa.
 - `/media/[mediaSlug]/glossary`
 - `/media/[mediaSlug]/review` come filtro verticale sullo stesso sistema, non
   come launcher indipendente
+- `/kanji-clash` come workspace separato per contrasti automatici e drill
+  manuale
 - `/media/[mediaSlug]/progress`
 - `/settings`
 
@@ -268,7 +277,26 @@ Inoltre, l'override manuale deve esistere anche a livello di entita canonica
 (`term` o `grammar_pattern`), non solo a livello di card, perche una stessa
 entry puo avere piu card collegate.
 
-## 10. Security e accesso remoto
+## 10. Kanji Clash
+
+Kanji Clash e un workspace principale ma separato da `/review`: serve a
+discriminare rapidamente vocaboli che condividono kanji o che differiscono per
+kanji visivamente simili. Usa solo materiale canonico gia presente nel DB e non
+richiede doppioni editoriali per creare nuove coppie.
+
+Il workspace vive su `/kanji-clash`, con scope globale di default e filtro
+media solo quando `media=<slug>` e valido. Supporta modalita automatica e drill
+manuale; entrambe scrivono in tabelle Kanji Clash dedicate, senza alterare
+queue, log o contatori della review standard.
+
+La Review puo comunque forzare un contrasto quando l'utente segnala una
+confusione tramite `+ Contrasto`. In quel caso grading review e upsert del
+contrasto devono restare nella stessa transazione: il contrasto non e un
+best-effort sacrificabile. I contrasti forzati hanno una chiave unordered a
+livello di contrasto, due round direzionali schedulabili e lifecycle esplicito
+`active` / `archived` / restore.
+
+## 11. Security e accesso remoto
 
 Deploy iniziale:
 
@@ -285,7 +313,7 @@ Se in futuro l'app viene esposta via port forwarding:
 
 Questo va trattato come una milestone separata, non come un toggle banale.
 
-## 11. Roadmap operativa
+## 12. Roadmap operativa
 
 ### Fase 0 - Fondazione
 
@@ -325,6 +353,14 @@ Questo va trattato come una milestone separata, non come un toggle banale.
 - mark as known;
 - statistiche minime.
 
+### Fase 4b - Kanji Clash
+
+- workspace `/kanji-clash` separato dalla review standard;
+- pair automatiche da termini consolidati e kanji simili;
+- drill manuale con sessioni deterministiche;
+- contrasti forzati dalla Review con archive/restore;
+- stato SRS e log dedicati.
+
 ### Fase 5 - Dashboard e rifinitura
 
 - homepage con media recenti;
@@ -332,7 +368,7 @@ Questo va trattato come una milestone separata, non come un toggle banale.
 - mobile polish;
 - backup/export locale.
 
-## 12. Deliverable di progettazione
+## 13. Deliverable di progettazione
 
 I documenti da mantenere nel repo in questa fase sono:
 
@@ -341,18 +377,20 @@ I documenti da mantenere nel repo in questa fase sono:
 - lo schema dati iniziale;
 - la roadmap di implementazione.
 
-## 13. Decisioni gia prese
+## 14. Decisioni gia prese
 
 - Glossary derivato da textbook e cards.
 - Segmentazione per media flessibile e dipendente dal tipo di contenuto.
 - Supporto desktop e mobile.
 - Deploy iniziale locale.
 - Review system Anki-like con override manuale dello stato appreso.
+- Kanji Clash come workspace stabile, collegato alla Review solo tramite
+  contrasti manuali transazionali e con persistenza separata.
 - Spiegazioni e tooltip principalmente in italiano.
 - Audio locale e immagini supportati; niente parsing avanzato o pipeline media
   completamente automatica in v1.
 
-## 14. Prime milestone pratiche
+## 15. Prime milestone pratiche
 
 1. Creare lo scheletro del progetto applicativo.
 2. Definire schema DB e import model.

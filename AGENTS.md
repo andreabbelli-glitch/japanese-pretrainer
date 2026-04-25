@@ -16,19 +16,19 @@ serve anche il gate completo `./scripts/with-node.sh pnpm release:check`.
 
 ## Stack
 
-| Layer | Tecnologia |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Linguaggio | TypeScript 5 strict |
-| Frontend | React 19, Server Components, Server Actions |
-| Runtime | Node.js 22 |
-| Database | SQLite locale / LibSQL Turso remoto |
-| ORM | Drizzle ORM |
-| SRS | ts-fsrs (FSRS algorithm) |
-| Content | Markdown + YAML frontmatter, Unified/remark parser custom |
-| Test unitari | Vitest |
-| Test E2E | Playwright |
-| Linter/Format | ESLint + Prettier |
+| Layer         | Tecnologia                                                |
+| ------------- | --------------------------------------------------------- |
+| Framework     | Next.js 16 (App Router)                                   |
+| Linguaggio    | TypeScript 5 strict                                       |
+| Frontend      | React 19, Server Components, Server Actions               |
+| Runtime       | Node.js 22                                                |
+| Database      | SQLite locale / LibSQL Turso remoto                       |
+| ORM           | Drizzle ORM                                               |
+| SRS           | ts-fsrs (FSRS algorithm)                                  |
+| Content       | Markdown + YAML frontmatter, Unified/remark parser custom |
+| Test unitari  | Vitest                                                    |
+| Test E2E      | Playwright                                                |
+| Linter/Format | ESLint + Prettier                                         |
 
 ---
 
@@ -84,6 +84,13 @@ src/
     migrate.ts      Runner migrazioni
   domain/           Logica di dominio pura, zero dipendenze framework
   features/         Moduli feature-oriented condivisi tra route, componenti e test
+    glossary/       Modello, ricerca, formattazione e loader server del glossary
+      model/        Logica pura di filtro, search, format e detail helper
+      server/       Loader e API server-side per glossary globale e locale
+    kanji-clash/    Logica canonica della modalita' Kanji Clash
+      model/        Pairing, queue, scheduler e utility pure
+      server/       Loader sessione, token queue e contrasti manuali
+      tooling/      Generazione dataset kanji simili e override editoriali
     textbook/       Contratti e helper del textbook reader
       client/       Stato e adapter client-side del reader
       server/       API server-side e loader condivisi del textbook
@@ -92,7 +99,7 @@ src/
       importer/     Pipeline di import e rendering dei bundle nel modello applicativo
       parser/       Parsing Markdown/frontmatter e normalizzazione blocchi strutturati
     e2e/            Helper condivisi per bootstrap e utility dei test end-to-end
-    kanji-clash/    Loader, scheduler e logica di sessione della modalita' kanji clash
+    kanji-clash/    Shim di compatibilita' verso src/features/kanji-clash
     site/           Navigazione, href e utility di stato per il routing UI
   types/            Tipi TypeScript globali e interfacce condivise
   styles/           CSS globale e variabili

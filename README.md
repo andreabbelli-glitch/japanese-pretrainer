@@ -196,29 +196,39 @@ Il comando `release:check` copre l'intero set di controlli locali:
 ```sh
 pnpm dev
 pnpm build
-pnpm perf:benchmark
+pnpm start
+pnpm start:e2e
 pnpm lint
 pnpm format
 pnpm format:check
 pnpm typecheck
 pnpm test
+pnpm test:watch
+pnpm test:e2e:runner
 pnpm test:e2e
 pnpm check
-pnpm content:validate
 pnpm release:check
+pnpm content:validate
+pnpm content:import
+pnpm content:test-stats
 pnpm db:generate
 pnpm db:migrate
+pnpm db:backfill-review-subject-state
 pnpm db:seed
-pnpm content:import
-pnpm pronunciations:resolve
-pnpm pronunciations:fetch
-pnpm pronunciations:reuse
-pnpm pronunciations:forvo
 pnpm db:setup
 pnpm db:studio
 pnpm auth:hash-password
 pnpm fsrs:optimize
 pnpm fsrs:optimize:if-needed
+pnpm pronunciations:fetch
+pnpm pronunciations:resolve
+pnpm pronunciations:pending
+pnpm pronunciations:reuse
+pnpm pronunciations:forvo
+pnpm pronunciations:forvo:request
+pnpm pitch-accents:fetch
+pnpm image:status
+pnpm image:apply
 pnpm kanji-clash:generate-similar-kanji
 ```
 
@@ -364,13 +374,33 @@ restano separati.
 ```text
 src/
   app/
+    api/
+    glossary/
+    kanji-clash/
+    media/
+    review/
+    settings/
   components/
     dashboard/
+    glossary/
+    kanji-clash/
     layout/
     media/
+    review/
+    settings/
+    textbook/
     ui/
   db/
+    queries/
+    schema/
+  features/
+    glossary/
+    kanji-clash/
+    textbook/
   lib/
+    content/
+    e2e/
+    site/
   styles/
 content/
   media/
@@ -406,5 +436,5 @@ Per workflow con LLM esterni, il punto di partenza operativo e
 - Lo shell usa top bar editoriale su desktop e bottom navigation su mobile.
 - I pattern base riusabili vivono in `src/components/ui` e `src/components/layout`.
 - Dashboard, library e media detail leggono il DB tramite helper server-side in
-  `src/lib/app-shell.ts`, evitando dati fake quando i record reali sono gia
-  disponibili.
+  `src/lib/dashboard.ts` e `src/lib/media-shell.ts`, mentre glossary,
+  textbook e Kanji Clash espongono i loader canonici da `src/features/*`.

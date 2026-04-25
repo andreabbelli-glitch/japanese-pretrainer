@@ -1,31 +1,21 @@
-## Report divergenze – settimana del 24 aprile 2026
+## Report divergenze - settimana del 24 aprile 2026
 
-### ⚠️ Possibile cambio di filosofia
+### Risolto il 25 aprile 2026 - Kanji Clash stabile
 
-**Cosa è cambiato nel codice:**
-Kanji Clash non è più solo una coda automatica separata: la Review può forzare
-un contrasto, archiviarlo o ripristinarlo, e il database salva questi contrasti
-con tabelle dedicate.
+**Cosa era cambiato nel codice:**
+Kanji Clash non era piu solo una coda automatica separata: la Review poteva
+forzare un contrasto, archiviarlo o ripristinarlo, e il database salvava questi
+contrasti con tabelle dedicate.
 
-**Documento che potrebbe essere obsoleto:**
-`docs/database.md` – sezioni "Struttura implementata" e "Schema coperto in v1".
+**Documenti riallineati:**
 
-**Perché potrebbe essere importante:**
-Se questa è una direzione stabile, il documento fa sembrare che lo schema core
-copra solo content, glossary, review e progress. In realtà Kanji Clash ha ormai
-stato persistente proprio, incluse le tabelle storiche delle coppie e le nuove
-tabelle dei contrasti manuali.
+- `docs/database.md`: ora include Kanji Clash nella struttura implementata, nello
+  schema v1 e nelle decisioni implementative sulle tabelle `kanji_clash_*`.
+- `docs/blueprint-operativo.md`: ora include Kanji Clash tra gli obiettivi
+  funzionali, le entita core, il routing principale e la roadmap.
+- `README.md` e `AGENTS.md`: ora riflettono la struttura `src/features/*` e la
+  separazione tra feature canoniche e shim legacy.
 
-### ⚠️ Drift ancora aperto su Kanji Clash
-
-**Cosa è cambiato nel codice:**
-La route `/kanji-clash` resta una superficie principale dell'app e ora è anche
-collegata dalla Review tramite il flusso `+ Contrasto`.
-
-**Documento che potrebbe essere obsoleto:**
-`docs/blueprint-operativo.md` – sezioni "Entita core" e "Routing UI consigliato".
-
-**Perché potrebbe essere importante:**
-Il blueprint continua a descrivere le superfici principali senza Kanji Clash. Se
-Kanji Clash è ormai parte stabile del prodotto, il documento strategico non
-aiuta più a capire dove vive questa modalità e quali stati personali aggiunge.
+**Stato:**
+Nessun drift aperto registrato in questo report dopo il riallineamento del 25
+aprile 2026.

@@ -68,11 +68,13 @@ Apri Drizzle Studio:
 
 ## Struttura implementata
 
-- `src/db/schema/*`: schema tipizzato per i domini content, glossary, review e progress
+- `src/db/schema/*`: schema tipizzato per i domini content, glossary, review,
+  Kanji Clash e progress
 - `src/db/client.ts`: client Drizzle condiviso e factory per DB custom
 - `src/db/migrate.ts`: wrapper applicativo per eseguire le migrazioni versionate
 - `src/db/seed.ts`: fixture tecnica minima usata dai test unitari
-- `src/db/queries/*`: helper tipizzati per media, lessons, glossary e cards/review
+- `src/db/queries/*`: helper tipizzati per media, lessons, glossary,
+  cards/review e sessioni Kanji Clash
 - `src/instrumentation.ts`: warm-up best-effort e non bloccante delle cache
   dati piu pesanti dopo l'avvio del runtime
 - Per confrontare cold vs warm in pratica, avvia `pnpm start`, misura la
@@ -101,6 +103,11 @@ Tabelle incluse nel perimetro del task:
 - `entry_status`
 - `review_subject_state`
 - `review_subject_log`
+- `kanji_clash_pair_state`
+- `kanji_clash_pair_log`
+- `kanji_clash_manual_contrast`
+- `kanji_clash_manual_contrast_round_state`
+- `kanji_clash_manual_contrast_round_log`
 - `lesson_progress`
 - `user_setting`
 - `content_import`
@@ -157,6 +164,14 @@ Tabelle incluse nel perimetro del task:
   `/media/[mediaSlug]/review` resta una vista filtrata locale. I numeri
   etichettati come globali devono arrivare dal modello subject-level globale;
   i numeri per-media restano locali e vanno etichettati come tali.
+- Kanji Clash ha stato SRS separato dalla review standard. Le pair automatiche
+  persistono in `kanji_clash_pair_state` e `kanji_clash_pair_log`; i contrasti
+  forzati dalla Review o selezionati manualmente usano
+  `kanji_clash_manual_contrast`, due round direzionali in
+  `kanji_clash_manual_contrast_round_state` e log dedicati in
+  `kanji_clash_manual_contrast_round_log`. L'archiviazione di un contrasto
+  manuale agisce anche come kill-switch rispetto alla pair automatica
+  equivalente.
 
 ## Seed locale
 
