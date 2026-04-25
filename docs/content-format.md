@@ -102,17 +102,19 @@ Regole:
 - dentro uno stesso media, uno stesso `cross_media_group` deve puntare a una
   sola entry locale per tipo.
 
-Quando usarlo:
+Quando compilarlo come metadata documentativo:
 
+- vuoi lasciare una nota editoriale stabile sul nucleo didattico condiviso;
 - lo stesso termine o pattern ricorre davvero in media diversi;
-- vuoi mostrare "compare anche in altri media" nel detail e nella review;
-- le sfumature locali restano diverse ma il collegamento editoriale e certo.
-- il confronto aggiunge valore didattico reale, non solo somiglianza formale.
+- le sfumature locali restano diverse ma il collegamento editoriale e certo;
+- il gruppo aggiunge valore per manutenzione e audit del corpus.
 
 Quando non usarlo:
 
-- due entry condividono solo lemma, kanji o reading;
-- c'e il dubbio che si tratti di omografia o uso troppo diverso;
+- per decidere l'unione nel glossary o nella review: quella avviene gia sulla
+  superficie grafica normalizzata;
+- per forzare insieme superfici graficamente diverse;
+- per separare omografi con la stessa superficie;
 - stai cercando un fallback fuzzy per evitare di curare il contenuto.
 
 ### 4.1 Regola furigana per testo visibile
@@ -934,7 +936,8 @@ Regole:
 - prefisso suggerito per term: `term-`
 - prefisso suggerito per grammar: `grammar-`
 - prefisso suggerito per card: `card-`
-- formato suggerito per `cross_media_group`: slug descrittivo ASCII, per esempio
+- formato suggerito per `cross_media_group`, se usato come metadata
+  documentativo: slug descrittivo ASCII, per esempio
   `shared-taberu-core` o `shared-progressive-state`
 - convenzione pratica consigliata per il corpus reale: prefisso del tipo +
   nucleo condiviso, per esempio `term-shared-ranked-match` o
@@ -975,5 +978,6 @@ Per partire velocemente:
 - se una entry e critica per il glossary, va dichiarata esplicitamente come
   `term` o `grammar`, non solo nominata nel testo.
 - se una entry locale compare anche in altri media con collegamento editoriale
-  certo, aggiungi `cross_media_group` invece di riusare o forzare un ID
-  globale.
+  certo, puoi aggiungere `cross_media_group` come annotazione documentativa,
+  ma non serve per creare la voce globale: l'importer la crea dalla superficie
+  grafica normalizzata.

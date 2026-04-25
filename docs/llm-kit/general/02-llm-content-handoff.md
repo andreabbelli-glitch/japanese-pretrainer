@@ -71,14 +71,14 @@ Regole operative da assumere:
 
 - dentro lo stesso media, `term.id` e `grammar.id` devono restare univoci;
 - tra media diversi, lo stesso ID editoriale puo essere riusato;
-- se vuoi dichiarare che due entry locali appartengono allo stesso concetto
-  cross-media, usa il campo opzionale `cross_media_group`;
-- `cross_media_group` non sostituisce l'ID locale e non crea un routing
-  globale;
+- per `term` e `grammar`, il glossary e la review globali uniscono
+  automaticamente le occorrenze con la stessa superficie grafica normalizzata;
+- `cross_media_group` resta opzionale e documentativo: non sostituisce l'ID
+  locale e non decide l'unione canonica;
 - i link semantici `[...](term:...)` e `[...](grammar:...)` vengono risolti nel
   contesto del media corrente;
-- il confronto runtime tra media esiste solo per entry con
-  `cross_media_group` esplicito.
+- il routing pubblico del detail e globale: `/glossary/term/<surface>` e
+  `/glossary/grammar/<surface>`.
 
 ## 5. Modo piu intelligente di collaborare
 
@@ -185,10 +185,10 @@ Quando gli chiedi contenuti, devi dirgli esplicitamente:
 - quali ID esistono gia e non possono cambiare;
 - che per `term` e `grammar` l'unicita vale nel media corrente, non nel
   workspace intero;
-- che `cross_media_group` e opzionale e va compilato solo per collegamenti
-  editoriali certi tra media diversi;
-- che, quando serve, il group id va nominato come slug leggibile e stabile,
-  preferibilmente con prefisso del tipo (`term-shared-...`,
+- che `cross_media_group` e opzionale, documentativo e non necessario per
+  creare la voce globale;
+- che, quando viene usato, il group id va nominato come slug leggibile e
+  stabile, preferibilmente con prefisso del tipo (`term-shared-...`,
   `grammar-shared-...`);
 - quali segmenti esistono gia;
 - quali entry devono essere riusate;
@@ -229,10 +229,10 @@ Per il workflow immagini, chiedi esplicitamente anche:
 
 Regola editoriale addizionale:
 
-- non deve aggiungere `cross_media_group` solo perche due entry condividono
-  lemma, kanji, reading o traduzione simile.
-- non deve forzare gruppi tra modalita solo analoghe, tra nomi propri o tra
-  entry di tipo diverso anche se condividono lo stesso lessema.
+- non deve aggiungere `cross_media_group` per decidere merge o split del
+  glossary: il merge avviene sulla superficie grafica normalizzata.
+- non deve usarlo per forzare gruppi tra superfici diverse, tra modalita solo
+  analoghe, tra nomi propri o tra entry di tipo diverso.
 
 ### 7.1 Regola operativa fondamentale
 

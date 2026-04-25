@@ -84,9 +84,11 @@ Optional:
 - Automatic extras must be N5-N3 or extremely common and genuinely useful.
 - Do not automatically promote highly site-specific labels into flashcards.
   Only do that when the user explicitly asks.
-- If a term already exists in another media, create a local entry only when the
-  nuance really changes here.
-- When the cross-media link is certain, use `cross_media_group`.
+- If a term already exists in another media, create a local occurrence when this
+  page adds a useful nuance, example, or review card.
+- The importer groups glossary/review automatically by normalized written
+  surface. `cross_media_group` is optional documentary metadata only; do not use
+  it to force a merge or split.
 - When the local nuance changes, state that clearly in `notes_it`.
 - Reuse a full sentence from the page as `example_jp` only when the whole
   sentence stays readable with already-covered material; otherwise write a

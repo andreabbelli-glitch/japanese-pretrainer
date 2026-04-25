@@ -46,14 +46,9 @@ src/
     glossary/       Portal glossary globale e stati di caricamento
     kanji-clash/    Modalita' allenamento kanji con sessioni dedicate
     login/          Pagina di accesso locale
-    media/          Route dinamiche per media, glossary locale, textbook, review e progress
+    media/          Route dinamiche per media, textbook, review e progress
       [mediaSlug]/assets/ Asset route del media bundle
         [...assetPath]/ Catch-all per servire file statici del media bundle
-      [mediaSlug]/glossary/ Glossary locale del media e filtri dedicati
-        grammar/        Dettaglio e navigazione per pattern grammaticali del media
-          [entryId]/     Pagina dettaglio per una voce grammaticale del media
-        term/           Dettaglio e navigazione per termini del media
-          [entryId]/     Pagina dettaglio per un termine del media
       [mediaSlug]/progress/ Stato di avanzamento e metriche del media
       [mediaSlug]/review/ Vista review verticale sul sistema review globale
         card/           Vista dedicata alla review di una card nel contesto del media

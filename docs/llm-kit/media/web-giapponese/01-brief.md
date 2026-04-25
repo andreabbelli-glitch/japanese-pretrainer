@@ -59,9 +59,10 @@ I termini molto verticali del singolo sito vanno trattati cosi:
 - coprire sempre i seed terms o seed phrases richiesti dall'utente;
 - aggiungere al massimo 5 card extra automatiche;
 - le extra devono essere N5-N3 oppure estremamente comuni e davvero utili;
-- se una parola esiste gia in altri media, creare una nuova entry locale solo
-  quando qui cambia davvero la sfumatura d'uso;
-- quando il legame cross-media e certo, usare `cross_media_group`;
+- se una parola esiste gia in altri media, crea comunque l'occorrenza locale
+  quando questa pagina introduce una sfumatura, un esempio o una card utile;
+- l'importer unisce automaticamente glossary/review per superficie
+  normalizzata; `cross_media_group` e solo metadata documentativo opzionale;
 - se la sfumatura locale cambia davvero, renderlo esplicito in `notes_it`;
 - gli `example_jp` vanno presi dalla pagina solo quando la frase completa resta
   leggibile col corpus gia coperto; altrimenti scrivere esempi semplificati ma

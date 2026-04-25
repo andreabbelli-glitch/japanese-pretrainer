@@ -93,11 +93,12 @@ Regole pratiche:
 - se stai correggendo, limita il batch ai file davvero falliti;
 - per `term` e `grammar`, considera valida l'unicita nel media corrente, non
   nel workspace intero;
-- usa `cross_media_group` solo quando il legame cross-media e intenzionale e
-  certo; non come deduzione automatica;
-- nei rollout reali collega solo voci con lo stesso nucleo didattico utile da
-  confrontare; per esempio `mission`, `deck` o `ranked match`, ma non modalita
-  vagamente simili, nomi propri o entry di tipo diverso;
+- considera globale il glossary/review per superficie normalizzata: stesse
+  grafie confluiscono in una sola voce e in un solo subject;
+- usa `cross_media_group` solo come metadata documentativo opzionale quando il
+  legame cross-media e intenzionale e certo; non serve per creare l'unione;
+- nei rollout reali non usarlo per collegare modalita vagamente simili, nomi
+  propri o entry di tipo diverso;
 - preferisci nuove entry canoniche in `cards/`, non in `textbook/`, salvo
   necessita reale.
 
@@ -250,7 +251,7 @@ Il check puo fallire per:
 - ID duplicati nello stesso media;
 - riuso cross-media degli stessi `term.id` / `grammar.id` e ammesso se ogni
   bundle locale resta coerente;
-- `cross_media_group` malformati o incoerenti;
+- `cross_media_group` malformati o incoerenti quando presenti;
 - riferimenti mancanti;
 - bundle incompleti;
 - errori parser/schema/reference/integrity.
@@ -301,10 +302,12 @@ Nota di fase 2:
 - textbook popup e tooltip restano locali al media corrente;
 - i link semantici `term:...` e `grammar:...` vengono risolti nel media del
   bundle importato;
-- il confronto cross-media compare solo per entry con `cross_media_group`
-  esplicito.
-- per nominare i gruppi usa uno slug stabile e leggibile, preferibilmente con
-  prefisso del tipo: `term-shared-...` oppure `grammar-shared-...`.
+- le occorrenze locali restano risolte nel media del bundle importato, ma il
+  detail pubblico e globale (`/glossary/term/<surface>` o
+  `/glossary/grammar/<surface>`);
+- se compili `cross_media_group`, usalo solo come annotazione documentativa e
+  nominalo con uno slug stabile e leggibile, preferibilmente con prefisso del
+  tipo: `term-shared-...` oppure `grammar-shared-...`.
 
 ### 5. Correggi in modo iterativo
 

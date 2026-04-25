@@ -31,9 +31,9 @@ Vincoli didattici obbligatori:
 - puoi aggiungere al massimo 5 flashcard extra automatiche;
 - le extra devono essere N5-N3 oppure estremamente comuni e davvero utili;
 - non promuovere automaticamente a flashcard i label molto verticali del sito;
-- se un termine esiste gia in altri media, crea una nuova entry locale solo se
-  qui cambia davvero la sfumatura; se il collegamento e certo usa
-  `cross_media_group`;
+- se un termine esiste gia in altri media, crea una nuova occorrenza locale
+  solo se qui aggiunge sfumatura, esempio o card utile; il glossary/review
+  globale verra unito automaticamente dalla superficie normalizzata;
 - se la sfumatura locale cambia davvero, esplicitala in `notes_it`;
 - riusa una frase vera della pagina come `example_jp` solo se la frase completa
   resta leggibile col corpus gia coperto; altrimenti crea un esempio

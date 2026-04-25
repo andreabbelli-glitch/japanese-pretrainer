@@ -168,9 +168,10 @@ sul workflow di studio, sulla review o sulla produzione del contenuto.>
 Usa blocchi :::term o :::grammar solo se devi introdurre una entry nuova non
 ancora dichiarata altrove. Se una entry esiste gia, referenzia il suo ID.
 Se dichiari una entry nuova che ha gia una sorella editoriale in un altro media,
-puoi aggiungere `cross_media_group`, ma solo se il collegamento e certo.
-Se lo usi, preferisci uno slug stabile con prefisso del tipo, per esempio
-`term-shared-ranked-match`.
+puoi aggiungere `cross_media_group` come metadata documentativo, ma non serve
+per creare la voce globale: l'importer raggruppa gia per superficie
+normalizzata. Se lo usi, preferisci uno slug stabile con prefisso del tipo, per
+esempio `term-shared-ranked-match`.
 Usa :::example_sentence quando vuoi una frase con traduzione italiana
 collassabile nel reader.
 Se l'asset non esiste ancora, non usare subito :::image: crea prima una voce in

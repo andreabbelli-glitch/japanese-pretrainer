@@ -77,40 +77,44 @@ Implementazione rilevante:
   dall'ID editoriale;
 - la UI continua a trattare il media corrente come verita primaria.
 
-### 4.0.1 Layer cross-media esplicito
+### 4.0.1 Layer cross-media canonico
 
-In fase 2 esiste un terzo livello distinto dall'ID tecnico e dall'ID
+Il DB mantiene un livello canonico distinto dall'ID tecnico e dall'ID
 editoriale locale:
 
 - `cross_media_group`
 
-Serve solo per collegare entry locali appartenenti a media diversi quando il
-collegamento e intenzionale e dichiarato.
+Per `term` e `grammar`, l'importer assegna automaticamente il gruppo canonico
+partendo dalla superficie grafica normalizzata (`lemma` per i termini,
+`pattern` per la grammatica). Letture, audio, significati e note diverse
+restano occorrenze locali del media, ma confluiscono nella stessa voce globale
+e nello stesso subject review.
 
 Regole:
 
-- `cross_media_group` e opzionale;
+- `cross_media_group` nel Markdown resta opzionale e documentativo;
 - non sostituisce `term.id` o `grammar.id`;
-- non cambia il routing pubblico, che resta `mediaSlug + source_id locale`;
+- il routing pubblico del detail e globale: `/glossary/term/<surface>` o
+  `/glossary/grammar/<surface>`;
 - `meaning_it`, `notes_it`, lesson e card restano sempre locali al media;
-- non va usato per unire automaticamente omografi, falsi amici o label UI
-  simili ma editorialmente diverse;
 - lo stesso `cross_media_group` puo essere riusato solo dallo stesso tipo di
   entry: o tutti `term`, o tutti `grammar`;
 - dentro uno stesso media, uno stesso `cross_media_group` deve puntare a una
   sola entry locale per tipo.
 
-Quando usarlo:
+Quando compilarlo come metadata documentativo:
 
+- vuoi lasciare una nota editoriale stabile sul nucleo didattico condiviso;
 - lo stesso termine o pattern ricorre davvero in media diversi;
-- vuoi mostrare "compare anche in altri media" nel detail e nella review;
-- le sfumature locali restano diverse ma il collegamento editoriale e certo.
-- il confronto aggiunge valore didattico reale, non solo somiglianza formale.
+- le sfumature locali restano diverse ma il collegamento editoriale e certo;
+- il gruppo aggiunge valore per manutenzione e audit del corpus.
 
 Quando non usarlo:
 
-- due entry condividono solo lemma, kanji o reading;
-- c'e il dubbio che si tratti di omografia o uso troppo diverso;
+- per decidere l'unione nel glossary o nella review: quella avviene gia sulla
+  superficie grafica normalizzata;
+- per forzare insieme superfici graficamente diverse;
+- per separare omografi con la stessa superficie;
 - stai cercando un fallback fuzzy per evitare di curare il contenuto.
 
 ### 4.1 Regola furigana per testo visibile
@@ -917,7 +921,8 @@ Regole:
 - prefisso suggerito per term: `term-`
 - prefisso suggerito per grammar: `grammar-`
 - prefisso suggerito per card: `card-`
-- formato suggerito per `cross_media_group`: slug descrittivo ASCII, per esempio
+- formato suggerito per `cross_media_group`, se usato come metadata
+  documentativo: slug descrittivo ASCII, per esempio
   `shared-taberu-core` o `shared-progressive-state`
 - convenzione pratica consigliata per il corpus reale: prefisso del tipo +
   nucleo condiviso, per esempio `term-shared-ranked-match` o
@@ -958,5 +963,6 @@ Per partire velocemente:
 - se una entry e critica per il glossary, va dichiarata esplicitamente come
   `term` o `grammar`, non solo nominata nel testo.
 - se una entry locale compare anche in altri media con collegamento editoriale
-  certo, aggiungi `cross_media_group` invece di riusare o forzare un ID
-  globale.
+  certo, puoi aggiungere `cross_media_group` come annotazione documentativa,
+  ma non serve per creare la voce globale: l'importer la crea dalla superficie
+  grafica normalizzata.
