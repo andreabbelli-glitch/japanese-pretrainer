@@ -82,7 +82,6 @@ export function invalidateImportedContentCaches(input: {
   for (const mediaSlug of input.mediaSlugs) {
     revalidatePath(mediaHref(mediaSlug));
     revalidatePath(mediaGlossaryHref(mediaSlug));
-    revalidatePath(mediaStudyHref(mediaSlug, "glossary"));
     revalidatePath(mediaStudyHref(mediaSlug, "progress"));
     revalidatePath(mediaStudyHref(mediaSlug, "review"));
     revalidatePath(mediaStudyHref(mediaSlug, "textbook"));

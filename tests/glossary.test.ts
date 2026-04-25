@@ -43,6 +43,7 @@ import {
 import { importContentWorkspace } from "@/lib/content/importer";
 import {
   getGlobalGlossaryAutocompleteData,
+  getGlobalGrammarGlossaryDetailData,
   getGlobalGlossaryPageData,
   getGlossaryPageData,
   getGrammarGlossaryDetailData,
@@ -1138,7 +1139,7 @@ describe("glossary data", () => {
         media: developmentFixture.mediaSlug,
         source: developmentFixture.termId
       },
-      returnTo: `/glossary?q=iku&segment=${developmentFixture.segmentId}&study=learning&cards=with_cards&sort=alphabetical&returnTo=/glossary?q=iku&media=${developmentFixture.mediaSlug}`
+      returnTo: `/glossary?media=${developmentFixture.mediaSlug}&q=iku&segment=${developmentFixture.segmentId}&study=learning&cards=with_cards&sort=alphabetical&returnTo=/glossary?q=iku&media=${developmentFixture.mediaSlug}`
     });
   });
 
@@ -1334,6 +1335,30 @@ describe("glossary data", () => {
     expect(detail?.cards[0]?.href).toBe(
       "/media/sample-anime/review/card/card-teiru-concept"
     );
+  });
+
+  it("resolves global grammar detail pages from unnormalized route surfaces", async () => {
+    const result = await importContentWorkspace({
+      contentRoot: validContentRoot,
+      database,
+      mediaSlugs: ["sample-anime"]
+    });
+
+    expect(result.status).toBe("completed");
+
+    const detail = await getGlobalGrammarGlossaryDetailData(
+      "～ている",
+      {
+        media: "sample-anime",
+        source: "grammar-teiru"
+      },
+      database
+    );
+
+    expect(detail).not.toBeNull();
+    expect(detail?.entry.label).toBe("～ている");
+    expect(detail?.media.slug).toBe("sample-anime");
+    expect(detail?.cards[0]?.front).toBe("～ている");
   });
 
   it("renders grammar pitch accent even when the entry has no separate reading field", async () => {

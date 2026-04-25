@@ -25,6 +25,8 @@ type ReviewSubjectStateDatabase = Pick<
   DatabaseClient,
   "delete" | "insert" | "query" | "update"
 >;
+type ReviewSubjectStateRootDatabase = ReviewSubjectStateDatabase &
+  Pick<DatabaseClient, "transaction">;
 
 type ReviewSubjectCoverageSnapshot = {
   cardCount: number;
@@ -109,12 +111,14 @@ export async function syncReviewSubjectState(
 }
 
 export async function backfillReviewSubjectState(
-  database: ReviewSubjectStateDatabase,
+  database: ReviewSubjectStateRootDatabase,
   input: {
     now?: Date;
   } = {}
 ): Promise<ReviewSubjectStateBackfillResult> {
-  return syncReviewSubjectState(database, input);
+  return database.transaction((transaction) =>
+    syncReviewSubjectState(transaction, input)
+  );
 }
 
 async function loadReviewSubjectCoverageSnapshot(

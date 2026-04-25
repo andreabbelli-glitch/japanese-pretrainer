@@ -2807,7 +2807,7 @@ describe("review system", () => {
       expect(result.status).toBe("completed");
       await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
 
-      const [alphaQueue, betaDetail] = await Promise.all([
+      const [alphaQueue, betaDetail, hydratedBetaCard] = await Promise.all([
         getReviewQueueSnapshotForMedia(
           crossMediaFixture.alpha.mediaSlug,
           database
@@ -2816,7 +2816,11 @@ describe("review system", () => {
           crossMediaFixture.beta.mediaSlug,
           crossMediaFixture.beta.termCardId,
           database
-        )
+        ),
+        hydrateReviewCard({
+          cardId: crossMediaFixture.beta.termCardId,
+          database
+        })
       ]);
 
       expect(alphaQueue?.cards.map((card) => card.id)).toContain(
@@ -2845,6 +2849,12 @@ describe("review system", () => {
           crossMediaFixture.alpha.termSourceId
         )
       );
+      expect(betaDetail?.card.back).toContain(crossMediaFixture.alpha.termMeaning);
+      expect(betaDetail?.card.back).toContain(crossMediaFixture.beta.termMeaning);
+      expect(hydratedBetaCard?.back).toContain(
+        crossMediaFixture.alpha.termMeaning
+      );
+      expect(hydratedBetaCard?.back).toContain(crossMediaFixture.beta.termMeaning);
 
       const markup = renderToStaticMarkup(
         ReviewCardDetailPage({ data: betaDetail! })

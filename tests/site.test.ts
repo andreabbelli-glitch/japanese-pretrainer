@@ -99,6 +99,9 @@ describe("site helpers", () => {
     expect(mediaGlossaryGrammarHref("〜ている")).toBe(
       "/glossary/grammar/%E3%80%9C%E3%81%A6%E3%81%84%E3%82%8B"
     );
+    expect(mediaGlossaryGrammarHref("～ている")).toBe(
+      "/glossary/grammar/%E3%80%9C%E3%81%A6%E3%81%84%E3%82%8B"
+    );
     expect(
       mediaGlossaryEntryHref("fixture-tcg", "term", "能力", {
         sourceId: "term-nouryoku"
@@ -137,7 +140,7 @@ describe("site helpers", () => {
     );
     expect(areas.map((area) => mediaStudyHref("fixture-tcg", area))).toEqual([
       "/media/fixture-tcg/textbook",
-      "/media/fixture-tcg/glossary",
+      "/glossary?media=fixture-tcg",
       "/media/fixture-tcg/review",
       "/media/fixture-tcg/progress"
     ]);
@@ -355,7 +358,7 @@ describe("site helpers", () => {
         study: "learning"
       })
     ).toBe(
-      "/media/fixture-tcg/glossary?q=iku&segment=segment_fixture_starter_core&study=learning&sort=alphabetical&returnTo=%2Fglossary%3Fq%3Diku%26media%3Dfixture-tcg"
+      "/glossary?media=fixture-tcg&q=iku&segment=segment_fixture_starter_core&study=learning&sort=alphabetical&returnTo=%2Fglossary%3Fq%3Diku%26media%3Dfixture-tcg"
     );
   });
 

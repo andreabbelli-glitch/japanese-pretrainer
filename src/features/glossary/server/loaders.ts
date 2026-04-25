@@ -64,6 +64,7 @@ import {
 import { defaultStudySettings, getGlossaryDefaultSort } from "@/lib/settings";
 import { mediaGlossaryEntryHref } from "@/lib/site";
 import { deriveEntryStudyState } from "@/lib/study-entry";
+import { normalizeReviewSubjectSurface } from "@/lib/review-subject";
 import type {
   GlossaryBaseEntry,
   GlossaryDetailData,
@@ -384,13 +385,15 @@ export async function loadGlobalGlossaryDetailData(
   searchParams: Record<string, string | string[] | undefined>,
   database: DatabaseClient = db
 ): Promise<GlossaryDetailData | null> {
+  const normalizedSurface = normalizeReviewSubjectSurface(surface);
+
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
     keyParts: [
       "glossary",
       "global-detail",
       `kind:${kind}`,
-      `surface:${surface}`,
+      `surface:${normalizedSurface}`,
       `media:${readFirstSearchParam(searchParams.media) ?? "all"}`,
       `source:${readFirstSearchParam(searchParams.source) ?? "all"}`
     ],
@@ -400,7 +403,7 @@ export async function loadGlobalGlossaryDetailData(
         kind,
         mediaSlug: readFirstSearchParam(searchParams.media),
         sourceId: readFirstSearchParam(searchParams.source),
-        surface
+        surface: normalizedSurface
       }),
     tags: [MEDIA_LIST_TAG, GLOSSARY_SUMMARY_TAG, REVIEW_SUMMARY_TAG]
   });

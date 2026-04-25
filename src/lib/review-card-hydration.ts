@@ -1,8 +1,11 @@
 import { db, type DatabaseClient } from "@/db";
 import {
   getCardById,
+  getGlossaryEntriesByCrossMediaGroupIds,
   getGlossaryEntriesByIds,
+  listEntryCardConnections,
   listCrossMediaFamiliesByEntryIds,
+  listReviewCardsByIds,
   getReviewSubjectStateByKey,
   type CrossMediaFamily,
   type CrossMediaSibling,
@@ -16,6 +19,7 @@ import {
   buildGlossarySummaryTags,
   buildReviewSummaryTags,
   canUseDataCache,
+  listMediaCached,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/lib/data-cache";
@@ -37,7 +41,8 @@ import { stripInlineMarkdown } from "@/lib/render-furigana";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
-  matchesReviewSubjectEntrySurface
+  matchesReviewSubjectEntrySurface,
+  type ReviewSubjectIdentity
 } from "./review-subject";
 import { deriveInlineReading } from "./inline-markdown.ts";
 import {
@@ -105,6 +110,13 @@ export type ReviewMediaLookup = Map<
     title: string;
   }
 >;
+
+type ReviewCardWithOptionalMedia = ReviewCardSource & {
+  media?: {
+    slug: string;
+    title: string;
+  } | null;
+};
 
 export function collectReviewLinkedEntryIds(
   cards: Array<Pick<ReviewCardSource, "entryLinks">>
@@ -208,7 +220,6 @@ export async function hydrateReviewCardUncached(input: {
       getGlossaryEntriesByIds(database, "grammar", grammarIds)
     )
   ]);
-  const entryLookup = buildEntryLookup(terms, grammar);
   const subjectIdentity = deriveReviewSubjectIdentity({
     cardId: card.id,
     cardType: card.cardType,
@@ -221,25 +232,32 @@ export async function hydrateReviewCardUncached(input: {
     "getReviewSubjectStateByKey",
     () => getReviewSubjectStateByKey(database, subjectIdentity.subjectKey)
   );
+  const subjectContext = await measureWith(
+    input.profiler,
+    "loadReviewSubjectCardContext",
+    () =>
+      loadReviewSubjectCardContext({
+        card,
+        database,
+        grammar,
+        subjectIdentity,
+        terms
+      })
+  );
   const queueStateSnapshot = resolveReviewQueueState(
     card.status,
     subjectState,
     nowIso
   );
-  const mediaById = buildSingleMediaLookup({
-    id: card.mediaId,
-    slug: card.media?.slug ?? "unknown-media",
-    title: card.media?.title ?? "Media"
-  });
   const queueCard = await measureWith(
     input.profiler,
     "mapQueueCard",
     () =>
       mapQueueCard(
         card,
-        entryLookup,
-        [card],
-        mediaById,
+        subjectContext.entryLookup,
+        subjectContext.subjectCards,
+        subjectContext.mediaById,
         nowIso,
         fsrsOptimizerSnapshot,
         queueStateSnapshot,
@@ -310,8 +328,6 @@ export async function getReviewCardDetailData(
     getGlossaryEntriesByIds(database, "term", termIds),
     getGlossaryEntriesByIds(database, "grammar", grammarIds)
   ]);
-  const entryLookup = buildEntryLookup(terms, grammar);
-
   const subjectIdentity = deriveReviewSubjectIdentity({
     cardId: selectedRawCard.id,
     cardType: selectedRawCard.cardType,
@@ -326,11 +342,19 @@ export async function getReviewCardDetailData(
 
   const termById = new Map(terms.map((entry) => [entry.id, entry]));
   const grammarById = new Map(grammar.map((entry) => [entry.id, entry]));
-  const [subjectState, termFamilies, grammarFamilies] = await Promise.all([
+  const [subjectState, subjectContext, termFamilies, grammarFamilies] =
+    await Promise.all([
     subjectStatePromise,
+    loadReviewSubjectCardContext({
+      card: selectedRawCard,
+      database,
+      grammar,
+      subjectIdentity,
+      terms
+    }),
     termFamiliesPromise,
     grammarFamiliesPromise
-  ]);
+    ]);
   const queueStateSnapshot = resolveReviewQueueState(
     selectedRawCard.status,
     subjectState,
@@ -338,13 +362,9 @@ export async function getReviewCardDetailData(
   );
   const selectedCard = mapQueueCard(
     selectedRawCard,
-    entryLookup,
-    [selectedRawCard],
-    buildSingleMediaLookup({
-      id: selectedRawCard.mediaId,
-      slug: cardMedia.slug,
-      title: cardMedia.title
-    }),
+    subjectContext.entryLookup,
+    subjectContext.subjectCards,
+    subjectContext.mediaById,
     nowIso,
     undefined,
     queueStateSnapshot,
@@ -416,6 +436,124 @@ export async function getReviewCardDetailData(
       title: cardMedia.title
     }
   };
+}
+
+async function loadReviewSubjectCardContext(input: {
+  card: ReviewCardWithOptionalMedia;
+  database: DatabaseClient;
+  grammar: ReviewGrammarLookupEntry[];
+  subjectIdentity: ReviewSubjectIdentity;
+  terms: ReviewTermLookupEntry[];
+}) {
+  if (
+    input.subjectIdentity.subjectKind !== "group" ||
+    !input.subjectIdentity.crossMediaGroupId ||
+    !input.subjectIdentity.entryType
+  ) {
+    return buildSingleReviewSubjectCardContext(input);
+  }
+
+  const groupEntries =
+    input.subjectIdentity.entryType === "term"
+      ? await getGlossaryEntriesByCrossMediaGroupIds(input.database, "term", [
+          input.subjectIdentity.crossMediaGroupId
+        ])
+      : await getGlossaryEntriesByCrossMediaGroupIds(input.database, "grammar", [
+          input.subjectIdentity.crossMediaGroupId
+        ]);
+  const cardConnections = await listEntryCardConnections(
+    input.database,
+    groupEntries.map((entry) => ({
+      entryId: entry.id,
+      entryType: input.subjectIdentity.entryType!
+    }))
+  );
+  const subjectCardIds = dedupeStable(
+    cardConnections.map((connection) => connection.cardId)
+  );
+  const loadedSubjectCards =
+    subjectCardIds.length > 0
+      ? await listReviewCardsByIds(input.database, subjectCardIds)
+      : [];
+  const subjectCards = mergeReviewSubjectCards(
+    [input.card, ...loadedSubjectCards].filter(hasCompletedReviewLesson)
+  );
+  const mediaById = buildReviewMediaLookup(await listMediaCached(input.database));
+
+  if (input.subjectIdentity.entryType === "term") {
+    return {
+      entryLookup: buildEntryLookup(
+        mergeGlossaryEntries(input.terms, groupEntries as ReviewTermLookupEntry[]),
+        input.grammar
+      ),
+      mediaById,
+      subjectCards
+    };
+  }
+
+  return {
+    entryLookup: buildEntryLookup(
+      input.terms,
+      mergeGlossaryEntries(
+        input.grammar,
+        groupEntries as ReviewGrammarLookupEntry[]
+      )
+    ),
+    mediaById,
+    subjectCards
+  };
+}
+
+function buildSingleReviewSubjectCardContext(input: {
+  card: ReviewCardWithOptionalMedia;
+  grammar: ReviewGrammarLookupEntry[];
+  terms: ReviewTermLookupEntry[];
+}) {
+  return {
+    entryLookup: buildEntryLookup(input.terms, input.grammar),
+    mediaById: buildSingleMediaLookup({
+      id: input.card.mediaId,
+      slug: input.card.media?.slug ?? "unknown-media",
+      title: input.card.media?.title ?? "Media"
+    }),
+    subjectCards: [input.card]
+  };
+}
+
+function mergeGlossaryEntries<TEntry extends { id: string }>(
+  baseEntries: TEntry[],
+  additionalEntries: TEntry[]
+) {
+  const entriesById = new Map(baseEntries.map((entry) => [entry.id, entry]));
+
+  for (const entry of additionalEntries) {
+    entriesById.set(entry.id, entry);
+  }
+
+  return [...entriesById.values()];
+}
+
+function mergeReviewSubjectCards(cards: ReviewCardSource[]) {
+  const cardsById = new Map(cards.map((card) => [card.id, card]));
+
+  return [...cardsById.values()].sort((left, right) => {
+    if (left.mediaId !== right.mediaId) {
+      return left.mediaId.localeCompare(right.mediaId);
+    }
+
+    if (left.orderIndex !== right.orderIndex) {
+      return (
+        (left.orderIndex ?? Number.MAX_SAFE_INTEGER) -
+        (right.orderIndex ?? Number.MAX_SAFE_INTEGER)
+      );
+    }
+
+    return left.id.localeCompare(right.id);
+  });
+}
+
+function dedupeStable(values: string[]) {
+  return [...new Set(values)];
 }
 
 export function buildReviewMediaLookup(media: MediaListItem[]) {

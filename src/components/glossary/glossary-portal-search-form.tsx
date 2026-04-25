@@ -21,7 +21,6 @@ export function GlossaryPortalSearchForm({
   mediaOptions
 }: GlossaryPortalSearchFormProps) {
   const router = useRouter();
-  const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState(filters.query);
   const [entryType, setEntryType] = useState(filters.entryType);
@@ -54,14 +53,23 @@ export function GlossaryPortalSearchForm({
       inputRef.current.value = suggestion.label;
     }
 
-    requestAnimationFrame(() => {
-      formRef.current?.requestSubmit();
-    });
+    const params = new URLSearchParams();
+
+    params.set("q", suggestion.label);
+    params.set("type", entryType);
+    params.set("media", media);
+    params.set("study", study);
+    params.set("cards", cards);
+
+    if (filters.sort !== "lesson_order") {
+      params.set("sort", filters.sort);
+    }
+
+    router.replace(`/glossary?${params.toString()}`);
   };
 
   return (
     <Form
-      ref={formRef}
       action="/glossary"
       className="glossary-search-form glossary-search-form--portal"
     >

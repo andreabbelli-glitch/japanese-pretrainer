@@ -50,6 +50,10 @@ export function mediaGlossaryHref(mediaSlug: string): Route {
 }
 
 export function mediaStudyHref(mediaSlug: string, area: StudyAreaKey): Route {
+  if (area === "glossary") {
+    return mediaGlossaryHref(mediaSlug);
+  }
+
   return `/media/${mediaSlug}/${area}` as Route;
 }
 
@@ -154,12 +158,16 @@ function globalGlossaryEntryHref(
   entrySurface: string,
   options: GlossaryEntryHrefOptions
 ): Route {
-  const encodedSurface = encodeURIComponent(entrySurface);
+  const encodedSurface = encodeURIComponent(normalizeGlossaryEntrySurface(entrySurface));
 
   return buildHrefWithSearch(`/glossary/${entryKind}/${encodedSurface}`, (params) => {
     setOptionalSearchParam(params, "media", options.media, "all");
     setOptionalSearchParam(params, "source", options.sourceId);
   });
+}
+
+function normalizeGlossaryEntrySurface(value: string) {
+  return value.replace(/[～〜]/g, "〜").replace(/\s+/g, " ").trim();
 }
 
 export function buildHrefWithSearch(
@@ -193,7 +201,7 @@ export function buildGlossaryHref(input: GlossaryHrefInput): Route {
   return buildHrefWithSearch(input.baseHref, (params) => {
     setOptionalSearchParam(params, "q", input.query);
     setOptionalSearchParam(params, "type", input.entryType, "all");
-    setOptionalSearchParam(params, "media", input.media, "all");
+    setOptionalSearchParam(params, "media", input.media ?? params.get("media"), "all");
     setOptionalSearchParam(
       params,
       "page",
