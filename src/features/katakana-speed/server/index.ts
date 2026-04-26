@@ -31,7 +31,10 @@ import {
   getKatakanaSpeedItemBySurface
 } from "../model/catalog";
 import { isKatakanaSpeedTargetablePseudowordItem } from "../model/pseudoword-catalog";
-import { scoreKatakanaSpeedRanGrid } from "../model/scoring";
+import {
+  isKatakanaSpeedAnswerCorrect,
+  scoreKatakanaSpeedRanGrid
+} from "../model/scoring";
 import {
   buildKatakanaSpeedAnalytics,
   type KatakanaSpeedAnalytics,
@@ -1056,9 +1059,14 @@ export async function submitKatakanaSpeedAnswer(input: {
       getKatakanaSpeedItemById(trial.correctItemId)?.surface ??
       trial.promptSurface;
     const userAnswer = input.userAnswer.trim();
-    const isCorrect = userAnswer === expectedAnswer;
+    const trialFeatures = parseJsonObject(trial.featuresJson);
+    const isCorrect = isKatakanaSpeedAnswerCorrect({
+      expectedSurface: expectedAnswer,
+      interaction: trialFeatures.interaction,
+      userAnswer
+    });
     const errorTags = classifyKatakanaSpeedError({
-      actualSurface: userAnswer,
+      actualSurface: isCorrect ? expectedAnswer : userAnswer,
       expectedSurface: expectedAnswer,
       responseMs,
       targetRtMs: trial.targetRtMs

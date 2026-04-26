@@ -11,6 +11,7 @@ import { getKatakanaSpeedItemById } from "@/features/katakana-speed/model/catalo
 import { decodeKatakanaSpeedRawOption } from "@/features/katakana-speed/model/exercise-catalog";
 import { formatKatakanaSpeedReading } from "@/features/katakana-speed/model/readings";
 import {
+  isKatakanaSpeedAnswerCorrect,
   scoreKatakanaSpeedRanGrid,
   scoreKatakanaSpeedRepeatedReading
 } from "@/features/katakana-speed/model/scoring";
@@ -377,7 +378,11 @@ export function useKatakanaSpeedSessionController(
         0,
         Math.round(performance.now() - presentedAtRef.current)
       );
-      const isCorrect = selectedSurface === expectedSurface;
+      const isCorrect = isKatakanaSpeedAnswerCorrect({
+        expectedSurface,
+        interaction: currentTrial.features?.interaction,
+        userAnswer: selectedSurface
+      });
 
       submittingRef.current = true;
       setIsSubmitting(true);
@@ -1035,13 +1040,16 @@ export function useKatakanaSpeedSessionController(
     options
   ]);
 
+  const currentTrialFeedback =
+    feedback?.trialId === currentTrial?.trialId ? feedback : null;
+
   return {
     awaitingContinue,
     clientError,
     completed,
     currentIndex,
     currentTrial,
-    feedback,
+    feedback: currentTrialFeedback,
     handleChooseOption,
     handleContinue,
     handleContinueRepeatedReading,

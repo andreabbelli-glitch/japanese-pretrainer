@@ -1421,6 +1421,7 @@ rt {
 .katakana-speed-stage {
   min-height: min(70vh, 42rem);
   align-content: center;
+  container-type: inline-size;
   justify-items: center;
   text-align: center;
   touch-action: manipulation;
@@ -1485,6 +1486,20 @@ rt {
   font-size: clamp(1.6rem, 1.25rem + 0.9vw, 2.3rem);
   font-weight: var(--font-weight-semibold);
   line-height: 1.15;
+}
+
+.katakana-speed-comparison-prompt {
+  width: min(100%, 44rem);
+  display: grid;
+  gap: var(--space-5);
+  font-size: clamp(2.6rem, 10cqi, 4.4rem);
+  line-height: 1.08;
+}
+
+.katakana-speed-comparison-prompt__item {
+  min-width: 0;
+  display: block;
+  overflow-wrap: anywhere;
 }
 
 .katakana-speed-options {

@@ -1,5 +1,24 @@
 import type { KatakanaSpeedSelfRating } from "../types.ts";
 
+export function isKatakanaSpeedAnswerCorrect(input: {
+  readonly expectedSurface: string;
+  readonly interaction?: unknown;
+  readonly userAnswer: string;
+}): boolean {
+  const expectedSurface = input.expectedSurface.trim();
+  const userAnswer = input.userAnswer.trim();
+
+  if (userAnswer === expectedSurface) {
+    return true;
+  }
+
+  return (
+    input.interaction === "segment_select" &&
+    expectedSurface.length > 0 &&
+    userAnswer.includes(expectedSurface)
+  );
+}
+
 export type KatakanaSpeedTransferStatus =
   | "blocked"
   | "developing"

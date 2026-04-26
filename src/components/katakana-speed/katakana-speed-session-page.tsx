@@ -35,9 +35,20 @@ export function KatakanaSpeedSessionPage({
   const controller = useKatakanaSpeedSessionController(data);
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [clientError, setClientError] = useState<string | null>(null);
-  const [showReadings, setShowReadings] = useState(false);
+  const [readingVisibility, setReadingVisibility] = useState<{
+    readonly show: boolean;
+    readonly trialKey: string | null;
+  }>({ show: false, trialKey: null });
   const finalizingRef = useRef(false);
   const recapHref = `/katakana-speed/recap/${data.sessionId}` as Route;
+  const currentTrial = controller.currentTrial;
+  const repeatedPass =
+    controller.repeatedReadingState?.trials[
+      controller.repeatedReadingState.currentPassIndex
+    ] ?? null;
+  const visibleTrialKey = repeatedPass?.trialId ?? currentTrial?.trialId ?? null;
+  const showReadings =
+    readingVisibility.trialKey === visibleTrialKey && readingVisibility.show;
 
   useEffect(() => {
     if (!controller.completed || finalizingRef.current) {
@@ -75,12 +86,15 @@ export function KatakanaSpeedSessionPage({
       if (event.target instanceof HTMLElement) {
         event.target.blur();
       }
-      setShowReadings((current) => !current);
+      setReadingVisibility((current) => ({
+        show: current.trialKey === visibleTrialKey ? !current.show : true,
+        trialKey: visibleTrialKey
+      }));
     }
 
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
-  }, []);
+  }, [visibleTrialKey]);
 
   async function abandonSession() {
     setIsFinalizing(true);
@@ -116,14 +130,9 @@ export function KatakanaSpeedSessionPage({
     );
   }
 
-  const currentTrial = controller.currentTrial;
   const currentItem = currentTrial
     ? getKatakanaSpeedItemById(currentTrial.itemId)
     : null;
-  const repeatedPass =
-    controller.repeatedReadingState?.trials[
-      controller.repeatedReadingState.currentPassIndex
-    ] ?? null;
   const repeatedPassLabel = controller.isRepeatedReadingTrial
     ? formatRepeatedPassLabel(
         controller.repeatedReadingState?.currentPassIndex ?? 0
@@ -142,6 +151,10 @@ export function KatakanaSpeedSessionPage({
       : controller.isTileBuilderTrial
         ? (currentItem?.meaningIt ?? null)
         : currentTrial?.promptSurface;
+  const comparativePromptParts = getComparativePromptParts(
+    currentTrial,
+    visiblePrompt
+  );
   const readingHint = controller.isRepeatedReadingTrial
     ? formatKatakanaSpeedReading(
         repeatedPassItem ?? repeatedPass?.promptSurface
@@ -205,7 +218,11 @@ export function KatakanaSpeedSessionPage({
               ) : null}
               {visiblePrompt ? (
                 <>
-                  <p className={promptClassName}>{visiblePrompt}</p>
+                  {comparativePromptParts ? (
+                    <ComparativePrompt parts={comparativePromptParts} />
+                  ) : (
+                    <p className={promptClassName}>{visiblePrompt}</p>
+                  )}
                   <ReadingHint
                     label="Lettura"
                     value={showReadings ? readingHint : null}
@@ -289,7 +306,10 @@ export function KatakanaSpeedSessionPage({
               <input
                 checked={showReadings}
                 onChange={(event) => {
-                  setShowReadings(event.target.checked);
+                  setReadingVisibility({
+                    show: event.target.checked,
+                    trialKey: visibleTrialKey
+                  });
                   event.currentTarget.blur();
                 }}
                 type="checkbox"
@@ -788,6 +808,41 @@ function ReadingHint({
       <strong>{value}</strong>
     </span>
   );
+}
+
+function ComparativePrompt({ parts }: { parts: readonly [string, string] }) {
+  return (
+    <p
+      aria-label={`${parts[0]} / ${parts[1]}`}
+      className="katakana-speed-prompt katakana-speed-comparison-prompt"
+    >
+      <span className="katakana-speed-comparison-prompt__item">
+        {parts[0]}
+      </span>
+      <span className="katakana-speed-comparison-prompt__item">
+        {parts[1]}
+      </span>
+    </p>
+  );
+}
+
+function getComparativePromptParts(
+  trial: KatakanaSpeedTrialPlan | null,
+  prompt: string | null | undefined
+): readonly [string, string] | null {
+  const exerciseCode = String(trial?.features?.exerciseCode ?? "");
+  if (exerciseCode !== "E05" && exerciseCode !== "E17") {
+    return null;
+  }
+
+  const parts = (prompt ?? "")
+    .split(/\s+\/\s+/u)
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  return parts.length === 2 && parts[0] && parts[1]
+    ? [parts[0], parts[1]]
+    : null;
 }
 
 function formatRepeatedPassLabel(index: number) {

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   createInitialKatakanaSpeedState,
+  formatKatakanaSpeedReading,
   generateKatakanaSpeedSessionPlan
 } from "@/features/katakana-speed/model";
 import { decodeKatakanaSpeedRawOption } from "@/features/katakana-speed/model/exercise-catalog";
@@ -109,6 +110,9 @@ describe("katakana speed operational session planning", () => {
     });
     expect(firstTrial.optionItemIds.map(decodeKatakanaSpeedRawOption)).toEqual(
       expect.arrayContaining([firstTrial.expectedSurface, expect.any(String)])
+    );
+    expect(firstTrial.promptSurface).toBe(
+      formatKatakanaSpeedReading(firstTrial.expectedSurface)
     );
   });
 });

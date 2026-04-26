@@ -204,7 +204,7 @@ export function getKatakanaSpeedTrialCopy(
       controls:
         "Scegli la forma corretta tra le due opzioni. Space mostra la lettura.",
       instruction:
-        "Scegli la forma corretta senza farti ingannare da ー, ッ o piccoli kana.",
+        "Scegli la forma che scrive la lettura mostrata, senza farti ingannare da ー, ッ o piccoli kana.",
       label: "Trappola di mora"
     };
   }

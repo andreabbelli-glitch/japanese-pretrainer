@@ -93,7 +93,7 @@ describe("katakana speed session controller", () => {
     expect(latestController).not.toBeNull();
     const controller =
       latestController as unknown as KatakanaSpeedSessionControllerResult;
-    expect(controller.feedback?.status).toBe("correct-fast");
+    expect(controller.feedback).toBeNull();
     expect(controller.currentTrial?.trialId).toBe("trial-2");
   });
 
@@ -240,7 +240,7 @@ describe("katakana speed session controller", () => {
     controller =
       latestController as unknown as KatakanaSpeedSessionControllerResult;
     expect(controller.awaitingContinue).toBe(false);
-    expect(controller.feedback?.status).toBe("correct-slow");
+    expect(controller.feedback).toBeNull();
     expect(controller.currentTrial?.trialId).toBe("trial-sentence");
   });
 

@@ -19,6 +19,7 @@ import {
   getKatakanaSpeedVariantPairs
 } from "./exercise-catalog.ts";
 import { isKatakanaSpeedTargetablePseudowordItem } from "./pseudoword-catalog.ts";
+import { formatKatakanaSpeedReading } from "./readings.ts";
 import { computeKatakanaSpeedPriority } from "./scheduler.ts";
 import { tokenizeKatakanaDisplaySegments } from "./tokenizer.ts";
 
@@ -698,9 +699,7 @@ function buildOperationalTrial(
       item,
       optionSurfaces: options,
       promptSurface:
-        input.role === "pair_race"
-          ? "Scegli la forma target"
-          : "Quale forma e corretta?",
+        formatKatakanaSpeedReading(pair.correctSurface) ?? pair.correctSurface,
       targetRtMs: input.role === "pair_race" ? 1500 : 1800,
       wasRepair: input.sessionMode === "daily"
     });
