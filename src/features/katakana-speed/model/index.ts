@@ -3,6 +3,7 @@ export * from "./catalog.ts";
 export * from "./errors.ts";
 export * from "./exercise-catalog.ts";
 export * from "./options.ts";
+export * from "./readings.ts";
 export * from "./scoring.ts";
 export * from "./scheduler.ts";
 export * from "./session.ts";

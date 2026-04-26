@@ -47,28 +47,31 @@
 - `Katakana Speed` `/katakana-speed`: apre il dashboard con quick start,
   weak spots e recap recente, usando solo la voce primaria `Katakana` in
   navbar.
-- `Katakana Speed`: `Start drill` crea una sessione e porta a
+- `Katakana Speed`: la CTA primaria `Inizia: ...` crea una sessione e porta a
   `/katakana-speed/session/[sessionId]`; la route sessione non mostra la sticky
   global header.
 - `Katakana Speed`: tasti `1`-`4` e tap/click sulle opzioni salvano il
-  tentativo, avanzano al trial successivo e mantengono layout leggibile anche
-  su mobile.
-- `Katakana Speed`: il mode picker avvia baseline (`Diag`, `Rare`, `RAN`),
-  transfer (`Pseudo`, `Decode`, `Sprint`, `Repeated`) e repair (`Traps`,
-  `Spot`, `Build`, `Ladder`, `Variants`); nessun mode mostra romaji o reading
-  label.
-- `Katakana Speed`: `Traps`, `Variants` e `Ladder` salvano choice raw
-  text-only contro `expected_surface`; `Spot` usa segmenti tappabili; `Build`
-  costruisce la parola con tile kana e permette reset prima del salvataggio.
-- `Katakana Speed`: le sessioni self-check usano `Space` per il timer, `1`-`3`
-  per il rating e `Enter` per continuare.
-- `Katakana Speed`: `Repeated` mostra tre passaggi con due frasi identiche e
-  una transfer, richiede timer fermato prima di avanzare/salvare e registra un
-  solo risultato aggregato.
-- `Katakana Speed`: `RAN` mostra una griglia 5x5 leggibile anche su mobile,
-  richiede timer fermato prima del salvataggio, permette di segnare le celle
-  sbagliate solo dopo `Stop`, deriva il count errori dalle celle selezionate e
-  registra `items/sec` con posizioni evidenziate nel recap.
+  tentativo; le risposte corrette avanzano al trial successivo, gli errori
+  restano sul trial con feedback e richiedono continue manuale.
+- `Katakana Speed`: il mode picker avvia baseline (`Diagnosi`, `Rare`,
+  `Griglia`), transfer (`Pseudo`, `Prestiti`, `Frasi`, `Ripetuta`) e repair
+  (`Trappole`, `Chunk`, `Costruisci`, `Scala`, `Varianti`); il romaji e
+  nascosto di default ma `Space` mostra/nasconde la lettura in ogni mode.
+- `Katakana Speed`: `Trappole`, `Varianti` e `Scala` salvano choice raw
+  text-only contro `expected_surface`; `Chunk` usa segmenti tappabili;
+  `Costruisci` costruisce la parola con tile kana e permette reset prima del
+  salvataggio.
+- `Katakana Speed`: le sessioni self-check hanno timer autostart, usano `1`-`3`
+  per il rating, avanzano da sole su `Fluida`/`Incerta` e richiedono continue
+  manuale su `Da rifare`.
+- `Katakana Speed`: `Ripetuta` mostra tre passaggi con due frasi identiche e
+  una transfer, fa partire automaticamente ogni timer, usa `Enter` per
+  fermare/avanzare/salvare e registra un solo risultato aggregato.
+- `Katakana Speed`: `Griglia` mostra una griglia 5x5 leggibile anche su mobile,
+  fa partire automaticamente il timer, usa `Enter` per fermare/salvare,
+  permette di segnare le celle sbagliate solo dopo lo stop, deriva il count
+  errori dalle celle selezionate e registra `items/sec` con posizioni
+  evidenziate nel recap.
 - `Katakana Speed`: `Abbandona e salva recap` e il completamento naturale
   portano a `/katakana-speed/recap/[sessionId]`, con attempt log e metriche
   coerenti con le risposte date.

@@ -9,6 +9,7 @@ import {
 } from "@/actions/katakana-speed";
 import { getKatakanaSpeedItemById } from "@/features/katakana-speed/model/catalog";
 import { decodeKatakanaSpeedRawOption } from "@/features/katakana-speed/model/exercise-catalog";
+import { formatKatakanaSpeedReading } from "@/features/katakana-speed/model/readings";
 import {
   scoreKatakanaSpeedRanGrid,
   scoreKatakanaSpeedRepeatedReading
@@ -28,6 +29,7 @@ export type KatakanaSpeedFeedbackStatus =
 export type KatakanaSpeedSessionOption = {
   readonly itemId: string;
   readonly reading: string;
+  readonly readingHint: string | null;
   readonly surface: string;
 };
 
@@ -87,6 +89,7 @@ export type KatakanaSpeedSessionControllerResult = {
 
 export type KatakanaSpeedRanGridCell = {
   readonly itemId: string;
+  readonly readingHint: string | null;
   readonly surface: string;
 };
 
@@ -106,6 +109,7 @@ export type KatakanaSpeedSelfCheckRatingOption = {
 
 export type KatakanaSpeedTile = {
   readonly index: number;
+  readonly readingHint: string | null;
   readonly selected: boolean;
   readonly surface: string;
 };
@@ -118,21 +122,21 @@ export type KatakanaSpeedTileBuilderState = {
 
 const SELF_CHECK_RATINGS: readonly KatakanaSpeedSelfCheckRatingOption[] = [
   {
-    description: "Fluida",
+    description: "senza esitazioni",
     key: "1",
-    label: "Clean",
+    label: "Fluida",
     value: "clean"
   },
   {
-    description: "Con esitazione",
+    description: "con esitazione",
     key: "2",
-    label: "Hesitated",
+    label: "Incerta",
     value: "hesitated"
   },
   {
-    description: "Da rifare",
+    description: "errore o blocco",
     key: "3",
-    label: "Wrong",
+    label: "Da rifare",
     value: "wrong"
   }
 ];
@@ -178,6 +182,7 @@ export function useKatakanaSpeedSessionController(
   const isSegmentSelectTrial = interaction === "segment_select";
   const isTimedTrial =
     isSelfCheckTrial || isRepeatedReadingTrial || isRanGridTrial;
+  const shouldAutoStartTimer = isTimedTrial;
   const currentBlockTrials = useMemo(() => {
     if (!currentTrial) {
       return [];
@@ -200,25 +205,48 @@ export function useKatakanaSpeedSessionController(
 
   useEffect(() => {
     presentedAtRef.current = performance.now();
-    timerStartedAtRef.current = null;
+    timerStartedAtRef.current = shouldAutoStartTimer
+      ? presentedAtRef.current
+      : null;
     setAwaitingContinue(false);
     setContinueToIndex(null);
     setRanWrongCellIndexes([]);
     setRepeatedPassDurations([]);
     setRepeatedPassIndex(0);
     setSelectedTileIndexes([]);
-    setTimerState({ elapsedMs: 0, phase: "idle" });
-  }, [currentTrial?.trialId]);
+    setTimerState({
+      elapsedMs: 0,
+      phase: shouldAutoStartTimer ? "running" : "idle"
+    });
+  }, [currentTrial?.trialId, shouldAutoStartTimer]);
+
+  useEffect(() => {
+    if (timerState.phase !== "running") {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      const startedAt = timerStartedAtRef.current ?? presentedAtRef.current;
+      const elapsedMs = Math.max(0, Math.round(performance.now() - startedAt));
+      setTimerState((current) =>
+        current.phase === "running" ? { ...current, elapsedMs } : current
+      );
+    }, 100);
+
+    return () => window.clearInterval(timer);
+  }, [timerState.phase]);
 
   const options = useMemo(
     () =>
       (currentTrial?.optionItemIds ?? []).map((itemId) => {
         const item = getKatakanaSpeedItemById(itemId);
+        const surface = item?.surface ?? decodeKatakanaSpeedRawOption(itemId);
 
         return {
           itemId,
           reading: item?.reading ?? "",
-          surface: item?.surface ?? decodeKatakanaSpeedRawOption(itemId)
+          readingHint: formatKatakanaSpeedReading(item ?? surface),
+          surface
         };
       }),
     [currentTrial?.optionItemIds]
@@ -232,6 +260,7 @@ export function useKatakanaSpeedSessionController(
     const tileSurfaces = parseStringArray(currentTrial.features?.tiles);
     const tiles = tileSurfaces.map((surface, index) => ({
       index,
+      readingHint: formatKatakanaSpeedReading(surface),
       selected: selectedTileIndexes.includes(index),
       surface
     }));
@@ -271,6 +300,11 @@ export function useKatakanaSpeedSessionController(
 
       return {
         itemId: sourceCell?.itemId ?? currentTrial.itemId,
+        readingHint: formatKatakanaSpeedReading(
+          getKatakanaSpeedItemById(sourceCell?.itemId ?? "") ??
+            sourceCell?.surface ??
+            currentTrial.promptSurface
+        ),
         surface: sourceCell?.surface ?? currentTrial.promptSurface
       };
     });
@@ -327,7 +361,7 @@ export function useKatakanaSpeedSessionController(
       itemId: string,
       inputMethod: "keyboard" | "pointer" | "touch"
     ): Promise<void> => {
-      if (!currentTrial || submittingRef.current) {
+      if (!currentTrial || awaitingContinue || submittingRef.current) {
         return;
       }
 
@@ -370,7 +404,7 @@ export function useKatakanaSpeedSessionController(
           userAnswer: selectedSurface
         });
 
-        setFeedback({
+        const nextFeedback: KatakanaSpeedSessionFeedback = {
           errorTags: result.errorTags,
           expectedSurface,
           responseMs,
@@ -381,8 +415,14 @@ export function useKatakanaSpeedSessionController(
               : "correct-slow"
             : "incorrect",
           trialId: currentTrial.trialId
-        });
-        setCurrentIndex((index) => Math.min(index + 1, totalTrials));
+        };
+        setFeedback(nextFeedback);
+        if (result.isCorrect) {
+          setCurrentIndex((index) => Math.min(index + 1, totalTrials));
+        } else {
+          setAwaitingContinue(true);
+          setContinueToIndex(Math.min(currentIndex + 1, totalTrials));
+        }
       } catch (error) {
         setClientError(
           error instanceof Error
@@ -394,12 +434,23 @@ export function useKatakanaSpeedSessionController(
         setIsSubmitting(false);
       }
     },
-    [currentTrial, session.sessionId, totalTrials]
+    [
+      awaitingContinue,
+      currentIndex,
+      currentTrial,
+      session.sessionId,
+      totalTrials
+    ]
   );
 
   const handleSubmitSelfCheck = useCallback(
     async (selfRating: KatakanaSpeedSelfRating): Promise<void> => {
-      if (!currentTrial || !isSelfCheckTrial || submittingRef.current) {
+      if (
+        !currentTrial ||
+        !isSelfCheckTrial ||
+        awaitingContinue ||
+        submittingRef.current
+      ) {
         return;
       }
 
@@ -420,6 +471,11 @@ export function useKatakanaSpeedSessionController(
       submittingRef.current = true;
       setIsSubmitting(true);
       setClientError(null);
+      timerStartedAtRef.current = null;
+      setTimerState({
+        elapsedMs: responseMs,
+        phase: "stopped"
+      });
       setFeedback({
         errorTags: [],
         expectedSurface,
@@ -439,7 +495,7 @@ export function useKatakanaSpeedSessionController(
           trialId: currentTrial.trialId
         });
 
-        setFeedback({
+        const nextFeedback: KatakanaSpeedSessionFeedback = {
           errorTags: result.isCorrect ? [] : ["unclassified_error"],
           expectedSurface,
           responseMs,
@@ -447,9 +503,14 @@ export function useKatakanaSpeedSessionController(
           selectedSurface: result.selfRating,
           status: result.isCorrect ? status : "incorrect",
           trialId: currentTrial.trialId
-        });
-        setAwaitingContinue(true);
-        setContinueToIndex(Math.min(currentIndex + 1, totalTrials));
+        };
+        setFeedback(nextFeedback);
+        if (result.isCorrect && result.selfRating !== "wrong") {
+          setCurrentIndex((index) => Math.min(index + 1, totalTrials));
+        } else {
+          setAwaitingContinue(true);
+          setContinueToIndex(Math.min(currentIndex + 1, totalTrials));
+        }
       } catch (error) {
         setClientError(
           error instanceof Error
@@ -465,6 +526,7 @@ export function useKatakanaSpeedSessionController(
       currentIndex,
       currentTrial,
       isSelfCheckTrial,
+      awaitingContinue,
       session.sessionId,
       timerState,
       totalTrials
@@ -558,7 +620,7 @@ export function useKatakanaSpeedSessionController(
         userAnswer
       });
 
-      setFeedback({
+      const nextFeedback: KatakanaSpeedSessionFeedback = {
         errorTags: result.errorTags,
         expectedSurface,
         responseMs,
@@ -569,8 +631,14 @@ export function useKatakanaSpeedSessionController(
             : "correct-slow"
           : "incorrect",
         trialId: currentTrial.trialId
-      });
-      setCurrentIndex((index) => Math.min(index + 1, totalTrials));
+      };
+      setFeedback(nextFeedback);
+      if (result.isCorrect) {
+        setCurrentIndex((index) => Math.min(index + 1, totalTrials));
+      } else {
+        setAwaitingContinue(true);
+        setContinueToIndex(Math.min(currentIndex + 1, totalTrials));
+      }
     } catch (error) {
       setClientError(
         error instanceof Error
@@ -583,6 +651,7 @@ export function useKatakanaSpeedSessionController(
     }
   }, [
     awaitingContinue,
+    currentIndex,
     currentTrial,
     isTileBuilderTrial,
     selectedTileIndexes,
@@ -617,9 +686,9 @@ export function useKatakanaSpeedSessionController(
     if (repeatedPassIndex < currentBlockTrials.length - 1) {
       setRepeatedPassDurations(nextDurations);
       setRepeatedPassIndex((index) => index + 1);
-      timerStartedAtRef.current = null;
       presentedAtRef.current = performance.now();
-      setTimerState({ elapsedMs: 0, phase: "idle" });
+      timerStartedAtRef.current = presentedAtRef.current;
+      setTimerState({ elapsedMs: 0, phase: "running" });
       return;
     }
 
@@ -666,7 +735,7 @@ export function useKatakanaSpeedSessionController(
         trialId: currentTrial.trialId
       });
 
-      setFeedback({
+      const nextFeedback: KatakanaSpeedSessionFeedback = {
         errorTags: [],
         expectedSurface: currentTrial.promptSurface,
         responseMs: transferPassMs,
@@ -674,12 +743,19 @@ export function useKatakanaSpeedSessionController(
         status:
           score.transferStatus === "retained" ? "correct-fast" : "correct-slow",
         trialId: currentTrial.trialId
-      });
-      setRepeatedPassDurations(nextDurations);
-      setAwaitingContinue(true);
-      setContinueToIndex(
-        Math.min(currentIndex + currentBlockTrials.length, totalTrials)
+      };
+      const nextIndex = Math.min(
+        currentIndex + currentBlockTrials.length,
+        totalTrials
       );
+      setFeedback(nextFeedback);
+      setRepeatedPassDurations(nextDurations);
+      if (score.transferStatus === "retained") {
+        setCurrentIndex(nextIndex);
+      } else {
+        setAwaitingContinue(true);
+        setContinueToIndex(nextIndex);
+      }
     } catch (error) {
       setClientError(
         error instanceof Error
@@ -809,18 +885,25 @@ export function useKatakanaSpeedSessionController(
         trialId: currentTrial.trialId
       });
 
-      setFeedback({
+      const nextFeedback: KatakanaSpeedSessionFeedback = {
         errorTags: [],
         expectedSurface: `${totalItems} cells`,
         responseMs: durationMs,
         selectedSurface: `${correctItems}/${totalItems}`,
         status: errors === 0 ? "correct-fast" : "correct-slow",
         trialId: currentTrial.trialId
-      });
-      setAwaitingContinue(true);
-      setContinueToIndex(
-        Math.min(currentIndex + currentBlockTrials.length, totalTrials)
+      };
+      const nextIndex = Math.min(
+        currentIndex + currentBlockTrials.length,
+        totalTrials
       );
+      setFeedback(nextFeedback);
+      if (errors === 0) {
+        setCurrentIndex(nextIndex);
+      } else {
+        setAwaitingContinue(true);
+        setContinueToIndex(nextIndex);
+      }
     } catch (error) {
       setClientError(
         error instanceof Error
@@ -869,24 +952,29 @@ export function useKatakanaSpeedSessionController(
         return;
       }
 
+      if (awaitingContinue && event.key === "Enter") {
+        event.preventDefault();
+        handleContinue();
+        return;
+      }
+
       if (isSelfCheckTrial || isRepeatedReadingTrial || isRanGridTrial) {
         if (
-          (event.key === " " || event.key === "Enter") &&
-          isActivationTarget(event.target)
+          event.key === "Enter" &&
+          isActivationTarget(event.target) &&
+          !isRepeatedReadingTrial &&
+          !isRanGridTrial
         ) {
-          return;
-        }
-
-        if (event.key === " ") {
-          event.preventDefault();
-          handleToggleTimer();
           return;
         }
 
         if (event.key === "Enter") {
           event.preventDefault();
-          if (awaitingContinue) {
-            handleContinue();
+          if (
+            (isRepeatedReadingTrial || isRanGridTrial) &&
+            timerState.phase === "running"
+          ) {
+            handleToggleTimer();
           } else if (isRepeatedReadingTrial) {
             void handleContinueRepeatedReading();
           } else if (isRanGridTrial) {
@@ -913,6 +1001,12 @@ export function useKatakanaSpeedSessionController(
       const optionIndex = Number(event.key) - 1;
       const option = options[optionIndex];
 
+      if (event.key === "Enter" && isTileBuilderTrial) {
+        event.preventDefault();
+        void handleSubmitTileBuilder();
+        return;
+      }
+
       if (!option) {
         return;
       }
@@ -928,6 +1022,7 @@ export function useKatakanaSpeedSessionController(
     handleContinue,
     handleContinueRepeatedReading,
     handleSubmitSelfCheck,
+    handleSubmitTileBuilder,
     handleSubmitRanGrid,
     handleToggleRanWrongCell,
     handleToggleTimer,
@@ -935,6 +1030,8 @@ export function useKatakanaSpeedSessionController(
     isRanGridTrial,
     isRepeatedReadingTrial,
     isSelfCheckTrial,
+    isTileBuilderTrial,
+    timerState.phase,
     options
   ]);
 

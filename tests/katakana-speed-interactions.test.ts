@@ -97,6 +97,58 @@ describe("katakana speed session controller", () => {
     expect(controller.currentTrial?.trialId).toBe("trial-2");
   });
 
+  it("keeps an incorrect option choice on the same trial until continue", async () => {
+    let now = 1_000;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    mocks.submitKatakanaSpeedAnswerAction.mockResolvedValue({
+      errorTags: ["confusion"],
+      idempotent: false,
+      isCorrect: false
+    });
+
+    let latestController: KatakanaSpeedSessionControllerResult | null = null;
+
+    function Probe(props: { session: StartKatakanaSpeedSessionResult }) {
+      const controller = useKatakanaSpeedSessionController(props.session);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe, { session: buildSession() }));
+      await Promise.resolve();
+    });
+
+    now = 1_500;
+    await act(async () => {
+      dispatchWindowKeyboardEvent("2");
+      await Promise.resolve();
+    });
+
+    let controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.feedback?.status).toBe("incorrect");
+    expect(controller.awaitingContinue).toBe(true);
+    expect(controller.currentTrial?.trialId).toBe("trial-1");
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("Enter");
+      await Promise.resolve();
+    });
+
+    controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.awaitingContinue).toBe(false);
+    expect(controller.currentTrial?.trialId).toBe("trial-2");
+  });
+
   it("resumes active sessions at the first unanswered trial", async () => {
     let latestController: KatakanaSpeedSessionControllerResult | null = null;
 
@@ -128,7 +180,7 @@ describe("katakana speed session controller", () => {
     expect(controller.currentTrial?.trialId).toBe("trial-2");
   });
 
-  it("runs timed self-check trials with Space, rating, and Enter", async () => {
+  it("auto-runs timed self-check trials and auto-advances after a good rating", async () => {
     let now = 2_000;
     vi.spyOn(performance, "now").mockImplementation(() => now);
     mocks.submitKatakanaSpeedSelfCheckAction.mockResolvedValue({
@@ -157,27 +209,20 @@ describe("katakana speed session controller", () => {
       await Promise.resolve();
     });
 
-    await act(async () => {
-      dispatchWindowKeyboardEvent(" ");
-      await Promise.resolve();
-    });
-
-    now = 3_240;
-    await act(async () => {
-      dispatchWindowKeyboardEvent(" ");
-      await Promise.resolve();
-    });
-
     expect(latestController).not.toBeNull();
     let controller =
       latestController as unknown as KatakanaSpeedSessionControllerResult;
-    expect(controller.timerState.phase).toBe("stopped");
-    expect(controller.timerState.elapsedMs).toBe(1240);
+    expect(controller.timerState.phase).toBe("running");
 
+    now = 3_240;
     await act(async () => {
-      controller.handleSubmitSelfCheck("hesitated");
+      dispatchWindowKeyboardEvent("2");
       await Promise.resolve();
     });
+
+    controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.timerState.phase).toBe("running");
 
     expect(mocks.submitKatakanaSpeedSelfCheckAction).toHaveBeenCalledWith({
       metricsJson: {
@@ -194,8 +239,67 @@ describe("katakana speed session controller", () => {
     });
     controller =
       latestController as unknown as KatakanaSpeedSessionControllerResult;
-    expect(controller.awaitingContinue).toBe(true);
+    expect(controller.awaitingContinue).toBe(false);
     expect(controller.feedback?.status).toBe("correct-slow");
+    expect(controller.currentTrial?.trialId).toBe("trial-sentence");
+  });
+
+  it("keeps a wrong self-check rating on the same trial until continue", async () => {
+    let now = 2_000;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    mocks.submitKatakanaSpeedSelfCheckAction.mockResolvedValue({
+      idempotent: false,
+      isCorrect: false,
+      selfRating: "wrong"
+    });
+
+    let latestController: KatakanaSpeedSessionControllerResult | null = null;
+
+    function Probe(props: { session: StartKatakanaSpeedSessionResult }) {
+      const controller = useKatakanaSpeedSessionController(props.session);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe, { session: buildSelfCheckSession() }));
+      await Promise.resolve();
+    });
+
+    now = 3_000;
+    await act(async () => {
+      dispatchWindowKeyboardEvent("3");
+      await Promise.resolve();
+    });
+
+    let controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.feedback?.status).toBe("incorrect");
+    expect(controller.awaitingContinue).toBe(true);
+    expect(controller.currentTrial?.trialId).toBe("trial-pseudo");
+
+    mocks.submitKatakanaSpeedSelfCheckAction.mockResolvedValue({
+      idempotent: false,
+      isCorrect: true,
+      selfRating: "clean"
+    });
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("1");
+      await Promise.resolve();
+    });
+
+    expect(mocks.submitKatakanaSpeedSelfCheckAction).toHaveBeenCalledTimes(1);
+    controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.awaitingContinue).toBe(true);
     expect(controller.currentTrial?.trialId).toBe("trial-pseudo");
 
     await act(async () => {
@@ -332,6 +436,71 @@ describe("katakana speed session controller", () => {
     });
   });
 
+  it("keeps an incorrect tile-builder answer on the same trial until continue", async () => {
+    let now = 4_500;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    mocks.submitKatakanaSpeedAnswerAction.mockResolvedValue({
+      errorTags: ["order"],
+      idempotent: false,
+      isCorrect: false
+    });
+
+    let latestController: KatakanaSpeedSessionControllerResult | null = null;
+
+    function Probe(props: { session: StartKatakanaSpeedSessionResult }) {
+      const controller = useKatakanaSpeedSessionController(props.session);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(
+        createElement(Probe, { session: buildTileBuilderSession() })
+      );
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      (
+        latestController as unknown as KatakanaSpeedSessionControllerResult
+      ).handleSelectTile(0);
+      (
+        latestController as unknown as KatakanaSpeedSessionControllerResult
+      ).handleSelectTile(1);
+      await Promise.resolve();
+    });
+
+    now = 5_000;
+    await act(async () => {
+      (
+        latestController as unknown as KatakanaSpeedSessionControllerResult
+      ).handleSubmitTileBuilder();
+      await Promise.resolve();
+    });
+
+    let controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.feedback?.status).toBe("incorrect");
+    expect(controller.awaitingContinue).toBe(true);
+    expect(controller.currentTrial?.trialId).toBe("trial-tile-builder");
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("Enter");
+      await Promise.resolve();
+    });
+
+    controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.completed).toBe(true);
+  });
+
   it("submits repeated reading as one aggregate result after three timed passes", async () => {
     let now = 5_000;
     vi.spyOn(performance, "now").mockImplementation(() => now);
@@ -362,10 +531,10 @@ describe("katakana speed session controller", () => {
       await Promise.resolve();
     });
 
-    await act(async () => {
-      dispatchWindowKeyboardEvent("Enter");
-      await Promise.resolve();
-    });
+    expect(
+      (latestController as unknown as KatakanaSpeedSessionControllerResult)
+        .timerState.phase
+    ).toBe("running");
     expect(
       mocks.aggregateKatakanaSpeedExerciseResultAction
     ).not.toHaveBeenCalled();
@@ -375,22 +544,18 @@ describe("katakana speed session controller", () => {
     ).toBe(0);
 
     await stopTimedPass(1_200);
-    await act(async () => {
-      dispatchWindowKeyboardEvent("Enter");
-      await Promise.resolve();
-    });
+    expect(
+      (latestController as unknown as KatakanaSpeedSessionControllerResult)
+        .timerState.phase
+    ).toBe("running");
 
     await stopTimedPass(900);
-    await act(async () => {
-      dispatchWindowKeyboardEvent("Enter");
-      await Promise.resolve();
-    });
+    expect(
+      (latestController as unknown as KatakanaSpeedSessionControllerResult)
+        .timerState.phase
+    ).toBe("running");
 
     await stopTimedPass(980);
-    await act(async () => {
-      dispatchWindowKeyboardEvent("Enter");
-      await Promise.resolve();
-    });
 
     expect(
       mocks.aggregateKatakanaSpeedExerciseResultAction
@@ -413,26 +578,17 @@ describe("katakana speed session controller", () => {
     expect(latestController).not.toBeNull();
     const controller =
       latestController as unknown as KatakanaSpeedSessionControllerResult;
-    expect(controller.awaitingContinue).toBe(true);
-
-    await act(async () => {
-      dispatchWindowKeyboardEvent("Enter");
-      await Promise.resolve();
-    });
-
-    expect(
-      (latestController as unknown as KatakanaSpeedSessionControllerResult)
-        .completed
-    ).toBe(true);
+    expect(controller.awaitingContinue).toBe(false);
+    expect(controller.completed).toBe(true);
 
     async function stopTimedPass(durationMs: number) {
-      await act(async () => {
-        dispatchWindowKeyboardEvent(" ");
-        await Promise.resolve();
-      });
       now += durationMs;
       await act(async () => {
-        dispatchWindowKeyboardEvent(" ");
+        dispatchWindowKeyboardEvent("Enter");
+        await Promise.resolve();
+      });
+      await act(async () => {
+        dispatchWindowKeyboardEvent("Enter");
         await Promise.resolve();
       });
     }
@@ -469,6 +625,7 @@ describe("katakana speed session controller", () => {
     let controller =
       latestController as unknown as KatakanaSpeedSessionControllerResult;
     expect(controller.ranGridCells).toHaveLength(25);
+    expect(controller.timerState.phase).toBe("running");
     await act(async () => {
       controller.handleToggleRanWrongCell(6);
       await Promise.resolve();
@@ -478,6 +635,7 @@ describe("katakana speed session controller", () => {
         .ranWrongCellIndexes
     ).toEqual([]);
 
+    now += 12_500;
     await act(async () => {
       dispatchWindowKeyboardEvent("Enter");
       await Promise.resolve();
@@ -486,18 +644,9 @@ describe("katakana speed session controller", () => {
       mocks.aggregateKatakanaSpeedExerciseResultAction
     ).not.toHaveBeenCalled();
 
-    await act(async () => {
-      dispatchWindowKeyboardEvent(" ");
-      await Promise.resolve();
-    });
-    now += 12_500;
-    await act(async () => {
-      dispatchWindowKeyboardEvent(" ");
-      await Promise.resolve();
-    });
-
     controller =
       latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.timerState.phase).toBe("stopped");
     expect(controller.ranGridCells).toHaveLength(25);
     await act(async () => {
       (
@@ -566,9 +715,23 @@ describe("katakana speed session controller", () => {
       sortOrder: 0,
       trialId: "trial-ran"
     });
+    controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.awaitingContinue).toBe(true);
+    expect(controller.completed).toBe(false);
+
+    await act(async () => {
+      dispatchWindowKeyboardEvent("Enter");
+      await Promise.resolve();
+    });
+
+    expect(
+      (latestController as unknown as KatakanaSpeedSessionControllerResult)
+        .completed
+    ).toBe(true);
   });
 
-  it("does not let global Space restart the RAN timer from a focused cell", async () => {
+  it("does not let Space stop or restart the RAN timer from a focused cell", async () => {
     let now = 20_000;
     vi.spyOn(performance, "now").mockImplementation(() => now);
 
@@ -592,19 +755,15 @@ describe("katakana speed session controller", () => {
       await Promise.resolve();
     });
 
-    await act(async () => {
-      dispatchWindowKeyboardEvent(" ");
-      await Promise.resolve();
-    });
-    now += 1_500;
-    await act(async () => {
-      dispatchWindowKeyboardEvent(" ");
-      await Promise.resolve();
-    });
+    expect(
+      (latestController as unknown as KatakanaSpeedSessionControllerResult)
+        .timerState.phase
+    ).toBe("running");
 
     const focusedCell = document.createElement("button");
     focusedCell.focus();
 
+    now += 1_500;
     await act(async () => {
       const event = {
         altKey: false,
@@ -626,7 +785,78 @@ describe("katakana speed session controller", () => {
     expect(
       (latestController as unknown as KatakanaSpeedSessionControllerResult)
         .timerState.phase
-    ).toBe("stopped");
+    ).toBe("running");
+  });
+
+  it("submits RAN with Enter even when a wrong cell is focused", async () => {
+    let now = 30_000;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    mocks.aggregateKatakanaSpeedExerciseResultAction.mockResolvedValue({
+      idempotent: false,
+      resultId: "block-ran:aggregate"
+    });
+
+    let latestController: KatakanaSpeedSessionControllerResult | null = null;
+
+    function Probe(props: { session: StartKatakanaSpeedSessionResult }) {
+      const controller = useKatakanaSpeedSessionController(props.session);
+
+      useEffect(() => {
+        latestController = controller;
+      }, [controller]);
+
+      return null;
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe, { session: buildRanSession() }));
+      await Promise.resolve();
+    });
+
+    now += 1_200;
+    await act(async () => {
+      dispatchWindowKeyboardEvent("Enter");
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      (
+        latestController as unknown as KatakanaSpeedSessionControllerResult
+      ).handleToggleRanWrongCell(6);
+      await Promise.resolve();
+    });
+
+    const focusedCell = document.createElement("button");
+    focusedCell.focus();
+
+    await act(async () => {
+      const event = {
+        altKey: false,
+        ctrlKey: false,
+        defaultPrevented: false,
+        key: "Enter",
+        metaKey: false,
+        preventDefault() {
+          event.defaultPrevented = true;
+        },
+        shiftKey: false,
+        target: focusedCell,
+        type: "keydown"
+      };
+      window.dispatchEvent(event as unknown as Event);
+      await Promise.resolve();
+    });
+
+    expect(
+      mocks.aggregateKatakanaSpeedExerciseResultAction
+    ).toHaveBeenCalledTimes(1);
+    const controller =
+      latestController as unknown as KatakanaSpeedSessionControllerResult;
+    expect(controller.awaitingContinue).toBe(true);
+    expect(controller.currentTrial?.trialId).toBe("trial-ran");
   });
 });
 

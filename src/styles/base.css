@@ -1163,6 +1163,31 @@ rt {
   gap: var(--space-2);
 }
 
+.katakana-speed-mode-details {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.katakana-speed-mode-details summary {
+  width: fit-content;
+  min-height: 2.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.6rem 0.85rem;
+  border: 1px solid rgba(210, 197, 177, 0.76);
+  border-radius: var(--radius-md);
+  background: rgba(255, 250, 242, 0.78);
+  color: var(--color-ink-strong);
+  cursor: pointer;
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.katakana-speed-mode-details[open] summary {
+  background: rgba(246, 242, 233, 0.92);
+}
+
 .katakana-speed-mode-group {
   display: grid;
   gap: var(--space-1);
@@ -1207,6 +1232,15 @@ rt {
   color: var(--color-ink-muted);
   font-size: var(--text-micro);
   line-height: 1.1;
+}
+
+.katakana-speed-mode-button--recommended {
+  border-color: rgba(126, 146, 108, 0.72);
+  background: rgba(237, 247, 236, 0.82);
+}
+
+.katakana-speed-panel--wide {
+  grid-column: 1 / -1;
 }
 
 .katakana-speed-grid {
@@ -1400,6 +1434,34 @@ rt {
   justify-content: center;
 }
 
+.katakana-speed-meta-badge {
+  display: inline-grid;
+  gap: 0.12rem;
+  align-content: center;
+  min-inline-size: 9rem;
+  text-align: left;
+}
+
+.katakana-speed-meta-badge__label {
+  color: var(--color-ink-soft);
+  font-size: 0.62rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.katakana-speed-task-copy {
+  width: min(100%, 40rem);
+}
+
+.katakana-speed-task-copy p {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: var(--text-body);
+  line-height: 1.45;
+}
+
 .katakana-speed-prompt {
   margin: 0;
   color: var(--color-ink-strong);
@@ -1415,6 +1477,14 @@ rt {
   font-size: clamp(2rem, 1.55rem + 1.3vw, 3.4rem);
   line-height: 1.28;
   overflow-wrap: anywhere;
+}
+
+.katakana-speed-prompt--hint {
+  color: var(--color-ink-muted);
+  font-family: var(--font-family-ui);
+  font-size: clamp(1.6rem, 1.25rem + 0.9vw, 2.3rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.15;
 }
 
 .katakana-speed-options {
@@ -1500,6 +1570,29 @@ rt {
   line-height: 1.2;
 }
 
+.katakana-speed-reading-hint {
+  display: inline-grid;
+  gap: 0.08rem;
+  color: var(--color-ink-muted);
+  font-family: var(--font-family-ui);
+  font-size: var(--text-small);
+  line-height: 1.1;
+  text-align: center;
+}
+
+.katakana-speed-reading-hint span {
+  color: var(--color-ink-soft);
+  font-size: var(--text-micro);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.katakana-speed-reading-hint strong {
+  color: var(--color-ink-strong);
+  font-size: 0.95em;
+}
+
 .katakana-speed-option--rating {
   min-height: 5.5rem;
 }
@@ -1567,6 +1660,11 @@ rt {
   gap: var(--space-2);
 }
 
+.katakana-speed-continue-after-error {
+  width: min(100%, 44rem);
+  justify-self: center;
+}
+
 .katakana-speed-selfcheck {
   width: min(100%, 44rem);
   display: grid;
@@ -1595,6 +1693,13 @@ rt {
   line-height: 1;
 }
 
+.katakana-speed-timer__hint {
+  color: var(--color-ink-muted);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-medium);
+  text-align: right;
+}
+
 .katakana-speed-pass-list {
   display: flex;
   justify-content: center;
@@ -1602,14 +1707,16 @@ rt {
 }
 
 .katakana-speed-pass-chip {
-  width: 2.25rem;
+  min-width: 3.6rem;
   height: 2.25rem;
   display: inline-grid;
   place-items: center;
+  padding: 0 var(--space-2);
   border: 1px solid rgba(210, 197, 177, 0.82);
   border-radius: 999px;
   background: rgba(255, 250, 242, 0.8);
   color: var(--color-ink-muted);
+  font-size: var(--text-small);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -1648,6 +1755,10 @@ rt {
     border-color 140ms ease,
     box-shadow 140ms ease,
     color 140ms ease;
+}
+
+.katakana-speed-ran-cell .katakana-speed-reading-hint {
+  font-size: 0.68rem;
 }
 
 button.katakana-speed-ran-cell {
@@ -1724,6 +1835,40 @@ button.katakana-speed-ran-cell:disabled {
 .katakana-speed-ran-cell--mini {
   border-radius: var(--radius-sm);
   font-size: clamp(0.95rem, 0.8rem + 0.65vw, 1.35rem);
+}
+
+.katakana-speed-reading-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid rgba(210, 197, 177, 0.76);
+  border-radius: var(--radius-md);
+  background: rgba(255, 250, 242, 0.78);
+  cursor: pointer;
+}
+
+.katakana-speed-reading-toggle input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.18rem;
+  accent-color: var(--color-accent-ink);
+}
+
+.katakana-speed-reading-toggle span {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.katakana-speed-reading-toggle strong {
+  color: var(--color-ink-strong);
+  font-size: var(--text-small);
+}
+
+.katakana-speed-reading-toggle small {
+  color: var(--color-ink-muted);
+  font-size: var(--text-small);
+  line-height: 1.25;
 }
 
 @media (max-width: 720px) {
@@ -4103,12 +4248,6 @@ button.katakana-speed-ran-cell:disabled {
 
   .katakana-speed-option {
     min-height: 4.8rem;
-  }
-
-  .katakana-speed-timer {
-    position: sticky;
-    bottom: var(--space-3);
-    z-index: 1;
   }
 
   .katakana-speed-stage {

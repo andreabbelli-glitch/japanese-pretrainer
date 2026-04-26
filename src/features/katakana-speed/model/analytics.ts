@@ -572,8 +572,8 @@ function recommendMode(input: {
     )
   ) {
     return {
-      detail: "Rare slow spots",
-      label: "Start rare repair",
+      detail: "kana poco comuni lenti",
+      label: "Inizia: Rare",
       mode: "rare_combo"
     };
   }
@@ -582,8 +582,8 @@ function recommendMode(input: {
     input.modeMetrics.pseudoTransfer.status !== "transfer_ready"
   ) {
     return {
-      detail: "Transfer sotto soglia",
-      label: "Start pseudo transfer",
+      detail: "transfer pseudo sotto soglia",
+      label: "Inizia: Pseudo",
       mode: "pseudoword_transfer"
     };
   }
@@ -592,8 +592,8 @@ function recommendMode(input: {
     input.modeMetrics.sentenceFlow.status === "slow"
   ) {
     return {
-      detail: "Frasi lente",
-      label: "Start sentence sprint",
+      detail: "frasi cronometrate lente",
+      label: "Inizia: Frasi",
       mode: "sentence_sprint"
     };
   }
@@ -602,8 +602,8 @@ function recommendMode(input: {
     input.modeMetrics.repeatedReadingGain.transferStatus === "needs_repair"
   ) {
     return {
-      detail: "Transfer frase fragile",
-      label: "Start repeated reading",
+      detail: "transfer frase da riparare",
+      label: "Inizia: Ripetuta",
       mode: "repeated_reading"
     };
   }
@@ -613,22 +613,22 @@ function recommendMode(input: {
       input.modeMetrics.ranItemsPerSecond.itemsPerSecond) < 1.6
   ) {
     return {
-      detail: "Sequenza lenta",
-      label: "Start RAN grid",
+      detail: "lettura griglia lenta",
+      label: "Inizia: Griglia",
       mode: "ran_grid"
     };
   }
   if (input.topConfusions.length > 0) {
     return {
-      detail: "Confusion repair",
-      label: "Start recommended drill",
+      detail: "confusioni frequenti da correggere",
+      label: "Inizia: Daily",
       mode: "daily"
     };
   }
 
   return {
-    detail: "Mix adattivo",
-    label: "Start recommended drill",
+    detail: "mix adattivo consigliato",
+    label: "Inizia: Daily",
     mode: "daily"
   };
 }
@@ -778,20 +778,23 @@ function fallbackFamilyCards(): KatakanaSpeedFamilyCard[] {
 
 function labelForFamily(family: string) {
   const labels: Readonly<Record<string, string>> = {
-    "c-tier": "Rare C",
-    f: "F family",
+    "c-tier": "Kana rari",
+    f: "Famiglia F",
     "kw-gw": "KW/GW",
-    "pseudo-bank": "Pseudo",
-    "sentence-sprint": "Sentences",
-    "sibilant-e": "Sibilant E",
-    t: "T family",
-    "t-d": "T/D family",
-    ts: "TS family",
-    v: "V family",
+    "loanword-bank": "Prestiti",
+    mixed: "Misto",
+    "pseudo-bank": "Pseudo-parole",
+    "sentence-sprint": "Frasi",
+    "sibilant-e": "Sibilanti E",
+    t: "Famiglia T",
+    "t-d": "T/D",
+    ts: "TS",
+    v: "Famiglia V",
+    "visual-dakuon-core": "Dakuon",
     "visual-no-me-nu": "ノ/メ/ヌ",
     "visual-shi-tsu-so-n": "シ/ツ/ソ/ン",
-    w: "W family",
-    "word-bank": "Words"
+    w: "Famiglia W",
+    "word-bank": "Parole"
   };
 
   return labels[family] ?? family;

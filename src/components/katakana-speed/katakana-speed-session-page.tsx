@@ -10,11 +10,18 @@ import {
   completeKatakanaSpeedSessionAction
 } from "@/actions/katakana-speed";
 import { getKatakanaSpeedItemById } from "@/features/katakana-speed/model/catalog";
+import { formatKatakanaSpeedReading } from "@/features/katakana-speed/model/readings";
 import type { KatakanaSpeedSessionPageData } from "@/features/katakana-speed/server";
 import type { KatakanaSpeedTrialPlan } from "@/features/katakana-speed/types";
 import { cx } from "@/lib/classnames";
 
 import { SurfaceCard } from "../ui/surface-card";
+import {
+  formatKatakanaSpeedTarget,
+  formatSelfRatingLabel,
+  getKatakanaSpeedTrialCopy
+} from "./katakana-speed-copy";
+import { formatDuration } from "./katakana-speed-shared";
 import { useKatakanaSpeedSessionController } from "./use-katakana-speed-session-controller";
 
 type KatakanaSpeedSessionPageProps = {
@@ -28,6 +35,7 @@ export function KatakanaSpeedSessionPage({
   const controller = useKatakanaSpeedSessionController(data);
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [clientError, setClientError] = useState<string | null>(null);
+  const [showReadings, setShowReadings] = useState(false);
   const finalizingRef = useRef(false);
   const recapHref = `/katakana-speed/recap/${data.sessionId}` as Route;
 
@@ -48,6 +56,31 @@ export function KatakanaSpeedSessionPage({
         finalizingRef.current = false;
       });
   }, [controller.completed, data.sessionId, recapHref, router]);
+
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (
+        event.defaultPrevented ||
+        event.key !== " " ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.altKey ||
+        isEditableTarget(event.target)
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (event.target instanceof HTMLElement) {
+        event.target.blur();
+      }
+      setShowReadings((current) => !current);
+    }
+
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
+  }, []);
 
   async function abandonSession() {
     setIsFinalizing(true);
@@ -73,7 +106,7 @@ export function KatakanaSpeedSessionPage({
           <p className="katakana-speed-eyebrow">Sessione chiusa</p>
           <h1 className="katakana-speed-title">Katakana Speed</h1>
           <p className="katakana-speed-summary">
-            Questa sessione e gia stata finalizzata.
+            Questa sessione è già stata finalizzata.
           </p>
           <Link className="button button--primary" href={recapHref}>
             Apri recap
@@ -84,17 +117,39 @@ export function KatakanaSpeedSessionPage({
   }
 
   const currentTrial = controller.currentTrial;
+  const currentItem = currentTrial
+    ? getKatakanaSpeedItemById(currentTrial.itemId)
+    : null;
   const repeatedPass =
     controller.repeatedReadingState?.trials[
       controller.repeatedReadingState.currentPassIndex
     ] ?? null;
+  const repeatedPassLabel = controller.isRepeatedReadingTrial
+    ? formatRepeatedPassLabel(
+        controller.repeatedReadingState?.currentPassIndex ?? 0
+      )
+    : null;
+  const trialCopy = currentTrial
+    ? getKatakanaSpeedTrialCopy(currentTrial, repeatedPassLabel)
+    : null;
+  const repeatedPassItem = repeatedPass
+    ? getKatakanaSpeedItemById(repeatedPass.itemId)
+    : null;
   const visiblePrompt = controller.isRepeatedReadingTrial
     ? repeatedPass?.promptSurface
     : controller.isRanGridTrial
       ? null
-      : currentTrial?.promptSurface;
+      : controller.isTileBuilderTrial
+        ? (currentItem?.meaningIt ?? null)
+        : currentTrial?.promptSurface;
+  const readingHint = controller.isRepeatedReadingTrial
+    ? formatKatakanaSpeedReading(
+        repeatedPassItem ?? repeatedPass?.promptSurface
+      )
+    : formatKatakanaSpeedReading(currentItem ?? visiblePrompt);
   const promptClassName = cx(
     "katakana-speed-prompt",
+    controller.isTileBuilderTrial && "katakana-speed-prompt--hint",
     (currentTrial?.mode === "sentence_sprint" ||
       currentTrial?.mode === "repeated_reading_pass") &&
       "katakana-speed-prompt--sentence"
@@ -128,15 +183,34 @@ export function KatakanaSpeedSessionPage({
           {currentTrial ? (
             <>
               <div className="katakana-speed-stage__meta">
-                <span className="badge">{currentTrial.mode}</span>
-                <span className="badge">
+                <span className="badge katakana-speed-meta-badge">
+                  <span className="katakana-speed-meta-badge__label">
+                    Esercizio
+                  </span>
+                  {trialCopy?.label}
+                </span>
+                <span className="badge katakana-speed-meta-badge">
+                  <span className="katakana-speed-meta-badge__label">
+                    Tempo
+                  </span>
                   {controller.isSelfCheckTrial
                     ? formatTimerLabel(controller.timerState.elapsedMs)
-                    : `${currentTrial.targetRtMs} ms`}
+                    : formatKatakanaSpeedTarget(currentTrial.targetRtMs)}
                 </span>
               </div>
+              {trialCopy ? (
+                <div className="katakana-speed-task-copy">
+                  <p>{trialCopy.instruction}</p>
+                </div>
+              ) : null}
               {visiblePrompt ? (
-                <p className={promptClassName}>{visiblePrompt}</p>
+                <>
+                  <p className={promptClassName}>{visiblePrompt}</p>
+                  <ReadingHint
+                    label="Lettura"
+                    value={showReadings ? readingHint : null}
+                  />
+                </>
               ) : null}
 
               {controller.isRepeatedReadingTrial ? (
@@ -148,16 +222,19 @@ export function KatakanaSpeedSessionPage({
                 <RanGridControls
                   controller={controller}
                   disabled={controller.isSubmitting || isFinalizing}
+                  showReadings={showReadings}
                 />
               ) : controller.isTileBuilderTrial ? (
                 <TileBuilderControls
                   controller={controller}
                   disabled={controller.isSubmitting || isFinalizing}
+                  showReadings={showReadings}
                 />
               ) : controller.isSegmentSelectTrial ? (
                 <SegmentSelectControls
                   controller={controller}
                   disabled={controller.isSubmitting || isFinalizing}
+                  showReadings={showReadings}
                   trial={currentTrial}
                 />
               ) : controller.isSelfCheckTrial ? (
@@ -170,6 +247,7 @@ export function KatakanaSpeedSessionPage({
                 <ChoiceControls
                   controller={controller}
                   disabled={controller.isSubmitting || isFinalizing}
+                  showReadings={showReadings}
                   trial={currentTrial}
                 />
               )}
@@ -187,7 +265,16 @@ export function KatakanaSpeedSessionPage({
             clientError={clientError ?? controller.clientError}
             currentTrial={currentTrial}
             feedback={controller.feedback}
+            showReadings={showReadings}
             isFinalizing={isFinalizing}
+            awaitingContinue={
+              controller.awaitingContinue &&
+              !controller.isSelfCheckTrial &&
+              !controller.isRepeatedReadingTrial &&
+              !controller.isRanGridTrial
+            }
+            isSubmitting={controller.isSubmitting || isFinalizing}
+            onContinue={controller.handleContinue}
           />
         </SurfaceCard>
 
@@ -195,12 +282,23 @@ export function KatakanaSpeedSessionPage({
           <SurfaceCard className="katakana-speed-panel">
             <p className="katakana-speed-eyebrow">Controlli</p>
             <p className="katakana-speed-muted">
-              {controller.isRanGridTrial || controller.isRepeatedReadingTrial
-                ? "Space avvia o ferma il timer. Enter avanza o salva il blocco."
-                : controller.isSelfCheckTrial
-                  ? "Space avvia o ferma il timer. 1-3 salva il rating, Enter continua."
-                  : "Rispondi con 1-4 dalla tastiera o tocca una scelta."}
+              {trialCopy?.controls ??
+                "Rispondi dalla tastiera o tocca una scelta."}
             </p>
+            <label className="katakana-speed-reading-toggle">
+              <input
+                checked={showReadings}
+                onChange={(event) => {
+                  setShowReadings(event.target.checked);
+                  event.currentTarget.blur();
+                }}
+                type="checkbox"
+              />
+              <span>
+                <strong>Mostra lettura</strong>
+                <small>Romaji per controllare se stai leggendo giusto.</small>
+              </span>
+            </label>
             <button
               className="button button--ghost"
               disabled={isFinalizing}
@@ -219,10 +317,12 @@ export function KatakanaSpeedSessionPage({
 function ChoiceControls({
   controller,
   disabled,
+  showReadings,
   trial
 }: {
   controller: ReturnType<typeof useKatakanaSpeedSessionController>;
   disabled: boolean;
+  showReadings: boolean;
   trial: KatakanaSpeedTrialPlan;
 }) {
   return (
@@ -237,7 +337,7 @@ function ChoiceControls({
                 ? "katakana-speed-option--incorrect"
                 : "katakana-speed-option--correct")
           )}
-          disabled={disabled}
+          disabled={disabled || controller.awaitingContinue}
           key={option.itemId}
           onClick={() =>
             controller.handleChooseOption(option.itemId, "pointer")
@@ -252,6 +352,7 @@ function ChoiceControls({
           <span className="katakana-speed-option__surface">
             {option.surface}
           </span>
+          <ReadingHint value={showReadings ? option.readingHint : null} />
         </button>
       ))}
     </div>
@@ -261,10 +362,12 @@ function ChoiceControls({
 function SegmentSelectControls({
   controller,
   disabled,
+  showReadings,
   trial
 }: {
   controller: ReturnType<typeof useKatakanaSpeedSessionController>;
   disabled: boolean;
+  showReadings: boolean;
   trial: KatakanaSpeedTrialPlan;
 }) {
   return (
@@ -279,14 +382,15 @@ function SegmentSelectControls({
                 ? "katakana-speed-option--incorrect"
                 : "katakana-speed-option--correct")
           )}
-          disabled={disabled}
+          disabled={disabled || controller.awaitingContinue}
           key={option.itemId}
           onClick={() =>
             controller.handleChooseOption(option.itemId, "pointer")
           }
           type="button"
         >
-          {option.surface}
+          <span>{option.surface}</span>
+          <ReadingHint value={showReadings ? option.readingHint : null} />
         </button>
       ))}
     </div>
@@ -295,10 +399,12 @@ function SegmentSelectControls({
 
 function TileBuilderControls({
   controller,
-  disabled
+  disabled,
+  showReadings
 }: {
   controller: ReturnType<typeof useKatakanaSpeedSessionController>;
   disabled: boolean;
+  showReadings: boolean;
 }) {
   const state = controller.tileBuilderState;
 
@@ -310,6 +416,13 @@ function TileBuilderControls({
     <div className="katakana-speed-tile-builder">
       <div className="katakana-speed-tile-answer" aria-live="polite">
         {state.answerSurface || " "}
+        <ReadingHint
+          value={
+            showReadings
+              ? formatKatakanaSpeedReading(state.answerSurface)
+              : null
+          }
+        />
       </div>
       <div className="katakana-speed-tile-grid">
         {state.tiles.map((tile) => (
@@ -318,31 +431,40 @@ function TileBuilderControls({
               "katakana-speed-tile",
               tile.selected && "katakana-speed-tile--selected"
             )}
-            disabled={disabled || tile.selected}
+            disabled={disabled || controller.awaitingContinue || tile.selected}
             key={`${tile.surface}-${tile.index}`}
             onClick={() => controller.handleSelectTile(tile.index)}
             type="button"
           >
-            {tile.surface}
+            <span>{tile.surface}</span>
+            <ReadingHint value={showReadings ? tile.readingHint : null} />
           </button>
         ))}
       </div>
       <div className="katakana-speed-tile-actions">
         <button
           className="button button--ghost"
-          disabled={disabled || state.selectedIndexes.length === 0}
+          disabled={
+            disabled ||
+            controller.awaitingContinue ||
+            state.selectedIndexes.length === 0
+          }
           onClick={controller.handleClearTiles}
           type="button"
         >
-          Reset
+          Svuota
         </button>
         <button
           className="button button--primary"
-          disabled={disabled || state.selectedIndexes.length === 0}
+          disabled={
+            disabled ||
+            controller.awaitingContinue ||
+            state.selectedIndexes.length === 0
+          }
           onClick={controller.handleSubmitTileBuilder}
           type="button"
         >
-          Salva
+          Controlla
         </button>
       </div>
     </div>
@@ -358,22 +480,15 @@ function SelfCheckControls({
   disabled: boolean;
   trial: KatakanaSpeedTrialPlan;
 }) {
-  const timerRunning = controller.timerState.phase === "running";
-
   return (
     <div className="katakana-speed-selfcheck">
       <div className="katakana-speed-timer" role="timer">
         <span className="katakana-speed-timer__value">
           {formatTimerLabel(controller.timerState.elapsedMs)}
         </span>
-        <button
-          className="button button--primary"
-          disabled={disabled || controller.awaitingContinue}
-          onClick={controller.handleToggleTimer}
-          type="button"
-        >
-          {timerRunning ? "Stop" : "Start"}
-        </button>
+        <span className="katakana-speed-timer__hint">
+          Si ferma quando scegli 1, 2 o 3.
+        </span>
       </div>
 
       <div className="katakana-speed-options katakana-speed-options--rating">
@@ -442,7 +557,7 @@ function RepeatedReadingControls({
             )}
             key={trial.trialId}
           >
-            {index + 1}
+            {formatRepeatedPassLabel(index)}
           </span>
         ))}
       </div>
@@ -453,11 +568,11 @@ function RepeatedReadingControls({
         </span>
         <button
           className="button button--primary"
-          disabled={disabled || controller.awaitingContinue}
+          disabled={disabled || controller.awaitingContinue || !timerRunning}
           onClick={controller.handleToggleTimer}
           type="button"
         >
-          {timerRunning ? "Stop" : "Start"}
+          {timerRunning ? "Ferma tempo" : "Timer fermo"}
         </button>
       </div>
 
@@ -475,7 +590,7 @@ function RepeatedReadingControls({
           ? "Continua"
           : state.currentPassIndex + 1 >= state.passCount
             ? "Salva blocco"
-            : "Passaggio successivo"}
+            : "Prossima lettura"}
       </button>
     </div>
   );
@@ -483,10 +598,12 @@ function RepeatedReadingControls({
 
 function RanGridControls({
   controller,
-  disabled
+  disabled,
+  showReadings
 }: {
   controller: ReturnType<typeof useKatakanaSpeedSessionController>;
   disabled: boolean;
+  showReadings: boolean;
 }) {
   const timerRunning = controller.timerState.phase === "running";
   const canSubmit =
@@ -503,8 +620,10 @@ function RanGridControls({
           return (
             <button
               aria-label={`Riga ${row}, colonna ${column}, ${cell.surface}${
-                isWrong ? ", segnato come errore" : ""
-              }`}
+                showReadings && cell.readingHint
+                  ? `, lettura ${cell.readingHint}`
+                  : ""
+              }${isWrong ? ", segnato come errore" : ""}`}
               aria-pressed={isWrong}
               className={`katakana-speed-ran-cell${
                 isWrong ? " katakana-speed-ran-cell--wrong" : ""
@@ -514,7 +633,8 @@ function RanGridControls({
               onClick={() => controller.handleToggleRanWrongCell(index)}
               type="button"
             >
-              {cell.surface}
+              <span>{cell.surface}</span>
+              <ReadingHint value={showReadings ? cell.readingHint : null} />
             </button>
           );
         })}
@@ -527,19 +647,19 @@ function RanGridControls({
           </span>
           <button
             className="button button--primary"
-            disabled={disabled || controller.awaitingContinue}
+            disabled={disabled || controller.awaitingContinue || !timerRunning}
             onClick={controller.handleToggleTimer}
             type="button"
           >
-            {timerRunning ? "Stop" : "Start"}
+            {timerRunning ? "Ferma tempo" : "Timer fermo"}
           </button>
         </div>
 
         <p className="katakana-speed-ran-errors" aria-live="polite">
           <span>
             {controller.ranCanMarkErrors
-              ? "Tocca le celle sbagliate"
-              : "Segna dopo Stop"}
+              ? "Marca le celle sbagliate"
+              : "Dopo Stop: marca errori"}
           </span>
           <strong>Errori: {controller.ranErrorCount}</strong>
         </p>
@@ -554,7 +674,7 @@ function RanGridControls({
           }
           type="button"
         >
-          {controller.awaitingContinue ? "Continua" : "Salva RAN"}
+          {controller.awaitingContinue ? "Continua" : "Salva griglia"}
         </button>
       </div>
     </div>
@@ -565,12 +685,20 @@ function FeedbackPanel({
   clientError,
   currentTrial,
   feedback,
-  isFinalizing
+  showReadings,
+  isFinalizing,
+  awaitingContinue,
+  isSubmitting,
+  onContinue
 }: {
   clientError: string | null;
   currentTrial: KatakanaSpeedTrialPlan | null;
   feedback: ReturnType<typeof useKatakanaSpeedSessionController>["feedback"];
+  showReadings: boolean;
   isFinalizing: boolean;
+  awaitingContinue: boolean;
+  isSubmitting: boolean;
+  onContinue: () => void;
 }) {
   if (clientError) {
     return (
@@ -594,18 +722,14 @@ function FeedbackPanel({
   }
 
   if (!feedback) {
-    return (
-      <div className="katakana-speed-feedback" aria-live="polite">
-        <p className="katakana-speed-feedback__title">Pronto</p>
-        <p className="katakana-speed-feedback__body">
-          Premi il numero della risposta o usa Space per i timer.
-        </p>
-      </div>
-    );
+    return null;
   }
 
   const meaning = currentTrial
     ? getKatakanaSpeedItemById(currentTrial.itemId)?.meaningIt
+    : null;
+  const expectedReading = showReadings
+    ? formatKatakanaSpeedReading(feedback.expectedSurface)
     : null;
 
   return (
@@ -620,30 +744,76 @@ function FeedbackPanel({
         {feedback.status === "incorrect"
           ? "Da rivedere"
           : feedback.status === "correct-slow"
-            ? "Corretto, lento"
+            ? "Corretta ma lenta"
             : "Corretto"}
       </p>
       <p className="katakana-speed-feedback__body">
         {feedback.selfRating
-          ? `${formatSelfRating(feedback.selfRating)} in ${feedback.responseMs} ms`
-          : `${feedback.selectedSurface} / ${feedback.expectedSurface} in ${feedback.responseMs} ms`}
+          ? `${formatSelfRatingLabel(feedback.selfRating)} in ${formatDuration(feedback.responseMs)}`
+          : `${feedback.selectedSurface} / ${feedback.expectedSurface} in ${formatDuration(feedback.responseMs)}`}
+        {feedback.status === "correct-slow" && currentTrial?.targetRtMs
+          ? ` · obiettivo: ${(currentTrial.targetRtMs / 1000).toFixed(1).replace(".", ",")} s`
+          : ""}
         {meaning ? ` · ${meaning}` : ""}
       </p>
+      <ReadingHint label="Lettura attesa" value={expectedReading} />
+      {awaitingContinue ? (
+        <button
+          className="button button--ghost katakana-speed-continue-after-error"
+          disabled={isSubmitting}
+          onClick={onContinue}
+          type="button"
+        >
+          Rivedi e continua
+        </button>
+      ) : null}
     </div>
   );
+}
+
+function ReadingHint({
+  label = "Romaji",
+  value
+}: {
+  label?: string;
+  value: string | null;
+}) {
+  if (!value) {
+    return null;
+  }
+
+  return (
+    <span className="katakana-speed-reading-hint">
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </span>
+  );
+}
+
+function formatRepeatedPassLabel(index: number) {
+  if (index === 0) {
+    return "Prima";
+  }
+  if (index === 1) {
+    return "Ripeti";
+  }
+
+  return "Transfer";
 }
 
 function formatTimerLabel(value: number) {
   return `${(value / 1000).toFixed(1)} s`;
 }
 
-function formatSelfRating(value: string) {
-  if (value === "clean") {
-    return "Clean";
-  }
-  if (value === "hesitated") {
-    return "Hesitated";
+function isEditableTarget(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) {
+    return false;
   }
 
-  return "Wrong";
+  return (
+    target.isContentEditable ||
+    target.tagName === "INPUT" ||
+    target.tagName === "TEXTAREA" ||
+    target.tagName === "SELECT"
+  );
 }

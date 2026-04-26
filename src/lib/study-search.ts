@@ -14,63 +14,85 @@ export type SearchQueryVariants = {
 };
 
 const kanaDigraphRomajiMap: Record<string, string> = {
-  "うぃ": "wi",
-  "うぇ": "we",
-  "うぉ": "wo",
-  "きゃ": "kya",
-  "きゅ": "kyu",
-  "きょ": "kyo",
-  "ぎゃ": "gya",
-  "ぎゅ": "gyu",
-  "ぎょ": "gyo",
-  "しゃ": "sha",
-  "しゅ": "shu",
-  "しょ": "sho",
-  "じゃ": "ja",
-  "じゅ": "ju",
-  "じょ": "jo",
-  "しぇ": "she",
-  "じぇ": "je",
-  "ちゃ": "cha",
-  "ちゅ": "chu",
-  "ちょ": "cho",
-  "ちぇ": "che",
-  "つぁ": "tsa",
-  "つぃ": "tsi",
-  "つぇ": "tse",
-  "つぉ": "tso",
-  "てぃ": "ti",
-  "でぃ": "di",
-  "とぅ": "tu",
-  "どぅ": "du",
-  "にゃ": "nya",
-  "にゅ": "nyu",
-  "にょ": "nyo",
-  "ひゃ": "hya",
-  "ひゅ": "hyu",
-  "ひょ": "hyo",
-  "びゃ": "bya",
-  "びゅ": "byu",
-  "びょ": "byo",
-  "ぴゃ": "pya",
-  "ぴゅ": "pyu",
-  "ぴょ": "pyo",
-  "ふぁ": "fa",
-  "ふぃ": "fi",
-  "ふぇ": "fe",
-  "ふぉ": "fo",
-  "ふゅ": "fyu",
-  "みゃ": "mya",
-  "みゅ": "myu",
-  "みょ": "myo",
-  "りゃ": "rya",
-  "りゅ": "ryu",
-  "りょ": "ryo",
-  "ゔぁ": "va",
-  "ゔぃ": "vi",
-  "ゔぇ": "ve",
-  "ゔぉ": "vo",
-  "ゔゅ": "vyu"
+  いぇ: "ye",
+  うぃ: "wi",
+  うぇ: "we",
+  うぉ: "wo",
+  きゃ: "kya",
+  きゅ: "kyu",
+  きょ: "kyo",
+  きぇ: "kye",
+  ぎゃ: "gya",
+  ぎゅ: "gyu",
+  ぎょ: "gyo",
+  ぎぇ: "gye",
+  くぁ: "kwa",
+  くぃ: "kwi",
+  くぇ: "kwe",
+  くぉ: "kwo",
+  ぐぁ: "gwa",
+  ぐぃ: "gwi",
+  ぐぇ: "gwe",
+  ぐぉ: "gwo",
+  しゃ: "sha",
+  しゅ: "shu",
+  しょ: "sho",
+  じゃ: "ja",
+  じゅ: "ju",
+  じょ: "jo",
+  しぇ: "she",
+  じぇ: "je",
+  すぃ: "si",
+  ずぃ: "zi",
+  ちゃ: "cha",
+  ちゅ: "chu",
+  ちょ: "cho",
+  ちぇ: "che",
+  つぁ: "tsa",
+  つぃ: "tsi",
+  つぇ: "tse",
+  つぉ: "tso",
+  てぃ: "ti",
+  でぃ: "di",
+  てゅ: "tyu",
+  でゅ: "dyu",
+  とぅ: "tu",
+  どぅ: "du",
+  にゃ: "nya",
+  にゅ: "nyu",
+  にょ: "nyo",
+  にぇ: "nye",
+  ひゃ: "hya",
+  ひゅ: "hyu",
+  ひょ: "hyo",
+  ひぇ: "hye",
+  びゃ: "bya",
+  びゅ: "byu",
+  びょ: "byo",
+  びぇ: "bye",
+  ぴゃ: "pya",
+  ぴゅ: "pyu",
+  ぴょ: "pyo",
+  ぴぇ: "pye",
+  ふぁ: "fa",
+  ふぃ: "fi",
+  ふぇ: "fe",
+  ふぉ: "fo",
+  ふゅ: "fyu",
+  ふょ: "fyo",
+  みゃ: "mya",
+  みゅ: "myu",
+  みょ: "myo",
+  りゃ: "rya",
+  りゅ: "ryu",
+  りょ: "ryo",
+  ゔぁ: "va",
+  ゔぃ: "vi",
+  ゔぇ: "ve",
+  ゔぉ: "vo",
+  ゔゃ: "vya",
+  ゔゅ: "vyu",
+  ゔょ: "vyo"
 };
 
 const kanaRomajiMap: Record<string, string> = {
@@ -156,7 +178,8 @@ const kanaRomajiMap: Record<string, string> = {
   ゅ: "yu",
   ょ: "yo",
   ゎ: "wa",
-  ゔ: "vu"
+  ゔ: "vu",
+  ヲ: "wo"
 };
 
 export function foldJapaneseKana(value: string): string {
@@ -195,7 +218,7 @@ export function buildSearchQueryVariants(
 }
 
 export function romanizeKanaForSearch(value: string): string {
-  const normalized = foldJapaneseKana(normalizeSearchText(value));
+  const normalized = foldKanaForRomajiSearch(normalizeSearchText(value));
   const chars = [...normalized];
   let output = "";
 
@@ -208,7 +231,9 @@ export function romanizeKanaForSearch(value: string): string {
 
     if (current === "っ") {
       const nextChunk = lookupKanaRomaji(chars, index + 1);
-      const doubledConsonant = nextChunk?.match(/^[bcdfghjklmnpqrstvwxyz]/)?.[0];
+      const doubledConsonant = nextChunk?.match(
+        /^[bcdfghjklmnpqrstvwxyz]/
+      )?.[0];
 
       if (doubledConsonant) {
         output += doubledConsonant;
@@ -248,6 +273,28 @@ export function romanizeKanaForSearch(value: string): string {
   }
 
   return compactLatinSearchText(output);
+}
+
+function foldKanaForRomajiSearch(value: string): string {
+  return [...value.normalize("NFKC")]
+    .map((char) => {
+      if (char === "ヲ") {
+        return char;
+      }
+
+      const codePoint = char.codePointAt(0);
+
+      if (!codePoint) {
+        return char;
+      }
+
+      if (codePoint >= 0x30a1 && codePoint <= 0x30f6) {
+        return String.fromCodePoint(codePoint - 0x60);
+      }
+
+      return char;
+    })
+    .join("");
 }
 
 function lookupKanaRomaji(chars: string[], index: number) {

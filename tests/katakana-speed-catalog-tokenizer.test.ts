@@ -6,6 +6,7 @@ import {
   getKatakanaSpeedCatalog,
   getKatakanaSpeedConfusionClusters,
   getKatakanaSpeedItemById,
+  formatKatakanaSpeedReading,
   tokenizeKatakanaDisplaySegments,
   tokenizeKatakanaMora
 } from "@/features/katakana-speed/model";
@@ -143,6 +144,40 @@ describe("katakana speed catalog", () => {
     ).not.toBe(
       generateKatakanaSpeedPseudoWord({ chunk: "ティ", seed: "daily-1" })
     );
+  });
+
+  it("formats learner-facing romaji readings without exposing raw placeholders", () => {
+    expect(formatKatakanaSpeedReading("メヴィラン")).toBe("meviran");
+    expect(formatKatakanaSpeedReading("セキュリティ")).toBe("sekyuriti");
+    expect(formatKatakanaSpeedReading("ヴョトール")).toBe("vyotooru");
+    expect(formatKatakanaSpeedReading("ヴュートール")).toBe("vyuutooru");
+    expect(formatKatakanaSpeedReading("フョトール")).toBe("fyotooru");
+    expect(formatKatakanaSpeedReading("インタヴュー")).toBe("intavyuu");
+    expect(formatKatakanaSpeedReading("ディスカッション")).toBe("disukasshon");
+    expect(formatKatakanaSpeedReading("プロデューサー")).toBe("purodyuusaa");
+    expect(formatKatakanaSpeedReading("ピッツァ")).toBe("pittsa");
+    expect(formatKatakanaSpeedReading("ケース・バイ・ケース")).toBe(
+      "keesu bai keesu"
+    );
+    expect(formatKatakanaSpeedReading("同じ")).toBeNull();
+    expect(formatKatakanaSpeedReading("ツィ、スィ、ズィ")).toBeNull();
+
+    const chunk = getKatakanaSpeedItemById("chunk-ti");
+    expect(formatKatakanaSpeedReading(chunk)).toBe("ti");
+  });
+
+  it("matches static catalog readings for every single kana and extended chunk", () => {
+    const checkedKinds = new Set(["single_kana", "extended_chunk"]);
+
+    for (const item of getKatakanaSpeedCatalog()) {
+      if (!checkedKinds.has(item.kind)) {
+        continue;
+      }
+
+      expect(formatKatakanaSpeedReading(item.surface), item.id).toBe(
+        item.reading
+      );
+    }
   });
 });
 

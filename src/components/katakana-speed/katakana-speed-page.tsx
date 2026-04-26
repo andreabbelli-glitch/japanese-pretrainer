@@ -10,9 +10,18 @@ import type {
   KatakanaSpeedPageData,
   KatakanaSpeedSessionMode
 } from "@/features/katakana-speed/server";
+import { cx } from "@/lib/classnames";
 
 import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
+import { KATAKANA_SPEED_MODE_GROUPS } from "./katakana-speed-copy";
+import {
+  ConfusionList,
+  FamilyCards,
+  formatDuration,
+  formatPercent,
+  SlowList
+} from "./katakana-speed-shared";
 
 type KatakanaSpeedPageProps = {
   data: KatakanaSpeedPageData;
@@ -58,8 +67,8 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
             <p className="katakana-speed-eyebrow">Drill locale</p>
             <h1 className="katakana-speed-title">Katakana Speed</h1>
             <p className="katakana-speed-summary">
-              Allenamento rapido per riconoscere coppie minime e chunk estesi
-              prima che diventino un collo di bottiglia nella lettura.
+              Allena la lettura del katakana con esercizi brevi: scegli, leggi a
+              tempo, ricostruisci parole e correggi le confusioni più lente.
             </p>
           </div>
           <div className="katakana-speed-actions">
@@ -71,10 +80,10 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
             >
               {startingMode === recommendedMode.mode
                 ? "Avvio..."
-                : recommendedMode.label}
+                : "Inizia drill"}
             </button>
             <span className="katakana-speed-cta-detail">
-              {recommendedMode.detail}
+              Consigliato: {recommendedMode.detail}
             </span>
             {recentHref ? (
               <Link className="button button--ghost" href={recentHref}>
@@ -84,29 +93,39 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
               </Link>
             ) : null}
           </div>
-          <div className="katakana-speed-mode-picker" aria-label="Mode picker">
-            {modeGroups.map((group) => (
-              <div className="katakana-speed-mode-group" key={group.label}>
-                <span className="katakana-speed-mode-group__label">
-                  {group.label}
-                </span>
-                <div className="katakana-speed-mode-group__items">
-                  {group.options.map((option) => (
-                    <button
-                      className="katakana-speed-mode-button"
-                      disabled={startingMode !== null}
-                      key={option.mode}
-                      onClick={() => startSession(option.mode)}
-                      type="button"
-                    >
-                      <span>{option.label}</span>
-                      <small>{option.detail}</small>
-                    </button>
-                  ))}
+          <details className="katakana-speed-mode-details">
+            <summary>Scegli esercizio</summary>
+            <div
+              className="katakana-speed-mode-picker"
+              aria-label="Selettore esercizi"
+            >
+              {KATAKANA_SPEED_MODE_GROUPS.map((group) => (
+                <div className="katakana-speed-mode-group" key={group.label}>
+                  <span className="katakana-speed-mode-group__label">
+                    {group.label}
+                  </span>
+                  <div className="katakana-speed-mode-group__items">
+                    {group.options.map((option) => (
+                      <button
+                        className={cx(
+                          "katakana-speed-mode-button",
+                          option.mode === recommendedMode.mode &&
+                            "katakana-speed-mode-button--recommended"
+                        )}
+                        disabled={startingMode !== null}
+                        key={option.mode}
+                        onClick={() => startSession(option.mode)}
+                        type="button"
+                      >
+                        <span>{option.label}</span>
+                        <small>{option.detail}</small>
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </details>
           {clientError ? (
             <p className="kanji-clash-stage__error" role="alert">
               {clientError}
@@ -115,12 +134,16 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
         </SurfaceCard>
 
         <SurfaceCard className="katakana-speed-panel">
-          <p className="katakana-speed-eyebrow">Weak spots</p>
+          <p className="katakana-speed-eyebrow">Punti deboli</p>
+          <p className="katakana-speed-muted">
+            Kana o chunk su cui sbagli o rallenti più spesso.
+          </p>
           <FocusList items={data.recommendedFocus} />
         </SurfaceCard>
       </section>
 
       <section className="katakana-speed-grid" aria-label="Riepilogo recente">
+        <p className="katakana-speed-eyebrow">Il tuo livello</p>
         <div className="stats-grid stats-grid--compact">
           <StatBlock
             detail="Catalogo statico"
@@ -134,146 +157,69 @@ export function KatakanaSpeedPage({ data }: KatakanaSpeedPageProps) {
           />
           <StatBlock
             detail="Corrette sotto soglia"
-            label="Fluent"
+            label="Fluide"
             value={formatPercent(data.analytics.overview.fluentCorrectPercent)}
           />
           <StatBlock
             detail="Mediana recente"
-            label="Tempo"
-            value={formatMs(data.analytics.overview.medianRtMs)}
+            label="Tempo mediano"
+            value={formatDuration(data.analytics.overview.medianRtMs)}
           />
         </div>
 
+        <SurfaceCard className="katakana-speed-panel katakana-speed-panel--wide">
+          <p className="katakana-speed-eyebrow">Famiglie kana</p>
+          <FamilyCards items={data.analytics.familyCards} />
+        </SurfaceCard>
+
         <section
           className="katakana-speed-analytics-grid"
-          aria-label="Metriche Katakana Speed"
+          aria-label="Diagnostica"
         >
-          <SurfaceCard className="katakana-speed-panel">
-            <p className="katakana-speed-eyebrow">Family progress</p>
-            <FamilyCards items={data.analytics.familyCards} />
-          </SurfaceCard>
-
           <SurfaceCard className="katakana-speed-panel">
             <p className="katakana-speed-eyebrow">Top confusioni</p>
             <ConfusionList items={data.analytics.topConfusions} />
           </SurfaceCard>
 
           <SurfaceCard className="katakana-speed-panel">
-            <p className="katakana-speed-eyebrow">Top slow-correct</p>
+            <p className="katakana-speed-eyebrow">Corrette ma lente</p>
             <SlowList items={data.analytics.topSlowItems} />
           </SurfaceCard>
         </section>
 
-        <SurfaceCard className="katakana-speed-panel">
-          <p className="katakana-speed-eyebrow">Recent recap</p>
-          {data.recentSession ? (
-            <>
-              <p className="katakana-speed-muted">
-                {data.recentSession.totalAttempts} tentativi,{" "}
-                {data.recentSession.slowCorrectCount} corretti lenti.
-              </p>
-              {recentHref ? (
+        {data.recentSession && recentHref ? (
+          <SurfaceCard className="katakana-speed-panel">
+            <p className="katakana-speed-eyebrow">Ultima sessione</p>
+            {data.recentSession.totalAttempts > 0 ? (
+              <>
+                <p className="katakana-speed-muted">
+                  {data.recentSession.totalAttempts} tentativi
+                  {data.recentSession.slowCorrectCount > 0
+                    ? ` · ${data.recentSession.slowCorrectCount} corretti lenti`
+                    : ""}
+                  .
+                </p>
                 <Link className="text-link" href={recentHref}>
-                  Apri dettagli
+                  {data.recentSession.status === "active"
+                    ? "Riprendi sessione"
+                    : "Apri recap"}
                 </Link>
-              ) : null}
-            </>
-          ) : (
-            <p className="katakana-speed-muted">
-              Nessuna sessione salvata. Il primo drill crea subito lo storico
-              locale.
-            </p>
-          )}
-        </SurfaceCard>
+              </>
+            ) : (
+              <Link className="text-link" href={recentHref}>
+                {data.recentSession.status === "active"
+                  ? "Riprendi sessione"
+                  : "Apri recap"}
+              </Link>
+            )}
+          </SurfaceCard>
+        ) : null}
+
       </section>
     </div>
   );
 }
 
-const modeGroups: readonly {
-  readonly label: string;
-  readonly options: readonly {
-    readonly detail: string;
-    readonly label: string;
-    readonly mode: KatakanaSpeedSessionMode;
-  }[];
-}[] = [
-  {
-    label: "Baseline",
-    options: [
-      {
-        detail: "Probe",
-        label: "Diag",
-        mode: "diagnostic_probe"
-      },
-      {
-        detail: "Tier C cap",
-        label: "Rare",
-        mode: "rare_combo"
-      },
-      {
-        detail: "5x5",
-        label: "RAN",
-        mode: "ran_grid"
-      }
-    ]
-  },
-  {
-    label: "Transfer",
-    options: [
-      {
-        detail: "Pseudo",
-        label: "Pseudo",
-        mode: "pseudoword_transfer"
-      },
-      {
-        detail: "Loanwords",
-        label: "Decode",
-        mode: "loanword_decoder"
-      },
-      {
-        detail: "Frasi",
-        label: "Sprint",
-        mode: "sentence_sprint"
-      },
-      {
-        detail: "3 passaggi",
-        label: "Repeated",
-        mode: "repeated_reading"
-      }
-    ]
-  },
-  {
-    label: "Repair",
-    options: [
-      {
-        detail: "ー / ッ",
-        label: "Traps",
-        mode: "mora_trap"
-      },
-      {
-        detail: "Chunk",
-        label: "Spot",
-        mode: "chunk_spotting"
-      },
-      {
-        detail: "Tiles",
-        label: "Build",
-        mode: "tile_builder"
-      },
-      {
-        detail: "Vertical",
-        label: "Ladder",
-        mode: "confusion_ladder"
-      },
-      {
-        detail: "Grafie",
-        label: "Variants",
-        mode: "variant_normalization"
-      }
-    ]
-  }
-];
 
 function FocusList({
   items
@@ -297,110 +243,4 @@ function FocusList({
       ))}
     </ul>
   );
-}
-
-function FamilyCards({
-  items
-}: {
-  items: KatakanaSpeedPageData["analytics"]["familyCards"];
-}) {
-  return (
-    <div className="katakana-speed-family-grid">
-      {items.map((item) => (
-        <article className="katakana-speed-family-card" key={item.family}>
-          <div className="katakana-speed-family-card__top">
-            <strong>{item.label}</strong>
-            <span
-              className={`katakana-speed-status katakana-speed-status--${item.status}`}
-            >
-              {formatFamilyStatus(item.status)}
-            </span>
-          </div>
-          <p className="katakana-speed-family-card__metric">
-            {formatPercent(item.accuracyPercent)} · {formatMs(item.medianRtMs)}
-          </p>
-          <p className="katakana-speed-family-card__focus">
-            {item.focusSurfaces.length > 0
-              ? item.focusSurfaces.join(" · ")
-              : "-"}
-          </p>
-        </article>
-      ))}
-    </div>
-  );
-}
-
-function ConfusionList({
-  items
-}: {
-  items: KatakanaSpeedPageData["analytics"]["topConfusions"];
-}) {
-  if (items.length === 0) {
-    return <p className="katakana-speed-muted">Nessuna confusione recente.</p>;
-  }
-
-  return (
-    <div className="katakana-speed-diagnostic-list">
-      {items.map((item) => (
-        <article
-          className="katakana-speed-diagnostic-row"
-          key={`${item.expectedSurface}-${item.observedSurface}`}
-        >
-          <span className="jp-inline">
-            {item.expectedSurface} → {item.observedSurface}
-          </span>
-          <strong>
-            {item.count} · {item.avgRtMs} ms
-          </strong>
-        </article>
-      ))}
-    </div>
-  );
-}
-
-function SlowList({
-  items
-}: {
-  items: KatakanaSpeedPageData["analytics"]["topSlowItems"];
-}) {
-  if (items.length === 0) {
-    return <p className="katakana-speed-muted">Nessuna lentezza dominante.</p>;
-  }
-
-  return (
-    <div className="katakana-speed-diagnostic-list">
-      {items.map((item) => (
-        <article className="katakana-speed-diagnostic-row" key={item.itemId}>
-          <span className="jp-inline">{item.surface}</span>
-          <strong>
-            {item.count} · {item.medianRtMs} ms
-          </strong>
-        </article>
-      ))}
-    </div>
-  );
-}
-
-function formatFamilyStatus(
-  status: KatakanaSpeedPageData["analytics"]["familyCards"][number]["status"]
-) {
-  if (status === "repair") {
-    return "Repair";
-  }
-  if (status === "watch") {
-    return "Watch";
-  }
-  if (status === "stable") {
-    return "Stable";
-  }
-
-  return "New";
-}
-
-function formatPercent(value: number | null) {
-  return value === null ? "-" : `${value}%`;
-}
-
-function formatMs(value: number | null) {
-  return value === null ? "-" : `${value} ms`;
 }

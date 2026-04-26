@@ -57,7 +57,7 @@ scheduler item, scoring e generatore sessione. La feature supporta:
 
 - `minimal_pair`: scelta tra quattro opzioni;
 - `blink`: esposizione breve senza audio, con due opzioni.
-- `word_naming`, `pseudoword_sprint`, `sentence_sprint`: timer manuale e
+- `word_naming`, `pseudoword_sprint`, `sentence_sprint`: timer automatico e
   self-check `clean / hesitated / wrong`;
 - raw-choice text-only per same/different, mora trap, long/sokuon pair race,
   variant normalization e vertical ladder. Le opzioni raw sono codificate nel
@@ -75,8 +75,9 @@ I mode avviabili dall'hub includono `diagnostic_probe`, `mora_trap`,
 `variant_normalization`, oltre ai mode gia esistenti. Non sono inclusi audio,
 voice recognition, shadowing, export, chart avanzate o integrazione con
 `/review`. Dashboard e recap mostrano solo superfici kana e metriche
-diagnostiche: romaji/reading restano dati interni e hard mode no-romaji e il
-default.
+diagnostiche. Nelle sessioni il romaji resta nascosto di default, ma `Space`
+lo mostra o nasconde in ogni esercizio per permettere un controllo immediato
+della lettura.
 
 ## Persistenza
 
@@ -109,15 +110,18 @@ riprese partono dal primo trial non ancora risposto usando `answeredCount`.
 3. Same/different, trap, variant e ladder usano choice raw text-only. Chunk
    spotting usa segmenti tappabili; tile builder usa tile kana tappabili con
    reset e salvataggio.
-4. I self-check drill usano `Space` per avviare/fermare il timer, `1`-`3` per
-   il rating e `Enter` per continuare.
-5. Repeated reading usa `Space` per ogni passaggio ed `Enter` per avanzare o
-   salvare il blocco; RAN usa `Space` per start/stop, poi tap/click sulle
-   celle sbagliate. Il count errori e derivato dalle celle selezionate e viene
-   salvato come un solo risultato aggregato.
-6. A fine sessione o con `Abbandona e salva recap`, il rollup viene scritto in
+4. In tutti gli esercizi `Space` mostra o nasconde il romaji/reading hint. Il
+   timer parte automaticamente nei drill temporizzati.
+5. I self-check drill usano `1`-`3` per il rating: `clean` e `hesitated`
+   avanzano automaticamente dopo il salvataggio, `wrong` resta sul trial con
+   feedback e richiede `Enter` o `Continua`.
+6. Repeated reading e RAN usano `Enter` per fermare il timer e poi avanzare o
+   salvare il blocco. RAN abilita tap/click sulle celle sbagliate solo dopo lo
+   stop; se ci sono celle segnate come errore, il feedback resta visibile fino
+   al continue manuale.
+7. A fine sessione o con `Abbandona e salva recap`, il rollup viene scritto in
    `katakana_session` e il recap resta raggiungibile.
-7. Dashboard e recap derivano analytics server-side da log e snapshot gia
+8. Dashboard e recap derivano analytics server-side da log e snapshot gia
    persistiti: rare accuracy, pseudo transfer, sentence flow, repeated-reading
    gain, RAN items/sec, celle RAN sbagliate quando disponibili, confusioni top,
    slow item e family progress. Non serve una migration dedicata per queste

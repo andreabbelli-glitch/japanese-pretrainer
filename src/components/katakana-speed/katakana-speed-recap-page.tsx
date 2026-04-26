@@ -5,6 +5,13 @@ import type { KatakanaSpeedRecapPageData } from "@/features/katakana-speed/serve
 
 import { StatBlock } from "../ui/stat-block";
 import { SurfaceCard } from "../ui/surface-card";
+import {
+  ConfusionList,
+  FamilyCards,
+  formatDuration,
+  formatPercent,
+  SlowList
+} from "./katakana-speed-shared";
 
 type KatakanaSpeedRecapPageProps = {
   data: KatakanaSpeedRecapPageData;
@@ -22,11 +29,11 @@ export function KatakanaSpeedRecapPage({ data }: KatakanaSpeedRecapPageProps) {
     <div className="katakana-speed-recap-page">
       <section className="katakana-speed-hero">
         <SurfaceCard className="katakana-speed-recap-panel" variant="hero">
-          <p className="katakana-speed-eyebrow">Recap persistito</p>
+          <p className="katakana-speed-eyebrow">Recap sessione</p>
           <h1 className="katakana-speed-title">Katakana Speed</h1>
           <p className="katakana-speed-summary">
-            Sessione {data.session.status} con metriche salvate nello storico
-            locale.
+            Risultati salvati nello storico locale. Usa il focus consigliato per
+            scegliere il prossimo drill.
           </p>
           <div className="katakana-speed-actions">
             <Link
@@ -70,16 +77,16 @@ export function KatakanaSpeedRecapPage({ data }: KatakanaSpeedRecapPageProps) {
         <StatBlock
           detail="Mediana"
           label="Tempo"
-          value={formatMs(data.session.medianRtMs)}
+          value={formatDuration(data.session.medianRtMs)}
         />
         <StatBlock
           detail="P90"
           label="Picco"
-          value={formatMs(data.session.p90RtMs)}
+          value={formatDuration(data.session.p90RtMs)}
         />
         <StatBlock
           detail="Corrette ma lente"
-          label="Slow"
+          label="Lente"
           value={String(data.session.slowCorrectCount)}
         />
       </section>
@@ -100,43 +107,21 @@ export function KatakanaSpeedRecapPage({ data }: KatakanaSpeedRecapPageProps) {
         </SurfaceCard>
 
         <SurfaceCard className="katakana-speed-recap-panel">
-          <p className="katakana-speed-eyebrow">Top slow-correct</p>
+          <p className="katakana-speed-eyebrow">Corrette ma lente</p>
           <SlowList items={data.analytics.topSlowItems} />
         </SurfaceCard>
 
         <SurfaceCard className="katakana-speed-recap-panel">
-          <p className="katakana-speed-eyebrow">Family cards</p>
+          <p className="katakana-speed-eyebrow">Famiglie kana</p>
           <FamilyCards items={data.analytics.familyCards} />
         </SurfaceCard>
       </section>
 
-      <SurfaceCard className="katakana-speed-recap-panel">
-        <p className="katakana-speed-eyebrow">Attempt log compatto</p>
-        {data.attempts.length > 0 ? (
-          <div className="katakana-speed-attempt-log">
-            {data.attempts.map((attempt) => (
-              <article
-                className="katakana-speed-attempt-row"
-                key={attempt.createdAt}
-              >
-                <span className="jp-inline">{attempt.promptSurface}</span>
-                <strong>
-                  {attempt.isCorrect ? "OK" : "Repair"} · {attempt.responseMs}{" "}
-                  ms
-                </strong>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <p className="katakana-speed-muted">
-            Nessuna risposta registrata per questa sessione.
-          </p>
-        )}
-      </SurfaceCard>
+      <AttemptLog attempts={data.attempts} />
 
       {data.exerciseResults.length > 0 ? (
         <SurfaceCard className="katakana-speed-recap-panel">
-          <p className="katakana-speed-eyebrow">Exercise results</p>
+          <p className="katakana-speed-eyebrow">Risultati esercizi</p>
           <div className="entry-preview-list">
             {data.exerciseResults.map((result) => (
               <article className="summary-row" key={result.resultId}>
@@ -180,7 +165,7 @@ function OperationalExerciseSummary({
 
   return (
     <SurfaceCard className="katakana-speed-recap-panel">
-      <p className="katakana-speed-eyebrow">Operational mix</p>
+      <p className="katakana-speed-eyebrow">Tipi di esercizio</p>
       <div className="entry-preview-list">
         {rows.map(([exerciseCode, count]) => (
           <article className="summary-row" key={exerciseCode}>
@@ -202,29 +187,31 @@ function ModeAwareMetrics({
   const statBlocks = [
     metrics.rareAccuracy
       ? {
-          detail: `${metrics.rareAccuracy.attempts} attempt`,
-          label: "Rare accuracy",
+          detail: `${metrics.rareAccuracy.attempts} ${metrics.rareAccuracy.attempts === 1 ? "tentativo" : "tentativi"}`,
+          label: "Precisione rare",
           value: formatPercent(metrics.rareAccuracy.accuracyPercent)
         }
+
       : null,
     metrics.pseudoTransfer
       ? {
-          detail: `${formatMs(metrics.pseudoTransfer.medianMsPerMora)} / mora`,
-          label: "Pseudo transfer",
+          detail: `${formatDuration(metrics.pseudoTransfer.medianMsPerMora)} / mora`,
+          label: "Pseudo-parole",
           value: formatPercent(metrics.pseudoTransfer.transferReadyPercent)
         }
       : null,
+
     metrics.sentenceFlow
       ? {
           detail: `${metrics.sentenceFlow.attempts} frasi`,
-          label: "Sentence flow",
-          value: `${formatMs(metrics.sentenceFlow.medianMsPerMora)} / mora`
+          label: "Frasi",
+          value: `${formatDuration(metrics.sentenceFlow.medianMsPerMora)} / mora`
         }
       : null,
     metrics.repeatedReadingGain
       ? {
           detail: metrics.repeatedReadingGain.transferStatus,
-          label: "Repeated gain",
+          label: "Lettura ripetuta",
           value: `${metrics.repeatedReadingGain.latestGainPercent}%`
         }
       : null,
@@ -232,10 +219,10 @@ function ModeAwareMetrics({
       ? {
           detail:
             metrics.ranItemsPerSecond.errors === null
-              ? "RAN grid"
+              ? "Griglia"
               : `${metrics.ranItemsPerSecond.errors} errori`,
-          label: "RAN speed",
-          value: `${metrics.ranItemsPerSecond.itemsPerSecond.toFixed(2)}/s`
+          label: "Velocità griglia",
+          value: `${metrics.ranItemsPerSecond.itemsPerSecond.toFixed(2).replace(".", ",")}/s`
         }
       : null
   ].filter(
@@ -283,7 +270,7 @@ function RanGridRecap({
 
   return (
     <SurfaceCard className="katakana-speed-recap-panel">
-      <p className="katakana-speed-eyebrow">RAN cells</p>
+      <p className="katakana-speed-eyebrow">Celle segnate</p>
       {hasGrid ? (
         <div
           className="katakana-speed-ran-grid katakana-speed-ran-grid--mini"
@@ -316,120 +303,72 @@ function RanGridRecap({
   );
 }
 
-function FamilyCards({
-  items
+function AttemptLog({
+  attempts
 }: {
-  items: KatakanaSpeedRecapPageData["analytics"]["familyCards"];
+  attempts: KatakanaSpeedRecapPageData["attempts"];
 }) {
-  return (
-    <div className="katakana-speed-family-grid">
-      {items.map((item) => (
-        <article className="katakana-speed-family-card" key={item.family}>
-          <div className="katakana-speed-family-card__top">
-            <strong>{item.label}</strong>
-            <span
-              className={`katakana-speed-status katakana-speed-status--${item.status}`}
-            >
-              {formatFamilyStatus(item.status)}
-            </span>
-          </div>
-          <p className="katakana-speed-family-card__metric">
-            {formatPercent(item.accuracyPercent)} · {formatMs(item.medianRtMs)}
-          </p>
-          <p className="katakana-speed-family-card__focus">
-            {item.focusSurfaces.length > 0
-              ? item.focusSurfaces.join(" · ")
-              : "-"}
-          </p>
-        </article>
-      ))}
-    </div>
-  );
-}
-
-function ConfusionList({
-  items
-}: {
-  items: KatakanaSpeedRecapPageData["analytics"]["topConfusions"];
-}) {
-  if (items.length === 0) {
+  if (attempts.length === 0) {
     return (
-      <p className="katakana-speed-muted">Nessuna confusione dominante.</p>
+      <SurfaceCard className="katakana-speed-recap-panel">
+        <p className="katakana-speed-eyebrow">Risposte registrate</p>
+        <p className="katakana-speed-muted">
+          Nessuna risposta registrata per questa sessione.
+        </p>
+      </SurfaceCard>
     );
   }
 
+  const VISIBLE_COUNT = 4;
+  const visible = attempts.slice(0, VISIBLE_COUNT);
+  const hidden = attempts.slice(VISIBLE_COUNT);
+
   return (
-    <div className="katakana-speed-diagnostic-list">
-      {items.map((item) => (
-        <article
-          className="katakana-speed-diagnostic-row"
-          key={`${item.expectedSurface}-${item.observedSurface}`}
-        >
-          <span className="jp-inline">
-            {item.expectedSurface} → {item.observedSurface}
-          </span>
-          <strong>
-            {item.count} · {item.avgRtMs} ms
-          </strong>
-        </article>
-      ))}
-    </div>
+    <SurfaceCard className="katakana-speed-recap-panel">
+      <p className="katakana-speed-eyebrow">Risposte registrate</p>
+      <div className="katakana-speed-attempt-log">
+        {visible.map((attempt) => (
+          <AttemptRow attempt={attempt} key={attempt.createdAt} />
+        ))}
+      </div>
+      {hidden.length > 0 ? (
+        <details className="katakana-speed-mode-details">
+          <summary>
+            Mostra tutte ({attempts.length})
+          </summary>
+          <div className="katakana-speed-attempt-log">
+            {hidden.map((attempt) => (
+              <AttemptRow attempt={attempt} key={attempt.createdAt} />
+            ))}
+          </div>
+        </details>
+      ) : null}
+    </SurfaceCard>
   );
 }
 
-function SlowList({
-  items
+function AttemptRow({
+  attempt
 }: {
-  items: KatakanaSpeedRecapPageData["analytics"]["topSlowItems"];
+  attempt: KatakanaSpeedRecapPageData["attempts"][number];
 }) {
-  if (items.length === 0) {
-    return <p className="katakana-speed-muted">Nessuna lentezza dominante.</p>;
-  }
-
   return (
-    <div className="katakana-speed-diagnostic-list">
-      {items.map((item) => (
-        <article className="katakana-speed-diagnostic-row" key={item.itemId}>
-          <span className="jp-inline">{item.surface}</span>
-          <strong>
-            {item.count} · {item.medianRtMs} ms
-          </strong>
-        </article>
-      ))}
-    </div>
+    <article className="katakana-speed-attempt-row">
+      <span className="jp-inline">{attempt.promptSurface}</span>
+      <strong>
+        {attempt.isCorrect ? "✓ Corretta" : "✗ Da rivedere"} ·{" "}
+        {formatDuration(attempt.responseMs)}
+      </strong>
+    </article>
   );
-}
-
-function formatMs(value: number | null) {
-  return value === null ? "-" : `${value} ms`;
-}
-
-function formatPercent(value: number | null) {
-  return value === null ? "-" : `${value}%`;
-}
-
-function formatFamilyStatus(
-  status: KatakanaSpeedRecapPageData["analytics"]["familyCards"][number]["status"]
-) {
-  if (status === "repair") {
-    return "Repair";
-  }
-  if (status === "watch") {
-    return "Watch";
-  }
-  if (status === "stable") {
-    return "Stable";
-  }
-
-  return "New";
 }
 
 function formatExerciseLabel(metrics: Readonly<Record<string, unknown>>) {
   if (typeof metrics.itemsPerSecond === "number") {
-    return "RAN Grid";
+    return "Griglia";
   }
   if (typeof metrics.improvementRatio === "number") {
-    return "Repeated reading";
+    return "Lettura ripetuta";
   }
 
   return "Aggregate";
@@ -437,13 +376,13 @@ function formatExerciseLabel(metrics: Readonly<Record<string, unknown>>) {
 
 function formatExerciseMetric(metrics: Readonly<Record<string, unknown>>) {
   if (typeof metrics.itemsPerSecond === "number") {
-    return `${metrics.itemsPerSecond.toFixed(2)} items/sec`;
+    return `${metrics.itemsPerSecond.toFixed(2).replace(".", ",")} items/sec`;
   }
   if (typeof metrics.improvementRatio === "number") {
     return `${Math.round(metrics.improvementRatio * 100)}% gain`;
   }
   if (typeof metrics.durationMs === "number") {
-    return `${metrics.durationMs} ms`;
+    return formatDuration(metrics.durationMs);
   }
 
   return "-";
@@ -455,25 +394,25 @@ function parseExerciseCode(value: unknown) {
 
 function formatExerciseCodeLabel(exerciseCode: string) {
   const labels: Readonly<Record<string, string>> = {
-    E01: "Diagnostic probe",
-    E02: "Blink recognition",
-    E03: "Minimal pair",
-    E04: "Confusion set",
-    E05: "Same/different",
-    E08: "Loanword builder",
-    E09: "Chunk spotting",
-    E10: "Word naming",
-    E11: "Loanword decoder",
-    E12: "Pseudoword sprint",
-    E13: "RAN grid",
-    E14: "Confusion ladder",
-    E15: "Mora trap",
-    E16: "Pair race",
-    E17: "Variant normalization",
-    E18: "Sentence reading",
-    E20: "Repair drill",
-    E21: "Mixed blitz",
-    E22: "No-romaji hard mode"
+    E01: "Diagnosi iniziale",
+    E02: "Riconoscimento rapido",
+    E03: "Coppie minime",
+    E04: "Confusioni",
+    E05: "Uguale o diverso",
+    E08: "Costruisci parole",
+    E09: "Trova chunk",
+    E10: "Leggi parole",
+    E11: "Prestiti",
+    E12: "Pseudo-parole",
+    E13: "Griglia",
+    E14: "Scala confusioni",
+    E15: "Trappole di mora",
+    E16: "Corsa coppie",
+    E17: "Varianti",
+    E18: "Frasi",
+    E20: "Riparazione",
+    E21: "Mix veloce",
+    E22: "Senza romaji"
   };
 
   return labels[exerciseCode] ?? exerciseCode;
